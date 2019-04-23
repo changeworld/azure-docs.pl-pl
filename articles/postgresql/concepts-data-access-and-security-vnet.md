@@ -1,17 +1,17 @@
 ---
 title: Azure Database dla serwera postgresql w warstwie sieci wirtualnej usługi punktu końcowego — omówienie
 description: Dowiedz się, jak działają punkty końcowe usługi sieci Wirtualnej dla usługi Azure Database for postgresql w warstwie serwera.
-author: mbolz
+author: bolzmj
 ms.author: mbolz
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/20/2018
-ms.openlocfilehash: 83d16071cbcac4199db9f3757121f9811db49727
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c6549ad170a0fc3b4387d5bc5163ca0548b92119
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59006341"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009195"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql"></a>Użyj reguł i punktów końcowych usługi sieci wirtualnej dla usługi Azure Database for PostgreSQL
 

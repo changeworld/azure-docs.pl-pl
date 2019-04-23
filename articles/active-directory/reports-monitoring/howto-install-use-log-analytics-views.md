@@ -1,6 +1,6 @@
 ---
-title: Jak zainstalować i używać widoków analizy dzienników dla usługi Azure Active Directory (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zainstalować i korzystać z widokami analizy dzienników dla usługi Azure Active Directory (wersja zapoznawcza)
+title: Jak zainstalować i używać widoków analizy dzienników dla usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zainstalować i korzystać z widokami analizy dzienników dla usługi Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7d1b2262f8f57b2ad180650fa6d4c08fbabfef5
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
-ms.translationtype: MT
+ms.openlocfilehash: 92a5d9539d254eb7d52e3277691c9d8ff5a41821
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437309"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60005064"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>Instalowanie i używanie widoków analizy dzienników dla usługi Azure Active Directory
 

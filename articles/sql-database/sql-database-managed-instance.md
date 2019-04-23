@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 manager: craigg
-ms.date: 04/08/2019
-ms.openlocfilehash: 15b7bfc9e1d747fcefdbba03ca254a9604197b5f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 04/16/2019
+ms.openlocfilehash: 46c6972e20df69da236c151516d7d889f9db6084
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59361826"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002752"
 ---
 # <a name="use-sql-database-advanced-data-security-with-virtual-networks-and-near-100-compatibility"></a>Użyj zaawansowanych zabezpieczeń danych przy użyciu sieci wirtualnych i w prawie 100% zgodności bazy danych SQL
 
@@ -71,7 +71,7 @@ Najważniejsze funkcje zarządzanych wystąpień przez przedstawiono w poniższe
 | Wbudowana usługa raportowania (SSRS) | Nie — przy użyciu usługi Power BI lub IaaS usług SSRS |
 |||
 
-## <a name="vcore-based-purchasing-model"></a>Model zakupu bazujący na rdzeniach wirtualnych
+## <a name="vcore-based-purchasing-model"></a>Model zakupów oparty na rdzeniach wirtualnych
 
 [Modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md) dla wystąpienia zarządzanego zapewnia elastyczność możesz, kontrola, przejrzystości i prostą metodę tłumaczenia wymagań obciążenia w chmurze lokalnie. Ten model umożliwia zmianę obliczeniowych, pamięci i magazynu, w zależności od potrzeb obciążenia. Model rdzenia wirtualnego jest również kwalifikuje się do 30 procent oszczędności w przypadku [korzyść użycia hybrydowego platformy Azure dla programu SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
@@ -126,7 +126,7 @@ Opcji wdrożenia wystąpienia zarządzanego łączy zaawansowane funkcje zabezpi
 Wystąpienie zarządzane zapewnia dodatkowe zabezpieczenia izolację od pozostałych dzierżawców w chmurze platformy Azure. Izolacja na potrzeby zabezpieczeń obejmują:
 
 - [Implementacja natywnych sieci wirtualnej](sql-database-managed-instance-connectivity-architecture.md) i łączności do środowiska lokalnego przy użyciu usługi Azure Expressroute lub bram sieci VPN.
-- Punkt końcowy SQL jest uwidaczniany wyłącznie za pośrednictwem prywatnego adresu IP, umożliwiając bezpieczne połączenie na platformie Azure prywatnej lub hybrydowej sieci.
+- W ramach wdrożenia domyślny punkt końcowy SQL jest uwidaczniany wyłącznie za pośrednictwem prywatnego adresu IP, umożliwiając bezpieczne połączenie na platformie Azure prywatnej lub hybrydowej sieci.
 - Jednej dzierżawy za pomocą dedykowanego podstawowej infrastruktury (moc obliczeniowa, Magazyn).
 
 Poniższy diagram przedstawia różne opcje łączności dla aplikacji:

@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: rkmanda
-ms.openlocfilehash: 192966eef20ac59ac3a6eb14d7d450357989b851
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7479d9a230bd28c2ed2e4c8c79ba9301028af36c
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58879696"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60007631"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>Usługa IoT Hub o wysokiej dostępności i odzyskiwania po awarii
 
@@ -82,8 +82,6 @@ Opcja ręcznego przełączania trybu failover jest zawsze dostępna do użycia n
 > - Test awarii nie należy wykonać w centrach IoT, które są używane w środowiskach produkcyjnych.
 >
 > - Ręczna praca awaryjna nie należy jako mechanizm trwale migracji Centrum między regionów geograficznych platformy Azure, w połączeniu. To spowoduje, że zwiększenie opóźnienia dla operacji, które wykonywanych względem Centrum z urządzenia umieszczone w starym regionu podstawowego.
->
-> - Ręczna praca awaryjna jest obecnie dostępna w wersji zapoznawczej i nie jest dostępna w następujących regionach platformy Azure. Wschodnie stany USA, zachodnie stany USA, północno Europa, Europa Zachodnia, Brazylia Południowa, południowo-środkowe stany USA.
 
 ### <a name="failback"></a>Powrót po awarii
 

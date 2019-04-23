@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/25/2019
+ms.date: 04/18/2019
 ms.author: mlottner
-ms.openlocfilehash: 59021d09f2af9d430b118acdeb8aa977094e683e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: cac2f740c1b2ae109f29ce44cd035fc6a83dd148
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58862390"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60010564"
 ---
 # <a name="quickstart-enable-service-in-iot-hub"></a>Szybki start: Włącz usługę w usłudze IoT Hub
 
@@ -45,7 +45,7 @@ Ten artykuł zawiera wyjaśnienie, jak włączyć usługi Azure Security Center 
 Aby włączyć zabezpieczenia w usłudze IoT Hub, wykonaj następujące czynności: 
 
 1. Otwórz swoje **usługi IoT Hub** w witrynie Azure portal. 
-2. Wybierz i Otwórz **zabezpieczeń** menu po lewej stronie. 
+2. W obszarze **zabezpieczeń** menu, kliknij przycisk **Przegląd**, następnie kliknij przycisk **Start (wersja zapoznawcza)**. 
 3. Wybierz **Włącz zabezpieczenia IoT**. 
 4. Podaj szczegóły obszaru roboczego usługi Log Analytics. 
    - Zdecydować się na przechowywanie **nieprzetworzonych zdarzeń** oprócz domyślne typy informacji magazynu, pozostawiając **nieprzetworzone zdarzenia** Przełącz **na**. 

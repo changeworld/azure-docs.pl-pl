@@ -14,17 +14,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 6ca4156c19adbeea72ae268fe62638d40919b08f
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: MT
+ms.openlocfilehash: 5a97a40ba48db9f73471d5fd778ceb5cb9070964
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699620"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011343"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>Użyj konsoli szeregowej wywołań SysRq i NMI
 
 ## <a name="system-request-sysrq"></a>Żądanie systemu (SysRq)
-SysRq jest sekwencją kluczy rozpoznawane przez jądro systemu Linux operacji, które mogą wyzwalać zestaw predefiniowanych akcji. Te polecenia są często używane w przypadku maszyny wirtualnej rozwiązywania problemów lub odzyskiwania nie można wykonać przy użyciu tradycyjnych administracyjnej (na przykład, jeśli maszyna wirtualna jest zawieszona). Za pomocą funkcji SysRq konsoli szeregowej Azure przypominające naciśnięcie klucza SysRq i znaki wprowadzone na klawiaturze fizycznych.
+SysRq jest sekwencją kluczy rozpoznawane przez jądro systemu Linux operacji, które mogą wyzwalać zestaw predefiniowanych akcji. Te polecenia są często używane w przypadku maszyny wirtualnej rozwiązywania problemów lub odzyskiwania nie można wykonać przy użyciu tradycyjnych administracyjnej (na przykład, jeśli nie odpowiada maszynie Wirtualnej). Za pomocą funkcji SysRq konsoli szeregowej Azure przypominające naciśnięcie klucza SysRq i znaki wprowadzone na klawiaturze fizycznych.
 
 Po sekwencji SysRq zostało dostarczone, konfiguracji jądra kontrolować, jak zachowuje się system. Aby uzyskać informacji na temat włączania i wyłączania SysRq, zobacz *podręczniku administratora SysRq* [tekstu](https://aka.ms/kernelorgsysreqdoc) | [języka znaczników markdown](https://aka.ms/linuxsysrq).  
 
@@ -99,7 +99,7 @@ Dokumentację specyficzne dla dystrybucji na SysRq i kroki, aby skonfigurować L
 - [Zbieranie dzienników awarii](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
 
 ## <a name="non-maskable-interrupt-nmi"></a>Niemaskowalnego przerwania (NMI) 
-Niemaskowalnego przerwania (NMI) jest przeznaczone do tworzenia sygnał, który nie zignoruje oprogramowania na maszynie wirtualnej. W przeszłości NMIs zostały użyte w celu monitorowania problemów ze sprzętem w systemach, które są wymagane określone czasy.  Dzisiaj, programistów i system Administratorzy często używają NMI jako mechanizm do debugowania i rozwiązywanie problemów z systemów, które są zawieszone.
+Niemaskowalnego przerwania (NMI) jest przeznaczone do tworzenia sygnał, który nie zignoruje oprogramowania na maszynie wirtualnej. W przeszłości NMIs zostały użyte w celu monitorowania problemów ze sprzętem w systemach, które są wymagane określone czasy.  Dzisiaj, programistów i system Administratorzy często używają NMI jako mechanizm do debugowania i rozwiązywanie problemów z systemów, które nie odpowiadają.
 
 Konsoli szeregowej może służyć do wysyłania NMI na maszynie wirtualnej platformy Azure przy użyciu ikonę klawiatury na pasku poleceń, pokazano poniżej. Po NMI zostało dostarczone, konfiguracja maszyny wirtualnej będzie kontrolować, jak zachowuje się system.  Linux systemów operacyjnych można skonfigurować do awarii i Utwórz zrzut pamięci systemu operacyjnego odbiera NMI.
 

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/02/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5ab8a231d4d44cfe2bfaf7c003ca57772a7a1814
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d230fa97d009f0ee2a3bc86a0b6b7c8d40687a46
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58896542"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60010283"
 ---
 # <a name="certificate-assets-in-azure-automation"></a>Zasobów certyfikatów w usłudze Azure Automation
 
@@ -33,7 +33,7 @@ Dla usługi AzureRM poleceń cmdlet w poniższej tabeli służą do tworzenia i 
 |[New-AzureRmAutomationCertificate](/powershell/module/azurerm.automation/new-azurermautomationcertificate)|Tworzy nowy certyfikat do usługi Azure Automation.|
 [Remove-AzureRmAutomationCertificate](/powershell/module/azurerm.automation/remove-azurermautomationcertificate)|Usuwa certyfikat z usługi Azure Automation.|
 |[Set-AzureRmAutomationCertificate](/powershell/module/azurerm.automation/set-azurermautomationcertificate)|Ustawia właściwości istniejącego certyfikatu, włącznie z przekazywaniem pliku certyfikatu i ustawianiem hasła dla pliku pfx.|
-|[Add-AzureCertificate](/previous-versions/azure/dn495214)|Służy do przekazywania certyfikatu usługi dla określona usługa w chmurze.|
+|[Add-AzureCertificate](/powershell/module/servicemanagement/azure/add-azurecertificate)|Służy do przekazywania certyfikatu usługi dla określona usługa w chmurze.|
 
 ## <a name="activities"></a>Działania
 

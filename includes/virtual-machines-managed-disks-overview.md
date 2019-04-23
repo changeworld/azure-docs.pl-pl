@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 4563bb0de688a8328796badffc8a133a33f64fcc
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
-ms.translationtype: MT
+ms.openlocfilehash: 9d96bd76a4d284e9b4390c564446e8b27c43d591
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59566566"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60118776"
 ---
 ## <a name="benefits-of-managed-disks"></a>Korzyści z dyskami zarządzanymi
 
@@ -61,7 +61,7 @@ Ten dysk ma maksymalną pojemność wynoszącą 2048 GiB.
 
 ### <a name="temporary-disk"></a>Dysk tymczasowy
 
-Każda maszyna wirtualna zawiera dysk tymczasowy brak dysku zarządzanego. Dysk tymczasowy udostępnia krótkoterminowy magazyn dla aplikacji i procesów i jest przeznaczone do przechowywania tylko dane, takie jak stronicowania lub plik wymiany. Dane na dysku tymczasowym mogą zostać utracone podczas [zdarzeń związanych z konserwacją](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) zdarzenia lub gdy użytkownik [ponowne wdrożenie maszyny Wirtualnej](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json). Podczas pomyślnego standardowa ponowny rozruch maszyny wirtualnej zostanie utrzymany danych na dysku tymczasowego.
+Każda maszyna wirtualna zawiera dysk tymczasowy brak dysku zarządzanego. Dysk tymczasowy udostępnia krótkoterminowy magazyn dla aplikacji i procesów i jest przeznaczone do przechowywania tylko dane, takie jak stronicowania lub plik wymiany. Dane na dysku tymczasowym mogą zostać utracone podczas [zdarzeń związanych z konserwacją](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) zdarzenia lub gdy użytkownik [ponowne wdrożenie maszyny Wirtualnej](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json). Na maszynach wirtualnych z systemem Linux platformy Azure dysk tymczasowy to dysk /dev/sdb domyślnie, i na maszynach wirtualnych Windows dysk tymczasowy to dysk E: domyślnie. Podczas pomyślnego standardowa ponowny rozruch maszyny wirtualnej zostanie utrzymany danych na dysku tymczasowym.
 
 ## <a name="managed-disk-snapshots"></a>Migawki dysków zarządzanych
 

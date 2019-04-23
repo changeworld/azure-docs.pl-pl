@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 02/26/2019
 ms.author: aahi
-ms.openlocfilehash: 9d0a803f8a397d3c24f083188b6186acf4dde809
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: 720a6c57d4f1a6079f78244559a25018349bd378
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58122879"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011257"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Jak wywołać interfejs API REST analizy tekstu
 
@@ -26,7 +26,7 @@ Każde żądanie musi zawierać klucz dostępu i punktu końcowego HTTP. Punkt k
 Odwołaj, analizy tekstu jest bezstanowy, więc żadne zasoby danych do zarządzania. Tekst zostanie przekazany, analizowane po otrzymaniu, a wyniki są natychmiast zwracane do aplikacji wywołującej.
 
 > [!Tip]
-> W przypadku jednorazowe wywołań zobaczyć, jak działa interfejs API, można wysłać żądania POST z poziomu wbudowanego **konsoli testowania interfejsu API**, dostępne na każdym [strony dokumentacji interfejsu API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6). Nie skonfigurowano, i jedynymi wymogami są Aby wkleić klucz dostępu i dokumentów JSON w żądaniu. 
+> W przypadku jednorazowe wywołań zobaczyć, jak działa interfejs API, można wysłać żądania POST z poziomu wbudowanego **konsoli testowania interfejsu API**, dostępne na każdym [strony dokumentacji interfejsu API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6). Nie skonfigurowano, i jedynymi wymogami są Aby wkleić klucz dostępu i dokumentów JSON w żądaniu. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -42,8 +42,8 @@ Obecnie można przesyłać tych samych dokumentów dla wszystkich operacji anali
 
 | Element | Prawidłowe wartości | Wymagana? | Sposób użycia |
 |---------|--------------|-----------|-------|
-|`id` |Typ danych jest ciągiem, ale w praktyce identyfikatory dokumentów mają tendencję do być liczbami całkowitymi. | Wymagane | System używa identyfikatorów zapewnienie struktury danych wyjściowych. Wyniki tonacji kodów języków i wyrażenia kluczowe są generowane dla każdego Identyfikatora w żądaniu.|
-|`text` | Bez określonej struktury nieprzetworzony tekst, maksymalnie 5,120 znaków. | Wymagane | Do wykrywania języka tekst może być wyrażona w dowolnym języku. Analiza tonacji, wyodrębnianie kluczowych fraz i identyfikacji jednostki, tekst musi znajdować na [obsługiwanym językiem](../text-analytics-supported-languages.md). |
+|`id` |Typ danych jest ciągiem, ale w praktyce identyfikatory dokumentów mają tendencję do być liczbami całkowitymi. | Wymagany | System używa identyfikatorów zapewnienie struktury danych wyjściowych. Wyniki tonacji kodów języków i wyrażenia kluczowe są generowane dla każdego Identyfikatora w żądaniu.|
+|`text` | Bez określonej struktury nieprzetworzony tekst, maksymalnie 5,120 znaków. | Wymagany | Do wykrywania języka tekst może być wyrażona w dowolnym języku. Analiza tonacji, wyodrębnianie kluczowych fraz i identyfikacji jednostki, tekst musi znajdować na [obsługiwanym językiem](../text-analytics-supported-languages.md). |
 |`language` | 2-znakowy [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) kod [obsługiwanym językiem](../text-analytics-supported-languages.md) | Różna | Wymagane do analizy tonacji, wyodrębnianie kluczowych fraz i łączenie podmiotów; Opcjonalnie na potrzeby wykrywania języka. Nie ma żadnych błędów, jeśli go wykluczyć, ale analiza jest obniżony bez niego. Kod języka powinna odpowiadać `text` należy podać. |
 
 Aby uzyskać więcej informacji na temat limitów, zobacz [Text Analytics — Przegląd > limity danych](../overview.md#data-limits). 
@@ -60,10 +60,10 @@ Usługa akceptuje żądania w rozmiarze do 1 MB. Jeśli używasz narzędzia Post
 
    Punktów końcowych zasobów są w następujący sposób (regionu mogą się różnić):
 
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment`
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases`
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/languages`
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/languages`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/entities`
 
 2. Ustaw trzy nagłówki żądania:
 
@@ -81,10 +81,10 @@ Usługa akceptuje żądania w rozmiarze do 1 MB. Jeśli używasz narzędzia Post
 
 5. Wklej wybrane dokumenty JSON w formacie, który nadaje się do zamierzonego analizy. Aby uzyskać więcej informacji na temat konkretnej analizy zobacz poniższe tematy:
 
-   + [Wykrywanie języka](text-analytics-how-to-language-detection.md)  
-   + [Wyodrębnianie kluczowych fraz](text-analytics-how-to-keyword-extraction.md)  
-   + [Analiza tonacji](text-analytics-how-to-sentiment-analysis.md)  
-   + [Rozpoznawanie jednostek (wersja zapoznawcza)](text-analytics-how-to-entity-linking.md)  
+  + [Wykrywanie języka](text-analytics-how-to-language-detection.md)  
+  + [Wyodrębnianie kluczowych fraz](text-analytics-how-to-keyword-extraction.md)  
+  + [Analiza tonacji](text-analytics-how-to-sentiment-analysis.md)  
+  + [Rozpoznawanie jednostek](text-analytics-how-to-entity-linking.md)  
 
 
 6. Kliknij przycisk **wysyłania** można przesłać żądania. Możesz przesłać do 100 żądań na minutę. 

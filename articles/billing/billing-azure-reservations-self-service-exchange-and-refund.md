@@ -1,7 +1,6 @@
 ---
 title: Samoobsługowe wymiany i zwrot kosztów dla platformy Azure rezerwacji | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak można wymienić lub refundacji rezerwacje Azure.
-services: billing
 documentationcenter: ''
 author: yashesvi
 manager: yashesvi
@@ -11,20 +10,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/5/2019
+ms.date: 04/13/2019
 ms.author: banders
-ms.openlocfilehash: aa1a218fbf0bc7eacac65b50e4ee1f86791e2b3b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 54578746ea8029a760663edc456660f98358abc5
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59281985"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009314"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Samoobsługowe wymiany i zwrot kosztów dla platformy Azure rezerwacji
 
 Rezerwacje platformy Azure zapewniają elastyczność pozwalającą spełniać potrzeby stale rosnących potrzeb. Mogą wymieniać rezerwacji do innej rezerwacji tego samego typu. Jeśli nie są już potrzebne, można również zwrócić rezerwacji, maksymalnie 50 000 USD rocznie.
 
 Możliwości programu exchange i Anuluj samoobsługi nie jest dostępna dla US Government klienci z umową Enterprise. Obsługiwane są inne typy subskrypcji dla instytucji rządowych USA, łącznie z rzeczywistym użyciem i dostawcy usług Kryptograficznych.
+
+W zamówieniu rezerwacji wymienić lub refundacji istniejącą rezerwację, musi mieć dostęp właściciela.
 
 ## <a name="exchange-an-existing-reserved-instance"></a>Wymiany istniejącego wystąpienia zarezerwowane
 
@@ -39,7 +40,7 @@ Mogą wymieniać rezerwacji z trzech krótkich krokach w [witryny Azure portal](
 
 Aby zwrot kosztów rezerwacji, przejdź do **szczegóły rezerwacji** i kliknij przycisk **zwrotu**.
 
-## <a name="how-return-and-exchange-transactions-are-processed"></a>Jak wróć i przetwarzania transakcji programu exchange
+## <a name="how-transactions-are-processed"></a>Jak są przetwarzane transakcji
 
 Po pierwsze firma Microsoft anuluje istniejącą rezerwację i zwroty kwotę proporcjonalną dla tej rezerwacji. W przypadku wymiany nowy zakup jest przetwarzany. Firma Microsoft przetwarza zwroty przy użyciu jednej z następujących metod, w zależności od typu konta i formę płatności:
 
@@ -49,7 +50,7 @@ Pieniędzy zostanie dodany do zobowiązania pieniężnego do wymiany, a zwroty, 
 
 Jeśli pierwotnego zakupu dokonano jako nadwyżkowe użycie, firma Microsoft udostępnia noty kredytowej.
 
-### <a name="pay-as-you-go-invoice-payment-customers-and-cloud-solution-provider-program"></a>Płatność za rzeczywiste użycie faktury płatności klientów i Cloud solution provider program
+### <a name="pay-as-you-go-invoice-payments-and-csp-program"></a>Płatności zgodnie z rzeczywistym użyciem faktury i programu CSP
 
 Oryginalny faktury zakupu rezerwacji zostanie anulowane, a następnie nową fakturę jest tworzone zwrotu. Dla wymiany nową fakturę pokazuje refundacji i nowe możliwości zakupu. Kwota zwrotów jest dostosowywany względem zakupu. Jeśli rezerwacja jest tylko zwrotu, kwotę proporcjonalną pozostaje z firmą Microsoft i jest dostosowywany dla zakupu rezerwacji w przyszłości.
 
@@ -74,7 +75,7 @@ Oryginalna faktura zostanie anulowane i utworzeniu nowego faktury. Pieniądze, j
 - Tylko właściciele rezerwacji może przetwarzać zwrot pieniędzy. [Dowiedz się, jak dodawanie lub zmienianie użytkowników, którzy mogą zarządzać rezerwacji](billing-manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
 - Firma Microsoft zastrzega sobie prawo do opłata w wysokości 12% karę za wszelkie zwraca, mimo że kary aktualnie nie jest rozliczane.
 
-## <a name="exchange-a-non-premium-storage-vm-reservation-for-a-premium-storage-reservation"></a>Exchange magazynu innego niż premium rezerwacji maszyny Wirtualnej dla rezerwacji magazynu premium
+## <a name="exchange-non-premium-storage-for-premium-storage"></a>Exchange innych niż premium storage dla usługi premium storage
 
 Mogą wymieniać zakupionych dla rozmiaru maszyny Wirtualnej, która nie obsługuje usługę premium storage do odpowiedniego rozmiaru maszyny Wirtualnej, który wykonuje rezerwacji. Na przykład _F1_ dla _F1s_. Aby programu exchange, przejdź do szczegółów rezerwacji, a następnie kliknij przycisk **Exchange**. Programu exchange nie Resetuj okres wystąpienia zarezerwowanego lub Utwórz nową transakcję.
 

@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.openlocfilehash: 6c9cb7282ba9d99ea643bbd023d876b8fbe3904c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 891d2acc42f8d6f03976f0553e2e3127bc6d16f7
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59045598"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011264"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Pozyskiwanie danych w usłudze Azure Eksplorator danych
 
@@ -52,7 +52,7 @@ Eksplorator danych usługi Azure obecnie obsługuje:
 
 ### <a name="ingestion-using-integration-services"></a>Wprowadzanie za pomocą usług integration services
 
-* Usługa Azure Data Factory (ADF), to usługa integracji w pełni zarządzane dane dla obciążeń wynikających z analizy na platformie Azure, aby skopiować dane do i z za pomocą Eksploratora danych usługi Azure [obsługiwane magazyny danych i formatów](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats). Aby uzyskać więcej informacji, zobacz [kopiowanie danych do lub z Eksploratora danych Azure przy użyciu usługi Azure Data Factory](/azure/data-factory/connector-azure-data-explorer).
+* Usługa Azure Data Factory (ADF), to usługa integracji w pełni zarządzane dane dla obciążeń wynikających z analizy na platformie Azure, aby skopiować dane do i z za pomocą Eksploratora danych usługi Azure [obsługiwane magazyny danych i formatów](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats). Aby uzyskać więcej informacji, zobacz [kopiowanie danych z usługi Azure Data Factory do Eksploratora danych usługi Azure](/azure/data-explorer/data-factory-load-data).
 
 ### <a name="programmatic-ingestion"></a>Wprowadzanie programowe
 

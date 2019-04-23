@@ -1,18 +1,18 @@
 ---
 title: Usługa Azure Database for MySQL Server w sieci wirtualnej usługi punktu końcowego — omówienie | Dokumentacja firmy Microsoft
 description: W tym artykule opisano, jak działają punkty końcowe usługi sieci wirtualnej dla usługi Azure Database for MySQL server.
-author: mbolz
+author: bolzmj
 ms.author: mbolz
 manager: jhubbard
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/20/2018
-ms.openlocfilehash: 37cc8192cc5934cf967ad9b9c62614d0b4503fb4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 3a7eaacc4c234ec7d1d3d88455bd423256a07e90
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59006603"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60005859"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>Użyj reguł i punktów końcowych usługi sieci wirtualnej dla usługi Azure Database for MySQL
 

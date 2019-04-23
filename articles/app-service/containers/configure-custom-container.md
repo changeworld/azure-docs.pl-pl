@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: 7f850cdfe99fce81c9be045b4882dc42bf2aa5f0
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: MT
+ms.openlocfilehash: 1e5faa8d356b891d825586414c0a1a1b9fa47090
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59551100"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60001885"
 ---
 # <a name="configure-a-custom-linux-container-for-azure-app-service"></a>Konfigurowanie niestandardowego kontenera systemu Linux dla usługi Azure App Service
 
@@ -121,7 +121,9 @@ Włącz z magazynu trwałego, ustawiając `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=TRUE
 ```
 
-W swojej *docker-compose.yml* plików, mapowanie `volumes` opcję `${WEBAPP_STORAGE_HOME}`. `WEBAPP_STORAGE_HOME` to zmienna środowiskowa w usłudze App Service mapowana na magazyn trwały aplikacji. Na przykład:
+W swojej *docker-compose.yml* plików, mapowanie `volumes` opcję `${WEBAPP_STORAGE_HOME}`. 
+
+`WEBAPP_STORAGE_HOME` to zmienna środowiskowa w usłudze App Service mapowana na magazyn trwały aplikacji. Na przykład:
 
 ```yaml
 wordpress:
@@ -130,6 +132,19 @@ wordpress:
   - ${WEBAPP_STORAGE_HOME}/site/wwwroot:/var/www/html
   - ${WEBAPP_STORAGE_HOME}/phpmyadmin:/var/www/phpmyadmin
   - ${WEBAPP_STORAGE_HOME}/LogFiles:/var/log
+```
+
+### <a name="use-custom-storage-in-docker-compose"></a>Użyj magazynu niestandardowego w narzędzia Docker Compose
+
+Usługa Azure Storage (Azure Files lub Azure Blob) mogą być instalowane przy użyciu aplikacji obsługującej wiele kontenerów przy użyciu identyfikatora niestandardowe. Aby wyświetlić nazwę niestandardowego id, uruchom [ `az webapp config storage-account list --name <app_name> --resource-group <resource_group>` ](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-list).
+
+W swojej *docker-compose.yml* plików, mapowanie `volumes` opcję `custom-id`. Na przykład:
+
+```yaml
+wordpress:
+  image: wordpress:latest
+  volumes:
+  - <custom-id>:<path_in_container>
 ```
 
 ### <a name="preview-limitations"></a>Ograniczenia wersji zapoznawczej

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/27/2019
+ms.date: 04/18/2019
 ms.author: mlottner
-ms.openlocfilehash: 56378e94bf448da4c3047c30be3ae25887f113b5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6182662cb0da7fa5bcd3f329ada9ca5851490724
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792221"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60007886"
 ---
 # <a name="investigate-a-suspicious-iot-device"></a>Zbadanie podejrzanych urządzeń IoT
 
@@ -43,7 +43,7 @@ Domyślnie ASC IoT przechowuje alerty zabezpieczeń i zalecenia w obszarze roboc
 Aby zlokalizować obszaru roboczego usługi Log Analytics do przechowywania danych:
 
 1. Otwórz Centrum IoT hub, 
-1. Kliknij przycisk **zabezpieczeń**, a następnie wybierz **ustawienia**.
+1. W obszarze **zabezpieczeń**, kliknij przycisk **Przegląd**, a następnie wybierz pozycję **ustawienia**.
 1. Zmień szczegóły konfiguracji obszaru roboczego usługi Log Analytics. 
 1. Kliknij pozycję **Zapisz**. 
 
@@ -94,7 +94,7 @@ Aby dowiedzieć się, należy użyć tych danych:
 
 ### <a name="open-ports"></a>Otwieranie portów
 
-Aby znaleźć poza, które porty na urządzeniu są obecnie używane lub zastosowano, użyj następującego zapytania kql: 
+Aby dowiedzieć się, które porty na urządzeniu są obecnie używane lub zastosowano, użyj następującego zapytania kql: 
 
   ~~~
   let device = "YOUR_DEVICE_ID";
@@ -147,12 +147,12 @@ Aby dowiedzieć się, użytkownicy, którzy zalogowany do urządzenia, użyj nas
 
     Use the query results to discover:
   1. Użytkowników, którzy zalogowany do urządzenia?
-  2. Użytkownicy, którzy zalogowali powinny się zalogować?
+  2. To użytkownicy, którzy zalogowali się, powinien się zalogować?
   3. Czy użytkownicy, którzy zalogowali połączyć z oczekiwanych lub nieoczekiwany adresów IP?
   
 ### <a name="process-list"></a>Lista procesów
 
-Aby dowiedzieć się, jeśli lista procesu jest jako oczekiwanego użycia następujące zapytanie kql: 
+Aby dowiedzieć się, jeśli lista procesu jest zgodne z oczekiwaniami, użyj następującego zapytania kql: 
 
   ~~~
   let device = "YOUR_DEVICE_ID";
@@ -188,4 +188,5 @@ Aby dowiedzieć się, jeśli lista procesu jest jako oczekiwanego użycia nastę
   3. Liczba wykonań dowolnego wiersza polecenia zawierała prawidłowego i oczekiwane argumenty?
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 Po zbadaniu urządzenia i uzyskania lepszego zrozumienia ryzyka, warto wziąć pod uwagę [Konfigurowanie alertów niestandardowych](quickstart-create-custom-alerts.md) do zwiększenia poziomu bezpieczeństwa rozwiązań IoT. Jeśli nie masz jeszcze agent urządzenia, należy wziąć pod uwagę [wdrażanie agenta zabezpieczeń](how-to-deploy-agent.md) lub [zmiana konfiguracji istniejącego agenta urządzenia](how-to-agent-configuration.md) aby poprawić wyniki. 

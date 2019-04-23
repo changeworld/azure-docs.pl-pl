@@ -1,6 +1,6 @@
 ---
-title: Interpretowanie schemat dziennika inspekcji usługi Azure Active Directory w usłudze Azure Monitor (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Opisz schemat dziennika inspekcji usługi Azure AD do użycia w usłudze Azure Monitor (wersja zapoznawcza)
+title: Interpretowanie schemat dziennika inspekcji usługi Azure Active Directory w usłudze Azure Monitor | Dokumentacja firmy Microsoft
+description: Opisz schemat dziennika inspekcji usługi Azure AD do użycia w usłudze Azure Monitor
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,16 +13,16 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 12/14/2018
+ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4832776dee7c478996bcfc2a903a6d8e2a3c4426
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
-ms.translationtype: MT
+ms.openlocfilehash: d9f58b213e50a021651f35112a48d8f74ae59571
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436969"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60010232"
 ---
 # <a name="interpret-the-azure-ad-audit-logs-schema-in-azure-monitor-preview"></a>Interpretowanie schematu dzienników inspekcji usługi Azure AD w usłudze Azure Monitor (wersja zapoznawcza)
 

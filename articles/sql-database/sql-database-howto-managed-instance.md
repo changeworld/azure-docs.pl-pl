@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlr
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 93be58ac231ff2b88c6618c549c9d1975977b91f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 04/16/2019
+ms.openlocfilehash: 886f06e8640891ac09d1e4624335a7bfebcd3def
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59799154"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009382"
 ---
 # <a name="how-to-use-a-managed-instance-in-azure-sql-database"></a>Jak używać wystąpienia zarządzanego usługi Azure SQL Database
 
@@ -36,7 +36,7 @@ W tym artykule można znaleźć różne przewodniki, skrypty i wyjaśnienia, kt�
 - [Konfigurowanie istniejącej sieci wirtualnej i podsieci dla wystąpienia zarządzanego](sql-database-managed-instance-configure-vnet-subnet.md) — Jeśli chcesz skonfigurować wdrażanie wystąpień zarządzanych w istniejącej sieci wirtualnej i podsieci, w tym miejscu można znaleźć skryptu, który sprawdza, czy [wymagania dotyczące sieciowej](sql-database-managed-instance-connectivity-architecture.md#network-requirements) i Utwórz konfiguruje podsieci zgodnie z wymaganiami.
 - [Konfigurowanie niestandardowych pozycji DNS](sql-database-managed-instance-custom-dns.md) — należy skonfigurować niestandardowe DNS, jeśli chcesz uzyskać dostęp do zasobów zewnętrznych dla domen niestandardowych z wystąpienia zarządzanego za pośrednictwem połączonego serwera profilów poczty bazy danych.
 - [Synchronizacja konfiguracji sieci](sql-database-managed-instance-sync-network-configuration.md) — może się zdarzyć, że chociaż możesz [zintegrować aplikację z usługą Azure Virtual Network](../app-service/web-sites-integrate-with-vnet.md), możesz&#39;t nawiązać połączenie z wystąpieniem zarządzanym. Jest jedyną operacją, której możesz spróbować odświeżyć konfiguracji sieci dla planu usługi.
-- [Znajdź adres IP punktu końcowego zarządzania](sql-database-managed-instance-find-management-endpoint-ip-address.md) — wystąpienie zarządzane używa publicznego punktu końcowego, wyłącznie do celów zarządzania —. Można określić adres IP punktu końcowego zarządzania za pomocą skryptu, opisane w tym miejscu.
+- [Znajdź adres IP punktu końcowego zarządzania](sql-database-managed-instance-find-management-endpoint-ip-address.md) — wystąpienie zarządzane używa publicznego punktu końcowego dla celów zarządzania. Można określić adres IP punktu końcowego zarządzania za pomocą skryptu, opisane w tym miejscu.
 - [Sprawdzanie ochrony wbudowanej zapory](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md) — wystąpienie zarządzane jest chroniony za pomocą wbudowanej zapory zezwalającą na ruch tylko na wymagane porty. Można sprawdzić i sprawdź reguły zapory wbudowanych, za pomocą skryptu, opisane w tym przewodniku.
 - [Łączenie aplikacji](sql-database-managed-instance-connect-app.md) — wystąpienie zarządzane jest umieszczany w własnej prywatnej sieci wirtualnej platformy Azure za pomocą prywatnego adresu IP. Więcej informacji na temat różnych wzorców do łączenia aplikacji z Twojego wystąpienia zarządzanego.
 

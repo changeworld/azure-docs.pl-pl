@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 12/21/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: c719bcaca91f9a6e77d79735283cf2c68404ef16
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: b0d1722df2bfe5116de2676dfc930d6050731bbd
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680540"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60005030"
 ---
 # <a name="define-a-saml-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Zdefiniuj profil techniczny SAML w zasadach niestandardowych usługi Azure Active Directory B2C
 
@@ -96,7 +96,7 @@ Do odczytu dla asercji SAML **NamedId** w **podmiotu** znormalizowane oświadcze
  
 Poniższy przykład przedstawia oświadczenia zwrócona przez dostawcę tożsamości usługi Facebook:
 
-- **SocialIdpUserId** oświadczeń jest mapowany na **assertionSubjectName** oświadczenia.
+- **IssuerUserId** oświadczeń jest mapowany na **assertionSubjectName** oświadczenia.
 - **Imię** oświadczeń jest mapowany na **givenName** oświadczenia.
 - **Nazwisko** oświadczeń jest mapowany na **nazwisko** oświadczenia.
 - **DisplayName** oświadczenia bez mapowania nazw.
@@ -109,7 +109,7 @@ Profil techniczny zwraca również wartość oświadczenia, które nie są zwrac
  
 ```xml
 <OutputClaims>
-  <OutputClaim ClaimTypeReferenceId="socialIdpUserId" PartnerClaimType="assertionSubjectName" />
+  <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="assertionSubjectName" />
   <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="first_name" />
   <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="last_name" />
   <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
@@ -124,7 +124,7 @@ Profil techniczny zwraca również wartość oświadczenia, które nie są zwrac
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
 | PartnerEntity | Yes | Adres URL metadanych SAML dostawcy tożsamości. Skopiuj metadanych dostawcy tożsamości i dodaj ją w CDATA element `<![CDATA[Your IDP metadata]]>` |
-| WantsSignedRequests | Nie | Wskazuje, czy profil techniczny wymaga wszystkie wychodzące żądania uwierzytelniania były podpisane. Możliwe wartości: `true` lub `false`. Wartość domyślna to `true`. Jeśli wartość jest równa `true`, **SamlMessageSigning** klucza kryptograficznego musi być określona, a wszystkie żądania uwierzytelniania wychodzące są podpisane. Jeśli wartość jest równa `false`, **SigAlg** i **podpisu** parametrów (ciąg zapytania lub parametr post) zostały pominięte w żądaniu. Te metadane kontroluje również metadanych **AuthnRequestsSigned** atrybut, który jest wysyłany w metadanych profil techniczny usługi Azure AD B2C, który jest udostępniany za pomocą dostawcy tożsamości. Usługa Azure AD B2C nie podpisania żądania, jeśli **WantsSignedRequests** w profilu technicznym metadanych jest równa `false` metadanych dostawcy tożsamości i **WantAuthnRequestsSigned** jest ustawiona na `false` lub nie jest określony. |
+| WantsSignedRequests | Nie | Wskazuje, czy profil techniczny wymaga wszystkie wychodzące żądania uwierzytelniania były podpisane. Możliwe wartości: `true` lub `false`. Wartość domyślna to `true`. Jeśli wartość jest równa `true`, **SamlMessageSigning** klucza kryptograficznego musi być określona, a wszystkie żądania uwierzytelniania wychodzące są podpisane. Jeśli wartość jest równa `false`, **SigAlg** i **podpisu** parametrów (ciąg zapytania lub parametr post) zostały pominięte w żądaniu. Te metadane kontroluje również metadanych **AuthnRequestsSigned** atrybut, który jest wysyłany w metadanych profil techniczny usługi Azure AD B2C, który jest udostępniany za pomocą dostawcy tożsamości. Usługa Azure AD B2C nie podpisania żądania, jeśli wartość **WantsSignedRequests** w profilu technicznym metadanych jest równa `false` metadanych dostawcy tożsamości i **WantAuthnRequestsSigned** jest Ustaw `false` lub nie jest określony. |
 | XmlSignatureAlgorithm | Nie | Metoda, która korzysta z usługi Azure AD B2C do podpisania żądania języka SAML. Te metadane określa wartość **SigAlg** parametru (ciąg zapytania lub parametr post) żądania języka SAML. Możliwe wartości: `Sha256`, `Sha384`, `Sha512`, lub `Sha1`. Upewnij się, że konfigurowanie algorytm podpisu po obu stronach za pomocą tej samej wartości. Użyj tylko certyfikat obsługuje algorytm. | 
 | WantsSignedAssertions | Nie | Wskazuje, czy profil techniczny wymaga wszystkie potwierdzenia przychodzące były podpisane. Możliwe wartości: `true` lub `false`. Wartość domyślna to `true`. Jeśli wartość jest równa `true`, wszystkich sekcji potwierdzenia `saml:Assertion` wysyłane przez tożsamość musi być podpisany dostawcy usługi Azure AD B2C. Jeśli wartość jest równa `false`, dostawca tożsamości nie należy zarejestrować potwierdzenia, ale nawet wtedy, gdy istnieje, usługa Azure AD B2C nie weryfikuje podpisu. Te metadane kontroluje również flagi metadanych **WantsAssertionsSigned**, czyli danych wyjściowych w metadanych profil techniczny usługi Azure AD B2C, który jest udostępniany za pomocą dostawcy tożsamości. Wyłączenie sprawdzania poprawności potwierdzenia również warto wyłączyć sprawdzanie poprawności podpisu odpowiedzi (Aby uzyskać więcej informacji, zobacz **ResponsesSigned**). |
 | ResponsesSigned | Nie | Możliwe wartości: `true` lub `false`. Wartość domyślna to `true`. Jeśli wartość jest równa `false`, dostawca tożsamości nie należy zarejestrować odpowiedzi SAML, ale nawet wtedy, gdy istnieje, usługa Azure AD B2C nie weryfikuje podpisu. Jeśli wartość jest równa `true`, odpowiedzi SAML przesłanej przez dostawcę tożsamości do usługi Azure AD B2C jest podpisany i muszą być weryfikowane. Jeśli wyłączysz weryfikacji odpowiedzi SAML, również może chcesz wyłączyć potwierdzenia weryfikacji podpisu (Aby uzyskać więcej informacji, zobacz **WantsSignedAssertions**). |

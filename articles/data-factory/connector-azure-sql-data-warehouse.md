@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 04/19/2019
 ms.author: jingwang
-ms.openlocfilehash: e3fc5a3dc5dc40078ca3a4733f6a2ba11da450f1
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: b97d21503e8dcd75906581faf1851533bcd69fa6
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59681220"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009348"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopiuj dane do / z usługi Azure SQL Data Warehouse przy użyciu usługi Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
@@ -62,7 +62,7 @@ Następujące właściwości są obsługiwane dla usługi Azure SQL Data Warehou
 | Parametry połączenia | Podaj informacje wymagane do nawiązania wystąpienia usługi Azure SQL Data Warehouse dla **connectionString** właściwości. <br/>Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory. Możesz również umieścić klucz jednostki usługi/hasła w usłudze Azure Key Vault oraz czy jest ściągnięcia uwierzytelniania SQL `password` konfiguracji poza parametry połączenia. Zobacz przykład kodu JSON pod tabelą i [Store poświadczeń w usłudze Azure Key Vault](store-credentials-in-key-vault.md) artykułu z bardziej szczegółowymi informacjami. | Yes |
 | servicePrincipalId | Określ identyfikator klienta aplikacji. | Tak, gdy używasz uwierzytelniania usługi Azure AD przy użyciu jednostki usługi. |
 | servicePrincipalKey | Określ klucz aplikacji. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Tak, gdy używasz uwierzytelniania usługi Azure AD przy użyciu jednostki usługi. |
-| dzierżawa | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Można je pobrać, ustawiając kursor myszy w prawym górnym rogu witryny Azure Portal. | Tak, gdy używasz uwierzytelniania usługi Azure AD przy użyciu jednostki usługi. |
+| tenant | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Można je pobrać, ustawiając kursor myszy w prawym górnym rogu witryny Azure Portal. | Tak, gdy używasz uwierzytelniania usługi Azure AD przy użyciu jednostki usługi. |
 | connectVia | [Środowiska integration runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. (Jeśli Twój magazyn danych znajduje się w sieci prywatnej), można użyć środowiska Azure Integration Runtime lub własnego środowiska integration runtime. Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. | Nie |
 
 Różnymi typami uwierzytelniania można znaleźć w następnych sekcjach dotyczących wymagań wstępnych i przykłady kodu JSON odpowiednio:
@@ -368,7 +368,7 @@ Aby skopiować dane do usługi Azure SQL Data Warehouse, należy ustawić typ uj
 |:--- |:--- |:--- |
 | type | **Typu** właściwość ujścia działania kopiowania musi być równa **SqlDWSink**. | Yes |
 | allowPolyBase | Wskazuje, czy przy użyciu technologii PolyBase, jeśli ma to zastosowanie, zamiast mechanizmu BULKINSERT. <br/><br/> Firma Microsoft zaleca, ładowanie danych do usługi SQL Data Warehouse przy użyciu programu PolyBase. Zobacz [przy użyciu technologii PolyBase do ładowania danych do usługi Azure SQL Data Warehouse](#use-polybase-to-load-data-into-azure-sql-data-warehouse) sekcji ograniczeń i szczegółów.<br/><br/>Dozwolone wartości to **True** i **False** (ustawienie domyślne).  | Nie |
-| Usługi | Grupa właściwości, które może być określony, gdy **allowPolybase** właściwość jest ustawiona na **true**. | Nie |
+| polyBaseSettings | Grupa właściwości, które może być określony, gdy **allowPolybase** właściwość jest ustawiona na **true**. | Nie |
 | rejectValue | Określa liczbę lub wartość procentowa wierszy, które można odrzucić przed zapytanie nie powiedzie się.<br/><br/>Dowiedz się więcej na temat opcji odrzucania w technologii PolyBase w sekcji argumenty [CREATE EXTERNAL TABLE (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx). <br/><br/>Dozwolone wartości to 0 (domyślnie), 1, 2, itp. |Nie |
 | rejectType | Określa, czy **rejectValue** opcja jest wartością literałową lub wartości procentowej.<br/><br/>Dozwolone wartości to **wartość** (ustawienie domyślne) i **procent**. | Nie |
 | rejectSampleValue | Określa liczbę wierszy do pobrania, zanim program PolyBase ponownie oblicza odsetek odrzuconych wierszy.<br/><br/>Dozwolone wartości to 1, 2, itp. | Tak, jeśli **rejectType** jest **procent**. |
@@ -399,22 +399,29 @@ Dowiedz się więcej o tym, jak można efektywnie obciążenia usługa SQL Data 
 
 Za pomocą [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) to wydajny sposób ładowania dużych ilości danych do usługi Azure SQL Data Warehouse o wysokiej przepływności. Zobaczysz duże korzyści przepływności przy użyciu programu PolyBase zamiast domyślnego mechanizmu BULKINSERT. Zobacz [dotyczące wydajności](copy-activity-performance.md#performance-reference) szczegółowe porównanie. Aby uzyskać wskazówki z przypadkami użycia, zobacz [ładowanie 1 TB w usłudze Azure SQL Data Warehouse](https://docs.microsoft.com/azure/data-factory/v1/data-factory-load-sql-data-warehouse).
 
-* Jeśli źródło danych znajduje się w usłudze Azure Blob storage lub Azure Data Lake Store i format jest zgodny z programem PolyBase, bezpośrednich kopii do usługi Azure SQL Data Warehouse przy użyciu programu PolyBase. Aby uzyskać więcej informacji, zobacz  **[bezpośrednie kopiowania przy użyciu programu PolyBase](#direct-copy-by-using-polybase)**.
+* Jeśli źródło danych znajduje się w **obiektów Blob platformy Azure, Azure Data Lake Storage Gen1 lub Azure Data Lake Storage Gen2**i **format jest PolyBase zgodne**, działanie kopiowania umożliwia bezpośrednio wywołać program PolyBase, aby umożliwić platformie Azure Usługa SQL Data Warehouse ściągania danych ze źródła. Aby uzyskać więcej informacji, zobacz  **[bezpośrednie kopiowania przy użyciu programu PolyBase](#direct-copy-by-using-polybase)**.
 * Jeśli Twoje źródłowy magazyn danych i format pierwotnie nie jest obsługiwana przez program PolyBase, użyj **[kopiowania etapowego za pomocą programu PolyBase](#staged-copy-by-using-polybase)** są wyposażone w zamian. Funkcja kopiowania przejściowego zapewnia także większą przepływność. Automatycznie konwertuje dane w formacie zgodnym z programu PolyBase. I przechowuje dane w usłudze Azure Blob storage. Następnie ładuje dane do usługi SQL Data Warehouse.
 
 ### <a name="direct-copy-by-using-polybase"></a>Bezpośrednie kopiowania przy użyciu programu PolyBase
 
-Program PolyBase magazynu danych SQL obsługuje bezpośrednio obiektów Blob platformy Azure i usługi Azure Data Lake Store. Używa nazwy głównej usługi jako źródła i ma wymagania format określonego pliku. Jeśli źródło danych spełnia kryteria opisane w tej sekcji, skopiuj bezpośrednio z magazynu danych źródłowych do usługi Azure SQL Data Warehouse przy użyciu technologii PolyBase. W przeciwnym razie użyj [kopiowania etapowego za pomocą programu PolyBase](#staged-copy-by-using-polybase).
+Program PolyBase magazynu danych SQL obsługuje bezpośrednio obiektów Blob platformy Azure, Azure Data Lake Storage Gen1 i Azure Data Lake Storage Gen2. Jeśli źródło danych spełnia kryteria opisane w tej sekcji, skopiuj bezpośrednio z magazynu danych źródłowych do usługi Azure SQL Data Warehouse przy użyciu technologii PolyBase. W przeciwnym razie użyj [kopiowania etapowego za pomocą programu PolyBase](#staged-copy-by-using-polybase).
 
 > [!TIP]
-> Aby skopiować dane wydajnie z Data Lake Store do usługi SQL Data Warehouse, Dowiedz się więcej z [usługi Azure Data Factory umożliwia jeszcze łatwiejsze i wygodne uzyskiwanie szczegółowych informacji z danych, korzystając z programu Data Lake Store z usługą SQL Data Warehouse](https://blogs.msdn.microsoft.com/azuredatalake/2017/04/08/azure-data-factory-makes-it-even-easier-and-convenient-to-uncover-insights-from-data-when-using-data-lake-store-with-sql-data-warehouse/).
+> Aby efektywnie kopiowania danych do usługi SQL Data Warehouse, Dowiedz się więcej z [usługi Azure Data Factory umożliwia jeszcze łatwiejsze i wygodne uzyskiwanie szczegółowych informacji z danych, korzystając z programu Data Lake Store z usługą SQL Data Warehouse](https://blogs.msdn.microsoft.com/azuredatalake/2017/04/08/azure-data-factory-makes-it-even-easier-and-convenient-to-uncover-insights-from-data-when-using-data-lake-store-with-sql-data-warehouse/).
 
 Jeśli nie są spełnione wymagania, usługi Azure Data Factory umożliwia sprawdzenie ustawień i automatycznie powraca do przenoszenia danych przy użyciu mechanizmu BULKINSERT.
 
-1. **Źródła połączoną usługę** typ jest usługi Azure Blob storage (**usłudze Azure blob Storage**/**AzureStorage**) przy użyciu **uwierzytelnianie za pomocą klucza konta**  lub Azure Data Lake Storage Gen1 (**AzureDataLakeStore**) za pomocą **uwierzytelnianie jednostki usługi**.
-2. **Wejściowego zestawu danych** typ jest **AzureBlob** lub **AzureDataLakeStoreFile**. Typ formatu w obszarze `type` właściwości jest **OrcFormat**, **ParquetFormat**, lub **TextFormat**, w następujący sposób:
+1. **Źródła połączoną usługę** z następujących typów i metod uwierzytelniania:
 
-   1. `fileName` nie zawiera filtr z symbolami wieloznacznymi.
+    | Typ magazynu danych obsługiwanego źródła | Obsługiwany typ uwierzytelniania źródła |
+    |:--- |:--- |
+    | [Azure Blob](connector-azure-blob-storage.md) | Uwierzytelnianie za pomocą klucza konta |
+    | [Usługa Azure Data Lake Storage 1. generacji](connector-azure-data-lake-store.md) | Uwierzytelnianie jednostki usługi |
+    | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | Uwierzytelnianie za pomocą klucza konta |
+
+2. **Format zestawu danych źródła** jest **ParquetFormat**, **OrcFormat**, lub **TextFormat**, w następujący sposób:
+
+   1. `folderPath` i `fileName` nie zawierają filtr z symbolami wieloznacznymi.
    2. `rowDelimiter` musi być **\n**.
    3. `nullValue` albo ustawiono **pusty ciąg** ("") lub w lewo jako domyślny, i `treatEmptyAsNull` jest pozostanie domyślnie lub wartość true.
    4. `encodingName` ustawiono **utf-8**, która jest wartością domyślną.
@@ -423,7 +430,7 @@ Jeśli nie są spełnione wymagania, usługi Azure Data Factory umożliwia spraw
 
       ```json
       "typeProperties": {
-        "folderPath": "<blobpath>",
+        "folderPath": "<path>",
         "format": {
             "type": "TextFormat",
             "columnDelimiter": "<any delimiter>",
@@ -431,10 +438,6 @@ Jeśli nie są spełnione wymagania, usługi Azure Data Factory umożliwia spraw
             "nullValue": "",
             "encodingName": "utf-8",
             "firstRowAsHeader": <any>
-        },
-        "compression": {
-            "type": "GZip",
-            "level": "Optimal"
         }
       },
       ```
@@ -564,36 +567,36 @@ Podczas kopiowania danych z lub do usługi Azure SQL Data Warehouse, następują
 | Typ danych w usłudze Azure SQL Data Warehouse | Typ danych tymczasowych fabryki danych |
 |:--- |:--- |
 | bigint | Int64 |
-| dane binarne | Byte[] |
-| Bitowe | Wartość logiczna |
-| Char | Ciąg, Char] |
+| binary | Byte[] |
+| bit | Boolean |
+| char | String, Char[] |
 | date | DateTime |
-| Data/godzina | DateTime |
+| Datetime | DateTime |
 | datetime2 | DateTime |
 | Datetimeoffset | DateTimeOffset |
-| Dziesiętna | Dziesiętna |
-| Atrybut FILESTREAM (varbinary(max)) | Byte[] |
-| Liczba zmiennoprzecinkowa | Podwójne |
+| Decimal | Decimal |
+| FILESTREAM attribute (varbinary(max)) | Byte[] |
+| Float | Double |
 | image | Byte[] |
 | int | Int32 |
-| pieniędzy | Dziesiętna |
-| nchar | Ciąg, Char] |
-| ntext | Ciąg, Char] |
-| Numeryczne | Dziesiętna |
-| nvarchar | Ciąg, Char] |
-| rzeczywiste | Pojedyncze |
-| ROWVERSION | Byte[] |
+| money | Decimal |
+| nchar | String, Char[] |
+| ntext | String, Char[] |
+| Numeryczne | Decimal |
+| nvarchar | String, Char[] |
+| real | Single |
+| rowversion | Byte[] |
 | smalldatetime | DateTime |
 | smallint | Int16 |
-| smallmoney | Dziesiętna |
-| sql_variant | Obiekt |
-| tekst | Ciąg, Char] |
-| time | Przedział czasu |
-| sygnatura czasowa | Byte[] |
-| tinyint | Bajt |
-| uniqueidentifier | Identyfikator GUID |
-| varbinary | Byte[] |
-| varchar | Ciąg, Char] |
+| smallmoney | Decimal |
+| sql_variant | Object |
+| tekst | String, Char[] |
+| time | TimeSpan |
+| timestamp | Byte[] |
+| tinyint | Byte |
+| uniqueidentifier | Guid |
+| Varbinary | Byte[] |
+| varchar | String, Char[] |
 | xml | Xml |
 
 ## <a name="next-steps"></a>Kolejne kroki

@@ -1,76 +1,109 @@
 ---
 title: Usługa Azure Cosmos DB zasady indeksowania
-description: Dowiedz się, jak działa indeksowanie w usłudze Azure Cosmos DB. Dowiedz się, jak skonfigurować i zmienić zasady indeksowania do automatycznego indeksowania i większą wydajność.
-author: rimman
+description: Dowiedz się, jak skonfigurować i zmienić ustawienie domyślne zasady dla automatycznego indeksowania i większą wydajność w usłudze Azure Cosmos DB indeksowania.
+author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.author: rimman
-ms.openlocfilehash: 6998db1679e67f8ac4bf7c81ea9373c66a9618ee
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: thweiss
+ms.openlocfilehash: 67bc3076be91ade140b39b7dd8037299902546a9
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59278568"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60005098"
 ---
-# <a name="index-policy-in-azure-cosmos-db"></a>Indeks zasadach w usłudze Azure Cosmos DB
+# <a name="indexing-policies-in-azure-cosmos-db"></a>Zasady indeksowania w usłudze Azure Cosmos DB
 
-Można zastąpić domyślnych zasad indeksowania w kontenerze usługi Azure Cosmos, konfigurując następujące parametry:
+W usłudze Azure Cosmos DB każdy kontener ma zasady indeksowania, który określa, jak powinno być indeksowane elementy kontenera. Domyślnych zasad indeksowania dla nowo utworzony indeksy kontenery dla każdej właściwości każdego elementu, wymuszanie zakresem indeksów dla dowolnego ciągu lub liczby, i Indeksy przestrzenne dla dowolnego obiektu GeoJSON wpisz punkt. Dzięki temu można uzyskać wysoką wydajność zapytań bez myśleć o indeksowania i zarządzania indeksami ponoszonych z góry kosztów.
 
-* **Dołącz lub Wyklucz z indeksu elementów i ścieżek**: Można wyłączyć lub włączyć określonych elementów do indeksu, gdy wstawiasz lub zastąpienie elementów w kontenerze. Można również Dołącz lub Wyklucz określone ścieżki/właściwości mają być indeksowane w kontenerach. Ścieżki mogą obejmować wzorców symboli wieloznacznych, na przykład *.
+W niektórych sytuacjach można zmienić to zachowanie automatyczne do własnych wymagań. Można dostosować zasady indeksowania kontenera, ustawiając jego *indeksowania tryb*i Dołącz lub Wyklucz *ścieżki właściwości*.
 
-* **Konfiguruj typy indeksu**: Ponadto do zakresu ścieżki zindeksowane, można dodać inne typy indeksów, takich jak przestrzennych.
+## <a name="indexing-mode"></a>Tryb indeksowania
 
-* **Konfigurowanie trybów indeksu**: Za pomocą zasad indeksowania w kontenerze, można skonfigurować różne tryby indeksowania takich jak *spójność* lub *Brak*.
+Usługa Azure Cosmos DB obsługuje dwa tryby indeksowania:
 
-## <a name="indexing-modes"></a>Tryby indeksowania
+- **Spójne**: Jeśli zasady indeksowania kontenera jest ustawiony na spójność, indeks jest aktualizowany synchronicznie, jak tworzenie, aktualizowanie lub usuwanie elementów. Oznacza to, że spójność odczytu zapytań będzie [spójności skonfigurowany dla konta](consistency-levels.md).
 
-Usługa Azure Cosmos DB obsługuje dwa tryby indeksowania, które można skonfigurować w kontenerze usługi Azure Cosmos za pośrednictwem zasad indeksowania:
+- **Brak**: Jeśli zasady indeksowania kontenera jest ustawiona na wartość None, indeksowanie jest efektywnie wyłączona w danym kontenerze. Jest to często używane, gdy kontener jest używana jako czysty parach klucz wartość bez konieczności indeksów pomocniczych. Może również pomóc, przyspieszanie zbiorcze operacje wstawiania.
 
-* **Spójne**: Jeśli ustawiono zasady kontenera usługi Azure Cosmos *spójność*, kwerend w określonym kontenerze postępuj zgodnie z tego samego poziomu spójności, jak określony dla operacji odczytu punktu (na przykład silne, powiązana nieaktualność, "session" lub ostateczna). 
+## <a name="including-and-excluding-property-paths"></a>Uwzględnianie i wykluczanie właściwości ścieżki
 
-  Indeks jest aktualizowana synchronicznie, w przypadku aktualizowania elementów. Na przykład insert, replace, aktualizacji i operacje usuwania elementu spowoduje aktualizacji indeksu. Spójne indeksowania obsługuje spójne zapytania kosztem wpływ na przepływność zapisu. Zmniejszenie przepływność zapisu jest zależna od "ścieżki uwzględnione w indeksie" i "poziom spójności". Spójne tryb indeksowania została zaprojektowana do aktualnych indeksu wszystkie aktualizacje i natychmiast obsługi zapytań.
+Niestandardowe zasady indeksowania można określić ścieżki właściwości, które są jawnie dołączone lub wykluczone z indeksowania. Optymalizując liczba ścieżek, które są indeksowane, można zmniejszyć ilość miejsca używanego przez kontener i zmniejszaj opóźnienia operacji zapisu. Te ścieżki są zdefiniowane następujące [metody opisanej w sekcji Przegląd indeksowania](index-overview.md#from-trees-to-property-paths) z następującymi dodatkami:
 
-* **Brak**: Kontener, który nie ma żadnego indeksu trybie nie ma indeksu skojarzonych z nim. Jest to często używane, jeśli bazy danych Azure Cosmos jest używany jako magazyn kluczy i wartości, a elementy są dostępne tylko dla ich właściwości Identyfikatora.
+- Ścieżka prowadząca do wartość skalarną (ciąg lub liczba) kończy się ciągiem `/?`
+- elementy tablicy są adresowane ze sobą za pośrednictwem `/[]` notacji (zamiast `/0`, `/1` itp.)
+- `/*` symbol wieloznaczny może służyć do dopasowania wszelkie elementy poniżej węzła
 
-  > [!NOTE]
-  > Konfigurowanie trybu indeksowania, jako *Brak* powoduje porzucenie wszelkie istniejące indeksy po stronie. Tej opcji należy używać czy Twoich wzorców dostępu wymagają Identyfikatora buduje łącze własne tylko.
+W powyższym przykładzie ten sam ponownie:
 
-Poziomy spójności zapytania są obsługiwane podobne do regularnych operacji odczytu. Bazy danych Cosmos Azure zwraca błąd, jeśli zapytanie jest kontenerem, który ma *Brak* tryb indeksowania. Można wykonać zapytania jako skanowania za pomocą jawnego **x-ms-bazy danych documentdb — enable skanowania** nagłówka w interfejsie API REST lub **EnableScanInQuery** zażądać opcja przy użyciu zestawu .NET SDK. Niektóre zapytania funkcji, jak w klauzuli ORDER BY nie są obecnie obsługiwane za pomocą **EnableScanInQuery**, ponieważ są one wymagane w odpowiedni indeks.
+    {
+        "locations": [
+            { "country": "Germany", "city": "Berlin" },
+            { "country": "France", "city": "Paris" }
+        ],
+        "headquarters": { "country": "Belgium", "employees": 250 }
+        "exports": [
+            { "city": "Moscow" },
+            { "city": "Athens" }
+        ]
+    }
+
+- `headquarters`firmy `employees` ścieżka `/headquarters/employees/?`
+- `locations`" `country` ścieżka `/locations/[]/country/?`
+- Ścieżka do niczego w obszarze `headquarters` jest `/headquarters/*`
+
+Gdy ścieżka jest jawnie uwzględniony w zasady indeksowania, ma również określenie, jakie typy indeksu powinny być stosowane do tej ścieżki, jak i dla każdego typu indeksu, typ danych, ten indeks ma zastosowanie do:
+
+| Typ indeksu | Dozwolone typy danych elementów docelowych |
+| --- | --- |
+| Zakres | Ciąg lub liczba |
+| Przestrzenne | Punkt, LineString lub wielokąta |
+
+Na przykład firma Microsoft może obejmować `/headquarters/employees/?` ścieżki i określić, że `Range` indeksu powinny być stosowane w tej ścieżce dla obu `String` i `Number` wartości.
+
+### <a name="includeexclude-strategy"></a>Uwzględnianie/wykluczanie strategii
+
+Wszystkie zasady indeksowania musi zawierać ścieżkę katalogu głównego `/*` jako dołączone lub wykluczone ścieżki.
+
+- Podaj ścieżkę katalogu głównego selektywnie wykluczyć ścieżek, które nie muszą być indeksowane. Jest to zalecane podejście, ponieważ umożliwia ona aktywnie indeksu nowej właściwości, które mogą zostać dodane do modelu usługi Azure Cosmos DB.
+- Wyklucz ścieżka katalogu głównego, aby uwzględnić ścieżki, które muszą zostać pomyślnie zindeksowane.
+
+Zobacz [w tej sekcji](how-to-manage-indexing-policy.md#indexing-policy-examples) Przykłady zasad indeksowania.
 
 ## <a name="modifying-the-indexing-policy"></a>Modyfikowanie zasad indeksowania
 
-W usłudze Azure Cosmos DB można zaktualizować zasad indeksowania kontenera, w dowolnym momencie. Zmiana zasad indeksowania w kontenerze usługi Azure Cosmos może prowadzić do zmian w kształcie indeksu. Ta zmiana ma wpływ na ścieżki, które mogą być indeksowane i ich dokładności modelu spójności samego indeksu. Zmiana zasad indeksowania skutecznie wymaga transformacji starego indeksu do nowego indeksu.
+W dowolnym momencie można zaktualizować zasad indeksowania kontenera [przy użyciu witryny Azure portal lub jednego z obsługiwanych zestawów SDK](how-to-manage-indexing-policy.md). Aktualizacja zasad indeksowania wyzwala transformacji z indeksu starej na nową jest wykonywane online, a w miejscu (aby nie dodatkowego miejsca do magazynowania jest używany podczas operacji). Indeks stare zasady efektywnie jest przekształcana do nowych zasad bez wywierania wpływu na dostępność zapisu lub przepływnością aprowizowaną dla kontenera. Przekształcenie indeksu jest operacją asynchroniczną, a czas potrzebny do ukończenia zależy od aprowizowanej przepływności, liczby elementów i ich rozmiaru. 
 
-### <a name="index-transformations"></a>Przekształcenia indeksu
+> [!NOTE]
+> Podczas ponownego indeksowania, jest w toku, zapytania mogą nie zwracać pasujących wyników i zrobi to bez zwracania błędów. Oznacza to, że wyniki zapytania może nie być spójna ukończenie przekształcania indeksu. Istnieje możliwość śledzić postęp przekształcania indeksu [przy użyciu jednego z zestawów SDK](how-to-manage-indexing-policy.md).
 
-Wszystkie przekształcenia indeksu są wykonywane w trybie online. Elementy indeksowane zgodnie z zasadami stare wydajne są przekształcane na nowe zasady bez wywierania wpływu na dostępność zapisu lub przepływnością aprowizowaną dla kontenera. Spójność odczytu i zapisu, operacje, które są wykonywane za pomocą interfejsu API REST zestawów SDK, lub przy użyciu procedur składowanych i wyzwalaczy nie występuje podczas przekształcania indeksu.
+Jeśli nowe zasady indeksowania tryb jest ustawiony na spójność, nie inne zmiany zasad indeksowania mogą być stosowane w trakcie przekształcenia indeksu. Uruchamianie transformację indeksu można anulować, ustawiając zasady indeksowania tryb Brak (co natychmiast będzie się zmniejszać indeks).
 
-Zmiana zasad indeksowania jest operacja asynchroniczna, a czas wymagany do ukończenia operacji zależy od liczby elementów, aprowizowanej przepływności i rozmiaru elementów. Podczas ponownego indeksowania, jest w toku, zapytanie może nie zwrócić wszystkich zgodnych wyników, jeśli użyć indeksu, która jest modyfikowana zapytań i zapytania nie będzie zwracać wszystkie błędy/błędy. Podczas ponownego indeksowania, jest w toku, zapytania są ostatecznie spójne bez względu na konfigurację trybu indeksowania. Po indeksie przekształcenie zostało zakończone, możesz będą nadal widzieć spójne wyniki. Dotyczy to zapytań, wystawiony przez interfejsów, takich jak interfejs API REST, zestawy SDK, lub procedury składowane i wyzwalacze. Przekształcenie indeksu jest wykonywana asynchronicznie, w tle repliki przy użyciu wolnym zasoby, które są dostępne dla replik określonych.
+## <a name="indexing-policies-and-ttl"></a>Zasady indeksowania i czas wygaśnięcia
 
-Wszystkie przekształcenia indeksu są wprowadzane w miejscu. Usługa Azure Cosmos DB nie przechowuje dwie kopie indeksu. Więc nie dodatkowe miejsce na dysku jest wymagane lub spożywane na kontenerów, gdy występuje przekształcania indeksu.
+[Czas wygaśnięcia (TTL) funkcja](time-to-live.md) wymaga indeksowanie będzie aktywny w kontenerze jest włączona. Oznacza to, że:
 
-Po zmianie zasad indeksowania zmiany są stosowane, aby przejść od starego indeksu do nowego indeksu i zależą przede wszystkim indeksowania konfiguracji trybu. Indeksowanie konfiguracji trybu odtwarzać główną rolę w porównaniu do innych właściwości, takich jak ścieżki uwzględniony/wykluczony, rodzaje indeksu i dokładność.
+- nie jest możliwe aktywować TTL w kontenerze, w których tryb indeksowania ma wartość None,
+- nie jest możliwe ustawić tryb indeksowania None w kontenerze, w których czas wygaśnięcia jest aktywowana.
 
-Jeśli zarówno stare i nowe zasady indeksowania **spójność** indeksowania, bazy danych Azure Cosmos wykonuje przekształcenie indeksu w trybie online. Nie można zastosować inny zmiany zasad indeksowania, z trybem spójne indeksowania w trakcie przekształcenia. Podczas przenoszenia na brak indeksowania w trybie indeksu zostało porzucone od razu. Przenoszenie na brak jest przydatne w przypadku, gdy chcesz anulować przekształcania w toku i zacznij od różnych zasad indeksowania.
+W scenariuszach, gdzie ma właściwość ścieżki musi zostać pomyślnie zindeksowane, ale wymagane jest czas wygaśnięcia można użyć zasad indeksowania, przy użyciu:
 
-## <a name="modifying-the-indexing-policy---examples"></a>Modyfikowanie zasad indeksowania — przykłady
+- Tryb indeksowania, ustawiony na spójność, oraz
+- Brak dołączone ścieżki i
+- `/*` jako tylko wykluczone ścieżki.
 
-Poniżej przedstawiono najbardziej typowe przypadki użycia, jeśli chcesz zaktualizować zasady indeksowania:
+## <a name="obsolete-attributes"></a>Przestarzałe atrybutów
 
-* Jeśli chcesz mieć spójne wyniki podczas normalnego działania, ale wracać do **Brak** indeksowania tryb podczas importu danych zbiorczego.
+Podczas pracy z zasady indeksowania, mogą wystąpić następujące atrybuty, które obecnie są przestarzałe:
 
-* Jeśli chcesz rozpocząć korzystanie z funkcji indeksowania w bieżącym kontenerów usługi Azure Cosmos. Na przykład można użyć zapytania geoprzestrzenne, które wymaga indeksu przestrzennego rodzaj lub ORDER BY / ciąg kwerendy zakresu, wymagających rodzaj indeks zakresu ciągu.
-
-* Jeśli chcesz ręcznie wybierz właściwości, które mają być indeksowane, a następnie zmianę ich wraz z upływem czasu, aby dopasować się do Twoich obciążeń.
-
-* Jeśli chcesz dostosować indeksowania dokładności, aby poprawić wydajność zapytań, albo w celu zmniejszenia użytego miejsca do magazynowania.
+- `automatic` wartość logiczna zdefiniowano w katalogu głównym zasad indeksowania. Teraz jest ignorowany i może być równa `true`, gdy narzędzie używasz go wymaga.
+- `precision` jest liczbą zdefiniowany na poziomie indeksu dla dołączone ścieżki. Teraz jest ignorowany i może być równa `-1`, gdy narzędzie używasz go wymaga.
+- `hash` jest rodzajem indeksu, która została zastąpiona rodzaj zakresu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 Więcej informacji na temat indeksowania znajdziesz w następujących artykułach:
 
-* [Indeksowanie — omówienie](index-overview.md)
-* [Typy indeksów](index-types.md)
-* [Ścieżki indeksów](index-paths.md)
-* [Jak zarządzać zasad indeksowania](how-to-manage-indexing-policy.md)
+- [Omówienie indeksowania](index-overview.md)
+- [Jak zarządzać zasad indeksowania](how-to-manage-indexing-policy.md)

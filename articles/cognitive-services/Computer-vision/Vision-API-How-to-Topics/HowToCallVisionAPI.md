@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 03/21/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: e6ebd4ff465565be49d98162cd9ca67c194593a4
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
-ms.translationtype: MT
+ms.openlocfilehash: 0e2767660edf2a9dbcb8617b07a6b9f71fedb743
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59563374"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011247"
 ---
 # <a name="example-how-to-call-the-computer-vision-api"></a>Przykład: jak wywoływać interfejs API przetwarzania obrazów
 
@@ -47,8 +47,7 @@ Funkcje zostały podzielone na:
 
 Każde wywołanie do interfejsu API przetwarzania obrazów wymaga klucza subskrypcji. Ten klucz musi zostać albo przekazany przez parametr ciągu zapytania, albo określony w nagłówku żądania.
 
-Aby uzyskać klucz subskrypcji, zobacz temat [How to obtain subscription keys](../Vision-API-How-to-Topics/HowToSubscribe.md
-) (Jak uzyskać klucze subskrypcji).
+Aby uzyskać klucz bezpłatnej wersji próbnej, zobacz [spróbuj usług Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Lub, postępuj zgodnie z instrukcjami w [Tworzenie konta usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) subskrybować przetwarzania obrazów, i Uzyskaj klucz.
 
 1. Przekazywanie klucza subskrypcji za pomocą ciągu zapytania, poniżej przedstawiono przykład dotyczący interfejsu API przetwarzania obrazów:
 

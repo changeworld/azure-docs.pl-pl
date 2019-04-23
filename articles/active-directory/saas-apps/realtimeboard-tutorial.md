@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: fb7302497d4331a9e39c8a3c50393646b663f7d8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 81aa38c1c7783c7e0357f8f69f4d4484d26873e9
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59283141"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006957"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-realtimeboard"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą RealtimeBoard
 
@@ -131,7 +131,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z RealtimeBoard, wyko
 
 ### <a name="configure-realtimeboard-single-sign-on"></a>Konfigurowanie RealtimeBoard logowanie jednokrotne
 
-Aby skonfigurować logowanie jednokrotne na **RealtimeBoard** stronie, musisz wysłać pobrany **XML metadanych Federacji** i odpowiednie skopiowany adresy URL z portalu Azure w celu [RealtimeBoard pomocy technicznej zespół](). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
+Aby skonfigurować logowanie jednokrotne na **RealtimeBoard** stronie, musisz wysłać pobrany **XML metadanych Federacji** i odpowiednie skopiowany adresy URL z witryny Azure portal do zespołu pomocy technicznej RealtimeBoard. Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 

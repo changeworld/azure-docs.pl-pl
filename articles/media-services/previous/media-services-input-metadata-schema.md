@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: cdca2823962c442c9142fa439795269f419aa489
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
-ms.translationtype: MT
+ms.openlocfilehash: fa4487b07f130947ac5da2a5dbae6776b06acbe7
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189686"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009906"
 ---
 # <a name="input-metadata"></a>Metadane wejściowe 
 
@@ -50,12 +50,12 @@ Zobacz przykład XML na końcu tego artykułu: [XML — przykład](media-service
 ### <a name="attributes"></a>Atrybuty
 | Name (Nazwa) | Typ | Opis |
 | --- | --- | --- |
-| **Nazwa**<br /><br /> Wymagane |**xs:String** |Nazwa pliku zasobu. |
-| **Rozmiar**<br /><br /> Wymagane |**xs:Long** |Rozmiar pliku elementu zawartości, w bajtach. |
-| **Czas trwania**<br /><br /> Wymagane |**DURATION** |Czas trwania wstecz odtwarzania zawartości. Przykład: Duration="PT25M37.757S". |
-| **NumberOfStreams**<br /><br /> Wymagane |**xs:int** |Liczba strumieni w pliku elementu zawartości. |
-| **FormatNames**<br /><br /> Wymagane |**xs: ciąg** |Format nazwy. |
-| **FormatVerboseNames**<br /><br /> Wymagane |**xs: ciąg** |Pełne nazwy formatu. |
+| **Nazwa**<br /><br /> Wymagany |**xs:String** |Nazwa pliku zasobu. |
+| **Rozmiar**<br /><br /> Wymagany |**xs:Long** |Rozmiar pliku elementu zawartości, w bajtach. |
+| **Czas trwania**<br /><br /> Wymagany |**DURATION** |Czas trwania wstecz odtwarzania zawartości. Przykład: Duration="PT25M37.757S". |
+| **NumberOfStreams**<br /><br /> Wymagany |**xs:int** |Liczba strumieni w pliku elementu zawartości. |
+| **FormatNames**<br /><br /> Wymagany |**xs: ciąg** |Format nazwy. |
+| **FormatVerboseNames**<br /><br /> Wymagany |**xs: ciąg** |Pełne nazwy formatu. |
 | **Godzina rozpoczęcia** |**DURATION** |Godzina rozpoczęcia zawartości. Przykład: StartTime="PT2.669S". |
 | **OverallBitRate** |**xs: int** |Średnia szybkość transmisji bitów pliku zasobów w KB/s. |
 
@@ -78,10 +78,10 @@ Zobacz przykład XML na końcu tego artykułu: [XML — przykład](media-service
 ### <a name="attributes"></a>Atrybuty
 | Name (Nazwa) | Typ | Opis |
 | --- | --- | --- |
-| **Identyfikator**<br /><br /> Wymagane |**xs:int** |Liczony od zera indeks tej ścieżki audio lub wideo.<br /><br /> To nie jest koniecznie że TrackID jako używane w pliku MP4. |
+| **Identyfikator**<br /><br /> Wymagany |**xs:int** |Liczony od zera indeks tej ścieżki audio lub wideo.<br /><br /> To nie jest koniecznie że TrackID jako używane w pliku MP4. |
 | **Koder-dekoder** |**xs:String** |Parametry kodera-dekodera wideo śledzenie. |
 | **CodecLongName** |**xs: ciąg** |Koder długa nazwa ścieżki audio lub wideo. |
-| **TimeBase**<br /><br /> Wymagane |**xs:String** |Podstawa czasu. Przykład: TimeBase="1/48000" |
+| **TimeBase**<br /><br /> Wymagany |**xs:String** |Podstawa czasu. Przykład: TimeBase="1/48000" |
 | **NumberOfFrames** |**xs:int** |Liczba ramek (stosowany w przypadku ścieżek wideo). |
 | **Godzina rozpoczęcia** |**xs: czas trwania** |Godzina rozpoczęcia śledzenia. Przykład: StartTime="PT2.669S" |
 | **Czas trwania** |**DURATION** |Śledzenie czasu trwania. Przykład: Duration="PTSampleFormat M37.757S". |
@@ -109,8 +109,8 @@ Zobacz przykład XML na końcu tego artykułu: [XML — przykład](media-service
 | --- | --- | --- |
 | **SampleFormat** |**xs:String** |Przykładowy format. |
 | **ChannelLayout** |**xs: ciąg** |Układ kanału. |
-| **Channels**<br /><br /> Wymagane |**xs:int** |Liczba (0 lub więcej) audio kanałów. |
-| **SamplingRate**<br /><br /> Wymagane |**xs:int** |Częstotliwość próbkowania audio w prób. / s lub Hz. |
+| **Channels**<br /><br /> Wymagany |**xs:int** |Liczba (0 lub więcej) audio kanałów. |
+| **SamplingRate**<br /><br /> Wymagany |**xs:int** |Częstotliwość próbkowania audio w prób. / s lub Hz. |
 | **Szybkość transmisji bitów** |**xs:int** |Średnia audio szybkość transmisji bitów w bitach na sekundę obliczone z pliku zasobów. Tylko ładunek strumienia podstawowych są traktowane, a obciążenie pakowania jest niedostępna w tej liczby. |
 | **BitsPerSample** |**xs:int** |Bity na przykład wFormatTag format typu. |
 
@@ -124,18 +124,18 @@ Zobacz przykład XML na końcu tego artykułu: [XML — przykład](media-service
 ### <a name="attributes"></a>Atrybuty
 | Name (Nazwa) | Typ | Opis |
 | --- | --- | --- |
-| **FourCC**<br /><br /> Wymagane |**xs:String** |Kodera-dekodera wideo FourCC kodu. |
+| **FourCC**<br /><br /> Wymagany |**xs:String** |Kodera-dekodera wideo FourCC kodu. |
 | **Profil** |**xs: ciąg** |Profil ścieżki wideo. |
 | **Poziom** |**xs: ciąg** |Poziom śledzenia wideo. |
 | **Element pixelFormat** |**xs: ciąg** |Format pikseli Ścieżka wideo. |
-| **Szerokość**<br /><br /> Wymagane |**xs:int** |Kodowany w formacie wideo szerokość w pikselach. |
-| **Wysokość**<br /><br /> Wymagane |**xs:int** |Kodowany w formacie wideo wysokość w pikselach. |
-| **DisplayAspectRatioNumerator**<br /><br /> Wymagane |**xs: double** |Licznik współczynnik proporcji ekranu wideo. |
-| **DisplayAspectRatioDenominator**<br /><br /> Wymagane |**xs:double** |Denominator współczynnik proporcji ekranu wideo. |
-| **DisplayAspectRatioDenominator**<br /><br /> Wymagane |**xs: double** |Licznik współczynnik proporcji próbki wideo. |
+| **Szerokość**<br /><br /> Wymagany |**xs:int** |Kodowany w formacie wideo szerokość w pikselach. |
+| **Wysokość**<br /><br /> Wymagany |**xs:int** |Kodowany w formacie wideo wysokość w pikselach. |
+| **DisplayAspectRatioNumerator**<br /><br /> Wymagany |**xs: double** |Licznik współczynnik proporcji ekranu wideo. |
+| **DisplayAspectRatioDenominator**<br /><br /> Wymagany |**xs:double** |Denominator współczynnik proporcji ekranu wideo. |
+| **DisplayAspectRatioDenominator**<br /><br /> Wymagany |**xs: double** |Licznik współczynnik proporcji próbki wideo. |
 | **SampleAspectRatioNumerator** |**xs: double** |Licznik współczynnik proporcji próbki wideo. |
 | **SampleAspectRatioNumerator** |**xs:double** |Denominator współczynnik proporcji próbki wideo. |
-| **Szybkość klatek**<br /><br /> Wymagane |**xs:decimal** |Mierzone szybkość odtwarzania wideo w formacie .3f. |
+| **Szybkość klatek**<br /><br /> Wymagany |**xs:decimal** |Mierzone szybkość odtwarzania wideo w formacie .3f. |
 | **Szybkość transmisji bitów** |**xs:int** |Średnia wideo szybkość transmisji bitów w kilobitów na sekundę obliczone z pliku zasobów. Tylko ładunek strumienia podstawowych są traktowane, a obciążenie pakietu nie jest dołączony. |
 | **MaxGOPBitrate** |**xs: int** |Maksymalna liczba GOP średnia szybkość transmisji bitów dla tej ścieżki wideo w kilobitów na sekundę. |
 | **HasBFrames** |**xs:int** |Ścieżka wideo liczba ramek B. |
@@ -148,8 +148,8 @@ Zobacz przykład XML na końcu tego artykułu: [XML — przykład](media-service
 ### <a name="attributes"></a>Atrybuty
 | Name (Nazwa) | Typ | Opis |
 | --- | --- | --- |
-| **Klucz**<br /><br /> Wymagane |**xs:String** |Klucz w pary klucz/wartość. |
-| **value**<br /><br /> Wymagane |**xs:String** |Wartość w pary klucz/wartość. |
+| **Klucz**<br /><br /> Wymagany |**xs:String** |Klucz w pary klucz/wartość. |
+| **value**<br /><br /> Wymagany |**xs:String** |Wartość w pary klucz/wartość. |
 
 ## <a name="ProgramType"></a> ProgramType
 **ProgramType** jest globalne typ złożony, który zawiera opis programu.  
@@ -157,10 +157,10 @@ Zobacz przykład XML na końcu tego artykułu: [XML — przykład](media-service
 ### <a name="attributes"></a>Atrybuty
 | Name (Nazwa) | Typ | Opis |
 | --- | --- | --- |
-| **ProgramId**<br /><br /> Wymagane |**xs:int** |Identyfikator programu |
-| **NumberOfPrograms**<br /><br /> Wymagane |**xs:int** |Liczba programów. |
-| **PmtPid**<br /><br /> Wymagane |**xs:int** |Program Map tabele (PMTs) zawierają informacje na temat programów.  Aby uzyskać więcej informacji, zobacz [PMt](https://en.wikipedia.org/wiki/MPEG_transport_stream#PMT). |
-| **PcrPid**<br /><br /> Wymagane |**xs: int** |Używane przez dekoder. Aby uzyskać więcej informacji, zobacz [PCR](https://en.wikipedia.org/wiki/MPEG_transport_stream#PCR) |
+| **ProgramId**<br /><br /> Wymagany |**xs:int** |Identyfikator programu |
+| **NumberOfPrograms**<br /><br /> Wymagany |**xs:int** |Liczba programów. |
+| **PmtPid**<br /><br /> Wymagany |**xs:int** |Program Map tabele (PMTs) zawierają informacje na temat programów.  Aby uzyskać więcej informacji, zobacz [PMt](https://en.wikipedia.org/wiki/MPEG_transport_stream#PMT). |
+| **PcrPid**<br /><br /> Wymagany |**xs: int** |Używane przez dekoder. Aby uzyskać więcej informacji, zobacz [PCR](https://en.wikipedia.org/wiki/MPEG_transport_stream#PCR) |
 | **StartPTS** |**xs: long** |Sygnatura czasowa rozpoczęcia prezentacji. |
 | **EndPTS** |**xs: long** |Końcowa sygnatura czasowa prezentacji. |
 
@@ -172,17 +172,17 @@ Zobacz przykład XML na końcu tego artykułu: [XML — przykład](media-service
 ### <a name="attributes"></a>Atrybuty
 | Name (Nazwa) | Typ | Opis |
 | --- | --- | --- |
-| **Domyślne**<br /><br /> Wymagane |**xs: int** |Ten atrybut jest ustawiony na 1, aby wskazać, że jest to domyślny prezentacji. |
-| **Dub**<br /><br /> Wymagane |**xs:int** |Ten atrybut jest ustawiony na 1, aby wskazać, że jest to uaktywniane prezentacji. |
-| **Oryginał**<br /><br /> Wymagane |**xs: int** |Ten atrybut jest ustawiony na 1, aby wskazać, że jest to prezentacji. |
-| **Komentarz**<br /><br /> Wymagane |**xs:int** |Ten atrybut jest ustawiony na 1, aby wskazać, że ta ścieżka zawiera komentarz. |
-| **Teksty**<br /><br /> Wymagane |**xs:int** |Ten atrybut jest ustawiony na 1, aby wskazać, że ta ścieżka zawiera tekst. |
-| **Karaoke**<br /><br /> Wymagane |**xs:int** |Ten atrybut jest ustawiony na 1, aby wskazać, że stanowi to śledzenie biegam (muzyki w tle, nie vocals). |
-| **Wymuszone**<br /><br /> Wymagane |**xs:int** |Ten atrybut jest ustawiony na 1, aby wskazać, że jest to wymuszone prezentacji. |
-| **HearingImpaired**<br /><br /> Wymagane |**xs:int** |Ten atrybut jest ustawiony na 1, aby wskazać, że ta ścieżka jest wysłuchanie naruszone. |
-| **VisualImpaired**<br /><br /> Wymagane |**xs:int** |Ten atrybut jest ustawiony na 1, aby wskazać, że ta ścieżka jest niedowidzących. |
-| **CleanEffects**<br /><br /> Wymagane |**xs: int** |Ten atrybut jest ustawiony na 1, aby wskazać, że ta ścieżka ma skutki czyste. |
-| **AttachedPic**<br /><br /> Wymagane |**xs: int** |Ten atrybut jest ustawiony na 1, aby wskazać, że ta ścieżka ma obrazów. |
+| **Domyślne**<br /><br /> Wymagany |**xs: int** |Ten atrybut jest ustawiony na 1, aby wskazać, że jest to domyślny prezentacji. |
+| **Dub**<br /><br /> Wymagany |**xs:int** |Ten atrybut jest ustawiony na 1, aby wskazać, że jest to uaktywniane prezentacji. |
+| **Oryginał**<br /><br /> Wymagany |**xs: int** |Ten atrybut jest ustawiony na 1, aby wskazać, że jest to prezentacji. |
+| **Komentarz**<br /><br /> Wymagany |**xs:int** |Ten atrybut jest ustawiony na 1, aby wskazać, że ta ścieżka zawiera komentarz. |
+| **Teksty**<br /><br /> Wymagany |**xs:int** |Ten atrybut jest ustawiony na 1, aby wskazać, że ta ścieżka zawiera tekst. |
+| **Karaoke**<br /><br /> Wymagany |**xs:int** |Ten atrybut jest ustawiony na 1, aby wskazać, że stanowi to śledzenie biegam (muzyki w tle, nie vocals). |
+| **Wymuszone**<br /><br /> Wymagany |**xs:int** |Ten atrybut jest ustawiony na 1, aby wskazać, że jest to wymuszone prezentacji. |
+| **HearingImpaired**<br /><br /> Wymagany |**xs:int** |Ten atrybut jest ustawiony na 1, aby wskazać, że ta ścieżka jest dla osób, które są niedosłyszących. |
+| **VisualImpaired**<br /><br /> Wymagany |**xs:int** |Ten atrybut jest ustawiony na 1, aby wskazać, że ta ścieżka jest niedowidzących. |
+| **CleanEffects**<br /><br /> Wymagany |**xs: int** |Ten atrybut jest ustawiony na 1, aby wskazać, że ta ścieżka ma skutki czyste. |
+| **AttachedPic**<br /><br /> Wymagany |**xs: int** |Ten atrybut jest ustawiony na 1, aby wskazać, że ta ścieżka ma obrazów. |
 
 ## <a name="Programs"></a> Element programy
 Element otoki zawierający wiele **Program** elementów.  

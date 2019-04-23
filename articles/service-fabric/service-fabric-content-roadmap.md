@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: atsenthi
-ms.openlocfilehash: adbe101455bc200bc6be439920736b756f08b695
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
-ms.translationtype: MT
+ms.openlocfilehash: dfe08152f986ccac3dabe7b3bb21e7653ee812a4
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667994"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011184"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Dlatego potrzebujesz więcej informacji na temat usługi Service Fabric?
 Usługa Azure Service Fabric to platforma systemów rozproszonych ułatwiająca pakowanie i wdrażanie skalowalnych i niezawodnych mikrousług oraz zarządzanie nimi.  Usługa Service Fabric ma dużej powierzchni, jednak i jest dużo, aby dowiedzieć się więcej.  Ten artykuł zawiera streszczenie usługi Service Fabric i w tym artykule opisano podstawowe pojęcia programowania modeli i cyklem życia aplikacji, testowania, klastrów i monitorowanie kondycji. Odczyt [Przegląd](service-fabric-overview.md) i [co to są mikrousługi?](service-fabric-overview-microservices.md) wprowadzenie i jak usługi Service Fabric można utworzyć mikrousługi. Ten artykuł nie zawiera pełną listę zawartości, ale łącze do omówienie i wprowadzenie wprowadzenie artykułów dla każdego obszaru usługi Service Fabric. 
@@ -165,7 +165,7 @@ Raportowanie może odbywać się od:
 * Wewnętrzny watchdogs uruchomienia w węzłach usługi Service Fabric, które nie są zaimplementowane jako usługi Service Fabric.
 * Watchdogs zewnętrznych, które sondowania zasób z poza klastrem usługi Service Fabric (na przykład Usługa monitorowania takich jak Gomez).
 
-Natychmiast po składniki usługi Service Fabric raportować kondycję na wszystkich jednostek w klastrze. [Raportów o kondycji systemu](service-fabric-understand-and-troubleshoot-with-system-health-reports.md) zapewniają widoczność klastrami i aplikacjami problemy oraz flagę funkcji, za pośrednictwem kondycji. Dla aplikacji i usług raportami kondycji systemu sprawdź, czy jednostki są implementowane i czy działa prawidłowo z punktu widzenia środowiska uruchomieniowego usługi Service Fabric. Raporty nie Podaj wszelkie monitorowanie kondycji logikę biznesową, usługi lub wykrywania zawieszone procesy. Aby dodać określone informacje o kondycji do usługi Logic Apps, [implementacji, raportowanie stanu niestandardowe](service-fabric-report-health.md) w usługach.
+Natychmiast po składniki usługi Service Fabric raportować kondycję na wszystkich jednostek w klastrze. [Raportów o kondycji systemu](service-fabric-understand-and-troubleshoot-with-system-health-reports.md) zapewniają widoczność klastrami i aplikacjami problemy oraz flagę funkcji, za pośrednictwem kondycji. Dla aplikacji i usług raportami kondycji systemu sprawdź, czy jednostki są implementowane i czy działa prawidłowo z punktu widzenia środowiska uruchomieniowego usługi Service Fabric. Raporty nie Podaj wszelkie monitorowanie kondycji logikę biznesową, usługi lub wykrywania procesów, które przestały odpowiadać. Aby dodać określone informacje o kondycji do usługi Logic Apps, [implementacji, raportowanie stanu niestandardowe](service-fabric-report-health.md) w usługach.
 
 Usługa Service Fabric udostępnia wiele sposobów, aby [wyświetlanie raportów o kondycji](service-fabric-view-entities-aggregated-health.md) agregowane w magazynie kondycji:
 * [Narzędzie Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) lub innych narzędzi do wizualizacji.

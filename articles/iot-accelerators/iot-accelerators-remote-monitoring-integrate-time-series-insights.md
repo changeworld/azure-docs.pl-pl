@@ -8,12 +8,12 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 850d8bbb525763e0e7d0c0441173180b7c469dd8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 4cc9b0051eaa12eee07f067352126ad159107a83
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58085154"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60007478"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Integrowanie usługi Azure Time Series Insights za pomocą zdalnego monitorowania
 
@@ -236,6 +236,9 @@ Konfigurowanie środowiska `basic` wdrożenie zaktualizowanego mikrousług.
 1. Przejdź do **usługi Menedżera ASA** i Edytuj platformy docker compose pliku, dodając `PCS_TELEMETRY_STORAGE_TYPE`.
 
 1. Ponownie uruchom kontenery platformy docker przy użyciu `sudo ./start.sh` z maszyny Wirtualnej.
+
+> [!NOTE]
+> Powyższa Konfiguracja zmienne środowiskowe nadaje się do monitorowania zdalnego wersje wcześniejsze niż 1.0.2
 
 ### <a name="standard-deployments"></a>Wdrożeń w warstwie standardowa
 

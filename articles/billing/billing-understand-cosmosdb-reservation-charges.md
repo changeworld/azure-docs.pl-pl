@@ -6,19 +6,25 @@ author: rimman
 manager: kfile
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 04/13/2019
 ms.author: banders
 ms.reviewer: sngun
-ms.openlocfilehash: 8386d1c43761cfb27746b003d136419f72d7d4ae
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
-ms.translationtype: MT
+ms.openlocfilehash: d5a13e4466234d73bafe8dbe76cae92955cf64bd
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648541"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60010300"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-cosmos-db"></a>Zrozumienie, jak rabat związany z rezerwacją jest stosowany do usługi Azure Cosmos DB
 
 Po możesz kupić pojemność usługi Azure Cosmos DB, zarezerwowane, rabat związany z rezerwacją jest automatycznie stosowany do zasobów usługi Azure Cosmos DB, które pasują do atrybutów i ilość rezerwacji. Rezerwacja obejmuje przepływnością aprowizowaną dla zasobów usługi Azure Cosmos DB. Nie obejmuje oprogramowanie, sieci, magazynu lub wstępnie zdefiniowane opłaty kontenera.
+
+## <a name="how-reservation-discount-is-applied"></a>Jaki jest stosowany rabat związany z rezerwacją
+
+Rabat związany z rezerwacją jest "*Użyj it lub utracić — it*". Tak Jeśli nie masz żadnych godzinę dopasowywania zasobów, następnie traci ilość rezerwacji dla danej godziny. Nie można wykonać nieużywane zastrzeżone godzin przekazywania.
+
+Podczas zamykania zasobem rabat związany z rezerwacją jest automatycznie stosuje do innego zasobu zgodnego z określonego zakresu. Jeśli żadne pasujące zasoby znajdują się w określonym zakresie, a następnie są zarezerwowane godzin *utracone*.
 
 ## <a name="reservation-discount-applied-to-azure-cosmos-db-accounts"></a>Rabat związany z rezerwacją zastosować do kont usługi Azure Cosmos DB
 

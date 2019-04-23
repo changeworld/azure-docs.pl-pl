@@ -10,18 +10,21 @@ ms.date: 03/05/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 74b099c648fa4dd1c735cc76c82efbc102d9843c
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: MT
+ms.openlocfilehash: 5e997d9e9f38fee52cd9fc007fe12cac68e3aa5a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57443049"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60008685"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Śledź zmiany w środowisku przy użyciu rozwiązania Change Tracking
 
 Ten artykuł ułatwia korzystanie rozwiązania Change Tracking można łatwo zidentyfikować zmiany w danym środowisku. Rozwiązanie umożliwia śledzenie zmian do oprogramowania Windows i Linux, Windows i Linux, pliki, klucze rejestru Windows, usługi Windows i demony systemu Linux. Identyfikowanie zmian w konfiguracji ułatwia identyfikowanie problemów operacyjnych.
 
 Zmiany zainstalowanego oprogramowania, usług Windows, plików i rejestru Windows i demonów systemu Linux na monitorowanych serwerach są wysyłane do usługi Azure Monitor w chmurze do przetwarzania. Logika jest stosowana do odebranych danych i usługi w chmurze rejestruje dane. Korzystając z informacji podanych na pulpicie nawigacyjnym śledzenia zmian, łatwo widać zmiany wprowadzone w ramach infrastruktury serwera.
+
+> [!NOTE]
+> Usługa Azure Automation Change Tracking śledzi zmiany w przypadku maszyn wirtualnych. Aby śledzić zmiany właściwości usługi Azure Resource Manager, zobacz wykres zasobów Azure [historię zmian](../governance/resource-graph/how-to/get-resource-changes.md).
 
 ## <a name="supported-windows-operating-systems"></a>Obsługiwane systemy operacyjne Windows
 

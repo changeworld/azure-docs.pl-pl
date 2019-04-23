@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/20/2019
-ms.openlocfilehash: a0b565be2edba7dcf1ba4c1b17284ce05b4cea2f
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
-ms.translationtype: MT
+ms.openlocfilehash: b3514eca8db5d5b68b3e5784ee95e8583813945c
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620550"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60008974"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-based-purchasing-model"></a>Limity zasobów dla pojedynczych baz danych przy użyciu modelu zakupu opartego na jednostkach DTU
 
@@ -32,7 +32,7 @@ W poniższych tabelach Pokaż zasoby dostępne dla pojedynczej bazy danych w pos
 > [!IMPORTANT]
 > Skalowanie, wskazówki i uwagi, zobacz [skalowanie pojedynczej bazy danych](sql-database-single-database-scale.md)
 
-### <a name="basic-service-tier"></a>Warstwa Podstawowa usług
+### <a name="basic-service-tier"></a>Warstwa usługi Podstawowa
 
 | **Obliczenia rozmiaru** | **Podstawowa** |
 | :--- | --: |
@@ -44,7 +44,7 @@ W poniższych tabelach Pokaż zasoby dostępne dla pojedynczej bazy danych w pos
 | Maksymalna liczba współbieżnych sesji | 300 |
 |||
 
-### <a name="standard-service-tier"></a>Warstwa Standardowa usług
+### <a name="standard-service-tier"></a>Warstwa usługi Standardowa
 
 | **Obliczenia rozmiaru** | **S0** | **S1** | **S2** | **S3** |
 | :--- |---:| ---:|---:|---:|
@@ -68,7 +68,7 @@ W poniższych tabelach Pokaż zasoby dostępne dla pojedynczej bazy danych w pos
 | Maksymalna liczba współbieżnych sesji |4800 | 9600 | 19200 | 30000 |30000 |
 |||||||
 
-### <a name="premium-service-tier"></a>Warstwa Premium usług
+### <a name="premium-service-tier"></a>Warstwa usługi Premium
 
 | **Obliczenia rozmiaru** | **P1** | **P2** | **P4** | **P6** | **P11** | **P15** |
 | :--- |---:|---:|---:|---:|---:|---:|
@@ -83,7 +83,7 @@ W poniższych tabelach Pokaż zasoby dostępne dla pojedynczej bazy danych w pos
 \* Z 1024 GB do 4096 GB w przyrostach 256 GB
 
 > [!IMPORTANT]
-> Więcej niż 1 TB magazynu w warstwie Premium jest obecnie dostępne we wszystkich regionach poza następującymi: Chiny Wschodnie, Chiny Północne, Niemcy Środkowe, Niemcy Północno-Wschodnie, Zachodnio-środkowe stany USA, regiony US DoD i Instytucje rządowe dla środkowych stanów USA. W tych regionach maksymalna wielkość magazynu w warstwie Premium jest ograniczona do 1 TB.  Aby uzyskać więcej informacji, zobacz [bieżące ograniczenia poziomów P11–P15](sql-database-single-database-scale.md#dtu-based-purchasing-model-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+> Więcej niż 1 TB magazynu w warstwie Premium jest obecnie dostępne we wszystkich regionach poza następującymi: Chiny Wschodnie, Chiny Północne, Niemcy Środkowe, Niemcy Północno-Wschodnie, Zachodnio-środkowe stany USA, regiony US DoD i Instytucje rządowe dla środkowych stanów USA. W tych regionach maksymalna wielkość magazynu w warstwie Premium jest ograniczona do 1 TB.  Aby uzyskać więcej informacji, zobacz [bieżące ograniczenia poziomów P11–P15](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).  
 > [!NOTE]
 > Aby uzyskać `tempdb` ograniczeń, zobacz [limity bazy danych tempdb](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database).
 

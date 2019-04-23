@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 73ceb0a92b97e90b1fdb0c5562d623505e86b870
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: fe3466dcccf6381f26c823ce3deb2126c9534548
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59784896"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006492"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>Osadzanie widżetów indeksatora wideo w aplikacjach
 
@@ -69,9 +69,9 @@ Jeśli chcesz osadzić **prywatny** plik wideo, musisz przekazać token dostępu
 
 `https://www.videoindexer.ai/embed/[insights | player]/<accountId>/<videoId>/?accessToken=<accessToken>`
     
-Skorzystaj z interfejsu API [**pobierania widżetu szczegółowych informacji**](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-insights-widget?), aby pobrać zawartość elementu widżetu Cognitive Insights, lub z funkcji [**pobierania tokenu dostępu wideo**](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?) i dodaj ten token jako parametr zapytania do adresu URL, jak pokazano powyżej. Określ ten adres URL jako wartość **src** elementu **iframe**.
+Skorzystaj z interfejsu API [**pobierania widżetu szczegółowych informacji**](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget), aby pobrać zawartość elementu widżetu Cognitive Insights, lub z funkcji [**pobierania tokenu dostępu wideo**](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?) i dodaj ten token jako parametr zapytania do adresu URL, jak pokazano powyżej. Określ ten adres URL jako wartość **src** elementu **iframe**.
 
-Jeśli chcesz zapewnić możliwość edycji szczegółowych informacji w osadzonym widżecie (tak jak w naszej aplikacji internetowej), musisz przekazać token dostępu z uprawnieniami do edycji. Użyj funkcji [**pobierania widżetu szczegółowych informacji**](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-insights-widget?) lub [**pobierania tokenu dostępu wideo**](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?) z parametrem **&allowEdit=true**. 
+Jeśli chcesz zapewnić możliwość edycji szczegółowych informacji w osadzonym widżecie (tak jak w naszej aplikacji internetowej), musisz przekazać token dostępu z uprawnieniami do edycji. Użyj funkcji [**pobierania widżetu szczegółowych informacji**](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) lub [**pobierania tokenu dostępu wideo**](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?) z parametrem **&allowEdit=true**. 
 
 ## <a name="widgets-interaction"></a>Interakcje z widżetami
 

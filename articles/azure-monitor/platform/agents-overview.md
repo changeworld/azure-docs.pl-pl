@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: magoedte
-ms.openlocfilehash: 8b10cb0d66103410159a09ca156be3ea180c068b
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
-ms.translationtype: MT
+ms.openlocfilehash: 89e73a4578134493a25ec3cbd2385433a2b36156
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371931"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60003502"
 ---
 # <a name="overview-of-the-azure-monitoring-agents"></a>Omówienie usługi Azure, agentów monitorowania 
 Microsoft Azure oferuje wiele sposobów, aby zbierać różne typy danych z maszyn wirtualnych z systemem Microsoft Windows i Linux hostowanych na platformie Azure, centrum danych lub innych dostawców rozwiązań w chmurze. Są trzy typy dostępnych do monitorowania maszyn wirtualnych agentów:
@@ -70,7 +70,7 @@ Wcześniej kilka usług platformy Azure były powiązane jako *pakietu Operation
 * Usługi systemu Azure, takich jak [usługi Application Insights](https://docs.microsoft.com/azure/application-insights/) i [usługi Azure Security Center](https://docs.microsoft.com/azure/security-center/), która natywnie przechowują swoje dane bezpośrednio w usłudze Log Analytics.  
 
 ## <a name="dependency-agent"></a>Agent zależności
-Agent zależności został opracowany jako część rozwiązania mapy usługi, który pierwotnie został zewnętrznie opracowany przez firmę Microsoft. [Usługa Service Map](../insights/service-map.md) i [usługi Azure Monitor dla maszyn wirtualnych](../insights/vminsights-overview.md) wymaga agenta zależności w Windows i Linux maszyn wirtualnych i integruje się z usługą agenta usługi Log Analytics zbiera odnalezione dane dotyczące procesów uruchomionych na wirtualny Maszyna i zależności w procesie zewnętrznym. Ona te dane są przechowywane w obszarze roboczym usługi Log Analytics i wizualizuje odnalezionych powiązanych elementów.
+Agent zależności został opracowany jako część rozwiązania mapy usługi, które pierwotnie nie został opracowany przez firmę Microsoft. [Usługa Service Map](../insights/service-map.md) i [usługi Azure Monitor dla maszyn wirtualnych](../insights/vminsights-overview.md) wymaga agenta zależności w Windows i Linux maszyn wirtualnych i integruje się z agentem usługi Log Analytics, aby zbieranie odnalezionych danych dotyczących procesów uruchomionych na wirtualny Maszyna i zależności w procesie zewnętrznym. Ona te dane są przechowywane w obszarze roboczym usługi Log Analytics i wizualizuje odnalezionych powiązanych elementów.
 
 Może być konieczne kombinację tych agentów do monitorowania maszyny Wirtualnej. Agentów można zainstalować obok siebie jako rozszerzeń platformy Azure, jednak w systemie Linux, agenta usługi Log Analytics *musi* można zainstalować pierwszy lub — w przeciwnym razie instalacja zakończy się niepowodzeniem. 
 

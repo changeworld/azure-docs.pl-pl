@@ -10,14 +10,17 @@ ms.topic: tutorial
 ms.workload: Active
 ms.date: 06/21/2018
 ms.author: alehall
-ms.openlocfilehash: bc712885169730aa9cbbd8de35b96e645ff1cea2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 1265a97b8902d69dd260d8e9e0191180f2eb4379
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58087129"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60004843"
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>Samouczek: Przesyłanie strumieniowe danych do usługi Azure Databricks przy użyciu usługi Event Hubs
+
+> [!IMPORTANT]
+> Tworzenie aplikacji usługi Twitter nie jest już dostępna za pośrednictwem [apps.twitter.com](https://apps.twitter.com/). W tym samouczku jest w trakcie aktualizowana w celu uwzględnienia nowego interfejsu API usługi Twitter.
 
 W tym samouczku połączysz system pozyskiwania danych z usługą Azure Databricks w celu przesyłania strumieniowego danych do klastra Apache Spark w czasie niemal rzeczywistym. Przy użyciu usługi Azure Event Hubs skonfigurujesz system pozyskiwania danych, a następnie połączysz go z usługą Azure Databricks w celu przetwarzania przesyłanych komunikatów. Aby uzyskać dostęp do strumienia danych, musisz użyć interfejsów API usługi Twitter umożliwiających przesyłanie tweetów do usługi Event Hubs. Zadania analityczne umożliwiają dalszą analizę danych w usłudze Azure Databricks. 
 

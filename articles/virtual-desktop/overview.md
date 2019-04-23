@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 6385838064c408ccfa23dacbd5785f8e82f3cc8b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 58fb1d73509ab52551bead4526dfb47588cf1ec6
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59049442"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60004588"
 ---
 # <a name="what-is-windows-virtual-desktop-preview"></a>Co to jest Windows wirtualnego pulpitu (wersja zapoznawcza)? 
 
@@ -54,13 +54,16 @@ Można również przypisać i łączenia użytkowników z pulpitami wirtualnymi:
 
 Istnieje kilka rzeczy, które należy skonfigurować pulpitu wirtualnego Windows i pomyślnym nawiązaniu połączenia użytkownicy na swoich komputerach stacjonarnych Windows i aplikacji.
 
-Najpierw upewnij się, że masz [odpowiednie licencje](https://azure.microsoft.com/pricing/details/virtual-desktop/) dla użytkowników na podstawie pulpitu i aplikacje, które planujesz wdrożyć:
+Obecnie pulpit wirtualny w Windows obsługuje tylko następujące dwa systemy operacyjne:
+- Wiele sesji systemu Windows 10 Enterprise
+- Windows Server 2016
+
+Planujemy dodanie obsługi następujących systemów operacyjnych, dlatego upewnij się, że masz [odpowiednie licencje](https://azure.microsoft.com/pricing/details/virtual-desktop/) dla użytkowników na podstawie pulpitu i aplikacje, które planujesz wdrożyć:
 
 |System operacyjny|Wymagana licencja|
 |---|---|
-|Wiele sesji systemu Windows 10 Enterprise lub pojedynczej sesji systemu Windows 10|Microsoft 365 E3, E5, A3, A5, Business, F1<br>Windows E3, E5, A3, A5|
-|Windows 7|Microsoft 365 E3, E5, A3, A5, Business, F1<br>Windows E3, E5, A3, A5|
-|Windows Server 2012 R2, 2016 r. 2019 r|Licencja dostępu klienta usług pulpitu zdalnego (CAL) z pakietem Software Assurance|
+
+| Wiele sesji systemu Windows 10 Enterprise lub Windows 10 Enterprise | Microsoft E3, E5, A3, A5, firma<br>Windows E3 i E5, A3, A5 | | Windows 7 Enterprise | Microsoft E3, E5, A3, A5, firma<br>Windows E3 i E5, A3, A5 | | Windows Server 2012 R2, 2016 r. 2019 r | Licencja dostępu klienta usług pulpitu zdalnego (CAL) z pakietem Software Assurance |
 
 Infrastruktury musi mieć następujące elementy do obsługi Windows pulpitu wirtualnego:
 

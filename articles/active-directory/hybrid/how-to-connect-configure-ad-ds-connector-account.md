@@ -11,18 +11,18 @@ ms.date: 01/14/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6510105af8c019b1aca5333f516a10667edaadb5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: 6911b19c680c2fdb8c372347c4dd0fca60bb0e0b
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58000866"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60007563"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Program Azure AD Connect: Skonfiguruj uprawnienia dla konta usługi AD DS łącznika 
 
 Moduł programu PowerShell o nazwie [ADSyncConfig.psm1](reference-connect-adsyncconfig.md) wprowadzono w systemie kompilacji 1.1.880.0 (wydanej w sierpniu 2018 r.), który zawiera zbiór poleceń cmdlet ułatwiają konfigurowanie odpowiednich uprawnień usługi Active Directory dla usługi Azure AD Połącz z wdrożenia. 
 
-## <a name="overview"></a>Przegląd 
+## <a name="overview"></a>Omówienie 
 Następujące polecenia cmdlet programu PowerShell może służyć do ustawienia uprawnień usługi Active Directory, konta usługi AD DS łącznika dla każdej funkcji, którą wybrano do włączenia w programie Azure AD Connect. Aby uniknąć problemów, przygotuj uprawnień usługi Active Directory z wyprzedzeniem zawsze wtedy, gdy chcesz zainstalować program Azure AD Connect przy użyciu konta domeny niestandardowej, aby nawiązać połączenie z lasem usługi. Ten moduł ADSyncConfig można również skonfigurować uprawnienia, po wdrożeniu usługi Azure AD Connect.
 
 ![](media/how-to-connect-configure-ad-ds-connector-account/configure1.png)
@@ -69,13 +69,19 @@ Get-Command -Module AdSyncConfig
 
 Każde polecenie cmdlet ma takie same parametry wejściowe konta łącznika usługi AD DS i przełącznik AdminSDHolder. Aby określić konto łącznika usługi AD DS, można dostarczyć nazwę konta i domeny lub tylko konta wyróżniającą nazwę (DN)
 
-np.: 
+np.:
 
-`Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountName ADaccount -ADConnectorAccountDomain Contoso`
+```powershell
+Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountName <ADAccountName> -ADConnectorAccountDomain <ADDomainName>
+```
 
-Lub; 
+Lub;
 
-`Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN 'CN=ADaccount,OU=AADconnect,DC=Contoso,DC=com'`
+```powershell
+Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <ADAccountDN>
+```
+
+Upewnij się zastąpić `<ADAccountName>`, `<ADDomainName>` i `<ADAccountDN>` odpowiednimi wartościami dla danego środowiska.
 
 W przypadku, gdy nie chcesz zmodyfikować uprawnienia do kontenera AdminSDHolder, należy użyć przełącznika `-SkipAdminSdHolders`. 
 
@@ -120,7 +126,7 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountName <String> -ADConnectorAcco
 ```
 
 
-lub; 
+Lub; 
 
 ``` powershell
 Set-ADSyncBasicReadPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 
@@ -130,7 +136,7 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountDN <String> [-ADobjectDN <Stri
 To polecenie cmdlet będzie ustawić następujące uprawnienia: 
  
 
-|Type |Name (Nazwa) |Dostęp |Dotyczy| 
+|Typ |Name (Nazwa) |Dostęp |Dotyczy| 
 |-----|-----|-----|-----|
 |Zezwalaj |Łącznik usługi AD DS Account |Odczyt wszystkich właściwości |Obiekty zależne urządzeń| 
 |Zezwalaj |Łącznik usługi AD DS Account|Odczyt wszystkich właściwości |Obiekty zależne InetOrgPerson| 
@@ -148,7 +154,7 @@ Aby ustawić uprawnienia dla konta usługi AD DS łącznika, w przypadku używan
 Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
 ```
 
-lub; 
+Lub; 
 
 ``` powershell
 Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 
@@ -156,7 +162,7 @@ Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN <String> [-ADobje
 
 To polecenie cmdlet będzie ustawić następujące uprawnienia: 
 
-|Type |Name (Nazwa) |Dostęp |Dotyczy|
+|Typ |Name (Nazwa) |Dostęp |Dotyczy|
 |-----|-----|-----|-----| 
 |Zezwalaj|Łącznik usługi AD DS Account|Właściwości odczytu/zapisu|Obiekty zależne użytkownika|
 
@@ -168,7 +174,7 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountName <String> -ADConnec
 ```
 
 
-lub; 
+Lub; 
 
 ``` powershell
 Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <String> [<CommonParameters>] 
@@ -176,7 +182,7 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <String> [<CommonPar
 
 To polecenie cmdlet będzie ustawić następujące uprawnienia: 
 
-|Type |Name (Nazwa) |Dostęp |Dotyczy|
+|Typ |Name (Nazwa) |Dostęp |Dotyczy|
 |-----|-----|-----|-----| 
 |Zezwalaj |Łącznik usługi AD DS Account |Replikowanie zmian katalogów |Tylko ten obiekt (katalog główny domeny)| 
 |Zezwalaj |Łącznik usługi AD DS Account |Replikowanie zmian katalogów wszystkie |Tylko ten obiekt (katalog główny domeny)| 
@@ -189,14 +195,14 @@ Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountName <String> -ADConne
 ```
 
 
-lub;
+Lub;
 
 ``` powershell
 Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 
 ```
 To polecenie cmdlet będzie ustawić następujące uprawnienia: 
 
-|Type |Name (Nazwa) |Dostęp |Dotyczy|
+|Typ |Name (Nazwa) |Dostęp |Dotyczy|
 |-----|-----|-----|-----| 
 |Zezwalaj |Łącznik usługi AD DS Account |Resetowanie hasła |Obiekty zależne użytkownika| 
 |Zezwalaj |Łącznik usługi AD DS Account |Zapis właściwości lockoutTime |Obiekty zależne użytkownika| 
@@ -208,7 +214,7 @@ Aby ustawić uprawnienia dla konta usługi AD DS łącznika, używając zapisu z
 ``` powershell
 Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
 ```
-lub; 
+Lub; 
 
 ``` powershell
 Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>]
@@ -216,7 +222,7 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADob
  
 To polecenie cmdlet będzie ustawić następujące uprawnienia: 
 
-|Type |Name (Nazwa) |Dostęp |Dotyczy|
+|Typ |Name (Nazwa) |Dostęp |Dotyczy|
 |-----|-----|-----|-----| 
 |Zezwalaj |Łącznik usługi AD DS Account |Ogólny odczytu/zapisu |Wszystkie atrybuty grupy typów obiektu i podobiektów| 
 |Zezwalaj |Łącznik usługi AD DS Account |Tworzenie/usuwanie obiektu podrzędnego |Wszystkie atrybuty grupy typów obiektu i podobiektów| 
@@ -230,7 +236,7 @@ Set-ADSyncExchangeHybridPermissions -ADConnectorAccountName <String> -ADConnecto
 ```
 
 
-lub; 
+Lub; 
 
 ``` powershell
 Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 
@@ -239,7 +245,7 @@ Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN 
 To polecenie cmdlet będzie ustawić następujące uprawnienia:  
  
 
-|Type |Name (Nazwa) |Dostęp |Dotyczy|
+|Typ |Name (Nazwa) |Dostęp |Dotyczy|
 |-----|-----|-----|-----| 
 |Zezwalaj |Łącznik usługi AD DS Account |Odczyt/zapis wszystkich właściwości |Obiekty zależne użytkownika| 
 |Zezwalaj |Łącznik usługi AD DS Account |Odczyt/zapis wszystkich właściwości |Obiekty zależne InetOrgPerson| 
@@ -254,14 +260,14 @@ Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountName <String> -
 ```
 
 
-lub; 
+Lub; 
 
 ``` powershell
 Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 
 ```
 To polecenie cmdlet będzie ustawić następujące uprawnienia: 
 
-|Type |Name (Nazwa) |Dostęp |Dotyczy|
+|Typ |Name (Nazwa) |Dostęp |Dotyczy|
 |-----|-----|-----|-----| 
 |Zezwalaj |Łącznik usługi AD DS Account |Odczyt wszystkich właściwości |Obiekty zależne PublicFolder| 
 
@@ -286,7 +292,7 @@ Set-ADSyncRestrictedPermissions -ADConnectorAccountDN'CN=ADConnectorAccount,CN=U
 
 To polecenie cmdlet będzie ustawić następujące uprawnienia: 
 
-|Type |Name (Nazwa) |Dostęp |Dotyczy|
+|Typ |Name (Nazwa) |Dostęp |Dotyczy|
 |-----|-----|-----|-----| 
 |Zezwalaj |SYSTEM |Pełna kontrola |Ten obiekt 
 |Zezwalaj |Enterprise Admins |Pełna kontrola |Ten obiekt 

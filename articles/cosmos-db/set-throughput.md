@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/31/2019
 ms.author: rimman
-ms.openlocfilehash: 1f8bec6fbf0bce9a3ac272231058a96a5d9e84cc
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ed3a171e60c078975de7003cdf599f0bac62c402
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58762501"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60004758"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Aprowizacja przepływności kontenerów i baz danych
 
@@ -88,7 +88,7 @@ Można programowo pobrać minimalna przepływność w kontenerze lub bazy danych
 
 Korzystając z zestawu .NET SDK [DocumentClient.ReadOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.readofferasync?view=azure-dotnet) metoda pozwala pobrać minimalna przepływność w kontenerze lub bazy danych. 
 
-Aprowizowana przepływność w kontenerze lub bazy danych można skalować w dowolnym momencie. Można uruchomić operacji skalowania w dół po okresie bezczynności 4 godziny. Okres bezczynności jest zdefiniowany jako czas okresie nie było żadnych oferty zamienianie (co obejmuje skalowanie w górę i w dół) w kontenerze lub bazy danych. 
+Aprowizowana przepływność w kontenerze lub bazy danych można skalować w dowolnym momencie. 
 
 ## <a name="comparison-of-models"></a>Porównanie modeli
 

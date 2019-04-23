@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 04/08/2019
+ms.date: 04/18/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 2ab29c6e41204104320f4c2f583a24e53786bf3c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d0e39f9e24b3c486eccd71eb1c19823cfd33391a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59360552"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60004775"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Często zadawane pytania — program VMware do platformy Azure replikacji
 
@@ -111,7 +111,7 @@ Replikacja nowych maszyn wirtualnych na konto magazynu jest dostępne tylko przy
 
 ### <a name="can-i-change-the-managed-disk-type-after-machine-is-protected"></a>Typ dysku zarządzanego można zmienić po włączeniu ochrony maszyny?
 
-Tak, możesz z łatwością [zmienić typ dysku zarządzanego](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage). Jednak jeśli możesz typ dysku zarządzanego, poczekaj, aż punkty odzyskiwania świeże wygenerowany, jeśli potrzebujesz do testowania trybu failover lub trybu failover po zmianie.
+Tak, możesz z łatwością [zmienić typ dysku zarządzanego](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage). Przed zmianą typu, upewnij się, odwołanie adresu URL sygnatury dostępu Współdzielonego dla dysku, przechodząc do zasobu dysku zarządzanego w witrynie Azure portal. Z poziomu bloku Przegląd anulować wszelkie trwające eksportu. Po odebraniu adresu URL sygnatury dostępu Współdzielonego należy zmienić typ dysku w ciągu najbliższych kilku minut. Jednakże jeśli zmienisz typ dysku zarządzanego, poczekaj, aż punkty odzyskiwania świeże generowanej przez usługę Azure Site Recovery. Użyj nowe punkty odzyskiwania dla każdego testu trybu failover lub pracy awaryjnej w przyszłości.
 
 ### <a name="can-i-switch-replication-from-managed-disks-to-unmanaged-disks"></a>Czy mogę przełączać replikacji z dysków zarządzanych do dysków niezarządzanych
 

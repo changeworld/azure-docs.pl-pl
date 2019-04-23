@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 04/19/2019
 ms.author: jingwang
-ms.openlocfilehash: 5e37d9c0c242de1bd95a93f12171a2a4271b064d
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 6056df9aa9079887bfb06ca20ad564eb52baff38
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680710"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60008702"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Kopiowanie danych z i do usługi Salesforce za pomocą usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -35,7 +35,7 @@ W szczególności ten łącznik Salesforce obsługuje:
 - Wersje usługi SalesForce dla deweloperów, Professional, Enterprise lub bez ograniczeń.
 - Kopiowanie danych z i do produkcji Salesforce, piaskownica i domeny niestandardowej.
 
-Łącznik usługi Salesforce bazuje na usłudze REST interfejsu API usługi Salesforce z [v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) do kopiowania danych z i [v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) kopiowania danych.
+Łącznik Salesforce bazuje na usłudze REST/zbiorcze interfejsu API usługi Salesforce z [v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) do kopiowania danych z i [v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) kopiowania danych.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -65,7 +65,7 @@ Następujące właściwości są obsługiwane w przypadku usługi połączonej u
 | type |Właściwość type musi być równa **Salesforce**. |Yes |
 | environmentUrl | Określ adres URL wystąpienia usług Salesforce. <br> -Domyślnie `"https://login.salesforce.com"`. <br> -Aby skopiować dane z piaskownicy, należy określić `"https://test.salesforce.com"`. <br> -Aby skopiować dane z domeny niestandardowej, określić, na przykład `"https://[domain].my.salesforce.com"`. |Nie |
 | nazwa użytkownika |Określ nazwę użytkownika dla konta użytkownika. |Yes |
-| hasło |Określ hasło dla konta użytkownika.<br/><br/>Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Yes |
+| password |Określ hasło dla konta użytkownika.<br/><br/>Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Yes |
 | securityToken |Określ token zabezpieczeń dla konta użytkownika. Aby uzyskać instrukcje na temat resetowania i pobrać tokenu zabezpieczeń, zobacz [uzyskać token zabezpieczający](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm). Aby dowiedzieć się więcej o tokenów zabezpieczających ogólnie rzecz biorąc, zobacz [zabezpieczeń i interfejsu API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm).<br/><br/>Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Yes |
 | connectVia | [Środowiska integration runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. | Nie dla źródła, tak ujścia Jeśli źródłem jest połączona usługa nie ma środowiska integration runtime |
 
@@ -328,7 +328,7 @@ Podczas kopiowania danych z usług Salesforce, następujące mapowania są używ
 | Procent |Decimal |
 | Numer telefonu |String |
 | Listy wyboru |String |
-| Tekst |String |
+| Text |String |
 | Obszar tekstu |String |
 | Obszar tekstu (Long) |String |
 | Obszar tekstu (zaawansowane) |String |

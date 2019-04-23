@@ -1,28 +1,28 @@
 ---
 title: Wykrywanie obiektów - przetwarzania obrazów
 titleSuffix: Azure Cognitive Services
-description: Pojęcia dotyczące wykrywania obiektów przy użyciu interfejsu API przetwarzania obrazów.
+description: Pojęcia związane z funkcji wykrywania obiektu interfejsu API przetwarzania obrazów — użycia i limitów.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 03/11/2019
+ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 7e3311aab74f58e3936039393eab76dee12b83ea
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
-ms.translationtype: MT
+ms.openlocfilehash: 012ab849c926de332da55361c79c76c5a1311169
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58496942"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60001851"
 ---
-# <a name="object-detection"></a>Wykrywanie obiektów
+# <a name="detect-common-objects-in-images"></a>Wykryć wspólnych obiektów na obrazach
 
 Wykrywanie obiektów jest podobny do [znakowanie](concept-tagging-images.md), ale interfejs API zwraca otaczający współrzędne pola (w pikselach) dla każdego obiektu znaleziono. Na przykład jeśli na obrazie znajduje się pies, kot i osoba, operacja wykrywania utworzy listę tych obiektów wraz z ich współrzędnymi na obrazie. Ta funkcja służy do przetwarzania relacje między obiektami w obrazie. Umożliwia ona także ustalić, czy istnieje wiele wystąpień tego samego tagu obrazu.
 
-Interfejs API wykrywania dotyczy tagi na podstawie obiektów lub rzeczy życia zidentyfikowane na obrazie. W tym momencie nie ma formalnych relacji między znakowania taksonomii i taksonomii wykrywanie obiektów. W koncepcyjny poziom interfejsu API wykrywania tylko znajduje obiekty i elementy życia podczas API tagu może również obejmować kontekstowych terminy, takie jak "wewnętrzne", które nie zlokalizowane z blokujących pola.
+Interfejs API wykrywania dotyczy tagi na podstawie obiektów lub rzeczy życia zidentyfikowane na obrazie. Obecnie nie ma formalnych relacji między znakowania taksonomii i taksonomii wykrywanie obiektów. W koncepcyjny poziom interfejsu API wykrywania tylko znajduje obiekty i elementy życia podczas API tagu może również obejmować kontekstowych terminy, takie jak "wewnętrzne", które nie zlokalizowane z blokujących pola.
 
 ## <a name="object-detection-example"></a>Przykład wykrywania obiektów
 

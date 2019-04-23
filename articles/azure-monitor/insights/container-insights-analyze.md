@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/09/2019
+ms.date: 04/17/2019
 ms.author: magoedte
-ms.openlocfilehash: 3261c2389a9706537366bcd60e00517bbcfb5f48
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 8fb1d0083796671119de2b4d7feefe738b602fe2
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59426396"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60004044"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Zrozumienie wydajności klastra AKS przy użyciu usługi Azure Monitor dla kontenerów 
 Dzięki usłudze Azure Monitor dla kontenerów umożliwia wykresy wydajności oraz stan kondycji monitorowania obciążenia klastry usługi Azure Kubernetes Service (AKS) z dwóch perspektyw bezpośrednio z klastra usługi AKS lub we wszystkich klastrach usługi AKS w ramach subskrypcji platformy Azure Monitor. Wyświetlanie usługi Azure Container Instances (ACI) możliwe jest również w przypadku monitorowania określonych klastra AKS.
@@ -40,8 +40,9 @@ Zaznacz, aby wyświetlić stan kondycji wszystkich klastrach usługi AKS wdrożo
 Na **monitorowania klastrów** kartę, jesteś w stanie się następujące czynności:
 
 1. Jak wiele klastrów znajdują się w stanie krytycznych lub w złej kondycji, a ile to dobrej kondycji i nie raportowania (nazywane stan nieznany)?
-1. Czy wszystkie moje [aparatu Kubernetes usługi Azure (usługi AKS — aparat)](https://github.com/Azure/aks-engine) wdrożeniami Zdrowy?
-1. Jak wiele węzłów, użytkownika i zasobników systemu są wdrażane w klastrze.  
+2. Czy wszystkie moje [aparatu Kubernetes usługi Azure (usługi AKS — aparat)](https://github.com/Azure/aks-engine) wdrożeniami Zdrowy?
+3. Jak wiele węzłów, użytkownika i zasobników systemu są wdrażane w klastrze?
+4. Ilość miejsca na dysku jest dostępny i czy istnieje problem pojemności?
 
 Stany kondycji, uwzględnione są następujące: 
 
@@ -55,7 +56,7 @@ Stany kondycji, uwzględnione są następujące:
 * **MIS skonfigurowane** — usługa Azure Monitor dla kontenerów nie został prawidłowo skonfigurowany w określonym obszarze roboczym.
 * **Brak danych** -danych nie jest zgłaszany do obszaru roboczego w ciągu ostatnich 30 minut.
 
-Stan kondycji oblicza ogólny stan klastra jako *najgorszy*"trzy stany z jednym wyjątkiem — Jeśli jeden z trzech stanów *nieznany*, będą wyświetlane ogólny stan klastra **nieznany**.  
+Stan kondycji oblicza ogólny stan klastra jako *najgorszy* trzy stany z jednym wyjątkiem — Jeśli jeden z trzech stanów *nieznany*, będą wyświetlane ogólny stan klastra **nieznany**.  
 
 Poniższa tabela zawiera podział obliczeń kontrolowanie stanów kondycji monitorowanego klastra w widoku wielu klastrów.
 
@@ -131,9 +132,9 @@ Po przełączeniu do **węzłów**, **kontrolerów**, i **kontenery** karta auto
 
 ![W okienku właściwości perspektyw Kubernetes przykład](./media/container-insights-analyze/perspectives-preview-pane-01.png)
 
-Podczas rozwijania obiektów w hierarchii, na podstawie aktualizacji okienka właściwości w obiekcie, który został wybrany. W okienku można wyświetlić zdarzeń Kubernetes za pomocą wstępnie zdefiniowanych wyszukiwań w dziennikach, klikając **dzienniki zdarzeń Kubernetes widoku** widocznego u góry okienka. Aby uzyskać więcej informacji o wyświetlaniu danych dzienników platformy Kubernetes, zobacz [przeszukiwanie dzienników w celu analizowania danych](#search-logs-to-analyze-data). Podczas przeglądania kontenerów w **kontenery** widoku możesz zobaczyć dzienniki kontenera, w czasie rzeczywistym. Aby uzyskać więcej informacji na temat tej funkcji i konfiguracji wymaganej do udzielić i sterowania dostępem, zobacz [sposób wyświetlania kontenera czasie rzeczywistym dzienniki z usługą Azure Monitor dla kontenerów](container-insights-live-logs.md). 
+Podczas rozwijania obiektów w hierarchii, na podstawie aktualizacji okienka właściwości w obiekcie, który został wybrany. W okienku można wyświetlić zdarzeń Kubernetes za pomocą wstępnie zdefiniowanych wyszukiwań w dziennikach, klikając **dzienniki zdarzeń Kubernetes widoku** widocznego u góry okienka. Aby uzyskać więcej informacji o wyświetlaniu danych dzienników platformy Kubernetes, zobacz [przeszukiwanie dzienników w celu analizowania danych](container-insights-log-search.md). Podczas przeglądania kontenerów w **kontenery** widoku możesz zobaczyć dzienniki kontenera, w czasie rzeczywistym. Aby uzyskać więcej informacji na temat tej funkcji i konfiguracji wymaganej do udzielić i sterowania dostępem, zobacz [sposób wyświetlania kontenera czasie rzeczywistym dzienniki z usługą Azure Monitor dla kontenerów](container-insights-live-logs.md). 
 
-Użyj **+ Dodaj filtr** opcję w górnej części strony, aby filtrować wyniki dla widoku przez **usługi**, **węzła**, lub **Namespace** oraz po Wybieranie zakresu filtru, możesz następnie wybierz jedną z wartości podanych w **wybierz wartości** pola.  Po skonfigurowaniu filtru jest stosowana globalnie podczas wyświetlania dowolnego punktu widzenia klastra AKS.  Formuła obsługuje tylko znaku równości.  Możesz dodać dodatkowe filtry na podstawie pierwszy z nich w celu dalszego zawężenia wyników.  Na przykład, jeśli określono filtr według **węzła**, drugi filtr będzie tylko pozwalają na wybór **usługi** lub **Namespace**.  
+Użyj **+ Dodaj filtr** opcję w górnej części strony, aby filtrować wyniki dla widoku przez **usługi**, **węzła**, **Namespace**, lub  **Pulę węzłów** i po wybraniu zakresu filtru, które następnie wybrać jedną z wartości podanych w **wybierz wartości** pola.  Po skonfigurowaniu filtru jest stosowana globalnie podczas wyświetlania dowolnego punktu widzenia klastra AKS.  Formuła obsługuje tylko znaku równości.  Możesz dodać dodatkowe filtry na podstawie pierwszy z nich w celu dalszego zawężenia wyników.  Na przykład, jeśli określono filtr według **węzła**, drugi filtr będzie tylko pozwalają na wybór **usługi** lub **Namespace**.  
 
 ![Przykład przy użyciu filtru, aby zawęzić wyniki](./media/container-insights-analyze/add-filter-option-01.png)
 
@@ -258,49 +259,6 @@ Ikony w polu Stan wskazują online stany zasobników, zgodnie z opisem w poniżs
 | ![Ikona stanu zakończone](./media/container-insights-analyze/containers-terminated-icon.png) | Pomyślnie zatrzymano lub nie można zatrzymać|  
 | ![Ikona stanu nie powiodło się](./media/container-insights-analyze/containers-failed-icon.png) | Stan niepowodzenia |  
 
-
-## <a name="container-data-collection-details"></a>Szczegóły dotyczące zbierania danych kontenera
-Szczegółowe informacje o kontenerze zbiera różne dane metryk i dzienników wydajności hostach kontenerów i kontenery. Dane są gromadzone co trzy minuty.
-
-### <a name="container-records"></a>Rekordów kontenera
-
-Przykłady rekordy, które są zbierane przez usługi Azure Monitor dla kontenerów i typy danych, które są wyświetlane w wynikach wyszukiwania w dzienniku są wyświetlane w poniższej tabeli:
-
-| Typ danych | Typ danych podczas wyszukiwania dziennika | Pola |
-| --- | --- | --- |
-| Wydajność dla hostów i kontenerów | `Perf` | CounterName komputera, nazwa obiektu, &#40;czas procesora (%), dysk odczytuje MB, dysku zapisuje MB, MB użycia pamięci, sieci odbierania bajtów, sieci wysyłania w bajtach, procesor s użycia, sieć&#41;, CounterValue, TimeGenerated, Ścieżka_licznika, system źródłowy |
-| Kontener magazynu | `ContainerInventory` | TimeGenerated, komputera, nazwa kontenera, ContainerHostname, obraz, ImageTag, ContainerState, ExitCode, EnvironmentVar, polecenia, wartością CreatedTime, StartedTime, FinishedTime, system źródłowy, ContainerID, ImageID |
-| Spis obrazów kontenera | `ContainerImageInventory` | TimeGenerated, komputer, obraz, ImageTag, ImageSize, VirtualSize, uruchamianie, wstrzymana, zatrzymana, nie powiodło się, system źródłowy, ImageID, TotalContainer |
-| Dziennik kontenera | `ContainerLog` | TimeGenerated, komputer, identyfikator obrazu, pola Nazwa kontenera LogEntrySource, LogEntry, system źródłowy, ContainerID |
-| Dziennik usługi kontenera | `ContainerServiceLog`  | TimeGenerated, Computer, TimeOfCommand, Image, Command, SourceSystem, ContainerID |
-| Spis węzłów kontenerów | `ContainerNodeInventory_CL`| TimeGenerated, Computer, ClassName_s, DockerVersion_s, OperatingSystem_s, Volume_s, Network_s, NodeRole_s, OrchestratorType_s, InstanceID_g, SourceSystem|
-| Proces kontenera | `ContainerProcess_CL` | TimeGenerated, Computer, Pod_s, Namespace_s, ClassName_s, InstanceID_s, Uid_s, PID_s, PPID_s, C_s, STIME_s, Tty_s, TIME_s, Cmd_s, Id_s, Name_s, SourceSystem |
-| Spis zasobników w klastrze Kubernetes | `KubePodInventory` | TimeGenerated, komputer, ClusterId, ContainerCreationTimeStamp, PodUid, PodCreationTimeStamp, ContainerRestartCount, PodRestartCount, PodStartTime, ContainerStartTime, ServiceName, ControllerKind, element ControllerName, ContainerStatus, ContainerID, ContainerName, PodLabel, adresem IP zasobnika, Namespace, ClusterName, nazwa, PodStatus, system źródłowy |
-| Spis węzłów będących częścią klastra Kubernetes | `KubeNodeInventory` | TimeGenerated, komputera, ClusterName, ClusterId, LastTransitionTimeReady, etykiety, stan, KubeletVersion, KubeProxyVersion, CreationTimeStamp, system źródłowy | 
-| Zdarzenia Kubernetes | `KubeEvents_CL` | TimeGenerated, komputera, ClusterId_s, FirstSeen_t, LastSeen_t, Count_d, ObjectKind_s, Namespace_s, Name_s, Reason_s, Type_s, TimeGenerated_s, SourceComponent_s, ClusterName_s, komunikat o błędzie, system źródłowy | 
-| Usługi w klastrze Kubernetes | `KubeServices_CL` | TimeGenerated, ServiceName_s, SelectorLabels_s, ServiceType_s, ClusterId_s, ClusterIP_s, Namespace_s, ClusterName_s, system źródłowy | 
-| Metryki wydajności dla części węzłów klastra Kubernetes | Perf &#124; gdzie ObjectName == "K8SNode" | CounterName komputera, nazwa obiektu, &#40;cpuUsageNanoCores, memoryWorkingSetBytes, memoryRssBytes, networkRxBytes, networkTxBytes, restartTimeEpoch, networkRxBytesPerSec, networkTxBytesPerSec, cpuAllocatableNanoCores, memoryAllocatableBytes, cpuCapacityNanoCores, memoryCapacityBytes&#41;, CounterValue, TimeGenerated, Ścieżka_licznika, system źródłowy | 
-| Metryki wydajności dla kontenerów częścią klastra Kubernetes | Perf &#124; gdzie ObjectName == "K8SContainer" | CounterName &#40;cpuUsageNanoCores, memoryWorkingSetBytes, memoryRssBytes, restartTimeEpoch, cpuRequestNanoCores, memoryRequestBytes, cpuLimitNanoCores, memoryLimitBytes&#41;, CounterValue, TimeGenerated, Ścieżka_licznika, System źródłowy | 
-
-## <a name="search-logs-to-analyze-data"></a>Dzienniki wyszukiwania do analizy danych
-Usługa log Analytics może pomóc wyszukiwania trendach, diagnozowanie wąskich gardeł, prognozy lub korelowanie danych, które mogą pomóc ustalić, czy bieżąca konfiguracja klastra działa optymalnie. Wstępnie zdefiniowane wyszukiwań w dziennikach znajdują się za Ciebie, aby od razu rozpocząć korzystanie z lub dostosować do zwracania informacji w żądany sposób. 
-
-W obszarze roboczym można wykonywać interakcyjne analizy danych, zaznaczając **dzienniki zdarzeń Kubernetes widoku** lub **wyświetlanie dzienników kontenera** opcji w okienku podglądu. **Wyszukiwanie w dzienniku** po prawej stronie portalu platformy Azure były na zostanie wyświetlona strona.
-
-![Analiza danych w usłudze Log Analytics](./media/container-insights-analyze/container-health-log-search-example.png)   
-
-Dane wyjściowe dzienników kontenera, który jest przekazywany do usługi Log Analytics to STDOUT i STDERR. Ponieważ usługa Azure Monitor jest monitorowanie usługi Azure managed Kubernetes (AKS), system klastra kubernetes w usłudze nie są zbierane już dziś ze względu na duże obciążenie wygenerowane dane. 
-
-### <a name="example-log-search-queries"></a>Przykład zapytania wyszukiwania w Dzienniku
-Często jest to przydatne do tworzenia zapytań, które zaczynać się przykładem lub dwa, a następnie zmodyfikuj je zgodnie z wymaganiami. Aby ułatwić tworzenie bardziej zaawansowanych zapytań, możesz eksperymentować z następujące przykładowe zapytania:
-
-| Zapytanie | Opis | 
-|-------|-------------|
-| ContainerInventory<br> &#124;Projekt komputera, nazwa, obraz, ImageTag, ContainerState, wartością CreatedTime, StartedTime, FinishedTime<br> &#124;Renderowanie tabeli | Wyświetlić listę wszystkich informacji o cyklu życia kontenera| 
-| KubeEvents_CL<br> &#124;gdzie not(isempty(Namespace_s))<br> &#124;Sortuj według malejącej TimeGenerated<br> &#124;Renderowanie tabeli | Zdarzenia Kubernetes|
-| ContainerImageInventory<br> &#124;summarize AggregatedValue = count() by obrazu, ImageTag, działa | Spis obrazów | 
-| **Wybierz opcję wyświetlania wykresu liniowego**:<br> Perf<br> &#124;Gdzie ObjectName == "K8SContainer" i CounterName == "cpuUsageNanoCores" &#124; Podsumuj AvgCPUUsageNanoCores avg(CounterValue) przez bin (TimeGenerated, 30 min), InstanceName = | Procesora CPU kontenera | 
-| **Wybierz opcję wyświetlania wykresu liniowego**:<br> Perf<br> &#124;Gdzie ObjectName == "K8SContainer" i CounterName == "memoryRssBytes" &#124; Podsumuj AvgUsedRssMemoryBytes avg(CounterValue) przez bin (TimeGenerated, 30 min), InstanceName = | Pamięci kontenera |
-
 ## <a name="next-steps"></a>Kolejne kroki
-Usługa Azure Monitor dla kontenerów nie ma wstępnie zdefiniowany zestaw alerty, aby skopiować i zmodyfikować zgodnie z usługi pomocnicze procesów i procedur. Przegląd [Tworzenie alertów wydajności dzięki usłudze Azure Monitor dla kontenerów](container-insights-alerts.md) dowiesz się, jak utworzyć zalecane alerty dla wysokie wykorzystanie procesora CPU i pamięci.  
+- Przegląd [Tworzenie alertów wydajności dzięki usłudze Azure Monitor dla kontenerów](container-insights-alerts.md) dowiesz się, jak tworzyć alerty dla wysokie wykorzystanie procesora CPU i pamięci do obsługi infrastruktury DevOps lub procedur i procesy operacyjne. 
+- Widok [dziennika przykłady zapytań](container-insights-log-search.md#search-logs-to-analyze-data) wstępnie zdefiniowane zapytania i przykłady do oceny lub Dostosuj alerty, wizualizacji i analizowanie klastry usługi.

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: a66969504dee5ba526cdccbbb39471ef5af971c0
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: MT
+ms.openlocfilehash: 0e0c83d411242be38992dd763dea72eda70ffbf4
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439336"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006464"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-the-rest-api"></a>Zarządzanie dostępem do zasobów platformy Azure przy użyciu RBAC i interfejsu API REST
 
@@ -28,7 +28,7 @@ ms.locfileid: "57439336"
 
 ## <a name="list-access"></a>Tworzenie listy dostępu
 
-RBAC dostęp do listy, możesz liście przypisań ról. Aby wyświetlić listę przypisań ról, użyj jednej z [przypisania ról — lista](/rest/api/authorization/roleassignments/list) interfejsów API REST. Aby uzyskać dokładniejsze wyniki, należy określić zakres i opcjonalny filtr. Aby wywołać interfejs API, musisz mieć dostęp do `Microsoft.Authorization/roleAssignments/read` operacji w podanym zakresie. Kilka [wbudowane role zasobów platformy Azure](built-in-roles.md) uzyskują dostęp do tej operacji.
+RBAC dostęp do listy, możesz liście przypisań ról. Aby wyświetlić listę przypisań ról, użyj jednej z [przypisania ról — lista](/rest/api/authorization/roleassignments/list) interfejsów API REST. Aby uzyskać dokładniejsze wyniki, należy określić zakres i opcjonalny filtr.
 
 1. Uruchom przy użyciu następującego żądania:
 
@@ -38,7 +38,7 @@ RBAC dostęp do listy, możesz liście przypisań ról. Aby wyświetlić listę 
 
 1. W identyfikatorze URI, Zastąp *{zakresu}* z zakresem, dla którego chcesz wyświetlić listę przypisań ról.
 
-    | Zakres | Type |
+    | Zakres | Typ |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Subskrypcja |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Grupa zasobów |
@@ -77,7 +77,7 @@ Aby udzielić dostępu za pomocą kontroli dostępu opartej na rolach, tworzy si
     
 1. W identyfikatorze URI, Zastąp *{zakresu}* z zakresem przypisania roli.
 
-    | Zakres | Type |
+    | Zakres | Typ |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Subskrypcja |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Grupa zasobów |
@@ -105,7 +105,7 @@ Aby usunąć dostęp za pomocą kontroli dostępu opartej na rolach, usuwa się 
 
 1. W identyfikatorze URI, Zastąp *{zakresu}* w zakresie usuwania przypisania roli.
 
-    | Zakres | Type |
+    | Zakres | Typ |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Subskrypcja |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Grupa zasobów |

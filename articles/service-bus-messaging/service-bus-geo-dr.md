@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 9446bbd4783aaf20f1bc9079ec43f7050274bf11
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
-ms.translationtype: MT
+ms.openlocfilehash: a0581ef43e8a3c02126612a21122db559a941370
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095620"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009178"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Usługa Azure odzyskiwanie po awarii geograficznego usługi Service Bus
 
@@ -129,7 +129,7 @@ Należy zwrócić uwagę następujące kwestie, które należy uwzględnić w te
 Jednostka SKU usługi Service Bus Premium obsługuje również [strefy dostępności](../availability-zones/az-overview.md), zapewniając izolowane od usterek lokalizacje w regionie platformy Azure.
 
 > [!NOTE]
-> Obsługa stref dostępności platformy Azure Service Bus w warstwie Premium jest dostępna tylko w [regionów świadczenia usługi Azure](../availability-zones/az-overview.md#regions-that-support-availability-zones) gdzie strefy dostępności są obecne.
+> Obsługa stref dostępności platformy Azure Service Bus w warstwie Premium jest dostępna tylko w [regionów świadczenia usługi Azure](../availability-zones/az-overview.md#services-support-by-region) gdzie strefy dostępności są obecne.
 
 Strefy dostępności można włączyć na nowe przestrzenie nazw, przy użyciu witryny Azure portal. Usługa Service Bus nie obsługuje migracji istniejącej przestrzeni nazw. Nie można wyłączyć nadmiarowości strefy po jej włączeniu, w ramach przestrzeni nazw.
 

@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: danlep
-ms.openlocfilehash: cbe14066cfd7493806176e834373e952daf19339
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
-ms.translationtype: MT
+ms.openlocfilehash: 78136a081e52ef3f12d672d01449ce616534462e
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59610259"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011014"
 ---
 # <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>Ustaw w wierszu polecenia w wystąpieniu kontenera, aby zastąpić domyślne działania wiersza polecenia
 
@@ -40,7 +40,7 @@ Składnia wiersza polecenia różni się zależnie od interfejsu API platformy A
 
 * [Nowy-AzureRmContainerGroup] [ new-azurermcontainergroup] polecenia cmdlet programu Azure PowerShell: Przekaż ciągu za pomocą `-Command` parametru. Przykład: `-Command "echo hello"`.
 
-* Azure Portal: W **zastąpienia polecenia** właściwości konfiguracji kontenera zapewniają rozdzielaną przecinkami listę ciągów, bez znaków cudzysłowu. Przykład: `python, myscript.py, arg1, arg2`). 
+* Witryna Azure Portal: W **zastąpienia polecenia** właściwości konfiguracji kontenera zapewniają rozdzielaną przecinkami listę ciągów, bez znaków cudzysłowu. Przykład: `python, myscript.py, arg1, arg2`). 
 
 * Szablon usługi Resource Manager lub pliku YAML lub jednego z zestawów SDK platformy Azure: Określ właściwość wiersza polecenia jako tablicę ciągów. Przykład: tablicę JSON `["python", "myscript.py", "arg1", "arg2"]` w szablonie usługi Resource Manager. 
 
@@ -63,7 +63,7 @@ Aby wyświetlić dane wyjściowe z [microsoft/aci-wordcount] [ aci-wordcount] ko
 az container create \
     --resource-group myResourceGroup \
     --name mycontainer1 \
-    --image microsoft/aci-wordcount:latest \
+    --image mcr.microsoft.com/azuredocs/aci-wordcount:latest \
     --environment-variables NumWords=3 MinLength=5 \
     --restart-policy OnFailure
 ```
@@ -88,7 +88,7 @@ Na przykład, aby określić u góry, 3 słów, które są co najmniej pięć Lo
 az container create \
     --resource-group myResourceGroup \
     --name mycontainer2 \
-    --image microsoft/aci-wordcount:latest \
+    --image mcr.microsoft.com/azuredocs/aci-wordcount:latest \
     --restart-policy OnFailure \
     --environment-variables NumWords=3 MinLength=5 \
     --command-line "python wordcount.py http://shakespeare.mit.edu/romeo_juliet/full.html"
@@ -111,7 +111,7 @@ Dane wyjściowe:
 Oparta na zadaniach scenariuszach, na przykład wsadowo duży zestaw danych za pomocą kilku kontenerów mogą korzystać z niestandardowych wiersze poleceń w czasie wykonywania. Aby uzyskać więcej informacji na temat uruchamiania kontenerów opartych na zadaniach, zobacz [uruchamianie zadań konteneryzowanych za pomocą zasady ponownego uruchamiania](container-instances-restart-policy.md).
 
 <!-- LINKS - External -->
-[aci-wordcount]: https://hub.docker.com/r/microsoft/aci-wordcount/
+[aci-wordcount]: https://hub.docker.com/_/microsoft-azuredocs-aci-wordcount
 
 <!-- LINKS Internal -->
 [az-container-create]: /cli/azure/container#az-container-create

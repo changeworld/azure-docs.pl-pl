@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 0203/26/2019
 ms.author: bwren
-ms.openlocfilehash: 59213c5391b5b652eeead05c4a5af761571fcece
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ec037b16840afe669ac3934beaa832f850cdcfb0
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798950"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60003687"
 ---
 # <a name="logs-in-azure-monitor"></a>Dzienniki w usłudze Azure Monitor
 
@@ -112,7 +112,7 @@ Usługa Azure Monitor może zbierać dane dzienników z różnych źródeł, zar
 
 | Dane | Opis |
 |:---|:---|
-| Usługa Azure Monitor dla kontenerów | Dane spisu i wydajności zebrane przez [usługi Azure Monitor dla kontenerów](../insights/container-insights-overview.md). Zobacz [szczegóły zbierania danych kontenera](../insights/container-insights-analyze.md#container-data-collection-details) listę tabel. |
+| Usługa Azure Monitor dla kontenerów | Dane spisu i wydajności zebrane przez [usługi Azure Monitor dla kontenerów](../insights/container-insights-overview.md). Zobacz [szczegóły zbierania danych kontenera](../insights/container-insights-log-search.md#container-records) listę tabel. |
 | Usługa Azure Monitor dla maszyn wirtualnych | Dane mapy i wydajności zebrane przez [usługi Azure Monitor dla maszyn wirtualnych](../insights/vminsights-overview.md). Zobacz [sposób wykonywania zapytań dzienników z usługi Azure Monitor dla maszyn wirtualnych](../insights/vminsights-log-search.md) szczegółowe informacje dotyczące zapytań na tych danych. |
 
 ### <a name="custom"></a>Niestandardowy 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: apimpm
-ms.openlocfilehash: db48db5ce9402267570ac9e41f9f4b5bec2781ad
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: MT
+ms.openlocfilehash: 532c1051522410c496fb3809c06c7e3a74340adb
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527952"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006050"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak używać usługi Azure API Management przy użyciu sieci wirtualnych
 Sieci wirtualne platformy Azure (Vnet) umożliwiają umieszczenie wszystkich zasobów platformy Azure w sieci lecz-internet, która umożliwia kontrolę dostępu do. Te sieci mogą być następnie połączone do sieci w środowisku lokalnym przy użyciu różnych technologii sieci VPN. Aby dowiedzieć się więcej na temat sieci wirtualnych platformy Azure rozpoczyna się od informacji w tym miejscu: [Omówienie usługi Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -74,7 +74,8 @@ Aby wykonać kroki opisane w tym artykule, musisz mieć:
 
      ![Wybierz sieci VPN][api-management-setup-vpn-select]
 
-5. Kliknij przycisk **Zapisz** w górnej części ekranu.
+5. Kliknij przycisk **Zapisz** w górnym pasku nawigacyjnym.
+6. Kliknij przycisk **Zastosuj konfigurację sieci** w górnym pasku nawigacyjnym.
 
 > [!NOTE]
 > Adres VIP wystąpienia usługi API Management zmieni każdorazowo sieci Wirtualnej jest włączone lub wyłączone.
@@ -108,7 +109,7 @@ Poniżej przedstawiono listę typowych problemów z błędną konfiguracją, kt�
 
 <a name="required-ports"> </a> Gdy wystąpienie usługi API Management znajduje się w sieci Wirtualnej, są używane porty w poniższej tabeli.
 
-| Źródło / porty docelowe | Kierunek          | Protokół transportowy |   [Tagi usługi](../virtual-network/security-overview.md#service-tags) <br> Źródłowy / docelowy   | Cel (*)                                                 | Typ sieci wirtualnej |
+| Źródło / porty docelowe | Direction          | Protokół transportowy |   [Tagi usługi](../virtual-network/security-overview.md#service-tags) <br> Źródłowy / docelowy   | Cel (*)                                                 | Typ sieci wirtualnej |
 |------------------------------|--------------------|--------------------|---------------------------------------|-------------------------------------------------------------|----------------------|
 | * / 80, 443                  | Przychodzący            | TCP                | INTERNET / VIRTUAL_NETWORK            | Komunikacja klienta z usługi API Management                      | Zewnętrzna             |
 | * / 3443                     | Przychodzący            | TCP                | ApiManagement / VIRTUAL_NETWORK       | Punkt końcowy zarządzania dla witryny Azure portal i programu Powershell         | Zewnętrzne i wewnętrzne  |

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: 3541376331725fddcd58d94625f5d761ef159c97
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: MT
+ms.openlocfilehash: 95ba3c905541d2168dcbbc1bb2c1bc1d05468cb5
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526507"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006424"
 ---
 # <a name="deploy-the-language-detection-container-to-azure-kubernetes-service"></a>Wdrażanie kontenera wykrywanie języka w usłudze Azure Kubernetes Service
 
@@ -325,7 +325,7 @@ Ta sekcja używa **kubectl** interfejsu wiersza polecenia, aby porozmawiać z us
     |W wierszu 78<br> `image` Właściwość|Lokalizacji obrazu dla obrazów języka w rejestrze kontenerów<br>`<container-registry-name>.azurecr.io/language:1.1.006770001-amd64-preview`|
     |95 wiersza<br> `name` Właściwość|Hasło rejestru kontenera dla obrazu, nazywane `<client-secret>` w poprzedniej sekcji.|
     |91 wiersza<br> `apiKey` Właściwość|Klucz zasobu analizy tekstu|
-    |92 wiersza<br> `billing` Właściwość|Punkt końcowy rozliczeń zasobu bazy danych analizy tekstu.<br>`https://westus.api.cognitive.microsoft.com/text/analytics/v2.0`|
+    |92 wiersza<br> `billing` Właściwość|Punkt końcowy rozliczeń zasobu bazy danych analizy tekstu.<br>`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
 
     Ponieważ **apiKey** i **rozliczeń punktu końcowego** są ustawiane jako część definicji aranżacji Kubernetes, kontener witryny sieci Web nie musi wiedzieć o tych lub przekazać je jako część żądania. Kontener witryny sieci Web odnosi się do kontenera wykrywania języka za pomocą nazwy orchestrator `language`. 
 

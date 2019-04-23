@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: generowanie metadanych dla obrazów usługi Azure Storage'
+title: 'Samouczek: Generuj metadane obrazów platformy Azure'
 titleSuffix: Azure Cognitive Services
 description: W tym samouczku dowiesz się, jak zintegrować usługę przetwarzania obrazów platformy Azure z aplikacją internetową, aby generować metadane dla obrazów.
 services: cognitive-services
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: tutorial
-ms.date: 01/03/2019
+ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: e5124b07a5aff67d53213149565ddae4ea6dda33
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: MT
+ms.openlocfilehash: a755a0bada0dbf6797465ea40ddbb30a84e3f289
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448003"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60005994"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>Samouczek: generowanie metadanych obrazów w usłudze Azure Storage przy użyciu przetwarzania obrazów
 
@@ -52,11 +52,11 @@ Musisz utworzyć zasób przetwarzania obrazów dla swojego konta platformy Azure
 
 1. Wróć do menu grupy zasobów i kliknij przycisk subskrypcji interfejsu API przetwarzania obrazów, która została właśnie utworzona. Skopiuj adres URL z obszaru **Punkt końcowy** do miejsca, z którego będzie go można za chwilę łatwo uzyskać. Następnie kliknij pozycję **Pokaż klucze dostępu**.
 
-    ![Wyświetlanie kluczy dostępu](../Images/copy-vision-endpoint.png)
+    ![Stronę witryny Azure portal przy użyciu punktu końcowego adresu URL i dostępu do kluczy łącze opisane](../Images/copy-vision-endpoint.png)
 
 1. W następnym oknie skopiuj wartość **KLUCZ 1** do schowka.
 
-    ![Kopiowanie klucza dostępu](../Images/copy-vision-key.png)
+    ![Zarządzanie kluczami okno dialogowe, przy użyciu przycisku kopiowania, opisane](../Images/copy-vision-key.png)
 
 ## <a name="add-computer-vision-credentials"></a>Dodawanie poświadczeń przetwarzania obrazów
 
@@ -136,7 +136,7 @@ Zapisz wprowadzone zmiany w programie Visual Studio i naciśnij klawisze **Ctrl+
 
 Aby wyświetlić wszystkie dołączone metadane, użyj Eksploratora usługi Azure Storage w celu wyświetlenia kontenera magazynu, którego używasz na potrzeby obrazów. Kliknij prawym przyciskiem myszy dowolny obiekt blob w kontenerze i wybierz pozycję **Właściwości**. W oknie dialogowym zobaczysz listę par klucz-wartość. Wygenerowany komputerowo opis obrazu jest przechowywany w elemencie „Caption”, a słowa kluczowe wyszukiwania są przechowywane w elementach „Tag0”, „Tag1” i tak dalej. Gdy skończysz, kliknij przycisk **Anuluj**, aby zamknąć okno dialogowe.
 
-![Metadane obiektu blob](../Images/blob-metadata.png)
+![Oknie dialogowym właściwości obrazu, przy użyciu tagów metadanych na liście](../Images/blob-metadata.png)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

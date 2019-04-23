@@ -10,22 +10,22 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: a9f48c8cef8d977469bb6c583d0bc363e334f693
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
-ms.translationtype: MT
+ms.openlocfilehash: 4f1ce8fd44a501f594f3093789d1ef03e664d018
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245324"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60008498"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>Obsługa języka i regionu dla interfejsu API analizy tekstu
 
-W tym artykule opisano, które języki są obsługiwane dla każdej operacji: analiza tonacji, wyodrębnianie kluczowych fraz oraz wykrywanie języka.
+W tym artykule opisano, które języki są obsługiwane dla każdej operacji: analiza tonacji, wyodrębnianie kluczowych fraz, wykrywanie języka i rozpoznawanie jednostek znaku.
 
 ## <a name="language-detection"></a>Wykrywanie języka
 
 Interfejs API analizy tekstu można wykrywać maksymalnie 120 języków. Wykrywanie języka zwraca "skrypt" język. Na przykład frazy "Mam dog" zwróci `en` zamiast `en-US`. Tylko w szczególnych przypadkach jest chińskich, których będzie zwracać funkcja wykrywania języka `zh_CHS` lub `zh_CHT` Jeśli można określić, skrypt danego tekstu, pod warunkiem. W sytuacjach, gdzie określonego skryptu nie można zidentyfikować dla dokumentu chińskim, to zostanie zwrócona po prostu `zh`.
 
-## <a name="sentiment-analysis-key-phrase-extraction-and-entity-recognition"></a>Analiza tonacji, wyodrębnianie kluczowych fraz i rozpoznawanie jednostek
+## <a name="sentiment-analysis-key-phrase-extraction-and-named-entity-recognition"></a>Analiza tonacji, wyodrębnianie kluczowych fraz i rozpoznawanie jednostek znaku
 
 Analiza tonacji, wyodrębnianie kluczowych fraz i rozpoznawanie jednostek listę obsługiwanych języków to tylko niektóre analizatorów jest dostosowany do uwzględnienia językowej reguły dodatkowe języki.
 
@@ -33,30 +33,34 @@ Analiza tonacji, wyodrębnianie kluczowych fraz i rozpoznawanie jednostek listę
 
 Obsługa języków początkowo jest udostępniona w wersji zapoznawczej, tłumaczenie jest ogólnie dostępna (GA) stanu, niezależnie od siebie i usługi analizy tekstu, ogólne. Istnieje możliwość dla języków pozostaje w wersji zapoznawczej, nawet w trakcie przejść interfejsu API analizy tekstu jest ogólnie dostępna.
 
-| Język    | Kod języka | Opinia | Kluczowe frazy | Rozpoznawanie jednostek |   Uwagi  |
+| Język    | Kod języka | Opinia | Kluczowe frazy | Rozpoznawanie jednostek nazwanych |   Uwagi  |
 |:----------- |:-------------:|:---------:|:-----------:|:-----------:|:-----------:
-| Duński      | `da`          | ✔ \*     | ✔           |             |     |
-| Holenderski       | `nl`          | ✔ \*     | ✔          |             |     |
-| Polski     | `en`          | ✔        | ✔           |  ✔ \*   |      |
-| Fiński     | `fi`          | ✔ \*     | ✔           |             |     |
-| Francuski      | `fr`          | ✔        | ✔           |             |     |
-| Niemiecki      | `de`          | ✔ \*     | ✔           |            |     |
+| Arabski      | `ar`          |           |             | ✔ \*                     | |
+| Czeski       | `cs`          |           |             | ✔ \*                     | |
+| Chiński uproszczony | `zh-CN`|           |             | ✔ \*        |    |
+| Duński      | `da`          | ✔ \*     | ✔           | ✔ \*            |     |
+| Holenderski       | `nl`          | ✔ \*     | ✔          |  ✔ \*           |     |
+| Polski     | `en`          | ✔        | ✔           |  ✔ \*\*     |      |
+| Fiński     | `fi`          | ✔ \*     | ✔           |  ✔ \*           |     |
+| Francuski      | `fr`          | ✔        | ✔           |  ✔ \*           |     |
+| Niemiecki      | `de`          | ✔ \*     | ✔           |  ✔ \*          |     |
 | Grecki       | `el`          | ✔ \*     |             |            |     |
-| Włoski     | `it`          | ✔ \*     | ✔           |             |     |
-| Japoński    | `ja`          |          | ✔           |            |     |
-| Koreański      | `ko`          |          | ✔           |            |     |
-| Norwegian  (Bokmål) | `no`          | ✔ \*     |  ✔          |             |     |
-| Polski      | `pl`          | ✔ \*     |  ✔          |             |     |
-| Portugalski (Portugalia) | `pt-PT`| ✔        |  ✔          |       |`pt` również zaakceptowana|
-| Portugalski (Brazylia)   | `pt-BR`|          |  ✔   |         |     |
-| Rosyjski     | `ru`          | ✔ \*     | ✔           |             |     |
-| Hiszpański     | `es`          | ✔        | ✔           |   ✔ \*\*      |     |
-| Szwedzki     | `sv`          | ✔ \*     | ✔           |             |     |
-| Turecki     | `tr`          | ✔ \*     |             |             |  |
+| Węgierski   | `hu`          |           |             |  ✔ \*          |     | 
+| Włoski     | `it`          | ✔ \*     | ✔           |  ✔ \*           |     |
+| Japoński    | `ja`          |          | ✔           |  ✔ \*          |     |
+| Koreański      | `ko`          |          | ✔           |  ✔ \*          |     |
+| Norwegian  (Bokmål) | `no`  | ✔ \*     |  ✔          | ✔ \*            |     |
+| Polski      | `pl`          | ✔ \*     |  ✔          |  ✔ \*           |     |
+| Portugalski (Portugalia) | `pt-PT`| ✔        |  ✔          | ✔ \*      |`pt` również zaakceptowana|
+| Portugalski (Brazylia)   | `pt-BR`|          |  ✔   |  ✔ \*       |     |
+| Rosyjski     | `ru`          | ✔ \*     | ✔           |  ✔ \*           |     |
+| Hiszpański     | `es`          | ✔        |            |   ✔ \*\*      |     | 
+| Szwedzki     | `sv`          | ✔ \*     | ✔           |   ✔ \*          |     |
+| Turecki     | `tr`          | ✔ \*     |             |   ✔ \*          |  |
 
-\* Wskazuje obsługę języka w wersji zapoznawczej
+\* Obsługa języka jest w wersji zapoznawczej
 
-\*\* Wyodrębnianie jednostek dla języka hiszpańskiego jest dostępna tylko w [(w wersji 2.1 — wersja zapoznawcza)](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634)
+\*\* O nazwie rozpoznawanie jednostek i [łączenie podmiotów](how-tos/text-analytics-how-to-entity-linking.md) są dostępne dla tego języka.    
 
 ## <a name="see-also"></a>Zobacz także
 

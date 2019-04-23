@@ -1,5 +1,5 @@
 ---
-title: Kopiowanie danych do lub z Eksploratora danych Azure przy użyciu usługi Azure Data Factory | Dokumentacja firmy Microsoft
+title: Kopiuj dane do / z Eksploratora danych Azure przy użyciu usługi Azure Data Factory
 description: Dowiedz się, jak skopiować dane do / z Eksploratora danych platformy Azure za pomocą działania kopiowania w potoku usługi Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/16/2019
-ms.author: orspod
-ms.openlocfilehash: 756ede9cc90655163d6d53aa3ca920d2a15fb43d
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.author: orspodek
+ms.openlocfilehash: f501257903f3b7c621512f06d1c8c7109e22db1e
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59682495"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009365"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory"></a>Kopiuj dane do / z Eksploratora danych Azure przy użyciu usługi Azure Data Factory
 
@@ -219,4 +219,7 @@ Aby skopiować dane do Eksploratora danych platformy Azure, należy ustawić wł
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
+
+* Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
+
+* Dowiedz się więcej o [kopiowanie danych z usługi Azure Data Factory do Eksploratora danych usługi Azure](/azure/data-explorer/data-factory-load-data).

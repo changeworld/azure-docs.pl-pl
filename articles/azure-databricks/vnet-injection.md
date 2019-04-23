@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.openlocfilehash: c29d2e1df0979481c0c8a1e1f2cd4d22b013212a
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
-ms.translationtype: MT
+ms.openlocfilehash: 2db588a0cf67d7826408139e8facb43a2e897951
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58227713"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60003449"
 ---
 # <a name="deploy-azure-databricks-in-your-virtual-network-preview"></a>Wdrażanie usługi Azure Databricks w usłudze virtual network (wersja zapoznawcza)
 
@@ -121,7 +121,7 @@ Możesz użyć tego szablonu bez również przy użyciu szablonu grupy zabezpiec
 
 Jeśli nie używasz [witryny Azure portal](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-portal) lub [szablonów usługi Azure Resource Manager](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-advanced) do tworzenia sieci grup zabezpieczeń, użytkownik będzie musiał ręcznie umieścić na liście dozwolonych następujące ruchu w podsieci.
 
-|Kierunek|Protokół|Element źródłowy|Port źródłowy|Element docelowy|Port docelowy|
+|Direction|Protokół|Element źródłowy|Port źródłowy|Element docelowy|Port docelowy|
 |---------|--------|------|-----------|-----------|----------------|
 |Przychodzący|\*|VirtualNetwork|\*|\*|\*|
 |Przychodzący|\*|IP translatora adresów Sieciowych na płaszczyźnie kontroli|\*|\*|22|
@@ -188,7 +188,7 @@ Możliwa przyczyna: Kontener nie może komunikować się hostingu wystąpienie l
 
 ### <a name="notebook-command-errors"></a>Błędy polecenia notesu
 
-**Polecenie zawiesza się**
+**Polecenie nie odpowiada.**
 
 Możliwa przyczyna: komunikacja procesu roboczego do procesu roboczego jest zablokowana. Napraw, upewniając się, że reguły zabezpieczeń ruchu przychodzącego do wymagań.
 

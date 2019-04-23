@@ -4,18 +4,18 @@ description: Koduj jako komunikaty z usługi Azure Logic Apps i pakiet integracy
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
-author: divyaswarnkar
-ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+author: ecfan
+ms.author: estfan
+ms.reviewer: jonfan, divswa, LADocs
 ms.topic: article
 ms.assetid: 332fb9e3-576c-4683-bd10-d177a0ebe9a3
 ms.date: 08/08/2018
-ms.openlocfilehash: 6bb19199929a004ee5668a3a6e057a69c24dd752
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
-ms.translationtype: MT
+ms.openlocfilehash: 455056feaa1b13022be3ab3c15880a87c50dedd9
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43122717"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60003551"
 ---
 # <a name="encode-as2-messages-with-azure-logic-apps-and-enterprise-integration-pack"></a>Kodowanie komunikatów AS2 za pomocą usługi Azure Logic Apps i pakiet integracyjny dla przedsiębiorstw
 

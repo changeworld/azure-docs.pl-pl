@@ -2,18 +2,18 @@
 title: Pojęcia dla deweloperów w usłudze Azure Data Catalog
 description: Wprowadzenie do kluczowych koncepcji usługi Azure Data Catalog modelu koncepcyjnego jako narażonych za pośrednictwem interfejsu API REST katalogu.
 services: data-catalog
-author: markingmyname
-ms.author: maghan
+author: JasonWHowell
+ms.author: jasonh
 ms.assetid: 89de9137-a0a4-40d1-9f8d-625acad31619
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: bca006ab33379f52281f77fb5a04a24022bac373
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
-ms.translationtype: MT
+ms.openlocfilehash: 42e4b545a48bcbd0ad4b7faf077ebdbfe21648b1
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314557"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006696"
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Pojęcia dla deweloperów w usłudze Azure Data Catalog
 Microsoft **usługi Azure Data Catalog** to usługa w pełni zarządzana usługa w chmurze, która zapewnia możliwości Odnajdowanie źródeł danych oraz crowdsourcing metadanych źródła danych. Deweloperzy mogą używać usługi za pośrednictwem jej interfejsów API REST. Zrozumienie z pojęciami dotyczącymi usługi jest ważne dla deweloperów pomyślnie zintegrować z usługą **usługi Azure Data Catalog**.
@@ -78,7 +78,7 @@ Na przykład w ramach zasobu główny jest Tablica obiektów opis. Właściwośc
 Wprowadzonego w sekcji najważniejsze pojęcia dotyczące **usługi Azure Data Catalog** model obiektu zawiera elementy, które mogą być zasoby lub adnotacji. Elementy mają właściwości, które mogą być opcjonalne lub wymagane. Niektóre właściwości mają zastosowanie do wszystkich elementów. Niektóre właściwości mają zastosowanie do wszystkich zasobów. Niektóre właściwości mają zastosowanie tylko do typów określonych zasobów.
 
 ### <a name="system-properties"></a>Właściwości systemu
-<table><tr><td><b>Nazwa właściwości</b></td><td><b>Typ danych</b></td><td><b>Komentarze</b></td></tr><tr><td>sygnatura czasowa</td><td>DateTime</td><td>Czas ostatniej modyfikacji elementu. To pole jest generowany przez serwer, gdy element jest wstawiany i za każdym razem, gdy element jest aktualizowana. Wartość tej właściwości jest ignorowana na dane wejściowe operacji publikowania.</td></tr><tr><td>id</td><td>Identyfikator URI</td><td>Bezwzględny adres url elementu (tylko do odczytu). Jest unikatowym identyfikatorem URI mogą być adresowane dla elementu.  Wartość tej właściwości jest ignorowana na dane wejściowe operacji publikowania.</td></tr><tr><td>type</td><td>String</td><td>Typ zasobu (tylko do odczytu).</td></tr><tr><td>etag</td><td>String</td><td>Ciąg odpowiadający wersji elementu, który może służyć do mechanizmu kontroli optymistycznej współbieżności, podczas wykonywania operacji, które aktualizują elementów w wykazie. "*" umożliwia dopasowanie dowolnej wartości.</td></tr></table>
+<table><tr><td><b>Nazwa właściwości</b></td><td><b>Typ danych</b></td><td><b>Komentarze</b></td></tr><tr><td>timestamp</td><td>DateTime</td><td>Czas ostatniej modyfikacji elementu. To pole jest generowany przez serwer, gdy element jest wstawiany i za każdym razem, gdy element jest aktualizowana. Wartość tej właściwości jest ignorowana na dane wejściowe operacji publikowania.</td></tr><tr><td>id</td><td>Identyfikator URI</td><td>Bezwzględny adres url elementu (tylko do odczytu). Jest unikatowym identyfikatorem URI mogą być adresowane dla elementu.  Wartość tej właściwości jest ignorowana na dane wejściowe operacji publikowania.</td></tr><tr><td>type</td><td>String</td><td>Typ zasobu (tylko do odczytu).</td></tr><tr><td>etag</td><td>String</td><td>Ciąg odpowiadający wersji elementu, który może służyć do mechanizmu kontroli optymistycznej współbieżności, podczas wykonywania operacji, które aktualizują elementów w wykazie. "*" umożliwia dopasowanie dowolnej wartości.</td></tr></table>
 
 ### <a name="common-properties"></a>Wspólne właściwości
 Te właściwości mają zastosowanie do wszystkich typów zasobów katalogu głównego i wszystkich typów adnotacji.

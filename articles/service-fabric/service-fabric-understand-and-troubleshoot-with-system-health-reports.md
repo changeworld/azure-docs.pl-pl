@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: 4322fd60bb30b9eb6ac18c72e75127006acf5149
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: MT
+ms.openlocfilehash: caeef04a27cec7bbeda5dd96335d9b7bd1a8eca0
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59528190"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60007461"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Używanie raportów kondycji systemu do rozwiązywania problemów
 Składniki usługi Service Fabric platformy Azure udostępniają raportów kondycji systemu na wszystkich jednostek w klastrze, gotową do. [Magazynu kondycji](service-fabric-health-introduction.md#health-store) tworzy i usuwa jednostki na podstawie raportów systemu. On również organizuje ich w hierarchii, która przechwytuje interakcje jednostki.
@@ -29,7 +29,7 @@ Składniki usługi Service Fabric platformy Azure udostępniają raportów kondy
 > 
 > 
 
-Raportów o kondycji systemu zapewniają widoczność flagi problemów i funkcjonalność aplikacji i klastra. Dla aplikacji i usług raportami kondycji systemu sprawdź, czy jednostki są implementowane i czy działa prawidłowo z perspektywy usługi Service Fabric. Raporty nie udostępniają żadnych monitorowanie kondycji logikę biznesową usługi lub wykrywania zawieszone procesy. Użytkownik usługi pozwala wzbogacić dane kondycji na informacje specyficzne dla swojej logiki.
+Raportów o kondycji systemu zapewniają widoczność flagi problemów i funkcjonalność aplikacji i klastra. Dla aplikacji i usług raportami kondycji systemu sprawdź, czy jednostki są implementowane i czy działa prawidłowo z perspektywy usługi Service Fabric. Raporty nie udostępniają żadnych monitorowanie kondycji logikę biznesową usługi lub wykrywania procesów, które nie odpowiadają. Użytkownik usługi pozwala wzbogacić dane kondycji na informacje specyficzne dla swojej logiki.
 
 > [!NOTE]
 > Wysyłany przez użytkownika watchdogs raportów o kondycji są widoczne tylko *po* składników systemu tworzenia jednostki. Po usunięciu jednostki magazynu kondycji automatycznie usuwa wszystkie raporty kondycji skojarzonych z nim. Jest taka sama wartość true w przypadku, gdy tworzone jest nowe wystąpienie jednostki. Przykładem jest, gdy tworzone jest nowe wystąpienie repliki usługi stanowej utrwalonych. Wszystkie raporty skojarzone z wystąpieniem stare są usuwane i wyczyszczone z magazynu.

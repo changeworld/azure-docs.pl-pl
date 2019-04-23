@@ -2,18 +2,18 @@
 title: Jak dokumentować źródła danych w usłudze Azure Data Catalog
 description: Artykuł porad wyróżnianie jak dokumentować zasoby danych w usłudze Azure Data Catalog.
 services: data-catalog
-author: markingmyname
-ms.author: maghan
+author: JasonWHowell
+ms.author: jasonh
 ms.assetid: 053b1701-b848-4ada-b726-6f485caa9961
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: a7379ffea173cdae3b10a751b0d83e06e679e3c5
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
-ms.translationtype: MT
+ms.openlocfilehash: 9049e0b25db37f296e27476fbb93418d13c4dcc1
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406213"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60005282"
 ---
 # <a name="document-data-sources"></a>Dokumentowanie źródeł danych
 ## <a name="introduction"></a>Wprowadzenie
@@ -39,9 +39,9 @@ Zaletą **usługi Azure Data Catalog** dokumentacji pozwala użyć wykazu danych
 
 Poziom dokumentacji może wynosić od opisywania właściwości i wartość kontenera zasobów danych, aby uzyskać szczegółowy opis schematu tabeli w kontenerze. Poziom dokumentacją dostarczoną powinny być prowadzone przez Twoje potrzeby biznesowe. Ale ogólnie rzecz biorąc, poniżej przedstawiono kilka zalet i wad dokumentowanie zasobów danych:
 
-* Po prostu kontener dokumentów: cała zawartość znajduje się w jednym miejscu, ale mogą wykazywać Brak odpowiednie szczegóły dla użytkowników podjąć świadomą decyzję.
-* Dokumentowanie tylko tabele: zawartość jest specyficzne dla tego obiektu, ale użytkownicy mają wiele miejsc dla dokumentów.
-* Dokumentowanie kontenerów i tabel: najbardziej kompleksowe podejście, ale może powodować konserwacji więcej dokumentów.
+* Dokument po prostu kontener: Cała zawartość znajduje się w jednym miejscu, ale mogą wykazywać Brak odpowiednie szczegóły dla użytkowników podjąć świadomą decyzję.
+* Dokumentowanie tylko tabele: Zawartość jest specyficzne dla tego obiektu, ale użytkownicy mają wiele miejsc dla dokumentów.
+* Kontenery dokumentów i tabele: Najbardziej kompleksowe podejście, ale może powodować konserwacji więcej dokumentów.
 
 ## <a name="summary"></a>Podsumowanie
 Dokumentowanie źródeł danych za pomocą **usługi Azure Data Catalog** w możliwie szczegółowo należy utworzyć narracja o Twoje zasoby danych.  Za pomocą łącza, można połączyć zawartości przechowywanej w istniejącym repozytorium zawartości, grupujący swoje istniejące dokumenty i zasobów danych. Gdy użytkownicy odnajdywanie zasobów danych, mogą mieć kompletny zestaw dokumentacji.

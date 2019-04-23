@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: d71e08a548809ef0de47c4a865af531732a88a4b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 33deea0805ffa89bcc6a64f34a97a4e080690da9
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59697281"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60008821"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Szybki start: tworzenie aplikacji .NET Framework przy użyciu usługi Azure App Configuration
 
@@ -36,6 +36,14 @@ Ten przewodnik Szybki Start, instaluje [programu Visual Studio 2017](https://vis
 ## <a name="create-an-app-configuration-store"></a>Tworzenie magazynu konfiguracji aplikacji
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
+
+6. Wybierz **Explorer klucz/wartość** > **+ Utwórz** można dodać następujące pary klucz wartość:
+
+    | Klucz | Wartość |
+    |---|---|
+    | TestApp:Settings:Message | Dane z usługi Azure App Configuration |
+
+    Pozostaw **etykiety** i **typu zawartości** puste, aby teraz.
 
 ## <a name="create-a-net-console-app"></a>Tworzenie aplikacji konsolowej platformy .NET
 
@@ -106,4 +114,4 @@ Ten przewodnik Szybki Start, instaluje [programu Visual Studio 2017](https://vis
 W tym przewodniku Szybki Start utworzyliśmy nowym magazynem konfiguracji aplikacji i używać go z aplikacji konsoli .NET Framework. Aby dowiedzieć się więcej o tym, jak używać konfiguracji aplikacji, przejdź do następnego samouczka, który demonstruje uwierzytelniania.
 
 > [!div class="nextstepaction"]
-> [Zarządzanych tożsamości dla integracji zasobów platformy Azure](./howto-integrate-azure-managed-service-identity.md)
+> [Integracja tożsamości zarządzanych](./howto-integrate-azure-managed-service-identity.md)

@@ -12,12 +12,12 @@ ms.date: 12/14/2017
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: ''
-ms.openlocfilehash: 49000d4fd61e7cd061b415d50545a7f5ee56f3fb
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
-ms.translationtype: MT
+ms.openlocfilehash: afb97c1c14422f15a3fc2c00b2101c4a36675556
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579127"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002489"
 ---
 # <a name="call-a-function-from-powerapps"></a>Wywoływanie funkcji z usługi PowerApps
 [PowerApps](https://powerapps.microsoft.com) platformy zaprojektowano pod kątem eksperci biznesowi tworzyć aplikacje bez konieczności pisania tradycyjnego kodu. Profesjonalni deweloperzy umożliwia rozszerzanie możliwości usługi PowerApps podczas osłaniania twórcy aplikacji usługi PowerApps z szczegóły techniczne usługi Azure Functions.
@@ -38,6 +38,9 @@ W tym temacie dowiesz się, jak:
 > * Dodawanie formantów do wyświetlania danych w aplikacji.
 > * Dodawanie formantów do wywołania funkcji i wyświetlania danych.
 > * Uruchom aplikację, aby określić, czy naprawy jest opłacalna.
+
+> [!IMPORTANT]
+> Interfejs OpenAPI znajduje się obecnie w wersji zapoznawczej i jest dostępny tylko dla wersji 1.x środowiska uruchomieniowego usługi Azure Functions.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

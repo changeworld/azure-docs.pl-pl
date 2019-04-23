@@ -11,19 +11,19 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/23/2018
+ms.date: 04/19/2019
 ms.author: alkohli
-ms.openlocfilehash: c27244af6da01163fa9ab554b6b9c1d9c99bab23
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: d107a9dae29f18b90ba7c23198c0cc1f97d83c70
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58104577"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60003092"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-azure-file-sync"></a>Migrację danych z serii StorSimple 5000 – 7000 do usługi Azure File Sync
 
 > [!IMPORTANT]
-> Na 31 lipca 2019 koniec stanie pomocy technicznej (EOS) będzie korzystał z serii StorSimple 5000/7000. Zaleca się, że klienci serii StorSimple 5000/7000 migrację do jednej z alternatyw opisanych w dokumencie.
+> Na 9 lipca 2019 koniec stanie pomocy technicznej (EOS) będzie korzystał z serii StorSimple 5000/7000. Zaleca się, że klienci serii StorSimple 5000/7000 migrację do jednej z alternatyw opisanych w dokumencie.
 
 Migracja danych to proces przenoszenia danych z jednej lokalizacji magazynu. Dzięki temu, dzięki czemu dokładną kopię organizacji bieżące dane z jednego urządzenia do innego urządzenia — najlepiej bez zakłócania pracy lub wyłączenie aktywnych aplikacji — a następnie przekierowanie wszystkie wejścia/wyjścia (aktywność We/Wy) do nowego urządzenia. 
 

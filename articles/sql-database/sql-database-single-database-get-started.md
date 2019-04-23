@@ -1,5 +1,5 @@
 ---
-title: 'Azure Portal: Tworzenie pojedynczej bazy danych — usługa Azure SQL Database | Microsoft Docs'
+title: 'Witryna Azure Portal: Tworzenie pojedynczej bazy danych — usługa Azure SQL Database | Microsoft Docs'
 description: Utwórz pojedynczą bazę danych w usłudze Azure SQL Database i wykonuj względem jej zapytania w witrynie Azure Portal.
 services: sql-database
 ms.service: sql-database
@@ -12,12 +12,12 @@ ms.author: ninarn
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/11/2019
-ms.openlocfilehash: a5fbc58feea8779ba8a7a61dfc89158e20bd2c92
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: MT
+ms.openlocfilehash: b8395b5e67660f2b6fb1b671a7be6a20b4fceddd
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544294"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60004979"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal"></a>Szybki start: Tworzenie pojedynczej bazy danych w usłudze Azure SQL Database za pomocą witryny Azure Portal
 
@@ -29,7 +29,7 @@ W przypadku wszystkich kroków z tego przewodnika Szybki start musisz zalogować
 
 ## <a name="create-a-single-database"></a>Tworzenie pojedynczej bazy danych
 
-Pojedyncza baza danych ma zdefiniowany zestaw zasobów obliczeniowych, pamięci, we/wy i magazynu przy użyciu jednego z dwóch [modeli zakupu](sql-database-purchase-models.md). Podczas tworzenia pojedynczej bazy danych definiowany jest również [serwer usługi SQL Database](sql-database-servers.md) służący do zarządzania tą bazą danych i umieszczania jej w ramach [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) w określonym regionie.
+Pojedyncza baza danych ma zdefiniowany zestaw zasobów obliczeniowych, pamięci, we/wy i magazynu przy użyciu jednego z dwóch [modeli zakupów](sql-database-purchase-models.md). Podczas tworzenia pojedynczej bazy danych definiowany jest również [serwer usługi SQL Database](sql-database-servers.md) służący do zarządzania tą bazą danych i umieszczania jej w ramach [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) w określonym regionie.
 
 Aby utworzyć bazę danych zawierającą przykładowe dane firmy Adventure Works LT:
 
@@ -69,9 +69,9 @@ Aby utworzyć bazę danych zawierającą przykładowe dane firmy Adventure Works
 
 
       > [!NOTE]
-      > W tym przewodniku Szybki start jest używany [model zakupu w oparciu o jednostki DTU](sql-database-service-tiers-dtu.md), ale dostępny jest także [model zakupu w oparciu o rdzeń wirtualny](sql-database-service-tiers-vcore.md).
+      > W tym przewodniku Szybki start jest używany [model zakupów oparty na jednostkach DTU](sql-database-service-tiers-dtu.md), ale dostępny jest także [model zakupów oparty na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md).
       > [!IMPORTANT]
-      > Więcej niż 1 TB magazynu w warstwie Premium jest obecnie dostępne we wszystkich regionach poza następującymi: Chiny Wschodnie, Chiny Północne, Niemcy Środkowe, Niemcy Północno-Wschodnie, Zachodnio-środkowe stany USA, regiony US DoD i Instytucje rządowe dla środkowych stanów USA. W tych regionach maksymalna wielkość magazynu w warstwie Premium jest ograniczona do 1 TB.  Aby uzyskać więcej informacji, zobacz [bieżące ograniczenia poziomów P11–P15](sql-database-single-database-scale.md#dtu-based-purchasing-model-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+      > Więcej niż 1 TB magazynu w warstwie Premium jest obecnie dostępne we wszystkich regionach poza następującymi: Chiny Wschodnie, Chiny Północne, Niemcy Środkowe, Niemcy Północno-Wschodnie, Zachodnio-środkowe stany USA, regiony US DoD i Instytucje rządowe dla środkowych stanów USA. W tych regionach maksymalna wielkość magazynu w warstwie Premium jest ograniczona do 1 TB.  Aby uzyskać więcej informacji, zobacz [bieżące ograniczenia poziomów P11–P15](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).  
 
     
 

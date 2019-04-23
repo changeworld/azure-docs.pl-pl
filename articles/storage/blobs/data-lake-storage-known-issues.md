@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: normesta
-ms.openlocfilehash: 89cfdbdaa034bae5ca736ccb9164255b833ed75d
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
-ms.translationtype: MT
+ms.openlocfilehash: d56fb411eb032e5e6227d68cd8abe02c0e30850b
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57194712"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006866"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Znane problemy związane z usługi Azure Data Lake Storage Gen2
 
@@ -47,13 +47,13 @@ Niezarządzane dyski maszyny wirtualnej (VM) zależą od wyłączone interfejsó
 
 Interfejsy API usługi blob Storage i interfejsów API usługi Azure Data Lake Gen2 — nie są współpracujący ze sobą.
 
-Jeśli dysponujesz narzędziami, aplikacji, usług lub skryptów, które korzystają z interfejsów API usługi Blob, a chcesz ich używać do pracy z całej zawartości, który przekaże do swojego konta, następnie nie włączaj hierarchicznej przestrzeni nazw w ramach konta magazynu obiektów Blob, aż staną się interfejsów API usługi Blob współdziała z interfejsów API usługi Azure Data Lake Gen2. Przy użyciu konta magazynu bez hierarchicznej przestrzeni nazw oznacza, że nie masz dostępu do określonych funkcji Data Lake Storage Gen2, takich jak katalog i system plików następnie listy kontroli dostępu.
+Jeśli dysponujesz narzędziami, aplikacji, usług lub skryptów, które korzystają z interfejsów API usługi Blob, a chcesz ich używać do pracy z całej zawartości, który przekaże do swojego konta, następnie nie włączaj hierarchicznej przestrzeni nazw w ramach konta magazynu obiektów Blob, aż staną się interfejsów API usługi Blob współdziała z interfejsów API usługi Azure Data Lake Gen2. Przy użyciu konta magazynu bez hierarchicznej przestrzeni nazw oznacza, że nie masz dostępu do Data Lake Storage Gen2 określone funkcje, takie jak listy kontroli dostępu systemu plików i katalogów następnie.
 
 ## <a name="azure-storage-explorer"></a>Eksplorator usługi Azure Storage
 
 Aby wyświetlić lub zarządzać konta Data Lake Storage Gen2 za pomocą Eksploratora usługi Azure Storage, użytkownik musi mieć co najmniej wersji `1.6.0` narzędzia, który jest dostępny jako [bezpłatne materiały do pobrania](https://azure.microsoft.com/features/storage-explorer/).
 
-Należy zauważyć, że wersja programu Storage Explorer, który jest osadzony w witrynie Azure Portal jest aktualnie nie obsługuje wyświetlanie i zarządzanie kontami Data Lake Storage Gen2 z włączoną funkcją hierarchicznej przestrzeni nazw.
+Należy zauważyć, że wersja programu Storage Explorer, które jest wbudowane w witrynie Azure portal jest aktualnie nie obsługuje wyświetlanie i zarządzanie kontami Data Lake Storage Gen2 z włączoną funkcją hierarchicznej przestrzeni nazw.
 
 ## <a name="blob-viewing-tool"></a>Narzędzie do przeglądania obiektu blob
 

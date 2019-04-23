@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 86de73394d96d1122abce44504d2b0fd99a01841
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 3fe839de8cbaa0b321b0b0602b000b7575224dde
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58915786"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60010062"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definiowanie profilu technicznego OAuth1 w zasadach niestandardowych usługi Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Usługa Azure Active Directory (Azure AD) B2C zapewnia obsługę [protokołu OAuth 1.0](https://tools.ietf.org/html/rfc5849) dostawcy tożsamości. W tym artykule opisano szczegóły profilu technicznego do interakcji z dostawcy oświadczeń, który obsługuje ten standardowy protokół. Za pomocą OAuth1 profilu technicznego może tworzyć federacje z OAuth1 na podstawie dostawcy tożsamości, takich jak serwis Twitter, co pozwala użytkownikom Zaloguj się przy użyciu istniejącej społecznościowych lub tożsamościami w przedsiębiorstwie.
+Usługa Azure Active Directory (Azure AD) B2C zapewnia obsługę [protokołu OAuth 1.0](https://tools.ietf.org/html/rfc5849) dostawcy tożsamości. W tym artykule opisano szczegóły profilu technicznego do interakcji z dostawcy oświadczeń, który obsługuje ten standardowy protokół. Z profilu technicznego OAuth1 może tworzyć federacje z dostawcą tożsamości na podstawie OAuth1, takich jak serwis Twitter. Federowanie za pomocą dostawcy tożsamości umożliwia użytkownikom Zaloguj się przy użyciu istniejącej społecznościowych lub tożsamościami w przedsiębiorstwie.
 
 ## <a name="protocol"></a>Protokół
 
@@ -46,7 +46,7 @@ Usługa Azure Active Directory (Azure AD) B2C zapewnia obsługę [protokołu OAu
 
 Poniższy przykład przedstawia oświadczenia zwrócona przez dostawcę tożsamości usługi Twitter:
 
-- **User_id** oświadczenia, który jest zamapowany **socialIdpUserId** oświadczenia.
+- **User_id** oświadczenia, który jest zamapowany **issuerUserId** oświadczenia.
 - **Screen_name** oświadczenia, który jest zamapowany **displayName** oświadczenia.
 - **E-mail** oświadczenia bez mapowania nazw.
 
@@ -57,7 +57,7 @@ Profil techniczny zwraca również wartość oświadczenia, które nie są zwrac
 
 ```xml
 <OutputClaims>
-  <OutputClaim ClaimTypeReferenceId="socialIdpUserId" PartnerClaimType="user_id" />
+  <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="user_id" />
   <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="screen_name" />
   <OutputClaim ClaimTypeReferenceId="email" />
   <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="twitter.com" />
@@ -87,7 +87,7 @@ Profil techniczny zwraca również wartość oświadczenia, które nie są zwrac
 
 ## <a name="redirect-uri"></a>Identyfikator URI przekierowania
 
-Po skonfigurowaniu adres URL przekierowania dostawcy tożsamości, wprowadź `https://login.microsoftonline.com/te/tenant/policyId/oauth1/authresp`. Upewnij się zastąpić **dzierżawy** nazwą dzierżawy (na przykład contosob2c.onmicrosoft.com) i **policyId** o identyfikatorze zasady (na przykład b2c_1a_policy). Identyfikator URI przekierowania musi być zapisana w same małe litery. Należy dodać przekierowanie z pakietem zbiorczym aktualizacji dla wszystkich zasad, które używają logowania dostawcy tożsamości. 
+Po skonfigurowaniu adres URL przekierowania dostawcy tożsamości, wprowadź `https://login.microsoftonline.com/te/tenant/policyId/oauth1/authresp`. Upewnij się zastąpić **dzierżawy** nazwą dzierżawy (na przykład contosob2c.onmicrosoft.com) i **policyId** o identyfikatorze zasady (na przykład b2c_1a_policy). Identyfikator URI przekierowania musi być zapisana w same małe litery. Dodaj adres URL przekierowania dla wszystkich zasad, które używają logowania dostawcy tożsamości. 
 
 Jeśli używasz **z usługi b2clogin.com** domeny zamiast **login.microsoftonline.com** upewnij się korzystać z usługi b2clogin.com zamiast login.microsoftonline.com.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/24/2018
 ms.author: pkc
-ms.openlocfilehash: aa4fd391aef3acf8e72513d91b62c7f16a13062d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: a931de8be07d41cf4daab63aa7691973ee158452
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57889441"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60005047"
 ---
 # <a name="azure-service-fabric-support-options"></a>Opcje pomocy technicznej usługi Azure Service Fabric
 
@@ -33,6 +33,11 @@ Dowiedz się więcej o usługach:
  
 - [Pomocy technicznej firmy Microsoft dla platformy Azure](https://azure.microsoft.com/support/plans/?b=16.44).
 - [Firmy Microsoft korzystający z pomocy technicznej](https://support.microsoft.com/en-us/premier).
+
+> [!Note]
+> Klastry z systemem w ramach warstwy niezawodności bronze umożliwiają uruchamianie tylko obciążeń testowych. Jeśli występują problemy z klastra działającego w bronze niezawodności, zespół pomocy technicznej firmy Microsoft pomoże Ci korygowanie problemu, ale nie będzie wykonywać analizy głównych przyczyn. Zapoznaj się [charakterystyka niezawodności klastra](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster) Aby uzyskać więcej informacji.
+>
+> Aby uzyskać więcej informacji o tym, co jest wymagane dla produkcyjnego klastra można znaleźć [Lista kontrolna gotowości produkcji](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist).
 
 <a id="getlivesitesupportonprem"></a>
 

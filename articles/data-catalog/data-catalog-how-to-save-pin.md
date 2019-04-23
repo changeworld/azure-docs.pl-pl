@@ -2,18 +2,18 @@
 title: Zapisywanie wyszukiwań i numer pin zasobów danych w usłudze Azure Data Catalog
 description: Artykuł porad wyróżniania możliwości usługi Azure Data Catalog zapisywania źródła danych i zasobów danych w celu późniejszego użycia.
 services: data-catalog
-author: markingmyname
-ms.author: maghan
+author: JasonWHowell
+ms.author: jasonh
 ms.assetid: 6bd00a81-820d-4b7c-91fa-ab09e575474c
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: f22dd0911a8e86e6a9e370c7e08add935c31e936
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
-ms.translationtype: MT
+ms.openlocfilehash: df3220ddb80ebc329ed6b0024ca4eefd2bdfb321
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409936"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002021"
 ---
 # <a name="save-searches-and-pin-data-assets-in-azure-data-catalog"></a>Zapisywanie wyszukiwań i numer pin zasobów danych w usłudze Azure Data Catalog
 ## <a name="introduction"></a>Wprowadzenie

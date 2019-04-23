@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 04/04/2018
+ms.date: 04/18/2019
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 33d8f2e7c65a786d1ecb389574fe186efb6fb705
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
-ms.translationtype: MT
+ms.openlocfilehash: b17978da3195b364f868d33ab7ad9faa1544e9ec
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630787"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006798"
 ---
 # <a name="stream-azure-diagnostic-logs-to-log-analytics-workspace-in-azure-monitor"></a>Dzienniki diagnostyczne usługi Azure Stream do obszaru roboczego usługi Log Analytics w usłudze Azure Monitor
 
@@ -107,7 +107,7 @@ Ponieważ wiele zasobów wysyłać typy danych są wysyłane do tej samej tabeli
  
 Tabela AzureDiagnostics będzie wyglądać następująco, z pewnymi przykładowymi danymi:  
  
-| ResourceProvider | Kategoria | A | B | C | D | E | F | G | H | I |
+| ResourceProvider | Category | A | B | C | D | E | F | G | H | I |
 | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
 | Microsoft.Resource1 | AuditLogs | x1 | y1 | z1 |
 | Microsoft.Resource2 | Przesłano | | | | q1 | w1 | e1 |
@@ -124,7 +124,7 @@ Usługa Azure Data Factory, ze względu na zestaw bardzo szczegółowych dzienni
 - *Parametry użytkownika zdefiniowane w odniesieniu do dowolnych działań w potoku*: będzie nową kolumnę utworzone dla każdego parametru unikatową nazwę użytkownika względem wszelkich działań. 
 - *Działanie wejściami i wyjściami*: te różnią się działanie do działania i generowanie dużej liczby kolumn z powodu ich pełne charakter. 
  
-Jako szersze propozycje rozwiązania poniżej, zalecane jest ich do dzienników usługi ADF własne obszar roboczy, aby zminimalizować prawdopodobieństwo te dzienniki wywierania wpływu na inne typy dzienników są zbierane w obszarach roboczych. Oczekujemy odpowiednie dzienniki usługi Azure Data Factory połowy kwietnia 2019 r.
+Jako szersze propozycje rozwiązania poniżej, zalecane jest ich do dzienników usługi ADF własne obszar roboczy, aby zminimalizować prawdopodobieństwo te dzienniki wywierania wpływu na inne typy dzienników są zbierane w obszarach roboczych. Oczekujemy wkrótce odpowiednie dzienniki usługi Azure Data Factory.
  
 #### <a name="workarounds"></a>Rozwiązania
 Krótkoterminowe, dopóki nie zostało ponownie zdefiniowane limit 500 kolumny, zalecane jest oddzielenie typy pełnych danych do oddzielnych obszarów roboczych, aby zmniejszyć prawdopodobieństwo osiągnięcia limitu.

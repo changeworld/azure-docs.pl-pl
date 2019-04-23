@@ -1,7 +1,6 @@
 ---
-title: Zrozumienie SUSE rezerwacją planu i użycia — Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak SUSE plan rabaty dotyczą oprogramowania SUSE na maszynach wirtualnych.
-services: billing
+title: Rabat w wysokości plan oprogramowania — Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak rabaty w ramach planu oprogramowanie są stosowane do oprogramowania na maszynach wirtualnych.
 documentationcenter: ''
 author: yashesvi
 manager: yashar
@@ -11,22 +10,46 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/28/2018
+ms.date: 04/12/2019
 ms.author: banders
-ms.openlocfilehash: 4305db991a8129b0ae4205300051391df893c52c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: bcbf5ab48f3476a911fc4ade1eb0c395fb335d43
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58917791"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002735"
 ---
-# <a name="understand-how-the-suse-linux-enterprise-software-reservation-plan-discount-is-applied-for-azure"></a>Zrozumieć sposób zastosowania planu rezerwacją oprogramowania SUSE Linux Enterprise na platformie Azure
+# <a name="azure-software-plan-discount"></a>Rabat plan oprogramowania platformy Azure
 
-Po możesz kupić plan SUSE Linux, rabat jest automatycznie stosowany do wdrożonej SUSE maszyn wirtualnych (VM, które odpowiadają rezerwacji). Plan SUSE Linux po awarii obejmuje koszt z uruchamiania oprogramowania SUSE na Maszynie wirtualnej platformy Azure.
+Plany oprogramowania platformy Azure, SUSE i RedHat są rezerwacji, które są stosowane do wdrożone maszyny wirtualne. Rabat w wysokości plan oprogramowania są stosowane do użytkowania oprogramowania, które odpowiadają rezerwacji wdrożone maszyny wirtualne.
 
-Aby kupić właściwego planu SUSE Linux, musisz zrozumieć, jakie maszyny wirtualne SUSE w uruchomieniu i liczba procesorów wirtualnych na tych maszynach wirtualnych. Następujące sekcje zawierają informacje ułatwiające identyfikację z pliku CSV użycia, co to jest plan zakupu.
+Podczas zamykania maszyny Wirtualnej rabat jest automatycznie stosowana do innej maszyny Wirtualnej dopasowania, jeśli jest dostępny. Plan oprogramowania po awarii obejmuje koszt uruchamiania oprogramowania na maszynie Wirtualnej. Inne opłaty, takich jak wystąpienia obliczeniowe, Magazyn i sieć, są rozliczane osobno.
 
-## <a name="discount-applies-to-different-vm-sizes"></a>Rabat ma zastosowanie do różnych rozmiarów maszyn wirtualnych
+Aby kupić właściwego planu, należy zrozumieć wykorzystanie maszyny Wirtualnej i liczbę procesorów wirtualnych na tych maszynach wirtualnych. Następujące sekcje ułatwiają określenie, co w planie kupić, na podstawie danych użycia.
+
+## <a name="how-reservation-discount-is-applied"></a>Jaki jest stosowany rabat związany z rezerwacją
+
+Rabat związany z rezerwacją jest "*Użyj it lub utracić — it*". Tak Jeśli nie masz żadnych godzinę dopasowywania zasobów, następnie traci ilość rezerwacji dla danej godziny. Nie można wykonać nieużywane zastrzeżone godzin przekazywania.
+
+Podczas zamykania zasobem rabat związany z rezerwacją jest automatycznie stosuje do innego zasobu zgodnego z określonego zakresu. Jeśli żadne pasujące zasoby znajdują się w określonym zakresie, a następnie są zarezerwowane godzin *utracone*.
+
+## <a name="review-redhat-vm-usage-before-you-buy"></a>Przejrzyj użycie maszyny Wirtualnej z systemem RedHat przed zakupem
+
+Pobierz nazwę produktu z danych użycia i Kup RedHat plan przy użyciu tego samego typu i rozmiaru.
+
+Na przykład, jeśli użycie ma produktu **Red Hat Enterprise Linux - 1-4 vCPU licencji maszyny Wirtualnej**, musisz kupić **Red Hat Enterprise Linux** dla **1 – 4 vCPU maszyny Wirtualnej**.
+
+<!--ADD RHEL SCREENSHOT -->
+
+## <a name="review-suse-vm-usage-before-you-buy"></a>Przed zakupem, przejrzyj użycie maszyny Wirtualnej z systemem SUSE
+
+Pobierz nazwę produktu z danych użycia i Kup SUSE plan przy użyciu tego samego typu i rozmiaru.
+
+Na przykład w przypadku użycia produktu **SUSE Linux Enterprise Server priorytet — 2 – 4 vCPU maszyn wirtualnych z osłoną**, musisz kupić **SUSE Linux Enterprise Server priorytet** dla **2 – 4 vCPU**.
+
+![Przykład wybierania produktów do zakupu](./media/billing-understand-suse-reservation-charges/select-suse-linux-enterprise-server-priority-2-4-vcpu.png)
+
+## <a name="discount-applies-to-different-vm-sizes-for-suse-plans"></a>Rabat ma zastosowanie do różnych rozmiarów maszyn wirtualnych w przypadku planów SUSE
 
 Jak zarezerwowanych wystąpień maszyn wirtualnych, SUSE planu zakupów oferują elastyczność rozmiaru wystąpienia. Oznacza to, że ma zastosowanie rabat, nawet gdy wdrożysz maszynę Wirtualną wraz z liczbą różnych procesorów wirtualnych. Rabat stosuje się do różnych rozmiarów maszyn wirtualnych w ramach planu oprogramowania.
 
@@ -39,8 +62,6 @@ Na przykład możesz kupić plan dla SUSE Linux Enterprise Server for HPC — pr
 - lub 0.77 lub wkrótce % 77 maszyny wirtualnej z 5 lub więcej procesorów wirtualnych.
 
 Współczynnik 5 lub więcej procesorów wirtualnych Vcpu jest 2.6. Dlatego Rezerwacja SUSE z maszyną Wirtualną z 5 lub więcej procesorów wirtualnych Vcpu obejmuje tylko część koszt oprogramowania, czyli około 77%.
-
-## <a name="understand-suse-vm-usage-before-you-buy"></a>Opis przed zakupem maszyny Wirtualnej z systemem SUSE
 
 W poniższych tabelach przedstawiono plany oprogramowania, które można kupić rezerwację dla ich użycia skojarzone liczniki i współczynniki dla każdego.
 
@@ -122,6 +143,10 @@ Nazwy witryny portalu Azure marketplace:
 |SLES 3 do 4 rdzeni procesorów wirtualnych Vcpu |0c3ebb4c-db7d-4125-b45a-0534764d4bda|1.92308|D4s_v3|
 |SLES 5 + procesorów wirtualnych |7b349b65-d906-42e5-833f-b2af38513468|2.30769| D8s_v3|
 
+## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami
+
+Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://go.microsoft.com/fwlink/?linkid=2083458).
+
 ## <a name="next-steps"></a>Kolejne kroki
 
 Aby dowiedzieć się więcej na temat rezerwacji, zobacz następujące artykuły:
@@ -132,7 +157,3 @@ Aby dowiedzieć się więcej na temat rezerwacji, zobacz następujące artykuły
 - [Zarządzanie usługą Azure Reservations](billing-manage-reserved-vm-instance.md)
 - [Opis zastrzeżenia dla Twojej subskrypcji zgodnie z rzeczywistym użyciem](billing-understand-reserved-instance-usage.md)
 - [Opis zastrzeżenia dla Twojej rejestracji Enterprise](billing-understand-reserved-instance-usage-ea.md)
-
-## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami
-
-Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://go.microsoft.com/fwlink/?linkid=2083458).

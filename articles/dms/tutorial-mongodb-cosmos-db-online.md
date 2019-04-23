@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 1e1cb509f296d8bed8efc3a3d520a1c480c1f775
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 173343677d6c44135037978e1c5b60313251ba43
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58885302"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60003840"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-online-using-dms-preview"></a>Samouczek: Migrowanie bazy danych MongoDB do interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB w trybie online za pomocą usługi DMS (wersja zapoznawcza)
 Za pomocą usługi Azure Database Migration Service możesz przeprowadzić (z minimalnym przestojem) migrację online baz danych wystąpienia MongoDB znajdujących się w chmurze lub środowisku lokalnym do interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB.
@@ -43,6 +43,7 @@ W tym artykule opisano migrację online z bazy danych MongoDB do interfejsu API 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Do ukończenia tego samouczka niezbędne są następujące elementy:
+- [Wykonaj przed migracją](../cosmos-db/mongodb-pre-migration.md) czynności, takie jak szacowanie przepływności, Wybieranie klucza partycji i zasad indeksowania.
 - [Utworzenie konta interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB](https://ms.portal.azure.com/#create/Microsoft.DocumentDB).
 - Utworzenie usługi Azure Virtual Network (VNET) dla usługi Azure Database Migration Service przy użyciu modelu wdrożenia usługi Azure Resource Manager, która zapewnia łączność między lokacjami dla lokalnych serwerów źródłowych, z użyciem usługi [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) lub sieci [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
 
@@ -215,6 +216,10 @@ Po utworzeniu usługi znajdź ją w witrynie Azure Portal, otwórz ją, a nastę
     Ta akcja spowoduje zakończenie ponownego odtwarzania wszystkich oczekujących zmian i ukończenie migracji.
 
     ![Stan działania Ponowne odtwarzanie](media/tutorial-mongodb-to-cosmosdb-online/dms-finish-migration.png)
+
+## <a name="post-migration-optimization"></a>Optymalizacja po migracji
+
+Po przeprowadzeniu migracji danych przechowywanych w bazie danych MongoDB do interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB, można połączyć z usługą Azure Cosmos DB i zarządzania danymi. Inne po migracji można również wykonać kroki optymalizacji, takie jak — Optymalizacja zasady indeksowania, zaktualizuj domyślny poziom spójności lub konfigurowanie dystrybucji globalnej dla swojego konta usługi Azure Cosmos DB. Aby uzyskać więcej informacji, zobacz [optymalizacji po przeprowadzeniu migracji](../cosmos-db/mongodb-post-migration.md) artykułu. 
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 

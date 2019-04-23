@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: cf163b2b01b4205a4a3d2123263988998130c42a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 04/19/2019
+ms.openlocfilehash: f382cc547640969f934b94405b635c9e84f10791
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58848379"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009076"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Używanie grup automatyczny tryb failover do włączenia przejrzyste i skoordynowany trybu failover wielu baz danych
 
@@ -40,7 +40,7 @@ Aby osiągnąć rzeczywistych ciągłości działania, dodawanie nadmiarowość 
 
 ## <a name="auto-failover-group-terminology-and-capabilities"></a>Automatyczny tryb failover grupy terminologii i możliwości
 
-- **Grupy trybu failover**
+- **Grupy trybu failover (MGŁA)**
 
   Grupy trybu failover jest grupą baz danych zarządzanych przez jeden serwer bazy danych SQL lub w ramach jednego wystąpienia zarządzanego, który przełączanie do trybu failover jako jednostka do innego regionu w przypadku wszystkich lub niektórych podstawowych baz danych staną się niedostępne z powodu awarii w regionie podstawowym.
 
@@ -77,11 +77,11 @@ Aby osiągnąć rzeczywistych ciągłości działania, dodawanie nadmiarowość 
 
   - **Serwer usługi SQL Database rekordu CNAME systemu DNS dla odbiornika do odczytu i zapisu**
 
-     Na serwerze bazy danych SQL, rekordu CNAME systemu DNS dla grupy trybu failover, wskazujący na bieżący podstawowy adres URL został utworzony jako `failover-group-name.database.windows.net`.
+     Na serwerze bazy danych SQL, rekordu CNAME systemu DNS dla grupy trybu failover, wskazujący na bieżący podstawowy adres URL został utworzony jako `<fog-name>.database.windows.net`.
 
   - **Zarządzane rekordu CNAME systemu DNS wystąpienia dla odbiornika do odczytu i zapisu**
 
-     W wystąpieniu zarządzanym, rekordu CNAME systemu DNS dla grupy trybu failover, wskazujący na bieżący podstawowy adres URL został utworzony jako `failover-group-name.zone_id.database.windows.net`.
+     W wystąpieniu zarządzanym, rekordu CNAME systemu DNS dla grupy trybu failover, wskazujący na bieżący podstawowy adres URL został utworzony jako `<fog-name>.zone_id.database.windows.net`.
 
 - **Odbiornik grupy trybu failover tylko do odczytu**
 
@@ -89,11 +89,11 @@ Aby osiągnąć rzeczywistych ciągłości działania, dodawanie nadmiarowość 
 
   - **Serwer usługi SQL Database rekordu CNAME systemu DNS dla odbiornika tylko do odczytu**
 
-     Na serwerze bazy danych SQL, rekordu CNAME systemu DNS dla odbiornika tylko do odczytu, wskazujący na adres URL pomocniczy został utworzony jako `failover-group-name.secondary.database.windows.net`.
+     Na serwerze bazy danych SQL, rekordu CNAME systemu DNS dla odbiornika tylko do odczytu, wskazujący na adres URL pomocniczy został utworzony jako `'.secondary.database.windows.net`.
 
   - **Zarządzane rekordu CNAME systemu DNS wystąpienia dla odbiornika tylko do odczytu**
 
-     W wystąpieniu zarządzanym, rekordu CNAME systemu DNS dla odbiornika tylko do odczytu, wskazujący na adres URL pomocniczy został utworzony jako `failover-group-name.zone_id.database.windows.net`.
+     W wystąpieniu zarządzanym, rekordu CNAME systemu DNS dla odbiornika tylko do odczytu, wskazujący na adres URL pomocniczy został utworzony jako `<fog-name>.zone_id.database.windows.net`.
 
 - **Zasady automatycznej pracy awaryjnej**
 
@@ -156,11 +156,11 @@ Podczas projektowania usługi za pomocą ciągłość prowadzenia działalności
 
 - **Użyj odbiornika odczytu i zapisu dla obciążenia OLTP**
 
-  Podczas wykonywania operacji OLTP, użyj `failover-group-name.database.windows.net` jako serwer połączenia i adres URL automatycznie są kierowane do podstawowego. Ten adres URL nie zmienia się po pracy w trybie failover. Należy pamiętać, że przełączenie w tryb failover wymaga aktualizacji, który rekord DNS, dzięki czemu połączenia klienckie są przekierowywane do nowej podstawowej tylko wtedy, gdy klienta pamięci podręcznej DNS są odświeżane.
+  Podczas wykonywania operacji OLTP, użyj `<fog-name>.database.windows.net` jako serwer połączenia i adres URL automatycznie są kierowane do podstawowego. Ten adres URL nie zmienia się po pracy w trybie failover. Należy pamiętać, że przełączenie w tryb failover wymaga aktualizacji, który rekord DNS, dzięki czemu połączenia klienckie są przekierowywane do nowej podstawowej tylko wtedy, gdy klienta pamięci podręcznej DNS są odświeżane.
 
 - **Użyj odbiornika tylko do odczytu dla obciążenia tylko do odczytu**
 
-  Jeśli masz obciążenie logicznie izolowanej tylko do odczytu, która jest odporny na niektórych nieaktualność danych, można użyć pomocniczej bazy danych w aplikacji. W przypadku sesji tylko do odczytu, użyj `failover-group-name.secondary.database.windows.net` jako serwer adresu URL i połączenia automatycznie zostanie skierowany do regionu pomocniczego. Zaleca się wskazanie w parametrach połączenia odczytać intencji za pomocą **ApplicationIntent = tylko do odczytu**.
+  Jeśli masz obciążenie logicznie izolowanej tylko do odczytu, która jest odporny na niektórych nieaktualność danych, można użyć pomocniczej bazy danych w aplikacji. W przypadku sesji tylko do odczytu, użyj `<fog-name>.secondary.database.windows.net` jako serwer adresu URL i połączenia automatycznie zostanie skierowany do regionu pomocniczego. Zaleca się wskazanie w parametrach połączenia odczytać intencji za pomocą **ApplicationIntent = tylko do odczytu**.
 
 - **Przygotowanie do obniżenia wydajności**
 
@@ -206,7 +206,7 @@ Jeśli aplikacja używa wystąpienia zarządzanego jako warstwa danych, wykonaj 
 
 - **Użyj odbiornika odczytu i zapisu dla obciążenia OLTP**
 
-  Podczas wykonywania operacji OLTP, użyj `failover-group-name.zone_id.database.windows.net` jako serwer połączenia i adres URL automatycznie są kierowane do podstawowego. Ten adres URL nie zmienia się po pracy w trybie failover. Przełączenie w tryb failover obejmuje aktualizowania rekordu DNS, aby połączenia klienckie są przekierowywane do nowej podstawowej tylko wtedy, gdy klienta pamięci podręcznej DNS są odświeżane. Ponieważ wystąpienia dodatkowej udostępni podstawowej strefy DNS, aplikacja kliencka będzie można ponownie połączyć się z nim przy użyciu tego samego certyfikatu SAN.
+  Podczas wykonywania operacji OLTP, użyj `<fog-name>.zone_id.database.windows.net` jako serwer połączenia i adres URL automatycznie są kierowane do podstawowego. Ten adres URL nie zmienia się po pracy w trybie failover. Przełączenie w tryb failover obejmuje aktualizowania rekordu DNS, aby połączenia klienckie są przekierowywane do nowej podstawowej tylko wtedy, gdy klienta pamięci podręcznej DNS są odświeżane. Ponieważ wystąpienia dodatkowej udostępni podstawowej strefy DNS, aplikacja kliencka będzie można ponownie połączyć się z nim przy użyciu tego samego certyfikatu SAN.
 
 - **Połączyć się bezpośrednio z dodatkowej bazy danych replikowanej geograficznie zapytań tylko do odczytu**
 
@@ -214,8 +214,8 @@ Jeśli aplikacja używa wystąpienia zarządzanego jako warstwa danych, wykonaj 
 
   > [!NOTE]
   > W przypadku niektórych warstw usług Azure SQL Database obsługuje [tylko do odczytu replik](sql-database-read-scale-out.md) załadować równoważenia obciążeń związanych z zapytaniami tylko do odczytu za pomocą pojemność jednej z replik tylko do odczytu i przy użyciu `ApplicationIntent=ReadOnly` parametru w połączeniu ciąg. Po skonfigurowaniu pomocniczej z replikacją geograficzną, można użyć tej funkcji można połączyć się z jednej repliki tylko do odczytu w lokalizacji głównej lub w lokalizacji zreplikowanych geograficznie.
-  > - Aby połączyć się z repliką tylko do odczytu w lokalizacji podstawowej, użyj `failover-group-name.zone_id.database.windows.net`.
-  > - Aby połączyć z repliki tylko do odczytu w lokalizacji dodatkowej, należy użyć `failover-group-name.secondary.zone_id.database.windows.net`.
+  > - Aby połączyć się z repliką tylko do odczytu w lokalizacji podstawowej, użyj `<fog-name>.zone_id.database.windows.net`.
+  > - Aby połączyć z repliki tylko do odczytu w lokalizacji dodatkowej, należy użyć `<fog-name>.secondary.zone_id.database.windows.net`.
 
 - **Przygotowanie do obniżenia wydajności**
 

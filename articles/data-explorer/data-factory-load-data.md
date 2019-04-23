@@ -8,14 +8,14 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: c3c5484d865c73a6f478ffc9ad4c3fc86c2c8170
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
-ms.translationtype: MT
+ms.openlocfilehash: 64856d53168a7676cf279da2d8675ce81e1985f7
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59619103"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60005370"
 ---
-# <a name="copy-data-from-azure-data-factory-to-azure-data-explorer"></a>Kopiowanie danych z usługi Azure Data Factory do Eksploratora danych platformy Azure
+# <a name="copy-data-to-azure-data-explorer-using-azure-data-factory"></a>Kopiowanie danych do Eksploratora danych Azure przy użyciu usługi Azure Data Factory 
 
 Eksplorator usługi Azure Data to szybki, w pełni zarządzana Usługa do analizowania danych w czasie rzeczywistym analizy dużych ilości danych przesyłanych strumieniowo z wielu źródeł, takich jak aplikacje, witryny sieci Web i urządzeń IoT. Iteracyjne eksplorować dane i zidentyfikować wzorce i anomalie, aby ulepszać produkty, chcę udoskonalić środowisko pracy klienta, monitorowanie urządzeń i operacji zwiększania. Eksploruj nowe pytania i uzyskuj odpowiedzi w ciągu minut. Usługa Azure Data Factory to usługa integracji danych w pełni zarządzane w chmurze. Korzystać z niej, aby wypełnić bazę danych Eksplorator danych Azure przy użyciu danych z istniejącego systemu i zaoszczędzić czas podczas tworzenia rozwiązań do analizy.
 
@@ -32,7 +32,7 @@ W tym artykule przedstawiono sposób użycia narzędzia do kopiowania danych w b
 
 * Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
 * [Eksplorator danych usługi Azure klastra i bazy danych](create-cluster-database-portal.md)
-* Amazon S3.
+* Źródło danych.
 
 ## <a name="create-a-data-factory"></a>Tworzenie fabryki danych
 
@@ -147,10 +147,6 @@ Azure Eksploratorze danych nowa połączona usługa jest tworzony do kopiowania 
 
     ![ADX docelowego magazynu danych](media/data-factory-load-data/destination-data-store.png)
 
-1. W **Wybieranie wyjściowego pliku lub folderu**, wprowadź nazwę folderu danych wyjściowych, określić ustawienia, a następnie wybierz **dalej**.
-
-    ![Określ folder wyjściowy](media/data-factory-load-data/specify-path.png)
-
 1. W **Mapowanie tabeli**, ustaw nazwę tabeli docelowej i wybierz **dalej**.
 
     ![Docelowy zestaw danych tabeli mapowania](media/data-factory-load-data/destination-dataset-table-mapping.png)
@@ -186,6 +182,8 @@ Azure Eksploratorze danych nowa połączona usługa jest tworzony do kopiowania 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Dowiedz się więcej o edytowaniu połączone usługi, zestawy danych i potoki w [interfejs użytkownika usługi Data Factory](/azure/data-factory/quickstart-create-data-factory-portal)
+* Dowiedz się więcej o [Eksploratora usługi Azure Data connector](/azure/data-factory/connector-azure-data-explorer) w usłudze Azure Data Factory.
+
+* Dowiedz się więcej o edytowaniu połączone usługi, zestawy danych i potoki w [interfejs użytkownika usługi Data Factory](/azure/data-factory/quickstart-create-data-factory-portal).
 
 * Dowiedz się więcej o [zapytań Eksploratora danych usługi Azure](/azure/data-explorer/web-query-data) danych podczas wykonywania zapytań.

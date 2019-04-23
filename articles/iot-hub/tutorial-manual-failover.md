@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: ff8ef576a0dae0f03cc0c80f83ce0c24cf3945a2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: 40a7bba99068ebc2368e413199cf966bd2e4f25c
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58093739"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002905"
 ---
 # <a name="tutorial-perform-manual-failover-for-an-iot-hub-public-preview"></a>Samouczek: Ręczne przechodzenie w tryb failover dla centrum IoT (publiczna wersja zapoznawcza)
 
@@ -49,9 +49,6 @@ Ten samouczek obejmuje wykonanie następujących zadań:
 
     **Region**: wybierz region znajdujący się w pobliżu, który należy do wersji zapoznawczej. W tym samouczku użyto regionu `westus2`. Przejście w tryb failover można wykonać tylko między sparowanymi geograficznie regionami świadczenia usługi Azure. Regionem sparowanym geograficznie z regionem westus2 jest region WestCentralUS.
     
-   > [!NOTE]
-   > Ręczne przechodzenie do trybu failover jest obecnie w publicznej wersji zapoznawczej i *nie jest* dostępne w następujących regionach platformy Azure: Wschodnie stany USA, Zachodnie stany USA, Europa Północna, Europa Zachodnia, Brazylia Południowa i Południowo-środkowe stany USA.
-
    **Nazwa centrum IoT Hub**:podaj nazwę centrum IoT Hub. Nazwa centrum musi być unikatowa w skali globalnej. 
 
    ![Zrzut ekranu przedstawiający okienko Podstawowe umożliwiające utworzenie centrum IoT Hub](./media/tutorial-manual-failover/create-hub-02-basics.png)

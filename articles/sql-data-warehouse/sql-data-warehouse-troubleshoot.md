@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 12/04/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: a5b4d9fac1d2fb3ec1a45f34784552b2d41f2cf1
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.openlocfilehash: dc78fbc93d625b39379e07f240eef7fbad10d194
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59679333"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60003857"
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>Rozwiązywanie problemów z usługi Azure SQL Data Warehouse
 W tym artykule wymieniono typowe pytania dotyczące rozwiązywania problemów.
@@ -33,7 +33,7 @@ W tym artykule wymieniono typowe pytania dotyczące rozwiązywania problemów.
 | Problem                                                        | Rozwiązanie                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | Brak użytkowników usługi AAD w Eksploratorze obiektów programu Visual Studio           | Jest to znany problem.  Jako obejście, Wyświetl użytkowników w [sys.database_principals][sys.database_principals].  Zobacz [uwierzytelniania usługi Azure SQL Data Warehouse] [ Authentication to Azure SQL Data Warehouse] Aby dowiedzieć się więcej o korzystaniu z usługi Azure Active Directory z usługą SQL Data Warehouse. |
-| Podręcznik obsługi skryptów, za pomocą Kreatora skryptów lub łączących się za pomocą programu SSMS jest powolne, zawiesiła się lub tworzenie błędów | Upewnij się, że użytkownicy zostały utworzone w bazie danych master. W oknie dialogowym Opcje obsługi skryptów również upewnij się, że wersja silnika jest ustawiana jako "Microsoft Azure SQL Data Warehouse w wersji" i typ aparatu to "Microsoft Azure SQL Database". |
+| Podręcznik obsługi skryptów, za pomocą Kreatora skryptów lub łączących się za pomocą programu SSMS jest powolne, nie odpowiada lub produkcji błędy | Upewnij się, że użytkownicy zostały utworzone w bazie danych master. W oknie dialogowym Opcje obsługi skryptów również upewnij się, że wersja silnika jest ustawiana jako "Microsoft Azure SQL Data Warehouse w wersji" i typ aparatu to "Microsoft Azure SQL Database". |
 | Generowanie skryptów zakończy się niepowodzeniem w programie SSMS                             | Generowanie skryptu dla usługi SQL data warehouse zakończy się niepowodzeniem, jeśli opcja "Generuj skrypt dla obiektów zależnych" opcja jest ustawiona na wartość "True". Jako obejście, użytkownicy muszą ręcznie przejdź do pozycji Narzędzia -> Opcje -> Eksplorator obiektów SQL Server -> Generuj skrypt dla opcji zależnych, a wartość false |
 
 ## <a name="performance"></a>Wydajność

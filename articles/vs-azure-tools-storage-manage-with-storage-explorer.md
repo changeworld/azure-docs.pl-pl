@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2017
 ms.author: cawa
-ms.openlocfilehash: 61bb5601cf20e9f6e4fba1300d8f84c9d039e564
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
-ms.translationtype: MT
+ms.openlocfilehash: 38a857b1d309b92c48137a46655155e0e131908c
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225097"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002684"
 ---
 # <a name="get-started-with-storage-explorer"></a>Wprowadzenie do Eksploratora usługi Storage
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Eksplorator usługi Azure Storage jest aplikacją autonomiczną, która umożliwia łatwą obsługę danych w usłudze Azure Storage w Windows, macOS i Linux. W tym artykule dowiesz się kilka sposobów nawiązywania połączenia z kontami i zarządzania nimi usługi Azure storage.
 
@@ -99,7 +99,7 @@ Ponadto można pracować z kontami magazynu na globalnej i krajowej platformie A
 
 2. W okienku po lewej stronie zostaną wyświetlone wszystkie konta platformy Azure, których użytkownik został zarejestrowany w usłudze. Aby połączyć z innym kontem, wybierz **Dodaj konto**
 
-3. Jeśli chcesz zalogować się do chmur krajowych lub usługi Azure Stack, wybierz polecenie **środowiska platformy Azure** listę rozwijaną, aby wybrać, jaka chmura platformy Azure, której chcesz użyć. Po wybraniu środowiska kliknij **Zaloguj się...**  przycisku. Jeśli logujesz się do usługi Azure Stack, zobacz [Połącz Eksplorator usługi Storage z subskrypcją usługi Azure Stack](azure-stack/user/azure-stack-storage-connect-se.md) Aby uzyskać więcej informacji.
+3. Jeśli chcesz zalogować się do chmur krajowych lub usługi Azure Stack, wybierz polecenie **środowiska platformy Azure** listę rozwijaną, aby wybrać, jaka chmura platformy Azure, której chcesz użyć. Po wybraniu środowiska kliknij **Zaloguj się...**  przycisku. Jeśli logujesz się do usługi Azure Stack, zobacz [Połącz Eksplorator usługi Storage z subskrypcją usługi Azure Stack](/azure-stack/user/azure-stack-storage-connect-se) Aby uzyskać więcej informacji.
 
     ![Zaloguj się w — opcja][2]
 

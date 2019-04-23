@@ -1,7 +1,6 @@
 ---
-title: Kupić plany SUSE Linux — Azure rezerwacje | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak Zapłać z góry za użycie SUSE i zaoszczędzić pieniądze w porównaniu z tego względu koszt zgodnie z rzeczywistym użyciem.
-services: virtual-machines-linux
+title: Zapłać z góry za plany oprogramowania - Azure rezerwacje | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak wpłacenia zaliczki dla plany oprogramowania zaoszczędzić pieniądze w porównaniu z tego względu koszt zgodnie z rzeczywistym użyciem.
 documentationcenter: ''
 author: yashesvi
 manager: yashesvi
@@ -11,52 +10,62 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/18/2019
-ms.author: yashar
-ms.openlocfilehash: 4f70a34febcf0b39d051053a6ddd9abe5c9a6726
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
-ms.translationtype: MT
+ms.date: 04/12/2019
+ms.author: banders
+ms.openlocfilehash: e15dcdbbcaed32d836bb751ef93ce17e90bd6905
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745983"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011099"
 ---
-# <a name="prepay-for-suse-software-plans-from-azure-reservations"></a>Zapłać z góry za plany oprogramowania SUSE z listy zastrzeżeń platformy Azure
+# <a name="prepay-for-azure-software-plans"></a>Zapłać z góry za plany oprogramowania platformy Azure
 
-Zapłać z góry za użycie SUSE i zaoszczędzić pieniądze w porównaniu z tego względu koszt zgodnie z rzeczywistym użyciem. Zniżki dotyczą tylko w przypadku, SUSE liczniki i nie na użycie maszyny wirtualnej. Możesz kupować rezerwacje dla maszyn wirtualnych zaoszczędzić jeszcze więcej.
+Gdy wpłacenia zaliczki użycia oprogramowania SUSE a RedHat na platformie Azure możesz zaoszczędzić pieniądze w porównaniu z tego względu koszt zgodnie z rzeczywistym użyciem. Zniżki dotyczą tylko w przypadku, SUSE i RedHat i nie na użycie maszyny wirtualnej. Możesz kupować rezerwacje w przypadku maszyn wirtualnych niezależnie w celu uzyskania dodatkowych oszczędności.
 
-Możesz kupić plany oprogramowania SUSE w witrynie Azure portal. Aby kupić plan:
+Możesz kupić plany oprogramowania SUSE i RedHat w witrynie Azure portal. Aby kupić plan:
 
-- Musisz być w roli właściciela dla co najmniej jeden Enterprise lub subskrypcję z płatnością za rzeczywiste użycie.
-- W przypadku subskrypcji Enterprise **Dodawanie wystąpień zarezerwowanych** musi być włączona w [portalu EA portal](https://ea.azure.com). Lub, jeśli to ustawienie jest wyłączone, musi być administratorem subskrypcji umowy EA.
-- W przypadku programu Cloud Solution Provider (CSP) agentów administratora lub agentom sprzedaży można kupić plany SUSE.
+- Konieczne jest posiadanie roli właściciela dla co najmniej jeden Enterprise lub subskrypcję z płatnością za rzeczywiste użycie.
+- W przypadku subskrypcji Enterprise **Dodawanie wystąpień zarezerwowanych** należy włączyć opcję [portalu EA portal](https://ea.azure.com/). Jeśli ustawienie jest wyłączone, musi być administratorem dla subskrypcji EA.
+- W przypadku programu Cloud Solution Provider (CSP) agentów administratora lub agentom sprzedaży mogą kupować plany oprogramowania.
 
-## <a name="buy-a-suse-software-plan"></a>Kup plan oprogramowania SUSE
+## <a name="buy-a-software-plan"></a>Kup plan oprogramowania
 
-1. Przejdź do [rezerwacje](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) w witrynie Azure portal.
-1. Wybierz **Dodaj** i wybierz SUSE Linux.
-1. Wypełnij wymagane pola. Wszystkie maszyny Wirtualnej systemu Linux SUSE, odpowiadający atrybuty można zakupić pobiera rabat. Rzeczywista liczba wdrożeń, które zawierają Rabat zależy od tego, zakresu i ilość wybrana.
+1. Zaloguj się do witryny Azure portal i przejdź do [rezerwacje](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade).
+2. Kliknij przycisk **Dodaj** i następnie wybierz plan oprogramowania, który chcesz kupić.
+Wypełnij wymagane pola. Maszyny Wirtualnej z systemem SUSE Linux dowolnej maszyny Wirtualnej z systemem RedHat, odpowiadający atrybuty można zakupić pobiera rabat. Rzeczywista liczba wdrożeń, które zawierają Rabat zależy od tego, zakresu i ilość wybrana.
+3. Wybierz subskrypcję. Służy do zapłacenia za plan.
+Metoda płatności subskrypcji jest naliczana opłata z góry kosztów rezerwacji. Typ subskrypcji musi być umowy Enterprise Agreement (oferują liczb: MS-AZR-0017P lub MS-AZR - 0148 P) lub płatność za rzeczywiste użycie (oferują liczb: MS-AZR-0003P lub MS-AZR - 0023 P).
+    - W przypadku subskrypcji Enterprise opłaty są odliczane od salda zobowiązania pieniężnego rejestracji lub naliczane jako nadwyżka.
+    - W przypadku subskrypcji płatności opłaty są naliczane do metody płatności karty kredytowej lub faktury dla subskrypcji.
+4. Wybierz zakres. Zakres może obejmować subskrypcji jednej lub wielu subskrypcji (zakres udostępniony).
+    - Pojedynczej subskrypcji — rabat w wysokości plan jest stosowany do pasujących użycie w ramach subskrypcji.
+    - Czy rabat w wysokości plan w warstwie współdzielona — jest stosowany do pasujących wystąpień w dowolnej subskrypcji w kontekstu rozliczeń. Dla klientów korporacyjnych kontekstu rozliczeń jest rejestracji i zawiera wszystkie subskrypcje w rejestracji. W przypadku klientów płatność za rzeczywiste użycie kontekstu rozliczeń jest wszystkie subskrypcje płatność za rzeczywiste użycie utworzonego przez administratora konta.
+5. Wybierz produkt, aby wybrać rozmiar maszyny Wirtualnej i typ obrazu. Rabat dotyczy tylko wybrany rozmiar maszyny Wirtualnej.
+6. Wybierz termin jeden rok lub trzy lata.
+7. Wybierz ilość, czyli liczbę przedpłacone wystąpień maszyn wirtualnych, które mogą uzyskać rabat rozliczeń.
+8. Dodaj produkt do koszyka, przejrzyj i zakupu.
 
-    | Pole      | Opis|
-    |:------------|:--------------|
-    |Name (Nazwa)        |Nazwa tego zakupu.|
-    |Subskrypcja|Subskrypcja użytej do zapłacenia dla tego planu. Metodę płatności dla subskrypcji jest naliczana opłata z góry kosztów rezerwacji. Typ subskrypcji musi być umowy enterprise agreement (oferują liczb: MS-AZR-0017P lub MS-AZR - 0148 P) lub płatność za rzeczywiste użycie (oferują liczb: MS-AZR-0003P lub MS-AZR - 0023 P). W przypadku subskrypcji Enterprise opłaty są odliczane od salda zobowiązania pieniężnego rejestracji lub naliczane jako nadwyżka. W przypadku subskrypcji z płatnością zgodnie z rzeczywistym użyciem opłaty obciążają kartę kredytową lub metodę płatności faktury powiązaną z subskrypcją.|
-    |Zakres       |Zakres może obejmować subskrypcji jednej lub wielu subskrypcji (zakres udostępniony). Jeśli wybierzesz: <ul><li>Pojedynczej subskrypcji — rabat w wysokości plan jest stosowany do użycia SUSE Linux w ramach tej subskrypcji. </li><li>W warstwie współdzielona — zastosowania rabatu plan do użycia w systemie SUSE Linux w dowolnej subskrypcji w ramach kontekstu rozliczeń. Dla klientów korporacyjnych zakres udostępniony jest rejestracji i zawiera wszystkie subskrypcje w ramach rejestracji. Dla klientów rozliczana według bieżącego użycia udostępnionych zakres jest wszystkie subskrypcje płatność za rzeczywiste użycie utworzonego przez administratora konta.</li></ul>|
-    |Plan oprogramowania     |Wybierz plan, SUSE Linux. Aby uzyskać pomoc w identyfikacji rozwiązania do zakupienia, zobacz [Understand how the SUSE Linux Enterprise software reservation discount is applied (Sposób stosowania rabatu dotyczącego rezerwacji oprogramowania SUSE Linux Enterprise)](../../billing/billing-understand-suse-reservation-charges.md).|
-    |Rozmiar maszyny wirtualnej     |Cennik SUSE Linux, zależy od liczby procesorów wirtualnych na maszynie Wirtualnej. Wybierz opcję, która reprezentuje liczbę procesorów wirtualnych na maszynach wirtualnych systemu Linux SUSE.|
-    |Termin        |Jeden rok lub trzy lata.|
-    |Ilość    |Liczba maszyn wirtualnych, które kupujesz ten plan SUSE Linux. Ilość jest liczby uruchomionych wystąpień systemu SUSE Linux, które mogą uzyskać rabat rozliczeń.|
-1. Wybierz pozycję **Kup**.
-1. Wybierz **Wyświetl tę rezerwację** Aby wyświetlić stan zakupu.
+Rabat związany z rezerwacją jest automatycznie stosowany do skali oprogramowania, w którym możesz Zapłać z góry za. Opłaty za zasoby obliczeniowe maszyny Wirtualnej nie są objęte planu. Rezerwacji maszyny Wirtualnej można zakupić osobno.
 
-Rabat związany z rezerwacją jest automatycznie stosowany do dowolnego SUSE maszyn wirtualnych, które odpowiada rezerwacji. Rabat dotyczy tylko miernika SUSE. Opłaty za zasoby obliczeniowe maszyny Wirtualnej nie są objęte tego planu.
+## <a name="discount-applies-to-different-suse-vm-sizes"></a>Rabat ma zastosowanie do różnych rozmiarów maszyn wirtualnych z systemem SUSE
 
-## <a name="discount-applies-to-different-vm-sizes-with-instance-size-flexibility"></a>Rabat ma zastosowanie do różnych rozmiarów maszyn wirtualnych za pomocą elastyczność rozmiaru wystąpienia
+Jak zarezerwowanych wystąpień maszyn wirtualnych systemu SUSE Linux plany miesięczne oferują elastyczność rozmiaru wystąpienia. Rabat ma zastosowanie, nawet wtedy, gdy wdrożysz maszynę Wirtualną, która ma inny rozmiar z planu SUSE, których używasz. Aby uzyskać więcej informacji, zobacz [zrozumieć, jak jest stosowany rabat w wysokości plan oprogramowania](../../billing/billing-understand-suse-reservation-charges.md).
 
-Jak zarezerwowanych wystąpień maszyn wirtualnych systemu SUSE Linux plany miesięczne oferują elastyczność rozmiaru wystąpienia. Oznacza to, że ma zastosowanie rabat, nawet podczas wdrażania maszyny Wirtualnej, który jest inny rozmiar z planu SUSE, których używasz. Aby uzyskać więcej informacji, zobacz [zrozumieć, jak jest stosowany rabat związany z rezerwacją SUSE Linux Enterprise software](../../billing/billing-understand-suse-reservation-charges.md).
+## <a name="redhat-plan-discount"></a>RedHat plan rabatu
+
+Plany są dostępne tylko dla maszyn wirtualnych Red Hat Enterprise Linux. Ten rabat nie ma zastosowania do maszyn wirtualnych RedHat Enterprise Linux SAP HANA lub maszyn wirtualnych z RedHat Enterprise Linux SAP Business Apps.
+
+Rabaty w ramach planu RedHat dotyczą tylko rozmiar maszyny Wirtualnej możesz wybrać w momencie zakupu. RHEL planów nie może być zwrócona ani wymieniane po zakupie.
+
 
 ## <a name="cancellation-and-exchanges-not-allowed"></a>Anulowanie i wymiany niedozwolone
 
-Zakupionego planu SUSE nie można anulować ani wymienić. Sprawdź użycie, aby upewnić się, że zakupiony plan jest właściwy. Aby uzyskać pomoc w identyfikacji rozwiązania do zakupienia, zobacz [Understand how the SUSE Linux Enterprise software reservation discount is applied (Sposób stosowania rabatu dotyczącego rezerwacji oprogramowania SUSE Linux Enterprise)](../../billing/billing-understand-suse-reservation-charges.md).
+Nie można anulować lub wymiany SUSE lub RedHat plan, którego zakupiono. Sprawdź użycie, aby upewnić się, że zakupiony plan jest właściwy. Aby uzyskać pomoc, aby określić, co można kupić, zobacz [zrozumieć, jak jest stosowany rabat w wysokości plan oprogramowania](../../billing/billing-understand-suse-reservation-charges.md).
+
+## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
+
+Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
@@ -69,7 +78,3 @@ Aby dowiedzieć się więcej, zobacz następujące artykuły:
 - [Zrozumienie, jak stosowany jest rabat związany z rezerwacją SUSE](../../billing/billing-understand-suse-reservation-charges.md)
 - [Opis zastrzeżenia dla Twojej subskrypcji zgodnie z rzeczywistym użyciem](../../billing/billing-understand-reserved-instance-usage.md)
 - [Opis zastrzeżenia dla Twojej rejestracji Enterprise](../../billing/billing-understand-reserved-instance-usage-ea.md)
-
-## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
-
-Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

@@ -1,6 +1,6 @@
 ---
 title: Wysyłanie powiadomień do aplikacji platformy uniwersalnej systemu Windows przy użyciu usługi Azure Notification Hubs | Microsoft Docs
-description: Korzystając z tego samouczka, dowiesz się, jak wypychać powiadomienia do aplikacji platformy uniwersalnej systemu Windows przy użyciu usługi Azure Notification Hubs.
+description: Dowiedz się, jak używać usługi Azure Notification Hubs wysyłać powiadomienia wypychane do aplikacji platformy uniwersalnej dla Windows.
 services: notification-hubs
 documentationcenter: windows
 author: jwargo
@@ -15,23 +15,23 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/22/2019
 ms.author: jowargo
-ms.openlocfilehash: 093528dff09c71b999d58f0285044340fa0ec360
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
-ms.translationtype: MT
+ms.openlocfilehash: b9fa54a24c5d96f0d3ad48034907f2c6fe5cb385
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403208"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006934"
 ---
 # <a name="tutorial-send-notifications-to-universal-windows-platform-apps-by-using-azure-notification-hubs"></a>Samouczek: wysyłanie powiadomień do aplikacji platformy uniwersalnej systemu Windows przy użyciu usługi Azure Notification Hubs
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
-Korzystając z tego samouczka, utworzysz centrum powiadomień, aby wysyłać powiadomienia push do aplikacji platformy uniwersalnej systemu Windows (UWP, Universal Windows Platform). Utworzysz pustą aplikację dla Sklepu Windows, która odbiera powiadomienia push przy użyciu usługi powiadomień push systemu Windows (WNS). Następnie będzie można za pomocą centrum powiadomień wysyłać powiadomienia push do wszystkich urządzeń z tą aplikacją.
+Korzystając z tego samouczka, utworzysz centrum powiadomień, aby wysyłać powiadomienia push do aplikacji platformy uniwersalnej systemu Windows (UWP, Universal Windows Platform). Utworzysz pustą aplikację dla Sklepu Windows, która odbiera powiadomienia push przy użyciu usługi powiadomień push systemu Windows (WNS). Następnie przy użyciu Centrum powiadomień wysyłać powiadomienia push do wszystkich urządzeń, które są używane przez aplikację.
 
 > [!NOTE]
 > Kompletny kod dla tego samouczka można znaleźć [w witrynie GitHub](https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/GetStartedWindowsUniversal).
 
-W tym samouczku wykonasz następujące kroki:
+Należy wykonać następujące czynności:
 
 > [!div class="checklist"]
 > * Tworzenie aplikacji w Sklepie Windows
@@ -45,6 +45,11 @@ W tym samouczku wykonasz następujące kroki:
 - Program [Microsoft Visual Studio Community 2015](https://www.visualstudio.com/products/visual-studio-community-vs) lub nowszy.
 - [Zainstalowane narzędzia do programowania aplikacji platformy UWP](https://msdn.microsoft.com/windows/uwp/get-started/get-set-up)
 - Aktywne konto Sklepu Windows
+- Upewnij się, że **otrzymywać powiadomienia z aplikacji i innych nadawców** ustawienie jest włączone. 
+    - Uruchom **ustawienia** okna na tym komputerze.
+    - Wybierz **systemu** kafelka.
+    - Wybierz **powiadomienia i akcje** menu po lewej stronie. 
+    - Upewnij się, że **otrzymywać powiadomienia z aplikacji i innych nadawców** ustawienie jest włączone. Jeśli nie jest włączona, należy ją włączyć. 
 
 Wykonanie czynności opisanych w tym samouczku jest wymaganiem wstępnym dla wszystkich innych samouczków usługi Notification Hubs dotyczących aplikacji platformy UWP.
 
@@ -170,8 +175,7 @@ Możesz szybko przetestować odbieranie powiadomień w aplikacji, wysyłając po
     ![Komunikat z powiadomieniem](./media/notification-hubs-windows-store-dotnet-get-started/test-notification-message.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
-
-W tym samouczku wysłano wyemitowane powiadomienia do wszystkich urządzeń z systemem Windows przy użyciu portalu lub aplikacji konsolowej. Aby dowiedzieć się, jak wysyłać powiadomienia push do konkretnych urządzeń, przejdź do następującego samouczka:
+Za pomocą portalu lub aplikacji konsolowej zostały wysłano wyemitowane powiadomienia do wszystkich urządzeń z systemem Windows. Aby dowiedzieć się, jak wysyłać powiadomienia push do konkretnych urządzeń, przejdź do następującego samouczka:
 
 > [!div class="nextstepaction"]
 >[Wysyłanie powiadomień push do konkretnych urządzeń](

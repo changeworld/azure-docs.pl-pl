@@ -3,16 +3,16 @@ title: Omówienie usługi Azure Resource Graph
 description: Dowiedz się, jak usługa wykres zasobów platformy Azure umożliwia złożonych zapytań zasobów na dużą skalę.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/29/2019
+ms.date: 03/30/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 28efdabc024fd32c83ba966b15284ec6ff368d4d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d76a5b32403bd14f18181580f891925130808922
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59788998"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002888"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Omówienie usługi Azure Graph zasobów
 
@@ -21,11 +21,13 @@ Azure Resource Graph to usługa platformy Azure, której celem jest rozszerzenie
 - Zdolność do wysyłania zapytań do zasobów przy użyciu złożonego filtrowania, grupowania i sortowania według właściwości zasobu.
 - Zdolność do iteracyjnej eksploracji zasobów w oparciu o wymagania ładu i konwertowania wyrażenia wynikowego na definicję zasad.
 - Zdolność do oceny wpływu stosowania zasad na ogromne środowisko chmury.
+- Możliwość [szczegółów zmiany wprowadzone do właściwości zasobu](./how-to/get-resource-changes.md) (wersja zapoznawcza).
 
 W tej dokumentacji każda funkcja zostanie szczegółowo omówiona.
 
 > [!NOTE]
-> Usługa Azure Resource Graph jest używana przez nowe środowisko przeglądania „Wszystkie zasoby” witryny Azure Portal. Został zaprojektowany tak, aby ułatwić klientom z rzeczy, aby zarządzać środowiskami na dużą skalę.
+> Wykres zasobów platformy Azure jest używany przez nowy przeglądania "Wszystkie zasoby" środowiska użytkownika witryny Azure portal i usługi Azure Policy [historię zmian](../policy/how-to/determine-non-compliance.md#change-history-preview).
+> _Visual diff_. Ustalono, aby pomóc klientom w zarządzaniu środowisk na dużą skalę.
 
 ## <a name="how-does-resource-graph-complement-azure-resource-manager"></a>Jak usługa Resource Graph uzupełnia usługę Azure Resource Manager
 
@@ -33,13 +35,19 @@ Usługa Azure Resource Manager aktualnie wysyła dane do ograniczonej pamięci p
 
 Za pomocą usługi Azure Resource Graph możesz uzyskać dostęp do tych właściwości, które zwracają dostawców zasobów, bez konieczności wykonywania poszczególnych wywołań do każdego dostawcy zasobów. Aby uzyskać listę obsługiwane typy zasobów, poszukaj **tak** w [zasobów w przypadku wdrożeń w trybie](../../azure-resource-manager/complete-mode-deletion.md) tabeli.
 
+Wykres zasobów platformy Azure możesz:
+
+- Dostęp do właściwości zwracane przez dostawców zasobów bez konieczności wprowadzić poszczególne wywołania, aby każdy dostawca zasobów.
+- Wyświetlanie ostatnich 14 dni historii zmian wprowadzonych do zasobu zmianie właściwości i kiedy. (wersja zapoznawcza)
+
 ## <a name="the-query-language"></a>Język zapytań
 
 Teraz, gdy lepiej rozumiesz, czym jest usługa Azure Resource Graph, przyjrzyjmy się bliżej temu, jak tworzyć zapytania.
 
 Ważne jest zrozumienie, że język zapytań usługi Azure Resource Graph opiera się na języku zapytań [Kusto Query Language](../../data-explorer/data-explorer-overview.md) używanym przez usługę Azure Data Explorer.
 
-Po pierwsze, aby poznać szczegółowe informacje dotyczące operacji i funkcji, które mogą być używane z usługą Azure Resource Graph, zobacz [język zapytań usługi Resource Graph](./concepts/query-language.md). Aby przejrzeć zasoby, zobacz [badanie zasobów](./concepts/explore-resources.md).
+Po pierwsze, aby poznać szczegółowe informacje dotyczące operacji i funkcji, które mogą być używane z usługą Azure Resource Graph, zobacz [język zapytań usługi Resource Graph](./concepts/query-language.md).
+Aby przejrzeć zasoby, zobacz [badanie zasobów](./concepts/explore-resources.md).
 
 ## <a name="permissions-in-azure-resource-graph"></a>Uprawnienia w usłudze Azure Resource Graph
 
@@ -58,7 +66,7 @@ Wykres zasobów obsługuje wiersza polecenia platformy Azure, programu Azure Pow
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Uruchamianie pierwszego zapytania za pomocą [interfejsu wiersza polecenia platformy Azure](first-query-azurecli.md)
-- Uruchamianie pierwszego zapytania przy użyciu [programu Azure PowerShell](first-query-powershell.md)
-- Rozpoczynanie od [zapytań dla początkujących](./samples/starter.md)
-- Lepsze zrozumienie [zapytań zaawansowanych](./samples/advanced.md)
+- Uruchamianie pierwszego zapytania przy użyciu [wiersza polecenia platformy Azure](first-query-azurecli.md).
+- Uruchamianie pierwszego zapytania przy użyciu [programu Azure PowerShell](first-query-powershell.md).
+- Rozpoczynać [początkowego zapytania](./samples/starter.md).
+- W lepszym zrozumieniu z [zaawansowane zapytania](./samples/advanced.md).

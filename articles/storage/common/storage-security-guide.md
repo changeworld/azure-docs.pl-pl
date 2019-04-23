@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 329782a436924355dbdfbb5db260e88795394697
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
-ms.translationtype: MT
+ms.openlocfilehash: 74be21629a884313e74a824bb34fb5b66f5db61d
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650125"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006013"
 ---
 # <a name="azure-storage-security-guide"></a>Przewodnik po zabezpieczeniach magazynu platformy Azure
 
@@ -302,7 +302,7 @@ Sam szyfrowania można wygenerować i zarządzać kluczami szyfrowania. Można r
   Ten artykuł zawiera wyjaśnienie szyfrowania po stronie klienta i zawiera przykłady przy użyciu biblioteki klienta usługi storage do szyfrowania i odszyfrowywania zasobów z czterech usług magazynu. Również opowiada o usłudze Azure Key Vault.
 
 ### <a name="using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines"></a>Do szyfrowania dysków używanych przez maszyny wirtualne przy użyciu usługi Azure Disk Encryption
-Usługa Azure Disk Encryption jest nową funkcją. Ta funkcja umożliwia szyfrowanie dysków systemu operacyjnego i dysków danych używanych przez maszynę wirtualną IaaS. Dla Windows dyski są szyfrowane przy użyciu technologii szyfrowania funkcją BitLocker będące standardami branżowymi. W przypadku systemu Linux dyski są szyfrowane przy użyciu technologii DM-Crypt. Ta lokalizacja jest zintegrowana z usługą Azure Key Vault umożliwia kontrolowanie i zarządzać kluczami szyfrowania dysków.
+Usługa Azure Disk Encryption umożliwia szyfrowanie dysków systemu operacyjnego i dysków danych używanych przez maszynę wirtualną IaaS. Dla Windows dyski są szyfrowane przy użyciu technologii szyfrowania funkcją BitLocker będące standardami branżowymi. W przypadku systemu Linux dyski są szyfrowane przy użyciu technologii DM-Crypt. Ta lokalizacja jest zintegrowana z usługą Azure Key Vault umożliwia kontrolowanie i zarządzać kluczami szyfrowania dysków.
 
 Rozwiązanie obsługuje następujące scenariusze dla maszyn wirtualnych IaaS, gdy są one włączone w systemie Microsoft Azure:
 

@@ -1,26 +1,27 @@
 ---
-author: rothja
-ms.service: billing
+author: tfitzmac
+ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 11/09/2018
-ms.author: jroth
-ms.openlocfilehash: 3dc09de6afaddeb06b0243eb46e888b673109545
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
-ms.translationtype: MT
+ms.date: 04/19/2019
+ms.author: tomfitz
+ms.openlocfilehash: 8bd16378e9c82a011309c12cf241b59d03405a77
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58505759"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60012527"
 ---
 | Zasób | Limit domyślny | Limit maksymalny |
 | --- | --- | --- |
 | Zasoby na [grupy zasobów](../articles/azure-resource-manager/resource-group-overview.md#resource-groups), na typ zasobu |800 |Różni się dla typu zasobu |
-| Wdrożenia dla każdej grupy zasobów w historii wdrożenia |800 |800 |
+| Wdrożenia dla każdej grupy zasobów w historii wdrożenia |800<sup>1</sup> |800 |
 | Zasoby na wdrożenie |800 |800 |
 | Blokady zarządzania na unikatowy zakres |20 |20 |
 | Liczba tagów na zasób lub grupa zasobów |15 |15 |
 | Długość klucza tagu |512 |512 |
 | Długość wartości tagu |256 |256 |
 
+<sup>1</sup>Jeśli przekroczysz limit 800 wdrożeń dla grupy zasobów, Usuń wdrożenia z historii, które nie są już potrzebne. Usuwanie wpisu z historii wdrożenia nie ma wpływu na wdrożonych zasobów. Można usunąć wpisów z historii z [Usuń wdrożenie grupy az](/cli/azure/group/deployment) wiersza polecenia platformy Azure lub [AzResourceGroupDeployment Usuń](/powershell/module/az.resources/remove-azresourcegroupdeployment) w programie PowerShell.  Dla programu PowerShell usuwanie wdrożeń w ciągłej integracji i ciągłego dostarczania (CI/CD) scenariusza, zobacz skrypt, który automatyzuje [deployments.ps1 Usuń](https://gist.github.com/bmoore-msft/ed33fb940dafb09380174b7fca57651f).
 
 #### <a name="template-limits"></a>Limity szablonu
 
@@ -28,7 +29,7 @@ ms.locfileid: "58505759"
 | --- | --- | --- |
 | Parametry |256 |256 |
 | Zmienne |256 |256 |
-| Zasobów, takich jak liczba kopii |800 |800 |
+| Zasoby (w tym liczba kopii) |800 |800 |
 | Dane wyjściowe |64 |64 |
 | Wyrażenie szablonu |24 576 znaki |24 576 znaki |
 | Zasoby w wyeksportowanymi szablonami |200 |200 | 
@@ -36,5 +37,3 @@ ms.locfileid: "58505759"
 | Rozmiar pliku parametrów |64 KB |64 KB |
 
 Pewne ograniczenia szablonu może przekroczyć przy użyciu zagnieżdżonych szablonów. Aby uzyskać więcej informacji, zobacz [używać połączone szablony do wdrażania zasobów platformy Azure](../articles/azure-resource-manager/resource-group-linked-templates.md). Aby zmniejszyć liczbę parametrów, zmienne ani danych wyjściowych, możesz połączyć kilka wartości do obiektu. Aby uzyskać więcej informacji, zobacz [obiektów jako parametrów](../articles/azure-resource-manager/resource-manager-objects-as-parameters.md).
-
-Jeśli przekroczysz limit 800 wdrożeń dla grupy zasobów, należy usunąć wdrożenia z historii, które nie są już potrzebne. Można usunąć wpisów z historii z [Usuń wdrożenie grupy az](/cli/azure/group/deployment) wiersza polecenia platformy Azure. Możesz również użyć [AzResourceGroupDeployment Usuń](/powershell/module/az.resources/remove-azresourcegroupdeployment) w programie PowerShell. Usuwanie wpisu z historii wdrożenia nie ma wpływu na zasoby związane z wdrażaniem. 

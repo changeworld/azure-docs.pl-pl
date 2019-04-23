@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 02/05/2019
+ms.date: 04/19/2019
 ms.author: alkohli
-ms.openlocfilehash: 5770cd9a4955013100b7e58698eed77da10c0583
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 71e0ebf7d7851ae65a6fba67a1695d755fd98bb1
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58012262"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60004571"
 ---
 # <a name="azure-data-box-blob-storage-requirements"></a>Wymagania dotyczące magazynu Azure Blob pole danych
 
-W tym artykule wymieniono wersje interfejsów API platformy Azure, zestawy SDK i narzędzi dostarczonych z magazynu obiektów Blob pola danych. Magazyn obiektów Blob pole danych zapewnia funkcje zarządzania obiektu blob z semantyką spójnych z platformą Azure. Ten artykuł zawiera podsumowanie również znane różnice magazynu obiektów Blob pole danych platformy Azure z usługami Azure Storage.
+W tym artykule wymieniono wersje interfejsów API platformy Azure, biblioteki klienckie systemu Azure i narzędzi dostarczonych z magazynu obiektów Blob pola danych. Magazyn obiektów Blob pole danych zapewnia funkcje zarządzania obiektu blob z semantyką spójnych z platformą Azure. Ten artykuł zawiera podsumowanie również znane różnice magazynu obiektów Blob pole danych platformy Azure z usługami Azure Storage.
 
 Firma Microsoft zaleca, aby zapoznać się z informacjami dokładnie przed łączenie się z magazynem obiektów Blob pole danych, a następnie wrócić do niego zgodnie z potrzebami.
 
@@ -38,7 +38,7 @@ Firma Microsoft zaleca, aby zapoznać się z informacjami dokładnie przed łąc
 
 Następujące wersje interfejsów API usług Azure Storage są obsługiwane za pomocą magazynu obiektów Blob pole danych:
 
-Publiczna wersja zapoznawcza (usługa Azure Data Box 1.8 lub nowszy)
+Usługa Azure Data Box 1.8 lub nowszy
 
 - [2017-11-09](/rest/api/storageservices/version-2017-11-09)
 - [2017-07-29](/rest/api/storageservices/version-2017-07-29)
@@ -46,20 +46,7 @@ Publiczna wersja zapoznawcza (usługa Azure Data Box 1.8 lub nowszy)
 - [2016-05-31](/rest/api/storageservices/version-2016-05-31)
 - [2015-12-11](/rest/api/storageservices/version-2015-12-11)
 - [2015-07-08](/rest/api/storageservices/version-2015-07-08)
-- [2015-04-05](/rest/api/storageservices/version-2015-04-05)
-
-## <a name="supported-sdk-versions"></a>Obsługiwane wersje zestawu SDK
-
-|     Biblioteka kliencka     |     Magazyn obiektów Blob pole danych jest obsługiwana wersja     |     Link             |     Specyfikacja punktu końcowego         |
-|------------------------|-------------------------------------------------|---------------------------------------------|------------------------------------|
-|    .NET                |    Z 6.2.0 do 8.7.0.                         |    Pakiet Nuget:   https://www.nuget.org/packages/WindowsAzure.Storage/ <br>Wersja usługi GitHub:   https://github.com/Azure/azure-storage-net/releases                                                                      |    pliku App.config                 |
-|    Java                |    Z 4.1.0 do 6.1.0                          |    Pakiet maven:   https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage   <br>Wersja usługi GitHub:   https://github.com/Azure/azure-storage-java/releases                                                      |    Ustawienia parametrów połączenia         |
-|    Node.js             |    Z 1.1.0 do 2.7.0                          |    NPM link:   https://www.npmjs.com/package/azure-storage   (Na przykład: Uruchom "npm zainstalować azure-storage@2.7.0")   <br>Wersja usługi GitHub:   https://github.com/Azure/azure-storage-node/releases                            |    Deklaracja wystąpienia usługi    |
-|    C++                 |    Z 2.4.0 do 3.1.0                          |    Pakiet Nuget:   https://www.nuget.org/packages/wastorage.v140/   <br>Wersja usługi GitHub:   https://github.com/Azure/azure-storage-cpp/releases                                                                            |    Ustawienia parametrów połączenia         |
-|    PHP                 |    Z 0.15.0 1.0.0                         |    Wersja usługi GitHub:   https://github.com/Azure/azure-storage-php/releases   <br>Instalowanie za pomocą Composer (Zobacz szczegóły poniżej)                                                                                                   |    Ustawienia parametrów połączenia         |
-|    Python              |    Z 0.30.0 1.0.0                         |    Wersja usługi GitHub:   https://github.com/Azure/azure-storage-python/releases                                                                                                                                              |    Deklaracja wystąpienia usługi    |
-|    Ruby                |    Z 0.12.1 na 1.0.1                         |    Pakiet RubyGems:<br>Wspólne:   https://rubygems.org/gems/azure-storage-common/   <br>Obiekt blob: https://rubygems.org/gems/azure-storage-blob/      <br>Wersja usługi GitHub:   https://github.com/Azure/azure-storage-ruby/releases    |                                   |
-
+- [2015-04-05](/rest/api/storageservices/version-2015-04-05) |
 ## <a name="supported-azure-client-libraries"></a>Obsługiwane biblioteki klienckie systemu Azure
 
 Dla pola danych w usłudze Blob storage istnieje biblioteki określonego klienta i wymagania sufiks określonego punktu końcowego. Punktów końcowych magazynu obiektów Blob pole danych, nie masz pełnej zgodności z najnowszą wersję interfejsu API REST usługi Azure Blob Storage, zobacz [obsługiwane wersje dla usługi Azure Data Box 1.8 i nowszych wersjach](#supported-api-versions). Biblioteki klienta magazynu należy wiedzieć o wersji, która jest zgodna z interfejsu API REST.
@@ -68,12 +55,12 @@ Dla pola danych w usłudze Blob storage istnieje biblioteki określonego klienta
 
 | Biblioteka kliencka     |Magazyn obiektów Blob pole danych jest obsługiwana wersja     | Link   |     Specyfikacja punktu końcowego      |
 |--------------------|--------------------------------------------|--------|---------------------------------|
-|    .NET                |    8.7.0                                           |    Pakiet Nuget:   https://www.nuget.org/packages/WindowsAzure.Storage/8.7.0    <br>Wersja usługi GitHub:   https://github.com/Azure/azure-storage-net/releases/tag/v8.7.0                                                                                                                                                                                               |    pliku App.config                 |
-|    Java                |    6.1.0                                           |    Pakiet maven:   https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/6.1.0   <br>Wersja usługi GitHub:   https://github.com/Azure/azure-storage-java/releases/tag/v6.1.0                                                                                                                                                                              |    Ustawienia parametrów połączenia         |
-|    Node.js             |    2.7.0                                           |    NPM link:   https://www.npmjs.com/package/azure-storage   (Uruchom: zainstaluj Menedżera npm azure-storage@2.7.0)   <br>Wersja usługi GitHub:   https://github.com/Azure/azure-storage-node/releases/tag/v2.7.0                                                                                                                                                                        |    Deklaracja wystąpienia usługi    |
-|    C++                 |    3.1.0                                           |    Pakiet Nuget:   https://www.nuget.org/packages/wastorage.v140/3.1.0   <br>Wersja usługi GitHub:   https://github.com/Azure/azure-storage-cpp/releases/tag/v3.1.0                                                                                                                                                                                                     |    Ustawienia parametrów połączenia         |
-|    PHP                 |    1.0.0                                           |    Wersja usługi GitHub:<br>Wspólne: https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-common   <br>Obiekt blob: https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-blob      <br>Instalowanie za pomocą Composer (Aby dowiedzieć się więcej, zobacz szczegóły poniżej).                                                                                                             |    Ustawienia parametrów połączenia         |
-|    Python              |    1.0.0                                           |    Wersja usługi GitHub:<br>Wspólne:   https://github.com/Azure/azure-storage-python/releases/tag/v1.0.0-common <br>Obiekt blob:   https://github.com/Azure/azure-storage-python/releases/tag/v1.0.0-blob                                                                                                                                                                          |    Deklaracja wystąpienia usługi    |
+|    .NET                |    9.2.0                                           |    Pakiet Nuget:   https://www.nuget.org/packages/WindowsAzure.Storage/9.2.0    <br>Wersja usługi GitHub:   https://github.com/Azure/azure-storage-net/releases/tag/v9.2.0                                                                                                                                                                                               |    pliku App.config                 |
+|    Java                |    7.0.0                                           |    Pakiet maven:   https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/6.1.0   <br>Wersja usługi GitHub:   https://github.com/Azure/azure-storage-java/releases/tag/v7.0.0                                                                                                                                                                              |    Ustawienia parametrów połączenia         |
+|    Node.js             |    2.8.3                                           |    NPM link:   https://www.npmjs.com/package/azure-storage   (Uruchom: `npm install azure-storage@2.7.0`)   <br>Wersja usługi GitHub:   https://github.com/Azure/azure-storage-node/releases/tag/v2.8.3                                                                                                                                                                        |    Deklaracja wystąpienia usługi    |
+|    C++                 |    5.2.0                                           |    Pakiet Nuget:   https://www.nuget.org/packages/wastorage.v140/5.2.0   <br>Wersja usługi GitHub:   https://github.com/Azure/azure-storage-cpp/releases/tag/v5.2.0                                                                                                                                                                                                     |    Ustawienia parametrów połączenia         |
+|    PHP                 |    1.2.0                                           |    Wersja usługi GitHub:<br>Wspólne: https://github.com/Azure/azure-storage-php/releases/tag/v1.2.0-common   <br>Obiekt blob: https://github.com/Azure/azure-storage-php/releases/tag/v1.2.0-blob      <br>Instalowanie za pomocą Composer (Aby dowiedzieć się więcej, zobacz szczegóły poniżej).                                                                                                             |    Ustawienia parametrów połączenia         |
+|    Python              |    1.1.0                                           |    Wersja usługi GitHub:<br>Wspólne:   https://github.com/Azure/azure-storage-python/releases/tag/v1.0.0-common <br>Obiekt blob:   https://github.com/Azure/azure-storage-python/releases/tag/v1.1.0-blob                                                                                                                                                                          |    Deklaracja wystąpienia usługi    |
 |    Ruby                |    1.0.1                                           |    Pakiet RubyGems:<br>Wspólne:   https://rubygems.org/gems/azure-storage-common/versions/1.0.1   <br>Obiekt blob: https://rubygems.org/gems/azure-storage-blob/versions/1.0.1         <br>Wersja usługi GitHub:<br>Wspólne: https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-common   <br>Obiekt blob: https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-blob          |    Ustawienia parametrów połączenia         |
 
 
@@ -81,22 +68,22 @@ Dla pola danych w usłudze Blob storage istnieje biblioteki określonego klienta
 ### <a name="install-php-client-via-composer---current"></a>Zainstaluj klienta PHP za pośrednictwem Composer — bieżące
 
 Aby zainstalować za pośrednictwem Composer (kompozytor): (Wypełnij obiektów blob przykład).
-Utwórz plik o nazwie composer.json w katalogu głównym projektu przy użyciu następującego kodu:
+1. Utwórz plik o nazwie composer.json w katalogu głównym projektu przy użyciu następującego kodu:
 
-```
- {
-   "require": {
-   "Microsoft/azure-storage-blob":"1.0.0"
-   }
-```
+    ```
+    {
+    "require": {
+    "Microsoft/azure-storage-blob":"1.2.0"
+    }
+    ```
 
-Pobierz `composer.phar` w katalogu głównym projektu.
+2. Pobierz `composer.phar` w katalogu głównym projektu.
 
-Uruchom: Zainstaluj php composer.phar.
+3. Uruchom: Zainstaluj php composer.phar.
 
 ### <a name="endpoint-declaration"></a>Deklarację punktu końcowego
 
-Punkt końcowy magazynu Azure Blob pole danych zawiera dwie części: Nazwa regionu i domeny urządzenia Data Box. W magazynie obiektów Blob pole danych zestawu SDK jest domyślny punkt końcowy \<nr seryjny. urządzenia >. microsoftdatabox.com.  Aby uzyskać więcej informacji na temat punkt końcowy usługi blob service, przejdź do [Połącz za pomocą magazynu obiektów Blob pole danych](data-box-deploy-copy-data-via-rest.md).
+Punkt końcowy magazynu Azure Blob pole danych zawiera dwie części: Nazwa regionu i domeny urządzenia Data Box. W magazynie obiektów Blob pole danych zestawu SDK jest domyślny punkt końcowy `\<serial no. of the device>.microsoftdatabox.com`.  Aby uzyskać więcej informacji na temat punkt końcowy usługi blob service, przejdź do [Połącz za pomocą magazynu obiektów Blob pole danych](data-box-deploy-copy-data-via-rest.md).
  
 ## <a name="examples"></a>Przykłady
 

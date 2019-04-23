@@ -1,22 +1,22 @@
 ---
 title: Szybki start — Azure Application Insights | Microsoft Docs
-description: W tym artykule przedstawiono instrukcje pozwalające szybko skonfigurować aplikację internetową Java w celu monitorowania za pomocą usługi Application Insights
+description: Przedstawiono instrukcje pozwalające szybko skonfigurować aplikację internetową Java do monitorowania za pomocą usługi Application Insights
 services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
 ms.reviewer: lagayhar
-ms.date: 07/11/2018
+ms.date: 04/18/2019
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 25335081e594c64b8d8cee02eebec6119e609618
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: e1574b55f9f14daba1831ba7f73b7f9ebde4c7f6
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55891502"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006900"
 ---
 # <a name="start-monitoring-your-java-web-application"></a>Rozpoczynanie monitorowania aplikacji internetowej Java
 
@@ -36,19 +36,21 @@ Jeśli nie masz dynamicznego projektu internetowego Java, możesz go utworzyć, 
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
 
-Jeśli wolisz używać struktury Spring, spróbuj znaleźć potrzebne informacje w [przewodniku dotyczącym konfiguracji aplikacji inicjatora Spring Boot w celu korzystania z usługi Application Insights](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights)
+Jeśli wolisz Spring framework, spróbuj [skonfigurować aplikację Spring Boot inicjatora do użycia w przewodniku usługi Application Insights](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights)
 
-## <a name="log-in-to-the-azure-portal"></a>Logowanie do witryny Azure Portal
+## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się do witryny [Azure Portal](https://portal.azure.com/).
+Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 ## <a name="enable-application-insights"></a>Włączanie usługi Application Insights
 
 Usługa Application Insights umożliwia zbieranie danych telemetrycznych z dowolnej aplikacji połączonej z Internetem, niezależnie od tego, czy jest to aplikacja lokalna czy aplikacja w chmurze. Aby rozpocząć wyświetlanie tych danych, wykonaj poniższe czynności.
 
-1. Wybierz pozycję **Utwórz zasób** > **Monitorowanie + zarządzanie** > **Application Insights**.
+1. Wybierz pozycję **Utwórz zasób** > **Narzędzia deweloperskie** > **Application Insights**.
 
-   ![Dodawanie zasobu usługi Application Insights](./media/java-quick-start/001-j.png)
+   ![Dodawanie zasobu usługi Application Insights](./media/java-quick-start/1createresourseappinsights.png)
+
+   ![Dodawanie zasobu usługi Application Insights](./media/java-quick-start/2createjavaapp.png)
 
    Zostanie wyświetlone okno konfiguracji. Wypełnij pola wejściowe, używając poniższej tabeli.
 
@@ -90,21 +92,21 @@ Usługa Application Insights umożliwia zbieranie danych telemetrycznych z dowol
 
 ## <a name="start-monitoring-in-the-azure-portal"></a>Rozpoczynanie monitorowania w witrynie Azure Portal
 
-1. Możesz teraz ponownie otworzyć stronę **Przegląd** usługi Application Insights w witrynie Azure Portal, na której pobrano klucz instrumentacji, w celu wyświetlenia szczegółowych informacji o obecnie uruchomionej aplikacji.
+1. Możesz teraz ponownie otworzyć usługę Application Insights **Przegląd** strony w witrynie Azure portal, aby wyświetlić szczegółowe informacje o obecnie uruchomionej aplikacji.
 
-   ![Menu Przegląd usługi Application Insights](./media/java-quick-start/overview-001.png)
+   ![Menu Przegląd usługi Application Insights](./media/java-quick-start/3overview.png)
 
 2. Kliknij pozycję **Mapa aplikacji**, aby uzyskać wizualny układ relacji zależności między składnikami aplikacji. Każdy składnik przedstawia kluczowe wskaźniki wydajności, takie jak obciążenie, wydajność, błędy i alerty.
 
-   ![Mapa aplikacji](./media/java-quick-start/application-map-001.png)
+   ![Mapa aplikacji](./media/java-quick-start/4appmap.png)
 
-3. Kliknij ikonę **Analiza aplikacji** ![Ikona mapy aplikacji](./media/java-quick-start/006.png). Spowoduje to otwarcie strony **Analiza usługi Application Insights**, która udostępnia zaawansowany język zapytań na potrzeby analizy wszystkich danych zbieranych przez usługę Application Insights. W tym przypadku jest generowane zapytanie, które renderuje liczbę żądań w formie wykresu. Możesz pisać własne zapytania do analizy innych danych.
+3.  Kliknij pozycję **analizy aplikacji** ikonę ![ikona mapy aplikacji](./media/java-quick-start/006.png) **Wyświetl w obszarze analiza**.  Spowoduje to otwarcie strony **Analiza usługi Application Insights**, która udostępnia zaawansowany język zapytań na potrzeby analizy wszystkich danych zbieranych przez usługę Application Insights. W tym przypadku jest generowane zapytanie, które renderuje liczbę żądań w formie wykresu. Możesz pisać własne zapytania do analizy innych danych.
 
-   ![Wykres analizy żądań użytkowników w danym okresie](./media/java-quick-start/0010-j.png)
+   ![Wykres analizy żądań użytkowników w danym okresie](./media/java-quick-start/5analytics.png)
 
-4. Wróć do strony **Przegląd** i sprawdź grafy kluczowych wskaźników wydajności.  Ten pulpit nawigacyjny przedstawia dane statystyczne dotyczące kondycji aplikacji, w tym liczbę żądań przychodzących, czas trwania tych żądań i błędy.
+4. Wróć do strony **Przegląd** i sprawdź grafy kluczowych wskaźników wydajności. Ten pulpit nawigacyjny przedstawia dane statystyczne dotyczące kondycji aplikacji, w tym liczbę żądań przychodzących, czas trwania tych żądań i błędy.
 
-   ![Wykresy osi czasu przeglądu kondycji](./media/java-quick-start/overview-perf.png)
+   ![Wykresy osi czasu przeglądu kondycji](./media/java-quick-start/6kpidashboards.png)
 
    Aby włączyć wykres **Wyświetlenie strony — czas ładowania** z danymi **telemetrycznymi po stronie klienta**, dodaj ten skrypt na każdej stronie, którą chcesz śledzić:
 
@@ -130,18 +132,18 @@ Usługa Application Insights umożliwia zbieranie danych telemetrycznych z dowol
 
 5. Kliknij pozycję **Live Stream**. W tym miejscu są wyświetlane metryki na żywo związane z wydajnością aplikacji internetowej Java. Usługa **Live Metrics Stream** obejmuje dane dotyczące liczby żądań przychodzących, czasu trwania tych żądań i błędów. Umożliwia też monitorowanie krytycznych metryk wydajności, takich jak wydajność procesora i pamięci, w czasie rzeczywistym.
 
-   ![Wykresy metryk serwera](./media/java-quick-start/livemetricsjava.png)
+   ![Wykresy metryk serwera](./media/java-quick-start/7livemetrics.png)
 
 Więcej informacji na temat monitorowania środowiska Java można znaleźć w [dodatkowej dokumentacji środowiska Java w usłudze App Insights](./../../azure-monitor/app/java-get-started.md).
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli planujesz kontynuować pracę z kolejnymi przewodnikami Szybki start lub samouczkami, nie usuwaj zasobów utworzonych w tym przewodniku Szybki start. Jeśli nie planujesz kontynuować pracy, wykonaj następujące czynności, aby usunąć wszystkie zasoby utworzone w witrynie Azure Portal w ramach tego szybkiego startu.
+Po zakończeniu testowania, możesz usunąć grupę zasobów i wszystkie pokrewne zasoby. Można więc wykonaj poniższe kroki.
 
 1. W menu znajdującym się po lewej stronie w witrynie Azure Portal kliknij pozycję **Grupy zasobów**, a następnie kliknij pozycję **myResourceGroup**.
 2. Na stronie grupy zasobów kliknij pozycję **Usuń**, wpisz w polu tekstowym nazwę **myResourceGroup**, a następnie kliknij pozycję **Usuń**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Wyszukiwanie i diagnozowanie problemów z wydajnością](https://docs.microsoft.com/azure/application-insights/app-insights-analytics)

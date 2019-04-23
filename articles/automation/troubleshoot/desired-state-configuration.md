@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: ''
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/19/2018
+ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c067d6f02ceeca9bf390ab5421dcfe463e9f758d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 63bb5c6338cf230c2bb47cb0a2c03810053f970a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59699085"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002582"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Rozwiązywanie problemów z Desired State Configuration (DSC)
 
@@ -41,6 +41,31 @@ Ten błąd jest tymczasowy planowanej pod kątem można rozwiązać problem.
 * Użyj polecenia cmdlet "Remove-AzAutomationDscConfiguration" Az, aby usunąć konfigurację.
 * Dokumentacja dla tego polecenia cmdlet nie zostało jeszcze zaktualizowana.  W międzyczasie można znaleźć w dokumentacji modułu AzureRM.
   * [Remove-AzureRmAutomationDSCConfiguration](/powershell/module/azurerm.automation/Remove-AzureRmAutomationDscConfiguration)
+
+### <a name="failed-to-register-agent"></a>Scenariusz: Nie można zarejestrować agenta rozszerzenia Dsc
+
+#### <a name="issue"></a>Problem
+
+Podczas próby uruchomienia `Set-DscLocalConfigurationManager` lub inne polecenie cmdlet DSC, zostanie wyświetlony błąd:
+
+```error
+Registration of the Dsc Agent with the server
+https://<location>-agentservice-prod-1.azure-automation.net/accounts/00000000-0000-0000-0000-000000000000 failed. The
+underlying error is: Failed to register Dsc Agent with AgentId 00000000-0000-0000-0000-000000000000 with the server htt
+ps://<location>-agentservice-prod-1.azure-automation.net/accounts/00000000-0000-0000-0000-000000000000/Nodes(AgentId='00000000-0000-0000-0000-000000000000'). .
+    + CategoryInfo          : InvalidResult: (root/Microsoft/...gurationManager:String) [], CimException
+    + FullyQualifiedErrorId : RegisterDscAgentCommandFailed,Microsoft.PowerShell.DesiredStateConfiguration.Commands.Re
+   gisterDscAgentCommand
+    + PSComputerName        : <computerName>
+```
+
+#### <a name="cause"></a>Przyczyna
+
+Zapora maszyny jest związany z serwera proxy lub inne błędy sieci zazwyczaj przyczyną tego błędu.
+
+#### <a name="resolution"></a>Rozwiązanie
+
+Sprawdź, czy komputer ma dostęp do odpowiednich punktów końcowych dla usługi Azure Automation DSC i spróbuj ponownie. Aby uzyskać listę portów i adresów potrzebne, zobacz [Planowanie sieci](../automation-dsc-overview.md#network-planning)
 
 ### <a name="failed-not-found"></a>Scenariusz: Węzeł jest w stanie nie powiodło się z powodu błędu "Nie znaleziono"
 

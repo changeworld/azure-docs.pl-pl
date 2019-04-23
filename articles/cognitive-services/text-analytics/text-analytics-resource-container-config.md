@@ -11,12 +11,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: diberry
-ms.openlocfilehash: 137d7aa48595e3f21ee99c6ebe23babd7a2d32b5
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 1333aefc145e95223624f42a28ec0bb31ab70065
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59677769"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011762"
 ---
 # <a name="configure-text-analytics-docker-containers"></a>Konfigurowanie analizy tekstu kontenerów platformy docker
 
@@ -35,7 +35,7 @@ Analiza tekstu dostarcza każdego kontenera za pomocą wspólną platformę konf
 
 To ustawienie można znaleźć w tym miejscu następujące:
 
-* Azure Portal: **Usługi cognitive Services** zarządzanie zasobami w obszarze **kluczy**
+* Witryna Azure Portal: **Usługi cognitive Services** zarządzanie zasobami w obszarze **kluczy**
 
 ## <a name="applicationinsights-setting"></a>Ustawienie dotycząca usługi Application Insights
 
@@ -47,13 +47,13 @@ To ustawienie można znaleźć w tym miejscu następujące:
 
 To ustawienie można znaleźć w tym miejscu następujące:
 
-* Azure Portal: **Usługi cognitive Services** Przegląd, etykietą `Endpoint`
+* Witryna Azure Portal: **Usługi cognitive Services** Przegląd, etykietą `Endpoint`
 
 Musisz dodać `text/analytics/v2.0` routingu do identyfikator URI punktu końcowego, jak pokazano w poniższym przykładzie BILLING_ENDPOINT_URI.
 
-|Wymagane| Name (Nazwa) | Typ danych | Opis |
+|Wymagany| Name (Nazwa) | Typ danych | Opis |
 |--|------|-----------|-------------|
-|Yes| `Billing` | Ciąg | Identyfikator URI punktu końcowego rozliczeń<br><br>Przykład:<br>`Billing=https://westus.api.cognitive.microsoft.com/text/analytics/v2.0` |
+|Yes| `Billing` | Ciąg | Identyfikator URI punktu końcowego rozliczeń<br><br>Przykład:<br>`Billing=https://westus.api.cognitive.microsoft.com/text/analytics/v2.1` |
 
 ## <a name="eula-setting"></a>Umowa licencyjna EULA ustawienie
 
@@ -98,15 +98,15 @@ Zastąp {_argument_name_} własnymi wartościami:
 | Symbol zastępczy | Wartość | Format lub przykład |
 |-------------|-------|---|
 |{BILLING_KEY} | Klucz punktu końcowego `Cognitive Services` zasobów dostępnych na platformie Azure `Cognitive Services` strony klucze. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{BILLING_ENDPOINT_URI} | Rozliczeń wartość punktu końcowego jest dostępna na platformie Azure `Cognitive Services` strona przeglądu.|`https://westus.api.cognitive.microsoft.com/text/analytics/v2.0`|
+|{BILLING_ENDPOINT_URI} | Rozliczeń wartość punktu końcowego jest dostępna na platformie Azure `Cognitive Services` strona przeglądu.|`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
 
 > [!IMPORTANT]
 > `Eula`, `Billing`, I `ApiKey` opcje muszą być określone w celu uruchomienia kontenera; w przeciwnym razie nie uruchamia się kontener.  Aby uzyskać więcej informacji, zobacz [rozliczeń](how-tos/text-analytics-how-to-install-containers.md#billing).
 > Wartość ApiKey **klucz** z platformy Azure `Cognitive Services` strony klucze zasobu. 
 
-## <a name="keyphrase-extraction-container-docker-examples"></a>Keyphrase wyodrębniania kontenera platformy docker przykłady
+## <a name="key-phrase-extraction-container-docker-examples"></a>Kluczowe frazy wyodrębniania kontenera platformy docker przykłady
 
-W poniższych przykładach platformy docker są keyphrase kontenera wyodrębniania. 
+Są w poniższych przykładach platformy docker dla kontenera wyodrębnianie fraz kluczowych. 
 
 ### <a name="basic-example"></a>Podstawowy przykład 
 

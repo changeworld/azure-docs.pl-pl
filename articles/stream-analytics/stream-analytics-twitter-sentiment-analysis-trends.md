@@ -9,14 +9,17 @@ manager: kfile
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/29/2017
-ms.openlocfilehash: b5ad1a790f79b11b978c32c5751a6b9333f24c85
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: abb2a89f41340e8e2e26fa36cc20b790341618d0
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57994927"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60003704"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Analiza tonacji w czasie rzeczywistym usługi Twitter w usłudze Azure Stream Analytics
+
+> [!IMPORTANT] 
+> Tworzenie aplikacji usługi Twitter nie jest już dostępna za pośrednictwem [apps.twitter.com](https://apps.twitter.com/). W tym samouczku jest w trakcie aktualizowana w celu uwzględnienia nowego interfejsu API usługi Twitter.
 
 Dowiedz się, jak tworzyć rozwiązania analizującego nastroje klientów, analizy mediów społecznościowych, przenosząc zdarzenia w czasie rzeczywistym usługi Twitter do usługi Azure Event Hubs. Następnie użyj zapisu zapytanie usługi Azure Stream Analytics do analizowania danych, a następnie zapisać wyniki później lub pulpitu nawigacyjnego możesz i [usługi Power BI](https://powerbi.com/) udostępnienie szczegółowych informacji w czasie rzeczywistym.
 
@@ -282,7 +285,7 @@ Poniższa tabela zawiera listę pól, które są częścią JSON, dane przesyła
 |Temat | Temat, który jest zgodny z określonym słowem kluczowym|
 |SentimentScore | Ocenę tonacji z Sentiment140|
 |Autor | Uchwyt Twitter, który wysłał tweet|
-|Tekst | Pełna treść tweetu|
+|Text | Pełna treść tweetu|
 
 
 ## <a name="create-an-output-sink"></a>Tworzenie ujścia danych wyjściowych

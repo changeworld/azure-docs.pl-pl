@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: scottwhi
-ms.openlocfilehash: 8181fc259ffbed11672fe64a8fc821e234183b72
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: MT
+ms.openlocfilehash: 511a95eaea65c1a0e67973ef56942bc05bb43f81
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55856856"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002792"
 ---
 # <a name="language-and-region-support-for-the-bing-visual-search-api"></a>Obsługa języka i regionu dla interfejsu API wyszukiwania wizualnego Bing
 
@@ -72,7 +72,7 @@ Alternatywnie można określić za pomocą kraju/regionu `cc` parametr zapytania
 |Szwajcaria|CH|
 |Tajwan|TW|
 |Turcja|TR|
-|Wielka Brytania|GB|
+|Zjednoczone Królestwo|GB|
 |Stany Zjednoczone|USA|
 
 
@@ -116,6 +116,6 @@ Alternatywnie można określić za pomocą kraju/regionu `cc` parametr zapytania
 |Szwajcaria|Niemiecki|de-CH|
 |Tajwan|Chiński (tradycyjny)|zh-TW|
 |Turcja|Turecki|tr-TR|
-|Wielka Brytania|Polski|en-GB|
+|Zjednoczone Królestwo|Polski|en-GB|
 |Stany Zjednoczone|Polski|en-US|
 |Stany Zjednoczone|Hiszpański|es-US|

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: caddb542e806457e085db096813e504ddc278ac0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: dc44cfbd24bd04caeede03dcbcfc60da06f61135
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58108328"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011629"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Przewodnik dla początkujących deweloperów platformy Azure
 
@@ -281,7 +281,7 @@ Usługi Azure Resource Explorer to doskonałe narzędzie do wizualizacji zasoby,
 
 Jeśli zezwolisz na dostęp do zasobów platformy Azure, zawsze jest najlepszym rozwiązaniem, aby zapewnić użytkownikom najniższych uprawnień, które są wymagane do wykonywania danego zadania.
 
-- **Kontrola dostępu oparta na rolach (RBAC)**: Na platformie Azure, możesz udzielić dostępu do kont użytkowników (jednostki) w określonym zakresie: subskrypcji, grupy zasobów lub poszczególnych zasobów. Kontrola RBAC umożliwia wdrażanie zestaw zasobów w grupie zasobów i przyznawanie uprawnień do określonego użytkownika lub grupy. Pozwalają on również ograniczanie dostępu do zasobów, które należą do docelowej grupy zasobów. Można również przyznać dostęp do jednego zasobu, np. maszyny wirtualnej lub sieci wirtualnej. Aby udzielić dostępu, przypisywanie roli do użytkownika, grupy lub jednostki usługi. Istnieje wiele wstępnie zdefiniowanych ról, a można również definiować własne niestandardowe role. Aby dowiedzieć się więcej, zobacz [co to jest kontrola dostępu oparta na rolach (RBAC)?](../../role-based-access-control/overview.md).
+- **Kontrola dostępu oparta na rolach (RBAC)**: Na platformie Azure, możesz udzielić dostępu do kont użytkowników (jednostki) w określonym zakresie: subskrypcji, grupy zasobów lub poszczególnych zasobów. Kontrola RBAC umożliwia wdrażanie zestaw zasobów w grupie zasobów i przyznawanie uprawnień do określonego użytkownika lub grupy. Umożliwia on również ograniczanie dostępu do zasobów, które należą do docelowej grupy zasobów. Można również przyznać dostęp do jednego zasobu, np. maszyny wirtualnej lub sieci wirtualnej. Aby udzielić dostępu, przypisywanie roli do użytkownika, grupy lub jednostki usługi. Istnieje wiele wstępnie zdefiniowanych ról, a można również definiować własne niestandardowe role. Aby dowiedzieć się więcej, zobacz [co to jest kontrola dostępu oparta na rolach (RBAC)?](../../role-based-access-control/overview.md).
 
   > **Kiedy należy używać**: Kiedy należy precyzyjne zarządzanie dostępem dla użytkowników i grup lub należy ustawić użytkownika jako właściciela, subskrypcji.
   > 

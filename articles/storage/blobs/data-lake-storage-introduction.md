@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: b25a47e929ef540ad3a74a86d431962d37cde434
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 8777a7504c48b22d0e670dd9f0d28016ac8918db
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58009433"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009467"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Wprowadzenie do usługi Azure Data Lake Storage Gen2
 
@@ -43,7 +43,7 @@ W przeszłości funkcje analizy chmurowej — było naruszenia bezpieczeństwa w
 
 -   **Niskie koszty**: Data Lake Storage Gen2 oferuje ekonomiczne pojemności i transakcji. Jako przejścia danych za pośrednictwem jego pełny cykl życia, stawki rozliczeniowe zmienia zachowanie kosztów do minimum, za pomocą wbudowanych funkcji takich jak [cykl życia magazynu obiektów Blob platformy Azure](storage-lifecycle-management-concepts.md).
 
--   **Sterownik zoptymalizowane**: Sterownik abfs [specjalnie zoptymalizowane pod kątem](data-lake-storage-abfs-driver.md) do analizy danych big data. Odpowiednie interfejsy API REST są udostępniane za pośrednictwem punktu końcowego systemu plików dfs, dfs.core.windows.net.
+-   **Sterownik zoptymalizowane**: Sterownik ABFS [specjalnie zoptymalizowane pod kątem](data-lake-storage-abfs-driver.md) do analizy danych big data. Odpowiednie interfejsy API REST są udostępniane za pośrednictwem punktu końcowego `dfs.core.windows.net`.
 
 ### <a name="scalability"></a>Skalowalność
 

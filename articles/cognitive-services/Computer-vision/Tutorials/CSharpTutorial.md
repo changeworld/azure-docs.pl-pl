@@ -1,22 +1,22 @@
 ---
 title: 'Przykład: Zapoznanie z aplikacją do przetwarzania obrazów w języku C#'
-titleSuffix: Computer Vision - Cognitive Services - Azure
-description: Zapoznaj się z podstawową wersją aplikacji systemu Windows, która korzysta z interfejsu API przetwarzania obrazów w usługach Microsoft Cognitive Services. Wykonaj optyczne rozpoznawanie znaków (OCR), twórz miniatury i korzystaj z funkcji wizualnych na obrazie.
+titleSuffix: Azure Cognitive Services
+description: Zapoznaj się z podstawowej aplikacji Windows, który używa interfejsu API przetwarzania obrazów w usługach Azure Cognitive Services. Wykonaj optyczne rozpoznawanie znaków (OCR), twórz miniatury i korzystaj z funkcji wizualnych na obrazie.
 services: cognitive-services
 author: PatrickFarley
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: sample
-ms.date: 02/08/2019
+ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: a23e45cb1e75305f41c81077c90282352327b72d
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 63b5130e3cade54a2fbc432b2391ad3ee1ea8a1a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310953"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60004027"
 ---
 # <a name="sample-explore-an-image-processing-app-with-c"></a>Przykład: Zapoznanie z aplikacją do przetwarzania obrazów z językiem C#
 
@@ -33,7 +33,7 @@ Zapoznaj się z podstawową aplikacją dla systemu Windows, w której zastosowan
 Przed rozpoczęciem pracy z przykładową aplikacją upewnij się, że zostały spełnione następujące wymagania wstępne:
 
 * Musisz mieć program [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) lub nowszy.
-* Musisz mieć klucz subskrypcji funkcji przetwarzania obrazów. Aby uzyskać klucz subskrypcji, zobacz [Obtaining Subscription Keys (Uzyskiwanie kluczy subskrypcji)](../Vision-API-How-to-Topics/HowToSubscribe.md).
+* Musisz mieć klucz subskrypcji funkcji przetwarzania obrazów. Możesz uzyskać bezpłatnej wersji próbnej klucza z [spróbuj usług Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Lub, postępuj zgodnie z instrukcjami w [Tworzenie konta usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) subskrybować przetwarzania obrazów, i Uzyskaj klucz.
 
 ## <a name="get-the-sample-app"></a>Pobieranie przykładowej aplikacji
 
@@ -307,7 +307,7 @@ Metoda `RecognizeUrlAsync` tworzy nowe wystąpienie `ComputerVisionClient`, uży
 
 Gdy nie jest już potrzebny, usuń folder, do którego zostało sklonowane repozytorium `Microsoft/Cognitive-Vision-Windows`. Jeśli postanowisz użyć przykładowych obrazów, również usuń folder, do którego zostało sklonowane repozytorium `Microsoft/Cognitive-Face-Windows`.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Wprowadzenie do interfejsu API rozpoznawania twarzy](../../Face/Tutorials/FaceAPIinCSharpTutorial.md)

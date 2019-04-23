@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3322e49c6fdc590b785806f67b5081700bf8b37b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b141de4c22ba1ba1325982d8e027fa46e0909fbb
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59788634"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009858"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Skojarzyć lub dodać subskrypcję platformy Azure z dzierżawą usługi Azure Active Directory
 
@@ -76,7 +76,7 @@ Po skojarzeniu subskrypcję z innym katalogiem, może to być dodatkowe kroki, k
 
 1. Jeśli masz żadnych magazynów kluczy, należy zmienić identyfikator dzierżawy magazynu kluczy Aby uzyskać więcej informacji, zobacz [zmiana Identyfikatora dzierżawy magazynu kluczy po przeniesieniu subskrypcji](../../key-vault/key-vault-subscription-move-fix.md).
 
-2. Jeśli została zarejestrowana przy użyciu tej subskrypcji usługi Azure Stack, należy ponownie zarejestrować. Aby uzyskać więcej informacji, zobacz [zarejestrować w usłudze Azure Stack z platformą Azure](../../azure-stack/azure-stack-registration.md).
+2. Jeśli została zarejestrowana przy użyciu tej subskrypcji usługi Azure Stack, należy ponownie zarejestrować. Aby uzyskać więcej informacji, zobacz [zarejestrować w usłudze Azure Stack z platformą Azure](/azure-stack/operator/azure-stack-registration).
 
 
 

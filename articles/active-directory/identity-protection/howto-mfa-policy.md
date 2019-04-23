@@ -13,20 +13,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
+ms.date: 04/17/2019
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b563b0fb8dc12cbdcdd256a97134f9ff02988915
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: abd1049551d7dbc4823636dfdc00f64afab72cdf
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698966"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60008600"
 ---
 # <a name="how-to-configure-the-multi-factor-authentication-registration-policy"></a>Instrukcje: Skonfiguruj zasady rejestracji uwierzytelniania wieloskładnikowego
 
-Usługa Azure AD Identity Protection pomaga w zarządzaniu wdrożenie rejestracji uwierzytelniania wieloskładnikowego (MFA), konfigurując zasady, które wymagają rejestracji usługi MFA. W tym artykule opisano, jakie zasady mogą służyć do wiadomość sposobu ich konfigurowania.
+Usługa Azure AD Identity Protection pomaga w zarządzaniu wdrożenie rejestracji uwierzytelniania wieloskładnikowego (MFA), konfigurując zasady, które wymagają rejestracji usługi MFA. W tym artykule opisano, jakie zasady mogą służyć do i sposobu ich konfigurowania.
 
 ## <a name="what-is-the-multi-factor-authentication-registration-policy"></a>Co to są zasady rejestracji uwierzytelniania wieloskładnikowego?
 

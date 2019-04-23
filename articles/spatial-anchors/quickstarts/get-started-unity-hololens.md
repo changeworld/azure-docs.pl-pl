@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 56b164d9612fd1bef8caf9ae0de679f65595bc39
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
-ms.translationtype: MT
+ms.openlocfilehash: ce9bca3f11911677a6009b4cfe0c3f6413b9f837
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629477"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009246"
 ---
 # <a name="quickstart-create-a-hololens-unity-app-that-uses-azure-spatial-anchors"></a>Szybki start: Tworzenie aplikacji HoloLens Unity, która używa kotwic przestrzenne platformy Azure
 
@@ -78,6 +78,8 @@ Po zakończeniu eksportu, pojawi się folder zawierający wyeksportowany projekt
 W tym folderze kliknij dwukrotnie **HelloAR U3D.sln** otworzyć projektu w programie Visual Studio.
 
 Zmień **konfiguracji rozwiązania** do **wersji**, zmień **platforma rozwiązania** do **x86**i wybierz **urządzenia**  z target — opcje wdrażania.
+
+Jeśli przy użyciu HoloLens 2, użyj **ARM** jako **platforma rozwiązania**, zamiast **x86**.
 
    ![Konfiguracja serwera Visual Studio](./media/get-started-unity-hololens/visual-studio-configuration.png)
 

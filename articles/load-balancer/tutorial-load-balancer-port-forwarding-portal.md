@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: 44b9e592d60c541e6b1e7f0e8c639b641af414e4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: db94f1d241223a9c54a6e3d516840dd17fd0c576
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58118361"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60007512"
 ---
 # <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>Samouczek: Konfigurowanie przekierowania portów w usłudze Azure Load Balancer za pomocą portalu
 
@@ -53,14 +53,14 @@ Najpierw utwórz publiczny moduł równoważenia obciążenia w warstwie Standar
     | Grupa zasobów         | Wybierz pozycję **Utwórz nową** i wpisz *MyResourceGroupLB* w polu tekstowym.|
     | Name (Nazwa)                   | *myLoadBalancer*                                   |
     | Region         | Wybierz pozycję **Europa Zachodnia**.                                        |
-    | Type          | Wybierz pozycję **Publiczna**.                                        |
+    | Typ          | Wybierz pozycję **Publiczna**.                                        |
     | SKU           | Wybierz opcję **Standardowa**.                          |
     | Publiczny adres IP | Wybierz pozycję**Utwórz nowy**. |
     | Nazwa publicznego adresu IP              | Wpisz *myPublicIP* w polu tekstowym.   |
     |Strefa dostępności| Wybierz pozycję **Strefowo nadmiarowy**.    |
      
     >[!NOTE]
-     >Upewnij się, że moduł równoważenia obciążenia i wszystkie zasoby dla niego są tworzone w lokalizacji, która obsługuje strefy dostępności. Aby uzyskać więcej informacji, zobacz [Regiony obsługujące strefy dostępności](../availability-zones/az-overview.md#regions-that-support-availability-zones). 
+     >Upewnij się, że moduł równoważenia obciążenia i wszystkie zasoby dla niego są tworzone w lokalizacji, która obsługuje strefy dostępności. Aby uzyskać więcej informacji, zobacz [Regiony obsługujące strefy dostępności](../availability-zones/az-overview.md#services-support-by-region). 
 
 3. Na karcie **Przeglądanie + tworzenie** kliknij pozycję **Utwórz**.  
   

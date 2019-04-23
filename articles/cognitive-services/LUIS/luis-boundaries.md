@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/12/2019
+ms.date: 04/18/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 51f5355e365d0dcf7a103deab3356f015e75641e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: 58f6d6cf8bf16f7c35bab35a69cfcdf8759f66ae
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57897524"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006832"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>Granice dla modelu usługi LUIS i klucze
 Usługa LUIS ma kilka obszarów granic. Pierwsza to [granic modelu](#model-boundaries), która kontroluje intencji, jednostek i funkcji usługi LUIS. Drugi ma [limitów przydziału](#key-limits) na podstawie typu klucza. Trzecie pole granice wynosi [klawiatury kombinacji](#keyboard-controls) do kontrolowania witryny sieci Web usługi LUIS. Czwarty obszar jest [mapowanie regionów świata](luis-reference-regions.md) między LUIS tworzenia witryny sieci Web i LUIS [punktu końcowego](luis-glossary.md#endpoint) interfejsów API. 
@@ -47,16 +47,16 @@ Jeśli aplikacja przekracza limity modelu usługi LUIS i granice, należy wzią�
 
 * Znak Domyślna maksymalna to 50 znaków. 
 
-## <a name="intent-and-entity-naming"></a>Przeznaczenie i nazewnictwa jednostki
-Nie należy używać następujących znaków w nazwach intencji i jednostki:
+<a name="intent-and-entity-naming"></a>
 
-|Znak|Name (Nazwa)|
+## <a name="object-naming"></a>Obiekt nazewnictwa
+
+Następujące znaki nie należy używać w następujących nazw.
+
+|Object|Wykluczenia znaków|
 |--|--|
-|`{`|Lewy nawias klamrowy|
-|`}`|Prawy nawias klamrowy|
-|`[`|Lewy nawias kwadratowy|
-|`]`|Prawy nawias kwadratowy|
-|`\`|Ukośnik odwrotny|
+|Nazwy przeznaczenie, jednostki i roli|`:`<br>`$`|
+|Nazwa wersji|`\`<br> `/`<br> `:`<br> `?`<br> `&`<br> `=`<br> `*`<br> `+`<br> `(`<br> `)`<br> `%`<br> `@`<br> `$`<br> `~`<br> `!`<br> `#`|
 
 ## <a name="key-usage"></a>Użycie klucza
 

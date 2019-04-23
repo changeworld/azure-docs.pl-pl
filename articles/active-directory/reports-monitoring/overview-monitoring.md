@@ -1,5 +1,5 @@
 ---
-title: Co to jest funkcja monitorowania usługi Azure Active Directory? (wersja zapoznawcza) | Microsoft Docs
+title: Co to jest funkcja monitorowania usługi Azure Active Directory? | Microsoft Docs
 description: Zawiera ogólne omówienie funkcji monitorowania usługi Azure Active Directory.
 services: active-directory
 documentationcenter: ''
@@ -13,18 +13,18 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de416d18505d0258da446318b3dc6a9853ff13e7
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
-ms.translationtype: MT
+ms.openlocfilehash: d63f8440ca527a746f73574bc156037d85fc3599
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58434861"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009045"
 ---
-# <a name="what-is-azure-active-directory-monitoring-preview"></a>Co to jest funkcja monitorowania usługi Azure Active Directory? (wersja zapoznawcza)
+# <a name="what-is-azure-active-directory-monitoring"></a>Co to jest funkcja monitorowania usługi Azure Active Directory?
 
 Przy użyciu funkcji monitorowania usługi Azure Active Directory (Azure AD) możesz teraz przekierowywać dzienniki aktywności usługi Azure AD do różnych punktów końcowych. Możesz następnie przechowywać je na potrzeby długoterminowego użytkowania lub zintegrować je z narzędziami do zarządzania informacjami i zdarzeniami zabezpieczeń (SIEM) innych firm, aby uzyskać wgląd w środowisko.
 

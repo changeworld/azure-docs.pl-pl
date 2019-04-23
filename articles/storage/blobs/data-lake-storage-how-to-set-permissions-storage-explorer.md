@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/11/2018
 ms.author: rogarana
-ms.openlocfilehash: d1e941e41871de4a11641254f40c53285b096807
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
-ms.translationtype: MT
+ms.openlocfilehash: f2569b29ab6124f1cfa22fa745d45082c213a6be
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57546315"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60003480"
 ---
 # <a name="set-file-and-directory-level-permissions-using-azure-storage-explorer-with-azure-data-lake-storage-gen2"></a>Ustawianie uprawnień na poziomie plików i katalogów przy użyciu Eksploratora usługi Azure Storage w usłudze Azure Data Lake Storage Gen2
 
@@ -29,11 +29,11 @@ Ten artykuł zawiera informacje dotyczące wykonywania następujących czynnośc
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby jak najlepiej przedstawić ten proces, wymagane jest ukończenie [przewodnika Szybki start dotyczącego Eksploratora usługi Azure Storage](data-lake-storage-Explorer.md). Dzięki temu konto magazynu będzie miało najbardziej odpowiedni stan (utworzony system plików z przekazanymi danymi).
+Aby jak najlepiej przedstawić ten proces, wymagane jest ukończenie [przewodnika Szybki start dotyczącego Eksploratora usługi Azure Storage](data-lake-storage-Explorer.md). Gwarantuje to, że konto magazynu będzie najbardziej odpowiedni stan (systemu plików utworzony i danymi przekazanymi do niego).
 
 ## <a name="managing-access"></a>Zarządzanie dostępem
 
-Uprawnienia można ustawić w katalogu głównym systemu plików. Aby to zrobić, użytkownik musi być zalogowany do Eksploratora usługi Azure Storage na swoje indywidualne konto z uprawnieniami, aby to zrobić (w przeciwieństwie do przy użyciu parametrów połączenia). Kliknij prawym przyciskiem myszy Twojego systemu plików, a następnie wybierz pozycję **Zarządzaj uprawnieniami**, przełączanie się **Manage Permission** okno dialogowe.
+Możesz ustawić uprawnienia w katalogu głównym systemu plików. Aby to zrobić, użytkownik musi być zalogowany do Eksploratora usługi Azure Storage na swoje indywidualne konto z uprawnieniami, aby to zrobić (w przeciwieństwie do przy użyciu parametrów połączenia). Kliknij prawym przyciskiem myszy systemu plików, a następnie wybierz pozycję **Zarządzaj uprawnieniami**, przełączanie się **Manage Permission** okno dialogowe.
 
 ![Eksplorator usługi Microsoft Azure Storage — zarządzanie dostępem do katalogów](media/storage-quickstart-blobs-storage-Explorer/manageperms.png)
 

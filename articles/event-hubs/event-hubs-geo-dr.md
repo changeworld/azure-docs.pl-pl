@@ -14,12 +14,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 3a7cc7703a6b33eef4c7a10f927b4747bc1d417c
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: MT
+ms.openlocfilehash: 56077d018c1ae62809d51fc66d7f5aff93fb4c02
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562206"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002701"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Usługa Azure Event Hubs — odzyskiwanie po awarii geograficznie 
 
@@ -107,7 +107,7 @@ Należy zwrócić uwagę następujące kwestie, które należy uwzględnić w te
 Obsługuje zdarzenie Hubs standardowej jednostki SKU [strefy dostępności](../availability-zones/az-overview.md), zapewniając izolowane od usterek lokalizacje w regionie platformy Azure. 
 
 > [!NOTE]
-> Obsługa stref dostępności platformy Azure Event Hubs w warstwie standardowa jest dostępna tylko w [regionów świadczenia usługi Azure](../availability-zones/az-overview.md#regions-that-support-availability-zones) gdzie strefy dostępności są obecne.
+> Obsługa stref dostępności platformy Azure Event Hubs w warstwie standardowa jest dostępna tylko w [regionów świadczenia usługi Azure](../availability-zones/az-overview.md#services-support-by-region) gdzie strefy dostępności są obecne.
 
 Strefy dostępności można włączyć na nowe przestrzenie nazw, przy użyciu witryny Azure portal. Usługa Event Hubs nie obsługuje migracji istniejącej przestrzeni nazw. Nie można wyłączyć nadmiarowości strefy po jej włączeniu, w ramach przestrzeni nazw.
 

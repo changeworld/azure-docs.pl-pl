@@ -7,12 +7,12 @@ ms.date: 04/16/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 5416c576e6392b7c5714ef83f152453aeff8d964
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 40d9aba4ff8fd78f6369729ddc16238e65bfc169
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59685855"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60010894"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-trigger-in-azure-functions"></a>Diagnozowanie i rozwiązywanie problemów w przypadku korzystania z usługi Azure Cosmos DB wyzwalacza w usłudze Azure Functions
 
@@ -31,7 +31,7 @@ W tym artykule będzie zawsze odwoływać się do usługi Azure Functions w wers
 
 Kluczowe funkcje pakietu rozszerzenia jest w celu zapewnienia obsługi powiązań i wyzwalaczy usługi Azure Cosmos DB. Obejmuje również [zestawu .NET SDK usługi Azure Cosmos DB](sql-api-sdk-dotnet-core.md), co jest przydatne, jeśli chcesz interakcji programowej z usługą Azure Cosmos DB bez korzystania z powiązań i wyzwalaczy.
 
-Jeśli do chcesz używać zestawu SDK usługi Azure Cosmos DB, upewnij się, że nie dodano do projektu innego odwołania do pakietu NuGet. Zamiast tego **umożliwiają rozwiązania za pośrednictwem pakietu rozszerzenia usługi Azure Functions odwołanie do zestawu SDK**.
+Jeśli chcesz używać zestawu SDK usługi Azure Cosmos DB, upewnij się, że nie dodano do projektu innego odwołania do pakietu NuGet. Zamiast tego **umożliwiają rozwiązania za pośrednictwem pakietu rozszerzenia usługi Azure Functions odwołanie do zestawu SDK**.
 
 Ponadto jeśli ręcznie utworzysz wystąpienie programu [klienta zestawu SDK usługi Azure Cosmos DB](./sql-api-sdk-dotnet-core.md), należy przestrzegać wzorzec masz tylko jedno wystąpienie klienta [przy użyciu metody wzorca Singleton](../azure-functions/manage-connections.md#documentclient-code-example-c) . Ten proces pozwoli uniknąć potencjalnych problemów gniazda w operacji.
 

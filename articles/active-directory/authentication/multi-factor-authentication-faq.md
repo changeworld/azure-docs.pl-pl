@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 707e0aecdaf2a579d086e012519182078c1a6303
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
-ms.translationtype: MT
+ms.openlocfilehash: e0277180f0d768bbcc83a0d8d05fbc4b8b25301e
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313230"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006033"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Często zadawane pytania dotyczące usługi Azure Multi-Factor Authentication
 
@@ -142,7 +142,7 @@ Jeśli Twoja organizacja nie ma starszych klientów, nie należy zezwalać użyt
 > [!NOTE]
 > Nowoczesne uwierzytelnianie dla klientów pakietu Office 2013
 >
-> Hasła aplikacji są tylko niezbędnych dla aplikacji, które nie obsługują nowoczesnego uwierzytelniania. Klienci pakietu Office 2013 obsługuje protokoły nowoczesnego uwierzytelniania, ale muszą być skonfigurowane. Nowsze klienci Office automatycznie obsługują protokoły nowoczesnego uwierzytelniania. Aby uzyskać więcej informacji, zobacz [ogłoszenie publicznej wersji zapoznawczej nowoczesnego uwierzytelniania pakietu Office 2013](https://blogs.office.com/2015/03/23/office-2013-modern-authentication-public-preview-announced/).
+> Hasła aplikacji są tylko niezbędnych dla aplikacji, które nie obsługują nowoczesnego uwierzytelniania. Klienci pakietu Office 2013 obsługuje protokoły nowoczesnego uwierzytelniania, ale muszą być skonfigurowane. Teraz nowoczesnego uwierzytelniania są dostępne dla każdego klienta z aktualizacją update marca 2015 lub nowszego, pakietu Office 2013. Aby uzyskać więcej informacji, zobacz [pakietu Office 2013 publicznej wersji nowoczesnego uwierzytelniania ogłosiła](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/).
 
 **Pyt.: Moi użytkownicy mówią, że czasami nie otrzymasz wiadomość SMS lub ich odpowiedzi na wiadomości tekstowe dwukierunkowe, ale Weryfikacja upłynie limit czasu.**
 

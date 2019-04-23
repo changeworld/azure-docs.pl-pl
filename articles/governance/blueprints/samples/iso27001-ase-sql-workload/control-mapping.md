@@ -7,12 +7,12 @@ ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: fa7dfbf9e535d010675942900bad208d3f15e556
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b0a2d81d2490ded460f4bbb98ebce0b943ba91df
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698389"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60010913"
 ---
 # <a name="control-mapping-of-the-iso-27001-asesql-workload-blueprint-sample"></a>Mapowanie kontrolek próbki planu obciążenia ISO 27001 ASE/SQL
 
@@ -71,7 +71,7 @@ Ten plan przypisuje trzy [usługi Azure Policy](../../../policy/overview.md) def
 
 ## <a name="a925-review-of-user-access-rights"></a>Przegląd A.9.2.5 praw dostępu użytkownika
 
-Platforma Azure implementuje [kontroli dostępu opartej na rolach](../../../../role-based-access-control/overview.md) (RBAC) do pomaga zarządzasz, kto ma dostęp do zasobów na platformie Azure. W witrynie Azure portal, możesz sprawdzić, kto ma dostęp do zasobów platformy Azure i ich uprawnienia. Ten plan przypisuje cztery [usługi Azure Policy](../../../policy/overview.md) definicji do inspekcji kont, które powinny mieć priorytet dla przeglądu, w tym zamortyzowany kont i konta zewnętrzne z podwyższonym poziomem uprawnień.
+Platforma Azure implementuje [kontroli dostępu opartej na rolach](../../../../role-based-access-control/overview.md) (RBAC), aby ułatwić zarządzanie, kto ma dostęp do zasobów na platformie Azure. W witrynie Azure portal, możesz sprawdzić, kto ma dostęp do zasobów platformy Azure i ich uprawnienia. Ten plan przypisuje cztery [usługi Azure Policy](../../../policy/overview.md) definicji do inspekcji kont, które powinny mieć priorytet dla przeglądu, w tym zamortyzowany kont i konta zewnętrzne z podwyższonym poziomem uprawnień.
 
 - [Wersja zapoznawcza]: Audit deprecated accounts on a subscription
 - [Wersja zapoznawcza]: Audit deprecated accounts with owner permissions on a subscription
@@ -80,7 +80,7 @@ Platforma Azure implementuje [kontroli dostępu opartej na rolach](../../../../r
 
 ## <a name="a926-removal-or-adjustment-of-access-rights"></a>Usunięcie A.9.2.6 lub dostosowanie prawa dostępu
 
-Platforma Azure implementuje [kontroli dostępu opartej na rolach](../../../../role-based-access-control/overview.md) (RBAC) do pomaga zarządzasz, kto ma dostęp do zasobów na platformie Azure. Za pomocą [usługi Azure Active Directory](../../../../active-directory/fundamentals/active-directory-whatis.md) i RBAC, można zaktualizować ról użytkownika w celu odzwierciedlenia zmian organizacyjnych. W razie potrzeby, kont można logowanie zablokowane (lub usunąć), które natychmiast powoduje usunięcie prawa dostępu do zasobów platformy Azure. Ten plan przypisuje dwa [usługi Azure Policy](../../../policy/overview.md) definicje inspekcji zamortyzowany konta, które należy uwzględnić do usunięcia.
+Platforma Azure implementuje [kontroli dostępu opartej na rolach](../../../../role-based-access-control/overview.md) (RBAC), aby ułatwić zarządzanie, kto ma dostęp do zasobów na platformie Azure. Za pomocą [usługi Azure Active Directory](../../../../active-directory/fundamentals/active-directory-whatis.md) i RBAC, można zaktualizować ról użytkownika w celu odzwierciedlenia zmian organizacyjnych. W razie potrzeby, kont można logowanie zablokowane (lub usunąć), które natychmiast powoduje usunięcie prawa dostępu do zasobów platformy Azure. Ten plan przypisuje dwa [usługi Azure Policy](../../../policy/overview.md) definicje inspekcji zamortyzowany konta, które należy uwzględnić do usunięcia.
 
 - [Wersja zapoznawcza]: Audit deprecated accounts on a subscription
 - [Wersja zapoznawcza]: Audit deprecated accounts with owner permissions on a subscription
@@ -155,7 +155,7 @@ Ten plan pomaga upewnić się, że system zdarzenia są rejestrowane przez przyp
 
 ## <a name="a1244-clock-synchronization"></a>Synchronizacja zegara A.12.4.4
 
-Ten plan pomaga upewnić się, że system zdarzenia są rejestrowane przez przypisanie siedem definicji zasad platformy Azure, które inspekcji dziennika ustawienia dla zasobów platformy Azure. Dzienniki platformy Azure zależą od wewnętrznego Zegary zsynchronizowane, aby utworzyć rekord czas skorelowanego zdarzenia w zasobach.
+Ten plan pomaga upewnić się, że system zdarzenia są rejestrowane przez przypisanie siedem Azure definicjom zasad inspekcji ustawienia dziennika dla zasobów platformy Azure. Dzienniki platformy Azure zależą od wewnętrznego Zegary zsynchronizowane, aby utworzyć rekord czas skorelowanego zdarzenia w zasobach.
 
 - [Wersja zapoznawcza]: Wdrażanie agenta zależności inspekcji — obraz maszyny Wirtualnej (OS) nieznajdujące się na liście
 - [Wersja zapoznawcza]: Inspekcja wdrożenie agenta zależności w zestawu skalowania maszyn wirtualnych — obraz maszyny Wirtualnej (OS) nieznajdujące się na liście

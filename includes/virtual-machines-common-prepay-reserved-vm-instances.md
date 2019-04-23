@@ -3,13 +3,13 @@ author: yashesvi
 ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 03/22/2019
-ms.openlocfilehash: 32d5d0d25c843be1cba1916e7679faa930e8e645
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
-ms.translationtype: MT
+ms.date: 04/13/2019
+ms.openlocfilehash: d9b9aae8bea323e5aac74a2e317b82d4cb43568f
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58671680"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60118779"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>Przedpłaty dotyczące maszyn wirtualnych przy użyciu wystąpienia zarezerwowane maszyn wirtualnych platformy Azure
 
@@ -35,6 +35,12 @@ Rezerwacja zaleceń można użyć w celu określenia rezerwacji, które należy 
 - Usługa Azure Advisor zawiera zalecenia zakupu dla poszczególnych subskrypcji.  
 - Aby uzyskać zalecenia zakupu z zakresem pojedynczej subskrypcji i zakresie udostępnionym, można użyć interfejsów API. Aby uzyskać więcej informacji, zobacz [zastrzeżone zalecenia zakupu wystąpień interfejsów API dla klientów korporacyjnych](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation).
 - Dla klientów EA zalecenia zakupu współużytkowanych i zakresy pojedynczej subskrypcji są dostępne w usłudze [pakietu zawartości usługi Power BI Insights zużycie Azure](/power-bi/service-connect-to-azure-consumption-insights).
+
+### <a name="classic-vms-and-cloud-services"></a>Klasyczne maszyny wirtualne i usługi w chmurze
+
+Wystąpienia zarezerwowane maszyny wirtualnej automatycznie dotyczą zarówno klasycznych maszyn wirtualnych i usług w chmurze po włączeniu elastyczność rozmiaru wystąpienia. Nie ma żadnych specjalnych jednostki SKU dla klasycznych maszyn wirtualnych ani usług w chmurze. To samo jednostek SKU maszyn wirtualnych się do nich.
+
+Na przykład może przekonwertować klasycznych maszyn wirtualnych ani usług w chmurze, do maszyn wirtualnych opartych na usłudze Azure Resource Manager. W tym przykładzie rabat związany z rezerwacją jest automatycznie stosuje do pasujących maszyn wirtualnych. Nie ma potrzeby do *exchange* istniejące wystąpienie zarezerwowane — automatycznie stosuje.
 
 ### <a name="analyze-your-usage-information"></a>Analizowanie danych użycia
 Powinieneś przeanalizować informacji o sposobie w celu określenia rezerwacji, które należy kupić.
@@ -74,14 +80,8 @@ Zarezerwowane wystąpienia maszyn wirtualnych są dostępne dla większości roz
     |Optymalizuj dla     |Elastyczność rozmiaru wystąpienia maszyny Wirtualnej ma zastosowanie rabatu związanego z rezerwacją do innych maszyn wirtualnych w tym samym [grupie rozmiarów maszyn wirtualnych](https://aka.ms/RIVMGroups). Priorytet pojemności priorytet pojemności centrum danych wdrożeń. Zapewnia to dodatkową pewność co do możliwości uruchomienia wystąpienia maszyny Wirtualnej, gdy ich potrzebujesz. Priorytet pojemności jest dostępna tylko w przypadku, gdy zakresem rezerwacji jest pojedyncza subskrypcja. |
     |Termin        |Jeden rok lub trzy lata.|
     |Ilość    |Liczba wystąpień, które zostały zakupione w ramach rezerwacji. Ilość jest liczby uruchomionych wystąpień maszyn wirtualnych, które mogą uzyskać rabat rozliczeń. Na przykład jeśli używasz 10 maszyna wirtualna Standard_D2 maszyn wirtualnych w regionie wschodnie stany USA, następnie należy określić ilość jako 10, aby zmaksymalizować korzyści dla wszystkich działających maszyn. |
-5. Można wyświetlić kosztów rezerwacji, po wybraniu **obliczyć koszt**.
 
-    ![Zrzut ekranu, przed przesłaniem zakupu rezerwacji](./media/virtual-machines-buy-compute-reservations/virtualmachines-reservedvminstance-purchase.png)
-
-6. Wybierz pozycję **Kup**.
-7. Wybierz **Wyświetl tę rezerwację** Aby wyświetlić stan zakupu.
-
-    ![Zrzut ekranu po przesłaniu zakupu rezerwacji](./media/virtual-machines-buy-compute-reservations/virtualmachines-reservedvmInstance-submit.png)
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2PjmT]
 
 ## <a name="change-a-reservation-after-purchase"></a>Zmieniać po zakupie rezerwacji
 

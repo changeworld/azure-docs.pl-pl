@@ -11,13 +11,13 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 manager: craigg
-ms.date: 02/26/2019
-ms.openlocfilehash: 82b533f7293e00469a5b92b02e8d58967379a585
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 04/16/2019
+ms.openlocfilehash: fa19ea0c7ebeea0170822db0dae298f84e958983
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59497070"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006135"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Architektura łączności dla wystąpienia zarządzanego usługi Azure SQL Database
 
@@ -111,7 +111,7 @@ Wdrażanie wystąpienia zarządzanego w dedykowanej podsieci w sieci wirtualnej.
 |mi_subnet   |Dowolne           |Dowolne     |PODSIECI WYSTĄPIENIA ZARZĄDZANEGO        |PODSIECI WYSTĄPIENIA ZARZĄDZANEGO  |Zezwalaj |
 
 > [!IMPORTANT]
-> Upewnij się, istnieje tylko jedna reguła ruchu przychodzącego dla portów 9000, 9003, 1438 1440, 1452 i jednej reguły ruchu wychodzącego dla portów 80, 443, 12000. Zarządzane wystąpienia inicjowania obsługi administracyjnej za pomocą usługi Azure Resource Manager wdrożenie zakończy się niepowodzeniem, jeśli reguły ruchu przychodzącego i dane wyjściowe są skonfigurowane osobno dla poszczególnych portów. Jeśli te porty są oddzielne zasady, wdrożenie zakończy się niepowodzeniem z kodem błędu `VnetSubnetConflictWithIntendedPolicy`
+> Upewnij się, istnieje tylko jedna reguła ruchu przychodzącego dla portów 9000, 9003, 1438 1440, 1452 i jednej reguły ruchu wychodzącego dla portów 80, 443, 12000. Zarządzane wystąpienia inicjowania obsługi administracyjnej za pomocą usługi Azure Resource Manager wdrożenie zakończy się niepowodzeniem, jeśli reguły ruchu przychodzącego i wychodzącego są skonfigurowane osobno dla poszczególnych portów. Jeśli te porty są oddzielne zasady, wdrożenie zakończy się niepowodzeniem z kodem błędu `VnetSubnetConflictWithIntendedPolicy`
 
 \* PODSIECI wystąpienia Zarządzanego odnosi się do zakresu adresów IP dla podsieci w 10.x.x.x/y formularza. Te informacje można znaleźć w witrynie Azure portal, w oknie właściwości podsieci.
 

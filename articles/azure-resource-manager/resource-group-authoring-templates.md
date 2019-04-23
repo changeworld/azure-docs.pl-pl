@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/09/2019
+ms.date: 04/18/2019
 ms.author: tomfitz
-ms.openlocfilehash: 264db79f5c934603004eb595930b44abc622efd5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 94ed3c876ece827e4decd2b5b14332f5e854ab83
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59492205"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60004435"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Omówienie struktury i składni szablonów usługi Azure Resource Manager
 
@@ -495,8 +495,8 @@ Możesz zdefiniować zasoby o następującej strukturze:
 |:--- |:--- |:--- |
 | warunek | Nie | Wartość logiczna wskazująca, czy zasób zostanie udostępniony podczas tego wdrożenia. Gdy `true`, zasób jest tworzony podczas wdrażania. Gdy `false`, zasób jest pomijana dla tego wdrożenia. Zobacz [warunek](#condition). |
 | apiVersion |Yes |Wersja interfejsu API REST na potrzeby tworzenia zasobu. Aby określić dostępne wartości, zobacz [odwołanie do szablonu](/azure/templates/). |
-| type |Yes |Typ zasobu. Ta wartość jest kombinacją przestrzeń nazw dostawcy zasobów i typu zasobu (takie jak **magazyn.Microsoft/kontamagazynu**). Aby określić dostępne wartości, zobacz [odwołanie do szablonu](/azure/templates/). |
-| name |Yes |Nazwa zasobu. Musi spełniać ograniczenia składnika identyfikatora URI zdefiniowane w RFC3986. Ponadto usługi platformy Azure, które uwidaczniają nazwę zasobu, aby poza strony zweryfikować nazwę aby upewnić się, że nie jest próba podszywały się pod innego tożsamości. |
+| type |Yes |Typ zasobu. Ta wartość jest kombinacją przestrzeń nazw dostawcy zasobów i typu zasobu (takie jak **magazyn.Microsoft/kontamagazynu**). Aby określić dostępne wartości, zobacz [odwołanie do szablonu](/azure/templates/). Zasoby podrzędne format typu zależy od tego, czy ma zagnieżdżone w obrębie zasobu nadrzędnego lub zdefiniowane poza zasobu nadrzędnego. Zobacz [zasoby podrzędne](#child-resources). |
+| name |Yes |Nazwa zasobu. Musi spełniać ograniczenia składnika identyfikatora URI zdefiniowane w RFC3986. Ponadto usługi platformy Azure, które uwidaczniają nazwę zasobu, aby poza strony zweryfikować nazwę aby upewnić się, że nie jest próba podszywały się pod innego tożsamości. Zasoby podrzędne format nazwy zależy od tego, czy ma zagnieżdżone w obrębie zasobu nadrzędnego lub zdefiniowane poza zasobu nadrzędnego. Zobacz [zasoby podrzędne](#child-resources). |
 | location |Różna |Obsługiwane lokalizacje geograficzne podane zasobu. Można wybrać jedną z dostępnych lokalizacji, ale zazwyczaj warto wybrać taki, który znajduje się w pobliżu użytkowników. Zazwyczaj także warto umieścić zasoby, które współdziałają ze sobą w tym samym regionie. Większość typów zasobów wymaga lokalizacji, ale niektóre typy (takie jak przypisania roli) nie wymagają lokalizacji. |
 | tags |Nie |Tagi, które są skojarzone z zasobem. Stosowanie tagów w celu logicznego uporządkowania zasobów w ramach subskrypcji. |
 | Komentarze |Nie |Notatki do dokumentowania zasobów w szablonie. Aby uzyskać więcej informacji, zobacz [komentarzy w szablonach](resource-group-authoring-templates.md#comments). |
@@ -506,11 +506,11 @@ Możesz zdefiniować zasoby o następującej strukturze:
 | sku | Nie | Niektóre zasoby Zezwalaj na wartości, które definiują jednostki SKU do wdrożenia. Na przykład można określić typu nadmiarowości konta magazynu. |
 | rodzaj | Nie | Niektóre zasoby zezwala na wartość, która definiuje typ zasobu, które można wdrożyć. Na przykład można określić typ usługi Cosmos DB do tworzenia. |
 | Plan | Nie | Niektóre zasoby Zezwalaj na wartości, które definiują plan do wdrożenia. Na przykład można określić obrazu portalu marketplace dla maszyny wirtualnej. | 
-| zasoby |Nie |Zasoby podrzędne, które są zależne od zasobów, w trakcie definiowania. Podaj tylko typy zasobów, które są dozwolone w schemacie zasobu nadrzędnego. W pełni kwalifikowany typ zasobu podrzędnego obejmuje typ zasobu nadrzędnego, takie jak **Microsoft.Web/sites/extensions**. Zależność od zasobu nadrzędnego nie jest implikowane. Musisz jawnie zdefiniować tej zależności. |
+| zasoby |Nie |Zasoby podrzędne, które są zależne od zasobów, w trakcie definiowania. Podaj tylko typy zasobów, które są dozwolone w schemacie zasobu nadrzędnego. Zależność od zasobu nadrzędnego nie jest implikowane. Musisz jawnie zdefiniować tej zależności. Zobacz [zasoby podrzędne](#child-resources). |
 
 ### <a name="condition"></a>Warunek
 
-Jeśli podczas wdrażania należy zdecydować, czy należy utworzyć zasób, użyj `condition` elementu. Wartość dla tego elementu jest rozpoznawana jako wartość true lub false. Zasób jest tworzony, gdy ma wartość true. Gdy wartość jest równa false, zasób nie jest tworzony. Wartość można zastosować tylko do całego zasobu.
+Jeśli podczas wdrażania należy zdecydować, czy do utworzenia zasobu, użyj `condition` elementu. Wartość dla tego elementu jest rozpoznawana jako wartość true lub false. Zasób jest tworzony, gdy ma wartość true. Gdy wartość jest równa false, zasób nie jest tworzony. Wartość można zastosować tylko do całego zasobu.
 
 Zazwyczaj ta wartość służy w sytuacji, gdy chcesz utworzyć nowy zasób lub użyć istniejącego. Na przykład aby określić, czy nowe konto magazynu jest wdrożony lub istniejące konto magazynu jest używane, należy użyć:
 
@@ -652,45 +652,57 @@ W niektórych typów zasobów można także zdefiniować tablicę zasoby podrzę
 
 ```json
 {
-  "name": "exampleserver",
+  "apiVersion": "2015-05-01-preview",
   "type": "Microsoft.Sql/servers",
-  "apiVersion": "2014-04-01",
+  "name": "exampleserver",
   ...
   "resources": [
     {
-      "name": "exampledatabase",
+      "apiVersion": "2017-10-01-preview",
       "type": "databases",
-      "apiVersion": "2014-04-01",
+      "name": "exampledatabase",
       ...
     }
   ]
 }
 ```
 
-Gdy zagnieżdżony, typ jest ustawiona na `databases` , ale jego typ zasobu pełną `Microsoft.Sql/servers/databases`. Nie podano `Microsoft.Sql/servers/` ponieważ zakłada się od typu zasobu nadrzędnego. Nazwa zasobu podrzędnego jest równa `exampledatabase` , ale Pełna nazwa zawiera nazwę nadrzędnej. Nie podano `exampleserver` ponieważ zakłada się, od zasobu nadrzędnego.
-
-Format typu zasobu podrzędnego jest następujący: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`
-
-Format nazwy zasobów podrzędnych jest następujący: `{parent-resource-name}/{child-resource-name}`
-
 Ale nie trzeba zdefiniować bazy danych na serwerze. Można zdefiniować zasób podrzędny na najwyższym poziomie. Może być użycie tej metody, jeśli zasób nadrzędny nie jest wdrożony w tym samym szablonie, lub jeśli chcesz użyć `copy` utworzyć więcej niż jednego zasobu podrzędnego. W przypadku tej metody musisz podać typ zasobu pełnego i nazwy zasobów podrzędnych zawierają nazwę zasobu nadrzędnego.
 
 ```json
 {
-  "name": "exampleserver",
+  "apiVersion": "2015-05-01-preview",
   "type": "Microsoft.Sql/servers",
-  "apiVersion": "2014-04-01",
+  "name": "exampleserver",
   "resources": [ 
   ],
   ...
 },
 {
-  "name": "exampleserver/exampledatabase",
+  "apiVersion": "2017-10-01-preview",
   "type": "Microsoft.Sql/servers/databases",
-  "apiVersion": "2014-04-01",
+  "name": "exampleserver/exampledatabase",
   ...
 }
 ```
+
+Wartość podana dla typu i nazwy różnią się zależnie od tego, czy zasób podrzędny jest zdefiniowany w ramach zasobu nadrzędnego lub na zewnątrz zasobu nadrzędnego.
+
+Gdy zagnieżdżony w zasobie nadrzędnym, należy użyć:
+
+```json
+"type": "{child-resource-type}",
+"name": "{child-resource-name}",
+```
+
+Gdy zdefiniowane poza zasobu nadrzędnego, należy użyć:
+
+```json
+"type": "{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}",
+"name": "{parent-resource-name}/{child-resource-name}",
+```
+
+Gdy zagnieżdżony, typ jest ustawiona na `databases` , ale jego typ pełnego zasobu jest nadal `Microsoft.Sql/servers/databases`. Nie podano `Microsoft.Sql/servers/` ponieważ zakłada się od typu zasobu nadrzędnego. Nazwa zasobu podrzędnego jest równa `exampledatabase` , ale Pełna nazwa zawiera nazwę nadrzędnej. Nie podano `exampleserver` ponieważ zakłada się, od zasobu nadrzędnego.
 
 Podczas tworzenia w pełni kwalifikowane odwołanie do zasobu, w kolejności łączenie segmentów z typu, a nazwa nie jest po prostu składa się z dwóch. Zamiast tego po przestrzeni nazw, należy użyć sekwencji *Nazwatypu/* pary z co najmniej określonych do bardziej konkretny od pozostałych:
 
@@ -724,8 +736,8 @@ Poniższy przykład pokazuje strukturę definicję danych wyjściowych:
 |:--- |:--- |:--- |
 | outputName |Yes |Nazwa wartości danych wyjściowych. Musi być prawidłowym identyfikatorem języka JavaScript. |
 | warunek |Nie | Wartość logiczna wskazująca, czy to danych wyjściowych wartość jest zwracana. Gdy `true`, wartość jest uwzględniona w danych wyjściowych dla wdrożenia. Gdy `false`, wartość wyjściowa jest pomijana dla tego wdrożenia. Jeśli nie zostanie określony, wartością domyślną jest `true`. |
-| type |Yes |Typ wartości danych wyjściowych. Wartości wyjściowe obsługują te same typy jako parametrów wejściowych szablonu. |
-| wartość |Yes |Wyrażenie języka szablonu, który jest obliczany i zwracany, jako wartość danych wyjściowych. |
+| type |Yes |Typ wartości danych wyjściowych. Wartości wyjściowe obsługują te same typy jako parametrów wejściowych szablonu. Jeśli określisz **securestring** dla typu danych wyjściowych wartość nie jest wyświetlane w historii wdrożenia i nie można pobrać z innego szablonu. Aby użyć wartość wpisu tajnego w więcej niż jeden szablon, przechowywać klucz tajny w usłudze Key Vault i odwoływać się do klucza tajnego w pliku parametrów. Aby uzyskać więcej informacji, zobacz [użycia usługi Azure Key Vault do przekazywania wartości parametru secure podczas wdrażania](resource-manager-keyvault-parameter.md). |
+| value |Yes |Wyrażenie języka szablonu, który jest obliczany i zwracany, jako wartość danych wyjściowych. |
 
 ### <a name="define-and-use-output-values"></a>Definiowanie i korzystanie z wartości danych wyjściowych
 

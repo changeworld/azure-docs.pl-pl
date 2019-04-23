@@ -2,18 +2,18 @@
 title: Rejestracja źródeł danych w usłudze Azure Data Catalog
 description: W tym artykule opisano sposób rejestrowania źródła danych w usłudze Azure Data Catalog, w tym pola metadanych wyodrębnionych podczas rejestracji.
 services: data-catalog
-author: markingmyname
-ms.author: maghan
+author: JasonWHowell
+ms.author: jasonh
 ms.assetid: bab89906-186f-4d35-9ffd-61b1d903905d
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 413f9340432f39d60ccdb43557616b4123132873
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
-ms.translationtype: MT
+ms.openlocfilehash: 57b9a040b875c584b126e2062e4938b37875a31b
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47404898"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002990"
 ---
 # <a name="register-data-sources-in-azure-data-catalog"></a>Rejestracja źródeł danych w usłudze Azure Data Catalog
 ## <a name="introduction"></a>Wprowadzenie

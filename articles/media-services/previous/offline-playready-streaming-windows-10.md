@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 04/16/2019
 ms.author: willzhan
-ms.openlocfilehash: 75073058647f8e27a048e5ba0673a3d7e3f6a465
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
-ms.translationtype: MT
+ms.openlocfilehash: 974062b06c58ee23a001066a70a08675e2e94e48
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311258"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60008124"
 ---
 # <a name="offline-playready-streaming-for-windows-10"></a>PlayReady w trybie offline, przesyłania strumieniowego dla systemu Windows 10  
 
@@ -27,12 +27,15 @@ ms.locfileid: "58311258"
 > * [Wersja 3](../latest/offline-plaready-streaming-for-windows-10.md)
 > * [Wersja 2](offline-playready-streaming-windows-10.md)
 
+> [!NOTE]
+> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówek dotyczących migracji od v2 do v3](../latest/migrate-from-v2-to-v3.md)
+
 Usługa Azure Media Services obsługuje pobieranie/odtwarzania w trybie offline dzięki ochronie DRM. W tym artykule omówiono obsługę trybu offline usługi Azure Media Services dla systemu Windows 10/PlayReady klientów. Temat pomocy technicznej w trybie offline dla systemu iOS/FairPlay i urządzeń Android/Widevine w następujących artykułach:
 
-- [W trybie offline FairPlay Streaming dla systemu iOS](media-services-protect-hls-with-offline-fairplay.md)
+- [Przesyłanie strumieniowe w trybie offline przy użyciu technologii FairPlay na potrzeby systemu iOS](media-services-protect-hls-with-offline-fairplay.md)
 - [Widevine w trybie offline, przesyłania strumieniowego dla systemu Android](offline-widevine-for-android.md)
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 W tej sekcji zawiera podstawowe informacje dotyczące odtwarzania w trybie offline, szczególnie Dlaczego:
 

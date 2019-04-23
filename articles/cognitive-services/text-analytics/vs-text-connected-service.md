@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: a37ea5fdad941e1559e470ccb22303a8e3c7ca3d
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 4e1c03085d6b1d0099ac66dd3d1dadd981a561aa
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243896"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60004248"
 ---
 # <a name="tutorial-connect-to-the-text-analytics-service-with-connected-services-in-visual-studio"></a>Samouczek: Łączenie z usługą analizy tekstu za pomocą usług połączonych w programie Visual Studio
 
@@ -62,7 +62,7 @@ W tym artykule i artykułach towarzyszących podano szczegółowe informacje na 
     [6/1/2018 3:04:06.314 PM] Installing NuGet package 'Microsoft.Azure.CognitiveServices.Language' version 1.0.0-preview...
     [6/1/2018 3:04:56.759 PM] Retrieving keys...
     [6/1/2018 3:04:57.822 PM] Updating appsettings.json setting: 'ServiceKey' = '<service key>'
-    [6/1/2018 3:04:57.827 PM] Updating appsettings.json setting: 'ServiceEndPoint' = 'https://westus.api.cognitive.microsoft.com/text/analytics/v2.0'
+    [6/1/2018 3:04:57.827 PM] Updating appsettings.json setting: 'ServiceEndPoint' = 'https://westus.api.cognitive.microsoft.com/text/analytics/v2.1'
     [6/1/2018 3:04:57.832 PM] Updating appsettings.json setting: 'Name' = 'TextAnalyticsDemo'
     [6/1/2018 3:05:01.840 PM] Successfully added Text Analytics to the project.
     ```
@@ -265,6 +265,6 @@ Gdy grupa zasobów nie jest już potrzebna, usuń ją. Spowoduje to usunięcie u
 2. Wybierz pozycję **Usuń grupę zasobów**.
 3. W polu **WPISZ NAZWĘ GRUPY ZASOBÓW:** wpisz nazwę grupy zasobów i wybierz pozycję **Usuń**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Dowiedz się więcej o usłudze Text Analytics, zapoznając się z [dokumentacją usługi Text Analytics](index.yml).

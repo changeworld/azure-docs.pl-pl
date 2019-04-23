@@ -16,18 +16,18 @@ ms.workload: infrastructure
 ms.date: 04/05/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: ee714cd87676c519c1bbfca2c08b62287299114e
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: MT
+ms.openlocfilehash: cdd9910bfef96f56cfa8c8e81363ff9bdb40f444
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700625"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60005506"
 ---
 # <a name="create-a-linux-virtual-machine-in-an-availability-zone-with-the-azure-cli"></a>Utwórz maszynę wirtualną systemu Linux w strefie dostępności przy użyciu wiersza polecenia platformy Azure
 
 Tym artykule omówiono tworzenie maszyny Wirtualnej z systemem Linux w strefie dostępności platformy Azure za pomocą wiersza polecenia platformy Azure. [Strefa dostępności](../../availability-zones/az-overview.md) to fizycznie oddzielona strefa w regionie świadczenia usługi Azure. Strefy dostępności chronią aplikacje i dane, zmniejszając prawdopodobieństwo wystąpienia awarii lub utraty całego centrum danych.
 
-Aby użyć strefy dostępność, utwórz maszynę wirtualną w [obsługiwanym regionie platformy Azure](../../availability-zones/az-overview.md#regions-that-support-availability-zones).
+Aby użyć strefy dostępność, utwórz maszynę wirtualną w [obsługiwanym regionie platformy Azure](../../availability-zones/az-overview.md#services-support-by-region).
 
 Upewnij się, że zainstalowano najnowszy [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) i zalogowano się przy użyciu konta platformy Azure [az login](/cli/azure/reference-index).
 
@@ -102,7 +102,7 @@ Tworzenie maszyny wirtualnej może potrwać kilka minut. Po utworzeniu maszyny w
 
 Po wdrożeniu maszyny Wirtualnej w strefie dostępności dysku zarządzanego dla maszyny Wirtualnej jest tworzony w tej samej strefie dostępności. Domyślnie publiczny adres IP jest tworzona w tej strefie. Poniższy przykład pobiera informacje o tych zasobów.
 
-Aby sprawdzić, czy dysku zarządzanego maszyny Wirtualnej jest w strefie dostępności, użyj [az vm show](/cli/azure/vm) polecenie, aby zwrócić identyfikator dysku. W tym przykładzie identyfikator dysku jest przechowywany w zmiennej używanej w późniejszym kroku. 
+Aby sprawdzić, czy dysku zarządzanego maszyny Wirtualnej jest w strefie dostępności, użyj [az vm show](/cli/azure/vm) polecenie, aby zwrócić ten identyfikator dysku. W tym przykładzie identyfikator dysku jest przechowywany w zmiennej używanej w późniejszym kroku. 
 
 ```azurecli-interactive
 osdiskname=$(az vm show -g myResourceGroupVM -n myVM --query "storageProfile.osDisk.name" -o tsv)

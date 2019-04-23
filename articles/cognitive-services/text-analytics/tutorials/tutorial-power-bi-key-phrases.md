@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: 4489fc82f836d8c311fcd776e211670897618b54
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 24767f73e3e1409f81262ad57f3fd5152a4ec319
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889481"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60003473"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Samouczek: Integracja usługi Power BI z usługą analizy tekstu w usłudze Cognitive Service
 
@@ -89,7 +89,7 @@ Możesz również rozważyć odfiltrowanie pustych wiadomości, używając filtr
 ## <a name="understand-the-api"></a>Opis interfejsu API
 <a name="UnderstandingAPI"></a>
 
-[Interfejs API fraz kluczowych](//westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) usługi analizy tekstu może przetworzyć nawet tysiąc dokumentów tekstowych w ramach jednego żądania HTTP. Usługa Power BI preferuje obsługę pojedynczych rekordów po kolei, dlatego w tym samouczku każde Twoje wywołanie interfejsu API będzie zawierać tylko jeden dokument. Dla każdego przetwarzanego dokumentu interfejs API fraz kluczowych wymaga poniższych pól.
+[Interfejs API fraz kluczowych](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6) usługi analizy tekstu może przetworzyć nawet tysiąc dokumentów tekstowych w ramach jednego żądania HTTP. Usługa Power BI preferuje obsługę pojedynczych rekordów po kolei, dlatego w tym samouczku każde Twoje wywołanie interfejsu API będzie zawierać tylko jeden dokument. Dla każdego przetwarzanego dokumentu interfejs API fraz kluczowych wymaga poniższych pól.
 
 | | |
 | - | - |
@@ -120,7 +120,7 @@ Teraz na wstążce **Narzędzia główne** w grupie **Zapytanie** kliknij pozycj
 // Returns key phrases from the text in a comma-separated list
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases",
+    endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { language: ""en"", id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -223,7 +223,7 @@ Poniższa funkcja analizy opinii zwraca wynik informujący o tym, na ile pozytyw
 // Returns the sentiment score of the text, from 0.0 (least favorable) to 1.0 (most favorable)
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment",
+    endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { language: ""en"", id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -240,7 +240,7 @@ Poniżej przedstawiono dwie wersje funkcji wykrywania języka. Pierwsza zwraca k
 // Returns the two-letter language code (for example, 'en' for English) of the text
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/languages",
+    endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/languages",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -254,7 +254,7 @@ in  language
 // Returns the name (for example, 'English') of the language in which the text is written
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/languages",
+    endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/languages",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -274,7 +274,7 @@ Na koniec przedstawiamy wariant już omówionej funkcji fraz kluczowych, który 
 // Returns key phrases from the text as a list object
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases",
+    endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { language: ""en"", id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -285,16 +285,16 @@ Na koniec przedstawiamy wariant już omówionej funkcji fraz kluczowych, który 
 in  keyphrases
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 <a name="NextSteps"></a>
 
 Dowiedz się więcej na temat usługi analizy tekstu, języka formuł Power Query M lub usługi Power BI.
 
 > [!div class="nextstepaction"]
-> [Dokumentacja interfejsu API analizy tekstu](//westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6)
+> [Dokumentacja interfejsu API analizy tekstu](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6)
 
 > [!div class="nextstepaction"]
-> [Dokumentacja języka Power Query M](//msdn.microsoft.com/library/mt211003.aspx)
+> [Dokumentacja języka Power Query M](https://msdn.microsoft.com/library/mt211003.aspx)
 
 > [!div class="nextstepaction"]
-> [Dokumentacja usługi Power BI](//powerbi.microsoft.com/documentation/powerbi-landing-page/)
+> [Dokumentacja usługi Power BI](https://powerbi.microsoft.com/documentation/powerbi-landing-page/)

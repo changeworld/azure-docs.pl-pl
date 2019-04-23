@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure Functions
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 7d38120c530b89230893b85829d201c14a8cba04
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8167f10391f426c50120a224eea44e6db846fbb1
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59697298"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60003245"
 ---
 # <a name="quickstart-create-an-azure-function-with-app-configuration"></a>Szybki start: Tworzenie funkcji platformy Azure przy użyciu usługi App Configuration
 
@@ -38,6 +38,14 @@ Ten przewodnik Szybki Start, instaluje [programu Visual Studio 2017](https://vis
 ## <a name="create-an-app-configuration-store"></a>Tworzenie magazynu konfiguracji aplikacji
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
+
+6. Wybierz **Explorer klucz/wartość** > **+ Utwórz** można dodać następujące pary klucz wartość:
+
+    | Klucz | Wartość |
+    |---|---|
+    | TestApp:Settings:Message | Dane z usługi Azure App Configuration |
+
+    Pozostaw **etykiety** i **typu zawartości** puste, aby teraz.
 
 ## <a name="create-a-function-app"></a>Tworzenie aplikacji funkcji
 
@@ -114,4 +122,4 @@ Ten przewodnik Szybki Start, instaluje [programu Visual Studio 2017](https://vis
 W tym przewodniku Szybki Start został utworzony nowy magazyn konfiguracji aplikacji i jej za pomocą funkcji platformy Azure. Aby dowiedzieć się więcej o tym, jak używać konfiguracji aplikacji, przejdź do następnego samouczka, który demonstruje uwierzytelniania.
 
 > [!div class="nextstepaction"]
-> [Zarządzanych tożsamości dla integracji zasobów platformy Azure](./howto-integrate-azure-managed-service-identity.md)
+> [Integracja tożsamości zarządzanych](./howto-integrate-azure-managed-service-identity.md)
