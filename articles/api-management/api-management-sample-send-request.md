@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.openlocfilehash: 2c4e5d0117f046343b140ef2b2c46c074c835075
-ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59505655"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59796532"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>Korzystanie z usług zewnętrznych z usługi Azure API Management
 Zasady dostępne w usłudze Azure API Management można wykonać szeroką gamę przydatnych działań oparte wyłącznie na żądanie przychodzące, Wychodzące odpowiedzi i podstawowe informacje o konfiguracji. Jednak możliwość interakcji z usługami zewnętrznymi z usługi API Management zasady otwiera wiele więcej.

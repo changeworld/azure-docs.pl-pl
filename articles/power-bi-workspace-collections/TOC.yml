@@ -1,81 +1,74 @@
-items:
 - name: Omówienie
   items:
-  - name: Co to są kolekcje obszarów roboczych usługi Power BI?
-    href: what-are-power-bi-workspace-collections.md
-  - name: Co nowego w kolekcjach obszarów roboczych usługi Power BI
-    href: whats-new.md
+    - name: Co to są kolekcje obszarów roboczych usługi Power BI?
+      href: what-are-power-bi-workspace-collections.md
+    - name: Co nowego w kolekcjach obszarów roboczych usługi Power BI
+      href: whats-new.md
 - name: Rozpoczęcie pracy
   items:
-  - name: Wprowadzenie do kolekcji obszarów roboczych usługi Power BI
-    href: get-started.md
-  - name: Rozpoczynanie pracy przy użyciu przykładu
-    href: get-started-sample.md
-  - name: Często zadawane pytania
-    href: faq.md
+    - name: Wprowadzenie do kolekcji obszarów roboczych usługi Power BI
+      href: get-started.md
+    - name: Rozpoczynanie pracy przy użyciu przykładu
+      href: get-started-sample.md
+    - name: Często zadawane pytania
+      href: faq.md
 - name: Instrukcje
   items:
-  - name: Planowanie i projektowanie
-    items:
-    - name: Typowe scenariusze
-      href: scenarios.md
-  - name: Zarządzanie
-    items:
-    - name: Łączenie ze źródłem danych
-      href: connect-datasource.md
-    - name: Osadzanie raportu usługi Power BI
-      href: embed-report.md
-    - name: Interakcja z raportami
-      href: interact-with-reports.md
-    - name: Tworzenie nowego raportu przy użyciu zestawu danych
-      href: create-report-from-dataset.md
-    - name: Zapisywanie raportów
-      href: save-reports.md
-    - name: Przełączanie między wyświetlaniem i edytowaniem
-      href: toggle-mode.md
-  - name: Bezpieczeństwo
-    items:
-    - name: Uwierzytelnianie i autoryzacja
-      href: app-token-flow.md
-    - name: Zabezpieczenia na poziomie wierszy przy użyciu kolekcji obszarów roboczych usługi Power BI
-      href: row-level-security.md
+    - name: Planowanie i projektowanie
+      items:
+        - name: Typowe scenariusze
+          href: scenarios.md
+    - name: Zarządzanie
+      items:
+        - name: Łączenie ze źródłem danych
+          href: connect-datasource.md
+        - name: Osadzanie raportu usługi Power BI
+          href: embed-report.md
+        - name: Interakcja z raportami
+          href: interact-with-reports.md
+        - name: Tworzenie nowego raportu przy użyciu zestawu danych
+          href: create-report-from-dataset.md
+        - name: Zapisywanie raportów
+          href: save-reports.md
+        - name: Przełączanie między wyświetlaniem i edytowaniem
+          href: toggle-mode.md
+    - name: Bezpieczeństwo
+      items:
+        - name: Uwierzytelnianie i autoryzacja
+          href: app-token-flow.md
+        - name: Zabezpieczenia na poziomie wierszy przy użyciu kolekcji obszarów roboczych usługi Power BI
+          href: row-level-security.md
 - name: Dokumentacja
   items:
-  - name: Przykłady kodu
-    href: https://azure.microsoft.com/resources/samples/?service=power-bi-embedded
-  - name: PowerShell
-    href: /powershell/module/az.powerbiembedded
-  - name: Usługa Azure Resource Manager dla platformy .NET
-    href: /dotnet/api/microsoft.azure.management.powerbiembedded
-  - name: Zestaw SDK dla platformy .NET do pobrania
-    href: https://www.nuget.org/profiles/powerbi
-  - name: JavaScript
-    href: https://github.com/Microsoft/PowerBI-JavaScript/wiki
-  - name: Interfejsy API REST zarządzania
-    href: https://docs.microsoft.com/rest/api/power-bi-workspace-collections/
-  - name: Interfejsy API REST
-    href: https://msdn.microsoft.com/library/azure/mt711507.aspx
+    - name: Przykłady kodu
+      href: 'https://azure.microsoft.com/resources/samples/?service=power-bi-embedded'
+    - name: PowerShell
+      href: /powershell/module/az.powerbiembedded
+    - name: Usługa Azure Resource Manager dla platformy .NET
+      href: /dotnet/api/microsoft.azure.management.powerbiembedded
+    - name: Zestaw SDK dla platformy .NET do pobrania
+      href: 'https://www.nuget.org/profiles/powerbi'
+    - name: JavaScript
+      href: 'https://github.com/Microsoft/PowerBI-JavaScript/wiki'
+    - name: Interfejsy API REST zarządzania
+      href: 'https://docs.microsoft.com/rest/api/power-bi-workspace-collections/'
+    - name: Interfejsy API REST
+      href: 'https://msdn.microsoft.com/library/azure/mt711507.aspx'
 - name: Zasoby
   items:
-  - name: Harmonogram działania dla platformy Azure
-    href: https://azure.microsoft.com/roadmap/?category=intelligence-analytics
-  - name: Przykład osadzania skryptu JavaScript
-    href: https://microsoft.github.io/PowerBI-JavaScript/demo/
-  - name: Repozytorium Git języka JavaScript
-    href: https://github.com/Microsoft/PowerBI-JavaScript
-  - name: Repozytorium Git języka C# w usłudze Power BI
-    href: https://github.com/Microsoft/PowerBI-CSharp
-  - name: Społeczność użytkowników usługi Power BI
-    href: https://community.powerbi.com/t5/Developer/bd-p/Developer
-  - name: Kalkulator cen
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: Przykładowa aplikacja
-    href: https://github.com/Azure-Samples/power-bi-embedded-integrate-report-into-web-app/
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/powerbi
-ms.openlocfilehash: 5d43ccee59baebec93416845597bf437e57bc46b
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58846485"
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
+    - name: Przykład osadzania skryptu JavaScript
+      href: 'https://microsoft.github.io/PowerBI-JavaScript/demo/'
+    - name: Repozytorium Git języka JavaScript
+      href: 'https://github.com/Microsoft/PowerBI-JavaScript'
+    - name: 'Repozytorium Git języka C# w usłudze Power BI'
+      href: 'https://github.com/Microsoft/PowerBI-CSharp'
+    - name: Społeczność użytkowników usługi Power BI
+      href: 'https://community.powerbi.com/t5/Developer/bd-p/Developer'
+    - name: Kalkulator cen
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Przykładowa aplikacja
+      href: 'https://github.com/Azure-Samples/power-bi-embedded-integrate-report-into-web-app/'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/powerbi'

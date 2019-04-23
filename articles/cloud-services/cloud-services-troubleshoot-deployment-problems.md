@@ -16,11 +16,11 @@ ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
 ms.openlocfilehash: cc2a0177525013736445db5fd1befa478dc9b9b8
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58916856"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59798574"
 ---
 # <a name="troubleshoot-cloud-service-deployment-problems"></a>Rozwiązywanie problemów z wdrażaniem usługi chmury
 Podczas wdrażania pakietu aplikacji usługi w chmurze na platformie Azure, można uzyskać informacji na temat wdrożenia z **właściwości** okienko w witrynie Azure portal. Szczegółowe informacje można użyć w tym okienku, ułatwiające rozwiązywanie problemów z usługą w chmurze, a następnie można udostępnić te informacje pomocy technicznej systemu Azure podczas otwierania nowe żądanie pomocy technicznej.

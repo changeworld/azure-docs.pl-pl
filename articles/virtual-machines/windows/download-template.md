@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 11/17/2017
 ms.author: cynthn
 ms.openlocfilehash: 4ef0c09d2d2ea2ed06708342ab45abcaf149c23e
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58903118"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59798831"
 ---
 # <a name="download-the-template-for-a-vm"></a>Pobieranie szablonu dla maszyny wirtualnej
 Podczas tworzenia maszyny Wirtualnej na platformie Azure przy użyciu portalu lub programu PowerShell, szablon usługi Resource Manager jest tworzony automatycznie dla Ciebie. Ten szablon umożliwia szybkie duplikowanie wdrożenia. Szablon zawiera informacje o wszystkich zasobów w grupie zasobów. Dla maszyny wirtualnej oznacza to, że szablon zawiera wszystko, co jest tworzony w odniesieniu do maszyny Wirtualnej w tej grupie zasobów, łącznie z zasobami sieciowymi.
