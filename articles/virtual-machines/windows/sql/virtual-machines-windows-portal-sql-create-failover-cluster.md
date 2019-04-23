@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 3bb829e7cc99ee0d6e2d02f7ed3880d6c0226123
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
-ms.translationtype: MT
+ms.openlocfilehash: a758cce85645e72bfd9434a69393133d3da6b57d
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486322"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011371"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Konfigurowanie wystąpienia klastra trybu Failover programu SQL Server na maszynach wirtualnych platformy Azure
 
@@ -29,7 +29,7 @@ W tym artykule opisano sposób tworzenia programu SQL Server trybu Failover klas
 
 Na poniższym diagramie przedstawiono kompletne rozwiązanie na maszynach wirtualnych platformy Azure:
 
-![Grupy dostępności](./media/virtual-machines-windows-portal-sql-create-failover-cluster/00-sql-fci-s2d-complete-solution.png)
+![Grupa dostępności](./media/virtual-machines-windows-portal-sql-create-failover-cluster/00-sql-fci-s2d-complete-solution.png)
 
 Na powyższym diagramie przedstawiono:
 
@@ -399,7 +399,7 @@ Aby utworzyć moduł równoważenia obciążenia:
 
    - **Nazwa**: Nazwa sondy kondycji.
    - **Protokół**: TCP.
-   - **Port**: Ustaw dostępny port TCP. Ten port wymaga portu zapory open. Użyj [tego samego portu](#ports) ustawione dla sondy kondycji na zaporze.
+   - **Port**: Ustaw port tworzone w zaporze dla sondy kondycji w [tego kroku](#ports). W tym artykule w przykładzie użyto portu TCP `59999`.
    - **Interwał**: 5 sekund.
    - **Próg złej kondycji**: 2 kolejnych niepowodzeń.
 

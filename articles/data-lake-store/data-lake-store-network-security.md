@@ -26,23 +26,23 @@ W tym artykule przedstawiono integrację z siecią wirtualną w usłudze Azure D
 
 Ta funkcja umożliwia zabezpieczenie konta usługi Data Lake Storage przed zagrożeniami zewnętrznymi.
 
-Integracja z siecią wirtualną w usłudze Data Lake Storage Gen1 wykorzystuje zabezpieczenia punktu końcowego usługi sieci wirtualnej pomiędzy siecią wirtualną a usługą Azure Active Directory (Azure AD) do wygenerowania dodatkowych oświadczeń zabezpieczeń w tokenie dostępu. Te oświadczenia są następnie używane do uwierzytelniania sieci wirtualnej na koncie usługi Data Lake Storage Gen1 i uzyskania dostępu.
+Integracja z siecią wirtualną w usłudze Data Lake Storage Gen1 wykorzystuje zabezpieczenia punktu końcowego usługi dla sieci wirtualnej pomiędzy siecią wirtualną a usługą Azure Active Directory (Azure AD) do wygenerowania dodatkowych oświadczeń zabezpieczeń w tokenie dostępu. Te oświadczenia są następnie używane do uwierzytelniania sieci wirtualnej na koncie usługi Data Lake Storage Gen1 i uzyskania dostępu.
 
 > [!NOTE]
 > Korzystanie z tych funkcji nie wiąże się z dodatkowymi opłatami. Konto jest rozliczane według stawki standardowej dla usługi Data Lake Storage Gen1. Aby uzyskać więcej informacji, zobacz [cennik](https://azure.microsoft.com/pricing/details/data-lake-store/?cdn=disable). Zapoznaj się z [cennikiem](https://azure.microsoft.com/pricing/#product-picker) pozostałych usług platformy Azure, z których korzystasz.
 
 ## <a name="scenarios-for-virtual-network-integration-for-data-lake-storage-gen1"></a>Scenariusze dotyczące integracji z siecią wirtualną w usłudze Data Lake Storage Gen1
 
-Integracja z siecią wirtualną w usłudze Data Lake Storage Gen1 umożliwia ograniczenie dostępu do konta usługi Data Lake Storage Gen1 z określnych sieci wirtualnych i podsieci. Po ograniczeniu Twojego konta do określonej podsieci sieci wirtualnej inne sieci wirtualne/maszyny wirtualne nie mają do niego dostępu. Pod względem funkcjonalności integracja z siecią wirtualną w usłudze Data Lake Storage Gen1 umożliwia realizację takiego samego scenariusza, jak w przypadku [punktów końcowych usługi sieci wirtualnej](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview). W poniższych sekcjach opisano szczegółowo kilka kluczowych różnic. 
+Integracja z siecią wirtualną w usłudze Data Lake Storage Gen1 umożliwia ograniczenie dostępu do konta usługi Data Lake Storage Gen1 z określnych sieci wirtualnych i podsieci. Po ograniczeniu Twojego konta do określonej podsieci sieci wirtualnej inne sieci wirtualne/maszyny wirtualne nie mają do niego dostępu. Pod względem funkcjonalności integracja z siecią wirtualną w usłudze Data Lake Storage Gen1 umożliwia realizację takiego samego scenariusza, jak w przypadku [punktów końcowych usługi dla sieci wirtualnej](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview). W poniższych sekcjach opisano szczegółowo kilka kluczowych różnic. 
 
 ![Diagram scenariusza integracji z siecią wirtualną w usłudze Data Lake Storage Gen1](media/data-lake-store-network-security/scenario-diagram.png)
 
 > [!NOTE]
-> Oprócz reguł sieci wirtualnej można stosować istniejące reguły zapory IP w celu zezwalania na dostęp również z sieci lokalnych. 
+> Oprócz reguł sieci wirtualnej można stosować istniejące reguły zapory bazujące na adresach IP w celu zezwalania na dostęp również z sieci lokalnych. 
 
 ## <a name="optimal-routing-with-data-lake-storage-gen1-virtual-network-integration"></a>Optymalny routing przy użyciu integracji z siecią wirtualną w usłudze Data Lake Storage Gen1
 
-Kluczową korzyścią ze stosowania punktów końcowych usługi sieci wirtualnej jest [optymalny routing](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview#key-benefits) z sieci wirtualnej. Możesz zastosować taką samą optymalizację tras w przypadku kont usługi Data Lake Storage Gen1. Użyj następujących [tras zdefiniowanych przez użytkownika](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#user-defined) z sieci wirtualnej do konta usługi Data Lake Storage Gen1.
+Kluczową korzyścią ze stosowania punktów końcowych usługi dla sieci wirtualnej jest [optymalny routing](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview#key-benefits) z sieci wirtualnej. Możesz zastosować taką samą optymalizację tras w przypadku kont usługi Data Lake Storage Gen1. Użyj następujących [tras zdefiniowanych przez użytkownika](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#user-defined) z sieci wirtualnej do konta usługi Data Lake Storage Gen1.
 
 **Publiczny adres IP usługi Data Lake Storage** — użyj publicznego adresu IP docelowych kont usługi Data Lake Storage Gen1. Adresy IP kont usługi Data Lake Storage Gen1 można zidentyfikować przez [rozpoznawanie nazw DNS](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-connectivity-from-vnets#enabling-connectivity-to-azure-data-lake-storage-gen1-from-vms-with-restricted-connectivity) tych kont. Utwórz oddzielny wpis dla każdego adresu.
 
@@ -93,7 +93,7 @@ Dostępne opcje to między innymi:
  
 4.  Wybierz polecenie **Dodaj**, aby dodać nowy punkt końcowy usługi.
 
-    ![Dodawanie punktu końcowego usługi sieci wirtualnej](media/data-lake-store-network-security/config-vnet-1.png)
+    ![Dodawanie punktu końcowego usługi dla sieci wirtualnej](media/data-lake-store-network-security/config-vnet-1.png)
 
 5.  Jako usługę dla punktu końcowego wybierz **Microsoft.AzureActiveDirectory**.
 

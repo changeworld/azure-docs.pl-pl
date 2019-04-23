@@ -14,7 +14,7 @@ manager: craigg
 ms.date: 03/26/2019
 ms.openlocfilehash: 7261a25251e93035c31004c9255612a0e3b45a2f
 ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/17/2019
 ms.locfileid: "59680909"
@@ -44,7 +44,7 @@ Usługi oparte na rdzeniach wirtualnych warstwy różnią się głównie na pods
 - Warstwy usług na dużą skalę jest zoptymalizowany pod kątem obciążeń dużych baz danych.
 - Krytyczne dla działania firmy warstwy usług jest odpowiednia dla obciążeń biznesowych, gdzie ma najwyższy priorytet, czas oczekiwania operacji We/Wy.
 
-| | Typ zasobu | Ogólne zastosowanie |  Hiperskalowanie | Krytyczne dla działania firmy |
+| | Typ zasobu | Ogólne zastosowanie |  Hiperskala | Krytyczne dla działania firmy |
 |:---|:---:|:---:|:---:|:---:|
 | **Najlepsze dla** |Wszyscy|  Większości obciążeń biznesowych. Oferty budżetu zorientowane na obiekty o zrównoważonym obciążeniu opcji obliczeniowych i magazynu. | Aplikacji przetwarzających dane z wymagań w zakresie pojemności dużych ilości danych i możliwości automatycznego skalowania magazynu i Skaluj obliczenia płynnie. | Przetwarzanie OLTP danych aplikacji za pomocą dużo transakcji i najniższym opóźnieniu operacji We/Wy. Oferuje najwyższą odporność na awarie, za pomocą kilku izolowany replik.|
 |  **Typ zasobu** ||Pojedynczą bazę danych / elastycznej puli / wystąpienia zarządzanego | Pojedyncza baza danych | Pojedynczą bazę danych / elastycznej puli / wystąpienia zarządzanego |

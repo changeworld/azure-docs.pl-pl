@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: article
 ms.date: 4/03/2019
 ms.author: aahi
-ms.openlocfilehash: 7c6fda2238aa53c4dc1a0f15ef1aaee263e4a8f8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 62d34b859a0cf71320c478b7cab4a2914e5ee308
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59489352"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011696"
 ---
 # <a name="sending-search-queries-to-the-bing-visual-search-api"></a>Wysyłanie kwerend wyszukiwania do interfejsu API wyszukiwania wizualnego Bing
 
@@ -73,7 +73,7 @@ Punkt końcowy wyszukiwania wizualnego jest następujący: https:\/\/api.cogniti
 
 Poniżej przedstawiono parametry zapytania, które należy określić w żądaniu. Jako minimum, należy uwzględnić `mkt` parametru zapytania:
 
-| Name (Nazwa) | Wartość | Typ | Wymagane |
+| Name (Nazwa) | Wartość | Typ | Wymagany |
 | --- | --- | --- | --- |
 | <a name="cc" />cc  | Kod kraju, który reprezentuje, skąd pochodzą wyniki.<br /><br /> Jeśli ustawisz ten parametr, musisz także określić nagłówek [Accept-Language](#acceptlanguage). Usługa Bing używa pierwszego obsługiwanego języka znalezionego na liście języków i łączy ten język z określonym kodem kraju, aby ustalić rynek, z którego mają być zwrócone wyniki. Jeśli lista języków nie zawiera obsługiwanego języka, usługa Bing znajduje najbliższy język i rynek, które obsługują żądanie. Może też używać rynku zagregowanego lub domyślnego, zamiast podanego.<br /><br /> Tego parametru zapytania i parametru `Accept-Language` należy używać tylko wtedy, gdy jest określanych wiele języków. W przeciwnym razie należy użyć parametrów zapytania `mkt` i `setLang`.<br /><br /> Ten parametr i parametr zapytania [mkt](#mkt) wykluczają się wzajemnie&mdash;nie określaj ich jednocześnie. | String | Nie       |
 | <a name="mkt" />mkt   | Rynek, z którego pochodzą wyniki. <br /><br /> **UWAGA:** Na rynku, należy zawsze określić, jeśli jest znany. Określenie rynku pomaga usłudze Bing w kierowaniu żądania i zwracaniu odpowiedniej i optymalnej odpowiedzi.<br /><br /> Ten parametr i parametr zapytania [cc](#cc) wykluczają się wzajemnie&mdash;nie określaj ich jednocześnie. | String | Yes      |
@@ -98,7 +98,7 @@ Poniżej przedstawiono nagłówki, które należy określić w żądaniu. `Conte
 | <a name="location" />X-Search-Location   | Opcjonalny nagłówek żądania.<br /><br /> Rozdzielana średnikami lista par klucz/wartość, które opisują geograficzną lokalizację klienta. Usługa Bing używa informacji o lokalizacji, aby określić sposób bezpiecznego wyszukiwania i aby zwracać odpowiednią zawartość lokalną. Parę klucz/wartość określ w formacie \<klucz\>:\<wartość\>. Poniżej przedstawiono klucze, które służą do określania lokalizacji użytkownika.<br /><br /><ul><li>lat&mdash;Wymagane. Szerokość geograficzna lokalizacji klienta w stopniach. Szerokość geograficzna musi być większa niż lub równa -90.0 i mniejsza niż lub równa +90.0. Wartości ujemne wskazują południową szerokość geograficzną, a wartości dodatnie wskazują północną szerokość geograficzną.<br /><br /></li><li>long&mdash;Wymagane. Długość geograficzna lokalizacji klienta w stopniach. Długość geograficzna musi być większa niż lub równa -180.0 i mniejsza niż lub równa +180.0. Wartości ujemne wskazują zachodnią długość geograficzną, a wartości dodatnie wskazują wschodnią długość geograficzną.<br /><br /></li><li>re&mdash;Wymagane. Promień, w metrach, który określa poziomą dokładność współrzędnych. Przekaż wartość zwróconą przez usługę lokalizacji urządzenia. Typowe wartości może być 22 m dla GPS/Wi-Fi, m 380 triangulacji tower komórka i 18,000 m dla odwrotnego wyszukiwania adresu IP.<br /><br /></li><li>ts&mdash;Opcjonalne. Sygnatura czasowa w systemie UTC UNIX dla czasu, kiedy klient znajdował się w danej lokalizacji. (Sygnatura czasowa systemu UNIX to liczba sekund od 1 stycznia 1970 r.).<br /><br /></li><li>head&mdash;Opcjonalne. Względny kierunek przemieszczania się klienta. Określ kierunek ruchu jako liczbę stopni z zakresu od 0 do 360, zliczanych zgodnie z ruchem wskazówek zegara względem prawdziwej północy. Określ ten klucz tylko wtedy, gdy wartość klucza `sp` jest różna od zera.<br /><br /></li><li>sp&mdash;Opcjonalne. Prędkość pozioma (szybkość) w metrach na sekundę, z którą przemieszcza się urządzenie klienckie.<br /><br /></li><li>alt&mdash;Opcjonalne. Wysokość urządzenia klienta, w metrach.<br /><br /></li><li>are&mdash;Opcjonalne. Promień, w metrach, który określa pionową dokładność współrzędnych. Określ ten klucz tylko wtedy, gdy wartość klucza `alt` także została określona.<br /><br /></li></ul> **UWAGA:** Chociaż wiele kluczy są opcjonalne, więcej informacji, które podasz, tym bardziej dokładne wyniki lokalizacji są.<br /><br /> **UWAGA:** Mimo że jest to opcjonalne, zachęcamy do zawsze określić lokalizację geograficzną użytkownika. Podanie lokalizacji jest szczególnie ważne, jeśli adres IP klienta nie odzwierciedla precyzyjnie fizycznej lokalizacji użytkownika (na przykład, jeśli klient korzysta z sieci VPN). Aby uzyskać optymalne wyniki, należy dołączyć ten nagłówek i `X-MSEdge-ClientIP` nagłówka, ale co najmniej powinien być dołączany do tego pliku nagłówkowego.       |
 
 > [!NOTE]
-> Należy pamiętać, że [Użyj interfejsu API wyszukiwania Bing i wyświetlają wymagania dotyczące](/../bing-web-search/use-display-requirements.md) Wymagaj zgodności ze wszystkimi obowiązującymi przepisami, w tym dotyczących korzystania z tych nagłówków. W niektórych systemach prawnych, na przykład w Europie, wymagane jest uzyskania zgody użytkownika przed umieszczeniem narzędzi śledzących na urządzeniu użytkownika.
+> Należy pamiętać, że [Użyj interfejsu API wyszukiwania Bing i wyświetlają wymagania dotyczące](../../bing-web-search/use-display-requirements.md) Wymagaj zgodności ze wszystkimi obowiązującymi przepisami, w tym dotyczących korzystania z tych nagłówków. W niektórych systemach prawnych, na przykład w Europie, wymagane jest uzyskania zgody użytkownika przed umieszczeniem narzędzi śledzących na urządzeniu użytkownika.
 
 <a name="content-form-types" />
 

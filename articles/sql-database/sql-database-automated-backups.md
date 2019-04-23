@@ -14,7 +14,7 @@ manager: craigg
 ms.date: 04/12/2019
 ms.openlocfilehash: f0cff30f246bfeec528f440b507da9248ebbea9f
 ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/17/2019
 ms.locfileid: "59678602"
@@ -61,7 +61,7 @@ Domyślny okres przechowywania dla bazy danych utworzone za pomocą modelu zakup
 - Warstwy usług w warstwie standardowa wynosi 5 tygodni.
 - Warstwa Premium usług jest 5 tygodni.
 
-#### <a name="vcore-based-purchasing-model"></a>Model zakupu bazujący na rdzeniach wirtualnych
+#### <a name="vcore-based-purchasing-model"></a>Model zakupów oparty na rdzeniach wirtualnych
 
 Jeśli używasz [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md), domyślny okres przechowywania kopii zapasowych to 7 dni (dla pojedynczego, puli i wystąpienia bazy danych). Dla wszystkich baz danych Azure SQL (pojedynczy, puli i bazy danych wystąpień, możesz [zmienić okres przechowywania kopii zapasowej do 35 dni](#how-to-change-the-pitr-backup-retention-period).
 

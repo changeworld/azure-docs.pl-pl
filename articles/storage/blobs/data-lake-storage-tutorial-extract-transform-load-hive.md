@@ -10,21 +10,21 @@ ms.date: 02/21/2019
 ms.author: jamesbak
 ms.openlocfilehash: a5e7fd200617661c38b65ebbd4473a1a729de457
 ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/17/2019
 ms.locfileid: "59682359"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-apache-hive-on-azure-hdinsight"></a>Samouczek: Wyodrębnianie, przekształcanie i ładowanie danych przy użyciu technologii Apache Hive w usłudze Azure HDInsight
 
-W ramach tego samouczka wykonasz operację ETL: wyodrębnianie, przekształcanie i ładowanie danych. Pobierzesz plik danych pierwotnych w formacie CSV, zaimportujesz te dane do klastra usługi Azure HDInsight, przekształcisz je przy użyciu technologii Apache Hive i załadujesz do usługi Azure SQL Database za pomocą narzędzia Apache Sqoop.
+W ramach tego samouczka wykonasz operację ETL: wyodrębnianie, przekształcanie i ładowanie danych. Pobierzesz plik danych pierwotnych w formacie CSV, zaimportujesz te dane do klastra usługi Azure HDInsight, przekształcisz je przy użyciu technologii Apache Hive i załadujesz do bazy danych Azure SQL Database za pomocą narzędzia Apache Sqoop.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Wyodrębnianie danych i przekazywanie ich do klastra usługi HDInsight.
 > * Przekształcanie danych przy użyciu technologii Apache Hive.
-> * Ładowanie danych do usługi Azure SQL Database za pomocą narzędzia Sqoop.
+> * Ładowanie danych do bazy danych Azure SQL Database za pomocą narzędzia Sqoop.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
@@ -38,7 +38,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
     Zobacz [Szybki start: Rozpoczynanie pracy z platformami Apache Hadoop i Apache Hive w usłudze Azure HDInsight przy użyciu witryny Azure Portal](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-linux-create-cluster-get-started-portal).
 
-* **Azure SQL Database**: Używasz bazy danych Azure SQL Database jako docelowego magazynu danych. Jeśli nie masz bazy danych SQL, zobacz [Tworzenie bazy danych SQL platformy Azure w witrynie Azure Portal](../../sql-database/sql-database-get-started.md).
+* **Azure SQL Database**: Używasz bazy danych Azure SQL Database jako docelowego magazynu danych. Jeśli nie masz bazy danych SQL, zobacz [Tworzenie bazy danych Azure SQL Database w witrynie Azure Portal](../../sql-database/sql-database-get-started.md).
 
 * **Interfejs wiersza polecenia platformy Azure**: Jeśli nie zainstalowano interfejsu wiersza polecenia platformy Azure, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
@@ -247,7 +247,7 @@ Aby wykonać tę operację, musisz dysponować nazwą serwera bazy danych SQL Da
    sudo apt-get --assume-yes install freetds-dev freetds-bin
    ```
 
-6. Po zakończeniu instalacji użyj poniższego polecenia, aby połączyć się z serwerem bazy danych SQL Database.
+6. Po zakończeniu instalacji użyj poniższego polecenia, aby połączyć się z serwerem usługi SQL Database.
 
    ```bash
    TDSVER=8.0 tsql -H '<server-name>.database.windows.net' -U '<admin-login>' -p 1433 -D '<database-name>'

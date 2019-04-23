@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 718eefc95384dde050a4a25e6850fe6db574d294
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: ef62ec78bc7fc01bd2e6dd7c5561b15be85540d2
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59258933"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60007903"
 ---
 # <a name="azure-maps-routing-coverage"></a>Usługi Azure Maps pokrycie routingiem
 
@@ -136,12 +136,12 @@ Poniższa tabela zawiera informacje o pokryciu dla usługi Azure Maps routingu.
 | Kambodża                       |        ✓       |                      |             |
 | Fidżi                           |        ✓       |                      |             |
 | Guam                           |        ✓       |                      |             |
-| SRA Hongkong                      |        ✓       |         ✓            |             |
+| SRA Hongkong                  |        ✓       |         ✓            |             |
 | Indie                          |        ✓       |         ✓            |             |
 | Indonezja                      |        ✓       |         ✓            |             |
 | Korea                          |        Ø       |                      |             |
 | Laos                           |        ✓       |                      |             |
-| SRA Makau                          |        ✓       |         ✓            |             |
+| SRA Makau                      |        ✓       |         ✓            |             |
 | Malezja                       |        ✓       |         ✓            |             |
 | Myanmar                        |        ✓       |                      |             |
 | Nowa Zelandia                    |        ✓       |         ✓            |     ✓       | 
@@ -190,7 +190,7 @@ Poniższa tabela zawiera informacje o pokryciu dla usługi Azure Maps routingu.
 | Liechtenstein                  |        ✓       |         ✓            |             |
 | Litwa                      |        ✓       |         ✓            |     ✓      | 
 | Luksemburg                     |        ✓       |         ✓            |     ✓      | 
-| Macedonia Północna                      |        ✓       |                      |             |
+| Macedonia Północna                |        ✓       |                      |             |
 | Malta                          |        ✓       |         ✓            |             |
 | Mołdawia                        |        ✓       |                      |             |
 | Monako                         |        ✓       |         ✓            |             |

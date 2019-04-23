@@ -14,7 +14,7 @@ manager: craigg
 ms.date: 04/04/2019
 ms.openlocfilehash: 5e323b28913e0ba259654d39f97e0436e6bff2db
 ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59786026"
@@ -25,7 +25,7 @@ Usługa Azure SQL Database jest oparty na architekturę aparatu bazy danych prog
 
 - Ogólnego przeznaczenia/Standard 
 - Business Critical/Premium
-- Hiperskalowanie
+- Hiperskala
 
 Warstwy usług na dużą skalę w usłudze Azure SQL Database jest najnowsza warstwy usług w modelu zakupu opartego na rdzeniach wirtualnych. Ta warstwa usługi jest wysoce skalowalny magazyn i warstwy wydajności obliczeniowej, który korzysta z architektury platformy Azure do skalowania magazynu i zasoby obliczeniowe dla usługi Azure SQL Database w znacznym stopniu po przekroczeniu limitów dostępnych dla firm i ogólnego przeznaczenia Warstwy usług krytycznych.
 

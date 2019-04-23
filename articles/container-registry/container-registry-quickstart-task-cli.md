@@ -10,7 +10,7 @@ ms.author: danlep
 ms.custom: ''
 ms.openlocfilehash: 61a17842158326c927f049af893a00818f3acc55
 ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59793390"
@@ -45,7 +45,7 @@ Tworzenie rejestru kontenera za pomocą [tworzenie az acr] [ az-acr-create] pole
 az acr create --resource-group myResourceGroup --name myContainerRegistry008 --sku Basic
 ```
 
-Ten przykład tworzy *podstawowe* rejestru, to opcja optymalizacji kosztów dla deweloperów, nauka o usłudze Azure Container Registry. Aby uzyskać szczegółowe informacje na temat dostępnych warstw usługi, zobacz [Jednostki SKU rejestru kontenerów][container-registry-skus].
+Ten przykład tworzy *podstawowe* rejestru, to opcja optymalizacji kosztów dla deweloperów, nauka o usłudze Azure Container Registry. Aby uzyskać szczegółowe informacje na temat dostępnych warstw usług, zobacz [Jednostki SKU rejestru kontenerów][container-registry-skus].
 
 ## <a name="build-an-image-from-a-dockerfile"></a>Zbuduj obraz z pliku Dockerfile
 

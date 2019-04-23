@@ -14,7 +14,7 @@ manager: craigg
 ms.date: 02/07/2019
 ms.openlocfilehash: dc379f1ee67174cd806840e4244054701d18f0d4
 ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59784026"
@@ -28,7 +28,7 @@ Usługa Azure SQL Database jest oparty na architekturze aparatu bazy danych prog
 
 - Zastosowania ogólne
 - Krytyczne dla działania firmy
-- Hiperskalowanie
+- Hiperskala
 
 Architektury model dla warstwy usług ogólnego przeznaczenia opiera się na oddzielenie zasobów obliczeniowych i magazynowych. Ten model architektury opiera się na wysoką dostępność i niezawodność usługi Azure Blob storage, w sposób przezroczysty replikuje pliki bazy danych i gwarantuje bez utraty danych, jeśli podstawowy błąd infrastruktury się dzieje.
 

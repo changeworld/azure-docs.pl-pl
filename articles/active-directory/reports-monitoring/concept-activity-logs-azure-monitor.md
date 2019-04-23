@@ -1,6 +1,6 @@
 ---
-title: Dzienniki aktywności usługi Azure Active Directory w usłudze Azure Monitor (wersja zapoznawcza) | Microsoft Docs
-description: Wprowadzenie do usługi Azure Active Directory działania dzienników w usłudze Azure Monitor (wersja zapoznawcza)
+title: Dzienniki aktywności usługi platformy Azure Active Directory w usłudze Azure Monitor | Dokumentacja firmy Microsoft
+description: Wprowadzenie do usługi Azure Active Directory działania dzienników w usłudze Azure Monitor
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,20 +13,20 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0469f69f026c578de9598401e69262279669d19f
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
-ms.translationtype: MT
+ms.openlocfilehash: 7fbb90e95c07c66f45d49076f0570ac028c37244
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436306"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011405"
 ---
-# <a name="azure-ad-activity-logs-in-azure-monitor-preview"></a>Dzienniki aktywności usługi Azure AD w usłudze Azure Monitor (wersja zapoznawcza)
+# <a name="azure-ad-activity-logs-in-azure-monitor"></a>Dzienniki aktywności usługi platformy Azure AD w usłudze Azure Monitor
 
-Dzienniki aktywności usługi Azure Active Directory (Azure AD) mogą teraz kierować do kilku punktów końcowych długi okres przechowywania i danych szczegółowych informacji. Publiczna wersja zapoznawcza usługi Azure AD dzienników w usłudze Azure Monitor umożliwia:
+Dzienniki aktywności usługi Azure Active Directory (Azure AD) można kierować do kilku punktów końcowych długi okres przechowywania i danych szczegółowych informacji. Ta funkcja umożliwia:
 
 * Archiwum usługi Azure AD dzienników aktywności do konta usługi Azure storage, aby zachować dane przez długi czas.
 * Stream usługi Azure AD Dzienniki aktywności do Centrum zdarzeń platformy Azure na potrzeby analizy, za pomocą popularnych narzędzi Security Information and Event Management (SIEM), takie jak Splunk i QRadar.

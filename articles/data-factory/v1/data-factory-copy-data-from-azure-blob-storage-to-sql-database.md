@@ -16,7 +16,7 @@ ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 557228bafc00c3028a1fda520da8fe4ec8c7a6f2
 ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/17/2019
 ms.locfileid: "59678721"
@@ -95,7 +95,7 @@ Teraz Przygotuj swój usługi Azure blob storage i bazy danych Azure SQL dla teg
     ```
 2. Użyj narzędzi takich jak [Eksplorator magazynu Azure](https://storageexplorer.com/) do utworzenia kontenera **adftutorial** i przekazania pliku **emp.txt** do kontenera.
 
-3. Poniższy skrypt SQL umożliwia utworzenie tabeli **emp** w bazie danych SQL Azure.  
+3. Poniższy skrypt SQL umożliwia utworzenie tabeli **emp** w usłudze Azure SQL Database.  
 
     ```SQL
     CREATE TABLE dbo.emp

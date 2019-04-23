@@ -14,7 +14,7 @@ manager: craigg
 ms.date: 12/04/2018
 ms.openlocfilehash: e9f40e749642f2025c5298df74f9d8ff87aec14b
 ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59784060"
@@ -27,7 +27,7 @@ ms.locfileid: "59784060"
 Usługa Azure SQL Database jest oparty na architekturę aparatu bazy danych programu SQL Server, która jest uwzględniany w środowisku chmury w celu zapewnienia dostępności 99,99%, nawet w przypadku wystąpienia awarii infrastruktury. Istnieją trzy modele architektury, które są używane w usłudze Azure SQL Database:
 - Ogólnego przeznaczenia/Standard 
 - Business Critical/Premium
-- Hiperskalowanie
+- Hiperskala
 
 Premium/krytyczne modelu warstwy usług opiera się na klastrze procesy aparatu bazy danych. Ten model architektury opiera się na fakt, że jest zawsze kworum węzłów aparatu bazy danych dostępności i ma negatywny wpływ na wydajność minimalne obciążenie nawet w trakcie czynności konserwacyjnych.
 

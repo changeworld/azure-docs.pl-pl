@@ -14,7 +14,7 @@ manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: 513836257a292069da709ad7a71e480f2b4d069d
 ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/13/2019
 ms.locfileid: "59549733"
@@ -251,7 +251,7 @@ Jeśli dostęp do usługi Microsoft Azure SQL Database nie działa zgodnie z ocz
 
 - Upewnij się, że w środowisku firmowym sieci umożliwia komunikacji przychodzącej z zakresów adresów IP zasobów obliczeniowych (w tym zakresy SQL) używane w centrach danych platformy Microsoft Azure. Może być konieczne do listy dozwolonych te adresy IP, zobacz [zakresów IP centrum danych Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653)  
 - W przewodniku Szybki start dotyczące tworzenia reguły zapory poziomu serwera IP, zobacz [utworzyć bazę danych Azure SQL](sql-database-single-database-get-started.md).
-- Aby uzyskać pomoc podczas łączenia się z bazą danych Azure SQL z aplikacji innych firm lub aplikacji typu open source, zobacz [Client quick-start code samples to SQL Database](https://msdn.microsoft.com/library/azure/ee336282.aspx) (Przykłady kodu umożliwiające szybki start dla klienta usługi SQL Database).
+- Aby uzyskać pomoc podczas łączenia się z bazą danych Azure SQL Database z aplikacji innych firm lub aplikacji typu open source, zobacz [Client quick-start code samples to SQL Database](https://msdn.microsoft.com/library/azure/ee336282.aspx) (Przykłady kodu umożliwiające szybki start dla klienta usługi SQL Database).
 - Aby uzyskać informacji na temat dodatkowych portów, które może być konieczne otwarcie, zobacz **bazy danych SQL: Poza programem vs wewnątrz** części [portów wyższych niż 1433 dla platformy ADO.NET 4.5 i usługi SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md)
 - Aby uzyskać omówienie zabezpieczeń usługi Azure SQL Database, zobacz [Zabezpieczanie bazy danych](sql-database-security-overview.md)
 

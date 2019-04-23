@@ -12,12 +12,12 @@ ms.workload: na
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: 4b1c829a417d050b4d931611d9f2952e01582f04
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: 390e49a09136c21f3fd2f6555c0d56fde6e3b267
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58089475"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60008223"
 ---
 # <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>Tworzenie szablonów usługi Azure Resource Manager w celu zachowania spójności w chmurze
 
@@ -673,5 +673,5 @@ Należy wziąć pod uwagę na poniższe porady dotyczące testowania i automatyz
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Zagadnienia dotyczące szablonów usługi Azure Resource Manager](../azure-stack/user/azure-stack-develop-templates.md)
+* [Zagadnienia dotyczące szablonów usługi Azure Resource Manager](/azure-stack/user/azure-stack-develop-templates)
 * [Najlepsze rozwiązania dotyczące szablonów usługi Azure Resource Manager](resource-group-authoring-templates.md)

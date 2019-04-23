@@ -18,7 +18,7 @@ ms.author: aanandr
 ms.custom: ''
 ms.openlocfilehash: 2ebc678bffbbbe5d512d620b8f77ac0a245c0aff
 ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/15/2019
 ms.locfileid: "59579125"
@@ -29,7 +29,7 @@ Udostępnij kontenerom bogaty zestaw funkcji sieciowych platformy Azure, używaj
 
 - Adres IP sieci wirtualnej jest przypisywany do każdego zasobnika, który może składać się z jednego lub więcej kontenerów.
 - Zasobniki mogą łączyć się z równorzędnymi sieciami wirtualnymi i sieciami lokalnymi za pośrednictwem usługi ExpressRoute lub sieci VPN typu lokacja-lokacja. Zasobniki także są dostępne z sieci równorzędnych i lokalnych.
-- Zasobniki mają dostęp do usług, takich jak Azure Storage i Azure SQL Database, które są chronione przez punkty końcowe usługi sieci wirtualnej.
+- Zasobniki mają dostęp do usług, takich jak Azure Storage i Azure SQL Database, które są chronione przez punkty końcowe usługi dla sieci wirtualnej.
 - Sieciowe grupy zabezpieczeń i trasy można stosować bezpośrednio do zasobników.
 - Zasobniki można umieszczać bezpośrednio za wewnętrznym lub publicznym modułem równoważenia obciążenia platformy Azure, podobnie jak maszyny wirtualne.
 - Zasobnikom można przypisać publiczny adres IP, dzięki czemu staną się dostępne bezpośrednio z Internetu. Same zasobniki również mają dostęp do Internetu.

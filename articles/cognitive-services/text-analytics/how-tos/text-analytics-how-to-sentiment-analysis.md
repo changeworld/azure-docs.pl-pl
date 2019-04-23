@@ -7,18 +7,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 02/13/2019
+ms.date: 02/26/2019
 ms.author: aahi
-ms.openlocfilehash: 7287a9ddbd84960dcde790d813a6204e9e790094
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 0c42e7f8b1fffb9cf998f4cee8d30405a8df74a4
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887424"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011303"
 ---
 # <a name="example-how-to-detect-sentiment-with-text-analytics"></a>Przykład: Jak wykryć tonację przy użyciu analizy tekstu
 
-[Interfejs API analizy tonacji](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9) ocenia tekst wejściowy i zwraca wynik opinii dla każdego dokumentu z zakresu od 0 (negatywna) do 1 (pozytywna).
+[Interfejs API analizy tonacji](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) ocenia tekst wejściowy i zwraca wynik opinii dla każdego dokumentu z zakresu od 0 (negatywna) do 1 (pozytywna).
 
 Ta możliwość jest przydatna do wykrywania pozytywnych i negatywnych opinii w mediach społecznościowych, recenzjach klientów i na forach dyskusyjnych. Zawartość udostępniasz Ty, a modele i dane uczenia są dostarczane przez usługę.
 
@@ -37,7 +37,7 @@ Analiza opinii odbywa się dla całego dokumentu, w przeciwieństwie do wyodręb
 
 Analiza tonacji daje wynik wyższej jakości, jeśli pracuje na mniejszych fragmentach tekstu. Jest to przeciwieństwo wyodrębniania kluczowych fraz, które działa lepiej na większych blokach tekstu. Aby uzyskać najlepsze wyniki dla obu operacji, rozważ odpowiednią zmianę struktury danych wejściowych.
 
-Dokumenty JSON muszą mieć następujący format: identyfikator, tekst, język
+Konieczne jest posiadanie dokumenty JSON w następującym formacie: Identyfikator, tekstu, język
 
 Dokument musi mieć mniej niż 5120 znaków, a kolekcja może zawierać maksymalnie 1000 elementów (identyfikatorów). Kolekcja jest przesyłana w treści żądania. Oto przykład zawartości, dla której można analizować tonację.
 
@@ -77,16 +77,16 @@ Dokument musi mieć mniej niż 5120 znaków, a kolekcja może zawierać maksymal
 
 Szczegółowe informacje na temat definicji żądania można znaleźć w artykule [Jak wywołać interfejs API analizy tekstu](text-analytics-how-to-call-api.md). Dla wygody poniżej ponownie podano odpowiednie kroki:
 
-+ Utwórz żądanie **POST**. Zapoznaj się z dokumentacją interfejsu API dla tego żądania: [Interfejs API analizy tonacji](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9)
++ Utwórz żądanie **POST**. Zapoznaj się z dokumentacją interfejsu API dla tego żądania: [Interfejs API analizy tonacji](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)
 
-+ Ustaw punkt końcowy HTTP na potrzeby analizy tonacji przy użyciu zasobów analizy tekstu na platformie Azure lub utworzonego wystąpienia [kontenera analizy tekstu](text-analytics-how-to-install-containers.md). Musi on obejmować zasób `/sentiment`: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment`
++ Ustaw punkt końcowy HTTP na potrzeby analizy tonacji przy użyciu zasobów analizy tekstu na platformie Azure lub utworzonego wystąpienia [kontenera analizy tekstu](text-analytics-how-to-install-containers.md). Musi on obejmować zasób `/sentiment`: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment`
 
 + Ustaw nagłówek żądania, tak aby zawierał klucz dostępu dla operacji analizy tekstu. Aby uzyskać więcej informacji, zobacz [How to find endpoints and access keys (Jak znajdować punkty końcowe i klucze dostępu)](text-analytics-how-to-access-key.md).
 
 + W treści żądania podaj kolekcję dokumentów JSON przygotowaną na potrzeby tej analizy.
 
 > [!Tip]
-> Użyj programu [Postman](text-analytics-how-to-call-api.md) lub otwórz **konsolę testowania interfejsu API** w [dokumentacji](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9), aby określić strukturę żądania i przesłać je do usługi za pomocą operacji POST.
+> Użyj programu [Postman](text-analytics-how-to-call-api.md) lub otwórz **konsolę testowania interfejsu API** w [dokumentacji](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9), aby określić strukturę żądania i przesłać je do usługi za pomocą operacji POST.
 
 ## <a name="step-2-post-the-request"></a>Krok 2: Wysłanie żądania
 
@@ -135,18 +135,18 @@ Poniższy przykład pokazuje odpowiedź dla kolekcji dokumentów w tym artykule.
 
 W tym artykule przedstawiono pojęcia i przepływ pracy analizy tonacji za pomocą analizy tekstu w usłudze Cognitive Services. Podsumowanie:
 
-+ [Interfejs API analizy tonacji](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9) jest dostępny dla wybranych języków.
-+ Dokumenty JSON zawierają w treści żądania identyfikator, tekst i kod języka.
++ [Interfejs API analizy tonacji](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) jest dostępny dla wybranych języków.
++ Dokumenty JSON w treści żądania obejmują identyfikator, tekstu i języka kodu.
 + Żądanie POST jest wysyłane do punktu końcowego `/sentiment` za pomocą spersonalizowanego [klucza dostępu i punktu końcowego](text-analytics-how-to-access-key.md) prawidłowego dla używanej subskrypcji.
 + Dane wyjściowe odpowiedzi składające się z oceny opinii dla każdego identyfikatora dokumentu można przesłać strumieniowo do każdej aplikacji akceptującej kod JSON, w tym na przykład do programu Excel i usługi Power BI.
 
-## <a name="see-also"></a>Zobacz też 
+## <a name="see-also"></a>Zobacz także 
 
  [Text Analytics overview (Omówienie analizy tekstu)](../overview.md)  
  [Często zadawane pytania](../text-analytics-resource-faq.md)</br>
  [Strona produktu analizy tekstu](//go.microsoft.com/fwlink/?LinkID=759712) 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Wyodrębnianie kluczowych fraz](text-analytics-how-to-keyword-extraction.md)

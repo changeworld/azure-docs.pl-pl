@@ -1,7 +1,6 @@
 ---
 title: Interfejsy API dla rezerwacji usługi Azure automation | Dokumentacja firmy Microsoft
 description: Informacje o interfejsów API platformy Azure, w której można programowo uzyskać informacje o rezerwacji.
-services: billing
 documentationcenter: ''
 author: yashesvi
 manager: yashesvi
@@ -12,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/10/2018
+ms.date: 04/13/2019
 ms.author: banders
-ms.openlocfilehash: 7e5697073b9406d915eda99a5e71e3123c48073a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: 246278df61d4f13e2634a1cdfc5ff6b635cecbbf
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57880235"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60008218"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>Interfejsy API dla rezerwacji usługi Azure automation
 
@@ -55,7 +54,7 @@ Jeśli okaże się, jest rezerwacje w organizacji używane w ramach:
 
 - Upewnij się, że maszyn wirtualnych, które tworzy organizacji dopasowania rozmiaru maszyny Wirtualnej, która znajduje się na rezerwacji.
 - Upewnij się, że elastyczność rozmiar wystąpienia jest włączony. Aby uzyskać więcej informacji, zobacz [Zarządzanie zastrzeżeniami — zmiana optymalizacji ustawienie zarezerwowanych wystąpień maszyn wirtualnych](billing-manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances).
-- Zmień zakres rezerwacji współużytkowane, tak aby dotyczyła szerzej. Aby uzyskać więcej informacji, zobacz [Zarządzanie zastrzeżeniami — Zmienianie zakresu dla rezerwacji](billing-manage-reserved-vm-instance.md#change-the-scope-for-a-reservation).
+- Zmień zakres rezerwacji współużytkowane, tak aby dotyczyła szerzej. Aby uzyskać więcej informacji, zobacz [Zarządzanie zastrzeżeniami — Zmienianie zakresu dla rezerwacji](billing-manage-reserved-vm-instance.md#change-the-reservation-scope).
 - Wymiana niewykorzystanej ilości. Aby uzyskać więcej informacji, zobacz [Zarządzanie zastrzeżenia - anulowania i wymiany](billing-manage-reserved-vm-instance.md#cancellations-and-exchanges).
 
 ## <a name="give-access-to-reservations"></a>Udzielić dostępu do rezerwacji
@@ -68,7 +67,7 @@ Pobierz listę wszystkie rezerwacje, czy użytkownik ma dostęp do za pomocą [A
 
 ## <a name="split-or-merge-reservation"></a>Dzielenie i scalanie rezerwacji
 
-Po możesz kupić więcej niż jedno wystąpienie zasobów w ramach rezerwacji, możesz przypisać wystąpienia w ramach tej rezerwacji do różnych subskrypcji. Można zmienić zakres rezerwacji, tak aby dotyczyła wszystkich subskrypcji w tym samym kontekście rozliczeń. Jednak do celów zarządzania lub budżetowania koszt, możesz chcieć zachowanie zakresu jako "subskrypcja pojedyncza" i przypisz rezerwacji wystąpień do określonej subskrypcji. 
+Po możesz kupić więcej niż jedno wystąpienie zasobów w ramach rezerwacji, możesz przypisać wystąpienia w ramach tej rezerwacji do różnych subskrypcji. Można zmienić zakres rezerwacji, tak aby dotyczyła wszystkich subskrypcji w tym samym kontekście rozliczeń. Jednak do celów zarządzania lub budżetowania koszt, możesz chcieć zachowanie zakresu jako "subskrypcja pojedyncza" i przypisz rezerwacji wystąpień do określonej subskrypcji.
 
 Aby podzielić rezerwacji, za pomocą interfejsu API [podziału rezerwacji -](/rest/api/reserved-vm-instances/reservation/split). Możesz również podzielić rezerwacji przy użyciu programu PowerShell. Aby uzyskać więcej informacji, zobacz [Zarządzanie rezerwacje - podziału rezerwacji do dwóch rezerwacji](billing-manage-reserved-vm-instance.md#split-a-single-reservation-into-two-reservations).
 
@@ -76,7 +75,7 @@ Aby scalić dwóch rezerwacji do jedną rezerwację, za pomocą interfejsu API [
 
 ## <a name="change-scope-for-a-reservation"></a>Zmiana zakresu dla rezerwacji
 
-Zakres rezerwacji może być pojedynczej subskrypcji, czy wszystkie subskrypcje w kontekstu rozliczeń. Jeśli zakres jest ustawiona na jedną subskrypcję, rezerwacja jest dopasowany do uruchomionego zasobów w wybranej subskrypcji. Jeśli ustawiono zakres udostępniony, Azure pasuje rezerwacji do zasobów, które są uruchamiane w przypadku wszystkich subskrypcji w ramach kontekstu rozliczeń. Kontekstu rozliczeń zależy od subskrypcji, którego użyto do zakupu rezerwacji. Aby uzyskać więcej informacji, zobacz [Zarządzanie zastrzeżeniami — Zmienianie zakresu](billing-manage-reserved-vm-instance.md#change-the-scope-for-a-reservation).
+Zakres rezerwacji może być pojedynczej subskrypcji, czy wszystkie subskrypcje w kontekstu rozliczeń. Jeśli zakres jest ustawiona na jedną subskrypcję, rezerwacja jest dopasowany do uruchomionego zasobów w wybranej subskrypcji. Jeśli ustawiono zakres udostępniony, Azure pasuje rezerwacji do zasobów, które są uruchamiane w przypadku wszystkich subskrypcji w ramach kontekstu rozliczeń. Kontekstu rozliczeń zależy od subskrypcji, którego użyto do zakupu rezerwacji. Aby uzyskać więcej informacji, zobacz [Zarządzanie zastrzeżeniami — Zmienianie zakresu](billing-manage-reserved-vm-instance.md#change-the-reservation-scope).
 
 Aby programowo zmienić zakres, należy użyć interfejsu API [rezerwacji — aktualizacja](/rest/api/reserved-vm-instances/reservation/update).
 
