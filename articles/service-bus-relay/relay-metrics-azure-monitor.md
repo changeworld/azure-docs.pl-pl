@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/28/2018
 ms.author: spelluru
 ms.openlocfilehash: bd62624406adb006fdcd7d59f72db3fb5e1848a0
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58848572"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59798027"
 ---
 # <a name="azure-relay-metrics-in-azure-monitor-preview"></a>Metryki usługi Azure Relay w usłudze Azure Monitor (wersja zapoznawcza)
 Metryki usługi Azure Relay zapewniają stan zasobów w ramach subskrypcji platformy Azure. Bogaty zestaw danych metryk możesz ocenić ogólną kondycję zasobów usługi Relay, nie tylko na poziomie przestrzeni nazw, ale na poziomie jednostki. Te statystyki może być ważne, ponieważ one pomóc Ci do monitorowania stanu usługi Azure Relay. Metryki może również pomóc główną przyczynę problemów bez konieczności skontaktuj się z działem pomocy technicznej platformy Azure.

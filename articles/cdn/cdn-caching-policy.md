@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/04/2017
 ms.author: juliako
 ms.openlocfilehash: 516df2f6177303987fc0354dde647c1fc26820ef
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918284"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59798608"
 ---
 # <a name="manage-azure-cdn-caching-policy-in-azure-media-services"></a>Zarządzanie Azure zasady buforowania usługi CDN w usłudze Azure Media Services
 Usługa Azure Media Services udostępnia oparty na protokole HTTP adaptacyjnego przesyłania strumieniowego i pobierania progresywnego. Wysoka skalowalność dzięki korzyści z pamięci podręcznej serwera proxy i warstwy sieci CDN, a także buforowaniem po stronie klienta jest oparty na protokole HTTP, przesyłania strumieniowego. Punkty końcowe przesyłania strumieniowego zapewnia ogólne możliwości przesyłania strumieniowego, a także konfiguracji dla protokołu HTTP, nagłówków pamięci podręcznej. Punkty końcowe przesyłania strumieniowego ustawia HTTP Cache-Control: maksymalny wiek i nagłówków Expires. Można uzyskać więcej informacji na nagłówki cache HTTP od [adresem W3.org](https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html).

@@ -15,15 +15,15 @@ ms.topic: article
 ms.author: jowargo
 ms.date: 04/08/2019
 ms.openlocfilehash: 559dd5ecfa4615e42e4f7ac40008e69c9210e2a4
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59260462"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59799477"
 ---
 # <a name="registration-management"></a>Zarządzanie rejestracją
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 W tym temacie wyjaśniono, jak zarejestrować urządzenia z usługą notification hubs w celu odbierania powiadomień wypychanych. Tematu opisano rejestracje na wysokim poziomie, a następnie wprowadza dwa wzorce główne dla rejestracji urządzeń: rejestrowanie urządzenia bezpośrednio do Centrum powiadomień i rejestrowanie przy użyciu zaplecza aplikacji.
 
