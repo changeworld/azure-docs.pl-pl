@@ -257,12 +257,12 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |---------|---------|----------------------|
 |**type**|| Wymagana — musi być równa `sendGrid`.|
 |**direction**|| Wymagana — musi być równa `out`.|
-|**Nazwa**|| Wymagana — nazwa zmiennej, używane w kodzie funkcji żądania lub treści żądania. Ta wartość jest ```$return``` gdy istnieje tylko jedna wartość zwracaną. |
+|**name**|| Wymagana — nazwa zmiennej, używane w kodzie funkcji żądania lub treści żądania. Ta wartość jest ```$return``` gdy istnieje tylko jedna wartość zwracaną. |
 |**apiKey**|**ApiKey**| Nazwa ustawienia aplikacji zawierającego klucz interfejsu API. Jeśli nie jest ustawiony, ustawienie aplikacji domyślną jest "AzureWebJobsSendGridApiKey".|
-|**Aby**|**Do**| adres e-mail adresata. |
-|**Z**|**From**| adres e-mail nadawcy. |
+|**to**|**Do**| adres e-mail adresata. |
+|**from**|**From**| adres e-mail nadawcy. |
 |**subject**|**Temat**| temat wiadomości e-mail. |
-|**Tekst**|**Tekst**| Treść wiadomości e-mail. |
+|**text**|**Tekst**| Treść wiadomości e-mail. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -288,7 +288,7 @@ W tej sekcji opisano globalne ustawienia konfiguracji dostępne dla tego powiąz
 
 |Właściwość  |Domyślne | Opis |
 |---------|---------|---------| 
-|z|Nie dotyczy|Adres e-mail nadawcy dla wszystkich funkcji.| 
+|from|Nie dotyczy|Adres e-mail nadawcy dla wszystkich funkcji.| 
 
 
 ## <a name="next-steps"></a>Kolejne kroki
