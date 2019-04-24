@@ -1,5 +1,5 @@
 ---
-title: Odporność i odzyskiwania po awarii w usłudze Azure SignalR Service
+title: Odporność i odzyskiwanie po awarii w usłudze Azure SignalR Service
 description: Omówienie sposobu konfigurowania wielu wystąpień usługi SignalR w celu uzyskania odporności i udostępnienia możliwości odzyskiwania po awarii
 author: chenkennt
 ms.service: signalr
@@ -8,7 +8,7 @@ ms.date: 03/01/2019
 ms.author: kenchen
 ms.openlocfilehash: eb70e65db4a086afc60e91cadf55a8844b102591
 ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/29/2019
 ms.locfileid: "58620280"
@@ -90,7 +90,7 @@ app.MapAzureSignalR(GetType().FullName, hub,  options => options.Endpoints = new
 
 ## <a name="failover-sequence-and-best-practice"></a>Sekwencja trybu failover i najlepsze rozwiązania
 
-Teraz masz skonfigurowaną właściwą topologię systemu. Zawsze, gdy wystąpienie usługi SignalR zostanie wyłączone, ruch online będzie kierowany do innych wystąpień.
+Teraz masz skonfigurowaną właściwą topologię systemu. Po każdorazowym wyłączeniu wystąpienia usługi SignalR ruch online będzie kierowany do innych wystąpień.
 Oto, co dzieje się w przypadku wyłączenia wystąpienia podstawowego (i jego odzyskania po pewnym czasie):
 
 1. Gdy wystąpienie podstawowe usługi zostanie wyłączone, wszystkie połączenia serwera z tym wystąpieniem zostaną przerwane.
