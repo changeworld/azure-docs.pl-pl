@@ -213,7 +213,7 @@ Usługa API Management udostępnia obecnie dzienniki diagnostyczne (przetwarzane
 | userId | string | Identyfikator jednostki użytkownika dla bieżącego żądania | 
 | apimSubscriptionId | string | Identyfikator jednostki subskrypcji dla bieżącego żądania | 
 | backendId | string | Identyfikator jednostki zaplecza dla bieżącego żądania | 
-| LastError | obiekt | Ostatni błąd przetwarzania żądania | 
+| lastError | obiekt | Ostatni błąd przetwarzania żądania | 
 | elapsed | liczba całkowita | Liczba milisekund, które upłynęły od momentu odebrania żądania przez bramę do momentu wystąpienia błędu | 
 | source | string | Nazwa wewnętrznej procedury obsługi przetwarzania lub zasad, które spowodowały błąd | 
 | scope | string | Zakres dokumentu zasad zawierający zasady, które spowodowały błąd | 
