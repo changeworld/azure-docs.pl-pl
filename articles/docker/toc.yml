@@ -1,40 +1,33 @@
-items:
 - name: Dokumentacja platformy Docker
   href: index.md
 - name: Szybki start
-  items:
-  - name: Szablon platformy Docker w witrynie Marketplace
-    href: https://azuremarketplace.microsoft.com/en-us/marketplace/apps/CanonicalandMSOpenTech.DockerOnUbuntuServer1404LTS
   expanded: true
+  items:
+    - name: Szablon platformy Docker w witrynie Marketplace
+      href: 'https://azuremarketplace.microsoft.com/en-us/marketplace/apps/CanonicalandMSOpenTech.DockerOnUbuntuServer1404LTS'
 - name: Samouczki
   items:
-  - name: Aplikacja internetowa w języku Python z platformami Docker i PostgreSQL
-    href: ../app-service/containers/tutorial-python-postgresql-app.md?toc=%2fazure%2fpostgresql%2ftoc.json
-  - name: Ciągła integracja/ciągłe wdrażanie za pomocą struktury Docker Swarm i usługi Azure DevOps
-    href: /azure/container-service/container-service-docker-swarm-mode-setup-ci-cd-acs-engine
-  - name: Ciągła integracja/ciągłe dostarczanie za pomocą usług Docker i Jenkins oraz systemu Linux
-    href: /azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd
+    - name: Aplikacja internetowa w języku Python z platformami Docker i PostgreSQL
+      href: ../app-service/containers/tutorial-python-postgresql-app.md?toc=%2fazure%2fpostgresql%2ftoc.json
+    - name: Ciągła integracja/ciągłe wdrażanie za pomocą struktury Docker Swarm i usługi Azure DevOps
+      href: /azure/container-service/container-service-docker-swarm-mode-setup-ci-cd-acs-engine
+    - name: Ciągła integracja/ciągłe dostarczanie za pomocą usług Docker i Jenkins oraz systemu Linux
+      href: /azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd
 - name: Przewodniki z instrukcjami
   items:
-  - name: Rozszerzenie maszyny wirtualnej Docker
-    href: /azure/virtual-machines/linux/dockerextension
-  - name: Docker Machine
-    href: /azure/virtual-machines/linux/docker-machine
-  - name: Rejestr kontenerów platformy Docker
-    href: /azure/container-registry/container-registry-get-started-portal
+    - name: Rozszerzenie maszyny wirtualnej Docker
+      href: /azure/virtual-machines/linux/dockerextension
+    - name: Docker Machine
+      href: /azure/virtual-machines/linux/docker-machine
+    - name: Rejestr kontenerów platformy Docker
+      href: /azure/container-registry/container-registry-get-started-portal
 - name: Zasoby
   items:
-  - name: Harmonogram działania dla platformy Azure
-    href: https://azure.microsoft.com/roadmap/
-  - name: Sterownik platformy Azure dla platformy Docker
-    href: https://docs.docker.com/machine/drivers/azure/
-  - name: Witryna platformy Azure dla platformy Docker
-    href: https://www.docker.com/docker-azure
-  - name: Witryna platformy Docker
-    href: https://docker.com
-ms.openlocfilehash: 79a7bf072be65038000cbcbc17983b4d3b80684f
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433773"
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Sterownik platformy Azure dla platformy Docker
+      href: 'https://docs.docker.com/machine/drivers/azure/'
+    - name: Witryna platformy Azure dla platformy Docker
+      href: 'https://www.docker.com/docker-azure'
+    - name: Witryna platformy Docker
+      href: 'https://docker.com'

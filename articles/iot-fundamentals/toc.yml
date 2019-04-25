@@ -1,25 +1,18 @@
-items:
 - name: Azure Internet of Things
   href: index.md
 - name: Omówienie
   items:
-  - name: Wprowadzenie
-    href: iot-introduction.md
-  - name: Usługi i technologie Azure IoT
-    href: iot-services-and-technologies.md
+    - name: Wprowadzenie
+      href: iot-introduction.md
+    - name: Usługi i technologie Azure IoT
+      href: iot-services-and-technologies.md
 - name: Bezpieczeństwo
   items:
-  - name: Architektura zabezpieczeń
-    href: iot-security-architecture.md
-  - name: Najlepsze rozwiązania dotyczące zabezpieczeń
-    href: iot-security-best-practices.md
-  - name: Bezpieczne wdrożenie
-    href: iot-security-deployment.md
-  - name: Zabezpieczenia od podstaw
-    href: iot-security-ground-up.md
-ms.openlocfilehash: dc5c08ea2a3376b4213e83495ff1dce697338d82
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57336720"
+    - name: Architektura zabezpieczeń
+      href: iot-security-architecture.md
+    - name: Najlepsze rozwiązania dotyczące zabezpieczeń
+      href: iot-security-best-practices.md
+    - name: Bezpieczne wdrożenie
+      href: iot-security-deployment.md
+    - name: Zabezpieczenia od podstaw
+      href: iot-security-ground-up.md

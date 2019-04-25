@@ -1,15 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 5191d259c24a30b6e435fdb2adb93a4345f6ae77
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159098"
 documentType: LandingData
 title: Dokumentacja usługi Azure Data Box — transfer danych offline
 metadata:
   title: Dokumentacja usługi Azure Data Box — transfer danych offline
-  description: Urządzenia Data Box umożliwiają transfer danych na platformę Azure w trybie offline, gdy istnieją ograniczenia związane z czasem, siecią lub kosztami.
+  description: 'Urządzenia Data Box umożliwiają transfer danych na platformę Azure w trybie offline, gdy istnieją ograniczenia związane z czasem, siecią lub kosztami.'
   services: databox
   author: alkohli
   manager: twooley
@@ -19,32 +13,32 @@ metadata:
   ms.date: 01/09/2019
   ms.author: alkohli
 abstract:
-  description: Rodzina Azure Data Box umożliwia szybkie, niedrogie i niezawodne przesyłanie setek terabajtów danych na platformę Azure. Urządzenia Data Box umożliwiają transfer danych w trybie offline, gdy istnieją ograniczenia związane z czasem, siecią lub kosztami.<p>W zależności od rozmiaru danych wybierz wersję Data Box Disk, Data Box lub Data Box Heavy<SUP>wersja zapoznawcza</SUP>. Na każdym urządzeniu transfer danych na platformę Azure odbywa się w 4 prostych krokach — zamawianie, odbieranie, kopiowanie danych do urządzenia i zwracanie urządzenia na platformę Azure. W centrum danych platformy Azure dane są przekazywane, a następnie usuwane.</p><p>Dowiedz się, jak korzystać z usługi Data Box w celu transferowania danych w trybie offline dzięki naszym przewodnikom Szybki start i samouczkom.</p>
+  description: 'Rodzina Azure Data Box umożliwia szybkie, niedrogie i niezawodne przesyłanie setek terabajtów danych na platformę Azure. Urządzenia Data Box umożliwiają transfer danych w trybie offline, gdy istnieją ograniczenia związane z czasem, siecią lub kosztami.<p>W zależności od rozmiaru danych wybierz wersję Data Box Disk, Data Box lub Data Box Heavy<SUP>wersja zapoznawcza</SUP>. Na każdym urządzeniu transfer danych na platformę Azure odbywa się w 4 prostych krokach — zamawianie, odbieranie, kopiowanie danych do urządzenia i zwracanie urządzenia na platformę Azure. W centrum danych platformy Azure dane są przekazywane, a następnie usuwane.</p><p>Dowiedz się, jak korzystać z usługi Data Box w celu transferowania danych w trybie offline dzięki naszym przewodnikom Szybki start i samouczkom.</p>'
 sections:
-- title: Szybki start
-  items:
-  - type: list
-    style: icon48
+  - title: Szybki start
     items:
-    - image:
-        src: https://docs.microsoft.com/media/common/i_quick-start.svg
-      text: Konfigurowanie usługi Data Box w witrynie Azure Portal
-      href: /azure/databox/data-box-quickstart-portal
-    - image:
-        src: https://docs.microsoft.com/media/common/i_quick-start.svg
-      text: Konfigurowanie usługi Data Box Disk w witrynie Azure Portal
-      href: /azure/databox/data-box-disk-quickstart-portal
-    - image:
-        src: https://docs.microsoft.com/media/common/i_quick-start.svg
-      text: Tworzenie konta usługi Data Box Heavy<SUP>wersja zapoznawcza</SUP>
-      href: /azure/databox/data-box-heavy-overview#sign-up
-- title: Samouczki
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_quick-start.svg'
+            text: Konfigurowanie usługi Data Box w witrynie Azure Portal
+            href: /azure/databox/data-box-quickstart-portal
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_quick-start.svg'
+            text: Konfigurowanie usługi Data Box Disk w witrynie Azure Portal
+            href: /azure/databox/data-box-disk-quickstart-portal
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_quick-start.svg'
+            text: Tworzenie konta usługi Data Box Heavy<SUP>wersja zapoznawcza</SUP>
+            href: '/azure/databox/data-box-heavy-overview#sign-up'
+  - title: Samouczki
     items:
-    - title: Usługa Data Box
-      html: <p><a href="/azure/databox/data-box-deploy-ordered">Zamawianie urządzenia Azure Data Box</a></p><p><a href="/azure/databox/data-box-deploy-set-up">Podłączanie kabli i łączenie urządzenia Azure Data Box</a></p><p><a href="/azure/databox/data-box-deploy-copy-data">Kopiowanie danych na urządzenie Azure Data Box</a></p><p><a href="/azure/databox/data-box-deploy-picked-up">Zwracanie urządzenia Azure Data Box i weryfikowanie przekazywania</a></p>
-    - title: Usługa Data Box Disk
-      html: <p><a href="/azure/databox/data-box-disk-deploy-ordered">Zamawianie urządzenia Azure Data Box Disk</a></p><p><a href="/azure/databox/data-box-disk-deploy-set-up">Rozpakowywanie, podłączanie i odblokowywanie urządzenia Azure Data Box Disk</a></p><p><a href="/azure/databox/data-box-disk-deploy-copy-data">Kopiowanie danych na urządzenie Azure Data Box Disk</a></p><p><a href="/azure/databox/data-box-disk-deploy-picked-up">Zwracanie urządzenia Azure Data Box Disk i weryfikowanie przekazywania</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Usługa Data Box
+            html: <p><a href="/azure/databox/data-box-deploy-ordered">Zamawianie urządzenia Azure Data Box</a></p><p><a href="/azure/databox/data-box-deploy-set-up">Podłączanie kabli i łączenie urządzenia Azure Data Box</a></p><p><a href="/azure/databox/data-box-deploy-copy-data">Kopiowanie danych na urządzenie Azure Data Box</a></p><p><a href="/azure/databox/data-box-deploy-picked-up">Zwracanie urządzenia Azure Data Box i weryfikowanie przekazywania</a></p>
+          - title: Usługa Data Box Disk
+            html: '<p><a href="/azure/databox/data-box-disk-deploy-ordered">Zamawianie urządzenia Azure Data Box Disk</a></p><p><a href="/azure/databox/data-box-disk-deploy-set-up">Rozpakowywanie, podłączanie i odblokowywanie urządzenia Azure Data Box Disk</a></p><p><a href="/azure/databox/data-box-disk-deploy-copy-data">Kopiowanie danych na urządzenie Azure Data Box Disk</a></p><p><a href="/azure/databox/data-box-disk-deploy-picked-up">Zwracanie urządzenia Azure Data Box Disk i weryfikowanie przekazywania</a></p>'

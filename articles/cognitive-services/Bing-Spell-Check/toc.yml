@@ -1,94 +1,87 @@
-items:
 - name: Dokumentacja interfejsu API sprawdzania pisowni Bing
   href: index.yml
 - name: Omówienie
   items:
-  - name: Czym jest interfejs API sprawdzania pisowni Bing?
-    href: overview.md
-  - name: Porównanie interfejsów API wyszukiwania Bing
-    href: ../Bing-Web-Search/bing-api-comparison.md
-    maintainContext: true
+    - name: Czym jest interfejs API sprawdzania pisowni Bing?
+      href: overview.md
+    - name: Porównanie interfejsów API wyszukiwania Bing
+      href: ../Bing-Web-Search/bing-api-comparison.md
+      maintainContext: true
 - name: Przewodniki Szybki start
   items:
-  - name: Interfejs API REST
-    items:
-    - name: Przy użyciu języka C#
-      href: quickstarts/csharp.md
-    - name: Korzystanie z języka Java
-      href: quickstarts/java.md
-    - name: Używanie środowiska Node.js
-      href: quickstarts/nodejs.md
-    - name: Korzystanie z języka PHP
-      href: quickstarts/php.md
-    - name: Korzystanie z języka Python
-      href: quickstarts/python.md
-    - name: Korzystanie z języka Ruby
-      href: quickstarts/ruby.md
-    expanded: true
-  - name: SDK
-    items:
-    - name: Przy użyciu języka C#
-      href: sdk-quickstart-spell-check.md
+    - name: Interfejs API REST
+      expanded: true
+      items:
+        - name: 'Przy użyciu języka C#'
+          href: quickstarts/csharp.md
+        - name: Korzystanie z języka Java
+          href: quickstarts/java.md
+        - name: Używanie środowiska Node.js
+          href: quickstarts/nodejs.md
+        - name: Korzystanie z języka PHP
+          href: quickstarts/php.md
+        - name: Korzystanie z języka Python
+          href: quickstarts/python.md
+        - name: Korzystanie z języka Ruby
+          href: quickstarts/ruby.md
+    - name: SDK
+      items:
+        - name: 'Przy użyciu języka C#'
+          href: sdk-quickstart-spell-check.md
 - name: Samouczki
   items:
-  - name: Tworzenie aplikacji internetowej do sprawdzania pisowni
-    href: tutorials/spellcheck.md
+    - name: Tworzenie aplikacji internetowej do sprawdzania pisowni
+      href: tutorials/spellcheck.md
 - name: Przewodniki z instrukcjami
   items:
-  - name: Uaktualnienie z wersji v5 do v7
-    href: bing-spell-check-upgrade-guide-v5-to-v7.md
+    - name: Uaktualnienie z wersji v5 do v7
+      href: bing-spell-check-upgrade-guide-v5-to-v7.md
 - name: Pojęcia
   items:
-  - name: Wysyłanie żądań do interfejsu API sprawdzania pisowni Bing
-    href: concepts/sending-requests.md
-  - name: Korzystanie z interfejsu API sprawdzania pisowni Bing
-    href: concepts/using-spell-check.md
+    - name: Wysyłanie żądań do interfejsu API sprawdzania pisowni Bing
+      href: concepts/sending-requests.md
+    - name: Korzystanie z interfejsu API sprawdzania pisowni Bing
+      href: concepts/using-spell-check.md
 - name: Przykłady
   items:
-  - name: Przykłady kodu
-    href: https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Spell+Check
+    - name: Przykłady kodu
+      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Spell+Check'
 - name: Dokumentacja
   items:
-  - name: Interfejs API sprawdzania pisowni Bing v7
-    href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference
-  - name: Interfejs API sprawdzania pisowni Bing v5 (starsza wersja)
-    href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v5-reference
-  - name: Zestawy SDK
-    items:
-    - name: .NET
-      href: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingspellcheck?view=azure-dotnet
-    - name: Node.js
-      href: https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/spellcheck?view=azure-node-latest
-    - name: Python
-      href: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/spellcheck?view=azure-python
-    - name: Przejdź
-      href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/spellcheck
-    - name: Java
-      href: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/spellcheck?view=azure-java-stable
-  - name: Wymagania dotyczące użycia i wyświetlania
-    href: ../Bing-Web-Search/use-display-requirements.md
-    maintainContext: true
+    - name: Interfejs API sprawdzania pisowni Bing v7
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference'
+    - name: Interfejs API sprawdzania pisowni Bing v5 (starsza wersja)
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v5-reference'
+    - name: Zestawy SDK
+      items:
+        - name: .NET
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingspellcheck?view=azure-dotnet'
+        - name: Node.js
+          href: 'https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/spellcheck?view=azure-node-latest'
+        - name: Python
+          href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/spellcheck?view=azure-python'
+        - name: Przejdź
+          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/spellcheck'
+        - name: Java
+          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/spellcheck?view=azure-java-stable'
+    - name: Wymagania dotyczące użycia i wyświetlania
+      href: ../Bing-Web-Search/use-display-requirements.md
+      maintainContext: true
 - name: Zasoby
   items:
-  - name: Dane analityczne na potrzeby interfejsu API sprawdzania pisowni Bing
-    href: bing-spell-check-stats.md
-  - name: Obsługa języków i regionów
-    href: language-support.md
-  - name: Cennik
-    href: https://azure.microsoft.com/pricing/details/cognitive-services/spellcheck-api/
-  - name: Dostępność regionalna
-    href: https://azure.microsoft.com/global-infrastructure/services/
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/bing-api
-  - name: Klucz subskrypcji
-    href: https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api
-  - name: Wypróbuj!
-    href: https://azure.microsoft.com/services/cognitive-services/spell-check/
-  - name: UserVoice
-    href: https://cognitive.uservoice.com/forums/598195-bing-spell-check
-ms.openlocfilehash: 132901c3bf159054519658893f1f05438852afcb
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56890049"
+    - name: Dane analityczne na potrzeby interfejsu API sprawdzania pisowni Bing
+      href: bing-spell-check-stats.md
+    - name: Obsługa języków i regionów
+      href: language-support.md
+    - name: Cennik
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/spellcheck-api/'
+    - name: Dostępność regionalna
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/bing-api'
+    - name: Klucz subskrypcji
+      href: 'https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api'
+    - name: Wypróbuj!
+      href: 'https://azure.microsoft.com/services/cognitive-services/spell-check/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/598195-bing-spell-check'

@@ -1,17 +1,11 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 89376bf654a23b37e004a1b9b00e32a0c2ac3e2a
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55495076"
 documentType: LandingData
 title: Azure for Containers
 metadata:
-  document_id: 
-  title: Azure for Containers — przewodniki Szybki start, samouczki, dokumentacja interfejsu API
-  description: Rozpocznij wdrażanie aplikacji kontenerów oraz zarządzanie nimi przy użyciu platformy Azure, korzystając z przewodników Szybki start, samouczków i narzędzi dla kontenerów.
-  keywords: Azure, Containers, Docker, API, Kubernetes
+  document_id: null
+  title: 'Azure for Containers — przewodniki Szybki start, samouczki, dokumentacja interfejsu API'
+  description: 'Rozpocznij wdrażanie aplikacji kontenerów oraz zarządzanie nimi przy użyciu platformy Azure, korzystając z przewodników Szybki start, samouczków i narzędzi dla kontenerów.'
+  keywords: 'Azure, Containers, Docker, API, Kubernetes'
   author: dlepow
   ms.author: danlep
   manager: jeconnoc
@@ -19,68 +13,69 @@ metadata:
   ms.topic: article
   ms.prod: azure
   featureFlags:
-  - clicktale
+    - clicktale
   ms.technology: azure
   ms.devlang: multiple
   ms.service: multiple
 sections:
-- items:
-  - type: markdown
-    text: "Rozpocznij wdrażanie aplikacji kontenerów oraz zarządzanie nimi przy użyciu narzędzi i usług platformy Azure dla kontenerów. \n"
-- title: 5-minutowe przewodniki Szybki start
-  items:
-  - type: paragraph
-    text: Dowiedz się, jak używać kontenerów za pomocą usług platformy Azure.
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 2
+  - items:
+      - type: markdown
+        text: |
+          Rozpocznij wdrażanie aplikacji kontenerów oraz zarządzanie nimi przy użyciu narzędzi i usług platformy Azure dla kontenerów. 
+  - title: 5-minutowe przewodniki Szybki start
     items:
-    - href: ../aks/kubernetes-walkthrough.md
-      title: Tworzenie klastra Kubernetes za pomocą usługi Azure Kubernetes Service (AKS)
-      image:
-        src: /azure/media/index/ContainerService.svg
-    - href: https://docs.microsoft.com/azure/service-fabric/service-fabric-quickstart-containers
-      title: Wdrażanie aplikacji kontenera dla systemu Windows w usłudze Service Fabric
-      image:
-        src: /azure/media/index/Fabric.svg
-    - href: https://docs.microsoft.com/azure/app-service/containers/quickstart-docker-go
-      title: Tworzenie aplikacji konteneryzowanej za pomocą usługi Azure Web App for Containers
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_linux.svg
-    - href: https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli
-      title: Tworzenie prywatnego rejestru platformy Docker w usłudze Azure Container Registry
-      image:
-        src: /azure/media/index/container-registry.svg
-    - href: https://docs.microsoft.com/azure/container-instances/container-instances-quickstart
-      title: Uruchamianie aplikacji kontenera na żądanie w usłudze Azure Container Instances
-      image:
-        src: /azure/media/index/containerinstances.svg
-- title: Samouczki krok po kroku
-  items:
-  - type: paragraph
-    text: Dowiedz się, jak wdrażać i aktualizować aplikacje kontenerów oraz zarządzać nimi przy użyciu usług platformy Azure
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 'Dowiedz się, jak używać kontenerów za pomocą usług platformy Azure.'
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 2
+        items:
+          - href: ../aks/kubernetes-walkthrough.md
+            title: Tworzenie klastra Kubernetes za pomocą usługi Azure Kubernetes Service (AKS)
+            image:
+              src: /azure/media/index/ContainerService.svg
+          - href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-quickstart-containers'
+            title: Wdrażanie aplikacji kontenera dla systemu Windows w usłudze Service Fabric
+            image:
+              src: /azure/media/index/Fabric.svg
+          - href: 'https://docs.microsoft.com/azure/app-service/containers/quickstart-docker-go'
+            title: Tworzenie aplikacji konteneryzowanej za pomocą usługi Azure Web App for Containers
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_linux.svg'
+          - href: 'https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli'
+            title: Tworzenie prywatnego rejestru platformy Docker w usłudze Azure Container Registry
+            image:
+              src: /azure/media/index/container-registry.svg
+          - href: 'https://docs.microsoft.com/azure/container-instances/container-instances-quickstart'
+            title: Uruchamianie aplikacji kontenera na żądanie w usłudze Azure Container Instances
+            image:
+              src: /azure/media/index/containerinstances.svg
+  - title: Samouczki krok po kroku
     items:
-    - html: <a href="/azure/aks/tutorial-kubernetes-prepare-app">Kompilowanie i wdrażanie kontenera w usłudze Azure Kubernetes Service</a>
-    - html: <a href="/azure/service-fabric/service-fabric-host-app-in-a-container">Kompilowanie i wdrażanie aplikacji kontenera platformy .NET w usłudze Azure Service Fabric</a>
-    - html: <a href="/azure/app-service/containers/tutorial-multi-container-app">Tworzenie aplikacji z wieloma kontenerami przy użyciu funkcji Web App for Containers</a>
-    - html: <a href="/azure/container-registry/container-registry-tutorial-quick-task">Kompilowanie i wdrażanie obrazów kontenerów przy użyciu zadań usługi Azure Container Registry</a>
-    - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">Kompilowanie i wdrażanie kontenera w usłudze Azure Container Instances</a>
-- title: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: paragraph
+        text: 'Dowiedz się, jak wdrażać i aktualizować aplikacje kontenerów oraz zarządzać nimi przy użyciu usług platformy Azure'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/aks/tutorial-kubernetes-prepare-app">Kompilowanie i wdrażanie kontenera w usłudze Azure Kubernetes Service</a>
+          - html: <a href="/azure/service-fabric/service-fabric-host-app-in-a-container">Kompilowanie i wdrażanie aplikacji kontenera platformy .NET w usłudze Azure Service Fabric</a>
+          - html: <a href="/azure/app-service/containers/tutorial-multi-container-app">Tworzenie aplikacji z wieloma kontenerami przy użyciu funkcji Web App for Containers</a>
+          - html: <a href="/azure/container-registry/container-registry-tutorial-quick-task">Kompilowanie i wdrażanie obrazów kontenerów przy użyciu zadań usługi Azure Container Registry</a>
+          - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">Kompilowanie i wdrażanie kontenera w usłudze Azure Container Instances</a>
+  - title: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
     items:
-    - title: Uruchamianie kontenerów Docker w usłudze Azure Container Instances
-      href: /learn/modules/run-docker-with-azure-container-instances/
-      image:
-        src: /learn/achievements/run-docker-with-azure-container-instances.svg
-        href: /learn/modules/run-docker-with-azure-container-instances/
-    - title: Tworzenie i przechowywanie obrazów kontenerów za pomocą usługi Azure Container Registry
-      href: /learn/modules/build-and-store-container-images/
-      image:
-        src: /learn/achievements/build-and-store-container-images.svg
-        href: /learn/modules/build-and-store-container-images/
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Uruchamianie kontenerów Docker w usłudze Azure Container Instances
+            href: /learn/modules/run-docker-with-azure-container-instances/
+            image:
+              src: /learn/achievements/run-docker-with-azure-container-instances.svg
+              href: /learn/modules/run-docker-with-azure-container-instances/
+          - title: Tworzenie i przechowywanie obrazów kontenerów za pomocą usługi Azure Container Registry
+            href: /learn/modules/build-and-store-container-images/
+            image:
+              src: /learn/achievements/build-and-store-container-images.svg
+              href: /learn/modules/build-and-store-container-images/

@@ -1,15 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 7b7305a84ac8600629ce27551c0243c427082e5e
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58473388"
 documentType: LandingData
 title: Dokumentacja interfejsu API narzędzia do wykrywania anomalii
 metadata:
-  title: Interfejsu API narzędzia do wykrywania anomalii — samouczki, przewodniki Szybki start i dokumentacja interfejsu API — Azure Cognitive Services | Microsoft Docs
-  description: Interfejs API narzędzia do wykrywania anomalii umożliwia monitorowanie danych w czasie i wykrywanie anomalii za pomocą uczenia maszynowego. Uzyskaj wgląd w dane niezależnie od ilości, branży czy scenariusza.
+  title: 'Interfejsu API narzędzia do wykrywania anomalii — samouczki, przewodniki Szybki start i dokumentacja interfejsu API — Azure Cognitive Services | Microsoft Docs'
+  description: 'Interfejs API narzędzia do wykrywania anomalii umożliwia monitorowanie danych w czasie i wykrywanie anomalii za pomocą uczenia maszynowego. Uzyskaj wgląd w dane niezależnie od ilości, branży czy scenariusza.'
   services: cognitive-services
   author: aahill
   manager: cgronlun
@@ -21,45 +15,45 @@ metadata:
   ms.date: 03/26/2019
   ms.author: aahi
 abstract:
-  description: Interfejs API narzędzia do wykrywania anomalii pomaga w prosty sposób osadzać funkcje wykrywania anomalii w Twoich aplikacjach, dzięki czemu użytkownicy będą mogli szybko identyfikować problemy w celu minimalizowania strat i negatywnego wpływu na klienta. Nie jest wymagana żadna wiedza na temat uczenia maszynowego. Za pomocą jednego wywołania interfejsu API można uaktywnić ten wstępnie wytrenowany model sztucznej inteligencji, który pozyskuje dane szeregów czasowych wszystkich typów i w każdej ilości, wybiera najlepiej dopasowany model wykrywania anomalii dla Twoich danych w celu zapewnienia wysokiej dokładności i automatycznie wyświetla zdarzenia bezpośrednio po ich wystąpieniu. Możesz dostosować usługę, aby wykrywała anomalie różnych rozmiarów.  Narzędzie do wykrywania anomalii umożliwia identyfikowanie zdarzeń biznesowych, monitorowanie ruchu urządzeń IoT, wykrywanie oszustw, reagowanie na zmiany na rynku i nie tylko.
+  description: 'Interfejs API narzędzia do wykrywania anomalii pomaga w prosty sposób osadzać funkcje wykrywania anomalii w Twoich aplikacjach, dzięki czemu użytkownicy będą mogli szybko identyfikować problemy w celu minimalizowania strat i negatywnego wpływu na klienta. Nie jest wymagana żadna wiedza na temat uczenia maszynowego. Za pomocą jednego wywołania interfejsu API można uaktywnić ten wstępnie wytrenowany model sztucznej inteligencji, który pozyskuje dane szeregów czasowych wszystkich typów i w każdej ilości, wybiera najlepiej dopasowany model wykrywania anomalii dla Twoich danych w celu zapewnienia wysokiej dokładności i automatycznie wyświetla zdarzenia bezpośrednio po ich wystąpieniu. Możesz dostosować usługę, aby wykrywała anomalie różnych rozmiarów.  Narzędzie do wykrywania anomalii umożliwia identyfikowanie zdarzeń biznesowych, monitorowanie ruchu urządzeń IoT, wykrywanie oszustw, reagowanie na zmiany na rynku i nie tylko.'
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/cognitive-services/anomaly-detector/overview
+            html: <p>Informacje o interfejsie API narzędzia do wykrywania anomalii</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: Co to jest interfejs API narzędzia do wykrywania anomalii?
+          - href: /azure/cognitive-services/anomaly-detector/concepts/anomaly-detection-best-practices
+            html: <p>Optymalizowanie wyników wykrywania anomalii przy użyciu najlepszych rozwiązań dotyczących interfejsu API</p>
+            image:
+              src: ../media/index/i_guidelines.svg
+            title: Najlepsze rozwiązania dotyczące interfejsu API narzędzia do wykrywania anomalii
+          - href: /azure/cognitive-services/anomaly-detector/how-to/identify-anomalies
+            html: '<p>Dostosuj czułość wykrywania anomalii, używaj różnych trybów wykrywania i nie tylko.</p>'
+            image:
+              src: ../media/index/i_guidelines.svg
+            title: Korzystanie z interfejsu API wykrywania anomalii
+  - title: 5-minutowe przewodniki Szybki start
     items:
-    - href: /azure/cognitive-services/anomaly-detector/overview
-      html: <p>Informacje o interfejsie API narzędzia do wykrywania anomalii</p>
-      image:
-        src: ../media/index/i_overview.svg
-      title: Co to jest interfejs API narzędzia do wykrywania anomalii?
-    - href: /azure/cognitive-services/anomaly-detector/concepts/anomaly-detection-best-practices
-      html: <p>Optymalizowanie wyników wykrywania anomalii przy użyciu najlepszych rozwiązań dotyczących interfejsu API</p>
-      image:
-        src: ../media/index/i_guidelines.svg
-      title: Najlepsze rozwiązania dotyczące interfejsu API narzędzia do wykrywania anomalii
-    - href: /azure/cognitive-services/anomaly-detector/how-to/identify-anomalies
-      html: <p>Dostosuj czułość wykrywania anomalii, używaj różnych trybów wykrywania i nie tylko.</p>
-      image:
-        src: ../media/index/i_guidelines.svg
-      title: Korzystanie z interfejsu API wykrywania anomalii
-- title: 5-minutowe przewodniki Szybki start
-  items:
-  - type: paragraph
-    text: 'Wykrywaj anomalie w danych szeregów czasowych za pomocą następujących środowisk:'
-  - type: list
-    style: icon48
-    items:
-    - image:
-        src: media/logo_Csharp.svg
-      href: quickstarts/detect-data-anomalies-csharp
-      text: C#
-    - image:
-        src: media/logo_Java.svg
-      href: quickstarts/detect-data-anomalies-java
-      text: Java
-    - image:
-        src: media/logo_python.svg
-      href: quickstarts/detect-data-anomalies-python
-      text: Python
+      - type: paragraph
+        text: 'Wykrywaj anomalie w danych szeregów czasowych za pomocą następujących środowisk:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/logo_Csharp.svg
+            href: quickstarts/detect-data-anomalies-csharp
+            text: 'C#'
+          - image:
+              src: media/logo_Java.svg
+            href: quickstarts/detect-data-anomalies-java
+            text: Java
+          - image:
+              src: media/logo_python.svg
+            href: quickstarts/detect-data-anomalies-python
+            text: Python

@@ -1,17 +1,10 @@
-items:
 - name: Omówienie
   href: index.md
 - name: Dokumentacja
-  href: https://docs.microsoft.com/dotnet/api/?term=Microsoft.Azure
+  href: 'https://docs.microsoft.com/dotnet/api/?term=Microsoft.Azure'
 - name: Zasoby
   items:
-  - name: Harmonogram działania dla platformy Azure
-    href: https://azure.microsoft.com/roadmap/
-  - name: Kalkulator cen
-    href: https://azure.microsoft.com/pricing/calculator/
-ms.openlocfilehash: e870ae4247a72c429ad1c3c140688f8214426d36
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58340765"
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Kalkulator cen
+      href: 'https://azure.microsoft.com/pricing/calculator/'

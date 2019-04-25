@@ -1,15 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 0d2f7ad1f4c3603a831268d2ef7d6b881896fb2f
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731263"
 documentType: LandingData
 title: Dokumentacja interfejsu API rozpoznawania twarzy
 metadata:
-  title: Dokumentacja interfejsu API rozpoznawania twarzy — przewodniki Szybki start, samouczki i dokumentacja interfejsu API — Azure Cognitive Services | Microsoft Docs
-  description: Dowiedz się, jak za pomocą interfejsu API rozpoznawania twarzy wykrywać i identyfikować twarze na obrazach oraz zwracać informacje o twarzy. W samouczkach wyjaśniono, jak tworzyć aplikacje korzystające z interfejsu API.
+  title: 'Dokumentacja interfejsu API rozpoznawania twarzy — przewodniki Szybki start, samouczki i dokumentacja interfejsu API — Azure Cognitive Services | Microsoft Docs'
+  description: 'Dowiedz się, jak za pomocą interfejsu API rozpoznawania twarzy wykrywać i identyfikować twarze na obrazach oraz zwracać informacje o twarzy. W samouczkach wyjaśniono, jak tworzyć aplikacje korzystające z interfejsu API.'
   services: cognitive-services
   author: PatrickFarley
   manager: cgronlun
@@ -21,84 +15,84 @@ metadata:
   ms.date: 12/20/2018
   ms.author: nitinme
 abstract:
-  description: Oparty na chmurze interfejs API rozpoznawania twarzy oferuje deweloperom dostęp do zaawansowanych algorytmów rozpoznawania twarzy. Algorytmy rozpoznawania twarzy firmy Microsoft umożliwiają wykrywanie atrybutów twarzy i ich rozpoznawanie. Dowiedz się, jak na różne sposoby analizować zawartość, korzystając z przewodników Szybki start, samouczków i przykładów.
+  description: 'Oparty na chmurze interfejs API rozpoznawania twarzy oferuje deweloperom dostęp do zaawansowanych algorytmów rozpoznawania twarzy. Algorytmy rozpoznawania twarzy firmy Microsoft umożliwiają wykrywanie atrybutów twarzy i ich rozpoznawanie. Dowiedz się, jak na różne sposoby analizować zawartość, korzystając z przewodników Szybki start, samouczków i przykładów.'
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/cognitive-services/face/overview
+            html: <p>Dowiedz się więcej o interfejsie API rozpoznawania twarzy.</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: Czym jest interfejs API rozpoznawania twarzy?
+          - href: /azure/cognitive-services/face/face-api-how-to-topics/howtodetectfacesinimage
+            html: '<p>Dowiedz się, jak wykrywać twarze na obrazie.</p>'
+            image:
+              src: ../media/index/i_tasks.svg
+            title: Wykrywanie twarzy na obrazie
+          - href: /azure/cognitive-services/face/face-how-to-install-containers
+            html: '<p>Dowiedz się, jak używać interfejsu API rozpoznawania twarzy w kontenerach.</p>'
+            image:
+              src: ../media/index/i_tasks.svg
+            title: Używanie interfejsu API rozpoznawania twarzy w kontenerach
+  - title: 5-minutowe przewodniki Szybki start
     items:
-    - href: /azure/cognitive-services/face/overview
-      html: <p>Dowiedz się więcej o interfejsie API rozpoznawania twarzy.</p>
-      image:
-        src: ../media/index/i_overview.svg
-      title: Czym jest interfejs API rozpoznawania twarzy?
-    - href: /azure/cognitive-services/face/face-api-how-to-topics/howtodetectfacesinimage
-      html: <p>Dowiedz się, jak wykrywać twarze na obrazie.</p>
-      image:
-        src: ../media/index/i_tasks.svg
-      title: Wykrywanie twarzy na obrazie
-    - href: /azure/cognitive-services/face/face-how-to-install-containers
-      html: <p>Dowiedz się, jak używać interfejsu API rozpoznawania twarzy w kontenerach.</p>
-      image:
-        src: ../media/index/i_tasks.svg
-      title: Używanie interfejsu API rozpoznawania twarzy w kontenerach
-- title: 5-minutowe przewodniki Szybki start
-  items:
-  - type: paragraph
-    text: 'Analizowanie obrazów, generowanie miniatur i wyodrębnianie tekstu z obrazu przy użyciu następujących narzędzi:'
-  - type: list
-    style: icon48
+      - type: paragraph
+        text: 'Analizowanie obrazów, generowanie miniatur i wyodrębnianie tekstu z obrazu przy użyciu następujących narzędzi:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/logo_Csharp.svg
+            text: 'C&#35;'
+            href: QuickStarts/CSharp
+          - image:
+              src: media/index/logo_java.svg
+            text: Java
+            href: QuickStarts/Java
+          - image:
+              src: media/index/logo_nodejs.svg
+            text: Node.js
+            href: QuickStarts/node
+          - image:
+              src: media/index/logo_python.svg
+            text: Python
+            href: QuickStarts/Python
+          - image:
+              src: media/index/logo_go.svg
+            text: Przejdź
+            href: QuickStarts/Go
+  - title: Samouczki krok po kroku
     items:
-    - image:
-        src: media/index/logo_Csharp.svg
-      text: C&#35;
-      href: QuickStarts/CSharp
-    - image:
-        src: media/index/logo_java.svg
-      text: Java
-      href: QuickStarts/Java
-    - image:
-        src: media/index/logo_nodejs.svg
-      text: Node.js
-      href: QuickStarts/node
-    - image:
-        src: media/index/logo_python.svg
-      text: Python
-      href: QuickStarts/Python
-    - image:
-        src: media/index/logo_go.svg
-      text: Przejdź
-      href: QuickStarts/Go
-- title: Samouczki krok po kroku
-  items:
-  - type: paragraph
-    text: 'Dowiedz się, jak programować aplikacje przy użyciu interfejsu API rozpoznawania twarzy:'
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 'Dowiedz się, jak programować aplikacje przy użyciu interfejsu API rozpoznawania twarzy:'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/cognitive-services/Face/Tutorials/FaceAPIinCSharpTutorial">Wykrywanie i oznaczanie ramką twarzy na obrazie w systemie Windows</a></li>
+          - html: <a href="/azure/cognitive-services/Face/Tutorials/FaceAPIinJavaForAndroidTutorial">Wykrywanie i oznaczanie ramką twarzy na obrazie w systemie Android</a></li>
+  - title: Przykłady
     items:
-    - html: <a href="/azure/cognitive-services/Face/Tutorials/FaceAPIinCSharpTutorial">Wykrywanie i oznaczanie ramką twarzy na obrazie w systemie Windows</a></li>
-    - html: <a href="/azure/cognitive-services/Face/Tutorials/FaceAPIinJavaForAndroidTutorial">Wykrywanie i oznaczanie ramką twarzy na obrazie w systemie Android</a></li>
-- title: Przykłady
-  items:
-  - type: paragraph
-    text: 'Znajdź przykłady dla interfejsu API rozpoznawania twarzy:'
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 'Znajdź przykłady dla interfejsu API rozpoznawania twarzy:'
+      - type: list
+        style: unordered
+        items:
+          - html: '<a href="https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=Face&sort=Relevance">Przykłady kodu</a>'
+  - title: Dokumentacja
     items:
-    - html: <a href="https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=Face&sort=Relevance">Przykłady kodu</a>
-- title: Dokumentacja
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - title: Interfejsy API
-      html: <p><a href="APIReference">Interfejs API rozpoznawania twarzy</a></p>
-    - title: Zestawy SDK
-      html: <p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/face?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/faceapi?view=azure-java-stable">Java</a></p> <p><a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python">Python</a></p> <p><a href="https://docs.microsoft.com/javascript/api/azure-cognitiveservices-face/?view=azure-node-latest">Node</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face">Go</a></p> <p><a href="https://github.com/Microsoft/Cognitive-Face-iOS">iOS</a></p>
-    - title: PowerShell
-      html: <p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>
-    - title: Interfejs wiersza polecenia
-      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Interfejs wiersza polecenia platformy Azure</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Interfejsy API
+            html: <p><a href="APIReference">Interfejs API rozpoznawania twarzy</a></p>
+          - title: Zestawy SDK
+            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/face?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/faceapi?view=azure-java-stable">Java</a></p> <p><a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python">Python</a></p> <p><a href="https://docs.microsoft.com/javascript/api/azure-cognitiveservices-face/?view=azure-node-latest">Node</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face">Go</a></p> <p><a href="https://github.com/Microsoft/Cognitive-Face-iOS">iOS</a></p>'
+          - title: PowerShell
+            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
+          - title: Interfejs wiersza polecenia
+            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Interfejs wiersza polecenia platformy Azure</a></p>'

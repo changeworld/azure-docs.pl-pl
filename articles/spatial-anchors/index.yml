@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: df4684f9e7fd57c5a7600b26505413d60417043e
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56753402"
 documentType: LandingData
 title: Dokumentacja usługi Azure Spatial Anchors
 metadata:
@@ -21,51 +15,51 @@ metadata:
   ms.date: 02/24/2019
   ms.author: crtreasu
 abstract:
-  description: Spatial Anchors to usługa dla deweloperów programujących dla wielu platform, która pozwala kreować rozwiązania z rzeczywistością mieszaną z użyciem obiektów, których lokalizacja jest taka sama na różnych urządzeniach mimo upływu czasu.
+  description: 'Spatial Anchors to usługa dla deweloperów programujących dla wielu platform, która pozwala kreować rozwiązania z rzeczywistością mieszaną z użyciem obiektów, których lokalizacja jest taka sama na różnych urządzeniach mimo upływu czasu.'
 sections:
-- title: 5-minutowe przewodniki Szybki start
-  items:
-  - type: paragraph
-    text: 'Dowiedz się, jak utworzyć pierwszą aplikację za pomocą usługi Azure Spatial Anchors:'
-  - type: list
-    style: icon48
+  - title: 5-minutowe przewodniki Szybki start
     items:
-    - image:
-        src: /media/logos/logo_android.svg
-        alt: 
-      text: Android
-      href: quickstarts/get-started-android.md
-    - image:
-        src: /media/logos/logo_Windows.svg
-        alt: 
-      text: HoloLens
-      href: quickstarts/get-started-hololens.md
-    - image:
-        src: /media/logos/logo_ios.svg
-        alt: 
-      text: iOS
-      href: quickstarts/get-started-ios.md
-    - image:
-        src: /media/logos/logo_android.svg
-        alt: 
-      text: Unity — Android
-      href: quickstarts/get-started-unity-android.md
-    - image:
-        src: /media/logos/logo_Windows.svg
-        alt: 
-      text: Unity — HoloLens
-      href: quickstarts/get-started-unity-hololens.md
-    - image:
-        src: /media/logos/logo_ios.svg
-        alt: 
-      text: Unity — iOS
-      href: quickstarts/get-started-unity-ios.md
-- title: Samouczki krok po kroku
-  items:
-  - type: paragraph
-    text: Dowiedz się, jak za pomocą usługi Azure Spatial Anchors skonfigurować, utworzyć i wdrożyć aplikację oraz zarządzać nią.
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: 'Dowiedz się, jak utworzyć pierwszą aplikację za pomocą usługi Azure Spatial Anchors:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /media/logos/logo_android.svg
+              alt: null
+            text: Android
+            href: quickstarts/get-started-android.md
+          - image:
+              src: /media/logos/logo_Windows.svg
+              alt: null
+            text: HoloLens
+            href: quickstarts/get-started-hololens.md
+          - image:
+              src: /media/logos/logo_ios.svg
+              alt: null
+            text: iOS
+            href: quickstarts/get-started-ios.md
+          - image:
+              src: /media/logos/logo_android.svg
+              alt: null
+            text: Unity — Android
+            href: quickstarts/get-started-unity-android.md
+          - image:
+              src: /media/logos/logo_Windows.svg
+              alt: null
+            text: Unity — HoloLens
+            href: quickstarts/get-started-unity-hololens.md
+          - image:
+              src: /media/logos/logo_ios.svg
+              alt: null
+            text: Unity — iOS
+            href: quickstarts/get-started-unity-ios.md
+  - title: Samouczki krok po kroku
     items:
-    - html: <a href="/azure/spatial-anchors/tutorials/tutorial-share-anchors-across-devices">Udostępnianie w aparacie Unity.</a>
-    - html: <a href="/azure/spatial-anchors/tutorials/tutorial-use-cosmos-db-to-store-anchors">Udostępnianie w aparacie Unity za pomocą usługi Azure Cosmos DB.</a>
+      - type: paragraph
+        text: 'Dowiedz się, jak za pomocą usługi Azure Spatial Anchors skonfigurować, utworzyć i wdrożyć aplikację oraz zarządzać nią.'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/spatial-anchors/tutorials/tutorial-share-anchors-across-devices">Udostępnianie w aparacie Unity.</a>
+          - html: <a href="/azure/spatial-anchors/tutorials/tutorial-use-cosmos-db-to-store-anchors">Udostępnianie w aparacie Unity za pomocą usługi Azure Cosmos DB.</a>

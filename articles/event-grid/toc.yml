@@ -1,193 +1,186 @@
-items:
 - name: Dokumentacja usługi Event Grid
   href: index.yml
 - name: Omówienie
   items:
-  - name: Co to jest Event Grid?
-    href: overview.md
-  - name: Porównanie usług obsługi wiadomości
-    href: compare-messaging-services.md
+    - name: Co to jest Event Grid?
+      href: overview.md
+    - name: Porównanie usług obsługi wiadomości
+      href: compare-messaging-services.md
 - name: Przewodniki Szybki start
-  items:
-  - name: Zdarzenia usługi Storage
-    items:
-    - name: Interfejs wiersza polecenia platformy Azure
-      href: ../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json
-    - name: PowerShell
-      href: ../storage/blobs/storage-blob-event-quickstart-powershell.md?toc=%2fazure%2fevent-grid%2ftoc.json
-    - name: Portal
-      href: blob-event-quickstart-portal.md
-  - name: Zdarzenia niestandardowe
-    items:
-    - name: Interfejs wiersza polecenia platformy Azure
-      href: custom-event-quickstart.md
-    - name: PowerShell
-      href: custom-event-quickstart-powershell.md
-    - name: Portal
-      href: custom-event-quickstart-portal.md
-  - name: Usługa Queue Storage jako program obsługi zdarzeń
-    href: custom-event-to-queue-storage.md
-  - name: Usługa Event Hubs jako program obsługi zdarzeń
-    href: custom-event-to-eventhub.md
-  - name: Zdarzenia usługi Container Registry
-    href: ../container-registry/container-registry-event-grid-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json
   expanded: true
+  items:
+    - name: Zdarzenia usługi Storage
+      items:
+        - name: Interfejs wiersza polecenia platformy Azure
+          href: ../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json
+        - name: PowerShell
+          href: ../storage/blobs/storage-blob-event-quickstart-powershell.md?toc=%2fazure%2fevent-grid%2ftoc.json
+        - name: Portal
+          href: blob-event-quickstart-portal.md
+    - name: Zdarzenia niestandardowe
+      items:
+        - name: Interfejs wiersza polecenia platformy Azure
+          href: custom-event-quickstart.md
+        - name: PowerShell
+          href: custom-event-quickstart-powershell.md
+        - name: Portal
+          href: custom-event-quickstart-portal.md
+    - name: Usługa Queue Storage jako program obsługi zdarzeń
+      href: custom-event-to-queue-storage.md
+    - name: Usługa Event Hubs jako program obsługi zdarzeń
+      href: custom-event-to-eventhub.md
+    - name: Zdarzenia usługi Container Registry
+      href: ../container-registry/container-registry-event-grid-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json
 - name: Samouczki
   items:
-  - name: Wysyłanie wiadomości e-mail po zmianie maszyny wirtualnej
-    href: monitor-virtual-machine-changes-event-grid-logic-app.md
-  - name: Zmienianie rozmiaru przekazanych obrazów
-    href: resize-images-on-storage-blob-upload-event.md
-  - name: Wyzwalanie elementu Runbook usługi Automation
-    href: ensure-tags-exists-on-new-virtual-machines.md
-  - name: Wysyłanie wiadomości e-mail po dodaniu urządzenia usługi IoT Hub
-    href: publish-iot-hub-events-to-logic-apps.md
-  - name: Odpowiadanie na zdarzenia usługi Service Bus
-    href: ../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json
-  - name: Przesyłanie strumieniowe danych z usługi Event Hubs
-    href: event-grid-event-hubs-integration.md
-  - name: Kierowanie zdarzeń usługi Media Services
-    href: ../media-services/latest/job-state-events-cli-how-to.md?toc=%2fazure%2fevent-grid%2ftoc.json
-  - name: Kierowanie do połączenia hybrydowego
-    href: custom-event-to-hybrid-connection.md
+    - name: Wysyłanie wiadomości e-mail po zmianie maszyny wirtualnej
+      href: monitor-virtual-machine-changes-event-grid-logic-app.md
+    - name: Zmienianie rozmiaru przekazanych obrazów
+      href: resize-images-on-storage-blob-upload-event.md
+    - name: Wyzwalanie elementu Runbook usługi Automation
+      href: ensure-tags-exists-on-new-virtual-machines.md
+    - name: Wysyłanie wiadomości e-mail po dodaniu urządzenia usługi IoT Hub
+      href: publish-iot-hub-events-to-logic-apps.md
+    - name: Odpowiadanie na zdarzenia usługi Service Bus
+      href: ../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json
+    - name: Przesyłanie strumieniowe danych z usługi Event Hubs
+      href: event-grid-event-hubs-integration.md
+    - name: Kierowanie zdarzeń usługi Media Services
+      href: ../media-services/latest/job-state-events-cli-how-to.md?toc=%2fazure%2fevent-grid%2ftoc.json
+    - name: Kierowanie do połączenia hybrydowego
+      href: custom-event-to-hybrid-connection.md
 - name: Przykłady
   items:
-  - name: Interfejs wiersza polecenia platformy Azure
-    href: cli-samples.md
-    items:
-    - name: Tworzenie tematu niestandardowego
-      href: scripts/event-grid-cli-create-custom-topic.md
-    - name: Subskrybowanie do subskrypcji platformy Azure
-      href: scripts/event-grid-cli-azure-subscription.md
-    - name: Subskrybowanie do usługi Blob Storage
-      href: scripts/event-grid-cli-blob.md
-    - name: Subskrybowanie do tematu niestandardowego
-      href: scripts/event-grid-cli-subscribe-custom-topic.md
-    - name: Subskrybowanie do grupy zasobów
-      href: scripts/event-grid-cli-resource-group.md
-    - name: Subskrybowanie i filtrowanie zdarzeń dla grupy zasobów
-      href: scripts/event-grid-cli-resource-group-filter.md
-  - name: Azure PowerShell
-    href: powershell-samples.md
-    items:
-    - name: Tworzenie tematu niestandardowego
-      href: scripts/event-grid-powershell-create-custom-topic.md
-    - name: Subskrybowanie do subskrypcji platformy Azure
-      href: scripts/event-grid-powershell-azure-subscription.md
-    - name: Subskrybowanie do usługi Blob Storage
-      href: scripts/event-grid-powershell-blob.md
-    - name: Subskrybowanie do tematu niestandardowego
-      href: scripts/event-grid-powershell-subscribe-custom-topic.md
-    - name: Subskrybowanie do grupy zasobów
-      href: scripts/event-grid-powershell-resource-group.md
-    - name: Subskrybowanie i filtrowanie zdarzeń dla grupy zasobów
-      href: scripts/event-grid-powershell-resource-group-filter.md
-  - name: Szablony usługi Resource Manager
-    href: template-samples.md
-  - name: Przykłady kodu
-    href: https://azure.microsoft.com/resources/samples/?sort=0&service=event-grid
+    - name: Interfejs wiersza polecenia platformy Azure
+      href: cli-samples.md
+      items:
+        - name: Tworzenie tematu niestandardowego
+          href: scripts/event-grid-cli-create-custom-topic.md
+        - name: Subskrybowanie do subskrypcji platformy Azure
+          href: scripts/event-grid-cli-azure-subscription.md
+        - name: Subskrybowanie do usługi Blob Storage
+          href: scripts/event-grid-cli-blob.md
+        - name: Subskrybowanie do tematu niestandardowego
+          href: scripts/event-grid-cli-subscribe-custom-topic.md
+        - name: Subskrybowanie do grupy zasobów
+          href: scripts/event-grid-cli-resource-group.md
+        - name: Subskrybowanie i filtrowanie zdarzeń dla grupy zasobów
+          href: scripts/event-grid-cli-resource-group-filter.md
+    - name: Azure PowerShell
+      href: powershell-samples.md
+      items:
+        - name: Tworzenie tematu niestandardowego
+          href: scripts/event-grid-powershell-create-custom-topic.md
+        - name: Subskrybowanie do subskrypcji platformy Azure
+          href: scripts/event-grid-powershell-azure-subscription.md
+        - name: Subskrybowanie do usługi Blob Storage
+          href: scripts/event-grid-powershell-blob.md
+        - name: Subskrybowanie do tematu niestandardowego
+          href: scripts/event-grid-powershell-subscribe-custom-topic.md
+        - name: Subskrybowanie do grupy zasobów
+          href: scripts/event-grid-powershell-resource-group.md
+        - name: Subskrybowanie i filtrowanie zdarzeń dla grupy zasobów
+          href: scripts/event-grid-powershell-resource-group-filter.md
+    - name: Szablony usługi Resource Manager
+      href: template-samples.md
+    - name: Przykłady kodu
+      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=event-grid'
 - name: Pojęcia
   items:
-  - name: Event Grid — pojęcia
-    href: concepts.md
-  - name: Zabezpieczenia i uwierzytelnianie
-    href: security-authentication.md
-  - name: Dostarczanie i ponawianie prób
-    href: delivery-and-retry.md
-  - name: Filtrowanie zdarzeń
-    href: event-filtering.md
-  - name: Domeny zdarzeń
-    href: event-domains.md
-  - name: Źródła zdarzeń
-    href: event-sources.md
-  - name: Procedury obsługi zdarzeń
-    href: event-handlers.md
+    - name: Event Grid — pojęcia
+      href: concepts.md
+    - name: Zabezpieczenia i uwierzytelnianie
+      href: security-authentication.md
+    - name: Dostarczanie i ponawianie prób
+      href: delivery-and-retry.md
+    - name: Filtrowanie zdarzeń
+      href: event-filtering.md
+    - name: Domeny zdarzeń
+      href: event-domains.md
+    - name: Źródła zdarzeń
+      href: event-sources.md
+    - name: Procedury obsługi zdarzeń
+      href: event-handlers.md
 - name: Przewodniki z instrukcjami
   items:
-  - name: Publikowanie w temacie niestandardowym
-    href: post-to-custom-topic.md
-  - name: Odbieranie zdarzeń w punkcie końcowym HTTP
-    href: receive-events.md
-  - name: Utracone wiadomości i ponawianie prób
-    href: manage-event-delivery.md
-  - name: Filtrowanie zdarzeń
-    href: how-to-filter-events.md
-  - name: Monitorowanie dostarczania zdarzeń
-    href: monitor-event-delivery.md
-  - name: Wykonywanie zapytań o subskrypcje zdarzeń
-    href: query-event-subscriptions.md
-  - name: Subskrybowanie przy użyciu portalu
-    href: subscribe-through-portal.md
-  - name: Mapowanie pól niestandardowych na schemat
-    href: input-mappings.md
-  - name: Używanie schematu CloudEvents
-    href: cloudevents-schema.md
-  - name: Zarządzanie tematami za pomocą domen zdarzeń
-    href: how-to-event-domains.md
-  - name: Implementowanie trybu failover po stronie klienta
-    href: custom-disaster-recovery.md
+    - name: Publikowanie w temacie niestandardowym
+      href: post-to-custom-topic.md
+    - name: Odbieranie zdarzeń w punkcie końcowym HTTP
+      href: receive-events.md
+    - name: Utracone wiadomości i ponawianie prób
+      href: manage-event-delivery.md
+    - name: Filtrowanie zdarzeń
+      href: how-to-filter-events.md
+    - name: Monitorowanie dostarczania zdarzeń
+      href: monitor-event-delivery.md
+    - name: Wykonywanie zapytań o subskrypcje zdarzeń
+      href: query-event-subscriptions.md
+    - name: Subskrybowanie przy użyciu portalu
+      href: subscribe-through-portal.md
+    - name: Mapowanie pól niestandardowych na schemat
+      href: input-mappings.md
+    - name: Używanie schematu CloudEvents
+      href: cloudevents-schema.md
+    - name: Zarządzanie tematami za pomocą domen zdarzeń
+      href: how-to-event-domains.md
+    - name: Implementowanie trybu failover po stronie klienta
+      href: custom-disaster-recovery.md
 - name: Dokumentacja
   items:
-  - name: Interfejs wiersza polecenia platformy Azure
-    href: /cli/azure/eventgrid
-  - name: PowerShell
-    href: /powershell/module/az.eventgrid
-  - name: REST
-    href: /rest/api/eventgrid
-  - name: .NET
-    href: /dotnet/api/overview/azure/eventgrid
-  - name: Java
-    href: /java/api/overview/azure/eventgrid
-  - name: Python
-    href: /python/api/overview/azure/event-grid
-  - name: Node.js
-    href: /javascript/api/overview/azure/eventgrid
-  - name: Schemat subskrypcji
-    href: subscription-creation-schema.md
-  - name: Schemat zdarzeń
-    href: event-schema.md
-    items:
-    - name: Subskrypcje platformy Azure
-      href: event-schema-subscriptions.md
-    - name: Blob Storage
-      href: event-schema-blob-storage.md
-    - name: Container Registry
-      href: event-schema-container-registry.md
-    - name: Event Hubs
-      href: event-schema-event-hubs.md
-    - name: Usługa IoT Hub
-      href: event-schema-iot-hub.md
-    - name: Media Services
-      href: ../media-services/latest/media-services-event-schemas.md?toc=%2fazure%2fevent-grid%2ftoc.json
-    - name: Grupy zasobów
-      href: event-schema-resource-groups.md
-    - name: Service Bus
-      href: event-schema-service-bus.md
-    - name: Azure Maps
-      href: event-schema-azure-maps.md
-  - name: Zasoby szablonu
-    items:
-    - name: Subskrypcje zdarzeń
-      href: /azure/templates/microsoft.eventgrid/eventsubscriptions
-    - name: Tematy
-      href: /azure/templates/microsoft.eventgrid/topics
-  - name: Zestawy SDK
-    href: sdk-overview.md
+    - name: Interfejs wiersza polecenia platformy Azure
+      href: /cli/azure/eventgrid
+    - name: PowerShell
+      href: /powershell/module/az.eventgrid
+    - name: REST
+      href: /rest/api/eventgrid
+    - name: .NET
+      href: /dotnet/api/overview/azure/eventgrid
+    - name: Java
+      href: /java/api/overview/azure/eventgrid
+    - name: Python
+      href: /python/api/overview/azure/event-grid
+    - name: Node.js
+      href: /javascript/api/overview/azure/eventgrid
+    - name: Schemat subskrypcji
+      href: subscription-creation-schema.md
+    - name: Schemat zdarzeń
+      href: event-schema.md
+      items:
+        - name: Subskrypcje platformy Azure
+          href: event-schema-subscriptions.md
+        - name: Blob Storage
+          href: event-schema-blob-storage.md
+        - name: Container Registry
+          href: event-schema-container-registry.md
+        - name: Event Hubs
+          href: event-schema-event-hubs.md
+        - name: Usługa IoT Hub
+          href: event-schema-iot-hub.md
+        - name: Media Services
+          href: ../media-services/latest/media-services-event-schemas.md?toc=%2fazure%2fevent-grid%2ftoc.json
+        - name: Grupy zasobów
+          href: event-schema-resource-groups.md
+        - name: Service Bus
+          href: event-schema-service-bus.md
+        - name: Azure Maps
+          href: event-schema-azure-maps.md
+    - name: Zasoby szablonu
+      items:
+        - name: Subskrypcje zdarzeń
+          href: /azure/templates/microsoft.eventgrid/eventsubscriptions
+        - name: Tematy
+          href: /azure/templates/microsoft.eventgrid/topics
+    - name: Zestawy SDK
+      href: sdk-overview.md
 - name: Zasoby
   items:
-  - name: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
-    href: /learn/browse/?products=azure-event-grid
-  - name: Harmonogram działania dla platformy Azure
-    href: https://azure.microsoft.com/roadmap/
-  - name: Cennik
-    href: https://azure.microsoft.com/pricing/details/event-grid/
-  - name: Kalkulator cen
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-eventgrid
-ms.openlocfilehash: 5bbf0a559ead7823c4224ce0c610054d23bcf458
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59528020"
+    - name: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
+      href: /learn/browse/?products=azure-event-grid
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Cennik
+      href: 'https://azure.microsoft.com/pricing/details/event-grid/'
+    - name: Kalkulator cen
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-eventgrid'

@@ -1,16 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 888ed15344ff3709a7a84d5be7e863535bed1792
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56734697"
 documentType: LandingData
 title: Dokumentacja interfejsu API wyszukiwania lokalnych firm Bing
 titleSuffix: Azure Cognitive Services
 metadata:
   title: Dokumentacja interfejsu API wyszukiwania lokalnych firm Bing
-  description: Interfejs API wyszukiwania lokalnych firm Bing jest usługą RESTful, która pozwala aplikacjom znajdować lokalne firmy na podstawie zapytań wyszukiwania.
+  description: 'Interfejs API wyszukiwania lokalnych firm Bing jest usługą RESTful, która pozwala aplikacjom znajdować lokalne firmy na podstawie zapytań wyszukiwania.'
   services: cognitive-services
   author: mikedodaro
   manager: rosh
@@ -19,44 +13,45 @@ metadata:
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 08/02/2018
-  ms.author: rosh, v-gedod
+  ms.author: 'rosh, v-gedod'
 abstract:
   description: Interfejs API wyszukiwania lokalnych firm Bing pozwala aplikacjom znajdować informacje kontaktowe oraz adresowe lokalnych firm na podstawie zapytań wyszukiwania.
 sections:
-- title: Przewodniki Szybki start
-  items:
-  - type: paragraph
-    text: 'Zacznij korzystać z interfejsu API wyszukiwania lokalnych firm Bing, wysyłając zapytania wyszukiwania i sprawdzając odpowiedzi JSON:'
-  - type: list
-    style: icon48
+  - title: Przewodniki Szybki start
     items:
-    - image:
-        src: media/logo_csharp.svg
-      href: quickstarts/local-quickstart.md
-      text: C#
-    - image:
-        src: media/logo_java.svg
-      href: quickstarts/local-search-java-quickstart.md
-      text: Java
-    - image:
-        src: media/logo_nodejs.svg
-      href: quickstarts/local-search-node-quickstart.md
-      text: Węzeł
-    - image:
-        src: media/logo_python.svg
-      href: quickstarts/local-search-python-quickstart.md
-      text: Python
-- title: Dokumentacja
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: 'Zacznij korzystać z interfejsu API wyszukiwania lokalnych firm Bing, wysyłając zapytania wyszukiwania i sprawdzając odpowiedzi JSON:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/logo_csharp.svg
+            href: quickstarts/local-quickstart.md
+            text: 'C#'
+          - image:
+              src: media/logo_java.svg
+            href: quickstarts/local-search-java-quickstart.md
+            text: Java
+          - image:
+              src: media/logo_nodejs.svg
+            href: quickstarts/local-search-node-quickstart.md
+            text: Węzeł
+          - image:
+              src: media/logo_python.svg
+            href: quickstarts/local-search-python-quickstart.md
+            text: Python
+  - title: Dokumentacja
     items:
-    - title: Interfejs API REST
-      html: >
-        <p><a href="local-search-reference.md">Dokumentacja interfejsu API REST</a></p>
-    - title: PowerShell
-      html: >
-        <p><a href=https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>
-    - title: Interfejs wiersza polecenia
-      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Interfejs wiersza polecenia platformy Azure</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Interfejs API REST
+            html: |
+              <p><a href="local-search-reference.md">Dokumentacja interfejsu API REST</a></p>
+          - title: PowerShell
+            html: |
+              <p><a href=https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>
+          - title: Interfejs wiersza polecenia
+            html: |
+              <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Interfejs wiersza polecenia platformy Azure</a></p>

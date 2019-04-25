@@ -3,7 +3,7 @@ documentType: LandingData
 title: Dokumentacja usługi Azure Migrate
 metadata:
   title: Dokumentacja usługi Azure Migrate — samouczki i dokumentacja interfejsu API | Microsoft Docs
-  description: Dowiedz się, jak ocenić maszyny lokalne pod kątem migracji na platformę Azure
+  description: 'Dowiedz się, jak ocenić maszyny lokalne pod kątem migracji na platformę Azure'
   services: migration-planner
   author: rayne-wiselman
   manager: carmonm
@@ -13,20 +13,14 @@ metadata:
   ms.topic: landing-page
   ms.date: 11/22/2017
   ms.author: raynew
-  ms.openlocfilehash: 64e5293473dd9b5d4b55088e447a5ec3a289372d
-  ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
-  ms.translationtype: HT
-  ms.contentlocale: pl-PL
-  ms.lasthandoff: 11/27/2017
-  ms.locfileid: "25927122"
 abstract:
   description: Usługa Azure Migrate pomaga odnajdywać maszyny lokalne i oceniać ich kwalifikowanie się do migracji na platformę Azure. Oprócz tego przedstawia szacunki dotyczące rozmiarów i kosztów maszyn wirtualnych uruchamianych na platformie Azure.
 sections:
-- title: Samouczki krok po kroku
-  items:
-  - type: paragraph
-    text: Dowiedz się, jak ocenić maszyny wirtualne programu VMware pod kątem migracji na platformę Azure
-  - type: list
-    style: unordered
+  - title: Samouczki krok po kroku
     items:
-    - html: <a href="tutorial-assessment-vmware">Odnajdywanie i ocenianie lokalnych maszyn wirtualnych programu VMware</a>
+      - type: paragraph
+        text: 'Dowiedz się, jak ocenić maszyny wirtualne programu VMware pod kątem migracji na platformę Azure'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="tutorial-assessment-vmware">Odnajdywanie i ocenianie lokalnych maszyn wirtualnych programu VMware</a>

@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: a539e1db4fb86adb9f1fcf1f478e24e5de5edbdb
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55983240"
 documentType: LandingData
 title: Dokumentacja usługi Azure Functions
 metadata:
@@ -21,109 +15,109 @@ metadata:
   ms.date: 08/09/2018
   ms.author: carolz
 abstract:
-  description: Azure Functions to <a href="https://azure.microsoft.com/solutions/serverless/">bezserwerowa</a> usługa obliczeniowa, która umożliwia uruchamianie kodu na żądanie bez konieczności jawnego przydzielania infrastruktury ani zarządzania tą infrastrukturą. Za pomocą usługi Azure Functions można uruchamiać skrypty lub fragmenty kodu w reakcji na różne zdarzenia. Dowiedz się, jak używać usługi Azure Functions, korzystając z przewodników Szybki Start, samouczków i przykładów.
+  description: 'Azure Functions to <a href="https://azure.microsoft.com/solutions/serverless/">bezserwerowa</a> usługa obliczeniowa, która umożliwia uruchamianie kodu na żądanie bez konieczności jawnego przydzielania infrastruktury ani zarządzania tą infrastrukturą. Za pomocą usługi Azure Functions można uruchamiać skrypty lub fragmenty kodu w reakcji na różne zdarzenia. Dowiedz się, jak używać usługi Azure Functions, korzystając z przewodników Szybki Start, samouczków i przykładów.'
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
       src: media/index/video-thumb-get-started.png
       width: 250
-    title: Rozpoczynanie pracy z usługą Azure Functions. (2:39)
-    href: https://azure.microsoft.com/resources/videos/get-started-with-azure-functions/
+    title: 'Rozpoczynanie pracy z usługą Azure Functions. (2:39)'
+    href: 'https://azure.microsoft.com/resources/videos/get-started-with-azure-functions/'
     width: 250
 sections:
-- title: 5-minutowe przewodniki Szybki start
-  items:
-  - type: paragraph
-    text: 'Dowiedz się, jak tworzyć funkcje wykonywane na podstawie zdarzeń tworzonych przez następujące elementy:'
-  - type: list
-    style: icon48
+  - title: 5-minutowe przewodniki Szybki start
     items:
-    - image:
-        src: https://docs.microsoft.com/media/common/i_http.svg
-      text: HTTP
-      href: /azure/azure-functions/functions-create-first-azure-function
-    - image:
-        src: media/index/stopwatch.svg
-      text: Czasomierz
-      href: /azure/azure-functions/functions-create-scheduled-function
-    - image:
-        src: media/index/cosmosdb.svg
-      text: Azure Cosmos DB
-      href: /azure/azure-functions/functions-create-cosmos-db-triggered-function
-    - image:
-        src: media/index/blob.svg
-      text: Obiekt blob
-      href: /azure/azure-functions/functions-create-storage-blob-triggered-function
-    - image:
-        src: media/index/storage.svg
-      text: Kolejka
-      href: /azure/azure-functions/functions-create-storage-queue-triggered-function
-  - type: paragraph
-    text: 'Dowiedz się, jak programować i debugować lokalnie:'
-  - type: list
-    style: icon48
+      - type: paragraph
+        text: 'Dowiedz się, jak tworzyć funkcje wykonywane na podstawie zdarzeń tworzonych przez następujące elementy:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_http.svg'
+            text: HTTP
+            href: /azure/azure-functions/functions-create-first-azure-function
+          - image:
+              src: media/index/stopwatch.svg
+            text: Czasomierz
+            href: /azure/azure-functions/functions-create-scheduled-function
+          - image:
+              src: media/index/cosmosdb.svg
+            text: Azure Cosmos DB
+            href: /azure/azure-functions/functions-create-cosmos-db-triggered-function
+          - image:
+              src: media/index/blob.svg
+            text: Obiekt blob
+            href: /azure/azure-functions/functions-create-storage-blob-triggered-function
+          - image:
+              src: media/index/storage.svg
+            text: Kolejka
+            href: /azure/azure-functions/functions-create-storage-queue-triggered-function
+      - type: paragraph
+        text: 'Dowiedz się, jak programować i debugować lokalnie:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_visual-studio.svg'
+            text: Visual Studio
+            href: /azure/azure-functions/functions-create-your-first-function-visual-studio
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_vs-code.svg'
+            text: Visual Studio Code
+            href: /azure/azure-functions/functions-create-first-function-vs-code
+  - title: Samouczki krok po kroku
     items:
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_visual-studio.svg
-      text: Visual Studio
-      href: /azure/azure-functions/functions-create-your-first-function-visual-studio
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_vs-code.svg
-      text: Visual Studio Code
-      href: /azure/azure-functions/functions-create-first-function-vs-code
-- title: Samouczki krok po kroku
-  items:
-  - type: paragraph
-    text: 'Dowiedz się, jak tworzyć funkcje w usłudze Azure Functions i zarządzać nimi:'
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: 'Dowiedz się, jak tworzyć funkcje w usłudze Azure Functions i zarządzać nimi:'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/azure-functions/functions-twitter-email">Tworzenie funkcji integrującej się z usługą Azure Logic Apps</a>
+          - html: <a href="/azure/azure-functions/functions-create-serverless-api">Tworzenie bezserwerowego interfejsu API za pomocą usługi Azure Functions</a>
+          - html: <a href="/azure/azure-functions/functions-openapi-definition">Tworzenie definicji interfejsu OpenAPI dla funkcji</a>
+          - html: <a href="/azure/event-grid/resize-images-on-storage-blob-upload-event">Automatyzowanie zmiany rozmiaru obrazów przekazanych obrazów za pomocą usługi Event Grid</a>
+          - html: '<a href="https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database">Create a serverless web app to store pictures with metadata (Tworzenie bezserwerowej aplikacji internetowej w celu przechowywania obrazów z metadanymi)</a>'
+  - title: Przykłady
     items:
-    - html: <a href="/azure/azure-functions/functions-twitter-email">Tworzenie funkcji integrującej się z usługą Azure Logic Apps</a>
-    - html: <a href="/azure/azure-functions/functions-create-serverless-api">Tworzenie bezserwerowego interfejsu API za pomocą usługi Azure Functions</a>
-    - html: <a href="/azure/azure-functions/functions-openapi-definition">Tworzenie definicji interfejsu OpenAPI dla funkcji</a>
-    - html: <a href="/azure/event-grid/resize-images-on-storage-blob-upload-event">Automatyzowanie zmiany rozmiaru obrazów przekazanych obrazów za pomocą usługi Event Grid</a>
-    - html: <a href="https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database">Create a serverless web app to store pictures with metadata (Tworzenie bezserwerowej aplikacji internetowej w celu przechowywania obrazów z metadanymi)</a>
-- title: Przykłady
-  items:
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/azure-functions/functions-cli-samples">Interfejs wiersza polecenia platformy Azure</a>
+          - html: <a href="/sandbox/functions-recipes/">Azure Functions — przepisy</a>
+  - title: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
     items:
-    - html: <a href="/azure/azure-functions/functions-cli-samples">Interfejs wiersza polecenia platformy Azure</a>
-    - html: <a href="/sandbox/functions-recipes/">Azure Functions — przepisy</a>
-- title: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Tworzenie logiki bezserwerowej za pomocą usługi Azure Functions
+            href: /learn/modules/create-serverless-logic-with-azure-functions/
+            image:
+              src: /learn/achievements/create-serverless-logic-with-azure-functions.svg
+              href: /learn/modules/create-serverless-logic-with-azure-functions/
+          - title: Wykonywanie funkcji platformy Azure przy użyciu wyzwalaczy
+            href: /learn/modules/execute-azure-function-with-triggers/
+            image:
+              src: /learn/achievements/execute-azure-function-with-triggers.svg
+              href: /learn/modules/execute-azure-function-with-triggers/
+          - title: Łączenie usługi Azure Functions i danych za pomocą powiązań wejściowych i wyjściowych
+            href: /learn/modules/chain-azure-functions-data-using-bindings/
+            image:
+              src: /learn/achievements/chain-azure-functions-data-using-bindings.svg
+              href: /learn/modules/chain-azure-functions-data-using-bindings/
+      - type: paragraph
+        text: <a href="/learn/browse/?products=azure-functions">Więcej interakcyjnych zasobów szkoleniowych...</a>
+  - title: Dokumentacja
     items:
-    - title: Tworzenie logiki bezserwerowej za pomocą usługi Azure Functions
-      href: /learn/modules/create-serverless-logic-with-azure-functions/
-      image:
-        src: /learn/achievements/create-serverless-logic-with-azure-functions.svg
-        href: /learn/modules/create-serverless-logic-with-azure-functions/
-    - title: Wykonywanie funkcji platformy Azure przy użyciu wyzwalaczy
-      href: /learn/modules/execute-azure-function-with-triggers/
-      image:
-        src: /learn/achievements/execute-azure-function-with-triggers.svg
-        href: /learn/modules/execute-azure-function-with-triggers/
-    - title: Łączenie usługi Azure Functions i danych za pomocą powiązań wejściowych i wyjściowych
-      href: /learn/modules/chain-azure-functions-data-using-bindings/
-      image:
-        src: /learn/achievements/chain-azure-functions-data-using-bindings.svg
-        href: /learn/modules/chain-azure-functions-data-using-bindings/
-  - type: paragraph
-    text: <a href="/learn/browse/?products=azure-functions">Więcej interakcyjnych zasobów szkoleniowych...</a>
-- title: Dokumentacja
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - title: Wiersz polecenia
-      html: <p><a href="/cli/azure">Interfejs wiersza polecenia platformy Azure</a></p>
-    - title: REST
-      html: <p><a href="/azure/azure-functions/functions-api-definition">OpenAPI</a></p>
-    - title: Powiązania
-      html: <p><a href="/azure/azure-functions/functions-bindings-storage-blob">Blob Storage</a></p><p><a href="/azure/azure-functions/functions-bindings-documentdb">Azure Cosmos DB</a></p><p><a href="/azure/azure-functions/functions-bindings-event-hubs">Centrum zdarzeń</a></p><p><a href="/azure/azure-functions/functions-bindings-http-webhook">HTTP i elementy webhook</a></p><p><a href="/azure/azure-functions/functions-bindings-mobile-apps">Mobile Apps</a></p><p><a href="/azure/azure-functions/functions-bindings-notification-hubs">Notification Hubs</a></p><p><a href="/azure/azure-functions/functions-bindings-storage-queue">Queue Storage</a></p><p><a href="/azure/azure-functions/functions-bindings-sendgrid">SendGrid</a></p><p><a href="/azure/azure-functions/functions-bindings-service-bus">Service Bus</a></p><p><a href="/azure/azure-functions/functions-bindings-signalr-service">SignalR Service</a></p><p><a href="/azure/azure-functions/functions-bindings-storage-table">Table Storage</a></p><p><a href="/azure/azure-functions/functions-bindings-timer">Czasomierz</a></p><p><a href="/azure/azure-functions/functions-bindings-twilio">Powiązanie danych wyjściowych usługi Twilio</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Wiersz polecenia
+            html: <p><a href="/cli/azure">Interfejs wiersza polecenia platformy Azure</a></p>
+          - title: REST
+            html: <p><a href="/azure/azure-functions/functions-api-definition">OpenAPI</a></p>
+          - title: Powiązania
+            html: <p><a href="/azure/azure-functions/functions-bindings-storage-blob">Blob Storage</a></p><p><a href="/azure/azure-functions/functions-bindings-documentdb">Azure Cosmos DB</a></p><p><a href="/azure/azure-functions/functions-bindings-event-hubs">Centrum zdarzeń</a></p><p><a href="/azure/azure-functions/functions-bindings-http-webhook">HTTP i elementy webhook</a></p><p><a href="/azure/azure-functions/functions-bindings-mobile-apps">Mobile Apps</a></p><p><a href="/azure/azure-functions/functions-bindings-notification-hubs">Notification Hubs</a></p><p><a href="/azure/azure-functions/functions-bindings-storage-queue">Queue Storage</a></p><p><a href="/azure/azure-functions/functions-bindings-sendgrid">SendGrid</a></p><p><a href="/azure/azure-functions/functions-bindings-service-bus">Service Bus</a></p><p><a href="/azure/azure-functions/functions-bindings-signalr-service">SignalR Service</a></p><p><a href="/azure/azure-functions/functions-bindings-storage-table">Table Storage</a></p><p><a href="/azure/azure-functions/functions-bindings-timer">Czasomierz</a></p><p><a href="/azure/azure-functions/functions-bindings-twilio">Powiązanie danych wyjściowych usługi Twilio</a></p>

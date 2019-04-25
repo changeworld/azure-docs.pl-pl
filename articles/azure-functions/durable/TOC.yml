@@ -1,139 +1,132 @@
-items:
 - name: Dokumentacja rozszerzenia Durable Functions
 - name: Omówienie
   items:
-  - name: Informacje o usłudze Azure Functions
-    href: ../functions-overview.md
-  - name: Informacje o rozszerzeniu Durable Functions
-    href: durable-functions-overview.md
-  - name: Rozwiązania bezserwerowe — porównanie
-    href: ../functions-compare-logic-apps-ms-flow-webjobs.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
+    - name: Informacje o usłudze Azure Functions
+      href: ../functions-overview.md
+    - name: Informacje o rozszerzeniu Durable Functions
+      href: durable-functions-overview.md
+    - name: Rozwiązania bezserwerowe — porównanie
+      href: ../functions-compare-logic-apps-ms-flow-webjobs.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
 - name: Przewodniki Szybki start
-  items:
-  - name: Tworzenie funkcji trwałej — C#
-    displayName: get started, chaining
-    href: durable-functions-create-first-csharp.md
-  - name: Tworzenie funkcji trwałej — JavaScript
-    displayName: get started, chaining
-    href: quickstart-js-vscode.md
   expanded: true
+  items:
+    - name: 'Tworzenie funkcji trwałej — C#'
+      href: durable-functions-create-first-csharp.md
+      displayName: 'get started, chaining'
+    - name: Tworzenie funkcji trwałej — JavaScript
+      displayName: 'get started, chaining'
+      href: quickstart-js-vscode.md
 - name: Samouczki
   items:
-  - name: Elementy wielokierunkowe (wejściowe/wyjściowe)
-    href: durable-functions-cloud-backup.md
-  - name: Monitory
-    href: durable-functions-monitor.md
-  - name: Interakcja z użytkownikami
-    href: durable-functions-phone-verification.md
-  - name: Publikowanie w usłudze Event Grid
-    href: durable-functions-event-publishing.md
+    - name: Elementy wielokierunkowe (wejściowe/wyjściowe)
+      href: durable-functions-cloud-backup.md
+    - name: Monitory
+      href: durable-functions-monitor.md
+    - name: Interakcja z użytkownikami
+      href: durable-functions-phone-verification.md
+    - name: Publikowanie w usłudze Event Grid
+      href: durable-functions-event-publishing.md
 - name: Przykłady
   items:
-  - name: Przykłady kodu
-    href: https://azure.microsoft.com/en-us/resources/samples/?service=functions&sort=0&term=durable+
-  - name: Interfejs wiersza polecenia platformy Azure
-    href: ../functions-cli-samples.md
+    - name: Przykłady kodu
+      href: 'https://azure.microsoft.com/en-us/resources/samples/?service=functions&sort=0&term=durable+'
+    - name: Interfejs wiersza polecenia platformy Azure
+      href: ../functions-cli-samples.md
 - name: Pojęcia
   items:
-  - name: Wzorce i pojęcia
-    href: durable-functions-concepts.md
-  - name: Typy i cechy funkcji
-    href: durable-functions-types-features-overview.md
-  - name: Powiązania
-    href: durable-functions-bindings.md
-  - name: Czasomierze
-    href: durable-functions-timers.md
-  - name: Zdarzenia zewnętrzne
-    href: durable-functions-external-events.md
-  - name: Orkiestracje podrzędne
-    href: durable-functions-sub-orchestrations.md
-  - name: Koncentratory zadań
-    href: durable-functions-task-hubs.md
-  - name: Niezawodne wykonywanie
-    href: durable-functions-checkpointing-and-replay.md
-  - name: Obsługa wersji
-    href: durable-functions-versioning.md
+    - name: Wzorce i pojęcia
+      href: durable-functions-concepts.md
+    - name: Typy i cechy funkcji
+      href: durable-functions-types-features-overview.md
+    - name: Powiązania
+      href: durable-functions-bindings.md
+    - name: Czasomierze
+      href: durable-functions-timers.md
+    - name: Zdarzenia zewnętrzne
+      href: durable-functions-external-events.md
+    - name: Orkiestracje podrzędne
+      href: durable-functions-sub-orchestrations.md
+    - name: Koncentratory zadań
+      href: durable-functions-task-hubs.md
+    - name: Niezawodne wykonywanie
+      href: durable-functions-checkpointing-and-replay.md
+    - name: Obsługa wersji
+      href: durable-functions-versioning.md
 - name: Przewodniki z instrukcjami
   items:
-  - name: Planowanie i projektowanie
-    items:
-    - name: Łączenie funkcji w łańcuchy
-      href: durable-functions-sequence.md
-    - name: Orkiestracje nieustanne
-      href: durable-functions-eternal-orchestrations.md
-    - name: Orkiestracje pojedyncze
-      href: durable-functions-singletons.md
-    - name: Wydajność i skalowanie
-      href: durable-functions-perf-and-scale.md
-    - name: Wysoka dostępność
-      href: durable-functions-disaster-recovery-geo-distribution.md
-  - name: Programowanie
-    items:
-    - name: Tworzenie w witrynie Azure Portal
-      href: durable-functions-create-portal.md
-    - name: Zarządzanie połączeniami
-      href: ../manage-connections.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
-    - name: Obsługa błędów
-      href: durable-functions-error-handling.md
-    - name: Testy jednostkowe
-      href: durable-functions-unit-testing.md
-    - name: Tworzenie jako zadań WebJob
-      href: durable-functions-webjobs-sdk.md
-  - name: Wdrażanie
-    items:
-    - name: Ciągłe wdrażanie
-      href: ../functions-continuous-deployment.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
-    - name: Wdrażanie pliku zip
-      href: ../deployment-zip-push.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
-    - name: Uruchamianie za pomocą pakietu
-      href: ../run-functions-from-deployment-package.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
-  - name: Zarządzanie
-    items:
-    - name: Zarządzanie wystąpieniami
-      href: durable-functions-instance-management.md
-  - name: Monitorowanie
-    items:
-    - name: Monitorowanie funkcji
-      href: ../functions-monitoring.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
-    - name: Stan niestandardowej aranżacji
-      href: durable-functions-custom-orchestration-status.md
-  - name: Rozwiązywanie problemów
-    items:
-    - name: Diagnostyka
-      href: durable-functions-diagnostics.md
+    - name: Planowanie i projektowanie
+      items:
+        - name: Łączenie funkcji w łańcuchy
+          href: durable-functions-sequence.md
+        - name: Orkiestracje nieustanne
+          href: durable-functions-eternal-orchestrations.md
+        - name: Orkiestracje pojedyncze
+          href: durable-functions-singletons.md
+        - name: Wydajność i skalowanie
+          href: durable-functions-perf-and-scale.md
+        - name: Wysoka dostępność
+          href: durable-functions-disaster-recovery-geo-distribution.md
+    - name: Programowanie
+      items:
+        - name: Tworzenie w witrynie Azure Portal
+          href: durable-functions-create-portal.md
+        - name: Zarządzanie połączeniami
+          href: ../manage-connections.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
+        - name: Obsługa błędów
+          href: durable-functions-error-handling.md
+        - name: Testy jednostkowe
+          href: durable-functions-unit-testing.md
+        - name: Tworzenie jako zadań WebJob
+          href: durable-functions-webjobs-sdk.md
+    - name: Wdrażanie
+      items:
+        - name: Ciągłe wdrażanie
+          href: ../functions-continuous-deployment.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
+        - name: Wdrażanie pliku zip
+          href: ../deployment-zip-push.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
+        - name: Uruchamianie za pomocą pakietu
+          href: ../run-functions-from-deployment-package.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
+    - name: Zarządzanie
+      items:
+        - name: Zarządzanie wystąpieniami
+          href: durable-functions-instance-management.md
+    - name: Monitorowanie
+      items:
+        - name: Monitorowanie funkcji
+          href: ../functions-monitoring.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
+        - name: Stan niestandardowej aranżacji
+          href: durable-functions-custom-orchestration-status.md
+    - name: Rozwiązywanie problemów
+      items:
+        - name: Diagnostyka
+          href: durable-functions-diagnostics.md
 - name: Dokumentacja
   items:
-  - name: Interfejs API protokołu HTTP
-    href: durable-functions-http-api.md
+    - name: Interfejs API protokołu HTTP
+      href: durable-functions-http-api.md
 - name: Zasoby
   items:
-  - name: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
-    href: /learn/browse/?products=azure-functions
-  - name: Harmonogram działania dla platformy Azure
-    href: https://azure.microsoft.com/roadmap/?category=compute
-  - name: Cennik
-    href: https://azure.microsoft.com/pricing/details/functions/
-  - name: Kalkulator cen
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: Dostępność regionalna
-    href: https://azure.microsoft.com/regions/services/
-  - name: Filmy wideo
-    href: https://www.youtube.com/c/AzureFunctions
-  - name: Forum MSDN
-    href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureFunctions
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-functions
-  - name: Twitter
-    href: https://twitter.com/hashtag/DurableFunctions?src=hash
-  - name: Przekazywanie opinii dotyczących produktów
-    href: https://feedback.azure.com/forums/355860-azure-functions
-  - name: Repozytorium GitHub rozszerzenia Durable Functions
-    href: https://github.com/Azure/azure-functions-durable-extension
-  - name: Aktualizacje usług
-    href: https://azure.microsoft.com/updates/?product=functions&updatetype=&platform=
-ms.openlocfilehash: 7056804d4c84bccf3335e9a5913989083d013115
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54102537"
+    - name: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
+      href: /learn/browse/?products=azure-functions
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/roadmap/?category=compute'
+    - name: Cennik
+      href: 'https://azure.microsoft.com/pricing/details/functions/'
+    - name: Kalkulator cen
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Dostępność regionalna
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Filmy wideo
+      href: 'https://www.youtube.com/c/AzureFunctions'
+    - name: Forum MSDN
+      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureFunctions'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-functions'
+    - name: Twitter
+      href: 'https://twitter.com/hashtag/DurableFunctions?src=hash'
+    - name: Przekazywanie opinii dotyczących produktów
+      href: 'https://feedback.azure.com/forums/355860-azure-functions'
+    - name: Repozytorium GitHub rozszerzenia Durable Functions
+      href: 'https://github.com/Azure/azure-functions-durable-extension'
+    - name: Aktualizacje usług
+      href: 'https://azure.microsoft.com/updates/?product=functions&updatetype=&platform='

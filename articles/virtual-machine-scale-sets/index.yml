@@ -1,14 +1,8 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: abf4aa9210b0d497b1f93361e05e2188d1ef3f6a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46976625"
 documentType: LandingData
 title: Dokumentacja zestawów skalowania maszyn wirtualnych
 metadata:
-  title: Zestawy skalowania maszyn wirtualnych platformy Azure umożliwiają tworzenie grup identycznych maszyn wirtualnych z równoważeniem obciążenia i skalowaniem automatycznym oraz zarządzanie tymi grupami. Dowiedz się, jak tworzyć, konfigurować i automatycznie skalować zestawy skalowania maszyn wirtualnych oraz zarządzać nimi, korzystając z przewodników Szybki start, samouczków i przykładów.
+  title: 'Zestawy skalowania maszyn wirtualnych platformy Azure umożliwiają tworzenie grup identycznych maszyn wirtualnych z równoważeniem obciążenia i skalowaniem automatycznym oraz zarządzanie tymi grupami. Dowiedz się, jak tworzyć, konfigurować i automatycznie skalować zestawy skalowania maszyn wirtualnych oraz zarządzać nimi, korzystając z przewodników Szybki start, samouczków i przykładów.'
   services: virtual-machine-scale-sets
   author: carolz
   manager: czeumault
@@ -19,46 +13,46 @@ metadata:
   ms.date: 03/14/2018
   ms.author: carolz
 abstract:
-  description: Zestawy skalowania maszyn wirtualnych platformy Azure umożliwiają tworzenie grup identycznych maszyn wirtualnych z równoważeniem obciążenia i skalowaniem automatycznym oraz zarządzanie tymi grupami. Dowiedz się, jak tworzyć, konfigurować i automatycznie skalować zestawy skalowania maszyn wirtualnych oraz zarządzać nimi, korzystając z przewodników Szybki start, samouczków i przykładów.
+  description: 'Zestawy skalowania maszyn wirtualnych platformy Azure umożliwiają tworzenie grup identycznych maszyn wirtualnych z równoważeniem obciążenia i skalowaniem automatycznym oraz zarządzanie tymi grupami. Dowiedz się, jak tworzyć, konfigurować i automatycznie skalować zestawy skalowania maszyn wirtualnych oraz zarządzać nimi, korzystając z przewodników Szybki start, samouczków i przykładów.'
 sections:
-- title: Przewodniki Szybki start
-  items:
-  - type: paragraph
-    text: Dowiedz się, jak wdrożyć serwer sieci Web w zestawie skalowania maszyn wirtualnych.
-  - type: list
-    style: icon48
+  - title: Przewodniki Szybki start
     items:
-    - image:
-        src: https://docs.microsoft.com/azure/virtual-machines/linux/media/index/portal.svg
-      text: Azure Portal
-      href: /azure/virtual-machine-scale-sets/quick-create-portal
-    - image:
-        src: https://docs.microsoft.com/azure/virtual-machines/linux/media/index/cli.svg
-      text: Interfejs wiersza polecenia platformy Azure
-      href: /azure/virtual-machine-scale-sets/quick-create-cli
-    - image:
-        src: https://docs.microsoft.com/azure/virtual-machines/linux/media/index/logo_powershell.svg
-      text: Azure PowerShell
-      href: /azure/virtual-machine-scale-sets/quick-create-powershell
-- title: Samouczki krok po kroku
-  items:
-  - type: paragraph
-    text: Dowiedz się, jak wdrażać i automatycznie skalować zestawy skalowania maszyn wirtualnych oraz zarządzać nimi na platformie Azure.
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: 'Dowiedz się, jak wdrożyć serwer sieci Web w zestawie skalowania maszyn wirtualnych.'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/azure/virtual-machines/linux/media/index/portal.svg'
+            text: Azure Portal
+            href: /azure/virtual-machine-scale-sets/quick-create-portal
+          - image:
+              src: 'https://docs.microsoft.com/azure/virtual-machines/linux/media/index/cli.svg'
+            text: Interfejs wiersza polecenia platformy Azure
+            href: /azure/virtual-machine-scale-sets/quick-create-cli
+          - image:
+              src: 'https://docs.microsoft.com/azure/virtual-machines/linux/media/index/logo_powershell.svg'
+            text: Azure PowerShell
+            href: /azure/virtual-machine-scale-sets/quick-create-powershell
+  - title: Samouczki krok po kroku
     items:
-    - html: Tworzenie zestawu skalowania i zarządzanie nim przy użyciu <a href="/azure/virtual-machine-scale-sets/tutorial-create-and-manage-cli">interfejsu wiersza polecenia platformy Azure</a> lub <a href="/azure/virtual-machine-scale-sets/tutorial-create-and-manage-powershell">programu Azure PowerShell</a>
-    - html: Korzystanie z dysków danych przy użyciu <a href="/azure/virtual-machine-scale-sets/tutorial-use-disks-cli">interfejsu wiersza polecenia platformy Azure</a> lub <a href="/azure/virtual-machine-scale-sets/tutorial-use-disks-powershell">programu Azure PowerShell</a>
-    - html: Korzystanie z niestandardowego obrazu maszyny wirtualnej przy użyciu <a href="/azure/virtual-machine-scale-sets/tutorial-use-custom-image-cli">interfejsu wiersza polecenia platformy Azure</a> lub <a href="/azure/virtual-machine-scale-sets/tutorial-use-custom-image-powershell">programu Azure PowerShell</a>
-    - html: Wdrażanie aplikacji w zestawie skalowania przy użyciu <a href="/azure/virtual-machine-scale-sets/tutorial-install-apps-cli">interfejsu wiersza polecenia platformy Azure</a> lub <a href="/azure/virtual-machine-scale-sets/tutorial-install-apps-powershell">programu Azure PowerShell</a>
-    - html: Automatyczne skalowanie zestawu skalowania przy użyciu <a href="/azure/virtual-machine-scale-sets/tutorial-autoscale-cli">interfejsu wiersza polecenia platformy Azure</a> lub <a href="/azure/virtual-machine-scale-sets/tutorial-autoscale-powershell">programu Azure PowerShell</a>
-- title: Przykłady
-  items:
-  - type: paragraph
-    text: Przykładowe wdrożenia dotyczące zestawów skalowania maszyn wirtualnych.
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: 'Dowiedz się, jak wdrażać i automatycznie skalować zestawy skalowania maszyn wirtualnych oraz zarządzać nimi na platformie Azure.'
+      - type: list
+        style: ordered
+        items:
+          - html: Tworzenie zestawu skalowania i zarządzanie nim przy użyciu <a href="/azure/virtual-machine-scale-sets/tutorial-create-and-manage-cli">interfejsu wiersza polecenia platformy Azure</a> lub <a href="/azure/virtual-machine-scale-sets/tutorial-create-and-manage-powershell">programu Azure PowerShell</a>
+          - html: Korzystanie z dysków danych przy użyciu <a href="/azure/virtual-machine-scale-sets/tutorial-use-disks-cli">interfejsu wiersza polecenia platformy Azure</a> lub <a href="/azure/virtual-machine-scale-sets/tutorial-use-disks-powershell">programu Azure PowerShell</a>
+          - html: Korzystanie z niestandardowego obrazu maszyny wirtualnej przy użyciu <a href="/azure/virtual-machine-scale-sets/tutorial-use-custom-image-cli">interfejsu wiersza polecenia platformy Azure</a> lub <a href="/azure/virtual-machine-scale-sets/tutorial-use-custom-image-powershell">programu Azure PowerShell</a>
+          - html: Wdrażanie aplikacji w zestawie skalowania przy użyciu <a href="/azure/virtual-machine-scale-sets/tutorial-install-apps-cli">interfejsu wiersza polecenia platformy Azure</a> lub <a href="/azure/virtual-machine-scale-sets/tutorial-install-apps-powershell">programu Azure PowerShell</a>
+          - html: Automatyczne skalowanie zestawu skalowania przy użyciu <a href="/azure/virtual-machine-scale-sets/tutorial-autoscale-cli">interfejsu wiersza polecenia platformy Azure</a> lub <a href="/azure/virtual-machine-scale-sets/tutorial-autoscale-powershell">programu Azure PowerShell</a>
+  - title: Przykłady
     items:
-    - html: <a href="/azure/virtual-machine-scale-sets/cli-samples">Interfejs wiersza polecenia platformy Azure</a>
-    - html: <a href="/azure/virtual-machine-scale-sets/powershell-samples">Azure PowerShell</a>
+      - type: paragraph
+        text: Przykładowe wdrożenia dotyczące zestawów skalowania maszyn wirtualnych.
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/virtual-machine-scale-sets/cli-samples">Interfejs wiersza polecenia platformy Azure</a>
+          - html: <a href="/azure/virtual-machine-scale-sets/powershell-samples">Azure PowerShell</a>

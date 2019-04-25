@@ -1,124 +1,117 @@
-items:
 - name: Dokumentacja interfejsu API wyszukiwania obrazów Bing
   href: index.yml
 - name: Omówienie
-  items:
-  - name: Czym jest funkcja wyszukiwania obrazów Bing?
-    href: overview.md
-  - name: Porównanie interfejsów API wyszukiwania Bing
-    href: ../Bing-Web-Search/bing-api-comparison.md
-    maintainContext: true
   expanded: true
+  items:
+    - name: Czym jest funkcja wyszukiwania obrazów Bing?
+      href: overview.md
+    - name: Porównanie interfejsów API wyszukiwania Bing
+      href: ../Bing-Web-Search/bing-api-comparison.md
+      maintainContext: true
 - name: Przewodniki Szybki start
   items:
-  - name: Interfejs API REST
-    items:
-    - name: Przy użyciu języka C#
-      href: quickstarts/csharp.md
-    - name: Korzystanie z języka Java
-      href: quickstarts/java.md
-    - name: Używanie środowiska Node.js
-      href: quickstarts/nodejs.md
-    - name: Korzystanie z języka PHP
-      href: quickstarts/php.md
-    - name: Korzystanie z języka Python
-      href: quickstarts/python.md
-    - name: Korzystanie z języka Ruby
-      href: quickstarts/ruby.md
-  - name: SDK
-    items:
-    - name: Przy użyciu języka C#
-      href: image-search-sdk-quickstart.md
-    - name: Używanie środowiska Node.js
-      href: image-search-sdk-node-quickstart.md
-    - name: Korzystanie z języka Python
-      href: image-sdk-python-quickstart.md
-    - name: Korzystanie z języka Java
-      href: image-sdk-java-quickstart.md
+    - name: Interfejs API REST
+      items:
+        - name: 'Przy użyciu języka C#'
+          href: quickstarts/csharp.md
+        - name: Korzystanie z języka Java
+          href: quickstarts/java.md
+        - name: Używanie środowiska Node.js
+          href: quickstarts/nodejs.md
+        - name: Korzystanie z języka PHP
+          href: quickstarts/php.md
+        - name: Korzystanie z języka Python
+          href: quickstarts/python.md
+        - name: Korzystanie z języka Ruby
+          href: quickstarts/ruby.md
+    - name: SDK
+      items:
+        - name: 'Przy użyciu języka C#'
+          href: image-search-sdk-quickstart.md
+        - name: Używanie środowiska Node.js
+          href: image-search-sdk-node-quickstart.md
+        - name: Korzystanie z języka Python
+          href: image-sdk-python-quickstart.md
+        - name: Korzystanie z języka Java
+          href: image-sdk-java-quickstart.md
 - name: Samouczki
   items:
-  - name: Tworzenie aplikacji internetowej do wyszukiwania obrazów
-    href: tutorial-bing-image-search-single-page-app.md
-  - name: Wyodrębnianie szczegółów obrazu
-    href: tutorial-image-post.md
+    - name: Tworzenie aplikacji internetowej do wyszukiwania obrazów
+      href: tutorial-bing-image-search-single-page-app.md
+    - name: Wyodrębnianie szczegółów obrazu
+      href: tutorial-image-post.md
 - name: Przykłady
   items:
-  - name: Przykłady kodu
-    href: https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Image+Search
+    - name: Przykłady kodu
+      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Image+Search'
 - name: Przewodniki z instrukcjami
   items:
-  - name: Pobieranie szczegółowych informacji o obrazie
-    href: image-insights.md
-  - name: Pobieranie obrazów w formacie gif
-    href: gif-images.md
-  - name: Pobieranie popularnych obrazów
-    href: trending-images.md
-  - name: Dzielenie wyników wyszukiwania obrazów na strony
-    href: paging-images.md
-  - name: Zmiana rozmiaru i przycinanie miniatur
-    href: resize-and-crop-thumbnails.md
-  - name: Uaktualnienie z wersji v5 do v7
-    href: bing-image-upgrade-guide-v5-to-v7.md
+    - name: Pobieranie szczegółowych informacji o obrazie
+      href: image-insights.md
+    - name: Pobieranie obrazów w formacie gif
+      href: gif-images.md
+    - name: Pobieranie popularnych obrazów
+      href: trending-images.md
+    - name: Dzielenie wyników wyszukiwania obrazów na strony
+      href: paging-images.md
+    - name: Zmiana rozmiaru i przycinanie miniatur
+      href: resize-and-crop-thumbnails.md
+    - name: Uaktualnienie z wersji v5 do v7
+      href: bing-image-upgrade-guide-v5-to-v7.md
 - name: Pojęcia
   items:
-  - name: Pobieranie obrazów z Internetu
-    href: concepts/bing-image-search-get-images.md
-  - name: Wysyłanie zapytań wyszukiwania i praca z nimi
-    href: concepts/bing-image-search-sending-queries.md
+    - name: Pobieranie obrazów z Internetu
+      href: concepts/bing-image-search-get-images.md
+    - name: Wysyłanie zapytań wyszukiwania i praca z nimi
+      href: concepts/bing-image-search-sending-queries.md
 - name: Dokumentacja
   items:
-  - name: Interfejs API wyszukiwania obrazów Bing v7
-    href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference
-  - name: Interfejs API wyszukiwania obrazów Bing v5
-    href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference
-  - name: Dokumentacja programu Azure PowerShell
-    href: https://aka.ms/azure-powershell-cognitiveservices
-  - name: Dokumentacja interfejsu wiersza polecenia platformy Azure
-    href: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
-  - name: Zestawy SDK
-    items:
-    - name: .NET
-      href: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingimagesearch?view=azure-dotnet
-    - name: Java
-      href: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/imagesearch?view=azure-java-stable
-    - name: Python
-      href: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/imagesearch?view=azure-python
-    - name: Node.js
-      href: https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/imagesearch?view=azure-node-latest
-    - name: Przejdź
-      href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/imagesearch
-  - name: Wymagania dotyczące użycia i wyświetlania Bing
-    href: ../Bing-Web-Search/use-display-requirements.md
-    maintainContext: true
+    - name: Interfejs API wyszukiwania obrazów Bing v7
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference'
+    - name: Interfejs API wyszukiwania obrazów Bing v5
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference'
+    - name: Dokumentacja programu Azure PowerShell
+      href: 'https://aka.ms/azure-powershell-cognitiveservices'
+    - name: Dokumentacja interfejsu wiersza polecenia platformy Azure
+      href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
+    - name: Zestawy SDK
+      items:
+        - name: .NET
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingimagesearch?view=azure-dotnet'
+        - name: Java
+          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/imagesearch?view=azure-java-stable'
+        - name: Python
+          href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/imagesearch?view=azure-python'
+        - name: Node.js
+          href: 'https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/imagesearch?view=azure-node-latest'
+        - name: Przejdź
+          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/imagesearch'
+    - name: Wymagania dotyczące użycia i wyświetlania Bing
+      href: ../Bing-Web-Search/use-display-requirements.md
+      maintainContext: true
 - name: Zasoby
   items:
-  - name: Często zadawane pytania
-    href: bing-image-search-resource-faq.md
-  - name: Cennik
-    href: https://azure.microsoft.com/pricing/details/cognitive-services/search-api/image/
-  - name: UserVoice
-    href: https://cognitive.uservoice.com/forums/555907-bing-search
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/bing-search
-  - name: Dostępność regionalna
-    href: https://azure.microsoft.com/global-infrastructure/services/
-  - name: Harmonogram działania dla platformy Azure
-    href: https://azure.microsoft.com/roadmap/
-  - name: Baza wiedzy
-    href: https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest
-  - name: Uzyskiwanie klucza interfejsu API
-    href: https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api
-  - name: Wypróbuj!
-    href: https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/
-  - name: Punkty końcowe funkcji wyszukiwania obrazów Bing
-    href: image-search-endpoint.md
-  - name: Obsługa języków i regionów
-    href: language-support.md
-  - name: Dane analityczne na potrzeby interfejsu API wyszukiwania obrazów Bing
-    href: bing-image-stats.md
-ms.openlocfilehash: d75e08e7430b3474fc5e3a354d3c4a559899957a
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237221"
+    - name: Często zadawane pytania
+      href: bing-image-search-resource-faq.md
+    - name: Cennik
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/search-api/image/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/555907-bing-search'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/bing-search'
+    - name: Dostępność regionalna
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Baza wiedzy
+      href: 'https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest'
+    - name: Uzyskiwanie klucza interfejsu API
+      href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api'
+    - name: Wypróbuj!
+      href: 'https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/'
+    - name: Punkty końcowe funkcji wyszukiwania obrazów Bing
+      href: image-search-endpoint.md
+    - name: Obsługa języków i regionów
+      href: language-support.md
+    - name: Dane analityczne na potrzeby interfejsu API wyszukiwania obrazów Bing
+      href: bing-image-stats.md

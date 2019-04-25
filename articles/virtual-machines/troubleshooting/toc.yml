@@ -1,110 +1,109 @@
-items:
 - name: Rozwiązywanie problemów z maszynami wirtualnymi platformy Azure
   href: index.md
 - name: Błędy alokacji
   items:
-  - name: Błędy alokacji
-    href: allocation-failure.md
-  - name: Błędy alokacji w przypadku wdrożeń klasycznych
-    href: allocation-failure-classic.md
+    - name: Błędy alokacji
+      href: allocation-failure.md
+    - name: Błędy alokacji w przypadku wdrożeń klasycznych
+      href: allocation-failure-classic.md
 - name: RDP
   href: rdp.md
   items:
-  - name: Resetowanie protokołu RDP
-    href: reset-rdp.md
-  - name: Rozwiązywanie problemów z protokołem RDP
-    href: troubleshoot-rdp-connection.md
-  - name: Szczegółowe rozwiązywanie problemów z protokołem RDP
-    href: detailed-troubleshoot-rdp.md
-  - name: Rozwiązywanie problemów z błędem protokołu RDP spowodowanym wyłączonym protokołem DHCP
-    href: troubleshoot-rdp-dhcp-disabled.md
-  - name: Rozwiązywanie problemów z błędem protokołu RDP spowodowanym ustawieniem sieciowej grupy zabezpieczeń
-    href: troubleshoot-rdp-nsg-problem.md
-  - name: Rozwiązywanie problemów z konkretnymi błędami
-    href: troubleshoot-specific-rdp-errors.md
-  - name: Rozwiązywanie problemów z błędami wskazującymi na brak serwera licencji
-    href: troubleshoot-rdp-no-license-server.md
-  - name: Rozwiązywanie problemów z usługami pulpitu zdalnego
-    href: troubleshoot-remote-desktop-services-issues.md
-  - name: Rozwiązywanie problemów z błędem wewnętrznym
-    href: Troubleshoot-rdp-internal-error.md
-  - name: Rozwiązywanie problemów z często zrywanym połączeniem
-    href: troubleshoot-rdp-intermittent-connectivity.md
-  - name: Rozwiązywanie problemów z błędem ogólnym
-    href: troubleshoot-rdp-general-error.md
-  - name: Rozwiązywanie problemów z uwierzytelnianiem
-    href: troubleshoot-authentication-error-rdp-vm.md
-  - name: Rozwiązywanie problemów z połączeniem RDP maszyny wirtualnej platformy Azure według identyfikatora zdarzenia
-    href: event-id-troubleshoot-vm-rdp-connecton.md
-  - name: Rozwiązywanie problemów z błędem protokołu RDP na maszynie wirtualnej spowodowanym statycznym adresem IP
-    href: troubleshoot-rdp-static-ip.md
-  - name: Rozwiązywanie problemów z błędem protokołu RDP na maszynie wirtualnej spowodowanym wyłączoną kartą sieciową
-    href: troubleshoot-rdp-nic-disabled.md
-  - name: Rozwiązywanie problemów z błędem protokołu RDP spowodowanym przez tryb awaryjny
-    href: troubleshoot-rdp-safe-mode.md
-  - name: Wyłączanie zapory systemu operacyjnego gościa na maszynie wirtualnej platformy Azure
-    href: disable-guest-os-firewall-windows.md
-  - name: Włączanie lub wyłączanie reguły zapory w systemie operacyjnym gościa
-    href: enable-disable-firewall-rule-guest-os.md
-  - name: Zapora systemu operacyjnego gościa blokuje ruch przychodzący
-    href: guest-os-firewall-blocking-inbound-traffic.md
-  - name: Zapora systemu operacyjnego gościa jest błędnie skonfigurowana
-    href: guest-os-firewall-misconfigured.md
-  - name: Rozwiązywanie problemów z błędem protokołu RDP spowodowanym przez plik netvsc.sys
-    href: troubleshoot-rdp-driver-netvsc.md
+    - name: Resetowanie protokołu RDP
+      href: reset-rdp.md
+    - name: Rozwiązywanie problemów z protokołem RDP
+      href: troubleshoot-rdp-connection.md
+    - name: Szczegółowe rozwiązywanie problemów z protokołem RDP
+      href: detailed-troubleshoot-rdp.md
+    - name: Rozwiązywanie problemów z błędem protokołu RDP spowodowanym wyłączonym protokołem DHCP
+      href: troubleshoot-rdp-dhcp-disabled.md
+    - name: Rozwiązywanie problemów z błędem protokołu RDP spowodowanym ustawieniem sieciowej grupy zabezpieczeń
+      href: troubleshoot-rdp-nsg-problem.md
+    - name: Rozwiązywanie problemów z konkretnymi błędami
+      href: troubleshoot-specific-rdp-errors.md
+    - name: Rozwiązywanie problemów z błędami wskazującymi na brak serwera licencji
+      href: troubleshoot-rdp-no-license-server.md
+    - name: Rozwiązywanie problemów z usługami pulpitu zdalnego
+      href: troubleshoot-remote-desktop-services-issues.md
+    - name: Rozwiązywanie problemów z błędem wewnętrznym
+      href: Troubleshoot-rdp-internal-error.md
+    - name: Rozwiązywanie problemów z często zrywanym połączeniem
+      href: troubleshoot-rdp-intermittent-connectivity.md
+    - name: Rozwiązywanie problemów z błędem ogólnym
+      href: troubleshoot-rdp-general-error.md
+    - name: Rozwiązywanie problemów z uwierzytelnianiem
+      href: troubleshoot-authentication-error-rdp-vm.md
+    - name: Rozwiązywanie problemów z połączeniem RDP maszyny wirtualnej platformy Azure według identyfikatora zdarzenia
+      href: event-id-troubleshoot-vm-rdp-connecton.md
+    - name: Rozwiązywanie problemów z błędem protokołu RDP na maszynie wirtualnej spowodowanym statycznym adresem IP
+      href: troubleshoot-rdp-static-ip.md
+    - name: Rozwiązywanie problemów z błędem protokołu RDP na maszynie wirtualnej spowodowanym wyłączoną kartą sieciową
+      href: troubleshoot-rdp-nic-disabled.md
+    - name: Rozwiązywanie problemów z błędem protokołu RDP spowodowanym przez tryb awaryjny
+      href: troubleshoot-rdp-safe-mode.md
+    - name: Wyłączanie zapory systemu operacyjnego gościa na maszynie wirtualnej platformy Azure
+      href: disable-guest-os-firewall-windows.md
+    - name: Włączanie lub wyłączanie reguły zapory w systemie operacyjnym gościa
+      href: enable-disable-firewall-rule-guest-os.md
+    - name: Zapora systemu operacyjnego gościa blokuje ruch przychodzący
+      href: guest-os-firewall-blocking-inbound-traffic.md
+    - name: Zapora systemu operacyjnego gościa jest błędnie skonfigurowana
+      href: guest-os-firewall-misconfigured.md
+    - name: Rozwiązywanie problemów z błędem protokołu RDP spowodowanym przez plik netvsc.sys
+      href: troubleshoot-rdp-driver-netvsc.md
 - name: Protokół SSH
   items:
-  - name: Rozwiązywanie problemów z protokołem SSH
-    href: troubleshoot-ssh-connection.md
-  - name: Rozwiązywanie problemów z błędami systemu plików
-    href: https://support.microsoft.com/help/3213321
-  - name: Rozwiązywanie problemów z rozruchem związanych z jądrem
-    href: https://support.microsoft.com/help/4091524
-  - name: Rozwiązywanie problemów z błędami tabeli fstab
-    href: https://support.microsoft.com/help/3206699
-  - name: Szczegółowe rozwiązywanie problemów z protokołem RDP
-    href: detailed-troubleshoot-ssh-connection.md
+    - name: Rozwiązywanie problemów z protokołem SSH
+      href: troubleshoot-ssh-connection.md
+    - name: Rozwiązywanie problemów z błędami systemu plików
+      href: 'https://support.microsoft.com/help/3213321'
+    - name: Rozwiązywanie problemów z rozruchem związanych z jądrem
+      href: 'https://support.microsoft.com/help/4091524'
+    - name: Rozwiązywanie problemów z błędami tabeli fstab
+      href: 'https://support.microsoft.com/help/3206699'
+    - name: Szczegółowe rozwiązywanie problemów z protokołem RDP
+      href: detailed-troubleshoot-ssh-connection.md
 - name: Typowe komunikaty o błędach
   href: error-messages.md
 - name: Problemy z wydajnością maszyn wirtualnych z systemem Windows
   href: performance-diagnostics.md
   items:
-  - name: Korzystanie z narzędzia PerfInsights
-    href: how-to-use-perfInsights.md
-  - name: Rozszerzenie do diagnostyki wydajności
-    href: performance-diagnostics-vm-extension.md
+    - name: Korzystanie z narzędzia PerfInsights
+      href: how-to-use-perfInsights.md
+    - name: Rozszerzenie do diagnostyki wydajności
+      href: performance-diagnostics-vm-extension.md
 - name: Instalowanie agenta maszyny wirtualnej z systemem Windows w trybie offline
   href: install-vm-agent-offline.md
 - name: Ponowne wdrażanie maszyny wirtualnej
   items:
-  - name: Linux
-    href: redeploy-to-new-node-linux.md
-  - name: Windows
-    href: redeploy-to-new-node-windows.md
+    - name: Linux
+      href: redeploy-to-new-node-linux.md
+    - name: Windows
+      href: redeploy-to-new-node-windows.md
 - name: Resetowanie hasła maszyny wirtualnej
   items:
-  - name: Windows
-    href: reset-local-password-without-agent.md
-  - name: Linux
-    href: reset-password.md
+    - name: Windows
+      href: reset-local-password-without-agent.md
+    - name: Linux
+      href: reset-password.md
 - name: Resetowanie karty sieciowej
   href: reset-network-interface.md
 - name: Ponowne uruchamianie maszyny wirtualnej lub zmienianie jej rozmiaru
   href: restart-resize-error-troubleshooting.md
 - name: Korzystanie z konsoli szeregowej
   items:
-  - name: Maszyna wirtualna z systemem Linux
-    href: serial-console-linux.md
-    items:
-    - name: Konsola szeregowa — tryb GRUB/pojedynczego użytkownika
-      href: serial-console-grub-single-user-mode.md
-    - name: Konsola szeregowa — NMI/SysRq
-      href: serial-console-nmi-sysrq.md
-  - name: Maszyna wirtualna z systemem Windows
-    href: serial-console-windows.md
-    items:
-    - name: Polecenia CMD i polecenia programu PowerShell
-      href: serial-console-cmd-ps-commands.md
+    - name: Maszyna wirtualna z systemem Linux
+      href: serial-console-linux.md
+      items:
+        - name: Konsola szeregowa — tryb GRUB/pojedynczego użytkownika
+          href: serial-console-grub-single-user-mode.md
+        - name: Konsola szeregowa — NMI/SysRq
+          href: serial-console-nmi-sysrq.md
+    - name: Maszyna wirtualna z systemem Windows
+      href: serial-console-windows.md
+      items:
+        - name: Polecenia CMD i polecenia programu PowerShell
+          href: serial-console-cmd-ps-commands.md
 - name: Błędy podczas usuwania zasobów magazynu
   href: storage-resource-deletion-errors.md
 - name: Błędy podczas usuwania klasycznych zasobów magazynu
@@ -119,51 +118,51 @@ items:
   href: troubleshoot-app-connection.md
 - name: Nowe wdrożenia maszyn wirtualnych
   items:
-  - name: Linux
-    href: troubleshoot-deployment-new-vm-linux.md
-  - name: Windows
-    href: troubleshoot-deployment-new-vm-windows.md
+    - name: Linux
+      href: troubleshoot-deployment-new-vm-linux.md
+    - name: Windows
+      href: troubleshoot-deployment-new-vm-windows.md
 - name: Rozwiązywanie problemów z wdrożeniami
   items:
-  - name: Linux
-    href: troubleshoot-deploy-vm-linux.md
-  - name: Windows
-    href: troubleshoot-deploy-vm-windows.md
+    - name: Linux
+      href: troubleshoot-deploy-vm-linux.md
+    - name: Windows
+      href: troubleshoot-deploy-vm-windows.md
 - name: Nazwy urządzeń ulegają zmianie
   href: troubleshoot-device-names-problems.md
 - name: Dostęp do odzyskiwania maszyny wirtualnej
   items:
-  - name: Windows
-    items:
-    - name: PowerShell
-      href: troubleshoot-recovery-disks-windows.md
-    - name: Azure Portal
-      href: troubleshoot-recovery-disks-portal-windows.md
-  - name: Linux
-    items:
-    - name: Interfejs wiersza polecenia
-      href: troubleshoot-recovery-disks-linux.md
-    - name: Azure Portal
-      href: troubleshoot-recovery-disks-portal-linux.md
+    - name: Windows
+      items:
+        - name: PowerShell
+          href: troubleshoot-recovery-disks-windows.md
+        - name: Azure Portal
+          href: troubleshoot-recovery-disks-portal-windows.md
+    - name: Linux
+      items:
+        - name: Interfejs wiersza polecenia
+          href: troubleshoot-recovery-disks-linux.md
+        - name: Azure Portal
+          href: troubleshoot-recovery-disks-portal-linux.md
 - name: Błędy rozruchu
   href: boot-error-troubleshoot.md
   items:
-  - name: Diagnostyka rozruchu
-    href: boot-diagnostics.md
-  - name: Błędy funkcji BitLocker
-    href: troubleshoot-bitlocker-boot-error.md
-  - name: Sprawdzanie błędów systemu plików
-    href: troubleshoot-check-disk-boot-error.md
-  - name: Błędy z błękitnym ekranem
-    href: troubleshoot-common-blue-screen-error.md
-  - name: Proces uruchamiania maszyny wirtualnej zablokował się
-    href: troubleshoot-vm-boot-configure-update.md
-  - name: Niepowodzenie usługi o znaczeniu krytycznym
-    href: troubleshoot-critical-service-failed-boot-error.md
-  - name: Ponowne uruchamianie pętli
-    href: troubleshoot-reboot-loop.md
-  - name: Blokada w trakcie aktualizacji systemu Windows
-    href: troubleshoot-stuck-updating-boot-error.md
+    - name: Diagnostyka rozruchu
+      href: boot-diagnostics.md
+    - name: Błędy funkcji BitLocker
+      href: troubleshoot-bitlocker-boot-error.md
+    - name: Sprawdzanie błędów systemu plików
+      href: troubleshoot-check-disk-boot-error.md
+    - name: Błędy z błękitnym ekranem
+      href: troubleshoot-common-blue-screen-error.md
+    - name: Proces uruchamiania maszyny wirtualnej zablokował się
+      href: troubleshoot-vm-boot-configure-update.md
+    - name: Niepowodzenie usługi o znaczeniu krytycznym
+      href: troubleshoot-critical-service-failed-boot-error.md
+    - name: Ponowne uruchamianie pętli
+      href: troubleshoot-reboot-loop.md
+    - name: Blokada w trakcie aktualizacji systemu Windows
+      href: troubleshoot-stuck-updating-boot-error.md
 - name: Błędy ograniczania przepustowości
   href: troubleshooting-throttling-errors.md
 - name: Używanie wirtualizacji zagnieżdżonej
@@ -172,9 +171,3 @@ items:
   href: understand-vm-reboot.md
 - name: Narzędzia do zdalnego rozwiązywania problemów
   href: remote-tools-troubleshoot-azure-vm-issues.md
-ms.openlocfilehash: 7ba013c372eefcbf83bb141ba44fcea9b68064de
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382965"

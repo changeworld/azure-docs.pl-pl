@@ -1,174 +1,167 @@
-items:
 - name: Azure DB for MariaDB — dokumentacja
   href: index.yml
 - name: Omówienie
   items:
-  - name: Co to jest Azure DB for MariaDB?
-    href: overview.md
+    - name: Co to jest Azure DB for MariaDB?
+      href: overview.md
 - name: Przewodniki Szybki start
-  items:
-  - name: Tworzenie bazy danych — portal
-    href: quickstart-create-mariadb-server-database-using-azure-portal.md
-  - name: Tworzenie bazy danych — interfejs wiersza polecenia platformy Azure
-    href: quickstart-create-mariadb-server-database-using-azure-cli.md
-  - name: Nawiązywanie połączeń i wykonywanie zapytań
-    items:
-    - name: MySQL Workbench
-      href: connect-workbench.md
   expanded: true
+  items:
+    - name: Tworzenie bazy danych — portal
+      href: quickstart-create-mariadb-server-database-using-azure-portal.md
+    - name: Tworzenie bazy danych — interfejs wiersza polecenia platformy Azure
+      href: quickstart-create-mariadb-server-database-using-azure-cli.md
+    - name: Nawiązywanie połączeń i wykonywanie zapytań
+      items:
+        - name: MySQL Workbench
+          href: connect-workbench.md
 - name: Samouczki
   items:
-  - name: Projektowanie bazy danych
-    items:
-    - name: Azure Portal
-      href: tutorial-design-database-using-portal.md
-    - name: Interfejs wiersza polecenia platformy Azure
-      href: tutorial-design-database-cli.md
+    - name: Projektowanie bazy danych
+      items:
+        - name: Azure Portal
+          href: tutorial-design-database-using-portal.md
+        - name: Interfejs wiersza polecenia platformy Azure
+          href: tutorial-design-database-cli.md
 - name: Przykłady
   items:
-  - name: Interfejs wiersza polecenia platformy Azure
-    href: sample-scripts-azure-cli.md
+    - name: Interfejs wiersza polecenia platformy Azure
+      href: sample-scripts-azure-cli.md
 - name: Pojęcia
   items:
-  - name: Bazy danych i serwery
-    items:
-    - name: Serwery
-      href: concepts-servers.md
-    - name: Obsługiwane wersje
-      href: concepts-supported-versions.md
-    - name: Wysoka dostępność
-      href: concepts-high-availability.md
-  - name: Zasoby
-    items:
-    - name: Warstwy cenowe
-      href: concepts-pricing-tiers.md
-    - name: Limity
-      href: concepts-limits.md
-  - name: Bezpieczeństwo i dostęp do danych
-    items:
-    - name: Reguły zapory
-      href: concepts-firewall-rules.md
-    - name: Konfigurowanie protokołu SSL
-      href: concepts-ssl-connection-security.md
-    - name: VNet
-      href: concepts-data-access-security-vnet.md
-  - name: Ciągłość działalności biznesowej
-    items:
-    - name: Omówienie
-      href: concepts-business-continuity.md
-    - name: Tworzenie kopii zapasowej i przywracanie
-      href: concepts-backup.md
-  - name: Monitorowanie
-    items:
+    - name: Bazy danych i serwery
+      items:
+        - name: Serwery
+          href: concepts-servers.md
+        - name: Obsługiwane wersje
+          href: concepts-supported-versions.md
+        - name: Wysoka dostępność
+          href: concepts-high-availability.md
+    - name: Zasoby
+      items:
+        - name: Warstwy cenowe
+          href: concepts-pricing-tiers.md
+        - name: Limity
+          href: concepts-limits.md
+    - name: Bezpieczeństwo i dostęp do danych
+      items:
+        - name: Reguły zapory
+          href: concepts-firewall-rules.md
+        - name: Konfigurowanie protokołu SSL
+          href: concepts-ssl-connection-security.md
+        - name: VNet
+          href: concepts-data-access-security-vnet.md
+    - name: Ciągłość działalności biznesowej
+      items:
+        - name: Omówienie
+          href: concepts-business-continuity.md
+        - name: Tworzenie kopii zapasowej i przywracanie
+          href: concepts-backup.md
     - name: Monitorowanie
-      href: concepts-monitoring.md
-    - name: Dzienniki serwera
-      href: concepts-server-logs.md
-  - name: Opracowywanie zawartości
-    items:
-    - name: Zgodność sterowników i narzędzi
-      href: concepts-compatibility.md
-    - name: Elastyczność połączenia
-      href: concepts-connectivity.md
-  - name: Replikacja
-    items:
-    - name: Replikacja wejściowa danych
-      href: concepts-data-in-replication.md
+      items:
+        - name: Monitorowanie
+          href: concepts-monitoring.md
+        - name: Dzienniki serwera
+          href: concepts-server-logs.md
+    - name: Opracowywanie zawartości
+      items:
+        - name: Zgodność sterowników i narzędzi
+          href: concepts-compatibility.md
+        - name: Elastyczność połączenia
+          href: concepts-connectivity.md
+    - name: Replikacja
+      items:
+        - name: Replikacja wejściowa danych
+          href: concepts-data-in-replication.md
 - name: Przewodniki z instrukcjami
   items:
-  - name: Reguły zapory
-    items:
-    - name: Azure Portal
-      href: howto-manage-firewall-portal.md
-    - name: Interfejs wiersza polecenia platformy Azure
-      href: howto-manage-firewall-cli.md
-  - name: Przywracanie serwera
-    items:
-    - name: Azure Portal
-      href: howto-restore-server-portal.md
-    - name: Interfejs wiersza polecenia platformy Azure
-      href: howto-restore-server-cli.md
-  - name: Migrowanie bazy danych
-    items:
-    - name: Zrzucanie i przywracanie
-      href: howto-migrate-dump-restore.md
-  - name: Łączenie aplikacji
-    items:
-    - name: Tworzenie użytkowników
-      href: howto-create-users.md
-    - name: Parametry połączeń
-      href: howto-connection-string.md
-    - name: Konfigurowanie protokołu SSL
-      href: howto-configure-ssl.md
-  - name: Konfigurowanie parametrów serwera
-    items:
-    - name: Azure Portal
-      href: howto-server-parameters.md
-    - name: Interfejs wiersza polecenia platformy Azure
-      href: howto-configure-server-parameters-cli.md
-  - name: Dzienniki dostępu serwera
-    items:
-    - name: Azure Portal
-      href: howto-configure-server-logs-portal.md
-    - name: Interfejs wiersza polecenia platformy Azure
-      href: howto-configure-server-logs-cli.md
-  - name: Monitorowanie
-    items:
-    - name: Tworzenie alertów dotyczących metryk
-      href: howto-alert-metric.md
-  - name: Replikacja
-    items:
-    - name: Konfigurowanie replikacji wejściowej danych
-      href: howto-data-in-replication.md
-  - name: Rozwiązywanie problemów
-    items:
-    - name: Rozwiązywanie problemów z błędami połączenia
-      href: howto-troubleshoot-common-connection-issues.md
-    - name: Rozwiązywanie problemów z wydajnością zapytań
-      href: howto-troubleshoot-query-performance.md
-  - name: Virtual Network
-    items:
-    - name: Azure Portal
-      href: howto-manage-vnet-portal.md
-    - name: Interfejs wiersza polecenia platformy Azure
-      href: howto-manage-vnet-cli.md
-  - name: Ponowne uruchamianie serwera
-    items:
-    - name: Azure Portal
-      href: howto-restart-server-portal.md
-    - name: Interfejs wiersza polecenia platformy Azure
-      href: howto-restart-server-cli.md
+    - name: Reguły zapory
+      items:
+        - name: Azure Portal
+          href: howto-manage-firewall-portal.md
+        - name: Interfejs wiersza polecenia platformy Azure
+          href: howto-manage-firewall-cli.md
+    - name: Przywracanie serwera
+      items:
+        - name: Azure Portal
+          href: howto-restore-server-portal.md
+        - name: Interfejs wiersza polecenia platformy Azure
+          href: howto-restore-server-cli.md
+    - name: Migrowanie bazy danych
+      items:
+        - name: Zrzucanie i przywracanie
+          href: howto-migrate-dump-restore.md
+    - name: Łączenie aplikacji
+      items:
+        - name: Tworzenie użytkowników
+          href: howto-create-users.md
+        - name: Parametry połączeń
+          href: howto-connection-string.md
+        - name: Konfigurowanie protokołu SSL
+          href: howto-configure-ssl.md
+    - name: Konfigurowanie parametrów serwera
+      items:
+        - name: Azure Portal
+          href: howto-server-parameters.md
+        - name: Interfejs wiersza polecenia platformy Azure
+          href: howto-configure-server-parameters-cli.md
+    - name: Dzienniki dostępu serwera
+      items:
+        - name: Azure Portal
+          href: howto-configure-server-logs-portal.md
+        - name: Interfejs wiersza polecenia platformy Azure
+          href: howto-configure-server-logs-cli.md
+    - name: Monitorowanie
+      items:
+        - name: Tworzenie alertów dotyczących metryk
+          href: howto-alert-metric.md
+    - name: Replikacja
+      items:
+        - name: Konfigurowanie replikacji wejściowej danych
+          href: howto-data-in-replication.md
+    - name: Rozwiązywanie problemów
+      items:
+        - name: Rozwiązywanie problemów z błędami połączenia
+          href: howto-troubleshoot-common-connection-issues.md
+        - name: Rozwiązywanie problemów z wydajnością zapytań
+          href: howto-troubleshoot-query-performance.md
+    - name: Virtual Network
+      items:
+        - name: Azure Portal
+          href: howto-manage-vnet-portal.md
+        - name: Interfejs wiersza polecenia platformy Azure
+          href: howto-manage-vnet-cli.md
+    - name: Ponowne uruchamianie serwera
+      items:
+        - name: Azure Portal
+          href: howto-restart-server-portal.md
+        - name: Interfejs wiersza polecenia platformy Azure
+          href: howto-restart-server-cli.md
 - name: Dokumentacja
   items:
-  - name: Interfejs wiersza polecenia platformy Azure
-    href: /cli/azure/mariadb
-  - name: Interfejs API REST
-    href: /rest/api/mariadb
-  - name: Szablon usługi Resource Manager
-    href: /azure/templates/microsoft.dbformariadb/allversions
-  - name: Procedury składowane replikacji wejściowej danych
-    href: reference-data-in-stored-procedures.md
+    - name: Interfejs wiersza polecenia platformy Azure
+      href: /cli/azure/mariadb
+    - name: Interfejs API REST
+      href: /rest/api/mariadb
+    - name: Szablon usługi Resource Manager
+      href: /azure/templates/microsoft.dbformariadb/allversions
+    - name: Procedury składowane replikacji wejściowej danych
+      href: reference-data-in-stored-procedures.md
 - name: Zasoby
   items:
-  - name: Szablony wdrażania
-    href: https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbformariadb
-  - name: Harmonogram działania dla platformy Azure
-    href: https://azure.microsoft.com/roadmap/?category=databases
-  - name: Cennik
-    href: https://azure.microsoft.com/pricing/details/mariadb/
-  - name: Forum MSDN
-    href: https://social.msdn.microsoft.com/forums/en-US/home?forum=AzureDatabaseforMariaDB
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-database-mariadb
-  - name: Prośba o funkcję
-    href: https://feedback.azure.com/forums/915439-azure-database-for-mariadb
-  - name: Dostępność w danym regionie
-    href: https://azure.microsoft.com/regions/services/
-  - name: Opcje pomocy technicznej
-    href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: 1ad8ddc0cf189189b9457dabe6c2c2d665c838c3
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621129"
+    - name: Szablony wdrażania
+      href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbformariadb'
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/roadmap/?category=databases'
+    - name: Cennik
+      href: 'https://azure.microsoft.com/pricing/details/mariadb/'
+    - name: Forum MSDN
+      href: 'https://social.msdn.microsoft.com/forums/en-US/home?forum=AzureDatabaseforMariaDB'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-database-mariadb'
+    - name: Prośba o funkcję
+      href: 'https://feedback.azure.com/forums/915439-azure-database-for-mariadb'
+    - name: Dostępność w danym regionie
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Opcje pomocy technicznej
+      href: 'https://azure.microsoft.com/support/options/'

@@ -1,80 +1,73 @@
-items:
 - name: Azure Blockchain Workbench (publiczna wersja zapoznawcza)
   href: index.yml
 - name: Omówienie
-  items:
-  - name: Informacje o aplikacji Azure Blockchain Workbench
-    href: overview.md
   expanded: true
+  items:
+    - name: Informacje o aplikacji Azure Blockchain Workbench
+      href: overview.md
 - name: Samouczki
-  items:
-  - name: Tworzenie aplikacji łańcucha bloków
-    href: create-app.md
-  - name: Korzystanie z aplikacji łańcucha bloków
-    href: use.md
   expanded: true
+  items:
+    - name: Tworzenie aplikacji łańcucha bloków
+      href: create-app.md
+    - name: Korzystanie z aplikacji łańcucha bloków
+      href: use.md
 - name: Pojęcia
   items:
-  - name: Architektura
-    href: architecture.md
-  - name: Wzorce integracji
-    href: integration-patterns.md
+    - name: Architektura
+      href: architecture.md
+    - name: Wzorce integracji
+      href: integration-patterns.md
 - name: Przewodniki z instrukcjami
-  items:
-  - name: Wdrażanie aplikacji Workbench
-    href: deploy.md
-  - name: Zarządzaj użytkownikami aplikacji Workbench
-    href: manage-users.md
-  - name: Obsługa wersji aplikacji
-    href: version-app.md
-  - name: Korzystanie z interfejsu API środowiska roboczego
-    href: use-api.md
-  - name: Rozwiązywanie problemów z aplikacjami
-    href: troubleshooting.md
-  - name: Korzystanie z danych środowiska roboczego
-    items:
-    - name: Konfigurowanie zapory bazy danych
-      href: database-firewall.md
-    - name: Uzyskiwanie szczegółów bazy danych
-      href: getdb-details.md
-    - name: Korzystanie z danych w programie Excel
-      href: data-excel.md
-    - name: Korzystanie z danych w usłudze Power BI
-      href: data-powerbi.md
-    - name: Korzystanie z danych w programie SQL Management Studio
-      href: data-sql-management-studio.md
   expanded: true
+  items:
+    - name: Wdrażanie aplikacji Workbench
+      href: deploy.md
+    - name: Zarządzaj użytkownikami aplikacji Workbench
+      href: manage-users.md
+    - name: Obsługa wersji aplikacji
+      href: version-app.md
+    - name: Korzystanie z interfejsu API środowiska roboczego
+      href: use-api.md
+    - name: Rozwiązywanie problemów z aplikacjami
+      href: troubleshooting.md
+    - name: Korzystanie z danych środowiska roboczego
+      items:
+        - name: Konfigurowanie zapory bazy danych
+          href: database-firewall.md
+        - name: Uzyskiwanie szczegółów bazy danych
+          href: getdb-details.md
+        - name: Korzystanie z danych w programie Excel
+          href: data-excel.md
+        - name: Korzystanie z danych w usłudze Power BI
+          href: data-powerbi.md
+        - name: Korzystanie z danych w programie SQL Management Studio
+          href: data-sql-management-studio.md
 - name: Dokumentacja
   items:
-  - name: Konfigurowanie
-    href: configuration.md
-  - name: Widoki bazy danych
-    href: database-views.md
-  - name: Interfejs API do obsługi komunikatów
-    href: messages-overview.md
-  - name: Interfejs API REST
-    href: https://docs.microsoft.com/rest/api/azure-blockchain-workbench
+    - name: Konfigurowanie
+      href: configuration.md
+    - name: Widoki bazy danych
+      href: database-views.md
+    - name: Interfejs API do obsługi komunikatów
+      href: messages-overview.md
+    - name: Interfejs API REST
+      href: 'https://docs.microsoft.com/rest/api/azure-blockchain-workbench'
 - name: Zasoby
   items:
-  - name: Blog
-    href: https://azure.microsoft.com/blog/topics/blockchain/
-  - name: Przykłady kodu
-    href: https://github.com/Azure-Samples/blockchain
-  - name: Społeczność
-    href: https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain
-  - name: Forum
-    href: https://aka.ms/workbenchforum
-  - name: Opinia dotycząca produktu
-    href: https://aka.ms/blockchainuservoice
+    - name: Blog
+      href: 'https://azure.microsoft.com/blog/topics/blockchain/'
+    - name: Przykłady kodu
+      href: 'https://github.com/Azure-Samples/blockchain'
+    - name: Społeczność
+      href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
+    - name: Forum
+      href: 'https://aka.ms/workbenchforum'
+    - name: Opinia dotycząca produktu
+      href: 'https://aka.ms/blockchainuservoice'
 - name: Szablony rozwiązań
   items:
-  - name: Konsorcjum algorytmu Ethereum Proof-of-Authority
-    href: ../templates/ethereum-poa-deployment.md
-  - name: Konsorcjum sieci Hyperledger Fabric
-    href: ../templates/hyperledger-fabric-consortium-blockchain.md
-ms.openlocfilehash: b0426cc5dfbac62657ad172f5fa73586e6214601
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58001930"
+    - name: Konsorcjum algorytmu Ethereum Proof-of-Authority
+      href: ../templates/ethereum-poa-deployment.md
+    - name: Konsorcjum sieci Hyperledger Fabric
+      href: ../templates/hyperledger-fabric-consortium-blockchain.md

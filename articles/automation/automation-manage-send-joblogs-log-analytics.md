@@ -97,9 +97,9 @@ Diagnostyka usługi Azure Automation tworzy dwa typy rekordów w dziennikach w u
 | Tenant_g | Identyfikator GUID, który identyfikuje dzierżawy dla obiektu wywołującego. |
 | JobId_g |Identyfikator GUID, który jest identyfikatorem zadania elementu Runbook. |
 | ResultType |Stan zadania elementu Runbook. Możliwe wartości:<br>-Nowych<br>— Uruchomione<br>— Zatrzymane<br>— Wstrzymane<br>— Nie powiodło się<br>-Ukończone |
-| Kategoria | Klasyfikacja typu danych. W przypadku usługi Automation wartością jest JobLogs. |
+| Category | Klasyfikacja typu danych. W przypadku usługi Automation wartością jest JobLogs. |
 | OperationName | Określa typ operacji wykonywanej na platformie Azure. W przypadku usługi Automation wartością jest zadanie. |
-| Zasób | Nazwa konta usługi Automation |
+| Resource | Nazwa konta usługi Automation |
 | SourceSystem | Jak dane zbierane dzienniki usługi Azure Monitor. Zawsze *Azure* dla diagnostyki platformy Azure. |
 | ResultDescription |Opisuje stan wyniku zadania elementu Runbook. Możliwe wartości:<br>— Zadanie jest uruchomione<br>— Zadanie nie powiodło się<br>— Zadanie zostało ukończone |
 | CorrelationId |Identyfikator GUID, który jest identyfikatorem korelacji zadania elementu Runbook. |
@@ -120,9 +120,9 @@ Diagnostyka usługi Azure Automation tworzy dwa typy rekordów w dziennikach w u
 | Tenant_g | Identyfikator GUID, który identyfikuje dzierżawy dla obiektu wywołującego. |
 | JobId_g |Identyfikator GUID, który jest identyfikatorem zadania elementu Runbook. |
 | ResultType |Stan zadania elementu Runbook. Możliwe wartości:<br>— W toku |
-| Kategoria | Klasyfikacja typu danych. W przypadku usługi Automation wartością jest JobStreams. |
+| Category | Klasyfikacja typu danych. W przypadku usługi Automation wartością jest JobStreams. |
 | OperationName | Określa typ operacji wykonywanej na platformie Azure. W przypadku usługi Automation wartością jest zadanie. |
-| Zasób | Nazwa konta usługi Automation |
+| Resource | Nazwa konta usługi Automation |
 | SourceSystem | Jak dane zbierane dzienniki usługi Azure Monitor. Zawsze *Azure* dla diagnostyki platformy Azure. |
 | ResultDescription |Obejmuje strumień wyjściowy z elementu Runbook. |
 | CorrelationId |Identyfikator GUID, który jest identyfikatorem korelacji zadania elementu Runbook. |

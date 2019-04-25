@@ -1,15 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 0a1c495362ef38723c61eace25ebb13ec9ed3a6a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57883648"
 documentType: LandingData
 title: Dokumentacja usługi Azure Databricks
 metadata:
   title: Dokumentacja usługi Azure Databricks
-  description: Dowiedz się, jak używać usługi Azure Databricks, korzystając z przewodnika Szybki start i innych podanych tutaj linków. Usługa Azure Databricks to platforma analizy oparta na usłudze Apache Spark zoptymalizowana pod kątem platformy usług w chmurze Microsoft Azure.
+  description: 'Dowiedz się, jak używać usługi Azure Databricks, korzystając z przewodnika Szybki start i innych podanych tutaj linków. Usługa Azure Databricks to platforma analizy oparta na usłudze Apache Spark zoptymalizowana pod kątem platformy usług w chmurze Microsoft Azure.'
   services: azure-databricks
   author: mamccrea
   ms.service: azure-databricks
@@ -17,48 +11,48 @@ metadata:
   ms.date: 03/19/2018
   ms.author: mamccrea
 abstract:
-  description: Dowiedz się, jak używać usługi Azure Databricks (platformy analiz opartej na usłudze Apache Spark) z konfiguracją jednym kliknięciem, usprawnionymi przepływami pracy i interakcyjnym obszarem roboczym, który umożliwia współpracę między analitykami danych, inżynierami danych i analitykami biznesowymi. W przewodnikach Szybki start i samouczkach pokazano, jak rozpocząć pracę z usługą Azure Databricks i przeprowadzić integrację z innymi usługami platformy Azure.
+  description: 'Dowiedz się, jak używać usługi Azure Databricks (platformy analiz opartej na usłudze Apache Spark) z konfiguracją jednym kliknięciem, usprawnionymi przepływami pracy i interakcyjnym obszarem roboczym, który umożliwia współpracę między analitykami danych, inżynierami danych i analitykami biznesowymi. W przewodnikach Szybki start i samouczkach pokazano, jak rozpocząć pracę z usługą Azure Databricks i przeprowadzić integrację z innymi usługami platformy Azure.'
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
       src: media/index/video.png
       width: 250
-    title: Wprowadzenie do usługi Azure Databricks (3:38)
-    href: https://azure.microsoft.com/resources/videos/connect-2017-introduction-to-azure-databricks/
+    title: 'Wprowadzenie do usługi Azure Databricks (3:38)'
+    href: 'https://azure.microsoft.com/resources/videos/connect-2017-introduction-to-azure-databricks/'
     width: 250
 sections:
-- title: 5-minutowe przewodniki Szybki start
-  items:
-  - type: paragraph
-    text: 'Dowiedz się, jak utworzyć obszar roboczy usługi Azure Databricks, klaster Spark, a następnie uruchamiać zadania, wykorzystując:'
-  - type: list
-    style: icon48
+  - title: 5-minutowe przewodniki Szybki start
     items:
-    - image:
-        src: /azure/azure-databricks/media/index/portal.svg
-      text: Azure Portal
-      href: /azure/azure-databricks/quickstart-create-databricks-workspace-portal
-    - image:
-        src: /azure/azure-databricks/media/index/logo_azure_resource_manager.svg
-      text: Szablon usługi Resource Manager
-      href: /azure/azure-databricks/quickstart-create-databricks-workspace-resource-manager-template
-- title: Samouczki krok po kroku
-  items:
-  - type: paragraph
-    text: 'Dowiedz się, jak pracować z usługą Azure Databricks:'
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: 'Dowiedz się, jak utworzyć obszar roboczy usługi Azure Databricks, klaster Spark, a następnie uruchamiać zadania, wykorzystując:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/azure-databricks/media/index/portal.svg
+            text: Azure Portal
+            href: /azure/azure-databricks/quickstart-create-databricks-workspace-portal
+          - image:
+              src: /azure/azure-databricks/media/index/logo_azure_resource_manager.svg
+            text: Szablon usługi Resource Manager
+            href: /azure/azure-databricks/quickstart-create-databricks-workspace-resource-manager-template
+  - title: Samouczki krok po kroku
     items:
-    - html: <a href="/azure/azure-databricks/databricks-extract-load-sql-data-warehouse">Wyodrębnianie, przekształcanie i ładowanie danych</a>
-    - html: <a href="/azure/azure-databricks/databricks-stream-from-eventhubs">Przesyłanie strumieniowe danych z usługi Event Hubs</a>
-    - html: <a href="/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services">Analiza tonacji za pomocą usługi Cognitive Services</a>
-    - html: <a href="https://docs.azuredatabricks.net/spark/latest/structured-streaming/kafka.html" target="_blank">Przesyłanie strumieniowe danych z usługi HDInsight Kafka</a>
-- title: Dokumentacja
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: 'Dowiedz się, jak pracować z usługą Azure Databricks:'
+      - type: list
+        style: ordered
+        items:
+          - html: '<a href="/azure/azure-databricks/databricks-extract-load-sql-data-warehouse">Wyodrębnianie, przekształcanie i ładowanie danych</a>'
+          - html: <a href="/azure/azure-databricks/databricks-stream-from-eventhubs">Przesyłanie strumieniowe danych z usługi Event Hubs</a>
+          - html: <a href="/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services">Analiza tonacji za pomocą usługi Cognitive Services</a>
+          - html: '<a href="https://docs.azuredatabricks.net/spark/latest/structured-streaming/kafka.html" target="_blank">Przesyłanie strumieniowe danych z usługi HDInsight Kafka</a>'
+  - title: Dokumentacja
     items:
-    - title: REST
-      html: <p><a href="/rest/api/databricks">Interfejs API REST</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: REST
+            html: <p><a href="/rest/api/databricks">Interfejs API REST</a></p>

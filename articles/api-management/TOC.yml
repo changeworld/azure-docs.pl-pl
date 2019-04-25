@@ -1,250 +1,245 @@
-items:
 - name: Dokumentacja usługi Azure API Management
   href: index.yml
 - name: Omówienie
   items:
-  - name: Informacje o usłudze API Management
-    href: api-management-key-concepts.md
-  - name: Dostępność funkcji usługi API Management
-    href: api-management-features.md
+    - name: Informacje o usłudze API Management
+      href: api-management-key-concepts.md
+    - name: Dostępność funkcji usługi API Management
+      href: api-management-features.md
 - name: Przewodniki Szybki start
-  items:
-  - name: Tworzenie wystąpienia — portal
-    href: get-started-create-service-instance.md
-  - name: Tworzenie wystąpienia — PowerShell
-    href: powershell-create-service-instance.md
   expanded: true
+  items:
+    - name: Tworzenie wystąpienia — portal
+      href: get-started-create-service-instance.md
+    - name: Tworzenie wystąpienia — PowerShell
+      href: powershell-create-service-instance.md
 - name: Samouczki
   items:
-  - name: 1 — Importowanie pierwszego interfejsu API
-    href: import-and-publish.md
-  - name: 2 — Tworzenie i publikowanie produktu
-    href: api-management-howto-add-products.md
-  - name: 3 — Pozorowanie odpowiedzi interfejsu API
-    href: mock-api-responses.md
-  - name: 4 — Ochrona interfejsu API
-    href: transform-api.md
-  - name: 5 — Monitorowanie opublikowanych interfejsów API
-    href: api-management-howto-use-azure-monitor.md
-  - name: 6 — Debugowanie interfejsów API
-    href: api-management-howto-api-inspector.md
-  - name: 7 — Dodawanie poprawek
-    href: api-management-get-started-revise-api.md
-  - name: 8 — Dodawanie wielu wersji
-    href: api-management-get-started-publish-versions.md
-  - name: 9 — Dostosowywanie portalu dla deweloperów
-    href: api-management-customize-styles.md
+    - name: 1 — Importowanie pierwszego interfejsu API
+      href: import-and-publish.md
+    - name: 2 — Tworzenie i publikowanie produktu
+      href: api-management-howto-add-products.md
+    - name: 3 — Pozorowanie odpowiedzi interfejsu API
+      href: mock-api-responses.md
+    - name: 4 — Ochrona interfejsu API
+      href: transform-api.md
+    - name: 5 — Monitorowanie opublikowanych interfejsów API
+      href: api-management-howto-use-azure-monitor.md
+    - name: 6 — Debugowanie interfejsów API
+      href: api-management-howto-api-inspector.md
+    - name: 7 — Dodawanie poprawek
+      href: api-management-get-started-revise-api.md
+    - name: 8 — Dodawanie wielu wersji
+      href: api-management-get-started-publish-versions.md
+    - name: 9 — Dostosowywanie portalu dla deweloperów
+      href: api-management-customize-styles.md
 - name: Przykłady
   items:
-  - name: Zasady
-    href: policy-samples.md
-  - name: Azure PowerShell
-    href: powershell-samples.md
+    - name: Zasady
+      href: policy-samples.md
+    - name: Azure PowerShell
+      href: powershell-samples.md
 - name: Pojęcia
   items:
-  - name: Terminologia
-    href: api-management-terminology.md
-  - name: Zasady
-    items:
-    - name: Omówienie
-      href: api-management-howto-policies.md
-    - name: Informacje ogólne o zasadach — indeks
-      href: api-management-policies.md
-  - name: Subskrypcje
-    href: api-management-subscriptions.md
-  - name: Zarządzanie przy użyciu automatyzacji
-    href: automation-manage-api-management.md
-  - name: Obsługa błędów
-    href: api-management-error-handling-policies.md
-  - name: Ograniczenia importu interfejsu API
-    href: api-management-api-import-restrictions.md
+    - name: Terminologia
+      href: api-management-terminology.md
+    - name: Zasady
+      items:
+        - name: Omówienie
+          href: api-management-howto-policies.md
+        - name: Informacje ogólne o zasadach — indeks
+          href: api-management-policies.md
+    - name: Subskrypcje
+      href: api-management-subscriptions.md
+    - name: Zarządzanie przy użyciu automatyzacji
+      href: automation-manage-api-management.md
+    - name: Obsługa błędów
+      href: api-management-error-handling-policies.md
+    - name: Ograniczenia importu interfejsu API
+      href: api-management-api-import-restrictions.md
+    - name: Wspólne atrybuty zabezpieczeń platformy Azure
+      href: api-management-security-attributes.md
 - name: Przewodniki z instrukcjami
   items:
-  - name: Definiowanie interfejsów API
-    items:
-    - name: Ręczne dodawanie interfejsu API
-      href: add-api-manually.md
-    - name: Importowanie specyfikacji interfejsu OpenAPI
-      href: import-api-from-oas.md
-    - name: Importowanie interfejsu API SOAP
-      href: import-soap-api.md
-    - name: Importowanie interfejsu API SOAP i konwertowanie go na interfejs API REST
-      href: restify-soap-api.md
-    - name: Importowanie aplikacji interfejsu API
-      href: import-api-app-as-api.md
-    - name: Importowanie aplikacji funkcji
-      href: import-function-app-as-api.md
-    - name: Importowanie aplikacji logiki
-      href: import-logic-app-as-api.md
-    - name: Importowanie aplikacji usługi Service Fabric
-      href: ../service-fabric/service-fabric-tutorial-deploy-api-management.md
-    - name: Edytowanie interfejsu API
-      href: edit-api.md
-  - name: Aprowizowanie i skalowanie
-    items:
-    - name: Metryka pojemności
-      href: api-management-capacity.md
-    - name: Uaktualnianie i skalowanie
-      href: upgrade-and-scale.md
-    - name: Konfigurowanie automatycznego skalowania
-      href: api-management-howto-autoscale.md
-    - name: Konfigurowanie domeny niestandardowej
-      href: configure-custom-domain.md
-  - name: Pamięć podręczna
-    items:
-    - name: Dodawanie pamięci podręcznej w celu podniesienia wydajności
-      href: api-management-howto-cache.md
-    - name: Używanie zewnętrznej pamięci podręcznej
-      href: api-management-howto-cache-external.md
-  - name: Zabezpieczanie interfejsów API
-    items:
-    - name: Tworzenie subskrypcji
-      href: api-management-howto-create-subscriptions.md
-    - name: Zabezpieczanie interfejsów API przy użyciu uwierzytelniania certyfikatów klientów
-      href: api-management-howto-mutual-certificates-for-clients.md
-  - name: Zabezpieczanie zaplecza
-    items:
-    - name: Ochrona interfejsu API za pomocą usługi Azure AD
-      href: api-management-howto-protect-backend-with-aad.md
-    - name: Łączenie z siecią wirtualną
-      href: api-management-using-with-vnet.md
-    - name: Łączenie z wewnętrzną siecią wirtualną
-      href: api-management-using-with-internal-vnet.md
-    - name: Integracja usługi Application Gateway w wewnętrznej sieci wirtualnej
-      href: api-management-howto-integrate-internal-vnet-appgateway.md
-    - name: Wzajemne uwierzytelnianie certyfikatów
-      href: api-management-howto-mutual-certificates.md
-    - name: Zarządzanie certyfikatami urzędu certyfikacji
-      href: api-management-howto-ca-certificates.md
-    - name: Zarządzanie protokołami i szyfrowaniem
-      href: api-management-howto-manage-protocols-ciphers.md
-  - name: Dostosowywanie środowiska deweloperów
-    items:
-    - name: Modyfikowanie zawartości i układu strony
-      href: api-management-modify-content-layout.md
-    - name: Dostosowywanie stron systemowych za pomocą szablonów
-      href: api-management-developer-portal-templates.md
-    - name: Uwierzytelnianie przy użyciu usługi Azure AD
-      href: api-management-howto-aad.md
-    - name: Uwierzytelnianie przy użyciu usługi Azure AD B2C
-      href: api-management-howto-aad-b2c.md
-    - name: Uwierzytelnianie delegowane
-      href: api-management-howto-setup-delegation.md
-    - name: Powiadomienia e-mail i szablony wiadomości e-mail
-      href: api-management-howto-configure-notifications.md
-    - name: Włączanie obsługi uwierzytelniania OAuth konsoli
-      href: api-management-howto-oauth2.md
-  - name: Definiowanie zasad
-    items:
-    - name: Ustawianie lub edytowanie zasad
-      href: set-edit-policies.md
-    - name: Wyrażenia zasad
-      href: api-management-policy-expressions.md
-    - name: Buforowanie niestandardowe
-      href: api-management-sample-cache-by-key.md
-    - name: Zaawansowane monitorowanie
-      href: api-management-log-to-eventhub-sample.md
-    - name: Zaawansowane ograniczanie żądań
-      href: api-management-sample-flexible-throttling.md
-    - name: Korzystanie z usług zewnętrznych
-      href: api-management-sample-send-request.md
-    - name: Zarządzanie kluczami tajnymi za pomocą właściwości
-      href: api-management-howto-properties.md
-    - name: Zasady ograniczeń dostępu
-      href: api-management-access-restriction-policies.md
-    - name: Zasady zaawansowane
-      href: api-management-advanced-policies.md
-    - name: Zasady uwierzytelniania
-      href: api-management-authentication-policies.md
-    - name: Caching policies
-      href: api-management-caching-policies.md
-    - name: Zasady międzydomenowe
-      href: api-management-cross-domain-policies.md
-    - name: Zasady transformacji
-      href: api-management-transformation-policies.md
-  - name: Dokumentacja dotycząca szablonów
-    items:
-    - name: Szablony
-      href: api-management-developer-portal-templates-reference.md
-    - name: Interfejsy API
-      href: api-management-api-templates.md
-    - name: Produkty
-      href: api-management-product-templates.md
-    - name: Aplikacje
-      href: api-management-application-templates.md
-    - name: Problemy
-      href: api-management-issue-templates.md
-    - name: Profil użytkownika
-      href: api-management-user-profile-templates.md
-    - name: Strony
-      href: api-management-page-templates.md
-    - name: Zasoby szablonu
-      href: api-management-template-resources.md
-  - name: Dokumentacja dotycząca modeli obiektów
-    href: api-management-template-data-model-reference.md
-  - name: Kontrolki strony
-    href: api-management-page-controls.md
-  - name: Zarządzanie w produkcji
-    items:
-    - name: Zarządzanie grupami
-      href: api-management-howto-create-groups.md
-    - name: Wdrażanie w wielu regionach platformy Azure
-      href: api-management-howto-deploy-multi-region.md
-    - name: Rejestrowanie zdarzeń w usłudze Azure Event Hubs
-      href: api-management-howto-log-event-hubs.md
-    - name: Rejestrowanie żądań za pomocą usługi Azure Application Insights
-      href: api-management-howto-app-insights.md
-    - name: Konfigurowanie odzyskiwania po awarii przy użyciu funkcji wykonywania/przywracania kopii zapasowej
-      href: api-management-howto-disaster-recovery-backup-restore.md
-    - name: Zarządzanie kontami użytkowników
-      href: api-management-howto-create-or-invite-developers.md
-    - name: Konfigurowanie przy użyciu narzędzia Git
-      href: api-management-configuration-repository-git.md
-    - name: Korzystanie z kontroli dostępu opartej na rolach
-      href: api-management-role-based-access-control.md
-    - name: Korzystanie z tożsamości zarządzanych dla zasobów platformy Azure
-      href: api-management-howto-use-managed-service-identity.md
-    - name: Integracja z usługą Service Fabric
+    - name: Definiowanie interfejsów API
       items:
-      - name: Omówienie
-        href: ../service-fabric/service-fabric-api-management-overview.md
-      - name: Samouczek
-        href: ../service-fabric/service-fabric-tutorial-deploy-api-management.md
+        - name: Ręczne dodawanie interfejsu API
+          href: add-api-manually.md
+        - name: Importowanie specyfikacji interfejsu OpenAPI
+          href: import-api-from-oas.md
+        - name: Importowanie interfejsu API SOAP
+          href: import-soap-api.md
+        - name: Importowanie interfejsu API SOAP i konwertowanie go na interfejs API REST
+          href: restify-soap-api.md
+        - name: Importowanie aplikacji interfejsu API
+          href: import-api-app-as-api.md
+        - name: Importowanie aplikacji funkcji
+          href: import-function-app-as-api.md
+        - name: Importowanie aplikacji logiki
+          href: import-logic-app-as-api.md
+        - name: Importowanie aplikacji usługi Service Fabric
+          href: ../service-fabric/service-fabric-tutorial-deploy-api-management.md
+        - name: Edytowanie interfejsu API
+          href: edit-api.md
+    - name: Aprowizowanie i skalowanie
+      items:
+        - name: Metryka pojemności
+          href: api-management-capacity.md
+        - name: Uaktualnianie i skalowanie
+          href: upgrade-and-scale.md
+        - name: Konfigurowanie automatycznego skalowania
+          href: api-management-howto-autoscale.md
+        - name: Konfigurowanie domeny niestandardowej
+          href: configure-custom-domain.md
+    - name: Pamięć podręczna
+      items:
+        - name: Dodawanie pamięci podręcznej w celu podniesienia wydajności
+          href: api-management-howto-cache.md
+        - name: Używanie zewnętrznej pamięci podręcznej
+          href: api-management-howto-cache-external.md
+    - name: Zabezpieczanie interfejsów API
+      items:
+        - name: Tworzenie subskrypcji
+          href: api-management-howto-create-subscriptions.md
+        - name: Zabezpieczanie interfejsów API przy użyciu uwierzytelniania certyfikatów klientów
+          href: api-management-howto-mutual-certificates-for-clients.md
+    - name: Zabezpieczanie zaplecza
+      items:
+        - name: Ochrona interfejsu API za pomocą usługi Azure AD
+          href: api-management-howto-protect-backend-with-aad.md
+        - name: Łączenie z siecią wirtualną
+          href: api-management-using-with-vnet.md
+        - name: Łączenie z wewnętrzną siecią wirtualną
+          href: api-management-using-with-internal-vnet.md
+        - name: Integracja usługi Application Gateway w wewnętrznej sieci wirtualnej
+          href: api-management-howto-integrate-internal-vnet-appgateway.md
+        - name: Wzajemne uwierzytelnianie certyfikatów
+          href: api-management-howto-mutual-certificates.md
+        - name: Zarządzanie certyfikatami urzędu certyfikacji
+          href: api-management-howto-ca-certificates.md
+        - name: Zarządzanie protokołami i szyfrowaniem
+          href: api-management-howto-manage-protocols-ciphers.md
+    - name: Dostosowywanie środowiska deweloperów
+      items:
+        - name: Modyfikowanie zawartości i układu strony
+          href: api-management-modify-content-layout.md
+        - name: Dostosowywanie stron systemowych za pomocą szablonów
+          href: api-management-developer-portal-templates.md
+        - name: Uwierzytelnianie przy użyciu usługi Azure AD
+          href: api-management-howto-aad.md
+        - name: Uwierzytelnianie przy użyciu usługi Azure AD B2C
+          href: api-management-howto-aad-b2c.md
+        - name: Uwierzytelnianie delegowane
+          href: api-management-howto-setup-delegation.md
+        - name: Powiadomienia e-mail i szablony wiadomości e-mail
+          href: api-management-howto-configure-notifications.md
+        - name: Włączanie obsługi uwierzytelniania OAuth konsoli
+          href: api-management-howto-oauth2.md
+    - name: Definiowanie zasad
+      items:
+        - name: Ustawianie lub edytowanie zasad
+          href: set-edit-policies.md
+        - name: Wyrażenia zasad
+          href: api-management-policy-expressions.md
+        - name: Buforowanie niestandardowe
+          href: api-management-sample-cache-by-key.md
+        - name: Zaawansowane monitorowanie
+          href: api-management-log-to-eventhub-sample.md
+        - name: Zaawansowane ograniczanie żądań
+          href: api-management-sample-flexible-throttling.md
+        - name: Korzystanie z usług zewnętrznych
+          href: api-management-sample-send-request.md
+        - name: Zarządzanie kluczami tajnymi za pomocą właściwości
+          href: api-management-howto-properties.md
+        - name: Zasady ograniczeń dostępu
+          href: api-management-access-restriction-policies.md
+        - name: Zasady zaawansowane
+          href: api-management-advanced-policies.md
+        - name: Zasady uwierzytelniania
+          href: api-management-authentication-policies.md
+        - name: Caching policies
+          href: api-management-caching-policies.md
+        - name: Zasady międzydomenowe
+          href: api-management-cross-domain-policies.md
+        - name: Zasady transformacji
+          href: api-management-transformation-policies.md
+    - name: Dokumentacja dotycząca szablonów
+      items:
+        - name: Szablony
+          href: api-management-developer-portal-templates-reference.md
+        - name: Interfejsy API
+          href: api-management-api-templates.md
+        - name: Produkty
+          href: api-management-product-templates.md
+        - name: Aplikacje
+          href: api-management-application-templates.md
+        - name: Problemy
+          href: api-management-issue-templates.md
+        - name: Profil użytkownika
+          href: api-management-user-profile-templates.md
+        - name: Strony
+          href: api-management-page-templates.md
+        - name: Zasoby szablonu
+          href: api-management-template-resources.md
+    - name: Dokumentacja dotycząca modeli obiektów
+      href: api-management-template-data-model-reference.md
+    - name: Kontrolki strony
+      href: api-management-page-controls.md
+    - name: Zarządzanie w produkcji
+      items:
+        - name: Zarządzanie grupami
+          href: api-management-howto-create-groups.md
+        - name: Wdrażanie w wielu regionach platformy Azure
+          href: api-management-howto-deploy-multi-region.md
+        - name: Rejestrowanie zdarzeń w usłudze Azure Event Hubs
+          href: api-management-howto-log-event-hubs.md
+        - name: Rejestrowanie żądań za pomocą usługi Azure Application Insights
+          href: api-management-howto-app-insights.md
+        - name: Konfigurowanie odzyskiwania po awarii przy użyciu funkcji wykonywania/przywracania kopii zapasowej
+          href: api-management-howto-disaster-recovery-backup-restore.md
+        - name: Zarządzanie kontami użytkowników
+          href: api-management-howto-create-or-invite-developers.md
+        - name: Konfigurowanie przy użyciu narzędzia Git
+          href: api-management-configuration-repository-git.md
+        - name: Korzystanie z kontroli dostępu opartej na rolach
+          href: api-management-role-based-access-control.md
+        - name: Korzystanie z tożsamości zarządzanych dla zasobów platformy Azure
+          href: api-management-howto-use-managed-service-identity.md
+        - name: Integracja z usługą Service Fabric
+          items:
+            - name: Omówienie
+              href: ../service-fabric/service-fabric-api-management-overview.md
+            - name: Samouczek
+              href: ../service-fabric/service-fabric-tutorial-deploy-api-management.md
 - name: Dokumentacja
   items:
-  - name: Azure PowerShell
-    href: /powershell/azure/overview
-  - name: REST
-    href: /rest/api/apimanagement/
-  - name: REST (oryginalny)
-    href: /rest/api/apimanagement/ApiManagementREST/api-management-REST
-  - name: Szablon usługi Resource Manager
-    href: /azure/templates/microsoft.apimanagement/allversions
+    - name: Azure PowerShell
+      href: /powershell/azure/overview
+    - name: REST
+      href: /rest/api/apimanagement/
+    - name: REST (oryginalny)
+      href: /rest/api/apimanagement/ApiManagementREST/api-management-REST
+    - name: Szablon usługi Resource Manager
+      href: /azure/templates/microsoft.apimanagement/allversions
 - name: Zasoby
   items:
-  - name: Często zadawane pytania
-    href: api-management-faq.md
-  - name: Cennik
-    href: https://aka.ms/apimpricing
-  - name: Dostępność regionalna
-    href: https://azure.microsoft.com/regions/services/
-  - name: Harmonogram działania
-    href: https://aka.ms/apimroadmap
-  - name: Żądania funkcji
-    href: https://aka.ms/apimwish
-  - name: Filmy wideo
-    href: https://azure.microsoft.com/documentation/videos/index/?services=api-management
-  - name: Forum MSDN
-    href: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureapimgmt
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-api-management
-  - name: Wytyczne dotyczące projektowania interfejsów API
-    href: https://docs.microsoft.com/azure/architecture/best-practices/api-design?toc=%2Fazure%2Fapi-management%2Ftoc.json
-  - name: Wytyczne dotyczące implementowania interfejsów API
-    href: https://docs.microsoft.com/azure/architecture/best-practices/api-implementation?toc=%2Fazure%2Fapi-management%2Ftoc.json
-ms.openlocfilehash: 637671ae4e85a7f3ed4f71af5caf580660c2b6ce
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58260217"
+    - name: Często zadawane pytania
+      href: api-management-faq.md
+    - name: Cennik
+      href: 'https://aka.ms/apimpricing'
+    - name: Dostępność regionalna
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Harmonogram działania
+      href: 'https://aka.ms/apimroadmap'
+    - name: Żądania funkcji
+      href: 'https://aka.ms/apimwish'
+    - name: Filmy wideo
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=api-management'
+    - name: Forum MSDN
+      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureapimgmt'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-api-management'
+    - name: Wytyczne dotyczące projektowania interfejsów API
+      href: 'https://docs.microsoft.com/azure/architecture/best-practices/api-design?toc=%2Fazure%2Fapi-management%2Ftoc.json'
+    - name: Wytyczne dotyczące implementowania interfejsów API
+      href: 'https://docs.microsoft.com/azure/architecture/best-practices/api-implementation?toc=%2Fazure%2Fapi-management%2Ftoc.json'

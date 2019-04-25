@@ -6,14 +6,14 @@ metadata:
   title: 'Dokumentacja usługi Network Watcher — samouczki, przewodniki Szybki start i dokumentacja interfejsu API | Microsoft Docs'
   meta.description: 'Learn how to use Azure Network Watcher. Quickstarts, tutorials, and more, show you how to gain insight into your Azure Virtual Network with tools like packet capture and NSG flows logs, to diagnose problems with traffic filtering and routing, and to monitor connections.'
   services: network-watcher
-  author: jdial
-  manager: jeconnoc
+  author: KumudD
+  manager: twolley
   ms.service: network-watcher
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 04/24/2018
-  ms.author: jdial
+  ms.author: kumud
 abstract:
   description: 'Dowiedz się, jak korzystać z usługi Azure Network Watcher. Przewodniki Szybki start, samouczki i inne zasoby przedstawiają sposób uzyskiwania szczegółowych informacji na temat usługi Azure Virtual Network przy użyciu narzędzi, takich jak przechwytywanie pakietów i dzienniki przepływów sieciowych grup zabezpieczeń, w celu diagnozowania problemów z przekierowywaniem i filtrowaniem ruchu oraz monitorowania połączeń.'
 sections:

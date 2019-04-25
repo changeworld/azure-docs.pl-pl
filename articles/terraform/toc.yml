@@ -1,96 +1,89 @@
-items:
 - name: Dokumentacja programu Terraform na platformie Azure
   href: index.yml
 - name: Omówienie
   items:
-  - name: Informacje o programie Terraform na platformie Azure
-    href: terraform-overview.md
+    - name: Informacje o programie Terraform na platformie Azure
+      href: terraform-overview.md
 - name: Przewodniki Szybki start
-  items:
-  - name: Tworzenie aplikacji wielousługowej
-    href: terrafom-quickstart.md
-  - name: Instalowanie i konfigurowanie programu Terraform
-    href: /azure/virtual-machines/linux/terraform-install-configure
-    maintainContext: true
-  - name: Tworzenie maszyny wirtualnej z systemem Linux
-    href: /azure/virtual-machines/linux/terraform-create-complete-vm
-    maintainContext: true
   expanded: true
+  items:
+    - name: Tworzenie aplikacji wielousługowej
+      href: terrafom-quickstart.md
+    - name: Instalowanie i konfigurowanie programu Terraform
+      href: /azure/virtual-machines/linux/terraform-install-configure
+      maintainContext: true
+    - name: Tworzenie maszyny wirtualnej z systemem Linux
+      href: /azure/virtual-machines/linux/terraform-create-complete-vm
+      maintainContext: true
 - name: Samouczki
   items:
-  - name: App Service
-    items:
-    - name: Program Terraform i miejsca wdrożenia dostawcy platformy Azure
-      href: terraform-slot-walkthru.md
-  - name: Containers
-    items:
-    - name: Tworzenie klastra Kubernetes za pomocą usługi AKS
-      href: terraform-create-k8s-cluster-with-tf-and-aks.md
-    - name: Tworzenie klastra Kubernetes z usługą Application Gateway jako kontrolerem ruchu przychodzącego za pomocą usługi AKS
-      href: terraform-create-k8s-cluster-with-aks-applicationgateway-ingress.md
-  - name: Infrastruktura
-    items:
-    - name: Tworzenie maszyny wirtualnej programu z włączoną tożsamością usługi zarządzanej
-      href: terraform-vm-msi.md
-    - name: Tworzenie klastra maszyn wirtualnych przy użyciu modułów Terraform
-      href: terraform-create-vm-cluster-module.md
-    - name: Tworzenie klastra maszyn wirtualnych przy użyciu programu Terraform i HCL
-      href: terraform-create-vm-cluster-with-infrastructure.md
-    - name: Aprowizowanie zestawu skalowania maszyn wirtualnych przy użyciu infrastruktury
-      href: terraform-create-vm-scaleset-network-disks-hcl.md
-    - name: Aprowizowanie zestawu skalowania maszyn wirtualnych na podstawie niestandardowego obrazu usługi Packer
-      href: terraform-create-vm-scaleset-network-disks-using-packer-hcl.md
-  - name: Sieci
-    items:
-    - name: Topologia gwiazdy
+    - name: App Service
       items:
-      - name: 1. Tworzenie topologii gwiazdy
-        href: terraform-hub-spoke-introduction.md
-      - name: 2. Tworzenie lokalnej sieci wirtualnej
-        href: terraform-hub-spoke-on-prem.md
-      - name: 3. Tworzenie sieci wirtualnej będącej koncentratorem
-        href: terraform-hub-spoke-hub-network.md
-      - name: 4. Tworzenie urządzenia dla sieci wirtualnej będącej koncentratorem
-        href: terraform-hub-spoke-hub-nva.md
-      - name: 5. Tworzenie sieci będącej promieniem
-        href: terraform-hub-spoke-spoke-network.md
-      - name: 6. Weryfikowanie łączności dla topologii sieci
-        href: terraform-hub-spoke-validation.md
-  - name: Narzędzia
-    items:
-    - name: Instalowanie rozszerzenia Terraform dla programu Visual Studio Code
-      href: terraform-vscode-extension.md
-    - name: Tworzenie szablonu podstawowego Terraform przy użyciu narzędzia Yeoman
-      href: terraform-vscode-module-generator.md
-    - name: Testowanie modułów Terraform za pomocą platformy Terratest
-      href: terratest-in-terraform-modules.md
+        - name: Program Terraform i miejsca wdrożenia dostawcy platformy Azure
+          href: terraform-slot-walkthru.md
+    - name: Containers
+      items:
+        - name: Tworzenie klastra Kubernetes za pomocą usługi AKS
+          href: terraform-create-k8s-cluster-with-tf-and-aks.md
+        - name: Tworzenie klastra Kubernetes z usługą Application Gateway jako kontrolerem ruchu przychodzącego za pomocą usługi AKS
+          href: terraform-create-k8s-cluster-with-aks-applicationgateway-ingress.md
+    - name: Infrastruktura
+      items:
+        - name: Tworzenie maszyny wirtualnej programu z włączoną tożsamością usługi zarządzanej
+          href: terraform-vm-msi.md
+        - name: Tworzenie klastra maszyn wirtualnych przy użyciu modułów Terraform
+          href: terraform-create-vm-cluster-module.md
+        - name: Tworzenie klastra maszyn wirtualnych przy użyciu programu Terraform i HCL
+          href: terraform-create-vm-cluster-with-infrastructure.md
+        - name: Aprowizowanie zestawu skalowania maszyn wirtualnych przy użyciu infrastruktury
+          href: terraform-create-vm-scaleset-network-disks-hcl.md
+        - name: Aprowizowanie zestawu skalowania maszyn wirtualnych na podstawie niestandardowego obrazu usługi Packer
+          href: terraform-create-vm-scaleset-network-disks-using-packer-hcl.md
+    - name: Sieci
+      items:
+        - name: Topologia gwiazdy
+          items:
+            - name: 1. Tworzenie topologii gwiazdy
+              href: terraform-hub-spoke-introduction.md
+            - name: 2. Tworzenie lokalnej sieci wirtualnej
+              href: terraform-hub-spoke-on-prem.md
+            - name: 3. Tworzenie sieci wirtualnej będącej koncentratorem
+              href: terraform-hub-spoke-hub-network.md
+            - name: 4. Tworzenie urządzenia dla sieci wirtualnej będącej koncentratorem
+              href: terraform-hub-spoke-hub-nva.md
+            - name: 5. Tworzenie sieci będącej promieniem
+              href: terraform-hub-spoke-spoke-network.md
+            - name: 6. Weryfikowanie łączności dla topologii sieci
+              href: terraform-hub-spoke-validation.md
+    - name: Narzędzia
+      items:
+        - name: Instalowanie rozszerzenia Terraform dla programu Visual Studio Code
+          href: terraform-vscode-extension.md
+        - name: Tworzenie szablonu podstawowego Terraform przy użyciu narzędzia Yeoman
+          href: terraform-vscode-module-generator.md
+        - name: Testowanie modułów Terraform za pomocą platformy Terratest
+          href: terratest-in-terraform-modules.md
 - name: Przykłady
   items:
-  - name: Szablony konfiguracji
-    href: https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples
+    - name: Szablony konfiguracji
+      href: 'https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples'
 - name: Pojęcia
   items:
-  - name: Integracja z usługą Azure Cloud Shell
-    href: terraform-cloud-shell.md
+    - name: Integracja z usługą Azure Cloud Shell
+      href: terraform-cloud-shell.md
 - name: Przewodniki z instrukcjami
   items:
-  - name: Przechowywanie stanu w usłudze Azure Storage
-    href: terraform-backend.md
+    - name: Przechowywanie stanu w usłudze Azure Storage
+      href: terraform-backend.md
 - name: Dokumentacja
   items:
-  - name: Rejestr modułów platformy Azure
-    href: https://registry.terraform.io/modules/Azure
-  - name: Dokumentacja programu Terraform
-    href: https://aka.ms/terraform
+    - name: Rejestr modułów platformy Azure
+      href: 'https://registry.terraform.io/modules/Azure'
+    - name: Dokumentacja programu Terraform
+      href: 'https://aka.ms/terraform'
 - name: Zasoby
   items:
-  - name: Platforma Azure i program Terraform
-    href: https://azure.microsoft.com/solutions/devops/terraform/
-  - name: Harmonogram działania dla platformy Azure
-    href: https://azure.microsoft.com/roadmap/
-ms.openlocfilehash: d83e1cbd4f3cd5d8a0a9ec167e197b53f20e0630
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57999442"
+    - name: Platforma Azure i program Terraform
+      href: 'https://azure.microsoft.com/solutions/devops/terraform/'
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/roadmap/'

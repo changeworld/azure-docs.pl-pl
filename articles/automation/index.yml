@@ -1,16 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 7e075434b8c785665d28a2981233fc17e2a1ceac
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726342"
 documentType: LandingData
 title: Dokumentacja użytkownika usługi Azure Automation
 metadata:
-  document_id: 
+  document_id: null
   title: Dokumentacja usługi Azure Automation — samouczki i dokumentacja interfejsu API
-  description: Dowiedz się, jak korzystać z usługi Azure Automation
+  description: 'Dowiedz się, jak korzystać z usługi Azure Automation'
   services: automation
   author: georgewallace
   manager: carmonm
@@ -20,48 +14,48 @@ metadata:
   ms.date: 12/13/2017
   ms.author: gwallace
 abstract:
-  description: Dowiedz się, jak korzystać z usługi Automation w celu konfigurowania i automatyzowania zadań operacyjnych w środowisku hybrydowym. Samouczki, dokumentacja interfejsu API oraz inne dokumenty przedstawiają, jak automatyzować procesy, zarządzać aktualizacjami, dostarczać konfigurację żądanego stanu, śledzić zmiany oraz zbierać dane spisu.
+  description: 'Dowiedz się, jak korzystać z usługi Automation w celu konfigurowania i automatyzowania zadań operacyjnych w środowisku hybrydowym. Samouczki, dokumentacja interfejsu API oraz inne dokumenty przedstawiają, jak automatyzować procesy, zarządzać aktualizacjami, dostarczać konfigurację żądanego stanu, śledzić zmiany oraz zbierać dane spisu.'
 sections:
-- title: 5-minutowe przewodniki Szybki start
-  items:
-  - type: paragraph
-    text: 'Dowiedz się, jak zautomatyzować i skonfigurować środowisko Azure i środowisko hybrydowe za pomocą usługi Automation:'
-  - type: list
-    style: icon48
+  - title: 5-minutowe przewodniki Szybki start
     items:
-    - image:
-        src: /azure/automation/media/index/automation.svg
-      text: Tworzenie konta usługi Automation
-      href: /azure/automation/automation-quickstart-create-account
-    - image:
-        src: /azure/automation/media/index/runbook.svg
-      text: Tworzenie elementu runbook
-      href: /azure/automation/automation-quickstart-create-runbook
-    - image:
-        src: /azure/automation/media/index/dscconfig.svg
-      text: Tworzenie konfiguracji DSC
-      href: /azure/automation/automation-quickstart-dsc-configuration
-- title: Samouczki krok po kroku
-  items:
-  - type: paragraph
-    text: Dowiedz się, jak zintegrować i wdrożyć środowisko Azure i środowisko hybrydowe oraz zarządzać nim.
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: 'Dowiedz się, jak zautomatyzować i skonfigurować środowisko Azure i środowisko hybrydowe za pomocą usługi Automation:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/automation/media/index/automation.svg
+            text: Tworzenie konta usługi Automation
+            href: /azure/automation/automation-quickstart-create-account
+          - image:
+              src: /azure/automation/media/index/runbook.svg
+            text: Tworzenie elementu runbook
+            href: /azure/automation/automation-quickstart-create-runbook
+          - image:
+              src: /azure/automation/media/index/dscconfig.svg
+            text: Tworzenie konfiguracji DSC
+            href: /azure/automation/automation-quickstart-dsc-configuration
+  - title: Samouczki krok po kroku
     items:
-    - html: <a href="/azure/automation/automation-watchers-tutorial">Konfigurowanie zadań obserwatora</a>
-    - html: <a href="/azure/automation/automation-tutorial-update-management">Zarządzanie aktualizacjami na maszynie wirtualnej</a>
-    - html: <a href="/azure/automation/automation-onboard-solutions">Dołączanie na dużą skalę</a>
-    - html: <a href="/azure/automation/automation-tutorial-installed-software">Identyfikowanie oprogramowania zainstalowanego na maszynie wirtualnej</a>
-    - html: <a href="/azure/automation/automation-tutorial-troubleshoot-changes">Rozwiązywanie problemów dotyczących zmian na maszynie wirtualnej</a>
-- title: Dokumentacja
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: 'Dowiedz się, jak zintegrować i wdrożyć środowisko Azure i środowisko hybrydowe oraz zarządzać nim.'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/automation/automation-watchers-tutorial">Konfigurowanie zadań obserwatora</a>
+          - html: <a href="/azure/automation/automation-tutorial-update-management">Zarządzanie aktualizacjami na maszynie wirtualnej</a>
+          - html: <a href="/azure/automation/automation-onboard-solutions">Dołączanie na dużą skalę</a>
+          - html: <a href="/azure/automation/automation-tutorial-installed-software">Identyfikowanie oprogramowania zainstalowanego na maszynie wirtualnej</a>
+          - html: <a href="/azure/automation/automation-tutorial-troubleshoot-changes">Rozwiązywanie problemów dotyczących zmian na maszynie wirtualnej</a>
+  - title: Dokumentacja
     items:
-    - title: Wiersz polecenia
-      html: <p><a href="/powershell/module/azurerm.automation">Program PowerShell</a></p>
-    - title: Języki
-      html: <p><a href="/dotnet/api/microsoft.azure.management.automation">.NET</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/automation">Interfejs API REST usługi Automation</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Wiersz polecenia
+            html: <p><a href="/powershell/module/azurerm.automation">Program PowerShell</a></p>
+          - title: Języki
+            html: <p><a href="/dotnet/api/microsoft.azure.management.automation">.NET</a></p>
+          - title: REST
+            html: <p><a href="/rest/api/automation">Interfejs API REST usługi Automation</a></p>

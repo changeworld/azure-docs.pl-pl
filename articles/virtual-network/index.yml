@@ -6,14 +6,14 @@ metadata:
   title: 'Dokumentacja usługi Virtual Network — samouczki, przewodniki Szybki start i dokumentacja interfejsu API | Microsoft Docs'
   meta.description: 'Learn how to use Azure Virtual Network. Quickstarts, tutorials, samples, and more, show you how to deploy a virtual network, control traffic filtering and routing, and connect a virtual network to other virtual networks.'
   services: virtual-network
-  author: jdial
-  manager: jeconnoc
+  author: KumudD
+  manager: twooley
   ms.service: virtual-network
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 03/23/2018
-  ms.author: jdial
+  ms.author: kumud
 abstract:
   description: 'Dowiedz się, jak korzystać z usługi Azure Virtual Network. Z przewodników Szybki start, samouczków, przykładów i innych materiałów dowiesz się, jak wdrożyć sieć wirtualną, sterować filtrowaniem i routingiem ruchu oraz łączyć sieć wirtualną z innymi sieciami wirtualnymi.'
 sections:

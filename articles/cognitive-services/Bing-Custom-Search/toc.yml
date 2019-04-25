@@ -1,119 +1,112 @@
-items:
 - name: Dokumentacja funkcji wyszukiwania niestandardowego Bing
   href: index.yml
 - name: Omówienie
-  items:
-  - name: Co to jest interfejs API wyszukiwania niestandardowego Bing?
-    href: overview.md
-  - name: Porównanie interfejsów API wyszukiwania Bing
-    href: ../Bing-Web-Search/bing-api-comparison.md
-    maintainContext: true
   expanded: true
+  items:
+    - name: Co to jest interfejs API wyszukiwania niestandardowego Bing?
+      href: overview.md
+    - name: Porównanie interfejsów API wyszukiwania Bing
+      href: ../Bing-Web-Search/bing-api-comparison.md
+      maintainContext: true
 - name: Przewodniki Szybki start
-  items:
-  - name: Tworzenie wystąpienia wyszukiwania niestandardowego
-    href: quick-start.md
-  - name: Pobieranie wyników wyszukiwania z wystąpienia
-    items:
-    - name: Interfejs API REST
-      items:
-      - name: Przy użyciu języka C#
-        href: call-endpoint-csharp.md
-      - name: Korzystanie z języka Java
-        href: call-endpoint-java.md
-      - name: Używanie środowiska Node.js
-        href: call-endpoint-nodejs.md
-      - name: Korzystanie z języka Python
-        href: call-endpoint-python.md
-    - name: SDK
-      items:
-      - name: Przy użyciu języka C#
-        href: sdk-csharp-quick-start.md
-      - name: Korzystanie z języka Python
-        href: sdk-python-quickstart.md
   expanded: true
+  items:
+    - name: Tworzenie wystąpienia wyszukiwania niestandardowego
+      href: quick-start.md
+    - name: Pobieranie wyników wyszukiwania z wystąpienia
+      items:
+        - name: Interfejs API REST
+          items:
+            - name: 'Przy użyciu języka C#'
+              href: call-endpoint-csharp.md
+            - name: Korzystanie z języka Java
+              href: call-endpoint-java.md
+            - name: Używanie środowiska Node.js
+              href: call-endpoint-nodejs.md
+            - name: Korzystanie z języka Python
+              href: call-endpoint-python.md
+        - name: SDK
+          items:
+            - name: 'Przy użyciu języka C#'
+              href: sdk-csharp-quick-start.md
+            - name: Korzystanie z języka Python
+              href: sdk-python-quickstart.md
 - name: Samouczki
   items:
-  - name: Tworzenie strony internetowej z funkcją wyszukiwania niestandardowego
-    href: ./tutorials/custom-search-web-page.md
+    - name: Tworzenie strony internetowej z funkcją wyszukiwania niestandardowego
+      href: ./tutorials/custom-search-web-page.md
 - name: Przykłady
   items:
-  - name: Przykłady kodu
-    href: https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Custom+Search
+    - name: Przykłady kodu
+      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Custom+Search'
 - name: Przewodniki z instrukcjami
   items:
-  - name: Konfigurowanie środowiska wyszukiwania niestandardowego
-    href: define-your-custom-view.md
-  - name: Wywoływanie wystąpienia wyszukiwania niestandardowego
-    href: search-your-custom-view.md
-  - name: Konfigurowanie i integrowanie hostowanego interfejsu użytkownika
-    href: hosted-ui.md
-  - name: Udostępnianie wystąpienia wyszukiwania niestandardowego
-    href: share-your-custom-search.md
-  - name: Pobieranie obrazów z wystąpienia wyszukiwania
-    href: get-images-from-instance.md
-  - name: Pobieranie wideo z wystąpienia wyszukiwania
-    href: get-videos-from-instance.md
-  - name: Konfigurowanie środowiska niestandardowego automatycznego sugerowania
-    href: define-custom-suggestions.md
-  - name: Obsługa wyróżniania trafień
-    href: hit-highlighting.md
-  - name: Dzielenie wyników wyszukiwania stron internetowych na strony
-    href: page-webpages.md
+    - name: Konfigurowanie środowiska wyszukiwania niestandardowego
+      href: define-your-custom-view.md
+    - name: Wywoływanie wystąpienia wyszukiwania niestandardowego
+      href: search-your-custom-view.md
+    - name: Konfigurowanie i integrowanie hostowanego interfejsu użytkownika
+      href: hosted-ui.md
+    - name: Udostępnianie wystąpienia wyszukiwania niestandardowego
+      href: share-your-custom-search.md
+    - name: Pobieranie obrazów z wystąpienia wyszukiwania
+      href: get-images-from-instance.md
+    - name: Pobieranie wideo z wystąpienia wyszukiwania
+      href: get-videos-from-instance.md
+    - name: Konfigurowanie środowiska niestandardowego automatycznego sugerowania
+      href: define-custom-suggestions.md
+    - name: Obsługa wyróżniania trafień
+      href: hit-highlighting.md
+    - name: Dzielenie wyników wyszukiwania stron internetowych na strony
+      href: page-webpages.md
 - name: Dokumentacja
   items:
-  - name: Dokumentacja interfejsu API niestandardowego automatycznego sugerowania Bing
-    href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-autosuggest-api-v7-reference
-  - name: Dokumentacja interfejsu API niestandardowego wyszukiwania obrazów Bing
-    href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-images-api-v7-reference
-  - name: Dokumentacja interfejsu API wyszukiwania niestandardowego Bing
-    href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference
-  - name: Dokumentacja interfejsu API wyszukiwania niestandardowego wideo Bing
-    href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-videos-api-v7-reference
-  - name: Wymagania dotyczące użycia i wyświetlania interfejsu API wyszukiwania Bing
-    href: ../Bing-Web-Search/use-display-requirements.md
-    maintainContext: true
-  - name: Zestawy SDK
-    items:
-    - name: .NET
-      href: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-dotnet
-    - name: Java — wyszukiwanie niestandardowe
-      href: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customsearch?view=azure-java-stable
-    - name: Java — niestandardowe wyszukiwanie obrazów
-      href: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customimagesearch?view=azure-java-stable
-    - name: Python
-      href: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customsearch?view=azure-python
-    - name: Node.js
-      href: https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/customsearch?view=azure-node-latest
-    - name: Go — wyszukiwanie niestandardowe
-      href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/customsearch
-    - name: Go — niestandardowe wyszukiwanie obrazów
-      href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/customimagesearch
+    - name: Dokumentacja interfejsu API niestandardowego automatycznego sugerowania Bing
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-autosuggest-api-v7-reference'
+    - name: Dokumentacja interfejsu API niestandardowego wyszukiwania obrazów Bing
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-images-api-v7-reference'
+    - name: Dokumentacja interfejsu API wyszukiwania niestandardowego Bing
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference'
+    - name: Dokumentacja interfejsu API wyszukiwania niestandardowego wideo Bing
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-videos-api-v7-reference'
+    - name: Wymagania dotyczące użycia i wyświetlania interfejsu API wyszukiwania Bing
+      href: ../Bing-Web-Search/use-display-requirements.md
+      maintainContext: true
+    - name: Zestawy SDK
+      items:
+        - name: .NET
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-dotnet'
+        - name: Java — wyszukiwanie niestandardowe
+          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customsearch?view=azure-java-stable'
+        - name: Java — niestandardowe wyszukiwanie obrazów
+          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customimagesearch?view=azure-java-stable'
+        - name: Python
+          href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customsearch?view=azure-python'
+        - name: Node.js
+          href: 'https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/customsearch?view=azure-node-latest'
+        - name: Go — wyszukiwanie niestandardowe
+          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/customsearch'
+        - name: Go — niestandardowe wyszukiwanie obrazów
+          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/customimagesearch'
 - name: Zasoby
   items:
-  - name: Cennik
-    href: https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/
-  - name: UserVoice
-    href: https://cognitive.uservoice.com/forums/598147-bing-custom-search-api
-  - name: Stack Overflow
-    href: https://stackoverflow.com/search?q=bing+custom+search
-  - name: Dostępność regionalna
-    href: https://azure.microsoft.com/global-infrastructure/services/
-  - name: Harmonogram działania dla platformy Azure
-    href: https://azure.microsoft.com/roadmap/
-  - name: Baza wiedzy
-    href: https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest
-  - name: Uzyskiwanie klucza interfejsu API
-    href: https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search-api
-  - name: Wypróbuj!
-    href: https://aka.ms/bingcustomsearchtryit
-  - name: Punkt końcowy wyszukiwania niestandardowego Bing
-    href: endpoint-custom.md
-  - name: Obsługa języków i regionów
-    href: language-support.md
-ms.openlocfilehash: eee327b77fa3c0d46d47bb3ac6644fb175249618
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57568898"
+    - name: Cennik
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/598147-bing-custom-search-api'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/search?q=bing+custom+search'
+    - name: Dostępność regionalna
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Baza wiedzy
+      href: 'https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest'
+    - name: Uzyskiwanie klucza interfejsu API
+      href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search-api'
+    - name: Wypróbuj!
+      href: 'https://aka.ms/bingcustomsearchtryit'
+    - name: Punkt końcowy wyszukiwania niestandardowego Bing
+      href: endpoint-custom.md
+    - name: Obsługa języków i regionów
+      href: language-support.md

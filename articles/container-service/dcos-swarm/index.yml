@@ -2,9 +2,9 @@
 documentType: LandingData
 title: Dokumentacja usługi Azure Container Service z systemem DC/OS i narzędziem Swarm
 metadata:
-  document_id: 
+  document_id: null
   title: Dokumentacja usługi Azure Container Service z systemem DC/OS i narzędziem Swarm — samouczki i dokumentacja interfejsu API | Microsoft Docs
-  meta.description: Azure Container Service allows you to quickly deploy a production ready DC/OS or Docker Swarm cluster. Learn how to use Azure Container Service with these quickstarts, tutorials, and samples.
+  meta.description: 'Azure Container Service allows you to quickly deploy a production ready DC/OS or Docker Swarm cluster. Learn how to use Azure Container Service with these quickstarts, tutorials, and samples.'
   services: container-service
   author: carolz
   manager: carolz
@@ -14,55 +14,49 @@ metadata:
   ms.topic: landing-page
   ms.date: 07-21-2017
   ms.author: carolz
-  ms.openlocfilehash: d1d65d02059f312b116cfb33b13fb98471b3b2f6
-  ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-  ms.translationtype: HT
-  ms.contentlocale: pl-PL
-  ms.lasthandoff: 10/11/2017
-  ms.locfileid: "23068410"
 abstract:
-  description: Usługa Azure Container Service pozwala na szybkie wdrożenie gotowego do użycia w warunkach produkcyjnych klastra DC/OS lub Docker Swarm. Dowiedz się, jak używać usługi Azure Container Service, korzystając z tych przewodników Szybki start, samouczków i przykładów.
+  description: 'Usługa Azure Container Service pozwala na szybkie wdrożenie gotowego do użycia w warunkach produkcyjnych klastra DC/OS lub Docker Swarm. Dowiedz się, jak używać usługi Azure Container Service, korzystając z tych przewodników Szybki start, samouczków i przykładów.'
 sections:
-- title: 5-minutowe przewodniki Szybki start
-  items:
-  - type: paragraph
-    text: 'Dowiedz się, jak wdrażać klastry DC/OS za pomocą usługi Azure Container Service:'
-  - type: list
-    style: icon48
+  - title: 5-minutowe przewodniki Szybki start
     items:
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_linux.svg
-      text: Tworzenie klastra DC/OS
-      href: /azure/container-service/container-service-dcos-quickstart
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_docker.svg
-      text: Tworzenie klastra Docker Swarm
-      href: /azure/container-service/dcos-swarm/container-service-swarm-walkthrough
-- title: Samouczki krok po kroku
-  items:
-  - type: paragraph
-    text: Dowiedz się, jak wdrażać i aktualizować aplikacje oraz zarządzać nimi w klastrze DC/OS usługi Azure Container Service.
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: 'Dowiedz się, jak wdrażać klastry DC/OS za pomocą usługi Azure Container Service:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_linux.svg'
+            text: Tworzenie klastra DC/OS
+            href: /azure/container-service/container-service-dcos-quickstart
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_docker.svg'
+            text: Tworzenie klastra Docker Swarm
+            href: /azure/container-service/dcos-swarm/container-service-swarm-walkthrough
+  - title: Samouczki krok po kroku
     items:
-    - html: <a href="/azure/container-service/container-service-dcos-manage-tutorial">Create and manage an Azure Container Service DC/OS cluster (Tworzenie klastra DC/OS usługi Azure Container Service i zarządzanie nim)</a>
-    - html: <a href="/azure/container-service/container-service-load-balancing">Load balance containers in an Azure Container Service DC/OS cluster (Równoważenie obciążenia kontenerów w klastrze DC/OS usługi Azure Container Service)</a>
-    - html: <a href="/azure/container-service/container-service-dcos-fileshare">Create and mount a file share to a DC/OS cluster (Tworzenie udziału plików i instalowanie go w klastrze DC/OS)</a>
-    - html: <a href="/azure/container-service/container-service-dcos-acr">Use Azure Container Registry with a DC/OS cluster to deploy your application (Wdrażanie aplikacji przy użyciu usługi Azure Container Registry z klastrem DC/OS)</a>
-- title: Przykłady
-  items:
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: 'Dowiedz się, jak wdrażać i aktualizować aplikacje oraz zarządzać nimi w klastrze DC/OS usługi Azure Container Service.'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/container-service/container-service-dcos-manage-tutorial">Create and manage an Azure Container Service DC/OS cluster (Tworzenie klastra DC/OS usługi Azure Container Service i zarządzanie nim)</a>
+          - html: <a href="/azure/container-service/container-service-load-balancing">Load balance containers in an Azure Container Service DC/OS cluster (Równoważenie obciążenia kontenerów w klastrze DC/OS usługi Azure Container Service)</a>
+          - html: <a href="/azure/container-service/container-service-dcos-fileshare">Create and mount a file share to a DC/OS cluster (Tworzenie udziału plików i instalowanie go w klastrze DC/OS)</a>
+          - html: <a href="/azure/container-service/container-service-dcos-acr">Use Azure Container Registry with a DC/OS cluster to deploy your application (Wdrażanie aplikacji przy użyciu usługi Azure Container Registry z klastrem DC/OS)</a>
+  - title: Przykłady
     items:
-    - html: <a href="/azure/container-service/cli-samples">Interfejs wiersza polecenia platformy Azure</a>
-- title: Dokumentacja
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/container-service/cli-samples">Interfejs wiersza polecenia platformy Azure</a>
+  - title: Dokumentacja
     items:
-    - title: Wiersz polecenia
-      html: <p><a href="/cli/azure/acs">Interfejs wiersza polecenia platformy Azure</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/container-service">Interfejs API REST</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Wiersz polecenia
+            html: <p><a href="/cli/azure/acs">Interfejs wiersza polecenia platformy Azure</a></p>
+          - title: REST
+            html: <p><a href="/rest/api/container-service">Interfejs API REST</a></p>

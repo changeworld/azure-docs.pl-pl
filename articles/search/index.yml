@@ -1,16 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 8385fe5ecb9a6e17d872795ba4eff5c038e4df47
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58199873"
 documentType: LandingData
 title: Dokumentacja usługi Azure Search
 metadata:
-  document_id: 
-  title: Dokumentacja usługi Azure Search — samouczki, przewodniki Szybki start i dokumentacja interfejsu API
-  description: Dowiedz się, jak przy użyciu usługi Azure Search utworzyć rozwiązanie wyszukiwania dla przedsiębiorstw obsługujące prywatną, heterogeniczną zawartość. Samouczki, dokumentacja interfejsu API i inne dokumenty przedstawiają sposób konsolidowania zawartości, którą można przeszukiwać, w jeden, szybki indeks umożliwiający wykonywanie zapytań za pomocą składni o różnej złożoności (od podstawowej po zaawansowaną) w szerokim zakresie scenariuszy.
+  document_id: null
+  title: 'Dokumentacja usługi Azure Search — samouczki, przewodniki Szybki start i dokumentacja interfejsu API'
+  description: 'Dowiedz się, jak przy użyciu usługi Azure Search utworzyć rozwiązanie wyszukiwania dla przedsiębiorstw obsługujące prywatną, heterogeniczną zawartość. Samouczki, dokumentacja interfejsu API i inne dokumenty przedstawiają sposób konsolidowania zawartości, którą można przeszukiwać, w jeden, szybki indeks umożliwiający wykonywanie zapytań za pomocą składni o różnej złożoności (od podstawowej po zaawansowaną) w szerokim zakresie scenariuszy.'
   services: search
   author: HeidiSteen
   manager: cgronlun
@@ -20,55 +14,55 @@ metadata:
   ms.date: 01/18/2019
   ms.author: heidist
 abstract:
-  description: Dowiedz się, jak przy użyciu usługi Azure Search utworzyć rozwiązanie wyszukiwania dla przedsiębiorstw obsługujące prywatną, heterogeniczną zawartość. Samouczki, dokumentacja interfejsu API i inne dokumenty przedstawiają sposób konsolidowania zawartości, którą można przeszukiwać, w jeden, szybki indeks umożliwiający wykonywanie zapytań za pomocą składni o różnej złożoności (od podstawowej po zaawansowaną) w szerokim zakresie scenariuszy. <p/><a href="/azure/search/cognitive-search-concept-intro"><b>Wersja zapoznawcza nowego wyszukiwania kognitywnego.</b></a> Użyj interfejsu API REST w wersji wstępnej do powiązania algorytmów opartych na sztucznej inteligencji z potokiem indeksowania. Wyodrębniaj dane i wywołuj przetwarzanie języka naturalnego oraz obrazu w celu przekształcania nieprzetworzonej zawartości bez struktury w zawartość możliwą do wyszukiwania w ramach indeksu usługi Azure Search. <p/>Zapoznaj się z wyszukiwaniem poznawczym dzięki <a href="/azure/search/cognitive-search-quickstart-blob">zasobom i przykładowym danym</a> lub uzyskaj więcej informacji w obszarze <a href="/azure/search/cognitive-search-concept-intro">Pojęcia</a>.
+  description: 'Dowiedz się, jak przy użyciu usługi Azure Search utworzyć rozwiązanie wyszukiwania dla przedsiębiorstw obsługujące prywatną, heterogeniczną zawartość. Samouczki, dokumentacja interfejsu API i inne dokumenty przedstawiają sposób konsolidowania zawartości, którą można przeszukiwać, w jeden, szybki indeks umożliwiający wykonywanie zapytań za pomocą składni o różnej złożoności (od podstawowej po zaawansowaną) w szerokim zakresie scenariuszy. <p/><a href="/azure/search/cognitive-search-concept-intro"><b>Wersja zapoznawcza nowego wyszukiwania kognitywnego.</b></a> Użyj interfejsu API REST w wersji wstępnej do powiązania algorytmów opartych na sztucznej inteligencji z potokiem indeksowania. Wyodrębniaj dane i wywołuj przetwarzanie języka naturalnego oraz obrazu w celu przekształcania nieprzetworzonej zawartości bez struktury w zawartość możliwą do wyszukiwania w ramach indeksu usługi Azure Search. <p/>Zapoznaj się z wyszukiwaniem poznawczym dzięki <a href="/azure/search/cognitive-search-quickstart-blob">zasobom i przykładowym danym</a> lub uzyskaj więcej informacji w obszarze <a href="/azure/search/cognitive-search-concept-intro">Pojęcia</a>.'
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
-      src: https://docs.microsoft.com/azure/search/media/index/search-page-callouts3.png
+      src: 'https://docs.microsoft.com/azure/search/media/index/search-page-callouts3.png'
       width: 250
-    title: Co to jest usługa Azure Search (1:27)
-    href: https://channel9.msdn.com/Blogs/Azure/What-is-Azure-Search/player
+    title: 'Co to jest usługa Azure Search (1:27)'
+    href: 'https://channel9.msdn.com/Blogs/Azure/What-is-Azure-Search/player'
     width: 250
 sections:
-- title: 5-minutowe przewodniki Szybki start
-  items:
-  - type: paragraph
-    text: Rozpocznij pracę z usługą Search w portalu, a następnie zdefiniuj i załaduj indeksy oraz wykonuj względem nich zapytania za pomocą języka C# i architektury REST.
-  - type: list
-    style: icon48
+  - title: 5-minutowe przewodniki Szybki start
     items:
-    - image:
-        src: /azure/search/media/index/portal.svg
-      text: Azure Portal
-      href: https://docs.microsoft.com/azure/search/search-create-service-portal
-    - image:
-        src: /azure/search/media/index/logo_Csharp.svg
-      text: .NET
-      href: https://docs.microsoft.com/azure/search/search-create-index-dotnet
-    - image:
-        src: /azure/search/media/index/rest.svg
-      text: REST
-      href: https://docs.microsoft.com/azure/search/search-fiddler
-- title: Samouczki krok po kroku
-  items:
-  - type: paragraph
-    text: Twórz kod .NET lub REST albo wypróbuj portal w celu szybkiego testowania koncepcji.
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: 'Rozpocznij pracę z usługą Search w portalu, a następnie zdefiniuj i załaduj indeksy oraz wykonuj względem nich zapytania za pomocą języka C# i architektury REST.'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/search/media/index/portal.svg
+            text: Azure Portal
+            href: 'https://docs.microsoft.com/azure/search/search-create-service-portal'
+          - image:
+              src: /azure/search/media/index/logo_Csharp.svg
+            text: .NET
+            href: 'https://docs.microsoft.com/azure/search/search-create-index-dotnet'
+          - image:
+              src: /azure/search/media/index/rest.svg
+            text: REST
+            href: 'https://docs.microsoft.com/azure/search/search-fiddler'
+  - title: Samouczki krok po kroku
     items:
-    - html: <a href="/azure/search/cognitive-search-tutorial-blob">Indeksowanie z użyciem sztucznej inteligencji (Cognitive Services)</a>
-    - html: <a href="/azure/search/search-howto-dotnet-sdk">Jak korzystać z usługi Azure Search za pomocą platformy .NET</a>
-    - html: <a href="/azure/search/search-indexer-tutorial">Indeksowanie zawartości usługi Azure SQL Database za pomocą platformy .NET</a>
-    - html: <a href="/azure/search/search-semi-structured-data">Indeksowanie częściowo ustrukturyzowanych danych w usłudze Azure Blob Storage za pomocą architektury REST</a>
-    - html: <a href="/azure/search/search-get-started-portal">Korzystanie z portalu w celu indeksowania i testowania zapytań</a>
-- title: Dokumentacja
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: Twórz kod .NET lub REST albo wypróbuj portal w celu szybkiego testowania koncepcji.
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/search/cognitive-search-tutorial-blob">Indeksowanie z użyciem sztucznej inteligencji (Cognitive Services)</a>
+          - html: <a href="/azure/search/search-howto-dotnet-sdk">Jak korzystać z usługi Azure Search za pomocą platformy .NET</a>
+          - html: <a href="/azure/search/search-indexer-tutorial">Indeksowanie zawartości usługi Azure SQL Database za pomocą platformy .NET</a>
+          - html: <a href="/azure/search/search-semi-structured-data">Indeksowanie częściowo ustrukturyzowanych danych w usłudze Azure Blob Storage za pomocą architektury REST</a>
+          - html: <a href="/azure/search/search-get-started-portal">Korzystanie z portalu w celu indeksowania i testowania zapytań</a>
+  - title: Dokumentacja
     items:
-    - title: Języki
-      html: <p><a href="/dotnet/api/?term=microsoft.azure.search">.NET</a></p><p><a href="/dotnet/api/?term=microsoft.azure.management.search">.NET (zarządzanie)</a></p><p><a href="https://docs.microsoft.com/python/api/?view=azure-python&term=search">Python (zarządzanie)</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/searchservice">Service API Reference (Dokumentacja interfejsu API usługi)</a></p><p><a href="/rest/api/searchmanagement">Management API Reference (Dokumentacja interfejsu API zarządzania)</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Języki
+            html: '<p><a href="/dotnet/api/?term=microsoft.azure.search">.NET</a></p><p><a href="/dotnet/api/?term=microsoft.azure.management.search">.NET (zarządzanie)</a></p><p><a href="https://docs.microsoft.com/python/api/?view=azure-python&term=search">Python (zarządzanie)</a></p>'
+          - title: REST
+            html: <p><a href="/rest/api/searchservice">Service API Reference (Dokumentacja interfejsu API usługi)</a></p><p><a href="/rest/api/searchmanagement">Management API Reference (Dokumentacja interfejsu API zarządzania)</a></p>
