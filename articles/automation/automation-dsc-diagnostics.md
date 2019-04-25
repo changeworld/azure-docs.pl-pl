@@ -135,9 +135,9 @@ Diagnostyka usługi Azure Automation tworzy dwie kategorie rekordów w dziennika
 | DscReportStatus |Czy sprawdzanie zgodności został uruchomiony pomyślnie. |
 | ConfigurationMode | Jak konfiguracja jest stosowana do węzła. Możliwe wartości to __"ApplyOnly"__,__"ApplyandMonitior"__, i __"ApplyandAutoCorrect"__. <ul><li>__ApplyOnly__: Ma zastosowanie do konfiguracji DSC, a nie robi nic więcej, chyba że nowa konfiguracja zostanie przypisany do węzła docelowego lub gdy nowa konfiguracja zostanie ściągnięty z serwera. Po początkowej stosowania nowej konfiguracji DSC nie sprawdza odejście od stanu wcześniej skonfigurowany. DSC, podejmuje próbę zastosowania konfiguracji, dopóki nie zostanie pomyślnie przed __ApplyOnly__ staje się skuteczny. </li><li> __ApplyAndMonitor__: Jest to wartość domyślna. LCM stosuje wszystkie nowe konfiguracje. Po początkowym aplikacji nowej konfiguracji Jeśli węzeł docelowy drifts z żądanego stanu DSC raporty niezgodności w dziennikach. DSC, podejmuje próbę zastosowania konfiguracji, dopóki nie zostanie pomyślnie przed __ApplyAndMonitor__ staje się skuteczny.</li><li>__ApplyAndAutoCorrect__: DSC stosuje wszystkie nowe konfiguracje. Po początkowym aplikacji nowej konfiguracji Jeśli węzeł docelowy drifts z żądanego stanu DSC raporty niezgodności w dziennikach, a następnie przywrócenie bieżącej konfiguracji.</li></ul> |
 | HostName_s | Nazwa węzła zarządzanego. |
-| adres IP | Adres IPv4 zarządzany węzeł. |
-| Kategoria | DscNodeStatus |
-| Zasób | Nazwa konta usługi Azure Automation. |
+| IPAddress | Adres IPv4 zarządzany węzeł. |
+| Category | DscNodeStatus |
+| Resource | Nazwa konta usługi Azure Automation. |
 | Tenant_g | Identyfikator GUID, który identyfikuje dzierżawy dla obiektu wywołującego. |
 | NodeId_g |Identyfikator GUID, który identyfikuje zarządzany węzeł. |
 | DscReportId_g |Identyfikator GUID, który identyfikuje raportu. |
@@ -162,8 +162,8 @@ Diagnostyka usługi Azure Automation tworzy dwie kategorie rekordów w dziennika
 | OperationName |DscResourceStatusData|
 | ResultType |Czy zasób jest zgodne. |
 | NodeName_s |Nazwa węzła zarządzanego. |
-| Kategoria | DscNodeStatus |
-| Zasób | Nazwa konta usługi Azure Automation. |
+| Category | DscNodeStatus |
+| Resource | Nazwa konta usługi Azure Automation. |
 | Tenant_g | Identyfikator GUID, który identyfikuje dzierżawy dla obiektu wywołującego. |
 | NodeId_g |Identyfikator GUID, który identyfikuje zarządzany węzeł. |
 | DscReportId_g |Identyfikator GUID, który identyfikuje raportu. |
