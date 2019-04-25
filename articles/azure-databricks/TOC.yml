@@ -17,6 +17,8 @@
   items:
     - name: Wykonywanie zapytań kierowanych do serwera SQL Server działającego w kontenerze platformy Docker
       href: vnet-injection-sql-server.md
+    - name: Używanie punktu końcowego usługi Cosmos DB
+      href: service-endpoint-cosmosdb.md
     - name: Wykonywanie operacji ETL
       href: databricks-extract-load-sql-data-warehouse.md
     - name: Przesyłanie strumieniowe danych za pomocą usługi Event Hubs

@@ -15,11 +15,20 @@ metadata:
   ms.author: yegu
 abstract:
   description: 'Usługa Azure App Configuration to usługa zarządzana, która pomaga deweloperom w prosty i bezpieczny sposób scentralizować konfigurację aplikacji.'
+  aside:
+    image:
+      alt: null
+      height: 110
+      src: media/videos/getting-started.png
+      width: 250
+    title: 'Wprowadzenie (14:41)'
+    href: 'https://channel9.msdn.com/Shows/Azure-Friday/Getting-started-with-Azure-App-Configuration'
+    width: 250
 sections:
   - title: 5-minutowe przewodniki Szybki start
     items:
       - type: paragraph
-        text: 'Dowiedz się, jak opracować swoją pierwszą aplikację internetową przy użyciu usługi Azure App Configuration:'
+        text: 'Dowiedz się, jak opracować swoją pierwszą aplikację przy użyciu usługi Azure App Configuration:'
       - type: list
         style: icon48
         items:

@@ -1,77 +1,70 @@
-items:
 - name: Dokumentacja Ucznia konwersacji
 - name: Omówienie
-  items:
-  - name: Czym jest Uczeń konwersacji?
-    href: overview.md
-  - name: Obsługiwane języki
-    href: languages-supported.md
   expanded: true
+  items:
+    - name: Czym jest Uczeń konwersacji?
+      href: overview.md
+    - name: Obsługiwane języki
+      href: languages-supported.md
 - name: Pojęcia
   items:
-  - name: Przepływ sterowania
-    href: control-flow.md
-  - name: Wartości domyślne i granice
-    href: cl-values-and-boundaries.md
+    - name: Przepływ sterowania
+      href: control-flow.md
+    - name: Wartości domyślne i granice
+      href: cl-values-and-boundaries.md
 - name: Przewodniki z instrukcjami
   items:
-  - name: Rozpoczynanie pracy z Uczniem konwersacji
-    href: quickstart.md
-  - name: Witaj świecie
-    href: tutorials/01-hello-world.md
-  - name: Wprowadzenie do trenowania
-    href: tutorials/02-intro-to-training.md
-  - name: Akcje z oczekiwaniem i bez oczekiwania
-    href: tutorials/03-wait-vs-nonwait-actions.md
-  - name: Wprowadzenie do jednostek
-    href: tutorials/04-introduction-to-entities.md
-  - name: Jednostka oczekiwana
-    href: tutorials/05-expected-entity.md
-  - name: Jednostki z możliwością negowania
-    href: tutorials/06-negatable-entities.md
-  - name: Jednostki w wieloma wartościami
-    href: tutorials/07-multi-value-entities.md
-  - name: Wstępnie wytrenowane jednostki
-    href: tutorials/08-pre-trained-entities.md
-  - name: Funkcje rozpoznawania jednostek
-    href: tutorials/09-entity-resolvers.md
-  - name: Alternatywne dane wejściowe
-    href: tutorials/10-alternative-inputs.md
-  - name: Rejestrowanie dialogów
-    href: tutorials/11-log-dialogs.md
-  - name: Wywołanie zwrotne wykrywania jednostek
-    href: tutorials/12-entity-detection-callback.md
-  - name: Wywołania zwrotne sesji
-    href: tutorials/13-session-callbacks.md
-  - name: Wywołania interfejsu API
-    href: tutorials/14-api-calls.md
-  - name: Karty
-    href: tutorials/15-cards.md
-  - name: Boty hybrydowe
-    href: tutorials/16-hybrid-bots.md
-  - name: Rozgałęzianie i cofanie
-    href: tutorials/17-branch-undo.md
-  - name: Obsługa wersji i tagowanie
-    href: tutorials/18-version-tag.md
-  - name: Demonstracja — resetowanie hasła
-    href: tutorials/demo-password-reset.md
-  - name: Demonstracja — zamawianie pizzy
-    href: tutorials/demo-pizza-order.md
-  - name: Wdrażanie bota Ucznia konwersacji
-    href: deploy-to-bf.md
-  - name: Nauczanie z użyciem Ucznia konwersacji
-    href: how-to-teach-cl.md
-  - name: Zarządzanie danymi użytkowników
-    href: managing-data.md
+    - name: Rozpoczynanie pracy z Uczniem konwersacji
+      href: quickstart.md
+    - name: Witaj świecie
+      href: tutorials/01-hello-world.md
+    - name: Wprowadzenie do trenowania
+      href: tutorials/02-intro-to-training.md
+    - name: Akcje z oczekiwaniem i bez oczekiwania
+      href: tutorials/03-wait-vs-nonwait-actions.md
+    - name: Wprowadzenie do jednostek
+      href: tutorials/04-introduction-to-entities.md
+    - name: Jednostka oczekiwana
+      href: tutorials/05-expected-entity.md
+    - name: Jednostki z możliwością negowania
+      href: tutorials/06-negatable-entities.md
+    - name: Jednostki w wieloma wartościami
+      href: tutorials/07-multi-value-entities.md
+    - name: Wstępnie wytrenowane jednostki
+      href: tutorials/08-pre-trained-entities.md
+    - name: Funkcje rozpoznawania jednostek
+      href: tutorials/09-entity-resolvers.md
+    - name: Alternatywne dane wejściowe
+      href: tutorials/10-alternative-inputs.md
+    - name: Rejestrowanie dialogów
+      href: tutorials/11-log-dialogs.md
+    - name: Wywołanie zwrotne wykrywania jednostek
+      href: tutorials/12-entity-detection-callback.md
+    - name: Wywołania zwrotne sesji
+      href: tutorials/13-session-callbacks.md
+    - name: Wywołania interfejsu API
+      href: tutorials/14-api-calls.md
+    - name: Karty
+      href: tutorials/15-cards.md
+    - name: Boty hybrydowe
+      href: tutorials/16-hybrid-bots.md
+    - name: Rozgałęzianie i cofanie
+      href: tutorials/17-branch-undo.md
+    - name: Obsługa wersji i tagowanie
+      href: tutorials/18-version-tag.md
+    - name: Demonstracja — resetowanie hasła
+      href: tutorials/demo-password-reset.md
+    - name: Demonstracja — zamawianie pizzy
+      href: tutorials/demo-pizza-order.md
+    - name: Wdrażanie bota Ucznia konwersacji
+      href: deploy-to-bf.md
+    - name: Nauczanie z użyciem Ucznia konwersacji
+      href: how-to-teach-cl.md
+    - name: Zarządzanie danymi użytkowników
+      href: managing-data.md
 - name: Zasoby
   items:
-  - name: Przykładowy bot Ucznia konwersacji
-    href: https://github.com/Microsoft/ConversationLearner-Samples
-  - name: Harmonogram działania dla platformy Azure
-    href: https://azure.microsoft.com/roadmap/
-ms.openlocfilehash: ac1c54259fd7660bc0ebf51fc44936577f5dab61
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53792089"
+    - name: Przykładowy bot Ucznia konwersacji
+      href: 'https://github.com/Microsoft/ConversationLearner-Samples'
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/roadmap/'

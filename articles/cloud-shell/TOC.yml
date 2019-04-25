@@ -1,59 +1,52 @@
-items:
 - name: Omówienie
   href: overview.md
 - name: Szybki start
   items:
-  - name: Bash — Szybki start
-    href: quickstart.md
-  - name: PowerShell — Szybki start
-    href: quickstart-powershell.md
+    - name: Bash — Szybki start
+      href: quickstart.md
+    - name: PowerShell — Szybki start
+      href: quickstart-powershell.md
 - name: Funkcje i narzędzia
   items:
-  - name: Funkcje i narzędzia
-    href: features.md
+    - name: Funkcje i narzędzia
+      href: features.md
 - name: Samouczki
   items:
-  - name: Ansible
-    items:
-    - name: Uruchamianie podręcznika rozwiązania Ansible
-      href: /azure/ansible/ansible-run-playbook-in-cloudshell?toc=/azure/cloud-shell/toc.json&bc=/azure/bread/toc.json
-    - name: Zarządzenie spisami dynamicznymi na platformie Azure
-      href: /azure/ansible/ansible-manage-azure-dynamic-inventories?toc=/azure/cloud-shell/toc.json&bc=/azure/bread/toc.json
-  - name: Terraform
-    items:
-    - name: Tworzenie planu wykonywania
-      href: example-terraform-bash.md
+    - name: Ansible
+      items:
+        - name: Uruchamianie podręcznika rozwiązania Ansible
+          href: /azure/ansible/ansible-run-playbook-in-cloudshell?toc=/azure/cloud-shell/toc.json&bc=/azure/bread/toc.json
+        - name: Zarządzenie spisami dynamicznymi na platformie Azure
+          href: /azure/ansible/ansible-manage-azure-dynamic-inventories?toc=/azure/cloud-shell/toc.json&bc=/azure/bread/toc.json
+    - name: Terraform
+      items:
+        - name: Tworzenie planu wykonywania
+          href: example-terraform-bash.md
 - name: Przewodniki z instrukcjami
   items:
-  - name: Program PowerShell w usłudze Cloud Shell dla użytkowników systemu Windows
-    href: cloud-shell-windows-users.md
-  - name: Utrwalanie plików w magazynie
-    href: persisting-shell-storage.md
-  - name: Korzystanie z okna
-    href: using-the-shell-window.md
-  - name: Korzystanie z instalatorów MSI w usłudze Cloud Shell
-    href: msi-authorization.md
-  - name: Osadzanie usługi Cloud Shell
-    href: embed-cloud-shell.md
+    - name: Program PowerShell w usłudze Cloud Shell dla użytkowników systemu Windows
+      href: cloud-shell-windows-users.md
+    - name: Utrwalanie plików w magazynie
+      href: persisting-shell-storage.md
+    - name: Korzystanie z okna
+      href: using-the-shell-window.md
+    - name: Korzystanie z instalatorów MSI w usłudze Cloud Shell
+      href: msi-authorization.md
+    - name: Osadzanie usługi Cloud Shell
+      href: embed-cloud-shell.md
 - name: Korzystanie z edytora usługi Cloud Shell
   href: using-cloud-shell-editor.md
 - name: Rozwiązywanie problemów i ograniczenia
   href: troubleshooting.md
 - name: Dokumentacja
   items:
-  - name: Interfejs wiersza polecenia platformy Azure
-    href: /cli/azure
-  - name: Azure PowerShell
-    href: /powershell/azure
+    - name: Interfejs wiersza polecenia platformy Azure
+      href: /cli/azure
+    - name: Azure PowerShell
+      href: /powershell/azure
 - name: Zasoby
   items:
-  - name: Harmonogram działania dla platformy Azure
-    href: https://azure.microsoft.com/roadmap/?category=monitoring-management
-  - name: Kalkulator cen
-    href: https://azure.microsoft.com/pricing/calculator/
-ms.openlocfilehash: 873308d775fd7451d89bd05771d3a1c5f5e22995
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58341309"
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/roadmap/?category=monitoring-management'
+    - name: Kalkulator cen
+      href: 'https://azure.microsoft.com/pricing/calculator/'

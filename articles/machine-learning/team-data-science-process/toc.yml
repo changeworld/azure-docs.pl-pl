@@ -1,4 +1,3 @@
-items:
 - name: Dokumentacja dotycząca zespołowego przetwarzania danych dla celów naukowych
   href: index.yml
 - name: Omówienie
@@ -6,254 +5,248 @@ items:
 - name: Cykl życia
   href: lifecycle.md
   items:
-  - name: 1. Poznawanie firmy
-    href: lifecycle-business-understanding.md
-  - name: 2. Pozyskiwanie danych i ich analiza
-    href: lifecycle-data.md
-  - name: 3. Modelowanie
-    href: lifecycle-modeling.md
-  - name: 4. Wdrożenie
-    href: lifecycle-deployment.md
-  - name: 5. Akceptacja klienta
-    href: lifecycle-acceptance.md
+    - name: 1. Poznawanie firmy
+      href: lifecycle-business-understanding.md
+    - name: 2. Pozyskiwanie danych i ich analiza
+      href: lifecycle-data.md
+    - name: 3. Modelowanie
+      href: lifecycle-modeling.md
+    - name: 4. Wdrożenie
+      href: lifecycle-deployment.md
+    - name: 5. Akceptacja klienta
+      href: lifecycle-acceptance.md
 - name: Role i zadania
   href: roles-tasks.md
   items:
-  - name: Menedżer grupy
-    href: group-manager-tasks.md
-  - name: Lider zespołu
-    href: team-lead-tasks.md
-  - name: Lider projektu
-    href: project-lead-tasks.md
-  - name: Pojedynczy współautor
-    href: project-ic-tasks.md
+    - name: Menedżer grupy
+      href: group-manager-tasks.md
+    - name: Lider zespołu
+      href: team-lead-tasks.md
+    - name: Lider projektu
+      href: project-lead-tasks.md
+    - name: Pojedynczy współautor
+      href: project-ic-tasks.md
 - name: Planowanie projektu
   href: team-data-science-process-project-templates.md
 - name: Opracowywanie zawartości
   items:
-  - name: Zwinne wytwarzanie oprogramowania
-    href: agile-development.md
-  - name: Wspólne kodowanie przy użyciu narzędzia Git
-    href: collaborative-coding-with-git.md
-  - name: Uruchamianie zadań dotyczących nauki o danych
-    href: execute-data-science-tasks.md
-  - name: Testowanie kodu
-    href: code-test.md
-  - name: Śledzenie postępu
-    href: track-progress.md
+    - name: Zwinne wytwarzanie oprogramowania
+      href: agile-development.md
+    - name: Wspólne kodowanie przy użyciu narzędzia Git
+      href: collaborative-coding-with-git.md
+    - name: Uruchamianie zadań dotyczących nauki o danych
+      href: execute-data-science-tasks.md
+    - name: Testowanie kodu
+      href: code-test.md
+    - name: Śledzenie postępu
+      href: track-progress.md
 - name: Operacjonalizacja
   items:
-  - name: DevOps — ciągła integracja/ciągłe wdrażanie
-    href: ci-cd-flask.md
+    - name: DevOps — ciągła integracja/ciągłe wdrażanie
+      href: ci-cd-flask.md
 - name: Opracowane przykłady
   href: walkthroughs.md
   items:
-  - name: Platforma Spark z interfejsem PySpark i środowiskiem Scala
-    href: walkthroughs-spark.md
-    items:
-    - name: Eksplorowanie i modelowanie danych
-      href: spark-data-exploration-modeling.md
-    - name: Zaawansowane eksplorowanie i modelowanie danych
-      href: spark-advanced-data-exploration-modeling.md
-    - name: Ocenianie modeli
-      href: spark-model-consumption.md
-  - name: Technologia Hive w usłudze HDInsight Hadoop
-    href: walkthroughs-hdinsight-hadoop.md
-  - name: Język U-SQL w usłudze Azure Data Lake
-    href: walkthroughs-azure-data-lake.md
-  - name: Języki R, Python i T-SQL w programie SQL Server
-    href: walkthroughs-sql-server.md
-  - name: Języki T-SQL i Python w magazynie danych SQL
-    href: walkthroughs-sql-data-warehouse.md
+    - name: Platforma Spark z interfejsem PySpark i środowiskiem Scala
+      href: walkthroughs-spark.md
+      items:
+        - name: Eksplorowanie i modelowanie danych
+          href: spark-data-exploration-modeling.md
+        - name: Zaawansowane eksplorowanie i modelowanie danych
+          href: spark-advanced-data-exploration-modeling.md
+        - name: Ocenianie modeli
+          href: spark-model-consumption.md
+    - name: Technologia Hive w usłudze HDInsight Hadoop
+      href: walkthroughs-hdinsight-hadoop.md
+    - name: Język U-SQL w usłudze Azure Data Lake
+      href: walkthroughs-azure-data-lake.md
+    - name: 'Języki R, Python i T-SQL w programie SQL Server'
+      href: walkthroughs-sql-server.md
+    - name: Języki T-SQL i Python w magazynie danych SQL
+      href: walkthroughs-sql-data-warehouse.md
 - name: Programy narzędziowe i narzędzia
   items:
-  - name: Programy narzędziowe do modelowania i eksploracji danych (GitHub)
-    href: https://github.com/Azure/Azure-TDSP-Utilities
+    - name: Programy narzędziowe do modelowania i eksploracji danych (GitHub)
+      href: 'https://github.com/Azure/Azure-TDSP-Utilities'
 - name: Szkolenia
   items:
-  - name: Dla analityków danych
-    href: team-data-science-process-for-data-scientists.md
-  - name: Dla metodyki DevOps
-    href: team-data-science-process-for-devops.md
+    - name: Dla analityków danych
+      href: team-data-science-process-for-data-scientists.md
+    - name: Dla metodyki DevOps
+      href: team-data-science-process-for-devops.md
 - name: Instrukcje
   items:
-  - name: Konfigurowanie środowiska nauki o danych
-    href: environment-setup.md
-    items:
-    - name: Konta usługi Azure Storage
-      href: ../../storage/common/storage-create-storage-account.md
-      maintainContext: true
-    - name: Platformy i narzędzia
-      href: platforms-and-tools.md
-    - name: Języki R i Python w klastrach usługi HDInsight
+    - name: Konfigurowanie środowiska nauki o danych
+      href: environment-setup.md
       items:
-      - name: Wprowadzenie do platformy Spark w usłudze HDInsight
-        href: ../../hdinsight/spark/apache-spark-overview.md
-        maintainContext: true
-      - name: Tworzenie klastra platformy Apache Spark w usłudze Azure HDInsight
-        href: ../../hdinsight/spark/apache-spark-jupyter-spark-sql.md
-        maintainContext: true
-      - name: Jądra PySpark dla aplikacji Jupyter Notebook
-        href: ../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md
-        maintainContext: true
-      - name: Program R Server w usłudze HDInsight
-        href: ../../hdinsight/r-server/r-server-overview.md
-        maintainContext: true
-      - name: Wprowadzenie do korzystania z oprogramowania R Server w usłudze HDInsight
-        href: ../../hdinsight/r-server/r-server-get-started.md
-        maintainContext: true
-    - name: Obszar roboczy usługi Azure Machine Learning
-      href: ../studio/create-workspace.md
-      maintainContext: true
-  - name: Analizowanie potrzeb biznesowych
-    items:
-    - name: Identyfikowanie własnego scenariusza
-      href: plan-your-environment.md
-  - name: Uzyskiwanie i rozumienie danych
-    items:
-    - name: Pozyskiwanie danych
-      displayName: move data, manage data logistics
-      items:
-      - name: Omówienie
-        href: ingest-data.md
-      - name: Przenoszenie do magazynu Blob Storage i z niego
-        items:
-        - name: Omówienie
-          href: move-azure-blob.md
-        - name: Korzystanie z eksploratora usługi Storage
-          href: move-data-to-azure-blob-using-azure-storage-explorer.md
-        - name: Korzystanie z narzędzia AzCopy
-          href: move-data-to-azure-blob-using-azcopy.md
-        - name: Korzystanie z języka Python
-          href: ../../storage/blobs/storage-python-how-to-use-blob-storage.md
+        - name: Konta usługi Azure Storage
+          href: ../../storage/common/storage-create-storage-account.md
           maintainContext: true
-        - name: Korzystanie z usług SSIS
-          href: move-data-to-azure-blob-using-ssis.md
-      - name: Przenoszenie do bazy danych SQL na maszynie wirtualnej
-        href: move-sql-server-virtual-machine.md
-      - name: Przenoszenie do usługi Azure SQL Database
-        href: move-sql-azure.md
-      - name: Przenoszenie do tabel programu Hive
-        href: move-hive-tables.md
-      - name: Przenoszenie do tabel partycjonowanych bazy danych SQL
-        href: parallel-load-sql-partitioned-tables.md
-      - name: Przenoszenie z lokalnej bazy danych SQL
-        href: move-sql-azure-adf.md
-    - name: Eksplorowanie i wizualizacja danych
+        - name: Platformy i narzędzia
+          href: platforms-and-tools.md
+        - name: Języki R i Python w klastrach usługi HDInsight
+          items:
+            - name: Wprowadzenie do platformy Spark w usłudze HDInsight
+              href: ../../hdinsight/spark/apache-spark-overview.md
+              maintainContext: true
+            - name: Tworzenie klastra platformy Apache Spark w usłudze Azure HDInsight
+              href: ../../hdinsight/spark/apache-spark-jupyter-spark-sql.md
+              maintainContext: true
+            - name: Jądra PySpark dla aplikacji Jupyter Notebook
+              href: ../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md
+              maintainContext: true
+            - name: Program R Server w usłudze HDInsight
+              href: ../../hdinsight/r-server/r-server-overview.md
+              maintainContext: true
+            - name: Wprowadzenie do korzystania z oprogramowania R Server w usłudze HDInsight
+              href: ../../hdinsight/r-server/r-server-get-started.md
+              maintainContext: true
+        - name: Obszar roboczy usługi Azure Machine Learning
+          href: ../studio/create-workspace.md
+          maintainContext: true
+    - name: Analizowanie potrzeb biznesowych
       items:
-      - name: Przygotowywanie danych
-        href: prepare-data.md
-      - name: Eksplorowanie danych
-        items:
-        - name: Omówienie
-          href: explore-data.md
-        - name: Eksplorowanie usługi Azure Blob Storage
-          href: explore-data-blob.md
-        - name: Eksplorowanie bazy danych SQL na maszynie wirtualnej
-          href: explore-data-sql-server.md
-        - name: Eksplorowanie tabel programu Hive
-          href: explore-data-hive-tables.md
-      - name: Dane przykładowe
-        items:
-        - name: Omówienie
-          href: sample-data.md
-        - name: Korzystanie z magazynu Blob Storage
-          href: sample-data-blob.md
-        - name: Korzystanie z programu SQL Server
-          href: sample-data-sql-server.md
-        - name: Korzystanie z tabel programu Hive
-          href: sample-data-hive.md
-      - name: Przetwarzanie danych
-        items:
-        - name: Dostęp za pomocą języka Python
-          href: python-data-access.md
-        - name: Przetwarzanie danych obiektów blob
-          href: data-blob.md
-        - name: Korzystanie z usługi Azure Data Lake
-          href: data-lake-walkthrough.md
-        - name: Korzystanie z maszyny wirtualnej SQL
-          href: sql-server-virtual-machine.md
-        - name: Korzystanie z potoku danych
-          href: automated-data-pipeline-cheat-sheet.md
-        - name: Korzystanie z aparatu Spark
-          href: spark-overview.md
-        - name: Korzystanie z języka Scala i aparatu Spark
-          href: scala-walkthrough.md
-  - name: Opracowywanie modeli
-    items:
-    - name: Funkcje inżynierskie
+        - name: Identyfikowanie własnego scenariusza
+          href: plan-your-environment.md
+    - name: Uzyskiwanie i rozumienie danych
       items:
-      - name: Omówienie
-        href: create-features.md
-      - name: Korzystanie z bazy danych SQL i języka Python
-        href: create-features-sql-server.md
-      - name: Korzystanie z zapytań Hive
-        href: create-features-hive.md
-    - name: Wybieranie funkcji
-      href: select-features.md
-    - name: Tworzenie i uczenie modeli
+        - name: Pozyskiwanie danych
+          displayName: 'move data, manage data logistics'
+          items:
+            - name: Omówienie
+              href: ingest-data.md
+            - name: Przenoszenie do magazynu Blob Storage i z niego
+              items:
+                - name: Omówienie
+                  href: move-azure-blob.md
+                - name: Korzystanie z eksploratora usługi Storage
+                  href: move-data-to-azure-blob-using-azure-storage-explorer.md
+                - name: Korzystanie z narzędzia AzCopy
+                  href: move-data-to-azure-blob-using-azcopy.md
+                - name: Korzystanie z języka Python
+                  href: ../../storage/blobs/storage-python-how-to-use-blob-storage.md
+                  maintainContext: true
+                - name: Korzystanie z usług SSIS
+                  href: move-data-to-azure-blob-using-ssis.md
+            - name: Przenoszenie do bazy danych SQL na maszynie wirtualnej
+              href: move-sql-server-virtual-machine.md
+            - name: Przenoszenie do usługi Azure SQL Database
+              href: move-sql-azure.md
+            - name: Przenoszenie do tabel programu Hive
+              href: move-hive-tables.md
+            - name: Przenoszenie do tabel partycjonowanych bazy danych SQL
+              href: parallel-load-sql-partitioned-tables.md
+            - name: Przenoszenie z lokalnej bazy danych SQL
+              href: move-sql-azure-adf.md
+        - name: Eksplorowanie i wizualizacja danych
+          items:
+            - name: Przygotowywanie danych
+              href: prepare-data.md
+            - name: Eksplorowanie danych
+              items:
+                - name: Omówienie
+                  href: explore-data.md
+                - name: Eksplorowanie usługi Azure Blob Storage
+                  href: explore-data-blob.md
+                - name: Eksplorowanie bazy danych SQL na maszynie wirtualnej
+                  href: explore-data-sql-server.md
+                - name: Eksplorowanie tabel programu Hive
+                  href: explore-data-hive-tables.md
+            - name: Dane przykładowe
+              items:
+                - name: Omówienie
+                  href: sample-data.md
+                - name: Korzystanie z magazynu Blob Storage
+                  href: sample-data-blob.md
+                - name: Korzystanie z programu SQL Server
+                  href: sample-data-sql-server.md
+                - name: Korzystanie z tabel programu Hive
+                  href: sample-data-hive.md
+            - name: Przetwarzanie danych
+              items:
+                - name: Dostęp za pomocą języka Python
+                  href: python-data-access.md
+                - name: Przetwarzanie danych obiektów blob
+                  href: data-blob.md
+                - name: Korzystanie z usługi Azure Data Lake
+                  href: data-lake-walkthrough.md
+                - name: Korzystanie z maszyny wirtualnej SQL
+                  href: sql-server-virtual-machine.md
+                - name: Korzystanie z potoku danych
+                  href: automated-data-pipeline-cheat-sheet.md
+                - name: Korzystanie z aparatu Spark
+                  href: spark-overview.md
+                - name: Korzystanie z języka Scala i aparatu Spark
+                  href: scala-walkthrough.md
+    - name: Opracowywanie modeli
       items:
-      - name: Wybieranie algorytmów
-        href: ../studio/algorithm-choice.md
-        maintainContext: true
-      - name: Ściągawka dotycząca algorytmów
-        href: ../studio/algorithm-cheat-sheet.md
-        maintainContext: true
-  - name: Wdrażanie modeli w środowisku produkcyjnym
-    href: deploy-models-in-production.md
+        - name: Funkcje inżynierskie
+          items:
+            - name: Omówienie
+              href: create-features.md
+            - name: Korzystanie z bazy danych SQL i języka Python
+              href: create-features-sql-server.md
+            - name: Korzystanie z zapytań Hive
+              href: create-features-hive.md
+        - name: Wybieranie funkcji
+          href: select-features.md
+        - name: Tworzenie i uczenie modeli
+          items:
+            - name: Wybieranie algorytmów
+              href: ../studio/algorithm-choice.md
+              maintainContext: true
+            - name: Ściągawka dotycząca algorytmów
+              href: ../studio/algorithm-cheat-sheet.md
+              maintainContext: true
+    - name: Wdrażanie modeli w środowisku produkcyjnym
+      href: deploy-models-in-production.md
 - name: Powiązane
   items:
-  - name: Azure Machine Learning
-    href: ../service/
-  - name: Galeria sztucznej inteligencji platformy Azure
-    href: https://gallery.azure.ai
-  - name: Cortana Analytics
-    items:
-    - name: Wykrywanie anomalii
-      href: apps-anomaly-detection-api.md
-    - name: Cognitive Services
-      href: https://docs.microsoft.com/azure/cognitive-services/
-    - name: Konserwacja zapobiegawcza
+    - name: Azure Machine Learning
+      href: ../service/
+    - name: Galeria sztucznej inteligencji platformy Azure
+      href: 'https://gallery.azure.ai'
+    - name: Cortana Analytics
       items:
-      - name: Omówienie
-        href: cortana-analytics-playbook-predictive-maintenance.md
-      - name: Architektura
-        href: cortana-analytics-architecture-predictive-maintenance.md
-      - name: Podręcznik techniczny
-        href: cortana-analytics-technical-guide-predictive-maintenance.md
+        - name: Wykrywanie anomalii
+          href: apps-anomaly-detection-api.md
+        - name: Cognitive Services
+          href: 'https://docs.microsoft.com/azure/cognitive-services/'
+        - name: Konserwacja zapobiegawcza
+          items:
+            - name: Omówienie
+              href: cortana-analytics-playbook-predictive-maintenance.md
+            - name: Architektura
+              href: cortana-analytics-architecture-predictive-maintenance.md
+            - name: Podręcznik techniczny
+              href: cortana-analytics-technical-guide-predictive-maintenance.md
 - name: Zasoby
   items:
-  - name: Blogi
-    items:
-    - name: Najnowsze aktualizacje dla przetwarzania TDSP
-      href: https://blogs.technet.microsoft.com/machinelearning/2017/10/09/the-microsoft-team-data-science-process-tdsp-recent-updates/
-    - name: Korzystanie z przetwarzania TDSP w usłudze Azure Machine Learning
-      href: https://blogs.technet.microsoft.com/machinelearning/2017/09/25/using-the-team-data-science-process-tdsp-in-azure-machine-learning/
-    - name: Narzędzia Data Science Utilities v0.11 dla środowiska TDSP
-      href: https://blogs.technet.microsoft.com/machinelearning/2017/01/11/announcing-data-science-utilities-version-0-11-for-the-team-data-science-process/
-    - name: Najnowsze narzędzia dla przetwarzania TDSP
-      href: https://blogs.technet.microsoft.com/machinelearning/2017/04/05/latest-rev-of-utilities-for-microsoft-team-data-science-process-tdsp-now-available/
-    - name: Szablon planowania projektu nauki o danych
-      href: https://blogs.msdn.microsoft.com/buckwoody/2017/10/24/a-data-science-microsoft-project-template-you-can-use-in-your-solutions/
-    - name: Blog dotyczący pakietu Cortana Intelligence i usługi Machine Learning
-      href: https://blogs.technet.microsoft.com/machinelearning/
-  - name: Organizacje korzystające z przetwarzania TDSP
-    items:
-    - name: Nowy podpis
-      href: https://newsignature.com/services/professional-services/advanced-analytics/
-    - name: Blue Granite
-      href: https://www.blue-granite.com/blog/getting-more-from-your-data-science-teams-organization-and-process-considerations
-  - name: Powiązane zasoby firmy Microsoft
-    items:
-    - name: Forum MSDN
-      href: https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning
-    - name: Stack Overflow
-      href: https://stackoverflow.com/questions/tagged/azure-machine-learning
-    - name: Filmy wideo
-      href: https://azure.microsoft.com/resources/videos/index/?services=machine-learning
-ms.openlocfilehash: abbfaafe3652fbe2fb5ade86cc732c558f6ebff1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59793914"
+    - name: Blogi
+      items:
+        - name: Najnowsze aktualizacje dla przetwarzania TDSP
+          href: 'https://blogs.technet.microsoft.com/machinelearning/2017/10/09/the-microsoft-team-data-science-process-tdsp-recent-updates/'
+        - name: Korzystanie z przetwarzania TDSP w usłudze Azure Machine Learning
+          href: 'https://blogs.technet.microsoft.com/machinelearning/2017/09/25/using-the-team-data-science-process-tdsp-in-azure-machine-learning/'
+        - name: Narzędzia Data Science Utilities v0.11 dla środowiska TDSP
+          href: 'https://blogs.technet.microsoft.com/machinelearning/2017/01/11/announcing-data-science-utilities-version-0-11-for-the-team-data-science-process/'
+        - name: Najnowsze narzędzia dla przetwarzania TDSP
+          href: 'https://blogs.technet.microsoft.com/machinelearning/2017/04/05/latest-rev-of-utilities-for-microsoft-team-data-science-process-tdsp-now-available/'
+        - name: Szablon planowania projektu nauki o danych
+          href: 'https://blogs.msdn.microsoft.com/buckwoody/2017/10/24/a-data-science-microsoft-project-template-you-can-use-in-your-solutions/'
+        - name: Blog dotyczący pakietu Cortana Intelligence i usługi Machine Learning
+          href: 'https://blogs.technet.microsoft.com/machinelearning/'
+    - name: Organizacje korzystające z przetwarzania TDSP
+      items:
+        - name: Nowy podpis
+          href: 'https://newsignature.com/services/professional-services/advanced-analytics/'
+        - name: Blue Granite
+          href: 'https://www.blue-granite.com/blog/getting-more-from-your-data-science-teams-organization-and-process-considerations'
+    - name: Powiązane zasoby firmy Microsoft
+      items:
+        - name: Forum MSDN
+          href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning'
+        - name: Stack Overflow
+          href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning'
+        - name: Filmy wideo
+          href: 'https://azure.microsoft.com/resources/videos/index/?services=machine-learning'

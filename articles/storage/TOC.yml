@@ -1,13 +1,12 @@
-items:
 - name: Dokumentacja usługi Azure Storage
   href: index.yml
 - name: Omówienie
-  items:
-  - name: Wprowadzenie
-    href: ./common/storage-introduction.md
-  - name: Wybieranie obiektów blob, plików lub dysków
-    href: ./common/storage-decide-blobs-files-disks.md
   expanded: true
+  items:
+    - name: Wprowadzenie
+      href: ./common/storage-introduction.md
+    - name: 'Wybieranie obiektów blob, plików lub dysków'
+      href: ./common/storage-decide-blobs-files-disks.md
 - name: Obiekty blob
   href: ./blobs/storage-blobs-overview.md
 - name: Usługa Data Lake Storage 2. generacji
@@ -20,13 +19,7 @@ items:
   href: ./tables/table-storage-overview.md
 - name: Dyski
   items:
-  - name: Windows
-    href: ../virtual-machines/windows/managed-disks-overview.md
-  - name: Linux
-    href: ../virtual-machines/linux/managed-disks-overview.md
-ms.openlocfilehash: 44904cb09b3865da6040fa581cf43dccf722db20
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329835"
+    - name: Windows
+      href: ../virtual-machines/windows/managed-disks-overview.md
+    - name: Linux
+      href: ../virtual-machines/linux/managed-disks-overview.md

@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 3fa75710adacf71214c977465bcd696500c55e32
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733450"
 documentType: LandingData
 title: Dokumentacja usługi Microsoft Genomics
 metadata:
@@ -18,16 +12,16 @@ metadata:
   ms.topic: landing-page
   ms.date: 12/07/2017
 abstract:
-  description: Dowiedz się, jak usługa Microsoft Genomics może wspierać sekwencjonowanie genomu dzięki implementacji programu Burrows-Wheeler Aligner (BWA) w chmurze i zestawowi narzędzi Genome Analysis Toolkit (GATK) do dalszych analiz.
+  description: 'Dowiedz się, jak usługa Microsoft Genomics może wspierać sekwencjonowanie genomu dzięki implementacji programu Burrows-Wheeler Aligner (BWA) w chmurze i zestawowi narzędzi Genome Analysis Toolkit (GATK) do dalszych analiz.'
 sections:
-- title: 5-minutowe przewodniki Szybki start
-  items:
-  - type: paragraph
-    text: Prześlij przepływ pracy do usługi Microsoft Genomics.
-  - type: list
-    style: icon48
+  - title: 5-minutowe przewodniki Szybki start
     items:
-    - image:
-        src: media/index/helix-blue-orange.svg
-      text: Prześlij przepływ pracy
-      href: quickstart-run-genomics-workflow-portal
+      - type: paragraph
+        text: Prześlij przepływ pracy do usługi Microsoft Genomics.
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/helix-blue-orange.svg
+            text: Prześlij przepływ pracy
+            href: quickstart-run-genomics-workflow-portal

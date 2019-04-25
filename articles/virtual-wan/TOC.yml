@@ -1,61 +1,54 @@
-items:
 - name: Dokumentacja wirtualnej sieci WAN
   href: index.yml
 - name: Omówienie
   items:
-  - name: Informacje o wirtualnej sieci WAN
-    href: virtual-wan-about.md
+    - name: Informacje o wirtualnej sieci WAN
+      href: virtual-wan-about.md
 - name: Samouczki
   items:
-  - name: Tworzenie połączenia typu lokacja-lokacja
-    href: virtual-wan-site-to-site-portal.md
-  - name: Tworzenie połączenia usługi ExpressRoute
-    href: virtual-wan-expressroute-portal.md
-  - name: Tworzenie połączenia typu punkt-lokacja
-    href: virtual-wan-point-to-site-portal.md
+    - name: Tworzenie połączenia typu lokacja-lokacja
+      href: virtual-wan-site-to-site-portal.md
+    - name: Tworzenie połączenia usługi ExpressRoute
+      href: virtual-wan-expressroute-portal.md
+    - name: Tworzenie połączenia typu punkt-lokacja
+      href: virtual-wan-point-to-site-portal.md
 - name: Pojęcia
   items:
-  - name: Lokalizacje i partnerzy
-    href: virtual-wan-locations-partners.md
-  - name: Płaszczyzna kontroli usługi Office 365 w wirtualnej sieci WAN
-    href: virtual-wan-office365-overview.md
+    - name: Lokalizacje i partnerzy
+      href: virtual-wan-locations-partners.md
+    - name: Płaszczyzna kontroli usługi Office 365 w wirtualnej sieci WAN
+      href: virtual-wan-office365-overview.md
 - name: Przewodniki z instrukcjami
   items:
-  - name: Kierowanie ruchem z koncentratora wirtualnego do wirtualnego urządzenia sieciowego
-    items:
-    - name: Azure Portal
-      href: virtual-wan-route-table-portal.md
-    - name: Azure PowerShell
-      href: virtual-wan-route-table.md
-  - name: Partnerzy ds. wirtualnej sieci WAN — automatyzacja
-    href: virtual-wan-configure-automation-providers.md
+    - name: Kierowanie ruchem z koncentratora wirtualnego do wirtualnego urządzenia sieciowego
+      items:
+        - name: Azure Portal
+          href: virtual-wan-route-table-portal.md
+        - name: Azure PowerShell
+          href: virtual-wan-route-table.md
+    - name: Partnerzy ds. wirtualnej sieci WAN — automatyzacja
+      href: virtual-wan-configure-automation-providers.md
 - name: Dokumentacja
   items:
-  - name: Azure PowerShell
-    href: /powershell/module/az.network#networking
-  - name: REST
-    href: /rest/api/azure
-  - name: Interfejs wiersza polecenia platformy Azure
-    href: /cli/azure/ext/virtual-wan
+    - name: Azure PowerShell
+      href: '/powershell/module/az.network#networking'
+    - name: REST
+      href: /rest/api/azure
+    - name: Interfejs wiersza polecenia platformy Azure
+      href: /cli/azure/ext/virtual-wan
 - name: Zasoby
   items:
-  - name: Często zadawane pytania
-    href: virtual-wan-faq.md
-  - name: Harmonogram działania dla platformy Azure
-    href: https://azure.microsoft.com/roadmap/?category=networking
-  - name: Blog
-    href: https://azure.microsoft.com/blog/topics/networking
-  - name: Limity usług i subskrypcji
-    href: ../azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
-  - name: Cennik
-    href: https://azure.microsoft.com/pricing/details/virtual-wan
-  - name: Kalkulator cen
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: Umowa SLA
-    href: https://azure.microsoft.com/support/legal/sla
-ms.openlocfilehash: 555af48950df4afab512951a7c3ae53e41663427
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579737"
+    - name: Często zadawane pytania
+      href: virtual-wan-faq.md
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/roadmap/?category=networking'
+    - name: Blog
+      href: 'https://azure.microsoft.com/blog/topics/networking'
+    - name: Limity usług i subskrypcji
+      href: ../azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
+    - name: Cennik
+      href: 'https://azure.microsoft.com/pricing/details/virtual-wan'
+    - name: Kalkulator cen
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Umowa SLA
+      href: 'https://azure.microsoft.com/support/legal/sla'
