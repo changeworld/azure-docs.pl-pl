@@ -1,126 +1,121 @@
-items:
 - name: Dokumentacja dotycząca raportów i monitorowania
   href: index.yml
 - name: Omówienie
   items:
-  - name: Co to są raporty usługi Azure AD?
-    href: overview-reports.md
-  - name: Co to jest monitorowanie usługi Azure AD?
-    href: overview-monitoring.md
+    - name: Co to są raporty usługi Azure AD?
+      href: overview-reports.md
+    - name: Co to jest monitorowanie usługi Azure AD?
+      href: overview-monitoring.md
 - name: Przewodniki Szybki start
-  items:
-  - name: Raporty
-    items:
-    - name: Pobieranie raportu logowań
-      href: quickstart-download-sign-in-report.md
-    - name: Pobieranie raportu inspekcji
-      href: quickstart-download-audit-report.md
-    - name: Konfigurowanie nazwanych lokalizacji
-      href: quickstart-configure-named-locations.md
-    - name: Instalowanie pakietu zawartości usługi Power BI
-      href: quickstart-install-power-bi-content-pack.md
-  - name: Monitorowanie
-    items:
-    - name: Przekierowywanie dzienników do konta magazynu
-      href: quickstart-azure-monitor-route-logs-to-storage-account.md
   expanded: true
+  items:
+    - name: Raporty
+      items:
+        - name: Pobieranie raportu logowań
+          href: quickstart-download-sign-in-report.md
+        - name: Pobieranie raportu inspekcji
+          href: quickstart-download-audit-report.md
+        - name: Konfigurowanie nazwanych lokalizacji
+          href: quickstart-configure-named-locations.md
+        - name: Instalowanie pakietu zawartości usługi Power BI
+          href: quickstart-install-power-bi-content-pack.md
+    - name: Monitorowanie
+      items:
+        - name: Przekierowywanie dzienników do konta magazynu
+          href: quickstart-azure-monitor-route-logs-to-storage-account.md
 - name: Samouczki
   items:
-  - name: Raporty
-    items:
-    - name: Uzyskiwanie dostępu do interfejsu API raportowania za pomocą certyfikatów
-      href: tutorial-access-api-with-certificates.md
-  - name: Monitorowanie
-    items:
-    - name: Przesyłanie strumieniowe dzienników do centrum zdarzeń
-      href: tutorial-azure-monitor-stream-logs-to-event-hub.md
-    - name: Integrowanie dzienników aktywności z rozwiązaniem Splunk
-      href: tutorial-integrate-activity-logs-with-splunk.md
+    - name: Raporty
+      items:
+        - name: Uzyskiwanie dostępu do interfejsu API raportowania za pomocą certyfikatów
+          href: tutorial-access-api-with-certificates.md
+    - name: Monitorowanie
+      items:
+        - name: Przesyłanie strumieniowe dzienników do centrum zdarzeń
+          href: tutorial-azure-monitor-stream-logs-to-event-hub.md
+        - name: Integrowanie dzienników aktywności z rozwiązaniem Splunk
+          href: tutorial-integrate-activity-logs-with-splunk.md
 - name: Pojęcia
   items:
-  - name: Raporty
-    items:
-    - name: Dzienniki inspekcji
-      href: concept-audit-logs.md
-    - name: Dzienniki logowania
-      href: concept-sign-ins.md
-    - name: Ryzykowne logowania
-      href: concept-risky-sign-ins.md
-    - name: Zdarzenia o podwyższonym ryzyku
-      href: concept-risk-events.md
-    - name: Narażeni użytkownicy
-      href: concept-user-at-risk.md
-    - name: Interfejsy API raportowania
-      href: concept-reporting-api.md
-  - name: Monitorowanie
-    items:
-    - name: Dzienniki usługi Azure AD w usłudze Azure Monitor
-      href: concept-activity-logs-azure-monitor.md
+    - name: Raporty
+      items:
+        - name: Dzienniki inspekcji
+          href: concept-audit-logs.md
+        - name: Dzienniki logowania
+          href: concept-sign-ins.md
+        - name: Ryzykowne logowania
+          href: concept-risky-sign-ins.md
+        - name: Zdarzenia o podwyższonym ryzyku
+          href: concept-risk-events.md
+        - name: Narażeni użytkownicy
+          href: concept-user-at-risk.md
+        - name: Interfejsy API raportowania
+          href: concept-reporting-api.md
+    - name: Monitorowanie
+      items:
+        - name: Dzienniki usługi Azure AD w usłudze Azure Monitor
+          href: concept-activity-logs-azure-monitor.md
 - name: Przewodniki z instrukcjami
-  items:
-  - name: Raporty
-    items:
-    - name: Znajdowanie raportów aktywności
-      href: howto-find-activity-reports.md
-    - name: Rozwiązywanie problemów z błędami logowania dla użytkownika
-      href: howto-troubleshoot-sign-in-errors.md
-    - name: Korygowanie użytkowników oflagowanych w związku z ryzykiem
-      href: howto-remediate-users-flagged-for-risk.md
-    - name: Używanie pakietu zawartości usługi Power BI w raportach usługi Azure AD
-      href: howto-power-bi-content-pack.md
-    - name: Konfigurowanie wymagań wstępnych dla interfejsu API raportowania
-      href: howto-configure-prerequisites-for-reporting-api.md
-  - name: Monitorowanie
-    items:
-    - name: Integrowanie dzienników aktywności z dziennikami usługi Azure Monitor
-      href: howto-integrate-activity-logs-with-log-analytics.md
-    - name: Analizowanie dzienników aktywności w dziennikach usługi Azure Monitor
-      href: howto-analyze-activity-logs-log-analytics.md
-    - name: Instalowanie i używanie widoków analizy dzienników dla usługi Azure AD
-      href: howto-install-use-log-analytics-views.md
-    - name: Integrowanie dzienników aktywności z rozwiązaniem SumoLogic
-      href: howto-integrate-activity-logs-with-sumologic.md
-    - name: Integrowanie dzienników aktywności z rozwiązaniem ArcSight
-      href: howto-integrate-activity-logs-with-arcsight.md
-  - name: Rozwiązywanie problemów
-    items:
-    - name: Brak danych inspekcji
-      href: troubleshoot-missing-audit-data.md
-    - name: Brak danych do pobrania
-      href: troubleshoot-missing-data-download.md
-    - name: Nie można uzyskać dostępu do interfejsów API programu Graph do raportowania
-      href: troubleshoot-graph-api.md
-    - name: Błędy w pakiecie zawartości usługi Power BI
-      href: troubleshoot-content-pack.md
   expanded: true
+  items:
+    - name: Raporty
+      items:
+        - name: Znajdowanie raportów aktywności
+          href: howto-find-activity-reports.md
+        - name: Rozwiązywanie problemów z błędami logowania dla użytkownika
+          href: howto-troubleshoot-sign-in-errors.md
+        - name: Korygowanie użytkowników oflagowanych w związku z ryzykiem
+          href: howto-remediate-users-flagged-for-risk.md
+        - name: Używanie pakietu zawartości usługi Power BI w raportach usługi Azure AD
+          href: howto-power-bi-content-pack.md
+        - name: Konfigurowanie wymagań wstępnych dla interfejsu API raportowania
+          href: howto-configure-prerequisites-for-reporting-api.md
+        - name: Jak używać skoroszytów usługi Azure Monitor
+          href: howto-use-azure-monitor-workbooks.md
+    - name: Monitorowanie
+      items:
+        - name: Integrowanie dzienników aktywności z dziennikami usługi Azure Monitor
+          href: howto-integrate-activity-logs-with-log-analytics.md
+        - name: Analizowanie dzienników aktywności w dziennikach usługi Azure Monitor
+          href: howto-analyze-activity-logs-log-analytics.md
+        - name: Instalowanie i używanie widoków analizy dzienników dla usługi Azure AD
+          href: howto-install-use-log-analytics-views.md
+        - name: Integrowanie dzienników aktywności z rozwiązaniem SumoLogic
+          href: howto-integrate-activity-logs-with-sumologic.md
+        - name: Integrowanie dzienników aktywności z rozwiązaniem ArcSight
+          href: howto-integrate-activity-logs-with-arcsight.md
+    - name: Rozwiązywanie problemów
+      items:
+        - name: Brak danych inspekcji
+          href: troubleshoot-missing-audit-data.md
+        - name: Brak danych do pobrania
+          href: troubleshoot-missing-data-download.md
+        - name: Nie można uzyskać dostępu do interfejsów API programu Graph do raportowania
+          href: troubleshoot-graph-api.md
+        - name: Błędy w pakiecie zawartości usługi Power BI
+          href: troubleshoot-content-pack.md
 - name: Dokumentacja
-  items:
-  - name: Raporty
-    items:
-    - name: Dokumentacja interfejsu API dzienników inspekcji
-      href: https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit
-    - name: Dokumentacja interfejsu API dzienników logowania
-      href: https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin
-    - name: Działania dotyczące inspekcji
-      href: reference-audit-activities.md
-    - name: Zasady przechowywania danych
-      href: reference-reports-data-retention.md
-    - name: Opóźnienia raportowania
-      href: reference-reports-latencies.md
-    - name: Kody błędów logowania
-      href: reference-sign-ins-error-codes.md
-    - name: Często zadawane pytania
-      href: reports-faq.md
-  - name: Monitorowanie
-    items:
-    - name: Schemat dziennika inspekcji
-      href: reference-azure-monitor-audit-log-schema.md
-    - name: Schemat dziennika logowania
-      href: reference-azure-monitor-sign-ins-log-schema.md
   expanded: true
-ms.openlocfilehash: 746e3834189b9c0c478f7bbcd8b72e6760c288f6
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58293774"
+  items:
+    - name: Raporty
+      items:
+        - name: Dokumentacja interfejsu API dzienników inspekcji
+          href: 'https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit'
+        - name: Dokumentacja interfejsu API dzienników logowania
+          href: 'https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin'
+        - name: Działania dotyczące inspekcji
+          href: reference-audit-activities.md
+        - name: Zasady przechowywania danych
+          href: reference-reports-data-retention.md
+        - name: Opóźnienia raportowania
+          href: reference-reports-latencies.md
+        - name: Kody błędów logowania
+          href: reference-sign-ins-error-codes.md
+        - name: Często zadawane pytania
+          href: reports-faq.md
+    - name: Monitorowanie
+      items:
+        - name: Schemat dziennika inspekcji
+          href: reference-azure-monitor-audit-log-schema.md
+        - name: Schemat dziennika logowania
+          href: reference-azure-monitor-sign-ins-log-schema.md

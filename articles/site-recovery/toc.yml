@@ -29,6 +29,8 @@
           href: azure-to-azure-tutorial-migrate.md
         - name: Przenoszenie maszyn wirtualnych platformy Azure do stref dostępności
           href: move-Azure-VMs-AVset-Azone.md
+        - name: Przenoszenie maszyn wirtualnych platformy Azure między regionami instytucji rządowych i regionami publicznymi
+          href: region-move-cross-geos.md
     - name: Odzyskiwanie po awarii maszyn wirtualnych programu VMware na platformę Azure
       items:
         - name: Przygotowywanie platformy Azure
@@ -175,6 +177,10 @@
               href: azure-to-azure-autoupdate.md
             - name: Aktualizacje w usłudze Azure Site Recovery
               href: service-updates-how-to.md
+            - name: Usuwanie serwerów i wyłączanie ochrony
+              href: site-recovery-manage-registration-and-protection.md
+            - name: Usuwanie magazynu
+              href: delete-vault.md
     - name: Odzyskiwanie po awarii VMware–Azure
       items:
         - name: Konfigurowanie zasobów sieciowych
