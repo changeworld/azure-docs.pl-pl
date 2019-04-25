@@ -229,7 +229,7 @@ Usługa Azure API Management zapewnia możliwość dostosować zawartość porta
 |Właściwość|Typ|Opis|  
 |--------------|----------|-----------------|  
 |referenceCode|ciąg|Kod generowany, jeśli ta strona została wyświetlona w wyniku błędu wewnętrznego.|  
-|Kod błędu|ciąg|Kod generowany, jeśli ta strona została wyświetlona w wyniku błędu wewnętrznego.|  
+|errorCode|ciąg|Kod generowany, jeśli ta strona została wyświetlona w wyniku błędu wewnętrznego.|  
 |emailBody|ciąg|Wyślij wiadomość e-mail treści generowany, gdy ta strona została wyświetlona w wyniku błędu wewnętrznego.|  
 |requestedUrl|ciąg|Adres URL zażądane, gdy nie można odnaleźć strony.|  
 |referrerUrl|ciąg|Adres URL odwołania do żądanego adresu URL.|  
