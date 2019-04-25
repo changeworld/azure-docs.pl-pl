@@ -11,7 +11,7 @@ ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 82baef7ce0d91713c8bef202ab0ea0925d290f3a
 ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496594"
@@ -97,9 +97,9 @@ Diagnostyka usługi Azure Automation tworzy dwa typy rekordów w dziennikach w u
 | Tenant_g | Identyfikator GUID, który identyfikuje dzierżawy dla obiektu wywołującego. |
 | JobId_g |Identyfikator GUID, który jest identyfikatorem zadania elementu Runbook. |
 | ResultType |Stan zadania elementu Runbook. Możliwe wartości:<br>-Nowych<br>— Uruchomione<br>— Zatrzymane<br>— Wstrzymane<br>— Nie powiodło się<br>-Ukończone |
-| Category | Klasyfikacja typu danych. W przypadku usługi Automation wartością jest JobLogs. |
+| Kategoria | Klasyfikacja typu danych. W przypadku usługi Automation wartością jest JobLogs. |
 | OperationName | Określa typ operacji wykonywanej na platformie Azure. W przypadku usługi Automation wartością jest zadanie. |
-| Resource | Nazwa konta usługi Automation |
+| Zasób | Nazwa konta usługi Automation |
 | SourceSystem | Jak dane zbierane dzienniki usługi Azure Monitor. Zawsze *Azure* dla diagnostyki platformy Azure. |
 | ResultDescription |Opisuje stan wyniku zadania elementu Runbook. Możliwe wartości:<br>— Zadanie jest uruchomione<br>— Zadanie nie powiodło się<br>— Zadanie zostało ukończone |
 | CorrelationId |Identyfikator GUID, który jest identyfikatorem korelacji zadania elementu Runbook. |
@@ -120,9 +120,9 @@ Diagnostyka usługi Azure Automation tworzy dwa typy rekordów w dziennikach w u
 | Tenant_g | Identyfikator GUID, który identyfikuje dzierżawy dla obiektu wywołującego. |
 | JobId_g |Identyfikator GUID, który jest identyfikatorem zadania elementu Runbook. |
 | ResultType |Stan zadania elementu Runbook. Możliwe wartości:<br>— W toku |
-| Category | Klasyfikacja typu danych. W przypadku usługi Automation wartością jest JobStreams. |
+| Kategoria | Klasyfikacja typu danych. W przypadku usługi Automation wartością jest JobStreams. |
 | OperationName | Określa typ operacji wykonywanej na platformie Azure. W przypadku usługi Automation wartością jest zadanie. |
-| Resource | Nazwa konta usługi Automation |
+| Zasób | Nazwa konta usługi Automation |
 | SourceSystem | Jak dane zbierane dzienniki usługi Azure Monitor. Zawsze *Azure* dla diagnostyki platformy Azure. |
 | ResultDescription |Obejmuje strumień wyjściowy z elementu Runbook. |
 | CorrelationId |Identyfikator GUID, który jest identyfikatorem korelacji zadania elementu Runbook. |

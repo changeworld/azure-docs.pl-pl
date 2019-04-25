@@ -1,15 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: cc30c4552cfa672121a5e7fc520fb4412237b7e9
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56591695"
 documentType: LandingData
 title: Dokumentacja usługi Batch
 metadata:
   title: Dokumentacja usługi Batch — samouczki i dokumentacja interfejsu API | Microsoft Docs
-  description: Usługa Azure Batch umożliwia wydajne uruchamianie aplikacji równoległych oraz aplikacji do obliczeń o wysokiej wydajności w wielkiej skali. Zdefiniuj zasoby obliczeniowe platformy Azure, aby wykonywać aplikacje równolegle lub w odpowiedniej skali bez ręcznego konfigurowania infrastruktury i zarządzania nią. Planuj zadania intensywnie korzystające z mocy obliczeniowej i dynamicznie dodawaj lub usuwaj zasoby obliczeniowe zgodnie z Twoimi wymaganiami. Dowiedz się, jak używać usługi Azure Batch, korzystając z przewodników Szybki start, samouczków i przykładów.
+  description: 'Usługa Azure Batch umożliwia wydajne uruchamianie aplikacji równoległych oraz aplikacji do obliczeń o wysokiej wydajności w wielkiej skali. Zdefiniuj zasoby obliczeniowe platformy Azure, aby wykonywać aplikacje równolegle lub w odpowiedniej skali bez ręcznego konfigurowania infrastruktury i zarządzania nią. Planuj zadania intensywnie korzystające z mocy obliczeniowej i dynamicznie dodawaj lub usuwaj zasoby obliczeniowe zgodnie z Twoimi wymaganiami. Dowiedz się, jak używać usługi Azure Batch, korzystając z przewodników Szybki start, samouczków i przykładów.'
   services: batch
   author: czeumault
   manager: carolz
@@ -20,58 +14,58 @@ metadata:
   ms.date: 11/30/2017
   ms.author: carolz
 abstract:
-  description: Usługa Azure Batch umożliwia wydajne uruchamianie aplikacji równoległych oraz aplikacji do obliczeń o wysokiej wydajności w wielkiej skali. Zdefiniuj zasoby obliczeniowe platformy Azure, aby wykonywać aplikacje równolegle lub w odpowiedniej skali bez ręcznego konfigurowania infrastruktury i zarządzania nią. Planuj zadania intensywnie korzystające z mocy obliczeniowej i dynamicznie dodawaj lub usuwaj zasoby obliczeniowe zgodnie z Twoimi wymaganiami. Dowiedz się, jak używać usługi Azure Batch, korzystając z przewodników Szybki start, samouczków i przykładów.
+  description: 'Usługa Azure Batch umożliwia wydajne uruchamianie aplikacji równoległych oraz aplikacji do obliczeń o wysokiej wydajności w wielkiej skali. Zdefiniuj zasoby obliczeniowe platformy Azure, aby wykonywać aplikacje równolegle lub w odpowiedniej skali bez ręcznego konfigurowania infrastruktury i zarządzania nią. Planuj zadania intensywnie korzystające z mocy obliczeniowej i dynamicznie dodawaj lub usuwaj zasoby obliczeniowe zgodnie z Twoimi wymaganiami. Dowiedz się, jak używać usługi Azure Batch, korzystając z przewodników Szybki start, samouczków i przykładów.'
 sections:
-- title: 5-minutowe przewodniki Szybki start
-  items:
-  - type: paragraph
-    text: Dowiedz się, jak uruchomić pierwsze zadanie w usłudze Batch na platformie Azure.
-  - type: list
-    style: icon48
+  - title: 5-minutowe przewodniki Szybki start
     items:
-    - image:
-        src: https://docs.microsoft.com/media/common/i_cligeneric.svg
-      text: Interfejs wiersza polecenia platformy Azure
-      href: quick-create-cli
-    - image:
-        src: https://docs.microsoft.com/media/common/i_portal.svg
-      text: Azure Portal
-      href: quick-create-portal
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_NET.svg
-      text: .NET
-      href: quick-run-dotnet
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_python.svg
-      text: Python
-      href: quick-run-python
-- title: Samouczki krok po kroku
-  items:
-  - type: paragraph
-    text: Dowiedz się, jak uruchamiać obciążenia intensywnie korzystające z mocy obliczeniowej w usłudze Batch.
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: 'Dowiedz się, jak uruchomić pierwsze zadanie w usłudze Batch na platformie Azure.'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_cligeneric.svg'
+            text: Interfejs wiersza polecenia platformy Azure
+            href: quick-create-cli
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
+            text: Azure Portal
+            href: quick-create-portal
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_NET.svg'
+            text: .NET
+            href: quick-run-dotnet
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_python.svg'
+            text: Python
+            href: quick-run-python
+  - title: Samouczki krok po kroku
     items:
-    - html: <a href="tutorial-parallel-dotnet">Parallel file processing with .NET SDK (Równoległe przetwarzanie plików za pomocą zestawu .NET SDK)</a>
-    - html: <a href="tutorial-parallel-python">Parallel file processing with Python SDK (Równoległe przetwarzanie plików za pomocą zestawu Python SDK)</a>
-    - html: <a href="tutorial-rendering-cli">Scene rendering with Arnold (Renderowanie scen za pomocą aplikacji Arnold)</a>
-    - html: <a href="tutorial-r-doazureparallel">Parallel R simulation (Równoległa symulacja w środowisku R)</a>
-- title: Przykłady
-  items:
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: 'Dowiedz się, jak uruchamiać obciążenia intensywnie korzystające z mocy obliczeniowej w usłudze Batch.'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="tutorial-parallel-dotnet">Parallel file processing with .NET SDK (Równoległe przetwarzanie plików za pomocą zestawu .NET SDK)</a>
+          - html: <a href="tutorial-parallel-python">Parallel file processing with Python SDK (Równoległe przetwarzanie plików za pomocą zestawu Python SDK)</a>
+          - html: <a href="tutorial-rendering-cli">Scene rendering with Arnold (Renderowanie scen za pomocą aplikacji Arnold)</a>
+          - html: <a href="tutorial-r-doazureparallel">Parallel R simulation (Równoległa symulacja w środowisku R)</a>
+  - title: Przykłady
     items:
-    - html: <a href="cli-samples">Interfejs wiersza polecenia platformy Azure</a>
-- title: Dokumentacja
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="cli-samples">Interfejs wiersza polecenia platformy Azure</a>
+  - title: Dokumentacja
     items:
-    - title: Wiersz polecenia
-      html: <p><a href="/cli/azure/batch">Interfejs wiersza polecenia platformy Azure</a></p><p><a href="/powershell/module/az.batch">Azure PowerShell</a></p>
-    - title: Języki
-      html: <p><a href="/dotnet/api/overview/azure/batch">.NET</a></p><p><a href="/java/api/overview/azure/batch">Java</a></p><p><a href="/javascript/api/overview/azure/batch">Node.js</a></p><p><a href="/python/api/overview/azure/batch">Python</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/batchservice">Batch Service REST API (Interfejs API REST usługi Batch)</a></p><p><a href="/rest/api/batchmanagement/">Batch Management REST API (Interfejs API REST zarządzania usługą Batch)</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Wiersz polecenia
+            html: <p><a href="/cli/azure/batch">Interfejs wiersza polecenia platformy Azure</a></p><p><a href="/powershell/module/az.batch">Azure PowerShell</a></p>
+          - title: Języki
+            html: <p><a href="/dotnet/api/overview/azure/batch">.NET</a></p><p><a href="/java/api/overview/azure/batch">Java</a></p><p><a href="/javascript/api/overview/azure/batch">Node.js</a></p><p><a href="/python/api/overview/azure/batch">Python</a></p>
+          - title: REST
+            html: <p><a href="/rest/api/batchservice">Batch Service REST API (Interfejs API REST usługi Batch)</a></p><p><a href="/rest/api/batchmanagement/">Batch Management REST API (Interfejs API REST zarządzania usługą Batch)</a></p>

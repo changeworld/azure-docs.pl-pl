@@ -1,14 +1,8 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 1ed169d248fce28a668c1c93fe2d9796b59547bd
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58619224"
 documentType: LandingData
 title: Dokumentacja witryny Azure Portal
 metadata:
-  description: Dowiedz się, jak używać witryny Azure Portal i tworzyć niestandardowe pulpity nawigacyjne.
+  description: 'Dowiedz się, jak używać witryny Azure Portal i tworzyć niestandardowe pulpity nawigacyjne.'
   services: azure portal
   documentationcenter: ''
   author: kfollis
@@ -25,27 +19,27 @@ metadata:
 abstract:
   description: Witryna Azure Portal to ujednolicona konsola internetowa umożliwiająca tworzenie i monitorowanie wszelkiego rodzaju aplikacji — od prostych aplikacji internetowych po złożone aplikacje w chmurze — oraz zarządzanie nimi. Obejmuje ona dostosowywalny pulpit nawigacyjny oraz opcje ułatwień dostępu.
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
-    items:
-    - href: /azure/azure-preview-portal-supported-browsers-devices
-      html: <p>Witryna Azure Portal działa na wszystkich nowoczesnych komputerach i tabletach oraz w nowoczesnych przeglądarkach.</p>
-      title: Obsługiwane przeglądarki i urządzenia
-    - href: /azure/azure-portal/azure-portal-change-theme-high-contrast
-      html: <p>Zmień kontrast lub schemat kolorów w witrynie Azure Portal.</p>
-      title: Włączanie wysokiego kontrastu
-    - href: /azure/azure-portal/azure-portal-keyboard-shortcuts
-      html: <p>Więcej informacji na temat skrótów klawiaturowych, które działają w całej witrynie Azure Portal.</p>
-      title: Skróty klawiaturowe
-    - href: /azure/azure-portal/azure-portal-dashboards
-      html: <p>Twórz wiele pulpitów nawigacyjnych i udostępniaj je innym osobom, które mają dostęp do Twoich subskrypcji platformy Azure.</p>
-      title: Tworzenie i udostępnianie pulpitów nawigacyjnych platformy Azure
-    - href: /azure/azure-portal/azure-portal-dashboard-share-access
-      html: <p>Opublikuj pulpit nawigacyjny i udostępnij go innym użytkownikom w Twojej organizacji.</p>
-      title: Udostępnianie pulpitów nawigacyjnych przy użyciu kontroli RBAC
-    - href: /azure/azure-portal/azure-portal-dashboards-create-programmatically
-      html: <p>Programowe tworzenie i publikowanie pulpitów nawigacyjnych dla organizacji</p>
-      title: Programowe tworzenie pulpitów nawigacyjnych platformy Azure
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/azure-preview-portal-supported-browsers-devices
+            html: <p>Witryna Azure Portal działa na wszystkich nowoczesnych komputerach i tabletach oraz w nowoczesnych przeglądarkach.</p>
+            title: Obsługiwane przeglądarki i urządzenia
+          - href: /azure/azure-portal/azure-portal-change-theme-high-contrast
+            html: <p>Zmień kontrast lub schemat kolorów w witrynie Azure Portal.</p>
+            title: Włączanie wysokiego kontrastu
+          - href: /azure/azure-portal/azure-portal-keyboard-shortcuts
+            html: '<p>Więcej informacji na temat skrótów klawiaturowych, które działają w całej witrynie Azure Portal.</p>'
+            title: Skróty klawiaturowe
+          - href: /azure/azure-portal/azure-portal-dashboards
+            html: '<p>Twórz wiele pulpitów nawigacyjnych i udostępniaj je innym osobom, które mają dostęp do Twoich subskrypcji platformy Azure.</p>'
+            title: Tworzenie i udostępnianie pulpitów nawigacyjnych platformy Azure
+          - href: /azure/azure-portal/azure-portal-dashboard-share-access
+            html: <p>Opublikuj pulpit nawigacyjny i udostępnij go innym użytkownikom w Twojej organizacji.</p>
+            title: Udostępnianie pulpitów nawigacyjnych przy użyciu kontroli RBAC
+          - href: /azure/azure-portal/azure-portal-dashboards-create-programmatically
+            html: <p>Programowe tworzenie i publikowanie pulpitów nawigacyjnych dla organizacji</p>
+            title: Programowe tworzenie pulpitów nawigacyjnych platformy Azure

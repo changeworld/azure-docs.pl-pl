@@ -11,7 +11,7 @@ ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 6d7b99da3e8e81973c51bbd68a15517828c9736d
 ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "58762943"
@@ -248,8 +248,8 @@ Usługa Automation tworzy dwa typy rekordów w obszarze roboczym usługi Log Ana
 
 |Właściwość | Opis|
 |----------|----------|
-|Caller |  Użytkownik, który zainicjował operację. Możliwe wartości to adres e-mail lub system w przypadku zaplanowanych zadań.|
-|Category | Klasyfikacja typu danych. W przypadku usługi Automation wartością jest JobLogs.|
+|Obiekt wywołujący |  Użytkownik, który zainicjował operację. Możliwe wartości to adres e-mail lub system w przypadku zaplanowanych zadań.|
+|Kategoria | Klasyfikacja typu danych. W przypadku usługi Automation wartością jest JobLogs.|
 |CorrelationId | Identyfikator GUID, który jest Identyfikatorem korelacji zadania elementu runbook.|
 |JobId | Identyfikator GUID, który jest Identyfikatorem zadania elementu runbook.|
 |operationName | Określa typ operacji wykonywanej na platformie Azure. W przypadku usługi Automation wartością jest zadanie.|
@@ -269,8 +269,8 @@ Usługa Automation tworzy dwa typy rekordów w obszarze roboczym usługi Log Ana
 
 |Właściwość | Opis|
 |----------|----------|
-|Caller |  Użytkownik, który zainicjował operację. Możliwe wartości to adres e-mail lub system w przypadku zaplanowanych zadań.|
-|Category | Klasyfikacja typu danych. W przypadku usługi Automation wartością jest JobStreams.|
+|Obiekt wywołujący |  Użytkownik, który zainicjował operację. Możliwe wartości to adres e-mail lub system w przypadku zaplanowanych zadań.|
+|Kategoria | Klasyfikacja typu danych. W przypadku usługi Automation wartością jest JobStreams.|
 |JobId | Identyfikator GUID, który jest Identyfikatorem zadania elementu runbook.|
 |operationName | Określa typ operacji wykonywanej na platformie Azure. W przypadku usługi Automation wartością jest zadanie.|
 |ResourceGroup | Określa nazwę grupy zasobów zadania elementu Runbook.|

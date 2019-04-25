@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 5fc027e52d838a85e7b880e3dd0daf4438e850dc
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57852002"
 documentType: LandingData
 title: Azure Dev Spaces
 metadata:
@@ -17,48 +11,47 @@ metadata:
   ms.date: 08/23/2018
   ms.author: zarhoads
 sections:
-- title: Środowisko do szybkiego, iteracyjnego programowania na platformie Kubernetes dla zespołów
-  items:
-  - type: paragraph
-    text: W przypadku minimalnej konfiguracji maszyny deweloperskiej możesz iteracyjnie uruchamiać i debugować kontenery bezpośrednio w usłudze Azure Kubernetes Service (AKS).  Możesz też współpracować ze swoim zespołem w udostępnionym klastrze Kubernetes i przeprowadzać kompleksowe testowanie z innymi składnikami bez replikowania lub pozorowania zależności. Dzięki usłudze Azure Dev Spaces możesz programować na komputerach z systemem Windows lub Linux albo komputerach Mac, używając znanych narzędzi, takich jak Visual Studio, Visual Studio Code czy wiersz polecenia.
-  - type: markdown
-    text: >-
-      > [!IMPORTANT]
-
-      > Usługa Azure Dev Spaces jest obecnie w wersji zapoznawczej i jest obsługiwana tylko w klastrach usługi AKS w następujących regionach: **Wschodnie stany USA**, **Wschodnie stany USA 2**, **Środkowe stany USA**, **Zachodnie stany USA 2**, **Europa Północna**, **Europa Zachodnia**, **Azja Południowo-Wschodnia**, **Kanada Środkowa** i **Kanada Wschodnia**. Wersje zapoznawcze są udostępniane pod warunkiem udzielenia zgody na [dodatkowe warunki użytkowania](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.
-- title: Rozpoczynanie pracy w usłudze Azure Dev Spaces
-  items:
-  - type: paragraph
-    text: 'Wybierz przewodnik dotyczący określonego języka, aby rozpocząć pracę:'
-  - type: list
-    style: icon48
+  - title: 'Środowisko do szybkiego, iteracyjnego programowania na platformie Kubernetes dla zespołów'
     items:
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_java.svg
-      text: Java
-      href: quickstart-java.md
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_vs-code.svg
-      text: .NET i VS Code
-      href: quickstart-netcore.md
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_visual-studio.svg
-      text: .NET i Visual Studio
-      href: quickstart-netcore-visualstudio.md
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_nodejs.svg
-      text: Node.js
-      href: quickstart-nodejs.md
-- title: W jaki sposób usługa Azure Dev Spaces upraszcza opracowywanie kontenerów Kubernetes
-  items:
-  - type: paragraph
-    text: Usługa Azure Dev Spaces ułatwia zespołom deweloperów zwiększenie produktywności na platformie Kubernetes w następujący sposób
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 'W przypadku minimalnej konfiguracji maszyny deweloperskiej możesz iteracyjnie uruchamiać i debugować kontenery bezpośrednio w usłudze Azure Kubernetes Service (AKS).  Możesz też współpracować ze swoim zespołem w udostępnionym klastrze Kubernetes i przeprowadzać kompleksowe testowanie z innymi składnikami bez replikowania lub pozorowania zależności. Dzięki usłudze Azure Dev Spaces możesz programować na komputerach z systemem Windows lub Linux albo komputerach Mac, używając znanych narzędzi, takich jak Visual Studio, Visual Studio Code czy wiersz polecenia.'
+      - type: markdown
+        text: |-
+          > [!IMPORTANT]
+          > Usługa Azure Dev Spaces jest obecnie w wersji zapoznawczej i jest obsługiwana tylko w klastrach usługi AKS w następujących regionach: **Wschodnie stany USA**, **Wschodnie stany USA 2**, **Środkowe stany USA**, **Zachodnie stany USA 2**, **Europa Północna**, **Europa Zachodnia**, **Azja Południowo-Wschodnia**, **Kanada Środkowa** i **Kanada Wschodnia**. Wersje zapoznawcze są udostępniane pod warunkiem udzielenia zgody na [dodatkowe warunki użytkowania](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.
+  - title: Rozpoczynanie pracy w usłudze Azure Dev Spaces
     items:
-    - text: Zminimalizowanie konfiguracji lokalnej maszyny deweloperskiej dla każdego członka zespołu i praca bezpośrednio w usłudze AKS, zarządzanym klastrze Kubernetes na platformie Azure.
-    - text: Błyskawiczna iteracja i debugowanie kodu bezpośrednio na platformie Kubernetes przy użyciu programu Visual Studio 2017 lub Visual Studio Code.
-    - text: Generowanie zasobów konfiguracji jako kodu Docker i Kubernetes do użytku od etapu programowania do etapu produkcji.
-    - text: Udostępnianie zespołowi zarządzanego klastra Kubernetes i wspólna praca. Opracowywanie kodu w izolacji i wykonywanie kompleksowych testów z innymi składnikami bez konieczności replikowania i pozorowania zależności.
-  - type: markdown
-    text: '![](media/azure-dev-spaces/collaborate-graphic.gif)'
+      - type: paragraph
+        text: 'Wybierz przewodnik dotyczący określonego języka, aby rozpocząć pracę:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_java.svg'
+            text: Java
+            href: quickstart-java.md
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_vs-code.svg'
+            text: .NET i VS Code
+            href: quickstart-netcore.md
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_visual-studio.svg'
+            text: .NET i Visual Studio
+            href: quickstart-netcore-visualstudio.md
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_nodejs.svg'
+            text: Node.js
+            href: quickstart-nodejs.md
+  - title: W jaki sposób usługa Azure Dev Spaces upraszcza opracowywanie kontenerów Kubernetes
+    items:
+      - type: paragraph
+        text: Usługa Azure Dev Spaces ułatwia zespołom deweloperów zwiększenie produktywności na platformie Kubernetes w następujący sposób
+      - type: list
+        style: unordered
+        items:
+          - text: 'Zminimalizowanie konfiguracji lokalnej maszyny deweloperskiej dla każdego członka zespołu i praca bezpośrednio w usłudze AKS, zarządzanym klastrze Kubernetes na platformie Azure.'
+          - text: Błyskawiczna iteracja i debugowanie kodu bezpośrednio na platformie Kubernetes przy użyciu programu Visual Studio 2017 lub Visual Studio Code.
+          - text: Generowanie zasobów konfiguracji jako kodu Docker i Kubernetes do użytku od etapu programowania do etapu produkcji.
+          - text: Udostępnianie zespołowi zarządzanego klastra Kubernetes i wspólna praca. Opracowywanie kodu w izolacji i wykonywanie kompleksowych testów z innymi składnikami bez konieczności replikowania i pozorowania zależności.
+      - type: markdown
+        text: '![](media/azure-dev-spaces/collaborate-graphic.gif)'

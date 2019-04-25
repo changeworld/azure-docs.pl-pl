@@ -1,16 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 8edbfd118bd6ec2641372ce69fdff475f8376948
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57407021"
 documentType: LandingData
 title: Dokumentacja funkcji automatycznego sugerowania Bing
 metadata:
   document_id: ce69fd12-adf8-11e7-abc4-cec278b6b50a
-  title: Dokumentacja funkcji automatycznego sugerowania Bing — samouczki, przewodniki Szybki start i dokumentacja interfejsu API | Microsoft Docs
-  description: Dowiedz się, jak używać interfejsu API automatycznego sugerowania Bing w celu uzyskania propozycji zapytań na podstawie zapytania częściowego. W samouczkach wyjaśniono, jak tworzyć aplikacje korzystające z usługi.
+  title: 'Dokumentacja funkcji automatycznego sugerowania Bing — samouczki, przewodniki Szybki start i dokumentacja interfejsu API | Microsoft Docs'
+  description: 'Dowiedz się, jak używać interfejsu API automatycznego sugerowania Bing w celu uzyskania propozycji zapytań na podstawie zapytania częściowego. W samouczkach wyjaśniono, jak tworzyć aplikacje korzystające z usługi.'
   services: cognitive-services
   author: aahill
   manager: nitinme
@@ -22,77 +16,77 @@ metadata:
   ms.date: 02/20/2019
   ms.author: aahi
 abstract:
-  description: Interfejs API automatycznego sugerowania Bing pozwala wysłać do usługi Bing termin w postaci częściowego zapytania wyszukiwania i otrzymać w zamian listę proponowanych zapytań, które były wyszukiwane przez innych użytkowników.  Na przykład gdy użytkownik wpisuje poszczególne znaki szukanego terminu, można wywoływać ten interfejs API w celu umieszczania sugestii na liście rozwijanej pola wyszukiwania. Dowiedz się, jak używać interfejsu API automatycznego sugerowania, korzystając z naszych przewodników Szybki start, samouczków i przykładów.
+  description: 'Interfejs API automatycznego sugerowania Bing pozwala wysłać do usługi Bing termin w postaci częściowego zapytania wyszukiwania i otrzymać w zamian listę proponowanych zapytań, które były wyszukiwane przez innych użytkowników.  Na przykład gdy użytkownik wpisuje poszczególne znaki szukanego terminu, można wywoływać ten interfejs API w celu umieszczania sugestii na liście rozwijanej pola wyszukiwania. Dowiedz się, jak używać interfejsu API automatycznego sugerowania, korzystając z naszych przewodników Szybki start, samouczków i przykładów.'
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/cognitive-services/bing-autosuggest/get-suggested-search-terms
+            html: <p>Dowiedz się więcej o interfejsie API automatycznego sugerowania Bing</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: Co to jest interfejs API automatycznego sugerowania Bing?
+          - href: /azure/cognitive-services/bing-autosuggest/concepts/get-suggestions
+            html: '<p>Dowiedz się, jak uzyskiwać sugestie dotyczące wyszukiwania w czasie rzeczywistym</p>'
+            image:
+              src: ../media/index/i_guidelines.svg
+            title: Uzyskiwanie sugestii z interfejsu API automatycznego sugerowania Bing
+          - href: /azure/cognitive-services/bing-autosuggest/language-support
+            html: '<p>Dowiedz się, które języki obsługuje interfejs API.</p>'
+            image:
+              src: ../media/index/i_guidelines.svg
+            title: Obsługiwane języki
+  - title: 5-minutowe przewodniki Szybki start
     items:
-    - href: /azure/cognitive-services/bing-autosuggest/get-suggested-search-terms
-      html: <p>Dowiedz się więcej o interfejsie API automatycznego sugerowania Bing</p>
-      image:
-        src: ../media/index/i_overview.svg
-      title: Co to jest interfejs API automatycznego sugerowania Bing?
-    - href: /azure/cognitive-services/bing-autosuggest/concepts/get-suggestions
-      html: <p>Dowiedz się, jak uzyskiwać sugestie dotyczące wyszukiwania w czasie rzeczywistym</p>
-      image:
-        src: ../media/index/i_guidelines.svg
-      title: Uzyskiwanie sugestii z interfejsu API automatycznego sugerowania Bing
-    - href: /azure/cognitive-services/bing-autosuggest/language-support
-      html: <p>Dowiedz się, które języki obsługuje interfejs API.</p>
-      image:
-        src: ../media/index/i_guidelines.svg
-      title: Obsługiwane języki
-- title: 5-minutowe przewodniki Szybki start
-  items:
-  - type: paragraph
-    text: 'Zacznij korzystać z interfejsu API automatycznego sugerowania Bing przez utworzenie zapytania i wyświetlenie odpowiedzi JSON:'
-  - type: list
-    style: icon48
+      - type: paragraph
+        text: 'Zacznij korzystać z interfejsu API automatycznego sugerowania Bing przez utworzenie zapytania i wyświetlenie odpowiedzi JSON:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/logo_csharp.svg
+            href: quickstarts/csharp
+            text: 'C&#35;'
+          - image:
+              src: media/index/logo_java.svg
+            href: quickstarts/java
+            text: Java
+          - image:
+              src: media/index/logo_nodejs.svg
+            href: quickstarts/nodejs
+            text: Node.js
+          - image:
+              src: media/index/logo_php.svg
+            href: quickstarts/php
+            text: PHP
+          - image:
+              src: media/index/logo_python.svg
+            href: quickstarts/python
+            text: Python
+          - image:
+              src: media/index/logo_ruby.svg
+            href: quickstarts/ruby
+            text: Ruby
+  - title: Samouczki krok po kroku
     items:
-    - image:
-        src: media/index/logo_csharp.svg
-      href: quickstarts/csharp
-      text: C&#35;
-    - image:
-        src: media/index/logo_java.svg
-      href: quickstarts/java
-      text: Java
-    - image:
-        src: media/index/logo_nodejs.svg
-      href: quickstarts/nodejs
-      text: Node.js
-    - image:
-        src: media/index/logo_php.svg
-      href: quickstarts/php
-      text: PHP
-    - image:
-        src: media/index/logo_python.svg
-      href: quickstarts/python
-      text: Python
-    - image:
-        src: media/index/logo_ruby.svg
-      href: quickstarts/ruby
-      text: Ruby
-- title: Samouczki krok po kroku
-  items:
-  - type: paragraph
-    text: 'Dowiedz się, jak opracowywać aplikacje przy użyciu interfejsu API automatycznego sugerowania Bing:'
-  - type: paragraph
-    text: <a href="tutorials/autosuggest.md">Jednostronicowa aplikacja internetowa</a>
-- title: Dokumentacja
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: 'Dowiedz się, jak opracowywać aplikacje przy użyciu interfejsu API automatycznego sugerowania Bing:'
+      - type: paragraph
+        text: <a href="tutorials/autosuggest.md">Jednostronicowa aplikacja internetowa</a>
+  - title: Dokumentacja
     items:
-    - title: Interfejsy API
-      html: <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference">Interfejs API automatycznego sugerowania Bing v7</a></p> <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference">Interfejs API automatycznego sugerowania Bing v5</p>
-    - title: Zestawy SDK
-      html: <p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-dotnet">.NET</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/autosuggest">Go</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/autosuggest?view=azure-java-stable">Java</a></p>
-    - title: PowerShell
-      html: <p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>
-    - title: Interfejs wiersza polecenia
-      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Interfejs wiersza polecenia platformy Azure</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Interfejsy API
+            html: '<p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference">Interfejs API automatycznego sugerowania Bing v7</a></p> <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference">Interfejs API automatycznego sugerowania Bing v5</p>'
+          - title: Zestawy SDK
+            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-dotnet">.NET</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/autosuggest">Go</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/autosuggest?view=azure-java-stable">Java</a></p>'
+          - title: PowerShell
+            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
+          - title: Interfejs wiersza polecenia
+            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Interfejs wiersza polecenia platformy Azure</a></p>'

@@ -1,15 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 67299955e00f2bb5fb409420dd951357f89e1996
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49384926"
 documentType: LandingData
 title: Dokumentacja usługi Azure IoT Central
 metadata:
   title: Dokumentacja usługi Azure IoT Central — samouczki i dokumentacja interfejsu API | Microsoft Docs
-  description: Azure IoT Central to w pełni zarządzane rozwiązanie SaaS (oprogramowanie jako usługa), które ułatwia łączenie i monitorowanie zasobów IoT oraz zarządzanie nimi w odpowiedniej skali. Usługa Azure IoT Central upraszcza początkową konfigurację rozwiązania IoT, a także zmniejsza obciążenie związane z zarządzaniem, koszty operacyjne i ogólny nakład pracy w typowym projekcie IoT. Dowiedz się, jak tworzyć i dostosowywać aplikację usługi Azure IoT Central, używać jej oraz zarządzać nią, korzystając z naszych przewodników Szybki start i samouczków.
+  description: 'Azure IoT Central to w pełni zarządzane rozwiązanie SaaS (oprogramowanie jako usługa), które ułatwia łączenie i monitorowanie zasobów IoT oraz zarządzanie nimi w odpowiedniej skali. Usługa Azure IoT Central upraszcza początkową konfigurację rozwiązania IoT, a także zmniejsza obciążenie związane z zarządzaniem, koszty operacyjne i ogólny nakład pracy w typowym projekcie IoT. Dowiedz się, jak tworzyć i dostosowywać aplikację usługi Azure IoT Central, używać jej oraz zarządzać nią, korzystając z naszych przewodników Szybki start i samouczków.'
   author: dominicbetts
   ms.topic: landing-page
   ms.date: 11/08/2017
@@ -18,25 +12,25 @@ metadata:
   services: iot-central
   manager: timlt
 abstract:
-  description: Azure IoT Central to w pełni zarządzane rozwiązanie SaaS (oprogramowanie jako usługa), które ułatwia łączenie i monitorowanie zasobów IoT oraz zarządzanie nimi w odpowiedniej skali. Usługa Azure IoT Central upraszcza początkową konfigurację rozwiązania IoT, a także zmniejsza obciążenie związane z zarządzaniem, koszty operacyjne i ogólny nakład pracy w typowym projekcie IoT. Dowiedz się, jak tworzyć i dostosowywać aplikację usługi Azure IoT Central, używać jej oraz zarządzać nią, korzystając z naszych przewodników Szybki start i samouczków.
+  description: 'Azure IoT Central to w pełni zarządzane rozwiązanie SaaS (oprogramowanie jako usługa), które ułatwia łączenie i monitorowanie zasobów IoT oraz zarządzanie nimi w odpowiedniej skali. Usługa Azure IoT Central upraszcza początkową konfigurację rozwiązania IoT, a także zmniejsza obciążenie związane z zarządzaniem, koszty operacyjne i ogólny nakład pracy w typowym projekcie IoT. Dowiedz się, jak tworzyć i dostosowywać aplikację usługi Azure IoT Central, używać jej oraz zarządzać nią, korzystając z naszych przewodników Szybki start i samouczków.'
 sections:
-- title: Alert dotyczący funkcji
-  items:
-  - type: paragraph
-    text: Usługa Azure IoT Central zaczęła używać usługi Azure IoT Hub Device Provisioning Service (DPS) dla wszystkich połączeń urządzeń. Do rejestrowania urządzeń w aplikacji usługi Azure IoT Central i łączenia ich z nią będzie trzeba używać zestawu DPS SDK. <a href="https://docs.microsoft.com/azure/iot-central/concepts-connectivity">Dowiedz się więcej o łączności z urządzeniami w usłudze Azure IoT Central.</a> Konieczne będą zmiana docelowego kontenera magazynu i utworzenie nowego szablonu rozwiązania dla wszystkich aplikacji używających funkcji ciągłego eksportowania danych i/lub szablonu rozwiązania usługi Power BI.
-- title: 5-minutowe przewodniki Szybki start
-  items:
-  - type: paragraph
-    text: Dowiedz się, jak <a href="quick-deploy-iot-central">utworzyć nową aplikację usługi Azure IoT Central</a>.
-- title: Samouczki krok po kroku
-  items:
-  - type: paragraph
-    text: Dowiedz się, jak dostosowywać aplikację usługi Azure IoT Central i korzystać z niej.
-  - type: list
-    style: ordered
+  - title: Alert dotyczący funkcji
     items:
-    - html: <a href="tutorial-define-device-type">Definiowanie nowego typu urządzenia</a>
-    - html: <a href="tutorial-configure-rules">Konfigurowanie reguł</a>
-    - html: <a href="tutorial-customize-operator">Dostosowywanie widoku operatora</a>
-    - html: <a href="tutorial-monitor-devices">Monitorowanie urządzeń</a>
-    - html: <a href="tutorial-add-device">Dodawanie rzeczywistego urządzenia</a>
+      - type: paragraph
+        text: 'Usługa Azure IoT Central zaczęła używać usługi Azure IoT Hub Device Provisioning Service (DPS) dla wszystkich połączeń urządzeń. Do rejestrowania urządzeń w aplikacji usługi Azure IoT Central i łączenia ich z nią będzie trzeba używać zestawu DPS SDK. <a href="https://docs.microsoft.com/azure/iot-central/concepts-connectivity">Dowiedz się więcej o łączności z urządzeniami w usłudze Azure IoT Central.</a> Konieczne będą zmiana docelowego kontenera magazynu i utworzenie nowego szablonu rozwiązania dla wszystkich aplikacji używających funkcji ciągłego eksportowania danych i/lub szablonu rozwiązania usługi Power BI.'
+  - title: 5-minutowe przewodniki Szybki start
+    items:
+      - type: paragraph
+        text: 'Dowiedz się, jak <a href="quick-deploy-iot-central">utworzyć nową aplikację usługi Azure IoT Central</a>.'
+  - title: Samouczki krok po kroku
+    items:
+      - type: paragraph
+        text: 'Dowiedz się, jak dostosowywać aplikację usługi Azure IoT Central i korzystać z niej.'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="tutorial-define-device-type">Definiowanie nowego typu urządzenia</a>
+          - html: <a href="tutorial-configure-rules">Konfigurowanie reguł</a>
+          - html: <a href="tutorial-customize-operator">Dostosowywanie widoku operatora</a>
+          - html: <a href="tutorial-monitor-devices">Monitorowanie urządzeń</a>
+          - html: <a href="tutorial-add-device">Dodawanie rzeczywistego urządzenia</a>
