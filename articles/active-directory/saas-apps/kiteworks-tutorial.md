@@ -16,11 +16,11 @@ ms.date: 06/20/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 73c352c0d60bc8dca969092210e9cff0a733765a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56163536"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60263250"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kiteworks"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Kiteworks
 
@@ -134,7 +134,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 1. Zaloguj się do witryny platforma Kiteworks firmy jako administrator.
 
-1. Na pasku narzędzi u góry kliknij **ustawienia**.
+1. Na pasku narzędzi u góry kliknij pozycję **Settings** (Ustawienia).
    
     ![Konfigurowanie logowania jednokrotnego](./media/kiteworks-tutorial/tutorial_kiteworks_06.png) 
 
@@ -243,7 +243,7 @@ Po kliknięciu kafelka platforma Kiteworks w panelu dostępu, możesz należy po
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

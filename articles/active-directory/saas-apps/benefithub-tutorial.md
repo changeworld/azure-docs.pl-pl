@@ -16,11 +16,11 @@ ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f70bfbac98904752baa093076ce66f0de4993ea2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57849945"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60283119"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-benefithub"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją BenefitHub
 

@@ -12,11 +12,11 @@ ms.topic: quickstart
 ms.date: 01/23/2019
 ms.author: diberry
 ms.openlocfilehash: 055cbb8df3d91e1a3ada3fdbb471e74d146b86b2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874893"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60197072"
 ---
 # <a name="quickstart-get-intent-using-go"></a>Szybki start: pobieranie intencji za pomocą języka Go
 
@@ -91,6 +91,6 @@ Aby uzyskać dostęp do tych samych wyników, które zostały wyświetlone w okn
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 Zamknij plik Go i usuń go z systemu plików. 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 > [!div class="nextstepaction"]
 > [Dodawanie wypowiedzi](luis-get-started-go-add-utterance.md)

@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: genli
 ms.openlocfilehash: 36f7ed9b02b66718327c1a05a6cf29eedf39e7a5
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248389"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60232858"
 ---
 # <a name="specifying-dns-settings-in-a-virtual-network-configuration-file"></a>Określanie ustawień DNS w pliku konfiguracji sieci wirtualnej
 Plik konfiguracji sieci ma dwa elementy, które służy do określania ustawień systemu nazw domen (DNS, Domain Name System): **DnsServers** i **DnsServerRef**. Możesz dodać listę serwerów DNS, określając ich adresy IP i odwoływać się do nazwy **DnsServers** elementu. Następnie można użyć **DnsServerRef** elementu, aby określić, które wpisami serwera DNS z elementu DnsServers służą do witryny innej sieci w ramach sieci wirtualnej.

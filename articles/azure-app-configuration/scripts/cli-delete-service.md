@@ -15,11 +15,11 @@ ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
 ms.openlocfilehash: 3482cc14e73801af6d0db910ded84adf722bc6f4
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56884222"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60234334"
 ---
 # <a name="delete-an-azure-app-configuration-store"></a>Usuwanie magazynu usługi Azure App Configuration
 
@@ -54,7 +54,7 @@ Ten skrypt używa poniższych poleceń do usuwania magazynu konfiguracji aplikac
 |---|---|
 | [az appconfig delete](/cli/azure/ext/appconfig/appconfig#ext-appconfig-az-appconfig-delete) | Usuwa zasób magazynu konfiguracji aplikacji. |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](/cli/azure).
 

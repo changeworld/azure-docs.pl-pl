@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/18/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: cd81eb3d62332bba67f0056a6f7b49279bc50c4f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 5b38d022d372e7d35ba2dbeaef90660ce95f73fa
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59788816"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60250731"
 ---
 # <a name="upload-a-generalized-vhd-to-azure-to-create-a-new-vm"></a>Przekazywanie uogólnionego wirtualnego dysku twardego do systemu Azure do tworzenia nowej maszyny Wirtualnej
 
@@ -31,7 +31,7 @@ Jeśli chcesz utworzyć maszynę Wirtualną z wyspecjalizowanego wirtualnego dys
 
 W tym temacie omówiono używanie kont magazynu, ale zalecamy klientom przenoszenie zamiast Managed Disks. Aby uzyskać pełne omówienie sposobu przygotowania, przekazywanie i tworzenie nowej maszyny Wirtualnej przy użyciu dysków zarządzanych, zobacz [Utwórz nową maszynę Wirtualną z uogólnionego wirtualnego dysku twardego przekazany na platformę Azure przy użyciu dysków Managed Disks](upload-generalized-managed.md).
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="prepare-the-vm"></a>Przygotowywanie maszyny wirtualnej
 

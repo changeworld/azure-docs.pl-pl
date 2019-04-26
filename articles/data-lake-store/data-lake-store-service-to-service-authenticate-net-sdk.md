@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: be8d4172476ca0613e80e62739b9ab36f8ab4c3b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58881158"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60197755"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Do usługi uwierzytelniania za pomocą usługi Azure Data Lake Storage Gen1 przy użyciu zestawu SDK platformy .NET
 > [!div class="op_single_selector"]
@@ -43,7 +43,7 @@ Ten artykuł zawiera informacje o sposobie używania zestawu SDK platformy .NET 
 
    | Właściwość | Wartość |
    | --- | --- |
-   | Kategoria |Szablony/Visual C#/Windows |
+   | Category |Szablony/Visual C#/Windows |
    | Szablon |Aplikacja konsolowa |
    | Name (Nazwa) |CreateADLApplication |
 4. Kliknij przycisk **OK**, aby utworzyć projekt.

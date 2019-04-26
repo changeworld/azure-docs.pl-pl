@@ -1,6 +1,6 @@
 ---
-title: Azure elementu interfejsu użytkownika w sekcji | Dokumentacja firmy Microsoft
-description: Opis elementu Microsoft.Common.Section interfejsu użytkownika do portalu Azure.
+title: Usługa Azure elementu interfejsu użytkownika w sekcji | Dokumentacja firmy Microsoft
+description: Opis elementu Microsoft.Common.Section interfejsu użytkownika dla witryny Azure portal.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 90ffae3dd8b05041c34d766e464eb68f793f6066
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: c89b45dd4d8e6c2964f3d2bcbb6c3cef445c79e6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062982"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60251912"
 ---
 # <a name="microsoftcommonsection-ui-element"></a>Element Microsoft.Common.Section interfejsu użytkownika
-Formant, który grupuje co najmniej jeden element w pozycji.
+Formant, który grupuje jeden lub więcej elementów do pozycji.
 
 ## <a name="ui-sample"></a>Przykład interfejsu użytkownika
 ![Microsoft.Common.Section](./media/managed-application-elements/microsoft.common.section.png)
@@ -49,18 +49,18 @@ Formant, który grupuje co najmniej jeden element w pozycji.
 ```
 
 ## <a name="remarks"></a>Uwagi
-- `elements` musi zawierać co najmniej jeden element i może mieć wszystkich typów elementów, z wyjątkiem `Microsoft.Common.Section`.
+- `elements` musi mieć co najmniej jeden element, a może mieć wszystkich typów elementów, z wyjątkiem `Microsoft.Common.Section`.
 - Ten element nie obsługuje `toolTip` właściwości.
 
 ## <a name="sample-output"></a>Przykładowe dane wyjściowe
-Aby uzyskać dostęp do danych wyjściowych wartości elementów w `elements`, użyj [basics()](create-uidefinition-functions.md#basics) lub [steps()](create-uidefinition-functions.md#steps) funkcje i kropkowego:
+Aby uzyskać dostęp do wartości danych wyjściowych elementów w `elements`, użyj [basics()](create-uidefinition-functions.md#basics) lub [steps()](create-uidefinition-functions.md#steps) funkcje i notacji z kropką:
 
 ```json
 steps('configuration').section1.text1
 ```
 
-Elementy typu `Microsoft.Common.Section` ma same wartości nie danych wyjściowych.
+Elementy typu `Microsoft.Common.Section` mieć nie wartości danych wyjściowych.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Aby obejrzeć wprowadzenie do tworzenia definicji interfejsu użytkownika, zobacz [wprowadzenie CreateUiDefinition](create-uidefinition-overview.md).
-* Opis właściwości wspólnych elementów interfejsu użytkownika, zobacz [elementy CreateUiDefinition](create-uidefinition-elements.md).
+* Wprowadzenie do tworzenia definicji interfejsu użytkownika, zobacz [wprowadzenie do zasobu CreateUiDefinition](create-uidefinition-overview.md).
+* Aby uzyskać opis wspólne właściwości w elementach interfejsu użytkownika, zobacz [elementy CreateUiDefinition](create-uidefinition-elements.md).

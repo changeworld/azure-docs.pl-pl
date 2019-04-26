@@ -12,16 +12,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/06/2018
 ms.author: johnkem
-ms.openlocfilehash: 772c0a4b6cf57aa428f722fb90a0673f9e703627
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 58c520ecbaf764140748167e458c301ab56de375
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55982798"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60232885"
 ---
 # <a name="azure-diagnostics-extension-for-windows-vms"></a>Rozszerzenie diagnostyki platformy Azure dla maszyn wirtualnych Windows
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Rozszerzenie maszyny Wirtualnej diagnostyki platformy Azure umożliwia zbieranie danych monitorowania, takich jak liczniki wydajności i dzienników zdarzeń, z maszyną Wirtualną Windows. Precyzyjne można określić, jakie dane mają być zbierane i gdzie mają dane przejść, takich jak konto usługi Azure Storage lub usługi Azure Event Hub. Te dane umożliwia również tworzenie wykresów w witrynie Azure portal lub tworzyć alerty dotyczące metryk.
 
@@ -61,7 +61,7 @@ az vm extension set \
 
 `Set-AzVMDiagnosticsExtension` Polecenia można dodać rozszerzenia diagnostyki Azure do istniejącej maszyny wirtualnej. Zobacz też [Diagnostyka Azure maszyny wirtualnej z systemem Windows w programie PowerShell](ps-extensions-diagnostics.md).
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 
 ```powershell

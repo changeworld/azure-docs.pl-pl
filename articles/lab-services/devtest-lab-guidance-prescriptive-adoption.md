@@ -14,11 +14,11 @@ ms.date: 04/12/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: e1d119f3c7c5d6dbdb570d362c53b80dad7886bd
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149006"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60198041"
 ---
 # <a name="set-up-azure-devtest-labs-infrastructure-in-your-enterprise"></a>Konfigurowanie infrastruktury usługi Azure DevTest Labs w przedsiębiorstwie
 Przedsiębiorstwom szybko adaptują chmurę ze względu na jej [korzyści](/azure/architecture/cloud-adoption/business-strategy/cloud-migration-business-case) zawierające elastyczności, elastyczności i oszczędnościami, jakie daje. Pierwszym krokiem wspólnej klienci będą mogli korzystać z chmury jest chcesz rozpocząć od tworzenia i testowania obciążenia.  DevTest Labs oferuje [funkcji](devtest-lab-concepts.md) korzyści, enterprise i pomoc techniczna [klucza scenariuszy deweloperskich lub testowych enterprise](devtest-lab-guidance-get-started.md).

@@ -19,11 +19,11 @@ ms.custom: aaddev
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d976a43173ce4f9deee0a723a895b40678e173b3
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437887"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60250506"
 ---
 # <a name="single-sign-on-saml-protocol"></a>Protokół SAML logowania jednokrotnego
 
@@ -100,7 +100,7 @@ Jeśli podana, nie dołączaj `ProxyCount` atrybutu, `IDPListOption` lub `Reques
 ### <a name="signature"></a>Podpis
 Nie dołączaj `Signature` element `AuthnRequest` elementów, usługa Azure AD nie obsługuje podpisanego żądania uwierzytelniania.
 
-### <a name="subject"></a>Podmiot
+### <a name="subject"></a>Subject
 Usługa Azure AD ignoruje `Subject` elementu `AuthnRequest` elementów.
 
 ## <a name="response"></a>Odpowiedź
@@ -211,7 +211,7 @@ Do generowania podpisu cyfrowego, usługa Azure AD używa klucza podpisywania w 
     </ds:Signature>
 ```
 
-#### <a name="subject"></a>Podmiot
+#### <a name="subject"></a>Subject
 
 To ustawienie określa jednostki, będącego przedmiotem oświadczeń do potwierdzenia. Zawiera on `NameID` element, który reprezentuje uwierzytelnionego użytkownika. `NameID` Wartość docelowa identyfikator, który będzie kierowany tylko do dostawcy usług, który jest odbiorców tokenu. Jest trwały — mogą być odwoływane, ale nigdy nie jest ponownie przypisywany. Należy również nieprzezroczysty, ponieważ nie ujawnia niczego o użytkowniku i nie można użyć jako identyfikatora dla zapytań dotyczących atrybutów.
 

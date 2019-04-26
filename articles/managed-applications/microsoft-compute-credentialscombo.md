@@ -1,5 +1,5 @@
 ---
-title: Azure elementu interfejsu użytkownika CredentialsCombo | Dokumentacja firmy Microsoft
+title: Azure CredentialsCombo UI element | Microsoft Docs
 description: Opis elementu Microsoft.Compute.CredentialsCombo interfejsu użytkownika dla witryny Azure portal.
 services: managed-applications
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 09/29/2018
 ms.author: tomfitz
 ms.openlocfilehash: 0412d55fe60524cde404e6a640723d3259e020e1
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47586244"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60251377"
 ---
 # <a name="microsoftcomputecredentialscombo-ui-element"></a>Microsoft.Compute.CredentialsCombo UI element
 Grupa kontrolek za pomocą wbudowanych sprawdzania poprawności dla Windows i Linux haseł i kluczy publicznych SSH.
@@ -27,7 +27,7 @@ Grupa kontrolek za pomocą wbudowanych sprawdzania poprawności dla Windows i Li
 
 Dla Windows, będzie widoczna dla użytkowników:
 
-![Windows Microsoft.Compute.CredentialsCombo](./media/managed-application-elements/microsoft.compute.credentialscombo-windows.png)
+![Microsoft.Compute.CredentialsCombo Windows](./media/managed-application-elements/microsoft.compute.credentialscombo-windows.png)
 
 Widoczne dla systemu Linux przy użyciu hasła, wybrane:
 
@@ -35,7 +35,7 @@ Widoczne dla systemu Linux przy użyciu hasła, wybrane:
 
 Widoczne dla systemu Linux przy użyciu klucza publicznego SSH, wybrane:
 
-![Klucz Microsoft.Compute.CredentialsCombo systemu Linux](./media/managed-application-elements/microsoft.compute.credentialscombo-linux-key.png)
+![Microsoft.Compute.CredentialsCombo Linux key](./media/managed-application-elements/microsoft.compute.credentialscombo-linux-key.png)
 
 ## <a name="schema"></a>Schemat
 Dla Windows użyj następującego schematu:

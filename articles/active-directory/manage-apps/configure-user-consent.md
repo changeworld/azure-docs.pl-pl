@@ -13,11 +13,11 @@ ms.author: celested
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d35f8b440fe748f91c9e01003fe83a3a5343c8df
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203730"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60291589"
 ---
 # <a name="configure-the-way-end-users-consent-to-an-application-in-azure-active-directory"></a>Skonfiguruj sposób, w jaki użytkownicy końcowi wyrażenia zgody na aplikację w usłudze Azure Active Directory
 Dowiedz się, jak skonfigurować sposób, w jaki użytkownicy wyrazić zgodę na uprawnienia aplikacji. Aby uprościć środowisko użytkownika, możesz udzielania zgody administratora. Ten artykuł zawiera różne sposoby, które można skonfigurować zgody użytkownika. Te metody mają zastosowanie do wszystkich użytkowników końcowych w dzierżawie usługi Azure Active Directory (Azure AD). 

@@ -9,17 +9,17 @@ ms.date: 07/18/2018
 ms.author: dukek
 ms.subservice: alerts
 ms.openlocfilehash: e69158a6ee4d8415f52cf458c028cab56f481d8b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58121132"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60235140"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Porady: wyzwalanie złożone akcje przy użyciu alertów usługi Azure Monitor
 
 W tym artykule przedstawiono sposób konfigurowania i wyzwalacza aplikacji logiki, aby utworzyć konwersacji w Microsoft Teams, gdy zostanie wyzwolony alert.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Po wyzwoleniu alertu danych usługi Azure Monitor, wywołuje [grupy akcji](../../azure-monitor/platform/action-groups.md). Grupy akcji umożliwiają wyzwalanie co najmniej jedną akcję, aby powiadomić inne osoby o alercie, a także jego rozwiązania.
 
 Ogólny proces jest:
@@ -281,11 +281,11 @@ Proces tworzenia alertu dotyczącego metryki jest podobny do [Tworzenie alertu d
        
        !["Ładunek alertu metryki warunek"](media/action-groups-logic-app/metric-alert-payload-condition.png "warunek ładunku alertu metryki")
 
-  1. W **w przypadku opcji true** warunku, należy dodać **dla każdego** pętli i działania Microsoft Teams. Zdefiniuj wiadomości przy użyciu kombinacji kodu HTML i zawartości dynamicznej.
+  2. W **w przypadku opcji true** warunku, należy dodać **dla każdego** pętli i działania Microsoft Teams. Zdefiniuj wiadomości przy użyciu kombinacji kodu HTML i zawartości dynamicznej.
 
       !["Akcji po metryki warunek jest prawdziwy alertu"](media/action-groups-logic-app/metric-alert-true-condition-post-action.png "akcji po warunek alertu metryki")
 
-  1. W **w przypadku wartości FAŁSZ** warunku, zdefiniuj akcję Microsoft Teams do komunikowania się, że alert dotyczący metryki nie jest zgodna oczekiwania aplikacji logiki. Uwzględnij ładunek JSON. Zwróć uwagę, jak utworzyć odwołanie do `triggerBody` zawartości dynamicznej w `json()` wyrażenia.
+  3. W **w przypadku wartości FAŁSZ** warunku, zdefiniuj akcję Microsoft Teams do komunikowania się, że alert dotyczący metryki nie jest zgodna oczekiwania aplikacji logiki. Uwzględnij ładunek JSON. Zwróć uwagę, jak utworzyć odwołanie do `triggerBody` zawartości dynamicznej w `json()` wyrażenia.
 
       !["Fałszywe alertu metryki wpis action"](media/action-groups-logic-app/metric-alert-false-condition-post-action.png "akcji po fałszywe alertu metryki")
 
@@ -298,4 +298,3 @@ Usługa Logic Apps zawiera szereg różnych łączników, które pozwalają do w
 * Pobierz [Przegląd alertów dziennika aktywności platformy Azure](../../azure-monitor/platform/alerts-overview.md) i Dowiedz się, jak otrzymywać alerty.  
 * Dowiedz się, jak [skonfigurować alerty, gdy zostaje opublikowany powiadomienie usługi Azure Service Health](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
 * Dowiedz się więcej o [grup akcji](../../azure-monitor/platform/action-groups.md).
-

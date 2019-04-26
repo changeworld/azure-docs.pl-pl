@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 291b3d506993cfea89be072684835c0d4efe75f6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58095453"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60243057"
 ---
 # <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>Kolejne kroki i jak zarządzać program Azure AD Connect
 Użyj procedur operacyjnych w tym artykule dostosować usługi Azure Active Directory (Azure AD) Connect do zaspokojenia potrzeb i wymagań swojej organizacji.  

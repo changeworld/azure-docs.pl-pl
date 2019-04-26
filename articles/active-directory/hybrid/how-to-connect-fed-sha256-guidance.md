@@ -17,14 +17,14 @@ ms.date: 10/26/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9aa597c8b458305946aa298631726df3da317534
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56181375"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60244431"
 ---
 # <a name="change-signature-hash-algorithm-for-office-365-relying-party-trust"></a>Zmień algorytm wyznaczania wartości skrótu podpisu dla usługi Office 365, zaufanie jednostki uzależnionej
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Active Directory Federation Services (AD FS) podpisuje jego tokenów do usługi Microsoft Azure Active Directory do upewnij się, że ich nie dało się. Ta sygnatura może bazować na SHA1 lub SHA256. Usługa Azure Active Directory obsługuje teraz tokeny podpisane przy użyciu algorytm SHA256 i firma Microsoft zaleca ustawienie algorytmu podpisywania tokenu SHA256 na najwyższy poziom zabezpieczeń. W tym artykule opisano czynności, aby ustawić algorytm podpisywania tokenu bezpieczniejszy algorytm SHA256 poziom.
 
 >[!NOTE]

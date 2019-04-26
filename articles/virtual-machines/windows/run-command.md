@@ -8,18 +8,18 @@ ms.author: gwallace
 ms.date: 10/25/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: ecf19da59e91edd08953296d96ca68ca62f008e1
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: d199a9db879263bbca49298df190c5a127444c42
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195357"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60251238"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-with-run-command"></a>Uruchamiaj skrypty programu PowerShell na maszynie wirtualnej Windows za pomocą polecenia Uruchom
 
 Uruchom polecenie używa agenta maszyny Wirtualnej, aby uruchomić skrypty programu PowerShell w ramach maszyny Wirtualnej z systemem Windows Azure. Skrypty te mogą służyć do ogólnych maszyny lub Zarządzanie aplikacjami i umożliwia szybkie diagnozowanie i rozwiązywanie problemów access i sieć maszyny Wirtualnej oraz uzyskiwanie maszyny Wirtualnej do stanu dobrej.
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="benefits"></a>Korzyści
 

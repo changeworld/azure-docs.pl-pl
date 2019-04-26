@@ -13,11 +13,11 @@ ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: f7e070788d2fc11addcafc30d9f232f194f44782
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017263"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60318482"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>Przenoszenie danych ze źródła HTTP przy użyciu usługi Azure Data Factory
 
@@ -69,7 +69,7 @@ Ustaw **authenticationType** do **podstawowe**, **szyfrowanego**, lub **Windows*
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | nazwa użytkownika | Nazwa użytkownika na potrzeby dostępu do punktu końcowego HTTP. | Yes |
-| hasło | Hasło dla użytkownika (**username**). | Yes |
+| password | Hasło dla użytkownika (**username**). | Yes |
 
 **Przykład: Uwierzytelnianie podstawowe, szyfrowane lub Windows**
 
@@ -97,8 +97,8 @@ Aby użyć uwierzytelniania podstawowego, ustaw **authenticationType** do **Clie
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | embeddedCertData | Zawartość algorytmem Base64 dane binarne z pliku PFX. | Wybierz opcję **embeddedCertData** lub **certthumbprint, aby** |
-| certthumbprint, aby | Odcisk palca certyfikatu, który został zainstalowany na maszynie bramy magazynu certyfikatów. Mają zastosowanie tylko wtedy, gdy kopiowanie danych z lokalnego źródła HTTP. | Wybierz opcję **embeddedCertData** lub **certthumbprint, aby** |
-| hasło | Hasło, które ma skojarzony z certyfikatem. | Nie |
+| certThumbprint | Odcisk palca certyfikatu, który został zainstalowany na maszynie bramy magazynu certyfikatów. Mają zastosowanie tylko wtedy, gdy kopiowanie danych z lokalnego źródła HTTP. | Wybierz opcję **embeddedCertData** lub **certthumbprint, aby** |
+| password | Hasło, które ma skojarzony z certyfikatem. | Nie |
 
 Jeśli używasz **certthumbprint, aby** dla uwierzytelniania i certyfikat został zainstalowany w magazynie osobistym komputera lokalnego, udziel uprawnień odczytu do usługi bramy:
 
@@ -164,7 +164,7 @@ Aby uzyskać pełną listę sekcje i właściwości, które są dostępne do def
 | relativeUrl | Względny adres URL do zasobu, który zawiera dane. Jeśli ścieżka nie jest określona, używana jest tylko adres URL, który jest określony w definicji połączonej usługi. <br><br> Aby skonstruować dynamiczny adres URL, możesz użyć [funkcji usługi fabryka danych i zmiennych systemowych](data-factory-functions-variables.md). Przykład: **relativeUrl**: **$$Text.Format ("/ my/raportu? miesiąc = {0: yyyy}-{0:MM} & fmt = csv", SliceStart)**. | Nie |
 | requestMethod | Metoda HTTP. Dozwolone wartości to **UZYSKAĆ** i **WPIS**. | Nie <br />(wartość domyślna to **UZYSKAĆ**) |
 | additionalHeaders | Dodatkowe nagłówki żądania HTTP. | Nie |
-| RequestBody | Treść żądania HTTP. | Nie |
+| requestBody | Treść żądania HTTP. | Nie |
 | format | Jeśli chcesz *pobierają dane z punktu końcowego HTTP jako — jest* bez podczas analizowania, Pomiń **format** ustawienie. <br><br> Jeśli chcesz przeanalizować zawartości odpowiedzi HTTP podczas kopiowania, obsługiwane są następujące typy formatów: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, i **ParquetFormat**. Aby uzyskać więcej informacji, zobacz [format tekstu](data-factory-supported-file-and-compression-formats.md#text-format), [formatu JSON](data-factory-supported-file-and-compression-formats.md#json-format), [Avro format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc format](data-factory-supported-file-and-compression-formats.md#orc-format), i [formatu Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format). |Nie |
 | Kompresja | Określ typ i poziom kompresji danych. Obsługiwane typy: **GZip**, **Deflate**, **BZip2**, i **ZipDeflate**. Obsługiwane poziomy: **Optymalne** i **najszybszy**. Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji w usłudze Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
 
@@ -223,7 +223,7 @@ Obecnie, gdy źródło w działaniu kopiowania jest **HttpSource** wpisz następ
 
 | Właściwość | Opis | Wymagane |
 | -------- | ----------- | -------- |
-| httpRequestTimeout | Limit czasu ( **TimeSpan** wartość) dla żądania HTTP można uzyskać odpowiedzi. Limit czasu jest sposobem uzyskania odpowiedzi, a nie limitu czasu można odczytać danych odpowiedzi. | Nie<br />(wartość domyślna: **00: 01:40**) |
+| httpRequestTimeout | Limit czasu ( **TimeSpan** wartość) dla żądania HTTP można uzyskać odpowiedzi. Limit czasu jest sposobem uzyskania odpowiedzi, a nie limitu czasu można odczytać danych odpowiedzi. | Nie<br />(wartość domyślna: **00:01:40**) |
 
 ## <a name="supported-file-and-compression-formats"></a>Obsługiwane formaty plików i kompresji
 

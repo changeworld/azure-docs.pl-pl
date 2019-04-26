@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: c7fe0d6f8e03501cca7a8b98f95286b6a21c0476
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55735725"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60232792"
 ---
 ## <a name="multi-and-single-instance-vms"></a>Obsługa wielu i jednego wystąpienia maszyn wirtualnych
 Wielu klientów uruchomieniu na podstawie liczby z platformy Azure krytyczne, czy można zaplanować podczas planowanej konserwacji z powodu przestojów — uczestniczenia w swoich maszyn wirtualnych około 15 minut — które ma miejsce podczas konserwacji. Zestawy dostępności można użyć, które ułatwiają sterowanie tym, gdy maszyny wirtualne aprowizowane otrzymają planowanej konserwacji.

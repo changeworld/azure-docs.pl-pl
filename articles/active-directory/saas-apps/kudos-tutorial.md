@@ -16,11 +16,11 @@ ms.date: 06/20/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e5b1fa6284979a8c0bd0698f85b119117dd27a05
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56172276"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60261843"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kudos"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą pochwałę
 
@@ -213,7 +213,7 @@ W przypadku pochwałę Inicjowanie obsługi administracyjnej jest zadanie ręczn
    
     a. Typ **imię**, **nazwisko**, **E-mail** i inne informacje szczegółowe dotyczące prawidłowego konta usługi Azure Active Directory do aprowizowania w powiązanych pól tekstowych.
    
-    b. Kliknij przycisk **Utwórz użytkownika**.
+    b. Kliknij pozycję **Create User** (Utwórz użytkownika).
 
 >[!NOTE]
 >Można użyć jakichkolwiek innych pochwałę użytkownika konta tworzenie narzędzi lub interfejsów API dostarczonych przez pochwałę do aprowizacji kont użytkowników usługi AAD.
@@ -256,7 +256,7 @@ Po kliknięciu kafelka pochwałę w panelu dostępu, użytkownik powinien uzyska
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

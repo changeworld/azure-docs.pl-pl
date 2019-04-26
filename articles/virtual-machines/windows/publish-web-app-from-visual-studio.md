@@ -13,12 +13,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: ghogen
-ms.openlocfilehash: d5fd6041f21700ffddd3b2c4755b7ce01691681e
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 5298721b7f60cec677c22faf1b35011aab02defb
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304104"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60204422"
 ---
 # <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>Publikowanie aplikacji sieci Web platformy ASP.NET na maszynie Wirtualnej platformy Azure z programu Visual Studio
 
@@ -68,7 +68,7 @@ W poniższej sekcji opisano sposób publikowania istniejącą aplikację sieci w
 
 10. Obejrzyj w oknie danych wyjściowych, aby sprawdzić postęp operacji publikowania.
 
-    ![Okno danych wyjściowych]
+    ![Okno wyniku]
 
 11. Jeśli publikowanie zakończy się pomyślnie, otworzyć adres URL witryny nowo opublikowana spowoduje uruchomienie przeglądarki.
 
@@ -125,7 +125,7 @@ Aby skonfigurować potok ciągłego dostarczania z potokiem, Azure, zobacz [Wdr�
 [Selektor maszyny Wirtualnej platformy Azure]: ../../../includes/media/publish-web-app-from-visual-studio/ChooseVM-SelectVM.png
 [WebDeploy logowania]: ../../../includes/media/publish-web-app-from-visual-studio/WebDeployLogin.png
 [Błąd certyfikatu]: ../../../includes/media/publish-web-app-from-visual-studio/CertificateError.png
-[Okno danych wyjściowych]: ../../../includes/media/publish-web-app-from-visual-studio/OutputWindow.png
+[Okno Dane wyjściowe]: ../../../includes/media/publish-web-app-from-visual-studio/OutputWindow.png
 [Strona publikowania — przycisk Opublikuj]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPagePublishButton.png
 [Strona — przycisk Ustawienia publikowania]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageSettingsButton.png
 [Ustawienia — strona połączenia publikowania]: ../../../includes/media/publish-web-app-from-visual-studio/PublishSettingsConnectionPage.png

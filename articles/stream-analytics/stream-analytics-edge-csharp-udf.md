@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18
 ms.openlocfilehash: 5597109a65a8af88bf286977d039656635565ed9
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086911"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60204237"
 ---
 # <a name="tutorial-write-a-c-user-defined-function-for-azure-stream-analytics-edge-job-preview"></a>Samouczek: Pisanie w języku C# funkcji zdefiniowanej przez użytkownika dla zadania usługi Azure Stream Analytics Edge (wersja zapoznawcza)
 
@@ -62,7 +62,7 @@ Tworzony kontener będzie służyć do przechowywania skompilowanych pakietów j
     |**Ustawienie**  |**Sugerowana wartość**  |
     |---------|---------|
     |Źródło zestawu  |  Odwołanie do projektu lokalnego lub plik CodeBehind   |
-    |Zasób  |  Wybierz dane z bieżącego konta   |
+    |Resource  |  Wybierz dane z bieżącego konta   |
     |Subskrypcja  |  Wybierz subskrypcję.   |
     |Konto magazynu  |  Wybierz konto magazynu.   |
     |Kontener  |  Wybierz kontener utworzony na koncie magazynu.   |
@@ -148,7 +148,7 @@ Po przetestowaniu zapytania w środowisku lokalnym wybierz pozycję **Prześlij 
 ## <a name="deploy-to-iot-edge-devices"></a>Wdrażanie na urządzeniach usługi IoT Edge
 Zadanie usługi Stream Analytics jest teraz gotowe do wdrożenia jako moduł usługi IoT Edge. Postępuj zgodnie z instrukcjami z [przewodnika Szybki start dotyczącego usługi IoT Edge](https://docs.microsoft.com/azure/iot-edge/quickstart), aby utworzyć centrum IoT Hub, zarejestrować urządzenie usługi IoT Edge, a następnie zainstaluj i uruchom środowisko uruchomieniowe usługi IoT Edge na urządzeniu. Następnie postępuj zgodnie z instrukcjami z samouczka dotyczącego [wdrażania zadania](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics#deploy-the-job), aby wdrożyć zadanie usługi Stream Analytics jako moduł usługi IoT Edge. 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku utworzono prostą funkcję zdefiniowaną przez użytkownika w języku C# przy użyciu metody CodeBehind, opublikowano zadanie na platformie Azure i wdrożono zadanie na urządzeniach usługi IoT Edge przy użyciu portalu usługi IoT Hub. 
 

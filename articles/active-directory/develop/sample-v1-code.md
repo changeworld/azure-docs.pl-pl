@@ -1,5 +1,5 @@
 ---
-title: Przykłady kodu usługi Azure Active Directory | Dokumentacja firmy Microsoft
+title: Przykłady kodu w wersji 1.0 w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
 description: Dostarcza indeks usługi Azure Active Directory (punkt końcowy w wersji 1.0) przykładów kodu, uporządkowane według scenariusza.
 services: active-directory
 documentationcenter: dev-center-name
@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64c199df2012e6ce3b3de5f34989cf5cbc135fdc
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b7e88c672e72549d813971ce72fc7b85ee8619eb
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58101027"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60298603"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Przykłady kodu usługi Azure Active Directory (punkt końcowy w wersji 1.0)
 

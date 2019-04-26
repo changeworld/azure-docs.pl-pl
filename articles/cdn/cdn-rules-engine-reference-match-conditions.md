@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 12/21/2017
 ms.author: rli
 ms.openlocfilehash: 877d994968dbc575c8baa7ac4c8a40b76f6d617f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59283481"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60323828"
 ---
 # <a name="azure-cdn-rules-engine-match-conditions"></a>Pasujące aparat reguł w usłudze Azure CDN 
 W tym artykule przedstawiono szczegółowy opis warunków dopasowania dostępne dla usługi Azure Content Delivery Network (CDN) [aparat reguł](cdn-rules-engine.md).
@@ -306,7 +306,7 @@ Informacje o kluczu:
 #### <a name="string-type"></a>String — typ
 Funkcja WURFL zazwyczaj przyjmuje dowolną kombinację cyfr, liter i symboli. Ze względu na charakter elastyczne tej funkcji możesz wybrać, jak wartość skojarzoną z tym warunkiem dopasowania jest interpretowany. W poniższej tabeli opisano zestaw dostępnych opcji:
 
-Typ     | Opis
+Type     | Opis
 ---------|------------
 literał  | Wybierz tę opcję, aby uniemożliwić większości znaków tworzenia specjalnego znaczenia przy użyciu ich [wartości literału](cdn-rules-engine-reference.md#literal-values).
 Symbol wieloznaczny | Wybierz tę opcję, aby móc korzystać z wszystkich [symboli wieloznacznych] ([wartości symboli wieloznacznych](cdn-rules-engine-reference.md#wildcard-values).
