@@ -79,13 +79,13 @@ Podczas przetwarzania żądania wbudowanych kroków wdrożeniowych oraz wszystki
   
 | Name (Nazwa)     | Typ   | Opis                                                                                               | Wymagane |
 |----------|--------|-----------------------------------------------------------------------------------------------------------|----------|
-| Element źródłowy   | ciąg | Określa nazwę elementu, na którym wystąpił błąd. Może być zasad lub nazwa kroku wbudowanej potoku.     | Yes      |
-| Przyczyna   | ciąg | Kod błędu przyjaznych dla komputera, który może służyć do obsługi błędów.                                       | Nie       |
-| Komunikat  | ciąg | Opis błędu zrozumiałą dla użytkownika.                                                                         | Yes      |
-| Zakres    | ciąg | Nazwa zakresu, w którym wystąpił błąd i może być "globalne", "product", "interfejsu api" lub "operacji" | Nie       |
-| Sekcja  | ciąg | Nazwa sekcji, w którym wystąpił błąd. Możliwe wartości: "ruchu przychodzącego", "zaplecze", "wychodzący" lub "on error".       | Nie       |
-| Ścieżka     | ciąg | Określa zagnieżdżonych zasad, na przykład "[3] wybierz / po [2]".                                                        | Nie       |
-| PolicyId | ciąg | Wartość `id` atrybut, jeśli określony przez klienta i w zasadach, w którym wystąpił błąd             | Nie       |
+| `Source`   | ciąg | Określa nazwę elementu, na którym wystąpił błąd. Może być zasad lub nazwa kroku wbudowanej potoku.     | Yes      |
+| `Reason`   | ciąg | Kod błędu przyjaznych dla komputera, który może służyć do obsługi błędów.                                       | Nie       |
+| `Message`  | ciąg | Opis błędu zrozumiałą dla użytkownika.                                                                         | Yes      |
+| `Scope`    | ciąg | Nazwa zakresu, w którym wystąpił błąd i może być "globalne", "product", "interfejsu api" lub "operacji" | Nie       |
+| `Section`  | ciąg | Nazwa sekcji, w którym wystąpił błąd. Możliwe wartości: "ruchu przychodzącego", "zaplecze", "wychodzący" lub "on error".       | Nie       |
+| `Path`     | ciąg | Określa zagnieżdżonych zasad, na przykład "[3] wybierz / po [2]".                                                        | Nie       |
+| `PolicyId` | ciąg | Wartość `id` atrybut, jeśli określony przez klienta i w zasadach, w którym wystąpił błąd             | Nie       |
 
 > [!TIP]
 > Kod stanu są dostępne za pośrednictwem kontekstu. Response.StatusCode.  
