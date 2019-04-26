@@ -12,11 +12,11 @@ ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: d6601f57d87b518b2061df64174818432b822755
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58076194"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60515317"
 ---
 # <a name="bing-speech-websocket-protocol"></a>Protokół WebSocket rozpoznawania mowy Bing
 
@@ -174,7 +174,7 @@ Klienci *musi* wysyłania `speech.config` komunikatów bezpośrednio w przypadku
 
 | Pole | Opis |
 |----|----|
-| Kodowanie komunikatu protokołu WebSocket | Tekst |
+| Kodowanie komunikatu protokołu WebSocket | Text |
 | Treść | Ładunek w strukturze JSON |
 
 #### <a name="required-message-headers"></a>Nagłówki komunikatów wymagane
@@ -307,7 +307,7 @@ Klienci muszą potwierdzić koniec Włącz, wysyłając `telemetry` wiadomości 
 
 | Pole | Opis |
 | ------------- | ---------------- |
-| Kodowanie komunikatu protokołu WebSocket | Tekst |
+| Kodowanie komunikatu protokołu WebSocket | Text |
 | Ścieżka | `telemetry` |
 | X-Timestamp | Sygnatura czasowa zegara klienta UTC w formacie ISO 8601 |
 | Content-Type | `application/json` |
@@ -329,7 +329,7 @@ W tej sekcji opisano wiadomości, które pochodzą z usługi rozpoznawania mowy 
 
 | Pole | Opis |
 | ------------- | ---------------- |
-| Kodowanie komunikatu protokołu WebSocket | Tekst |
+| Kodowanie komunikatu protokołu WebSocket | Text |
 | Ścieżka | `speech.startDetected` |
 | Content-Type | application/json; charset=utf-8 |
 | Treść | Struktura JSON, która zawiera informacje o warunkach, gdy wykryte początek mowy. *Przesunięcie* pola w tej strukturze określa przesunięcie (w jednostkach 100-nanosekundowych) czas wykrycia mowy w usłudze stream audio względem początku strumienia. |
@@ -354,7 +354,7 @@ Podczas rozpoznawania mowy usługa rozpoznawania mowy okresowo generuje hipotez�
 
 | Pole | Opis |
 | ------------- | ---------------- |
-| Kodowanie komunikatu protokołu WebSocket | Tekst |
+| Kodowanie komunikatu protokołu WebSocket | Text |
 | Ścieżka | `speech.hypothesis` |
 | X-RequestId | Identyfikator UUID w formacie "nie-dash" |
 | Content-Type | application/json |
@@ -386,7 +386,7 @@ Gdy usługa rozpoznawania mowy Określa, że ma on wystarczających informacji d
 
 | Pole | Opis |
 | ------------- | ---------------- |
-| Kodowanie komunikatu protokołu WebSocket | Tekst |
+| Kodowanie komunikatu protokołu WebSocket | Text |
 | Ścieżka | `speech.phrase` |
 | Content-Type | application/json |
 | Treść | Fraza mowy strukturze JSON |
@@ -414,7 +414,7 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 
 | Pole | Opis |
 | ------------- | ---------------- |
-| Kodowanie komunikatu protokołu WebSocket | Tekst |
+| Kodowanie komunikatu protokołu WebSocket | Text |
 | Ścieżka | `speech.endDetected` |
 | Treść | Struktura JSON, która zawiera przesunięcie, gdy wykryto koniec mowy. Przesunięcie jest reprezentowany w jednostkach 100-nanosekundowych przesunięcie od początku dźwięk, który jest używany do rozpoznawania. |
 | Content-Type | application/json; charset=utf-8 |
@@ -439,7 +439,7 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 
 | Pole | Opis |
 | ------------- | ---------------- |
-| Kodowanie komunikatu protokołu WebSocket | Tekst |
+| Kodowanie komunikatu protokołu WebSocket | Text |
 | Ścieżka | `turn.start` |
 | Content-Type | application/json; charset=utf-8 |
 | Treść | Struktura JSON |
@@ -466,7 +466,7 @@ Treść `turn.start` komunikat jest strukturą JSON, która zawiera kontekst na 
 
 | Pole | Opis |
 | ------------- | ---------------- |
-| Kodowanie komunikatu protokołu WebSocket | Tekst |
+| Kodowanie komunikatu protokołu WebSocket | Text |
 | Ścieżka | `turn.end` |
 | Treść | Brak |
 

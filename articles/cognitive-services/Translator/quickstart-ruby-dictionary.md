@@ -8,14 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 02/08/2019
-ms.author: erhopf
+origin.date: 02/08/2019
+ms.date: 03/12/2019
+ms.author: v-junlch
 ms.openlocfilehash: 98d9b7c3bf85e025c9479609737cb8c66bc66287
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980571"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60511428"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary-using-ruby"></a>Szybki start: wyszukiwanie wyrazów w słowniku dwujęzycznym za pomocą języka Ruby
 
@@ -49,8 +50,8 @@ require 'securerandom'
 
 # Replace the key string value with your valid subscription key.
 key = 'ENTER KEY HERE'
-
-host = 'https://api.cognitive.microsofttranslator.com'
+region = 'your region'
+host = 'https://api.translator.azure.cn'
 path = '/dictionary/lookup?api-version=3.0'
 
 params = '&from=en&to=fr'
@@ -65,6 +66,7 @@ request = Net::HTTP::Post.new(uri)
 request['Content-type'] = 'application/json'
 request['Content-length'] = content.length
 request['Ocp-Apim-Subscription-Key'] = key
+request['Ocp-Apim-Subscription-Region'] = region
 request['X-ClientTraceId'] = SecureRandom.uuid
 request.body = content
 
@@ -160,8 +162,8 @@ require 'securerandom'
 
 # Replace the key string value with your valid subscription key.
 key = 'ENTER KEY HERE'
-
-host = 'https://api.cognitive.microsofttranslator.com'
+region = 'your region'
+host = 'https://api.translator.azure.cn'
 path = '/dictionary/examples?api-version=3.0'
 
 params = '&from=en&to=fr'
@@ -177,6 +179,7 @@ request = Net::HTTP::Post.new(uri)
 request['Content-type'] = 'application/json'
 request['Content-length'] = content.length
 request['Ocp-Apim-Subscription-Key'] = key
+request['Ocp-Apim-Subscription-Region'] = region
 request['X-ClientTraceId'] = SecureRandom.uuid
 request.body = content
 
@@ -228,3 +231,4 @@ Zapoznaj się z kodem przykładowym z tego przewodnika Szybki start i innych, do
 
 > [!div class="nextstepaction"]
 > [Poznaj przykłady dla języka Ruby w usłudze GitHub](https://aka.ms/TranslatorGitHub?type=&language=ruby)
+

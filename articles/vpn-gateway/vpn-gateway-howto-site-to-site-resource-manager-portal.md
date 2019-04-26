@@ -1,5 +1,5 @@
 ---
-title: 'Łączenie sieci lokalnej z siecią wirtualną platformy Azure: Sieć VPN lokacja lokacja: Portal | Dokumentacja firmy Microsoft'
+title: 'Połącz sieć lokalną z siecią wirtualną platformy Azure: Sieć VPN lokacja lokacja: Portal | Microsoft Docs'
 description: Kroki tworzenia połączenia IPsec z sieci lokalnej do sieci wirtualnej platformy Azure za pośrednictwem publicznego Internetu. Kroki te są pomocne podczas tworzenia obejmującego wiele lokalizacji połączenia bramy sieci VPN typu lokacja-lokacja za pomocą portalu.
 services: vpn-gateway
 author: cherylmc
@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: cherylmc
 ms.openlocfilehash: 032b6a4f5147d06a4613a827a0372437dca47f47
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651643"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60407748"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Tworzenie połączenia typu lokacja-lokacja w witrynie Azure Portal
 
@@ -47,14 +47,14 @@ W przykładach w tym artykule są stosowane następujące wartości. Tych warto�
 * **Subskrypcja:** Subskrypcję, której chcesz użyć
 * **Grupa zasobów:** TestRG1
 * **Lokalizacja:** Wschodnie stany USA
-* **Podsieć:** Frontonu: 10.1.0.0/24, BackEnd: 10.1.1.0/24 (opcjonalnie na potrzeby tego ćwiczenia)
+* **Podsieć:** FrontEnd: 10.1.0.0/24, BackEnd: 10.1.1.0/24 (opcjonalnie na potrzeby tego ćwiczenia)
 * **Nazwa podsieci bramy:** GatewaySubnet (ta zostanie automatycznie wypełniona w portalu)
 * **Zakres adresów podsieci bramy:** 10.1.255.0/27
 * **Serwer DNS:** 8.8.8.8 — opcjonalnie. Adres IP serwera DNS.
 * **Nazwa bramy sieci wirtualnej:** VNet1GW
 * **Publiczny adres IP:** VNet1GWIP
 * **Typ sieci VPN:** Oparte na trasach
-* **Typ połączenia:** Lokacja lokacja (IPsec)
+* **Typ połączenia:** Lokacja-lokacja (IPsec)
 * **Typ bramy:** Sieć VPN
 * **Nazwa bramy sieci lokalnej:** Site1
 * **Nazwa połączenia:** VNet1toSite1

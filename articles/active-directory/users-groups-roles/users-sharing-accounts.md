@@ -16,14 +16,14 @@ ms.reviewer: jeffsta
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ba9deb00b885dad1d69eb38d4977aafd3d80ab91
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201435"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60468025"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Udostępnianie kont w usłudze Azure AD
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Czasami organizacje muszą używać jednej nazwy użytkownika i hasło dla wielu osób, które zwykle odbywa się w dwóch przypadkach:
 
 * Podczas uzyskiwania dostępu do aplikacji, które wymagają unikatowych logowania i hasło dla każdego użytkownika, czy aplikacje lokalne lub odbiorcy usługi w chmurze (na przykład kont mediów społecznościowych firmy).

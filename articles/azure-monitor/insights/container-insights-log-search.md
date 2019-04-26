@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 04/17/2019
 ms.author: magoedte
 ms.openlocfilehash: 66fc55d8c3dbb8487d1e796d5f30b08a94f717f6
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60013899"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60494785"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>Tworzenie zapytań względem dzienników z usługi Azure Monitor dla kontenerów
 Usługa Azure Monitor dla kontenerów zbiera metryki wydajności, dane spisu i informacji o stanie kondycji hostach kontenerów i kontenery i przekazuje go do obszaru roboczego usługi Log Analytics w usłudze Azure Monitor. Dane są gromadzone co trzy minuty. Dane te są dostępne dla [zapytania](../../azure-monitor/log-query/log-query-overview.md) w usłudze Azure Monitor. Dane te można zastosować do scenariuszy obejmujących planowania migracji, analizy wydajności, wykrywanie i rozwiązywanie problemów z wydajnością na żądanie.

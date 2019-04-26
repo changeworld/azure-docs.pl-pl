@@ -11,11 +11,11 @@ ms.workload: NA
 ms.date: 02/01/2019
 ms.author: kasparks
 ms.openlocfilehash: 1a72225ce29b7a94f2fc402488f6b998cde0a0fb
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55494549"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60467990"
 ---
 # <a name="introduction-to-azure-advisor"></a>Wprowadzenie do usługi Azure Advisor
 
@@ -31,12 +31,12 @@ Usługa Advisor można wykonywać następujące czynności:
 
 Możesz uzyskać dostęp Advisor za pomocą [witryny Azure portal](https://aka.ms/azureadvisordashboard). Zaloguj się do [portal](https://portal.azure.com), zlokalizuj **Advisor** w menu nawigacji, lub wyszukaj go w **wszystkich usług** menu.
 
-Pulpit nawigacyjny usługi Advisor zawierał spersonalizowane zalecenia dotyczące wszystkich subskrypcji.  Można zastosować filtry, aby wyświetlić zalecenia dla określonej subskrypcji i typów zasobów.  Zalecenia są podzielone na cztery kategorie: 
+Pulpit nawigacyjny usługi Advisor zawierał spersonalizowane zalecenia dotyczące wszystkich subskrypcji.  Można zastosować filtry, aby wyświetlić zalecenia dla określonej subskrypcji i typów zasobów.  Rekomendacje są podzielone na cztery kategorie: 
 
 * **Wysoka dostępność**: Aby upewnić się, a ciągłość aplikacje krytyczne dla prowadzonej działalności. Aby uzyskać więcej informacji, zobacz [zaleceń dotyczących wysokiej dostępności usługi Advisor](advisor-high-availability-recommendations.md).
-* **Zabezpieczenia**: Wykrywanie zagrożeń i luk w zabezpieczeniach, które mogą prowadzić do naruszenia zabezpieczeń. Aby uzyskać więcej informacji, zobacz [zalecenia dotyczące zabezpieczeń usługi Advisor](advisor-security-recommendations.md).
-* **Wydajność**: Aby zwiększyć szybkość aplikacji. Aby uzyskać więcej informacji, zobacz [zalecenia dotyczące wydajności usługi Advisor](advisor-performance-recommendations.md).
-* **Koszt**: Do optymalizacji i Zmniejsz wydatki ogólną platformy Azure. Aby uzyskać więcej informacji, zobacz [rekomendacji dotyczących kosztu Advisor](advisor-cost-recommendations.md).
+* **Bezpieczeństwo**: w celu wykrywania zagrożeń i luk w zabezpieczeniach, które mogą prowadzić do naruszeń zabezpieczeń. Aby uzyskać więcej informacji, zobacz [zalecenia dotyczące zabezpieczeń usługi Advisor](advisor-security-recommendations.md).
+* **Wydajność**: w celu zwiększenia szybkości aplikacji. Aby uzyskać więcej informacji, zobacz [zalecenia dotyczące wydajności usługi Advisor](advisor-performance-recommendations.md).
+* **Koszt**: w celu zoptymalizowania i zredukowania ogólnych wydatków związanych z platformą Azure. Aby uzyskać więcej informacji, zobacz [rekomendacji dotyczących kosztu Advisor](advisor-cost-recommendations.md).
 
   ![Typy zalecenia usługi Advisor](./media/advisor-overview/advisor-dashboard.png)
 

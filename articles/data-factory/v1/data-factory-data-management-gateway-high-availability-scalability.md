@@ -14,11 +14,11 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 08e7341bfd1c384e41e6d3f1bd7810552899849a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58092195"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60488950"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Brama zarządzania danymi — wysokiej dostępności i skalowalności (wersja zapoznawcza)
 > [!NOTE]
@@ -32,7 +32,7 @@ Ten artykuł pomoże Ci skonfigurować rozwiązania wysokiej dostępności i ska
 > 
 > **Tę funkcję wersji zapoznawczej oficjalnie jest obsługiwana w 2.12.xxxx.x wersji bramy zarządzania danymi i nowszych**. Upewnij się, że używasz wersji 2.12.xxxx.x lub nowszej. Pobierz najnowszą wersję bramy zarządzania danymi [tutaj](https://www.microsoft.com/download/details.aspx?id=39717).
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Możesz skojarzyć bramy zarządzania danych, które są zainstalowane na wielu komputerach w środowisku lokalnym za pomocą jednej logicznej bramy w portalu. Te maszyny są nazywane **węzłów**. Możesz mieć maksymalnie **czterech węzłów** skojarzone z logicznej bramy. Zalety o wielu węzłach (maszynach lokalnych z zainstalowaną bramę) dla bramy sieci logiczne to:  
 
 - Poprawianie wydajności przenoszenia danych między lokalizacją lokalną i chmurą magazynów danych.  
@@ -170,7 +170,7 @@ Poniżej przedstawiono wymagania dotyczące certyfikatu TLS/SSL, używany do zab
 - Obsługuje wszystkie rozmiar klucza obsługiwana przez system Windows Server 2012 R2 dla certyfikatów SSL.
 - Certyfikat przy użyciu CNG klucze nie są obsługiwane.
 
-#### <a name="faq-when-would-i-not-enable-this-encryption"></a>FAQ: Jeśli będzie nie włączenie szyfrowania?
+#### <a name="faq-when-would-i-not-enable-this-encryption"></a>CZĘSTO ZADAWANE PYTANIA: Jeśli będzie nie włączenie szyfrowania?
 Włączanie szyfrowania można dodać pewnych kosztów do infrastruktury (będącej właścicielem certyfikatu publicznego) dlatego możesz pominąć włączania szyfrowania w poniższych przypadków:
 - Gdy środowisko integration runtime jest uruchomiona na zaufanej sieci lub sieci o przezroczyste szyfrowanie, takich jak IP/s. Ponieważ ta komunikacja kanał jest tylko ograniczony w zaufanej sieci, mogą nie być potrzebne dodatkowe szyfrowanie.
 - Gdy środowisko integration runtime nie jest uruchomiony w środowisku produkcyjnym. Może to pomóc w zmniejszeniu kosztów certyfikatu TLS/SSL.

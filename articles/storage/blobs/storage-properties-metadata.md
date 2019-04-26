@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/03/2019
 ms.author: tamram
-ms.openlocfilehash: 86bb7e736754cbc6a93bba5fff5d8d1877b1e3b4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e85cfb6d7b44924ce7f17fdedb7f1b52350ab598
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58916584"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60392402"
 ---
 # <a name="set-and-retrieve-properties-and-metadata"></a>Ustawianie i pobieranie właściwości oraz metadanych
 
@@ -27,7 +27,7 @@ Podczas pobierania wartości właściwości i metadanych dla zasobu magazynu jes
 > [!IMPORTANT]
 > Jeśli okaże się, że wartości właściwości lub metadanych dla zasobu magazynu nie została wypełniona, sprawdź, czy kod wywołuje **FetchAttributes** lub **FetchAttributesAsync** metody.
 >
-> Pary nazwa/wartość metadanych są prawidłowe nagłówków HTTP i dlatego powinien spełniać wszystkie ograniczenia dotyczące nagłówków HTTP. Nazwy metadanych muszą być prawidłowe nazwy nagłówka HTTP, może zawierać tylko znaki ASCII i powinny być traktowane jako bez uwzględniania wielkości liter. Wartości metadanych zawierające znaki spoza zestawu ASCII powinien być kodowany w formacie Base64 lub zakodowane w adresie URL.
+> Pary nazwa/wartość metadanych są prawidłowe nagłówków HTTP i dlatego powinien spełniać wszystkie ograniczenia dotyczące nagłówków HTTP. Nazwy metadanych muszą być prawidłowe nazwy nagłówków HTTP i prawidłowy C# identyfikatorów może zawierać tylko znaki ASCII i powinny być traktowane jako bez uwzględniania wielkości liter. Wartości metadanych zawierające znaki spoza zestawu ASCII powinien być kodowany w formacie Base64 lub zakodowane w adresie URL.
 
 ## <a name="setting-and-retrieving-properties"></a>Ustawianie i pobieranie właściwości
 Aby pobrać wartości właściwości, należy wywołać **FetchAttributesAsync** metody na obiekt blob lub kontenera, aby wypełnić właściwości, następnie zapoznaj się z wartości.

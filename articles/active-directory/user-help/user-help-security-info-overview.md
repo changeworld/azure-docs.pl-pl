@@ -13,11 +13,11 @@ ms.date: 02/11/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 234c7244f438926f43ddf31234a38c9034a6ca52
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453237"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60473245"
 ---
 # <a name="security-info-preview-overview"></a>Omówienie informacji zabezpieczających (wersja zapoznawcza)
 Na stronie **Informacje zabezpieczające** możesz skonfigurować swoje informacje zabezpieczające na potrzeby weryfikacji dwuetapowej i resetowania haseł. Na tej stronie możesz również edytować swoje informacje zabezpieczające i zmienić metodę domyślną.

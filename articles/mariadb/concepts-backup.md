@@ -7,11 +7,11 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: d6141c3184c8915c36f22d010db39aef2460dd1c
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233544"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60483055"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mariadb"></a>Kopia zapasowa i przywracanie w usłudze Azure Database dla serwera MariaDB
 

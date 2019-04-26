@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
 ms.openlocfilehash: 67378a5911e5bd83888342aa3773f7f5ed4ccf29
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58102588"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60454199"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Zbieranie danych w usłudze Log Analytics przy użyciu elementu runbook usługi Azure Automation
 
@@ -183,7 +183,7 @@ Najczęstszym sposobem uruchamiania elementu runbook, który służy do zbierani
 |:--|:--|
 | Name (Nazwa) | Co godzinę AutomationJobs |
 | Początek | Wybierz, w dowolnym momencie co najmniej 5 minut późniejsza niż bieżąca godzina. |
-| Cykl | Cyklicznie |
+| Cykl | Cykliczna |
 | Powtarzaj co | 1 godzina |
 | Ustaw czas wygaśnięcia | Nie |
 

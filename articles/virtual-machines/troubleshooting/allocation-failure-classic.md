@@ -13,19 +13,19 @@ ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: 7cd7897e3a0b940bbc636b2fbc3dbbc13b7cf540
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748429"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60505571"
 ---
 # <a name="troubleshooting-steps-specific-to-allocation-failure-scenarios-in-the-classic-deployment-model"></a>Rozwiązywanie problemów w określonych scenariuszy awarii alokacji w klasycznym modelu wdrażania
 
 Poniżej przedstawiono typowe scenariusze alokacji, które powodują wysłanie żądania alokacji do można przypiąć. Będziesz przejdziemy do każdego scenariusza w dalszej części tego artykułu.
 
 - Zmień rozmiar maszyny Wirtualnej lub dodawanie maszyn wirtualnych lub wystąpień roli do istniejącej usługi w chmurze
-- Ponowne uruchamianie częściowo zatrzymano (cofnięto przydział) maszyn wirtualnych
-- Ponowne uruchamianie pełni zatrzymano (cofnięto przydział) maszyn wirtualnych
+- Ponowne uruchomienie częściowo zatrzymanych maszyn wirtualnych (z cofniętą alokacją)
+- Ponowne uruchomienie w pełni zatrzymanych maszyn wirtualnych (z cofniętą alokacją)
 - Wdrożenia środowisk przejściowych i produkcyjnych (platforma jako usługa tylko)
 - Grupa koligacji (maszyna wirtualna lub usługa odległości między elementami)
 - Koligacja — na podstawie grupy sieci wirtualnej
@@ -54,7 +54,7 @@ Jeśli ten błąd jest Upgrade_VMSizeNotSupported *, należy spróbować innego 
 
 Jeśli ten błąd jest GeneralError *, jest typ zasobu (np. określonego rozmiaru maszyny Wirtualnej) jest obsługiwana przez klaster, że klaster ma bezpłatne zasoby w tej chwili. Podobnie jak w powyższym scenariuszu Usługa Dodaj zasób obliczeniowy żądany przez proces tworzenia nowej usługi w chmurze (należy zauważyć, że nową usługę w chmurze ma używać innego adresu VIP) i użyć regionalnej sieci wirtualnej do połączenia usługi w chmurze.
 
-## <a name="restart-partially-stopped-deallocated-vms"></a>Ponowne uruchamianie częściowo zatrzymano (cofnięto przydział) maszyn wirtualnych
+## <a name="restart-partially-stopped-deallocated-vms"></a>Ponowne uruchomienie częściowo zatrzymanych maszyn wirtualnych (z cofniętą alokacją)
 **Error**
 
 GeneralError *
@@ -70,7 +70,7 @@ Jeśli jest dopuszczalne, aby użyć innego adresu VIP, Usuń zatrzymano (cofni�
 * Jeśli korzysta z istniejącej usługi w chmurze regionalnej sieci wirtualnej, po prostu Dodaj nową usługę w chmurze do tej samej sieci wirtualnej.
 * Użycie istniejącej usługi w chmurze nie regionalnej sieci wirtualnej, Utwórz nową sieć wirtualną dla nowej usługi w chmurze, a następnie [połączyć z istniejącej sieci wirtualnej do nowej sieci wirtualnej](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/). Zobacz więcej informacji o [regionalnych sieci wirtualnych](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/).
 
-## <a name="restart-fully-stopped-deallocated-vms"></a>Ponowne uruchamianie pełni zatrzymano (cofnięto przydział) maszyn wirtualnych
+## <a name="restart-fully-stopped-deallocated-vms"></a>Ponowne uruchomienie w pełni zatrzymanych maszyn wirtualnych (z cofniętą alokacją)
 **Error**
 
 GeneralError *
@@ -116,7 +116,7 @@ New_General * lub New_VMSizeNotSupported *
 
 **Przyczyny przypinanie klastra**
 
-Przed wprowadzeniem regionalnych sieci wirtualnych, trzeba skojarzyć sieć wirtualną z grupą koligacji. W wyniku obliczenia zasobów umieszczone w grupie koligacji są powiązane przez tego samego ograniczenia, zgodnie z opisem w "alokacji scenariusz: Grupa koligacji (maszyny Wirtualnej/usługi zbliżeniowe)" powyższej sekcji. Zasoby obliczeniowe są powiązane z jednego klastra.
+Przed wprowadzeniem regionalnych sieci wirtualnych, trzeba skojarzyć sieć wirtualną z grupą koligacji. W wyniku obliczenia zasobów umieszczone w grupie koligacji są powiązane przez tego samego ograniczenia, zgodnie z opisem w temacie "alokacji scenariusza: Grupa koligacji (maszyny Wirtualnej/usługi zbliżeniowe) "powyższej sekcji. Zasoby obliczeniowe są powiązane z jednego klastra.
 
 **Obejście problemu**
 

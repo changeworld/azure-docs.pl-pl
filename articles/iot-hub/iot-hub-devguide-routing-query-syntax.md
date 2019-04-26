@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
 ms.openlocfilehash: 94d3599fe919cf648be7115be68002d2aa458ee3
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55744847"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60400647"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>Kierowanie Składnia kwerendy komunikatów usługi IoT Hub
 
@@ -53,10 +53,10 @@ Właściwości systemu pomagać w identyfikacji zawartości i źródła wiadomo�
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| contentType | ciąg | Użytkownik określa typ zawartości komunikatu. Aby zezwolić na zapytania w treści wiadomości, ta wartość musi być ustawiona application/JSON. |
-| contentEncoding | ciąg | Użytkownik określa typ kodowania komunikatu. Dozwolone wartości to UTF-8, UTF-16 i UTF-32, jeśli ustawiono typ zawartości application/JSON. |
-| iothub-connection-device-id | ciąg | Ta wartość jest ustawiana przez usługę IoT Hub i identyfikuje identyfikator urządzenia. Aby wysłać zapytanie, użyj `$connectionDeviceId`. |
-| iothub enqueuedtime | ciąg | Ta wartość jest ustawiana przez usługę IoT Hub i reprezentuje rzeczywisty czas enqueuing komunikat w formacie UTC. Aby wysłać zapytanie, użyj `enqueuedTime`. |
+| contentType | string | Użytkownik określa typ zawartości komunikatu. Aby zezwolić na zapytania w treści wiadomości, ta wartość musi być ustawiona application/JSON. |
+| contentEncoding | string | Użytkownik określa typ kodowania komunikatu. Dozwolone wartości to UTF-8, UTF-16 i UTF-32, jeśli ustawiono typ zawartości application/JSON. |
+| iothub-connection-device-id | string | Ta wartość jest ustawiana przez usługę IoT Hub i identyfikuje identyfikator urządzenia. Aby wysłać zapytanie, użyj `$connectionDeviceId`. |
+| iothub enqueuedtime | string | Ta wartość jest ustawiana przez usługę IoT Hub i reprezentuje rzeczywisty czas enqueuing komunikat w formacie UTC. Aby wysłać zapytanie, użyj `enqueuedTime`. |
 
 Zgodnie z opisem w [IoT Hub komunikatów](iot-hub-devguide-messages-construct.md), istnieją dodatkowe systemu właściwości w komunikacie. Oprócz **contentType**, **contentEncoding**, i **enqueuedTime**, **connectionDeviceId** i  **connectionModuleId** również mogą być przeszukiwane.
 

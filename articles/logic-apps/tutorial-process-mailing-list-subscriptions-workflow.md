@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
 ms.openlocfilehash: b48ecce1c87c0a29996e437d621c3ce396a84856
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232668"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60503464"
 ---
 # <a name="manage-mailing-list-requests-with-azure-logic-apps"></a>Zarządzanie żądaniami listy adresowej za pomocą usługi Azure Logic Apps
 
@@ -79,7 +79,7 @@ Każda aplikacja logiki musi rozpoczynać się od wyzwalacza, który jest aktywo
 
 1. W projektancie wprowadź frazę „when email arrives” (po nadejściu wiadomości e-mail) w polu wyszukiwania. Wybierz wyzwalacz dla dostawcy poczty e-mail: **<*Twój-dostawca-poczty-e-mail*> — Po nadejściu nowej wiadomości e-mail**
    
-   ![Wybieranie wyzwalacza dla dostawcy poczty e-mail: „Po nadejściu nowej wiadomości e-mail”](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-new-email.png)
+   ![Wybierz ten wyzwalacz dla dostawcy poczty e-mail: „Po nadejściu nowej wiadomości e-mail”](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-new-email.png)
 
    * Dla kont służbowych platformy Azure wybierz pozycję Office 365 Outlook.
    * Dla osobistych kont Microsoft wybierz pozycję Outlook.com.
@@ -183,7 +183,7 @@ Następnie określ akcję, która będzie wykonywana przez aplikację logiki, gd
 Teraz dodaj akcję, która doda zatwierdzony element członkowski do listy adresowej.
 
 1. W gałęzi warunku **W przypadku wartości true** wybierz opcję **Dodaj akcję**.
-Wyszukaj frazę „mailchimp” i wybierz tę akcję: **MailChimp — Dodawanie elementu członkowskiego do listy**
+Wyszukaj frazę "mailchimp" i wybierz następującą akcję: **MailChimp — Dodaj członka do listy**
 
    ![Wybieranie opcji „MailChimp — Dodawanie elementu członkowskiego do listy”](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-mailchimp-add-member.png)
 
@@ -248,8 +248,8 @@ Następnie skonfiguruj wiadomości e-mail, które mają być wysyłane, gdy doł
    | Ustawienie | Wartość | Opis | 
    | ------- | ----- | ----------- | 
    | **Do** | <*your-email-address*> | Adres e-mail, na który ma być wysłana wiadomość e-mail z informacją o powodzeniu. Do celów testowych możesz użyć własnego adresu e-mail. | 
-   | **Temat** | <*subject-for-success-email*> | Temat wiadomości e-mail z informacją o powodzeniu. Na potrzeby tego samouczka wprowadź ten tekst, a następnie wybierz określone pole w obszarze **Dodawanie elementu członkowskiego do listy** z listy parametrów lub listy zawartości dynamicznej: <p>„Powodzenie! Element członkowski został dodany do listy 'test-members-ML': **adres e-mail**” | 
-   | **Treść** | <*body-for-success-email*> | Treść wiadomości e-mail z informacją o powodzeniu. Na potrzeby tego samouczka wprowadź ten tekst, a następnie wybierz określone pola w obszarze **Dodawanie elementu członkowskiego do listy** z listy parametrów lub listy zawartości dynamicznej:  <p>„Nowy element członkowski dołączył do listy 'test-members-ML': **adres E-mail**”</br>„Stan akceptacji elementu członkowskiego: **stan**” | 
+   | **Temat** | <*subject-for-success-email*> | Temat wiadomości e-mail z informacją o powodzeniu. Na potrzeby tego samouczka wprowadź ten tekst, a następnie wybierz określone pole w obszarze **Dodawanie elementu członkowskiego do listy** z listy parametrów lub listy zawartości dynamicznej: <p>„Powodzenie! Elementu członkowskiego dodanego do 'test-members-ML': **Adres e-mail**" | 
+   | **Treść** | <*body-for-success-email*> | Treść wiadomości e-mail z informacją o powodzeniu. Na potrzeby tego samouczka wprowadź ten tekst, a następnie wybierz określone pola w obszarze **Dodawanie elementu członkowskiego do listy** z listy parametrów lub listy zawartości dynamicznej:  <p>"Nowy element członkowski dołączył 'test-members-ML': **Adres e-mail**"</br>"Stan akceptacji elementu członkowskiego: **Stan**" | 
    | | | | 
 
 5. Zapisz aplikację logiki.
@@ -273,7 +273,7 @@ Następnie skonfiguruj wiadomości e-mail, które mają być wysyłane, gdy doł
    | Ustawienie | Wartość | Opis | 
    | ------- | ----- | ----------- | 
    | **Do** | <*your-email-address*> | Adres e-mail, na który ma być wysłana wiadomość e-mail z informacją o niepowodzeniu. Do celów testowych możesz użyć własnego adresu e-mail. | 
-   | **Temat** | <*subject-for-failure-email*> | Temat wiadomości e-mail z informacją o niepowodzeniu. Na potrzeby tego samouczka wprowadź ten tekst, a następnie wybierz określone pole w obszarze **Dodawanie elementu członkowskiego do listy** z listy parametrów lub listy zawartości dynamicznej: <p>„Niepowodzenie, element członkowski nie został dodany do listy 'test-members-ML': **adres e-mail**” | 
+   | **Temat** | <*subject-for-failure-email*> | Temat wiadomości e-mail z informacją o niepowodzeniu. Na potrzeby tego samouczka wprowadź ten tekst, a następnie wybierz określone pole w obszarze **Dodawanie elementu członkowskiego do listy** z listy parametrów lub listy zawartości dynamicznej: <p>"Nie powiodło się, nie dodania elementu członkowskiego na 'test-members-ML': **Adres e-mail**" | 
    | **Treść** | <*body-for-failure-email*> | Treść wiadomości e-mail z informacją o niepowodzeniu. Na potrzeby tego samouczka wprowadź ten tekst: <p>„Element członkowski może już istnieć. Sprawdź swoje konto MailChimp”. | 
    | | | | 
 
@@ -319,7 +319,7 @@ Gdy grupa zasobów zawierająca aplikację logiki i powiązane zasoby nie będzi
 * Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 * Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](https://aka.ms/logicapps-wish).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku utworzyliśmy aplikację logiki, która zarządza zatwierdzaniem żądań dotyczących listy adresowej. Możesz teraz dowiedzieć się, w jaki sposób utworzyć aplikację logiki, która przetwarza i przechowuje załączniki wiadomości e-mail przez integrowanie usług platformy Azure, takich jak Azure Storage i Azure Functions.
 

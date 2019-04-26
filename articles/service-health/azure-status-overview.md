@@ -15,11 +15,11 @@ ms.workload: Supportability
 ms.date: 02/11/2019
 ms.author: stbaron
 ms.openlocfilehash: 6054b33e4068d36c5bfbb80120086a92a03525c8
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56097512"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60506788"
 ---
 # <a name="azure-status"></a>Stan platformy Azure
 [Stan usługi Azure](https://azure.microsoft.com/status/) zapewnia globalny widok kondycji usług platformy Azure i regionach. Stan platformy Azure możesz uzyskać aktualne informacje na temat dostępności usług. Stan platformy Azure jest dostępna dla wszystkich użytkowników, aby wyświetlić wszystkie usługi, którzy raportują ich kondycję usługi, a także zdarzenia z szeroką wpływu. Jeśli bieżący użytkownik platformy Azure, jednak zdecydowanie zachęcamy do użycia spersonalizowane środowisko w [usługi Azure Service Health](https://aka.ms/azureservicehealth). Usługa Azure Service Health obejmuje wszystkie awarii, działania o zbliżającej się planowanej konserwacji i porady dotyczące usługi.

@@ -3,8 +3,8 @@ title: Azure Network Watcher | Microsoft Docs
 description: Dowiedz się więcej na temat oferowanych przez usługę Azure Network Watcher funkcji monitorowania, diagnostyki, metryk i rejestrowania zdarzeń dla zasobów w sieci wirtualnej.
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 Customer intent: As someone with basic Azure network experience, I want to understand how Azure Network Watcher can help me resolve some of the network-related problems I've encountered and provide insight into how I use Azure networking.
 ms.assetid: 14bc2266-99e3-42a2-8d19-bd7257fec35e
@@ -14,14 +14,14 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/24/2018
-ms.author: jdial
+ms.author: kumud
 ms.custom: mvc
 ms.openlocfilehash: 0eb27e997d39ceb82098b63de607d3529ccc53b4
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984408"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60532233"
 ---
 # <a name="what-is-azure-network-watcher"></a>Co to jest Azure Network Watcher?
 
@@ -102,6 +102,6 @@ Funkcję rejestrowania diagnostycznego można włączyć dla zasobów sieciowych
 ## <a name="network-watcher-automatic-enablement"></a>Automatyczne włączanie usługi Network Watcher
 Podczas tworzenia lub aktualizowania sieci wirtualnej w ramach subskrypcji usługa Network Watcher zostanie automatycznie włączona w regionie sieci wirtualnej. Automatyczne włączanie usługi Network Watcher nie wpływa na zasoby i nie wiąże się z opłatami. Aby uzyskać więcej informacji, zobacz [Tworzenie usługi Network Watcher](network-watcher-create.md).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Teraz masz już podstawowe informacje o usłudze Azure Network Watcher. Aby rozpocząć korzystanie z usługi Network Watcher, zdiagnozuj typowy problem z komunikacją do/z maszyny wirtualnej przy użyciu funkcji weryfikowania przepływu adresów IP. Aby dowiedzieć się, jak to zrobić, zobacz przewodnik Szybki start [Diagnozowanie problemu z filtrowaniem ruchu sieciowego maszyny wirtualnej](diagnose-vm-network-traffic-filtering-problem.md).

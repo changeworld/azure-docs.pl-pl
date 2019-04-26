@@ -16,11 +16,11 @@ ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3f9a33b6bce8cef5bf790efeb43259dfb8013487
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202490"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60472485"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Przejąć niezarządzanego katalogu jako administrator usługi Azure Active Directory
 
@@ -82,7 +82,7 @@ Jeśli zarządzasz już dzierżawcy z usług platformy Azure lub usługi Office 
 Podczas weryfikowania własności nazwy domeny usługi Azure AD usuwa nazwę domeny z niezarządzanej dzierżawy i przenosi je do istniejącej dzierżawy. Przejęcia przez administratora zewnętrznych niezarządzanego katalogu wymaga tego samego procesu weryfikacji DNS TXT jako przejęcia przez administratora wewnętrznego. Różnica polega na tym, że następujące czynności są również przenoszone za pośrednictwem z nazwą domeny:
 
 - Użytkownicy
-- Subskrypcje
+- Subscriptions
 - Przypisań licencji
 
 ### <a name="support-for-external-admin-takeover"></a>Obsługa przejęcia przez administratora zewnętrznych

@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5af86ad12eed4901e577149b9f20216d5004663b
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 578ca5fa1de338a92280e2dc7cc252fb616e2111
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58340464"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60483411"
 ---
 # <a name="update-your-groups-info-from-the-my-apps-portal"></a>Zaktualizować swoje informacje grup z portalu Moje aplikacje
 Za pomocą swojego konta firmowego lub szkolnego oparta na sieci web **Moje aplikacje** portalu, aby wyświetlić i uruchomić wiele organizacji aplikacji w chmurze, aby zaktualizować niektóre z Twoich informacji profilu i konta, aby wyświetlić swoje **grup** informacji i wykonywać **przeglądów dostępu** dla aplikacji i grup. Jeśli nie masz dostępu do **Moje aplikacje** portal, należy skontaktować się z pomocą techniczną o uprawnienia.
@@ -58,6 +58,8 @@ Jeśli administrator przyznał Ci uprawnienia do wyświetlania **grup** kafelka,
     - **Edytuj istniejącą grupę.** Edytuj szczegóły dla każdego własne grupy. Aby poznać konkretne kroki, zobacz [edytować istniejącą grupę](#edit-an-existing-group) dalszej części tego artykułu.
 
     - **Dodawanie lub usuwanie elementów członkowskich.** Dodaj lub usuń elementy członkowskie grup, których jesteś właścicielem. Aby poznać konkretne kroki, zobacz [Dodawanie lub usuwanie członka](#add-or-remove-a-member) dalszej części tego artykułu.
+
+    - **Odnawianie grupy usługi Office 365.** Jeśli Twoja organizacja pozwala na to, można odnowić grup usługi Office 365. Aby poznać konkretne kroki, zobacz [odnowić grupy usługi Office 365](#renew-an-office-365-group) dalszej części tego artykułu. 
 
     - **Usuwanie grupy.** Usuń wszystkie grupy, których jesteś właścicielem. Aby poznać konkretne kroki, zobacz [usunąć grupę](#delete-a-group) dalszej części tego artykułu.
 
@@ -117,6 +119,18 @@ Można dodać lub usunąć członków dla każdej własne grupy.
 3. Jeśli przez pomyłkę dodany członek lub członek opuścił organizacji, możesz usunąć element członkowski, wybierając **usuwanie elementu członkowskiego** obok nazwy elementu członkowskiego *&lt;nazwa_grupy&gt;* strony.
 
     ![Usuń członka z wyróżnionym linkiem usuwania](media/my-apps-portal/my-apps-portal-remove-member-link.png)
+
+## <a name="renew-an-office-365-group"></a>Odnawianie grupy usługi Office 365
+Jeśli Twoja organizacja pozwala na to, można odnowić grupy usługi Office 365, rozszerzając daty wygaśnięcia.
+
+### <a name="to-renew-a-group"></a>Aby odnowić grupy
+1. Wybierz grupę usługi Office 365, którą chcesz odnowić, a następnie wybierz **Odnów grupę**.
+
+    ![Odnawianie grupy usługi Office 365, opóźniając datę wygaśnięcia](media/my-apps-portal/my-apps-portal-renew-group-link.png)
+
+2. Kliknij przycisk **OK** aby zamknąć komunikat potwierdzenia.
+
+    Po odświeżeniu strony zobaczysz zaktualizowana **ostatniego odnowienia** i **grupie wygaśnięcia** daty.
 
 ## <a name="delete-a-group"></a>Usuwanie grupy
 W dowolnym momencie można usuwać wszystkie własne grupy. Jednakże jeśli przez pomyłkę usunąć grupę musisz utworzyć je, a następnie ponownie dodać elementy członkowskie.

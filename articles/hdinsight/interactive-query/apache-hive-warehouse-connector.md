@@ -1,7 +1,6 @@
 ---
 title: Integrowanie platformy Apache Spark i Apache Hive za pomocą łącznika magazynu Hive
 description: Dowiedz się, jak zintegrować platformę Apache Spark i Apache Hive za pomocą łącznika magazynu programu Hive w usłudze Azure HDInsight.
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,11 +8,11 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.openlocfilehash: f5c4b07326bfd469720ab07b522aefb9ed074cbb
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60014210"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60484856"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>Integrowanie platformy Apache Spark i Apache Hive za pomocą łącznika magazynu Hive
 

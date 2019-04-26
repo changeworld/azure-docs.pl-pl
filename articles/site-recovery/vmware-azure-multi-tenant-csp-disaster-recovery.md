@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: 77b64f09b7fd1429eb23c4407c729dfc0aafdf2b
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842360"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60461031"
 ---
 # <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>Konfigurowanie odzyskiwania po awarii programu VMware w środowisku wielu dzierżawców w ramach programu Cloud Solution Provider (CSP)
 
@@ -39,7 +39,7 @@ Aby skonfigurować replikacji oprogramowania VMware, należy wykonać następuj�
 
     ![Na stronie informacje o koncie](./media/vmware-azure-multi-tenant-csp-disaster-recovery/customer-add-filled.png)
 
-5. Następnie kliknij przycisk **dalej: subskrypcje**.
+5. Następnie kliknij przycisk **dalej: Subskrypcje**.
 6. Na stronie Wybór subskrypcji wybierz **Microsoft Azure** pole wyboru. Możesz dodać inne subskrypcje teraz lub w dowolnym innym czasie.
 7. Na **przeglądu** strony, Potwierdź szczegóły dzierżawy, a następnie kliknij **przesyłania**.
 8. Po utworzeniu konta dzierżawy, zostanie wyświetlona strona potwierdzenia, wyświetlania szczegółów domyślne konto i hasło dla tej subskrypcji. Zapisz informacje o, a następnie zmiany hasła później zgodnie z potrzebami, za pośrednictwem platformy Azure Zaloguj strony portalu.
@@ -89,11 +89,11 @@ Można teraz wykonać i zarządzać operacjami usługi Site Recovery wszystkie d
 
 Istnieją trzy główne modele wielodostępne:
 
-* **Udostępnione hostingu usługi dostawcy (HSP)**: partnera jest właścicielem infrastruktury fizycznej i korzysta z zasobów udostępnionych (vCenter, centrów danych, magazynu fizycznego i tak dalej) do hostowania wielu maszyn wirtualnych dzierżawy w tej samej infrastrukturze. Partner może zapewnić zarządzanie odzyskiwania po awarii jako usługa zarządzana, lub dzierżawy mogą być właścicielami odzyskiwania po awarii jako rozwiązanie samoobsługi.
+* **Dostawcy usług hostingu (HSP) udostępnionych**: Partner ten jest właścicielem infrastruktury fizycznej i korzysta z zasobów udostępnionych (vCenter, centrów danych, magazynu fizycznego i tak dalej) do hostowania wielu maszyn wirtualnych dzierżawy w tej samej infrastrukturze. Partner może zapewnić zarządzanie odzyskiwania po awarii jako usługa zarządzana, lub dzierżawy mogą być właścicielami odzyskiwania po awarii jako rozwiązanie samoobsługi.
 
-* **Dostawcy usług hostingu w wersji dedykowanej**: partnera jest właścicielem infrastruktury fizycznej, ale używa dedykowanych zasobów (wiele vCenters, fizycznych magazynów danych i tak dalej) do obsługi każdego dzierżawcy maszyny wirtualne, w osobnej infrastruktury. Partner może zapewnić zarządzanie odzyskiwania po awarii jako usługa zarządzana lub dzierżawcy mogą jej właścicielem jako rozwiązanie samoobsługi.
+* **Dostawca usług hostingu w wersji dedykowanej**: Partner jest właścicielem infrastruktury fizycznej, ale używa dedykowanych zasobów (wiele vCenters, fizycznych magazynów danych i tak dalej) do obsługi każdego dzierżawcy maszyny wirtualne, w osobnej infrastruktury. Partner może zapewnić zarządzanie odzyskiwania po awarii jako usługa zarządzana lub dzierżawcy mogą jej właścicielem jako rozwiązanie samoobsługi.
 
-* **Zarządzane usługi dostawcy (MSP)**: klienta jest właścicielem infrastruktury fizycznej, który jest hostem maszyny wirtualne, a także partnera, zarządzania i zapewniania odzyskiwania po awarii.
+* **Zarządzane usługi dostawcy (MSP)**: Klient jest właścicielem infrastruktury fizycznej, który jest hostem maszyny wirtualne, a partner zapewnia możliwości odzyskiwania po awarii i zarządzanie.
 
 Konfigurując subskrypcji dzierżawy zgodnie z opisem w tym artykule, możesz szybko rozpocząć pozwala klientom w żadnej z odpowiednich modeli wielodostępnych. Dowiedz się więcej o różnych modeli z wieloma dzierżawami i lokalnych kontroli dostępu [tutaj](vmware-azure-multi-tenant-overview.md).
 

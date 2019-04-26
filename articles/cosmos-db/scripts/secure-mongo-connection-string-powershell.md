@@ -2,19 +2,20 @@
 title: Skrypt programu Azure PowerShell — pobieranie parametrów połączenia usługi Azure Cosmos DB dla aplikacji MongoDB
 description: Przykładowy skrypt programu Azure PowerShell — pobieranie parametrów połączenia usługi Azure Cosmos DB dla aplikacji MongoDB
 ms.service: cosmos-db
-author: SnehaGunda
-ms.author: sngun
+author: rockboyfor
+ms.author: v-yeche
 ms.subservice: cosmosdb-sql
 ms.devlang: PowerShell
 ms.topic: sample
-ms.date: 05/10/2017
+origin.date: 05/10/2017
+ms.date: 04/15/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 70b48b16a0fcc54025101e61aec3715fb91fea86
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500320"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60446129"
 ---
 # <a name="get-an-azure-cosmos-db-connection-string-for-mongodb-apps-using-powershell"></a>Pobieranie parametrów połączenia usługi Azure Cosmos DB dla aplikacji MongoDB przy użyciu programu PowerShell
 
@@ -26,7 +27,49 @@ Ten przykładowy kod pobiera parametry połączenia usługi Azure Cosmos DB dla 
 
 ## <a name="sample-script"></a>Przykładowy skrypt
 
-[!code-powershell[main](../../../powershell_scripts/cosmosdb/get-mongodb-connection-string/get-mongodb-connection-string.ps1?highlight=37-41 "Get the MongoDB connection string from an Azure Cosmos DB account")]
+```powershell
+# Set the Azure resource group name and location
+$resourceGroupName = "myResourceGroup"
+$resourceGroupLocation = "chinanorth"
+
+# Create the resource group
+New-AzResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation
+
+# Database name
+$DBName = "testdb"
+
+# Write and read locations and priorities for the database
+$locations = @(@{"locationName"="chinanorth"; 
+                 "failoverPriority"=0}, 
+               @{"locationName"="chinaeast"; 
+                  "failoverPriority"=1})
+
+# Consistency policy
+$consistencyPolicy = @{"defaultConsistencyLevel"="BoundedStaleness"; 
+                       "maxIntervalInSeconds"="10"; 
+                       "maxStalenessPrefix"="200"}
+
+# DB properties
+$DBProperties = @{"databaseAccountOfferType"="Standard";
+                  "locations"=$locations; 
+                  "consistencyPolicy"=$consistencyPolicy}
+
+# Create the database
+New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
+                    -ApiVersion "2015-04-08" `
+                    -ResourceGroupName $resourceGroupName `
+                    -Location $resourceGroupLocation `
+                    -Name $DBName `
+                    -Kind "MongoDB" `
+                    -PropertyObject $DBProperties
+
+# Retrieve a connection string that can be used by a MongoDB client
+Invoke-AzResourceAction -Action listConnectionStrings `
+    -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
+    -ApiVersion "2015-04-08" `
+    -ResourceGroupName $resourceGroupName `
+    -Name $DBName
+```
 
 ## <a name="clean-up-deployment"></a>Czyszczenie wdrożenia
 
@@ -53,3 +96,5 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 Aby uzyskać więcej informacji na temat programu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](https://docs.microsoft.com/powershell/).
 
 Więcej przykładowych skryptów programu PowerShell dla usługi Azure Cosmos DB można znaleźć w artykule [Azure Cosmos DB PowerShell scripts](../powershell-samples.md) (Skrypty programu PowerShell dla usługi Azure Cosmos DB).
+
+<!-- Update_Description: update meta properties, update link -->

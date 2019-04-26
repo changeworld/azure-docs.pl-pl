@@ -2,14 +2,15 @@
 author: PatAltimore
 ms.service: active-directory-b2c
 ms.topic: include
-ms.date: 11/30/2018
-ms.author: patricka
+origin.date: 11/30/2018
+ms.date: 04/04/2019
+ms.author: v-junlch
 ms.openlocfilehash: 0d9f0a24d84bd18bdf1fac84c744cc34a7d89ab3
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54355599"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60456042"
 ---
 Jeśli chcesz włączyć edytowania profilu w swojej aplikacji, możesz użyć **edytowania profilu** przepływu użytkownika. Ten przepływ użytkownika opisują procesy, które klienci uzyskują podczas edytowania profilu i zawartość tokenów, które aplikacja otrzyma po pomyślnym ukończeniu.
 
@@ -17,7 +18,7 @@ Jeśli chcesz włączyć edytowania profilu w swojej aplikacji, możesz użyć *
 
 W obszarze **Zarządzaj**, wybierz opcję **przepływy użytkownika** i kliknij przycisk +**nowy przepływ użytkownika**.
 
-![Wybierz nowy przepływ użytkownika](media/active-directory-b2c-create-profile-editing-policy/add-b2c-new-user-flow.png)
+![Wybierz nowy przepływ użytkownika](./media/active-directory-b2c-create-profile-editing-policy/add-b2c-new-user-flow.png)
 
 Na **zalecane** zaznacz **edytowania profilu**.
 
@@ -25,7 +26,7 @@ Wprowadź przepływ użytkownika **nazwa** odwołać się do aplikacji. Na przyk
 
 W obszarze **dostawców tożsamości**, sprawdź **logowanie za pomocą konta lokalnego**. Opcjonalnie możesz również wybrać dostawców tożsamości społecznościowych, jeśli są już skonfigurowani.
 
-![Wybierz pozycję Logowanie za pomocą konta lokalnego jako dostawcę tożsamości, a następnie kliknij przycisk OK](media/active-directory-b2c-create-profile-editing-policy/add-b2c-profile-editing-identity-providers.png)
+![Wybierz pozycję Logowanie za pomocą konta lokalnego jako dostawcę tożsamości, a następnie kliknij przycisk OK](./media/active-directory-b2c-create-profile-editing-policy/add-b2c-profile-editing-identity-providers.png)
 
 W obszarze **atrybutów użytkownika**, kliknij przycisk **Pokaż więcej**. W **zbieranie atrybut** kolumnę, wybierz atrybuty, użytkownik może wyświetlać i edytować w swoim profilu. Na przykład zaznacz pozycje **Kraj/Region**, **Nazwa wyświetlana** i **Kod pocztowy**.
 
@@ -33,13 +34,13 @@ W **zwracany oświadczenia** kolumnę, wybierz oświadczenia, które mają być 
 
 Kliknij przycisk **OK**.
 
-![Wybierz część oświadczeń aplikacji i kliknij przycisk OK](media/active-directory-b2c-create-profile-editing-policy/add-b2c-user-attributes.png)
+![Wybierz część oświadczeń aplikacji i kliknij przycisk OK](./media/active-directory-b2c-create-profile-editing-policy/add-b2c-user-attributes.png)
 
 Kliknij przycisk **Utwórz** dodać przepływ użytkownika. Przepływ użytkownika znajduje się w **B2C_1_SiPe**. Do nazwy jest dołączany prefiks **B2C_1_**.
 
 Wybierz **uruchomić przepływ użytkownika**. Sprawdź ustawienia określone w tabeli, a następnie kliknij przycisk **uruchomić przepływ użytkownika**.
 
-![Wybierz przepływ użytkownika i uruchom go](media/active-directory-b2c-create-profile-editing-policy/add-b2c-profile-editing-run-user-flow.png)
+![Wybierz przepływ użytkownika i uruchom go](./media/active-directory-b2c-create-profile-editing-policy/add-b2c-profile-editing-run-user-flow.png)
 
 | Ustawienie      | Wartość  |
 | ------------ | ------ |
@@ -51,3 +52,4 @@ Zostanie otwarta nowa karta przeglądarki, na której możesz sprawdzić, czy ed
 > [!NOTE]
 > Zajmuje do minuty Tworzenie przepływu użytkownika i aktualizacje zostały wprowadzone.
 >
+

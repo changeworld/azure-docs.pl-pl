@@ -14,20 +14,20 @@ ms.workload: infrastructure
 ms.date: 09/04/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d0d72a9ef592579b21d082111ab8ad00f8995de2
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 7d403c284eefc1351aabb632977832f2bf11757a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44028430"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60477126"
 ---
-# <a name="sizing"></a>Zmiana rozmiaru
+# <a name="sizing"></a>Ustalanie rozmiaru
 
 Ustalanie rozmiaru dla dużych wystąpień HANA nie różni się od ogólnie rzecz biorąc ustalania rozmiaru dla platformy HANA. Dla istniejących i wdrażane systemy, które chcesz przenieść z innych RDBMS do platformy HANA, SAP udostępnia szereg raportów, które działają w istniejących systemów SAP. Jeśli baza danych zostanie przeniesiony do platformy HANA, te raporty, sprawdź dane i obliczyć wymagania dotyczące pamięci dla wystąpienia platformy HANA. Aby uzyskać więcej informacji na temat sposobu uruchamiania tych raportów i uzyskać ich najnowsze poprawki lub wersji należy przeczytać następujące uwagi SAP:
 
 - [Uwaga SAP #1793345 - rozmiaru pakietu SAP na platformie HANA](https://launchpad.support.sap.com/#/notes/1793345)
 - [SAP Uwaga 1872170 # - Suite on HANA i S/4 HANA raportu zmiany rozmiaru](https://launchpad.support.sap.com/#/notes/1872170)
-- [Uwaga SAP #2121330 — często zadawane pytania: SAP BW on HANA, zmiany rozmiaru raportu](https://launchpad.support.sap.com/#/notes/2121330)
+- [Uwaga SAP #2121330 — często zadawane pytania: System SAP BW on HANA, zmiany rozmiaru raportu](https://launchpad.support.sap.com/#/notes/2121330)
 - [Uwaga #1736976 - raport ustalania rozmiaru dla programu BW on HANA, SAP](https://launchpad.support.sap.com/#/notes/1736976)
 - [Uwaga 2296290 # - nowe zmiany rozmiaru raportu dla BW on HANA, SAP](https://launchpad.support.sap.com/#/notes/2296290)
 

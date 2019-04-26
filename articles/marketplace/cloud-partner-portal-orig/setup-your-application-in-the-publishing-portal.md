@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 8ac0fbb1c62e4162e1c4ad040365a16d055e4552
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310021"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60483232"
 ---
 # <a name="setup-your-application-in-the-publishing-portal"></a>Instalowanie aplikacji w portalu wydawców
 
@@ -106,7 +106,7 @@ Jest to opis, który będzie wyświetlany na stronie szczegółów aplikacji. Ma
 
 Wybierz branżę, który aplikacji najlepiej jest wyrównany do. Jeśli aplikacja ma odnosi się do wielu branżach, można pozostawić to puste.
 
-### <a name="categories"></a>Kategorie
+### <a name="categories"></a>Categories
 
 Wybierz kategorie, które są istotne dla twojej aplikacji. Wybierz więcej niż 3.
 

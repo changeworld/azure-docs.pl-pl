@@ -3,8 +3,8 @@ title: Wprowadzenie do następnego przeskoku w usłudze Azure Network Watcher | 
 description: Ten artykuł zawiera omówienie usługi Network Watcher następnego przeskoku możliwości.
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: KumudD
+manager: twooley
 editor: ''
 ms.assetid: febf7bca-e0b7-41d5-838f-a5a40ebc5aac
 ms.service: network-watcher
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: jdial
+ms.author: kumud
 ms.openlocfilehash: 40f1790806aac6756979f28ad29442b7abf96019
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096895"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60532298"
 ---
 # <a name="use-next-hop-to-diagnose-virtual-machine-routing-problems"></a>Użyj następny przeskok do diagnozowania problemów z routingiem maszyny wirtualnej
 

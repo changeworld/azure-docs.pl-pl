@@ -15,11 +15,11 @@ ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 690f41e941f2d1db8fc92d225a54d07570299222
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313139"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60478110"
 ---
 # <a name="set-up-smt-server-for-suse-linux"></a>Konfigurowanie serwera SMT dla systemu Linux SUSE
 Duże wystąpienia SAP HANA nie ma bezpośredniego połączenia z Internetem. Nie jest dość proste, aby zarejestrować takiej jednostki z dostawcą systemu operacyjnego i pobieranie i stosowanie aktualizacji. Rozwiązania dla systemu SUSE Linux jest konfigurowanie serwera SMT w maszynie wirtualnej platformy Azure. Hosta maszyny wirtualnej w sieci wirtualnej platformy Azure, który jest podłączony do dużych wystąpień HANA. Za pomocą takiego serwera SMT jednostki dużych wystąpień HANA można zarejestrować i pobierania aktualizacji. 

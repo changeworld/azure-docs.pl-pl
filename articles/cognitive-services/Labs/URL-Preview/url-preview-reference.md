@@ -11,11 +11,11 @@ ms.topic: reference
 ms.date: 03/29/2018
 ms.author: rosh
 ms.openlocfilehash: 69db722295c9c81d45913bd078fe9cc5ab74c512
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58104713"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60462592"
 ---
 # <a name="project-url-preview-v7-reference"></a>Odwołanie do projektu Podgląd adresu URL w wersji 7
 
@@ -83,7 +83,7 @@ Dostępne są następujące nagłówki, które mogą obejmować żądania i odpo
 ## <a name="response-objects"></a>Obiekty odpowiedzi
 Schemat odpowiedzi to albo [Strona internetowa] lub ErrorResponse, tak jak API wyszukiwania w Internecie. Jeśli żądanie zakończy się niepowodzeniem, jest obiektem najwyższego poziomu [ErrorResponse](#errorresponse) obiektu.
 
-|Obiekt|Opis|
+|Object|Opis|
 |------------|-----------------|
 |[WebPage](#webpage)|Najwyższego poziomu obiekt JSON, który zawiera atrybuty (wersja zapoznawcza).|
 

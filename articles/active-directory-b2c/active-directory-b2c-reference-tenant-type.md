@@ -3,7 +3,7 @@ title: Region dostępność rezydencja danych w usłudze Azure Active Directory 
 description: Temat na typach dzierżaw usługi Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
@@ -11,11 +11,11 @@ ms.date: 04/10/2017
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 928c6316ea964472faadc82213c4c1ff81c3e038
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59608252"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60317108"
 ---
 # <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C: Dostępność w poszczególnych regionach i rezydencja danych
 Dostępność w poszczególnych regionach i rezydencja danych są dwa bardzo różne zagadnienia dotyczące inaczej usługi Azure AD B2C z pozostałą część platformy Azure. Spowoduje to w tym artykule wyjaśniono różnice między tymi dwoma pojęciami i porównać, jak odnoszą się do platformy Azure i usługi Azure AD B2C.

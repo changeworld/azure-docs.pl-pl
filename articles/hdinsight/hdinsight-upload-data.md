@@ -2,7 +2,6 @@
 title: Przekazywanie danych na potrzeby zadań usługi Apache Hadoop w HDInsight
 description: Dowiedz się, jak przekazywać i dostęp do danych dla zadań technologii Apache Hadoop w HDInsight przy użyciu platformy Azure klasyczny interfejs wiersza polecenia, Eksplorator usługi Azure Storage, programu Azure PowerShell, wiersza polecenia usługi Hadoop lub narzędzia Sqoop.
 keywords: hadoop etl, pobieranie danych do platformy hadoop, hadoop ładowanie danych
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.author: hrasheed
@@ -11,11 +10,11 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/08/2019
 ms.openlocfilehash: a56f2546eec12d04dcc64665e60a9874b8e991b6
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59684144"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60486334"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>Przekazywanie danych na potrzeby zadań usługi Apache Hadoop w HDInsight
 

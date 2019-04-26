@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: raynew
 ms.openlocfilehash: dff3c96cf3ac8eea7c1160ee1834cc70390c0333
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652641"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60533255"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Rozwiązywanie problemów z usługą Azure Migrate
 
@@ -21,7 +21,7 @@ ms.locfileid: "58652641"
 
 ### <a name="i-am-using-the-ova-that-continuously-discovers-my-on-premises-environment-but-the-vms-that-are-deleted-in-my-on-premises-environment-are-still-being-shown-in-the-portal"></a>Używam OVA, które stale odnajduje Moje w środowisku lokalnym, ale maszyny wirtualne, które są usuwane z moich w środowisku lokalnym, są nadal są wyświetlane w portalu.
 
-Urządzenie ciągłe odnajdywania tylko zbiera dane dotyczące wydajności stale, nie wykrywa zmiany konfiguracji w środowisku lokalnym, (tj. Dodawanie maszyny Wirtualnej, usuwania, dodawania dysku itp.). W przypadku zmiany konfiguracji w środowisku lokalnym możesz wykonać następujące działania, aby odzwierciedlić zmiany w portalu:
+Urządzenie ciągłego odnajdywania zbiera w sposób ciągły tylko dane dotyczące wydajności i nie wykrywa żadnych zmian konfiguracji w środowisku lokalnym (tzn. dodania lub usunięcia maszyny wirtualnej, dodania dysku itp.). W przypadku zmiany konfiguracji w środowisku lokalnym możesz wykonać następujące działania, aby odzwierciedlić zmiany w portalu:
 
 - Dodanie elementów (maszyn wirtualnych, dysków, rdzeni itp.): aby uwzględnić te zmiany w witrynie Azure Portal, możesz zatrzymać odnajdywanie z urządzenia i następnie uruchomić je ponownie. Zapewni to, że zmiany zostaną zaktualizowane w projekcie usługi Azure Migrate.
 
@@ -82,7 +82,7 @@ Jeśli nie można wyeksportować raport z oceny z portalu, spróbuj użyć poni�
 
 ### <a name="performance-data-for-cpu-memory-and-disks-is-showing-up-as-zeroes"></a>Dane wydajności dotyczące procesora CPU, pamięci i dysków są wyświetlane jako wartości zerowe
 
-Usługa Azure Migrate profile ciągle środowisku lokalnym, aby zbierać dane dotyczące wydajności lokalnych maszyn wirtualnych. Odnajdywanie środowiska właśnie zostało uruchomione, musisz poczekać co najmniej jeden dzień do zbierania danych wydajności do wykonania. Jeśli ocena została utworzona bez oczekiwania na jeden dzień, metryki wydajności będzie wyświetlany jako zera. Po odczekaniu dnia, możesz utworzyć nowego rozwiązania do oceny lub zaktualizować oceny istniejących przy użyciu opcji "Oblicz ponownie" w raporcie oceny.
+Usługa Azure Migrate ciągle profiluje środowisko lokalne, aby zbierać dane dotyczące wydajności dla lokalnych maszyn wirtualnych. Jeśli odnajdywanie środowiska dopiero zostało uruchomione, musisz poczekać co najmniej jeden dzień, aby zbieranie danych dotyczących wydajności zostało ukończone. Jeśli ocena zostanie utworzona bez oczekiwania przez jeden dzień, metryki wydajności będą wyświetlane jako zera. Po odczekaniu jednego dnia możesz utworzyć nową ocenę lub zaktualizować istniejącą przy użyciu opcji „Oblicz ponownie” w raporcie oceny.
 
 ### <a name="i-specified-an-azure-geography-while-creating-a-migration-project-how-do-i-find-out-the-exact-azure-region-where-the-discovered-metadata-would-be-stored"></a>Lokalizacja geograficzna platformy Azure, czy określone podczas tworzenia projektu migracji, jak znaleźć się dokładnie region platformy Azure, czy przechowywania metadanych wykrytych?
 

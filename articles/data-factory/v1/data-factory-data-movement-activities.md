@@ -14,11 +14,11 @@ ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: c188c23f87715b6ba5b90f6015b59f2a347ec0cf
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821324"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60486943"
 ---
 # <a name="move-data-by-using-copy-activity"></a>Przenoszenie danych za pomocą działania kopiowania
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -28,7 +28,7 @@ ms.locfileid: "55821324"
 > [!NOTE]
 > Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli używasz bieżącą wersję usługi Data Factory, zobacz [działania kopiowania w wersji 2](../copy-activity-overview.md).
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 W usłudze Azure Data Factory umożliwia działanie kopiowania lokalnych i chmurze kopiować dane między magazynami danych. Po skopiowaniu danych można je dodatkowo przekształcane i analizowane. Działanie kopiowania umożliwia również publikować wyniki analizy do analizy biznesowej (BI) i użycie aplikacji i przekształcania.
 
 ![Rola działania kopiowania](media/data-factory-data-movement-activities/copy-activity.png)
@@ -108,7 +108,7 @@ W przypadku zarówno źródła i ujścia magazyny danych w chmurze, Data Factory
 | Brazylia | Brazylia Południowa | Brazylia Południowa |
 | Europa | Europa Północna | Europa Północna |
 | &nbsp; | Europa Zachodnia | Europa Zachodnia |
-| Wielka Brytania | Zachodnie Zjednoczone Królestwo | Południowe Zjednoczone Królestwo |
+| Zjednoczone Królestwo | Zachodnie Zjednoczone Królestwo | Południowe Zjednoczone Królestwo |
 | &nbsp; | Południowe Zjednoczone Królestwo | Południowe Zjednoczone Królestwo |
 | Azja i Pacyfik | Azja Południowo-Wschodnia | Azja Południowo-Wschodnia |
 | &nbsp; | Azja Wschodnia | Azja Południowo-Wschodnia |

@@ -13,17 +13,17 @@ ms.author: celested
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 92ce62d745bfb0299dc8f3eb401f5a66e38580f2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182123"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60440666"
 ---
 # <a name="resources-for-migrating-applications-to-azure-active-directory"></a>Zasoby dotyczące migrowania aplikacji do usługi Azure Active Directory
 
 Zasoby pomagające w migracji do usługi Azure Active Directory (Azure AD) dostęp do aplikacji i uwierzytelniania. Wypełnienie tej krótkiej ankiety (https://aka.ms/AppsMigrationFeedback) się opinią na temat doświadczeń migrowanie aplikacji do usługi Azure AD (w tym blockery migracji, należy dla narzędzia / wskazówki lub powody Zachowywanie lokalnego dostawcy tożsamości). 
 
-| Zasób  | Opis  |
+| Resource  | Opis  |
 |:-----------|:-------------|
 |[Migrowanie aplikacji do usługi Azure AD](https://aka.ms/migrateapps/whitepaper) | Ten oficjalny dokument przedstawia korzyści wynikające z migracji i opisuje sposób planowania migracji w czterech fazach jasno opisane: Odnajdywanie, klasyfikacja, migracji i bieżące zarządzanie. Poprowadzą Cię kolejne kroki sposobu myślenia o procesie i podzielić projekt na łatwe gotowego do konsumpcji części. W całym dokumencie podano linki do ważnych zasobów, które pomogą Ci po drodze. |
 |[Przewodnik po rozwiązaniu: Migrowanie aplikacji z usługi Active Directory Federation Services (AD FS) do usługi Azure AD](https://aka.ms/migrateapps/adfssolutionguide) | Ten przewodnik przeprowadzi Cię przez ten sam cztery fazy planowania i wykonywania opisanych na wyższym poziomie w oficjalnym dokumencie migracji projektu migracji aplikacji. W tym przewodniku dowiesz się, jak zastosować te etapy do określonego celu, przenoszenie aplikacji z usług federacyjnych Azure Directory (AD FS) do usługi Azure AD.|

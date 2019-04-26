@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: af36f033dbca6c9f594b3568bfe7567a959e2d2f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4b4d2e2099f0d49c7dd9a150ac659ffde62eaa21
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237156"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60506409"
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Szczegółowe kroki rozwiązywania problemów połączeń usług pulpitu zdalnego do maszyn wirtualnych Windows na platformie Azure
 Ten artykuł zawiera szczegółowe kroki rozwiązywania problemów, aby zdiagnozować i rozwiązać złożone błędy usług pulpitu zdalnego na podstawie Windows maszyn wirtualnych platformy Azure.
@@ -64,7 +64,7 @@ Klient pulpitu zdalnego nie może być dostęp do usług pulpitu zdalnego na mas
 * [Sieciowe grupy zabezpieczeń](#source-4-network-security-groups)
 * [Oparte na Windows maszyny Wirtualnej platformy Azure](#source-5-windows-based-azure-vm)
 
-## <a name="source-1-remote-desktop-client-computer"></a>Źródła 1: Komputer klienta usług pulpitu zdalnego
+## <a name="source-1-remote-desktop-client-computer"></a>Źródło 1: Klient usług pulpitu zdalnego komputera
 Upewnij się, że komputer może nawiązywać połączenia pulpitu zdalnego, do innego serwera lokalnego, komputerze z systemem Windows.
 
 ![](./media/detailed-troubleshoot-rdp/tshootrdp_1.png)
@@ -93,29 +93,29 @@ Jeśli tworzysz połączenie pulpitu zdalnego z komputerem podłączone bezpośr
 
 Praca z administratorem sieci, aby poprawić ustawienia urządzenie brzegowe w intranecie organizacji, aby zezwolić na połączenia pulpitu zdalnego oparty na protokole HTTPS z Internetem.
 
-## <a name="source-3-cloud-service-endpoint-and-acl"></a>Źródło 3: Punkt końcowy usługi w chmurze i listę ACL
+## <a name="source-3-cloud-service-endpoint-and-acl"></a>Źródło 3: Punkt końcowy usługi w chmurze i listy ACL
 W przypadku maszyn wirtualnych utworzonych za pomocą klasycznego modelu wdrażania Sprawdź, czy innej maszyny Wirtualnej platformy Azure, która znajduje się w tej samej usługi w chmurze lub sieci wirtualnej ułatwia połączeń pulpitu zdalnego z maszyną wirtualną platformy Azure.
 
 ![](./media/detailed-troubleshoot-rdp/tshootrdp_3.png)
 
 > [!NOTE]
-> Maszyny wirtualne utworzone w usłudze Resource Manager, można pominąć [źródła 4: sieciowych grup zabezpieczeń](#source-4-network-security-groups).
+> Maszyny wirtualne utworzone w usłudze Resource Manager, można pominąć [4 źródła: Sieciowe grupy zabezpieczeń](#source-4-network-security-groups).
 
 Jeśli nie masz inną maszynę wirtualną w tej samej usługi w chmurze lub sieci wirtualnej, utworzyć. Postępuj zgodnie z instrukcjami w [tworzenie maszyny wirtualnej z systemem Windows na platformie Azure](../virtual-machines-windows-hero-tutorial.md). Po zakończeniu testu, Usuń testową maszynę wirtualną.
 
 Jeśli można się połączyć za pośrednictwem pulpitu zdalnego na maszynę wirtualną w tej samej usługi w chmurze lub sieci wirtualnej, sprawdź, czy następujące ustawienia:
 
-* Konfiguracja punktu końcowego ruchu pulpitu zdalnego na docelowej maszynie Wirtualnej: port TCP prywatny punktu końcowego musi odpowiadać portu TCP, na którym nasłuchuje usługa pulpitu zdalnego maszyny Wirtualnej (wartość domyślna to 3389).
-* Listy ACL dla punktu końcowego ruchu pulpitu zdalnego na docelowej maszynie Wirtualnej: listy ACL pozwalają na określenie dozwolony lub niedozwolony ruch przychodzący z Internetu, w oparciu o jego źródłowy adres IP. Nieprawidłowo skonfigurowane listy ACL może uniemożliwić ruchu przychodzącego do usług pulpitu zdalnego do punktu końcowego. Sprawdź swoje listy ACL, aby upewnić się, że ruch przychodzący z publicznymi adresami IP serwera proxy lub inny serwer krawędzi jest dozwolony. Aby uzyskać więcej informacji, zobacz [co to jest sieć kontroli listy dostępu (ACL)?](../../virtual-network/virtual-networks-acl.md)
+* Konfiguracja punktu końcowego ruchu pulpitu zdalnego na docelowej maszynie Wirtualnej: Port TCP prywatny punktu końcowego musi odpowiadać portu TCP, na którym nasłuchuje usługa pulpitu zdalnego maszyny Wirtualnej (wartość domyślna to 3389).
+* Listy ACL dla punktu końcowego ruchu pulpitu zdalnego na docelowej maszynie Wirtualnej: Listy ACL pozwalają na określenie dozwolony lub niedozwolony ruch przychodzący z Internetu, w oparciu o jego źródłowy adres IP. Nieprawidłowo skonfigurowane listy ACL może uniemożliwić ruchu przychodzącego do usług pulpitu zdalnego do punktu końcowego. Sprawdź swoje listy ACL, aby upewnić się, że ruch przychodzący z publicznymi adresami IP serwera proxy lub inny serwer krawędzi jest dozwolony. Aby uzyskać więcej informacji, zobacz [co to jest sieć kontroli listy dostępu (ACL)?](../../virtual-network/virtual-networks-acl.md)
 
 Aby sprawdzić, czy punkt końcowy jest źródłem problemu, Usuń bieżący punkt końcowy, a następnie utwórz nową, wybierając losowy port z zakresu od 49152 – 65535 numeru portu zewnętrznego. Aby uzyskać więcej informacji, zobacz [jak konfigurować punkty końcowe do maszyny wirtualnej](../windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
-## <a name="source-4-network-security-groups"></a>Źródło 4: Sieciowych grup zabezpieczeń
+## <a name="source-4-network-security-groups"></a>Źródło 4: Grupy zabezpieczeń sieci
 Sieciowe grupy zabezpieczeń umożliwiają większą kontrolę nad dozwolonego ruchu przychodzącego i wychodzącego. Można utworzyć zasady obejmujące podsieci i usług w chmurze w sieci wirtualnej platformy Azure.
 
 Użyj funkcji [weryfikacji przepływu adresu IP](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md) w celu potwierdzenia, że reguła w sieciowej grupie zabezpieczeń blokuje ruch do lub z maszyny wirtualnej. Możesz również przejrzeć obowiązujące reguły grupy zabezpieczeń do zapewnienia ruchu przychodzącego "Zezwalaj" sieciowa grupa zabezpieczeń istnieje priorytetowa reguła dla portu RDP (domyślnie: 3389). Aby uzyskać więcej informacji, zobacz [przepływu ruchu przy użyciu efektywne reguły zabezpieczeń, aby rozwiązać maszyn wirtualnych](../../virtual-network/diagnose-network-traffic-filter-problem.md).
 
-## <a name="source-5-windows-based-azure-vm"></a>Źródło 5: Windows, na podstawie maszyny Wirtualnej platformy Azure
+## <a name="source-5-windows-based-azure-vm"></a>Źródło 5: Oparte na Windows maszyny Wirtualnej platformy Azure
 ![](./media/detailed-troubleshoot-rdp/tshootrdp_5.png)
 
 Postępuj zgodnie z instrukcjami w [w tym artykule](../windows/reset-rdp.md). W tym artykule resetuje usługi pulpitu zdalnego na maszynie wirtualnej:
@@ -192,7 +192,7 @@ Exit-PSSession
 
 Sprawdź, czy punkt końcowy pulpitu zdalnego dla maszyny Wirtualnej platformy Azure jest również za pomocą portu TCP 3398 jako wewnętrznego portu. Ponowne uruchomienie maszyny Wirtualnej platformy Azure, a następnie spróbuj ponownie za pomocą połączenia pulpitu zdalnego.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 [Jak zresetować hasło lub usługę Pulpit zdalny dla maszyn wirtualnych Windows](../windows/reset-rdp.md)
 
 [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview)

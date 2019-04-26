@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: glenga
 ms.openlocfilehash: 96656da078b79474dbf6576455a485d17868db49
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565971"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60406757"
 ---
 # <a name="monitor-azure-functions"></a>Monitorowanie usługi Azure Functions
 
@@ -148,7 +148,7 @@ traces
 
 Za pomocą usługi Application Insights bez żadnej konfiguracji niestandardowej. Domyślna konfiguracja może spowodować duże ilości danych. Jeśli używasz subskrypcji programu Visual Studio na platformie Azure może napotkać limit danych dla usługi Application Insights. W dalszej części tego artykułu dowiesz się, jak skonfigurować i dostosować dane, które funkcje wysyłanie do usługi Application Insights. W przypadku aplikacji funkcji rejestrowania jest konfigurowana w [host.json] pliku.
 
-### <a name="categories"></a>Kategorie
+### <a name="categories"></a>Categories
 
 Rejestrator usługi Azure Functions obejmuje *kategorii* dla każdego dziennika. Kategoria wskazuje, która część kodu środowiska uruchomieniowego lub kodu funkcji powstała z jednego dziennika. 
 

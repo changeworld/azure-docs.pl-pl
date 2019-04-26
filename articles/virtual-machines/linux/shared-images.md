@@ -17,11 +17,11 @@ ms.date: 09/19/2018
 ms.author: akjosh; cynthn
 ms.custom: ''
 ms.openlocfilehash: 08c7e84a27a4c8e9527083360dbd08296bd86775
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190089"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60542484"
 ---
 # <a name="preview-create-a-shared-image-gallery-with-the-azure-cli"></a>Wersja zapoznawcza: Utwórz galerię udostępnionego obrazu przy użyciu wiersza polecenia platformy Azure
 
@@ -33,7 +33,7 @@ Galeria jest zasobem najwyższego poziomu, który zapewnia kontrolę dostępu pe
 
 Funkcja galerii obrazów współdzielona ma wiele typów zasobów. Firma Microsoft będzie przy użyciu lub kompilowania w tym artykule:
 
-| Zasób | Opis|
+| Resource | Opis|
 |----------|------------|
 | **Zarządzany obraz** | Jest to podstawowy obraz, które mogą być używane autonomicznie lub użyty do utworzenia **wersję obrazu** w galerii obrazów. Obrazy zarządzane są tworzone na podstawie uogólnionego maszyn wirtualnych. Zarządzany obraz to specjalny typ wirtualnego dysku twardego, który można utworzyć wiele maszyn wirtualnych i może teraz służyć do tworzenia wersji udostępnionego obrazu. |
 | **Galeria obrazów** | W portalu Azure Marketplace, takich jak **galerii obrazów** to repozytorium do zarządzania i udostępniania obrazów, ale możesz kontrolować, kto ma dostęp. |

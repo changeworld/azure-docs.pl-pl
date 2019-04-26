@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 08/29/2017
 ms.author: yizhon
 ms.openlocfilehash: dd3b693271326c85688a275a65b67ad6257220e3
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024775"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60400698"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>Usługa Azure zestaw SDK urządzeń IoT dla języka C — więcej informacji na temat usługi IoTHubClient
 
@@ -62,7 +62,7 @@ Dostępne są funkcje pomocnika dla każdego z tych interfejsów API:
 * IoTHubClient\_LL\_CreateFromConnectionString
 * IoTHubClient\_LL\_SendEventAsync
 * IoTHubClient\_LL\_SetMessageCallback
-* Usługi IoTHubClient\_LL\_zniszczyć
+* IoTHubClient\_LL\_Destroy
 
 Te funkcje obejmują **LL** nazwę interfejsu API. Inne **LL** część nazwy, są identyczne z ich odpowiedniki nie wszystkie parametry każda z tych funkcji. Jednak działanie tych funkcji różni się w jednym ze sposobów ważne.
 
@@ -128,8 +128,8 @@ Niezależnie od tego modelu, możesz wybrać, musi znajdować się spójne inter
 
 * IoTHubClient\_LL\_SendEventAsync
 * IoTHubClient\_LL\_SetMessageCallback
-* Usługi IoTHubClient\_LL\_zniszczyć
-* Usługi IoTHubClient\_LL\_DoWork
+* IoTHubClient\_LL\_Destroy
+* IoTHubClient\_LL\_DoWork
 
 Odwrotny jest również wartość true. Jeśli na początku zasubskrybujesz **usługi IoTHubClient\_CreateFromConnectionString**, następnie użyć innego niż — wszystkie interfejsy API dla dowolnego dodatkowego przetwarzania.
 

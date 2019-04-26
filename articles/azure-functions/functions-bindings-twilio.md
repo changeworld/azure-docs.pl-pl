@@ -13,11 +13,11 @@ ms.date: 07/09/2018
 ms.author: cshoe
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: cc6ca29af1866c5d26d3b73b26121451440c4dac
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993064"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60306686"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Powiązania usługi Twilio dla usługi Azure Functions
 
@@ -207,7 +207,7 @@ module.exports = function (context, myQueueItem) {
 
 Zobacz przykład specyficzny dla języka:
 
-* [2.x języka C#](#2x-c-example)
+* [2.x C#](#2x-c-example)
 * [skrypt 2.x języka C# (csx)](#2x-c-script-example)
 * [2.x JavaScript](#2x-javascript-example)
 
@@ -404,7 +404,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |**type**|**type**| Musi być równa `twilioSms`.|
 |**direction**|**direction**| Musi być równa `out`.|
 |**Nazwa**|**Nazwa**| Nazwa zmiennej, używane w kodzie funkcji wiadomości SMS usługi Twilio. |
-|**accountSid**|**accountSidSetting**| **accountSidSetting**| Ta wartość musi być równa Nazwa ustawienia aplikacji, np. zawierającą Sid konta usługi Twilio TwilioAccountSid. Jeśli nie jest ustawiony, ustawienie aplikacji domyślną jest "AzureWebJobsTwilioAccountSid". |
+|**accountSid**|**accountSidSetting**| **AccountSidSetting**| Ta wartość musi być równa Nazwa ustawienia aplikacji, np. zawierającą Sid konta usługi Twilio TwilioAccountSid. Jeśli nie jest ustawiony, ustawienie aplikacji domyślną jest "AzureWebJobsTwilioAccountSid". |
 |**authToken**|**authTokenSetting**|**authTokenSetting**| Ta wartość musi być równa Nazwa ustawienia aplikacji, który zawiera token uwierzytelniania usługi Twilio, np. TwilioAccountAuthToken. Jeśli nie jest ustawiony, ustawienie aplikacji domyślną jest "AzureWebJobsTwilioAuthToken". |
 |**Aby**| N/d - określić w kodzie | **Do**| Ta wartość jest równa numer telefonu, tekst wiadomości SMS wysyłane do.|
 |**Z**|**Z** | **From**| Ta wartość jest równa numer telefonu, który tekst wiadomości SMS są wysyłane z.|

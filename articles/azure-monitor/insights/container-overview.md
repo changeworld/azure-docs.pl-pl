@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: magoedte
 ms.openlocfilehash: d137576b4beb5cf36dce99ffb1869049f37b60b2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57881269"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60494647"
 ---
 # <a name="overview-of-monitoring-containers-in-azure"></a>Omówienie monitorowania kontenerów na platformie Azure
 Dzięki systemowi Azure można skutecznie monitorować i zarządzać obciążeń wdrożonych na kontenery usługi Azure Kubernetes lub Docker. Należy zrozumieć, jak działają kontenerów przy użyciu wielu aplikacji mikrousług w celu dostarczenia usługi reliable service w dużej skali i usługi monitorowania plan pomocy technicznej. Ten artykuł zawiera krótkie omówienie zarządzania i monitorowania pomagają zrozumieć ich możliwości platformy Azure i które są odpowiednie na podstawie własnych wymagań.

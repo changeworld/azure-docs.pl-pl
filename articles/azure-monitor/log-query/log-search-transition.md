@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 01/16/2019
 ms.author: bwren
 ms.openlocfilehash: dc3a754bd1a9f689f4b24b9ee2c1e4cbc0611684
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751365"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60519905"
 ---
 # <a name="transition-from-log-analytics-log-search-to-azure-monitor-logs"></a>Przejście ze przeszukiwania dzienników usługi Log Analytics do dzienników usługi Azure Monitor
 Nowe środowisko w celu analizowania dzienników usługi Azure Monitor ostatnio zamieniono przeszukiwania dzienników w usłudze Log Analytics. Strona wyszukiwania dziennika jest obecnie dostępna za pośrednictwem **dzienniki (wersja klasyczna)** elementu menu w **obszarów roboczych usługi Log Analytics** strony w platformie Azure, ale portalu zostaną usunięte 15 lutego 2019 r. W tym artykule opisano różnice między obydwoma środowiskami, aby ułatwić przejście z wyszukiwania w dziennikach. 

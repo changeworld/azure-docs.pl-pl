@@ -9,11 +9,11 @@ ms.date: 2/14/2018
 ms.author: robb
 ms.subservice: ''
 ms.openlocfilehash: 59cb14c86963d956b0bd63f65b10776dff4aa97f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698080"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60452725"
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Przykłady — szybki start usługi Azure Monitor programu PowerShell
 Ten artykuł przedstawia przykładowe polecenia programu PowerShell, aby ułatwić dostęp do funkcji usługi Azure Monitor.
@@ -140,7 +140,7 @@ Można utworzyć właściwości wiadomości e-mail i elementy webhook, za pomoc�
 
 W poniższej tabeli opisano parametry i wartości używane do tworzenia alertu za pomocą metryk.
 
-| parametr | wartość |
+| parametr | value |
 | --- | --- |
 | Name (Nazwa) |simpletestdiskwrite |
 | Lokalizacja tę regułę alertu |Wschodnie stany USA |

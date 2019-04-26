@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan
 ms.openlocfilehash: 15e581454b60319ab734f2fa5faf0d90e0a7c8bf
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58893728"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60448023"
 ---
 # <a name="get-started-with-the-delay-and-delay-until-actions"></a>Rozpoczynanie pracy z usługą opóźnienia i opóźnienia — aż do akcji
 Za pomocą opóźnienie i "opóźnienie — do momentu" czynności, można realizować scenariusze przepływu pracy.
@@ -68,9 +68,9 @@ A * oznacza, że jest polem wymaganym.
 
 | Nazwa wyświetlana | Nazwa właściwości | Opis |
 | --- | --- | --- |
-| Roku * |sygnatura czasowa |Opóźnienie do (GMT) od początku roku |
-| Miesiąc * |sygnatura czasowa |Miesiąc opóźnienie do (GMT) |
-| Dzień * |sygnatura czasowa |Dnia ma być opóźnienie do (GMT) |
+| Roku * |timestamp |Opóźnienie do (GMT) od początku roku |
+| Miesiąc * |timestamp |Miesiąc opóźnienie do (GMT) |
+| Dzień * |timestamp |Dnia ma być opóźnienie do (GMT) |
 
 <br>
 

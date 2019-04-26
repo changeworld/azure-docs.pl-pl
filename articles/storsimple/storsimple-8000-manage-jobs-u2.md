@@ -1,6 +1,6 @@
 ---
-title: Wyświetl zadania i zarządzać nimi serii StorSimple 8000 | Dokumentacja firmy Microsoft
-description: Opisuje bloku zadania usługi Menedżer StorSimple urządzenia oraz używać go do śledzenia ostatnie, bieżących i zaplanowanych zadań tworzenia kopii zapasowej.
+title: Wyświetlanie zadań i zarządzanie nimi w przypadku serii StorSimple 8000 | Dokumentacja firmy Microsoft
+description: Opis bloku zadań usługi Menedżer urządzeń StorSimple i jak z niej korzystać, aby śledzić najnowsze, bieżące i zaplanowane zadania tworzenia kopii zapasowej.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,35 +14,35 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: bf8038b7171053b75eeb9aed88bff4246e65a8a8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 462f8dafdffa7ee01e6ccf7945a1abfdff90db42
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23874815"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60506213"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-view-and-manage-jobs-update-3-and-later"></a>Użyj usługi Menedżer StorSimple urządzenia, aby wyświetlić zadania i zarządzać nimi (Update 3 i nowsze)
+# <a name="use-the-storsimple-device-manager-service-to-view-and-manage-jobs-update-3-and-later"></a>Usługa Menedżer urządzeń StorSimple umożliwia wyświetlanie zadań i zarządzanie nimi (aktualizacja Update 3 i nowszych)
 
 ## <a name="overview"></a>Omówienie
-**Zadania** bloku zapewnia jednym portalu centralnej do przeglądania i zarządzania zadaniami, które zostały uruchomione na urządzeniach połączona z usługą Menedżera urządzeń StorSimple. Można wyświetlić zadań zaplanowanych, uruchomionych, zakończone, anulowane i nie powiodło się dla wielu urządzeń. Wyniki są prezentowane w formie tabeli.
+**Zadań** blok zapewnia jednego portalu centralnej do przeglądania i zarządzania zadaniami, które zostały uruchomione na urządzeniach połączonych z usługą Menedżera urządzeń StorSimple. Możesz wyświetlić zadania zaplanowane, uruchamianie, zakończone, anulowane i nie powiodło się dla wielu urządzeń. Wyniki są prezentowane w formacie tabelarycznym.
 
-![Bloku zadań](./media/storsimple-8000-manage-jobs-u2/jobs1.png)
+![Blok zadania](./media/storsimple-8000-manage-jobs-u2/jobs1.png)
 
-Można szybko znaleźć zadania, które są zainteresowani przez filtrowanie w polach, takich jak:
+Możesz szybko znaleźć zadania, które są zainteresowani przez filtrowanie według pól, takich jak:
 
-* **Stan** — zadania mogą być w toku, zakończyło się pomyślnie, anulowane, nie powiodło się, anulowanie lub zakończyło się pomyślnie z błędów.
-* **Zakres czasu** — zadania mogą być filtrowane w oparciu o zakres dat i godzin. Zakresy, dla których minął godzinę po 24 godzinach, ostatnie 7 dni, po 30 dni, ostatni rok lub Niestandardowa data.
-* **Typ** — typ zadania można zaplanowanego tworzenia kopii zapasowej, ręcznego tworzenia kopii zapasowej i przywracania kopii zapasowej, Klonowanie woluminów, awaryjnie kontenery woluminów, utworzyć wolumin przypięty lokalnie, zmodyfikować woluminu, instalowania aktualizacji, zbierz dzienniki pomocy technicznej i utworzyć urządzenia chmury.
-* **Urządzenia** — zadań są inicjowane na niektórych urządzeniach połączona z usługą.
+* **Stan** — zadania może być w toku, zakończyło się pomyślnie, anulowany, nie powiodło się, anulowania lub z błędów.
+* **Zakres czasu** — zadania mogą być filtrowane zależnie od zakres dat i godzin. Zakresy są Ostatnia 1 godzina, ostatnie 24 godziny, ostatnich 7 dni, ostatnie 30 dni, ubiegłego roku lub Niestandardowa data.
+* **Typ** — typ zadania mogą być zaplanowane tworzenie kopii zapasowej, ręcznego tworzenia kopii zapasowej, przywracanie kopii zapasowej, Klonowanie woluminów, kontenery woluminów w tryb failover, Utwórz wolumin przypięty lokalnie, modyfikowania woluminu, instalowania aktualizacji, zbieranie dzienników pomocy technicznej i utworzyć urządzenie w chmurze.
+* **Urządzenia** — zadania są inicjowane na niektórych urządzeniach połączoną z usługą.
   
 Następnie wyszczególniono odfiltrowanych zadań na podstawie następujących atrybutów:
   
-* **Nazwa** — zaplanowanego tworzenia kopii zapasowej, ręcznego tworzenia kopii zapasowych, przywracania kopii zapasowej woluminu w klonowania, tryb failover kontenery woluminów tworzenia woluminu przypiętego lokalnie, zmodyfikować woluminu, instalowania aktualizacji, zbierz dzienniki pomocy technicznej lub utworzyć urządzenia chmury.
-* **Stan** — uruchomiona, zakończone, anulowane, nie powiodło się, anulowanie lub ukończone z błędami.
-* **Jednostka** — zadania może być skojarzony z woluminu, zasad tworzenia kopii zapasowej lub urządzeniu. Na przykład zadanie klonowania jest skojarzony z woluminem, zaplanowane zadanie tworzenia kopii zapasowej jest skojarzone z zasadami tworzenia kopii zapasowej. Zadania urządzenia jest tworzony w wyniku odzyskiwania awaryjnego (DR) lub operacji przywracania.
+* **Nazwa** — zaplanowane tworzenie kopii zapasowej, ręcznego tworzenia kopii zapasowych, przywracania kopii zapasowej klonowania woluminu w tryb failover kontenery woluminów, Utwórz wolumin przypięty lokalnie, modyfikowania woluminu, instalowania aktualizacji, zbieranie dzienników pomocy technicznej lub Utwórz urządzenie w chmurze.
+* **Stan** — uruchamianie, zakończone, anulowane, nie powiodło się, anulowania lub ukończone z błędami.
+* **Jednostka** — zadania mogą być skojarzone z wolumin, zasady tworzenia kopii zapasowych lub urządzeniu. Na przykład zadanie klonowania jest skojarzony z woluminem, zaplanowane zadanie tworzenia kopii zapasowej jest skojarzone z zasadami tworzenia kopii zapasowej. W wyniku operacji przywracania lub odzyskiwania po awarii (DR) zostanie utworzone zadanie urządzenia.
 * **Urządzenie** — nazwa urządzenia, na którym zadanie zostało uruchomione.
-* **Rozpoczęto w** — czas uruchomienia zadania.
-* **Czas trwania** — czas wymagany do zakończenia tego zadania.
+* **Data rozpoczęcia** — czas uruchomienia zadania.
+* **Czas trwania** — czas wymagany do ukończenia zadania.
 
 Lista zadań są odświeżane co 30 sekund.
 
@@ -52,40 +52,40 @@ Na tej stronie można wykonywać następujące czynności związanych z pracą:
 * Anulowanie zadania
 
 ## <a name="view-job-details"></a>Wyświetlanie szczegółów zadania
-Wykonaj poniższe kroki, aby wyświetlić szczegóły wszystkie zadania.
+Wykonaj poniższe kroki, aby wyświetlić szczegóły dowolnego zadania.
 
 #### <a name="to-view-job-details"></a>Aby wyświetlić szczegóły zadania
-1. Przejdź do usługi Menedżer StorSimple urządzenia, a następnie kliknij przycisk **zadania**.
+1. Przejdź do usługi Menedżer urządzeń StorSimple, a następnie kliknij przycisk **zadań**.
 
-2. W **zadania** bloku wyświetlania zadań są zainteresowani, uruchamiając zapytanie o odpowiednie filtry. Można wyszukiwać ukończone, uruchomiona lub anulowane zadania.
+2. W **zadań** bloku wyświetlania zadań, o których chcesz się dowiedzieć, uruchamiając zapytanie o odpowiednie filtry. Można wyszukiwać ukończone, uruchamiania lub anulowane zadania.
 
     ![Blok zadania](./media/storsimple-8000-manage-jobs-u2/jobs1.png)
 
-2. Wybierz, a następnie kliknij zadanie.
+2. Wybierz i kliknij zadanie.
 
     ![Blok zadania](./media/storsimple-8000-manage-jobs-u2/jobs3.png)
 
-3. W bloku szczegóły zadania można wyświetlić stan, szczegóły, statystyk czasu i statystyki danych.
+3. W bloku szczegółów zadania można wyświetlić stan, szczegółowe informacje, statystyki czasu i statystyki danych.
    
     ![Szczegóły zadania](./media/storsimple-8000-manage-jobs-u2/jobs4.png)
 
 ## <a name="cancel-a-job"></a>Anulowanie zadania
-Wykonaj poniższe kroki, aby anulować zadanie uruchomione.
+Wykonaj poniższe kroki, aby anulować uruchomionego zadania.
 
 > [!NOTE]
-> Niektóre zadania, takie jak modyfikowanie woluminu, aby zmienić typ woluminu lub rozszerzenie woluminu, nie można anulować.
+> Nie można anulować niektórych zadań, takich jak modyfikowanie woluminu, aby zmienić typ woluminu lub rozszerzanie woluminu.
 
 
 ### <a name="to-cancel-a-job"></a>Aby anulować zadanie
-1. Na **zadania** pozycję Wyświetl uruchomione zadania, które chcesz anulować, uruchamiając zapytanie z filtrami odpowiednie. Wybierz zadanie.
+1. Na **zadań** strony, Wyświetl uruchomione zadania (), którą chcesz anulować, uruchamiając zapytanie o odpowiednie filtry. Wybierz zadanie.
 
-2. Kliknij prawym przyciskiem myszy wybrane zadanie można wywołać z menu kontekstowego, a następnie kliknij przycisk **anulować**.
+2. Kliknij prawym przyciskiem myszy na wybranego zadania, aby wywołać menu kontekstowe, a następnie kliknij przycisk **anulować**.
 
     ![Szczegóły zadania](./media/storsimple-8000-manage-jobs-u2/jobs2.png)
 
 3. Po wyświetleniu monitu o potwierdzenie kliknij przycisk **Tak**. To zadanie jest teraz anulowane.
 
-## <a name="next-steps"></a>Następne kroki
-* Dowiedz się, jak [Zarządzanie zasadami tworzenia kopii zapasowej StorSimple](storsimple-8000-manage-backup-policies-u2.md).
-* Dowiedz się, jak [zarządzać urządzenia StorSimple przy użyciu usługi Menedżer StorSimple urządzenia](storsimple-8000-manager-service-administration.md).
+## <a name="next-steps"></a>Kolejne kroki
+* Dowiedz się, jak [Zarządzanie zasadami kopii zapasowych usługi StorSimple](storsimple-8000-manage-backup-policies-u2.md).
+* Dowiedz się, jak [korzystać z usługi Menedżer urządzeń StorSimple do administrowania urządzeniem StorSimple](storsimple-8000-manager-service-administration.md).
 

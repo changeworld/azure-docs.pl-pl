@@ -15,11 +15,11 @@ services: active-directory
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 775a03a82c1fc432e65ce45309a5af3febb448a9
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428225"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60472285"
 ---
 # <a name="users-groups-licensing-and-roles-for-large-organizations"></a>Użytkownicy, grupy, licencje i role w dużych organizacjach
 
@@ -70,7 +70,7 @@ Usługa Azure AD umożliwia również precyzyjną kontrolę danych przesyłanych
 * Uruchamianie i zatrzymywanie usługi aprowizacji Azure AD dla aplikacji, czyszczenie pamięci podręcznej aprowizacji oraz ponowne uruchamianie usługi
 * Wyświetlanie **raportu o działaniach aprowizacji**, który zawiera rejestr operacji tworzenia, aktualizowania i usuwania wszystkich użytkowników i grup między aplikacją a usługą Azure AD, oraz **raportu o błędach aprowizacji**, który zawiera bardziej szczegółowe komunikaty o błędach
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Jeśli dopiero zaczynasz administrować usługą Azure AD, zapoznaj się z [podstawową dokumentacją usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/index).
 

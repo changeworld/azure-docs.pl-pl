@@ -17,17 +17,17 @@ ms.author: celested
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d860ac77653a97855248c45e43d28ea4c694979e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170911"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60442254"
 ---
 # <a name="links-on-the-page-dont-work-for-an-application-proxy-application"></a>Linki na tej stronie nie działają dla aplikacji serwera Proxy aplikacji
 
 Ten artykuł pomoże Ci rozwiązać problemy związane z łączy w swojej aplikacji serwera Proxy usługi Azure Active Directory aplikacji nie będą działać poprawnie.
 
-## <a name="overview"></a>Przegląd 
+## <a name="overview"></a>Omówienie 
 Po opublikowaniu aplikacji serwera Proxy aplikacji, tylko linki, które działają w aplikacji domyślnie podano linki do miejsc docelowych, zawarty w opublikowanej głównego adresu URL. Łącza w obrębie aplikacji nie działają, wewnętrzny adres URL aplikacji prawdopodobnie nie obejmuje wszystkich miejsc docelowych łączy w obrębie aplikacji.
 
 **Dlaczego tak się dzieje?** Po kliknięciu linku w aplikacji, serwer Proxy aplikacji próbuje rozpoznać adres URL, albo wewnętrzny adres URL w tej samej aplikacji lub jako adres URL dostępny zewnętrznie. Jeśli łącze wskazuje wewnętrzny adres URL, który nie znajduje się w tej samej aplikacji, nie należy do jednej z tych zasobników i powoduje błąd, który nie został odnaleziony.

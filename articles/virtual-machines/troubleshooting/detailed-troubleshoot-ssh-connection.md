@@ -17,11 +17,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: aedf06c5a5e225f0cafb81b17923d6c742da69eb
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418266"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60506239"
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>SSH szczegółowe kroki rozwiązywania problemów dotyczących problemy z połączeniem do maszyny Wirtualnej z systemem Linux na platformie Azure
 Istnieje wiele możliwych przyczyn, które klient SSH może nie można nawiązać połączenia z usługą SSH na maszynę Wirtualną. Jeśli wykonano za pomocą bardziej [SSH ogólne kroki rozwiązywania problemów](troubleshoot-ssh-connection.md), należy rozwiązać problem z połączeniem. Ten artykuł przeprowadzi Cię przez szczegółowe kroki rozwiązywania problemów, aby określić, gdzie występuje błąd połączenia SSH i sposobie jego rozwiązania.
@@ -55,7 +55,7 @@ Klient SSH na komputerze może się nie powieść się z usługą SSH na maszyni
 * [Sieciowe grupy zabezpieczeń](#source-4-network-security-groups)
 * [Opartą na systemie Linux maszyny Wirtualnej platformy Azure](#source-5-linux-based-azure-virtual-machine)
 
-## <a name="source-1-ssh-client-computer"></a>Źródło 1: SSH komputera klienckiego
+## <a name="source-1-ssh-client-computer"></a>Źródło 1: Komputer kliencki SSH
 Aby wyeliminować komputera jako źródło błędu, sprawdź, czy może sprawić, że połączenia SSH do innego serwera lokalnego, komputer oparty na systemie Linux.
 
 ![Diagram, który wyróżnia elementy komputera klienta SSH](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot2.png)
@@ -77,7 +77,7 @@ Jeśli używasz uwierzytelniania certyfikatów, sprawdź, ma te uprawnienia do f
 * ~/.Ssh/known_hosts chmod 644 (zawiera hosty, które zostały połączone za pośrednictwem protokołu SSH)
 
 ## <a name="source-2-organization-edge-device"></a>Źródło 2: Urządzenie brzegowe organizacji
-Aby usunąć urządzenie brzegowe organizacji jako źródło błędu, sprawdź, czy komputer bezpośrednio połączony z Internetem ułatwia połączeń SSH z maszyną wirtualną platformy Azure. Jeśli uzyskujesz dostęp do maszyny Wirtualnej za pośrednictwem sieci VPN lokacja lokacja lub połączenia usługi ExpressRoute platformy Azure, przejdź do [źródła 4: grupy zabezpieczeń sieci](#nsg).
+Aby usunąć urządzenie brzegowe organizacji jako źródło błędu, sprawdź, czy komputer bezpośrednio połączony z Internetem ułatwia połączeń SSH z maszyną wirtualną platformy Azure. Jeśli uzyskujesz dostęp do maszyny Wirtualnej za pośrednictwem sieci VPN lokacja lokacja lub połączenia usługi ExpressRoute platformy Azure, przejdź do [4 źródła: Sieciowe grupy zabezpieczeń](#nsg).
 
 ![Diagram, który wyróżnia urządzenie brzegowe organizacji](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot3.png)
 
@@ -91,9 +91,9 @@ Jeśli tworzysz połączenie SSH z komputerem, który jest bezpośrednio połąc
 
 Praca z administratorem sieci, aby poprawić ustawienia urządzenia brzegowe organizacji, aby zezwolić na ruch SSH z Internetu.
 
-## <a name="source-3-cloud-service-endpoint-and-acl"></a>Źródło 3: Punkt końcowy usługi w chmurze i listę ACL
+## <a name="source-3-cloud-service-endpoint-and-acl"></a>Źródło 3: Punkt końcowy usługi w chmurze i listy ACL
 > [!NOTE]
-> To źródło ma zastosowanie tylko do maszyn wirtualnych, które zostały utworzone przy użyciu klasycznego modelu wdrażania. Dla maszyn wirtualnych, które zostały utworzone przy użyciu usługi Resource Manager, przejdź do [źródła 4: grupy zabezpieczeń sieci](#nsg).
+> To źródło ma zastosowanie tylko do maszyn wirtualnych, które zostały utworzone przy użyciu klasycznego modelu wdrażania. Dla maszyn wirtualnych, które zostały utworzone przy użyciu usługi Resource Manager, przejdź do [źródła 4: Sieciowe grupy zabezpieczeń](#nsg).
 
 Aby usunąć punkt końcowy usługi w chmurze i listę ACL jako źródło błędu, sprawdź innej maszyny Wirtualnej platformy Azure w tej samej sieci wirtualnej mogą nawiązywać połączenie przy użyciu protokołu SSH.
 
@@ -110,13 +110,13 @@ Aby usunąć punkt końcowy jako źródło problemu, Usuń bieżący punkt końc
 
 <a id="nsg"></a>
 
-## <a name="source-4-network-security-groups"></a>Źródło 4: Sieciowych grup zabezpieczeń
+## <a name="source-4-network-security-groups"></a>Źródło 4: Grupy zabezpieczeń sieci
 Sieciowe grupy zabezpieczeń umożliwiają zapewniają bardziej szczegółową kontrolę dozwolonego ruchu przychodzącego i wychodzącego. Można utworzyć reguły, które obejmować podsieci i usług w chmurze w sieci wirtualnej platformy Azure. Sprawdź reguły grupy zabezpieczeń sieci, tak aby upewnić się, że ruch SSH z Internetu i może.
 Aby uzyskać więcej informacji, zobacz [temat sieciowych grup zabezpieczeń](../../virtual-network/security-overview.md).
 
 Umożliwia także sprawdzić adresów IP do sprawdzania poprawności konfiguracji sieciowej grupy zabezpieczeń. Aby uzyskać więcej informacji, zobacz [sieci platformy Azure, omówienie monitorowania](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview). 
 
-## <a name="source-5-linux-based-azure-virtual-machine"></a>Źródło 5: Opartych na systemie Linux maszyny wirtualnej platformy Azure
+## <a name="source-5-linux-based-azure-virtual-machine"></a>Źródło 5: Maszyna wirtualna platformy Azure opartych na systemie Linux
 Ostatnie źródło potencjalnych problemów jest samej maszyny wirtualnej platformy Azure.
 
 ![Diagram, który wyróżnia opartych na systemie Linux maszyny wirtualnej platformy Azure](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot5.png)
@@ -130,5 +130,5 @@ Spróbuj ponownie nawiązać połączenie z komputera. Jeśli nadal nie, poniże
 * Zapory lokalnej na docelowej maszynie wirtualnej ma reguł, które nie pozwalają na ruch przychodzący lub wychodzący ruch SSH.
 * Wykrywanie włamań lub oprogramowania, który jest uruchomiony na maszynie wirtualnej platformy Azure do monitorowania sieci uniemożliwia nawiązanie połączenia SSH.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 Aby uzyskać więcej informacji na temat rozwiązywania problemów z dostępem do aplikacji, zobacz [Rozwiązywanie problemów z dostępem do aplikacji uruchamianej na maszynie wirtualnej platformy Azure](../linux/troubleshoot-app-connection.md)

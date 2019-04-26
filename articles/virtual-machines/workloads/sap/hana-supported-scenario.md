@@ -15,11 +15,11 @@ ms.date: 07/06/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 501c5ffa86f2360e44c187e087f7285bbf4084fd
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482967"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60477791"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>Obsługiwane scenariusze dla dużych wystąpień HANA
 W tym dokumencie opisano obsługiwane scenariusze wraz z ich szczegółami dotyczącymi architektury dla platformy HANA wystąpienia duże (HLI).
@@ -40,7 +40,7 @@ Przyjrzyjmy się terminy i definicje w dokumencie.
 - Obsługa wielu identyfikatorów SID: System z wieloma wystąpieniami skonfigurowane. Skrót środowiska MCOS.
 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Dużych wystąpień HANA obsługują różne architektury, aby osiągnąć Twoje wymagania biznesowe. Poniższa lista obejmuje scenariusze oraz szczegóły dotyczące ich konfiguracji. 
 
 Projektowania architektury pochodnej jest wyłącznie z punktu widzenia infrastruktury i należy zapoznać się z SAP lub partnerów wdrożenia dla wdrożenia platformy HANA. W przypadku scenariuszy nie są wyświetlane, skontaktuj się z zespołu kont Microsoft, aby zapoznać się z architekturą i pobieraj rozwiązaniem dla Ciebie.

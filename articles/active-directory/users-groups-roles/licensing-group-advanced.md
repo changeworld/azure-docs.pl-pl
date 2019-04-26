@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d2faefd8443383e7afff8e3729bf6f1cf25c3a7
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 24bf8e7cf103d583cf6604e0c529ad4ea267ce84
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57887033"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60471900"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Scenariusze, ograniczenia i znane problemy, używanie grup do zarządzania, Licencjonowanie w usłudze Azure Active Directory
 
@@ -216,7 +216,7 @@ Jeśli używasz licencjonowania opartego na grupach, to dobry pomysł, aby zapoz
 
 - Tej funkcji należy używać tylko z grup zabezpieczeń i grup usługi Office 365, które mają securityEnabled = TRUE.
 
-- [Portalu administracyjnego usługi Office 365](https://portal.office.com ) nie obsługuje obecnie Licencjonowanie na podstawie grupy. Jeśli użytkownik dziedziczy grupę licencji, tej licencji pojawia się w portalu administracyjnym usługi Office jako licencji zwykłych użytkowników. Jeśli spróbujesz zmodyfikować tej licencji lub spróbuj usunąć licencję portal zwróci komunikat o błędzie. Odziedziczone grupy licencji, nie można zmodyfikować bezpośrednio na koncie użytkownika.
+- [Centrum administracyjnego usługi Microsoft 365](https://admin.microsoft.com) nie obsługuje obecnie Licencjonowanie na podstawie grupy. Jeśli użytkownik dziedziczy grupę licencji, tej licencji pojawia się w portalu administracyjnym usługi Office jako licencji zwykłych użytkowników. Jeśli spróbujesz zmodyfikować tej licencji lub spróbuj usunąć licencję portal zwróci komunikat o błędzie. Odziedziczone grupy licencji, nie można zmodyfikować bezpośrednio na koncie użytkownika.
 
 - Gdy licencje są przypisane lub modyfikowane dużej grupy (np. 100 000 użytkowników), może to wpłynąć na wydajność. W szczególności ilość zmian wygenerowanych przez automatyzację usługi Azure AD może niekorzystnie wpłynąć na wydajność usługi synchronizacji katalogu między usługami Azure AD i systemach lokalnych.
 

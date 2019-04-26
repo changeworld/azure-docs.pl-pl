@@ -18,11 +18,11 @@ ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 610668768c7baca13cb60caf1d810cced31ebec3
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58516437"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60452953"
 ---
 # <a name="azure-active-directory-identity-protection---security-overview"></a>Usługa Azure Active Directory Identity Protection — Omówienie zabezpieczeń
 
@@ -69,7 +69,7 @@ Kafelek "Niechronione ryzykownych logowań" pokazuje ostatniego tygodnia Liczba 
 Kafelek "Uwierzytelnianie starszych" pokazuje ostatniego tygodnia liczbę uwierzytelnień starszej wersji w Twojej organizacji. Protokoły uwierzytelniania starsze nie obsługują zabezpieczeń nowoczesnych metod, takich jak uwierzytelnianie wieloskładnikowe. Aby zapobiec uwierzytelniania starszej wersji, można zastosować zasady dostępu warunkowego. Kliknij Kafelek "Uwierzytelnianie starszych" nastąpi przekierowanie do "Tożsamość Secure wynik".
 
 
-### <a name="identity-secure-score"></a>Wynik bezpiecznego tożsamości
+### <a name="identity-secure-score"></a>Wskaźnik bezpieczeństwa tożsamości
 
 Wynik zabezpieczyć tożsamość miary i porównuje poziomu bezpieczeństwa do wzorców branży. Jeśli klikniesz Kafelek "Tożsamość Secure wynik (wersja zapoznawcza)", nastąpi przekierowanie do bloku "Tożsamość Secure wynik (wersja zapoznawcza)", gdzie można dowiedzieć się więcej o zwiększanie poziomu bezpieczeństwa.
 

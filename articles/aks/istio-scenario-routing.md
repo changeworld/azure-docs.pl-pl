@@ -2,17 +2,18 @@
 title: Inteligentnego routingu i kanarkowe wydania przy użyciu Istio w usłudze Azure Kubernetes Service (AKS)
 description: Dowiedz się, jak za pomocą Istio zapewniają routing inteligentne i wdrożyć kanarkowe wydania w klastrze usługi Azure Kubernetes Service (AKS)
 services: container-service
-author: paulbouwer
+author: rockboyfor
 ms.service: container-service
 ms.topic: article
-ms.date: 12/3/2018
-ms.author: pabouwer
+origin.date: 12/03/2018
+ms.date: 03/04/2019
+ms.author: v-yeche
 ms.openlocfilehash: 0a4e5e7e310a9949ee59291c2032eafda46955a9
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52892494"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60465942"
 ---
 # <a name="use-intelligent-routing-and-canary-releases-with-istio-in-azure-kubernetes-service-aks"></a>Używanie inteligentnego routingu i kanarkowe Istio w usłudze Azure Kubernetes Service (AKS)
 
@@ -128,7 +129,7 @@ Containers:
     Image:         mcr.microsoft.com/aks/samples/voting/app:1.0
     ...
   istio-proxy:
-    Image:         docker.io/istio/proxyv2:1.0.4
+    Image:         dockerhub.azk8s.cn/istio/proxyv2:1.0.4
 [...]
 ```
 
@@ -254,7 +255,7 @@ Można łatwiej wizualizować, że teraz są możemy tylko kierowane do wersji *
 
 Można wizualizować, że teraz są możesz tylko kierowane do wersji *1.1* z Twojej *głosowania analytics* składnika w następujący sposób. Pamiętaj, aby użyć adresu IP własnej bramy ruch przychodzący Istio:
 
-```azurecli-interactive
+```azurecli
 INGRESS_IP=52.187.250.239
 for i in {1..5}; do curl -si $INGRESS_IP | grep results; done
 ```
@@ -340,7 +341,7 @@ deployment.apps/voting-app-2-0 created
 
 Poczekaj, aż wszystkie wersje *2.0* zasobniki zaczną działać. Użyj [kubectl get pods-] [ kubectl-get] polecenie, aby wyświetlić wszystkie zasobników w *głosowania* przestrzeni nazw:
 
-```azurecli-interactive
+```azurecli
 kubectl get pods --namespace voting
 ```
 

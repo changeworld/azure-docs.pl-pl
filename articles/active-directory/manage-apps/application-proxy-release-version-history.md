@@ -17,18 +17,18 @@ ms.subservice: manage-apps
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bf9ee43c6c6b332c05286da8e330812d7e0db6c2
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578593"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60441665"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Serwer Proxy aplikacji usługi Azure AD: Historia wersji
 W tym artykule wymieniono wersje i funkcje serwera Proxy aplikacji usługi Azure Active Directory (Azure AD), które zostały zwolnione. Zespół usługi Azure AD regularnie aktualizuje serwera Proxy aplikacji za pomocą nowych funkcji. Łączników serwera Proxy aplikacji są aktualizowane automatycznie po udostępnieniu nowej wersji.
 
 Poniżej przedstawiono listę powiązanych zasobów:
 
-Zasób |  Szczegóły
+Resource |  Szczegóły
 --------- | --------- |
 Jak włączyć serwer Proxy aplikacji | Wymagania wstępne dla Włączanie serwera Proxy aplikacji i instalowanie i rejestrowanie łącznika są opisane w tym [samouczek](application-proxy-add-on-premises-application.md).
 Omówienie łączników serwera Proxy aplikacji usługi Azure AD | Dowiedz się więcej o [zarządzania łącznika](application-proxy-connectors.md) i w jaki sposób łączników [automatyczną aktualizację](application-proxy-connectors.md#automatic-updates).

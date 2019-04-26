@@ -14,11 +14,11 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 1d1c9ef5ba355f1944a362bf0e6f5d7ba91a700a
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523940"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60486519"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Usługa Azure Data Factory — funkcje i zmienne systemowe
 > [!NOTE]
@@ -78,11 +78,11 @@ Zobacz [Custom Date and Time Format Strings](https://msdn.microsoft.com/library/
 ### <a name="functions"></a>Funkcje
 W poniższej tabeli wymieniono wszystkie funkcje w usłudze Azure Data Factory:
 
-| Kategoria | Funkcja | Parametry | Opis |
+| Category | Funkcja | Parametry | Opis |
 | --- | --- | --- | --- |
 | Time |AddHours(X,Y) |X: DateTime <br/><br/>Y: int |Dodaje Y godzin do chwili X. <br/><br/>Przykład: `9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
 | Time |AddMinutes(X,Y) |X: DateTime <br/><br/>Y: int |Dodaje Y minut x.<br/><br/>Przykład: `9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |
-| Time |StartOfHour(X) |X: Data/godzina |Pobiera godzinę rozpoczęcia, godzinę, reprezentowane przez składnik godziny wartości X. <br/><br/>Przykład: `StartOfHour of 9/15/2013 05: 10:23 PM is 9/15/2013 05: 00:00 PM` |
+| Time |StartOfHour(X) |X: DateTime |Pobiera godzinę rozpoczęcia, godzinę, reprezentowane przez składnik godziny wartości X. <br/><br/>Przykład: `StartOfHour of 9/15/2013 05: 10:23 PM is 9/15/2013 05: 00:00 PM` |
 | Date |AddDays(X,Y) |X: DateTime<br/><br/>Y: int |Dodaje Y dni x. <br/><br/>Przykład: 9/15/2013 12:00:00: 00 + 2 dni = 9/17/2013 12:00:00 PM.<br/><br/>Odejmij dni zbyt, określając Y jako liczba ujemna.<br/><br/>Przykład: `9/15/2013 12:00:00 PM - 2 days = 9/13/2013 12:00:00 PM`. |
 | Date |AddMonths(X,Y) |X: DateTime<br/><br/>Y: int |Dodaje miesięcy Y, x.<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 month = 10/15/2013 12:00:00 PM`.<br/><br/>Możesz zbyt Odejmij miesięcy, określając Y jako liczba ujemna.<br/><br/>Przykład: `9/15/2013 12:00:00 PM - 1 month = 8/15/2013 12:00:00 PM`.|
 | Date |AddQuarters(X,Y) |X: DateTime <br/><br/>Y: int |Dodaje Y * X 3 miesięcy.<br/><br/>Przykład: `9/15/2013 12:00:00 PM + 1 quarter = 12/15/2013 12:00:00 PM` |
@@ -97,7 +97,7 @@ W poniższej tabeli wymieniono wszystkie funkcje w usłudze Azure Data Factory:
 | Date |StartOfDay(X) |X: DateTime |Pobiera początek dnia, reprezentowane przez składnik dni z wartości parametru X.<br/><br/>Przykład: `StartOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 12:00:00 AM`. |
 | DateTime |From(X) |X: String |Przeanalizować składni ciągu X czas daty. |
 | DateTime |Ticks(X) |X: DateTime |Pobiera znaczniki właściwość parametru X. Jeden znaczników jest równa 100 nanosekund. Wartość tej właściwości reprezentuje liczbę znaczników, które upłynęły od północy 12:00:00, 1 stycznia 0001. |
-| Tekst |Format(X) |X: Zmienna String |Formatuje tekst (Użyj `\\'` kombinacji jako znak ucieczki `'` znaków).|
+| Text |Format(X) |X: Zmienna String |Formatuje tekst (Użyj `\\'` kombinacji jako znak ucieczki `'` znaków).|
 
 > [!IMPORTANT]
 > Podczas korzystania z funkcji w ramach innej funkcji, nie trzeba używać **$$** prefiks dla wewnętrznej funkcji. Na przykład: $$Text.Format ("PartitionKey eq \\" my_pkey_filter_value\\"i RowKey ge \\" {0: yyyy-MM-dd HH: mm:}\\'', Time.AddHours (SliceStart, -6)). W tym przykładzie należy zauważyć, że **$$** prefiks nie jest używany do **Time.AddHours** funkcji. 

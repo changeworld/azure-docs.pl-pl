@@ -1,5 +1,5 @@
 ---
-title: Błędy nazwy konta magazynu platformy Azure | Dokumentacja firmy Microsoft
+title: Błędy nazwa konta usługi Azure storage | Dokumentacja firmy Microsoft
 description: W tym artykule opisano błędy, które można napotkać podczas określania nazwy konta magazynu.
 services: azure-resource-manager
 documentationcenter: ''
@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 03/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: da7147439bba668c6c614c19d91a22ee78275c69
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: c3d4d764b1076c8705cfa64d6c0b38e3b8c1a801
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34357347"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60390101"
 ---
 # <a name="resolve-errors-for-storage-account-names"></a>Rozwiąż problemy dotyczące nazw kont magazynów
 
-W tym artykule opisano błędów nazw, które można napotkać podczas wdrażania konta magazynu.
+W tym artykule opisano błędów nazw, które mogą wystąpić podczas wdrażania konta magazynu.
 
 ## <a name="symptom"></a>Objaw
 
-Jeśli nazwa konta magazynu zawiera niedozwolone znaki, komunikat o błędzie takich jak:
+Jeśli nazwa konta magazynu zawiera niedozwolone znaki, występuje błąd, taki jak:
 
 ```
 Code=AccountNameInvalid
@@ -34,29 +34,29 @@ Message=S!torageckrexph7isnoc is not a valid storage account name. Storage accou
 between 3 and 24 characters in length and use numbers and lower-case letters only.
 ```
 
-W przypadku kont magazynu należy podać nazwę zasobu, która jest unikatowa w obrębie platformy Azure. Jeśli nie zapewnia unikatową nazwę, komunikat o błędzie takich jak:
+W przypadku kont magazynu, należy podać nazwę zasobu, która jest unikatowa w obrębie platformy Azure. Jeśli nie podasz unikatową nazwę, pojawi się błąd, taki jak:
 
 ```
 Code=StorageAccountAlreadyTaken
 Message=The storage account named mystorage is already taken.
 ```
 
-Jeśli wdrażania konto magazynu o tej samej nazwie jak istniejącego konta magazynu w ramach subskrypcji, ale Podaj inną lokalizację, zostanie wyświetlony komunikat o błędzie informujący, że konto magazynu już istnieje w innej lokalizacji. Usuń istniejące konto magazynu lub podaj tej samej lokalizacji co istniejące konto magazynu.
+Jeśli wdrażanie konta magazynu z taką samą nazwę jak istniejące konto magazynu w ramach subskrypcji, ale Podaj inną lokalizację, otrzymasz komunikat o błędzie informujący, że konto magazynu już istnieje w innej lokalizacji. Usuń istniejące konto magazynu lub podać tej samej lokalizacji co istniejące konto magazynu.
 
 ## <a name="cause"></a>Przyczyna
 
-Nazwy konta magazynu musi należeć do zakresu od 3 do 24 znaków i korzystać tylko cyfry i małe litery. Nazwa musi być unikatowa.
+Nazwy kont magazynu musi mieć długość od 3 do 24 znaków długości i użyć tylko cyfry i małe litery. Nazwa musi być unikatowa.
 
 ## <a name="solution"></a>Rozwiązanie
 
-Upewnij się, że nazwa konta magazynu jest unikatowy. Można utworzyć unikatowej nazwy przez łączenie z wynikiem Konwencja nazewnictwa [uniqueString](resource-group-template-functions-string.md#uniquestring) funkcji.
+Upewnij się, że nazwa konta magazynu jest unikatowa. Można utworzyć unikatowej nazwy przez złączenie konwencji nazewnictwa wynikiem [uniqueString](resource-group-template-functions-string.md#uniquestring) funkcji.
 
 ```json
 "name": "[concat('storage', uniqueString(resourceGroup().id))]",
 "type": "Microsoft.Storage/storageAccounts",
 ```
 
-Upewnij się, że nazwa konta magazynu nie może przekraczać 24 znaków. [UniqueString](resource-group-template-functions-string.md#uniquestring) funkcja zwraca 13 znaków. W przypadku łączenia prefiksu lub przyrostka do **uniqueString** powodować, podaj wartość, która jest 11 znaków lub mniej.
+Upewnij się, że nazwę konta magazynu nie może przekraczać 24 znaków. [UniqueString](resource-group-template-functions-string.md#uniquestring) funkcja zwraca 13 znaków. Jeśli łączenie prefiks lub przyrostkowe do **uniqueString** wyniku, podaj wartość, która jest maksymalnie 11 znaków lub mniej.
 
 ```json
 "parameters": {
@@ -71,4 +71,4 @@ Upewnij się, że nazwa konta magazynu nie może przekraczać 24 znaków. [Uniqu
 }
 ```
 
-Upewnij się, że nazwa konta magazynu nie ma żadnych wielkich liter i znaków specjalnych.
+Upewnij się, że nazwa konta magazynu nie zawiera żadnych wielkich liter i znaków specjalnych.

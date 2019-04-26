@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 7b47d4fc3aa4a1a50e441e668a856703c67045ae
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 3ceaed2b1e27a1f5b910865f6e9d0e70ef347b71
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59581015"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60515392"
 ---
 # <a name="webhooks-for-speech-services"></a>Elementy Webhook dla usług przetwarzania mowy
 
@@ -38,6 +38,8 @@ Następnie utwórz element webhook.
 ## <a name="create-a-webhook"></a>Tworzenie elementu webhook
 
 Utwórz element webhook dla transkrypcji w trybie offline. Scenariusz: użytkownik ma plik długo działa audio, który chciałby transkrypcja asynchronicznie z interfejsem API usługi Batch transkrypcji. 
+
+Aby utworzyć https:// WPIS punktu zaczepienia sieci web<region>.cris.ai/api/speechtotext/v2.1/transcriptions/hooks
 
 Parametry konfiguracji dla żądania są dostarczane jako dane JSON:
 
@@ -133,6 +135,50 @@ Wysyła żądanie POST na adres URL zarejestrowanego, jeśli jednostki typu subs
 ### <a name="run-a-test"></a>Uruchamianie testu
 
 Może odbywać się przeprowadzić szybki test przy użyciu witryny sieci Web https://bin.webhookrelay.com. Z tego miejsca można uzyskać wywołanie kopii adresy URL do przekazania jako parametr do metody POST protokołu HTTP do tworzenia elementu webhook z opisem we wcześniejszej części dokumentu.
+
+Kliknij pozycję "Utwórz zasobnika" i postępuj zgodnie z wyświetlanymi instrukcjami, aby uzyskać zaczepienia. Następnie użyć informacje podane na tej stronie, aby zarejestrować punkt zaczepienia z usługa mowy. Ładunek przekaźnik komunikatu — w odpowiedzi na ukończenie transkrypcji wygląda w następujący sposób:
+
+```json
+{
+    "results": [],
+    "recordingsUrls": [
+        "my recording URL"
+    ],
+    "models": [
+        {
+            "modelKind": "AcousticAndLanguage",
+            "datasets": [],
+            "id": "a09c8c8b-1090-443c-895c-3b1cf442dec4",
+            "createdDateTime": "2019-03-26T12:48:46Z",
+            "lastActionDateTime": "2019-03-26T14:04:47Z",
+            "status": "Succeeded",
+            "locale": "en-US",
+            "name": "v4.13 Unified",
+            "description": "Unified",
+            "properties": {
+                "Purpose": "OnlineTranscription,BatchTranscription,LanguageAdaptation",
+                "ModelClass": "unified-v4"
+            }
+        }
+    ],
+    "statusMessage": "None.",
+    "id": "d41615e1-a60e-444b-b063-129649810b3a",
+    "createdDateTime": "2019-04-16T09:35:51Z",
+    "lastActionDateTime": "2019-04-16T09:38:09Z",
+    "status": "Succeeded",
+    "locale": "en-US",
+    "name": "Simple transcription",
+    "description": "Simple transcription description",
+    "properties": {
+        "PunctuationMode": "DictatedAndAutomatic",
+        "ProfanityFilterMode": "Masked",
+        "AddWordLevelTimestamps": "True",
+        "AddSentiment": "True",
+        "Duration": "00:00:02"
+    }
+}
+```
+Komunikat zawiera adres URL rejestrowania i modeli, które umożliwia także tego nagrania.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

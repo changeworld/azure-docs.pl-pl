@@ -3,7 +3,7 @@ title: Obsługa usługi Azure Active Directory B2C | Dokumentacja firmy Microsof
 description: Jak zgłosić żądania pomocy technicznej dla usługi Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
@@ -11,11 +11,11 @@ ms.date: 12/06/2016
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: c40c1357b74b05f54bb2c2837554d9375e06f246
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55163368"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60384959"
 ---
 # <a name="azure-active-directory-b2c-file-support-requests"></a>Azure Active Directory B2C: Plik żądania pomocy technicznej
 Mogą zgłaszać żądania pomocy technicznej dla usługi Azure Active Directory (Azure AD) B2C w witrynie Azure portal wykonując następujące czynności:

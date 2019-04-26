@@ -8,11 +8,11 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/19/2018
 ms.openlocfilehash: 8f55b6dfb7b5bc9eda675aca4ed80a66b8a25a7f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59045785"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60445774"
 ---
 # <a name="handle-duplicate-data-in-azure-data-explorer"></a>Obsługa zduplikowanych danych w Eksploratorze danych platformy Azure
 

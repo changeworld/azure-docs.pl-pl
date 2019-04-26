@@ -7,22 +7,22 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.subservice: develop
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.author: celested
+origin.date: 09/24/2018
+ms.date: 12/29/2018
+ms.author: v-junlch
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4c15890a5693235e8f2554ba8d0fdefc161770f3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56165012"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60443907"
 ---
 # <a name="native-apps"></a>Aplikacje natywne
 
@@ -54,8 +54,8 @@ Zobacz przykłady kodu dla aplikacji natywnej do scenariuszy interfejsu Web API.
 
 Aby zarejestrować aplikację z punktem końcowym usługi Azure AD w wersji 1.0, zobacz [rejestrowanie aplikacji z punktem końcowym usługi Azure AD w wersji 1.0](quickstart-v1-add-azure-ad-app.md).
 
-* Pojedynczej dzierżawy - aplikacji natywnej i interfejsu API sieci web musi być zarejestrowana w tym samym katalogu w usłudze Azure AD. Interfejs API sieci web można skonfigurować do udostępnienia zestaw uprawnień, które są używane do ograniczenia aplikacji natywnej dostęp do swoich zasobów. Następnie aplikacja kliencka wybiera odpowiednich uprawnień, z menu rozwijanego "Uprawnienia na inne aplikacje" w witrynie Azure portal.
-* Wielodostępne — najpierw aplikacji natywnej tylko zarejestrowane w dewelopera lub katalog wydawcy. Po drugie natywną aplikację skonfigurowano do wskazania uprawnienia, które wymaga, aby działała prawidłowo. Ta lista wymaganych uprawnień jest wyświetlany w oknie dialogowym po użytkownik lub administrator w katalogu docelowym powoduje zgody aplikacji, która udostępnia je do swojej organizacji. Niektóre aplikacje wymagają tylko uprawnienia na poziomie użytkownika, które każdy użytkownik w organizacji mogą wyrazić zgodę na. Inne aplikacje wymagają uprawnień na poziomie administratora, które użytkownik w organizacji nie może wyrażać zgody na. Tylko administrator katalogu mogą wyrazić zgodę, do aplikacji, które wymagają tego poziomu uprawnień. Gdy użytkownik lub administrator wyraża zgodę, tylko interfejs API sieci web jest zarejestrowany w swojego katalogu. 
+- Pojedynczej dzierżawy - aplikacji natywnej i interfejsu API sieci web musi być zarejestrowana w tym samym katalogu w usłudze Azure AD. Interfejs API sieci web można skonfigurować do udostępnienia zestaw uprawnień, które są używane do ograniczenia aplikacji natywnej dostęp do swoich zasobów. Następnie aplikacja kliencka wybiera odpowiednich uprawnień, z menu rozwijanego "Uprawnienia na inne aplikacje" w witrynie Azure portal.
+- Wielodostępne — najpierw aplikacji natywnej tylko zarejestrowane w dewelopera lub katalog wydawcy. Po drugie natywną aplikację skonfigurowano do wskazania uprawnienia, które wymaga, aby działała prawidłowo. Ta lista wymaganych uprawnień jest wyświetlany w oknie dialogowym po użytkownik lub administrator w katalogu docelowym powoduje zgody aplikacji, która udostępnia je do swojej organizacji. Niektóre aplikacje wymagają tylko uprawnienia na poziomie użytkownika, które każdy użytkownik w organizacji mogą wyrazić zgodę na. Inne aplikacje wymagają uprawnień na poziomie administratora, które użytkownik w organizacji nie może wyrażać zgody na. Tylko administrator katalogu mogą wyrazić zgodę, do aplikacji, które wymagają tego poziomu uprawnień. Gdy użytkownik lub administrator wyraża zgodę, tylko interfejs API sieci web jest zarejestrowany w swojego katalogu. 
 
 ## <a name="token-expiration"></a>Wygaśnięcie tokenu
 
@@ -65,3 +65,5 @@ Gdy aplikacji natywnej używa jego kod autoryzacji można uzyskać tokenu dostę
 
 - Dowiedz się więcej o innych [typów aplikacji i scenariuszy](app-types.md)
 - Dowiedz się więcej o usłudze Azure AD [podstawowe informacje o uwierzytelnianiu](authentication-scenarios.md)
+
+<!-- Update_Description: link update -->

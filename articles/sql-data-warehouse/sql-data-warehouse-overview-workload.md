@@ -2,20 +2,21 @@
 title: Dowiedz się więcej o operacjach usługi Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
 description: 'Elastyczność usługi SQL Data Warehouse pozwala powiększać, zmniejszać lub wstrzymywać moc obliczeniową przy użyciu ruchomej skali jednostek magazynu danych (jednostki DWU). W tym artykule opisano metryki magazynu danych i ich relacje z jednostkami DWU. '
 services: sql-data-warehouse
-author: kevinvngo
-manager: craigg
+author: WenJason
+manager: digimobile
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: design
-ms.date: 04/17/2018
-ms.author: kevin
+ms.component: design
+origin.date: 04/17/2018
+ms.date: 11/12/2018
+ms.author: v-jay
 ms.reviewer: igorstan
 ms.openlocfilehash: f0489d9c018abac380cd0f8b1aa51fa5bb81707a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463620"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60531174"
 ---
 # <a name="data-warehouse-workload"></a>Obciążenie magazynu danych
 Obciążenie magazynu danych odwołuje się do wszystkich operacji wykonywanych w magazynie danych. Obciążenie magazynu danych uwzględnia cały proces ładowania danych do magazynu, wykonywanie analiz i raportów odnoszących się do magazynu danych, zarządzanie danymi w magazynie oraz eksportowanie danych z magazynu. Stopień zaawansowania i zasięgu tych składników często wynika bezpośrednio z poziomu dojrzałości magazynu danych.

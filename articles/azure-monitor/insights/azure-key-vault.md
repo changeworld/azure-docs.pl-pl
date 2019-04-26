@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: bwren
 ms.openlocfilehash: 481b643f2f7201a2a1745c7aef9ddd81883da020
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629273"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60498529"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Rozwiązanie na platformie Azure Key Vault Analytics w usłudze Azure Monitor
 
@@ -108,7 +108,7 @@ Rozwiązanie Azure Key Vault analizuje rekordy, które mają typ **KeyVaults** ,
 | Type |*AzureDiagnostics* |
 | SourceSystem |*Azure* |
 | CallerIpAddress |Adres IP klienta, który wysłał żądanie |
-| Kategoria | *AuditEvent* |
+| Category | *AuditEvent* |
 | CorrelationId |Opcjonalny identyfikator GUID, który klient może przekazać w celu skorelowania dzienników po stronie klienta z dziennikami po stronie usługi (Key Vault). |
 | durationMs |Czas potrzebny do obsłużenia żądania interfejsu API REST podany w milisekundach. Tym razem nie obejmuje opóźnienia sieci, więc czas, który ma być mierzony po stronie klienta mogą być niezgodne z tym razem. |
 | httpStatusCode_d |Zwróconym przez żądanie jest kod stanu HTTP (na przykład *200*) |
@@ -117,7 +117,7 @@ Rozwiązanie Azure Key Vault analizuje rekordy, które mają typ **KeyVaults** ,
 | OperationName |Nazwa operacji zgodnie z opisem w [rejestrowanie usługi Azure Key Vault](../../key-vault/key-vault-logging.md) |
 | OperationVersion |Wersja interfejsu API REST zażądane przez klienta (na przykład *2015-06-01*) |
 | requestUri_s |Identyfikator URI żądania |
-| Zasób |Nazwa magazynu kluczy |
+| Resource |Nazwa magazynu kluczy |
 | ResourceGroup |Grupa zasobów magazynu kluczy |
 | ResourceId |Identyfikator zasobu usługi Azure Resource Manager W przypadku dzienników usługi Key Vault jest identyfikator zasobu usługi Key Vault |
 | ResourceProvider |*MICROSOFT.KEYVAULT* |

@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9aba12a2bca882b5f0e6e95d8e4f6014b318a12e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 58ca814551d8c7d309328f236052e1d07ac6f035
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58119748"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60469132"
 ---
 # <a name="delegate-app-administrator-roles-in-azure-active-directory"></a>Delegowanie ról administratora aplikacji w usłudze Azure Active Directory
 
@@ -58,7 +58,7 @@ Gdy użytkownik rejestruje aplikację, ich są automatycznie dodawane jako pierw
 
 ## <a name="delegate-app-ownership"></a>Delegowanie własności aplikacji
 
-Właścicieli aplikacji i rejestracji aplikacji każdego zarządzalnych tylko aplikacji, aplikacje lub rejestracje aplikacji, które są właścicielami. Na przykład po dodaniu właściciel aplikacji Salesforce, tego właściciela i można zarządzać dostęp do konfiguracji dla usług Salesforce, ale nie wszystkie inne aplikacje. Aplikacja może mieć wielu właścicieli, a użytkownik może być właścicielem wiele aplikacji.
+Właścicieli aplikacji i rejestracji aplikacji każdego zarządzalnych tylko aplikacje lub rejestracje aplikacji, które są właścicielami. Na przykład po dodaniu właściciel aplikacji Salesforce, tego właściciela i można zarządzać dostęp do konfiguracji dla usług Salesforce, ale nie wszystkie inne aplikacje. Aplikacja może mieć wielu właścicieli, a użytkownik może być właścicielem wiele aplikacji.
 
 Właściciel aplikacji może:
 

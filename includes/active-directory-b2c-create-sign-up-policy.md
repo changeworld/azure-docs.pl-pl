@@ -2,14 +2,15 @@
 author: PatAltimore
 ms.service: active-directory-b2c
 ms.topic: include
-ms.date: 11/30/2018
-ms.author: patricka
+origin.date: 11/30/2018
+ms.date: 04/04/2019
+ms.author: v-junlch
 ms.openlocfilehash: 17c0213d63879687e9c6d5f8dca06b9113c44af8
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54355909"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60456904"
 ---
 Jeśli chcesz włączyć tylko rejestracji w swojej aplikacji, możesz użyć **rejestracji** przepływu użytkownika. Ten przepływ użytkownika opisują procesy, które klienci przechodzą przez podczas tworzenia konta i zawartość tokenów, które aplikacja otrzyma po pomyślnej rejestracji.
 
@@ -44,3 +45,4 @@ Kliknij przycisk **uruchomić przepływ użytkownika**. Zostanie otwarta nowa ka
 > [!NOTE]
 > Zajmuje do minuty Tworzenie przepływu użytkownika i aktualizacje zostały wprowadzone.
 >
+

@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: diberry
 ms.openlocfilehash: 8ab24d478efa0d0006cff618d7760d4396d0e45e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859933"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60495295"
 ---
 # <a name="tutorial-extract-free-form-data-with-patternany-entity"></a>Samouczek: wyodrębnianie danych o formacie swobodnym za pomocą jednostki Pattern.any
 
@@ -144,7 +144,7 @@ Jednostka Pattern.any wyodrębnia jednostki o różnej długości. Działa tylko
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku dodano przykładowe wypowiedzi do istniejącej intencji, a następnie utworzono nową jednostkę Pattern.any dla nazwy formularza. Następnie w samouczku utworzono wzorzec dla istniejącej intencji z nowymi przykładowymi wypowiedziami i jednostką. Testowanie interaktywne wykazało, że wzorzec i jego intencja zostały przewidziane, ponieważ znaleziono jednostkę. 
 

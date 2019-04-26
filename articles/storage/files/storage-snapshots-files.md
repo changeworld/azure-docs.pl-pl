@@ -2,18 +2,18 @@
 title: Omówienie migawek udziału dla usługi Azure Files | Dokumentacja firmy Microsoft
 description: Migawkę udziału jest udział usługi Azure Files, która jest wykonywana w punkcie w czasie, jako sposób na tworzenie kopii zapasowej do udziału w wersji tylko do odczytu.
 services: storage
-author: RenaShahMSFT
+author: roygara
 ms.service: storage
 ms.topic: article
 ms.date: 01/17/2018
-ms.author: renash
+ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 8d6bca12ae1df0cab7be3e1c54467d32063bacaf
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195310"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60444099"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Omówienie migawek udziału plików platformy Azure 
 Usługa Azure Files oferuje możliwość robienia migawek udziału udziałów plików. Udostępnianie migawki przechwytywania stanu udziału w danym momencie. W tym artykule opisano możliwości, jakie zapewniają migawek udziałów i jak można było korzystać z nich w Twoim przypadku użycia niestandardowego.
@@ -58,7 +58,7 @@ Nawet jeśli migawki udziałów są zapisywane przyrostowo, należy zachować ty
 
 Migawki nie są wliczane do limitu 5 TB udziału. Nie ma żadnego limitu, ile miejsca migawek udziałów zajmować w sumie. Nadal mają zastosowanie limity konta magazynu.
 
-## <a name="limits"></a>Limity
+## <a name="limits"></a>Limits
 Maksymalna liczba migawek udziałów, które usługi Azure Files umożliwia obecnie to 200. Po migawek udziałów 200 musisz usunąć starsze migawek udziałów, aby utworzyć nowe. 
 
 Nie ma żadnego limitu jednoczesnych wywołań do tworzenia migawek udziałów. Nie ma żadnego limitu ilości miejsca na za tego udziału, w których może używać migawek udziału określonego pliku. 

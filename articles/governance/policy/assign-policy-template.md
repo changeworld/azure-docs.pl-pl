@@ -8,11 +8,11 @@ ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
 ms.openlocfilehash: 1a811d3d0796b37053ffbabf56b63b4e4f68e203
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524076"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60500210"
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>Tworzenie przypisania zasad w celu zidentyfikowania niezgodnych zasobów przy użyciu szablonu usługi Resource Manager
 

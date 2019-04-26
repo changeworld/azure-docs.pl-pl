@@ -5,15 +5,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 12/26/2018
-author: sivethe
-ms.author: sivethe
+origin.date: 12/26/2018
+ms.date: 01/21/2019
+author: rockboyfor
+ms.author: v-yeche
 ms.openlocfilehash: de037316efa50dd25ea04c370fa0e5878fb52ba1
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54040408"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60448507"
 ---
 # <a name="indexing-using-azure-cosmos-dbs-api-for-mongodb"></a>Indeksowanie przy użyciu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB
 
@@ -79,14 +80,14 @@ W powyższym przykładzie w przypadku pominięcia klauzuli ```"university":1``` 
 ## <a name="ttl-indexes"></a>Indeksy czasu wygaśnięcia
 
 Aby włączyć wygasanie dokumentu w określonej kolekcji, należy utworzyć [„Indeks czasu wygaśnięcia”](../cosmos-db/time-to-live.md). Indeks czasu wygaśnięcia jest indeksem dla pola _ts z wartością „expireAfterSeconds”.
- 
+
 Przykład:
 ```JavaScript
 globaldb:PRIMARY> db.coll.createIndex({"_ts":1}, {expireAfterSeconds: 10})
 ```
 
 Poprzednie polecenie spowoduje usunięcie dowolnych dokumentów w kolekcji ```db.coll```, które nie zostały zmodyfikowane w ciągu ostatnich 10 sekund. 
- 
+
 > [!NOTE]
 > **_ts** jest polem właściwym dla usługi Cosmos DB i nie można do niego uzyskać dostępu z klientów bazy danych MongoDB. Jest zastrzeżoną właściwością (systemową), która zawiera sygnaturę czasową ostatniej modyfikacji dokumentu.
 >
@@ -97,4 +98,6 @@ Obecnie tworzenie indeksów unikatowych jest możliwe tylko wtedy, gdy kolekcja 
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Indeksowanie w usłudze Azure Cosmos DB](../cosmos-db/index-policy.md)
-* [Wygasanie danych w usłudze Azure Cosmos DB automatycznie przy użyciu czasu wygaśnięcia](../cosmos-db/time-to-live.md)
+* [Expire data in Azure Cosmos DB automatically with time to live](../cosmos-db/time-to-live.md) (Automatyczne wygasanie danych w usłudze Azure Cosmos DB przy użyciu czasu wygaśnięcia)
+
+<!-- Update_Description: update meta properties  -->

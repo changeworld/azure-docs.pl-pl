@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 03/27/2019
 ms.author: magoedte
 ms.openlocfilehash: 2f500ea127d3f2042e7c97eeace592b4da8d8d0e
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995986"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60494853"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Jak zaktualizować Monitor Azure containers włączyć metryki
 Usługa Azure Monitor dla kontenerów wprowadza obsługę zbieranie metryk z węzłów klastrów usługi Kubernetes usługi Azure (AKS) i zasobników i zapisywania ich w magazynie metryk usługi Azure Monitor. Ta zmiana ma na celu dostarczać ulepszone osi czasu, podczas wyświetlania agregacji obliczeń (średnia liczba, Max, Min, Suma) w wykresach wydajności, przypinanie wykresów wydajności w portalu pulpitów nawigacyjnych platformy Azure, obsługę i obsługi alertów dotyczących metryk.

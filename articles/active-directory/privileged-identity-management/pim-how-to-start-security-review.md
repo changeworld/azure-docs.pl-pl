@@ -15,11 +15,11 @@ ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e5cbf96c165d79c26985663ef5a9d64bbf8f9892
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58574998"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60438003"
 ---
 # <a name="start-an-access-review-for-azure-ad-roles-in-pim"></a>Rozpoczynanie przeglądu dostępu dla ról usługi Azure AD w usłudze PIM
 Przypisania ról stają się "starych", gdy użytkownicy mają uprzywilejowany dostęp, które nie potrzebują już. W celu zmniejszenia ryzyka związanego z te przypisania roli starych ról uprzywilejowanych administratorów lub Administratorzy globalni należy regularnie tworzyć przeglądów dostępu, aby zadać Administratorzy, aby zapoznać się z ról, które użytkownicy nadali. W tym dokumencie opisano kroki do uruchamiania przeglądu dostępu w usłudze Azure Active Directory (Azure AD) Privileged Identity Management (PIM).

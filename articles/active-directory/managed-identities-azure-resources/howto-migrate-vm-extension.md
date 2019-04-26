@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 02/25/2018
 ms.author: markvi
 ms.openlocfilehash: 5b3c6c99b05320ee53c3ff49f5c299650c32e939
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58498336"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60440831"
 ---
 # <a name="how-to-stop-using-the-virtual-machine-managed-identities-extension-and-start-using-the-azure-instance-metadata-service"></a>Jak zatrzymać za pomocą maszyny wirtualnej zarządzany rozszerzenie tożsamości i Rozpocznij korzystanie z usługi Azure Instance Metadata Service
 
@@ -95,7 +95,7 @@ Aby aprowizować skalowania maszyn wirtualnych należy ustawić rozszerzenia za 
 
 Inicjowanie obsługi rozszerzenia maszyny wirtualnej może zakończyć się niepowodzeniem z powodu błędów wyszukiwania DNS. W takim przypadku należy ponownie uruchomić maszynę wirtualną i spróbuj ponownie. 
 
-### <a name="remove-the-extension"></a>Usuń rozszerzenie 
+### <a name="remove-the-extension"></a>Usuwanie rozszerzenia 
 Aby usunąć rozszerzenie, należy użyć `-n ManagedIdentityExtensionForWindows` lub `-n ManagedIdentityExtensionForLinux` przełącznik (w zależności od typu maszyny wirtualnej) z [Usuń rozszerzenie maszyny wirtualnej az](https://docs.microsoft.com/cli/azure/vm/), lub [Usuń rozszerzenie zestawu skalowania maszyn wirtualnych az](https://docs.microsoft.com/cli/azure/vmss) dla skalowania maszyn wirtualnych Ustawia przy użyciu wiersza polecenia platformy Azure lub `Remove-AzVMExtension` środowiska PowerShell:
 
 ```azurecli-interactive

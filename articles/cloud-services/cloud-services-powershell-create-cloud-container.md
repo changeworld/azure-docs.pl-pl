@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/18/2016
 ms.author: cawa
 ms.openlocfilehash: 771f93edfee8f7b48fb7d0d2c98419f9427f6338
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798320"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60527327"
 ---
 # <a name="use-an-azure-powershell-command-to-create-an-empty-cloud-service-container"></a>Polecenie programu Azure PowerShell umożliwia tworzenie pustego usługi kontenera w chmurze
 

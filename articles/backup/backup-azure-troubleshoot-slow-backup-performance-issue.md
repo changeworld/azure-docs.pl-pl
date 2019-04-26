@@ -9,11 +9,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: f24a60ab9bdcf1231085de4edeeb89ce1edf4e80
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248473"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60337633"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Rozwiązywanie problemów związanych z powolnym tworzeniem kopii zapasowych plików i folderów w usłudze Azure Backup
 Ten artykuł zawiera wskazówki dotyczące rozwiązywania problemów, dzięki którym możesz diagnozować przyczyny niskiej wydajności tworzenia kopii zapasowych plików i folderów, podczas korzystania z usługi Azure Backup. Gdy używasz agenta usługi Azure Backup do tworzenia kopii zapasowych plików, proces tworzenia kopii zapasowej może potrwać dłużej niż oczekiwano. To opóźnienie może być spowodowany przez jedną lub więcej z następujących czynności:
@@ -31,7 +31,7 @@ Ponadto zdecydowanie zalecamy przejrzenie [— często zadawane pytania dla usł
 
 <a id="cause1"></a>
 
-## <a name="cause-performance-bottlenecks-on-the-computer"></a>Przyczyna: Na komputerze, wąskich gardeł wydajności
+## <a name="cause-performance-bottlenecks-on-the-computer"></a>Przyczyna: Wąskie gardła wydajności na komputerze
 Wąskie gardła na komputerze, na którym jest tworzona kopia zapasowa może powodować opóźnienia. Na przykład zdolność komputera do odczytu lub zapisu na dysku lub dostępną przepustowość do przesyłania danych za pośrednictwem sieci, może spowodować wąskie gardła.
 
 Windows oferuje wbudowane narzędzie, które jest wywoływane [monitora wydajności](https://technet.microsoft.com/magazine/2008.08.pulse.aspx) (Perfmon), aby wykryć te wąskich gardeł.
@@ -68,7 +68,7 @@ Programy antywirusowe zaleca się wykluczenie następujące pliki i lokalizacje:
 
 <a id="cause3"></a>
 
-## <a name="cause-backup-agent-running-on-an-azure-virtual-machine"></a>Przyczyna: Agent usługi Kopia zapasowa uruchomionych na maszynie wirtualnej platformy Azure
+## <a name="cause-backup-agent-running-on-an-azure-virtual-machine"></a>Przyczyna: Agent kopii zapasowych działa na maszynie wirtualnej platformy Azure
 Jeśli korzystasz z agenta kopii zapasowej na maszynie Wirtualnej, wydajność będzie przebiegać wolniej niż po uruchomieniu go na komputerze fizycznym. Jest to oczekiwane ze względu na ograniczenia operacji We/Wy.  Możesz jednak zoptymalizować wydajność, przełączając dysków z danymi, które tworzona jest kopia zapasowa Azure Premium Storage. Pracujemy nad rozwiązaniem tego problemu i poprawka będzie dostępna w przyszłej wersji.
 
 <a id="cause4"></a>

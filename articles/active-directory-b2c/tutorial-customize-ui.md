@@ -3,19 +3,19 @@ title: Samouczek — Dostosowywanie interfejsu użytkownika środowiska — Azur
 description: Dowiedz się, jak dostosować interfejs użytkownika aplikacji w usłudze Azure Active Directory B2C w witrynie Azure portal.
 services: B2C
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: f3bc1789d0b521b0d91ca42ebe472fed0225d87b
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: MT
+ms.openlocfilehash: 0996c64acaa5e65061d80974fc428bad2dd8d4ad
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752385"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60360321"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Samouczek: Dostosowywanie interfejsu użytkownika środowiska w usłudze Azure Active Directory B2C
 
@@ -137,7 +137,7 @@ W tym samouczku przechowujesz pliki, które utworzono w ramach konta magazynu, a
 
 ## <a name="update-the-user-flow"></a>Aktualizacja przepływu użytkownika
 
-1. Wybierz **wszystkich usług** w lewym górnym rogu witryny Azure portal, a następnie wyszukaj i wybierz **usługi Azure AD B2C**.
+1. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
 2. Wybierz **przepływy użytkownika (zasady)**, a następnie wybierz pozycję *B2C_1_signupsignin1* przepływu użytkownika.
 3. Wybierz **strony układów**, a następnie w obszarze **ujednolicona strona rejestracji lub logowania**, kliknij przycisk **tak** dla **niestandardową zawartość strony**.
 4. W **identyfikator URI strony niestandardowe**, wprowadź identyfikator URI *ui.html niestandardowe* pliku, który zapisaną wcześniej.
@@ -157,7 +157,7 @@ W tym samouczku przechowujesz pliki, które utworzono w ramach konta magazynu, a
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym artykule przedstawiono sposób:
+W tym artykule zawarto informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Utwórz pliki dostosowania interfejsu użytkownika

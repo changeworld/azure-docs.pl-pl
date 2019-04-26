@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
 ms.openlocfilehash: 115a459c6a9e4ea96931c89272a49396f0656258
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57993340"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60362229"
 ---
 # <a name="example-1--build-a-simple-dmz-using-nsgs-with-classic-powershell"></a>Przykład 1 — Tworzenie prostej sieci obwodowej za pomocą grup NSG z klasycznego środowiska PowerShell
 [Wróć do strony zabezpieczeń granic najlepsze praktyki][HOME]

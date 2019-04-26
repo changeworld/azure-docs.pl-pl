@@ -2,18 +2,18 @@
 title: 'Samouczek: rozszerzanie serwerów plików systemu Windows przy użyciu usługi Azure File Sync | Microsoft Docs'
 description: Dowiedz się, jak rozszerzyć serwery plików systemu Windows przy użyciu usługi Azure File Sync — od początku do końca.
 services: storage
-author: wmgries
+author: roygara
 ms.service: storage
 ms.topic: tutorial
 ms.date: 10/23/2018
-ms.author: wgries
+ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 9d7162eca3c2979b1dd333bdaf95c7c43e875b9d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59049153"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60462104"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>Samouczek: Rozszerzanie serwerów plików systemu Windows przy użyciu usługi Azure File Sync
 

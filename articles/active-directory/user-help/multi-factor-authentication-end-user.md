@@ -14,11 +14,11 @@ ms.author: lizross
 ms.reviewer: richagi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 77e3e07be7abaa6e91d8f3909f5271dfc263be17
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162309"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60475381"
 ---
 # <a name="what-does-azure-multi-factor-authentication-mean-for-me"></a>Co usługa Azure Multi-Factor Authentication oznacza dla mnie?
 Dotarła do Ciebie wiadomość e-mail z działu IT lub przełożonego z informacją, że dla Twojego konta wprowadzono dodatkową weryfikację zabezpieczeń.  Co to oznacza?

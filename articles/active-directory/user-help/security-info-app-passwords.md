@@ -13,11 +13,11 @@ ms.date: 02/13/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 55dfab0c60e77b86157a005db34c37917a5e08d2
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57341107"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60475116"
 ---
 # <a name="manage-app-passwords-from-your-security-info-preview-page"></a>Zarządzanie hasłami aplikacji z Twojego stronę informacji zabezpieczających (wersja zapoznawcza)
 Niektóre aplikacje, takie jak Outlook 2010, nie obsługują weryfikacji dwuetapowej. To Brak obsługi oznacza, że w przypadku używania weryfikacji dwuetapowej w Twojej organizacji nie będzie działać aplikacji. Aby obejść ten problem, można utworzyć hasło wygenerowane automatycznie za pomocą każdej aplikacji niekorzystających z przeglądarki, niezależnie od normalnych hasła.

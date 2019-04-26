@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/27/2018
 ms.author: alzam
 ms.openlocfilehash: 0c058cb6547d67469d3138dc331b6181c07e6e65
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53087528"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60457078"
 ---
 # <a name="troubleshoot-point-to-site-vpn-connections-from-mac-os-x-vpn-clients"></a>Rozwiązywanie problemów z połączeniami sieci VPN typu punkt-lokacja z klientów Mac OS X w sieci VPN
 
@@ -63,7 +63,7 @@ Ten artykuł pomaga rozwiązać problemy z połączeniem punkt-lokacja z systeme
 
 Jeśli spróbujesz poprzednich kroków i wszystko jest poprawnie skonfigurowana, Pobierz [Wireshark](https://www.wireshark.org/#download) i wykonać przechwytywania pakietów.
 
-1. Filtrowanie według *isakmp* i przyjrzyj się **IKE_SA** pakietów. Powinno być możliwe wyświetlić szczegóły propozycji skojarzeń zabezpieczeń, w obszarze **ładunek: oferty skojarzeń zabezpieczeń**. 
+1. Filtrowanie według *isakmp* i przyjrzyj się **IKE_SA** pakietów. Powinno być możliwe wyświetlić szczegóły propozycji skojarzeń zabezpieczeń, w obszarze **ładunek: Oferty skojarzeń zabezpieczeń**. 
 2. Sprawdź, czy klient i serwer cechują się wspólnym zestawem.
 
    ![pakiet](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/packet5.jpg) 

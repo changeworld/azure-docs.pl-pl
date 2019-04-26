@@ -9,12 +9,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: article
 ms.date: 12/07/2017
-ms.openlocfilehash: df329d42022f4e56b3d6d4d26519acd42caa1ae4
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 7198e64a11a3aa23643cc2bfb5ecff884c6a1b48
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56881825"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60445553"
 ---
 # <a name="microsoft-genomics-common-questions"></a>Microsoft Genomics: Często zadawane pytania
 
@@ -73,6 +73,7 @@ Klucz konta magazynu jest używane do tworzenia krótkoterminowych tokenów dost
 ## <a name="what-genome-references-can-i-use"></a>Jakie genomu odwołuje się do czego służy?
 
 Te odwołania są obsługiwane:
+
  |Informacje ogólne              | Wartość `-pa/--process-args` |
  |:-------------         |:-------------                 |
  |b37                    | `R=b37m1`                     |
@@ -84,15 +85,15 @@ Te odwołania są obsługiwane:
 
 modułu msgen rozumie pliki konfiguracyjne w następującym formacie:
 * Wszystkie opcje są dostarczane jako pary klucz wartość z wartościami z kluczy rozdzielone średnikiem.
-Odstęp zostanie zignorowany.
+  Odstęp zostanie zignorowany.
 * Wiersze rozpoczynające się znakiem `#` są ignorowane.
 * Którykolwiek z argumentów wiersza polecenia w formacie długim można przekonwertować z kluczem przez obcięcie jej wiodące kresek i zastępowanie łączniki między wyrazami znakami podkreślenia. Poniżej przedstawiono kilka przykładów konwersji:
 
- |argument wiersza polecenia            | Wiersz w pliku konfiguracji |
- |:-------------                   |:-------------                 |
- |`-u/--api-url-base https://url`  | *api_url_base:https://url*    |
- |`-k/--access-key KEY`            | *access_key:key*              |      
- |`-pa/--process-args R=B37m1`     | *process_args:R-b37m1*        |  
+  |argument wiersza polecenia            | Wiersz w pliku konfiguracji |
+  |:-------------                   |:-------------                 |
+  |`-u/--api-url-base https://url`  | *api_url_base:https://url*    |
+  |`-k/--access-key KEY`            | *access_key:key*              |      
+  |`-pa/--process-args R=B37m1`     | *process_args:R-b37m1*        |  
 
 ## <a name="next-steps"></a>Kolejne kroki
 

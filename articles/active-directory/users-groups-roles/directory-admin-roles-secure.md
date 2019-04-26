@@ -15,11 +15,11 @@ ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 81d09978c3333a5b76c09f8c7dac85998d342f03
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287234"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60472896"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpieczanie uprzywilejowanego dostępu dla wdrożeń hybrydowych i w chmurze w usłudze Azure AD
 
@@ -387,7 +387,7 @@ Określ, czy wymagane do [przenieść własność subskrypcji platformy Azure do
 
 Aby uzyskać więcej informacji na temat obsługi zdarzenia związane z bezpieczeństwem w Microsoft Office 365, zobacz [Zarządzanie zdarzeniami zabezpieczeń w usłudze Microsoft Office 365](https://aka.ms/Office365SIM).
 
-## <a name="faq-common-questions-we-receive-regarding-securing-privileged-access"></a>FAQ: Często zadawane pytania, które firma Microsoft otrzyma dotyczące zabezpieczania uprzywilejowanego dostępu  
+## <a name="faq-common-questions-we-receive-regarding-securing-privileged-access"></a>CZĘSTO ZADAWANE PYTANIA: Często zadawane pytania, które firma Microsoft otrzyma dotyczące zabezpieczania uprzywilejowanego dostępu  
 
 **Pyt.:** Co należy zrobić, jeśli I nie została jeszcze zaimplementowana wszystkie składniki bezpieczny dostęp?
 
