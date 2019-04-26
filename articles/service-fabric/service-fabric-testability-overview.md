@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 06/15/2017
 ms.author: anmola
 ms.openlocfilehash: 3581550779b2387515b4f300d211b4e0a894edc7
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662357"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60544830"
 ---
 # <a name="introduction-to-the-fault-analysis-service"></a>Wprowadzenie do usługa analizy błędów
 Usługa analizy błędów jest przeznaczony do testowania usług, które są wbudowane w usłudze Microsoft Azure Service Fabric. Usługa analizy błędów możesz wywołać istotne błędy i uruchamianie scenariuszy ukończenia testowej względem aplikacji. Te błędy i scenariuszy wykonywania i zweryfikować liczne Stany i przejścia, które usługa będzie wystąpić w okresie swojego istnienia, wszystko to w sposób kontrolowany, bezpieczne i zgodne.

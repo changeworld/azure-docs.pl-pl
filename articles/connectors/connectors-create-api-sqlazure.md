@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: dccb91c782408a5fed5c3ef1b68f9918823ce402
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: MT
+ms.openlocfilehash: 29d53c7fbd26d3c8e2356ce82ff25c7e1b165728
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38544027"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60541159"
 ---
 # <a name="connect-to-sql-server-or-azure-sql-database-from-azure-logic-apps"></a>Nawiązywanie połączenia programu SQL Server lub usługi Azure SQL Database z usługi Azure Logic Apps
 
@@ -24,7 +24,7 @@ Ten artykuł pokazuje, jak można pobrać danych w usłudze SQL database z wewn�
 
 Można tworzyć aplikacje logiki, które są uruchamiane po wyzwoleniu przez zdarzenia w usłudze SQL database lub w innych systemach, takich jak Dynamics CRM Online. Aplikacje logiki można również uzyskać, wstawianie i usuwanie danych oraz wykonywanie zapytań SQL i procedur składowanych. Można na przykład, utworzyć aplikację logiki, która automatycznie sprawdza, czy dla nowych rekordów w usłudze Dynamics CRM Online, dodaje elementy do bazy danych SQL dla żadnych nowych rekordów, a następnie wysyła wiadomości e-mail dla alertów.
 
-Jeśli nie masz subskrypcji platformy Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zarejestruj się w celu założenia bezpłatnego konta platformy Azure</a>. Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps](../logic-apps/logic-apps-overview.md) i [Szybki Start: tworzenie pierwszej aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Aby uzyskać informacje techniczne dotyczące łącznika, zobacz <a href="https://docs.microsoft.com/connectors/sql/" target="blank">dokumentacja łączników programu SQL Server</a>.
+Jeśli nie masz subskrypcji platformy Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zarejestruj się w celu założenia bezpłatnego konta platformy Azure</a>. Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps](../logic-apps/logic-apps-overview.md) i [Szybki Start: Utwórz swoją pierwszą aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Aby uzyskać informacje techniczne dotyczące łącznika, zobacz <a href="https://docs.microsoft.com/connectors/sql/" target="blank">dokumentacja łączników programu SQL Server</a>.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -42,7 +42,7 @@ Jeśli nie masz subskrypcji platformy Azure, <a href="https://azure.microsoft.co
 
   * Dla programu SQL Server można znaleźć te informacje w parametrach połączenia: 
 
-    "Server = <*yourServerAddress*>; Database = <*yourDatabaseName*>; Nazwa użytkownika = <*nazwa_użytkownika*>; Hasło = <*yourPassword*>; "
+    "Server=<*yourServerAddress*>;Database=<*yourDatabaseName*>;User Id=<*yourUserName*>;Password=<*yourPassword*>;"
 
 * Zanim będzie można połączyć aplikacji logiki do systemów lokalnych, takich jak SQL Server, należy najpierw [skonfigurować lokalną bramę danych](../logic-apps/logic-apps-gateway-install.md). W ten sposób można wybrać bramy podczas tworzenia połączenia SQL dla aplikacji logiki.
 
@@ -63,7 +63,7 @@ W usłudze Azure Logic Apps, każda aplikacja logiki musi rozpoczynać się [wyz
 3. Jeśli zostanie wyświetlony monit, aby uzyskać informacje dotyczące połączenia, [utworzyć połączenia SQL. teraz](#create-connection). 
    Lub, jeśli istnieje już połączenie, wybierz opcję **nazwy tabeli** , ma na liście.
 
-   ![Wybierz tabelę](./media/connectors-create-api-sqlazure/azure-sql-database-table.png)
+   ![Wybieranie tabeli](./media/connectors-create-api-sqlazure/azure-sql-database-table.png)
 
 4. Ustaw **interwał** i **częstotliwość** właściwości, które określają, jak często aplikacja logiki sprawdza tabelę.
 

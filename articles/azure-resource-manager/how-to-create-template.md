@@ -12,11 +12,11 @@ ms.workload: na
 ms.date: 12/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: b198f860c10bd207a191057e21a8a159c5ebde26
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57403519"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60551034"
 ---
 # <a name="create-azure-resource-manager-template"></a>Tworzenie szablonu usługi Azure Resource Manager
 

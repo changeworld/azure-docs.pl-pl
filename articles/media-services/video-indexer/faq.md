@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
 ms.openlocfilehash: e85beea4250b5ac5f4defd0b918786079d3dbe3e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57892663"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60553695"
 ---
 # <a name="frequently-asked-questions"></a>Często zadawane pytania
 
@@ -160,7 +160,7 @@ Usługa Video Indexer używa prostego zgodnie z rzeczywistym użyciem model ceno
 
 ### <a name="when-am-i-billed-for-using-video-indexer"></a>Kiedy są rozliczane za pomocą indeksatora wideo?
 
-Podczas wysyłania wideo do indeksowania, użytkownik określi indeksowania za analiza wideo, audio, analizy i / lub. To spowoduje określenie jednostek SKU zostanie obciążona. W przypadku poziomu błąd krytyczny podczas przetwarzania, jako odpowiedź zostanie zwrócony kod błędu. W takim przypadku opłaty nie występuje.  Błąd krytyczny może wpływać na usterkę w naszym kodzie lub ma błąd krytyczny w wewnętrznej zależności usługi. Błędy, takie jak nieprawidłowe wyodrębniania identyfikacji lub szczegółowe informacje nie są traktowane jako krytyczne i odpowiedź jest zwracana. W każdym przypadku w przypadku, gdy zwracany jest odpowiedzi nieprawidłowy (kod bez błędu), występuje rozliczeń.
+Wysyłając wideo do indeksowania, użytkownik definiuje, czy indeksowanie ma być analizą wideo, analizą audio, czy jednym i drugim. Na tej podstawie określa się, za które jednostki SKU jest naliczana opłata. Jeśli podczas przetwarzania wystąpi błąd na poziomie krytycznym, w odpowiedzi zostanie zwrócony kod błędu. W takim przypadku nie są naliczane żadne opłaty.  Błąd krytyczny może być spowodowany usterką w naszym kodzie lub krytyczną awarią w wewnętrznej zależności usługi. Błędy takie jak nieprawidłowa identyfikacja lub ekstrakcja szczegółowych informacji nie są uważane za krytyczne i w takich przypadkach odpowiedź jest zwracana. Za każdym razem, gdy jest zwracana prawidłowa odpowiedź (czyli bez kodu błędu), jest naliczana opłata.
  
 ### <a name="does-video-indexer-offer-a-free-trial"></a>Video Indexer oferuje bezpłatną wersję próbną?
 

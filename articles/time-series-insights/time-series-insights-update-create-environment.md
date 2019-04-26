@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 12/12/2018
 ms.custom: seodec18
-ms.openlocfilehash: 1b09c0e31b217d7d67f936aefe9045d190241389
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 75ab3baf8638a387defd0e367b4a61c3746794f3
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633117"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60544476"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Samouczek: Konfigurowanie środowiska wersji zapoznawczej usługi Azure Time Series Insights
 
@@ -154,7 +154,7 @@ W tej sekcji opisano, jak utworzyć środowisko wersji zapoznawczej usługi Azur
 
      ![Zasady dostępu do danych][17]
 
-   d. Sprawdź, czy widać Twoje poświadczenia.
+   c. Sprawdź, czy widać Twoje poświadczenia.
 
      ![Widoczne poświadczenia][18]
 
@@ -339,7 +339,7 @@ W tej sekcji zastosujesz model, aby ustrukturyzować dane. Do utworzenia modelu 
 
    ![Szczegółowa lista zdarzeń][44]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:  
 

@@ -13,11 +13,11 @@ ms.date: 12/09/2018
 ms.author: tomfitz
 ms.custom: seodec18
 ms.openlocfilehash: a615ab26e4ea046ced70ce2c154a0c304b741986
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138351"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60550906"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-private-preview"></a>Włącz praktyki bezpiecznego wdrażania w usłudze Azure Deployment Manager (prywatna wersja zapoznawcza)
 
@@ -340,4 +340,4 @@ Wersjonowany wdrożeń, tworząc nowe foldery i przekazywania w tej domenie gł�
 W tym artykule przedstawiono Deployment Manager. Przejdź do następnego artykułu, aby dowiedzieć się, jak wdrożyć za pomocą programu Deployment Manager.
 
 > [!div class="nextstepaction"]
-> [Samouczek: Użyj Azure Deployment Manager przy użyciu szablonów usługi Resource Manager](./deployment-manager-tutorial.md)
+> [Samouczek: Azure Deployment Manager za pomocą szablonów usługi Resource Manager](./deployment-manager-tutorial.md)
