@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 09/01/2017
 ms.author: kfollis
 ms.openlocfilehash: b24a0397a1365479907fedc6348caa54508dbbb0
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58444878"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60552202"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>Programowe tworzenie pulpitów nawigacyjnych platformy Azure
 
@@ -26,7 +26,7 @@ W tym dokumencie przedstawiono proces programowe tworzenie i publikowanie pulpit
 
 ![przykładowy pulpit nawigacyjny](./media/azure-portal-dashboards-create-programmatically/sample-dashboard.png)
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Udostępnione pulpity nawigacyjne w usłudze Azure czy [zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) tak jak maszyny wirtualne i konta magazynu.  W związku z tym, mogą być zarządzane programowo za pośrednictwem [interfejsów API REST usługi Azure Resource Manager](/rest/api/), [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure), [poleceń programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps)i wiele [ Witryna Azure portal](https://portal.azure.com) funkcje są oparte na tych interfejsów API, aby ułatwić zarządzanie zasobami.  
 
