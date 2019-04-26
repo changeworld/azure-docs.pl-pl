@@ -17,18 +17,18 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1d5f4dec48d81b032de293bb6c68ad62ac48d475
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193062"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60347927"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Synchronizacja programu Azure AD Connect: Scheduler
 W tym temacie opisano wbudowanych harmonogramu synchronizacji Azure AD Connect (zwany również aparatem synchronizacji).
 
 Ta funkcja została wprowadzona z kompilacją 1.1.105.0 (wydane w lutym 2016 r.).
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Synchronizacja programu Azure AD Connect synchronizować zmiany zachodzące w Twoim katalogu w środowisku lokalnym przy użyciu harmonogramu. Istnieją dwa procesy harmonogramu dla synchronizacji haseł i drugi dla obiektu lub atrybutu zadań synchronizacji i konserwacji. W tym temacie omówiono te ostatnie.
 
 We wcześniejszych wersjach zewnętrznych w aparacie synchronizacji został harmonogram dla obiektów i atrybutów. Harmonogram zadań Windows lub osobną usługą Windows on używany do synchronizacji. Usługa scheduler jest dzięki wbudowanej wersji 1.1, aby synchronizacja aparatu i umożliwienia pewne dostosowania. Częstotliwość synchronizacji nowy domyślny to 30 minut.

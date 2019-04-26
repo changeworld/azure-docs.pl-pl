@@ -16,11 +16,11 @@ ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
 ms.openlocfilehash: d6705f9f7e324c915c38d01c54bdf16826c62380
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55180198"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60419326"
 ---
 # <a name="administer-dns-on-an-azure-ad-domain-services-managed-domain"></a>Administrowanie systemem DNS w domenie zarządzanej usług domenowych Azure AD
 Usługa Azure Active Directory Domain Services zawiera serwer DNS (rozpoznawanie nazw domen), która umożliwia rozpoznawanie nazw DNS dla domeny zarządzanej. Od czasu do czasu może być konieczne skonfigurowanie DNS w domenie zarządzanej. Może być konieczne, Utwórz rekordy DNS dla maszyn, które nie są przyłączone do domeny, skonfigurować wirtualne adresy IP usługi równoważenia obciążenia lub skonfigurować zewnętrznego usług przesyłania dalej DNS. Z tego powodu użytkownicy, którzy należą do grupy "Administratorzy usługi AAD DC" otrzymują uprawnienia do administrowania DNS w domenie zarządzanej.

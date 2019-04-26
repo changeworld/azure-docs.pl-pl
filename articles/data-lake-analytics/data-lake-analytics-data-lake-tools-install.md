@@ -10,11 +10,11 @@ ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: conceptual
 ms.date: 05/03/2018
 ms.openlocfilehash: 3269d38b691ec4dd9573a241c89dadc285787143
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254030"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60408140"
 ---
 # <a name="install-data-lake-tools-for-visual-studio"></a>Instalacja narzędzi Data Lake Tools for Visual Studio
 
@@ -22,7 +22,7 @@ Poznaj sposoby tworzenia kont usługi Azure Data Lake Analytics przy użyciu pro
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* **Visual Studio**: obsługiwane są wszystkie wersje z wyjątkiem Express.
+* **Visual Studio**: Obsługiwane są wszystkie wersje, z wyjątkiem Express.
     * Visual Studio 2017
     * Visual Studio 2015
     * Visual Studio 2013
@@ -33,9 +33,9 @@ Poznaj sposoby tworzenia kont usługi Azure Data Lake Analytics przy użyciu pro
 
 Narzędzia Azure Data Lake Tools for Visual Studio są obsługiwane w programie Visual Studio 2017 15.3 lub nowszym. Narzędzia te stanowią część obciążeń **Magazyn danych i przetwarzanie** oraz **Tworzenie aplikacji na platformie Azure** w instalatorze programu Visual Studio. Włącz jedno z tych dwóch obciążeń w ramach instalacji programu Visual Studio.  
 
-Włącz obciążenie **Magazyn danych i przetwarzanie** w następujący sposób: ![Włączanie obciążenia Magazyn danych i przetwarzanie](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-tools-for-vs-2017-install-01.png)
+Włącz **przechowywanie i przetwarzanie danych** obciążenia, jak pokazano: ![Włącz obciążenie przetwarzania i przechowywania danych](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-tools-for-vs-2017-install-01.png)
 
-Włącz obciążenie **Tworzenie aplikacji na platformie Azure** w następujący sposób: ![Włączanie obciążenia Tworzenie aplikacji na platformie Azure](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-tools-for-vs-2017-install-02.png)
+Włącz **programowanie na platformie Azure** obciążenia, jak pokazano: ![Włącz obciążenie programistyczne platformy Azure](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-tools-for-vs-2017-install-02.png)
 
 ## <a name="install-azure-data-lake-tools-for-visual-studio-2013-and-2015"></a>Instalowanie narzędzi Azure Data Lake Tools for Visual Studio w wersji 2013 i 2015
 

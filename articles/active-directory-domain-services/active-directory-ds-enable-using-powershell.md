@@ -16,18 +16,18 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: ergreenl
 ms.openlocfilehash: f2c4f73af00e0093ce98f2de37e9c3a0ba381eda
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58119908"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60419037"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>Włączanie usługi Azure Active Directory Domain Services przy użyciu programu PowerShell
 W tym artykule przedstawiono sposób włączania usług domenowych Azure Active Directory (AD) przy użyciu programu PowerShell.
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
-## <a name="task-1-install-the-required-powershell-modules"></a>Zadanie 1: Zainstaluj wymagane moduły programu PowerShell
+## <a name="task-1-install-the-required-powershell-modules"></a>Zadanie 1. Zainstaluj wymagane moduły programu PowerShell
 
 ### <a name="install-and-configure-azure-ad-powershell"></a>Instalowanie i konfigurowanie programu Azure AD PowerShell
 Postępuj zgodnie z instrukcjami w artykule, aby [Instalowanie modułu Azure AD PowerShell i łączenie z usługą Azure AD](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?toc=%2fazure%2factive-directory-domain-services%2ftoc.json).

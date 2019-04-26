@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4d9055ef11bc5c117efc6d4de87d4ca8ec73a661
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58360507"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60359028"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Zasady dotyczące haseł i ograniczenia dotyczące usługi Azure Active Directory
 
@@ -42,10 +42,10 @@ Zasada dwóch bram wymaga dwóch rodzajów danych uwierzytelniania, takich jak *
   * Zapisywanie katalogów
   * Administrator globalny lub administrator firmy
   * Administrator programu SharePoint
-  * Administrator do spraw zgodności
+  * Administrator zgodności
   * Administrator aplikacji
   * Administrator zabezpieczeń
-  * Administrator roli uprzywilejowanej
+  * Administrator ról uprzywilejowanych
   * Administrator usługi Intune
   * Administrator usługi serwera proxy aplikacji
   * Administrator usługi Dynamics 365

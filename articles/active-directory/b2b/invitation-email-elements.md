@@ -13,11 +13,11 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7015abcfe3c53e2180d617bd2c78ecd44c42af7a
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295627"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60412832"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>Elementy e-mail z zaproszeniem współpracy B2B — usługi Azure Active Directory
 
@@ -28,7 +28,7 @@ Wiadomości e-mail z zaproszeniem są kluczowym aspektem doprowadzić partnerów
 ## <a name="explaining-the-email"></a>Wyjaśniające, wiadomości e-mail
 Spójrzmy na kilka elementów w wiadomości e-mail, aby było wiadomo, jak najlepiej wykorzystać jego możliwości.
 
-### <a name="subject"></a>Podmiot
+### <a name="subject"></a>Subject
 Temat wiadomości e-mail jest zgodny ze wzorcem następujące: Zaproszono Cię do &lt;tenantname&gt; organizacji
 
 ### <a name="from-address"></a>Adres nadawcy

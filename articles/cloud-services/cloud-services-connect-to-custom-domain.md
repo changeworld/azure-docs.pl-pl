@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 8bee2e2038ee39c777e1ca09994ad21872d2029a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57530062"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60337344"
 ---
 # <a name="connecting-azure-cloud-services-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>Role usługi w chmurze Azure nawiązywania połączenia z niestandardowego kontrolera domeny usługi AD hostowanych na platformie Azure
 Skonfiguruje możemy najpierw Virtual Network (VNet) na platformie Azure. Następnie dodamy kontrolera domeny Active Directory (obsługiwanych na maszynie wirtualnej platformy Azure) do sieci wirtualnej. Następnie firma Microsoft będzie Dodawanie istniejących ról usługi w chmurze do wstępnie utworzonej sieci wirtualnej, a następnie łączyć je z kontrolera domeny.

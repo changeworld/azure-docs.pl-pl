@@ -3,7 +3,7 @@ title: Konfiguruj przepływ poświadczeń hasła właściciela zasobu w usłudze
 description: Dowiedz się, jak skonfigurować przepływ poświadczeń hasła właściciela zasobu w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
@@ -11,11 +11,11 @@ ms.date: 12/06/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 265f1405a8779cdca101f18cf37b64f1933c2ff3
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400758"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60419191"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Konfigurowanie zasobów przepływ poświadczeń hasła właściciela w usłudze Azure Active Directory B2C za pomocą zasad niestandardowych
 
@@ -270,8 +270,8 @@ Generowanie wywołanie interfejsu API za pomocą ulubionego interfejsu API aplik
 | Klucz | Wartość |
 | --- | ----- |
 | nazwa użytkownika | `user-account` |
-| hasło | `password1` |
-| grant_type | hasło |
+| password | `password1` |
+| grant_type | password |
 | scope | openid `application-id` offline_access |
 | client_id | `application-id` |
 | response_type | id_token tokenu |

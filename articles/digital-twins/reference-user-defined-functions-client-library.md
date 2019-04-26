@@ -10,11 +10,11 @@ ms.date: 12/27/2018
 ms.author: alinast
 ms.custom: seodec18
 ms.openlocfilehash: d309765e6c4b0b0cc8a7e92977134d4135a69a13
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53995487"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60535590"
 ---
 # <a name="user-defined-functions-client-library-reference"></a>Dokumentacja biblioteki klienckiej funkcje zdefiniowane przez użytkownika
 
@@ -30,7 +30,7 @@ Podany identyfikator miejsca, ta funkcja pobiera miejsce z wykresu.
 
 **Rodzaj**: funkcja globalna
 
-| Parametr  | Typ                | Opis  |
+| Parametr  | Type                | Opis  |
 | ---------- | ------------------- | ------------ |
 | *id*  | `guid` | Identyfikator miejsca |
 
@@ -40,7 +40,7 @@ Podany identyfikator czujnik, ta funkcja pobiera czujnika z wykresu.
 
 **Rodzaj**: funkcja globalna
 
-| Parametr  | Typ                | Opis  |
+| Parametr  | Type                | Opis  |
 | ---------- | ------------------- | ------------ |
 | *id*  | `guid` | Identyfikator czujnika |
 
@@ -50,7 +50,7 @@ Podany identyfikator urządzenia, ta funkcja pobiera urządzenia z wykresu.
 
 **Rodzaj**: funkcja globalna
 
-| Parametr  | Typ                | Opis  |
+| Parametr  | Type                | Opis  |
 | ------ | ------------------- | ------------ |
 | *id* | `guid` | Identyfikator urządzenia |
 
@@ -60,10 +60,10 @@ Podany identyfikator czujników i jego typu danych, ta funkcja pobiera bieżąc�
 
 **Rodzaj**: funkcja globalna
 
-| Parametr  | Typ                | Opis  |
+| Parametr  | Type                | Opis  |
 | ------ | ------------------- | ------------ |
 | *sensorId*  | `guid` | Identyfikator czujnika |
-| *Typ danych*  | `string` | Typ danych czujników |
+| *dataType*  | `string` | Typ danych czujników |
 
 ### <a name="getspacevaluespaceid-valuename--value"></a>⇒ getSpaceValue (spaceId, valueName) `value`
 
@@ -71,7 +71,7 @@ Podany identyfikator miejsca i wartość name, ta funkcja pobiera bieżącą war
 
 **Rodzaj**: funkcja globalna
 
-| Parametr  | Typ                | Opis  |
+| Parametr  | Type                | Opis  |
 | ------ | ------------------- | ------------ |
 | *spaceId*  | `guid` | Identyfikator miejsca |
 | *valueName* | `string` | Nazwa właściwości miejsca |
@@ -82,10 +82,10 @@ Podany identyfikator czujników i jego typu danych, ta funkcja pobiera historycz
 
 **Rodzaj**: funkcja globalna
 
-| Parametr  | Typ                | Opis  |
+| Parametr  | Type                | Opis  |
 | ------ | ------------------- | ------------ |
 | *sensorId* | `guid` | Identyfikator czujnika |
-| *Typ danych* | `string` | Typ danych czujników |
+| *dataType* | `string` | Typ danych czujników |
 
 ### <a name="getspacehistoryvaluesspaceid-datatype--value"></a>⇒ getSpaceHistoryValues (spaceId, typ danych) `value[]`
 
@@ -93,7 +93,7 @@ Podany identyfikator miejsca i wartość name, ta funkcja pobiera historycznych 
 
 **Rodzaj**: funkcja globalna
 
-| Parametr  | Typ                | Opis  |
+| Parametr  | Type                | Opis  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | Identyfikator miejsca |
 | *valueName* | `string` | Nazwa właściwości miejsca |
@@ -104,7 +104,7 @@ Podany identyfikator miejsca, ta funkcja pobiera spacje podrzędne dla nadrzędn
 
 **Rodzaj**: funkcja globalna
 
-| Parametr  | Typ                | Opis  |
+| Parametr  | Type                | Opis  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | Identyfikator miejsca |
 
@@ -114,7 +114,7 @@ Podany identyfikator miejsca, ta funkcja pobiera czujników podrzędne dla nadrz
 
 **Rodzaj**: funkcja globalna
 
-| Parametr  | Typ                | Opis  |
+| Parametr  | Type                | Opis  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | Identyfikator miejsca |
 
@@ -124,7 +124,7 @@ Podany identyfikator miejsca, ta funkcja pobiera urządzenia podrzędnych do teg
 
 **Rodzaj**: funkcja globalna
 
-| Parametr  | Typ                | Opis  |
+| Parametr  | Type                | Opis  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | Identyfikator miejsca |
 
@@ -134,9 +134,9 @@ Podany identyfikator urządzenia, ta funkcja pobiera czujników podrzędnych dla
 
 **Rodzaj**: funkcja globalna
 
-| Parametr  | Typ                | Opis  |
+| Parametr  | Type                | Opis  |
 | ------ | ------------------- | ------------ |
-| *Identyfikator urządzenia* | `guid` | Identyfikator urządzenia |
+| *deviceId* | `guid` | Identyfikator urządzenia |
 
 ### <a name="getspaceparentspacechildspaceid--space"></a>getSpaceParentSpace(childSpaceId) ⇒ `space`
 
@@ -144,7 +144,7 @@ Podany identyfikator miejsca, ta funkcja pobiera jego przestrzeni nadrzędnej.
 
 **Rodzaj**: funkcja globalna
 
-| Parametr  | Typ                | Opis  |
+| Parametr  | Type                | Opis  |
 | ------ | ------------------- | ------------ |
 | *childSpaceId* | `guid` | Identyfikator miejsca |
 
@@ -154,7 +154,7 @@ Podany identyfikator czujnik, ta funkcja pobiera jego przestrzeni nadrzędnej.
 
 **Rodzaj**: funkcja globalna
 
-| Parametr  | Typ                | Opis  |
+| Parametr  | Type                | Opis  |
 | ------ | ------------------- | ------------ |
 | *childSensorId* | `guid` | Identyfikator czujnika |
 
@@ -164,7 +164,7 @@ Podany identyfikator urządzenia, ta funkcja pobiera jego przestrzeni nadrzędne
 
 **Rodzaj**: funkcja globalna
 
-| Parametr  | Typ                | Opis  |
+| Parametr  | Type                | Opis  |
 | ------ | ------------------- | ------------ |
 | *childDeviceId* | `guid` | Identyfikator urządzenia |
 
@@ -174,7 +174,7 @@ Podany identyfikator czujnik, ta funkcja pobiera jego urządzenia nadrzędnego.
 
 **Rodzaj**: funkcja globalna
 
-| Parametr  | Typ                | Opis  |
+| Parametr  | Type                | Opis  |
 | ------ | ------------------- | ------------ |
 | *childSensorId* | `guid` | Identyfikator czujnika |
 
@@ -184,7 +184,7 @@ Podany identyfikator miejsca, ta funkcja pobiera właściwości i jego wartość
 
 **Rodzaj**: funkcja globalna
 
-| Parametr  | Typ                | Opis  |
+| Parametr  | Type                | Opis  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | Identyfikator miejsca |
 | *propertyName* | `string` | Nazwa właściwości miejsca |
@@ -195,7 +195,7 @@ Podany identyfikator czujnik, ta funkcja pobiera właściwości i jego wartość
 
 **Rodzaj**: funkcja globalna
 
-| Parametr  | Typ                | Opis  |
+| Parametr  | Type                | Opis  |
 | ------ | ------------------- | ------------ |
 | *sensorId* | `guid` | Identyfikator czujnika |
 | *propertyName* | `string` | Nazwa właściwości czujnika |
@@ -206,9 +206,9 @@ Podany identyfikator urządzenia, ta funkcja pobiera właściwości i jego warto
 
 **Rodzaj**: funkcja globalna
 
-| Parametr  | Typ                | Opis  |
+| Parametr  | Type                | Opis  |
 | ------ | ------------------- | ------------ |
-| *Identyfikator urządzenia* | `guid` | Identyfikator urządzenia |
+| *deviceId* | `guid` | Identyfikator urządzenia |
 | *propertyName* | `string` | Nazwa właściwości urządzenia |
 
 ### <a name="setsensorvaluesensorid-datatype-value"></a>setSensorValue (sensorId, typ danych, wartość)
@@ -217,10 +217,10 @@ Ta funkcja umożliwia ustawienie wartości w obiekcie czujników przy użyciu da
 
 **Rodzaj**: funkcja globalna
 
-| Parametr  | Typ                | Opis  |
+| Parametr  | Type                | Opis  |
 | ------ | ------------------- | ------------ |
 | *sensorId* | `guid` | Identyfikator czujnika |
-| *Typ danych*  | `string` | Typ danych czujników |
+| *dataType*  | `string` | Typ danych czujników |
 | *value*  | `string` | Wartość |
 
 ### <a name="setspacevaluespaceid-datatype-value"></a>setSpaceValue (spaceId, typ danych, wartość)
@@ -229,10 +229,10 @@ Ta funkcja umożliwia ustawienie wartości w obiekcie miejsca przy użyciu daneg
 
 **Rodzaj**: funkcja globalna
 
-| Parametr  | Typ                | Opis  |
+| Parametr  | Type                | Opis  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | Identyfikator miejsca |
-| *Typ danych* | `string` | Typ danych |
+| *dataType* | `string` | Typ danych |
 | *value* | `string` | Wartość |
 
 ### <a name="logmessage"></a>log(Message)
@@ -241,7 +241,7 @@ Ta funkcja rejestruje następujący komunikat w funkcji zdefiniowanej przez uży
 
 **Rodzaj**: funkcja globalna
 
-| Parametr  | Typ                | Opis  |
+| Parametr  | Type                | Opis  |
 | ------ | ------------------- | ------------ |
 | *Komunikat* | `string` | komunikat do zarejestrowania |
 
@@ -251,11 +251,11 @@ Ta funkcja wysyła niestandardowe powiadomienie do wysyłki.
 
 **Rodzaj**: funkcja globalna
 
-| Parametr  | Typ                | Opis  |
+| Parametr  | Type                | Opis  |
 | ------ | ------------------- | ------------ |
 | *topologyObjectId*  | `guid` | Wykres identyfikatora obiektu. Przykłady to miejsce, czujników i identyfikator urządzenia.|
 | *topologyObjectType*  | `string` | Przykładami są czujników i urządzeń.|
-| *ładunek*  | `string` | Ładunek JSON do wysłania powiadomień wysyłanych. |
+| *payload*  | `string` | Ładunek JSON do wysłania powiadomień wysyłanych. |
 
 ## <a name="return-types"></a>Typy zwracane
 
@@ -292,7 +292,7 @@ Ta funkcja zwraca element podrzędny urządzeń bieżącego miejsca.
 
 Ta funkcja zwraca właściwości rozszerzonej i ich wartości w bieżącej przestrzeni.
 
-| Parametr  | Typ                | Opis  |
+| Parametr  | Type                | Opis  |
 | ------ | ------------------- | ------------ |
 | *propertyName* | `string` | Nazwa właściwości rozszerzonej |
 
@@ -300,7 +300,7 @@ Ta funkcja zwraca właściwości rozszerzonej i ich wartości w bieżącej przes
 
 Ta funkcja zwraca wartość bieżącego miejsca.
 
-| Parametr  | Typ                | Opis  |
+| Parametr  | Type                | Opis  |
 | ------ | ------------------- | ------------ |
 | *valueName* | `string` | Nazwa wartości |
 
@@ -308,7 +308,7 @@ Ta funkcja zwraca wartość bieżącego miejsca.
 
 Ta funkcja zwraca wartościami historycznymi bieżącego miejsca.
 
-| Parametr  | Typ                | Opis  |
+| Parametr  | Type                | Opis  |
 | ------ | ------------------- | ------------ |
 | *valueName* | `string` | Nazwa wartości |
 
@@ -316,9 +316,9 @@ Ta funkcja zwraca wartościami historycznymi bieżącego miejsca.
 
 Ta funkcja wysyła powiadomienie przy użyciu określonego ładunku.
 
-| Parametr  | Typ                | Opis  |
+| Parametr  | Type                | Opis  |
 | ------ | ------------------- | ------------ |
-| *ładunek* | `string` | Ładunek JSON, które mają zostać objęte powiadomienia |
+| *payload* | `string` | Ładunek JSON, które mają zostać objęte powiadomienia |
 
 ### <a name="device"></a>Urządzenie
 
@@ -352,7 +352,7 @@ Ta funkcja zwraca element podrzędny czujników bieżące urządzenie.
 
 Ta funkcja zwraca właściwości rozszerzonej i jego wartość, aby uzyskać bieżące urządzenie.
 
-| Parametr  | Typ                | Opis  |
+| Parametr  | Type                | Opis  |
 | ------ | ------------------- | ------------ |
 | *propertyName* | `string` | Nazwa właściwości rozszerzonej |
 
@@ -360,9 +360,9 @@ Ta funkcja zwraca właściwości rozszerzonej i jego wartość, aby uzyskać bie
 
 Ta funkcja wysyła powiadomienie przy użyciu określonego ładunku.
 
-| Parametr  | Typ                | Opis  |
+| Parametr  | Type                | Opis  |
 | ------ | ------------------- | ------------ |
-| *ładunek* | `string` | Ładunek JSON, które mają zostać objęte powiadomienia |
+| *payload* | `string` | Ładunek JSON, które mają zostać objęte powiadomienia |
 
 ### <a name="sensor"></a>Czujnik
 
@@ -400,7 +400,7 @@ Ta funkcja zwraca urządzenia nadrzędnego bieżącego czujnika.
 
 Ta funkcja zwraca właściwości rozszerzonej i jego wartość dla bieżącego czujnika.
 
-| Parametr  | Typ                | Opis  |
+| Parametr  | Type                | Opis  |
 | ------ | ------------------- | ------------ |
 | *propertyName* | `string` | Nazwa właściwości rozszerzonej |
 
@@ -416,9 +416,9 @@ Ta funkcja zwraca wartościami historycznymi bieżącego czujnika.
 
 Ta funkcja wysyła powiadomienie przy użyciu określonego ładunku.
 
-| Parametr  | Typ                | Opis  |
+| Parametr  | Type                | Opis  |
 | ------ | ------------------- | ------------ |
-| *ładunek* | `string` | Ładunek JSON, które mają zostać objęte powiadomienia |
+| *payload* | `string` | Ładunek JSON, które mają zostać objęte powiadomienia |
 
 ### <a name="value"></a>Wartość
 

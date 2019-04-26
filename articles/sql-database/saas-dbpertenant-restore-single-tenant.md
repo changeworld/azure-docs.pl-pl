@@ -13,11 +13,11 @@ ms.reviewer: billgib
 manager: craigg
 ms.date: 12/04/2018
 ms.openlocfilehash: 4059b0f979e7e6856905f1759129167d62d7b5f5
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274432"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60326345"
 ---
 # <a name="restore-a-single-tenant-with-a-database-per-tenant-saas-application"></a>Przywracanie pojedynczej dzierżawy w przypadku aplikacji SaaS database dla dzierżawcy
 
@@ -134,7 +134,7 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 
 Spróbuj [schemat bazy danych dzierżawy Zarządzaj](saas-tenancy-schema-management.md) samouczka.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Dodatkowe samouczki, które są kompilowane w aplikacji SaaS o nazwie Wingtip](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [Omówienie ciągłości działania usługi Azure SQL Database](sql-database-business-continuity.md)

@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: lyrana
 ms.openlocfilehash: 4ea4479d77e06940bed50859341952ffbcbbda46
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711059"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60533832"
 ---
 # <a name="connect-and-authenticate-to-apis"></a>Się i została uwierzytelniona do interfejsów API
 
@@ -25,11 +25,11 @@ Aby zintegrować aplikację lub usługę z usługą Azure AD, deweloper musi naj
 
 [Pięciu scenariuszy aplikacji głównej](https://docs.microsoft.com/azure/active-directory/develop/v2-app-types) są obsługiwane przez usługę Azure AD:
 
-* Aplikacja jednostronicowa (SPA): użytkownik musi zalogować się do aplikacji jednostronicowej, która jest zabezpieczony przez usługę Azure AD.
-* Przeglądarki sieci Web do aplikacji sieci web: użytkownik musi zalogować się do aplikacji sieci web, która jest zabezpieczony przez usługę Azure AD.
-* Aplikacja natywna do internetowego interfejsu API: natywnych aplikacji, która działa na telefonie, tablecie lub komputerze wymaga uwierzytelnienia użytkownika można pobrać zasobów z interfejsu API sieci web, która jest zabezpieczony przez usługę Azure AD.
-* Aplikacja do internetowego interfejsu API sieci Web: aplikacja sieci web musi pobrać zasoby z internetowego interfejsu API zabezpieczony przez usługę Azure AD.
-* Demon lub serwera aplikacji do internetowego interfejsu API: aplikacji demona lub aplikacji serwera przy użyciu interfejsu użytkownika sieci web musi pobrać zasoby z internetowego interfejsu API zabezpieczony przez usługę Azure AD.
+* Aplikacja jednostronicowa (SPA): Użytkownik musi zalogować się do aplikacji jednostronicowej, która jest zabezpieczony przez usługę Azure AD.
+* Przeglądarka sieci Web do aplikacji sieci web: Użytkownik musi zalogować się do aplikacji sieci web, która jest zabezpieczony przez usługę Azure AD.
+* Aplikacji natywnej do internetowego interfejsu API: Natywnych aplikacji, która działa na telefonie, tablecie lub komputerze wymaga uwierzytelnienia użytkownika można pobrać zasobów z interfejsu API sieci web, która jest zabezpieczony przez usługę Azure AD.
+* Aplikacja sieci Web do internetowego interfejsu API: Aplikacja sieci web musi pobrać zasoby z internetowego interfejsu API zabezpieczony przez usługę Azure AD.
+* Demon lub serwera aplikacji do internetowego interfejsu API: Aplikacji demona lub serwera z sieci web interfejsu użytkownika wymaga można pobrać zasobów z internetowego interfejsu API zabezpieczony przez usługę Azure AD.
 
 Biblioteki uwierzytelniania usługi Windows Azure oferuje wiele sposobów uzyskania tokenów usługi Active Directory. Aby uzyskać szczegółowe informacje dotyczące biblioteki oraz przykłady kodu, zobacz [w tym artykule](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki).
 

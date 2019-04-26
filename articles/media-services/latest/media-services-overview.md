@@ -17,11 +17,11 @@ ms.date: 04/18/2019
 ms.author: juliako
 ms.custom: mvc
 ms.openlocfilehash: 6876ffd76c5a7ba5745e8014bca2abdc5e5264a2
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59999828"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60321948"
 ---
 # <a name="azure-media-services-v3-overview"></a>Omówienie usługi Azure Media Services v3
 

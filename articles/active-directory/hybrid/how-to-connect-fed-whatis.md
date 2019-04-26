@@ -12,16 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/09/2018
+origin.date: 10/09/2018
+ms.date: 03/15/2019
 ms.subservice: hybrid
-ms.author: billmath
+ms.author: v-junlch
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 67ae5d2661371c256f753d05eb496d2cd53a0017
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56869551"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60350494"
 ---
 # <a name="azure-ad-connect-and-federation"></a>Program Azure AD Connect a federacja
 Platformy Azure umożliwia usługi Active Directory (Azure AD) Connect skonfigurowania federacji z usługą Active Directory Federation Services (AD FS) lokalną i usługą Azure AD. Za pomocą logowania federacyjnego można umożliwić użytkownikom Zaloguj się do usług platformy Azure na podstawie usługi AD za pomocą swoich haseł lokalnych — oraz znajduje się w sieci firmowej, bez konieczności ponownego wprowadzania haseł. Przy użyciu opcji federacji z usługami AD FS, można wdrożyć nowej instalacji usług AD FS, lub można określić istniejącą instalację w farmie programu Windows Server 2012 R2.
@@ -55,3 +56,5 @@ Ten temat jest miejsce, w którym informacji na temat funkcji związanych z fede
 * [Federowanie dwie usługi Azure AD z jednym usług AD FS](how-to-connect-fed-single-adfs-multitenant-federation.md)
 * [Wdrożenie usług AD FS na platformie Azure](how-to-connect-fed-azure-adfs.md)
 * [Wysoka dostępność geograficznie rozproszonych AD FS wdrożenie na platformie Azure przy użyciu usługi Azure Traffic Manager](../active-directory-adfs-in-azure-with-azure-traffic-manager.md)
+
+<!-- Update_Description: update metedata properties -->

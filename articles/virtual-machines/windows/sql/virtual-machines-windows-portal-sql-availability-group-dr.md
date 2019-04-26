@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: 542505c5a6c3af91669ebe28287ae6e1477e214d
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 8f5b470cb3f75f434033a245f4aaa185aeb665c0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487180"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60325992"
 ---
 # <a name="configure-an-always-on-availability-group-on-azure-virtual-machines-in-different-regions"></a>Konfigurowanie zawsze włączonej grupy dostępności na maszynach wirtualnych platformy Azure w różnych regionach
 
@@ -31,7 +31,7 @@ Ten artykuł ma zastosowanie do maszyn wirtualnych platformy Azure w trybie usł
 
 Na poniższej ilustracji przedstawiono typowe wdrożenie grupy dostępności na maszynach wirtualnych platformy Azure:
 
-   ![Grupy dostępności](./media/virtual-machines-windows-portal-sql-availability-group-dr/00-availability-group-basic.png)
+   ![Grupa dostępności](./media/virtual-machines-windows-portal-sql-availability-group-dr/00-availability-group-basic.png)
 
 W tym wdrożeniu wszystkie maszyny wirtualne znajdują się w jednym regionie platformy Azure. Repliki grupy dostępności może mieć zatwierdzania synchronicznego automatyczny tryb failover na SQL-1 i 2 dla programu SQL. Aby skompilować tej architektury, zobacz [szablonu grupy dostępności lub samouczku](virtual-machines-windows-portal-sql-availability-group-overview.md).
 
@@ -53,7 +53,7 @@ W przypadku repliki grupy dostępności na maszynach wirtualnych platformy Azure
 
 Na poniższym diagramie przedstawiono, jak komunikować się sieci między centrami danych.
 
-   ![Grupy dostępności](./media/virtual-machines-windows-portal-sql-availability-group-dr/01-vpngateway-example.png)
+   ![Grupa dostępności](./media/virtual-machines-windows-portal-sql-availability-group-dr/01-vpngateway-example.png)
 
 >[!IMPORTANT]
 >Ta architektura spowoduje naliczenie opłaty za wychodzący danych dla danych replikowanych między regionami platformy Azure. Zobacz [cen przepustowości](https://azure.microsoft.com/pricing/details/bandwidth/).  
@@ -119,7 +119,7 @@ Aby utworzyć replikę w centrum danych zdalnego, wykonaj następujące czynnoś
 
    Poniższy zrzut ekranu przedstawia prawidłowo skonfigurowane zasobu adresu IP klastra:
 
-   ![Grupy dostępności](./media/virtual-machines-windows-portal-sql-availability-group-dr/50-configure-dependency-multiple-ip.png)
+   ![Grupa dostępności](./media/virtual-machines-windows-portal-sql-availability-group-dr/50-configure-dependency-multiple-ip.png)
 
    >[!IMPORTANT]
    >Grupa zasobów klastra zawiera oba adresy IP. Oba adresy IP są zależności dla odbiornika punktu dostępu klienta. Użyj **lub** operatora w konfiguracji klastra zależności.

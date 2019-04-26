@@ -11,13 +11,13 @@ ms.reviewer: klam, deli, LADocs
 ms.suite: integration
 ms.date: 10/05/2018
 ms.openlocfilehash: 0fec590523fa130af2e5670a92914c056df289d1
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50229621"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60512247"
 ---
-# <a name="quickstart-create-and-manage-automated-logic-app-workflows---visual-studio-code"></a>Szybki Start: Tworzenie i zarządzanie nimi przepływów pracy z aplikacji zautomatyzowanej logiki — Visual Studio Code
+# <a name="quickstart-create-and-manage-automated-logic-app-workflows---visual-studio-code"></a>Szybki start: Tworzenie i zarządzanie nimi przepływów pracy z aplikacji zautomatyzowanej logiki — Visual Studio Code
 
 Za pomocą [usługi Azure Logic Apps](../logic-apps/logic-apps-overview.md) i programu Visual Studio Code, możesz tworzyć i zarządzać aplikacje logiki, które ułatwiają Automatyzowanie zadań, przepływy pracy i procesy integrowania aplikacji, danych, systemów i usług w organizacji i przedsiębiorstw. Ten przewodnik Szybki Start przedstawia sposób tworzenia i edycji definicji przepływu pracy aplikacji logiki, pracując ze schematem definicji przepływu pracy w JavaScript Object Notation (JSON) za pośrednictwem środowiska pracy opartego na kodzie. Można również pracować na istniejących aplikacji logiki już wdrożone <a href="https://docs.microsoft.com/azure/guides/developer/azure-developer-guide" target="_blank">Azure</a> w chmurze. 
 

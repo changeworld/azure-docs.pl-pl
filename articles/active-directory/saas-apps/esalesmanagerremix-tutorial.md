@@ -17,11 +17,11 @@ ms.date: 06/12/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 895fb0d83e383618818325263ac80c5919a0ee7b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164153"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60429243"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Integracja usługi Azure Active Directory z Remix kierownikiem ds. sprzedaży E
 
@@ -31,7 +31,7 @@ Integrowanie usługi Azure AD z E Sales Manager Remix, możesz uzyskać następu
 
 - Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do E Sales Manager Remix.
 - Aby umożliwić użytkownikom uzyskiwanie zalogowany automatycznie Remix Menedżer sprzedaży E, (logowanie jednokrotne, lub logowania jednokrotnego) przy użyciu konta usługi Azure AD.
-- Możesz zarządzać konta w jednej centralnej lokalizacji, witryny Azure portal.
+- Możesz zarządzać kontami z jednej centralnej lokalizacji — witryny Azure Portal.
 
 Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 
@@ -264,7 +264,7 @@ W tej sekcji można włączyć użytkownika Britta Simon do używania usługi Az
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
 Po wybraniu kafelka E Sales Manager Remix w panelu dostępu, możesz powinny być zalogowany automatycznie E Sales Manager Remix aplikacji.
 

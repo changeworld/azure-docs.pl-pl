@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: 9ba52951565c910138a5a49ecc97ad5748411e6d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 4303b79a7ee69d029504bf6ca2359f6e6070e5b8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57842315"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60370194"
 ---
 # <a name="understand-your-microsoft-azure-bill"></a>Opis zawartości rachunku Microsoft Azure
 Aby poznać rachunku dotyczącym platformy Azure, porównaj fakturze za pomocą szczegółowych codzienne pliku użycia i raportów rozwiązania cost management w witrynie Azure portal.
@@ -48,7 +48,7 @@ Twoje opłaty za użycie są wyświetlane na poziomie miernika. Poniższe termin
 |Cykl rozliczeń | Okres rozliczeniowy |
  |Name (Nazwa) |Kategoria miernika |
  |Type |Podkategoria miernika |
- |Zasób |Nazwa miernika |
+ |Resource |Nazwa miernika |
  |Region |Region miernika |
  |Zużyte |Zużyta ilość |
  |Dołączono |Uwzględniona ilość |

@@ -4,18 +4,18 @@ description: Sprawdź poprawność EDI i generowanie potwierdzeń z X12 dekodera
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
-author: divyaswarnkar
-ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+author: ecfan
+ms.author: estfan
+ms.reviewer: jonfan, divswa, LADocs
 ms.topic: article
 ms.assetid: 4fd48d2d-2008-4080-b6a1-8ae183b48131
 ms.date: 01/27/2017
-ms.openlocfilehash: e3d2a458c2cece5e3f01fdb9e3d403b3fb78dd2b
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
-ms.translationtype: MT
+ms.openlocfilehash: a952685353214e116219fc63c4acbeac188765ff
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43121649"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60427530"
 ---
 # <a name="decode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>Dekodowanie X12 wiadomości w usłudze Azure Logic Apps z pakietem integracyjnym dla przedsiębiorstw
 
@@ -89,9 +89,9 @@ X12 łącznika dekodowania wykonuje te zadania:
   * Sprawdza, czy numer kontrolny grupy względem innych numery kontrolne grupy w wymianie.
   * Sprawdza, czy numer kontrolny zestawu transakcji przed innymi numerów kontrolnych zestawu transakcji w tej grupie.
 * Dzieli wymianę na zestawy transakcji lub zachowuje całego wymiany:
-  * Rozdziel wymianę na zestawy transakcji — Zawieś zestawy transakcji w przypadku błędu: wymiany dzieli dane do transakcji ustawia i analizuje każdy zestaw transakcji. 
+  * Podziel wymiany na zestawy transakcji — Zawieś zestawy transakcji w przypadku błędu: Wymiana dzieli dane do transakcji ustawia i analizuje każdy zestaw transakcji. 
   X12 akcji dekodowania danych wyjściowych tylko tych transakcji zestawów, które się nie powieść sprawdzania poprawności, aby `badMessages`i dane wyjściowe, ustawia dla pozostałego transakcji `goodMessages`.
-  * Rozdziel wymianę na zestawy transakcji — Zawieś wymianę w przypadku błędu: wymiany dzieli dane do transakcji ustawia i analizuje każdy zestaw transakcji. 
+  * Rozdziel wymianę na zestawy transakcji — Zawieś wymianę w przypadku błędu: Wymiana dzieli dane do transakcji ustawia i analizuje każdy zestaw transakcji. 
   Jeśli jeden lub więcej transakcji ustawia się w wymianie wystąpi niepowodzenie weryfikacji, X12 akcji dekodowania danych wyjściowych, wszystkie transakcje ustawia się w tej wymiany do `badMessages`.
   * Zachowaj wymianę — Zawieś zestawy transakcji w przypadku błędu: Zachowaj wymiany i przetwarzanie całego wymiany wsadowej. 
   X12 akcji dekodowania danych wyjściowych tylko tych transakcji zestawów, które się nie powieść sprawdzania poprawności, aby `badMessages`i dane wyjściowe, ustawia dla pozostałego transakcji `goodMessages`.

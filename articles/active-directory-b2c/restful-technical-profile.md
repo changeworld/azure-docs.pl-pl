@@ -3,7 +3,7 @@ title: Zdefiniuj RESTful profilu technicznego w zasadach niestandardowych w usł
 description: W przypadku zasad niestandardowych w usłudze Azure Active Directory B2C, należy zdefiniować RESTful profilu technicznego.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
@@ -11,11 +11,11 @@ ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 7ff14af756a55ccc6bbf40dd39d49c5168f4af1f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58076330"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60418306"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Zdefiniuj RESTful profilu technicznego w zasadach niestandardowych usługi Azure Active Directory B2C
 

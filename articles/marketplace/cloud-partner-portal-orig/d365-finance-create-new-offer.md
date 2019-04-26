@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: pbutlerm
 ms.openlocfilehash: bc6ca73d7cfbef73350d24be60c078994ea761c3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57853209"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60397876"
 ---
 <a name="how-to-create-your-new-microsoft-dynamics-365-business-central-offer"></a>Jak utworzyć nowe oferty Microsoft Dynamics 365 Business Central
 ====================================================================
@@ -30,7 +30,7 @@ Aby zdefiniować atrybuty, zaloguj się do firmy Microsoft [portalu Cloud Partne
 
 1. W portalu Cloud Partner, na pasku nawigacyjnym po lewej stronie kliknij **+ nowa oferta** i wybierz **Dynamics 365 Business Central** z listy aplikacji.
 
-   ![Utwórz nową ofertę](./media/d365-financials/image003.png)
+   ![Tworzenie nowej oferty](./media/d365-financials/image003.png)
 
 2. Nowa oferta "Editor" widok jest teraz otwarte, i jest gotowe do rozpoczęcia tworzenia.
 

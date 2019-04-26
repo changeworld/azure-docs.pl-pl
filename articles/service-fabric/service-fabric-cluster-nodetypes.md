@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 03/23/2018
 ms.author: chackdan
 ms.openlocfilehash: 7f9397ee21f74fe6a776881940e5721264216b0f
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58660618"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60386129"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Zestawy skalowania maszyn wirtualnych i typy węzłów usługi Service Fabric platformy Azure
 [Zestawy skalowania maszyn wirtualnych](/azure/virtual-machine-scale-sets) to zasób obliczeniowy platformy Azure. Zestawy skalowania można użyć do wdrożenia i zarządzania kolekcją maszyn wirtualnych jako zestawu. Każdy typ węzła, który definiuje w klastrze usługi Azure Service Fabric konfiguruje oddzielne skali.  Ustaw środowisko uruchomieniowe usługi Service Fabric, zainstalowana na każdej maszynie wirtualnej w skali. Można niezależnie skalować każdy typ węzła w górę lub w dół, zmiana jednostki SKU systemu operacyjnego, uruchomione w każdym węźle klastra, mają różne zestawy otwartych portów i użyj różne metryki pojemności.

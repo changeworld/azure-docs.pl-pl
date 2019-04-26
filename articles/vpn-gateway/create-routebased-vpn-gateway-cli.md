@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 10/04/2018
 ms.author: cherylmc
 ms.openlocfilehash: f5f62a6bfa1baa205e0496dd901f1f1eef660079
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55698194"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60391246"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-cli"></a>Tworzenie bramy sieci VPN opartej na trasach przy użyciu interfejsu wiersza polecenia
 
@@ -145,7 +145,7 @@ Odpowiedź wygląda podobnie do poniższego:
 }
 ```
 
-### <a name="view-the-public-ip-address"></a>Wyświetl publiczny adres IP
+### <a name="view-the-public-ip-address"></a>Wyświetlanie publicznego adresu IP
 
 Aby wyświetlić publiczny adres IP przypisany do bramy, skorzystaj z następującego przykładu:
 

@@ -2,19 +2,20 @@
 title: W tym przewodniku Szybki start pokazano, jak używać klucza symetrycznego do aprowizowania urządzenia symulowanego dla usługi Azure IoT Hub przy użyciu języka C | Microsoft Docs
 description: W tym przewodniku Szybki start użyjesz zestawu SDK języka C urządzenia, aby utworzyć urządzenie symulowane, które używa klucza symetrycznego z usługą Azure IoT Hub Device Provisioning Service
 author: wesmc7777
-ms.author: wesmc
-ms.date: 04/10/2019
+ms.author: v-yiso
+origin.date: 04/10/2019
+ms.date: 05/06/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: 93fc426d9de027100e70502bcf6ea3aad2c44e10
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59500213"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60363803"
 ---
 # <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>Szybki start: Aprowizowanie urządzenia symulowanego przy użyciu kluczy symetrycznych
 

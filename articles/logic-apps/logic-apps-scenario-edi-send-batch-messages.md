@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, LADocs
 ms.topic: article
 ms.date: 08/19/2018
-ms.openlocfilehash: 7e058b7cebb9c2cdc3fb8b97bf99554b2f26dd8c
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: d6d3a7111f3a5e49e32eba8ca4f09d692538cb87
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43121579"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60428024"
 ---
 # <a name="send-edi-messages-in-batches-to-trading-partners-with-azure-logic-apps"></a>Wysyłanie komunikatów EDI w partiach do obrotu partnerzy korzystający z usługi Azure Logic Apps
 
@@ -59,7 +59,7 @@ Dla tego odbiornika usługi batch, należy określić tryb usługi batch, nazwa,
 
 2. [Połącz swoją aplikację logiki z kontem integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account).
 
-3. W Projektancie aplikacji logiki, Dodaj **partii** wyzwalacz, który uruchamia przepływ pracy aplikacji logiki. W polu wyszukiwania wprowadź "batch" jako filtr. Wybierz następujący wyzwalacz: **partii komunikatów**
+3. W Projektancie aplikacji logiki, Dodaj **partii** wyzwalacz, który uruchamia przepływ pracy aplikacji logiki. W polu wyszukiwania wprowadź "batch" jako filtr. Wybierz ten wyzwalacz: **Komunikaty przetwarzania wsadowego**
 
    ![Dodawanie wyzwalacza partii](./media/logic-apps-scenario-EDI-send-batch-messages/add-batch-receiver-trigger.png)
 
@@ -84,7 +84,7 @@ Dla tego odbiornika usługi batch, należy określić tryb usługi batch, nazwa,
 
    1. W obszarze wyzwalacza usługi batch wybierz **nowy krok**.
 
-   2. W polu wyszukiwania wpisz "X 12 usługi batch" jako filtr, a następnie wybierz tę akcję (dowolna wersja): **kodowanie zbiorcze <*wersji*>-X12** 
+   2. W polu wyszukiwania wpisz "X 12 usługi batch" jako filtr, a następnie wybierz tę akcję (dowolna wersja): **Kodowanie zbiorcze <*wersji*>-X12** 
 
       ![Wybierz X12 kodowanie zbiorcze akcji](./media/logic-apps-scenario-EDI-send-batch-messages/add-batch-encode-action.png)
 
@@ -118,7 +118,7 @@ Zapewnienie usługi batch odbiorcy działa zgodnie z oczekiwaniami, można doda�
 
 1. W obszarze X12 kodowanie akcji, wybierz polecenie **nowy krok**. 
 
-2. W polu wyszukiwania wprowadź "http" jako filtr. Wybierz tę akcję: **HTTP - HTTP**
+2. W polu wyszukiwania wprowadź "http" jako filtr. Wybierz tę akcję: **PROTOKÓŁ HTTP - HTTP**
     
    ![Wybieranie akcji HTTP](./media/logic-apps-scenario-EDI-send-batch-messages/batch-receiver-add-http-action.png)
 
@@ -126,7 +126,7 @@ Zapewnienie usługi batch odbiorcy działa zgodnie z oczekiwaniami, można doda�
 
    | Właściwość | Opis | 
    |----------|-------------|
-   | **— Metoda** | Na tej liście, wybierz **WPIS**. | 
+   | **Metoda** | Na tej liście, wybierz **WPIS**. | 
    | **Identyfikator URI** | Wygenerować identyfikator URI dla pojemnika swoje żądania, a następnie wprowadź tego identyfikatora URI, w tym polu. | 
    | **Treść** | Kliknij wewnątrz tego pola, a po otwarciu listy zawartości dynamicznej wybierz **treści** token, który znajduje się w sekcji, **kodowanie zbiorcze według nazwy umowy**. <p>Jeśli nie widzisz **treści** token obok **kodowanie zbiorcze według nazwy umowy**, wybierz opcję **Zobacz więcej**. | 
    ||| 
@@ -151,7 +151,7 @@ Teraz należy utworzyć co najmniej jedną aplikację logiki, wysyłania wiadomo
 
 1. Tworzenie innej aplikacji logiki o tej nazwie: "SendX12MessagesToBatch" 
 
-2. W polu wyszukiwania wprowadź "podczas żądania http" jako filtr. Wybierz następujący wyzwalacz: **zostanie odebrane żądanie po HTTP** 
+2. W polu wyszukiwania wprowadź "podczas żądania http" jako filtr. Wybierz ten wyzwalacz: **Po odebraniu żądania HTTP** 
    
    ![Dodawanie wyzwalacza żądania](./media/logic-apps-scenario-EDI-send-batch-messages/add-request-trigger-sender.png)
 
@@ -160,7 +160,7 @@ Teraz należy utworzyć co najmniej jedną aplikację logiki, wysyłania wiadomo
    1. W obszarze akcji żądania HTTP, wybierz opcję **nowy krok**.
 
    2. W polu wyszukiwania wprowadź "batch" jako filtr. 
-   Wybierz **akcje** listy, a następnie wybierz tę akcję: **wybierz przepływ pracy usługi Logic Apps z wyzwalaczem partii — Wyślij komunikaty do przetwarzania zbiorczego**
+   Wybierz **akcje** listy, a następnie wybierz tę akcję: **Wybierz przepływ pracy usługi Logic Apps z wyzwalaczem partii — Wyślij komunikaty do przetwarzania zbiorczego**
 
       ![Wybierz pozycję "Wybierz przepływ pracy aplikacji logiki z wyzwalaczem partii"](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-trigger.png)
 

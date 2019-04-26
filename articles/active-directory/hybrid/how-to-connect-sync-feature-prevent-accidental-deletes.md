@@ -4,24 +4,24 @@ description: W tym temacie opisano funkcję zapobiegania przypadkowemu usuwaniu 
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: daveba
+manager: mtillman
 editor: ''
 ms.assetid: 6b852cb4-2850-40a1-8280-8724081601f7
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/12/2017
-ms.subservice: hybrid
-ms.author: billmath
-ms.collection: M365-identity-device-management
+origin.date: 07/12/2017
+ms.date: 11/09/2018
+ms.component: hybrid
+ms.author: v-junlch
 ms.openlocfilehash: b1244dd460196e5882caab0d4b526850da48d084
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188557"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60383393"
 ---
 # <a name="azure-ad-connect-sync-prevent-accidental-deletes"></a>Synchronizacja programu Azure AD Connect: Zapobieganie przypadkowemu usuwaniu
 W tym temacie opisano funkcję zapobiegania przypadkowemu usuwaniu (zapobieganie przypadkowym) w programie Azure AD Connect.
@@ -31,9 +31,9 @@ Podczas instalowania usługi Azure AD Connect, zapobieganie przypadkowemu usuwan
 ## <a name="what-is-prevent-accidental-deletes"></a>Co to jest Zapobieganie przypadkowemu usuwaniu
 Typowe scenariusze, gdy pojawi się wiele usuwa obejmują:
 
-* Zmienia się na [filtrowanie](how-to-connect-sync-configure-filtering.md) w przypadku, gdy cały [jednostki Organizacyjnej](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering) lub [domeny](how-to-connect-sync-configure-filtering.md#domain-based-filtering) nie jest zaznaczona.
-* Wszystkie obiekty w jednostce organizacyjnej zostały usunięte.
-* Nazwa jednostki organizacyjnej została zmieniona, więc wszystkie obiekty w tej jednostce są uznawane za znajdujące się poza zakresem synchronizacji.
+- Zmienia się na [filtrowanie](how-to-connect-sync-configure-filtering.md) w przypadku, gdy cały [jednostki Organizacyjnej](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering) lub [domeny](how-to-connect-sync-configure-filtering.md#domain-based-filtering) nie jest zaznaczona.
+- Wszystkie obiekty w jednostce organizacyjnej zostały usunięte.
+- Nazwa jednostki organizacyjnej została zmieniona, więc wszystkie obiekty w tej jednostce są uznawane za znajdujące się poza zakresem synchronizacji.
 
 Domyślna wartość 500 obiektów można zmienić za pomocą programu PowerShell przy użyciu `Enable-ADSyncExportDeletionThreshold`, który jest częścią modułu AD Sync, zainstalowane za pomocą usługi Azure Active Directory Connect. Należy skonfigurować tę wartość, aby dopasować rozmiar Twojej organizacji. Ponieważ programu sync scheduler jest uruchamiane co 30 minut, wartość jest liczbą usuwa występuje w ciągu 30 minut.
 
@@ -69,5 +69,6 @@ Usuwa wszystkie są potrzebne, następnie należy wykonać następujące czynno�
 ## <a name="next-steps"></a>Kolejne kroki
 **Tematy poglądowe**
 
-* [Synchronizacja w programie Azure AD Connect: Zrozumienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)
-* [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md)
+- [Synchronizacja w programie Azure AD Connect: Zrozumienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)
+- [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md)
+

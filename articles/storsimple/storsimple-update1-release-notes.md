@@ -16,15 +16,15 @@ ms.date: 11/03/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 11138857e33eec0f854ddb61956ea24c858c49a5
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258990"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60531021"
 ---
 # <a name="update-12-release-notes-for-your-storsimple-8000-series-device"></a>Update 1.2 informacje o wersji dla urządzenia StorSimple 8000 series
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Poniższe informacje o wersji opisano nowe funkcje i zidentyfikować krytyczne nierozwiązane problemy dla usługi StorSimple 8000 Series Update 1.2. Zawierają one również listę oprogramowania StorSimple, sterowników i aktualizacje oprogramowania układowego dysku zawartych w tej wersji. 
 
 Aktualizacji Update 1.2 mogą stosowane do każdego urządzenia StorSimple z wersji (GA), aktualizacji 0.1, aktualizacji 0.2 lub oprogramowania Update 0.3. Aktualizacji Update 1.2 nie jest dostępna, jeśli urządzenie działa aktualizacja Update 1 lub Update 1.1. Jeśli na urządzeniu jest uruchomiona wersja (GA), [skontaktuj się z Microsoft Support](storsimple-contact-microsoft-support.md) uzyskanymi zainstalowanie tej aktualizacji.
@@ -67,7 +67,7 @@ Poniższa tabela zawiera podsumowanie problemów, które zostały rozwiązane w 
 | Nie. | Cecha | Problem | Naprawiono w aktualizacji | Stosuje się do urządzenia fizycznego | Dotyczy urządzenia wirtualnego |
 | --- | --- | --- | --- | --- | --- |
 | 1 |Program Windows PowerShell dla usługi StorSimple |Gdy użytkownik zdalnie uzyskiwał dostęp do urządzenia StorSimple przy użyciu programu Windows PowerShell dla usługi StorSimple, a następnie uruchomić Kreatora instalacji tak szybko, jak interfejs Data 0 IP określony w parametrze wejściowym wystąpił awarii. Ten problem został rozwiązany w aktualizacji 1. |Update 1 |Yes |Yes |
-| 2 |Resetowanie do ustawień fabrycznych |W niektórych przypadkach podczas wykonywania do ustawień fabrycznych urządzenia StorSimple została zablokowana i wyświetlany ten komunikat: **resetowania fabryką jest w toku (faza 8)**. Zdarzyło się po naciśnięciu klawiszy CTRL + C, podczas gdy polecenia cmdlet jest w toku. Ten problem został rozwiązany. |Update 1 |Yes |Nie |
+| 2 |Resetowanie do ustawień fabrycznych |W niektórych przypadkach podczas wykonywania do ustawień fabrycznych urządzenia StorSimple została zablokowana i wyświetlany ten komunikat: **Resetowanie fabryką jest w toku (faza 8)**. Zdarzyło się po naciśnięciu klawiszy CTRL + C, podczas gdy polecenia cmdlet jest w toku. Ten problem został rozwiązany. |Update 1 |Yes |Nie |
 | 3 |Resetowanie do ustawień fabrycznych |Po nieudanych podwójną kontrolera Reset do ustawień fabrycznych, zostały może przeprowadzić rejestrację urządzeń. Pozwoliło to odnotować nieobsługiwany system konfiguracji. W programie Update 1 jest wyświetlany komunikat o błędzie i rejestracji jest zablokowany na urządzeniu, że ma nie powiodło się Resetowanie do ustawień fabrycznych. |Update 1 |Yes |Nie |
 | 4 |Resetowanie do ustawień fabrycznych |W niektórych przypadkach fałszywie dodatnie niezgodność alerty zostały zgłoszone. Niezgodność niepoprawne alerty nie są już zostanie wygenerowany na urządzeniach z aktualizacją Update 1. |Update 1 |Yes |Nie |
 | 5 |Resetowanie do ustawień fabrycznych |W przypadku resetowania do ustawień fabrycznych zostało przerwane przed ukończeniem, urządzenie wprowadzone w tryb odzyskiwania i nie zezwala na dostęp do programu Windows PowerShell dla usługi StorSimple. Ten problem został rozwiązany. |Update 1 |Yes |Nie |
@@ -92,7 +92,7 @@ Poniższa tabela zawiera podsumowanie znanych problemów występujących w tej w
 | 6 |Serwer proxy sieci Web |Jeśli w konfiguracji serwera proxy sieci web HTTPS jako określony protokół, komunikacja usługi urządzeń będzie to miało wpływu i urządzenie przejdą w tryb offline. Obsługa pakietów również zostanie wygenerowany w procesie zużywają znaczne zasoby na urządzeniu z systemem. |Upewnij się, że adres URL serwera proxy sieci web ma HTTP jako określony protokół. Aby uzyskać więcej informacji, zobacz temat [Konfigurowanie serwera proxy sieci Web dla urządzenia](storsimple-configure-web-proxy.md). |Yes |Nie |
 | 7 |Serwer proxy sieci Web |Jeśli skonfigurować i włączyć serwer proxy sieci web na zarejestrowanym urządzeniu, należy uruchomić ponownie aktywny kontroler, na urządzeniu. | |Yes |Nie |
 | 8 |Czas oczekiwania w chmurze o wysokiej i wysokiego obciążenia We/Wy |Gdy urządzenia StorSimple napotyka chmura bardzo duże opóźnienia (kolejność w sekundach) i wysokiego obciążenia We/Wy, do woluminów urządzenia przechodzi w stan obniżonej wydajności i operacji We/Wy może zakończyć się niepowodzeniem z powodu błędu "urządzenie nie jest gotowy". |Należy ręcznie ponownie uruchomić kontrolery urządzeń lub urządzeń w tryb failover do odzyskania z tej sytuacji. |Yes |Nie |
-| 9 |Azure PowerShell |Kiedy używasz polecenia cmdlet usługi StorSimple **Get AzureStorSimpleStorageAccountCredential &#124; Select-Object - najpierw 1 - Wait** do wybrania pierwszego obiektu tak, aby utworzyć nową **elementu VolumeContainer** obiekt, polecenie cmdlet zwraca wszystkie obiekty. |Opakowanie polecenia cmdlet w nawiasach w następujący sposób: **(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object - pierwszy 1 - Wait** |Yes |Yes |
+| 9 |Azure PowerShell |Kiedy używasz polecenia cmdlet usługi StorSimple **Get AzureStorSimpleStorageAccountCredential &#124; Select-Object - najpierw 1 - Wait** do wybrania pierwszego obiektu tak, aby utworzyć nową **elementu VolumeContainer** obiekt, polecenie cmdlet zwraca wszystkie obiekty. |Opakowanie polecenia cmdlet w nawiasach w następujący sposób: **(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object - najpierw 1 - Wait** |Yes |Yes |
 | 10 |Migracja |W przypadku wielu kontenerów woluminów są przekazywane do migracji, Inżyniera najnowszej kopii zapasowej jest prawidłowe tylko dla pierwszego kontenera woluminów. Ponadto migracji równoległej rozpocznie się po pierwszych 4 kopie zapasowe w pierwszym kontenera woluminów są migrowane. |Zaleca się migrację jeden kontener woluminów naraz. |Yes |Nie |
 | 11 |Migracja |Po przywróceniu woluminy nie są dodawane do zasad kopii zapasowych lub grupy dysków wirtualnych. |Należy dodać te woluminy do zasad kopii zapasowych w celu tworzenia kopii zapasowych. |Yes |Yes |
 | 12 |Migracja |Po zakończeniu migracji urządzeń serii 5000 i 7000 nie musi uzyskać dostęp do kontenerów zmigrowanych danych. |Zaleca się usuwanie kontenerów migrowanych danych, po migracji, ukończone i zatwierdzone. |Yes |Nie |

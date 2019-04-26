@@ -12,11 +12,11 @@ ms.date: 03/27/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: ba6c0c8627ce1e46f36f7a85a9e92d85236b7ee6
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60009297"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60408958"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-and-java"></a>Szybki start: Analizowanie obrazu zdalnego przy użyciu interfejsu API REST przetwarzania obrazów i języka Java
 

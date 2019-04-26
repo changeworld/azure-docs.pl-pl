@@ -18,11 +18,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 311ba489073805fdb034b435ab9e5e1ddc2c4e3c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535046"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60382289"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Program Azure AD Connect: Zagadnienia dotyczące projektowania
 Ten dokument ma na celu opisania obszary, które należy uważać za pośrednictwem podczas projektu implementacji programu Azure AD Connect. Ten dokument jest uzyskać szczegółowe informacje dotyczące określonych obszarów i te pojęcia krótko opisano w innych dokumentów.

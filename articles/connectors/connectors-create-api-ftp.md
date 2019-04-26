@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 10/15/2018
 tags: connectors
 ms.openlocfilehash: e5aeaa707c7a839483484c524e982204d6fe055c
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576330"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60408606"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>Tworzenie, monitorowanie i zarządzanie plikami FTP za pomocą usługi Azure Logic Apps
 
@@ -28,7 +28,7 @@ Korzystając z usługi Azure Logic Apps i łącznik FTP można utworzyć automat
 
 Możesz użyć wyzwalaczy, które uzyskać odpowiedzi z serwera FTP i udostępnić dane wyjściowe innych działań. Uruchom akcje w aplikacjach logiki służy do zarządzania plikami na serwerze FTP. Mogą też istnieć inne akcje użyć danych wyjściowych z akcji FTP. Na przykład jeśli regularnie plików z serwera FTP, możesz wysłać pocztą e-mail informacje dotyczące tych plików i ich zawartości za pomocą łącznika usługi Office 365 Outlook lub łącznik usługi Outlook.com. Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
-## <a name="limits"></a>Limity
+## <a name="limits"></a>Limits
 
 * Akcje FTP obsługuje tylko pliki, które są *50 MB lub mniej* chyba że używasz [segmentu komunikat](../logic-apps/logic-apps-handle-large-messages.md), umożliwiają który przekroczenia tego limitu. Obecnie usługa wyzwalaczy FTP nie obsługują segmentu.
 

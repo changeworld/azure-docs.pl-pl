@@ -13,11 +13,11 @@ ms.date: 04/20/2017
 ms.author: glenga
 ms.custom: mvc
 ms.openlocfilehash: 48f6124373d80d22766d319ec58ed4ad7adaf6f5
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963372"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60325667"
 ---
 # <a name="create-a-function-app-that-connects-to-an-azure-storage-account"></a>Tworzenie aplikacji funkcji łączącej się z kontem usługi Azure Storage
 
@@ -54,7 +54,7 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 | [az storage account create](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-create) | Tworzenie konta magazynu |
 | [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#az-functionapp-create) | Tworzy aplikację funkcji w bezserwerowym [planie Zużycie](../functions-scale.md#consumption-plan). |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure).
 

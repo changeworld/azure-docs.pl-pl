@@ -12,11 +12,11 @@ ms.date: 03/21/2016
 ms.author: lesun
 ROBOTS: NOINDEX
 ms.openlocfilehash: 7611f5f16111b5d8b0d2d293750f658125e50837
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878217"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60535450"
 ---
 # <a name="constituency-parsing"></a>Analiza grupowa
 
@@ -65,7 +65,7 @@ Istnieje kilka takich fraz: *Czy mogę*, *nowy samochód hybrydowego*, *Bluetoot
 
 ## <a name="phrase-types"></a>Typy frazy
 
-| Etykieta | Opis | Przykład |
+| Label | Opis | Przykład |
 |-------|-------------|---------|
 |ADJP   | Fraza przymiotników | "Dlatego prosta" |
 |ADVP   | Parametr frazy | "clear za pośrednictwem" |

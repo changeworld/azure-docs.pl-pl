@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 04/13/2019
 ms.author: banders
 ms.openlocfilehash: 3d56ee99f8056139a234477b6eed93d9fcbe2bbb
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60013810"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60371193"
 ---
 # <a name="prepay-for-sql-data-warehouse-charges-with-reserved-capacity"></a>Skorzystaj z możliwości przedpłaty na opłaty za magazyn danych SQL za pomocą rezerwowanie pojemności
 
@@ -45,7 +45,7 @@ Na przykład przyjęto założenie, że Twoje całkowite użycie usługi SQL Dat
 
 1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/).
 2. Wybierz **wszystkich usług** > **rezerwacje**.
-3. Wybierz subskrypcję. Użyj listy subskrypcji, aby wybrać subskrypcję, która jest używana do zapłacenia za rezerwowanie pojemności. Formy płatności dla subskrypcji jest naliczana opłata z góry kosztów rezerwowanie pojemności. Typ subskrypcji musi być umowy enterprise agreement (oferują liczb: MS-AZR-0017P lub MS-AZR - 0148 P) lub płatność za rzeczywiste użycie (oferują liczb: MS-AZR-0003P lub MS-AZR - 0023 P).
+3. Wybierz subskrypcję. Użyj listy subskrypcji, aby wybrać subskrypcję, która jest używana do zapłacenia za rezerwowanie pojemności. Formy płatności dla subskrypcji jest naliczana opłata z góry kosztów rezerwowanie pojemności. Typ subskrypcji musi być umowy enterprise agreement (oferują liczb: MS-AZR-0017P lub MS-AZR - 0148 P) lub płatność za rzeczywiste użycie (oferują liczb: MS-AZR-0003P lub MS-AZR-0023P).
   - W przypadku subskrypcji Enterprise opłaty są odliczane od salda zobowiązania pieniężnego rejestracji lub naliczane jako nadwyżka.
   - W przypadku subskrypcji z płatnością zgodnie z rzeczywistym użyciem opłaty obciążają kartę kredytową lub metodę płatności faktury powiązaną z subskrypcją.
 4. Wybierz zakres. Użyj listy zakresów, aby wybrać zakres subskrypcji.

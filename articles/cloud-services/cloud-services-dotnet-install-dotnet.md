@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 06/22/2018
 ms.author: jeconnoc
 ms.openlocfilehash: 4b6aeb2968d7642881535753cb6c8434cfe10886
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534075"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60409311"
 ---
 # <a name="install-net-on-azure-cloud-services-roles"></a>Zainstaluj program .NET w ramach ról usług Azure Cloud Services
 W tym artykule opisano sposób instalowania wersji programu .NET Framework, które nie pochodzą z systemu operacyjnego gościa platformy Azure. Aby skonfigurować role usługi w chmurze w sieci web i proces roboczy, można użyć platformy .NET w systemie operacyjnym gościa.

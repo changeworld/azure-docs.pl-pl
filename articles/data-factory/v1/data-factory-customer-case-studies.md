@@ -14,11 +14,11 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 952a8aa2dbfdabfb7f0df198a7453b847c33f7e2
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019084"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60486978"
 ---
 # <a name="azure-data-factory---customer-case-studies"></a>Usługa Azure Data Factory — analizy przypadków klientów
 Data Factory to usługa zarządzania informacje oparte na chmurze, która automatyzuje operacje przenoszenia i przekształcania danych. Klienci w wielu branżach umożliwia fabryki danych i innymi usługami Azure tworzyć potoki ich analiza i rozwiązywanie problemów biznesowych.  Informacje bezpośrednio od naszych klientów, jak i dlaczego korzystają usługi Data Factory.

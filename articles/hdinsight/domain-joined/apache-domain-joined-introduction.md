@@ -1,7 +1,6 @@
 ---
 title: Wprowadzenie do zabezpieczeń platformy Apache Hadoop z pakietem Enterprise Security
 description: Dowiedz się, jak pakiet Enterprise Security obsługuje cztery filarów zabezpieczeń przedsiębiorstwa.
-services: hdinsight
 ms.service: hdinsight
 author: omidm1
 ms.author: omidm
@@ -10,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/19/2019
 ms.openlocfilehash: 8a568302b2fd8ed0140c2ad084495d41cc09ed8f
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59994592"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60536871"
 ---
 # <a name="an-introduction-to-apache-hadoop-security-with-enterprise-security-package"></a>Wprowadzenie do zabezpieczeń platformy Apache Hadoop z pakietem Enterprise Security
 

@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: rezas
 ms.openlocfilehash: 672b06dda41edb18cbf31352188b0fdd2a155782
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649652"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60401106"
 ---
 # <a name="iot-hub-device-streams-preview"></a>Strumienie urządzenia Centrum IoT (wersja zapoznawcza)
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Usługa Azure IoT Hub *strumieni urządzenia* ułatwia tworzenie bezpiecznych tuneli protokołu TCP dwukierunkowej dla różnych scenariuszy komunikacji z chmury do urządzenia. Strumień urządzeń są przenoszone przez przez usługę IoT Hub *punkt końcowy przesyłania strumieniowego* który działa jako serwer proxy między punktami końcowymi usług i urządzeń. Ten Instalator przedstawiony na diagramie poniżej, jest szczególnie przydatne, gdy urządzenia zapory sieciowej lub znajdują się w sieci prywatnej. W efekcie strumieni urządzenia usługi IoT Hub pomagają klientów adres trzeba osiągnąć urządzeń IoT w sposób przyjaznego dla zapory oraz bez konieczności szeroko otwarcia portów zapory sieciowych przychodzących lub wychodzących.
 
 ![Tekst alternatywny](./media/iot-hub-device-streams-overview/iot-hub-device-streams-overview.png "usługi IoT Hub device strumieni — omówienie")

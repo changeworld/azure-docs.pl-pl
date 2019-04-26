@@ -10,11 +10,11 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: dafbb8d1221d5e9c6194611ad338b3714a089cea
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52998762"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60309235"
 ---
 # <a name="deprecated-run-applications-in-kubernetes"></a>(PRZESTARZAŁE) Uruchamianie aplikacji w usłudze Kubernetes
 
@@ -107,7 +107,7 @@ Aby wyświetlić aplikację, przejdź do zewnętrznego adresu IP.
 
 ![Obraz przedstawiający klaster Kubernetes na platformie Azure](media/container-service-kubernetes-tutorials/azure-vote.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku aplikacja do głosowania na platformie Azure została wdrożona do klastra Kubernetes usługi Azure Container Service. Wykonano następujące zadania:  
 

@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
 ms.openlocfilehash: dcd546b4b4d8e47395535cd37e1629166c8c2e7f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58002341"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60394833"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics — często zadawane pytania
 
@@ -29,11 +29,11 @@ Ta FAQ firmy Microsoft znajduje się lista często zadawane pytania dotyczące u
 
 ## <a name="new-logs-experience"></a>Nowe środowisko dzienników
 
-### <a name="q-whats-the-difference-between-the-new-logs-experience-and-log-analytics"></a>PYT.: Jaka jest różnica między nowe środowisko dzienniki i usługi Log Analytics?
+### <a name="q-whats-the-difference-between-the-new-logs-experience-and-log-analytics"></a>Pyt.: Jaka jest różnica między nowe środowisko dzienniki i usługi Log Analytics?
 
 Odp.: Są one tak samo. [Usługa log Analytics jest integrowany jako funkcję w usłudze Azure Monitor](../../azure-monitor/azure-monitor-rebrand.md) zapewnienie bardziej jednolite środowisko monitorowania. Nowe środowisko dzienników w usłudze Azure Monitor jest dokładnie taka sama jak zapytań usługi Log Analytics, które już masz doświadczenie z wielu klientów.
 
-### <a name="q-can-i-still-use-log-search"></a>PYT.: Można nadal korzystać z wyszukiwania w dziennikach? 
+### <a name="q-can-i-still-use-log-search"></a>Pyt.: Można nadal korzystać z wyszukiwania w dziennikach? 
 
 Odp.: Wyszukiwanie w dzienniku aktualnie jest nadal dostępny w portalu pakietu OMS i w witrynie Azure portal w obszarze nazwy **dzienniki (wersja klasyczna)**. Portal pakietu OMS zostanie oficjalnie wycofana 15 stycznia 2019 r. Klasyczne środowisko dzienników w witrynie Azure portal zostaną stopniowo wycofane i zastąpione nowe środowisko dzienniki. 
 
@@ -107,7 +107,7 @@ Odp.: Zależności od tego, jakie Update Rollup programu Operations Manager znaj
 
 Aktualizacja ciąg tekstu *OMS* znajduje się w pakiecie administracyjnym, należy zaimportować ręcznie. Aby zobaczyć aktualny tekst i funkcjonalność, postępuj zgodnie z instrukcjami na najnowsze systemu Centrum Operations Manager aktualizacji pakietu zbiorczego wiedzy i Odśwież konsolę.
 
-### <a name="q-is-there-an-on-premises-version-of-log-analytics"></a>PYT.: Czy istnieje — lokalną wersją usługi Log Analytics?
+### <a name="q-is-there-an-on-premises-version-of-log-analytics"></a>Pyt.: Czy istnieje — lokalną wersją usługi Log Analytics?
 
 Odp.: Nie. Usługa log Analytics to usługa w chmurze skalowalne, która przetwarza i przechowuje duże ilości danych. 
 
@@ -177,14 +177,14 @@ Ta zmiana może również w witrynie Azure portal.
 
 Nie można przenieść dane z jednego obszaru roboczego usługi Log Analytics do innego lub zmienić dane usługi Log Analytics są przechowywane w regionie.
 
-### <a name="q-how-do-i-add-log-analytics-to-system-center-operations-manager"></a>PYT.: Jak dodać usługi Log Analytics programu System Center Operations Manager?
+### <a name="q-how-do-i-add-log-analytics-to-system-center-operations-manager"></a>Pyt.: Jak dodać usługi Log Analytics programu System Center Operations Manager?
 
 Odp.:  Aktualizowanie do najnowszego pakietu zbiorczego aktualizacji i importowania pakietów administracyjnych umożliwia łączenie programu Operations Manager do usługi Log Analytics.
 
 >[!NOTE]
 >Połączenie programu Operations Manager do usługi Log Analytics jest dostępna tylko dla programu System Center Operations Manager 2012 z dodatkiem SP1 lub nowszy.
 
-### <a name="q-how-can-i-confirm-that-an-agent-is-able-to-communicate-with-log-analytics"></a>PYT.: Jak można potwierdzić, że agent jest w stanie nawiązać połączenia z usługą Log Analytics?
+### <a name="q-how-can-i-confirm-that-an-agent-is-able-to-communicate-with-log-analytics"></a>Pyt.: Jak można potwierdzić, że agent jest w stanie nawiązać połączenia z usługą Log Analytics?
 
 Odp.: Aby upewnić się, że agent może komunikować się z usługą OMS, przejdź do: Kontrolowanie panelu, zabezpieczeń i ustawień, **Microsoft Monitoring Agent**.
 
@@ -192,19 +192,19 @@ W obszarze **Azure Log Analytics (OMS)** kartę, poszukaj zielony znacznik wybor
 
 Żółtą ikoną ostrzeżenia oznacza, że agent występują problemy z komunikacji z usługą Log Analytics. Jedną typową przyczyną jest to, że usługa Microsoft Monitoring Agent została zatrzymana. Aby ponownie uruchomić usługę, należy użyć Menedżera sterowania usługami.
 
-### <a name="q-how-do-i-stop-an-agent-from-communicating-with-log-analytics"></a>PYT.: Jak zatrzymać agenta komunikowanie się z usługą Log Analytics?
+### <a name="q-how-do-i-stop-an-agent-from-communicating-with-log-analytics"></a>Pyt.: Jak zatrzymać agenta komunikowanie się z usługą Log Analytics?
 
 Odp.: W programie System Center Operations Manager należy usunąć komputer z listy zarządzanych komputerów pakietu OMS. Programu Operations Manager zaktualizuje konfigurację agenta nie jest już raport do usługi Log Analytics. Dla agentów bezpośrednio podłączone do usługi Log Analytics możesz zatrzymać je komunikację za pośrednictwem: Kontrolowanie panelu, zabezpieczeń i ustawień, **Microsoft Monitoring Agent**.
 W obszarze **Azure Log Analytics (OMS)**, Usuń wszystkie obszary robocze na liście.
 
-### <a name="q-why-am-i-getting-an-error-when-i-try-to-move-my-workspace-from-one-azure-subscription-to-another"></a>PYT.: Dlaczego otrzymuję błąd przy próbie przenieść mój obszar roboczy z jedną subskrypcją platformy Azure do innego?
+### <a name="q-why-am-i-getting-an-error-when-i-try-to-move-my-workspace-from-one-azure-subscription-to-another"></a>Pyt.: Dlaczego otrzymuję błąd przy próbie przenieść mój obszar roboczy z jedną subskrypcją platformy Azure do innego?
 
 Odp.: Aby przenieść obszar roboczy do innej subskrypcji lub grupy zasobów, należy najpierw odłączyć konto usługi Automation, w obszarze roboczym. Odłączenie konta usługi Automation wymaga usunięcia tych rozwiązań, jeśli są zainstalowane w obszarze roboczym: Zarządzanie aktualizacjami, śledzenie zmian lub uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu są usuwane. Po usunięciu tych rozwiązań odłączanie konta usługi Automation, wybierając **połączone obszary robocze** w okienku po lewej stronie w usłudze Automation konta zasobu, a następnie kliknij przycisk **odłączanie obszaru roboczego** na Wstążce.
  > Usunięte rozwiązania konieczność ponownego zainstalowania w obszarze roboczym, a łącze automatyzacji do obszaru roboczego musi być przekształcone po przeniesieniu.
 
 Upewnij się, że masz uprawnienia w obu subskrypcjach platformy Azure.
 
-### <a name="q-why-am-i-getting-an-error-when-i-try-to-update-a-savedsearch"></a>PYT.: Dlaczego otrzymuję błąd podczas próby można zaktualizować zapisanego wyszukiwania?
+### <a name="q-why-am-i-getting-an-error-when-i-try-to-update-a-savedsearch"></a>Pyt.: Dlaczego otrzymuję błąd podczas próby można zaktualizować zapisanego wyszukiwania?
 
 Odp.: Należy dodać "element etag" w treści interfejsu API lub właściwości szablonu usługi Azure Resource Manager:
 ```

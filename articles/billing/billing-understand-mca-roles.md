@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
 ms.openlocfilehash: 780870cc71e95507a52ba6a9338026f895a96ac1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57834901"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60370971"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>Zrozumienie umowy klienta Microsoft ról administracyjnych na platformie Azure
 
@@ -163,7 +163,7 @@ W poniższych tabelach przedstawiono jaką rolę konieczne wykonywanie zadań w 
 |Zarządzają rozliczeniami dla produktów dla sekcji faktury, takich jak anulowanie, wyłączać funkcję automatycznego odnawiania i nie tylko|✔|✔|✘|✘|✘|✘|✘|
 |Zmiana faktury dotyczącej produktów|✔|✔|✘|✘|✘|✘|✘|
 
-### <a name="manage-subscriptions-for-invoice-section"></a>Zarządzaj subskrypcjami dla sekcji faktury
+### <a name="manage-subscriptions-for-invoice-section"></a>Zarządzaj subskrypcjami sekcji faktury
 
 |Zadania|Właściciel sekcji faktur|Współautor sekcji faktur|Czytelnik sekcji faktur|Twórca subskrypcji platformy Azure|Właściciel konta rozliczeniowego|Współautor konta rozliczeniowego|Czytelnik konta rozliczeniowego
 |---|---|---|---|---|---|---|---|
@@ -185,7 +185,7 @@ W poniższej tabeli przedstawiono, jakie rola konieczne wykonywanie zadań w ram
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
-2. Wyszukiwanie **Cost Management + rozliczenia**.
+2. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
 
    ![Zrzut ekranu pokazujący usługi Azure search w portalu](./media/billing-understand-mca-roles/billing-search-cost-management-billing.png)
 

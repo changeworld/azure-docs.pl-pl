@@ -9,17 +9,17 @@ ms.reviewer: klam
 ms.assetid: 5ec78e60-a9b9-405a-91a8-f010f3872d50
 ms.topic: article
 ms.date: 08/16/2016
-ms.openlocfilehash: d647de379972bac317a213e2f8925c0ff8c3372c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 50ab6cfefe4a7df9d671e7fd1287aa16b803f260
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46947928"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60533387"
 ---
 # <a name="high-availability-and-reliability-for-azure-scheduler"></a>Wysoka dostępność i niezawodność usługi Azure Scheduler
 
 > [!IMPORTANT]
-> [Usługa Azure Logic Apps](../logic-apps/logic-apps-overview.md) zastępuje usługi Azure Scheduler, która zostanie wycofana. Aby zaplanować prace, [zamiast tego spróbuj wykonać usługi Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
+> Usługa [Azure Logic Apps](../logic-apps/logic-apps-overview.md) zastępuje usługę Azure Scheduler, która zostanie wycofana. Zamiast niej [spróbuj używać usługi Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) do planowania zadań. 
 
 Usługa Azure Scheduler umożliwia zarówno [wysokiej dostępności](https://docs.microsoft.com/azure/architecture/guide/pillars#availability) i niezawodność zadań. Aby uzyskać więcej informacji, zobacz [umowa SLA dla usługi Scheduler](https://azure.microsoft.com/support/legal/sla/scheduler).
 
@@ -50,7 +50,7 @@ Usługa Azure Scheduler gwarantuje swój własny wysokiej dostępności, ale trw
 
 <a name="retry-policies"></a>
 
-### <a name="retry-policies"></a>Zasady ponawiania
+### <a name="retry-policies"></a>Zasady ponawiania prób
 
 Usługa Azure Scheduler umożliwia konfigurowanie zasad ponawiania prób. Jeśli zadanie nie powiedzie się, następnie domyślnie harmonogramu ponawia próbę zadania, cztery razy w odstępach 30 sekund. Możesz ustawić te zasady ponawiania wyższe, takie jak 10 razy w odstępach 30 sekund lub mniej agresywne, takie jak dwa razy na codziennie.
 
@@ -72,7 +72,7 @@ Aby dowiedzieć się, jak skonfigurować alternatywne punktu końcowego, zobacz 
 
 ## <a name="see-also"></a>Zobacz także
 
-* [Co to jest usługa Azure Scheduler?](scheduler-intro.md)
+* [Czym jest Azure Scheduler?](scheduler-intro.md)
 * [Pojęcia, terminologia oraz hierarchia jednostek](scheduler-concepts-terms.md)
-* [Tworzenie złożonych harmonogramów i zaawansowanych cykli](scheduler-advanced-complexity.md)
+* [Tworzenie złożonych i zaawansowanych harmonogramów cyklicznych](scheduler-advanced-complexity.md)
 * [Limity, limity przydziału, wartości domyślne i kody błędów](scheduler-limits-defaults-errors.md)

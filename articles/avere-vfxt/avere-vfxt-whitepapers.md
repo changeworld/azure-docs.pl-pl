@@ -7,11 +7,11 @@ ms.author: v-erkell
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.openlocfilehash: cf111f2ebe4233ea5d02cf5c7fbc0967655475d9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59791876"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60409196"
 ---
 # <a name="azure-vftx-for-azure-whitepapers-and-other-resources"></a>VFTX platformy Azure dla platformy Azure oficjalne dokumenty i inne zasoby 
 
@@ -29,7 +29,7 @@ Ten przewodnik zawiera wskazówki krok po kroku dotyczące instalowania Agisoft 
 
 Ta dwustronicowy krótki opis zawiera podstawowe informacje i diagramy, które wyjaśniają jak używać Avere vFXT dla platformy Azure w kilku scenariuszy przypadków użycia.
 
-## <a name="hybrid-cloud-for-file-based-workloads"></a>Chmura hybrydowa, w przypadku obciążeń opartych na plikach
+## <a name="hybrid-cloud-for-file-based-workloads"></a>chmura hybrydowa dla obciążeń plikowych
 
 **Link:** [Grafika informacyjna: Tworzenie chmury hybrydowej w przypadku obciążeń opartych na plikach](https://azure.microsoft.com/resources/building-a-hybrid-cloud-for-file-based-hpc-workloads/) 
 

@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 2/25/2019
 ms.author: srrengar
 ms.openlocfilehash: 7a4cccf774d89229810c1668f38e4e2ef99fa79d
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663948"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60393043"
 ---
 # <a name="list-of-service-fabric-events"></a>Lista zdarzeń usługi Service Fabric 
 
@@ -40,7 +40,7 @@ Oto lista tych zdarzeń usługi Service Fabric, uporządkowane według jednostki
 
 Szczegółowe informacje na temat uaktualniania klastra można znaleźć [tutaj](service-fabric-cluster-upgrade-windows-server.md).
 
-| Identyfikator zdarzenia | Name (Nazwa) | Kategoria | Opis |Źródło (zadanie) | Poziom | 
+| Identyfikator zdarzenia | Name (Nazwa) | Category | Opis |Źródło (zadanie) | Poziom | 
 | --- | --- | --- | --- | --- | --- | 
 | 29627 | ClusterUpgradeStarted | Uaktualnienie | Rozpoczęto Uaktualnianie klastra | CM | Informacyjne |
 | 29628 | ClusterUpgradeCompleted | Uaktualnienie | Ukończono uaktualnianie klastra | CM | Informacyjne | 
@@ -52,7 +52,7 @@ Szczegółowe informacje na temat uaktualniania klastra można znaleźć [tutaj]
 
 **Zdarzenia cyklu życia węzła** 
 
-| Identyfikator zdarzenia | Name (Nazwa) | Kategoria | Opis |Źródło (zadanie) | Poziom |
+| Identyfikator zdarzenia | Name (Nazwa) | Category | Opis |Źródło (zadanie) | Poziom |
 | --- | --- | ---| --- | --- | --- | 
 | 18602 | NodeDeactivateCompleted | Przejścia stanu | Dezaktywacja węzła zostało zakończone. | FM | Informacyjne | 
 | 18603 | NodeUp | Przejścia stanu | Klastra wykrył, że uruchomieniu węzła | FM | Informacyjne | 
@@ -69,7 +69,7 @@ Szczegółowe informacje na temat uaktualniania klastra można znaleźć [tutaj]
 
 **Zdarzenia cyklu życia aplikacji**
 
-| Identyfikator zdarzenia | Name (Nazwa) | Kategoria | Opis |Źródło (zadanie) | Poziom | 
+| Identyfikator zdarzenia | Name (Nazwa) | Category | Opis |Źródło (zadanie) | Poziom | 
 | --- | --- | --- | --- | --- | --- | 
 | 29620 | ApplicationCreated | Cykl życia | Utworzono nową aplikację | CM | Informacyjne | 
 | 29625 | ApplicationDeleted | Cykl życia | Istniejąca aplikacja została usunięta. | CM | Informacyjne | 
@@ -79,7 +79,7 @@ Szczegółowe informacje na temat uaktualniania klastra można znaleźć [tutaj]
 
 Szczegółowe informacje na temat uaktualniania aplikacji można znaleźć [tutaj](service-fabric-application-upgrade.md).
 
-| Identyfikator zdarzenia | Name (Nazwa) | Kategoria | Opis |Źródło (zadanie) | Poziom | 
+| Identyfikator zdarzenia | Name (Nazwa) | Category | Opis |Źródło (zadanie) | Poziom | 
 | --- | --- | ---| --- | --- | --- | 
 | 29621 | ApplicationUpgradeStarted | Uaktualnienie | Uaktualnienie aplikacji została uruchomiona. | CM | Informacyjne | 
 | 29622 | ApplicationUpgradeCompleted | Uaktualnienie | Ukończono uaktualnianie aplikacji | CM | Informacyjne | 
@@ -91,7 +91,7 @@ Szczegółowe informacje na temat uaktualniania aplikacji można znaleźć [tuta
 
 **Zdarzenia cyklu życia usługi**
 
-| Identyfikator zdarzenia | Name (Nazwa) | Kategoria | Opis |Źródło (zadanie) | Poziom | 
+| Identyfikator zdarzenia | Name (Nazwa) | Category | Opis |Źródło (zadanie) | Poziom | 
 | --- | --- | ---| --- | --- | --- |
 | 18657 | ServiceCreated | Cykl życia | Utworzono nową usługę | FM | Informacyjne | 
 | 18658 | ServiceDeleted | Cykl życia | Istniejąca usługa została usunięta. | FM | Informacyjne | 
@@ -100,7 +100,7 @@ Szczegółowe informacje na temat uaktualniania aplikacji można znaleźć [tuta
 
 **Zdarzenia przenoszenia partycji**
 
-| Identyfikator zdarzenia | Name (Nazwa) | Kategoria | Opis |Źródło (zadanie) | Poziom | 
+| Identyfikator zdarzenia | Name (Nazwa) | Category | Opis |Źródło (zadanie) | Poziom | 
 | --- | --- | ---| --- | --- | --- |
 | 18940 | PartitionReconfigured | Cykl życia | Ponowna konfiguracja partycji zostało zakończone. | RA | Informacyjne | 
 

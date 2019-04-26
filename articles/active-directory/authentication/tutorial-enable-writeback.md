@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dabe0ad1a556ee43f3e6cae0e1cd421db5cde0fd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56183211"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60413964"
 ---
 # <a name="tutorial-enabling-password-writeback"></a>Samouczek: włączanie zapisywania zwrotnego haseł
 
@@ -56,7 +56,7 @@ Włączenie funkcji zapisywania zwrotnego haseł w programie Azure AD Connect to
 4. Dla opcji **Zezwolić użytkownikom na odblokowywanie kont bez resetowania hasła?** ustaw wartość **Tak**.
 5. Kliknij pozycję **Zapisz**
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku włączono funkcję zapisywania zwrotnego haseł dla samoobsługowego resetowania hasła. Pozostaw otwarte okno witryny Azure Portal i przejdź do następnego samouczka, aby skonfigurować dodatkowe ustawienia związane z samoobsługowym resetowaniem hasła przed wdrożeniem rozwiązania w pilotażu.
 

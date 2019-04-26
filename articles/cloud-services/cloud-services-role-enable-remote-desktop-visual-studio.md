@@ -4,20 +4,22 @@ description: Jak skonfigurować aplikację usługi chmury platformy Azure, aby z
 services: cloud-services
 author: ghogen
 manager: douge
+editor: ''
 ms.assetid: f5727ebe-9f57-4d7d-aff1-58761e8de8c1
-ms.prod: visual-studio-dev15
-ms.technology: vs-azure
-ms.custom: vs-azure
-ms.topic: conceptual
-ms.workload: azure-vs
-ms.date: 03/06/2018
-ms.author: ghogen
-ms.openlocfilehash: 703e969fe31def329be60037cceba27864063b4e
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.service: multiple
+ms.devlang: multiple
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+origin.date: 03/06/2018
+ms.date: 10/22/2018
+ms.author: v-yiso
+ms.openlocfilehash: 924719a8371f4d41cb9ead09252d8f3d3424326a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304059"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60406450"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-visual-studio"></a>Włączanie funkcji Podłączanie pulpitu zdalnego dla roli w usługach Azure Cloud Services przy użyciu programu Visual Studio
 
@@ -46,6 +48,8 @@ Korzystając z programu Visual Studio 2017 w wersji 15.4 lub starszym, można u�
 
    > [!Note]
    > Certyfikaty, które są potrzebne dla połączeń usług pulpitu zdalnego różnią się od certyfikaty używane dla innych operacji na platformie Azure. Certyfikat dostępu zdalnego musi mieć klucz prywatny.
+   >
+   >
 
 5. Wybierz certyfikat z listy lub wybierz  **&lt;Utwórz... &gt;**. W przypadku tworzenia nowego certyfikatu, Podaj przyjazną nazwę dla nowego certyfikatu, po wyświetleniu monitu, a następnie wybierz **OK**. W polu listy rozwijanej pojawi się nowy certyfikat.
 
@@ -95,7 +99,7 @@ Aby użyć rozszerzenia protokołu RDP z usługom DevOps platformy Azure, podaj 
 
 1. Po kroków kompilacji dodać **wdrażania usługi w chmurze Azure** krok i ustaw jego właściwości.
 
-1. Po wykonaniu kroku wdrożenia, należy dodać **programu Azure Powershell** krok, ustaw jego **nazwę wyświetlaną** właściwość "Wdrożenie: Włącz protokół RDP rozszerzenie Azure" (lub inną odpowiednią nazwę) i wybierz odpowiednie platformy Azure Subskrypcja.
+1. Po wykonaniu kroku wdrożenia, należy dodać **programu Azure Powershell** krok, ustaw jego **nazwę wyświetlaną** właściwość "wdrażania na platformie Azure: Włączanie rozszerzenia RDP"(lub inną odpowiednią nazwę) i wybierz odpowiednią subskrypcję platformy Azure.
 
 1. Ustaw **typ skryptu** do "Inline" i Wklej kod poniżej do **wbudowany skrypt** pola. (Można również utworzyć `.ps1` pliku w projekcie za pomocą tego skryptu, ustaw **typ skryptu** "Ścieżka pliku skryptu" i zestaw **ścieżka skryptu** wskaż plik.)
 
@@ -146,6 +150,6 @@ Po Opublikuj usługę w chmurze na platformie Azure i włączono pulpitu zdalneg
 
 3. Wprowadź nazwę użytkownika i hasło, który został utworzony wcześniej. Teraz użytkownik jest zalogowany do sesji zdalnej.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 [Jak skonfigurować usługi w chmurze](cloud-services-how-to-configure-portal.md)

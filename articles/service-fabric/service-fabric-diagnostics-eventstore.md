@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 1/17/2019
 ms.author: srrengar
 ms.openlocfilehash: 36d01a9e6e55ae54377ba3f983f779dbc692c49a
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59681526"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60392934"
 ---
 # <a name="eventstore-service-overview"></a>Omówienie usługi bazy danych EventStore
 
@@ -89,7 +89,7 @@ W szablonie usługi Azure Resource Manager klastra, można włączyć usługę b
               {
                 "name": "MinReplicaSetSize",
                 "value": "1"
-              }
+              },
               {
                 "name": "PlacementConstraints",
                 "value": "(NodeType==<node_type_name_here>)"

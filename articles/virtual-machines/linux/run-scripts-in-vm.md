@@ -9,11 +9,11 @@ ms.date: 05/02/2018
 ms.topic: article
 manager: carmonm
 ms.openlocfilehash: 3881a6d0ee1139fa481908f09b6e96efda24a5cd
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979007"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60542547"
 ---
 # <a name="run-scripts-in-your-linux-vm"></a>Uruchamianie skryptów w maszynie Wirtualnej systemu Linux
 
@@ -29,7 +29,7 @@ Aby zautomatyzować zadania lub rozwiązywania problemów, może być konieczne 
 * Skrypt programu PowerShell są uruchamiane na maszynach Windows albo funkcji Bash skryptu na maszynach z systemem Linux.
 * Przydatne w przypadku konfiguracji po wdrożeniu, instalacja oprogramowania i innych konfiguracji lub zadania związane z zarządzaniem.
 
-## <a name="run-command"></a>Uruchom polecenie
+## <a name="run-command"></a>Uruchamianie polecenia
 
 [Uruchom polecenie](run-command.md) funkcja umożliwia maszyn wirtualnych i zarządzanie aplikacjami oraz rozwiązywanie problemów przy użyciu skryptów i jest dostępny nawet wtedy, gdy komputer nie jest dostępny, na przykład jeśli Zapora gościa nie ma portu RDP lub SSH Otwórz.
 

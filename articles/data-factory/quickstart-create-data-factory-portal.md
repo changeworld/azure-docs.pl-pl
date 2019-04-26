@@ -12,11 +12,11 @@ ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: jingwang
 ms.openlocfilehash: 6f5a4e04c0d135e85624b04dbcdcda6b7d15a427
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55989393"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60315561"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Szybki start: Tworzenie fabryki danych za pomocą interfejsu użytkownika usługi Azure Data Factory
 
@@ -85,7 +85,7 @@ Podczas tej procedury utworzysz połączoną usługę służącą do łączenia 
 
    b. W polu **Nazwa konta magazynu** wybierz nazwę konta usługi Azure Storage.
 
-   d. Wybierz pozycję **Testuj połączenie**, aby sprawdzić, czy usługa Data Factory może nawiązać połączenie z kontem magazynu. 
+   c. Wybierz pozycję **Testuj połączenie**, aby sprawdzić, czy usługa Data Factory może nawiązać połączenie z kontem magazynu. 
 
    d. Aby zapisać połączoną usługę, wybierz pozycję **Zakończ**. 
 
@@ -126,7 +126,7 @@ W ustawieniach połączonej usługi określono konto usługi Azure Storage, któ
 
    b. Na stronie **Nowy zestaw danych** wybierz pozycję **Azure Blob Storage**, a następnie wybierz przycisk **Zakończ**.
 
-   d. Na karcie **Ogólne** określ wartość **OutputDataset** jako nazwę.
+   c. Na karcie **Ogólne** określ wartość **OutputDataset** jako nazwę.
 
    d. Na karcie **Połączenie** wybierz pozycję **AzureStorageLinkedService** jako połączoną usługę, a następnie wprowadź **adftutorial/output** jako folder w polu katalogu. Jeśli folder **output** nie istnieje, działanie kopiowania utworzy go w czasie wykonywania.
 
@@ -210,5 +210,5 @@ W tym samouczku ta procedura jest opcjonalna. Możesz utworzyć *wyzwalacz harmo
    ![Przełączanie do widoku „Uruchomienia wyzwalacza”](./media/quickstart-create-data-factory-portal/monitor-trigger-runs.png)    
 1. Sprawdź, czy plik wyjściowy jest tworzony w folderze **output** dla każdego uruchomienia potoku aż do określonej daty/godziny zakończenia. 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Potok w tym przykładzie kopiuje dane z jednej lokalizacji do innej lokalizacji w usłudze Azure Blob Storage. Zapoznaj się z [samouczkami](tutorial-copy-data-portal.md), aby dowiedzieć się więcej o korzystaniu z usługi Data Factory w dalszych scenariuszach. 

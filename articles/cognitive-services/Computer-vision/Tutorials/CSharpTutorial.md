@@ -12,11 +12,11 @@ ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 63b5130e3cade54a2fbc432b2391ad3ee1ea8a1a
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60004027"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60408189"
 ---
 # <a name="sample-explore-an-image-processing-app-with-c"></a>Przykład: Zapoznanie z aplikacją do przetwarzania obrazów z językiem C#
 

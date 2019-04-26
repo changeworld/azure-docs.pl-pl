@@ -15,20 +15,20 @@ ms.topic: article
 ms.date: 01/01/2019
 ms.author: willzhan
 ms.openlocfilehash: 9e29b08da35b9fd2f479f1d4e3b0d89ed881344b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57902005"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60326437"
 ---
 # <a name="offline-playready-streaming-for-windows-10"></a>PlayReady w trybie offline, przesyłania strumieniowego dla systemu Windows 10
 
 Usługa Azure Media Services obsługuje pobieranie/odtwarzania w trybie offline dzięki ochronie DRM. W tym artykule omówiono obsługę trybu offline usługi Azure Media Services dla systemu Windows 10/PlayReady klientów. Temat pomocy technicznej w trybie offline dla systemu iOS/FairPlay i urządzeń Android/Widevine w następujących artykułach:
 
-- [W trybie offline FairPlay Streaming dla systemu iOS](offline-fairplay-for-ios.md)
+- [Przesyłanie strumieniowe w trybie offline przy użyciu technologii FairPlay na potrzeby systemu iOS](offline-fairplay-for-ios.md)
 - [Widevine w trybie offline, przesyłania strumieniowego dla systemu Android](offline-widevine-for-android.md)
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 W tej sekcji zawiera podstawowe informacje dotyczące odtwarzania w trybie offline, szczególnie Dlaczego:
 
@@ -122,4 +122,4 @@ Podsumowując firma Microsoft otrzymano trybu offline w usłudze Azure Media Ser
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Projekt systemu multi-DRM ochrony zawartości przy użyciu kontroli dostępu](design-multi-drm-system-with-access-control.md)
+[Projektowanie systemu ochrony zawartości przy użyciu technologii multi-DRM z kontrolą dostępu](design-multi-drm-system-with-access-control.md)

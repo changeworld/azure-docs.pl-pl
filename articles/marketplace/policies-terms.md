@@ -9,13 +9,13 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: v-qiwe
 ms.openlocfilehash: 9dc4bfa1f2435488f7d6513f9c14e82da33a4d64
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56890454"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60322757"
 ---
-# <a name="azure-marketplace-policies-and-terms"></a>Azure Marketplace — zasady i warunki
+# <a name="azure-marketplace-policies-and-terms"></a>Zasady i warunki usługi Azure Marketplace
 
 >[!Note]
 >"Marketplace" lub "Azure Marketplace" oznacza, że należące do firmy Microsoft lub poczynione platformy, jednak nosi nazwę, za pomocą którego ofert może być przedstawiony w usłudze lub nabytych przez klientów. O ile nie określono inaczej, witryna Marketplace zawiera w portalu Azure Marketplace, usługi AppSource i witryny Azure Portal Marketplace.

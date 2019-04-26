@@ -1,6 +1,6 @@
 ---
-title: Azure repozytoria rejestru kontenera w portalu Azure
-description: Jak wyświetlić repozytoria rejestru kontenera platformy Azure w portalu Azure.
+title: Usługa Azure repozytoriów Container Registry w witrynie Azure portal
+description: Jak wyświetlić repozytoriów usługi Azure Container Registry w witrynie Azure portal.
 services: container-registry
 author: cristy
 manager: jeconnoc
@@ -8,49 +8,49 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 01/05/2018
 ms.author: cristyg
-ms.openlocfilehash: 171593483fc94c1c67013ab520b0085ca98f3a82
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 685c978ff206e75d770918f2528a826ad522b706
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33768332"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60427105"
 ---
-# <a name="view-container-registry-repositories-in-the-azure-portal"></a>Wyświetl repozytoria rejestru kontenera w portalu Azure
+# <a name="view-container-registry-repositories-in-the-azure-portal"></a>Wyświetlanie repozytoriów rejestru kontenerów w witrynie Azure portal
 
-Rejestru kontenera Azure umożliwia przechowywanie Docker kontener obrazów w repozytoriów. Dzięki przechowywaniu obrazów w repozytoriów, można przechowywać grup obrazów (lub wersji obrazów) w izolowanym środowisku. Podczas wypychania obrazów do rejestru i wyświetlić ich zawartość w portalu Azure, można określić te repozytoriów.
+Usługa Azure Container Registry umożliwia przechowywanie Docker obrazów kontenerów w repozytoriach. Dzięki przechowywaniu obrazów w repozytoriach, można przechowywać grupy obrazów (lub wersji obrazów) w środowisku izolowanym. Można określić tych repozytoriów, gdy wypychanie obrazów do rejestru i przeglądać ich zawartość w witrynie Azure portal.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* **Kontener rejestru**: Tworzenie rejestru kontenera w Twojej subskrypcji platformy Azure. Na przykład użyć [portalu Azure](container-registry-get-started-portal.md) lub [interfejsu wiersza polecenia Azure](container-registry-get-started-azure-cli.md).
-* **Interfejs wiersza polecenia docker**: Zainstaluj [Docker] [ docker-install] na komputerze lokalnym, które zapewnia interfejs wiersza polecenia Docker.
-* **Kontener obrazu**: Push obrazu do rejestru kontenera. Aby uzyskać wskazówki dotyczące wypychania i ściągania obrazów, zobacz [wypychania i ściągania obrazu](container-registry-get-started-docker-cli.md).
+* **Rejestr kontenerów**: Tworzenie rejestru kontenerów w ramach subskrypcji platformy Azure. Na przykład użyć [witryny Azure portal](container-registry-get-started-portal.md) lub [wiersza polecenia platformy Azure](container-registry-get-started-azure-cli.md).
+* **Interfejs CLI platformy docker**: Zainstaluj [Docker] [ docker-install] na komputerze lokalnym, który zapewnia interfejs wiersza polecenia platformy Docker.
+* **Obraz kontenera**: Wypychanie obrazu do rejestru kontenerów. Aby uzyskać wskazówki na temat sposobu wypychania i ściągania obrazów, zobacz [wypychanie i ściąganie obrazu](container-registry-get-started-docker-cli.md).
 
-## <a name="view-repositories-in-azure-portal"></a>Repozytoria widoku w portalu Azure
+## <a name="view-repositories-in-azure-portal"></a>Wyświetlanie repozytoriów w witrynie Azure portal
 
-Można wyświetlić listę repozytoria hosting obrazów, a także tag obrazu, w portalu Azure.
+Można wyświetlić listę repozytoriów hostowania obrazów, a także znaczniki obrazów, w witrynie Azure portal.
 
-Po wykonaniu kroków w [wypychania i ściągania obrazu](container-registry-get-started-docker-cli.md) i nie został później usunąć obrazu, powinien mieć obraz Nginx w rejestrze kontenera. Instrukcje w tym artykule określony tag obrazu z przestrzenią nazw, "Przykłady" w `/samples/nginx`. Jako odświeżacz [wypychania docker] [ docker-push] zostało określone w tym artykule polecenie:
+Jeśli wykonano kroki opisane w [wypychanie i ściąganie obrazu](container-registry-get-started-docker-cli.md) (i nie został później usunąć obraz) powinien mieć obraz Nginx w rejestrze kontenera. Instrukcje w tym artykule określony tag obrazu z przestrzeni nazw "Przykłady" w `/samples/nginx`. Jako odświeżacz [docker push] [ docker-push] zostało określone w tym artykule polecenie:
 
 ```Bash
 docker push myregistry.azurecr.io/samples/nginx
 ```
 
- Ponieważ rejestru kontenera Azure obsługuje takich nazw wielopoziomowej repozytorium, możesz zakresu kolekcji obrazów związane z konkretną aplikację lub zbiór aplikacji do różnych rozwoju lub zespołów operacyjnych. Aby uzyskać więcej informacji na temat repozytoria w rejestrach kontenera, zobacz [rejestrów kontenera prywatnego Docker na platformie Azure](container-registry-intro.md).
+ Ponieważ usługa Azure Container Registry obsługuje takie wielopoziomowe przestrzenie nazw repozytoriów, można określić zakres kolekcje obrazów związanych z określoną aplikacją lub kolekcje aplikacji do tworzenia różnych lub zespołów operacyjnych. Aby dowiedzieć się więcej o repozytoriów w rejestry kontenerów, zobacz [rejestry kontenerów prywatnego platformy Docker na platformie Azure](container-registry-intro.md).
 
 Aby wyświetlić repozytorium:
 
-1. Zaloguj się do [portalu Azure][portal]
-1. Wybierz **rejestru kontenera Azure** do której przypisany jest obraz Nginx
-1. Wybierz **repozytoria** umożliwia wyświetlenie listy repozytoriów zawierających obrazy w rejestrze
-1. Wybierz repozytorium, aby wyświetlić tagi obrazu, w tym repozytorium
+1. Zaloguj się do [witryny Azure portal][portal]
+1. Wybierz **usługi Azure Container Registry** do którego wypychane obraz Nginx
+1. Wybierz **repozytoriów** umożliwia wyświetlenie listy repozytoriów, które zawierają obrazów w rejestrze
+1. Wybierz repozytorium, aby wyświetlić tagi obraz w ramach tego repozytorium
 
-Na przykład, jeśli przypisany jako obraz Nginx instrukcją w [wypychania i ściągania obrazu](container-registry-get-started-docker-cli.md), powinny pojawić się polecenie podobne do następującego:
+Na przykład, jeśli wypchnięto obraz Nginx jako instrukcjami w sekcji [wypychanie i ściąganie obrazu](container-registry-get-started-docker-cli.md), powinien zostać wyświetlony, polecenie podobne do następującego:
 
-![Repozytoria w portalu](./media/container-registry-repositories/container-registry-repositories.png)
+![Repozytoriów w portalu](./media/container-registry-repositories/container-registry-repositories.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Teraz, gdy wiesz, przeglądanie i pracy z repozytoriami w portalu, spróbuj użyć rejestru kontenera Azure [usługi Kubernetes Azure (AKS)](../aks/tutorial-kubernetes-prepare-app.md) klastra.
+Skoro już wiesz, przeglądanie i Praca z repozytoriów w portalu, spróbuj przy użyciu usługi Azure Container Registry przy użyciu [Azure Kubernetes Service (AKS)](../aks/tutorial-kubernetes-prepare-app.md) klastra.
 
 <!-- LINKS - External -->
 [docker-install]: https://docs.docker.com/engine/installation/

@@ -16,11 +16,11 @@ ms.topic: conceptual
 ms.date: 03/06/2017
 ms.author: ergreenl
 ms.openlocfilehash: 30448ecdcce8ccd8929a35ed69cc36675c627c14
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167176"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60416640"
 ---
 # <a name="azure-ad-domain-services---supported-regions"></a>Azure AD Domain Services — obsługiwane regiony
 Aby dowiedzieć się, w których usługi domenowe Azure AD jest dostępna, zobacz [usług platformy Azure według regionu](https://azure.microsoft.com/regions/#services/).

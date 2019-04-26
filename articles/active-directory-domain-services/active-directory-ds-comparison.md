@@ -16,11 +16,11 @@ ms.topic: conceptual
 ms.date: 07/07/2017
 ms.author: ergreenl
 ms.openlocfilehash: fbd876ad46342dec7e2e73b92d3aafbd37cc205b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58892300"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60417286"
 ---
 # <a name="how-to-decide-if-azure-ad-domain-services-is-right-for-your-use-case"></a>Jak zdecydować, jeśli usługi Azure AD Domain Services jest odpowiednia dla danego przypadku użycia
 Za pomocą usług domenowych Azure AD można wdrożyć obciążenia w usługach infrastruktury platformy Azure, bez konieczności martwienia się o konserwacja infrastruktury tożsamości na platformie Azure. To zarządzana usługa różni się od typowego wdrożenia usługi Active Directory systemu Windows Server, które wdrażania i administrowania na własną rękę. Usługa jest łatwa do wdrożenia i zapewnia monitorowanie kondycji zautomatyzowane i korygowania. Firma Microsoft stale ewoluuje usługę, aby dodać obsługę typowych scenariuszy wdrażania.

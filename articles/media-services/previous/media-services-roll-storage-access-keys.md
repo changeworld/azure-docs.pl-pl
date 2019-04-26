@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: milanga;cenkdin;juliako
 ms.openlocfilehash: c688169dc21304f234aead7196f377a3fa5fd633
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294930"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60407326"
 ---
 # <a name="update-media-services-after-rolling-storage-access-keys"></a>Aktualizowanie usługi Media Services po stopniowym uaktualnieniu kluczy dostępu do magazynu 
 
@@ -29,7 +29,7 @@ Aby wykonać czynności opisane w tym artykule, należy używać [interfejsów A
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Po utworzeniu nowego konta magazynu platformy Azure generuje dwa klucze dostępu do magazynu 512-bitowe, które są używane do uwierzytelniania dostępu do konta magazynu. Aby zabezpieczyć połączenia z magazynem więcej, zalecane jest okresowe ponowne wygenerowanie i Obróć klucz dostępu do magazynu. Dwa klucze dostępu (podstawowych i pomocniczych) znajdują się w celu umożliwia utrzymanie połączeń przy użyciu jednego klucza dostępu, jednocześnie ponownie generując drugi klucz dostępu konta magazynu. Ta procedura jest również nazywany "przerzucić klucze dostępu".
 

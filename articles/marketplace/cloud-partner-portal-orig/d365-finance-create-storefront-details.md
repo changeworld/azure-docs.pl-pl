@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: pbutlerm
 ms.openlocfilehash: f69a7f9ca94c0a83098300f01e9413b342bd4ae8
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389380"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60397945"
 ---
 <a name="how-to-fill-out-the-storefront-details-form"></a>Jak wypełnić formularz szczegółów sklepu
 ===========================================
@@ -42,7 +42,7 @@ Opis ten pojawi się w usłudze AppSource, tuż poniżej swoje **oferują Podsum
 
 Wybierz branżę, który aplikacji najlepiej jest wyrównany do. Jeśli aplikacja odnosi się do wielu branżach, można pozostawić to puste
 
-### <a name="categories"></a>Kategorie
+### <a name="categories"></a>Categories
 
 Wybierz kategorie, które są istotne dla twojej aplikacji. Wybierz co najmniej jedną kategorię i maksymalnie trzy. Wybrać ostrożnie, ponieważ klienci można wyszukiwać w usłudze AppSource, na podstawie kategorii
 

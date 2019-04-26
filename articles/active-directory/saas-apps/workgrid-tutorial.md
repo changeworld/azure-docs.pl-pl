@@ -17,11 +17,11 @@ ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9e979410405aa9914b496b80d2ac783a67b480a7
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60009875"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60375470"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workgrid"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Workgrid
 

@@ -16,11 +16,11 @@ ms.topic: conceptual
 ms.date: 09/21/2017
 ms.author: ergreenl
 ms.openlocfilehash: 0659586512b36c51c5058271fa5e1bdb46efbc3b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55193288"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60416997"
 ---
 # <a name="deployment-scenarios-and-use-cases"></a>Scenariusze wdrażania i przypadki użycia
 W tej sekcji przyjrzymy się kilka scenariuszy i przypadków użycia, które korzystają z usług domenowych w usłudze Azure Active Directory (AD).

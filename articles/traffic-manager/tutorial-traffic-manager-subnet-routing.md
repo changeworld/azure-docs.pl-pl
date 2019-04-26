@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: kumud
-ms.openlocfilehash: 2cd3fdc9387952277c25fa07c62a0faae2993089
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
-ms.translationtype: HT
+ms.openlocfilehash: 16822a4928f0a68146bdb55f5bab4dd99df6236b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54478250"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60329561"
 ---
 # <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Bezpośrednie kierowanie ruchu do określonych punktów końcowych na podstawie podsieci użytkownika przy użyciu usługi Traffic Manager
 
@@ -69,6 +69,7 @@ W tej sekcji utworzysz dwie maszyny wirtualne *InternalWebsite* i *ProdWebsite* 
     |Grupa zasobów| Wybierz pozycję **Nowa**, a następnie wpisz *myResourceGroupTM1*.|
     |Lokalizacja| Wybierz pozycję **Wschodnie stany USA**.|
     |||
+
 4. Wybierz rozmiar maszyny wirtualnej w obszarze **Wybierz rozmiar**.
 5. Wybierz następujące wartości w obszarze **Ustawienia**, a następnie wybierz przycisk **OK**:
     
@@ -78,6 +79,7 @@ W tej sekcji utworzysz dwie maszyny wirtualne *InternalWebsite* i *ProdWebsite* 
     |Sieciowa grupa zabezpieczeń|Wybierz opcję **Podstawowa**, a następnie z listy rozwijanej **Dodaj publiczne porty wejściowe** wybierz opcje **HTTP** i **RDP** |
     |Diagnostyka rozruchu|Wybierz opcję **Wyłączone**.|
     |||
+
 6. W obszarze **Utwórz** w sekcji **Podsumowanie** wybierz pozycję **Utwórz**, aby rozpocząć wdrażanie maszyny wirtualnej.
 
 7. Wykonaj ponownie kroki 1–6 z następującymi zmianami:
@@ -89,6 +91,7 @@ W tej sekcji utworzysz dwie maszyny wirtualne *InternalWebsite* i *ProdWebsite* 
     |Nazwa maszyny wirtualnej | ProdWebsite|
     |Sieć wirtualna | Wybierz opcję **Sieć wirtualna** w obszarze **Tworzenie sieci wirtualnej**, następnie w polu **nazwa** wprowadź *myVNet2*, a jako nazwę podsieci wprowadź *mySubnet*.|
     |||
+
 8. Proces tworzenia maszyny wirtualnej może potrwać kilka minut. Nie kontynuuj wykonywania pozostałych kroków, dopóki obie maszyny wirtualne nie zostaną utworzone.
 
 #### <a name="install-iis-and-customize-the-default-web-page"></a>Instalowanie usług IIS i dostosowywanie domyślnej strony internetowej
@@ -152,6 +155,7 @@ W tej sekcji utworzysz maszyny wirtualne (*UserVMUS* i *UserVMEurope*) w obu reg
 
 4. Wybierz rozmiar maszyny wirtualnej w obszarze **Wybierz rozmiar**.
 5. Wybierz następujące wartości w obszarze **Ustawienia**, a następnie wybierz przycisk **OK**:
+
     |Ustawienie|Wartość|
     |---|---|
     |Sieć wirtualna| Wybierz opcję **Sieć wirtualna** w obszarze **Tworzenie sieci wirtualnej**, następnie w polu **Nazwa** wprowadź *myVNet3*, a jako nazwę podsieci wprowadź *mySubnet3*.|
@@ -177,6 +181,7 @@ Utwórz profil usługi Traffic Manager, który umożliwia zwracanie określonych
 
 1. W lewej górnej części ekranu wybierz pozycję **Utwórz zasób** > **Sieć** > **Profil usługi Traffic Manager** > **Utwórz**.
 2. W obszarze **Tworzenie profilu usługi Traffic Manager** wprowadź lub wybierz poniższe informacje, zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz pozycję **Utwórz**:
+
     | Ustawienie                 | Wartość                                              |
     | ---                     | ---                                                |
     | Name (Nazwa)                   | Ta nazwa musi być unikatowa w obrębie strefy trafficmanager.net. Na jej podstawie zostanie utworzona nazwa DNS trafficmanager.net służąca do uzyskiwania dostępu do profilu usługi Traffic Manager.                                   |
@@ -198,7 +203,7 @@ Dodaj dwie maszyny wirtualne z działającymi serwerami usług IIS — *Internal
 
     | Ustawienie                 | Wartość                                              |
     | ---                     | ---                                                |
-    | Typ                    | Punkt końcowy platformy Azure                                   |
+    | Type                    | Punkt końcowy platformy Azure                                   |
     | Name (Nazwa)           | myInternalWebSiteEndpoint                                        |
     | Typ zasobu docelowego           | Publiczny adres IP                          |
     | Zasób docelowy          | **Wybierz publiczny adres IP**, aby wyświetlić listę zasobów z publicznymi adresami IP w ramach tej samej subskrypcji. W obszarze **Zasób** wybierz publiczny adres IP o nazwie *InternalWebsite-ip*. Jest to publiczny adres IP serwera usług IIS maszyny wirtualnej w regionie Wschodnie stany USA.|
@@ -238,7 +243,7 @@ W tej sekcji zobaczysz działanie usługi Traffic Manager.
 ## <a name="delete-the-traffic-manager-profile"></a>Usuwanie profilu usługi Traffic Manager
 Kiedy grupy zasobów (**ResourceGroupTM1** i **ResourceGroupTM2**) przestaną być potrzebne, usuń je. Aby to zrobić, wybierz grupę zasobów (**ResourceGroupTM1** lub **ResourceGroupTM2**), a następnie wybierz pozycję **Usuń**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Dowiedz się więcej o [ważonej metodzie routingu ruchu](traffic-manager-configure-weighted-routing-method.md).
 - Dowiedz się więcej o [priorytetowej metodzie routingu](traffic-manager-configure-priority-routing-method.md).

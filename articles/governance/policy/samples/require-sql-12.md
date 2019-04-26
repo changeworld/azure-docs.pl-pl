@@ -8,11 +8,11 @@ ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
 ms.openlocfilehash: 498764d1fbd69762c09279303d75a6e2f1f2e0c6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59283719"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60532480"
 ---
 # <a name="sample---require-sql-server-version-120"></a>Przykład — wymaganie programu SQL Server w wersji 12.0
 

@@ -12,13 +12,13 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 47a6f475b5f1152850ec918b196883c6974f4d95
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370010"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60415627"
 ---
-# <a name="how-it-works-azure-ad-self-service-password-reset"></a>Jak to działa: Usługa Azure AD samoobsługowego resetowania haseł
+# <a name="how-it-works-azure-ad-self-service-password-reset"></a>Jak to działa: Samoobsługowe resetowanie haseł usługi Azure AD
 
 Jak samoobsługowego resetowania haseł (SSPR) pracy? Co oznacza tej opcji w interfejsie? Kontynuuj czytanie, aby dowiedzieć się więcej na temat samoobsługowego resetowania HASEŁ usługi Azure Active Directory (Azure AD).
 

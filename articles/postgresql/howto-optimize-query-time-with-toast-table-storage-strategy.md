@@ -1,17 +1,19 @@
 ---
 title: Optymalizuj czas kwerendy w usłudze Azure Database dla serwera PostgreSQL za pomocą strategii przechowywania tabeli WYSKAKUJĄCE
 description: W tym artykule opisano, jak zoptymalizować przeszukiwania ze strategią WYSKAKUJĄCE tabeli magazynu w usłudze Azure Database dla serwera PostgreSQL.
-author: dianaputnam
-ms.author: dianas
+author: WenJason
+ms.author: v-jay
+editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/22/2018
+origin.date: 10/22/2018
+ms.date: 02/18/2019
 ms.openlocfilehash: 96793cb1785a7ffa86331285f401453641b50dac
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820880"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60421060"
 ---
 # <a name="optimize-query-time-with-the-toast-table-storage-strategy"></a>Optymalizuj czas wykonywania zapytania za pomocą strategii przechowywania tabeli WYSKAKUJĄCE 
 W tym artykule opisano, jak zoptymalizować czas zapytania za pomocą strategii przechowywania magazynu atrybutu zwiększony technika (WYSKAKUJĄCE) tabeli.

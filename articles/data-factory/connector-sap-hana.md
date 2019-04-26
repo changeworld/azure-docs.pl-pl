@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
 ms.openlocfilehash: cdd83c3ff9d34a5e8b7f2c164136ab82f498ffb5
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022975"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60343770"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Kopiowanie danych z platformy SAP HANA przy użyciu usługi Azure Data Factory
-> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, z której korzystasz:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Wersja 1](v1/data-factory-sap-hana-connector.md)
 > * [Bieżąca wersja](connector-sap-hana.md)
 
@@ -162,23 +162,23 @@ Podczas kopiowania danych z platformy SAP HANA, następujące mapowania są uży
 
 | Typ danych SAP HANA | Typ danych tymczasowych fabryki danych |
 |:--- |:--- |
-| ALPHANUM | Ciąg |
+| ALPHANUM | String |
 | BIGINT | Int64 |
-| OBIEKT BLOB | Byte[] |
-| ATRYBUT TYPU WARTOŚĆ LOGICZNA | Bajtów |
+| BLOB | Byte[] |
+| ATRYBUT TYPU WARTOŚĆ LOGICZNA | Byte |
 | CLOB | Byte[] |
 | DATE | DateTime |
-| DECIMAL | Dziesiętny |
-| PODWÓJNE | Pojedyncze |
+| DECIMAL | Decimal |
+| DOUBLE | Single |
 | INT | Int32 |
-| NVARCHAR | Ciąg |
-| RZECZYWISTE | Pojedyncze |
+| NVARCHAR | String |
+| RZECZYWISTE | Single |
 | SECONDDATE | DateTime |
 | SMALLINT | Int16 |
-| CZAS | Przedział czasu |
-| ZNACZNIK CZASU: | DateTime |
-| TINYINT | Bajtów |
-| VARCHAR | Ciąg |
+| CZAS | TimeSpan |
+| SYGNATURA CZASOWA | DateTime |
+| TINYINT | Byte |
+| VARCHAR | String |
 
 ## <a name="known-limitations"></a>Znane ograniczenia
 

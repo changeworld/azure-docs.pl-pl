@@ -17,11 +17,11 @@ ms.date: 06/15/2018
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ae9c2c975bf49725be1858ad02a1c4b90ef58a7f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57871266"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60370584"
 ---
 # <a name="understand-your-azure-billing-for-external-service-charges"></a>Zrozumienie rozliczenia platformy Azure dla opłat za usługi zewnętrzne
 Usługi zewnętrzne są publikowane przez producentów oprogramowania innych firm w witrynie Azure marketplace. Na przykład SendGrid jest usług zewnętrznych, które można kupić na platformie Azure, ale nie został opublikowany przez firmę Microsoft.

@@ -16,11 +16,11 @@ ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
 ms.openlocfilehash: 33c4264d9aeffb721cd2d44df6d551126782f0e1
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55165714"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60417864"
 ---
 # <a name="create-an-organizational-unit-ou-on-an-azure-ad-domain-services-managed-domain"></a>Tworzenie jednostki organizacyjnej (OU) w domenie zarządzanej usług domenowych Azure AD
 Usługa Azure AD Domain Services domen zarządzanych obejmują dwóch kontenerów wbudowanych odpowiednio o nazwie "Komputery usługi AAD DC" i "Użytkownicy usługi AAD DC". Kontener "Komputery usługi AAD DC" obejmuje obiekty komputerów dla wszystkich komputerów, które są przyłączone do domeny zarządzanej. Kontener "Użytkownicy usługi AAD DC" obejmuje użytkowników i grup w dzierżawie usługi Azure AD. Od czasu do czasu może być konieczne utworzenie konta usługi w domenie zarządzanej wdrożyć obciążenia. W tym celu można utworzyć niestandardowe jednostki organizacyjnej (OU) w domenie zarządzanej i utworzyć konta usługi w tej jednostce Organizacyjnej. W tym artykule pokazano, jak utworzyć jednostkę Organizacyjną w domenie zarządzanej.
