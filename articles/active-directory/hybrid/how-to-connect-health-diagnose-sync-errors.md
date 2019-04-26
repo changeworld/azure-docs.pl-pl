@@ -15,15 +15,15 @@ ms.date: 05/11/2018
 ms.author: zhiweiw
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fbdeef7c591221756ad206bf2f3dd78ac3d26c4f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57885321"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60349985"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>Zdiagnozować i rozwiązać błędy synchronizacji zduplikowanym atrybutem
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Biorąc o krok dalej, aby wyróżnić błędy synchronizacji, usługi Azure Active Directory (Azure AD) Connect Health wprowadza samodzielne rozwiązanie problemu. Ona rozwiązuje błędy synchronizacji zduplikowanym atrybutem i poprawki obiektów, które są oddzielone od usługi Azure AD.
 Funkcja diagnostyki ma następujące korzyści:
 - Zapewnia procedury diagnostycznej, który zawęża zduplikowanym atrybutem błędy synchronizacji. A także zapewnia określone poprawki.

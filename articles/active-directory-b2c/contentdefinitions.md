@@ -3,7 +3,7 @@ title: ContentDefinitions — usługa Azure Active Directory B2C | Dokumentacja 
 description: Określ element ContentDefinitions zasad niestandardowych w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
@@ -11,11 +11,11 @@ ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: e36eb3816d6f465552c4db740508d5e7f5fa1331
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55161668"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60313333"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -23,7 +23,7 @@ ms.locfileid: "55161668"
 
 Można dostosować wygląd i działanie dowolnego [własnym potwierdzone profilu technicznego](self-asserted-technical-profile.md). Usługa Azure Active Directory (Azure AD) B2C uruchamia kod w przeglądarce klienta i używa się nowoczesnym podejściem o nazwie udostępniania zasobów między źródłami (CORS). 
 
-Aby dostosować interfejs użytkownika, należy określić adres URL w **ContentDefinition** element z dostosowaną zawartość HTML. W profilu technicznym samodzielnie lub **OrchestrationStep**, wskaż identyfikatora definicji zawartości. Może zawierać definicję zawartości **LocalizedResourcesReferences** element, który określa listę zlokalizowane zasoby do załadowania. Usługa Azure AD B2C scala elementy interfejsu użytkownika przy użyciu zawartość HTML, który jest ładowany z adresu URL, a następnie wyświetla stronę do użytkownika.
+Aby dostosować interfejs użytkownika, należy określić adres URL w **ContentDefinition** element z dostosowaną zawartość HTML. W profilu technicznym samodzielnie lub **OrchestrationStep**, wskaż identyfikatora definicji zawartości. Może zawierać definicję zawartości **LocalizedResourcesReferences** element, który określa listę zlokalizowane zasoby do załadowania. Usługa Azure AD B2C scala elementy interfejsu użytkownika z zawartością HTML ładowaną z adresu URL, a następnie wyświetla stronę użytkownikowi.
 
 **ContentDefinitions** element zawiera adresy URL do szablonów HTML5, które mogą być używane w podróży użytkownika. Identyfikator URI strony HTML5 jest używany dla kroku interfejs określonego użytkownika. Na przykład Resetowanie hasła logowania lub tworzenia konta, lub stron błędów. Możesz zmodyfikować wygląd i działanie przez zastąpienie parametr LoadUri dla pliku HTML5. Możesz utworzyć nowe definicje zawartości zgodnie z potrzebami. Ten element może zawierać odwołanie zlokalizowane zasoby na identyfikator lokalizacji określone w [lokalizacji](localization.md) elementu.
 
@@ -79,7 +79,7 @@ Metadane **LocalAccountSignUpWithLogonEmail** własnym potwierdzone profil techn
 
 **Identyfikator URI** element jest używany do określania identyfikator strony. Usługa Azure AD B2C używa identyfikatora strony do ładowania i Inicjowanie elementów interfejsu użytkownika i języka JavaScript po stronie klienta. Format wartości jest `urn:com:microsoft:aad:b2c:elements:page-name:version`.  W poniższej tabeli przedstawiono identyfikatorów stron, których można użyć.
 
-| Value |   Opis |
+| Wartość |   Opis |
 | ----- | ----------- |
 | `urn:com:microsoft:aad:b2c:elements:globalexception:1.1.0` | Wyświetla stronę błędu, gdy występuje wyjątek lub komunikat o błędzie. |
 | `urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0` | Wyświetla listę dostawców tożsamości, które użytkownicy mogą wybierać podczas logowania. | 
