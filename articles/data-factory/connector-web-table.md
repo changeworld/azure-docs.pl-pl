@@ -56,7 +56,7 @@ Następujące właściwości są obsługiwane dla sieci Web tabeli połączonej 
 |:--- |:--- |:--- |
 | type | Właściwość type musi być równa: **Sieć Web** |Yes |
 | url | Adres URL źródła w sieci Web |Yes |
-| Element authenticationType | Dozwolone wartości to: **Anonimowe**. |Yes |
+| authenticationType  | Dozwolone wartości to: **Anonimowe**. |Yes |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Własne środowisko IR jest wymagany, zgodnie z opisem w [wymagania wstępne](#prerequisites). |Yes |
 
 **Przykład:**
@@ -87,8 +87,8 @@ Aby skopiować dane z tabeli w sieci Web, należy ustawić właściwość typu z
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość typu elementu dataset musi być równa: **Usługa WebTable** | Yes |
-| ścieżka |Względny adres URL do zasobu, który zawiera tabelę. |Nie. Jeśli ścieżka nie zostanie określona, używana jest tylko adres URL, które są określone w definicji połączonej usługi. |
-| indeks |Indeks tabeli w zasobie. Zobacz [Get indeksu tabeli na stronie HTML](#get-index-of-a-table-in-an-html-page) sekcji instrukcje pobierania indeksu tabeli na stronie HTML. |Yes |
+| path |Względny adres URL do zasobu, który zawiera tabelę. |Nie. Jeśli ścieżka nie zostanie określona, używana jest tylko adres URL, które są określone w definicji połączonej usługi. |
+| index |Indeks tabeli w zasobie. Zobacz [Get indeksu tabeli na stronie HTML](#get-index-of-a-table-in-an-html-page) sekcji instrukcje pobierania indeksu tabeli na stronie HTML. |Yes |
 
 **Przykład:**
 
