@@ -2,23 +2,19 @@
 title: Zarządzanie usługi Azure Key Vault przy użyciu interfejsu wiersza polecenia — usługi Azure Key Vault | Dokumentacja firmy Microsoft
 description: Skorzystaj z tego artykułu w celu automatyzacji typowych zadań w usłudze Key Vault przy użyciu wiersza polecenia platformy Azure
 services: key-vault
-documentationcenter: ''
 author: barclayn
 manager: barbkess
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: key-vault
-ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: barclayn
 ms.openlocfilehash: 1679fbe0dedc88ca3e8293512f9a79bb7da69790
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115627"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60641028"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Zarządzanie Key Vault przy użyciu wiersza polecenia platformy Azure 
 
@@ -132,7 +128,7 @@ az keyvault create --name "ContosoKeyVault" --resource-group "ContosoResourceGro
 
 Dane wyjściowe tego polecenia pokazują właściwości magazynu kluczy, który został utworzony. Dwie najważniejsze właściwości to:
 
-* **Nazwa**: W tym przykładzie nazwa to ContosoKeyVault. Użyjesz tej nazwy dla innych poleceń usługi Key Vault.
+* **name**: W tym przykładzie nazwa to ContosoKeyVault. Użyjesz tej nazwy dla innych poleceń usługi Key Vault.
 * **vaultUri**: W tym przykładzie identyfikator URI jest https://contosokeyvault.vault.azure.net. Aplikacje korzystające z magazynu za pomocą jego interfejsu API REST muszą używać tego identyfikatora URI.
 
 Twoje konto platformy Azure ma teraz uprawnienia do wykonywania dowolnych operacji na tym magazynie kluczy. Począwszy od jeszcze nikt inny nie ma autoryzacji.

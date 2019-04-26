@@ -1,5 +1,5 @@
 ---
-title: Błąd podczas obsługi w ramach zasad usługi Azure API Management | Dokumentacja firmy Microsoft
+title: Obsługa błędów w zasady usługi Azure API Management | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak reagować na błędy, które mogą wystąpić podczas przetwarzania żądań w usłudze Azure API Management.
 services: api-management
 documentationcenter: ''
@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2018
 ms.author: apimpm
-ms.openlocfilehash: 73609e802eceea6aa94d77cef6ca1d654264973d
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
-ms.translationtype: MT
+ms.openlocfilehash: 2bde63bb668188936b3dd3cf5ecbf3b8c604eb95
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265011"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60564331"
 ---
-# <a name="error-handling-in-api-management-policies"></a>Obsługa błędów w zasad interfejsu API zarządzania
+# <a name="error-handling-in-api-management-policies"></a>Obsługa błędów w zasady usługi API Management
 
-Zapewniając `ProxyError` obiektu, usługi Azure API Management umożliwia wydawców odpowiedzieć na błędy, które mogą wystąpić podczas przetwarzania żądania. `ProxyError` Obiekt jest dostępny za pośrednictwem [kontekstu. LastError](api-management-policy-expressions.md#ContextVariables) właściwości i mogą być używane przez zasady w `on-error` sekcji zasad. Ten artykuł zawiera odwołanie błąd możliwości obsługi w programie Azure API Management.  
+Zapewniając `ProxyError` obiektu w usłudze Azure API Management umożliwia wydawcom reagować na błędy, które mogą wystąpić podczas przetwarzania żądań. `ProxyError` Obiekt jest dostępny za pośrednictwem [kontekstu. LastError](api-management-policy-expressions.md#ContextVariables) właściwości i może być używany przez zasady w `on-error` sekcji zasady. Ten artykuł zawiera odniesienie błędu możliwości obsługi w usłudze Azure API Management.  
   
-## <a name="error-handling-in-api-management"></a>Obsługa błędów w zarządzanie interfejsami API
+## <a name="error-handling-in-api-management"></a>Obsługa błędów w usługi API Management
 
- Zasady w usłudze Azure API Management są podzielone na `inbound`, `backend`, `outbound`, i `on-error` sekcjach przedstawiono, jak pokazano w poniższym przykładzie.  
+ Zasady w usłudze Azure API Management są podzielone na `inbound`, `backend`, `outbound`, i `on-error` sekcje, jak pokazano w poniższym przykładzie.  
   
 ```xml  
 <policies>  
@@ -48,59 +48,59 @@ Zapewniając `ProxyError` obiektu, usługi Azure API Management umożliwia wydaw
 </policies>  
 ```  
   
-Podczas przetwarzania żądania wbudowanych kroków wdrożeniowych oraz wszystkie zasady, które znajdują się w zakresie dla żądania. Jeśli wystąpi błąd, przetwarzania natychmiast przechodzi do `on-error` sekcji zasad.  
-`on-error` Sekcji zasad może być używany w żadnych zakresu. Wydawcy interfejsu API można skonfigurować niestandardowe zachowanie, takie jak rejestrowanie błąd do usługi event hubs lub Utwórz nową odpowiedź, aby powrócić do obiektu wywołującego.  
+Podczas przetwarzania żądania wbudowanych kroki są wykonywane oraz wszystkie zasady, które znajdują się w zakresie dla żądania. Jeśli wystąpi błąd, przetwarzania natychmiast przechodzi do `on-error` sekcji zasady.  
+`on-error` Sekcji zasady mogą być używane w jakikolwiek zakres. Wydawcy interfejsów API można skonfigurować zachowanie niestandardowe, takie jak rejestrowanie błędu do usługi event hubs lub utworzenie nowej odpowiedzi, aby powrócić do obiektu wywołującego.  
   
 > [!NOTE]
->  `on-error` Sekcji nie jest obecny w zasady domyślne. Aby dodać `on-error` sekcji do zasady, przejdź do żądanego zasad w edytorze zasad i dodaj go. Aby uzyskać więcej informacji o konfigurowaniu zasad, zobacz [zasad w usłudze API Management](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/).  
+>  `on-error` Sekcja nie jest obecna w zasadach domyślnie. Aby dodać `on-error` sekcji z zasadami, przejdź do żądane zasady w edytorze zasad i dodaj go. Aby uzyskać więcej informacji na temat konfigurowania zasad, zobacz [zasad w usłudze API Management](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/).  
 >   
->  W przypadku nie `on-error` sekcji wywołań będą otrzymywać wiadomości odpowiedzi HTTP 400 lub 500 Jeśli wystąpi błąd.  
+>  Jeśli ma nie `on-error` sekcji, obiekty wywołujące otrzyma 400 lub 500 komunikatów odpowiedzi HTTP, jeśli wystąpi błąd.  
   
-### <a name="policies-allowed-in-on-error"></a>Zasady dozwolone na błąd
+### <a name="policies-allowed-in-on-error"></a>Zasady mogą na błąd
 
- Następujące zasady mogą być używane w `on-error` sekcji zasad.  
+ Następujące zasady mogą być używane w `on-error` sekcji zasady.  
   
--   [Wybierz pozycję](api-management-advanced-policies.md#choose)  
+-   [Wybierz opcję](api-management-advanced-policies.md#choose)  
 -   [Ustaw zmienną](api-management-advanced-policies.md#set-variable)  
--   [Znajdź i Zamień](api-management-transformation-policies.md#Findandreplacestringinbody)  
--   [odpowiedź Return](api-management-advanced-policies.md#ReturnResponse)  
--   [set — nagłówek](api-management-transformation-policies.md#SetHTTPheader)  
--   [set, metoda](api-management-advanced-policies.md#SetRequestMethod)  
--   [Ustaw stan](api-management-advanced-policies.md#SetStatus)  
--   [Żądanie wysłania](api-management-advanced-policies.md#SendRequest)  
--   [sposób żądania, Wyślij co w-](api-management-advanced-policies.md#SendOneWayRequest)  
--   [dziennika do Centrum eventhub](api-management-advanced-policies.md#log-to-eventhub)  
--   [JSON do pliku xml](api-management-transformation-policies.md#ConvertJSONtoXML)  
--   [XML do formatu json](api-management-transformation-policies.md#ConvertXMLtoJSON)  
+-   [find-and-replace](api-management-transformation-policies.md#Findandreplacestringinbody)  
+-   [return-response](api-management-advanced-policies.md#ReturnResponse)  
+-   [set-header](api-management-transformation-policies.md#SetHTTPheader)  
+-   [set-method](api-management-advanced-policies.md#SetRequestMethod)  
+-   [set-status](api-management-advanced-policies.md#SetStatus)  
+-   [send-request](api-management-advanced-policies.md#SendRequest)  
+-   [send-one-way-request](api-management-advanced-policies.md#SendOneWayRequest)  
+-   [dziennik do Centrum zdarzeń](api-management-advanced-policies.md#log-to-eventhub)  
+-   [json-to-xml](api-management-transformation-policies.md#ConvertJSONtoXML)  
+-   [xml-to-json](api-management-transformation-policies.md#ConvertXMLtoJSON)  
   
 ## <a name="lasterror"></a>LastError
 
- Jeśli wystąpi błąd i formant przechodzi do `on-error` błąd sekcji zasady, są przechowywane w [kontekstu. LastError](api-management-policy-expressions.md#ContextVariables) właściwość, która jest możliwy przy użyciu zasad w `on-error` sekcji. LastError ma następujące właściwości.  
+ Gdy wystąpi błąd i kontrola przechodzi do `on-error` sekcji zasady błędu są przechowywane w [kontekstu. LastError](api-management-policy-expressions.md#ContextVariables) właściwość, która może zostać oceniony przez zasady w `on-error` sekcji. LastError ma następujące właściwości.  
   
 | Name (Nazwa)     | Typ   | Opis                                                                                               | Wymagane |
 |----------|--------|-----------------------------------------------------------------------------------------------------------|----------|
-| `Source`   | ciąg | Określa nazwę elementu, na którym wystąpił błąd. Może być zasad lub nazwa kroku wbudowanej potoku.     | Yes      |
-| `Reason`   | ciąg | Kod błędu przyjaznych dla komputera, który może służyć do obsługi błędów.                                       | Nie       |
-| `Message`  | ciąg | Opis błędu zrozumiałą dla użytkownika.                                                                         | Yes      |
-| `Scope`    | ciąg | Nazwa zakresu, w którym wystąpił błąd i może być "globalne", "product", "interfejsu api" lub "operacji" | Nie       |
-| `Section`  | ciąg | Nazwa sekcji, w którym wystąpił błąd. Możliwe wartości: "ruchu przychodzącego", "zaplecze", "wychodzący" lub "on error".       | Nie       |
-| `Path`     | ciąg | Określa zagnieżdżonych zasad, na przykład "[3] wybierz / po [2]".                                                        | Nie       |
-| `PolicyId` | ciąg | Wartość `id` atrybut, jeśli określony przez klienta i w zasadach, w którym wystąpił błąd             | Nie       |
+| Element źródłowy   | string | Nazwy elementu, w którym wystąpił błąd. Może być zasad lub nazwa kroku wbudowanej potoku.     | Yes      |
+| Przyczyna   | string | Kod błędu przyjaznego dla komputera, który może być używany do obsługi błędów.                                       | Nie       |
+| Komunikat  | string | Opis błędu czytelny dla człowieka.                                                                         | Yes      |
+| Zakres    | string | Nazwa zakresu, w którym wystąpił błąd i mogą mieć jedną z "global", "produkt", "interfejs api" lub "Operacja" | Nie       |
+| Sekcja  | string | Nazwa sekcji, w którym wystąpił błąd. Możliwe wartości: "dla ruchu przychodzącego", "wewnętrzna", "wychodzące" lub "on error".       | Nie       |
+| Ścieżka     | string | Określa zasady zagnieżdżonych, na przykład "Wybierz [3] / podczas [2]".                                                        | Nie       |
+| PolicyId | string | Wartość atrybutu `id` atrybutu, jeśli określony przez klienta w zasadach, w którym wystąpił błąd             | Nie       |
 
 > [!TIP]
-> Kod stanu są dostępne za pośrednictwem kontekstu. Response.StatusCode.  
+> Kod stanu dostęp za pomocą kontekstu. Response.StatusCode.  
 
 > [!NOTE]
-> Wszystkie zasady mają opcjonalny `id` atrybut, który można dodać do elementu głównego zasad. Jeśli ten atrybut jest obecny w zasadach, gdy wystąpi błąd, można pobrać wartości atrybutu za pomocą `context.LastError.PolicyId` właściwości.
+> Wszystkie zasady mają opcjonalny `id` atrybut, który można dodać do głównego elementu zasad. Jeśli ten atrybut jest obecny w zasadach, gdy wystąpi błąd, wartość atrybutu można pobrać przy użyciu `context.LastError.PolicyId` właściwości.
 
-## <a name="predefined-errors-for-built-in-steps"></a>Wstępnie zdefiniowane błędów dla wbudowanych kroków  
- Następujące błędy są wstępnie zdefiniowane warunki błędów, które mogą wystąpić podczas obliczania kroki przetwarzania wbudowanych.  
+## <a name="predefined-errors-for-built-in-steps"></a>Wstępnie zdefiniowane błędy wbudowanych kroków  
+ Następujące błędy są wstępnie zdefiniowane warunki błędów, które mogą wystąpić podczas obliczania kroków przetwarzania wbudowanych.  
   
 | Element źródłowy        | Warunek                                 | Przyczyna                  | Komunikat                                                                                                                |
 |---------------|-------------------------------------------|-------------------------|------------------------------------------------------------------------------------------------------------------------|
-| konfiguracja | Identyfikator URI nie pasuje do operacji lub interfejsu API | OperationNotFound       | Nie można dopasować przychodzące żądanie operacji.                                                                      |
-| Autoryzacji | Nie podano klucza subskrypcji             | SubscriptionKeyNotFound | Odmowa z powodu braku subskrypcji klucz dostępu. Upewnij się uwzględnić subskrypcji klucza w przypadku wysyłania żądań do tego interfejsu API. |
-| Autoryzacji | Wartość klucza subskrypcji jest nieprawidłowy         | SubscriptionKeyInvalid  | Odmowa z powodu subskrypcji nieprawidłowy klucz dostępu. Upewnij się zapewnić prawidłowy klucz dla aktywnych subskrypcji.            |
+| konfiguracja | Identyfikator URI nie pasują do dowolnego interfejsu API lub operacji | OperationNotFound       | Nie można dopasować przychodzące żądanie operacji.                                                                      |
+| Autoryzacja | Klucz subskrypcji nie podano             | SubscriptionKeyNotFound | Odmowa z powodu braku subskrypcji klucz dostępu. Upewnij się uwzględnić klucz subskrypcji, w przypadku wysyłania żądań do tego interfejsu API. |
+| Autoryzacja | Wartość klucza subskrypcji jest nieprawidłowy         | SubscriptionKeyInvalid  | Odmowa z powodu nieprawidłowej subskrypcji klucz dostępu. Upewnij się zapewnić prawidłowy klucz dla aktywną subskrypcję.            |
   
 ## <a name="predefined-errors-for-policies"></a>Błędy wstępnie zdefiniowane zasady  
  Następujące błędy są wstępnie zdefiniowane warunki błędów, które mogą wystąpić podczas oceny zasad.  
@@ -108,22 +108,22 @@ Podczas przetwarzania żądania wbudowanych kroków wdrożeniowych oraz wszystki
 | Element źródłowy       | Warunek                                                       | Przyczyna                    | Komunikat                                                                                                                              |
 |--------------|-----------------------------------------------------------------|---------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
 | limit szybkości   | Przekroczono limit szybkości                                             | RateLimitExceeded         | Przekroczono limit szybkości                                                                                                               |
-| quota        | Przekroczono przydział                                                  | QuotaExceeded             | Poza limitem woluminu wywołania. Przydział zostanie uzupełniona w xx:xx:xx. - lub - limit przydziału przepustowości. Przydział zostanie uzupełniona w xx:xx:xx. |
-| Format jsonp        | Nieprawidłowa wartość parametru wywołania zwrotnego (zawiera nieprawidłowe znaki) | CallbackParameterInvalid  | Wartość parametru wywołania zwrotnego {-nazwy parametru wywołania zwrotnego-} nie jest prawidłowym identyfikatorem języka JavaScript.                                          |
-| ip-filter    | Nie można przeanalizować IP wywołującego z żądania                          | FailedToParseCallerIP     | Nie można ustalić adres IP dla obiekt wywołujący. Odmowa dostępu.                                                                        |
-| ip-filter    | Obiekt wywołujący IP nie ma na liście listy dozwolonych                                | CallerIpNotAllowed        | Adres IP wywołującego {adres ip} nie jest dozwolone. Odmowa dostępu.                                                                        |
-| ip-filter    | Obiekt wywołujący adres IP należy do listy zablokowanych                                    | CallerIpBlocked           | Adres IP wywołującego jest zablokowany. Odmowa dostępu.                                                                                         |
-| check-header | Brak wymaganego nagłówka nie przedstawione lub wartość               | HeaderNotFound            | Nie znaleziono nagłówka {Nazwa nagłówka} w żądaniu. Odmowa dostępu.                                                                    |
-| check-header | Brak wymaganego nagłówka nie przedstawione lub wartość               | HeaderValueNotAllowed     | Wartość nagłówka {Nazwa nagłówka} z {wartość nagłówka} nie jest dozwolona. Odmowa dostępu.                                                          |
-| validate-jwt | W żądaniu brakuje tokenu Jwt                                 | TokenNotFound             | Nie można odnaleźć w żądaniu JWT. Odmowa dostępu.                                                                                         |
-| validate-jwt | Nie można sprawdzić poprawności podpisu                                     | TokenSignatureInvalid     | < wiadomości z biblioteki jwt\>. Odmowa dostępu.                                                                                          |
-| validate-jwt | Nieprawidłowi odbiorcy                                                | TokenAudienceNotAllowed   | < wiadomości z biblioteki jwt\>. Odmowa dostępu.                                                                                          |
-| validate-jwt | Nieprawidłowy wystawca                                                  | TokenIssuerNotAllowed     | < wiadomości z biblioteki jwt\>. Odmowa dostępu.                                                                                          |
-| validate-jwt | Token wygasł                                                   | TokenExpired              | < wiadomości z biblioteki jwt\>. Odmowa dostępu.                                                                                          |
-| validate-jwt | Klucz podpisu nie został rozwiązany przez identyfikator                            | TokenSignatureKeyNotFound | < wiadomości z biblioteki jwt\>. Odmowa dostępu.                                                                                          |
-| validate-jwt | Token brakuje wymaganego oświadczeń                          | TokenClaimNotFound        | JWT token brakuje następujących oświadczeń: < c1\>, < c2\>,... Odmowa dostępu.                                                            |
-| validate-jwt | Niezgodność wartości oświadczeń                                           | TokenClaimValueNotAllowed | Wartość oświadczenia {Nazwa oświadczenia} {wartość oświadczenia} nie jest dozwolona. Odmowa dostępu.                                                             |
-| validate-jwt | Inne błędy sprawdzania poprawności                                       | JwtInvalid                | < wiadomości z biblioteki jwt\>                                                                                                          |
+| limit przydziału        | Przekroczono limit przydziału                                                  | QuotaExceeded             | Poza limitem woluminu wywołania. Limit przydziału zostanie uzupełniona w xx:xx:xx. - lub - limit przydziału przepustowości. Limit przydziału zostanie uzupełniona w xx:xx:xx. |
+| jsonp        | Nieprawidłowa wartość parametru wywołania zwrotnego (zawiera nieprawidłowe znaki) | CallbackParameterInvalid  | Wartość parametru wywołania zwrotnego {wywołania zwrotnego — parametr name} nie jest prawidłowym identyfikatorem języka JavaScript.                                          |
+| ip-filter    | Nie można przeanalizować IP obiektu wywołującego z żądania                          | FailedToParseCallerIP     | Nie można ustanowić adresu IP do obiektu wywołującego. Odmowa dostępu.                                                                        |
+| ip-filter    | Obiekt wywołujący IP nie znajduje się w listy dozwolonych                                | CallerIpNotAllowed        | Adres IP obiektu wywołującego {adres ip} jest niedozwolone. Odmowa dostępu.                                                                        |
+| ip-filter    | Obiekt wywołujący adres IP należy do listy zablokowanych                                    | CallerIpBlocked           | Adres IP obiektu wywołującego jest blokowany. Odmowa dostępu.                                                                                         |
+| check-header | Brak wymaganego nagłówka nie prezentowane lub wartość               | HeaderNotFound            | Nie znaleziono nagłówka {Nazwa nagłówka} w żądaniu. Odmowa dostępu.                                                                    |
+| check-header | Brak wymaganego nagłówka nie prezentowane lub wartość               | HeaderValueNotAllowed     | Wartość nagłówka {Nazwa nagłówka} {wartości nagłówka} nie jest dozwolone. Odmowa dostępu.                                                          |
+| validate-jwt | W żądaniu brakuje tokenu Jwt                                 | TokenNotFound             | Nie można odnaleźć w żądania tokenu JWT. Odmowa dostępu.                                                                                         |
+| validate-jwt | Weryfikacja podpisu nie powiodła się                                     | TokenSignatureInvalid     | < komunikat z biblioteki jwt\>. Odmowa dostępu.                                                                                          |
+| validate-jwt | Nieprawidłowy odbiorców                                                | TokenAudienceNotAllowed   | < komunikat z biblioteki jwt\>. Odmowa dostępu.                                                                                          |
+| validate-jwt | Nieprawidłowy wystawcy                                                  | TokenIssuerNotAllowed     | < komunikat z biblioteki jwt\>. Odmowa dostępu.                                                                                          |
+| validate-jwt | Token wygasł                                                   | TokenExpired              | < komunikat z biblioteki jwt\>. Odmowa dostępu.                                                                                          |
+| validate-jwt | Nie rozpoznano klucza podpisu według Identyfikatora                            | TokenSignatureKeyNotFound | < komunikat z biblioteki jwt\>. Odmowa dostępu.                                                                                          |
+| validate-jwt | Wymagane oświadczenia brakuje tokenu                          | TokenClaimNotFound        | JWT token nie zawiera następujących oświadczenia: < c1\>, < c2\>,... Odmowa dostępu.                                                            |
+| validate-jwt | Niezgodność wartości oświadczeń                                           | TokenClaimValueNotAllowed | Wartość oświadczenia {oświadczenia name} {wartość oświadczenia} nie jest dozwolone. Odmowa dostępu.                                                             |
+| validate-jwt | Inne błędy sprawdzania poprawności                                       | JwtInvalid                | < komunikat z biblioteki jwt\>                                                                                                          |
 
 ## <a name="example"></a>Przykład
 
@@ -172,13 +172,13 @@ Ustawienie zasad interfejsu API:
 
 i wysyłanie nieautoryzowanego żądania spowoduje następującą odpowiedź:
 
-![Błąd podczas nieautoryzowanego odpowiedzi](media/api-management-error-handling-policies/error-response.png)
+![Odpowiedzi na błąd dotyczący nieautoryzowanego dostępu](media/api-management-error-handling-policies/error-response.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać więcej informacji, Praca z zasad Zobacz:
+Aby uzyskać więcej informacji, w pracy z tymi zasadami zobacz:
 
-+ [Zasady w usłudze API Management](api-management-howto-policies.md)
-+ [Przekształć interfejsów API](transform-api.md)
-+ [Informacje o zasadach](api-management-policy-reference.md) pełną listę deklaracji zasad i ich ustawienia
++ [Zasady usługi API Management](api-management-howto-policies.md)
++ [Przekształć interfejsy API](transform-api.md)
++ [Informacje o zasadach](api-management-policy-reference.md) pełną listę zasad i ich ustawienia
 + [Przykłady zasad](policy-samples.md)   

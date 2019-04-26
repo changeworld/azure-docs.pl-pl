@@ -9,11 +9,11 @@ ms.topic: reference
 ms.date: 01/17/2019
 ms.author: babanisa
 ms.openlocfilehash: f44d2c1c5be6ac895b6f5ea9feca29c0f8ed09f3
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467744"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60561765"
 ---
 # <a name="azure-event-grid-event-schema-for-service-bus"></a>Schemat zdarzeń Azure Event Grid dla usługi Service Bus
 
@@ -82,25 +82,25 @@ Zdarzenie zawiera następujące dane najwyższego poziomu:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| temat | ciąg | Zasobów Pełna ścieżka do źródła zdarzeń. To pole nie jest zapisywalna. Usługa Event Grid udostępnia tę wartość. |
-| temat | ciąg | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
-| eventType | ciąg | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. |
-| eventTime | ciąg | Czas, którego zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
-| id | ciąg | Unikatowy identyfikator zdarzenia. |
+| temat | string | Zasobów Pełna ścieżka do źródła zdarzeń. To pole nie jest zapisywalna. Usługa Event Grid udostępnia tę wartość. |
+| temat | string | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
+| eventType | string | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. |
+| eventTime | string | Czas, którego zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
+| id | string | Unikatowy identyfikator zdarzenia. |
 | dane | obiekt | Dane zdarzenia magazynu obiektów blob. |
-| dataVersion | ciąg | Wersja schematu dla obiektu danych. Wydawca Określa wersję schematu. |
-| metadataVersion | ciąg | Wersja schematu dla metadanych zdarzenia. Usługa Event Grid definiuje schemat właściwości najwyższego poziomu. Usługa Event Grid udostępnia tę wartość. |
+| dataVersion | string | Wersja schematu dla obiektu danych. Wydawca Określa wersję schematu. |
+| metadataVersion | string | Wersja schematu dla metadanych zdarzenia. Usługa Event Grid definiuje schemat właściwości najwyższego poziomu. Usługa Event Grid udostępnia tę wartość. |
 
 Obiekt danych ma następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| namespaceName | ciąg | Przestrzeń nazw usługi Service Bus zasób istnieje w. |
-| requestUri | ciąg | Identyfikator URI do określonej kolejki lub subskrypcji wysyłających zdarzenia. |
-| entityType | ciąg | Typ jednostki usługi Service Bus wysyłających zdarzenia (kolejki lub subskrypcji). |
-| queueName | ciąg | Kolejka z aktywne komunikaty, jeśli subskrypcja do kolejki. Wartość null, jeśli za pomocą tematów / subskrypcji. |
-| topicName | ciąg | Temat subskrypcji usługi Service Bus przy użyciu aktywne komunikaty należą do. Wartość null, jeśli za pomocą kolejki. |
-| subscriptionName | ciąg | Subskrypcja usługi Service Bus przy użyciu aktywne wiadomości. Wartość null, jeśli za pomocą kolejki. |
+| namespaceName | string | Przestrzeń nazw usługi Service Bus zasób istnieje w. |
+| requestUri | string | Identyfikator URI do określonej kolejki lub subskrypcji wysyłających zdarzenia. |
+| entityType | string | Typ jednostki usługi Service Bus wysyłających zdarzenia (kolejki lub subskrypcji). |
+| queueName | string | Kolejka z aktywne komunikaty, jeśli subskrypcja do kolejki. Wartość null, jeśli za pomocą tematów / subskrypcji. |
+| topicName | string | Temat subskrypcji usługi Service Bus przy użyciu aktywne komunikaty należą do. Wartość null, jeśli za pomocą kolejki. |
+| subscriptionName | string | Subskrypcja usługi Service Bus przy użyciu aktywne wiadomości. Wartość null, jeśli za pomocą kolejki. |
 
 ## <a name="next-steps"></a>Kolejne kroki
 

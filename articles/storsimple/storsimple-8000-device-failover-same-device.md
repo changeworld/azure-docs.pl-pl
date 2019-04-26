@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 06/23/2017
 ms.author: alkohli
 ms.openlocfilehash: dd207eaad1a3e821724d51a890d0882bfffda131
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55809065"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60577381"
 ---
 # <a name="fail-over-your-storsimple-physical-device-to-same-device"></a>Urządzenie fizyczne StorSimple na tym samym urządzeniu w trybie Failover
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 W tym samouczku opisano kroki wymagane do pracy awaryjnej urządzeniem fizycznym StorSimple 8000 series do samego siebie w przypadku awarii. Usługa StorSimple używa funkcji trybu failover urządzenia do migracji danych z urządzenia fizycznego źródła w centrum danych do innego urządzenia fizycznego. Wskazówki zawarte w tym samouczku ma zastosowanie do serii StorSimple 8000 fizycznych urządzeń z systemem oprogramowania wersji Update 3 i nowszych.
 

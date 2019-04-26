@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Windows
 ms.workload: infrastructure-services
 ms.date: 05/09/2016
 ms.author: markscu
-ms.openlocfilehash: a9de0f0021d92c59c44e85f0487cc9a08b6a3099
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 49824741facc8822a9417306794f1028fc180e16
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58497366"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60555142"
 ---
 # <a name="create-matlab-distributed-computing-server-clusters-on-azure-vms"></a>Tworzenie klastrów serwera rozproszonych obliczeń MATLAB na maszynach wirtualnych platformy Azure
 Maszyny wirtualne Microsoft Azure umożliwia utworzenie co najmniej jeden klaster MATLAB rozproszonego przetwarzania serwera do uruchamiania obciążeń MATLAB intensywnych obliczeń równoległych. Instalowanie oprogramowania serwera rozproszonych obliczeń MATLAB na maszynie Wirtualnej do użycia jako obraz podstawowy i użyj szablonu szybkiego startu platformy Azure lub skrypt programu Azure PowerShell (dostępne na [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster)) do wdrażania i zarządzania klastrem. Po wdrożeniu Połącz się z klastrem, do uruchamiania obciążeń.

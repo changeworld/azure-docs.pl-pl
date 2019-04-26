@@ -8,11 +8,11 @@ ms.topic: reference
 ms.date: 01/17/2019
 ms.author: spelluru
 ms.openlocfilehash: 9c0113687d27bf43375f298057129a5594ec0a06
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54475411"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60561832"
 ---
 # <a name="azure-event-grid-event-schema-for-event-hubs"></a>Schemat zdarzeń Azure Event Grid dla usługi event hubs
 
@@ -59,28 +59,28 @@ Zdarzenie zawiera następujące dane najwyższego poziomu:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| temat | ciąg | Zasobów Pełna ścieżka do źródła zdarzeń. To pole nie jest zapisywalna. Usługa Event Grid udostępnia tę wartość. |
-| temat | ciąg | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
-| eventType | ciąg | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. |
-| eventTime | ciąg | Czas, którego zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
-| id | ciąg | Unikatowy identyfikator zdarzenia. |
+| temat | string | Zasobów Pełna ścieżka do źródła zdarzeń. To pole nie jest zapisywalna. Usługa Event Grid udostępnia tę wartość. |
+| temat | string | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
+| eventType | string | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. |
+| eventTime | string | Czas, którego zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
+| id | string | Unikatowy identyfikator zdarzenia. |
 | dane | obiekt | Dane zdarzenia Centrum zdarzeń. |
-| dataVersion | ciąg | Wersja schematu dla obiektu danych. Wydawca Określa wersję schematu. |
-| metadataVersion | ciąg | Wersja schematu dla metadanych zdarzenia. Usługa Event Grid definiuje schemat właściwości najwyższego poziomu. Usługa Event Grid udostępnia tę wartość. |
+| dataVersion | string | Wersja schematu dla obiektu danych. Wydawca Określa wersję schematu. |
+| metadataVersion | string | Wersja schematu dla metadanych zdarzenia. Usługa Event Grid definiuje schemat właściwości najwyższego poziomu. Usługa Event Grid udostępnia tę wartość. |
 
 Obiekt danych ma następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| fileUrl | ciąg | Ścieżka do pliku przechwytywania. |
-| fileType | ciąg | Typ pliku pliku przechwytywania. |
-| Identyfikator partycji | ciąg | Identyfikator fragmentu. |
+| fileUrl | string | Ścieżka do pliku przechwytywania. |
+| fileType | string | Typ pliku pliku przechwytywania. |
+| Identyfikator partycji | string | Identyfikator fragmentu. |
 | sizeInBytes | liczba całkowita | Rozmiar pliku. |
 | eventCount | liczba całkowita | Liczba zdarzeń w pliku. |
 | firstSequenceNumber | liczba całkowita | Najmniejsza liczba sekwencji z kolejki. |
 | lastSequenceNumber | liczba całkowita | Ostatni numer sekwencji z kolejki. |
-| firstEnqueueTime | ciąg | Po raz pierwszy z kolejki. |
-| lastEnqueueTime | ciąg | Czas ostatniego z kolejki. |
+| firstEnqueueTime | string | Po raz pierwszy z kolejki. |
+| lastEnqueueTime | string | Czas ostatniego z kolejki. |
 
 ## <a name="next-steps"></a>Kolejne kroki
 

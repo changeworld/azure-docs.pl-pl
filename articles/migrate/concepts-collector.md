@@ -8,11 +8,11 @@ ms.date: 03/26/2019
 ms.author: snehaa
 services: azure-migrate
 ms.openlocfilehash: 224511b9748c540f2cd48a3d8393a9c74f76ce32
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58498421"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60679292"
 ---
 # <a name="about-the-collector-appliance"></a>O urządzenia modułu zbierającego
 
@@ -242,11 +242,11 @@ Moduł zbierający jest powiązana z licencji ewaluacyjnej systemu Windows Serve
 
 ## <a name="updating-the-os-of-the-collector-vm"></a>Aktualizowanie systemu operacyjnego maszyny Wirtualnej modułu zbierającego.
 
-Mimo że urządzenia modułu zbierającego licencją wersji ewaluacyjnej na okres 180 dni, konieczne są stale aktualizowane, systemu operacyjnego na urządzeniu, aby uniknąć automatycznego zamykania szczegółów urządzenia.
+Mimo że urządzenie modułu zbierającego ma licencję ewaluacji na okres 180 dni, należy stale aktualizować system operacyjny na urządzeniu, aby uniknąć automatycznego wyłączania urządzenia.
 
-- Jeśli moduł zbierający nie zostały zaktualizowane przez 60 dni, rozpoczyna się automatyczne zamykanie maszyny.
-- Jeśli działa odnajdywanie, komputer nie zostać wyłączony, nawet jeśli przeszły 60 dni. Komputer zostanie wyłączona po ukończeniu odnajdywania.
-- Jeśli moduł zbierający była używana przez więcej niż 60 dni, zaleca się pozostawienie maszyny zaktualizować cały czas uruchomione Windows Update.
+- Jeśli moduł zbierający nie będzie aktualizowany przez 60 dni, rozpocznie automatyczne wyłączanie maszyny.
+- Jeśli jest uruchomione odnajdywanie, maszyna nie zostanie wyłączona, nawet jeśli minie 60 dni. Maszyna zostanie wyłączona po ukończeniu odnajdywania.
+- Jeśli moduł zbierający był używany przez więcej niż 60 dni, zalecamy regularne aktualizowanie maszyny przez uruchomienie usługi Windows Update.
 
 ## <a name="upgrading-the-collector-appliance-version"></a>Uaktualnianie wersji urządzenia modułu zbierającego
 

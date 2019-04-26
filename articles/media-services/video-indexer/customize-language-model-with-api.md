@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 02/10/2019
 ms.author: anzaman
 ms.openlocfilehash: ca1e66d20b19c1a5b85a4f4ff1c433331116bee7
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60002038"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60553746"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-apis"></a>Dostosuj model języka, korzystając z interfejsów API indeksatora wideo
 
@@ -236,7 +236,7 @@ curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
 |modelId|string|Yes|Identyfikator modelu języka (generowany podczas tworzenia modelu językowego)|
 |accessToken|string|Yes|Token dostępu (musi być z zakresu [Token dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) do uwierzytelniania połączenia. Tokeny dostępu wygasa w ciągu 1 godziny.|
 |modelName|string|Nie|Nowa nazwa, które można przekazać do modelu|
-|włącz|boolean|Nie|Wybierz, czy wszystkie pliki w tym modelu są włączone (PRAWDA) lub wyłączony (false)|
+|włącz|wartość logiczna|Nie|Wybierz, czy wszystkie pliki w tym modelu są włączone (PRAWDA) lub wyłączony (false)|
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -306,7 +306,7 @@ curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
 |fileId|string|Yes|Identyfikator pliku, która jest aktualizowana (generowane, gdy plik jest przekazany podczas tworzenia lub aktualizowania modelu języka)|
 |accessToken|string|Yes|Token dostępu (musi być z zakresu [Token dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) do uwierzytelniania połączenia. Tokeny dostępu wygasa w ciągu 1 godziny.|
 |fileName|string|Nie|Nazwę można zaktualizować nazwy pliku|
-|włącz|boolean|Nie|Zaktualizować, czy ten plik jest włączony (PRAWDA) lub wyłączony (FAŁSZ) w modelu językowego|
+|włącz|wartość logiczna|Nie|Zaktualizować, czy ten plik jest włączony (PRAWDA) lub wyłączony (FAŁSZ) w modelu językowego|
 
 ### <a name="request-body"></a>Treść żądania
 

@@ -15,15 +15,15 @@ ms.workload: TBD
 ms.date: 8/25/2017
 ms.author: alkohli
 ms.openlocfilehash: 3d6ef22e4df36996d68194589f43ea0f57def22c
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673935"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60576955"
 ---
 # <a name="replace-a-disk-drive-on-your-storsimple-8000-series-device"></a>Wymiana dysku, na urządzeniu StorSimple 8000 series
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 W tym samouczku wyjaśniono, jak zostanie usunięty i zastąpiony nieprawidłowe działanie lub uszkodzonego dysku twardym na urządzeniu z systemem Microsoft Azure StorSimple. Aby zastąpić dysk, musisz:
 
 * Odłączyć antitamper blokady

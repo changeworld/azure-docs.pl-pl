@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: kasinh
 ms.openlocfilehash: d7d94c7b238f8d413d8837c3c34468c6cd653fe3
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300697"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60644138"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>Twórz kopie zapasowe programu SQL Server na platformie Azure jako obciążenia programu DPM
 W tym artykule poprowadzi Cię przez kroki konfiguracyjne do wykonania kopii zapasowej bazy danych programu SQL Server za pomocą usługi Azure Backup.

@@ -8,11 +8,11 @@ ms.author: babanisa
 ms.topic: conceptual
 ms.date: 01/17/2019
 ms.openlocfilehash: c49044d8bd96efb7e86cf54509c32033900be305
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58180912"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60561784"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>Zarządzaj tematami i publikowania zdarzeń za pomocą zdarzeń domeny
 
@@ -106,7 +106,7 @@ New-AzureRmRoleAssignment `
 
 Aby uzyskać więcej informacji na temat zarządzania dostępem do operacji usługi Event Grid, zobacz [usługi Event Grid zabezpieczeń i uwierzytelniania](./security-authentication.md).
 
-## <a name="create-topics-and-subscriptions"></a>Tworzyć tematy i subskrypcje
+## <a name="create-topics-and-subscriptions"></a>Tworzenie tematów i subskrypcji
 
 Usługa Event Grid automatycznie tworzy i zarządza nimi odpowiedni temat w domenie, oparte na wywołanie w celu utworzenia subskrypcji zdarzeń dla tematu domeny. Istnieje nie osobnym kroku, aby utworzyć temat w domenie. Podobnie po usunięciu ostatniej subskrypcji zdarzeń dla tematu tematu jest również usunięte.
 

@@ -3,21 +3,22 @@ title: Kopiowanie danych/z rozwiązaniem SAP Cloud klienta przy użyciu usługi 
 description: Dowiedz się, jak kopiować dane z rozwiązaniem SAP Cloud klienta do ujścia obsługiwanych magazynów danych (lub) z obsługiwanego źródła danych magazynów w chmurze SAP dla klientów przy użyciu usługi fabryka danych.
 services: data-factory
 documentationcenter: ''
-author: linda33wj
-manager: craigg
+author: WenJason
+manager: digimobile
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/17/2018
-ms.author: jingwang
+origin.date: 04/17/2018
+ms.date: 04/22/2019
+ms.author: v-jay
 ms.openlocfilehash: e4625b934f9e1cf98254f3dee59f9c26e8e16fb5
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353383"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60578712"
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Kopiowanie danych z rozwiązaniem SAP Cloud klienta (C4C) przy użyciu usługi Azure Data Factory
 
@@ -44,7 +45,7 @@ Następujące właściwości są obsługiwane w chmurze SAP dla klientów, poł�
 | type | Właściwość type musi być równa: **SapCloudForCustomer**. | Yes |
 | url | Adres URL usługi SAP C4C OData. | Yes |
 | nazwa użytkownika | Określ nazwę użytkownika, aby nawiązać połączenie SAP C4C. | Yes |
-| hasło | Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| password | Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. | Brak źródła tak dla ujścia |
 
 >[!IMPORTANT]
@@ -58,7 +59,7 @@ Następujące właściwości są obsługiwane w chmurze SAP dla klientów, poł�
     "properties": {
         "type": "SapCloudForCustomer",
         "typeProperties": {
-            "url": "https://<tenantname>.crm.ondemand.com/sap/c4c/odata/v1/c4codata/" ,
+            "url": "https://<tenantname>.crm.ondemand.cn/sap/c4c/odata/v1/c4codata/" ,
             "username": "<username>",
             "password": {
                 "type": "SecureString",
@@ -205,19 +206,19 @@ Podczas kopiowania danych z rozwiązaniem SAP Cloud klienta, następujące mapow
 | Typ danych OData C4C SAP | Typ danych tymczasowych fabryki danych |
 |:--- |:--- |
 | Edm.Binary | Byte[] |
-| Edm.Boolean | wartość logiczna |
+| Edm.Boolean | Bool |
 | Edm.Byte | Byte[] |
 | Edm.DateTime | DateTime |
-| Edm.Decimal | Dziesiętny |
-| Edm.Double | Podwójne |
-| Edm.Single | Pojedyncze |
-| Edm.Guid | Identyfikator GUID |
+| Edm.Decimal | Decimal |
+| Edm.Double | Double |
+| Edm.Single | Single |
+| Edm.Guid | Guid |
 | Edm.Int16 | Int16 |
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |
 | Edm.SByte | Int16 |
-| Edm.String | Ciąg |
-| Edm.Time | Przedział czasu |
+| Edm.String | String |
+| Edm.Time | TimeSpan |
 | Edm.DateTimeOffset | DateTimeOffset |
 
 

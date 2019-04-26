@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 37eb8ca3c25268dd7923087439a8fbf0fd1f168b
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 56e87da0353a41504035a070d4c10bab0dda2279
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56269913"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60551757"
 ---
 # <a name="advanced-aggregations-in-azure-monitor-log-queries"></a>Zaawansowane agregacji w zapytaniach dzienników usługi Azure Monitor
 
@@ -38,6 +38,7 @@ Event
 | order by TimeGenerated desc
 | summarize makelist(EventID) by Computer
 ```
+
 |Computer (Komputer)|list_EventID|
 |---|---|
 | KOMPUTER1 | [704,701,1501,1500,1085,704,704,701] |
@@ -54,6 +55,7 @@ Event
 | order by TimeGenerated desc
 | summarize makeset(EventID) by Computer
 ```
+
 |Computer (Komputer)|list_EventID|
 |---|---|
 | KOMPUTER1 | [704,701,1501,1500,1085] |
@@ -76,7 +78,7 @@ Heartbeat
 | KOMPUTER1 | "zabezpieczenia", "aktualizacje", "śledzenia zmian" |
 | computer2 | "zabezpieczenia", "aktualizacji" |
 | KOMPUTER3 | "ochrony przed złośliwym kodem", "śledzenia zmian" |
-| Przyciski ... | Przyciski ... | Przyciski ... |
+| Przyciski ... | Przyciski ... |
 
 Użyj `mvexpand` pokazanie każdej wartości w osobnym wierszu zamiast rozdzielana przecinkami lista:
 
@@ -96,7 +98,7 @@ Heartbeat
 | computer2 | "aktualizacji" |
 | KOMPUTER3 | "ochrony przed złośliwym kodem" |
 | KOMPUTER3 | "śledzenia zmian" |
-| Przyciski ... | Przyciski ... | Przyciski ... |
+| Przyciski ... | Przyciski ... |
 
 
 Następnie można użyć `makelist` ponownie do grupowania elementów ze sobą, a teraz wyświetlić listę komputerów, na rozwiązanie:
@@ -108,6 +110,7 @@ Heartbeat
 | mvexpand Solutions
 | summarize makelist(Computer) by tostring(Solutions) 
 ```
+
 |Rozwiązania | list_Computer |
 |--------------|----------------------|
 | "zabezpieczenia" | ["computer1", "computer2"] |
@@ -124,7 +127,8 @@ Heartbeat
 | where TimeGenerated > ago(12h)
 | summarize count() by Category, bin(TimeGenerated, 1h)
 ```
-| Kategoria | TimeGenerated | count_ |
+
+| Category | TimeGenerated | count_ |
 |--------------|----------------------|--------|
 | Agent bezpośredni | 2017-06-06T17:00:00Z | 15 |
 | Agent bezpośredni | 2017-06-06T18:00:00Z | 60 |
@@ -140,7 +144,7 @@ Heartbeat
 | make-series count() default=0 on TimeGenerated in range(ago(1d), now(), 1h) by Category 
 ```
 
-| Kategoria | count_ | TimeGenerated |
+| Category | count_ | TimeGenerated |
 |---|---|---|
 | Agent bezpośredni | [15,60,0,55,60,57,60,...] | ["2017-06-06T17:00:00.0000000Z","2017-06-06T18:00:00.0000000Z","2017-06-06T19:00:00.0000000Z","2017-06-06T20:00:00.0000000Z","2017-06-06T21:00:00.0000000Z",...] |
 | Przyciski ... | Przyciski ... | Przyciski ... |
@@ -153,7 +157,8 @@ Heartbeat
 | mvexpand TimeGenerated, count_
 | project Category, TimeGenerated, count_
 ```
-| Kategoria | TimeGenerated | count_ |
+
+| Category | TimeGenerated | count_ |
 |--------------|----------------------|--------|
 | Agent bezpośredni | 2017-06-06T17:00:00Z | 15 |
 | Agent bezpośredni | 2017-06-06T18:00:00Z | 60 |

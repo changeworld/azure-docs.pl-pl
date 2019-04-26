@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: tworzenie potoku ciągłej integracji/ciągłego wdrażania dla istniejącego kodu za pomocą usługi Azure DevOps Projects'
+title: 'Samouczek: Tworzenie potoku ciągłej integracji/ciągłego Dostarczania dla istniejącego kodu za pomocą usługi Azure DevOps Projects'
 description: Usługa Azure DevOps Projects ułatwia rozpoczęcie pracy na platformie Azure. Pomaga korzystać z własnego kodu i repozytorium GitHub w celu uruchomienia aplikacji w wybranej przez użytkownika usłudze platformy Azure w kilku prostych krokach.
 services: vsts
 documentationcenter: vs-devops-build
@@ -18,13 +18,13 @@ author: mlearned
 ms.custom: mvc
 monikerRange: vsts
 ms.openlocfilehash: 88ee15a3b5cc53542d9e098dee485b8a526bb9a6
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52161758"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60555350"
 ---
-# <a name="tutorial-create-a-cicd-pipeline-for-your-existing-code-by-using-azure-devops-projects"></a>Samouczek: tworzenie potoku ciągłej integracji/ciągłego wdrażania dla istniejącego kodu za pomocą usługi Azure DevOps Projects
+# <a name="tutorial-create-a-cicd-pipeline-for-your-existing-code-by-using-azure-devops-projects"></a>Samouczek: Tworzenie potoku ciągłej integracji/ciągłego Dostarczania dla istniejącego kodu za pomocą usługi Azure DevOps Projects
 
 Usługa Azure DevOps Projects stanowi uproszczone środowisko, do którego możesz przenieść istniejący kod i repozytorium Git lub wybrać aplikację przykładową, aby utworzyć potok ciągłej integracji i ciągłego dostarczania na platformie Azure.
 
@@ -189,7 +189,7 @@ Usługa Azure Application Insights umożliwia łatwe monitorowanie wydajności i
 
 Gdy usługa Azure App Service i powiązane zasoby utworzone w tym samouczku nie będą już potrzebne, możesz je usunąć. W tym celu użyj funkcji **Usuń** na pulpicie nawigacyjnym usługi DevOps Projects.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Podczas pracy z tym samouczkiem skonfigurowano proces ciągłej integracji/ciągłego wdrażania oraz utworzono automatycznie potok kompilacji i wydania w usłudze Azure DevOps Projects. Możesz zmodyfikować potoki kompilacji i wydania, aby dopasować je do potrzeb swojego zespołu. W tym samouczku omówiono:
 

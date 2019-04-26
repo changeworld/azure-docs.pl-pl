@@ -11,11 +11,11 @@ ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
 ms.openlocfilehash: 4d29d8e86a30f105c4aa50ec9615f8165fa238d3
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578751"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60578984"
 ---
 # <a name="azure-blockchain-workbench-configuration-reference"></a>Informacje o konfiguracji platformy Azure Blockchain Workbench
 
@@ -67,11 +67,11 @@ Logika biznesowa aplikacji może być modelowane jako automatu stanów, których
 
 Aby uzyskać przykład, zobacz [przykładowy plik konfiguracji](#configuration-file-example).
 
-## <a name="type"></a>Typ
+## <a name="type"></a>Type
 
 Obsługiwane typy danych.
 
-| Typ | Opis |
+| Type | Opis |
 |-------|-------------|
 | adres  | Łańcuch bloków adresów typu, takie jak *umów* lub *użytkowników*. |
 | tablica    | Pojedynczą tablicę poziomu typu integer, bool, pieniędzy i czasu. Tablice mogą być statyczne lub dynamiczne. Użyj **ElementType** na określony typ danych elementów w tablicy. Zobacz [Przykładowa konfiguracja](#example-configuration-of-type-array). |
@@ -79,7 +79,7 @@ Obsługiwane typy danych.
 | kontrakt | Adres typ kontraktu. |
 | Wyliczenia     | Wyliczany zestaw nazwanych wartości. Korzystając z typu wyliczeniowego, możesz również określić listy EnumValues. Każda wartość jest ograniczone do 255 znaków. Znaki prawidłowe wartości to górna i małe litery (A – Z, a – z) i cyfry (0 – 9). Zobacz [przykładową konfigurację i użycie w Solidity](#example-configuration-of-type-enum). |
 | int      | Integer — typ danych. |
-| pieniędzy    | Typ danych walutowych. |
+| money    | Typ danych walutowych. |
 | state    | Stan przepływu pracy. |
 | string  | String — typ danych. Maksymalna liczba znaków 4000. Zobacz [Przykładowa konfiguracja](#example-configuration-of-type-string). |
 | Użytkownik     | Adres typu użytkownika. |

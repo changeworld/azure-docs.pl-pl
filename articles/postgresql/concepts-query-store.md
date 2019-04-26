@@ -7,11 +7,11 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.openlocfilehash: c904b6e6cd7a4dc0f9d5a442e20738e43595b369
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58485921"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60564008"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Monitorowanie wydajności za pomocą Store zapytania
 
@@ -120,8 +120,8 @@ Ten widok zwraca wszystkie dane w Query Store. Istnieje jeden wiersz dla każdej
 |query_id   |bigint  || Kod skrótu wewnętrznego obliczane na podstawie instrukcji drzewo analizy|
 |query_sql_text |Varchar(10000)  || Tekst instrukcji językiem. Różne zapytania przy użyciu tej samej struktury są zgrupowane razem; Ten tekst jest tekstem, który w pierwszym zapytań w klastrze.|
 |plan_id    |bigint |   |Identyfikator planu jeszcze odpowiadający to zapytanie nie jest dostępna|
-|godzina_rozpoczęcia |sygnatura czasowa  ||  Zapytania są agregowane według przedziałów czasu - okres przedziału wynosi 15 minut, domyślnie. Jest to czas rozpoczęcia odpowiadający przedział czasu dla tego wpisu.|
-|end_time   |sygnatura czasowa  ||  Godzina zakończenia odpowiadający przedział czasu dla tego wpisu.|
+|godzina_rozpoczęcia |timestamp  ||  Zapytania są agregowane według przedziałów czasu - okres przedziału wynosi 15 minut, domyślnie. Jest to czas rozpoczęcia odpowiadający przedział czasu dla tego wpisu.|
+|end_time   |timestamp  ||  Godzina zakończenia odpowiadający przedział czasu dla tego wpisu.|
 |wywołania  |bigint  || Liczba przypadków, wykonać zapytania|
 |TOTAL_TIME |podwójnej precyzji   ||  Czas wykonywania kwerendy w milisekundach|
 |min_time   |podwójnej precyzji   ||  Czas wykonywania zapytania minimalne, w milisekundach|

@@ -10,19 +10,19 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: cf44af18-1fe5-41d5-9e06-cc57a968207c
 ms.date: 04/27/2017
-ms.openlocfilehash: 9c8b8611347840dcf49759dac51fb506815cd782
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 926c9ebe8675d8b50d4544be813ae0b15492ae35
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43122012"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60681676"
 ---
 # <a name="handle-edifact-documents-with-unh25-segments-in-azure-logic-apps"></a>Obsługiwać dokumenty EDIFACT UNH2.5 segmentów w usłudze Azure Logic Apps
 
 UNH2.5 znajduje się w dokumencie EDIFACT, jest on używany do wyszukiwania schematu. 
 
-Przykład: Pole UNH jest **EAN008** komunikatu EDIFACT  
-UNH + SSDD1 + ZAMÓWIENIA: D: 03B: COFNĄĆ:**EAN008**"  
+Przykład: Pole UNH **EAN008** komunikatu EDIFACT  
+UNH+SSDD1+ORDERS:D:03B:UN:**EAN008**'  
 
 Kroki do wykonania, by obsłużyć komunikat 
 1. Aktualizacja schematu

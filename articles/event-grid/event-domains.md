@@ -8,11 +8,11 @@ ms.author: babanisa
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.openlocfilehash: 131a55d130e7ebf619ee283e943c0b0a7b45edfd
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54472861"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60562038"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>Omówienie domen zdarzeń związanych z zarządzaniem tematy usługi Event Grid
 
@@ -31,7 +31,7 @@ Domena zdarzeń jest narzędziem do zarządzania dla dużej liczby tematy usług
 
 Zdarzenie domeny zapewnić dostępność taką samą architekturę używane przez usługi platformy Azure (takich jak Storage i Centrum IoT Hub) do publikowania ich zdarzenia. Pozwalają one na publikowanie zdarzeń do tysięcy tematów. Domen również zapewniają autoryzację i uwierzytelnianie kontrolę nad każdego tematu, dzięki czemu można podzielić dzierżawcy.
 
-### <a name="example-use-case"></a>Przykład przypadek użycia
+### <a name="example-use-case"></a>Przykładowy przypadek użycia
 
 Zdarzenie domeny najłatwiej zostały wyjaśnione przy użyciu przykładu. Załóżmy, że uruchomieniu maszyny konstrukcji firmy Contoso, w którym produkowanych kół, digging urządzenia i inne duże maszyny. Jako część prowadzenie działalności w czasie rzeczywistym informacje wypchnięty do klientów o konserwacji sprzętu, systemów kondycji i aktualizacje kontraktu. Wszystkie te informacje odnoszą się do różnych punktów końcowych, w tym aplikacji, punktów końcowych klienta i innych infrastrukturę, która klientów zostały skonfigurowane.
 

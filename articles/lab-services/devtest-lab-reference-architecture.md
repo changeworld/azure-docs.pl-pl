@@ -14,11 +14,11 @@ ms.date: 04/12/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: bcb154f7cffb92ef23fc2606e1f604bb12f8d1a3
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59996615"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60561529"
 ---
 # <a name="azure-devtest-labs---reference-architecture-for-an-enterprise"></a>Usługa Azure DevTest Labs — architektura referencyjna dla przedsiębiorstwa
 Ten artykuł zawiera architektury referencyjnej do wdrożenia rozwiązanie oparte na usłudze Azure DevTest Labs w przedsiębiorstwie. Obejmuje ona połączeń lokalnych za pomocą usługi Express Route, bramy usług pulpitu zdalnego do zdalnego logowania się do maszyn wirtualnych, łączności z repozytorium artefaktów prywatne artefakty i inne usługi PaaS, używane w laboratorium.

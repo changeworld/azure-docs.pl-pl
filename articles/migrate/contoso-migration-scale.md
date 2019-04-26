@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: raynew
-ms.openlocfilehash: bc4673a12ec5b752a513b4a95796f2aeb8b8ce5d
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 9253051d907a811ffedad3a714112c9b25543a35
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991252"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60667451"
 ---
 # <a name="contoso---scale-a-migration-to-azure"></a>Contoso — skalowanie migracji na platformę Azure
 
@@ -293,6 +293,7 @@ Firma Contoso potrzebuje ustalenie sposobu wdrażania tych składników, w oparc
 **Serwer przetwarzania** | Contoso wdroży autonomiczny serwer dedykowanego procesu o możliwość replikowania maszyn wirtualnych 100 – 200:<br/><br/> Procesor CPU: 16 procesorów wirtualnych Vcpu (2 sockets * 8 rdzeni @ 2,5 GHz)<br/><br/> Pamięć: 32 GB<br/><br/> Dysk pamięci podręcznej: 1 TB<br/><br/> Współczynnik zmian danych: 1 TB do 2 TB.<br/><br/> Serwer przetwarzania będzie ciężko i jako takie powinien znajdować się na hoście ESXi, która może obsłużyć We/Wy dysku, ruch sieciowy i procesora CPU wymagane dla replikacji. Firma Contoso będzie wziąć pod uwagę dedykowanego hosta, w tym celu. 
 **Sieć** | Firmy Contoso ma przeglądowi bieżącej infrastruktury sieci VPN typu lokacja lokacja i decyzję o implementacji usługi Azure ExpressRoute. Implementacja znaczenie krytyczne, ponieważ wówczas zmniejszyć czas oczekiwania i zwiększyć przepustowość do regionu wschodnie stany USA 2 Azure podstawowego firmy Contoso.<br/><br/> **Monitorowanie**: Firma Contoso będzie musiał uważnie monitorować danych napływających z serwera przetwarzania. Jeśli dane przeciążenia przepustowość sieci, firma Contoso będzie należy wziąć pod uwagę [ograniczanie przepustowości serwera przetwarzania](../site-recovery/site-recovery-plan-capacity-vmware.md#control-network-bandwidth).
 **Magazyn platformy Azure** | W przypadku migracji Contoso musi zidentyfikować właściwego typu i liczbę kont usługi Azure storage.  Usługa Site Recovery replikuje dane maszyny Wirtualnej do usługi Azure storage.<br/><br/> Usługa Site Recovery można replikować na standardowy lub premium (SSD) konta usługi storage.<br/><br/> Aby zdecydować, magazynu, należy przejrzeć Contoso [limity przestrzeni dyskowej](../virtual-machines/windows/disks-types.md)i wziąć pod uwagę przewidywanego wzrostu i zwiększone użycie wraz z upływem czasu. Biorąc pod uwagę szybkość i priorytetów migracji, Contoso scrumowy zdecydował się korzystać z dysków SSD w warstwie premium<br/><br/>
+
 Firma Contoso dokonała decyzję, aby korzystać z dysków zarządzanych dla wszystkich maszyn wirtualnych, które są wdrażane na platformie Azure.  Operacje We/Wy wymagane określi, jeśli dyski będzie standardowych dysków Twardych, SSD w warstwie standardowa lub Premium (SSD).<br/><br/>
 
 #### <a name="data-migration-service"></a>Data Migration Service

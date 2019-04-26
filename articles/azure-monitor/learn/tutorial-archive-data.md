@@ -10,11 +10,11 @@ ms.author: johnkem
 ms.custom: mvc
 ms.subservice: metrics
 ms.openlocfilehash: e784b76af478f834a7d1104650da1cbd3ca2a31f
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54433362"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60552930"
 ---
 # <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>Archiwizowanie metryk platformy Azure i zapisywanie danych w dzienniku przy użyciu usługi Azure Storage
 
@@ -182,7 +182,7 @@ Udało nam się skonfigurować archiwizowanie danych monitorowania na koncie mag
 
 5. Jeśli w poprzednich krokach utworzono maszynę wirtualną lub aplikację logiki, również je usuń.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku omówiono archiwizowanie danych monitorowania ze środowiska platformy Azure (subskrypcji, zasobów i systemu operacyjnego gościa) na koncie magazynu.
 

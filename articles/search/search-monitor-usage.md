@@ -12,11 +12,11 @@ ms.date: 04/04/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: f4a0cba18f27c9cabfc03d1934469e6899c5cd18
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59010417"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60564786"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Monitoruj aktywność zużycia i kwerendy zasobów w usłudze Azure Search
 
@@ -58,7 +58,7 @@ Usługa Azure Search nie przechowuje żadnych danych poza obiektów, którymi za
 
 W poniższej tabeli porównano opcje przechowywania dzienników oraz dodanie, szczegółowe monitorowanie operacji usługi i obciążeń związanych z zapytaniami za pomocą usługi Application Insights.
 
-| Zasób | Używana do |
+| Resource | Używana do |
 |----------|----------|
 | [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) | Zarejestrowane zdarzenia i metryki zapytania, oparte na schematach poniżej, skorelowane ze zdarzeniami użytkownika w aplikacji. Jest to jedyne rozwiązanie, które uwzględnia akcji użytkownika lub sygnały, mapowania zdarzeń z wyszukiwania zainicjowanego przez użytkownika, w przeciwieństwie do Filtrowanie żądań przesyłanych przez kod aplikacji. Aby użyć tego podejścia, kopiowania i wklejania kod Instrumentacji do plików źródłowych do trasy żądania informacji do usługi Application Insights. Aby uzyskać więcej informacji, zobacz [analiza ruchu wyszukiwania](search-traffic-analytics.md). |
 | [Dzienniki usługi Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) | Zarejestrowane zdarzenia i metryki zapytania, oparte na schematach poniżej. Zdarzenia są rejestrowane do obszaru roboczego usługi Log Analytics. Obszar roboczy, aby zwrócić szczegółowe informacje z dziennika można uruchamiać zapytania. Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z dziennikami usługi Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata) |

@@ -16,11 +16,11 @@ ms.date: 05/18/2018
 ms.author: yegu
 ms.custom: mvc
 ms.openlocfilehash: 487a51b6f644cca88011383b8035515d437857e6
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237896"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60553388"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-application"></a>Szybki start: Korzystanie z usługi Azure Cache for Redis przy użyciu aplikacji platformy .NET
 
@@ -268,7 +268,7 @@ Po krótkim czasie grupa zasobów i wszystkie zawarte w niej zasoby zostaną usu
 
 <a name="next-steps"></a>
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym przewodniku Szybki start przedstawiono sposób użycia usługi Azure Cache for Redis z poziomu aplikacji platformy .NET. Przejdź do kolejnego Szybkiego startu, w którym wyjaśniono, jak używać usługi Microsoft Azure Cache for Redis z poziomu aplikacji internetowej ASP.NET.
 

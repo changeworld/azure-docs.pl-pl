@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/18/2018
 ms.author: apimpm
 ms.openlocfilehash: cfe2620801f743831f77fb76f344c156676966d3
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635071"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60657564"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Ochrona interfejsu API przy użyciu protokołu OAuth 2.0 przy użyciu usługi Azure Active Directory i usługi API Management
 
@@ -30,7 +30,7 @@ Aby wykonać kroki opisane w tym artykule, musisz mieć:
 * Interfejs API publikowane używającym wystąpienia usługi API Management
 * Dzierżawa usługi Azure AD
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Poniżej przedstawiono krótkie omówienie kroków:
 
@@ -148,7 +148,7 @@ Następnym krokiem jest umożliwienie autoryzacji użytkownika OAuth 2.0 dla int
 
 2. Wybierz interfejs API, który chcesz chronić. W tym przykładzie używamy `Echo API`.
 
-3. Przejdź do **ustawienia**.
+3. Przejdź do obszaru **Settings** (Ustawienia).
 
 4. W obszarze **zabezpieczeń**, wybierz **OAuth 2.0**i wybierz skonfigurowane wcześniej serwer OAuth 2.0. 
 

@@ -11,11 +11,11 @@ ms.date: 08/21/2018
 ms.author: pullabhk
 ms.assetid: e54750b4-4518-4262-8f23-ca2f0c7c0439
 ms.openlocfilehash: 4f18b10ee3f4148badc8e53a9660c9f5c998aef7
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734338"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60646711"
 ---
 # <a name="create-azure-recovery-services-vault-using-rest-api"></a>Tworzenie usługi Azure magazyn usługi Recovery Services za pomocą interfejsu API REST
 
@@ -49,8 +49,8 @@ Następujące typowe definicje są używane do tworzenia treści żądania:
 |eTag     |         |   String      |  Opcjonalny element eTag.       |
 |location     |  true       |String         |   Lokalizacja zasobu      |
 |properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  Właściwości magazynu       |
-|jednostka SKU     |         |  [Jednostka SKU](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#sku)       |    Określa unikatowy identyfikator systemowy dla poszczególnych zasobów platformy Azure     |
-|tags     |         | Obiekt        |     Tagi zasobów    |
+|sku     |         |  [Jednostka SKU](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#sku)       |    Określa unikatowy identyfikator systemowy dla poszczególnych zasobów platformy Azure     |
+|tags     |         | Object        |     Tagi zasobów    |
 
 Należy zauważyć, że magazyn nazwy i nazwy grupy zasobów znajdują się w identyfikatorze URI PUT. Treść żądania określa lokalizację.
 

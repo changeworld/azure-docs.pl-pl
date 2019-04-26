@@ -1,6 +1,6 @@
 ---
-title: Przykłady programu Azure PowerShell | Dokumentacja firmy Microsoft
-description: Przykłady programu Azure PowerShell
+title: Przykłady dla programu Azure PowerShell | Microsoft Docs
+description: Przykłady dla programu Azure PowerShell
 services: virtual-network
 documentationcenter: virtual-network
 author: georgewallace
@@ -15,26 +15,26 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 05/24/2017
 ms.author: georgewallace
-ms.openlocfilehash: 0bca4fb6874bd265f0ae9faeb4219abeb4ffb6d4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5bd0b4e33b5bef4d293e0475880692c72bf1504c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23926354"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60564675"
 ---
-# <a name="azure-powershell-samples-for-networking"></a>Przykładów dla platformy Azure PowerShell do obsługi sieci
+# <a name="azure-powershell-samples-for-networking"></a>Przykłady programu Azure PowerShell dla sieci
 
-Poniższa tabela zawiera linki do skryptów utworzony przy użyciu programu Azure PowerShell.
+Poniższa tabela zawiera linki do skryptów utworzonych przy użyciu programu Azure PowerShell.
 
 | | |
 |-|-|
-|**Łączność między zasobami Azure**||
-| [Tworzenie sieci wirtualnej dla aplikacji wielowarstwowych](./scripts/virtual-network-powershell-sample-multi-tier-application.md?toc=%2fazure%2fnetworking%2ftoc.json) | Tworzy sieć wirtualną z podsieci frontonu i zaplecza. Ruch do podsieci frontonu jest ograniczone do protokołu HTTP, gdy ruch do podsieci wewnętrznej jest ograniczony do bazy danych SQL, port 1433. |
-| [Dwie wirtualne sieci równorzędne](./scripts/virtual-network-powershell-sample-peer-two-virtual-networks.md?toc=%2fazure%2fnetworking%2ftoc.json) | Tworzy i łączy dwie sieci wirtualne w tym samym regionie. |
-| [Kierować ruchem przez urządzenie wirtualne sieci](./scripts/virtual-network-powershell-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetworking%2ftoc.json) | Tworzy sieć wirtualną z podsieci frontonu i zaplecza i maszynę Wirtualną, która może kierować ruchem między dwiema podsieciami. |
-| [Filtrowanie ruchu przychodzącego i wychodzącego ruchu sieciowego maszyny Wirtualnej](./scripts/virtual-network-powershell-filter-network-traffic.md?toc=%2fazure%2fnetworking%2ftoc.json) | Tworzy sieć wirtualną z podsieci frontonu i zaplecza. Ruch sieciowy przychodzący do podsieci frontonu jest ograniczone do protokołu HTTP i HTTPS. Ruch wychodzący do Internetu z podsieci wewnętrznej jest niedozwolone. |
+|**Łączność między zasobami platformy Azure**||
+| [Tworzenie sieci wirtualnej dla aplikacji wielowarstwowych](./scripts/virtual-network-powershell-sample-multi-tier-application.md?toc=%2fazure%2fnetworking%2ftoc.json) | Tworzy sieć wirtualną z podsieciami frontonu i zaplecza. Ruch do podsieci frontonu jest ograniczony do protokołu HTTP, a ruch do podsieci zaplecza jest ograniczony do portu 1433 środowiska SQL. |
+| [Komunikacja równorzędna dwóch sieci wirtualnych](./scripts/virtual-network-powershell-sample-peer-two-virtual-networks.md?toc=%2fazure%2fnetworking%2ftoc.json) | Tworzy i łączy dwie sieci wirtualne w tym samym regionie. |
+| [Kierowanie ruchu przez wirtualne urządzenie sieciowe](./scripts/virtual-network-powershell-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetworking%2ftoc.json) | Tworzy sieć wirtualną z podsieciami frontonu i zaplecza oraz maszyną wirtualną, która może kierować ruchem między dwiema podsieciami. |
+| [Filtrowanie przychodzącego i wychodzącego ruchu sieciowego maszyny wirtualnej](./scripts/virtual-network-powershell-filter-network-traffic.md?toc=%2fazure%2fnetworking%2ftoc.json) | Tworzy sieć wirtualną z podsieciami frontonu i zaplecza. Ruch sieciowy przychodzący do podsieci frontonu jest ograniczony do protokołów HTTP i HTTPS... Ruch wychodzący do Internetu z podsieci zaplecza jest niedozwolone. |
 |**Kierunek ruchu i równoważenia obciążenia**||
-| [Ruch równoważenia obciążenia do maszyn wirtualnych wysokiej dostępności](./scripts/load-balancer-windows-powershell-sample-nlb.md?toc=%2fazure%2fnetworking%2ftoc.json) | Tworzy kilka maszyny wirtualne o wysokiej dostępności i konfiguracji równoważenia obciążenia. |
-| [Wiele witryn sieci Web na maszynach wirtualnych Równoważenie obciążenia](./scripts/load-balancer-windows-powershell-load-balance-multiple-websites-vm.md?toc=%2fazure%2fnetworking%2ftoc.json) | Tworzy dwie maszyny wirtualne z wielu konfiguracji adresów IP, dołączony do platformy Azure zestawu dostępności, dostępny za pośrednictwem usługi równoważenia obciążenia Azure. |
-| [Bezpośrednie ruchu w różnych regionach aplikacji wysokiej dostępności](./scripts/traffic-manager-powershell-websites-high-availability.md?toc=%2fazure%2fnetworking%2ftoc.json) |  Tworzy dwa planów usługi aplikacji, dwie aplikacje sieci web profilu Menedżera ruchu i dwa punkty końcowe Menedżera ruchu. |
+| [Równoważenie obciążenia ruchem do maszyn wirtualnych wysokiej dostępności](./scripts/load-balancer-windows-powershell-sample-nlb.md?toc=%2fazure%2fnetworking%2ftoc.json) | Tworzy kilka maszyn wirtualnych na platformie o wysokiej dostępności i konfiguracji ze zrównoważonym obciążeniem. |
+| [Równoważ obciążenie powodowane przez wielu witryn sieci Web na maszynach wirtualnych](./scripts/load-balancer-windows-powershell-load-balance-multiple-websites-vm.md?toc=%2fazure%2fnetworking%2ftoc.json) | Tworzy dwie maszyny wirtualne z wieloma konfiguracjami IP, dołączone do zestawu dostępności platformy Azure, za pośrednictwem usługi Azure Load Balancer. |
+| [Bezpośrednie kierowanie ruchu w wielu regionach dla aplikacji o wysokiej dostępności](./scripts/traffic-manager-powershell-websites-high-availability.md?toc=%2fazure%2fnetworking%2ftoc.json) |  Tworzy dwa plany usługi app service, dwie aplikacje internetowe, profilu usługi traffic manager i dwa punkty końcowe Menedżer ruchu. |
 | | |

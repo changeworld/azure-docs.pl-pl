@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/11/2018
 ms.author: spelluru
 ms.openlocfilehash: 4500fcfa6fbfb346a6e5c7fd045ba0046a901b91
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57454259"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60561628"
 ---
 # <a name="redeploy-a-vm-in-a-lab-in-azure-devtest-labs"></a>Ponowne wdrażanie maszyny Wirtualnej w laboratorium Azure DevTest Labs
 Jeśli nie możesz połączyć z maszyną wirtualną (VM) w laboratorium za pomocą połączenia pulpitu zdalnego, ponowne wdrażanie maszyny Wirtualnej i spróbuj ponownie nawiązać połączenie do niego. Podczas ponownego wdrażania maszyny Wirtualnej usługi DevTest Labs przenosi maszyny Wirtualnej z węzła, na którym jest uruchomiony w nowym węźle w ramach infrastruktury platformy Azure. Następnie uruchamia maszynę Wirtualną przy zachowaniu wszystkich opcji konfiguracji i skojarzonych zasobów. Tej funkcji można zaoszczędzić możesz czas spędzony w rozwiązaniu usługi Podłączanie pulpitu zdalnego lub aplikacji dostęp do maszyn wirtualnych opartych na Windows w środowisku laboratoryjnym. 

@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: shlo
 ms.openlocfilehash: 787c9393e2700bd7ed349b501e70abc4a0687b9c
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021836"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60554851"
 ---
 # <a name="filter-activity-in-azure-data-factory"></a>Filtruj aktywność w usłudze Azure Data Factory
 Działanie filtru w potoku umożliwia stosowanie wyrażenie filtru do tablicy danych wejściowych. 
@@ -39,10 +39,10 @@ Działanie filtru w potoku umożliwia stosowanie wyrażenie filtru do tablicy da
 
 Właściwość | Opis | Dozwolone wartości | Wymagane
 -------- | ----------- | -------------- | --------
-name | Nazwa `Filter` działania. | Ciąg | Yes
-type | Musi być równa **filtru**. | Ciąg | Yes
-condition | Warunek, służący do filtrowania danych wejściowych. | Wyrażenie | Yes
-items | Tablica wejściowa, na którym można zastosować filtr. | Wyrażenie | Yes
+name | Nazwa `Filter` działania. | String | Yes
+type | Musi być równa **filtru**. | String | Yes
+warunek | Warunek, służący do filtrowania danych wejściowych. | Wyrażenie | Yes
+pozycje | Tablica wejściowa, na którym można zastosować filtr. | Wyrażenie | Yes
 
 ## <a name="example"></a>Przykład
 

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: spelluru
 ms.openlocfilehash: b6abb0048dcc722241a2cd87354224b0fd7fa2f9
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234190"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60561549"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Źródła zdarzeń w usłudze Azure Event Grid
 
@@ -138,7 +138,7 @@ Subskrybowanie zdarzeń usługi Azure Maps w celu reagowania na zdarzenia w wirt
 |Tytuł  |Opis  |
 |---------|---------|
 | [Reagowanie na zdarzenia usługi Azure Maps za pomocą usługi Event Grid](../azure-maps/azure-maps-event-grid-integration.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Przegląd integrowania usługi Azure Maps z usługi Event Grid. |
-| [Samouczek: Konfigurowanie wirtualnego ogrodzenia](../azure-maps/tutorial-geofence.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Ten samouczek przeprowadzi Cię przez kroki podstawy, aby skonfigurować wirtualnego ogrodzenia za pomocą usługi Azure Maps. Azure Event Grid umożliwia przesyłanie strumieniowe wyników wirtualnego ogrodzenia i skonfigurować powiadomienia na podstawie wyników w wirtualnym ogrodzeniu. |
+| [Samouczek: Konfigurowanie wirtualnego ogrodzenia](../azure-maps/tutorial-geofence.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Ten samouczek przeprowadzi Cię przez podstawowe kroki konfigurowania geofencingu przy użyciu usługi Azure Maps. Azure Event Grid umożliwia przesyłanie strumieniowe wyników wirtualnego ogrodzenia i skonfigurować powiadomienia na podstawie wyników w wirtualnym ogrodzeniu. |
 | [Schemat zdarzeń](event-schema-azure-maps.md) | Pokazuje pola w zdarzeniach usługi Azure Maps. |
 
 

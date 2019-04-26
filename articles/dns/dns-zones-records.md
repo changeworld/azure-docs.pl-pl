@@ -15,12 +15,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: victorh
-ms.openlocfilehash: 7f69d77ac7a6c2a17ef2568f0c7edaef2e1ee3f5
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
-ms.translationtype: MT
+ms.openlocfilehash: 7da382a644c1db92b9915f1d3f1f3a459e8893b8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39174416"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60563396"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>Przegląd stref i rekordów DNS
 
@@ -34,7 +34,7 @@ Rejestratora nazw domen jest organizacja, która umożliwia zakup nazwy domeny, 
 
 Usługa Azure DNS zapewnia infrastruktury serwera nazwę globalnie dystrybuowana, wysokiej dostępności, którym można hostować swoją domenę. Hostowanie domen w usłudze Azure DNS, można zarządzać rekordami DNS przy użyciu tych samych poświadczeń, interfejsów API, narzędzi, rozliczeń i pomocy technicznej jako innych usług platformy Azure.
 
-Usługa Azure DNS nie obsługuje aktualnie możliwości zakupu nazw domen. Zakup nazwy domeny, należy użyć Rejestratora nazw domen innej firmy. Rejestrator zwykle opłaty za niewielką opłatą roczną. Następnie domeny mogą być hostowane w usłudze Azure DNS do zarządzania rekordami DNS. Zobacz [delegować domenę do usługi Azure DNS](dns-domain-delegation.md) Aby uzyskać szczegółowe informacje.
+Usługa Azure DNS nie obsługuje aktualnie możliwości zakupu nazw domen. Zakup nazwy domeny, należy użyć Rejestratora nazw domen innej firmy. Rejestrator zwykle opłaty za niewielką opłatą roczną. Następnie domeny mogą być hostowane w usłudze Azure DNS do zarządzania rekordami DNS. Aby uzyskać szczegółowe informacje, zobacz [Delegowanie domeny do usługi Azure DNS](dns-domain-delegation.md).
 
 ## <a name="dns-zones"></a>Strefy DNS
 
@@ -56,10 +56,10 @@ Usługa DNS platformy Azure obsługuje [rekordy z użyciem symboli wieloznacznyc
 
 Aby utworzyć zestaw rekordów symboli wieloznacznych, użyj nazwy zestawu rekordów "\*". Alternatywnie można również użyć nazwy z '\*"jako jego skrajnej lewej etykiecie, na przykład"\*.foo ".
 
-### <a name="caa-records"></a>Rekordów CAA
+### <a name="caa-records"></a>CAA records
 
 Rekordów CAA umożliwia właścicielom domen Określanie, które certyfikatów urzędów certyfikacji będą upoważnione do wystawiania certyfikatów dla danej domeny. Dzięki temu urzędy certyfikacji uniknąć źle wystawianie certyfikatów w pewnych okolicznościach. Rekordami CAA można mieć trzy właściwości:
-* **Flagi**: jest to liczba całkowita między 0 a 255, używany do reprezentowania flagi stanu krytycznego, który ma specjalne znaczenie dla [RFC](https://tools.ietf.org/html/rfc6844#section-3)
+* **Flagi**: Jest to liczba całkowita między 0 a 255, używany do reprezentowania flagi stanu krytycznego, który ma specjalne znaczenie dla [RFC](https://tools.ietf.org/html/rfc6844#section-3)
 * **Tag**: ciąg ASCII, który może być jedną z następujących czynności:
     * **problem**: Użyj, jeżeli chcesz określić urzędów certyfikacji, które są dozwolone do wystawiania certyfikatów (wszystkie typy)
     * **issuewild**: Użyj, jeżeli chcesz określić urzędów certyfikacji, które są dozwolone do wystawiania certyfikatów (tylko w przypadku certyfikatów symboli wieloznacznych)
@@ -134,12 +134,12 @@ Na poziomie interfejsu API REST usługi Azure DNS elementów etag są określane
 | Nagłówek | Zachowanie |
 | --- | --- |
 | Brak |Umieść zawsze powiedzie się (nie sprawdzeń element Etag) |
-| IF-match <etag> |Umieść powiedzie się tylko, jeśli zasób istnieje i element Etag jest zgodny |
+| If-match <etag> |Umieść powiedzie się tylko, jeśli zasób istnieje i element Etag jest zgodny |
 | IF-match * |Umieść powiedzie się tylko, jeśli istnieje zasób |
 | IF-none-match * |Umieść powiedzie się tylko, jeśli zasób nie istnieje. |
 
 
-## <a name="limits"></a>Limity
+## <a name="limits"></a>Limits
 
 Następujące limity domyślne są stosowane podczas korzystania z usługi Azure DNS:
 
