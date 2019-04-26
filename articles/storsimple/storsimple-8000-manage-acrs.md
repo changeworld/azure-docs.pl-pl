@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2017
 ms.author: alkohli
-ms.openlocfilehash: 9173e34f889ce1c082b20bb382cb6ca9a03dd797
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: ade7da25d2307a382c17e7a3cbb26b601c34ef78
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38597501"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60321624"
 ---
 # <a name="use-the-storsimple-manager-service-to-manage-access-control-records"></a>Usługa StorSimple Manager umożliwia zarządzanie rekordy kontroli dostępu
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Rekordy kontroli dostępu (rekordów Acr) umożliwiają określenie, która hostuje nawiązać woluminu na urządzeniu StorSimple. Rekordów Acr są ustawione na określonym woluminie i zawierają iSCSI nazwy kwalifikowanej (nazw IQN) z hostów. Gdy host próbuje nawiązać połączenie z woluminem, urządzenie sprawdza dostępność usługi ACR skojarzone z tego woluminu dla nazwy IQN, a jeśli istnieje dopasowanie, połączenie zostanie nawiązane. Kontrola dostępu rejestruje w **konfiguracji** sekcji bloku usługi Menedżer urządzeń StorSimple wyświetlić wszystkie rekordy kontroli dostępu przy użyciu odpowiednich nazw IQN hostów.
 
 W tym samouczku opisano następujące typowe zadania związane z rejestru Azure container Registry:

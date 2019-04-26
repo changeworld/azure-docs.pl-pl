@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: mamccrea
 ms.openlocfilehash: c57550a8b683ad8f184884374c4f09216417fc40
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995630"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60236367"
 ---
 # <a name="connect-to-azure-databricks-from-excel-python-or-r"></a>Nawiązywanie połączenia usługi Azure Databricks z programu Excel, Python lub R
 
@@ -67,7 +67,7 @@ Nazwa źródła danych (DSN) zawiera informacje na temat z określonym źródłe
     
     * Kliknij przycisk **Options protokołu HTTP**. W otwartym oknie dialogowym Wklej wartość *ścieżki HTTP* skopiowany z obszaru roboczego usługi Databricks. Kliknij przycisk **OK**.
     * Kliknij przycisk **opcje protokołu SSL**. W otwartym oknie dialogowym wybierz **Włącz SSL** pole wyboru. Kliknij przycisk **OK**.
-    * Kliknij przycisk **Test** Aby przetestować połączenie z usługą Azure Databricks. Kliknij przycisk **OK** Aby zapisać konfigurację.
+    * Kliknij przycisk **Test** Aby przetestować połączenie z usługą Azure Databricks. Kliknij pozycję **OK**, aby zapisać konfigurację.
     * W **Administrator źródła danych ODBC** okno dialogowe, kliknij przycisk **OK**.
 
 Masz teraz Twoje DSN Konfigurowanie. W kolejnych sekcjach Użyj tej nazwy DSN nawiązać połączenia z usługi Azure Databricks z programu Excel, Python lub R.
@@ -82,7 +82,7 @@ W tej sekcji możesz ściągnąć dane z usługi Azure Databricks do programu Mi
 
 2. W **z ODBC** okno dialogowe, wybierz DSN, który został utworzony wcześniej, a następnie kliknij przycisk **OK**.
 
-    ![Wybierz DSN](./media/connect-databricks-excel-python-r/excel-select-dsn.png "wybierz DSN")
+    ![Select DSN](./media/connect-databricks-excel-python-r/excel-select-dsn.png "Select DSN")
 
 3. Jeśli zostanie wyświetlony monit o poświadczenia, aby uzyskać nazwę użytkownika wprowadź **tokenu**. Hasła Podaj wartość tokenu, który pobierane obszar roboczy usługi Databricks.
 

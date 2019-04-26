@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 04/12/2019
 ms.author: magoedte
 ms.openlocfilehash: f2a0d64da5a88e82c0ae1fd893af52f2070268f8
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549869"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60402244"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>Poznanie kondycji usługi Azure virtual machines
 
@@ -254,7 +254,7 @@ Ten widok można filtrować, wybierając wartości w menu rozwijanych w górnej 
 |Subskrypcja |Wybierz subskrypcję platformy Azure. Tylko w wybranej subskrypcji są uwzględniane alerty w widoku. | 
 |Grupa zasobów |Wybierz pojedynczą grupę zasobów. Tylko alerty z usługą obiektów docelowych w wybranej grupie zasobów znajdują się w widoku. | 
 |Typ zasobu |Wybierz jeden lub więcej typów zasobów. Domyślnie tylko alerty docelowej **maszyn wirtualnych** jest zaznaczone, a następnie zawarte w tym widoku. W tej kolumnie jest dostępna tylko po określono grupę zasobów. | 
-|Zasób |Wybierz zasób. Tylko alerty o zasobu jako obiekt docelowy znajdują się w widoku. W tej kolumnie jest dostępna tylko po został określony jako typ zasobu. | 
+|Resource |Wybierz zasób. Tylko alerty o zasobu jako obiekt docelowy znajdują się w widoku. W tej kolumnie jest dostępna tylko po został określony jako typ zasobu. | 
 |Ważność |Wybiera alert o ważności lub wybierz *wszystkich* obejmujący alerty wszystkie poziomy ważności. | 
 |Stan monitora |Wybierz warunek monitora, aby filtrować alerty, jeśli zostały one *Fired* przez system lub *rozwiązane* przez system, jeśli warunek nie jest już aktywna. Lub wybierz *wszystkich* obejmujący alerty wszystkie warunki. | 
 |Stan alertu |Wybierz stan alertu *New*, *potwierdzonym*, *zamknięte*, lub wybierz *wszystkich* obejmujący alerty wszystkich stanów. | 

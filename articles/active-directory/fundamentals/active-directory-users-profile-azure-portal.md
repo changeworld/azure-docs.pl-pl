@@ -13,11 +13,11 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8d710a86bb63765ea8a1a777818ca5f99e38d3a7
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59548053"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60248097"
 ---
 # <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>Dodaj lub zaktualizuj informacje o profilu użytkownika przy użyciu usługi Azure Active Directory
 Dodaj informacje o profilu użytkownika, w tym zdjęcie profilowe, informacje specyficzne dla zadania i niektóre ustawienia za pomocą usługi Azure Active Directory (Azure AD). Aby uzyskać więcej informacji na temat dodawania nowych użytkowników, zobacz [jak dodawanie lub usuwanie użytkowników w usłudze Azure Active Directory](add-users-azure-active-directory.md).

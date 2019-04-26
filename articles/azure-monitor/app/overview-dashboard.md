@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 08/31/2018
 ms.author: mbullwin
 ms.openlocfilehash: 47c83e6bc700f972e6dff83e4d067e61218c04bd
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54035257"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60255604"
 ---
 # <a name="application-insights-overview-dashboard"></a>Pulpit nawigacyjny aplikacji — omówienie szczegółowe informacje
 
@@ -37,7 +37,7 @@ Wybór zakresu czasu został uproszczony, aby za pomocą prostego interfejsu jed
 
 Ogólna wydajność została znacznie zwiększona. Masz jednym kliknięciem dostęp do popularnych funkcji, takich jak **wyszukiwania** i **analizy**. Każda domyślna dynamiczne aktualizowanie kafelka kluczowy wskaźnik wydajności zapewnia wgląd w odpowiedniej funkcji usługi Application Insights. Aby dowiedzieć się więcej na temat nie powiodło się wybierz opcję żądania **błędów** w obszarze **zbadaj** nagłówka:
 
-![Błędy](./media/overview-dashboard/app-insights-overview-dashboard-04.png)
+![Niepowodzenia](./media/overview-dashboard/app-insights-overview-dashboard-04.png)
 
 ## <a name="application-dashboard"></a>Pulpit nawigacyjny aplikacji
 

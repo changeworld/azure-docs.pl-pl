@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 02/28/2017
 ms.author: cynthn
 ms.openlocfilehash: 4b4d8f68c8b541b44065931991fea7c598aa770e
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673840"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60318091"
 ---
 # <a name="quick-create-a-virtual-machine-with-the-azure-cli"></a>Szybkie tworzenie maszyny wirtualnej przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -54,7 +54,7 @@ Ten skrypt zawiera następujące polecenia służące do tworzenia grupy zasobó
 | [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension) | Dodaje rozszerzenie maszyny wirtualnej do maszyny wirtualnej i uruchamia je. W tym przykładzie do instalowania usług IIS jest używane rozszerzenie skryptu niestandardowego.|
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure).
 

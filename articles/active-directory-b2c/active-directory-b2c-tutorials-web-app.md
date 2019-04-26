@@ -3,7 +3,7 @@ title: Samouczek — włączanie uwierzytelniania w aplikacji internetowej — A
 description: Samouczek dotyczący sposobu użycia usługi Azure Active Directory B2C w celu określenia nazwy logowania użytkownika na potrzeby aplikacji internetowej platformy ASP.NET.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.author: davidmu
 ms.date: 02/04/2019
 ms.custom: mvc
@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: ced74cc5af829c3677a12aaf4bffdf9a518f6053
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755632"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60384757"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>Samouczek: włączanie uwierzytelniania w aplikacji internetowej przy użyciu usługi Azure Active Directory B2C
 
@@ -84,7 +84,7 @@ Należy zmienić przykładową aplikację tak, aby korzystała z aplikacji zarej
 
 Teraz użytkownik może logować się i korzystać z aplikacji internetowej, używając swojego adresu e-mail.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

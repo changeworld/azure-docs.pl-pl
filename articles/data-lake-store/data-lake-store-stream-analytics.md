@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: twooley
 ms.openlocfilehash: d3dbacd58b3bda3fbf8ee8ad5f175eccc2cb2a24
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58877554"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60194947"
 ---
 # <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>Stream dane z rozszerzenia Azure Storage Blob do usługi Azure Data Lake Storage Gen1 przy użyciu usługi Azure Stream Analytics
 W tym artykule dowiesz się, jak używać usługi Azure Data Lake Storage Gen1 jako dane wyjściowe dla zadania usługi Azure Stream Analytics. W tym artykule przedstawiono prosty scenariusz, który odczytuje dane z obiektu blob usługi Azure Storage (wejście) i zapisuje je w danych Data Lake Storage Gen1 (dane wyjściowe).

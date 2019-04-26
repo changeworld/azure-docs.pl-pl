@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
 ms.openlocfilehash: ea625a61ed600dbaa22fef85987e9570a6fb7dbc
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337417"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60371470"
 ---
 # <a name="get-started-with-your-billing-account-for-a-microsoft-customer-agreement"></a>Rozpoczynanie korzystania z konta rozliczeniowego dla umowy klienta firmy Microsoft
 
@@ -30,7 +30,7 @@ Ten artykuł dotyczy konta rozliczeniowego dla umowy klienta firmy Microsoft. [S
 
 Konto rozliczeniowe dla umowy klienta firmy Microsoft zawiera co najmniej jeden profil rozliczeń, które pozwalają zarządzać metodami płatności i faktur. Każdy profil rozliczeniowy zawiera jeden lub więcej sekcji faktur, które umożliwiają organizowanie koszty, faktury profil rozliczeniowy.
 
-Na poniższym diagramie przedstawiono relację między konta rozliczeniowego, profile rozliczeń i sekcje faktury.
+Na poniższym diagramie przedstawiono relację między kontem rozliczeniowym, profilami rozliczeniowymi i sekcjami faktury.
 
 ![Diagram przedstawiający hierarchii rozliczeń dla umowy klienta firmy Microsoft](./media/billing-mca-overview/mca-billing-hierarchy.png)
 
@@ -72,7 +72,7 @@ Plany platformy Azure są włączane automatycznie, gdy tworzysz profil rozlicze
 | Planowanie             | Definicja  |
 |------------------|-------------|
 |Plan platformy Microsoft Azure   | Zezwalaj użytkownikom na tworzenie subskrypcji, które można uruchomić żadnych obciążeń. Aby uzyskać więcej informacji, zobacz [Plan usługi Microsoft Azure](https://azure.microsoft.com/offers/ms-azr-0017g/) |
-|Plan platformy Microsoft Azure — tworzenie i testowanie | Zezwalaj na subskrybentów programu Visual Studio do utworzenia subskrypcji, które są ograniczone do tworzenia lub testowania obciążenia. Te subskrypcje korzyści takie jak niższe stawki oraz dostęp do obrazów maszyn wirtualnych wyłączności w witrynie Azure portal. Aby uzyskać więcej informacji, zobacz [Microsoft Azure planowanie DevTest](https://azure.microsoft.com/offers/ms-azr-0148g/)|
+|Plan platformy Microsoft Azure na potrzeby tworzenia i testowania | Zezwalaj na subskrybentów programu Visual Studio do utworzenia subskrypcji, które są ograniczone do tworzenia lub testowania obciążenia. Te subskrypcje korzyści takie jak niższe stawki oraz dostęp do obrazów maszyn wirtualnych wyłączności w witrynie Azure portal. Aby uzyskać więcej informacji, zobacz [Microsoft Azure planowanie DevTest](https://azure.microsoft.com/offers/ms-azr-0148g/)|
 
 ## <a name="understand-invoice-sections"></a>Zrozumienie faktury sekcje
 

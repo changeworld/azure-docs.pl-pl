@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 3/12/2018
 ms.author: dukek
-ms.subservice: alerts
+ms.component: alerts
 ms.openlocfilehash: 11fd6a2c58671cc5d0bcf0593239eb9e62aca834
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58109495"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60346652"
 ---
 # <a name="rate-limiting-for-voice-sms-emails-azure-app-push-notifications-and-webhook-posts"></a>Oceń, ograniczając połączeń głosowych, wiadomości SMS, wiadomości e-mail, powiadomień wypychanych w aplikacji platformy Azure i elementu webhook wpisów
 Ograniczanie szybkości jest zawieszenia powiadomienia, który występuje, gdy za dużo są wysyłane do konkretny numer telefonu, adres e-mail lub urządzenia. Ograniczanie szybkości gwarantuje, że alerty są łatwe w obsłudze i możliwością wykonywania akcji.
@@ -35,4 +35,3 @@ Progi limit szybkości są:
 * Dowiedz się więcej o [SMS alert zachowanie](alerts-sms-behavior.md).
 * Pobierz [Przegląd alertów dziennika aktywności](alerts-overview.md)i Dowiedz się, jak otrzymywać alerty.  
 * Dowiedz się, jak [Konfigurowanie alertów po każdym opublikowaniu powiadomienia kondycji usługi](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
-

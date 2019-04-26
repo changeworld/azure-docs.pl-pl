@@ -13,12 +13,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 74ba9b8d0ce86a5c663eb9fbb6190e2bcf4513d7
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: f510a111a6c8846b300c09f368a3a2a05b2bb7ad
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47414125"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60306994"
 ---
 # <a name="troubleshoot-deployment-issues-with-restarting-or-resizing-an-existing-windows-vm-in-azure"></a>Rozwiązywanie problemów z wdrożeniem przy ponownym uruchamianiu lub zmienianiu rozmiaru istniejącej maszyny Wirtualnej Windows na platformie Azure
 Podczas próby uruchomienia zatrzymania maszyny wirtualnej platformy Azure (VM) lub zmienić rozmiar istniejącej maszyny Wirtualnej platformy Azure typowym błędem, które wystąpią jest wystąpił błąd alokacji. Ten błąd rezultatem klastra lub regionie nie ma dostępnych zasobów albo nie obsługuje żądanego rozmiaru maszyny Wirtualnej.
@@ -45,7 +45,7 @@ Spróbuj uruchomić zatrzymanej maszyny Wirtualnej, ale wystąpić błąd alokac
   2. Po zatrzymać wszystkie maszyny wirtualne, zaznacz wszystkie zatrzymane maszyny wirtualne, a następnie kliknij przycisk Uruchom.
 * Ponów żądanie ponownego uruchomienia w późniejszym czasie.
 
-## <a name="issue-error-when-resizing-an-existing-vm"></a>Problem: Błąd podczas zmiany rozmiaru istniejącej maszyny Wirtualnej
+## <a name="issue-error-when-resizing-an-existing-vm"></a>Problem: Wystąpił błąd podczas zmiany rozmiaru istniejącej maszyny Wirtualnej
 Spróbuj zmienić rozmiar istniejącej maszyny Wirtualnej, ale wystąpić błąd alokacji.
 
 ### <a name="cause"></a>Przyczyna

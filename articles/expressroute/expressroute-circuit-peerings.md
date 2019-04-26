@@ -9,11 +9,11 @@ ms.date: 11/05/2018
 ms.author: mialdridm
 ms.custom: seodec18
 ms.openlocfilehash: 35cee297156cf64deeef8c9c6b514ec8176f9ca5
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149980"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60367731"
 ---
 # <a name="expressroute-circuits-and-peering"></a>Obwody usługi ExpressRoute i komunikacji równorzędnej
 

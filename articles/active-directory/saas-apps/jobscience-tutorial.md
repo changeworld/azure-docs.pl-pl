@@ -16,11 +16,11 @@ ms.date: 07/12/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8199f106c234e216a0982dc9e51413ccf30ae93a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56199531"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60268694"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscience"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Jobscience
 
@@ -146,13 +146,13 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 1. W witrynie firmy Jobscience kliknij **środki kontroli bezpieczeństwa**, a następnie kliknij przycisk **ustawienia rejestracji jednokrotnej**.
     
-    ![Środki kontroli bezpieczeństwa](./media/jobscience-tutorial/ic784364.png "kontroli zabezpieczeń")
+    ![Kontrole zabezpieczeń](./media/jobscience-tutorial/ic784364.png "Kontrole zabezpieczeń")
 
 1. W **ustawienia rejestracji jednokrotnej** sekcji, wykonaj następujące czynności:
     
-    ![Pojedynczy ustawień logowania jednokrotnego](./media/jobscience-tutorial/ic781026.png "pojedynczy ustawień logowania jednokrotnego")
+    ![Ustawienia logowania jednokrotnego](./media/jobscience-tutorial/ic781026.png "Ustawienia logowania jednokrotnego")
     
-    a. Wybierz **SAML włączone**.
+    a. Wybierz pozycję **SAML Enabled** (SAML włączone).
 
     b. Kliknij przycisk **Nowy**.
 
@@ -192,7 +192,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 1. Można pobrać PS inicjować logowanie po kliknięciu adres URL logowania na **ustawień logowania jednokrotnego** w **środki kontroli bezpieczeństwa** sekcji menu.
 
-    ![Środki kontroli bezpieczeństwa](./media/jobscience-tutorial/ic784368.png "kontroli zabezpieczeń")
+    ![Kontrole zabezpieczeń](./media/jobscience-tutorial/ic784368.png "Kontrole zabezpieczeń")
     
     Kliknij profil rejestracji Jednokrotnej, utworzonej w poprzednim kroku. Ta strona zawiera pojedynczy znak w adresie URL w firmie (na przykład [ https://companyname.my.salesforce.com?so=companyid ](https://companyname.my.salesforce.com?so=companyid).    
 
@@ -272,7 +272,7 @@ Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do Jobscience, musi
 
     
 > [!NOTE]
-> Właściciel konta usługi Azure Active Directory otrzymuje wiadomość e-mail, a także następujące łącze, aby potwierdzić swoje konto, zanim stanie się aktywny.
+> Właściciel konta usługi Azure Active Directory otrzyma wiadomość e-mail z linkiem umożliwiającym potwierdzenie konta, zanim stanie się ono aktywne.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -313,7 +313,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction t
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->

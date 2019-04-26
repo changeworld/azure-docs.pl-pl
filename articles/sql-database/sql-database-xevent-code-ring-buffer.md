@@ -13,11 +13,11 @@ ms.reviewer: jrasnik
 manager: craigg
 ms.date: 12/19/2018
 ms.openlocfilehash: bb493fc0a9d3a9173ef4faf17b3cdd4e3781a557
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526167"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60331030"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>Kod docelowy buforu dla rozszerzonych zdarzeń w bazie danych SQL cyklicznego
 
@@ -31,7 +31,7 @@ W tym temacie przedstawiono przykładowy kod języka Transact-SQL, który:
 2. To znaczy tworzy sesję dla istniejących zdarzeń rozszerzonych **sqlserver.sql_statement_starting**.
    
    * Zdarzenie jest ograniczona do instrukcji SQL, zawierające określony ciąg aktualizacji: **instrukcji takich jak "% aktualizacji tabEmployee %"**.
-   * Wybiera wysyłać dane wyjściowe zdarzenia docelowego typu bufor cykliczny, a mianowicie **package0.ring_buffer**.
+   * Chooses to send the output of the event to a target of type Ring Buffer, namely  **package0.ring_buffer**.
 3. Uruchamia sesję zdarzeń.
 4. Problemy z kilku prostych instrukcji SQL UPDATE.
 5. Generuje instrukcję SQL SELECT, aby pobrać dane wyjściowe zdarzenia z bufor cykliczny.
@@ -219,9 +219,9 @@ GO
 
 Użyliśmy ssms.exe, aby uruchomić przykładowy kod.
 
-Aby wyświetlić wyniki, firma Microsoft kliknięto komórce pod nagłówkiem kolumny **target_data_XML**.
+To view the results, we clicked the cell under the column header **target_data_XML**.
 
-Następnie w okienku wyników możemy kliknięto przycisk komórce pod nagłówkiem kolumny **target_data_XML**. Kliknij ten przycisk utworzyć inną kartę pliku w ssms.exe w którym zawartość komórki wynik był wyświetlany jako XML.
+Then in the results pane we clicked the cell under the column header **target_data_XML**. Kliknij ten przycisk utworzyć inną kartę pliku w ssms.exe w którym zawartość komórki wynik był wyświetlany jako XML.
 
 Dane wyjściowe są wyświetlane w poniższy blok. Wygląda na to długie, ale jest tylko dwóch  **\<zdarzeń >** elementów.
 

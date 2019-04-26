@@ -12,11 +12,11 @@ ms.topic: quickstart
 ms.date: 01/23/2019
 ms.author: diberry
 ms.openlocfilehash: 043b31aaaad30e9f2663b0a53273874e8c84ff6d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884022"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60194603"
 ---
 # <a name="quickstart-get-intent-using-python"></a>Szybki start: pobieranie intencji przy użyciu języka Python
 W tym przewodniku Szybki start przekażesz wypowiedzi do punktu końcowego aplikacji LUIS i uzyskasz intencje oraz jednostki.
@@ -61,7 +61,7 @@ Aby uzyskać dostęp do tego samego wyniku, który został wyświetlony w oknie 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 Usuń plik języka Python. 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Dodawanie wypowiedzi](luis-get-started-python-add-utterance.md)

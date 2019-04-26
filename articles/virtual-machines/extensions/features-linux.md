@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
 ms.openlocfilehash: bf6eca33eb1448eb84065fb7fe184d01e77feb61
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037002"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60387290"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Rozszerzenia maszyn wirtualnych i funkcji dla systemu Linux
 
@@ -72,7 +72,7 @@ Aby przekierować żądania ruchu agenta, Agent systemu Linux ma Obsługa serwer
 
 ## <a name="discover-vm-extensions"></a>Odkryj rozszerzeń maszyn wirtualnych
 
-Wiele różnych rozszerzeń maszyn wirtualnych są dostępne do użytku z maszynami wirtualnymi platformy Azure. Aby wyświetlić pełną listę, należy użyć [listy obrazów rozszerzenia maszyny wirtualnej az](/cli/azure/vm/extension/image#az-vm-extension-image-list). Poniższy przykład wyświetla listę wszystkich dostępnych rozszerzeń w *westus* lokalizacji:
+Wielu różnych rozszerzeń maszyny wirtualnej można używać z maszynami wirtualnymi platformy Azure. Aby wyświetlić pełną listę, należy użyć [listy obrazów rozszerzenia maszyny wirtualnej az](/cli/azure/vm/extension/image#az-vm-extension-image-list). Poniższy przykład wyświetla listę wszystkich dostępnych rozszerzeń w *westus* lokalizacji:
 
 ```azurecli
 az vm extension image list --location westus --output table

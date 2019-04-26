@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 818b91d7-01df-4b36-9706-f167c710a73c
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95d6ff44a8d760150df491b67ee56d62c4daff31
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: 52c49bdd51bda7876d19a681bde79c9dbeeb4ea7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882794"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60284622"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją AnswerHub
 
@@ -80,7 +80,7 @@ Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD w apli
 2. [Skonfiguruj logowanie jednokrotne w aplikacji AnswerHub](#configure-answerhub-single-sign-on), aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
 3. [Utwórz testowego użytkownika usługi Azure AD](#create-an-azure-ad-test-user) o nazwie Britta Simon.
 4. [Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user) — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
-5. [Utwórz testowego użytkownika aplikacji AnswerHub](#create-answerhub-test-user), który odpowiada użytkownikowi testowemu usługi Azure AD i jest z nim połączony.
+5. Utwórz użytkownika testowego AnswerHub, który odpowiada i jest połączona z usługi Azure AD użytkownika testowego.
 6. [Przetestuj logowanie jednokrotne](#test-single-sign-on), aby sprawdzić działanie konfiguracji.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
@@ -150,7 +150,7 @@ W tej sekcji skonfigurujesz logowanie jednokrotne w aplikacji AnswerHub.
   
     b. W polu **IDP Logout URL** (Adres URL wylogowywania dostawcy tożsamości) wklej **Adres URL wylogowywania** skopiowany z witryny Azure Portal.
 
-    d. W polu **IDP Name Identifier Format** (Format identyfikatora nazwy dostawcy tożsamości) wprowadź wartość **identyfikatora** wybraną w sekcji **Atrybuty użytkownika** w witrynie Azure Portal.
+    c. W polu **IDP Name Identifier Format** (Format identyfikatora nazwy dostawcy tożsamości) wprowadź wartość **identyfikatora** wybraną w sekcji **Atrybuty użytkownika** w witrynie Azure Portal.
   
     d. Wybierz pozycję **Keys and Certificates** (Klucze i certyfikaty).
 
@@ -184,10 +184,10 @@ W tej sekcji utworzysz użytkownika testowego o nazwie Britta Simon w witrynie A
 
     a. W polu **Nazwa** wpisz **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@<domena_firmy.rozszerzenie>**.  
+    b. W **nazwa_użytkownika** wprowadź **brittasimon\@< yourcompanydomain.extension >**.  
     Na przykład BrittaSimon@contoso.com.
 
-    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
+    c. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
 
     d. Wybierz pozycję **Utwórz**.
 

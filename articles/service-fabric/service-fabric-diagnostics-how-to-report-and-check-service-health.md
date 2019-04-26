@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 02/25/2019
 ms.author: srrengar
 ms.openlocfilehash: 2126157f49bd978d2218986601245cae2e4157b6
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821682"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60322054"
 ---
 # <a name="report-and-check-service-health"></a>Tworzenie raportów i sprawdzanie kondycji usług
 W przypadku wystąpienia problemów z usług możliwość odpowiedzieć i rozwiązać zdarzenia i awarii zależy od możliwości, aby szybko wykrywać problemy. Jeśli raportów problemów i błędów do Menedżera kondycji usługi Azure Service Fabric z poziomu kodu usługi, możesz użyć standardowego kondycji narzędzia, które Usługa Service Fabric udostępnia, aby sprawdzić stan kondycji monitorowania.

@@ -1,19 +1,19 @@
 ---
 title: Migracja platformy Azure alertów dotyczących zdarzeń zarządzania do alertów dziennika aktywności
 description: Alerty dotyczące zdarzeń zarządzania zostaną usunięte w dniu 1 października. Przygotować, włączając Migrowanie istniejących alertów.
-author: johnkemnetz
+author: lingliw
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 08/14/2017
-ms.author: johnkem
+ms.date: 04/12/19
+ms.author: v-lingwu
 ms.subservice: alerts
 ms.openlocfilehash: fb54e11c9da6bec2a1e0354317df6343140cbf09
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59794120"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60255923"
 ---
 # <a name="migrate-azure-alerts-on-management-events-to-activity-log-alerts"></a>Migracja platformy Azure alertów dotyczących zdarzeń zarządzania do alertów dziennika aktywności
 
@@ -32,7 +32,7 @@ Usługa Azure Monitor (dawniej Azure Insights) oferowana możliwość tworzenia 
 Poniższy skrypt programu PowerShell zwraca listę wszystkich alertów w zdarzenia zarządzania, które masz w subskrypcji, a także warunków określonych na temat każdego alertu.
 
 ```powershell
-Connect-AzAccount
+Connect-AzAccount -Environment AzureChinaCloud
 $alerts = $null
 foreach ($rg in Get-AzResourceGroup ) {
   $alerts += Get-AzAlertRule -ResourceGroup $rg.ResourceGroupName
@@ -115,4 +115,3 @@ Alerty dotyczące zdarzeń zarządzania, które zostały wcześniej utworzone ni
 * Przegląd [schemat elementów webhook alertu dziennika aktywności](../../azure-monitor/platform/activity-log-alerts-webhook.md)
 * Dowiedz się więcej o [powiadomień dotyczących usług](../../azure-monitor/platform/service-notifications.md)
 * Dowiedz się więcej o [grupy akcji](../../azure-monitor/platform/action-groups.md)
-

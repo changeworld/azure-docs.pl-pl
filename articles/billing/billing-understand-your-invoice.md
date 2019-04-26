@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 08/31/2017
 ms.author: banders
 ms.openlocfilehash: 77c1a85136b2117af7396b8eec2d8b92b335d61d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57897456"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60369966"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-invoice"></a>Zrozumienie warunki na fakturze Microsoft Azure
 
@@ -31,7 +31,7 @@ Kilka kwestii, które należy zwrócić uwagę:
 
 -   Maksymalnie 24 godziny użycia na końcu poprzedniego okresu rozliczeniowego może być wyświetlane w Twojej bieżącej faktury.
 
--   Opłaty wymienione na rozliczeniach dla klientów międzynarodowych służą jedynie do oszacowania kosztów. Banki mogą mieć różne koszty współczynniki konwersji.
+-   Opłaty wymienione na rozliczeniach dla klientów międzynarodowych służą jedynie do oszacowania kosztów. Banki mogą stosować różne kursy wymiany.
 
 >[!VIDEO https://www.youtube.com/embed/jWG1lyJe3Mg]
 
@@ -101,7 +101,7 @@ W poniższej tabeli opisano nagłówki kolumn opłaty za użycie na fakturze.
 | --- | --- |
 | Name (Nazwa) |Określa usługę najwyższego poziomu do użycia |
 | Type |Definiuje typ usługi platformy Azure, który może wpływać na stawkę |
-| Zasób |Określa jednostkę miary dla mierników, są używane |
+| Resource |Określa jednostkę miary dla mierników, są używane |
 | Region |Określa lokalizację centrum danych pewnych usług, które są wyceniane na podstawie lokalizacji centrum danych |
 | Zużyte |Ilość miernika, używany w trakcie okresu rozliczeniowego |
 | Dołączono |Wartość licznika, który jest dołączony, bez dodatkowych opłat w trakcie bieżącego okresu rozliczeniowego |

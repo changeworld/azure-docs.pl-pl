@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 31fe3877fd6098b18686b9d99a012cbfbef7c300
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58122981"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60244041"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Synchronizacja programu Azure AD Connect: Zmiany w konfiguracji domyślnej
 Ten artykuł ma na celu objaśniono sposób wprowadzania zmian w domyślnej konfiguracji synchronizacji usługi Azure Active Directory (Azure AD) Connect. Zapewnia on kroki kilka typowych scenariuszy. Za pomocą tej wiedzy można wszechstronną własnych konfiguracji na podstawie własnych reguł biznesowych.
@@ -288,7 +288,7 @@ Reguła synchronizacji ruchu przychodzącego zezwala na wartość atrybutu, któ
 
     | Typ przepływu | Atrybut docelowy | Element źródłowy | Zastosuj raz | Scal typu |
     | --- | --- | --- | --- | --- |
-    | Bezpośrednie | UserType | extensionAttribute1 | Niezaznaczone | Aktualizacja |
+    | Direct | UserType | extensionAttribute1 | Niezaznaczone | Aktualizacja |
 
     W kolejnym przykładzie chcesz dziedziczyć wartość atrybutu UserType inne właściwości. Na przykład chcesz synchronizować wszystkich użytkowników jako gościa, jeśli ich w środowisku lokalnym atrybut userPrincipalName AD kończy się część domeny <em>@partners.fabrikam123.org</em>. Można zaimplementować wyrażenia następująco:
 
@@ -331,7 +331,7 @@ Reguła synchronizacji ruchu wychodzącego zezwala na wartość atrybutu mogą p
 
     | Typ przepływu | Atrybut docelowy | Element źródłowy | Zastosuj raz | Scal typu |
     | --- | --- | --- | --- | --- |
-    | Bezpośrednie | UserType | UserType | Niezaznaczone | Aktualizacja |
+    | Direct | UserType | UserType | Niezaznaczone | Aktualizacja |
 
 7. Kliknij przycisk **Dodaj** do utworzenia reguły ruchu wychodzącego.
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcb825a193071d263d800dafdd6296246eb74aec
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 77154ef35242c55724becb77595dbd5ecf8a4da9
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57878197"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60359062"
 ---
 # <a name="password-management-frequently-asked-questions"></a>Zarządzanie hasłami — często zadawane pytania
 
@@ -46,7 +46,7 @@ Tych często zadawanych Pytaniach jest podzielona na następujące sekcje:
   >
 * **Pyt.:  Czy można zdefiniować dane resetowania haseł w imieniu użytkowników?**
 
-  > **Odp.:** Tak, możesz to zrobić za pomocą usługi Azure AD Connect, programu PowerShell, [witryny Azure portal](https://portal.azure.com), lub w Centrum administracyjnym usługi Office 365. Aby uzyskać więcej informacji, zobacz [dane używane przez haseł usługi Azure AD resetowania](howto-sspr-authenticationdata.md).
+  > **Odp.:** Tak, możesz to zrobić za pomocą usługi Azure AD Connect, programu PowerShell, [witryny Azure portal](https://portal.azure.com), lub [Centrum administracyjnego usługi Microsoft 365](https://admin.microsoft.com). Aby uzyskać więcej informacji, zobacz [dane używane przez haseł usługi Azure AD resetowania](howto-sspr-authenticationdata.md).
   >
   >
 * **Pyt.:  Można synchronizować dane odpowiedzi na pytania zabezpieczające ze środowiska lokalnego?**

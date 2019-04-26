@@ -16,15 +16,15 @@ ms.date: 06/02/2017
 ms.author: alkohli
 ms.custom: ''
 ms.openlocfilehash: e05a37122647d4979089f0ba00b1fc15f9b84b0f
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433658"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60321831"
 ---
 # <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>Wymienić składnik sprzętowy w urządzeniu StorSimple 8000 series
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Zastąpienie składnika samouczki opisano składniki sprzętowe w urządzeniu serii Microsoft Azure StorSimple 8000 i kroki niezbędne do usunięcia, a zastępuje je. W tym artykule opisano ikony bezpieczeństwa, zawiera wskaźniki do szczegółowymi samouczkami i wyświetla listę składników, które są wymienne.
 
 > [!IMPORTANT]
@@ -34,7 +34,7 @@ Zastąpienie składnika samouczki opisano składniki sprzętowe w urządzeniu se
 ### <a name="safety-icon-conventions"></a>Konwencje ikonę bezpieczeństwa
 W poniższej tabeli opisano ikon bezpieczeństwa, używanych w tych samouczkach. Podczas wykonywania kroków kroki, aby usunąć i Zastąp składniki urządzenia, należy zwracać szczególną uwagę na tych ikon bezpieczeństwa.
 
-| Ikona | Tekst | Dodatkowe informacje |
+| Ikona | Text | Dodatkowe informacje |
 |:--- |:--- |:--- |
 | ![ikona ostrzeżenia](./media/storsimple-hardware-component-replacement/Warning.png) |**ZAGROŻENIA!** |Wskazuje niebezpiecznych sytuację, która nie jest to uniknąć, spowoduje śmierci lub poważnemu. Ten wyraz sygnał jest ograniczona do najbardziej ekstremalnych przypadkach. |
 | ![ikona ostrzeżenia](./media/storsimple-hardware-component-replacement/Warning.png) |**OSTRZEŻENIE!** |Wskazuje sytuację zagrożenia, jeśli nie jest to uniknąć, może spowodować śmierci lub poważne szkody. |

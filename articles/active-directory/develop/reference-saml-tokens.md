@@ -19,11 +19,11 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a77118edd08faf6d40897a916ee85e2b6e20d3bb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58103455"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60298261"
 ---
 # <a name="azure-ad-saml-token-reference"></a>Dokumentacja programu Azure AD SAML tokenu
 
@@ -47,7 +47,7 @@ Azure Active Directory (Azure AD) emituje kilka rodzajów tokenów zabezpieczaj�
 > |Name (Nazwa) | `unique_name` |Udostępnia zrozumiałą wartość identyfikującą podmiot tokenu. Ta wartość nie musi być unikatowa w ramach dzierżawy i jest przeznaczony do użycia tylko w celach wyświetlania. | `<Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name">`<br>`<AttributeValue>frankm@contoso.com<AttributeValue>`|
 > |Identyfikator obiektu | `oid` |Zawiera unikatowy identyfikator obiektu w usłudze Azure AD. Ta wartość jest niezmienny i nie może być ponownie przypisywany ani ponownie. Użyj Identyfikatora obiektu, aby zidentyfikować obiekt w zapytaniach do usługi Azure AD. | `<Attribute Name="http://schemas.microsoft.com/identity/claims/objectidentifier">`<br>`<AttributeValue>528b2ac2-aa9c-45e1-88d4-959b53bc7dd0<AttributeValue>` |
 > |Role | `roles` |Reprezentuje wszystkie role aplikacji, które temat ma przyznane bezpośrednio i pośrednio za pośrednictwem członkostwa w grupie i może służyć do wymuszania kontroli dostępu opartej na rolach. Role aplikacji są definiowane na podstawie poszczególnych aplikacji przy użyciu `appRoles` właściwości manifestu aplikacji. `value` Właściwości poszczególnych ról aplikacji jest wartość, która jest wyświetlana w oświadczenia ról. | `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/role">`|
-> |Podmiot | `sub` |Identyfikuje jednostkę o tym, które token określa informacje, takie jak użytkownik aplikacji. Ta wartość jest niemodyfikowalna i nie może zostać przypisany, lub ponownie, dlatego może służyć do sprawdzania autoryzacji bezpiecznie. Ponieważ temat zawsze jest obecny w tokenach problemy dotyczące usługi Azure AD, zalecane jest korzystanie z tej wartości w systemie autoryzacji ogólnego przeznaczenia. <br> `SubjectConfirmation` nie jest oświadczenia. Opisuje sposób przedmiotem token jest weryfikowany. `Bearer` Wskazuje, że temat potwierdza zapoznały tokenu. | `<Subject>`<br>`<NameID>S40rgb3XjhFTv6EQTETkEzcgVmToHKRkZUIsJlmLdVc</NameID>`<br>`<SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer" />`<br>`</Subject>`|
+> |Subject | `sub` |Identyfikuje jednostkę o tym, które token określa informacje, takie jak użytkownik aplikacji. Ta wartość jest niemodyfikowalna i nie może zostać przypisany, lub ponownie, dlatego może służyć do sprawdzania autoryzacji bezpiecznie. Ponieważ temat zawsze jest obecny w tokenach problemy dotyczące usługi Azure AD, zalecane jest korzystanie z tej wartości w systemie autoryzacji ogólnego przeznaczenia. <br> `SubjectConfirmation` nie jest oświadczenia. Opisuje sposób przedmiotem token jest weryfikowany. `Bearer` Wskazuje, że temat potwierdza zapoznały tokenu. | `<Subject>`<br>`<NameID>S40rgb3XjhFTv6EQTETkEzcgVmToHKRkZUIsJlmLdVc</NameID>`<br>`<SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer" />`<br>`</Subject>`|
 > |Identyfikator dzierżawy | `tid` |Identyfikator niezmienne, jednorazowego, który identyfikuje dzierżawy katalogu, który wystawił token. Ta wartość umożliwia dostęp do zasobów katalogu specyficznym dla dzierżawy w aplikacji z wieloma dzierżawami. Na przykład można użyć tej wartości do identyfikowania dzierżawy w wywołaniu interfejsu API programu Graph. | `<Attribute Name="http://schemas.microsoft.com/identity/claims/tenantid">`<br>`<AttributeValue>cbb1a5ac-f33b-45fa-9bf5-f37db0fed422<AttributeValue>`|
 > |Czas życia tokenu | `nbf`, `exp` |Definiuje przedział czasu, przez który token jest prawidłowy. Usługa, która sprawdza poprawność tokenu należy sprawdzić, że bieżąca data mieści się okres istnienia tokenu, else powinien on odrzucenie tokena. Usługa może pozwalać na pięć minut poza zakresem okres istnienia tokenu na wszelkie różnice w zegarze ("niesymetryczność czasu") między usługą Azure AD i usługi. | `<Conditions`<br>`NotBefore="2013-03-18T21:32:51.261Z"`<br>`NotOnOrAfter="2013-03-18T22:32:51.261Z"`<br>`>` <br>|
 

@@ -19,11 +19,11 @@ ms.reviewer: jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f87573e23f2c0f48e54b6f03289969aab930e15c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56200602"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60299179"
 ---
 # <a name="quickstart-build-a-net-web-api-that-integrates-with-azure-ad-for-authentication-and-authorization"></a>Szybki start: Tworzenie internetowego interfejsu API platformy .NET, który integruje się z usługą Azure AD w celu uwierzytelniania i autoryzacji
 
@@ -157,6 +157,6 @@ Zanim usługa Lista zadań do wykonania zacznie działać, należy skonfigurowa�
 1. Jeśli jeszcze tego nie zrobiono, utwórz nowego użytkownika w ramach swojej dzierżawy z domeną *.onmicrosoft.com.
 1. Zaloguj się do klienta Lista zadań do wykonania za pomocą tego użytkownika, a następnie dodaj kilka zadań do listy zadań do wykonania użytkownika.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Na potrzeby referencyjne gotowy przykład (bez wartości konfiguracyjnych) jest dostępny w repozytorium [GitHub](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/complete.zip). Możesz teraz przejść do innych scenariuszy dotyczących tożsamości.

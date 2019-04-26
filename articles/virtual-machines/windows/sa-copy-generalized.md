@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: a7181c91424e1d905329eefd13f926d0b2700081
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: e1ed419892412c1fb9334fed74b82c53154723ed
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56864978"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60252415"
 ---
 # <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>Sposób tworzenia obrazu maszyny Wirtualnej niezarządzanej maszyny wirtualnej platformy Azure
 
@@ -29,7 +29,7 @@ W tym artykule opisano użycie kont magazynu. Firma Microsoft zaleca używanie d
 
 W tym artykule pokazano, jak używać programu Azure PowerShell do tworzenia obrazu uogólnionej maszyny Wirtualnej platformy Azure przy użyciu konta magazynu. Obraz, który umożliwia następnie utworzyć inną maszynę Wirtualną. Obraz zawiera dysk systemu operacyjnego i dysków z danymi, które są dołączone do maszyny wirtualnej. Obraz, który nie zawiera zasoby sieci wirtualnej, dlatego należy skonfigurować te zasoby podczas tworzenia nowej maszyny Wirtualnej. 
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="generalize-the-vm"></a>Uogólnianie maszyny Wirtualnej 
 W tej sekcji pokazano, jak uogólnić maszyny wirtualnej Windows do użycia jako obraz. Uogólnianie maszyny Wirtualnej powoduje usunięcie wszystkich danych konta osobistego, między innymi i przygotowuje maszynę do użycia jako obraz. Aby uzyskać więcej informacji na temat narzędzia Sysprep, zobacz [Używanie narzędzia Sysprep: wprowadzenie](https://technet.microsoft.com/library/bb457073.aspx).
@@ -116,7 +116,7 @@ Adres URL obrazu można uzyskać za pomocą szablonu pliku JSON. Przejdź do **z
    
 Można również sprawdzić identyfikatora URI w portalu. Obraz, który jest kopiowany do kontenera o nazwie **systemu** na koncie magazynu. 
 
-## <a name="create-a-vm-from-the-image"></a>Utwórz Maszynę wirtualną z obrazu
+## <a name="create-a-vm-from-the-image"></a>Utwórz maszynę wirtualną na podstawie obrazu
 
 Teraz możesz utworzyć co najmniej jedną maszynę wirtualną z obrazu niezarządzanego.
 

@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 03/04/2018
 ms.author: aahi
 ms.openlocfilehash: 65b0e6e9fb6f04d4536b642fe58da4e6c0f1aa69
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57336585"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60327131"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-nodejs"></a>Szybki start: wywoływanie punktu końcowego wyszukiwania niestandardowego Bing przy użyciu języka Node.js
 

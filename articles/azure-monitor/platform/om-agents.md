@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 03/22/2019
 ms.author: magoedte
 ms.openlocfilehash: 19ae3322d26447cf7c7dd94d06f073ccf013738e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58878359"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60255080"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Łączenie programu Operations Manager do usługi Azure Monitor
 
@@ -64,7 +64,7 @@ Przed rozpoczęciem sprawdź następujące wymagania.
 
 Poniższe informacje lista serwera proxy i zapory konfiguracji wymaganych informacji dla agenta programu Operations Manager, serwerów zarządzania i konsola operacje, do komunikowania się z usługą Azure Monitor. Ruch sieciowy z poszczególnych składników jest ruch wychodzący z sieci lokalnej do usługi Azure Monitor.   
 
-|Zasób | Numer portu| Obejście inspekcji HTTP|  
+|Resource | Numer portu| Obejście inspekcji HTTP|  
 |---------|------|-----------------------|  
 |**Agent**|||  
 |\*.ods.opinsights.azure.com| 443 |Yes|  

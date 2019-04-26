@@ -16,11 +16,11 @@ ms.date: 07/10/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 377da86003543fb53240de4d5fc672f71e1ed5f2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56202404"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60273486"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-imagineer-webvision"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Imagineer WebVision
 
@@ -159,7 +159,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
  
 ### <a name="create-an-imagineer-webvision-test-user"></a>Tworzenie użytkownika testowego Imagineer WebVision
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w Imagineer WebVision. Praca z [zespołem pomocy technicznej Imagineer WebVision](mailto:support@itgny.com) Aby dodać użytkowników na platformie Imagineer WebVision. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w Imagineer WebVision. Praca z [zespołem pomocy technicznej Imagineer WebVision](mailto:support@itgny.com) Aby dodać użytkowników na platformie Imagineer WebVision. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -200,7 +200,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

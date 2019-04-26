@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 11/13/2018
 ms.author: spelluru
 ms.openlocfilehash: e681652c13e521bd33524e247db65088f47a794c
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51642460"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60394988"
 ---
 # <a name="export-or-delete-personal-data-from-azure-devtest-labs"></a>Eksportowanie lub usunąć dane osobowe z usługi Azure DevTest Labs
 Ten artykuł zawiera instrukcje usuwania i eksportowania danych osobowych z usługi Azure DevTest Labs. 

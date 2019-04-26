@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 90a624a6b3b4696899af0d8606f653df260cc201
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173270"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60348284"
 ---
 # <a name="select-which-installation-type-to-use-for-azure-ad-connect"></a>Wybieranie typu instalacji do użycia programu Azure AD Connect
 Program Azure AD Connect udostępnia dwa typy instalacji nowej instalacji: ekspresową i niestandardową. Ten temat ułatwia podjęcie decyzji, którą opcję do użycia podczas instalacji.
@@ -35,7 +35,7 @@ Zakłada:
 - Masz konto administratora przedsiębiorstwa, używane do instalacji.
 - Masz mniej niż 100 000 obiektów w usłudze Active Directory w środowisku lokalnym.
 
-Zapewnia następujące korzyści:
+Oto, co otrzymujesz:
 
 - [Synchronizacja skrótów haseł](how-to-connect-password-hash-synchronization.md) ze środowiska lokalnego do usługi Azure AD na potrzeby logowania jednokrotnego.
 - Konfiguracja, która synchronizuje [użytkownikom, grupom, kontaktów i komputerach z systemem Windows 10](concept-azure-ad-connect-sync-default-configuration.md).

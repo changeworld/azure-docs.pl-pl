@@ -10,11 +10,11 @@ ms.date: 09/20/2018
 ms.author: robb
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: fa03017c35c76d986139eeee00eea8a9b4a00e62
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59497087"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60238051"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Azure Diagnostyka 1.3 i nowsze schemat konfiguracji
 > [!NOTE]
@@ -610,7 +610,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Definiuje konfigurację buforu dla podstawowych dzienniki platformy Azure.  
 
-|Atrybut|Typ|Opis|  
+|Atrybut|Type|Opis|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|**unsignedInt**|Opcjonalny. Określa maksymalną ilość magazyn systemu plików, które są dostępne dla określonych danych.<br /><br /> Wartość domyślna to 0.|  
 |**scheduledTransferLogLevelFilter**|**ciąg**|Opcjonalny. Określa minimalny poziom ważności wpisy dziennika, które są przenoszone. Wartość domyślna to **niezdefiniowane**, który przesyła wszystkie dzienniki. Inne możliwe wartości (w kolejności od najbardziej do najmniej informacji) to **pełne**, **informacji**, **ostrzeżenie**, **błąd**i **Krytyczne**.|  
@@ -642,11 +642,11 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Definiuje lokalizacjach w celu wysyłania danych diagnostycznych. Na przykład usługi Application Insights.  
 
-|Atrybut|Typ|Opis|  
+|Atrybut|Type|Opis|  
 |---------------|----------|-----------------|  
 |**Nazwa**|string|Ciąg identyfikujący sinkname.|  
 
-|Element|Typ|Opis|  
+|Element|Type|Opis|  
 |-------------|----------|-----------------|  
 |**Application Insights**|string|Używany tylko w przypadku wysyłania danych do usługi Application Insights. Zawiera klucz instrumentacji dla aktywnego konta usługi Application Insights, który ma dostęp do.|  
 |**Channels**|string|Jeden dla każdego dodatkowego filtrowanie strumienia|  
@@ -658,7 +658,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Definiuje filtry dla strumieni danych dziennika przechodzi przez obiekt sink.  
 
-|Element|Typ|Opis|  
+|Element|Type|Opis|  
 |-------------|----------|-----------------|  
 |**Channel**|string|Zobacz opis w innym miejscu na tej stronie.|  
 
@@ -669,7 +669,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Definiuje lokalizacjach w celu wysyłania danych diagnostycznych. Na przykład usługi Application Insights.  
 
-|Atrybuty|Typ|Opis|  
+|Atrybuty|Type|Opis|  
 |----------------|----------|-----------------|  
 |**logLevel**|**ciąg**|Określa minimalny poziom ważności wpisy dziennika, które są przenoszone. Wartość domyślna to **niezdefiniowane**, który przesyła wszystkie dzienniki. Inne możliwe wartości (w kolejności od najbardziej do najmniej informacji) to **pełne**, **informacji**, **ostrzeżenie**, **błąd**i **Krytyczne**.|  
 |**Nazwa**|**ciąg**|Unikatowa nazwa kanału do odwoływania się do|  

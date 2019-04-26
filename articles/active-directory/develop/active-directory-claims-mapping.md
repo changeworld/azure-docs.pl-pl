@@ -14,11 +14,11 @@ ms.author: celested
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2076aec1585ff8b60ee2b593621b75abfaeaa1ac
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59791340"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60300482"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Instrukcje: Dostosowywanie oświadczeń emitowane w tokenach dla konkretnej aplikacji w dzierżawie (wersja zapoznawcza)
 
@@ -142,7 +142,7 @@ Istnieją pewne zestawy oświadczeń, które określają, jak i kiedy są one u�
 | onprem_sam_account_name |
 | onprem_sid |
 | openid2_id |
-| hasło |
+| password |
 | platf |
 | polids |
 | pop_jwk |

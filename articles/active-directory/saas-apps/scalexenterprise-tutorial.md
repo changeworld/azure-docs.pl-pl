@@ -16,11 +16,11 @@ ms.date: 04/20/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 64edf2aa47211c1d2a598417a7b2edc00f260075
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56208575"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60321387"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scalex-enterprise"></a>Samouczek: Integracja usługi Azure Active Directory z usługą ScaleX Enterprise
 
@@ -261,7 +261,7 @@ Kliknij Kafelek ScaleX przedsiębiorstwa, w panelu dostępu, można będzie pobr
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

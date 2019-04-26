@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 1b009ac2ca42e9804b88989b55b2e73524732550
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017467"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60238150"
 ---
 # <a name="map-source-dataset-columns-to-destination-dataset-columns"></a>Mapowanie kolumny zestawu danych źródła do docelowego zestawu danych kolumn
 > [!NOTE]

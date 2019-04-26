@@ -1,19 +1,19 @@
 ---
 title: Wyślij metryki niestandardowe dla zasobów platformy Azure do usługi Azure Monitor metryki magazynu przy użyciu interfejsu API REST
 description: Wyślij metryki niestandardowe dla zasobów platformy Azure do usługi Azure Monitor metryki magazynu przy użyciu interfejsu API REST
-author: anirudhcavale
+author: lingliw
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.author: ancav
+ms.date: 04/12/19
+ms.author: v-lingwu
 ms.subservice: metrics
 ms.openlocfilehash: aa842979bf86410e9dab97d6209f336eb6b02bd3
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621910"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60253874"
 ---
 # <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>Wyślij metryki niestandardowe dla zasobów platformy Azure do usługi Azure Monitor metryki magazynu przy użyciu interfejsu API REST
 
@@ -39,7 +39,7 @@ Nadaj aplikacja utworzona w ramach kroku 1, monitorowania metryk wydawcy, uprawn
 Otwórz wiersz polecenia i uruchom następujące polecenie:
 
 ```shell
-curl -X POST https://login.microsoftonline.com/<yourtenantid>/oauth2/token -F "grant_type=client_credentials" -F "client_id=<insert clientId from earlier step>" -F "client_secret=<insert client secret from earlier step>" -F "resource=https://monitoring.azure.com/"
+curl -X POST https://login.partner.microsoftonline.cn/<yourtenantid>/oauth2/token -F "grant_type=client_credentials" -F "client_id=<insert clientId from earlier step> " -F "client_secret=<insert client secret from earlier step>" -F "resource=https://monitoring.azure.com/"
 ```
 Zapisywanie tokenu dostępu z odpowiedzi.
 
@@ -77,7 +77,7 @@ Zapisywanie tokenu dostępu z odpowiedzi.
     } 
     ``` 
 
-1. W oknie wiersza polecenia po dane metryk: 
+2. W oknie wiersza polecenia po dane metryk: 
    - **azureRegion**. Musi być zgodna regionu geograficznego, zasobów, które w przypadku emitowania metryki. 
    - **resourceID**.  Identyfikator zasobu zasobów platformy Azure, które należy prześledzić metryki względem.  
    - **AccessToken**. Wklej uzyskany wcześniej tokenu.
@@ -85,8 +85,8 @@ Zapisywanie tokenu dostępu z odpowiedzi.
      ```Shell 
      curl -X POST https://<azureRegion>.monitoring.azure.com/<resourceId>/metrics -H "Content-Type: application/json" -H "Authorization: Bearer <AccessToken>" -d @custommetric.json 
      ```
-1. Zmiana sygnatury czasowej i wartości w pliku JSON. 
-1. Powtórz dwa poprzednie kroki kilka razy, dzięki czemu masz dane przez kilka minut.
+3. Zmiana sygnatury czasowej i wartości w pliku JSON. 
+4. Powtórz dwa poprzednie kroki kilka razy, dzięki czemu masz dane przez kilka minut.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów 
 Jeśli zostanie wyświetlony komunikat o błędzie z niektórych części procesu, należy wziąć pod uwagę następujące informacje dotyczące rozwiązywania problemów:
@@ -119,4 +119,3 @@ Jeśli zostanie wyświetlony komunikat o błędzie z niektórych części proces
  
 ## <a name="next-steps"></a>Kolejne kroki
 - Dowiedz się więcej o [metryki niestandardowe](../../azure-monitor/platform/metrics-custom-overview.md).
-

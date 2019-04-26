@@ -9,11 +9,11 @@ ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
 ms.openlocfilehash: e993d169025f9b76c5e813bae31ca6cb2a39ba71
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55809525"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60325888"
 ---
 # <a name="design-for-data-modification"></a>Projektowanie pod kątem modyfikacji danych
 Ten artykuł koncentruje się na informacjach dotyczących projektowania optymalizacji operacji wstawiania, aktualizacji i usuwa. W niektórych przypadkach konieczne będzie oceniać kompromisu między projekty, które optymalizują do wykonywania zapytań względem projektów, które Optymalizuj pod kątem modyfikacji danych, podobnie jak w projektach dla relacyjnych baz danych (mimo że techniki projektowania wad i zalet zarządzania są inne w przypadku relacyjnej bazy danych). Wzorce projektowe tabeli w sekcji opisano niektóre wzorce szczegółowego projektowania usługi Table i opisano niektóre te wad. W praktyce znajdziesz, że wiele projektów, zoptymalizowane pod kątem zapytań jednostki również działać dobrze w przypadku modyfikowania jednostek.  

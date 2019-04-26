@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
 ms.openlocfilehash: 90f832319fa2343003af58bd99eb64c0cbd94dd8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57894550"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60371807"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Ustawianie konta rozliczeniowego dla umowy klienta firmy Microsoft
 
@@ -205,11 +205,11 @@ Aby ukończyć instalację, należy dostęp do nowego konta rozliczeniowego oraz
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
-2. Wyszukiwanie **Cost Management + rozliczenia**.
+2. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
 
    ![Zrzut ekranu pokazujący usługi Azure search w portalu](./media/billing-mca-setup-account/billing-search-cost-management-billing.png)
 
-3. Wybierz profil rozliczeniowy. W zależności od dostęp może być konieczne wybieranie konta rozliczeniowego. Wybierz z konta rozliczeniowego **rozliczeń profile** i następnie profil rozliczeniowy.
+3. Wybierz profil rozliczeniowy. W zależności od praw dostępu może być konieczne wybranie konta rozliczeniowego. Wybierz z konta rozliczeniowego **rozliczeń profile** i następnie profil rozliczeniowy.
 
 4. Wybierz **subskrypcji platformy Azure** z lewej strony.
 
@@ -221,11 +221,11 @@ Subskrypcje platformy Azure, które są przenoszone z rejestrację umowy Enterpr
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
-2. Wyszukiwanie **Cost Management + rozliczenia**.
+2. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
 
    ![Zrzut ekranu pokazujący usługi Azure search w portalu](./media/billing-mca-setup-account/billing-search-cost-management-billing.png)
 
-3. Wybierz sekcję faktury. W zależności od dostęp może być konieczne wybierz konto rozliczeniowe lub profil rozliczeniowy.  Konto rozliczeniowe lub profil rozliczeniowy wybierz **faktury sekcje** i następnie sekcji faktury.
+3. Wybierz sekcję faktury. W zależności od praw dostępu może być konieczne wybranie konta rozliczeniowego lub profilu rozliczeniowego.  Konto rozliczeniowe lub profil rozliczeniowy wybierz **faktury sekcje** i następnie sekcji faktury.
 
     ![Zrzut ekranu przedstawiający listę przejścia wpis w sekcji faktury](./media/billing-mca-setup-account/billing-mca-invoice-sections-post-transition.png)
 
@@ -241,11 +241,11 @@ Rezerwacje platformy Azure, które są przenoszone z rejestrację umowy Enterpri
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
-2. Wyszukiwanie **Cost Management + rozliczenia**.
+2. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
 
    ![Zrzut ekranu pokazujący usługi Azure search w portalu](./media/billing-mca-setup-account/billing-search-cost-management-billing.png)
 
-3. Wybierz profil rozliczeniowy utworzony dla Twojej rejestracji. W zależności od dostęp może być konieczne wybieranie konta rozliczeniowego.  Wybierz z konta rozliczeniowego **rozliczeń profile** i następnie profil rozliczeniowy.
+3. Wybierz profil rozliczeniowy utworzony dla Twojej rejestracji. W zależności od praw dostępu może być konieczne wybranie konta rozliczeniowego.  Wybierz z konta rozliczeniowego **rozliczeń profile** i następnie profil rozliczeniowy.
 
 4. Wybierz **kontrola dostępu (IAM)** po lewej stronie.
 
@@ -257,7 +257,7 @@ Administratorzy przedsiębiorstwa są wyświetlane jako rozliczeń właścicieli
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
-2. Wyszukiwanie **Cost Management + rozliczenia**.
+2. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
 
    ![Zrzut ekranu pokazujący usługi Azure search w portalu](./media/billing-mca-setup-account/billing-search-cost-management-billing.png).
 

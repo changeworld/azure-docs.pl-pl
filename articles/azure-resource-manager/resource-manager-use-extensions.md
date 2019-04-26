@@ -13,11 +13,11 @@ ms.workload: na
 ms.date: 12/14/2018
 ms.author: jgao
 ms.openlocfilehash: eb46966c3a28b3fa4c2b23668109b7c5d23a609b
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53414379"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60390872"
 ---
 # <a name="provide-post-deployment-configurations-by-using-extensions"></a>Podaj konfiguracji po wdrożeniu przy użyciu rozszerzeń
 
@@ -37,7 +37,7 @@ Aby dowiedzieć się, dostępne rozszerzenia, przejdź do [odwołanie do szablon
 
 Aby dowiedzieć się, jak korzystać z tych rozszerzeń, zobacz:
 
-- [Samouczek: Wdrażanie rozszerzenia maszyny wirtualnej przy użyciu szablonów usługi Azure Resource Manager](./resource-manager-tutorial-deploy-vm-extensions.md).
+- [Samouczek: Wdrażanie rozszerzeń maszyny wirtualnej przy użyciu szablonów usługi Azure Resource Manager](./resource-manager-tutorial-deploy-vm-extensions.md).
 - [Samouczek: Zaimportuj pliki SQL BACPAC przy użyciu szablonów usługi Azure Resource Manager](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md)
 
 ## <a name="next-steps"></a>Kolejne kroki

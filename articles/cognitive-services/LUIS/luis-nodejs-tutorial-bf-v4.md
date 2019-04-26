@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: diberry
 ms.openlocfilehash: 54bae5548764ed1f89a2ffb7992eb222a058c706
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57403655"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60194148"
 ---
 # <a name="tutorial-luis-bot-in-nodejs-with-the-bot-framework-4x-and-the-azure-web-app-bot"></a>Samouczek: bot usługi LUIS w środowisku Node.js przy użyciu platformy Bot Framework 4.x i bota aplikacji internetowej platformy Azure
 Przy użyciu platformy Node.js można utworzyć czatbot zintegrowany z usługą Language Understanding (LUIS). Ten bot używa aplikacji HomeAutomation do implementacji rozwiązania bota. Bot jest kompilacją aplikacji [bot aplikacji internetowej](https://docs.microsoft.com/azure/bot-service/) na platformie Azure z [Bot Framework w wersji](https://github.com/Microsoft/botbuilder-js) 4.

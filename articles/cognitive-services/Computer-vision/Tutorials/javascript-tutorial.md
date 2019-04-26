@@ -12,11 +12,11 @@ ms.date: 09/19/2017
 ms.author: kefre
 ms.custom: seodec18
 ms.openlocfilehash: 7ac8b9e28996c14e702730b72265fd6165798227
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55865077"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60201296"
 ---
 # <a name="tutorial-computer-vision-api-javascript"></a>Samouczek: interfejs API przetwarzania obrazów w języku JavaScript
 
@@ -743,7 +743,7 @@ function ReadHandwrittenImage(sourceImageUrl, responseTextArea) {
 
 Zapisz plik **handwriting.html** i otwórz go w przeglądarce sieci Web. W polu **Klucz subskrypcji** umieść swój klucz subskrypcji, a następnie sprawdź, czy w polu **Region subskrypcji** korzystasz z poprawnego regionu. Wprowadź adres URL obrazu tekstu do analizy, a następnie kliknij przycisk **Czytanie obrazu**, aby przeprowadzić proces analizy obrazu i wyświetlić jego wynik.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Computer Vision API C&#35; Tutorial (Samouczek dla języka C# dotyczący interfejsu API przetwarzania obrazów)](CSharpTutorial.md)
 - [Computer Vision API Python Tutorial (Samouczek dla języka Python dotyczący interfejsu API przetwarzania obrazów)](PythonTutorial.md)

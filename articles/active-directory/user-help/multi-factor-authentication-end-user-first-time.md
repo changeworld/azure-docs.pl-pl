@@ -15,11 +15,11 @@ ms.date: 05/15/2017
 ms.author: lizross
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0749e1acba9f13f9e0e95dfc66f9cf818c752cff
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56165624"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60334784"
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>Skonfiguruj moje konto na potrzeby weryfikacji dwuetapowej
 Weryfikacja dwuetapowa była kroku dodatkowe zabezpieczenia, która pomaga chronić Twoje konto, co utrudnia innym osobom włamanie się. Jeśli czytasz ten artykuł, prawdopodobnie masz wiadomość e-mail od firmowego lub szkolnego administratora o usłudze uwierzytelnianie wieloskładnikowe. Lub może być zalogowania się i stało się komunikat z prośbą do skonfigurowania dodatkowej weryfikacji zabezpieczeń. Jeśli tak jest rzeczywiście, **nie możesz zalogować przed ukończeniem procesu automatycznej rejestracji**.
@@ -42,7 +42,7 @@ Pierwsze pytanie w procesie rejestracji jest o tym, jak chcesz się z Tobą skon
 
 | Metoda kontaktu | Opis |
 | --- | --- |
-| [Aplikacja mobilna](#use-a-mobile-app-as-the-contact-method) |- **Odbieraj powiadomienia dotyczące weryfikacji.** Ta opcja wypycha powiadomienie do aplikacji authenticator na smartfonie lub tablecie. Wyświetlić powiadomienie i, jeśli jest to uzasadnione, wybierz **Uwierzytelnij** w aplikacji. Pracy lub nauki może wymagać wprowadzania numeru PIN przed uwierzytelniania.<br>- **Użyj kodu weryfikacyjnego.** W tym trybie aplikacja uwierzytelniania generuje kod weryfikacyjny, który jest aktualizowany co 30 sekund. Wprowadź kod weryfikacyjny najbardziej aktualne w interfejsie logowania.<br>Aplikacja Microsoft Authenticator jest dostępna dla [Android](https://go.microsoft.com/fwlink/?linkid=866594) i [iOS](https://go.microsoft.com/fwlink/?linkid=866594).|
+| [Aplikacja mobilna](#use-a-mobile-app-as-the-contact-method) |- **Odbieraj powiadomienia dotyczące weryfikacji.** Ta opcja wypycha powiadomienie do aplikacji authenticator na smartfonie lub tablecie. Wyświetlić powiadomienie i, jeśli jest to uzasadnione, wybierz **Uwierzytelnij** w aplikacji. Pracy lub nauki może wymagać wprowadzania numeru PIN przed uwierzytelniania.<br>- **Użyj kodu weryfikacyjnego.** W tym trybie aplikacja uwierzytelniania generuje kod weryfikacyjny, który jest aktualizowany co 30 sekund. Wprowadź kod weryfikacyjny najbardziej aktualne w interfejsie logowania.<br>Aplikacja Microsoft Authenticator jest dostępna dla systemów [Android](https://go.microsoft.com/fwlink/?linkid=866594) i [iOS](https://go.microsoft.com/fwlink/?linkid=866594).|
 | [Połączenie z telefonem komórkowym lub tekst](#use-your-mobile-phone-as-the-contact-method) |- **Połączenie telefoniczne** powoduje automatyczne połączenie głosowe na numer telefonu, należy podać. Odebranie połączenia i naciśnięcie przycisku # na klawiaturze telefonu w celu uwierzytelnienia.<br>- **Wiadomość SMS** kończy wiadomość SMS z kodem weryfikacyjnym. Następujący wiersz w tekście Odpowiedz na wiadomość SMS lub wprowadź kod weryfikacyjny udostępniane w interfejsie logowania. |
 | [Z telefonem biurowym](#use-your-office-phone-as-the-contact-method) |Przełącza automatyczne połączenie głosowe na numer telefonu, których udzielasz. Odebrać połączenie i naciska klawisz # na klawiaturze telefonu w celu uwierzytelnienia. |
 

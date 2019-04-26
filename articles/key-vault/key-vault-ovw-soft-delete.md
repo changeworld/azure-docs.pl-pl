@@ -1,5 +1,4 @@
 ---
-ms.assetid: ''
 title: Usługa Azure Key Vault usuwania nietrwałego | Dokumentacja firmy Microsoft
 ms.service: key-vault
 ms.topic: conceptual
@@ -8,11 +7,11 @@ ms.author: mbaldwin
 manager: barbkess
 ms.date: 03/19/2019
 ms.openlocfilehash: f222b37e8ca6efcfe28146ee948511d887f547a4
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339146"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60201339"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Omówienie usuwania nietrwałego w usłudze Azure Key Vault
 

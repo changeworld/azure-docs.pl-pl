@@ -13,11 +13,11 @@ ms.reviewer: carlr
 manager: craigg
 ms.date: 02/04/2019
 ms.openlocfilehash: 0dc9d18ea4dae6ea0f45d1a91392eb1994e6e80e
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55757239"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60331693"
 ---
 # <a name="getting-started-with-single-databases-in-azure-sql-database"></a>Wprowadzenie do pojedynczych baz danych w usłudze Azure SQL Database
 
@@ -44,7 +44,7 @@ Możesz użyć programu PowerShell lub interfejsu wiersza polecenia platformy Az
 
 Informacje w tych przewodnikach Szybki start umożliwiają szybkie utworzenie lub zaimportowanie bazy danych na platformę Azure za pomocą pliku `.bacpac`. Pliki `.bacpac` i `.dacpac` są zaprojektowane pod kątem szybkiego przenoszenia baz danych między różnymi wersjami programu SQL Server i opcjami wdrażania w ramach usługi Azure SQL Database lub implementowania ciągłej integracji w potoku infrastruktury DevOps. Jednak ta metoda nie jest przeznaczona do migracji produkcyjnych baz danych z minimalnym przestojem, ponieważ należy zaprzestać dodawać nowe dane, poczekać na wyeksportowanie źródłowej bazy danych do pliku `.bacpac`, a następnie poczekać na zakończenie importu do bazy danych Azure SQL Database. Wszystkie te czynniki powodują przestój aplikacji, szczególnie w przypadku dużych baz danych. Aby przenieść produkcyjną bazę danych, potrzebujesz lepszego sposobu migracji, który gwarantuje minimalny przestój. Aby przeprowadzić migrację bazy danych z minimalnym przestojem, użyj usługi [Data Migration Service (DMS)](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-azure-sql?toc=/azure/sql-database/toc.json). Usługa DMS realizuje to przez przyrostowe wypychanie zmian wprowadzanych w źródłowej bazie danych do przywracanej pojedynczej baza danych. Dzięki niej można szybko przełączyć aplikację ze źródłowej do docelowej bazy danych z możliwie najkrótszym przestojem.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Przejrzyj [ogólną listę funkcji obsługiwanych w usłudze Azure SQL Database](sql-database-features.md).
 - Dowiedz się, jak [lepiej zabezpieczyć bazę danych](sql-database-security-tutorial.md).

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: f3b49efa5e28eab2168c9a85d17e39ca7f0fce4a
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 92f2a07ae47621b4d42bb74da5f62447f86eb5ac
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984787"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60329573"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>Samouczek: tworzenie dysków i używanie ich z zestawem skalowania maszyn wirtualnych za pośrednictwem programu Azure PowerShell
 
@@ -36,7 +36,7 @@ Zestawy skalowania maszyn wirtualnych przechowują aplikacje, dane oraz systemy 
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-[!INCLUDE [updated-for-az-vm.md](../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
@@ -49,7 +49,7 @@ Podczas tworzenia lub skalowania zestawu skalowania do każdego wystąpienia mas
 **Dysk tymczasowy** — dyski tymczasowe używają dysku SSD, który znajduje się na tym samym hoście platformy Azure co wystąpienie maszyny wirtualnej. Dyski te są wysoce wydajne i można przy ich użyciu wykonywać operacje takie jak przetwarzanie danych tymczasowych. Jednak jeśli wystąpienie maszyny wirtualnej zostanie przeniesione na nowy host, wszystkie dane przechowywane na dysku tymczasowym zostaną usunięte. Rozmiar dysku tymczasowego zależy od rozmiaru wystąpienia maszyny wirtualnej. Dyski tymczasowe mają etykietę */dev/sdb* oraz punkt instalacji */mnt*.
 
 ### <a name="temporary-disk-sizes"></a>Rozmiary dysków tymczasowych
-| Typ | Typowe rozmiary | Maksymalny rozmiar dysku tymczasowego (GiB) |
+| Type | Typowe rozmiary | Maksymalny rozmiar dysku tymczasowego (GiB) |
 |----|----|----|
 | [Zastosowania ogólne](../virtual-machines/windows/sizes-general.md) | Seria A, B i D | 1600 |
 | [Optymalizacja pod kątem obliczeń](../virtual-machines/windows/sizes-compute.md) | Seria F | 576 |
@@ -63,7 +63,7 @@ Podczas tworzenia lub skalowania zestawu skalowania do każdego wystąpienia mas
 W przypadku konieczności instalowania aplikacji i przechowywania danych można dodać kolejne dyski z danymi. Dyski z danymi powinny być używane w sytuacji, gdy potrzebny jest trwały i dynamiczny magazyn danych. Każdy dysk z danymi ma maksymalną pojemność wynoszącą 4 TB. Liczba dysków z danymi, które można dołączyć, zależy od rozmiaru wystąpienia maszyny wirtualnej. Na każdy procesor wirtualny maszyny wirtualnej można dołączyć dwa dyski z danymi.
 
 ### <a name="max-data-disks-per-vm"></a>Maksymalna liczba dysków z danymi na maszynę wirtualną
-| Typ | Typowe rozmiary | Maksymalna liczba dysków z danymi na maszynę wirtualną |
+| Type | Typowe rozmiary | Maksymalna liczba dysków z danymi na maszynę wirtualną |
 |----|----|----|
 | [Zastosowania ogólne](../virtual-machines/windows/sizes-general.md) | Seria A, B i D | 64 |
 | [Optymalizacja pod kątem obliczeń](../virtual-machines/windows/sizes-compute.md) | Seria F | 64 |
@@ -312,7 +312,7 @@ Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob
 ```
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym samouczku omówiono tworzenie dysków i używanie ich z zestawami skalowania za pośrednictwem programu Azure PowerShell:
 
 > [!div class="checklist"]

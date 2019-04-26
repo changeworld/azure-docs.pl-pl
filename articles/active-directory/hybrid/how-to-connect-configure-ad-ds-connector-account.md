@@ -12,11 +12,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6911b19c680c2fdb8c372347c4dd0fca60bb0e0b
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60007563"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60245523"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Program Azure AD Connect: Skonfiguruj uprawnienia dla konta usługi AD DS łącznika 
 
@@ -136,7 +136,7 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountDN <String> [-ADobjectDN <Stri
 To polecenie cmdlet będzie ustawić następujące uprawnienia: 
  
 
-|Typ |Name (Nazwa) |Dostęp |Dotyczy| 
+|Type |Name (Nazwa) |Dostęp |Dotyczy| 
 |-----|-----|-----|-----|
 |Zezwalaj |Łącznik usługi AD DS Account |Odczyt wszystkich właściwości |Obiekty zależne urządzeń| 
 |Zezwalaj |Łącznik usługi AD DS Account|Odczyt wszystkich właściwości |Obiekty zależne InetOrgPerson| 
@@ -162,7 +162,7 @@ Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN <String> [-ADobje
 
 To polecenie cmdlet będzie ustawić następujące uprawnienia: 
 
-|Typ |Name (Nazwa) |Dostęp |Dotyczy|
+|Type |Name (Nazwa) |Dostęp |Dotyczy|
 |-----|-----|-----|-----| 
 |Zezwalaj|Łącznik usługi AD DS Account|Właściwości odczytu/zapisu|Obiekty zależne użytkownika|
 
@@ -182,7 +182,7 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <String> [<CommonPar
 
 To polecenie cmdlet będzie ustawić następujące uprawnienia: 
 
-|Typ |Name (Nazwa) |Dostęp |Dotyczy|
+|Type |Name (Nazwa) |Dostęp |Dotyczy|
 |-----|-----|-----|-----| 
 |Zezwalaj |Łącznik usługi AD DS Account |Replikowanie zmian katalogów |Tylko ten obiekt (katalog główny domeny)| 
 |Zezwalaj |Łącznik usługi AD DS Account |Replikowanie zmian katalogów wszystkie |Tylko ten obiekt (katalog główny domeny)| 
@@ -202,7 +202,7 @@ Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountDN <String> [-ADobject
 ```
 To polecenie cmdlet będzie ustawić następujące uprawnienia: 
 
-|Typ |Name (Nazwa) |Dostęp |Dotyczy|
+|Type |Name (Nazwa) |Dostęp |Dotyczy|
 |-----|-----|-----|-----| 
 |Zezwalaj |Łącznik usługi AD DS Account |Resetowanie hasła |Obiekty zależne użytkownika| 
 |Zezwalaj |Łącznik usługi AD DS Account |Zapis właściwości lockoutTime |Obiekty zależne użytkownika| 
@@ -222,7 +222,7 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADob
  
 To polecenie cmdlet będzie ustawić następujące uprawnienia: 
 
-|Typ |Name (Nazwa) |Dostęp |Dotyczy|
+|Type |Name (Nazwa) |Dostęp |Dotyczy|
 |-----|-----|-----|-----| 
 |Zezwalaj |Łącznik usługi AD DS Account |Ogólny odczytu/zapisu |Wszystkie atrybuty grupy typów obiektu i podobiektów| 
 |Zezwalaj |Łącznik usługi AD DS Account |Tworzenie/usuwanie obiektu podrzędnego |Wszystkie atrybuty grupy typów obiektu i podobiektów| 
@@ -245,7 +245,7 @@ Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN 
 To polecenie cmdlet będzie ustawić następujące uprawnienia:  
  
 
-|Typ |Name (Nazwa) |Dostęp |Dotyczy|
+|Type |Name (Nazwa) |Dostęp |Dotyczy|
 |-----|-----|-----|-----| 
 |Zezwalaj |Łącznik usługi AD DS Account |Odczyt/zapis wszystkich właściwości |Obiekty zależne użytkownika| 
 |Zezwalaj |Łącznik usługi AD DS Account |Odczyt/zapis wszystkich właściwości |Obiekty zależne InetOrgPerson| 
@@ -267,7 +267,7 @@ Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountDN <String> [-A
 ```
 To polecenie cmdlet będzie ustawić następujące uprawnienia: 
 
-|Typ |Name (Nazwa) |Dostęp |Dotyczy|
+|Type |Name (Nazwa) |Dostęp |Dotyczy|
 |-----|-----|-----|-----| 
 |Zezwalaj |Łącznik usługi AD DS Account |Odczyt wszystkich właściwości |Obiekty zależne PublicFolder| 
 
@@ -292,7 +292,7 @@ Set-ADSyncRestrictedPermissions -ADConnectorAccountDN'CN=ADConnectorAccount,CN=U
 
 To polecenie cmdlet będzie ustawić następujące uprawnienia: 
 
-|Typ |Name (Nazwa) |Dostęp |Dotyczy|
+|Type |Name (Nazwa) |Dostęp |Dotyczy|
 |-----|-----|-----|-----| 
 |Zezwalaj |SYSTEM |Pełna kontrola |Ten obiekt 
 |Zezwalaj |Enterprise Admins |Pełna kontrola |Ten obiekt 

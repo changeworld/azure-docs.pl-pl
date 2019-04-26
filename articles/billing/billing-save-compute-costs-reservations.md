@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/13/2019
 ms.author: banders
 ms.openlocfilehash: b20983c45cd62b9812cdb52de32a6e29da459efe
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149201"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60370802"
 ---
 # <a name="what-are-azure-reservations"></a>Co to jest Azure Reservations?
 

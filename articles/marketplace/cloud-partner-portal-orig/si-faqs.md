@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pbutlerm
 ms.openlocfilehash: ec7fc3a7877cf0bffac0043a74c34d6f0f04826b
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810895"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60362377"
 ---
 <a name="seller-insights-faq"></a>Sprzedawcy Insights — często zadawane pytania
 ===================
@@ -36,7 +36,7 @@ Definicje metryk wartości w pliku transakcji znajdują się w artykule [definic
 <a name="see-customer-details-of-transactions-for-which-ive-been-paid"></a>Zobacz szczegóły klienta transakcji, dla których zostały I czy została zapłacona
 -------------------------------------------------------------
 
-Po pobraniu transakcji z modułu informacje dotyczące wypłat Znajdź kolumnę z etykietą **stan informacje dotyczące wypłat**i Zastosuj filtr, aby wyświetlić tylko wartości "Płatne Out". Pojawi się następujące kolumny zawierające szczegóły klienta: **nazwa firmy**, **klienta poczty E-mail**, **kraju klienta**, **stanu klienta**, i **kod pocztowy klienta**.
+Po pobraniu transakcji z modułu informacje dotyczące wypłat Znajdź kolumnę z etykietą **stan informacje dotyczące wypłat**i Zastosuj filtr, aby wyświetlić tylko wartości "Płatne Out". Pojawi się następujące kolumny zawierające szczegóły klienta: **Nazwa firmy**, **klienta poczty E-mail**, **kraju klienta**, **stanu klienta**, i **kod pocztowy klienta**.
 
 
 <a name="calculate-my-open-accounts-receivable"></a>Oblicz Moje Otwórz odbiorców
@@ -48,7 +48,7 @@ Po pobraniu transakcji z modułu informacje dotyczące wypłat Znajdź kolumnę 
 <a name="calculate-revenue-by-customer-usage-period"></a>Oblicz przychód według okresu użycia klienta
 ------------------------------------------
 
-Po pobraniu transakcji z modułu informacje dotyczące wypłat Znajdź kolumnę z etykietą **stan transakcji**i wartość "Płatne" filtru.   Dla każdej transakcji wymienionej kolumnę z etykietą **kwoty wypłata (PC)** reprezentuje zostały zapłaconej kwoty.  Aby oszacować okres użycia skojarzony z transakcją, można użyć kolumny **Data obciążenia**, który jest bliskie zbliżenia ostatni dzień użycia okres, do której stosują się transakcji.
+Po pobraniu transakcji z modułu informacje dotyczące wypłat Znajdź kolumnę z etykietą **stan transakcji**i wartość "Płatne" filtru.   Dla każdej transakcji wymienionej kolumnę z etykietą **kwoty wypłata (PC)** reprezentuje zostały zapłaconej kwoty.  Aby oszacować okres użycia skojarzony z transakcją, można użyć kolumny **Data obciążenia**, który jest bliskie zbliżenia ostatni dzień użycia okres, do której stosują się transakcji.
 
 
 <a name="calculate-your-bad-debt"></a>Oblicz zadłużenia niewłaściwe

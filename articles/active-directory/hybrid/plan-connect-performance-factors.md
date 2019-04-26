@@ -13,11 +13,11 @@ ms.reviewer: martincoetzer
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3a3a57fbe5df690e4dbdba8cbab85e62648bb298
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192578"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60295380"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>Czynniki wpływające na wydajność programu Azure AD Connect
 
@@ -104,7 +104,7 @@ W czasie wykonywania procesu synchronizacji ma następujące cechy wydajności:
 * Eksport jest również liniowego.
 * Synchronizacja będzie rosnąć wykładniczo na podstawie liczby obiektów z odwołaniami do innych obiektów. Członkostwa w grupie grup zagnieżdżonych się głównym ten wpływ na wydajność, ponieważ składowe odnoszą się do obiektów użytkowników lub innych grup. Te odwołania, należy znaleźć i w odwołaniu do rzeczywistych obiektów w MV, aby zakończyć cykl synchronizacji.
 
-### <a name="filtering"></a>Filtrowanie
+### <a name="filtering"></a>Filtering
 
 Rozmiar topologii usługi Active Directory, który chcesz zaimportować jest najwyższym współczynnik wywieranie wpływu na wydajność i całkowity czas zajmie wewnętrznych składników silnika inicjowania obsługi administracyjnej.
 

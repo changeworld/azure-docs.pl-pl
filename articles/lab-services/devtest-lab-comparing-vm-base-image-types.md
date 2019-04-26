@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 37288fd4a9c7558d05728b8ce03df505117e0232
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: ae7556eda817b9eb7be84f9d4a23ea91d3d5440d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38611274"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60311322"
 ---
 # <a name="comparing-custom-images-and-formulas-in-devtest-labs"></a>Porównanie niestandardowych obrazów i formuł w usłudze DevTest Labs
 Zarówno [obrazów niestandardowych](devtest-lab-create-template.md) i [formuły](devtest-lab-manage-formulas.md) mogą być używane jako podstawy dla [utworzone nowe maszyny wirtualne](devtest-lab-add-vm.md). Jednak jest to po prostu obrazu opartego na dysku VHD formułę trakcie obrazu opartego na dysku VHD obrazu niestandardowego klucza rozróżnienie między niestandardowych obrazów i formuł *oprócz* wstępnie skonfigurowane ustawienia — takie jak rozmiar maszyny Wirtualnej, sieci wirtualnej podsieci i artefaktów. Te wstępnie skonfigurowane ustawienia są konfigurowane przy użyciu wartości domyślnych, które mogą zostać zastąpione w czasie tworzenia maszyny Wirtualnej. W tym artykule omówiono (specjalistów) wady i (wad) do korzystania z niestandardowych obrazów i przy użyciu formuły.

@@ -16,11 +16,11 @@ ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6a9fb661e0b43e71cf9543e9b7042155763d1aa1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57856179"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60256538"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-litmos"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją Litmos
 

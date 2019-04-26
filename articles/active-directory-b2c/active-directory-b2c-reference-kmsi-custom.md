@@ -3,7 +3,7 @@ title: Informuj mnie zalogowany w usłudze Azure Active Directory B2C | Dokument
 description: Dowiedz się, jak ustawić się zachować mnie podpisane w (KMSI) w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
@@ -11,11 +11,11 @@ ms.date: 12/03/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: a8ad5c3091c3c78aa31dbf38eb6b3032e4dc7662
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55870966"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60317318"
 ---
 # <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>Włączanie opcji nie wylogowuj mnie (KMSI) w usłudze Azure Active Directory B2C
 
@@ -29,7 +29,7 @@ Użytkownicy nie należy włączać tej opcji na komputery publiczne.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Dzierżawy usługi Azure AD B2C, który jest skonfigurowany do zezwalania konta lokalnego, zarejestruj się i zaloguj się. Jeśli nie masz dzierżawę, można utworzyć jeden wykonując kroki w [samouczka: Tworzenie dzierżawy usługi Azure Active Directory B2C](tutorial-create-tenant.md).
+Dzierżawy usługi Azure AD B2C, który jest skonfigurowany do zezwalania konta lokalnego, zarejestruj się i zaloguj się. Jeśli nie masz dzierżawę, można utworzyć jeden wykonując kroki w [samouczka: tworzenie dzierżawy usługi Azure Active Directory B2C](tutorial-create-tenant.md).
 
 ## <a name="add-a-content-definition-element"></a>Dodaj element definicji zawartości 
 

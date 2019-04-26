@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 34eafe8a13d126ebdbb08084d8820646ca43534a
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: b8937b22054e55c8bfe7bc4c7726dc5bae5de6d8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59998094"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60203788"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Szybki start: Utwórz .NET Core aplikacji za pomocą konfiguracji aplikacji
 
@@ -67,7 +67,7 @@ Możesz użyć [platformy .NET Core interfejsu wiersza polecenia (CLI)](https://
 
         dotnet restore
 
-3. Otwórz *Program.cs*i Dodaj odwołanie do dostawcy usługi konfiguracji aplikacji konfiguracji platformy .NET Core.
+3. Otwórz *Program.cs*i Dodaj odwołanie do dostawcy konfiguracji aplikacji programu .NET Core.
 
     ```csharp
     using Microsoft.Extensions.Configuration;

@@ -3,7 +3,7 @@ title: Konfigurowanie zmiany hasła, za pomocą zasad niestandardowych w usłudz
 description: Dowiedz się, jak umożliwić użytkownikom zmienić swoje hasło, za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
@@ -11,11 +11,11 @@ ms.date: 12/13/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: a9e58139d248daed19f4fe35c7d33ede9dfe64b0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55195974"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60317194"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurowanie zmiany hasła, za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C
 
@@ -165,8 +165,8 @@ Podczas testowania aplikacji w usłudze Azure AD B2C, może być przydatne do ma
 ### <a name="upload-the-files"></a>Przekaż pliki
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
-2. Pamiętaj, że używasz katalogu, który zawiera dzierżawy usługi Azure AD B2C, klikając **filtr katalogów i subskrypcji** w górnym menu i wybierając katalog, który zawiera Twojej dzierżawy.
-3. Wybierz **wszystkich usług** w lewym górnym rogu witryny Azure portal, a następnie wyszukaj i wybierz **usługi Azure AD B2C**.
+2. Upewnij się, że używasz katalogu zawierającego Twoją dzierżawę usługi Azure AD B2C, klikając pozycję **Filtr katalogu i subskrypcji** w górnym menu i wybierając katalog zawierający Twoją dzierżawę.
+3. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
 4. Wybierz **struktura środowiska tożsamości**.
 5. Na stronie zasad niestandardowych kliknij **zasady przekazywania**.
 6. Wybierz **Zastąp zasady Jeśli istnieje**, a następnie wyszukaj i wybierz pozycję *TrustframeworkExtensions.xml* pliku.

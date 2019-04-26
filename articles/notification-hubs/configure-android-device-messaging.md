@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: jowargo
 ms.openlocfilehash: 0d79e53f731c20777ffa2fb57b3b8149fe4e60ab
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58488301"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60239959"
 ---
 # <a name="configure-android-device-messaging-adm-settings-for-a-notification-hub-in-the-azure-portal"></a>Skonfiguruj ustawienia systemu Android Device Messaging (ADM) dla Centrum powiadomień w witrynie Azure portal
 W tym artykule pokazano, jak skonfigurować ustawienia dla systemu Android Device Messaging (ADM) dla usługi Azure notification hub przy użyciu witryny Azure portal. 
@@ -23,7 +23,7 @@ W tym artykule pokazano, jak skonfigurować ustawienia dla systemu Android Devic
 ## <a name="prerequisites"></a>Wymagania wstępne
 Jeśli nie zostało jeszcze utworzone Centrum powiadomień, utwórz ją teraz. Aby uzyskać więcej informacji, zobacz [Tworzenie Centrum powiadomień platformy Azure w witrynie Azure portal](create-notification-hub-portal.md). 
 
-## <a name="configure-android-device-messaging"></a>Konfigurowanie funkcji komunikatów urządzenia z systemem Android
+## <a name="configure-android-device-messaging"></a>Konfigurowanie komunikatów urządzeń z systemem Android
 
 Poniższa procedura zawiera kroki, aby skonfigurować ustawienia Amazon Device Messaging (ADM) dla Centrum powiadomień: 
 

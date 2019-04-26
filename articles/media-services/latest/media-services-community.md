@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 04/19/2019
 ms.author: juliako
 ms.openlocfilehash: ff5d6aef48542ee18f6de91ddc418c0fcab70ece
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60014149"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60322422"
 ---
 # <a name="azure-media-services-community"></a>Społeczność usługi Azure Media Services  
 

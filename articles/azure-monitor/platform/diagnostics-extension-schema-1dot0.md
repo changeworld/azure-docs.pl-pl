@@ -10,11 +10,11 @@ ms.date: 05/15/2017
 ms.author: robb
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: ac2b79d670b803573a359dfc9f8738f972f2d9b5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59492723"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60237855"
 ---
 # <a name="azure-diagnostics-10-configuration-schema"></a>Schemat konfiguracji usługi Diagnostyka Azure 1.0
 > [!NOTE]
@@ -101,7 +101,7 @@ Element najwyższego poziomu w pliku konfiguracji diagnostyki.
 
 Atrybuty:
 
-|Atrybut  |Typ   |Wymagane| Domyślne | Opis|  
+|Atrybut  |Type   |Wymagane| Domyślne | Opis|  
 |-----------|-------|--------|---------|------------|  
 |**configurationChangePollInterval**|czas trwania|Optional (Opcjonalność) | PT1M| Określa interwał, jaką monitor diagnostyczny sonduje zmiany konfiguracji diagnostycznych.|  
 |**overallQuotaInMB**|unsignedInt|Optional (Opcjonalność)| 4000 MB. Jeśli podano wartość nie może przekraczać tę kwotę |Łączna kwota magazyn systemu plików przydzielony dla wszystkich buforów rejestrowania.|  
@@ -113,7 +113,7 @@ Element nadrzędny: DiagnosticMonitorConfiguration Element.
 
 Atrybuty:
 
-|Atrybut|Typ|Opis|  
+|Atrybut|Type|Opis|  
 |---------|----|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Opcjonalny. Określa maksymalną ilość magazyn systemu plików, które są dostępne dla określonych danych.<br /><br /> Wartość domyślna to 0.|  
 |**scheduledTransferLogLevelFilter**|string|Opcjonalny. Określa minimalny poziom ważności wpisy dziennika, które są przenoszone. Wartość domyślna to **niezdefiniowane**. Inne możliwe wartości to **pełne**, **informacji**, **ostrzeżenie**, **błąd**, i **krytyczny**.|  
@@ -126,7 +126,7 @@ Atrybuty:
 
 Atrybuty:  
 
-|Atrybut|Typ|Opis|  
+|Atrybut|Type|Opis|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Opcjonalny. Określa maksymalną ilość magazyn systemu plików, które są dostępne dla określonych danych.<br /><br /> Wartość domyślna to 0.|  
 |**scheduledTransferLogLevelFilter**|string|Opcjonalny. Określa minimalny poziom ważności wpisy dziennika, które są przenoszone. Wartość domyślna to **niezdefiniowane**. Inne możliwe wartości to **pełne**, **informacji**, **ostrzeżenie**, **błąd**, i **krytyczny**.|  
@@ -140,7 +140,7 @@ Element nadrzędny: DiagnosticMonitorConfiguration Element.
 
 Atrybuty:  
 
-|Atrybut|Typ|Opis|  
+|Atrybut|Type|Opis|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Opcjonalny. Określa maksymalną ilość magazyn systemu plików, które są dostępne dla określonych danych.<br /><br /> Wartość domyślna to 0.|  
 |**scheduledTransferPeriod**|czas trwania|Opcjonalny. Określa interwał między zaplanowanego transferu danych, zaokrąglane w górę do najbliższej minuty.<br /><br /> Wartość domyślna to PT0S.|  
@@ -152,7 +152,7 @@ Atrybuty:
 
 Atrybuty:  
 
-|Atrybut|Typ|Opis|  
+|Atrybut|Type|Opis|  
 |---------------|----------|-----------------|  
 |**Kontener**|string|Nazwa kontenera, w którym ma zostać przeniesiony zawartość katalogu.|  
 |**directoryQuotaInMB**|unsignedInt|Opcjonalny. Określa maksymalny rozmiar katalogu w megabajtach.<br /><br /> Wartość domyślna to 0.|  
@@ -164,7 +164,7 @@ Atrybuty:
 
 Atrybuty:  
 
-|Atrybut|Typ|Opis|  
+|Atrybut|Type|Opis|  
 |---------------|----------|-----------------|  
 |**Kontener**|string|Nazwa kontenera, w którym ma zostać przeniesiony zawartość katalogu.|  
 |**directoryQuotaInMB**|unsignedInt|Opcjonalny. Określa maksymalny rozmiar katalogu w megabajtach.<br /><br /> Wartość domyślna to 0.|  
@@ -176,7 +176,7 @@ Atrybuty:
 
 Atrybuty:  
 
-|Atrybut|Typ|Opis|  
+|Atrybut|Type|Opis|  
 |---------------|----------|-----------------|  
 |**Kontener**|string|Nazwa kontenera, w którym ma zostać przeniesiony zawartość katalogu.|  
 |**directoryQuotaInMB**|unsignedInt|Opcjonalny. Określa maksymalny rozmiar katalogu w megabajtach.<br /><br /> Wartość domyślna to 0.|  
@@ -193,7 +193,7 @@ Atrybuty:
 
 Atrybuty:
 
-|Atrybut|Typ|Opis|  
+|Atrybut|Type|Opis|  
 |---------------|----------|-----------------|  
 |**Kontener**|string|Nazwa kontenera, w którym ma zostać przeniesiony zawartość katalogu.|  
 |**directoryQuotaInMB**|unsignedInt|Opcjonalny. Określa maksymalny rozmiar katalogu w megabajtach.<br /><br /> Wartość domyślna to 0.|  
@@ -205,7 +205,7 @@ Atrybuty:
 
 Atrybuty:  
 
-|Atrybut|Typ|Opis|  
+|Atrybut|Type|Opis|  
 |---------------|----------|-----------------|  
 |**path**|string|Wymagany. Ścieżka bezwzględna do katalogu, do monitorowania.|  
 |**expandEnvironment**|wartość logiczna|Wymagany. Jeśli ustawiono **true**, zostaną rozwinięte zmiennych środowiskowych w ścieżce.|  
@@ -217,7 +217,7 @@ Atrybuty:
 
 Atrybuty:  
 
-|Atrybut|Typ|Opis|  
+|Atrybut|Type|Opis|  
 |---------------|----------|-----------------|  
 |**Nazwa**|string|Wymagany. Nazwa zasobu lokalnego, która zawiera katalog do monitorowania.|  
 |**relativePath**|string|Wymagany. Ścieżka względna zasobu lokalnego do monitorowania.|  
@@ -230,7 +230,7 @@ Atrybuty:
 
  Atrybuty:  
 
-|Atrybut|Typ|Opis|  
+|Atrybut|Type|Opis|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Opcjonalny. Określa maksymalną ilość magazyn systemu plików, które są dostępne dla określonych danych.<br /><br /> Wartość domyślna to 0.|  
 |**scheduledTransferPeriod**|czas trwania|Opcjonalny. Określa interwał między zaplanowanego transferu danych, zaokrąglane w górę do najbliższej minuty.<br /><br /> Wartość domyślna to PT0S.|  
@@ -242,7 +242,7 @@ Atrybuty:
 
  Atrybuty:  
 
-|Atrybut|Typ|Opis|  
+|Atrybut|Type|Opis|  
 |---------------|----------|-----------------|  
 |**counterSpecifier**|string|Wymagany. Ścieżka do liczników wydajności do zbierania.|  
 |**sampleRate**|czas trwania|Wymagany. Szybkość, licznik wydajności powinny być zbierane.|  
@@ -254,7 +254,7 @@ Atrybuty:
 
   Atrybuty:
 
-|Atrybut|Typ|Opis|  
+|Atrybut|Type|Opis|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Opcjonalny. Określa maksymalną ilość magazyn systemu plików, które są dostępne dla określonych danych.<br /><br /> Wartość domyślna to 0.|  
 |**scheduledTransferLogLevelFilter**|string|Opcjonalny. Określa minimalny poziom ważności wpisy dziennika, które są przenoszone. Wartość domyślna to **niezdefiniowane**. Inne możliwe wartości to **pełne**, **informacji**, **ostrzeżenie**, **błąd**, i **krytyczny**.|  
@@ -267,7 +267,7 @@ Atrybuty:
 
  Atrybuty:
 
-|Atrybut|Typ|Opis|  
+|Atrybut|Type|Opis|  
 |---------------|----------|-----------------|  
 |**Nazwa**|string|Wymagany. Wyrażenie XPath, określając dziennika do zbierania.|  
 

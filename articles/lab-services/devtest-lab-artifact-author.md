@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 07/11/2018
 ms.author: spelluru
 ms.openlocfilehash: 0d1e269a1818f013bc14842bc541216d7f31bc84
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58116830"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60311140"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>Tworzenie niestandardowych artefaktów dla swojej maszyny wirtualnej w usłudze DevTest Labs
 
@@ -29,7 +29,7 @@ Obejrzyj poniższy klip wideo z omówieniem kroków opisanych w tym artykule:
 >
 >
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Możesz użyć *artefaktów* wdrażanie i konfigurowanie aplikacji po zainicjowaniu obsługi administracyjnej maszyny Wirtualnej. Artefakt składa się z plikiem definicji artefaktów i inne pliki skryptów, które są przechowywane w folderze w repozytorium Git. Pliki definicji artefaktu składają się z kodu JSON i wyrażeń, które służą do określania, co chcesz zainstalować na maszynie Wirtualnej. Na przykład można zdefiniować nazwę artefakt, polecenie do uruchomienia i parametry, które są dostępne, gdy polecenie jest wykonywane. Mogą odwoływać się do innych plików skryptu w pliku definicji artefaktu według nazwy.
 
 ## <a name="artifact-definition-file-format"></a>Format pliku definicji artefaktu

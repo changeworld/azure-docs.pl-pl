@@ -10,11 +10,11 @@ ms.date: 02/21/2017
 ms.author: bburns
 ms.custom: mvc
 ms.openlocfilehash: c3a79b2e4fab807613a54d2792f5f5b97570293b
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996132"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60309770"
 ---
 # <a name="deprecated-using-the-kubernetes-web-ui-with-azure-container-service"></a>(PRZESTARZAŁE) Usługa Azure Container Service przy użyciu interfejsu użytkownika sieci web rozwiązania Kubernetes
 
@@ -49,7 +49,7 @@ Jeśli nie masz `kubectl` zainstalowany, możesz uruchomić:
 $ az acs kubernetes install-cli
 ```
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 ### <a name="connect-to-the-web-ui"></a>Nawiązać połączenie z interfejsu użytkownika sieci web
 Możesz uruchomić interfejs użytkownika sieci web rozwiązania Kubernetes, uruchamiając:
@@ -63,7 +63,7 @@ Powinny to otwarcie przeglądarki sieci web skonfigurowany tak, aby komunikować
 ### <a name="create-and-expose-a-service"></a>Utworzyć i uwidocznić usługę
 1. W sieci web rozwiązania Kubernetes interfejsu użytkownika, kliknij przycisk **Utwórz** przycisk w prawym górnym oknie po prawej stronie.
 
-    ![Kubernetes tworzenia interfejsu użytkownika](./media/container-service-kubernetes-ui/create.png)
+    ![Kubernetes Create UI](./media/container-service-kubernetes-ui/create.png)
 
     Otwarcie okna dialogowego, gdzie możesz rozpocząć tworzenie aplikacji.
 
@@ -79,7 +79,7 @@ Powinny to otwarcie przeglądarki sieci web skonfigurowany tak, aby komunikować
 
 4. Kliknij przycisk **Wdróż** na wdrażanie tych kontenerów i usług.
 
-    ![Wdrażanie rozwiązania Kubernetes](./media/container-service-kubernetes-ui/deploy.png)
+    ![Kubernetes Deploy](./media/container-service-kubernetes-ui/deploy.png)
 
 ### <a name="view-your-containers"></a>Wyświetlanie Twoich kontenerów
 Po kliknięciu **Wdróż**, interfejs użytkownika przedstawiono usługi wdrażania:
@@ -88,7 +88,7 @@ Po kliknięciu **Wdróż**, interfejs użytkownika przedstawiono usługi wdraża
 
 Możesz wyświetlić stan każdego obiektu Kubernetes w okręgu w obszarze po lewej stronie interfejsu użytkownika, **zasobników**. Jeśli jest częściowo pełny okrąg, a następnie obiekt jego wdrażanie nadal trwa. Gdy obiekt jest w pełni wdrożony, Wyświetla zielony znacznik wyboru:
 
-![Wdrożone usługi Kubernetes](./media/container-service-kubernetes-ui/deployed.png)
+![Kubernetes Deployed](./media/container-service-kubernetes-ui/deployed.png)
 
 Gdy wszystko jest uruchomiona, kliknij jeden z zasobników w taki sposób, aby wyświetlić szczegóły dotyczące uruchomionej usługi sieci web.
 
@@ -109,7 +109,7 @@ Oprócz uruchamiania kontenerów, interfejs użytkownika rozwiązania Kubernetes
 
 W okienku nawigacji po lewej stronie kliknij **usług** do wyświetlenia wszystkich usług (powinien istnieć tylko jeden).
 
-![Usługi rozwiązania Kubernetes](./media/container-service-kubernetes-ui/service-deployed.png)
+![Kubernetes Services](./media/container-service-kubernetes-ui/service-deployed.png)
 
 W tym widoku powinny być widoczne zewnętrznego punktu końcowego (adresu IP), która została przydzielona do usługi.
 Kliknięcie tego adresu IP powinien zostać wyświetlony kontener Nginx uruchomiony za modułem równoważenia obciążenia.
@@ -123,7 +123,7 @@ Najpierw kliknij pozycję **wdrożeń** w okienku nawigacji po lewej stronie, ab
 
 Po otwarciu tego widoku, kliknij pozycję zestawu replik, a następnie kliknij **Edytuj** na pasku nawigacyjnym górny:
 
-![Edytuj platformy Kubernetes](./media/container-service-kubernetes-ui/edit.png)
+![Kubernetes Edit](./media/container-service-kubernetes-ui/edit.png)
 
 Edytuj `spec.replicas` pole było `2`i kliknij przycisk **aktualizacji**.
 

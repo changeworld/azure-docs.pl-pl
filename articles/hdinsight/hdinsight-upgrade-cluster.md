@@ -4,22 +4,25 @@ description: Dowiedz się, jak klaster HDInsight uaktualnienia do nowszej wersji
 services: hdinsight
 ms.service: hdinsight
 author: omidm1
-ms.author: omidm
+ms.author: v-yiso
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/04/2017
+origin.date: 04/04/2017
+ms.date: 02/04/2019
 ms.openlocfilehash: 266de596633201b5590a6433d078cc05f2a267b4
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994525"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60306181"
 ---
 # <a name="upgrade-hdinsight-cluster-to-a-newer-version"></a>Uaktualnianie klastra HDInsight do nowszej wersji
 Aby móc korzystać z najnowszych funkcji HDInsight, zaleca się, że klastry HDInsight można uaktualnić do najnowszej wersji. Postępuj zgodnie z poniższych wskazówek, aby uaktualnić usługi HDInsight cluster wersji.
 
-> [!NOTE]  
+> [!NOTE]
 > Aby uzyskać informacje na temat obsługiwanych wersji HDInsight, zobacz [wersje składników HDInsight](hdinsight-component-versioning.md#supported-hdinsight-versions).
+>
+>
 
 ## <a name="upgrade-tasks"></a>Zadania aktualizacji
 Przepływ pracy, aby uaktualnić klaster HDInsight to w następujący sposób.

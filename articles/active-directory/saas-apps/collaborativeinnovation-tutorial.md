@@ -15,11 +15,11 @@ ms.date: 01/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8252dea33ff5cde07e021421d9772a69ea9f143b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57840848"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60281219"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-collaborative-innovation"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Collaborative Innovation
 

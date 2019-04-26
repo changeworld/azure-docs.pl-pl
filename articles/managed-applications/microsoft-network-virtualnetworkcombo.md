@@ -1,6 +1,6 @@
 ---
-title: Azure elementu interfejsu użytkownika VirtualNetworkCombo | Dokumentacja firmy Microsoft
-description: Opis elementu Microsoft.Network.VirtualNetworkCombo interfejsu użytkownika do portalu Azure.
+title: Azure VirtualNetworkCombo UI element | Microsoft Docs
+description: Opis elementu Microsoft.Network.VirtualNetworkCombo interfejsu użytkownika dla witryny Azure portal.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,24 +13,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: 2c2553d9ffb1dfbe032385fb77e234a8b96cb239
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: b0437338b403ff19761173d08be3938d07f13f55
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37110069"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60252499"
 ---
 # <a name="microsoftnetworkvirtualnetworkcombo-ui-element"></a>Microsoft.Network.VirtualNetworkCombo UI element
 Grupa służy do wybierania nowej lub istniejącej sieci wirtualnej.
 
 ## <a name="ui-sample"></a>Przykład interfejsu użytkownika
-Gdy użytkownik wybiera nowej sieci wirtualnej, użytkownik może dostosować nazwę każdej podsieci i prefiksu adresu. Konfigurowanie podsieci jest opcjonalne.
+Gdy użytkownik wybiera nową sieć wirtualną, użytkownik może dostosować nazwę każdej podsieci i prefiksu adresu. Konfigurowanie podsieci jest opcjonalne.
 
-![Nowe Microsoft.Network.VirtualNetworkCombo](./media/managed-application-elements/microsoft.network.virtualnetworkcombo-new.png)
+![Microsoft.Network.VirtualNetworkCombo new](./media/managed-application-elements/microsoft.network.virtualnetworkcombo-new.png)
 
-Gdy użytkownik wybiera istniejącej sieci wirtualnej, użytkownik musi być zamapowany każdej podsieci, wymagane przez szablon wdrożenia na istniejącą podsieć. W takim przypadku Konfigurowanie podsieci jest wymagana.
+Gdy użytkownik wybiera istniejącą sieć wirtualną, użytkownik musi być mapowane każdej podsieci, wymagane przez szablon wdrożenia do istniejącej podsieci. W tym przypadku Konfigurowanie podsieci jest wymagana.
 
-![Istniejące Microsoft.Network.VirtualNetworkCombo](./media/managed-application-elements/microsoft.network.virtualnetworkcombo-existing.png)
+![Microsoft.Network.VirtualNetworkCombo existing](./media/managed-application-elements/microsoft.network.virtualnetworkcombo-existing.png)
 
 ## <a name="schema"></a>Schemat
 ```json
@@ -86,14 +86,14 @@ Gdy użytkownik wybiera istniejącej sieci wirtualnej, użytkownik musi być zam
 ```
 
 ## <a name="remarks"></a>Uwagi
-- Jeśli jest określony, pierwszy nienakładający adres prefiks rozmiar `defaultValue.addressPrefixSize` jest określane automatycznie w oparciu o istniejących sieci wirtualnych w subskrypcji użytkownika.
-- Wartość domyślna dla `defaultValue.name` i `defaultValue.addressPrefixSize` jest **null**.
-- `constraints.minAddressPrefixSize` musi być określona. Istniejących sieci wirtualnych się na przestrzeń adresową mniejszą niż określona wartość są niedostępne do wybrania.
-- `subnets` musi być określona, i `constraints.minAddressPrefixSize` musi być określona dla każdej podsieci.
-- Podczas tworzenia nowej sieci wirtualnej, prefiks adresu w każdej podsieci jest obliczana automatycznie na podstawie prefiksów adresów sieci wirtualnej i odpowiednio `addressPrefixSize`.
-- Podczas korzystania z istniejącej wirtualnych sieci, żadnych podsieci mniejsze niż odpowiednie `constraints.minAddressPrefixSize` nie są dostępne do wyboru. Ponadto jeśli jest określony, podsieci, które nie mają co najmniej `minAddressCount` dostępne adresy są niedostępne do wybrania. Wartość domyślna to **0**. Aby upewnić się, że dostępnych adresów są ciągłe, określ **true** dla `requireContiguousAddresses`. Wartość domyślna to **true**.
+- Jeśli zostanie określony, pierwszy nienakładający prefiks rozmiaru adresu `defaultValue.addressPrefixSize` jest ustalana automatycznie w istniejących sieciach wirtualnych w subskrypcji użytkownika.
+- Wartością domyślną dla `defaultValue.name` i `defaultValue.addressPrefixSize` jest **null**.
+- `constraints.minAddressPrefixSize` musi być określona. Niedostępny do wyboru są istniejące sieci wirtualne, z mniejszą niż określona wartość przestrzeń adresową.
+- `subnets` należy określić, i `constraints.minAddressPrefixSize` musi być określona dla każdej podsieci.
+- Podczas tworzenia nowej sieci wirtualnej, prefiks adresu w każdej podsieci jest obliczana automatycznie na podstawie prefiksu adresu sieci wirtualnej oraz odpowiednie `addressPrefixSize`.
+- Korzystając z istniejącego wirtualnego sieci, wszelkie podsieci, które są mniejsze niż odpowiednie `constraints.minAddressPrefixSize` nie są dostępne do wyboru. Ponadto jeśli zostanie określony, podsieci, które nie mają co najmniej `minAddressCount` dostępnych adresów nie są dostępne do wyboru. Wartość domyślna to **0**. Aby upewnić się, że dostępne adresy są ciągłe, należy określić **true** dla `requireContiguousAddresses`. Wartość domyślna to **true**.
 - Tworzenie podsieci w istniejącej sieci wirtualnej nie jest obsługiwane.
-- Jeśli `options.hideExisting` jest **true**, użytkownik nie może wybrać istniejącej sieci wirtualnej. Wartość domyślna to **false**.
+- Jeśli `options.hideExisting` jest **true**, użytkownik nie może wybrać istniejącą sieć wirtualną. Wartość domyślna to **false**.
 
 ## <a name="sample-output"></a>Przykładowe dane wyjściowe
 
@@ -119,5 +119,5 @@ Gdy użytkownik wybiera istniejącej sieci wirtualnej, użytkownik musi być zam
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Aby obejrzeć wprowadzenie do tworzenia definicji interfejsu użytkownika, zobacz [wprowadzenie CreateUiDefinition](create-uidefinition-overview.md).
-* Opis właściwości wspólnych elementów interfejsu użytkownika, zobacz [elementy CreateUiDefinition](create-uidefinition-elements.md).
+* Wprowadzenie do tworzenia definicji interfejsu użytkownika, zobacz [wprowadzenie do zasobu CreateUiDefinition](create-uidefinition-overview.md).
+* Aby uzyskać opis wspólne właściwości w elementach interfejsu użytkownika, zobacz [elementy CreateUiDefinition](create-uidefinition-elements.md).

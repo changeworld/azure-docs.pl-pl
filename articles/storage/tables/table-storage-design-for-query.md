@@ -9,11 +9,11 @@ ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
 ms.openlocfilehash: 97373f6f0138d3ed8028ed4327b7e6cf90ad76a7
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470743"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60325871"
 ---
 # <a name="design-for-querying"></a>Projektowanie pod kątem wykonywania zapytań
 Rozwiązania usługi tabeli mogą być odczytywane znaczne wykorzystanie mocy, intensywnie zapisu lub zmieszanie dwóch. Ten artykuł koncentruje się na tym, co można mieć na uwadze podczas projektowania usługi Table service, aby efektywnie obsługiwać operacje odczytu. Zazwyczaj projekt, że obsługuje operacje odczytu efektywnie również jest wydajne dla operacji zapisu. Jednak istnieją pewne dodatkowe zagadnienia dotyczące pamiętać podczas projektowania, aby obsługiwać operacje zapisu w magazynie, omówionych w artykule [projektowanie pod kątem modyfikacji danych](table-storage-design-for-modification.md).

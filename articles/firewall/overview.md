@@ -10,11 +10,11 @@ ms.date: 3/29/2019
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
 ms.openlocfilehash: 7f313af75e78db8a60fe6864c41cd8e6c5a3ad9b
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629950"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60193040"
 ---
 # <a name="what-is-azure-firewall"></a>Co to jest usługa Azure Firewall?
 
@@ -54,7 +54,7 @@ Tag usługi reprezentuje grupę prefiksów adresów IP, aby zminimalizować zło
 
 ### <a name="threat-intelligence"></a>Analiza zagrożeń
 
-Filtrowanie na podstawie analizy zagrożeń można włączyć dla zapory dla alertów i zezwalają na ruch z i do znane złośliwe adresy IP i domen. Adresy IP i domen pochodzą z analizy zagrożeń firmy Microsoft, źródła danych.
+Filtrowanie oparte na analizie zagrożeń można włączyć dla zapory, aby wysyłać alerty oraz blokować ruch ze znanych złośliwych adresów IP i domen i do nich. Adresy IP i domeny pochodzą z kanału informacyjnego analizy zagrożeń firmy Microsoft.
 
 ### <a name="outbound-snat-support"></a>Obsługa translacji adresów sieciowych źródła (SNAT) dla ruchu wychodzącego
 

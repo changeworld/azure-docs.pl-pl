@@ -16,11 +16,11 @@ ms.date: 07/12/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 22c136225e5a8526afd482e5ef8400198947422f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56199688"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60264239"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kanbanize"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Kanbanize
 
@@ -173,7 +173,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     h. Sprawdź **Włącz logowanie za pomocą logowania jednokrotnego i Kanbanize**.
     
-    i. Kliknij przycisk **Zapisz ustawienia**.
+    i. Kliknij pozycję **Save Settings (Zapisz ustawienia)**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -253,7 +253,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

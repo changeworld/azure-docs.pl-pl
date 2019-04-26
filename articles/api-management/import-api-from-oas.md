@@ -14,11 +14,11 @@ ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
 ms.openlocfilehash: b1602af59cd46b4bbcefa6f1df3cd84c0d342b71
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959703"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60236470"
 ---
 # <a name="import-an-openapi-specification"></a>Importowanie specyfikacji interfejsu OpenAPI
 
@@ -100,7 +100,7 @@ Operacje mogą być również wywoływane z **portalu dla deweloperów** w celu 
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Przekształcanie i ochrona opublikowanego interfejsu API](transform-api.md)

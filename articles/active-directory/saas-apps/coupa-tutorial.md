@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4156ef264069b5f926f28f766a201dceb29a512b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 29ca16e149852d044fdd6f6ea0baf0b11ccb75cf
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57834799"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60280855"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-coupa"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Coupa
 
@@ -114,16 +114,16 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Coupa, wyk
 
     | Środowisko  | Adres URL |
     |:-------------|----|
-    | Piaskownica | `devsso35.coupahost.com`|
-    | Produkcja | `prdsso40.coupahost.com`|
+    | Piaskownica | `sso-stg1.coupahost.com`|
+    | Produkcja | `sso-prd1.coupahost.com`|
     | | |
 
     c. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL:
 
     | Środowisko | Adres URL |
     |------------- |----|
-    | Piaskownica | `https://devsso35.coupahost.com/sp/ACS.saml2`|
-    | Produkcja | `https://prdsso40.coupahost.com/sp/ACS.saml2`|
+    | Piaskownica | `https://sso-stg1.coupahost.com/sp/ACS.saml2`|
+    | Produkcja | `https://sso-prd1.coupahost.com/sp/ACS.saml2`|
     | | |
 
 4. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.

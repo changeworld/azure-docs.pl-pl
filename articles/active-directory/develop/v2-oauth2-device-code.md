@@ -18,11 +18,11 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 703416788d123798774802613d71b30e8fbdaa9b
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59999811"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60299422"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-code-flow"></a>Platforma tożsamości firmy Microsoft i przepływ kodu urządzenia OAuth 2.0
 
@@ -65,8 +65,8 @@ scope=user.read%20openid%20profile
 
 | Parametr | Warunek | Opis |
 | --- | --- | --- |
-| `tenant` | Wymagany |Dzierżawy katalogu, który chcesz zażądać uprawnień z. Może to być w formacie przyjaznej nazwy lub identyfikatora GUID.  |
-| `client_id` | Wymagany | **Identyfikator aplikacji (klienta)** , [rejestracje aplikacji z witryny Azure portal](https://go.microsoft.com/fwlink/?linkid=2083908) środowisko przypisany do aplikacji. |
+| `tenant` | Wymagane |Dzierżawy katalogu, który chcesz zażądać uprawnień z. Może to być w formacie przyjaznej nazwy lub identyfikatora GUID.  |
+| `client_id` | Wymagane | **Identyfikator aplikacji (klienta)** , [rejestracje aplikacji z witryny Azure portal](https://go.microsoft.com/fwlink/?linkid=2083908) środowisko przypisany do aplikacji. |
 | `scope` | Zalecane | Listę rozdzielonych spacjami [zakresy](v2-permissions-and-consent.md) ma użytkownika o zgodę na.  |
 
 ### <a name="device-authorization-response"></a>Odpowiedzi autoryzacji urządzenia
@@ -98,11 +98,11 @@ client_id: 6731de76-14a6-49ae-97bc-6eba6914391e
 device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8
 ```
 
-| Parametr | Wymagany | Opis|
+| Parametr | Wymagane | Opis|
 | -------- | -------- | ---------- |
-| `grant_type` | Wymagany | musi być `urn:ietf:params:oauth:grant-type:device_code`|
-| `client_id`  | Wymagany | Musi odpowiadać `client_id` użyty w żądaniu początkowej. |
-| `device_code`| Wymagany | `device_code` Zwracane w żądaniu autoryzacji urządzeń.  |
+| `grant_type` | Wymagane | musi być `urn:ietf:params:oauth:grant-type:device_code`|
+| `client_id`  | Wymagane | Musi odpowiadać `client_id` użyty w żądaniu początkowej. |
+| `device_code`| Wymagane | `device_code` Zwracane w żądaniu autoryzacji urządzeń.  |
 
 ### <a name="expected-errors"></a>Oczekiwano błędy
 

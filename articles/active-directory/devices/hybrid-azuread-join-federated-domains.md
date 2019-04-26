@@ -18,11 +18,11 @@ ms.author: joflore
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d737be389666590d32e9f1b887db57dacce543e2
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517187"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60354218"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Samouczek: Konfigurowanie hybrydowego dołączania do usługi Azure Active Directory dla domen federacyjnych
 
@@ -110,7 +110,7 @@ Aby skonfigurować dołączanie hybrydowe do usługi Azure AD przy użyciu progr
 
 3. Na stronie **Przegląd** kliknij pozycję **Dalej**. 
 
-    ![Przegląd](./media/hybrid-azuread-join-federated-domains/13.png)
+    ![Omówienie](./media/hybrid-azuread-join-federated-domains/13.png)
 
 4. Na stronie **Łączenie z usługą Azure AD** wprowadź poświadczenia administratora globalnego dzierżawy usługi Azure AD, a następnie kliknij pozycję **Dalej**.   
 

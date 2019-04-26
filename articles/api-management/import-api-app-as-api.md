@@ -14,11 +14,11 @@ ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
 ms.openlocfilehash: 120fe358e5c8afe63e98038ad353d5ebc45a1937
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636473"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60255903"
 ---
 # <a name="import-an-api-app-as-an-api"></a>Importowanie aplikacji interfejsu API jako interfejsu API
 
@@ -91,7 +91,7 @@ Operacje mogą być również wywoływane z **portalu dla deweloperów** w celu 
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Przekształcanie i ochrona opublikowanego interfejsu API](transform-api.md)

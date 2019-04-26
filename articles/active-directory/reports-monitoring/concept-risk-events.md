@@ -16,12 +16,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02fc505c8f14f4cc0e486502060a16af47c68bbc
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 4afcbffa778c902c1b32979c69ca91ab0955f739
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439026"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60286864"
 ---
 # <a name="azure-active-directory-risk-events"></a>Zdarzenia o podwyższonym ryzyku w usłudze Azure Active Directory
 
@@ -52,7 +52,7 @@ Obecnie usługa Azure Active Directory wykrywa sześć typów zdarzeń o podwyż
 Szczegółowe informacje, uzyskasz na zdarzenie wykryte zagrożenie jest powiązany ze swoją subskrypcją usługi Azure AD. 
 
 * Za pomocą **wersji usługi Azure AD Premium P2**, uzyskać najbardziej szczegółowe informacje na temat wszystkie wykrycia bazowego. 
-* Za pomocą **wersji Azure AD Premium P1**, wykrywania, które nie są objęte licencja są traktowane jako zdarzenie o podwyższonym ryzyku **logowania z dodatkowym ryzykiem wykryto**.
+* Za pomocą **wersji Azure AD Premium P1**, zaawansowane wykrywanie (np. nieznane logowania właściwości) nie są objęte licencji i pojawi się pod nazwą **logowania z dodatkowym ryzykiem wykryto** . Ponadto poziom ryzyka i pola szczegółów o podwyższonym ryzyku są ukryte.
 
 Natomiast wykrywanie zdarzeń o podwyższonym ryzyku już reprezentuje istotnym elementem ochrony tożsamości, masz również opcję, aby ręcznie rozwiązać je lub zaimplementować automatycznych odpowiedzi przez skonfigurowanie zasad dostępu warunkowego. Aby uzyskać więcej informacji, zobacz [usługi Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
 

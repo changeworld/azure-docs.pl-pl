@@ -9,23 +9,23 @@ ms.reviewer: klam
 ms.assetid: 13a2be8c-dc14-46cc-ab7d-5075bfd4d724
 ms.topic: article
 ms.date: 08/18/2016
-ms.openlocfilehash: 74f13628b62d53a84b4d19255a30a6bc4a7367ec
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3a8664497d3d082ec1c7f584188854991e872d50
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974293"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60344312"
 ---
 # <a name="plans-and-billing-for-azure-scheduler"></a>Plany i rozliczanie dla usługi Azure Scheduler
 
 > [!IMPORTANT]
-> [Usługa Azure Logic Apps](../logic-apps/logic-apps-overview.md) zastępuje usługi Azure Scheduler, która zostanie wycofana. Aby zaplanować prace, [zamiast tego spróbuj wykonać usługi Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
+> Usługa [Azure Logic Apps](../logic-apps/logic-apps-overview.md) zastępuje usługę Azure Scheduler, która zostanie wycofana. Zamiast niej [spróbuj używać usługi Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) do planowania zadań. 
 
 ## <a name="job-collection-plans"></a>Plany kolekcji zadań
 
 W usłudze Azure Scheduler kolekcja zadań zawiera określoną liczbę zadań. Kolekcja zadań jest płatna jednostka i jest dostępna w planach Standard, P10 Premium i P20 Premium, które są opisane poniżej: 
 
-| Planu kolekcji zadań | Maksymalna liczba zadań na kolekcję | Maks. cykl | Maksymalna liczba kolekcji zadań na subskrypcję | Limity | 
+| Planu kolekcji zadań | Maksymalna liczba zadań na kolekcję | Maks. cykl | Maksymalna liczba kolekcji zadań na subskrypcję | Limits | 
 |:--- |:--- |:--- |:--- |:--- |
 | **Standardowa** | 50 zadań na kolekcję | Jeden na minutę. Nie można uruchomić zadania częściej niż jeden raz na minutę. | Każda subskrypcja platformy Azure może mieć maksymalnie 100 kolekcji zadań standardowych. | Dostęp do usługi Scheduler pełny zestaw funkcji | 
 | **P10 Premium** | 50 zadań na kolekcję | Jeden na minutę. Nie można uruchomić zadania częściej niż jeden raz na minutę. | Każda subskrypcja platformy Azure może mieć maksymalnie 10 000 kolekcji zadań P10 Premium. Aby uzyskać więcej kolekcji <a href="mailto:wapteams@microsoft.com">skontaktuj się z nami</a>. | Dostęp do usługi Scheduler pełny zestaw funkcji |
@@ -82,6 +82,6 @@ Kolekcje zadań p20 Premium zapewnia te same możliwości jak kolekcje zadań P1
 
 ## <a name="see-also"></a>Zobacz także
 
-* [Co to jest usługa Azure Scheduler?](scheduler-intro.md)
+* [Czym jest Azure Scheduler?](scheduler-intro.md)
 * [Pojęcia i terminologia dotyczące usługi Azure Scheduler oraz hierarchia jednostek](scheduler-concepts-terms.md)
 * [Limity, wartości domyślne i kody błędów usługi Azure Scheduler](scheduler-limits-defaults-errors.md)

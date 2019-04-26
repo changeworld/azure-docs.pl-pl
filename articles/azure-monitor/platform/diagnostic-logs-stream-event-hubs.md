@@ -9,11 +9,11 @@ ms.date: 07/25/2018
 ms.author: johnkem
 ms.subservice: ''
 ms.openlocfilehash: b5299af375646e7759d0770139df2cd6d7ce105c
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57314082"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60237705"
 ---
 # <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>Stream dzienniki diagnostyczne platformy Azure do Centrum zdarzeń
 **[Dzienniki diagnostyczne platformy Azure](diagnostic-logs-overview.md)**  może być przesyłany strumieniowo w czasie zbliżonym do rzeczywistego do dowolnej aplikacji przy użyciu wbudowanych opcji "Eksportuj do usługi Event Hubs" w portalu lub przez włączenie identyfikator reguły autoryzacji Centrum zdarzeń w ustawieniu diagnostycznym za pośrednictwem platformy Azure Polecenia cmdlet programu PowerShell lub Azure interfejsu wiersza polecenia.

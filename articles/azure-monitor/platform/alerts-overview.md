@@ -9,11 +9,11 @@ ms.date: 01/28/2018
 ms.author: robb
 ms.subservice: alerts
 ms.openlocfilehash: 6fb49baf8ab58ae6cfe7639cedcc4466810c8b96
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003316"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60347490"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Przegląd alertów na platformie Microsoft Azure 
 
@@ -27,7 +27,7 @@ Aktywne alerty powiadamiają, gdy jest to ważne, że warunki znajdują się w d
 
 W tym artykule omówiono ujednoliconego środowiska alertów w usłudze Azure Monitor, który zawiera teraz alerty, które były zarządzane przez usługi Log Analytics i usługi Application Insights. [Poprzednie środowisko alertów](alerts-classic.overview.md) i typy alertów są nazywane **alertów klasycznych**. Ta starsza obsługa produktu próbnego oraz starsze typu alertu możesz wyświetlić, klikając **wyświetlanie alertów klasycznych** w górnej części strony alertu. 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Poniższy diagram przedstawia przepływ alertów. 
 
@@ -148,7 +148,7 @@ Widok można filtrować, wybierając następujące wartości w menu rozwijanych 
 | Subskrypcja | Wybierz maksymalnie pięć subskrypcji platformy Azure. Tylko w wybranych subskrypcjach są uwzględniane alerty w widoku. |
 | Grupa zasobów | Wybierz pojedynczą grupę zasobów. Tylko alerty z usługą obiektów docelowych w wybranej grupie zasobów znajdują się w widoku. |
 | Typ zasobu | Wybierz jeden lub więcej typów zasobów. Tylko alerty o celach wybranego typu znajdują się w widoku. W tej kolumnie jest dostępna tylko po określono grupę zasobów. |
-| Zasób | Wybierz zasób. Tylko alerty o zasobu jako obiekt docelowy znajdują się w widoku. W tej kolumnie jest dostępna tylko po został określony jako typ zasobu. |
+| Resource | Wybierz zasób. Tylko alerty o zasobu jako obiekt docelowy znajdują się w widoku. W tej kolumnie jest dostępna tylko po został określony jako typ zasobu. |
 | Ważność | Wybierz alert o ważności lub *wszystkich* obejmujący alerty wszystkie poziomy ważności. |
 | Stan monitora | Wybierz warunek monitora lub *wszystkich* obejmujący alerty warunków. |
 | Stan alertu | Wybierz stan alertu lub *wszystkich* obejmujący alerty stanów. |

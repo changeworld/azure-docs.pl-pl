@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 6/8/2018
 ms.author: adigan
 ms.openlocfilehash: fb064c39fa014515fb2a3f4ccc96ce216f2f7b2e
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493522"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60254477"
 ---
 # <a name="back-up-sql-server-on-stack"></a>Tworzenie kopii zapasowych programu SQL Server na stosie
 W tym artykule umożliwiają konfigurowanie Microsoft Azure Backup Server (MABS) ochrony baz danych programu SQL Server w usłudze Azure Stack.

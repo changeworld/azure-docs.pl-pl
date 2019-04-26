@@ -9,11 +9,11 @@ ms.date: 10/11/2018
 ms.author: johnkem
 ms.subservice: logs
 ms.openlocfilehash: 6e67b049ca179b1e93bcf645afd89b4a2eb0048d
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436506"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60236178"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Obsługiwane usługi, schematów i kategorie dzienników diagnostycznych platformy Azure
 
@@ -81,7 +81,7 @@ Schemat dla dzienników diagnostycznych zasobów zależy od kategorii zasobów i
 | Bramy sieci wirtualnej | Schemat nie jest dostępna. |
 
 ## <a name="supported-log-categories-per-resource-type"></a>Obsługiwane kategorie dzienników dla typu zasobu
-|Typ zasobu|Kategoria|Nazwa wyświetlana kategorii|
+|Typ zasobu|Category|Nazwa wyświetlana kategorii|
 |---|---|---|
 |Microsoft.AnalysisServices/servers|Aparat|Aparat|
 |Microsoft.AnalysisServices/servers|Usługa|Usługa|

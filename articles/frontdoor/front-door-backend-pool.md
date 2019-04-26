@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: 543e237a4a8390a8ebf74d0eb2a1f4be41dcd911
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000593"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60193717"
 ---
 # <a name="backends-and-backend-pools-in-azure-front-door-service"></a>Pule zaplecza aplikacji i wewnętrznej bazy danych w usłudze Azure Service drzwi
 W tym artykule opisano pojęcia dotyczące sposobu mapowania wdrożenia aplikacji z usługą Azure Service drzwiami frontowymi. Objaśniono także różne warunki w konfiguracji drzwiami frontowymi wokół zaplecza aplikacji.

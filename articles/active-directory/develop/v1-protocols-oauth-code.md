@@ -18,11 +18,11 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2598bb4deef0c7dae9f5df558ec1054ad02fb2f7
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57531117"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60297053"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Autoryzowanie dostępu do aplikacji sieci web usługi Azure Active Directory przy użyciu przepływie przyznawania kodu OAuth 2.0
 
@@ -56,7 +56,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | Parametr |  | Opis |
 | --- | --- | --- |
-| dzierżawa |wymagane |`{tenant}` Wartość w polu Ścieżka żądania może służyć do kontrolowania, kto może zalogować się do aplikacji. Dozwolone są wartości identyfikatorów dzierżawy, na przykład `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` lub `contoso.onmicrosoft.com` lub `common` tokenów niezależne od dzierżawcy |
+| tenant |wymagane |`{tenant}` Wartość w polu Ścieżka żądania może służyć do kontrolowania, kto może zalogować się do aplikacji. Dozwolone są wartości identyfikatorów dzierżawy, na przykład `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` lub `contoso.onmicrosoft.com` lub `common` tokenów niezależne od dzierżawcy |
 | client_id |wymagane |Identyfikator aplikacji przypisany do aplikacji podczas rejestrowania za pomocą usługi Azure AD. To można znaleźć w witrynie Azure Portal. Kliknij przycisk **usługi Azure Active Directory** na pasku bocznym usługi kliknij **rejestracje aplikacji**i wybierz aplikację. |
 | response_type |wymagane |Musi zawierać `code` dla przepływ kodu autoryzacji. |
 | redirect_uri |Zalecane |Redirect_uri aplikacji, gdzie odpowiedzi uwierzytelniania mogą być wysyłane i odbierane przez aplikację. Dokładnie musi odpowiadać jednej z redirect_uris, zarejestrowanych w portalu, z wyjątkiem musi być zakodowane w adresie url. W przypadku aplikacji natywnych i mobilne, należy używać wartość domyślną `urn:ietf:wg:oauth:2.0:oob`. |
@@ -141,7 +141,7 @@ grant_type=authorization_code
 
 | Parametr |  | Opis |
 | --- | --- | --- |
-| dzierżawa |wymagane |`{tenant}` Wartość w polu Ścieżka żądania może służyć do kontrolowania, kto może zalogować się do aplikacji. Dozwolone są wartości identyfikatorów dzierżawy, na przykład `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` lub `contoso.onmicrosoft.com` lub `common` tokenów niezależne od dzierżawcy |
+| tenant |wymagane |`{tenant}` Wartość w polu Ścieżka żądania może służyć do kontrolowania, kto może zalogować się do aplikacji. Dozwolone są wartości identyfikatorów dzierżawy, na przykład `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` lub `contoso.onmicrosoft.com` lub `common` tokenów niezależne od dzierżawcy |
 | client_id |wymagane |Identyfikator aplikacji przypisany do aplikacji podczas rejestrowania za pomocą usługi Azure AD. To można znaleźć w witrynie Azure portal. Identyfikator aplikacji jest wyświetlany w ustawieniach rejestracji aplikacji. |
 | grant_type |wymagane |Musi być `authorization_code` dla przepływ kodu autoryzacji. |
 | kod |wymagane |`authorization_code` Uzyskany w poprzedniej sekcji |
@@ -209,7 +209,7 @@ Przykładowa odpowiedź błędu może wyglądać następująco:
 | error |Ciągu kodu błędu, który może służyć do klasyfikowania typy błędów, które występują i może służyć do reagowania na błędy. |
 | error_description |Określony komunikat o błędzie ułatwiający Deweloper Identyfikuj główne przyczyny błędu uwierzytelniania. |
 | error_codes |Lista kodów błędów specyficznych dla usługi STS, które mogą pomóc w diagnostyce. |
-| sygnatura czasowa |Czas, w którym wystąpił błąd. |
+| timestamp |Czas, w którym wystąpił błąd. |
 | trace_id |Unikatowy identyfikator dla żądania, które mogą pomóc w diagnostyce. |
 | correlation_id |Unikatowy identyfikator dla żądania, które mogą pomóc w diagnostyce składnikami. |
 
@@ -341,7 +341,7 @@ Przykładowa odpowiedź błędu może wyglądać następująco:
 | error |Ciągu kodu błędu, który może służyć do klasyfikowania typy błędów, które występują i może służyć do reagowania na błędy. |
 | error_description |Określony komunikat o błędzie ułatwiający Deweloper Identyfikuj główne przyczyny błędu uwierzytelniania. |
 | error_codes |Lista kodów błędów specyficznych dla usługi STS, które mogą pomóc w diagnostyce. |
-| sygnatura czasowa |Czas, w którym wystąpił błąd. |
+| timestamp |Czas, w którym wystąpił błąd. |
 | trace_id |Unikatowy identyfikator dla żądania, które mogą pomóc w diagnostyce. |
 | correlation_id |Unikatowy identyfikator dla żądania, które mogą pomóc w diagnostyce składnikami. |
 

@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 3/11/2019
 ms.author: victorh
 ms.openlocfilehash: 4ef9089c94d9e806cc519c4f8243cdcb7e73953a
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57730536"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60194051"
 ---
 # <a name="azure-firewall-threat-intelligence-based-filtering---public-preview"></a>Filtrowanie Azure zagrożeń zapory na podstawie analizy — publiczna wersja zapoznawcza
 
-Filtrowanie na podstawie analizy zagrożeń można włączyć dla zapory dla alertów i zezwalają na ruch z i do znane złośliwe adresy IP i domen. Adresy IP i domen pochodzą z analizy zagrożeń firmy Microsoft, źródła danych. [Intelligent Security Graph](https://www.microsoft.com/en-us/security/operations/intelligence) uprawnienia analizy zagrożeń firmy Microsoft i jest używany przez wiele usług, w tym usługi Azure Security Center.
+Filtrowanie oparte na analizie zagrożeń można włączyć dla zapory, aby wysyłać alerty oraz blokować ruch ze znanych złośliwych adresów IP i domen i do nich. Adresy IP i domeny pochodzą z kanału informacyjnego analizy zagrożeń firmy Microsoft. [Intelligent Security Graph](https://www.microsoft.com/en-us/security/operations/intelligence) uprawnienia analizy zagrożeń firmy Microsoft i jest używany przez wiele usług, w tym usługi Azure Security Center.
 
 ![Analiza zagrożeń zapory](media/threat-intel/firewall-threat.png)
 

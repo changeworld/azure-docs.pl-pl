@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 29cea7e72d6bd7f64f6cf2a68b7620090ea4eef3
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: b527199fd7b61609f292b13c73bfc1d6e0a6b896
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995937"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60203795"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Szybki start: Tworzenie aplikacji platformy ASP.NET Core używającej usługi Azure App Configuration
 
@@ -104,7 +104,7 @@ Dodaj [narzędzie Menedżer klucz tajny](https://docs.microsoft.com/aspnet/core/
 
     Ten klucz tajny jest dostępny za pomocą konfiguracji interfejsu API. Dwukropek (:) działanie jest nazwa konfiguracji za pomocą interfejsu API konfiguracji na wszystkich obsługiwanych platformach. Zobacz [konfiguracji przez środowisko](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0).
 
-4. Otwórz *Program.cs*i Dodaj odwołanie do dostawcy usługi konfiguracji aplikacji konfiguracji platformy .NET Core.
+4. Otwórz *Program.cs*i Dodaj odwołanie do dostawcy konfiguracji aplikacji programu .NET Core.
 
     ```csharp
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;

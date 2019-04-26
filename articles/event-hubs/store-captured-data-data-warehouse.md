@@ -10,11 +10,11 @@ ms.date: 12/06/2018
 ms.topic: tutorial
 ms.service: event-hubs
 ms.openlocfilehash: 234febe92727e5a47d4cfc5b836cd5593e99b5b5
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238372"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60369105"
 ---
 # <a name="migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Migrowanie przechwyconych danych usługi Event Hubs do usługi SQL Data Warehouse przy użyciu usług Event Grid i Azure Functions
 
@@ -174,7 +174,7 @@ Konfiguracja centrum zdarzeń, magazynu danych SQL, aplikacji funkcji platformy 
 ## <a name="verify-captured-data-in-data-warehouse"></a>Weryfikowanie zapisanych danych w magazynie danych
 Po kilku minutach wyślij zapytanie do tabeli w magazynie danych SQL. Zauważysz, że dane generowane przez aplikację WindTurbineDataGenerator zostały przesłane strumieniowo do centrum Event Hub, zapisane w kontenerze usługi Azure Storage, a następnie przeniesione do tabeli usługi SQL Data Warehouse za pomocą funkcji platformy Azure.  
 
-## <a name="next-steps"></a>Następne kroki 
+## <a name="next-steps"></a>Kolejne kroki 
 Aby uzyskać praktyczne informacje, możesz użyć zaawansowanych narzędzi do wizualizacji danych w magazynie danych.
 
 W tym artykule przedstawiono sposób korzystania z usługi [Power BI z usługą SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-integrate-power-bi)

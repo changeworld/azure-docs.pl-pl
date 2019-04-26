@@ -19,11 +19,11 @@ ms.reviewer: nigu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8617442c811dc2fe8f961038f35ebcf218a58302
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56163959"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60247479"
 ---
 # <a name="what-is-the-identity-secure-score-in-azure-active-directory-public-preview"></a>Co to jest wskaźnik bezpieczeństwa tożsamości w usłudze Azure Active Directory? (publiczna wersja zapoznawcza)
 
@@ -160,7 +160,7 @@ Aby wyświetlić historię wskaźnika, przejdź na stronę analizatora wskaźnik
 Wskaźnik bezpieczeństwa tożsamości reprezentuje część „Tożsamość” wskaźnika bezpieczeństwa usługi Office 365. Oznacza to, że rekomendacje dotyczące wskaźnika bezpieczeństwa tożsamości i wskaźnika tożsamości w usłudze Office 365 są takie same. 
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Jeśli chcesz obejrzeć wideo na temat wskaźnika bezpieczeństwa usługi Office 365, kliknij [tutaj](https://www.youtube.com/watch?v=jzfpDJ9Kg-A).
  

@@ -1,6 +1,6 @@
 ---
-title: Co robić w przypadku platformy Azure usługa przerw w działaniu, które ma wpływ na usługi w chmurze Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, co należy zrobić w przypadku Azure zakłócenia, który ma wpływ na usługi w chmurze Azure.
+title: Co należy zrobić w przypadku platformy Azure usługa przerw w działaniu, która ma wpływ na usługach Azure Cloud Services | Dokumentacja firmy Microsoft
+description: Dowiedz się, co należy zrobić w przypadku przerwania działania usługi platformy Azure, która ma wpływ na usługach Azure Cloud Services.
 services: cloud-services
 documentationcenter: ''
 author: mmccrory
@@ -14,50 +14,50 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: mmccrory
-ms.openlocfilehash: 7028417c95aa6969793c00d0bb270c96e56164fb
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 4b355a779a2e9f78f4cbf8ed5425200ce1df2f1d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30314786"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60337281"
 ---
-# <a name="what-to-do-in-the-event-of-an-azure-service-disruption-that-impacts-azure-cloud-services"></a>Co robić w przypadku platformy Azure usługa przerw w działaniu, które ma wpływ na usługi w chmurze Azure
-W firmie Microsoft firma Microsoft nad tym, aby upewnić się, że naszych usług są zawsze dostępne dla Ciebie przydatne. Wymusza naszych niezależnych czasami wpływ nam w sposób, aby spowodować zakłócenia w świadczeniu usług nieplanowane.
+# <a name="what-to-do-in-the-event-of-an-azure-service-disruption-that-impacts-azure-cloud-services"></a>Co należy zrobić w przypadku platformy Azure usługa przerw w działaniu, która ma wpływ na usługach Azure Cloud Services
+W firmie Microsoft pracujemy nad upewnij się, że nasze usługi są zawsze dostępne dla Ciebie gdy ich potrzebujesz. Wymusza naszych niezależnych czasami wpływu na nas w sposób, aby spowodować przerwy w świadczeniu usług nieplanowane.
 
-Firma Microsoft udostępnia Umowa dotycząca poziomu usług (SLA) dla swoich usług jako zobowiązanie czas pracy i łączności. Umowa SLA dla poszczególnych usług Azure można znaleźć w folderze [umowy dotyczące poziomu usług Azure](https://azure.microsoft.com/support/legal/sla/).
+Firma Microsoft oferuje umowę poziomu usług (SLA) jej usług jako zobowiązanie dotyczące czasu dostępności i łączności. Umowa SLA dla poszczególnych usług platformy Azure znajduje się w temacie [umowy dotyczące poziomu usług platformy Azure](https://azure.microsoft.com/support/legal/sla/).
 
-Platforma Azure ma już wiele wbudowanych funkcji obsługujących aplikacje o wysokiej dostępności. Aby uzyskać więcej informacji o tych usług, przeczytaj [odzyskiwania po awarii i wysoką dostępność aplikacji Azure](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
+Platforma Azure ma już wiele funkcji wbudowanych platformy, które obsługują aplikacje o wysokiej dostępności. Aby uzyskać więcej informacji o tych usług, przeczytaj [odzyskiwania po awarii i wysoka dostępność dla aplikacji platformy Azure](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
 
-W tym artykule omówiono scenariusza odzyskiwania awaryjnego wartość true, gdy całego regionu ulegnie awarii z powodu poważne klęski lub powszechnie przerw w obsłudze. Są to rzadkie wystąpienia, ale należy przygotować dla jest awarii całego regionu. Całego regionu napotyka przerw w działaniu usługi, Magazyn lokalnie nadmiarowy kopie danych tymczasowo będą niedostępne. Jeśli włączono replikację geograficzną, trzy dodatkowe kopie obiektów blob magazynu Azure i tabele są przechowywane w innym regionie. W przypadku ukończenia regionalnej awarii lub awarii, w którym regionie podstawowym nie jest możliwe do odzyskania Azure, ponownie mapuje wszystkie wpisy DNS do regionu replikacją geograficzną.
+W tym artykule opisano true scenariusza odzyskiwania po awarii, w razie awarii z powodu głównych klęski żywiołowe lub przerw w działaniu usługi powszechne całego regionu. Są to rzadko, ale muszą być przygotowane na możliwość, że występuje awaria cały region. Jeśli cały region przerw w działaniu usługi, lokalnie nadmiarowe kopie danych będzie tymczasowo niedostępne. Jeśli włączono replikację geograficzną, trzy dodatkowe kopie obiektów blob usługi Azure Storage i tabel są przechowywane w innym regionie. W przypadku pełną regionalnej awarii lub awarii, w którym regionie podstawowym nie jest możliwe do odzyskania Azure, ponownie mapuje wszystkie wpisy DNS dla regionu z replikacją geograficzną.
 
 > [!NOTE]
-> Należy pamiętać, że nie masz żadnych kontrolę nad ten proces i nastąpią dla zakłócenia w świadczeniu usług centrum danych na poziomie. W związku z tym musi również polegać na innych strategii tworzenia kopii zapasowych specyficzne dla aplikacji do osiągnięcia najwyższy poziom dostępności. Aby uzyskać więcej informacji, zobacz [odzyskiwania po awarii i wysokiej dostępności dla aplikacji tworzonych w systemie Microsoft Azure](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md). Jeśli chcesz mieć możliwość wpływają na własnych trybu failover, warto rozważyć użycie [dostęp do odczytu magazynu geograficznie nadmiarowego (RA-GRS)](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage), który tworzy kopię danych tylko do odczytu w innym regionie.
+> Należy pamiętać, że nie masz żadnych kontrolować ten proces i miało miejsce tylko dla przerwy w świadczeniu usług całego centrum danych. W związku z tym należy również polegać na innych strategii tworzenia kopii zapasowych specyficzne dla aplikacji, aby osiągnąć najwyższą dostępność. Aby uzyskać więcej informacji, zobacz [odzyskiwania po awarii i wysoka dostępność aplikacji utworzonych w systemie Microsoft Azure](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md). Jeśli chcesz można było mieć wpływ na własnych trybu failover, warto rozważyć użycie [dostęp do odczytu magazynu geograficznie nadmiarowego (RA-GRS)](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage), która tworzy kopię tylko do odczytu danych w innym regionie.
 >
 >
 
 
-## <a name="option-1-use-a-backup-deployment-through-azure-traffic-manager"></a>Opcja 1: Użycie kopii zapasowej wdrożenia za pośrednictwem usługi Azure Traffic Manager
-Najbardziej niezawodne rozwiązanie odzyskiwania po awarii wymaga obsługi wielu wdrożeń aplikacji w różnych regionach, a następnie za pomocą [usługi Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) umożliwiających kierowanie ruchem między nimi. Menedżer ruchu Azure udostępnia wiele [metody routingu](../traffic-manager/traffic-manager-routing-methods.md), więc możesz wybrać, czy zarządzanie wdrożeniami przy użyciu modelu podstawowej lub tworzenia kopii zapasowej lub podzielenie ruchu między nimi.
+## <a name="option-1-use-a-backup-deployment-through-azure-traffic-manager"></a>Opcja 1: Przy użyciu kopii zapasowej wdrożenia za pomocą usługi Azure Traffic Manager
+Najbardziej niezawodne rozwiązanie odzyskiwania po awarii obejmuje obsługi wielu wdrożeń będących częścią Twojej aplikacji w różnych regionach, a następnie za pomocą [usługi Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) do kierowania ruchem między nimi. Usługa Azure Traffic Manager udostępnia wiele [metod routingu](../traffic-manager/traffic-manager-routing-methods.md), dzięki czemu można wybrać, czy zarządzanie wdrożeniami przy użyciu modelu podstawowy/kopia zapasowa lub podzielenie ruchu między nimi.
 
-![Równoważenie usług Azure Cloud Services w regionach z usługi Azure Traffic Manager](./media/cloud-services-disaster-recovery-guidance/using-azure-traffic-manager.png)
+![Równoważenie usług w chmurze platformy Azure między regionami przy użyciu usługi Azure Traffic Manager](./media/cloud-services-disaster-recovery-guidance/using-azure-traffic-manager.png)
 
-Najszybszym odpowiedzi na utratę regionu, ważne jest, aby skonfigurować Menedżera ruchu [monitorowania punktów końcowych](../traffic-manager/traffic-manager-monitoring.md).
+Najszybszy odpowiedź utratą w regionie, ważne jest, aby skonfigurować usługi Traffic Manager [monitorowania punktu końcowego](../traffic-manager/traffic-manager-monitoring.md).
 
-## <a name="option-2-deploy-your-application-to-a-new-region"></a>Opcja 2: Wdrażanie aplikacji do nowego regionu
-Obsługa wielu aktywnych wdrożeń, zgodnie z opisem w poprzedniej opcji wiąże się dodatkowe bieżących kosztów. Oryginalny kod lub skompilowanych pakietu usługi w chmurze celu czasu odzyskiwania (RTO) jest wystarczająco elastyczny, należy utworzyć nowe wystąpienie aplikacji w innym regionie i zaktualizować rekordów DNS tak, aby wskazywał nowe wdrożenie.
+## <a name="option-2-deploy-your-application-to-a-new-region"></a>Opcja 2: Wdróż aplikację w nowym regionie
+Obsługa wielu aktywnych wdrożeń, zgodnie z opisem w poprzedniej opcji powoduje dodatkowe koszty bieżące. Jeśli cel czasu odzyskiwania (RTO) jest na tyle elastyczna, a oryginalny kod lub skompilowany pakiet usług w chmurze, możesz utworzyć nowe wystąpienie aplikacji w innym regionie i rekordami DNS, aby wskazywał nowe wdrożenie aktualizacji.
 
-Aby uzyskać więcej szczegółów na temat sposobu tworzenia i wdrażania aplikacji usługi w chmurze, zobacz [sposobu tworzenia i wdrażania usługi w chmurze](cloud-services-how-to-create-deploy-portal.md).
+Aby uzyskać więcej szczegółów na temat sposobu tworzenia i wdrażania aplikacji usługi w chmurze, zobacz [jak utworzyć i wdrożyć usługę w chmurze](cloud-services-how-to-create-deploy-portal.md).
 
-W zależności od źródła danych aplikacji konieczne może być sprawdź procedury odzyskiwania dla źródła danych aplikacji.
+W zależności od źródła danych aplikacji może być konieczne sprawdź procedury odzyskiwania dla źródła danych aplikacji.
 
-* Dla źródeł danych usługi Azure Storage, zobacz [replikacja usługi Azure Storage](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) sprawdzenia opcje, które są dostępne na podstawie wybranego replikacji modelu dla aplikacji.
-* Dla bazy danych SQL źródeł, przeczytaj [omówienie: firm odzyskiwania po awarii ciągłości i bazy danych z bazy danych SQL w chmurze](../sql-database/sql-database-business-continuity.md) sprawdzania dostępnych opcji opartą na modelu replikacji wybranych aplikacji.
+* Dla źródeł danych usługi Azure Storage, zobacz [replikacja usługi Azure Storage](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) do zapoznania się na opcje, które są dostępne na podstawie wybranego replikacji modelu dla aplikacji.
+* Dla źródeł bazy danych SQL, przeczytaj [omówienie: Business ciągłość działalności biznesowej i bazy danych odzyskiwania po awarii z usługą SQL Database w chmurze](../sql-database/sql-database-business-continuity.md) do zapoznania się na opcje, które są dostępne na podstawie wybranej replikacji modelu dla aplikacji.
 
 
 ## <a name="option-3-wait-for-recovery"></a>Opcja 3: Poczekaj, aż odzyskiwanie
-W takim przypadku nie jest wymagana żadna akcja ze strony użytkownika, ale usługi będą niedostępne do momentu przywrócenia regionu. Możesz wyświetlać bieżący stan usługi na [pulpit nawigacyjny kondycji usługi Azure](https://azure.microsoft.com/status/).
+W tym przypadku jest wymagana żadna akcja ze strony użytkownika, ale usługi będą niedostępne do momentu przywrócenia regionu. Można wyświetlić bieżący stan usługi na [pulpit nawigacyjny kondycji usługi platformy Azure](https://azure.microsoft.com/status/).
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby dowiedzieć się więcej na temat sposobu wdrażania odzyskiwania po awarii i strategii wysokiej dostępności, zobacz [odzyskiwania po awarii i wysoką dostępność aplikacji Azure](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
+Aby dowiedzieć się więcej na temat sposobu wdrażania odzyskiwania po awarii i strategii wysokiej dostępności, zobacz [odzyskiwania po awarii i wysoka dostępność dla aplikacji platformy Azure](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
 
-Aby opracować techniczne szczegółowy opis możliwości platformy chmury, zobacz [wskazówki techniczne Azure odporności](../resiliency/resiliency-technical-guidance.md).
+Aby opracować szczegółowe technicznego zrozumienia możliwości platformy chmury, zobacz [wskazówek technicznych odporność platformy Azure](../resiliency/resiliency-technical-guidance.md).

@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: shlo
 ms.openlocfilehash: e96e462709ab0c715c831bd10c628869d5c617fe
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58013316"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60319335"
 ---
 # <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>Zgłoś alert i monitorowania fabryki danych przy użyciu usługi Azure Monitor
 Aplikacje w chmurze są złożone z wielu ruchomych elementów. Monitorowanie zapewnia dane, aby upewnić się, że aplikacja stale się i działa w dobrej kondycji. Pomaga również stave potencjalnych problemów lub Rozwiązywanie problemów z przeszłości te. Ponadto można użyć danych monitorowania do uzyskania szczegółowych informacji o aplikacji. Ta wiedza może pomóc zwiększyć wydajność aplikacji lub łatwość konserwacji lub Automatyzuj akcje, które w przeciwnym razie wymagają ręcznej interwencji.
@@ -112,7 +112,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | dzienniki| Typ złożony| Nazwa kategorii dziennik diagnostyczny dla typu zasobu. Aby uzyskać listę kategorii, dzienniki diagnostyczne dla zasobu, należy najpierw wykonać operację pobrania ustawień diagnostycznych. |
 | category| String| Kategorie dzienników i ich zasady przechowywania |
 | timeGrain | String | Stopień szczegółowości metryki, które są przechwytywane format czasu ISO 8601. Musi być PT1M (jednej minuty)|
-| enabled| Wartość logiczna | Określa, czy zbiór kategorii metryk lub dzienników jest włączona dla tego zasobu|
+| enabled| Boolean | Określa, czy zbiór kategorii metryk lub dzienników jest włączona dla tego zasobu|
 | zasadach retentionPolicy.| Typ złożony| W tym artykule opisano zasady przechowywania dla metryk lub dzienników kategorii. Używane dla tylko opcję konta magazynu.|
 | dni| Int| Liczba dni przechowywania metryk lub dzienników. Wartość 0 zachowuje dzienniki na czas nieokreślony. Używane dla tylko opcję konta magazynu. |
 

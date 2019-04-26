@@ -15,11 +15,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: cb414abcbbf2db7b7cd6a3d724e50010beeef647
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275739"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60318419"
 ---
 # <a name="how-to-use-perfinsights"></a>Korzystanie z narzędzia PerfInsights
 
@@ -132,15 +132,15 @@ Rejestruje informacje o maszynie Wirtualnej Windows, dyski lub konfigurację pul
 
 Działa to oparty na regułach aparat w tle, aby zbierać dane i diagnozować problemy z wydajnością ciągły. Obecnie obsługiwane są następujące reguły:
 
-- Reguła HighCpuUsage: wykrywa wysokiej okresów użycia Procesora i przedstawia najwięcej użycia procesora CPU w tych okresach.
-- Reguła HighDiskUsage: wykrywa okresów użycia dysku na dyskach fizycznych i przedstawiono najważniejsze dysku konsumentów użycia tych okresach.
+- Reguła HighCpuUsage: Wykrywa wysokiej okresów użycia Procesora i przedstawia najwięcej użycia procesora CPU w tych okresach.
+- Reguła HighDiskUsage: Wykrywa okresów użycia dysku na dyskach fizycznych i przedstawiono najważniejsze dysku konsumentów użycia tych okresach.
 - Reguła HighResolutionDiskMetric: Pokazuje operacje We/Wy, przepustowości i operacji We/Wy metryki czas oczekiwania na 50 MS dla każdego dysku fizycznego. Ułatwia szybkie identyfikowanie dysku ograniczania okresów.
-- Reguła HighMemoryUsage: wykrywa okresów użycia dużą ilość pamięci i przedstawiono najważniejsze pamięci konsumentów użycia tych okresach.
+- Reguła HighMemoryUsage: Wykrywa okresów użycia dużą ilość pamięci i przedstawiono najważniejsze pamięci konsumentów użycia tych okresach.
 
 > [!NOTE] 
 > Obecnie obsługiwane są wersje Windows, które obejmują .NET Framework 4.5 lub nowszy.
 
-### <a name="performance-counter-trace-"></a>Śledzenia licznika wydajności (\*\*)
+### <a name="performance-counter-trace-"></a>Śledzenia licznika wydajności (*)
 
 Gromadzi informacje o następujących liczników wydajności:
 
@@ -151,12 +151,12 @@ Gromadzi informacje o następujących liczników wydajności:
 #### <a name="for-sql-server-instances"></a>Dla wystąpienia programu SQL Server
 - Menedżera serwera: buforów \SQL \SQLServer:Resource puli statystyki i \SQLServer:SQL Statistics\
 - \SQLServer:Locks, \SQLServer:General, statystyki
-- Metody \SQLServer:Access
+- \SQLServer:Access Methods
 
 #### <a name="for-azure-files"></a>Dla usługi Azure Files
 Udziały klient \SMB
 
-### <a name="diskspd-benchmark-trace-"></a>Śledzenie testów porównawczych narzędzia Diskspd (\*\*\*)
+### <a name="diskspd-benchmark-trace-"></a>Śledzenie testów porównawczych narzędzia Diskspd (*)
 Testy obciążenia We/Wy narzędzia Diskspd ([zapisu]. dysk systemu operacyjnego i dysków puli [odczytu/zapisu])
 
 ## <a name="run-the-perfinsights-tool-on-your-vm"></a>Uruchom narzędzie program PerfInsights na maszynie Wirtualnej
@@ -167,7 +167,7 @@ Testy obciążenia We/Wy narzędzia Diskspd ([zapisu]. dysk systemu operacyjnego
 
 -  To narzędzie należy uruchomić na maszynie Wirtualnej, która ma problem z wydajnością. 
 
--  Obsługiwane są następujące systemy operacyjne: Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 i Windows Server 2016; Windows 8.1 i Windows 10.
+-  Obsługiwane są następujące systemy operacyjne: Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 i systemu Windows Server 2016; Windows 8.1 i Windows 10.
 
 #### <a name="possible-problems-when-you-run-the-tool-on-production-vms"></a>Możliwe problemy po uruchomieniu narzędzia na maszynach wirtualnych w środowisku produkcyjnym
 

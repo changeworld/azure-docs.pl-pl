@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: raynew
 ms.openlocfilehash: 8df587db7655e2aafd876d80581f3296c8c99fbf
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58004099"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60201565"
 ---
 # <a name="dependency-visualization"></a>Wizualizacja zależności
 
@@ -20,7 +20,7 @@ ms.locfileid: "58004099"
 > [!NOTE]
 > Funkcja wizualizacji zależności nie jest dostępna na platformie Azure Government.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Wizualizacja zależności w usłudze Azure Migrate służy do tworzenia grup o wysokim poziomie pewności dla oceny migracji. Za pomocą wizualizacji zależności, można wyświetlać sieci zależności maszyn i zidentyfikować powiązane maszyny, które muszą być migrowane razem na platformie Azure. Ta funkcja jest przydatne w scenariuszach, w której nie jesteś świadomość maszyn, które stanowią aplikacji i muszą być migrowane razem na platformie Azure.
 

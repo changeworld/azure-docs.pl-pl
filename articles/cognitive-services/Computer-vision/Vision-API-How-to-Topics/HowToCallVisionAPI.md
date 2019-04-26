@@ -12,11 +12,11 @@ ms.date: 03/21/2019
 ms.author: kefre
 ms.custom: seodec18
 ms.openlocfilehash: 0e2767660edf2a9dbcb8617b07a6b9f71fedb743
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011247"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60202874"
 ---
 # <a name="example-how-to-call-the-computer-vision-api"></a>Przykład: jak wywoływać interfejs API przetwarzania obrazów
 
@@ -164,7 +164,7 @@ Oto przykład:
 }
 ```
 
-Pole | Typ | Zawartość
+Pole | Type | Zawartość
 ------|------|------|
 Tagi  | `object` | Obiekt najwyższego poziomu dla tablicy tagów
 tags[].Name | `string`  | Słowo kluczowe z klasyfikatora tagów
@@ -226,7 +226,7 @@ W przypadku modeli specyficznych dla domeny używających opcji drugiej (analiza
 
 Pole kategorii jest listą co najmniej jednej z [86 kategorii](../Category-Taxonomy.md) w oryginalnej taksonomii. Należy również pamiętać, że kategorie zakończone podkreśleniem będą pasować do tej kategorii oraz jej elementów podrzędnych (na przykład people_ i people_group, dla modelu celebrities).
 
-Pole   | Typ  | Zawartość
+Pole   | Type  | Zawartość
 ------|------|------|
 categories | `object`   | Obiekt najwyższego poziomu
 categories[].name    | `string` | Nazwa z taksonomii obejmującej 86 kategorii

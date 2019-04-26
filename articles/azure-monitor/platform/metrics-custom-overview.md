@@ -9,11 +9,11 @@ ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: 8602027431fdf2c1378834419977606bab5c6921
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287268"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60254059"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Metryki niestandardowe w usłudze Azure Monitor
 
@@ -38,7 +38,7 @@ W celu uwierzytelnienia żądania usługi Azure Monitor sprawdza poprawność to
 > [!NOTE]  
 > W przypadku żądania tokenu usługi Azure AD, aby emitować metryki niestandardowe, upewnij się, że odbiorców lub token jest wymagany dla zasobów https://monitoring.azure.com/. Pamiętaj o uwzględnieniu "/".
 
-### <a name="subject"></a>Podmiot
+### <a name="subject"></a>Subject
 Ta właściwość umożliwia przechwytywanie identyfikator zasobu platformy Azure, w którym jest zgłaszany Metryka niestandardowa. Te informacje będą zakodowane w adresie URL wywołanie interfejsu API. Każdy interfejs API może przesłać tylko wartości metryk do jednego zasobu platformy Azure.
 
 > [!NOTE]  
@@ -181,7 +181,7 @@ W publicznej wersji zapoznawczej umożliwia publikowanie metryk niestandardowych
 ## <a name="quotas-and-limits"></a>Limity przydziału i ograniczenia
 Usługa Azure Monitor nakłada następujące limity użycia dla metryk niestandardowych:
 
-|Kategoria|Limit|
+|Category|Limit|
 |---|---|
 |Czas aktywności serii/subskrypcje/region|50,000|
 |Klucze wymiarów na metrykę|10|

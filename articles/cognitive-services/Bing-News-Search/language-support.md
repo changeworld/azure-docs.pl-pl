@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: v-gedod
 ms.openlocfilehash: f94ebb9b46ade0c03f65fdeb78bc7be96794a3d2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55866751"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60201418"
 ---
 # <a name="language-and-region-support-for-the-bing-news-search-api"></a>Obsługa języka i regionu dla interfejsu API wyszukiwania wiadomości Bing
 
@@ -39,7 +39,7 @@ Kodów listę kraj/region, który można określić w `cc` parametr zapytania, z
 |Niemcy|Niemiecki|de-DE.|
 |Australia|Polski|EN-AU|
 |Kanada|Polski|EN-CA|
-|Wielka Brytania|Polski|en-GB|
+|Zjednoczone Królestwo|Polski|en-GB|
 |Indonezja|Polski|EN-ID|
 |Irlandia|Polski|EN-IE|
 |Indie|Polski|EN-IN|
@@ -85,7 +85,7 @@ Kodów listę kraj/region, który można określić w `cc` parametr zapytania, z
 |Dania|Duński|Akcelerator deweloperski w wersji DK|
 |Niemcy|Niemiecki|de-DE.|
 |Australia|Polski|EN-AU|
-|Wielka Brytania|Polski|en-GB|
+|Zjednoczone Królestwo|Polski|en-GB|
 |Stany Zjednoczone|Polski|en-US|
 |Polski|Ogólne|EN-WW|
 |Chile|Hiszpański|ES-CL|
@@ -107,7 +107,7 @@ Kodów listę kraj/region, który można określić w `cc` parametr zapytania, z
 |---------------------|--------------|-----------------|
 |Niemcy|Niemiecki|de-DE.|
 |Australia|Polski|EN-AU|
-|Wielka Brytania|Polski|en-GB|
+|Zjednoczone Królestwo|Polski|en-GB|
 |Stany Zjednoczone|Polski|en-US|
 |Kanada|Polski|EN-CA|
 |Indie|Polski|EN-IN|
@@ -158,7 +158,7 @@ Poniżej przedstawiono kodów krajów/regionów, które mogą być określone w 
 |Szwajcaria|CH|  
 |Tajwan|TW|  
 |Turcja|TR|  
-|Wielka Brytania|GB|  
+|Zjednoczone Królestwo|GB|  
 |Stany Zjednoczone|USA|
 
 ## <a name="next-steps"></a>Kolejne kroki

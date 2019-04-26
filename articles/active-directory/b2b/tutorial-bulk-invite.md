@@ -11,11 +11,11 @@ author: msmimart
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3a30281012d28489a40e3366585164628d87c220
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58009150"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60355288"
 ---
 # <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users"></a>Samouczek: zbiorcze zapraszanie użytkowników współpracy B2B w usłudze Azure AD
 

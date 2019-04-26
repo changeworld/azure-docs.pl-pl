@@ -12,11 +12,11 @@ ms.author: kefre
 ms.custom: seodec18
 ms.date: 09/21/2017
 ms.openlocfilehash: 4f6af31ba6b04ddbecb7cb42cebe345b6af720ac
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55868093"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60201435"
 ---
 # <a name="tutorial-computer-vision-api-java"></a>Samouczek: interfejs API przetwarzania obrazów języka Java
 
@@ -846,7 +846,7 @@ Skopiuj i wklej następującą metodę **HandwritingImage** poniżej metody **ha
 
 Aby uruchomić aplikację, naciśnij klawisz **F6**. W polu **Subscription Key** (Klucz subskrypcji) umieść swój klucz subskrypcji, a następnie sprawdź, czy w polu **Subscription Region** (Region subskrypcji) korzystasz z poprawnego regionu. Kliknij kartę **Read Handwritten Text** (Odczytywanie tekstu odręcznego), wprowadź adres URL do obrazu tekstu odręcznego, a następnie kliknij przycisk **Read Image** (Odczytaj obraz), aby przeprowadzić analizę obrazu i wyświetlić jej wynik.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Computer Vision API C&#35; Tutorial (Samouczek dla języka C# dotyczący interfejsu API przetwarzania obrazów)](CSharpTutorial.md)
 - [Computer Vision API Python Tutorial (Samouczek dla języka Python dotyczący interfejsu API przetwarzania obrazów)](PythonTutorial.md)

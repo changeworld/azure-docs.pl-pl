@@ -2,23 +2,19 @@
 title: Uwierzytelnianie, żądania i odpowiedzi
 description: Uwierzytelniania AD za pomocą usługi Key Vault
 services: key-vault
-documentationcenter: ''
 author: msmbaldwin
 manager: barbkess
 tags: azure-resource-manager
-ms.assetid: 4c321939-8a5b-42ca-83c4-2f5f647ca13e
 ms.service: key-vault
-ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 7ca486768cf56059328801b1b4b1036bb8aeece8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58081784"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60201350"
 ---
 # <a name="authentication-requests-and-responses"></a>Uwierzytelnianie, żądania i odpowiedzi
 

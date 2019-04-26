@@ -12,11 +12,11 @@ ms.topic: quickstart
 ms.date: 01/17/2019
 ms.author: diberry
 ms.openlocfilehash: e2a8bed2b07934bf178ea338e074ec8e239ee646
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874842"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60196402"
 ---
 # <a name="quickstart-change-model-using-nodejs"></a>Szybki start: zmiana modelu przy użyciu środowiska Node.js
 
@@ -92,6 +92,6 @@ W tym wierszu polecenia wyświetlane są wyniki wywołania interfejsu API dodawa
 
 Po ukończeniu przewodnika Szybki start usuń wszystkie pliki utworzone w tym przewodniku Szybki start. 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 > [!div class="nextstepaction"] 
 > [Programowe tworzenie aplikacji LUIS](luis-tutorial-node-import-utterances-csv.md)

@@ -14,11 +14,11 @@ ms.topic: overview
 ms.date: 05/21/2018
 ms.author: spelluru
 ms.openlocfilehash: 964f5624a3a588a1520a08365c5fa9c783114e48
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958834"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60303744"
 ---
 # <a name="introduction-to-classroom-labs"></a>Wprowadzenie do laboratoriów na potrzeby zajęć
 Usługa Azure Lab Services umożliwia szybkie skonfigurowanie środowiska laboratorium na potrzeby zajęć w chmurze. Nauczyciel tworzy laboratorium na potrzeby zajęć, aprowizuje maszyny wirtualne z systemem Windows lub Linux, instaluje niezbędne oprogramowanie i narzędzia wymagane podczas zajęć oraz udostępnia je studentom. Studenci na zajęciach łączą się z maszynami wirtualnymi w laboratorium, a następnie używają ich na potrzeby projektów, przydziałów i ćwiczeń wykonywanych na zajęciach. 
@@ -34,7 +34,7 @@ Użytkownicy, którzy są zapraszani do Twojego środowiska laboratoryjnego, uzy
 ## <a name="cost-optimization-and-tracking"></a>Optymalizacja i śledzenie kosztów  
 Ogranicz zwiększanie budżetu, kontrolując dokładną liczbę godzin, przez które użytkownicy laboratorium mogą używać maszyn wirtualnych. Skonfiguruj harmonogramy w środowisku laboratoryjnym, aby pozwolić użytkownikom używać maszyn wirtualnych tylko w wyznaczonym czasie, lub skonfiguruj cykliczne czasy automatycznego zamykania i uruchamiania. Śledź użycie poszczególnych użytkowników i ustaw limity.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Rozpocznij pracę od skonfigurowania konta laboratorium wymaganego do utworzenia laboratorium na potrzeby zajęć przy użyciu usługi Azure Lab Services:
 
 - [Konfigurowanie konta laboratorium](tutorial-setup-lab-account.md)

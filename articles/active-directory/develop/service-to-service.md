@@ -7,22 +7,22 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.subservice: develop
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.author: celested
+origin.date: 09/24/2018
+ms.date: 11/07/2018
+ms.author: v-junlch
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
 ms.openlocfilehash: e0ced89ce97d5f22270d9968fdeb0ddb3fad1e4e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194992"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60251996"
 ---
 # <a name="service-to-service-apps"></a>Aplikacje do usługi
 
@@ -63,8 +63,8 @@ Demon lub aplikację serwera pod kątem scenariuszy interfejsu Web API można zn
 
 ## <a name="app-registration"></a>Rejestracja aplikacji
 
-* Pojedynczej dzierżawy - tożsamość aplikacji i delegowany użytkownik przypadków tożsamości demona lub serwera aplikacji musi być zarejestrowana w tym samym katalogu w usłudze Azure AD. Interfejs API sieci web można skonfigurować do udostępnienia zestaw uprawnień, które są używane do ograniczenia demona lub serwera dostępu do jego zasobów. Jeśli jest używany typ tożsamości delegowany użytkownik aplikacji serwera musi wybierz żądane uprawnienia z menu rozwijanego "Uprawnienia na inne aplikacje" w witrynie Azure portal. Ten krok nie jest wymagane, jeśli jest używany typ tożsamości aplikacji.
-* Wielodostępne — demon lub serwera aplikacji i jest skonfigurowany do wskazania uprawnienia, które wymaga, aby działała prawidłowo. Ta lista wymaganych uprawnień jest wyświetlany w oknie dialogowym po użytkownik lub administrator w katalogu docelowym powoduje zgody aplikacji, która udostępnia je do swojej organizacji. Niektóre aplikacje wymagają tylko uprawnienia na poziomie użytkownika, które każdy użytkownik w organizacji mogą wyrazić zgodę na. Inne aplikacje wymagają uprawnień na poziomie administratora, które użytkownik w organizacji nie może wyrażać zgody na. Tylko administrator katalogu mogą wyrazić zgodę, do aplikacji, które wymagają tego poziomu uprawnień. Gdy użytkownik lub administrator wyraża zgodę, oba interfejsy API sieci web są zarejestrowane w usłudze swojego katalogu.
+- Pojedynczej dzierżawy - tożsamość aplikacji i delegowany użytkownik przypadków tożsamości demona lub serwera aplikacji musi być zarejestrowana w tym samym katalogu w usłudze Azure AD. Interfejs API sieci web można skonfigurować do udostępnienia zestaw uprawnień, które są używane do ograniczenia demona lub serwera dostępu do jego zasobów. Jeśli jest używany typ tożsamości delegowany użytkownik aplikacji serwera musi wybierz żądane uprawnienia z menu rozwijanego "Uprawnienia na inne aplikacje" w witrynie Azure portal. Ten krok nie jest wymagane, jeśli jest używany typ tożsamości aplikacji.
+- Wielodostępne — demon lub serwera aplikacji i jest skonfigurowany do wskazania uprawnienia, które wymaga, aby działała prawidłowo. Ta lista wymaganych uprawnień jest wyświetlany w oknie dialogowym po użytkownik lub administrator w katalogu docelowym powoduje zgody aplikacji, która udostępnia je do swojej organizacji. Niektóre aplikacje wymagają tylko uprawnienia na poziomie użytkownika, które każdy użytkownik w organizacji mogą wyrazić zgodę na. Inne aplikacje wymagają uprawnień na poziomie administratora, które użytkownik w organizacji nie może wyrażać zgody na. Tylko administrator katalogu mogą wyrazić zgodę, do aplikacji, które wymagają tego poziomu uprawnień. Gdy użytkownik lub administrator wyraża zgodę, oba interfejsy API sieci web są zarejestrowane w usłudze swojego katalogu.
 
 ## <a name="token-expiration"></a>Wygaśnięcie tokenu
 
@@ -74,3 +74,4 @@ Podczas pierwszej aplikacji używa jego kod autoryzacji można uzyskać tokenu d
 
 - Dowiedz się więcej o innych [typów aplikacji i scenariuszy](app-types.md)
 - Dowiedz się więcej o usłudze Azure AD [podstawowe informacje o uwierzytelnianiu](authentication-scenarios.md)
+

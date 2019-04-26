@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/10/2019
+ms.date: 04/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a0911588141552e616e8555380b14c910225840
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 5dd8af0ed016dca5ab9c14b117a2673ca214e08c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59501386"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60268922"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft"></a>Samouczek: Integracja usługi Azure Active Directory z programem JIRA SAML SSO by Microsoft
 
@@ -37,7 +37,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 ## <a name="description"></a>Opis
 
-Użyj konta usługi Microsoft Azure Active Directory w połączeniu z serwerem Atlassian JIRA, aby umożliwić logowanie jednokrotne. W ten sposób wszystkich użytkowników w Twojej organizacji można użyć poświadczeń usługi Azure AD do logowania do aplikacji w usłudze JIRA. Ta wtyczka używa protokołu SAML 2.0 na potrzeby federacji.
+Użyj konta usługi Microsoft Azure Active Directory w połączeniu z serwerem Atlassian JIRA, aby umożliwić logowanie jednokrotne. W ten sposób wszystkich użytkowników w swojej organizacji można użyć poświadczeń usługi Azure AD do logowania do aplikacji w usłudze JIRA. Ta wtyczka używa protokołu SAML 2.0 na potrzeby federacji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -67,7 +67,7 @@ Aby przetestować czynności opisane w tym samouczku, należy postępować zgodn
 * Usługa JIRA obsługuje także wersję 5.2. Aby uzyskać więcej szczegółowych informacji, kliknij następujący link: [logowanie jednokrotne usługi Microsoft Azure Active Directory dla usługi JIRA 5.2](jira52microsoft-tutorial.md)
 
 > [!NOTE]
-> Należy pamiętać, że JIRA obsługuje również Linux Ubuntu 16.04 wersji
+> Należy pamiętać, że nasze wtyczki programu JIRA, działa również w Ubuntu 16.04 wersji
 
 ## <a name="scenario-description"></a>Opis scenariusza
 

@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b42a6b667a8708aeb2edeb0c80a5ab747b6c60a9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57891141"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60246168"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Synchronizacja programu Azure AD Connect: Opis konfiguracji domyślnej
 W tym artykule wyjaśniono reguły konfiguracji out-of-box. Dokumentują reguł i wpływie na te reguły konfiguracji. On również przeprowadzi Cię przez domyślną konfigurację synchronizacji programu Azure AD Connect. Celem jest, że czytnik rozumie, jak działa model konfiguracji o nazwie aprowizacja deklaratywna w przykładzie rzeczywistych. W tym artykule założono, że masz już zainstalowany i Konfigurowanie synchronizacji usługi Azure AD Connect przy użyciu Kreatora instalacji.

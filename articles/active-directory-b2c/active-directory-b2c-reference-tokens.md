@@ -3,7 +3,7 @@ title: Przegląd tokenów — Azure Active Directory B2C | Dokumentacja firmy Mi
 description: Więcej informacji na temat tokeny używane w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
@@ -11,11 +11,11 @@ ms.date: 04/16/2019
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 11361bc6ab75e873e1b4081dcfc6492abc093b54
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680268"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60316939"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Przegląd tokenów w usłudze Azure Active Directory B2C
 
@@ -61,7 +61,7 @@ Poniższa tabela zawiera listę oświadczeń można oczekiwać w tokenach identy
 | Kod skrótu | `c_hash` | `SGCPtt01wxwfgnYZy2VJtQ` | Skrót kodu zawarte w tokenie identyfikator tylko wtedy, gdy token wystawiony wraz z kodu autoryzacji OAuth 2.0. Skrót kod może służyć do weryfikowania autentyczności kodu autoryzacji. Aby uzyskać więcej informacji na temat przeprowadzania tej weryfikacji, zobacz [specyfikacją z OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html).  |
 | Skrót tokenu dostępu | `at_hash` | `SGCPtt01wxwfgnYZy2VJtQ` | Dostęp do tokenu skrót zawarte w tokenie identyfikator tylko wtedy, gdy token wystawiony wraz z tokenu dostępu OAuth 2.0. Skrót tokenu dostępu może służyć do weryfikowania autentyczności tokenu dostępu. Aby uzyskać więcej informacji na temat przeprowadzania tej weryfikacji, zobacz [specyfikacją z OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html)  |
 | Identyfikator jednorazowy | `nonce` | `12345` | Identyfikator jednorazowy jest strategii umożliwia ograniczenie liczby ataków powtarzania tokenu. Aplikację można określić identyfikatora jednorazowego w żądaniu autoryzacji przy użyciu `nonce` parametr zapytania. Wartość Podaj w żądaniu jest emitowane w niezmienionej postaci w `nonce` oświadczenia tylko tokenu Identyfikatora. To oświadczenie umożliwia aplikacji można zweryfikować wartości względem wartości określonej w żądaniu. Aplikacja powinna przeprowadzić tej weryfikacji w procesie weryfikacji tokenu Identyfikatora. |
-| Podmiot | `sub` | `884408e1-2918-4cz0-b12d-3aa027d7563b` | Podmiot zabezpieczeń o tym, które token określa informacje, takie jak użytkownik aplikacji. Ta wartość jest niezmienny i nie może być ponownie przypisywany ani ponownie. Może służyć do sprawdzania autoryzacji bezpiecznie, np. gdy token jest używany do uzyskania dostępu do zasobu. Domyślnie roszczenie podmiotu jest wypełniana identyfikator obiektu użytkownika w katalogu. |
+| Subject | `sub` | `884408e1-2918-4cz0-b12d-3aa027d7563b` | Podmiot zabezpieczeń o tym, które token określa informacje, takie jak użytkownik aplikacji. Ta wartość jest niezmienny i nie może być ponownie przypisywany ani ponownie. Może służyć do sprawdzania autoryzacji bezpiecznie, np. gdy token jest używany do uzyskania dostępu do zasobu. Domyślnie roszczenie podmiotu jest wypełniana identyfikator obiektu użytkownika w katalogu. |
 | Odwołania do klasy kontekstu uwierzytelniania | `acr` | Nie dotyczy | Używany tylko w przypadku starszych zasad. |
 | Framework zasady zaufania | `tfp` | `b2c_1_signupsignin1` | Nazwa zasad, które zostało użyte do uzyskania tokenu Identyfikatora. |
 | Czas uwierzytelniania | `auth_time` | `1438535543` | Czas, jaką wprowadzone przez użytkownika ostatniej poświadczeń, reprezentowany w czasie uniksowym. |

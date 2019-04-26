@@ -17,11 +17,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: f4d733e29d2ba8213e1832f2c604b726283ab3e1
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50417399"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60318701"
 ---
 # <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>Rozwiązywanie problemów z szczegółowe komunikaty o błędach protokołu RDP do maszyny Wirtualnej z systemem Windows na platformie Azure
 Otrzymasz komunikat o błędzie, gdy za pomocą programu Podłączanie pulpitu zdalnego z maszyną wirtualną (VM) Windows na platformie Azure. Ten artykuł szczegółowo opisuje niektóre typowe komunikaty o błędach napotkano oraz rozwiązywanie problemów, aby je rozwiązać. Jeśli występują problemy z nawiązywaniem połączenia z maszyną wirtualną przy użyciu protokołu RDP ale czy nie występują określony komunikat o błędzie, zobacz [przewodnik rozwiązywania problemów dla pulpitu zdalnego](troubleshoot-rdp-connection.md).
@@ -37,7 +37,7 @@ Aby uzyskać informacje na określone komunikaty o błędach zobacz następując
 <a id="rdplicense"></a>
 
 ## <a name="the-remote-session-was-disconnected-because-there-are-no-remote-desktop-license-servers-available-to-provide-a-license"></a>Sesja zdalna została rozłączona, ponieważ nie zdalnego pulpitu dostępnych serwerów licencji mogą udostępnić licencję.
-Przyczyna: 120-dniowy okres prolongaty licencjonowania dla roli serwera usług pulpitu zdalnego wygasł i musisz zainstalować licencji.
+Przyczyna: 120-dniowy okres prolongaty licencjonowania dla roli serwera usług pulpitu zdalnego utracił ważność i należy zainstalować licencji.
 
 Jako obejście zapisać lokalną kopię pliku RDP z poziomu portalu, a następnie uruchom następujące polecenie w wierszu polecenia programu PowerShell do łączenia z. Ten krok powoduje wyłączenie licencjonowania dla właśnie tego połączenia:
 
@@ -68,9 +68,9 @@ Ma część adresu ten plik protokołu RDP:
 <a id="rdpauth"></a>
 
 ## <a name="an-authentication-error-has-occurred-the-local-security-authority-cannot-be-contacted"></a>Wystąpił błąd uwierzytelniania. Nie można skontaktować się z urzędem zabezpieczeń lokalnych.
-Przyczyna: Docelowej maszyny Wirtualnej nie może zlokalizować urzędu zabezpieczeń w część nazwy użytkownika poświadczeń.
+Przyczyna: Docelowa maszyna wirtualna nie może zlokalizować urzędu zabezpieczeń w część nazwy użytkownika poświadczeń.
 
-Po swoją nazwę użytkownika w postaci *SecurityAuthority*\\*UserName* (przykład: CORP\User1), *SecurityAuthority* fragment jest albo maszyny Wirtualnej Nazwa komputera (dla urzędu zabezpieczeń lokalnych) lub nazwę domeny usługi Active Directory.
+Gdy Twoja nazwa użytkownika jest w formie *SecurityAuthority*\\*UserName* (przykład: CORP\User1) *SecurityAuthority* fragment to nazwa komputera maszyny Wirtualnej (dla urzędu zabezpieczeń lokalnych) lub nazwę domeny usługi Active Directory.
 
 Możliwe rozwiązania:
 
@@ -81,7 +81,7 @@ Możliwe rozwiązania:
 <a id="wincred"></a>
 
 ## <a name="windows-security-error-your-credentials-did-not-work"></a>Błąd zabezpieczeń Windows: Twoje poświadczenia nie działają.
-Przyczyna: Docelowej maszyny Wirtualnej nie można zweryfikować nazwę konta i hasło.
+Przyczyna: Docelowa maszyna wirtualna nie może zweryfikować swojej nazwy konta i hasła.
 
 Komputer z systemem Windows można zweryfikować poświadczeń konta lokalnego lub konta domeny.
 
@@ -99,7 +99,7 @@ Jeśli musisz zmienić hasło konta administratora lokalnego, zobacz [jak zreset
 <a id="rdpconnect"></a>
 
 ## <a name="this-computer-cant-connect-to-the-remote-computer"></a>Ten komputer nie może połączyć się z komputerem zdalnym.
-Przyczyna: Konto które służy do łączenia nie ma usług pulpitu zdalnego logowania praw.
+Przyczyna: Konta, które służy do łączenia nie ma praw logowania usług pulpitu zdalnego.
 
 Każdy komputer Windows ma pulpitu zdalnego użytkownicy grupy lokalnej, która zawiera konta i grupy, które można zdalnie Zaloguj się do niego. Członkowie grupy Administratorzy lokalni również mają dostęp, nawet jeśli te konta nie są wymienione w lokalnej grupie Użytkownicy pulpitu zdalnego. W przypadku komputerów przyłączonych do domeny do lokalnej grupy administratorów zawiera także Administratorzy domeny w domenie.
 

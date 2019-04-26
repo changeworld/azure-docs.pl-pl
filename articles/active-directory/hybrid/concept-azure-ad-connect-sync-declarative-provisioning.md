@@ -17,16 +17,16 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 543c1a6706f794b81c4f93fc6fff3a61ed3fb9e3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171829"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60246334"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Synchronizacja programu Azure AD Connect: Omówienie aprowizacji deklaratywnej
 W tym temacie opisano model konfiguracji w programie Azure AD Connect. Model jest wywoływana, Aprowizacja Deklaratywna i umożliwia zapewnienie zmiany z łatwością konfiguracji. Wiele rzeczy, które opisano w tym temacie są zaawansowane i nie jest wymagana dla większości scenariuszy.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Aprowizacja deklaratywna są przetwarzane obiekty z katalogu źródłowego połączonych i określa, jak obiektów i atrybuty powinny zostać przekształcone ze źródła do obiektu docelowego. Obiekt są przetwarzane w potoku synchronizacji i potoku jest taka sama dla reguły ruchu przychodzącego i wychodzącego. Reguła ruchu przychodzącego obejmuje adresy od obszaru łącznika do środowiska metaverse, a następnie do obszaru łącznika regułę dla ruchu wychodzącego jest metaverse.
 
 ![Potok synchronizacji](./media/concept-azure-ad-connect-sync-declarative-provisioning/sync1.png)  

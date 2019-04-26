@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
 ms.openlocfilehash: 370da046e5a964d91b668ea80730b8d331065d29
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019966"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60322876"
 ---
 # <a name="copy-data-from-spark-using-azure-data-factory"></a>Kopiowanie danych z platformy Spark za pomocą usługi Azure Data Factory 
 
@@ -45,7 +45,7 @@ Następujące właściwości są obsługiwane przez usługę Spark połączone:
 | host | Nazwa hosta lub adres IP serwera usługi Spark  | Yes |
 | port | Port TCP używany serwer platformy Spark do nasłuchiwania połączeń klientów. Jeśli łączysz się Azure HDInsights, należy określić port ustawiony na 443. | Yes |
 | wartością servertype ustawioną | Typ serwera platformy Spark. <br/>Dozwolone wartości to: **SharkServer**, **SharkServer2**, **SparkThriftServer** | Nie |
-| thriftTransportProtocol | Protokół transportu do użycia w warstwie Thrift. <br/>Dozwolone wartości to: **Binarny**, **SASL**, **HTTP** | Nie |
+| thriftTransportProtocol | Protokół transportu do użycia w warstwie Thrift. <br/>Dozwolone wartości to: **Binary**, **SASL**, **HTTP** | Nie |
 | Element authenticationType | Metoda uwierzytelniania używany do uzyskiwania dostępu do serwera platformy Spark. <br/>Dozwolone wartości to: **Anonimowe**, **Username**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Yes |
 | nazwa użytkownika | Nazwa użytkownika, który umożliwia dostęp do serwera platformy Spark.  | Nie |
 | hasło | Hasło przypisana użytkownikowi. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |

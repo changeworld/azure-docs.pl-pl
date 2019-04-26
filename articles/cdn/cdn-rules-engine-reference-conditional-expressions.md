@@ -1,6 +1,6 @@
 ---
-title: Zasady usługi Azure CDN aparat wyrażeń warunkowych | Dokumentacja firmy Microsoft
-description: Dokumentacja referencyjna dla usługi Azure CDN zasady warunków dopasowania aparatu i funkcje.
+title: Wyrażenia warunkowe aparatu reguł usługi Azure CDN | Dokumentacja firmy Microsoft
+description: Dokumentacja dotycząca usługi Azure CDN zasady warunki dopasowań aparatu i funkcje.
 services: cdn
 documentationcenter: ''
 author: Lichard
@@ -14,32 +14,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: rli
-ms.openlocfilehash: 57e56c38e003cb83dcf44f455c4451d159db8a59
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 73c41b754c0aca5ddb1a49fcd2794aa41b2fa705
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23842930"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60324207"
 ---
-# <a name="azure-cdn-rules-engine-conditional-expressions"></a>Zasady usługi Azure CDN aparat wyrażeń warunkowych
-Ten temat zawiera szczegółowe opisy wyrażeń warunkowych dla usługi Azure sieci dostarczania zawartości (CDN) [aparatu reguł](cdn-rules-engine.md).
+# <a name="azure-cdn-rules-engine-conditional-expressions"></a>Wyrażenia warunkowe aparatu reguł usługi Azure CDN
+W tym temacie przedstawiono szczegółowe opisy wyrażeń warunkowych dla usługi Azure Content Delivery Network (CDN) [aparat reguł](cdn-rules-engine.md).
 
 Pierwsza część reguły jest wyrażenia warunkowego.
 
 Wyrażenie warunkowe | Opis
 -----------------------|-------------
-JEŚLI | Jeśli wyrażenie jest zawsze część pierwszą instrukcją w regule. Podobnie jak wszystkie inne wyrażenia warunkowego tej instrukcji IF musi być skojarzony z dopasowania. Jeśli są zdefiniowane nie dodatkowe wyrażenia warunkowego, tego dopasowania Określa kryterium, które muszą zostać spełnione przed zestaw funkcji można stosować na żądanie.
-A JEŚLI | Wyrażenie IF i mogą być dodane tylko po następujących typów wyrażenia warunkowe: IF, i jeśli. Wskazuje on, istnieje inny warunek, które muszą zostać spełnione dla początkowego instrukcji IF.
-ELSE IF| Wyrażenia ELSE IF określa warunek alternatywną, na którym muszą zostać spełnione przed dokonaniem zestaw funkcji specyficznych dla tej instrukcji ELSE IF. Obecność instrukcji ELSE IF wskazuje koniec poprzednią instrukcję. Wyrażenie warunkowe tylko może być umieszczany po instrukcji ELSE IF innej instrukcji ELSE IF. Oznacza to, że instrukcji ELSE IF tylko można użyć do określenia jednego warunku dodatkowe, który ma zostać spełnione.
+IF | Jeśli wyrażenie jest zawsze część pierwsza instrukcja w regule. Podobnie jak wszystkie inne wyrażenia warunkowego tej instrukcji IF musi być skojarzony z dopasowania. Jeśli nie dodatkowe wyrażenia warunkowe są zdefiniowane, to dopasowania Określa kryterium, które muszą zostać spełnione przed zestawem funkcji mogą być stosowane do żądania.
+JEŚLI | Wyrażenie IF i mogą być dodawane tylko po następujące typy wyrażenia warunkowe: IF, gdy. Oznacza, że istnieje inny warunek, który muszą być spełnione dla początkowego instrukcji IF.
+ELSE IF| Wyrażenie ELSE IF określa warunek alternatywny, które muszą zostać spełnione przed rozpoczęciem zbiór funkcji przeznaczonych dla tej instrukcji ELSE IF. Obecność instrukcji ELSE IF wskazuje koniec poprzednią instrukcję. Tylko warunkowe wyrażenie, które mogą być umieszczone po instrukcji ELSE IF jest inna instrukcja ELSE IF. Oznacza to, że instrukcji ELSE IF tylko służy do określenia pojedynczego dodatkowe warunku, który ma zostać spełnione.
 
-**Przykład**: ![CDN zgodne z warunkiem](./media/cdn-rules-engine-reference/cdn-rules-engine-conditional-expression.png)
+**Przykład**: ![Warunek dopasowania sieci CDN](./media/cdn-rules-engine-reference/cdn-rules-engine-conditional-expression.png)
 
  > [!TIP]
-   > Kolejne reguły mogą zastąpić akcje określone przez poprzednie reguły. Przykład: Reguła wychwytywania chroni wszystkie żądania przy użyciu uwierzytelniania opartego na tokenie. Inną regułę można tworzyć bezpośrednio poniżej, aby utworzyć wyjątek dla niektórych typów żądań.
+   > Kolejne reguły mogą zastąpić akcji określonych przez poprzednią regułę. Przykład: Regułę przechwytującą cały zabezpiecza wszystkie żądania za pośrednictwem uwierzytelniania opartego na tokenach. Można utworzyć inną regułę bezpośrednio poniżej, aby utworzyć wyjątek dla niektórych typów żądań.
 
-### <a name="next-steps"></a>Następne kroki
+### <a name="next-steps"></a>Kolejne kroki
 * [Omówienie usługi Azure CDN](cdn-overview.md)
-* [Odwołanie do aparatu reguł](cdn-rules-engine-reference.md)
-* [Warunki uzgadniania aparatu reguł](cdn-rules-engine-reference-match-conditions.md)
+* [Dokumentacja aparatu reguł](cdn-rules-engine-reference.md)
+* [Warunki dopasowań aparatu reguł](cdn-rules-engine-reference-match-conditions.md)
 * [Funkcje aparatu reguł](cdn-rules-engine-reference-features.md)
 * [Zastępowanie domyślnego zachowania HTTP przy użyciu aparatu reguł](cdn-rules-engine.md)

@@ -5,18 +5,18 @@ services: billing
 author: dhirajgandhi
 manager: dhgandhi
 ms.author: banders
-ms.date: 03/12/2018
+ms.date: 03/12/2019
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: ecbdf182fe2da7413e6d27ef5775dbaa7ad60806
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6bf61e2afd96e3923938ac4f815d34ae08f7c618
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59270187"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60371295"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Połącz z Identyfikatorem partnera do kont systemu Azure
 
@@ -57,29 +57,29 @@ Jeśli masz dostęp do zasobów przez klienta, użyć witryny Azure portal, prog
 1. Zainstaluj [AzureRM.ManagementPartner](https://www.powershellgallery.com/packages/AzureRM.ManagementPartner) modułu programu PowerShell.
 
 2. Zaloguj się do dzierżawy klienta przy użyciu konta użytkownika lub nazwy głównej usługi. Aby uzyskać więcej informacji, zobacz [Zaloguj się przy użyciu programu PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
- 
+
    ```azurepowershell-interactive
-    C:\> Connect-AzAccount -TenantId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX 
+    C:\> Connect-AzAccount -TenantId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
    ```
 
 3. Link do nowego identyfikatora partnera. Partner ten identyfikator jest [sieci Microsoft Partner Network](https://partner.microsoft.com/) identyfikator dla Twojej organizacji.
 
     ```azurepowershell-interactive
-    C:\> new-AzureRmManagementPartner -PartnerId 12345 
+    C:\> new-AzManagementPartner -PartnerId 12345
     ```
 
 #### <a name="get-the-linked-partner-id"></a>Pobierz identyfikator połączonej, partnera
 ```azurepowershell-interactive
-C:\> get-AzureRmManagementPartner 
+C:\> get-AzManagementPartner
 ```
 
 #### <a name="update-the-linked-partner-id"></a>Aktualizacja Identyfikatora połączonej, partnera
 ```azurepowershell-interactive
-C:\> Update-AzureRmManagementPartner -PartnerId 12345 
+C:\> Update-AzManagementPartner -PartnerId 12345
 ```
 #### <a name="delete-the-linked-partner-id"></a>Usuń identyfikator połączonej, partnera
 ```azurepowershell-interactive
-C:\> remove-AzureRmManagementPartner -PartnerId 12345 
+C:\> remove-AzManagementPartner -PartnerId 12345
 ```
 
 ### <a name="use-the-azure-cli-to-link-to-a-new-partner-id"></a>Użyj wiersza polecenia platformy Azure, aby połączyć nowy identyfikator partnera
@@ -87,13 +87,13 @@ C:\> remove-AzureRmManagementPartner -PartnerId 12345
 
     ```azurecli-interactive
     C:\ az extension add --name managementpartner
-    ``` 
+    ```
 
 2. Zaloguj się do dzierżawy klienta przy użyciu konta użytkownika lub nazwy głównej usługi. Aby uzyskać więcej informacji, zobacz [Zaloguj się przy użyciu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
 
     ```azurecli-interactive
     C:\ az login --tenant <tenant>
-    ``` 
+    ```
 
 3. Link do nowego identyfikatora partnera. Partner ten identyfikator jest [sieci Microsoft Partner Network](https://partner.microsoft.com/) identyfikator dla Twojej organizacji.
 
@@ -104,17 +104,17 @@ C:\> remove-AzureRmManagementPartner -PartnerId 12345
 #### <a name="get-the-linked-partner-id"></a>Pobierz identyfikator połączonej, partnera
 ```azurecli-interactive
 C:\ az managementpartner show
-``` 
+```
 
 #### <a name="update-the-linked-partner-id"></a>Aktualizacja Identyfikatora połączonej, partnera
 ```azurecli-interactive
 C:\ az managementpartner update --partner-id 12345
-``` 
+```
 
 #### <a name="delete-the-linked-partner-id"></a>Usuń identyfikator połączonej, partnera
 ```azurecli-interactive
 C:\ az managementpartner delete --partner-id 12345
-``` 
+```
 
 ## <a name="next-steps"></a>Kolejne kroki
 
@@ -136,12 +136,12 @@ Tak. Identyfikator partnera połączonego można można zmienić, dodać ani usu
 
 **Innych partnerów lub klientów edytować lub usunąć łącze, aby identyfikator partnera?**
 
-Łącze jest skojarzone na poziomie konta użytkownika. Tylko Edytuj lub Usuń łącze do identyfikatora partnera. Klienta i innymi partnerami, nie można zmienić link do identyfikatora partnera. 
+Łącze jest skojarzone na poziomie konta użytkownika. Tylko Edytuj lub Usuń łącze do identyfikatora partnera. Klienta i innymi partnerami, nie można zmienić link do identyfikatora partnera.
 
 
 **Identyfikator MPN, z którym należy użyć, jeśli Moja firma ma wiele?**
 
-Można użyć dowolnego prawidłowego Identyfikatora MPN, z wyjątkiem orgnization(v-org) usuwać identyfikator MPN. Większość partnerów wybrać identyfikator MPN dla lokalizacji geograficznej, w którym opiera się klienta lub usługi są dostarczane.
+Można użyć dowolnego prawidłowego Identyfikatora MPN, z wyjątkiem wirtualny organization(v-org) identyfikator MPN. Większość partnerów wybrać identyfikator MPN dla lokalizacji geograficznej, w którym opiera się klienta lub usługi są dostarczane.
 
 **Gdzie można znaleźć ich przychód raportowanie dla połączonych Partnerem?**
 
@@ -158,4 +158,3 @@ Nie widzisz klienta w raportach z następujących przyczyn
 **Połączenie z partnerem, identyfikator działa z usługą Azure Stack?**
 
 Tak, można połączyć z Partnerem usługi Azure Stack.
-

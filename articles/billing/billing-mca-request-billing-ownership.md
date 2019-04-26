@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
 ms.openlocfilehash: be8c7fcebca224196d9eac7d22387989b1bdfd46
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57890937"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60371963"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-users"></a>Pobierz rozliczeń własności subskrypcji platformy Azure od innych użytkowników
 
@@ -35,7 +35,7 @@ Ten artykuł dotyczy konta rozliczeniowego dla umowy klienta firmy Microsoft. [S
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
-2. Wyszukiwanie **Cost Management + rozliczenia**.
+2. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
 
    ![Zrzut ekranu pokazujący Azure portal Wyszukaj Zarządzanie kosztami i rozliczenia](./media/billing-mca-request-billing-ownership/billing-search-cost-management-billing.png)
 
@@ -44,7 +44,7 @@ Ten artykuł dotyczy konta rozliczeniowego dla umowy klienta firmy Microsoft. [S
 
 4. Wybierz **żądań przeniesienia** po stronie lewej dolnej.
 
-5. W górnej części strony, wybierz **Dodaj**.
+5. W górnej części strony wybierz pozycję **Dodaj**.
 
 6. Wprowadź adres e-mail użytkownika, którego jesteś żądanie własność rozliczeń z. Użytkownik musi być administratorem konta na konto rozliczeniowe programu usług Microsoft Online Service lub właściciel konta w ramach umowy Enterprise Agreement. Aby uzyskać więcej informacji, zobacz [wyświetlić konta rozliczeniowego w witrynie Azure portal](billing-view-all-accounts.md).
 
@@ -64,7 +64,7 @@ Ten artykuł dotyczy konta rozliczeniowego dla umowy klienta firmy Microsoft. [S
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
-2. Wyszukiwanie **Cost Management + rozliczenia**.
+2. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
 
    ![Zrzut ekranu pokazujący Azure portal Wyszukaj Zarządzanie kosztami i rozliczenia](./media/billing-mca-request-billing-ownership/billing-search-cost-management-billing.png)
 

@@ -11,11 +11,11 @@ ms.date: 04/17/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: ff2b843e00ffdf005d952cf62eab6b93c9434913
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59699170"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60193162"
 ---
 # <a name="service-limits-in-azure-search"></a>Limity usługi w usłudze Azure Search
 Maksymalne zawartości w pamięci masowej, obciążeń i ilości indeksów i dokumentów, a inne obiekty zależne od tego, czy możesz [aprowizowanie usługi Azure Search](search-create-service-portal.md) na **bezpłatna**, **podstawowe**,  **Standardowa**, lub **zoptymalizowane pod kątem magazynu** warstw cenowych.
@@ -47,7 +47,7 @@ Maksymalne zawartości w pamięci masowej, obciążeń i ilości indeksów i dok
 
 ## <a name="index-limits"></a>Limity indeksu
 
-| Zasób | Bezpłatna | Podstawowe&nbsp;<sup>1</sup>  | S1 | S2 | S3 | S3&nbsp;HD | L1 | PAMIĘCI PODRĘCZNEJ L2 |
+| Resource | Bezpłatna | Podstawowe&nbsp;<sup>1</sup>  | S1 | S2 | S3 | S3&nbsp;HD | L1 | PAMIĘCI PODRĘCZNEJ L2 |
 | -------- | ---- | ------------------- | --- | --- | --- | --- | --- | --- |
 | Maksymalna liczba indeksów |3 |5 lub 15 |50 |200 |200 |1000 na partycję lub 3000 na usługę |10 |10 |
 | Maksymalna pola indeksu |1000 |100 |1000 |1000 |1000 |1000 |1000 |1000 |
@@ -102,7 +102,7 @@ Aby zachować rozmiaru dokumentu,, pamiętaj, aby wykluczyć nie umożliwia zada
 Maksymalne czasy uruchomionej przede wszystkim zapewniają informacji o saldach i stabilność w usłudze jako całości, ale większych zestawów danych może być konieczne indeksowania więcej czasu niż zezwala na maksymalną. Jeśli zadania nie można wykonać w ramach maksymalny dozwolony czas, spróbuj uruchomić go zgodnie z harmonogramem. Harmonogram przechowuje informacje o stanie indeksowania. Jeśli zaplanowane zadanie indeksowania zostanie przerwany z jakiegokolwiek powodu, indeksator może przejmą tam, gdzie ją ostatnia przerwaliśmy na następne zaplanowane uruchomienie.
 
 
-| Zasób | Bezpłatne&nbsp;<sup>1</sup> | Podstawowe&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|L1 |PAMIĘCI PODRĘCZNEJ L2 |
+| Resource | Bezpłatne&nbsp;<sup>1</sup> | Podstawowe&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|L1 |PAMIĘCI PODRĘCZNEJ L2 |
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- | --- | --- |
 | Maksymalna liczba indeksatorów |3 |5 lub 15|50 |200 |200 |ND |10 |10 |
 | Maksymalna liczba źródeł danych |3 |5 lub 15 |50 |200 |200 |ND |10 |10 |

@@ -14,11 +14,11 @@ ms.custom: it-pro, seodec18
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3dafdf4c67e8d3d74109b3879fb0deacd79b1774
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182242"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60249063"
 ---
 # <a name="add-or-remove-group-members-using-azure-active-directory"></a>Dodawanie lub usuwanie członków grupy za pomocą usługi Azure Active Directory
 Za pomocą usługi Azure Active Directory, można nadal dodawać i usuwać członków grupy.

@@ -12,11 +12,11 @@ ms.topic: reference
 ms.date: 02/13/2019
 ms.author: juliako
 ms.openlocfilehash: f9fe689e6911c5e9497ee82132e8b70bd9aada7e
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630598"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60322237"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>Usługa Azure schematów usługi Event Grid na potrzeby zdarzeń usługi Media Services
 
@@ -457,7 +457,7 @@ Obiekt danych ma następujące właściwości:
 | trackType | string | Typ ścieżki (Audio / wideo). |
 | trackName | string | Nazwa ścieżki. |
 | Szybkość transmisji bitów | liczba całkowita | Szybkość transmisji bitów toru. |
-| sygnatura czasowa | string | Sygnatura czasowa fragmentu danych porzucony. |
+| timestamp | string | Sygnatura czasowa fragmentu danych porzucony. |
 | Skala czasu | string | Skala czasu znacznika czasu. |
 | resultCode | string | Powód listy fragmentów danych. **FragmentDrop_OverlapTimestamp** lub **FragmentDrop_NonIncreasingTimestamp**. |
 
@@ -500,7 +500,7 @@ Obiekt danych ma następujące właściwości:
 | ingestUrl | string | Pozyskanie adresu URL podanego przez zdarzenie na żywo. |
 | encoderIp | string  | Adres IP kodera. |
 | encoderPort | string | Port kodera, z której pochodzi ten strumień. |
-| sygnatura czasowa | string | Pierwszy znacznik czasu fragmentu danych odebranych. |
+| timestamp | string | Pierwszy znacznik czasu fragmentu danych odebranych. |
 | Skala czasu | string | Skala czasu, w którym jest reprezentowana sygnatury czasowej. |
 
 ### <a name="liveeventincomingstreamsoutofsync"></a>LiveEventIncomingStreamsOutOfSync

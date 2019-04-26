@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 06566ab81b6af847a7eb174731105b7f43a7197f
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680908"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60242715"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Usługa Azure Active Directory bezproblemowego logowania jednokrotnego: Szybki start
 
@@ -90,7 +90,7 @@ Wykonaj te instrukcje, aby sprawdzić, prawidłowo włączona bezproblemowe logo
 3. Wybierz **programu Azure AD Connect**.
 4. Upewnij się, że **bezproblemowego logowania jednokrotnego** funkcji pojawia się jako **włączone**.
 
-![Azure Portal: Okienko usługi Azure AD Connect](./media/how-to-connect-sso-quick-start/sso10.png)
+![Witryna Azure Portal: Okienko usługi Azure AD Connect](./media/how-to-connect-sso-quick-start/sso10.png)
 
 >[!IMPORTANT]
 > Bezproblemowe logowanie Jednokrotne tworzy konto komputera o nazwie `AZUREADSSOACC` w swojej lokalnej usłudze Active Directory (AD) w każdym lesie usługi AD. `AZUREADSSOACC` Konto komputera, które wymagają silnie ochrony ze względów bezpieczeństwa. Tylko Administratorzy domeny powinno być możliwe do zarządzania kontem komputera. Upewnij się, wyłączenia delegowanie protokołu Kerberos na konto komputera oraz że żadne inne konto w usłudze Active Directory ma uprawnienia delegowania uprawnień `AZUREADSSOACC` konta komputera. Store konta komputera w organizacji jednostki Organizacyjnej, gdzie są one bezpieczne przypadkowym a tylko Administratorzy domeny mają dostęp.

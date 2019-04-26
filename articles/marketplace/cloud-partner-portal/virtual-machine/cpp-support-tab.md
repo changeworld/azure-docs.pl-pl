@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 10/19/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 35ac9d0c4b0188724c91cdcf4f33b645dd92e98a
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49640079"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60343231"
 ---
 # <a name="virtual-machine-support-tab"></a>Maszyna wirtualna kartę Pomoc techniczna
 
-**Obsługuje** karcie **nowa oferta** strony umożliwia podanie technicznych i użytkownika, zasoby pomocy technicznej oferty.  Jest ona podzielony na trzy obszary: **inżynierów**, **techniczną**, i **adresy URL pomocy technicznej**.
+**Obsługuje** karcie **nowa oferta** strony umożliwia podanie technicznych i użytkownika, zasoby pomocy technicznej oferty.  Jest ona podzielony na trzy obszary: **Inżynierów**, **techniczną**, i **obsługuje adresy URL**.
 
 ![Kartę Pomoc techniczna w formularzu nowa oferta dla maszyn wirtualnych](./media/publishvm_012.png)
 

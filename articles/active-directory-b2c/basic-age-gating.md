@@ -3,7 +3,7 @@ title: Włącz wieku w usłudze Azure Active Directory B2C | Dokumentacja firmy 
 description: Więcej informacji na temat sposobu identyfikowania osoby nieletnie korzystanie z aplikacji.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
@@ -11,11 +11,11 @@ ms.date: 11/13/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: f8309424b8e1eed97d66fbd168444418cc1f98fd
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562440"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60383936"
 ---
 # <a name="enable-age-gating-in-azure-active-directory-b2c"></a>Włącz wieku w usłudze Azure Active Directory B2C
 
@@ -48,7 +48,7 @@ Wieku obejmuje dwie wartości wieku: wiek, że ktoś nie jest już uznawany za W
 | EG | Egipt | Brak | 21 |
 | ES | Hiszpania | 13 | 18 |
 | PW | Francja | 16 | 18 |
-| GB | Wielka Brytania | 13 | 18 |
+| GB | Zjednoczone Królestwo | 13 | 18 |
 | GR | Grecja | 16 | 18 |
 | HR | Chorwacja | 16 | 18 |
 | HU | Węgry | 16 | 18 |

@@ -17,11 +17,11 @@ ms.custom: H1Hack27Feb2017
 ms.date: 03/31/2017
 ms.author: klam; LADocs
 ms.openlocfilehash: c58b39f8e2d49eeb3e64c7ffce1d34d7a7b7b780
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57904375"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60304280"
 ---
 # <a name="call-trigger-or-nest-workflows-with-http-endpoints-in-logic-apps"></a>Wywoływanie, wyzwalacza lub zagnieżdżanie przepływy pracy za pomocą punktów końcowych HTTP w usłudze logic apps
 
@@ -275,7 +275,7 @@ Oto jak schematu JSON wygląda teraz **odpowiedzi** akcji:
 
 ## <a name="q--a"></a>Pytania i odpowiedzi
 
-#### <a name="q-what-about-url-security"></a>PYT.: Co adres URL zabezpieczeń?
+#### <a name="q-what-about-url-security"></a>Pyt.: Co adres URL zabezpieczeń?
 
 Odp.: Azure generuje bezpieczne logiki wywołania zwrotnego adresy URL aplikacji przy użyciu sygnatury dostępu współdzielonego (SAS). Ta sygnatura przechodzi przez jako parametr zapytania i muszą zostać zatwierdzone, zanim aplikacja logiki może wyzwalać. Azure generuje podpisu przy użyciu unikatowego połączenia klucz tajny dla aplikacji logiki, nazwa wyzwalacza i operacji, która jest wykonywana. Dlatego jeśli osoba ma dostęp do klucza tajnego logiki aplikacji, nie można wygenerować prawidłowego podpisu.
 
@@ -285,7 +285,7 @@ Odp.: Azure generuje bezpieczne logiki wywołania zwrotnego adresy URL aplikacji
    > * Klucz dostępu współdzielonego zostanie wyświetlony w adresie URL.
    > * Nie można zarządzać bezpiecznego zasad dotyczących zawartości z powodu domeny udostępnione wielu odbiorców aplikacji logiki.
 
-#### <a name="q-can-i-configure-http-endpoints-further"></a>PYT.: Można skonfigurować więcej punktów końcowych HTTP?
+#### <a name="q-can-i-configure-http-endpoints-further"></a>Pyt.: Można skonfigurować więcej punktów końcowych HTTP?
 
 Odp.: Tak, punktów końcowych HTTP obsługuje bardziej zaawansowanych konfiguracji, za pośrednictwem [ **usługi API Management**](../api-management/api-management-key-concepts.md). Usługa ta oferuje również możliwości, które umożliwiają spójne zarządzanie wszystkimi interfejsami API, w tym aplikacje logiki, konfigurowanie niestandardowych nazw domen, użyj więcej metod uwierzytelniania i uzyskać więcej informacji, na przykład:
 
@@ -294,7 +294,7 @@ Odp.: Tak, punktów końcowych HTTP obsługuje bardziej zaawansowanych konfigura
 * Konfigurowanie domen usługi API Management na [witryny Azure portal](https://portal.azure.com/ "witryny Azure portal")
 * Konfigurowanie zasad, aby sprawdzić, czy uwierzytelnianie podstawowe
 
-#### <a name="q-what-changed-when-the-schema-migrated-from-the-december-1-2014-preview"></a>PYT.: Co się zmieniło, gdy schemat migracji z wersji zapoznawczej 1 grudnia 2014?
+#### <a name="q-what-changed-when-the-schema-migrated-from-the-december-1-2014-preview"></a>Pyt.: Co się zmieniło, gdy schemat migracji z wersji zapoznawczej 1 grudnia 2014?
 
 Odp.: Poniżej przedstawiono podsumowanie dotyczące tych zmian:
 

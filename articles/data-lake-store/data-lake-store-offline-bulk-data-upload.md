@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 4a8126d658f227d9eed372cd51cf06f8f12c99f9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58885529"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60194981"
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-azure-data-lake-storage-gen1"></a>Usługa Azure Import/Export kopię danych do usługi Azure Data Lake Storage Gen1 w trybie offline
 W tym artykule dowiesz się, jak skopiować ogromnych zestawów danych (> 200 GB) do usługi Azure Data Lake magazynu Gen1 przy użyciu metod kopii w trybie offline, takie jak [usługa Azure Import/Export](../storage/common/storage-import-export-service.md). Ściślej mówiąc plik, który został użyty w przykładzie w tym artykule jest 339,420,860,416 bajtów lub około 319 GB na dysku. Nadajmy 319GB.tsv tego pliku.
