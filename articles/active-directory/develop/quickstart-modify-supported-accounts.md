@@ -18,11 +18,11 @@ ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3a2c68d607e7afc2e3eac675511734c8d054c427
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56174201"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60299536"
 ---
 # <a name="quickstart-modify-the-accounts-supported-by-an-application-preview"></a>Szybki start: Modyfikowanie kont obsługiwanych przez aplikację (wersja zapoznawcza)
 
@@ -80,7 +80,7 @@ Domyślnie niejawne udzielenie protokołu OAuth 2.0 jest wyłączone dla aplikac
 1. Wybierz pozycję **Tokeny identyfikatora**, **Tokeny dostępu** lub je obie.
 1. Wybierz pozycję **Zapisz**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Dowiedz się więcej na temat innych powiązanych przewodników Szybki start dotyczących zarządzania aplikacjami:
 

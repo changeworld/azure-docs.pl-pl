@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 06/11/2018
 ms.author: magattus
 ms.openlocfilehash: 2ac43b472758f3403bc87bf3d64321eb97109f53
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092402"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60335610"
 ---
 # <a name="override-http-behavior-using-the-azure-cdn-rules-engine"></a>Zastępowanie zachowania HTTP przy użyciu usługi Azure CDN aparatu reguł
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Aparat reguł sieć CDN systemu Azure pozwala dostosować sposób obsługi żądań HTTP. Na przykład blokowanie dostarczania określonych typów zawartości, definiowanie zasad buforowania lub modyfikowanie nagłówków HTTP. W tym samouczku pokazano, jak utworzyć regułę, która zmienia zachowanie buforowania zasobów sieci CDN. Aby uzyskać więcej informacji na temat składni aparatu reguł zobacz [dokumentacja aparatu reguł wysokiej dostępności treści Azure](cdn-rules-engine-reference.md).
 
 ## <a name="access"></a>Dostęp
@@ -102,4 +102,4 @@ Aby uzyskać dostęp do aparatu reguł, musisz najpierw wybrać **Zarządzaj** o
 * [Warunki dopasowań aparatu reguł](cdn-rules-engine-reference-match-conditions.md)
 * [Wyrażenia warunkowe aparatu reguł](cdn-rules-engine-reference-conditional-expressions.md)
 * [Funkcje aparatu reguł](cdn-rules-engine-reference-features.md)
-* [Piątki z Windows Azure: Usługa Azure CDN zaawansowane nowe funkcje premium](https://azure.microsoft.com/documentation/videos/azure-cdns-powerful-new-premium-features/) (wideo)
+* [Piątki z Windows Azure: Zaawansowane nowe funkcje premium usługi Azure CDN](https://azure.microsoft.com/documentation/videos/azure-cdns-powerful-new-premium-features/) (wideo)

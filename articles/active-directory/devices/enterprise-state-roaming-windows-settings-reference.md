@@ -18,11 +18,11 @@ ms.date: 01/30/2019
 ms.author: joflore
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e6c80ee5d2a4d72be131c6a781cf793d1981e780
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521078"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60353263"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Informacje dotyczące ustawień roamingu w systemie Windows 10
 Oto Pełna lista wszystkich ustawień, które będą korzystania z roamingu lub kopii zapasowej w systemie Windows 10. 
@@ -76,7 +76,7 @@ Ustawienia, które nie są przekazywane lub synchronizacji nie będą należeć 
 | **Lista aplikacji**: lista zainstalowanych aplikacji |X |kopia zapasowa |Inne |
 | **Bluetooth**: wszystkie ustawienia połączeń Bluetooth |X |X | |
 | **Wiersz polecenia**: Polecenie Ustawienia monitu "Domyślne" |Synchronizacja |X |Wewnętrzne |
-| **poświadczenia**: Skrytka na poświadczenia |Synchronizacja |Synchronizacja |hasło |
+| **poświadczenia**: Skrytka na poświadczenia |Synchronizacja |Synchronizacja |password |
 | **Daty, godziny i regionu**: automatyczne czasu (Synchronizacja czasowa Internet) |Synchronizacja |Synchronizacja |language |
 | **Daty, godziny i Region**: zegar 24-godzinny |Synchronizacja |X |language |
 | **Daty, godziny i regionu**: Data i godzina |Synchronizacja |X |language |

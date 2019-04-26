@@ -3,17 +3,17 @@ title: Przełączanie między wyświetlaniem i Edytuj tryb dla raportów w kolek
 description: Dowiedz się, jak przełączać się między widoku, a i raportów w ramach kolekcji obszarów roboczych usługi Power BI.
 services: power-bi-workspace-collections
 ms.service: power-bi-workspace-collections
-author: markingmyname
-ms.author: maghan
+author: rkarlin
+ms.author: rkarlin
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.openlocfilehash: 38824c40db1f4fb3de9a0a124f74b71eb1ee2f17
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517134"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60342257"
 ---
 # <a name="toggle-between-view-and-edit-mode-for-reports-in-power-bi-workspace-collections"></a>Przełączanie między wyświetlaniem i Edytuj tryb dla raportów w kolekcji obszarów roboczych usługi Power BI
 

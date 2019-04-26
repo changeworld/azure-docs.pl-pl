@@ -14,11 +14,11 @@ ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
 ms.openlocfilehash: 7d378c2f72035c3584e1f5cd3c1f0fb9a5d5c2ed
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119871"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60372303"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>Użytkownicy, sesje i zdarzenia analizy w usłudze Application Insights
 
@@ -46,7 +46,7 @@ Zapoznaj się z różnych grup użytkowników przez dostosowanie opcji zapytania
 
 * Pokaż: Wybierz kohorta użytkowników w celu analizowania.
 * Kto korzystał: Wybierz niestandardowe zdarzenia i wyświetlenia stron.
-* W trakcie: Wybierz zakres czasu.
+* During: Wybierz zakres czasu.
 * Według: Wybierz sposób zasobnika danych przez pewien czas lub innej właściwości, takie jak przeglądarki lub Miasto.
 * Podziel według: Wybierz właściwości, za pomocą którego do podziału lub segmentu danych. 
 * Dodaj filtry: Ogranicz zapytanie, aby niektórych użytkowników, sesje lub zdarzenia na podstawie ich właściwości, takie jak przeglądarki lub Miasto. 

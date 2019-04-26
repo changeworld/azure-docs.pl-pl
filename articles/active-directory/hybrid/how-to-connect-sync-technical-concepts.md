@@ -4,24 +4,24 @@ description: Zawiera wyjaśnienie założeń techniczne synchronizacji programu 
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: daveba
+manager: mtillman
 editor: ''
 ms.assetid: 731cfeb3-beaf-4d02-aef4-b02a8f99fd11
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 01/15/2018
-ms.subservice: hybrid
-ms.author: billmath
-ms.collection: M365-identity-device-management
+ms.topic: article
+origin.date: 01/15/2018
+ms.date: 11/12/2018
+ms.component: hybrid
+ms.author: v-junlch
 ms.openlocfilehash: b8ec4a6100cfbb4419d7e30f4b97589113b88939
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164332"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60347592"
 ---
 # <a name="azure-ad-connect-sync-technical-concepts"></a>Synchronizacja programu Azure AD Connect: Zagadnienia techniczne
 W tym artykule przedstawiono podsumowanie tego tematu [opis architektury](how-to-connect-sync-technical-concepts.md).
@@ -34,11 +34,11 @@ Rozwijając MIIS ILM i FIM, usługi Azure Active Directory Sync Services zapewni
 
 Poniższe sekcje zawierają więcej szczegółów na temat następujące aspekty FIM Synchronization Service:
 
-* Łącznik
-* Przepływ atrybutu
-* Obszaru łącznika
-* Metaverse
-* Inicjowanie obsługi
+- Łącznik
+- Przepływ atrybutu
+- Obszaru łącznika
+- Metaverse
+- Inicjowanie obsługi
 
 ## <a name="connector"></a>Łącznik
 Moduły kodu, które są używane do komunikacji z połączonego katalogu są nazywane łączników (wcześniej znane jako agenci zarządzania (MAs)).
@@ -87,8 +87,9 @@ To z natury ustanawia łącze, a przepływ atrybutów można kontynuować dwukie
 Zawsze, gdy zasada ustala, że nowego obiektu przestrzeni łącznika musi zostać utworzona, jest on nazywany inicjowania obsługi administracyjnej. Jednak ponieważ ta operacja tylko odbywa się w przestrzeni łącznika, go nie jest przenoszone do połączonego źródła danych do momentu eksportu jest wykonywane.
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
-* [Synchronizacja programu Azure AD Connect: Dostosowywanie opcji synchronizacji](how-to-connect-sync-whatis.md)
-* [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md)
+- [Synchronizacja programu Azure AD Connect: Dostosowywanie opcji synchronizacji](how-to-connect-sync-whatis.md)
+- [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md)
 
 <!--Image references-->
 [1]: ./media/active-directory-aadsync-technical-concepts/ic750598.png
+

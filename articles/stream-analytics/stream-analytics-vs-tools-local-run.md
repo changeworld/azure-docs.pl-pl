@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 07/10/2018
-ms.openlocfilehash: cc4372a8a8a8f39bf4f77f637b459c5281b8852d
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 1b86085a76f5ff87147db9dbd0a584784f5e4a2e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299529"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60308490"
 ---
 # <a name="test-stream-analytics-queries-locally-with-visual-studio"></a>Testowanie zapytań usługi Stream Analytics lokalnie z programem Visual Studio
 
@@ -52,7 +52,7 @@ Dane wyjściowe mogą być wyświetlane w formacie tabeli bezpośrednio z progra
 
 Można znaleźć ścieżki wyjściowej z danych wyjściowych konsoli. Naciśnij dowolny klawisz, aby otworzyć folder wyników.
    
-![Przebieg lokalny](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-local-run-02.png)
+![Uruchamianie lokalne](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-local-run-02.png)
    
 Sprawdź wyniki w folderze lokalnym.
    
@@ -74,7 +74,7 @@ Można wyświetlić postęp w **dane wyjściowe** okna.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Wyświetl zadania usługi Azure Stream Analytics przy użyciu programu Visual Studio](stream-analytics-vs-tools.md)
-* [Szybki Start: Tworzenie zadania usługi Stream Analytics za pomocą programu Visual Studio](stream-analytics-quick-create-vs.md)
+* [Use Visual Studio to view Azure Stream Analytics jobs (Wyświetlanie zadań usługi Azure Stream Analytics za pomocą programu Visual Studio)](stream-analytics-vs-tools.md)
+* [Szybki start: Tworzenie zadania usługi Stream Analytics, za pomocą programu Visual Studio](stream-analytics-quick-create-vs.md)
 * [Samouczek: Wdrażanie zadania usługi Azure Stream Analytics przy użyciu ciągłej integracji/ciągłego wdrażania za pomocą DevOps platformy Azure](stream-analytics-tools-visual-studio-cicd-vsts.md)
 * [Ciągła integracja i ciągłe opracowywanie za pomocą narzędzi usługi Stream Analytics](stream-analytics-tools-for-visual-studio-cicd.md)

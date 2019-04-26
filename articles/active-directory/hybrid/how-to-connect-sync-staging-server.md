@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 176b8509892ef16b631697a686471e7fa52bb380
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57196369"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60381590"
 ---
 # <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Program Azure AD Connect: Serwer przejściowy i odzyskiwanie po awarii
 Z serwerem w trybie przejściowym można wprowadzić zmiany w konfiguracji i Podgląd zmian, zanim serwer był aktywny. Umożliwia również uruchom pełne importowanie i pełną synchronizację, aby sprawdzić, oczekiwano wszystkich zmian przed wprowadzeniem tych zmian w środowisku produkcyjnym.

@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 01/23/2018
 ms.author: alkohli
 ms.openlocfilehash: 01d36188c1684eae8303cb20ba0fd0c708ff91ba
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58079917"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60309874"
 ---
 # <a name="use-the-new-authentication-for-your-storsimple"></a>Nowe uwierzytelnianie dla usługi StorSimple
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Usługa Menedżer urządzeń StorSimple działa na platformie Microsoft Azure i nawiązanie połączenia z wieloma urządzeniami StorSimple. Do tej pory, usługi Menedżer urządzeń StorSimple został użyty do uwierzytelnienia usługi do urządzenia StorSimple, usługi Access Control service (ACS). Mechanizm ACS będzie niedługo przestarzała i zastąpione przez uwierzytelnianie usługi Azure Active Directory (AAD). Aby uzyskać więcej informacji przejdź do następujących powiadomień dla obsługi usług ACS i korzystanie z uwierzytelniania usługi AAD.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: clemensv
-ms.openlocfilehash: 913e702cc72472e81937bfe3b0939695daadc011
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: e96d0103a03e841f39e8adb88215f6d6e24a305a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45543531"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60420049"
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Usługa Azure protokół połączeń hybrydowych usługi Relay
 
@@ -243,8 +243,8 @@ Jeśli wystąpi błąd, usługa potrzebują pomocy eksperta w następujący spos
 
 | Param                   | Wymagane | Opis                              |
 | ----------------------- | -------- | ---------------------------------------- |
-| statusCode-SB — połączenia hybrydowego        | Yes      | Kod stanu HTTP.                |
-| Opisstanu SB — połączenia hybrydowego | Yes      | Ludzi czytelny Przyczyna odrzucenia. |
+| sb-hc-statusCode        | Yes      | Kod stanu HTTP.                |
+| sb-hc-statusDescription | Yes      | Ludzi czytelny Przyczyna odrzucenia. |
 
 Wynikowy identyfikatora URI jest następnie używany do ustanawiania połączenia protokołu WebSocket.
 
@@ -384,7 +384,7 @@ Jeśli wystąpi błąd, usługa potrzebują pomocy eksperta w następujący spos
 
 | Kod | Błąd           | Opis
 | ---- | --------------- | -----------------------------------
-| 400  | Nieprawidłowe żądanie | Akcja nierozpoznany lub nieprawidłowy adres URL.
+| 400  | Nieprawidłowe żądanie. | Akcja nierozpoznany lub nieprawidłowy adres URL.
 | 403  | Zabroniony       | Adres URL wygasł.
 | 500  | Błąd wewnętrzny  | Wystąpił problem w usłudze
 

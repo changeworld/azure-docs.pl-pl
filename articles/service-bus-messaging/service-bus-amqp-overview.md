@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: 34829482e570354c1ab1e1fd6cec0c96b993cd83
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58167035"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60403930"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>Obsługa protokołu AMQP 1.0 w usłudze Service Bus
 Usługa Azure Service Bus w chmurze i lokalnych [Usługa Service Bus dla systemu Windows Server (Usługa Service Bus 1.1)](https://msdn.microsoft.com/library/dn282144.aspx) obsługuje zaawansowane komunikat Kolejkowanie Protocol (AMQP) 1.0. Protokół AMQP umożliwia tworzenie dla różnych platform aplikacji hybrydowej za pomocą otwartego protokołu. Można skonstruować aplikacji przy użyciu składników, które są tworzone przy użyciu różnych języków i platform i działających w różnych systemach operacyjnych. Wszystkie te składniki można połączyć z usługą Service Bus oraz zapewniające bezproblemową wymiany wiadomości ze strukturą biznesowych, wydajne i w pełnej rozdzielczości.

@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
 ms.openlocfilehash: dcc54b0f67b9bf08df602c3eb9a4bcb0ea699ee7
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023434"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60405889"
 ---
 # <a name="copy-data-from-paypal-using-azure-data-factory-preview"></a>Kopiowanie danych z systemu PayPal za pomocą usługi Azure Data Factory (wersja zapoznawcza)
 

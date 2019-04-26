@@ -14,16 +14,16 @@ ms.author: celested
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 341d7667f039a7272a7ad3fec80a445aa95b619d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56202693"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60440236"
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>Twórz line-of-business apps usługi Azure Active Directory
 Ten przewodnik zawiera omówienie tworzenia aplikacji usługi line-of-business (LoB) dla usługi Azure Active Directory (AD). Określonej grupy odbiorców jest administratorów globalnych usługi Active Directory/Office 365.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Tworzenie aplikacji zintegrowanych z usługą Azure AD zapewnia użytkownikom w swojej organizacji logowanie jednokrotne z usługą Office 365. Umieszczenie aplikacji w usłudze Azure AD umożliwia kontrolę nad zasady uwierzytelniania dla aplikacji. Aby dowiedzieć się więcej na temat dostępu warunkowego i sposobu ochrony aplikacji za pomocą uwierzytelniania wieloskładnikowego (MFA), zobacz [Konfigurowanie reguł dostępu](../conditional-access/app-based-mfa.md).
 
 Zarejestruj swoją aplikację, aby używać usługi Azure Active Directory. Trwa rejestrowanie aplikacji oznacza, że deweloperzy można użyć usługi Azure AD do uwierzytelniania użytkowników i poprosić o dostęp do zasobów użytkownika, takich jak wiadomości e-mail, kalendarz i dokumentów.

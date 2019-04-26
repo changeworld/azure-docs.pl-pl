@@ -12,17 +12,17 @@ ms.topic: article
 ms.date: 03/12/2019
 ms.author: juliako
 ms.openlocfilehash: d5fc14adab956fae23aad24fa7bc488c8c2041e3
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621689"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60322570"
 ---
 # <a name="quotas-and-limitations-in-azure-media-services-v3"></a>Limity przydziału i ograniczenia dotyczące usługi Azure Media Services v3
 
 W tym artykule opisano przydziały i ograniczenia dotyczące usługi Azure Media Services v3.
 
-| Zasób | Limit domyślny | 
+| Resource | Limit domyślny | 
 | --- | --- | 
 | Elementy zawartości na konto usługi Azure Media Services | 1 000 000|
 | Filtry manifestów dynamicznych|100|

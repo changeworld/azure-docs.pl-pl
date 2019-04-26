@@ -14,11 +14,11 @@ ms.topic: troubleshooting
 ms.date: 03/09/2018
 ms.author: tomfitz
 ms.openlocfilehash: 7938f2c47e4af8d8804191fbb9e55b379f9554ef
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488616"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60390231"
 ---
 # <a name="resolve-errors-for-resource-quotas"></a>Rozwiązywanie błędów dla limity przydziałów zasobów
 
@@ -105,7 +105,7 @@ Aby zażądać zwiększenia limitu przydziału, przejdź do portalu i pliku prob
 
 1. Wybierz pozycję **Subskrypcje**.
 
-   ![Subskrypcje](./media/resource-manager-quota-errors/subscriptions.png)
+   ![Subscriptions](./media/resource-manager-quota-errors/subscriptions.png)
 
 2. Wybierz subskrypcję, która wymaga zwiększenia limitu przydziału.
 

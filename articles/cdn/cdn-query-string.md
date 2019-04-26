@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/11/2018
 ms.author: magattus
 ms.openlocfilehash: f0dab3dc81c626e3e7f8c79b4142e5eb4f2a1276
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093803"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60324761"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-query-strings---standard-tier"></a>Kontroli usługi Azure CDN caching zachowanie z ciągami zapytań — warstwa standardowa
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "49093803"
 > * [Warstwa Premium](cdn-query-string-premium.md)
 > 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Za pomocą usługi Azure Content Delivery Network (CDN), można kontrolować sposób pliki są buforowane dla żądania sieci web, który zawiera ciąg zapytania. W żądaniu sieci web za pomocą ciągu zapytania ciąg zapytania jest część żądanie, która występuje po znaku zapytania (?). Ciąg zapytania może zawierać pary klucz wartość, w których nazwy pól i wartości są oddzielone znak równości (=). Każdej pary klucz wartość jest oddzielona handlowe "i" (&). Na przykład http:\//www.contoso.com/content.mov?field1=value1 & pole2 = wartość2. Jeśli istnieje więcej niż jedną parę klucz wartość w ciągu zapytania żądania, ich kolejność nie ma znaczenia. 
 
 > [!IMPORTANT]
@@ -35,7 +35,7 @@ Za pomocą usługi Azure Content Delivery Network (CDN), można kontrolować spo
 
 Dostępne są trzy tryby ciągu zapytania:
 
-- **Ignoruj ciągi zapytań**: domyślny tryb. W tym trybie węzła sieci CDN "punktu obecność" (POP) przekazuje ciągi zapytań z osoby zgłaszającej żądanie do serwera pochodzenia na pierwsze żądanie i zapisuje w pamięci podręcznej elementu zawartości. Wszystkie kolejne żądania dla elementu zawartości, które są obsługiwane w punkcie POP Ignoruj ciągi zapytań, do momentu wygaśnięcia pamięci podręcznej elementu zawartości.
+- **Ignoruj ciągi zapytań**: Tryb domyślny. W tym trybie węzła sieci CDN "punktu obecność" (POP) przekazuje ciągi zapytań z osoby zgłaszającej żądanie do serwera pochodzenia na pierwsze żądanie i zapisuje w pamięci podręcznej elementu zawartości. Wszystkie kolejne żądania dla elementu zawartości, które są obsługiwane w punkcie POP Ignoruj ciągi zapytań, do momentu wygaśnięcia pamięci podręcznej elementu zawartości.
 
 - **Pomiń buforowanie dla ciągów zapytań**: W tym trybie żądań z ciągami zapytań nie są buforowane w węźle POP sieci CDN. Węzeł POP pobiera element zawartości bezpośrednio z serwera pochodzenia i przekazuje je do obiektu żądającego z każdym żądaniem.
 

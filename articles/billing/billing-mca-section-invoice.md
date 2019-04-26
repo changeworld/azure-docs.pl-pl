@@ -12,11 +12,11 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
 ms.openlocfilehash: 21d6c1671c57341d785c002f360c05cc5c610657
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551623"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60371616"
 ---
 # <a name="create-sections-on-your-invoice-to-organize-your-costs"></a>Tworzenie sekcji na fakturze w taki sposób, aby zorganizować koszty
 
@@ -30,7 +30,7 @@ Aby utworzyć sekcji faktury, muszą być **rozliczeń właściciela profilu** l
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
-2. Wyszukiwanie **Cost Management + rozliczenia**.
+2. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
 
    ![Zrzut ekranu pokazujący usługi Azure search w portalu](./media/billing-mca-section-invoice/billing-search-cost-management-billing.png)
 
@@ -38,7 +38,7 @@ Aby utworzyć sekcji faktury, muszą być **rozliczeń właściciela profilu** l
 
    ![Zrzut ekranu pokazujący usługi Azure search w portalu](./media/billing-mca-section-invoice/billing-mca-list-invoice-sections.png)
 
-4. W górnej części strony, wybierz **Dodaj**.
+4. W górnej części strony wybierz pozycję **Dodaj**.
 
 5. Wprowadź nazwę sekcji faktury.
 

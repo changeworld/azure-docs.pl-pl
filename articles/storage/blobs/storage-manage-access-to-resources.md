@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: tamram
-ms.openlocfilehash: e27be86a7a14a38c5083949a1a7255574d2d0dc6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3996f22db2f5dc597939995a2699c4fe228821e3
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956085"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60392577"
 ---
 # <a name="manage-anonymous-read-access-to-containers-and-blobs"></a>Zarządzanie dostępem anonimowym w trybie odczytu do kontenerów i obiektów blob
 Można włączyć anonimowego, publiczny dostęp do odczytu do kontenera i jego obiektów blob w usłudze Azure Blob storage. Dzięki temu można przyznać dostęp tylko do odczytu do tych zasobów, bez udostępniania klucz konta, a także bez konieczności sygnatury dostępu współdzielonego (SAS).
@@ -24,9 +24,9 @@ Domyślnie kontener i wszystkie obiekty BLOB w niej można uzyskać dostęp tylk
 
 Można skonfigurować kontenera, z następującymi uprawnieniami:
 
-* **Dostęp do odczytu bez publicznego:** kontenera i jego obiektów blob są dostępne tylko przez właściciela konta magazynu. Jest to wartość domyślna dla wszystkich nowych kontenerów.
-* **Publiczne odczytu dostępu tylko dla obiektów blob:** obiektów blob w kontenerze mogą być odczytywane przez żądania od użytkowników anonimowych, ale kontenera dane są niedostępne. Anonimowe klientów nie można wyliczyć obiektów blob w kontenerze.
-* **Pełny publiczny dostęp do odczytu:** wszystkich kontenerów i obiektów blob danych może zostać odczytany przez żądania od użytkowników anonimowych. Klientów można wyliczyć obiektów blob w kontenerze przez żądania od użytkowników anonimowych, ale nie można wyliczyć kontenerów na koncie magazynu.
+* **Brak publicznego dostępu do odczytu:** Kontenera i jego obiektów blob są dostępne tylko przez właściciela konta magazynu. Jest to wartość domyślna dla wszystkich nowych kontenerów.
+* **Publiczny dostęp do odczytu tylko dla obiektów blob:** Obiekty BLOB w kontenerze mogą być odczytywane przez żądania od użytkowników anonimowych, ale kontenera dane są niedostępne. Anonimowe klientów nie można wyliczyć obiektów blob w kontenerze.
+* **Pełny publiczny dostęp do odczytu:** Wszystkich kontenerów i obiektów blob danych może zostać odczytany przez żądania od użytkowników anonimowych. Klientów można wyliczyć obiektów blob w kontenerze przez żądania od użytkowników anonimowych, ale nie można wyliczyć kontenerów na koncie magazynu.
 
 Następujące służy do ustawiania uprawnień kontenera:
 
@@ -140,7 +140,7 @@ Pokazano w poniższej tabeli operacje, może być wywoływana przez użytkownik�
 | Dzierżawienie obiektu Blob |Tylko właściciel |Tylko właściciel |
 | Umieść strony |Tylko właściciel |Tylko właściciel |
 | Pobieranie zakresów stron |Wszyscy |Wszyscy |
-| Obiekt Blob dołączania |Tylko właściciel |Tylko właściciel |
+| Dołącz obiekt blob |Tylko właściciel |Tylko właściciel |
 
 ## <a name="next-steps"></a>Kolejne kroki
 

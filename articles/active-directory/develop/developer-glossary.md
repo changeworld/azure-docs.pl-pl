@@ -19,11 +19,11 @@ ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma, dadobali
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 968da9212b52c1e7ea09d1472b312671c7a73449
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565545"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60410388"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Słownik deweloperów platforma tożsamości firmy Microsoft
 
@@ -192,7 +192,7 @@ Funkcja logowania aplikacji zwykle jest używana do zaimplementowania logowanie 
 
 Proces unauthenticating przez użytkownika końcowego, odłączanie stanu użytkownika skojarzony z [aplikacja kliencka](#client-application) sesji podczas [logowania](#sign-in)
 
-## <a name="tenant"></a>dzierżawa
+## <a name="tenant"></a>tenant
 
 Wystąpienia katalogu usługi Azure AD, jest nazywana dzierżawę usługi Azure AD. Zapewnia kilka funkcji, takich jak:
 

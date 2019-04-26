@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 01/03/2019
 ms.author: pbutlerm
 ms.openlocfilehash: f9cbf5033d0ffb84959de94db052626dd1d131c8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57997950"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60311304"
 ---
 # <a name="dynamics-365-for-customer-engagement-storefront-details-tab"></a>Dynamics 365 dla karty Szczegóły Storefront zaangażowania klienta
 
@@ -52,7 +52,7 @@ Gdy w poniższej tabeli opisano pola na tej karcie:
 |    **Pole**          |  **Opis**               |
 |  ---------------      |  ---------------               |
 |  Branże           | Wybierz branżach (maksymalna dwóch) zgodnym najlepszych aplikacji. Brak ma zastosowanie, po wybraniu opcji zero.  |
-|  Kategorie           | Wybierz kategorie, które są odpowiednie dla aplikacji. Wybierz jedną z jednego do trzech opcji.  |
+|  Categories           | Wybierz kategorie, które są odpowiednie dla aplikacji. Wybierz jedną z jednego do trzech opcji.  |
 |  Typ aplikacji             | Wybierz typ wersji próbnej, w którym włączono obsługę aplikacji w usłudze AppSource. **Bezpłatne** wskazuje aplikacji mogą być używane bez opłaty; **Wersji próbnej** wskazuje, że klienci mogą wypróbować aplikację przez krótki okres bez opłaty; i **skontaktuj się ze mną** wskazuje, że klienci mogą poprosić o z wersji próbnej usługi aplikacji w usłudze AppSource.  |
 | Link Pomoc dla aplikacji | Adres URL dokumentacji online lub innego zasobu pomocy dla aplikacji.  |
 | Obsługiwane kraje/regiony | Okno podręczne okno dialogowe umożliwia wybór regionów geograficznych, gdy aplikacja jest oferowana.  Ogólnoświatową dystrybucją jest ustawieniem domyślnym. |

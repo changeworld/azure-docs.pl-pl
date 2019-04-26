@@ -15,14 +15,14 @@ ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
 ms.openlocfilehash: 07d9e03f1631ebce88a7a7c2e33be62f21dda522
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58076789"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60319675"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-backup-catalog"></a>Usługa Menedżer urządzeń StorSimple do zarządzania wykaz kopii zapasowych
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Usługa Menedżer urządzeń StorSimple **wykaz kopii zapasowych** bloku wyświetlane są wszystkie zestawy kopii zapasowych, które są tworzone podczas ręczne lub zaplanowane kopie zapasowe są wykonywane. Użyj tej strony, aby wyświetlić listę wszystkich kopii zapasowych dla zasad tworzenia kopii zapasowej lub na wolumin, wybierz opcję lub usunąć kopie zapasowe lub użyj kopii zapasowej do przywrócenia lub klonowanie woluminu.
 
 W tym samouczku wyjaśniono, jak wyświetlać, wybierz i usuwanie zestawu kopii zapasowych. Aby dowiedzieć się, jak przywrócić urządzenie z kopii zapasowej, przejdź do [przywrócić urządzenie z zestawu kopii zapasowych](storsimple-8000-restore-from-backup-set-u2.md). Aby dowiedzieć się, jak sklonować woluminu, przejdź do [klonowania woluminu StorSimple](storsimple-8000-clone-volume-u2.md).

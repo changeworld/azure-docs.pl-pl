@@ -15,16 +15,16 @@ ms.workload: na
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2ce65aa4efba735305208f7a6d761bc2814d1b8f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 1dfc1b0e0576402624bfe62de0e206d9bd7cd1b0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38718890"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60302916"
 ---
 # <a name="use-storsimple-device-manager-to-manage-access-control-records-for-storsimple-virtual-array"></a>Menedżer urządzeń StorSimple Użyj zarządzania rekordy kontroli dostępu dla rozwiązania StorSimple Virtual Array
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Rekordy kontroli dostępu (rekordów Acr) umożliwiają określenie, która hostuje nawiązać woluminie rozwiązania StorSimple Virtual Array (znany także jako lokalne urządzenie wirtualne StorSimple). Rekordów Acr są ustawione na określonym woluminie i zawierają iSCSI nazwy kwalifikowanej (nazw IQN) z hostów. Gdy host próbuje nawiązać połączenie z woluminem, urządzenie sprawdza dostępność usługi ACR, skojarzone z tego woluminu dla nazwy IQN, a jeśli istnieje dopasowanie, połączenie zostanie nawiązane. **Rekordy kontroli dostępu** bloku w **konfiguracji** części usługi Menedżer urządzeń wyświetla wszystkie rekordy kontroli dostępu przy użyciu odpowiednich nazw IQN hostów.
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: wpickett
 ms.openlocfilehash: d9f419c48f64ba697e031dfc680bc9cb12bba5c4
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52421968"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60422919"
 ---
 # <a name="using-twilio-for-voice-voip-and-sms-messaging-in-azure"></a>Za pomocą usługi Twilio, połączeń głosowych, VoIP i wiadomości SMS na platformie Azure
 Ten przewodnik pokazuje, jak tworzyć aplikacje, które komunikują się za pomocą usługi Twilio i środowiska node.js na platformie Azure.

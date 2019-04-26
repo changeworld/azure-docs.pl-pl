@@ -3,7 +3,7 @@ title: Samouczek — udzielanie dostępu do internetowego interfejsu API platfor
 description: Samouczek dotyczący używania usługi Active Directory B2C do chronienia internetowego interfejsu API platformy Node.js i wywoływania go z aplikacji klasycznej platformy .NET.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.author: davidmu
 ms.date: 02/04/2019
 ms.custom: mvc
@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: 90a6a88ff0dc5aab1163e471b24cd1d00e548a1b
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755122"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60315936"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>Samouczek: Udzielanie dostępu do internetowego interfejsu API platformy Node.js z aplikacji klasycznej przy użyciu usługi Azure Active Directory B2C
 
@@ -115,7 +115,7 @@ Przykładowy internetowy interfejs API platformy Node.js korzysta z biblioteki P
 
 Aplikacja klasyczna zgłasza żądanie do internetowego interfejsu API i uzyskuje odpowiedź z nazwą wyświetlaną zalogowanego użytkownika. Chroniona aplikacja klasyczna wywołuje chroniony internetowy interfejs API w dzierżawie usługi Azure AD B2C.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

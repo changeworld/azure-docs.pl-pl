@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/30/2019
 ms.author: juliako
 ms.openlocfilehash: 00dab8381c26a6331dd325eacd4a550892bd3411
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59495177"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60325837"
 ---
 # <a name="live-events-and-live-outputs"></a>Wydarzenia i dane wyjściowe na żywo
 
@@ -34,7 +34,7 @@ A [wydarzenie na żywo](https://docs.microsoft.com/rest/api/media/liveevents) mo
 
 ### <a name="pass-through"></a>Przekazywanie
 
-![przekazywane](./media/live-streaming/pass-through.svg)
+![Przekazywanie](./media/live-streaming/pass-through.svg)
 
 Kiedy używasz przekazywanego **wydarzenia na żywo**, oczekujesz, że Twój lokalny koder na żywo wygeneruje strumień wideo z wieloma szybkościami transmisji bitów i wyśle go jako kanał informacyjny do wydarzenia na żywo (przy użyciu protokołu RTMP lub pliku MP4 podzielonego na fragmenty). Wydarzenie na żywo przekazuje następnie przychodzące strumienie wideo bez dalszego przetwarzania. Takie przekazywane wydarzenie na żywo jest zoptymalizowane pod kątem długoterminowych wydarzeń na żywo lub liniowej transmisji strumieniowej na żywo w formacie 24x365. Tworząc wydarzenie na żywo tego typu, należy określić parametr None (LiveEventEncodingType.None).
 
@@ -48,7 +48,7 @@ Zobacz przykładowy kod platformy .NET w [MediaV3LiveApp](https://github.com/Azu
 
 ### <a name="live-encoding"></a>Kodowanie na żywo  
 
-![funkcji Live encoding](./media/live-streaming/live-encoding.svg)
+![Kodowanie na żywo](./media/live-streaming/live-encoding.svg)
 
 W przypadku korzystania z kodowania na żywo za pomocą usługi Media Services należy skonfigurować lokalny koder na żywo, aby wysłać klip wideo z jedną szybkością transmisji bitów jako kanał informacyjny do wydarzenia na żywo (przy użyciu protokołu RTMP lub pliku MP4 podzielonego na fragmenty). Wydarzenie na żywo koduje ten strumień z jedną szybkością transmisji bitów do [strumienia z wieloma szybkościami transmisji bitów](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming), udostępnia go do dostarczenia do urządzeń odtwarzania za pomocą protokołów, takich jak MPEG-DASH, HLS i Smooth Streaming. Podczas tworzenia tego typu wydarzenia na żywo określ typ kodowania jako **Standardowy** (LiveEventEncodingType.Standard).
 

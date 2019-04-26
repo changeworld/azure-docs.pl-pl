@@ -3,7 +3,7 @@ title: RelyingParty — usługa Azure Active Directory B2C | Dokumentacja firmy 
 description: Określ element RelyingParty zasad niestandardowych w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
@@ -11,11 +11,11 @@ ms.date: 01/25/2019
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 5d42568a738d946d7df65601044b9797a35f6b1f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55176016"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60360405"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -160,7 +160,7 @@ Poniższy przykład przekazuje parametr o nazwie `campaignId` o wartości `hawai
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Nazwa | Yes | Nazwa parę klucz-wartość. |
+| Name | Yes | Nazwa parę klucz-wartość. |
 
 Aby uzyskać więcej informacji, zobacz [skonfigurować interfejs użytkownika z zawartością dynamiczną za pomocą zasad niestandardowych](active-directory-b2c-ui-customization-custom-dynamic.md)
 
@@ -187,7 +187,7 @@ Aby uzyskać więcej informacji, zobacz [skonfigurować interfejs użytkownika z
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Nazwa | Yes | Nazwa prawidłowe protokołu obsługiwanego przez usługę Azure AD B2C, która jest używana jako część profilu technicznego. Możliwe wartości: `OpenIdConnect` lub `SAML2`. `OpenIdConnect` Wartość reprezentuje standardowy protokół OpenID Connect 1.0, zgodnie z specyfikacją foundation OpenID. `SAML2` Reprezentuje standardowy protokół SAML 2.0, zgodnie z specyfikacją języka OASIS. Nie należy używać tokenu SAML w środowisku produkcyjnym. |
+| Name | Yes | Nazwa prawidłowe protokołu obsługiwanego przez usługę Azure AD B2C, która jest używana jako część profilu technicznego. Możliwe wartości: `OpenIdConnect` lub `SAML2`. `OpenIdConnect` Wartość reprezentuje standardowy protokół OpenID Connect 1.0, zgodnie z specyfikacją foundation OpenID. `SAML2` Reprezentuje standardowy protokół SAML 2.0, zgodnie z specyfikacją języka OASIS. Nie należy używać tokenu SAML w środowisku produkcyjnym. |
 
 ## <a name="outputclaims"></a>OutputClaims
 

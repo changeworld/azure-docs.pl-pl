@@ -17,11 +17,11 @@ ms.author: celested
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f72cbd719cea585144be3757f0791a74bde452ab
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416772"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60299196"
 ---
 # <a name="quickstart-secure-a-web-api-with-azure-active-directory"></a>Szybki start: zabezpieczanie internetowego interfejsu API za pomocą usługi Azure Active Directory
 
@@ -251,7 +251,7 @@ Unauthorized
 
 Po utworzeniu bezpiecznego interfejsu API możesz zaimplementować klienta, za pomocą którego możliwe jest przekazywanie tokenów uwierzytelniania do interfejsu API.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Należy zaimplementować odpowiednik klienta w celu nawiązania połączenia z serwerem, który obsługuje logowanie, wylogowywanie i zarządzanie tokenami. Przykłady oparte na kodzie możesz znaleźć w aplikacjach klienckich w systemie [iOS](https://github.com/MSOpenTech/azure-activedirectory-library-for-ios) i [Android](https://github.com/MSOpenTech/azure-activedirectory-library-for-android).
 * Aby uzyskać samouczek krok po kroku, zobacz [Node.js web app sign-in and sign-out with Azure AD (Logowanie się do aplikacji internetowych Node.js i wylogowywanie się z nich za pomocą usługi Azure AD)](quickstart-v1-openid-connect-code.md).

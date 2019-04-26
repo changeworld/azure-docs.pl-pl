@@ -7,11 +7,11 @@ ms.topic: reference
 ms.date: 02/13/2019
 ms.author: tomfitz
 ms.openlocfilehash: dd6836ef4f859ce77c1a56095d32373d8e08f468
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270399"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60388067"
 ---
 # <a name="tag-support-for-azure-resources"></a>Obsługa tagów dla zasobów platformy Azure
 W tym artykule opisano, czy typ zasobu obsługuje [tagi](resource-group-using-tags.md).
@@ -301,7 +301,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | Typ zasobu | Obsługa tagów |
 | ------------- | ----------- |
 | Możliwości | Nie | 
-| Dyski | Nie | 
+| dyski | Nie | 
 | images | Nie | 
 | osImages | Nie | 
 | osPlatformImages | Nie | 
@@ -328,7 +328,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | Typ zasobu | Obsługa tagów |
 | ------------- | ----------- |
 | availabilitySets | Yes | 
-| Dyski | Yes | 
+| dyski | Yes | 
 | images | Yes | 
 | restorePointCollections | Yes | 
 | restorePointCollections/restorePoints | Nie | 
@@ -864,7 +864,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | dnszones/TXT | Nie | 
 | expressRouteCircuits | Yes | 
 | expressRouteServiceProviders | Nie | 
-| frontdoors | Yes | 
+| usługi Frontdoor | Yes | 
 | frontdoorWebApplicationFirewallPolicies | Yes | 
 | getDnsResourceReference | Nie | 
 | interfaceEndpoints | Yes | 
@@ -1241,7 +1241,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | środowiska uruchomieniowe | Nie | 
 | farm serwerów | Yes | 
 | farm serwerów/procesów roboczych | Nie | 
-| Lokacje | Yes | 
+| lokacje | Yes | 
 | Lokacje/domainOwnershipIdentifiers | Nie | 
 | sites/hostNameBindings | Nie | 
 | Lokacje/wystąpieniach | Nie | 

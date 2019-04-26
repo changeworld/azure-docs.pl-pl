@@ -16,11 +16,11 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 59c06ae83327683942885190e4b401617dc020f9
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361374"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60468321"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Role administratorów przez zadanie administratora w usłudze Azure Active Directory
 
@@ -87,7 +87,7 @@ Zastosować poprawki do błąd synchronizacji | Współautor ([dokumentacji](htt
 Konfigurowanie powiadomień | Współautor ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Właściciel
 Konfigurowanie ustawień | Właściciel ([dokumentacji](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-operations)) | 
 Konfigurowanie powiadomień synchronizacji | Współautor ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Właściciel
-Raporty dotyczące zabezpieczeń AD FS odczytu | Odczytywanie zabezpieczeń | Współautor, właściciel
+Raporty dotyczące zabezpieczeń AD FS odczytu | Czytelnik zabezpieczeń | Współautor, właściciel
 Przeczytaj całą konfigurację | Czytnik ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Współautor, właściciel
 Błędy synchronizacji odczytu | Czytnik ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Współautor, właściciel
 Usługi synchronizacji odczytu | Czytnik ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Współautor, właściciel
@@ -115,10 +115,10 @@ Przeczytaj całą konfigurację | Czytnika w subskrypcji platformy Azure zawiera
 
 Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
 ---- | --------------------- | ----------------
-Wyłączanie urządzenia | Administrator urządzenia w chmurze | 
-Włączanie urządzenia | Administrator urządzenia w chmurze | 
+Wyłączanie urządzenia | Administrator urządzeń w chmurze | 
+Włączanie urządzenia | Administrator urządzeń w chmurze | 
 Odczyt konfiguracji podstawowej | Domyślna rola użytkownika ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
-Klucze funkcji BitLocker odczytu | Odczytywanie zabezpieczeń | Hasło administratora, administrator zabezpieczeń
+Klucze funkcji BitLocker odczytu | Czytelnik zabezpieczeń | Hasło administratora, administrator zabezpieczeń
 
 ## <a name="enterprise-applications"></a>Aplikacje dla przedsiębiorstw
 
@@ -131,7 +131,7 @@ Wyrazić zgodę na uzyskiwanie dostępu do danych własne aplikacje | Domyślna 
 Tworzenie aplikacji dla przedsiębiorstw | Administrator aplikacji w chmurze | Administrator aplikacji
 Zarządzaj serwera Proxy aplikacji | Administrator aplikacji | 
 Zarządzaj ustawieniami użytkownika | Administrator globalny | 
-Przejrzyj dostęp do odczytu grupę lub aplikację | Odczytywanie zabezpieczeń | Administrator zabezpieczeń, Administrator użytkowników
+Przejrzyj dostęp do odczytu grupę lub aplikację | Czytelnik zabezpieczeń | Administrator zabezpieczeń, Administrator użytkowników
 Przeczytaj całą konfigurację | Domyślna rola użytkownika ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
 Aktualizowanie przypisań aplikacji przedsiębiorstwa | Właściciel aplikacji przedsiębiorstwa ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Administrator aplikacji w chmurze, administrator aplikacji
 Aktualizuj właścicieli aplikacji przedsiębiorstwa | Właściciel aplikacji przedsiębiorstwa ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Administrator aplikacji w chmurze, administrator aplikacji
@@ -168,9 +168,9 @@ Konfigurowanie i włączanie lub wyłączanie zasad ryzyka dla użytkownika | Ad
 Konfigurowanie skróty co tydzień | Administrator zabezpieczeń| 
 Odrzuć wszystkie zdarzenia o podwyższonym ryzyku | Administrator zabezpieczeń | 
 Napraw lub odrzucić luk w zabezpieczeniach | Administrator zabezpieczeń | 
-Przeczytaj całą konfigurację | Odczytywanie zabezpieczeń | 
-Odczyt wszystkich zdarzeń o podwyższonym ryzyku | Odczytywanie zabezpieczeń | 
-Przeczytaj luk w zabezpieczeniach | Odczytywanie zabezpieczeń | 
+Przeczytaj całą konfigurację | Czytelnik zabezpieczeń | 
+Odczyt wszystkich zdarzeń o podwyższonym ryzyku | Czytelnik zabezpieczeń | 
+Przeczytaj luk w zabezpieczeniach | Czytelnik zabezpieczeń | 
 
 ## <a name="licenses"></a>Licencje
 
@@ -186,13 +186,13 @@ Wypróbuj i Kup subskrypcję | Administrator rozliczeń |
 
 Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
 ---- | --------------------- | ----------------
-Odczytaj dzienniki inspekcji | Czytnik raportów | Czytelnik zabezpieczeń, administratora zabezpieczeń
+Odczytaj dzienniki inspekcji | Czytelnik raportów | Czytelnik zabezpieczeń, administratora zabezpieczeń
 
 ## <a name="monitoring---sign-ins"></a>Monitorowanie — logowania
 
 Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
 ---- | --------------------- | ----------------
-Odczytywania dzienników logowania | Czytnik raportów | Czytelnik zabezpieczeń, administratora zabezpieczeń
+Odczytywania dzienników logowania | Czytelnik raportów | Czytelnik zabezpieczeń, administratora zabezpieczeń
 
 ## <a name="multi-factor-authentication"></a>Uwierzytelnianie wieloskładnikowe
 
@@ -247,8 +247,8 @@ Przeczytaj całą konfigurację | Administrator zabezpieczeń | Administrator u�
 
 Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
 ---- | --------------------- | ----------------
-Przypisywanie użytkowników do ról | Administrator roli uprzywilejowanej | 
-Konfigurowanie ustawień roli | Administrator roli uprzywilejowanej | 
+Przypisywanie użytkowników do ról | Administrator ról uprzywilejowanych | 
+Konfigurowanie ustawień roli | Administrator ról uprzywilejowanych | 
 Wyświetl działania inspekcji | Czytelnik zabezpieczeń | 
 Przeglądanie członkostwa w roli | Czytelnik zabezpieczeń | 
 
@@ -256,8 +256,8 @@ Przeglądanie członkostwa w roli | Czytelnik zabezpieczeń |
 
 Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
 ---- | --------------------- | ----------------
-Zarządzanie przypisaniami ról | Administrator roli uprzywilejowanej | 
-Przegląd dostępu do odczytu roli usługi Azure AD  | Odczytywanie zabezpieczeń | Administrator zabezpieczeń, administratorem ról uprzywilejowanych
+Zarządzanie przypisaniami ról | Administrator ról uprzywilejowanych | 
+Przegląd dostępu do odczytu roli usługi Azure AD  | Czytelnik zabezpieczeń | Administrator zabezpieczeń, administratorem ról uprzywilejowanych
 Przeczytaj całą konfigurację | Domyślna rola użytkownika ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
 
 ## <a name="security---authentication-methods"></a>Zabezpieczenia — metody uwierzytelniania
@@ -299,22 +299,22 @@ Aktualizowanie stanu zdarzenia | Administrator zabezpieczeń |
 
 Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
 ---- | --------------------- | ----------------
-Przeczytaj całą konfigurację | Odczytywanie zabezpieczeń | 
-Odczyt ryzykowne logowania | Odczytywanie zabezpieczeń | 
+Przeczytaj całą konfigurację | Czytelnik zabezpieczeń | 
+Odczyt ryzykowne logowania | Czytelnik zabezpieczeń | 
 
 ## <a name="security---users-flagged-for-risk"></a>Zabezpieczenia — użytkownicy oflagowani w związku z ryzykiem
 
 Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
 ---- | --------------------- | ----------------
 Odrzucanie wszystkich zdarzeń. | Administrator zabezpieczeń | 
-Przeczytaj całą konfigurację | Odczytywanie zabezpieczeń | 
-Przeczytaj użytkowników oznaczonych flagą ryzyka | Odczytywanie zabezpieczeń | 
+Przeczytaj całą konfigurację | Czytelnik zabezpieczeń | 
+Przeczytaj użytkowników oznaczonych flagą ryzyka | Czytelnik zabezpieczeń | 
 
 ## <a name="users"></a>Użytkownicy
 
 Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
 ---- | --------------------- | ----------------
-Dodawanie użytkownika do roli w katalogu | Administrator roli uprzywilejowanej | 
+Dodawanie użytkownika do roli w katalogu | Administrator ról uprzywilejowanych | 
 Dodaj użytkownika do grupy | Administrator użytkownika | 
 Przypisywanie licencji | Administrator licencji | Administrator użytkownika
 Tworzenie użytkownika-gościa | Osoba zapraszająca gości | Administrator użytkownika

@@ -10,11 +10,11 @@ ms.date: 03/22/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 6879dd975f97ba2746165e87a135e5d90e8b229f
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620645"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60308760"
 ---
 # <a name="scale-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>Skalowanie partycji i replik dla zapytań i indeksowania obciążeń w usłudze Azure Search
 Po zakończeniu [wybierz warstwę cenową](search-sku-tier.md) i [aprowizować usługę wyszukiwania](search-create-service-portal.md), następnym krokiem jest opcjonalnie zwiększyć liczbę repliki lub partycje używane przez usługę. Każda warstwa oferuje stałą liczbę jednostek rozliczeniowych. W tym artykule wyjaśniono, jak można przydzielić tych jednostek, aby osiągnąć optymalną konfigurację, która równoważy wymagań dotyczących wykonywania zapytania, indeksowania i magazynu.
@@ -29,7 +29,7 @@ Użycie mniejszej liczby wyników SUs w obniżenie proporcjonalnie. Rozliczenia 
 ## <a name="terminology-replicas-and-partitions"></a>Terminologia: replik i partycji
 Partycje i repliki są podstawowe zasoby obsługujące usługi wyszukiwania.
 
-| Zasób | Definicja |
+| Resource | Definicja |
 |----------|------------|
 |*Partycje* | Udostępnia magazyn indeksów i we/wy operacji odczytu/zapisu (na przykład, gdy przebudowa lub odświeżanie indeks).|
 |*Repliki* | Wystąpienia usługi wyszukiwania używane głównie w celu operacje zapytań równoważenia obciążenia. Każdej repliki zawsze hostuje jedną kopię indeksu. Jeśli masz 12 replik, masz 12 kopie każdego indeksu załadowane w usłudze.|

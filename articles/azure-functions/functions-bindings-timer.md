@@ -10,15 +10,16 @@ ms.assetid: d2f013d1-f458-42ae-baf8-1810138118ac
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-ms.date: 09/08/2018
-ms.author: cshoe
+origin.date: 09/08/2018
+ms.date: 04/26/2019
+ms.author: v-junlch
 ms.custom: ''
 ms.openlocfilehash: 0779ca2083691949821999322a3d732aed7b2694
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57760771"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60310047"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Wyzwalacz czasomierza dla usługi Azure Functions 
 
@@ -197,7 +198,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 > [!CAUTION]
-> Zaleca się ustawienie **runOnStartup** do `true` w środowisku produkcyjnym. Przy użyciu tego ustawienia powoduje, że kod, wykonaj w godzinach wysoce nieprzewidywalne. W niektórych środowiskach produkcyjnych te dodatkowe wykonania może spowodować znacząco wyższe koszty dla aplikacji hostowanych w ramach planów zużycia. Na przykład za pomocą **runOnStartup** włączony wyzwalacz w wywoływana zawsze wtedy, gdy aplikacja funkcji jest skalowany. Upewnij się, w pełni zrozumieć zachowanie produkcji funkcji przed włączeniem **runOnStartup** w środowisku produkcyjnym.   
+> Zaleca się ustawienie **runOnStartup** do `true` w środowisku produkcyjnym. Przy użyciu tego ustawienia powoduje, że kod, wykonaj w godzinach wysoce nieprzewidywalne. W niektórych środowiskach produkcyjnych te dodatkowe wykonania może spowodować znacząco wyższe koszty dla aplikacji hostowanych w ramach planów zużycia. Na przykład za pomocą **runOnStartup** włączony wyzwalacz w wywoływana zawsze wtedy, gdy aplikacja funkcji jest skalowany. Upewnij się, w pełni zrozumieć zachowanie produkcji funkcji przed włączeniem **runOnStartup** w środowisku produkcyjnym.
 
 ## <a name="usage"></a>Sposób użycia
 
@@ -314,3 +315,5 @@ Aby uzyskać informacje o tym, co zrobić, gdy wyzwalacz czasomierza nie działa
 
 > [!div class="nextstepaction"]
 > [Dowiedz się więcej na temat usługi Azure functions, wyzwalaczami i powiązaniami](functions-triggers-bindings.md)
+
+<!-- Update_Description: wording update -->

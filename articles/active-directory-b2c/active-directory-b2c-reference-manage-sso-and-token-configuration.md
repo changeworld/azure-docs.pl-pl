@@ -7,15 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/09/2018
-ms.author: davidmu
+origin.date: 10/09/2018
+ms.date: 04/01/2019
+ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: c0f5be7fd77ae195b66f8a8fb052ab8573d48171
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55856363"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60317177"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>Zarządzanie logowania jednokrotnego i dostosowywanie tokenu za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C
 
@@ -100,3 +101,4 @@ Następujące wartości są konfigurowane w poprzednim przykładzie:
 - **Jednokrotne logowanie jednokrotne (SSO)** — logowanie jednokrotne jest konfigurowana **SingleSignOn**. Odpowiednie wartości są `Tenant`, `Application`, `Policy`, i `Suppressed`. 
 - **Aplikacja sieci Web okres istnienia sesji (w minutach)** — sesji aplikacji sieci web okres istnienia została ustawiona za pomocą **SessionExpiryInSeconds** elementu. Wartość domyślna to 86400 sekund (1440 minut).
 - **Limit czasu sesji aplikacji sieci Web** — limit czasu można ustawić za pomocą sesji aplikacji sieci web **wartość SessionExpiryType** elementu. Odpowiednie wartości są `Absolute` i `Rolling`.
+

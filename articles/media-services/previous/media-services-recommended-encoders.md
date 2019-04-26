@@ -10,11 +10,11 @@ ms.date: 03/20/2019
 ms.topic: article
 ms.service: media-services
 ms.openlocfilehash: 373ce1d10af87603b1bdd6339c94891187c35d8c
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295372"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60332656"
 ---
 # <a name="recommended-on-premises-encoders"></a>Zalecane kodery lokalne
 Gdy strumieniowo na żywo za pomocą usługi Azure Media Services, można określić, jak chcesz kanał w taki sposób, aby otrzymywać strumień wejściowy. Jeśli zdecydujesz się na koder lokalnie za pomocą kanału kodowania na żywo, koder ma wypychać strumienia wysokiej jakości jedną szybkością transmisji bitów jako dane wyjściowe. Jeśli zdecydujesz się na koder lokalnie za pomocą przebiegu za pośrednictwem kanału, koder ma wypychać strumień o wielokrotnej szybkości transmisji bitów jako dane wyjściowe z wszystkich klas żądaną produktu wyjściowego. Aby uzyskać więcej informacji, zobacz [transmisja strumieniowa na żywo za pomocą na lokalne kodery](media-services-live-streaming-with-onprem-encoders.md).
@@ -23,22 +23,22 @@ Usługa Azure Media Services zaleca się przy użyciu jednej z poniższych koder
 - Adobe Flash Media Live Encoder 3.2
 - Haivision Makito X HEVC
 - Haivision KB
-- Telestream Wirecast 8.1 +
+- Telestream Wirecast 8.1+
 - Telestream Wirecast S
 - Teradek Slice 756
 - TriCaster 8000
-- HD Tricaster Mini-4
+- Tricaster Mini HD-4
 - OBS Studio
 - VMIX
 - xStream
-- Przełącznik Studio (iOS)
+- Switcher Studio (iOS)
 
 Usługa Azure Media Services zaleca się przy użyciu jednej z następujących koderów na żywo, które mają różnych szybkościach transmisji bitów podzielonej zawartości — w formacie MP4 (Smooth Streaming) jako dane wyjściowe:
-- Nośnik w programie Excel Hero na żywo i Hero 4K (UHD / — HEVC)
+- Media Excel Hero Live i Hero 4K (UHD/HEVC)
 - Ateme TITAN Live
-- Kodera multimediów cyfrowych Cisco 2200
+- Cisco Digital Media Encoder 2200
 - Elemental Live
-- Envivio 4Caster C4 ogólnego III
+- Envivio 4Caster C4 Gen III
 - Imagine Communications Selenio MCP3
 
 > [!NOTE]

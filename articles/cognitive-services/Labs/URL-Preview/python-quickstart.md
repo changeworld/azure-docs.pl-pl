@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 03/29/2018
 ms.author: rosh
 ms.openlocfilehash: afb64b799e826abc3e6aad661a97211b43304dc6
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873278"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60462728"
 ---
 # <a name="quickstart-url-preview-with-python"></a>Szybki start: Podgląd adresu URL za pomocą języka Python
 
@@ -65,7 +65,7 @@ def get_preview ():
 result = get_preview ()
 print (json.dumps(json.loads(result), indent=4))
 ```
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 - [Przewodnik Szybki start dla języka C#](csharp.md)
 - [Przewodnik Szybki start dla języka Java](java-quickstart.md)
 - [Przewodnik Szybki start dla języka JavaScript](javascript.md)

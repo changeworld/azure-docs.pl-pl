@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: v-erkell
 ms.openlocfilehash: 46978d19a0789bb43e861ca89661aa5b78eb4ec7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59271071"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60409895"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Planowanie systemu Avere vFXT
 
@@ -42,7 +42,7 @@ Podczas planowania systemu vFXT Avere infrastruktury sieci, należy przestrzega�
 
 * Szablon tworzenia klastra, można utworzyć większość zasobów infrastruktury wymaganych dla klastra, w tym grup zasobów, sieci wirtualne, podsieci i konta magazynu. Jeśli chcesz korzystać z zasobów, które już istnieją, upewnij się, że spełniają one wymagania opisane w tej tabeli. 
 
-  | Zasób | Użyj istniejącej? | Wymagania |
+  | Resource | Użyj istniejącej? | Wymagania |
   |----------|-----------|----------|
   | Grupa zasobów | Tak, jeśli jest pusty | Może być pusta| 
   | Konto magazynu | Tak, jeżeli połączenie istniejącego kontenera obiektów Blob po utworzeniu klastra <br/>  Nie w przypadku utworzenia nowego kontenera obiektów Blob podczas tworzenia klastra | Istniejący kontener obiektów Blob może być pusta <br/> &nbsp; |

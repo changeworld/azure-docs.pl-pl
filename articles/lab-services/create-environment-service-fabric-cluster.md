@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: enewman
 ms.openlocfilehash: 9848f197800c391285c4065685b910685f0ac64b
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57318789"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60312187"
 ---
 # <a name="create-an-environment-with-self-contained-service-fabric-cluster-in-azure-devtest-labs"></a>Utwórz środowisko przy użyciu niezależna klastra usługi Service Fabric w usłudze Azure DevTest Labs
 Ten artykuł zawiera informacje na temat sposobu tworzenia środowiska z klastrem usługi Service Fabric niezależna w usłudze Azure DevTest Labs. 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 DevTest Labs można tworzyć środowiska testowe niezależna, zgodnie z definicją w szablonach usługi Azure Resource Management. Te środowiska zawierają zarówno zasobów IaaS, takich jak maszyny wirtualne i zasobów PaaS, takich jak usługi Service Fabric. DevTest Labs umożliwia zarządzanie maszynami wirtualnymi w środowisku, zapewniając polecenia sterujące maszyn wirtualnych. Polecenia te zapewniają możliwość uruchamianie lub zatrzymywanie maszyny wirtualnej zgodnie z harmonogramem. Podobnie DevTest Labs może również ułatwić zarządzanie klastrami usługi Service Fabric w środowisku. Możesz rozpocząć lub zatrzymać klaster usługi Service Fabric w środowisku, ręcznie lub za pomocą harmonogramu.
 
 ## <a name="create-a-service-fabric-cluster"></a>Tworzenie klastra usługi Service Fabric

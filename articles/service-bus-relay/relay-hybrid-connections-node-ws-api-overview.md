@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2018
 ms.author: spelluru
-ms.openlocfilehash: bf0173f9c9802be689f7f3a893d381a251a2b16a
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 794e797e504d6064c13ffe0a4ed131e668d86e97
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43701140"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60421611"
 ---
 # <a name="relay-hybrid-connections-node-api-overview"></a>Przekazywania Przegląd węzła interfejsowi API połączeń hybrydowych
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 [ `hyco-ws` ](https://www.npmjs.com/package/hyco-ws) Pakiet Node dla połączeń hybrydowych usługi Azure Relay działa w oparciu i rozszerza ["ws"](https://www.npmjs.com/package/ws) pakietów Menedżera NPM. Ten pakiet ponownie eksportuje wszystkich eksporty tego samego podstawowego pakietu i dodaje nowe eksportu, które umożliwiają integrację z funkcją połączeń hybrydowych usługi Azure Relay. 
 
@@ -135,7 +135,7 @@ Argumenty konstruktora:
 
 `RelayedServer` wystąpienia emitować trzy zdarzenia, które umożliwiają obsłużyć żądań przychodzących, nawiązywać połączenia i wykrywania warunków błędów. Należy zasubskrybować `connect` zdarzeń do obsługi wiadomości. 
 
-##### <a name="headers"></a>nagłówki
+##### <a name="headers"></a>Nagłówki
 
 ```JavaScript 
 function(headers)

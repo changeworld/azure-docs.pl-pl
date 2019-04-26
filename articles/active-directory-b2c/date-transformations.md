@@ -3,7 +3,7 @@ title: Data przykłady przekształcania oświadczeń tożsamości środowisko Fr
 description: Data oświadczeń przykłady przekształcania tożsamości środowisko Framework schematu z usługi Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
@@ -11,11 +11,11 @@ ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: d36abb669490b3d3f6818c018b3844a82ecd0617
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564797"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60384252"
 ---
 # <a name="date-claims-transformations"></a>Data oświadczeń przekształcenia
 
@@ -29,8 +29,8 @@ Sprawdza, czy jeden daty i godziny oświadczenia (string — typ danych) jest no
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie InputClaim | leftOperand | ciąg | Typ pierwszego oświadczenia, który powinien przypadać później niż drugi oświadczenia. |
-| Oświadczenie InputClaim | rightOperand | ciąg | Drugi typ oświadczenia, który powinien być wcześniejszy niż pierwszego oświadczenia. |
+| Oświadczenie InputClaim | leftOperand | string | Typ pierwszego oświadczenia, który powinien przypadać później niż drugi oświadczenia. |
+| Oświadczenie InputClaim | rightOperand | string | Drugi typ oświadczenia, który powinien być wcześniejszy niż pierwszego oświadczenia. |
 | InputParameter | AssertIfEqualTo | wartość logiczna | Określa, czy ta asercja należy przekazać, jeśli lewy operand jest równa prawy operand. |
 | InputParameter | AssertIfRightOperandIsNotPresent | wartość logiczna | Określa, czy ta asercja należy przekazywać, jeśli brakuje prawy operand. |
 | InputParameter | TreatAsEqualIfWithinMillseconds | int | Określa liczbę milisekund, aby umożliwić między tymi dwoma daty i godziny wziąć pod uwagę czas, w którym równe (na przykład konto dla zegara). |
@@ -143,7 +143,7 @@ Określić, czy jeden daty/godziny jest, później, wcześniej lub równy innemu
 | ---- | ----------------------- | --------- | ----- |
 | Oświadczenie InputClaim | firstDateTime | Data i godzina | Pierwszą datę i godzinę do porównania, czy wcześniej lub później niż drugi daty/godziny. Wartość null zgłasza wyjątek. |
 | Oświadczenie InputClaim | secondDateTime | Data i godzina | Drugi daty/godziny do porównania, czy wcześniej lub późniejsza niż data i godzina pierwszego. Wartość null, jest traktowany jako bieżący datetTime. |
-| InputParameter | operator | ciąg | Jedną z następujących wartości: ten sam, późniejsza niż lub wcześniejsza niż. |
+| InputParameter | operator | string | Jedną z następujących wartości: ten sam, późniejsza niż lub wcześniejsza niż. |
 | InputParameter | timeSpanInSeconds | int | Dodaj zakres czasu do pierwszego daty/godziny. |
 | oświadczenie outputClaim | wynik | wartość logiczna | Typ oświadczenia, które są generowane po wywołaniu tego ClaimsTransformation. |
 

@@ -18,11 +18,11 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e734b932976896b2fb4d86e2627b7827d40a2545
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189893"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60454891"
 ---
 # <a name="plan-for-enhancing-data-security-through-a-strong-identity-solution"></a>Planowanie wzmocnienia zabezpieczeń danych za pośrednictwem rozwiązania silna tożsamość
 Pierwszym środkiem ochrony danych jest w celu zidentyfikowania, kto ma dostęp do tych danych. Ponadto musisz mieć rozwiązanie tożsamości, które można zintegrować z systemu w celu zapewnienia funkcji uwierzytelniania i autoryzacji. Uwierzytelnianie i autoryzacja są często mylona z cyfrą siebie nawzajem i ich ról źle zrozumiane. W rzeczywistości są one różne, jak pokazano na poniższej ilustracji:

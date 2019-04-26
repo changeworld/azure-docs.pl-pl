@@ -9,11 +9,11 @@ ms.date: 8/17/2018
 ms.author: rambala
 ms.custom: seodec18
 ms.openlocfilehash: 14f65851e50ed25024524f6d988ba2b2f2b3aeba
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53083788"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60367685"
 ---
 # <a name="configure-bfd-over-expressroute"></a>Konfigurowanie BFD za pośrednictwem usługi ExpressRoute
 
@@ -21,7 +21,7 @@ Usługa ExpressRoute obsługuje dwukierunkowe przesyłanie dalej wykrywania (BFD
 
 ## <a name="need-for-bfd"></a>Potrzebę BFD
 
-Na poniższym diagramie przedstawiono korzyści włączania BFD za pośrednictwem obwodu usługi ExpressRoute: [ ![1]][1]
+Na poniższym diagramie przedstawiono korzyści włączania BFD za pośrednictwem obwodu usługi ExpressRoute: [![1]][1]
 
 Można włączyć obwód usługi ExpressRoute za połączenia w warstwie 2 lub zarządzane połączenia w warstwie 3. W obu przypadkach Jeśli co najmniej jedno urządzenie warstwy 2 znajduje się w ścieżce połączenia usługi ExpressRoute, odpowiedzialność wykrywania błędów łącze w ścieżce spoczywa inne protokołu BGP.
 

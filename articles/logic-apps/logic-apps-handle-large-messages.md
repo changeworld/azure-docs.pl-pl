@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 4/27/2018
 ms.author: shhurst
 ms.openlocfilehash: 5aa5ea2a39a0fb9f969e965fed14063522197cda
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085806"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60303794"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Obsługa dużych komunikatów z segmentu w usłudze Azure Logic Apps
 
@@ -117,18 +117,18 @@ Poniższe kroki opisują proces szczegółowe, używanych przez aplikacje logiki
 
 1. Twoja aplikacja logiki wysyła początkowego żądania HTTP POST lub PUT z pustą treścią komunikatu. Nagłówek żądania zawiera informacje o zawartości, która chce przekazać we fragmentach aplikację logiki:
 
-   | Aplikacje logiki żądania pole nagłówka | Wartość | Typ | Opis |
+   | Aplikacje logiki żądania pole nagłówka | Wartość | Type | Opis |
    |---------------------------------|-------|------|-------------|
-   | **x-ms-— tryb transferu** | fragmentaryczne | Ciąg | Wskazuje, że zawartość została przekazana we fragmentach |
-   | **x-ms-content-length.** | <*Długość zawartości*> | Liczba całkowita | Całą zawartość rozmiar w bajtach przed dzielący na fragmenty |
+   | **x-ms-transfer-mode** | fragmentaryczne | String | Wskazuje, że zawartość została przekazana we fragmentach |
+   | **x-ms-content-length** | <*content-length*> | Liczba całkowita | Całą zawartość rozmiar w bajtach przed dzielący na fragmenty |
    ||||
 
 2. Punkt końcowy odpowiada za pomocą "200" pomyślny kod statusu i tych informacji opcjonalnych:
 
-   | Pola nagłówka odpowiedzi punktu końcowego | Typ | Wymagane | Opis |
+   | Pola nagłówka odpowiedzi punktu końcowego | Type | Wymagane | Opis |
    |--------------------------------|------|----------|-------------|
-   | **x-ms rozmiaru fragmentu** | Liczba całkowita | Nie | Rozmiar fragmentu sugerowane w bajtach |
-   | **Lokalizacja** | Ciąg | Nie | Adres URL lokalizacji, gdzie wysyłać wiadomości HTTP PATCH |
+   | **x-ms-chunk-size** | Liczba całkowita | Nie | Rozmiar fragmentu sugerowane w bajtach |
+   | **Lokalizacja** | String | Nie | Adres URL lokalizacji, gdzie wysyłać wiadomości HTTP PATCH |
    ||||
 
 3. Twoja aplikacja logiki tworzy i wysyła kolejnych komunikatów HTTP PATCH -, każdy z tych informacji:
@@ -137,11 +137,11 @@ Poniższe kroki opisują proces szczegółowe, używanych przez aplikacje logiki
 
    * Te szczegółowe informacje o nagłówku o zawartości fragmentu, wysyłanych w każdym komunikacie poprawki:
 
-     | Aplikacje logiki żądania pole nagłówka | Wartość | Typ | Opis |
+     | Aplikacje logiki żądania pole nagłówka | Wartość | Type | Opis |
      |---------------------------------|-------|------|-------------|
-     | **Content-Range** | <*Zakres*> | Ciąg | Zakres bajtów dla bieżącego fragmentu zawartości, łącznie z wartością początkową końcową wartość i łączny rozmiar zawartości, na przykład: "bajtów = 0-1023/10100" |
-     | **Typ zawartości** | <*Typ zawartości*> | Ciąg | Typ zawartości, fragmentaryczne |
-     | **Długość zawartości** | <*Długość zawartości*> | Ciąg | Długość Rozmiar w bajtach bieżąca fragmentów |
+     | **Content-Range** | <*range*> | String | Zakres bajtów dla bieżącego fragmentu zawartości, łącznie z wartością początkową końcową wartość i łączny rozmiar zawartości, na przykład: "bajtów = 0-1023/10100" |
+     | **Typ zawartości** | <*content-type*> | String | Typ zawartości, fragmentaryczne |
+     | **Długość zawartości** | <*content-length*> | String | Długość Rozmiar w bajtach bieżąca fragmentów |
      |||||
 
 4. Po wykonaniu każdego żądania PATCH punktu końcowego potwierdza potwierdzenia dla każdego fragmentu odpowiedzi z kodem stanu "200".

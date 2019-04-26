@@ -18,11 +18,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 66dd017e8f78f1e93c96262b42dc084c165cdef7
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437684"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60285484"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Informacje o działaniach inspekcji usługi Azure AD
 
@@ -103,9 +103,9 @@ W tym artykule wymieniono działania inspekcji, które mogą być rejestrowane w
 |Zarządzanie katalogami|Usuwanie elementu OAuth2PermissionGrant|
 |Zarządzanie katalogami|Usuwanie przypisania roli aplikacji z jednostki usługi|
 |Zarządzanie katalogami|Usuwanie właściciela z aplikacji|
-|Zasób|Usuwanie właściciela z jednostki usługi|
-|Zasób|Usuwanie zasad z jednostki usługi|
-|Zasób|Usuwanie jednostki usługi|
+|Resource|Usuwanie właściciela z jednostki usługi|
+|Resource|Usuwanie zasad z jednostki usługi|
+|Resource|Usuwanie jednostki usługi|
 
 
 ## <a name="automated-password-rollover"></a>Automatyczne przenoszenie haseł
@@ -269,79 +269,79 @@ W tym artykule wymieniono działania inspekcji, które mogą być rejestrowane w
 |Klucz|Usunięto katalog|
 |Inne|Trwale usunięto katalog|
 |Inne|Katalog zaplanowany do usunięcia|
-|Zasób|Podwyższanie poziomu firmy do partnera|
-|Zasób|Przeczyszczanie właściwości usługi Rights Management|
-|Zasób|Usuwanie partnera z firmy|
-|Zasób|Usuwanie niezweryfikowanej domeny|
-|Zasób|Usuwanie zweryfikowanej domeny|
-|Zasób|Ustaw informacje o firmie|
-|Zasób|Ustawianie funkcji Dirsync|
-|Zasób|Ustawianie flagi Dirsyncenabled|
-|Zasób|Ustaw partnerstwo|
-|Zasób|Ustawianie progu przypadkowego usunięcia|
-|Zasób|Ustawianie lokalizacji danych dozwolonych przez firmę|
-|Zasób|Włączanie funkcji międzynarodowej firmy|
-|Zasób|Ustawianie funkcji katalogu w dzierżawie|
-|Zasób|Ustawianie uwierzytelniania domeny|
-|Zasób|Określanie ustawień federacyjnych w domenie|
-|Zasób|Ustawianie zasad haseł|
-|Zasób|Ustawianie właściwości usługi Rights Management|
-|Zasób|Aktualizowanie firmy|
-|Zasób|Aktualizowanie ustawień firmy|
-|Zasób|Aktualizowanie domeny|
-|Zasób|Weryfikowanie domeny|
-|Zasób|Sprawdzanie domeny zweryfikowanej za pomocą wiadomości e-mail|
-|Zasób|Dołączanie|
-|Zasób|Aktualizowanie ustawień alertów|
-|Zasób|Aktualizowanie ustawień podsumowania tygodniowego|
-|Zasób|Wyłączanie funkcji zapisywania zwrotnego haseł dla katalogu|
-|Zasób|Włączanie funkcji zapisywania zwrotnego haseł dla katalogu|
-|Zasób|Dodawanie przypisania roli aplikacji do grupy|
-|Zasób|Dodawanie grupy|
-|Zasób|Dodawanie elementu członkowskiego do grupy|
-|Zasób|Dodawanie właściciela do grupy|
-|Zasób|Tworzenie ustawień grupy|
-|Zasób|Usuwanie grupy|
-|Zasób|Usuwanie ustawień grupy|
-|Zasób|Kończenie stosowania licencji opartej na grupie wobec użytkowników|
-|Zasób|Całkowite usuwanie grupy|
-|Zasób|Usuwanie przypisania roli aplikacji z grupy|
-|Zasób|Usuwanie elementu członkowskiego z grupy|
-|Zasób|Usuwanie właściciela z grupy|
-|Zasób|Przywracanie grupy|
-|Zasób|Ustawianie licencji grupy|
-|Zasób|Ustawianie grupy do zarządzania przez użytkownika|
-|Zasób|Rozpoczynanie stosowania licencji opartej na grupie wobec użytkowników|
-|Zasób|Wyzwalanie ponownego obliczania licencji grupy|
-|Zasób|Aktualizowanie grupy|
-|Zasób|Aktualizowanie ustawień grupy|
-|Zasób|Dodaj członka|
-|Zasób|Tworzenie grupy|
-|Zasób|Usuń grupę|
-|Zasób|Usuń członka|
-|Zasób|Zaktualizuj grupę|
-|Zasób|Zatwierdzanie oczekującego żądania dołączenia do grupy|
-|Zasób|Anulowanie oczekującego żądania dołączenia do grupy|
-|Zasób|Tworzenie zasad zarządzania cyklem życia|
-|Zasób|Usuwanie oczekującego żądania dołączenia do grupy|
-|Zasób|Odrzucanie oczekującego żądania dołączenia do grupy|
-|Zasób|Odnawianie grupy|
-|Zasób|Żądanie dołączenia do grupy|
-|Zasób|Ustawianie właściwości grupy dynamicznej|
-|Zasób|Aktualizowanie zasad zarządzania cyklem życia|
-|Zasób|Dodawanie klucza opartego na wpisie tajnym w formacie ASCII do kontenera kluczy CPIM|
-|Zasób|Dodawanie klucza do kontenera kluczy CPIM|
-|Zasób|Usuwanie kontenera kluczy CPIM|
-|Zasób|Usuwanie kontenera kluczy|
-|Zasób|Pobieranie metadanych klucza aktywnego kontenera kluczy w formacie JWK|
-|Zasób|Pobranie metadanych kontenera kluczy|
-|Zasób|Pobiera kontener kluczy CPIM w formacie JWK|
-|Zasób|Pobiera listę kontenerów kluczy w ramach dzierżawy|
-|Zasób|Przywracanie kopii zapasowej kontenera kluczy CPIM|
-|Zasób|Zapisywanie kontenera kluczy|
-|Zasób|Przekazywanie zaszyfrowanego klucza CPIM|
-|Zasób|Wystawianie kodu autoryzacji dla aplikacji|
-|Zasób|Wystawianie elementu id_token dla aplikacji|
+|Resource|Podwyższanie poziomu firmy do partnera|
+|Resource|Przeczyszczanie właściwości usługi Rights Management|
+|Resource|Usuwanie partnera z firmy|
+|Resource|Usuwanie niezweryfikowanej domeny|
+|Resource|Usuwanie zweryfikowanej domeny|
+|Resource|Ustaw informacje o firmie|
+|Resource|Ustawianie funkcji Dirsync|
+|Resource|Ustawianie flagi Dirsyncenabled|
+|Resource|Ustaw partnerstwo|
+|Resource|Ustawianie progu przypadkowego usunięcia|
+|Resource|Ustawianie lokalizacji danych dozwolonych przez firmę|
+|Resource|Włączanie funkcji międzynarodowej firmy|
+|Resource|Ustawianie funkcji katalogu w dzierżawie|
+|Resource|Ustawianie uwierzytelniania domeny|
+|Resource|Określanie ustawień federacyjnych w domenie|
+|Resource|Ustawianie zasad haseł|
+|Resource|Ustawianie właściwości usługi Rights Management|
+|Resource|Aktualizowanie firmy|
+|Resource|Aktualizowanie ustawień firmy|
+|Resource|Aktualizowanie domeny|
+|Resource|Weryfikowanie domeny|
+|Resource|Sprawdzanie domeny zweryfikowanej za pomocą wiadomości e-mail|
+|Resource|Dołączanie|
+|Resource|Aktualizowanie ustawień alertów|
+|Resource|Aktualizowanie ustawień podsumowania tygodniowego|
+|Resource|Wyłączanie funkcji zapisywania zwrotnego haseł dla katalogu|
+|Resource|Włączanie funkcji zapisywania zwrotnego haseł dla katalogu|
+|Resource|Dodawanie przypisania roli aplikacji do grupy|
+|Resource|Dodawanie grupy|
+|Resource|Dodawanie elementu członkowskiego do grupy|
+|Resource|Dodawanie właściciela do grupy|
+|Resource|Tworzenie ustawień grupy|
+|Resource|Usuwanie grupy|
+|Resource|Usuwanie ustawień grupy|
+|Resource|Kończenie stosowania licencji opartej na grupie wobec użytkowników|
+|Resource|Całkowite usuwanie grupy|
+|Resource|Usuwanie przypisania roli aplikacji z grupy|
+|Resource|Usuwanie elementu członkowskiego z grupy|
+|Resource|Usuwanie właściciela z grupy|
+|Resource|Przywracanie grupy|
+|Resource|Ustawianie licencji grupy|
+|Resource|Ustawianie grupy do zarządzania przez użytkownika|
+|Resource|Rozpoczynanie stosowania licencji opartej na grupie wobec użytkowników|
+|Resource|Wyzwalanie ponownego obliczania licencji grupy|
+|Resource|Aktualizowanie grupy|
+|Resource|Aktualizowanie ustawień grupy|
+|Resource|Dodaj członka|
+|Resource|Tworzenie grupy|
+|Resource|Usuń grupę|
+|Resource|Usuń członka|
+|Resource|Zaktualizuj grupę|
+|Resource|Zatwierdzanie oczekującego żądania dołączenia do grupy|
+|Resource|Anulowanie oczekującego żądania dołączenia do grupy|
+|Resource|Tworzenie zasad zarządzania cyklem życia|
+|Resource|Usuwanie oczekującego żądania dołączenia do grupy|
+|Resource|Odrzucanie oczekującego żądania dołączenia do grupy|
+|Resource|Odnawianie grupy|
+|Resource|Żądanie dołączenia do grupy|
+|Resource|Ustawianie właściwości grupy dynamicznej|
+|Resource|Aktualizowanie zasad zarządzania cyklem życia|
+|Resource|Dodawanie klucza opartego na wpisie tajnym w formacie ASCII do kontenera kluczy CPIM|
+|Resource|Dodawanie klucza do kontenera kluczy CPIM|
+|Resource|Usuwanie kontenera kluczy CPIM|
+|Resource|Usuwanie kontenera kluczy|
+|Resource|Pobieranie metadanych klucza aktywnego kontenera kluczy w formacie JWK|
+|Resource|Pobranie metadanych kontenera kluczy|
+|Resource|Pobiera kontener kluczy CPIM w formacie JWK|
+|Resource|Pobiera listę kontenerów kluczy w ramach dzierżawy|
+|Resource|Przywracanie kopii zapasowej kontenera kluczy CPIM|
+|Resource|Zapisywanie kontenera kluczy|
+|Resource|Przekazywanie zaszyfrowanego klucza CPIM|
+|Resource|Wystawianie kodu autoryzacji dla aplikacji|
+|Resource|Wystawianie elementu id_token dla aplikacji|
 
 
 ## <a name="core-directory"></a>Katalog podstawowy
@@ -432,18 +432,18 @@ W tym artykule wymieniono działania inspekcji, które mogą być rejestrowane w
 |Zarządzanie zasadami|GetIEFPolicies|
 |Zarządzanie zasadami|GetIdentityProviders|
 |Zarządzanie zasadami|GetTrustFrameworkPolicy|
-|Zasób|MigrateTenantMetadata|
-|Zasób|Przenoszenie zasobów|
-|Zasób|Stosowanie poprawek względem dostawcy tożsamości|
-|Zasób|PutTrustFrameworkPolicy|
-|Zasób|PutTrustFrameworkpolicy|
-|Zasób|Usuwanie podróży użytkownika|
-|Zasób|Aktualizowanie niestandardowego dostawcy tożsamości|
-|Zasób|Aktualizowanie dostawcy tożsamości|
-|Zasób|Aktualizowanie lokalnego dostawcy tożsamości|
-|Zasób|Aktualizowanie zasobu katalogu B2C|
-|Zasób|Aktualizowanie zasad|
-|Zasób|Aktualizowanie stanu subskrypcji|
+|Resource|MigrateTenantMetadata|
+|Resource|Przenoszenie zasobów|
+|Resource|Stosowanie poprawek względem dostawcy tożsamości|
+|Resource|PutTrustFrameworkPolicy|
+|Resource|PutTrustFrameworkpolicy|
+|Resource|Usuwanie podróży użytkownika|
+|Resource|Aktualizowanie niestandardowego dostawcy tożsamości|
+|Resource|Aktualizowanie dostawcy tożsamości|
+|Resource|Aktualizowanie lokalnego dostawcy tożsamości|
+|Resource|Aktualizowanie zasobu katalogu B2C|
+|Resource|Aktualizowanie zasad|
+|Resource|Aktualizowanie stanu subskrypcji|
 |Zarządzanie rolami|Aktualizowanie atrybutu użytkownika|
 |Zarządzanie rolami|Weryfikacja przenoszenia zasobów|
 |Zarządzanie rolami|Dodawanie urządzenia|

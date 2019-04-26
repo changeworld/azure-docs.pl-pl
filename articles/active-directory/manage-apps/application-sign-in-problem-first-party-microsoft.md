@@ -16,12 +16,12 @@ ms.date: 09/10/2018
 ms.author: celested
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0522311c12da8416504a6d502e1e2247ff8ce15b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 256ca5c2f26a6bac6bdfd09e4dd6294ec5a569ca
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58104152"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60292201"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>Problemy z logowaniem do aplikacji firmy Microsoft
 
@@ -31,7 +31,7 @@ Istnieją trzy sposoby, czy użytkownik może uzyskać dostęp do aplikacji opub
 
 -   W przypadku aplikacji w usłudze Office 365 lub innych mechanizmów płatnych użytkownicy uzyskują dostęp za pośrednictwem **przypisania licencji** albo bezpośrednio do swojego konta użytkownika, albo przez grupę przy użyciu naszego możliwość przypisania oparte na grupach licencji.
 
--   W przypadku aplikacji, które firmy Microsoft lub inna firma publikuje bezpłatnie dla wszystkich użytkowników może otrzymać dostęp za pośrednictwem **zgody użytkownika**. This0 oznacza Zaloguj się do aplikacji za pomocą konta usługi Azure AD konta służbowego i zezwala na dostęp do niektórych ograniczony zestaw danych na koncie.
+-   W przypadku aplikacji, które firmy Microsoft lub inna firma publikuje bezpłatnie dla wszystkich użytkowników może otrzymać dostęp za pośrednictwem **zgody użytkownika**. Oznacza to, zaloguj się do aplikacji za pomocą konta usługi Azure AD konta służbowego i zezwala na dostęp do niektórych ograniczony zestaw danych na koncie.
 
 -   W przypadku aplikacji, które publikuje firmy Microsoft lub 3 bezpłatnie dla wszystkich użytkowników może również uzyskać dostęp za pośrednictwem **zgody administratora**. Oznacza to, że administrator wykrył, że aplikacji mogą być używane przez wszystkich użytkowników w organizacji, tak aby zalogować się do aplikacji przy użyciu konta administratora globalnego i przyznać dostęp do wszystkich osób w organizacji.
 

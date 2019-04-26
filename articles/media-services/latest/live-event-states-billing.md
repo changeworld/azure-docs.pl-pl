@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/28/2019
 ms.author: juliako
 ms.openlocfilehash: 17fead25840e45f98478a6eb6c146bcc261dfe75
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55158013"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60322322"
 ---
 # <a name="live-event-states-and-billing"></a>Stany zdarzenia na żywo i rozliczeń
 
@@ -34,7 +34,7 @@ Wydarzenie na żywo może mieć jeden z następujących stanów.
 |---|---|
 |**Zatrzymana**| To jest wstępny stan wydarzenie na żywo po utworzeniu (chyba że autostart została ustawiona na wartość true.) Rozliczenia nie występuje w tym stanie. W tym stanie właściwości wydarzenie na żywo mogą być aktualizowane, ale transmisja strumieniowa jest niedozwolona.|
 |**Uruchamianie**| Wydarzenie na żywo jest uruchamiana i przydzielania zasobów. Rozliczenia nie występuje w tym stanie. Aktualizacje lub przesyłania strumieniowego nie są dozwolone w tym stanie. Jeśli wystąpi błąd, wydarzenie na żywo wróci do stanu zatrzymany.|
-|**Uruchamianie**| Wygenerowano wydarzenie na żywo zasoby zostały przydzielone, pozyskiwania i adresy URL w wersji zapoznawczej i jest w stanie odbieranie transmisje strumieniowe na żywo. W tym momencie rozliczeń jest aktywny. Należy jawnie wywołać Stop zasobu wydarzenie na żywo, aby zatrzymać dalsze rozliczeń.|
+|**Uruchomiono**| Wygenerowano wydarzenie na żywo zasoby zostały przydzielone, pozyskiwania i adresy URL w wersji zapoznawczej i jest w stanie odbieranie transmisje strumieniowe na żywo. W tym momencie rozliczeń jest aktywny. Należy jawnie wywołać operację zatrzymywania w zasobie wydarzenia na żywo, aby zatrzymać dalsze rozliczenia.|
 |**Zatrzymywanie**| Wydarzenie na żywo jest zatrzymywana i zasoby są w rozliczeniu. Rozliczenia nie występuje w tym stanie przejściowym. Aktualizacje lub przesyłania strumieniowego nie są dozwolone w tym stanie.|
 |**Usuwanie**| Wydarzenie na żywo jest usuwana. Rozliczenia nie występuje w tym stanie przejściowym. Aktualizacje lub przesyłania strumieniowego nie są dozwolone w tym stanie.|
 

@@ -14,15 +14,15 @@ ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 537ee35e96a41cd02605319e244d39c6567c3bf1
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56337207"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60344606"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-azure-resource-manager-templates"></a>Zarządzanie dostępem do zasobów platformy Azure przy użyciu szablonów RBAC i usługi Azure Resource Manager
 
-[Kontrola dostępu oparta na rolach (RBAC)](overview.md) sposób zarządzania dostępem do zasobów platformy Azure. Oprócz używania programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure, możesz zarządzać dostępem do zasobów platformy Azure przy użyciu funkcji RBAC i [szablonów usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md). Szablony mogą być przydatne, jeśli zajdzie potrzeba wdrożenia zasobów spójnego i wielokrotnego. W tym artykule opisano, jak możesz zarządzać dostępem przy użyciu RBAC i szablony.
+[Kontrola dostępu oparta na rolach (RBAC, Role Based Access Control)](overview.md) to sposób zarządzania dostępem do zasobów platformy Azure. Oprócz używania programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure, możesz zarządzać dostępem do zasobów platformy Azure przy użyciu funkcji RBAC i [szablonów usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md). Szablony mogą być przydatne, jeśli zajdzie potrzeba wdrożenia zasobów spójnego i wielokrotnego. W tym artykule opisano, jak możesz zarządzać dostępem przy użyciu RBAC i szablony.
 
 ## <a name="example-template-to-create-a-role-assignment"></a>Przykładowy szablon, można utworzyć przypisania roli
 
@@ -252,5 +252,5 @@ Aby wdrożyć poprzedni szablon przy użyciu wiersza polecenia platformy Azure, 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Szybki start: Tworzenie i wdrażanie szablonów usługi Azure Resource Manager przy użyciu witryny Azure Portal](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)
-- [Omówienie struktury i składni szablonów usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md)
+- [Understand the structure and syntax of Azure Resource Manager Templates (Omówienie struktury i składni szablonów usługi Azure Resource Manager)](../azure-resource-manager/resource-group-authoring-templates.md)
 - [Szablony Szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/?term=rbac)

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
 ms.openlocfilehash: 105b8481486c088a05e3acb95081d3ee55b55f52
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57897113"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60372024"
 ---
 # <a name="create-an-additional-azure-subscription-for-microsoft-customer-agreement"></a>Należy utworzyć dodatkową subskrypcję platformy Azure dla umowy klienta firmy Microsoft
 
@@ -59,7 +59,7 @@ Dodawać użytkowników jako subskrypcji platformy Azure dla twórców w sekcji 
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
-2. Wyszukiwanie **Cost Management + rozliczenia**.
+2. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
 
    ![Zrzut ekranu pokazujący wyszukiwania w portalu dla subskrypcji](./media/billing-mca-create-subscription/billing-search-cost-management-billing.png)
 
@@ -67,7 +67,7 @@ Dodawać użytkowników jako subskrypcji platformy Azure dla twórców w sekcji 
 
 4. Wybierz **zarządzania dostępu (IAM)** z góry z lewej strony.
 
-5. W górnej części strony, wybierz **Dodaj**.
+5. W górnej części strony wybierz pozycję **Dodaj**.
 
 6. Wybierz **twórca subskrypcji platformy Azure** dla roli.
 

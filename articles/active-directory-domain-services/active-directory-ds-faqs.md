@@ -16,11 +16,11 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: ergreenl
 ms.openlocfilehash: a91c015561ca173412e4d6710d5531a7d084bfd0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55193016"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60359096"
 ---
 # <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Azure Active Directory Domain Services: Często zadawane pytania
 Ta strona odpowiedzi na często zadawane pytania dotyczące usługi Azure Active Directory Domain Services. Wracaj aktualizacje.

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: c84d015da907c8792f09d1d60e6bc8eddb7e2957
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005602"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60444371"
 ---
 # <a name="troubleshoot-a-problem-azure-vm-by-using-nested-virtualization-in-azure"></a>Rozwiązać problem z maszyny Wirtualnej platformy Azure przy użyciu wirtualizacji zagnieżdżonej na platformie Azure
 
@@ -35,13 +35,13 @@ Zainstaluj maszynę Wirtualną problemie, maszyna wirtualna ratownictwa musi spe
 
 -   Ratownictwa maszyny Wirtualnej musi używać tego samego typu konta magazynu (standardowa / Premium), co problem maszyny Wirtualnej.
 
-## <a name="step-1-create-a-rescue-vm-and-install-hyper-v-role"></a>Krok 1: Tworzenie maszyny Wirtualnej ratownictwa i zainstaluj rolę Hyper-V
+## <a name="step-1-create-a-rescue-vm-and-install-hyper-v-role"></a>Krok 1: Utwórz Maszynę wirtualną ratownictwa i zainstalować rolę funkcji Hyper-V
 
 1.  Utwórz nową maszynę Wirtualną ratownictwa:
 
     -  System operacyjny: Windows Server 2016 Datacenter
 
-    -  Rozmiar: V3 serii co najmniej dwa rdzenie że wirtualizacja zagnieżdżona pomocy technicznej. Aby uzyskać więcej informacji, zobacz [Przedstawiamy nowe rozmiary Dv3 i Ev3 VM](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/).
+    -  Rozmiar: Dowolnej serii V3 z co najmniej dwa rdzenie, obsługujących wirtualizację zagnieżdżoną. Aby uzyskać więcej informacji, zobacz [Przedstawiamy nowe rozmiary Dv3 i Ev3 VM](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/).
 
     -  Tej samej lokalizacji, konto magazynu i grupie zasobów co problem maszyny Wirtualnej.
 
@@ -71,7 +71,7 @@ Zainstaluj maszynę Wirtualną problemie, maszyna wirtualna ratownictwa musi spe
 
 13. Zezwalaj na serwer zainstalować rolę funkcji Hyper-V. Trwa to kilka minut, a serwer zostanie automatycznie ponownie uruchomiony.
 
-## <a name="step-2-create-the-problem-vm-on-the-rescue-vms-hyper-v-server"></a>Krok 2: Utwórz problem maszyny Wirtualnej na serwerze funkcji Hyper-V VM ratownictwa
+## <a name="step-2-create-the-problem-vm-on-the-rescue-vms-hyper-v-server"></a>Krok 2: Utwórz problem maszyny Wirtualnej na serwerze funkcji Hyper-V ratownictwa maszyny Wirtualnej
 
 1.  Zapisz nazwę dysku w problem maszyny Wirtualnej, a następnie usuń problem maszyny Wirtualnej. Upewnij się, że utrzymywanie wszystkich dołączonych dysków. 
 
@@ -85,7 +85,7 @@ Zainstaluj maszynę Wirtualną problemie, maszyna wirtualna ratownictwa musi spe
 
 3.  Po dysk został pomyślnie dołączone, zdalny pulpit maszyny Wirtualnej ratunkowe.
 
-4.  Otwórz okno Zarządzanie dyskami (diskmgmt.msc). Upewnij się, że dysk problem maszyny Wirtualnej, jest ustawiona na **Offline**.
+4.  Open Disk Management (diskmgmt.msc). Upewnij się, że dysk problem maszyny Wirtualnej, jest ustawiona na **Offline**.
 
 5.  Otwórz Menedżera funkcji Hyper-V: W **Menedżera serwera**, wybierz opcję **roli funkcji Hyper-V**. Kliknij prawym przyciskiem myszy serwer, a następnie wybierz **Menedżera funkcji Hyper-V**.
 
@@ -122,7 +122,7 @@ Zainstaluj maszynę Wirtualną problemie, maszyna wirtualna ratownictwa musi spe
 
 19. Możesz teraz działać na maszynie Wirtualnej jako lokalną maszynę Wirtualną. Możesz wykonać kroki rozwiązywania problemów, które są potrzebne.
 
-## <a name="step-3-re-create-your-azure-vm-in-azure"></a>Krok 3: Ponownie utwórz sieci maszyn wirtualnych platformy Azure na platformie Azure
+## <a name="step-3-re-create-your-azure-vm-in-azure"></a>Krok 3: Ponownie utwórz maszynę Wirtualną platformy Azure na platformie Azure
 
 1.  Po uzyskaniu z powrotem do trybu online maszyny Wirtualnej, zamknij maszynę Wirtualną w Menedżerze funkcji Hyper-V.
 

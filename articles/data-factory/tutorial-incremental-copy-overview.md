@@ -3,21 +3,22 @@ title: Przyrostowe kopiowanie danych przy użyciu usługi Azure Data Factory | M
 description: W tych samouczkach przedstawiono sposób przyrostowego kopiowania danych ze źródłowego magazynu danych do docelowego magazynu danych. W pierwszym z nich opisane jest kopiowanie danych z jednej tabeli.
 services: data-factory
 documentationcenter: ''
-author: dearandyxu
-manager: craigg
+author: WenJason
+manager: digimobile
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/22/2018
-ms.author: yexu
+origin.date: 01/22/2018
+ms.date: 04/22/2019
+ms.author: v-jay
 ms.openlocfilehash: cb75e943416c227730589ab5e7feeb7b8ba5e245
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56957933"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60335984"
 ---
 # <a name="incrementally-load-data-from-a-source-data-store-to-a-destination-data-store"></a>Przyrostowe ładowanie danych ze źródłowego do docelowego magazynu danych
 
@@ -55,7 +56,7 @@ Możesz kopiować tylko nowe pliki, gdy pliki lub foldery zostały już poddane 
 Aby uzyskać instrukcje krok po kroku, zobacz następujące samouczki: <br/>
 [Przyrostowe kopiowanie nowych plików na podstawie partycjonowanego na podstawie czasu folderu lub nazwy pliku z usługi Azure Blob Storage do usługi Azure Blob Storage](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Przejdź do następującego samouczka: 
 
 > [!div class="nextstepaction"]

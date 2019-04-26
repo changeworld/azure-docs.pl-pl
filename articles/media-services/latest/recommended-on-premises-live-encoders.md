@@ -10,11 +10,11 @@ ms.date: 01/17/2019
 ms.topic: article
 ms.service: media-services
 ms.openlocfilehash: c7d895cd87122374a79a520643580a179961fba3
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317327"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60405362"
 ---
 # <a name="recommended-live-streaming-encoders"></a>Zalecane kodery transmisji strumieniowej na żywo
 
@@ -31,21 +31,21 @@ Aby uzyskać szczegółowe informacje na temat kodowania na żywo za pomocą us�
 
 ## <a name="live-encoders-that-output-rtmp"></a>Dane wyjściowe RTMP koderów na żywo
 
-Usługa Media Services zaleca się przy użyciu jednej z następujących koderów na żywo, które mają RTMP jako dane wyjściowe. Obsługiwane schematy adresów URL są `rtmp://` lub `rtmps://`.
+Usługa Media Services zaleca używanie jednego z następujących koderów na żywo, które jako dane wyjściowe mają pliki RTMP. Obsługiwane schematy adresów URL są `rtmp://` lub `rtmps://`.
 
 > [!NOTE]
-> Podczas przesyłania strumieniowego za pośrednictwem protokołu RTMP, sprawdź ustawienia zapory i/lub serwer proxy, aby upewnić się, że porty TCP ruchu wychodzącego 1935 i 1936 są otwarte.
+> Podczas przesyłania strumieniowego za pośrednictwem protokołu RTMP sprawdź ustawienia zapory i/lub serwera proxy, aby upewnić się, że porty TCP ruchu wychodzącego 1935 i 1936 są otwarte.
 
 - Adobe Flash Media Live Encoder 3.2
 - Haivision KB
 - Haivision Makito X HEVC
 - OBS Studio
-- Przełącznik Studio (iOS)
-- Telestream Wirecast 8.1 +
+- Switcher Studio (iOS)
+- Telestream Wirecast 8.1+
 - Telestream Wirecast S
 - Teradek Slice 756
 - TriCaster 8000
-- HD Tricaster Mini-4
+- Tricaster Mini HD-4
 - VMIX
 - xStream
 
@@ -54,11 +54,11 @@ Usługa Media Services zaleca się przy użyciu jednej z następujących koderó
 Usługa Media Services zaleca się przy użyciu jednej z następujących koderów na żywo, które mają różnych szybkościach transmisji bitów Smooth Streaming (pofragmentowany MP4) jako dane wyjściowe. Obsługiwane schematy adresów URL są `http://` lub `https://`.
 
 - Ateme TITAN Live
-- Kodera multimediów cyfrowych Cisco 2200
+- Cisco Digital Media Encoder 2200
 - Elemental Live
-- Envivio 4Caster C4 ogólnego III
+- Envivio 4Caster C4 Gen III
 - Imagine Communications Selenio MCP3
-- Nośnik w programie Excel Hero na żywo i Hero 4K (UHD / — HEVC)
+- Media Excel Hero Live i Hero 4K (UHD/HEVC)
 
 ## <a name="configuring-on-premises-live-encoder-settings"></a>Konfigurowanie lokalnych ustawień kodera na żywo
 

@@ -9,11 +9,11 @@ ms.date: 01/26/2017
 ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: 306e3ccf19ba8db2de01e4b20a52707215a4a040
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470369"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60320710"
 ---
 # <a name="reviewing-azure-importexport-job-status-with-copy-log-files"></a>Sprawdzanie stanu zadania usługi Azure Import/Export, za pomocą plików dziennika kopiowania
 Kiedy usługa Microsoft Azure Import/Export przetwarza dyski skojarzone z zadaniem importowania lub eksportowania, zapisuje kopiowania plików dziennika do konta magazynu do lub z którego są importowanie lub eksportowanie obiektów blob. Plik dziennika zawiera szczegółowe informacje o każdym z plików, który został zaimportować lub wyeksportować. Kiedy wykonujesz zapytanie o stan ukończonego zadania; zwracany jest adres URL do każdego pliku dziennika kopiowania zobacz [pobrania zadania](https://docs.microsoft.com/rest/api/storageimportexport/Jobs/Get) Aby uzyskać więcej informacji.  

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 07/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 6f3177c37a2db03b8821e3e4f5b68c8b1315a016
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 21fbfe22901de677209b55639cd8871ab408375b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59358251"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60406428"
 ---
 # <a name="sizes-for-cloud-services"></a>Rozmiary usług Cloud Services
 W tym temacie opisano dostępne rozmiary i opcje dla wystąpień ról usługi w chmurze (role sieć web i ról procesów roboczych). Zapewnia również zagadnienia dotyczące wdrażania pod uwagę podczas planowania użycia tych zasobów. Rozmiar każdego ma identyfikator, który można umieścić w swojej [pliku definicji usługi](cloud-services-model-and-package.md#csdef). Ceny dla każdego rozmiaru są dostępne na [cennik usług Cloud Services](https://azure.microsoft.com/pricing/details/cloud-services/) strony.
@@ -68,6 +68,7 @@ Utworzyliśmy pojęcie jednostki obliczeniowe platformy Azure (ACU), aby umożli
 | [D v2](#dv2-series) |160 - 190* |
 | [D v3](#dv3-series) |160 - 190* |
 | [E v3](#ev3-series) |160 - 190* |
+| [F](#f-series) |210 - 250*|
 | [G](#g-series) |180 - 240* |
 | [H](#h-series) |290 - 300* |
 
@@ -165,6 +166,17 @@ Aby uzyskać informacje i uwagi dotyczące korzystania z tych rozmiarów, zobacz
 | Standardowa_E16_v3 | 16        | 128           | 400                  | 8 / ekstremalnie wysoka |
 | Standardowa_E32_v3 | 32        | 256           | 800                  | 8 / ekstremalnie wysoka |
 | Standardowa_E64_v3 | 64        | 432           | 1600                 | 8 / ekstremalnie wysoka |
+
+## <a name="f-series"></a>Seria F
+
+
+| Rozmiar            | Rdzenie procesora CPU | Pamięć: GiB   | Magazyn tymczasowy (SSD): GiB       | Maksymalna liczba kart sieciowych / przepustowość sieci |
+|---------------- | --------- | ------------- | -------------------- | ---------------------------- |
+| Standardowa_F1     | 1         | 2             | 16                   | 2 / 750  |
+| Standardowa_F2     | 2         | 4             | 32                   | 2 / 1500 |
+| Standardowa_F4     | 4         | 8             | 64                   | 4 / 3000 |
+| Standardowa_F8     | 8         | 16            | 128                  | 8 / 6000 |
+| Standardowa_F16    | 16        | 32            | 256                  | 8 / 12000|
 
 
 ## <a name="g-series"></a>Seria G

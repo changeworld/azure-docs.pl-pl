@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3a7b9c8827979ac4135bcaf4dfeef7cd5de02b2d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58118446"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60348251"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Usługa Azure Active Directory Connect sync: Konfigurowanie Preferowana lokalizacja danych dla zasobów usługi Office 365
 Celem tego tematu jest przeprowadzi Cię przez Konfigurowanie atrybutu Preferowana lokalizacja danych podczas synchronizacji usługi Azure Active Directory (Azure AD) Connect. Gdy ktoś będzie korzystać z możliwości wielu regionów geograficznych w usłudze Office 365 możesz użyć tego atrybutu do wyznaczenia lokalizacja geograficzna użytkownika danych usługi Office 365. (Warunki *region* i *geograficznie* są używane zamiennie.)
@@ -139,7 +139,7 @@ Reguła synchronizacji ruchu przychodzącego zezwala na wartość atrybutu mogą
 
     | Typ przepływu | Atrybut docelowy | Element źródłowy | Zastosuj raz | Scal typu |
     | --- | --- | --- | --- | --- |
-    |Bezpośrednie | preferredDataLocation | Wybierz atrybut źródłowy | Niezaznaczone | Aktualizacja |
+    |Direct | preferredDataLocation | Wybierz atrybut źródłowy | Niezaznaczone | Aktualizacja |
 
 7. Aby utworzyć regułę dla ruchu przychodzącego, wybierz **Dodaj**.
 
@@ -176,7 +176,7 @@ Reguła synchronizacji ruchu wychodzącego zezwala na wartość atrybutu mogą p
 
     | Typ przepływu | Atrybut docelowy | Element źródłowy | Zastosuj raz | Scal typu |
     | --- | --- | --- | --- | --- |
-    | Bezpośrednie | preferredDataLocation | preferredDataLocation | Niezaznaczone | Aktualizacja |
+    | Direct | preferredDataLocation | preferredDataLocation | Niezaznaczone | Aktualizacja |
 
 7. Zamknij **Dodaj** do utworzenia reguły ruchu wychodzącego.
 

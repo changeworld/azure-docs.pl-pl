@@ -9,11 +9,11 @@ ms.author: tarcher
 ms.date: 08/09/2018
 ms.topic: tutorial
 ms.openlocfilehash: 0ef754b792654281f2a12b8eee613434896d5476
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58092212"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60396618"
 ---
 # <a name="use-ansible-to-manage-your-azure-dynamic-inventories"></a>Zarządzanie spisami dynamicznymi na platformie Azure przy użyciu rozwiązania Ansible
 Za pomocą rozwiązania Ansible można ściągać informacje o spisie z różnych źródeł (w tym ze źródeł w chmurze, takich jak platforma Azure) do *spisu dynamicznego*. W tym artykule skonfigurujesz spis dynamiczny platformy Azure rozwiązania Ansible przy użyciu usługi [Azure Cloud Shell](./ansible-run-playbook-in-cloudshell.md), następnie utworzysz w nim dwie maszyny wirtualne, jedną z tych maszyn wirtualnych oznaczysz tagiem i zainstalujesz na niej serwer Nginx.

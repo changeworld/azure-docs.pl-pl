@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: amberb
 ms.openlocfilehash: 1e8c3e6863b9cd8f2f5ced18a57918c32c865e75
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544600"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60372262"
 ---
 # <a name="track-azure-credit-balance-for-microsoft-customer-agreement"></a>Śledź salda środków platformy Azure do umowy klienta firmy Microsoft
 
@@ -33,11 +33,11 @@ Ten artykuł dotyczy konta rozliczeniowego dla umowy klienta firmy Microsoft. [S
 
 1. Zaloguj się w witrynie [Azure Portal]( https://portal.azure.com).
 
-2. Wyszukiwanie **Cost Management + rozliczenia**.
+2. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
 
    ![Zrzut ekranu pokazujący wyszukiwania w portalu, aby zarządzanie kosztami i rozliczenia](./media/billing-mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
 
-3. Przejdź do profilu rozliczeń. W zależności od dostęp może być konieczne wybieranie konta rozliczeniowego. Wybierz z konta rozliczeniowego **rozliczeń profile** i następnie profil rozliczeniowy.
+3. Przejdź do profilu rozliczeniowego. W zależności od praw dostępu może być konieczne wybranie konta rozliczeniowego. Wybierz z konta rozliczeniowego **rozliczeń profile** i następnie profil rozliczeniowy.
 
 4. Wybierz **kredytów systemu Azure**.
 

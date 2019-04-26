@@ -15,14 +15,14 @@ ms.workload: na
 ms.date: 11/11/2016
 ms.author: alkohli
 ms.openlocfilehash: dbab2aaab2c12bef07748f54e5864d042f1c982a
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52333568"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60302503"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-jobs-for-the-storsimple-virtual-array"></a>Wyświetl zadania dla rozwiązania StorSimple Virtual Array przy użyciu usługi Menedżer urządzeń StorSimple
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 **Zadań** bloku udostępnia pojedynczy Centralny portal do przeglądania i zarządzania zadaniami, które są uruchamiane w macierzy wirtualnych, które są podłączone do usługi Menedżer urządzeń StorSimple. Można wyświetlić uruchomiony, ukończone i zakończone niepowodzeniem zadania dla wielu urządzeń wirtualnych. Wyniki są prezentowane w formacie tabelarycznym.
 
 ![Blok zadania](./media/storsimple-virtual-array-manage-jobs/ova-jobs-blade.png)
@@ -59,7 +59,7 @@ Wykonaj poniższe kroki, aby wyświetlić szczegóły dowolnego zadania.
 #### <a name="job-failures-when-the-virtual-machine-is-paused-in-the-hypervisor"></a>Niepowodzenia zadań, gdy maszyna wirtualna jest wstrzymana w funkcji hypervisor
 Gdy zadanie jest w toku na rozwiązania StorSimple Virtual Array i urządzenia (maszyna wirtualna aprowizowana w funkcji hypervisor) zostało wstrzymane dla więcej niż 15 minut, zadanie nie powiedzie się. To ze względu na czas rozwiązania StorSimple Virtual Array jest zsynchronizowany z czasem Microsoft Azure. 
 
-Zostanie wyświetlony następujący błąd: "czas urządzenia nie jest zsynchronizowany z czasem Microsoft Azure przez ponad 15 minut. Upewnij się, że funkcja hypervisor i urządzenia, czas są zsynchronizowane z serwerem NTP. Sprawdź, czy nie występują żadne problemy z łącznością. Aby rozwiązać problemy z łącznością, uruchom testy diagnostyczne z poziomu lokalnego internetowego interfejsu użytkownika urządzenia wirtualnego."
+Zostanie wyświetlony następujący błąd: "Czas urządzenia nie jest zsynchronizowany z czasem Microsoft Azure przez ponad 15 minut. Upewnij się, że funkcja hypervisor i urządzenia, czas są zsynchronizowane z serwerem NTP. Sprawdź, czy nie występują żadne problemy z łącznością. Aby rozwiązać problemy z łącznością, uruchom testy diagnostyczne z poziomu lokalnego internetowego interfejsu użytkownika urządzenia wirtualnego."
 
 Te błędy mają zastosowanie do zadania kopii zapasowej, przywracanie, aktualizacji i trybu failover. Jeśli maszyna wirtualna jest gotowa w funkcji Hyper-V, maszyny po pewnym czasie synchronizuje czas Twojej funkcji hypervisor. Gdy tak się stanie, możesz ponownie uruchomić zadanie.
 

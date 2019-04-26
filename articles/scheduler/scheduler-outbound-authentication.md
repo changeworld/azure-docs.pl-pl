@@ -9,17 +9,17 @@ ms.reviewer: klam
 ms.assetid: 6707f82b-7e32-401b-a960-02aae7bb59cc
 ms.topic: article
 ms.date: 08/15/2016
-ms.openlocfilehash: 88f2fe0781bad4b652826b6a8d1961dd39b063e1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 42d6ec93a3382f494b49fb574c4aee5e8eec142a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993341"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60344352"
 ---
 # <a name="outbound-authentication-for-azure-scheduler"></a>Uwierzytelnianie połączeń wychodzących usługi Azure Scheduler
 
 > [!IMPORTANT]
-> [Usługa Azure Logic Apps](../logic-apps/logic-apps-overview.md) zastępuje usługi Azure Scheduler, która zostanie wycofana. Aby zaplanować prace, [zamiast tego spróbuj wykonać usługi Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
+> Usługa [Azure Logic Apps](../logic-apps/logic-apps-overview.md) zastępuje usługę Azure Scheduler, która zostanie wycofana. Zamiast niej [spróbuj używać usługi Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) do planowania zadań. 
 
 Zadania usługi Azure Scheduler, może być konieczne wywoływanie usług, które wymagają uwierzytelniania, takiego jak innych usług platformy Azure, Salesforce.com, Facebook i bezpieczne niestandardowych witryn sieci Web. Usługa o nazwie można określić, czy zadanie usługi Scheduler można uzyskiwać dostęp do żądanych zasobów. 
 
@@ -44,11 +44,11 @@ Usługa Scheduler obsługuje te modele uwierzytelniania:
 
 Podczas dodawania uwierzytelnianie przy użyciu `ClientCertificate` modelu, należy określić te dodatkowe elementy w treści żądania.  
 
-| Element | Wymagane | Opis |
+| Element | Wymagany | Opis |
 |---------|----------|-------------|
 | **uwierzytelnianie** (element nadrzędny) | Obiekt uwierzytelniania przy użyciu certyfikatu klienta SSL |
 | **type** | Yes | Typ uwierzytelniania. W przypadku certyfikatów klientów SSL, wartość jest `ClientCertificate`. |
-| **plik PFX** | Yes | Zawartość algorytmem Base64 pliku PFX |
+| **pfx** | Yes | Zawartość algorytmem Base64 pliku PFX |
 | **Hasło** | Yes | Hasło do uzyskiwania dostępu do pliku PFX |
 ||| 
 
@@ -61,7 +61,7 @@ Po wysłaniu żądania o informacje dotyczące uwierzytelniania, odpowiedź zawi
 | **uwierzytelnianie** (element nadrzędny) | Obiekt uwierzytelniania przy użyciu certyfikatu klienta SSL |
 | **type** | Typ uwierzytelniania. W przypadku certyfikatów klientów SSL, wartość jest `ClientCertificate`. |
 | **certificateThumbprint** |Odcisk palca certyfikatu |
-| **CertificateSubjectName** |Nazwa wyróżniająca podmiotu certyfikatu |
+| **certificateSubjectName** |Nazwa wyróżniająca podmiotu certyfikatu |
 | **certificateExpiration** | Data wygaśnięcia certyfikatu |
 ||| 
 
@@ -164,7 +164,7 @@ Date: Wed, 16 Mar 2016 19:04:23 GMT
 
 Podczas dodawania uwierzytelnianie przy użyciu `Basic` modelu, należy określić te dodatkowe elementy w treści żądania.
 
-| Element | Wymagane | Opis |
+| Element | Wymagany | Opis |
 |---------|----------|-------------|
 | **uwierzytelnianie** (element nadrzędny) | Obiekt uwierzytelniania dla uwierzytelniania podstawowego | 
 | **type** | Yes | Typ uwierzytelniania. Uwierzytelnianie podstawowe, wartość jest `Basic`. | 
@@ -282,13 +282,13 @@ Date: Wed, 16 Mar 2016 19:05:06 GMT
 
 Podczas dodawania uwierzytelnianie przy użyciu `ActiveDirectoryOAuth` modelu, należy określić te dodatkowe elementy w treści żądania.
 
-| Element | Wymagane | Opis |
+| Element | Wymagany | Opis |
 |---------|----------|-------------|
 | **uwierzytelnianie** (element nadrzędny) | Yes | Obiekt uwierzytelniania dla uwierzytelniania ActiveDirectoryOAuth |
 | **type** | Yes | Typ uwierzytelniania. W przypadku uwierzytelniania ActiveDirectoryOAuth wartością jest `ActiveDirectoryOAuth`. |
 | **dzierżawy** | Yes | Identyfikator dzierżawy dla dzierżawy usługi Azure AD. Aby znaleźć identyfikator dzierżawy dla dzierżawy usługi Azure AD, uruchom `Get-AzureAccount` w programie Azure PowerShell. |
-| **Grupy odbiorców** | Yes | Ta wartość jest równa `https://management.core.windows.net/`. | 
-| **ClientId** | Yes | Identyfikator klienta aplikacji usługi Azure AD | 
+| **audience** | Yes | Ta wartość jest równa `https://management.core.windows.net/`. | 
+| **clientId** | Yes | Identyfikator klienta aplikacji usługi Azure AD | 
 | **Klucz tajny** | Yes | Klucz tajny klienta, który żąda tokenu | 
 |||| 
 
@@ -301,8 +301,8 @@ Po wysłaniu żądania o informacje dotyczące uwierzytelniania, odpowiedź zawi
 | **uwierzytelnianie** (element nadrzędny) | Obiekt uwierzytelniania dla uwierzytelniania ActiveDirectoryOAuth |
 | **type** | Typ uwierzytelniania. W przypadku uwierzytelniania ActiveDirectoryOAuth wartością jest `ActiveDirectoryOAuth`. | 
 | **dzierżawy** | Identyfikator dzierżawy dla dzierżawy usługi Azure AD |
-| **Grupy odbiorców** | Ta wartość jest równa `https://management.core.windows.net/`. |
-| **ClientId** | Identyfikator klienta aplikacji usługi Azure AD |
+| **audience** | Ta wartość jest równa `https://management.core.windows.net/`. |
+| **clientId** | Identyfikator klienta aplikacji usługi Azure AD |
 ||| 
 
 ### <a name="sample-rest-request---active-directory-oauth"></a>Przykładowe żądania REST - OAuth usługi Active Directory
@@ -405,7 +405,7 @@ Date: Wed, 16 Mar 2016 19:10:02 GMT
 
 ## <a name="see-also"></a>Zobacz także
 
-* [Co to jest usługa Azure Scheduler?](scheduler-intro.md)
+* [Czym jest Azure Scheduler?](scheduler-intro.md)
 * [Pojęcia i terminologia dotyczące usługi Azure Scheduler oraz hierarchia jednostek](scheduler-concepts-terms.md)
 * [Limity, wartości domyślne i kody błędów usługi Azure Scheduler](scheduler-limits-defaults-errors.md)
 * [Interfejs API REST usługi Azure Scheduler](https://msdn.microsoft.com/library/mt629143)

@@ -3,7 +3,7 @@ title: Co to jest usługa Azure Active Directory B2C? | Microsoft Docs
 description: Dowiedz się, jak tworzyć środowiska tożsamości i nimi zarządzać, na przykład środowiska tworzenia kont i logowania oraz zarządzania profilami w aplikacji, za pomocą usługi Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
@@ -11,11 +11,11 @@ ms.date: 02/20/2019
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 9e01ba8ae53dbcca686a9844600a5df416a685ae
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455504"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60317364"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Co to jest usługa Azure Active Directory B2C?
 
@@ -127,7 +127,7 @@ Do aplikacji w usłudze Azure AD B2C możesz dodać własny kod JavaScript po st
 
 Wiele typowych zadań zarządzania dzierżawy należy wykonywać programowo. Podstawowym tego przykładem jest zarządzanie użytkownikami. Konieczne może być migrowanie istniejącego magazynu użytkowników do dzierżawy usługi Azure AD B2C. Możesz zdecydować się na hostowanie rejestracji użytkowników na własnej stronie i tworzenie kont użytkowników w katalogu usługi Azure AD B2C w tle. Zadania tego typu wymagają możliwości tworzenia, odczytywania, aktualizowania i usuwania kont użytkowników. Można je wykonywać za pomocą [interfejsu API programu Graph usługi Azure AD](active-directory-b2c-devquickstarts-graph-dotnet.md).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Rozpocznij konfigurowanie aplikacji dla funkcji rejestracji i logowania, przechodząc do samouczka.
 

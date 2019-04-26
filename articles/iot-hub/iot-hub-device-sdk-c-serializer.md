@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 09/06/2016
 ms.author: yizhon
 ms.openlocfilehash: 0a7e30be374ae5095e206ce0e519e51bb58f1f00
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024870"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60399275"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>Usługa Azure zestaw SDK urządzeń IoT dla języka C — więcej informacji na temat serializatora
 
@@ -64,21 +64,21 @@ Co nie jest pokazana w tym przykładzie są dodatkowe typy danych, które są ob
 
 Następujące typy danych są obsługiwane w modelach utworzonych za pomocą **serializator** biblioteki:
 
-| Typ | Opis |
+| Type | Opis |
 | --- | --- |
 | double |Podwójna precyzja liczb zmiennoprzecinkowych |
 | int |32-bitowa liczba całkowita |
 | float |Liczba zmiennoprzecinkowa pojedynczej precyzji |
-| dł. |Liczba całkowita typu Long |
+| długi |Liczba całkowita typu Long |
 | int8\_t |8-bitowa liczba całkowita |
-| Int16\_t |16-bitową liczbę całkowitą |
+| int16\_t |16-bitową liczbę całkowitą |
 | int32\_t |32-bitowa liczba całkowita |
-| Int64\_t |64-bitowa liczba całkowita |
-| wartość logiczna |wartość logiczna |
-| ASCII\_char\_ptr |Ciąg ASCII |
+| int64\_t |64-bitowa liczba całkowita |
+| bool |wartość logiczna |
+| ascii\_char\_ptr |Ciąg ASCII |
 | EDM\_DATA\_CZASU\_PRZESUNIĘCIA |Przesunięcie czasu daty |
-| EDM\_IDENTYFIKATORA GUID |Identyfikator GUID |
-| EDM\_BINARY |dane binarne |
+| EDM\_GUID |Identyfikator GUID |
+| EDM\_BINARY |binary |
 | ZADEKLARUJ\_— STRUKTURA |Typ złożony danych |
 
 Zacznijmy od ostatniego typu danych. **DECLARE\_struktury** można zdefiniować złożone typy danych, stanowiące inne typy pierwotne. Te grupy umożliwiają zdefiniowanie modelu, który wygląda w następujący sposób:
@@ -233,7 +233,7 @@ WITH_DATA(HumidityEvent, Humidity)
 END_NAMESPACE(Contoso);
 ```
 
-Należy pamiętać, że model zawiera dwa zdarzenia danych: **temperatury** i **wilgotności**. W przeciwieństwie do poprzednich przykładach, typ każde zdarzenie jest definiowane przy użyciu struktury **DECLARE\_struktury**. **TemperatureEvent** obejmuje pomiarów temperatury i sygnaturę czasową; **HumidityEvent** zawiera miary wilgotności i sygnaturę czasową. Ten model zapewnia nam naturalny sposób modelowania danych dla scenariusza opisanego powyżej. Gdy firma Microsoft wysyła zdarzenie do chmury, albo wyślemy temperatury/sygnatura czasowa lub parę wilgotności/sygnatura czasowa.
+Należy zwrócić uwagę na to, że model zawiera dwa zdarzenia danych: **Temperatura** i **wilgotności**. W przeciwieństwie do poprzednich przykładach, typ każde zdarzenie jest definiowane przy użyciu struktury **DECLARE\_struktury**. **TemperatureEvent** obejmuje pomiarów temperatury i sygnaturę czasową; **HumidityEvent** zawiera miary wilgotności i sygnaturę czasową. Ten model zapewnia nam naturalny sposób modelowania danych dla scenariusza opisanego powyżej. Gdy firma Microsoft wysyła zdarzenie do chmury, albo wyślemy temperatury/sygnatura czasowa lub parę wilgotności/sygnatura czasowa.
 
 Możemy wysłać zdarzenie temperatury, w chmurze przy użyciu kodu, takie jak następujące:
 
@@ -303,7 +303,7 @@ W tym modelu można sobie wyobrazić jak dodatkowe zdarzenia mogą być łatwo d
 
 Teraz aby obejmowała te same dane, ale z inną strukturę zmodyfikujmy modelu.
 
-### <a name="model-2"></a>Modelu 2
+### <a name="model-2"></a>Model 2
 
 Należy wziąć pod uwagę ten model alternatywne do przedstawionego powyżej:
 
@@ -514,7 +514,7 @@ Jeśli wiadomość jest wysyłana do urządzenia, czy Zrób to za pomocą zestaw
 {"Name" : "", "Parameters" : "" }
 ```
 
-Wysyłasz Zserializowany obiekt JSON z dwie właściwości: **nazwa** jest nazwa akcji (komunikat) i **parametry** zawiera parametry tę akcję.
+Wysyłasz Zserializowany obiekt JSON z dwie właściwości: **Nazwa** jest nazwa akcji (komunikat) i **parametry** zawiera parametry tę akcję.
 
 Na przykład, aby wywołać **SetAirResistance** ta wiadomość zostanie wysłana na urządzeniu:
 
@@ -615,7 +615,7 @@ Zgodnie z opisem w [poprzednim artykule](iot-hub-device-sdk-c-iothubclient.md), 
 * IoTHubClient\_CreateFromConnectionString
 * IoTHubClient\_SendEventAsync
 * IoTHubClient\_SetMessageCallback
-* Usługi IoTHubClient\_zniszczyć
+* IoTHubClient\_Destroy
 
 Te interfejsy API zostały przedstawione w **simplesample\_amqp**.
 
@@ -624,7 +624,7 @@ Istnieje również analogiczne zestaw interfejsów API niższego poziomu.
 * IoTHubClient\_LL\_CreateFromConnectionString
 * IoTHubClient\_LL\_SendEventAsync
 * IoTHubClient\_LL\_SetMessageCallback
-* Usługi IoTHubClient\_LL\_zniszczyć
+* IoTHubClient\_LL\_Destroy
 
 Należy zwrócić uwagę na to, czy interfejsy API niższego poziomu działają dokładnie tak samo, zgodnie z opisem w poprzedniej artykuły. Jeśli chcesz, aby wątku w tle do obsługi zdarzeń wysyłanie i odbieranie wiadomości, można użyć pierwszy zestaw interfejsów API. Drugi zestaw interfejsów API jest używane, jeśli chcesz, aby jawną kontrolę nad tym podczas wysyłania i odbierania danych z usługi IoT Hub. Któryś zbiór interfejsów API pracy równie dobrze z **serializator** biblioteki.
 

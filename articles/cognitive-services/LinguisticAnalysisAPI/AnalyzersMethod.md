@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/30/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: 9338e87644554ac8b3121c5341cea6f2bc512a97
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 1b33b60f674eebb15fdc6112e1d630b93b98494b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878191"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60404726"
 ---
 # <a name="analyzers-method"></a>Metoda analyzers
 
@@ -32,15 +32,17 @@ Brak
 <br>
 
 ## <a name="response-parameters"></a>Parametrów odpowiedzi
+
 Name (Nazwa) | Typ | Opis
 -----|------|--------------
 Języki | Lista ciągów | Lista dwóch kodów literę ISO języka, dla których można użyć tego analizatora.
-id   | ciąg | Unikatowy identyfikator dla tego analizatora
-rodzaj | ciąg | szerokie typ analizatora tutaj
-Specyfikacja | ciąg | Nazwa specyfikacji używane dla tego analizatora
-Implementacja | ciąg | Opis modelu i/lub algorytm, za ten analizatora
+id   | string | Unikatowy identyfikator dla tego analizatora
+rodzaj | string | szerokie typ analizatora tutaj
+Specyfikacja | string | Nazwa specyfikacji używane dla tego analizatora
+Implementacja | string | Opis modelu i/lub algorytm, za ten analizatora
 
 <br>
+
 ## <a name="example"></a>Przykład
 Pobierz /analyzers
 

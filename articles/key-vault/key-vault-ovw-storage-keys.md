@@ -1,20 +1,19 @@
 ---
-ms.assetid: ''
 title: Usługa Azure Key Vault zarządzanego konta magazynu — interfejs wiersza polecenia
 description: Klucze konta magazynu zapewniają bezproblemową integrację usługi Azure Key Vault i klucza dostępu opartej na konto magazynu platformy Azure.
 ms.topic: conceptual
 services: key-vault
 ms.service: key-vault
-author: prashanthyv
-ms.author: prashanthyv
+author: mbaldwin
+ms.author: mbaldwin
 manager: barbkess
 ms.date: 03/01/2019
-ms.openlocfilehash: 99b37a9b12c4b66e9b254156dfe4b59c7ab6594c
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: MT
+ms.openlocfilehash: 0812d1523c6db077bf93a16a9a14771f5534d712
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526276"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60304918"
 ---
 # <a name="azure-key-vault-managed-storage-account---cli"></a>Usługa Azure Key Vault zarządzanego konta magazynu — interfejs wiersza polecenia
 

@@ -15,11 +15,11 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 090a066afb24c4776f9844b8850264ffad842c59
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187054"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60350156"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Operacje usługi Azure Active Directory Connect Health
 W tym temacie opisano różne operacje, które można wykonać przy użyciu usługi Azure Active Directory (Azure AD) Connect Health.

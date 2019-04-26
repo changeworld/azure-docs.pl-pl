@@ -18,11 +18,11 @@ ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0038dcc10aafa191121b2797f68d66a3e32b3fa7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207453"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60298764"
 ---
 # <a name="quickstart-remove-an-application-from-azure-active-directory"></a>Szybki start: Usuwanie aplikacji z usługi Azure Active Directory
 
@@ -72,7 +72,7 @@ Pod względem technicznym aplikacje z wieloma dzierżawami należą do innej dzi
 
 Aby usunąć dostęp aplikacji z wieloma dzierżawami do Twojego katalogu (po wcześniejszym udzieleniu zgody), administrator firmy musi usunąć jednostkę usługi aplikacji. Administrator mający uprawnienia administratora globalnego może usunąć dostęp w witrynie Azure Portal lub za pośrednictwem [poleceń cmdlet programu PowerShell usługi Azure AD](https://go.microsoft.com/fwlink/?LinkId=294151).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Dowiedz się więcej na temat innych powiązanych podręczników Szybki start dotyczących zarządzania aplikacjami korzystającymi z punktu końcowego usługi Azure AD w wersji 1.0:
 

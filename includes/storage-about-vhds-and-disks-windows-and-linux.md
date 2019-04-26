@@ -9,11 +9,11 @@ ms.date: 04/09/2018
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: aa740cfb203f50dc97a06359774dae367a20252b
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56331237"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60406497"
 ---
 ## <a name="about-vhds"></a>Informacje o wirtualnych dyskach twardych
 
@@ -69,7 +69,7 @@ Poniższa tabela zawiera porównanie standardowych dysków Twardych, SSD w warst
 |    | Dysk platformy Azure w warstwie Premium |Dysk SSD w warstwie standardowa platformy Azure | Dysk Azure standardowych dysków Twardych
 |--- | ------------------ | ------------------------------- | -----------------------
 | Typ dysku | Dyski półprzewodnikowe (SSD) | Dyski półprzewodnikowe (SSD) | Dyski twarde (HDD)  
-| Przegląd  | Pamięć dyskowa o wysokiej wydajności i małych opóźnieniach, bazująca na dyskach SSD, przeznaczona dla maszyn wirtualnych uruchamiających obciążenia intensywnie korzystające z operacji wejścia/wyjścia lub hostujących środowisko produkcyjne o znaczeniu krytycznym |Bardziej spójną wydajność i niezawodność niż dysk twardy. Zoptymalizowane pod kątem obciążeń niska-operacje We/Wy| Oparte na dysk twardy ekonomiczne dysku rzadki dostęp
+| Omówienie  | Pamięć dyskowa o wysokiej wydajności i małych opóźnieniach, bazująca na dyskach SSD, przeznaczona dla maszyn wirtualnych uruchamiających obciążenia intensywnie korzystające z operacji wejścia/wyjścia lub hostujących środowisko produkcyjne o znaczeniu krytycznym |Bardziej spójną wydajność i niezawodność niż dysk twardy. Zoptymalizowane pod kątem obciążeń niska-operacje We/Wy| Oparte na dysk twardy ekonomiczne dysku rzadki dostęp
 | Scenariusz  | Obciążenia produkcyjne i wrażliwe na wydajność |Serwery sieci Web, aplikacje dla przedsiębiorstw używana w niewielkim stopniu oraz tworzenia i testowania| Kopia zapasowa, niekrytyczne, rzadki dostęp
 | Rozmiar dysku | P4: 32 giB (tylko w przypadku dysków zarządzanych)<br>P6: 64 giB (tylko w przypadku dysków zarządzanych)<br>P10: 128 GiB<br>P15: 256 giB (tylko w przypadku dysków zarządzanych)<br>P20: 512 GiB<br>P30: 1024 GiB<br>P40: 2048 GiB<br>P50: 4,095 GiB<br>P60: 8192 giB * (8 TiB)<br>P70: 16,384 GiB * (16 TiB)<br>P80: 32 767 giB * (32 TiB) |Tylko dyski zarządzane:<br>E4: 32 GiB<br>E6: 64 GiB<br>E10: 128 GiB<br>E15: 256 GiB<br>E20: 512 GiB<br>E30: 1024 GiB<br>E40: 2048 GiB<br>E50: 4095 GiB<br>E60: 8192 giB * (8 TiB)<br>E70: 16,384 GiB * (16 TiB)<br> E80: 32 767 giB * (32 TiB) | Dyski niezarządzane: 1 GiB – 4 TiB (4095 GiB) <br><br>Dyski zarządzane:<br> S4: 32 GiB <br>S6: 64 GiB <br>S10: 128 GiB <br>S15: 256 GiB <br>S20: 512 GiB <br>S30: 1024 GiB <br>S40: 2048 GiB<br>S50: 4095 GiB<br>S60: 8192 giB * (8 TiB)<br>S70: 16,384 GiB * (16 TiB)<br>S80: 32 767 giB * (32 TiB)
 | Maksymalna przepływność na dysk | P4: 25 MiB/s<br> P6: 50 MiB/s<br> P10: 100 MiB/s<br> P15: 125 MiB/s<br> P20: 150 MiB/s<br> P30: 200 MiB/s<br> P40-P50: 250 MiB/s<br> P60: 480 MiB/s *<br> P70-P80: 750 MiB/s * | E10-E50: Maksymalnie 60 MiB/s<br> E60: Maksymalnie 300 MiB/s *<br> E70-E80: 500 MiB/s *| S4 - S50: O 60 Upt MiB/s<br> S60: Maksymalnie 300 MiB/s *<br> S70-S80: Maks. 500 MiB/s *

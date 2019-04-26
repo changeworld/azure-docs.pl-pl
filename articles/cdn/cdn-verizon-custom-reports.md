@@ -1,6 +1,6 @@
 ---
 title: Raporty niestandardowe z usługi Verizon | Dokumentacja firmy Microsoft
-description: 'Można wyświetlić wzorców użycia dla sieci CDN, za pomocą następujących raportów: przepustowości, przetransferowane dane, trafienia, stany pamięci podręcznej, Współczynnik trafień w pamięci podręcznej, przetransferowane dane IPV4 i IPV6.'
+description: 'Aby wyświetlić wzorców użycia dla sieci CDN, za pomocą następujących raportów: Przepustowość, przetransferowane dane, trafienia, stany pamięci podręcznej, współczynnik, przesłanych danych protokołów IPV4/IPV6 trafień w pamięci podręcznej.'
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/11/2017
 ms.author: magattus
 ms.openlocfilehash: 75a1fb4beb4025dc3ec63d29944331d07be35d8a
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092070"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60323606"
 ---
 # <a name="custom-reports-from-verizon"></a>Raporty niestandardowe z usługi Verizon
 
@@ -49,11 +49,11 @@ Generuje niestandardowy raport, definiując następujące opcje:
 
    - Trafienia: Wskazuje, całkowita liczba żądań, które są kierowane do krawędzi rekordu CNAME, na których jest włączona niestandardowych funkcji raportowania. Ta metryka nie ma kod stanu zwrócony do klienta.
 
-   - Transferowanych danych: Wskazuje całkowitą ilość danych przesyłanych z serwerów brzegowych klientom HTTP (na przykład przeglądarki sieci web) dla żądań, które są kierowane do krawędzi rekordu CNAME, na których jest włączona niestandardowych funkcji raportowania. Ilość przesyłanych danych jest obliczany przez dodanie nagłówków odpowiedzi HTTP do treści odpowiedzi. W rezultacie ilość danych przesyłanych dla każdego zasobu jest większa niż jego bieżący rozmiar pliku.
+   - Data Transferred: Wskazuje całkowitą ilość danych przesyłanych z serwerów brzegowych klientom HTTP (na przykład przeglądarki sieci web) dla żądań, które są kierowane do krawędzi rekordu CNAME, na których jest włączona niestandardowych funkcji raportowania. Ilość przesyłanych danych jest obliczany przez dodanie nagłówków odpowiedzi HTTP do treści odpowiedzi. W rezultacie ilość danych przesyłanych dla każdego zasobu jest większa niż jego bieżący rozmiar pliku.
 
-- Grupowanie: Określa typ statystyk, które zostały wymienione poniżej wykres słupkowy. Obsługiwane są następujące opcje:
+- Grupowania: Określa typ statystyk, które zostały wymienione poniżej wykres słupkowy. Obsługiwane są następujące opcje:
 
-   - Kody odpowiedzi HTTP: Organizuje statystyki według kodu odpowiedzi HTTP (na przykład 200, 403, itp.) zwracana do klienta. 
+   - HTTP Response Codes: Organizuje statystyki według kodu odpowiedzi HTTP (na przykład 200, 403, itp.) zwracana do klienta. 
 
    - Stan pamięci podręcznej: Organizuje statystyki według stanu pamięci podręcznej.
 

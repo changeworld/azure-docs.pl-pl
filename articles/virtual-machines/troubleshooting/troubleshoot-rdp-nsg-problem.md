@@ -14,11 +14,11 @@ ms.workload: infrastructure
 ms.date: 11/20/2018
 ms.author: genli
 ms.openlocfilehash: c32612c411f275220f549eea79276fa5a7232fd0
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52954616"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60318939"
 ---
 #  <a name="cannot-connect-remotely-to-a-vm-because-rdp-port-is-not-enabled-in-nsg"></a>Nie można nawiązać połączenia zdalnego maszyny Wirtualnej, ponieważ nie włączono port protokołu RDP w sieciowej grupie zabezpieczeń
 
@@ -26,7 +26,7 @@ W tym artykule wyjaśniono, jak rozwiązać problem, w której nie można połą
 
 
 > [!NOTE] 
-> Platforma Azure oferuje dwa modele wdrażania związane z tworzeniem i pracą z zasobami: [usługi Resource Manager i Model Klasyczny](../../azure-resource-manager/resource-manager-deployment-model.md). Zalecamy użycie modelu wdrażania usługi Resource Manager zamiast klasycznego modelu wdrażania w przypadku nowych wdrożeń. 
+> Platforma Azure oferuje dwa modele wdrażania związane z tworzeniem i pracą z zasobami: [model wdrażania przy użyciu usługi Resource Manager i model klasyczny](../../azure-resource-manager/resource-manager-deployment-model.md). Zalecamy użycie modelu wdrażania usługi Resource Manager zamiast klasycznego modelu wdrażania w przypadku nowych wdrożeń. 
 
 ## <a name="symptom"></a>Objaw
 
@@ -47,8 +47,8 @@ Aby włączyć port protokołu RDP w sieciowej grupie zabezpieczeń, wykonaj nas
     **Nazwa**: Port_3389 </br>
     **Port**: 3389 </br>
     **Protokół**: TCP </br>
-    **Źródło**: wszystkie </br>
-    **Miejsca docelowe**: wszystkie </br>
+    **Źródło**: Dowolne </br>
+    **Miejsca docelowe**: Dowolne </br>
     **Akcja**: Zezwalaj </br>
 
 Jeśli określisz źródłowy adres IP, to ustawienie zezwala na ruch tylko z określonego adresu IP lub zakres adresów IP, aby nawiązać połączenie z maszyną Wirtualną. Upewnij się, że komputer, na którym używasz, aby rozpocząć sesję RDP znajduje się w zakresie.

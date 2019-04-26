@@ -13,17 +13,17 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: bcbed12940b7766d7ffb9e67b7c63931160ba9b2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57905243"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60331744"
 ---
 # <a name="create-and-manage-sql-database-servers-and-single-databases-in-azure-sql-database"></a>Tworzenie i zarządzanie nimi, serwery usługi SQL Database i pojedynczych baz danych w usłudze Azure SQL Database
 
 Można tworzyć i zarządzać serwerami bazy danych SQL i pojedynczych baz danych przy użyciu witryny Azure portal, programu PowerShell, interfejsu wiersza polecenia platformy Azure, interfejsu API REST i języka Transact-SQL.
 
-## <a name="azure-portal-manage-sql-database-servers-and-single-databases"></a>Azure Portal: Zarządzanie serwerami bazy danych SQL i pojedynczych baz danych
+## <a name="azure-portal-manage-sql-database-servers-and-single-databases"></a>Witryna Azure Portal: Zarządzanie serwerami bazy danych SQL i pojedynczych baz danych
 
 Można utworzyć grupę zasobów Azure SQL database wcześniej lub podczas tworzenia serwera. Istnieje wiele metod uzyskiwania nowy formularz serwera SQL, tworząc nowy serwer SQL lub jako część tworzenia nowej bazy danych.
 

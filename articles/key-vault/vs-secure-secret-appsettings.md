@@ -2,27 +2,23 @@
 title: Bezpiecznie zapisywanie ustawień klucza tajnego aplikacji dla aplikacji sieci web — usługi Azure Key Vault | Dokumentacja firmy Microsoft
 description: W jaki sposób można bezpiecznie zapisać ustawienia klucza tajnego aplikacji takich jak poświadczenia platformy Azure lub innych firm interfejsu API kluczy przy użyciu platformy ASP.NET core dostawcy magazynu kluczy, tajemnicy użytkownika lub .NET 4.7.1 Konstruktorzy konfiguracji
 services: visualstudio
-documentationcenter: ''
 author: cawaMS
 manager: paulyuk
 editor: ''
-ms.assetid: ''
 ms.service: key-vault
-ms.workload: web, azure
-ms.tgt_pltfrm: vs-getting-started
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: cawa
 ms.openlocfilehash: 79b1c740bca56982243ddc130d8747fdc955247f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58124120"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60304884"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Bezpiecznie zapisać ustawienia klucza tajnego aplikacji dla aplikacji sieci web
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 W tym artykule opisano, jak bezpiecznie zapisać ustawienia konfiguracji wpisu tajnego aplikacji dla aplikacji platformy Azure.
 
 Tradycyjnie wszystkie sieci web konfiguracji aplikacji, które ustawienia są zapisywane w plikach konfiguracji, takich jak plik Web.config. Praktyka ta prowadzi do zaewidencjonowania ustawień tajnych, takich jak poświadczenia w chmurze dla systemów kontroli źródła publicznych, takich jak GitHub. W tym samym czasie może być trudno postępuj zgodnie z zaleceniami dotyczącymi zabezpieczeń ze względu na obciążenie, trzeba zmienić kod źródłowy i ponownie skonfigurować ustawienia środowiska deweloperskiego.

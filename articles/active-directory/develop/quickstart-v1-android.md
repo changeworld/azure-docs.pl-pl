@@ -19,11 +19,11 @@ ms.reviewer: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9537748f8dd3ee027236c73e9587ff6b78ded7f3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207589"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60299456"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Szybki start: logowanie użytkowników i wywoływanie interfejsu API programu Microsoft Graph z poziomu aplikacji dla systemu Android
 
@@ -124,7 +124,7 @@ Cała konfiguracja dla tego przykładowego kodu znajduje się w pliku ***src/mai
 2. Wybierz kolejno pozycje **Run > Run app** (Uruchom > Uruchom aplikację).
 3. Aplikacja powinna zostać skompilowana, a następnie powinno zostać wyświetlone podstawowe środowisko użytkownika. Po kliknięciu przycisku `Call Graph API` pojawi się monit o zalogowanie, a następnie interfejs API programu Microsoft Graph zostanie dyskretnie wywołany przy użyciu nowego tokenu.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 1. Sprawdź [witrynę Wiki dotyczącą biblioteki ADAL dla systemu Android](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki), aby uzyskać więcej informacji na temat działania biblioteki i tego, w jaki sposób konfigurować nowe scenariusze i funkcje.
 2. W scenariuszach natywnych aplikacja będzie używać osadzonej aplikacji Webview i nie opuści aplikacji. Identyfikator `Redirect URI` może być dowolny.
