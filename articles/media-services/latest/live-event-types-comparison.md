@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: juliako
 ms.openlocfilehash: 9952a7bbac1eb79de0d3425f839e3bd30196844e
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243894"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60322288"
 ---
 # <a name="live-event-types-comparison"></a>Porównanie typów zdarzeń na żywo
 
@@ -57,7 +57,7 @@ W poniższej tabeli porównano funkcje dwa typy wydarzenie na żywo.
 
 ## <a name="system-presets"></a>Ustawienia systemu
 
-Podczas korzystania z kodowania na żywo (wydarzenie na żywo jest równa **standardowa**), ustawienie wstępne kodowania definiuje, jak przychodzący strumień jest zakodowany w wielu różnych lub warstwy. Obecnie jedyną dozwoloną wartość dla ustawienia wstępnego jest *Default720p* (ustawienie domyślne).
+W przypadku korzystania z kodowania na żywo (wydarzenie na żywo z ustawieniem **Standardowy**) ustawienie wstępne kodowania definiuje sposób kodowania przychodzącego strumienia w wielu różnych szybkościach transmisji bitów lub warstwach. Obecnie jedyną dozwoloną wartość dla ustawienia wstępnego jest *Default720p* (ustawienie domyślne).
 
 **Default720p** będzie kodowania wideo na następujące warstwy 6.
 
@@ -73,7 +73,7 @@ Podczas korzystania z kodowania na żywo (wydarzenie na żywo jest równa **stan
 | 200 |340 |192 |30 |Wysoka |Video_340x192_200kbps |
 
 > [!NOTE]
-> Jeśli musisz użyć niestandardowego ustawienia wstępnego kodowania na żywo, skontaktuj się z amshelp@microsoft.com. Należy określić odpowiednią tabelę, rozdzielczości i szybkości transmisji. Sprawdź, czy jest tylko jednej warstwy na 720 pikseli i maksymalnie 6 warstwy.
+> Jeśli chcesz użyć niestandardowego ustawienia wstępnego kodowania na żywo, wyślij wiadomość na adres amshelp@microsoft.com. Musisz określić odpowiednią tabelę z rozdzielczością i szybkościami transmisji bitów. Sprawdź, czy istnieje tylko jedna warstwa dla rozdzielczości 720p i maksymalnie 6 warstw.
 
 ### <a name="output-audio-stream"></a>Dane wyjściowe Audio Stream
 

@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 01/17/2019
 ms.author: bwren
 ms.openlocfilehash: 25d6b582ed4d4e24df3841f4191471296e25abd8
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54436336"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60519364"
 ---
 # <a name="writing-efficient-log-queries-in-azure-monitor"></a>Pisanie zapytań wydajne dzienników w usłudze Azure Monitor
 Ten artykuł zawiera zalecenia dotyczące pisania zapytań wydajne dziennika w usłudze Azure Monitor. Korzystając z następujących strategii, można zagwarantować, że Twoje zapytania będą uruchamiane szybko i przy minimalnym dla.

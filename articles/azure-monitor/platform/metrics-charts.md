@@ -1,19 +1,19 @@
 ---
 title: Zaawansowane funkcje Eksploratora metryk usługi Azure
 description: Dowiedz się więcej o zaawansowanych funkcji Eksploratora metryk usługi Azure Monitor
-author: vgorbenko
+author: lingliw
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 01/22/2019
-ms.author: vitalyg
+ms.date: 04/12/19
+ms.author: v-lingwu
 ms.subservice: metrics
 ms.openlocfilehash: 67e4281b24a7489cf202d82bdddbe99992aac095
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59271683"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60256785"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Zaawansowane funkcje Eksploratora metryk usługi Azure
 
@@ -149,4 +149,3 @@ Zapoznaj się z tą [artykułu](alerts-metric.md) Aby dowiedzieć się więcej o
 ## <a name="next-steps"></a>Kolejne kroki
 
   Odczyt [Tworzenie niestandardowych pulpitów nawigacyjnych wskaźników KPI](https://docs.microsoft.com/azure/application-insights/app-insights-tutorial-dashboards) Aby dowiedzieć się więcej na temat najlepszych rozwiązań do tworzenia pulpitów nawigacyjnych informacje z możliwością działania za pomocą metryk.
-

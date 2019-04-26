@@ -3,23 +3,24 @@ title: Limity, limity przydziału i progi w usłudze Azure Scheduler
 description: Dowiedz się o limity, limity przydziału, wartości domyślne i ograniczać progi dla usługi Azure Scheduler
 services: scheduler
 ms.service: scheduler
-author: derek1ee
-ms.author: deli
+author: WenJason
+ms.author: v-jay
 ms.reviewer: klam
 ms.assetid: 88f4a3e9-6dbd-4943-8543-f0649d423061
 ms.topic: article
-ms.date: 08/18/2016
-ms.openlocfilehash: 0c1e704a3bdec239c87d879ae1ef95e6e76d27fc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+origin.date: 08/18/2016
+ms.date: 11/12/2018
+ms.openlocfilehash: 478afb20f3dabec74d66d00bec325408ce6604fc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966915"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60531280"
 ---
 # <a name="limits-quotas-and-throttle-thresholds-in-azure-scheduler"></a>Limity, limity przydziału i ograniczenia progi w usłudze Azure Scheduler
 
 > [!IMPORTANT]
-> [Usługa Azure Logic Apps](../logic-apps/logic-apps-overview.md) zastępuje usługi Azure Scheduler, która zostanie wycofana. Aby zaplanować prace, [zamiast tego spróbuj wykonać usługi Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
+> Usługa [Azure Logic Apps](../logic-apps/logic-apps-overview.md) zastępuje usługę Azure Scheduler, która zostanie wycofana. Zamiast niej [spróbuj używać usługi Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) do planowania zadań. 
 
 ## <a name="limits-quotas-and-thresholds"></a>Limity, limity przydziału i progi
 
@@ -36,5 +37,5 @@ Każde żądanie dotyczące usługi Scheduler zwraca nagłówek odpowiedzi, o na
 
 ## <a name="see-also"></a>Zobacz także
 
-* [Co to jest usługa Azure Scheduler?](scheduler-intro.md)
+* [Czym jest Azure Scheduler?](scheduler-intro.md)
 * [Pojęcia i terminologia dotyczące usługi Azure Scheduler oraz hierarchia jednostek](scheduler-concepts-terms.md)

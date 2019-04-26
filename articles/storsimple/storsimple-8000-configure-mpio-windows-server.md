@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 03/26/2018
 ms.author: alkohli
 ms.openlocfilehash: eda134257edb851eea076459b44e02fc59028f46
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58078146"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60363401"
 ---
 # <a name="configure-multipath-io-for-your-storsimple-device"></a>Konfigurowanie wielościeżkowego wejścia/wyjścia dla urządzenia StorSimple
 
@@ -84,7 +84,7 @@ Wielościeżkowe wejście/wyjście musi być skonfigurowany w celu zidentyfikowa
 3. Wybierz **obsługę urządzeń iSCSI**, a następnie kliknij przycisk **Dodaj**.  
    ![Właściwości wielościeżkowego wejścia/wyjścia odnajdywanie wielu ścieżek](./media/storsimple-configure-mpio-windows-server/IC741003.png)
 4. Uruchom ponownie serwer po wyświetleniu monitu.
-5. W **Właściwości wielościeżkowego wejścia/wyjścia** okno dialogowe, kliknij przycisk **urządzeń wielościeżkowego wejścia/wyjścia** kartę. Kliknij pozycję **Dodaj**.
+5. W **Właściwości wielościeżkowego wejścia/wyjścia** okno dialogowe, kliknij przycisk **urządzeń wielościeżkowego wejścia/wyjścia** kartę. Kliknij pozycję **Add** (Dodaj).
     </br>![Urządzeń wielościeżkowego wejścia/wyjścia Właściwości wielościeżkowego wejścia/wyjścia](./media/storsimple-configure-mpio-windows-server/IC741004.png)
 6. W **Dodaj Obsługa wielościeżkowego wejścia/wyjścia** dialogowego **identyfikator urządzenia sprzętowego**, wprowadź numer seryjny urządzenia z systemem. Aby uzyskać numer seryjny urządzenia, dostęp do usługi Menedżer urządzeń StorSimple. Przejdź do **urządzeń > pulpit nawigacyjny**. Numer seryjny urządzenia jest wyświetlany w prawej **Quick Glance** okienku pulpitu nawigacyjnego z urządzenia.
     </br>
