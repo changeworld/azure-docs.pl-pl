@@ -27,10 +27,10 @@ Każde wystąpienie usługi API Management ma kolekcji właściwości pary klucz
 
 | Atrybut | Typ | Opis |
 | --- | --- | --- |
-| Nazwa wyświetlana |string |Ciąg alfanumeryczny używany jako odwołanie do właściwości w zasadach. |
-| Wartość |string |Wartość właściwości. Nie może być pusta ani składać się wyłącznie z białych znaków. |
-|Wpis tajny|wartość logiczna|Określa, czy wartość jest wpis tajny i powinien być zaszyfrowany, czy nie.|
-| Tagi |tablica ciągów |Opcjonalne — tagi, gdy zostanie podane, może służyć do filtrowania listy właściwości. |
+| `Display name` |string |Ciąg alfanumeryczny używany jako odwołanie do właściwości w zasadach. |
+| `Value` |string |Wartość właściwości. Nie może być pusta ani składać się wyłącznie z białych znaków. |
+| `Secret` |wartość logiczna|Określa, czy wartość jest wpis tajny i powinien być zaszyfrowany, czy nie.|
+| `Tags` |tablica ciągów |Opcjonalne — tagi, gdy zostanie podane, może służyć do filtrowania listy właściwości. |
 
 ![Nazwane wartości](./media/api-management-howto-properties/named-values.png)
 
