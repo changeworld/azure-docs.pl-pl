@@ -11,11 +11,11 @@ description: Opis sposobu konfigurowania aplikacji Pivotal Cloud Foundry w celu 
 keywords: Pivotal Cloud Foundry, Cloud Foundry, Open Service Broker, Open Service Broker for Azure
 tags: Cloud-Foundry
 ms.openlocfilehash: d553cd09ef42e47e3a10fb96039063b8aae665cb
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54258878"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60197219"
 ---
 # <a name="tutorial-use-an-open-service-broker-for-azure-database-with-an-application-on-pivotal-cloud-foundry"></a>Samouczek: Używanie bazy danych usługi Open Service Broker for Azure z aplikacją w rozwiązaniu Pivotal Cloud Foundry
 
@@ -261,7 +261,7 @@ Aby usunąć aplikację z wystąpienia rozwiązania Pivotal Cloud Foundry:
 cf delete spring-music
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku opisano wdrażanie aplikacji w rozwiązaniu Pivotal Cloud Foundry, a także tworzenie bazy danych za pomocą usługi Open Service Broker for Azure. Omówiono również tworzenie powiązania bazy danych z aplikacją w wystąpieniu rozwiązania Pivotal Cloud Foundry. Aby uzyskać więcej informacji na temat wdrażania aplikacji w rozwiązaniu Cloud Foundry na platformie Azure, zobacz:
 
