@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
 ms.openlocfilehash: b49182ebdcc93c4a51a55f27c3e0bf7a45307b7f
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55728898"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60618085"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Zarządzanie maszyny wirtualnej zestawu skalowania przy użyciu wiersza polecenia platformy Azure
 W całym cyklu życia zestawu skalowania maszyn wirtualnych konieczne może być uruchomienie jednego lub większej liczby zadań zarządzania. Ponadto może pojawić się potrzeba tworzenia skryptów automatyzujących różne zadania cyklu życia. Ten artykuł szczegółowo opisuje niektóre typowe polecenia interfejsu wiersza polecenia platformy Azure, które umożliwiają wykonywanie tych zadań.

@@ -10,11 +10,11 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 05/20/2018
 ms.openlocfilehash: 5a2935d559a967151c5bdc01c4b0806fe52179b4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51260044"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60629761"
 ---
 # <a name="troubleshoot-an-abnormal-recurring-job"></a>Rozwiązywanie problemów z nietypowym zadaniem cyklicznym
 
@@ -27,7 +27,7 @@ Zadania cykliczne zwykle współużytkować tę samą logikę zapytania i podobn
 
 **Widok zadania powiązane** w usłudze Azure Data Lake Tools for Visual Studio pomaga przyspieszyć rozwiązywania problemów z postępem w obu przypadkach.
 
-## <a name="step-1-find-recurring-jobs-and-open-related-job-view"></a>Krok 1: Znajdowanie zadań cyklicznych i otwórz widok zadania pokrewne
+## <a name="step-1-find-recurring-jobs-and-open-related-job-view"></a>Krok 1: Znajdź zadań cyklicznych i otwórz widok zadania pokrewne
 
 Na potrzeby rozwiązywania problemu cykliczne zadania pokrewne widoku zadania, musisz najpierw Znajdź zadanie cykliczne w programie Visual Studio, a następnie otwórz widok powiązanych zadań.
 
@@ -56,7 +56,7 @@ Podsumowanie i Raport statystyki są wyświetlane u góry widoku powiązanych za
 
 ![Diagram procesu sprawdzania statystyk](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/recurring-job-metrics-debugging-flow.png)
 
-## <a name="step-3-compare-the-abnormal-job-to-a-normal-job"></a>Krok 3: Porównanie nietypowe zadania do normalnego zadania
+## <a name="step-3-compare-the-abnormal-job-to-a-normal-job"></a>Krok 3: Porównaj nieprawidłowe zadanie do normalnego zadania
 
 Można znaleźć wszystkie przesłane zadania cykliczne za pośrednictwem listy zadań w dolnej części widoku Zadania pokrewne. Aby uzyskać więcej szczegółowych informacji i potencjalne rozwiązania, kliknij prawym przyciskiem myszy nietypowe zadania. Porównaj nietypowe zadania o normalnym poprzedniemu za pomocą widoku Porównywarce zadań.
 

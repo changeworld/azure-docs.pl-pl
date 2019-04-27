@@ -15,15 +15,15 @@ ms.workload: NA
 ms.date: 12/08/2017
 ms.author: alkohli
 ms.openlocfilehash: f7bfe41b4cdc9989c6b949011bc240275886b6f0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58093334"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60634902"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>Usługa Menedżer urządzeń StorSimple umożliwia zarządzanie woluminami (Update 3 lub nowszy)
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 W tym samouczku wyjaśniono, jak używać usługi Menedżer urządzeń StorSimple do tworzenia i zarządzania nimi woluminów na urządzeniach serii StorSimple 8000 z aktualizacją Update 3 i nowszych.
 
@@ -40,7 +40,7 @@ Archiwizacja wolumin jest typ woluminu warstwowego. Większy rozmiar fragmentu d
 
 Jeśli to konieczne, możesz zmienić woluminu z lokalnego na warstwowy lub z warstwowego na komputer lokalny. Aby uzyskać więcej informacji, przejdź do [zmienić typ woluminu](#change-the-volume-type).
 
-### <a name="locally-pinned-volumes"></a>Woluminy przypięte lokalnie
+### <a name="locally-pinned-volumes"></a>Lokalnie przypięte woluminy
 
 Woluminy przypięte lokalnie są inicjowane w pełni woluminów, które wykonują nie warstwy danych w chmurze, zapewniając lokalnego gwarancje dotyczące danych głównych, niezależnie od łączność z chmurą. Dane na woluminy przypięte lokalnie nie jest deduplikowany i skompresowane; jednak są deduplikowane, migawki woluminów przypiętych lokalnie. 
 

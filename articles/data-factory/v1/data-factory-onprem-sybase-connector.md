@@ -14,14 +14,14 @@ ms.date: 02/02/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 0de8d4145ff41b498149774af8ed74c56375dea9
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023661"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60605175"
 ---
 # <a name="move-data-from-sybase-using-azure-data-factory"></a>Przenoszenie danych z bazy danych Sybase przy użyciu usługi Azure Data Factory
-> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, z której korzystasz:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Wersja 1](data-factory-onprem-sybase-connector.md)
 > * [Wersja 2 (bieżąca wersja)](../connector-sybase.md)
 
@@ -72,7 +72,7 @@ Poniższa tabela zawiera opis dla elementów JSON, które są specyficzne dla pr
 | Schemat |Nazwa schematu w bazie danych. |Nie |
 | Element authenticationType |Typ uwierzytelniania używany do łączenia z bazą danych programu Sybase. Możliwe wartości: Anonimowe, podstawowe i Windows. |Yes |
 | nazwa użytkownika |Określ nazwę użytkownika, jeśli używasz uwierzytelniania podstawowe lub Windows. |Nie |
-| hasło |Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. |Nie |
+| password |Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. |Nie |
 | gatewayName |Nazwa bramy, która powinna być używana w usłudze Data Factory, połączyć się z lokalną bazą danych programu Sybase. |Yes |
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych

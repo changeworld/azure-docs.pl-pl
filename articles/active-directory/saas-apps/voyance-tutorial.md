@@ -17,11 +17,11 @@ ms.date: 07/16/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1771fe1d94eb64cf1e5227953bdc5defa488e85f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56208456"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60639283"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-voyance"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Voyance
 
@@ -247,7 +247,7 @@ Po kliknięciu kafelka Voyance w panelu dostępu, użytkownik powinien uzyskać 
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->

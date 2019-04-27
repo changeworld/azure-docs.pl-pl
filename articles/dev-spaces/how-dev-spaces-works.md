@@ -11,11 +11,11 @@ ms.topic: conceptual
 description: W tym artykule opisano procesy tego moc usługi Azure Dev miejsca do magazynowania i sposobu ich konfiguracji w pliku konfiguracyjnym azds.yaml
 keywords: azds.yaml, Azure Dev miejsca do magazynowania, Dev miejsca do magazynowania, Docker, Kubernetes, Azure, usługi AKS, Azure Kubernetes Service, kontenerów
 ms.openlocfilehash: 494dd3774ec47598a95c6e20de6283abc2e4ff94
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544927"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60687194"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Jak Azure Dev miejsca do magazynowania działa i jest skonfigurowany
 

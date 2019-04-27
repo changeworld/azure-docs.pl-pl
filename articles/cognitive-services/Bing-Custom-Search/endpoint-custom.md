@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: v-gedod
 ms.openlocfilehash: d01f863f0c42754e2dcc36f6cab1bed1f3dc3b6c
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337808"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60592254"
 ---
 # <a name="custom-search"></a>Wyszukiwanie niestandardowe
 Wyszukiwanie niestandardowe Bing umożliwia tworzenie dostosowanych funkcji wyszukiwania dla interesujących Cię tematów. Użytkownicy zobaczą wyniki wyszukiwania dostosowane do zawartości, która ich interesuje, zamiast przewijać kolejne strony ogólnych wyników wyszukiwania zawierające nieistotną zawartość.

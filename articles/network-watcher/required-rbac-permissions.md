@@ -3,8 +3,8 @@ title: Uprawnienia wymagane do korzystać z możliwości usługi Azure Network W
 description: Dowiedz się, które uprawnienia kontroli dostępu opartej na rolach na platformie Azure są wymagane do pracy z funkcjami usługi Network Watcher.
 services: network-watcher
 documentationcenter: ''
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 ms.assetid: ''
 ms.service: network-watcher
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
-ms.author: jdial
+ms.author: kumud
 ms.openlocfilehash: 429f7862901814fbd2017c395706fbfa2c345f72
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434583"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60652898"
 ---
 # <a name="role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>Uprawnienia kontroli dostępu opartej na rolach, trzeba używać możliwościach usługi Network Watcher
 
@@ -33,14 +33,14 @@ Kontrola dostępu oparta na rolach na platformie Azure (RBAC) umożliwia przypis
 | Microsoft.Network/networkWatchers/write                             | Utwórz lub zaktualizuj usługi network watcher                             |
 | Microsoft.Network/networkWatchers/delete                            | Usunąć obserwatora sieciowego                                       |
 
-## <a name="nsg-flow-logs"></a>Dzienniki przepływu sieciowych grup zabezpieczeń
+## <a name="nsg-flow-logs"></a>Dzienniki przepływów sieciowych grup zabezpieczeń
 
 | Akcja                                                              | Name (Nazwa)                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/configureFlowLog/action           | Konfiguruj przepływ dziennika                                           |
 | Microsoft.Network/networkWatchers/queryFlowLogStatus/action         | Kwerenda o stan dziennika przepływu                                    |
 
-## <a name="connection-troubleshoot"></a>Rozwiązywanie problemów z połączeniami
+## <a name="connection-troubleshoot"></a>Rozwiązywanie problemów z połączeniem
 
 | Akcja                                                              | Name (Nazwa)                                                           |
 | ---------                                                           | -------------                                                  |

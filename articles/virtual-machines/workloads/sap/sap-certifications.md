@@ -18,11 +18,11 @@ ms.date: 11/06/2018
 ms.author: rclaus
 ms.custom: ''
 ms.openlocfilehash: de282041066e18a52d596f051def598eef3d458d
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287221"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60648928"
 ---
 # <a name="sap-certifications-and-configurations-running-on-microsoft-azure"></a>Certyfikacje SAP i konfiguracji, w systemie Microsoft Azure
 
@@ -37,7 +37,7 @@ Odwołania:
 | --- | --- | --- |
 | SAP HANA Developer Edition (w tym oprogramowanie klienckie HANA składające się z SQLODBC, ODBO — Windows, ODBC i sterowników JDBC, HANA studio i HANA database) | Red Hat Enterprise Linux, SUSE Linux Enterprise | Rodziny maszyn wirtualnych z serii D |
 | Jeden HANA w biznesowych | SUSE Linux Enterprise | DS14_v2, M32ts, M32ls, M64ls, M64s <br /> [Oprogramowanie SAP HANA certyfikowane platform IaaS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure%23SAP%20Business%20One) |
-| OPROGRAMOWANIE SAP S/4 HANA | Red Hat Enterprise Linux, SUSE Linux Enterprise | Kontrolowana dostępność dla maszyn wirtualnych GS5. Pełna obsługa M64s M64ms, M128s, M128ms, M64ls, M32ls, M32ts, <br /> Oprogramowanie SAP HANA na platformie Azure (duże wystąpienia) [platform certyfikowane IaaS programu SAP HANA](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
+| SAP S/4 HANA | Red Hat Enterprise Linux, SUSE Linux Enterprise | Kontrolowana dostępność dla maszyn wirtualnych GS5. Pełna obsługa M64s M64ms, M128s, M128ms, M64ls, M32ls, M32ts, <br /> Oprogramowanie SAP HANA na platformie Azure (duże wystąpienia) [platform certyfikowane IaaS programu SAP HANA](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
 | Pakiet dla oprogramowania HANA, OLTP | Red Hat Enterprise Linux, SUSE Linux Enterprise | M64s M64ms, M128s, M128ms, M64ls, M32ls, M32ts, SAP HANA na platformie Azure (duże wystąpienia) <br /> [Oprogramowanie SAP HANA certyfikowane platform IaaS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
 | Oprogramowanie HANA Enterprise dla rozwiązań BW, OLAP | Red Hat Enterprise Linux, SUSE Linux Enterprise | GS5, M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts, <br /> Oprogramowanie SAP HANA na platformie Azure (duże wystąpienia) [platform certyfikowane IaaS programu SAP HANA](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
 | OPROGRAMOWANIE SAP BW/4 HANA | Red Hat Enterprise Linux, SUSE Linux Enterprise | GS5, M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts, <br /> Oprogramowanie SAP HANA na platformie Azure (duże wystąpienia) <br /> [Oprogramowanie SAP HANA certyfikowane platform IaaS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
@@ -48,7 +48,7 @@ Należy pamiętać, że oprogramowanie SAP używa termin "klastra" w [platform c
 System Microsoft Azure posiada certyfikaty dla następujących produktów SAP z pełnym wsparciem firm Microsoft i SAP.
 Odwołania:
 
-- [1928533 — SAP aplikacje na platformie Azure: obsługiwane produkty i maszyny Wirtualnej platformy Azure typy](https://launchpad.support.sap.com/#/notes/1928533) dla wszystkich aplikacji SAP NetWeaver na podstawie, m.in. SAP TREX SAP LiveCache i SAP, serwer zawartości. I wszystkimi bazami danych, z wyjątkiem platformy SAP HANA.
+- [1928533 — oprogramowanie SAP aplikacje na platformie Azure: Obsługiwane produkty i typy maszyn wirtualnych platformy Azure](https://launchpad.support.sap.com/#/notes/1928533) dla wszystkich aplikacji SAP NetWeaver na podstawie, m.in. SAP TREX SAP LiveCache i SAP, serwer zawartości. I wszystkimi bazami danych, z wyjątkiem platformy SAP HANA.
 
 
 | Produkt SAP | System operacyjny gościa | RDBMS | Rodzaje maszyn wirtualnych |
@@ -63,7 +63,7 @@ Odwołania:
 | Produkt SAP | System operacyjny gościa | RDBMS | Rodzaje maszyn wirtualnych |
 | --- | --- | --- | --- |
 | SAP Business jeden włączony serwer SQL Server | Windows  | Oprogramowanie SQL Server | Wszystkie NetWeaver certyfikowane typy maszyn wirtualnych<br /> [Uwaga SAP #928839](https://launchpad.support.sap.com/#/notes/928839) |
-| SAP BPC 10.01 MS SP08 | System Windows i Linux | | Wszystkie typy NetWeaver certyfikowane w maszynie Wirtualnej<br /> Uwaga SAP #2451795 |
+| SAP BPC 10.01 MS SP08 | System Windows i Linux | | Wszystkie typy NetWeaver certyfikowane w maszynie Wirtualnej<br /> SAP Note #2451795 |
 | SAP Business obiektów BI platformy | System Windows i Linux | | Uwaga SAP #2145537 |
-| Usługi danych SAP 4.2 | | | Uwaga SAP #2288344 |
+| SAP Data Services 4.2 | | | SAP Note #2288344 |
 | SAP Hybris Commerce Platform 5.x i 6.x | Windows | SQL Server, Oracle | Wszystkie NetWeaver certyfikowane typy maszyn wirtualnych<br /> [Hybris witryny typu Wiki](https://wiki.hybris.com/display/SUP/Using+the+hybris+Platform+with+the+Cloud) |

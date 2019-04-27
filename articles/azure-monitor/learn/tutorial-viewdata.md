@@ -14,11 +14,11 @@ ms.date: 07/31/2018
 ms.author: magoedte
 ms.custom: mvc
 ms.openlocfilehash: c64c0837956c59cf7a810bb06ca63bc21c5158d1
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186433"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60590421"
 ---
 # <a name="view-or-analyze-data-collected-with-log-analytics-log-search"></a>Wyświetlanie i analizowanie zebranych danych za pomocą wyszukiwania w dziennikach usługi Log Analytics
 
@@ -149,7 +149,7 @@ Perf
 
 ![Wykres liniowy](media/tutorial-viewdata/log-analytics-portal-linechart-01.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym samouczku przedstawiono sposób tworzenia podstawowych wyszukiwań w dziennikach w celu analizowania danych zdarzeń i wydajności.  Przejdź do następnego samouczka, aby dowiedzieć się, jak zwizualizować dane przez utworzenie pulpitu nawigacyjnego.
 
 > [!div class="nextstepaction"]

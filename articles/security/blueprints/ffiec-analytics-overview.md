@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 06/20/2018
 ms.author: meladie
 ms.openlocfilehash: a4e989778f041c586293e79005af2c8e87c8213c
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57241174"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60585883"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-ffiec-financial-services"></a>Zabezpieczenia platformy Azure i zgodności planu: Analiza dla usług finansowych FFIEC
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Tych samych zabezpieczeń platformy Azure i zgodności planu znajdują się wskazówki dotyczące wdrażania architektury analizy danych na platformie Azure jest odpowiedni dla zbierania, przechowywania i pobierania danych finansowych regulowane przez Radę Federalną badania instytucji finansowych (FFIEC).
 

@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 07/03/2018
 ms.author: meladie
 ms.openlocfilehash: 361d7683790128aafb11d6581c6e672b68ad893f
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57241599"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60609219"
 ---
 # <a name="azure-security-and-compliance-blueprint-iaas-web-application-for-pci-dss"></a>Zabezpieczenia platformy Azure i zgodności planu: Aplikacja sieci Web IaaS dla PCI DSS
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Tych samych zabezpieczeń platformy Azure i zgodności planu znajdują się wskazówki dotyczące wdrażania infrastruktury zgodne płatności Karta Industry Data Security Standards (PCI DSS 3.2) jako odpowiednie do zbierania, przechowywania i pobierania środowiska usługi (IaaS) dane posiadaczy takich kart. On przedstawiono typowe architektury referencyjnej i przedstawia prawidłowego przygotowania danych karty kredytowej (w tym karty numer, wygaśnięcia i weryfikacji danych) w środowisku bezpiecznych, zgodnych i wieloma warstwami. Ten plan przedstawiono rozwiązania end-to-end do potrzeb organizacji szukających podejście oparte na chmurze do zmniejszenia obciążenia i obniżyć koszty wdrożenia.
 

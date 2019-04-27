@@ -11,11 +11,11 @@ ms.topic: overview
 ms.date: 02/01/2019
 ms.author: scottwhi
 ms.openlocfilehash: 96bb11dad34d6ebcfebe0956d2a08b954a37e843
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56733048"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60576133"
 ---
 # <a name="what-is-bing-entity-search-api"></a>Czym jest interfejs API wyszukiwania jednostek Bing?
 
@@ -35,7 +35,7 @@ Interfejs API wyszukiwania jednostek Bing jest usługą internetową RESTful ła
 2. Wyślij żądanie do interfejsu API przy użyciu prawidłowego zapytania wyszukiwania.
 3. Przetwórz odpowiedź interfejsu API, analizując zwrócony komunikat JSON.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Wypróbuj [interaktywną demonstrację](https://azure.microsoft.com/services/cognitive-services/bing-entity-search-api/) interfejsu API wyszukiwania jednostek Bing. 
 * Aby szybko rozpocząć pracę z pierwszym żądaniem, wypróbuj przewodnik [Szybki start](quickstarts/csharp.md).

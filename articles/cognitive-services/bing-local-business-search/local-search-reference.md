@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
 ms.openlocfilehash: bc38b4457179c11f9d6b2656aacb8aa66848c444
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57992476"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60581041"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Odwołanie do lokalnych firm interfejsu API wyszukiwania Bing w wersji 7
 
@@ -86,7 +86,7 @@ Dostępne są następujące nagłówki, które mogą obejmować żądania i odpo
 Poniżej przedstawiono obiekty odpowiedzi JSON, które mogą obejmować odpowiedzi. Jeśli żądanie zakończy się powodzeniem, jest obiektem najwyższego poziomu w odpowiedzi [SearchResponse](#searchresponse) obiektu. Jeśli żądanie zakończy się niepowodzeniem, jest obiektem najwyższego poziomu [ErrorResponse](#errorresponse) obiektu.
 
 
-|Obiekt|Opis|  
+|Object|Opis|  
 |------------|-----------------|  
 |[Miejsce](#place)|Definiuje informacje o lokalnych firmach, takich jak restauracji lub hotelu.|  
 
@@ -166,10 +166,10 @@ Definiuje kontekst zapytania, które Bing użyta dla żądania.
   
 |Element|Opis|Type|  
 |-------------|-----------------|----------|  
-|adultIntent|Wartość logiczna wskazująca, czy określona kwerenda ma dorosłych. Wartość jest **true** Jeśli kwerenda ma dorosłych; w przeciwnym razie **false**.|Wartość logiczna|  
+|adultIntent|Wartość logiczna wskazująca, czy określona kwerenda ma dorosłych. Wartość jest **true** Jeśli kwerenda ma dorosłych; w przeciwnym razie **false**.|Boolean|  
 |alterationOverrideQuery|Ciąg zapytania do użycia, aby wymusić Bing w celu użycia oryginalny ciąg. Na przykład, jeśli ciąg zapytania jest *saling downwind*, zastąpienie ciągu zapytania będą *+ saling downwind*. Pamiętaj, aby zakodować ciąg zapytania, co skutkuje *% 2Bsaling + downwind*.<br /><br /> To pole jest uwzględniane tylko wtedy, gdy oryginalny ciąg zapytania zawiera błąd pisowni.|String|  
 |alteredQuery|Ciąg zapytania używane przez usługę Bing do wykonania zapytania. Usługa Bing używa ciągu zapytania zmieniony, jeśli oryginalny ciąg zapytania zawiera błędy pisowni. Na przykład, jeśli ciąg zapytania jest `saling downwind`, ciąg zapytania zmienionego będzie `sailing downwind`.<br /><br /> To pole jest uwzględniane tylko wtedy, gdy oryginalny ciąg zapytania zawiera błąd pisowni.|String|  
-|askUserForLocation|Wartość logiczna wskazująca, czy Bing wymaga lokalizacji użytkownika, aby zapewnić dokładne wyniki. Jeśli w określonej lokalizacji użytkownika przy użyciu [ClientIP-X-MSEdge](#clientip) i [X wyszukiwania lokalizacji](#location) nagłówków, możesz zignorować to pole.<br /><br /> Dla zapytań pamiętać lokalizacji, takich jak "Bieżąca pogoda" lub "restauracje w pobliżu" wymagających lokalizacji użytkownika, aby zapewnić dokładne wyniki, to pole jest ustawione **true**.<br /><br /> Dla lokalizacji pamiętać zapytań, które obejmują lokalizację (na przykład "Seattle o pogodzie"), to pole jest ustawione **false**. To pole jest również ustawiona na **false** dla zapytań, które nie są lokalizacji, takich jak "najlepiej sprzedających".|Wartość logiczna|  
+|askUserForLocation|Wartość logiczna wskazująca, czy Bing wymaga lokalizacji użytkownika, aby zapewnić dokładne wyniki. Jeśli w określonej lokalizacji użytkownika przy użyciu [ClientIP-X-MSEdge](#clientip) i [X wyszukiwania lokalizacji](#location) nagłówków, możesz zignorować to pole.<br /><br /> Dla zapytań pamiętać lokalizacji, takich jak "Bieżąca pogoda" lub "restauracje w pobliżu" wymagających lokalizacji użytkownika, aby zapewnić dokładne wyniki, to pole jest ustawione **true**.<br /><br /> Dla lokalizacji pamiętać zapytań, które obejmują lokalizację (na przykład "Seattle o pogodzie"), to pole jest ustawione **false**. To pole jest również ustawiona na **false** dla zapytań, które nie są lokalizacji, takich jak "najlepiej sprzedających".|Boolean|  
 |originalQuery|Ciąg zapytania określony w żądaniu.|String|  
 
 ### <a name="identifiable"></a>Do zidentyfikowania
@@ -193,7 +193,7 @@ Definiuje element wyników wyszukiwania, aby wyświetlić.
 |resultIndex|Liczony od zera indeks elementu w odpowiedzi na pytanie do wyświetlenia. Jeśli element nie zawiera tego pola, można wyświetlić wszystkie elementy w odpowiedzi na pytanie. Na przykład wyświetlić wszystkie artykuły w odpowiedzi na wiadomości.|Liczba całkowita|
 |answerType|Odpowiedź, który zawiera element, aby wyświetlić. Na przykład wiadomości.<br /><br />Aby znaleźć odpowiedzi w obiekcie SearchResponse, należy użyć typu. Typ jest nazwa pola SearchResponse.<br /><br /> Jednak używać typu odpowiedzi, tylko wtedy, gdy ten obiekt zawiera pola wartości; w przeciwnym razie go zignorować.|String|
 |textualIndex|Indeks odpowiedzi w textualAnswers do wyświetlenia.| Liczba całkowita bez znaku|
-|wartość|Identyfikatora, który identyfikuje odpowiedzi, aby wyświetlić lub element odpowiedź do wyświetlenia. Jeśli identyfikator identyfikuje odpowiedzi, wyświetlanie wszystkich elementów w odpowiedzi.|Do zidentyfikowania|
+|value|Identyfikatora, który identyfikuje odpowiedzi, aby wyświetlić lub element odpowiedź do wyświetlenia. Jeśli identyfikator identyfikuje odpowiedzi, wyświetlanie wszystkich elementów w odpowiedzi.|Do zidentyfikowania|
 
 ### <a name="rankingresponse"></a>RankingResponse  
 Określa, gdzie na wyszukiwanie zawartości strony wyników powinny zostać umieszczone i w jakiej kolejności.  

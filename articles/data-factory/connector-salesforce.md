@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 04/19/2019
 ms.author: jingwang
 ms.openlocfilehash: 6056df9aa9079887bfb06ca20ad564eb52baff38
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60008702"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60546576"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Kopiowanie danych z i do usługi Salesforce za pomocą usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -316,7 +316,7 @@ Podczas kopiowania danych z usług Salesforce, następujące mapowania są używ
 | Typ danych usługi SalesForce | Typ danych tymczasowych fabryki danych |
 |:--- |:--- |
 | Liczba automatycznie |String |
-| Zaznacz pole wyboru |Wartość logiczna |
+| Zaznacz pole wyboru |Boolean |
 | Waluta |Decimal |
 | Date |DateTime |
 | Data/godzina |DateTime |

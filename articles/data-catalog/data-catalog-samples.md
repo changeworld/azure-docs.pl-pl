@@ -9,11 +9,11 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
 ms.openlocfilehash: 1f62a5583b7beef2dc535065a6c0d3bcb34fe7b4
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60009637"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60582724"
 ---
 # <a name="data-catalog-developer-samples"></a>Przykłady dla deweloperów wykazu danych
 Zacznij programować aplikacje wykazu danych przy użyciu interfejsu API REST usługi Data Catalog. Interfejsu API REST usługi Data Catalog jest oparty na protokole REST interfejs API, który zapewnia dostęp programowy do zasobów usługi Data Catalog do rejestrowania, adnotacji i wyszukiwania zasobów danych programowo.

@@ -15,17 +15,17 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: ca8b3930b9d9f708d83dc760be3ee89737b074dc
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57541591"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60583370"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>Szablony umożliwiają tworzenie jednostki usługi Azure Data Factory
 > [!NOTE]
 > Ten artykuł dotyczy wersji 1 usługi Data Factory. 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Podczas używania usługi Azure Data Factory na potrzeby integracji danych, może się okazać samodzielnie ponowne użycie tego samego wzorca co w różnych środowiskach lub wdrażanie tego samego zadania kilkukrotnie w obrębie tego samego rozwiązania. Szablony ułatwiają implementować oraz zarządzać nimi tych scenariuszy w łatwy sposób. Szablony usługi Azure Data Factory jest idealny dla scenariuszy, które obejmują możliwość ponownego wykorzystania i powtórzenie.
 
 Rozważmy sytuację, w którym organizacja ma 10 zakładów produkcyjnych na całym świecie. Dzienniki z każdego zakładu są przechowywane w oddzielnych lokalnej bazy danych programu SQL Server. Firma chce kompilacji pojedynczego magazynu danych w chmurze na potrzeby analizy ad-hoc. Również chce mieć tę samą logikę, ale różnych konfiguracji dla środowisk programowania, testowania i produkcji.

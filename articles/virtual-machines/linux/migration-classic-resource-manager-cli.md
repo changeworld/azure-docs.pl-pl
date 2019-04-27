@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
 ms.openlocfilehash: 34dad39e3784dd0bc73e3be108d6b31d4f479a1e
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543274"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60543161"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>Migrację zasobów IaaS z wersji klasycznej do usługi Azure Resource Manager przy użyciu wiersza polecenia platformy Azure
 Te kroki pokazują, jak używać poleceń interfejsu wiersza polecenia platformy Azure (CLI) do migracji infrastruktury jako zasoby usługi (IaaS) z klasycznego modelu wdrażania do modelu wdrażania usługi Azure Resource Manager. W artykule [klasycznego wiersza polecenia platformy Azure](../../cli-install-nodejs.md). Ponieważ wiersza polecenia platformy Azure ma zastosowanie tylko dla zasobów usługi Azure Resource Manager, nie można użyć dla tej migracji.

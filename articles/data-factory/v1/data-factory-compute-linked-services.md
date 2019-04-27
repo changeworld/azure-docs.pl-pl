@@ -14,11 +14,11 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 0e0a249c53c90d3d8d03dcdb5fbb4f11f31c54df
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57545167"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60565722"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Obliczenia środowisk obsługiwanych przez usługę Azure Data Factory
 > [!NOTE]
@@ -262,7 +262,7 @@ Można utworzyć usługi połączonej HDInsight, aby zarejestrować swój własn
 | type              | Ustaw właściwość typu **HDInsight**. | Yes      |
 | clusterUri        | Identyfikator URI klastra HDInsight.        | Yes      |
 | nazwa użytkownika          | Nazwa konta użytkownika do nawiązywania połączenia z istniejącym klastrem HDInsight. | Yes      |
-| hasło          | Hasło dla konta użytkownika.   | Yes      |
+| password          | Hasło dla konta użytkownika.   | Yes      |
 | linkedServiceName | Nazwa połączonej usługi storage odwołująca się do usługi Blob storage używane przez klaster usługi HDInsight. <p>Obecnie nie można określić, że Data Lake Store połączonej usługi dla tej właściwości. Jeśli klaster HDInsight ma dostęp do programu Data Lake Store, mogą uzyskiwać dostęp do danych w Data Lake Store, przez skrypty Hive i Pig. </p> | Yes      |
 
 ## <a name="azure-batch-linked-service"></a>Usługa Azure Batch połączone
@@ -366,7 +366,7 @@ Użyj uwierzytelniania jednostki usługi, określając następujące właściwo�
 | :---------------------- | :--------------------------------------- | :------- |
 | servicePrincipalId  | Identyfikator klienta aplikacji.     | Yes      |
 | servicePrincipalKey | Klucz aplikacji.           | Yes      |
-| dzierżawa              | Informacji o dzierżawie (identyfikator nazwy lub dzierżawy domeny) gdzie znajduje się Twoja aplikacja. Aby uzyskać te informacje, umieść kursor myszy w prawym górnym rogu witryny Azure portal. | Yes      |
+| tenant              | Informacji o dzierżawie (identyfikator nazwy lub dzierżawy domeny) gdzie znajduje się Twoja aplikacja. Aby uzyskać te informacje, umieść kursor myszy w prawym górnym rogu witryny Azure portal. | Yes      |
 
 **Przykład: Uwierzytelnianie jednostki usługi**
 ```json

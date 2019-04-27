@@ -12,11 +12,11 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 ms.openlocfilehash: 2c674f77ef0f779c9764771e2e0ae7a4aea47548
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57575226"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60622111"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Przekształcanie danych w usłudze Azure Data Factory
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ ms.locfileid: "57575226"
 > * [Python usługi Databricks](transform-data-databricks-python.md)
 > * [Niestandardowe platformy .NET](transform-data-using-dotnet-custom-activity.md)
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 W tym artykule opisano działania dotyczące przekształcania danych w usłudze Azure Data Factory służy do przekształcania, a następnie przetwarza danych pierwotnych w prognozy i szczegółowych informacji. Wykonuje działanie przekształcania w środowisku komputerowym, takimi jak klaster usługi Azure HDInsight czy Azure Batch. Zawiera łącza do artykułów o szczegółowe informacje na temat każdego działania przekształcania.
 
 Usługa Data Factory obsługuje następujące działania przekształcania danych, które mogą być dodawane do [potoki](concepts-pipelines-activities.md) albo indywidualnie lub łączyć je z innymi działaniami.

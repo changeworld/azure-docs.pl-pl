@@ -12,11 +12,11 @@ ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
 ms.openlocfilehash: e2f0f1e7ac8f510c4ff5be7933c55278fef74694
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57885440"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60715662"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace"></a>Podręcznik techniczny do szablon rozwiązania Cortana Intelligence, pod kątem konserwacji predykcyjnej w lotnictwie i kosmonautyce
 

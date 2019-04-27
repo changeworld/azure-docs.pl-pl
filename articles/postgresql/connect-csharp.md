@@ -9,11 +9,11 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 03/12/2019
 ms.openlocfilehash: 79f2749c9a1f5a6a34628087dc2fd22f6eab6d17
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57881354"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60623908"
 ---
 # <a name="azure-database-for-postgresql-use-net-c-to-connect-and-query-data"></a>Azure Database for PostgreSQL: używanie platformy .NET (C#) do nawiązywania połączenia i wysyłania zapytań dotyczących danych
 Ten przewodnik Szybki start przedstawia sposób nawiązywania połączeń z usługą Azure Database for PostgreSQL przy użyciu aplikacji języka C#. Pokazano w nim, jak używać instrukcji języka SQL w celu wysyłania zapytań o dane oraz wstawiania, aktualizowania i usuwania danych w bazie danych. W krokach w tym artykule założono, że wiesz już, jak programować za pomocą języka C#, i dopiero zaczynasz pracę z usługą Azure Database for PostgreSQL.

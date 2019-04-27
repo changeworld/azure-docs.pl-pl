@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 3/6/2019
 ms.author: rkarlin
 ms.openlocfilehash: 6b3357ec06c89645b9c41e9efdb582a18af40672
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58074679"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60614633"
 ---
 # <a name="tutorial-investigate-cases-with-azure-sentinel-preview"></a>Samouczek: Badanie przypadków z platformy Azure przez wartownika w wersji zapoznawczej
 

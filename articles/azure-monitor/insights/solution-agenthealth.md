@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/19/2017
 ms.author: magoedte
 ms.openlocfilehash: f431613d9fa1020f523e03c90cbe31f4d42ccf42
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59426226"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60596058"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Rozwiązanie Agent Health w usłudze Azure Monitor
 Rozwiązanie Agent Health na platformie Azure pomoże Ci zrozumieć, dla wszystkich agentów raportujących bezpośrednio do obszaru roboczego usługi Log Analytics w usłudze Azure Monitor lub grupy zarządzania programu System Center Operations Manager podłączony do usługi Azure Monitor, które są nie odpowiada i przesyłanie danych operacyjnych.  Można także śledzić liczbę wdrożonych agentów i ich geograficzne rozmieszczenie oraz wykonywać inne zapytania dające informacje na temat rozmieszczenia agentów wdrożonych na platformie Azure, w innych środowiskach w chmurze i lokalnie.    

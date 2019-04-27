@@ -11,11 +11,11 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: magoedte
 ms.openlocfilehash: ade12225a470b64278b9d27676ceab768f64d904
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698284"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60596607"
 ---
 # <a name="azure-monitor-for-vms-preview-frequently-asked-questions"></a>Usługa Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) — często zadawane pytania
 Ta FAQ firmy Microsoft znajduje się lista często zadawane pytania dotyczące usługi Azure Monitor dla maszyn wirtualnych. Jeśli masz dodatkowe pytania dotyczące rozwiązania, przejdź do strony [forum dyskusyjne](https://feedback.azure.com/forums/34192--general-feedback) i Publikuj swoje pytania. Gdy zadawane pytanie dodajemy go do tego artykułu tak, aby możliwe było szybkie i łatwe.

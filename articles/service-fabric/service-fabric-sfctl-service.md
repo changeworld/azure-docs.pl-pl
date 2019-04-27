@@ -15,11 +15,11 @@ ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
 ms.openlocfilehash: e0454d0124efba04434884fbac9056c5e324710d
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670884"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60556376"
 ---
 # <a name="sfctl-service"></a>sfctl service
 Tworzenie, usuwanie i zarządzać usługą, typy usług i pakietów usługi.

@@ -17,11 +17,11 @@ ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ddbaed6704fd32f7fd4fe5a790424cbf829d2f1c
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37932861"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60540406"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-windows-vms"></a>Przykład wskazówki infrastruktury platformy Azure dla maszyn wirtualnych Windows
 W tym artykule przedstawiono tworzenie infrastruktury aplikacji na przykładzie. Firma Microsoft szczegółowo projektowania infrastruktury dla prostych magazyn online, który gromadzi wszystkie wskazówki i decyzji związanych z konwencji nazewnictwa, zestawy dostępności, sieci wirtualne i usługi równoważenia obciążenia i faktycznego wdrażania maszyn wirtualnych (VM).
@@ -72,14 +72,14 @@ Ponieważ sieć wirtualna nie musi trwającą łączności z siecią lokalną cy
 
 Sieci wirtualnej tylko w chmurze są tworzone przy użyciu następujących ustawień, korzystając z portalu Azure:
 
-* Nazwa: AZOS — UŻYJ VN01
+* Nazwa: AZOS-USE-VN01
 * Lokalizacja: Wschodnie stany USA 2
 * Przestrzeń adresowa sieci wirtualnej: 10.0.0.0/8
 * Pierwszej podsieci:
   * Nazwa: FrontEnd
   * Przestrzeń adresowa: 10.0.1.0/24
 * Drugą podsieć:
-  * Nazwa: wewnętrznej bazy danych
+  * Nazwa: BackEnd
   * Przestrzeń adresowa: 10.0.2.0/24
 
 ## <a name="availability-sets"></a>Zestawy dostępności

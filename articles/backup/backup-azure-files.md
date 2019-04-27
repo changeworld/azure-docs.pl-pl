@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.service: backup
 manager: carmonm
 ms.openlocfilehash: ac9a748742bda6b1e7a321a427090662542f1032
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55486915"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60643360"
 ---
 # <a name="back-up-azure-file-shares"></a>Tworzenie kopii zapasowej udziałów plików platformy Azure
 W tym artykule opisano sposób tworzenia kopii zapasowej i przywracania [udziałów plików platformy Azure](../storage/files/storage-files-introduction.md) przy użyciu witryny Azure Portal.

@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: v-gedod
 ms.openlocfilehash: a2d901c1cec4556e4061c21548d7a695c06e8cf8
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861769"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60737095"
 ---
 # <a name="quickstart-bing-entity-search-sdk-with-python"></a>Szybki start: Zestaw Bing Entity Search SDK i język Python
 
@@ -78,7 +78,7 @@ python -m pip install azure-cognitiveservices-search-entitysearch
             print(main_entities[0].description)
     ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Tworzenie jednostronicowej aplikacji internetowej](../tutorial-bing-entities-search-single-page-app.md)

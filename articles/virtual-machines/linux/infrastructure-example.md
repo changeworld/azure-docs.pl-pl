@@ -17,11 +17,11 @@ ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 00357641f51be703d2e5c52c5b9cc6187ce05ff6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58002689"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60543073"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-linux-vms"></a>Przykład Przegląd infrastruktury platformy Azure dla maszyn wirtualnych systemu Linux
 W tym artykule przedstawiono tworzenie infrastruktury aplikacji na przykładzie. Firma Microsoft szczegółowo projektowania infrastruktury dla prostych sklepie internetowym łączącym w sobie wszystkie wskazówki i decyzji związanych z konwencji nazewnictwa, zestawy dostępności, sieci wirtualne i usługi równoważenia obciążenia i faktycznego wdrażania maszyn wirtualnych (VM).

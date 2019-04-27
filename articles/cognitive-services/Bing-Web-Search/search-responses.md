@@ -12,11 +12,11 @@ ms.date: 02/12/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 07fb655af25fe590effcb885e7b366346724b50a
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56232896"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60642824"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Typy struktury i odpowiedzi odpowiedzi interfejsu API wyszukiwania Bing w sieci Web  
 
@@ -314,7 +314,7 @@ Wyrażenie matematyczne może zawierać następujące funkcje:
 
 |Symbol|Opis|
 |------------|-----------------|
-|Sortuj|Pierwiastek kwadratowy|
+|Sortowanie|Pierwiastek kwadratowy|
 |SIN [x], Cos [x], Tan [x]<br />CSC [x] s [x] Cot [x]|Funkcje trygonometryczne (z argumentami w radianach)|
 |ArcSin[x], ArcCos[x], ArcTan[x]<br />ArcCsc[x], ArcSec[x], ArcCot[x]|Odwrotny funkcje trygonometryczne (w radianach, dzięki czemu wyników)|
 |EXP [x] E ^ x|Funkcja wykładnicza|
@@ -449,7 +449,7 @@ Jednak gdy wywołujesz API wyszukiwania w Internecie Bing poziomu języka JavaSc
 
 Aby uzyskać dostęp do nagłówków, może wykonać żądania interfejsu API wyszukiwania Bing w sieci Web za pośrednictwem serwera proxy mechanizmu CORS. Odpowiedź z tego serwera proxy zawiera nagłówek `Access-Control-Expose-Headers`, który zezwala na nagłówki odpowiedzi i udostępnia je dla języka JavaScript.
 
-To proste zainstalować serwer proxy CORS, aby zezwolić na naszych [samouczek aplikacji](tutorial-bing-web-search-single-page-app.md) nagłówki opcjonalne klienta dostępu do. Najpierw [zainstaluj platformę Node.js](https://nodejs.org/en/download/), jeśli jeszcze jej nie masz. Następnie wprowadź następujące polecenie w wierszu polecenia.
+To proste zainstalować serwer proxy CORS, aby zezwolić na naszych [samouczek aplikacji](tutorial-bing-web-search-single-page-app.md) nagłówki opcjonalne klienta dostępu do. Najpierw [zainstaluj platformę Node.js](https://nodejs.org/en/download/), jeśli jeszcze jej nie masz. Potem wprowadź poniższe polecenie w wierszu polecenia.
 
     npm install -g cors-proxy-server
 

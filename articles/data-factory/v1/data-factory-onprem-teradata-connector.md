@@ -14,11 +14,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: d22318f4d9e233a57d521fe36f0827b9fc3af3e0
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746340"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60610737"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>Przenoszenie danych z programu Teradata przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -68,7 +68,7 @@ Poniższa tabela zawiera opis dla elementów JSON, które są specyficzne dla pr
 | serwer |Nazwa serwera programu Teradata. |Yes |
 | Element authenticationType |Typ uwierzytelniania używany do łączenia z bazą danych programu Teradata. Możliwe wartości: Anonimowe, podstawowe i Windows. |Yes |
 | nazwa użytkownika |Określ nazwę użytkownika, jeśli używasz uwierzytelniania podstawowe lub Windows. |Nie |
-| hasło |Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. |Nie |
+| password |Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. |Nie |
 | gatewayName |Nazwa bramy, do którego usługa Data Factory powinna używać do łączenia z bazą danych Teradata w środowisku lokalnym. |Yes |
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
@@ -285,7 +285,7 @@ Podczas przenoszenia danych Teradata, następujące mapowania są używane z Ter
 
 | Typ bazy danych programu Teradata | Typ .NET framework |
 | --- | --- |
-| Char |String |
+| char |String |
 | CLOB |String |
 | Grafika |String |
 | VarChar |String |

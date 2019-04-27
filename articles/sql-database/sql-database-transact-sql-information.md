@@ -13,17 +13,17 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 12/03/2018
 ms.openlocfilehash: 4d3f27d48819a4bd997cbb62177f5aae4afc85eb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57993157"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60615393"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>Rozstrzyganie różnic języka Transact-SQL podczas migracji do usługi SQL Database
 
 Gdy [migracji bazy danych](sql-database-single-database-migrate.md) z programu SQL Server do usługi Azure SQL Server, użytkownik może stwierdzić, że baza danych wymaga pewnej reorganizacji przed można poddać migracji programu SQL Server. Ten artykuł zawiera wskazówki, które ułatwiają wykonywanie ponownego zaprojektowania i zrozumienie podstawowej przyczyny, dlaczego ponownego projektowania jest konieczna. Aby wykrywać niezgodności, należy użyć [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595).
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Większość funkcji języka Transact-SQL, których aplikacje są w pełni obsługiwane zarówno w przypadku programu Microsoft SQL Server, jak i usługi Azure SQL Database. Na przykład podstawowe elementy języka SQL, takich jak typy danych, operatory, ciąg, arytmetyczne, logiczne oraz funkcje kursora, działają tak samo programu SQL Server i bazy danych SQL. Istnieją, jednak niewielkie różnice języka T-SQL w DDL (języka definicji danych) i elementy DML (język edycji danych), w efekcie instrukcje języka T-SQL oraz zapytania, które są tylko częściowo obsługiwane (co omówiono w dalszej części tego artykułu).
 

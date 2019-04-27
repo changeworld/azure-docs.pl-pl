@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 07/06/2018
 ms.author: terrylan
 ms.openlocfilehash: a9a55f61f032512be032897d5f21ece405844634
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105879"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60587197"
 ---
 # <a name="azure-infrastructure-availability"></a>Dostępność infrastruktury platformy Azure
 System Azure oferuje niezawodne dostępność, oparte na rozbudowane nadmiarowości osiągane przy użyciu technologii wirtualizacji. System Azure oferuje wiele poziomów nadmiarowości w celu zapewnienia maksymalnej dostępności danych klientów.

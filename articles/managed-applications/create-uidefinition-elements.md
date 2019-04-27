@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: 895b5cfb121347f9400d1aa315fef05d9088c55c
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 41a583a77f85bb1524112fa20d9098e18bc4f431
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46366475"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60587942"
 ---
 # <a name="createuidefinition-elements"></a>Elementy CreateUiDefinition
 W tym artykule opisano schemat i właściwości dla wszystkich obsługiwanych elementów CreateUiDefinition. 

@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 04/16/2019
 ms.author: diberry
 ms.openlocfilehash: 93803a7d885bb68c1d5d6637eaf90fb090dabeb2
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000270"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60598933"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Zainstaluj i uruchom usługi LUIS kontenerów platformy docker
  
@@ -32,7 +32,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Aby można było uruchomić kontener usługi LUIS, musisz mieć następujące czynności: 
 
-|Wymagany|Przeznaczenie|
+|Wymagane|Przeznaczenie|
 |--|--|
 |Aparat platformy docker| Aparat platformy Docker zainstalowany na musisz [komputerze-hoście](#the-host-computer). Środowisko docker zawiera pakiety, które konfigurują środowisko platformy Docker na [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), i [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Aby uzyskać podstawowe informacje na temat platformy Docker i kontenerów, zobacz [Docker — omówienie](https://docs.docker.com/engine/docker-overview/).<br><br> Docker należy skonfigurować w taki sposób, aby umożliwić kontenerów, aby nawiązać połączenie z, a następnie wysyłać danych dotyczących rozliczeń do platformy Azure. <br><br> **Na Windows**, platformy Docker musi być również skonfigurowany do obsługi kontenerów systemu Linux.<br><br>|
 |Znajomość platformy Docker | Należy mieć podstawową wiedzę na temat pojęć usługi Docker, takich jak rejestry, repozytoria, kontenery i obrazów kontenerów, a także wiedzę na temat basic `docker` poleceń.| 
@@ -269,13 +269,13 @@ Użyj hosta, `https://localhost:5000`, dla kontenera interfejsów API.
 
 Skonfiguruj parametry zapytania jak i co to jest zwracany w odpowiedzi na zapytanie:
 
-|Parametr zapytania|Typ|Przeznaczenie|
+|Parametr zapytania|Type|Przeznaczenie|
 |--|--|--|
 |`q`|string|Wypowiedź użytkownika.|
 |`timezoneOffset`|numer|TimezoneOffset umożliwia [Zmień strefę czasową](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) posługują się datetimeV2 wstępnie utworzone jednostki.|
-|`verbose`|boolean|Zwraca wszystkie intencje i ich wyniki, gdy ustawiona na wartość true. Wartość domyślna to false, która zwraca górną intencji.|
-|`staging`|boolean|Zapytanie zwraca wyniki w środowisku przejściowym, jeśli jest ustawiona na wartość true. |
-|`log`|boolean|Rejestruje zapytania, których można korzystać później podczas [aktywne uczenie](luis-how-to-review-endpoint-utterances.md). Domyślna to true.|
+|`verbose`|wartość logiczna|Zwraca wszystkie intencje i ich wyniki, gdy ustawiona na wartość true. Wartość domyślna to false, która zwraca górną intencji.|
+|`staging`|wartość logiczna|Zapytanie zwraca wyniki w środowisku przejściowym, jeśli jest ustawiona na wartość true. |
+|`log`|wartość logiczna|Rejestruje zapytania, których można korzystać później podczas [aktywne uczenie](luis-how-to-review-endpoint-utterances.md). Domyślna to true.|
 
 ### <a name="query-published-app"></a>Opublikowana aplikacja zapytania
 

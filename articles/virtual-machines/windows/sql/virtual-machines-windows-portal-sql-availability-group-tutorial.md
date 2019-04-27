@@ -17,11 +17,11 @@ ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
 ms.openlocfilehash: d86538fca907f7181bf58ff236bba8de186641fb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58003455"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60593378"
 ---
 # <a name="tutorial-configure-always-on-availability-group-in-azure-vm-manually"></a>Samouczek: Konfigurowanie zawsze włączonej grupy dostępności na maszynie Wirtualnej platformy Azure ręcznie
 
@@ -31,7 +31,7 @@ W tym samouczku przedstawiono sposób tworzenia programu SQL Server zawsze włą
 
 Na diagramie przedstawiono kompilacji w tym samouczku.
 
-![Grupy dostępności](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/00-EndstateSampleNoELB.png)
+![Grupa dostępności](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/00-EndstateSampleNoELB.png)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -402,7 +402,7 @@ Aby skonfigurować moduł równoważenia obciążenia, musisz utworzyć pulę za
 
    | Ustawienie | Opis | Przykład
    | --- | --- |---
-   | **Nazwa** | Tekst | SQLAlwaysOnEndPointProbe |
+   | **Nazwa** | Text | SQLAlwaysOnEndPointProbe |
    | **Protokół** | Wybierz protokół TCP | TCP |
    | **Port** | Wszelkie nieużywanego portu | 59999 |
    | **Interwał**  | Czas między próbami sondy w sekundach |5 |
@@ -418,7 +418,7 @@ Aby skonfigurować moduł równoważenia obciążenia, musisz utworzyć pulę za
 
    | Ustawienie | Opis | Przykład
    | --- | --- |---
-   | **Nazwa** | Tekst | SQLAlwaysOnEndPointListener |
+   | **Nazwa** | Text | SQLAlwaysOnEndPointListener |
    | **Adres IP frontonu** | Wybierz adres |Użyj adresu, który został utworzony podczas tworzenia modułu równoważenia obciążenia. |
    | **Protokół** | Wybierz protokół TCP |TCP |
    | **Port** | Na użytek port odbiornika grupy dostępności | 1433 |
@@ -445,7 +445,7 @@ Adres IP usługi WSFC musi znajdować się na moduł równoważenia obciążenia
 
    | Ustawienie | Opis | Przykład
    | --- | --- |---
-   | **Nazwa** | Tekst | WSFCEndPointProbe |
+   | **Nazwa** | Text | WSFCEndPointProbe |
    | **Protokół** | Wybierz protokół TCP | TCP |
    | **Port** | Wszelkie nieużywanego portu | 58888 |
    | **Interwał**  | Czas między próbami sondy w sekundach |5 |
@@ -459,7 +459,7 @@ Adres IP usługi WSFC musi znajdować się na moduł równoważenia obciążenia
 
    | Ustawienie | Opis | Przykład
    | --- | --- |---
-   | **Nazwa** | Tekst | WSFCEndPoint |
+   | **Nazwa** | Text | WSFCEndPoint |
    | **Adres IP frontonu** | Wybierz adres |Użyj adresu, który został utworzony podczas konfigurowania adresu IP usługi WSFC. To różni się od adresu IP odbiornika |
    | **Protokół** | Wybierz protokół TCP |TCP |
    | **Port** | Użyj portu dla adresu IP klastra. Jest dostępny port, który nie jest używany przez port sondy odbiornika. | 58888 |

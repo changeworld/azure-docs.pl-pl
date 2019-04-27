@@ -10,13 +10,13 @@ ms.topic: conceptual
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: 'Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s '
 ms.openlocfilehash: 62d4affa5ef49de7600f9ccc800ea6bf83e4bd49
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58099580"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60686643"
 ---
-# <a name="share-azure-dev-spaces"></a>Miejsca do magazynowania udziału usługi Azure Dev
+# <a name="share-azure-dev-spaces"></a>Udostępnianie obszarów Azure Dev Spaces
 
 Za pomocą usługi Azure Dev miejsca do magazynowania można udostępnić obszaru dev z innymi osobami w zespole. Każdy deweloper może pracować w ich własnych miejsce do magazynowania bez obawiać się, że inne istotne. Praca ze sobą w jednym miejscu może również włączyć do testowania kodu end-to-end, bez konieczności tworzenia mocks lub symulacji zależności. Zobacz [więcej informacji na temat Projektowanie zespołowe](../team-development-nodejs.md) przewodnika, aby uzyskać więcej informacji.
 

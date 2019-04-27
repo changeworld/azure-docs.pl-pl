@@ -10,11 +10,11 @@ ms.topic: article
 ms.workload: Supportability
 ms.date: 03/27/2018
 ms.openlocfilehash: 465e8751d02692648234a7a90b84b68f41522cb2
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328269"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60620808"
 ---
 # <a name="service-health"></a>Service Health
 Service Health zapewnia można dostosować pulpit nawigacyjny, który śledzi kondycji usług platformy Azure w regionach, gdzie można ich użyć. Na tym pulpicie nawigacyjnym możesz śledzić aktywne wydarzenia, takich jak problemy z usługą bieżące, zbliżającej się planowanej konserwacji lub porady dotyczące kondycji odpowiednimi. Zdarzenia stają się nieaktywne, są umieszczone w historii kondycji przez 90 dni. Na koniec można użyć pulpitu nawigacyjnego kondycji usługi do tworzenia i obsługi alertów dotyczących kondycji usługi, których aktywnie informujące o problemach z usługą mają wpływ na możesz.

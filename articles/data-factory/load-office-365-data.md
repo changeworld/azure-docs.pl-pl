@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
 ms.openlocfilehash: fe3a3b673f6512856f3640b3e103db8623570a88
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58445768"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60548104"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Ładowanie danych z usługi Office 365 za pomocą usługi Azure Data Factory
 

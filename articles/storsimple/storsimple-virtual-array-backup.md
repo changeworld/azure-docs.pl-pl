@@ -16,15 +16,15 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a61dcca1f78b6ba444a2deefcf6b8bb4fd5c5087
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58121982"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60581398"
 ---
 # <a name="back-up-shares-or-volumes-on-your-storsimple-virtual-array"></a>Tworzenie kopii zapasowej udziałów lub woluminów na rozwiązania StorSimple Virtual Array
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Macierz wirtualna StorSimple jest hybrydowe urządzenie magazynujące w chmurze w środowisku lokalnym wirtualnego skonfigurowanego jako serwer plików lub serwera iSCSI. Macierz wirtualna umożliwia użytkownikowi utworzenie zaplanowanych, jak i ręczne tworzenie kopii zapasowych udziałów lub woluminów na urządzeniu. Po skonfigurowaniu serwera jako serwera plików także umożliwia odzyskiwanie na poziomie elementu. W tym samouczku opisano sposób tworzenia zaplanowanych, jak i ręczne tworzenie kopii zapasowych i odzyskiwanie na poziomie elementu można przywrócić usuniętego pliku na macierz wirtualna.
 

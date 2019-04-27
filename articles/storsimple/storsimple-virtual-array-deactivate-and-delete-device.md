@@ -1,6 +1,6 @@
 ---
-title: Dezaktywuj i Usuń Microsoft Azure StorSimple wirtualnego tablicą | Dokumentacja firmy Microsoft
-description: Opisuje sposób usuwania urządzenia StorSimple z usługi najpierw dezaktywowanie go, a następnie usuwając go.
+title: Dezaktywacja i usuwanie Microsoft Azure StorSimple Virtual Array | Dokumentacja firmy Microsoft
+description: Zawiera opis procedury usuwania urządzenia StorSimple z usługą najpierw dezaktywowanie go, a następnie usuwając go.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,81 +14,81 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: alkohli
-ms.openlocfilehash: 8dea36f92b034f8c6cdb6875634848d37f4c6606
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bb1a56d204a46f89213f20e317494120f0ea565e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23875830"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60580602"
 ---
-# <a name="deactivate-and-delete-a-storsimple-virtual-array"></a>Dezaktywuj i Usuń macierz wirtualnego StorSimple
+# <a name="deactivate-and-delete-a-storsimple-virtual-array"></a>Dezaktywacja i usuwanie macierzy wirtualnej StorSimple
 
 ## <a name="overview"></a>Omówienie
 
-Po dezaktywowaniu tablicą wirtualnego StorSimple przerwaniu połączenia między urządzeniem i odpowiedniej usługi Menedżer StorSimple urządzenia. Ten samouczek wyjaśnia, jak:
+Po dezaktywowaniu rozwiązania StorSimple Virtual Array jest przerwanie połączenia między urządzeniem i odpowiednie usługi Menedżer urządzeń StorSimple. W tym samouczku wyjaśniono:
 
-* Dezaktywować urządzenie 
-* Usuwanie urządzenia dezaktywowany
+* Dezaktywacja urządzenia 
+* Usuń dezaktywowanego urządzenia
 
-Informacje przedstawione w tym artykule dotyczą tylko tablice wirtualnego StorSimple. Informacje w serii 8000, przejdź do sposobu [dezaktywację lub usunięcie urządzenia](storsimple-deactivate-and-delete-device.md).
+Informacje przedstawione w tym artykule dotyczy tylko macierze wirtualne StorSimple. Aby uzyskać informacji na temat serii 8000, przejdź do sposobu [dezaktywować lub usunąć urządzenie](storsimple-deactivate-and-delete-device.md).
 
 ## <a name="when-to-deactivate"></a>Kiedy należy dezaktywować?
 
-Dezaktywacja jest operacją trwałe i nie można cofnąć. Nie można zarejestrować ponownie dezaktywować urządzenie w usłudze Menedżer StorSimple urządzenia. Może być konieczne, Dezaktywuj i Usuń macierz wirtualnego StorSimple w następujących scenariuszach:
+Dezaktywacja jest operacją NIEODWRACALNĄ i nie można cofnąć. Nie można ponownie zarejestrować dezaktywowanego urządzenia w usłudze Menedżer urządzeń StorSimple. Może być konieczne Dezaktywacja i usuwanie rozwiązania StorSimple Virtual Array w następujących scenariuszach:
 
-* **Planowana praca awaryjna** : urządzenie jest w trybie online i jest planowane w tryb failover urządzenia. Jeśli planowane jest uaktualnienie do większych urządzenia, konieczne może być awaryjnie urządzenia. Po przekazania własności danych i przejścia w tryb failover, urządzenia są automatycznie usuwane.
-* **Nieplanowane przełączenie awaryjne** : urządzenie jest w trybie offline, należy przełączyć na urządzeniu. W tym scenariuszu mogą wystąpić podczas awarii, gdy istnieje przerwa w centrum danych i urządzenie podstawowej nie działa. Zaplanuj urządzenia na urządzeniu dodatkowej pracy awaryjnej. Po przekazania własności danych i przejścia w tryb failover, urządzenia są automatycznie usuwane.
-* **Likwidowanie** : Aby zlikwidować urządzenia. Należy najpierw dezaktywować urządzenie, a następnie usuń go. Po dezaktywacji urządzenia może już uzyskać dostępu do żadnych danych, który jest przechowywany lokalnie. Można jedynie dostępu i odzyskiwanie danych przechowywanych w chmurze. Jeśli planujesz przechowywanie danych urządzenia po dezaktywacji, następnie należy podjąć migawkę chmury dla wszystkich danych przed dezaktywacją urządzenia. Ta migawka w chmurze umożliwia odzyskanie wszystkich danych w późniejszym terminie.
+* **Zaplanowanym powrocie po awarii** : Urządzenie jest w trybie online i planowane jest w trybie Failover urządzenia. Jeśli planowane jest uaktualnienie na większym urządzeniu, może być konieczne w trybie Failover urządzenia. Po przekazaniu prawa własności do danych i pracy w trybie failover zostało ukończone, urządzenie źródłowe jest automatycznie usuwany.
+* **Nieplanowany tryb failover** : Urządzenie jest w trybie offline i należy do trybu failover na urządzeniu. Ten scenariusz może wystąpić podczas awarii, gdy nastąpi awaria w centrum danych, a urządzenie podstawowej nie działa. Planowane przełączanie urządzenia do dodatkowej urządzenia trybu failover. Po przekazaniu prawa własności do danych i pracy w trybie failover zostało ukończone, urządzenie źródłowe jest automatycznie usuwany.
+* **Likwidowanie** : Użytkownik chce zlikwidować urządzenia. Należy najpierw dezaktywować urządzenie, a następnie usuń go. Po dezaktywacji urządzenia można nie uzyskać dostępu do żadnych danych, który jest przechowywany lokalnie. Można jedynie dostępu i odzyskanie danych przechowywanych w chmurze. Jeśli planujesz przechowywać dane urządzenie po dezaktywacji, następnie należy podjąć migawkę w chmurze wszystkie swoje dane przed dezaktywacją urządzenia. Migawka w chmurze umożliwia odzyskanie wszystkich danych na późniejszym etapie.
 
-## <a name="deactivate-a-device"></a>Dezaktywować urządzenie
+## <a name="deactivate-a-device"></a>Dezaktywacja urządzenia
 
-Aby dezaktywować urządzenie, wykonaj następujące kroki.
+Aby dezaktywować urządzenie, wykonaj następujące czynności.
 
 #### <a name="to-deactivate-the-device"></a>Aby dezaktywować urządzenie
 
-1. W usłudze, przejdź do **zarządzania > urządzenia**. W **urządzeń** bloku, kliknij i wybierz urządzenia, które chcesz zdezaktywować.
+1. W usłudze, przejdź do **zarządzania > urządzenia**. W **urządzeń** bloku kliknij opcję i wybierz urządzenie, które chcesz zdezaktywować.
    
     ![Wybierz urządzenie, aby zdezaktywować](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete7.png)
-2. W Twojej **pulpitu nawigacyjnego urządzenia** bloku, kliknij przycisk **... Więcej** i wybierz z listy, **Dezaktywuj**.
+2. W swojej **pulpit nawigacyjny urządzeń** bloku kliknij **... Więcej** i wybierz z listy, **Dezaktywuj**.
    
     ![Kliknij przycisk Dezaktywuj](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete8.png)
 3. W **Dezaktywuj** bloku, wpisz nazwę urządzenia, a następnie kliknij przycisk **Dezaktywuj**. 
    
     ![Upewnij się, Dezaktywuj](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete1.png)
    
-    Proces Dezaktywuj uruchamia i może zająć kilka minut.
+    Rozpocznie się proces Dezaktywuj, w którym zostanie zajmuje kilka minut.
    
     ![Dezaktywuj w toku](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete2.png)
-4. Po dezaktywacji Odświeża listę urządzeń.
+4. Po dezaktywacji, lista urządzeń zostanie odświeżona.
    
     ![Dezaktywuj ukończone](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete3.png)
    
-    Można teraz usunąć to urządzenie.
+    Możesz teraz usunąć to urządzenie.
 
-## <a name="delete-the-device"></a>Usuwanie urządzenia
+## <a name="delete-the-device"></a>Usuń urządzenie
 
-Urządzenie ma najpierw są nieaktywne go usunąć. Usuwanie urządzenia spowoduje usunięcie jej z listy urządzeń połączonych z usługą. Usługę można zarządzać nie usunięto urządzenie. Dane skojarzone z danym urządzeniem jednak pozostaje w chmurze. Te dane zostały następnie naliczone opłaty.
+Urządzenie ma go najpierw dezaktywować go usunąć. Usuwanie urządzenia spowoduje usunięcie jej z listy urządzeń podłączonych do usługi. Usługa nie będzie można następnie zarządzać usuniętego urządzenia. Dane skojarzone z urządzeniem, jednak pozostaje w chmurze. Te dane zostały następnie naliczone opłaty.
 
-Aby usunąć urządzenie, wykonaj następujące kroki.
+Aby usunąć urządzenie, wykonaj następujące czynności.
 
 #### <a name="to-delete-the-device"></a>Aby usunąć urządzenie
 
-1. W Menedżerze urządzeń StorSimple, przejdź do **zarządzania > urządzenia**. W **urządzeń** bloku, wybierz dezaktywować urządzenie, które chcesz usunąć.
-2. W **pulpitu nawigacyjnego urządzenia** bloku, kliknij przycisk **... Więcej** , a następnie kliknij przycisk **usunąć**.
+1. W Menedżerze urządzeń StorSimple, przejdź do **zarządzania > urządzenia**. W **urządzeń** bloku wybranie zdezaktywowanego urządzenia, które chcesz usunąć.
+2. W **pulpit nawigacyjny urządzeń** bloku kliknij **... Więcej** a następnie kliknij przycisk **Usuń**.
    
    ![Wybierz urządzenie, aby usunąć](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete4.png)
-3. W **usunąć** bloku, wpisz nazwę urządzenia, aby potwierdzić zamiar usunięcia, a następnie kliknij przycisk **usunąć**. Usunięcie urządzenia nie powoduje usunięcia danych powiązanych z urządzeniem w chmurze. 
+3. W **Usuń** bloku, wpisz nazwę urządzenia, aby potwierdzić usunięcie, a następnie kliknij przycisk **Usuń**. Usunięcie urządzenia nie powoduje usunięcia danych skojarzone z urządzeniem w chmurze. 
    
    ![Potwierdzenie usunięcia](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete5.png) 
-4. Usuwanie uruchamia i może zająć kilka minut.
+4. Usuwanie zaczyna się i zajmuje kilka minut.
    
    ![Usuwanie w toku](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete6.png)
    
-    Po usunięciu urządzenia, można wyświetlić zaktualizowaną listę urządzeń.
+    Po usunięciu urządzenia można wyświetlić zaktualizowaną listę urządzeń.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-* Aby uzyskać informacje na temat sposobu pracy awaryjnej, przejdź do [trybu Failover i odzyskiwania po awarii macierzy wirtualnego StorSimple](storsimple-virtual-array-failover-dr.md).
+* Aby uzyskać informacje na temat sposobu pracy awaryjnej, przejdź do [trybu Failover i odzyskiwanie po awarii z rozwiązania StorSimple Virtual Array](storsimple-virtual-array-failover-dr.md).
 
-* Aby dowiedzieć się więcej o sposobie używania usługi Menedżer StorSimple urządzeń, przejdź do [zarządzać tablica wirtualnego StorSimple przy użyciu usługi Menedżer StorSimple urządzenia](storsimple-virtual-array-manager-service-administration.md). 
+* Aby dowiedzieć się więcej o sposobie używania usługi Menedżer urządzeń StorSimple, przejdź do [korzystać z usługi Menedżer urządzeń StorSimple do administrowania rozwiązania StorSimple Virtual Array](storsimple-virtual-array-manager-service-administration.md). 
 

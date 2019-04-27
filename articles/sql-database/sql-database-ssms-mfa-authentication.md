@@ -13,11 +13,11 @@ ms.reviewer: vanto
 manager: craigg
 ms.date: 10/08/2018
 ms.openlocfilehash: ccb78e201b90dfc27f52523348e76da57087bcc8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59494905"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60614176"
 ---
 # <a name="using-multi-factor-aad-authentication-with-azure-sql-database-and-azure-sql-data-warehouse-ssms-support-for-mfa"></a>Przy użyciu uwierzytelniania w usłudze Multi-Factor Authentication w usłudze AAD przy użyciu usługi Azure SQL Database i Azure SQL Data Warehouse (Obsługa programu SSMS dla usługi MFA)
 Azure SQL Database i Azure SQL Data Warehouse obsługują połączenia z SQL Server Management Studio (SSMS) przy użyciu *Active Directory Universal Authentication*. W tym artykule omówiono różnice między różne opcje uwierzytelniania i ograniczeń związanych z użyciem uniwersalne uwierzytelnianie. 

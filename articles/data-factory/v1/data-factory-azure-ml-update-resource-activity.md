@@ -13,11 +13,11 @@ ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 0c0e0e3983344bba76f5f305ecaf73f91110f3bc
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020085"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60567319"
 ---
 # <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>Aktualizowanie modeli usługi Azure Machine Learning, za pomocą działania aktualizowania zasobów
 
@@ -39,7 +39,7 @@ ms.locfileid: "54020085"
 
 Ten artykuł stanowi uzupełnienie głównej fabryki danych platformy Azure — artykuł integracji usługi Azure Machine Learning: [Tworzenie potoków predykcyjnych przy użyciu usługi Azure Machine Learning i Azure Data Factory](data-factory-azure-ml-batch-execution-activity.md). Jeśli nie zostało to jeszcze zrobione, zapoznaj się z artykułem głównego przed odczytaniem za pośrednictwem tego artykułu. 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Wraz z upływem czasu modele predykcyjne w usługi Azure ML oceniania eksperymentów konieczne retrained, przy użyciu nowych danych wejściowych zestawów danych. Po zakończeniu ponownego trenowania, chcesz zaktualizować usługi internetowej przyznawania ocen retrained modelu uczenia Maszynowego. Dostępne są następujące typowe czynności, aby umożliwić ponownego trenowania i aktualizowanie modeli usługi uczenie Maszynowe Azure za pośrednictwem usług sieci web:
 
 1. Tworzenie eksperymentu w [usługi Azure ML Studio](https://studio.azureml.net).

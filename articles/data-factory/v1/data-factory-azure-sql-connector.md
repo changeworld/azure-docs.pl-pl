@@ -14,11 +14,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: a7789f9a3f3da46305a9d8cd7cda24019658f2ad
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811491"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60567269"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-using-azure-data-factory"></a>Kopiowanie danych do i z usługi Azure SQL Database przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -666,7 +666,7 @@ Podczas przenoszenia danych do i z usługi Azure SQL Database, następujące map
 | timestamp |Byte[] |
 | tinyint |Byte |
 | uniqueidentifier |Guid |
-| varbinary |Byte[] |
+| Varbinary |Byte[] |
 | varchar |String, Char[] |
 | xml |Xml |
 

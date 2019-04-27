@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: b390dc9bd2b690837a85a5bab361a534b9c9d5a5
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118143"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60587210"
 ---
 # <a name="azure-information-system-components-and-boundaries"></a>Usługi Azure information składników systemu i granice
 Ten artykuł zawiera ogólny opis architektury platformy Azure i zarządzania. Środowisko systemu Azure składa się z następującymi sieciami:
@@ -96,7 +96,7 @@ Pracownicy (lub wykonawcy) firmy Microsoft są uznawane za użytkowników wewnę
 | Inżynierowie wdrażania na platformie Azure | Wewnętrzny | Dostęp do danych klienta | Wdrażanie i uaktualnianie składniki platformy, oprogramowania i zmian w konfiguracji zaplanowane w odniesieniu do platformy Azure. | Dostęp just in time w środowisku o ograniczonym dostępie trwałego systemów nienależące do klientów. |
 | Obsługa awarii klientów platformy Azure (dzierżawcy) | Wewnętrzny | Dostęp do danych klienta | Debugowanie i diagnozowanie błędów i awarii platformy dla dzierżaw poszczególnych obliczeń i kont platformy Azure. Analizowanie błędów. Dysk krytycznych poprawek platformy lub klientowi i korzystaj z pomocy technicznej ulepszeń technicznych. | Dostęp just in time w środowisku o ograniczonym dostępie trwałego systemów nienależące do klientów. |
 | Azure inżynierów (monitorowanie engineers) i zdarzenia | Wewnętrzny | Dostęp do danych klienta | Zdiagnozować i rozwiązać kondycji platformy za pomocą narzędzi diagnostycznych. Poprawki dla sterowników woluminów dysków, naprawy elementów wynikających z awarii i pomóc akcje odzyskiwania awarii. | Dostęp just in time w środowisku o ograniczonym dostępie trwałego systemów nienależące do klientów. |
-|Klienci platformy Azure | Zewnętrzne | ND | ND | ND |
+|Klienci platformy Azure | Zewnętrzna | ND | ND | ND |
 
 Platforma Azure używa unikatowych identyfikatorów do uwierzytelniania użytkowników w organizacji i klientów (lub procesów działających w imieniu użytkowników w organizacji). Dotyczy to wszystkich zasobów i urządzeń, które są częścią środowiska platformy Azure.
 

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
 ms.openlocfilehash: 60a0d7c2da25f63d0728dbb86f9a6c2328def811
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57245259"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60611237"
 ---
 # <a name="azure-advanced-threat-detection"></a>Usługa Azure zaawansowane wykrywanie zagrożeń
 
@@ -61,7 +61,7 @@ Przykłady niektóre metody, które mogą ułatwić Azure Identity Protection Za
 -   Blokowanie lub Zabezpieczanie kont użytkowników ryzykowne.
 -   Wymagać od użytkowników rejestracji do uwierzytelniania wieloskładnikowego.
 
-### <a name="azure-ad-privileged-identity-management"></a>Usługa Azure AD Privileged Identity Management
+### <a name="azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management
 
 Za pomocą [usługi Azure Active Directory Privileged Identity Management (PIM)](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure), można zarządzać, kontrolę i monitorowanie dostępu w organizacji. Ta funkcja obejmuje dostęp do zasobów w usłudze Azure AD i innych usług Microsoft online services, takich jak usługi Office 365 lub Microsoft Intune.
 

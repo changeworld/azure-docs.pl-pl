@@ -13,17 +13,17 @@ ms.workload: na
 ms.date: 04/13/2019
 ms.author: banders
 ms.openlocfilehash: 54578746ea8029a760663edc456660f98358abc5
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60009314"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60615997"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Samoobsługowe wymiany i zwrot kosztów dla platformy Azure rezerwacji
 
-Rezerwacje platformy Azure zapewniają elastyczność pozwalającą spełniać potrzeby stale rosnących potrzeb. Mogą wymieniać rezerwacji do innej rezerwacji tego samego typu. Jeśli nie są już potrzebne, można również zwrócić rezerwacji, maksymalnie 50 000 USD rocznie.
+Rezerwacje platformy Azure zapewniają elastyczność pozwalającą spełniać potrzeby stale rosnących potrzeb. Rezerwację można wymienić na inną rezerwację tego samego typu. Jeśli rezerwacja nie jest już potrzebna, można uzyskać zwrot jej kosztów, maksymalnie 50 000 USD rocznie.
 
-Możliwości programu exchange i Anuluj samoobsługi nie jest dostępna dla US Government klienci z umową Enterprise. Obsługiwane są inne typy subskrypcji dla instytucji rządowych USA, łącznie z rzeczywistym użyciem i dostawcy usług Kryptograficznych.
+Możliwości samoobsługowej wymiany i anulowania nie są dostępne dla klientów z umową Enterprise Agreement dla instytucji rządowych USA. Obsługiwane są inne typy subskrypcji dla instytucji rządowych USA, łącznie z rzeczywistym użyciem i dostawcy usług Kryptograficznych.
 
 W zamówieniu rezerwacji wymienić lub refundacji istniejącą rezerwację, musi mieć dostęp właściciela.
 
@@ -33,7 +33,7 @@ Mogą wymieniać rezerwacji z trzech krótkich krokach w [witryny Azure portal](
 
 1. Wybierz rezerwacji, które chcesz zwrotu, a następnie kliknij przycisk **Exchange**.  
     ![Przykładowy obraz przedstawiający rezerwacje, aby zwrócić](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-return.png)
-2. Wybierz produkt maszyny Wirtualnej, który chcesz kupić, a następnie wpisz ilość. Upewnij się, że nowa suma zakupu jest większa niż suma zwrotu. [Rozmiar jest określany na prawo przed zakupem](../virtual-machines/windows/prepay-reserved-vm-instances.md#determine-the-right-vm-size-before-you-buy).  
+2. Wybierz produkt maszyny wirtualnej, który chcesz kupić, a następnie wpisz ilość. Upewnij się, że nowa suma zakupu jest większa niż suma zwrotu. [Rozmiar jest określany na prawo przed zakupem](../virtual-machines/windows/prepay-reserved-vm-instances.md#determine-the-right-vm-size-before-you-buy).  
     ![Przykładowy obraz przedstawiający produktu maszyny Wirtualnej do zakupu za pomocą programu exchange](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-select-purchase.png)
 3. Przejrzyj i Zakończ transakcję.  
     ![Przykładowy obraz przedstawiający produktu maszyny Wirtualnej do zakupu za pomocą programu exchange z ukończenie powrotu](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-confirm-exchange.png)

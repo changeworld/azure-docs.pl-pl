@@ -13,11 +13,11 @@ ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: yexu
 ms.openlocfilehash: 1bc4bd9b95dc7e45b9b90fbe096ed71c5aa9bedf
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447233"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60571302"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Przyrostowe ładowanie danych z bazy danych Azure SQL Database do magazynu Azure Blob Storage
 W tym samouczku utworzysz fabrykę danych Azure Data Factory z potokiem, który ładuje dane różnicowe z tabeli w bazie danych Azure SQL Database do magazynu Azure Blob Storage. 

@@ -16,11 +16,11 @@ ms.date: 04/18/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 4024f6fdb40c752ef61f348d15f681e81d81c08c
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59999778"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60596693"
 ---
 # <a name="create-custom-roles-for-azure-resources-using-the-rest-api"></a>Tworzenie ról niestandardowych dla zasobów platformy Azure przy użyciu interfejsu API REST
 
@@ -54,11 +54,11 @@ Aby wyświetlić listę ról niestandardowych w zakresie, należy użyć [defini
 
 1. W identyfikatorze URI, Zastąp *{zakresu}* z zakresem, dla którego chcesz wyświetlić listę ról.
 
-    | Zakres | Typ |
+    | Zakres | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Subskrypcja |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Grupa zasobów |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Zasób |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
 
 1. Zastąp *{filter}* typu Rola.
 
@@ -78,11 +78,11 @@ Aby uzyskać informacje o niestandardowych rolach według jego nazwy wyświetlan
 
 1. W identyfikatorze URI, Zastąp *{zakresu}* z zakresem, dla którego chcesz wyświetlić listę ról.
 
-    | Zakres | Typ |
+    | Zakres | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Subskrypcja |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Grupa zasobów |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Zasób |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
 
 1. Zastąp *{filter}* z nazwą wyświetlaną dla roli.
 
@@ -104,11 +104,11 @@ Aby uzyskać informacje o niestandardowych rolach według unikatowego identyfika
 
 1. W identyfikatorze URI, Zastąp *{zakresu}* z zakresem, dla którego chcesz wyświetlić listę ról.
 
-    | Zakres | Typ |
+    | Zakres | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Subskrypcja |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Grupa zasobów |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Zasób |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
 
 1. Zastąp *{roleDefinitionId}* o identyfikatorze GUID definicji roli.
 
@@ -152,11 +152,11 @@ Aby utworzyć rolę niestandardową, należy użyć [definicje ról — Utwórz 
 
 1. W identyfikatorze URI, Zastąp *{zakresu}* z pierwszym `assignableScopes` roli niestandardowej.
 
-    | Zakres | Typ |
+    | Zakres | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Subskrypcja |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Grupa zasobów |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Zasób |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
 
 1. Zastąp *{roleDefinitionId}* o identyfikatorze GUID roli niestandardowej.
 
@@ -217,11 +217,11 @@ Aby zaktualizować rolę niestandardową, użyj [definicje ról — Tworzenie lu
 
 1. W identyfikatorze URI, Zastąp *{zakresu}* z pierwszym `assignableScopes` roli niestandardowej.
 
-    | Zakres | Typ |
+    | Zakres | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Subskrypcja |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Grupa zasobów |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Zasób |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
 
 1. Zastąp *{roleDefinitionId}* o identyfikatorze GUID roli niestandardowej.
 
@@ -301,11 +301,11 @@ Aby usunąć niestandardową rolę, użyj [Usuń definicje ról —](/rest/api/a
 
 1. W identyfikatorze URI, Zastąp *{zakresu}* z zakresem, który chcesz usunąć rolę niestandardową.
 
-    | Zakres | Typ |
+    | Zakres | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Subskrypcja |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Grupa zasobów |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Zasób |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
 
 1. Zastąp *{roleDefinitionId}* o identyfikatorze GUID roli niestandardowej.
 

@@ -14,11 +14,11 @@ ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
 ms.openlocfilehash: e828a8fc4211a0f0c4b53a9e18fa1c2fb6f6916b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58010148"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60593220"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>Windows zawiera "Krytyczne usługi nie powiodło się" błękitny ekran podczas uruchamiania na Maszynie wirtualnej platformy Azure
 W tym artykule opisano błąd "Krytyczne usługi nie powiodło się", które mogą wystąpić podczas rozruchu Windows maszyn wirtualnych (VM) w systemie Microsoft Azure. Zawiera on kroki rozwiązywania problemów, aby ułatwić rozwiązywanie problemów. 

@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 02/08/2018
 ms.author: jomolesk
 ms.openlocfilehash: 13ea2b68027c81bca7b43cef62cf7039aa0ea8dd
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57443474"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60609494"
 ---
 # <a name="azure-security-and-compliance-blueprint---three-tier-iaas-web-application-for-uk-official"></a>Zabezpieczenia platformy Azure i zgodności planu — IaaS trójwarstwowa aplikacja sieci Web dla UK-OFFICIAL
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
  Ten artykuł zawiera wskazówki i automatyzacji skryptów do świadczenia odpowiednich do obsługi wielu obciążeń sklasyfikowane jako OFFICIAL będzie przydatna w Zjednoczonym Królestwie architektura trójwarstwowa aplikacja sieci web Microsoft Azure.
 

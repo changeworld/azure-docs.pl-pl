@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 04/03/2019
 ms.author: chlandsi
 ms.openlocfilehash: 55fc671d926880375b0420e0eafb6dc63f170ba6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59012199"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60620586"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-macos-using-the-speech-sdk"></a>Szybki start: Rozpoznawanie mowy w języku Objective C w systemie macOS przy użyciu zestawu SDK rozpoznawania mowy
 

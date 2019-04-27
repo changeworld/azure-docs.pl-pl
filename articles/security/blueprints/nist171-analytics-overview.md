@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: jomolesk
 ms.openlocfilehash: f79ba9ae60454d4e73c914fc1c8af675a6d07d5d
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57245832"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60608870"
 ---
 # <a name="azure-security-and-compliance-blueprint---data-analytics-for-nist-sp-800-171"></a>Zabezpieczenia platformy Azure i zgodności planu — analiza danych dla SP NIST 800-171
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 [Publikacja specjalne NIST 800-171](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-171.pdf) zawiera wytyczne dotyczące ochrony informacji unclassified kontrolowanego (CUI), która znajduje się w organizacji i systemów informacyjnych nonfederal. SP NIST 800-171 ustanawia 14 rodzin wymagań dotyczących ochrony poufności CUI zabezpieczeń.
 
 Tych samych zabezpieczeń platformy Azure i zgodności plan zawiera wytyczne pomagające klientom wdrażanie architektury analizy danych, na platformie Azure, która implementuje podzbiór NIST SP 800-171 kontrolki. To rozwiązanie przedstawia sposób, w którym klienci mogą sprostać zabezpieczeń i zgodności z wymaganiami. Służy również jako podstawa do tworzenia i skonfigurować własne rozwiązania do analizowania danych na platformie Azure.

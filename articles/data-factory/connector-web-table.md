@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
 ms.openlocfilehash: e578b3a6b3905569567b568b0130c1ed1b90d915
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019398"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60557770"
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>Kopiowanie danych z tabeli w sieci Web przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -56,7 +56,7 @@ Następujące właściwości są obsługiwane dla sieci Web tabeli połączonej 
 |:--- |:--- |:--- |
 | type | Właściwość type musi być równa: **Sieć Web** |Yes |
 | url | Adres URL źródła w sieci Web |Yes |
-| authenticationType  | Dozwolone wartości to: **Anonimowe**. |Yes |
+| Element authenticationType | Dozwolone wartości to: **Anonimowe**. |Yes |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Własne środowisko IR jest wymagany, zgodnie z opisem w [wymagania wstępne](#prerequisites). |Yes |
 
 **Przykład:**
@@ -87,8 +87,8 @@ Aby skopiować dane z tabeli w sieci Web, należy ustawić właściwość typu z
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość typu elementu dataset musi być równa: **Usługa WebTable** | Yes |
-| path |Względny adres URL do zasobu, który zawiera tabelę. |Nie. Jeśli ścieżka nie zostanie określona, używana jest tylko adres URL, które są określone w definicji połączonej usługi. |
-| index |Indeks tabeli w zasobie. Zobacz [Get indeksu tabeli na stronie HTML](#get-index-of-a-table-in-an-html-page) sekcji instrukcje pobierania indeksu tabeli na stronie HTML. |Yes |
+| ścieżka |Względny adres URL do zasobu, który zawiera tabelę. |Nie. Jeśli ścieżka nie zostanie określona, używana jest tylko adres URL, które są określone w definicji połączonej usługi. |
+| indeks |Indeks tabeli w zasobie. Zobacz [Get indeksu tabeli na stronie HTML](#get-index-of-a-table-in-an-html-page) sekcji instrukcje pobierania indeksu tabeli na stronie HTML. |Yes |
 
 **Przykład:**
 

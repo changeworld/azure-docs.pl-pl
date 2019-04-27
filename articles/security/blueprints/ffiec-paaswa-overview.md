@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 06/20/2018
 ms.author: meladie
 ms.openlocfilehash: 63ad692e1050f900310f8195b79f26dd99704b93
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57245926"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60609639"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-for-ffiec-financial-services"></a>Zabezpieczenia platformy Azure i zgodności planu: Aplikacja sieci Web PaaS dla usług finansowych FFIEC
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Ten zabezpieczeń platformy Azure i zgodności planu automatyzacji znajdują się wskazówki dotyczące wdrażania to platforma jako usługa (PaaS) środowiska odpowiednie do zbierania, przechowywania i pobierania danych finansowych prowadzące działalność według federalnych instytucji finansowej Badanie Council (FFIEC). To rozwiązanie pozwala zautomatyzować wdrażanie i konfigurowanie zasobów platformy Azure dla typowych architektury referencyjnej, demonstrując sposób, w którym klienci mogą sprostać określonych wymagań dotyczących zabezpieczeń i zgodności i służy jako podstawa klienci mogą tworzyć i Skonfiguruj swoich rozwiązań na platformie Azure. Rozwiązanie implementuje podzbiór wymagań podręczników FFIEC. Aby uzyskać więcej informacji o wymaganiach FFIEC i tego rozwiązania, zobacz [dokumentację zgodności](#compliance-documentation) sekcji.
 

@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.openlocfilehash: 6dd1dd0ce2395e2b06d80385ffd299835a280526
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58002032"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60614041"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Pakiet cloud-init obsługę maszyn wirtualnych na platformie Azure
 W tym artykule opisano obsługę, która istnieje dla [pakietu cloud-init](https://cloudinit.readthedocs.io) Aby skonfigurować maszynę wirtualną (VM) lub maszyn wirtualnych zestawów skalowania (zestawu skalowania maszyn wirtualnych) na inicjowanie obsługi administracyjnej czas na platformie Azure. Skrypty te pakietu cloud-init są uruchamiane podczas pierwszego rozruchu po zasoby zostały udostępnione przez platformę Azure.  

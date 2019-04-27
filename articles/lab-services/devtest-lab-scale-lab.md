@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: ec79f6a9b255d44e66b901a0aae263c8dbbf2863
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149864"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60623511"
 ---
 # <a name="scale-quotas-and-limits-in-devtest-labs"></a>Skalowanie w usłudze DevTest Labs limity przydziału i ograniczenia
 Podczas pracy w usłudze DevTest Labs, może się okazać, że nie istnieją pewne domyślne limity do niektórych zasobów platformy Azure, które mogą mieć wpływ na usługi DevTest Labs. Limity te są nazywane **przydziały**.

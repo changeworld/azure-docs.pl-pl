@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 01/10/2019
 ms.author: sajagtap
 ms.openlocfilehash: 94a16d03e47a9bec29e5e1c4326beab376dd33dd
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864404"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60699107"
 ---
 # <a name="quickstart-helper-code-to-return-a-content-moderator-client"></a>Szybki start: kod pomocnika zwracający klienta usług Content Moderator
 
@@ -107,6 +107,6 @@ Zastąp zawartość pliku ModeratorHelper.cs następującym kodem:
 
 Oto szybki sposób utworzenia klienta usług Content Moderator dla subskrypcji.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 [Pobierz rozwiązanie programu Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) dla tego i innych przewodników Szybki start usług Content Moderator dla platformy .NET i rozpocznij pracę nad integracją.

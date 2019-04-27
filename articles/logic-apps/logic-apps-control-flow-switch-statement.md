@@ -10,11 +10,11 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 10/08/2018
 ms.openlocfilehash: 2a3f8ee5cba3110d392555fad78c1cb2513b5d4e
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232447"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60683176"
 ---
 # <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>Tworzenie instrukcji switch, systemem akcji przepływu pracy na podstawie określonej wartości w usłudze Azure Logic Apps
 
@@ -32,7 +32,7 @@ Na przykład załóżmy, że chcesz aplikację logiki, która wykonuje różne c
 
 * Na przykład w tym artykule, wykonaj [tworzenie Ta przykładowa aplikacja logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md) przy użyciu konta Outlook.com lub Office 365 Outlook.
 
-  1. Po dodaniu akcji do wysyłania wiadomości e-mail, Znajdź i zamiast tego wybierz następującą akcję: **Wyślij wiadomość e-mail z zatwierdzeniem**
+  1. Po dodaniu akcji do wysyłania wiadomości e-mail, należy znaleźć i zamiast tego wybierz następującą akcję: **Wyślij wiadomość e-mail z zatwierdzeniem**
 
      ![Wybierz pozycję "Wyślij wiadomość e-mail z zatwierdzeniem"](./media/logic-apps-control-flow-switch-statement/send-approval-email-action.png)
 
@@ -47,7 +47,7 @@ Na przykład załóżmy, że chcesz aplikację logiki, która wykonuje różne c
 
    Jeśli chcesz dodać instrukcji switch między krokami, przesuń wskaźnik nad strzałką znajdującą się gdzie chcesz dodać instrukcji switch. Wybierz **znak plus** (**+**) wyświetlany, wybierz **Dodaj akcję**.
 
-1. W polu wyszukiwania wprowadź "Przejdź" jako filtr. Wybierz tę akcję: **Przełącz — kontrola**
+1. W polu wyszukiwania wprowadź "Przejdź" jako filtr. Wybierz tę akcję: **Przełącznik — formant**
 
    ![Dodaj przełącznik](./media/logic-apps-control-flow-switch-statement/add-switch-statement.png)
 
@@ -58,7 +58,7 @@ Na przykład załóżmy, że chcesz aplikację logiki, która wykonuje różne c
 
 1. Kliknij wewnątrz **na** pola tak, aby wyświetlić listę zawartości dynamicznej. Z tej listy, wybierz **SelectedOption** pole, którego dane wyjściowe Określa akcję do wykonania. 
 
-   ![Wybierz pozycję "SelectedOption"](./media/logic-apps-control-flow-switch-statement/select-selected-option.png)
+   ![Select "SelectedOption"](./media/logic-apps-control-flow-switch-statement/select-selected-option.png)
 
 1. Sposób obsługiwać przypadki, w których osoba zatwierdzająca wybiera `Approve` lub `Reject`, Dodaj inny przypadek między **przypadek** i **domyślne**. 
 
@@ -113,7 +113,7 @@ Teraz, gdy utworzono aplikację logiki, za pomocą instrukcji switch, Przyjrzyjm
 }
 ```
 
-| Etykieta | Opis |
+| Label | Opis |
 |-------|-------------|
 | `"Switch"`         | Nazwa instrukcji switch, które możesz zmienić nazwę, aby zwiększyć czytelność |
 | `"type": "Switch"` | Określa, że akcja instrukcji switch |

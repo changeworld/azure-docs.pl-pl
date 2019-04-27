@@ -16,11 +16,11 @@ ms.date: 07/23/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e99f794c4eb9db78f50f63f14ccfad08c65ddb07
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57442060"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60591073"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sauce-labs---mobile-and-web-testing"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą sos Labs — Mobile i testowanie sieci Web
 
@@ -217,7 +217,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->

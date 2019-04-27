@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 06/29/2018
 ms.author: rkarlin
 ms.openlocfilehash: 6ba21c6eacd5b72d13706c08f0cc9883ccc91388
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58107478"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60704839"
 ---
 # <a name="investigate-incidents-and-alerts-in-azure-security-center-preview"></a>Badanie zdarzeń i alertów w usłudze Azure Security Center (wersja zapoznawcza)
 Ten dokument ułatwia korzystanie z funkcji badania zdarzeń zabezpieczeń i alertów w usłudze Azure Security Center.

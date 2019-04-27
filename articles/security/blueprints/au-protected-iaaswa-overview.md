@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 08/23/2018
 ms.author: meladie
 ms.openlocfilehash: 3c82a88ea15b52672f9bed428e2e7af40a65309c
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57446422"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60610200"
 ---
 # <a name="azure-security-and-compliance-blueprint---iaas-web-application-for-australia-protected"></a>Zabezpieczenia platformy Azure i zgodności planu — aplikacja sieci Web IaaS dla Australii chronione
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Tych samych zabezpieczeń platformy Azure i zgodności planu znajdują się wskazówki dotyczące wdrażania infrastruktury jako usługi (IaaS) środowiska odpowiednie do zbierania, przechowywania i pobierania danych chronionych Australia dla instytucji rządowych, które są zgodne z celami australijskich instytucji rządowych informacje zabezpieczeń ręczne (ISM) produkowane przez australijskiego Signals Directorate ASD (). Ten plan przedstawiono typowe architektury referencyjnej i pomaga pokazują prawidłowego przygotowania danych poufnych dla instytucji rządowych w środowisku bezpiecznych, zgodnych i wieloma warstwami.
 
 Tej architektury referencyjnej, przewodnik wdrażania i modelu zagrożeń Podaj podstawa klientom podejmować własnych planowania i system akredytacji procesów, pomagając klientom wdrażanie obciążeń na platformie Azure w sposób zgodny z ASD. Klienci mają możliwość wdrożenia usługi Azure VPN Gateway lub ExpressRoute za pomocą usług federacyjnych oraz integrować ją lokalnych zasobów z zasobami platformy Azure. Klienci, należy wziąć pod uwagę ryzyko związane z korzystania z zasobów lokalnych. Dodatkowa konfiguracja jest wymagane do spełnienia wymagań, ponieważ mogą się różnić zależnie od szczegółowe informacje na temat implementacji każdego klienta.

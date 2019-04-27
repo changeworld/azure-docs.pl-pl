@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/21/2018
 ms.author: cynthn
-ms.openlocfilehash: 0dd54a423b0ba69db450c663ecb68549fb94be7b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 3382907cf3267bc5a326daca2131829e82e76371
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38583423"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60613634"
 ---
 # <a name="guidance-for-mitigating-speculative-execution-side-channel-vulnerabilities-in-azure"></a>Wskazówki dotyczące ograniczanie ryzyka związanego z wykonywaniem spekulatywnym kanału po stronie luk w zabezpieczeniach na platformie Azure
 

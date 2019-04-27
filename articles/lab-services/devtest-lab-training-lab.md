@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 85eddaaf101c3e85eca7514b04660163d23c1c80
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 0a7ce1640636c6fba246584d098043a91990b9a0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38666798"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60622846"
 ---
 # <a name="use-azure-devtest-labs-for-training"></a>Korzystanie z usługi Azure DevTest Labs potrzeby szkolenia
 Usługa Azure DevTest Labs może służyć do implementowania wielu kluczowych scenariuszy, oprócz tworzenia i testowania. Jest jednym z tych scenariuszy konfigurowania laboratorium na potrzeby szkolenia. Usługa Azure DevTest Labs umożliwia tworzenie laboratorium, w którym mogą udostępniać szablony niestandardowe, które każdy szkoleniowych można użyć do utworzenia identyczne i wyizolowanego środowiska do trenowania. Można zastosować zasad w celu zapewnienia środowiska szkoleń są dostępne dla każdego szkoleniowych, tylko wtedy, gdy są potrzebne i zawiera za mało zasobów — takich jak virtual machines — wymagana na szkolenia. Na koniec laboratorium mogą łatwo udostępniać za pomocą Zaleć, które mogą oni uzyskać dostęp za pomocą jednego kliknięcia.

@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 10/04/2016
 ms.author: sedusch
 ms.openlocfilehash: e4c4afefe7a4746f2d8138bde7fea152f228a8bc
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57773524"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60648886"
 ---
 # <a name="using-sap-on-linux-virtual-machines-in-azure"></a>Używanie rozwiązań SAP na maszynach wirtualnych systemu Linux na platformie Azure
 Chmura obliczeniowa jest szeroko używanych terminem, który zyskuje coraz większe znaczenie w branży IT, od małych firm po duże i międzynarodowe korporacje. Microsoft Azure to platforma usług w chmurze firmy Microsoft oferująca szerokie spektrum nowych możliwości. Obecnie użytkownicy mogą szybko aprowizować zasoby jako usługi w chmurze i anulować ich aprowizację, dzięki czemu nie muszą przejmować się ograniczeniami technicznymi czy budżetowymi. Zamiast inwestować czas i budżet w infrastrukturę sprzętową firmy mogą skoncentrować się na aplikacjach, procesie biznesowym oraz korzyściach dla swoich klientów i użytkowników.

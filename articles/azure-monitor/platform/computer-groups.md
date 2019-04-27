@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 02/05/2019
 ms.author: bwren
 ms.openlocfilehash: c2babb5a86d69881b6a76c6dceae80a24a891f6c
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549307"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60740998"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Grupy komputerów w usłudze Azure Monitor rejestrowania zapytań
 Grupy komputerów w usłudze Azure Monitor pozwala do zakresu [rejestrowania zapytań](../log-query/log-query-overview.md) do konkretnego zestawu komputerów.  Każda grupa jest wypełniana komputerami za pomocą zapytań, który zdefiniujesz lub przez importowanie grup z różnych źródeł.  Gdy grupa jest dołączany do zapytania dziennika, wyniki są ograniczone do rekordy spełniające komputerów w grupie.
@@ -57,7 +57,7 @@ W poniższej tabeli opisano właściwości, które definiują grupę komputerów
 |:---|:---|
 | Name (Nazwa)   | Nazwa zapytania do wyświetlenia w portalu. |
 | Alias funkcji | Unikatowego aliasu, używany do identyfikowania grupy komputerów w zapytaniu. |
-| Kategoria       | Kategoria organizować zapytania w portalu. |
+| Category       | Kategoria organizować zapytania w portalu. |
 
 
 ### <a name="active-directory"></a>Usługa Active Directory

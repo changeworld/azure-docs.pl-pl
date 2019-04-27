@@ -1,5 +1,5 @@
 ---
-title: 'Usługa Azure Backup: Utwórz zasady tworzenia kopii zapasowych przy użyciu interfejsu API REST'
+title: 'Usługa Azure Backup: Tworzenie zasad kopii zapasowych, za pomocą interfejsu API REST'
 description: Zarządzanie zasadami kopii zapasowych (harmonogram i okres przechowywania) przy użyciu interfejsu API REST
 services: backup
 author: pvrk
@@ -11,11 +11,11 @@ ms.date: 08/21/2018
 ms.author: pullabhk
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
 ms.openlocfilehash: 657a777da0e984a145c1c617a6194bf4ef56306e
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289834"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60648809"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>Tworzenie zasad kopii zapasowych usługi Azure Recovery Services, za pomocą interfejsu API REST
 
@@ -30,7 +30,7 @@ Kroki umożliwiające utworzenie zasad kopii zapasowych dla magazynu usług odzy
   - Udział plików platformy Azure
 - Zasady można przypisać do wielu zasobów. Zasady tworzenia kopii zapasowej maszyny Wirtualnej platformy Azure może służyć do ochrony wielu maszyn wirtualnych platformy Azure.
 - Zasady składa się z dwóch składników:
-  - Harmonogram: Wykonywania kopii zapasowej
+  - Harmonogram: Kiedy należy wykonać kopię zapasową
   - Przechowywanie: Jak długo każda kopia zapasowa ma być przechowywana.
 - Harmonogram można zdefiniować jako "codziennie" lub "co tydzień" z określonego punktu w czasie.
 - Przechowywania mogą być definiowane dla "dzienny", "cotygodniowe", "miesięczne", "roczne" punktów kopii zapasowej.
@@ -53,7 +53,7 @@ Na przykład aby utworzyć zasady dla kopii zapasowej maszyny Wirtualnej platfor
 |Name (Nazwa)  |Wymagane  |Typ  |Opis  |
 |---------|---------|---------|---------|
 |properties     |   True      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | Właściwości ProtectionPolicyResource        |
-|tags     |         | Obiekt        |  Tagi zasobów       |
+|tags     |         | Object        |  Tagi zasobów       |
 
 Aby uzyskać pełną listę definicji w treści żądania, zobacz [dokument interfejsu API REST zasad tworzenia kopii zapasowej](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate).
 

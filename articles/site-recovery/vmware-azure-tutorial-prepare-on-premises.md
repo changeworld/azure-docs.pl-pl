@@ -10,11 +10,11 @@ ms.date: 04/08/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 1095a80ba05aa3e0ae6dfcd526db7ffd18fb9d4d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59359374"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60565279"
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Przygotowywanie lokalnych serwerów VMware do odzyskiwania po awarii na platformie Azure
 

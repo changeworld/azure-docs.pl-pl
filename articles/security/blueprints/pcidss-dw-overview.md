@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 07/03/2018
 ms.author: meladie
 ms.openlocfilehash: 7704d9124846c0c6c82728031327990f8f9b1cf6
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243520"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60608206"
 ---
 # <a name="azure-security-and-compliance-blueprint-data-warehouse-for-pci-dss"></a>Zabezpieczenia platformy Azure i zgodności planu: Data Warehouse, PCI DSS
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Tych samych zabezpieczeń platformy Azure i zgodności plan zawiera wskazówki dotyczące wdrażania architektury magazynu danych na platformie Azure, które pomaga wymagania płatności Karta Industry Data Security Standards (PCI DSS 3.2). On przedstawiono typowe architektury referencyjnej i przedstawia prawidłowego przygotowania danych karty kredytowej (w tym karty numer, wygaśnięcia i weryfikacji danych) w środowisku bezpiecznych, zgodnych i wieloma warstwami. Ten plan pokazuje sposób, w którym klienci mogą sprostać określonych wymagań dotyczących zabezpieczeń i zgodności i służy jako podstawa do tworzenia i konfigurowanie własnych rozwiązań magazynu danych na platformie Azure.
 

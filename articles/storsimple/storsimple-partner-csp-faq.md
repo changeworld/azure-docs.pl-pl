@@ -15,16 +15,16 @@ ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
 ms.openlocfilehash: 4750ba55c08ebac244e7515cae4e998155a79599
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56870631"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60628885"
 ---
 # <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>Usługa StorSimple dla programu dostawca rozwiązań chmury: Często zadawane pytania
 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Poniżej przedstawiono pytania i odpowiedzi, które mogą wystąpić jako StorSimple partner, podczas wdrażania lub zarządzanie macierzy wirtualnej StorSimple w witrynie Azure portal.
 
 Pytania i odpowiedzi są zestawiane w następujące kategorie:

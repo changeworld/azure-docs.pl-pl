@@ -16,11 +16,11 @@ ms.date: 05/24/2018
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: ea4134c486310592f1f0f344ae26a11276143faf
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193368"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60680124"
 ---
 # <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>Szybki start: Integrowanie konta usługi Azure storage z usługą Azure CDN
 W tym przewodniku Szybki start włączysz usługę [Azure Content Delivery Network (CDN)](cdn-overview.md), aby buforować zawartość z magazynu Azure. Usługa Azure CDN oferuje deweloperom globalne rozwiązanie umożliwiające dostarczanie zawartości z wysoką przepustowością. Może buforować obiekty blob oraz zawartość statyczną wystąpień obliczeniowych na węzłach fizycznych w Stanach Zjednoczonych, Europie, Azji, Australii i Ameryce Południowej.

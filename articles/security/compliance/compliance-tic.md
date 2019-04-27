@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 06/20/2018
 ms.author: dlap
 ms.openlocfilehash: bb186ab2700b147bee3a7dd81474409ccafb76fc
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341725"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60608088"
 ---
 # <a name="trusted-internet-connections-guidance"></a>Zaufany wskazówki połączeń internetowych
 
@@ -247,7 +247,7 @@ Można łatwo skonfigurować dostęp dla Microsoft Azure, Office 365 i Dynamics 
 
 ## <a name="appendix-trusted-internet-connections-patterns-for-common-workloads"></a>Dodatek: Zaufany wzorce połączeń internetowych dla typowych obciążeń
 
-| Kategoria | Obciążenie | IaaS | PaaS w wersji dedykowanej / iniekcji sieciami wirtualnymi  | Punkty końcowe usługi  |
+| Category | Obciążenie | IaaS | PaaS w wersji dedykowanej / iniekcji sieciami wirtualnymi  | Punkty końcowe usługi  |
 |---------|---------|---------|---------|--------|
 | Wystąpienia obliczeniowe | Maszyny wirtualne systemu Linux platformy Azure | Yes | | |
 | Wystąpienia obliczeniowe | Maszyny wirtualne platformy Azure Windows | Yes | | |

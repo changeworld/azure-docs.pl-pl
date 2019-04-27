@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: bc1e8a5abc85af95448570497177030f17649d87
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b968cc29a7139a4a6db5d2dea8dd6f8f4e1c7ccd
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58877588"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60630793"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>Konfigurowanie wielościeżkowego wejścia/wyjścia na hoście StorSimple z systemem CentOS
 W tym artykule opisano kroki wymagane do skonfigurowania Wielościeżkowe We/Wy (MPIO) na serwerze hosta Centos 6.6. Serwer hosta jest podłączony do Twojego urządzenia Microsoft Azure StorSimple, wysokiej dostępności za pośrednictwem inicjatorów iSCSI. Opisano w nim szczegółowo automatyczne odnajdowanie urządzeń wielościeżkowego i dlatego konfiguracja tylko w przypadku woluminów StorSimple.
@@ -420,7 +420,7 @@ A. Aby sprawdzić, czy urządzenie znajduje się na białej liście, użyj nast�
 Aby uzyskać więcej informacji, przejdź do [Użyj Rozwiązywanie problemów z poleceń interaktywnych wielu ścieżek](http://www.centos.org/docs/5/html/5.1/DM_Multipath/multipath_config_confirm.html).
 
 ## <a name="list-of-useful-commands"></a>Lista przydatnych poleceń
-| Typ | Polecenie | Opis |
+| Type | Polecenie | Opis |
 | --- | --- | --- |
 | **iSCSI** |`service iscsid start` |Uruchomienie usługi iSCSI |
 | &nbsp; |`service iscsid stop` |Zatrzymaj usługę iSCSI |

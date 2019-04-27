@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 93fbd5bbba91b45e1afd123a2466b249302e2354
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: c41f13a6437f69121d3bbb387c96d8e13f2be0b3
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39492844"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60567083"
 ---
 # <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>Tworzenie kopii zapasowych i odzyskiwanie bazy danych Oracle database 12c na maszynie wirtualnej z systemem Linux platformy Azure
 
@@ -30,7 +30,7 @@ Przed przystąpieniem do wykonywania upewnij się, że zainstalowano interfejs w
 
 ## <a name="prepare-the-environment"></a>Przygotowywanie środowiska
 
-### <a name="step-1-prerequisites"></a>Krok 1: wymagania wstępne
+### <a name="step-1-prerequisites"></a>Krok 1: Wymagania wstępne
 
 *   Aby przeprowadzić proces tworzenia kopii zapasowych i odzyskiwania, należy najpierw utworzyć maszyny Wirtualnej systemu Linux, który ma zainstalowane wystąpienie bazy danych Oracle Database 12c. Obraz witryny Marketplace umożliwia utworzenie maszyny Wirtualnej o nazwie *Oracle: Oracle — bazy danych — Ee:12.1.0.2:latest*.
 
@@ -45,7 +45,7 @@ Przed przystąpieniem do wykonywania upewnij się, że zainstalowano interfejs w
     ssh <publicIpAddress>
     ```
 
-### <a name="step-3-prepare-the-database"></a>Krok 3. przygotowywanie bazy danych
+### <a name="step-3-prepare-the-database"></a>Krok 3: Przygotowywanie bazy danych programu
 
 1.  W tym kroku przyjęto założenie, iż z wystąpieniem bazy danych Oracle (cdb1), który jest uruchomiony na maszynie Wirtualnej o nazwie *myVM*.
 
@@ -133,13 +133,13 @@ Przed przystąpieniem do wykonywania upewnij się, że zainstalowano interfejs w
     RMAN> backup database plus archivelog;
     ```
 
-### <a name="step-4-application-consistent-backup-for-linux-vms"></a>Krok 4: Spójnych z aplikacją kopii zapasowych maszyn wirtualnych systemu Linux
+### <a name="step-4-application-consistent-backup-for-linux-vms"></a>Krok 4: Spójna na poziomie aplikacji Kopia zapasowa maszyn wirtualnych systemu Linux
 
 Kopie zapasowe spójnych z aplikacją to nowa funkcja w usłudze Azure Backup. Można tworzyć i zaznaczyć skrypt do wykonania przed i po wykonaniu migawki maszyny Wirtualnej (przed i po utworzeniu migawki).
 
 1. Pobierz plik JSON.
 
-    Pobierz VMSnapshotScriptPluginConfig.json z https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig. Zawartość pliku wyglądać podobnie do następującego:
+    Download VMSnapshotScriptPluginConfig.json from https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig. Zawartość pliku wyglądać podobnie do następującego:
 
     ```azurecli
     {
@@ -266,7 +266,7 @@ Kopie zapasowe spójnych z aplikacją to nowa funkcja w usłudze Azure Backup. M
 Aby uzyskać więcej informacji, zobacz [spójnych z aplikacją kopii zapasowych maszyn wirtualnych systemu Linux](https://azure.microsoft.com/blog/announcing-application-consistent-backup-for-linux-vms-using-azure-backup/).
 
 
-### <a name="step-5-use-azure-recovery-services-vaults-to-back-up-the-vm"></a>Krok 5: Użyj usług Azure Recovery Services magazyny do utworzenia kopii zapasowej maszyny Wirtualnej
+### <a name="step-5-use-azure-recovery-services-vaults-to-back-up-the-vm"></a>Krok 5. Magazyny usług odzyskiwania Azure Użyj do tworzenia kopii zapasowej maszyny Wirtualnej
 
 1.  W witrynie Azure portal Wyszukaj **Magazyny usługi Recovery Services**.
 
@@ -307,7 +307,7 @@ Aby uzyskać więcej informacji, zobacz [spójnych z aplikacją kopii zapasowych
 
     ![Kopia zapasowa teraz polecenia Magazyny usługi Recovery Services](./media/oracle-backup-recovery/recovery_service_09.png)
 
-10. Kliknij przycisk **kopii zapasowej** przycisku. Poczekaj, aż do zakończenia procesu tworzenia kopii zapasowej. Następnie przejdź do [krok 6: usuwanie plików bazy danych](#step-6-remove-the-database-files).
+10. Kliknij przycisk **kopii zapasowej** przycisku. Poczekaj, aż do zakończenia procesu tworzenia kopii zapasowej. Następnie przejdź do [krok 6: Usuń pliki bazy danych](#step-6-remove-the-database-files).
 
     Aby wyświetlić stan zadania tworzenia kopii zapasowej, kliknij przycisk **zadań**.
 
@@ -319,7 +319,7 @@ Aby uzyskać więcej informacji, zobacz [spójnych z aplikacją kopii zapasowych
 
 11. Do tworzenia kopii zapasowych spójnych z aplikacją rozwiązać wszelkie błędy w pliku dziennika. Plik dziennika znajduje się w /var/log/azure/Microsoft.Azure.RecoveryServices.VMSnapshotLinux/1.0.9114.0.
 
-### <a name="step-6-remove-the-database-files"></a>Krok 6: Usuwanie plików bazy danych 
+### <a name="step-6-remove-the-database-files"></a>Krok 6: Usuń pliki bazy danych 
 W dalszej części tego artykułu dowiesz się, jak przetestować proces odzyskiwania. Przed przetestowaniem proces odzyskiwania, należy usunąć pliki bazy danych.
 
 1.  Usuń pliki tabel i wykonywania kopii zapasowych:
@@ -496,7 +496,7 @@ Zamiast przywracanie usuniętych plików z magazynów usługi Recovery Services,
 
     ![Stan procesu przywracania](./media/oracle-backup-recovery/recover_vm_09.png)
 
-### <a name="step-3-set-the-public-ip-address"></a>Krok 3. Ustawianie publiczny adres IP
+### <a name="step-3-set-the-public-ip-address"></a>Krok 3: Ustaw publiczny adres IP
 Po przywróceniu maszyny Wirtualnej należy skonfigurować publiczny adres IP.
 
 1.  W polu wyszukiwania wprowadź **publiczny adres IP**.
@@ -527,7 +527,7 @@ Po przywróceniu maszyny Wirtualnej należy skonfigurować publiczny adres IP.
     ssh <publicIpAddress>
     ```
 
-### <a name="step-5-test-whether-the-database-is-accessible"></a>Krok 5: Testowanie, czy baza danych jest niedostępna
+### <a name="step-5-test-whether-the-database-is-accessible"></a>Krok 5. Sprawdź, czy baza danych jest niedostępna
 *   Aby przetestować ułatwień dostępu, użyj następującego skryptu:
 
     ```bash 
@@ -537,9 +537,9 @@ Po przywróceniu maszyny Wirtualnej należy skonfigurować publiczny adres IP.
     ```
 
     > [!IMPORTANT]
-    > Jeśli baza danych **uruchamiania** polecenie generuje błąd, aby odzyskać bazę danych, zobacz [krok 6: RMAN Użyj, aby odzyskać bazę danych](#step-6-optional-use-rman-to-recover-the-database).
+    > Jeśli baza danych **uruchamiania** polecenie generuje błąd, aby odzyskać bazę danych, zobacz [krok 6: Użyj RMAN, aby odzyskać bazę danych](#step-6-optional-use-rman-to-recover-the-database).
 
-### <a name="step-6-optional-use-rman-to-recover-the-database"></a>Krok 6: (Opcjonalnie) Użyj RMAN odzyskać bazę danych
+### <a name="step-6-optional-use-rman-to-recover-the-database"></a>Krok 6: (Opcjonalnie) Użyj RMAN, aby odzyskać bazę danych
 *   Aby odzyskać bazę danych, użyj następującego skryptu:
 
     ```bash

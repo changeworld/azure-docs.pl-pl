@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 05/02/2018
 ms.author: jomolesk
 ms.openlocfilehash: fa10ff14bf893c268d6b6b1a0d181d11a3f27dc4
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57451879"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60586291"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-fedramp"></a>Zabezpieczenia platformy Azure i zgodności planu: Analytics for FedRAMP
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 [Federal Risk and Authorization Management Program (FedRAMP)](https://www.fedramp.gov/) to program obowiązkowo USA, zapewniający ustandaryzowane podejście do oceny zabezpieczeń, autoryzacji i ciągłego monitorowania dla chmury produkty i usługi. Tych samych zabezpieczeń platformy Azure i zgodności plan zawiera wskazówki dotyczące dostarczania architektury analizy Microsoft Azure, która pomaga implementuje podzbiór programowi FedRAMP High kontrolki. To rozwiązanie znajdują się wskazówki dotyczące wdrażania i konfiguracji zasobów platformy Azure dla typowych architektury referencyjnej, demonstrując sposób, w którym klienci mogą sprostać określonych wymagań dotyczących zabezpieczeń i zgodności i służy jako podstawa dla klientów Tworzenie i konfigurowanie rozwiązania do analizy na platformie Azure.
 

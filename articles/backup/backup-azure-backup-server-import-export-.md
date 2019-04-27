@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 5/8/2018
 ms.author: saurse
 ms.openlocfilehash: 8d15eb03055aed32c8a99121b750ee5767a87b50
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58094977"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60648048"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>Przepływ pracy w trybie offline z kopii zapasowej programu DPM i serwer usługi Azure Backup
 Usługa Azure Backup ma kilka wbudowanych korzyści, które zmniejsza koszty magazynu i sieci podczas początkowego pełne kopie zapasowe danych na platformę Azure. Początkowa pełne kopie zapasowe zazwyczaj przesyłanie dużych ilości danych, a także wymagają większej przepustowości sieci w porównaniu do kolejnych kopii zapasowych, które przenieść tylko różnic/przyrostowa. Usługa Azure Backup są kompresowane wstępne kopie zapasowe. Proces rozmieszczania w trybie offline usługa Azure Backup umożliwia dysków Przekaż skompresowane dane początkowej kopii zapasowej w trybie offline na platformę Azure.
@@ -24,7 +24,7 @@ Proces rozmieszczania offline usługi Azure Backup jest ściśle zintegrowany z 
 > Proces kopii zapasowej Offline dla agenta usługi Microsoft Azure Recovery Services (MARS) różni się od programu System Center DPM i serwer usługi Azure Backup. Aby uzyskać informacje na temat korzystania z kopii zapasowej Offline za pomocą agenta usług MARS, zobacz [w tym artykule](backup-azure-backup-import-export.md). Kopia zapasowa offline nie jest obsługiwana dla kopii zapasowych stanu systemu, odbywa się za pomocą agenta usługi Azure Backup. 
 >
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Dzięki możliwości rozmieszczania offline usługi Azure Backup i Azure Import/Export jest prosty do przekazania danych w trybie offline na platformę Azure przy użyciu dysków. Proces kopii zapasowej Offline obejmuje następujące kroki:
 
 > [!div class="checklist"]

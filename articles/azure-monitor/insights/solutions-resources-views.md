@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 01/16/2018
 ms.author: bwren
 ms.openlocfilehash: cefb83d5336bb99fd09001b5ea369a0b8fc4b942
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57769135"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60596629"
 ---
 # <a name="views-in-management-solutions-preview"></a>Widoki w rozwiązaniach do zarządzania (wersja zapoznawcza)
 > [!NOTE]
@@ -35,7 +35,7 @@ ms.locfileid: "57769135"
 ## <a name="prerequisites"></a>Wymagania wstępne
 W tym artykule założono, że znasz już sposób [utworzyć to rozwiązanie do zarządzania](solutions-creating.md) i struktury pliku rozwiązania.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Aby uwzględnić w widoku w rozwiązaniu do zarządzania, należy utworzyć **zasobów** dla niego w [plik rozwiązania](solutions-creating.md).  Za pomocą pliku JSON opisujące szczegółową konfigurację tego widoku jest zwykle złożone jednak i nie mielibyśmy mieć czegoś Autor typowe rozwiązanie będzie można tworzyć ręcznie.  Najczęściej spotykaną metodą jest utworzenie, przy użyciu widoku [Projektant widoków](../../azure-monitor/platform/view-designer.md), wyeksportuj go, a następnie dodaj jego szczegółową konfigurację do rozwiązania.
 
 Poniżej znajdują się podstawowe kroki, aby dodać widok do rozwiązania.  Każdy etap jest opisany bardziej szczegółowo w poniższych sekcjach.

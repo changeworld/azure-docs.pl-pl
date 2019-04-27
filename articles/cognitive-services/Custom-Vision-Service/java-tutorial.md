@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 03/21/2019
 ms.author: areddish
 ms.openlocfilehash: 01052e218d2c7017ca6f29126f7232aeee16705a
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58479550"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60608146"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-sdk-for-java"></a>Szybki start: Tworzenie projektu klasyfikacji obrazów przy użyciu zestawu Custom Vision SDK dla języka Java
 

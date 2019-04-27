@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 09/20/2018
 ms.author: tomsh
 ms.openlocfilehash: 3e244f89904ce9aca161ed1ea435f4137e42bc5d
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117973"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60587535"
 ---
 # <a name="azure-database-security-best-practices"></a>Najlepsze rozwiązania dotyczące zabezpieczeń bazy danych platformy Azure
 Zabezpieczenia są szczególnie ważne dla zarządzania bazami danych i zawsze było priorytet [usługi Azure SQL Database](https://docs.microsoft.com/azure/sql-database/). Bazy danych, które mogą być ściśle chronione ułatwiające spełniają najbardziej prawnych lub wymagań dotyczących zabezpieczeń, takich jak HIPAA, ISO 27001/27002 i PCI DSS poziom 1. Bieżącą listę certyfikatów zgodności zabezpieczeń znajduje się w temacie [witryny Microsoft Trust Center](https://azure.microsoft.com/support/trust-center/services/). Można także umieścić baz danych w określonych centrów danych platformy Azure, na podstawie wymagań prawnych.

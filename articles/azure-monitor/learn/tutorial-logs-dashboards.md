@@ -15,11 +15,11 @@ ms.date: 09/14/2017
 ms.author: magoedte
 ms.custom: mvc
 ms.openlocfilehash: 5ed0cfba9abaed1f1fdbacc8fcf28918403b82f5
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186620"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60589988"
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>Tworzenie i udostępnianie pulpitów nawigacyjnych z danymi usługi Log Analytics
 
@@ -70,7 +70,7 @@ Teraz, po przypięciu zapytania do pulpitu nawigacyjnego, zauważysz, że ma og�
 
 ![Ukończona konfiguracja przykładowego pulpitu nawigacyjnego](media/tutorial-logs-dashboards/log-analytics-modify-dashboard-02.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym samouczku omówiliśmy sposób tworzenia pulpitu nawigacyjnego w witrynie Azure Portal oraz dodawania do niego przeszukiwania dzienników.  Przejdź do kolejnego samouczka, aby poznać różne odpowiedzi, które możesz wdrożyć w oparciu o wyniki przeszukiwania dzienników.  
 
 > [!div class="nextstepaction"]

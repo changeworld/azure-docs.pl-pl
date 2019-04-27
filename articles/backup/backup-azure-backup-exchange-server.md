@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: kasinh
 ms.openlocfilehash: ef976667ec580ea75dd1b8566c7bdddf35eeb0fc
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55298317"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60647267"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>Tworzenie kopii zapasowych serwera programu Exchange do usługi Azure Backup przy użyciu programu System Center 2012 R2 DPM
 W tym artykule opisano sposób konfigurowania serwera System Center 2012 R2 Data Protection Manager (DPM), aby utworzyć kopię zapasową serwera Microsoft Exchange do usługi Azure Backup.  

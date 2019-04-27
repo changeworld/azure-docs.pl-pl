@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: jingwang
 ms.openlocfilehash: 292d2da33edb5a0b48fbf138d8a45fc1c3c17d46
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663451"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60583761"
 ---
 # <a name="copy-data-from-ftp-server-by-using-azure-data-factory"></a>Kopiowanie danych z serwera FTP za pomocą usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -54,7 +54,7 @@ Następujące właściwości są obsługiwane przez usługę FTP połączone:
 | enableServerCertificateValidation | Określ, czy włączyć weryfikacji certyfikatu SSL serwera w przypadku korzystania z protokołu FTP za pośrednictwem kanału SSL/TLS.<br/>Dozwolone wartości to: **true** (ustawienie domyślne), **false**. | Nie |
 | Element authenticationType | Określ typ uwierzytelniania.<br/>Dozwolone wartości to: **Podstawowe**, **anonimowe** | Yes |
 | userName | Określ użytkownika, który ma dostęp do serwera FTP. | Nie |
-| hasło | Określ hasło dla użytkownika (nazwa użytkownika). Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
+| password | Określ hasło dla użytkownika (nazwa użytkownika). Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. (Jeśli Twój magazyn danych znajduje się w sieci prywatnej), można użyć środowiska Azure Integration Runtime lub środowiskiem Integration Runtime. Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
 
 >[!NOTE]

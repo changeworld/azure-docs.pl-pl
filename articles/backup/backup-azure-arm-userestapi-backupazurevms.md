@@ -11,11 +11,11 @@ ms.date: 08/03/2018
 ms.author: pullabhk
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
 ms.openlocfilehash: 8a47d3cf346d7961e9f8b1c4fa615a2faa6b1da0
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289785"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60646779"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Tworzenie kopii zapasowej maszyny Wirtualnej platformy Azure przy użyciu usługi Azure Backup przy użyciu interfejsu API REST
 
@@ -49,7 +49,7 @@ Zwraca ona dwie odpowiedzi: 202 (zaakceptowano), gdy inna operacja zostanie utwo
 
 |Name (Nazwa)  |Typ  |Opis  |
 |---------|---------|---------|
-|204 żadnej zawartości     |         |  OK bez zawartości zwracane      |
+|204 No Content     |         |  OK bez zawartości zwracane      |
 |202 zaakceptowano     |         |     Zaakceptowany    |
 
 ##### <a name="example-responses"></a>Przykładowe odpowiedzi
@@ -158,13 +158,13 @@ X-Powered-By: ASP.NET
 Odpowiedź zawiera listę wszystkich niechronionych maszyn wirtualnych platformy Azure, a każdy `{value}` zawiera wszystkie informacje wymagane przez usługę Azure Recovery Service w celu skonfigurowania kopii zapasowej. Pamiętaj, aby skonfigurować kopię zapasową, `{name}` pola i `{virtualMachineId}` pole `{properties}` sekcji. Utworzyć dwie zmienne z tych wartości pola, zgodnie z poniższymi.
 
 - containerName = "iaasvmcontainer;" +`{name}`
-- protectedItemName = "maszyny wirtualnej;" + `{name}`
+- protectedItemName = "vm;"+ `{name}`
 - `{virtualMachineId}` jest używany później w [treść żądania](#example-request-body)
 
 W przykładzie powyżej wartości przełożyć na:
 
 - containerName = "iaasvmcontainer iaasvmcontainerv2; testRG; testVM"
-- protectedItemName = "maszyny wirtualnej; iaasvmcontainerv2; testRG; testVM"
+- protectedItemName = "vm;iaasvmcontainerv2;testRG;testVM"
 
 ### <a name="enabling-protection-for-the-azure-vm"></a>Włączanie ochrony maszyny wirtualnej platformy Azure
 

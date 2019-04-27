@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 10/15/2017
 ms.author: dekapur
 ms.openlocfilehash: ee2ce03fccc3e6556f9d261687edb050c8cfa1cc
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58661449"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60628153"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>Zabezpieczanie klastra autonomicznego w Windows przy użyciu certyfikatów X.509
 W tym artykule opisano sposób zabezpieczania komunikacji między różnymi węzłami klastra autonomicznego Windows. Opisuje ona również, jak do uwierzytelniania klientów łączących się z tym klastrem przy użyciu certyfikatów X.509. Uwierzytelnianie zapewnia, że tylko autoryzowani użytkownicy mogą uzyskiwać dostęp do klastra i wdrożone aplikacje i wykonywać zadania zarządzania. Certyfikat zabezpieczeń powinna być włączona w klastrze podczas tworzenia klastra.  

@@ -15,11 +15,11 @@ ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 863f3500c84eeab1c3dac19141cd334fc6961694
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015920"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60567252"
 ---
 # <a name="azure-data-factory---net-api-change-log"></a>Usługa Azure Data Factory — dziennik zmian interfejsu API platformy .NET
 > [!NOTE]
@@ -118,7 +118,7 @@ Dodatkowe funkcje:
 
 ## <a name="version-420"></a>Wersja 4.2.0
 ### <a name="feature-additions"></a>Funkcje
-* Dodano następujące nowe typ działania: [Elemencie AzureMLUpdateResourceActivity](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremlupdateresourceactivity.aspx). Aby uzyskać szczegółowe informacje dotyczące działania, zobacz [modeli usługi uczenie Maszynowe Azure aktualizowanie za pomocą działania aktualizowania zasobów](data-factory-azure-ml-batch-execution-activity.md).
+* Dodano następujące nowe typ działania: [AzureMLUpdateResourceActivity](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremlupdateresourceactivity.aspx). Aby uzyskać szczegółowe informacje dotyczące działania, zobacz [modeli usługi uczenie Maszynowe Azure aktualizowanie za pomocą działania aktualizowania zasobów](data-factory-azure-ml-batch-execution-activity.md).
 * Nowa właściwość Opcjonalna [updateResourceEndpoint](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremllinkedservice.updateresourceendpoint.aspx) została dodana do [klasy elementu AzureMLLinkedService](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremllinkedservice.aspx).
 * [LongRunningOperationInitialTimeout](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.longrunningoperationinitialtimeout.aspx) i [LongRunningOperationRetryTimeout](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.longrunningoperationretrytimeout.aspx) właściwości zostały dodane do [DataFactoryManagementClient](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.aspx) klasy.
 * Umożliwia skonfigurowanie przekroczeń limitu czasu dla połączeń klienta do usługi Data Factory.

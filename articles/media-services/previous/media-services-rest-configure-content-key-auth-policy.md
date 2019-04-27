@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: cb9b784e612b1dca6b5251cb5a20140e908158c4
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294216"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60598449"
 ---
 # <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>Szyfrowanie dynamiczne: Konfigurowanie zasad autoryzacji klucza zawartości  
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
  Usługa Azure Media Services umożliwia dostarczanie zawartości zaszyfrowane (dynamicznie) z Advanced Encryption Standard (AES) przy użyciu 128-bitowych kluczy szyfrowania i technologii PlayReady lub Widevine zarządzania prawami cyfrowymi (DRM). Media Services udostępnia również usługę dostarczania kluczy i licencji PlayReady/Widevine do autoryzowanych klientów.
 
 Jeśli chcesz, aby usługi Media Services, aby zaszyfrować element zawartości, należy skojarzyć klucza szyfrowania (CommonEncryption lub EnvelopeEncryption) z elementem zawartości. Aby uzyskać więcej informacji, zobacz [tworzenie kluczy zawartości z użyciem usług REST](media-services-rest-create-contentkey.md). Należy również skonfigurować zasady autoryzacji klucza (zgodnie z opisem w tym artykule).

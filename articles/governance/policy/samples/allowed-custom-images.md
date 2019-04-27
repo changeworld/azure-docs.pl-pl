@@ -8,11 +8,11 @@ ms.topic: sample
 ms.date: 01/26/2019
 ms.author: dacoulte
 ms.openlocfilehash: 8def11c2d92af618054d0353fa2687d2e88e1134
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59266719"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60547284"
 ---
 # <a name="sample---approved-virtual-machine-images"></a>Przykład — obrazów zatwierdzonych maszyn wirtualnych
 
@@ -52,7 +52,7 @@ Kod JSON definiujący parametry zasad używany przez interfejs wiersza polecenia
 
 ## <a name="parameters"></a>Parametry
 
-|Name (Nazwa) |Typ |Pole |Opis |
+|Name (Nazwa) |Type |Pole |Opis |
 |---|---|---|---|
 |imageIds |Tablica |Microsoft.Compute/imageIds |Lista zatwierdzonych obrazów maszyn wirtualnych|
 

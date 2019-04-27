@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: spelluru
 ms.openlocfilehash: 6faf32232c42f863bff52fdfb3c0714aee8e9b88
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58190599"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60702444"
 ---
 # <a name="create-an-environment-with-multiple-vms-inside-a-template-vm-of-a-classroom-lab"></a>Utwórz środowisko z wieloma maszynami wirtualnymi w szablonie maszyny Wirtualnej laboratorium na potrzeby zajęć
 Obecnie usługi Azure Lab Services pozwala na konfigurowanie jednego szablonu maszyny wirtualnej w laboratorium i udostępnić pojedynczej kopii każdego z użytkowników. Ale jeśli wykładowcą nauczania klasę IT na temat sposobu konfigurowania zapory lub serwery, konieczne może być zapewnić wszystkich swoich uczniów środowisko, w którym wiele maszyn wirtualnych mogą komunikować się ze sobą za pośrednictwem sieci.

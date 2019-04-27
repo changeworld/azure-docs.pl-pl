@@ -16,11 +16,11 @@ ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: fb09d91bb3204a1ab3dc4f9df71eabd2ee7d2bd1
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487536"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60591314"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>Konfigurowanie zawsze włączonej grupy dostępności programu SQL Server na Maszynie wirtualnej platformy Azure przy użyciu szablonów szybkiego startu platformy Azure
 W tym artykule opisano, jak częściowo zautomatyzować wdrożenia zawsze włączonej konfiguracji grupy dostępności dla maszyn wirtualnych serwera SQL na platformie Azure za pomocą szablonów szybkiego startu platformy Azure. Istnieją dwa szablony szybkiego startu platformy Azure, które są używane w ramach tego procesu. 

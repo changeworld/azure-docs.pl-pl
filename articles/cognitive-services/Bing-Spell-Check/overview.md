@@ -11,11 +11,11 @@ ms.topic: overview
 ms.date: 02/20/2019
 ms.author: aahi
 ms.openlocfilehash: 22f75efb3cb4baa645030e7ad64072674de662ed
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56890808"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60593207"
 ---
 # <a name="what-is-the-bing-spell-check-api"></a>Czym jest interfejs API sprawdzania pisowni Bing?
 
@@ -39,7 +39,7 @@ Interfejs API sprawdzania pisowni Bing można łatwo wywołać z dowolnego języ
 2. Wyślij żądanie do interfejsu API wyszukiwania w Internecie Bing.
 3. Analizowanie odpowiedzi w formacie JSON
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Najpierw wypróbuj [interaktywną demonstrację](https://azure.microsoft.com/services/cognitive-services/spell-check/) interfejsu API sprawdzania pisowni Bing, aby przekonać się, jak szybko możesz sprawdzać różne teksty.
 

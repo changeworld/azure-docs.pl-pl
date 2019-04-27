@@ -14,11 +14,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 7ad328eec7e16b5368b78a0dfccbf5c09adb5c13
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330011"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60567235"
 ---
 # <a name="push-data-to-an-azure-search-index-by-using-azure-data-factory"></a>Wypychanie danych do indeksu usługi Azure Search przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -100,13 +100,13 @@ W poniższej tabeli określono, czy typ danych usługi Azure Search jest obsług
 
 | Typ danych w usłudze Azure Search | Obsługiwane w ujściu usługi Azure Search |
 | ---------------------- | ------------------------------ |
-| Ciąg | Tak |
+| String | Tak |
 | Int32 | Tak |
 | Int64 | Tak |
-| Podwójne | Tak |
-| Wartość logiczna | Tak |
+| Double | Tak |
+| Boolean | Tak |
 | DataTimeOffset | Tak |
-| Tablica ciągów | Nie |
+| String Array | Nie |
 | GeographyPoint | Nie |
 
 ## <a name="json-example-copy-data-from-on-premises-sql-server-to-azure-search-index"></a>Przykład kodu JSON: Kopiowanie danych z lokalnego programu SQL Server do indeksu usługi Azure Search

@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 855ea6c34082b859bb5b5b6e69b3e3f2fa54eb4a
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: b36d721896bd7b4f95d831eded500a96969937c5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056467"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60631893"
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>Przedstawiono dane techniczne i zgodności dla urządzenia StorSimple
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Składniki sprzętowe w urządzeniu usługa Microsoft Azure StorSimple stosować się do specyfikacji technicznych i standardowych wymagań prawnych opisane w tym artykule. Specyfikacja techniczna opisują zasilania i chłodzenia modułów (PCMs), stacje dysków, pojemności magazynu i obudowy. Informacje o zgodności obejmuje takich zadań jak międzynarodowych standardów bezpieczeństwa i emisji i okablowania.
 
@@ -37,12 +37,12 @@ Obudowa EBOD używa 580 W PCM i obudowy głównej używa 764 W PCM. W poniższej
 | --- | --- | --- |
 | Maksymalna moc zasilania |580 W |764 |
 | Częstotliwość |50/60 Hz |50/60 Hz |
-| Wybór zakresu napięcia |Automatyczne zakresu: V AC 90 — 264, 47/63 Hz |Automatyczne zakresu: 90-264 V Klimatyzacja, 47/63 Hz |
+| Wybór zakresu napięcia |Auto, zakresu: 90-264 V programu AC 47/63 Hz |Auto, zakresu: 90 - 264 V programu AC 47/63 Hz |
 | Bieżąca maksymalna zasypania |20 A |20 A |
 | Korekta współczynnik zasilania |> nominalna napięcie wejściowe 95% |> nominalna napięcie wejściowe 95% |
 | Składowe harmoniczne |Spełnia EN61000-3-2 |Spełnia EN61000-3-2 |
 | Dane wyjściowe |Napięcie wstrzymania 5V \@ A w wersji 2.0 |Napięcie wstrzymania 5V \@ A w wersji 2.7 |
-| + 5V \@ 42 A |+ 5V \@ 40 A | |
+| +5V \@ 42 A |+5V \@ 40 A | |
 | + 12 V \@ 38 A |+ 12 V \@ 38 A | |
 | Hot plug |Yes |Yes |
 | Przełączniki i diody LED |Przełącznik/wyłączenie AC i stan czterech diod LED |Przełącznik/wyłączenie AC i stan sześć diod LED |
@@ -52,14 +52,14 @@ Obudowa EBOD używa 580 W PCM i obudowy głównej używa 764 W PCM. W poniższej
 
 W poniższej tabeli wymieniono typowe power dane o zużyciu (rzeczywiste wartości mogą się różnić od opublikowanego) dla różnych modeli urządzenia StorSimple.
 
-| Warunki | 240 V PROGRAMU AC | 240 V PROGRAMU AC | 240 V PROGRAMU AC | 110 V PROGRAMU AC | 110 V PROGRAMU AC | 110 V PROGRAMU AC |
+| Warunki | 240 V AC | 240 V AC | 240 V AC | 110 V AC | 110 V AC | 110 V AC |
 | --- | --- | --- | --- | --- | --- | --- |
-|  Dyski powoli, wentylatorów bezczynności |WYSOKOŚCI 1,45 A |0.31 kW |1057.76 BTU/godz. |3.19 A |0,34 kW |1160.13 BTU/godz. |
-|  Powolne fanów, uzyskiwanie dostępu do dysków |1.54 A |0,33 kW |1126.01 BTU/godz. |3.27 A |0.36 kW |1228.37 BTU/godz. |
+|  Dyski powoli, wentylatorów bezczynności |WYSOKOŚCI 1,45 A |0.31 kW |1057.76 BTU/hr |3.19 A |0,34 kW |1160.13 BTU/hr |
+|  Powolne fanów, uzyskiwanie dostępu do dysków |1.54 A |0,33 kW |1126.01 BTU/hr |3.27 A |0.36 kW |1228.37 BTU/hr |
 |  Obsługiwane dwa PSUs fanów szybkiego działania, dyski bezczynności, |2.14 A |0.49 kW |1671.95 BTU/godz. |4.99 A |0.54 kW |1842.56 BTU/godz. |
-|  Fanów szybkiego działania, dyski bezczynności, obsługiwane zasilania jednego, jeden w stanie bezczynności |2.05 A |0.48 kW |1637.83 BTU/godz. |4.58 A |0,50 kW |1706.07 BTU/godz. |
-|  Dyski szybkiego działania, fanów, dostęp do dwóch PSUs zasilania |2.26 A |0.51 kW |1740.19 BTU/godz. |4.95 A |0.54 kW |1842.56 BTU/godz. |
-|  Szybkie wentylatory, dyski, uzyskując dostęp do, zasilania jednego obsługiwane jeden w stanie bezczynności |2.14 A |0.49 kW |1671.95 BTU/godz. |4.81 A |0.53 kW |1808.44 BTU/godz. |
+|  Fanów szybkiego działania, dyski bezczynności, obsługiwane zasilania jednego, jeden w stanie bezczynności |2.05 A |0.48 kW |1637.83 BTU/godz. |4.58 A |0,50 kW |1706.07 BTU/hr |
+|  Dyski szybkiego działania, fanów, dostęp do dwóch PSUs zasilania |2.26 A |0.51 kW |1740.19 BTU/hr |4.95 A |0.54 kW |1842.56 BTU/godz. |
+|  Szybkie wentylatory, dyski, uzyskując dostęp do, zasilania jednego obsługiwane jeden w stanie bezczynności |2.14 A |0.49 kW |1671.95 BTU/godz. |4.81 A |0.53 kW |1808.44 BTU/hr |
 
 ## <a name="disk-drive-specifications"></a>Specyfikacje dysku
 
@@ -117,8 +117,8 @@ Ta sekcja zawiera specyfikacje dotyczące środowiska obudowy. Temperatury, wilg
 
 | Obudowy | Zakres temperatury otoczenia | Wilgotność względna otoczenia | Maksymalna zbiornika mokrą |
 | --- | --- | --- | --- |
-| Działa |C 5-35° (41° F - 95° F) |20-80% non-skondensowanie trzech- |28 C (82° F) |
-| Nie działa |-40 C - 70 C (40° F - 158° F) |5 – 100% bez kondensacji |29 C (84° F) |
+| Działa |5°C - 35°C(41°F - 95°F) |20-80% non-skondensowanie trzech- |28°C (82°F) |
+| Nie działa |-40°C - 70°C(40°F - 158°F) |5 – 100% bez kondensacji |29°C (84°F) |
 
 ### <a name="airflow-altitude-shock-vibration-orientation-safety-and-emc"></a>Powietrza, wysokość, próbuj wstrząsnąć, wibracje, orientacji, bezpieczeństwa i EMC
 
@@ -135,7 +135,7 @@ Ta sekcja zawiera specyfikacje dotyczące środowiska obudowy. Temperatury, wilg
 | Orientacja i instalowanie |19" zamontować w stojaku (2 EIA jednostki) |
 | Stojaku |Aby dopasować głębokość minimalne 700 mm (w calach 31.50) stojakami zgodne z IEC 297 |
 | Bezpieczeństwo i zatwierdzeń |CE i UL EN 61000-3, IEC 61000-3, 61000 3 UL |
-| FIRMY EMC |EN55022 (CISPR - A), FCC A |
+| EMC |EN55022 (CISPR - A), FCC A |
 
 ## <a name="international-standards-compliance"></a>Zgodność ze standardami międzynarodowymi
 
@@ -150,7 +150,7 @@ Urządzenia usługi Microsoft Azure StorSimple spełnia następujące standardy 
 Urządzenie sieci Microsoft Azure StorSimple spełnia następujące oceny bezpieczeństwa:
 
 * Zatwierdzenie typ produktu systemu: UL, cUL, CE
-* Zgodność bezpieczeństwa: UL 60950 IEC 60950, EN 60950
+* Zgodność bezpieczeństwa: UL 60950, IEC 60950, EN 60950
 
 ## <a name="emc-compliance"></a>Zgodność firmy EMC
 
@@ -160,8 +160,8 @@ Urządzenie sieci Microsoft Azure StorSimple spełnia poniższe klasyfikacje EMC
 
 Urządzenie jest zgodne firmy EMC dla poziomów przeprowadzane i WYPROMIENIOWANEJ emisji.
 
-* Zjawiska emisji ograniczenia poziomów: CFR 47 Part 15B klasy EN55022 klasy CISPR klasy A
-* WYPROMIENIOWANEJ emisji ograniczenia poziomów: CFR 47 Part 15B klasy EN55022 klasy CISPR klasy A
+* Przeprowadzać emisji limit poziomy: CFR 47 Part 15B klasy A EN55022 klasy A CISPR klasy A
+* Promieniowania emisji limit poziomy: CFR 47 Part 15B klasy A EN55022 klasy A CISPR klasy A
 
 ### <a name="harmonics-and-flicker"></a>Składowe harmoniczne i migotania
 
@@ -181,14 +181,14 @@ Wtyczka i pełny zestaw przewód muszą spełniać normy odpowiednich dla kraju,
 | --- | --- |
 | Typ kabel |Maksymalna długość 2.0 liczniki SV lub SVT, 18 minimum Trójprzewodowy, przewodowe 3 |
 | Wtyczki |NEMA 5 – 15P załącznika uziemiający spełnia bardzo typu plug-in oceniane 120 V 10 A; lub IEC 320 C14 250 V, A 10 |
-| Gniazda |IEC 320 C-13, 250 V 10 A |
+| Gniazda |IEC 320 C-13, 250 V, 10 A |
 
 ### <a name="ac-power-cords---europe"></a>Kable AC - Europa
 
 | Składnik | Specyfikacja |
 | --- | --- |
-| Typ kabel |Ujednolicone H05-VVF-3G1.0 |
-| Gniazda |IEC 320 C-13, 250 V 10 A |
+| Typ kabel |Harmonized, H05-VVF-3G1.0 |
+| Gniazda |IEC 320 C-13, 250 V, 10 A |
 
 ## <a name="supported-network-cables"></a>Kable sieciowe obsługiwane
 

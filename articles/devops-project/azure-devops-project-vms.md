@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: wdrażanie aplikacji ASP.NET na maszynach wirtualnych platformy Azure za pomocą usługi Azure DevOps Projects'
+title: 'Samouczek: Wdrażanie aplikacji ASP.NET na maszynach wirtualnych platformy Azure przy użyciu usługi Azure DevOps Projects'
 description: Usługa DevOps Projects ułatwia rozpoczęcie pracy na platformie Azure oraz wdrażanie aplikacji ASP.NET na maszynach wirtualnych platformy Azure w kilku prostych krokach.
 ms.author: mlearned
 ms.manager: douge
@@ -10,13 +10,13 @@ ms.date: 07/09/2018
 author: mlearned
 monikerRange: vsts
 ms.openlocfilehash: 05643f342d51d99645d3c9204d6e63adcf2a0a73
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165700"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60546476"
 ---
-# <a name="tutorial-deploy-your-aspnet-app-to-azure-virtual-machines-by-using-azure-devops-projects"></a>Samouczek: wdrażanie aplikacji ASP.NET na maszynach wirtualnych platformy Azure za pomocą usługi Azure DevOps Projects
+# <a name="tutorial-deploy-your-aspnet-app-to-azure-virtual-machines-by-using-azure-devops-projects"></a>Samouczek: Wdrażanie aplikacji ASP.NET na maszynach wirtualnych platformy Azure przy użyciu usługi Azure DevOps Projects
 
 Usługa Azure DevOps Projects stanowi uproszczone środowisko, do którego możesz przenieść istniejący kod i repozytorium Git lub wybrać aplikację przykładową, aby utworzyć potok ciągłej integracji i ciągłego dostarczania na platformie Azure. 
 
@@ -206,7 +206,7 @@ Jeśli przeprowadzasz testowanie, możesz uniknąć naliczania opłat, oczyszcza
 
 Opcjonalnie możesz zmodyfikować potoki kompilacji i wydania, aby zaspokoić potrzeby swojego zespołu. Możesz także użyć wzorca ciągłej integracji/ciągłego wdrażania jako szablonu podczas pracy z innymi potokami. 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

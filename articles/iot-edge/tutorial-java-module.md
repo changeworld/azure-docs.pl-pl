@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
 ms.openlocfilehash: f654f33fe03b29a3aa93386d49e8f5a43cffc9c8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59493046"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60611801"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-and-deploy-to-your-simulated-device"></a>Samouczek: Programowanie modułu usługi IoT Edge w języku Java i wdrażanie go na urządzeniu symulowanym
 

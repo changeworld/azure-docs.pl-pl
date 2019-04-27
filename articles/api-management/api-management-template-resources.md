@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 ms.openlocfilehash: 673dcbeb630899eebc328cd4fae16f7fe8f47a55
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757596"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60557889"
 ---
 # <a name="azure-api-management-template-resources"></a>Zasoby szablonu usługi Azure API Management
 Usługa Azure API Management zawiera następujące typy zasobów, do użytku w Deweloper szablonów portalu.  
@@ -112,13 +112,13 @@ Obsługiwane są następujące opcje lokalizacji:
   
 ###  <a name="ApisStrings"></a> ApisStrings  
   
-|Name (Nazwa)|Tekst|  
+|Name (Nazwa)|Text|  
 |----------|----------|  
 |PageTitleApis|Interfejsy API|  
   
 ###  <a name="AppDetailsStrings"></a> AppDetailsStrings  
   
-|Name (Nazwa)|Tekst|  
+|Name (Nazwa)|Text|  
 |----------|----------|  
 |WebApplicationsDetailsTitle|Podgląd aplikacji|  
 |WebApplicationsRequirementsHeader|Wymagania|  
@@ -127,12 +127,12 @@ Obsługiwane są następujące opcje lokalizacji:
   
 ###  <a name="ApplicationListStrings"></a> ApplicationListStrings  
   
-|Name (Nazwa)|Tekst|  
+|Name (Nazwa)|Text|  
 |----------|----------|  
 |WebDevelopersAppDeleteConfirmation|Czy na pewno chcesz usunąć aplikację?|  
 |WebDevelopersAppNotPublished|Nie opublikowano|  
 |WebDevelopersAppNotSubmitted|Nie przesłano|  
-|WebDevelopersAppTableCategoryHeader|Kategoria|  
+|WebDevelopersAppTableCategoryHeader|Category|  
 |WebDevelopersAppTableNameHeader|Name (Nazwa)|  
 |WebDevelopersAppTableStateHeader|Stan|  
 |WebDevelopersEditLink|Edytuj|  
@@ -143,13 +143,13 @@ Obsługiwane są następujące opcje lokalizacji:
   
 ###  <a name="AppStrings"></a> AppStrings  
   
-|Name (Nazwa)|Tekst|  
+|Name (Nazwa)|Text|  
 |----------|----------|  
 |WebApplicationsHeader|Aplikacje|  
   
 ###  <a name="CommonResources"></a> CommonResources  
   
-|Name (Nazwa)|Tekst|  
+|Name (Nazwa)|Text|  
 |----------|----------|  
 |NoItemsToDisplay|Brak wyników.|  
 |GeneralExceptionMessage|Coś jest nie prawo. Może to być tymczasowy błąd lub usterka. Spróbuj ponownie.|  
@@ -160,7 +160,7 @@ Obsługiwane są następujące opcje lokalizacji:
   
 ###  <a name="CommonStrings"></a> CommonStrings  
   
-|Name (Nazwa)|Tekst|  
+|Name (Nazwa)|Text|  
 |----------|----------|  
 |ButtonLabelCancel|Cancel|  
 |ButtonLabelSave|Zapisz|  
@@ -184,7 +184,7 @@ Obsługiwane są następujące opcje lokalizacji:
   
 ###  <a name="Documentation"></a> Dokumentacja  
   
-|Name (Nazwa)|Tekst|  
+|Name (Nazwa)|Text|  
 |----------|----------|  
 |WebDocumentationInvalidHeaderErrorMessage|Nieprawidłowy nagłówek "{0}"|  
 |WebDocumentationInvalidRequestErrorMessage|Nieprawidłowy adres URL żądania|  
@@ -332,7 +332,7 @@ Obsługiwane są następujące opcje lokalizacji:
   
 ###  <a name="ErrorPageStrings"></a> ErrorPageStrings  
   
-|Name (Nazwa)|Tekst|  
+|Name (Nazwa)|Text|  
 |----------|----------|  
 |LinkLabelBack|wstecz|  
 |LinkLabelHomePage|stronę główną|  
@@ -350,7 +350,7 @@ Obsługiwane są następujące opcje lokalizacji:
   
 ###  <a name="IssuesStrings"></a> IssuesStrings  
   
-|Name (Nazwa)|Tekst|  
+|Name (Nazwa)|Text|  
 |----------|----------|  
 |WebIssuesIndexTitle|Problemy|  
 |WebIssuesNoActiveSubscriptions|Masz aktywne subskrypcje. Należy zasubskrybować produkt, aby zgłosić problem.|  
@@ -361,7 +361,7 @@ Obsługiwane są następujące opcje lokalizacji:
   
 ###  <a name="NotFoundStrings"></a> NotFoundStrings  
   
-|Name (Nazwa)|Tekst|  
+|Name (Nazwa)|Text|  
 |----------|----------|  
 |LinkLabelHomePage|stronę główną|  
 |LinkLabelSendUsEmail|wyślij do nas wiadomość e-mail|  
@@ -376,7 +376,7 @@ Obsługiwane są następujące opcje lokalizacji:
   
 ###  <a name="ProductDetailsStrings"></a> ProductDetailsStrings  
   
-|Name (Nazwa)|Tekst|  
+|Name (Nazwa)|Text|  
 |----------|----------|  
 |WebProductsAgreement|Jeśli zasubskrybujesz {0} produktu, zgadzam się na `<a data-toggle='modal' href='#legal-terms'\>Terms of Use</a\>`.|  
 |WebProductsLegalTermsLink|Warunki użytkowania|  
@@ -398,13 +398,13 @@ Obsługiwane są następujące opcje lokalizacji:
   
 ###  <a name="ProductsStrings"></a> ProductsStrings  
   
-|Name (Nazwa)|Tekst|  
+|Name (Nazwa)|Text|  
 |----------|----------|  
-|PageTitleProducts|Produkty|  
+|PageTitleProducts|Products|  
   
 ###  <a name="ProviderInfoStrings"></a> ProviderInfoStrings  
   
-|Name (Nazwa)|Tekst|  
+|Name (Nazwa)|Text|  
 |----------|----------|  
 |TextboxExternalIdentitiesDisabled|Logowanie się jest w tej chwili wyłączone przez administratorów.|  
 |TextboxExternalIdentitiesSigninInvitation|Możesz też zalogować się przy użyciu|  
@@ -412,7 +412,7 @@ Obsługiwane są następujące opcje lokalizacji:
   
 ###  <a name="SigninResources"></a> SigninResources  
   
-|Name (Nazwa)|Tekst|  
+|Name (Nazwa)|Text|  
 |----------|----------|  
 |PrincipalNotFound|Nie można odnaleźć podmiotu zabezpieczeń lub podpis jest nieprawidłowy|  
 |ErrorSsoAuthenticationFailed|Uwierzytelnianie logowania jednokrotnego nie powiodło się|  
@@ -508,7 +508,7 @@ Obsługiwane są następujące opcje lokalizacji:
   
 ###  <a name="SigninStrings"></a> SigninStrings  
   
-|Name (Nazwa)|Tekst|  
+|Name (Nazwa)|Text|  
 |----------|----------|  
 |WebAuthenticationForgotPassword|Nie pamiętasz hasła?|  
 |WebAuthenticationIfAdministrator|Jeśli jesteś administratorem, musisz zalogować się `<a href="{0}"\>here</a\>`.|  
@@ -520,7 +520,7 @@ Obsługiwane są następujące opcje lokalizacji:
   
 ###  <a name="SignupStrings"></a> SignupStrings  
   
-|Name (Nazwa)|Tekst|  
+|Name (Nazwa)|Text|  
 |----------|----------|  
 |PageTitleSignup|Rejestrowanie|  
 |WebAuthenticationAlreadyAMember|Jesteś już członkiem?|  
@@ -530,7 +530,7 @@ Obsługiwane są następujące opcje lokalizacji:
   
 ###  <a name="SubscriptionListStrings"></a> SubscriptionListStrings  
   
-|Name (Nazwa)|Tekst|  
+|Name (Nazwa)|Text|  
 |----------|----------|  
 |SubscriptionCancelConfirmation|Czy na pewno chcesz anulować tę subskrypcję?|  
 |SubscriptionRenewConfirmation|Czy na pewno chcesz odnowić tę subskrypcję?|  
@@ -553,7 +553,7 @@ Obsługiwane są następujące opcje lokalizacji:
   
 ###  <a name="SubscriptionStrings"></a> SubscriptionStrings  
   
-|Name (Nazwa)|Tekst|  
+|Name (Nazwa)|Text|  
 |----------|----------|  
 |SectionHeadingCloseAccount|Szukasz możliwości zamknięcia konta?|  
 |PageTitleDeveloperProfile|Profil|  
@@ -564,14 +564,14 @@ Obsługiwane są następujące opcje lokalizacji:
   
 ###  <a name="UpdateProfileStrings"></a> UpdateProfileStrings  
   
-|Name (Nazwa)|Tekst|  
+|Name (Nazwa)|Text|  
 |----------|----------|  
 |ButtonLabelUpdateProfile|Aktualizowanie profilu|  
 |PageTitleUpdateProfile|Aktualizowanie informacji o koncie|  
   
 ###  <a name="UserProfile"></a> UserProfile  
   
-|Name (Nazwa)|Tekst|  
+|Name (Nazwa)|Text|  
 |----------|----------|  
 |ButtonLabelChangeAccountInfo|Zmień informacje konta|  
 |ButtonLabelChangePassword|Zmień hasło|  

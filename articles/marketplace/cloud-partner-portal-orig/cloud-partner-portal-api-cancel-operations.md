@@ -15,11 +15,11 @@ ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 18f00391beded0744c80eab73bb1efe1c6ab8dbc
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810265"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60625044"
 ---
 <a name="cancel-operation"></a>Anuluj operację 
 =================
@@ -35,8 +35,8 @@ Możesz podać rozdzielana przecinkami lista adresów e-mail z żądaniem, a int
 
 |  **Nazwa**    |      **Opis**                                  |    **Typ danych**  |
 | ------------ |     ----------------                                  |     -----------   |
-| publisherId  |  Identyfikator wydawcy, na przykład `contoso`         |   Ciąg          |
-| identyfikatora oferty      |  Identyfikator oferty                                     |   Ciąg          |
+| publisherId  |  Identyfikator wydawcy, na przykład `contoso`         |   String          |
+| offerId      |  Identyfikator oferty                                     |   String          |
 | wersja interfejsu API  |  Bieżąca wersja interfejsu API                               |    Date           |
 |  |  |  |
 

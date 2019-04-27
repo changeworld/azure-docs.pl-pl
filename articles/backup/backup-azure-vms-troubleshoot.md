@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: srinathv
 ms.openlocfilehash: 6f10d8bc7f813245a66296988e4bb3792d898e08
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59618196"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60550026"
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Rozwiązywanie problemów z kopiami zapasowymi maszyn wirtualnych platformy Azure
 Można rozwiązać, usuwać błędy napotkane podczas używania usługi Azure Backup, podając informacje przedstawione w poniższej tabeli:
@@ -40,7 +40,7 @@ Wykonywanie kopii zapasowej nie powiodło się, ponieważ maszyna wirtualna jest
 ### <a name="usererrorfsfreezefailed---failed-to-freeze-one-or-more-mount-points-of-the-vm-to-take-a-file-system-consistent-snapshot"></a>UserErrorFsFreezeFailed — nie można zablokować przynajmniej jednego punktu instalacji maszyny wirtualnej, aby utworzyć migawkę spójną systemu plików
 
 Kod błędu: UserErrorFsFreezeFailed <br/>
-Komunikat o błędzie: Nie można zablokować przynajmniej jednego punktu instalacji maszyny wirtualnej, aby utworzyć migawkę spójną systemu plików.
+Komunikat o błędzie: Nie można zablokować co najmniej jednego punktu instalacji maszyny wirtualnej w celu utworzenia migawki spójnej z systemem plików.
 
 * Sprawdź stan systemu plików wszystkich zainstalowanych urządzeń przy użyciu **tune2fs** polecenia, na przykład **tune2fs -l/dev/sdb1 \\** .\| grep **stan systemu plików**.
 * Odinstaluj urządzenia, dla których stan systemu plików nie został wyczyszczony, za pomocą **umount** polecenia.

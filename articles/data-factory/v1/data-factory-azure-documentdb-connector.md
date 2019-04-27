@@ -14,11 +14,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: bda3df3ce869d7717f572f72c38472e7eae4a0ef
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437432"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60567218"
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>Przenoszenie danych do i z usługi Azure Cosmos DB przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -60,7 +60,7 @@ Poniższa tabela zawiera opis specyficzne dla usługi Azure Cosmos DB, połączo
 | **Właściwość** | **Opis** | **Wymagane** |
 | --- | --- | --- |
 | type |Właściwość type musi być równa: **Baza danych DocumentDb** |Yes |
-| Parametry połączenia |Określ informacje potrzebne do łączenia z bazą danych Azure Cosmos DB. |Yes |
+| connectionString |Określ informacje potrzebne do łączenia z bazą danych Azure Cosmos DB. |Yes |
 
 Przykład:
 
@@ -133,7 +133,7 @@ W przypadku działania kopiowania, gdy źródłem jest typu **DocumentDbCollecti
 | --- | --- | --- | --- |
 | nestingSeparator |Znaki specjalne w nazwa kolumny źródłowej, aby wskazać zagnieżdżonych dokumentu jest wymagana. <br/><br/>Na przykład powyżej: `Name.First` w danych wyjściowych tabeli tworzy następującą strukturę JSON w dokumencie usługi Cosmos DB:<br/><br/>"Name": {<br/>    "First": "John"<br/>}, |Znak używany do rozdzielania poziomów zagnieżdżenia.<br/><br/>Wartość domyślna to `.` (kropka). |Znak używany do rozdzielania poziomów zagnieżdżenia. <br/><br/>Wartość domyślna to `.` (kropka). |
 | writeBatchSize |Liczba równoległych żądań do usługi Azure Cosmos DB do tworzenia dokumentów.<br/><br/>Podczas kopiowania danych z usługi Cosmos DB przy użyciu tej właściwości można dostosować wydajność. Lepszą wydajność można oczekiwać, gdy zwiększasz writeBatchSize, ponieważ więcej równoległych żądań do usługi Cosmos DB są wysyłane. Jednak należy unikać ograniczania przepustowości, która może zgłosić komunikat o błędzie: "Liczba żądań jest duży."<br/><br/>Ograniczanie zadecyduje o wiele czynników, w tym rozmiar dokumentów, liczbę warunków w dokumentach, indeksowanie zasady kolekcji docelowej, itd. Dla operacji kopiowania umożliwia lepsze kolekcji (np. S3) najbardziej w dostępne przepływności (2500 żądanie jednostek na sekundę). |Liczba całkowita |Nie (domyślne: 5) |
-| writeBatchTimeout |Czas na ukończenie przed upływem limitu czasu operacji oczekiwania. |Przedział czasu<br/><br/> Przykład: "00: 30:00" (30 minut). |Nie |
+| writeBatchTimeout |Czas na ukończenie przed upływem limitu czasu operacji oczekiwania. |TimeSpan<br/><br/> Przykład: "00: 30:00" (30 minut). |Nie |
 
 ## <a name="importexport-json-documents"></a>Dokumenty JSON importu/eksportu
 Za pomocą tego łącznika usługi Cosmos DB, możesz z łatwością

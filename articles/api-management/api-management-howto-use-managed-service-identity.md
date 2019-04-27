@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 10/18/2017
 ms.author: apimpm
 ms.openlocfilehash: ebded5d1d58baf501ee5106d622162edc62d46ec
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57310560"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60656703"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>Używanie zarządzanych tożsamości w usłudze Azure API Management
 
@@ -30,7 +30,7 @@ W tym artykule dowiesz się, jak utworzyć tożsamość zarządzana w przypadku 
 
 Aby skonfigurować tożsamość zarządzaną w portalu, możesz najpierw utworzyć wystąpienia usługi API Management, jak zwykle i włączysz tę funkcję.
 
-1. Tworzenie wystąpienia usługi API Management w witrynie portal, tak jak zwykle. Przejdź do niego w portalu.
+1. Tworzenie wystąpienia usługi API Management w witrynie portal, tak jak zwykle. Przejdź do niej w portalu.
 2. Wybierz **tożsamości usługi zarządzanej**.
 3. Zarejestruj w usłudze Azure Active Directory należy przełączyć się na. Kliknij pozycję Zapisz.
 

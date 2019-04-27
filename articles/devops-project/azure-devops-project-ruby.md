@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: tworzenie potoku ciągłej integracji/ciągłego wdrażania dla środowiska Ruby on Rails za pomocą usługi Azure DevOps Projects'
+title: 'Szybki start: Tworzenie potoku ciągłej integracji/ciągłego wdrażania dla środowiska Ruby on Rails za pomocą usługi Azure DevOps Projects'
 description: Usługa Azure DevOps Projects ułatwia rozpoczęcie pracy na platformie Azure. Możesz uruchomić aplikację internetową języka Ruby w usłudze platformy Azure w kilku prostych krokach.
 ms.prod: devops
 ms.technology: devops-cicd
@@ -18,11 +18,11 @@ ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
 ms.openlocfilehash: 4cf3feeb92f04b4e97cbdc83c539c206790a78c8
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264526"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60558535"
 ---
 # <a name="create-a-cicd-pipeline-for-ruby-on-rails-by-using-azure-devops-projects"></a>Tworzenie potoku ciągłej integracji/ciągłego wdrażania dla środowiska Ruby on Rails za pomocą usługi Azure DevOps Projects
 
@@ -145,7 +145,7 @@ Usługa DevOps Projects automatycznie konfiguruje pełny potok ciągłej integra
 
 Gdy wystąpienie usługi Azure App Service i powiązane zasoby utworzone w tym przewodniku Szybki start nie będą już potrzebne, możesz je usunąć. W tym celu użyj funkcji **Usuń** na pulpicie nawigacyjnym usługi DevOps Projects.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby dowiedzieć się więcej na temat modyfikowania potoków kompilacji i wydania w celu dopasowania ich do potrzeb Twojego zespołu, zobacz:
 

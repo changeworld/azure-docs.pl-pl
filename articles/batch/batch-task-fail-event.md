@@ -2,7 +2,7 @@
 title: Zdarzenie niepowodzenia zadania w usłudze Azure Batch | Dokumentacja firmy Microsoft
 description: Odwołanie do zadania usługi Batch nie zdarzeń.
 services: batch
-author: laurenhughes
+author: dlepow
 manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
@@ -10,14 +10,15 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 04/20/2017
-ms.author: lahugh
+origin.date: 04/20/2017
+ms.date: 05/15/2018
+ms.author: v-junlch
 ms.openlocfilehash: f37769ceb761b8c8bc4834568813bb1b7af7f66a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458996"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60549992"
 ---
 # <a name="task-fail-event"></a>Zdarzenie niepowodzenia zadania
 
@@ -92,3 +93,5 @@ ms.locfileid: "55458996"
 |ExitCode|Int32|Kod zakończenia zadania.|
 |retryCount|Int32|Liczba przypadków, gdy zadanie było ponawiane przez usługę Batch. Zadanie zostanie ponowiony, jeśli kończy działanie z kodem zakończenia różny od zera, aż określony MaxTaskRetryCount.|
 |requeueCount|Int32|Liczba przypadków, gdy zadanie ma zostać ponownie umieszczone w kolejce przez usługę Batch w wyniku żądania użytkownika.<br /><br /> Gdy węzły Usuwa użytkownika z puli (przez zmianę rozmiaru lub zmniejszania puli) lub gdy zadanie jest wyłączone, użytkownik może określić, czy uruchamianie zadań w węzłach można ponownie umieszczone w kolejce do wykonania. Ta liczba śledzi, ile razy zadanie ma zostać ponownie umieszczone w kolejce z tych powodów.|
+
+<!-- Update_Description: update metedata properties -->

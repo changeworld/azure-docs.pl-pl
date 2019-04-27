@@ -16,11 +16,11 @@ ms.date: 06/21/2018
 ms.author: magattus
 ms.custom: ''
 ms.openlocfilehash: 7768dde424aedc295b53512db50c9dfc9db9ab8c
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091474"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60635639"
 ---
 # <a name="migrate-an-azure-cdn-profile-from-standard-verizon-to-premium-verizon"></a>Migracja profilu usługi Azure CDN z Verizon — standardowa do Verizon — Premium
 
@@ -37,12 +37,12 @@ Aby uaktualnić **Azure CDN Standard from Verizon** profilu, skontaktuj się z p
 ## <a name="profile-comparison"></a>Porównanie profilu
 **Usługa Azure CDN Premium from Verizon** profile mają następujące kluczowe różnice względem **Azure CDN Standard from Verizon** profilów:
 - W przypadku niektórych wysokiej dostępności treści Azure funkcje, takie jak [kompresji](cdn-improve-performance.md), [reguły buforowania](cdn-caching-rules.md), i [filtrowania geograficznego](cdn-restrict-access-by-country.md), nie można użyć interfejsu usługi Azure CDN, należy użyć za pośrednictwem portalu firmy Verizon **Zarządzaj** przycisku.
-- Interfejs API: W odróżnieniu od przypadku standardowa firmy Verizon, nie można użyć interfejsu API do kontrolowania tych funkcji, które są dostępne z poziomu portalu Verizon — Premium. Jednak można użyć interfejsu API do kontrolowania inne typowe funkcje, takie jak tworzenie/usuwanie punktu końcowego, przeczyszczanie/ładowanie zasobów pamięci podręcznej i włączania/wyłączania domeny niestandardowej.
-- Ceny: Verizon — Premium ma inną strukturę cennika w przypadku transferów danych niż Verizon — standardowa. Aby uzyskać więcej informacji, zobacz [cennik usługi Content Delivery Network](https://azure.microsoft.com/pricing/details/cdn/).
+- API: W odróżnieniu od przypadku standardowa firmy Verizon, nie można użyć interfejsu API do kontrolowania tych funkcji, które są dostępne z poziomu portalu Verizon — Premium. Jednak można użyć interfejsu API do kontrolowania inne typowe funkcje, takie jak tworzenie/usuwanie punktu końcowego, przeczyszczanie/ładowanie zasobów pamięci podręcznej i włączania/wyłączania domeny niestandardowej.
+- Cennik: Verizon — Premium ma inną strukturę cennika w przypadku transferów danych niż Verizon — standardowa. Aby uzyskać więcej informacji, zobacz [cennik usługi Content Delivery Network](https://azure.microsoft.com/pricing/details/cdn/).
 
 **Usługa Azure CDN Premium from Verizon** profile mają następujące dodatkowe funkcje:
-- [Uwierzytelnianie przy użyciu tokenów](cdn-token-auth.md): pozwala użytkownikom uzyskać i używają tokenu w celu pobrania bezpiecznych zasobów.
-- [Aparat reguł](cdn-rules-engine.md): pozwala na dostosowanie obsługi żądań HTTP.
+- [Uwierzytelnianie przy użyciu tokenów](cdn-token-auth.md): Umożliwia użytkownikom uzyskanie i używają tokenu w celu pobrania bezpiecznych zasobów.
+- [Aparat reguł](cdn-rules-engine.md): Umożliwia dostosowywanie sposobu obsługi żądań HTTP.
 - Zaawansowane narzędzia analityczne:
    - [Szczegółowa analiza HTTP](cdn-advanced-http-reports.md)
    - [Analiza wydajności krańcowej](cdn-edge-performance.md)

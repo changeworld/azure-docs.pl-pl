@@ -1,27 +1,22 @@
 ---
-title: Opracowywanie akcji skryptu za pomocą opartych na systemie Linux HDInsight — Azure
-description: Dowiedz się, jak dostosowywać klastry HDInsight opartych na systemie Linux za pomocą skryptów powłoki Bash. Funkcja akcji skryptu HDInsight umożliwia uruchamianie skryptów w trakcie lub po utworzeniu klastra. Skrypty może służyć do zmiany ustawień konfiguracji klastra lub instalowania dodatkowego oprogramowania.
-services: hdinsight
+title: Opracowywanie akcji skryptu, dostosowywać klastry usługi Azure HDInsight
+description: Dowiedz się, jak dostosowywanie klastrów HDInsight za pomocą skryptów powłoki Bash. Akcje skryptu umożliwiają uruchamianie skryptów w trakcie lub po utworzeniu klastra, aby zmienić ustawienia konfiguracji klastra lub instalowania dodatkowego oprogramowania.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/15/2019
-ms.author: hrasheed
-ms.openlocfilehash: 0d56d901ca932f044ef71ef2bc24933bcf18c24a
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.date: 04/22/2019
+ms.openlocfilehash: 66132a2a6a7b5b89bca0767efe7c194ca3dec051
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544589"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60590796"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Opracowywanie akcji skryptu za pomocą HDInsight
 
 Dowiedz się, jak dostosować klastra HDInsight przy użyciu skryptów powłoki Bash. Akcje skryptu to sposób dostosować HDInsight podczas lub po utworzeniu klastra.
-
-> [!IMPORTANT]  
-> Procedura przedstawiona w tym dokumencie wymaga klastra usługi HDInsight używającego systemu Linux. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 
 ## <a name="what-are-script-actions"></a>Co to są akcje skryptu
 
@@ -61,13 +56,28 @@ Podczas tworzenia niestandardowego skryptu dla klastra usługi HDInsight istniej
 
 Różne wersje HDInsight mają różne wersje usług Hadoop i zainstalowanych składników. Jeśli skrypt oczekuje określoną wersję usługi lub składnika, skrypt należy używać tylko z wersją HDInsight, który zawiera wymagane składniki. Można znaleźć informacje na temat wersji składnika dołączone HDInsight przy użyciu [przechowywanie wersji składnika HDInsight](hdinsight-component-versioning.md) dokumentu.
 
+### <a name="checking-the-operating-system-version"></a>Sprawdzanie wersji systemu operacyjnego
+
+Różne wersje HDInsight opierają się na określonych wersji systemu Ubuntu. Może to być różnice między wersjami systemu operacyjnego, które musisz sprawdzać w skrypcie. Na przykład może być konieczne zainstalowanie plik binarny, który jest powiązany z wersją systemu Ubuntu.
+
+Aby sprawdzić wersję systemu operacyjnego, należy użyć `lsb_release`. Na przykład poniższy skrypt pokazuje, jak odwołać się do pliku tar określonych w zależności od wersji systemu operacyjnego:
+
+```bash
+OS_VERSION=$(lsb_release -sr)
+if [[ $OS_VERSION == 14* ]]; then
+    echo "OS version is $OS_VERSION. Using hue-binaries-14-04."
+    HUE_TARFILE=hue-binaries-14-04.tgz
+elif [[ $OS_VERSION == 16* ]]; then
+    echo "OS version is $OS_VERSION. Using hue-binaries-16-04."
+    HUE_TARFILE=hue-binaries-16-04.tgz
+fi
+```
+
 ### <a name="bps10"></a> Docelowa wersja systemu operacyjnego
 
 HDInsight opartych na systemie Linux jest oparta na dystrybucji Ubuntu Linux. Różne wersje HDInsight opierają się w różnych wersjach Ubuntu, który może zmienić sposób działania skryptu. Na przykład HDInsight 3.4 lub starszym zależą od wersji Ubuntu, które używają Upstart. W wersji 3.5 i większa opierają się na Ubuntu 16.04, który używa Systemd. Systemd i Upstart korzystają innego polecenia, dzięki czemu skryptu będą zapisywane w pracy z programem.
 
-Inna ważna różnica między HDInsight 3.4 i 3.5 jest to, że `JAVA_HOME` wskazuje teraz Java 8.
-
-Wersja systemu operacyjnego można sprawdzić za pomocą `lsb_release`. Poniższy kod ilustruje sposób określania, czy skrypt jest uruchomiony na systemie Ubuntu 14 lub 16:
+Inna ważna różnica między HDInsight 3.4 i 3.5 jest to, że `JAVA_HOME` wskazuje teraz Java 8. Poniższy kod ilustruje sposób określania, czy skrypt jest uruchomiony na systemie Ubuntu 14 lub 16:
 
 ```bash
 OS_VERSION=$(lsb_release -sr)
@@ -136,10 +146,10 @@ Klastry HDInsight opartych na systemie Linux zapewniają dwa węzły główne, k
 
 Składniki, które można zainstalować w klastrze może mieć konfigurację domyślną, która korzysta z magazynu Apache Hadoop Distributed pliku System (HDFS). HDInsight korzysta z usługi Azure Storage lub usługi Data Lake Storage jako magazynu domyślnego. Podaj zarówno systemu zgodnego systemem plików HDFS, która utrwala dane, nawet jeśli klaster jest usuwany. Może być konieczne skonfigurowanie składników, które można zainstalować, aby użyć WASB lub ADL zamiast systemu plików HDFS.
 
-W przypadku większości operacji jest konieczne określanie systemu plików. Na przykład następujące kopiuje plik giraph-examples.jar z lokalnego systemu plików do magazynu klastra:
+W przypadku większości operacji jest konieczne określanie systemu plików. Na przykład następujące kopiuje plik hadoop common.jar z lokalnego systemu plików do magazynu klastra:
 
 ```bash
-hdfs dfs -put /usr/hdp/current/giraph/giraph-examples.jar /example/jars/
+hdfs dfs -put /usr/hdp/current/hadoop-client/hadoop-common.jar /example/jars/
 ```
 
 W tym przykładzie `hdfs` polecenia w sposób niewidoczny dla użytkownika używa domyślnego magazynu klastra. W przypadku niektórych operacji może być konieczne Określ identyfikator URI. Na przykład `adl:///example/jars` dla usługi Azure Data Lake Storage Gen1 `abfs:///example/jars` for Data Lake Storage Gen2 lub `wasb:///example/jars` dla usługi Azure Storage.
@@ -289,23 +299,6 @@ Przechowywanie plików w usłudze Azure Storage konta lub usługi Azure Data Lak
 
 > [!NOTE]  
 > Format identyfikatora URI używany w celu skrypt różni się w zależności od używanej usługi. W przypadku konta magazynu skojarzonego z klastrem HDInsight, użyj `wasb://` lub `wasbs://`. Identyfikatory URI publicznie do odczytu, użyj `http://` lub `https://`. W przypadku usługi Data Lake Storage, użyj `adl://`.
-
-### <a name="checking-the-operating-system-version"></a>Sprawdzanie wersji systemu operacyjnego
-
-Różne wersje HDInsight opierają się na określonych wersji systemu Ubuntu. Może to być różnice między wersjami systemu operacyjnego, które musisz sprawdzać w skrypcie. Na przykład może być konieczne zainstalowanie plik binarny, który jest powiązany z wersją systemu Ubuntu.
-
-Aby sprawdzić wersję systemu operacyjnego, należy użyć `lsb_release`. Na przykład poniższy skrypt pokazuje, jak odwołać się do pliku tar określonych w zależności od wersji systemu operacyjnego:
-
-```bash
-OS_VERSION=$(lsb_release -sr)
-if [[ $OS_VERSION == 14* ]]; then
-    echo "OS version is $OS_VERSION. Using hue-binaries-14-04."
-    HUE_TARFILE=hue-binaries-14-04.tgz
-elif [[ $OS_VERSION == 16* ]]; then
-    echo "OS version is $OS_VERSION. Using hue-binaries-16-04."
-    HUE_TARFILE=hue-binaries-16-04.tgz
-fi
-```
 
 ## <a name="deployScript"></a>Lista kontrolna wdrażania akcji skryptu
 

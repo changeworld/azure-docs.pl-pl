@@ -7,11 +7,11 @@ ms.topic: article
 ms.date: 12/05/2018
 ms.author: raynew
 ms.openlocfilehash: 3ee528cc68a2a5637e85dc1d5ef68203916138e7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59786885"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60596897"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>Uściślanie zawartości grupy za pomocą mapowania zależności grupy
 

@@ -9,17 +9,17 @@ manager: jeconnoc
 ms.topic: tutorial
 ms.date: 11/15/2018
 ms.openlocfilehash: 90f89f9ffb1d55e7621c87f168375251c78d9730
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57533497"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60641832"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>Samouczek: Wdrażanie z usługi GitHub do usługi Azure App Service przy użyciu funkcji ciągłej integracji i ciągłego wdrażania narzędzia Jenkins
 
 W tym samouczku wdrożysz przykładową internetową aplikację Java z usługi GitHub do [usługi Azure App Service w systemie Linux](/azure/app-service/containers/app-service-linux-intro), konfigurując ciągłą integrację i ciągłe wdrażanie w narzędziu Jenkins. Po zaktualizowaniu aplikacji przez wypchnięcie zatwierdzeń do usługi GitHub narzędzie Jenkins automatycznie skompiluje i opublikuje ponownie aplikację w usłudze Azure App Service. Przykładowa aplikacja w tym samouczku została opracowana przy użyciu struktury [Spring Boot](https://projects.spring.io/spring-boot/). 
 
-![Przegląd](media/tutorial-jenkins-deploy-web-app-azure-app-service/overview.png)
+![Omówienie](media/tutorial-jenkins-deploy-web-app-azure-app-service/overview.png)
 
 W tym samouczku wykonasz następujące zadania:
 

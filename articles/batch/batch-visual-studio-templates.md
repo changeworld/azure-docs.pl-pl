@@ -16,11 +16,11 @@ ms.date: 02/27/2017
 ms.author: lahugh
 ms.custom: seodec18
 ms.openlocfilehash: 085bfa582b676f34a02e4c1c5ae7e69c49e5cb4e
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53538127"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60550076"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Szybko Rozpocznij korzystanie z rozwiązań usługi Batch przy użyciu szablonów projektu programu Visual Studio
 
@@ -61,7 +61,7 @@ Aby użyć szablonów usługi Batch, potrzebne następujące elementy:
   * Zainstaluj szablonów przy użyciu **rozszerzenia i aktualizacje** okno dialogowe w programie Visual Studio (Aby uzyskać więcej informacji, zobacz [Znajdowanie i przy użyciu rozszerzenia programu Visual Studio][vs_find_use_ext]). W **rozszerzenia i aktualizacje** okna dialogowego pole, wyszukiwanie i pobieranie dwa następujące rozszerzenia:
     
     * Usługa Azure Batch Menedżer zadań z rozdzielaczem zadania
-    * Usługa Azure Batch zadania procesora
+    * Azure Batch Task Processor
   * Pobieranie z galerii online dla programu Visual Studio: [Szablony projektów pakietu Microsoft Azure Batch][vs_gallery_templates]
 * Jeśli planujesz używać [pakiety aplikacji](batch-application-packages.md) funkcji do wdrożenia Menedżer zadań i węzłów obliczeniowych procesor zadania usługi Batch, należy połączyć konto usługi storage z kontem usługi Batch.
 

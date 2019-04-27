@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
 ms.openlocfilehash: f06c8ec60831314dad30673fec4d2ea5901e11b6
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115219"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60597851"
 ---
 # <a name="azure-security-courses-from-microsoft-virtual-academy"></a>Kursy dotyczące zabezpieczeń platformy Azure, Microsoft Virtual Academy
 Microsoft Virtual Academy zapewnia bezpłatne, w trybie online, szkolenia pomagające deweloperom, IT i specjalistów danych i studentów Poznaj najnowsze technologie, rozwijanie umiejętności i Rozwijaj swoje kariery.

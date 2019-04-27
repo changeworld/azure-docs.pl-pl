@@ -9,11 +9,11 @@ ms.assetid: cf5633d4-bc43-444e-90fc-f90fbd0b7935
 ms.topic: conceptual
 ms.date: 02/12/2018
 ms.openlocfilehash: 7fd88383e909ebd6be64c22721b813946e37179e
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56959138"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60616511"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Uzyskiwanie dostępu do dzienników diagnostycznych usługi Azure Data Lake Analytics
 
@@ -134,7 +134,7 @@ Poniżej przedstawiono przykładowy wpis w dzienniku żądania w formacie JSON. 
 | resultType |String |Stan operacji, na przykład 200. |
 | callerIpAddress |String |Adres IP klienta wysyłającego żądanie |
 | correlationId |String |Identyfikator dziennika. Ta wartość może służyć do grupowania zbiór wpisów dziennika powiązane. |
-| identity |Obiekt |Tożsamość, która wygenerowała dziennika |
+| identity |Object |Tożsamość, która wygenerowała dziennika |
 | properties |JSON |W następnej sekcji (schemat właściwości dziennika żądania) Aby uzyskać szczegółowe informacje |
 
 #### <a name="request-log-properties-schema"></a>Schemat właściwości dziennika żądania
@@ -145,8 +145,8 @@ Poniżej przedstawiono przykładowy wpis w dzienniku żądania w formacie JSON. 
 | Ścieżka |String |Ścieżka operacja została wykonana w |
 | RequestContentLength |int |Długość zawartości żądania HTTP |
 | ClientRequestId |String |Identyfikator, który unikatowo identyfikuje tego żądania |
-| Godzina rozpoczęcia |String |Czas, w którym serwer odebrał żądanie |
-| Godzina zakończenia |String |Czas wysłanego przez serwer odpowiedzi |
+| StartTime |String |Czas, w którym serwer odebrał żądanie |
+| EndTime |String |Czas wysłanego przez serwer odpowiedzi |
 
 ### <a name="audit-logs"></a>Dzienniki inspekcji
 
@@ -201,8 +201,8 @@ Poniżej przedstawiono przykładowy wpis w dzienniku inspekcji w formacie JSON. 
 | JobName |String |Nazwa która została podana dla zadania |
 | JobRunTime |String |Środowiska uruchomieniowego użytego do przetworzenia zadania |
 | Godzina przesłania |String |Czas (w formacie UTC), które przesłano zadanie |
-| Godzina rozpoczęcia |String |Uruchomienia zadania uruchamiania po przesłaniu wizualizacji (w formacie UTC) |
-| Godzina zakończenia |String |Czas zakończenia zadania |
+| StartTime |String |Uruchomienia zadania uruchamiania po przesłaniu wizualizacji (w formacie UTC) |
+| EndTime |String |Czas zakończenia zadania |
 | Równoległość |String |Liczba wymagane dla tego zadania podczas przesyłania jednostki usługi Data Lake Analytics |
 
 > [!NOTE]

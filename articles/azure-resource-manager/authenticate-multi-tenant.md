@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: tomfitz
 ms.openlocfilehash: 6554c05f40f580a6d7ae086e1d09834298f86621
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54108377"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60550771"
 ---
 # <a name="authenticate-requests-across-tenants"></a>Uwierzytelniaj żądania dla dzierżaw
 
@@ -29,7 +29,7 @@ Podczas tworzenia aplikacji z wieloma dzierżawami, może być konieczne do obs�
 | Nazwa nagłówka | Opis | Przykładowa wartość |
 | ----------- | ----------- | ------------ |
 | Autoryzacja | Token podstawowy | Elementu nośnego &lt;token podstawowy&gt; |
-| x-ms autoryzacji pomocnicza | Tokeny pomocnicze | Elementu nośnego &lt;token1 pomocniczych&gt;; EncryptedBearer &lt;token2 pomocniczych&gt;; Elementu nośnego &lt;token3 pomocniczych&gt; |
+| x-ms-authorization-auxiliary | Tokeny pomocnicze | Bearer &lt;auxiliary-token1&gt;; EncryptedBearer &lt;auxiliary-token2&gt;; Bearer &lt;auxiliary-token3&gt; |
 
 Pomocnicze nagłówek może zawierać maksymalnie trzy tokeny pomocnicze. 
 

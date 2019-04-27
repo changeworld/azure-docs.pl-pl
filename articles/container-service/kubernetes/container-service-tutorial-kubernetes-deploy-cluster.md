@@ -10,11 +10,11 @@ ms.date: 09/14/2017
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: 58fef0357a903f2ab1d238bbab7b2d9dca673eb4
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55662061"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60576173"
 ---
 # <a name="deprecated-deploy-a-kubernetes-cluster-in-azure-container-service"></a>(PRZESTARZAŁE) Wdrażanie klastra Kubernetes w usłudze Azure Container Service
 
@@ -90,7 +90,7 @@ k8s-master-98dc3136-0   Ready,SchedulingDisabled   5m        v1.6.2
 
 Po ukończeniu samouczka klaster ACS Kubernetes jest gotowy do użycia z obciążeniami. W kolejnych samouczkach aplikacja wielu kontenerów jest wdrażana do tego klastra, skalowana w poziomie, aktualizowana i monitorowana.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku wdrożono klaster Kubernetes usługi Azure Container Service. Wykonano następujące czynności:
 

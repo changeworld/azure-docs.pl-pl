@@ -14,15 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 5a8b460441323cb668a3d9939cce434636afc44d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: be3f68a00647840801e7c205d7abb34b718bd61c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38719009"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60630941"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>Je rozpakować, zamontować w stojaku i Podłączanie kabli do urządzenia StorSimple 8600
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Usługi Microsoft Azure StorSimple 8600 urządzenia podwójną obudowy i składa się z podstawowym i obudowy EBOD. W tym samouczku wyjaśniono, jak rozpakować, zamontować w stojaku i StorSimple 8600 kabel urządzeń sprzętowych przed należy skonfigurować oprogramowanie StorSimple.
 
 ## <a name="unpack-your-storsimple-8600-device"></a>Rozpakowywanie urządzenia StorSimple 8600
@@ -34,19 +34,19 @@ Zanim można rozpakować urządzenie, przejrzyj następujące informacje.
 ![Ikona ostrzeżenia](./media/storsimple-safety/IC740879.png)![ikonę ciężki](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **ostrzeżenie!**
 
 1. Upewnij się, że dwie osoby dostępne na potrzeby zarządzania wagę urządzenia, jeśli są obsługującą go ręcznie. W pełni skonfigurowany obudowy można porównać do 32 kg (70 lbs.).
-2. Umieść pole powierzchni stałą, poziomu.
+2. Umieść pudełko na płaskiej, poziomej powierzchni.
 
 Następnie wykonaj poniższe kroki, aby rozpakować urządzenie.
 
 #### <a name="to-unpack-your-device"></a>Aby rozpakować urządzenie
-1. Sprawdź, czy pole i maskotkę witryny pakowania dla crushes, kawałki, wody szkody lub widocznego uszkodzenia. Jeśli pola lub pakietu jest poważnie uszkodzona, nie należy otwierać okno. Proszę [skontaktuj się z Microsoft Support](storsimple-8000-contact-microsoft-support.md) ułatwią Ci ocenić, czy urządzenie jest w dobrym stanie.
+1. Sprawdź, czy na pudełku i na piance opakowaniowej znajdują się naderwania, zarysowania, przecięcia, uszkodzenia od wody lub inne widoczne uszkodzenia. Jeśli pudełko lub opakowanie jest poważnie uszkodzone, nie należy go otwierać. Proszę [skontaktuj się z Microsoft Support](storsimple-8000-contact-microsoft-support.md) ułatwią Ci ocenić, czy urządzenie jest w dobrym stanie.
 2. Otwórz okno zewnętrzny, a następnie podjęcia się dwa pola odpowiadające podstawową i obudowy EBOD. Można teraz Rozpakuj podstawową i EBOD obudowy. Na poniższej ilustracji przedstawiono nierozpakowane widok jednego obudowy.
    
     ![Rozpakowywanie urządzenia magazynu](./media/storsimple-8600-hardware-installation/HCSUnpackyour4Udevice.png)
    
     **Wczytaj widok urządzenia magazynu**
    
-   | Etykieta | Opis |
+   | Label | Opis |
    | --- | --- |
    |   1 |Okno dokumentu |
    |   2 |Kabli SAS (w zasobniku kable i akcesoriów) |
@@ -69,7 +69,7 @@ Następnie wykonaj poniższe kroki, aby rozpakować urządzenie.
      
      Jeśli nie masz żadnych elementów wymienionych powyżej, [skontaktuj się z Microsoft Support](storsimple-8000-contact-microsoft-support.md).  
 
-Następnym krokiem jest urządzenie zamontować w stojaku.
+Następnym krokiem jest zamontowanie urządzenia na stojaku.
 
 ## <a name="rack-mount-your-storsimple-8600-device"></a>Urządzenie StorSimple 8600 zamontować w stojaku
 Wykonaj poniższe czynności, aby zainstalować urządzenia magazynu StorSimple 8600 w standardowym stelażu 19-calowy z przodu i wpisy na tylnej. To urządzenie jest dostarczany z dwa załączniki: podstawowy obudowy i obudowy EBOD. Oba te muszą być montowane w stojaku.
@@ -110,12 +110,12 @@ Instalowanie platformy rails zestaw zapewnia się do użytku z pliku cabinet 19-
    
     **Dołączanie szyny slajdów na stronach obudowa**
    
-   | Etykieta | Opis |
+   | Label | Opis |
    | --- | --- |
    |  1 |M 3 x 4 śruby przycisk główny |
    |  2 |Podstawa montażowa slajdów |
 2. Dołącz szyny po lewej stronie i zestawów po prawej stronie do stojak cabinet pionowej elementy członkowskie. Nawiasy są oznaczone **LH**, **RH**, i **ta strona się** przeprowadzenie Cię przez proces poprawnej orientacji.
-3. Znajdź numery PIN szyny na przedniej i tylnej części zestawu szyny. Rozszerz szyny mieści się między wpisów w stojaku i wstawianie numery PIN frontonu i wpis w stojaku tyłu składowej pionowej luki. Pamiętaj, że zestaw szyny jest poziom.
+3. Znajdź bolce szyny z przodu i z tyłu zestawu prowadnic. Rozszerz szyny mieści się między wpisów w stojaku i wstawianie numery PIN frontonu i wpis w stojaku tyłu składowej pionowej luki. Pamiętaj, że zestaw szyny jest poziom.
 4. Zabezpiecz zestawu szyny w stojaku pionowej elementy członkowskie, używając dwóch śrub metryki udostępniane. Użyj jednej śrubie na frontonu i jednej z tyłu.
 5. Powtórz te kroki dla innych zestawów szyny.
    
@@ -123,7 +123,7 @@ Instalowanie platformy rails zestaw zapewnia się do użytku z pliku cabinet 19-
    
     **Dołączanie szyny zestawów w stojaku**
    
-   | Etykieta | Opis |
+   | Label | Opis |
    | --- | --- |
    |   1 |Granica gwintowanym |
    |   2 |Gwintowanym wpis w stojaku frontonu dziura kwadrat |
@@ -149,7 +149,7 @@ Za pomocą stojaku, które właśnie zostały zainstalowane, wykonaj następują
    
     **Instalowanie caps kołnierza**
    
-   | Etykieta | Opis |
+   | Label | Opis |
    | --- | --- |
    |   1 |Gwintowanym zaczepienia obudowy |
 
@@ -202,7 +202,7 @@ Aby zapewnić obsługę pracy w trybie failover nadmiarowe kontrolera, musisz ok
    
     **Tylnej stronie urządzenia przedstawiający porty danych**
    
-   | Etykieta | Opis |
+   | Label | Opis |
    | --- | --- |
    |   0,1,4,5 |Interfejsy sieciowe w usłudze 1 GbE |
    |   2,3 |Interfejsów sieciowych 10 GbE |
@@ -213,13 +213,13 @@ Aby zapewnić obsługę pracy w trybie failover nadmiarowe kontrolera, musisz ok
 
 **Okablowania dla urządzenia sieciowego**
 
-| Etykieta | Opis |
+| Label | Opis |
 | --- | --- |
 | A |Sieć LAN z dostępem do Internetu |
 | B |Kontrolera 0 |
 | C |MODULE PCM 0 |
 | D |Kontrolera 1 |
-| E |MODULE PCM 1 |
+| E |PCM 1 |
 | F |Kontrolera EBOD 0 |
 | G |Kontrolera EBOD 1 |
 | GODZ., I |Hosty (na przykład serwery plików) |
@@ -260,7 +260,7 @@ Wykonaj poniższe kroki, aby podłączyć do portu szeregowego.
 6. Sprawdź, czy połączenie działa, naciskając klawisz Enter w konsoli. Powinny być wyświetlane menu konsoli szeregowej.
 
 > [!NOTE]
-> **Zarządzanie obsługą technologii lights-Out:** gdy urządzenie jest zainstalowane w zdalnym centrum danych lub w pomieszczeniu o ograniczonym dostępie, komputerów, upewnij się, zawsze połączenie szeregowe połączeń do obu kontrolerów do konsoli szeregowej lub podobnego sprzętu. Dzięki temu out-of-band zdalnego sterowania i pomocy technicznej operacji w przypadku przerwy w działaniu sieci lub nieoczekiwanych awarii.
+> **Zarządzanie obsługą technologii lights-Out:** Gdy urządzenie jest zainstalowane w zdalnym centrum danych lub w pomieszczeniu o ograniczonym dostępie, komputerów, upewnij się, czy połączenia szeregowe na obu kontrolerach zawsze są podłączone do konsoli szeregowej lub podobnego sprzętu. Dzięki temu out-of-band zdalnego sterowania i pomocy technicznej operacji w przypadku przerwy w działaniu sieci lub nieoczekiwanych awarii.
 > 
 > 
 

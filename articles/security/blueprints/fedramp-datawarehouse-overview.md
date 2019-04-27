@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 05/02/2018
 ms.author: jomolesk
 ms.openlocfilehash: 3c78aed2f30ea85f5bc16a8c0fb270bb1c761be8
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539517"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60586036"
 ---
 # <a name="azure-security-and-compliance-blueprint-data-warehouse-for-fedramp-automation"></a>Zabezpieczenia platformy Azure i zgodności planu: Magazyn danych w przypadku usługi Automation FedRAMP
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 [Federal Risk and Authorization Management Program (FedRAMP)](https://www.fedramp.gov/) to program obowiązkowo USA, zapewniający ustandaryzowane podejście do oceny zabezpieczeń, autoryzacji i ciągłego monitorowania dla chmury produkty i usługi. Tych samych zabezpieczeń platformy Azure i zgodności plan zawiera wskazówki dotyczące dostarczania architektura hurtowni danych Microsoft Azure, ułatwiające implementuje podzbiór programowi FedRAMP High kontrolki. To rozwiązanie znajdują się wskazówki dotyczące wdrażania i konfiguracji zasobów platformy Azure dla typowych architektury referencyjnej, demonstrując sposób, w którym klienci mogą sprostać określonych wymagań dotyczących zabezpieczeń i zgodności i służy jako podstawa dla klientów Tworzenie i konfigurowanie własnych rozwiązań magazynu danych na platformie Azure.
 

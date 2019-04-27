@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 07/03/2018
 ms.author: meladie
 ms.openlocfilehash: 6a2ffef9a1384ac2e2a678404171f33312b5d63a
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57247447"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60609522"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-pci-dss"></a>Zabezpieczenia platformy Azure i zgodności planu: Analiza PCI DSS
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Tych samych zabezpieczeń platformy Azure i zgodności plan zawiera wskazówki dotyczące wdrażania architektury analizy danych na platformie Azure, które pomaga wymagania płatności Karta Industry Data Security Standards (PCI DSS 3.2). On przedstawiono typowe architektury referencyjnej i przedstawia prawidłowego przygotowania danych karty kredytowej (w tym karty numer, wygaśnięcia i weryfikacji danych) w środowisku bezpiecznych, zgodnych i wieloma warstwami. Ten plan pokazuje sposoby, w którym klienci mogą sprostać zabezpieczeń i zgodności z wymaganiami i służy jako podstawa do tworzenia i skonfigurować własne rozwiązania do analizowania danych na platformie Azure.
 

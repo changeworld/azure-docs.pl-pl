@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 1/19/2018
 ms.author: atsenthi
 ms.openlocfilehash: 53cab3591ea11721e36b48438f35df016e2a9f3a
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58664985"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60621495"
 ---
 # <a name="service-fabric-application-lifecycle"></a>Cykl życia aplikacji usługi Service Fabric
 Zgodnie z innymi platformami aplikacji w usłudze Azure Service Fabric zwykle odbywa się przez następujące fazy: projektowania, rozwoju, testowania, wdrażanie, uaktualnianie, obsługi i usuwania. Usługa Service Fabric zapewnia najwyższej jakości pomoc techniczna dla całego cyklu życia aplikacji z aplikacji w chmurze, od projektowania do wdrażania, zarządzania infrastrukturą i konserwacji do ostatecznego wycofania. Model usługi umożliwia kilku różnych ról niezależnie uczestniczyć w cyklu życia aplikacji. Ten artykuł zawiera omówienie interfejsów API i jak są one używane przez różne role, w fazach cyklu życia aplikacji usługi Service Fabric.

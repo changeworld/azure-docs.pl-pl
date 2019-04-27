@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/10/2019
 ms.author: damaerte
 ms.openlocfilehash: 46c9350dd2a33d0d25fe193b2ae50c954f2d1f95
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59500621"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60614362"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Funkcje i narzędzia dla usługi Azure Cloud Shell
 
@@ -57,7 +57,7 @@ Usługa cloud Shell oferuje wstępnie skonfigurowane uwierzytelnianie dla narzę
 
 ## <a name="tools"></a>Narzędzia
 
-|Kategoria   |Name (Nazwa)   |
+|Category   |Name (Nazwa)   |
 |---|---|
 |Narzędzia systemu Linux            |Bash<br> zsh<br> SH<br> tmux<br> Postaraj się<br>               |
 |Narzędzia platformy Azure            |[Interfejs wiersza polecenia Azure](https://github.com/Azure/azure-cli) i [klasycznego wiersza polecenia platformy Azure](https://github.com/Azure/azure-xplat-cli)<br> [Narzędzie AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#writing-your-first-azcopy-command)<br> [Interfejs wiersza polecenia usługi Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)<br> [Usługa Batch Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|

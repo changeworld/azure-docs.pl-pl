@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: 20920a04c5b85c9eede7d7b249dd6e0548308240
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55883410"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60607145"
 ---
 # <a name="quickstart-analyze-text-content-for-objectionable-material-in-python"></a>Szybki start: Analizowanie zawartości tekstowej pod kątem niepożądanego materiału za pomocą języka Python
 
@@ -106,7 +106,7 @@ Przykładowy tekst używany w tym przewodniku Szybki start powoduje wygenerowani
  'tracking_id': 'b253515c-e713-4316-a016-8397662a3f1a'}
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym przewodniku Szybki start utworzono prostą aplikację języka Python, która zwraca odpowiednie informacje o danym tekście przykładowym dzięki użyciu usługi Content Moderator. Następnie dowiedz się więcej na temat znaczenia różnych flag i klasyfikacji, aby móc podejmować decyzje dotyczące potrzebnych danych oraz sposobu ich obsługi przez aplikację.
 

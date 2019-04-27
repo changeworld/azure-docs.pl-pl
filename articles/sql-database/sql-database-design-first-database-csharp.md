@@ -11,11 +11,11 @@ ms.reviewer: carlrab
 manager: craigg-msft
 ms.date: 02/08/2019
 ms.openlocfilehash: ce46a6b8d4e2bc57625f9202349718dfbaedc660
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55995693"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60553203"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-cx23-and-adonet"></a>Samouczek: Projektowanie relacyjnej bazy danych jako pojedynczej bazy danych w usłudze Azure SQL Database w języku C&#x23 i za pomocą platformy ADO.NET
 
@@ -109,7 +109,7 @@ Adres IP może teraz być przekazywany przez zaporę IP. Możesz teraz połączy
 
 [!INCLUDE [sql-database-csharp-adonet-create-query-2](../../includes/sql-database-csharp-adonet-create-query-2.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku przedstawiono podstawowe zadania dotyczące baz danych, takie jak tworzenie bazy danych i tabel, łączenie się z bazą danych, ładowanie danych i uruchamianie zapytań. W tym samouczku omówiono:
 

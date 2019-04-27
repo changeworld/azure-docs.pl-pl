@@ -2,18 +2,18 @@
 title: Kopiowanie lub przenoszenie danych do usługi Azure Storage za pomocą narzędzia AzCopy na Windows | Dokumentacja firmy Microsoft
 description: Narzędzia AzCopy można użyć na narzędzie Windows, do przeniesienia lub skopiowania danych do lub z obiektu blob, tabeli i zawartości pliku. Kopiowanie danych do usługi Azure Storage z lokalnych plików lub kopiowania danych w ramach lub między kontami magazynu. Łatwo Migruj dane do usługi Azure Storage.
 services: storage
-author: seguler
+author: tamram
 ms.service: storage
 ms.topic: article
 ms.date: 01/03/2019
-ms.author: seguler
+ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 6ae3ec566c05d2460747439d61c87c995a90b19c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58881736"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60728988"
 ---
 # <a name="transfer-data-with-the-azcopy-on-windows"></a>Transferowanie danych za pomocą narzędzia AzCopy w Windows
 AzCopy to narzędzie wiersza polecenia przeznaczone do kopiowania danych z systemu Microsoft Azure Blob, File i Table storage przy użyciu prostych poleceń zaprojektowane pod kątem optymalnej wydajności. Dane można kopiować między systemem plików i kontem magazynu lub między kontami magazynu.  

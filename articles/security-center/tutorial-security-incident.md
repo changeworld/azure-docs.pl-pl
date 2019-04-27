@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 08/30/2018
 ms.author: rkarlin
 ms.openlocfilehash: d726006d3ecce69f129b1576c7c6d12833582873
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58081994"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60612711"
 ---
 # <a name="tutorial-respond-to-security-incidents"></a>Samouczek: Reagowanie na zdarzenia związane z zabezpieczeniami
 Usługa Security Center w sposób ciągły analizuje obciążenia chmury hybrydowej i ostrzega o złośliwych działaniach, używając zaawansowanych funkcji analitycznych oraz funkcji analizy zagrożeń. Ponadto można integrować alerty z innymi produktami i usługami zabezpieczeń w usłudze Security Center oraz tworzyć niestandardowe alerty bazujące na własnych wskaźnikach lub źródłach analiz. Po wygenerowaniu alertu potrzebne jest sprawne działanie w celu zbadania i skorygowania jego przyczyny. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:

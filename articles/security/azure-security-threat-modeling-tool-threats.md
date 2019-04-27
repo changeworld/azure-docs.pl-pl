@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
 ms.openlocfilehash: fd7c5fd929163dc7fcd22fbb045dee0fe3070394
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359038"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60611558"
 ---
 # <a name="microsoft-threat-modeling-tool-threats"></a>Narzędzie do modelowania zagrożeń firmy Microsoft zagrożenia
 
@@ -37,7 +37,7 @@ Narzędzie do modelowania zagrożeń pomaga w uzyskaniu odpowiedzi na niektóre 
 
 Aby lepszą pomoc sformułować tego rodzaju pytania wskazywany, firma Microsoft korzysta z modelu krok, który kategoryzuje różnego rodzaju zagrożenia i upraszcza ogólną konwersacje zabezpieczeń.
 
-| Kategoria | Opis |
+| Category | Opis |
 | -------- | ----------- |
 | **Fałszowanie zawartości** | Polega na nielegalny dostęp, a następnie używając informacje o uwierzytelnianiu przez innego użytkownika, takie jak nazwa użytkownika i hasło |
 | **Manipulowanie** | Obejmuje złośliwego modyfikowania danych. Przykłady obejmują nieautoryzowane zmiany trwałych danych, takich jak, które przechowywane w bazie danych i zmiany danych podczas ich przepływu pomiędzy dwoma komputerami za pośrednictwem sieci open, takich jak Internet |

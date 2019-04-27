@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
 ms.openlocfilehash: 90b2dfdbec0d6dc81a05b845832fda92fe36d98c
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403095"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60656595"
 ---
 # <a name="api-management-policy-expressions"></a>Wyrażenia zasad usługi API Management
 W tym artykule omówiono wyrażenia zasad składnia jest C# 7. Każde wyrażenie ma dostęp do niejawnie podana [kontekstu](api-management-policy-expressions.md#ContextVariables) zmienną i dozwolonych [podzbioru](api-management-policy-expressions.md#CLRTypes) dla typów programu .NET Framework.

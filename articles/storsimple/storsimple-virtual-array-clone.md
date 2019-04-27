@@ -15,15 +15,15 @@ ms.workload: NA
 ms.date: 11/21/2016
 ms.author: alkohli
 ms.openlocfilehash: feffbb634af62d70a840febcf2a04afb7bdeeddd
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55496802"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60580943"
 ---
 # <a name="clone-from-a-backup-of-your-storsimple-virtual-array"></a>Klonowanie z kopii zapasowej rozwiązania StorSimple Virtual Array
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 W tym artykule opisano krok po kroku sposób klonowania zestawu kopii zapasowych udziałów lub woluminów na usługi Microsoft Azure StorSimple Virtual Array. Sklonowanej kopii zapasowej jest używany do odzyskania pliku usunięty lub utracony. Artykuł zawiera również uzyskać szczegółowy opis kroków, aby wykonać odzyskiwanie na poziomie elementu na rozwiązania StorSimple Virtual Array, skonfigurowany jako serwer plików.
 

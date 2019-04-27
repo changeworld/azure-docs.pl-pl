@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: 49615dcb2f077d2e1d8b93a4bb900b435e4c87bf
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56104501"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60589073"
 ---
 # <a name="azure-customer-data-protection"></a>Ochrona danych klientów platformy Azure   
 Odmowa dostępu do danych klienta przez Microsoft operations i obsługą techniczną domyślnie. Po nadaniu prawa dostępu do danych klienta kierownicze zatwierdzenie jest wymagane, a następnie dostęp jest dokładnie zarządzane i zarejestrowane. Wymagania dotyczące kontroli dostępu są wyznaczane przez następujące zasady zabezpieczeń platformy Azure:

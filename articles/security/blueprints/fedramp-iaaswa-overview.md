@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 05/08/2018
 ms.author: jomolesk
 ms.openlocfilehash: 1ba5b813843ce2f5d31f337ab4d3d94e521b0e0c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57864477"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60586138"
 ---
 # <a name="azure-security-and-compliance-blueprint-iaas-web-application-for-fedramp"></a>Zabezpieczenia platformy Azure i zgodności planu: Aplikacja sieci Web IaaS dla FedRAMP
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 [Federal Risk and Authorization Management Program (FedRAMP)](https://www.fedramp.gov) to program obowiązkowo USA, zapewniający ustandaryzowane podejście do oceny zabezpieczeń, autoryzacji i ciągłego monitorowania produktów w chmurze i usługi. Ten zabezpieczeń platformy Azure i zgodności planu automatyzacji zawiera wskazówki dotyczące wdrażania zgodnych ze standardami FedRAMP infrastruktury jako usługi (IaaS) środowiska odpowiednie dla prostej aplikacji sieci web dostępnym z Internetu. To rozwiązanie pozwala zautomatyzować wdrażanie i konfigurowanie zasobów platformy Azure dla typowych architektury referencyjnej, demonstrując sposób, w którym klienci mogą sprostać określonych wymagań dotyczących zabezpieczeń i zgodności i służy jako podstawa klienci mogą tworzyć i Skonfiguruj swoich rozwiązań na platformie Azure. Rozwiązanie implementuje podzbiór formantów z linią bazową programowi FedRAMP High, oparte na SP NIST 800-53. Aby uzyskać więcej informacji na temat wymagań FedRAMP i to rozwiązanie, zobacz [dokumentację zgodności](#compliance-documentation).
 > [!NOTE]

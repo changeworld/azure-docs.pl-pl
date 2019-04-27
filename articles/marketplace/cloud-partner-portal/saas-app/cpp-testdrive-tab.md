@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 04/24/2019
 ms.author: pbutlerm
 ms.openlocfilehash: b12ba53f847b46479b3100c088c29372b58c1b8e
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649037"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60594222"
 ---
 # <a name="saas-application-test-drive-tab"></a>Karta wersję testową aplikacji SaaS
 
@@ -31,9 +31,11 @@ Tworzenie wersji próbnej środowisko dla swoich klientów jest najlepszym rozwi
 
 Wersja testowa dostarcza klientom korzystającym z wersją próbną praktyczne, przeprowadzanemu samodzielnie procesowi kluczowe funkcje i korzyści, przedstawione w scenariuszu wdrożenia rzeczywistych swojego produktu.
 
+
 ## <a name="how-a-test-drive-works"></a>Jak działa wersji testowej
 
 Potencjalny klient wyszukuje i umożliwia odnalezienie aplikacji w witrynie Marketplace. Klient rejestruje i wyraża zgodę na warunki użytkowania. W tym momencie użytkownik otrzymał wstępnie skonfigurowanego środowiska do wypróbowania funkcji przez określoną liczbę godzin, gdy otrzymasz wysoko wykwalifikowanych potencjalnego klienta do monitowanie. Aby uzyskać więcej informacji, zobacz [co to jest wersja testowa?](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
+
 
 ## <a name="publishing-steps"></a>Kroki publikowania
 
@@ -43,6 +45,7 @@ Główne kroki publikowania, aby dodać test dysku są:
 2. Tworzenie i/lub zmodyfikowanie szablonu usługi Resource Manager
 3. Utwórz szczegółowe podręcznika użytkownika wersji testowej
 4. Ponownie opublikować ofertę
+
 
 ## <a name="setting-up-a-test-drive"></a>Konfigurowanie wersji testowej
 
@@ -54,6 +57,8 @@ Istnieją cztery typy wersji testowych, każdy na podstawie typu produktu, scena
 |       Hostowany             |       Testowej hostowanych eliminuje złożoność konfiguracji w ramach hostingu firmy Microsoft i obsługa usługi przeprowadzające użytkownika wersji testowej aprowizacji i cofania aprowizacji.             |         [Hostowana wersja testowa](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/hosted-test-drive)          |
 |      Aplikacja logiki              |       Wersję testową aplikacji logiki jest szablon wdrożenia, który jest przeznaczony do uwzględniający wszystkie architektury złożonych rozwiązań. Wszystkie aplikacje Dynamics lub niestandardowych produktów należy używać tego rodzaju wersji testowej.            |      [Wersja testowa aplikacji logiki](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/logic-app-test-drive)             |
 |       Power BI             |         Dysk Test usługi Power BI składa się z osadzonych łącze do niestandardowej pulpitu nawigacyjnego. Produkt, który chce pokazują, że Interaktywne wizualizacje usługi Power BI należy używać tego rodzaju wersji testowej. Wszystko, czego potrzebujesz do przekazania jest osadzony adres URL do usługi Power BI.          |        [Power BI Test Drive](#power-bi-test-drive)           |
+|   |   |   |
+
 
 ### <a name="power-bi-test-drive"></a>Wersja testowa programu Power BI
 

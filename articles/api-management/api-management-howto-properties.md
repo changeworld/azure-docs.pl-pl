@@ -14,23 +14,23 @@ ms.topic: article
 ms.date: 01/25/2018
 ms.author: apimpm
 ms.openlocfilehash: 478b80b021b4df36e2eccc37ac9c74f75e43a5bb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58791630"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60658039"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Jak używać wartości o nazwie w zasadach usługi Azure API Management
 Zasady usługi API Management są zaawansowaną możliwością system, który pozwala witrynie Azure portal zmieniać zachowanie interfejsu API za pomocą konfiguracji. Zasady to zbiór instrukcji, które są wykonywane sekwencyjnie podczas żądania lub odpowiedzi interfejsu API. Instrukcje zasad można skonstruować przy użyciu wartości tekst dosłowny, wyrażenia zasad i nazwane wartości. 
 
 Każde wystąpienie usługi API Management ma kolekcji właściwości pary klucz/wartość, która jest wywoływana o nazwie wartości, które są globalne do wystąpienia usługi. Te wartości o nazwie może służyć do zarządzania stałym ciągiem wartości we wszystkich Konfiguracja interfejsu API i zasady. Każda właściwość może mieć następujące atrybuty:
 
-| Atrybut | Typ | Opis |
+| Atrybut | Type | Opis |
 | --- | --- | --- |
-| `Display name` |string |Ciąg alfanumeryczny używany jako odwołanie do właściwości w zasadach. |
-| `Value` |string |Wartość właściwości. Nie może być pusta ani składać się wyłącznie z białych znaków. |
-| `Secret` |wartość logiczna|Określa, czy wartość jest wpis tajny i powinien być zaszyfrowany, czy nie.|
-| `Tags` |tablica ciągów |Opcjonalne — tagi, gdy zostanie podane, może służyć do filtrowania listy właściwości. |
+| Nazwa wyświetlana |string |Ciąg alfanumeryczny używany jako odwołanie do właściwości w zasadach. |
+| Wartość |string |Wartość właściwości. Nie może być pusta ani składać się wyłącznie z białych znaków. |
+|Wpis tajny|wartość logiczna|Określa, czy wartość jest wpis tajny i powinien być zaszyfrowany, czy nie.|
+| Tagi |tablica ciągów |Opcjonalne — tagi, gdy zostanie podane, może służyć do filtrowania listy właściwości. |
 
 ![Nazwane wartości](./media/api-management-howto-properties/named-values.png)
 

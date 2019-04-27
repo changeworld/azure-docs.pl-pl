@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 04/08/2018
 ms.author: diberry
 ms.openlocfilehash: 9d6173ee25f28aa884513d126c06a8a7c722098d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59273842"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60597983"
 ---
 # <a name="integrate-speech-service-with-your-language-understanding-app"></a>Integracja usługi mowy z aplikacją Language Understanding
 [Usługa rozpoznawania mowy](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) umożliwia korzystanie z jednego żądania w celu odbierania dźwięku i zwrócenia obiektów JSON zawierających przewidywania usługi LUIS. W tym artykule pobierzesz projekt w języku C# i użyjesz go w programie Visual Studio, aby wypowiedzieć się do mikrofonu i uzyskać przewidywania usługi LUIS. Projekt wykorzystuje pakiet rozpoznawania mowy [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/) dołączony jako źródło informacji. 

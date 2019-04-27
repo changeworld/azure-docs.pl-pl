@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: kasinh
 ms.openlocfilehash: 7e8043badbc0accd38ad618a7d455729ab6606b2
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57541296"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60644339"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure"></a>Tworzenie kopii zapasowych farmy programu SharePoint na platformie Azure
 Wykonywania kopii zapasowych farmy programu SharePoint w systemie Microsoft Azure za pomocą System Center Data Protection Manager (DPM) w podobny sposób, należy utworzyć kopię zapasową innych źródeł danych. Usługa Azure Backup zapewnia elastyczność harmonogram tworzenia kopii zapasowych, aby utworzyć codziennie, co tydzień, miesięczny lub roczny kopii zapasowej wskazuje i udostępnia opcje zasad przechowywania dla różnych punktów kopii zapasowej. Program DPM udostępnia możliwości, aby przechowywać kopie dysk lokalny na szybkie cele czasu odzyskiwania (RTO) i do przechowywania kopii na platformie Azure, ekonomiczne, długoterminowego przechowywania.

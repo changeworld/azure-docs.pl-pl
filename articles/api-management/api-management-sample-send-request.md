@@ -12,14 +12,15 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/15/2016
-ms.author: apimpm
+origin.date: 12/15/2016
+ms.author: v-yiso
+ms.date: 04/22/2019
 ms.openlocfilehash: 2c4e5d0117f046343b140ef2b2c46c074c835075
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59796532"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60557939"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>Korzystanie z usług zewnętrznych z usługi Azure API Management
 Zasady dostępne w usłudze Azure API Management można wykonać szeroką gamę przydatnych działań oparte wyłącznie na żądanie przychodzące, Wychodzące odpowiedzi i podstawowe informacje o konfiguracji. Jednak możliwość interakcji z usługami zewnętrznymi z usługi API Management zasady otwiera wiele więcej.
@@ -283,4 +284,5 @@ W konfiguracji operacji symbolu zastępczego można skonfigurować zasobów pulp
 
 ## <a name="summary"></a>Podsumowanie
 Usługa API Management zapewnia elastyczne zasady, które można wybiórczo zastosować do ruchu HTTP oraz umożliwia tworzenie usług zaplecza. Czy chcesz poprawić bramy interfejsu API za pomocą alertów, funkcje, weryfikacji i sprawdzania poprawności możliwości lub utworzyć nowe zasoby złożone oparte na wielu usług zaplecza, `send-request` i powiązane zasady to droga możliwości.
+
 

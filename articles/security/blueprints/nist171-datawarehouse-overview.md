@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: jomolesk
 ms.openlocfilehash: a1850ecfbb21eb9495bb0e6de362dc8dee3026a2
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242364"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60609577"
 ---
 # <a name="azure-security-and-compliance-blueprint---data-warehouse-for-nist-sp-800-171"></a>Zabezpieczenia platformy Azure i zgodności planu - SP NIST 800-171 w magazynie danych
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 [Publikacja specjalne NIST 800-171](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-171.pdf) zawiera wytyczne dotyczące ochrony informacji unclassified kontrolowanego (CUI), która znajduje się w organizacji i systemów informacyjnych nonfederal. SP NIST 800-171 ustanawia 14 rodzin wymagań dotyczących ochrony poufności CUI zabezpieczeń.
 
 Tych samych zabezpieczeń platformy Azure i zgodności planu znajdują się wskazówki pomagające klientom wdrażanie architektura hurtowni danych, na platformie Azure, która implementuje podzbiór NIST SP 800-171 kontrolki. To rozwiązanie przedstawia sposób, w którym klienci mogą sprostać zabezpieczeń i zgodności z wymaganiami. Służy również jako podstawa do tworzenia i konfigurowanie własnych rozwiązań magazynu danych na platformie Azure.

@@ -2,18 +2,19 @@
 title: Zarządzanie aplikacjami usługi Azure Service Fabric przy użyciu wiersza polecenia platformy Azure usługi Service Fabric (sfctl)
 description: Dowiedz się, jak wdrożyć, a także usunięcie aplikacji z klastra usługi Azure Service Fabric przy użyciu interfejsu wiersza polecenia usługi Azure Service Fabric
 services: service-fabric
-author: Christina-Kang
-manager: chackdan
+author: rockboyfor
+manager: digimobile
 ms.service: service-fabric
 ms.topic: conceptual
-ms.date: 07/31/2018
-ms.author: bikang
+origin.date: 07/31/2018
+ms.date: 09/10/2018
+ms.author: v-yeche
 ms.openlocfilehash: 9b0f785a6a43f984708645084a8a8036326d3d24
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662996"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60621381"
 ---
 # <a name="manage-an-azure-service-fabric-application-by-using-azure-service-fabric-cli-sfctl"></a>Zarządzanie aplikacją usługi Azure Service Fabric przy użyciu wiersza polecenia platformy Azure usługi Service Fabric (sfctl)
 
@@ -25,7 +26,7 @@ Dowiedz się, jak tworzyć i usuwać aplikacje, które są uruchomione w klastrz
 
 * Należy mieć pakiet aplikacji usługi Service Fabric jest gotowa do wdrożenia. Aby uzyskać więcej informacji na temat autora i pakietów aplikacji, przeczytaj temat [modelu aplikacji usługi Service Fabric](service-fabric-application-model.md).
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Aby wdrożyć nową aplikację, wykonaj następujące kroki:
 
@@ -170,3 +171,5 @@ Ponadto w przypadku uaktualnienia w toku i musi zostać anulowana, można użyć
 * [Podstawowe informacje dotyczące interfejsu wiersza polecenia usługi Service Fabric](service-fabric-cli.md)
 * [Wprowadzenie do usługi Service Fabric w systemie Linux](service-fabric-get-started-linux.md)
 * [Uruchamianie uaktualnienia aplikacji usługi Service Fabric](service-fabric-application-upgrade.md)
+
+<!--Update_Description: update meta properties -->

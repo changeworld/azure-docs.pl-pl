@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.openlocfilehash: 52fe8c05101f9647549acec276f0bdb9fa52d1c7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59256808"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60537907"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>Łączenie usługi HDInsight z siecią lokalną
 
@@ -78,7 +78,7 @@ Te kroki odnoszą się [witryny Azure portal](https://portal.azure.com) utworzy�
     |Nazwa maszyny wirtualnej | Wprowadź przyjazną nazwę, która identyfikuje tę maszynę wirtualną. W tym przykładzie użyto **DNSProxy**.|
     |Region | Wybierz tego samego regionu co sieć wirtualna została utworzona wcześniej.  Nie wszystkie rozmiary maszyn wirtualnych są dostępne we wszystkich regionach.  |
     |Opcje dostępności |  Wybierz żądany poziom dostępności.  Platforma Azure oferuje szeroką gamę opcji zarządzania, dostępność oraz odporność aplikacji.  Architektury rozwiązania na potrzeby replikowanych maszyn wirtualnych w strefach dostępności lub zestawach dostępności, aby chronić aplikacje i dane przed awariami centrum danych i zdarzenia konserwacji. W tym przykładzie użyto **nie nadmiarowości infrastruktury wymagane**. |
-    |Image (Obraz) | Pozostaw **LTS Ubuntu Server 18.04**. |
+    |Image | Pozostaw **LTS Ubuntu Server 18.04**. |
     |Typ uwierzytelniania | __Hasło__ lub __klucz publiczny SSH__: Metoda uwierzytelniania dla konta SSH. Zalecamy używanie kluczy publicznych, ponieważ są one bardziej bezpieczne. W tym przykładzie użyto **hasło**.  Aby uzyskać więcej informacji, zobacz [tworzenia i używania kluczy SSH dla maszyn wirtualnych systemu Linux](../virtual-machines/linux/mac-create-ssh-keys.md) dokumentu.|
     |Nazwa użytkownika |Wprowadź nazwę użytkownika administratora dla maszyny Wirtualnej.  W tym przykładzie użyto **sshuser**.|
     |Klucz publiczny hasła lub protokołu SSH | Dostępne pola zależy od wybranego dla **typ uwierzytelniania**.  Wprowadź odpowiednią wartość.|

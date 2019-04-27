@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 07/06/2018
 ms.author: terrylan
 ms.openlocfilehash: dc9b4db37e811d8bac6df2d532fd3629d98c9650
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56104775"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60586581"
 ---
 # <a name="azure-infrastructure-security"></a>Zabezpieczenie infrastruktury platformy Azure
 Microsoft Azure działa w centrach danych, zarządzana i obsługiwana przez firmę Microsoft. Te geograficznie rozproszone centra danych zgodne z najważniejszymi standardami branżowymi, takie jak ISO/IEC 27001: 2013 i SP NIST 800-53, bezpieczeństwo i niezawodność. Centrach danych są zarządzane, monitorowane i administrowane przez pracowników operacyjnych firmy Microsoft. Operatorzy mają lat doświadczenia w dostarczaniu największych na świecie usług online z 24 x 7 ciągłość działalności biznesowej.

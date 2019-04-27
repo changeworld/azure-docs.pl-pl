@@ -16,18 +16,18 @@ ms.date: 08/07/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: ad8b59a9290c533a3687b5ff8956d8682fb6d9e9
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332289"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60607834"
 ---
 # <a name="provision-a-sql-server-virtual-machine-using-azure-powershell-classic"></a>Aprowizowanie maszyny wirtualnej programu SQL Server przy użyciu programu Azure PowerShell (wersja klasyczna)
 
 Ten artykuł zawiera instrukcje dotyczące sposobu tworzenia maszyny wirtualnej programu SQL Server na platformie Azure przy użyciu poleceń cmdlet programu PowerShell.
 
 > [!IMPORTANT] 
-> Platforma Azure ma dwa różne modele wdrażania do tworzenia i pracy z zasobami: [Usługi Resource Manager i Model Klasyczny](../../../azure-resource-manager/resource-manager-deployment-model.md). Ten artykuł dotyczy klasycznego modelu wdrażania. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager.
+> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [Usługi Resource Manager i Model Klasyczny](../../../azure-resource-manager/resource-manager-deployment-model.md). Ten artykuł dotyczy klasycznego modelu wdrażania. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager.
 
 Wersja usługi Resource Manager w tym temacie, zobacz [udostępnianie maszyny wirtualnej programu SQL Server przy użyciu programu Azure PowerShell Resource Manager](../sql/virtual-machines-windows-ps-sql-create.md).
 

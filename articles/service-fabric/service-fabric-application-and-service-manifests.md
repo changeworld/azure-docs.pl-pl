@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 12/19/2018
 ms.author: atsenthi
 ms.openlocfilehash: 5e93bb3b206fbef6beb09b7aca6df0742a80ccf1
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662146"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60621517"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Manifesty aplikacji usługi Service Fabric i usługi
 W tym artykule opisano, jak aplikacje usługi Service Fabric i usługi są zdefiniowane i kontrolą wersji, przy użyciu plików ApplicationManifest.xml i ServiceManifest.xml.  Aby uzyskać bardziej szczegółowe przykłady, zobacz [aplikacji i usługi manifestu przykłady](service-fabric-manifest-examples.md).  Schemat XML dla tych plików manifestu jest udokumentowany w [dokumentacja schematu ServiceFabricServiceModel.xsd](service-fabric-service-model-schema.md).

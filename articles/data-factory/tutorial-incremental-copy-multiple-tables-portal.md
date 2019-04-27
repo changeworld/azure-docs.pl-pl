@@ -13,11 +13,11 @@ ms.topic: tutorial
 ms.date: 01/20/2018
 ms.author: yexu
 ms.openlocfilehash: b9dafd31ed84298c97932b1cdb5593eb17769ef9
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59566009"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60582384"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Przyrostowe ładowanie danych z wielu tabel w programie SQL Server do bazy danych Azure SQL Database
 W tym samouczku utworzysz fabrykę danych Azure Data Factory z potokiem służącym do ładowania danych różnicowych z wielu tabel na lokalnym serwerze SQL Server do bazy danych Azure SQL Database.    

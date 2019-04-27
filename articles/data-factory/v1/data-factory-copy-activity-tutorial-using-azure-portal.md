@@ -15,11 +15,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 168e5eea2004a31b108a8a00d883298f8e2198ba
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58090274"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60566526"
 ---
 # <a name="tutorial-use-azure-portal-to-create-a-data-factory-pipeline-to-copy-data"></a>Samouczek: korzystanie z witryny Azure Portal, aby utworzyć potok usługi Data Factory w celu kopiowania danych 
 > [!div class="op_single_selector"]

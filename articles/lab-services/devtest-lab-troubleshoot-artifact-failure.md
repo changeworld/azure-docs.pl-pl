@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/17/2019
 ms.author: spelluru
 ms.openlocfilehash: 29af70a2713e7b4aebf611d8f2b547e38c6c5d3d
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59546369"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60623144"
 ---
 # <a name="diagnose-artifact-failures-in-the-lab"></a>Diagnozowanie błędów artefaktów w środowisku laboratoryjnym 
 Po utworzeniu artefakt, można sprawdzić, aby zobaczyć, czy zakończonych powodzeniem lub niepowodzeniem. Dzienniki artefaktów w usłudze Azure DevTest Labs zawierają informacje, które umożliwia diagnozowanie błędów artefaktów. Masz kilka opcji, podczas wyświetlania informacji dziennika artefaktu dla maszyny Wirtualnej z systemem Windows:
