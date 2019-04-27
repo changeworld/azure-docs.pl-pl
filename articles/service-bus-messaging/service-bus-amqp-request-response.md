@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: c22ba0b57ed1161e1f7e2082d2ba21f27b656da1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58121574"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60402687"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>Protokołu AMQP 1.0 w usłudze Microsoft Azure Service Bus: operacje na podstawie odpowiedzi żądań
 
@@ -315,7 +315,7 @@ Treści komunikatu odpowiedzi muszą składać się z **amqp wartość** sekcji 
   
 |Klucz|Typ wartości|Wymagane|Wartość zawartości|  
 |---------|----------------|--------------|--------------------|  
-|wygaśnięcie|sygnatura czasowa|Yes|Nowe wygaśnięcia.|  
+|wygaśnięcie|timestamp|Yes|Nowe wygaśnięcia.|  
   
 ### <a name="peek-session-message"></a>Wgląd do wiadomości sesji  
 
@@ -439,7 +439,7 @@ Treść żądania musi składać się z **wartość amqp** sekcji zawierającej 
   
 |Klucz|Typ wartości|Wymagane|Wartość zawartości|  
 |---------|----------------|--------------|--------------------|  
-|ostatnio zaktualizowane w czasie|sygnatura czasowa|Yes|Filtr obejmujący tylko sesje zaktualizowane po określonym czasie.|  
+|ostatnio zaktualizowane w czasie|timestamp|Yes|Filtr obejmujący tylko sesje zaktualizowane po określonym czasie.|  
 |pomiń|int|Yes|Pomiń liczbę sesji.|  
 |top|int|Yes|Maksymalna liczba sesji.|  
   

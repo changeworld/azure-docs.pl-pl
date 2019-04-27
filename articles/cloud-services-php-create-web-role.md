@@ -14,25 +14,25 @@ ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
 ms.openlocfilehash: 83834104dd73e4381947903196ad35c3497b64a1
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425680"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60337565"
 ---
 # <a name="create-php-web-and-worker-roles"></a>Tworzenie roli internetowej i procesu roboczego PHP
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Tym przewodniku pokazano sposób tworzenia ról sieć web i proces roboczy języka PHP w środowisku programowania Windows, wybierz określoną wersję programu PHP z wersji "wbudowane", która jest dostępna, zmiany konfiguracji PHP, Włącz rozszerzenia i na koniec wdrażanie na platformie Azure. On również zawiera opis sposobu konfigurowania roli sieci web lub proces roboczy do użycia środowiska uruchomieniowego języka PHP (przy użyciu niestandardowej konfiguracji i rozszerzenia) przez Ciebie.
 
-Platforma Azure udostępnia trzy modele obliczeniowe na potrzeby uruchamiania aplikacji: Azure App Service, Azure Virtual Machines i usług Azure Cloud Services. Wszystkie trzy modele obsługują PHP. Oferuje usługi w chmurze, które obejmują role sieć web i proces roboczy, *platforma jako usługa (PaaS)*. W ramach usługi w chmurze rola internetowa zapewnia dedykowany serwer sieci web usług Internet Information Services (IIS) do hostowania aplikacji frontonu sieci web. Rola procesu roboczego, można uruchomić asynchroniczne, długotrwałe lub ciągłe zadania niezależne od interakcji z użytkownikiem lub danych wejściowych.
+Platforma Azure udostępnia trzy modele obliczeniowe na potrzeby uruchamiania aplikacji: Usługa Azure App Service, usługa Azure Virtual Machines i usług Azure Cloud Services. Wszystkie trzy modele obsługują PHP. Oferuje usługi w chmurze, które obejmują role sieć web i proces roboczy, *platforma jako usługa (PaaS)*. W ramach usługi w chmurze rola internetowa zapewnia dedykowany serwer sieci web usług Internet Information Services (IIS) do hostowania aplikacji frontonu sieci web. Rola procesu roboczego, można uruchomić asynchroniczne, długotrwałe lub ciągłe zadania niezależne od interakcji z użytkownikiem lub danych wejściowych.
 
 Aby uzyskać więcej informacji o tych opcjach, zobacz [udostępnianych przez platformę Azure opcji hostowania obliczeń](cloud-services/cloud-services-choose-me.md).
 
 ## <a name="download-the-azure-sdk-for-php"></a>Pobierz zestaw Azure SDK dla języka PHP
 
-[Zestawu Azure SDK dla języka PHP](php-download-sdk.md) składa się z kilku składników. W tym artykule użyje dwa z nich: programu Azure PowerShell i emulatory systemu Azure. Te dwa składniki można zainstalować za pomocą Instalatora platformy sieci Web firmy Microsoft. Aby uzyskać więcej informacji, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview).
+[Zestawu Azure SDK dla języka PHP](php-download-sdk.md) składa się z kilku składników. W tym artykule użyje dwa z nich: Program Azure PowerShell i emulatory systemu Azure. Te dwa składniki można zainstalować za pomocą Instalatora platformy sieci Web firmy Microsoft. Aby uzyskać więcej informacji, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview).
 
 ## <a name="create-a-cloud-services-project"></a>Tworzenie projektu usługi w chmurze
 
@@ -116,7 +116,7 @@ Aby skonfigurować rolę sieci web, aby użyć środowiska uruchomieniowego jęz
 
 1. Tworzenie projektu usługi Azure i Dodaj rolę sieci web PHP, jak opisano wcześniej w tym temacie.
 2. Tworzenie `php` folderu w `bin` folder, który znajduje się w katalogu głównym roli sieci web, a następnie dodaj swoje środowiska uruchomieniowego języka PHP (wszystkie pliki binarne, pliki konfiguracji, podfoldery itp.), aby `php` folderu.
-3. (OPCJONALNIE) Jeśli Twoje środowisko uruchomieniowe języka PHP [Drivers firmy Microsoft dla programów PHP i SQL Server][sqlsrv drivers], musisz skonfigurować roli sieci web, aby zainstalować [programu SQL Server Native Client 2012] [ sql native client] po jej zaaprowizowaniu. Aby to zrobić, Dodaj [Instalator sqlncli.msi x64] do `bin` folder w katalogu głównym roli sieci web. Skrypt uruchamiania opisany w następnym kroku zostanie dyskretnie uruchom Instalatora, po zaaprowizowaniu roli. Jeśli Twoje środowiska uruchomieniowego języka PHP nie korzysta z Drivers firmy Microsoft dla programu PHP dla programu SQL Server, należy usunąć następujący wiersz w skrypcie pokazano w następnym kroku:
+3. (OPCJONALNIE) Jeśli Twoje środowisko uruchomieniowe języka PHP [Drivers firmy Microsoft dla programów PHP i SQL Server][sqlsrv drivers], musisz skonfigurować roli sieci web, aby zainstalować [programu SQL Server Native Client 2012] [ sql native client] po jej zaaprowizowaniu. Aby to zrobić, Dodaj [Instalatora sqlncli.msi x64] do `bin` folder w katalogu głównym roli sieci web. Skrypt uruchamiania opisany w następnym kroku zostanie dyskretnie uruchom Instalatora, po zaaprowizowaniu roli. Jeśli Twoje środowiska uruchomieniowego języka PHP nie korzysta z Drivers firmy Microsoft dla programu PHP dla programu SQL Server, należy usunąć następujący wiersz w skrypcie pokazano w następnym kroku:
 
         msiexec /i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES
 4. Zdefiniuj zadania uruchamiania, który konfiguruje [Internet Information Services (IIS)] [ iis.net] na potrzeby obsługi żądań dla Twojego środowiska uruchomieniowego języka PHP `.php` stron. Aby to zrobić, otwórz `setup_web.cmd` pliku (w `bin` plik katalogu głównego roli sieci web) w edytorze tekstów i zastąp jego zawartość za pomocą następującego skryptu:
@@ -152,7 +152,7 @@ Aby skonfigurować rolę procesu roboczego do użycia środowiska uruchomieniowe
 
 1. Tworzenie projektu usługi Azure, a następnie dodaj rolę procesu roboczego języka PHP, jak opisano wcześniej w tym temacie.
 2. Tworzenie `php` folder w katalogu głównym roli procesu roboczego, a następnie dodaj swoje środowiska uruchomieniowego języka PHP (wszystkie pliki binarne, pliki konfiguracji, podfoldery itp.) do `php` folderu.
-3. (OPCJONALNIE) Jeśli Twoje środowisko uruchomieniowe języka PHP [Drivers firmy Microsoft dla programów PHP i SQL Server][sqlsrv drivers], musisz skonfigurować swojej roli procesu roboczego, aby zainstalować [programu SQL Server Native Client 2012] [ sql native client] po jej zaaprowizowaniu. Aby to zrobić, Dodaj [Instalator sqlncli.msi x64] do katalogu głównego roli procesu roboczego. Skrypt uruchamiania opisany w następnym kroku zostanie dyskretnie uruchom Instalatora, po zaaprowizowaniu roli. Jeśli Twoje środowiska uruchomieniowego języka PHP nie korzysta z Drivers firmy Microsoft dla programu PHP dla programu SQL Server, należy usunąć następujący wiersz w skrypcie pokazano w następnym kroku:
+3. (OPCJONALNIE) Jeśli Twoje środowisko uruchomieniowe języka PHP [Drivers firmy Microsoft dla programów PHP i SQL Server][sqlsrv drivers], musisz skonfigurować swojej roli procesu roboczego, aby zainstalować [programu SQL Server Native Client 2012] [ sql native client] po jej zaaprowizowaniu. Aby to zrobić, Dodaj [Instalatora sqlncli.msi x64] do katalogu głównego roli procesu roboczego. Skrypt uruchamiania opisany w następnym kroku zostanie dyskretnie uruchom Instalatora, po zaaprowizowaniu roli. Jeśli Twoje środowiska uruchomieniowego języka PHP nie korzysta z Drivers firmy Microsoft dla programu PHP dla programu SQL Server, należy usunąć następujący wiersz w skrypcie pokazano w następnym kroku:
 
         msiexec /i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES
 4. Zdefiniuj zadania uruchamiania, który dodaje swoje `php.exe` pliku wykonywalnego do zmiennej środowiskowej PATH roli procesu roboczego po zaaprowizowaniu roli. Aby to zrobić, otwórz `setup_worker.cmd` pliku (w katalogu głównym roli proces roboczy) w edytorze tekstów i zastąp jego zawartość za pomocą następującego skryptu:
@@ -223,4 +223,4 @@ Aby uzyskać więcej informacji, zobacz [Centrum deweloperów języka PHP](https
 [iis.net]: https://www.iis.net/
 [sql native client]: https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation
 [sqlsrv drivers]: https://php.net/sqlsrv
-[Instalator sqlncli.msi x64]: https://go.microsoft.com/fwlink/?LinkID=239648
+[Instalatora sqlncli.msi x64]: https://go.microsoft.com/fwlink/?LinkID=239648

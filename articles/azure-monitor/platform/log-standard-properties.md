@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: bwren
 ms.openlocfilehash: c01cdb967fd7f9516b4403aa4f0c76f2577d5050
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294726"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60394527"
 ---
 # <a name="standard-properties-in-azure-monitor-log-records"></a>Standardowe właściwości w usłudze Azure Monitor rekordów dziennika
 Dane z dzienników w usłudze Azure Monitor [przechowywane jako zbiór rekordów](../log-query/log-query-overview.md), każdy z typem danych, który ma unikatowego zestawu właściwości. Wiele typów danych, ma standardowych właściwości, które są wspólne dla wielu typów. W tym artykule opisano te właściwości i przedstawiono przykłady jak ich używać w zapytaniach.

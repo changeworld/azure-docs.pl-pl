@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
 ms.openlocfilehash: 527e9979b624970dd55b4300fe63c27386640ac4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57886613"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60560489"
 ---
 # <a name="tutorial-push-localized-notifications-to-ios-devices-using-azure-notification-hubs"></a>Samouczek: Zlokalizowanych powiadomień wypychanych do urządzeń z systemem iOS przy użyciu usługi Azure Notification Hubs
 
@@ -42,7 +42,7 @@ W tym samouczku wykonasz następujące kroki:
 > * Wysyłanie powiadomień zlokalizowanych szablonu z aplikacji konsoli .NET
 > * Wysyłanie powiadomień zlokalizowanych szablonu z urządzenia
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 W [Wysyłanie najważniejszych wiadomości przy użyciu usługi Notification Hubs], utworzoną aplikację, która jest używana **tagi** do subskrybowania powiadomień dla różnych grup dyskusyjnych kategorii. Wiele aplikacji, jednak docelowe różne rynki i wymagają lokalizacji. Oznacza to, że zawartość powiadomień samodzielnie muszą być zlokalizowane i dostarczane do odpowiednich zestawów urządzeń. W tym samouczku dowiesz się, jak używać **szablonu** funkcji usługi Notification hubs pozwalające łatwo dostarczać powiadomienia o najważniejszych zlokalizowane.
 
