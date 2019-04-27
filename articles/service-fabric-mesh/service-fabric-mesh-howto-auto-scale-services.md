@@ -16,11 +16,11 @@ ms.date: 12/07/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 2233dffabd7c76ca55cf215f8bc04e66134f5799
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338806"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60583608"
 ---
 # <a name="create-autoscale-policies-for-a-service-fabric-mesh-application"></a>Utwórz zasady automatycznego skalowania dla aplikacji usługi Service Fabric siatki
 Jedną z głównych zalet wdrażania aplikacji w usłudze Service Fabric Mesh jest możliwość łatwego skalowania usług w pionie lub poziomie. Powinno to służyć do obsługi różnych ilości obciążenia w usługach lub do poprawiania dostępności. Można ręcznie skalować swoje usługi wewnątrz lub na zewnątrz lub skonfiguruj zasady skalowania automatycznego.

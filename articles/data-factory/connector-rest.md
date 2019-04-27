@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: jingwang
 ms.openlocfilehash: ee47f464c59bd9deed98671f19cfcc6d2c3c1b39
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58762484"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60546645"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Kopiowanie danych z punktu końcowego REST przy użyciu usługi Azure Data Factory
 
@@ -68,7 +68,7 @@ Ustaw **authenticationType** właściwości **podstawowe**. Oprócz ogólne wła
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | userName | Nazwa użytkownika na potrzeby dostępu do punktu końcowego REST. | Yes |
-| hasło | Hasło dla użytkownika ( **userName** wartości). Oznacz to pole jako **SecureString** typ, aby bezpiecznie przechowywać w usłudze Data Factory. Możesz również [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| password | Hasło dla użytkownika ( **userName** wartości). Oznacz to pole jako **SecureString** typ, aby bezpiecznie przechowywać w usłudze Data Factory. Możesz również [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 
 **Przykład**
 

@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 03/04/2019
 ms.author: diberry
 ms.openlocfilehash: 5fb62c38bde98d946694790adb860240eaa59fa9
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57530181"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60709716"
 ---
 # <a name="url-prebuilt-entity-for-a-luis-app"></a>Adres URL wstępnie utworzone jednostki dla aplikacji usługi LUIS
 Adres URL jednostki wyodrębnia adresy URL przy użyciu nazwy domen i adresów IP. Ponieważ przeprowadzono już uczenie tej jednostki, nie musisz Dodawanie wypowiedzi przykład zawierające adresy URL do aplikacji. Jednostki adres URL jest obsługiwana w `en-us` tylko kultury. 

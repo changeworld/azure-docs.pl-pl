@@ -1,6 +1,6 @@
 ---
-title: Zastąp PCM na urządzeniu z serii StorSimple 8000 | Dokumentacja firmy Microsoft
-description: Wyjaśniono, jak usunięty i zastąpiony zasilania i chłodzenia modułu (PCM) na urządzeniu StorSimple
+title: Wymiana modułu PCM, na urządzeniu StorSimple 8000 series | Dokumentacja firmy Microsoft
+description: Wyjaśnia, jak usunąć i Zastąp zasilania i chłodzenia modułu (PCM) na urządzeniu StorSimple
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,131 +14,131 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 7d181e6e434c998573dbea4b541cfacf7a28ee66
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 42561570e24aec5edd33248ef1738e53175e480e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23875060"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60632505"
 ---
-# <a name="replace-a-power-and-cooling-module-on-your-storsimple-device"></a>Zamień na urządzeniu StorSimple zasilania i chłodzenia modułu
+# <a name="replace-a-power-and-cooling-module-on-your-storsimple-device"></a>Zastąp zasilania i chłodzenia modułu na urządzeniu StorSimple
 ## <a name="overview"></a>Omówienie
-Zasilania i chłodzenia modułu (PCM) w urządzeniu Microsoft Azure StorSimple składa się z źródła zasilania i chłodzenia wentylatory, które są kontrolowane przez serwer podstawowy i obudowy EBOD. Istnieje tylko jeden model PCM, który jest certyfikowany do każdej obudowy. Obudowa podstawowy jest certyfikowany do 764 W PCM i obudowy EBOD jest certyfikowany do 580 W PCM. Mimo że PCMs obudowa podstawowego i obudowy EBOD są różne, procedura zastępczy jest taka sama.
+Zasilania i chłodzenia modułu (PCM) na urządzeniu Microsoft Azure StorSimple składa się z źródło zasilania i chłodzenia fanów, które są kontrolowane za pomocą podstawowego i obudów EBOD. Istnieje tylko jeden model PCM, który posiada certyfikat dla każdej obudowie. Obudowa podstawowy jest certyfikowany dla 764 W PCM i obudowy EBOD jest certyfikowany dla 580 W PCM. Mimo że PCMs dla podstawowego obudowy i obudowy EBOD są różne, procedura zastępowania jest identyczna.
 
-Ten samouczek wyjaśnia, jak:
+W tym samouczku wyjaśniono:
 
-* Usuń PCM
-* Zainstaluj serwer zamienny PCM
+* Usuwanie modułu PCM
+* Zainstalować zastępczy modułu PCM
 
 > [!IMPORTANT]
-> Przed usunięcie i zastąpienie PCM, zapoznaj się z informacjami bezpieczeństwa w [wymiana składników sprzętowych StorSimple](storsimple-8000-hardware-component-replacement.md).
+> Zanim usunięcie i zastąpienie PCM, zapoznaj się z informacjami bezpieczeństwa w [wymiana składników sprzętu StorSimple](storsimple-8000-hardware-component-replacement.md).
 
 
-## <a name="before-you-replace-a-pcm"></a>Aby zastąpić PCM
-Należy pamiętać o następujących istotne problemy przed wymianą programu PCM:
+## <a name="before-you-replace-a-pcm"></a>Zanim użytkownik wymiana modułu PCM
+Należy pamiętać o następujących istotne problemy przed wymianą PCM usługi:
 
-* W przypadku niepowodzenia zasilania PCM pozostaw zainstalowany moduł uszkodzony, ale usunąć przewód zasilający. Wentylator będzie otrzymywać zasilania obudowa i podaj odpowiednie chłodzenia w dalszym ciągu. W przypadku niepowodzenia wentylatora PCM wymaga zastąpienia natychmiast.
-* Przed usunięciem PCM, odłącz zasilanie z PCM wyłączając przełącznika głównego (o ile istnieje) lub usuwając fizycznie przewód zasilający. Zawiera ostrzeżenie w systemie, czy wyłączania zasilania jest bezpośrednie.
-* Upewnij się, że inne PCM funkcjonalności systemu ciągłej operacji przed wymianą PCM uszkodzony. Błędny PCM muszą zostać zastąpione pełnej funkcjonalności PCM tak szybko, jak to możliwe.
-* Zastąpienie modułu PCM zajmuje tylko kilka minut, ale musi zostać ukończone w ciągu 10 minut usunięcia PCM nie powiodło się, aby zapobiec przegrzaniu.
-* Zauważ, że zastępczy 764 modułów W PCM fabrycznej nie zawierać modułu baterii kopii zapasowej. Należy usunąć baterii z programu PCM uszkodzony i wstawić go w module zastępczy przed wykonaniem zastąpienia. Aby uzyskać więcej informacji, zobacz temat jak [usuwanie i wstawianie modułu baterii kopii zapasowej](storsimple-8000-battery-replacement.md).
+* W przypadku awarii zasilania modułu PCM pozostawić zainstalowany moduł awaryjnym, ale Usuń przewód zasilający. Wentylator będą wciąż odbierały power obudowę i podaj odpowiednie chłodzenie w dalszym ciągu. W przypadku niepowodzenia wentylatora modułu PCM wymaga zastąpienia natychmiast.
+* Przed usunięciem modułu PCM, wyłączyć zasilanie modułu PCM, wyłączając przełącznik głównego (o ile istnieje) lub usuwając fizycznie przewód zasilający. Zawiera ostrzeżenie do systemu, że wyłączenie zasilania jest bliska.
+* Upewnij się, że inne PCM funkcjonalności dla operacji systemu ciągłej przed zastąpieniem wadliwe PCM. Uszkodzony PCM muszą zostać zastąpione pełną funkcjonalność PCM tak szybko, jak to możliwe.
+* Zastąpienie modułu PCM zajmuje tylko kilka minut, ale muszą być wykonane w ciągu 10 minut usunięcia PCM nie powiodło się, aby zapobiec przegrzaniu.
+* Należy pamiętać, zastąpienie 764 modułów W module PCM fabrycznej nie zawierają moduł baterii zapasowej. Należy usunąć baterii z Twojej wadliwe PCM i wstaw go do modułu zastąpienie przed wykonaniem zastąpienia. Aby uzyskać więcej informacji, zobacz instrukcje [usuwanie i wstawianie modułu baterii zapasowej](storsimple-8000-battery-replacement.md).
 
-## <a name="remove-a-pcm"></a>Usuń PCM
-Wykonaj te instrukcje, gdy wszystko będzie gotowe do usunięcia z urządzenia Microsoft Azure StorSimple zasilania i chłodzenia modułu (PCM).
+## <a name="remove-a-pcm"></a>Usuwanie modułu PCM
+Wykonaj te instrukcje, gdy jesteś gotowy do usunięcia zasilania i chłodzenia modułu (PCM) na urządzeniu Microsoft Azure StorSimple.
 
 > [!NOTE]
-> Przed usunięciem programu PCM, sprawdź, czy poprawne zastąpienia (764 T dla obudowa podstawowego) lub 580 W przypadku obudowy EBOD.
+> Zanim usuniesz użytkownika PCM, sprawdź, czy prawidłowy zamiennik (764 T dla podstawowego obudowy) lub 580 W dla obudowy EBOD.
 
 #### <a name="to-remove-a-pcm"></a>Aby usunąć PCM
-1. W klasycznym portalu Azure, kliknij przycisk **Ustawienia > Monitor > kondycji sprzętu**. Sprawdź stan poszczególnych składników PCM w obszarze **udostępnione składniki** do określenia, na które PCM nie powiodła się:
+1. W klasycznym portalu Azure, kliknij przycisk **Ustawienia > Monitor > kondycja sprzętu**. Sprawdź stan poszczególnych składników modułu PCM, w obszarze **udostępnione składniki** Aby identyfikować, które PCM nie powiodło się:
    
-   * Jeśli zasilacz w PCM 0 nie powiodło się. stan **zasilacz w PCM 0** czerwony.
-   * Jeśli zasilacz PCM 1 nie powiodło się. stan **zasilacz 1 PCM** czerwony.
-   * Jeśli wentylator PCM 1 nie powiodło się. stan albo **chłodzenia 0 dla PCM 0** lub **chłodzenia 1 dla PCM 0** czerwony.
-2. Znajdź niepowodzenia PCM z tyłu obudowy podstawowego. Jeśli używasz modelu 8600 określić podstawowy obudowa za wyświetlany na panelu przednim wyświetlacz numer identyfikacyjny jednostki systemu. Wartość domyślna to identyfikator jednostki wyświetlany na głównej obudowy **00**, a wartość domyślna to identyfikator jednostki wyświetlany na obudowę EBOD **01**. Poniższy diagram i tabeli opisano na panelu przednim wyświetlacz.
+   * Jeśli zasilacz w module PCM 0 zakończyło się niepowodzeniem, stan **zasilacz w module PCM 0** przyjmie kolor czerwony.
+   * Jeśli zasilacz w module PCM 1 zakończyło się niepowodzeniem, stan **zasilacz w module PCM 1** przyjmie kolor czerwony.
+   * Jeśli wentylator w module PCM 1 zakończyło się niepowodzeniem, stan albo **chłodzenie 0 dla module PCM 0** lub **chłodzenie 1 w module PCM 0** przyjmie kolor czerwony.
+2. Znajdź zakończone niepowodzeniem PCM na odwrocie podkładki głównej obudowy. Jeśli używasz 8600 model zidentyfikować głównej obudowy, analizując System numeru identyfikacyjnego jednostki, wyświetlane na panelu przednim wyświetlacz. Wartość domyślna to identyfikator jednostki, wyświetlane w podstawowej obudowy **00**, a wartość domyślna to identyfikator jednostki, wyświetlane na obudowę EBOD **01**. Poniższy diagram i tabeli wyjaśniono z panelu przedniego wyświetlacz.
    
     ![Identyfikator systemu na panelu przednim OPS](./media/storsimple-power-cooling-module-replacement/IC740991.png)
    
-     **Rysunek 1** panelu przodu urządzenia  
+     **Rysunek 1** panelu Front urządzenia  
    
-   | Etykieta | Opis |
+   | Label | Opis |
    |:--- |:--- |
-   | 1 |Przycisk wyciszenia |
+   | 1 |Wycisz przycisku |
    | 2 |Zasilania systemu |
    | 3 |Błąd modułu |
    | 4 |Błąd logiczny |
    | 5 |Wyświetlanie Identyfikatora jednostki |
-3. Monitorowania wskaźnika LED tyłu obudowy głównej mogą służyć do identyfikowania PCM uszkodzony. Zobacz następujące diagram i tabeli na sposób używania LED zlokalizować PCM uszkodzony. Na przykład jeśli LED odpowiadający **wentylator się nie powieść** jest włączone, wentylatora nie powiodło się. Podobnie jeśli LED odpowiadający **AC niepowodzenie** jest włączone, zasilania nie powiodło się. 
+3. Diod LED wskaźnika monitorowania tyłu obudowy podstawowego można również zidentyfikować PCM awaryjnym. Zobacz poniższy diagram i tabeli, aby zrozumieć, jak użyć diody LED, aby zlokalizować wadliwe PCM. Na przykład jeśli LED odpowiadający **wentylator się nie powieść** jest świeci, wentylatora nie powiodło się. Podobnie jeśli LED odpowiadający **AC kończyć się niepowodzeniem** jest włączone, zasilania nie powiodło się. 
    
-    ![Płyty montażowej wskaźnika monitorowania urządzenia PCM LED](./media/storsimple-power-cooling-module-replacement/IC740992.png)
+    ![Montażowa urządzenia PCM diod LED wskaźnika monitorowania](./media/storsimple-power-cooling-module-replacement/IC740992.png)
    
-     **Rysunek 2** PCM z powrotem z wskaźnik LED
+     **Rysunek 2** PCM z powrotem przy użyciu diod LED wskaźnika
    
-   | Etykieta | Opis |
+   | Label | Opis |
    |:--- |:--- |
-   | 1 |Ak awarii zasilania |
-   | 2 |Wentylator awarii |
-   | 3 |Uszkodzenia |
+   | 1 |Awarii zasilania programu AC |
+   | 2 |Awaria wentylatora |
+   | 3 |Błąd baterii |
    | 4 |PCM OK |
    | 5 |Kontroler domeny awarii zasilania |
-   | 6 |Baterii dobrej kondycji |
-4. Zapoznaj się z poniższym diagramie tyłu urządzenia StorSimple można znaleźć modułu PCM. PCM 0 jest po lewej stronie i PCM 1 jest po prawej stronie. Tabela poniżej wyjaśniono modułów.
+   | 6 |Bateria w dobrej kondycji |
+4. Zapoznaj się z poniższym diagramie tyłu urządzenia StorSimple, aby zlokalizować modułu PCM. Module PCM 0 jest po lewej stronie i module PCM 1 jest po prawej stronie. Tabeli poniżej opisano modułów.
    
-     ![Płyty montażowej urządzenia podstawowego obudowy modułów](./media/storsimple-power-cooling-module-replacement/IC740994.png)
+     ![Płyty montażowej modułów głównej Obudowa urządzenia](./media/storsimple-power-cooling-module-replacement/IC740994.png)
    
-     **Rysunek 3** obu urządzenia z wtyczki 
+     **Rysunek 3** tylnej stronie urządzeń za pomocą wtyczki 
    
-   | Etykieta | Opis |
+   | Label | Opis |
    |:--- |:--- |
-   | 1 |PCM 0 |
+   | 1 |MODULE PCM 0 |
    | 2 |PCM 1 |
    | 3 |Kontrolera 0 |
    | 4 |Kontrolera 1 |
-5. Wyłącz PCM uszkodzony i odłącz przewód zasilający dostaw. Można teraz usunąć PCM.
-6. Ujmij zatrzaśnięcia i po stronie dojście PCM między thumb i wskazującym i zmieścić je, aby otworzyć uchwytu.
+5. Wyłącz uszkodzony PCM i Odłącz zasilający dostaw. Możesz teraz usunąć modułu PCM.
+6. Zapoznanie się z nim zatrzaśnięcia i stronie uchwytu modułu PCM między thumb i palec i zmieścić je ze sobą, aby otworzyć uchwytu.
    
-    ![Otwierania PCM dojścia](./media/storsimple-power-cooling-module-replacement/IC740995.png)
+    ![Dojście do otwierania modułu PCM](./media/storsimple-power-cooling-module-replacement/IC740995.png)
    
-    **Rysunek 4** Otwieranie dojścia PCM
-7. Dojście wygodne do trzymania i Usuń PCM.
+    **Rysunek 4** otworzyć uchwytu modułu PCM
+7. Wygodne do trzymania uchwyt, a następnie usuń modułu PCM.
    
-    ![Usuwanie urządzenia PCM](./media/storsimple-power-cooling-module-replacement/IC740996.png)
+    ![Usuwanie urządzenia modułu PCM](./media/storsimple-power-cooling-module-replacement/IC740996.png)
    
-    **Rysunek 5** usuwanie PCM
+    **Rysunek 5** usunięcie modułu PCM
 
-## <a name="install-a-replacement-pcm"></a>Zainstaluj serwer zamienny PCM
-Wykonaj te instrukcje, aby zainstalować PCM w urządzeniu StorSimple. Upewnij się, że włożono moduł baterii kopii zapasowej przed instalacją zastąpienia PCM (dotyczy tylko 764 PCMs W). Aby uzyskać więcej informacji, zobacz temat jak [usuwanie i wstawianie modułu baterii kopii zapasowej](storsimple-8000-battery-replacement.md).
+## <a name="install-a-replacement-pcm"></a>Zainstalować zastępczy modułu PCM
+Wykonaj te instrukcje dotyczące instalowania modułu PCM w urządzeniu StorSimple. Upewnij się, że włożono moduł baterii zapasowej przed instalacją zastąpienia PCM (dotyczy tylko 764 PCMs W). Aby uzyskać więcej informacji, zobacz instrukcje [usuwanie i wstawianie modułu baterii zapasowej](storsimple-8000-battery-replacement.md).
 
-#### <a name="to-install-a-pcm"></a>Aby zainstalować PCM
-1. Sprawdź, czy masz poprawne zastępuje PCM ten załącznik. Podstawowy Obudowa musi 764 W PCM i obudowy EBOD musi 580 W PCM. Nie należy próbować użyć 580 PCM W w obudowie podstawowego lub 764 PCM W w obudowie EBOD. Na poniższej ilustracji przedstawiono where zidentyfikować te informacje na etykiecie, który jest dołączony do PCM.
+#### <a name="to-install-a-pcm"></a>Do zainstalowania modułu PCM
+1. Sprawdź, czy masz poprawne zastępuje PCM tej obudowie. Obudowa podstawowy musi 764 W PCM i obudowy EBOD musi 580 W PCM. Nie należy próbować użyć 580 PCM W w obudowie podstawowego lub 764 PCM W w obudowie EBOD. Na poniższej ilustracji przedstawiono, gdzie można zidentyfikować te informacje dotyczące etykiety, który jest dołączony do modułu PCM.
    
     ![Etykieta PCM urządzenia](./media/storsimple-power-cooling-module-replacement/IC740973.png)
    
     **Rysunek 6** PCM etykiety
-2. Sprawdź, czy uszkodzenie obudowy, ze szczególnym uwzględnieniem łączników. 
+2. Sprawdź, czy uszkodzenia obudowy, zwracając szczególną uwagę na łączniki. 
    
    > [!NOTE]
-   > **Nie należy instalować moduł, jeśli zgięte żadnych kodów PIN łącznika.**
+   > **Nie należy instalować modułu, jeśli zgięte wszystkie numery PIN łącznika.**
    > 
    > 
-3. Z uchwytem PCM w pozycji otwarcia Przesuń modułu do obudowy.
+3. Z dojściem PCM w pozycji otwarcia Przesuń moduł do obudowy.
    
-    ![Instalowanie urządzenia PCM](./media/storsimple-power-cooling-module-replacement/IC740975.png)
+    ![Instalowanie urządzenia modułu PCM](./media/storsimple-power-cooling-module-replacement/IC740975.png)
    
-    **Rysunek 7** instalowanie PCM
-4. Ręcznie zamknąć dojścia PCM. Kliknięcie usłyszeć jako angażujący zatrzaśnięcia dojścia.
-   
-   > [!NOTE]
-   > Aby upewnić się, że numery PIN łącznika ma zaangażowane, ostrożnie można holownik uchwyt bez zwolnienia zatrzaśnięcia. PCM slajdów wychodzących, oznacza, że zatrzaśnięcia został zamknięty przed zaangażowane łączników.
-   
-5. Podłącz kable zasilania do źródła zasilania i PCM.
-6. Zabezpiecz naprężenia bele zwolnienia.
-7. Włącz PCM.
-8. Sprawdź, czy zastąpienia zakończyła się pomyślnie: w portalu Azure usługi Menedżer StorSimple urządzeń, przejdź do urządzenia, a następnie do **Ustawienia > Monitor > kondycji sprzętu**. W obszarze **udostępnione składniki**, stan PCM powinna być zielona.
+    **Rysunek 7** instalowania modułu PCM
+4. Ręcznie zamknąć uchwytu modułu PCM. Kliknięcie powinno być słychać jako angażuje zatrzaśnięcia dojście.
    
    > [!NOTE]
-   > Może upłynąć kilka minut, aż do zastąpienia PCM całkowicie zainicjować.
+   > Aby upewnić się, że numerów PIN łącznik już działalność, delikatnie można holownik na dojście bez zwalniania zatrzaśnięcia. Modułu PCM wysuwa się, oznacza, że zatrzaśnięcia zostało zamknięte przed zaangażowane łączników.
+   
+5. Do źródła zasilania i modułu PCM, podłącz kable zasilania.
+6. Zabezpiecz obciążenie beli zwolnienia.
+7. Włącz modułu PCM.
+8. Weryfikacja pomyślnego wyniku zastąpienia: w portalu Azure usługi Menedżer urządzeń StorSimple przejdź do Twojego urządzenia i następnie **Ustawienia > Monitor > kondycja sprzętu**. W obszarze **udostępnione składniki**, stan modułu PCM powinien być w kolorze zielonym.
+   
+   > [!NOTE]
+   > Może upłynąć kilka minut, zanim zastąpienia PCM całkowicie zainicjować.
 
-## <a name="next-steps"></a>Następne kroki
-Dowiedz się więcej o [wymiana składników sprzętowych StorSimple](storsimple-8000-hardware-component-replacement.md).
+## <a name="next-steps"></a>Kolejne kroki
+Dowiedz się więcej o [wymiana składników sprzętu StorSimple](storsimple-8000-hardware-component-replacement.md).
 

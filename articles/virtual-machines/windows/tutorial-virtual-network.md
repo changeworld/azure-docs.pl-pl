@@ -17,11 +17,11 @@ ms.date: 12/04/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 568631705b590bb2ee312b9519164be17c8443ab
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984243"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60711193"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-windows-virtual-machines-with-azure-powershell"></a>Samouczek: tworzenie sieci wirtualnych platformy Azure i zarządzanie nimi za pomocą programu Azure PowerShell na maszynach wirtualnych z systemem Windows
 
@@ -275,7 +275,7 @@ New-AzVM `
 
 Obraz w tym przykładzie ma zainstalowany program SQL Server, ale nie jest używany w ramach tego samouczka. Został on uwzględniony, aby zademonstrować sposób konfigurowania maszyny wirtualnej do obsługiwania ruchu internetowego albo do zarządzania bazami danych.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku utworzono i zabezpieczono sieci platformy Azure na potrzeby maszyn wirtualnych. 
 

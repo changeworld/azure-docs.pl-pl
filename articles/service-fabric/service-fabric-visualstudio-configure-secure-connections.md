@@ -15,11 +15,11 @@ ms.workload: multiple
 ms.date: 8/04/2017
 ms.author: cawa
 ms.openlocfilehash: 8d76a2144234591792359ed8dd4a0779e6a2fc5c
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42056655"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60628300"
 ---
 # <a name="configure-secure-connections-to-a-service-fabric-cluster-from-visual-studio"></a>Konfigurowanie bezpiecznych połączeń z klastrem usługi Service Fabric z poziomu programu Visual Studio
 Dowiedz się, jak używać programu Visual Studio bezpiecznego dostępu do klastra usługi Azure Service Fabric przy użyciu zasad kontroli dostępu skonfigurowana.
@@ -42,9 +42,9 @@ Jeśli opublikujesz projekt usługi Service Fabric z poziomu programu Visual Stu
 1. Upewnij się, że dostęp do jednego z certyfikatów klienta, które zaufania w klastrze docelowym. Certyfikat jest zazwyczaj udostępniany jako plik wymiany informacji osobistych (pfx). Zobacz [Konfigurowanie klastra usługi Service Fabric w witrynie Azure portal](service-fabric-cluster-creation-via-portal.md) dotyczące sposobu konfigurowania serwera, aby udzielić dostępu do klienta.
 2. Zainstaluj zaufanego certyfikatu. Aby to zrobić, kliknij dwukrotnie plik PFX, lub użyj skryptu programu PowerShell Import PfxCertificate do importowania certyfikatów. Zainstaluj certyfikat na **Cert: \LocalMachine\My**. Jest OK, aby zaakceptować wszystkie ustawienia domyślne podczas importowania certyfikatu.
 3. Wybierz **publikowania...**  polecenia menu skrótów projektu, aby otworzyć **publikowanie aplikacji platformy Azure** okno dialogowe, a następnie wybierz klaster docelowy. Narzędzie jest rozpoznawana jako połączenie i automatycznie zapisuje parametry bezpiecznego połączenia w profilu publikowania.
-4. Opcjonalnie: Możesz edytować profilu publikowania do określania połączenia z zabezpieczonym klastrem.
+4. Opcjonalnie: Można edytować profilu publikowania do określania połączenia z zabezpieczonym klastrem.
    
-   Ponieważ ręcznie edytowany plik XML profilu publikowania, aby określić informacje o certyfikacie, koniecznie Zanotuj nazwę magazynu certyfikatów, przechowywać, lokalizacji i odcisk palca certyfikatu. Należy podać te wartości do magazynu certyfikatów nazwy i lokalizacji magazynu. Zobacz [porady: Pobieranie odcisku palca certyfikatu](https://msdn.microsoft.com/library/ms734695\(v=vs.110\).aspx) Aby uzyskać więcej informacji.
+   Ponieważ ręcznie edytowany plik XML profilu publikowania, aby określić informacje o certyfikacie, koniecznie Zanotuj nazwę magazynu certyfikatów, przechowywać, lokalizacji i odcisk palca certyfikatu. Należy podać te wartości do magazynu certyfikatów nazwy i lokalizacji magazynu. Zobacz [Instrukcje: Pobieranie odcisku palca certyfikatu](https://msdn.microsoft.com/library/ms734695\(v=vs.110\).aspx) Aby uzyskać więcej informacji.
    
    Możesz użyć *ClusterConnectionParameters* parametry, aby określić parametry programu PowerShell do użycia podczas łączenia się z klastrem usługi Service Fabric. Prawidłowe parametry to wszystkie, które są akceptowane przez polecenia cmdlet Connect-ServiceFabricCluster. Zobacz [Connect-ServiceFabricCluster](https://docs.microsoft.com/powershell/module/servicefabric/connect-servicefabriccluster) listę dostępnych parametrów.
    

@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: v-gedod
 ms.openlocfilehash: 99b7f05304b48b7d885a80705d05fbe24854150f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58080645"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60708420"
 ---
 # <a name="send-a-search-request-with-the-bing-entity-search-sdk-for-c"></a>Wysyłanie żądania wyszukiwania za pomocą zestawu SDK wyszukiwania jednostek Bing dla języka C#
 

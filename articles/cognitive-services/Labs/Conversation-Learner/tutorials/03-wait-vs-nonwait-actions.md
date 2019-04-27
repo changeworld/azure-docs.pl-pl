@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
 ms.openlocfilehash: 2869e6c59388adf548e5f239d3a831a5a3f060dd
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55214266"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60707618"
 ---
 # <a name="wait-and-non-wait-actions"></a>Poczekaj chwilę i akcje-wait
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: c8113bffba824ddb0885e92b0d6c5392748899da
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: e4edcc0aecfbf03aff7cf9bee764522bb1c489f3
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662775"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60716395"
 ---
 # <a name="view-service-fabric-health-reports"></a>Wyświetlanie raportów o kondycji usługi Service Fabric
 Usługa Azure Service Fabric wprowadza [modelu kondycji](service-fabric-health-introduction.md) przy użyciu jednostek kondycji, na którym składników systemu i watchdogs można raportu lokalnego warunki, które są monitorowania. [Magazynu kondycji](service-fabric-health-introduction.md#health-store) agreguje wszystkie dane kondycji, aby określić, czy jednostki są w dobrej kondycji.

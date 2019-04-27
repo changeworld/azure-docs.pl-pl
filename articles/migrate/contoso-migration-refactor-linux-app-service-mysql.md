@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
 ms.openlocfilehash: 4ff3f129838a43bd7684dc10e1653dab969e9c1e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58087010"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60669777"
 ---
 # <a name="contoso-migration-refactor-a-contoso-linux-service-desk-app-to-multiple-regions-with-azure-app-service-traffic-manager-and-azure-mysql"></a>Migracja Contoso: Refaktoryzuj Contoso Linux usługi app Service desk do wielu regionów za pomocą usługi Azure App Service, Traffic Manager i usługi Azure MySQL
 

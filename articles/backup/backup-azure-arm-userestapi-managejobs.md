@@ -1,5 +1,5 @@
 ---
-title: 'Usługa Azure Backup: Zarządzanie zadania tworzenia kopii zapasowej przy użyciu interfejsu API REST'
+title: 'Usługa Azure Backup: Zadania tworzenia kopii zapasowej przy użyciu interfejsu API REST zarządzania'
 description: Zarządzanie kopiami zapasowymi i przywrócić zadania usługi Azure Backup przy użyciu interfejsu API REST
 services: backup
 author: pvrk
@@ -11,11 +11,11 @@ ms.date: 08/03/2018
 ms.author: pullabhk
 ms.assetid: b234533e-ac51-4482-9452-d97444f98b38
 ms.openlocfilehash: eb8b7dc77d180eb56c2585e93e60a36742f6c84c
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289680"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60646626"
 ---
 # <a name="track-backup-and-restore-jobs-using-rest-api"></a>Śledź zadania tworzenia kopii zapasowych i przywracania przy użyciu interfejsu API REST
 
@@ -23,7 +23,7 @@ Usługa Azure Backup wyzwala zadania, w których są wykonywane w tle w różnyc
 
 ## <a name="fetch-job-information-from-operations"></a>Pobierz informacje o zadaniu z operacji
 
-Operacja, taka jak wyzwolenie tworzenia kopii zapasowej zawsze zwraca identyfikator zadania. Aby uzyskać np: ostatecznej odpowiedzi [wyzwalanie operacji interfejsu API REST tworzenia kopii zapasowej](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3) jest następująca:
+Operacja, taka jak wyzwolenie tworzenia kopii zapasowej zawsze zwraca identyfikator zadania. Na przykład: Ostatecznej odpowiedzi [wyzwalanie operacji interfejsu API REST tworzenia kopii zapasowej](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3) jest następująca:
 
 ```http
 {

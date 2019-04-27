@@ -7,11 +7,11 @@ ms.topic: reference
 ms.date: 03/22/2019
 ms.author: tomfitz
 ms.openlocfilehash: d44b1bf778c7ec9551e2fd30f67083f8dded22d1
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438472"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60729294"
 ---
 # <a name="move-operation-support-for-resources"></a>Przenoszenie obsługi operacji dla zasobów
 W tym artykule wymieniono, czy typ zasobu platformy Azure obsługuje operacji przenoszenia. Mimo że typ zasobu obsługuje operację przenoszenia, może to być warunki, które uniemożliwiają przenoszonego zasobu. Aby uzyskać szczegółowe informacje o warunkach, które wpływają na operacji przenoszenia, zobacz [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](resource-group-move-resources.md).

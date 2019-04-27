@@ -10,13 +10,13 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: ellacroi
 ms.openlocfilehash: 516cb10fe368334d8fe30d998857d0688dcae972
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57220501"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60726909"
 ---
-# <a name="cloud-solution-providers"></a>Dostawców rozwiązań w chmurze
+# <a name="cloud-solution-providers"></a>Dostawcy rozwiązań w chmurze
 
 Oferty dotyczące oprogramowania można teraz uruchamiać na milionach kwalifikowaną klientów firmy Microsoft przez partnerów Cloud Solution Provider (CSP), przy minimalnym inwestycji sprzedaży i marketingu.  Wydawcy mogą teraz korzystać kanałów partnera CSP, oprócz publiczną dostępność oferty za pośrednictwem [sklepów sieci web firmy Microsoft](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace).
 

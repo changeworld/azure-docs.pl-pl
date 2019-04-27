@@ -17,11 +17,11 @@ ms.topic: article
 ms.date: 06/01/2017
 ms.author: manayar
 ms.openlocfilehash: 67bbad7e73f33d73d4c3f1d4f7e5599d2ef914e3
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53791051"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60618476"
 ---
 # <a name="design-considerations-for-scale-sets"></a>Zagadnienia dotyczące projektowania dla zestawów skalowania
 W tym artykule omówiono zagadnienia dotyczące projektowania dla zestawów skalowania maszyn wirtualnych. Aby dowiedzieć się, jak co to są zestawy skalowania maszyn wirtualnych, zapoznaj się [omówienie zestawów skalowania maszyn wirtualnych](virtual-machine-scale-sets-overview.md).
@@ -66,7 +66,7 @@ Chociaż celi poprawić współczynnikach pomyślnego inicjowania obsługi admin
 
 Jeśli zestaw skalowania korzysta z magazynu zarządzanych przez użytkowników, a następnie wyłącz celi, może mieć więcej niż 20 maszyn wirtualnych na jedno konto magazynu, ale nie zaleca się do ponad 40 ze względu na wydajność operacji We/Wy. 
 
-## <a name="limits"></a>Limity
+## <a name="limits"></a>Limits
 Zestaw skalowania, zbudowany na podstawie obrazu z witryny Marketplace (nazywane również obrazu platformy) i skonfigurowany do używania usługi Azure Managed Disks obsługuje pojemności do 1000 maszyn wirtualnych. Jeśli skonfigurujesz skalowania jest ustawiana na obsługuje ponad 100 maszyn wirtualnych, nie wszystkie scenariusze działać tak samo, (na przykład Równoważenie obciążenia). Aby uzyskać więcej informacji, zobacz [Praca z zestawami skalowania dużą maszynę wirtualną](virtual-machine-scale-sets-placement-groups.md). 
 
 Zestaw skonfigurowany z użyciem kont magazynu zarządzanych przez użytkowników skalowania jest obecnie ograniczona do 100 maszyn wirtualnych (i 5 kont magazynu są zalecane w przypadku tej skali).

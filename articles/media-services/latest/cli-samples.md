@@ -13,11 +13,11 @@ ms.custom: seodec18
 ms.date: 03/11/2019
 ms.author: juliako
 ms.openlocfilehash: dee7f831562dc1f4b2478d13b204aab1d8455e1e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57840634"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60733185"
 ---
 # <a name="azure-cli-examples-for-azure-media-services"></a>Przykłady interfejsu wiersza polecenia platformy Azure dla usługi Azure Media Services
 
@@ -28,7 +28,7 @@ Poniższa tabela zawiera linki do przykładów interfejsu wiersza polecenia plat
 |  |  |
 |---|---|
 |**Skalowanie**||
-| [Jednostki zarezerwowane multimediów skalowania](media-reserved-units-cli-how-to.md)|Analiza Audio i wideo zadania analizy, które są wyzwalane przez usługi Media Services v3 lub Video Indexer, aby uzyskać zaleca aprowizację swojego konta za pomocą 10 S3 lokalizacje MRU. <br/>Skrypt pokazuje, jak skalować jednostki zarezerwowane multimediów (lokalizacje MRU) za pomocą interfejsu wiersza polecenia.|
+| [Jednostki zarezerwowane multimediów skalowania](media-reserved-units-cli-how-to.md)|Zdecydowanie zaleca się, aby w przypadku zadań analizy audio i analizy wideo, które są wyzwalane przez usługi Media Services wersji 3 lub Video Indexer, aby przeprowadzać aprowizację konta przy użyciu 10 jednostek MRU typu S3. <br/>Skrypt pokazuje, jak skalować jednostki zarezerwowane multimediów (lokalizacje MRU) za pomocą interfejsu wiersza polecenia.|
 |**Konto**||
 | [Konto usługi Media Services](create-account-cli-how-to.md) | Skrypt tworzy konto usługi Azure Media Services. |
 | [Resetowanie poświadczeń konta](./scripts/cli-reset-account-credentials.md)|Resetuje Twoje poświadczenia konta, a następnie pobiera ustawienia app.config ponownie.|
@@ -47,4 +47,4 @@ Poniższa tabela zawiera linki do przykładów interfejsu wiersza polecenia plat
 ## <a name="see-also"></a>Zobacz także
 
 - [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
-- [Szybki start: Pliki wideo Stream — interfejs wiersza polecenia](stream-files-cli-quickstart.md)
+- [Szybki start: Przesyłanie strumieniowe plików wideo — interfejs wiersza polecenia](stream-files-cli-quickstart.md)

@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/19/2017
 ms.author: alkohli
-ms.openlocfilehash: 0f8e00d6d07224f56625482f339e612e68914be2
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7e1a5ac2c2b734c77fc3dbe788206f8c75044953
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38606593"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60724741"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-storsimple-volume-containers"></a>Zarządzanie kontenerami woluminów StorSimple przy użyciu usługi Menedżer urządzeń StorSimple
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 W tym samouczku wyjaśniono, jak za pomocą usługi Menedżer urządzeń StorSimple tworzenie i Zarządzanie kontenerami woluminów StorSimple.
 
 Kontener woluminów na urządzeniu StorSimple systemu Azure firmy Microsoft zawiera jeden lub więcej woluminów, które współużytkują konta magazynu, szyfrowania i ustawienia zużycie przepustowości. Urządzenie może mieć wiele kontenerów woluminów dla jego woluminów. 

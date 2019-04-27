@@ -10,11 +10,11 @@ ms.topic: article
 manager: carmonm
 ms.custom: mvc
 ms.openlocfilehash: df59342bebae3ac0f6e80e5b58f429fedf3c3336
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578496"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60739043"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Włączanie rozwiązania Update Management, śledzenia zmian i spis rozwiązań na wielu maszynach wirtualnych
 
@@ -59,7 +59,7 @@ Jeśli wybrany obszar roboczy nie został połączony z kontem usługi Automatio
 
 ![Brak obszaru roboczego](media/automation-onboard-solutions-from-browse/no-workspace.png)
 
-Podczas włączania rozwiązania, tylko niektóre regiony są obsługiwane w przypadku łączenia obszar roboczy usługi Log Analytics i konto usługi Automation.
+W przypadku włączenia rozwiązań tylko w niektórych regionach jest obsługiwane łączenie obszaru roboczego usługi Log Analytics i konta usługi Automation.
 
 W poniższej tabeli przedstawiono obsługiwane mapowania:
 

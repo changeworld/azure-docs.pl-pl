@@ -15,18 +15,18 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 7c4bd326c597b8e989dfc7aac5239ddb2d38376a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57884775"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60594690"
 ---
 # <a name="saas-application-storefront-details-tab"></a>Karta szczegółów Storefront aplikacji SaaS
 
 W tym artykule pokazano, jak za pomocą karty Szczegóły Storefront opisać swoją aplikację SaaS i zapewnić zasobów marketingowych. Ta karta zawiera następujące formy: Omówienie, Marketing artefaktów, zarządzania potencjalnych klientów i informacje prawne. 
 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Formularz przeglądu ma wymagane i opcjonalne pola, pokazane na następnym zrzucie ekranu. Znak gwiazdki (*) dodanym na końcu nazwy pola wskazuje, że jest to wymagane.
 

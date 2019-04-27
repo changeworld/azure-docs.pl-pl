@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/29/2018
 ms.author: rkarlin
 ms.openlocfilehash: 68bcd2b1916ccdf68eaa31ed251661a6b7e1bca0
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106787"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60704121"
 ---
 # <a name="handling-security-incidents-in-azure-security-center"></a>Obsługa zdarzeń naruszenia zabezpieczeń w usłudze Azure Security Center
 Klasyfikowanie i badanie alertów zabezpieczeń może być czasochłonne nawet dla najbardziej doświadczonego analityka bezpieczeństwa, a wielu nie wie nawet od czego zacząć. Używając [analizy](security-center-detection-capabilities.md) w celu powiązania informacji z różnych [alertów zabezpieczeń](security-center-managing-and-responding-alerts.md), usługa Security Center może dostarczyć pojedynczego widoku kampanii ataku i wszystkich powiązanych alertów — dzięki temu można szybko dowiedzieć się, jakie akcje zostały podjęte przez osobę atakującą i na jakie zasoby miały wpływ.

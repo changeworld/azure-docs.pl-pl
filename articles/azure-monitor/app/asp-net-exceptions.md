@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: mbullwin
 ms.openlocfilehash: cb32069de295b883cdc6d3a9fa495b1bea719c39
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54116991"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60691856"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Diagnozowanie wyjątków w aplikacjach sieci web za pomocą usługi Application Insights
 Wyjątki w aplikacji internetowej na żywo są zgłaszane przez [usługi Application Insights](../../azure-monitor/app/app-insights-overview.md). Żądania zakończone niepowodzeniem można skorelować wyjątki i inne zdarzenia, u klienta i serwera, dzięki czemu można szybko diagnozować ich przyczyny.
@@ -247,7 +247,7 @@ Zamień ten atrybut HandleError Twojego nowego atrybutu w kontrolerach.
     ...
 ```
 
-[Próbki](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions)
+[Przykład](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions)
 
 #### <a name="mvc-3"></a>MVC 3
 Zarejestruj `AiHandleErrorAttribute` jako globalny filtr w Global.asax.cs:
@@ -262,7 +262,7 @@ Zarejestruj `AiHandleErrorAttribute` jako globalny filtr w Global.asax.cs:
      ...
 ```
 
-[Próbki](https://github.com/AppInsightsSamples/Mvc3UnhandledExceptionTelemetry)
+[Przykład](https://github.com/AppInsightsSamples/Mvc3UnhandledExceptionTelemetry)
 
 #### <a name="mvc-4-mvc5"></a>MVC 4, MVC5
 Zarejestruj AiHandleErrorAttribute jako globalny filtr w FilterConfig.cs:
@@ -278,7 +278,7 @@ Zarejestruj AiHandleErrorAttribute jako globalny filtr w FilterConfig.cs:
     }
 ```
 
-[Próbki](https://github.com/AppInsightsSamples/Mvc5UnhandledExceptionTelemetry)
+[Przykład](https://github.com/AppInsightsSamples/Mvc5UnhandledExceptionTelemetry)
 
 ## <a name="web-api"></a>Interfejs API sieci Web
 Począwszy od zestaw Application Insights Web SDK w wersji 2.6 (beta3 i nowszych), usługa Application Insights zbiera nieobsługiwanych wyjątków zgłoszonych w metodach kontrolera automatycznie dla WebAPI 2 +. Jeśli wcześniej zostały dodane niestandardowe procedury obsługi do śledzenia wyjątków (zgodnie z opisem w poniższych przykładach), możesz usunąć go w celu uniemożliwienia double śledzenia wyjątków.
@@ -346,7 +346,7 @@ Możesz dodać ten atrybut zgodnym z przesłoniętą na określone kontrolery lu
     }
 ```
 
-[Próbki](https://github.com/AppInsightsSamples/WebApi_1.x_UnhandledExceptions)
+[Przykład](https://github.com/AppInsightsSamples/WebApi_1.x_UnhandledExceptions)
 
 #### <a name="web-api-2x"></a>Internetowy interfejs API 2.x
 Dodaj implementacji interfejsu iexceptionlogger:
@@ -401,7 +401,7 @@ Dodaj do usług w WebApiConfig:
      }
 ```
 
-[Próbki](https://github.com/AppInsightsSamples/WebApi_2.x_UnhandledExceptions)
+[Przykład](https://github.com/AppInsightsSamples/WebApi_2.x_UnhandledExceptions)
 
 Jako alternatywy można wykonać następujące akcje:
 
@@ -471,7 +471,7 @@ Add the attribute to the service implementations:
          ...
 ```
 
-[Próbki](https://github.com/AppInsightsSamples/WCFUnhandledExceptions)
+[Przykład](https://github.com/AppInsightsSamples/WCFUnhandledExceptions)
 
 ## <a name="exception-performance-counters"></a>Liczniki wydajności wyjątków
 Jeśli masz [zainstalowano agenta programu Application Insights](../../azure-monitor/app/monitor-performance-live-website-now.md) na serwerze, można uzyskać wykres współczynnik wyjątków, mierzone .NET. Dotyczy to zarówno obsługiwanych i nieobsługiwanych wyjątków .NET.

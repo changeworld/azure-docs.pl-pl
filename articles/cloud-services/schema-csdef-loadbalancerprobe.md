@@ -1,8 +1,9 @@
 ---
-title: Usługi Azure Cloud Services Def. Loadbalancerprobe — schemat | Dokumentacja firmy Microsoft
+title: Azure Cloud Services Def. LoadBalancerProbe Schema | Microsoft Docs
 ms.custom: ''
-ms.date: 04/14/2015
-services: cloud-services
+origin.date: 04/14/2015
+ms.date: 11/06/2017
+ms.prod: azure
 ms.reviewer: ''
 ms.service: cloud-services
 ms.suite: ''
@@ -10,15 +11,15 @@ ms.tgt_pltfrm: ''
 ms.topic: reference
 ms.assetid: 113374a8-8072-4994-9d99-de391a91e6ea
 caps.latest.revision: 14
-author: jpconnock
-ms.author: jeconnoc
+author: thraka
+ms.author: v-yiso
 manager: timlt
-ms.openlocfilehash: f7b0ba3b4797149798037dee0188850eff6baf1d
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: de365de7bf93c0a612f102b3ec2b25c79d1c3d18
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003292"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60613864"
 ---
 # <a name="azure-cloud-services-definition-loadbalancerprobe-schema"></a>Azure Cloud Services, definicja loadbalancerprobe — schemat
 Sonda modułu równoważenia obciążenia jest klient sondy kondycji zdefiniowanych punktów końcowych protokołu UDP i punktów końcowych w wystąpieniach roli. `LoadBalancerProbe` Nie jest elementem autonomiczny; jest połączona z roli sieci web lub roli procesu roboczego w pliku definicji usługi. A `LoadBalancerProbe` mogą być używane przez więcej niż jednej roli.
@@ -49,17 +50,17 @@ Jeśli używasz sondy modułu równoważenia obciążenia niestandardowych, upew
 `LoadBalancerProbes` Element pliku definicji usługi obejmuje następujące elementy:
 
 - [LoadBalancerProbes Element](#LoadBalancerProbes)
-- [Loadbalancerprobe — Element](#LoadBalancerProbe)
+- [LoadBalancerProbe Element](#LoadBalancerProbe)
 
 ##  <a name="LoadBalancerProbes"></a> LoadBalancerProbes Element
 `LoadBalancerProbes` Element opisuje kolekcję sondy modułu równoważenia obciążenia. Ten element jest elementem nadrzędnym [loadbalancerprobe — Element](#LoadBalancerProbe). 
 
-##  <a name="LoadBalancerProbe"></a> Loadbalancerprobe — Element
+##  <a name="LoadBalancerProbe"></a> LoadBalancerProbe Element
 `LoadBalancerProbe` Element definiuje sondy kondycji dla modelu. Można zdefiniować wiele sondy modułu równoważenia obciążenia. 
 
 W poniższej tabeli opisano atrybuty `LoadBalancerProbe` elementu:
 
-|Atrybut|Typ|Opis|
+|Atrybut|Type|Opis|
 | ------------------- | -------- | -----------------|
 | `name`              | `string` | Wymagany. Nazwa sondy modułu równoważenia obciążenia. Nazwa musi być unikatowa.|
 | `protocol`          | `string` | Wymagany. Określa protokół punktu końcowego. Możliwe wartości to `http` lub `tcp`. Jeśli `tcp` określono ACK odebrane jest wymagany dla sondy zakończy się powodzeniem. Jeśli `http` jest określona, odpowiedź 200 OK z określonego identyfikatora URI jest wymagany dla sondy zakończy się powodzeniem.|

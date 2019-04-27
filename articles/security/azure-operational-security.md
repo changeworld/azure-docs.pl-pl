@@ -15,16 +15,16 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
 ms.openlocfilehash: ab5b50433b85416ff471546171998e992293b0ea
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57901512"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60586990"
 ---
 # <a name="azure-operational-security"></a>Bezpieczeństwo działania platformy Azure
 ## <a name="introduction"></a>Wprowadzenie
 
-### <a name="overview"></a>Przegląd
+### <a name="overview"></a>Omówienie
 Wiemy, że bezpieczeństwo to zadanie, jeden w chmurze i jak ważne jest, że możesz znaleźć dokładne i aktualne informacje o zabezpieczeniach platformy Azure. Jedną z najważniejszych powodów, dla aplikacji i usług za pomocą platformy Azure jest aby móc korzystać z szerokiej gamy możliwości są dostępne i narzędziom zabezpieczającym. Te narzędzia i możliwości pomocy, umożliwiają tworzenie bezpiecznych rozwiązań na platformie Azure jest bezpieczne. Windows Azure, musisz podać poufność, integralność i dostępność danych klientów, pozwalając również przezroczyste odpowiedzialność.
 
 Aby ułatwić klientom lepiej zrozumieć tablicy środki kontroli bezpieczeństwa zaimplementowane w systemie Microsoft Azure z obu klienta i Microsoft perspektywy operacyjnej, ten oficjalny dokument "Azure Operational Security", są zapisywane, która zapewnia kompleksowy Spójrz na bezpieczeństwo działania dostępne w systemie Windows Azure.

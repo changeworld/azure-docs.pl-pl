@@ -15,15 +15,15 @@ ms.workload: NA
 ms.date: 12/06/2017
 ms.author: dekapur
 ms.openlocfilehash: e2e1b2ae354d26c3d9729e3a3fdf39bee43647ca
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663132"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60621466"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>Zarządzanie aplikacjami i usługami jako zasoby usługi Azure Resource Manager
 
-Na klastrze usługi Service Fabric za pomocą usługi Azure Resource Manager można wdrożyć aplikacji i usług. Oznacza to, że zamiast wdrażania aplikacji i zarządzanie nimi za pomocą programu PowerShell lub interfejsu wiersza polecenia po musisz czekać, aż klaster będzie gotowa, można teraz express, aplikacje i usługi w formacie JSON i wdróż je w szablonie usługi Resource Manager tym samym co klaster. Proces rejestracji aplikacji, inicjowanie obsługi administracyjnej i wdrażania wszystkich odbywa się w jednym kroku.
+Możesz wdrażać aplikacje i usługi w klastrze usługi Service Fabric za pośrednictwem usługi Azure Resource Manager. Oznacza to, że zamiast wdrażania aplikacji i zarządzanie nimi za pomocą programu PowerShell lub interfejsu wiersza polecenia po musisz czekać, aż klaster będzie gotowa, można teraz express, aplikacje i usługi w formacie JSON i wdróż je w szablonie usługi Resource Manager tym samym co klaster. Proces rejestracji, aprowizacji i wdrażania aplikacji obejmuje tylko jeden krok.
 
 Jest to zalecany sposób wdrożyć wszystkie ustawienia, nadzoru lub aplikacji do zarządzania klastrem, wymagających w klastrze. Obejmuje to [Patch Orchestration Application](service-fabric-patch-orchestration-application.md), Watchdogs lub wszystkie aplikacje, które musi być uruchomiona w klastrze, przed wdrożeniem innymi aplikacjami lub usługami. 
 

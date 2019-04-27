@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
 ms.openlocfilehash: 24aa49fd4ccccda372d2632ef4aee22bd5cb2bf6
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359140"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60611314"
 ---
 # <a name="microsoft-threat-modeling-tool-mitigations"></a>Środki zaradcze narzędzie do modelowania zagrożeń firmy Microsoft
 
@@ -31,7 +31,7 @@ Odwiedź stronę **[narzędzie do modelowania zagrożeń](./azure-security-threa
 
 Środki zaradcze narzędzie do modelowania zagrożeń są podzielone według ramki zabezpieczeń aplikacji sieci Web, która składa się z następujących czynności:
 
-| Kategoria | Opis |
+| Category | Opis |
 | -------- | ----------- |
 | **[Inspekcja i rejestrowanie](./azure-security-threat-modeling-tool-auditing-and-logging.md)** | Kto zrobił, co i kiedy? Inspekcja i rejestrowanie się jak rekordy zdarzeń dotyczących zabezpieczeń w aplikacji |
 | **[Uwierzytelnianie](./azure-security-threat-modeling-tool-authentication.md)** | Kim jesteś? Uwierzytelnianie jest procesem, w którym jednostki potwierdza tożsamość innej jednostki, zwykle za pomocą poświadczeń, takie jak nazwa użytkownika i hasło |

@@ -11,11 +11,11 @@ ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
 ms.openlocfilehash: b14550d0e03382a6709924ca5671cb26d09fcc35
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54434057"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60738832"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Wprowadzenie do usługi Azure Automation
 
@@ -83,7 +83,7 @@ Usługa Azure Automation zarządza cyklem życia Twojej infrastruktury i aplikac
 
 Możesz przejrzeć ceny usługi Azure Automation na stronie [cennika](https://azure.microsoft.com/pricing/details/automation/).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Create an automation account](automation-quickstart-create-account.md) (Tworzenie konta automatyzacji)

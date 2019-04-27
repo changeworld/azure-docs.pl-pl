@@ -14,11 +14,11 @@ ms.date: 12/13/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: fb1cafcf9405576749ea91aeea033c6ee783a026
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330436"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60739271"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-linux-azure-virtual-machines"></a>Często zadawane pytania dotyczące programu SQL Server na maszynach wirtualnych Azure Linux
 
@@ -63,7 +63,7 @@ Ten artykuł zawiera odpowiedzi na niektóre często zadawane pytania na temat u
 
 ## <a name="licensing"></a>Licencjonowanie
 
-1. **Jak zainstalować Moje licencjonowaną kopię programu SQL Server na Maszynie wirtualnej platformy Azure?**
+1. **Jak mogę zainstalować moją licencjonowaną kopię programu SQL Server na maszynie wirtualnej platformy Azure?**
 
    Najpierw należy utworzyć maszyny wirtualnej tylko do systemu operacyjnego Linux. Następnie uruchom [kroki instalacji programu SQL Server](https://docs.microsoft.com/sql/linux/sql-server-linux-setup#platforms) dla Twojej dystrybucji systemu Linux. Jeśli nie instalujesz jeden swobodnie licencjonowanej wersji programu SQL Server, również musi mieć licencję programu SQL Server i [przenośności licencji za pośrednictwem programu Software Assurance na platformie Azure](https://azure.microsoft.com/pricing/license-mobility/).
 
@@ -71,7 +71,7 @@ Ten artykuł zawiera odpowiedzi na niektóre często zadawane pytania na temat u
 
    W tej chwili nie istnieją żadne obrazów maszyn wirtualnych systemu Linux w ramach opcji BYOL dla programu SQL Server. Jednak można ręcznie zainstalować program SQL Server na maszynie Wirtualnej systemu Linux — tylko zgodnie z opisem w odpowiedzi na powyższe pytania.
 
-1. **Czy mogę zmienić Maszynę wirtualną do używania licencję programu SQL Server, jeśli został utworzony z jednego z obrazów w galerii zgodnie z rzeczywistym użyciem**
+1. **Czy mogę zmienić maszynę wirtualną tak, aby używać mojej licencji programu SQL Server, jeśli została ona utworzona z jednego z obrazów z galerii w modelu płatności zgodnie z rzeczywistym użyciem?**
 
    Nie. Nie można przełączyć się z płatności na sekundę licencji do korzystania z własnych licencji. Należy utworzyć nową maszynę Wirtualną systemu Linux, instalacji programu SQL Server i migrację danych. Zobacz pytanie Wstecz, aby uzyskać więcej informacji o użycie własnej licencji.
 
@@ -81,15 +81,15 @@ Ten artykuł zawiera odpowiedzi na niektóre często zadawane pytania na temat u
 
    Tak, ale program SSMS jest obecnie narzędzie tylko do Windows. Należy połączyć zdalnie z komputera Windows używać narzędzia SSMS przy użyciu maszyn wirtualnych systemu Linux SQL Server. Lokalnie w systemie Linux nowe [mssql conf.](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf) narzędzia można wykonywać wiele zadań administracyjnych. Aby uzyskać narzędzie do zarządzania bazą danych dla wielu platform, zobacz [usługi Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is).
 
-1. **Czy można usunąć programu SQL Server całkowicie z maszyny Wirtualnej SQL?**
+1. **Czy mogę usunąć całkowicie program SQL Server z maszyny wirtualnej SQL?**
 
-   Tak, ale będą nadal naliczane za maszynę Wirtualną SQL, zgodnie z opisem w [ceny wskazówki dotyczące maszyn wirtualnych programu SQL Server Azure](../../windows/sql/virtual-machines-windows-sql-server-pricing-guidance.md?toc=%2fazure%2fvirtual-machines%2flinux%2fsql%2ftoc.json). Jeśli program SQL Server nie są już potrzebne, można wdrożyć nową maszynę wirtualną i migrować dane i aplikacje do nowej maszyny wirtualnej. Następnie można usunąć maszyny wirtualnej programu SQL Server.
+   Tak, ale będą nadal naliczane za maszynę Wirtualną SQL, zgodnie z opisem w [ceny wskazówki dotyczące maszyn wirtualnych programu SQL Server Azure](../../windows/sql/virtual-machines-windows-sql-server-pricing-guidance.md?toc=%2fazure%2fvirtual-machines%2flinux%2fsql%2ftoc.json). Jeśli program SQL Server nie jest już potrzebny, można wdrożyć nową maszynę wirtualną, a następnie migrować dane i aplikacje do nowej maszyny wirtualnej. Następnie można usunąć maszynę wirtualną z programem SQL Server.
 
 ## <a name="updating-and-patching"></a>Stosowanie poprawek i aktualizacji
 
 1. **Jak uaktualnić do nowej wersji/wydania programu SQL Server w Maszynie wirtualnej platformy Azure?**
 
-   Obecnie nie ma żadnych uaktualnienia w miejscu programu SQL Server uruchomionego na Maszynie wirtualnej platformy Azure. Utwórz nową maszynę wirtualną platformy Azure przy użyciu wersji/wydania żądanego programu SQL Server, a następnie Migruj bazy danych na nowy serwer za pomocą [standardowych technik migracji danych](https://docs.microsoft.com/sql/linux/sql-server-linux-migrate-overview).
+   obecnie nie są dostępne żadne uaktualnienia w miejscu dla programu SQL Server uruchomionego na maszynie wirtualnej platformy Azure. Utwórz nową maszynę wirtualną platformy Azure z odpowiednią wersją programu SQL Server, a następnie migruj bazy danych na nowy serwer przy użyciu [standardowych technik migracji danych](https://docs.microsoft.com/sql/linux/sql-server-linux-migrate-overview).
 
 ## <a name="general"></a>Ogólne
 

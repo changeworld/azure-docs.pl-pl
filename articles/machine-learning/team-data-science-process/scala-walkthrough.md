@@ -12,11 +12,11 @@ ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: cdc37ace4687fe978030f528dcd5cbc87da596f0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57855941"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60589569"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>Analiza danych przy użyciu języka Scala i platformy Spark na platformie Azure
 W tym artykule pokazano, jak korzystać z języka Scala dla zadania uczenia maszynowego nadzorowanych za pomocą platformy Spark skalowalne MLlib i Spark ML pakietów w klastrze usługi Azure HDInsight Spark. Przeprowadzi Cię on zadania, które stanowią [danych dla celów naukowych](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/): pozyskiwanie danych i eksploracji, wizualizacji, technicznego opracowywania funkcji, modelowania i użycie modelu. Modele w artykule obejmują regresji logistycznej liniowego i liniowa, losowych lasów i wzmocnione gradientu drzew (GBTs), oprócz dwie typowe zadania uczenia maszynowego nadzorowanego:

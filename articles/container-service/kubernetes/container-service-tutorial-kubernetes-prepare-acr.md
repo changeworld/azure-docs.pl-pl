@@ -10,11 +10,11 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: d0107e09bf8706ba7d4c813814103ca109262d8d
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657403"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60641181"
 ---
 # <a name="deprecated-deploy-and-use-azure-container-registry"></a>(PRZESTARZAŁE) Wdrażanie usługi Azure Container Registry i korzystanie z niej
 
@@ -157,7 +157,7 @@ v1
 
 Po ukończeniu tego samouczka obraz kontenera zostanie zapisany w prywatnym wystąpieniu usługi Azure Container Registry. W kolejnych samouczkach ten obraz zostanie wdrożony z rejestru Azure Container Registry do klastra Kubernetes.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku usługa Azure Container Registry została przygotowana do użycia w klastrze Kubernetes ACS. Wykonano następujące czynności:
 

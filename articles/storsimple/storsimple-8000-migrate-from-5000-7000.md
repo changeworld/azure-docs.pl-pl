@@ -14,11 +14,11 @@ ms.workload: NA
 ms.date: 08/23/2018
 ms.author: alkohli
 ms.openlocfilehash: 967c03f3c4201bdcf1529fdda93717b6eb74e771
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55495857"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60631694"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>Migracja danych z serii StorSimple 5000 – 7000 do urządzenia z serii 8000
 
@@ -28,7 +28,7 @@ ms.locfileid: "55495857"
 > - Po pliku żądania obsługi może potrwać kilka tygodni, aby wykonać plan migracji i faktycznie rozpocząć migrację.
 > - Aby skontaktować się z Microsoft Support, pamiętaj Przejrzyj i ukończ [wymagania wstępne dotyczące migracji](#migration-prerequisites) wskazano w artykule.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 W tym artykule przedstawiono funkcji migracji, która umożliwia klientom serii StorSimple 5000 – 7000 migrować swoje dane z urządzenia fizycznego StorSimple 8000 series lub urządzenie w chmurze 8010/8020. Ten artykuł zawiera również linki do pobrania przewodnik krok po kroku kroków wymaganych do przeprowadzenia migracji danych z 5000 – 7000 series starszych urządzeń fizycznych serii 8000 lub urządzenie w chmurze.
 

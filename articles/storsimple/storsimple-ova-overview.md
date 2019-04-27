@@ -15,15 +15,15 @@ ms.workload: TBD
 ms.date: 03/14/2019
 ms.author: alkohli
 ms.openlocfilehash: e5713af737a6d9d190814b4155a8e772deea06bc
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58013917"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60630373"
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>Wprowadzenie do macierzy wirtualnej StorSimple
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Microsoft Azure StorSimple Virtual Array to zintegrowane rozwiązanie do magazynowania, który zarządza zadaniami magazynowania między lokalną macierzą wirtualną działającą w funkcji hypervisor i Magazyn w chmurze Microsoft Azure. Macierz wirtualna to wydajne, ekonomiczne i łatwe w zarządzaniu serwer_plików lub rozwiązania z serwerem iSCSI, które eliminuje wiele problemów oraz kosztów związanych z ochroną magazynu i danych przedsiębiorstwa. Macierz wirtualna jest przeznaczone szczególnie do przechowywania rzadko używanych danych archiwalnych.
 
@@ -137,7 +137,7 @@ Macierz wirtualna ma następujące cechy:
 > [!NOTE]
 > Macierz wirtualna nie może zostać rozszerzona. Dlatego ważne jest do udostępniania odpowiedniego magazynu podczas tworzenia macierzy wirtualnej.
 
-### <a name="storsimple-device-manager-service"></a>Usługa menedżera urządzeń StorSimple
+### <a name="storsimple-device-manager-service"></a>Usługa Menedżer urządzeń StorSimple
 
 Microsoft Azure StorSimple udostępnia interfejs użytkownika oparty na sieci web, usługi Menedżer urządzeń StorSimple, która umożliwia centralne zarządzanie magazynu StorSimple. Usługa Menedżer urządzeń StorSimple umożliwia wykonywanie następujących zadań:
 

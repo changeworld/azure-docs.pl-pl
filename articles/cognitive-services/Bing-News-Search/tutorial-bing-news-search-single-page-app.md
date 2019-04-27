@@ -12,11 +12,11 @@ ms.date: 01/10/2019
 ms.author: v-gedod
 ms.custom: seodec2018
 ms.openlocfilehash: 29539ba39e724208093910f8fb6fa2d3bc309bda
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55885042"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60685965"
 ---
 # <a name="tutorial-create-a-single-page-web-app"></a>Samouczek: Tworzenie jednostronicowej aplikacji internetowej
 
@@ -413,6 +413,6 @@ Na koniec uruchom serwer proxy CORS za pomocą następującego polecenia:
 
 Podczas korzystania z aplikacji samouczka pozostaw okno polecenia otwarte, ponieważ jego zamknięcie spowoduje zatrzymanie serwera proxy. W rozwijanej sekcji nagłówków HTML poniżej wyników wyszukiwania można teraz zobaczyć nagłówek `X-MSEdge-ClientID` (pomiędzy innymi) i sprawdzić, czy jest on taki sam dla każdego żądania.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 > [!div class="nextstepaction"]
 > [Dokumentacja interfejsu API wyszukiwania wiadomości Bing](//docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference)

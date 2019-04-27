@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
 ms.openlocfilehash: 87505081f16008dff7da1f567c1265c695f3f0ab
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670847"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60653776"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Kopiowanie danych z punktu końcowego HTTP przy użyciu usługi Azure Data Factory
 
@@ -71,7 +71,7 @@ Ustaw **authenticationType** właściwości **podstawowe**, **szyfrowanego**, lu
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | userName | Nazwa użytkownika na potrzeby dostępu do punktu końcowego HTTP. | Yes |
-| hasło | Hasło dla użytkownika ( **userName** wartości). Oznacz to pole jako **SecureString** typ, aby bezpiecznie przechowywać w usłudze Data Factory. Możesz również [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| password | Hasło dla użytkownika ( **userName** wartości). Oznacz to pole jako **SecureString** typ, aby bezpiecznie przechowywać w usłudze Data Factory. Możesz również [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 
 **Przykład**
 
@@ -105,7 +105,7 @@ Aby użyć uwierzytelniania ClientCertificate, ustaw **authenticationType** wła
 |:--- |:--- |:--- |
 | embeddedCertData | Dane zakodowane w formacie Base64 certyfikatu. | Wybierz opcję **embeddedCertData** lub **certthumbprint, aby**. |
 | certThumbprint | Odcisk palca certyfikatu, który jest zainstalowany na magazyn certyfikatów Self-Hosted Integration Runtime tego komputera. Ma zastosowanie tylko wtedy, gdy typ samodzielnie hostowanego środowiska Integration Runtime określono w **connectVia** właściwości. | Wybierz opcję **embeddedCertData** lub **certthumbprint, aby**. |
-| hasło | Hasło, które ma skojarzony z certyfikatem. Oznacz to pole jako **SecureString** typ, aby bezpiecznie przechowywać w usłudze Data Factory. Możesz również [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
+| password | Hasło, które ma skojarzony z certyfikatem. Oznacz to pole jako **SecureString** typ, aby bezpiecznie przechowywać w usłudze Data Factory. Możesz również [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
 
 Jeśli używasz **certthumbprint, aby** dla uwierzytelniania i certyfikat został zainstalowany w magazynie osobistym komputera lokalnego, udziel uprawnień do odczytu Self-Hosted Integration Runtime:
 

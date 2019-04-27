@@ -12,11 +12,11 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
 ms.openlocfilehash: 6004c02f190bbfcf374b3b5d2a5c478f0e52c961
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58165904"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60691005"
 ---
 # <a name="get-started-with-the-informix-connector"></a>Rozpoczynanie pracy z łącznikiem usługi Informix
 Łącznik usługi Microsoft dla programu Informix łączy Logic Apps do zasobów przechowywanych w bazie danych programu IBM Informix. Łącznik programu Informix obejmuje klienta Microsoft do komunikowania się z komputerami zdalnymi serwerem Informix w sieci TCP/IP. Obejmuje baz danych w chmurze, takich jak IBM Informix for Windows z systemem Azure wirtualizacji i baz danych przy użyciu lokalnej bramy danych lokalnych. Zobacz [obsługiwane listy](connectors-create-api-informix.md#supported-informix-platforms-and-versions) IBM Informix platform i wersji (w tym temacie).
@@ -86,7 +86,7 @@ Ten łącznik obsługuje połączenia do bazy danych w środowisku lokalnym i w 
 | baza danych |Wymagany. Akceptuje wartości ciągu reprezentujący DRDA relacyjnej bazy danych nazwa (RDBNAM). Informix akceptuje ciąg 128 bajtów (baza danych jest znany jako nazwa bazy danych programu IBM Informix (dbname)). |
 | uwierzytelnianie |Opcjonalny. Akceptuje wartości elementu listy, podstawowe lub Windows (kerberos). |
 | nazwa użytkownika |Wymagany. Przyjmuje wartość ciągu. |
-| hasło |Wymagany. Przyjmuje wartość ciągu. |
+| password |Wymagany. Przyjmuje wartość ciągu. |
 | brama |Wymagany. Akceptuje wartości elementu listy, reprezentujący lokalnej bramy danych zdefiniowana z usługi Logic Apps w ramach grupy magazynów. |
 
 ## <a name="create-the-on-premises-gateway-connection"></a>Utwórz połączenie bramy lokalnej

@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 03/31/2017
 ms.author: roiyz
 ms.openlocfilehash: 65b52c88741e618e8048451370918b06db73a651
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58014426"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60617881"
 ---
 # <a name="how-to-install-and-configure-symantec-endpoint-protection-on-a-windows-vm"></a>Jak zainstalować i skonfigurować rozwiązanie Symantec Endpoint Protection na maszynie wirtualnej systemu Windows
 > [!IMPORTANT] 

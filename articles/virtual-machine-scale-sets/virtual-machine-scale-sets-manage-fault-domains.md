@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 12/18/2018
 ms.author: rajraj
 ms.openlocfilehash: bab264769576b6e5478236c452d7de920d887c1a
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670923"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60617983"
 ---
 # <a name="choosing-the-right-number-of-fault-domains-for-virtual-machine-scale-set"></a>Wybieranie odpowiedniej liczby domen błędów dla zestawu skalowania maszyn wirtualnych
 Zestawy skalowania maszyn wirtualnych są tworzone z pięcioma domenami błędów domyślnie w regionach bez stref. Dla regionów, które obsługują strefowych wdrażania zestawów skalowania maszyn wirtualnych wartość domyślna liczba domen błędów jest 1 dla każdej ze stref. FD = 1 w takim przypadku oznacza, że wystąpień maszyn wirtualnych należących do zestawu skalowania będzie rozkłada wieloma stojakami na optymalne rozwiązanie.

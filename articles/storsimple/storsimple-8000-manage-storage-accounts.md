@@ -15,15 +15,15 @@ ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
 ms.openlocfilehash: 53aa442b86f5c82ded2f212a64f43852e6b3d2c5
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55486830"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60632777"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-storage-account-credentials"></a>Usługa Menedżer urządzeń StorSimple do zarządzania poświadczeń konta magazynu
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 **Konfiguracji** sekcji w bloku usługi Menedżer urządzeń StorSimple przedstawia wszystkie parametry usługi global service, które mogą być tworzone w usłudze Menedżer urządzeń StorSimple. Te parametry mogą być stosowane do wszystkich urządzeń podłączonych do usługi i obejmują:
 

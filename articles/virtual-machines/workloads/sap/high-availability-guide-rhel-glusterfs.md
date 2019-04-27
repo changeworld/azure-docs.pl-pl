@@ -1,6 +1,6 @@
 ---
 title: GlusterFS na maszynach wirtualnych platformy Azure w systemie Red Hat Enterprise Linux for SAP NetWeaver | Dokumentacja firmy Microsoft
-description: GlusterFS na maszynach wirtualnych platformy Azure w systemie Red Hat Enterprise Linux środowiska SAP NetWeaver
+description: System GlusterFS na maszynach wirtualnych platformy Azure z systemem Red Hat Enterprise Linux dla oprogramowania SAP NetWeaver
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: mssedusch
@@ -16,13 +16,13 @@ ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
 ms.openlocfilehash: 484a0043b9b5eefa5491dee75e87244d1c001620
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342327"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60711283"
 ---
-# <a name="glusterfs-on-azure-vms-on-red-hat-enterprise-linux-for-sap-netweaver"></a>GlusterFS na maszynach wirtualnych platformy Azure w systemie Red Hat Enterprise Linux środowiska SAP NetWeaver
+# <a name="glusterfs-on-azure-vms-on-red-hat-enterprise-linux-for-sap-netweaver"></a>System GlusterFS na maszynach wirtualnych platformy Azure z systemem Red Hat Enterprise Linux dla oprogramowania SAP NetWeaver
 
 [dbms-guide]:dbms-guide.md
 [deployment-guide]:deployment-guide.md
@@ -56,7 +56,7 @@ Najpierw przeczytaj następujące uwagi SAP i dokumenty
 
 * Uwaga SAP [2015553] wymieniono wymagania wstępne dotyczące wdrażania oprogramowania SAP obsługiwane przez oprogramowanie SAP na platformie Azure.
 * Uwaga SAP [2002167] zawiera zalecane ustawienia systemu operacyjnego Red Hat Enterprise Linux
-* Uwaga SAP [2009879] zawiera wskazówki dotyczące programu SAP HANA dla Red Hat Enterprise Linux
+* SAP Note [2009879] has SAP HANA Guidelines for Red Hat Enterprise Linux
 * Uwaga SAP [2178632] zawiera szczegółowe informacje o metrykach wszystkie funkcje monitorowania zgłoszone dla rozwiązania SAP na platformie Azure.
 * Uwaga SAP [2191498] ma wymaganą wersję agenta hosta SAP dla systemu Linux na platformie Azure.
 * Uwaga SAP [2243692] zawiera informacje o licencjonowaniu SAP, w systemie Linux na platformie Azure.
@@ -74,7 +74,7 @@ Najpierw przeczytaj następujące uwagi SAP i dokumenty
   * [Zasady pomocy technicznej w przypadku klastrów o wysokiej dostępności systemu RHEL — maszyny wirtualne platformy Microsoft Azure jako elementów członkowskich klastra](https://access.redhat.com/articles/3131341)
   * [Instalowanie i konfigurowanie Red Hat Enterprise Linux 7.4 (lub nowszy) o wysokiej dostępności klastra w systemie Microsoft Azure](https://access.redhat.com/articles/3252491)
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Aby uzyskać wysoką dostępność, oprogramowanie SAP NetWeaver wymaga magazynu udostępnionego. GlusterFS jest skonfigurowany w klastrze oddzielonym i mogą być używane przez wiele systemów SAP.
 
@@ -106,7 +106,7 @@ Można użyć jednego z szablonów szybkiego startu w usłudze github do wdraża
 Najpierw należy utworzyć maszyny wirtualne, dla tego klastra. Następnie utwórz moduł równoważenia obciążenia i używanie maszyn wirtualnych w puli zaplecza.
 
 1. Tworzenie grupy zasobów
-1. Tworzenie sieci wirtualnej
+1. Create a Virtual Network
 1. Tworzenie zestawu dostępności  
    Domena aktualizacji Maksymalny zestaw
 1. Tworzenie maszyny wirtualnej 1  
@@ -182,7 +182,7 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
    sudo systemctl enable glusterd
    </code></pre>
 
-1. **[1]**  Tworzenie GluserFS
+1. **[1]** Create GluserFS
 
    Uruchom następujące polecenia, aby utworzyć klaster GlusterFS
 

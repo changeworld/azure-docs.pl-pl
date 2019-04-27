@@ -13,11 +13,11 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 01/03/2019
 ms.openlocfilehash: 3b2b472407175df307c569704d4c7611737c4ea1
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54040374"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60694358"
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>Raportowanie we wszystkich bazach danych w chmurze skalowanych w poziomie (wersja zapoznawcza)
 
@@ -36,7 +36,7 @@ Dla baz danych innych niż podzielonej na fragmenty, zobacz [zapytań w bazach d
 * Użytkownik musi mieć uprawnienie ALTER ANY zewnętrznego źródła danych. To uprawnienie jest dołączony do uprawnienie ALTER DATABASE.
 * Aby odwołać się do bazowego źródła danych są potrzebne uprawnienia ALTER ANY zewnętrznego źródła danych.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Te instrukcje utworzysz reprezentację metadanych warstwę danych podzielonych na fragmenty w bazie danych zapytania elastycznego.
 

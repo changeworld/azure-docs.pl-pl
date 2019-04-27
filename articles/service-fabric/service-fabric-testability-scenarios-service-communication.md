@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 529c8d74b6e0a63a7969f31d5b5e8073ecb79411
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665750"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60543227"
 ---
 # <a name="service-fabric-testability-scenarios-service-communication"></a>Scenariusze testowania usługi Service Fabric: Komunikacja usług
 Powierzchnia stylami architektury zorientowanej na usługi w naturalny sposób w usłudze Azure Service Fabric i Mikrousług. W tego rodzaju rozproszonej architektury aplikacji mikrousług składającej składają się zazwyczaj z wielu usług, które muszą komunikować się ze sobą. W nawet najprostsza przypadków ogólnie masz co najmniej bezstanowej usługi internetowej i usługi magazynu danych stanowej, która muszą komunikować się.

@@ -9,11 +9,11 @@ ms.date: 02/16/2018
 ms.author: dukek
 ms.subservice: alerts
 ms.openlocfilehash: 638dd8efba5e86bb7e8abb78a41196bfac9524df
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54421865"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60709970"
 ---
 # <a name="create-an-action-group-with-a-resource-manager-template"></a>Utwórz grupę akcji przy użyciu szablonu usługi Resource Manager
 W tym artykule dowiesz się, jak używać [szablonu usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) do skonfigurowania grup akcji. Za pomocą szablonów, można automatycznie skonfigurować grupy akcji, których można użyć ponownie w pewnych typów alertów. Te grupy akcji upewnij się, że poprawne strony powiadomienie, gdy zostanie wyzwolony alert.

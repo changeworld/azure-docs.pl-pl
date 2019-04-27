@@ -1,5 +1,5 @@
 ---
-title: Przy użyciu ciągłej integracji/ciągłego wdrażania za pomocą usługi Azure Dev miejsca do magazynowania
+title: Używanie ciągłej integracji/ciągłego wdrażania w ramach usługi Azure Dev Spaces
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
@@ -11,11 +11,11 @@ manager: yuvalm
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, containers
 ms.openlocfilehash: 983af0dd75e6ae62630c85d04ac3819c7e260439
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57768284"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60687371"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>Ciągła Integracja/ciągłe dostarczanie za pomocą usługi Azure Dev miejsca do magazynowania
 

@@ -8,14 +8,15 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 10/23/2018
-ms.author: azfuncdf, glenga
+origin.date: 10/23/2018
+ms.date: 03/25/2019
+ms.author: v-junlch
 ms.openlocfilehash: 1c60bd4dae6c279ccff637ff0aa798c48ebec6f1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58108073"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60710952"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Utwórz trwałe funkcje przy użyciu witryny Azure portal
 
@@ -91,7 +92,7 @@ Jeśli tworzysz niezawodne funkcje języka JavaScript, będą musieli zainstalow
 1. Użyj narzędzia HTTP, takiego jak Postman lub programu cURL do wysłania żądania POST na adres URL, który został skopiowany. Poniższy przykład jest polecenia cURL, który wysyła żądanie POST do trwałego funkcji:
 
     ```bash
-    curl -X POST https://{your-function-app-name}.azurewebsites.net/api/orchestrators/HelloSequence
+    curl -X POST https://{your-function-app-name}.chinacloudsites.cn/api/orchestrators/HelloSequence
     ```
 
     W tym przykładzie `{your-function-app-name}` domenę, nazwę aplikacji funkcji. Komunikat odpowiedzi zawiera zestaw punktów końcowych z identyfikatora URI, które umożliwia monitorowanie i zarządzanie nimi wykonywania, który wygląda podobnie jak w poniższym przykładzie:
@@ -140,3 +141,5 @@ Pierwszą funkcję trwałe jest uruchomiona i działa na platformie Azure.
 
 > [!div class="nextstepaction"]
 > [Dowiedz się więcej na temat typowych wzorców funkcji trwałej](durable-functions-concepts.md)
+
+<!-- Update_Description: wording update -->

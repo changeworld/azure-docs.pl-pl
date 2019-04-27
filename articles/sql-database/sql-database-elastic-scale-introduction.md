@@ -13,11 +13,11 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: 9f61748a489987bf6c3f38e8ebfdab660198e10a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463025"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60585460"
 ---
 # <a name="scaling-out-with-azure-sql-database"></a>Scaling out with Azure SQL Database (Skalowanie w poziomie za pomocą usługi Azure SQL Database)
 Można łatwo skalować w poziomie baz danych Azure SQL przy użyciu **Elastic Database** narzędzia. Te narzędzia i funkcje pozwalają korzystać z zasobów bazy danych **usługi Azure SQL Database** nad tworzeniem rozwiązań dla obciążeń transakcyjnych, a szczególnie oprogramowanie jako usługa (SaaS) aplikacji. Funkcje elastycznej bazy danych składają się:

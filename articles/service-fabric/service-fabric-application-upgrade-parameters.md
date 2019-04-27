@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/08/2018
 ms.author: subramar
 ms.openlocfilehash: 9a93c0993ee45e72b11b023982dfbbe8c6528272
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670621"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60614394"
 ---
 # <a name="application-upgrade-parameters"></a>Parametry uaktualniania aplikacji
 W tym artykule opisano różne parametry, które są stosowane podczas uaktualniania aplikacji usługi Azure Service Fabric. Parametry uaktualniania aplikacji kontrolować limity czasu i kontroli kondycji, które są stosowane podczas uaktualniania, a określają zasady, które można zastosować, uaktualnienie nie powiedzie się. Parametry aplikacji stosuje się do uaktualnienia przy użyciu:

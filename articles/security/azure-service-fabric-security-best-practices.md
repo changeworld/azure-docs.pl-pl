@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/16/2019
 ms.author: tomsh
 ms.openlocfilehash: 8bafc4a95ca9af4567ed70c190a72f3b351da47c
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114709"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60611520"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Usługa Azure Service Fabric najlepsze rozwiązania dotyczące zabezpieczeń
 Wdrażanie aplikacji na platformie Azure jest szybkie, łatwe i ekonomiczne. Przed przystąpieniem do wdrażania aplikacji w chmurze w środowisku produkcyjnym, Przejrzyj naszą listę podstawowych i zalecane najlepsze rozwiązania dotyczące wdrażania zabezpieczonych klastrów w aplikacji.

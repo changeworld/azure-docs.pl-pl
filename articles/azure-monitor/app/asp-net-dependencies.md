@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbullwin
 ms.openlocfilehash: c77b5810164aef7508f717a0f75d90cf6cba2089
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59273111"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60691383"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Konfigurowanie usługi Application Insights: Śledzenie zależności
 A *zależności* jest składnik zewnętrzny, która jest wywoływana przez aplikację. Zazwyczaj jest wywoływany przy użyciu protokołu HTTP lub bazy danych lub systemu plików usługi. [Usługa Application Insights](../../azure-monitor/app/app-insights-overview.md) mierzy czas oczekiwania zależności aplikacji i jak często wywołanie zależności nie powiedzie się. Można zbadać określonych wywołań i dotyczą żądań i wyjątków.

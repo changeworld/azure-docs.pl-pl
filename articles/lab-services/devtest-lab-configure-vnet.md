@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
 ms.openlocfilehash: 8fb3b4ac748fcae2e3aad5b3bfb2a893340dc61a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256140"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60694818"
 ---
 # <a name="configure-a-virtual-network-in-azure-devtest-labs"></a>Konfigurowanie sieci wirtualnej w usłudze Azure DevTest Labs
 Zgodnie z opisem w artykule [Dodawanie maszyny Wirtualnej do laboratorium](devtest-lab-add-vm.md), podczas tworzenia maszyny Wirtualnej w laboratorium, można określić skonfigurowanej sieci wirtualnej. Na przykład może być konieczne dostępu do zasobów sieci firmowej z maszynami wirtualnymi przy użyciu sieci wirtualnej, która została skonfigurowana przy użyciu usługi ExpressRoute lub sieci VPN typu lokacja lokacja.

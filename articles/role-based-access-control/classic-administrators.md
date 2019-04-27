@@ -15,11 +15,11 @@ ms.date: 02/19/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: a19153677e691d2681c131df67100a43ef9532a0
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889328"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60709532"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Administratorzy subskrypcji klasycznej platformy Azure
 
@@ -77,7 +77,7 @@ Należy pamiętać, że [wbudowane role zasobów platformy Azure](../role-based-
 
 1. Dodaj znacznik wyboru obok Administrator współpracujący ma zostać usunięty.
 
-1. Kliknij przycisk **Usuń**.
+1. Kliknij pozycję **Usuń**.
 
 1. W wyświetlonym oknie komunikatu kliknij **tak**.
 
@@ -155,5 +155,5 @@ Wykonaj następujące kroki, aby wyświetlić administratora konta.
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Understand the different roles in Azure (Omówienie ról na platformie Azure)](../role-based-access-control/rbac-and-directory-admin-roles.md)
-* [Zarządzanie dostępem do zasobów platformy Azure przy użyciu RBAC i witryny Azure portal](../role-based-access-control/role-assignments-portal.md)
+* [Zarządzanie dostępem do zasobów platformy Azure za pomocą kontroli dostępu opartej na rolach i witryny Azure Portal](../role-based-access-control/role-assignments-portal.md)
 * [Dodawanie lub zmienianie administratorów subskrypcji platformy Azure](../billing/billing-add-change-azure-subscription-administrator.md)

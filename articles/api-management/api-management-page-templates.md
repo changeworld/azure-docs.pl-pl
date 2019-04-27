@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/09/2018
 ms.author: apimpm
 ms.openlocfilehash: 1fbafcdab938a0f8653df48631d7733cc58a3668
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52441914"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60656821"
 ---
 # <a name="page-templates-in-azure-api-management"></a>Szablony stron w usłudze Azure API Management
 Usługa Azure API Management zapewnia możliwość dostosować zawartość portalu dla deweloperów przy użyciu zestawu szablonów, które ich zawartość. Przy użyciu [DotLiquid](http://dotliquidmarkup.org/) składni i Edytor wybranych przez użytkownika, takich jak [DotLiquid dla projektantów](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), i zlokalizowanych podany zbiór [zasoby ciągu](api-management-template-resources.md#strings), [symbol zasoby](api-management-template-resources.md#glyphs), i [stronie kontrolki](api-management-page-controls.md), masz dużą elastyczność konfigurowania zawartości stron, zgodnie z potrzebami przy użyciu tych szablonów.  
@@ -42,7 +42,7 @@ Usługa Azure API Management zapewnia możliwość dostosować zawartość porta
   
  ![Zaloguj się na stronie](./media/api-management-page-templates/APIM-Sign-In-Page-Developer-Portal-Templates.png "APIM logowania szablonów portalu dla deweloperów strony")  
   
-### <a name="default-template"></a>szablon domyślny  
+### <a name="default-template"></a>Szablon domyślny  
   
 ```xml  
 <h2 class="text-center">{% localized "SigninStrings|WebAuthenticationSigninTitle" %}</h2>  
@@ -101,7 +101,7 @@ Usługa Azure API Management zapewnia możliwość dostosować zawartość porta
 ### <a name="controls"></a>Kontrolki  
  Ten szablon może korzystać z następujących [stronie kontrolki](api-management-page-controls.md).  
   
--   [Basic — logowanie](api-management-page-controls.md#basic-signin)  
+-   [basic-signin](api-management-page-controls.md#basic-signin)  
   
 -   [dostawcy](api-management-page-controls.md#providers)  
   
@@ -141,7 +141,7 @@ Usługa Azure API Management zapewnia możliwość dostosować zawartość porta
   
  ![Zarejestruj się Strona](./media/api-management-page-templates/APIM-Sign-Up-Page-Developer-Portal-Templates.png "APIM rejestracji szablonów portalu dla deweloperów strony")  
   
-### <a name="default-template"></a>szablon domyślny  
+### <a name="default-template"></a>Szablon domyślny  
   
 ```xml  
 <h2 class="text-center">{% localized "SignupStrings|PageTitleSignup" %}</h2>  
@@ -189,7 +189,7 @@ Usługa Azure API Management zapewnia możliwość dostosować zawartość porta
   
  ![Nie można odnaleźć strony](./media/api-management-page-templates/APIM-Not-Found-Page-Developer-Portal-Templates.png "APIM nie znaleziono strony dla deweloperów szablonów portalu")  
   
-### <a name="default-template"></a>szablon domyślny  
+### <a name="default-template"></a>Szablon domyślny  
   
 ```xml  
 <h2>{% localized "NotFoundStrings|PageTitleNotFound" %}</h2>  
@@ -228,11 +228,11 @@ Usługa Azure API Management zapewnia możliwość dostosować zawartość porta
   
 |Właściwość|Typ|Opis|  
 |--------------|----------|-----------------|  
-|referenceCode|ciąg|Kod generowany, jeśli ta strona została wyświetlona w wyniku błędu wewnętrznego.|  
-|errorCode|ciąg|Kod generowany, jeśli ta strona została wyświetlona w wyniku błędu wewnętrznego.|  
-|emailBody|ciąg|Wyślij wiadomość e-mail treści generowany, gdy ta strona została wyświetlona w wyniku błędu wewnętrznego.|  
-|requestedUrl|ciąg|Adres URL zażądane, gdy nie można odnaleźć strony.|  
-|referrerUrl|ciąg|Adres URL odwołania do żądanego adresu URL.|  
+|referenceCode|string|Kod generowany, jeśli ta strona została wyświetlona w wyniku błędu wewnętrznego.|  
+|errorCode|string|Kod generowany, jeśli ta strona została wyświetlona w wyniku błędu wewnętrznego.|  
+|emailBody|string|Wyślij wiadomość e-mail treści generowany, gdy ta strona została wyświetlona w wyniku błędu wewnętrznego.|  
+|requestedUrl|string|Adres URL zażądane, gdy nie można odnaleźć strony.|  
+|referrerUrl|string|Adres URL odwołania do żądanego adresu URL.|  
   
 ### <a name="sample-template-data"></a>Przykładowe dane szablonu  
   

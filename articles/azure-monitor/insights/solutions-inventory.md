@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 06/26/2018
 ms.author: bwren
 ms.openlocfilehash: 6da2b63b7a9c8dc490bd30bb02ae6e7d932b2f7b
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59683923"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60596001"
 ---
 # <a name="data-collection-details-for-management-solutions-in-azure"></a>Szczegóły zbierania danych dla rozwiązań do zarządzania na platformie Azure
 Ten artykuł zawiera listę [rozwiązań do zarządzania](solutions.md) udostępnianych przez firmę Microsoft wraz z łączami do ich szczegółowej dokumentacji.  Zawiera także informacje o ich metody i częstotliwość zbierania danych do usługi Azure Monitor.  Identyfikowanie różnych rozwiązaniach dostępnych i zrozumienie wymagań połączenia i przepływu danych dla rozwiązań do zarządzania różnych, można użyć informacji w tym artykule. 

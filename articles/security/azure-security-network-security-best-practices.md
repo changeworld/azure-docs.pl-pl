@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/17/2018
 ms.author: TomSh
-ms.openlocfilehash: 86246d3d580737837ec07ccdc89ed82914cde209
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: b644a175814fb28563a2524e27f52d0285415d66
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118415"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60610957"
 ---
 # <a name="azure-network-security-best-practices"></a>Najlepsze rozwiązania dotyczące zabezpieczeń sieci platformy Azure
 Możesz połączyć [maszyn wirtualnych (VM)](https://azure.microsoft.com/services/virtual-machines/) i do innych urządzeń sieciowych, umieszczając je na [sieciami wirtualnymi platformy Azure](https://azure.microsoft.com/documentation/services/virtual-network/). Oznacza to, że możesz połączyć karty interfejsu sieci wirtualnej z siecią wirtualną, aby umożliwić komunikację opartego na protokole IP między urządzeniami z włączoną obsługą sieci. Maszyny wirtualne połączone z siecią wirtualną platformy Azure mogą łączyć się urządzenia w tej samej sieci wirtualnej, w różnych sieciach wirtualnych, w Internecie lub w sieci lokalnej.

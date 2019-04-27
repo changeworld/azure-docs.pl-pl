@@ -9,11 +9,11 @@ ms.topic: reference
 ms.date: 09/24/2018
 ms.author: dech
 ms.openlocfilehash: 1cb6889305e5f6bce5728039712a1834dc2e9353
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033591"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60626744"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Zestaw SDK środowiska Node.js usługi Azure Cosmos DB dla interfejsu API SQL: Informacje o wersji i zasoby
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "54033591"
 > * [Bulkexecutor — platforma .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Bulkexecutor — platforma Java](sql-api-sdk-bulk-executor-java.md)
 
-|Zasób  |Link  |
+|Resource  |Link  |
 |---------|---------|
 |Pobierz zestaw SDK  |   [NPM](https://www.npmjs.com/package/@azure/cosmos) 
 |Dokumentacja interfejsu API  |  [Dokumentacja referencyjna zestawu SDK języka JavaScript](https://docs.microsoft.com/javascript/api/%40azure/cosmos/?view=azure-node-latest)
@@ -39,7 +39,7 @@ ms.locfileid: "54033591"
 | Przykłady | [Przykładów kodu node.js](sql-api-nodejs-samples.md)
 | Wprowadzenie — samouczek | [Rozpoczynanie pracy z zestawem SDK JavaScript](sql-api-nodejs-get-started.md)
 | Samouczek dotyczący aplikacji sieci Web | [Tworzenie aplikacji sieci web Node.js za pomocą usługi Azure Cosmos DB](sql-api-nodejs-application.md)
-| Bieżący obsługiwanych platform | [Node.js 6.x](https://nodejs.org/en/blog/release/v6.10.3/) — wartość wymagana w przypadku zestawu SDK w wersji 2.0.0 lub nowszym.<br/>[Node.js v4.2.0](https://nodejs.org/en/blog/release/v4.2.0/)<br/> [Node.js v0.12](https://nodejs.org/en/blog/release/v0.12.0/)<br/> [V0.10 środowiska node.js](https://nodejs.org/en/blog/release/v0.10.0/) 
+| Bieżący obsługiwanych platform | [Node.js 6.x](https://nodejs.org/en/blog/release/v6.10.3/) — wartość wymagana w przypadku zestawu SDK w wersji 2.0.0 lub nowszym.<br/>[Node.js v4.2.0](https://nodejs.org/en/blog/release/v4.2.0/)<br/> [Node.js v0.12](https://nodejs.org/en/blog/release/v0.12.0/)<br/> [Node.js v0.10](https://nodejs.org/en/blog/release/v0.10.0/) 
 
 ## <a name="release-notes"></a>Informacje o wersji
 
@@ -57,7 +57,7 @@ ms.locfileid: "54033591"
 * Przełącz się do dyrektywy odwołań dla typu AsyncIterable. Użytkownicy języka typescript nie trzeba dostosować ich ustawienia "lib".
 * Błąd pisowni poprawki
 
-### <a name="2.0.2"/>pkt 2.0.2</a>
+### <a name="2.0.2"/>2.0.2</a>
 * Usuń łącza plik readme
 
 ### <a name="2.0.1"/>2.0.1</a>
@@ -201,7 +201,7 @@ ms.locfileid: "54033591"
 * Problem [#41](https://github.com/Azure/azure-documentdb-node/issues/41) — błąd client.createDocumentAsync.
 
 ### <a name="1.0.0"/>1.0.0</a>
-* ZESTAW SDK W WERSJI OGÓLNIE DOSTĘPNEJ.
+* GA SDK.
 
 ## <a name="release--retirement-dates"></a>Wersja & dat wycofywania
 Firma Microsoft zapewnia powiadomienie co najmniej **12 miesięcy** ewentualnej wycofanie zestawu SDK w celu złagodzenia przejścia do nowszych/obsługiwanych wersji.

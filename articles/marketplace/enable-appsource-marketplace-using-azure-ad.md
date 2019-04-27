@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 09/12/2018
 ms.author: qianw211
 ms.openlocfilehash: 247a45a38d732ace0455c6ca2ebbd5c44c384004
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732332"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60734256"
 ---
-# <a name="enable-an-appsource-and-marketplace-listing-by-using-azure-active-directory"></a>Włącz listę usługi AppSource i Portal Marketplace przy użyciu usługi Azure Active Directory
+# <a name="enable-an-appsource-and-marketplace-listing-by-using-azure-active-directory"></a>Włączanie możliwości publikowania ofert w witrynach AppSource i Marketplace z użyciem usługi Azure Active Directory
 
  Azure Active Directory (Azure AD) to chmurze Usługa zarządzania tożsamościami, która umożliwia uwierzytelnianie za pomocą konta Microsoft. Usługa Azure AD używa standardowych środowisk. [Dowiedz się więcej o usłudze Azure Active Directory](https://azure.microsoft.com/services/active-directory).
 

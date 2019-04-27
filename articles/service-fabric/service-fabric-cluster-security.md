@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 08/14/2018
 ms.author: aljo
 ms.openlocfilehash: 6d67fa4af031480fda4a91f7356bff69830a654c
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667603"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60711507"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Scenariusze zabezpieczeń klastra usługi Service Fabric
 Klaster usługi Azure Service Fabric jest zasobem, którego jesteś właścicielem. Jest odpowiedzialny za Zabezpieczanie klastrów zapobiega nieautoryzowanym użytkownikom nawiązywanie połączeń z nich. Zabezpieczonego klastra jest szczególnie ważne w przypadku obciążeń produkcyjnych są uruchomione w klastrze. Chociaż można utworzyć z niezabezpieczonym klastrem, jeśli klaster udostępnia punktów końcowych zarządzania do publicznej sieci internet, użytkowników anonimowych można się z nim. Niezabezpieczonych klastrów nie są obsługiwane w przypadku obciążeń produkcyjnych. 

@@ -14,11 +14,11 @@ manager: jeconnoc
 ms.custom: vs-azure
 ms.workload: azure-vs
 ms.openlocfilehash: 9afca253bd188556ad6a3f6e081fb2eccc4c81cb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59361262"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60707191"
 ---
 # <a name="quickstart-develop-with-net-core-on-kubernetes-with-azure-dev-spaces-visual-studio-2017"></a>Szybki start: Programowanie przy użyciu platformy .NET Core na platformie Kubernetes za pomocą usługi Azure Dev miejsca do magazynowania (Visual Studio 2017)
 

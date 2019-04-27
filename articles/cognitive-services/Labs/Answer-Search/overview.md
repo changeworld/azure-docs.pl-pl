@@ -11,11 +11,11 @@ ms.topic: overview
 ms.date: 04/13/2018
 ms.author: rosh
 ms.openlocfilehash: ac1717a8e8a08fcfedc3bc21bb0f03b3e3ca2511
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57548085"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60721853"
 ---
 # <a name="what-is-project-answer-search"></a>Czym jest projekt wyszukiwania odpowiedzi?
 Interfejs API laboratorium Project Answer Search korzysta z punktu końcowego Bing w wersji 7, aby uzyskać odpowiedzi na zapytania w formie pytań. Pytanie „What is the circumference of the earth?”(Jaki jest obwód ziemi?) zwraca odpowiedź, która zawiera fakty.  Zapytanie dotyczące osoby, miejsca lub przedmiotu zwraca informacje dotyczące jednostki określonej przez zapytanie. Te scenariusze mogą być przydatne w aplikacjach, takich jak na przykład boty konwersacyjne, aplikacje do obsługi wiadomości lub czytniki.  

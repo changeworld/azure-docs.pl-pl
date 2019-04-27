@@ -17,11 +17,11 @@ ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
 ms.openlocfilehash: 8ea17e5615c0256c084b0745a392fb49f8873f99
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58805367"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60713746"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>Utwórz maszynę wirtualną systemu Linux z przyspieszonej sieci
 

@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: chliang
 ms.openlocfilehash: 64183ea09203ea965bb889fe4741fdaf4dbd1e02
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228019"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60709941"
 ---
 # <a name="tutorial-anomaly-detection-with-c-application"></a>Samouczek: wykrywanie anomalii przy użyciu aplikacji języka C#
 
@@ -127,7 +127,7 @@ Poniższy fragment kodu przedstawia sposób użycia klasy HttpClient do przesył
     }
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Dokumentacja interfejsu API REST](https://dev.labs.cognitive.microsoft.com/docs/services/anomaly-detection/operations/post-anomalydetection)

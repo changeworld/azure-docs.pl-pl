@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: 900ad8b7f676eb67f9ac0fc808600779f832a102
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58539500"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60699435"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>Samouczek: moderowanie obrazów produktów na potrzeby handlu elektronicznego za pomocą usługi Azure Content Moderator
 

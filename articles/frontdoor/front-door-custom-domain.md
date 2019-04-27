@@ -13,11 +13,11 @@ ms.topic: tutorial
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: 3c98359950bd9539ea75f5a031ac1ce9f2ebe812
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58002711"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60736721"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-front-door"></a>Samouczek: Dodawanie do usługi Front Door domeny niestandardowej
 W tym Samouczku opisano, jak dodać domenę niestandardową do usługi Front Door. W przypadku dostarczania aplikacji przy użyciu usługi Azure Front Door Service domena niestandardowa jest niezbędna, jeśli chcesz, aby nazwa Twojej domeny była widoczna w żądaniu użytkownika końcowego. Widoczna nazwa domeny może być wygodna dla klientów i przydatna dla celów związanych ze znakowaniem.

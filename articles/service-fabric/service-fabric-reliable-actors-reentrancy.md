@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 46682787bac2d60d188384a4078ca2fa1f46ae7a
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669031"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60725418"
 ---
 # <a name="reliable-actors-reentrancy"></a>Reliable Actors współużytkowania wątkowości
 Środowisko uruchomieniowe elementów Reliable Actors, domyślnie umożliwia wielobieżność oparte na kontekście wywołań logicznych. Dzięki temu Aktorzy stanowią współużytkowane, gdy mają one ten sam łańcuch wywołań w kontekście. Na przykład A Aktor wysyła komunikat do aktora B, który wysyła wiadomość do aktora. W ramach przetwarzania wiadomości Jeśli C aktora wywołuje aktora A, komunikat jest współużytkowane, dzięki czemu będzie można. Inne komunikaty, które są częścią kontekstu wywołań różnych zostaną zablokowane na A Aktor, do momentu zakończenia przetwarzania.

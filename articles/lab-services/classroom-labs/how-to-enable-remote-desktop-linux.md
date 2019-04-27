@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: spelluru
 ms.openlocfilehash: 6985bd0bbae858ad258e723ef4d6d6d687b2c86e
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60005353"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60695470"
 ---
 # <a name="enable-and-use-remote-desktop-for-linux-virtual-machines-in-a-lab-in-azure-lab-services"></a>Włączanie i używanie usług pulpitu zdalnego dla maszyn wirtualnych systemu Linux w laboratorium w usłudze Azure Lab Services
 W tym artykule przedstawiono sposób wykonywania następujących zadań:

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: aa0ffbd69e73ddbef72e0eabf79f2736079c3d23
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622027"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60636523"
 ---
 # <a name="manage-all-policies-for-a-lab-in-azure-devtest-labs"></a>Zarządzanie wszystkimi zasadami dla laboratorium w usłudze Azure DevTest Labs
 
@@ -91,7 +91,7 @@ Jako właściciel laboratorium możesz skonfigurować harmonogram zamykania dla 
 
 1. Na stronie głównej dla swojego laboratorium wybierz **konfiguracji i zasad**.
 2. Wybierz **automatyczne zamknięcie zasad** w **harmonogramy** części menu po lewej stronie.
-3. Wybierz jedną z opcji. Poniższe sekcje zapewniają więcej szczegółów na temat tych opcji: Ustawianie zasad mają zastosowanie tylko do nowych maszyn wirtualnych utworzonych w laboratorium, a nie już istniejących maszyn wirtualnych. 
+3. Wybierz jedną z opcji. Poniższe sekcje zapewniają więcej szczegółów na temat tych opcji: Ustawianie zasad ma zastosowanie tylko do nowych maszyn wirtualnych utworzonych w laboratorium, a nie już istniejących maszyn wirtualnych. 
 
     ![Opcje zasad zamykania automatycznie](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-options.png)
 

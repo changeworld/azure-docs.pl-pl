@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: aahi
 ms.openlocfilehash: e1799f2af89fd0498c11f3d695d84ccd93a9c857
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59681934"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60737112"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-java"></a>Szybki start: Wysyłanie żądania wyszukiwania do interfejsu API REST wyszukiwania jednostek Bing przy użyciu języka Java
 

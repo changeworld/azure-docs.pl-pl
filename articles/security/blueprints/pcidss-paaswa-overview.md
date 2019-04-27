@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 07/03/2018
 ms.author: meladie
 ms.openlocfilehash: 5452a1adb419a2f57e2124d5aac49f9cdcff615a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58111671"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60609981"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-for-pci-dss"></a>Zabezpieczenia platformy Azure i zgodności planu: Aplikacja sieci Web PaaS dla PCI DSS
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Ten zabezpieczeń platformy Azure i zgodności planu automatyzacji zawiera wskazówki dotyczące wdrażania platformy zgodne płatności Karta Industry Data Security Standards (PCI DSS 3.2) jako usługa (PaaS) środowiska odpowiednie do zbierania, przechowywania i pobierania dane posiadaczy takich kart. To rozwiązanie pozwala zautomatyzować wdrażanie i konfigurowanie zasobów platformy Azure dla typowych architektury referencyjnej, demonstrując sposób, w którym klienci mogą sprostać określonych wymagań dotyczących zabezpieczeń i zgodności i służy jako podstawa klienci mogą tworzyć i Skonfiguruj swoich rozwiązań na platformie Azure. Rozwiązanie implementuje podzbiór wymagań PCI DSS 3.2. Aby uzyskać więcej informacji o wymaganiach PCI DSS 3.2 i tego rozwiązania, zobacz [dokumentację zgodności](#compliance-documentation) sekcji.
 

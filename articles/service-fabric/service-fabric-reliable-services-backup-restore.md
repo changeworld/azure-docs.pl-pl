@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 10/29/2018
 ms.author: mcoskun
 ms.openlocfilehash: cd40f59cfa7846911c68206c3bc1e85a770b0fcc
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670132"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60723871"
 ---
 # <a name="backup-and-restore-reliable-services-and-reliable-actors"></a>Kopia zapasowa i przywracanie usług Reliable Services i Reliable Actors
 Usługa Azure Service Fabric to platforma wysokiej dostępności, która replikuje stanu w wielu węzłach, aby zachować ten wysokiej dostępności.  W związku z tym nawet w przypadku awarii jednego węzła w klastrze, usługi nadal dostępne. Tę nadmiarowość wbudowane dostarczonego przez platformę, może być wystarczające dla niektórych, w niektórych przypadkach pożądane jest usługi do tworzenia kopii zapasowych (do magazynu zewnętrznego).

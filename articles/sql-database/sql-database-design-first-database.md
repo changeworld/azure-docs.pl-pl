@@ -11,11 +11,11 @@ ms.reviewer: v-masebo
 manager: craigg
 ms.date: 02/08/2019
 ms.openlocfilehash: 3ca17ae905fff0911b58a0d336e0899ff385085c
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990483"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60556747"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-using-ssms"></a>Samouczek: projektowanie relacyjnej bazy danych jako pojedynczej bazy danych w usłudze Azure SQL Database przy użyciu programu SSMS
 
@@ -227,10 +227,10 @@ Na poniższym diagramie przedstawiono, jak te tabele są ze sobą powiązane. Ni
 4. Wykonaj następujące polecenia, aby wstawić przykładowe dane do tabel, zastępując wartości *server* (serwer), *database* (baza danych), *user* (użytkownik) i *password* (hasło) wartościami odpowiednimi dla Twojego środowiska.
 
    ```cmd
-   bcp Course in SampleCourseData -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
-   bcp Person in SamplePersonData -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
-   bcp Student in SampleStudentData -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
-   bcp Credit in SampleCreditData -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
+   bcp Course in SampleCourseData.txt -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
+   bcp Person in SamplePersonData.txt -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
+   bcp Student in SampleStudentData.txt -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
+   bcp Credit in SampleCreditData.txt -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
    ```
 
 Przykładowe dane zostaną załadowane do utworzonych wcześniej tabel.
@@ -265,7 +265,7 @@ Wykonaj następujące zapytania, aby pobrać informacje z tabel bazy danych. Zob
        AND person.LastName = 'Coleman'
    ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku przedstawiono wiele podstawowych zadań bazy danych. W tym samouczku omówiono:
 

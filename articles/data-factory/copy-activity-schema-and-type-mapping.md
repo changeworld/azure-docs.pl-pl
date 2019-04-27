@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
 ms.openlocfilehash: 99798b35419ec9574c99aaba42803fbeeb1555f1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59267127"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60615617"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>Mapowanie schematu w działaniu kopiowania
 W tym artykule opisano, jakie działania kopiowania w usłudze Azure Data Factory mapowanie schematu i mapowanie typu danych ze źródła danych do ujścia danych podczas wykonywania kopii danych.
@@ -229,8 +229,8 @@ Można znaleźć mapowania między typem natywnym typowi przejściowym w sekcji 
 Usługa Data Factory obsługuje następujące typy danych tymczasowych: Możesz określić poniższe wartości podczas konfigurowania informacji o typie w [struktury zestawu danych](concepts-datasets-linked-services.md#dataset-structure) konfiguracji:
 
 * Byte[]
-* Wartość logiczna
-* Data/godzina
+* Boolean
+* DateTime
 * Datetimeoffset
 * Decimal
 * Double

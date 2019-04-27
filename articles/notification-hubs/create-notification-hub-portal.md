@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 02/14/2019
 ms.author: jowargo
 ms.openlocfilehash: 62e72f27e48f7bf220901f4eb36090f926724a2a
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56314053"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60682037"
 ---
 # <a name="create-an-azure-notification-hub-in-the-azure-portal"></a>Tworzenie centrum powiadomień platformy Azure w witrynie Azure Portal 
 Usługa Azure Notification Hubs oferuje łatwy w użyciu, skalowany w poziomie mechanizm, który umożliwia wysyłanie powiadomień do dowolnej platformy (iOS, Android, Windows, Kindle, Baidu, itp.) z poziomu dowolnego zaplecza (w chmurze lub w środowisku lokalnym). Aby uzyskać więcej informacji na temat usługi, zobacz [Co to jest usługa Azure Notification Hubs?](notification-hubs-push-notification-overview.md)
@@ -53,5 +53,5 @@ W tej sekcji utworzysz centrum powiadomień w istniejącej przestrzeni nazw.
 
       ![Witryna Azure Portal -> Powiadomienia -> Przejdź do zasobu](./media/create-notification-hub-portal/hub-home-page.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym przewodniku Szybki start utworzono centrum powiadomień. Aby dowiedzieć się, jak skonfigurować centrum przy użyciu ustawień systemu powiadomień platformy, zobacz [Konfigurowanie centrum powiadomień przy użyciu ustawień systemu powiadomień platformy](configure-notification-hub-portal-pns-settings.md). 

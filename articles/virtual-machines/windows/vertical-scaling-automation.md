@@ -17,11 +17,11 @@ ms.date: 04/18/2019
 ms.author: kasing
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 44243f97b6c431578185fcdeb1ddcabc548d927f
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011745"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60580989"
 ---
 # <a name="vertically-scale-windows-vms-with-azure-automation"></a>Skalowanie w pionie maszyn Windows za pomocą usługi Azure Automation
 

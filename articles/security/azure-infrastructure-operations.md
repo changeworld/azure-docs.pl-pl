@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: 0099eb61d97f813f7adca320b47c195fa1aabbdc
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56104555"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60591471"
 ---
 # <a name="azure-production-operations-and-management"></a>Operacje platformy Azure środowiska produkcyjnego i zarządzanie    
 Zarządzanie i działania sieci platformy Azure środowiska produkcyjnego jest wspólnym wysiłku między zespołom platformy Azure i usługi Azure SQL Database. Zespoły wykorzystują narzędzia kilka systemu i monitorowanie wydajności aplikacji w środowisku. I używają odpowiednich narzędzi do monitorowania urządzeń sieciowych, serwery, usług i procesów aplikacji.

@@ -14,11 +14,11 @@ author: jpconnock
 ms.author: jeconnoc
 manager: timlt
 ms.openlocfilehash: 4e018af7df64c9ed8050a3c618cf2645d5509cdd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58918505"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60613248"
 ---
 # <a name="azure-cloud-services-definition-schema-csdef-file"></a>Schemat definicji usług Azure Cloud Services (plik csdef)
 Plik definicji usługi definiuje model usług dla aplikacji. Plik zawiera definicje ról, które są dostępne dla usługi w chmurze, określa punkty końcowe usługi i ustanawia ustawienia konfiguracji dla usługi. Wartości ustawienia konfiguracji są ustawiane w pliku konfiguracji usługi, zgodnie z opisem w [schematu konfiguracji usługi w chmurze (klasyczne)](/previous-versions/azure/reference/ee758710(v=azure.100)).

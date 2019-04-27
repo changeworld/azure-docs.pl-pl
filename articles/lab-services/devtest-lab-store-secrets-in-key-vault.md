@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: spelluru
-ms.openlocfilehash: d87c8a46459a9b4bf80bef895ec97e436d38e699
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 17469d3602935715d570a496e12b6680269ff465
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186836"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60622946"
 ---
 # <a name="store-secrets-in-a-key-vault-in-azure-devtest-labs"></a>Store wpisów tajnych w magazynie kluczy w usłudze Azure DevTest Labs
 Może być konieczne wprowadzenie złożony klucz tajny, korzystając z usługi Azure DevTest Labs: hasło dla maszyny Wirtualnej Windows publiczny klucz SSH dla maszyny Wirtualnej systemu Linux lub osobistego tokenu dostępu do sklonowania repozytorium Git za pomocą artefaktu. Klucze tajne są zwykle długie i mają losowo wybranych znaków. W związku z tym dodawane może być trudne i nie można użyć, zwłaszcza, jeśli używasz tego samego klucza tajnego wiele razy.

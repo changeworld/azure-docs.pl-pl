@@ -13,11 +13,11 @@ ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 12/19/2018
 ms.openlocfilehash: 15154844c954e53ca1add5d3fbaa3e9d02152ad2
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55568247"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60703215"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance"></a>Wydajność bazy danych Intelligent Insights za pomocą sztucznej Inteligencji do monitorowania i rozwiązywania problemów
 

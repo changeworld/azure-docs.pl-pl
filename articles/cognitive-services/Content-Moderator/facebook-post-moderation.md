@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.date: 01/18/2019
 ms.author: pafarley
 ms.openlocfilehash: 662eca2a727f3112f169ab8d669bf18c81700275
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57871032"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60699572"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>Samouczek: Moderuj wpisów w usłudze Facebook i poleceń przy użyciu usługi Azure Content Moderator
 
@@ -65,7 +65,7 @@ Zaloguj się do [witryny Azure Portal](https://portal.azure.com/) i wykonaj nast
 2. Przejdź do nowo utworzonej aplikacji funkcji.
 3. W aplikacji, przejdź do **funkcje platformy** kartę, a następnie wybierz pozycję **ustawienia aplikacji**. W **ustawienia aplikacji** części następnej strony, przewiń w dół listy, a następnie kliknij przycisk **Dodaj nowe ustawienie**. Dodaj następujące pary klucz/wartość
     
-    | Nazwa ustawienia aplikacji | wartość   | 
+    | Nazwa ustawienia aplikacji | value   | 
     | -------------------- |-------------|
     | cm:TeamId   | Identyfikator zespołu usługi Content Moderator  | 
     | cm:SubscriptionKey | Klucz subskrypcji usługi Content Moderator — zobacz [Poświadczenia](review-tool-user-guide/credentials.md) | 

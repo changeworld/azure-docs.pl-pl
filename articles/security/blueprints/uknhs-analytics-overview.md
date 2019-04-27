@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 06/15/2018
 ms.author: jomolesk
 ms.openlocfilehash: d2e3b4b199065510d244d384ff69d5231bef5919
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244438"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60609078"
 ---
 # <a name="azure-security-and-compliance-blueprint-data-analytics-for-uk-nhs"></a>Zabezpieczenia platformy Azure i zgodności planu: Analiza danych dla NHS Zjednoczone Królestwo
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Tych samych zabezpieczeń platformy Azure i zgodności plan zawiera wskazówki dotyczące rozwiązania analiza danych odpowiednie dla kolekcji, Magazyn, analizy i pobierania danych opieki zdrowotnej i architekturze referencyjnej. W tym rozwiązaniu pokazano sposób, w którym klienci mogą spełniać ze wskazówkami zawartymi w [przewodnik dobre praktyki zabezpieczeń chmury](https://digital.nhs.uk/data-and-information/looking-after-information/data-security-and-information-governance/nhs-and-social-care-data-off-shoring-and-the-use-of-public-cloud-services/health-and-social-care-cloud-security-good-practice-guide) opublikowanych przez [cyfrowy NHS](https://digital.nhs.uk/), partner Zjednoczonego Królestwa (Wielka Brytania) Departamentu zdrowia i opieki społecznej (DHSC). Chmura poradnik bezpieczeństwa programu dobrą praktyką jest oparty na 14 [zasad bezpieczeństwa w chmurze](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles) opublikowane przez UK National Cybernetycznymi zabezpieczeń Centrum (NCSC).
 

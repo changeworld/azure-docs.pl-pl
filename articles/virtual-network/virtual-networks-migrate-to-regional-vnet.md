@@ -1,6 +1,6 @@
 ---
-title: Migracja sieci wirtualnej platformy Azure (klasyczne) z grupą koligacji w regionie | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak przeprowadzić migrację sieci wirtualnej (klasyczne) z grupą koligacji do regionu.
+title: Migrowanie sieci wirtualnej platformy Azure (wersja klasyczna) z grupy koligacji do regionu | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak przeprowadzić migrację sieci wirtualnej (klasycznej) z grupy koligacji do regionu.
 services: virtual-network
 documentationcenter: na
 author: genlin
@@ -15,50 +15,50 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.openlocfilehash: 1fca7f6165998b95254f841638cf8bcbc1fb352d
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: d3bb93d12a217e6d9066d037ff92f071b6139ab3
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31792158"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60648639"
 ---
-# <a name="migrate-a-virtual-network-classic-from-an-affinity-group-to-a-region"></a>Migracji sieci wirtualnej (klasyczne) z grupą koligacji w regionie
+# <a name="migrate-a-virtual-network-classic-from-an-affinity-group-to-a-region"></a>Migrowanie sieci wirtualnej (klasycznej) z grupy koligacji do regionu
 
 > [!IMPORTANT]
-> Platforma Azure ma dwa różne modele wdrażania do tworzenia i pracy z zasobami: [Resource Manager i Model Klasyczny](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Ten artykuł dotyczy klasycznego modelu wdrożenia. Firma Microsoft zaleca, aby większości nowych wdrożeń korzystać modelu wdrażania usługi Resource Manager.
+> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [model wdrażania przy użyciu usługi Resource Manager i model klasyczny](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Ten artykuł dotyczy klasycznego modelu wdrożenia. Firma Microsoft zaleca się, że większości nowych wdrożeń korzystać z modelu wdrażania usługi Resource Manager.
 
-Grupy koligacji upewnij się, że zasoby utworzone w tej samej grupie koligacji fizycznie są obsługiwane przez serwery, które są blisko siebie włączenie tych zasobów do komunikowania się szybszy. W przeszłości grupy koligacji były wymagane do tworzenia sieci wirtualnych (klasyczny). W tym czasie usługa Menedżera sieci, zarządzaną sieciami wirtualnymi (klasyczne) można pracować tylko w ramach zestawu serwerów fizycznych lub jednostki skalowania. Ulepszenia architektury nastąpiło nasilenie zakres zarządzania siecią w regionie.
+Grupy koligacji upewnij się, że zasoby utworzone w ramach tej samej grupie koligacji fizycznie znajdują się przez serwery, które znajdują się blisko siebie, włączanie tych zasobów do komunikowania się szybsze. W przeszłości grupy koligacji były wymagane do tworzenia sieci wirtualnych (klasyczne). W tym czasie usługa Menedżera sieci, która zarządzanych sieci wirtualne (klasyczne) może działać tylko w ramach zestawu serwerów fizycznych lub jednostki skalowania. Udoskonalenia architektury większą zakres zarządzania siecią w regionie.
 
-W wyniku tych usprawnień architektury grup koligacji nie jest już zalecane lub wymagane dla sieci wirtualnych (klasyczny). Sposób korzystania z grup koligacji dla sieci wirtualnych (klasyczne) zastępuje regionów. Sieci wirtualne (klasyczne) skojarzonych z regiony są nazywane regionalnych sieci wirtualnych.
+W wyniku tych ulepszeń architektury grupy koligacji są już zalecane lub wymagane dla sieci wirtualne (klasyczne). Możliwość korzystania z grup koligacji dla sieci wirtualnych (model klasyczny) jest zastępowany przez regionów. Sieci wirtualne (klasyczne), które są skojarzone z regionów są nazywane regionalnych sieci wirtualnych.
 
-Zaleca się, że grupy koligacji nie używaj ogólnie. Oprócz wymagań sieci wirtualnej grupy koligacji były również należy użyć, aby zapewnić zasoby, takie jak zasobów obliczeniowych (klasyczne) i magazynu (klasyczne), zostały umieszczone obok siebie. Jednak z bieżącej architektury sieci platformy Azure, te wymagania umieszczania nie są już wymagane.
+Zaleca się, że nie używasz grup koligacji ogólnie rzecz biorąc. Oprócz wymagań sieci wirtualnej grupy koligacji zostały również ważne, aby użyć w celu zapewnienia zasobów, takich jak zasoby obliczeniowe (wersja klasyczna) i magazyn (klasyczny), zostały umieszczone obok siebie. Jednak przy użyciu bieżącego architektury sieci platformy Azure, te wymagania dotyczące umieszczania są już potrzebne.
 
 > [!IMPORTANT]
-> Jest on nadal technicznie możliwe utworzyć sieć wirtualną, która jest skojarzona z grupą koligacji, nie istnieje w tym celu atrakcyjnych przyczyna. Wiele funkcji sieci wirtualnej, takich jak grupy zabezpieczeń sieciowych, są dostępne tylko po użyciu regionalną sieć wirtualną, a nie są dostępne dla sieci wirtualnych, które są skojarzone z grup koligacji.
+> Chociaż nadal technicznie możliwe utworzyć sieć wirtualną, która jest skojarzona z grupą koligacji, nie ma żadnych istotny powód, aby to zrobić. Wiele funkcji sieci wirtualnej, takie jak sieciowe grupy zabezpieczeń, są dostępne tylko po użyciu regionalnej sieci wirtualnej, a nie są dostępne dla sieci wirtualnych, które są skojarzone z grup koligacji.
 > 
 > 
 
-## <a name="edit-the-network-configuration-file"></a>Przeprowadź edycję pliku konfiguracji sieci
+## <a name="edit-the-network-configuration-file"></a>Edytuj plik konfiguracji sieci
 
-1. Eksportowanie plików konfiguracji sieci. Aby dowiedzieć się, jak wyeksportować plik konfiguracji sieci przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure (CLI) 1.0, zobacz [skonfigurować sieć wirtualną przy użyciu pliku konfiguracji sieci](virtual-networks-using-network-configuration-file.md#export).
-2. Edytowanie pliku konfiguracji sieci, zastępując **AffinityGroup** z **lokalizacji**. Określ Azure [region](https://azure.microsoft.com/regions) dla **lokalizacji**.
+1. Wyeksportuj plik konfiguracji sieci. Aby dowiedzieć się, jak wyeksportować plik konfiguracji sieci przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure (CLI) 1.0, zobacz [Skonfiguruj sieć wirtualną przy użyciu pliku konfiguracji sieci](virtual-networks-using-network-configuration-file.md#export).
+2. Edytuj plik konfiguracji sieci, zastępując **AffinityGroup** z **lokalizacji**. Określ platformę Azure [region](https://azure.microsoft.com/regions) dla **lokalizacji**.
    
    > [!NOTE]
-   > **Lokalizacji** to region określona dla grupy koligacji, która jest skojarzona z sieci wirtualnej (klasyczny). Na przykład, jeśli w Twojej sieci wirtualnej (klasyczne) jest skojarzona z grupą koligacji znajdującego się w zachodnie stany USA, podczas migracji Twoje **lokalizacji** musi wskazywać zachodnie stany USA. 
+   > **Lokalizacji** to region, który został określony dla grupy koligacji, która jest skojarzona z siecią wirtualną (wersja klasyczna). Na przykład, jeśli sieć wirtualna (klasyczna) jest skojarzona z grupą koligacji, która znajduje się w regionie zachodnie stany USA, podczas migracji Twoje **lokalizacji** musi się odnosić do regionu zachodnie stany USA. 
    > 
    > 
    
-    Edytuj zastąpionymi wartościami z własnego następujące wiersze w pliku konfiguracji sieci: 
+    Edytuj następujące wiersze w pliku konfiguracyjnym sieci, zastępując wartości swoimi własnymi: 
    
-    **Stara wartość:** \<VirtualNetworkSitename = AffinityGroup "VNetUSWest" = "VNetDemoAG"\> 
+    **Stara wartość:** \<VirtualNetworkSitename="VNetUSWest" AffinityGroup="VNetDemoAG"\> 
    
-    **Nowa wartość:** \<VirtualNetworkSitename = "VNetUSWest" Lokalizacja = "Zachodnie stany USA"\>
-3. Zapisz zmiany i [zaimportować](virtual-networks-using-network-configuration-file.md#import) konfigurację sieci na platformie Azure.
+    **Nowa wartość:** \<VirtualNetworkSitename="VNetUSWest" Location="West US"\>
+3. Zapisz zmiany i [zaimportować](virtual-networks-using-network-configuration-file.md#import) konfiguracja sieci na platformie Azure.
 
 > [!NOTE]
 > Ta migracja nie powoduje żadnych przestojów do usług.
 > 
 > 
 
-## <a name="what-to-do-if-you-have-a-vm-classic-in-an-affinity-group"></a>Co zrobić, jeśli masz maszyny Wirtualnej (klasyczne) w grupie koligacji
-Maszyny wirtualne (klasyczne) są obecnie w grupie koligacji nie trzeba można usunąć z grupy koligacji. Po wdrożeniu maszyny Wirtualnej jest wdrażana na jednostkę skalowania pojedynczego. Grupy koligacji, można ograniczyć zestaw dostępnych rozmiarów maszyn wirtualnych do nowego wdrożenia maszyny Wirtualnej, ale istniejącej maszyny Wirtualnej, które zostało wdrożone już jest ograniczony do zestawu rozmiary maszyny Wirtualnej dostępne jednostki skalowania, w której maszyna wirtualna jest wdrożona. Ponieważ maszyna wirtualna została już wdrożona na jednostkę skalowania, usunięcie maszyny Wirtualnej z grupy koligacji nie ma wpływu na maszynie Wirtualnej.
+## <a name="what-to-do-if-you-have-a-vm-classic-in-an-affinity-group"></a>Co zrobić, jeśli masz maszyny Wirtualnej (klasycznej) w grupie koligacji
+Maszyny wirtualne (klasyczne) są obecnie w grupie koligacji nie trzeba usunąć z grupy koligacji. Po wdrożeniu maszyny Wirtualnej jest wdrażana jednostki skalowania pojedynczej. Grupy koligacji, można ograniczyć zestaw dostępnych rozmiarów maszyn wirtualnych na potrzeby nowego wdrożenia maszyny Wirtualnej, ale istniejącej maszyny Wirtualnej, która jest wdrażana jest już ograniczony zbiór dostępnych w jednostce skalowania, w którym wdrożono maszynę Wirtualną rozmiarów maszyn wirtualnych. Ponieważ maszyna wirtualna została już wdrożona na jednostkę skalowania, usuwając Maszynę wirtualną z grupy koligacji nie ma wpływu na maszynie Wirtualnej.

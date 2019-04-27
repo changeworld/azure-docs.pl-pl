@@ -11,11 +11,11 @@ description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i
 keywords: Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s
 manager: mmontwil
 ms.openlocfilehash: b69a793d1d860bf2f2a4d52a92d4bea5cf903c0c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59426311"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60694400"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-java"></a>Rozpoczęcie pracy w usłudze Azure Dev Spaces przy użyciu języka Java
 

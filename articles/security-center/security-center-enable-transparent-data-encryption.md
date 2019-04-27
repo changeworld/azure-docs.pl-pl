@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
 ms.openlocfilehash: d5ddec40a1b20e377ec18ce871018f674557e7b4
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111768"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60704036"
 ---
 # <a name="enable-transparent-data-encryption-in-azure-security-center"></a>Włączanie technologii Transparent Data Encryption w usłudze Azure Security Center
 Usługa Azure Security Center zaleci, Włącz przezroczystego szyfrowania danych (TDE) dla baz danych SQL, jeśli funkcja TDE nie jest już włączona. Funkcja TDE chroni dane i ułatwia spełnianie wymagań dotyczących zgodności przez szyfrowanie bazy danych, skojarzonych kopii zapasowych i plików dziennika transakcji w stanie spoczynku bez konieczności wprowadzania zmian w aplikacji. Aby dowiedzieć się więcej, zobacz [funkcji Transparent Data Encryption z usługą Azure SQL Database](https://msdn.microsoft.com/library/dn948096).

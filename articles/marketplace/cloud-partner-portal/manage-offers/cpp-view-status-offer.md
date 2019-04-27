@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: pbutlerm
 ms.openlocfilehash: bdec2d699e8448c8e2303dfbabcb4d176a9ca389
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54430385"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60729789"
 ---
 # <a name="view-the-publishing-status-of-azure-marketplace-and-appsource-offers"></a>Wyświetl stan publikowania ofert w portalu Azure Marketplace i AppSource
 

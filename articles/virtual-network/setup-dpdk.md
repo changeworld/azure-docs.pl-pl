@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 07/27/2018
 ms.author: labattul
 ms.openlocfilehash: c5cb840035c5d0d5694982324c7237c58001e689
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57993864"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60731604"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>Konfigurowanie DPDK na maszynie wirtualnej systemu Linux
 

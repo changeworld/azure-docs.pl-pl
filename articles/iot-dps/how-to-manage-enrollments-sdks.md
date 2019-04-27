@@ -9,11 +9,11 @@ ms.service: iot-dps
 services: iot-dps
 manager: arjmands
 ms.openlocfilehash: c73a40e46d86632732454ae16ea4f83e3ffa0281
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674756"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60627273"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>Jak zarządzać rejestracjami urządzeń przy użyciu SDK usługi aprowizacji urządzeń platformy Azure
 A *rejestracji urządzeń* tworzy rekord pojedynczego urządzenia lub grupy urządzeń, które mogą w pewnym momencie zarejestrować w usłudze Device Provisioning Service. Rekord rejestracji zawiera odpowiednią konfigurację wstępną dla urządzeń w ramach rejestracji, w tym wymagane Centrum IoT hub. Ten artykuł pokazuje, jak zarządzanie rejestracjami urządzeń w Twojej usługi aprowizacji, programowo przy użyciu inicjowania obsługi administracyjnej z zestawami SDK Azure IoT.  Zestawy SDK są dostępne w serwisie GitHub, w tym samym repozytorium, co zestawami SDK Azure IoT.

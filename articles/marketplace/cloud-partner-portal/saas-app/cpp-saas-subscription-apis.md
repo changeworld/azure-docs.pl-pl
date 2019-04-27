@@ -15,11 +15,11 @@ ms.topic: reference
 ms.date: 09/17/2018
 ms.author: pbutlerm
 ms.openlocfilehash: d6ab18d68d6508a18f0b36ab5a39e15fa7c0555a
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311666"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60594538"
 ---
 # <a name="saas-sell-through-azure---apis"></a>Sprzedaż SaaS za pośrednictwem platformy Azure — interfejsy API
 
@@ -112,7 +112,7 @@ Metoda HTTP
 |  Grant_type         | True         | Typ udzielenia uprawnień. Wartość domyślna to `client_credentials`.                    |
 |  Client_id          | True         |  Identyfikator klienta/aplikacji skojarzone z aplikacją usługi Azure AD.                  |
 |  client_secret      | True         |  Hasło skojarzone z aplikacją usługi Azure AD.                               |
-|  Zasób           | True         |  Zasób docelowy, dla którego żądany jest token. Wartość domyślna to `62d94f6c-d599-489b-a797-3e10e42fbe22`. |
+|  Resource           | True         |  Zasób docelowy, dla którego żądany jest token. Wartość domyślna to `62d94f6c-d599-489b-a797-3e10e42fbe22`. |
 |  |  |  |
 
 

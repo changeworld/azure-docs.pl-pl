@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/25/2019
 ms.author: juliako
 ms.openlocfilehash: bbcd6bfabacf39a5af5a79b935d5ab865603b7b4
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55102004"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60694593"
 ---
 # <a name="cli-example-create-an-asset"></a>Przykład użycia interfejsu wiersza polecenia: Tworzenie zasobu
 
@@ -35,6 +35,6 @@ Skrypt interfejsu wiersza polecenia platformy Azure w tym artykule pokazuje spos
 
 [!code-azurecli-interactive[main](../../../../cli_scripts/media-services/create-asset/Create-Asset.sh "Create an asset")]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej przykładów, zobacz [przykłady interfejsu wiersza polecenia platformy Azure](../cli-samples.md).

@@ -15,22 +15,22 @@ ms.date: 04/20/2018
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: 10d06d2e792b476a4c973029241d6cb98c0dd444
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094075"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60684305"
 ---
-# <a name="tutorial-set-azure-cdn-caching-rules"></a>Samouczek — konfigurowanie reguł buforowania usługi Azure CDN
+# <a name="tutorial-set-azure-cdn-caching-rules"></a>Samouczek: Ustawianie reguł buforowania w usłudze Azure CDN
 
 > [!NOTE] 
 > Reguły buforowania usługi Azure CDN są dostępne tylko w usłudze **Azure CDN w warstwie Standardowa firmy Verizon** oraz **Azure CDN w warstwie Standardowa firmy Akamai**. W przypadku usługi **Azure CDN w warstwie Premium firmy Verizon** użyj [aparatu reguł usługi Azure CDN](cdn-rules-engine.md) w portalu **Zarządzaj**, aby uzyskać podobną funkcjonalność.
  
 
 W tym samouczku opisano, jak można użyć reguł buforowania usługi Azure Content Delivery Network (CDN) do ustawiania lub modyfikowania domyślnego zachowania wygaśnięcia pamięci podręcznej globalnie i w warunkach niestandardowych — np. w przypadku ścieżki adresu URL i rozszerzenia pliku. Usługa Azure CDN oferuje dwa typy reguł buforowania:
-- Globalne reguły buforowania: można ustawić jedną globalną regułę buforowania dla każdego punktu końcowego w profilu, co wpłynie na wszystkie żądania do punktu końcowego. Globalna reguła buforowania zastępuje wszelkie nagłówki dyrektywy pamięci podręcznej HTTP, jeśli zostały one ustawione.
+- Globalne reguły buforowania: Możesz ustawić jedną globalne reguły buforowania dla każdego punktu końcowego w profilu, który ma wpływ na wszystkie żądania do punktu końcowego. Globalna reguła buforowania zastępuje wszelkie nagłówki dyrektywy pamięci podręcznej HTTP, jeśli zostały one ustawione.
 
-- Niestandardowe reguły buforowania: można skonfigurować co najmniej jedną niestandardową regułę buforowania dla każdego punktu końcowego w profilu. Niestandardowe reguły buforowania pasują do określonych ścieżek i rozszerzeń plików, są przetwarzane kolejno i zastępują globalną regułę buforowania, jeśli została ustawiona. 
+- Niestandardowe reguły buforowania: Można ustawić co najmniej jeden niestandardowe reguły buforowania dla każdego punktu końcowego w Twoim profilu. Niestandardowe reguły buforowania pasują do określonych ścieżek i rozszerzeń plików, są przetwarzane kolejno i zastępują globalną regułę buforowania, jeśli została ustawiona. 
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
@@ -42,7 +42,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed wykonaniem kroków opisanych w tym samouczku należy utworzyć profil usługi CDN i co najmniej jeden punkt końcowy usługi CDN. Aby uzyskać więcej informacji, zobacz [Szybki start: tworzenie profilu i punktu końcowego usługi Azure CDN](cdn-create-new-endpoint.md).
+Przed wykonaniem kroków opisanych w tym samouczku należy utworzyć profil usługi CDN i co najmniej jeden punkt końcowy usługi CDN. Aby uzyskać więcej informacji, zobacz temat [Szybki start: tworzenie profilu i punktu końcowego usługi Azure CDN](cdn-create-new-endpoint.md).
 
 ## <a name="open-the-azure-cdn-caching-rules-page"></a>Otwieranie strony reguł buforowania usługi Azure CDN
 
@@ -101,7 +101,7 @@ W poprzednich krokach utworzono reguły buforowania. Jeśli nie chcesz już ich 
 6. Kliknij przycisk **Zapisz** u góry strony.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

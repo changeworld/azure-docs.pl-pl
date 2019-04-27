@@ -11,15 +11,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 00fe3aa7a641b9d07aad90a9d008a99efc6e9d97
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: dc2126276e3e8e0d35ce8ed1f835544386659eff
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993477"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60736189"
 ---
 # <a name="url-rewrite-custom-forwarding-path"></a>Ponowne zapisywanie adresów URL (ścieżka przekazywanie niestandardowych)
-Usługa drzwiami frontowymi obsługuje ponowne zapisywanie adresów URL, umożliwiając konfigurowanie opcjonalny **ścieżki przekazywania niestandardowego** do użycia podczas konstruowania żądania do zaplecza. Domyślnie jeśli brak ścieżki niestandardowej przekazywania zostanie podany, następnie drzwiami frontowymi skopiuje przychodzących Ścieżka adresu URL na adres URL użyty w żądaniu przekazywane. Nagłówek hosta, użyty w żądaniu przekazywane jest zgodnie z konfiguracją dla wybranego zaplecza. Odczyt [nagłówek hosta zaplecza](front-door-backend-pool.md#hostheader) Aby dowiedzieć się, jak działa i jak można go skonfigurować.
+Usługa drzwiami frontowymi obsługuje ponowne zapisywanie adresów URL, umożliwiając konfigurowanie opcjonalny **ścieżki przekazywania niestandardowego** do użycia podczas konstruowania żądania do zaplecza. Domyślnie jeśli nie ma określonej niestandardowej ścieżki przesyłania dalej, usługa Front Door kopiuje przychodzącą ścieżkę adresu URL do adresu URL użytego w przesłanym dalej żądaniu. Nagłówek Host użyty w przesłanym dalej żądaniu jest skonfigurowany dla wybranego zaplecza. Odczyt [nagłówek hosta zaplecza](front-door-backend-pool.md#hostheader) Aby dowiedzieć się, jak działa i jak można go skonfigurować.
 
 Zaawansowana część ponowne zapisywanie adresów URL przy użyciu ścieżki niestandardowe przekazywania jest, spowoduje to skopiowanie dowolnej części ścieżki przychodzącej, który pasuje do ścieżki symboli wieloznacznych w ścieżce przekazywane (te segmenty ścieżki są **zielony** segmentów w poniższym przykładzie):
 </br>
@@ -30,7 +30,7 @@ Następujące hosty frontonu i skonfigurowanych ścieżek, należy wziąć pod u
 
 | Hosts      | Ścieżki       |
 |------------|-------------|
-| www.contoso.com | /\*         |
+| www\.contoso.com | /\*         |
 |            | /foo        |
 |            | /foo/\*     |
 |            | /foo/paska /\* |
@@ -42,12 +42,12 @@ Na przykład, jeśli możemy odczytać w drugim wierszu, jego jest informacją, 
 
 | Żądanie przychodzące       | Ścieżka specyficzne dla większości dopasowania | /          | /FWD/          | /foo/          | /foo/paska /          |
 |------------------------|--------------------------|------------|----------------|----------------|--------------------|
-| www.contoso.com/            | /\*                      | /          | /FWD/          | /foo/          | /foo/paska /          |
-| www.contoso.com/**sub**     | /\*                      | /**Sub**   | /FWD/**sub**   | /foo/**sub**   | /foo/paska/**sub**   |
-| www.contoso.com/**a/b/c.**   | /\*                      | /**a/b/c.** | /FWD/**a/b/c.** | /foo/**a/b/c.** | /foo/paska/**a/b/c.** |
-| www.contoso.com/foo         | /foo                     | /          | /FWD/          | /foo/          | /foo/paska /          |
-| www.contoso.com/foo/        | /foo/\*                  | /          | /FWD/          | /foo/          | /foo/paska /          |
-| www.contoso.com/foo/**paska** | /foo/\*                  | /**Pasek**   | /FWD/**paska**   | /foo/**paska**   | /foo/paska/**paska**   |
+| www\.contoso.com/            | /\*                      | /          | /FWD/          | /foo/          | /foo/paska /          |
+| www\.contoso.com/**sub**     | /\*                      | /**Sub**   | /FWD/**sub**   | /foo/**sub**   | /foo/paska/**sub**   |
+| www\.contoso.com/**a/b/c.**   | /\*                      | /**a/b/c.** | /fwd/**a/b/c** | /foo/**a/b/c.** | /foo/paska/**a/b/c.** |
+| www\.contoso.com/foo         | /foo                     | /          | /FWD/          | /foo/          | /foo/paska /          |
+| www\.contoso.com/foo/        | /foo/\*                  | /          | /FWD/          | /foo/          | /foo/paska /          |
+| www\.contoso.com/foo/**paska** | /foo/\*                  | /**Pasek**   | /FWD/**paska**   | /foo/**paska**   | /foo/paska/**paska**   |
 
 
 ## <a name="optional-settings"></a>Ustawienia opcjonalne
@@ -59,8 +59,8 @@ Dostępne są dodatkowe ustawienia opcjonalne, które można również określi�
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się, jak [tworzenie drzwiami frontowymi](quickstart-create-front-door.md).
-- Dowiedz się, [działania drzwiami frontowymi](front-door-routing-architecture.md).
+- Dowiedz się, jak [utworzyć usługę Front Door](quickstart-create-front-door.md).
+- Dowiedz się, [jak działa usługa Front Door](front-door-routing-architecture.md).
 
 <!--Image references-->
 [1]: ./media/front-door-url-rewrite/front-door-url-rewrite-example.jpg

@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 08/23/2018
 ms.author: meladie
 ms.openlocfilehash: c17f16ce796c9f296facd69c18de4effc7ff5258
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57440985"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60610164"
 ---
 # <a name="azure-security-and-compliance-blueprint---paas-web-application-for-australia-protected"></a>Zabezpieczenia platformy Azure i zgodności planu — aplikacja sieci Web PaaS dla Australii CHRONIONA
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Tych samych zabezpieczeń platformy Azure i zgodności planu znajdują się wskazówki dotyczące wdrażania to platforma jako usługa (PaaS) środowiska odpowiednie do zbierania, przechowywania i pobierania danych chronionych Australia dla instytucji rządowych, które są zgodne z celami Australijskich instytucji rządowych informacje zabezpieczeń ręczne (ISM) produkowane przez australijskiego Signals Directorate ASD (). Ten plan przedstawiono typowe architektury referencyjnej i pomaga pokazują prawidłowego przygotowania danych poufnych dla instytucji rządowych w środowisku bezpiecznych, zgodnych i wieloma warstwami.
 

@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 05/17/2018
 ms.author: saurse
 ms.openlocfilehash: b6f0ce1939b2a78ca191d2feb0140506d130b9b0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58107461"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60648354"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Przepływ pracy tworzenia kopii zapasowych w trybie offline w usłudze Azure Backup
 Usługa Azure Backup ma kilka wbudowanych korzyści, które zmniejsza koszty magazynu i sieci podczas początkowego pełne kopie zapasowe danych na platformę Azure. Początkowa pełne kopie zapasowe zazwyczaj przesyłanie dużych ilości danych, a także wymagają większej przepustowości sieci w porównaniu do kolejnych kopii zapasowych, które przenieść tylko różnic/przyrostowa. Proces rozmieszczania w trybie offline usługa Azure Backup można użyć dysków do przekazania danych kopii zapasowej w trybie offline na platformę Azure.
@@ -175,7 +175,7 @@ Poniższa procedura aktualizuje szczegóły wysyłanie zadania importu platformy
 5. W przypadku numeru śledzenia od operatora wysyłki, kliknij transparent, na stronie przeglądu zadania importu platformy Azure i wprowadź następujące informacje:
 
    > [!IMPORTANT] 
-   > Upewnij się, że informacje operatora i numer śledzenia są aktualizowane w ciągu dwóch tygodni od utworzenia zadania importowania platformy Azure. Błąd weryfikacji tych informacji w ciągu dwóch tygodni może spowodować usunięcie zadania i dyski, które nie są przetwarzane.
+   > Upewnij się, że informacje o operatorze i numer śledzenia zostały zaktualizowane w ciągu dwóch tygodni od utworzenia zadania importowania platformy Azure. Błąd weryfikacji tych informacji w ciągu dwóch tygodni może spowodować usunięcie zadania i dyski, które nie są przetwarzane.
 
    ![Przechowywanie informacje dotyczące wysyłki](./media/backup-azure-backup-import-export/joboverview.png)<br/>
 

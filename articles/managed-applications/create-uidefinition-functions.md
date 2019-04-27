@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 10/12/2017
 ms.author: tomfitz
 ms.openlocfilehash: 80fd593eecf189d516a8c9d7ef2a94ec9f23fc39
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063798"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60587924"
 ---
 # <a name="createuidefinition-functions"></a>Funkcje CreateUiDefinition
 Ta sekcja zawiera podpisy dla wszystkich obsługiwanych funkcji CreateUiDefinition.
@@ -391,7 +391,7 @@ Poniższy przykład zwraca `false`:
 "[equals('abc', ['a', 'b', 'c'])]"
 ```
 
-### <a name="less"></a>less
+### <a name="less"></a>mniej
 Zwraca `true` , jeśli pierwszy parametr jest mniejsza niż drugi parametr. Ta funkcja obsługuje tylko parametry typu number i ciąg.
 
 Poniższy przykład zwraca `true`:
@@ -526,7 +526,7 @@ Poniższy przykład zwraca `2.9`:
 "[float(2.9)]"
 ```
 
-### <a name="string"></a>ciąg
+### <a name="string"></a>string
 Konwertuje parametr na ciąg. Ta funkcja obsługuje parametry wszystkich typów danych JSON.
 
 Poniższy przykład zwraca `"1"`:
@@ -553,7 +553,7 @@ Poniższy przykład zwraca `"{"foo":"bar"}"`:
 "[string({\"foo\":\"bar\"})]"
 ```
 
-### <a name="bool"></a>wartość logiczna
+### <a name="bool"></a>bool
 Konwertuje parametr na wartość logiczną. Ta funkcja obsługuje parametry typu number, string i Boolean. Podobnie jak wartości logicznych w języku JavaScript, wszystkie wartości z wyjątkiem `0` lub `'false'` zwraca `true`.
 
 Poniższy przykład zwraca `true`:
@@ -625,7 +625,7 @@ Poniższy przykład zwraca `"foobar"`:
 "[decodeBase64('Zm9vYmFy')]"
 ```
 
-### <a name="encodeuricomponent"></a>encodeuricomponent —
+### <a name="encodeuricomponent"></a>encodeUriComponent
 Koduje parametr na ciąg zakodowany w adresie URL. Ta funkcja obsługuje tylko parametry typu string.
 
 Poniższy przykład zwraca `"https%3A%2F%2Fportal.azure.com%2F"`:

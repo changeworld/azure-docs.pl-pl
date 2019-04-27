@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 10/10/2018
 ms.author: sajagtap
 ms.openlocfilehash: da8ad71ccf8b58ddf3ef7cc6a2f9e9c732913caa
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55858403"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60607654"
 ---
 # <a name="quickstart-check-text-against-a-custom-term-list-in-c"></a>Szybki start: Sprawdzanie tekstu względem listy terminów niestandardowych w języku C#
 
@@ -447,6 +447,6 @@ Deleting term list with ID 252.
 Press ENTER to close the application.
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Pobierz zestaw [Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) i [rozwiązanie programu Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) dla tego i innych przewodników Szybki start usługi Content Moderator dla platformy .NET i rozpocznij pracę nad integracją.

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: afae7cc6390ea4cd8c18c687e9d99400c8da9da4
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116936"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60611357"
 ---
 # <a name="the-azure-production-network"></a>Sieć platformy Azure środowiska produkcyjnego
 Użytkownicy sieci platformy Azure środowiska produkcyjnego obejmują zarówno zewnętrznych klientów, którzy dostęp do własnych aplikacji platformy Azure i personelu wewnętrznej pomocy technicznej platformy Azure, którzy zarządzają produkcyjnego środowiska sieciowego. W tym artykule omówiono metody dostępu zabezpieczeń i mechanizmy ochrony w celu nawiązania połączenia z siecią platformy Azure środowiska produkcyjnego.

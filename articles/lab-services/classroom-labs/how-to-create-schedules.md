@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/30/2019
 ms.author: spelluru
 ms.openlocfilehash: 34bc8263053cd4a701c16ee1832cf1b27340a345
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55501361"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60696038"
 ---
 # <a name="create-and-manage-schedules-for-classroom-labs-in-azure-lab-services"></a>Tworzenie i zarządzanie nimi harmonogramy dla laboratorium na potrzeby zajęć w usłudze Azure Lab Services 
 Harmonogramy umożliwiają konfigurowanie laboratorium na potrzeby zajęć w taki sposób, że maszyny wirtualne w laboratorium automatycznie uruchom i zamknij o określonej godzinie. Można zdefiniować jednorazowe harmonogramu lub Harmonogram cykliczny. Poniższe procedury stanowią kroki, aby tworzyć i zarządzać nimi harmonogramy dla laboratorium na potrzeby zajęć: 

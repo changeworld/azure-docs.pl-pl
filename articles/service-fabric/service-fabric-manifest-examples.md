@@ -15,11 +15,11 @@ ms.workload: multiple
 ms.date: 06/11/2018
 ms.author: pepogors
 ms.openlocfilehash: 85a3066095cfc30da19b06d26f41bdc156f85832
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58664696"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60718227"
 ---
 # <a name="service-fabric-application-and-service-manifest-examples"></a>Aplikacja usługi Service Fabric i usługa manifestu przykłady
 Ta sekcja zawiera przykłady manifestów aplikacji i usługi. Te przykłady nie są przeznaczone do wyświetlenia ważnych scenariuszy, ale aby pokazać różne ustawienia, które są dostępne i jak z nich korzystać. 

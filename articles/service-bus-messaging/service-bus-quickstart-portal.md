@@ -10,11 +10,11 @@ ms.custom: mvc
 ms.date: 04/10/2019
 ms.author: spelluru
 ms.openlocfilehash: 05c84f91c960bbcf7383cd2164289c8398f8dc91
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59607759"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60594429"
 ---
 # <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>Szybki start: używanie witryny Azure Portal do tworzenia kolejki usługi Service Bus
 W tym przewodniku Szybki start opisano, jak wysyłać i odbierać komunikaty do i z kolejki usługi Service Bus, używając witryny [Azure Portal][Azure portal] do utworzenia przestrzeni nazw do przesyłania komunikatów oraz kolejki w ramach tej przestrzeni nazw, a także uzyskać poświadczenia autoryzacji do tej przestrzeni nazw. Następnie w procedurze przedstawiono, jak wysyłać i odbierać komunikaty z tej kolejki przy użyciu [biblioteki platformy .NET Standard](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus).

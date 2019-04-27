@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 11/29/2018
 ms.author: pbutlerm
 ms.openlocfilehash: bf87856dc28e83fb1308f20613338b9bbfd8f896
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53197492"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60744112"
 ---
-# <a name="create-a-user-vm-image"></a>Tworzenie obrazu maszyny Wirtualnej użytkownika
+# <a name="create-a-user-vm-image"></a>Tworzenie obrazu maszyny wirtualnej użytkownika
 
 W tym artykule opisano dwa ogólne kroki wymagane do utworzenia obrazu niezarządzanego z uogólnionego wirtualnego dysku twardego.  Przeprowadzenie Cię przez kolejne kroki są podane odwołania: przechwycenie obrazu i obraz.
 
@@ -32,7 +32,7 @@ Postępuj zgodnie z instrukcjami w artykule na przechwytywanie maszyny Wirtualne
 
 -  Program PowerShell: [Sposób tworzenia obrazu maszyny Wirtualnej niezarządzanej maszyny wirtualnej platformy Azure](../../../virtual-machines/windows/capture-image-resource.md)
 -  Interfejs wiersza polecenia platformy Azure: [Jak utworzyć obraz maszyny wirtualnej lub wirtualnego dysku twardego](../../../virtual-machines/linux/capture-image.md)
--  INTERFEJS API: [Virtual Machines — przechwytywania](https://docs.microsoft.com/rest/api/compute/virtualmachines/capture)
+-  API: [Virtual Machines — przechwytywania](https://docs.microsoft.com/rest/api/compute/virtualmachines/capture)
 
 
 ## <a name="generalize-the-vm-image"></a>Uogólnij obraz maszyny Wirtualnej
@@ -40,8 +40,8 @@ Postępuj zgodnie z instrukcjami w artykule na przechwytywanie maszyny Wirtualne
 Ponieważ obraz użytkownika został wygenerowany z wcześniej uogólnionego wirtualnego dysku twardego, również powinien być uogólniony.  Ponownie wybierz następującego artykułu, który odnosi się do mechanizmu Twojego dostępu.  (Możesz może mieć już uogólniony dysku podczas została przechwycona.)
 
 -  Program PowerShell: [Uogólnianie maszyny Wirtualnej](https://docs.microsoft.com/azure/virtual-machines/windows/sa-copy-generalized#generalize-the-vm)
--  Interfejs wiersza polecenia platformy Azure: [Krok 2: Tworzenie obrazu maszyny Wirtualnej](https://docs.microsoft.com/azure/virtual-machines/linux/capture-image#step-2-create-vm-image)
--  INTERFEJS API: [Uogólnianie maszyny wirtualne —](https://docs.microsoft.com/rest/api/compute/virtualmachines/generalize)
+-  Interfejs wiersza polecenia platformy Azure: [Krok 2. Tworzenie obrazu maszyny Wirtualnej](https://docs.microsoft.com/azure/virtual-machines/linux/capture-image#step-2-create-vm-image)
+-  API: [Uogólnianie maszyny wirtualne —](https://docs.microsoft.com/rest/api/compute/virtualmachines/generalize)
 
 
 ## <a name="next-steps"></a>Kolejne kroki

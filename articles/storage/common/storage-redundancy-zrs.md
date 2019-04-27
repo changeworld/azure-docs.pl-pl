@@ -9,11 +9,11 @@ ms.date: 10/24/2018
 ms.author: jeking
 ms.subservice: common
 ms.openlocfilehash: ab3984b29b3bdfac7599c68c14bd6cc5b671cdf4
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447260"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60731416"
 ---
 # <a name="zone-redundant-storage-zrs-highly-available-azure-storage-applications"></a>Magazyn strefowo nadmiarowy (ZRS): Aplikacje usługi Azure Storage o wysokiej dostępności
 [!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-zrs.md)]

@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: pbutlerm
 ms.openlocfilehash: fa5280fd834d6defaf2816167a73bf72dc3d0a1c
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54355861"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60729872"
 ---
 # <a name="manage-azure-and-appsource-marketplace-offers"></a>Zarządzanie ofertami platformy Azure i usługi AppSource w portalu Marketplace
 
@@ -33,7 +33,7 @@ Cloud Partner Portal umożliwia wydawcy wykonywać następujące podstawowe oper
 |     Operacja      |  Opis                                           |
 |     ---------      |  -----------                                           |
 | [Tworzenie oferty](./cpp-create-offer.md)   | Tworzy wpis oczekujące oferty w repozytorium dołączania, ale nie automatycznie publikuje go do portalu Microsoft marketplace | 
-| [Wyświetl stan oferty](./cpp-view-status-offer.md)   | Zawiera informacje o stanie publikacji oferty.  Istnieje wiele miejsc w witrynie portal, w którym jest wyświetlana informacje o stanie. |
+| [Wyświetlanie stanu oferty](./cpp-view-status-offer.md)   | Zawiera informacje o stanie publikacji oferty.  Istnieje wiele miejsc w witrynie portal, w którym jest wyświetlana informacje o stanie. |
 | [Publikowanie oferty](./cpp-publish-offer.md) | Sprawdza poprawność, a następnie publikuje wpis ukończone oferty odpowiedniego portalu Microsoft Marketplace.  Oferta jest określane jako *live*. |
 | [Aktualizowanie oferty](./cpp-update-offer.md)   | Umożliwia modyfikowanie niektórych właściwości istniejącej oferty.  Dotyczy zarówno oczekujące, jak i opublikowanych ofert. |
 | [Usuwanie oferty](./cpp-delete-offer.md)   | Usuwa oferty istniejących oczekujące lub na żywo.  | 

@@ -15,15 +15,15 @@ ms.workload: TBD
 ms.date: 01/16/2018
 ms.author: alkohli
 ms.openlocfilehash: 80f01a926b94deebab59f8ef91bfc36a4600b5f0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57885054"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60632404"
 ---
 # <a name="use-the-net-sdk-to-initiate-data-transformation"></a>Zainicjuj przekształcania danych przy użyciu zestawu SDK platformy .NET
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 W tym artykule wyjaśniono, jak funkcja transformacji danych w ramach usługi StorSimple Data Manager można użyć do przekształcania danych urządzenia StorSimple. Przekształcone dane są następnie używane przez inne usługi platformy Azure w chmurze.
 

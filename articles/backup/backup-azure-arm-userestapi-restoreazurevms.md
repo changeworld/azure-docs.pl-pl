@@ -11,11 +11,11 @@ ms.date: 09/12/2018
 ms.author: pullabhk
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
 ms.openlocfilehash: 4a65e8a855b9be797c1ceeacf4b74fea74697d00
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55100216"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60646660"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>Przywracanie maszyn wirtualnych platformy Azure przy użyciu interfejsu API REST
 
@@ -37,7 +37,7 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 ### <a name="responses"></a>Odpowiedzi
 
-|Name  |Typ  |Opis  |
+|Name (Nazwa)  |Typ  |Opis  |
 |---------|---------|---------|
 |200 OK     |   [RecoveryPointResourceList](https://docs.microsoft.com/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       OK  |
 
@@ -137,7 +137,7 @@ POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/
 
 Aby wyzwolić przywracania dysku z kopii zapasowej maszyny Wirtualnej platformy Azure, poniżej przedstawiono składniki w treści żądania.
 
-|Name  |Typ  |Opis  |
+|Name (Nazwa)  |Typ  |Opis  |
 |---------|---------|---------|
 |properties     | [IaaSVMRestoreRequest](https://docs.microsoft.com/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 
@@ -171,7 +171,7 @@ Wyzwalanie przywracania dysku jest [operację asynchroniczną](https://docs.micr
 
 Zwraca ona dwie odpowiedzi: 202 (zaakceptowano), gdy inna operacja zostanie utworzony, a następnie 200 (OK), po zakończeniu tej operacji.
 
-|Name  |Typ  |Opis  |
+|Name (Nazwa)  |Typ  |Opis  |
 |---------|---------|---------|
 |202 zaakceptowano     |         |     Zaakceptowany    |
 

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: d227b8d038dd686bde9b031ca2c58adc7dd6d76b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58104458"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60718125"
 ---
 # <a name="overview-of-multi-tenant-support-for-vmware-disaster-recovery-to-azure-with-csp"></a>Omówienie obsługi wielodostępu do odzyskiwania po awarii programu VMware na platformę Azure za pomocą programu CSP
 
@@ -89,7 +89,7 @@ Skonfiguruj serwer konfiguracji za pomocą konta które ma specjalną rolę do n
 
 3. Przypisz poziomy dostępu do konta vCenter (używane na serwerze konfiguracji dzierżawy) dla różnych obiektów w następujący sposób:
 
->| Obiekt | Rola | Uwagi |
+>| Object | Rola | Uwagi |
 >| --- | --- | --- |
 >| vCenter | Tylko do odczytu | Potrzebne tylko po to zezwolić na dostęp vCenter do zarządzania różnymi obiektami. Można usuwać tego uprawnienie, jeśli konto nigdy nie będzie można przekazać do dzierżawy lub używany dla wszystkich operacji zarządzania w programie vcenter. |
 >| Centrum danych | Azure_Site_Recovery |  |

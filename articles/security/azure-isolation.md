@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
 ms.openlocfilehash: f5d1c66cb049ab9ec52db619d55a4bb3e485e4b2
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109847"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60588538"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Izolacja w chmurze publicznej platformy Azure
 ##  <a name="introduction"></a>Wprowadzenie
-### <a name="overview"></a>Przegląd
+### <a name="overview"></a>Omówienie
 Ułatwiają Azure bieżących i przyszłych klientów zrozumieć i korzystanie z różnych funkcji zabezpieczeń dostępnych w i związanych z platformą Azure, firma Microsoft opracowała szereg oficjalne dokumenty, przeglądy zabezpieczeń, najlepsze rozwiązania i Listy kontrolne.
 Tematy zakresu pod względem szczegółowo i są okresowo aktualizowane. Ten dokument jest częścią tej serii, zgodnie z opisem w następującej sekcji abstrakcyjne.
 
@@ -72,7 +72,7 @@ Użytkownikom, grupom i aplikacjom z tego katalogu można zarządzać zasobów w
 
 Diagnostyka i koniecznych konserwacji działający model, korzystającej z systemu podniesienie uprawnień just in time jest wymagane i używane. Usługa Azure AD Privileged Identity Management (PIM) wprowadza koncepcję uprawnionego administratora. [Uprawnionymi administratorami](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) powinny być użytkownicy, którzy muszą uprzywilejowanego dostępu teraz, a następnie, ale nie każdego dnia. Rola pozostaje nieaktywna, a gdy użytkownik potrzebuje dostępu, przechodzi proces aktywacji i staje się aktywnym administratorem na określony z góry czas.
 
-![Usługa Azure AD Privileged Identity Management](./media/azure-isolation/azure-isolation-fig2.png)
+![Azure AD Privileged Identity Management](./media/azure-isolation/azure-isolation-fig2.png)
 
 Usługa Azure Active Directory obsługuje każdą dzierżawę we własnym kontenerze chronione, za pomocą zasad i uprawnień, aby i w kontenerze wyłącznie do i są zarządzane przez dzierżawcę.
 

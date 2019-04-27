@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/04/2018
 ms.author: ellacroi
-ms.openlocfilehash: d3af6484a2c62a0ffa0a21e2df277ef3255ada84
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: cf7216d5634adf42c2e3435b122dcff58446821a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160862"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60625316"
 ---
 # <a name="build-your-landing-page"></a>Stroną docelową kompilacji
 
@@ -43,7 +43,7 @@ Bardziej spójny jesteś w swojej komunikatów i wywołania do akcji, łatwiej j
 
 W przypadku kampanii gotowy plan, należy utworzyć stroną docelową w portalu Marketplace. W poniższej tabeli opisano sposoby może pomóc zmaksymalizować efektywność stroną docelową: 
 
-| Najlepszym rozwiązaniem jest | Należy unikać |
+| Najlepsze rozwiązania | Należy unikać |
 |:--- |:--- |
 | **Jaki problem klientów rozwiązuje rozwiązania i jak praca za pomocą usługi Azure** | Nie komunikuje się z metod, w którym rozwiązania współdziałają z platformą Azure. |
 | **Tworzenie krótkich, łatwa do zapamiętania adresów URL** | Przy użyciu długich adresów URL. Długich adresów URL nie są do zapamiętania i są trudne do zlokalizowania. |

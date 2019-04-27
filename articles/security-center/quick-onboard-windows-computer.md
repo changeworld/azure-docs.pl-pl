@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 12/3/2018
 ms.author: rkarlin
 ms.openlocfilehash: bee4618ff08c89bbdab7413ca7f7f74a266d96dd
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58077908"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60706809"
 ---
 # <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>Szybki start: Dołączanie komputerów z systemem Windows do usługi Azure Security Center
 Po dołączeniu subskrypcji platformy Azure możesz włączyć usługę Security Center dla zasobów uruchomionych poza platformą Azure, np. lokalnych lub znajdujących się w innych chmurach, aprowizując agenta Microsoft Monitoring Agent.

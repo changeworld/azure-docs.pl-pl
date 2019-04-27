@@ -15,14 +15,14 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
 ms.openlocfilehash: ed57d72d32ba82a37036c9af77590bd4e93db8d9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57904256"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60610521"
 ---
 # <a name="introduction-to-azure-security"></a>Wprowadzenie do zabezpieczeń platformy Azure
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Wiemy, że bezpieczeństwo to zadanie, jeden w chmurze i jak ważne jest, że możesz znaleźć dokładne i aktualne informacje o zabezpieczeniach platformy Azure. Jedną z najważniejszych powodów, dla aplikacji i usług za pomocą platformy Azure jest korzystanie z zalet jej szeroką gamę narzędzi zabezpieczeń i możliwości. Te narzędzia i możliwości pomocy, umożliwiają tworzenie bezpiecznych rozwiązań na platformie Azure jest bezpieczne. Microsoft Azure oferuje poufność, integralność i dostępność danych klientów, pozwalając również przezroczyste odpowiedzialności.
 
 Aby umożliwić użytkownikom lepsze rozumienie zbiór zabezpieczeń formanówy implementowanych w systemie Microsoft Azure z perspektywy operacji firmy Microsoft i klienta, tym oficjalnym dokumencie "Wprowadzenie do usługi Azure Security", są zapisywane do zapewniają pełny w zabezpieczeń dostępne z platformą Microsoft Azure.

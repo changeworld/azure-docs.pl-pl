@@ -18,11 +18,11 @@ ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 58cd76e93b9d0888211e8339ae17170685e71e74
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58480014"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60637758"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>Przygotowywanie infrastruktury platformy Azure SAP wysokiej dostępności przy użyciu Windows trybu failover klastra i udział plików dla wystąpień SAP ASCS/SCS
 
@@ -316,7 +316,7 @@ Możesz też zautomatyzować wdrażanie serwera plików skalowalnego w poziomie 
 > W szablonie Menedżera zasobów serwera plików skalowalnego w poziomie, interfejs użytkownika musisz określić liczbę maszyn wirtualnych.
 >
 
-### <a name="use-managed-disks"></a>Użyj usługi Managed Disks
+### <a name="use-managed-disks"></a>Użyj dysków zarządzanych
 
 Szablon usługi Azure Resource Manager do wdrażania serwera plików skalowalnego w poziomie z bezpośrednimi miejscami do magazynowania i usługi Azure Managed Disks jest dostępna na [GitHub][arm-sofs-s2d-managed-disks].
 

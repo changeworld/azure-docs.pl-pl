@@ -2,18 +2,18 @@
 title: Kopiowanie lub przenoszenie danych do usługi Azure Storage za pomocą narzędzia AzCopy w systemie Linux | Dokumentacja firmy Microsoft
 description: Narzędzia AzCopy można użyć w narzędzie systemu Linux, do przeniesienia lub skopiowania danych do lub z obiektów blob i zawartości pliku. Kopiowanie danych do usługi Azure Storage z lokalnych plików lub kopiowania danych w ramach lub między kontami magazynu. Łatwo Migruj dane do usługi Azure Storage.
 services: storage
-author: seguler
+author: tamram
 ms.service: storage
 ms.topic: article
 ms.date: 04/26/2018
-ms.author: seguler
+ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 0f87645537576f49ee04b823341acf8853798f88
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58882229"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60730059"
 ---
 # <a name="transfer-data-with-azcopy-on-linux"></a>Transferowanie danych za pomocą narzędzia AzCopy w systemie Linux
 

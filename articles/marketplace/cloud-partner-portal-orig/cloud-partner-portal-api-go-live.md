@@ -15,11 +15,11 @@ ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pbutlerm
 ms.openlocfilehash: ea3f26d70c4a4ce07c988612890687504a4cf5ac
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594682"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60624976"
 ---
 <a name="go-live"></a>Rozpocznij na żywo
 =======

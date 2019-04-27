@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: b83a6e2c81eac9993c481561e3cebbed681d2c4a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58096048"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60640331"
 ---
 # <a name="how-to-set-a-static-internal-private-ip-address-using-powershell-classic"></a>Jak skonfigurować statyczne wewnętrzne prywatny adres IP przy użyciu programu PowerShell (wersja klasyczna)
 W większości przypadków nie trzeba określić statyczny adres IP wewnętrznego dla maszyny wirtualnej. Maszyny wirtualne w sieci wirtualnej automatycznie otrzyma wewnętrznego adresu IP z zakresu, który określisz. Jednak w niektórych przypadkach Określanie statyczny adres IP dla konkretnej maszyny Wirtualnej ma sens. Na przykład, jeśli maszyna wirtualna będzie uruchamiany DNS lub zostanie kontrolerem domeny. Statyczny adres IP wewnętrznego pozostaje z maszyną Wirtualną, nawet za pośrednictwem do stanu zatrzymania/anulowania aprowizacji. 

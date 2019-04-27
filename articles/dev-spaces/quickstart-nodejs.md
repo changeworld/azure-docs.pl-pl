@@ -12,11 +12,11 @@ description: Szybkie opracowywanie usługi Kubernetes przy użyciu kontenery, mi
 keywords: Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s
 manager: jeconnoc
 ms.openlocfilehash: bc18a06405c0fe620136642a409df576c8e8d8b3
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59361720"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60706766"
 ---
 # <a name="quickstart-develop-with-nodejs-on-kubernetes-using-azure-dev-spaces"></a>Szybki start: Programowanie za pomocą środowiska Node.js na platformie Kubernetes przy użyciu usługi Azure Dev miejsca do magazynowania
 

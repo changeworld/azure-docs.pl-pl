@@ -15,15 +15,15 @@ ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
 ms.openlocfilehash: f05e3e85d36ffc23a193a6771a0271c71b2f8544
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58013639"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60631910"
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>Oprogramowanie serii StorSimple 8000, wysoką dostępność i wymagania sieciowe
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Witamy na platformie Microsoft Azure StorSimple. W tym artykule opisano wymagania systemowe i najlepszych rozwiązań dla urządzenia StorSimple i klientów usług magazynowych korzystających urządzenia. Firma Microsoft zaleca, aby zapoznać się z informacjami dokładnie przed wdrożeniem systemu StorSimple i następnie wrócić do niego zgodnie z potrzebami podczas wdrażania i kolejna operacja.
 
@@ -96,7 +96,7 @@ Firma Microsoft zaleca ustawienie reguły zapory dla ruchu wychodzącego, w opar
 
 | Wzorzec URL | Składnik/funkcji | Adresy IP urządzeń |
 | --- | --- | --- |
-| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*`<br>`https://login.windows.net` |Usługa menedżera urządzeń StorSimple<br>Usługa kontroli dostępu<br>Azure Service Bus<br>Usługa uwierzytelniania |Interfejsy sieciowe z obsługą chmury |
+| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*`<br>`https://login.windows.net` |Usługa Menedżer urządzeń StorSimple<br>Usługa kontroli dostępu<br>Azure Service Bus<br>Usługa uwierzytelniania |Interfejsy sieciowe z obsługą chmury |
 | `https://*.backup.windowsazure.com` |Rejestracja urządzenia |Tylko dane 0 |
 | `https://crl.microsoft.com/pki/*`<br>`https://www.microsoft.com/pki/*` |Odwoływanie certyfikatów |Interfejsy sieciowe z obsługą chmury |
 | `https://*.core.windows.net/*` <br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Konta usługi Azure storage i monitorowania |Interfejsy sieciowe z obsługą chmury |
@@ -108,7 +108,7 @@ Firma Microsoft zaleca ustawienie reguły zapory dla ruchu wychodzącego, w opar
 
 | Wzorzec URL | Składnik/funkcji | Adresy IP urządzeń |
 | --- | --- | --- |
-| `https://*.storsimple.windowsazure.us/*`<br>`https://*.accesscontrol.usgovcloudapi.net/*`<br>`https://*.servicebus.usgovcloudapi.net/*`<br>`https://login.microsoftonline.us` |Usługa menedżera urządzeń StorSimple<br>Usługa kontroli dostępu<br>Azure Service Bus<br>Usługa uwierzytelniania |Interfejsy sieciowe z obsługą chmury |
+| `https://*.storsimple.windowsazure.us/*`<br>`https://*.accesscontrol.usgovcloudapi.net/*`<br>`https://*.servicebus.usgovcloudapi.net/*`<br>`https://login.microsoftonline.us` |Usługa Menedżer urządzeń StorSimple<br>Usługa kontroli dostępu<br>Azure Service Bus<br>Usługa uwierzytelniania |Interfejsy sieciowe z obsługą chmury |
 | `https://*.backup.windowsazure.us` |Rejestracja urządzenia |Tylko dane 0 |
 | `https://crl.microsoft.com/pki/*`<br>`https://www.microsoft.com/pki/*` |Odwoływanie certyfikatów |Interfejsy sieciowe z obsługą chmury |
 | `https://*.core.usgovcloudapi.net/*` <br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Konta usługi Azure storage i monitorowania |Interfejsy sieciowe z obsługą chmury |

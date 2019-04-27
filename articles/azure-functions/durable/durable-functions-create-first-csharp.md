@@ -12,11 +12,11 @@ ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: azfuncdf
 ms.openlocfilehash: 2a0cee1ad750144f30b9ab6732e0bbdf8138db28
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038161"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60731569"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>Tworzenie pierwszej funkcji trwałej w języku C\#
 

@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 02/28/2019
 ms.author: diberry
 ms.openlocfilehash: 4a48bb4a6e988d4352f957c6435a9c1bf0a3e5fb
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57340120"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60712738"
 ---
 # <a name="email-prebuilt-entity-for-a-luis-app"></a>Wyślij wiadomość e-mail ze wstępnie utworzonych jednostek dla aplikacji usługi LUIS
 Wyodrębniania wiadomości e-mail zawiera adres e-mail całego z wypowiedź. Ponieważ przeprowadzono już uczenie tej jednostki, nie musisz Dodawanie wypowiedzi przykład zawierający do intencji aplikacji poczty e-mail. Adres e-mail jednostki jest obsługiwana w `en-us` tylko kultury. 

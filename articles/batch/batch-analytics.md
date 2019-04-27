@@ -13,11 +13,11 @@ ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: lahugh
 ms.openlocfilehash: 999c3037196044250b8a12d6b6b380553e58c6ba
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460186"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60721559"
 ---
 # <a name="batch-analytics"></a>Analiza danych usługi Batch
 Tematy w analizach wsadowych zawierają informacje dotyczące zdarzenia i alerty, dostępne dla zasobów usługi Batch.

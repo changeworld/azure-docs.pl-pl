@@ -13,11 +13,11 @@ ms.date: 02/19/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 2ec2ddbac5d0368aaf1b46208c9ebb44bf12a622
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447314"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60734358"
 ---
 # <a name="assets"></a>Elementy zawartości
 
@@ -34,18 +34,18 @@ Element zawartości jest mapowany na kontener obiektów blob w [konta usługi Az
 
 Jednym z typowych przepływów pracy usługi Media Services jest przekazywanie, kodowanie i przesyłanie strumieniowe plików. W tej sekcji opisano ogólne kroki.
 
-1. Użyj interfejsu API usługi Media Services v3, aby utworzyć nowy zasób "danych wejściowych". Ta operacja tworzy kontener w ramach konta magazynu skojarzone z kontem usługi Media Services. Interfejs API zwraca nazwę kontenera (na przykład `"container": "asset-b8d8b68a-2d7f-4d8c-81bb-8c7bbbe67ee4"`).
+1. Użyj interfejsu API usługi Media Services w wersji 3, aby utworzyć nowy element zawartości typu „input”. Ta operacja polega na utworzeniu kontenera na koncie magazynu skojarzonym z kontem usługi Media Services. Interfejs API zwraca nazwę kontenera (na przykład `"container": "asset-b8d8b68a-2d7f-4d8c-81bb-8c7bbbe67ee4"`).
    
-    Jeśli masz już kontener obiektów blob, który chcesz skojarzyć z zasobem, należy określić nazwę kontenera, podczas tworzenia elementu zawartości. Usługa Media Services aktualnie obsługuje tylko obiekty BLOB w katalogu głównym kontenera, a nie przy użyciu ścieżki w nazwie pliku. W związku z tym kontener o nazwie "input.mp4" będą działać. Kontener o nazwie "videos/inputs/input.mp4", nie będzie działać.
+    Jeśli masz już kontener obiektów blob, który chcesz skojarzyć z elementem zawartości, możesz podać nazwę kontenera podczas tworzenia elementu zawartości. Usługa Media Services aktualnie obsługuje tylko obiekty blob w katalogu głównym kontenera, a nie w obrębie ścieżek w nazwie pliku. W związku z tym kontener z nazwą pliku „input.mp4” będzie działać. Kontener z nazwą pliku videos/inputs/input.mp4” nie będzie działać.
 
-    Za pomocą wiersza polecenia platformy Azure można przekazać bezpośrednio do dowolnego konta magazynu i kontener, w którym masz uprawnienia do subskrypcji. <br/>Nazwa kontenera musi być unikatowa i postępuj zgodnie z magazynu wskazówki dotyczące nazewnictwa. Nazwa nie musi postępuj zgodnie z elementu zawartości multimediów usługi nazwa kontenera (identyfikator GUID zasobu), formatowanie. 
+    Za pomocą wiersza polecenia platformy Azure można przekazywać pliki bezpośrednio do dowolnego konta magazynu i kontenera, do których masz uprawnienia w subskrypcji. <br/>Nazwa kontenera musi być unikatowa i zgodna ze wskazówkami dotyczącymi nazewnictwa magazynu. Nazwa nie musi być zgodna z formatowaniem nazwy kontenera elementów zawartości usługi Media Services (Asset-GUID). 
     
     ```azurecli
     az storage blob upload -f /path/to/file -c MyContainer -n MyBlob
     ```
-2. Pobierz adres URL sygnatury dostępu Współdzielonego z uprawnieniami odczytu / zapisu, używane można przekazać pliki cyfrowe do kontenera zasobów. Można użyć interfejsu API Media Services do [listy adresów URL kontenera zasobów](https://docs.microsoft.com/rest/api/media/assets/listcontainersas).
-3. Za pomocą interfejsów API usługi Azure Storage lub zestawów SDK (na przykład [interfejsu API REST magazynu](../../storage/common/storage-rest-api-auth.md), [zestawu JAVA SDK](../../storage/blobs/storage-quickstart-blobs-java-v10.md), lub [zestawu .NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)) przekazywanie plików do kontenera zasobów. 
-4. Użyj interfejsów API w wersji 3 usługa Media Services, aby utworzyć przekształcenie i zadania przetwarzania "danych wejściowych" element zawartości. Aby uzyskać więcej informacji, zobacz [Przekształcenia i zadania](transform-concept.md).
+2. Pobierz adres URL sygnatury dostępu współdzielonego z uprawnieniami odczytu/zapisu, który będzie używany do przekazywania plików cyfrowych do kontenera elementów zawartości. W celu [utworzenia listy adresów URL kontenerów elementów zawartości](https://docs.microsoft.com/rest/api/media/assets/listcontainersas) można użyć interfejsu API usługi Media Services.
+3. W celu przekazania plików do kontenera elementów zawartości należy użyć interfejsów API lub zestawów SDK usługi Azure Storage (np. [interfejsu API REST magazynu](../../storage/common/storage-rest-api-auth.md), [zestawu JAVA SDK](../../storage/blobs/storage-quickstart-blobs-java-v10.md) lub [zestawu .NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)). 
+4. W celu utworzenia przekształcenia i zadania przetwarzającego element zawartości „input” należy użyć interfejsów API usługi Media Services w wersji 3. Aby uzyskać więcej informacji, zobacz [Przekształcenia i zadania](transform-concept.md).
 5. Stream zawartość z zasobu "Wyjście".
 
 Aby uzyskać pełny przykład .NET, który pokazuje, jak: tworzenia zasobu, Pobierz adres URL zapisu sygnatury dostępu Współdzielonego do zasobu kontenera w magazynie, przekazać plik do kontenera w magazynie przy użyciu adresu URL sygnatury dostępu Współdzielonego, zobacz [utworzyć dane wejściowe zadania z pliku lokalnego](job-input-from-local-file-how-to.md).
@@ -60,7 +60,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 Na przykład REST, zobacz [utworzenie elementu zawartości z użyciem usług REST](https://docs.microsoft.com/rest/api/media/assets/createorupdate#examples) przykład.
 
-W przykładzie pokazano sposób tworzenia **treść żądania** której można określić przydatne informacje, takie jak opis, nazwa kontenera, konto magazynu oraz inne informacje.
+W przykładzie pokazano sposób utworzenia **treści żądania**, w której można określić przydatne informacje, takie jak opis, nazwa kontenera, konto magazynu oraz inne informacje.
 
 #### <a name="curl"></a>cURL
 
@@ -105,5 +105,5 @@ Aby chronić Twoje zasoby w spoczynku, zasoby mają zostać zaszyfrowane za pomo
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Strumieniowe przesyłanie pliku](stream-files-dotnet-quickstart.md)
-* [Za pomocą funkcji DVR w chmurze](live-event-cloud-dvr.md)
+* [Korzystanie z funkcji DVR w chmurze](live-event-cloud-dvr.md)
 * [Różnice między Media Services v2 i v3](migrate-from-v2-to-v3.md)

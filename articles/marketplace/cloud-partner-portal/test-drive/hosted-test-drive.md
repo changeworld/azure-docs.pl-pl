@@ -15,13 +15,13 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 5057c0c781cb9ec60ecde7dd3f4bf96089b902df
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312686"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60559793"
 ---
-# <a name="hosted-test-drive"></a>Hostowanej wersji testowej
+# <a name="hosted-test-drive"></a>Hostowana wersja testowa
 
 Testowej hostowanych eliminuje złożoność konfiguracji w ramach hostingu firmy Microsoft i obsługa usługi przeprowadzające użytkownika wersji testowej aprowizacji i cofania aprowizacji. Ten artykuł jest przeznaczony dla wydawców z opisem oferty w usłudze AppSource lub tworzysz nową i chcesz zaoferować wersję testową hostowanej, która łączy się z usługą Dynamics 365 for Customer Engagement, Dynamics 365 for Finance oraz Operations lub Dynamics 365 Business Central wystąpienie.
 

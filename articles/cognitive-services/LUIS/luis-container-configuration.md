@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: diberry
 ms.openlocfilehash: e05998f74223ead6bb4e94b86469e51791e0263f
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678568"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60599386"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>Konfigurowanie kontenerów platformy Docker interpretacji języka 
 
@@ -46,7 +46,7 @@ Ten kontener ma następujące ustawienia konfiguracji:
 
 To ustawienie można znaleźć w następujących miejscach:
 
-* Azure Portal: **Usługi cognitive Services** zarządzanie zasobami w obszarze **kluczy**
+* Witryna Azure Portal: **Usługi cognitive Services** zarządzanie zasobami w obszarze **kluczy**
 * Portal usługi LUIS: **Ustawienia punktu końcowego i klucze** strony. 
 
 Nie należy używać klucza starter lub tworzenia klucza. 
@@ -61,7 +61,7 @@ Nie należy używać klucza starter lub tworzenia klucza.
 
 To ustawienie można znaleźć w następujących miejscach:
 
-* Azure Portal: **Usługi cognitive Services** Przegląd, etykietą `Endpoint`
+* Witryna Azure Portal: **Usługi cognitive Services** Przegląd, etykietą `Endpoint`
 * Portal usługi LUIS: **Ustawienia punktu końcowego i klucze** stronie jako część identyfikatora URI punktu końcowego.
 
 Pamiętaj, aby uwzględnić `luis/v2.0` routingu w adresie URL, jak pokazano w poniższej tabeli:

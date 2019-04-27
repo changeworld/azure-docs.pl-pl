@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: bwren
 ms.openlocfilehash: 7eb5f090026b415e3c980116a9317594f4ca8115
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750773"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60728070"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>Za pomocą funkcji w zapytaniach dzienników usługi Azure Monitor
 
@@ -39,7 +39,7 @@ Tworzenie funkcji przy użyciu usługi Log Analytics w witrynie Azure portal, kl
 | Name (Nazwa)           | Nazwa wyświetlana dla zapytania w **Eksplorator zapytań**. |
 | Zapisz jako        | Funkcja |
 | Alias funkcji | Krótka nazwa do użycia funkcji w innych zapytań. Nie może zawierać spacji i muszą być unikatowe. |
-| Kategoria       | Kategorię, aby zorganizować zapisanych zapytań i funkcji w **Eksplorator zapytań**. |
+| Category       | Kategorię, aby zorganizować zapisanych zapytań i funkcji w **Eksplorator zapytań**. |
 
 > [!NOTE]
 > Funkcja w usłudze Azure Monitor nie może zawierać innej funkcji.

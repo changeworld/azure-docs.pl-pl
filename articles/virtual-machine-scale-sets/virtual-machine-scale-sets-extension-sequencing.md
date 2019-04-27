@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 01/30/2019
 ms.author: manayar
 ms.openlocfilehash: 2e5dfda16c4828b3113fc50d4cffc79fe6ff19e8
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564004"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60620176"
 ---
 # <a name="sequence-extension-provisioning-in-virtual-machine-scale-sets"></a>Ustawia sekwencji aprowizacja rozszerzenia w skali maszyny wirtualnej
 Rozszerzenia maszyny wirtualnej platformy Azure zapewniają możliwości, takie jak konfiguracji po wdrożeniu i zarządzania, monitorowania, zabezpieczeń i więcej. Wdrożenia produkcyjne zazwyczaj korzystają z kombinacją wielu rozszerzeń skonfigurowane dla wystąpień maszyn wirtualnych do osiągnięcia zakładanych wyników.

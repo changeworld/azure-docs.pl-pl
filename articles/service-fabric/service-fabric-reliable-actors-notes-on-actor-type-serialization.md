@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: c8eeeb0ade6ca002adf3211cbf49127be9b76edb
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667519"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60725656"
 ---
 # <a name="notes-on-service-fabric-reliable-actors-type-serialization"></a>Uwagi dotyczące usługi Service Fabric Reliable Actors — serializacja typów
 Argumenty wszystkie metody, typy wyników zadania zwracane przez poszczególnych metod interfejsu aktora i obiekty przechowywane w Menedżer stanu aktora należy [kontraktu danych serializacji](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer). Dotyczy to również argumenty metody zdefiniowane w [interfejsów zdarzeń aktora](service-fabric-reliable-actors-events.md). (Metod interfejsu zdarzenia aktora zawsze zwracać typ void.)

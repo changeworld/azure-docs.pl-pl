@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/20/2016
 ms.author: timlt
 ms.openlocfilehash: b3660901c86dd644369e6d1913e825cbd5ea316b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58918471"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60623208"
 ---
 # <a name="managing-azure-cloud-services-using-azure-automation"></a>Zarządzanie usług Azure Cloud Services przy użyciu usługi Azure Automation
 Ten przewodnik Wprowadzenie do usługi Azure Automation i jak może służyć do uproszczenia zarządzania usługami Azure cloud services.

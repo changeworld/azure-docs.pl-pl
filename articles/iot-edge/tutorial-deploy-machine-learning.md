@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 985f1f73fbfc8c75df8393615fca32f5d1c08b9d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 8b1036128755a5218afc35648dfd16f09f559908
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58078316"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60611774"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Samouczek: Wdrażanie usługi Azure Machine Learning jako modułu usługi IoT Edge (wersja zapoznawcza)
 
@@ -102,7 +102,7 @@ sudo systemctl restart iotedge
 W tej sekcji Konwertuj maszynę uczonego modelu uczenia i do usługi Azure Machine Learning usługi kontenera. Wszystkie wymagane składniki obrazu platformy Docker znajdują się w [repozytorium zestawu narzędzi SI dla usługi Azure IoT Edge](https://github.com/Azure/ai-toolkit-iot-edge/tree/master/IoT%20Edge%20anomaly%20detection%20tutorial). Wykonaj następujące kroki, aby przekazać tego repozytorium do notesów usługi Azure firmy Microsoft do tworzenia kontenera i Wypchnij go do usługi Azure Container Registry.
 
 
-1. Przejdź do swoich projektów notesy platformy Azure. Możesz uzyskać ich z obszaru roboczego usługi Azure Machine Learning w [witryny Azure portal](https://portal.azure.com) lub logując się do [Microsoft Azure notesów](https://notebooks.azure.com/home/projects) z kontem platformy Azure.
+1. Przejdź do swoich projektów notesy platformy Azure. Użytkownik może dostać się tam z obszaru roboczego usługi Azure Machine Learning w [witryny Azure portal](https://portal.azure.com) lub logując się do [Microsoft Azure notesów](https://notebooks.azure.com/home/projects) z kontem platformy Azure.
 
 2. Wybierz **repozytorium GitHub, aby przekazać**.
 

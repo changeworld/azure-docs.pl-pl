@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: diberry
 ms.openlocfilehash: 118ac858103776e880e7304199279a7d50ad71b1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58112283"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60599569"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Samouczek: Rozwiązywanie problemów z niepewnymi przewidywaniami przez przeglądanie wypowiedzi punktu końcowego
 W tym samouczku ulepszysz przewidywanie aplikacji, weryfikując i poprawiając wypowiedzi odebrane za pośrednictwem punktu końcowego HTTP usługi LUIS i uznane za niepewne przez tę usługę. Niektóre wypowiedzi mogą wymagać weryfikacji pod kątem intencji, a inne — pod kątem jednostki. Należy regularnie przeglądać wypowiedzi punktu końcowego w ramach zaplanowanej konserwacji usługi LUIS. 

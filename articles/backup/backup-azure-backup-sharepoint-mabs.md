@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 6/8/2018
 ms.author: kasinh
 ms.openlocfilehash: 7fa68e11ccac69db9335e589f5048264df9d0a47
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58074985"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60645334"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure"></a>Tworzenie kopii zapasowych farmy programu SharePoint na platformie Azure
 Wykonywania kopii zapasowych farmy programu SharePoint w systemie Microsoft Azure za pomocą Microsoft Azure Backup Server (MABS) w podobny sposób, należy utworzyć kopię zapasową innych źródeł danych. Usługa Azure Backup zapewnia elastyczność harmonogram tworzenia kopii zapasowych, aby utworzyć codziennie, co tydzień, miesięczny lub roczny kopii zapasowej wskazuje i udostępnia opcje zasad przechowywania dla różnych punktów kopii zapasowej. Umożliwia także przechowywać kopie dysk lokalny dla szybkiego cele czasu odzyskiwania (RTO), a następnie do przechowywania kopii na platformie Azure, ekonomiczne, długoterminowego przechowywania.
@@ -225,10 +225,10 @@ W poniższym przykładzie *element odzyskiwanie programu SharePoint* został prz
 5. W tym momencie wykonać kroki odzyskiwania, w tym artykule, aby odzyskać bazę danych zawartości programu SharePoint z dysku.
 
 ## <a name="faqs"></a>Często zadawane pytania
-PYT.: Czy można odzyskać element programu SharePoint do oryginalnej lokalizacji, jeśli program SharePoint jest skonfigurowany przy użyciu funkcji SQL AlwaysOn (Ochrona na dysku)?<br>
+Pyt.: Czy można odzyskać element programu SharePoint do oryginalnej lokalizacji, jeśli program SharePoint jest skonfigurowany przy użyciu funkcji SQL AlwaysOn (Ochrona na dysku)?<br>
 Odp.: Tak, element można odzyskać do oryginalnej witryny programu SharePoint.
 
-PYT.: Czy można odzyskać bazy danych programu SharePoint do oryginalnej lokalizacji, jeśli program SharePoint jest skonfigurowany przy użyciu funkcji SQL AlwaysOn?<br>
+Pyt.: Czy można odzyskać bazy danych programu SharePoint do oryginalnej lokalizacji, jeśli program SharePoint jest skonfigurowany przy użyciu funkcji SQL AlwaysOn?<br>
 Odp.: Bazy danych programu SharePoint są skonfigurowane w funkcji SQL AlwaysOn, nie można modyfikować, chyba że grupa dostępności zostanie usunięta. W rezultacie serwera usługi Mab, nie można przywrócić bazę danych do oryginalnej lokalizacji. Może odzyskać bazę danych programu SQL Server do innego wystąpienia programu SQL Server.
 
 ## <a name="next-steps"></a>Następne kroki

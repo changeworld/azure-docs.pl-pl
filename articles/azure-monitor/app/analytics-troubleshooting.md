@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: mbullwin
 ms.openlocfilehash: ecf0638aa999208331603ac30ccf4eb17b3c4500
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55960687"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60692384"
 ---
 # <a name="troubleshoot-analytics-in-application-insights"></a>Rozwiązywanie problemów z analizą w usłudze Application Insights
 Problemy z [analizy usługi Application Insights](analytics.md)? Zacznij tutaj. Analytics to zaawansowane wyszukiwanie narzędzia usługi Azure Application Insights.
 
-## <a name="limits"></a>Limity
+## <a name="limits"></a>Limits
 * Obecnie wyniki zapytania są ograniczone do dokładnie w ciągu tygodnia ostatnich danych.
 * Przetestowanie w przeglądarkach: najnowszej wersji programu Chrome, Microsoft Edge i Internet Explorer.
 

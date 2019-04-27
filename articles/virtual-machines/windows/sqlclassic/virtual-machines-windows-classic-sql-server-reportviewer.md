@@ -16,15 +16,15 @@ ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: maghan
 ms.openlocfilehash: b554dc1fa33519d87aa0c9c5ba9130b47cbea142
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971754"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60580072"
 ---
 # <a name="use-reportviewer-in-a-web-site-hosted-in-azure"></a>Korzystanie z narzędzia ReportViewer w witrynie internetowej hostowanej na platformie Azure
 > [!IMPORTANT]
-> Platforma Azure ma dwa różne modele wdrażania do tworzenia i pracy z zasobami: [Usługi Resource Manager i Model Klasyczny](../../../azure-resource-manager/resource-manager-deployment-model.md). Ten artykuł dotyczy klasycznego modelu wdrażania. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager.
+> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [Usługi Resource Manager i Model Klasyczny](../../../azure-resource-manager/resource-manager-deployment-model.md). Ten artykuł dotyczy klasycznego modelu wdrażania. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager.
 
 Możesz tworzyć witryny sieci Web platformy Microsoft, za pomocą kontrolki ReportViewer usługi Visual Studio, która wyświetla raport przechowywane na maszynie wirtualnej platformy Microsoft. Kontrolka ReportViewer jest w aplikacji sieci Web kompilacji przy użyciu szablonu aplikacji sieci Web platformy ASP.NET.
 

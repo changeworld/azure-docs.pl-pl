@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: db35f16e-1565-4873-a851-bd987accdc58
 ms.topic: conceptual
 ms.date: 05/24/2018
-ms.openlocfilehash: f48dc07e27c6cb01a842f1f6d720ed6476028ef7
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 8323c4e1b236444f55dab826d2567491f5f0f736
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542316"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60629326"
 ---
 # <a name="adding-a-user-in-the-azure-portal"></a>Dodanie użytkownika w witrynie Azure portal
 
@@ -42,7 +42,7 @@ Przyznaj "R-X" lub "RWX", zgodnie z potrzebami, w przypadku folderów zawierają
 
 ## <a name="adding-a-user-using-powershell"></a>Dodanie użytkownika przy użyciu programu PowerShell
 
-1. Postępuj zgodnie z instrukcjami w tym przewodniku: [jak zainstalować i skonfigurować program Azure PowerShell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/).
+1. Postępuj zgodnie z instrukcjami w tym przewodniku: [Jak zainstalować i skonfigurować program Azure PowerShell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/).
 2. Pobierz [AdlaJobUser.ps1 Dodaj](https://github.com/Azure/AzureDataLake/blob/master/Samples/PowerShell/ADLAUsers/Add-AdlaJobUser.ps1) skrypt programu PowerShell.
 3. Uruchom skrypt programu PowerShell. 
 
