@@ -100,13 +100,13 @@ W poniższej tabeli określono, czy typ danych usługi Azure Search jest obsług
 
 | Typ danych w usłudze Azure Search | Obsługiwane w ujściu usługi Azure Search |
 | ---------------------- | ------------------------------ |
-| Ciąg | Tak |
+| String | Tak |
 | Int32 | Tak |
 | Int64 | Tak |
-| Podwójne | Tak |
-| Wartość logiczna | Tak |
+| Double | Tak |
+| Boolean | Tak |
 | DataTimeOffset | Tak |
-| Tablica ciągów | Nie |
+| String Array | Nie |
 | GeographyPoint | Nie |
 
 ## <a name="json-example-copy-data-from-on-premises-sql-server-to-azure-search-index"></a>Przykład kodu JSON: Kopiowanie danych z lokalnego programu SQL Server do indeksu usługi Azure Search
