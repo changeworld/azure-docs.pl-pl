@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.date: 12/14/2018
 ms.author: tamram
 ms.openlocfilehash: 8dff81d3f3594798a1b08184af0098f3bd86c12c
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011048"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60392045"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-python"></a>Szybki start: przekazywanie i pobieranie obiektów blob oraz wyświetlanie ich listy za pomocą języka Python
 
