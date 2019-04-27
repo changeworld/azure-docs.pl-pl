@@ -12,15 +12,15 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 06/15/2018
+ms.date: 04/05/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6fd3eccf3de5d46520dc5a50cab66667c875799e
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ee54d37050991763e60a6feb96c75d80384a42ac
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454613"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60722226"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Wdrażanie aplikacji do węzłów za pomocą pakietów aplikacji usługi Batch obliczeniowych
 
@@ -29,14 +29,11 @@ Funkcja pakietów aplikacji usługi Azure Batch umożliwia łatwe zarządzanie a
 W tym artykule dowiesz się, jak przekazywać i zarządzanie pakietami aplikacji w witrynie Azure portal. Następnie dowiesz się, jak mają być instalowane w węzłach obliczeniowych w puli za pomocą [platformy .NET usługi Batch] [ api_net] biblioteki.
 
 > [!NOTE]
-> 
 > Pakiety aplikacji są obsługiwane we wszystkich pulach usługi Batch utworzonych po 5 lipca 2017 r. W pulach usługi Batch utworzonych między 10 marca 2016 r. a 5 lipca 2017 r. są one obsługiwane tylko w przypadku, gdy pula została utworzona za pomocą konfiguracji usługi w chmurze. Pule usługi Batch utworzone przed 10 marca 2016 r. nie obsługują pakietów aplikacji.
 >
 > Interfejsy API do tworzenia i zarządzania pakiety aplikacji są częścią [Batch Management .NET] [ api_net_mgmt] biblioteki. Instalowanie pakietów aplikacji w węźle obliczeniowym interfejsy API są częścią [platformy .NET usługi Batch] [ api_net] biblioteki. Porównywalne funkcje są uwzględnione w dostępnych interfejsów API usługi Batch dla innych języków. 
 >
 > Funkcja pakietów aplikacji, które są opisane w tym miejscu zastępuje funkcję aplikacji usługi Batch dostępnych w poprzednich wersjach usługi.
-> 
-> 
 
 ## <a name="application-package-requirements"></a>Wymagań dotyczących pakietu aplikacji
 Aby użyć pakietów aplikacji, musisz [Łączenie konta usługi Azure Storage](#link-a-storage-account) z kontem usługi Batch.
@@ -116,6 +113,14 @@ To okno wyświetla identyfikator każdej aplikacji w koncie oraz następujące w
 * **Pakiety**: Numer wersji skojarzonej z tą aplikacją.
 * **Domyślna wersja**: Wersja aplikacji zainstalowane, jeśli nie wskazują wersji po określeniu aplikacji dla puli. To ustawienie jest opcjonalne.
 * **Zezwalaj na aktualizacje**: Wartość, która określa, czy pakiet aktualizacji, usuwania i dodatki są dozwolone. Jeśli jest ono ustawione na **nie**, pakiet aktualizacji i usuwania są wyłączone dla aplikacji. Można dodawać tylko nowe wersje pakietu aplikacji. Wartość domyślna to **Tak**.
+
+Jeśli chcesz wyświetlić strukturę pliku pakietu aplikacji w węźle obliczeń, przejdź do konta usługi Batch w portalu. Z kontem usługi Batch, przejdź do **pule**. Wybierz pulę, która zawiera węzły obliczeniowe, których interesuje Cię.
+
+![Węzły w puli][13]
+
+Po wybraniu puli, przejdź do węzła obliczeniowego zainstalowanego pakietu aplikacji. W tym miejscu, szczegółowe informacje o pakiecie aplikacji znajdują się w **aplikacje** folderu. Dodatkowe foldery w węźle obliczeniowym zawierają inne pliki, takie jak zadania uruchamiania, pliki wyjściowe, dane wyjściowe błędu itp.
+
+![Pliki w węźle][14]
 
 ### <a name="view-application-details"></a>Wyświetlanie szczegółów aplikacji
 Aby wyświetlić szczegółowe informacje dotyczące aplikacji, wybierz aplikację w **aplikacje** okna.
@@ -374,3 +379,5 @@ Za pomocą pakietów aplikacji możesz pomóc klientom Wybierz aplikacje do swoi
 [10]: ./media/batch-application-packages/app_pkg_10.png "Wybierz blok konto magazynu w witrynie Azure portal"
 [11]: ./media/batch-application-packages/app_pkg_11.png "Bloku pakietu aktualizacji w witrynie Azure portal"
 [12]: ./media/batch-application-packages/app_pkg_12.png "Usuwanie w witrynie Azure portal, okno dialogowe potwierdzenia pakietu"
+[13]: ./media/batch-application-packages/package-file-structure.png "Obliczenia informacje o węźle w witrynie Azure portal"
+[14]: ./media/batch-application-packages/package-file-structure-node.png "Pliki w węźle obliczeniowym, wyświetlany w witrynie Azure portal"

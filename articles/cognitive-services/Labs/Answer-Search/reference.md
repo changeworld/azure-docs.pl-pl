@@ -11,11 +11,11 @@ ms.topic: reference
 ms.date: 04/13/2018
 ms.author: rosh, v-gedod
 ms.openlocfilehash: 09fab691ea04ad98472abc4f4dee5ecb4d22e660
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527323"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60721015"
 ---
 # <a name="project-answer-search-v7-reference"></a>Odwołanie do projektu odpowiedzi wyszukiwania w wersji 7
 
@@ -83,7 +83,7 @@ Dostępne są następujące nagłówki, które mogą obejmować żądania i odpo
 Żądanie może obejmować następujące parametry zapytania. Zobacz wymaganej kolumny dla wymaganych parametrów. Należy najpierw, adres URL zakodować parametry zapytania.  
   
   
-|Name (Nazwa)|Wartość|Typ|Wymagane|  
+|Name (Nazwa)|Wartość|Type|Wymagane|  
 |----------|-----------|----------|--------------|  
 |<a name="mkt" />mkt|Rynek, z którego pochodzą wyniki. <br /><br />Aby uzyskać listę możliwych wartości na rynku Zobacz kodów na rynku.<br /><br /> **UWAGA:** Adres URL interfejsu API w wersji zapoznawczej aktualnie obsługuje tylko en-us rynku i język.<br /><br />|String|Yes|  
 |<a name="query" />q|Adres URL, aby wyświetlić podgląd|String|Yes|  
@@ -96,7 +96,7 @@ Dostępne są następujące nagłówki, które mogą obejmować żądania i odpo
 Schemat odpowiedzi to albo [Strona internetowa] lub ErrorResponse, tak jak API wyszukiwania w Internecie. Jeśli żądanie zakończy się niepowodzeniem, jest obiektem najwyższego poziomu [ErrorResponse](#errorresponse) obiektu.
 
 
-|Obiekt|Opis|  
+|Object|Opis|  
 |------------|-----------------|  
 |[WebPage]|Najwyższego poziomu obiekt JSON, który zawiera atrybuty (wersja zapoznawcza).|  
 |[Fakt]|Najwyższego poziomu obiekt JSON, który zawiera dane.| 
@@ -106,7 +106,7 @@ Schemat odpowiedzi to albo [Strona internetowa] lub ErrorResponse, tak jak API w
 ### <a name="error"></a>Błąd  
 Definiuje błąd, który wystąpił.  
   
-|Element|Opis|Typ|  
+|Element|Opis|Type|  
 |-------------|-----------------|----------|  
 |<a name="error-code" />Kod|Kod błędu, który identyfikuje kategorii błędów. Aby uzyskać listę możliwych kodów, zobacz [kody błędów](#error-codes).|String|  
 |<a name="error-message" />Komunikat|Opis błędu.|String|  
@@ -119,7 +119,7 @@ Definiuje błąd, który wystąpił.
 ### <a name="errorresponse"></a>ErrorResponse  
 Obiekt najwyższego poziomu, który zawiera odpowiedź, gdy żądanie zakończy się niepowodzeniem.  
   
-|Name (Nazwa)|Wartość|Typ|  
+|Name (Nazwa)|Wartość|Type|  
 |----------|-----------|----------|  
 |_type|Wskazówka typu.|String|  
 |<a name="errors" />Błędy|Lista błędów, które opisują przyczyny niepowodzenia żądania.|[Error](#error)|  
@@ -129,7 +129,7 @@ Obiekt najwyższego poziomu, który zawiera odpowiedź, gdy żądanie zakończy 
 ### <a name="license"></a>Licencja  
 Definiuje licencji w ramach której można użyć typu text lub zdjęć.  
   
-|Name (Nazwa)|Wartość|Typ|  
+|Name (Nazwa)|Wartość|Type|  
 |----------|-----------|----------|  
 |name|Nazwa licencji.|String|  
 |url|Adres URL witryny sieci Web, gdzie użytkownik może uzyskać więcej informacji o licencji.<br /><br /> Użyj nazwy i adresu URL, aby utworzyć hiperłącze.|String|  
@@ -138,19 +138,19 @@ Definiuje licencji w ramach której można użyć typu text lub zdjęć.
 ### <a name="licenseattribution"></a>LicenseAttribution  
 Definiuje umownych regułę autorstwa licencji.  
   
-|Name (Nazwa)|Wartość|Typ|  
+|Name (Nazwa)|Wartość|Type|  
 |----------|-----------|----------|  
 |_type|Wskazówka typu, która jest równa LicenseAttribution.|String|  
 |licencja|Licencja, pod którym zawartość może być używany.|[Licencja](#license)|  
 |licenseNotice|Licencja do wyświetlenia obok pola docelowego. Na przykład "tekst w ramach licencji DW przez administratora systemu".<br /><br /> Użyj nazwy i adresu URL w licencji `license` pola, aby utworzyć hiperłącze do witryny sieci Web, która opisuje szczegółowe informacje o licencji. Następnie zastąp nazwę licencji w `licenseNotice` ciąg (na przykład, CC-przez-SA), z hiperłącza właśnie utworzony.|String|  
-|mustBeCloseToContent|Wartość logiczna określająca, czy zawartość reguły muszą być umieszczone w bliskim sąsiedztwie do pola, które dotyczy reguła. Jeśli **true**, zawartość musi być umieszczony w pobliżu. Jeśli **false**, lub nie istnieje w tym polu, zawartość można umieścić uznania obiektu wywołującego.|Wartość logiczna|  
+|mustBeCloseToContent|Wartość logiczna określająca, czy zawartość reguły muszą być umieszczone w bliskim sąsiedztwie do pola, które dotyczy reguła. Jeśli **true**, zawartość musi być umieszczony w pobliżu. Jeśli **false**, lub nie istnieje w tym polu, zawartość można umieścić uznania obiektu wywołującego.|Boolean|  
 |targetPropertyName|Nazwa pola, które dotyczy reguła.|String|  
   
 
 ### <a name="link"></a>Link  
 Określa składniki hiperłącza.  
   
-|Name (Nazwa)|Wartość|Typ|  
+|Name (Nazwa)|Wartość|Type|  
 |----------|-----------|----------|  
 |_type|Wskazówka typu.|String|  
 |tekst|Tekst wyświetlany.|String|  
@@ -160,10 +160,10 @@ Określa składniki hiperłącza.
 ### <a name="linkattribution"></a>LinkAttribution  
 Definiuje umownych regułę autorstwa łącza.  
   
-|Name (Nazwa)|Wartość|Typ|  
+|Name (Nazwa)|Wartość|Type|  
 |----------|-----------|----------|  
 |_type|Wskazówka typu, która jest równa LinkAttribution.|String|  
-|mustBeCloseToContent|Wartość logiczna określająca, czy zawartość reguły muszą być umieszczone w bliskim sąsiedztwie do pola, które dotyczy reguła. Jeśli **true**, zawartość musi być umieszczony w pobliżu. Jeśli **false**, lub nie istnieje w tym polu, zawartość można umieścić uznania obiektu wywołującego.|Wartość logiczna|  
+|mustBeCloseToContent|Wartość logiczna określająca, czy zawartość reguły muszą być umieszczone w bliskim sąsiedztwie do pola, które dotyczy reguła. Jeśli **true**, zawartość musi być umieszczony w pobliżu. Jeśli **false**, lub nie istnieje w tym polu, zawartość można umieścić uznania obiektu wywołującego.|Boolean|  
 |targetPropertyName|Nazwa pola, które dotyczy reguła.<br /><br /> Jeśli element docelowy nie zostanie określony, uznanie autorstwa stosuje do jednostki jako całość i powinien być wyświetlany natychmiast po przedstawieniu jednostki. Jeśli istnieje wiele tekst i link reguł autorstwa, których nie określono elementu docelowego, połącz je i wyświetlaj je za pomocą "dane:" etykiety. Na przykład "dane z < Nazwa1 dostawcy\> &#124; < name2 dostawcy\>".|String|  
 |tekst|Tekst: uznanie autorstwa.|String|  
 |url|Adres URL witryny sieci Web dostawcy. Użyj `text` i adres URL, aby utworzyć hiperłącza.|String|  
@@ -172,10 +172,10 @@ Definiuje umownych regułę autorstwa łącza.
 ### <a name="mediaattribution"></a>MediaAttribution  
 Definiuje umownych regułę autorstwa nośnika.  
   
-|Name (Nazwa)|Wartość|Typ|  
+|Name (Nazwa)|Wartość|Type|  
 |----------|-----------|----------|  
 |_type|Wskazówka typu, która jest równa MediaAttribution.|String|  
-|mustBeCloseToContent|Wartość logiczna określająca, czy zawartość reguły muszą być umieszczone w bliskim sąsiedztwie do pola, które dotyczy reguła. Jeśli **true**, zawartość musi być umieszczony w pobliżu. Jeśli **false**, lub nie istnieje w tym polu, zawartość można umieścić uznania obiektu wywołującego.|Wartość logiczna|  
+|mustBeCloseToContent|Wartość logiczna określająca, czy zawartość reguły muszą być umieszczone w bliskim sąsiedztwie do pola, które dotyczy reguła. Jeśli **true**, zawartość musi być umieszczony w pobliżu. Jeśli **false**, lub nie istnieje w tym polu, zawartość można umieścić uznania obiektu wywołującego.|Boolean|  
 |targetPropertyName|Nazwa pola, które dotyczy reguła.|String|  
 |url|Adres URL, który umożliwia tworzenie hiperłącza zawartości multimedialnej. Na przykład jeśli element docelowy jest obrazem, można użyć adresu URL Aby utworzyć obraz możesz klikać.|String|  
   
@@ -186,7 +186,7 @@ Określa wydawcę.
   
 Należy pamiętać, że wydawca może zapewnić ich nazwy, ich witryny sieci Web lub obu tych.  
   
-|Name (Nazwa)|Wartość|Typ|  
+|Name (Nazwa)|Wartość|Type|  
 |----------|-----------|----------|  
 |name|Nazwa wydawcy.|String|  
 |url|Adres URL witryny sieci Web wydawcy.<br /><br /> Należy pamiętać, wydawca nie mogą zawierać witryny sieci Web.|String|  
@@ -196,7 +196,7 @@ Należy pamiętać, że wydawca może zapewnić ich nazwy, ich witryny sieci Web
 ### <a name="webpage"></a>Strony sieci Web  
 Określa informacje o stronie sieci Web w wersji zapoznawczej.  
   
-|Name (Nazwa)|Wartość|Typ|  
+|Name (Nazwa)|Wartość|Type|  
 |----------|-----------|----------|
 |name|Tytuł strony, niekoniecznie tytuł HTML|String|
 |url|Adres URL, który faktycznie został przeszukane (żądanie może wykonano przekierowania)|String|  
@@ -208,36 +208,36 @@ Określa informacje o stronie sieci Web w wersji zapoznawczej.
 ### <a name="querycontext"></a>QueryContext  
 Definiuje kontekst zapytania, które Bing użyta dla żądania.  
   
-|Element|Opis|Typ|  
+|Element|Opis|Type|  
 |-------------|-----------------|----------|  
-|adultIntent|Wartość logiczna wskazująca, czy określona kwerenda ma dorosłych. Wartość jest **true** Jeśli kwerenda ma dorosłych; w przeciwnym razie **false**.|Wartość logiczna|  
+|adultIntent|Wartość logiczna wskazująca, czy określona kwerenda ma dorosłych. Wartość jest **true** Jeśli kwerenda ma dorosłych; w przeciwnym razie **false**.|Boolean|  
 |alterationOverrideQuery|Ciąg zapytania do użycia, aby wymusić Bing w celu użycia oryginalny ciąg. Na przykład, jeśli ciąg zapytania jest *saling downwind*, zastąpienie ciągu zapytania będą *+ saling downwind*. Pamiętaj, aby zakodować ciąg zapytania, co skutkuje *% 2Bsaling + downwind*.<br /><br /> To pole jest uwzględniane tylko wtedy, gdy oryginalny ciąg zapytania zawiera błąd pisowni.|String|  
 |alteredQuery|Ciąg zapytania używane przez usługę Bing do wykonania zapytania. Usługa Bing używa ciągu zapytania zmieniony, jeśli oryginalny ciąg zapytania zawiera błędy pisowni. Na przykład, jeśli ciąg zapytania jest `saling downwind`, ciąg zapytania zmienionego będzie `sailing downwind`.<br /><br /> To pole jest uwzględniane tylko wtedy, gdy oryginalny ciąg zapytania zawiera błąd pisowni.|String|  
-|askUserForLocation|Wartość logiczna wskazująca, czy Bing wymaga lokalizacji użytkownika, aby zapewnić dokładne wyniki. Jeśli w określonej lokalizacji użytkownika przy użyciu [ClientIP-X-MSEdge](#clientip) i [X wyszukiwania lokalizacji](#location) nagłówków, możesz zignorować to pole.<br /><br /> Dla zapytań pamiętać lokalizacji, takich jak "Bieżąca pogoda" lub "restauracje w pobliżu" wymagających lokalizacji użytkownika, aby zapewnić dokładne wyniki, to pole jest ustawione **true**.<br /><br /> Dla lokalizacji pamiętać zapytań, które obejmują lokalizację (na przykład "Seattle o pogodzie"), to pole jest ustawione **false**. To pole jest również ustawiona na **false** dla zapytań, które nie są lokalizacji, takich jak "najlepiej sprzedających".|Wartość logiczna|  
+|askUserForLocation|Wartość logiczna wskazująca, czy Bing wymaga lokalizacji użytkownika, aby zapewnić dokładne wyniki. Jeśli w określonej lokalizacji użytkownika przy użyciu [ClientIP-X-MSEdge](#clientip) i [X wyszukiwania lokalizacji](#location) nagłówków, możesz zignorować to pole.<br /><br /> Dla zapytań pamiętać lokalizacji, takich jak "Bieżąca pogoda" lub "restauracje w pobliżu" wymagających lokalizacji użytkownika, aby zapewnić dokładne wyniki, to pole jest ustawione **true**.<br /><br /> Dla lokalizacji pamiętać zapytań, które obejmują lokalizację (na przykład "Seattle o pogodzie"), to pole jest ustawione **false**. To pole jest również ustawiona na **false** dla zapytań, które nie są lokalizacji, takich jak "najlepiej sprzedających".|Boolean|  
 |originalQuery|Ciąg zapytania określony w żądaniu.|String|  
 
 ### <a name="identifiable"></a>Do zidentyfikowania
 
-|Name (Nazwa)|Wartość|Typ|  
+|Name (Nazwa)|Wartość|Type|  
 |-------------|-----------------|----------|
 |id|Identyfikator zasobu|String|
  
 ### <a name="rankinggroup"></a>RankingGroup
 Definiuje grupy w wynikach wyszukiwania, takie jak mainline.
 
-|Name (Nazwa)|Wartość|Typ|  
+|Name (Nazwa)|Wartość|Type|  
 |-------------|-----------------|----------|
 |pozycje|Lista wyników wyszukiwania do wyświetlenia w grupie.|RankingItem|
 
 ### <a name="rankingitem"></a>RankingItem
 Definiuje element wyników wyszukiwania, aby wyświetlić.
 
-|Name (Nazwa)|Wartość|Typ|  
+|Name (Nazwa)|Wartość|Type|  
 |-------------|-----------------|----------|
 |resultIndex|Liczony od zera indeks elementu w odpowiedzi na pytanie do wyświetlenia. Jeśli element nie zawiera tego pola, można wyświetlić wszystkie elementy w odpowiedzi na pytanie. Na przykład wyświetlić wszystkie artykuły w odpowiedzi na wiadomości.|Liczba całkowita|
 |answerType|Odpowiedź, który zawiera element, aby wyświetlić. Na przykład wiadomości.<br /><br />Aby znaleźć odpowiedzi w obiekcie SearchResponse, należy użyć typu. Typ jest nazwa pola SearchResponse.<br /><br /> Jednak używać typu odpowiedzi, tylko wtedy, gdy ten obiekt zawiera pola wartości; w przeciwnym razie go zignorować.|String|
 |textualIndex|Indeks odpowiedzi w textualAnswers do wyświetlenia.| Liczba całkowita bez znaku|
-|wartość|Identyfikatora, który identyfikuje odpowiedzi, aby wyświetlić lub element odpowiedź do wyświetlenia. Jeśli identyfikator identyfikuje odpowiedzi, wyświetlanie wszystkich elementów w odpowiedzi.|Do zidentyfikowania|
+|value|Identyfikatora, który identyfikuje odpowiedzi, aby wyświetlić lub element odpowiedź do wyświetlenia. Jeśli identyfikator identyfikuje odpowiedzi, wyświetlanie wszystkich elementów w odpowiedzi.|Do zidentyfikowania|
 
 ### <a name="rankingresponse"></a>RankingResponse  
 Określa, gdzie na wyszukiwanie zawartości strony wyników powinny zostać umieszczone i w jakiej kolejności.  
@@ -254,7 +254,7 @@ Definiuje obiekt najwyższego poziomu, który zawiera odpowiedź, gdy żądanie 
   
 Należy pamiętać, że jeśli usługa podejrzewa "odmowa usługi", żądanie zakończy się pomyślnie (kod stanu HTTP jest 200 OK); jednak treści odpowiedzi jest pusta.  
   
-|Name (Nazwa)|Wartość|Typ|  
+|Name (Nazwa)|Wartość|Type|  
 |----------|-----------|----------|  
 |_type|Wskazówka typu jest ustawiona na SearchResponse.|String|  
 |Strony sieci Web|Obiekt JSON, który definiuje korzystania z wersji zapoznawczej|string|  
@@ -263,7 +263,7 @@ Należy pamiętać, że jeśli usługa podejrzewa "odmowa usługi", żądanie za
 ### <a name="textattribution"></a>TextAttribution  
 Definiuje umownych regułę autorstwa zwykły tekst.  
   
-|Name (Nazwa)|Wartość|Typ|  
+|Name (Nazwa)|Wartość|Type|  
 |----------|-----------|----------|  
 |_type|Wskazówka typu, która jest równa TextAttribution.|String|  
 |tekst|Tekst: uznanie autorstwa.<br /><br /> Tekst: uznanie autorstwa dotyczy jednostki jako całość i powinien zostać wyświetlony od razu po przedstawieniu jednostki. Jeśli istnieje wiele tekstu lub linków reguł autorstwa, których nie określono elementu docelowego, połącz je i wyświetlaj je za pomocą "dane:" etykiety.|String| 

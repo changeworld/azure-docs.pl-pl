@@ -10,11 +10,11 @@ ms.date: 1/10/2017
 ms.author: saurse
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 59236774f98af927082c78f4b75a1f5880a7cac4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259608"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60646962"
 ---
 # <a name="move-your-long-term-storage-from-tape-to-the-azure-cloud"></a>Przenieś swoje długoterminowego z taśmy do chmury platformy Azure
 Klienci platformy Azure i kopii zapasowych programu System Center Data Protection Manager wykonywać następujące czynności:
@@ -44,10 +44,10 @@ Zasady przechowywania określają czas trwania, dla której muszą być przechow
 ## <a name="example--putting-both-together"></a>Przykład — zarówno zestawiania
 ![Przykładowy ekran](./media/backup-azure-backup-cloud-as-tape/samplescreen.png)
 
-1. **Zasady przechowywania codziennych**: wykonywane codzienne kopie zapasowe są przechowywane przez siedem dni.
-2. **Sady przechowywania**: kopie zapasowe wykonywane codziennie o północy i 18: 00 Sobota są zachowywane przez 4 tygodnie
-3. **Zasady przechowywania miesięczne**: kopii zapasowych wykonanych o północy i 18: 00 w sobotę ostatniego dnia każdego miesiąca są zachowywane przez 12 miesięcy
-4. **Roczne zasady przechowywania**: kopii zapasowych wykonanych o północy w ostatnią sobotę co marca są zachowywane przez okres 10 lat
+1. **Zasady przechowywania codziennych**: Wykonywane codzienne kopie zapasowe są przechowywane przez siedem dni.
+2. **Sady przechowywania**: Kopie zapasowe wykonywane codziennie o północy i 18: 00 Sobota są zachowywane przez 4 tygodnie
+3. **Zasady przechowywania miesięczne**: Kopii zapasowych wykonanych o północy i 18: 00 w sobotę ostatniego dnia każdego miesiąca są zachowywane przez 12 miesięcy
+4. **Roczne zasady przechowywania**: Kopii zapasowych wykonanych o północy w ostatnią sobotę co marca są zachowywane przez okres 10 lat
 
 Całkowita liczba "punkty przechowywania" (punkty, w których klient może przywrócić dane) na powyższym diagramie jest obliczana w następujący sposób:
 

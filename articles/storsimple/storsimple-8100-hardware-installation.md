@@ -14,19 +14,19 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 5fbc407a9792d033037fdaa2b14f4055d94c15ab
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: b367b6e7126a442dc68646ff52a29c955f50b798
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38701946"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60631230"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>Je rozpakować, zamontować w stojaku i Podłączanie kabli do urządzenia StorSimple 8100
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Usługi Microsoft Azure StorSimple 8100 to obudowy pojedynczego urządzenia montowane w stojaku. W tym samouczku wyjaśniono, jak rozpakować, zamontować w stojaku i kabel StorSimple 8100 urządzeń sprzętowych przed skonfigurowaniem i wdrażanie urządzenia StorSimple.
 
 ## <a name="unpack-your-storsimple-8100-device"></a>Rozpakowywanie urządzenia StorSimple 8100
-W poniższych krokach przedstawiono wyraźne, szczegółowe instrukcje dotyczące rozpakowania urządzenia StorSimple 8100 magazynu. To urządzenie jest dostarczany w jednym polu.
+W poniższych krokach przedstawiono wyraźne, szczegółowe instrukcje dotyczące rozpakowania urządzenia StorSimple 8100 magazynu. To urządzenie jest dostarczane w jednym pudełku.
 
 ### <a name="prepare-to-unpack-your-device"></a>Przygotowanie do rozpakowywania urządzenia
 Zanim można rozpakować urządzenie, przejrzyj następujące informacje.
@@ -34,26 +34,26 @@ Zanim można rozpakować urządzenie, przejrzyj następujące informacje.
 ![Ikona ostrzeżenia](./media/storsimple-safety/IC740879.png)![ikonę ciężki](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) **ostrzeżenie!**
 
 1. Upewnij się, że dwie osoby dostępne na potrzeby zarządzania wagę obudowa, jeśli są obsługującą go ręcznie. W pełni skonfigurowany obudowy można porównać do 32 kg (70 lbs.).
-2. Umieść pole powierzchni stałą, poziomu.
+2. Umieść pudełko na płaskiej, poziomej powierzchni.
 
 Następnie wykonaj poniższe kroki, aby rozpakować urządzenie.
 
 #### <a name="to-unpack-your-device"></a>Aby rozpakować urządzenie
-1. Sprawdź, czy pole i maskotkę witryny pakowania dla crushes, kawałki, wody szkody lub widocznego uszkodzenia. Jeśli pola lub pakietu jest poważnie uszkodzona, nie należy otwierać okno. Proszę [skontaktuj się z Microsoft Support](storsimple-8000-contact-microsoft-support.md) ułatwią Ci ocenić, czy urządzenie jest w dobrym stanie.
-2. Rozpakuj pole. Na poniższej ilustracji przedstawiono widok nierozpakowane urządzenia StorSimple.
+1. Sprawdź, czy na pudełku i na piance opakowaniowej znajdują się naderwania, zarysowania, przecięcia, uszkodzenia od wody lub inne widoczne uszkodzenia. Jeśli pudełko lub opakowanie jest poważnie uszkodzone, nie należy go otwierać. Proszę [skontaktuj się z Microsoft Support](storsimple-8000-contact-microsoft-support.md) ułatwią Ci ocenić, czy urządzenie jest w dobrym stanie.
+2. Rozpakuj zawartość pudełka. Na poniższej ilustracji przedstawiono widok nierozpakowane urządzenia StorSimple.
    
      ![Rozpakowywanie urządzenia magazynu](./media/storsimple-8100-hardware-installation/HCSUnpackyour2Udevice.png)
    
     **Wczytaj widok urządzenia magazynu**
    
-   | Etykieta | Opis |
+   | Label | Opis |
    | --- | --- |
    |   1 |Okno dokumentu |
    |   2 |Dolny maskotkę witryny |
    |   3 |Urządzenie |
    |   4 |Najważniejsze maskotkę witryny |
    |   5 |Pole akcesoriów |
-3. Po rozpakowaniu pole, upewnij się, że masz:
+3. Po rozpakowaniu upewnij się, że masz:
    
    * 1 urządzenie pojedynczego obudowy
    * 2 przewodów zasilania
@@ -67,7 +67,7 @@ Następnie wykonaj poniższe kroki, aby rozpakować urządzenie.
      
      Jeśli nie masz żadnych elementów wymienionych powyżej, [skontaktuj się z Microsoft Support](storsimple-8000-contact-microsoft-support.md).
 
-Następnym krokiem jest urządzenie zamontować w stojaku.
+Następnym krokiem jest zamontowanie urządzenia na stojaku.
 
 ## <a name="rack-mount-your-storsimple-8100-device"></a>Urządzenie StorSimple 8100 zamontować w stojaku
 Wykonaj poniższe czynności, aby zainstalować urządzenia magazynu StorSimple 8100 w standardowym stelażu 19-calowy z przodu i wpisy na tylnej. Urządzenie StorSimple 8100 ma jednej podstawowej obudowie.
@@ -83,7 +83,7 @@ Instalacja składa się z wielu kroków, z których każdy jest omówione w poni
 Urządzenie musi być zainstalowany w standardowych stojaku 19-calowy, która ma zarówno frontonu, jak i tylnej wpisów. Poniższa procedura umożliwia przygotowanie do instalacji stojaka.
 
 #### <a name="to-prepare-the-site-for-rack-installation"></a>Aby przygotować lokacji stojak instalacji
-1. Upewnij się, że urządzenie bezpiecznie opiera się na roboczego płaskiej stabilne i poziomu powierzchni (lub podobny).
+1. Upewnij się, że urządzenie zostało bezpiecznie umieszczone na płaskiej, stabilnej i poziomej powierzchni roboczej (lub podobnej).
 2. Sprawdź, czy witryny, na którym zamierzasz skonfigurować ma standardowy zasilacza niezależne źródło lub stojak jednostki dystrybucji zasilania (PDU) przy użyciu zasilacz awaryjny (UPS).
 3. Upewnij się, że ten jedno gniazdo 2U jest dostępna w stojaku, w którym zamierzasz zainstalować na urządzeniu.
 
@@ -108,13 +108,13 @@ Do użytku z pliku cabinet stojak 19-calowy jest dostępny zestaw zainstalowania
 
     **Dołączanie wewnętrzny szyny slajdów na stronach obudowa**
    
-    Etykieta | Opis
+    Label | Opis
     ----- | -----------
     1     | M 3 x 4 śruby przycisk główny
     2     | Podstawa montażowa slajdów
 
 2. Dołączanie zewnętrznej szyny po lewej stronie i zestawy zewnętrzne po prawej stronie do stojak cabinet pionowej elementy członkowskie. Nawiasy są oznaczone **LH**, **RH**, i **ta strona się** przeprowadzenie Cię przez proces poprawnej orientacji.
-3. Znajdź numery PIN szyny na przedniej i tylnej części zestawu szyny. Rozszerz szyny mieści się między wpisów w stojaku i wstawianie numery PIN przedniej i tylnej stojak wpis składowej pionowej luki. Pamiętaj, że zestaw szyny jest poziom.
+3. Znajdź bolce szyny z przodu i z tyłu zestawu prowadnic. Rozszerz szyny mieści się między wpisów w stojaku i wstawianie numery PIN przedniej i tylnej stojak wpis składowej pionowej luki. Pamiętaj, że zestaw szyny jest poziom.
 4. Zapewnienie pionowej elementy członkowskie zestawu szyny w stojaku, użyj dwóch podanych śruby metryki. Użyj jednej śrubie na frontonu i jednej z tyłu.
 5. Powtórz te kroki dla innych zestawów szyny.<br/>
    
@@ -122,7 +122,7 @@ Do użytku z pliku cabinet stojak 19-calowy jest dostępny zestaw zainstalowania
    
     **Dołączanie zestawy zewnętrzne szyny w stojaku**
    
-   | Etykieta | Opis |
+   | Label | Opis |
    | --- | --- |
    |   1 |Granica gwintowanym |
    |   2 |Gwintowanym wpis w stojaku frontonu dziura kwadrat |
@@ -148,7 +148,7 @@ Za pomocą stojaku, które właśnie zostały zainstalowane, wykonaj następują
    
     **Instalowanie caps kołnierza**
    
-   | Etykieta | Opis |
+   | Label | Opis |
    | --- | --- |
    |   1 |Gwintowanym zaczepienia obudowy |
 
@@ -158,7 +158,7 @@ Następnym krokiem jest Podłączanie kabli do urządzenia do zasilania, sieci i
 Poniższe procedury dotyczą sposobu podłączanie kabli do urządzenia StorSimple 8100 zasilania, sieci i połączenia szeregowe.
 
 ### <a name="prerequisites"></a>Wymagania wstępne
-Przed rozpoczęciem okablowania urządzenia będą potrzebne:
+Przed rozpoczęciem podłączania kabli urządzenia będą potrzebne następujące elementy:
 
 * Urządzenie magazynujące, całkowicie rozpakowane i stojaku.
 * 2 kable zasilania, które są dołączone do urządzenia
@@ -188,7 +188,7 @@ Aby zapewnić obsługę pracy w trybie failover nadmiarowe kontrolera, musisz ok
    
     **Tylnej stronie urządzeń przedstawiający porty danych**
    
-   | Etykieta | Opis |
+   | Label | Opis |
    | --- | --- |
    |   0,1,4,5 |Interfejsy sieciowe w usłudze 1 GbE |
    |   2,3 |Interfejsów sieciowych 10 GbE |
@@ -199,13 +199,13 @@ Aby zapewnić obsługę pracy w trybie failover nadmiarowe kontrolera, musisz ok
 
     **Okablowania dla urządzenia sieciowego**
 
-   |Etykieta | Opis |
+   |Label | Opis |
    |----- | ----------- |
    | A    | Sieć LAN z dostępem do Internetu |
    | B    | Kontrolera 0 |
    | C    | MODULE PCM 0 |
    | D    | Kontrolera 1 |
-   | E    | MODULE PCM 1 |
+   | E    | PCM 1 |
    | F, G | Hosts |
    | 0-5  | Interfejsy sieciowe |
 
@@ -236,11 +236,11 @@ Wykonaj poniższe kroki, aby podłączyć do portu szeregowego.
 2. Identyfikowanie aktywnego kontrolera na płyty montażowej Twojego urządzenia. Migająca dioda niebieski wskazuje, czy kontroler jest aktywny.
 3. Użyj podanych kable szeregowe (jeśli jest to konieczne, konwerter szeregowego USB na komputerze przenośnym), a następnie podłączyć konsoli lub komputerze (przy użyciu emulacji terminala na urządzeniu) do portu szeregowego aktywny kontroler.
 4. Na komputerze, należy zainstalować sterowniki USB seryjny (dostarczane z urządzeniem).
-5. Skonfiguruj połączenie szeregowe w następujący sposób: 115 200 transmisji 8 bitów danych, 1 bit zatrzymania, bez parzystości i sterowanie przepływem ustawiony na wartość None.
+5. Skonfiguruj połączenie szeregowe w następujący sposób: 115 200 transmisji 8 bitów danych, 1 bit zatrzymania, bez parzystości i przepływ sterowania Ustaw na wartość None.
 6. Sprawdź, czy połączenie działa, naciskając klawisz Enter w konsoli. Powinny być wyświetlane menu konsoli szeregowej.
 
 > [!NOTE]
-> **Zarządzanie obsługą technologii lights-Out**: gdy urządzenie jest zainstalowane w zdalnym centrum danych lub w pomieszczeniu o ograniczonym dostępie, komputerów, upewnij się, zawsze połączenie szeregowe połączeń do obu kontrolerów do konsoli szeregowej lub podobnego sprzętu. Dzięki temu out-of-band zdalnego sterowania i pomocy technicznej operacji w przypadku zakłócenia w sieci lub nieoczekiwanych awarii.
+> **Zarządzanie obsługą technologii lights-Out**: Gdy urządzenie jest zainstalowane w zdalnym centrum danych lub w pomieszczeniu o ograniczonym dostępie, komputerów, upewnij się, czy połączenia szeregowe na obu kontrolerach zawsze są podłączone do konsoli szeregowej lub podobnego sprzętu. Dzięki temu out-of-band zdalnego sterowania i pomocy technicznej operacji w przypadku zakłócenia w sieci lub nieoczekiwanych awarii.
 > 
 > 
 

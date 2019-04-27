@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: jdial
 ms.openlocfilehash: 02db9f2b8cb2ec71d23ad077b90eeacb905d2a16
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58445640"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60565858"
 ---
 # <a name="azure-networking"></a>Sieci platformy Azure
 
@@ -29,7 +29,7 @@ System Azure oferuje szeroką gamę funkcji sieciowych, które mogą być używa
 - [Łączność z Internetem](#internet-connectivity): Komunikować się z zasobami platformy Azure za pośrednictwem Internetu.
 - [Połączeniami lokalnymi](#on-premises-connectivity): Łączenie sieci lokalnej z zasobów platformy Azure za pośrednictwem wirtualnej sieci prywatnej (VPN) za pośrednictwem Internetu lub za pośrednictwem specjalnego połączenia na platformie Azure.
 - [Kierunek ruchu i równoważenia obciążenia](#load-balancing): Równoważenie obciążenia ruchu do serwerów w tej samej lokalizacji i bezpośrednie kierowanie ruchu do serwerów w różnych lokalizacjach.
-- [Zabezpieczenia](#security): Filtrowanie ruchu sieciowego między podsieciami sieci lub poszczególnych maszyn wirtualnych (VM).
+- [Bezpieczeństwo](#security): Filtrowanie ruchu sieciowego między podsieciami sieci lub poszczególnych maszyn wirtualnych (VM).
 - [Routing](#routing): Za pomocą domyślny routing lub pełnej kontroli routingu między zasobami platformy Azure i lokalnie.
 - [Możliwości zarządzania](#manageability): Monitorowanie i zarządzanie zasobami sieci platformy Azure.
 - [Wdrażanie i Konfigurowanie narzędzia](#tools): Wdrażanie i konfigurowanie zasobów sieciowych, należy użyć oparty na sieci web portal lub narzędzi wiersza polecenia dla wielu platform.

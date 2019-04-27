@@ -15,15 +15,15 @@ ms.workload: TBD
 ms.date: 12/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 84734aefb72a3330d99c5707b461de2cd5e30484
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58097239"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60637906"
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-clone-a-volume"></a>Użyj usługi Menedżer urządzeń StorSimple w witrynie Azure portal, aby sklonować woluminu
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 W tym samouczku opisano sposób korzystania z zestawu, aby sklonować pojedynczy wolumin za pomocą kopii zapasowych **katalog kopii zapasowej** bloku. Objaśniono także różnice między *przejściowy* i *stałe* klony. Wskazówki zawarte w tym samouczku ma zastosowanie do wszystkich urządzeń serii StorSimple 8000 z aktualizacją Update 3 lub nowszej.
 

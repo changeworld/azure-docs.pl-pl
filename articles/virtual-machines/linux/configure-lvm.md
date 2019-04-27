@@ -17,11 +17,11 @@ ms.date: 09/27/2018
 ms.author: szark
 ms.subservice: disks
 ms.openlocfilehash: 08f98775360b8c0a82f68f322053cb71f0e79af3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457331"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60739084"
 ---
 # <a name="configure-lvm-on-a-linux-vm-in-azure"></a>Konfigurowanie LVM na Maszynę wirtualną systemu Linux na platformie Azure
 W tym dokumencie omówiono konfigurowanie Menedżera woluminów logicznych (LVM) na maszynie wirtualnej platformy Azure. LVM może być używana dla dysku systemu operacyjnego lub dysków danych w maszynach wirtualnych platformy Azure, jednak domyślnie większość obrazy w chmurze nie ma LVM skonfigurowane na dysku systemu operacyjnego. Poniższe kroki koncentruje się na temat konfigurowania LVM dla dysków z danymi.

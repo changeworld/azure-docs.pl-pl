@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
 ms.openlocfilehash: 1363dd3c620789b9f3c8ce1dbe0892ee61d66051
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58108209"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60741382"
 ---
 # <a name="disaster-recovery-and-geo-distribution"></a>Odzyskiwanie po awarii i dystrybucja geograficzna
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 W przypadku funkcji trwałych wszystkie stany są utrwalane w usłudze Azure Storage. A [Centrum zadań](durable-functions-task-hubs.md) to kontener logiczny dla zasobów usługi Azure Storage, które są używane do aranżacji. Funkcje programu orchestrator i działanie tylko można ze sobą współdziałać, jeśli należą do tego samego Centrum zadania.
 Opisane scenariusze zaproponować opcjami wdrożenia w celu zwiększenia dostępności i skrócić czas przestoju podczas działania odzyskiwania po awarii.

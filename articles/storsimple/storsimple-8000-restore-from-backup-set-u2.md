@@ -15,15 +15,15 @@ ms.workload: TBD
 ms.date: 05/23/2017
 ms.author: alkohli
 ms.openlocfilehash: 6a2e022697ced90d968075b7a4abe4163be7a539
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58082810"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60723394"
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>Przywracanie woluminu StorSimple z zestawu kopii zapasowych
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 W tym samouczku opisano operacji przywracania, wykonywane na urządzenia serii StorSimple 8000 przy użyciu istniejącego zestawu kopii zapasowych. Użyj **katalog kopii zapasowej** bloku przywracania woluminu z dysku lokalnego lub kopia zapasowa w chmurze. **Katalog kopii zapasowej** bloku wyświetlane są wszystkie zestawy kopii zapasowych, które są tworzone podczas ręczne lub automatyczne kopie zapasowe są wykonywane. Operacja przywracania z kopii zapasowej do trybu online dopiero podczas gdy dane są pobierane w tle.
 

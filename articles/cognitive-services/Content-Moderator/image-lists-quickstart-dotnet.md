@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 10/10/2018
 ms.author: sajagtap
 ms.openlocfilehash: ded5b097e7c8feab56e2d82cb44f92e3127519e2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55881795"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60699124"
 ---
 # <a name="quickstart-moderate-with-custom-image-lists-in-c"></a>Szybki start: Moderowanie przy użyciu niestandardowych list obrazów w języku C#
 
@@ -1089,6 +1089,6 @@ Response:
 []
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Pobierz zestaw [Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) i [rozwiązanie programu Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) dla tego i innych przewodników Szybki start usługi Content Moderator dla platformy .NET i rozpocznij pracę nad integracją.

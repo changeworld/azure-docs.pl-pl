@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
 ms.openlocfilehash: 1e6dea521207ec00efe948a879c705bd28a75d57
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55213199"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60707635"
 ---
 # <a name="introduction-to-training"></a>Wprowadzenie do szkolenia
 
@@ -33,7 +33,7 @@ Ten samouczek wymaga działa ogólne bot samouczek
 ## <a name="details"></a>Szczegóły
 
 - Akcje: Bot odpowiedzi na dane wejściowe użytkownika.
-- Szkolenie: Sposób możemy nauczyć Bot odpowiedzieć na dane wejściowe użytkownika.
+- Train: Sposób możemy nauczyć Bot odpowiedzieć na dane wejściowe użytkownika.
 - Rozgałęzianie: Modyfikacja dane wejściowe użytkownika poziomu zapisane okna dialogowego Train na potrzeby tworzenia nowego okna dialogowego szkolenie, który rozpoczyna się taka sama jak oryginał, ale trwa konwersacji w innym kierunku.
 
 ## <a name="steps"></a>Kroki

@@ -9,11 +9,11 @@ ms.author: tarcher
 ms.topic: tutorial
 ms.date: 07/31/2018
 ms.openlocfilehash: 5cfece551f99a0925099b6ef936703e72f078985
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074669"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60641357"
 ---
 # <a name="scale-your-jenkins-deployments-to-meet-demand-with-azure-vm-agents"></a>Skalowanie wdrożeń serwera Jenkins w celu spełnienia wymagań przy użyciu agentów maszyn wirtualnych platformy Azure
 
@@ -54,7 +54,7 @@ W tym samouczku zostaną wykonane następujące czynności:
 
     a. Wybierz pozycję **Add** (Dodaj) obok sekcji **Azure Credentials** (Poświadczenia platformy Azure) i wybierz pozycję **Jenkins**.   
     b. W oknie dialogowym **Add Credentials** (Dodawanie poświadczeń) wybierz pozycję **Microsoft Azure Service Principal** (Jednostka usługi Microsoft Azure) z listy rozwijanej **Kind** (Rodzaj).   
-    d. Utwórz jednostkę usługi Active Directory za pomocą wiersza polecenia platformy Azure lub usługi [Cloud Shell](/azure/cloud-shell/overview).
+    c. Utwórz jednostkę usługi Active Directory za pomocą wiersza polecenia platformy Azure lub usługi [Cloud Shell](/azure/cloud-shell/overview).
     
     ```azurecli-interactive
     az ad sp create-for-rbac --name jenkins_sp --password secure_password
@@ -144,7 +144,7 @@ Wybierz pozycję **Verify Template** (Sprawdź szablon), aby sprawdzić konfigur
 
 Jeśli napotkasz jakiekolwiek usterki we wtyczkach narzędzia Jenkins, prześlij zgłoszenie za pomocą narzędzia [Jenkins JIRA](https://issues.jenkins-ci.org/) dla określonego składnika.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Ciągła integracja/ciągłe wdrażanie w usłudze Azure App Service](java-deploy-webapp-tutorial.md)

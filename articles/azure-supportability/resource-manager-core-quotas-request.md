@@ -8,11 +8,11 @@ ms.topic: article
 ms.service: azure
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
 ms.openlocfilehash: 204deaf3a67984c0dd5eca5352686719e7767885
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792297"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60649353"
 ---
 # <a name="resource-manager-vcpu-quota-increase-requests"></a>Żądań zwiększenia limitu przydziału procesorów wirtualnych usługi Resource Manager
 
@@ -26,7 +26,7 @@ Aby poprosić o zwiększenie, postępuj zgodnie z instrukcjami poniżej z użyci
 
 1. Z https://portal.azure.com, wybierz opcję **subskrypcje**.
 
-   ![Subskrypcje](./media/resource-manager-core-quotas-request/subscriptions.png)
+   ![Subscriptions](./media/resource-manager-core-quotas-request/subscriptions.png)
 
 2. Wybierz subskrypcję, która wymaga zwiększenia limitu przydziału.
 

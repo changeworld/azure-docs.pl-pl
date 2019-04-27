@@ -15,15 +15,15 @@ ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
 ms.openlocfilehash: 774f5a73a5fc30352698c0af0c279fbbe488c480
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58008379"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60632236"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>Modyfikowanie konfiguracji urządzenia StorSimple przy użyciu usługi Menedżer urządzeń StorSimple
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Witryna Azure portal **ustawienia urządzenia** sekcji **ustawienia** blok zawiera wszystkie parametry urządzenia, które można skonfigurować ponownie na urządzeniu StorSimple, który jest zarządzany przez usługę Menedżer urządzeń StorSimple . W tym samouczku wyjaśniono, jak można użyć **ustawienia** bloku, aby wykonać poniższe zadania poziom urządzenia:
 

@@ -11,21 +11,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 256d530590fadc9e2aeb1ea1efb7a52608014978
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 59a3bac39437b91eeee3b005bd23476a34a308b7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46988567"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60736585"
 ---
 # <a name="health-probes"></a>Sondy kondycji
 
-Aby można było ustalić kondycję poszczególnych pól zaplecza, każde środowisko drzwiami frontowymi okresowo wysyła syntetyczne żądania HTTP/HTTPS do każdego skonfigurowanego zaplecza. Drzwiami frontowymi następnie używa odpowiedzi z tych sond, aby określić "Najważniejsze" zaplecza, do której należy kierować żądania klientów w rzeczywistych.
+Aby można było ustalić kondycję poszczególnych pól zaplecza, każde środowisko drzwiami frontowymi okresowo wysyła syntetyczne żądania HTTP/HTTPS do każdego skonfigurowanego zaplecza. Usługa Front Door następnie używa odpowiedzi z tych sond, aby określić „najlepsze” zaplecza, do których powinna kierować rzeczywiste żądania klientów.
 
 
 ## <a name="supported-protocols"></a>Obsługiwane protokoły
 
-Drzwiami frontowymi obsługuje sondy do wysyłania za pośrednictwem protokołów HTTP lub HTTPS. Tych sond są wysyłane za pośrednictwem tych samych portów TCP skonfigurowane do obsługi routingu żądań klientów i nie może być zastąpiona.
+Drzwiami frontowymi obsługuje sondy do wysyłania za pośrednictwem protokołów HTTP lub HTTPS. Te sondy są wysyłane przy użyciu tych samych portów TCP co skonfigurowane na potrzeby routingu żądań klientów i nie można ich zmienić.
 
 ## <a name="health-probe-responses"></a>Odpowiedzi sond kondycji
 
@@ -58,5 +58,5 @@ Gdy dowolnego zaplecza powróci do stanu dobrej kondycji, drzwiami frontowymi wz
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się, jak [tworzenie drzwiami frontowymi](quickstart-create-front-door.md).
-- Dowiedz się, [działania drzwiami frontowymi](front-door-routing-architecture.md).
+- Dowiedz się, jak [utworzyć usługę Front Door](quickstart-create-front-door.md).
+- Dowiedz się, [jak działa usługa Front Door](front-door-routing-architecture.md).

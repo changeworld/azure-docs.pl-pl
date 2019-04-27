@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/01/2018
 ms.author: magattus
 ms.openlocfilehash: 9802296170f07bb8599058e230798f647e900d4d
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093701"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60636247"
 ---
 # <a name="media-streaming-optimization-with-azure-cdn"></a>Multimediów strumieniowych Optymalizacja przy użyciu usługi Azure CDN 
  
@@ -86,8 +86,8 @@ Krótki czas buforowania ujemna jest przydatna do odciążania źródła, gdy wi
 
 |   | Ogólne dostarczanie w sieci Web | Ogólne transmisje strumieniowe multimediów | Przesyłanie strumieniowe multimediów wideo na żądanie  
 --- | --- | --- | ---
-Buforowanie: dodatnią <br> HTTP 200, 203, 300, <br> 301, 302 i do 410 | 7 dni |365 dni | 365 dni   
-Buforowanie: ujemna <br> HTTP 204, 305, 404, <br> i 405 | Brak | 1 sekunda | 1 sekunda
+Pamięć podręczna: Pozytywna <br> HTTP 200, 203, 300, <br> 301, 302 i do 410 | 7 dni |365 dni | 365 dni   
+Pamięć podręczna: Negatywna <br> HTTP 204, 305, 404, <br> i 405 | Brak | 1 sekunda | 1 sekunda
  
 ### <a name="deal-with-origin-failure"></a>Dotyczy błąd źródła  
 

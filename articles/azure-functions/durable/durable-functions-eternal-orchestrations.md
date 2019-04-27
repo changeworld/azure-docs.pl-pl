@@ -2,20 +2,21 @@
 title: Orkiestracje nieustanne w funkcje trwałe - Azure
 description: Dowiedz się, jak zaimplementować orkiestracje przy użyciu rozszerzenia funkcji trwałych dla usługi Azure Functions.
 services: functions
-author: ggailey777
+author: kashimiz
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 12/07/2018
-ms.author: azfuncdf
+origin.date: 12/07/2018
+ms.date: 12/25/2018
+ms.author: v-junlch
 ms.openlocfilehash: c4adffd457338ffebfd1c9c7727023f82088dc57
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59607742"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60732420"
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Orkiestracje nieustanne w funkcje trwałe (usługi Azure Functions)
 
@@ -84,3 +85,4 @@ Jeśli funkcja orkiestratora znajduje się w nieskończonej pętli i musi zosta�
 
 > [!div class="nextstepaction"]
 > [Dowiedz się, jak zaimplementować orkiestracje pojedyncze](durable-functions-singletons.md)
+

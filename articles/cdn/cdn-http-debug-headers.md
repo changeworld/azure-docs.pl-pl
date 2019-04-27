@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/12/2018
 ms.author: magattus
 ms.openlocfilehash: 4ba42850ee28e2e212d9bc2b7b64be103218757c
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094228"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60736976"
 ---
 # <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>Nagłówki HTTP X-WE-Debug dla usługi Azure CDN aparatu reguł
 Nagłówek żądania debugowania w pamięci podręcznej, `X-EC-Debug`, zawiera dodatkowe informacje na temat zasad pamięci podręcznej, które są stosowane do żądanego zasobu. Tych nagłówków są specyficzne dla **Azure CDN Premium from Verizon** produktów.
@@ -35,11 +35,11 @@ Umożliwia następujące dyrektywy w określonym żądaniu zdefiniować informac
 
 Nagłówek żądania | Opis |
 ---------------|-------------|
-X-WE Debug: x WE cache | [Kod stanu pamięci podręcznej](#cache-status-code-information)
-X-WE Debug: x WE cache-remote | [Kod stanu pamięci podręcznej](#cache-status-code-information)
-X-WE Debug: x WE wyboru-podlega buforowaniu | [Podlega buforowaniu](#cacheable-response-header)
-X-WE Debug: x WE cache-key | [Klucz pamięci podręcznej](#cache-key-response-header)
-X-WE Debug: x WE-pamięci podręcznej — stan | [Stan pamięci podręcznej](#cache-state-response-header)
+X-EC-Debug: x-ec-cache | [Kod stanu pamięci podręcznej](#cache-status-code-information)
+X-EC-Debug: x-ec-cache-remote | [Kod stanu pamięci podręcznej](#cache-status-code-information)
+X-EC-Debug: x-ec-check-cacheable | [Podlega buforowaniu](#cacheable-response-header)
+X-EC-Debug: x-ec-cache-key | [Cache-key](#cache-key-response-header)
+X-EC-Debug: x-ec-cache-state | [Stan pamięci podręcznej](#cache-state-response-header)
 
 ### <a name="syntax"></a>Składnia
 
@@ -56,8 +56,8 @@ Nagłówek odpowiedzi X WE debugowania można określić serwer i sposób jej ob
 
 Nagłówek | Opis
 -------|------------
-X-WE Debug: x WE cache | Tego pliku nagłówkowego jest zgłaszany w każdym przypadku, gdy zawartość jest kierowany przez usługę CDN. Identyfikuje serwer protokołu POP, która zrealizowała żądanie.
-X-WE Debug: x WE cache-remote | Tego pliku nagłówkowego jest zgłaszany tylko wtedy, gdy buforowano żądanej zawartości na serwer pochodzenia tarczy lub serwer bramy w sieci ADN.
+X-EC-Debug: x-ec-cache | Tego pliku nagłówkowego jest zgłaszany w każdym przypadku, gdy zawartość jest kierowany przez usługę CDN. Identyfikuje serwer protokołu POP, która zrealizowała żądanie.
+X-EC-Debug: x-ec-cache-remote | Tego pliku nagłówkowego jest zgłaszany tylko wtedy, gdy buforowano żądanej zawartości na serwer pochodzenia tarczy lub serwer bramy w sieci ADN.
 
 ### <a name="response-header-format"></a>Format Nagłówek odpowiedzi
 
@@ -80,7 +80,7 @@ Terminy używane w powyższej składni nagłówek odpowiedzi są zdefiniowane w 
     ECS   | Mała liczba godzin HTTP
     ECD   | Application Delivery Network (sieci ADN)
 
-- Punkt POP: Wskazuje [POP](cdn-pop-abbreviations.md) , obsługi żądania. 
+- POP: Wskazuje [POP](cdn-pop-abbreviations.md) , obsługi żądania. 
 
 ### <a name="sample-response-headers"></a>Próbki, nagłówki odpowiedzi
 
@@ -106,7 +106,7 @@ Termin używany w powyższej składni nagłówek odpowiedzi jest zdefiniowana w 
 Wartość  | Opis
 -------| --------
 TAK    | Wskazuje, czy żądana zawartość została kwalifikuje się do buforowania.
-NIE     | Wskazuje, czy żądana zawartość została nie kwalifikuje się do buforowania. Ten stan może być spowodowane jedną z następujących powodów: <br /> Klient specyficzne dla konfiguracji: Konfiguracja właściwych dla Twojego konta może uniemożliwić buforowanie zawartości serwerów pop. Na przykład aparat reguł uniemożliwia zasobu buforowana przez włączenie funkcji pomijania pamięci podręcznej do kwalifikowania żądania.<br /> -Nagłówki odpowiedzi cache: Nagłówki Cache-Control i Expires żądanego elementu zawartości można zapobiec serwerów POP buforowanie ich.
+NO     | Wskazuje, czy żądana zawartość została nie kwalifikuje się do buforowania. Ten stan może być spowodowane jedną z następujących powodów: <br /> Konfiguracja klienta specyficzne dla: Konfiguracja właściwych dla Twojego konta można zapobiec buforowanie zawartości pop serwerów. Na przykład aparat reguł uniemożliwia zasobu buforowana przez włączenie funkcji pomijania pamięci podręcznej do kwalifikowania żądania.<br /> -W pamięci podręcznej nagłówki odpowiedzi: Nagłówki Cache-Control i Expires żądanego elementu zawartości można zapobiec buforowanie ich serwerów POP.
 NIEZNANY | Wskazuje, że serwery nie udało się oceny, czy żądany zasób został podlega buforowaniu. Zazwyczaj ten stan występuje, gdy żądanie zostanie odrzucone z powodu uwierzytelniania opartego na tokenach.
 
 ### <a name="sample-response-header"></a>Przykładowy nagłówek odpowiedzi
@@ -151,19 +151,19 @@ Terminy używane w powyższej składni nagłówek odpowiedzi są zdefiniowane w 
 
 - MATimePeriod: Konwertuje wartość max-age (czyli MASeconds) stanowiących wielokrotność większej jednostki (na przykład w dniach). 
 
-- UnixTime: Wskazuje, znacznik czasu pamięci podręcznej żądanej zawartości w time systemu Unix (zwane) POSIX — czas lub epoki Unix). Znacznik czasu: pamięć podręczna wskazuje, począwszy od daty/godziny z której będzie obliczana czas wygaśnięcia elementu zawartości. 
+- UnixTime: Określa znacznik czasu pamięci podręcznej żądanej zawartości w programie time systemu Unix (zwane) POSIX — czas lub epoki Unix). Znacznik czasu: pamięć podręczna wskazuje, począwszy od daty/godziny z której będzie obliczana czas wygaśnięcia elementu zawartości. 
 
-    Jeśli serwer pochodzenia nie używa HTTP innych firm, buforowanie serwera lub jeśli ten serwer nie zwraca nagłówek odpowiedzi wiek, następnie znacznik czasu pamięci podręcznej jest zawsze daty/godziny po pobierane lub ponownie sprawdzić poprawności nazwy zasobu. W przeciwnym razie serwerów POP Użyj pola Wiek do obliczania czasu wygaśnięcia zasobu w następujący sposób: pobieranie/RevalidateDateTime - wieku.
+    Jeśli serwer pochodzenia nie używa HTTP innych firm, buforowanie serwera lub jeśli ten serwer nie zwraca nagłówek odpowiedzi wiek, następnie znacznik czasu pamięci podręcznej jest zawsze daty/godziny po pobierane lub ponownie sprawdzić poprawności nazwy zasobu. W przeciwnym razie serwerów POP użyje pola Wiek do obliczania czasu wygaśnięcia zasobu w następujący sposób: Pobieranie/RevalidateDateTime - wieku.
 
-- ddd, dd MMM yyyy hh: mm: GMT: wskazuje, znacznik czasu pamięci podręcznej żądanej zawartości. Aby uzyskać więcej informacji zobacz termin UnixTime powyżej.
+- ddd, dd MMM yyyy hh: mm: GMT: Wskazuje, znacznik czasu pamięci podręcznej żądanej zawartości. Aby uzyskać więcej informacji zobacz termin UnixTime powyżej.
 
 - CASeconds: Określa liczbę sekund, które upłynęły od znacznika czasu pamięci podręcznej.
 
-- RTSeconds: Określa liczbę Pozostało sekund, dla którego zawartości w pamięci podręcznej będą uznawane za od nowa. Ta wartość jest obliczana w następujący sposób: RTSeconds = max-age — wiek w pamięci podręcznej.
+- RTSeconds: Wskazuje liczbę Pozostało sekund, dla którego zawartości w pamięci podręcznej będą uznawane za od nowa. Ta wartość jest obliczana w następujący sposób: RTSeconds = max-age — wiek w pamięci podręcznej.
 
 - RTTimePeriod: Konwertuje pozostała wartość czasu wygaśnięcia (czyli RTSeconds) stanowiących wielokrotność większej jednostki (na przykład w dniach).
 
-- ExpiresSeconds: Określa liczbę sekund pozostałych daty/godziny określone w `Expires` nagłówka odpowiedzi. Jeśli `Expires` nagłówek odpowiedzi nie została uwzględniona w odpowiedzi, a następnie wartość pojęcie to jest *Brak*.
+- ExpiresSeconds: Wskazuje liczbę sekund pozostałych daty/godziny określone w `Expires` nagłówka odpowiedzi. Jeśli `Expires` nagłówek odpowiedzi nie została uwzględniona w odpowiedzi, a następnie wartość pojęcie to jest *Brak*.
 
 ### <a name="sample-response-header"></a>Przykładowy nagłówek odpowiedzi
 

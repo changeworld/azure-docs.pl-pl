@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 9cf363bc5f4230306c2fec99eb6287b23e598a4c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57833505"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60744350"
 ---
 # <a name="configure-the-azure-hosted-vm"></a>Konfigurowanie maszyny Wirtualnej hostowanej na platformie Azure
 
@@ -77,7 +77,7 @@ Aby uzyskać więcej informacji na temat uruchamiania polecenia sysprep, zobacz 
 
 ### <a name="linux"></a>Linux
 
-Następujący dwuetapowy proces uogólniania maszyny Wirtualnej z systemem Linux i ponownie wdrożyć go jako oddzielne maszyny Wirtualnej.  Aby uzyskać więcej informacji, zobacz [sposób tworzenia obrazu maszyny wirtualnej lub wirtualnego dysku twardego](../../../virtual-machines/linux/capture-image.md). 
+Następujący dwuetapowy proces uogólniania maszyny Wirtualnej z systemem Linux i ponownie wdrożyć go jako oddzielne maszyny Wirtualnej.  Aby uzyskać więcej informacji, zobacz [Jak utworzyć obraz maszyny wirtualnej lub wirtualnego dysku twardego](../../../virtual-machines/linux/capture-image.md). 
 
 #### <a name="remove-the-azure-linux-agent"></a>Usuń agenta systemu Linux platformy Azure
 1.  Łączenie z maszyną wirtualną z systemem Linux przy użyciu klienta SSH.

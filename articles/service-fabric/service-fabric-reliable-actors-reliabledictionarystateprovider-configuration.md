@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 10/2/2017
 ms.author: sumukhs
 ms.openlocfilehash: 4e39357a765ec85aa64055b1aa422d8d7a01c116
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669405"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60727135"
 ---
 # <a name="configuring-reliable-actors--reliabledictionaryactorstateprovider"></a>Konfigurowanie elementów Reliable Actors — ReliableDictionaryActorStateProvider
 Domyślnej konfiguracji elementu ReliableDictionaryActorStateProvider można zmodyfikować, zmieniając plik settings.xml generowane w katalogu głównym pakietu Visual Studio w folderze konfiguracji dla określonego aktora.
@@ -93,7 +93,7 @@ Domyślna konfiguracja jest generowany przez szablon programu Visual Studio i po
 | MaxSecondaryReplicationQueueSize |Liczba operacji |16384 |Maksymalna liczba operacji w kolejce dodatkowej. Operacja nie zostanie zwolniona po wprowadzeniu swojego stanu o wysokiej dostępności za pośrednictwem trwałości. Ta wartość musi być większa niż 64 i potęgą liczby 2. |
 | CheckpointThresholdInMB |MB |200 |Ilość miejsca w dzienniku plików po upływie którego stan jest utworzono punkt kontrolny. |
 | MaxRecordSizeInKB |KB |1024 |Największy rozmiar rekordu, który replikatora może zapisywać w dzienniku. Ta wartość musi być wielokrotnością liczby 4 i większa niż 16. |
-| OptimizeLogForLowerDiskUsage |Wartość logiczna |true |W przypadku wartości true dziennika jest skonfigurowana tak, aby repliki dedykowanych plik dziennika jest tworzona przy użyciu pliku rozrzedzonego systemu plików NTFS. Zmniejsza to użycie miejsca na dysku rzeczywistego pliku. W przypadku wartości FAŁSZ, plik jest tworzony o stałej alokacji, które oferują najlepszą wydajność zapisu. |
+| OptimizeLogForLowerDiskUsage |Boolean |true |W przypadku wartości true dziennika jest skonfigurowana tak, aby repliki dedykowanych plik dziennika jest tworzona przy użyciu pliku rozrzedzonego systemu plików NTFS. Zmniejsza to użycie miejsca na dysku rzeczywistego pliku. W przypadku wartości FAŁSZ, plik jest tworzony o stałej alokacji, które oferują najlepszą wydajność zapisu. |
 | SharedLogId |Identyfikator GUID |"" |Określa unikatowy identyfikator guid służących do identyfikowania pliku dziennika udostępnione używane przy użyciu tej repliki. Zazwyczaj usług nie należy używać tego ustawienia. Jednak jeśli SharedLogId jest określona, opcja SharedLogPath musi być także określona. |
 | SharedLogPath |W pełni kwalifikowanej nazwy ścieżki |"" |Określa pełną ścieżkę, w której zostanie utworzony plik dziennika udostępnionego dla tej repliki. Zazwyczaj usług nie należy używać tego ustawienia. Jednak jeśli SharedLogPath jest określona, opcja SharedLogId musi być także określona. |
 

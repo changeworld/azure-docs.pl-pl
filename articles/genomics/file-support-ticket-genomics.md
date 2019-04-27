@@ -10,12 +10,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: article
 ms.date: 05/23/2018
-ms.openlocfilehash: d5e33f5b22012b297cdceacbe38425934f0f65b4
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: ed37d42d8ec1692cc5edb62b68536803f47205f5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734373"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60721291"
 ---
 # <a name="how-to-contact-microsoft-genomics-for-support"></a>Sposobu kontaktu z firmą Microsoft Genomics, pomocy technicznej
 W tym omówieniu opisano jak zgłosić żądanie pomocy technicznej, aby skontaktować się z Microsoft Genomics. Może to być przydatne, jeśli nie jesteś w stanie Rozwiązywanie problemów przy użyciu problem [przewodnik rozwiązywania problemów z](troubleshooting-guide-genomics.md) lub [— często zadawane pytania](frequently-asked-questions-genomics.md). 

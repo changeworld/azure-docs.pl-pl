@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 10/26/2017
 ms.author: abhisram
 ms.openlocfilehash: 5f573db887b3acc2c4a668a8c19c7f8e3cb25019
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670748"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60726574"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-actors"></a>Diagnostyka i monitorowanie wydajności struktury Reliable Actors
 W czasie wykonywania w elementach Reliable Actors emituje [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) zdarzeń i [liczniki wydajności](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx). Te zapewniają wgląd w jaki sposób działa środowisko uruchomieniowe i ułatwić rozwiązywanie problemów i monitorowania wydajności.
@@ -42,7 +42,7 @@ Wszystkie zdarzenia, które należą do wiarygodne źródło zdarzeń uczestnik�
 ## <a name="performance-counters"></a>Liczniki wydajności
 Środowisko uruchomieniowe elementów Reliable Actors definiuje następujące kategorie liczników wydajności.
 
-| Kategoria | Opis |
+| Category | Opis |
 | --- | --- |
 | Aktor usługi Service Fabric |Liczniki specyficzne dla usługi Azure Service Fabric aktorów, np. czas zapisania stanu aktora |
 | Metoda aktora usługi Service Fabric |Liczniki specyficzne dla metod zaimplementowanych przez aktorów usługi Service Fabric, np. częstotliwość aktora wywoływana jest metoda |

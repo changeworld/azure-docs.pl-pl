@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 01/28/2019
 ms.author: panosper
 ms.openlocfilehash: 24b98ce8cd2c587f0d39390954eb8a64747ca2ab
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55868331"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60654085"
 ---
 # <a name="creating-custom-voice-fonts"></a>Tworzenie niestandardowych voice czcionek
 
@@ -33,7 +33,7 @@ Potrzebujesz konta platformy Azure i subskrypcji usługi mowy. [Utwórz je](http
 
 2. Pod nazwą Twojego konta w prawym górnym rogu, przejdź do **subskrypcje**.
 
-    ![Subskrypcje](media/custom-voice/subscriptions.png)
+    ![Subscriptions](media/custom-voice/subscriptions.png)
 
 3. Na stronie subskrypcji wybierz **połączyć z istniejącą subskrypcją**. Należy pamiętać, że usługi mowy obsługują różnych regionach. Sprawdź region, gdzie został utworzony klucz subskrypcji i upewnij się, Połącz swój klucz do portalu podrzędnych poprawne.  
 

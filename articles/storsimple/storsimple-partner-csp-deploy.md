@@ -15,15 +15,15 @@ ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
 ms.openlocfilehash: 0dac86a696599a391cb243ad11e16931e00b8921
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238934"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60629990"
 ---
 # <a name="deploy-storsimple-virtual-array-for-cloud-solution-provider-program"></a>Wdrażanie macierzy wirtualnej StorSimple dla Cloud Solution Provider Program
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Macierz wirtualną StorSimple można wdrożyć przez partnerów Cloud Solution Provider (CSP) dla swoich klientów. Partner programu CSP może utworzyć usługi Menedżer urządzeń StorSimple. Ta usługa następnie może służyć do wdrażania i zarządzania rozwiązania StorSimple Virtual Array i skojarzone udziałów, woluminów i kopii zapasowych.
 
@@ -44,7 +44,7 @@ Jeśli dodasz klienta, jest tworzony automatycznie subskrypcji. Aby dodać klien
 
      ![Pulpit nawigacyjny Centrum partnerskiego](./media/storsimple-partner-csp-deploy/image1.png)
                               
-2. W okienku po lewej stronie kliknij **klientów**. W okienku po prawej stronie kliknij **Dodaj klientów**. Wprowadź szczegóły klienta. Kliknij przycisk **dalej: subskrypcje** do utworzenia subskrypcji klienta.
+2. W okienku po lewej stronie kliknij **klientów**. W okienku po prawej stronie kliknij **Dodaj klientów**. Wprowadź szczegóły klienta. Kliknij pozycję **Next: Subskrypcje** do utworzenia subskrypcji klienta.
 
     ![Dodaj klienta](./media/storsimple-partner-csp-deploy/image2.png)
 
@@ -103,5 +103,5 @@ W niektórych przypadkach może być istniejącym klientem, a następnie należy
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Jeśli masz więcej pytań dotyczących StorSimple w programie CSP, przejdź do strony [StorSimple w programie CSP: często zadawane pytania dotyczące](storsimple-partner-csp-faq.md).
+- Jeśli masz więcej pytań dotyczących StorSimple w programie CSP, przejdź do strony [StorSimple w programie CSP: Często zadawane pytania dotyczące](storsimple-partner-csp-faq.md).
 - Jeśli wszystko jest gotowe do wdrożenia usługi StorSimple, przejdź do strony [wdrażanie rozwiązania StorSimple w programie CSP](storsimple-partner-csp-deploy.md).

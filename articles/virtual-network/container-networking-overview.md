@@ -17,11 +17,11 @@ ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
 ms.openlocfilehash: 2ebc678bffbbbe5d512d620b8f77ac0a245c0aff
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579125"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60713839"
 ---
 # <a name="enable-containers-to-use-azure-virtual-network-capabilities"></a>Umożliwianie kontenerom korzystania z możliwości usługi Azure Virtual Network
 

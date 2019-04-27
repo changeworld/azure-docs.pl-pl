@@ -1,6 +1,6 @@
 ---
-title: Ciągłość prowadzenia działalności biznesowej sieci wirtualnej | Dokumentacja firmy Microsoft
-description: Dowiedz się, co należy zrobić w przypadku przerw w działaniu usługi Azure wpływających na sieciach wirtualnych platformy Azure.
+title: Ciągłość prowadzenia działalności biznesowej w sieci wirtualnej | Dokumentacja firmy Microsoft
+description: Dowiedz się, co należy zrobić w przypadku przerwy w działaniu usługi platformy Azure wpływających na sieciach wirtualnych platformy Azure.
 services: virtual-network
 documentationcenter: ''
 author: NarayanAnnamalai
@@ -14,39 +14,39 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2016
 ms.author: narayan;aglick
-ms.openlocfilehash: d993144006d1fb17d79ffee4f2da538264a309a4
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: f8068524a33c6d29056af456a26b8bd87fc3e3d6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29854159"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60742714"
 ---
 # <a name="virtual-network--business-continuity"></a>Sieć wirtualna — ciągłość prowadzenia działalności biznesowej
 
-## <a name="overview"></a>Przegląd
-Sieć wirtualną (VNet) jest logiczną reprezentacja sieci w chmurze. Umożliwia definiowanie własnych prywatnych przestrzeni adresów IP i podzielić sieć na podsieci. Sieci wirtualne służy jako granicę zaufania, aby obsługiwać zasoby obliczeniowe, takich jak maszyny wirtualne platformy Azure i usługi w chmurze (role sieć web/proces roboczy). Sieć wirtualną umożliwia bezpośrednie prywatnej komunikacji IP między zasobami znajdujące się w nim. Możesz połączyć sieć wirtualną do sieci lokalnej za pośrednictwem bramy sieci VPN lub usługi ExpressRoute.
+## <a name="overview"></a>Omówienie
+Virtual Network (VNet) jest logicznym odzwierciedleniem Twojej sieci w chmurze. Umożliwia definiowanie własnych przestrzeń prywatnych adresów IP i podzielić sieć na podsieci. Sieci wirtualne służy jako granicy zaufania, aby hostować zasoby obliczeniowe, takie jak Azure Virtual Machines i Cloud Services (role sieć web/proces roboczy). Sieci wirtualnej umożliwia bezpośrednią komunikację prywatnych adresów IP w między zasobami w nim. Możesz połączyć sieć wirtualną z siecią lokalną za pośrednictwem bramy sieci VPN lub usługi ExpressRoute.
 
-Sieci wirtualnej jest tworzony w zakresie regionu. Można utworzyć sieci wirtualnych o tej samej przestrzeni adresów w dwóch różnych regionach (na przykład nam wschodnie i nam zachód), ale nie można połączyć je ze sobą. 
+Sieci wirtualnej jest tworzony w zakresie region. Można utworzyć sieci wirtualnych z tą samą przestrzenią adresów w dwóch różnych regionach (na przykład wschodnie stany USA i zachodnie stany USA), ale nie można połączyć je ze sobą. 
 
-## <a name="business-continuity"></a>Ciągłość działania
+## <a name="business-continuity"></a>Ciągłość działalności biznesowej
 
-Może istnieć kilka różnych sposobów, aplikacja może zostać zerwane. Region można całkowicie obcięty z powodu klęski żywiołowej lub częściowe po awarii z powodu błędu wielu urządzeń lub usług. Wpływ na usługi sieci wirtualnej różni się w każdej z tych sytuacji.
+Może istnieć kilka różnych sposobów, aplikacja może zostać przerwane. Region można całkowicie obcięte z powodu klęski żywiołowe lub częściowej awarii z powodu błędu wielu urządzeń i usług. Wpływ na usługi sieci wirtualnej różni się w każdej z tych sytuacji.
 
-**Pytanie: w przypadku wystąpienia awarii dla całego regionu, co należy zrobić? Na przykład, jeśli region jest całkowicie obcięty z powodu klęski żywiołowej? Co się dzieje z sieci wirtualnych hostowanych w regionie?**
+**Pyt.: Jeśli wystąpi awaria dla całego regionu, co należy zrobić? Na przykład, jeśli region jest całkowicie obcięte z powodu klęski żywiołowe? Co się dzieje z sieciami wirtualnymi, hostowane w regionie?**
 
-Odpowiedź: sieci wirtualnej i zasoby w regionie, których dotyczy pozostaje niedostępne podczas przerw w działaniu usługi.
+Odp.: Sieć wirtualną i zasobów w regionie, których to dotyczy pozostają niedostępne podczas przerw w działaniu usługi.
 
-![Diagram prostego sieci wirtualnej](./media/virtual-network-disaster-recovery-guidance/vnet.png)
+![Diagram proste sieci wirtualnej](./media/virtual-network-disaster-recovery-guidance/vnet.png)
 
-**Pytanie: jakie czy można ponownie utworzyć tej samej sieci wirtualnej w innym regionie?**
+**Pyt.: Co mogę ponownego tworzenia tej samej sieci wirtualnej w innym regionie?**
 
-A: sieci wirtualne są dość lekkie zasobów. Mogą wywoływać interfejsy API Azure w celu utworzenia sieci wirtualnej z tą samą przestrzenią adresów w innym regionie. Aby ponownie utworzyć w tym samym środowisku, która znajdowała się w regionie, których dotyczy, upewnij się wywołania interfejsu API ponownego wdrożenia usługi w chmurze w sieci web i roli proces roboczy i maszyn wirtualnych, które były. Jeśli masz połączenie lokalne, takie jak w ramach wdrożenia hybrydowego należy wdrożenia nowej bramy sieci VPN i nawiązanie połączenia z siecią lokalną.
+Odp.: Sieci wirtualne są stosunkowo lekkie zasobów. Możesz wywołać interfejsy API usługi Azure, aby utworzyć sieć wirtualną z tą samą przestrzenią adresów w innym regionie. Aby ponownie utworzyć środowisko, w którym znajdowała się w regionie, których dotyczy problem, upewnij się wywołań interfejsu API do ponownego wdrożenia usług Cloud Services w sieci web i ról procesów roboczych oraz maszyn wirtualnych, które trzeba było. W przypadku połączeń lokalnych, takich jak w ramach wdrożenia hybrydowego należy wdrożenia nowej bramy sieci VPN i nawiązanie połączenia z siecią lokalną.
 
-Aby utworzyć sieć wirtualną, zobacz [utworzyć sieć wirtualną](manage-virtual-network.md#create-a-virtual-network).
+Aby utworzyć sieć wirtualną, zobacz [tworzenie sieci wirtualnej](manage-virtual-network.md#create-a-virtual-network).
 
-**Pytanie: czy replika sieci wirtualnej w danym regionie zostać ponownie utworzone w innym regionie wcześniejsze?**
+**Pyt.: Repliki sieci wirtualnej w danym regionie można utworzyć ponownie w innym regionie wcześniejsze?**
 
-Odpowiedź: tak, można utworzyć dwie sieci wirtualnych za pomocą tego samego prywatnych przestrzeni adresów IP i zasobów w dwóch różnych regionach wcześniejsze. Jeśli prowadzą hosting usług internetowych w sieci wirtualnej, może wybrano Konfigurowanie Menedżera ruchu geograficznie kierowanie ruchem do regionu, który jest aktywny. Jednak nie można nawiązać połączenia dwóch sieci wirtualnych z tą samą przestrzenią adresów sieci lokalnej, ponieważ spowodowałoby to problemy routingu. W czasie awarii i utratę sieci wirtualnej w jednym regionie można połączyć sieć wirtualną w regionie dostępne z pasujących przestrzeni adresowej dla sieci lokalnej.
+Odp.: Tak, możesz utworzyć dwie sieci wirtualne przy użyciu tego samego przestrzeń prywatnych adresów IP i zasobów w dwóch różnych regionach wcześniej. Jeśli hostujesz usługi połączone z Internetem w sieci wirtualnej może ustawiono Konfigurowanie Menedżera ruchu geograficzne kierowanie ruchu do regionu, który jest aktywny. Jednak nie można nawiązać połączenia dwóch sieci wirtualnych z tą samą przestrzenią adresów sieci lokalnej, ponieważ spowodowałoby to problemów z routingiem. W czasie awarii i straty w jednym regionie sieci wirtualnej sieci wirtualnej w regionie, dostępna, można połączyć z przestrzeni adresowej pasujące do sieci lokalnej.
 
-Aby utworzyć sieć wirtualną, zobacz [utworzyć sieć wirtualną](manage-virtual-network.md#create-a-virtual-network).
+Aby utworzyć sieć wirtualną, zobacz [tworzenie sieci wirtualnej](manage-virtual-network.md#create-a-virtual-network).
 

@@ -11,11 +11,11 @@ ms.date: 07/03/2018
 ms.author: lahugh
 ms.custom: mvc
 ms.openlocfilehash: d478307ff4393d84a854fcd3b2ea0efd77de7135
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58087843"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60619923"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Szybki start: Uruchamianie pierwszego zadania usługi Batch w witrynie Azure Portal
 

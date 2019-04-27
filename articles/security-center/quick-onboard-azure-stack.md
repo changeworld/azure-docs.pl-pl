@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 04/02/2019
 ms.author: fiseraci
 ms.openlocfilehash: 7a630acee079301b95e7e05f5c5333dd116abb68
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59563798"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60706461"
 ---
 # <a name="quickstart--onboard-your-azure-stack-virtual-machines-to-security-center"></a>Szybki start:  Dołączanie maszyn wirtualnych usługi Azure Stack do usługi Security Center
 Po dołączeniu subskrypcji platformy Azure możesz włączyć usługę Security Center, aby chronić maszyny wirtualne uruchomione w usłudze Azure Stack, dodając **usługi Azure Monitor, aktualizacji i zarządzania konfiguracją** rozszerzenia maszyny wirtualnej Usługa Azure Stack Portal marketplace.

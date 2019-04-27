@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 11/08/2018
 ms.author: alkohli
 ms.openlocfilehash: b8e9f12a549f71971c2da3b9865f6a74dad58f61
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300918"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60630142"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>Najlepsze rozwiązania StorSimple Virtual Array
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Microsoft Azure StorSimple Virtual Array to zintegrowane rozwiązanie do magazynowania, który zarządza zadaniami magazynowania między urządzenia wirtualnego środowiska lokalnego w funkcji hypervisor i Magazyn w chmurze Microsoft Azure. StorSimple Virtual Array to wydajne, ekonomiczne zamiast fizycznej macierzy magazynowych z serii 8000. Macierz wirtualną można uruchomić w istniejącej infrastrukturze funkcji hypervisor, obsługuje zarówno protokołom iSCSI i SMB i dobrze nadaje się dla zdalnych biurach/oddziałach scenariuszach dotyczących biura. Aby uzyskać więcej informacji na temat rozwiązania StorSimple, przejdź do [Przegląd usługi Microsoft Azure StorSimple](https://www.microsoft.com/en-us/server-cloud/products/storsimple/overview.aspx).
 
 W tym artykule opisano najlepsze rozwiązania, które są implementowane podczas początkowej konfiguracji, wdrażania i zarządzania macierzy wirtualnej StorSimple. Następujące najlepsze rozwiązania zamieszczono wytyczne zweryfikowanych Konfiguracja i zarządzanie macierz wirtualna. W tym artykule jest przeznaczona do administratorów IT, którzy wdrażanie i Zarządzanie macierzami wirtualnymi w swoich centrach danych.
@@ -44,7 +44,7 @@ Podczas aprowizowania macierzy wirtualnej, należy zaimplementować następując
 | **Typ dysku danych** |Aprowizowanie jako **dynamicznie powiększających się**.<br></br> **Ustalony rozmiar** zajmuje dużo czasu. <br></br> Nie używaj **różnicowych** opcji. |Użyj **alokowanych aprowizowanie** opcji. |
 | **Modyfikowanie dysku danych** |Rozszerzenie lub zmniejszania nie jest dozwolone. Próby takiego przydzielenia spowoduje utratę danych lokalnych na urządzeniu. |Rozszerzenie lub zmniejszania nie jest dozwolone. Próby takiego przydzielenia spowoduje utratę danych lokalnych na urządzeniu. |
 
-### <a name="sizing"></a>Zmiana rozmiaru
+### <a name="sizing"></a>Ustalanie rozmiaru
 Podczas zmiany rozmiaru rozwiązania StorSimple Virtual Array, należy wziąć pod uwagę następujące czynniki:
 
 * Zarezerwowane miejsce lokalne dla woluminy lub udziały. Około 12% wolnego miejsca jest zarezerwowana w warstwie lokalnego dla każdego elastycznie warstwowego woluminu lub udziału. Około 10% wolnego miejsca, również jest zarezerwowana dla woluminu przypiętego lokalnie dla systemu plików.
@@ -75,9 +75,9 @@ Po pierwsze dla każdego woluminu/udziału warstwowego zarezerwowane miejsce lok
 * Zarezerwowane miejsce lokalne 120 GB (do 1 TB pojemności woluminu/udziału warstwowego)
 * 330 GB dla woluminu przypiętego lokalnie lub udziału (dodanie zarezerwowane miejsce lokalne 10% rozmiaru 300 GB aprowizacji)
 
-Jest całkowita ilość miejsca wymaganego w warstwie lokalnej do tej pory: 240 GB + 120 GB + 330 GB = 690 GB.
+Całkowita ilość miejsca wymaganego w warstwie lokalnej do tej pory jest: 240 GB + 120 GB + 330 GB = 690 GB.
 
-Po drugie potrzebujemy co najmniej taką ilość miejsca na warstwie lokalnej jako największych pojedynczego rezerwacji. Ten dodatkowy kwota jest używana w przypadku, gdy trzeba przywrócić z migawki w chmurze. W tym przykładzie największych zarezerwowane miejsce lokalne jest 330 GB (w tym rezerwacji dla systemu plików), więc należy dodać do 690 GB: 690 GB + 330 GB = 1020 GB.
+Po drugie potrzebujemy co najmniej taką ilość miejsca na warstwie lokalnej jako największych pojedynczego rezerwacji. Ten dodatkowy kwota jest używana w przypadku, gdy trzeba przywrócić z migawki w chmurze. W tym przykładzie największych zarezerwowane miejsce lokalne jest 330 GB (w tym rezerwacji dla systemu plików), dzięki czemu można będzie dodać je do 690 GB: 690 GB + 330 GB = 1020 GB.
 Jeśli wykonane kolejne dodatkowe operacje przywracania, firma Microsoft zawsze bezpłatne miejsce z poprzedniej operacji przywracania.
 
 Po trzecie potrzebna 15%, całkowita miejsca lokalnego do tej pory, do przechowywania migawki lokalne, aby tylko 85% firm z jej jest dostępna. W tym przykładzie byłoby wokół 1020 GB = 0,85&ast;aprowizowane dane na dysku TB. Tak, będzie dysku aprowizowane dane (1020&ast;(1/0,85)) = 1200 GB = 1,20 TB ~ 1,25 TB (zaokrąglania do najbliższej kwartyl)

@@ -8,14 +8,15 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 12/07/2017
-ms.author: azfuncdf
+origin.date: 12/07/2017
+ms.date: 02/21/2019
+ms.author: v-junlch
 ms.openlocfilehash: 596eedab39ff926fcdc880c82c49ac464b7ff23b
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753474"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60730275"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Koncentratory zadań w funkcje trwałe (usługi Azure Functions)
 
@@ -29,11 +30,11 @@ Jeśli wiele aplikacji funkcyjnych udostępniać konta magazynu, każda aplikacj
 
 Koncentrator zadanie składa się z następującymi zasobami magazynu:
 
-* Jedną lub więcej kolejek kontroli.
-* Jedna kolejka elementu roboczego.
-* Historia jednej tabeli.
-* Jedna tabela wystąpień.
-* Jeden kontener magazynu zawierające co najmniej jednego obiektu blob dzierżawy.
+- Jedną lub więcej kolejek kontroli.
+- Jedna kolejka elementu roboczego.
+- Historia jednej tabeli.
+- Jedna tabela wystąpień.
+- Jeden kontener magazynu zawierające co najmniej jednego obiektu blob dzierżawy.
 
 Wszystkie te zasoby są tworzone automatycznie w domyślne konto usługi Azure Storage uruchamiania lub zaplanowane do uruchomienia programu orchestrator lub działanie funkcji. [Wydajności i skali](durable-functions-perf-and-scale.md) artykule wyjaśniono, jak te zasoby są używane.
 
@@ -140,3 +141,5 @@ Nazwy Centrum zadań musi rozpoczynać się literą i składać się wyłącznie
 
 > [!div class="nextstepaction"]
 > [Informacje o sposobie obsługi przechowywania wersji](durable-functions-versioning.md)
+
+<!-- Update_Description: wording update -->

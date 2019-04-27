@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 10/05/2018
 ms.author: ellacroi
 ms.openlocfilehash: 682c9e209c4fa4a9f4971af5da901faf1ec58c22
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57889747"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60735796"
 ---
-# <a name="register-in-dev-center"></a>Rejestrowanie w Centrum deweloperów  
+# <a name="register-in-dev-center"></a>Rejestracja w Centrum deweloperów  
 Aby sprawdzić, czy użytkownik nie jest zalogowany do konta osobistego przeglądarki, otwórz nowy Internet Explorer InPrivate lub Incognito przeglądarki Chrome sesji przeglądania.  
 1.  Zarejestruj się jako sprzedawcy w Centrum deweloperów.  
     *   Zaloguj się i Zarejestruj się jako sprzedawcy, odwiedź Centrum deweloperów systemu Azure, strona znajdujący się w [dev.windows.com/registration?accountprogram=azure](https://dev.windows.com/registration?accountprogram=azure).  

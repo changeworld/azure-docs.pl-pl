@@ -12,11 +12,11 @@ ms.topic: quickstart
 ms.date: 01/23/2019
 ms.author: diberry
 ms.openlocfilehash: 6d72299e4350c472ef552fa6afd96e48fd1869b9
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876968"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60710494"
 ---
 # <a name="quickstart-get-intent-using-c"></a>Szybki start: pobieranie intencji za pomocą języka C#
 
@@ -71,7 +71,7 @@ Użyj języka C#, aby wysłać zapytanie do interfejsu [API](https://westus.dev.
 
 Po ukończeniu przewodnika Szybki start zamknij projekt programu Visual Studio i usuń katalog projektu z systemu plików. 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Dodawanie wypowiedzi i uczenie przy użyciu języka C#](luis-get-started-cs-add-utterance.md)

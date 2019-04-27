@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: sngun
 ms.openlocfilehash: dbaafca8692b144b0032315c0b40eb02bec0e3ff
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57438673"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60553067"
 ---
 # <a name="nosql-tutorial-build-a-sql-api-java-console-application"></a>Samouczek NoSQL: Tworzenie aplikacji konsolowej w języku Java dla interfejsu API SQL
 

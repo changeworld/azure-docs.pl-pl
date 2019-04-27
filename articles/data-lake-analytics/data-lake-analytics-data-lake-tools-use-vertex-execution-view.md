@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 5366d852-e7d6-44cf-a88c-e9f52f15f7df
 ms.topic: conceptual
 ms.date: 10/13/2016
-ms.openlocfilehash: 9f834d697c0d3fe537bbdb190b0ba0d0f294ac87
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 73314c5864e3036d102deee2792021345b80bf2e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041017"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60687836"
 ---
 # <a name="use-the-vertex-execution-view-in-data-lake-tools-for-visual-studio"></a>Korzystanie z widoku wykonania wierzchołka, w narzędziach Data Lake Tools for Visual Studio
 Dowiedz się, jak korzystanie z widoku wykonania wierzchołka do zadania usługi Data Lake Analytics egzamin.
@@ -40,12 +40,12 @@ Pokazuje okienku u góry na środku **bieżący stan wszystkich wierzchołków**
 
 Dolne okienko center zostaną wyświetlone informacje dotyczące każdego wierzchołka:
 * Nazwa procesu: Nazwa wystąpienia wierzchołków. Składa się z różnych części w Nazwa etapu | VertexName | VertexRunInstance. Na przykład wierzchołka [62] .v1 SV7_Split oznacza drugi uruchomionego wystąpienia (.v1, indeksem rozpoczynającym się od 0) 62 liczby wierzchołków w etapie SV7_Split.
-* Łączna liczba danych odczytu/Written: Dane były odczytanych/zapisanych przez tego wierzchołka.
-* Stan/zakończenia, stan: Stan końcowy po zakończeniu wierzchołka.
-* Typ kodu/błąd wyjścia: Błąd podczas wierzchołka nie powiodło się.
+* Łączna ilość danych odczytanych/zapisanych: Dane były odczytanych/zapisanych przez tego wierzchołka.
+* Stan i wyjścia z niej stanu: Końcowy stan po zakończeniu wierzchołka.
+* Zakończenia kodu/szczegóły błędu: Błąd podczas wierzchołka nie powiodło się.
 * Przyczyna utworzenia: Dlaczego wierzchołka zostało utworzone.
 * Opóźnienie kolejki opóźnienia/PN opóźnienia i przetwarzanie zasobów: czas wierzchołka oczekiwania na zasoby, do przetwarzania danych i pozostanie w kolejce.
-* Identyfikator GUID procesu/Twórcy: Identyfikator GUID bieżącego wierzchołka uruchomionej lub twórcy.
+* Identyfikator GUID procesu/Twórcy: Identyfikator GUID dla bieżącego wierzchołka uruchomionej lub twórcy.
 * Wersja: N-tego wystąpienia uruchomionej wierzchołka (system może zaplanować nowe wystąpienia wierzchołek, wiele przyczyn, na przykład przejścia w tryb failover obliczeniowych nadmiarowości itp.)
 * Czas utworzenia wersji.
 * Przetwarzanie Utwórz rozpoczęcia procesu/czasu kolejce proces/czasu rozpoczęcia procesu/czasu Complete czasu: podczas uruchamiania procesu wierzchołka tworzenia; podczas uruchamiania procesu wierzchołków w kolejce podczas uruchamiania niektórych procesu wierzchołka; Po wykonaniu pewnych wierzchołka.

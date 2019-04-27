@@ -13,11 +13,11 @@ ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: kumud;tyao
 ms.openlocfilehash: 1d6343705e8d27fb2d22827cf792de332861456e
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60007971"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60736602"
 ---
 # <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>Co to jest filtrowania geograficznego w domenie usługi Azure drzwiami frontowymi?
 

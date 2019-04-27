@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 6f8fadc42d1c725002f2552a3fc1fc98e8564437
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: 7cb8d494d32f2a9c192418bfab2d5ca9b679c5fe
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58098784"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60704989"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Monitorowanie tożsamości i dostępu w usłudze Azure Security Center (wersja zapoznawcza)
 Ten artykuł ułatwia korzystanie z usługi Azure Security Center w celu monitorowania tożsamości i dostępu użytkowników.
@@ -119,7 +119,7 @@ Używany jako odwołanie w tabeli poniżej, aby lepiej zrozumieć dostępne zale
 |Subskrypcja|5|Usuń przestarzałe konta z subskrypcji|Usuń przestarzałe konta z subskrypcji, aby umożliwić dostęp do tylko bieżąca liczba użytkowników. |
 |Subskrypcja|5|Wyznaczenie więcej niż jednego właściciela subskrypcji|Wyznaczenie więcej niż jednego właściciela subskrypcji w celu posiadania nadmiarowości dostępu administratora.|
 |Subskrypcja|5|Wyznacz do 3 właścicieli w swojej subskrypcji|Wyznaczanie mniejszej niż 3 właścicieli subskrypcji, aby zmniejszyć ryzyko naruszenia zabezpieczeń przez właściciela z naruszonymi zabezpieczeniami.|
-|Magazyn kluczy|5|Włączanie dzienników diagnostycznych w usłudze Key Vault|Włączanie dzienników i zachowują je nawet przez rok. Dzięki temu można ponownie utworzyć dzienników aktywności na potrzeby analizy, gdy wystąpi zdarzenie naruszenia zabezpieczeń lub złamania zabezpieczeń sieci. |
+|Magazyn kluczy|5|Włącz dzienniki diagnostyczne w usłudze Key Vault|Włączanie dzienników i zachowują je nawet przez rok. Dzięki temu można ponownie utworzyć dzienników aktywności na potrzeby analizy, gdy wystąpi zdarzenie naruszenia zabezpieczeń lub złamania zabezpieczeń sieci. |
 |Subskrypcja|15|Usuń konta zewnętrzne z uprawnieniami do odczytu z subskrypcji|Usuń konta zewnętrzne z uprawnieniami do odczytu z subskrypcji, aby uniknąć niemonitorowanego dostępu.|
 |Subskrypcja|1|Podawanie szczegółów dotyczących kontaktu ds. zabezpieczeń|Podaj informacje kontaktowe zabezpieczeń dla każdej subskrypcji. Informacje kontaktowe są e-mail adres i numer telefonu. Informacje są używane z Tobą, jeśli nasz zespół ds. zabezpieczeń wykryje, że Twoje zasoby zostały naruszone.|
 

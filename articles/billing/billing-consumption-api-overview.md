@@ -15,24 +15,24 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 6/07/2018
 ms.author: erikre
-ms.openlocfilehash: 88b7909e78f8bd36ce456eee60587acbbb94b6cd
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 16e0bdfa0fc70d5239cb4127e61891a013bf54a3
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43286752"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60615897"
 ---
 # <a name="azure-consumption-api-overview"></a>Użycie platformy Azure, interfejsu API — Przegląd 
 
-Interfejsów API użycia platformy Azure zapewniają programistyczny dostęp do kosztów i dane użycia zasobów platformy Azure. Te interfejsy API obecnie obsługują tylko rejestracje Enterprise i subskrypcje Web Direct (z pewnymi wyjątkami). Interfejsy API są ciągle aktualizowane, aby obsłużyć inne typy subskrypcji platformy Azure.
+Interfejsy API użycia platformy Azure zapewniają programowy dostęp do danych dotyczących kosztów i użycia zasobów platformy Azure. Te interfejsy API obecnie obsługują tylko rejestracje Enterprise i subskrypcje Web Direct (z pewnymi wyjątkami). Interfejsy API są ciągle aktualizowane, aby obsłużyć inne typy subskrypcji platformy Azure.
 
-Interfejsy API usługi Azure zużycie zapewniają dostęp do:
-- Bezpośrednich klientów sieci Web i Enterprise 
+Interfejsy API użycia platformy Azure zapewniają dostęp do następujących elementów:
+- Bezpośredni klienci internetowi i klienci korporacyjni 
     - Szczegóły użycia 
-    - Opłatach w portalu Marketplace 
-    - Zalecenia dotyczące rezerwacji 
+    - Opłaty za korzystanie z witryny Marketplace 
+    - Rekomendacje dotyczące rezerwacji 
     - Szczegóły rezerwacji 
-    - Podsumowanie rezerwacji 
+    - Podsumowania rezerwacji 
 - Tylko klienci korporacyjni 
     - Arkusz cen 
     - Budżety 

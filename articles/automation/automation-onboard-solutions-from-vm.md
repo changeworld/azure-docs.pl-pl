@@ -10,11 +10,11 @@ ms.service: automation
 ms.custom: mvc
 manager: carmonm
 ms.openlocfilehash: bf81b862f978d4baab0907dc9002564062ec5228
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58619734"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60738933"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Dołączanie rozwiązań zarządzania aktualizacjami, śledzenie zmian i spisu z maszyną wirtualną platformy Azure
 
@@ -59,7 +59,7 @@ Po dodaniu komputera do zarządzania aktualizacjami, śledzenia zmian lub rozwi�
 
 Przejdź do swojego obszaru roboczego. W obszarze **ogólne**, wybierz opcję **zapisane wyszukiwania**. Dwa zapisane wyszukiwania, które są używane przez te rozwiązania są wyświetlane w poniższej tabeli:
 
-|Name (Nazwa)     |Kategoria  |Alias  |
+|Name (Nazwa)     |Category  |Alias  |
 |---------|---------|---------|
 |MicrosoftDefaultComputerGroup     |  ChangeTracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | Aktualizacje        | Updates__MicrosoftDefaultComputerGroup         |

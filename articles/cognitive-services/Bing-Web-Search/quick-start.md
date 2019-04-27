@@ -12,11 +12,11 @@ ms.topic: quickstart
 ms.date: 03/17/2019
 ms.author: scottwhi
 ms.openlocfilehash: e4076b042642df3cd232ff52769d790da5a1bcc4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58163807"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60648151"
 ---
 # <a name="your-first-bing-search-query"></a>Twoje pierwsze zapytanie wyszukiwania Bing
 

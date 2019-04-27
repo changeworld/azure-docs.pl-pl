@@ -10,11 +10,11 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 10/09/2018
 ms.openlocfilehash: 9ee484971e217b0ca4dd7ad855e9e6dc3313e5d4
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230339"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60684806"
 ---
 # <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>Tworzenie instrukcji warunkowych, które kontrolują akcji przepływu pracy w usłudze Azure Logic Apps
 
@@ -45,7 +45,7 @@ Na przykład załóżmy, że masz aplikację logiki, która wysyła zbyt dużo �
 
    Jeśli chcesz dodać warunek, pod koniec przepływu pracy, w dolnej części swojej aplikacji logiki, wybierz **nowy krok** > **Dodaj akcję**.
 
-1. W polu wyszukiwania wprowadź "warunek" jako filtr. Wybierz tę akcję: **warunku — kontrola**
+1. W polu wyszukiwania wprowadź "warunek" jako filtr. Wybierz tę akcję: **Warunek — formant**
 
    ![Dodaj warunek](./media/logic-apps-control-flow-conditional-statement/add-condition.png)
 
@@ -62,7 +62,7 @@ Na przykład załóżmy, że masz aplikację logiki, która wysyła zbyt dużo �
    Na przykład wybierz pozycję "**zawiera**". 
 
    1. W polu prawego należy określić wartość lub pola jako kryteria. 
-   W tym przykładzie określ następujący ciąg: **firmy Microsoft**
+   W tym przykładzie określ następujący ciąg: **Microsoft**
 
    Oto pełny warunek:
 

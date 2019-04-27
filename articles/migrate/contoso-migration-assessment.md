@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: raynew
 ms.openlocfilehash: 4739308d301291bf88e8ae547ba85f9648339c4e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58118463"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60681104"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Migracja Contoso: Ocena obciążeń lokalnych pod kątem migracji do platformy Azure
 
@@ -39,7 +39,7 @@ Artykuł 3: Ocena zasobów lokalnych do migracji na platformę Azure | Contoso u
 [Artykuł 14: Skalowanie migracji na platformę Azure](contoso-migration-scale.md) | Po wypróbowanie kombinacje migracji, Contoso przygotowuje aby możliwe było skalowanie pełną migrację na platformę Azure. | Dostępne
 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Jak Contoso uzna, migracji na platformę Azure, firma chce uzyskać ocenę techniczną i finansową ustalić, czy swoich lokalnych obciążeń są odpowiednie na potrzeby migracji do chmury. W szczególności zespół Contoso chce ocenić zgodność maszyn i baz danych do migracji. Chce oszacować wydajność i koszty związane z zasobami firmy Contoso na platformie Azure.
 

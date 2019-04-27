@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/20/2017
 ms.author: apimpm
 ms.openlocfilehash: d87293d89e4009512494bf47f9742ea5901f909a
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445366"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60656986"
 ---
 # <a name="azure-api-management-page-controls"></a>Formantów strony w usłudze Azure API Management
 Usługa Azure API Management zawiera następujące kontrolki do użycia w Deweloper szablonów portalu.  
@@ -38,13 +38,13 @@ Aby użyć kontrolki, umieść go w dowolnym miejscu w szablonie portalu dla dew
 ## <a name="developer-portal-template-page-controls"></a>Formanty strony szablonu portalu dla deweloperów  
   
 -   [Akcje aplikacji](#app-actions)  
--   [Basic — logowanie](#basic-signin)  
--   [Formant stronicowania](#paging-control)  
+-   [basic-signin](#basic-signin)  
+-   [paging-control](#paging-control)  
 -   [dostawcy](#providers)  
 -   [Kontrolka wyszukiwania](#search-control)  
 -   [Zarejestruj się](#sign-up)  
 -   [przycisk subskrypcji](#subscribe-button)  
--   [Anuluj subskrypcję](#subscription-cancel)  
+-   [subscription-cancel](#subscription-cancel)  
   
 ##  <a name="app-actions"></a> Akcje aplikacji  
  `app-actions` Kontroli udostępnia interfejs użytkownika do interakcji z aplikacjami na stronie profilu użytkownika w portalu dla deweloperów.  

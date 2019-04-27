@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.date: 03/01/2018
 ms.author: ghogen
 ms.openlocfilehash: 2925ca5a303876a68b6d605c7312d43af102b6e0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58088472"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60680308"
 ---
 # <a name="tutorial-connect-to-bing-news-search-api-with-connected-services-in-visual-studio-and-c"></a>Samouczek: Nawiązywanie połączenia z interfejsem API wyszukiwania wiadomości Bing za pomocą usług połączonych w programie Visual Studio i języka C#
 

@@ -13,11 +13,11 @@ ms.workload: infrastructure
 ms.date: 5/22/2017
 ms.author: xujing
 ms.openlocfilehash: 5945be210812a6cbc24c9a3bb12414be5212be17
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437602"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60711207"
 ---
 # <a name="understand-common-error-messages-when-you-manage-virtual-machines-in-azure"></a>Zrozumienie typowe komunikaty o błędach, gdy można zarządzać maszynami wirtualnymi na platformie Azure
 
@@ -143,7 +143,7 @@ W tej sekcji przedstawiono typowe komunikaty o błędach, które można napotka�
 |  OperationNotAllowed  |  Aktualizacje do elementu encryptionSettings nie jest dozwolone, gdy maszyna wirtualna jest przydzielany, spróbuj ponownie po cofnięciu przydziału maszyny Wirtualnej  |
 |  OperationNotAllowed  |  Dodanie zarządzanego dysku do maszyny wirtualnej z dyskami opartymi na obiektach blob nie jest obsługiwane.  |
 |  OperationNotAllowed  |  Maksymalna liczba dysków danych dozwolonych do podłączenia do maszyny Wirtualnej tego rozmiaru to {0}.  |
-|  OperationNotAllowed  |  Dodanie dysku opartego na obiektach blob do maszyny wirtualnej z zarządzanymi dyskami nie jest obsługiwane.  |
+|  OperationNotAllowed  |  Dodanie dysku opartego na obiektach blob do maszyny wirtualnej z dyskami zarządzanymi nie jest obsługiwane.  |
 |  OperationNotAllowed  |  Operacja "{0}"jest niedozwolone w obrazie"{1}", ponieważ obraz jest oznaczony do usunięcia. Możesz tylko ponowić próbę wykonania operacji usunięcia (lub odczekać trwającą do ukończenia).  |
 |  OperationNotAllowed  |  Operacja "{0}"nie jest dozwolona na maszynie Wirtualnej"{1}", ponieważ maszyna wirtualna jest uogólniona.  |
 |  OperationNotAllowed  |  Operacja "{0}"nie jest dozwolona jako kolekcję punktów przywracania"{1}" jest oznaczona do usunięcia.  |

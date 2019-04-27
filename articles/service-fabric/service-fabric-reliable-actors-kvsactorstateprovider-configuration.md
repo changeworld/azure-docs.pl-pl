@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 10/2/2017
 ms.author: sumukhs
 ms.openlocfilehash: 8b10ef18fd389179a4f5422783606c45fa2e0d32
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669202"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60728053"
 ---
 # <a name="configuring-reliable-actors--kvsactorstateprovider"></a>Konfigurowanie elementów Reliable Actors — dostawcy KVSActorStateProvider
 Domyślna konfiguracja dostawcy KVSActorStateProvider można zmodyfikować, zmieniając plik settings.xml, który jest generowany w katalogu głównym pakietu Microsoft Visual Studio w folderze konfiguracji dla określonego aktora.

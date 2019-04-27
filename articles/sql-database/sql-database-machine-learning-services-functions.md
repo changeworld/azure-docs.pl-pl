@@ -1,5 +1,5 @@
 ---
-title: Zapis zaawansowane funkcje języka R
+title: Pisanie zaawansowanych funkcji języka R
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
 description: Dowiedz się, jak napisać funkcję języka R do zaawansowanych obliczeń statystycznych w usłudze Azure SQL Database przy użyciu usług Machine Learning (wersja zapoznawcza).
 services: sql-database
@@ -14,11 +14,11 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
 ms.openlocfilehash: 939798d5d9eb2843d7bbbbe74680342e4ce6ce95
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60014785"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60702456"
 ---
 # <a name="write-advanced-r-functions-in-azure-sql-database-using-machine-learning-services-preview"></a>Zapisywanie zaawansowane funkcje języka R w usłudze Azure SQL Database przy użyciu usług Machine Learning (wersja zapoznawcza)
 

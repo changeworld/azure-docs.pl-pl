@@ -10,11 +10,11 @@ ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
 ms.openlocfilehash: 41f0607908cde94ca08a4c4dfce0a47032eefbb3
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578445"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60739234"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Dołączanie rozwiązania Update Management, śledzenia zmian i spisu
 
@@ -32,7 +32,7 @@ Wybierz obszar roboczy usługi Log Analytics i konto usługi Automation, a nast�
 
 ![Dołączanie rozwiązania spisu](media/automation-onboard-solutions-from-automation-account/onboardsolutions.png)
 
-Podczas włączania rozwiązania, tylko niektóre regiony są obsługiwane w przypadku łączenia obszar roboczy usługi Log Analytics i konto usługi Automation.
+W przypadku włączenia rozwiązań tylko w niektórych regionach jest obsługiwane łączenie obszaru roboczego usługi Log Analytics i konta usługi Automation.
 
 W poniższej tabeli przedstawiono obsługiwane mapowania:
 
@@ -82,7 +82,7 @@ Po dodaniu komputera do zarządzania aktualizacjami lub śledzenia zmian i spisu
 
 Przejdź do swojego konta usługi Automation, a następnie wybierz pozycję **zapisane wyszukiwania** w obszarze **ogólne**. Dwa zapisanych wyszukiwań, używane przez te rozwiązania są widoczne w poniższej tabeli:
 
-|Name (Nazwa)     |Kategoria  |Alias  |
+|Name (Nazwa)     |Category  |Alias  |
 |---------|---------|---------|
 |MicrosoftDefaultComputerGroup     |  ChangeTracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | Aktualizacje        | Updates__MicrosoftDefaultComputerGroup         |

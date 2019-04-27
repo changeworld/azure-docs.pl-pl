@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 12/07/2017
 ms.author: azfuncdf
 ms.openlocfilehash: 33ca6c36cd11d53a3c50a8374181c511fd2f8c3e
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549088"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60648153"
 ---
 # <a name="versioning-in-durable-functions-azure-functions"></a>Przechowywanie wersji w funkcje trwałe (usługa Azure Functions)
 

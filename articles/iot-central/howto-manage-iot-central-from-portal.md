@@ -9,11 +9,11 @@ ms.date: 01/14/2019
 ms.topic: conceptual
 manager: philmea
 ms.openlocfilehash: f58d06cd191166f47d864241564bc57019b59132
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57316578"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60707436"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>Zarządzanie IoT Central w witrynie Azure portal
 
@@ -35,7 +35,7 @@ Wybierz **IoT Central aplikacji** pozycji w wynikach wyszukiwania.
 
 ![Portalu zarządzania: wyniki wyszukiwania](media/howto-manage-iot-central-from-portal/image0b.png)
 
-Teraz wybierz **Utwórz**.
+Następnie wybierz pozycję **Utwórz**.
 
 ![Portal zarządzania: Zasobów IoT Central](media/howto-manage-iot-central-from-portal/image0c.png)
 

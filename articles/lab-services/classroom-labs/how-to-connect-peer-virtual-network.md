@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: spelluru
 ms.openlocfilehash: 465352af52cbc84773e52782233065b3000921e7
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58653224"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60695411"
 ---
 # <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>Łączenie sieci środowiska laboratoryjnego z równorzędnej sieci wirtualnej w usłudze Azure Lab Services 
 Ten artykuł zawiera informacje dotyczące komunikacji równorzędnej sieci laboratoria z inną siecią. 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Wirtualne sieci równorzędne umożliwiają bezproblemowe łączenie sieci wirtualnych platformy Azure. Po nawiązaniu połączenia równorzędnego sieci wirtualne są traktowane jako jedna sieć. Ruch między maszynami wirtualnymi w wirtualnych sieciach równorzędnych odbywa się za pomocą infrastruktury sieci szkieletowej firmy Microsoft, jak ruch jest kierowany między maszynami wirtualnymi w tej samej sieci wirtualnej przy użyciu prywatnych adresów IP. Aby uzyskać więcej informacji, zobacz [komunikacja równorzędna sieci wirtualnych](../../virtual-network/virtual-network-peering-overview.md).
 
 Może być konieczne łączenie sieci środowiska laboratoryjnego z równorzędnej sieci wirtualnej, w niektórych scenariuszach, w tym poniższych:

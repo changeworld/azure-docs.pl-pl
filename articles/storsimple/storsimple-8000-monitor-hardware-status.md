@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/15/2018
 ms.author: alkohli
-ms.openlocfilehash: 58007eea9ce25423bc3a9c2847de42db04be43eb
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: a987239669e7437a179f5f24034f4dbe45535663
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42055417"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60632868"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-hardware-components-and-status"></a>Usługa Menedżer urządzeń StorSimple składniki sprzętowe monitora i stanu
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 W tym artykule opisano różne składniki fizyczne i logiczne na urządzeniu serii StorSimple 8000 w środowisku lokalnym. Opisano również sposób monitorować stan składnika urządzenia za pomocą **stan i kondycja sprzętu** bloku usługi Menedżer urządzeń StorSimple.
 
 **Stan i kondycja sprzętu** bloku wyświetlany jest stan sprzętu wszystkie składniki urządzenia StorSimple.
@@ -79,7 +79,7 @@ Wykonaj poniższe kroki, aby wyświetlić stan sprzętu składnik urządzenia:
 ## <a name="component-list-for-primary-enclosure-of-storsimple-device"></a>Lista składników dla podstawowego Obudowa urządzenia StorSimple
 W poniższej tabeli przedstawiono składniki fizyczne i logiczne, znajdujących się w obudowie głównej (istnieje zarówno w 8100 i 8600) urządzenia StorSimple w środowisku lokalnym.
 
-| Składnik | Moduł | Typ | Lokalizacja | Pole (jednostkę FRU replaceable unit)? | Opis |
+| Składnik | Moduł | Type | Lokalizacja | Pole (jednostkę FRU replaceable unit)? | Opis |
 | --- | --- | --- | --- | --- | --- |
 | Napęd w gnieździe [0-11] |Stacje dysków |Fizyczne |Udostępniona |Yes |Jeden wiersz jest prezentowana dla każdego z dysków SSD i dysków HDD, w obudowie podstawowego. |
 | Czujnik temperatury otoczenia |Obudowy |Fizyczne |Udostępniona |Nie |Mierzy temperatury w obudowie. |
@@ -93,18 +93,18 @@ W poniższej tabeli przedstawiono składniki fizyczne i logiczne, znajdujących 
 | Zasilacz [0-1] |MODUŁU PCM |Fizyczne |Udostępniona |Yes |Jeden wiersz jest prezentowana dla każdego zasilacze w dwóch PCMs, znajduje się tyłu na urządzeniu. |
 | Chłodzenie [0-1] |MODUŁU PCM |Fizyczne |Udostępniona |Yes |Dla każdego z czterech wentylatory, znajdującej się w dwóch PCMs znajduje się jeden wiersz. |
 | Bateria [0-1] |MODUŁU PCM |Fizyczne |Udostępniona |Yes |Dla każdego z modułów baterii zapasowej, które są umieszczone w module PCM znajduje się jeden wiersz. |
-| Metis |ND |Logiczne |Udostępniona |ND |Wyświetla stan baterii: czy potrzebujesz, ładowania i zbliża się wycofanych z eksploatacji. |
-| Klaster |ND |Logiczne |Udostępniona |ND |Wyświetla stan klastra, który jest tworzony między dwoma modułami zintegrowanego kontrolera. |
-| Węzeł klastra |ND |Logiczne |Udostępniona |ND |Wskazuje stan kontrolera jako część klastra. |
-| Kworum klastra |ND |Logiczne | |ND |Wskazuje obecność dysku większość należeć pula magazynów dysków Twardych. |
-| Obszar danych dysku |ND |Logiczne |Udostępniona |ND |Miejsce do magazynowania służy do danych w puli magazynu na dysku twardym (HDD). |
-| Obszar zarządzania dysku |ND |Logiczne |Udostępniona |ND |Miejsce zarezerwowane w puli magazynów dysku twardego dla zadań zarządzania. |
-| Obszar kworum |ND |Logiczne |Udostępniona |ND |Miejsce zarezerwowane w puli magazynów dysku dla kworum klastra. |
-| Obszar zamiany dysku twardego |ND |Logiczne |Udostępniona |ND |Miejsce zarezerwowane w puli magazynów dysków Twardych do zastąpienia kontrolera. |
-| Obszar danych dysku SSD |ND |Logiczne |Udostępniona |ND |Używane miejsce w magazynie danych w puli magazynów pełny stan dysku (SSD). |
-| NVRAM dysku SSD |ND |Logiczne |Udostępniona |ND |Miejsca do magazynowania w puli magazynów dysków SSD, które są przeznaczone do logiki NVRAM. |
-| Pula magazynów dysków Twardych |ND |Logiczne |Udostępniona |ND |Wyświetla stan puli magazynu logicznego, która jest tworzona z urządzenia dysków twardych. |
-| Pula magazynów dysków SSD |ND |Logiczne |Udostępniona |ND |Wyświetla stan puli magazynu logicznego, która jest tworzona na urządzeniu SSD. |
+| Metis |ND |Logiczny |Udostępniona |ND |Wyświetla stan baterii: czy potrzebujesz, ładowania i zbliża się wycofanych z eksploatacji. |
+| Klaster |ND |Logiczny |Udostępniona |ND |Wyświetla stan klastra, który jest tworzony między dwoma modułami zintegrowanego kontrolera. |
+| Węzeł klastra |ND |Logiczny |Udostępniona |ND |Wskazuje stan kontrolera jako część klastra. |
+| Kworum klastra |ND |Logiczny | |ND |Wskazuje obecność dysku większość należeć pula magazynów dysków Twardych. |
+| Obszar danych dysku |ND |Logiczny |Udostępniona |ND |Miejsce do magazynowania służy do danych w puli magazynu na dysku twardym (HDD). |
+| Obszar zarządzania dysku |ND |Logiczny |Udostępniona |ND |Miejsce zarezerwowane w puli magazynów dysku twardego dla zadań zarządzania. |
+| Obszar kworum |ND |Logiczny |Udostępniona |ND |Miejsce zarezerwowane w puli magazynów dysku dla kworum klastra. |
+| Obszar zamiany dysku twardego |ND |Logiczny |Udostępniona |ND |Miejsce zarezerwowane w puli magazynów dysków Twardych do zastąpienia kontrolera. |
+| Obszar danych dysku SSD |ND |Logiczny |Udostępniona |ND |Używane miejsce w magazynie danych w puli magazynów pełny stan dysku (SSD). |
+| SSD NVRAM space |ND |Logiczny |Udostępniona |ND |Miejsca do magazynowania w puli magazynów dysków SSD, które są przeznaczone do logiki NVRAM. |
+| Pula magazynów dysków Twardych |ND |Logiczny |Udostępniona |ND |Wyświetla stan puli magazynu logicznego, która jest tworzona z urządzenia dysków twardych. |
+| Pula magazynów dysków SSD |ND |Logiczny |Udostępniona |ND |Wyświetla stan puli magazynu logicznego, która jest tworzona na urządzeniu SSD. |
 | Kontroler [0-1] [Stan] |OPERACJE WE/WY |Fizyczne |Kontroler |Yes |Wyświetla stan kontrolera, oraz czy jest w trybie aktywny lub wstrzymania w obudowie. |
 | Czujnikami temperatury w kontrolerze |OPERACJE WE/WY |Fizyczne |Kontroler |Nie |Wiele czujników temperatury, takich jak moduł we/wy, temperatury procesora CPU, czujniki DIMM i PCIe ma ich stan, który wskazuje, czy temperatura napotkano mieści się w granicach. |
 | Funkcja SAS expander |OPERACJE WE/WY |Fizyczne |Kontroler |Nie |Wskazuje stan serial ekspander SCSI (SAS) dołączonego, który jest używany do łączenia z magazynu zintegrowanego z kontrolerem. |
@@ -120,7 +120,7 @@ W poniższej tabeli przedstawiono składniki fizyczne i logiczne, znajdujących 
 ## <a name="component-list-for-ebod-enclosure-of-storsimple-device"></a>Lista składników dla EBOD Obudowa urządzenia StorSimple
 W poniższej tabeli przedstawiono składniki fizyczne i logiczne, znajdujących się w obudowie EBOD (istnieje tylko w modelu 8600) urządzenia StorSimple w środowisku lokalnym.
 
-| Składnik | Moduł | Typ | Lokalizacja | JEDNOSTKI FRU? | Opis |
+| Składnik | Moduł | Type | Lokalizacja | JEDNOSTKI FRU? | Opis |
 | --- | --- | --- | --- | --- | --- |
 | Napęd w gnieździe [0-11] |Stacje dysków |Fizyczne |Udostępniona |Yes |Jeden wiersz jest prezentowana dla każdego z stacje dysków Twardych uzyskać obudowy EBOD. |
 | Czujnik temperatury otoczenia |Obudowy |Fizyczne |Udostępniona |Nie |Mierzy temperatury w obudowie. |
@@ -133,7 +133,7 @@ W poniższej tabeli przedstawiono składniki fizyczne i logiczne, znajdujących 
 | Czujnikami temperatury w module PCM |MODUŁU PCM |Fizyczne |Udostępniona |Nie |Wiele czujników temperatury wlotu np. informacji o hotspotach czujników się ich stan, który wskazuje, czy temperatura mierzonego w granicach tolerancji. |
 | Zasilacz [0-1] |MODUŁU PCM |Fizyczne |Udostępniona |Yes |Jeden wiersz jest prezentowana dla każdego zasilacze w dwóch PCMs, znajduje się tyłu na urządzeniu. |
 | Chłodzenie [0-1] |MODUŁU PCM |Fizyczne |Udostępniona |Yes |Dla każdego z czterech wentylatory, znajdującej się w dwóch PCMs znajduje się jeden wiersz. |
-| Lokalny magazyn [HDD] |ND |Logiczne |Udostępniona |ND |Wyświetla stan puli magazynu logicznego, która jest tworzona z urządzenia dysków twardych. |
+| Lokalny magazyn [HDD] |ND |Logiczny |Udostępniona |ND |Wyświetla stan puli magazynu logicznego, która jest tworzona z urządzenia dysków twardych. |
 | Kontroler [0-1] [Stan] |OPERACJE WE/WY |Fizyczne |Kontroler |Yes |Wyświetla stan kontrolerów w EBOD module. |
 | Czujnikami temperatury w EBOD |OPERACJE WE/WY |Fizyczne |Kontroler |Nie |Wiele czujników temperatury z każdy kontroler ma ich stan, który wskazuje, czy temperatura napotkano mieści się w granicach. |
 | Funkcja SAS expander |OPERACJE WE/WY |Fizyczne |Kontroler |Nie |Wskazuje stan funkcją SAS expander, który jest używany do łączenia z magazynu zintegrowanego z kontrolerem. |

@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 06/08/2017
 ms.author: trinadhk
 ms.openlocfilehash: 2ba94963238cd5ee96df5c178a072addc5ddd75e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58082929"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60620691"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Funkcje zabezpieczeń, aby pomóc w ochronie hybrydowych kopii zapasowych, które używają usługi Azure Backup
 Coraz więcej wątpliwości dotyczących problemów z zabezpieczeniami, takich jak złośliwe oprogramowanie, przed oprogramowaniem wymuszającym okup i nieautoryzowanego dostępu. Te problemy dotyczące zabezpieczeń może być kosztowna, pod względem zarówno pieniądze, jak i dane. Aby zabezpieczyć się przed takimi atakami, kopia zapasowa Azure zapewnia funkcje zabezpieczeń, aby pomóc w ochronie hybrydowych kopii zapasowych. W tym artykule opisano, jak włączanie i używanie tych funkcji przy użyciu agenta usługi Azure Recovery Services i serwera usługi Azure Backup. Te funkcje obejmują:

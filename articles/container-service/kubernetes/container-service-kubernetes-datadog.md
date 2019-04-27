@@ -10,11 +10,11 @@ ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
 ms.openlocfilehash: 6a682c199b40035bfd44fc5611a7d44b49f7b3ab
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995350"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60712342"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-cluster-with-datadog"></a>(PRZESTARZAŁE) Monitorowanie klastra usługi Azure Container Service za pomocą usługi DataDog
 
@@ -45,7 +45,7 @@ Jeśli nie masz `kubectl` zainstalowany, możesz uruchomić:
 $ az acs kubernetes install-cli
 ```
 
-## <a name="datadog"></a>Pomocą usługi DataDog
+## <a name="datadog"></a>DataDog
 Pomocą usługi Datadog jest usługą monitorowania, która gromadzi dane monitorowania z kontenerów w klastrze usługi Azure Container Service. Pomocą usługi Datadog ma na pulpicie nawigacyjnym integracji platformy Docker, którym można zobaczyć określonych metryk w Twoich kontenerów. Metryki zebrane z kontenerów są uporządkowane według procesora CPU, pamięci, sieci i we/wy. Pomocą usługi Datadog dzieli metryki na kontenerach i obrazy.
 
 Najpierw musisz [Tworzenie konta usługi](https://www.datadoghq.com/lpg/)

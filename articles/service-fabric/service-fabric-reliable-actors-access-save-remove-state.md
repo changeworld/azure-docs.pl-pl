@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 03/19/2018
 ms.author: vturecek
 ms.openlocfilehash: 7c10d00916ef65767c98616c7337bfa444c339a9
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58664730"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60725401"
 ---
 # <a name="access-save-and-remove-reliable-actors-state"></a>Dostęp, zapisywania i usuwania stanu elementów Reliable Actors
 [Elementy Reliable Actors](service-fabric-reliable-actors-introduction.md) jednowątkowych obiektów można hermetyzować logiki i stanu i niezawodnie zarządzania stanem. Każde wystąpienie aktora ma swój własny [menedżera stanu](service-fabric-reliable-actors-state-management.md): struktura danych podobne do słownika, która w niezawodny sposób przechowuje par klucz/wartość. Menedżer stanu jest otokę dostawca stanu. Służy do przechowywania danych, niezależnie od tego, który [ustawienie trwałości](service-fabric-reliable-actors-state-management.md#state-persistence-and-replication) jest używany.

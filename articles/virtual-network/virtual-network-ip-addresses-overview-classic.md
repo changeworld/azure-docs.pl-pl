@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: genli
 ms.openlocfilehash: 9e7a5772dd1e10abf43eddf0548833d625ecfb24
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652171"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60742126"
 ---
 # <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>Typy adresów IP i metody alokacji (model klasyczny) na platformie Azure
 Do zasobów platformy Azure można przypisać adresy IP w celu komunikowania się z innymi zasobami platformy Azure, siecią lokalną i Internetem. Istnieją dwa typy adresów IP, można użyć na platformie Azure: prywatnych i publicznych.
@@ -87,7 +87,7 @@ Azure [bramy Application gateway](../application-gateway/application-gateway-int
 ### <a name="at-a-glance"></a>W skrócie
 W poniższej tabeli przedstawiono każdy typ zasobu z ewentualne metody alokacji (dynamiczne/statyczne), a także przypisać wiele publicznych adresów IP.
 
-| Zasób | Dynamiczny | Statyczny | Wiele adresów IP |
+| Resource | Dynamiczny | Statyczny | Wiele adresów IP |
 | --- | --- | --- | --- |
 | Usługa w chmurze |Yes |Yes |Yes |
 | Wystąpienia roli maszyny Wirtualnej IaaS lub PaaS |Yes |Nie |Nie |
@@ -137,14 +137,14 @@ Prywatny adres IP możesz przypisać do konfiguracji **frontonu** [wewnętrznego
 ### <a name="at-a-glance"></a>W skrócie
 W poniższej tabeli przedstawiono każdy typ zasobu z ewentualne metody alokacji (dynamiczne/statyczne), a także przypisać wiele prywatnych adresów IP.
 
-| Zasób | Dynamiczny | Statyczny | Wiele adresów IP |
+| Resource | Dynamiczny | Statyczny | Wiele adresów IP |
 | --- | --- | --- | --- |
 | Maszyna wirtualna (w *autonomiczny* usług w chmurze lub sieci wirtualnej) |Yes |Yes |Yes |
 | Wystąpienia roli PaaS (w *autonomiczny* usług w chmurze lub sieci wirtualnej) |Yes |Nie |Nie |
 | Frontonu modułu równoważenia obciążenia wewnętrznego |Yes |Yes |Yes |
 | Fronton aplikacji bramy |Yes |Yes |Yes |
 
-## <a name="limits"></a>Limity
+## <a name="limits"></a>Limits
 W poniższej tabeli przedstawiono limity dotyczące adresów IP adresowania na platformie Azure na subskrypcję. [Kontaktując się z pomocą techniczną](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade), możesz zwiększyć domyślne limity do maksimum w zależności od potrzeb biznesowych.
 
 |  | Limit domyślny | Limit maksymalny |
@@ -162,7 +162,7 @@ W większości przypadków publiczne adresy IP są bezpłatne. Istnieje nominaln
 ## <a name="differences-between-resource-manager-and-classic-deployments"></a>Różnice między Menedżera zasobów i wdrożeniami klasycznymi
 Poniżej przedstawiono porównanie funkcji adresowania IP usługi Resource Manager i klasycznego modelu wdrażania.
 
-|  | Zasób | Wdrożenie klasyczne | Resource Manager |
+|  | Resource | Wdrożenie klasyczne | Resource Manager |
 | --- | --- | --- | --- |
 | **Publiczny adres IP** |***VM*** |Nazywane ILPIP (tylko dynamiczny) |Określane jako publiczny adres IP (dynamiczny lub statyczny) |
 |  ||Przypisane do maszyn wirtualnych IaaS lub wystąpień roli PaaS |Skojarzone z karty Sieciowej maszyny Wirtualnej |

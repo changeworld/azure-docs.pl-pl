@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 03/20/2019
 ms.author: sajagtap
 ms.openlocfilehash: 9cc18ce1fde5de354e3da5e384c08ada1927d097
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757227"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60699073"
 ---
 # <a name="quickstart-analyze-images-for-objectionable-content-in-c"></a>Szybki start: Analizuj obrazy niepożądanej zawartości wC#
 

@@ -1,6 +1,6 @@
 ---
-title: Modyfikowanie danych 0 ustawienia na urządzeniu z serii StorSimple 8000 | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować interfejs sieciowy 0 danych na urządzeniu StorSimple za pomocą programu Windows PowerShell dla urządzenia StorSimple.
+title: Modyfikowanie danych 0 ustawień urządzenia StorSimple 8000 series | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak ponownie skonfigurować interfejs sieciowy DATA 0 na urządzeniu StorSimple przy użyciu programu Windows PowerShell dla usługi StorSimple.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,59 +14,59 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2017
 ms.author: alkohli
-ms.openlocfilehash: 90df43e22f17fd32fe642514df098b72700e77af
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3cf136c5ddec8f4998d15c597914e1f806453945
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23927586"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60631587"
 ---
-# <a name="modify-the-data-0-network-interface-settings-on-your-storsimple-8000-series-device"></a>Zmodyfikuj ustawienia interfejsu sieciowego 0 danych na urządzeniu z serii StorSimple 8000
+# <a name="modify-the-data-0-network-interface-settings-on-your-storsimple-8000-series-device"></a>Modyfikowanie ustawień DATA 0 sieci interfejsu na urządzeniu StorSimple 8000 series
 
 ## <a name="overview"></a>Omówienie
 
-Microsoft Azure StorSimple urządzenie ma sześć interfejsów sieciowych z dane 0 do dane 5. DANE 0 interfejsu zawsze jest skonfigurowana za pośrednictwem interfejsu programu Windows PowerShell lub konsoli szeregowej i jest automatycznie włączoną obsługę chmury. Należy pamiętać, że nie można skonfigurować interfejs sieciowy 0 danych za pośrednictwem portalu Azure.
+Urządzenie StorSimple systemu Azure firmy Microsoft ma sześć interfejsów sieciowych, dane 0 do dane 5. DATA 0 jest zawsze konfigurowane za pośrednictwem interfejsu programu Windows PowerShell lub konsoli szeregowej interfejsu i jest automatycznie włączoną obsługę chmury. Należy pamiętać, że nie można skonfigurować interfejs sieciowy DATA 0 w witrynie Azure portal.
 
-DANE 0 interfejs został skonfigurowany za pomocą Kreatora instalacji podczas początkowej wdrażania urządzenia StorSimple. Gdy urządzenie jest w trybie operacyjne, konieczne może być ponownie skonfigurować dane 0 ustawienia. Ten samouczek zawiera dwie metody, aby zmodyfikować dane 0 sieci ustawienia, zarówno za pomocą programu Windows PowerShell dla StorSimple.
+DATA 0 interfejs został skonfigurowany za pomocą Kreatora instalacji podczas początkowego wdrożenia urządzenia StorSimple. Gdy urządzenie jest w trybie operacyjnej, konieczne może być ponownie skonfigurować interfejs DATA 0 ustawienia. Ten samouczek zawiera dwie metody, aby zmodyfikować interfejs DATA 0 sieci ustawienia, zarówno za pomocą programu Windows PowerShell dla usługi StorSimple.
 
-Po przeczytaniu tego samouczka, będą mieć możliwość:
+Po przeczytaniu tego samouczka, będzie mieć możliwość:
 
 * Modyfikowanie danych 0 ustawienie za pomocą Kreatora konfiguracji sieci
-* Modyfikowanie ustawień sieciowych 0 danych za pośrednictwem `Set-HcsNetInterface` polecenia cmdlet
+* Modyfikowanie ustawień sieci 0 danych za pośrednictwem `Set-HcsNetInterface` polecenia cmdlet
 
-## <a name="modify-data-0-network-settings-through-setup-wizard"></a>Modyfikowanie ustawień sieciowych 0 danych za pomocą Kreatora konfiguracji
-Można ponownie skonfigurować ustawienia sieciowe 0 danych, łącząc się interfejsu programu Windows PowerShell urządzenia StorSimple i uruchomić sesję kreatora instalacji. Wykonaj poniższe kroki, aby zmodyfikować dane 0 ustawienia:
+## <a name="modify-data-0-network-settings-through-setup-wizard"></a>Modyfikowanie ustawień sieci 0 danych za pomocą Kreatora instalacji
+Można ponownie skonfigurować ustawienia sieciowe 0 danych przez połączenie interfejsu programu Windows PowerShell urządzenia StorSimple i uruchamianie sesji kreatora instalacji. Wykonaj poniższe kroki, aby zmodyfikować interfejs DATA 0 ustawienia:
 
-#### <a name="to-modify-data-0-network-settings-through-setup-wizard"></a>Aby zmodyfikować ustawienia sieciowe 0 danych za pomocą Kreatora konfiguracji
+#### <a name="to-modify-data-0-network-settings-through-setup-wizard"></a>Aby zmodyfikować ustawienia sieciowe 0 danych za pomocą Kreatora instalacji
 1. W menu konsoli szeregowej wybierz opcję 1, **Zaloguj się przy użyciu pełnego dostępu**. Po wyświetleniu monitu podaj **hasło administratora urządzenia**. Domyślne hasło jest `Password1`.
-2. W wierszu polecenia wpisz:
+2. W wierszu polecenia wpisz polecenie:
    
     `Invoke-HcsSetupWizard`
-3. Kreator instalacji jest wyświetlany w celu skonfigurowania dane 0 interfejsu urządzenia. Podaj wartości nowy adres IP, bramę i maski podsieci.
+3. Zostanie uruchomiony Kreator instalacji pojawi się w celu skonfigurowania DATA 0 interfejsu urządzenia. Podaj nowe wartości dla adresu IP, bramy i masek podsieci.
 
 > [!NOTE]
-> Kontrolery stałe adresy IP należy tak skonfigurować za pomocą **ustawień sieciowych** bloku urządzenia StorSimple w portalu Azure. Aby uzyskać więcej informacji, przejdź do [zmodyfikować interfejsów sieciowych](storsimple-8000-modify-device-config.md#modify-network-interfaces).
+> Kontrolery stałych adresów IP będzie wymagać ponownego za pośrednictwem **ustawienia sieciowe** bloku urządzenia StorSimple w witrynie Azure portal. Aby uzyskać więcej informacji, przejdź do [zmodyfikować interfejsów sieciowych](storsimple-8000-modify-device-config.md#modify-network-interfaces).
 
-## <a name="modify-data-0-network-settings-through-set-hcsnetinterface-cmdlet"></a>Modyfikowanie ustawień sieciowych 0 danych za pomocą polecenia cmdlet Set-HcsNetInterface
-Innym sposobem ponownie skonfigurować dane 0 interfejs sieciowy jest za pośrednictwem `Set-HcsNetInterface` polecenia cmdlet. Polecenia cmdlet jest uruchamiane z interfejsu programu Windows PowerShell urządzenia StorSimple. Korzystając z tej procedury, kontroler, stałe adresy IP można również skonfigurować w tym miejscu. Wykonaj poniższe kroki, aby zmodyfikować dane 0 ustawienia: 
+## <a name="modify-data-0-network-settings-through-set-hcsnetinterface-cmdlet"></a>Modyfikowanie ustawień sieci 0 danych za pomocą polecenia cmdlet Set-HcsNetInterface
+Alternatywny sposób, aby ponownie skonfigurować interfejs DATA 0 interfejs sieciowy jest za pośrednictwem `Set-HcsNetInterface` polecenia cmdlet. Polecenie cmdlet jest wykonywane z interfejsu programu Windows PowerShell urządzenia StorSimple. Korzystając z tej procedury, stałe adresy IP kontrolera można również skonfigurować w tym miejscu. Wykonaj poniższe kroki, aby zmodyfikować dane 0 ustawienia: 
 
-#### <a name="to-modify-data-0-network-settings-through-the-set-hcsnetinterface-cmdlet"></a>Aby zmodyfikować ustawienia sieciowe 0 danych za pomocą polecenia cmdlet Set-HcsNetInterface
+#### <a name="to-modify-data-0-network-settings-through-the-set-hcsnetinterface-cmdlet"></a>Aby zmodyfikować ustawienia sieciowe 0 danych za pośrednictwem polecenia cmdlet Set-HcsNetInterface
 1. W menu konsoli szeregowej wybierz opcję 1, **Zaloguj się przy użyciu pełnego dostępu**. Po wyświetleniu monitu podaj hasło administratora urządzenia. Domyślne hasło jest `Password1`.
-2. W wierszu polecenia wpisz:
+2. W wierszu polecenia wpisz polecenie:
    
     `Set-HCSNetInterface -InterfaceAlias Data0 -IPv4Address <> -IPv4Netmask <> -IPv4Gateway <> -Controller0IPv4Address <> -Controller1IPv4Address <> -IsiScsiEnabled 1 -IsCloudEnabled 1`
    
-    W nawiasach wpisz następujące wartości dla danych 0:
+    W nawiasach wpisz następujące wartości dla interfejsu dane 0:
    
    * Adres IPv4
-   * Brama IPv4
-   * Maska podsieci IPv4
+   * IPv4 gateway
+   * IPv4 subnet mask
    * Stały adres IPv4 dla kontrolera 0
    * Stały adres IPv4 dla kontrolera 1
      
-     Aby uzyskać więcej informacji dotyczących użycia tego polecenia cmdlet, przejdź do [programu Windows PowerShell dla StorSimple dokumentacji poleceń cmdlet](https://technet.microsoft.com/library/dn688161.aspx).
+     Aby uzyskać więcej informacji dotyczących używania tego polecenia cmdlet, przejdź do [programu Windows PowerShell dla StorSimple Dokumentacja poleceń cmdlet](https://technet.microsoft.com/library/dn688161.aspx).
 
-## <a name="next-steps"></a>Następne kroki
-* Aby skonfigurować interfejsy sieciowe inne niż dane 0, można użyć [skonfigurować ustawienia sieciowe w portalu Azure](storsimple-8000-modify-device-config.md). 
-* Jeśli wystąpią problemy podczas konfigurowania interfejsów sieciowych, zapoznaj się [Rozwiązywanie problemów dotyczących wdrożenia](storsimple-troubleshoot-deployment.md).
+## <a name="next-steps"></a>Kolejne kroki
+* Aby skonfigurować interfejsy sieciowe inne niż interfejs DATA 0, można użyć [skonfigurować ustawienia sieciowe w witrynie Azure portal](storsimple-8000-modify-device-config.md). 
+* Jeśli napotkasz jakiekolwiek problemy podczas konfigurowania interfejsów sieciowych, zapoznaj się [Rozwiązywanie problemów z wdrożeniem](storsimple-troubleshoot-deployment.md).
 
