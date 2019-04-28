@@ -14,18 +14,18 @@ ms.workload: infrastructure-services
 ms.date: 10/11/2018
 ms.author: Kumud
 ms.openlocfilehash: 77c3c595994092ff2ca68f3cefa5eb3c8a54bcd6
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189051"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60735241"
 ---
 # <a name="metrics-and-health-diagnostics-for-standard-load-balancer"></a>Metryki i kondycji diagnostyki dla standardowego modułu równoważenia obciążenia
 
 Usługa Azure Load Balancer Standard uwidacznia standardowa usługi Azure Load Balancer zapewnia następujące funkcje diagnostyczne zasobów:
 * **Metryk wielowymiarowych**: Oferuje nowe funkcje diagnostyczne wielowymiarowych za pośrednictwem [usługi Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) publicznych i wewnętrznych obciążenia konfiguracji modułu równoważenia. Można monitorować, zarządzanie i rozwiązywanie problemów z zasobami usługi równoważenia obciążenia.
 
-* **Usługa Resource health**: Na stronie modułu równoważenia obciążenia w witrynie Azure portal i na stronie kondycji zasobów (w obszarze monitorowanie) ujawniają sekcji kondycja zasobu dla konfiguracji modułu równoważenia obciążenia publiczny Standard Load Balancer.
+* **Kondycja zasobu**: Na stronie modułu równoważenia obciążenia w witrynie Azure portal i na stronie kondycji zasobów (w obszarze monitorowanie) ujawniają sekcji kondycja zasobu dla konfiguracji modułu równoważenia obciążenia publiczny Standard Load Balancer.
 
 W tym artykule przedstawiono szybki przegląd tych możliwości, jak również sposoby używania ich do standardowego modułu równoważenia obciążenia.
 
@@ -211,7 +211,7 @@ W poniższej tabeli przedstawiono różne stany kondycji zasobów i ich opisy:
 | --- | --- |
 | Dostępne | Zasób modułu równoważenia obciążenia standardowy publiczny jest w dobrej kondycji i dostępności. |
 | Niedostępny | Zasób modułu równoważenia obciążenia standardowy publiczny nie jest w dobrej kondycji. Diagnozowanie kondycji, wybierając **usługi Azure Monitor** > **metryki**.<br>(*Unavailable* stan może także oznaczać, że zasób nie jest połączony z modułu równoważenia obciążenia standardowego publicznego.) |
-| Nieznane | Kondycja zasobu dla zasobu modułu równoważenia obciążenia standardowy publiczny nie został jeszcze zaktualizowany.<br>(*Nieznany* stan może także oznaczać, że zasób nie jest połączony z modułu równoważenia obciążenia standardowego publicznego.)  |
+| Nieznana | Kondycja zasobu dla zasobu modułu równoważenia obciążenia standardowy publiczny nie został jeszcze zaktualizowany.<br>(*Nieznany* stan może także oznaczać, że zasób nie jest połączony z modułu równoważenia obciążenia standardowego publicznego.)  |
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -12,11 +12,11 @@ author: sharonlo101
 ms.author: shlo
 manager: craigg
 ms.openlocfilehash: 71abfdff629f36b278488851b546c7371353a4d9
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57575294"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60767969"
 ---
 # <a name="set-variable-activity-in-azure-data-factory"></a>Ustaw zmienną działania w usłudze Azure Data Factory
 
@@ -29,7 +29,7 @@ Właściwość | Opis | Wymagane
 name | Nazwa działania w potoku | Yes
 description | Tekst opisujący, co działanie robi | nie
 type | Typ działania jest SetVariable | tak
-wartość | Ciąg literału lub wyrażenie obiektu wartość używana do ustawiania określonej zmiennej | tak
+value | Ciąg literału lub wyrażenie obiektu wartość używana do ustawiania określonej zmiennej | tak
 nazwa_zmiennej | Nazwa zmiennej, która zostanie ustawiona przez to działanie | tak
 
 

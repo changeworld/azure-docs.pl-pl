@@ -2,26 +2,27 @@
 title: SQL Data Warehouse, możliwości zarządzania i monitorowania — omówienie | Dokumentacja firmy Microsoft
 description: Omówienie monitorowania i zarządzania do wykorzystania zasobów, działanie dziennika i zapytania, zalecenia i ochrony danych (kopia zapasowa i przywracanie).
 services: sql-data-warehouse
-author: kevinvngo
-manager: craigg
+author: WenJason
+manager: digimobile
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 08/27/2018
-ms.author: kevin
+origin.date: 08/27/2018
+ms.date: 04/01/2019
+ms.author: v-jay
 ms.reviewer: igorstan
 ms.openlocfilehash: e9fb06b8ba34566689f769ca9a69328eee37e3c1
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460254"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60747578"
 ---
 # <a name="manageability-and-monitoring-with-azure-sql-data-warehouse"></a>Możliwości zarządzania i monitorowania za pomocą usługi Azure SQL Data Warehouse
 
 Zapoznaj się z przez co jest dostępne ułatwić zarządzanie i monitorowanie SQL Data Warehouse. Następujące artykuły zaznacz sposobów na optymalizację wydajności i użycia magazynu danych.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 * [Więcej informacji na temat zarządzania obliczeń i elastyczność][manage compute]
 * [Zrozumienie, jakie metryki i dzienniki są dostępne w witrynie Azure portal][resource utilization]

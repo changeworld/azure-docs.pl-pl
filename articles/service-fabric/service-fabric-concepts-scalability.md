@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 14a7389fe562b5f3206b81411d2224257051c636
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666651"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60781135"
 ---
 # <a name="scaling-in-service-fabric"></a>Skalowanie w usłudze Service Fabric
 Usługa Azure Service Fabric ułatwia tworzenie skalowalnych aplikacji, umożliwiając zarządzanie usług, partycji i replik w węzłach klastra. Uruchamianie wielu obciążeń na tym samym sprzęcie umożliwia wykorzystanie zasobów maksymalna, ale również zapewnia elastyczność pod względem sposobu wybranego obciążenia. W tym wideo Channel 9 opisano, jak tworzyć aplikacje skalowalnych mikrousług:
