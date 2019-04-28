@@ -11,11 +11,11 @@ ms.date: 04/17/2018
 ms.author: acomet
 ms.reviewer: igorstan
 ms.openlocfilehash: 596ed857b39cf106ed2e37ad81c5fe9e939cca61
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58001427"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60747612"
 ---
 # <a name="sql-data-warehouse-frequently-asked-questions"></a>SQL Data Warehouse często zadawane pytania
 
@@ -82,19 +82,19 @@ PYTANIE: Jakie sterowniki klienta są obsługiwane?
 
 A. Sterownik obsługujący magazyn danych znajduje się na [Parametry połączeń] strony
 
-PYT.: Jakie formaty plików są obsługiwane przez aparat PolyBase w usłudze SQL Data Warehouse?
+Pyt.: Jakie formaty plików są obsługiwane przez aparat PolyBase w usłudze SQL Data Warehouse?
 
 Odp.: Orc, RC, Parquet i prostego tekstu rozdzielanego
 
-PYT.: Co można podłączyć do z magazynu danych SQL przy użyciu technologii PolyBase? 
+Pyt.: Co można podłączyć do z magazynu danych SQL przy użyciu technologii PolyBase? 
 
 Odp.: [Azure Data Lake Store] i [Azure Storage Blobs]
 
-PYT.: Nawiązywanie połączenia z obiektów blob usługi Azure Storage lub Azure Data Lake Store jest możliwe obliczenie przekazywania? 
+Pyt.: Nawiązywanie połączenia z obiektów blob usługi Azure Storage lub Azure Data Lake Store jest możliwe obliczenie przekazywania? 
 
 Odp.: Nie, PolyBase magazynu danych SQL interakcja składników magazynu. 
 
-PYT.: Można podłączyć do usługi HDI?
+Pyt.: Można podłączyć do usługi HDI?
 
 Odp.: HDI służy jako warstwa systemu plików HDFS WASB lub ADLS. Jeśli masz jako warstwa systemu plików HDFS, można załadować tych danych do usługi SQL DW. Jednak nie można wygenerować obliczeń przekazywania do wystąpienia usługi HDI. 
 

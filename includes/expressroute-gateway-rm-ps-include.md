@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/21/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 03a56951b68163a9160cc4a57f15354b5f210eb7
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 922ac7eb6cb9676af65700a6a2fe7fbae35a0dc5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58125120"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60366405"
 ---
 Kroki opisane w tym celu użyć sieci wirtualnej na podstawie wartości na poniższej liście konfiguracji odniesienia. Dodatkowe ustawienia i nazwy są także opisane na tej liście. Nie używamy tej listy bezpośrednio w poniższych krokach, mimo że dodamy zmiennych, na podstawie wartości na tej liście. Możesz skopiować listy, które będzie używany jako odwołanie, zastępując wartości swoimi własnymi.
 

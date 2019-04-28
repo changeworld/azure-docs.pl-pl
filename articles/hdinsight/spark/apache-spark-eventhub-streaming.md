@@ -1,7 +1,6 @@
 ---
 title: 'Samouczek: Przetwarzanie danych z usługi Azure Event Hubs przy użyciu platformy Apache Spark w usłudze Azure HDInsight '
 description: Platforma Apache Spark w usłudze Azure HDInsight nawiązać połączenie z usługi Azure Event Hubs i przetwarzanie danych przesyłanych strumieniowo.
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,mvc
 ms.topic: conceptual
 ms.date: 12/28/2018
-ms.openlocfilehash: 81104c7b206d4fe158df1ae9d329084ad88c3bdd
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
-ms.translationtype: MT
+ms.openlocfilehash: 02f7bbca127ba33fcfdd15d6f00d1660bf72970c
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976634"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62124360"
 ---
 # <a name="tutorial-process-tweets-using-azure-event-hubs-and-apache-spark-in-hdinsight"></a>Samouczek: Przetwarzaj tweety za pomocą usługi Azure Event Hubs i Apache Spark w HDInsight
 
@@ -29,7 +28,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* **Ukończenie tego artykułu [samouczka: Załaduj dane i uruchamiać zapytania dotyczące klastra Apache Spark w usłudze Azure HDInsight](./apache-spark-load-data-run-query.md)**.
+* **Ukończenie artykułu [Samouczek: ładowanie danych i uruchamianie zapytań w klastrze platformy Apache Spark w usłudze Azure HDInsight](./apache-spark-load-data-run-query.md)**.
 
 ## <a name="create-a-twitter-application"></a>Tworzenie aplikacji usługi Twitter
 

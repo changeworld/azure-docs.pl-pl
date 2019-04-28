@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: jomolesk
 ms.openlocfilehash: f9773c3b372ab22cbcd99828e147d23c185c4eb6
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244625"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62127331"
 ---
 # <a name="azure-security-and-compliance-blueprint---paas-web-application-for-nist-special-publication-800-171"></a>Zabezpieczenia platformy Azure i zgodności planu — aplikacja sieci Web PaaS dla publikacji specjalne NIST 800-171
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 [Publikacja specjalne NIST 800-171](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-171.pdf) zawiera wytyczne dotyczące ochrony informacji unclassified kontrolowanego (CUI), która znajduje się w organizacji i systemów informacyjnych nonfederal. SP NIST 800-171 ustanawia 14 rodzin wymagań dotyczących ochrony poufności CUI zabezpieczeń.
 
 Tych samych zabezpieczeń platformy Azure i zgodności planu znajdują się wskazówki pomagające klientom skrócić czas wdrażania platformy jako usługi (PaaS) aplikacji sieci web na platformie Azure, która implementuje podzbiór NIST SP 800-171 kontrolki. To rozwiązanie przedstawia sposób, w którym klienci mogą sprostać zabezpieczeń i zgodności z wymaganiami. Służy również jako podstawa do tworzenia i konfigurowania aplikacji sieci web na platformie Azure.

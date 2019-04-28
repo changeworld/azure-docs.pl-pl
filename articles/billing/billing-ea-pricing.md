@@ -16,11 +16,11 @@ ms.date: 02/22/2019
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: d4c64433089f14d845cea8be9adf0ef13675cfd1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57892476"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62127637"
 ---
 # <a name="view-and-download-your-organizations-azure-pricing"></a>Przeglądanie i pobieranie cen platformy Azure w Twojej organizacji
 
@@ -51,7 +51,7 @@ Musi być rozliczeń profilu właścicielem, współautorem, Czytelnik lub Mened
 ### <a name="download-price-sheets-for-the-current-billing-period"></a>Pobierz arkusze cen dla bieżącego okresu rozliczeniowego
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-1. Wyszukiwanie **Cost Management + rozliczenia**.
+1. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
 1. Wybierz profil rozliczeniowy. W zależności od dostęp może być konieczne najpierw wybrać konta rozliczeniowego.
 1. W **Przegląd** bloku Znajdź łącza pobierania poniżej opłaty od początku miesiąca.
 1. Wybierz **arkusz cen platformy Azure**.
@@ -60,9 +60,9 @@ Musi być rozliczeń profilu właścicielem, współautorem, Czytelnik lub Mened
 ### <a name="download-price-sheets-for-billed-charges"></a>Pobierz arkusze cen opłaty rozliczane
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-1. Wyszukiwanie **Cost Management + rozliczenia**.
+1. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
 1. Wybierz profil rozliczeniowy. W zależności od dostęp może być konieczne najpierw wybrać konta rozliczeniowego.
-1. Wybierz **faktur**.
+1. Wybierz pozycję **Faktury**.
 1. W siatce faktury Znajdź wiersz faktury odpowiadający arkusz cen, który chcesz pobrać.
 1. Kliknij wielokropek (`...`) na końcu wiersza.
 ![Zrzut ekranu przedstawiający wybrany przycisk wielokropka](./media/billing-ea-pricing/billingprofile-invoicegrid.png)

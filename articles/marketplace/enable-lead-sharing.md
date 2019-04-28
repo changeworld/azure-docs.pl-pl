@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 3fea858f23c6b271a117f2edcc749e0c6b737e27
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 346ebd9636623a2fc8b08d42c2170a21a5e9a316
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159997"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62121082"
 ---
 # <a name="enable-lead-sharing"></a>Włącz udostępnianie potencjalnego klienta
 Zapewnienie włączenia Zarządzanie potencjalnymi klientami dla Twojej listy w [portalu Azure Marketplace](https://azuremarketplace.microsoft.com) lub [Microsoft AppSource](https://appsource.microsoft.com) pomogą Ci uzyskać informacje kontaktowe dla następujących osób:
@@ -45,7 +45,7 @@ Odsetek klientów na następujących listach pokazują, potencjalnymi klientami:
 
 | Witryna sklepu | Wyświetlanie listy |
 |:--- |:--- |
-| AppSource | <table> <tr><td>Aplikacja</td></tr> <tr><td>Usługi doradcze</td></tr> </table> |
+| AppSource | <table> <tr><td>aplikacja</td></tr> <tr><td>Usługi doradcze</td></tr> </table> |
 | Azure Marketplace | <table> <tr><td>Oferta</td></tr> <tr><td>Technologia</td></tr> </table> |
 
 Proces powinien mieć w miejscu, aby wykonać kolejne czynności z potencjalnymi klientami zgodnie z opisem w poniższej tabeli:

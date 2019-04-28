@@ -16,14 +16,14 @@ ms.date: 01/11/2017
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: 84575dcb67845a074ce19cf9d819e1dda3f90e20
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271980"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62130793"
 ---
 # <a name="how-to-control-inbound-traffic-to-an-app-service-environment"></a>Jak kontrolować ruch przychodzący do środowiska usługi App Service
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Środowisko usługi App Service mogą być tworzone w **albo** z siecią wirtualną usługi Azure Resource Manager **lub** klasycznego modelu wdrażania [sieci wirtualnej] [ virtualnetwork].  W czasie, utworzonych przez usługę App Service Environment można zdefiniować nową sieć wirtualną i nowej podsieci.  Alternatywnie można utworzyć środowisko App Service w istniejącej sieci wirtualnej i wcześniej istniejącej podsieci.  Za pomocą zmiany wprowadzone w czerwca 2016 roku za pomocą środowisk ASE można także wdrożyć w sieciach wirtualnych, które używają zakresów adresów publicznych lub przestrzeni adresowych RFC1918 (czyli prywatnych adresów).  Aby uzyskać więcej informacji na temat tworzenia środowiska usługi App Service, zobacz [jak utworzyć środowisko App Service Environment][HowToCreateAnAppServiceEnvironment].
 
 Środowiska App Service Environment należy zawsze tworzyć w obrębie podsieci, ponieważ podsieć zapewnia granicę sieci, która może służyć do blokowania ruchu przychodzącego za urządzeniami i usługami w taki sposób, że ruch HTTP i HTTPS jest akceptowany tylko z określonych nadrzędnego Adresy IP.

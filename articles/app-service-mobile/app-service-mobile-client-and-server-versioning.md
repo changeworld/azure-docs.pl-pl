@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: 56c5e0582afe55dcd63aa056817898d3d4942419
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594070"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60859077"
 ---
 # <a name="client-and-server-versioning-in-mobile-apps-and-mobile-services"></a>Przechowywanie wersji klienta i serwera w funkcji Mobile Apps i Mobile Services
 Najnowsza wersja usługi Azure Mobile Services to **Mobile Apps** funkcji Azure App Service.

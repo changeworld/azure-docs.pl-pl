@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 70469a9e8737a9df18628951a061c97081c74080
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56735105"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62127382"
 ---
 # <a name="grant-user-permissions-to-specific-lab-policies"></a>Udzielanie uprawnień użytkownika do zasad określonych laboratorium
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 W tym artykule pokazano, jak udzielić uprawnień użytkowników do zasad wymagających używania określonego laboratorium przy użyciu programu PowerShell. Dzięki temu uprawnienia można zastosować zależnie od potrzeb każdego użytkownika. Na przykład można przyznać określonego użytkownika, możliwość zmiany ustawień zasad maszyny Wirtualnej, ale nie zasady kosztów.
 
 ## <a name="policies-as-resources"></a>Zasady jako zasoby

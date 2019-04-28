@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
 ms.openlocfilehash: 1108265101f37433860d0112e4e80aee0002ab5c
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111581"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62127229"
 ---
 # <a name="enable-auditing-and-threat-detection-on-sql-databases-in-azure-security-center"></a>Włączanie inspekcji i wykrywania zagrożeń w bazach danych SQL w usłudze Azure Security Center
 Usługa Azure Security Center zaleci, że włączenie inspekcji i wykrywania zagrożeń dla wszystkich baz danych SQL w przypadku inspekcji i wykrywania zagrożeń nie jest włączony. Inspekcja i ochronę przed zagrożeniami wykrywania może pomóc zachować zgodność z przepisami, analizować aktywność bazy danych i uzyskać wgląd w odchylenia i anomalie, które mogą oznaczać problemy biznesowe lub podejrzane naruszenia zabezpieczeń.

@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
 ms.openlocfilehash: 10bec01a3b90776c8dd8c32a74ba7754264da131
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59050139"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62119734"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Zarządzanie serwerem konfiguracji na potrzeby odzyskiwania po awarii serwerów fizycznych
 
@@ -108,7 +108,7 @@ Uruchom plik instalacyjny w następujący sposób:
 
 ### <a name="parameters"></a>Parametry
 
-|Nazwa parametru| Typ | Opis| Wartości|
+|Nazwa parametru| Type | Opis| Wartości|
 |-|-|-|-|
 | /ServerMode|Wymagane|Określa, czy mają zostać zainstalowane oba serwery, konfiguracji i przetwarzania, czy tylko serwer przetwarzania|CS<br>PS|
 |/InstallLocation|Wymagane|Folder, w którym są instalowane składniki| Dowolny folder na komputerze|

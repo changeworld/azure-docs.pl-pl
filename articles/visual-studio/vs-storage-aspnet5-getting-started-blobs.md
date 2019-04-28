@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ghogen
-ms.openlocfilehash: b2b707585df4a7ec26f689b4213be74bdaab680d
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 388c4d5f28e87f5cfe26336771d30fa44c6f9ef0
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42057688"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62123012"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet-core"></a>Rozpoczynanie pracy z usługą Azure Blob storage i Visual Studio podłączone usługi (systemu Windows platformy ASP.NET Core)
 
@@ -27,7 +27,7 @@ W tym artykule opisano sposób rozpoczęcia pracy przy użyciu usługi Azure Blo
 
 Usługa Azure Blob storage jest usługą służącą do przechowywania dużych ilości danych bez struktury, które są dostępne z dowolnego miejsca na świecie za pośrednictwem protokołu HTTP lub HTTPS. Pojedynczy obiekt blob może być dowolnego rozmiaru. Obiekty BLOB mogą mieć elementów, takich jak obrazy, pliki audio i wideo, nieprzetworzone dane i pliki dokumentów. W tym artykule opisano sposób rozpoczęcia pracy z usługą blob storage, po utworzeniu konta usługi Azure storage za pomocą programu Visual Studio **podłączone usługi** w projektach programu ASP.NET Core.
 
-Tak samo, jak żywe plików w folderach, obiekty BLOB magazynu na żywo w kontenerach. Po utworzeniu obiektu blob należy utworzyć co najmniej jeden kontener, w tym obiektów blob. Na przykład w obiekcie blob o nazwie "Pamiętnik" możesz tworzyć kontenery wywoływane "obrazy", do przechowywania obrazów i innym o nazwie "audio" do przechowywania plików dźwiękowych. Po utworzeniu kontenerów, możesz przekazać pojedynczych plików do nich. Zobacz [Szybki Start: przekazywanie, pobieranie i wyświetlanie listy obiektów blob przy użyciu platformy .NET](../storage/blobs/storage-quickstart-blobs-dotnet.md) więcej informacji na temat programowe operowanie obiektów blob.
+Tak samo, jak żywe plików w folderach, obiekty BLOB magazynu na żywo w kontenerach. Po utworzeniu obiektu blob należy utworzyć co najmniej jeden kontener, w tym obiektów blob. Na przykład w obiekcie blob o nazwie "Pamiętnik" możesz tworzyć kontenery wywoływane "obrazy", do przechowywania obrazów i innym o nazwie "audio" do przechowywania plików dźwiękowych. Po utworzeniu kontenerów, możesz przekazać pojedynczych plików do nich. Zobacz [Szybki start: Przekazywanie, pobieranie i wyświetlanie listy obiektów blob przy użyciu platformy .NET](../storage/blobs/storage-quickstart-blobs-dotnet.md) więcej informacji na temat programowe operowanie obiektów blob.
 
 Niektóre z interfejsów API usługi Azure Storage są asynchroniczne i kodu w tym artykule przyjęto założenie, że metody asynchroniczne są używane. Zobacz [programowania asynchronicznego](https://docs.microsoft.com/dotnet/csharp/async) Aby uzyskać więcej informacji.
 
@@ -140,7 +140,7 @@ do
 } while (token != null);
 ```
 
-Zobacz [Szybki Start: przekazywanie, pobieranie i wyświetlanie listy obiektów blob przy użyciu platformy .NET](../storage/blobs/storage-quickstart-blobs-dotnet.md#list-the-blobs-in-a-container) inne sposoby wyświetlania zawartości określonego kontenera obiektów blob.
+Zobacz [Szybki start: Przekazywanie, pobieranie i wyświetlanie listy obiektów blob przy użyciu platformy .NET](../storage/blobs/storage-quickstart-blobs-dotnet.md#list-the-blobs-in-a-container) inne sposoby wyświetlania zawartości określonego kontenera obiektów blob.
 
 ## <a name="download-a-blob"></a>Pobieranie obiektu blob
 
@@ -157,7 +157,7 @@ using (var fileStream = System.IO.File.OpenWrite(@"path\myfile"))
 }
 ```
 
-Zobacz [Szybki Start: przekazywanie, pobieranie i wyświetlanie listy obiektów blob przy użyciu platformy .NET](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-blobs) inne sposoby zapisywanie obiektów blob jako plików.
+Zobacz [Szybki start: Przekazywanie, pobieranie i wyświetlanie listy obiektów blob przy użyciu platformy .NET](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-blobs) inne sposoby zapisywanie obiektów blob jako plików.
 
 ## <a name="delete-a-blob"></a>Usuwanie obiektu blob
 

@@ -8,17 +8,17 @@ ms.service: service-health
 ms.workload: Supportability
 ms.date: 11/16/2018
 ms.openlocfilehash: d2a77e831290aa1ee0fcb6d4addf8f6e90786d52
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55858913"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62119856"
 ---
 # <a name="azure-resource-health-overview"></a>Omówienie usługi Azure Resource Health
  
 Usługa Azure Resource Health pomaga diagnozować i uzyskać pomoc techniczną, gdy problem z usług platformy Azure ma wpływ na Twoje zasoby. Informowanie o bieżącej i przeszłej kondycji Twoich zasobów. I udostępnia pomocy technicznej, aby pomóc Ci rozwiązać problemy.
 
-Natomiast [stanu platformy Azure](https://status.azure.com) informuje o problemach usługi, które wpływają na szeroką gamę klientów platformy Azure, usługa Resource Health zapewnia spersonalizowanego pulpitu nawigacyjnego kondycji Twoich zasobów. Kondycja zasobów przedstawia wszystkich przypadków, gdy zasoby były dostępne w przeszłości, z powodu problemów z usług platformy Azure. Następnie jest prosty dowiedzieć się, jeśli został naruszony, zwiększyłaby umowy SLA. 
+Natomiast [stanu platformy Azure](https://status.azure.com) informuje o problemach usługi, które wpływają na szeroką gamę klientów platformy Azure, usługa Resource Health zapewnia spersonalizowanego pulpitu nawigacyjnego kondycji Twoich zasobów. Usługa Resource Health pokazuje wszystkie momenty w czasie, gdy zasoby były w przeszłości niedostępne z powodu problemów z usługami platformy Azure. Następnie jest prosty dowiedzieć się, jeśli został naruszony, zwiększyłaby umowy SLA. 
 
 ## <a name="resource-definition-and-health-assessment"></a>Ocena definicji i kondycji zasobów
 Zasób jest konkretnego wystąpienia usługi platformy Azure: na przykład maszynę wirtualną, aplikacji sieci web lub bazy danych SQL.

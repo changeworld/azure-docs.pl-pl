@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 4/22/2019
+ms.date: 4/23/2019
 ms.author: victorh
-ms.openlocfilehash: 740b0ac505edfff1f703c2831ec5608e72851610
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.openlocfilehash: 7a412589f4e86f2a49d07f2d01ca34bf30fd528b
+ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149771"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62738791"
 ---
 # <a name="fqdn-tags-overview"></a>Omówienie tagi nazwy FQDN
 
@@ -35,7 +35,7 @@ W poniższej tabeli przedstawiono bieżące znaczniki nazwy FQDN, których możn
 |Usługa Microsoft Active Protection Service (MAPS)|Zezwalaj na dostęp ruchu wychodzącego do [mapy](https://cloudblogs.microsoft.com/enterprisemobility/2016/05/31/important-changes-to-microsoft-active-protection-service-maps-endpoint/).|
 |Środowisko App Service Environment (ASE)|Umożliwia dostęp ruchu wychodzącego do środowiska ASE platformy ruchu. Ten tag nie obejmuje klienta SQL i Storage punkty końcowe utworzone przez środowisko ASE. Powinno być włączone za pomocą [punktów końcowych usługi](../virtual-network/tutorial-restrict-network-access-to-resources.md) lub dodać ręcznie.<br><br>Aby uzyskać więcej informacji na temat integracji Azure zapory przy użyciu środowiska ASE, zobacz [blokowania środowiska App Service Environment](../app-service/environment/firewall-integration.md#configuring-azure-firewall-with-your-ase).|
 |Azure Backup|Umożliwia dostęp ruchu wychodzącego do usługi Azure Backup.|
-|Azure HDInsight<br>(Wersja zapoznawcza)|Umożliwia dostęp ruchu wychodzącego ruchu na platformie HDInsight. Ten tag nie obejmuje ruch magazynu lub SQL specyficzne dla klientów z HDInsight. Są one włączane przy użyciu [punktów końcowych usługi](../virtual-network/tutorial-restrict-network-access-to-resources.md) lub dodać ręcznie.|
+|Azure HDInsight<br>(Wersja zapoznawcza)|Umożliwia dostęp ruchu wychodzącego ruchu na platformie HDInsight. Ten tag nie obejmuje ruch magazynu lub SQL specyficzne dla klientów z HDInsight. Włącz je za pomocą [punktów końcowych usługi](../virtual-network/tutorial-restrict-network-access-to-resources.md) lub dodać je ręcznie.|
 
 > [!NOTE]
 > Po wybraniu tagu w pełni kwalifikowaną nazwę domeny w regule aplikacji, w polu protokołu: port musi być równa **https**.

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 4e262c9e5bb88e77bc9c09853c06f4cdb41eedaa
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58891043"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60860397"
 ---
 ## <a name="preparing-for-updates"></a>Przygotowywanie do aktualizacji
 Konieczne będzie przed skanowanie i stosowanie aktualizacji należy wykonać następujące czynności:

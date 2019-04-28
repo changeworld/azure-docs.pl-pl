@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: c44b39effdc6d8fcdc144915ec7b51489e3798cd
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55302363"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60405432"
 ---
 Należy chronić maszyny wirtualnej (VM) dla aplikacji, które zostanie uruchomione. Zabezpieczanie maszyn wirtualnych może zawierać jeden lub więcej usług platformy Azure, jak i funkcji, które obejmują bezpieczny dostęp do maszyn wirtualnych i bezpieczne przechowywanie danych. Ten artykuł zawiera informacje, która pozwala zapewnić bezpieczeństwo swoich maszyn wirtualnych i aplikacji.
 

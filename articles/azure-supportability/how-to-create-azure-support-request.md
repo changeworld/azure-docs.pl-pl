@@ -14,121 +14,121 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2016
 ms.author: gangan
-ms.openlocfilehash: 0b45bd2a1a2599908d2077198dce0062071b79af
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: f6d9e683e1feff670c26b01a31ce977557295bff
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31512514"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62129063"
 ---
-# <a name="how-to-create-an-azure-support-request"></a>Jak utworzyć żądanie obsługi na platformie Azure
+# <a name="how-to-create-an-azure-support-request"></a>Jak utworzyć żądanie pomocy technicznej dla platformy Azure
 ## <a name="summary"></a>Podsumowanie
-Klientów platformy Azure można tworzyć i zarządzanie żądaniami obsługi w portalu Azure [ https://portal.azure.com ](https://portal.azure.com).
+Klienci platformy Azure można tworzyć i zarządzać żądaniami pomocy technicznej w witrynie Azure portal [ https://portal.azure.com ](https://portal.azure.com).
 
 > [!NOTE]
-> Portal Azure w Niemczech to [https://portal.microsoftazure.de](https://portal.microsoftazure.de)   
+> Portal Azure (Niemcy) to [https://portal.microsoftazure.de](https://portal.microsoftazure.de)   
 > Portal Azure dla instytucji rządowych Stanów Zjednoczonych to [ https://portal.azure.us ](https://portal.azure.us).
 
 
-Na podstawie opinii klientów, Zaktualizowaliśmy środowisko żądania pomocy technicznej skoncentrować się na trzy główne cele:
+Na podstawie opinii klientów Zaktualizowaliśmy środowisko żądania pomocy technicznej skoncentrować się na trzy główne cele:
 
-* **Prostsze**: zmniejszyć kliknięcia i bloków, aby utworzyć prosty proces przesyłania żądania pomocy technicznej.
-* **Zintegrowane**: przy rozwiązywaniu problemu z zasobem platformy Azure, powinna być łatwa do otwarcia żądania pomocy technicznej dla tego zasobu bez przełączania kontekstu.
-* **Efektywne**: zebrać informacje o kluczu specjalistą pomocy technicznej chce wydajne rozwiązanie problemu.
+* **Usprawnione**: Ogranicz kliknięć i bloków, aby utworzyć prosty proces przesyłania żądania pomocy technicznej.
+* **Zintegrowane**: Przy rozwiązywaniu problemu z zasobem platformy Azure, powinno być łatwe do otwarcia żądania pomocy technicznej dla tego zasobu bez przełączania kontekstu.
+* **Wydajne**: Zbierz informacje o kluczu, specjalistą pomocy technicznej musi umożliwiające wydajne rozwiązanie problemu.
 
 ## <a name="getting-started"></a>Wprowadzenie
-Można utworzyć żądania obsługi, w menu górnym menu nawigacyjnym lub bezpośrednio z bloku zasobów.
+Z menu górnym menu nawigacyjnym albo bezpośrednio z poziomu bloku zasobów, można utworzyć żądanie pomocy technicznej.
 
-**W górnym pasku nawigacyjnym**
+**Z górnego paska nawigacyjnego**
 
 ![Pomoc i obsługa techniczna](./media/how-to-create-azure-support-request/HelpandSupport.png)
 
-Na stronie pomocy i obsługi technicznej wybierz "New obsługują żądania"
+Na stronie pomocy i obsługi technicznej wybierz pozycję "Nowe żądanie obsługi"
 
 ![Nowe żądanie pomocy technicznej](./media/how-to-create-azure-support-request/NewSupportRequest.png)
 
 **W bloku zasobów**
 
-![W kontekście.](./media/how-to-create-azure-support-request/Incontext.png)
+![W kontekście](./media/how-to-create-azure-support-request/Incontext.png)
 
 ## <a name="basics"></a>Podstawy
-Pierwszym krokiem procesu żądania pomocy technicznej zbiera podstawowe informacje na temat problemu i plan pomocy technicznej.
+Pierwszym krokiem procesu żądania pomocy technicznej zbiera podstawowe informacje o problemie i plan pomocy technicznej.
 
-Spójrzmy na przykład: jest ukierunkowane trudności techniczne z maszyny wirtualnej i podejrzewasz problem z łącznością sieciową.
-Wybieranie usługi ("maszyny wirtualnej systemu Windows") i zasobów (Nazwa maszyny wirtualnej) w pierwszym kroku kreatora rozpoczyna proces uzyskaniem pomocy na temat tego problemu.
+Spójrzmy na przykład: Masz połączonego z problemów technicznych z maszyny wirtualnej i podejrzewasz problem z łącznością sieciową.
+Wybieranie usługi "("maszyna wirtualna systemem Windows) i zasobów (Nazwa maszyny wirtualnej) w pierwszym kroku kreatora rozpoczyna się proces uzyskiwania pomocy dotyczącej tego problemu.
 
 ![Blok Podstawowe](./media/how-to-create-azure-support-request/Basics.png)
 
 > [!NOTE]
-> Azure zapewnia obsługę nieograniczone Zarządzanie subskrypcją (np. rozliczeń, dostosowania przydziału i transferów konta). Aby uzyskać pomoc techniczną konieczne jest plan pomocy technicznej. [Dowiedz się więcej o plany pomocy technicznej](https://azure.microsoft.com/support/plans).
+> System Azure oferuje nieograniczonej pomocy technicznej zarządzania subskrypcjami (np. rozliczeniami, dostosowania przydziału i kont). Aby uzyskać pomoc techniczną musisz mieć plan pomocy technicznej. [Dowiedz się więcej o planach pomocy technicznej](https://azure.microsoft.com/support/plans).
 >
 >
 
 ## <a name="problem"></a>Problem
-Drugim kroku kreatora zbiera informacje o dodatkowych szczegółów na temat problemu. Udostępnia on szczegółowe dokładne informacje w tym kroku pozwala nam rozesłać tej sprawy najlepsze specjaliście pomocy technicznej dla problemu i rozpocząć diagnozowania problemu tak szybko, jak to możliwe.
+Drugiego kroku kreatora zbiera szczegółowe informacje o problemie. Ma dokładne informacje w tym kroku pozwala nam przekierowywać sprawę do najlepszych ze specjalistą pomocy technicznej dotyczącej problemu i, aby rozpocząć, jak najszybciej diagnozowania problemu.
 
-![Blok problem](./media/how-to-create-azure-support-request/Problem01.png)
+![Blok problemu](./media/how-to-create-azure-support-request/Problem01.png)
 
-Kontynuowaniem z powyższego przykładu łączności maszyny wirtualnej, czy wypełnić ten formularz, aby wskazywać problem z łącznością sieciową i czy zawierają dodatkowe szczegółowe informacje o problemie, łącznie ze przybliżony czas, kiedy wystąpił problem.
+Kontynuując z powyższego przykładu łączności maszyny wirtualnej, czy Wypełnij ten formularz, aby wskazywać problem z łącznością sieciową i zapewni dodatkowe szczegółowe informacje o problemie, w tym przybliżony czas, kiedy wystąpił problem.
 
-![Problem bloku 2](./media/how-to-create-azure-support-request/Problem02.png)
+![Blok problem 2](./media/how-to-create-azure-support-request/Problem02.png)
 
-## <a name="related-help"></a>Pokrewne pomocy
-Na podstawie typu problemu i kategoria, którą wybierzesz, udostępniamy rozwiązania, które mogą ułatwić rozwiązanie problemu.
+## <a name="related-help"></a>Powiązana pomoc
+Na podstawie typ problemu i kategoria, którą wybierzesz, firma Microsoft zapewnia rozwiązanie, które mogą ułatwić rozwiązanie problemu.
 
 ![Powiązana pomoc](./media/how-to-create-azure-support-request/RelatedHelp.png)
 
-Firma Microsoft udostępnia również samodzielnej pomocy kontekstowej rozwiązań opartych na tekstowy opis problemu.
+Oferujemy również rozwiązania samodzielnej pomocy kontekstowej oparte na tekstowy opis problemu.
 
-![Pokrewne pomocy 2](./media/how-to-create-azure-support-request/RelatedHelp02.png)
+![Powiązana pomoc 2](./media/how-to-create-azure-support-request/RelatedHelp02.png)
 
-Zalecane rozwiązania pomaga, możesz kontynuować proces do utworzenia żądania obsługi.
+Jeśli zalecane rozwiązania nie pomagają, można kontynuować proces tworzenia żądania pomocy technicznej.
 
-![Problem bloku 3](./media/how-to-create-azure-support-request/Problem03.png)
+![Blok problemu 3](./media/how-to-create-azure-support-request/Problem03.png)
 
 ## <a name="contact-information"></a>Informacje kontaktowe
-Ostatni krok kreatora potwierdza opcje, a informacje kontaktowe, aby było wiadomo, jak skontaktować się z Tobą.
+Ostatni krok kreatora potwierdza informacji kontaktowych i opcji kontaktu, aby było wiadomo, jak nawiązać połączenie z użytkownikiem.
 
 ![Informacje kontaktowe](./media/how-to-create-azure-support-request/ContactInformation.png)
 
-W zależności od ważność problemu może być monit o wskazują, jeśli mamy się z Tobą podczas godzin pracy lub jeśli chcesz użyć odpowiedzi 24 x 7, co oznacza, że firma Microsoft może skontaktować się z Tobą w dowolnym momencie.
+W zależności od ważności problemu użytkownik może być konieczne wskazują, czy chcesz nam skontaktowania się z Tobą podczas godzin pracy, lub jeśli wolisz odpowiedzi 24 x 7, co oznacza, że firma Microsoft może kontaktować z użytkownikami w dowolnym momencie.
 
 ![Informacje kontaktowe 24 x 7](./media/how-to-create-azure-support-request/ContactInformation-2.png)
 
 ## <a name="all-support-requests"></a>Wszystkie żądania pomocy technicznej
-Po utworzeniu żądania obsługi, można wyświetlić szczegółów **obsługuje wszystkie żądania** strony.
+Po utworzeniu żądania pomocy technicznej, można wyświetlić szczegółowe informacje z **wszystkie żądania obsługi** strony.
 
-**W górnym pasku nawigacyjnym**
+**Z górnego paska nawigacyjnego**
 
 ![Pomoc i obsługa techniczna](./media/how-to-create-azure-support-request/HelpandSupport.png)
 
-Na stronie pomocy i obsługi technicznej wybierz "Wszystkie obsługują żądania" z menu po lewej stronie.
+Na stronie pomocy i obsługi technicznej wybierz pozycję "Wszystkie żądania obsługi" z menu po lewej stronie.
 
 ![Wszystkie żądania obsługi łącza](./media/how-to-create-azure-support-request/AllSupportRequest-link.png)
 
-Na **obsługuje wszystkie żądania** strony, można wyświetlić wszystkie żądania pomocy technicznej i ich stan.
+Na **wszystkie żądania obsługi** strony, można wyświetlić wszystkie żądania pomocy technicznej i ich stan.
 
-![Wszystkie żądania obsługi](./media/how-to-create-azure-support-request/AllSupportRequest.png)
+![Wszystkie żądania pomocy technicznej](./media/how-to-create-azure-support-request/AllSupportRequest.png)
 
-Obsługę żądań strony, zapewnia klientom filtrowanie przypadków według subskrypcji, utworzony Data (UTC) i stanu.
-Ponadto można sortować i wyszukaj obsługi żądań na tej stronie.
+Obsługa Strona żądań, zapewnia klientom, aby filtrować przypadki według subskrypcji, utworzony Data (UTC), a stan.
+Ponadto można sortować i wyszukiwać żądania obsługi na tej stronie.
 
-Wybierz żądanie pomocy technicznej, aby wyświetlić szczegóły, w tym ważność i szacowany czas potrzebny do pracownika pomocy technicznej odpowiedzieć.
+Wybierz żądanie pomocy technicznej, aby wyświetlić szczegóły, w tym ich ważność i szacowany czas potrzebny ze specjalistą pomocy technicznej odpowiedzieć.
 ![VID](./media/how-to-create-azure-support-request/VID.png)
 
-Jeśli chcesz zmienić ważność żądania, kliknij przycisk **wpływ na prowadzoną działalność** kafelka. W powyższym przykładzie żądania ma obecnie ustawioną ważności C.
+Jeśli chcesz zmienić ważność żądania, kliknij przycisk **wpływ na działalność** kafelka. W poprzednim przykładzie żądanie jest obecnie równa ważności C.
 
-Kliknięcie kafelka przedstawia listę wag, które można przypisać do żądania obsługi otwarte.
+Kliknięcie kafelka znajduje się lista ważności, które można przypisać do żądania pomocy technicznej.
 
 > [!NOTE]
-> Poziom ważności maksymalną zależy od plan pomocy technicznej. [Dowiedz się więcej o plany pomocy technicznej](https://azure.microsoft.com/support/plans).
+> Poziom maksymalny poziom ważności, zależy od Twojego planu pomocy technicznej. [Dowiedz się więcej o planach pomocy technicznej](https://azure.microsoft.com/support/plans).
 >
 >
 
 ![VID-2](./media/how-to-create-azure-support-request/VID-2.png)
 
 ## <a name="feedback"></a>Opinia
-Firma Microsoft zawsze są otwarte na opinie i sugestie! Wyślij nam Twojej [sugestie](https://feedback.azure.com/forums/266794-support-feedback). Ponadto można Uwzględnij z nami za pośrednictwem [Twitter](https://twitter.com/azuresupport) lub [fora MSDN](https://social.msdn.microsoft.com/Forums/azure).
+Firma Microsoft zawsze są otwarte opinie i sugestie! Wyślij nam swoje [sugestie](https://feedback.azure.com/forums/266794-support-feedback). Ponadto można być w kontakcie z nami za pośrednictwem [Twitter](https://twitter.com/azuresupport) lub [fora MSDN](https://social.msdn.microsoft.com/Forums/azure).
 
 ## <a name="learn-more"></a>Dowiedz się więcej
 [Pomoc techniczna platformy Azure — często zadawane pytania](https://azure.microsoft.com/support/faq)

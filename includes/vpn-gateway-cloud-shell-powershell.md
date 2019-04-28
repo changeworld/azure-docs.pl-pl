@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/14/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: f034b1e97ec88125dac0964de2e3be884795a690
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: 787eb12faff381509fab3faf3b0e74c2c640d51c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38765899"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60405855"
 ---
 Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Po prostu kliknij przycisk **Kopiuj**, aby skopiować kod, wklej go do usługi Cloud Shell, a następnie naciśnij klawisz Enter, aby go uruchomić. Istnieje kilka sposobów uruchomienia usługi Cloud Shell:
 

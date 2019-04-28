@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
 ms.openlocfilehash: 9b9a691cb2bce2357d184420912ab340aee534e8
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412750"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62128087"
 ---
 # <a name="mock-api-responses"></a>Pozorowanie odpowiedzi interfejsu API
 
@@ -120,7 +120,7 @@ Kroki opisane w tej sekcji pokazują, jak utworzyć pusty interfejs API bez zapl
 
 > [!VIDEO https://www.youtube.com/embed/i9PjUAvw7DQ]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

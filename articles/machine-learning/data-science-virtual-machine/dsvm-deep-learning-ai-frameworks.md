@@ -17,11 +17,11 @@ ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
 ms.openlocfilehash: 59f88d54d3542738f1a500c8c476995eb1535ecf
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58006501"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62130280"
 ---
 # <a name="deep-learning-and-ai-frameworks"></a>Platformy sztucznej inteligencji i uczenia głębokiego
 [Maszyny wirtualnej do nauki o danych](https://aka.ms/dsvm) (DSVM) i [VM uczenia głębokiego](https://aka.ms/dsvm/deeplearning) obsługuje wiele platform uczenia głębokiego, aby ułatwić tworzenie aplikacji sztucznej inteligencji (AI) przy użyciu analizy predykcyjnej i możliwości poznawcze, takich jak obraz i language understanding.

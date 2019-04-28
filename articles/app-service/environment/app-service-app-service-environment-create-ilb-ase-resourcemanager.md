@@ -16,11 +16,11 @@ ms.date: 07/11/2017
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: 35e0dc5dabaf1602b87ec6a8be86ed609f3ea12f
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56107382"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62130759"
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>Jak tworzyć środowisko ASE wewnętrznego modułu równoważenia przy użyciu szablonów usługi Azure Resource Manager
 
@@ -30,7 +30,7 @@ ms.locfileid: "56107382"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Środowiska usługi App Service można tworzyć przy użyciu wewnętrznego adresu sieci wirtualnej zamiast publicznych adresów VIP.  Ten adres wewnętrzny jest zapewniana przez składnik platformy Azure o nazwie wewnętrznego modułu równoważenia obciążenia (ILB).  Środowisko ASE z wewnętrznym modułem równoważenia obciążenia mogą być tworzone przy użyciu witryny Azure portal.  Można także tworzyć, używając usługi automation za pomocą szablonów usługi Azure Resource Manager.  W tym artykule opisano kolejne kroki oraz składni konieczna utworzyć środowisko ASE z wewnętrznym modułem równoważenia obciążenia przy użyciu szablonów usługi Azure Resource Manager.
 
 Istnieją trzy kroki związane z automatyzacji tworzenia środowiska ASE z wewnętrznym modułem równoważenia obciążenia:

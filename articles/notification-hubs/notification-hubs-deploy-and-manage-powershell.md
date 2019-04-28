@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
 ms.openlocfilehash: 4dbbaeea736dd46478ad9992201ea28bd7bfc2ba
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855507"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61457842"
 ---
 # <a name="deploy-and-manage-notification-hubs-using-powershell"></a>Wdrażanie i zarządzanie nimi przy użyciu programu PowerShell w usłudze notification hubs
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 W tym artykule przedstawiono sposób tworzenia i zarządzania usługi Azure Notification Hubs przy użyciu programu PowerShell. Następujące typowe zadania automatyzacji są wyświetlane w tym artykule.
 

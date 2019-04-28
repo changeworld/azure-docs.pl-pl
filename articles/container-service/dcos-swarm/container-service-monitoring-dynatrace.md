@@ -10,11 +10,11 @@ ms.date: 12/13/2016
 ms.author: rogardle
 ms.custom: mvc
 ms.openlocfilehash: 8f34a00d9256c288a2842e905c06d5336522eece
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001996"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62119861"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-dcos-cluster-with-dynatrace-saasmanaged"></a>(PRZESTARZAŁE) Monitorowanie klastra usługi Azure Container Service DC/OS za pomocą rozwiązania Dynatrace SaaS/zarządzane
 
@@ -27,7 +27,7 @@ Dynatrace to rozwiązanie monitorowania natywnych dla chmury dla środowisk klas
 
 Na poniższej ilustracji przedstawiono Dynatrace interfejsu użytkownika:
 
-![Interfejs użytkownika rozwiązania Dynatrace](./media/container-service-monitoring-dynatrace/dynatrace.png)
+![Dynatrace UI](./media/container-service-monitoring-dynatrace/dynatrace.png)
 
 ## <a name="prerequisites"></a>Wymagania wstępne 
 [Wdrażanie](container-service-deployment.md) i [połączyć](./../container-service-connect.md) do klastra skonfigurowanego przez usługę Azure Container Service. Przegląd [interfejsu użytkownika platformy Marathon](container-service-mesos-marathon-ui.md). Przejdź do [ https://www.dynatrace.com/trial/ ](https://www.dynatrace.com/trial/) skonfigurować konto Dynatrace SaaS.  

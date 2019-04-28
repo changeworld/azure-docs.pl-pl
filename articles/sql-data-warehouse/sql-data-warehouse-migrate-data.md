@@ -11,11 +11,11 @@ ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
 ms.openlocfilehash: 6a2acf602252ee4319f9a5eccef53a25d8e2dd7f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58014269"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60748190"
 ---
 # <a name="migrate-your-data"></a>Migrowanie danych
 Dane mogą zostać przeniesione z różnych źródeł do usługi SQL Data Warehouse za pomocą różnych narzędzi.  Kopiuj ADF, SSIS i bcp wszystkie można na osiągnięcie tego celu. Jak ilość danych zwiększa należy myśleć o potężne proces migracji danych do kroków. Zapewnia możliwość optymalizacji każdego kroku na wydajność i odporność upewnić się, migrację danych smooth.

@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
 ms.openlocfilehash: 9f1ef06e0275954343c548d0f6937b9c6fbcfd18
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58012122"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122944"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Rozpoczynanie pracy z usługą Azure Blob Storage i Visual Studio podłączone usługi (usługi w chmurze projektów)
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 W tym artykule opisano sposób rozpoczęcia pracy z usługą Azure Blob Storage, po utworzeniu lub odwołanie do konta usługi Azure Storage za pomocą programu Visual Studio **Dodaj usługi połączone** services projektu — okno dialogowe w chmurze programu Visual Studio. Pokażemy ci, jak uzyskać dostęp i utworzyć kontenery obiektów blob oraz sposób wykonywania typowych zadań, takich jak przekazywanie, wyświetlanie i pobieranie obiektów blob. Przykłady są napisane w języku C\# i użyj [biblioteki klienta usługi Microsoft Azure Storage dla platformy .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx).
 
 Usługa Azure Blob Storage jest usługą służącą do przechowywania dużych ilości danych bez struktury, które są dostępne z dowolnego miejsca na świecie za pośrednictwem protokołu HTTP lub HTTPS. Pojedynczy obiekt blob może być dowolnego rozmiaru. Obiekty BLOB mogą mieć elementów, takich jak obrazy, pliki audio i wideo, nieprzetworzone dane i pliki dokumentów.

@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: sajagtap
 ms.openlocfilehash: eb16f5e1e72e5a9379ad530ab9677adba2ccbbcd
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57899567"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61465681"
 ---
 # <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>Użyj usługi Azure Media Content Moderator, aby wykrywanie możliwej zawartości dla dorosłych 
 
-## <a name="overview"></a>Przegląd
-**Pakietu Content Moderator multimediów Azure** procesor multimediów (MP) pozwala na użytek wspomagane maszynowo Moderowanie filmów wideo. Na przykład możesz chcieć wykrywanie możliwej zawartości dla dorosłych w filmach wideo i przejrzeć flagą zawartość przez Twoje zespoły Moderowanie ludzi.
+## <a name="overview"></a>Omówienie
+**Pakietu Content Moderator multimediów Azure** procesor multimediów (MP) pozwala na użytek wspomagane maszynowo Moderowanie filmów wideo. Na przykład chcesz wykrywać potencjalną zawartość dla dorosłych i nieodpowiednią w filmach wideo oraz przesyłać zawartość oznaczoną flagą do przejrzenia przez zespoły ds. moderowania obsługiwanego przez ludzi.
 
 **Pakietu Content Moderator multimediów Azure** pakiet administracyjny jest obecnie w wersji zapoznawczej.
 
@@ -72,7 +72,7 @@ Dane wyjściowe JSON zawiera następujące elementy:
 | adultScore | Współczynnik ufności dla możliwe zawartości dla dorosłych w skali od 0,00 0,99. |
 | racyScore | Współczynnik ufności możliwe zawartości erotycznej, na skalę 0,00 do 0,99. |
 | indeks | Indeks ramki w skali od pierwszej ramki do ostatniego indeks indeksu ramki. |
-| sygnatura czasowa | Lokalizacja ramki "taktów." |
+| timestamp | Lokalizacja ramki "taktów." |
 | shotIndex | Zrzut indeks elementu nadrzędnego. |
 
 

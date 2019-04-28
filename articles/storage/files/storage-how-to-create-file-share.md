@@ -2,18 +2,18 @@
 title: Jak utworzyć udział plików Azure | Microsoft Docs
 description: Jak utworzyć udział plików na platformie Azure w usłudze Azure Files przy użyciu witryny Azure Portal, programu PowerShell i interfejsu wiersza polecenia Azure.
 services: storage
-author: RenaShahMSFT
+author: roygara
 ms.service: storage
 ms.topic: conceptual
 ms.date: 09/19/2017
-ms.author: renash
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 1620683f4bc02d607afd8e0371e8d4a5461612b3
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
-ms.translationtype: MT
+ms.openlocfilehash: 6440e5c2cf534ea431387bcdfed8b218919bf627
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57772334"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63766285"
 ---
 # <a name="create-a-file-share-in-azure-files"></a>Tworzenie udziału plików w usłudze Azure Files
 Udziały plików platformy Azure można tworzyć przy użyciu witryny  [Azure Portal](https://portal.azure.com/), poleceń cmdlet programu PowerShell usługi Azure Storage, bibliotek klienckich usługi Azure Storage lub interfejsu API REST usługi Azure Storage. Z tego samouczka dowiesz się:

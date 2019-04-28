@@ -16,11 +16,11 @@ ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 3a5f6b5b1f66542a534c9016c5d9d60a1273975f
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544805"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62117574"
 ---
 # <a name="build-a-nodejs-and-mongodb-app-in-azure-app-service-on-linux"></a>Tworzenie aplikacji środowiska Node.js i usługi MongoDB w usłudze Azure App Service w systemie Linux
 

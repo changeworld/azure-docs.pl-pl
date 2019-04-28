@@ -11,11 +11,11 @@ manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
 ms.openlocfilehash: 8602f020481249282756a952a46b32bd9e768372
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241331"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62126447"
 ---
 # <a name="enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Rejestrowanie urządzenia w centrum IoT przy użyciu klienta usługi Azure IoT Hub Device Provisioning (.NET)
 
@@ -240,7 +240,7 @@ Po uruchomieniu urządzenia powinny zostać wykonane następujące działania. A
 
     ![Pomyślne połączenie z centrum w portalu](./media/tutorial-net-provision-device-to-hub/hub-connect-success.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]

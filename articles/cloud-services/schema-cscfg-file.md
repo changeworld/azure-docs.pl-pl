@@ -1,8 +1,9 @@
 ---
 title: Azure Cloud Services, definicji schematu (pliku cscfg) | Dokumentacja firmy Microsoft
-services: cloud-services
 ms.custom: ''
-ms.date: 12/07/2016
+origin.date: 12/07/2016
+ms.date: 11/06/2017
+ms.prod: azure
 ms.reviewer: ''
 ms.service: cloud-services
 ms.suite: ''
@@ -10,15 +11,15 @@ ms.tgt_pltfrm: ''
 ms.topic: reference
 ms.assetid: 3ddc7fea-3339-4fc0-bdf9-853c32b25f69
 caps.latest.revision: 35
-author: jpconnock
-ms.author: jeconnoc
+author: thraka
+ms.author: v-yiso
 manager: timlt
-ms.openlocfilehash: 96df87a0d49296280140e392509c0d735f904957
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 424381e2c243420cc2a68dc776d249cb17574f98
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39007026"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62130317"
 ---
 # <a name="azure-cloud-services-config-schema-cscfg-file"></a>Azure Cloud Services, schematu konfiguracji (plik cscfg)
 Plik konfiguracji usługi określa liczbę wystąpień roli w celu wdrożenia dla każdej roli w usłudze, wartości ustawienia konfiguracji i odciski palców wszelkich certyfikatów skojarzone z rolami. Jeśli usługa jest częścią sieci wirtualnej, informacje o konfiguracji sieci musi być podana w pliku konfiguracji usługi, a także w sieci wirtualnej pliku konfiguracji. Domyślnym rozszerzeniem dla pliku konfiguracji usługi jest .cscfg.
@@ -63,7 +64,7 @@ W poniższej tabeli opisano atrybuty `ServiceConfiguration` elementu. Wszystkie 
 | Atrybut | Opis |
 | --------- | ----------- |
 |serviceName|Wymagany. Nazwa usługi w chmurze. Nazwa podana w tym miejscu musi być zgodna z nazwą określoną w pliku definicji usługi.|
-|Rodzina systemów operacyjnych|Opcjonalny. Określa system operacyjny gościa, który zostanie uruchomiony na wystąpieniach roli w usłudze w chmurze. Aby uzyskać informacje o obsługiwanych wersjach systemu operacyjnego gościa, zobacz [wersji systemu operacyjnego gościa platformy Azure i zgodności zestawów SDK](cloud-services-guestos-update-matrix.md).<br /><br /> Jeśli nie dołączysz `osFamily` nie ustawiono wartości i `osVersion` atrybut do określonej wersji systemu operacyjnego gościa, domyślną wartość 1 jest używany.|
+|osFamily|Opcjonalny. Określa system operacyjny gościa, który zostanie uruchomiony na wystąpieniach roli w usłudze w chmurze. Aby uzyskać informacje o obsługiwanych wersjach systemu operacyjnego gościa, zobacz [wersji systemu operacyjnego gościa platformy Azure i zgodności zestawów SDK](cloud-services-guestos-update-matrix.md).<br /><br /> Jeśli nie dołączysz `osFamily` nie ustawiono wartości i `osVersion` atrybut do określonej wersji systemu operacyjnego gościa, domyślną wartość 1 jest używany.|
 |osVersion|Opcjonalny. Określa wersję systemu operacyjnego gościa, który zostanie uruchomiony na wystąpieniach roli w usłudze w chmurze. Aby uzyskać więcej informacji o wersjach systemu operacyjnego gościa, zobacz [wersji systemu operacyjnego gościa platformy Azure i zgodności zestawów SDK](cloud-services-guestos-update-matrix.md).<br /><br /> Można określić, czy system operacyjny gościa można automatycznie uaktualnić do najnowszej wersji. Aby to zrobić, ustaw wartość `osVersion` atrybutu `*`. Po ustawieniu `*`, wystąpienia roli są wdrażane przy użyciu najnowszej wersji systemu operacyjnego gościa dla określonej rodziny systemów operacyjnych i zostaną automatycznie uaktualnione, gdy wydawane są nowe wersje systemu operacyjnego gościa.<br /><br /> Aby ręcznie określić określonej wersji, użyj `Configuration String` z tabeli w **przyszłość, bieżących i przejściowego wersje systemów operacyjnych gościa** części [wersji systemu operacyjnego gościa platformy Azure i zgodności zestawów SDK](cloud-services-guestos-update-matrix.md) .<br /><br /> Wartością domyślną dla `osVersion` atrybut jest `*`.|
 |schemaVersion|Opcjonalny. Określa wersję schematu konfiguracji usługi. Wersja schematu umożliwia programowi Visual Studio wybierz odpowiednie narzędzia zestawu SDK na potrzeby sprawdzania poprawności schematu, jeśli jest zainstalowana więcej niż jedna wersja zestawu SDK side-by-side. Aby uzyskać więcej informacji na temat schematu a zgodność wersji, zobacz [wersji systemu operacyjnego gościa platformy Azure i zgodności zestawów SDK](cloud-services-guestos-update-matrix.md)|
 

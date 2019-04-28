@@ -8,12 +8,12 @@ ms.service: service-bus-messaging
 ms.topic: quickstart
 ms.date: 04/15/2019
 ms.author: spelluru
-ms.openlocfilehash: 2af346b2c9fa5c46593aa9421c3a762bda78dc2f
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
-ms.translationtype: MT
+ms.openlocfilehash: e943dbff71fdbd98773587c8ac5a62dd081b49a2
+ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59610308"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62739570"
 ---
 # <a name="quickstart-use-the-azure-portal-to-create-a-service-bus-topic-and-subscriptions-to-the-topic"></a>Szybki start: Tworzenie tematu usługi Service Bus i subskrypcji do tematu za pomocą witryny Azure portal
 W tym przewodniku Szybki Start używasz witryny Azure portal tworzenie tematu usługi Service Bus, a następnie utworzenie subskrypcji tego tematu. 
@@ -34,7 +34,7 @@ Subskrypcji i tematów usługi Service Bus umożliwiają skalowanie do przetwarz
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby dowiedzieć się, jak wysyłać komunikaty do tematu i reiceve te komunikaty za pośrednictwem subskrypcji, zapoznaj się z następującym artykułem: Wybierz język programowania w spisie treści. 
+Aby dowiedzieć się, jak wysyłać komunikaty do tematu i odebrania tych komunikatów za pośrednictwem subskrypcji, zapoznaj się z następującym artykułem: Wybierz język programowania w spisie treści. 
 
 > [!div class="nextstepaction"]
 > [Publikuj i Subskrybuj wiadomości](service-bus-dotnet-how-to-use-topics-subscriptions.md)

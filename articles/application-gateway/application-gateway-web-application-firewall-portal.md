@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.date: 4/16/2019
 ms.author: victorh
 ms.openlocfilehash: 206895768ea48e352e4f7fe90ab597f3756586dd
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59682852"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62130365"
 ---
 # <a name="tutorial-create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>Samouczek: Tworzenie bramy aplikacji z zaporą aplikacji sieci web przy użyciu witryny Azure portal
 

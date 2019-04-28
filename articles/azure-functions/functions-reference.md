@@ -13,11 +13,11 @@ ms.topic: reference
 ms.date: 10/12/2017
 ms.author: glenga
 ms.openlocfilehash: 5b2b7f3cd6bfa219b794edc63d6bf8b2784b713c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58891893"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62120742"
 ---
 # <a name="azure-functions-developers-guide"></a>Przewodnik dla deweloperów usługi Azure Functions
 W usłudze Azure Functions określonych funkcji udostępniania kilka podstawowych pojęć technicznych i składniki, niezależnie od języka lub powiązania, którego używasz. Zanim przejdziesz do nauki szczegóły specyficzne dla danego języka lub powiązania, koniecznie zapoznaj się z tego omówienia, która ma zastosowanie do wszystkich z nich.

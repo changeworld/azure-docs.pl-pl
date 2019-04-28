@@ -16,14 +16,14 @@ ms.date: 08/30/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: 5e25de1ad2042ac978c3698165b9d9baba20e816
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274168"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62130691"
 ---
 # <a name="implementing-a-layered-security-architecture-with-app-service-environments"></a>Implementowanie warstwowej architektury zabezpieczeń przy użyciu środowisk usługi App Service
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Ponieważ środowisk usługi App Service zapewnia odizolowanym środowisku uruchomieniowym wdrożone w sieci wirtualnej, deweloperzy mogą tworzyć warstwowej architektury zabezpieczeń podając różne poziomy dostępu do sieci dla każdej warstwy aplikacji fizycznych.
 
 Wspólne dążenie jest ukryć interfejsu API zaplecza z ogólnego dostępu do Internetu i zezwolić tylko na interfejsy API ma zostać wywołana przez nadrzędne web apps.  [Sieciowe grupy zabezpieczeń (NSG)] [ NetworkSecurityGroups] może służyć w podsieciach zawierający środowisk usługi App Service do ograniczenia dostępu publicznego do aplikacji interfejsu API.

@@ -15,11 +15,11 @@ ms.date: 12/03/2018
 ms.author: cephalin;dariagrigoriu
 ms.custom: seodec18
 ms.openlocfilehash: fcb2c270b36d5efbe7b799787cf2a123b51bea5c
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337548"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60765708"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Ciągłe wdrażanie w usłudze Azure App Service
 W tym artykule dowiesz się, jak skonfigurować ciągłe wdrażanie dla [usługi Azure App Service](overview.md). Usługa App Service umożliwia ciągłe wdrażanie z usług BitBucket, GitHub i [usługom DevOps platformy Azure](https://www.visualstudio.com/team-services/) przez pobieranie najnowszych aktualizacji z istniejącym repozytorium w jednej z tych usług.

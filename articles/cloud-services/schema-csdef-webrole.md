@@ -14,11 +14,11 @@ author: jpconnock
 ms.author: jeconnoc
 manager: timlt
 ms.openlocfilehash: 0bb0946ea48a4c206d6bfe683da0835aca9b198b
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331949"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60613242"
 ---
 # <a name="azure-cloud-services-definition-webrole-schema"></a>Azure Cloud Services, definicja webrole — schemat
 Rola sieci web platformy Azure jest rolą, która jest dostosowany do programowania aplikacji sieci web, ponieważ obsługiwane przez usługi IIS 7, takich jak ASP.NET, PHP, Windows Communication Foundation i FastCGI.
@@ -163,11 +163,11 @@ Plik definicji usługi obejmuje te elementy, opisano szczegółowo w kolejnych s
 
 W poniższej tabeli opisano atrybuty `WebRole` elementu.
 
-| Atrybut | Typ | Opis |  
+| Atrybut | Type | Opis |  
 | --------- | ---- | ----------- |  
-|name|ciąg|Wymagany. Nazwa roli sieci web. Nazwa roli musi być unikatowa.|  
+|name|string|Wymagany. Nazwa roli sieci web. Nazwa roli musi być unikatowa.|  
 |enableNativeCodeExecution|wartość logiczna|Opcjonalny. Wartość domyślna to `true`; natywne wykonywanie kodu i pełną zaufania są domyślnie włączone. Ustaw ten atrybut na `false` wyłączyć wykonywanie kodu natywnego dla roli sieci web, a zamiast tego użyj Azure częściowej relacji zaufania.|  
-|vmsize|ciąg|Opcjonalny. Ustaw tę wartość, aby zmienić rozmiar maszyny wirtualnej, który jest przydzielony do roli. Wartość domyślna to `Small`. Aby uzyskać więcej informacji, zobacz [rozmiarów maszyn wirtualnych dla usług w chmurze](cloud-services-sizes-specs.md).|  
+|vmsize|string|Opcjonalny. Ustaw tę wartość, aby zmienić rozmiar maszyny wirtualnej, który jest przydzielony do roli. Wartość domyślna to `Small`. Aby uzyskać więcej informacji, zobacz [rozmiarów maszyn wirtualnych dla usług w chmurze](cloud-services-sizes-specs.md).|  
 
 ##  <a name="ConfigurationSettings"></a> AppSettings  
 `ConfigurationSettings` Element opisuje kolekcję ustawień konfiguracji dla roli sieci web. Ten element jest elementem nadrzędnym `Setting` elementu.
@@ -177,9 +177,9 @@ W poniższej tabeli opisano atrybuty `WebRole` elementu.
 
 W poniższej tabeli opisano atrybuty `Setting` elementu.
 
-| Atrybut | Typ | Opis |  
+| Atrybut | Type | Opis |  
 | --------- | ---- | ----------- |  
-|name|ciąg|Wymagany. Unikatową nazwę dla ustawienia konfiguracji.|  
+|name|string|Wymagany. Unikatową nazwę dla ustawienia konfiguracji.|  
 
 Ustawienia konfiguracji dla roli są pary nazw i wartości, które są zadeklarowane w pliku definicji usługi i ustawione w pliku konfiguracji usługi.
 
@@ -194,9 +194,9 @@ Ustawienia konfiguracji dla roli są pary nazw i wartości, które są zadeklaro
 
 W poniższej tabeli opisano atrybuty `LocalStorage` elementu.
 
-| Atrybut | Typ | Opis |  
+| Atrybut | Type | Opis |  
 | --------- | ---- | ----------- |  
-|name|ciąg|Wymagany. Unikatowa nazwa magazynu lokalnego.|  
+|name|string|Wymagany. Unikatowa nazwa magazynu lokalnego.|  
 |cleanOnRoleRecycle|wartość logiczna|Opcjonalny. Wskazuje, czy magazynu lokalnego powinny być czyszczone po ponownym uruchomieniu roli. Wartość domyślna to `true`.|  
 |sizeInMb|int|Opcjonalny. Wymaganej ilości miejsca do magazynowania można przydzielić dla magazynu lokalnego, w Megabajtach. Jeśli nie zostanie określony, domyślna miejsca do magazynowania przydzielone wynosi 100 MB. Minimalna ilość miejsca do magazynowania, która może być przydzielona to 1 MB.<br /><br /> Maksymalny rozmiar zasobów lokalnych jest zależna od rozmiaru maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [rozmiarów maszyn wirtualnych dla usług w chmurze](cloud-services-sizes-specs.md).|  
   
@@ -217,25 +217,25 @@ Można zdefiniować wiele punktów końcowych, które są kombinacją HTTP, HTTP
 
 W poniższej tabeli opisano atrybuty `InputEndpoint` elementu.
 
-| Atrybut | Typ | Opis |  
+| Atrybut | Type | Opis |  
 | --------- | ---- | ----------- |  
-|name|ciąg|Wymagany. Unikatowa nazwa jest zewnętrzny punkt końcowy.|  
-|protokół|ciąg|Wymagany. Protokół transportu jest zewnętrzny punkt końcowy. Dla roli sieci web, możliwe wartości to `HTTP`, `HTTPS`, `UDP`, lub `TCP`.|  
+|name|string|Wymagany. Unikatowa nazwa jest zewnętrzny punkt końcowy.|  
+|protokół|string|Wymagany. Protokół transportu jest zewnętrzny punkt końcowy. Dla roli sieci web, możliwe wartości to `HTTP`, `HTTPS`, `UDP`, lub `TCP`.|  
 |port|int|Wymagany. Port zewnętrznego punktu końcowego. Można określić dowolny numer portu, które wybierzesz, ale numery portów, określony dla każdej roli w ramach usługi musi być unikatowa.<br /><br /> Możliwe wartości z zakresu od 1 do 65535 (włącznie). (zestaw Azure SDK w wersji 1.7 lub nowszej).|  
-|certyfikat|ciąg|Wymagane dla punktu końcowego HTTPS. Nazwa certyfikatu z definicją `Certificate` elementu.|  
+|certyfikat|string|Wymagane dla punktu końcowego HTTPS. Nazwa certyfikatu z definicją `Certificate` elementu.|  
 |localPort|int|Opcjonalny. Określa port używany dla wewnętrznych połączeń w punkcie końcowym. `localPort` Porcie zewnętrznym w punkcie końcowym mapowań atrybutów do portu wewnętrznej w roli. Jest to przydatne w scenariuszach, w której roli musi komunikować się do wewnętrznego składnika na porcie, inny niż ten, który jest widoczna zewnętrznie.<br /><br /> Jeśli nie zostanie określony, wartość `localPort` jest taka sama jak `port` atrybutu. Ustaw wartość `localPort` na "*" Aby automatycznie przypisać nieprzydzielone port wykrywalny, przy użyciu interfejsu API środowiska wykonawczego.<br /><br /> Możliwe wartości z zakresu od 1 do 65535 (włącznie). (zestaw Azure SDK w wersji 1.7 lub nowszej).<br /><br /> `localPort` Atrybut jest dostępne tylko przy użyciu zestawu Azure SDK w wersji 1.3 lub nowszej.|  
 |ignoreRoleInstanceStatus|wartość logiczna|Opcjonalny. Jeśli wartość tego atrybutu jest równa `true`, stan usługi jest ignorowany i punkt końcowy nie zostaną usunięte przez moduł równoważenia obciążenia. Ustawienie tej wartości na `true` przydatne podczas debugowania zajęty wystąpień usługi. Wartość domyślna to `false`. **Uwaga:**  Punkt końcowy nadal mogą odbierać ruch nawet wtedy, gdy rola nie jest w stanie gotowe.|  
-|loadBalancerProbe|ciąg|Opcjonalny. Nazwa sondy modułu równoważenia obciążenia, które są skojarzone z wejściowym punktem końcowym. Aby uzyskać więcej informacji, zobacz [loadbalancerprobe — schemat](schema-csdef-loadbalancerprobe.md).|  
+|loadBalancerProbe|string|Opcjonalny. Nazwa sondy modułu równoważenia obciążenia, które są skojarzone z wejściowym punktem końcowym. Aby uzyskać więcej informacji, zobacz [loadbalancerprobe — schemat](schema-csdef-loadbalancerprobe.md).|  
 
 ##  <a name="InternalEndpoint"></a> InternalEndpoint  
 `InternalEndpoint` Element w tym artykule opisano wewnętrznego punktu końcowego roli sieci web. Wewnętrzny punkt końcowy jest dostępny tylko dla innych wystąpień roli w ramach usługi; nie jest dostępna dla klientów poza usługi. Role, które nie zawierają sieci Web `Sites` element może mieć tylko jeden HTTP, UDP lub TCP wewnętrzny punkt końcowy.
 
 W poniższej tabeli opisano atrybuty `InternalEndpoint` elementu.
 
-| Atrybut | Typ | Opis |  
+| Atrybut | Type | Opis |  
 | --------- | ---- | ----------- |  
-|name|ciąg|Wymagany. Unikatowa nazwa wewnętrznego punktu końcowego.|  
-|protokół|ciąg|Wymagany. Protokół transportowy wewnętrznego punktu końcowego. Możliwe wartości to `HTTP`, `TCP`, `UDP`, lub `ANY`.<br /><br /> Wartość `ANY` Określa, że każdego protokołu, każdy port jest dozwolone.|  
+|name|string|Wymagany. Unikatowa nazwa wewnętrznego punktu końcowego.|  
+|protokół|string|Wymagany. Protokół transportowy wewnętrznego punktu końcowego. Możliwe wartości to `HTTP`, `TCP`, `UDP`, lub `ANY`.<br /><br /> Wartość `ANY` Określa, że każdego protokołu, każdy port jest dozwolone.|  
 |port|int|Opcjonalny. Port używany dla połączeń punkt końcowy wewnętrznego równoważenia obciążenia. Dwa porty używa punktu końcowego ze zrównoważonym obciążeniem. Port używany do publicznego adresu IP i port używany na prywatny adres IP. Zazwyczaj są to te właściwości są ustawiane na takie same, ale można wybrać używało innych portów.<br /><br /> Możliwe wartości z zakresu od 1 do 65535 (włącznie). (zestaw Azure SDK w wersji 1.7 lub nowszej).<br /><br /> `Port` Atrybut jest dostępne tylko przy użyciu zestawu Azure SDK w wersji 1.3 lub nowszej.|  
 
 ##  <a name="InstanceInputEndpoint"></a> InstanceInputEndpoint  
@@ -245,11 +245,11 @@ W poniższej tabeli opisano atrybuty `InternalEndpoint` elementu.
 
 W poniższej tabeli opisano atrybuty `InstanceInputEndpoint` elementu.
   
-| Atrybut | Typ | Opis |  
+| Atrybut | Type | Opis |  
 | --------- | ---- | ----------- |  
-|name|ciąg|Wymagany. Unikatowa nazwa punktu końcowego.|  
+|name|string|Wymagany. Unikatowa nazwa punktu końcowego.|  
 |localPort|int|Wymagany. Określa port wewnętrzny, który będzie nasłuchiwać wszystkich wystąpień roli w celu odbierania ruchu przychodzącego przekazywane z modułu równoważenia obciążenia. Możliwe wartości z zakresu od 1 do 65535 (włącznie).|  
-|protokół|ciąg|Wymagany. Protokół transportowy wewnętrznego punktu końcowego. Możliwe wartości to `udp` lub `tcp`. Użyj `tcp` dla protokołu http/https na podstawie ruchu.|  
+|protokół|string|Wymagany. Protokół transportowy wewnętrznego punktu końcowego. Możliwe wartości to `udp` lub `tcp`. Użyj `tcp` dla protokołu http/https na podstawie ruchu.|  
   
 ##  <a name="AllocatePublicPortFrom"></a> AllocatePublicPortFrom  
 `AllocatePublicPortFrom` Element opisuje zakres portu publicznego, który może być używane przez klientów zewnętrznych do dostępu wejściowy punkt końcowy każdego wystąpienia. Publiczny numer portu (VIP) jest przydzielany z tego zakresu i przypisane do każdego punktu końcowego wystąpienia poszczególnych ról podczas wdrażania dzierżawy i aktualizacji. Ten element jest elementem nadrzędnym `FixedPortRange` elementu.
@@ -263,7 +263,7 @@ W poniższej tabeli opisano atrybuty `InstanceInputEndpoint` elementu.
 
 W poniższej tabeli opisano atrybuty `FixedPort` elementu.
 
-| Atrybut | Typ | Opis |  
+| Atrybut | Type | Opis |  
 | --------- | ---- | ----------- |  
 |port|int|Wymagany. Port wewnętrzny punkt końcowy. Ma to taki sam efekt jak ustawienie `FixedPortRange` min i max do tego samego portu.<br /><br /> Możliwe wartości z zakresu od 1 do 65535 (włącznie). (zestaw Azure SDK w wersji 1.7 lub nowszej).|  
 
@@ -277,10 +277,10 @@ W poniższej tabeli opisano atrybuty `FixedPort` elementu.
 
 W poniższej tabeli opisano atrybuty `FixedPortRange` elementu.
 
-| Atrybut | Typ | Opis |  
+| Atrybut | Type | Opis |  
 | --------- | ---- | ----------- |  
 |min.|int|Wymagany. Minimalna port z zakresu. Możliwe wartości z zakresu od 1 do 65535 (włącznie). (zestaw Azure SDK w wersji 1.7 lub nowszej).|  
-|maks.|ciąg|Wymagany. Maksymalna port z zakresu. Możliwe wartości z zakresu od 1 do 65535 (włącznie). (zestaw Azure SDK w wersji 1.7 lub nowszej).|  
+|maks.|string|Wymagany. Maksymalna port z zakresu. Możliwe wartości z zakresu od 1 do 65535 (włącznie). (zestaw Azure SDK w wersji 1.7 lub nowszej).|  
 
 ##  <a name="Certificates"></a> Certyfikaty  
 `Certificates` Element w tym artykule opisano kolekcji certyfikatów dla roli sieci web. Ten element jest elementem nadrzędnym `Certificate` elementu. Rola może mieć dowolną liczbę certyfikatów skojarzonych. Aby uzyskać więcej informacji na temat korzystania z elementu certyfikatów, zobacz [modyfikowania pliku definicji usługi z certyfikatem](cloud-services-configure-ssl-certificate-portal.md#step-2-modify-the-service-definition-and-configuration-files).
@@ -290,12 +290,12 @@ W poniższej tabeli opisano atrybuty `FixedPortRange` elementu.
 
 W poniższej tabeli opisano atrybuty `Certificate` elementu.
 
-| Atrybut | Typ | Opis |  
+| Atrybut | Type | Opis |  
 | --------- | ---- | ----------- |  
-|name|ciąg|Wymagany. Nazwa tego certyfikatu, który służy do odwoływania się do niego, gdy jest on skojarzony z przy użyciu protokołu HTTPS `InputEndpoint` elementu.|  
-|storeLocation|ciąg|Wymagany. Lokalizacja magazynu certyfikatów, gdzie można znaleźć tego certyfikatu na komputerze lokalnym. Możliwe wartości to `CurrentUser` i `LocalMachine`.|  
-|storeName|ciąg|Wymagany. Nazwa magazynu certyfikatów, gdy ten certyfikat znajduje się na komputerze lokalnym. Możliwe wartości obejmują nazwy magazynu wbudowanych `My`, `Root`, `CA`, `Trust`, `Disallowed`, `TrustedPeople`, `TrustedPublisher`, `AuthRoot`, `AddressBook`, lub dowolną nazwę magazynu niestandardowego. Jeśli określono nazwy magazyn niestandardowy, magazynu jest tworzone automatycznie.|  
-|permissionLevel|ciąg|Opcjonalny. Określa uprawnienia dostępu do procesów roli. Jeśli chcesz, aby mieć możliwość dostępu do klucza prywatnego, a następnie określ tylko z podwyższonym poziomem uprawnień procesów `elevated` uprawnień. `limitedOrElevated` uprawnienie umożliwia wszystkie procesy roli do dostępu do klucza prywatnego. Możliwe wartości to `limitedOrElevated` lub `elevated`. Wartość domyślna to `limitedOrElevated`.|  
+|name|string|Wymagany. Nazwa tego certyfikatu, który służy do odwoływania się do niego, gdy jest on skojarzony z przy użyciu protokołu HTTPS `InputEndpoint` elementu.|  
+|storeLocation|string|Wymagany. Lokalizacja magazynu certyfikatów, gdzie można znaleźć tego certyfikatu na komputerze lokalnym. Możliwe wartości to `CurrentUser` i `LocalMachine`.|  
+|storeName|string|Wymagany. Nazwa magazynu certyfikatów, gdy ten certyfikat znajduje się na komputerze lokalnym. Możliwe wartości obejmują nazwy magazynu wbudowanych `My`, `Root`, `CA`, `Trust`, `Disallowed`, `TrustedPeople`, `TrustedPublisher`, `AuthRoot`, `AddressBook`, lub dowolną nazwę magazynu niestandardowego. Jeśli określono nazwy magazyn niestandardowy, magazynu jest tworzone automatycznie.|  
+|permissionLevel|string|Opcjonalny. Określa uprawnienia dostępu do procesów roli. Jeśli chcesz, aby mieć możliwość dostępu do klucza prywatnego, a następnie określ tylko z podwyższonym poziomem uprawnień procesów `elevated` uprawnień. `limitedOrElevated` uprawnienie umożliwia wszystkie procesy roli do dostępu do klucza prywatnego. Możliwe wartości to `limitedOrElevated` lub `elevated`. Wartość domyślna to `limitedOrElevated`.|  
 
 ##  <a name="Imports"></a> Importy  
 `Imports` Element opisuje kolekcję modułów importu dla roli sieci web, które Dodawanie składników do systemu operacyjnego gościa. Ten element jest elementem nadrzędnym `Import` elementu. Ten element jest opcjonalny, a rola może mieć tylko jeden blok importów. 
@@ -309,9 +309,9 @@ W poniższej tabeli opisano atrybuty `Certificate` elementu.
 
 W poniższej tabeli opisano atrybuty `Import` elementu.
 
-| Atrybut | Typ | Opis |  
+| Atrybut | Type | Opis |  
 | --------- | ---- | ----------- |  
-|moduleName|ciąg|Wymagany. Nazwa modułu do zaimportowania. Nieprawidłowy import moduły są:<br /><br /> -RemoteAccess<br />-RemoteForwarder<br />-Diagnostics<br /><br /> Moduły RemoteAccess i RemoteForwarder umożliwiają skonfigurowanie wystąpienia roli dla połączeń pulpitu zdalnego. Aby uzyskać więcej informacji, zobacz [Podłączanie pulpitu zdalnego włączyć](cloud-services-role-enable-remote-desktop-new-portal.md).<br /><br /> Moduł diagnostyki umożliwia zbieranie danych diagnostycznych dla wystąpienia roli.|  
+|moduleName|string|Wymagany. Nazwa modułu do zaimportowania. Nieprawidłowy import moduły są:<br /><br /> -RemoteAccess<br />-RemoteForwarder<br />-Diagnostics<br /><br /> Moduły RemoteAccess i RemoteForwarder umożliwiają skonfigurowanie wystąpienia roli dla połączeń pulpitu zdalnego. Aby uzyskać więcej informacji, zobacz [Podłączanie pulpitu zdalnego włączyć](cloud-services-role-enable-remote-desktop-new-portal.md).<br /><br /> Moduł diagnostyki umożliwia zbieranie danych diagnostycznych dla wystąpienia roli.|  
 
 ##  <a name="Runtime"></a> Środowisko uruchomieniowe  
 `Runtime` Element opisuje kolekcję ustawień zmiennych środowiskowych dla roli sieci web, które kontrolują środowiska wykonawczego procesu hosta platformy Azure. Ten element jest elementem nadrzędnym `Environment` elementu. Ten element jest opcjonalny, a rola może mieć tylko jeden blok środowiska uruchomieniowego.
@@ -320,9 +320,9 @@ W poniższej tabeli opisano atrybuty `Import` elementu.
 
 W poniższej tabeli opisano atrybuty `Runtime` elementu:  
 
-| Atrybut | Typ | Opis |  
+| Atrybut | Type | Opis |  
 | --------- | ---- | ----------- |  
-|executionContext|ciąg|Opcjonalny. Określa kontekst, w której uruchomiono proces roli. Domyślny kontekst jest `limited`.<br /><br /> -   `limited` — Ten proces zostanie uruchomiony bez uprawnień administratora.<br />-   `elevated` — Ten proces jest uruchamiany z uprawnieniami administratora.|  
+|executionContext|string|Opcjonalny. Określa kontekst, w której uruchomiono proces roli. Domyślny kontekst jest `limited`.<br /><br /> -   `limited` — Ten proces zostanie uruchomiony bez uprawnień administratora.<br />-   `elevated` — Ten proces jest uruchamiany z uprawnieniami administratora.|  
 
 ##  <a name="Environment"></a> środowisko  
 `Environment` Element opisuje kolekcję ustawień zmiennych środowiskowych dla roli sieci web. Ten element jest elementem nadrzędnym `Variable` elementu. Rola może mieć dowolną liczbę zmiennych środowiskowych ustawionych.
@@ -334,19 +334,19 @@ W poniższej tabeli opisano atrybuty `Runtime` elementu:
 
 W poniższej tabeli opisano atrybuty `Variable` elementu:  
 
-| Atrybut | Typ | Opis |  
+| Atrybut | Type | Opis |  
 | --------- | ---- | ----------- |  
-|name|ciąg|Wymagany. Nazwa zmiennej środowiskowej, aby ustawić.|  
-|wartość|ciąg|Opcjonalny. Wartość można ustawić dla zmiennej środowiskowej. Musi zawierać atrybut value lub `RoleInstanceValue` elementu.|  
+|name|string|Wymagany. Nazwa zmiennej środowiskowej, aby ustawić.|  
+|value|string|Opcjonalny. Wartość można ustawić dla zmiennej środowiskowej. Musi zawierać atrybut value lub `RoleInstanceValue` elementu.|  
 
 ##  <a name="RoleInstanceValue"></a> RoleInstanceValue  
 `RoleInstanceValue` Element określa wyrażenie xPath, z którego można pobrać wartości zmiennej.
 
 W poniższej tabeli opisano atrybuty `RoleInstanceValue` elementu.
 
-| Atrybut | Typ | Opis |  
+| Atrybut | Type | Opis |  
 | --------- | ---- | ----------- |  
-|wyrażenie XPath|ciąg|Opcjonalny. Ścieżka do lokalizacji Ustawienia wdrożenia dla tego wystąpienia. Aby uzyskać więcej informacji, zobacz [zmienne konfiguracji za pomocą wyrażenia XPath](cloud-services-role-config-xpath.md).<br /><br /> Musi zawierać atrybut value lub `RoleInstanceValue` elementu.|  
+|wyrażenie XPath|string|Opcjonalny. Ścieżka do lokalizacji Ustawienia wdrożenia dla tego wystąpienia. Aby uzyskać więcej informacji, zobacz [zmienne konfiguracji za pomocą wyrażenia XPath](cloud-services-role-config-xpath.md).<br /><br /> Musi zawierać atrybut value lub `RoleInstanceValue` elementu.|  
 
 ##  <a name="EntryPoint"></a> EntryPoint  
 `EntryPoint` Element określa punkt wejścia dla roli. Ten element jest elementem nadrzędnym `NetFxEntryPoint` elementów. Elementy te umożliwiają określenie aplikacji innej niż domyślna WaWorkerHost.exe do pełnienia roli punktu wejścia.
@@ -361,10 +361,10 @@ W poniższej tabeli opisano atrybuty `RoleInstanceValue` elementu.
 
 W poniższej tabeli opisano atrybuty `NetFxEntryPoint` elementu.
 
-| Atrybut | Typ | Opis |  
+| Atrybut | Type | Opis |  
 | --------- | ---- | ----------- |  
-|AssemblyName|ciąg|Wymagany. Ścieżka i nazwa pliku zestawu zawierającego punkt wejścia. Ścieżka jest określana względem folderu  **\\%ROLEROOT%\Approot** (nie należy określać  **\\%ROLEROOT%\Approot** w `commandLine`, zakłada się). **ROLEROOT %** zmienną środowiskową obsługiwany przez platformę Azure, reprezentuje lokalizację folderu głównego dla roli użytkownika.  **\\%ROLEROOT%\Approot** folder reprezentuje folder aplikacji dla roli użytkownika.<br /><br /> Dla ról użytkownika ścieżka będzie zawsze względne  **\\%ROLEROOT%\Approot\bin** folderu.<br /><br /> Dla pełnego usług IIS i usług IIS Express role sieci web, jeśli nie można odnaleźć zestawu względem  **\\%ROLEROOT%\Approot** folderze  **\\%ROLEROOT%\Approot\bin** jest przeszukiwany.<br /><br /> Ten bazowy zachowanie dla usługi IIS nie jest najlepszym rozwiązaniem jest zalecany i może być usunięte w przyszłych wersjach.|  
-|targetFrameworkVersion|ciąg|Wymagany. Wersja programu .NET framework, na którym został skompilowany zestaw. Na przykład `targetFrameworkVersion="v4.0"`.|  
+|AssemblyName|string|Wymagany. Ścieżka i nazwa pliku zestawu zawierającego punkt wejścia. Ścieżka jest określana względem folderu  **\\%ROLEROOT%\Approot** (nie należy określać  **\\%ROLEROOT%\Approot** w `commandLine`, zakłada się). **ROLEROOT %** zmienną środowiskową obsługiwany przez platformę Azure, reprezentuje lokalizację folderu głównego dla roli użytkownika.  **\\%ROLEROOT%\Approot** folder reprezentuje folder aplikacji dla roli użytkownika.<br /><br /> Dla ról użytkownika ścieżka będzie zawsze względne  **\\%ROLEROOT%\Approot\bin** folderu.<br /><br /> Dla pełnego usług IIS i usług IIS Express role sieci web, jeśli nie można odnaleźć zestawu względem  **\\%ROLEROOT%\Approot** folderze  **\\%ROLEROOT%\Approot\bin** jest przeszukiwany.<br /><br /> Ten bazowy zachowanie dla usługi IIS nie jest najlepszym rozwiązaniem jest zalecany i może być usunięte w przyszłych wersjach.|  
+|targetFrameworkVersion|string|Wymagany. Wersja programu .NET framework, na którym został skompilowany zestaw. Na przykład `targetFrameworkVersion="v4.0"`.|  
 
 ##  <a name="Sites"></a> Lokacje  
 `Sites` Element opisuje kolekcję witryn sieci Web i aplikacji sieci web, które znajdują się w roli sieci web. Ten element jest elementem nadrzędnym `Site` elementu. Jeśli nie określisz `Sites` elementu roli sieci web jest hostowana jako rola w starszej wersji web i może mieć tylko jedną witrynę sieci Web, które są hostowane w roli sieci web. Ten element jest opcjonalny, a rola może mieć tylko jeden blok witryn.
@@ -378,10 +378,10 @@ W poniższej tabeli opisano atrybuty `NetFxEntryPoint` elementu.
 
 W poniższej tabeli opisano atrybuty `Site` elementu.
 
-| Atrybut | Typ | Opis |  
+| Atrybut | Type | Opis |  
 | --------- | ---- | ----------- |  
-|name|ciąg|Wymagany. Nazwa witryny sieci Web lub aplikacji.|  
-|physicalDirectory|ciąg|Lokalizacja zawartości katalogu głównego witryny. Można określić lokalizację jako ścieżkę bezwzględną lub względną lokalizacji csdef.|  
+|name|string|Wymagany. Nazwa witryny sieci Web lub aplikacji.|  
+|physicalDirectory|string|Lokalizacja zawartości katalogu głównego witryny. Można określić lokalizację jako ścieżkę bezwzględną lub względną lokalizacji csdef.|  
 
 ##  <a name="VirtualApplication"></a> VirtualApplication  
 `VirtualApplication` Element definiuje aplikację w Internet Information Services (IIS) 7 jest grupą plików, która dostarcza zawartość lub udostępnia usługi za pośrednictwem protokołów, takich jak HTTP. Po utworzeniu aplikacji w usługach IIS 7 ścieżka aplikacji staje się częścią adresu URL witryny.
@@ -390,10 +390,10 @@ W poniższej tabeli opisano atrybuty `Site` elementu.
 
 W poniższej tabeli opisano atrybuty `VirtualApplication` elementu.
 
-| Atrybut | Typ | Opis |  
+| Atrybut | Type | Opis |  
 | --------- | ---- | ----------- |  
-|name|ciąg|Wymagany. Określa nazwę do identyfikacji aplikacji wirtualnej.|  
-|physicalDirectory|ciąg|Wymagany. Określa ścieżkę na komputerze deweloperskim, który zawiera aplikację wirtualną. W emulatorze obliczeń usług IIS jest skonfigurowany do pobierania zawartości z tej lokalizacji. W przypadku wdrażania na platformie Azure, zawartość katalogu fizycznego są dostarczane wraz z pozostałą część usługi. Pakiet usługi jest wdrażana na platformie Azure, usług IIS jest konfigurowana lokalizacja rozpakowana zawartość.|  
+|name|string|Wymagany. Określa nazwę do identyfikacji aplikacji wirtualnej.|  
+|physicalDirectory|string|Wymagany. Określa ścieżkę na komputerze deweloperskim, który zawiera aplikację wirtualną. W emulatorze obliczeń usług IIS jest skonfigurowany do pobierania zawartości z tej lokalizacji. W przypadku wdrażania na platformie Azure, zawartość katalogu fizycznego są dostarczane wraz z pozostałą część usługi. Pakiet usługi jest wdrażana na platformie Azure, usług IIS jest konfigurowana lokalizacja rozpakowana zawartość.|  
 
 ##  <a name="VirtualDirectory"></a> VirtualDirectory  
 `VirtualDirectory` Element Określa nazwę katalogu (nazywane również ścieżki) określ w usługach IIS, a następnie mapowania na katalog fizyczny na serwerze lokalnym lub zdalnym.
@@ -402,10 +402,10 @@ W poniższej tabeli opisano atrybuty `VirtualApplication` elementu.
 
 W poniższej tabeli opisano atrybuty `VirtualDirectory` elementu.
 
-| Atrybut | Typ | Opis |  
+| Atrybut | Type | Opis |  
 | --------- | ---- | ----------- |  
-|name|ciąg|Wymagany. Określa nazwę identyfikującą katalogu wirtualnego.|  
-|wartość|physicalDirectory|Wymagany. Określa ścieżkę na komputerze deweloperskim, zawierający witryny sieci Web lub zawartość katalogu wirtualnych. W emulatorze obliczeń usług IIS jest skonfigurowany do pobierania zawartości z tej lokalizacji. W przypadku wdrażania na platformie Azure, zawartość katalogu fizycznego są dostarczane wraz z pozostałą część usługi. Pakiet usługi jest wdrażana na platformie Azure, usług IIS jest konfigurowana lokalizacja rozpakowana zawartość.|  
+|name|string|Wymagany. Określa nazwę identyfikującą katalogu wirtualnego.|  
+|value|physicalDirectory|Wymagany. Określa ścieżkę na komputerze deweloperskim, zawierający witryny sieci Web lub zawartość katalogu wirtualnych. W emulatorze obliczeń usług IIS jest skonfigurowany do pobierania zawartości z tej lokalizacji. W przypadku wdrażania na platformie Azure, zawartość katalogu fizycznego są dostarczane wraz z pozostałą część usługi. Pakiet usługi jest wdrażana na platformie Azure, usług IIS jest konfigurowana lokalizacja rozpakowana zawartość.|  
 
 ##  <a name="Bindings"></a> Powiązania  
 `Bindings` Element opisuje kolekcję powiązań dla witryny sieci Web. Jest elementem nadrzędnym `Binding` elementu. Element jest wymagany dla każdego `Site` elementu. Aby uzyskać więcej informacji na temat konfigurowania punktów końcowych, zobacz [Włączanie komunikacji dla wystąpień ról](cloud-services-enable-communication-role-instances.md).
@@ -417,18 +417,18 @@ W poniższej tabeli opisano atrybuty `VirtualDirectory` elementu.
 
 `Binding` Elementu jest dostępne tylko przy użyciu zestawu Azure SDK w wersji 1.3 lub nowszej.
 
-| Atrybut | Typ | Opis |  
+| Atrybut | Type | Opis |  
 | --------- | ---- | ----------- |  
-|name|ciąg|Wymagany. Określa nazwę identyfikującą powiązania.|  
-|endpointName|ciąg|Wymagany. Określa nazwę punktu końcowego można powiązać.|  
-|nagłówka hosta|ciąg|Opcjonalny. Określa nazwę hosta, która umożliwia hostowanie wielu witryn przy użyciu różnych nazw hostów, na jednej kombinacji numer portu adresu IP.|  
+|name|string|Wymagany. Określa nazwę identyfikującą powiązania.|  
+|endpointName|string|Wymagany. Określa nazwę punktu końcowego można powiązać.|  
+|nagłówka hosta|string|Opcjonalny. Określa nazwę hosta, która umożliwia hostowanie wielu witryn przy użyciu różnych nazw hostów, na jednej kombinacji numer portu adresu IP.|  
 
 ##  <a name="Startup"></a> Uruchamianie  
 `Startup` Element w tym artykule opisano kolekcji zadań, które są uruchamiane podczas uruchamiania roli. Ten element może być elementem nadrzędnym `Variable` elementu. Aby uzyskać więcej informacji o korzystaniu z zadania uruchamiania roli, zobacz [Konfigurowanie zadań uruchamiania](cloud-services-startup-tasks.md). Ten element jest opcjonalny, a rola może mieć tylko jeden blok uruchamiania.
 
 W poniższej tabeli opisano atrybut `Startup` elementu.
 
-| Atrybut | Typ | Opis |  
+| Atrybut | Type | Opis |  
 | --------- | ---- | ----------- |  
 |priority|int|Tylko do użytku wewnętrznego.|  
 
@@ -439,11 +439,11 @@ W poniższej tabeli opisano atrybut `Startup` elementu.
 
 W poniższej tabeli opisano atrybuty `Task` elementu.
 
-| Atrybut | Typ | Opis |  
+| Atrybut | Type | Opis |  
 | --------- | ---- | ----------- |  
-|Wiersz polecenia|ciąg|Wymagany. Skryptu, na przykład plik CMD, zawierający polecenia do uruchomienia. Pliki rozruchowe polecenia i usługi batch musi zostać zapisany w formacie ANSI. Formaty plików, które ustawić znacznik kolejności bajtów na początku tego pliku nie będzie przetwarzać poprawnie.|  
-|executionContext|ciąg|Określa kontekst, w którym skrypt jest uruchamiany.<br /><br /> -   `limited` [Domyślne] — z tego samego uprawnieniami jako rola procesu hostingu.<br />-   `elevated` — Uruchomione z uprawnieniami administratora.|  
-|taskType|ciąg|Określa zachowanie wykonywania polecenia.<br /><br /> -   `simple` [Domyślnie] — System oczekuje na zadanie zakończyć działanie przed wszystkie inne zadania będą uruchamiane.<br />-   `background` — System czeka zadania zakończyć pracę.<br />-   `foreground` — Podobnie jak w tle, ale rola nie zostanie ponownie uruchomiona do momentu zamknąć wszystkich zadań pierwszego planu.|  
+|Wiersz polecenia|string|Wymagany. Skryptu, na przykład plik CMD, zawierający polecenia do uruchomienia. Pliki rozruchowe polecenia i usługi batch musi zostać zapisany w formacie ANSI. Formaty plików, które ustawić znacznik kolejności bajtów na początku tego pliku nie będzie przetwarzać poprawnie.|  
+|executionContext|string|Określa kontekst, w którym skrypt jest uruchamiany.<br /><br /> -   `limited` [Domyślne] — z tego samego uprawnieniami jako rola procesu hostingu.<br />-   `elevated` — Uruchomione z uprawnieniami administratora.|  
+|taskType|string|Określa zachowanie wykonywania polecenia.<br /><br /> -   `simple` [Domyślnie] — System oczekuje na zadanie zakończyć działanie przed wszystkie inne zadania będą uruchamiane.<br />-   `background` — System czeka zadania zakończyć pracę.<br />-   `foreground` — Podobnie jak w tle, ale rola nie zostanie ponownie uruchomiona do momentu zamknąć wszystkich zadań pierwszego planu.|  
 
 ##  <a name="Contents"></a> Zawartość  
 `Contents` Element w tym artykule opisano zbiór zawartości dla roli sieci web. Ten element jest elementem nadrzędnym `Content` elementu.
@@ -457,9 +457,9 @@ W poniższej tabeli opisano atrybuty `Task` elementu.
 
 W poniższej tabeli opisano atrybuty `Content` elementu.
 
-| Atrybut | Typ | Opis |  
+| Atrybut | Type | Opis |  
 | --------- | ---- | ----------- |  
-|miejsce docelowe|ciąg|Wymagany. Lokalizacja na maszynie wirtualnej platformy Azure, do którego jest umieszczana zawartość. Ta lokalizacja jest względną wobec folderu **%ROLEROOT%\Approot**.|  
+|miejsce docelowe|string|Wymagany. Lokalizacja na maszynie wirtualnej platformy Azure, do którego jest umieszczana zawartość. Ta lokalizacja jest względną wobec folderu **%ROLEROOT%\Approot**.|  
 
 Ten element jest elementem nadrzędnym `SourceDirectory` elementu.
 
@@ -470,9 +470,9 @@ Ten element jest elementem nadrzędnym `SourceDirectory` elementu.
 
 W poniższej tabeli opisano atrybuty `SourceDirectory` elementu.
 
-| Atrybut | Typ | Opis |  
+| Atrybut | Type | Opis |  
 | --------- | ---- | ----------- |  
-|ścieżka|ciąg|Wymagany. Względna lub bezwzględna ścieżka katalogu lokalnego, którego zawartość zostanie skopiowana do maszyny wirtualnej platformy Azure. Rozszerzanie zmiennych środowiskowych w ścieżce katalogu jest obsługiwane.|  
+|ścieżka|string|Wymagany. Względna lub bezwzględna ścieżka katalogu lokalnego, którego zawartość zostanie skopiowana do maszyny wirtualnej platformy Azure. Rozszerzanie zmiennych środowiskowych w ścieżce katalogu jest obsługiwane.|  
   
 ## <a name="see-also"></a>Zobacz też
 [Chmury usługi (model klasyczny) definicji schematu](schema-csdef-file.md)

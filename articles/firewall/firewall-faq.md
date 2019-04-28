@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 4/17/2019
 ms.author: victorh
-ms.openlocfilehash: fcff4ff141dbac84d0b96c166c36018b0cc09d8e
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 5e009d5659a503fe8168f21a26939acff9944f2f
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59997567"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62125259"
 ---
 # <a name="azure-firewall-faq"></a>Zaporę platformy Azure — często zadawane pytania
 
@@ -40,7 +40,7 @@ Zaletą tego modelu to możliwość centralnego działania sterowania na wiele s
 
 ## <a name="how-can-i-install-the-azure-firewall"></a>Jak zainstalować zapory usługi Azure?
 
-Za pomocą witryny Azure portal, programu PowerShell, interfejsu API REST lub przy użyciu szablonów, można skonfigurować zapory usługi Azure. Zobacz [samouczka: Wdróż i Skonfiguruj zaporę platformy Azure przy użyciu witryny Azure portal](/articles/firewall/tutorial-firewall-deploy-portal.md) instrukcje krok po kroku.
+Za pomocą witryny Azure portal, programu PowerShell, interfejsu API REST lub przy użyciu szablonów, można skonfigurować zapory usługi Azure. Zobacz [samouczka: Wdróż i Skonfiguruj zaporę platformy Azure przy użyciu witryny Azure portal](tutorial-firewall-deploy-portal.md) instrukcje krok po kroku.
 
 ## <a name="what-are-some-azure-firewall-concepts"></a>Jakie są niektóre pojęcia zapory usługi Azure?
 
@@ -58,7 +58,7 @@ Zaporę platformy Azure obsługuje filtrowanie przychodzącego i wychodzącego. 
 
 ## <a name="which-logging-and-analytics-services-are-supported-by-the-azure-firewall"></a>Jakie usługi rejestrowania i analizy są obsługiwane przez zaporę usługi Azure?
 
-Zaporę platformy Azure jest zintegrowana z usługą Azure Monitor do przeglądania i analizowania dzienników zapory. Dzienniki mogą być wysyłane do usługi Log Analytics, Azure Storage lub centrów zdarzeń. Mogą być analizowane w usłudze Log Analytics lub przez różnych narzędzi, takich jak program Excel i Power BI. Aby uzyskać więcej informacji, zobacz [Samouczek: Monitoruj dzienniki zapory usługi Azure](/articles/firewall/tutorial-diagnostics.md).
+Zaporę platformy Azure jest zintegrowana z usługą Azure Monitor do przeglądania i analizowania dzienników zapory. Dzienniki mogą być wysyłane do usługi Log Analytics, Azure Storage lub centrów zdarzeń. Mogą być analizowane w usłudze Log Analytics lub przez różnych narzędzi, takich jak program Excel i Power BI. Aby uzyskać więcej informacji, zobacz [Samouczek: Monitoruj dzienniki zapory usługi Azure](tutorial-diagnostics.md).
 
 ## <a name="how-does-azure-firewall-work-differently-from-existing-services-such-as-nvas-in-the-marketplace"></a>Jak zapory usługi Azure działa inaczej w istniejących usług, takich jak urządzenia WUS w portalu marketplace?
 
@@ -109,7 +109,7 @@ Set-AzFirewall -AzureFirewall $azfw
 
 ## <a name="what-are-the-known-service-limits"></a>Jakie są limity znane usługi?
 
-Limity usługi zapory usługi Azure, zobacz [subskrypcji platformy Azure i limity, przydziały i ograniczenia](/articles/azure-subscription-service-limits.md#azure-firewall-limits).
+Limity usługi zapory usługi Azure, zobacz [subskrypcji platformy Azure i limity, przydziały i ograniczenia](../azure-subscription-service-limits.md#azure-firewall-limits).
 
 ## <a name="can-azure-firewall-in-a-hub-virtual-network-forward-and-filter-network-traffic-between-two-spoke-virtual-networks"></a>Można zapory usługi Azure w sieci wirtualnej koncentratora i do przodu i filtrowanie ruchu sieciowego między dwiema sieciami wirtualnymi szprychy?
 
@@ -135,7 +135,7 @@ Tak. Zapora, podsieci, sieci wirtualnej i publicznego adresu IP musi być w tej 
 
 ## <a name="when-configuring-dnat-for-inbound-network-traffic-do-i-also-need-to-configure-a-corresponding-network-rule-to-allow-that-traffic"></a>Podczas konfigurowania DNAT dla przychodzącego ruchu sieciowego, również należy skonfigurować odpowiednią regułę sieci, aby zezwolić na ruch?
 
-Nie. Reguły translatora adresów Sieciowych niejawnie Dodaj odpowiednie sieci regułę zezwalającą na ruch tłumaczenia. Aby przesłonić to zachowanie, jawnie dodaj kolekcję reguł sieci z regułami odmowy zgodnymi z przetłumaczonym ruchem. Aby dowiedzieć się więcej na temat logiki przetwarzania reguł usługi Azure Firewall, zobacz [Azure Firewall rule processing logic (Logika przetwarzania reguł usługi Azure Firewall)](/articles/firewall/rule-processing.md).
+Nie. Reguły translatora adresów Sieciowych niejawnie Dodaj odpowiednie sieci regułę zezwalającą na ruch tłumaczenia. Aby przesłonić to zachowanie, jawnie dodaj kolekcję reguł sieci z regułami odmowy zgodnymi z przetłumaczonym ruchem. Aby dowiedzieć się więcej na temat logiki przetwarzania reguł usługi Azure Firewall, zobacz [Azure Firewall rule processing logic (Logika przetwarzania reguł usługi Azure Firewall)](rule-processing.md).
 
 ## <a name="how-do-wildcards-work-in-an-application-rule-target-fqdn"></a>Jak działają symboli wieloznacznych w aplikacji obiekt docelowy reguły pełni kwalifikowaną nazwę domeny?
 

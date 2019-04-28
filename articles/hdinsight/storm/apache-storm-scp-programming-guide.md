@@ -1,7 +1,6 @@
 ---
 title: Podręcznik programowania platformy SCP.NET dla usługi Storm w usłudze Azure HDInsight
 description: Dowiedz się, jak utworzyć przy użyciu platformy SCP.NET. Na podstawie NET topologii systemu Storm do użytku z systemem Storm w usłudze Azure HDInsight.
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2016
-ms.openlocfilehash: 1ad9661d85c7ec91f361cdc4d126e0a91e376b66
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: c85074a2b26a79dbf5e464972e7f82b5955d15f1
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57853294"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62126889"
 ---
 # <a name="scp-programming-guide"></a>Podręcznik programowania punkt połączenia usługi
 Punkt połączenia usługi jest platformę kompilacji w czasie rzeczywistym, niezawodne i spójne i aplikacji przetwarzania danych o wysokiej wydajności. Jest on oparty na [Apache Storm](https://storm.incubator.apache.org/) — zaprojektowane przez społeczności OSS systemu przetwarzania strumienia. STORM został zaprojektowany przez Nathana Marza, i została open source w serwisie Twitter. Wykorzystuje [Apache ZooKeeper](https://zookeeper.apache.org/), innego projektu Apache, aby włączyć wysoce niezawodne rozproszone Zarządzanie koordynacji i stanu. 

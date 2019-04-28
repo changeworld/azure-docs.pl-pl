@@ -2,18 +2,19 @@
 title: Plik dyrektywy include
 description: Plik dyrektywy include
 services: virtual-machines-linux
-author: RicksterCDN
+author: rockboyfor
 ms.service: virtual-machines-linux
 ms.topic: include file
-ms.date: 04/20/2018
-ms.author: rclaus
+origin.date: 04/20/2018
+ms.date: 06/04/2018
+ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: ebf03a0fe1f274e3a3bb67dfa2defd623735faf9
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: ed68d9d2a0e983fbe753360d9f539f5d89a2187f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33953738"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60387945"
 ---
 > [!IMPORTANT]
-> To rozszerzenie jest przestarzała i jest tylko opisanych tutaj tylko do celów informacyjnych. Nie zaleca się, że będziesz nadal używać tego rozszerzenia w ramach wdrożeń. 
+> To rozszerzenie jest przestarzały i jest tylko opisane tutaj tylko w celach informacyjnych. Zaleca się, że będziesz nadal używać tego rozszerzenia w ramach Twoich wdrożeń.

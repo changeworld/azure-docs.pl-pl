@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 06/14/2016
 ms.author: douglasl
 ms.openlocfilehash: 1e40e3d9eb1231666acda89c752ebc8f517e8fc6
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53741542"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60708904"
 ---
 # <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure"></a>Włączanie technologii Transparent Data Encryption (TDE) for Stretch Database na platformie Azure
 > [!div class="op_single_selector"]

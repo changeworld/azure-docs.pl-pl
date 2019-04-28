@@ -1,7 +1,6 @@
 ---
 title: Synchronizowanie użytkowników usługi Azure Active Directory do klastra — Azure HDInsight
 description: Synchronizuj uwierzytelnionych użytkowników z usługi Azure Active Directory do klastra.
-services: hdinsight
 ms.service: hdinsight
 author: ashishthaps
 ms.author: ashishth
@@ -9,14 +8,14 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: ebb1e3614309f92fc21442100a13c53291b3acbb
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
-ms.translationtype: MT
+ms.openlocfilehash: 2be67c604bebbe9b4c4356e241d1480ca0778d4a
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407291"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63764058"
 ---
-# <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Synchronizowanie użytkowników usługi Azure Active Directory do klastra usługi HDInsight
+# <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Synchronizowanie użytkowników usługi Azure Active Directory z klastrem usługi HDInsight
 
 [HDInsight clusters przy użyciu pakietu zabezpieczeń przedsiębiorstwa (ESP)](hdinsight-domain-joined-introduction.md) można silnego uwierzytelniania za pomocą użytkowników usługi Azure Active Directory (Azure AD), a także używać *kontroli dostępu opartej na rolach* zasady (RBAC). W miarę dodawania użytkowników i grup do usługi Azure AD, można zsynchronizować użytkowników, którzy potrzebują dostępu do klastra.
 
@@ -140,7 +139,7 @@ Otwórz [Apache Ambari Web UI](hdinsight-hadoop-manage-ambari.md) do sprawdzenia
 
 3. Nowy użytkownik powinien zostać wyświetlony w tabeli użytkowników. Typ jest ustawiona na `LDAP` zamiast `Local`.
 
-    ![Strona Użytkownicy](./media/hdinsight-sync-aad-users-to-cluster/users.png)
+    ![Strona użytkowników](./media/hdinsight-sync-aad-users-to-cluster/users.png)
 
 ## <a name="log-in-to-ambari-as-the-new-user"></a>Zaloguj się do systemu Ambari jako nowy użytkownik
 

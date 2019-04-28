@@ -16,11 +16,11 @@ ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
 ms.openlocfilehash: 2a9214b918883e493ebe5c93fc7f56e7ce9c77ec
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234498"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60652217"
 ---
 # <a name="common-issues-that-cause-roles-to-recycle"></a>Typowe problemy, które powodują odtwarzanie ról
 W tym artykule omówiono niektóre typowe przyczyny problemów z wdrażaniem i wskazówki dotyczące rozwiązywania problemów, aby rozwiązać te problemy. Wskazanie, że istnieje problem z aplikacją jest, gdy wystąpienie roli nie można uruchomić lub jego cykli między Stanami inicjowanie, zajęta i zatrzymywanie.
@@ -40,7 +40,7 @@ Zanim kompilacji i pakietów aplikacji, sprawdź następujące informacje:
 Platforma Azure jest 64-bitowego środowiska. W związku z tym zestawów platformy .NET skompilowanych dla elementu docelowego 32-bitowe nie będą działać na platformie Azure.
 
 ## <a name="role-throws-unhandled-exceptions-while-initializing-or-stopping"></a>Rola zgłasza nieobsługiwane wyjątki podczas inicjowania lub zatrzymywania
-Wszelkie wyjątki wyrzucane przez metody [RoleEntryPoint] klasy, która obejmuje [Dla metody OnStart], [OnStop], i [Run] metody, są nieobsługiwane wyjątki. Jeśli nieobsługiwany wyjątek występuje w jednej z następujących metod, będzie odtwarzanie roli. Jeśli roli jest odtwarzane wielokrotnie, może być zgłaszanie Wystąpił nieobsługiwany wyjątek w każdym razem, gdy spróbuje uruchomić.
+Wszelkie wyjątki wyrzucane przez metody [RoleEntryPoint] klasy, która obejmuje [OnStart], [OnStop], i [Run] metody, są nieobsługiwane wyjątki. Jeśli nieobsługiwany wyjątek występuje w jednej z następujących metod, będzie odtwarzanie roli. Jeśli roli jest odtwarzane wielokrotnie, może być zgłaszanie Wystąpił nieobsługiwany wyjątek w każdym razem, gdy spróbuje uruchomić.
 
 ## <a name="role-returns-from-run-method"></a>Rola wraca z metody uruchamiania
 [Run] metoda jest przeznaczona do uruchamiania na czas nieokreślony. Jeśli Twój kod zastępuje [Run] metody jej uśpienia na czas nieokreślony. Jeśli [Run] metoda zwróci wartość, rola jest odtwarzana.
@@ -67,6 +67,6 @@ Wyświetl więcej [artykuły dotyczące rozwiązywania problemów](https://azure
 Wyświetl jedna rola odtwarzanie scenariuszy w [serię wpisów w blogu Kevina Williamson](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).
 
 [RoleEntryPoint]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx
-[Dla metody OnStart]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx
+[OnStart]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx
 [OnStop]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstop.aspx
 [Run]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx

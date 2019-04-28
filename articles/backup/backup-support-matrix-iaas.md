@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 02/24/2019
+ms.date: 04/23/2019
 ms.author: raynew
-ms.openlocfilehash: aacfe725310b3c8e4785e24b80728f0e60694814
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: eaad582dc6484cb62d0bebf1af447ff61301a3bb
+ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59496099"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62733971"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Macierz obsługi kopii zapasowej maszyny Wirtualnej platformy Azure
 Możesz użyć [usługi Azure Backup](backup-overview.md) do tworzenia kopii zapasowych maszyn lokalnych i obciążeń i Azure virtual machines (VMs). Ten artykuł zawiera podsumowanie ustawień obsługi i ograniczenia, podczas wykonywania kopii zapasowych maszyn wirtualnych platformy Azure z usługą Azure Backup.
@@ -168,7 +168,7 @@ Zmiana rozmiaru dysku na chronionej maszynie Wirtualnej | Obsługiwane.
 Magazyn udostępniony| Nie zaleca się tworzenie kopii zapasowych maszyn wirtualnych przy użyciu udostępnionego woluminu klastra (CSV) lub serwera plików skalowalnego w poziomie. Autorzy CSV są mogą kończyć się niepowodzeniem podczas wykonywania kopii zapasowej. Podczas przywracania dyski zawierające woluminów CSV może nie wróć w górę.
 
 > [!NOTE]
-> Usługa Azure Backup nie obsługuje dysków rozłożonych. Zmiana rozmiaru dysku nie jest zalecane przez usługę Azure Backup.
+> Zmiana rozmiaru dysku nie jest zalecane przez usługę Azure Backup.
 
 
 ## <a name="vm-network-support"></a>Obsługa sieci maszyny Wirtualnej

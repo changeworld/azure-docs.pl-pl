@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 06/29/2017
 ms.author: suchiagicha
 ms.openlocfilehash: e4c698dc5aa8a07d09835adeac39db6ee35f720c
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666158"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62123182"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Diagnostyka i monitorowanie wydajności dla wiarygodnych zdalna komunikacja usług
 Emituje ServiceRemoting niezawodne środowisko uruchomieniowe [liczniki wydajności](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx). Te zapewniają wgląd w jaki sposób działa ServiceRemoting i ułatwić rozwiązywanie problemów i monitorowania wydajności.
@@ -28,7 +28,7 @@ Emituje ServiceRemoting niezawodne środowisko uruchomieniowe [liczniki wydajno�
 ## <a name="performance-counters"></a>Liczniki wydajności
 Środowisko uruchomieniowe niezawodne ServiceRemoting definiuje następujące kategorie liczników wydajności:
 
-| Kategoria | Opis |
+| Category | Opis |
 | --- | --- |
 | Usługa Service Fabric |Liczniki specyficzne dla usługi Azure Service Fabric zdalna komunikacja usług, na przykład średni czas przetwarzania żądania |
 | Metoda usługi Service Fabric |Liczniki specyficzne dla metody implementowane przez usługi Service Fabric wywołaniem funkcji zdalnych, na przykład, jak często jest wywoływana metoda usługi |

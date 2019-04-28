@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
 ms.openlocfilehash: dd625dba0e125ccf993af524a0ab0c0cc66555fb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57834221"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60873172"
 ---
 # <a name="tutorial-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>Samouczek: Wysyłanie powiadomień wypychanych do urządzeń określonych dla systemu iOS przy użyciu usługi Azure Notification Hubs
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Ten samouczek pokazuje, jak rozgłaszać powiadomienia o najważniejszych informacjach do aplikacji iOS przy użyciu usługi Azure Notification Hubs. Po zakończeniu będą mogli zarejestrować informacje na temat przełomowych kategorii wiadomości, który Cię interesuje i otrzymywać tylko powiadomienia wypychane dla tych kategorii. Ten scenariusz jest typowym wzorcem dla wielu aplikacji wymagających wysyłania powiadomień do grup użytkowników, które wcześniej zadeklarowały zainteresowanie nimi, na przykład czytników danych RSS, aplikacji dla fanów muzyki itp.
 

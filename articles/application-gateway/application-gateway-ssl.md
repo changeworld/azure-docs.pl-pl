@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: victorh
 ms.openlocfilehash: 89a88d79b6b93a233dbd4f335d0eb449e49d5289
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001778"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122204"
 ---
 # <a name="configure-an-application-gateway-for-ssl-offload-by-using-the-classic-deployment-model"></a>Konfigurowanie bramy aplikacji na potrzeby odciążania protokołu SSL przy użyciu klasycznego modelu wdrażania
 
@@ -99,17 +99,17 @@ Konfiguracji usługi application gateway składa się z wielu wartości. Wartoś
 
 Potrzebne wartości:
 
-* **Pula serwerów zaplecza**: Lista adresów IP serwerów zaplecza. Adresy IP na liście powinny należeć do podsieci sieci wirtualnej lub być publiczny adres IP lub adresów VIP.
+* **Pula serwerów zaplecza**: lista adresów IP serwerów zaplecza. Adresy IP na liście powinny należeć do podsieci sieci wirtualnej lub być publiczny adres IP lub adresów VIP.
 * **Ustawienia puli serwerów zaplecza**: każda pula ma ustawienia, takie jak port, protokół i koligacja oparta na plikach cookie. Te ustawienia są powiązane z pulą i są stosowane do wszystkich serwerów w tej puli.
-* **Port frontonu**: ten port jest port publiczny, który jest otwierany w bramie aplikacji. Ruch trafia do tego portu, a następnie jest przekierowywany do jednego z serwerów zaplecza.
-* **Odbiornik**: odbiornik ma port frontonu, protokół (Http lub Https; te wartości jest rozróżniana wielkość liter) oraz nazwę certyfikatu SSL (w przypadku konfigurowania odciążania protokołu SSL).
-* **Reguła**: reguła wiąże odbiornik z puli serwerów zaplecza i umożliwia zdefiniowanie której puli serwerów zaplecza do kierowania ruchu do kiedy trafienia do określonego odbiornika. Obecnie jest obsługiwana tylko reguła *podstawowa*. Reguła *podstawowa* to dystrybucja obciążenia z działaniem okrężnym.
+* **Port frontonu**: port publiczny, który jest otwierany w bramie aplikacji. Ruch trafia do tego portu, a następnie jest przekierowywany do jednego z serwerów zaplecza.
+* **Odbiornik**: Odbiornik ma port frontonu, protokół (Http lub Https; te wartości jest rozróżniana wielkość liter) oraz nazwę certyfikatu SSL (w przypadku konfigurowania odciążania protokołu SSL).
+* **Reguła**: Reguła wiąże odbiornik z puli serwerów zaplecza i umożliwia zdefiniowanie której puli serwerów zaplecza do kierowania ruchu do kiedy trafienia do określonego odbiornika. Obecnie jest obsługiwana tylko reguła *podstawowa*. Reguła *podstawowa* to dystrybucja obciążenia z działaniem okrężnym.
 
 **Dodatkowe uwagi dotyczące konfiguracji**
 
 W przypadku konfiguracji certyfikatów SSL protokół w polu **HttpListener** należy zmienić na **Https** (z uwzględnieniem wielkości liter). Dodaj **SslCert** elementu **HttpListener** z wartością ustawioną na tej samej nazwie, które są używane w [certyfikaty SSL przekazywanie](#upload-ssl-certificates) sekcji. Port frontonu należy zaktualizować do **443**.
 
-**Aby włączyć koligację opartą na plikach cookie**: można skonfigurować bramę aplikacji, aby upewnić się, że żądania z sesji klienta było zawsze kierowane do tej samej maszyny Wirtualnej w kolektywie serwerów sieci web. Aby to osiągnąć, Wstaw plik cookie sesji, który umożliwi bramie prawidłowe kierowanie ruchu. Aby włączyć koligację opartą na plikach cookie, ustaw element **CookieBasedAffinity** na wartość **Enabled** w elemencie **BackendHttpSettings**.
+**Aby włączyć koligację opartą na plikach cookie**: Można skonfigurować bramę aplikacji, aby upewnić się, że żądania z sesji klienta było zawsze kierowane do tej samej maszyny Wirtualnej w kolektywie serwerów sieci web. Aby to osiągnąć, Wstaw plik cookie sesji, który umożliwi bramie prawidłowe kierowanie ruchu. Aby włączyć koligację opartą na plikach cookie, ustaw element **CookieBasedAffinity** na wartość **Enabled** w elemencie **BackendHttpSettings**.
 
 Można skonstruować konfigurację, tworząc obiekt konfiguracji, albo za pomocą pliku XML konfiguracji.
 Do utworzenia konfiguracji za pomocą pliku XML konfiguracji, wprowadź poniższego przykładu:

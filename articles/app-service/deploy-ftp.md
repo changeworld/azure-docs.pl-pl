@@ -16,11 +16,11 @@ ms.date: 11/30/2018
 ms.author: cephalin;dariac
 ms.custom: seodec18
 ms.openlocfilehash: db8445ec2b3dd8bdefa661d7f186e720c6fada09
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57858881"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62130113"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Wdrażanie aplikacji w usłudze Azure App Service przy użyciu protokołu FTP/S
 
@@ -89,7 +89,7 @@ Dla protokołu FTP wdrożeniu przy użyciu [programu Azure PowerShell](/cli/azur
 ## <a name="troubleshoot-ftp-deployment"></a>Rozwiązywanie problemów z wdrożenia protokołu FTP
 
 - [Jak można rozwiązywać wdrożenia protokołu FTP?](#how-can-i-troubleshoot-ftp-deployment)
-- [Nie jestem w stanie FTP i Publikuj mój kod. Jak można rozwiązać ten problem?](#im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue)
+- [I'm not able to FTP and publish my code. Jak można rozwiązać ten problem?](#im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue)
 - [Jak można podłączyć do usługi FTP w usłudze Azure App Service za pośrednictwem tryb pasywny?](#how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode)
 
 ### <a name="how-can-i-troubleshoot-ftp-deployment"></a>Jak można rozwiązywać wdrożenia protokołu FTP?

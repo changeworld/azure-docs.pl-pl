@@ -16,15 +16,15 @@ ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: a33525e44b2e294b7ce85c7081864dbef0856588
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650857"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62130814"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Nawiązać połączenie z maszyną wirtualną programu SQL Server na platformie Azure
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 W tym temacie opisano, jak połączyć się z wystąpieniem programu SQL Server uruchomiony na maszynie wirtualnej platformy Azure. Obejmuje ona niektóre [scenariuszy ogólna łączność](#connection-scenarios) , a następnie oferuje [kroki w portalu, aby zmiana ustawienia łączności](#change). Jeśli potrzebujesz rozwiązać lub skonfigurować łączność poza portalu, zobacz [ręcznej konfiguracji](#manual) na końcu tego tematu. 
 

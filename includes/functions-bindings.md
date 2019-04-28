@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
 ms.openlocfilehash: 957009ec9833df2dd0f89c3745c7f3df5a3705b4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59520541"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60403796"
 ---
 W poniższej tabeli przedstawiono powiązania, które są obsługiwane przez dwie wersje główne środowiska uruchomieniowego usługi Azure Functions.
 
-| Typ | 1.x | 2.x<sup>1</sup> | Wyzwalacz | Dane wejściowe | Dane wyjściowe |
+| Type | 1.x | 2.x<sup>1</sup> | Wyzwalacz | Dane wejściowe | Dane wyjściowe |
 | ---- | :-: | :-: | :------: | :---: | :----: |
 | [Blob Storage](../articles/azure-functions/functions-bindings-storage-blob.md)          |✔|✔|✔|✔|✔|
 | [Cosmos DB](../articles/azure-functions/functions-bindings-documentdb.md)               |✔|✔|✔|✔|✔|

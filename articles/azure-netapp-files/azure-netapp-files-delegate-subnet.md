@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 03/25/2019
 ms.author: b-juche
-ms.openlocfilehash: 1cac267be026d0e472db9a7a321f5fff6ab3e917
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
-ms.translationtype: MT
+ms.openlocfilehash: fd8e380ad68b86b9ffd0f1e40efde8bdadfb19c5
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58434776"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63763308"
 ---
 # <a name="delegate-a-subnet-to-azure-netapp-files"></a>Delegowanie podsieci do usługi Azure NetApp Files 
 
@@ -30,7 +30,7 @@ Podsieć należy delegować do usługi Azure NetApp Files.   Podczas tworzenia w
 * W każdej sieci wirtualnej Azure Virtual Network można delegować tylko jedną podsieć do usługi Azure NetApp Files.
 * W delegowanej podsieci nie można wyznaczyć sieciowej grupy zabezpieczeń ani punktu końcowego usługi. Jeśli się to zrobi, delegowanie podsieci nie powiedzie się.
 * Dostęp do woluminu z globalnie równorzędnej sieci wirtualnej nie jest obecnie obsługiwane.
-* Tworzenie [zdefiniowanych przez użytkownika trasy niestandardowe](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#custom-routes) w podsieci maszyny Wirtualnej przy użyciu adresu prefiksu (docelowy) do podsieci delegować domenę do usługi Azure Files NetApp nie jest obsługiwane i ma wpływ na łączność maszyn wirtualnych.
+* Tworzenie [zdefiniowanych przez użytkownika trasy niestandardowe](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#custom-routes) w podsieci maszyny Wirtualnej przy użyciu adresu prefiksu (docelowy) do podsieci delegować domenę do usługi Azure Files NetApp nie jest obsługiwany. To będzie miało wpływ na łączność maszyn wirtualnych.
 
 ## <a name="steps"></a>Kroki 
 1.  Przejdź do bloku **Sieci wirtualne** w witrynie Azure Portal i wybierz sieć wirtualną, której chcesz użyć na potrzeby usługi Azure NetApp Files.    

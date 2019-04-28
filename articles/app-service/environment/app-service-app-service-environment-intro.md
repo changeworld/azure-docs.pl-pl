@@ -16,18 +16,18 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 2bb1a9c3922f435b6be78614aacff6e85bf475ff
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56454246"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62130742"
 ---
 # <a name="introduction-to-app-service-environment-v1"></a>Wprowadzenie do aplikacji App Service Environment w wersji 1
 
 > [!NOTE]
 > Ten artykuł dotyczy środowiska App Service Environment w wersji 1.  Istnieje nowsza wersja usługi App Service Environment jest łatwiejszy w obsłudze, która działa na bardziej zaawansowanych infrastruktury. Aby dowiedzieć się więcej na temat nowej wersji rozpoczynać [wprowadzenie do usługi App Service Environment](intro.md).
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Środowisko usługi App Service jest [Premium] [ PremiumTier] opcji planu usługi [usługi Azure App Service](../overview.md) zapewniający pełni izolowane, dedykowane środowisko do bezpiecznego uruchamiania Aplikacje platformy Azure App Service w dużej skali, w tym aplikacji Web Apps, Mobile Apps oraz API Apps.  
 

@@ -1,5 +1,5 @@
 ---
-title: Pobieranie zmian zasobów
+title: Uzyskiwanie zmian zasobów
 description: Dowiedz się, jak można znaleźć, kiedy zasób został zmieniony i uzyskać listę właściwości, które zmieniane.
 services: resource-graph
 author: DCtheGeek
@@ -8,20 +8,20 @@ ms.date: 04/20/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: f4618e945db443e8d7cf9fdcc49e20e5a09ebd39
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 0ae85b45dfcd80056316ed5f2099aab4057d24c8
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60014099"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63760816"
 ---
-# <a name="get-resource-changes"></a>Pobieranie zmian zasobów
+# <a name="get-resource-changes"></a>Uzyskiwanie zmian zasobów
 
 Zasoby Pobierz zmienić za pomocą kurs limitem dziennego użycia, ponownej konfiguracji i nawet ponownego wdrażania.
 Zmiany mogą pochodzić z osoba lub zautomatyzowanego procesu. Większość zmian jest zgodne z projektem, ale czasami nie jest. Ostatnich 14 dni historii zmian wykres zasobów platformy Azure umożliwiają:
 
-- Dowiedz się, gdy wykryto zmiany właściwości usługi Azure Resource Manager.
-- Zobacz, co zmieniło jako część tego zdarzenia zmiany właściwości.
+- Znajdowanie wykrytych zmian we właściwości usługi Azure Resource Manager
+- Sprawdzanie, które właściwości uległy zmianie w wyniku zdarzenia zmiany
 
 Wykrywanie zmian i szczegóły są cenne dla następujących przykładowe scenariusze:
 
@@ -39,7 +39,7 @@ W tym artykule pokazano, jak do zebrania tych informacji za pośrednictwem zesta
 
 ## <a name="find-when-changes-were-detected"></a>Dowiedz się, gdy wykryto zmiany
 
-Pierwszym krokiem podczas wyświetlania, co się zmieniło w zasobie jest można znaleźć zdarzenia zmiany powiązanych z tym zasobem w przedziale czasu. W tym kroku odbywa się za pośrednictwem [resourceChanges](/rest/api/azureresourcegraph/resourceChanges) punktu końcowego REST.
+Pierwszym krokiem podczas wyświetlania, co się zmieniło w zasobie jest można znaleźć zdarzenia zmiany powiązanych z tym zasobem w przedziale czasu. W tym kroku odbywa się za pośrednictwem **resourceChanges** punktu końcowego REST.
 
 **ResourceChanges** punktu końcowego wymaga dwóch parametrów w treści żądania:
 
@@ -95,7 +95,7 @@ Zdarzenia zmiany wystąpił w pewnym momencie w tym oknie czasu.
 
 ## <a name="see-what-properties-changed"></a>Zobacz, co zmieniło właściwości
 
-Za pomocą **changeId** z **resourceChanges** punktu końcowego, [resourceChangeDetails](/rest/api/azureresourcegraph/resourceChangeDetails) punktu końcowego REST jest następnie używany do pobierania szczegółowych zdarzenia zmiany.
+Za pomocą **changeId** z **resourceChanges** punktu końcowego, **resourceChangeDetails** punktu końcowego REST jest następnie używany do pobierania szczegółowych zdarzenia zmiany.
 
 **ResourceChangeDetails** punktu końcowego wymaga dwóch parametrów w treści żądania:
 
@@ -108,7 +108,6 @@ Przykład treść żądania:
 {
     "resourceId": "/subscriptions/{subscriptionId}/resourceGroups/MyResourceGroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount",
     "changeId": "53dc0515-b86b-4bc2-979b-e4694ab4a556"
-    }
 }
 ```
 

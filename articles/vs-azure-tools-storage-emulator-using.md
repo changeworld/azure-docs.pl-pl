@@ -12,17 +12,17 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 8/17/2017
 ms.author: ghogen
-ms.openlocfilehash: 4b14fa44f484735f2a5efee4d631a6f48e6a8bf6
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: 39e2071a62d6a1f6ee050f862856815048e50430
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382640"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62128300"
 ---
 # <a name="configuring-and-using-the-storage-emulator-with-visual-studio"></a>Konfigurowanie i używanie emulatora usługi Storage z programem Visual Studio
 [!INCLUDE [storage-try-azure-tools](../includes/storage-try-azure-tools.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Środowisko projektowe zestawu Azure SDK zawiera w emulatorze magazynu, narzędzia, która symuluje obiektów Blob, kolejek i tabel magazynu usług dostępnych na platformie Azure na lokalnej maszynie do programowania. Jeśli jesteś tworzenia usługi w chmurze, która używa usług Azure storage lub pisania aplikacji zewnętrznej, która wywołuje usług magazynu, można przetestować kod lokalnie z emulatora magazynu. Azure Tools dla programu Microsoft Visual Studio zintegrować Zarządzanie emulatora magazynu w programie Visual Studio. Narzędzia systemu Azure zainicjować bazy danych emulatora magazynu przy pierwszym użyciu uruchamia usługę emulatora magazynu, podczas uruchamiania lub debugowania kodu w programie Visual Studio i zapewnia dostęp tylko do odczytu do danych emulatora magazynu za pomocą Eksploratora usługi Azure Storage.
 
 Aby uzyskać szczegółowe informacje w emulatorze magazynu, takie jak wymagania systemowe i konfiguracji niestandardowej, zobacz [korzystanie z emulatora magazynu Azure do tworzenia i testowania](storage/common/storage-use-emulator.md).

@@ -1,7 +1,6 @@
 ---
 title: Apache Storm zapisu do usługi Storage/Data Lake Storage — Azure HDInsight
 description: Dowiedz się, jak używać platformy Apache Storm można zapisać do magazynu zgodnego z systemem HDFS dla HDInsight.
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.openlocfilehash: 34056b3a562d3110569e05c5c50ae4d9dae2375a
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: MT
+ms.openlocfilehash: 4ba0c861674eb2308cf1f96c33d0792f3e1a0f94
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56868140"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62109467"
 ---
 # <a name="write-to-apache-hadoop-hdfs-from-apache-storm-on-hdinsight"></a>Zapisu Apache Hadoop HDFS z systemu Storm Apache na HDInsight
 

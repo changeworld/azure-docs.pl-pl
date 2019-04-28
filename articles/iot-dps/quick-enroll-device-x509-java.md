@@ -11,13 +11,13 @@ manager: timlt
 ms.devlang: java
 ms.custom: mvc
 ms.openlocfilehash: 3eec6628ca7dbc16e0cc01701620f1699ba8d368
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412775"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62126532"
 ---
-# <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>Przewodnik Szybki start: rejestrowanie urządzeń X.509 w usłudze Device Provisioning przy użyciu języka Java
+# <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>Szybki start: Rejestrowanie urządzeń X.509 w usłudze Device Provisioning przy użyciu języka Java
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
 
@@ -209,7 +209,7 @@ Jeśli planujesz eksplorować przykładową usługę Java, nie usuwaj zasobów u
 1. Zamknij okno _Generator certyfikatów X509_ na swojej maszynie.
 1. Przejdź do usługi Device Provisioning w witrynie Azure Portal, kliknij pozycję **Zarządzanie rejestracjami**, a następnie wybierz kartę **Grupy rejestracji**. Wybierz *NAZWĘ GRUPY* urządzeń X.509 zarejestrowanych w ramach tego przewodnika Szybki start i kliknij przycisk **Usuń** u góry bloku.  
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym przewodniku Szybki start zarejestrowano symulowaną grupę urządzeń X.509 w usłudze Device Provisioning. Aby uzyskać dokładne informacje na temat aprowizowania urządzeń, przejdź do samouczka poświęconego konfiguracji usługi Device Provisioning Service w witrynie Azure portal. 
 
 > [!div class="nextstepaction"]

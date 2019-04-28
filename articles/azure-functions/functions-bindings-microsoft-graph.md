@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: cshoe
 ms.openlocfilehash: f112bdf9eacf51852659ab49a5673b0c8bfb0e46
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57997550"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61438112"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Powiązania programu Microsoft Graph dla usługi Azure Functions
 
@@ -361,7 +361,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 
 To powiązanie wymaga następujących uprawnień usługi Azure AD:
 
-|Zasób|Uprawnienie|
+|Resource|Uprawnienie|
 |--------|--------|
 |Microsoft Graph|Odczytuj pliki użytkownika|
 
@@ -524,7 +524,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 
 To powiązanie wymaga następujących uprawnień usługi Azure AD:
 
-|Zasób|Uprawnienie|
+|Resource|Uprawnienie|
 |--------|--------|
 |Microsoft Graph|Miej pełny dostęp do plików użytkownika|
 
@@ -667,7 +667,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 
 To powiązanie wymaga następujących uprawnień usługi Azure AD:
 
-|Zasób|Uprawnienie|
+|Resource|Uprawnienie|
 |--------|--------|
 |Microsoft Graph|Odczytuj pliki użytkownika|
 
@@ -815,7 +815,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 
 To powiązanie wymaga następujących uprawnień usługi Azure AD:
 
-|Zasób|Uprawnienie|
+|Resource|Uprawnienie|
 |--------|--------|
 |Microsoft Graph|Miej pełny dostęp do plików użytkownika|
 
@@ -965,7 +965,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 
 To powiązanie wymaga następujących uprawnień usługi Azure AD:
 
-|Zasób|Uprawnienie|
+|Resource|Uprawnienie|
 |--------|--------|
 |Microsoft Graph|Wysyłaj pocztę jako użytkownik|
 

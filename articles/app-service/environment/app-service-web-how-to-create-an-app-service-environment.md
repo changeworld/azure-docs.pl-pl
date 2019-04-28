@@ -16,11 +16,11 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 9bc796c4d0d449f72dc3234bc2825554eafaf77f
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339896"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62128890"
 ---
 # <a name="how-to-create-an-app-service-environment-v1"></a>Tworzenie usługi App Service Environment w wersji 1 
 
@@ -28,7 +28,7 @@ ms.locfileid: "53339896"
 > Ten artykuł dotyczy środowiska App Service Environment w wersji 1. Istnieje nowsza wersja usługi App Service Environment jest łatwiejszy w obsłudze, która działa na bardziej zaawansowanych infrastruktury. Aby dowiedzieć się więcej na temat nowej wersji rozpoczynać [wprowadzenie do usługi App Service Environment](intro.md).
 > 
 
-### <a name="overview"></a>Przegląd
+### <a name="overview"></a>Omówienie
 App Service Environment (ASE) to opcja Premium usługi Azure App Service, która dostarcza możliwości rozszerzonej konfiguracji, która nie jest dostępna w sygnatury wielodostępu. Funkcja środowiska ASE zasadniczo wdraża w usłudze Azure App Service w sieci wirtualnej klienta. Aby uzyskać lepsze zrozumienie możliwości oferowane przez odczyt środowisk App Service Environment [co to jest środowisko usługi App Service] [ WhatisASE] dokumentacji.
 
 ### <a name="before-you-create-your-ase"></a>Przed przystąpieniem do tworzenia środowiska ASE

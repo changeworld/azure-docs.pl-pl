@@ -2,7 +2,6 @@
 title: Uruchom przykłady Apache Hadoop MapReduce w HDInsight — Azure
 description: Rozpocznij pracę w plikach jar zawarte w HDInsight przy użyciu przykładów technologii MapReduce. Łączenie z klastrem za pomocą protokołu SSH, a następnie uruchom przykładowe zadania za pomocą polecenia Hadoop.
 keywords: jar przykład hadoop, hadoop przykłady jar, przykłady technologii mapreduce usługi hadoop, przykłady technologii mapreduce
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -10,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 7ff91a4fdc4bf0118c231a1ac18ebb521530a980
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
-ms.translationtype: MT
+ms.openlocfilehash: 5fd2d27533d725102a4c334f1e8a1abed6cd78cc
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447002"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62121898"
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>Uruchamianie przykładów technologii MapReduce zawarte w HDInsight
 

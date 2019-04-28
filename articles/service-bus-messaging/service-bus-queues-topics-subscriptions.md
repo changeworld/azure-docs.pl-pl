@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: aschhab
 ms.openlocfilehash: 7cacabf4f171189810e943043b5513e20113d962
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54847035"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62125818"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>Kolejki, tematy i subskrypcje usługi Service Bus
 
@@ -55,7 +55,7 @@ W przeciwieństwie do kolejek, w których każdy komunikat jest przetwarzany prz
 
 Dla porównania funkcji wysyłania komunikatu kolejki mapuje bezpośrednio na temat i jego działanie odbieranie komunikatu mapuje do subskrypcji. Między innymi tej funkcji oznacza, że subskrypcje obsługiwać te same wzory opisanych powyżej w tej sekcji w odniesieniu do kolejki: konkurujących konsumentów, oddzielenia czasowego, wyrównywania i równoważenia obciążenia.
 
-### <a name="create-topics-and-subscriptions"></a>Tworzyć tematy i subskrypcje
+### <a name="create-topics-and-subscriptions"></a>Tworzenie tematów i subskrypcji
 
 Tworzenie tematu przypomina Tworzenie kolejki, zgodnie z opisem w poprzedniej sekcji. Następnie wysyłania komunikatów przy użyciu [TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient) klasy. Aby odbierać komunikaty, należy utworzyć co najmniej jedną subskrypcję tematu. Podobnie jak w kolejkach, komunikaty są odbierane z subskrypcji przy użyciu [SubscriptionClient](/dotnet/api/microsoft.azure.servicebus.subscriptionclient) zamiast obiektu [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) obiektu. Tworzenie subskrypcji klienta, przekazując nazwę tematu, Nazwa subskrypcji i (opcjonalnie) tryb odbierania jako parametry.
 

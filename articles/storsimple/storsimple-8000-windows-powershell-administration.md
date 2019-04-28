@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/09/2018
 ms.author: alkohli@microsoft.com
-ms.openlocfilehash: e6053ef9b5e1fc113e3bd3057d627347f285cd99
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: 564c121aa90746498a94022fd0fb8d8529142c91
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58003123"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62128587"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Użyj programu Windows PowerShell dla usługi StorSimple do administrowania urządzeniem
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Windows PowerShell dla magazynu StorSimple udostępnia interfejs wiersza polecenia używanej do zarządzania urządzeniem, Microsoft Azure StorSimple. Jak sugeruje nazwa, jest oparte na programie Windows PowerShell, interfejsu wiersza polecenia, która jest wbudowana w ograniczonego obszaru działania. Z punktu widzenia użytkownika w wierszu polecenia ograniczonego obszaru działania zostanie wyświetlony jako ograniczona wersja programu Windows PowerShell. Przy zachowaniu niektórych podstawowych funkcji programu Windows PowerShell, ten interfejs ma dodatkowe dedykowanych poleceń cmdlet, które są przeznaczone dla zarządzania urządzeniem Microsoft Azure StorSimple.
 
@@ -159,7 +159,7 @@ W poniższej tabeli przedstawiono podsumowanie typowych zadań zarządzania i z�
 
 W programie Windows PowerShell dla usługi StorSimple pomocy polecenia cmdlet jest dostępna. Online, aktualnych wersji Pomocy jest również dostępna, którego można użyć, aby zaktualizować pomoc w Twoim systemie.
 
-Uzyskiwanie pomocy w ten interfejs jest podobny, jak w programie Windows PowerShell, a większość poleceń cmdlet związanych będą działać. Pomoc dla Windows PowerShell online można znaleźć w bibliotece TechNet: [Obsługa skryptów w programie Windows PowerShell](https://go.microsoft.com/fwlink/?LinkID=108518).
+Uzyskiwanie pomocy w ten interfejs jest podobny, jak w programie Windows PowerShell, a większość poleceń cmdlet związanych będą działać. Pomoc dla Windows PowerShell można znaleźć w tryb online: [Microsoft.PowerShell.Core](/powershell/module/Microsoft.PowerShell.Core/).
 
 Poniżej znajduje się krótki opis typów pomocy dla tego interfejsu programu Windows PowerShell, w tym jak dokonać aktualizacji w Pomocy.
 

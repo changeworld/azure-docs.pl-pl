@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 6f76eea365311cd6c10dd39054187bf3a07bd595
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
-ms.translationtype: MT
+ms.openlocfilehash: d4b6c8289ae7c22521fc433c928f2b25a56c87ef
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57568995"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62130215"
 ---
 # <a name="geofencing-geojson-data"></a>Geofencing GeoJSON danych
 
-Usługi Azure Maps [UZYSKAĆ wirtualnego ogrodzenia](https://docs.microsoft.com/rest/api/maps/spatial/getgeofencepreview) i [WPIS w wirtualnym ogrodzeniu](https://docs.microsoft.com/rest/api/maps/spatial/postgeofencepreview) interfejsy API umożliwiają pobieranie odległości współrzędnych względem podanego wirtualnego ogrodzenia lub zbiór ogrodzenia. Ten artykuł szczegółowo opisuje sposób przygotowania danych wirtualnego ogrodzenia, którego można UZYSKAĆ mapy platformy Azure i interfejsu API wpisu.
+Usługi Azure Maps [UZYSKAĆ wirtualnego ogrodzenia](/rest/api/maps/spatial/getgeofence) i [WPIS w wirtualnym ogrodzeniu](/rest/api/maps/spatial/postgeofence) interfejsy API umożliwiają pobieranie odległości współrzędnych względem podanego wirtualnego ogrodzenia lub zbiór ogrodzenia. Ten artykuł szczegółowo opisuje sposób przygotowania danych wirtualnego ogrodzenia, którego można UZYSKAĆ mapy platformy Azure i interfejsu API wpisu.
 
 Dane dla wirtualnego ogrodzenia lub zestawu wirtualne ogrodzenia są reprezentowane przez `Feature` obiektu i `FeatureCollection` obiektu `GeoJSON` formatu, który jest zdefiniowany w [rfc7946](https://tools.ietf.org/html/rfc7946). Oprócz to:
 

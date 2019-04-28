@@ -10,11 +10,11 @@ author: wmengmsft
 ms.author: wmeng
 ms.reviewer: sngun
 ms.openlocfilehash: 3603455674485a505a7dbc969554a881947940ae
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036260"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62130538"
 ---
 # <a name="how-to-use-azure-table-storage-and-the-azure-cosmos-db-table-api-with-ruby"></a>Jak korzystać z usługi Azure Table Storage i interfejsu Table API usługi Azure Cosmos DB przy użyciu języka Ruby
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -166,7 +166,7 @@ Aby usunąć tabelę, użyj metody **delete_table()** i przekaż nazwę tabeli, 
 azure_table_service.delete_table("testtable")
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) jest bezpłatną aplikacją autonomiczną oferowaną przez firmę Microsoft, która umożliwia wizualną pracę z danymi w usłudze Azure Storage w systemach Windows, macOS i Linux.
 * [Centrum deweloperów języka Ruby](https://azure.microsoft.com/develop/ruby/)

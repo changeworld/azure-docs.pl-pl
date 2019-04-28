@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 9a243dd236a8c499602a9070a7dd61e69541d58d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 7684ae6b4ddb6320efc62ef6f9963bef1b9a66fa
+ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59256825"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62732371"
 ---
 # <a name="advanced-resource-graph-queries"></a>Zaawansowane zapytania usługi Resource Graph
 
@@ -22,7 +22,7 @@ Pierwszym krokiem do zrozumienia zapytań usługi Azure Resource Graph jest pods
 Omówimy następujące zaawansowane zapytania:
 
 > [!div class="checklist"]
-> - [Pobieranie pojemności i rozmiaru zestawu skalowania maszyn wirtualnych](#vmss-capacity)
+> - [Uzyskaj pojemność zestawu skalowania maszyn wirtualnych i rozmiar](#vmss-capacity)
 > - [Wyświetlanie listy wszystkich nazw tagów](#list-all-tags)
 > - [Wyświetlanie maszyn wirtualnych dopasowanych przez wyrażenie regularne](#vm-regex)
 
@@ -38,7 +38,7 @@ Interfejs wiersza polecenia platformy Azure (za pośrednictwem rozszerzenia) i p
 
 To zapytanie szuka zasobów zestawu skalowania maszyn wirtualnych i pobiera różne szczegółowe informacje, takie jak rozmiar maszyny wirtualnej i pojemność zestawu skalowania. To zapytanie używa funkcji `toint()`, aby rzutować pojemność na liczbę, co pozwala na sortowanie. Na koniec następuje zmiana nazw kolumn na właściwości o niestandardowej nazwie.
 
-```Query
+```kusto
 where type=~ 'microsoft.compute/virtualmachinescalesets'
 | where name contains 'contoso'
 | project subscriptionId, name, location, resourceGroup, Capacity = toint(sku.capacity), Tier = sku.name
@@ -57,7 +57,7 @@ Search-AzGraph -Query "where type=~ 'microsoft.compute/virtualmachinescalesets' 
 
 To zapytanie rozpoczyna się od tagu i tworzy obiekt JSON zawierający listę wszystkich unikatowych nazw tagów i odpowiadających im typów.
 
-```Query
+```kusto
 project tags
 | summarize buildschema(tags)
 ```
@@ -86,7 +86,7 @@ To zapytanie szuka maszyn wirtualnych, które odpowiadają [wyrażeniu regularne
 
 Po dopasowaniu według nazwy zapytanie rzutuje nazwę i porządkuje rosnąco według nazwy.
 
-```Query
+```kusto
 where type =~ 'microsoft.compute/virtualmachines' and name matches regex @'^Contoso(.*)[0-9]+$'
 | project name
 | order by name asc

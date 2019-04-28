@@ -2,18 +2,19 @@
 title: Plik dyrektywy include
 description: Plik dyrektywy include
 services: vpn-gateway
-author: cherylmc
+author: WenJason
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 02/01/2019
-ms.author: cherylmc
+origin.date: 02/01/2019
+ms.date: 03/04/2019
+ms.author: v-jay
 ms.custom: include file
 ms.openlocfilehash: 820a6a4da9f5c466e694f247d09393474d8464ee
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56418290"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60407771"
 ---
 Z maszyną wirtualną, która jest wdrażana w sieci wirtualnej, można się połączyć, tworząc połączenie pulpitu zdalnego z tą maszyną. Najlepszym sposobem na zweryfikowanie, czy można połączyć się z maszyną wirtualną, jest połączenie się z nią za pomocą jej prywatnego adresu IP, a nie nazwy komputera. W ten sposób można przetestować możliwość połączenia się, a nie poprawność skonfigurowania rozpoznawania nazw.
 
@@ -23,7 +24,7 @@ Z maszyną wirtualną, która jest wdrażana w sieci wirtualnej, można się po�
 
    - Program PowerShell — skorzystaj z przykładu, aby wyświetlić listę maszyn wirtualnych i prywatnych adresów IP z grup zasobów. Przed użyciem tego przykładu nie trzeba go modyfikować.
 
-     ```azurepowershell-interactive
+     ```azurepowershell
      $VMs = Get-AzVM
      $Nics = Get-AzNetworkInterface | Where VirtualMachine -ne $null
 

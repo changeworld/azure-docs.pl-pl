@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
 ms.openlocfilehash: 98718709038d7fd753e5eb3d45c130085c5accd9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58099056"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60600189"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Instalowanie serwera głównego elementu docelowego systemu Linux do powrotu po awarii
 Po przełączeniu w tryb failover maszyn wirtualnych na platformie Azure możesz można wykonać powrotu po awarii maszyn wirtualnych do lokacji lokalnej. Do powrotu po awarii, należy ponownie włączyć ochronę maszyny wirtualnej z platformy Azure do lokacji lokalnej. Ten proces wymaga lokalny główny serwer docelowy serwer do odbierania ruchu. 
@@ -24,7 +24,7 @@ Jeśli chronione maszyny wirtualnej jest to maszyna wirtualna Windows, musisz Wi
 > Począwszy od wersji 9.10.0 główny serwer docelowy, najnowszy główny serwer docelowy można zainstalować tylko na serwerze z systemem Ubuntu 16.04. Nowe instalacje nie są dozwolone na serwerach CentOS6.6. Jednak można kontynuować uaktualniania serwerów docelowych starego głównego przy użyciu 9.10.0 wersji.
 > Główny serwer docelowy na LVM nie jest obsługiwane.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Ten artykuł zawiera instrukcje dotyczące sposobu instalowania główny element docelowy systemu Linux.
 
 Opublikuj komentarze lub pytania, na końcu tego artykułu lub na [Forum usług odzyskiwania Azure](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).

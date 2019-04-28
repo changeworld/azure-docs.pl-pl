@@ -16,13 +16,13 @@ ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
 ms.openlocfilehash: bddc83d55c8909412f7f935a4324a6f316a82cd7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238169"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62129557"
 ---
-# <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>Konfigurowanie zawsze włączonych grup dostępności automatycznie w usłudze Azure Virtual Machines: Resource Manager
+# <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>Skonfiguruj w usłudze Azure Virtual Machines zawsze włączonych grup dostępności automatycznie: Resource Manager
 
 W tym samouczku dowiesz się, jak utworzyć grupy dostępności programu SQL Server, która używa maszyn wirtualnych usługi Azure Resource Manager. Samouczek używa bloków w witrynie Azure, aby skonfigurować szablon. Można przejrzeć ustawienia domyślne, wpisz wymagane ustawienia i Aktualizuj bloków w witrynie portal, jak opisano w tym samouczku.
 

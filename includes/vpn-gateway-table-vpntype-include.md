@@ -2,36 +2,37 @@
 title: Plik dyrektywy include
 description: Plik dyrektywy include
 services: vpn-gateway
-author: cherylmc
+author: WenJason
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
-ms.author: cherylmc
+origin.date: 03/21/2018
+ms.date: 12/24/2018
+ms.author: v-jay
 ms.custom: include file
-ms.openlocfilehash: 009c29715747292b11e32c14c07ae933edd0d02a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1bd59cf64d74441108107db56099245905c3ad7b
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30198013"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62125274"
 ---
 #### <a name="vpn-type---resource-manager-deployment-model"></a>Typ sieci VPN — modelu wdrażania usługi Resource Manager
 |  | **RouteBased** | **PolicyBased** |
 | --- | --- | --- |
-| **Site-to-Site** |Obsługiwane |Obsługiwane |
+| **Lokacja-lokacja** |Obsługiwane |Obsługiwane |
 | **VNet-to-VNet** |Obsługiwane |Nieobsługiwane |
 | **Multi-Site** |Obsługiwane |Nieobsługiwane |
 | **S2S i ExpressRoute współistnieją** |Obsługiwane |Nieobsługiwane |
-| **Point-to-Site** |Obsługiwane |Nieobsługiwane |
-| **Klasycznego do Menedżera zasobów** |Obsługiwane |Nieobsługiwane |
+| **Punkt-lokacja** |Obsługiwane |Nieobsługiwane |
+| **Klasycznego do usługi Resource Manager** |Obsługiwane |Nieobsługiwane |
 
-#### <a name="vpn-type---classic-deployment-model"></a>Typ sieci VPN — klasycznego modelu wdrażania
+#### <a name="vpn-type---classic-deployment-model"></a>Typ sieci VPN — Klasyczny model wdrażania
 |  | **Dynamic** | **Statyczne** |
 | --- | --- | --- |
-| **Site-to-Site** |Obsługiwane |Obsługiwane |
+| **Lokacja-lokacja** |Obsługiwane |Obsługiwane |
 | **VNet-to-VNet** |Obsługiwane |Nieobsługiwane |
 | **Multi-Site** |Obsługiwane |Nieobsługiwane |
 | **S2S i ExpressRoute współistnieją** |Obsługiwane |Nieobsługiwane |
-| **Point-to-Site** |Obsługiwane |Nieobsługiwane |
-| **Klasycznego do Menedżera zasobów** |Obsługiwane |Nieobsługiwane |
+| **Punkt-lokacja** |Obsługiwane |Nieobsługiwane |
+| **Klasycznego do usługi Resource Manager** |Obsługiwane |Nieobsługiwane |
 

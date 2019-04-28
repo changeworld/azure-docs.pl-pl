@@ -16,11 +16,11 @@ ms.date: 08/24/2018
 ms.author: cephalin;cfowler
 ms.custom: seodec18
 ms.openlocfilehash: 48df416002a2c89e0172e82278f6154c6a6da836
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53630023"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62129673"
 ---
 # <a name="create-a-php-web-app-in-azure"></a>Tworzenie aplikacji internetowej w języku PHP na platformie Azure
 
@@ -185,7 +185,7 @@ Po zakończeniu wdrożenia wróć do okna przeglądarki otwartego w kroku **prze
 
 Przejdź do witryny <a href="https://portal.azure.com" target="_blank">Azure Portal</a>, aby zarządzać utworzoną aplikacją internetową.
 
-W menu po lewej stronie kliknij pozycję **App Services**, a następnie kliknij nazwę swojej aplikacji na platformie Azure.
+W menu po lewej stronie kliknij pozycję **App Services**, a następnie kliknij nazwę swojej aplikacji platformy Azure.
 
 ![Nawigacja w portalu do aplikacji platformy Azure](./media/app-service-web-get-started-php/php-docs-hello-world-app-service-list.png)
 
@@ -197,7 +197,7 @@ Menu po lewej stronie zawiera różne opcje służące do konfigurowania aplikac
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Środowisko PHP z bazą danych MySQL](app-service-web-tutorial-php-mysql.md)

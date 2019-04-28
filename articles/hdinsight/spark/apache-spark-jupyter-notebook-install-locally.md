@@ -1,7 +1,6 @@
 ---
 title: Instalacja oprogramowania Jupyter lokalnie i łączenie z platformą Spark w usłudze Azure HDInsight
 description: Dowiedz się, jak zainstalować notesu programu Jupyter lokalnie na komputerze i podłącz go do klastra Apache Spark.
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.author: hrasheed
-ms.openlocfilehash: 7b20f0ec4669b485f87d050fcf597244fb898c85
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: 5e9cd4c2a14f94c39c7058f45bf727df8198c053
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58091260"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62124241"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Instalacja notesu programu Jupyter na komputerze i nawiązywanie z platformy Apache Spark w HDInsight
 

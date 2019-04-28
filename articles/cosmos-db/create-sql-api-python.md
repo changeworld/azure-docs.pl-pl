@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: sngun
 ms.openlocfilehash: b257c1dbbed225bee9adfdb427bd036f0230ea47
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565065"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62127518"
 ---
 # <a name="azure-cosmos-db-build-a-python-application-using-azure-cosmos-db-sql-api-account"></a>Usługa Azure Cosmos DB Tworzenie aplikacji w języku Python przy użyciu konta interfejsu API SQL usługi Azure Cosmos DB
 

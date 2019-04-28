@@ -16,14 +16,14 @@ ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: aea51234d26e5dbaef836419c2a13a12f8083e6f
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315863"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62130708"
 ---
 # <a name="connect-securely-to-back-end-resources-from-an-app-service-environment"></a>Bezpieczne łączenie kopii zakończenia zasoby ze środowiska usługi App Service
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Ponieważ środowisko App Service zawsze jest tworzony w **albo** z siecią wirtualną usługi Azure Resource Manager **lub** klasycznego modelu wdrażania [sieci wirtualnej] [ virtualnetwork], połączenia wychodzące z środowiska usługi App Service do innych zasobów wewnętrznej bazy danych może przepływać wyłącznie za pośrednictwem sieci wirtualnej.  Z ostatnich zmian wprowadzonych w czerwca 2016 roku za pomocą środowisk ASE można także wdrożyć w sieciach wirtualnych, które używają zakresów adresów publicznych lub przestrzeni adresowych RFC1918 (czyli prywatnych adresów).  
 
 Na przykład może być program SQL Server uruchomiony w klastrze maszyn wirtualnych przy użyciu portu 1433 zablokowany.  Punkt końcowy może być ACLd, aby zezwolić tylko na dostęp z innych zasobów w tej samej sieci wirtualnej.  

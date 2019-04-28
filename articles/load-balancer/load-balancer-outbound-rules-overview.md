@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2018
 ms.author: kumud
-ms.openlocfilehash: 7a0b679ef7a1a468c8a849b0a3fb9f744a392dd3
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
-ms.translationtype: MT
+ms.openlocfilehash: 52fafa7e9dd46b6c78af3776797bae48b22ea8df
+ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243607"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62736668"
 ---
 # <a name="load-balancer-outbound-rules"></a>Reguły ruchu wychodzącego modułu równoważenia obciążenia
 
@@ -84,7 +84,7 @@ Użyj następującego parametru przydzielić SNAT 10 000 portów dla maszyny Wir
 
           "allocatedOutboundPorts": 10000
 
-Każdy publiczny adres IP z frontonów wszystkie reguły ruchu wychodzącego przyczynia się do 51,200 portów tymczasowych do użycia jako SNAT porty.  Moduł równoważenia obciążenia przydziela SNAT porty wielokrotność liczby 8. Jeśli podasz wartość nie podzielna przez 8 operacja konfiguracji jest odrzucane.  Jeśli użytkownik spróbuje przydzielić więcej SNAT portów, niż jest dostępnych na podstawie liczby publicznych adresów IP, operacja konfiguracji zostanie odrzucone.  Na przykład jeśli przydzielisz 10 000 portów dla maszyny Wirtualnej i 7 maszyn wirtualnych w wewnętrznej bazie danych będzie udostępnianie jednego publicznego adresu IP puli, konfiguracja zostanie odrzucone (7 x 10,0000 SNAT porty > 51,200 SNAT porty).  Możesz dodać więcej publiczne adresy IP do serwera sieci Web, reguły ruchu wychodzącego do scenariusza.
+Każdy publiczny adres IP z frontonów wszystkie reguły ruchu wychodzącego przyczynia się do 51,200 portów tymczasowych do użycia jako SNAT porty.  Moduł równoważenia obciążenia przydziela SNAT porty wielokrotność liczby 8. Jeśli podasz wartość nie podzielna przez 8 operacja konfiguracji jest odrzucane.  Jeśli użytkownik spróbuje przydzielić więcej SNAT portów, niż jest dostępnych na podstawie liczby publicznych adresów IP, operacja konfiguracji zostanie odrzucone.  Na przykład jeśli przydzielisz 10 000 portów dla maszyny Wirtualnej i 7 maszyn wirtualnych w wewnętrznej bazie danych będzie udostępnianie jednego publicznego adresu IP puli, konfiguracja zostanie odrzucone (7 x 10 000 SNAT porty > 51,200 SNAT porty).  Możesz dodać więcej publiczne adresy IP do serwera sieci Web, reguły ruchu wychodzącego do scenariusza.
 
 Można powrócić do [automatyczna alokacja portu SNAT oparte na rozmiar puli zaplecza](load-balancer-outbound-connections.md#preallocatedports) , określając 0 dla liczby portów.
 

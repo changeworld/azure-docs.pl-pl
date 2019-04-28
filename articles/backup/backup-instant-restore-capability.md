@@ -6,14 +6,14 @@ author: sogup
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 04/05/2019
+ms.date: 04/23/2019
 ms.author: sogup
-ms.openlocfilehash: 3aceffa719ef8938aa049f126231f8628822566b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c375eac0de3dd89986421f8c6628d0a13784a60d
+ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59794781"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62733877"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Uzyskaj ulepszone kopii zapasowej i przywracanie wydajności za pomocą funkcji Azure kopii zapasowej natychmiastowe Przywracanie
 
@@ -24,7 +24,7 @@ Nowy model dla przywracania błyskawiczne zapewnia następujące ulepszenia funk
 
 * Możliwość stosowania migawek wykonanych w ramach zadania tworzenia kopii zapasowej, który jest dostępny dla odzyskiwania bez oczekiwania na przesyłanie danych do magazynu, aby zakończyć. Zmniejsza to czas oczekiwania dla migawek skopiować do magazynu przed wyzwoleniem przywracania.
 * Skraca okresy i przywracania kopii zapasowych, zachowując lokalnie, migawki przez dwa dni domyślnie. Ta migawka przechowywania wartość domyślna to można skonfigurować dowolną wartość z zakresu od 1 do 5 dni.
-* Obsługa dysków o rozmiarach do 4 TB. Usługa Azure Backup nie obsługuje dysków rozłożonych. Zmiana rozmiaru dysku nie jest zalecane przez usługę Azure Backup.
+* Obsługa dysków o rozmiarach do 4 TB. Zmiana rozmiaru dysku nie jest zalecane przez usługę Azure Backup.
 * Obsługuje dyski SSD w warstwie standardowa wraz z dysków standardowych dysków Twardych i dysków SSD w warstwie Premium.
 *   Możliwość używania niezarządzanej maszyny Wirtualnej w oryginalnych kont magazynu (na dysku), podczas przywracania. Ta możliwość istnieje, nawet wtedy, gdy maszyna wirtualna ma dyski, które są dystrybuowane na kontach magazynu. Przyspiesza operacje przywracania dla różnych konfiguracji maszyny Wirtualnej.
 
@@ -47,15 +47,15 @@ Domyślnie migawki są przechowywane przez dwa dni. Ta funkcja umożliwia podcza
 * Migawki są przechowywane wraz z dysków, aby zwiększyć możliwości tworzenia punktu odzyskiwania i przyspieszyć operacje przywracania. W rezultacie zobaczysz koszty magazynowania, odpowiadające migawek wykonanych w tym okresie.
 * Przyrostowe migawki są przechowywane jako stronicowe obiekty BLOB. Wszyscy użytkownicy korzystają z dysków niezarządzanych są naliczane za migawek przechowywanych na jego koncie magazynu lokalnego. Ponieważ kolekcje punktów przywracania używana przez kopie zapasowe zarządzanych maszyn wirtualnych używa migawek obiektów blob na poziomie magazynu podstawowego, za dyski zarządzane zobaczysz koszty odpowiadający blob snapshot ceny i są przyrostowe.
 * Dla kont usługi premium storage miejsca przydzielonego do migawek wykonywanych liczby punktów natychmiastowe odzyskiwanie kierunku limit 10 TB.
-* Otrzymasz możliwość konfigurowania przechowywania migawki, w zależności od potrzeb przywracania. W zależności od wymagań można ustawić okres przechowywania migawek co najmniej jeden dzień w bloku zasad tworzenia kopii zapasowych, co zostało opisane poniżej. Może to pomóc Ci zaoszczędzić koszty przechowywania migawek, jeśli nie wykonasz często przywracania.
-* Jest to jedno uaktualnienie kierunkowe, po uaktualnieniu do natychmiastowe przywracanie, nie można wrócić.
+* Otrzymasz możliwość konfigurowania przechowywania migawki, w zależności od potrzeb przywracania. W zależności od wymagań można ustawić okres przechowywania migawek co najmniej jeden dzień w bloku zasad tworzenia kopii zapasowych, co zostało opisane poniżej. To pomoże Ci zaoszczędzić koszty przechowywania migawek, jeśli nie wykonasz często przywracania.
+* Jest jedno uaktualnienie kierunkowe, po uaktualnieniu do natychmiastowe przywracanie, nie można wrócić.
 
 >[!NOTE]
 >Z tym natychmiastowe Przywracanie uaktualnienia, czas trwania przechowywania migawek wszystkich klientów (**nowych i istniejących zarówno dołączona**) zostanie ustawiona na wartość domyślną w ciągu dwóch dni. Można jednak ustawić czas trwania, zgodnie z wymaganiami dowolną wartość z zakresu od 1 do 5 dni.
 
 ## <a name="cost-impact"></a>Wpływ na koszt
 
-Migawek przyrostowych znajdują się na koncie magazynu maszyny Wirtualnej, które są używane na potrzeby natychmiastowe odzyskiwanie. Migawek przyrostowych oznacza, że miejsce zajmowane przez migawki jest równy miejsce zajmowane przez strony, które są zapisywane po utworzeniu migawki. Opłaty są nadal dla za GB zajęte miejsce zajmowane przez migawki i opłaty za GB danych jest taka sama, jak wspomniano w [stronę z cennikiem](https://azure.microsoft.com/pricing/details/managed-disks/).
+Przyrostowe migawki są przechowywane na koncie magazynu maszyn wirtualnych, który służy do natychmiastowe odzyskiwanie. Migawek przyrostowych oznacza, że miejsce zajmowane przez migawki jest równy miejsce zajmowane przez strony, które są zapisywane po utworzeniu migawki. Opłaty są nadal dla za GB zajęte miejsce zajmowane przez migawki i opłaty za GB danych jest taka sama, jak wspomniano w [stronę z cennikiem](https://azure.microsoft.com/pricing/details/managed-disks/).
 
 >[!NOTE]
 > Migawka przechowywania zostanie usunięty z 5 dni dla zasad co tydzień.

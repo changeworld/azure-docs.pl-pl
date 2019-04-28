@@ -15,13 +15,13 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 6dffc7a24bb0c6b006d06a1018364f08abaaee41
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52267170"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62128672"
 ---
-# <a name="audit-history-page"></a>Strona Historia inspekcji
+# <a name="audit-history-page"></a>Strona historii inspekcji
 
 [ **Historia inspekcji** ](https://cloudpartner.azure.com/#history) strony Wyświetla listę wydawców zdarzeń dla wszystkich ofert z portalu marketplace.  Kolumny zawierają typ zdarzenia, Data i godzina wystąpienia, nazwa oferty, wydawcy i użytkownik, który zainicjował akcję.  Wyniki można uporządkowane według kolumny lub filtrowane wg określonego ciągu.  Ta strona umożliwia również użytkownikom na pobieranie pliku wartości rozdzielanych przecinkami (.csv) bieżącej listy inspekcji.
 

@@ -11,11 +11,11 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
 ms.openlocfilehash: 69ba0a882c0e52e7c0d063b8f77e7a0fe22526a1
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428781"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62126368"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>Wdrażanie i monitorowanie moduły usługi IoT Edge na dużą skalę przy użyciu witryny Azure portal
 
@@ -138,7 +138,7 @@ Moduł usługi IoT Edge można zainstalować z witryny Azure Marketplace lub wit
 
 1. Znajdź moduł i rozpocząć proces wdrażania.
 
-   * Azure Portal: Znajdź moduł i zaznacz **Utwórz**.
+   * Witryna Azure Portal: Znajdź moduł i zaznacz **Utwórz**.
 
    * Azure Marketplace:
 

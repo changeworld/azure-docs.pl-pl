@@ -4,20 +4,21 @@ titlesuffix: Azure Virtual Network
 description: Dowiedz się więcej na temat publicznych i prywatnych adresów IP na platformie Azure.
 services: virtual-network
 documentationcenter: na
-author: jimdial
+author: KumudD
+manager: twooley
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
-ms.author: jdial
-ms.openlocfilehash: 929c8808721140d5275cba4bcf3fbaa567f961e0
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
-ms.translationtype: MT
+ms.author: kumud
+ms.openlocfilehash: 69fd70fc45f734f8267db6d770d09b14f3a071f5
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652029"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62108148"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Typy adresów IP i metody alokacji na platformie Azure
 
@@ -78,6 +79,9 @@ Standardowe publiczne adresy IP jednostek SKU:
  
 > [!NOTE]
 > Próba obsługi komunikacji przychodzącej za pomocą standardowego zasobu SKU będzie kończyć się niepowodzeniem do momentu utworzenia i skojarzenia [sieciowej grupy zabezpieczeń](security-overview.md#network-security-groups), a następnie jawnego zezwolenia na żądany ruch przychodzący.
+
+> [!NOTE]
+> Tylko publiczne adresy IP z podstawowej jednostki SKU są dostępne w przypadku korzystania z [wystąpienia usługi metadanych IMDS](../virtual-machines/windows/instance-metadata-service.md). Standardowa jednostka SKU nie jest obsługiwane.
 
 ### <a name="allocation-method"></a>Metoda alokacji
 
@@ -180,7 +184,7 @@ W poniższej tabeli przedstawiono określone właściwości, za pomocą których
 | Moduł równoważenia obciążenia |Konfiguracja frontonu |Yes |Yes |
 | Brama aplikacji |Konfiguracja frontonu |Yes |Yes |
 
-## <a name="limits"></a>Limity
+## <a name="limits"></a>Limits
 Ograniczenia nakładane na adresowanie IP zostały wymienione w pełnym zestawieniu [ograniczeń dla sieci](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) na platformie Azure. Ograniczenia są podzielone według regionu i subskrypcji. [Kontaktując się z pomocą techniczną](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade), możesz zwiększyć domyślne limity do maksimum w zależności od potrzeb biznesowych.
 
 ## <a name="pricing"></a>Cennik

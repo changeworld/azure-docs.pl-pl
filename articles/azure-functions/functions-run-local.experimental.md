@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.openlocfilehash: 84c578fdbcfb555bde23d6a9e6f8258259cff8de
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59497104"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61035014"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Praca z usługą Azure Functions podstawowych narzędzi
 

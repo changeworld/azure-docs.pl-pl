@@ -2,18 +2,19 @@
 title: Plik dyrektywy include
 description: Plik dyrektywy include
 services: vpn-gateway
-author: cherylmc
+author: WenJason
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 12/11/2018
-ms.author: cherylmc
+origin.date: 12/11/2018
+ms.date: 12/24/2018
+ms.author: v-jay
 ms.custom: include file
 ms.openlocfilehash: 4c8e7e5272f180c482ca7fdd44302f49eb888b25
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323749"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60320235"
 ---
 Użyj certyfikatu głównego wygenerowanego za pomocą rozwiązania przedsiębiorstwa (zalecane) albo wygeneruj certyfikat z podpisem własnym. Po utworzeniu certyfikatu głównego wyeksportuj dane certyfikatu publicznego (nie klucz prywatny) jako plik cer X.509 z kodowaniem Base64. Następnie przekaż dane certyfikatu publicznego na serwer platformy Azure.
 

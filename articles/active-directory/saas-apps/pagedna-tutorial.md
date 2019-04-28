@@ -16,75 +16,75 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f01529af7725cded6e73c17b9c3f7b0b9b34dec
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 11cb309e6c49ed36247398909e5e1b7ad9f7bc42
+ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59287406"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62736430"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagedna"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą PageDNA
 
 W tym samouczku dowiesz się, jak zintegrować PageDNA w usłudze Azure Active Directory (Azure AD).
+
 Integrowanie PageDNA z usługą Azure AD zapewnia następujące korzyści:
 
-* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do PageDNA.
-* Aby umożliwić użytkownikom można automatycznie zalogowany do PageDNA (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
+* W usłudze Azure AD można kontrolować, kto ma dostęp do PageDNA.
+* Aby umożliwić użytkownikom automatyczne logowanie do PageDNA (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
+* Możesz zarządzać konta w jednej centralnej lokalizacji: witryna Azure portal.
 
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Aby uzyskać szczegółowe informacje na temat oprogramowania jako usługi (SaaS) integracji aplikacji z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby skonfigurować integrację usługi Azure AD za pomocą PageDNA, potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie ma środowiska usługi Azure AD, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/)
-* PageDNA logowanie jednokrotne włączone subskrypcji
+* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+* Subskrypcja PageDNA przy użyciu logowania jednokrotnego włączone.
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
+W ramach tego samouczka konfigurowania i testowania usługi Azure AD logowanie jednokrotne w środowisku testowym, a integracja PageDNA z usługą Azure AD.
 
-* Obsługuje PageDNA **SP** jednokrotne logowanie inicjowane przez
+PageDNA obsługuje następujące funkcje:
 
-* Obsługuje PageDNA **Just In Time** aprowizacji użytkowników
+* Zainicjowane przez Dostawcę logowanie jednokrotne (SSO).
 
-## <a name="adding-pagedna-from-the-gallery"></a>Dodawanie PageDNA z galerii
+* Inicjowanie obsługi użytkowników just in time.
 
-Aby skonfigurować integrację PageDNA w usłudze Azure AD, należy dodać PageDNA z galerii z listą zarządzanych aplikacji SaaS.
+## <a name="add-pagedna-from-the-azure-marketplace"></a>Dodaj PageDNA z witryny Azure Marketplace
 
-**Aby dodać PageDNA z galerii, wykonaj następujące czynności:**
+Aby skonfigurować integrację PageDNA w usłudze Azure AD, należy dodać PageDNA w portalu Azure Marketplace z listą zarządzanych aplikacji SaaS:
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com?azure-portal=true).
+1. W lewym okienku wybierz pozycję **Azure Active Directory**.
 
-    ![Przycisk Azure Active Directory](common/select-azuread.png)
+    ![Opcja usługi Azure Active Directory](common/select-azuread.png)
 
-2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
+1. Przejdź do pozycji **Aplikacje dla przedsiębiorstw** i wybierz pozycję **Wszystkie aplikacje**.
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+    ![Okienko Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+1. Aby dodać nową aplikację, wybierz **+ Nowa aplikacja** u góry okienka.
 
-    ![Przycisk Nowa aplikacja](common/add-new-app.png)
+    ![Nowa opcja aplikacji](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **PageDNA**, wybierz opcję **PageDNA** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+1. W polu wyszukiwania wprowadź **PageDNA**. W wynikach wyszukiwania wybierz **PageDNA**, a następnie wybierz pozycję **Dodaj** umożliwiające dodanie aplikacji.
 
     ![PageDNA na liście wyników](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą PageDNA w oparciu o użytkownika testu o nazwie **Britta Simon**.
-Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w PageDNA musi zostać ustanowione.
+W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą PageDNA w oparciu o nazwie użytkownika testowego **Britta Simon**. Dla logowania jednokrotnego do pracy należy ustanowić łącze między użytkownika usługi Azure AD i powiązanych użytkowników w PageDNA.
 
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą PageDNA, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
-2. **[Konfigurowanie PageDNA logowania jednokrotnego](#configure-pagedna-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
-5. **[Tworzenie użytkownika testowego PageDNA](#create-pagedna-test-user)**  — aby odpowiednikiem Britta Simon w PageDNA połączonego z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  aby umożliwić użytkownikom korzystać z tej funkcji.
+1. **[Konfigurowanie PageDNA logowania jednokrotnego](#configure-pagedna-single-sign-on)**  do konfigurowania pojedynczego ustawień logowania jednokrotnego na stronie aplikacji.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  do testowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  umożliwiające Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. **[Tworzenie użytkownika testowego PageDNA](#create-a-pagedna-test-user)**  tak, że istnieje użytkownik o nazwie Britta Simon w PageDNA, który jest połączony z użytkownikiem usługi Azure AD o nazwie Britta Simon.
+1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
@@ -94,124 +94,121 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z PageDNA, wykonaj na
 
 1. W [witryny Azure portal](https://portal.azure.com/)na **PageDNA** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
 
-    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
+    ![Konfigurowanie opcji rejestracji jednokrotnej](common/select-sso.png)
 
-2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
+1. W **wybierz jedną metodę logowania jednokrotnego** okienku wybierz **SAML/WS-Fed** trybu, aby włączyć logowanie jednokrotne.
 
     ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
 
-3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
+1. Na **Ustaw się logowania jednokrotnego przy użyciu protokołu SAML** okienku wybierz **Edytuj** (ikonę ołówka) aby otworzyć **podstawową konfigurację protokołu SAML** okienka.
 
     ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
+1. W **podstawową konfigurację protokołu SAML** okienko, wykonaj następujące czynności:
 
-    ![PageDNA domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/sp-identifier.png)
+    ![PageDNA domena i adresy URL pojedynczy informacje logowania jednokrotnego](common/sp-identifier.png)
 
-    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca:
+    1. W **adres URL logowania** wprowadź adres URL przy użyciu jednej z następujących wzorców:
 
-    ||
-    |--|
-    | `https://stores.pagedna.com/<your site>` |
-    | `https://<your domain>` |
-    | `https://<your domain>/<your site>` |
-    | `https://www.nationsprint.com/<your site>` |
-    | |
-    
-    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, korzystając z następującego wzorca:
+        ||
+        |--|
+        | `https://stores.pagedna.com/<your site>` |
+        | `https://<your domain>` |
+        | `https://<your domain>/<your site>` |
+        | `https://www.nationsprint.com/<your site>` |
+        | |
 
-    ||
-    |--|
-    | `https://stores.pagedna.com/<your site>/saml2ep.cgi` |
-    | `https://www.nationsprint.com/<your site>/saml2ep.cgi` |
-    | |
+    1. W **identyfikator jednostki** wprowadź adres URL przy użyciu jednej z następujących wzorców:
+
+        ||
+        |--|
+        | `https://stores.pagedna.com/<your site>/saml2ep.cgi` |
+        | `https://www.nationsprint.com/<your site>/saml2ep.cgi` |
+        | |
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta PageDNA](mailto:success@pagedna.com) do uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > To nie są rzeczywiste wartości. Zaktualizuj te wartości, używając rzeczywistego identyfikatora i adresu URL logowania. Aby uzyskać te wartości, skontaktuj się z pomocą [zespołem pomocy technicznej PageDNA](mailto:success@pagedna.com). Może również odnosić się do wzorców objętego **podstawową konfigurację protokołu SAML** okienko w witrynie Azure portal.
 
-5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (nieprzetworzony)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
+1. W **Ustaw się logowanie jednokrotne z SAML** okienko w **certyfikat podpisywania SAML** zaznacz **Pobierz** można pobrać **certyfikatu (Raw)** z podanych opcji, a następnie zapisz go na komputerze.
 
-    ![Link do pobierania certyfikatu](common/certificateraw.png)
+    ![Opcja (nieprzetworzone) Pobierz certyfikat](common/certificateraw.png)
 
-6. Na **Konfigurowanie PageDNA** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+1. W **Konfigurowanie PageDNA** sekcji, skopiuj adres URL lub adresy URL, które są potrzebne:
 
-    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
+   * **Adres URL logowania**
+   * **Identyfikator usługi Azure AD**
+   * **Adres URL wylogowania**
 
-    a. Adres URL logowania
+    ![Skopiuj adresy URL konfiguracji](common/copy-configuration-urls.png)
 
-    b. Identyfikator usługi Azure AD
+### <a name="configure-pagedna-single-sign-on"></a>Konfigurowanie PageDNA logowania jednokrotnego
 
-    c. Adres URL wylogowywania
+Aby skonfigurować logowanie jednokrotne na stronie PageDNA, wysyłanie pobranego certyfikatu (Raw) i odpowiednie adresy URL skopiowany z portalu Azure w celu [zespołem pomocy technicznej PageDNA](mailto:success@pagedna.com). Zespół PageDNA będzie upewnij się, że połączenia logowania jednokrotnego SAML jest prawidłowo po obu stronach.
 
-### <a name="configure-pagedna-single-sign-on"></a>Konfigurowanie PageDNA logowanie jednokrotne
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-Aby skonfigurować logowanie jednokrotne na **PageDNA** stronie, musisz wysłać pobrany **certyfikatu (Raw)** i odpowiednie skopiowany adresy URL z portalu Azure, aby [zespołem pomocy technicznej PageDNA](mailto:success@pagedna.com). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
+W tej sekcji utworzysz użytkownika testowego o nazwie Britta Simon w witrynie Azure Portal.
 
-### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
+1. W witrynie Azure Portal w okienku po lewej wybierz kolejno pozycje **Azure Active Directory**   > **Użytkownicy** > **Wszyscy użytkownicy**.
 
-W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
+    ![Użytkownicy i "All users" Opcje](common/users.png)
 
-1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
+1. W górnej części ekranu wybierz **+ nowy użytkownik**.
 
-    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
+    ![Nowa opcja użytkownika](common/new-user.png)
 
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+1. W **użytkownika** okienko, wykonaj następujące czynności:
 
-    ![Przycisk Nowy użytkownik](common/new-user.png)
+    ![W okienku użytkownika](common/user-properties.png)
 
-3. We właściwościach użytkownika wykonaj następujące kroki.
-
-    ![Okno dialogowe Użytkownik](common/user-properties.png)
-
-    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+    1. W polu **Nazwa** wpisz **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola `brittasimon@yourcompanydomain.extension`. Na przykład: BrittaSimon@contoso.com
+    1. W **nazwa_użytkownika** wprowadź **BrittaSimon\@\<domenatwojejfirmy >.\< Rozszerzenia >**. Na przykład **BrittaSimon\@contoso.com**.
 
-    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
+    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
 
-    d. Kliknij pozycję **Utwórz**.
+    1. Wybierz pozycję **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do PageDNA.
+W tej sekcji możesz włączyć Britta Simon korzystać z platformy Azure logowania jednokrotnego przez udostępnienie jej PageDNA.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **PageDNA**.
+1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje** > **PageDNA**.
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+    ![Okienko aplikacje przedsiębiorstwa](common/enterprise-applications.png)
 
-2. Na liście aplikacji wybierz **PageDNA**.
+1. Na liście aplikacji wybierz **PageDNA**.
 
-    ![Link PageDNA na liście aplikacji](common/all-applications.png)
+    ![PageDNA na liście aplikacji](common/all-applications.png)
 
-3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
+1. W okienku po lewej stronie w obszarze **ZARZĄDZAJ**, wybierz opcję **użytkowników i grup**.
 
-    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
+    ![Opcji "Użytkownicy i grupy"](common/users-groups-blade.png)
 
-4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
+1. Wybierz **+ Dodaj użytkownika**, a następnie wybierz pozycję **użytkowników i grup** w **Dodaj przydziału** okienka.
 
     ![Okienko Dodawanie przypisania](common/add-assign-user.png)
 
-5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+1. W **użytkowników i grup** okienku wybierz **Britta Simon** w **użytkowników** , a następnie wybierz **wybierz** w dolnej części okienka.
 
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+1. Jeśli oczekujesz wartość roli dla asercji SAML, następnie w **wybierz rolę** okienku, wybierz odpowiednią rolę dla użytkownika z listy. W dolnej części okienka wybierz **wybierz**.
 
-7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+1. W **Dodaj przydziału** okienku wybierz **przypisać**.
 
-### <a name="create-pagedna-test-user"></a>Tworzenie użytkownika testowego PageDNA
+### <a name="create-a-pagedna-test-user"></a>Tworzenie użytkownika testowego PageDNA
 
-W tej sekcji użytkownika o nazwie Britta Simon jest tworzony w PageDNA. PageDNA obsługuje aprowizacji użytkowników w czasie, który jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik jeszcze nie istnieje w PageDNA, nowy katalog jest tworzony po uwierzytelnieniu.
+Użytkownik o nazwie Britta Simon został utworzony w PageDNA. Nie trzeba podejmować żadnych działań do utworzenia tego użytkownika. PageDNA obsługuje aprowizacji użytkowników w czasie, który jest domyślnie włączona. Jeśli jeszcze nie istnieje użytkownik o nazwie Britta Simon w PageDNA, nowy katalog jest tworzony po uwierzytelnieniu.
 
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji możesz przetestować konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu portalu Moje aplikacje.
 
-Po kliknięciu kafelka PageDNA w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze PageDNA, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po wybraniu **PageDNA** w portalu Moje aplikacje powinny być automatycznie zarejestrowaniu w usłudze PageDNA subskrypcji, dla którego możesz skonfigurować logowanie jednokrotne. Aby uzyskać więcej informacji na temat portalu Moje aplikacje, zobacz [dostępu i użycia aplikacji w portalu Moje aplikacje](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+* [Lista samouczków dotyczących integrowania aplikacji SaaS przy użyciu usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+* [Single sign-on to applications in Azure Active Directory (Logowanie jednokrotne do aplikacji w usłudze Azure Active Directory)](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+* [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

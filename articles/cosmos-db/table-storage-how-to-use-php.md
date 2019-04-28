@@ -9,17 +9,17 @@ ms.devlang: php
 ms.topic: sample
 ms.date: 04/05/2018
 ms.openlocfilehash: aac6755ed90c795b8fff09d9ffde33878ad21a32
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58111501"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62130504"
 ---
 # <a name="how-to-use-azure-storage-table-service-or-the-azure-cosmos-db-table-api-from-php"></a>Jak korzystać z usługi Azure Table Storage lub interfejsu API tabel usługi Azure Cosmos DB przy użyciu języka PHP
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 W tym przewodniku przedstawiono sposób wykonywania typowych zadań przy użyciu usługi Azure Storage Table oraz interfejsu API tabel usługi Azure Cosmos DB. Przykłady są napisane w języku PHP i korzystają z [biblioteki klienta usługi Azure Table Storage dla języka PHP][download]. Przedstawione scenariusze obejmują **tworzenie i usuwanie tabel**, **wstawianie i usuwanie jednostek w tabeli oraz wykonywanie zapytań dotyczących jednostek**. Aby uzyskać więcej informacji na temat usługi Azure Table Storage, zobacz sekcję [Następne kroki](#next-steps).
 
 

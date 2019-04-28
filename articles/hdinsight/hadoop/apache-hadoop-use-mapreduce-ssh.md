@@ -2,19 +2,27 @@
 title: MapReduce i ustawieniami SSH połączenia z usługą Apache Hadoop w HDInsight — Azure
 description: Dowiedz się, jak uruchamiać zadania MapReduce, przy użyciu technologii Apache Hadoop w HDInsight za pomocą protokołu SSH.
 services: hdinsight
-author: hrasheed-msft
-ms.reviewer: jasonh
+documentationcenter: ''
+author: Blackmist
+manager: cgronlunb
+editor: cgronlun
+tags: azure-portal
+ms.assetid: 844678ba-1e1f-4fda-b9ef-34df4035d547
 ms.service: hdinsight
 ms.custom: hdinsightactive
+ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/10/2018
-ms.author: hrasheed
-ms.openlocfilehash: bce79aed49b94071b4e83524de2d599fca182256
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
-ms.translationtype: MT
+ms.tgt_pltfrm: na
+ms.workload: big-data
+origin.date: 04/10/2018
+ms.date: 01/14/2019
+ms.author: v-yiso
+ms.openlocfilehash: 3448a5e89f6930a5bdcb7d0d77b92576e58fc90b
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438575"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62129386"
 ---
 # <a name="use-mapreduce-with-apache-hadoop-on-hdinsight-with-ssh"></a>Korzystanie z technologii MapReduce z platformą Apache Hadoop w HDInsight przy użyciu protokołu SSH
 
@@ -39,13 +47,13 @@ Dowiedz się, jak przesyłać zadania MapReduce z połączeń protokołu Secure 
 Połącz się z klastrem przy użyciu protokołu SSH. Na przykład następujące polecenie umożliwia nawiązanie klastra o nazwie **myhdinsight** jako **sshuser** konta:
 
 ```bash
-ssh sshuser@myhdinsight-ssh.azurehdinsight.net
+ssh sshuser@myhdinsight-ssh.azurehdinsight.cn
 ```
 
 **Jeśli używasz klucza certyfikatu do uwierzytelniania SSH**, konieczne może być na przykład określ lokalizację klucza prywatnego w systemie klienta:
 
 ```bash
-ssh -i ~/mykey.key sshuser@myhdinsight-ssh.azurehdinsight.net
+ssh -i ~/mykey.key sshuser@myhdinsight-ssh.azurehdinsight.cn
 ```
 
 **Jeśli używasz hasła do uwierzytelniania SSH**, należy podać hasło po wyświetleniu monitu.
@@ -80,7 +88,7 @@ Aby uzyskać więcej informacji dotyczących korzystania z protokołu SSH z usł
 
     To polecenie wyświetla dwa pliki `_SUCCESS` i `part-r-00000`. `part-r-00000` Plik zawiera dane wyjściowe dla tego zadania.
 
-    > [!NOTE]  
+    > [!NOTE]
     > Niektóre zadania MapReduce może podzielić wyniki w wielu **część r-###** plików. Jeśli tak, użyj ### przyrostka, aby wskazać kolejność plików.
 
 4. Aby wyświetlić dane wyjściowe, użyj następującego polecenia:
