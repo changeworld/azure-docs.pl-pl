@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2018
-ms.openlocfilehash: 2a59a81b0894cbf58c5d3ab5a5569f4749b64b00
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
-ms.translationtype: MT
+ms.openlocfilehash: 0eb4b77964aa3c07bac2af615a26c3a9199525de
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543291"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63760843"
 ---
 # <a name="understand-time-handling-in-azure-stream-analytics"></a>Omówienie obsługi czasu w usłudze Azure Stream Analytics
 
@@ -26,7 +26,7 @@ Do lepszego ramki dyskusji czynnością jest zdefiniowanie niektóre pojęcia t�
 
 - **Czas przetwarzania**: Czas, gdy zdarzenie osiągnie systemu przetwarzania i zostanie wykryty. Na przykład, gdy czujnik stoisku płatny widzi samochodu a systemem komputerowym, potrwa kilka chwil do przetwarzania danych.
 
-- **Znak wodny**: Znacznik czasu zdarzeń, wskazujący wszystkie zdarzenia maksymalnie jakim punkcie została ruch przychodzący do przesyłania strumieniowego procesora. Znaki wodne Niech system wskazać wyczyść zbierać zdarzenia. Zgodnie z naturą strumieni danych przychodzących zdarzenia nigdy nie zatrzymuje, więc znaki wodne informowania o postępie do pewnego momentu w strumieniu.
+- **Znak wodny**: Znacznik czasu zdarzeń, który wskazuje na to, aż punktu, w jaki zostały ingressed do przesyłania strumieniowego procesora zdarzeń. Znaki wodne Niech system wskazać wyczyść zbierać zdarzenia. Zgodnie z naturą strumieni danych przychodzących zdarzenia nigdy nie zatrzymuje, więc znaki wodne informowania o postępie do pewnego momentu w strumieniu.
 
    Ważne jest pojęciem znaku wodnego. Stream Analytics do określania, kiedy system może utworzyć pełną, poprawny i powtarzalne wyniki, które nie wymagają ma zostać wycofany, Zezwalaj na znaki wodne. Przetwarzanie może odbywać się w sposób gwarantowane, który jest przewidywalny i powtarzalny. Na przykład jeśli policzone ponownie musi odbywać się do obsługi warunek niektórych błędów, znaki wodne są bezpieczne początkowe i końcowe punkty.
 
