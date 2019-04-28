@@ -11,11 +11,11 @@ ms.date: 11/14/2018
 ms.author: anvang
 ms.reviewer: igorstan
 ms.openlocfilehash: 3ed1f251c8c09a52def517f4c94ed2ca1420eda8
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59999641"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60778290"
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>Usługa SQL Data Warehouse limity pojemności
 Maksymalna dozwolona dla różnych składników usługi Azure SQL Data Warehouse.

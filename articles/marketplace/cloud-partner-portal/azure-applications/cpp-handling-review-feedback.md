@@ -15,13 +15,13 @@ ms.topic: conceptual
 ms.date: 02/05/2019
 ms.author: pbutlerm
 ms.openlocfilehash: e5fe076cfe733b4fa0151570603c090af98de0e8
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882692"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60745585"
 ---
-# <a name="handling-review-feedback"></a>Obsługa opinii
+# <a name="handling-review-feedback"></a>Obsługa opinii dla przeglądu
 
 W tym artykule wyjaśniono, jak uzyskiwać dostęp do środowiska DevOps platformy Azure używane przez zespół usługi Microsoft Azure Marketplace przeglądu.  Jeśli krytycznych problemów znajdują się w ofercie usługi Azure application podczas **przeglądu Microsoft** krok, użytkownik może zalogować się do tego systemu Aby wyświetlić szczegółowe informacje na temat tych problemów (Przejrzyj opinię).  Po rozwiązaniu tych problemów muszą ponownie przesłać oferty w taki sposób, aby kontynuować, opublikuj go w portalu Azure Marketplace.  Na poniższym diagramie przedstawiono, jak ten proces opinii odnosi się do publikowania.
 

@@ -17,11 +17,11 @@ ms.date: 12/13/2018
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: c05572d4962eca042a807be3eec94462d0830e1b
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653377"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60835740"
 ---
 # <a name="create-an-aspnet-core-app-in-a-docker-container-in-app-service-from-azure-container-registry"></a>Tworzenie aplikacji ASP.NET Core w kontenerze platformy Docker w usłudze App Service z usługi Azure Container Registry
 
@@ -49,7 +49,7 @@ Ten skrypt używa poniższych poleceń do tworzenia grupy zasobów, aplikacji us
 | [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Tworzy aplikację usługi App Service. |
 | [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) | Ustawia kontener platformy Docker dla aplikacji usługi App Service. |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure).
 

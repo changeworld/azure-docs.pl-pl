@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: shlo
-ms.openlocfilehash: bc695bf8398a39460eff9bbe4f791ba92b0fa7e0
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 4f0662a71ee14af3c2c1aafee210641fc8b51f1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019320"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60768672"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Działanie LOOKUP w usłudze Azure Data Factory
 
@@ -53,14 +53,15 @@ Następujące źródła danych są obsługiwane dla działania Lookup. Najwięks
 ```
 
 ## <a name="type-properties"></a>Właściwości typu
-Name (Nazwa) | Opis | Typ | Wymagana?
+
+Name (Nazwa) | Opis | Type | Wymagana?
 ---- | ----------- | ---- | --------
 Zestaw danych | Zawiera odwołanie do zestawu danych do wyszukiwania. Uzyskiwanie szczegółowych informacji z **właściwości zestawu danych** sekcji w każdym odpowiedni artykuł dotyczący łącznika. | Pary klucz/wartość | Yes
 source | Zawiera właściwości specyficzne dla zestawu danych źródła, taka sama jak źródło działania kopiowania. Uzyskiwanie szczegółowych informacji z **właściwości działania kopiowania** sekcji w każdym odpowiedni artykuł dotyczący łącznika. | Pary klucz/wartość | Yes
-firstRowOnly | Wskazuje, czy zwracać tylko pierwszy wiersz lub wszystkie wiersze. | Wartość logiczna | Nie. Wartość domyślna to `true`.
+firstRowOnly | Wskazuje, czy zwracać tylko pierwszy wiersz lub wszystkie wiersze. | Boolean | Nie. Wartość domyślna to `true`.
 
 > [!NOTE]
-
+> 
 > * Źródło kolumny z **ByteArray** typu nie są obsługiwane.
 > * **Struktura** nie jest obsługiwane w definicjach zestawów danych. Dla plików w formacie tekstowym Użyj wiersz nagłówka, aby podać nazwę kolumny.
 > * Jeśli źródłem wyszukiwania jest plikiem JSON `jsonPathDefinition` ustawienie dla ich modyfikowania obiektu JSON nie jest obsługiwane. Całe obiekty zostaną pobrane.

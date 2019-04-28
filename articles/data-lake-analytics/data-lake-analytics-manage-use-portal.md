@@ -10,11 +10,11 @@ ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: conceptual
 ms.date: 12/05/2016
 ms.openlocfilehash: 8b2f16f45be1d095e9be8042611de328af36f064
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724064"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60813435"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Zarządzanie przy użyciu witryny Azure portal usługi Azure Data Lake Analytics
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -33,10 +33,10 @@ W tym artykule opisano sposób zarządzania kont, źródła danych, użytkownik�
 2. Kliknij przycisk **Utwórz zasób** > **rozwiązania inteligentne + analiza** > **usługi Data Lake Analytics**.
 3. Wybierz wartości dla następujących elementów: 
    1. **Nazwa**: Nazwa konta usługi Data Lake Analytics.
-   2. **Subskrypcja**: subskrypcja platformy Azure używana dla konta.
+   2. **Subskrypcja**: Subskrypcja platformy Azure, używane jako konto.
    3. **Grupa zasobów**: Grupa zasobów platformy Azure, w której chcesz utworzyć konto. 
-   4. **Lokalizacja**: centrum danych platformy Azure dla konta usługi Data Lake Analytics. 
-   5. **Data Lake Store**: domyślny magazyn ma być używany dla konta usługi Data Lake Analytics. Konto usługi Azure Data Lake Store i konto usługi Data Lake Analytics musi być w tej samej lokalizacji.
+   4. **Lokalizacja**: Centrum danych platformy Azure dla konta usługi Data Lake Analytics. 
+   5. **Data Lake Store**: Domyślny magazyn, który ma być używany dla konta usługi Data Lake Analytics. Konto usługi Azure Data Lake Store i konto usługi Data Lake Analytics musi być w tej samej lokalizacji.
 4. Kliknij pozycję **Utwórz**. 
 
 ### <a name="delete-a-data-lake-analytics-account"></a>Usuwanie konta usługi Data Lake Analytics
@@ -98,9 +98,9 @@ Możesz użyć **Kreatora dodawania użytkownika** można zainicjować obsługę
 Podobnie jak inne usługi platformy Azure można użyć kontroli dostępu opartej na rolach (RBAC) do kontrolowania sposobu interakcji użytkowników z usługą.
 
 Standardowa role RBAC mają następujące możliwości:
-* **Właściciel**: można przesyłać zadania, monitorować zadania, Anuluj zadania z dowolnego użytkownika i skonfigurować konto.
-* **Współautor**: można przesyłać zadania, monitorować zadania, Anuluj zadania z dowolnego użytkownika i skonfigurować konto.
-* **Czytnik**: można monitorować zadania.
+* **Właściciel**: Można przesyłać zadania, monitorować zadania, anulować zadania z dowolnego użytkownika i skonfigurować konto.
+* **Współautor**: Można przesyłać zadania, monitorować zadania, anulować zadania z dowolnego użytkownika i skonfigurować konto.
+* **Czytnik**: Można monitorować zadania.
 
 Aby umożliwić programistom języka U-SQL do korzystania z usługi Data Lake Analytics za pomocą roli Data Lake Analytics dewelopera. Można użyć roli Data Lake Analytics dewelopera:
 * Przesyłanie zadań.
@@ -113,7 +113,7 @@ Aby umożliwić programistom języka U-SQL do korzystania z usługi Data Lake An
 1. W witrynie Azure portal przejdź na swoje konto usługi Data Lake Analytics.
 2. Kliknij przycisk **kontrola dostępu (IAM)** > **Dodaj przypisanie roli**.
 3. Wybierz rolę.
-4. Dodawanie użytkownika.
+4. Dodaj użytkownika.
 5. Kliknij przycisk **OK**.
 
 >[!NOTE]
@@ -132,7 +132,7 @@ Aby umożliwić programistom języka U-SQL do korzystania z usługi Data Lake An
 2. Kliknij przycisk **nowe zadanie**. Dla każdego zadania należy skonfigurować:
 
     1. **Nazwa zadania**: Nazwa zadania.
-    2. **Priorytet**: niższych numerach mają wyższy priorytet. Jeśli dwa zadania są umieszczane w kolejce, tą o niższym priorytecie działać pierwszego.
+    2. **Priorytet**: Niższych numerach mają wyższy priorytet. Jeśli dwa zadania są umieszczane w kolejce, tą o niższym priorytecie działać pierwszego.
     3. **Równoległość**: Maksymalna liczba procesów obliczeniowych do zarezerwowania dla tego zadania.
 
 3. Kliknij przycisk **Prześlij zadanie**.

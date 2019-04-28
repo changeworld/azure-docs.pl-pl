@@ -16,11 +16,11 @@ ms.date: 11/09/2017
 ms.author: ranjithr
 ms.custom: seodec18
 ms.openlocfilehash: 321dbf891c77007952f01b32bb509a15c2ac3e6f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58895787"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60853062"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Najlepsze praktyki i przewodnik rozwiązywania problemów aplikacji node w usłudze Azure App Service Windows
 

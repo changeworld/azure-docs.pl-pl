@@ -2,22 +2,19 @@
 title: Samouczek — Użyj usługi Azure Key Vault z maszyną wirtualną Windows w języku Python | Dokumentacja firmy Microsoft
 description: W tym samouczku skonfigurujesz aplikacji platformy ASP.NET core w celu odczytu wpisu tajnego z magazynu kluczy.
 services: key-vault
-documentationcenter: ''
-author: prashanthyv
+author: mbaldwin
 manager: rajvijan
-ms.assetid: 0e57f5c7-6f5a-46b7-a18a-043da8ca0d83
 ms.service: key-vault
-ms.workload: key-vault
 ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: pryerram
 ms.custom: mvc
 ms.openlocfilehash: 133de5410d5e506c9528e2dba90dd4c00d8fcc2d
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57438214"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60777546"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-python"></a>Samouczek: Użyj usługi Azure Key Vault z maszyną wirtualną Windows w języku Python
 

@@ -9,11 +9,11 @@ ms.date: 1/16/2019
 ms.author: dukek
 ms.subservice: logs
 ms.openlocfilehash: 93e74eb6aefbaeeddf7c4f15d62f4a9ee3d617d4
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58622216"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60777393"
 ---
 # <a name="azure-activity-log-event-schema"></a>Usługa Azure schemat zdarzeń dziennika aktywności
 **Dziennika aktywności platformy Azure** jest dziennika, który zapewnia wgląd w poziom subskrypcji zdarzeń, które wystąpiły na platformie Azure. W tym artykule opisano schemat zdarzeń dla każdej kategorii danych. Schemat danych różni się zależnie od tego, podczas odczytu danych w portalu, programu PowerShell, interfejsu wiersza polecenia, lub bezpośrednio za pośrednictwem interfejsu API REST i [przesyłania strumieniowego danych w magazynie lub Event Hubs za pomocą profilu dziennika](./../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile). Poniższe przykłady pokazują schematu jako udostępniane za pośrednictwem portalu, programu PowerShell, interfejsu wiersza polecenia i interfejsu API REST. Mapowanie tych właściwości w celu [Azure diagnostyczne dzienniki schematu](./diagnostic-logs-schema.md) znajduje się na końcu tego artykułu.

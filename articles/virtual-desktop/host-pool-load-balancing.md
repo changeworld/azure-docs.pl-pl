@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
 ms.openlocfilehash: 8b18224339654c067d8ab9b543fa49a9c7d55ddd
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400181"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60870527"
 ---
-# <a name="host-pool-load-balancing-methods"></a>Hostowanie metod równoważenia obciążenia w puli
+# <a name="host-pool-load-balancing-methods"></a>Metody równoważenia obciążenia puli hostów
 
 Windows wirtualnego pulpitu (wersja zapoznawcza) obsługuje dwie metody równoważenia obciążenia. Każda metoda określa, które hostów sesji będzie obsługiwać sesji użytkownika, gdy łączą się z zasobem w puli hosta.
 

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 5490bdd3934b438a683ce4271fbec20b3d13735d
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55735508"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60770858"
 ---
 Jeśli maszyna wirtualna na platformie Azure napotkała błąd podczas rozruchu lub błąd dysku, konieczne może wykonanie kroków rozwiązywania problemów na samym wirtualnym dysku twardym. Typowym przykładem może być niepowodzenie aktualizacji aplikacji, które uniemożliwia pomyślny rozruch maszyny wirtualnej. W tym artykule opisano, jak za pomocą witryny Azure Portal połączyć wirtualny dysk twardy z inną maszyną wirtualną w celu naprawienia błędów, a następnie ponownie utworzyć oryginalną maszynę wirtualną.
 

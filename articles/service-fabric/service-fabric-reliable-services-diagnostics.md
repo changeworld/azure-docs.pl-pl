@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 8/24/2018
 ms.author: dekapur
 ms.openlocfilehash: f49176f944aa2abfa1d355ce0bd207d1b544c275
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527054"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60772962"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>Funkcja diagnostyki dla stanowych usług Reliable Services
 Klasa Azure usługi Service Fabric stanowa niezawodnych usług StatefulServiceBase emituje [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) zdarzenia, które mogą służyć do debugowania usługi dają wgląd w sposób operacyjnego środowiska uruchomieniowego i pomóc w rozwiązywaniu problemów.
@@ -50,7 +50,7 @@ StatefulRunAsyncSlowCancellation jest emitowane zawsze wtedy, gdy żądanie anul
 ## <a name="performance-counters"></a>Liczniki wydajności
 Środowisko wykonawcze usług Reliable Services definiuje następujące kategorie liczników wydajności:
 
-| Kategoria | Opis |
+| Category | Opis |
 | --- | --- |
 | Replikator transakcyjny usługi Service Fabric |Liczniki specyficzne dla Replikator transakcyjny usługi Azure Service Fabric |
 | Service Fabric TStore |Liczniki specyficzne dla platformy Azure usługi Service Fabric TStore |

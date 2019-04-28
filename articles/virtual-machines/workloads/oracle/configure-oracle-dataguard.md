@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
 ms.openlocfilehash: c98e59cd0e547381d6b173b3a4b91c3a3e27b3a8
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731125"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60771723"
 ---
 # <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>Implementowanie środowiska Oracle Data Guard na maszynie wirtualnej z systemem Linux platformy Azure 
 

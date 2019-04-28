@@ -2,18 +2,19 @@
 title: Usługa Azure Data Lake Storage Gen2 hierarchiczne Namespace
 description: Omówienie pojęć dotyczących hierarchicznej przestrzeni nazw dla usługi Azure Data Lake Storage Gen2
 services: storage
-author: jamesbak
+author: WenJason
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.author: jamesbak
+origin.date: 12/06/2018
+ms.date: 02/25/2019
+ms.author: v-jay
 ms.subservice: data-lake-storage-gen2
 ms.openlocfilehash: b423d40884dd9132312e79ba0cbff00b8771b207
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55877035"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60747544"
 ---
 # <a name="azure-data-lake-storage-gen2-hierarchical-namespace"></a>Azure Data Lake Storage Gen2 hierarchiczne — przestrzeń nazw
 

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: 82301a17bb461b6d8733d5f046fe791ffbcf3ecb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58885710"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60749261"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>Usługa Service Bus z platformy .NET za pomocą protokołu AMQP 1.0
 
@@ -75,10 +75,10 @@ Aby ułatwić współdziałania z klientami — .NET, należy użyć tylko te ty
 | float |float |Wartość protokołu AMQP |
 | double |double |Wartość protokołu AMQP |
 | decimal |decimal128 |Wartość protokołu AMQP |
-| Char |Char |Wartość protokołu AMQP |
-| DateTime |sygnatura czasowa |Wartość protokołu AMQP |
+| char |char |Wartość protokołu AMQP |
+| DateTime |timestamp |Wartość protokołu AMQP |
 | Guid |uuid |Wartość protokołu AMQP |
-| byte[] |dane binarne |Wartość protokołu AMQP |
+| byte[] |binary |Wartość protokołu AMQP |
 | string |string |Wartość protokołu AMQP |
 | System.Collections.IList |list |Wartość AMQP: elementy zawarte w kolekcji można tylko te, które są zdefiniowane w tej tabeli. |
 | System.Array |tablica |Wartość AMQP: elementy zawarte w kolekcji można tylko te, które są zdefiniowane w tej tabeli. |
@@ -86,8 +86,8 @@ Aby ułatwić współdziałania z klientami — .NET, należy użyć tylko te ty
 | Identyfikator URI |Opisano parametry (patrz poniższa tabela) |Wartość protokołu AMQP |
 | DateTimeOffset |Opisano długo (patrz poniższa tabela) |Wartość protokołu AMQP |
 | TimeSpan |Opisano długo (patrz poniżej) |Wartość protokołu AMQP |
-| Strumień |dane binarne |Dane AMQP (może być wiele). Sekcje danych zawierają odczytanych z obiektu Stream bajtów raw. |
-| Inny obiekt |dane binarne |Dane AMQP (może być wiele). Zawiera wartość binarną Zserializowany obiekt, który korzysta z elementu DataContractSerializer, lub element serializujący dostarczoną przez aplikację. |
+| Strumień |binary |Dane AMQP (może być wiele). Sekcje danych zawierają odczytanych z obiektu Stream bajtów raw. |
+| Inny obiekt |binary |Dane AMQP (może być wiele). Zawiera wartość binarną Zserializowany obiekt, który korzysta z elementu DataContractSerializer, lub element serializujący dostarczoną przez aplikację. |
 
 | Typ architektury .NET | Zamapowane AMQP opisem typu | Uwagi |
 | --- | --- | --- |

@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 06/13/2018
 ms.author: routlaw
 ms.openlocfilehash: 924154a64673b4ff646f3b6ece373b278ee37181
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754850"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60773268"
 ---
 # <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>Pobierz metryki użycia maszyny wirtualnej przy użyciu interfejsu API REST
 
@@ -49,7 +49,7 @@ Wymagane są następujące nagłówki:
 | vmname | Nazwa maszyny wirtualnej platformy Azure. |
 | metricnames | Rozdzielana przecinkami lista prawidłowe [metryk modułu równoważenia obciążenia](/azure/load-balancer/load-balancer-standard-diagnostics). |
 | wersja interfejsu API | Wersja interfejsu API do użycia dla żądania.<br /><br /> W tym dokumencie opisano parametru api-version `2018-01-01`zawarte w powyższym adresie URL.  |
-| Przedział czasu | Ciąg o następującym formacie `startDateTime_ISO/endDateTime_ISO` definiuje przedział czasu zwracane metryki. Ten parametr opcjonalny jest ustawiony do zwrócenia dnia, przez które dane w przykładzie. |
+| TimeSpan | Ciąg o następującym formacie `startDateTime_ISO/endDateTime_ISO` definiuje przedział czasu zwracane metryki. Ten parametr opcjonalny jest ustawiony do zwrócenia dnia, przez które dane w przykładzie. |
 | &nbsp; | &nbsp; |
 
 ### <a name="request-body"></a>Treść żądania

@@ -12,11 +12,11 @@ ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: diberry
 ms.openlocfilehash: 718aac00582c119bfa721935d97e35f49e3d58a0
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57216207"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60800881"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-java"></a>Szybki start: Publikowanie bazy wiedzy w usłudze QnA Maker przy użyciu języka Java
 

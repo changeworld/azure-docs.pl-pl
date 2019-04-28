@@ -14,18 +14,18 @@ ms.workload: infrastructure
 ms.date: 09/04/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1346018d99a1c26290ad8928d9794f3b55050910
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 15de566d756d6b0f7719eabf74ee9c7ac66659d6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44028248"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60793995"
 ---
 # <a name="certification"></a>Certyfikacja
 
 Oprócz certyfikacji NetWeaver środowisko SAP wymaga specjalnych certyfikacji platformy SAP Hana do obsługi platformy SAP HANA na niektórych infrastruktury, takich jak Azure IaaS.
 
-Core Uwaga SAP w oprogramowaniu NetWeaver oraz stopień certyfikacji platformy SAP HANA, to [SAP Uwaga #1928533 — aplikacje środowiska SAP na platformie Azure: obsługiwane produkty i typy maszyn wirtualnych platformy Azure](https://launchpad.support.sap.com/#/notes/1928533).
+Core Uwaga SAP w oprogramowaniu NetWeaver oraz stopień certyfikacji platformy SAP HANA, to [SAP Uwaga #1928533 — aplikacje środowiska SAP na platformie Azure: Obsługiwane produkty i typy maszyn wirtualnych platformy Azure](https://launchpad.support.sap.com/#/notes/1928533).
 
 Rekordy certyfikacji dla platformy SAP HANA na platformie Azure (duże wystąpienia) jednostki można znaleźć w [platform IaaS z certyfikatem SAP HANA](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) lokacji. 
 

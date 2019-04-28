@@ -11,11 +11,11 @@ ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
 ms.openlocfilehash: 45407e183c70fe67e6bd59e3fd86a50a31844c47
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453491"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60735705"
 ---
 # <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio"></a>Samouczek 2. Trenowanie modeli ryzyka kredytowego — Azure Machine Learning Studio
 
@@ -209,7 +209,7 @@ Nauka i sztuka interpretowania tych wyników i strojenie wydajności modelu wykr
 
 [!INCLUDE [machine-learning-studio-clean-up](../../../includes/machine-learning-studio-clean-up.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku zostały wykonane następujące kroki: 
  

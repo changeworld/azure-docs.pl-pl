@@ -14,11 +14,11 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 5b70edd4f65538b52c70881258bc500a34b04d80
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025423"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60826751"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Monitorowanie potoków i zarządzanie nimi usługi Azure Data Factory przy użyciu aplikacji monitorowanie i zarządzanie
 > [!div class="op_single_selector"]
@@ -109,7 +109,7 @@ Kliknij przycisk **Otwórz potok** opcje, aby wyświetlić wszystkie działania 
 
 ![Menu Otwórz potok](./media/data-factory-monitor-manage-app/OpenPipelineMenu.png)
 
-Widok otwartego potoku zobaczysz wszystkie działania w potoku. W tym przykładzie jest tylko jedno działanie: Działanie kopiowania. 
+Widok otwartego potoku zobaczysz wszystkie działania w potoku. W tym przykładzie jest tylko jedno działanie: działaniem kopiowania. 
 
 ![Otwartego potoku](./media/data-factory-monitor-manage-app/OpenedPipeline.png)
 
@@ -205,7 +205,7 @@ Okien działania może mieć jeden z następujących stanów:
 <tr>
 <td>-</td><td>Okna działania nie może być wygenerowany zweryfikowane.</td>
 </tr>
-<td>Gotowe</td><td>-</td><td>Okno to działanie jest gotowe do użycia.</td>
+<td>Gotowy</td><td>-</td><td>Okno to działanie jest gotowe do użycia.</td>
 </tr>
 <tr>
 <td>Pominięte</td><td>-</td><td>Okno działania nie został przetworzony.</td>

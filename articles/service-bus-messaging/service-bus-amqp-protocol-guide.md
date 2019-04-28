@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: c99f4491af8fe3e5f0f0ed7a264995ae3ec5911f
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658270"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60749448"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Protokołu AMQP 1.0 w przewodnik dotyczący protokołu usługi Azure Service Bus i Event Hubs
 
@@ -361,10 +361,10 @@ Komunikat żądania ma następujące właściwości aplikacji:
 
 | Klucz | Optional (Opcjonalność) | Typ wartości | Wartość zawartości |
 | --- | --- | --- | --- |
-| operacja |Nie |ciąg |**Umieść token** |
-| type |Nie |ciąg |Typ tokenu dotyczy żądanie put. |
-| name |Nie |ciąg |Do której stosują się token "audience". |
-| wygaśnięcie |Yes |sygnatura czasowa |Czas wygaśnięcia tokenu. |
+| operacja |Nie |string |**Umieść token** |
+| type |Nie |string |Typ tokenu dotyczy żądanie put. |
+| name |Nie |string |Do której stosują się token "audience". |
+| wygaśnięcie |Yes |timestamp |Czas wygaśnięcia tokenu. |
 
 *Nazwa* właściwość identyfikuje jednostki, z którym token jest włączona. W usłudze Service Bus jest ścieżka do kolejki lub tematu/subskrypcji. *Typu* właściwość identyfikuje typ tokenu:
 
@@ -381,7 +381,7 @@ Komunikat odpowiedzi zawiera następujące *właściwości aplikacji* wartości
 | Klucz | Optional (Opcjonalność) | Typ wartości | Wartość zawartości |
 | --- | --- | --- | --- |
 | Kod stanu: |Nie |int |Kod odpowiedzi HTTP **[specyfikacją RFC2616]**. |
-| status-description |Yes |ciąg |Opis stanu. |
+| status-description |Yes |string |Opis stanu. |
 
 Klient może wywołać *put token* wielokrotnie i dla dowolnej jednostki w infrastrukturze obsługi wiadomości. Tokeny są ograniczone do bieżącego klienta i zakotwiczone w bieżącym połączeniu, co oznacza, że serwer porzuca wszystkie tokeny zachowane po spadku połączenia.
 

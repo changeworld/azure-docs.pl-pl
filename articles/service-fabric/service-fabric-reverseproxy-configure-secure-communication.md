@@ -14,11 +14,11 @@ ms.workload: required
 ms.date: 08/10/2017
 ms.author: kavyako
 ms.openlocfilehash: d8a11a3289037602535d1b5727d041e376012bd8
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502444"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60837848"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>Łączenie z usługą bezpieczny przy użyciu zwrotnego serwera proxy
 
@@ -42,7 +42,7 @@ Następna sekcja zawiera szczegóły konfiguracji dla każdego z tych opcji.
 
 ### <a name="service-certificate-validation-options"></a>Opcje weryfikacji certyfikatu usługi 
 
-- **Brak**: zwrotny serwer proxy Pomija weryfikację certyfikatu usługi z serwerem proxy i ustanawia bezpiecznego połączenia. To zachowanie domyślne.
+- **Brak**: Zwrotny serwer proxy Pomija weryfikację certyfikatu usługi proxy oraz bezpiecznego połączenia. To zachowanie domyślne.
 Określ **ApplicationCertificateValidationPolicy** wartością **Brak** w [ **bramy ApplicationGateway/Http** ](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) sekcji.
 
    ```json
@@ -63,7 +63,7 @@ Określ **ApplicationCertificateValidationPolicy** wartością **Brak** w [ **br
    }
    ```
 
-- **ServiceCommonNameAndIssuer**: zwrotny serwer proxy sprawdza certyfikat przedstawiony przez usługę, na podstawie nazwa pospolita certyfikatu i odcisk palca wystawcy natychmiastowego: Określ **ApplicationCertificateValidationPolicy** wartością **ServiceCommonNameAndIssuer** w [ **bramy ApplicationGateway/Http** ](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) sekcji.
+- **ServiceCommonNameAndIssuer**: Zwrotny serwer proxy weryfikuje certyfikat przedstawiony przez usługę, na podstawie nazwa pospolita certyfikatu i odcisk palca wystawcy bezpośredniego: Określ **ApplicationCertificateValidationPolicy** wartością **ServiceCommonNameAndIssuer** w [ **bramy ApplicationGateway/Http** ](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) sekcji.
 
    ```json
    {
@@ -110,7 +110,7 @@ Określ **ApplicationCertificateValidationPolicy** wartością **Brak** w [ **br
    }
    ```
 
-- **ServiceCertificateThumbprints**: zwrotny serwer proxy zweryfikuje certyfikatu serwerem proxy usługi, w oparciu o jego odcisk palca. Użytkownik może przejść tę trasę, gdy usługi są skonfigurowane przy użyciu samodzielnie podpisanego certyfikaty: Określ **ApplicationCertificateValidationPolicy** wartością **ServiceCertificateThumbprints** w [ **bramy ApplicationGateway/Http** ](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) sekcji.
+- **ServiceCertificateThumbprints**: Zwrotny serwer proxy zweryfikuje certyfikatu serwerem proxy usługi, w oparciu o jego odcisk palca. Można go tę trasę, gdy usługi są skonfigurowane przy użyciu samodzielnie podpisanych certyfikatów: Określ **ApplicationCertificateValidationPolicy** wartością **ServiceCertificateThumbprints** w [ **bramy ApplicationGateway/Http** ](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) sekcji.
 
    ```json
    {

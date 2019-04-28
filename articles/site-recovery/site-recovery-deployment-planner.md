@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: mayg
 ms.openlocfilehash: 0597f185df35a92696ed9287d23778180319b3de
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60005693"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61035796"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>Planista wdrażania usługi Azure Site Recovery, programu VMware do platformy Azure — informacje
 Ten artykuł to podręcznik użytkownika planisty wdrażania usługi Azure Site Recovery dla wdrożeń produkcyjnych oprogramowania VMware na platformie Azure.

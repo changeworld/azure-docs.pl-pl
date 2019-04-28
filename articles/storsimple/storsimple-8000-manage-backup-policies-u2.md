@@ -14,17 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/05/2017
 ms.author: alkohli
-ms.openlocfilehash: 569dbfdeb7dcd526cb5a54b487ea1bfb59b13cc6
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 607379f8645226a031646376df9ca18f4d3164bf
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38681592"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60818858"
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-manage-backup-policies"></a>Usługa Menedżer urządzeń StorSimple w witrynie Azure portal umożliwia zarządzanie zasadami kopii zapasowych
 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 W tym samouczku wyjaśniono, jak korzystać z usługi Menedżer urządzeń StorSimple **zasady tworzenia kopii zapasowej** bloku do kontrolowania procesów tworzenia kopii zapasowej i przechowywanie kopii zapasowych woluminów StorSimple. Zawiera również opis jak ukończyć ręcznego tworzenia kopii zapasowej.
 

@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
 ms.openlocfilehash: 70f300d83d904537aab61b95de876f4ac2edb66c
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020068"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60808981"
 ---
 # <a name="copy-data-from-zoho-using-azure-data-factory-preview"></a>Kopiowanie danych z Zoho przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
 

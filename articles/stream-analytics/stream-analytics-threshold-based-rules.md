@@ -2,19 +2,20 @@
 title: Zasady można konfigurować na podstawie progów procesu w usłudze Azure Stream Analytics
 description: W tym artykule opisano, jak użyć danych referencyjnych do osiągnięcia rozwiązanie alertów, który ma skonfigurowaną wartość progową, na podstawie reguł w usłudze Azure Stream Analytics.
 services: stream-analytics
-author: zhongc
-ms.author: zhongc
-manager: kfile
+author: rockboyfor
+ms.author: v-yeche
+manager: digimobile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/30/2018
+origin.date: 04/30/2018
+ms.date: 08/20/2018
 ms.openlocfilehash: ce2cf6ebdfd74549114e94e4c7356e387576d3c8
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731195"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60761730"
 ---
 # <a name="process-configurable-threshold-based-rules-in-azure-stream-analytics"></a>Proces można skonfigurować zasady oparte na wartościach progowych w usłudze Azure Stream Analytics
 W tym artykule opisano, jak użyć danych referencyjnych do osiągnięcia rozwiązanie alertów, który używa można skonfigurować zasady oparte na wartościach progowych w usłudze Azure Stream Analytics.
@@ -46,7 +47,6 @@ Tymi danymi referencyjnymi w przykładzie pokazano, jak mogą być reprezentowan
 - Zwróć uwagę, reguła ma **operator** pola, które są dynamicznie jest interpretowany przy użyciu składni zapytań na później `AVGGREATEROREQUAL`. 
 - Reguła filtruje dane klucza wymiaru `2` wartością `C1`. Inne pola są pusty ciąg, wskazujący na nie, aby filtrować strumień wejściowy według tych pól zdarzeń. Aby filtrować inne pola dopasowania, zgodnie z potrzebami, można skonfigurować dodatkowe reguły procesora CPU.
 - Nie wszystkie kolumny są mają zostać uwzględnione w zdarzeniu alertu w danych wyjściowych. W tym przypadku `includedDim` klucza numer `2` jest włączona `TRUE` do reprezentowania, że w zdarzenia kwalifikujące dane wyjściowe zostaną uwzględnione numer pola 2 danych zdarzenia w strumieniu. Inne pola nie są uwzględnione w alertach danych wyjściowych, ale można dostosować listę pól.
-
 
 ```json
 {
@@ -292,3 +292,4 @@ W tym przykładzie danych wyjściowych, pokazuje dane JSON, pojedyncze zdarzenie
 "alert":"hot node AVG CPU over 90","avg":96.5,"min":95.0,"max":98.0,
 "dim0":null,"dim1":null,"dim2":"N024","dim3":null,"dim4":null}
 ```
+<!--Update_Description: updat meta properties, wording update-->

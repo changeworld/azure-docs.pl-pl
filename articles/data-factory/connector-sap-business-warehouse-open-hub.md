@@ -3,21 +3,22 @@ title: Kopiowanie danych z rozwiązania SAP Business Warehouse, za pośrednictwe
 description: Dowiedz się, jak skopiować dane z SAP Business Warehouse (BW) za pośrednictwem Centrum Otwórz do magazynów danych ujścia obsługiwane za pomocą działania kopiowania w potoku usługi Azure Data Factory.
 services: data-factory
 documentationcenter: ''
-author: linda33wj
-manager: craigg
+author: WenJason
+manager: digimobile
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/08/2019
-ms.author: jingwang
+origin.date: 03/08/2019
+ms.date: 04/22/2019
+ms.author: v-jay
 ms.openlocfilehash: c64842dc89c9519c738701558f510940f4cc148d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58103914"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60848898"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Kopiowanie danych z rozwiązania SAP Business Warehouse, za pośrednictwem Centrum Otwórz za pomocą usługi Azure Data Factory
 

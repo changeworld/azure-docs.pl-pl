@@ -11,11 +11,11 @@ ms.author: garye
 ms.custom: seodec18
 ms.date: 02/06/2019
 ms.openlocfilehash: 0819c232412e1619f82a25476a8318d26c8087da
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58105730"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60753442"
 ---
 # <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>Szybki start: Tworzenie pierwszego eksperymentu dotyczącego nauki o danych w usłudze Azure Machine Learning Studio
 

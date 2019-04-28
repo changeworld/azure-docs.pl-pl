@@ -11,11 +11,11 @@ ms.workload: infrastructure-services
 ms.date: 04/15/2019
 ms.author: gwallace
 ms.openlocfilehash: e2b36633996f961d100f0a98abb09135fd4393e4
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60007087"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60869864"
 ---
 # <a name="custom-script-extension-for-windows"></a>Rozszerzenie niestandardowego skryptu dla Windows
 
@@ -46,15 +46,15 @@ W przypadku skryptu na serwerze lokalnym, może nadal potrzebujesz dodatkowej za
 
 * Najwyższy współczynnik błędów dla tego rozszerzenia jest z powodu błędów składni w skrypcie testu, którego skrypt jest uruchamiany bez błędów, i również umieścić w dodatkowe opcje rejestrowania do skryptu, aby ułatwić znajdowanie, których nie powiodła się.
 * Napisać skrypty, które są idempotentne. Gwarantuje to, że jeśli ponownie przypadkowo działają, nie spowoduje zmian w systemie.
-* Upewnij się, że skrypty, które nie wymaga danych wejściowych użytkownika podczas uruchamiania.
-* Brak 90 minut, skrypt do uruchomienia, nic dłużej spowoduje niepowodzenie aprowizacji rozszerzenia.
-* Nie należy umieszczać wewnątrz skrypt jest uruchamiany ponownie, ta akcja spowoduje, że problemy z innymi rozszerzeniami, które są instalowane. Po ponownym uruchomieniu, rozszerzenie nie będzie kontynuowana po ponownym uruchomieniu.
+* Upewnij się, że skrypty nie wymagają udziału użytkownika w trakcie działania.
+* Dozwolony czas uruchamiania skryptu wynosi 90 minut — każdy dłuższy czas spowoduje niepowodzenie aprowizacji rozszerzenia.
+* Nie umieszczaj operacji ponownego uruchamiania wewnątrz skryptu; ta akcja spowoduje problemy z innymi instalowanymi rozszerzeniami. Po ponownym uruchomieniu rozszerzenie nie będzie kontynuować pracy, gdy zostanie uruchomione jeszcze raz.
 * Jeśli masz skrypt, który będzie spowodować ponowne uruchomienie komputera, a następnie zainstalować aplikacje i uruchamiać skrypty, można zaplanować ponowny rozruch przy użyciu usługi Windows zaplanowane zadanie lub użyj narzędzi takich jak rozszerzenia DSC, Chef lub Puppet.
-* Rozszerzenie zostanie uruchomiony tylko skrypt raz, jeśli chcesz uruchomić skrypt w każdym rozruchu, a następnie należy utworzyć zaplanowane zadanie Windows za pomocą rozszerzenia.
-* Chcąc Zaplanuj, kiedy skrypt będzie uruchamiany, należy użyć rozszerzenia utworzyć zaplanowane zadanie Windows.
-* Podczas wykonywania skryptu będą widzieć tylko "Przechodzenie" stan rozszerzenia z witryny Azure portal lub interfejsu wiersza polecenia. Chcąc częstsze aktualizacje stanu uruchamianie skryptu, musisz utworzyć własne rozwiązanie.
+* Rozszerzenie uruchomi skrypt tylko raz. Jeśli chcesz uruchomić skrypt przy każdym rozruchu, musisz użyć rozszerzenia w celu utworzenia zaplanowanego zadania systemu Windows.
+* Jeśli chcesz zaplanować czas uruchomienia skryptu, użyj rozszerzenia w celu utworzenia zaplanowanego zadania systemu Windows.
+* W trakcie działania skryptu będziesz widzieć tylko stan „przechodzenie” z witryny Azure Portal lub interfejsu wiersza polecenia. Jeśli potrzebujesz częstszych aktualizacji stanu działającego skryptu, musisz utworzyć własne rozwiązanie.
 * Rozszerzenie niestandardowego skryptu nie obsługuje natywnie serwery proxy, jednak można użyć narzędzie do transferu plików, który obsługuje serwery proxy w ramach skryptu, takie jak *Curl*
-* Należy pamiętać o innych niż domyślne lokalizacje katalogu, które Twoje skrypty lub polecenia mogą polegać na, mają logiki, aby obsłużyć taką sytuację.
+* Pamiętaj, że skrypt lub polecenia mogą polegać na lokalizacjach katalogów innych niż domyślne. Przygotuj logikę obsługującą taką sytuację.
 
 ## <a name="extension-schema"></a>Schemat rozszerzenia
 

@@ -4,20 +4,20 @@ description: Omówienie przechowywania danych konfiguracji w konfiguracji aplika
 services: azure-app-configuration
 documentationcenter: ''
 author: yegu-ms
-manager: balans
+manager: maiye
 editor: ''
 ms.service: azure-app-configuration
 ms.devlang: na
 ms.topic: overview
 ms.workload: tbd
-ms.date: 02/24/2019
+ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: 24216d1bf82789d2d0fc312d9af4c06fa3c8cf4e
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 39367cbe6c001fc782fd899ee3a99b37ece70a77
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011286"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60741193"
 ---
 # <a name="key-value-store"></a>Magazyn wartości klucza
 
@@ -45,29 +45,27 @@ Klucze w usłudze App Configuration można organizować hierarchicznie na wiele 
 
 Poniżej przedstawiono kilka przykładów, jak można ustrukturyzować nazwy kluczy w hierarchię:
 
-* Na podstawie środowisk
-
-        AppName:Test:DB:Endpoint
-        AppName:Staging:DB:Endpoint
-        AppName:Production:DB:Endpoint
-
 * Na podstawie usług składowych
 
-        AppName:Service1:Test:DB:Endpoint
-        AppName:Service1:Staging:DB:Endpoint
-        AppName:Service1:Production:DB:Endpoint
-        AppName:Service2:Test:DB:Endpoint
-        AppName:Service2:Staging:DB:Endpoint
-        AppName:Service2:Production:DB:Endpoint
+        AppName:Service1:ApiEndpoint
+        AppName:Service2:ApiEndpoint
 
 * Na podstawie regionów wdrożenia
 
-        AppName:Production:Region1:DB:Endpoint
-        AppName:Production:Region2:DB:Endpoint
+        AppName:Region1:DbEndpoint
+        AppName:Region2:DbEndpoint
+
+### <a name="label-keys"></a>Klucze etykiety
+
+Wartości klucza w konfiguracji aplikacji mogą opcjonalnie mieć atrybut etykiety. Etykiety umożliwiają odróżnienie wartości klucza z tego samego klucza. Klucz *app1* z etykietami *A* i *B* formularzy dwa oddzielne klucze w magazynie konfiguracji aplikacji. Domyślnie etykiety wartość klucza jest pusta, lub `null`.
+
+Etykieta zapewnia wygodny sposób utworzenia wariantów klucza. Zazwyczaj etykiet, które jest używane do określenia wielu środowisk na potrzeby tego samego klucza:
+
+    Key = AppName:DbEndpoint & Label = Test
+    Key = AppName:DbEndpoint & Label = Staging
+    Key = AppName:DbEndpoint & Label = Production
 
 ### <a name="version-key-values"></a>Wartości klucza wersji
-
-Wartości klucza w konfiguracji aplikacji mogą opcjonalnie mieć atrybut etykiety. Etykiety umożliwiają odróżnienie wartości klucza z tego samego klucza. Klucz *app1* z etykietami *v1* i *v2* tworzą dwie oddzielne wartości kluczy w magazynie konfiguracji aplikacji. Domyślnie etykiety wartość klucza jest pusta, lub `null`.
 
 Konfiguracja aplikacji automatycznie nie wartości klucza wersji ich modyfikacji. Używanie etykiet jako sposób tworzenia wielu wersji wartość klucza. Na przykład można wpisać numer wersji aplikacji lub identyfikator zatwierdzenia usługi Git w etykiecie do identyfikowania wartości klucza skojarzone z kompilacji konkretnego oprogramowania.
 

@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: shlo
 ms.openlocfilehash: 46447bdbea93d1f99c5682cf878c2035e6f49b78
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58523029"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60764326"
 ---
 # <a name="validation-activity-in-azure-data-factory"></a>Działanie sprawdzania poprawności w usłudze Azure Data Factory
 Sprawdzanie poprawności w potoku służy do zapewnienia potoku tylko kontynuuje wykonywanie, gdy został zweryfikowany dołączonego istnieje odwołanie do zestawu danych, że spełnia określone kryteria lub osiągnięto limit czasu.
@@ -66,7 +66,7 @@ type | Musi być równa **weryfikacji**. | String | Yes |
 Zestaw danych | Działanie spowoduje wykonanie bloku, dopóki nie został zweryfikowany, to odwołanie do zestawu danych istnieje i że spełnia określone kryteria, lub osiągnięto limit czasu. Podany zestaw danych powinien obsługiwać właściwość "MinimumSize" lub "ChildItems". | Odwołanie do zestawu danych | Yes |
 timeout | Określa limit czasu pracy działania. Jeśli nie określono wartości, wartość domyślna to 7 dni ("7.00:00:00"). Format jest d.hh:mm:ss | String | Nie |
 Stan uśpienia | Opóźnienie w ciągu kilku sekund między prób weryfikacji. Jeśli nie określono wartości, wartość domyślna to 10 sekund. | Liczba całkowita | Nie |
-childItems | Sprawdza, czy folder ma elementy podrzędne. Można ustawić na wartość true: Sprawdź, czy folder istnieje i że ma on elementy. Blokuje, dopóki co najmniej jeden element znajduje się w folderze lub nie zostanie przekroczony limit czasu.-false: Sprawdź, czy folder istnieje i że jest pusty. Blokuje, aż do folderu jest pusta lub do przekroczenia limitu czasu jest osiągnięta wartość. Jeśli wartość nie zostanie określona, działanie zablokuje dopóki folder istnieje, lub do momentu osiągnięcia limitu czasu. | Wartość logiczna | Nie |
+childItems | Sprawdza, czy folder ma elementy podrzędne. Można ustawić na wartość true: Sprawdź, czy folder istnieje i że ma on elementy. Blokuje, dopóki co najmniej jeden element znajduje się w folderze lub nie zostanie przekroczony limit czasu.-false: Sprawdź, czy folder istnieje i że jest pusty. Blokuje, aż do folderu jest pusta lub do przekroczenia limitu czasu jest osiągnięta wartość. Jeśli wartość nie zostanie określona, działanie zablokuje dopóki folder istnieje, lub do momentu osiągnięcia limitu czasu. | Boolean | Nie |
 minimumSize | Minimalny rozmiar pliku w bajtach. Jeśli wartość nie zostanie określona, wartością domyślną jest 0 bajtów | Liczba całkowita | Nie |
 
 

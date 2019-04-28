@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 11/29/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 01aedadfed1ce24b8b6ae75a9163dfe0629ac7c0
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53197524"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60844129"
 ---
-# <a name="key-vault-deployment-template"></a>Szablon wdrożenia usługi Key vault
+# <a name="key-vault-deployment-template"></a>Szablon wdrożenia magazynu kluczy
 
 Następujący szablon usługi Azure Resource Manager definiuje nowe wystąpienie usługi Azure Key Vault.  Jest on używany w artykule [Utwórz certyfikat usługi key vault](cpp-create-key-vault-cert.md). 
 

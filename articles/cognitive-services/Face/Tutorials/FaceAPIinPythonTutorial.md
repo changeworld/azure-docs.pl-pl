@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 11/13/2018
 ms.author: sbowles
 ms.openlocfilehash: e4b762d6f36f8682162160be6f42b8691e4b2ca3
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55870252"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60815260"
 ---
 # <a name="quickstart-create-a-python-script-to-detect-and-frame-faces-in-an-image"></a>Szybki start: Tworzenie skryptu w języku Python w celu wykrywania i oznaczania ramką twarzy na obrazie
 
@@ -112,7 +112,7 @@ Najpierw może zostać wyświetlony monit o wybranie domyślnej przeglądarki. N
 
 ![Młoda kobieta z czerwonym prostokątem narysowanym wokół twarzy](../images/face-rectangle-result.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym przewodniku Szybki start przedstawiono podstawowy proces korzystania z zestawu SDK dla języka Python interfejsu API rozpoznawania twarzy oraz utworzono skrypt do wykrywania i oznaczania ramkami twarzy na obrazie. Następnie omówimy używanie zestawu SDK dla języka Python w bardziej złożonym przykładzie. Przejdź do przykładu Cognitive Face Python w witrynie GitHub, sklonuj go do folderu swojego projektu, a następnie postępuj zgodnie z instrukcjami w pliku _README.md_.
 

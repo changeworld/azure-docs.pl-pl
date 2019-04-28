@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.date: 9/14/2018
 ms.author: aahi
 ms.openlocfilehash: 567a220ce9adcb3cca9c70cef6a7058a85789eb7
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861762"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60809275"
 ---
 # <a name="tutorial-extract-image-details-using-the-bing-image-search-api-and-c"></a>Samouczek: Wyodrębnianie szczegółów obrazu przy użyciu interfejsu API wyszukiwania obrazów Bing i języka C#
 
@@ -106,11 +106,11 @@ https://api.cognitive.microsoft.com/bing/v7.0/images/details?InsightsToken="bcid
 
 Jeśli na obrazie znajdują się osoby lub miejsca, które można zidentyfikować, to żądanie zwróci informacje na ich temat.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Wyświetlanie obrazów i opcji wyszukiwania w jednostronicowej aplikacji internetowej](tutorial-bing-image-search-single-page-app.md)
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 * [Dokumentacja interfejsu API wyszukiwania obrazów Bing](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

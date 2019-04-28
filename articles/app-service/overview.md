@@ -16,11 +16,11 @@ ms.date: 01/04/2017
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: a3ff9b6fc1abf36bf2feddf518e4e920f18a3c23
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54423684"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60835349"
 ---
 # <a name="app-service-overview"></a>Omówienie usługi App Service
 
@@ -46,7 +46,7 @@ Poniżej przedstawiono kilka najważniejszych funkcji usługi App Service:
 
 Oprócz usługi App Service platforma Azure oferuje inne usługi, które mogą służyć do hostingu witryn i aplikacji internetowych. W przypadku większości scenariuszy najlepszym wyborem jest usługa App Service.  W przypadku architektury mikrousług należy rozważyć usługę [Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric). W razie konieczności sprawowania większej kontroli nad maszynami wirtualnymi, na których działa kod, należy wziąć pod uwagę usługę [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/). Aby uzyskać więcej informacji o tym, jak dokonać wyboru między usługami Azure, zobacz [Azure App Service, Virtual Machines, Service Fabric, and Cloud Services comparison](overview-compare.md) (Porównanie usług Azure App Service, Virtual Machines, Service Fabric i Cloud Services).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Utwórz swoją pierwszą aplikację internetową.
 

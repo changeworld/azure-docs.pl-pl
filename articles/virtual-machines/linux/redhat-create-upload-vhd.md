@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 09/27/2018
 ms.author: szark
 ms.openlocfilehash: 01acdf23c3113c3c4d185263b5cab75f3efd34a2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58001652"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60771179"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Przygotowywanie maszyny wirtualnej systemu Red Hat dla platformy Azure
 W tym artykule dowiesz się, jak przygotować maszynę wirtualną Red Hat Enterprise Linux (RHEL) do użycia na platformie Azure. Wersje systemu RHEL, które zostały omówione w tym artykule są 6.7 + i 7.1 +. Funkcji hypervisor do przygotowywania, które zostały omówione w tym artykule są maszyny wirtualne funkcji Hyper-V, na podstawie jądra (KVM) i VMware. Aby uzyskać więcej informacji na temat wymagania kwalifikacyjne dotyczące udziału w systemie Red Hat Cloud Access program zobacz [witryny sieci Web firmy Red Hat Cloud Access](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) i [systemem RHEL na platformie Azure](https://access.redhat.com/ecosystem/ccsp/microsoft-azure).

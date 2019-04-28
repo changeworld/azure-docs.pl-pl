@@ -10,11 +10,11 @@ services: digital-twins
 manager: bertvanhoof
 ms.custom: mvc
 ms.openlocfilehash: 2848f9ce97c2bdad59d86031c5894219875b6059
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437116"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60926526"
 ---
 # <a name="overview-of-azure-digital-twins"></a>Omówienie usługi Azure Digital Twins
 
@@ -98,7 +98,7 @@ Usługa Azure Digital Twins używa usługi Azure IoT Hub w celu łączenia urzą
 
 Aby uzyskać więcej informacji na temat Internetu rzeczy, zobacz [Technologie i rozwiązania usługi Azure IoT](https://docs.microsoft.com/azure/iot-fundamentals/iot-services-and-technologies).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Przejdź do krótkiego pokazu poświęconego usłudze Azure Digital Twins:
 

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: f63087d107b9db30e2af6273afde7f51f1c72404
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295117"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60817658"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>Przekazywanie plików na konto usługi Media Services przy użyciu usługi REST  
 > [!div class="op_single_selector"]
@@ -100,7 +100,7 @@ Aby uzyskać instrukcje dotyczące sposobu konfigurowania Postman na potrzeby te
 
 ## <a name="create-an-access-policy-with-write-permission"></a>Tworzenie zasad dostępu z uprawnieniami do zapisu
 
-### <a name="overview"></a>Przegląd 
+### <a name="overview"></a>Omówienie 
 
 >[!NOTE]
 >Limit różnych zasad usługi AMS wynosi 1 000 000 (na przykład zasad lokalizatorów lub ContentKeyAuthorizationPolicy). Należy używać tego samego identyfikatora zasad, jeśli zawsze są używane uprawnienia dotyczące tych samych dni lub tego samego dostępu, na przykład dla lokalizatorów przeznaczonych do długotrwałego stosowania (nieprzekazywanych zasad). Więcej informacji znajduje się w [tym](media-services-dotnet-manage-entities.md#limit-access-policies) artykule.
@@ -118,7 +118,7 @@ Przed przekazaniem żadnych plików do magazynu obiektów blob, należy ustawić
 
 ## <a name="create-an-asset"></a>Utworzenie elementu zawartości
 
-### <a name="overview"></a>Przegląd
+### <a name="overview"></a>Omówienie
 
 [Zasobów](https://docs.microsoft.com/rest/api/media/operations/asset) jest kontenerem dla wielu typów lub zestawów obiektów w usłudze Media Services, w tym wideo, audio, obrazy, kolekcje miniatur, ścieżki tekstowe i pliki napisów. W interfejsie API REST tworzenia zasobu wymaga wysłanie żądania POST do usługi Media Services oraz umieszczanie właściwości informacji o elementów zawartości w treści żądania.
 
@@ -139,7 +139,7 @@ W tym przykładzie tworzymy niezaszyfrowanych zasobów.
 
 ## <a name="create-a-sas-locator-and-create-the-upload-url"></a>Tworzenie lokalizatora SAS następuje i utworzyć adres URL przekazywania
 
-### <a name="overview"></a>Przegląd
+### <a name="overview"></a>Omówienie
 
 Po utworzeniu AccessPolicy i lokalizatora zestawu rzeczywisty plik zostanie przekazany do kontenera usługi Azure Blob Storage przy użyciu interfejsów API REST usługi Azure Storage. Należy przekazać pliki jako blokowe obiekty BLOB. Stronicowe obiekty BLOB nie są obsługiwane przez usługę Azure Media Services.  
 
@@ -170,7 +170,7 @@ Zagadnienia do rozważenia:
 
 ## <a name="upload-a-file-to-blob-storage-using-the-upload-url"></a>Przekazywanie pliku do magazynu obiektów blob przy użyciu adresu URL przesyłania
 
-### <a name="overview"></a>Przegląd
+### <a name="overview"></a>Omówienie
 
 Teraz, gdy masz adres URL przesyłania, należy napisać kodu za pomocą interfejsów API usługi Azure Blob bezpośrednio do przekazania pliku do kontenera sygnatury dostępu Współdzielonego. Aby uzyskać więcej informacji zobacz następujące artykuły:
 

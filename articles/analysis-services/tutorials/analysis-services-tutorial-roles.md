@@ -9,11 +9,11 @@ ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: owend
 ms.openlocfilehash: 4c1a3f52c37dcaad4bc2f84d6d2fa04b61376cf1
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188780"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60788026"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Samouczek: Konfigurowanie ról administratora i użytkowników serwera
 
@@ -140,7 +140,7 @@ W tym zadaniu użyjesz polecenia [Create](https://docs.microsoft.com/sql/analysi
 Gdy konta i role użytkownika lub grupy nie są już potrzebne, można je usunąć. Aby to zrobić, użyj funkcji**Właściwości roli** > **Członkostwo**, aby usunąć konta użytkowników, lub kliknij prawym przyciskiem myszy rolę, a następnie kliknij przycisk **Usuń**.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym samouczku przedstawiono sposób łączenia się z serwerem Azure AD i pracy z przykładowymi modelowymi bazami danych adventureworks oraz właściwościami w programie SSMS. Przedstawiono również sposób korzystania ze skryptów SSMS i TMSL w celu dodawania użytkowników lub grup do istniejących i nowych ról. Teraz, po skonfigurowaniu uprawnień użytkowników na serwerze i w przykładowej modelowej bazie danych, Ty i inni użytkownicy możecie łączyć się z nimi za pomocą aplikacji klienckich, takich jak Power BI. Aby dowiedzieć się więcej, przejdź do następnego samouczka. 
 
 > [!div class="nextstepaction"]

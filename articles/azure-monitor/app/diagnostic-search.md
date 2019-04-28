@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: mbullwin
 ms.openlocfilehash: dfbaabd3d27804909334a7a370bcc89115e625c4
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119174"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60900270"
 ---
 # <a name="using-search-in-application-insights"></a>Za pomocą wyszukiwania w usłudze Application Insights
 Wyszukiwanie jest funkcją [usługi Application Insights](../../azure-monitor/app/app-insights-overview.md) służącego do wyszukania i zapoznaj się z elementów telemetrii, takich jak wyświetleń stron, wyjątki lub żądania sieci web. I przeglądać ślady dzienników i zdarzeń, które zostały zakodowane.
@@ -26,7 +26,7 @@ Wyszukiwanie jest funkcją [usługi Application Insights](../../azure-monitor/ap
 
 ## <a name="where-do-you-see-search"></a>Gdzie można zobaczyć wyszukiwania?
 
-### <a name="in-the-azure-portal"></a>W witrynie Azure portal
+### <a name="in-the-azure-portal"></a>W witrynie Azure Portal
 
 Wyszukiwanie diagnostyczne można otworzyć jawnie z bloku Omówienie usługi Application Insights w Twojej aplikacji:
 
@@ -112,7 +112,7 @@ Można ustawić czas, zakres, są szybsze jako krótszy zakres wyszukiwania.
 
 Wyszukaj kompletne wyrazy, nie podciągów. Użyj znaków cudzysłowu, należy ująć w znaki specjalne.
 
-| ciąg | jest *nie* znalezione przez | Jednak te go znaleźć |
+| string | jest *nie* znalezione przez | Jednak te go znaleźć |
 | --- | --- | --- |
 | HomeController.About |strona główna<br/>Kontroler<br/>limit | homecontroller<br/>informacje<br/>"homecontroller.about"|
 |Stany Zjednoczone|Sygnalizowanie UNI<br/>ted|Zjednoczone<br/>Stany<br/>Stany Zjednoczone i<br/>"united states"

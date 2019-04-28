@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 7cd4a54a62d7304587c55338f088c504e40a74af
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: ff291bda87ca4b2b4055e36989b035cf410b3b0f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670682"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60744310"
 ---
 # <a name="describing-a-service-fabric-cluster"></a>Opisujące klaster usługi Service fabric
 Menedżer zasobów klastra usługi Service Fabric udostępnia kilka mechanizmów do opisywania klastra. Podczas wykonywania Menedżer zasobów klastra używa tych informacji, aby zapewnić wysoką dostępność usług uruchomionych w klastrze. Wymuszając te reguły istotne, również próbuje zoptymalizować zużycie zasobów w klastrze.

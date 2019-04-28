@@ -9,11 +9,11 @@ ms.date: 04/03/2017
 ms.author: ancav
 ms.subservice: autoscale
 ms.openlocfilehash: 25ef2541dfa0b4cbd6e11d64381da645acfe653a
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259299"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60787315"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>Użyj akcji skalowania automatycznego, aby wysyłać wiadomości e-mail i elementy webhook powiadomienia o alertach w usłudze Azure Monitor
 Ten artykuł pokazuje, jak skonfigurować wyzwalaczy, aby było wywołanie konkretne adresy URL lub wysyłać wiadomości e-mail oparte na akcje skalowania automatycznego na platformie Azure.  
@@ -108,7 +108,7 @@ Po wygenerowaniu powiadomienia skalowania automatycznego, następujące metadane
 | status |tak |Stan, który wskazuje, że zostało wygenerowane akcji skalowania automatycznego |
 | operacja |tak |Zwiększanie wystąpień będzie "Limit skalowania" i dla spadek wystąpień będzie "W skali" |
 | Kontekst |tak |Kontekst akcji skalowania automatycznego |
-| sygnatura czasowa |tak |Sygnaturę czasową, gdy akcja skalowania automatycznego została wyzwolona |
+| timestamp |tak |Sygnaturę czasową, gdy akcja skalowania automatycznego została wyzwolona |
 | id |Yes |Identyfikator Menedżera zasobów Ustawienia skalowania automatycznego |
 | name |Yes |Nazwa ustawienia automatycznego skalowania |
 | szczegóły |Yes |Opis akcji, która miała usługi skalowania automatycznego i zmianę liczby wystąpień |

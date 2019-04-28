@@ -17,11 +17,11 @@ ms.date: 11/08/2018
 ms.author: yili
 ms.custom: seodec18
 ms.openlocfilehash: 4acadc4c08ef50e7d52303689c38c43f81187669
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315538"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60852523"
 ---
 # <a name="continuous-deployment-with-web-app-for-containers"></a>Ciągłe wdrażanie za pomocą usługi Web App for Containers
 
@@ -69,4 +69,4 @@ Skopiuj adres URL elementu Webhook. Aby dodać element webhook usługi Docker Hu
 * [Tworzenie aplikacji internetowej języka Ruby w usłudze App Service w systemie Linux](quickstart-ruby.md)
 * [Wdrażanie aplikacji internetowej Docker/Go w sieci Web App for Containers](quickstart-docker-go.md)
 * [Azure App Service on Linux FAQ](./app-service-linux-faq.md) (Usługa Azure App Service w systemie Linux — często zadawane pytania)
-* [Zarządzanie aplikacją internetową dla kontenerów za pomocą narzędzia wiersza polecenia platformy Azure](./app-service-linux-cli.md)
+* [Zarządzanie funkcją Web App for Containers za pomocą interfejsu wiersza polecenia platformy Azure](./app-service-linux-cli.md)

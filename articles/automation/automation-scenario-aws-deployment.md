@@ -10,11 +10,11 @@ ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 348c28f6a2d72048e34f117e802abf243597b458
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54425224"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60737643"
 ---
 # <a name="azure-automation-scenario---provision-an-aws-virtual-machine"></a>Scenariusz automatyzacji platformy Azure — aprowizowanie maszyny wirtualnej usług AWS
 W tym artykule dowiesz się, jak dzięki usłudze Azure Automation do aprowizowania maszyny wirtualnej w ramach subskrypcji usługi Amazon Web Service (AWS) i nadaj tej maszyny Wirtualnej określonej nazwie — który AWS odnosi się do jako "" tagowania maszyny Wirtualnej.

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 08/01/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 014a26c2500959502eeb1c50d3f311584c1ad84e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798625"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60742972"
 ---
 # <a name="upload-an-azure-service-management-certificate"></a>Prześlij certyfikat usługi Azure Service Management
 Certyfikaty zarządzania umożliwiają uwierzytelnianie przy użyciu klasycznego modelu wdrażania udostępnianych przez platformę Azure. Wiele programów i narzędzi (takich jak Visual Studio lub zestawu SDK platformy Azure) Automatyzuj Konfigurowanie i wdrażanie różnych usług platformy Azure przy użyciu funkcji tych certyfikatów. 

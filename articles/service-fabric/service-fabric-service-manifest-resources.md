@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
 ms.openlocfilehash: 8707a9cb90afe1bf72f3aef6377f8ada409a1c64
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667127"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60837763"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Określanie zasobów w manifeście usługi
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Manifest usługi umożliwia zasoby, które są używane przez usługę do można zadeklarować/zmienić bez konieczności zmieniania kodu skompilowanego. Usługa Azure Service Fabric obsługuje konfigurację zasobów punktu końcowego usługi. Dostęp do zasobów, które są określone w manifeście usługi mogą być kontrolowane za pośrednictwem grupy SecurityGroup w manifeście aplikacji. Deklaracja zasobów umożliwia następujące zasoby, aby zmienić w czasie wdrażania, co oznacza, że nie trzeba wprowadzić nowy mechanizm konfiguracji usługi. Definicja schematu dla pliku ServiceManifest.xml jest instalowany z programem Service Fabric SDK i narzędzi do *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*.
 
 ## <a name="endpoints"></a>Punkty końcowe

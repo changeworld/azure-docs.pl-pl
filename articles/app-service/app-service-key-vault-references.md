@@ -13,11 +13,11 @@ ms.date: 11/20/2018
 ms.author: mahender
 ms.custom: seodec18
 ms.openlocfilehash: 662260c3cf37f8f8a675c522f3d3dea41153e485
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663575"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60853148"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>Użyj odwołania do usługi Key Vault dla usługi App Service i Azure Functions (wersja zapoznawcza)
 

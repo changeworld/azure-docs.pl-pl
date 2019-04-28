@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: stewu
 ms.openlocfilehash: 9e5570b937fe97cc9b6ccd9ac804a35ff8e07d6f
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55883070"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60805546"
 ---
 # <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-storage-gen2"></a>Wskazówki dotyczące technologii Hive HDInsight i Azure Data Lake Storage Gen2 dostrajania wydajności
 
@@ -22,7 +22,7 @@ Domyślne ustawienia zostały ustawione, aby zapewnić dobrą wydajność w wiel
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * **Subskrypcja platformy Azure**. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Konta Data Lake Storage Gen2**. Aby uzyskać instrukcje na temat jej tworzenia, zobacz [Szybki Start: Tworzenie konta magazynu Azure Data Lake Storage Gen2](data-lake-storage-quickstart-create-account.md)
+* **Konta Data Lake Storage Gen2**. Aby uzyskać instrukcje na temat jej tworzenia, zobacz [Szybki Start: Tworzenie konta usługi Azure Data Lake Storage Gen2](data-lake-storage-quickstart-create-account.md)
 * **Klaster usługi Azure HDInsight** dzięki dostępowi do konta Data Lake Storage Gen2. Zobacz [klastrów użycia usługi Azure Data Lake magazynu Gen2 za pomocą usługi Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)
 * **Systemem Hive HDInsight**.  Aby dowiedzieć się więcej o uruchamianiu zadań Hive na HDInsight, zobacz [korzystanie z programu Hive na HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-hive)
 * **Wytyczne dotyczące Data Lake Storage Gen2 dostrajania wydajności**.  Pojęcia związane z ogólnej wydajności, zobacz [Data Lake Storage Gen2 dostrajania wskazówki dotyczące wydajności](data-lake-storage-performance-tuning-guidance.md)

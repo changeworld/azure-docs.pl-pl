@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: magoedte
 ms.openlocfilehash: c7031e54c354392379fee83dbf2a777ba726c5e7
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58480061"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60777381"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Łączenie komputerów Windows z usługą Azure Monitor
 
@@ -182,7 +182,7 @@ Aby bezpośrednio pobrać kod produktu za pomocą pakietu instalacji agenta, nal
 
 Po zakończeniu instalacji agenta zweryfikowaniem jej został pomyślnie połączony, i raportowania można zrobić na dwa sposoby.  
 
-Z komputera w **Panelu sterowania**, Znajdź element **Microsoft Monitoring Agent**.  Zaznacz go i **usługi Azure Log Analytics** karcie agent powinien być wyświetlany komunikat z informacją: **Program Microsoft Monitoring Agent pomyślnie połączył się z usługą Microsoft Operations Management Suite.**<br><br> ![Stan połączenia programu MMA z usługą Log Analytics](media/agent-windows/log-analytics-mma-laworkspace-status.png)
+W **Panelu sterowania** na komputerze znajdź element **Microsoft Monitoring Agent**.  Po jego wybraniu na karcie **Azure Log Analytics** agent powinien wyświetlić następujący komunikat: **Program Microsoft Monitoring Agent pomyślnie połączył się z usługą Microsoft Operations Management Suite.**<br><br> ![Stan połączenia programu MMA z usługą Log Analytics](media/agent-windows/log-analytics-mma-laworkspace-status.png)
 
 Można również wykonać zapytanie dziennika proste w witrynie Azure portal.  
 

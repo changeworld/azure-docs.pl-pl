@@ -2,20 +2,21 @@
 title: Migrowanie rozwiązania do usługi SQL Data Warehouse | Dokumentacja firmy Microsoft
 description: Wskazówki dotyczące migracji do pobierania rozwiązania na platformę Azure SQL Data Warehouse.
 services: sql-data-warehouse
-author: jrowlandjones
-manager: craigg
+author: WenJason
+manager: digimobile
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: implement
-ms.date: 04/17/2018
-ms.author: jrj
+origin.date: 04/17/2018
+ms.date: 03/25/2019
+ms.author: v-jay
 ms.reviewer: igorstan
 ms.openlocfilehash: 04c921282d3591e7326d326c230bf72e7f5c1812
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57313025"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60776224"
 ---
 # <a name="migrate-your-solution-to-azure-sql-data-warehouse"></a>Migrowanie rozwiązania do usługi Azure SQL Data Warehouse
 Zobacz, co jest zaangażowana w migrację istniejącego rozwiązania bazy danych Azure SQL Data Warehouse. 
@@ -36,7 +37,6 @@ Usługa SQL Data Warehouse nie jest używany do operacyjnej obciążenia (OLTP),
 - Wiersz po wierszu przetwarzania potrzeb
 - Niezgodnych formatach (JSON, XML)
 
-
 ## <a name="plan-the-migration"></a>Planowanie migracji
 
 Gdy okaże się przeprowadzić migrację istniejącego rozwiązania do usługi SQL Data Warehouse, należy zaplanować migrację przed rozpoczęciem pracy. 
@@ -51,17 +51,6 @@ Do przeprowadzenia prawidłowej migracji, należy migrować swoje schematy tabel
 -  [Migrowanie kodu](sql-data-warehouse-migrate-code.md)
 -  [Migrowanie danych](sql-data-warehouse-migrate-data.md). 
 
-<!--
-## Perform the migration
-
-
-## Deploy the solution
-
-
-## Validate the migration
-
--->
-
 ## <a name="next-steps"></a>Kolejne kroki
 CAT (zespół doradczy klientów) ma pewne wspaniałe wskazówki SQL Data Warehouse, publikują za pośrednictwem naszych blogach.  Zapoznaj się z ich artykułu [migrowanie danych do usługi Azure SQL Data Warehouse w praktyce] [ Migrating data to Azure SQL Data Warehouse in practice] Aby uzyskać dodatkowe wskazówki dotyczące migracji.
 
@@ -73,3 +62,5 @@ CAT (zespół doradczy klientów) ma pewne wspaniałe wskazówki SQL Data Wareho
 
 <!--Other Web references-->
 [Migrating data to Azure SQL Data Warehouse in practice]: https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/
+
+<!--Update_Description: update meta properties, wording update-->

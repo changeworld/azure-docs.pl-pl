@@ -15,17 +15,17 @@ ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: kumud
 ms.openlocfilehash: 894a56c2e51e8fa8a2d72253563d218416ace4cb
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53161937"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60861963"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Omówienie protokołu IPv6 dla modułu równoważenia obciążenia platformy Azure
 
 
 >[!NOTE] 
->Usługa Azure Load Balancer obsługuje dwa różne typy: Basic i Standard. W tym artykule omówiono usługę Load Balancer w warstwie Podstawowa. Aby uzyskać więcej informacji na temat Balancer w warstwie standardowa, zobacz [omówienie Standard Load Balancer](load-balancer-standard-overview.md).
+>Usługa Azure Load Balancer obsługuje dwa różne typy: Podstawowa i Standardowa. W tym artykule omówiono usługę Load Balancer w warstwie Podstawowa. Aby uzyskać więcej informacji na temat Balancer w warstwie standardowa, zobacz [omówienie Standard Load Balancer](load-balancer-standard-overview.md).
 
 Moduły równoważenia obciążenia dostępnego z Internetu, można wdrożyć przy użyciu adresu IPv6. Oprócz protokołu IPv4 połączenia dzięki temu następujące możliwości:
 

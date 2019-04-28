@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: shlo
 ms.openlocfilehash: 7edaa4c673c2cb94dc5bd0245ce66c9fe6a7dd3c
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214304"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60764292"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Działanie internetowe w usłudze Azure Data Factory
 Działanie WebActivity może być używane do wywoływania niestandardowego punktu końcowego REST z potoku usługi Data Factory. Można przekazywać zestawy danych i połączone usługi do zużycia i dostępu przez działanie.
@@ -63,8 +63,8 @@ Działanie WebActivity może być używane do wywoływania niestandardowego punk
 
 Właściwość | Opis | Dozwolone wartości | Wymagane
 -------- | ----------- | -------------- | --------
-name | Nazwa działania w sieci web | Ciąg | Yes
-type | Musi być równa **WebActivity**. | Ciąg | Yes
+name | Nazwa działania w sieci web | String | Yes
+type | Musi być równa **WebActivity**. | String | Yes
 method | Metoda interfejsu API REST dla docelowego punktu końcowego. | ciąg. <br/><br/>Obsługiwane typy: POBIERZ "PUBLIKUJ", "PUT" | Yes
 url | Docelowy punkt końcowy i ścieżki | Ciąg lub wyrażenie obiektu resultType ciągu. Działanie przekroczy limit czasu na 1 minutę z powodu błędu, jeśli nie otrzymasz odpowiedzi z punktu końcowego. | Yes
 Nagłówki | Nagłówki, które są wysyłane do żądania. Na przykład, aby ustawić język i typ żądania: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`. | Ciąg (lub wyrażenie obiektu resultType ciągu) | Tak, wymagany jest nagłówek Content-type. `"headers":{ "Content-Type":"application/json"}`

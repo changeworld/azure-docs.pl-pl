@@ -16,11 +16,11 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 3e7db670a125f3c5f308107aabfbbab9301b7561
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53718099"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60765169"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>Tworzenie aplikacji internetowej w środowisku App Service Environment w wersji 1
 
@@ -28,7 +28,7 @@ ms.locfileid: "53718099"
 > Ten artykuł dotyczy środowiska App Service Environment w wersji 1.  Istnieje nowsza wersja usługi App Service Environment jest łatwiejszy w obsłudze, która działa na bardziej zaawansowanych infrastruktury. Aby dowiedzieć się więcej na temat nowej wersji rozpoczynać [wprowadzenie do usługi App Service Environment](intro.md).
 > 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 W tym samouczku przedstawiono sposób tworzenia aplikacji sieci web i planów usługi App Service w [środowiska App Service Environment v1](app-service-app-service-environment-intro.md) (ASE). 
 
 > [!NOTE]

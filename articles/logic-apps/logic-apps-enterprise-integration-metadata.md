@@ -11,11 +11,11 @@ ms.topic: article
 ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.date: 01/17/2019
 ms.openlocfilehash: 5ebdf45bec4e7cfceb75354af40c7a21c22c6eef
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54446786"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60846205"
 ---
 # <a name="manage-artifact-metadata-in-integration-accounts-with-azure-logic-apps-and-enterprise-integration-pack"></a>Zarządzanie metadanymi artefaktu w ramach kont integracji z usługi Azure Logic Apps i pakiet integracyjny dla przedsiębiorstw
 
@@ -63,7 +63,7 @@ Można zdefiniować niestandardowych metadanych dla artefaktów w ramach kont in
 
 1. Podaj te informacje w artefakcie, że ma zostać znaleziona:
 
-   | Właściwość | Wymagany | Wartość | Opis | 
+   | Właściwość | Wymagany | Value | Opis | 
    |----------|---------|-------|-------------| 
    | **Typ artefaktu** | Yes | **Schemat**, **mapy**, **partnera**, **umowy**, lub typu niestandardowego | Typ artefaktu, który ma | 
    | **Nazwa artefaktu** | Yes | <*Nazwa artefaktu*> | Nazwa artefaktu, który ma | 
@@ -85,7 +85,7 @@ Można zdefiniować niestandardowych metadanych dla artefaktów w ramach kont in
 
       Załóżmy, że chcesz pobrać `routingUrl` metadanych, który jest dodawany we wcześniejszej części tego tematu. Poniżej przedstawiono wartości właściwości, których można określić: 
 
-      | Właściwość | Wymagany | Wartość | Opis | 
+      | Właściwość | Wymagany | Value | Opis | 
       |----------|----------|-------|-------------| 
       | **Metoda** | Yes | <*Operacja do uruchomienia*> | Operacja HTTP do uruchamiania w artefakcie. Na przykład, ta akcja HTTP używa **UZYSKAĆ** metody. | 
       | **IDENTYFIKATOR URI** | Yes | <*metadata-location*> | Aby uzyskać dostęp do `routingUrl` metadanych z wartości artefaktu możesz pobrać, można użyć wyrażenia, na przykład: <p>`@{outputs('Integration_Account_Artifact_Lookup')['properties']['metadata']['routingUrl']}` | 

@@ -14,11 +14,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: b2c665de94750c4c6f41bda47960fdb9ba17e819
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58905634"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60824036"
 ---
 # <a name="move-data-from-an-odata-source-using-azure-data-factory"></a>Przenoszenie danych źródła z OData przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -67,7 +67,7 @@ Poniższa tabela zawiera opis specyficzne dla usługi OData, połączone element
 | url |Adres URL usługi OData. |Yes |
 | Element authenticationType |Typ uwierzytelniania używany do łączenia z źródła OData. <br/><br/> W chmurze OData możliwe wartości to anonimowe, podstawowe i OAuth (Uwaga obsługują obecnie tylko usługę Azure Data Factory usługi Azure Active Directory na podstawie OAuth). <br/><br/> Dla protokołu OData w środowisku lokalnym możliwe wartości to anonimowe, podstawowe i Windows. |Yes |
 | nazwa użytkownika |Określ nazwę użytkownika, jeśli używasz uwierzytelniania podstawowego. |Tak (tylko wtedy, gdy używasz uwierzytelniania podstawowego) |
-| hasło |Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. |Tak (tylko wtedy, gdy używasz uwierzytelniania podstawowego) |
+| password |Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. |Tak (tylko wtedy, gdy używasz uwierzytelniania podstawowego) |
 | authorizedCredential |Jeśli używasz uwierzytelniania OAuth, kliknij przycisk **Autoryzuj** znajdujący się w kreatora kopiowania usługi Data Factory lub edytorze, a następnie wprowadź swoje poświadczenia, wartość tej właściwości zostanie wygenerowany automatycznie. |Tak (tylko w przypadku korzystania z uwierzytelniania OAuth) |
 | gatewayName |Nazwa bramy, do którego usługa Data Factory powinna używać do połączenia z usługą OData w środowisku lokalnym. Określ tylko, jeśli kopiujesz dane z lokalnego źródła OData. |Nie |
 

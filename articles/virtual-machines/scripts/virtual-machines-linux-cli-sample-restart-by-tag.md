@@ -17,11 +17,11 @@ ms.date: 03/01/2017
 ms.author: allclark
 ms.custom: mvc
 ms.openlocfilehash: 94845573461d99fda9318f303d822abb6ca3f257
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751144"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60862793"
 ---
 # <a name="restart-vms"></a>Ponowne uruchamianie maszyn wirtualnych
 
@@ -94,7 +94,7 @@ Ten skrypt zawiera następujące polecenia służące do tworzenia grupy zasobó
 | [az vm restart](https://docs.microsoft.com/cli/azure/vm) | Ponownie uruchamia maszyny wirtualne. |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure).
 

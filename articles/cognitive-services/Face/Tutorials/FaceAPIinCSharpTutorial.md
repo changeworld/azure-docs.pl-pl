@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: pafarley
 ms.openlocfilehash: 6a60afc45894518f92115976876ddd50efa1e410
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310189"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60815350"
 ---
 # <a name="tutorial-create-a-wpf-app-to-display-face-data-in-an-image"></a>Samouczek: tworzenie aplikacji WPF do wyświetlania danych twarzy na obrazie
 
@@ -121,7 +121,7 @@ Uruchom aplikację i przejdź do obrazu zawierającego twarz. Zaczekaj kilka sek
 ![Zrzut ekranu przedstawiający wykryte twarze otoczone prostokątami](../Images/getting-started-cs-detected.png)
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku przedstawiono podstawowy proces korzystania z zestawu SDK platformy .NET dla usługi rozpoznawania twarzy oraz utworzono aplikację do wykrywania i oznaczania ramkami twarzy na obrazie. Teraz dowiedz się więcej o szczegółach wykrywania twarzy.
 

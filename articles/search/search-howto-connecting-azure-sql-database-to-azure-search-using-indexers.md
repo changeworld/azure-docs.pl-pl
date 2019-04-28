@@ -11,11 +11,11 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
 ms.openlocfilehash: 5453bcdd371c0639cb1d3568f05a1768e6204d3d
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57315218"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60817168"
 ---
 # <a name="connect-to-and-index-azure-sql-database-content-using-azure-search-indexers"></a>Nawiązywanie połączenia i indeksu usługi Azure SQL Database zawartości przy użyciu indeksatorów usługi Azure Search
 
@@ -288,7 +288,7 @@ Gdy korzystające z techniki opcji soft-delete, można określić zasady usuwani
 ## <a name="mapping-between-sql-and-azure-search-data-types"></a>Mapowanie między typami danych SQL i Azure Search
 | Typ danych SQL | Dozwolone typy pól indeks docelowy | Uwagi |
 | --- | --- | --- |
-| Bitowe |Edm.Boolean, Edm.String | |
+| bit |Edm.Boolean, Edm.String | |
 | int, smallint, tinyint |Edm.Int32, Edm.Int64, Edm.String | |
 | bigint |Edm.Int64, Edm.String | |
 | prawdziwe, float |Edm.Double, Edm.String | |
@@ -297,7 +297,7 @@ Gdy korzystające z techniki opcji soft-delete, można określić zasady usuwani
 | smalldatetime, datetime, datetime2, date, datetimeoffset |Edm.DateTimeOffset, Edm.String | |
 | uniqueidentifer |Edm.String | |
 | Lokalizacja geograficzna |Edm.GeographyPoint |Obsługiwane są tylko lokalizacja geograficzna wystąpień typu punktu z 4326 SRID, (jest to ustawienie domyślne) |
-| ROWVERSION |ND |Wersja wiersza kolumny nie mogą być przechowywane w indeksie wyszukiwania, ale może służyć do śledzenia zmian |
+| rowversion |ND |Wersja wiersza kolumny nie mogą być przechowywane w indeksie wyszukiwania, ale może służyć do śledzenia zmian |
 | czas, przedział czasu, binary, varbinary, obraz, xml, geometrii, typy CLR |ND |Nieobsługiwane |
 
 ## <a name="configuration-settings"></a>Ustawienia konfiguracji

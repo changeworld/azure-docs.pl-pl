@@ -11,11 +11,11 @@ ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
 ms.openlocfilehash: 06b7fb678bc79203589cfa75e8afb457d6ed344f
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594325"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60866526"
 ---
 # <a name="database-views-in-azure-blockchain-workbench"></a>Widoki bazy danych w aplikacji Azure Blockchain Workbench
 
@@ -39,7 +39,7 @@ Ten widok zawiera szczegółowe informacje dotyczące **aplikacje** zostały prz
 | ApplicationName                  | nvarchar(50)  | Nie          | Nazwa aplikacji |
 | ApplicationDescription           | nvarchar(255) | Yes         | Opis aplikacji |
 | ApplicationDisplayName           | nvarchar(255) | Nie          | Nazwa będzie wyświetlana w interfejsie użytkownika |
-| ApplicationEnabled               | Bitowe           | Nie          | Określa, czy aplikacja jest obecnie włączona.<br /> **Uwaga:** Mimo że aplikacja może uwzględnione jako wyłączone w bazie danych, skojarzonych umów nadal korzystać z łańcucha bloków i dane dotyczące tych umów pozostają w bazie danych. |
+| ApplicationEnabled               | bit           | Nie          | Określa, czy aplikacja jest obecnie włączona.<br /> **Uwaga:** Mimo że aplikacja może uwzględnione jako wyłączone w bazie danych, skojarzonych umów nadal korzystać z łańcucha bloków i dane dotyczące tych umów pozostają w bazie danych. |
 | UploadedDtTm                     | datetime2(7)  | Nie          | Data i godzina, który został przekazany kontraktu |
 | UploadedByUserId                 | int           | Nie          | Identyfikator użytkownika, który przekazywane aplikacji |
 | UploadedByUserExternalId         | nvarchar(255) | Nie          | Zewnętrzny identyfikator użytkownika, który przekazywane aplikacji. Domyślnie ten identyfikator jest użytkownika z usługi Azure Active Directory przez konsorcjum.                                                                                                |
@@ -129,7 +129,7 @@ Ten widok udostępnia szczegółowe informacje o wdrożonych umów. Dla każdej 
 | ApplicationId                            | int            | Nie          | Unikatowy identyfikator aplikacji |
 | ApplicationName                          | nvarchar (50)  | Nie          | Nazwa aplikacji |
 | ApplicationDisplayName                   | nvarchar (255) | Nie          | Nazwa będzie wyświetlana w interfejsie użytkownika |
-| ApplicationEnabled                       | Bitowe            | Nie          | Określa, czy aplikacja jest obecnie włączona.<br /> **Uwaga:** Mimo że aplikacja może uwzględnione jako wyłączone w bazie danych, skojarzonych umów nadal korzystać z łańcucha bloków i dane dotyczące tych umów pozostają w bazie danych.  |
+| ApplicationEnabled                       | bit            | Nie          | Określa, czy aplikacja jest obecnie włączona.<br /> **Uwaga:** Mimo że aplikacja może uwzględnione jako wyłączone w bazie danych, skojarzonych umów nadal korzystać z łańcucha bloków i dane dotyczące tych umów pozostają w bazie danych.  |
 | WorkflowId                               | int            | Nie          | Unikatowy identyfikator dla przepływu pracy skojarzonego z umową |
 | WorkflowName                             | nvarchar(50)   | Nie          | Nazwa przepływu pracy skojarzonego z umową |
 | WorkflowDisplayName                      | nvarchar(255)  | Nie          | Nazwa przepływu pracy skojarzonego z kontraktem wyświetlane w interfejsie użytkownika |
@@ -164,7 +164,7 @@ Ten widok zaspokajają większość informacji dotyczących działania podjęte 
 | ApplicationId                            | int           | Nie          | Unikatowy identyfikator aplikacji |
 | ApplicationName                          | nvarchar(50)  | Nie          | Nazwa aplikacji |
 | ApplicationDisplayName                   | nvarchar(255) | Nie          | Nazwa będzie wyświetlana w interfejsie użytkownika |
-| ApplicationEnabled                       | Bitowe           | Nie          | To pole wskazuje, czy aplikacja jest obecnie włączona. Pamiętaj — mimo że aplikacja może pojawiają się jako wyłączone w bazie danych, skojarzonych umów nadal korzystać z łańcucha bloków i dane dotyczące tych umów pozostają w bazie danych.                                                  |
+| ApplicationEnabled                       | bit           | Nie          | To pole wskazuje, czy aplikacja jest obecnie włączona. Pamiętaj — mimo że aplikacja może pojawiają się jako wyłączone w bazie danych, skojarzonych umów nadal korzystać z łańcucha bloków i dane dotyczące tych umów pozostają w bazie danych.                                                  |
 | WorkflowId                               | int           | Nie          | Unikatowy identyfikator dla przepływu pracy |
 | WorkflowName                             | nvarchar(50)  | Nie          | Nazwa przepływu pracy |
 | WorkflowDisplayName                      | nvarchar(255) | Nie          | Nazwa przepływu pracy do wyświetlenia w interfejsie użytkownika |
@@ -203,7 +203,7 @@ Ten widok zaspokajają większość informacji dotyczących działania podjęte 
 | TransactionFrom                          | nvarchar(255) | Yes         | Strona, która pochodzi transakcji |
 | TransactionTo                            | nvarchar(255) | Yes         | Strona, która została dokonana transakcja z |
 | TransactionHash                          | nvarchar(255) | Yes         | Skrót transakcji |
-| TransactionIsWorkbenchTransaction        | Bitowe           | Yes         | Bit, który określa, czy transakcja jest transakcja aplikacji Azure Blockchain Workbench |
+| TransactionIsWorkbenchTransaction        | bit           | Yes         | Bit, który określa, czy transakcja jest transakcja aplikacji Azure Blockchain Workbench |
 | TransactionProvisioningStatus            | int           | Yes         | Określa bieżący stan procesu inicjowania obsługi administracyjnej dla transakcji. Możliwe wartości: <br />0 – transakcja została utworzona przez interfejs API w bazie danych<br />1 — transakcja została wysłana do rejestru<br />2 — transakcja została pomyślnie wdrożona w księdze                 |
 | TransactionValue                         | decimal(32,2) | Yes         | Wartość transakcji |
 
@@ -223,7 +223,7 @@ Ten widok zaspokajają większość informacje dotyczące właściwości skojarz
 | ApplicationId                      | int           | Nie          | Unikatowy identyfikator aplikacji |
 | ApplicationName                    | nvarchar(50)  | Nie          | Nazwa aplikacji |
 | ApplicationDisplayName             | nvarchar(255) | Nie          | Nazwa będzie wyświetlana w interfejsie użytkownika |
-| ApplicationEnabled                 | Bitowe           | Nie          | Określa, czy aplikacja jest obecnie włączona.<br />**Uwaga:** Mimo że aplikacja może uwzględnione jako wyłączone w bazie danych, skojarzonych umów nadal korzystać z łańcucha bloków i dane dotyczące tych umów pozostają w bazie danych.                      |
+| ApplicationEnabled                 | bit           | Nie          | Określa, czy aplikacja jest obecnie włączona.<br />**Uwaga:** Mimo że aplikacja może uwzględnione jako wyłączone w bazie danych, skojarzonych umów nadal korzystać z łańcucha bloków i dane dotyczące tych umów pozostają w bazie danych.                      |
 | WorkflowId                         | int           | Nie          | Unikatowy identyfikator dla przepływu pracy |
 | WorkflowName                       | nvarchar(50)  | Nie          | Nazwa przepływu pracy |
 | WorkflowDisplayName                | nvarchar(255) | Nie          | Nazwa przepływu pracy, wyświetlana w interfejsie użytkownika |
@@ -263,7 +263,7 @@ Ten widok zaspokajają większość informacji dotyczących stanu określonych z
 | ApplicationId                      | int           | Nie          | Unikatowy identyfikator aplikacji |
 | ApplicationName                    | nvarchar(50)  | Nie          | Nazwa aplikacji |
 | ApplicationDisplayName             | nvarchar(255) | Nie          | Nazwa będzie wyświetlana w interfejsie użytkownika |
-| ApplicationEnabled                 | Bitowe           | Nie          | Określa, czy aplikacja jest obecnie włączona.<br />**Uwaga:** Mimo że aplikacja może uwzględnione jako wyłączone w bazie danych, skojarzonych umów nadal korzystać z łańcucha bloków i dane dotyczące tych umów pozostają w bazie danych. |
+| ApplicationEnabled                 | bit           | Nie          | Określa, czy aplikacja jest obecnie włączona.<br />**Uwaga:** Mimo że aplikacja może uwzględnione jako wyłączone w bazie danych, skojarzonych umów nadal korzystać z łańcucha bloków i dane dotyczące tych umów pozostają w bazie danych. |
 | WorkflowId                         | int           | Nie          | Unikatowy identyfikator dla przepływu pracy |
 | WorkflowName                       | nvarchar(50)  | Nie          | Nazwa przepływu pracy |
 | WorkflowDisplayName                | nvarchar(255) | Nie          | Nazwa wyświetlana w interfejsie użytkownika |
@@ -315,7 +315,7 @@ Ten widok przedstawia metadane przepływu pracy podstawowe szczegóły, a także
 | ApplicationId                     | int           | Nie          | Unikatowy identyfikator aplikacji |
 | ApplicationName                   | nvarchar(50)  | Nie          | Nazwa aplikacji |
 | ApplicationDisplayName            | nvarchar(255) | Nie          | Nazwa będzie wyświetlana w interfejsie użytkownika |
-| ApplicationEnabled                | Bitowe           | Nie          | Określa, czy aplikacja jest włączona |
+| ApplicationEnabled                | bit           | Nie          | Określa, czy aplikacja jest włączona |
 | WorkflowId                        | int           | Yes         | Unikatowy identyfikator dla przepływu pracy |
 | WorkflowName                      | nvarchar(50)  | Nie          | Nazwa przepływu pracy |
 | WorkflowDisplayName               | nvarchar(255) | Nie          | Nazwa wyświetlana w interfejsie użytkownika |
@@ -342,7 +342,7 @@ Ten widok przedstawia metadane przepływu pracy podstawowe szczegóły, a także
 | ApplicationId                        | int           | Nie          | Unikatowy identyfikator aplikacji |
 | ApplicationName                      | nvarchar(50)  | Nie          | Nazwa aplikacji |
 | ApplicationDisplayName               | nvarchar(255) | Nie          | Nazwa będzie wyświetlana w interfejsie użytkownika |
-| ApplicationEnabled                   | Bitowe           | Nie          | Określa, czy aplikacja jest włączona |
+| ApplicationEnabled                   | bit           | Nie          | Określa, czy aplikacja jest włączona |
 | WorkflowId                           | int           | Nie          | Unikatowy identyfikator dla przepływu pracy |
 | WorkflowName                         | nvarchar(50)  | Nie          | Nazwa przepływu pracy |
 | WorkflowDisplayName                  | nvarchar(255) | Nie          | Nazwa przepływu pracy, wyświetlana w interfejsie użytkownika |
@@ -351,7 +351,7 @@ Ten widok przedstawia metadane przepływu pracy podstawowe szczegóły, a także
 | WorkflowFunctionName                 | nvarchar(50)  | Yes         | Nazwa funkcji |
 | WorkflowFunctionDisplayName          | nvarchar(255) | Nie          | Nazwa funkcji ma być wyświetlana w interfejsie użytkownika |
 | WorkflowFunctionDescription          | nvarchar(255) | Yes         | Opis funkcji przepływu pracy |
-| WorkflowFunctionIsConstructor        | Bitowe           | Nie          | Określa, czy funkcja przepływ pracy jest konstruktora dla przepływu pracy |
+| WorkflowFunctionIsConstructor        | bit           | Nie          | Określa, czy funkcja przepływ pracy jest konstruktora dla przepływu pracy |
 | WorkflowFunctionParameterId          | int           | Nie          | Unikatowy identyfikator dla parametru funkcji |
 | WorkflowFunctionParameterName        | nvarchar(50)  | Nie          | Nazwa parametru funkcji |
 | WorkflowFunctionParameterDisplayName | nvarchar(255) | Nie          | Nazwa parametru funkcji ma być wyświetlana w interfejsie użytkownika |
@@ -371,7 +371,7 @@ Ten widok przedstawia właściwości zdefiniowane dla przepływu pracy. Dla każ
 | ApplicationId                | int           | Nie          | Unikatowy identyfikator aplikacji |
 | ApplicationName              | nvarchar(50)  | Nie          | Nazwa aplikacji |
 | ApplicationDisplayName       | nvarchar(255) | Nie          | Nazwa będzie wyświetlana w interfejsie użytkownika |
-| ApplicationEnabled           | Bitowe           | Nie          | Określa, czy aplikacja jest obecnie włączona.<br />**Uwaga:** Mimo że aplikacja może uwzględnione jako wyłączone w bazie danych, skojarzonych umów nadal korzystać z łańcucha bloków i dane dotyczące tych umów pozostają w bazie danych. |
+| ApplicationEnabled           | bit           | Nie          | Określa, czy aplikacja jest obecnie włączona.<br />**Uwaga:** Mimo że aplikacja może uwzględnione jako wyłączone w bazie danych, skojarzonych umów nadal korzystać z łańcucha bloków i dane dotyczące tych umów pozostają w bazie danych. |
 | WorkflowId                   | int           | Nie          | Unikatowy identyfikator dla przepływu pracy |
 | WorkflowName                 | nvarchar(50)  | Nie          | Nazwa przepływu pracy |
 | WorkflowDisplayName          | nvarchar(255) | Nie          | Nazwa wyświetlana przepływu pracy za pomocą interfejsu użytkownika |
@@ -383,7 +383,7 @@ Ten widok przedstawia właściwości zdefiniowane dla przepływu pracy. Dla każ
 | WorkflowPropertyWorkflowId   | int           | Nie          | Identyfikator przepływu pracy, z którym jest skojarzony tej właściwości |
 | WorkflowPropertyDataTypeId   | int           | Nie          | Identyfikator z typem danych zdefiniowanym dla właściwości |
 | WorkflowPropertyDataTypeName | nvarchar(50)  | Nie          | Nazwa typu danych zdefiniowanej dla właściwości |
-| WorkflowPropertyIsState      | Bitowe           | Nie          | To pole identyfikuje, jeśli ta właściwość przepływu pracy zawiera stan przepływu pracy |
+| WorkflowPropertyIsState      | bit           | Nie          | To pole identyfikuje, jeśli ta właściwość przepływu pracy zawiera stan przepływu pracy |
 
 ## <a name="vwworkflowstate"></a>vwWorkflowState
 
@@ -398,7 +398,7 @@ Ten widok przedstawia właściwości skojarzone z przepływem pracy. Dla każdej
 | ApplicationId                | int           | Nie          | Unikatowy identyfikator aplikacji |
 | ApplicationName              | nvarchar(50)  | Nie          | Nazwa aplikacji |
 | ApplicationDisplayName       | nvarchar(255) | Nie          | Opis aplikacji |
-| ApplicationEnabled           | Bitowe           | Nie          | Określa, czy aplikacja jest obecnie włączona.<br />**Uwaga:** Mimo że aplikacja może uwzględnione jako wyłączone w bazie danych, skojarzonych umów nadal korzystać z łańcucha bloków i dane dotyczące tych umów pozostają w bazie danych. |
+| ApplicationEnabled           | bit           | Nie          | Określa, czy aplikacja jest obecnie włączona.<br />**Uwaga:** Mimo że aplikacja może uwzględnione jako wyłączone w bazie danych, skojarzonych umów nadal korzystać z łańcucha bloków i dane dotyczące tych umów pozostają w bazie danych. |
 | WorkflowId                   | int           | Nie          | Unikatowy identyfikator dla przepływu pracy |
 | WorkflowName                 | nvarchar(50)  | Nie          | Nazwa przepływu pracy |
 | WorkflowDisplayName          | nvarchar(255) | Nie          | Nazwa wyświetlana w interfejsie użytkownika dla przepływu pracy |

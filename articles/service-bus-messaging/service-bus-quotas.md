@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 09/01/2018
 ms.author: aschhab
 ms.openlocfilehash: f9c9059a5f66c6ba1c2e9d9dd637c0675fc7e220
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54852715"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60861912"
 ---
 # <a name="service-bus-quotas"></a>Przydziały usługi Service Bus
 W tej sekcji przedstawiono podstawowe limity przydziału i wartościach progowych ograniczania przepustowości w przypadku komunikatów usługi Azure Service Bus w.

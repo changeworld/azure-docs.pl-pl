@@ -8,11 +8,11 @@ ms.topic: overview
 ms.service: blueprints
 manager: carmonm
 ms.openlocfilehash: 960b8145e5f53c6c37820604fd634ccf5fd77c6b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59259426"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60876243"
 ---
 # <a name="overview-of-the-azure-blueprints-service"></a>Omówienie usługi Azure plany
 
@@ -52,7 +52,7 @@ Zasady mogą być dołączane jako jedne z wielu _artefaktów_ w definicji strat
 
 Strategia składa się z _artefaktów_. Usługa Blueprints obsługuje obecnie następujące zasoby jako artefakty:
 
-|Zasób  | Opcje hierarchii| Opis  |
+|Resource  | Opcje hierarchii| Opis  |
 |---------|---------|---------|
 |Grupy zasobów | Subskrypcja | Umożliwia utworzenie nowej grupy zasobów do użytku przez inne artefakty w ramach strategii.  Te zastępcze grupy zasobów umożliwiają organizowanie zasobów dokładnie w taką strukturę, jaka jest pożądana. Udostępniają one ogranicznik zakresu na potrzeby uwzględnionych zasad i artefakty przypisania roli oraz szablony usługi Azure Resource Manager. |
 |Szablon usługi Azure Resource Manager | Subskrypcja, grupa zasobów | Szablony służą do tworzenia złożonych środowisk. Przykładowe środowiska: farma programu SharePoint, konfiguracja stanu usługi Azure Automation lub obszar roboczy usługi Log Analytics. |

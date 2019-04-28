@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 8ab051d49e7ed67e642ef656dfb382ed07763ed2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58879713"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60877441"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>Operacje zarządzania kontem w usłudze Azure Data Lake magazynu Gen1 przy użyciu zestawu .NET SDK
 > [!div class="op_single_selector"]
@@ -43,7 +43,7 @@ Aby uzyskać instrukcje na temat sposobu wykonywania operacji zarządzania danym
 
    | Właściwość | Wartość |
    | --- | --- |
-   | Kategoria |Szablony/Visual C#/Windows |
+   | Category |Szablony/Visual C#/Windows |
    | Szablon |Aplikacja konsolowa |
    | Name (Nazwa) |CreateADLApplication |
 4. Kliknij przycisk **OK**, aby utworzyć projekt.

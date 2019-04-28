@@ -16,15 +16,15 @@ ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
 ms.openlocfilehash: 6e02f5a5b42da9c99a08782903cdc05ee32ec9d4
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55976928"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60743330"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-windows"></a>Rozszerzenie maszyny wirtualnej agenta obserwatora sieciowe dla Windows
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 [Usługa Azure Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md) to sieci wydajności monitorowania i diagnostyki i analizy usługa, która umożliwia monitorowanie sieci platformy Azure. Agent usługi Network Watcher rozszerzenie maszyny wirtualnej jest wymagana do przechwytywania ruchu sieciowego na żądanie i inne zaawansowane funkcje, na maszynach wirtualnych platformy Azure.
 

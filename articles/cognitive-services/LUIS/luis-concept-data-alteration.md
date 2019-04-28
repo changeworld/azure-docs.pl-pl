@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: diberry
 ms.openlocfilehash: c43d3738b23037432ecdfe3aa872950f6a7b863e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860596"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60812799"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>Instrukcja ALTER wypowiedź danych przed lub w trakcie prognoz
 Usługa LUIS udostępnia metody do manipulowania wypowiedź przed lub podczas prognozowania. Należą do ustalania Pisownia i rozwiązywanie problemów w strefie czasowej dla datetimeV2 wydarzenia. 

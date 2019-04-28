@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: apimpm
 ms.openlocfilehash: acc9f83923c8fdaae98cc55bc6baf62f56f2116b
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663149"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60798604"
 ---
 # <a name="api-management-access-restriction-policies"></a>Zasady ograniczeń dostępu do usługi API Management
 
@@ -61,7 +61,7 @@ Użyj `check-header` zasad w celu wymuszania, czy żądanie ma określonego nag�
 | Name (Nazwa)         | Opis                                                                                                                                   | Wymagane |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | check-header | Element główny.                                                                                                                                 | Yes      |
-| wartość        | Dozwolone wartości nagłówka HTTP. Jeśli określono wiele wartości elementów wyboru jest uznawany za sukces Jeśli którykolwiek z wartości jest zgodny. | Nie       |
+| value        | Dozwolone wartości nagłówka HTTP. Jeśli określono wiele wartości elementów wyboru jest uznawany za sukces Jeśli którykolwiek z wartości jest zgodny. | Nie       |
 
 ### <a name="attributes"></a>Atrybuty
 

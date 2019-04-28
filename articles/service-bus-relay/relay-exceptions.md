@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/20/2017
 ms.author: spelluru
-ms.openlocfilehash: 0fe30fe95e77adceaa5013f89206b08daf2a58a2
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: fe8f057443b978e70e7cdd2591affd455fefdca8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702099"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60749040"
 ---
 # <a name="azure-relay-exceptions"></a>Usługa Azure wyjątki dotyczące przekaźnika
 
@@ -34,13 +34,13 @@ Interfejsy API usługi Relay generować wyjątki, które być może można podzi
     **Akcja ogólna**: Spróbuj naprawić kod, przed kontynuowaniem.
 *   **Błąd instalacji/konfiguracji**: [System.UnauthorizedAccessException](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx). 
 
-    **Akcja ogólna**: Przejrzyj konfigurację. Jeśli to konieczne, należy zmienić konfigurację.
-*   **Przejściowych wyjątków**: [Microsoft.ServiceBus.Messaging.MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception), [Microsoft.ServiceBus.Messaging.ServerBusyException](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception), [ Microsoft.ServiceBus.Messaging.MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception). 
+    **Akcja ogólna**: Sprawdź konfigurację programu. Jeśli to konieczne, należy zmienić konfigurację.
+*   **Przejściowych wyjątków**: [Microsoft.ServiceBus.Messaging.MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception), [Microsoft.ServiceBus.Messaging.ServerBusyException](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception), [Microsoft.ServiceBus.Messaging.MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception). 
 
-    **Akcja ogólna**: spróbuj ponownie wykonać operację lub powiadomić użytkowników.
+    **Akcja ogólna**: Spróbuj ponownie wykonać operację lub powiadomić użytkowników.
 *   **Inne wyjątki**: [System.Transactions.TransactionException](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx), [System.TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx). 
 
-    **Akcja ogólna**: specyficzne dla typu wyjątku. Zobacz tabelę w następnej sekcji. 
+    **Akcja ogólna**: Specyficzne dla typu wyjątku. Zobacz tabelę w następnej sekcji. 
 
 ## <a name="exception-types"></a>Typy wyjątków
 
@@ -59,7 +59,7 @@ W poniższej tabeli wymieniono typy wyjątków obsługi wiadomości i ich przycz
 
 ## <a name="quotaexceededexception"></a>QuotaExceededException
 
-[QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) wskazuje, że przekroczony został limit przydziału dla określonej jednostki.
+Wyjątek [QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) wskazuje, że przekroczono limit przydziału dla określonej jednostki.
 
 Do przekazywania, jest zawijany ten wyjątek [System.ServiceModel.QuotaExceededException](https://msdn.microsoft.com/library/system.servicemodel.quotaexceededexception.aspx), co oznacza, że przekroczono maksymalną liczbę odbiorników dla tego punktu końcowego. Jest to wskazywane w **MaximumListenersPerEndpoint** wartość komunikat o wyjątku.
 

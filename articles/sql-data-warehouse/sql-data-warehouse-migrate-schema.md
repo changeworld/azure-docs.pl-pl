@@ -2,20 +2,21 @@
 title: Migrowanie schematu w usłudze SQL Data Warehouse | Dokumentacja firmy Microsoft
 description: Wskazówki dotyczące migracji schematu do usługi Azure SQL Data Warehouse do opracowywania rozwiązań.
 services: sql-data-warehouse
-author: jrowlandjones
-manager: craigg
+author: WenJason
+manager: digimobile
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
-ms.date: 04/17/2018
-ms.author: jrj
+ms.component: implement
+origin.date: 04/17/2018
+ms.date: 10/15/2018
+ms.author: v-jay
 ms.reviewer: igorstan
 ms.openlocfilehash: 4139ea776f6947eeacf4620c3676606d6535dd2b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461688"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60748156"
 ---
 # <a name="migrate-your-schemas-to-sql-data-warehouse"></a>Migrowanie schematy usługi SQL Data Warehouse
 Wskazówki dotyczące migracji swoje schematy SQL w usłudze SQL Data Warehouse. 
@@ -40,13 +41,6 @@ Aby uzyskać najlepszą wydajność należy zminimalizować długość wiersza t
 
 Szerokość wiersza tabeli programu PolyBase obowiązuje limit 1 MB.  Jeśli planujesz ładowanie danych do usługi SQL Data Warehouse przy użyciu technologii PolyBase, zaktualizować tabele mieć szerokość maksimum, mniej niż 1 MB. 
 
-<!--
-- For example, this table uses variable length data but the largest possible size of the row is still less than 1 MB. PolyBase will load data into this table.
-
-- This table uses variable length data and the defined row width is less than one MB. When loading rows, PolyBase allocates the full length of the variable-length data. The full length of this row is greater than one MB.  PolyBase will not load data into this table.  
-
--->
-
 ## <a name="specify-the-distribution-option"></a>Wybierz opcję dystrybucji
 Usługa SQL Data Warehouse to Rozproszony system baz danych. Każda tabela jest rozproszone lub replikowane w węzłach obliczeniowych. Brak opcji tabeli, która pozwala określić sposób dystrybucji danych. Dostępne są następujące mechanizmy działania okrężnego replikowane, lub rozproszonego wyznaczania wartości skrótu. Każdy ma zalety i wady. Jeśli nie określisz opcji dystrybucji, usługa SQL Data Warehouse użyje działanie okrężne jako domyślny.
 
@@ -55,7 +49,6 @@ Usługa SQL Data Warehouse to Rozproszony system baz danych. Każda tabela jest 
 - Skrót rozproszonych dystrybuuje wiersze we wszystkich węzłach za pomocą funkcji skrótu. Tabele zbędnych danych rozproszonych są serce usługi SQL Data Warehouse, ponieważ są one przeznaczone do świadczenia wysoką wydajność zapytań w dużych tabel. Ta opcja wymaga pewnego planowania wybierz najlepsze kolumnę, w którym można rozpowszechnić danych. Jednak jeśli nie wybierzesz najlepsze kolumny po raz pierwszy, można łatwo ponownie dystrybuować dane na inną kolumnę. 
 
 Aby wybrać najlepszą opcją dystrybucji dla każdej tabeli, zobacz [tabelach rozproszonych](sql-data-warehouse-tables-distribute.md).
-
 
 ## <a name="next-steps"></a>Kolejne kroki
 Gdy zostały pomyślnie zmigrowane schemat bazy danych w usłudze SQL Data Warehouse, przejdź do jednego z następujących artykułów:
@@ -78,5 +71,6 @@ Aby uzyskać więcej informacji o najlepszych praktykach SQL Data Warehouse, zob
 
 <!--MSDN references-->
 
-
 <!--Other Web references-->
+
+<!--Update_Description: update meta properties, add new content about Migrate schemas to SQL Data Warehouse -->

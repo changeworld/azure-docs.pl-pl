@@ -15,11 +15,11 @@ ms.date: 03/26/2018
 ms.author: yegu
 ms.custom: mvc
 ms.openlocfilehash: 9d789572abf0545eb51b357da091e5a1d712eab2
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433811"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60831439"
 ---
 # <a name="what-is-azure-cache-for-redis"></a>Co to jest usługa Azure Cache for Redis
 

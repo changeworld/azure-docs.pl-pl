@@ -12,11 +12,11 @@ ms.date: 3/5/2018
 ms.author: v-jansko
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 24014bb06a779c214f18f966dfb1d26d61adee8d
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674858"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60827526"
 ---
 # <a name="what-is-translator-speech-api"></a>Co to jest interfejs API tłumaczenia mowy w usłudze Translator?
 
@@ -59,7 +59,7 @@ Listę obsługiwanych języków można znaleźć w witrynie [Microsoft.com](http
 
 Dowiedz się więcej o [sposobie działania technologii NMT](https://www.microsoft.com/en-us/translator/mt.aspx#nnt)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Tworzenie konta](translator-speech-how-to-signup.md)
@@ -67,7 +67,7 @@ Dowiedz się więcej o [sposobie działania technologii NMT](https://www.microso
 > [!div class="nextstepaction"]
 > [Rozpoczynanie kodowania](quickstarts/csharp.md)
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 - [Strona dokumentacji usług Cognitive Services](https://docs.microsoft.com/azure/)
 - [Strona produktu usług Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)
 - [Informacje o rozwiązaniach i cenach](https://www.microsoft.com/en-us/translator/home.aspx)

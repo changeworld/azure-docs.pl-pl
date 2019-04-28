@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: robb
-ms.subservice: autoscale
+ms.component: autoscale
 ms.openlocfilehash: 05f20aec536ebdb702caea37051a65af9bbc659f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58085647"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60787607"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Omówienie automatycznego skalowania w Microsoft Azure Virtual Machines, Cloud Services i Web Apps
 W tym artykule opisano, jakie Microsoft Azure Skalowanie automatyczne to, jego zalety i sposób rozpoczynania korzystania z niego.  
@@ -102,6 +102,7 @@ Możesz skonfigurować automatyczne skalowanie za pomocą
 * [Interfejs API REST usługi Azure Monitor](https://msdn.microsoft.com/library/azure/dn931953.aspx)
 
 ## <a name="supported-services-for-autoscale"></a>Obsługiwane usługi dotyczące automatycznego skalowania
+
 | Usługa | Schemat i dokumenty |
 | --- | --- |
 | Web Apps |[Skalowanie aplikacji sieci Web](../../azure-monitor/platform/autoscale-get-started.md) |
@@ -120,4 +121,3 @@ Aby dowiedzieć się więcej na temat automatycznego skalowania, użyj wskazówk
 * [Użyj akcji skalowania automatycznego, aby wysyłać wiadomości e-mail i elementy webhook powiadomienia o alertach](../../azure-monitor/platform/autoscale-webhook-email.md)
 * [Interfejs API REST automatycznego skalowania](https://msdn.microsoft.com/library/dn931953.aspx)
 * [Rozwiązywania problemów automatyczne skalowanie zestawów skalowania maszyn wirtualnych](../../virtual-machine-scale-sets/virtual-machine-scale-sets-troubleshoot.md)
-

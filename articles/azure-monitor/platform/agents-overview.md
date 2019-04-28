@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: magoedte
 ms.openlocfilehash: 89e73a4578134493a25ec3cbd2385433a2b36156
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60003502"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60775884"
 ---
 # <a name="overview-of-the-azure-monitoring-agents"></a>Omówienie usługi Azure, agentów monitorowania 
 Microsoft Azure oferuje wiele sposobów, aby zbierać różne typy danych z maszyn wirtualnych z systemem Microsoft Windows i Linux hostowanych na platformie Azure, centrum danych lub innych dostawców rozwiązań w chmurze. Są trzy typy dostępnych do monitorowania maszyn wirtualnych agentów:

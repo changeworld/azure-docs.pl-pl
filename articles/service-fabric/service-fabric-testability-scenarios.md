@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 06/07/2017
 ms.author: motanv
 ms.openlocfilehash: d12c5097d4ba5e0ccfe0e2b2cbc8ccd758c32d98
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44051293"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60865026"
 ---
 # <a name="testability-scenarios"></a>Scenariuszy testowalności
 Dużych systemach rozproszonych jak infrastruktur chmury są założenia wiarygodne. Usługa Azure Service Fabric umożliwia deweloperom pisanie usług do uruchomienia na szczycie infrastruktury zawodne. Pisanie wysokiej jakości usług, w celu deweloperzy muszą być w stanie wywoływać takie zawodnych infrastruktury do testowania stabilność usług.
@@ -49,11 +49,11 @@ Rozważmy na przykład test do uruchamiania na jedną godzinę z maksymalnie trz
 W jego obecnej formie aparatu generowania błędów w teście chaos wywołuje tylko bezpiecznych błędów. Oznacza to, że w przypadku braku błędów zewnętrznych kworum lub utraty danych nigdy nie wystąpi.
 
 ### <a name="important-configuration-options"></a>Opcje konfiguracji ważne
-* **Wartość TimeToRun**: całkowity czas uruchomienia testu przed zakończeniem sukcesem. Test może zakończyć wcześniej audytów niepowodzenia weryfikacji.
-* **MaxClusterStabilizationTimeout**: maksymalna ilość czasu oczekiwania klaster poprawi przed niepowodzeniem testu. Kontrole wykonywane są, czy kondycja klastra jest OK, usługa kondycji jest dobry, uzyskuje się rozmiaru docelowego zestawu replik partycji usługi i replik w stanie InBuild nie istnieje.
+* **Wartość TimeToRun**: Łączny czas testu przed zakończeniem sukcesem. Test może zakończyć wcześniej audytów niepowodzenia weryfikacji.
+* **MaxClusterStabilizationTimeout**: Maksymalna ilość czasu oczekiwania klaster poprawi przed niepowodzeniem testu. Kontrole wykonywane są, czy kondycja klastra jest OK, usługa kondycji jest dobry, uzyskuje się rozmiaru docelowego zestawu replik partycji usługi i replik w stanie InBuild nie istnieje.
 * **MaxConcurrentFaults**: Maksymalna liczba współbieżnych błędów wywołanego w każdej iteracji. Wyższa wartość, bardziej aktywnego testu, dlatego skutkuje bardziej złożonych operacji Failover i kombinacji przejścia. Test gwarantuje, że w przypadku braku błędów zewnętrznych nie będzie kworum lub utraty danych, niezależnie od tego, jak wysoka jest w tej konfiguracji.
 * **EnableMoveReplicaFaults**: Włącza lub wyłącza błędy, które powodują przeniesienie repliki podstawowej lub dodatkowej. Te błędy są domyślnie wyłączone.
-* **WaitTimeBetweenIterations**: ilość czasu oczekiwania między poszczególnymi iteracjami po round błędów i odpowiedni sprawdzania poprawności.
+* **WaitTimeBetweenIterations**: Ilość czasu oczekiwania między poszczególnymi iteracjami po round błędów i odpowiedni sprawdzania poprawności.
 
 ### <a name="how-to-run-the-chaos-test"></a>Jak uruchomić test chaosu
 Przykład w języku C#
@@ -160,10 +160,10 @@ Scenariusz testu w trybie failover jest wersją chaos scenariusza testu, który 
 Test pracy awaryjnej wywołuje wybranej usterki, a następnie uruchamia sprawdzania poprawności w usłudze, aby zapewnić jego stabilność. Test pracy awaryjnej wywołuje tylko jeden błąd w czasie, w przeciwieństwie do to możliwe, wiele błędów w teście chaos. Partycji Usługa docelowa nie stabilizacji przed upływem skonfigurowanego limitu czasu po każdym błędów, test kończy się niepowodzeniem. Test wywołuje tylko bezpiecznych błędów. Oznacza to, że w przypadku braku błędów zewnętrznych, utraty danych lub kworum nie nastąpi.
 
 ### <a name="important-configuration-options"></a>Opcje konfiguracji ważne
-* **PartitionSelector**: obiekt selektor, który określa partycję, która musi być obiektem.
-* **Wartość TimeToRun**: całkowity czas, który test będzie wykonywany przed zakończeniem.
-* **MaxServiceStabilizationTimeout**: maksymalna ilość czasu oczekiwania klaster poprawi przed niepowodzeniem testu. Kontrole wykonywane są, czy usługa kondycji jest OK, rozmiaru docelowego zestawu replik odbywa się dla wszystkich partycji i replik w stanie InBuild nie istnieje.
-* **WaitTimeBetweenFaults**: czas do odczekania między każdym cyklu błędów i sprawdzanie poprawności.
+* **PartitionSelector**: Obiekt selektor, który określa partycję, która musi być obiektem.
+* **Wartość TimeToRun**: Łączny czas testu przed zakończeniem.
+* **MaxServiceStabilizationTimeout**: Maksymalna ilość czasu oczekiwania klaster poprawi przed niepowodzeniem testu. Kontrole wykonywane są, czy usługa kondycji jest OK, rozmiaru docelowego zestawu replik odbywa się dla wszystkich partycji i replik w stanie InBuild nie istnieje.
+* **WaitTimeBetweenFaults**: Ilość czasu oczekiwania między każdym cyklu błędów i sprawdzanie poprawności.
 
 ### <a name="how-to-run-the-failover-test"></a>Jak przeprowadzić test pracy awaryjnej
 **C#**

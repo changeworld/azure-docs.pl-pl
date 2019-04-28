@@ -9,11 +9,11 @@ ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: owend
 ms.openlocfilehash: 5d021aa7a6d55bb071340ebcd8e7090a4b0c2e2f
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188814"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60788236"
 ---
 # <a name="tutorial-connect-with-power-bi-desktop"></a>Samouczek: Nawiązywanie połączenia za pomocą programu Power BI Desktop
 
@@ -70,5 +70,5 @@ Skopiuj nazwę serwera z **portalu Azure** > serwer > **Omówienie** > **Nazwa s
 
 Jeśli raport nie będzie już potrzebny, nie zapisuj go lub usuń pliki, jeśli raport został już zapisany.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym samouczku przedstawiono sposób użycia programu Power BI Desktop do nawiązywania połączenia z modelem danych na serwerze i tworzenia podstawowego raportu. Jeśli nie masz doświadczenia w tworzeniu modelu danych, zobacz [Adventure Works Internet Sales tabular data modeling tutorial](aas-adventure-works-tutorial.md) (Samouczek dotyczący modelowania danych tabelarycznych sprzedaży internetowych w przykładzie Adventure Works).

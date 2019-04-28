@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 12/31/2018
 ms.author: alinast
 ms.openlocfilehash: e93811a56f934a95dde45633c4fb64312b3696df
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994833"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60924809"
 ---
 # <a name="egress-and-endpoints"></a>Ruch wychodzący i punktów końcowych
 
@@ -47,16 +47,16 @@ Zdarzenia są wysyłane przez IoT obiektów (takich jak urządzenia i czujniki) 
 }
 ```
 
-| Atrybut | Typ | Opis |
+| Atrybut | Type | Opis |
 | --- | --- | --- |
-| id | ciąg | Unikatowy identyfikator zdarzenia. |
-| temat | ciąg | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
+| id | string | Unikatowy identyfikator zdarzenia. |
+| temat | string | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
 | dane | obiekt | Dane zdarzenia specyficzne dla dostawcy zasobów. |
-| Typ zdarzenia | ciąg | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. |
-| eventTime | ciąg | Czas, którego zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
-| dataVersion | ciąg | Wersja schematu dla obiektu danych. Wydawca Określa wersję schematu. |
-| metadataVersion | ciąg | Wersja schematu dla metadanych zdarzenia. Usługa Event Grid definiuje schemat właściwości najwyższego poziomu. Usługa Event Grid udostępnia tę wartość. |
-| temat | ciąg | Zasobów Pełna ścieżka do źródła zdarzeń. To pole nie jest zapisywalna. Usługa Event Grid udostępnia tę wartość. |
+| eventType | string | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. |
+| eventTime | string | Czas, którego zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
+| dataVersion | string | Wersja schematu dla obiektu danych. Wydawca Określa wersję schematu. |
+| metadataVersion | string | Wersja schematu dla metadanych zdarzenia. Usługa Event Grid definiuje schemat właściwości najwyższego poziomu. Usługa Event Grid udostępnia tę wartość. |
+| temat | string | Zasobów Pełna ścieżka do źródła zdarzeń. To pole nie jest zapisywalna. Usługa Event Grid udostępnia tę wartość. |
 
 Aby uzyskać więcej informacji na temat schematów zdarzeń usługi Event Grid:
 
@@ -86,7 +86,7 @@ Formatu zdarzeń dla każdego typu zdarzenia są opisane w następujących podse
 - Typ ExtendedType
 - Magazyn kluczy
 - Raport
-- Roledefinition:
+- RoleDefinition
 - Czujnik
 - SensorBlobMetadata
 - SensorExtendedProperty

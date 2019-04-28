@@ -11,11 +11,11 @@ ms.date: 05/29/2018
 ms.author: mamccrea
 ms.custom: mvc
 ms.openlocfilehash: 01e35ed32be8b28f291cc2be69a8b2d71c3acab2
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56806656"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60770066"
 ---
 # <a name="what-is-azure-databricks"></a>Co to jest Azure Databricks?
 
@@ -93,7 +93,7 @@ Usługa Azure Databricks głęboko integruje się z bazami danych i magazynami p
 ## <a name="integration-with-power-bi"></a>Integracja z usługą Power BI
 Dzięki rozbudowanej integracji z usługą Power BI usługa Azure Databricks umożliwia szybkie i łatwe odnajdywanie i udostępnianie istotnych wyników analiz. Można też używać innych narzędzi do analizy biznesowej, takich jak oprogramowanie Tableau — za pośrednictwem punktów końcowych klastra JDBC/ODBC.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Szybki start: Uruchamianie zadania platformy Spark w usłudze Azure Databricks](quickstart-create-databricks-workspace-portal.md)
 * [Praca z klastrami Spark](https://docs.azuredatabricks.net/user-guide/clusters/index.html)

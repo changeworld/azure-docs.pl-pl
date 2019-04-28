@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: alkohli
 ms.openlocfilehash: 7d52af9e3948f40936795efab5b6671c3f71007a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55206751"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60746934"
 ---
 # <a name="azure-data-box-system-requirements"></a>Wymagania systemowe w usłudze Azure Data Box
 

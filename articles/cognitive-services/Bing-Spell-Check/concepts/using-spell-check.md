@@ -11,11 +11,11 @@ ms.topic: overview
 ms.date: 02/20/2019
 ms.author: aahi
 ms.openlocfilehash: 9544337ef1322e52cbdf123bb48d283485a8c7dd
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56890801"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60896142"
 ---
 # <a name="using-the-bing-spell-check-api"></a>Korzystanie z interfejsu API sprawdzania pisowni Bing
 
@@ -120,7 +120,7 @@ Jeśli pole `type` zawiera wartość RepeatedToken, i tak należy zastąpić tok
 
 [!INCLUDE [cognitive-services-bing-throttling-requests](../../../../includes/cognitive-services-bing-throttling-requests.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Czym jest interfejs API sprawdzania pisowni Bing?](../overview.md)
 - [Dokumentacja interfejsu API sprawdzania pisowni Bing v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference)

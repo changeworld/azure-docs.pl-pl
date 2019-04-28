@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 04/18/2019
 ms.author: danlep
 ms.openlocfilehash: fe129847e685c7151a9b7ad7ea65abbd38530733
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59997074"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60827463"
 ---
 # <a name="content-formats-supported-in-azure-container-registry"></a>Formaty zawartości obsługiwane w usłudze Azure Container Registry
 

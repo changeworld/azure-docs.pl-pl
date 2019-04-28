@@ -11,11 +11,11 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: bahariri
 ms.openlocfilehash: 93fdd85d1fd1b91e01d8f38b4890e1b588a5c704
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091241"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60746951"
 ---
 # <a name="connect-your-apache-spark-application-with-kafka-enabled-azure-event-hubs"></a>Łączenie aplikacji Apache Spark i usługi Azure Event Hubs z obsługą platformy Kafka
 Ten samouczek przeprowadzi Cię przez proces łączenia aplikacji Spark z usługą Event Hubs z obsługą platformy Kafka na potrzeby przesyłania strumieniowego w czasie rzeczywistym. Ta integracja umożliwia przesyłanie strumieniowe bez konieczności zmiany klientów protokołu czy uruchamiania własnych klastrów platformy Kafka lub Zookeeper. Ten samouczek wymaga oprogramowania Apache Spark w wersji 2.4+ i Apache Kafka w wersji 2.0+.
@@ -99,7 +99,7 @@ df.writeStream
 
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku przedstawiono sposób przesyłania strumieniowego przy użyciu łącznika Spark-Kafka i usługi Event Hubs dla platformy Kafka. Wykonano następujące czynności: 
 

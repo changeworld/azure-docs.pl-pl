@@ -9,11 +9,11 @@ ms.date: 02/22/2016
 ms.author: ancav
 ms.subservice: autoscale
 ms.openlocfilehash: 6da653bc94c8b549282ab9124dba23b08771c5f1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58080781"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60787810"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Konfiguracja zaawansowane automatyczne skalowanie usługi VM Scale Sets za pomocą szablonów usługi Resource Manager
 Możesz skalować i skalowalnego w poziomie w zestawach skalowania maszyn wirtualnych na podstawie dotyczące progów metryk wydajności, według powtarzającego się harmonogramu lub według określonej daty. Można również skonfigurować powiadomienia e-mail i elementy webhook dla akcji skalowania. W tym instruktażu przedstawiono przykład konfigurowania tych obiektów w zestawie skalowania maszyn wirtualnych przy użyciu szablonu usługi Resource Manager.

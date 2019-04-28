@@ -15,13 +15,13 @@ ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 67ec9765e4334330da04739dd5daa3be0d7c7342
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52266885"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60911107"
 ---
-# <a name="all-offers-page"></a>Oferuje wszystkie strony
+# <a name="all-offers-page"></a>Strona ze wszystkimi ofertami
 
 [ **Wszystkich ofert** ](https://cloudpartner.azure.com/#alloffers) strony umożliwia partnerom wyświetlić listę utworzonych ofert, łącznie z ich nazwy, typu, wydawcy i bieżący stan.  Można określić parametry do filtrowania wyników.   W obszarze stanu w dolnej części strony wyświetla liczbę agregacji i strony i pozwala na przechodzenie między stronami listy. Wybranie oferty na tej liście spowoduje wyświetlenie tej oferty w edytorze skojarzone oferty. 
 
@@ -30,7 +30,7 @@ ms.locfileid: "52266885"
 
 Na poniższej ilustracji przedstawiono **wszystkich ofert** strona jest filtrowana na ciąg `Contoso`.
 
-![Oferuje wszystkie strony](./media/all-offers-page1.png)
+![Strona ze wszystkimi ofertami](./media/all-offers-page1.png)
 
 
 ## <a name="next-steps"></a>Kolejne kroki

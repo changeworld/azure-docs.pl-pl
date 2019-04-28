@@ -16,11 +16,11 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: 19b347423c28b4c615f90f325ead462b9d3e8e9e
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990038"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60822582"
 ---
 # <a name="azure-event-hubs---authentication-and-security-model"></a>Usługa Azure Event Hubs — uwierzytelnianie i model zabezpieczeń
 

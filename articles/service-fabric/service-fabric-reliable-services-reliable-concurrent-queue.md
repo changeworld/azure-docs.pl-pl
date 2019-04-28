@@ -15,11 +15,11 @@ ms.workload: required
 ms.date: 5/1/2017
 ms.author: aljo
 ms.openlocfilehash: dbdfa4686c047fa7cf5d74cd9aca768447f9db93
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663652"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60774016"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Wprowadzenie do ReliableConcurrentQueue w usłudze Azure Service Fabric
 Niezawodna kolejka współbieżna jest kolejką asynchronicznego, transakcji i replikowane concurrency które funkcje wysokiej umieścić w kolejce i pobierać operacji. Zaprojektowano w celu dostarczania wysokiej przepływności i małego opóźnienia, złagodzić ścisłe porządkowanie FIFO dostarczone przez [niezawodna kolejka](https://msdn.microsoft.com/library/azure/dn971527.aspx) i przekazuje porządkowanie największej staranności.

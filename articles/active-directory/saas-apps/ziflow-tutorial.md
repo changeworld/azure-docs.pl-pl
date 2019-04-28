@@ -17,11 +17,11 @@ ms.date: 08/07/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 175e678365016bafd3d18f590a5434c32ac9fadd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56176479"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60798217"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ziflow"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Ziflow
 
@@ -138,7 +138,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Ziflow konfiguracji logowania](./media/ziflow-tutorial/tutorial_ziflow_signon.png)
 
-10. Na **logowania jednokrotnego** strony, wykonaj następujące czynności:
+10. Na stronie **Single Sign-On**(Logowanie jednokrotne) wykonaj następujące czynności:
 
     ![Jednym konfiguracji Ziflow](./media/ziflow-tutorial/tutorial_ziflow_page.png)
 
@@ -215,7 +215,7 @@ Aby aprowizować konto użytkownika, wykonaj następujące czynności:
     e. Kliknij przycisk **Dodaj 1 użytkownika**.
 
     > [!NOTE]
-    > Właściciel konta usługi Azure Active Directory otrzymuje wiadomość e-mail, a także następujące łącze, aby potwierdzić swoje konto, zanim stanie się aktywny.
+    > Właściciel konta usługi Azure Active Directory otrzyma wiadomość e-mail z linkiem umożliwiającym potwierdzenie konta, zanim stanie się ono aktywne.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -256,7 +256,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

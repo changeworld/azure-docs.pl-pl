@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: magoedte
 ms.openlocfilehash: 76a789bd4f9167344fcc240e3f3fdbf3a00aa5a3
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540758"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60742684"
 ---
 # <a name="collect-azure-activity-logs-into-a-log-analytics-workspace-across-subscriptions-in-different-azure-active-directory-tenants"></a>Zbieranie dzienników aktywności platformy Azure do obszaru roboczego usługi Log Analytics w wielu subskrypcjach w różnych dzierżawach usługi Azure Active Directory
 

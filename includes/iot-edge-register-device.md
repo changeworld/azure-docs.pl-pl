@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/25/2018
 ms.author: kgremban
 ms.custom: include file
-ms.openlocfilehash: bacafdc8f7fd8e206335f3be0a086df1c54f1081
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: bb0b140dd1f42cae1d5d4bb670af8780d66c1f80
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51263617"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60768635"
 ---
 Utwórz tożsamość urządzenia symulowanego, aby umożliwić mu komunikowanie się z centrum IoT Hub. Ponieważ urządzenia usługi IoT Edge zachowują się inaczej niż typowe urządzenia IoT, a także mogą być inaczej zarządzane, już na samym początku zadeklaruj to urządzenie jako urządzenie usługi IoT Edge. 
 

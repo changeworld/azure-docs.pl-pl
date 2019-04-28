@@ -14,11 +14,11 @@ ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 433a8b2f9fb1f4c4599afbb807e9270992a98a52
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331541"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60824188"
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>Przenoszenie danych z bazy danych MongoDB przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -71,7 +71,7 @@ Poniższa tabela zawiera opis dla elementów JSON, które są specyficzne dla **
 | port |Port TCP używany przez serwer bazy danych MongoDB do nasłuchiwania połączeń klientów. |Opcjonalne, wartość domyślna: 27017 |
 | Element authenticationType |Podstawowe, lub anonimowe. |Yes |
 | nazwa użytkownika |Konto użytkownika, aby dostęp do bazy danych MongoDB. |Tak (jeśli jest używane uwierzytelnianie podstawowe). |
-| hasło |Hasło użytkownika. |Tak (jeśli jest używane uwierzytelnianie podstawowe). |
+| password |Hasło użytkownika. |Tak (jeśli jest używane uwierzytelnianie podstawowe). |
 | authSource |Nazwa bazy danych MongoDB, który chcesz użyć, aby sprawdzić swoje poświadczenia dla uwierzytelniania. |Opcjonalnie (Jeśli używane jest uwierzytelnianie podstawowe). domyślne: korzysta z konta administratora i baza danych określona za pomocą właściwości databaseName. |
 | databaseName |Nazwa bazy danych MongoDB, który chcesz uzyskać dostęp. |Yes |
 | gatewayName |Nazwa bramy, który uzyskuje dostęp do magazynu danych. |Yes |
@@ -296,15 +296,15 @@ Podczas przenoszenia danych do bazy danych MongoDB następujące mapowania są u
 | Typ bazy danych MongoDB | Typ .NET framework |
 | --- | --- |
 | Binarny |Byte[] |
-| Wartość logiczna |Wartość logiczna |
+| Boolean |Boolean |
 | Date |DateTime |
-| NumberDouble |Podwójne |
+| NumberDouble |Double |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
-| ObjectID |Ciąg |
-| Ciąg |Ciąg |
-| IDENTYFIKATOR UUID |Identyfikator GUID |
-| Obiekt |Renormalized do spłaszczenia kolumn z "_" jako separatora zagnieżdżonych |
+| ObjectID |String |
+| Ciąg |String |
+| IDENTYFIKATOR UUID |Guid |
+| Object |Renormalized do spłaszczenia kolumn z "_" jako separatora zagnieżdżonych |
 
 > [!NOTE]
 > Aby dowiedzieć się więcej o obsłudze tablic przy użyciu wirtualnego tabel, zobacz [obsługę złożonych typów, przy użyciu tabele wirtualne](#support-for-complex-types-using-virtual-tables) poniższej sekcji.

@@ -3,8 +3,8 @@ title: Monitorowanie komunikacji sieciowej — samouczek — Azure Portal | Micr
 description: Dowiedz się, jak monitorować komunikację sieciową między dwiema maszynami wirtualnymi za pomocą możliwości monitorowania połączenia usługi Azure Network Watcher.
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to monitor communication between a VM and another VM. If the communication fails, I need to know why, so that I can resolve the problem.
@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
-ms.author: jdial
+ms.author: kumud
 ms.custom: mvc
 ms.openlocfilehash: 1d8a9cf10bf9b4aab02dd5033ecdd4fdc1f9423e
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429251"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60790491"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Samouczek: Monitorowanie komunikacji sieciowej między dwiema maszynami wirtualnymi przy użyciu witryny Azure Portal
 
@@ -172,7 +172,7 @@ Gdy grupa zasobów i wszystkie znajdujące się w niej zasoby nie będą już po
 2. Wybierz pozycję **Usuń grupę zasobów**.
 3. W polu **WPISZ NAZWĘ GRUPY ZASOBÓW:** wprowadź nazwę *myResourceGroup*, a następnie wybierz pozycję **Usuń**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku przedstawiono sposób monitorowania połączenia między dwiema maszynami wirtualnymi. Reguła sieciowej grupy zabezpieczeń uniemożliwiała komunikację z maszyną wirtualną. Aby uzyskać informacje o wszystkich różnych odpowiedziach, które może zwrócić monitor połączeń, zobacz [typy odpowiedzi](network-watcher-connectivity-overview.md#response). Można również monitorować połączenie między maszyną wirtualną, w pełni kwalifikowaną nazwą domeny, identyfikatorem URI lub adresem IP.
 

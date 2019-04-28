@@ -9,11 +9,11 @@ ms.topic: overview
 ms.date: 02/22/2019
 ms.author: cherylmc
 ms.openlocfilehash: 7b2b5c7201fe45fb52eb333b9e32b4996e00df9b
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56822927"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60859877"
 ---
 # <a name="what-is-vpn-gateway"></a>Co to jest usługa VPN Gateway?
 
@@ -150,7 +150,7 @@ Więcej informacji o jednostkach SKU bramy dla usługi VPN Gateway zawiera artyk
 
 Aby zapoznać się z często zadawanymi pytaniami dotyczącymi bramy sieci VPN, zobacz [Brama VPN Gateway — często zadawane pytania](vpn-gateway-vpn-faq.md).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Więcej informacji można znaleźć w temacie [Brama VPN Gateway — często zadawane pytania](vpn-gateway-vpn-faq.md).
 - Wyświetl [limity usług i subskrypcji](../azure-subscription-service-limits.md#networking-limits).

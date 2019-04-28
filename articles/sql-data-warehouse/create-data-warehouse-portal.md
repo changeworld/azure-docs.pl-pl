@@ -11,11 +11,11 @@ ms.date: 08/02/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: 053dccb4ba5798fabd4426d5741d9238af579449
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57732398"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60732953"
 ---
 # <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Szybki start: Tworzenie magazynu danych Azure SQL Data Warehouse w witrynie Azure Portal i wykonywanie zapytania skierowanego do niego
 

@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 1/7/2019
 ms.author: dkshir
 ms.openlocfilehash: 9cfcdc879e36b93e21bff6f91886536d799553bb
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200959"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60924498"
 ---
 # <a name="how-to-use-azure-digital-twins-management-apis"></a>Jak używać interfejsów API zarządzania Twins cyfrowych platformy Azure
 
@@ -47,7 +47,7 @@ Na poniższej liście przedstawiono składniki cyfrowego interfejsów API bliźn
 
 * [/ Użytkownicy](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Users): Te interfejsy API umożliwiają tworzenie skojarzeń użytkowników z Twojego miejsca do magazynowania, aby zlokalizować te osoby, gdy jest to wymagane. 
 
-* [/ System](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/System): Te interfejsy API umożliwiają zarządzanie ustawienia systemowe, takie jak domyślne typy miejsc do magazynowania i czujniki. 
+* [/system](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/System): Te interfejsy API umożliwiają zarządzanie ustawienia systemowe, takie jak domyślne typy miejsc do magazynowania i czujniki. 
 
 * [/roleAssignments](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/RoleAssignments): Te interfejsy API umożliwiają skojarzenie ról z jednostki, takie jak identyfikator użytkownika, identyfikator funkcji zdefiniowanej przez użytkownika, itp. Każdy przypisania roli zawiera identyfikator obiektu do skojarzenia typu jednostki, identyfikator roli do skojarzenia, identyfikator dzierżawy i ścieżkę, która definiuje górny limit liczby zasobów, których jednostki może uzyskać dostęp za pomocą tego skojarzenia. Odczyt [w tym artykule](security-role-based-access-control.md) Aby uzyskać więcej informacji.
 

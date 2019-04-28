@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/28/2018
 ms.author: rkarlin
 ms.openlocfilehash: ec16e6daec099adbede625c5ec6fe6909059143b
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116749"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60907101"
 ---
 # <a name="security-playbook-in-azure-security-center-preview"></a>Element playbook zabezpieczeń w usłudze Azure Security Center (wersja zapoznawcza)
 Ten dokument ułatwia korzystanie z elementów playbook zabezpieczeń w usłudze Azure Security Center w celu reagowania na zdarzenia związane z zabezpieczeniami.

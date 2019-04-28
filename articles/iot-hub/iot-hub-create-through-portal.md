@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: robinsh
 ms.openlocfilehash: 21758d112cd7eaf45b8b279cf2a6f6060c44c9c1
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515849"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60742033"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>Tworzenie Centrum IoT przy użyciu witryny Azure portal
 
@@ -34,13 +34,13 @@ Po utworzeniu jest ono w okienku usługi IoT Hub, możesz zmienić ustawienia ju
 
 Oto niektóre właściwości, które można ustawić dla Centrum IoT:
 
-**Ceny i Skala**: Ta właściwość umożliwia migrację do innej warstwy lub ustawić liczbę usługi IoT Hub jednostki. 
+**Ceny i Skala**: Ta właściwość służy do migracji do innej warstwy lub ustawić liczbę usługi IoT Hub jednostki. 
 
-**Monitorowanie operacji**: włączyć lub wyłączyć, różne kategorie monitorowania, takich jak rejestrowanie zdarzeń związanych z komunikatów z urządzenia do chmury lub komunikatów z chmury do urządzeń.
+**Monitorowanie operacji**: Włącz lub wyłącz, różne kategorie monitorowania takich jak rejestrowanie zdarzeń związanych z komunikatów z urządzenia do chmury lub komunikatów z chmury do urządzeń.
 
 **Filtr adresów IP**: Określ zakres adresów IP, które zostanie zaakceptowany lub odrzucony przez usługę IoT hub.
 
-**Właściwości**: zawiera listę właściwości, można skopiować i używane w innych miejscach, takie jak identyfikator zasobu, grupy zasobów, lokalizację i tak dalej.
+**Właściwości**: Zawiera listę właściwości, można skopiować i używane w innych miejscach, takie jak identyfikator zasobu, grupy zasobów, lokalizację i tak dalej.
 
 ### <a name="shared-access-policies"></a>Zasady dostępu współużytkowanego
 

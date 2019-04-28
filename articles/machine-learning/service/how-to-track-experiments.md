@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
 ms.openlocfilehash: 59a801fd149a0f647298d94522f9eefc1ea6eb9f
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59609471"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60821042"
 ---
 # <a name="log-metrics-during-training-runs-in-azure-machine-learning"></a>Rejestruj metryki podczas szkolenia jest uruchamiany w usłudze Azure Machine Learning
 

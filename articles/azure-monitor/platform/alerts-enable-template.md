@@ -9,11 +9,11 @@ ms.date: 4/27/2018
 ms.author: johnkem
 ms.subservice: metrics
 ms.openlocfilehash: df26547132403bfe2f3fb3be74e5d1a3d9400967
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54433037"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60776443"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Tworzenie klasycznego alertu metryki za pomocą szablonu usługi Resource Manager
 W tym artykule pokazano, jak za pomocą [szablonu usługi Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md) konfigurowania alertów dotyczących metryk platformy Azure. Pozwala na automatyczne konfigurowanie alertów dotyczących zasobów podczas jego tworzenia, aby upewnić się, że wszystkie zasoby są prawidłowo monitorowane.

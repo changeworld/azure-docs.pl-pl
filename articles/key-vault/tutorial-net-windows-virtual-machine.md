@@ -2,22 +2,19 @@
 title: Samouczek — Użyj usługi Azure Key Vault z maszyną wirtualną Windows na platformie .NET | Dokumentacja firmy Microsoft
 description: W tym samouczku skonfigurujesz aplikacji platformy ASP.NET core w celu odczytu wpisu tajnego z magazynu kluczy.
 services: key-vault
-documentationcenter: ''
-author: prashanthyv
+author: mbaldwin
 manager: rajvijan
-ms.assetid: 0e57f5c7-6f5a-46b7-a18a-043da8ca0d83
 ms.service: key-vault
-ms.workload: key-vault
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: pryerram
 ms.custom: mvc
 ms.openlocfilehash: fb17afa4bfe8c00c91cc8fb33ab3326452065a9e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58885421"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60777767"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-net"></a>Samouczek: Użyj usługi Azure Key Vault z maszyną wirtualną Windows na platformie .NET
 

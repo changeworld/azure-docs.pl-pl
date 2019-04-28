@@ -12,11 +12,11 @@ ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 12/03/2018
 ms.openlocfilehash: de5e853db6c6a0e98dea9251cc07b526288574e1
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276836"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60805263"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-preview-demo-environment"></a>Szybki start: Poznawanie środowiska pokazowego usługi Azure Time Series Insights w wersji zapoznawczej
 
@@ -100,7 +100,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz  [bez
 
        ![Szybki start — część dziewiąta][9]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Teraz możesz utworzyć własne środowisko usługi Time Series Insights w wersji zapoznawczej:
 

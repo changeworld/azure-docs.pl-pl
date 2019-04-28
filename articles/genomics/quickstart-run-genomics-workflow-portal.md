@@ -9,11 +9,11 @@ ms.service: genomics
 ms.topic: quickstart
 ms.date: 01/11/2019
 ms.openlocfilehash: 4c8d488021ca12a704a5c0a06bb0c491588bcaed
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261693"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60781559"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>Szybki start: uruchamianie przepływu pracy za pośrednictwem usługi Microsoft Genomics
 
@@ -175,5 +175,5 @@ msgen list -f c:\temp\config.txt
 Po zakończeniu przepływu pracy możesz wyświetlić pliki wyjściowe na koncie usługi Azure Storage w skonfigurowanym kontenerze danych wyjściowych. 
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym artykule przekazano przykładowe dane wejściowe do usługi Azure Storage oraz przesłano przepływ pracy do usługi Microsoft Genomics za pośrednictwem klienta `msgen` Python. Aby dowiedzieć się więcej o innych typach plików wejściowych, których można używać w usłudze Microsoft Genomics, zobacz następujące strony: [Sparowane pliki FASTQ](quickstart-input-pair-FASTQ.md) | [BAM](quickstart-input-BAM.md) | [Wiele plików FASTQ lub BAM](quickstart-input-multiple.md). Możesz też zapoznać się z tym samouczkiem przy użyciu [samouczka dotyczącego notesu platformy Azure](https://aka.ms/genomicsnotebook).

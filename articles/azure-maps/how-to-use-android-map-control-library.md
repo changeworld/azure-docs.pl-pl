@@ -10,11 +10,11 @@ services: azure-maps
 manager: timlt
 ms.custom: mvc
 ms.openlocfilehash: 15706addbe6b7f6310223978130158c792a47c89
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010671"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60770373"
 ---
 # <a name="how-to-use-the-azure-maps-android-sdk"></a>Jak używać usługi Azure Maps SDK dla systemu Android
 

@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: scottwhi
 ms.openlocfilehash: 42a7db316e844e5dbd09fb75a07e1c7883a9cec9
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011728"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60829569"
 ---
 # <a name="tutorial-upload-images-to-the-bing-visual-search-api"></a>Samouczek: Przekazywanie obrazów do interfejsu API wyszukiwania wizualnego Bing
 

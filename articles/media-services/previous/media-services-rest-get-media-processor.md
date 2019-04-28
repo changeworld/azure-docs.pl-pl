@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: d342cff6d322195ee88a74215f814be7d702aa5e
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294131"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60761980"
 ---
 # <a name="how-to-get-a-media-processor-instance"></a>Jak uzyskać wystąpienie procesor multimediów
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.locfileid: "58294131"
 > 
 > 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Procesory multimediów to składnik, który obsługuje określone wideo lub audio przetwarzania zadania, takie jak kodowania, konwersji formatów, zawartości multimedialnej szyfrowania lub odszyfrowywania. Wszystkie zadania przesłane do usługi Media Services wymaga procesor multimediów do kodowania, szyfrowania i konwersji zawartości wideo lub audio. 
 
 ## <a name="azure-media-processors"></a>Procesory multimediów Azure 

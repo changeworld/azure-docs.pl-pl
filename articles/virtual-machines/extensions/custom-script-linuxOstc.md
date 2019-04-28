@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: danis
 ms.openlocfilehash: fe3803b7dc75ab13831a5e42d4b1a96f5aa894e5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58882433"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60800306"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>Azure niestandardowy skrypt rozszerzenia w wersji 1 za pomocą maszyn wirtualnych systemu Linux
 
@@ -65,15 +65,15 @@ Jeśli skrypt znajduje się na serwerze lokalnym, a następnie nadal potrzebujes
 
 ### <a name="tips-and-tricks"></a>Porady i wskazówki
 
-* Najwyższy współczynnik błędów dla tego rozszerzenia jest z powodu błędów składni w skrypcie testu, którego skrypt jest uruchamiany bez błędów, i również umieścić w dodatkowe opcje rejestrowania do skryptu, aby ułatwić znajdowanie, których nie powiodła się.
-* Pisanie skryptów, które są idempotentne, więc jeśli pobieranie uruchomiony ponownie więcej niż jeden raz przypadkowo, nie spowoduje zmian w systemie.
+* Najwyższy współczynnik błędów dla tego rozszerzenia jest spowodowany błędami składni w skrypcie. Sprawdź, czy skrypt działa bezbłędnie, a także umieść dodatkowe rejestrowanie w skrypcie, aby ułatwić wyszukiwanie miejsca, w którym wystąpił błąd.
+* Pisz skrypty idempotentne, aby w razie ich ponownego uruchomienia przez przypadek więcej niż jeden raz nie nastąpiły zmiany systemu.
 * Upewnij się, że skrypty są wymagane dane wejściowe użytkownika podczas uruchamiania.
 * 90 minut mogą uzyskać skrypt do uruchomienia, nic dłużej spowoduje niepowodzenie aprowizacji rozszerzenia.
 * Nie należy umieszczać wewnątrz skrypt jest uruchamiany ponownie, spowoduje to problemy z innymi rozszerzeniami, które są instalowane i po ponownym uruchomieniu, rozszerzenie nie będzie kontynuowana po ponownym uruchomieniu. 
-* Jeśli masz skrypt, który spowoduje ponowne uruchomienie komputera, zainstaluj aplikacje i uruchamiać skrypty itp. Należy zaplanować ponowny rozruch przy użyciu zadania Cron lub narzędzi, takich jak DSC lub Chef, Puppet rozszerzenia.
+* Jeśli masz skrypt, który powoduje ponowne uruchomienie, zainstaluj aplikacje i uruchom skrypty itp. Należy zaplanować ponowny rozruch przy użyciu zadania Cron lub narzędzi, takich jak DSC lub Chef, Puppet rozszerzenia.
 * Rozszerzenie tylko uruchamianie skryptu, jeden raz, jeśli chcesz uruchomić skrypt w każdym rozruchu, wówczas można użyć [obraz pakietu cloud-init](../linux/using-cloud-init.md) i użyj [skryptów na rozruch](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) modułu. Alternatywnie służy skrypt tworzenia jednostki usługi Systemd.
 * Chcąc Zaplanuj, kiedy skrypt będzie uruchamiany, należy użyć rozszerzenia do tworzenia zadania Cron.
-* Podczas wykonywania skryptu będą widzieć tylko "Przechodzenie" stan rozszerzenia z witryny Azure portal lub interfejsu wiersza polecenia. Chcąc częstsze aktualizacje stanu uruchamianie skryptu, musisz utworzyć własne rozwiązanie.
+* W trakcie działania skryptu będziesz widzieć tylko stan „przechodzenie” z witryny Azure Portal lub interfejsu wiersza polecenia. Chcąc częstsze aktualizacje stanu uruchamianie skryptu, musisz utworzyć własne rozwiązanie.
 * Rozszerzenie niestandardowego skryptu nie obsługuje natywnie serwery proxy, jednak można użyć narzędzie do transferu plików, który obsługuje serwery proxy w ramach skryptu, takie jak *Curl*.
 * Należy pamiętać, innego niż domyślny katalog lokalizacji, które mogą polegać Twoje skrypty lub polecenia, masz logikę obsługującą to.
 

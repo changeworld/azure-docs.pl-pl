@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: c88bdce64e88f8639da2c4ebb01f4594fccff8a0
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: b1392c29881a9077e26baafc8972148800d03d3d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42747092"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60746321"
 ---
 # <a name="test-azure-portal-interface-for-your-managed-application"></a>Testowanie interfejsu portalu platformy Azure dla aplikacji zarządzanej
 Po [tworzenia pliku createUiDefinition.json](create-uidefinition-overview.md) dla aplikacji zarządzanych platformy Azure, musisz przetestowanie środowiska użytkownika. Aby uprościć testowanie, należy użyć skryptu, który ładuje plik w portalu. Nie potrzebujesz rzeczywiście wdrożyć Twoją zarządzaną aplikacją.

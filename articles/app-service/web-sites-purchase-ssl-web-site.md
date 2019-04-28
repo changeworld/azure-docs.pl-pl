@@ -16,11 +16,11 @@ ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 3e113639dbe4220b943d49dc610ee22b6416e12a
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57216581"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60832887"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Kup i skonfiguruj certyfikat SSL dla usługi Azure App Service
 

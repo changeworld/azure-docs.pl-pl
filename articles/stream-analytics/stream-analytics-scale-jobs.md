@@ -10,11 +10,11 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/22/2017
 ms.openlocfilehash: f4307da2e74846507cafb9f767a6ccae855e42a2
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53554677"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60816809"
 ---
 # <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>Skalować zadania usługi Azure Stream Analytics, w celu zwiększenia przepływności
 W tym artykule pokazano, jak dostosowywanie zapytania usługi Stream Analytics w celu zwiększenia przepływności zadania usługi Stream Analytics. Następującymi wskazówkami umożliwia skalowanie zadania do obsługi wyższe obciążenie i korzystać z zalet więcej zasobów systemowych (np. większą przepustowość, więcej zasobów procesora CPU, więcej pamięci).

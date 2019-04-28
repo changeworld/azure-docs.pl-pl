@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: mbullwin
-ms.openlocfilehash: 3c74d3a6c5b66053fb968ad52f72eca181799a3c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0f8f1c5585eb13506baea1e5ddbe611cc931758e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58003581"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60899252"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Zbieranie, przechowywanie i magazynowanie danych w usłudze Application Insights
 
@@ -28,7 +28,7 @@ Pierwszy, krótka odpowiedź:
 * Moduły standardowe dane telemetryczne, które Uruchom "fabrycznej" prawdopodobnie nie wysyłać danych poufnych do usługi. Dane telemetryczne dotyczy obciążenia, metryki wydajności i użycia, raporty dotyczące wyjątków i inne dane diagnostyczne. Dane użytkownika głównego widoczne w raporty diagnostyczne są adresami URL; ale aplikacja nie powinna w każdym przypadku poufnych danych w postaci zwykłego tekstu w adresie URL.
 * Można napisać kod, który wysyła dodatkowe niestandardowych danych telemetrycznych do udzielenia odpowiedzi na dane diagnostyczne i użycia monitorowania. (Rozszerzania jest atrakcyjną funkcją usługi Application Insights). Będzie to możliwe, przez pomyłkę, aby napisać ten kod, aby obejmowała osobistych, jak i innych poufnych danych. Jeśli aplikacja działa przy użyciu tych danych, należy zastosować procesy szczegółowej weryfikacji do tworzonego kodu.
 * Podczas tworzenia i testowania aplikacji, to łatwo sprawdzić, co jest wysyłane przez zestaw SDK. Dane są wyświetlane w oknie danych wyjściowych debugowania w IDE i przeglądarki. 
-* Dane są przechowywane w [Microsoft Azure](https://azure.com) serwerów w Stanach Zjednoczonych lub Europy. (Ale aplikację można uruchomić gdziekolwiek). Platforma Azure ma [silne zabezpieczenie przetwarza i spełnia szeroki zakres standardami](https://azure.microsoft.com/support/trust-center/). Tylko dla Ciebie i Twojego zespołu wyznaczonym należy mieć dostęp do danych. Pracownicy firmy Microsoft mogą mieć ograniczony dostęp do jej tylko w szczególnych okolicznościach ograniczone, korzystając ze znajomości. Szyfrowane podczas przesyłania, ale nie na serwerach.
+* Dane są przechowywane w [Microsoft Azure](https://azure.com) serwerów w Stanach Zjednoczonych lub Europy. (Ale aplikację można uruchomić gdziekolwiek). Platforma Azure ma [silne zabezpieczenie przetwarza i spełnia szeroki zakres standardami](https://azure.microsoft.com/support/trust-center/). Tylko dla Ciebie i Twojego zespołu wyznaczonym należy mieć dostęp do danych. Pracownicy firmy Microsoft mogą mieć ograniczony dostęp do jej tylko w szczególnych okolicznościach ograniczone, korzystając ze znajomości. Jest on zaszyfrowany przesyłanych i magazynowanych.
 
 W pozostałej części tego artykułu bardziej pełni rosnącego odpowiedzi na te pytania. Ustalono, aby być na niezależne tak, aby je pokazać współpracownikom, którzy nie należą do natychmiastowego zespołu.
 
@@ -127,12 +127,9 @@ Tak, będziemy używać protokołu https z wysyłania danych do portalu z niemal
 
 Tak, niektóre kanałów danych Telemetrycznych utrwalić dane lokalnie, jeśli nie można nawiązać połączenia z punktem końcowym. Przejrzyj poniżej można zobaczyć, które struktury i danych telemetrycznych kanałów dotyczy problem.
 
-
 Kanały dane telemetryczne, które korzystają z magazynu lokalnego utworzyć pliki tymczasowe w katalogach TEMP lub folder dane aplikacji, które są ograniczone do określonego konta działania aplikacji. Może się tak zdarzyć, gdy punkt końcowy został tymczasowo niedostępna lub zostanie osiągnięty limit ograniczania przepustowości. Gdy ten problem został rozwiązany, kanału danych telemetrycznych zostanie wznowiona wysyłania wszystkich nowych i istniejących danych.
 
-
-Jest to utrwalone dane **niezaszyfrowane** i zdecydowanie zalecane jest restrukturyzacji usługi zasady zbierania danych, aby wyłączyć zbieranie danych prywatnych. (Zobacz [sposobu eksportowania i usuwania danych prywatnych](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data#how-to-export-and-delete-private-data) Aby uzyskać więcej informacji.)
-
+Ta utrwalone dane nie są szyfrowane lokalnie. Jeśli jest to niepożądane, sprawdź dane i ograniczyć zbieranie prywatnych danych. (Zobacz [sposobu eksportowania i usuwania danych prywatnych](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data#how-to-export-and-delete-private-data) Aby uzyskać więcej informacji.)
 
 Jeśli klient potrzebuje do konfigurowania tego katalogu z wymaganiami zabezpieczeń można skonfigurować na framework. Upewnij się, że proces uruchamiania aplikacji ma dostęp do zapisu do tego katalogu, ale także upewnij się, że ten katalog jest chroniona w celu uniknięcia dane telemetryczne są odczytywane przez udostępnianie niepowołanym użytkownikom.
 

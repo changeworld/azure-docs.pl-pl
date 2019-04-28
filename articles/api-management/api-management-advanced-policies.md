@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
 ms.openlocfilehash: 43cbeea554f43e4db7d5440af83a9b414741d2f6
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756613"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60795876"
 ---
 # <a name="api-management-advanced-policies"></a>Usługa API Management zaawansowane zasady
 
@@ -867,7 +867,7 @@ W poniższym przykładzie pokazano zestaw zasad zmiennej w sekcji dla ruchu przy
 | Atrybut | Opis                                                              | Wymagane |
 | --------- | ------------------------------------------------------------------------ | -------- |
 | name      | Nazwa zmiennej.                                                | Yes      |
-| wartość     | Wartość zmiennej. Może to być wyrażenie lub wartość literału. | Yes      |
+| value     | Wartość zmiennej. Może to być wyrażenie lub wartość literału. | Yes      |
 
 ### <a name="usage"></a>Sposób użycia
 

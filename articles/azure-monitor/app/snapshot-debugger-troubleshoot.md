@@ -13,11 +13,11 @@ ms.reviewer: mbullwin
 ms.date: 03/07/2019
 ms.author: mbullwin
 ms.openlocfilehash: bf19d4f5ce60411413c21fce12f9fe9d2f391bf1
-ms.sourcegitcommit: f596d88d776a3699f8c8cf98415eb874187e2a48
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2019
-ms.locfileid: "58094943"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60783985"
 ---
 # <a id="troubleshooting"></a> Rozwiązywanie problemów, przeglądania migawek lub włączenie Application Insights Snapshot Debugger
 Jeśli włączono rozszerzenie Application Insights Snapshot Debugger dla aplikacji, ale nie widzisz migawki dla wyjątków, można użyć w instrukcjach rozwiązywać problemy. Może istnieć wiele różnych przyczyn, dlaczego migawek nie są generowane. Możesz uruchomić sprawdzanie kondycji migawki, umożliwiają zidentyfikowanie pewnych typowych przyczyn.

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/19/2018
 ms.author: pbutlerm
 ms.openlocfilehash: fd68846b9144c3efcc71dec369d64119427758a3
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639762"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60744562"
 ---
 # <a name="connect-to-your-azure-based-virtual-machine"></a>Połącz się z maszyną wirtualną opartych na platformie Azure
 
@@ -29,7 +29,7 @@ W tym artykule wyjaśniono, jak nawiązać połączenie i zaloguj się do maszyn
 
 Klient usług pulpitu zdalnego użyje połączyć się z maszyny Wirtualnej systemu Windows, hostowane na platformie Azure.  Większość wersji systemu Windows zawierają natywną obsługę protokołu remote desktop protocol (RDP).  Dla innych maszyn, możesz znaleźć więcej informacji o klientach w [klientów usług pulpitu zdalnego](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients).  
 
-Następujący artykuł szczegółowo opisuje sposób użyć wbudowanej obsługi Windows protokołu RDP, aby nawiązać połączenie z maszyną Wirtualną: [jak połączyć i zaloguj się na maszynie wirtualnej platformy Azure, systemem Windows](../../../virtual-machines/windows/connect-logon.md).  
+Następujący artykuł szczegółowo opisuje sposób użyć wbudowanej obsługi Windows protokołu RDP, aby nawiązać połączenie z maszyną Wirtualną: [Jak połączyć i zaloguj się na maszynie wirtualnej platformy Azure, systemem Windows](../../../virtual-machines/windows/connect-logon.md).  
 
 >[!TIP]
 > Mogą być wyświetlane ostrzeżenia o zabezpieczeniach podczas procesu, na przykład, plik RDP pochodzi od nieznanego wydawcy lub że nie można zweryfikować poświadczeń użytkownika.  Jest ona bezpiecznie zignorować te ostrzeżenia.
@@ -54,7 +54,7 @@ Aby połączyć maszynę Wirtualną opartą na systemie Linux, konieczne będzie
 7. Kliknij przycisk **Otwórz** aby otworzyć terminal programu PuTTY.  
 8. Po wyświetleniu monitu wprowadź nazwę konta i hasło konta maszyny Wirtualnej systemu Linux. 
 
-   Jeśli występują problemy z połączeniem, zapoznaj się z dokumentacją używanego klienta SSH, na przykład [rozdział 10: typowe komunikaty o błędach](https://www.ssh.com/ssh/putty/putty-manuals/0.68/Chapter10.html#errors).
+   Jeśli występują problemy z połączeniem, zapoznaj się z dokumentacją używanego klienta SSH, na przykład [rozdział 10: Typowe komunikaty o błędach](https://www.ssh.com/ssh/putty/putty-manuals/0.68/Chapter10.html#errors).
 
 Aby uzyskać więcej informacji, w tym sposobu dodawania komputera stacjonarnego do aprowizowanej maszyny Wirtualnej systemu Linux, zobacz [Instalowanie i konfigurowanie pulpitu zdalnego, aby nawiązać połączenie z maszyny Wirtualnej z systemem Linux na platformie Azure](../../../virtual-machines/linux/use-remote-desktop.md).
 

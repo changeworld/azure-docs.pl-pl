@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 04/05/2019
 ms.author: monhaber
 ms.openlocfilehash: 3d9658a6b7501714a6aad0e8eaa30ce587284bfe
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59046210"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60906328"
 ---
 # <a name="protect-your-network-resources-in-azure-security-center"></a>Ochrona zasobów sieciowych w usłudze Azure Security Center
 Usługa Azure Security Center w sposób ciągły analizuje stan zabezpieczeń zasobów platformy Azure najlepsze rozwiązania dotyczące zabezpieczeń sieci. Gdy usługa Security Center zidentyfikuje potencjalnych luk w zabezpieczeniach, tworzy zaleceń, które przeprowadzą Cię przez proces konfigurowania wymaganych kontrolek harden i chronić zasoby.

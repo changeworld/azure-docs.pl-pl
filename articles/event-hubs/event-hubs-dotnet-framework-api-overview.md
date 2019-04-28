@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: 46b0599e6c4d5b4cc2dd9370a28616019b79b50d
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: f56882d2d73c85434c6f81972a06e5ea9ccdff99
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42745655"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60822044"
 ---
 # <a name="event-hubs-net-framework-api-overview"></a>Omówienie usługi Event Hubs .NET Framework API
 
@@ -22,7 +22,7 @@ Ten artykuł zawiera podsumowanie niektórych klucza usługi Azure Event Hubs [i
 
 [Scenariusze monitorowania](event-hubs-metrics-azure-monitor.md) span zarządzania i środowiska wykonawczego. Aby uzyskać ze szczegółową dokumentacją referencyjną na interfejsy API platformy .NET, zobacz [.NET Framework](/dotnet/api/microsoft.servicebus.messaging.eventhubclient), [.NET Standard](/dotnet/api/microsoft.azure.eventhubs), i [EventProcessorHost interfejsu API](/dotnet/api/microsoft.azure.eventhubs.processor) odwołania.
 
-## <a name="management-apis"></a>Interfejsy API Management
+## <a name="management-apis"></a>Interfejsy API zarządzania
 
 Aby wykonać następujące operacje zarządzania, konieczne jest posiadanie **Zarządzaj** uprawnień w przestrzeni nazw usługi Event Hubs:
 

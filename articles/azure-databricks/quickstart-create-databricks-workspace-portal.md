@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 07/23/2018
 ms.custom: mvc
 ms.openlocfilehash: 3a58a34271562b127735a4682046a7b646d0c085
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60010521"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60771095"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Szybki start: uruchamianie zadania Spark w usłudze Azure Databricks przy użyciu witryny Azure Portal
 

@@ -9,11 +9,11 @@ ms.topic: troubleshooting
 ms.date: 01/11/2019
 ms.author: annayak
 ms.openlocfilehash: 673101ad7f55969c216adf7e970402a2109f8254
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58078163"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60864345"
 ---
 # <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>Rozwiązywanie problemów z błędami usuwania zasobów magazynu klasycznego
 Ten artykuł zawiera wskazówki dotyczące rozwiązywania problemów, gdy wystąpi jedno z następujących błędów, w trakcie usuwania Azure klasycznego konta magazynu, kontenera lub pliku obiektów blob strony *.vhd. 

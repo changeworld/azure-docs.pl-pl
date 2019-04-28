@@ -1,17 +1,18 @@
 ---
 title: Jak model i partycji danych w usłudze Azure Cosmos DB przy użyciu przykładu rzeczywistych
 description: Dowiedz się, jak model i partycji stanowi przykład rzeczywistych za pomocą usługi Azure Cosmos DB podstawowy interfejs API
-author: ThomasWeiss
+author: rockboyfor
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 3/27/2019
-ms.author: thweiss
+origin.date: 03/27/2019
+ms.date: 04/15/2019
+ms.author: v-yeche
 ms.openlocfilehash: ac1b94de4b439aab202d53b23b0d0da616a9f851
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58919616"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61057489"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>Jak model i partycji danych w usłudze Azure Cosmos DB przy użyciu przykładu rzeczywistych
 
@@ -333,7 +334,7 @@ W naszym przykładzie używamy zestawienia zmian `users` kontenera reagować w k
 ```javascript
 function updateUsernames(userId, username) {
   var collection = getContext().getCollection();
-  
+
   collection.queryDocuments(
     collection.getSelfLink(),
     `SELECT * FROM p WHERE p.userId = '${userId}'`,
@@ -576,3 +577,6 @@ Po wprowadzeniu do praktycznych modelowania i partycjonowanie danych którego ch
 - [Praca z bazami danych, kontenerów i elementów](databases-containers-items.md)
 - [Partitioning in Azure Cosmos DB (Partycjonowanie w usłudze Azure Cosmos DB)](partitioning-overview.md)
 - [Zmiana źródła danych w usłudze Azure Cosmos DB](change-feed.md)
+
+<!--Update_Description: new articles on how to model partition example -->
+<!--ms.date: 04/15/2019-->

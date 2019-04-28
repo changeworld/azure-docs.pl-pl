@@ -3,8 +3,8 @@ title: Diagnozowanie problemu z routingiem sieciowym na maszynie wirtualnej — 
 description: Korzystając z tego samouczka, dowiesz się, jak diagnozować problemy z routingiem sieciowym na maszynie wirtualnej przy użyciu funkcji określania następnego przeskoku w usłudze Azure Network Watcher.
 services: network-watcher
 documentationcenter: network-watcher
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to diagnose virtual machine (VM) network routing problem that prevents communication to different destinations.
@@ -15,16 +15,16 @@ ms.topic: tutorial
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
 ms.date: 04/20/2018
-ms.author: jdial
+ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: ea64c93726c3bc5c5d60f35790bb337333d4d47a
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 5a5a60ecb1861b63d9a37f65f471bfa3b8fc7fde
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32312199"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60790241"
 ---
-# <a name="tutorial-diagnose-a-virtual-machine-network-routing-problem-using-the-azure-portal"></a>Samouczek: diagnozowanie problemu z routingiem sieciowym na maszynie wirtualnej przy użyciu witryny Azure Portal
+# <a name="tutorial-diagnose-a-virtual-machine-network-routing-problem-using-the-azure-portal"></a>Samouczek: Diagnozowanie problemu routingu sieci maszyny wirtualnej przy użyciu witryny Azure portal
 
 Podczas wdrażania maszyny wirtualnej na platformie Azure jest tworzonych kilka domyślnych tras. Możesz tworzyć trasy niestandardowe zastępujące domyślne trasy platformy Azure. Czasami użycie trasy niestandardowej może spowodować niepowodzenie komunikacji między maszyną wirtualną a innymi zasobami. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -89,7 +89,7 @@ Na platformie Azure są automatycznie tworzone trasy do domyślnych miejsc docel
     | Maszyna wirtualna         | Wybierz pozycję myVm                                            |
     | Interfejs sieciowy       | myvm — nazwa interfejsu sieciowego może się różnić.   |
     | Źródłowy adres IP       | 10.0.0.4                                               |
-    | Docelowy adres IP  | 13.107.21.200 — jeden z adresów witryny www.bing.com. |
+    | Docelowy adres IP  | 13.107.21.200 — jeden z adresów dla < www.bing.com>. |
 
     ![Następny przeskok](./media/diagnose-vm-network-routing-problem/next-hop.png)
 
@@ -116,7 +116,7 @@ Gdy grupa zasobów i wszystkie znajdujące się w niej zasoby nie będą już po
 2. Wybierz pozycję **Usuń grupę zasobów**.
 3. W polu **WPISZ NAZWĘ GRUPY ZASOBÓW:** wprowadź nazwę *myResourceGroup*, a następnie wybierz pozycję **Usuń**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Podczas pracy z tym samouczkiem utworzono maszynę wirtualną i zdiagnozowano routing sieciowy z tej maszyny wirtualnej. Uzyskano informacje o tworzeniu tras domyślnych na platformie Azure i przetestowano routing do dwóch różnych miejsc docelowych. Uzyskaj więcej informacji na temat [routingu na platformie Azure](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) i dowiedz się, jak [tworzyć trasy niestandardowe](../virtual-network/manage-route-table.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-route).
 

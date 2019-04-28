@@ -16,11 +16,11 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 29a639142395c43fea06c1d6d18909b3c9f33b86
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270029"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60769502"
 ---
 # <a name="autoscaling-and-app-service-environment-v1"></a>Skalowanie automatyczne i środowisko App Service Environment w wersji 1
 

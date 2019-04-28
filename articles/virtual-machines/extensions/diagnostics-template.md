@@ -17,11 +17,11 @@ ms.date: 05/31/2017
 ms.author: saurabh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 00b4a145da9104cab410c5a07f6d7ec5ded5c45d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57893547"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60800017"
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Użyj monitorowania i diagnostyki za pomocą szablonów maszyn wirtualnych Windows i usługi Azure Resource Manager
 Rozszerzenie diagnostyki platformy Azure zawiera funkcje monitorowania i diagnostyki na maszynie wirtualnej na podstawie Windows Azure. Aby włączyć te możliwości na maszynie wirtualnej, łącznie z rozszerzeniem w ramach szablonu usługi Azure Resource Manager. Zobacz [Tworzenie szablonów usługi Azure Resource Manager przy użyciu rozszerzeń maszyn wirtualnych](../windows/template-description.md#extensions) uzyskać więcej informacji o tym każde rozszerzenie jako część szablonu maszyny wirtualnej. W tym artykule opisano, jak dodać rozszerzenie Diagnostyka Azure do szablonu maszyny wirtualnej systemu windows.  

@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 0a6102d1-7554-4df2-b487-4dae9a7287b6
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.openlocfilehash: f84cb59e7d4fd7d8301d22348ca066a7f9d9e94e
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 64095f6706bb978cd33b8fe7833fe4e65fc3b0f8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048822"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60813432"
 ---
 # <a name="manage-azure-data-lake-analytics-using-policies"></a>Zarządzanie przy użyciu zasad usługi Azure Data Lake Analytics
 
@@ -68,8 +68,8 @@ Za pomocą zasad na poziomie zadania można kontrolować, maksymalna liczba jedn
 
 Usługa Data Lake Analytics ma dwie zasady, które można ustawić na poziomie zadania:
 
-* **Limit jednostek Alokacji na zadanie**: użytkownicy mogą tylko przesyłać zadania, które trzeba tej liczby jednostek analizy. Domyślnie ten limit jest taka sama jak maksymalny limit jednostek Alokacji dla konta.
-* **Priorytet**: użytkownicy mogą tylko przesyłać zadania, które mają priorytet niższy niż lub równa tej wartości. Większa liczba wskazuje o niższym priorytecie. Domyślnie ten limit jest ustawiona na 1, która jest najwyższy możliwy priorytet.
+* **Limit jednostek Alokacji na zadanie**: Użytkownicy mogą przesyłać tylko zadania, które trzeba tej liczby jednostek analizy. Domyślnie ten limit jest taka sama jak maksymalny limit jednostek Alokacji dla konta.
+* **Priorytet**: Użytkownicy mogą przesyłać tylko zadania, które mają priorytet niższy niż lub równa tej wartości. Większa liczba wskazuje o niższym priorytecie. Domyślnie ten limit jest ustawiona na 1, która jest najwyższy możliwy priorytet.
 
 Brak domyślnych zasad ustawić dla każdego konta. Domyślne zasady mają zastosowanie do wszystkich użytkowników, konta. Dodatkowe zasady można ustawić dla konkretnych użytkowników i grup. 
 
@@ -82,8 +82,8 @@ Brak domyślnych zasad ustawić dla każdego konta. Domyślne zasady mają zasto
 1. W witrynie Azure portal przejdź na swoje konto usługi Data Lake Analytics.
 2. Kliknij pozycję **Właściwości**.
 3. W obszarze **limity przesyłania zadań**, kliknij przycisk **Dodaj zasady** przycisku. Następnie wybierz lub wprowadź następujące ustawienia:
-    1. **Nazwa zasad obliczeń**: Podaj nazwę zasad, przypomnienia o celem zasad.
-    2. **Wybierz użytkownika lub grupę**: zaznacz użytkownika lub grupy, które dotyczą te zasady.
+    1. **Nazwa zasad obliczeń**: Wprowadź nazwę zasad, przypomnienia o celem zasad.
+    2. **Wybierz użytkownika lub grupę**: Wybierz użytkownika lub grupy, których dotyczą te zasady.
     3. **Ustaw Limit jednostek Alokacji zadania**: Ustaw limit jednostek Alokacji, która ma zastosowanie do wybranego użytkownika lub grupę.
     4. **Ustaw Limit priorytetu**: Ustaw limit priorytetu, która ma zastosowanie do wybranego użytkownika lub grupę.
 

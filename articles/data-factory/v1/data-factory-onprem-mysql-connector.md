@@ -14,14 +14,14 @@ ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: de1263d68e96a23bd6b5eca4297e74b56ba22e40
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021646"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60823950"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Przenoszenie danych z MySQL za pomocą usługi Azure Data Factory
-> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, z której korzystasz:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Wersja 1](data-factory-onprem-mysql-connector.md)
 > * [Wersja 2 (bieżąca wersja)](../connector-mysql.md)
 
@@ -74,7 +74,7 @@ Poniższa tabela zawiera opis specyficzne dla usługi MySQL połączone elementy
 | Schemat |Nazwa schematu w bazie danych. |Nie |
 | Element authenticationType |Typ uwierzytelniania używany do łączenia z bazą danych MySQL. Możliwe wartości to: `Basic`. |Yes |
 | nazwa użytkownika |Określ nazwę użytkownika do łączenia z bazą danych MySQL. |Yes |
-| hasło |Określ hasło dla konta użytkownika, który określiłeś. |Yes |
+| password |Określ hasło dla konta użytkownika, który określiłeś. |Yes |
 | gatewayName |Nazwa bramy, do którego usługa Data Factory powinna używać do łączenia z bazą danych MySQL w środowisku lokalnym. |Yes |
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
@@ -301,44 +301,44 @@ Podczas przenoszenia danych do bazy danych MySQL, następujące mapowania są u�
 
 | Typ bazy danych MySQL | Typ .NET framework |
 | --- | --- |
-| bigint bez znaku |Dziesiętny |
+| bigint bez znaku |Decimal |
 | bigint |Int64 |
-| Bitowe |Dziesiętny |
+| bit |Decimal |
 | blob |Byte[] |
-| wartość logiczna |Wartość logiczna |
-| Char |Ciąg |
-| date |Data/godzina |
-| datetime |Data/godzina |
-| decimal |Dziesiętny |
-| podwójnej precyzji |Podwójne |
-| double |Podwójne |
-| Wyliczenia |Ciąg |
-| float |Pojedyncze |
+| bool |Boolean |
+| char |String |
+| date |DateTime |
+| datetime |DateTime |
+| decimal |Decimal |
+| podwójnej precyzji |Double |
+| double |Double |
+| Wyliczenia |String |
+| float |Single |
 | int unsigned |Int64 |
 | int |Int32 |
 | Liczba całkowita bez znaku |Int64 |
 | liczba całkowita |Int32 |
 | długie varbinary |Byte[] |
-| varchar długi |Ciąg |
+| varchar długi |String |
 | longblob |Byte[] |
-| LONGTEXT |Ciąg |
+| longtext |String |
 | mediumblob |Byte[] |
 | mediumint bez znaku |Int64 |
 | mediumint |Int32 |
-| mediumtext |Ciąg |
-| Numeryczne |Dziesiętny |
-| rzeczywiste |Podwójne |
-| set |Ciąg |
+| mediumtext |String |
+| numeric |Decimal |
+| real |Double |
+| set |String |
 | smallint bez znaku |Int32 |
 | smallint |Int16 |
-| tekst |Ciąg |
-| time |Przedział czasu |
-| sygnatura czasowa |Data/godzina |
+| tekst |String |
+| time |TimeSpan |
+| timestamp |DateTime |
 | tinyblob |Byte[] |
 | tinyint bez znaku |Int16 |
 | tinyint |Int16 |
-| tinytext |Ciąg |
-| varchar |Ciąg |
+| tinytext |String |
+| varchar |String |
 | rocznie |Int |
 
 ## <a name="map-source-to-sink-columns"></a>Mapy źródła do ujścia kolumn

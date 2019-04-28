@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: ejarvi
-ms.openlocfilehash: 36e8875e91e2f04dbb60bab3211f07b2053e78f5
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 3ce881da4b683cf7034100d5044dd0f3c93edb52
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414776"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60800186"
 ---
-# <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>Usługa Azure Disk Encryption dla systemu Linux (Microsoft.Azure.Security.AzureDiskEncryptionForLinux)
+# <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>Azure Disk Encryption for Linux (Microsoft.Azure.Security.AzureDiskEncryptionForLinux)
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Usługa Azure Disk Encryption korzysta z podsystemu dm-crypt w systemie Linux, aby zapewnić pełne szyfrowanie dysków na [dystrybucje systemu Linux platformy Azure wybierz](https://aka.ms/adelinux).  To rozwiązanie jest zintegrowana z usługą Azure Key Vault do zarządzania wpisami tajnymi i kluczami szyfrowania dysków.
 
@@ -74,21 +74,21 @@ Usługa Azure Disk Encryption dla systemu Linux wymaga łączności z Internetem
 
 | Name (Nazwa) | Wartość / przykład | Typ danych |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | data |
-| Wydawcy | Microsoft.Azure.Security | ciąg |
-| type | AzureDiskEncryptionForLinux | ciąg |
-| typeHandlerVersion | 0.1, 1.1 (ZESTAWU SKALOWANIA MASZYN WIRTUALNYCH) | Int |
+| apiVersion | 2015-06-15 | date |
+| Wydawcy | Microsoft.Azure.Security | string |
+| type | AzureDiskEncryptionForLinux | string |
+| typeHandlerVersion | 0.1, 1.1 (ZESTAWU SKALOWANIA MASZYN WIRTUALNYCH) | int |
 | AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Identyfikator GUID | 
-| AADClientSecret | hasło | ciąg |
-| AADClientCertificate | Odcisk palca | ciąg |
-| DiskFormatQuery | {"dev_path": "", "name": "","file_system": ""} | Słownik JSON |
-| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | ciąg | 
-| KeyEncryptionAlgorithm | "RSA OAEP", "RSA-OAEP — 256", "RSA1_5" | ciąg |
-| KeyEncryptionKeyURL | url | ciąg |
-| KeyVaultURL | url | ciąg |
-| Hasło | hasło | ciąg | 
-| SequenceVersion | uniqueidentifier | ciąg |
-| VolumeType | Systemu operacyjnego, danych, wszystkie | ciąg |
+| AADClientSecret | password | string |
+| AADClientCertificate | thumbprint | string |
+| DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | Słownik JSON |
+| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | string | 
+| KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | string |
+| KeyEncryptionKeyURL | url | string |
+| KeyVaultURL | url | string |
+| Hasło | password | string | 
+| SequenceVersion | uniqueidentifier | string |
+| VolumeType | Systemu operacyjnego, danych, wszystkie | string |
 
 ## <a name="template-deployment"></a>Wdrażanie na podstawie szablonu
 

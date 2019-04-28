@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: aahi
 ms.openlocfilehash: 0a7b8637ae3ca7342a04f6bf3f8a808539d980eb
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56886166"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60863414"
 ---
 # <a name="tutorial-build-a-web-page-spell-check-client"></a>Samouczek: Tworzenie klienta sprawdzania pisowni w postaci strony internetowej
 
@@ -319,7 +319,7 @@ Otwórz utworzoną stronę internetową w przeglądarce. Gdy zostanie wyświetlo
 }
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Use and display requirements (Wymagania dotyczące użycia i wyświetlania)](../UseAndDisplayRequirements.md)

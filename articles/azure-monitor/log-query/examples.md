@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 10/03/2018
 ms.author: bwren
 ms.openlocfilehash: 2c35bc4026c81cbc8b95225e688a3922bc320554
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416653"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60759915"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Przykłady zapytań dzienników w usłudze Azure Monitor
 W tym artykule przedstawiono różne przykłady [zapytania](log-query-overview.md) przy użyciu [język zapytania Kusto](/azure/kusto/query/) pobrać różnego rodzaju dane dzienników z usługi Azure Monitor. Różne metody są używane do konsolidacji i analizowania danych, aby można było używać tych przykładów, aby zidentyfikować różne strategie, których można użyć do własnych wymagań.  

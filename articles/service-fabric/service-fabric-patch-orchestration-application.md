@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 2/01/2019
 ms.author: brkhande
 ms.openlocfilehash: 6c0aa42cc22d22431d7d0270aca52e089046cb01
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58847746"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60773370"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Stosowanie poprawek systemu operacyjnego Windows w klastrze usługi Service Fabric
 
@@ -162,12 +162,12 @@ Zachowanie aplikacji orkiestracji poprawek można skonfigurować do własnych po
 |TaskApprovalPolicy   |Wyliczenia <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy wskazuje zasady, które ma być używany przez usługę koordynatora do instalowania aktualizacji Windows w węzłach klastra usługi Service Fabric.<br>                         Dozwolone wartości to: <br>                                                           <b>NodeWise</b>. Windows Update jest zainstalowane na jednym węźle naraz. <br>                                                           <b>UpgradeDomainWise</b>. Aktualizacja Windows jest zainstalowane jedną domenę uaktualnienia w danym momencie. (Maksymalnie, wszystkie węzły należące do domeny uaktualnienia można szukać Windows Update.)<br> Zapoznaj się [— często zadawane pytania](#frequently-asked-questions) sekcję dotyczącą sposobu określenia, który jest najbardziej odpowiednie zasady dla klastra.
 |LogsDiskQuotaInMB   |Długie  <br> (Domyślnie: 1024)               |Maksymalny rozmiar patch orchestration aplikacja rejestruje się w MB, co może być utrwalony lokalnie w węzłach.
 | WUQuery               | string<br>(Domyślnie: "IsInstalled = 0")                | Zapytanie w celu pobrania aktualizacji i Windows. Aby uzyskać więcej informacji, zobacz [WuQuery.](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)
-| InstallWindowsOSOnlyUpdates | Wartość logiczna <br> (domyślna: false)                 | Użyj tej flagi do kontroli, które aktualizacje powinny zostać pobrana i zainstalowana. Następujące wartości są dozwolone. <br>wartość true — instaluje tylko aktualizacje systemu operacyjnego Windows.<br>FALSE — instaluje wszystkie dostępne aktualizacje na komputerze.          |
+| InstallWindowsOSOnlyUpdates | Boolean <br> (domyślna: false)                 | Użyj tej flagi do kontroli, które aktualizacje powinny zostać pobrana i zainstalowana. Następujące wartości są dozwolone. <br>wartość true — instaluje tylko aktualizacje systemu operacyjnego Windows.<br>FALSE — instaluje wszystkie dostępne aktualizacje na komputerze.          |
 | WUOperationTimeOutInMinutes | Int <br>(Domyślnie: 90)                   | Określa limit czasu dla wszelkich operacji Windows Update (wyszukiwania lub pobierania lub instalacji). Jeśli operacja nie jest ukończone przed upływem określonego limitu czasu, zostało przerwane.       |
 | WURescheduleCount     | Int <br> (Domyślnie: 5)                  | Maksymalna liczba przypadków, w usłudze zmieni ustalony Windows aktualizacji w przypadku, gdy operacja stale kończy się niepowodzeniem.          |
 | WURescheduleTimeInMinutes | Int <br>(Domyślnie: 30) | Interwał, w którym usługa zmieni ustalony aktualizacji Windows w przypadku, gdy błąd będzie nadal występować. |
 | WUFrequency           | Ciąg rozdzielony przecinkami (domyślne: "Co tydzień, Środa, 7:00:00")     | Częstotliwość instalowania aktualizacji Windows. Format i możliwe wartości to: <br>—: Mm: ss co miesiąc, DD, na przykład co miesiąc, 5, 12: 22:32.<br>Dopuszczalne wartości dla pola DD (dzień) są liczby z zakresu od zakresu 1-28 i "last". <br> -Co tydzień, dzień, ss, na przykład co tydzień, Wtorek, 12:22:32.  <br> -Codziennie: mm: ss, na przykład codziennie, 12:22:32.  <br> -Brak wskazuje nie powinny odbywać Windows Update.  <br><br> Należy pamiętać, że godziny są w formacie UTC.|
-| AcceptWindowsUpdateEula | Wartość logiczna <br>(Domyślnie: true) | Przez ustawienie tej flagi, aplikacja przyjmuje umowy licencji użytkownika końcowego for Windows Update w imieniu właściciela maszyny.              |
+| AcceptWindowsUpdateEula | Boolean <br>(Domyślnie: true) | Przez ustawienie tej flagi, aplikacja przyjmuje umowy licencji użytkownika końcowego for Windows Update w imieniu właściciela maszyny.              |
 
 > [!TIP]
 > Windows Update, natychmiastowe, ustawić `WUFrequency` względem czasu wdrożenia aplikacji. Na przykład, załóżmy, że klaster testu z pięcioma węzłami, a następnie zaplanować wdrożenie aplikacji o około 5:00 czasu UTC. Jeśli przyjęto założenie, że uaktualnienie aplikacji lub wdrożenia trwa 30 minut na maksymalnym, ustaw WUFrequency jako "Codziennie, 17:30:00"

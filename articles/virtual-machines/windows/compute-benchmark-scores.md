@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 04/09/2018
 ms.author: cynthn;davberg
 ms.openlocfilehash: 43d0ab6552847df7f1f2a8599dcc7cb9a8fcb57b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698833"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60844078"
 ---
 # <a name="compute-benchmark-scores-for-windows-vms"></a>Wyniki testów porównawczych wystąpień obliczeniowych dla maszyn wirtualnych Windows
 Następujące wyniki testów porównawczych SPECInt Pokaż wydajności obliczeniowej dla zestawienia maszyny Wirtualnej platformy Azure o wysokiej wydajności z systemem Windows Server. Wyniki testów porównawczych obliczeniowych są również dostępne dla [maszyn wirtualnych systemu Linux](../linux/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

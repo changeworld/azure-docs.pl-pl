@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 02/12/2019
 ms.author: aahi
 ms.openlocfilehash: d7a0c29ad3386fcdf85292b6e2852842a971c076
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56231913"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60948869"
 ---
 # <a name="quickstart-create-your-first-bing-custom-search-instance"></a>Szybki start: tworzenie pierwszego wystąpienia usługi wyszukiwania niestandardowego Bing
 
@@ -49,7 +49,7 @@ Aby utworzyć wystąpienie wyszukiwania niestandardowego Bing:
 6.  Kliknij kartę **Produkcja** w obszarze **Punkty końcowe** i skopiuj **identyfikator konfiguracji niestandardowej**. Ten identyfikator jest potrzebny do wywołania interfejsu API wyszukiwania niestandardowego. Dodaje się go do parametru zapytania `customconfig=` w wywołaniach.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Szybki start: wywoływanie punktu końcowego wyszukiwania niestandardowego Bing](./call-endpoint-csharp.md)

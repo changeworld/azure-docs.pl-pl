@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 02/07/2019
 ms.author: pafarley
 ms.openlocfilehash: 752f15fd730f1244f44ba3749bff3c5bb85ca02b
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312603"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60815291"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-go"></a>Szybki start: Wykrywanie twarzy na obrazie przy użyciu interfejsu API REST i języka Go
 
@@ -299,7 +299,7 @@ W konsoli powinien zostać wyświetlony ciąg JSON danych wykrytej twarzy. Nast�
 ]
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym przewodniku Szybki start napisano skrypt w języku Ruby służący do wywoływania interfejsu API rozpoznawania twarzy platformy Azure w celu wykrywania twarzy na obrazie i zwracania ich atrybutów. Następnie zapoznaj się z dokumentacją referencyjną interfejsu API rozpoznawania twarzy, aby dowiedzieć się więcej.
 

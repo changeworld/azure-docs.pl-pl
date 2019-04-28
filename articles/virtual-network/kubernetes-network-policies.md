@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/25/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: b4f8577724781e5df10846a5fc4e30c8320403f2
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: a5c367402bd1e61485095fd1d565a8582acc3a9e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47219774"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60824907"
 ---
 # <a name="azure-kubernetes-network-policies-overview"></a>Omówienie zasad sieci w usłudze Azure Kubernetes
 
@@ -37,7 +37,7 @@ Podczas implementowania zabezpieczeń dla klastra, używać sieciowych grup zabe
 ## <a name="using-azure-kubernetes-network-policies"></a>Przy użyciu zasad sieci Azure Kubernetes
 Zasady sieci platformy Azure może służyć w następujący sposób w celu zapewnienia mikrosegmentację zasobników.
 
-### <a name="acs-engine"></a>Aparat ACS
+### <a name="acs-engine"></a>ACS-engine
 Aparat ACS jest narzędziem, które generuje szablonu usługi Azure Resource Manager w przypadku wdrażania klastra Kubernetes na platformie Azure. Konfiguracja klastra jest określona w pliku JSON, który jest przekazywany do narzędzia podczas generowania szablonu. Aby dowiedzieć się więcej na temat całą listę ustawień klastra obsługiwane i ich opisów, zobacz aparat Microsoft Azure Container Service — definicja klastra.
 
 Aby włączyć zasady w klastrach wdrożonych za pomocą usługi acs-engine, należy określić wartość ustawienia networkPolicy w pliku definicji klastra jako "azure".
@@ -87,7 +87,7 @@ Poniżej JSON przykładową konfigurację tworzy nową sieć wirtualną i podsie
 
 ```
 ### <a name="creating-your-own-kubernetes-cluster-in-azure"></a>Tworzenie klastra Kubernetes na platformie Azure
-Implementacja może służyć do zapewnienia zasad sieciowych zasobników w klastrów Kubernetes wdrażanie samodzielnie, bez konieczności polegania na narzędzi, takich jak aparat ACS. W tym przypadku najpierw zainstalować dodatek typu plug-in CNI i włączenie go dla każdej maszyny wirtualnej w klastrze. Aby uzyskać szczegółowe instrukcje, zobacz [wdrożyć wtyczki dla klastra Kubernetes wdrażanej samodzielnie](deploy-container-networking.md#deploy-plug-in-for-a-kubernetes-cluster).
+Implementacja może służyć do zapewnienia zasad sieciowych zasobników w klastrów Kubernetes wdrażanie samodzielnie, bez konieczności polegania na narzędzi, takich jak aparat ACS. W tym przypadku najpierw zainstalować dodatek typu plug-in CNI i włączenie go dla każdej maszyny wirtualnej w klastrze. Aby uzyskać szczegółowe instrukcje, zobacz [Wdrażanie wtyczki dla samodzielnie wdrażanego klastra Kubernetes](deploy-container-networking.md#deploy-plug-in-for-a-kubernetes-cluster).
 
 Gdy jest wdrażany klaster, uruchom następujące polecenie `kubectl` polecenie pobrania i zastosowania zasad sieci platformy Azure *daemonset* do klastra.
 

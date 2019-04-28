@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: mbullwin
 ms.openlocfilehash: 5daf0944212dc4b8040a39e6efbf5bb25f7f39f0
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117235"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60901816"
 ---
 # <a name="create-an-application-insights-resource"></a>Tworzenie zasobu usługi Application Insights
 Usługa Azure Application Insights zawiera dane dotyczące Twojej aplikacji w systemie Microsoft Azure *zasobów*. Tworzenie nowego zasobu znajduje się w związku z tym [konfiguracji usługi Application Insights na potrzeby monitorowania nowej aplikacji][start]. W wielu przypadkach tworzenia zasobu może odbywać się automatycznie IDE. Ale w niektórych przypadkach możesz Utwórz ręcznie zasób — na przykład mieć osobne zasoby do rozwoju i produkcji kompilacji aplikacji.

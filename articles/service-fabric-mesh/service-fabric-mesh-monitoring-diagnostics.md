@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 06/22/2018
 ms.author: srrengar
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 9f857c23b5500bc7790a0ff7fcf81eaec51f37c9
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: 6166808c85bbee9465a8fa12332afe2163027982
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358326"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60810619"
 ---
 # <a name="monitoring-and-diagnostics"></a>Monitorowanie i diagnostyka
 Usługa Azure Service Fabric Mesh to w pełni zarządzana usługa, która pozwala deweloperom na wdrażanie aplikacji mikrousług bez zarządzania maszynami wirtualnymi, magazynem i siecią. Monitorowanie i diagnostyka usługi Service Fabric siatki dzieli się na trzy główne typy danych diagnostycznych:
@@ -49,5 +49,5 @@ az mesh code-package-log get --resource-group <nameOfRG> --application-name SbzV
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby dowiedzieć się więcej na temat usługi Service Fabric siatki, zapoznaj się z omówieniem:
-- [Omówienie usługi Service Fabric siatki](service-fabric-mesh-overview.md)
+Aby dowiedzieć się więcej na temat usługi Service Fabric Mesh, zapoznaj się z omówieniem:
+- [Omówienie usługi Service Fabric Mesh](service-fabric-mesh-overview.md)

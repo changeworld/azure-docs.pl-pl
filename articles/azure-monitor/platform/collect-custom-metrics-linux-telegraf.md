@@ -1,19 +1,19 @@
 ---
 title: Zbieranie metryk niestandardowych dla maszyny Wirtualnej systemu Linux z agentem InfluxData Telegraf
 description: Zbieranie metryk niestandardowych dla maszyny Wirtualnej systemu Linux z agentem InfluxData Telegraf
-author: anirudhcavale
+author: lingliw
 services: azure-monitor
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 09/24/2018
-ms.author: ancav
+ms.topic: howto
+ms.date: 01/21/19
+ms.author: v-lingwu
 ms.subservice: metrics
 ms.openlocfilehash: 14415b88cd6036642442ef9ae23e8dee301bb908
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57775615"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60741609"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Zbieranie metryk niestandardowych dla maszyny Wirtualnej systemu Linux z agentem InfluxData Telegraf
 
@@ -132,6 +132,5 @@ Gdy nie są już potrzebne, możesz usunąć grupę zasobów, maszyna wirtualna 
 
 ## <a name="next-steps"></a>Kolejne kroki
 - Dowiedz się więcej o [metryki niestandardowe](metrics-custom-overview.md).
-
 
 

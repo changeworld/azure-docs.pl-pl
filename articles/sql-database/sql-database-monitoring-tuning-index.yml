@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 51bec37f6b052d51d6cc8f5a8667789bec9e6881
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: MT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235969"
 documentType: LandingData
 title: 'Azure SQL Database: Monitorowanie i dostrajanie'
 metadata:
@@ -17,47 +11,47 @@ metadata:
   manager: craigg
   ms.service: sql-database
   ms.tgt_pltfrm: na
-  ms.devlang: 
+  ms.devlang: null
   ms.topic: overview
   ms.date: 02/08/2019
   ms.author: jovanpop
 sections:
-- items:
-  - type: paragraph
-    text: Usługa Azure SQL Database pozwala na łatwe monitorowanie i dostrajanie obciążenia baz danych.
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - items:
+      - type: paragraph
+        text: Usługa Azure SQL Database umożliwia łatwe monitorowanie i dostrajanie obciążenia bazy danych.
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - title: Szczegółowe informacje o wydajności zapytań
+            href: /azure/sql-database/sql-database-query-performance
+            html: '<p>Łatwo monitorować użycie zasobów w bazie danych Azure SQL (pojedyncze lub zbiorcze bazy danych), za pomocą wbudowanych funkcji monitorowania w witrynie Azure portal.</p>'
+          - title: Azure SQL Analytics
+            href: 'https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql?toc=/azure/sql-database/toc.json'
+            html: '<p>Monitorowanie usługi Azure SQL Analytics umożliwia łatwe monitorowanie floty dużych baz danych, pul elastycznych i wystąpień w jedną taflę szkła.</p>'
+          - title: Automatyczne dostrajanie
+            href: /azure/sql-database/sql-database-automatic-tuning
+            html: '<p>Automatyczne dostrajanie automatyczne zaleca i rozwiązuje problemy z planu zapytania, tworzy i porzuca indeksy, aby zwiększyć wydajność.</p>'
+          - title: Szczegółowe informacje o wydajności inteligentne
+            href: /azure/sql-database/sql-database-intelligent-insights
+            html: '<p>Wbudowana funkcja analizy w usłudze Azure SQL Database wykrywa szkodliwe zdarzenia, które powodują spadek wydajności w bazach danych i zapewnia zalecenia dotyczące ograniczania ryzyka, gdy jest to możliwe.</p>'
+          - title: Zalecenia dotyczące wydajności
+            href: /azure/sql-database/sql-database-advisor
+            html: '<p>Usługa Azure SQL Database udostępnia zalecenia, które mogą pomóc Ci Zoptymalizuj bazę danych w witrynie Azure portal.</p>'
+          - title: Metryki i rejestrowanie
+            href: /azure/sql-database/sql-database-metrics-diag-logging
+            html: '<p>Stream telemetrii bazy danych diagnostycznych do usługi Azure SQL Analytics, Azure Event Hubs lub usługi Azure Blob storage dla niestandardowych integracji.</p>'
+  - title: Więcej zasobów
     items:
-    - title: Szczegółowe informacje o wydajności zapytań
-      href: /azure/sql-database/sql-database-query-performance
-      html: <p>Łatwo monitorować użycie zasobów w bazie danych Azure SQL (pojedyncze lub zbiorcze bazy danych), za pomocą wbudowanych funkcji monitorowania w witrynie Azure portal.</p>
-    - title: Azure SQL Analytics
-      href: https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql?toc=/azure/sql-database/toc.json
-      html: <p>Monitorowanie usługi Azure SQL Analytics umożliwia łatwe monitorowanie floty dużych baz danych, pul elastycznych i wystąpień w jedną taflę szkła.</p>
-    - title: Automatyczne dostrajanie
-      href: /azure/sql-database/sql-database-automatic-tuning
-      html: <p>Automatyczne dostrajanie automatyczne zaleca i rozwiązuje problemy z planu zapytania, tworzy i porzuca indeksy, aby zwiększyć wydajność.</p>
-    - title: Szczegółowe informacje o wydajności inteligentne
-      href: /azure/sql-database/sql-database-intelligent-insights
-      html: <p>Wbudowana funkcja analizy w usłudze Azure SQL Database wykrywa szkodliwe zdarzenia, które powodują spadek wydajności w bazach danych i zapewnia zalecenia dotyczące ograniczania ryzyka, gdy jest to możliwe.</p>
-    - title: Zalecenia dotyczące wydajności
-      href: /azure/sql-database/sql-database-advisor
-      html: <p>Usługa Azure SQL Database udostępnia zalecenia, które mogą pomóc Ci Zoptymalizuj bazę danych w witrynie Azure portal.</p>
-    - title: Metryki i rejestrowanie
-      href: /azure/sql-database/sql-database-metrics-diag-logging
-      html: <p>Stream telemetrii bazy danych diagnostycznych do usługi Azure SQL Analytics, Azure Event Hubs lub usługi Azure Blob storage dla niestandardowych integracji.</p>
-- title: Więcej zasobów
-  items:
-  - type: paragraph
-    text: Dowiedz się o dodatkowe funkcje, które mogą pomóc zoptymalizować wydajność bazy danych.
-  - type: list
-    style: unordered
-    items:
-    - html: Dowiedz się więcej o <a href="sql-database-monitor-tune-overview.md">monitorowania i dostrajania</a> w usłudze Azure SQL Database.
-    - html: Dowiedz się, jak <a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json">przetwarzania zapytań inteligentnych</a> może zwiększyć wydajność bazy danych.
-    - html: Konfigurowanie i obsługiwanie <a href="sql-database-operate-query-store.md">Query Store</a>, podstawowej technologii SQL Server, która umożliwia umieszczanie w czasie rzeczywistym wgląd w wydajność zapytań.
-    - html: Dowiedz się, jak używać <a href="sql-database-operate-query-store.md">dynamicznych widoków zarządzania</a> analizować wydajność przetwarzania obciążenia.
-    - html: Dowiedz się, jak monitorować działania bazy danych za pomocą <a href="sql-database-xevent-db-diff-from-svr.md">XEvents</a>.
-    - html: Dowiedz się, jak <a href="sql-database-performance-guidance.md">ręcznie dostrajania bazy danych</a>.
+      - type: paragraph
+        text: 'Dowiedz się o dodatkowe funkcje, które mogą pomóc zoptymalizować wydajność bazy danych.'
+      - type: list
+        style: unordered
+        items:
+          - html: Dowiedz się więcej o <a href="sql-database-monitor-tune-overview.md">monitorowania i dostrajania</a> w usłudze Azure SQL Database.
+          - html: 'Dowiedz się, jak <a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json">przetwarzania zapytań inteligentnych</a> może zwiększyć wydajność bazy danych.'
+          - html: 'Konfigurowanie i obsługiwanie <a href="sql-database-operate-query-store.md">Query Store</a>, podstawowej technologii SQL Server, która umożliwia umieszczanie w czasie rzeczywistym wgląd w wydajność zapytań.'
+          - html: 'Dowiedz się, jak używać <a href="sql-database-operate-query-store.md">dynamicznych widoków zarządzania</a> analizować wydajność przetwarzania obciążenia.'
+          - html: 'Dowiedz się, jak monitorować działania bazy danych za pomocą <a href="sql-database-xevent-db-diff-from-svr.md">XEvents</a>.'
+          - html: 'Dowiedz się, jak <a href="sql-database-performance-guidance.md">ręcznie dostrajania bazy danych</a>.'

@@ -15,11 +15,11 @@ ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: f388215b2829066906ee7faf41abb17307bf3fff
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56337949"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60782353"
 ---
 # <a name="quickstart-view-the-access-a-user-has-to-azure-resources"></a>Szybki start: Wyświetlanie informacji o dostępie użytkownika do zasobów platformy Azure
 
@@ -51,7 +51,7 @@ Informacje o dostępie użytkownika lub innego podmiotu zabezpieczeń do zasobó
 
     W tym okienku są wyświetlane role przypisane do wybranego podmiotu zabezpieczeń i zakresu. Jeśli istnieją przypisania odmowy występujące w tym zakresie lub dziedziczone przez ten zakres, zostaną wyświetlone.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Samouczek: Udzielanie użytkownikowi dostępu do zasobów platformy Azure za pomocą kontroli dostępu opartej na rolach i witryny Azure Portal](quickstart-assign-role-user-portal.md)

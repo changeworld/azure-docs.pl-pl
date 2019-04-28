@@ -17,11 +17,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 81535d51617a419174331dbf9b18ea558913dfa9
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413166"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60922249"
 ---
 # <a name="troubleshoot-application-connectivity-issues-on-virtual-machines-in-azure"></a>Aplikacja Rozwiązywanie problemów z łącznością w przypadku maszyn wirtualnych na platformie Azure
 
@@ -85,7 +85,7 @@ Jeśli nie można uzyskać dostępu do aplikacji, sprawdź następujące ustawie
 
 Windows i maszyn wirtualnych z systemem Linux użyj **polecenie netstat - a** polecenie, aby wyświetlić aktywne porty nasłuchiwania. Sprawdź dane wyjściowe dla oczekiwanego portów, na których powinien nasłuchiwać aplikacji. Ponowne uruchomienie aplikacji lub jest skonfigurowana do korzystania z portów oczekiwane, zgodnie z potrzebami, a następnie spróbuj ponownie uzyskać dostęp aplikacji w środowisku lokalnym.
 
-## <a id="step2"></a>Krok 2: Dostęp do aplikacji z innej maszyny Wirtualnej w tej samej sieci wirtualnej
+## <a id="step2"></a>Krok 2. Dostęp do aplikacji z innej maszyny Wirtualnej w tej samej sieci wirtualnej
 Spróbuj uzyskać dostęp do aplikacji z innej maszyny Wirtualnej, ale w tej samej sieci wirtualnej przy użyciu nazwy hosta maszyny Wirtualnej lub przypisane Azure prywatnej, publicznej lub dostawca adresu IP. W przypadku maszyn wirtualnych utworzonych za pomocą klasycznego modelu wdrażania należy używać publiczny adres IP usługi w chmurze.
 
 ![Uruchom aplikację z innej maszyny Wirtualnej](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access3.png)
@@ -105,7 +105,7 @@ Jeśli nie można uzyskać dostępu do aplikacji, sprawdź następujące ustawie
 
 Na maszynie wirtualnej na podstawie Windows umożliwia zapory Windows z zabezpieczeniami zaawansowanymi ustalić, czy reguły zapory wykluczanie aplikacji ruchu przychodzącego i wychodzącego.
 
-## <a id="step3"></a>Krok 3: Dostęp do aplikacji spoza sieci wirtualnej
+## <a id="step3"></a>Krok 3. Dostęp do aplikacji spoza sieci wirtualnej
 Spróbuj uzyskać dostęp do aplikacji na komputerze spoza sieci wirtualnej co maszyna wirtualna, na którym działa aplikacja. Korzystanie z różnych sieci jako oryginalnego komputera klienckiego.
 
 ![Uruchom aplikację na komputerze spoza sieci wirtualnej](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access4.png)
@@ -141,7 +141,7 @@ Jeśli uzyskujesz dostęp do aplikacji, upewnij się, że zezwala na urządzeniu
 
 Aby uzyskać więcej informacji, zobacz [sieci platformy Azure, omówienie monitorowania](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview). 
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 [Rozwiązywanie problemów z połączeniami pulpitu zdalnego na podstawie Windows maszyny wirtualnej platformy Azure](troubleshoot-rdp-connection.md)
 
 [Rozwiązywanie problemów z połączeniami protokołu Secure Shell (SSH) opartą na systemie Linux maszyny wirtualnej platformy Azure](troubleshoot-ssh-connection.md)

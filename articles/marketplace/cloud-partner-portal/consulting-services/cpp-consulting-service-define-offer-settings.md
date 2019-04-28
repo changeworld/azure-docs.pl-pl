@@ -15,13 +15,13 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 590aa440f35f97e854fa827b0d8db1c3f9211faf
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231941"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60749659"
 ---
-# <a name="offer-settings-tab"></a>Karta Ustawienia oferty
+# <a name="offer-settings-tab"></a>Karta ustawień oferty
 
 Na **nowa oferta** ekranu, pierwszym krokiem jest utworzenie tożsamości oferty. Tożsamość oferty składa się z trzech części: **Identyfikator oferty**, **Identyfikatora wydawcy**, i **nazwa**. Każdy z tych elementów zostało opisane w poniższych sekcjach.
 
@@ -63,10 +63,10 @@ Poniższa lista zawiera kilka nazw dobrze nazwane oferty:
 -   Podstawy dla profesjonalnych usług: 1-godzinnego widoków
 -   Platforma usług w chmurze migracji: 1-godzinnego widoków
 -   Usługa PowerApps i Microsoft Flow: 1-dniowych warsztatów
--   Usługi Azure Machine Learning Services: Weryfikacja koncepcji 3 tygodnie
+-   Usługi Azure Machine Learning Services: 3-Wk PoC
 -   Kostki, a następnie kliknij przycisk handlu detalicznego rozwiązania: 1-godzinnego widoków
 -   Możesz używać własnych danych: Warsztaty 1 tydzień
--   Analiza w chmurze: 3-dniowych warsztatów
+-   Cloud Analytics: 3-dniowych warsztatów
 -   Usługa Power BI szkolenia: 3-dniowych warsztatów
 -   Rozwiązanie do zarządzania sprzedaży: Implementacja 1 tydzień
 -   Szybki Start CRM: 1-dniowych warsztatów

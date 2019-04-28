@@ -15,11 +15,11 @@ ms.workload: tbd
 ms.date: 05/30/2017
 ms.author: yegu
 ms.openlocfilehash: 116e54fd39af801cf8941a974da2b72c483097dc
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237031"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60830299"
 ---
 # <a name="migrate-from-managed-cache-service-to-azure-cache-for-redis"></a>Migrowanie z usługi Managed Cache Service do usługi Azure Cache dla usługi Redis
 Migrowanie aplikacji korzystających z usługi Azure Managed Cache Service do usługi Azure Cache dla usługi Redis można osiągnąć przy minimalnych zmianach do aplikacji, w zależności od funkcji Managed Cache Service, używanych przez aplikację pamięci podręcznej. Gdy interfejsy API są dokładnie takie same, są one podobne, a większość swojej istniejący kod, który używa usługi Managed Cache Service do dostępu do pamięci podręcznej mogą być ponownie używane przy minimalnych zmianach. W tym artykule przedstawiono sposób wprowadzania niezbędną konfigurację i aplikacji zmieni się na migrację aplikacji Managed Cache Service na potrzeby pamięci podręcznej Azure redis Cache i pokazuje, jak niektóre funkcje pamięci podręcznej Redis Azure może służyć do implementowania funkcji pamięć podręczna usługi Managed Cache Service.

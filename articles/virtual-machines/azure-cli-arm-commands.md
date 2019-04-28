@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 04/18/2017
 ms.author: danlep
 ms.openlocfilehash: 8b76e1a168d39d2f39098754f43bae73c21c2049
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155818"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60799823"
 ---
 # <a name="azure-cli-commands-in-resource-manager-mode"></a>Poleceń interfejsu wiersza polecenia platformy Azure w trybie usługi Resource Manager
 Ten artykuł zawiera składnię i opcje dla poleceń interfejsu wiersza polecenia platformy Azure (CLI), które są często używane do tworzenia i zarządzania zasobami platformy Azure w modelu wdrażania usługi Azure Resource Manager. Możesz uzyskać dostęp do tych poleceń, uruchamiając interfejs wiersza polecenia w trybie usługi Resource Manager (arm). To nie jest pełną dokumentację i używanej wersji interfejsu wiersza polecenia mogą być wyświetlane nieco poleceń lub parametrów. Aby uzyskać ogólne omówienie zasobami i grupami zasobów platformy Azure, zobacz [Omówienie usługi Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).  
@@ -48,7 +48,7 @@ Użyj następującego polecenia, aby włączyć polecenia w trybie Menedżera za
 > 
 > 
 
-## <a name="azure-account-manage-your-account-information"></a>Konto platformy Azure: Zarządzanie informacje o Twoim koncie
+## <a name="azure-account-manage-your-account-information"></a>Konto platformy Azure: Zarządzaj informacjami o koncie
 Informacje o subskrypcji platformy Azure jest używany przez narzędzie do łączenia się z kontem.
 
 **Wyświetl zaimportowane subskrypcje**
@@ -75,7 +75,7 @@ Informacje o subskrypcji platformy Azure jest używany przez narzędzie do łąc
     account env set [options] [environment]
     account env delete [options] [environment]
 
-## <a name="azure-ad-commands-to-display-active-directory-objects"></a>Usługa Azure ad: polecenia, aby wyświetlić obiekty usługi Active Directory
+## <a name="azure-ad-commands-to-display-active-directory-objects"></a>Usługa Azure ad: Polecenia, aby wyświetlić obiekty usługi Active Directory
 **Polecenia, aby wyświetlić aplikacje usługi active directory**
 
     ad app create [options]
@@ -150,7 +150,7 @@ Informacje o subskrypcji platformy Azure jest używany przez narzędzie do łąc
 
     feature register [options] <providerName> <featureName>
 
-## <a name="azure-group-commands-to-manage-your-resource-groups"></a>Grupa usługi Azure: polecenia do zarządzania grupami zasobów
+## <a name="azure-group-commands-to-manage-your-resource-groups"></a>Grupa usługi Azure: Polecenia do zarządzania grupami zasobów
 **Tworzy grupę zasobów**
 
     group create [options] <name> <location>
@@ -189,14 +189,14 @@ Informacje o subskrypcji platformy Azure jest używany przez narzędzie do łąc
     group template download [options] [name] [file]
     group template validate [options] <resource-group>
 
-## <a name="azure-hdinsight-commands-to-manage-your-hdinsight-clusters"></a>Usługa Azure hdinsight: polecenia do zarządzania klastry usługi HDInsight
+## <a name="azure-hdinsight-commands-to-manage-your-hdinsight-clusters"></a>azure hdinsight: Polecenia umożliwiające zarządzanie klastrami usługi HDInsight
 **Polecenia, aby utworzyć lub dodać do pliku konfiguracji klastra**
 
     hdinsight config create [options] <configFilePath> <overwrite>
     hdinsight config add-config-values [options] <configFilePath>
     hdinsight config add-script-action [options] <configFilePath>
 
-Przykład: Tworzenie pliku konfiguracji, który zawiera akcji skryptu do uruchomienia podczas tworzenia klastra.
+Przykład: Utwórz plik konfiguracji, który zawiera akcji skryptu do uruchomienia podczas tworzenia klastra.
 
     hdinsight config create "C:\myFiles\configFile.config"
     hdinsight config add-script-action --configFilePath "C:\myFiles\configFile.config" --nodeType HeadNode --uri <scriptActionURI> --name myScriptAction --parameters "-param value"
@@ -307,17 +307,17 @@ Opcje parametrów:
 
     hdinsight cluster disable-rdp-access [options] <clusterName>
 
-## <a name="azure-insights-commands-related-to-monitoring-insights-events-alert-rules-autoscale-settings-metrics"></a>usługi Azure insights: polecenia powiązane z monitorowaniem Insights (zdarzenia reguły alertu, ustawienia automatycznego skalowania, metryki)
+## <a name="azure-insights-commands-related-to-monitoring-insights-events-alert-rules-autoscale-settings-metrics"></a>azure insights: Polecenia związane z monitorowaniem Insights (zdarzenia reguły alertu, ustawienia automatycznego skalowania, metryki)
 **Pobieranie dzienników operacji dla subskrypcji, identyfikator korelacji, grupy zasobów, zasobów lub dostawcy zasobów**
 
     insights logs list [options]
 
-## <a name="azure-location-commands-to-get-the-available-locations-for-all-resource-types"></a>Lokalizacja platformy Azure: poleceń, aby uzyskać dostępne lokalizacje dla wszystkich typów zasobów
+## <a name="azure-location-commands-to-get-the-available-locations-for-all-resource-types"></a>Lokalizacja platformy Azure: Polecenia, aby uzyskać dostępne lokalizacje dla wszystkich typów zasobów
 **Listę dostępnych lokalizacji**
 
     location list [options]
 
-## <a name="azure-network-commands-to-manage-network-resources"></a>sieć platformy Azure: polecenia do zarządzania zasobami sieciowymi
+## <a name="azure-network-commands-to-manage-network-resources"></a>azure network: Polecenia umożliwiające zarządzanie zasobami sieciowymi
 **Polecenia umożliwiające zarządzanie sieciami wirtualnymi**
 
     network vnet create [options] <resource-group> <name> <location>
@@ -1504,7 +1504,7 @@ Opcje parametrów:
 
     network gateway list [options] <resource-group>
 
-## <a name="azure-provider-commands-to-manage-resource-provider-registrations"></a>Dostawca usługi Azure: polecenia do zarządzania rejestracji dostawcy zasobów
+## <a name="azure-provider-commands-to-manage-resource-provider-registrations"></a>Dostawca usługi Azure: Polecenia do zarządzania rejestracji dostawcy zasobów
 **Lista obecnie zarejestrowanych dostawców w usłudze Resource Manager**
 
     provider list [options]
@@ -1521,7 +1521,7 @@ Opcje parametrów:
 
     provider unregister [options] <namespace>
 
-## <a name="azure-resource-commands-to-manage-your-resources"></a>zasób platformy Azure: polecenia do zarządzania zasobami
+## <a name="azure-resource-commands-to-manage-your-resources"></a>zasób platformy Azure: Polecenia do zarządzania zasobami
 **Tworzy zasób w grupie zasobów**
 
     resource create [options] <resource-group> <name> <resource-type> <location> <api-version>
@@ -1542,7 +1542,7 @@ Opcje parametrów:
 
     resource delete [options] <resource-group> <name> <resource-type> <api-version>
 
-## <a name="azure-role-commands-to-manage-your-azure-roles"></a>ról platformy Azure: polecenia do zarządzania roli platformy Azure
+## <a name="azure-role-commands-to-manage-your-azure-roles"></a>Rola platformy Azure: Polecenia do zarządzania roli platformy Azure
 **Pobierz wszystkie definicje ról dostępnych**
 
     role list [options]
@@ -1557,7 +1557,7 @@ Opcje parametrów:
     role assignment list [options] [objectId] [upn] [mail] [spn] [role] [scope] [resource-group] [resource-type] [resource-name]
     role assignment delete [options] [objectId] [upn] [mail] [spn] [role] [scope] [resource-group] [resource-type] [resource-name]
 
-## <a name="azure-storage-commands-to-manage-your-storage-objects"></a>Usługa Azure storage: polecenia do zarządzania obiektów magazynu
+## <a name="azure-storage-commands-to-manage-your-storage-objects"></a>Usługa Azure storage: Polecenia do zarządzania obiektów magazynu
 **Polecenia w celu zarządzania kontami magazynu**
 
     storage account list [options]
@@ -1680,7 +1680,7 @@ Opcje parametrów:
     storage table policy set [options] [table] [name]
     storage table policy delete [options] [table] [name]
 
-## <a name="azure-tag-commands-to-manage-your-resource-manager-tag"></a>tag platformy Azure: polecenia do zarządzania tag Menedżera zasobów
+## <a name="azure-tag-commands-to-manage-your-resource-manager-tag"></a>tag platformy Azure: Polecenia do zarządzania tag Menedżera zasobów
 **Dodaj tag**
 
     tag create [options] <name> <value>
@@ -1697,7 +1697,7 @@ Opcje parametrów:
 
     tag show [options] [name]
 
-## <a name="azure-vm-commands-to-manage-your-azure-virtual-machines"></a>Maszyna wirtualna platformy Azure: polecenia do zarządzania usługi Azure Virtual Machines
+## <a name="azure-vm-commands-to-manage-your-azure-virtual-machines"></a>azure vm: Polecenia do zarządzania usługi Azure Virtual Machines
 **Tworzenie maszyny Wirtualnej**
 
     vm create [options] <resource-group> <name> <location> <os-type>

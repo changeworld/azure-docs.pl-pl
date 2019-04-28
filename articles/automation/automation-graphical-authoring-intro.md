@@ -10,11 +10,11 @@ ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: ae732ab5c73dbec4a2aef6521b9edb490079112e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59797111"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60740822"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Graficzny, tworzenia w usłudze Azure Automation
 
@@ -326,7 +326,7 @@ Każdy parametr wejściowy jest zdefiniowana za pomocą właściwości w poniżs
 |:--- |:--- |
 | Name (Nazwa) |Unikatowa nazwa parametru. To może zawierać tylko alfanumeryczne znaki numeryczne i nie może zawierać spacji. |
 | Opis |Opcjonalny opis dla parametru wejściowego. |
-| Typ |Oczekiwano wartości parametru typu danych. Azure portal udostępnia kontrolkę, która jest odpowiednie dla typu danych dla każdego parametru przy monitowaniu o dane wejściowe. |
+| Type |Oczekiwano wartości parametru typu danych. Azure portal udostępnia kontrolkę, która jest odpowiednie dla typu danych dla każdego parametru przy monitowaniu o dane wejściowe. |
 | Obowiązkowy |Określa, czy należy podać wartość dla parametru. Nie można uruchomić elementu runbook, jeśli nie zostanie określona wartość dla każdego obowiązkowy parametr, który nie ma wartości domyślnej. |
 | Wartość domyślna |Określa, jaka wartość jest używana dla parametru, jeśli nie zostało ono określone. Może to być wartość Null lub określoną wartość. |
 

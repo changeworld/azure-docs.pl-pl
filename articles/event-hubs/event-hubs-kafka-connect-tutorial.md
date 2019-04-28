@@ -11,11 +11,11 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: bahariri
 ms.openlocfilehash: 2ed4432aec9b833efe6b521b4452177088d21d70
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58119415"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60821568"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview"></a>Integrowanie obsługi narzędzia Apache Kafka Connect w usłudze Azure Event Hubs (wersja zapoznawcza)
 Wraz ze wzrostem ilości danych pozyskiwanych do celów biznesowych zwiększa się poziom wymagań dotyczących pozyskiwania dla różnych ujść i źródeł zewnętrznych. Narzędzie [Apache Kafka Connect](https://kafka.apache.org/documentation/#connect) udostępnia platformę do łączenia i importowania/eksportowania danych w dowolnym systemie zewnętrznym, takim jak MySQL, HDFS i system plików za pośrednictwem klastra platformy Kafka. Ten samouczek zawiera instrukcje dotyczące używania platformy Kafka Connect z usługą Event Hubs z obsługą platformy Kafka.

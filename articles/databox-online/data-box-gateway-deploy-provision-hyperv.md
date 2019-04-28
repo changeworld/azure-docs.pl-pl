@@ -9,15 +9,15 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 0b106e0412de972801fa8782de08269e13042191
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517916"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60757245"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v"></a>Samouczek: Aprowizacji usługi Azure Data Box bramy w funkcji Hyper-V
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 W tym samouczku przedstawiono sposób aprowizowania usługi Azure Data Box Gateway na hoście funkcji Hyper-V z systemem Windows Server 2016, Windows Server 2012 R2 lub Windows Server 2012. 
 

@@ -14,11 +14,11 @@ ms.topic: overview
 ms.date: 09/06/2018
 ms.author: mbullwin
 ms.openlocfilehash: 45824ba93e86622b1bbd92aae01f18f89bee6adf
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673346"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60795349"
 ---
 # <a name="overview-of-application-insights-for-devops"></a>Omówienie usługi Azure Application Insights dla metodyki DevOps
 
@@ -224,7 +224,7 @@ W ten oto sposób jeden zespół korzysta z usługi Application Insights, aby ni
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Możesz rozpocząć pracę na kilka sposobów, w zależności od właściwości aplikacji. Wybierz interesujący Cię temat:
 
 * [Aplikacja internetowa platformy ASP.NET](../../azure-monitor/app/asp-net.md)

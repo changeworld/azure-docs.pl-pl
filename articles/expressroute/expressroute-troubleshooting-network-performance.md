@@ -9,14 +9,14 @@ ms.date: 12/20/2017
 ms.author: jonor
 ms.custom: seodec18
 ms.openlocfilehash: 9ec310ffaa9d2bb297abde9341bf7b6c2dc763b4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57995795"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60883320"
 ---
 # <a name="troubleshooting-network-performance"></a>Rozwiązywanie problemów z wydajnością sieci
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 System Azure oferuje stabilne i szybkie sposoby nawiązywania połączenia z sieci lokalnej na platformie Azure. Metody, takie jak sieci VPN typu lokacja-lokacja i ExpressRoute pomyślnie są używane przez klientów, dużych i małych do prowadzenia działalności na platformie Azure. Ale co się stanie, gdy wydajność nie spełnia Twoje oczekiwania lub poprzednie środowisko? Ten dokument może pomóc standaryzacji sposób testowania i linii bazowych określonego środowiska.
 
 W tym dokumencie przedstawiono, jak można łatwo i spójne przetestować opóźnienie sieci i przepustowość między dwoma hostami. Ten dokument zawiera także kilka porad dotyczących sposobów Przyjrzyj się sieci platformy Azure i pomóc wyizolować problem punktów. Skrypt programu PowerShell i narzędzia omówione wymagają dwa hosty w sieci (na końcu łącza testowana). Jeden host musi być system Windows Server lub pulpit, drugi może być Windows lub Linux. 

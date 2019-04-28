@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 11/16/2017
 ms.author: manayar
 ms.openlocfilehash: 3308b22606e87853aad7e3d3a3995aab8d1b5401
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58005301"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60803542"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>Rozwiązywanie problemów z skalowania automatycznego za pomocą zestawów skalowania maszyn wirtualnych
 **Problem** — utworzono infrastrukturę skalowania automatycznego w usłudze Azure Resource Manager przy użyciu zestawów skalowania maszyn wirtualnych — na przykład, wdrażając szablonu podobny do tego: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale — masz zdefiniowanych reguł skalowania i jej współdziałanie, z wyjątkiem nie niezależnie od tego, ile obciążenia, umieścić na maszynach wirtualnych, nie automatycznego skalowania.

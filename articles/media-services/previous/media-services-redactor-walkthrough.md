@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: rli; juliako;
 ms.openlocfilehash: 3e4844c3174e41ca7f6f5667a2777aba11f70f11
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58292992"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60875075"
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>Redagowanie twarze z przewodnikiem analizy multimediów Azure
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 **Usługa Azure Media Redactor** jest [analizy multimediów Azure](media-services-analytics-overview.md) procesor multimediów (MP), który oferuje pomocą redakcji twarzy skalowalny w chmurze. Pomocą redakcji twarzy umożliwia modyfikowanie wideo w celu rozmycie twarze wybranych osób. Można użyć usługa redakcji twarzy w publicznych scenariuszach bezpieczeństwa i mediów informacyjnych. Kilka minut materiał, który zawiera wiele powierzchni może zająć godzin redagowanie ręcznie, ale z tą usługą procesu redakcji twarzy wymaga tylko kilku prostych krokach. Aby uzyskać więcej informacji, zobacz [to](https://azure.microsoft.com/blog/azure-media-redactor/) blogu.
 

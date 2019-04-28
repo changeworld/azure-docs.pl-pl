@@ -10,11 +10,11 @@ ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
 ms.openlocfilehash: 39e0a36b50a9e222e6016140967336ccda167514
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330056"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60771638"
 ---
 # <a name="scalability-and-performance-targets-for-vm-disks-on-linux"></a>Cele dotyczące skalowalności i wydajności dla dysków maszyn wirtualnych w systemie Linux
 

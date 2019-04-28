@@ -16,11 +16,11 @@ ms.date: 05/23/2018
 ms.author: yegu
 ms.custom: mvc
 ms.openlocfilehash: 047350fa957d9ca1fdec50f97a590ba90a42e1b2
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237770"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60830572"
 ---
 # <a name="quickstart-how-to-use-azure-cache-for-redis-with-java"></a>Szybki start: Jak używać usługi Azure Cache for Redis za pomocą języka Java
 
@@ -171,7 +171,7 @@ Po krótkim czasie grupa zasobów i wszystkie zawarte w niej zasoby zostaną usu
 
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym przewodniku Szybki start pokazano, jak korzystać z usługi Azure Cache for Redis z poziomu aplikacji Java. Przejdź do kolejnego Szybkiego startu, w którym wyjaśniono, jak używać usługi Microsoft Azure Cache for Redis z poziomu aplikacji internetowej ASP.NET.
 

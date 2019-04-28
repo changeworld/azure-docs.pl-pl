@@ -10,11 +10,11 @@ ms.date: 01/25/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: c30c8bae3e76778a31cdd0695acde52b5b1c6b02
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55079668"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60749618"
 ---
 # <a name="implement-search-traffic-analytics-in-azure-search"></a>Implementowanie analiza ruchu wyszukiwania w usłudze Azure Search
 Analiza ruchu wyszukiwania jest wzorzec wykonania sprzężenia zwrotnego dla usługi wyszukiwania. Ten wzorzec opisuje niezbędnych danych oraz sposobu zbieranie go za pomocą usługi Application Insights do monitorowania usług w wielu platform lidera w branży.

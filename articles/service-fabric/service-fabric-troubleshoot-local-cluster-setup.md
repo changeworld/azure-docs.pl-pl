@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
 ms.openlocfilehash: 8bb32b2bded061bd19bcd7cfda4ef259a75b0626
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662809"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60864443"
 ---
 # <a name="troubleshoot-your-local-development-cluster-setup"></a>Rozwiązywanie problemów z konfigurację klastra programowania lokalnego
 Jeśli napotkasz problem podczas interakcji z Twojej lokalny klaster projektowy usługi Azure Service Fabric, należy przejrzeć poniższe sugestie dotyczące potencjalnych rozwiązań.

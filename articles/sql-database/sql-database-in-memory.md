@@ -13,11 +13,11 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 03/19/2019
 ms.openlocfilehash: d2c852b48c219283bba2304a993dd26e802b3252
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226984"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61036511"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>Optymalizowanie wydajności przy użyciu technologii w pamięci w bazie danych SQL
 
@@ -33,7 +33,7 @@ Przy użyciu technologii w pamięci w usłudze Azure SQL Database, można osiąg
 
 Technologiom pamięci może zwiększyć wydajność tych obciążeń, przechowując dane, które mają być przetwarzane do pamięci, za pomocą natywnej kompilacji zapytań lub zaawansowanego przetwarzania, takich jak usługi batch przetwarzania i instrukcje SIMD, które są dostępne na podstawowy sprzęt. 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Usługa Azure SQL Database zawiera następujące technologie w pamięci:
 - *[Przetwarzanie OLTP danych w pamięci](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)*  zwiększa się liczba transakcji na sekundę i zmniejsza opóźnienia i przetwarzania transakcji. Scenariusze, które korzystają z OLTP w pamięci są: przetwarzania, takich jak handlowych i gier, pozyskiwania danych ze zdarzeń lub urządzenia IoT, buforowanie, ładowanie danych i tabeli tymczasowej i scenariuszy zmiennej tabeli transakcji o wysokiej przepływności.

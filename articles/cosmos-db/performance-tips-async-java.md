@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: sngun
 ms.openlocfilehash: 07da7f8905d7b8952db852d3da1dab12884de509
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041802"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60932922"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-async-java"></a>Porady dotyczące wydajności dla usługi Azure Cosmos DB i Java (asynchroniczny)
 
@@ -151,7 +151,7 @@ Dlatego jeśli "jak mogę poprawić wydajność mojej bazy danych?" należy wzi�
 
 12. **Natywnych implementacji protokołu SSL na użytek netty** Netty można użyć biblioteki OpenSSL bezpośrednio do stosu implementacji SSL osiągnąć większą wydajność. W przypadku braku tej konfiguracji netty powróci do implementacji SSL domyślne w języku Java.
 
-    w systemie Ubuntu:
+    on Ubuntu:
     ```bash
     sudo apt-get install openssl
     sudo apt-get install libapr1

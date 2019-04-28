@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: aahi
 ms.openlocfilehash: 720a6c57d4f1a6079f78244559a25018349bd378
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011257"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60831422"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Jak wywołać interfejs API REST analizy tekstu
 
@@ -42,8 +42,8 @@ Obecnie można przesyłać tych samych dokumentów dla wszystkich operacji anali
 
 | Element | Prawidłowe wartości | Wymagana? | Sposób użycia |
 |---------|--------------|-----------|-------|
-|`id` |Typ danych jest ciągiem, ale w praktyce identyfikatory dokumentów mają tendencję do być liczbami całkowitymi. | Wymagany | System używa identyfikatorów zapewnienie struktury danych wyjściowych. Wyniki tonacji kodów języków i wyrażenia kluczowe są generowane dla każdego Identyfikatora w żądaniu.|
-|`text` | Bez określonej struktury nieprzetworzony tekst, maksymalnie 5,120 znaków. | Wymagany | Do wykrywania języka tekst może być wyrażona w dowolnym języku. Analiza tonacji, wyodrębnianie kluczowych fraz i identyfikacji jednostki, tekst musi znajdować na [obsługiwanym językiem](../text-analytics-supported-languages.md). |
+|`id` |Typ danych jest ciągiem, ale w praktyce identyfikatory dokumentów mają tendencję do być liczbami całkowitymi. | Wymagane | System używa identyfikatorów zapewnienie struktury danych wyjściowych. Wyniki tonacji kodów języków i wyrażenia kluczowe są generowane dla każdego Identyfikatora w żądaniu.|
+|`text` | Bez określonej struktury nieprzetworzony tekst, maksymalnie 5,120 znaków. | Wymagane | Do wykrywania języka tekst może być wyrażona w dowolnym języku. Analiza tonacji, wyodrębnianie kluczowych fraz i identyfikacji jednostki, tekst musi znajdować na [obsługiwanym językiem](../text-analytics-supported-languages.md). |
 |`language` | 2-znakowy [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) kod [obsługiwanym językiem](../text-analytics-supported-languages.md) | Różna | Wymagane do analizy tonacji, wyodrębnianie kluczowych fraz i łączenie podmiotów; Opcjonalnie na potrzeby wykrywania języka. Nie ma żadnych błędów, jeśli go wykluczyć, ale analiza jest obniżony bez niego. Kod języka powinna odpowiadać `text` należy podać. |
 
 Aby uzyskać więcej informacji na temat limitów, zobacz [Text Analytics — Przegląd > limity danych](../overview.md#data-limits). 

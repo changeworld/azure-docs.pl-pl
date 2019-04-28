@@ -9,11 +9,11 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: e7dcdb960fbd9196aca8b667269a4c6e5a1fb8f9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59788942"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60794975"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>Poziomy powiększenia i siatka kafelków
 Usługi Azure Maps Użyj rzutowania kulistego Mercator współrzędnych (EPSG: 3857).

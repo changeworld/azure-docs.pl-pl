@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 05/15/2018
 ms.author: aljo
 ms.openlocfilehash: 0408010a49b8ec83aa02c74887139f663788ad80
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662826"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60881488"
 ---
 # <a name="view-logs-for-a-service-fabric-container-service"></a>Wyświetl dzienniki dla kontenera usługi Service Fabric
 Usługa Azure Service Fabric jest koordynatora kontenerów i obsługuje zarówno [kontenerów systemu Linux i Windows](service-fabric-containers-overview.md).  W tym artykule opisano sposób wyświetlania dzienników kontenera uruchomioną usługę kontenera lub martwy kontenera, aby zdiagnozować i rozwiązać problemy.

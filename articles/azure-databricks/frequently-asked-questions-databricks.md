@@ -1,5 +1,5 @@
 ---
-title: 'Usłudze Azure Databricks: Typowe pytania i pomagać'
+title: 'Usługa Azure Databricks: Typowe pytania i pomagać w'
 description: Uzyskaj odpowiedzi na często zadawane pytania oraz informacje dotyczące rozwiązywania problemów dotyczących usługi Azure Databricks.
 services: azure-databricks
 author: mamccrea
@@ -10,11 +10,11 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.openlocfilehash: 3bcc511ec6ad8a246c2b1b3a33eb59043a45830e
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138365"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60784711"
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>Często zadawane pytania dotyczące usługi Azure Databricks
 
@@ -40,11 +40,11 @@ Aby uzyskać więcej informacji, zobacz [Użyj Data Lake Store z usługą Azure 
 
 Poniżej przedstawiono kilka problemów, które mogą wystąpić przy użyciu usługi Databricks.
 
-### <a name="issue-this-subscription-is-not-registered-to-use-the-namespace-microsoftdatabricks"></a>Problem: Ta subskrypcja nie jest zarejestrowana do korzystania z przestrzeni nazw "Microsoft.Databricks"
+### <a name="issue-this-subscription-is-not-registered-to-use-the-namespace-microsoftdatabricks"></a>Problem: Ta subskrypcja nie jest zarejestrowana w celu używania przestrzeni nazw "Microsoft.Databricks"
 
 #### <a name="error-message"></a>Komunikat o błędzie
 
-"Ta subskrypcja nie jest zarejestrowany do korzystania z przestrzeni nazw"Microsoft.Databricks". Zobacz https://aka.ms/rps-not-found na temat rejestrowania subskrypcji. (Code: MissingSubscriptionRegistration) "
+"Ta subskrypcja nie jest zarejestrowany do korzystania z przestrzeni nazw"Microsoft.Databricks". Zobacz https://aka.ms/rps-not-found na temat rejestrowania subskrypcji. (Kod: MissingSubscriptionRegistration)"
 
 #### <a name="solution"></a>Rozwiązanie
 
@@ -84,22 +84,22 @@ Poniżej przedstawiono kilka rozwiązań tego problemu:
 
 Jeśli obszar roboczy nie został utworzony, a użytkownik zostanie dodany jako użytkownik, skontaktuj się z osobą, która utworzyła obszaru roboczego. Mieć osoba dodał Cię przy użyciu konsoli administracyjnej usługi Azure Databricks. Aby uzyskać instrukcje, zobacz [Dodawanie użytkowników i zarządzanie nimi](https://docs.azuredatabricks.net/administration-guide/admin-settings/users.html). Jeśli utworzono obszar roboczy, a nadal otrzymujesz ten błąd, spróbuj wybrać **Inicjuj obszar roboczy** ponownie w witrynie Azure portal.
 
-### <a name="issue-cloud-provider-launch-failure-while-setting-up-the-cluster-publicipcountlimitreached"></a>Problem: Błąd uruchamiania dostawcy chmury podczas konfigurowania klastra (PublicIPCountLimitReached)
+### <a name="issue-cloud-provider-launch-failure-while-setting-up-the-cluster-publicipcountlimitreached"></a>Problem: Niepowodzenie uruchamiania dostawcy w chmurze podczas konfigurowania klastra (PublicIPCountLimitReached)
 
 #### <a name="error-message"></a>Komunikat o błędzie
 
-"Niepowodzenie uruchomienia dostawcy w chmurze: Wystąpił błąd dostawcy chmury podczas konfigurowania klastra. Aby uzyskać więcej informacji zobacz Przewodnik po usłudze Databricks. Kod błędu systemu Azure: PublicIPCountLimitReached. Komunikat o błędzie platformy Azure: nie można utworzyć więcej niż 60 publiczne adresy IP dla tej subskrypcji w tym regionie. "
+"Niepowodzenie uruchomienia dostawcy w chmurze: Podczas konfigurowania klastra wystąpił błąd dostawcy chmury. Aby uzyskać więcej informacji zobacz Przewodnik po usłudze Databricks. Kod błędu systemu Azure: PublicIPCountLimitReached. Komunikat o błędzie platformy Azure: Nie można utworzyć więcej niż 60 publiczne adresy IP dla tej subskrypcji w tym regionie."
 
 #### <a name="solution"></a>Rozwiązanie
 
-Klastry usługi Databricks używają jeden publiczny adres IP w każdym węźle. Jeśli Twoja subskrypcja ma już wszystkie jego publiczne adresy IP, wykonaj następujące czynności [zażądać zwiększenia limitu przydziału](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request). Wybierz **przydziału** jako **typ problemu**, i **sieć: ARM** jako **typ limitu przydziału**. W **szczegóły**, zażądać zwiększenia limitu przydziału publicznego adresu IP. Na przykład jeśli limit jest obecnie 60 i chcesz utworzyć klaster z węzłami 100, zwiększenia limitu do 160.
+Klastry usługi Databricks używają jeden publiczny adres IP w każdym węźle. Jeśli Twoja subskrypcja ma już wszystkie jego publiczne adresy IP, wykonaj następujące czynności [zażądać zwiększenia limitu przydziału](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request). Wybierz **przydziału** jako **typ problemu**, i **sieci: ARM** jako **typ limitu przydziału**. W **szczegóły**, zażądać zwiększenia limitu przydziału publicznego adresu IP. Na przykład jeśli limit jest obecnie 60 i chcesz utworzyć klaster z węzłami 100, zwiększenia limitu do 160.
 
 ### <a name="issue-a-second-type-of-cloud-provider-launch-failure-while-setting-up-the-cluster-missingsubscriptionregistration"></a>Problem: Drugi typ błąd uruchamiania dostawcy chmury podczas konfigurowania klastra (MissingSubscriptionRegistration)
 
 #### <a name="error-message"></a>Komunikat o błędzie
 
-"Niepowodzenie uruchomienia dostawcy w chmurze: Wystąpił błąd dostawcy chmury podczas konfigurowania klastra. Aby uzyskać więcej informacji zobacz Przewodnik po usłudze Databricks.
-Kod błędu systemu Azure: komunikat o błędzie platformy MissingSubscriptionRegistration Azure: subskrypcja nie jest zarejestrowana w celu używania przestrzeni nazw "Microsoft.Compute". Zobacz https://aka.ms/rps-not-found na temat rejestrowania subskrypcji. "
+"Niepowodzenie uruchomienia dostawcy w chmurze: Podczas konfigurowania klastra wystąpił błąd dostawcy chmury. Aby uzyskać więcej informacji zobacz Przewodnik po usłudze Databricks.
+Kod błędu systemu Azure: Komunikat o błędzie platformy MissingSubscriptionRegistration Azure: Subskrypcja nie jest zarejestrowana do używania przestrzeni nazw „Microsoft.Compute”. Zobacz https://aka.ms/rps-not-found na temat rejestrowania subskrypcji. "
 
 #### <a name="solution"></a>Rozwiązanie
 
@@ -109,7 +109,7 @@ Kod błędu systemu Azure: komunikat o błędzie platformy MissingSubscriptionRe
 
 Aby uzyskać szczegółowe instrukcje, zobacz [dostawcy zasobów i ich typy](../azure-resource-manager/resource-manager-supported-services.md).
 
-### <a name="issue-azure-databricks-needs-permissions-to-access-resources-in-your-organization-that-only-an-admin-can-grant"></a>Problem: Usługa Azure Databricks wymaga uprawnień dostępu do zasobów w organizacji, którzy mogą udzielić tylko administrator.
+### <a name="issue-azure-databricks-needs-permissions-to-access-resources-in-your-organization-that-only-an-admin-can-grant"></a>Problem: Usługa Azure Databricks musi mieć uprawnienia dostępu do zasobów w organizacji, którzy mogą udzielić tylko administrator.
 
 #### <a name="background"></a>Tło
 
@@ -121,6 +121,6 @@ Zaloguj się jako administrator globalny do witryny Azure portal. Usługi Azure 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Szybki Start: Rozpoczynanie pracy z usługą Azure Databricks](quickstart-create-databricks-workspace-portal.md)
+- [Szybki start: Rozpoczynanie pracy z usługą Azure Databricks](quickstart-create-databricks-workspace-portal.md)
 - [Co to jest Azure Databricks?](what-is-azure-databricks.md)
 

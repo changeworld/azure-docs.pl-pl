@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.topic: conceptual
 ms.date: 07/14/2017
-ms.openlocfilehash: 42982e3fa0a854109a6b887640604498ac68847c
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 765bcaab0f91e097be827bfa6e8f505ef5330d57
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45632263"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60814396"
 ---
 # <a name="run-u-sql-and-debug-locally-in-visual-studio-code"></a>Uruchomienie języka U-SQL i Debuguj lokalnie w programie Visual Studio Code
 W tym artykule opisano sposób uruchamiania zadań U-SQL na lokalnej maszynie do programowania w celu przyspieszenia wczesnych faz kodowania lub do debugowania kodu lokalnie w programie Visual Studio Code. Aby uzyskać instrukcje dotyczące usługi Azure Data Lake narzędzia dla programu Visual Studio Code, zobacz [użycia Azure Data Lake Tools for Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md).
@@ -45,9 +45,9 @@ Tylko Windows urządzenia Azure Data Lake Tools for Visual Studio obsługuje akc
 
 
 ## <a name="start-the-local-run-service-and-submit-the-u-sql-job-to-a-local-account"></a>Uruchom usługę uruchamiania lokalnego i przesyłać zadania U-SQL do konta lokalnego 
-Użytkownik po raz pierwszy, użyj **ADL: Pobierz pakiet lokalny Uruchom** do pobierania lokalnego uruchamiania pakietów, jeśli nie masz [skonfigurować lokalne środowisko uruchomieniowe języka U-SQL](#set-up-the-u-sql-local-run-environment).
+Aby użytkownik po raz pierwszy, użyj **ADL: Pobierz pakiet lokalny Uruchom** do pobierania lokalnego uruchamiania pakietów, jeśli nie masz [skonfigurować lokalne środowisko uruchomieniowe języka U-SQL](#set-up-the-u-sql-local-run-environment).
 
-1. Wybierz kombinację klawiszy Ctrl + Shift + P, aby otworzyć paletę poleceń, a następnie wprowadź **ADL: Uruchom lokalnego Uruchom usługę**.   
+1. Wybierz kombinację klawiszy Ctrl + Shift + P, aby otworzyć paletę poleceń, a następnie wprowadź **ADL: Uruchom usługę uruchamiania lokalnego**.   
 2. Wybierz **Akceptuj** zaakceptować postanowienia licencyjne dotyczące oprogramowania firmy Microsoft po raz pierwszy. 
 
    ![Zaakceptuj postanowienia licencyjne dotyczące oprogramowania firmy Microsoft](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/AcceptEULA.png)   
@@ -66,19 +66,19 @@ Użytkownik po raz pierwszy, użyj **ADL: Pobierz pakiet lokalny Uruchom** do po
 ## <a name="start-a-local-debug-for-the-u-sql-job"></a>Rozpocznij debugowania lokalnego dla zadania U-SQL  
 Dla użytkownika po raz pierwszy:
 
-1. Użyj **ADL: Pobierz pakiet lokalny Uruchom** do pobierania lokalnego uruchamiania pakietów, jeśli nie masz [skonfigurować lokalne środowisko uruchomieniowe języka U-SQL](#set-up-the-u-sql-local-run-environment).
+1. Use **ADL: Pobierz pakiet lokalny Uruchom** do pobierania lokalnego uruchamiania pakietów, jeśli nie masz [skonfigurować lokalne środowisko uruchomieniowe języka U-SQL](#set-up-the-u-sql-local-run-environment).
 2. Zainstaluj .NET Core SDK 2.0 zgodnie z sugestią podaną w oknie komunikatu, jeśli nie jest zainstalowany.
- 
+ 
   ![Przypomnienie o zainstalowaniu Dotnet](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/remind-install-dotnet.png)
-3. Zainstaluj środowisko C# dla programu Visual Studio Code jako proponowaną w oknie komunikatu w przeciwnym razie zainstalowane. Kliknij przycisk **zainstalować** aby kontynuować, a następnie ponownie uruchom VSCode.
+3. Zainstaluj C# programu Visual Studio Code zgodnie z sugestią podaną w oknie komunikatu, jeśli nie jest zainstalowany. Kliknij przycisk **zainstalować** aby kontynuować, a następnie ponownie uruchom VSCode.
 
     ![Przypomnienie o zainstalowaniu języka C#](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/install-csharp.png)
 
 Wykonaj poniższe kroki, aby wykonać debugowania lokalnego:
   
-1. Wybierz kombinację klawiszy Ctrl + Shift + P, aby otworzyć paletę poleceń, a następnie wprowadź **ADL: Uruchom lokalnego Uruchom usługę**. Zostanie otwarta konsola cmd. Upewnij się, że **DataRoot** jest ustawiona.
+1. Wybierz kombinację klawiszy Ctrl + Shift + P, aby otworzyć paletę poleceń, a następnie wprowadź **ADL: Uruchom usługę uruchamiania lokalnego**. Zostanie otwarta konsola cmd. Upewnij się, że **DataRoot** jest ustawiona.
 2. Ustaw punkt przerwania w swojej C# związanym z kodem.
-3. Powrót do edytora skryptów, kliknij prawym przyciskiem myszy i wybierz **ADL: debugowanie lokalne**.
+3. Powrót do edytora skryptów, kliknij prawym przyciskiem myszy i wybierz **ADL: Debugowanie lokalne**.
     
    ![Narzędzia Data Lake Tools dla wyniku lokalnego debugowania programu Visual Studio Code](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-local-debug-result.png)
 

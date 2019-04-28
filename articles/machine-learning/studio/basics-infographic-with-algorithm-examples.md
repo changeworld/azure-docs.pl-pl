@@ -11,11 +11,11 @@ ms.author: garye
 ms.custom: seodc18
 ms.date: 03/04/2019
 ms.openlocfilehash: e29e4713cb01fcf894e09631ecca91ff07587751
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57455194"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60751655"
 ---
 # <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>Grafika informacyjna do pobrania: Podstawy wraz z przykładami Algorytm uczenia maszynowego
 
@@ -29,7 +29,7 @@ Pobierz to omówienie informacyjna łatwych do zrozumienia podstawy uczenia masz
 
 **[Pobieranie: Grafika informacyjna o machine learning podstawy wraz z łączami do algorytmami (PDF)](https://download.microsoft.com/download/0/5/A/05AE6B94-E688-403E-90A5-6035DBE9EEC5/machine-learning-basics-infographic-with-algorithm-examples.pdf)**
 
-![Grafika informacyjna: Maszyna podstawy wraz z przykładami algorytmu uczenia. Popularnych algorytmów. Machine learning dla początkujących.](./media/basics-infographic-with-algorithm-examples/machine-learning-basics-infographic-with-algorithm-examples.png)
+![Infografika: Maszyna podstawy wraz z przykładami algorytmu uczenia. Popularnych algorytmów. Machine learning dla początkujących.](./media/basics-infographic-with-algorithm-examples/machine-learning-basics-infographic-with-algorithm-examples.png)
 
 ## <a name="more-help-with-algorithms-for-beginners-and-advanced-users"></a>Więcej pomocy przy użyciu algorytmów dla początkujących i zaawansowanych użytkowników
 

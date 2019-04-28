@@ -10,11 +10,11 @@ ms.service: genomics
 ms.topic: article
 ms.date: 01/11/2019
 ms.openlocfilehash: 2037bcf173951769f1627f809352ef60afce2d50
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260281"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60780954"
 ---
 # <a name="version-release-history"></a>Historia wersji
 Zespół Microsoft Genomics regularnie aktualizuje klienta Microsoft Genomics Python w celu wprowadzenia poprawek i nowe funkcje. 

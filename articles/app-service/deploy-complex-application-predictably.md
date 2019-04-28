@@ -16,11 +16,11 @@ ms.date: 01/06/2016
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: e6d18222e15f62f12592362827b6dbc4a3d7dfbc
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820318"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60766923"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Inicjowanie obsługi oraz wdrażanie mikrousług przewidywalny na platformie Azure
 W tym samouczku pokazano, jak aprowizować i wdrażanie aplikacji składających się z [mikrousług](https://en.wikipedia.org/wiki/Microservices) w [usługi Azure App Service](https://azure.microsoft.com/services/app-service/) jako pojedyncza jednostka i w przewidywalny sposób za pomocą szablonów grup zasobów JSON i Wykonywanie skryptów programu PowerShell. 

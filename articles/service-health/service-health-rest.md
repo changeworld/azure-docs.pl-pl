@@ -8,11 +8,11 @@ ms.custom: REST
 ms.topic: article
 ms.date: 06/06/2017
 ms.openlocfilehash: 6d83aed6910127ceb34b9a694f48ca9c19ab6d18
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878395"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60790916"
 ---
 # <a name="get-resource-health-using-the-rest-api"></a>Pobierz kondycję zasobów przy użyciu interfejsu API REST 
 
