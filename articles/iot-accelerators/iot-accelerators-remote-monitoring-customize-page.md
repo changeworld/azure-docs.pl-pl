@@ -9,11 +9,11 @@ services: iot-accelerators
 ms.date: 10/02/2018
 ms.topic: conceptual
 ms.openlocfilehash: 95830cdffb232e16f9fbae51cfa11fbd18172c3c
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094592"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61447084"
 ---
 # <a name="add-a-custom-page-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Dodawanie niestandardowej strony do monitorowania zdalnego rozwiązania akceleratora internetowego interfejsu użytkownika
 
@@ -43,7 +43,7 @@ W celu przygotowania swojego lokalnego środowiska deweloperskiego, użyj narzę
 git clone https://github.com/Azure/pcs-remote-monitoring-webui.git
 ```
 
-## <a name="add-a-page"></a>Dodaj stronę
+## <a name="add-a-page"></a>Dodawanie strony
 
 Aby dodać strony interfejsu użytkownika sieci web, należy dodać pliki źródłowe, które definiują strony i zmodyfikować niektóre istniejące pliki, aby uświadomić nowej strony interfejsu użytkownika sieci web.
 

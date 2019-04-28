@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 7dfa252c29121adca2ecc77c08b2fca81d56e575
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320080"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61070099"
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>Analizowanie wydajności węzła brzegowego w usłudze Microsoft Azure CDN
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Analiza wydajności krańcowej zawiera szczegółowe informacje dotyczące ruchu i użycia przepustowości sieci CDN. Te informacje mogą następnie służyć do generowania statystyk trendów, które pozwalają uzyskać wgląd w sposób Twoje zasoby są buforowane i dostarczania ich klientom. Z kolei pozwala na formularzu strategię dotyczące optymalizacji dostarczania zawartości, i aby ustalić, jakie powinny być problemy rozwiązywane lepsze wykorzystywanie usługi CDN. W rezultacie nie tylko będzie można poprawić wydajność dostarczania danych, ale również można zmniejszyć koszty sieci CDN.
 
 > [!NOTE]

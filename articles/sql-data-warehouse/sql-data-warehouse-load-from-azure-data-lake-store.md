@@ -11,11 +11,11 @@ ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
 ms.openlocfilehash: 32ac5b0841365acfc0a52e343eafc4f3760dffaa
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472235"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61476140"
 ---
 # <a name="load-data-from-azure-data-lake-storage-gen1-to-sql-data-warehouse"></a>Ładowanie danych z usługi Azure Data Lake Storage Gen1 do usługi SQL Data Warehouse
 Tabele zewnętrzne technologii PolyBase umożliwia ładowanie danych z usługi Azure Data Lake Storage Gen1 do usługi Azure SQL Data Warehouse. Mimo że można uruchomić zapytania ad hoc dotyczących danych przechowywanych w Data Lake Storage Gen1, zaleca się importowanie danych do magazynu danych SQL, aby uzyskać najlepszą wydajność.

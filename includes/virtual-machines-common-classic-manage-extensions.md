@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: d14cfb82ae74f85425dbd3e8a365e8b99969641d
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55735907"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61485188"
 ---
 ## <a name="using-vm-extensions"></a>Przy użyciu rozszerzeń maszyn wirtualnych
 Implementowanie rozszerzeń maszyny Wirtualnej platformy Azure, zachowania lub funkcje, które ułatwiają albo inne programy, które działają na maszynach wirtualnych Azure (na przykład **WebDeployForVSDevTest** rozszerzenie umożliwia programowi Visual Studio do narzędzia Web Deploy rozwiązań na maszynie Wirtualnej platformy Azure) lub podaj możliwość interakcji z maszyny Wirtualnej obsługuje kilka innych zachowań (na przykład umożliwia rozszerzenia dostępu do maszyny Wirtualnej z klientów programu PowerShell, interfejsu wiersza polecenia platformy Azure i REST zresetować lub zmodyfikuj wartości dostępu zdalnego na maszynie Wirtualnej platformy Azure).

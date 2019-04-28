@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 06/30/2017
 ms.author: stewu
 ms.openlocfilehash: a8a50db5ece242bc00a28e66e21c863388950d6f
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756839"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61437642"
 ---
 # <a name="tuning-azure-data-lake-storage-gen1-for-performance"></a>Dostosowywanie usługi Azure Data Lake Storage Gen1 wydajności
 
@@ -47,7 +47,7 @@ Połączenie sieciowe między źródła danych i Data Lake Storage Gen1 czasami 
 
 Gdy zostały rozwiązane sprzętu źródłowego i sieci połączenia gardła powyżej, można przystąpić do konfigurowania narzędzia do wprowadzania. Poniższa tabela zawiera podsumowanie ustawień klucza dla kilku popularnych pozyskiwania narzędzi i udostępnia szczegółowe Dostosowywanie artykuły ich wydajności.  Aby dowiedzieć się więcej na temat narzędzia do użycia dla danego scenariusza, odwiedź [artykułu](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-data-scenarios).
 
-| Narzędzie               | Ustawienia     | Więcej szczegółów                                                                 |
+| Tool               | Ustawienia     | Więcej szczegółów                                                                 |
 |--------------------|------------------------------------------------------|------------------------------|
 | PowerShell       | PerFileThreadCount, ConcurrentFileCount |  [Link](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-powershell) |
 | Narzędzia AdlCopy    | Usługa Azure Data Lake Analytics jednostki  |   [Link](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob#performance-considerations-for-using-adlcopy)         |

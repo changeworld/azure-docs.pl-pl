@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2016
 ms.author: jeconnoc
-ms.openlocfilehash: 904056363c685ef0a16b229ce72383eb80701a39
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 4d8d3b93ef2a6347076fada53932b5fc56838d20
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39006417"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61435811"
 ---
 # <a name="how-to-configure-cloud-services"></a>Jak skonfigurować usługi w chmurze
 
@@ -58,8 +58,8 @@ Alerty można dodać do swojej usługi w chmurze. Kliknij przycisk **ustawienia*
 
 W tym miejscu możesz skonfigurować alert. Za pomocą **metryki** pole listy rozwijanej możesz skonfigurować alert dla następujących typów danych.
 
-* Odczytu z dysku
-* Zapis na dysku
+* Odczyt dysku
+* Zapis dysku
 * Sieć — wejście
 * Sieć — wyjście
 * Procent użycia procesora CPU

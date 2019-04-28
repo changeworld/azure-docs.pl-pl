@@ -2,17 +2,18 @@
 title: SSH do węzłów klastra Azure Kubernetes Service (AKS)
 description: Dowiedz się, jak utworzyć połączenie SSH z węzłów klastra Azure Kubernetes Service (AKS) dla zadania rozwiązywania problemów i konserwacji.
 services: container-service
-author: iainfoulds
+author: rockboyfor
 ms.service: container-service
 ms.topic: article
-ms.date: 03/05/2019
-ms.author: iainfou
+origin.date: 03/05/2019
+ms.date: 04/08/2019
+ms.author: v-yeche
 ms.openlocfilehash: 680e087e80d3e9891e201e7cb474ccfcf7fcc70b
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57538803"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61031662"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>Połącz przy użyciu protokołu SSH do usługi Azure Kubernetes Service (AKS) węzłów klastra z powodu konserwacji lub rozwiązywania problemów
 
@@ -34,14 +35,14 @@ Aby dodać klucz SSH do węzłów AKS, wykonaj następujące czynności:
 
 1. Pobierz nazwę grupy zasobów dla zasobów klastra usługi AKS przy użyciu [az aks show][az-aks-show]. Podaj własne podstawowej grupy zasobów i nazwę klastra AKS:
 
-    ```azurecli-interactive
+    ```azurecli
     az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
     ```
 
 1. Listy maszyn wirtualnych za pomocą grupy zasobów klastra usługi AKS [az vm list] [ az-vm-list] polecenia. Te maszyny wirtualne są węzłów AKS:
 
-    ```azurecli-interactive
-    az vm list --resource-group MC_myResourceGroup_myAKSCluster_eastus -o table
+    ```azurecli
+    az vm list --resource-group MC_myResourceGroup_myAKSCluster_chinaeast -o table
     ```
 
     Następujące przykładowe dane wyjściowe pokazuje węzłów AKS:
@@ -49,14 +50,14 @@ Aby dodać klucz SSH do węzłów AKS, wykonaj następujące czynności:
     ```
     Name                      ResourceGroup                                  Location
     ------------------------  ---------------------------------------------  ----------
-    aks-nodepool1-79590246-0  MC_myResourceGroupAKS_myAKSClusterRBAC_eastus  eastus
+    aks-nodepool1-79590246-0  MC_myResourceGroupAKS_myAKSClusterRBAC_chinaeast  chinaeast
     ```
 
 1. Aby dodać kluczy SSH z węzłem, użyj [az vm użytkownik aktualizację] [ az-vm-user-update] polecenia. Podaj nazwę grupy zasobów, a następnie jeden z węzłów AKS uzyskanego w poprzednim kroku. Domyślnie, nazwa użytkownika dla węzłów AKS jest *azureuser*. Podaj lokalizację własne SSH ogólnodostępnej lokalizacji kluczy, takie jak *~/.ssh/id_rsa.pub*, lub Wklej zawartość klucza publicznego SSH:
 
-    ```azurecli-interactive
+    ```azurecli
     az vm user update \
-      --resource-group MC_myResourceGroup_myAKSCluster_eastus \
+      --resource-group MC_myResourceGroup_myAKSCluster_chinaeast \
       --name aks-nodepool1-79590246-0 \
       --username azureuser \
       --ssh-key-value ~/.ssh/id_rsa.pub
@@ -68,8 +69,8 @@ Węzłów AKS nie są widoczne publicznie w Internecie. Aby SSH do węzłów AKS
 
 Wyświetl prywatny adres IP w usłudze AKS klastra węzła przy użyciu [az vm-— adresy ip] [ az-vm-list-ip-addresses] polecenia. Podaj własny AKS klastra Nazwa grupy zasobów uzyskane w ramach poprzedniego [az-aks-show] [ az-aks-show] krok:
 
-```azurecli-interactive
-az vm list-ip-addresses --resource-group MC_myAKSCluster_myAKSCluster_eastus -o table
+```azurecli
+az vm list-ip-addresses --resource-group MC_myAKSCluster_myAKSCluster_chinaeast -o table
 ```
 
 Następujące przykładowe dane wyjściowe pokazuje prywatnych adresów IP węzłów AKS:
@@ -100,7 +101,7 @@ Aby utworzyć połączenie SSH z węzłem AKS, uruchamiasz zasobnik pomocnika w 
 
     ```
     $ kubectl get pods
-    
+
     NAME                       READY     STATUS    RESTARTS   AGE
     aks-ssh-554b746bcf-kbwvf   1/1       Running   0          1m
     ```
@@ -123,22 +124,22 @@ Aby utworzyć połączenie SSH z węzłem AKS, uruchamiasz zasobnik pomocnika w 
 
     ```console
     $ ssh -i id_rsa azureuser@10.240.0.4
-    
+
     ECDSA key fingerprint is SHA256:A6rnRkfpG21TaZ8XmQCCgdi9G/MYIMc+gFAuY9RUY70.
     Are you sure you want to continue connecting (yes/no)? yes
     Warning: Permanently added '10.240.0.4' (ECDSA) to the list of known hosts.
-    
+
     Welcome to Ubuntu 16.04.5 LTS (GNU/Linux 4.15.0-1018-azure x86_64)
-    
+
      * Documentation:  https://help.ubuntu.com
      * Management:     https://landscape.canonical.com
      * Support:        https://ubuntu.com/advantage
-    
+
       Get cloud support with Ubuntu Advantage Cloud Guest:
         https://www.ubuntu.com/business/services/cloud
-    
+
     [...]
-    
+
     azureuser@aks-nodepool1-79590246-0:~$
     ```
 
@@ -154,12 +155,12 @@ Jeśli potrzebne są dodatkowe dane dotyczące rozwiązywania problemów, możes
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 
 <!-- INTERNAL LINKS -->
-[az-aks-show]: /cli/azure/aks#az-aks-show
-[az-vm-list]: /cli/azure/vm#az-vm-list
-[az-vm-user-update]: /cli/azure/vm/user#az-vm-user-update
-[az-vm-list-ip-addresses]: /cli/azure/vm#az-vm-list-ip-addresses
+[az-aks-show]: https://docs.azure.cn/zh-cn/cli/aks?view=azure-cli-latest#az-aks-show
+[az-vm-list]: https://docs.azure.cn/zh-cn/cli/vm?view=azure-cli-latest#az-vm-list
+[az-vm-user-update]: https://docs.azure.cn/zh-cn/cli/vm/user?view=azure-cli-latest#az-vm-user-update
+[az-vm-list-ip-addresses]: https://docs.azure.cn/zh-cn/cli/vm?view=azure-cli-latest#az-vm-list-ip-addresses
 [view-kubelet-logs]: kubelet-logs.md
 [view-master-logs]: view-master-logs.md
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
-[install-azure-cli]: /cli/azure/install-azure-cli
+[install-azure-cli]: https://docs.azure.cn/zh-cn/cli/install-azure-cli?view=azure-cli-latest

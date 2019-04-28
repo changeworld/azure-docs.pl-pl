@@ -13,11 +13,11 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/08/2019
 ms.openlocfilehash: 409c1abd7e9f532bb243ecab00228b402215c77e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57852777"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61313669"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Replikacja transakcyjna, za pomocą pojedynczej, puli i wystąpienie bazy danych w usłudze Azure SQL Database
 
@@ -30,7 +30,7 @@ Replikacja transakcyjna jest przydatne w następujących scenariuszach:
 - Zachowaj kilka rozproszonych baz danych w stanie zsynchronizowane.
 - Migrowanie baz danych z jednego programu SQL Server lub wystąpienia zarządzanego do innej bazy danych, stale publikując zmiany.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Główne składniki replikacji transakcyjnej przedstawiono na poniższej ilustracji:  
 

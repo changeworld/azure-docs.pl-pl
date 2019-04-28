@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: c840764dc978a8dacb3450c0aca5e5d93284b8a6
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58260115"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61127545"
 ---
 # <a name="change-the-reserved-unit-type"></a>Zmiana typu jednostki zarezerwowanej
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.locfileid: "58260115"
 > 
 > 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Konto usługi Media Services jest skojarzone z typem jednostki zarezerwowanej określającym szybkość, z jaką są przetwarzane zadania przetwarzania multimediów. Można wybrać jeden z następujących typów jednostki zarezerwowanej: **S1**, **S2** lub **S3**. Na przykład to samo zadanie kodowania jest wykonywane szybciej przy użyciu typu jednostki zarezerwowanej **S2** niż w przypadku użycia typu **S1**.
 

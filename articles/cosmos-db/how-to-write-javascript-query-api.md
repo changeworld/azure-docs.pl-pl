@@ -7,11 +7,11 @@ ms.topic: sample
 ms.date: 12/11/2018
 ms.author: mjbrown
 ms.openlocfilehash: 94f72b716e149b2fa5c31deabf92a8a443eb0bef
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043349"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61052377"
 ---
 # <a name="how-to-write-stored-procedures-and-triggers-in-azure-cosmos-db-by-using-the-javascript-query-api"></a>Jak pisać procedury składowane i wyzwalacze przy użyciu interfejsu API zapytań języka JavaScript w usłudze Azure Cosmos DB
 
@@ -78,7 +78,7 @@ function insertDocumentAndUpdateMetadata(item) {
 }
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Zapoznaj się z poniższymi artykułami, aby dowiedzieć się więcej o procedurach składowanych, wyzwalaczach i funkcjach zdefiniowanych przez użytkownika w usłudze Azure Cosmos DB:
 

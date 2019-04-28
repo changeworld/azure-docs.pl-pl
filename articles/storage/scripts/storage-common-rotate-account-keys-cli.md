@@ -16,11 +16,11 @@ ms.topic: sample
 ms.date: 06/22/2017
 ms.author: tamram
 ms.openlocfilehash: ac58886225221677aa003833167ff58cd578255d
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55693925"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61228651"
 ---
 # <a name="create-a-storage-account-and-rotate-its-account-access-keys"></a>Tworzenie konta magazynu i rotowanie kluczy dostępu do konta
 
@@ -53,7 +53,7 @@ Ten skrypt zawiera następujące polecenia, służące do utworzenia konta magaz
 | [az storage account keys list](/cli/azure/storage/account/keys) | Wyświetla klucze dostępu do podanego konta magazynu. |
 | [az storage account keys renew](/cli/azure/storage/account/keys) | Ponownie generuje podstawowy lub pomocniczy klucz dostępu do konta. |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](/cli/azure).
 

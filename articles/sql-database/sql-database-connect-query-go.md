@@ -13,11 +13,11 @@ ms.reviewer: MightyPen
 manager: craigg
 ms.date: 02/12/2019
 ms.openlocfilehash: 0014dc0edde0eafc153b40eec06c6bd6dc8446b5
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447863"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61409109"
 ---
 # <a name="quickstart-use-golang-to-query-an-azure-sql-database"></a>Szybki start: korzystanie z języka Golang do wykonywania zapytań w bazie danych Azure SQL Database
 

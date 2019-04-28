@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
 ms.openlocfilehash: 0f68627e2db3c08049f0273045906057526bd6aa
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55568056"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61094922"
 ---
 # <a name="copy-data-from-google-adwords-using-azure-data-factory-preview"></a>Kopiowanie danych z Google AdWords przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
 

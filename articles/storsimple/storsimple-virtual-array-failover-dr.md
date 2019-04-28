@@ -16,15 +16,15 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: be3d98dc0b3a8119fb853493440c6fc78d65c5a2
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57454242"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61409624"
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>Awaryjnego odzyskiwania i urządzenia w trybie failover rozwiązania StorSimple Virtual Array za pośrednictwem witryny Azure portal
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 W tym artykule opisano odzyskiwania po awarii dla usługi Microsoft Azure StorSimple Virtual Array szczegółowe instrukcje zostały podane w tym do trybu failover do innej macierzy wirtualnej. Tryb failover umożliwia przenoszenie danych z *źródła* urządzenia w centrum danych, aby *docelowej* urządzenia. Urządzenie docelowe może znajdować się w tej samej lub innej lokalizacji geograficznej. Tryb failover urządzenia dotyczy całego urządzenia. Podczas pracy w trybie failover danych w chmurze dla urządzenia źródłowego zmiany prawa własności do tego urządzenia docelowego.
 
 Ten artykuł dotyczy macierze wirtualne StorSimple tylko. Do trybu failover urządzenia z serii 8000, przejdź do [urządzenia trybu failover i odzyskiwanie po awarii urządzenia StorSimple](storsimple-device-failover-disaster-recovery.md).

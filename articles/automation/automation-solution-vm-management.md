@@ -10,11 +10,11 @@ ms.date: 03/31/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 6d7b99da3e8e81973c51bbd68a15517828c9736d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58762943"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61306873"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu rozwiązania w usłudze Azure Automation
 
@@ -249,7 +249,7 @@ Usługa Automation tworzy dwa typy rekordów w obszarze roboczym usługi Log Ana
 |Właściwość | Opis|
 |----------|----------|
 |Obiekt wywołujący |  Użytkownik, który zainicjował operację. Możliwe wartości to adres e-mail lub system w przypadku zaplanowanych zadań.|
-|Kategoria | Klasyfikacja typu danych. W przypadku usługi Automation wartością jest JobLogs.|
+|Category | Klasyfikacja typu danych. W przypadku usługi Automation wartością jest JobLogs.|
 |CorrelationId | Identyfikator GUID, który jest Identyfikatorem korelacji zadania elementu runbook.|
 |JobId | Identyfikator GUID, który jest Identyfikatorem zadania elementu runbook.|
 |operationName | Określa typ operacji wykonywanej na platformie Azure. W przypadku usługi Automation wartością jest zadanie.|
@@ -270,7 +270,7 @@ Usługa Automation tworzy dwa typy rekordów w obszarze roboczym usługi Log Ana
 |Właściwość | Opis|
 |----------|----------|
 |Obiekt wywołujący |  Użytkownik, który zainicjował operację. Możliwe wartości to adres e-mail lub system w przypadku zaplanowanych zadań.|
-|Kategoria | Klasyfikacja typu danych. W przypadku usługi Automation wartością jest JobStreams.|
+|Category | Klasyfikacja typu danych. W przypadku usługi Automation wartością jest JobStreams.|
 |JobId | Identyfikator GUID, który jest Identyfikatorem zadania elementu runbook.|
 |operationName | Określa typ operacji wykonywanej na platformie Azure. W przypadku usługi Automation wartością jest zadanie.|
 |ResourceGroup | Określa nazwę grupy zasobów zadania elementu Runbook.|

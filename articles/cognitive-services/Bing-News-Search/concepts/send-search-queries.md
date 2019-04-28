@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 12/13/2018
 ms.author: aahi
 ms.openlocfilehash: 1521799eacb0ec240a17e8c11dfff617fc59b772
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860494"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61389293"
 ---
 # <a name="sending-queries-to-the-bing-news-search-api"></a>Wysyłanie zapytań do interfejsu API wyszukiwania wiadomości Bing
 
@@ -282,7 +282,7 @@ X-MSEdge-Ref: Ref A: 994974CC8D994C95A5C31387296A510A Ref B: BY3EDGE0207 Ref C: 
 
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Czym jest funkcja wyszukiwania wiadomości Bing?](../search-the-web.md). 
 * [Pobieranie dzisiejszych najważniejszych wiadomości](search-for-news.md#get-todays-top-news)

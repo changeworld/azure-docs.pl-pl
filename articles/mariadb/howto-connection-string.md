@@ -7,17 +7,17 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 70cd25ff63101fa2a477cde2502d5d286b289366
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53536578"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61039686"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mariadb"></a>Jak połączyć aplikacje do usługi Azure Database dla serwera MariaDB
 Ten temat zawiera listę typów ciągów połączeń obsługiwanych przez usługę Azure Database dla serwera MariaDB, wraz z szablony i przykłady. W ciągu połączenia, może mieć różne parametry i ustawienia.
 
 - Aby uzyskać certyfikat, zobacz [jak skonfigurować protokół SSL](./howto-configure-ssl.md).
-- {your_host} =.mariadb.database.azure.com [servername]
+- {your_host} = [servername].mariadb.database.azure.com
 - {your_user}@{servername} poprawnie = format identyfikatora użytkownika do uwierzytelniania.  Jeśli używasz tylko identyfikator userID, uwierzytelnianie nie powiedzie się.
 
 ## <a name="adonet"></a>ADO.NET

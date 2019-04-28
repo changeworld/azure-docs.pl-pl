@@ -11,11 +11,11 @@ ms.topic: overview
 ms.date: 10/01/2018
 ms.author: dwlin
 ms.openlocfilehash: 86162b4d4e752bc11c0d739f6e343c7a357ea0af
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873720"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61059933"
 ---
 # <a name="speaker-recognition-api"></a>Interfejs API rozpoznawania osoby mówiącej
 

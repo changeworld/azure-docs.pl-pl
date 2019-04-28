@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
 ms.openlocfilehash: 86dcd39ad7b9f1e207e9254ec72698db3998bbd6
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320484"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61400478"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Kopiowanie danych z bazy danych MongoDB przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -60,7 +60,7 @@ Następujące właściwości są obsługiwane dla bazy danych MongoDB, połączo
 | databaseName |Nazwa bazy danych MongoDB, który chcesz uzyskać dostęp. |Yes |
 | Element authenticationType | Typ uwierzytelniania używany do łączenia z bazą danych MongoDB.<br/>Dozwolone wartości to: **Podstawowe**, i **anonimowe**. |Yes |
 | nazwa użytkownika |Konto użytkownika, aby dostęp do bazy danych MongoDB. |Tak (jeśli jest używane uwierzytelnianie podstawowe). |
-| hasło |Hasło użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Tak (jeśli jest używane uwierzytelnianie podstawowe). |
+| password |Hasło użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Tak (jeśli jest używane uwierzytelnianie podstawowe). |
 | authSource |Nazwa bazy danych MongoDB, który chcesz użyć, aby sprawdzić swoje poświadczenia dla uwierzytelniania. |Nie. W przypadku uwierzytelniania podstawowego domyślna ma używać konta administratora i baza danych określona za pomocą właściwości databaseName. |
 | enableSsl | Określa, czy połączenia z serwerem są szyfrowane przy użyciu protokołu SSL. Wartość domyślna to false.  | Nie |
 | allowSelfSignedServerCert | Określa, czy zezwalać na certyfikaty z podpisem własnym z serwera. Wartość domyślna to false.  | Nie |
@@ -177,15 +177,15 @@ Podczas kopiowania danych z bazy danych MongoDB, następujące mapowania są uż
 | Typ danych bazy danych MongoDB | Typ danych tymczasowych fabryki danych |
 |:--- |:--- |
 | Binarny |Byte[] |
-| Wartość logiczna |Wartość logiczna |
+| Boolean |Boolean |
 | Date |DateTime |
-| NumberDouble |Podwójne |
+| NumberDouble |Double |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
-| ObjectID |Ciąg |
-| Ciąg |Ciąg |
-| IDENTYFIKATOR UUID |Identyfikator GUID |
-| Obiekt |Renormalized do spłaszczenia kolumn z "_" jako separatora zagnieżdżonych |
+| ObjectID |String |
+| Ciąg |String |
+| IDENTYFIKATOR UUID |Guid |
+| Object |Renormalized do spłaszczenia kolumn z "_" jako separatora zagnieżdżonych |
 
 > [!NOTE]
 > Aby dowiedzieć się więcej o obsłudze tablic przy użyciu wirtualnego tabel, zobacz [obsługę złożonych typów, przy użyciu tabele wirtualne](#support-for-complex-types-using-virtual-tables) sekcji.

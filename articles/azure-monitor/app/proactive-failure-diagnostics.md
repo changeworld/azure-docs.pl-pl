@@ -14,11 +14,11 @@ ms.date: 12/18/2018
 ms.reviewer: yossiy
 ms.author: mbullwin
 ms.openlocfilehash: cfa00504cd2a05985fde2af3357418eac8baceeb
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117660"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61299109"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Wykrywanie inteligentne — anomalie w zakresie błędów
 [Usługa Application Insights](../../azure-monitor/app/app-insights-overview.md) automatycznie powiadamia, w czasie zbliżonym do rzeczywistego Jeśli nietypowy wzrost liczba nieudanych żądań aplikacji sieci web. Wykrywa nietypowy wzrost żądań HTTP lub wywołania zależności, które ma być zgłaszane nie powiodło się. Dla żądań żądań zakończonych niepowodzeniem są zwykle te kody odpowiedź 400 lub nowszej. Ułatwiające klasyfikowanie i diagnozowanie problemu, analizy właściwości błędów i powiązane dane telemetryczne jest podawany jako powiadomienia. Dostępne są także łącza do portalu usługi Application Insights w celu przeprowadzenia dalszej diagnostyki. Funkcja musi mieć nie konfiguracji ani konfiguracji, ponieważ używa ona algorytmów uczenia maszynowego do przewidywania zwykły współczynnik błędów.

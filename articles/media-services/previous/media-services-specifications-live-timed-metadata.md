@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: johndeu;
 ms.openlocfilehash: 10dbf7e8cf67ab721cf525d4a1e7594473592bd4
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295179"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61459117"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Sygnalizowanie metadanych czasowych w transmisji strumieniowej na żywo 
 
@@ -103,7 +103,7 @@ Rozrzedzony śledzenie musi być zadeklarowana w polu manifestu serwera na żywo
 |--------------------|----------------|---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | systemBitrate      | Liczba         | Wymagane      | MUSI być "0", wskazującą śledzenie przy użyciu nieznanego, zmiennej szybkości transmisji bitów.                                                                                                                                                                                                 |
 | parentTrackName    | String         | Wymagane      | MUSI być nazwą ścieżki nadrzędnej, kody czasowe rozrzedzone śledzenia są wyrównane do skali czasu. Śledź nadrzędny nie może być rozrzedzone śledzenia.                                                                                                                    |
-| manifestOutput     | Wartość logiczna        | Wymagane      | MUSI być "prawda", aby wskazać, czy śledzenie rozrzedzone zostanie osadzony w manifest Smooth klienta.                                                                                                                                                               |
+| manifestOutput     | Boolean        | Wymagane      | MUSI być "prawda", aby wskazać, czy śledzenie rozrzedzone zostanie osadzony w manifest Smooth klienta.                                                                                                                                                               |
 | Podtyp            | String         | Wymagane      | MUSI być czterech znaków kodu "Dane".                                                                                                                                                                                                                         |
 | Schemat             | String         | Wymagane      | MUSI być adres URL lub URN identyfikowanie schemat wiadomości. Komunikaty [SCTE 35] musi to być "urn: scte:scte35:2013a:bin", aby komunikaty wysyłane do klientów HLS i Smooth, Dash zgodne z [SCTE 67]. |
 | trackName          | String         | Wymagane      | MUSI być nazwą ścieżki rozrzedzone. TrackName może służyć do odróżniania wiele strumieni zdarzeń z tego samego schematu. Każdego strumienia zdarzeń unikatowy musi mieć nazwę unikatową ścieżkę.                                                                           |
@@ -283,7 +283,7 @@ Element elementu EventStream ma następujące atrybuty:
 | **Nazwa atrybutu** | **Typ**                | **Wymagane?** | **Opis**                                                                                                                                                                                                                                                                                   |
 |--------------------|-------------------------|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | scheme_id_uri      | string                  | Wymagane      | Identyfikuje schematu wiadomości. Schemat jest równa wartości atrybutu schemat w polu na żywo manifestu serwera. Wartość powinna być URN lub adres URL identyfikujący system wiadomości; na przykład, "urn: scte:scte35:2013a:bin".                                                                |
-| wartość              | string                  | Optional (Opcjonalność)      | Wartość dodatkowy ciąg znaków używany przez właścicieli schematu w celu dostosowania semantyki wiadomości. W celu dokonania rozróżnienia wielu strumieni zdarzeń z tego samego schematu, wartość musi być równa nazwę strumienia zdarzeń (trackName dla protokołu Smooth pozyskiwania lub AMF nazwa komunikatu dla protokołu RTMP pozyskiwania). |
+| value              | string                  | Optional (Opcjonalność)      | Wartość dodatkowy ciąg znaków używany przez właścicieli schematu w celu dostosowania semantyki wiadomości. W celu dokonania rozróżnienia wielu strumieni zdarzeń z tego samego schematu, wartość musi być równa nazwę strumienia zdarzeń (trackName dla protokołu Smooth pozyskiwania lub AMF nazwa komunikatu dla protokołu RTMP pozyskiwania). |
 | Skala czasu          | 32-bitowej nieoznaczonej liczby całkowitej | Wymagane      | Skala czasu, w dziesięciomilionowych częściach sekundy na sekundę, czas i czas trwania pól w polu "emsg".                                                                                                                                                                                                       |
 
 

@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 02/05/2019
 ms.author: rajanaki
 ms.openlocfilehash: e27dee213baf8365c3ad4efc69602f66e2081abe
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311156"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61036058"
 ---
 # <a name="service-updates-in-azure-site-recovery"></a>Aktualizacje usługi w usłudze Azure Site Recovery
 Jako organizacja niezbędne jest ustalenie, jak zamierzasz zapewnić bezpieczeństwo danych i aplikacji/obciążeń podczas planowanych i nieplanowanych przestojów. Usługa Azure Site Recovery wspiera strategię BCDR przez zapewnienie niezawodnego działania aplikacji uruchomionych na maszynach wirtualnych i serwerów fizycznych, które są dostępne w przypadku wyłączenia witryny. Usługa Site Recovery replikuje obciążenia uruchomione na maszynach wirtualnych i serwerach fizycznych, dzięki czemu są one nadal dostępne w lokalizacji dodatkowej, jeśli lokacja główna jest niedostępna. Gdy lokacja główna zostanie ponowne uruchomiona, obciążenia zostaną odzyskane w tej lokacji.

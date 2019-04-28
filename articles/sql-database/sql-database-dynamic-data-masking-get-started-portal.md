@@ -1,5 +1,5 @@
 ---
-title: 'Azure Portal: Baza danych SQL dynamiczne maskowanie danych | Dokumentacja firmy Microsoft'
+title: 'Witryna Azure Portal: Baza danych SQL dynamiczne maskowanie danych | Dokumentacja firmy Microsoft'
 description: Jak rozpocząć pracę z bazą danych SQL dynamiczne maskowanie danych w witrynie Azure portal
 services: sql-database
 ms.service: sql-database
@@ -13,11 +13,11 @@ ms.reviewer: vanto
 manager: craigg
 ms.date: 03/04/2018
 ms.openlocfilehash: 3d5ab203268ced1951d2ba9c852ece5bd5467c68
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57341939"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61077856"
 ---
 # <a name="get-started-with-sql-database-dynamic-data-masking-with-the-azure-portal"></a>Rozpoczynanie pracy z usługą SQL Database dane dynamiczne maskowanie przy użyciu witryny Azure portal
 

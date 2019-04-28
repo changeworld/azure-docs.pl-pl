@@ -14,14 +14,14 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 09/14/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 3f0f087c98f2b6594ab7e841f92ffac7ffe4003e
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: a7666ada6c4535010297415eac8b0bd9e5226d9e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810510"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61094215"
 ---
-<a name="retrieve-operations"></a>Pobierz operacje
+<a name="retrieve-operations"></a>Pobieranie operacji
 ===================
 
 Pobiera wszystkie operacje, w ramach oferty lub w celu uzyskania określoną operację na określony identyfikator operationId. Klient może używać parametrów zapytania do filtrowania długotrwałych operacji.
@@ -40,10 +40,10 @@ Pobiera wszystkie operacje, w ramach oferty lub w celu uzyskania określoną ope
 
 |  **Nazwa**          |      **Opis**                                                                                           | **Typ danych** |
 |  ----------------  |     --------------------------------------------------------------------------------------------------------   |  -----------  |
-|  publisherId       |  Identyfikator wydawcy, na przykład `Contoso`                                                                   |  Ciąg       |
-|  identyfikatora oferty           |  Identyfikator oferty                                                                                              |  Ciąg       |
-|  operationId       |  Identyfikator GUID, który unikatowo identyfikuje operacji w przypadku oferty. Identyfikatorowi operationId może zostać pobrane za pomocą tego interfejsu API i jest także zwracany w nagłówku HTTP w odpowiedzi na wszelkie długotrwałej operacji, takich jak [publikacji oferty](./cloud-partner-portal-api-publish-offer.md) interfejsu API.  |   Identyfikator GUID   |
-|  filteredStatus    | Parametr opcjonalny zapytania używane do filtrowania według stanu (na przykład `running`) w zbiorze zwróconym przez ten interfejs API.  |   Ciąg |
+|  publisherId       |  Identyfikator wydawcy, na przykład `Contoso`                                                                   |  String       |
+|  offerId           |  Identyfikator oferty                                                                                              |  String       |
+|  operationId       |  Identyfikator GUID, który unikatowo identyfikuje operacji w przypadku oferty. Identyfikatorowi operationId może zostać pobrane za pomocą tego interfejsu API i jest także zwracany w nagłówku HTTP w odpowiedzi na wszelkie długotrwałej operacji, takich jak [publikacji oferty](./cloud-partner-portal-api-publish-offer.md) interfejsu API.  |   Guid   |
+|  filteredStatus    | Parametr opcjonalny zapytania używane do filtrowania według stanu (na przykład `running`) w zbiorze zwróconym przez ten interfejs API.  |   String |
 |  wersja interfejsu API       | Najnowszą wersję interfejsu API                                                                                           |    Date      |
 |  |  |  |
 
@@ -189,7 +189,7 @@ Pobiera wszystkie operacje, w ramach oferty lub w celu uzyskania określoną ope
 |  submissionType              | Określa typ operacji zgłaszane dla tej oferty, na przykład `Publish/GGoLive`      |
 |  createdDateTime             | Daty/godziny UTC utworzenia operacji                                                       |
 |  lastActionDateTime          | Daty/godziny UTC po ostatniej aktualizacji zostało zrobione na operację                                       |
-|  status                      | Stan operacji, albo "nie jest uruchomiona | uruchomione | niepowodzenie | Ukończono`. Only one operation can have status `systemem "w danym momencie. |
+|  status                      | Stan operacji, albo `not started` \| `running` \| `failed` \| `completed`. Tylko jedna operacja może mieć stan `running` w danym momencie. |
 |  error                       | Komunikat o błędzie w przypadku operacji zakończonych niepowodzeniem                                                               |
 |  |  |
 

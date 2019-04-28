@@ -14,11 +14,11 @@ ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 4ff7f92d1d13966be5d17f37210bef961f64faf2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58084610"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61462415"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Kopiowanie danych do i z oprogramowania Oracle w środowisku lokalnym za pomocą usługi Azure Data Factory
 
@@ -104,7 +104,7 @@ W poniższej tabeli opisano elementy JSON, które są specyficzne dla usługi po
 | --- | --- | --- |
 | type |**Typu** właściwość musi być równa **OnPremisesOracle**. |Yes |
 | driverType | Określ, który sterownik do użycia w celu skopiowania danych z lub z bazą danych Oracle. Dozwolone wartości to **Microsoft** i **ODP** (ustawienie domyślne). Zobacz [obsługiwanych wersji i instalacji](#supported-versions-and-installation) Szczegóły sterownika. | Nie |
-| Parametry połączenia | Podaj informacje potrzebne do nawiąż połączenie z wystąpieniem bazy danych programu Oracle dla **connectionString** właściwości. | Yes |
+| connectionString | Podaj informacje potrzebne do nawiąż połączenie z wystąpieniem bazy danych programu Oracle dla **connectionString** właściwości. | Yes |
 | gatewayName | Nazwa bramy, który służy do łączenia się z serwerem Oracle w środowisku lokalnym. |Yes |
 
 **Przykład: Za pomocą sterownika Microsoft**

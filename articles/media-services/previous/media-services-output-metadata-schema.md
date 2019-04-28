@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 42227095c69924cd2922673d020b349aa29f2daa
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259520"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61129750"
 ---
 # <a name="output-metadata"></a>Metadane wyjściowe
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Zadania kodowania jest skojarzony z wejściowego elementu (lub zasoby), w której chcesz wykonać kilka zadań kodowania. Na przykład kodowanie pliku MP4 do H.264 MP4 o adaptacyjnej szybkości transmisji bitów zestawów; Tworzenie miniatur; Tworzenie nakładek. Po zakończeniu zadania elementu zawartości wyjściowej jest generowany.  Elementu zawartości wyjściowej zawiera film wideo, audio, miniatury, itp. Elementu zawartości wyjściowej zawiera także plik o metadane dotyczące elementu zawartości wyjściowej. Nazwa pliku XML metadanych ma następujący format: &lt;source_file_name&gt;_manifest.xml (na przykład BigBuckBunny_manifest.xml).  
 
 Usługi Media Services nie skanuje uprzedzając zdarzenie wejściowe zasoby do generowania metadanych. Metadane wejściowe zostanie wygenerowany tylko jako artefakt, gdy dane wejściowe, zasób jest przetwarzana w ramach zadania. Dlatego ten artefakt jest zapisywany w danych wyjściowych zasobów. Różne narzędzia są używane do generowania metadanych dla zasobów danych wejściowych i wyjściowych zasoby. Dlatego metadanych wejściowych ma schemat nieco inne niż metadanych danych wyjściowych.

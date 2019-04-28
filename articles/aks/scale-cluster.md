@@ -2,17 +2,18 @@
 title: Skalowanie klastra usługi Azure Kubernetes Service (AKS)
 description: Dowiedz się, jak skalować liczbę węzłów w klastrze usługi Azure Kubernetes Service (AKS).
 services: container-service
-author: iainfoulds
+author: rockboyfor
 ms.service: container-service
 ms.topic: article
-ms.date: 01/10/2019
-ms.author: iainfoulds
+origin.date: 01/10/2019
+ms.date: 03/04/2019
+ms.author: v-yeche
 ms.openlocfilehash: 558a3b6dc15293ab9a0895aa4f9f709ba2d0a51f
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214627"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61032168"
 ---
 # <a name="scale-the-node-count-in-an-azure-kubernetes-service-aks-cluster"></a>Skalowanie liczby węzłów w klastrze usługi Azure Kubernetes Service (AKS)
 
@@ -22,7 +23,7 @@ Jeśli zasób sprostania wymaganiom Twojej aplikacji, zmienić można ręcznie s
 
 Najpierw pobierz *nazwa* swojej za pomocą nodepool [az aks show] [ az-aks-show] polecenia. Poniższy przykład pobiera nazwę nodepool klastra o nazwie *myAKSCluster* w *myResourceGroup* grupy zasobów:
 
-```azurecli-interactive
+```azurecli
 az aks show --resource-group myResourceGroup --name myAKSCluster --query agentPoolProfiles
 ```
 
@@ -46,7 +47,7 @@ $ az aks show --resource-group myResourceGroup --name myAKSCluster --query agent
 
 Użyj polecenia `az aks scale` w celu skalowania węzłów klastra. W poniższym przykładzie skala jest klaster o nazwie *myAKSCluster* do jednego węzła. Podaj własny *nodepool — nazwa* z poprzedniego polecenia, takie jak *nodepool1*:
 
-```azurecli-interactive
+```azurecli
 az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 1 --nodepool-name <your node pool name>
 ```
 
@@ -70,7 +71,7 @@ Następujące przykładowe dane wyjściowe pokazuje klastra ma została pomyśln
   ],
   "dnsPrefix": "myAKSClust-myResourceGroup-19da35",
   "enableRbac": true,
-  "fqdn": "myaksclust-myresourcegroup-19da35-0d60b16a.hcp.eastus.azmk8s.io",
+  "fqdn": "myaksclust-myresourcegroup-19da35-0d60b16a.hcp.chinaeast2.azmk8s.io",
   "id": "/subscriptions/<guid>/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster",
   "kubernetesVersion": "1.9.11",
   "linuxProfile": {
@@ -83,7 +84,7 @@ Następujące przykładowe dane wyjściowe pokazuje klastra ma została pomyśln
       ]
     }
   },
-  "location": "eastus",
+  "location": "chinaeast2",
   "name": "myAKSCluster",
   "networkProfile": {
     "dnsServiceIp": "10.0.0.10",
@@ -93,7 +94,7 @@ Następujące przykładowe dane wyjściowe pokazuje klastra ma została pomyśln
     "podCidr": "10.244.0.0/16",
     "serviceCidr": "10.0.0.0/16"
   },
-  "nodeResourceGroup": "MC_myResourceGroup_myAKSCluster_eastus",
+  "nodeResourceGroup": "MC_myResourceGroup_myAKSCluster_chinaeast2",
   "provisioningState": "Succeeded",
   "resourceGroup": "myResourceGroup",
   "servicePrincipalProfile": {
@@ -117,4 +118,4 @@ Dowiedz się więcej na temat wdrażania usługi AKS i zarządzania nią z samou
 
 <!-- LINKS - internal -->
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
-[az-aks-show]: /cli/azure/aks#az-aks-show
+[az-aks-show]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-show

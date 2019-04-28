@@ -17,11 +17,11 @@ ms.date: 04/02/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8240308b3e0955b1d4d3ef2e82cad215daf95b00
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59009372"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61482300"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>Sterowania oprogramowaniem Azure HANA — duże wystąpienia za pośrednictwem witryny Azure Portal
 W tym dokumencie omówiono sposób [dużych wystąpień HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) są prezentowane w [witryny Azure portal](https://portal.azure.com) i jakie działania mogą być przeprowadzane za pośrednictwem witryny Azure portal w przypadku dużych wystąpień HANA, które zostały wdrożone dla Ciebie. Widoczność dużych wystąpień HANA w witrynie Azure portal znajduje się za pośrednictwem dostawcy zasobów platformy Azure dla dużych wystąpień HANA, który znajduje się obecnie w publicznej wersji zapoznawczej

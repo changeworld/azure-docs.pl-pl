@@ -9,13 +9,13 @@ ms.date: 11/20/2018
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: 70d29359d4a4bcf9f5badbbf0c553d7bed88a02b
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284570"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61444762"
 ---
-# <a name="tutorial-conduct-a-root-cause-analysis-on-an-alert"></a>Samouczek: przeprowadzanie analizy głównej przyczyny po wystąpieniu alertu
+# <a name="tutorial-conduct-a-root-cause-analysis-on-an-alert"></a>Samouczek: Przeprowadzanie analizy głównej przyczyny po wystąpieniu alertu
 
 W tym samouczku pokazano, jak diagnozować główną przyczynę alertu za pomocą akceleratora rozwiązania do monitorowania zdalnego. Na pulpicie nawigacyjnym rozwiązania do monitorowania zdalnego zobaczysz, że został wyzwolony alert, a następnie zbadasz główną przyczynę za pomocą eksploratora usługi Azure Time Series Insights.
 
@@ -96,9 +96,9 @@ Aby dowiedzieć się, jak tworzyć i edytować reguły, zapoznaj się z poprzedn
 
 [!INCLUDE [iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku pokazano, jak diagnozować główną przyczynę alertu za pomocą eksploratora usługi Time Series Insights i akceleratora rozwiązania do monitorowania zdalnego. Aby dowiedzieć się, w jaki sposób korzystać z akceleratora rozwiązań w celu identyfikowania i rozwiązywania problemów z urządzeniami połączonymi, przejdź do kolejnego samouczka.
 
 > [!div class="nextstepaction"]
-> [Use device alerts to identify and fix issues with devices connected to your monitoring solution (Korzystanie z alertów urządzenia do identyfikowania i rozwiązywania problemów z urządzeniami połączonymi z rozwiązaniem do monitorowania)](iot-accelerators-remote-monitoring-maintain.md)
+> [Korzystanie z alertów urządzenia do identyfikowania i rozwiązywania problemów z urządzeniami połączonymi z rozwiązaniem do monitorowania](iot-accelerators-remote-monitoring-maintain.md)

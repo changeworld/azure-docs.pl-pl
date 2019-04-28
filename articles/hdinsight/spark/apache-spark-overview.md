@@ -1,7 +1,6 @@
 ---
 title: Co to jest platforma Apache Spark — Azure HDInsight
 description: Ten artykuł przedstawia wprowadzenie do platformy Spark w usłudze HDInsight i różne scenariusze korzystania z klastra Spark w usłudze HDInsight.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive,mvc
 ms.topic: overview
 ms.date: 01/28/2019
 ms.author: hrasheed
-ms.openlocfilehash: 264faaf0168d1604668e3358b1d99bc169d7e2f0
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
-ms.translationtype: HT
+ms.openlocfilehash: ab349018705f173f1b138b854e0773ef3f996f1c
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56985176"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62097313"
 ---
 # <a name="what-is-apache-spark-in-azure-hdinsight"></a>Co to jest platforma Apache Spark w usłudze Azure HDInsight
 

@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 02/18/2019
 ms.author: saurse
 ms.openlocfilehash: 4bad788156b2068f24484d3b248f2091409752ad
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621621"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61216128"
 ---
 # <a name="troubleshoot-microsoft-azure-recovery-services-mars-agent"></a>Rozwiązywanie problemów z Agent usług Microsoft Azure Recovery Services (MARS)
 
@@ -35,7 +35,7 @@ Poniżej przedstawiono sposób naprawić błędy, które można napotkać podcza
 
 | Szczegóły błędu | Możliwe przyczyny | Zalecane akcje |
 | ---     | ---     | ---    |
-| **Error** <br /><ol><li>*Agent usług Microsoft Azure Recovery Service nie może nawiązać połączenia z programem Kopia zapasowa Microsoft Azure. (ID: 100050) ustawienia sieciowe i upewnij się, że jesteś w stanie połączyć się z Internetem*<li>*Wymagane uwierzytelnianie serwera proxy (407)* |Serwer proxy blokuje połączenia. |  <ul><li>Uruchom **IE** > **ustawienie** > **Opcje internetowe** > **zabezpieczeń**  >  **Internet**. Następnie wybierz pozycję **Poziom niestandardowy** i przewijanie, aż zostanie wyświetlony plik, Pobierz sekcji. Wybierz pozycję **Włącz**.<li>Może być również konieczne dodanie tych witryn w programie Internet Explorer [Zaufane witryny](https://docs.microsoft.com/azure/backup/backup-try-azure-backup-in-10-mins).<li>Zmień ustawienia, aby używać serwera proxy. Następnie szczegółowo Serwer proxy serwera. <li>Jeśli masz oprogramowanie antywirusowe zainstalowane na serwerze, Wyklucz następujące pliki ze skanowania oprogramowania antywirusowego. <ul><li>CBEngine.exe (instead of dpmra.exe).<li>CSC.exe (powiązanego z .NET Framework). Brak CSC.exe dla każdej wersji platformy .NET, który jest zainstalowany na serwerze. Wyklucz pliki CSC.exe, które są powiązane z wszystkich wersji programu .NET framework na tym serwerze. <li>Lokalizacja folderu lub pamięci podręcznej plików tymczasowych. <br>*Domyślna lokalizacja dla tymczasowy folder lub ścieżka lokalizacji pamięci podręcznej to C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.<li>Folder bin C:\Program Files\Microsoft Azure Recovery Services Agent\Bin
+| **Error** <br /><ol><li>*Agent usług Microsoft Azure Recovery Service nie może nawiązać połączenia z programem Kopia zapasowa Microsoft Azure. (ID: 100050) ustawienia sieciowe i upewnij się, że jesteś w stanie połączyć się z Internetem*<li>*(407) Wymagane jest uwierzytelnianie serwera proxy* |Serwer proxy blokuje połączenia. |  <ul><li>Uruchom **IE** > **ustawienie** > **Opcje internetowe** > **zabezpieczeń**  >  **Internet**. Następnie wybierz pozycję **Poziom niestandardowy** i przewijanie, aż zostanie wyświetlony plik, Pobierz sekcji. Wybierz pozycję **Włącz**.<li>Może być również konieczne dodanie tych witryn w programie Internet Explorer [Zaufane witryny](https://docs.microsoft.com/azure/backup/backup-try-azure-backup-in-10-mins).<li>Zmień ustawienia, aby używać serwera proxy. Następnie szczegółowo Serwer proxy serwera. <li>Jeśli masz oprogramowanie antywirusowe zainstalowane na serwerze, Wyklucz następujące pliki ze skanowania oprogramowania antywirusowego. <ul><li>CBEngine.exe (instead of dpmra.exe).<li>CSC.exe (powiązanego z .NET Framework). Brak CSC.exe dla każdej wersji platformy .NET, który jest zainstalowany na serwerze. Wyklucz pliki CSC.exe, które są powiązane z wszystkich wersji programu .NET framework na tym serwerze. <li>Lokalizacja folderu lub pamięci podręcznej plików tymczasowych. <br>*Domyślna lokalizacja dla tymczasowy folder lub ścieżka lokalizacji pamięci podręcznej to C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.<li>Folder bin C:\Program Files\Microsoft Azure Recovery Services Agent\Bin
 
 
 ## <a name="failed-to-set-the-encryption-key-for-secure-backups"></a>Nie można ustawić klucza szyfrowania na potrzeby bezpiecznych kopii zapasowych

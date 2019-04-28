@@ -8,11 +8,11 @@ ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
 ms.openlocfilehash: 088dd8414c93b609326e7cd72828426dcb00fc28
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59274573"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61333516"
 ---
 # <a name="sample---allowed-skus-for-storage-accounts-and-virtual-machines"></a>Przykład — dozwolone jednostki SKU dla kont magazynu i maszyn wirtualnych
 

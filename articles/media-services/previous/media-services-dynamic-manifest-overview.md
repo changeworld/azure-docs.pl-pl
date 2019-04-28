@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: cenkd;juliako
 ms.openlocfilehash: 229f89a8803f089c24981f56e00e36efe96de3aa
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316598"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61465200"
 ---
 # <a name="filters-and-dynamic-manifests"></a>Filtrów i manifestów dynamicznych
 
@@ -31,7 +31,7 @@ Począwszy od wersji 2.17, Media Services umożliwia definiowanie filtrów dla z
 
 W tym temacie omówiono typowe scenariusze, w którym przy użyciu filtrów może być korzystne klientom oraz łącza do tematów, które pokazują, jak programowo utworzyć filtry.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Podczas dostarczania zawartości do klientów (przesyłanie strumieniowe wydarzeń na żywo lub wideo na żądanie) celem użytkownika jest dostarczanie wideo o wysokiej jakości do różnych urządzeń warunki panujące w sieci. Aby osiągnąć ten cel, wykonaj następujące czynności:
 
 * kodowanie strumienia do różnych szybkościach transmisji bitów ([adaptacyjną szybkością transmisji bitów](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)) strumienia wideo (to zajmie się jakość i warunki sieciowe) i 

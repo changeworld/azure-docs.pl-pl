@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: adsolank;juliako;johndeu
 ms.openlocfilehash: a11ae0414d6737f1588515ec19524bcf499f0c74
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189108"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61215809"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer"></a>Indeksowaniu plików multimedialnych za pomocą usługi Azure Media Indexer
 Usługa Azure Media Indexer umożliwia Dodaj zawartości multimediów jako możliwej do multimedialnej możliwość wyszukiwania oraz generowanie pełnotekstowej transkrypcji na podpisy kodowane oraz słowa kluczowe. Możesz przetwarzać jeden plik multimediów lub wiele plików multimediów w partii.  

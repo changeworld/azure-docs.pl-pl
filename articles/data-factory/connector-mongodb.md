@@ -3,21 +3,22 @@ title: Kopiowanie danych z bazy danych MongoDB przy użyciu usługi Azure Data F
 description: Dowiedz się, jak skopiować dane z Mongo DB do magazynów danych ujścia obsługiwane za pomocą działania kopiowania w potoku usługi Azure Data Factory.
 services: data-factory
 documentationcenter: ''
-author: linda33wj
-manager: craigg
+author: WenJason
+manager: digimobile
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/20/2018
-ms.author: jingwang
+origin.date: 12/20/2018
+ms.date: 04/22/2019
+ms.author: v-jay
 ms.openlocfilehash: ca6040bb74839f30a2f1b13297f6037f05240c67
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562225"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61400444"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Kopiowanie danych z bazy danych MongoDB przy użyciu usługi Azure Data Factory
 
@@ -49,7 +50,7 @@ Następujące właściwości są obsługiwane dla bazy danych MongoDB, połączo
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type |Właściwość type musi być równa: **MongoDbV2** |Yes |
-| Parametry połączenia |Określ parametry połączenia bazy danych MongoDB, np. `mongodb://[username:password@]host[:port][/[database][?options]]`. Zapoznaj się [Podręcznik bazy danych MongoDB na parametry połączenia](https://docs.mongodb.com/manual/reference/connection-string/) Aby uzyskać więcej informacji. <br/><br />Oznacz to pole jako **SecureString** typ, aby bezpiecznie przechowywać w usłudze Data Factory. Możesz również [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Yes |
+| connectionString |Określ parametry połączenia bazy danych MongoDB, np. `mongodb://[username:password@]host[:port][/[database][?options]]`. Zapoznaj się [Podręcznik bazy danych MongoDB na parametry połączenia](https://docs.mongodb.com/manual/reference/connection-string/) Aby uzyskać więcej informacji. <br/><br />Oznacz to pole jako **SecureString** typ, aby bezpiecznie przechowywać w usłudze Data Factory. Możesz również [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Yes |
 | baza danych | Nazwa bazy danych, który chcesz uzyskać dostęp. | Yes |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Używając środowiskiem Integration Runtime lub Azure Integration Runtime (Jeśli magazyn danych jest publicznie dostępny). Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
 

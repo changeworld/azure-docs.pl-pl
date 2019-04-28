@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: xpouyat;anilmur;juliako
 ms.openlocfilehash: 608ca4bc3b58dd3c718d6239f90260154d2f6c3a
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189482"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61465537"
 ---
 # <a name="using-multiple-input-files-and-component-properties-with-premium-encoder"></a>Używanie wielu plików wejściowych i właściwości składnika z użyciem kodera w warstwie Premium
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Istnieją scenariusze, w których użytkownik może być konieczne dostosowanie właściwości składnika Określ klipu kod XML listy zawartości lub wysłać wiele plików wejściowych, gdy prześlesz zadanie z **Media Encoder Premium Workflow** procesor multimediów. Przykłady to:
 
 * Nałożenie tekstu, wideo i ustawianie wartości tekstowej (na przykład bieżąca data) w czasie wykonywania dla każdego wejściowego pliku wideo.
@@ -469,7 +469,7 @@ Do kodowania, wykonaj następujące kroki:
 * [Wprowadzenie do kodowania w usłudze Azure Media Services w warstwie Premium](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)
 * [Jak używać kodowanie w warstwie Premium w usłudze Azure Media Services](https://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
 * [Kodowanie zawartości na żądanie przy użyciu usługi Azure Media Services](media-services-encode-asset.md#media-encoder-premium-workflow)
-* [Media Encoder Premium Workflow formaty i kodery-dekodery](media-services-premium-workflow-encoder-formats.md)
+* [Formaty i kodeki usługi Media Encoder Premium Workflow](media-services-premium-workflow-encoder-formats.md)
 * [Przykładowe pliki przepływu pracy](https://github.com/Azure/azure-media-services-samples)
 * [Narzędzie Azure Media Services Explorer](https://aka.ms/amse)
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 29ee71e7946145e50cc875df96b674abec3e12df
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: f5597773b3127852481d5e14844bed889c4d6f83
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004340"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61435320"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>Jak skonfigurować automatyczne skalowanie usługi w chmurze w portalu
 
@@ -41,7 +41,7 @@ Przed skonfigurowaniem skalowania dla aplikacji, należy rozważyć następując
 
 * Aby włączyć wysoką dostępność aplikacji, należy upewnić się, że jest wdrażany za pomocą co najmniej dwóch wystąpień roli. Aby uzyskać więcej informacji, zobacz [umowy dotyczące poziomu usług](https://azure.microsoft.com/support/legal/sla/).
 
-* Automatyczne skalowanie odbywa się tylko, gdy wszystkie role są **gotowe** stanu.  
+* Automatyczne skalowanie odbywa się tylko, gdy wszystkie role są **gotowe** stanu.  
 
 
 ## <a name="where-scale-is-located"></a>Gdzie znajduje się skalowania
@@ -73,7 +73,7 @@ Po skonfigurowaniu profilu i reguł, wybierz **Zapisz** ikonę u góry.
 #### <a name="profile"></a>Profil
 Profil, który Ustawia minimalną i maksymalną wystąpień skali, a także, gdy aktywny jest zakresu tej skali.
 
-* **Zawsze**
+* **zawsze**
 
     Zawsze Zachowuj tego zakresu wystąpień jest dostępna.  
 

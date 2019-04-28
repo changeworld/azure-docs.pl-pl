@@ -16,11 +16,11 @@ ms.topic: sample
 ms.date: 06/22/2017
 ms.author: tamram
 ms.openlocfilehash: 01187a4dbcd8333f95cf20b5956b7b81559a19a8
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730656"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61232289"
 ---
 # <a name="delete-containers-based-on-container-name-prefix"></a>Usuwanie kontenerów na podstawie prefiksu nazwy kontenera
 
@@ -54,7 +54,7 @@ Ten skrypt zawiera następujące polecenia służące do usunięcia kontenerów 
 | [az storage container list](/cli/azure/storage/container) | Zwraca listę kontenerów na koncie usługi Azure Storage. |
 | [az storage container delete](/cli/azure/storage/container) | Usuwa kontenery z konta usługi Azure Storage. |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](/cli/azure).
 

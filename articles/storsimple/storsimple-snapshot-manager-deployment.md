@@ -15,15 +15,15 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: v-sharos
 ms.openlocfilehash: ee17e4b69d1e6c9de465e4241ee2237361e320b7
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55168009"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61077745"
 ---
 # <a name="deploy-the-storsimple-snapshot-manager-mmc-snap-in"></a>Wdrażanie w przystawce programu MMC przystawki StorSimple Snapshot Manager
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 StorSimple Snapshot Manager jest przystawką Microsoft Management Console (MMC), która ułatwia ochronę danych i zarządzania kopiami zapasowymi w środowisku Microsoft Azure StorSimple. Za pomocą Menedżera migawek StorSimple można zarządzać Microsoft Azure StorSimple w środowisku lokalnym i Magazyn w chmurze tak, jakby był to system magazynu w pełni zintegrowane, tym samym upraszczanie procesów i przywracania kopii zapasowych i obniżając koszty. 
 
 W tym samouczku opisano wymagania dotyczące konfiguracji, a także procedury dotyczące instalowania, usuwanie i uaktualnianie programu StorSimple Snapshot Manager.

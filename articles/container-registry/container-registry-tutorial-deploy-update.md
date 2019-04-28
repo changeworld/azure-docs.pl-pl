@@ -9,11 +9,11 @@ ms.date: 04/30/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
 ms.openlocfilehash: d9faa89d33dde7da35ad4490b78b9a1d023274ae
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256625"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61333429"
 ---
 # <a name="tutorial-push-an-updated-container-image-to-a-geo-replicated-container-registry-for-regional-web-app-deployments"></a>Samouczek: Wypychanie zaktualizowanego obrazu kontenera do rejestru kontenerów z replikacją geograficzną dla wdrożeń regionalnych aplikacji internetowych
 
@@ -129,7 +129,7 @@ Sprawdź, czy zaktualizowany obraz kontenera został również wdrożony we wdro
 
 Za pomocą jednej aplikacji `docker push` została automatycznie zaktualizowana aplikacja internetowa działająca w obu regionalnych wdrożeniach aplikacji internetowej. Usługa Azure Container Registry przesłała do kontenera obrazy z repozytoriów znajdujących się najbliżej poszczególnych wdrożeń.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Podczas pracy z samouczkiem utworzono i wypchnięto nową wersję kontenera aplikacji internetowej do rejestru replikowanego geograficznie. Elementy webhook w usłudze Azure Container Registry powiadomiły o aktualizacji usługę Web Apps for Containers, która wyzwoliła lokalne ściągnięcie z najbliższej repliki rejestru.
 

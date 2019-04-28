@@ -16,11 +16,11 @@ ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: 689207339db0250d42fc64c33f43c42c18317d41
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313009"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61388723"
 ---
 # <a name="tutorial-monitor-your-service-fabric-applications-using-elk"></a>Samouczek: Monitorowanie aplikacji usługi Service Fabric przy użyciu rozwiązania ELK
 

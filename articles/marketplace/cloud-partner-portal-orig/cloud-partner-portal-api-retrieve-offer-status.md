@@ -15,11 +15,11 @@ ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 9233a5919ad86adcbb7947cd095945654ed015a7
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810775"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61093985"
 ---
 <a name="retrieve-offer-status"></a>Pobieranie stanu oferty 
 =====================
@@ -33,8 +33,8 @@ Pobiera bieżący stan oferty.
 
 |  **Nazwa**       |   **Opis**                            |  **Typ danych** |
 |  -------------  |  ------------------------------------------  |  ------------  |
-|  publisherId    | Identyfikator wydawcy, na przykład `Contoso`  |     Ciąg     |
-|  identyfikatora oferty        | Identyfikator GUID, który unikatowo identyfikuje oferty      |     Ciąg     |
+|  publisherId    | Identyfikator wydawcy, na przykład `Contoso`  |     String     |
+|  offerId        | Identyfikator GUID, który unikatowo identyfikuje oferty      |     String     |
 |  wersja interfejsu API    | Najnowszą wersję interfejsu API                        |     Date       |
 |  |  |
 
@@ -179,7 +179,7 @@ Pobiera bieżący stan oferty.
 |  W toku                  | Etap jest uruchomiony.                             |
 |  WaitingForPublisherReview   | Krok oczekuje na zatwierdzenie wydawcy.      |
 |  WaitingForApproval          | Krok czeka, aż proces zatwierdzania.        |
-|  Zablokowane                     | Krok jest zablokowany.                             |
+|  Zablokowany                     | Krok jest zablokowany.                             |
 |  Odrzucone                    | Krok został odrzucony.                            |
 |  Zakończ                    | Krok został ukończony.                            |
 |  Anulowane                    | Krok zostało anulowane.                           |

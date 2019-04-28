@@ -15,11 +15,11 @@ ms.workload: multiple
 ms.date: 06/29/2017
 ms.author: mikkelhegn
 ms.openlocfilehash: 79120371ca2a62e5ef9f2bf38476635db12e9fcc
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42055704"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61082847"
 ---
 # <a name="configure-the-upgrade-of-a-service-fabric-application-in-visual-studio"></a>Konfigurowanie uaktualniania aplikacji usługi Service Fabric w programie Visual Studio
 Visual Studio tools dla usługi Azure Service Fabric zapewnia obsługę uaktualniania publikowania do klastrów lokalnym lub zdalnym. Istnieją trzy scenariusze, w których ma zostać uaktualniony do nowszej wersji, zamiast zastępowania aplikacji podczas testowania i debugowania aplikacji:
@@ -31,7 +31,7 @@ Visual Studio tools dla usługi Azure Service Fabric zapewnia obsługę uaktualn
 ## <a name="parameters-needed-to-upgrade"></a>Parametry wymagane do uaktualnienia
 Można wybrać spośród dwóch rodzajów wdrożenia: regularnie lub uaktualnienia. Regularne wdrożenia usuwa wszelkie poprzednie informacje na temat wdrażania i dane w klastrze podczas wdrażania uaktualnienia zachowuje on. Podczas uaktualniania aplikacji usługi Service Fabric, w programie Visual Studio, musisz podać parametry uaktualniania aplikacji i kondycji Sprawdź zasady. Parametry uaktualniania aplikacji pomóc w kontrolowaniu uaktualniania, podczas gdy zasady dotyczące kondycji wyboru ustalić, czy uaktualnienie zakończyło się pomyślnie. Zobacz [uaktualnianie aplikacji usługi Service Fabric: parametry uaktualniania](service-fabric-application-upgrade-parameters.md) Aby uzyskać więcej informacji.
 
-Istnieją trzy tryby uaktualnienia: *monitorowanej*, *UnmonitoredAuto*, i *UnmonitoredManual*.
+Istnieją trzy tryby uaktualnienia: *Monitorowane*, *UnmonitoredAuto*, i *UnmonitoredManual*.
 
 * Uaktualnienie monitorowanej automatyzuje uaktualnienia i sprawdzanie kondycji aplikacji.
 * Uaktualnienie UnmonitoredAuto automatyzuje uaktualnienia, ale pomija sprawdzanie kondycji aplikacji.

@@ -8,11 +8,11 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 01/09/2019
 ms.openlocfilehash: de0bd93b4cdd41ebd0ccc3aa89185e4501b711e1
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524212"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61092320"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-in-the-azure-portal"></a>Szybki start: Tworzenie serwera usługi Azure Database for PostgreSQL w witrynie Azure Portal
 
@@ -123,7 +123,7 @@ Istnieje wiele aplikacji, za pomocą których można nawiązać połączenie z s
 
     Parametr psql |Sugerowana wartość|Opis
     ---|---|---
-    hasło | Hasło administratora | Wpisane znaki hasła nie są wyświetlane w wierszu polecenia powłoki Bash. Po wpisaniu wszystkich znaków naciśnij klawisz Enter w celu uwierzytelnienia i nawiązania połączenia.
+    password | Hasło administratora | Wpisane znaki hasła nie są wyświetlane w wierszu polecenia powłoki Bash. Po wpisaniu wszystkich znaków naciśnij klawisz Enter w celu uwierzytelnienia i nawiązania połączenia.
 
     Po nawiązaniu połączenia narzędzie psql wyświetli wiersz polecenia postgres, w którym można wpisywać polecenia sql. W początkowych danych wyjściowych połączenia może być wyświetlane ostrzeżenie, ponieważ używana wersja narzędzia psql może być inna niż wersja na serwerze usługi Azure Database for PostgreSQL. 
     

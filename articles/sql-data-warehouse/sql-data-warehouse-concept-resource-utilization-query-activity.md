@@ -11,11 +11,11 @@ ms.date: 04/12/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: f80c1817d5c0ce79f2dc53f40a2cc4e00dd5c72b
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545560"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61420970"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-sql-data-warehouse"></a>Monitorowanie aktywności wykorzystanie i kwerendy zasobów w usłudze Azure SQL Data Warehouse
 Usługa Azure SQL Data Warehouse zapewnia rozbudowane funkcje monitorowania w witrynie Azure portal, aby udostępniać szczegółowe informacje do obciążenia magazynu danych. Witryna Azure portal jest zalecanym narzędziem podczas monitorowania magazynu danych, ponieważ zapewnia okresów przechowywania można skonfigurować, alerty, zalecenia i możliwe do dostosowania wykresów i pulpitów nawigacyjnych metryk i dzienników. Portal umożliwia także integrację z innymi usługami monitorowania platformy Azure np. Operations Management Suite (OMS) i Azure Monitor (Dzienniki), aby zapewnić kompleksowe środowisko monitorowania dla nie tylko magazyn danych, ale także całą analizy platformy Azure Platforma zintegrowane rozwiązanie monitorowania. W tej dokumentacji opisano, jakie funkcje monitorowania są dostępne do optymalizacji i zarządzać Twoją platformą analytics z usługą SQL Data Warehouse. 

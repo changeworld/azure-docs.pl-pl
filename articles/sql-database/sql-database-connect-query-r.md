@@ -14,11 +14,11 @@ ms.reviewer: davidph, carlrab
 manager: cgronlun
 ms.date: 04/11/2019
 ms.openlocfilehash: 2b1206e3087b0573736174d4eed502653d76f7a5
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60001192"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61408966"
 ---
 # <a name="quickstart-use-r-to-query-an-azure-sql-database-preview"></a>Szybki start: Używanie języka R do wykonywania zapytań usługi Azure SQL database (wersja zapoznawcza)
 

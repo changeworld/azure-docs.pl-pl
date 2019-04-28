@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: jingwang
 ms.openlocfilehash: 9cb3c028c14e6c47d47eafcf6279a918c0917442
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59272210"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61093951"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-by-using-azure-data-factory"></a>Kopiowanie danych do i z wystąpienia zarządzanego Azure SQL Database przy użyciu usługi Azure Data Factory
 
@@ -538,7 +538,7 @@ Gdy dane są kopiowane do i z wystąpienia zarządzanego Azure SQL Database, nas
 | timestamp |Byte[] |
 | tinyint |Int16 |
 | uniqueidentifier |Guid |
-| varbinary |Byte[] |
+| Varbinary |Byte[] |
 | varchar |String, Char[] |
 | xml |Xml |
 

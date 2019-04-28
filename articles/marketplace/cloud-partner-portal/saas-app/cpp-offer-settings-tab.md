@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 8b8810d3dc899a87b99422c093b6901ed9683325
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
-ms.translationtype: MT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53196946"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62101136"
 ---
 # <a name="saas-application-offer-settings-tab"></a>Karta Ustawienia oferty aplikacji SaaS
 
@@ -29,7 +29,7 @@ W tym artykule opisano sposób konfigurowania ustawień oferty dla oferty.
 
 Karta Ustawienia oferują służy do konfigurowania **oferują tożsamości**, jak pokazano w następnym zrzucie ekranu. Znak gwiazdki (*) dodanym na końcu nazwy pola wskazuje, że jest to wymagane.
 
-![Karta Ustawienia oferty](./media/saas-new-offer.png)
+![Karta ustawień oferty](./media/saas-new-offer.png)
 
 ## <a name="offer-identity-settings"></a>Ustawienia tożsamości oferty
 
@@ -46,4 +46,4 @@ Wybierz **Zapisz** Aby zapisać postęp.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Karta informacje techniczne](./cpp-technical-info-tab.md)
+[Karta informacji technicznych](./cpp-technical-info-tab.md)

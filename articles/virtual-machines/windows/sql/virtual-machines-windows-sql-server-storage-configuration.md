@@ -15,11 +15,11 @@ ms.workload: iaas-sql-server
 ms.date: 12/05/2017
 ms.author: ninarn
 ms.openlocfilehash: da850b8ff9174fa310c5247cd7e99af69db28a8b
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328439"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61477459"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>Konfiguracja usługi Storage dla maszyn wirtualnych programu SQL Server
 
@@ -143,7 +143,7 @@ Platforma Azure stosuje następujące ustawienia, aby utworzyć pulę magazynu n
 
 W poniższej tabeli opisano dostępne opcje typu trzy obciążenia i ich odpowiednich optymalizacje:
 
-| Typ obciążeń | Opis | Optymalizacje |
+| Typ obciążenia | Opis | Optymalizacje |
 | --- | --- | --- |
 | **Ogólne** |Ustawienie domyślne obsługujące większość obciążeń |Brak |
 | **Przetwarzanie transakcyjne** |Optymalizuje magazyn dla tradycyjnych baz danych obciążeń OLTP |Flaga śledzenia 1117<br/>Flaga śledzenia 1118 |

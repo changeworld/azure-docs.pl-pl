@@ -9,11 +9,11 @@ services: iot-accelerators
 ms.date: 10/09/2018
 ms.topic: conceptual
 ms.openlocfilehash: d34ac159a216c5c77214b4c8b799a233c3671235
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56749549"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61447378"
 ---
 # <a name="add-an-iot-edge-device-to-your-remote-monitoring-solution-accelerator"></a>Dodaj urządzenia usługi IoT Edge na akceleratorze rozwiązanie monitorowania zdalnego
 
@@ -24,7 +24,7 @@ Aby dodać [usługi IoT Edge](../iot-edge/about-iot-edge.md) urządzenia, aby Tw
 
 ## <a name="add-the-iot-edge-device"></a>Dodaj urządzenie usługi IoT Edge
 
-Aby dodać urządzenia usługi IoT Edge do akceleratora rozwiązania monitorowania zdalnego, przejdź do **Device Explorer** strony w internetowym interfejsie użytkownika, a następnie kliknij przycisk **+ nowe urządzenie**.
+Aby dodać urządzenie usługi IoT Edge do akceleratora rozwiązania do monitorowania zdalnego, przejdź do strony **Device Explorer** w internetowym interfejsie użytkownika i kliknij pozycję **+ Nowe urządzenie**.
 
 W **nowe urządzenie** panelu, wybierz polecenie **urządzenie usługi IoT Edge**. Dla innych właściwości możesz pozostawić ustawienia domyślne. Następnie kliknij pozycję **Zastosuj**:
 

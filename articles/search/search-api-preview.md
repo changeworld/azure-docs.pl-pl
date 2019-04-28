@@ -13,11 +13,11 @@ ms.date: 06/28/2018
 ms.author: HeidiSteen
 ms.custom: seodec2018
 ms.openlocfilehash: 524c1a6d083db02349c7dae9a0131228613dc170
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997614"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61127097"
 ---
 # <a name="azure-search-service-rest-api-version-2017-11-11-preview"></a>Usługa Azure Search REST api-version 2017-11-11-Preview
 W tym artykule opisano `api-version=2017-11-11-Preview` wersję usługi Azure Search REST API, oferty funkcji eksperymentalnych, które nie są jeszcze ogólnie dostępne.

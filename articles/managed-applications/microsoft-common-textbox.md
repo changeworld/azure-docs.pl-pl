@@ -1,6 +1,6 @@
 ---
-title: Element TextBox interfejsu użytkownika platformy Azure | Dokumentacja firmy Microsoft
-description: Opis elementu Microsoft.Common.TextBox interfejsu użytkownika do portalu Azure.
+title: Usługa Azure elementu interfejsu użytkownika w polu tekstowym | Dokumentacja firmy Microsoft
+description: Opis elementu Microsoft.Common.TextBox interfejsu użytkownika dla witryny Azure portal.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: fa3e5fff8080acb9e824ffe27f6c149054804830
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: b06e8b49efe8b6de720fa9bb819d4720e4f80fb6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063650"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61044552"
 ---
 # <a name="microsoftcommontextbox-ui-element"></a>Microsoft.Common.TextBox UI element
 Formant, który może służyć do edycji niesformatowanego tekstu.
@@ -44,10 +44,10 @@ Formant, który może służyć do edycji niesformatowanego tekstu.
 ```
 
 ## <a name="remarks"></a>Uwagi
-- Jeśli `constraints.required` ustawiono **true**, a następnie w polu tekstowym musi mieć wartość do zweryfikowania pomyślnie. Wartość domyślna to **false**.
-- `constraints.regex` jest wzorzec wyrażenia regularnego JavaScript. Jeśli jest określony, wartość pola tekstowego musi odpowiadać wzorzec można pomyślnie zweryfikować. Wartość domyślna to **null**.
-- `constraints.validationMessage` jest to ciąg wyświetlany, gdy wartość w polu tekstowym weryfikacji nie powiedzie się. Jeśli nie zostanie określony, komunikaty o błędach weryfikacji wbudowane pole tekstowe są używane. Wartość domyślna to **null**.
-- Można określić wartość dla `constraints.regex` podczas `constraints.required` ustawiono **false**. W tym scenariuszu wartość nie jest wymagane dla pola tekstowego sprawdzić poprawność pomyślnie. Jeśli jest określony, musi być zgodna ze wzorcem wyrażenia regularnego.
+- Jeśli `constraints.required` ustawiono **true**, a następnie w polu tekstowym musi mieć wartość do sprawdzania poprawności pomyślnie. Wartość domyślna to **false**.
+- `constraints.regex` jest to wzorzec wyrażenia regularnego JavaScript. Jeśli zostanie określony, wartość w polu tekstowym musi pasujących do wzorca, aby sprawdzić poprawność pomyślnie. Wartość domyślna to **null**.
+- `constraints.validationMessage` jest to ciąg wyświetlany, gdy w polu tekstowym wartość weryfikacji nie powiedzie się. Jeśli nie zostanie określony, są używane komunikaty wbudowanych sprawdzania poprawności w polu tekstowym. Wartość domyślna to **null**.
+- Istnieje możliwość określenia wartości `constraints.regex` podczas `constraints.required` ustawiono **false**. W tym scenariuszu wartość nie jest wymagane dla tego pola tekstowego sprawdzić poprawność pomyślnie. Jeśli jest określony, musi być zgodna wzorzec wyrażenia regularnego.
 
 ## <a name="sample-output"></a>Przykładowe dane wyjściowe
 
@@ -56,5 +56,5 @@ Formant, który może służyć do edycji niesformatowanego tekstu.
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Aby obejrzeć wprowadzenie do tworzenia definicji interfejsu użytkownika, zobacz [wprowadzenie CreateUiDefinition](create-uidefinition-overview.md).
-* Opis właściwości wspólnych elementów interfejsu użytkownika, zobacz [elementy CreateUiDefinition](create-uidefinition-elements.md).
+* Wprowadzenie do tworzenia definicji interfejsu użytkownika, zobacz [wprowadzenie do zasobu CreateUiDefinition](create-uidefinition-overview.md).
+* Aby uzyskać opis wspólne właściwości w elementach interfejsu użytkownika, zobacz [elementy CreateUiDefinition](create-uidefinition-elements.md).

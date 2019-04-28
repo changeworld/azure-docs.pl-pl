@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 03/01/2019
 ms.author: juliako
 ms.openlocfilehash: 63d036ea4faaf7e24f337fa3956986d165c84854
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244347"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61466973"
 ---
 # <a name="cli-example-create-and-submit-a-job"></a>Przykład użycia interfejsu wiersza polecenia: Tworzenie i przesyłanie zadania
 

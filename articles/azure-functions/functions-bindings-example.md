@@ -8,14 +8,15 @@ manager: jeconnoc
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-ms.date: 02/18/2019
-ms.author: cshoe
+origin.date: 02/18/2019
+ms.date: 03/04/2019
+ms.author: v-junlch
 ms.openlocfilehash: 6d5f9b171a4efc5e52d281655de143ac9d40d437
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56739595"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61437892"
 ---
 # <a name="azure-functions-trigger-and-binding-example"></a>Przykład usłudze Azure Functions wyzwalacz i powiązania
 
@@ -141,3 +142,4 @@ Masz teraz funkcja pracy, który jest wyzwalany przez usługi Azure Table storag
 
 > [!div class="nextstepaction"]
 > [Usługa Azure Functions powiązania wzorców wyrażeń](./functions-bindings-expressions-patterns.md)
+

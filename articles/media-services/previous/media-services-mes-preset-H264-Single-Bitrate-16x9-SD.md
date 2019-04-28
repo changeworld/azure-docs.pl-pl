@@ -1,8 +1,8 @@
 ---
 title: Pojedynczy szybkość transmisji bitów H264 16 x 9 SD Media Encoder Standard ustawienie — Azure | Dokumentacja firmy Microsoft
 description: Temat zawiera omówienie **pojedynczego szybkość transmisji bitów H264 16 x 9 SD** ustawienie wstępne zadania.
-author: Juliako
-manager: femila
+author: WenJason
+manager: digimobile
 editor: ''
 services: media-services
 documentationcenter: ''
@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
+origin.date: 03/19/2019
+ms.date: 04/01/2019
+ms.author: v-jay
 ms.openlocfilehash: fcc370afeca41a8d1d227db368eeaba789c56137
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259979"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61129528"
 ---
-# <a name="h264-single-bitrate-16x9-sd"></a>H264 Pojedyncza szybkość transmisji bitów 16 x 9 SD
+# <a name="h264-single-bitrate-16x9-sd"></a>Pojedyncza szybkość transmisji bitów H264 16x9 SD
 `Media Encoder Standard` definiuje zestaw kodowania ustawienia wstępne, których można użyć podczas tworzenia zadań kodowania. Można użyć `preset name` do określenia do formatu, który chcesz zakodować pliku multimedialnego. Lub można utworzyć własne JSON lub XML na podstawie ustawień wstępnych (przy użyciu kodowania UTF-8 lub UTF-16. Następnie należy wprowadzić niestandardowego ustawienia wstępnego z koderem. Aby uzyskać listę wszystkich wstępnie zdefiniowanych nazw obsługiwanych przez to `Media Encoder Standard` encoder, zobacz [ustawienia wstępne zadań usługi Media Encoder Standard](media-services-mes-presets-overview.md).  
   
  W tym temacie przedstawiono `H264 Single Bitrate 16x9 SD` wstępnie ustawione w formacie XML i JSON.  

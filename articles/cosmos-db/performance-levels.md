@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: sngun
 ms.openlocfilehash: 06fa98ae4acc2252d8866858ed0e2194ed84ff79
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034390"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60928292"
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>Wycofanie poziomów wydajności S1, S2 i S3
 
@@ -45,8 +45,8 @@ W poniższej tabeli porównano opcje przepływności i magazynu, które muszą b
 
 |   |Kolekcji partycjonowanej|Kolekcja jednej partycji|S1|S2|S3|
 |---|---|---|---|---|---|
-|Maksymalna przepływność|Nieograniczona liczba|10 K jednostek RU/s|250 jednostek RU/s|1 K jednostek RU/s|2.5 tys. jednostek RU/s|
-|Przepływność minimalna|2.5 tys. jednostek RU/s|400 jednostek RU/s|250 jednostek RU/s|1 K jednostek RU/s|2.5 tys. jednostek RU/s|
+|Maksymalna przepływność|Nieograniczona liczba|10 K jednostek RU/s|250 RU/s|1 K jednostek RU/s|2.5 tys. jednostek RU/s|
+|Przepływność minimalna|2.5 tys. jednostek RU/s|400 RU/s|250 RU/s|1 K jednostek RU/s|2.5 tys. jednostek RU/s|
 |Pamięci masowej|Nieograniczona liczba|10 GB|10 GB|10 GB|10 GB|
 |Cena (miesięcznie)|Przepływność: $6 / 100 jednostek RU/s<br><br>Miejsca do magazynowania: 0,25 USD/GB|Przepływność: $6 / 100 jednostek RU/s<br><br>Miejsca do magazynowania: 0,25 USD/GB|25 USD|50 USD|100 USD|
 

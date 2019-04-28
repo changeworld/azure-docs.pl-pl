@@ -10,11 +10,11 @@ manager: cgronlun
 author: HeidiSteen
 ms.custom: seodec2018
 ms.openlocfilehash: e3738980206277587ca367339d75da4f3faa643a
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58651825"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61316833"
 ---
 # <a name="analyzers-for-text-processing-in-azure-search"></a>Analizatory do przetwarzania w usłudze Azure Search tekstu
 
@@ -40,7 +40,7 @@ Jest automatycznie używany w każdym polu możliwym do przeszukania. Można zas
 
 Na poniższej liście opisano, w których analizatory są dostępne w usłudze Azure Search.
 
-| Kategoria | Opis |
+| Category | Opis |
 |----------|-------------|
 | [Standardowy analizator Lucene](https://lucene.apache.org/core/4_0_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | Domyślne. Nie specyfikacji lub konfiguracja jest wymagana. Ta ogólnego przeznaczenia analizatora wykonuje również większość języków i scenariuszy.|
 | Wstępnie zdefiniowane analizatorów | Oferowana jako gotowego produktu jest przeznaczony do użycia jako-to. <br/>Istnieją dwa typy: wyspecjalizowanych i język. Co sprawia, że ich "wstępnie zdefiniowane" to odwołać je według nazwy bez konfiguracji i dostosowania. <br/><br/>[Wyspecjalizowane analizatory (niezależny od języka)](index-add-custom-analyzers.md#AnalyzerTable) są używane, gdy tekst w danych wejściowych wymaga wyspecjalizowane przetwarzania lub przetwarzanie minimalny. Wstępnie zdefiniowane analizatory języka nie obejmują **Asciifolding**, **— słowo kluczowe**, **wzorzec**, **proste**, **zatrzymać**, **Odstępu**.<br/><br/>[Analizatory języków](index-add-language-analyzers.md) są używane, gdy potrzebujesz zaawansowanych językowej pomocy technicznej dla poszczególnych języków. Usługa Azure Search obsługuje 35 analizatory języka Lucene i 50 analizatory przetwarzania języka naturalnego firmy Microsoft. |

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ponatara
 ms.openlocfilehash: 68f12bb7335da0a996aeadd752f59db0aa360a8e
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310525"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61038238"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-citrix-xenapp-and-xendesktop-deployment"></a>Konfigurowanie odzyskiwania po awarii dla wdrożenia programów Citrix XenApp i XenDesktop wielowarstwowej
 
@@ -140,7 +140,7 @@ Plany odzyskiwania można dostosować w taki sposób, aby dodać grupy trybu fai
 1. Grupa1 trybu failover: USŁUGI AD DNS
 2. Group2 trybu failover: Maszyny wirtualne z programem SQL Server
 2. Grupa trybu failover 3: VDA maszynę Wirtualną z obrazu Master
-3. Grupa trybu failover 4: Kontroler dostarczania StoreFront maszyny wirtualne i server
+3. Failover Group4: Kontroler dostarczania StoreFront maszyny wirtualne i server
 
 
 ### <a name="adding-scripts-to-the-recovery-plan"></a>Dodawanie skryptów do planu odzyskiwania
@@ -159,7 +159,7 @@ Plan odzyskiwania dostosowany wygląda jak poniżej:
 4. Akcja ręczna lub skryptu grupa 3: Zamknij wzorca VDA maszyny Wirtualnej.
 Wzorzec VDA maszyna wirtualna przełączone w tryb failover Azure będzie w stanie uruchomienia. Aby utworzyć nowe katalogi MCS przy użyciu hostingu platformy Azure, wzorca VDA maszyna wirtualna jest wymagane będzie zatrzymane (przydzielone de) stanu. Zamknij maszynę Wirtualną z witryny Azure portal.
 
-5. Grupa trybu failover 4: Kontroler dostarczania StoreFront maszyny wirtualne i server
+5. Failover Group4: Kontroler dostarczania StoreFront maszyny wirtualne i server
 6. Grupa 3 ręczny lub skryptu akcji 1:
 
     ***Dodawanie połączenia hosta usługi Azure RM***

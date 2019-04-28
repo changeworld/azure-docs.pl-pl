@@ -10,11 +10,11 @@ ms.workload: infrastructure-services
 ms.date: 04/07/2019
 ms.author: kumud;tyao
 ms.openlocfilehash: 744c6fb9235c9daa2d5239ef9fd13679db943650
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59783971"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61459712"
 ---
 #  <a name="custom-rules-for-web-application-firewall-with-azure-front-door"></a>Niestandardowych reguł zapory aplikacji sieci web za pomocą usługi Azure drzwi
 Zapory aplikacji sieci web platformy Azure (WAF) w usłudze drzwiami frontowymi umożliwia kontrolowanie dostępu do aplikacji sieci web na podstawie warunków, jaką zdefiniujesz. Niestandardowe reguły zapory aplikacji sieci Web składa się z liczbą priorytetu, typu reguły, warunki dopasowań i akcji. Istnieją dwa typy niestandardowych reguł: dopasowanie reguł i zasad limitu szybkości. Regułę dopasowania steruje dostępem, w oparciu o dopasowanie warunków, gdy reguła limitu szybkości kontroluje dostęp, w oparciu o dopasowanie warunków i stopień żądań przychodzących. Może wyłączyć regułę niestandardową, aby uniemożliwić oceniane, ale nadal utrzymuje konfiguracji. W tym artykule omówiono reguł dopasowania, które są oparte na parametry http.

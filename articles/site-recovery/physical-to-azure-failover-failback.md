@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: raynew
 ms.openlocfilehash: edb169d131aafd045fdf0f670e1dda87677d57ee
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57834681"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61036352"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Tryb failover i zakończyć się niepowodzeniem powrotu po awarii fizycznych serwerów replikowanych na platformie Azure
 

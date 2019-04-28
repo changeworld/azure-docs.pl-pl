@@ -16,11 +16,11 @@ ms.topic: sample
 ms.date: 06/13/2017
 ms.author: tamram
 ms.openlocfilehash: e0c41ed1fc2cdb7559d36a7056ebb7b9a6ecc186
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242774"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61216304"
 ---
 # <a name="delete-containers-based-on-container-name-prefix"></a>Usuwanie kontenerów na podstawie prefiksu nazwy kontenera
 
@@ -52,7 +52,7 @@ Ten skrypt zawiera następujące polecenia służące do usunięcia kontenerów 
 | [Get-AzStorageContainer](/powershell/module/az.storage/Get-AzStorageContainer) | Zwraca listę kontenerów magazynu skojarzonych z kontem magazynu. |
 | [Remove-AzStorageContainer](/powershell/module/az.storage/Remove-AzStorageContainer) | Usuwa określony kontener magazynu. |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat modułu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](/powershell/azure/overview).
 

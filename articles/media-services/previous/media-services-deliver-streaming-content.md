@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 49e9fbc3f8d10dd1e272f5f9bc5a542328a3ddb4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181915"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61224246"
 ---
 # <a name="publish-media-services-content-using-net"></a>Publikowanie zawartości Media Services przy użyciu platformy .NET  
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "58181915"
 > 
 > 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Można przesyłanie strumieniowe z adaptacyjną szybkością transmisji bitów w formacie MP4 ustawione przez utworzenie lokalizatora OnDemand przesyłania strumieniowego i tworzenia adresu URL przesyłania strumieniowego. [Kodowanie elementu zawartości](media-services-encode-asset.md) temacie pokazano, jak do zakodowania w adaptacyjną szybkością transmisji bitów zestawu plików MP4. 
 
 > [!NOTE]

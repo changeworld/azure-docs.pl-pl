@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 10/12/2017
 ms.author: rsinha
 ms.openlocfilehash: a1e68e2e39ea6f1c8cf8669e2e02d8dacaf0f284
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58664594"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62097848"
 ---
 # <a name="service-fabric-architecture"></a>Architektura usługi Service Fabric
 Usługa Service Fabric jest tworzone za pomocą warstwowej podsystemów. Podsystemy te umożliwiają pisanie aplikacji, które są:

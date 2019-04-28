@@ -16,11 +16,11 @@ ms.topic: sample
 ms.date: 06/28/2017
 ms.author: tamram
 ms.openlocfilehash: 3cb1e35617a58fcde7968ab45d437d865c91f983
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55696942"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61245075"
 ---
 # <a name="calculate-the-size-of-a-blob-storage-container"></a>Obliczanie rozmiaru kontenera w usłudze Blob Storage
 
@@ -55,7 +55,7 @@ Ten skrypt zawiera następujące polecenia, służące do obliczenia rozmiaru ko
 | [az storage blob upload](/cli/azure/storage/account) | Przekazuje pliki lokalne do kontenera w usłudze Azure Blob Storage. |
 | [az storage blob list](/cli/azure/storage/account/keys) | Zwraca listę obiektów blob w kontenerze usługi Azure Blob Storage. |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](/cli/azure).
 

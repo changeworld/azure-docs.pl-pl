@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: 3b7b821227478d8c6b5859f24c50407f9eb213fe
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312346"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61235284"
 ---
 # <a name="azure-media-services-concepts"></a>Pojęcia dotyczące usługi Azure Media Services 
 
@@ -105,7 +105,7 @@ Usługa Media Services obsługuje następujące kodery na żądanie, które są 
 
 Aby uzyskać informacje o obsługiwanych koderów, zobacz [koderów](media-services-encode-asset.md).
 
-## <a name="live-streaming"></a>Przesyłanie strumieniowe na żywo
+## <a name="live-streaming"></a>Transmisja strumieniowa na żywo
 W usłudze Azure Media Services kanał reprezentuje potok przetwarzania zawartości transmisji strumieniowej na żywo. Kanał odbiera strumieni danych wejściowych w jeden z dwóch sposobów:
 
 * Lokalny koder na żywo wysyła różnych szybkościach transmisji bitów RTMP lub Smooth Streaming (pofragmentowany plik MP4) do kanału. Można użyć następujących koderów na żywo, które zwracają Smooth Streaming o różnych szybkościach transmisji bitów: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco i Elemental. Następujące kodery na żywo danych wyjściowych RTMP: Kodery Adobe Flash Live Encoder, Telestream Wirecast, Teradek, Haivision i Tricaster. Pozyskiwane strumienie są przekazywane za pośrednictwem kanałów bez dalszego transkodowania i kodowania. Po odebraniu żądania usługa Media Services dostarcza strumień do klientów.

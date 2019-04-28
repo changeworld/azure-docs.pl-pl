@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 01/31/2019
 ms.author: rosh
 ms.openlocfilehash: f94db7a29827a80307f4a081d93744c5edc59edb
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867787"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61473284"
 ---
 # <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-c"></a>Szybki start: Wyszukiwanie wideo za pomocą zestawu SDK wyszukiwania wideo Bing dla języka C#
 
@@ -81,12 +81,12 @@ Zainstalowanie [[zestawu NuGet Video Search SDK]](https://www.nuget.org/packages
     }
     ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Tworzenie internetowej aplikacji jednostronicowej](../tutorial-bing-video-search-single-page-app.md)
 
-## <a name="see-also"></a>Zobacz też 
+## <a name="see-also"></a>Zobacz także 
 
 * [Co to jest interfejs API wyszukiwania wideo Bing?](../overview.md)
 * [Cognitive services .NET SDK samples (Przykłady zestawów SKD .NET usług Cognitive Services)](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)

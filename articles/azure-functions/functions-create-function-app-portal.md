@@ -13,11 +13,11 @@ ms.date: 04/11/2017
 ms.author: glenga
 ms.custom: mvc
 ms.openlocfilehash: a1d4af695807a6e2c5ef4ee74527083002bc6015
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54900770"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61342443"
 ---
 # <a name="create-a-function-app-from-the-azure-portal"></a>Tworzenie aplikacji funkcji przy użyciu witryny Azure Portal
 
@@ -50,6 +50,6 @@ Podczas tworzenia aplikacji funkcji w usłudze App Service należy utworzyć kon
 
 Aby dowiedzieć się więcej na temat typów kont magazynu, zobacz [Wprowadzenie do usług Azure Storage](../storage/common/storage-introduction.md#azure-storage-services). 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 [!INCLUDE [Functions quickstart next steps](../../includes/functions-quickstart-next-steps.md)]

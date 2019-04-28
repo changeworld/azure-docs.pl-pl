@@ -8,11 +8,11 @@ ms.topic: quickstart
 ms.date: 12/26/2018
 ms.author: rimman
 ms.openlocfilehash: 5b60ac28cd8f65d464e659f328872524be59b3ed
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56586884"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60898576"
 ---
 # <a name="quickstart-build-a-console-app-using-azure-cosmos-dbs-api-for-mongodb-and-golang-sdk"></a>Szybki start: Tworzenie aplikacji konsolowej za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB i zestawu SDK języka Golang
 
@@ -246,7 +246,7 @@ Wróć do witryny Azure Portal, aby zobaczyć swój dokument w Eksploratorze dan
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym przewodniku Szybki start wyjaśniono sposób tworzenia konta usługi Cosmos i uruchamiania aplikacji w języku Golang. Teraz możesz zaimportować dodatkowe dane do swojej bazy danych usługi Cosmos. 
 

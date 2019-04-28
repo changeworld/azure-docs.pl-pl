@@ -1,6 +1,6 @@
 ---
-title: Nawiązać GitHub — aplikacje logiki platformy Azure | Dokumentacja firmy Microsoft
-description: Monitor zdarzeń GitHub z interfejsów API REST usługi GitHub i usługi Azure Logic Apps
+title: Łączenie z usługą GitHub — Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Monitorowanie zdarzeń dotyczących usługi GitHub za pomocą interfejsów API REST usługi GitHub i Azure Logic Apps
 author: ecfan
 manager: jeconnoc
 ms.author: estfan
@@ -11,35 +11,35 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: ce567dc631c3a147b795eb2355a4961faa8881d6
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 0d2ff9368bc244a5afd6fafc40cf476b90a80a52
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295816"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61462605"
 ---
-# <a name="connect-to-github"></a>Nawiązać połączenia z usługi GitHub
+# <a name="connect-to-github"></a>Łączenie z usługą GitHub
 
-GitHub jest oparte na sieci web Git repozytorium hostingu usługi, która oferuje wszystkie kontrolki rozproszonej poprawki i funkcje zarządzania (SCM) kodu źródłowego w usłudze Git i inne funkcje.
+GitHub to internetowy Git repozytorium hostingu usługa, która oferuje wszystkie kontroli rozproszonych poprawek i funkcji zarządzania (SCM) kodu źródłowego w usłudze Git oraz inne funkcje.
 
 Aby rozpocząć pracę z łącznikiem usługi GitHub [najpierw utworzyć aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-## <a name="create-a-connection-to-github"></a>Utwórz połączenie z usługi GitHub
+## <a name="create-a-connection-to-github"></a>Utworzenie połączenia z usługi GitHub
 
-Do korzystania z łącznika usługi GitHub w aplikacji logiki, należy najpierw utworzyć *połączenia* , a następnie podaj szczegóły tych właściwości: 
+Do korzystania z łącznika usługi GitHub w aplikacji logiki, należy najpierw utworzyć *połączenia* a następnie podaj szczegóły tych właściwości: 
 
 | Właściwość | Wymagane | Opis | 
 | -------- | -------- | ----------- | 
 | Token | Yes | Wprowadź swoje poświadczenia usługi GitHub. |
 
-Po utworzeniu połączenia, można wykonać akcje i nasłuchiwania wyzwalaczy opisane w tym artykule.
+Po utworzeniu połączenia, można wykonać akcje i nasłuchiwanie wyzwalaczy opisanych w tym artykule.
 
 > [!INCLUDE [Steps to create a connection to GitHub](../../includes/connectors-create-api-github.md)]
 > 
 
-## <a name="connector-specific-details"></a>Szczegóły dotyczące łącznika
+## <a name="connector-specific-details"></a>Szczegóły specyficzne dla łącznika
 
-Wyzwalacze i akcje zdefiniowane w Swagger i żadnych limitów Przejrzyj [szczegóły łącznika](/connectors/github/).
+Dla wyzwalaczy i akcji zdefiniowanych w strukturze Swagger i jakiekolwiek ograniczenia, przejrzyj [szczegóły łącznika](/connectors/github/).
 
 ## <a name="find-more-connectors"></a>Znajdź więcej łączników
 

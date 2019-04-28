@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: v-sharos
-ms.openlocfilehash: 412978d2c343394f295e336690ec72153dda4b79
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: d973a16c121a1e8ebee10826d135bcbb33ef748c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38452621"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61409991"
 ---
 # <a name="update-your-storsimple-8000-series-device"></a>Aktualizacja urządzenia StorSimple 8000 Series
 > [!NOTE]
-> Klasyczny portal dla urządzeń StorSimple jest przestarzały. Menedżerowie urządzeń StorSimple dokonają automatycznego przeniesienia do nowej witryny Azure Portal zgodnie z ustalonym harmonogramem wycofywania przestarzałych produktów. Powiadomienie o przeniesieniu otrzymasz pocztą e-mail i za pośrednictwem portalu. Ten dokument zostanie wkrótce usunięty. W razie jakichkolwiek pytań dotyczących przeniesienia, zobacz [FAQ: Move to Azure portal (Często zadawane pytania — przeniesienie do witryny Azure Portal)](storsimple-8000-move-azure-portal-faq.md).
+> Klasyczny portal dla urządzeń StorSimple jest przestarzały. Menedżerowie urządzeń StorSimple dokonają automatycznego przeniesienia do nowej witryny Azure Portal zgodnie z ustalonym harmonogramem wycofywania przestarzałych produktów. Powiadomienie o przeniesieniu otrzymasz pocztą e-mail i za pośrednictwem portalu. Ten dokument zostanie wkrótce usunięty. W razie jakichkolwiek pytań dotyczących przeniesienia, zobacz [— często zadawane pytania: Przenieś do witryny Azure portal](storsimple-8000-move-azure-portal-faq.md).
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Funkcje aktualizacje StorSimple umożliwiają łatwe aktualne urządzenia StorSimple. W zależności od typu aktualizacji można zastosować aktualizacji do urządzenia za pośrednictwem klasycznego portalu Azure lub za pośrednictwem interfejsu programu Windows PowerShell. W tym samouczku opisano typy aktualizacji i sposobu instalacji każdej z nich.
 
 Można zastosować dwa typy aktualizacji urządzenia: 
@@ -49,7 +49,7 @@ Regularne aktualizacje są niezakłócającego aktualizacje, które mogą być i
 * Można także zainstalować regularne aktualizacje za pośrednictwem programu Windows PowerShell dla usługi StorSimple. Aby uzyskać więcej informacji, zobacz [zainstalować regularne aktualizacje za pośrednictwem programu Windows PowerShell dla usługi StorSimple](#install-regular-updates-via-windows-powershell-for-storsimple).
 
 ### <a name="maintenance-mode-updates"></a>Aktualizacje trybu konserwacji
-Aktualizacje trybu konserwacji są aktualizacje wymagają zatrzymania pracy, takich jak aktualizacje oprogramowania układowego dysku. Te aktualizacje wymagają urządzenia do umieszczenia w trybie konserwacji. Aby uzyskać więcej informacji, zobacz [krok 2: tryb konserwacji wprowadź](#step2). Nie można używać klasycznego portalu Azure, aby zainstalować aktualizacje trybu konserwacji. Zamiast tego należy użyć programu Windows PowerShell dla usługi StorSimple. 
+Aktualizacje trybu konserwacji są aktualizacje wymagają zatrzymania pracy, takich jak aktualizacje oprogramowania układowego dysku. Te aktualizacje wymagają urządzenia do umieszczenia w trybie konserwacji. Aby uzyskać więcej informacji, zobacz [krok 2: Przejście do trybu konserwacji](#step2). Nie można używać klasycznego portalu Azure, aby zainstalować aktualizacje trybu konserwacji. Zamiast tego należy użyć programu Windows PowerShell dla usługi StorSimple. 
 
 Aby uzyskać więcej informacji na temat instalowania aktualizacji w trybie konserwacji, zobacz [aktualizacje trybu konserwacji zainstalować za pomocą programu Windows PowerShell dla usługi StorSimple](#install-maintenance-mode-updates-via-windows-powershell-for-storsimple).
 
@@ -76,7 +76,7 @@ Alternatywnie można użyć środowiska Windows PowerShell dla usługi StorSimpl
 ## <a name="install-maintenance-mode-updates-via-windows-powershell-for-storsimple"></a>Zainstaluj aktualizacje trybu konserwacji za pomocą programu Windows PowerShell dla usługi StorSimple
 Programu Windows PowerShell dla usługi StorSimple umożliwia stosowanie aktualizacji trybu konserwacji na urządzeniu StorSimple. Wszystkie żądania We/Wy są wstrzymane w tym trybie. Usługi, takie jak trwałej pamięci (NVRAM) lub usługę klastrowania również zostaną zatrzymane. Oba kontrolery są ponownie uruchamiane po wprowadzeniu lub opuścić ten tryb. Po zakończeniu tego trybu, wszystkich usług zostanie wznowiona i powinna być w dobrej kondycji. (Może to potrwać kilka minut).
 
-Jeśli trzeba zastosować aktualizacje trybu konserwacji, otrzymasz alert przy użyciu klasycznego portalu Azure, czy masz aktualizacje, które muszą być zainstalowane. Ten alert uwzględni instrukcje dotyczące korzystania z programu Windows PowerShell dla usługi StorSimple do zainstalowania aktualizacji. Po zaktualizowaniu urządzenia należy użyć tej samej procedury, aby zmienić urządzenie do trybu normalnego. Aby uzyskać instrukcje krok po kroku, zobacz [krok 4: tryb konserwacji zakończenia](#step4).
+Jeśli trzeba zastosować aktualizacje trybu konserwacji, otrzymasz alert przy użyciu klasycznego portalu Azure, czy masz aktualizacje, które muszą być zainstalowane. Ten alert uwzględni instrukcje dotyczące korzystania z programu Windows PowerShell dla usługi StorSimple do zainstalowania aktualizacji. Po zaktualizowaniu urządzenia należy użyć tej samej procedury, aby zmienić urządzenie do trybu normalnego. Aby uzyskać instrukcje krok po kroku, zobacz [krok 4: Wyjdź z trybu konserwacji](#step4).
 
 > [!IMPORTANT]
 > * Przed wprowadzeniem trybu konserwacji, sprawdź, czy oba kontrolery urządzeń są w dobrej kondycji, sprawdzając **stan sprzętu** na **konserwacji** strony w klasycznej witrynie Azure portal. Jeśli kontrolera nie jest w dobrej kondycji, skontaktuj się z Microsoft Support następnych kroków. Aby uzyskać więcej informacji przejdź do skontaktuj się z pomocą techniczną firmy Microsoft. 
@@ -89,7 +89,7 @@ Dostęp do konsoli szeregowej, najpierw za pomocą aplikacji, takiego jak PuTTY.
 
 [!INCLUDE [storsimple-use-putty](../../includes/storsimple-use-putty.md)]
 
-### <a name="step-2-enter-maintenance-mode-a-namestep2"></a>Krok 2: Wprowadź trybu konserwacji <a name="step2">
+### <a name="step-2-enter-maintenance-mode-a-namestep2"></a>Krok 2: Przejście do trybu konserwacji <a name="step2">
 Po nawiązaniu połączenia z konsolą, należy ustalić, czy są aktualizacje do zainstalowania, a następnie przejście do trybu konserwacji, aby je zainstalować.
 
 [!INCLUDE [storsimple-enter-maintenance-mode](../../includes/storsimple-enter-maintenance-mode.md)]
@@ -99,7 +99,7 @@ Następnie zainstaluj aktualizacje.
 
 [!INCLUDE [storsimple-install-maintenance-mode-updates](../../includes/storsimple-install-maintenance-mode-updates.md)]
 
-### <a name="step-4-exit-maintenance-mode-a-namestep4"></a>Krok 4: Tryb konserwacji zakończenia <a name="step4">
+### <a name="step-4-exit-maintenance-mode-a-namestep4"></a>Krok 4: Wyjdź z trybu konserwacji <a name="step4">
 Na koniec wyjść z trybu konserwacji.
 
 [!INCLUDE [storsimple-exit-maintenance-mode](../../includes/storsimple-exit-maintenance-mode.md)]

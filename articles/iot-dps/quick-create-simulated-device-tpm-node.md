@@ -10,11 +10,11 @@ services: iot-dps
 manager: timlt
 ms.custom: mvc
 ms.openlocfilehash: ef0a3d251679d7dd6760f1f928cbf0f0daf3db01
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58099141"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61249008"
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>Tworzenie i aprowizowanie symulowanego urządzenia TPM za pomocą zestawu SDK urządzenia środowiska Node.js dla usługi IoT Hub Device Provisioning
 
@@ -47,19 +47,19 @@ W tym artykule przedstawiono rejestracje indywidualne.
     git clone https://github.com/Azure/azure-utpm-c.git --recursive
     ```
 
-1. Przejdź do folderu głównego usługi GitHub i uruchom symulator modułu [TPM](https://docs.microsoft.com/windows/device-security/tpm/trusted-platform-module-overview). Nasłuchuje on przez gniazdo na portach 2321 i 2322. Nie zamykaj tego okna polecenia — będzie ono potrzebne, aby ten symulator działał do czasu zakończenia tego przewodnika Szybki start: 
+2. Przejdź do folderu głównego usługi GitHub i uruchom symulator modułu [TPM](https://docs.microsoft.com/windows/device-security/tpm/trusted-platform-module-overview). Nasłuchuje on przez gniazdo na portach 2321 i 2322. Nie zamykaj tego okna polecenia — będzie ono potrzebne, aby ten symulator działał do czasu zakończenia tego przewodnika Szybki start: 
 
     ```cmd/sh
     .\azure-utpm-c\tools\tpm_simulator\Simulator.exe
     ```
 
-1. Utwórz nowy, pusty folder o nazwie **registerdevice**. W folderze **registerdevice** utwórz plik package.json przy użyciu następującego polecenia z poziomu wiersza polecenia. Pamiętaj, aby odpowiedzieć na wszystkie pytania zadawane przez narzędzie `npm` lub zaakceptuj wartości domyślne, jeśli Ci one odpowiadają:
+3. Utwórz nowy, pusty folder o nazwie **registerdevice**. W folderze **registerdevice** utwórz plik package.json przy użyciu następującego polecenia z poziomu wiersza polecenia. Pamiętaj, aby odpowiedzieć na wszystkie pytania zadawane przez narzędzie `npm` lub zaakceptuj wartości domyślne, jeśli Ci one odpowiadają:
    
     ```cmd/sh
     npm init
     ```
 
-1. Zainstaluj następujące pakiety prekursorów:
+4. Zainstaluj następujące pakiety prekursorów:
 
     ```cmd/sh
     npm install node-gyp -g
@@ -70,7 +70,7 @@ W tym artykule przedstawiono rejestracje indywidualne.
     > Istnieją znane problemy związane z instalowaniem powyższych pakietów. Aby je rozwiązać, uruchom polecenie `npm install --global --production windows-build-tools` przy użyciu wiersza polecenia w trybie **Uruchom jako administrator**, uruchom polecenie `SET VCTargetsPath=C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140` po zastąpieniu ścieżki zainstalowaną wersją, a następnie uruchom ponownie powyższe polecenia instalacji.
     >
 
-1. Zainstaluj następujące pakiety zawierające składniki używane podczas rejestracji:
+5. Zainstaluj następujące pakiety zawierające składniki używane podczas rejestracji:
 
    - klienta zabezpieczeń, który współdziała z modułem TPM: `azure-iot-security-tpm`
    - transport dla urządzenia w celu połączenia z usługą aprowizowania urządzeń: `azure-iot-provisioning-device-http` albo `azure-iot-provisioning-device-amqp`
@@ -92,9 +92,9 @@ W tym artykule przedstawiono rejestracje indywidualne.
        npm install --save azure-iot-device azure-iot-device-mqtt azure-iot-security-tpm azure-iot-provisioning-device-http azure-iot-provisioning-device
        ```
 
-1. Za pomocą edytora tekstów utwórz nowy plik **ExtractDevice.js** w folderze **registerdevice**.
+6. Za pomocą edytora tekstów utwórz nowy plik **ExtractDevice.js** w folderze **registerdevice**.
 
-1. Dodaj następujące instrukcje `require` na początku pliku **ExtractDevice.js**:
+7. Dodaj następujące instrukcje `require` na początku pliku **ExtractDevice.js**:
    
     ```
     'use strict';
@@ -105,7 +105,7 @@ W tym artykule przedstawiono rejestracje indywidualne.
     var myTpm = new tpmSecurity.TpmSecurityClient(undefined, new tssJs.Tpm(true));
     ```
 
-1. Dodaj następującą funkcję, aby wdrożyć metodę:
+8. Dodaj następującą funkcję, aby wdrożyć metodę:
    
     ```
     myTpm.getEndorsementKey(function(err, endorsementKey) {
@@ -125,22 +125,22 @@ W tym artykule przedstawiono rejestracje indywidualne.
     });
     ```
 
-1. Zapisz i zamknij plik **ExtractDevice.js**. Uruchom przykład:
+9. Zapisz i zamknij plik **ExtractDevice.js**. Uruchom przykład:
 
     ```cmd/sh
     node ExtractDevice.js
     ```
 
-1. W oknie danych wyjściowych zostaną wyświetlone wartości **_Klucz poręczenia_** i **_Identyfikator rejestracji_** potrzebne do zarejestrowania urządzenia. Zapisz te wartości. 
+10. W oknie danych wyjściowych zostaną wyświetlone wartości **_Klucz poręczenia_** i **_Identyfikator rejestracji_** potrzebne do zarejestrowania urządzenia. Zapisz te wartości. 
 
 
 ## <a name="create-a-device-entry"></a>Tworzenie wpisu urządzenia
 
 1. Zaloguj się w witrynie Azure Portal, kliknij przycisk **Wszystkie zasoby** w menu po lewej stronie i otwórz swoją usługę Device Provisioning.
 
-1. W bloku podsumowania usługi Device Provisioning Service wybierz pozycję **Zarządzaj rejestracjami**. Wybierz kartę **Rejestracje indywidualne** i kliknij przycisk **Dodaj rejestrację indywidualną** u góry strony. 
+2. W bloku podsumowania usługi Device Provisioning Service wybierz pozycję **Zarządzaj rejestracjami**. Wybierz kartę **Rejestracje indywidualne** i kliknij przycisk **Dodaj rejestrację indywidualną** u góry strony. 
 
-1. W obszarze **Dodawanie rejestracji** wprowadź następujące informacje:
+3. W obszarze **Dodawanie rejestracji** wprowadź następujące informacje:
    - Wybierz opcję **TPM** jako *Mechanizm* poświadczania tożsamości.
    - Wprowadź dane w polach *Identyfikator rejestracji* i *Klucz poręczenia* dla urządzenia TPM.
    - Opcjonalnie można podać następujące informacje:

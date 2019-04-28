@@ -9,12 +9,12 @@ ms.author: jonfan
 ms.reviewer: estfan, LADocs
 ms.topic: article
 ms.date: 05/30/2017
-ms.openlocfilehash: f27e82e780917e00625ef6a14ab8317d1f5b8ae8
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: f813cb5d8d5c442fc17f126c3a2ff6de7b0bdde1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124803"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61321251"
 ---
 # <a name="migrate-from-biztalk-services-to-azure-logic-apps"></a>Migrowanie z usługi BizTalk Services do usługi Azure Logic Apps
 
@@ -106,7 +106,7 @@ Podczas przetwarzania usługi BizTalk Services na etapie Enrich dodaje właściw
 
 Usługa BizTalk Services umożliwia [uruchomiony niestandardowy kod](https://msdn.microsoft.com/library/azure/dn232389.aspx) który jest przekazywany w utworzonych przez użytkownika. Ta funkcja jest implementowany przez [IMessageInspector](https://msdn.microsoft.com/library/microsoft.biztalk.services.imessageinspector) interfejsu. Każdy z etapów mostka zawiera dwie właściwości (na inspektora wprowadź i na inspektora zakończenia), zapewniających typ architektury .NET, utworzone, który implementuje ten interfejs. Niestandardowy kod pozwala wykonać bardziej złożone przetwarzanie na dane i umożliwia ponowne używanie istniejącego kodu w zestawach, które wykonują typowe logiki biznesowej. 
 
-Usługa Logic Apps oferuje dwa podstawowe sposoby wykonania niestandardowego kodu: usługi Azure Functions i aplikacje API Apps. Usługa Azure Functions można tworzyć i wywoływać z aplikacji logiki. Zobacz [Dodaj i uruchamiania kodu niestandardowego dla usługi logic apps za pomocą usługi Azure Functions](../logic-apps/logic-apps-azure-functions.md). Użyj aplikacji interfejsu API, część usługi Azure App Service, aby utworzyć własne wyzwalacze i akcje. Dowiedz się więcej o [tworzenia niestandardowego interfejsu API do użycia z usługą Logic Apps](../logic-apps/logic-apps-create-api-app.md). 
+Usługa Logic Apps oferuje dwa podstawowe sposoby wykonania niestandardowego kodu: Usługa Azure Functions i aplikacje API Apps. Usługa Azure Functions można tworzyć i wywoływać z aplikacji logiki. Zobacz [Dodaj i uruchamiania kodu niestandardowego dla usługi logic apps za pomocą usługi Azure Functions](../logic-apps/logic-apps-azure-functions.md). Użyj aplikacji interfejsu API, część usługi Azure App Service, aby utworzyć własne wyzwalacze i akcje. Dowiedz się więcej o [tworzenia niestandardowego interfejsu API do użycia z usługą Logic Apps](../logic-apps/logic-apps-create-api-app.md). 
 
 Jeśli masz kod niestandardowy w zestawach, które wywołują z usługi BizTalk Services, możesz przenieść ten kod do usługi Azure Functions lub tworzenie niestandardowych interfejsów API dzięki funkcji API Apps w zależności od tego, co w przypadku wdrażania. Na przykład jeśli masz kod, który otacza innej usługi, dla którego Logic Apps nie już łącznik, a następnie tworzenie aplikacji interfejsu API i akcje aplikacji interfejsu API udostępnia w aplikacjach logiki. W przypadku funkcji pomocnika lub bibliotek, następnie usługi Azure Functions prawdopodobnie jest najlepszym rozwiązaniem.
 
@@ -124,7 +124,7 @@ W usłudze Logic Apps Pobierz tę funkcję za pośrednictwem [pakietu integracji
 
 W przeciwieństwie do usługi BizTalk Services te akcje są całkowicie niezależni od protokołów transportowych. Podczas tworzenia aplikacji usługi logic apps pozwala uzyskać większą elastyczność w łącznikach, których używasz, aby wysyłać i odbierać dane. Na przykład można otrzymywać X12 pliki jako załączniki z wiadomości e-mail, a następnie proces tych plików w aplikacji logiki. 
 
-## <a name="manage-and-monitor"></a>Monitorowanie i zarządzanie nim
+## <a name="manage-and-monitor"></a>Zarządzanie i monitorowanie
 
 W usłudze BizTalk Services specjalnym portalem, pod warunkiem możliwości śledzenia w celu monitorowania i rozwiązywania problemów. Usługa Logic Apps umożliwia bogatszych śledzenia i monitorowania możliwości za pośrednictwem [witryny Azure portal](../logic-apps/logic-apps-monitor-your-logic-apps.md)i zawiera aplikację mobilną w celu śledzeniu rzeczami pracując mobilnie.
 

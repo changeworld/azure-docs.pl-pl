@@ -16,14 +16,14 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 06/14/2018
 ms.author: kumud
-ms.openlocfilehash: c6413f923ca39293951044694303c50c049511c0
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
-ms.translationtype: HT
+ms.openlocfilehash: fff34f6a36f9c01b1f28b6b1f13189537d8c9060
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438372"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61323491"
 ---
-# <a name="azure-cli-script-example-load-balance-vms-across-availability-zones"></a>Przykład skryptu dla interfejsu wiersza polecenia platformy Azure: równoważenie obciążenia maszyn wirtualnych w różnych strefach dostępności
+# <a name="azure-cli-script-example-load-balance-vms-across-availability-zones"></a>Przykład skryptu interfejsu wiersza polecenia platformy Azure: Równoważenie obciążenia maszyn wirtualnych w różnych strefach dostępności
 
 Ten przykładowy skrypt interfejsu wiersza polecenia platformy Azure umożliwia utworzenie wszystkich elementów potrzebnych do uruchomienia kilku maszyn wirtualnych z systemem Ubuntu skonfigurowanych w ramach konfiguracji o wysokiej dostępności i zrównoważonym obciążeniu. Po uruchomieniu skryptu będziesz mieć trzy maszyny wirtualne we wszystkich strefach dostępności w regionie, które będą dostępne za pośrednictwem usługi Azure Load Balancer w warstwie Standardowa. 
 
@@ -182,7 +182,7 @@ Ten skrypt zawiera następujące polecenia służące do tworzenia grupy zasobó
 | [az vm create](/cli/azure/vm#az-vm-create) | Tworzy maszynę wirtualną i łączy ją z kartą sieciową, siecią wirtualną, podsiecią i sieciową grupą zabezpieczeń. To polecenie określa również obraz maszyny wirtualnej do użycia oraz poświadczenia administracyjne.  |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure).
 

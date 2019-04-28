@@ -10,11 +10,11 @@ ms.date: 12/04/2018
 ms.author: zachal
 ms.custom: mvc
 ms.openlocfilehash: fbca620fca1aeb53acc9bd70561e783b49ff1a60
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56822357"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61306368"
 ---
 # <a name="manage-windows-updates-by-using-azure-automation"></a>Zarządzanie aktualizacjami systemu Windows przy użyciu usługi Azure Automation
 
@@ -143,7 +143,7 @@ W obszarze **Nowe wdrożenie aktualizacji** podaj następujące informacje:
 
   Dostępne są następujące typy klasyfikacji:
 
-   |System operacyjny  |Typ  |
+   |System operacyjny  |Type  |
    |---------|---------|
    |Windows     | Aktualizacje krytyczne</br>Aktualizacje zabezpieczeń</br>Pakiety zbiorcze aktualizacji</br>Pakiety funkcji</br>Dodatki Service Pack</br>Aktualizacje definicji</br>Narzędzia</br>Aktualizacje        |
    |Linux     | Aktualizacje krytyczne i zabezpieczeń</br>Inne aktualizacje       |
@@ -200,7 +200,7 @@ Po pomyślnym wdrożeniu aktualizacji zostanie wysłana wiadomość e-mail podob
 
 ![Konfigurowanie grupy akcji dla poczty e-mail](./media/automation-tutorial-update-management/email-notification.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

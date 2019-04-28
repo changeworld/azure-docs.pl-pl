@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: b046ce5a8647abe601a6327667241d98445ce1e4
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259894"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61130559"
 ---
 # <a name="configure-a-content-key-authorization-policy"></a>Konfigurowanie zasad autoryzacji klucza zawartości
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
  Usługa Azure Media Services umożliwia dostarczanie strumieni MPEG-DASH, Smooth Streaming i HTTP Live Streaming (HLS) chronionych przy użyciu Advanced Encryption Standard (AES) przy użyciu kluczy szyfrowania 128-bitowego lub [PlayReady zarządzania prawami cyfrowymi (DRM)](https://www.microsoft.com/playready/overview/). Usługa Media Services można też dostarczać strumienie DASH szyfrowane przy użyciu usługi Widevine DRM. Obie usługi, PlayReady i Widevine, szyfrują dane zgodnie ze specyfikacją Common Encryption (ISO/IEC CENC 23001-7).
 
 Media Services udostępnia również usługi dostarczania kluczy/licencji, z którego klienci mogą pobierać, kluczy szyfrowania AES lub licencji PlayReady/Widevine do odtwarzania zaszyfrowanej zawartości.

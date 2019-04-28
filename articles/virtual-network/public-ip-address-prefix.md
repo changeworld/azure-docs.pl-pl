@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: 5496be93a5241621cd4dc5e873e4386f8ed6c992
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 3cc4933ae70ad1d661835749dd23e7e634ab54f0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195221"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61474440"
 ---
 # <a name="public-ip-address-prefix"></a>Publiczny prefiks adresu IP
 
@@ -49,7 +49,7 @@ Podczas tworzenia zasobów publicznych adresów IP platformy Azure przypisać do
 ## <a name="scenarios"></a>Scenariusze
 Następujące zasoby do statyczny publiczny adres IP można skojarzyć z prefiksu:
 
-|Zasób|Scenariusz|Kroki|
+|Resource|Scenariusz|Kroki|
 |---|---|---|
 |Maszyny wirtualne| Kojarzenie publiczne adresy IP z prefiksem z maszynami wirtualnymi na platformie Azure zmniejsza nakład, jeśli chodzi o dodanie do listy dozwolonych adresów IP w zaporze. Możesz po prostu dozwolonych całego prefiks z pojedynczą regułę zapory. Podczas skalowania maszyn wirtualnych na platformie Azure, adresy IP można skojarzyć z tym samym prefiksem, oszczędność kosztów i czasu oraz narzutu związanego z zarządzaniem.| Aby skojarzyć adresy IP z prefiksem do maszyny wirtualnej: 1. [Utwórz prefiksu.](manage-public-ip-address-prefix.md) 2. [Utwórz adres IP z prefiksu.](manage-public-ip-address-prefix.md) 3. [Skojarzenie adresu IP do interfejsu sieciowego maszyny wirtualnej.](virtual-network-network-interface-addresses.md#add-ip-addresses)
 | Moduły równoważenia obciążenia | Kojarzenie publiczne adresy IP z prefiksem na adres IP frontonu konfiguracji lub wychodzącą regułą równoważenia obciążenia zapewnia uproszczenia usługi platformy Azure przestrzeń publicznych adresów IP. Pielęgnacja połączenia wychodzące do być pochodzenia zakres sąsiadujących adresów IP określone przez publiczny prefiks IP można uprościć danego scenariusza. | Aby skojarzyć adresy IP z prefiksem do modułu równoważenia obciążenia: 1. [Utwórz prefiksu.](manage-public-ip-address-prefix.md) 2. [Utwórz adres IP z prefiksu.](manage-public-ip-address-prefix.md) 3. Podczas tworzenia modułu równoważenia obciążenia, wybierz lub zaktualizować adres IP utworzony w kroku 2 powyżej jako adresu IP frontonu modułu równoważenia obciążenia. |

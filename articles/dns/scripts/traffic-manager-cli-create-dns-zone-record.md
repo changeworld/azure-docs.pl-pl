@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 04/30/2018
 ms.author: victorh
 ms.openlocfilehash: 59ec8d4f93b18469818c9ead2e965679e41360ae
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694656"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61059488"
 ---
 # <a name="azure-cli-script-example-create-a-dns-zone-and-record"></a>Przykład skryptu interfejsu wiersza polecenia platformy Azure: Tworzenie rekordu i strefy DNS
 
@@ -79,7 +79,7 @@ Ten skrypt zawiera następujące polecenia służące do tworzenia grupy zasobó
 | [az network dns record-set list](/cli/azure/network/dns/record-set) | Zwraca listę wszystkich zestawów rekordów *A* w strefie DNS. |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure).
 

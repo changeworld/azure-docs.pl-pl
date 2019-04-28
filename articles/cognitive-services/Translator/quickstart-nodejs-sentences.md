@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: erhopf
 ms.openlocfilehash: 46d48a92beeb2d015cce6ba8aa68cd5c1999dfaf
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56734023"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61467636"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-with-nodejs"></a>Szybki start: korzystanie z interfejsu API tłumaczenia tekstu w usłudze Translator do określania długości zdań przy użyciu środowiska Node.js
 
@@ -135,12 +135,12 @@ Jeśli chcesz porównać swój kod z naszym, kompletny przykład jest dostępny 
 
 Jeśli klucz subskrypcji umieszczono na stałe w kodzie programu, pamiętaj, aby usunąć ten klucz subskrypcji po zakończeniu pracy z przewodnikiem Szybki start.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Poznaj przykłady dla środowiska Node.js w usłudze GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-NodeJS)
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 Oprócz wykrywania języka interfejs API tłumaczenia tekstu w usłudze Translator może wykonywać następujące zadania:
 

@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 02/20/2019
 ms.author: juliako
 ms.openlocfilehash: 1c2ec576211741390ef91233101261a7881e4180
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56652216"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61466752"
 ---
 # <a name="transforms-and-jobs"></a>Przekształcenia i zadania
 
@@ -63,11 +63,11 @@ Załóżmy, że chcesz wyodrębnić pierwszej ramki wszystkie filmy wideo dotycz
 
 A **Przekształcanie** ułatwia tworzenie przepisu raz (krok 1) i przesyłanie zadań za pomocą tego przepisu (krok 2).
 
-## <a name="job-error-codes"></a>Kody błędów zadania
+## <a name="job-error-codes"></a>Kody błędów zadań
 
-Zobacz [kody błędów](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
+Zobacz [Kody błędów](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
 
-## <a name="paging"></a>Stronicowanie
+## <a name="paging"></a>Paging
 
 Zobacz [filtrowanie, porządkowanie, stronicowanie jednostek usługi Media Services](entities-overview.md).
 
@@ -79,5 +79,5 @@ Aby uzyskać więcej informacji, zobacz [skalowanie przetwarzania multimediów z
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Samouczek: Przekazywanie, kodowanie i przesyłanie strumieniowe filmów wideo przy użyciu platformy .NET](stream-files-tutorial-with-api.md)
+- [Samouczek: Przekazywanie, kodowanie i przesyłanie strumieniowe wideo za pomocą platformy .NET](stream-files-tutorial-with-api.md)
 - [Samouczek: Analizowanie klipów wideo za pomocą usługi Media Services v3 przy użyciu platformy .NET](analyze-videos-tutorial-with-api.md)

@@ -9,11 +9,11 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
 ms.openlocfilehash: f11034a4970e3fb95333310af82a6b2a2551f1eb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59257284"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61479149"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-functions"></a>Skalować zadania usługi Stream Analytics przy użyciu funkcji usługi Azure Machine Learning
 Jest bardzo proste zadanie usługi Stream Analytics i wykonaj przykładowe dane. Co możemy zrobić, jeśli zaistnieje taka potrzeba uruchomić to samo zadanie z większą ilość danych? Wymaga to nam dowiedzieć się, jak skonfigurować zadanie usługi Stream Analytics, dzięki czemu zostanie przeprowadzone skalowanie. W tym dokumencie skupimy się na specjalne aspektów skalowanie zadań usługi Stream Analytics przy użyciu funkcji usługi Machine Learning. Aby uzyskać informacje dotyczące skalowanie zadań usługi Stream Analytics ogólnie rzecz biorąc, zobacz artykuł [skalowanie zadań](stream-analytics-scale-jobs.md).

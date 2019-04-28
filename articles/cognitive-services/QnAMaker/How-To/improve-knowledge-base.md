@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: diberry
 ms.openlocfilehash: f59f281b1bf7fa2851ab7759a0167b5d39ef44c1
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678993"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61372737"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>Użyj aktywnej nauki usprawniających bazy wiedzy
 
@@ -169,7 +169,7 @@ Content-Type: application/json
 {"feedbackRecords": [{"userId": "1","userQuestion": "<question-text>","qnaId": 1}]}
 ```
 
-|Właściwości żądania HTTP|Name (Nazwa)|Typ|Przeznaczenie|
+|Właściwości żądania HTTP|Name (Nazwa)|Type|Przeznaczenie|
 |--|--|--|--|
 |Parametr trasy adresu URL|Identyfikator bazy wiedzy|string|Identyfikator GUID bazy wiedzy.|
 |Host poddomeny|Nazwa zasobu QnAMaker|string|Nazwa hosta usługi QnA Maker w subskrypcji platformy Azure. Jest on dostępny na stronie ustawień, po opublikowaniu w bazie wiedzy knowledge base. |
@@ -179,7 +179,7 @@ Content-Type: application/json
 
 Treść kodu JSON ma kilka ustawień:
 
-|Właściwość treść JSON|Typ|Przeznaczenie|
+|Właściwość treść JSON|Type|Przeznaczenie|
 |--|--|--|--|
 |`feedbackRecords`|tablica|Lista opinii.|
 |`userId`|string|Identyfikator użytkownika osoby, akceptując sugerowane pytania. Format Identyfikatora użytkownika zależy od użytkownika. Na przykład adres e-mail może być prawidłowy identyfikator użytkownika w ramach architektury. Opcjonalny.|

@@ -11,11 +11,11 @@ ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
 ms.openlocfilehash: 7eae71411a1a3772dbdbaa289a32cbc69fca0e5a
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54108754"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61365081"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Znajdowanie i diagnozowanie problemów z wydajnością za pomocą usługi Azure Application Insights
 
@@ -122,7 +122,7 @@ Tak jak w przypadku zbieranych danych dotyczących wydajności serwera, usługa 
     ![Inteligentna diagnostyka](media/tutorial-performance/client-smart-diagnostics.png)
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Teraz, gdy już wiesz, jak identyfikować wyjątki czasu wykonywania, przejdź do następnego samouczka, aby dowiedzieć się, jak tworzyć alerty w odpowiedzi na błędy.
 
 > [!div class="nextstepaction"]

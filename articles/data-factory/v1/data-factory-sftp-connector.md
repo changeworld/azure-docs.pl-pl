@@ -13,11 +13,11 @@ ms.date: 02/12/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: fe253feca6a22ee0177082e178f897c5b634bb3a
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526728"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61257212"
 ---
 # <a name="move-data-from-an-sftp-server-using-azure-data-factory"></a>Przenoszenie danych z serwera SFTP przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -67,7 +67,7 @@ Aby użyć uwierzytelniania podstawowego, ustaw `authenticationType` jako `Basic
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | nazwa użytkownika | Użytkownik, który ma dostęp do serwera SFTP. |Yes |
-| hasło | Hasło dla użytkownika (nazwa użytkownika). | Yes |
+| password | Hasło dla użytkownika (nazwa użytkownika). | Yes |
 
 #### <a name="example-basic-authentication"></a>Przykład: Uwierzytelnianie podstawowe
 ```json

@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: bwren
 ms.openlocfilehash: 9c0283081bd7245b1b886ed82ba03130a7a3bf2c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59495332"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61342041"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-azure-monitor"></a>Podręcznik informacyjny projektanta widoku kafelków w usłudze Azure Monitor
 Przy użyciu projektanta widoku w usłudze Azure Monitor, można tworzyć różne widoki niestandardowe w witrynie Azure portal, która pomoże Ci wizualizować dane w obszarze roboczym usługi Log Analytics. Ten artykuł jest przewodnik odwołanie do ustawienia dla kafelków, które są dostępne w widoki niestandardowe.
@@ -96,7 +96,7 @@ Ten Kafelek zawiera liczbę rekordów z dwóch różnych dziennika zapytań i et
 | **Wykres pierścieniowy** | |
 | Zapytanie |Zapytanie, które jest uruchamiane na wykres pierścieniowy. Pierwsza właściwość jest wartością tekstową i drugą właściwość jest wartością liczbową. To zapytanie jest zazwyczaj używa *miary* — słowo kluczowe do podsumowania wyników. |
 | **Wykres pierścieniowy** |**> Center** |
-| Tekst |Tekst, który jest wyświetlany w polu wartość w wykres pierścieniowy. |
+| Text |Tekst, który jest wyświetlany w polu wartość w wykres pierścieniowy. |
 | Operacja |Operacja, która jest wykonywana we właściwości wartość, aby podsumować go jako pojedyncza wartość.<ul><li>Suma: Dodaj wartości wszystkie rekordy z wartością właściwości.</li><li>Procent: Procent wartości sumowany rekordy z wartością właściwości, w porównaniu do sumowany wartości wszystkich rekordów.</li></ul> |
 | Wartości wynikowe używane w środku |Opcjonalnie wybierz znak plus (+), aby dodać co najmniej jedną wartość. Wyniki zapytania są ograniczone do rekordów za pomocą wartości właściwości, które określisz. Jeśli żadne wartości nie zostaną dodane, wszystkie rekordy zostaną uwzględnione w zapytaniu. |
 | **Wykres pierścieniowy** |**> Dodatkowe opcje** |

@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 01/24/2019
 ms.author: bwren
 ms.openlocfilehash: ba9a0ab775e062f21a058b537e289fe3ea2b40bb
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56000050"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61093968"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Czas pozyskiwanie danych dziennika w usłudze Azure Monitor
 Usługa Azure Monitor to usługa danych dużej skali, która obsługuje tysiące klientów wysyłania terabajtów danych każdego miesiąca w tempie rosnącą. Są często zadawane pytania dotyczące czasu, jaki zajmuje za dane dziennika staną się dostępne po ich zebraniu. W tym artykule opisano różne czynniki, które wpływają na ten czas oczekiwania.
@@ -30,7 +30,7 @@ Opóźnienie odnosi się do danych jest tworzona w monitorowanym systemie czas i
 Czas całkowity pozyskiwania dla określonego zestawu danych można podzielić na następujących kategoriach wysokiego poziomu. 
 
 - Czas agenta — czas odnajdywania zdarzenie, zbieranie go i wysłać go do usługi Azure Monitor punktem pozyskiwania jako rekord dziennika. W większości przypadków proces ten jest obsługiwany przez agenta.
-- Czas potoku — czas potok pozyskiwania do przetwarzania rekordu dziennika. W tym analizy właściwości zdarzenia i potencjalnie dodać informacje obliczeniowych.
+- Czas potoku — czas przetwarzania rekordu dziennika przez potok pozyskiwania. W tym analizy właściwości zdarzenia i potencjalnie dodać informacje obliczeniowych.
 - Czas indeksowania — czas do pozyskiwania rekordu dziennika w magazynie danych big Data w usłudze Azure Monitor.
 
 Szczegółowe informacje na temat różnych opóźnienia w ramach tego procesu są opisane poniżej.

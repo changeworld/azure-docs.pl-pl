@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 5587d86cb4b3a213961ce46e77c75e947de2d29e
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 26c3466080cb356ca3610d42eaaf5ee4975d3731
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52866376"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61471950"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Dodawanie elementów runbook usługi Azure Automation do planów odzyskiwania
 W tym artykule opisano jak Azure Site Recovery integruje się z usługą Azure Automation do zwiększenia planów odzyskiwania. Plany odzyskiwania można organizować odzyskiwania maszyn wirtualnych, które są chronione przy użyciu usługi Site Recovery. Plany odzyskiwania działa zarówno na replikację do dodatkowej chmury i replikacji do platformy Azure. Plany odzyskiwania również sprawić, odzyskiwanie **spójnie dokładne**, **powtarzalne**, i **automatycznych**. W przypadku przejścia w tryb failover maszyn wirtualnych na platformie Azure, integracji z usługą Azure Automation rozszerza planów odzyskiwania. Służy do wykonywania elementów runbook, które oferują zaawansowanej automatyzacji zadań.
@@ -27,9 +27,9 @@ W tym artykule opisano sposób integrowania elementów runbook usługi Azure Aut
     ![Kliknij przycisk Dostosuj](media/site-recovery-runbook-automation-new/essentials-rp.png)
 
 
-2. Kliknij prawym przyciskiem myszy **Grupa 1: Start**, a następnie wybierz pozycję **Dodaj akcję po**.
+2. Kliknij prawym przyciskiem myszy **Grupa 1: Rozpocznij**, a następnie wybierz pozycję **Dodaj akcję po**.
 
-    ![Kliknij prawym przyciskiem myszy Grupa 1: Start, a następnie dodaj akcję po operacji](media/site-recovery-runbook-automation-new/customize-rp.png)
+    ![Kliknij prawym przyciskiem myszy Grupa 1: Uruchom i dodawanie akcji post](media/site-recovery-runbook-automation-new/customize-rp.png)
 
 3. Kliknij przycisk **wybierz skrypt**.
 
@@ -43,7 +43,7 @@ W tym artykule opisano sposób integrowania elementów runbook usługi Azure Aut
 
 6. Na koncie usługi Automation wybierz element runbook. Ten element runbook to skrypt, który jest uruchamiany podczas wykonywania planu odzyskiwania po odzyskiwaniu pierwszą grupę.
 
-7. Aby zapisać skrypt, kliknij przycisk **OK**. Skrypt jest dodawany do **Grupa 1: kroki po operacji**.
+7. Aby zapisać skrypt, kliknij przycisk **OK**. Skrypt jest dodawany do **Grupa 1: Kroki po operacji**.
 
     ![Akcja po uaktualnianiu grupy 1:Start](media/site-recovery-runbook-automation-new/addedscript-rp.PNG)
 
@@ -250,7 +250,7 @@ Inny przykład zobacz poniższy klip wideo. Pokazuje sposób odzyskiwania dwuwar
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/One-click-failover-of-a-2-tier-WordPress-application-using-Azure-Site-Recovery/player]
 
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 * [Usługa Uruchom jako konto usługi Azure Automation](../automation/automation-create-runas-account.md)
 * [Omówienie usługi Azure Automation](https://msdn.microsoft.com/library/azure/dn643629.aspx "usługi Azure Automation — omówienie")
 * [Usługa Azure Automation przykładowe skrypty](https://gallery.technet.microsoft.com/scriptcenter/site/search?f\[0\].Type=User&f\[0\].Value=SC%20Automation%20Product%20Team&f\[0\].Text=SC%20Automation%20Product%20Team "usługi Azure Automation przykładowe skrypty")

@@ -11,11 +11,11 @@ ms.topic: article
 ms.assetid: 19cbd921-7071-4221-ab86-b44d0fc0ecef
 ms.date: 08/25/2018
 ms.openlocfilehash: 1d3c4039ae823d3797e768af5892333d4d925268
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57789945"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60996323"
 ---
 # <a name="scenario-trigger-logic-apps-with-azure-functions-and-azure-service-bus"></a>Scenariusz: Wyzwalacz aplikacji logiki za pomocą usługi Azure Functions i Azure Service Bus
 

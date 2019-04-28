@@ -9,11 +9,11 @@ ms.date: 12/07/2018
 ms.author: tamram
 ms.custom: seodec18
 ms.openlocfilehash: 6ccd33805fe4b62d3456121321edc4eec3bff2e5
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53110380"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61427532"
 ---
 # <a name="tutorial-use-azure-cdn-to-enable-a-custom-domain-with-ssl-for-a-static-website"></a>Samouczek: Korzystanie z usługi Azure CDN w celu włączenia domeny niestandardowej dla statycznej witryny internetowej
 
@@ -58,7 +58,7 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/), aby rozpoczą
 1. Ustaw pole **Protokół HTTPS dla domeny niestandardowej** w pozycji **WŁĄCZONE**. Wybierz pozycję **Zarządzany przez usługę CDN**, aby usługa Azure CDN zarządzała certyfikatem SSL. Kliknij pozycję **Zapisz**.
 1. Przetestuj witrynę internetową, przechodząc do adresu URL witryny internetowej.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W drugiej części tego samouczka pokazano, jak skonfigurować domenę niestandardową z protokołem SSL w usłudze Azure CDN dla statycznej witryny internetowej.
 

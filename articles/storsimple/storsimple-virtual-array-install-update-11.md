@@ -15,15 +15,15 @@ ms.workload: TBD
 ms.date: 07/18/2018
 ms.author: alkohli
 ms.openlocfilehash: 88b903d68e4398b4e30b0b7435279c29bee6cd6b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58005227"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61408764"
 ---
 # <a name="install-update-11-on-your-storsimple-virtual-array"></a>Zainstaluj aktualizację 1.1 na rozwiązania StorSimple Virtual Array
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 W tym artykule opisano kroki wymagane do zainstalowania aktualizacji 1.1 na rozwiązania StorSimple Virtual Array przy użyciu witryny Azure portal i za pomocą lokalnego Interfejsu w przeglądarce.
 

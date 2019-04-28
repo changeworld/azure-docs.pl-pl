@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 03/28/2019
 ms.author: mlottner
 ms.openlocfilehash: 0089fd1af6576f9bcdebe4b7f270a573205dea82
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59783504"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61358356"
 ---
 # <a name="deploy-azure-security-center-for-iot-c-based-security-agent-for-linux"></a>Wdrażanie usługi Azure Security Center dla zabezpieczenia oparty na IoT C agenta dla systemu Linux
 

@@ -13,11 +13,11 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: 59e0e4cf82af9851dacf3ec030575ed392571331
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523770"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61475817"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Użyj instrukcji języka Transact-SQL (T-SQL), aby tworzyć i zarządzać nimi zadania Elastic Database
 
@@ -1218,7 +1218,7 @@ Pokazano zadań historii wykonywania.
 |**job_id** |uniqueidentifier|  Unikatowy identyfikator zadania.
 |**job_version**    |int    |Wersja zadania (zaktualizowane automatycznie każdorazowo, gdy zadanie zostanie zmodyfikowane).
 |**step_id**    |int|   Identyfikator unikatowy (dla tego zadania) dla etapu. Wartość NULL oznacza, że jest to wykonywania zadania nadrzędnego.
-|**is_active**| Bitowe |Wskazuje, czy informacje są aktywne lub nieaktywne. wartość 1 oznacza aktywne zadania, a wartość 0 wskazuje nieaktywne.
+|**is_active**| bit |Wskazuje, czy informacje są aktywne lub nieaktywne. wartość 1 oznacza aktywne zadania, a wartość 0 wskazuje nieaktywne.
 |**cykl życia**| nvarchar(50)|Wartość wskazująca, stan zadania: "Utworzony", "W toku", "Nie powiodło się", "Powodzenie", "Pominięto", "SucceededWithSkipped"|
 |**create_time**|   datetime2(7)|   Data i godzina utworzenia zadania.
 |**godzina_rozpoczęcia** |datetime2(7)|  Data i godzina zadania rozpoczął wykonywanie sekwencji. Wartość NULL, jeśli zadanie nie zostało jeszcze wykonane.
@@ -1285,7 +1285,7 @@ Przedstawia wszystkie kroki opisane w bieżącej wersji każdego zadania.
 |**target_group_id**|   uniqueidentifier|   Unikatowy identyfikator grupy docelowej.|
 |**initial_retry_interval_seconds**|    int |Opóźnienie przed pierwszym ponowieniem próby. Wartość domyślna to 1.|
 |**maximum_retry_interval_seconds** |int|   Maksymalne opóźnienie między ponownymi próbami. Jeśli opóźnienie między kolejnymi próbami będzie powiększać większa niż ta wartość, jej wynosi tej wartości zamiast tego. Wartość domyślna to 120.|
-|**retry_interval_backoff_multiplier**  |rzeczywiste|  Mnożnik do zastosowania do opóźnienia ponawiania, jeśli wiele zadań krok wykonywania próbuje zakończyć się niepowodzeniem. Wartością domyślną jest w wersji 2.0.|
+|**retry_interval_backoff_multiplier**  |real|  Mnożnik do zastosowania do opóźnienia ponawiania, jeśli wiele zadań krok wykonywania próbuje zakończyć się niepowodzeniem. Wartością domyślną jest w wersji 2.0.|
 |**retry_attempts** |int|   Liczba ponownych prób do użycia, jeśli ta czynność zakończy się niepowodzeniem. Domyślna wartość wynosząca 10, co oznacza nie ponownych prób.|
 |**step_timeout_seconds**   |int|   Ilość czasu w minutach między ponownymi próbami. Wartość domyślna to 0, co oznacza, 0-minutowych interwałach.|
 |**output_type**    |nvarchar(11)|  Lokalizacja polecenia. W bieżącej wersji zapoznawczej "Inline" jest ustawieniem domyślnym i akceptowany tylko wartości.|

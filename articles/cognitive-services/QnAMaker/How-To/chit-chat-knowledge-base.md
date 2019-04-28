@@ -12,11 +12,11 @@ ms.date: 01/14/2019
 ms.author: tulasim
 ms.custom: seodec18
 ms.openlocfilehash: d40330f257694e81704bf6fffa1fd2df8ed86c06
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55858046"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61376118"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>Dodaj Chit czatu do bazy wiedzy
 
@@ -24,7 +24,8 @@ Dodawanie chit czatu do bota sprawia, że konwersacji i bardziej interesujące. 
 
 Ten zestaw danych zawiera około 100 scenariusze dotyczące czacie chit przy użyciu głosu trzech osób - Comic Professional, przyjazne. Wybierz osoby, który najbardziej przypomina Twój bot głosu. Podana kwerenda użytkownika, usługa QnA Maker próbuje dopasować ją z najbliższego QnA czatu internetowego chit znane. 
 
-Kilka przykładów różnych osobowości: <!-- added quotes so acrolinx doesn't score these sentences -->
+Kilka przykładów różnych osobowości:
+<!-- added quotes so acrolinx doesn't score these sentences -->
 |Kwerenda użytkownika|Professional|Zaprzyjaźnionej|Comic|
 |--|--|--|--|
 |`You are awesome`|`I aim to serve.`|`That's so nice of you!`|`Flattery. I like it.`|

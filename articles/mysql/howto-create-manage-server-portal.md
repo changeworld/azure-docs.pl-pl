@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
 ms.openlocfilehash: 6d6f24475497382dd9e04d3335fb89d6f0bdd514
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57528682"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61459522"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-server-using-azure-portal"></a>Tworzenie i zarządzanie nimi — Azure Database dla serwera MySQL przy użyciu witryny Azure portal
 W tym temacie opisano, jak szybko utworzyć nowego serwera Azure Database for MySQL. Zawiera także informacje o sposobie zarządzania serwerem za pomocą witryny Azure portal. Zarządzanie serwerem obejmuje wyświetlanie szczegółów dotyczących serwera i bazy danych, zresetowanie hasła, skalowanie zasobów i usunięcie serwera.

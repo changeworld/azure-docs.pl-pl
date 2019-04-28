@@ -1,9 +1,9 @@
 ---
 title: Połączenie hybrydowe z aplikacji warstwy 2 | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak wdrożyć urządzeń wirtualnych i przez, aby utworzyć środowisko wielowarstwową aplikację na platformie Azure
+description: Dowiedz się, jak Wdrażanie wirtualnych urządzeń sieciowych i trasa zdefiniowana przez użytkownika, aby utworzyć środowisko aplikacji wielowarstwowej na platformie Azure
 services: virtual-network
 documentationcenter: na
-author: jimdial
+author: KumudD
 manager: carmonm
 editor: tysonn
 ms.assetid: 1f509bec-bdd1-470d-8aa4-3cf2bb7f6134
@@ -13,87 +13,87 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2016
-ms.author: jdial
-ms.openlocfilehash: 544ba6484b23da425d53594622122b1e18b92359
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
-ms.translationtype: MT
+ms.author: kumud
+ms.openlocfilehash: c959ee3bea24955e3281feb9db66e4e0cadc8bf9
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2017
-ms.locfileid: "23943224"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61034159"
 ---
-# <a name="virtual-appliance-scenario"></a>Scenariusz urządzenie wirtualne
-Typowy scenariusz większych klientów platformy Azure jest konieczność zapewnienia dwuwarstwowej aplikacji, połączenie z Internetem, umożliwiając dostęp do tyłu warstwy z lokalnego centrum danych. Ten dokument przeprowadzi użytkownika scenariusza przy użyciu użytkownika zdefiniowanych tras przez bramy sieci VPN i sieci wirtualnych urządzeń do wdrożenia środowiska dwuwarstwowa, która spełnia następujące wymagania:
+# <a name="virtual-appliance-scenario"></a>Urządzenie wirtualne scenariusza
+Typowy scenariusz w większych klientów platformy Azure to konieczność zapewnienia dwuwarstwowej aplikacji, połączenie z Internetem, zapewniając dostęp do tyłu warstwy z lokalnego centrum danych. Ten dokument przeprowadzi Cię scenariusz przy użyciu tras zdefiniowanych użytkownika (UDR), bramy sieci VPN i wirtualnych urządzeń sieciowych przeprowadzić wdrożenie w środowisku dwuwarstwowa, która spełnia następujące wymagania:
 
-* Aplikacja sieci Web musi być dostępny z publicznego Internetu.
-* Hosting aplikacji serwera sieci Web musi mieć możliwość uzyskania dostępu do wewnętrznej bazy danych aplikacji serwera.
-* Cały ruch z Internetu do aplikacji sieci web musi przechodzić przez urządzenie wirtualne zapory. To urządzenie wirtualne będą używane tylko ruchu internetowego.
-* Całego ruchu kierowanego do serwera aplikacji musi przechodzić przez urządzenie wirtualne zapory. To urządzenie wirtualne będą używane do dostępu do serwera zaplecza mające na celu i odbierane z sieci lokalnej za pośrednictwem bramy sieci VPN dostępu.
-* Administratorzy muszą mieć możliwość zarządzania urządzenie wirtualne zapory z ich komputerami lokalnymi, przy użyciu innej zapory używane wyłącznie do celów zarządzania urządzenie wirtualne.
+* Aplikacja sieci Web muszą być dostępne z publicznego Internetu.
+* Serwer sieci Web hostuje aplikację musi mieć możliwość dostępu do serwera aplikacji zaplecza.
+* Cały ruch z Internetu do aplikacji sieci web musi przejść przez urządzenie wirtualne zapory. To urządzenie wirtualne będą używane tylko dla ruchu internetowego.
+* Całego ruchu kierowanego do serwera aplikacji musi przejść przez urządzenie wirtualne zapory. To urządzenie wirtualne będą używane dla dostępu do serwera wewnętrznej bazy danych w celu i dostępu odbierane z siecią lokalną za pośrednictwem bramy sieci VPN.
+* Administratorzy muszą mieć możliwość zarządzania urządzenie wirtualne zapory z ich komputerów w środowisku lokalnym, za pomocą innego zapory używane wyłącznie do celów zarządzania urządzenia wirtualnego.
 
-Jest to standardowy scenariusz sieci obwodowej i chronionej sieci. Taki scenariusz może być skonstruowany w Azure za pomocą grup NSG, urządzenie wirtualne zapory lub obie te grupy. W poniższej tabeli przedstawiono niektóre z zalet i wad między grupy NSG oraz zapory urządzenia wirtualnego.
+Jest to standardowy scenariusz sieci obwodowej i chronionej sieci. Taki scenariusz można konstruować na platformie Azure przy użyciu sieciowych grup zabezpieczeń, urządzenie wirtualne zapory lub jako kombinację obu tych. W poniższej tabeli przedstawiono niektóre z zalet i wad między grup zabezpieczeń sieci i zapory wirtualnych urządzeń sieciowych.
 
 |  | Specjaliści | Wady |
 | --- | --- | --- |
-| GRUPA NSG |Bez kosztów. <br/>Zintegrowane usługi Azure RBAC. <br/>Reguły można tworzyć w szablonów ARM. |Złożoność może się różnić w większych środowiskach. |
-| Zapora |Pełną kontrolę nad płaszczyzna danych. <br/>Centralne zarządzanie za pomocą konsoli zapory. |Koszt urządzenia zapory. <br/>Nie jest zintegrowany z Azure RBAC. |
+| Sieciowa grupa zabezpieczeń |Żadnych kosztów. <br/>Zintegrowany RBAC platformy Azure. <br/>Zasady mogą być tworzone w szablonach ARM. |Złożoność może się różnić w większych środowiskach. |
+| Zapora |Pełną kontrolę nad płaszczyzny danych. <br/>Centralne zarządzanie za pomocą konsoli zapory. |Koszt urządzenia zapory. <br/>Nie jest zintegrowana z usługą Azure RBAC. |
 
 Rozwiązanie poniżej używa urządzenie wirtualne zapory do implementacji scenariusza sieci obwodowej/chronione.
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia
-Możesz wdrożyć środowiska przedstawionych powyżej na platformie Azure przy użyciu różnych funkcji dostępnych już dziś, wykonując następujące czynności.
+Możesz wdrożyć środowisko wyjaśniono powyżej na platformie Azure przy użyciu różnych funkcji dostępnych już dziś, wykonując następujące czynności.
 
-* **Sieć wirtualną (VNet)**. Sieć wirtualną platformy Azure działa w podobny sposób z siecią lokalną i może być segmentem w co najmniej jednej podsieci w celu zapewnienia izolacji ruchu danych i separacji.
-* **Urządzenie wirtualne**. Kilka partnerów Podaj wirtualnego urządzenia w portalu Azure Marketplace, używanej do trzech zapory opisane powyżej. 
-* **Zdefiniowane przez użytkownika tras (przez)**. Tabele tras może zawierać Udr używany przez sieć platformy Azure do sterowania przepływem pakietów w sieci wirtualnej. Te tabele tras może odnosić się do podsieci. Jedną z najnowszych funkcji platformy Azure jest możliwość stosowania tabelę tras dla GatewaySubnet, zapewniając możliwość przekazywania wszystkich danych przesyłanych w sieci wirtualnej platformy Azure przez połączenie hybrydowe do urządzenia wirtualnego.
-* **Przesyłanie dalej IP**. Domyślnie aparat sieci Azure przesyłania pakietów do karty interfejsu sieci wirtualnej (NIC) tylko wtedy, gdy pakiet docelowy adres IP odpowiada adresu IP karty Sieciowej. W związku z tym jeśli przez Określa, że pakiet musi być wysyłane do danego urządzenia wirtualnego, aparat sieci platformy Azure będzie porzucić pakietu. Aby upewnić się, że pakiet jest dostarczany z maszyną wirtualną (w tym przypadku urządzenia wirtualnego), który nie jest rzeczywistego przeznaczenia pakietu, należy włączyć przesyłania dalej protokołu IP dla urządzenia wirtualnego.
-* **Sieciowe grupy zabezpieczeń (NSG)**. W poniższym przykładzie nie korzystają z grup NSG, ale można dodatkowo filtrować ruch do i z tych podsieci i karty sieciowe za pomocą grup NSG stosowana do podsieci i/lub kart sieciowych w tym rozwiązaniu.
+* **Sieć wirtualna (VNet)**. Siecią wirtualną platformy Azure działa w podobny sposób, aby między siecią lokalną i można podzielić na co najmniej jednej podsieci w celu zapewnienia izolacji ruchu i separacji.
+* **Urządzenie wirtualne**. Kilka etap to udostępnienie urządzeń wirtualnych w witrynie Azure Marketplace, który może służyć do trzech zapory, opisano powyżej. 
+* **Trasy zdefiniowane przez użytkownika**. Tabele tras może zawierać tras zdefiniowanych przez użytkownika używane przez sieci platformy Azure, aby sterować przepływem pakietów w sieci wirtualnej. Te tabele tras można zastosować do podsieci. Jednym z najnowszych funkcji platformy Azure jest możliwość stosowania tabelę tras dla podsieci GatewaySubnet, zapewniając możliwość przekazywania wszystkich ruch w sieci wirtualnej platformy Azure za pośrednictwem połączenia hybrydowego do urządzenia wirtualnego.
+* **Przesyłanie dalej IP**. Domyślnie aparat sieci platformy Azure przesyłania pakietów do wirtualne karty sieciowe (NIC), tylko wtedy, gdy pakiet docelowy adres IP jest zgodny z adresem IP karty Sieciowej. W związku z tym Jeśli trasa zdefiniowana przez użytkownika określa, że pakiet musi być wysyłane do danego urządzenia wirtualnego, aparat sieci platformy Azure będzie porzucić pakietu. Aby upewnić się, że jest dostarczany z maszyną wirtualną (w tym przypadku urządzenia wirtualnego), który nie jest rzeczywisty miejsce docelowe dla pakietów, musisz włączyć przekazywanie adresów IP dla urządzenia wirtualnego.
+* **Sieciowe grupy zabezpieczeń (NSG)**. W poniższym przykładzie należy używać sieciowych grup zabezpieczeń, ale można użyć grup NSG stosowana do podsieci i/lub kart sieciowych w tym rozwiązaniu do dalszego filtrowania ruchu do i z tych podsieci i karty sieciowe.
 
 ![Łączność IPv6](./media/virtual-network-scenario-udr-gw-nva/figure01.png)
 
-W tym przykładzie jest subskrypcji, która zawiera następujące elementy:
+W tym przykładzie ma subskrypcję, która zawiera następujące elementy:
 
-* 2 grup zasobów, nie są wyświetlane na diagramie. 
+* 2 grupy zasobów, nie są wyświetlane na diagramie. 
   * **ONPREMRG**. Zawiera wszystkie zasoby niezbędne do symulacji sieci lokalnej.
-  * **AZURERG**. Zawiera wszystkie zasoby niezbędne do środowiska sieci wirtualnej platformy Azure. 
-* Sieć wirtualną o nazwie **onpremvnet** umożliwia naśladować lokalnego centrum danych segmentem wymienione poniżej.
-  * **onpremsn1**. Podsieci zawierającej maszynę wirtualną (VM) systemem Ubuntu, aby naśladował na serwerze lokalnym.
-  * **onpremsn2**. Podsieć zawierająca maszyny Wirtualnej z systemem Ubuntu, aby naśladował na komputerze lokalnym używane przez administratora.
-* Brak co urządzenie wirtualne zapory o nazwie **OPFW** na **onpremvnet** służy do utrzymywania tunel do **azurevnet**.
+  * **AZURERG**. Zawiera wszystkie zasoby niezbędne dla środowiska sieci wirtualnej platformy Azure. 
+* Sieć wirtualną o nazwie **onpremvnet** używany do naśladowania w lokalnym centrum danych segmentowanych wymienione poniżej.
+  * **onpremsn1**. Podsieci zawierającej maszyny wirtualnej (VM) z systemem Ubuntu, aby mógł naśladować na serwerze lokalnym.
+  * **onpremsn2**. Podsieci zawierającej maszyny Wirtualnej z systemem Ubuntu, aby mógł naśladować na komputerze lokalnym używane przez administratora.
+* Występuje co urządzenie wirtualne zapory, o nazwie **OPFW** na **onpremvnet** służy do utrzymywania tunel do **azurevnet**.
 * Sieć wirtualną o nazwie **azurevnet** segmentowanych wymienione poniżej.
-  * **azsn1**. Zapory zewnętrznej podsieci używane wyłącznie do zapory zewnętrznej. Cały ruch internetowy wejdzie do tej podsieci. Ta podsieć zawiera tylko połączone z zapory zewnętrznej karty Sieciowej.
-  * **azsn2**. Hosting maszyny Wirtualnej działa jako serwer sieci web, w której będą mieli dostęp z Internetu podsieci frontonu.
-  * **azsn3**. Hosting maszyny Wirtualnej z systemem serwer aplikacji zaplecza, w której będą mieli dostęp przez serwer frontonu sieci web podsieci wewnętrznej bazy danych.
-  * **azsn4**. Zarządzanie podsieci używane wyłącznie w celu zapewnienia dostępu administracyjnego do wszystkich urządzeń wirtualnych zapory. Ta podsieć zawiera tylko z kartą Sieciową dla każdej zapory urządzenie wirtualne użyte w rozwiązaniu.
-  * **GatewaySubnet**. Wymagane w celu ExpressRoute i Brama sieci VPN do zapewniania łączności między sieciami wirtualnymi platformy Azure i innych sieci podsieci połączenia hybrydowe platformy Azure. 
+  * **azsn1**. Podsieć zaporę zewnętrzną używanej wyłącznie przez zaporę zewnętrzną. Cały ruch z Internetu będzie pochodzić z tej podsieci. Ta podsieć zawiera tylko połączone z zapory zewnętrznej karty Sieciowej.
+  * **azsn2**. Podsieć frontonu hostowania maszyny Wirtualnej z systemem jako serwer sieci web, który będzie dostępny z Internetu.
+  * **azsn3**. Podsieci wewnętrznej bazy danych hostingu maszyny Wirtualnej z systemem serwera aplikacji zaplecza, która będzie dostępna przez serwer frontonu sieci web.
+  * **azsn4**. Używane wyłącznie w celu zapewnienia dostępu do funkcji zarządzania do wszystkich urządzeń wirtualnych Zapora podsieci zarządzania. Ta podsieć zawiera tylko z kartą Sieciową dla każdego urządzenie wirtualne zapory, używane w ramach rozwiązania.
+  * **GatewaySubnet**. Podsieć połączenia hybrydowego platformy Azure jest wymagana dla usługi ExpressRoute i bramy sieci VPN do zapewniania łączności między sieciami wirtualnymi platformy Azure i innymi sieciami. 
 * Istnieją 3 urządzenie wirtualne zapory w **azurevnet** sieci. 
-  * **AZF1**. Połączenie z Internetem publiczny przy użyciu zasób publicznego adresu IP na platformie Azure zapory zewnętrznej. Należy upewnić się, że szablon z witryny Marketplace lub bezpośrednio z dostawcą urządzenia, że przepisy 3-NIC urządzenie wirtualne.
-  * **AZF2**. Wewnętrzny zapory używane do kontroli ruchu między **azsn2** i **azsn3**. Dotyczy to również 3-NIC urządzenie wirtualne.
-  * **AZF3**. Zarządzanie zaporą dostępne dla administratorów z lokalnego centrum danych i jest połączony z podsiecią zarządzania używany do zarządzania wszystkie urządzenia zapory. Można znaleźć karty Sieciowej 2 Szablony urządzenie wirtualne w witrynie Marketplace, lub zażądać bezpośrednio z dostawcą urządzenia.
+  * **AZF1**. Zaporę zewnętrzną, udostępniona do publicznej sieci Internet, za pomocą publicznego zasobu adresu IP na platformie Azure. Należy upewnić się, że szablon z witryny Marketplace lub bezpośrednio z dostawcą urządzenia, że przepisy 3-NIC urządzenia wirtualnego.
+  * **AZF2**. Wewnętrzny zapory używane do kontrolowania ruchu między **azsn2** i **azsn3**. Dotyczy to również 3-NIC urządzenia wirtualnego.
+  * **AZF3**. Zapora zarządzania dostępne dla administratorów z lokalnego centrum danych i podłączone do podsieci zarządzania używany do zarządzania wszystkie urządzenia zapory. Możesz znaleźć karty Sieciowej 2 Szablony urządzenie wirtualne w portalu Marketplace lub o nią wnioskować bezpośrednio z dostawcą urządzenia.
 
-## <a name="user-defined-routing-udr"></a>Zdefiniowane przez użytkownika routingu (przez)
-Każda podsieć na platformie Azure może odnosić się do tabeli przez używane do definiowania jak ruchu zainicjowane w tej podsieci jest kierowany. Jeśli są zdefiniowane nie Udr, platforma Azure korzysta trasy domyślne zezwalająca na ruch przepływać z jednej podsieci. Aby lepiej zrozumieć Udr, odwiedź stronę [co to są trasy zdefiniowane przez użytkownika i przesyłania dalej protokołu IP](virtual-networks-udr-overview.md).
+## <a name="user-defined-routing-udr"></a>Zdefiniowane przez użytkownika routingu (trasy zdefiniowanej przez użytkownika)
+Każda podsieć w systemie Azure można połączyć tabelę trasy zdefiniowanej przez użytkownika używane do definiowania sposobu ruchu zainicjowane w tej podsieci jest kierowany. Jeśli zdefiniowano nie tras zdefiniowanych przez użytkownika, platforma Azure używa trasy domyślne, aby zezwolić na przepływ ruchu z jednej podsieci do innej. Aby lepiej zrozumieć tras zdefiniowanych przez użytkownika, odwiedź stronę [co to są trasy zdefiniowane przez użytkownika i przekazywanie adresów IP](virtual-networks-udr-overview.md).
 
-Aby upewnić się, komunikacja odbywa się za pośrednictwem urządzenie prawym zapory, oparte na ostatnie wymaganie powyżej, należy utworzyć w poniższej tabeli tras zawierający Udr w **azurevnet**.
+Aby upewnić się, komunikacja odbywa się za pośrednictwem urządzenia zapory odpowiednie, na podstawie ostatniego wymagania, powyżej, należy utworzyć w poniższej tabeli tras zawierającą trasy Udr w **azurevnet**.
 
 ### <a name="azgwudr"></a>azgwudr
-W tym scenariuszu tylko ruch wynikających z lokalnego do platformy Azure będzie służyć do zarządzania zapory, łącząc się z **AZF3**, i że ruchu musi przechodzić przez zaporę wewnętrznej **AZF2**. W związku z tym niezbędne jest tylko jedna trasa **GatewaySubnet** jak pokazano poniżej.
+W tym scenariuszu tylko ruchem odbywającym się ze środowiska lokalnego do platformy Azure będzie służyć do zarządzania zapory, łącząc się z **AZF3**, oraz czy ruch musi przejść przez zaporę wewnętrznej **AZF2**. W związku z tym, w konieczne jest tylko jedna trasa **GatewaySubnet** jak pokazano poniżej.
 
 | Element docelowy | Następny przeskok | Wyjaśnienie |
 | --- | --- | --- |
-| 10.0.4.0/24 |10.0.3.11 |Zezwala na ruch do osiągnięcia zapory zarządzania lokalnymi **AZF3** |
+| 10.0.4.0/24 |10.0.3.11 |Zezwala na ruch w środowisku lokalnym dotrzeć do zarządzania zaporą **AZF3** |
 
 ### <a name="azsn2udr"></a>azsn2udr
 | Element docelowy | Następny przeskok | Wyjaśnienie |
 | --- | --- | --- |
-| 10.0.3.0/24 |10.0.2.11 |Zezwala na ruch do podsieci wewnętrznej bazy danych hostem aplikacji serwera za pomocą **AZF2** |
-| 0.0.0.0/0 |10.0.2.10 |Zezwala na cały ruch będzie kierowany przez **AZF1** |
+| 10.0.3.0/24 |10.0.2.11 |Zezwala na ruch do podsieci wewnętrznej bazy danych, który jest hostem aplikacji serwera za pomocą **AZF2** |
+| 0.0.0.0/0 |10.0.2.10 |Zezwala na cały ruch będą kierowane za pośrednictwem **AZF1** |
 
 ### <a name="azsn3udr"></a>azsn3udr
 | Element docelowy | Następny przeskok | Wyjaśnienie |
 | --- | --- | --- |
-| 10.0.2.0/24 |10.0.3.10 |Zezwala na ruch do **azsn2** przepływem z aplikacji serwera na serwerze sieci Web za pośrednictwem **AZF2** |
+| 10.0.2.0/24 |10.0.3.10 |Zezwala na ruch do **azsn2** do usługi flow z serwera aplikacji do serwera sieci Web za pośrednictwem **AZF2** |
 
-Należy także utworzyć tabel tras dla podsieci w **onpremvnet** aby naśladował lokalnego centrum danych.
+Należy także utworzyć tabele tras dla podsieci w **onpremvnet** do naśladowania w lokalnym centrum danych.
 
 ### <a name="onpremsn1udr"></a>onpremsn1udr
 | Element docelowy | Następny przeskok | Wyjaśnienie |
@@ -103,58 +103,58 @@ Należy także utworzyć tabel tras dla podsieci w **onpremvnet** aby naśladowa
 ### <a name="onpremsn2udr"></a>onpremsn2udr
 | Element docelowy | Następny przeskok | Wyjaśnienie |
 | --- | --- | --- |
-| 10.0.3.0/24 |192.168.2.4 |Zezwala na ruch do podsieci kopii zapasowej na platformie Azure za pośrednictwem **OPFW** |
+| 10.0.3.0/24 |192.168.2.4 |Zezwala na ruch do podsieci, to jest poparte na platformie Azure za pośrednictwem **OPFW** |
 | 192.168.1.0/24 |192.168.2.4 |Zezwala na ruch do **onpremsn1** za pośrednictwem **OPFW** |
 
 ## <a name="ip-forwarding"></a>Przesyłanie dalej IP
-PRZEZ i przekazywanie adresów IP są funkcje, których można używać w połączeniu, aby umożliwić urządzeń wirtualnych do użycia w sterowaniu przepływem ruchu w sieci wirtualnej platformy Azure.  Urządzenie wirtualne to po prostu maszyna wirtualna, na której działa aplikacja służąca do obsługi ruchu sieciowego w określony sposób, na przykład zapora lub urządzenie NAT.
+Trasa zdefiniowana przez użytkownika i przekazywanie adresów IP są funkcje, których można używać w połączeniu, aby zezwolić na urządzenie wirtualne, które ma być używany w sterowaniu przepływem ruchu w sieci wirtualnej platformy Azure.  Urządzenie wirtualne to po prostu maszyna wirtualna, na której działa aplikacja służąca do obsługi ruchu sieciowego w określony sposób, na przykład zapora lub urządzenie NAT.
 
-Ta maszyna wirtualna musi mieć zdolność odbierania ruchu przychodzącego, który nie jest skierowany do niej samej. Aby umożliwić maszynie wirtualnej odbieranie ruchu kierowanego do innych miejsc docelowych, konieczne jest włączenie dla tej maszyny wirtualnej funkcji przesyłania dalej IP. Jest to ustawienie platformy Azure, a nie systemu operacyjnego gościa. Twoje urządzenie wirtualne nadal wymaga do uruchomienia niektórych typ aplikacji do obsługi ruchu przychodzącego i kierowania go odpowiednio.
+Ta maszyna wirtualna musi mieć zdolność odbierania ruchu przychodzącego, który nie jest skierowany do niej samej. Aby umożliwić maszynie wirtualnej odbieranie ruchu kierowanego do innych miejsc docelowych, konieczne jest włączenie dla tej maszyny wirtualnej funkcji przesyłania dalej IP. Jest to ustawienie platformy Azure, a nie systemu operacyjnego gościa. Urządzenie wirtualne nadal musi zostać uruchomiony pewien rodzaj aplikacji do obsługi ruchu przychodzącego i kierowania go odpowiednio.
 
-Aby dowiedzieć się więcej na temat przekazywania adresów IP, odwiedź stronę [co to są trasy zdefiniowane przez użytkownika i przesyłania dalej protokołu IP](virtual-networks-udr-overview.md).
+Aby dowiedzieć się więcej na temat przekazywania adresów IP, odwiedź stronę [co to są trasy zdefiniowane przez użytkownika i przekazywanie adresów IP](virtual-networks-udr-overview.md).
 
-Na przykład załóżmy, że w sieci wirtualnej platformy Azure są następujące ustawienia:
+Na przykład załóżmy, że w sieci wirtualnej platformy Azure, masz następujące ustawienia:
 
 * Podsieci **onpremsn1** zawiera maszynę Wirtualną o nazwie **onpremvm1**.
 * Podsieci **onpremsn2** zawiera maszynę Wirtualną o nazwie **onpremvm2**.
-* Urządzenie wirtualne o nazwie **OPFW** jest podłączony do **onpremsn1** i **onpremsn2**.
-* Trasy zdefiniowane przez użytkownika są połączone z **onpremsn1** Określa, że cały ruch do **onpremsn2** muszą zostać przesłane do **OPFW**.
+* Urządzenie wirtualne, o nazwie **OPFW** jest podłączony do **onpremsn1** i **onpremsn2**.
+* Trasy zdefiniowane przez użytkownika są połączone z **onpremsn1** Określa, że cały ruch do **onpremsn2** muszą być wysyłane do **OPFW**.
 
-W tym momencie Jeśli **onpremvm1** podejmuje próbę nawiązania połączenia z **onpremvm2**, będą używane przez i ruchu zostaną wysłane do **OPFW** w następnym skoku. Należy pamiętać, że docelowy rzeczywiste pakietów nie są zmieniane, nadal wyświetlany jest tekst **onpremvm2** jest miejscem docelowym. 
+W tym momencie Jeśli **onpremvm1** podejmuje próbę nawiązania połączenia z **onpremvm2**, zdefiniowanej przez użytkownika, który będzie używany, a ruch zostanie wysłane do **OPFW** jako następnego przeskoku. Należy pamiętać o tym, że nie są zmieniane miejsca docelowego pakietu rzeczywiste, nadal wyświetlany jest tekst **onpremvm2** jest miejscem docelowym. 
 
-Bez przesyłania dalej protokołu IP włączone dla **OPFW**, Azure logiki sieci wirtualnych spowoduje porzucenie pakietów, ponieważ umożliwia tylko pakiety, które mają być wysyłane do maszyny Wirtualnej, jeśli adres IP maszyny Wirtualnej jest docelowy dla pakietu.
+Bez przekazywania adresów IP włączone dla **OPFW**, logiki sieci wirtualnej platformy Azure będzie się zmniejszać pakietów, ponieważ umożliwia ono tylko pakiety do wysłania do maszyny Wirtualnej, jeśli adres IP maszyny Wirtualnej jest miejscem docelowym dla pakietu.
 
-Z przesyłania dalej protokołu IP logiki sieci wirtualnej platformy Azure będzie przesyłać pakiety OPFW, bez zmiany jego oryginalny adres docelowy. **OPFW** musi obsługiwać pakiety i ustalić, co należy zrobić z nich.
+Przy użyciu funkcji przesyłania dalej IP logiki sieci wirtualnej platformy Azure będzie przesyłać pakiety OPFW, bez zmiany jego oryginalnego adresu docelowego. **OPFW** musi obsługiwać pakiety i określić, co należy zrobić z nimi.
 
-W powyższym scenariuszu działała, należy włączyć przesyłania dalej protokołu IP kart sieciowych dla **OPFW**, **AZF1**, **AZF2**, i **AZF3** służące do routingu (wszystkie karty sieciowe oprócz tych połączonych z podsiecią zarządzania). 
+W powyższym scenariuszu działała, należy włączyć przekazywanie adresów IP na kartach interfejsu sieciowego dla **OPFW**, **AZF1**, **AZF2**, i **AZF3** służące do Routing (wszystkie karty sieciowe połączone z podsieci zarządzania wyjątkiem). 
 
 ## <a name="firewall-rules"></a>Reguły zapory
-Zgodnie z powyższym opisem tylko przesyłania dalej protokołu IP zapewnia, że pakiety są wysyłane do urządzenia wirtualnego. Urządzenia są nadal wymaga do podejmowania decyzji o tych pakietów. W powyższym scenariuszu konieczne będzie utworzenie następujących reguł w urządzeń:
+Zgodnie z powyższym opisem funkcji przesyłania dalej IP tylko tak gwarantuje, że pakiety są wysyłane do urządzenia wirtualnego. Urządzenie musi nadal zdecydować, co należy zrobić za pomocą tych pakietów. W tym scenariuszu powyżej konieczne będzie utworzenie następujących reguł w urządzeń:
 
 ### <a name="opfw"></a>OPFW
-OPFW reprezentuje lokalnego urządzenia zawierających następujące reguły:
+OPFW reprezentuje urządzenie w środowisku lokalnym, zawierające następujące reguły:
 
-* **Trasy**: cały ruch do 10.0.0.0/16 (**azurevnet**) musi być przesyłane przez tunel **ONPREMAZURE**.
-* **Zasady**: zezwolić na cały ruch dwukierunkowy między **port2** i **ONPREMAZURE**.
+* **trasy**: Cały ruch do 10.0.0.0/16 (**azurevnet**) musi zostać wysłany za pośrednictwem tunelu **ONPREMAZURE**.
+* **Zasady**: Zezwalaj na ruch dwukierunkowy pomiędzy **port2** i **ONPREMAZURE**.
 
 ### <a name="azf1"></a>AZF1
-AZF1 reprezentuje urządzenie wirtualne Azure zawierających następujące reguły:
+AZF1 reprezentuje urządzenie wirtualne Azure zawierające następujące reguły:
 
-* **Zasady**: zezwolić na cały ruch dwukierunkowy między **port1** i **port2**.
+* **Zasady**: Zezwalaj na ruch dwukierunkowy pomiędzy **port1** i **port2**.
 
 ### <a name="azf2"></a>AZF2
-AZF2 reprezentuje urządzenie wirtualne Azure zawierających następujące reguły:
+AZF2 reprezentuje urządzenie wirtualne Azure zawierające następujące reguły:
 
-* **Trasy**: cały ruch do 10.0.0.0/16 (**onpremvnet**) musi zostać wysłany do bramy Azure adresu IP (np. 10.0.0.1), przez **port1**.
-* **Zasady**: zezwolić na cały ruch dwukierunkowy między **port1** i **port2**.
+* **trasy**: Cały ruch do 10.0.0.0/16 (**onpremvnet**) muszą być wysyłane do usługi Azure gateway adresu IP (np. 10.0.0.1), za pośrednictwem **port1**.
+* **Zasady**: Zezwalaj na ruch dwukierunkowy pomiędzy **port1** i **port2**.
 
-## <a name="network-security-groups-nsgs"></a>Grupy zabezpieczeń sieci (NSG)
-W tym scenariuszu nie są używane grupy NSG. Można jednak zastosować grupy NSG do każdej podsieci, aby ograniczyć ruch przychodzący i wychodzący. Na przykład można zastosować następujące zasady grupy NSG do zewnętrznego podsieci środowiska .NET Framework.
+## <a name="network-security-groups-nsgs"></a>Network Security Groups (NSGs)
+W tym scenariuszu nie są używane sieciowe grupy zabezpieczeń. Jednakże można zastosować sieciowe grupy zabezpieczeń w każdej podsieci, aby ograniczyć ruch przychodzący i wychodzący. Na przykład można zastosować następujące reguły sieciowej grupy zabezpieczeń do podsieci zewnętrznego środowiska .NET Framework.
 
-**Przychodzące**
+**przychodzące**
 
-* Zezwolić na cały ruch TCP z Internetu do portu 80 w żadnej maszyny Wirtualnej należących do podsieci.
-* Odmowa cały ruch z Internetu.
+* Zezwalaj na cały ruch TCP z Internetu do portu 80 na dowolnej maszynie Wirtualnej w podsieci.
+* Odmowa cały pozostały ruch z Internetu.
 
 **Wychodzące**
 
@@ -164,8 +164,8 @@ W tym scenariuszu nie są używane grupy NSG. Można jednak zastosować grupy NS
 Aby wdrożyć ten scenariusz, wykonaj poniższe kroki wysokiego poziomu.
 
 1. Zaloguj się do subskrypcji platformy Azure.
-2. Jeśli chcesz wdrożyć sieci wirtualnej, aby naśladował sieci lokalnej, należy udostępnić zasoby, które są częścią **ONPREMRG**.
-3. Zapewnij zasoby, które są częścią **AZURERG**.
-4. Zapewnij tunelu z **onpremvnet** do **azurevnet**.
-5. Po udostępnieniu wszystkie zasoby, zaloguj się do **onpremvm2** i zbadaj 10.0.3.101 do testowania łączności między **onpremsn2** i **azsn3**.
+2. Jeśli chcesz wdrożyć sieć wirtualną do naśladowania sieci lokalnej, zainicjować obsługę administracyjną zasobów, które są częścią **ONPREMRG**.
+3. Inicjowanie obsługi administracyjnej zasobów, które są częścią **AZURERG**.
+4. Aprowizowanie tunelu z **onpremvnet** do **azurevnet**.
+5. Po udostępnieniu wszystkie zasoby, zaloguj się do **onpremvm2** i wysłać polecenie ping 10.0.3.101 do testowania łączności między **onpremsn2** i **azsn3**.
 

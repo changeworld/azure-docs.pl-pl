@@ -1,7 +1,6 @@
 ---
 title: 'Szybki start: tworzenie klastra Spark w usłudze HDInsight przy użyciu programu Azure PowerShell'
 description: W tym przewodniku Szybki start pokazano, jak za pomocą programu Azure PowerShell utworzyć klaster Apache Spark w usłudze Azure HDInsight i uruchomić proste zapytanie Spark SQL.
-services: azure-hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: f56595abf354d1124a40729ce93f97ab2acdeeeb
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 41311dce20237a300ae57f21bcc969c91da617b1
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361561"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62097278"
 ---
 # <a name="quickstart-create-an-apache-spark-cluster-in-hdinsight-using-powershell"></a>Szybki start: tworzenie klastra Apache Spark w usłudze HDInsight przy użyciu programu PowerShell
 Dowiedz się, jak utworzyć klaster [Apache Spark](https://spark.apache.org/) w usłudze Azure HDInsight, a następnie uruchamiać zapytania Spark SQL dla tabel programu [Apache Hive](https://hive.apache.org/). Platforma Apache Spark umożliwia szybką analizę danych i używanie klastrów obliczeniowych korzystających z funkcji przetwarzania w pamięci. Aby uzyskać informacje na temat platformy Apache Spark w usłudze HDInsight, zobacz [Omówienie: platforma Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md).

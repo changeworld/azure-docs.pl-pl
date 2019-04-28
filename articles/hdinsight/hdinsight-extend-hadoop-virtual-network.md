@@ -1,19 +1,18 @@
 ---
 title: Rozszerzanie HDInsight z usługą Virtual Network - Azure
 description: Dowiedz się, jak połączyć z usługą HDInsight do innych zasobów w chmurze lub zasobów w centrum danych za pomocą usługi Azure Virtual Network
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/29/2019
-ms.openlocfilehash: a2d06cdbcc6ce995c55c858cb7a50a93ef6b3fb1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: f97c07c522dfb22818aca84d41d30c023f564d84
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58883568"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62097341"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Rozszerzenie usługi Azure HDInsight przy użyciu usługi Azure Virtual Network
 
@@ -259,7 +258,7 @@ Jeśli używasz grup zabezpieczeń sieci, muszą zezwalać na ruch z usługi kon
 
 1. Zawsze muszą zezwalać na ruch z następujących adresów IP:
 
-    | Źródłowy adres IP | Port docelowy | Kierunek |
+    | Źródłowy adres IP | Port docelowy | Direction |
     | ---- | ----- | ----- |
     | 168.61.49.99 | 443 | Przychodzący |
     | 23.99.5.239 | 443 | Przychodzący |
@@ -271,7 +270,7 @@ Jeśli używasz grup zabezpieczeń sieci, muszą zezwalać na ruch z usługi kon
     > [!IMPORTANT]  
     > Jeśli region platformy Azure, którego używasz, nie jest wymieniony, następnie używać tylko cztery adresy IP z kroku 1.
 
-    | Kraj | Region | Dozwolone adresy IP źródła | Dozwolone port docelowy | Kierunek |
+    | Kraj | Region | Dozwolone adresy IP źródła | Dozwolone port docelowy | Direction |
     | ---- | ---- | ---- | ---- | ----- |
     | Azja | Azja Wschodnia | 23.102.235.122</br>52.175.38.134 | 443 | Przychodzący |
     | &nbsp; | Azja Południowo-Wschodnia | 13.76.245.160</br>13.76.136.249 | 443 | Przychodzący |

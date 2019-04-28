@@ -9,11 +9,11 @@ ms.date: 06/29/2017
 ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: 777e0aac46dbffb1e491874b5889667a888aadf5
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57898690"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61478530"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>Przygotowywanie dysków twardych do zadania importu
 
@@ -366,7 +366,7 @@ Wszystkie wersje programu Microsoft .NET Framework są zainstalowane w następuj
 
 Przejdź do części wyżej wymienionych na komputerze docelowym, gdzie narzędzie musi zostać uruchomiony. Wyszukaj nazwę folderu, począwszy od wersji "4". Brak takiego katalogu oznacza, że .NET 4 nie jest zainstalowany na tym komputerze. .NET 4 można pobrać przy użyciu [Microsoft .NET Framework 4 (Instalator internetowy)](https://www.microsoft.com/download/details.aspx?id=17851).
 
-### <a name="limits"></a>Limity
+### <a name="limits"></a>Limits
 
 #### <a name="how-many-drives-can-i-preparesend-at-the-same-time"></a>Jak wiele dysków może mogę przygotować/wysyłania w tym samym czasie?
 

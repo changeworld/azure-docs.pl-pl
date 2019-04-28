@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: b5e733c93fef8920c73c8cf460dac7a7051fddb5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58180674"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61465613"
 ---
 # <a name="configure-asset-delivery-policies-with-net-sdk"></a>Konfigurowanie zasad dostarczania elementów zawartości przy użyciu zestawu SDK platformy .NET
 [!INCLUDE [media-services-selector-asset-delivery-policy](../../../includes/media-services-selector-asset-delivery-policy.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Jeśli planujesz zasoby dostarczanie zaszyfrowanych jedną z czynności w przepływie pracy dostarczania zawartości usługi Media Services służy do konfigurowania zasad dostarczania zasobów. Zasady dostarczania elementu zawartości informuje Media Services, jak chcesz uzyskać element zawartości został dostarczony: do protokołu przesyłania strumieniowego powinny element zawartości można dynamicznie spakować (na przykład, między innymi MPEG DASH, HLS, Smooth Streaming lub wszystkie), czy chcesz szyfrować dynamicznie element zawartości i w jaki sposób (koperty lub szyfrowania common encryption).
 
 W tym artykule omówiono, dlaczego i jak tworzenie i konfigurowanie zasad dostarczania elementów zawartości.

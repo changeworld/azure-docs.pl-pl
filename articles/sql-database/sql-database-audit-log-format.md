@@ -13,11 +13,11 @@ ms.reviewer: vanto
 manager: craigg
 ms.date: 01/03/2019
 ms.openlocfilehash: 0fefe01e413e30e4aa3c1fa90de77cbdece39c38
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58001687"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61417392"
 ---
 # <a name="sql-database-audit-log-format"></a>Format dziennika inspekcji bazy danych SQL
 
@@ -62,7 +62,7 @@ Zdarzenia inspekcji są zapisywane do obszaru roboczego usługi Log Analytics zd
 | duration_milliseconds | duration_milliseconds_d | Czas trwania wykonywania kwerendy w milisekundach | bigint | int |
 | event_time | event_time_t | Data i godzina, po wyzwoleniu działania inspekcji | datetime2 | datetime |
 | host_name | ND | Nazwa hosta klienta | string | ND |
-| is_column_permission | is_column_permission_s | Flaga wskazująca, czy jest to uprawnienie poziomu kolumna. 1 = true, 0 = false | Bitowe | string |
+| is_column_permission | is_column_permission_s | Flaga wskazująca, czy jest to uprawnienie poziomu kolumna. 1 = true, 0 = false | bit | string |
 | ND | is_server_level_audit_s | Flaga wskazująca, czy ten inspekcji jest na poziomie serwera | ND | string |
 | Identyfikator object_ — element | object_id_d | Identyfikator jednostki, w którym wystąpiło inspekcji. Obejmuje to: obiekty serwera, bazy danych, obiekty bazy danych i obiektów schematu. 0, jeśli jednostka jest serwerem lub jeśli inspekcji nie jest wykonywane na poziomie obiektu | int | int |
 | object_name | object_name_s | Nazwa jednostki, w którym wystąpiło inspekcji. Obejmuje to: obiekty serwera, bazy danych, obiekty bazy danych i obiektów schematu. 0, jeśli jednostka jest serwerem lub jeśli inspekcji nie jest wykonywane na poziomie obiektu | sysname | string |
@@ -70,21 +70,21 @@ Zdarzenia inspekcji są zapisywane do obszaru roboczego usługi Log Analytics zd
 | response_rows | response_rows_d | Liczba wierszy zwracanych w zestawie wyników | bigint | int |
 | schema_name | schema_name_s | Kontekst schematu, w którym wystąpiła Akcja. Wartość NULL w przypadku inspekcji pojawiają się poza schematu | sysname | string |
 | ND | securable_class_type_s | Zabezpieczanego obiektu, który jest mapowany do class_type poddawanych inspekcji | ND | string |
-| sequence_group_id | sequence_group_id_g | Unikatowy identyfikator | varbinary | Identyfikator GUID |
+| sequence_group_id | sequence_group_id_g | Unikatowy identyfikator | Varbinary | Identyfikator GUID |
 | sequence_number | sequence_number_d | Śledzi sekwencji rekordy w ramach rekord inspekcji jednego, który był zbyt duży, aby zmieścić ją w buforu zapisu dla inspekcji | int | int |
 | server_instance_name | server_instance_name_s | Nazwa wystąpienia serwera, w którym wystąpił inspekcji | sysname | string |
 | server_principal_id | server_principal_id_d | Identyfikator kontekstu logowania, w którym jest wykonywana akcja | int | int |
 | server_principal_name | server_principal_name_s | Bieżąca nazwa logowania | sysname | string |
-| server_principal_sid | server_principal_sid_s | Bieżąca nazwa logowania identyfikatora SID | varbinary | string |
+| server_principal_sid | server_principal_sid_s | Bieżąca nazwa logowania identyfikatora SID | Varbinary | string |
 | session_id | session_id_d | Identyfikator sesji, w którym wystąpiło zdarzenie | smallint | int |
 | session_server_principal_name | session_server_principal_name_s | Podmiot zabezpieczeń serwera dla sesji | sysname | string |
 | Instrukcja | statement_s | Instrukcja języka T-SQL, który został wykonany (jeśli istnieje) | nvarchar(4000) | string |
-| Powiodło się. | succeeded_s | Wskazuje, czy akcja, która wyzwoliła zdarzenie zakończyło się pomyślnie. Dla zdarzenia inne niż nazwa logowania i przetwarzania wsadowego to tylko raporty czy sprawdzenie uprawnień zakończonych powodzeniem lub niepowodzeniem, nie wykonać operację. 1 = Powodzenie. 0 = niepowodzenie | Bitowe | string |
+| Powiodło się. | succeeded_s | Wskazuje, czy akcja, która wyzwoliła zdarzenie zakończyło się pomyślnie. Dla zdarzenia inne niż nazwa logowania i przetwarzania wsadowego to tylko raporty czy sprawdzenie uprawnień zakończonych powodzeniem lub niepowodzeniem, nie wykonać operację. 1 = Powodzenie. 0 = niepowodzenie | bit | string |
 | target_database_principal_id | target_database_principal_id_d | Podmiot zabezpieczeń bazy danych operacji GRANT/DENY/REVOKE jest wykonywana na. 0, jeśli nie dotyczy | int | int |
 | target_database_principal_name | target_database_principal_name_s | Użytkownik docelowy akcji. Wartość NULL, jeśli nie dotyczy | string | string |
 | target_server_principal_id | target_server_principal_id_d | Podmiot zabezpieczeń serwera, który GRANT/DENY/REVOKE jest przeprowadzane na. Zwraca wartość 0, jeśli nie dotyczy | int | int |
 | target_server_principal_name | target_server_principal_name_s | Logowanie w docelowym akcji. Wartość NULL, jeśli nie dotyczy | sysname | string |
-| target_server_principal_sid | target_server_principal_sid_s | Identyfikator SID logowania docelowego. Wartość NULL, jeśli nie dotyczy | varbinary | string |
+| target_server_principal_sid | target_server_principal_sid_s | Identyfikator SID logowania docelowego. Wartość NULL, jeśli nie dotyczy | Varbinary | string |
 | transaction_id | transaction_id_d | Tylko programu SQL Server (począwszy od 2016) - 0 dla bazy danych SQL Azure | bigint | int |
 | user_defined_event_id | user_defined_event_id_d | Identyfikator zdarzenia przekazywany jako argument do sp_audit_write zdefiniowane przez użytkownika. Wartość NULL w przypadku zdarzenia systemowe (ustawienie domyślne) i różna od zera dla zdarzeń zdefiniowanych przez użytkownika. Aby uzyskać więcej informacji, zobacz [sp_audit_write (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql) | smallint | int |
 | user_defined_information | user_defined_information_s | Informacje przekazywane jako argument do sp_audit_write zdefiniowane przez użytkownika. Wartość NULL w przypadku zdarzenia systemowe (ustawienie domyślne) i różna od zera dla zdarzeń zdefiniowanych przez użytkownika. Aby uzyskać więcej informacji, zobacz [sp_audit_write (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql) | nvarchar(4000) | string |

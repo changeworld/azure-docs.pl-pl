@@ -10,11 +10,11 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: fe943ae5ac7894cdd8d8e104615cea670513b7eb
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000420"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61456674"
 ---
 # <a name="deprecated-azure-container-service-tutorial---manage-dcos"></a>(PRZESTARZAŁE) Samouczek usługi Azure Container Service — zarządzanie systemem DC/OS
 
@@ -262,7 +262,7 @@ Gdy klaster nie będzie już potrzebny, można użyć polecenia [az group delete
 az group delete --name myResourceGroup --no-wait
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku przedstawiono podstawowe zadania zarządzania systemem DC/OS, w tym poniższe. 
 

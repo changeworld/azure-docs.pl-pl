@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: jowargo
 ms.openlocfilehash: 31a22aabc7b0f1d51a673ef8642037103badcc02
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54828166"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61457808"
 ---
 # <a name="routing-and-tag-expressions"></a>Wyrażenia routingu i znaczników
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Wyrażenia tagu umożliwiają konkretnych zestawów docelowych urządzeń lub dokładniej rejestracji podczas wysyłania powiadomień wypychanych przy użyciu usługi Notification Hubs.
 

@@ -1,6 +1,6 @@
 ---
-title: Azure API Management terminologia | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera definicje terminów, które są specyficzne dla interfejsu API zarządzania.
+title: Terminologii platformy Azure API Management | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera definicje dla terminów, które są specyficzne dla usługi API Management.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -11,29 +11,29 @@ ms.workload: integration
 ms.topic: article
 ms.date: 10/11/2017
 ms.author: apimpm
-ms.openlocfilehash: 81cf34cacdfe37e25d6b745304ab0879245fd8da
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: b99ca444532799d21850058eae0e3f40ed871135
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33934601"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61074058"
 ---
 # <a name="terminology"></a>Terminologia
 
-Ten artykuł zawiera definicje terminów, specyficzne zarządzania interfejsu API (APIM).
+Ten artykuł zawiera definicje dla terminów, przeznaczone dla protokołu API Management (APIM).
 
 ## <a name="term-definitions"></a>Definicje terminów
 
-* **Interfejs API zaplecza** — usługa HTTP, która implementuje interfejs API i operacjach. 
-* **API frontonu**/**APIM API** — APIM interfejsu API nie obsługuje interfejsów API, tworzy fasad dla interfejsu API zakończyć swoje interfejsy API w celu dostosowania fasad zgodnie z potrzebami, nie ingerując z tyłu. Aby uzyskać więcej informacji, zobacz [Import i opublikować interfejs API](import-and-publish.md).
-* **Produkt APIM** -produkt zawiera jeden lub więcej interfejsów API, a także przydział użycia i warunki użytkowania. Można zawierają wiele interfejsów API i ich oferty dla deweloperów za pośrednictwem portalu dla deweloperów. Aby uzyskać więcej informacji, zobacz [tworzenie i publikowanie produktu](api-management-howto-add-products.md).
-* **Operacja interfejsu API APIM** — każdy APIM interfejsu API reprezentuje zestaw działań dostępnych dla deweloperów. Każdy interfejs API APIM zawiera odwołanie do usługi zaplecza, który implementuje interfejs API i jego operacji mapy do operacji zaimplementowanych przez usługę zaplecza. Aby uzyskać więcej informacji, zobacz [odpowiedzi Mock interfejsu API](mock-api-responses.md).
-* **Wersja** — czasami chcesz opublikować nowych lub innego interfejsu API funkcji niektórych użytkowników, podczas gdy inne korzystać z interfejsu API, który jest obecnie obsługiwane dla nich. Aby uzyskać więcej informacji, zobacz [publikowanie wielu wersji interfejsu API](api-management-get-started-publish-versions.md).
-* **Poprawki** — interfejs API jest gotowe do go i rozpoczyna się do użycia przez deweloperów, należy zwykle należy zachować ostrożność w wprowadzania zmian do tego interfejsu API i w tym samym czasie, aby nie przerywać wywołań interfejsu API. Ponadto warto poinformować deweloperów o wprowadzanych zmianach. Aby uzyskać więcej informacji, zobacz [Użyj poprawki](api-management-get-started-revise-api.md).
-* **Portalu dla deweloperów** -klientów (deweloperzy) należy używać portalu dla deweloperów dostępu do sieci interfejsów API. Można dostosować portalu dla deweloperów. Aby uzyskać więcej informacji, zobacz [Dostosowywanie portalu dla deweloperów](api-management-customize-styles.md).
+* **Interfejs API zaplecza** — usługa HTTP, która implementuje interfejs API i jego operacje. 
+* **Interfejs API frontonu**/**interfejsu API usługi APIM** -interfejsu API usługi APIM nie obsługuje interfejsów API, tworzy fasad dla interfejsów API w celu Dostosowywanie fasady zgodnie z potrzebami bez dotykania tylnej wewnętrznego interfejsu API. Aby uzyskać więcej informacji, zobacz [importowanie i publikowanie interfejsu API](import-and-publish.md).
+* **Produkt APIM** — produkt zawiera jeden lub więcej interfejsów API oraz limit przydziału użycia i warunki użytkowania. Można uwzględnić wiele interfejsów API i zaoferować je deweloperom za pośrednictwem portalu dla deweloperów. Aby uzyskać więcej informacji, zobacz [tworzenie i publikowanie produktu](api-management-howto-add-products.md).
+* **Operacja interfejsu API usługi APIM** -każdego interfejsu API usługi APIM reprezentuje zestaw operacji dostępnych dla deweloperów. Każdy interfejs API APIM zawiera odwołanie do usługi zaplecza, która implementuje interfejs API oraz mapę odwzorowań operacji operacje zaimplementowane w usłudze zaplecza. Aby uzyskać więcej informacji, zobacz [odpowiedzi testowanie interfejsu API](mock-api-responses.md).
+* **Wersja** — czasami chcesz opublikować nowy lub inny interfejs API funkcji niektórym użytkownikom, podczas gdy inne korzystać przy użyciu interfejsu API, które obecnie są obsługiwane dla nich. Aby uzyskać więcej informacji, zobacz [publikowanie wielu wersji interfejsu API](api-management-get-started-publish-versions.md).
+* **Poprawka** — w przypadku interfejsu API jest gotowe do go i zaczyna być używany przez deweloperów, zazwyczaj można trzeba zadbać o wprowadzanie zmian do tego interfejsu API i w tym samym czasie, aby nie przerywać pracy wywołującym interfejs API. Ponadto warto poinformować deweloperów o wprowadzanych zmianach. Aby uzyskać więcej informacji, zobacz [przy użyciu poprawek](api-management-get-started-revise-api.md).
+* **Portal dla deweloperów** -klientów (deweloperzy) powinien umożliwia dostęp do interfejsów API portalu dla deweloperów. Można dostosować portal dla deweloperów. Aby uzyskać więcej informacji, zobacz [dostosowywania portalu deweloperów](api-management-customize-styles.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Tworzenie wystąpienia](get-started-create-service-instance.md)
+> [Tworzenie wystąpienia usługi](get-started-create-service-instance.md)
 

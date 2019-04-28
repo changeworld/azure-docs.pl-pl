@@ -9,11 +9,11 @@ ms.date: 06/12/2018
 ms.author: johnkem
 ms.subservice: ''
 ms.openlocfilehash: c703f735f59a8425c2a14641781f482a6e2d1c78
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58848541"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61364519"
 ---
 # <a name="consume-monitoring-data-from-azure"></a>Używanie danych monitorowania na platformie Azure
 
@@ -23,7 +23,7 @@ Na platformie Azure łączymy dane monitorowania w jednym miejscu dzięki usłud
 
 ## <a name="options-for-data-consumption"></a>Opcje do użycia danych
 
-| Typ danych | Kategoria | Obsługiwane usługi | Metod dostępu |
+| Typ danych | Category | Obsługiwane usługi | Metod dostępu |
 | --- | --- | --- | --- |
 | Metryki platformy poziomu usługi Azure Monitor | Metryki | [Zobacz tutaj](metrics-supported.md) | <ul><li>**INTERFEJS API REST:** [Interfejs API metryk usługi Azure Monitor](https://docs.microsoft.com/rest/api/monitor/metrics)</li><li>**Magazyn obiektów blob lub zdarzenia Centrum:** [Ustawienia diagnostyczne](diagnostic-logs-overview.md#diagnostic-settings)</li></ul> |
 | Obliczenia metryki systemu operacyjnego gościa (np.) liczniki wydajności) | Metryki | [Windows](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines) i maszyn wirtualnych systemu Linux (wersja 2) [usług w chmurze](../../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md), [usługi Service Fabric](../../service-fabric/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md) | <ul><li>**Tabela magazynu lub obiektów blob:** [Diagnostyka Windows lub Linux, Azure](diagnostics-extension-to-storage.md)</li><li>**Centrum zdarzeń:** [Usługi Windows Azure diagnostics](diagnostics-extension-stream-event-hubs.md)</li></ul> |

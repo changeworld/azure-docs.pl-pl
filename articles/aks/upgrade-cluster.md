@@ -2,17 +2,18 @@
 title: Uaktualnianie klastra usługi Azure Kubernetes Service (AKS)
 description: Dowiedz się, jak uaktualnić klaster Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
+author: rockboyfor
 ms.service: container-service
 ms.topic: article
-ms.date: 02/12/2019
-ms.author: iainfou
+origin.date: 02/12/2019
+ms.date: 03/04/2019
+ms.author: v-yeche
 ms.openlocfilehash: 59d52db8c3f5f8968eae1a544abe1e5c6bbaacca
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56186004"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61028444"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Uaktualnianie klastra usługi Azure Kubernetes Service (AKS)
 
@@ -26,7 +27,7 @@ Ten artykuł wymaga, czy korzystasz z wiersza polecenia platformy Azure w wersji
 
 Aby sprawdzić, które wersje rozwiązania Kubernetes są dostępne dla klastra, użyj [az aks get uaktualnienia] [ az-aks-get-upgrades] polecenia. Poniższy przykład sprawdza dostępne aktualizacje do klastra o nazwie *myAKSCluster* w grupie zasobów o nazwie *myResourceGroup*:
 
-```azurecli-interactive
+```azurecli
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
@@ -47,7 +48,7 @@ default  myResourceGroup  1.10.12          1.10.12            1.11.5, 1.11.6
 
 Z listy dostępnych wersji dla klastra usługi AKS, użyj [uaktualnienia az aks] [ az-aks-upgrade] polecenie, aby uaktualnić. Podczas procesu uaktualniania AKS dodaje nowy węzeł do klastra, następnie dokładnie [cordon i opróżniania] [ kubernetes-drain] jeden węzeł w czasie, aby zminimalizować zakłócenia dla działających aplikacji. Poniższy przykład uaktualniania klastra do wersji *1.11.6*:
 
-```azurecli-interactive
+```azurecli
 az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.11.6
 ```
 
@@ -55,7 +56,7 @@ Trwa kilka minut, aby uaktualnić klaster, w zależności od liczby węzłów ma
 
 Aby upewnić się, że uaktualnienie zakończyło się pomyślnie, należy użyć [az aks show] [ az-aks-show] polecenia:
 
-```azurecli-interactive
+```azurecli
 az aks show --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
@@ -64,7 +65,7 @@ Następujące przykładowe dane wyjściowe pokazuje, że teraz uruchamiane w kla
 ```json
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
 ------------  ----------  ---------------  -------------------  -------------------  ---------------------------------------------------------------
-myAKSCluster  eastus      myResourceGroup  1.11.6               Succeeded            myaksclust-myresourcegroup-19da35-90efab95.hcp.eastus.azmk8s.io
+myAKSCluster  chinaeast2      myResourceGroup  1.11.6               Succeeded            myaksclust-myresourcegroup-19da35-90efab95.hcp.chinaeast2.azmk8s.io
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
@@ -79,7 +80,7 @@ W tym artykule pokazano sposób uaktualniania istniejącego klastra usługi AKS.
 
 <!-- LINKS - internal -->
 [aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md
-[azure-cli-install]: /cli/azure/install-azure-cli
-[az-aks-get-upgrades]: /cli/azure/aks#az-aks-get-upgrades
-[az-aks-upgrade]: /cli/azure/aks#az-aks-upgrade
-[az-aks-show]: /cli/azure/aks#az-aks-show
+[azure-cli-install]: https://docs.azure.cn/zh-cn/cli/install-azure-cli?view=azure-cli-latest
+[az-aks-get-upgrades]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-get-upgrades
+[az-aks-upgrade]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-upgrade
+[az-aks-show]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-show

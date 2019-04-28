@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: sutalasi
 ms.openlocfilehash: 5f477cf20b817d7a6c8be856636bf1e3755b5424
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57443491"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61472115"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Konfigurowanie odzyskiwania po awarii dla wielowarstwowej aplikacji programu SharePoint do odzyskiwania po awarii przy użyciu usługi Azure Site Recovery
 
 W tym artykule opisano szczegółowo sposobu ochrony aplikacji programu SharePoint przy użyciu [usługi Azure Site Recovery](site-recovery-overview.md).
 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Microsoft SharePoint to zaawansowany aplikacja, która może pomóc grupy lub działu organizowania, współpracy i udostępniania informacji. Program SharePoint może zapewnić portali sieci intranet, dokumentów i plików zarządzania, współpracy, sieci społecznościowych, sieci ekstranet, witryn sieci Web, wyszukiwaniu korporacyjnemu i analizy biznesowej. Ma również integracji systemów, procesów i możliwości automatyzacji przepływu pracy. Zazwyczaj organizacji należy wziąć pod uwagę ją jako aplikację warstwy 1 wrażliwe na czas przestoju i utraty danych.
 

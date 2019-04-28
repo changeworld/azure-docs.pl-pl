@@ -1,6 +1,6 @@
 ---
-title: Wdrażanie szablonu platformy Azure z tokenu sygnatury dostępu Współdzielonego i interfejsu wiersza polecenia Azure | Dokumentacja firmy Microsoft
-description: Użyj usługi Azure Resource Manager i interfejsu wiersza polecenia Azure, aby wdrożyć zasobów na platformie Azure z szablonu, który jest chroniony za pomocą tokenu sygnatury dostępu Współdzielonego.
+title: Wdrażanie szablonu platformy Azure przy użyciu tokenu sygnatury dostępu Współdzielonego i wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
+description: Użyj usługi Azure Resource Manager i interfejsu wiersza polecenia platformy Azure do wdrażania zasobów platformy Azure z tego szablonu, który jest chroniony za pomocą tokenu sygnatury dostępu Współdzielonego.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,27 +14,27 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2017
 ms.author: tomfitz
-ms.openlocfilehash: d09aa46eabe705082edafe12da8442a79d1080b3
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c869b76a0d1ba10bc27aefa60cbe4ed5b8d8201a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34603200"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61061362"
 ---
-# <a name="deploy-private-resource-manager-template-with-sas-token-and-azure-cli"></a>Wdrażanie prywatnej szablonu usługi Resource Manager z tokenu sygnatury dostępu Współdzielonego i wiersza polecenia platformy Azure
+# <a name="deploy-private-resource-manager-template-with-sas-token-and-azure-cli"></a>Wdrażanie prywatnego szablonu usługi Resource Manager przy użyciu tokenu sygnatury dostępu Współdzielonego i wiersza polecenia platformy Azure
 
-Gdy w szablonie znajduje się na koncie magazynu, można ograniczyć dostęp do szablonu, a także dostarczają token sygnatury dostępu Współdzielonego dostępu współdzielonego podczas wdrażania. W tym temacie wyjaśniono, jak przy użyciu programu Azure PowerShell z szablonami usługi Resource Manager zapewnienie tokenu sygnatury dostępu Współdzielonego podczas wdrażania. 
+Gdy szablon znajduje się na koncie magazynu, można ograniczyć dostęp do szablonu, a także dostarczają token sygnatury (SAS) dostępu współdzielonego podczas wdrażania. W tym temacie wyjaśniono, jak użyć programu Azure PowerShell przy użyciu szablonów usługi Resource Manager, aby zapewnić tokenu sygnatury dostępu Współdzielonego podczas wdrażania. 
 
 ## <a name="add-private-template-to-storage-account"></a>Dodaj szablon prywatnych do konta magazynu
 
-Szablony można dodać do konta magazynu i link do ich podczas wdrażania z tokenem sygnatury dostępu Współdzielonego.
+Szablony można dodać do konta magazynu i link do ich podczas wdrażania przy użyciu tokenu sygnatury dostępu Współdzielonego.
 
 > [!IMPORTANT]
-> Wykonując poniższe kroki, obiektu blob zawierającego szablon jest dostępny tylko dla właściciela konta. Podczas tworzenia tokenu SAS obiektu blob obiektu blob jest jednak dostępne dla wszystkich użytkowników z tym identyfikatorem URI. Jeśli inny użytkownik przechwytuje identyfikator URI, ten użytkownik jest w stanie uzyskać dostęp do szablonu. Za pomocą tokenu sygnatury dostępu Współdzielonego jest dobrym sposobem ograniczenia dostępu do szablonów, ale nie może zawierać dane poufne, takie jak hasła, bezpośrednio w szablonie.
+> Wykonując poniższe kroki, obiektu blob zawierającego szablon jest dostępny tylko właściciel konta. Jednak podczas tworzenia tokenu sygnatury dostępu Współdzielonego dla obiektu blob, obiekt blob jest dostępna dla wszystkich odbiorców za pomocą tego identyfikatora URI. Jeśli inny użytkownik przechwytuje identyfikatora URI, ten użytkownik będzie mógł uzyskiwać dostęp do szablonu. Przy użyciu tokenu sygnatury dostępu Współdzielonego jest dobrym sposobem ograniczenia dostępu do szablonów, ale nie może zawierać dane poufne, takie jak hasła, bezpośrednio w szablonie.
 > 
 > 
 
-Poniższy przykład ustawia kontener konta magazynu prywatnych i przekazuje szablonu:
+Poniższy przykład ustawia kontenera konta magazynu prywatnego i przekazuje szablonu:
    
 ```azurecli
 az group create --name "ManageGroup" --location "South Central US"
@@ -60,7 +60,7 @@ az storage blob upload \
 ```
 
 ### <a name="provide-sas-token-during-deployment"></a>Podaj token sygnatury dostępu Współdzielonego podczas wdrażania
-Aby wdrożyć szablon prywatnych na koncie magazynu, wygenerowania tokenu sygnatury dostępu Współdzielonego i dołączyć go w identyfikatorze URI dla szablonu. Ustawianie czasu wygaśnięcia poczekać na ukończenie wdrożenia.
+Aby wdrożyć szablon prywatne w ramach konta magazynu, wygeneruj token sygnatury dostępu Współdzielonego, a następnie dołącz ją w identyfikatorze URI dla szablonu. Ustaw czas wygaśnięcia, aby umożliwić wystarczająco dużo czasu na ukończenie wdrożenia.
    
 ```azurecli
 expiretime=$(date -u -d '30 minutes' +%Y-%m-%dT%H:%MZ)
@@ -83,9 +83,9 @@ url=$(az storage blob url \
 az group deployment create --resource-group ExampleGroup --template-uri $url?$token
 ```
 
-Na przykład za pomocą tokenu sygnatury dostępu Współdzielonego przy użyciu szablonów połączonych, zobacz [za pomocą szablonów połączonych z usługą Azure Resource Manager](resource-group-linked-templates.md).
+Przykład za pomocą tokenu sygnatury dostępu Współdzielonego z połączonymi szablonami, zobacz [przy użyciu szablonów połączonych z usługą Azure Resource Manager](resource-group-linked-templates.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Aby obejrzeć wprowadzenie do wdrażania szablonów, zobacz [wdrażanie zasobów przy użyciu szablonów usługi Resource Manager i programu Azure PowerShell](resource-group-template-deploy-cli.md).
-* Zakończenie przykładowego skryptu, który wdraża szablonu, zobacz [skryptu szablonu wdrażania Menedżera zasobów](resource-manager-samples-cli-deploy.md)
-* Aby określić parametry w szablonie, zobacz [tworzenia szablonów](resource-group-authoring-templates.md#parameters).
+* Wprowadzenie do wdrażania szablonów, zobacz [wdrażanie zasobów przy użyciu szablonów usługi Resource Manager i programu Azure PowerShell](resource-group-template-deploy-cli.md).
+* Aby uzyskać kompletny przykładowy skrypt, który służy do wdrażania szablonu, zobacz [skryptu szablonu wdrażania usługi Resource Manager](resource-manager-samples-cli-deploy.md)
+* Aby zdefiniować parametry w szablonie, zobacz [Tworzenie szablonów](resource-group-authoring-templates.md#parameters).

@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: b-juche
 ms.openlocfilehash: 1563b60ef26ac5e4d40f45095d0109dd9dd71570
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672580"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61084943"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Metryki dla usługi Azure NetApp Files
 
@@ -47,6 +47,6 @@ Usługa Azure Files NetApp generuje dane pomiarowe na przydzielenia pamięci, u�
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Zrozumienie hierarchii magazynu usługi Azure Files NetApp](azure-netapp-files-understand-storage-hierarchy.md)
+* [Omówienie hierarchii magazynu usługi Azure NetApp Files](azure-netapp-files-understand-storage-hierarchy.md)
 * [Konfigurowanie puli pojemności](azure-netapp-files-set-up-capacity-pool.md)
 * [Tworzenie woluminu dla usługi Azure NetApp Files](azure-netapp-files-create-volumes.md)

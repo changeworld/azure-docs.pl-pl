@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 85ab5e3bb963ee692e5b70af3eb90cc68cec361f
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 86fa7f62230c0ae0530b67ff2384942c876083d4
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593390"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62098596"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>Tworzenie łańcuchów jednostek usługi Service Bus przy użyciu autoforwarding
 
@@ -47,6 +47,10 @@ Autoforwarding umożliwia również oddzielenie nadawców wiadomości z odbiorni
 
 Jeśli Alicja przechodzi na urlopu, swojej osobistej kolejki, a nie tematu ERP, się zapełni. W tym scenariuszu ponieważ przedstawiciel handlowy nie odebrał żadnych komunikatów żaden z tematów ERP i przeniesieniu jej nigdy nie dotrzeć do limitu przydziału.
 
+> [!NOTE]
+> Jeśli autoforwarding jest skonfigurowana, wartość AutoDeleteOnIdle w folderze docelowym automatycznie ustawiono maksymalnej wartości typu danych.
+> Odbywa się, aby upewnić się, że jest zawsze do przesyłania dalej wiadomości do miejsca docelowego.
+
 ## <a name="autoforwarding-considerations"></a>Zagadnienia dotyczące Autoforwarding
 
 Jeśli jednostki docelowej gromadzi zbyt wiele komunikatów i przekracza limit przydziału lub jednostki docelowej jest wyłączona, jednostki źródłowej dodaje komunikaty do jego [kolejki utraconych wiadomości](service-bus-dead-letter-queues.md) miejsce w miejscu docelowym (lub jednostki ponownie włączono). Te komunikaty w dalszym ciągu mieszka kolejki utraconych wiadomości, więc należy jawnie odbierać i przetwarzać je z kolejki utraconych wiadomości.
@@ -67,7 +71,7 @@ Aby uzyskać szczegółowe informacje na temat autoforwarding zobacz następują
 
 Aby dowiedzieć się więcej o ulepszeniach wydajności usługi Service Bus, zobacz 
 
-* [Najlepsze rozwiązania zwiększające wydajność przy użyciu komunikatów usługi Service Bus](service-bus-performance-improvements.md)
+* [Najlepsze rozwiązania dotyczące zwiększania wydajności przy użyciu komunikatów usługi Service Bus](service-bus-performance-improvements.md)
 * [Partycjonowane jednostki do obsługi komunikatów][Partitioned messaging entities].
 
 [QueueDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.forwardto#Microsoft_ServiceBus_Messaging_QueueDescription_ForwardTo

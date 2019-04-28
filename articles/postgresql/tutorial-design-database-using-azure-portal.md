@@ -8,11 +8,11 @@ ms.custom: tutorial, mvc
 ms.topic: tutorial
 ms.date: 03/20/2018
 ms.openlocfilehash: aed539484ac01d1b18b8374ffb57456364f9bd2c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58119271"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61092116"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql-using-the-azure-portal"></a>Samouczek: projektowanie bazy danych usługi Azure Database for PostgreSQL przy użyciu witryny Azure Portal
 

@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: jingwang
 ms.openlocfilehash: 9540a82933337dab112119cc791fa12d98b30aff
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57405019"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61042938"
 ---
 # <a name="copy-data-from-sftp-server-using-azure-data-factory"></a>Kopiowanie danych z serwera SFTP przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -62,7 +62,7 @@ Aby użyć uwierzytelniania podstawowego, ustaw właściwość "authenticationTy
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | userName | Użytkownik, który ma dostęp do serwera SFTP. |Yes |
-| hasło | Hasło dla użytkownika (nazwa użytkownika). Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| password | Hasło dla użytkownika (nazwa użytkownika). Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 
 **Przykład:**
 

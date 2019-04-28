@@ -14,14 +14,14 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 96d16552cfadca9b345d0f0cd0a344249897f571
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020952"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61258440"
 ---
 # <a name="move-data-from-sap-hana-using-azure-data-factory"></a>Przenoszenie danych z platformy SAP HANA przy użyciu usługi Azure Data Factory
-> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, z której korzystasz:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Wersja 1](data-factory-sap-hana-connector.md)
 > * [Wersja 2 (bieżąca wersja)](../connector-sap-hana.md)
 
@@ -60,12 +60,12 @@ Poniższa tabela zawiera opis dla elementów JSON, które są specyficzne dla pl
 
 Właściwość | Opis | Dozwolone wartości | Wymagane
 -------- | ----------- | -------------- | --------
-serwer | Nazwa serwera, na którym znajduje się wystąpienie SAP HANA. Jeśli serwer używa portu niestandardowe, należy określić `server:port`. | ciąg | Yes
+serwer | Nazwa serwera, na którym znajduje się wystąpienie SAP HANA. Jeśli serwer używa portu niestandardowe, należy określić `server:port`. | string | Yes
 Element authenticationType | Typ uwierzytelnienia. | ciąg. "Podstawowa" lub "Windows" | Yes 
-nazwa użytkownika | Nazwa użytkownika, który ma dostęp do serwera SAP | ciąg | Yes
-hasło | Hasło użytkownika. | ciąg | Yes
-gatewayName | Nazwa bramy, która powinna być używana w usłudze Data Factory, połączyć się z lokalnym wystąpieniem oprogramowania SAP HANA. | ciąg | Yes
-encryptedCredential | Ciąg zaszyfrowane poświadczenia. | ciąg | Nie
+nazwa użytkownika | Nazwa użytkownika, który ma dostęp do serwera SAP | string | Yes
+hasło | Hasło użytkownika. | string | Yes
+gatewayName | Nazwa bramy, która powinna być używana w usłudze Data Factory, połączyć się z lokalnym wystąpieniem oprogramowania SAP HANA. | string | Yes
+encryptedCredential | Ciąg zaszyfrowane poświadczenia. | string | Nie
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 Aby uzyskać pełną listę sekcje & właściwości dostępne Definiowanie zestawów danych, zobacz [tworzenie zestawów danych](data-factory-create-datasets.md) artykułu. Sekcje, takie jak struktury, dostępność i zasady zestawem danych JSON są podobne dla wszystkich typów na zestaw danych (Azure SQL, obiektów blob platformy Azure, usługa Azure table itp.).
@@ -284,22 +284,22 @@ Podczas przenoszenia danych z platformy SAP HANA, następujące mapowania są u�
 
 SAP HANA typu | Typ oparte na platformie .NET
 ------------- | ---------------
-TINYINT | Bajtów
+TINYINT | Byte
 SMALLINT | Int16
 INT | Int32
 BIGINT | Int64
-RZECZYWISTE | Pojedyncze
-PODWÓJNE | Pojedyncze
-DECIMAL | Dziesiętny
-ATRYBUT TYPU WARTOŚĆ LOGICZNA | Bajtów
-VARCHAR | Ciąg
-NVARCHAR | Ciąg
+RZECZYWISTE | Single
+DOUBLE | Single
+DECIMAL | Decimal
+ATRYBUT TYPU WARTOŚĆ LOGICZNA | Byte
+VARCHAR | String
+NVARCHAR | String
 CLOB | Byte[]
-ALPHANUM | Ciąg
-OBIEKT BLOB | Byte[]
+ALPHANUM | String
+BLOB | Byte[]
 DATE | DateTime
-CZAS | Przedział czasu
-ZNACZNIK CZASU: | DateTime
+CZAS | TimeSpan
+SYGNATURA CZASOWA | DateTime
 SECONDDATE | DateTime
 
 ## <a name="known-limitations"></a>Znane ograniczenia

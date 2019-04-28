@@ -1,27 +1,22 @@
 ---
-title: Instalowanie i używanie systemu Giraph w HDInsight (Hadoop) - Azure
-description: Dowiedz się, jak zainstalować system Giraph w klastrach HDInsight opartych na systemie Linux za pomocą akcji skryptu. Akcje skryptu umożliwiają dostosowanie do klastra podczas tworzenia, zmieniając konfigurację klastra lub instalowanie usługi i programy narzędziowe.
-services: hdinsight
+title: Instalowanie i używanie systemu Giraph w usłudze Azure HDInsight
+description: Dowiedz się, jak zainstalować system Giraph w klastrach HDInsight za pomocą akcji skryptu. System Giraph umożliwia czy wykres przetwarzania na platformie Apache Hadoop w chmurze platformy Azure.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/23/2018
-ms.author: hrasheed
-ms.openlocfilehash: a2f964915efda6ce83439c3c1970de58b0467456
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.date: 04/22/2019
+ms.openlocfilehash: aa13d8dfc65f020f3f27183423913933cd0b9404
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201725"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61395387"
 ---
 # <a name="install-apache-giraph-on-hdinsight-hadoop-clusters-and-use-giraph-to-process-large-scale-graphs"></a>Zainstaluj Apache Giraph w klastrach usługi HDInsight Hadoop, a przetwarzanie dużych wykresów za pomocą systemu Giraph
 
 Dowiedz się, jak zainstalować system Apache Giraph w klastrze usługi HDInsight. Funkcja akcji skryptu HDInsight umożliwia dostosowanie klastra, uruchamiając skrypt powłoki bash. Skrypty można dostosowywać klastry, podczas i po utworzeniu klastra.
-
-> [!IMPORTANT]  
-> Procedura przedstawiona w tym dokumencie wymaga klastra usługi HDInsight używającego systemu Linux. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 
 ## <a name="whatis"></a>Co to jest system Giraph
 
@@ -58,7 +53,7 @@ Ta sekcja zawiera instrukcje dotyczące sposobu używania przykładowy skrypt po
 > [!NOTE]  
 > Akcja skryptu można zastosować przy użyciu dowolnej z następujących metod:
 > * Azure PowerShell
-> * Klasyczny interfejs wiersza polecenia Azure
+> * Interfejs wiersza polecenia platformy Azure
 > * HDInsight SDK platformy .NET
 > * Szablony usługi Azure Resource Manager
 > 
@@ -148,7 +143,7 @@ Po utworzeniu klastra, wykonaj następujące kroki, aby uruchomić przykład Sim
 
     Aby uzyskać więcej informacji na temat tych i innych parametrów używane z systemu Giraph przykładów, zobacz [Szybki Start Giraph](https://giraph.apache.org/quick_start.html).
 
-6. Po zakończeniu zadania, wyniki są przechowywane w **/example/out/shotestpaths** katalogu. Nazw plików wyjściowych zaczynają się od **część-m -** oraz kończyć się liczbę określającą pierwszy, drugi, plików itp. Aby wyświetlić dane wyjściowe, użyj następującego polecenia:
+6. Po zakończeniu zadania, wyniki są przechowywane w **/example/out/shortestpaths** katalogu. Nazw plików wyjściowych zaczynają się od **część-m -** oraz kończyć się liczbę określającą pierwszy, drugi, plików itp. Aby wyświetlić dane wyjściowe, użyj następującego polecenia:
 
     ```bash
     hdfs dfs -text /example/output/shortestpaths/*

@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: juliako
 ms.openlocfilehash: 39a1dd5c3d26eeb6545a96aa35f9457bd9859c21
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58516488"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61247247"
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>Ustawienia wstępne Dostosowywanie Media Encoder Standard  
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Ten artykuł pokazuje, jak wykonywać zaawansowane kodowanie za pomocą Media Encoder Standard (MES) przy użyciu niestandardowego ustawienia wstępnego. Artykuł będzie używał programu .NET do tworzenia zadania kodowania i zadanie, które wykonuje to zadanie.  
 

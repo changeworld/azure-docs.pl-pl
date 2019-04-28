@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2017
 ms.author: victorh
-ms.openlocfilehash: 7f132c513354a87b4f1bd37db4c6c6ed8e0fd041
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: df741b34e1268c547723af87401760197d395780
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46949965"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61293833"
 ---
 # <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli"></a>Jak zarządzać strefami systemu DNS w usłudze Azure DNS przy użyciu wiersza polecenia platformy Azure
 
@@ -68,7 +68,7 @@ Wybierz subskrypcję platformy Azure do użycia.
 az account set --subscription "subscription name"
 ```
 
-### <a name="optional-to-installuse-azure-dns-private-zones-feature-public-preview"></a>Opcjonalnie: Instalowanie/korzystanie Azure DNS Private Zones funkcji (publiczna wersja zapoznawcza)
+### <a name="optional-to-installuse-azure-dns-private-zones-feature-public-preview"></a>Opcjonalnie: Instalowanie/korzystanie z funkcji Azure DNS Private Zones (w publicznej wersji zapoznawczej)
 Funkcja Azure DNS Private Zones została wydana w publicznej wersji zapoznawczej i udostępniona za pomocą rozszerzenia wiersza polecenia platformy Azure. Zainstaluj rozszerzenie interfejsu wiersza polecenia platformy Azure dla usługi „dns” 
 ```
 az extension add --name dns

@@ -15,17 +15,17 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 220084dd0a3c61205a2cf53c29cf49291000efdb
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979756"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61472983"
 ---
 # <a name="container-marketplace-tab"></a>Karta Marketplace kontenera
 
 **Marketplace** karcie **nowa oferta** strony umożliwia udostępnianie potencjalnych klientów. marketingu, sprzedaży i prawne informacji i umowy i zarządzanie potencjalnymi klientami wygenerowany na podstawie Portal Marketplace. Dodaj swoją zawartość, specyficzne dla obrotu **Przegląd** sekcji.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 W tej sekcji należy wprowadzić ogólne informacje o ofercie Azure Marketplace.  Znak gwiazdki (*) dodanym na końcu nazwy pola wskazuje, że jest to wymagane.
 

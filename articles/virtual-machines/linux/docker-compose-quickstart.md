@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/14/2019
 ms.author: cynthn
 ms.openlocfilehash: 03501ea774cf58a4be88ed9155e5cfdfb99f0379
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58007195"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61474088"
 ---
 # <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>Wprowadzenie do platformy Docker i Compose, aby zdefiniować i uruchomić aplikację obsługującą wiele kontenerów na platformie Azure
 Za pomocą [Compose](https://github.com/docker/compose), użyj prostego pliku tekstowego do definiowania aplikacja składająca się z wielu kontenerów platformy Docker. Następnie uruchom aplikację w pojedynczym poleceniu, tak, wszystko, co do wdrożenia środowiska zdefiniowane. Na przykład w tym artykule pokazano, jak szybko skonfigurować bloga WordPress z zapleczem bazy danych MariaDB SQL na maszynie Wirtualnej systemu Ubuntu. Redaguj umożliwia również konfigurowanie bardziej złożonych aplikacji.

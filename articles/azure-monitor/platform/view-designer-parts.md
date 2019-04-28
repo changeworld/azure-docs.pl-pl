@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: bwren
 ms.openlocfilehash: dead1fae9bc3287ed0fc80c6120914e965ef96dd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59493029"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61341933"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-azure-monitor"></a>Podręcznik informacyjny do części wizualizacji projektanta widoków w usłudze Azure Monitor
 Przy użyciu projektanta widoku w usłudze Azure Monitor, można tworzyć różne widoki niestandardowe w witrynie Azure portal, która pomoże Ci wizualizować dane w obszarze roboczym usługi Log Analytics. Ten artykuł jest przewodnik odwołanie do ustawienia dla części wizualizacji, które są dostępne w widoki niestandardowe.
@@ -143,7 +143,7 @@ Nagłówek przedstawia jeden numer, który podsumowuje kolumnę wartości w zapy
 | Zapytanie |Zapytanie do uruchamiania na wykres pierścieniowy. Pierwsza właściwość jest wartością tekstową i drugą właściwość jest wartością liczbową. |
 | Nawigacja za pomocą kliknięć | Działania wykonywane po kliknięciu nagłówka.  Aby uzyskać więcej informacji, zobacz [typowe ustawienia](#click-through-navigation). |
 | **Wykres pierścieniowy** |**> Center** |
-| Tekst |Tekst, który jest wyświetlany w polu wartość w wykres pierścieniowy. |
+| Text |Tekst, który jest wyświetlany w polu wartość w wykres pierścieniowy. |
 | Operacja |Operacja do wykonania na właściwości value, aby podsumować go jako pojedyncza wartość.<ul><li>Suma: Dodaje wartości wszystkich rekordów.</li><li>Procent: Współczynnik rekordów zwróconych przez wartości w **wyniku wartości używane w środku** łączna liczba rekordów w zapytaniu.</li></ul> |
 | Wartości wynikowe używane w środku |Opcjonalnie wybierz znak plus (+), aby dodać co najmniej jedną wartość. Wyniki zapytania są ograniczone do rekordów za pomocą wartości właściwości, które określisz. Jeśli żadne wartości nie zostaną dodane, wszystkie rekordy zostaną uwzględnione w zapytaniu. |
 | **Dodatkowe opcje** |**> Colors** |
@@ -209,7 +209,7 @@ Nagłówek Wyświetla tekst statyczny oraz opcjonalnie łącza. Zostanie wyświe
 | Nowa grupa |Wybierz ten link, aby utworzyć nową grupę w widoku, począwszy od bieżącego widoku. |
 | Kolor |Kolor tła dla nagłówka. |
 | **Nagłówek** | |
-| Image (Obraz) |Plik obrazu, który jest wyświetlany w nagłówku. |
+| Image |Plik obrazu, który jest wyświetlany w nagłówku. |
 | Label |Tekst, który jest wyświetlany w nagłówku. |
 | **Nagłówek** |**> Link** |
 | Label |Tekst łącza. |

@@ -11,11 +11,11 @@ ms.date: 03/27/2019
 ms.author: mlee3gsd
 ms.reviewer: igorstan
 ms.openlocfilehash: 57ca749aec2a72379e92c46764eb9b6558653e29
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620193"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61078997"
 ---
 # <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>Samouczek: Załaduj dane dotyczące taksówek w Nowym Jorku do usługi Azure SQL Data Warehouse
 

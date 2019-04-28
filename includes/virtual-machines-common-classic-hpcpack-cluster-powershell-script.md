@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 6f0d2d59ed50c743adb19027c404bfa83a1886f1
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58484867"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61485606"
 ---
 W zależności od środowiska i opcje skryptu można utworzyć cała infrastruktura klastra, w tym sieci wirtualnej platformy Azure, konta magazynu, usługi w chmurze, kontroler domeny, lokalnej lub zdalnej bazy danych SQL, węzeł główny i dodatkowe węzły klastra. Alternatywnie skryptu można już istniejącą infrastrukturę platformy Azure i tworzyć węzły klastra HPC.
 

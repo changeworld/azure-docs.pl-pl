@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 04/16/2019
 ms.author: kumud;tyao
 ms.openlocfilehash: e0ad1e85a4cd47de823bc4f224b5a8834b1068b9
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59685831"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61459321"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Konfigurowanie sieci web aplikacji współczynnik limit reguły zapory przy użyciu programu Azure PowerShell
 Sieci web platformy Azure reguła zapory usługi application (WAF) współczynnik limit Azure drzwiami frontowymi kontroluje liczbę żądań od jednego klienta adresu IP podczas okresu jednej minuty.

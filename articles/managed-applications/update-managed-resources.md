@@ -1,6 +1,6 @@
 ---
-title: Aktualizowanie zasobów na platformie Azure zarządzane aplikacje | Dokumentacja firmy Microsoft
-description: Opisuje sposób pracy do zasobów w zarządzanej aplikacji zarządzane przez grupę zasobów platformy Azure.
+title: Aktualizowanie zasobów na platformie Azure managed applications | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób pracy w zasobach w zarządzanej aplikacji zarządzanej grupy zasobów platformy Azure.
 services: managed-applications
 author: tfitzmac
 manager: timlt
@@ -10,66 +10,66 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 10/26/2017
 ms.author: tomfitz
-ms.openlocfilehash: 7c2b38055771dae458e4a3a56c2c98231335ae03
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 21f4e0aa339eb0c746f9b9b06f8aaada6c4d4b71
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34304974"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61043458"
 ---
-# <a name="work-with-resources-in-the-managed-resource-group-for-azure-managed-application"></a>Praca z zasobami w zarządzanej aplikacji zarządzane przez grupę zasobów platformy Azure
+# <a name="work-with-resources-in-the-managed-resource-group-for-azure-managed-application"></a>Praca z zasobami w zarządzanej aplikacji zarządzanej grupy zasobów platformy Azure
 
-W tym artykule opisano sposób aktualizacji zasobów, które są wdrażane w ramach zarządzanych aplikacji. Jako wydawca zarządzaną aplikację masz dostęp do zasobów w grupie zasobów zarządzanych. Aby zaktualizować tych zasobów, należy odnaleźć grupy zasobów zarządzanych skojarzonych z zarządzaną aplikację, a dostęp do zasobu w tej grupie zasobów.
+W tym artykule opisano, jak można zaktualizować zasobów, które są wdrażane jako część aplikacji zarządzanej. Jako wydawca aplikacji zarządzanej masz dostęp do zasobów w zarządzanej grupie zasobów. Aby zaktualizować te zasoby, należy znaleźć zarządzanej grupy zasobów skojarzonych z zarządzaną aplikację, a dostęp do zasobów w danej grupie zasobów.
 
-W tym artykule przyjęto założenie, wdrożono aplikację w [zarządzanych aplikacji sieci Web (IaaS) z usługami Azure zarządzania](https://github.com/Azure/azure-managedapp-samples/tree/master/samples/201-managed-web-app) przykładowy projekt. Czy zarządzanej aplikacji obejmuje **Standard_D1_v2** maszyny wirtualnej. Jeśli w tym zarządzanych aplikacji nie zostały wdrożone, można nadal używać w tym artykule zapoznać się z kroki aktualizowanie grupy zasobów zarządzanych.
+W tym artykule założono, została wdrożona aplikacja zarządzana w [zarządzanych aplikacji sieci Web (IaaS) przy użyciu usługi zarządzania platformą Azure](https://github.com/Azure/azure-managedapp-samples/tree/master/samples/201-managed-web-app) przykładowy projekt. Czy aplikacja zarządzana zawiera **maszyna wirtualna Standard_D1_v2** maszyny wirtualnej. Jeśli nie wdrożono tę aplikację zarządzaną, możesz nadal używać w tym artykule zapoznać się z instrukcjami aktualizowania zarządzanej grupy zasobów.
 
-Na poniższej ilustracji przedstawiono wdrożonej aplikacji zarządzanych.
+Na poniższej ilustracji przedstawiono wdrożoną aplikację zarządzaną.
 
-![Wdrożonej aplikacji zarządzanych](./media/update-managed-resources/deployed.png)
+![Wdrożoną aplikację zarządzaną](./media/update-managed-resources/deployed.png)
 
-W tym artykule można użyć interfejsu wiersza polecenia Azure, aby:
+W tym artykule, można użyć wiersza polecenia platformy Azure, aby:
 
-* Zidentyfikuj zarządzanej aplikacji
+* Identyfikowanie aplikacji zarządzanej
 * Identyfikator grupy zasobów zarządzanych
 * Zidentyfikuj zasoby maszyny wirtualnej w grupie zasobów zarządzanych
-* Zmień rozmiar maszyny Wirtualnej (albo mniejszy rozmiar, jeśli nie zostały użyte lub większych do obsługi obciążenia więcej)
-* Przypisać zasady do grupy zasobów zarządzanych, która określa dozwolonych lokalizacji
+* Zmień rozmiar maszyny Wirtualnej (albo mniejszy rozmiar, jeśli nie jest wykorzystywana lub większych do obsługi obciążenia więcej)
+* Przypisywać zasady do grupy zasobów zarządzanych, który określa dozwolone lokalizacje
 
-## <a name="get-managed-application-and-managed-resource-group"></a>Pobierz aplikację i grupy zasobów zarządzanych
+## <a name="get-managed-application-and-managed-resource-group"></a>Pobierz aplikację zarządzaną i zarządzanej grupy zasobów
 
-Aby uzyskać aplikacje zarządzane w grupie zasobów, należy użyć:
+Aby uzyskać aplikacje zarządzane w grupie zasobów, użyj:
 
 ```azurecli-interactive
 az managedapp list --query "[?contains(resourceGroup,'DemoApp')]"
 ```
 
-Aby uzyskać identyfikator grupy zasobów zarządzanych, należy użyć:
+Aby uzyskać identyfikator zarządzanej grupy zasobów, należy użyć:
 
 ```azurecli-interactive
 az managedapp list --query "[?contains(resourceGroup,'DemoApp')].{ managedResourceGroup:managedResourceGroupId }"
 ```
 
-## <a name="resize-vms-in-managed-resource-group"></a>Zmień rozmiar maszyny wirtualne w grupie zasobów zarządzanych
+## <a name="resize-vms-in-managed-resource-group"></a>Zmienianie rozmiaru maszyn wirtualnych w grupie zasobów zarządzanych
 
-Aby wyświetlić maszyny wirtualne w grupie zasobów zarządzanych, podaj nazwę grupy zasobów zarządzanych.
+Aby wyświetlić maszynami wirtualnymi w zarządzanej grupie zasobów, należy podać nazwę zarządzanej grupy zasobów.
 
 ```azurecli-interactive
 az vm list -g DemoApp6zkevchqk7sfq --query "[].{VMName:name,OSType:storageProfile.osDisk.osType,VMSize:hardwareProfile.vmSize}"
 ```
 
-Aby zaktualizować rozmiar maszyn wirtualnych, należy użyć:
+Aby zaktualizować rozmiaru maszyn wirtualnych, należy użyć:
 
 ```azurecli-interactive
 az vm resize --size Standard_D2_v2 --ids $(az vm list -g DemoApp6zkevchqk7sfq --query "[].id" -o tsv)
 ```
 
-Po zakończeniu operacji, sprawdź, czy aplikacja działa na standardowe D2 v2.
+Po zakończeniu operacji, sprawdź, czy aplikacja jest uruchomiona na standardowa D2, wersja 2.
 
-![Zarządzanej aplikacji przy użyciu standardowych D2 v2](./media/update-managed-resources/upgraded.png)
+![Zarządzanej aplikacji przy użyciu standardowa D2, wersja 2](./media/update-managed-resources/upgraded.png)
 
-## <a name="apply-policy-to-managed-resource-group"></a>Zastosuj zasady grupy zasobów zarządzanych
+## <a name="apply-policy-to-managed-resource-group"></a>Zastosuj zasady do zarządzanej grupy zasobów
 
-Pobieranie grupy zasobów zarządzanych i przypisanie zasad w tym zakresie. Zasady **e56962a6-4747-49cd-b67b-bf8b01975c4c** wbudowane zasady dla określanie dozwolonych lokalizacji.
+Pobieranie zarządzanej grupy zasobów i przypisywania zasad w tym zakresie. Zasady **e56962a6-4747-49cd-b67b-bf8b01975c4c** są wbudowane zasady do określania dozwolonych lokalizacji.
 
 ```azurecli-interactive
 managedGroup=$(az managedapp show --name <app-name> --resource-group DemoApp --query managedResourceGroupId --output tsv)
@@ -84,7 +84,7 @@ az policy assignment create --name locationAssignment --policy e56962a6-4747-49c
                         }'
 ```
 
-Aby wyświetlić dozwolonych lokalizacji, należy użyć:
+Aby wyświetlić dozwolone lokalizacje, użyj:
 
 ```azurecli-interactive
 az policy assignment show --name locationAssignment --scope $managedGroup --query parameters.listofallowedLocations.value
@@ -92,9 +92,9 @@ az policy assignment show --name locationAssignment --scope $managedGroup --quer
 
 Przypisania zasad jest wyświetlana w portalu.
 
-![Widok przypisania zasad](./media/update-managed-resources/assignment.png)
+![Wyświetl przypisania zasad](./media/update-managed-resources/assignment.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 * Zobacz artykuł [Omówienie aplikacji zarządzanych](overview.md) zawierający wprowadzenie do aplikacji zarządzanych.
-* Dla przykładowych projektach [przykładowe projekty dla platformy Azure zarządzanych aplikacji](sample-projects.md).
+* Dla przykładowych projektów, zobacz [przykładowych projektów dla platformy Azure zarządzane aplikacje](sample-projects.md).

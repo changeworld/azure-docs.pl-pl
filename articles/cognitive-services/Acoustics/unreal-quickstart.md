@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 03/20/2019
 ms.author: kegodin
 ms.openlocfilehash: 691f49e9be8aabe9a3e229bfd3b35ab183f9fed9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59492414"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61432829"
 ---
 # <a name="project-acoustics-unrealwwise-quickstart"></a>Szybki Start Unreal/Wwise Akustyka projektu
 W tym przewodniku Szybki Start będziesz eksperymentować z Akustyka projektu kontrolki projektu przy użyciu podanych przykładowych zawartości dla aparatu Unreal Engine i Wwise.

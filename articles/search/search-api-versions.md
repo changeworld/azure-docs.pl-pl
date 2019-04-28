@@ -11,11 +11,11 @@ ms.date: 06/28/2018
 ms.author: brjohnst
 ms.custom: seodec2018
 ms.openlocfilehash: c07a0c8f5440033455c69fe40806adf9b548c16f
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631159"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61126963"
 ---
 # <a name="api-versions-in-azure-search"></a>Wersje interfejsu API w usłudze Azure Search
 Usługa Azure Search regularnie zbiera i wydaje aktualizacje funkcji. Czasami, ale nie zawsze te aktualizacje wymagają nowej wersji interfejsu API w celu zachowania zgodności z poprzednimi wersjami. Publikowanie nowej wersji pozwala na kontrolowanie, kiedy i jak integrować aktualizacje usługi wyszukiwania w kodzie.

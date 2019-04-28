@@ -4,15 +4,16 @@ description: Dowiedz się, jak połączyć się z usługi Azure Cosmos DB korzys
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
-ms.date: 12/26/2018
-author: sivethe
-ms.author: sivethe
+origin.date: 12/26/2018
+ms.date: 03/18/2019
+author: rockboyfor
+ms.author: v-yeche
 ms.openlocfilehash: ab066fef4bffe35408fdc5f3ad6d66796b4d0818
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57443974"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61372540"
 ---
 # <a name="use-robo-3t-with-azure-cosmos-dbs-api-for-mongodb"></a>Korzystać z programu 3T Robo przy użyciu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB
 
@@ -47,3 +48,5 @@ Zarówno **nazwa_użytkownika** i **hasło** znajdują się informacje o połąc
 
 - Dowiedz się, jak [korzystać z programu Studio 3T](mongodb-mongochef.md) za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB.
 - Eksploruj [przykłady](mongodb-samples.md) bazy danych MongoDB za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB.
+
+<!-- Update_Description: update meta properties, wording update -->

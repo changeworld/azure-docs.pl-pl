@@ -15,11 +15,11 @@ ms.date: 04/12/2018
 ms.author: spelluru
 ms.custom: mvc
 ms.openlocfilehash: 2159e594f0cc6a43905f3562c0ad6f3e3c9984fe
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56867511"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61084472"
 ---
 # <a name="use-azure-cli-to-start-a-virtual-machine-in-a-lab-in-azure-devtest-labs"></a>Uruchamianie maszyny wirtualnej w laboratorium za pomocą interfejsu wiersza polecenia platformy Azure w usłudze Azure DevTest Labs
 
@@ -42,7 +42,7 @@ W tym skrypcie użyto następujących poleceń:
 |---|---|
 | [az lab vm start](/cli/azure/lab/vm?view=azure-cli-latest#az-lab-vm-start) | Uruchamia maszynę wirtualną w laboratorium. Wykonanie tej operacji może chwilę potrwać. |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure).
 

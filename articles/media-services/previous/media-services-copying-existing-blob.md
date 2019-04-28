@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 36bfd1787e9f35ac4eaa8b8418df1e592386e8f4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58182034"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61243354"
 ---
 # <a name="copying-existing-blobs-into-a-media-services-asset"></a>Kopiowanie istniejących obiektów blob do zasobu usługi multimediów
 W tym artykule przedstawiono sposób kopiowania obiektów blob z konta magazynu do nowego zasobu usługi Azure Media Services (AMS), za pomocą [rozszerzenia SDK .NET usługi Azure Media Services](https://github.com/Azure/azure-sdk-for-media-services-extensions/).

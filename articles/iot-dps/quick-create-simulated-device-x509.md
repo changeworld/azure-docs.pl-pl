@@ -2,19 +2,20 @@
 title: W tym przewodniku Szybki start przedstawiono sposób aprowizowania symulowanego urządzenia X.509 w usłudze Azure IoT Hub przy użyciu języka C | Microsoft Docs
 description: W tym przewodniku Szybki start używane są rejestracje indywidualne. W tym przewodniku Szybki start utworzysz i aprowizujesz symulowane urządzenie X.509 za pomocą zestawu SDK języka C dla usługi Azure IoT Hub Device Provisioning Service.
 author: wesmc7777
-ms.author: wesmc
-ms.date: 04/10/2019
+ms.author: v-yiso
+origin.date: 04/10/2019
+ms.date: 05/06/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: 2a27ec63ea4ae25823c604612bd3bcf3a057da61
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59500587"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61250012"
 ---
 # <a name="quickstart-provision-an-x509-simulated-device-using-the-azure-iot-c-sdk"></a>Szybki start: Aprowizowanie symulowanego urządzenia X.509 za pomocą zestawu SDK języka C usługi Azure IoT
 

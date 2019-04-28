@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 116eb48330381c7560c55ea9535b3c1b7c6a6a70
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810498"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61094402"
 ---
 <a name="cloud-partner-portal-api-reference"></a>Dokumentacja interfejsu API w portalu partnera chmury
 ==================================
@@ -45,7 +45,7 @@ Strategie dostępne do wywoływania tych interfejsów API.
 Ta dokumentacja szczegółowo opisuje interfejsy API, aby wykonać następujące typowe zadania.
 
 
-### <a name="offers"></a>Oferta
+### <a name="offers"></a>Oferty
 
 -   [Pobieranie wszystkich ofert](./cloud-partner-portal-api-retrieve-offers.md)
 -   [Pobieranie określonej oferty](./cloud-partner-portal-api-retrieve-specific-offer.md)
@@ -55,12 +55,12 @@ Ta dokumentacja szczegółowo opisuje interfejsy API, aby wykonać następujące
 
 ### <a name="operations"></a>Operacje
 
--   [Pobierz operacje](./cloud-partner-portal-api-retrieve-operations.md)
--   [Anuluj operacje](./cloud-partner-portal-api-cancel-operations.md)
+-   [Pobieranie operacji](./cloud-partner-portal-api-retrieve-operations.md)
+-   [Anulowanie operacji](./cloud-partner-portal-api-cancel-operations.md)
 
 ### <a name="publish-an-app"></a>Publikowanie aplikacji
 
--   [Rozpocznij na żywo](./cloud-partner-portal-api-go-live.md)
+-   [Udostępnianie](./cloud-partner-portal-api-go-live.md)
 
 ### <a name="other-tasks"></a>Inne zadania
 

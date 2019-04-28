@@ -14,13 +14,13 @@ ms.custom: mvc
 ms.date: 03/26/2019
 ms.author: juliako
 ms.openlocfilehash: 22b7f2380b509daa4cb9931d6fc57c1297628e3d
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522868"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61233180"
 ---
-# <a name="quickstart-stream-video-files---nodejs"></a>Szybki start: Pliki wideo Stream — Node.js
+# <a name="quickstart-stream-video-files---nodejs"></a>Szybki start: Przesyłanie strumieniowe wideo — Node.js
 
 Ten przewodnik Szybki start pokazuje, jak łatwo jest zakodować i rozpocząć strumieniowe przesyłanie wideo do różnych przeglądarek i urządzeń za pomocą usługi Azure Media Services. Zawartość wejściową można określić przy użyciu adresów URL HTTP, adresów URL SAS lub ścieżek do plików znajdujących się w magazynie obiektów blob platformy Azure.
 W przykładzie w tym temacie kodowana jest zawartość, która jest udostępniana za pośrednictwem adresu URL protokołu HTTPS. Pamiętaj, że obecnie usługa AMS w wersji 3 nie obsługuje fragmentarycznego kodowania transferu za pośrednictwem adresów URL HTTPS.

@@ -9,15 +9,15 @@ ms.date: 01/30/2017
 ms.author: seguler
 ms.subservice: common
 ms.openlocfilehash: 211051254e08d69c06afd4242599c909048e7e17
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464844"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61483749"
 ---
 # <a name="using-the-azure-classic-cli-with-azure-storage"></a>Za pomocą klasycznego wiersza polecenia platformy Azure z usługą Azure Storage
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Klasyczny interfejs wiersza polecenia Azure udostępnia zestaw typu "open source", międzyplatformowych poleceń do pracy z platformą Azure. Zapewnia wiele funkcji w [witryny Azure portal](https://portal.azure.com) również jako zaawansowanych danych dostęp do funkcji.
 

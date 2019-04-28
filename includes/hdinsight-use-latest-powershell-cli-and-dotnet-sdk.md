@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/25/2018
 ms.author: jasonh
 ms.openlocfilehash: 4b4b1f3a52dcbaa01f9fac73bce09a75495408df
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203855"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61476572"
 ---
 > [!IMPORTANT]
 > Pomoc dla zarządzania zasobami HDInsight przy użyciu usługi Azure Service Manager (ASM) przy użyciu programu Azure PowerShell, interfejsu wiersza polecenia platformy Azure i zestawu .NET SDK HDInsight **przestarzałe**i została usunięta z dniem 1 stycznia 2017 r. Kroki opisane w tym dokumencie użycia nowych poleceń cmdlet programu Azure PowerShell, poleceń interfejsu wiersza polecenia platformy Azure i zestawu .NET SDK, które działają z usługą Azure Resource Manager.

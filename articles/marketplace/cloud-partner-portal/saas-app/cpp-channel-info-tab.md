@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 72830734855f35dc1180035bb51bbb3c877a9901
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53197484"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62101294"
 ---
 # <a name="saas-application-channel-info-tab"></a>Karta informacje kanału aplikacji SaaS
 
@@ -35,4 +35,4 @@ Karta informacji kanału do udostępniania informacji kanału dla aplikacji, w t
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Wersja testowa](./cpp-testdrive-tab.md)
+[Test Drive](./cpp-testdrive-tab.md)

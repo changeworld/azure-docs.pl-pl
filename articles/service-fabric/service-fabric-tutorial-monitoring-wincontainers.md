@@ -16,11 +16,11 @@ ms.date: 06/08/2018
 ms.author: aljo, dekapur
 ms.custom: mvc
 ms.openlocfilehash: 11d913264e5920b90ea08d2a29a3651ab101ee64
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663166"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61390517"
 ---
 # <a name="tutorial-monitor-windows-containers-on-service-fabric-using-azure-monitor-logs"></a>Samouczek: Monitorowanie kontenerów Windows w usłudze Service Fabric przy użyciu dzienników usługi Azure Monitor
 

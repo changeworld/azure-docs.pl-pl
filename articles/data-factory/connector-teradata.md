@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
 ms.openlocfilehash: e9fd818990c8a985a77c2e7eeea19bf63c440e4e
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54018997"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61347755"
 ---
 # <a name="copy-data-from-teradata-using-azure-data-factory"></a>Kopiowanie danych z programu Teradata przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -58,7 +58,7 @@ Następujące właściwości są obsługiwane dla programu Teradata połączone 
 | serwer | Nazwa serwera programu Teradata. | Yes |
 | Element authenticationType | Typ uwierzytelniania używany do łączenia z bazą danych programu Teradata.<br/>Dozwolone wartości to: **Podstawowe**, i **Windows**. | Yes |
 | nazwa użytkownika | Określ nazwę użytkownika do łączenia z bazą danych programu Teradata. | Yes |
-| hasło | Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| password | Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Własne środowisko IR jest wymagany, zgodnie z opisem w [wymagania wstępne](#prerequisites). |Yes |
 
 **Przykład:**
@@ -165,43 +165,43 @@ Podczas kopiowania danych z programu Teradata, następujące mapowania są używ
 |:--- |:--- |
 | BigInt |Int64 |
 | Obiekt blob |Byte[] |
-| Bajtów |Byte[] |
+| Byte |Byte[] |
 | ByteInt |Int16 |
-| Char |Ciąg |
-| CLOB |Ciąg |
+| char |String |
+| CLOB |String |
 | Date |DateTime |
-| Dziesiętny |Dziesiętny |
-| Podwójne |Podwójne |
-| Grafika |Ciąg |
+| Decimal |Decimal |
+| Double |Double |
+| Grafika |String |
 | Liczba całkowita |Int32 |
-| Interwał dnia |Przedział czasu |
-| Interwału dnia do godziny |Przedział czasu |
-| Interwału dnia do minuty |Przedział czasu |
-| Interwału dnia do sekundy |Przedział czasu |
-| Interwał, godzinę |Przedział czasu |
-| Godzina przedział na minutę |Przedział czasu |
-| Godzina przedział na sekundę |Przedział czasu |
-| Interwał minutę |Przedział czasu |
-| Interwału minuty do sekundy |Przedział czasu |
-| Interwał miesiąca |Ciąg |
-| Interwał drugiego |Przedział czasu |
-| Interwał roku |Ciąg |
-| Interwału roku do miesiąca |Ciąg |
-| Liczba |Podwójne |
-| Period(Date) |Ciąg |
-| Period(Time) |Ciąg |
-| Okres (godzina ze strefą czasową) |Ciąg |
-| Period(TimeStamp) |Ciąg |
-| Okres (sygnatura czasowa ze strefą czasową) |Ciąg |
+| Interwał dnia |TimeSpan |
+| Interwału dnia do godziny |TimeSpan |
+| Interwału dnia do minuty |TimeSpan |
+| Interwału dnia do sekundy |TimeSpan |
+| Interwał, godzinę |TimeSpan |
+| Godzina przedział na minutę |TimeSpan |
+| Godzina przedział na sekundę |TimeSpan |
+| Interwał minutę |TimeSpan |
+| Interwału minuty do sekundy |TimeSpan |
+| Interwał miesiąca |String |
+| Interwał drugiego |TimeSpan |
+| Interwał roku |String |
+| Interwału roku do miesiąca |String |
+| Liczba |Double |
+| Period(Date) |String |
+| Period(Time) |String |
+| Okres (godzina ze strefą czasową) |String |
+| Period(TimeStamp) |String |
+| Okres (sygnatura czasowa ze strefą czasową) |String |
 | SmallInt |Int16 |
-| Time |Przedział czasu |
-| Godzina ze strefą czasową |Ciąg |
+| Time |TimeSpan |
+| Godzina ze strefą czasową |String |
 | Znacznik czasu |DateTime |
 | Sygnatura czasowa ze strefą czasową |DateTimeOffset |
 | VarByte |Byte[] |
-| VarChar |Ciąg |
-| VarGraphic |Ciąg |
-| Xml |Ciąg |
+| VarChar |String |
+| VarGraphic |String |
+| Xml |String |
 
 
 ## <a name="next-steps"></a>Kolejne kroki

@@ -9,11 +9,11 @@ ms.date: 03/13/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 32c46f0a488d775275b3a367aa2913f034569041
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57903933"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61026345"
 ---
 # <a name="tutorial-add-a-sample-model-from-the-portal"></a>Samouczek: Dodawanie przykładowego modelu z portalu
 

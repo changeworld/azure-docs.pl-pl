@@ -2,19 +2,20 @@
 title: Analiza porównawcza aplikacji przy użyciu usługi Azure Disk Storage - dysków zarządzanych
 description: Dowiedz się więcej o procesie testów porównawczych aplikacji na platformie Azure.
 services: virtual-machines-linux,storage
-author: roygara
-ms.author: rogarana
-ms.date: 01/11/2019
+author: rockboyfor
+ms.author: v-yeche
+origin.date: 01/11/2019
+ms.date: 04/01/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
 ms.openlocfilehash: 21ed4e9a6b1da10d0ae4c276612459506e13d94f
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56331266"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61474372"
 ---
 # <a name="benchmarking-a-disk"></a>Analiza porównawcza dysku
 

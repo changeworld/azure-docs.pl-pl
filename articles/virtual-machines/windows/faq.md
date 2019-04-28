@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/20/2017
 ms.author: cynthn
 ms.openlocfilehash: 65d4326763ef9754159e94c9426f3aee69f80ffd
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253367"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61095662"
 ---
 # <a name="frequently-asked-question-about-windows-virtual-machines"></a>Często zadawane pytania dotyczące maszyn wirtualnych Windows
 W tym artykule opisano często zadawane pytania dotyczące maszyn wirtualnych Windows utworzone na platformie Azure przy użyciu modelu wdrażania usługi Resource Manager. Wersja systemu Linux w tym temacie, zobacz [— często zadawane pytania dotyczące maszyn wirtualnych systemu Linux](../linux/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -33,7 +33,7 @@ Określonych wersji systemu Windows 7, Windows 8.1 i Windows 10 są dostępne dl
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>Ile pamięci masowej mogę użyć w maszynie wirtualnej?
 Każdy dysk danych może być do 4 TB (4095 GB). Liczba dysków danych, których możesz użyć, zależy od rozmiaru maszyny wirtualnej. Aby uzyskać szczegółowe informacje, zobacz [Sizes for virtual machines](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Rozmiary maszyn wirtualnych).
 
-Usługa Azure Managed Disks są zalecane oferta magazynu na dysku do użycia z usługą Azure Virtual Machines do trwałego magazynowania danych. W każdej maszynie wirtualnej możesz używać wielu funkcji Dyski zarządzane. Funkcja Dyski zarządzane oferuje dwa typy opcji magazynu trwałego: w warstwie Premium i Standardowa. Aby uzyskać informacje o cenach, zobacz [cennika usługi Managed Disks](https://azure.microsoft.com/pricing/details/managed-disks).
+Usługa Azure Managed Disks są zalecane oferta magazynu na dysku do użycia z usługą Azure Virtual Machines do trwałego magazynowania danych. W każdej maszynie wirtualnej możesz używać wielu funkcji Dyski zarządzane. Zarządzane dyski oferty dwa typy opcji magazynu trwałego: Dyski zarządzane — wersja Premium i standardowa. Aby uzyskać informacje o cenach, zobacz [cennika usługi Managed Disks](https://azure.microsoft.com/pricing/details/managed-disks).
 
 Konta usługi Azure storage oferuje również magazynu dla dysku systemu operacyjnego i dysków z danymi. Każdy dysk jest plikiem VHD przechowywanym jako stronicowy obiekt blob. Aby uzyskać szczegółowe informacje o cenach, zobacz [Szczegóły cennika magazynu](https://azure.microsoft.com/pricing/details/storage/).
 
@@ -92,7 +92,7 @@ Następujące nazwy użytkowników nie są dozwolone:
         <td style="text-align:center">1</td><td style="text-align:center">123</td><td style="text-align:center">a</td><td style="text-align:center">actuser</td>
     </tr>
     <tr>
-        <td style="text-align:center">Menedżer adm</td><td style="text-align:center">Administrator</td><td style="text-align:center">admin1</td><td style="text-align:center">admin2</td>
+        <td style="text-align:center">adm</td><td style="text-align:center">admin</td><td style="text-align:center">admin1</td><td style="text-align:center">admin2</td>
     </tr>   <tr>
         <td style="text-align:center">administrator</td><td style="text-align:center">aspnet</td><td style="text-align:center">kopia zapasowa</td><td style="text-align:center">console</td>
     </tr>
@@ -100,16 +100,16 @@ Następujące nazwy użytkowników nie są dozwolone:
         <td style="text-align:center">David </td><td style="text-align:center">Gość</td><td style="text-align:center">Jan</td><td style="text-align:center">właściciel</td>
     </tr>
     <tr>
-        <td style="text-align:center">Główny</td><td style="text-align:center">serwer</td><td style="text-align:center">sql</td><td style="text-align:center">pomoc techniczna</td>
+        <td style="text-align:center">root</td><td style="text-align:center">serwer</td><td style="text-align:center">sql</td><td style="text-align:center">pomoc techniczna</td>
     </tr>
     <tr>
         <td style="text-align:center">support_388945a0</td><td style="text-align:center">sys</td><td style="text-align:center">test</td><td style="text-align:center">test1</td>
     </tr>
     <tr>
-        <td style="text-align:center">Test2</td><td style="text-align:center">test3</td><td style="text-align:center">Użytkownik</td><td style="text-align:center">Użytkownik1</td>
+        <td style="text-align:center">test2</td><td style="text-align:center">test3</td><td style="text-align:center">Użytkownik</td><td style="text-align:center">user1</td>
     </tr>
     <tr>
-        <td style="text-align:center">UŻYTKOWNIK2</td><td style="text-align:center">UŻYTKOWNIK3</td><td style="text-align:center">user4</td><td style="text-align:center">user5</td>
+        <td style="text-align:center">user2</td><td style="text-align:center">UŻYTKOWNIK3</td><td style="text-align:center">user4</td><td style="text-align:center">user5</td>
     </tr>
 </table>
 

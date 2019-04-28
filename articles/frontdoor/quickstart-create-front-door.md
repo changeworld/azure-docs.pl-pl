@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/31/2018
 ms.author: sharadag
-ms.openlocfilehash: 39e7626e6b4c545649e39ff2120d1f1fd105d764
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 6bcd5bcc2463ec1ab9dcc97644d5046c31bfc78b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46994670"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61461990"
 ---
-# <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>Szybki start: tworzenie usługi Front Door na potrzeby globalnej aplikacji internetowej o wysokiej dostępności
+# <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>Szybki start: Utwórz drzwiami frontowymi dla aplikacji o wysokiej dostępności globalnej sieci web
 
 W tym artykule Szybki start opisano, jak utworzyć profil usługi Front Door, który umożliwia uzyskanie wysokiej dostępności i wydajności globalnej aplikacji internetowej. 
 
@@ -93,5 +93,5 @@ Jeśli chcesz przetestować natychmiastowe globalne działanie trybu failover us
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 Gdy grupy zasobów, aplikacje internetowe i wszystkie pokrewne zasoby nie będą już potrzebne, usuń je.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym przewodniku Szybki Start została utworzona usługa Front Door, która pozwala kierować ruch użytkowników do aplikacji internetowych wymagających wysokiej dostępności i maksymalnej wydajności. Aby dowiedzieć się więcej na temat kierowania ruchu, zapoznaj się z [metodami rozsyłania](front-door-routing-methods.md) używanymi przez usługę Front Door.

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: apimpm
 ms.openlocfilehash: 08b6f803d6994015432bf68c7b3edae14af8f976
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579261"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61095455"
 ---
 # <a name="api-management-caching-policies"></a>Zasady buforowania usługi API Management
 Ten temat zawiera odwołania do następujących zasad usługi API Management. Aby uzyskać informacje na temat dodawania i konfigurowania zasad, zobacz [zasad w usłudze API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -277,7 +277,7 @@ Aby uzyskać więcej informacji i przykładów niniejszych zasad, zobacz [niesta
 | Typ buforowania | Wybrać jeden z następujących wartości atrybutu:<br />- `internal` Aby użyć wbudowaną pamięć podręczną usługi API Management<br />- `external` Aby użyć zewnętrzna pamięć podręczna, zgodnie z opisem w [użytek zewnętrzna pamięć podręczna Azure redis Cache w usłudze Azure API Management](api-management-howto-cache-external.md),<br />- `prefer-external` Aby użyć w przeciwnym razie zewnętrzna pamięć podręczna, jeśli skonfigurowane lub wewnętrznej pamięci podręcznej. | Nie       | `prefer-external` |
 | czas trwania         | Wartość będzie zapisywane jako wartość podany czas trwania w sekundach.                                                                                                                                                                                                                                                                                 | Yes      | ND               |
 | key              | Klucz pamięci podręcznej wartości będą przechowywane w obszarze.                                                                                                                                                                                                                                                                                                                   | Yes      | ND               |
-| wartość            | Wartość w pamięci podręcznej.                                                                                                                                                                                                                                                                                                                                     | Yes      | ND               |
+| value            | Wartość w pamięci podręcznej.                                                                                                                                                                                                                                                                                                                                     | Yes      | ND               |
 ### <a name="usage"></a>Sposób użycia
 Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 

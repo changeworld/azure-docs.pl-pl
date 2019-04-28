@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 0affd965bbfc587933a9cdbf5b96c470a6e4dd6a
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
-ms.translationtype: MT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578292"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62096202"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-to-your-simulated-device"></a>Samouczek: Opracowywanie i wdrażanie modułu usługi IoT Edge w języku Python na urządzeniu symulowanym
 

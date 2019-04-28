@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: milanga;juliako;
 ms.openlocfilehash: 46e60583da79006c133c8d9fac63e27f28bd699f
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58188190"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61217268"
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Wykrywanie twarzy i emocji za pomocą usługi Azure Media Analytics
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 **Wykrywanie twarzy multimediów Azure** procesor multimediów (MP) pozwala na count, śledzenie przepływu i nawet miernika uczestnictwa odbiorców i reagowanie na nie przy użyciu twarzy. Ta usługa zawiera dwie funkcje: 
 
 * **Wykrywanie twarzy**

@@ -12,17 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2019
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: ba8d9fd54b8b29a3e58f170402a64f5899fec002
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b8d4ff3e833dcbe92802845796e3b826735b68ce
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57880691"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61465647"
 ---
 # <a name="develop-video-player-applications"></a>Opracowywanie aplikacji odtwarzacza wideo
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Usługa Azure Media Services udostępnia narzędzia potrzebne do tworzenia zaawansowanych, dynamicznych aplikacji klienckich odtwarzacza dla większości platform, takich jak: urządzenia z systemem iOS, urządzenia z systemem Android, urządzenia z systemem Windows, telefony z systemem Windows Phone, konsole Xbox i dekodery. Ten temat zawiera także łącza do zestawów SDK oraz struktur odtwarzaczy, można użyć do tworzenia własnych aplikacji klienckich, które mogą wykorzystywać multimediów strumieniowych dostarczanych przez Azure Media Services.
 
 >[!NOTE]

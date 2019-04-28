@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: cenkd;juliako
 ms.openlocfilehash: da20e4601b75bcb22546d21f6ad218ac9ba2728b
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58188360"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61463812"
 ---
 # <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>Praca z kanałami odbierającymi strumień na żywo o różnych szybkościach transmisji bitów z koderów lokalnych
 
 > [!NOTE]
 > Od 12 maja 2018 r. Usługa kanały na żywo będzie już obsługę strumienia transportu RTP/MPEG-2 protokołu pozyskiwania. Przeprowadź migrację z protokołu RTP/MPEG-2 do protokołu RTMP lub plików MP4 (Smooth Streaming) protokołów pozyskiwania.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 W usłudze Azure Media Services *kanału* reprezentuje potok przetwarzania zawartości transmisji strumieniowej na żywo. Kanał odbiera strumieni danych wejściowych w jeden z dwóch sposobów:
 
 * Koder na żywo w środowisku lokalnym wysyła różnych szybkościach transmisji bitów RTMP lub Smooth Streaming (pofragmentowany MP4) strumienia do kanału, który nie jest włączona kodowanie na żywo za pomocą usługi Media Services. Pozyskiwane strumienie są przekazywane za pośrednictwem kanałów bez dalszego przetwarzania. Ta metoda jest wywoływana *przekazywanego*. Koder na żywo może także wysłać strumień o pojedynczej szybkości bitów do kanału, który nie jest włączona dla kodowania na żywo, ale nie jest to zalecane. Usługi Media Services dostarcza strumień do klientów, którzy wysyłają żądanie.

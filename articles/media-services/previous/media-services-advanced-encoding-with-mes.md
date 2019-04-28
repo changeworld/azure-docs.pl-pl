@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: fadf1aa54f525fb3d4c414161583f8a89f2e4c05
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576296"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61230257"
 ---
 # <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>Kodowanie zaawansowane, dostosowując ustawienia wstępne usługi MES 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 W tym temacie przedstawiono sposób Dostosowywanie ustawień wstępnych usługi Media Encoder Standard. [Kodowania za pomocą usługi Media Encoder Standard za pomocą niestandardowych ustawień wstępnych](media-services-custom-mes-presets-with-dotnet.md) temacie pokazano, jak utworzyć zadanie kodowania i zadanie, które wykonuje to zadanie za pomocą platformy .NET. Po dostosowaniu ustawienie wstępne dostarczania niestandardowych ustawień wstępnych do kodowania zadania. 
 

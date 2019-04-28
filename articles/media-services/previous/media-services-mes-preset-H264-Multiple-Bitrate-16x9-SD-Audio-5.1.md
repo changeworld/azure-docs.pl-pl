@@ -1,8 +1,8 @@
 ---
 title: H264 Szybkość transmisji bitów 16 x 9 SD Audio 5.1 | Dokumentacja firmy Microsoft
 description: Temat zawiera omówienie **wielu szybkość transmisji bitów H264 16 x 9 SD Audio 5.1** ustawienie wstępne zadania.
-author: Juliako
-manager: femila
+author: WenJason
+manager: digimobile
 editor: ''
 services: media-services
 documentationcenter: ''
@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
+origin.date: 03/19/2019
+ms.date: 04/01/2019
+ms.author: v-jay
 ms.openlocfilehash: 55cca9b2f01902727c540173a88626599029534d
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58200858"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61129552"
 ---
-# <a name="h264-multiple-bitrate-16x9-sd-audio-51"></a>H264 Szybkość transmisji bitów 16 x 9 SD Audio 5.1
+# <a name="h264-multiple-bitrate-16x9-sd-audio-51"></a>Wielokrotna szybkość transmisji bitów H264 16x9 SD Audio 5.1
 `Media Encoder Standard` definiuje zestaw kodowania ustawienia wstępne, których można użyć podczas tworzenia zadań kodowania. Można użyć `preset name` do określenia do formatu, który chcesz zakodować pliku multimedialnego. Lub można utworzyć własne JSON lub XML na podstawie ustawień wstępnych (przy użyciu kodowania UTF-8 lub UTF-16. Następnie należy wprowadzić niestandardowego ustawienia wstępnego z koderem. Aby uzyskać listę wszystkich wstępnie zdefiniowanych nazw obsługiwanych przez to `Media Encoder Standard` encoder, zobacz [ustawienia wstępne zadań usługi Media Encoder Standard](media-services-mes-presets-overview.md).  
   
  W tym temacie przedstawiono `H264 Multiple Bitrate 16x9 SD Audio 5.1` wstępnie ustawione w formacie XML i JSON.  

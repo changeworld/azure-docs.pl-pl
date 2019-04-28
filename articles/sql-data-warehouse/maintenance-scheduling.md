@@ -11,11 +11,11 @@ ms.date: 03/13/2019
 ms.author: anvang
 ms.reviewer: jrasnick
 ms.openlocfilehash: b97e27b86ecad1f7f87a6de4d43b09d69c167c6f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792038"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61075332"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>Umożliwia zarządzanie aktualizacjami usługi i konserwacja harmonogramy konserwacji
 

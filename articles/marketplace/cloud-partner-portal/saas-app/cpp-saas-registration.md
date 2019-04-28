@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: pbutlerm
 ms.openlocfilehash: fbc542ea2ed76d99d551d668b00bad1fb3719a9f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59012938"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62101595"
 ---
 # <a name="register-a-saas-application"></a>Rejestrowanie aplikacji SaaS
 
@@ -104,7 +104,7 @@ Metoda HTTP
 |  Grant_type         | True         | Typ udzielenia uprawnień. Wartość domyślna to `client_credentials`.                    |
 |  Client_id          | True         |  Identyfikator klienta/aplikacji skojarzone z aplikacją usługi Azure AD.                  |
 |  client_secret      | True         |  Hasło skojarzone z aplikacją usługi Azure AD.                               |
-|  Zasób           | True         |  Zasób docelowy, dla którego żądany jest token. Wartość domyślna to `62d94f6c-d599-489b-a797-3e10e42fbe22`. |
+|  Resource           | True         |  Zasób docelowy, dla którego żądany jest token. Wartość domyślna to `62d94f6c-d599-489b-a797-3e10e42fbe22`. |
 |  |  |  |
 
 

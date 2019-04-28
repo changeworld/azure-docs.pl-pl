@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
 ms.openlocfilehash: 55ff6d37f18f4ffa2f12e17bd33dd196b77f79af
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025780"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61473063"
 ---
 # <a name="copy-data-from-sybase-using-azure-data-factory"></a>Kopiowanie danych z bazy danych Sybase przy użyciu usługi Azure Data Factory
-> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, z której korzystasz:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Wersja 1](v1/data-factory-onprem-sybase-connector.md)
 > * [Bieżąca wersja](connector-sybase.md)
 
@@ -59,7 +59,7 @@ Następujące właściwości są obsługiwane dla bazy danych Sybase połączone
 | baza danych | Nazwa bazy danych programu Sybase. |Yes |
 | Element authenticationType | Typ uwierzytelniania używany do łączenia z bazą danych programu Sybase.<br/>Dozwolone wartości to: **Podstawowe**, i **Windows**. |Yes |
 | nazwa użytkownika | Określ nazwę użytkownika do łączenia z bazą danych programu Sybase. |Yes |
-| hasło | Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Yes |
+| password | Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Yes |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Własne środowisko IR jest wymagany, zgodnie z opisem w [wymagania wstępne](#prerequisites). |Yes |
 
 **Przykład:**

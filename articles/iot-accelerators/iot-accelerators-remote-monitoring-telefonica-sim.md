@@ -9,11 +9,11 @@ services: iot-accelerators
 ms.date: 05/15/2018
 ms.topic: conceptual
 ms.openlocfilehash: b07e21131d9560a49d99644525835ac5ee3bac9e
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606796"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61442243"
 ---
 # <a name="integrate-sim-data-in-the-remote-monitoring-solution"></a>Integrowanie danych SIM w rozwiązaniu do zdalnego monitorowania
 
@@ -37,14 +37,14 @@ Tej dodatkowej funkcji monitorowania zdalnego jest obecnie w wersji zapoznawczej
 2. Telefónica aktywuje konto.
 3. Jeśli nie jesteś klientem Telefónica jeszcze, a użytkownik chce Ciesz się to lub inne IoT łączności chmury gotowe usługi, odwiedź stronę [witryny firmy Telefónica](https://iot.telefonica.com/) i wybierz opcję **łączności**.
 
-### <a name="telefnica-sim-setup"></a>Instalator Telefónica SIM
+### <a name="telefnica-sim-setup"></a>Telefónica SIM setup
 Skojarzenie identyfikator Telefónica SIM & Azure bliźniaczej reprezentacji urządzenia zależy od właściwości "alias" Telefónica IoT SIM. 
 
 Przejdź do [Telefónica IoT łączność platformy portalu](https://m2m-movistar-es.telefonica.com/) > Spis SIM > Wybierz kartą SIM, a następnie zaktualizuj każdego SIM "alias" przy użyciu usługi żądaną deviceID bliźniaczej reprezentacji. To zadanie można również wykonać w trybie zbiorczo (zobacz platformy łączności IoT Telefónica podręczniki użytkownika).
 
 To zadanie można również wykonać w trybie zbiorczo (zobacz podręczniki użytkownika platformy łączności IoT Telefónica)
 
-![Aktualizacja Telefónica](./media/iot-accelerators-remote-monitoring-telefonica-sim/telefonica_site.png)
+![Telefónica Update](./media/iot-accelerators-remote-monitoring-telefonica-sim/telefonica_site.png)
 
 Aby Podłącz urządzenie do monitorowania zdalnego, możesz wykonać tych samouczków przy użyciu [C](iot-accelerators-connecting-devices-linux.md) lub [węzła](iot-accelerators-connecting-devices-node.md). 
 

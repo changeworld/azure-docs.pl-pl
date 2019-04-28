@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 9/24/2018
 ms.author: victorh
 ms.openlocfilehash: c129c394f3d694b832722287027c1f9e58028a33
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56957695"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61065856"
 ---
 # <a name="azure-firewall-logs"></a>Dzienniki zapory platformy Azure
 
 Usługę Azure Firewall możesz monitorować przy użyciu dzienników zapory. Ponadto dzienniki aktywności umożliwiają inspekcję operacji wykonywanych względem zasobów usługi Azure Firewall.
 
-Niektóre z tych dzienników są dostępne za pośrednictwem portalu. Dzienniki mogą być wysyłane do [dzienniki usługi Azure Monitor](../azure-monitor/insights/azure-networking-analytics.md), magazynu i centrów zdarzeń i przeanalizować w dziennikach w usłudze Azure Monitor lub przy użyciu różnych narzędzi, takich jak program Excel i Power BI.
+Niektóre z tych dzienników są dostępne za pośrednictwem portalu. Dzienniki mogą być wysyłane do [dzienników usługi Azure Monitor](../azure-monitor/insights/azure-networking-analytics.md), usługi Storage i Event Hubs oraz analizowane za pomocą dzienników usługi Azure Monitor lub innych narzędzi, takich jak program Excel i usługa Power BI.
 
 ## <a name="diagnostic-logs"></a>Dzienniki diagnostyczne
 

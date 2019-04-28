@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 04/8/2019
 ms.author: kumud;tyao
 ms.openlocfilehash: 26db3a67c3efbd0ba2a5c58facd0c07175f7ed12
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59564148"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61460251"
 ---
 # <a name="create-a-waf-policy-for-azure-front-door-by-using-the-azure-portal"></a>Utwórz zasadę zapory aplikacji sieci Web Azure drzwiami frontowymi przy użyciu witryny Azure portal
 

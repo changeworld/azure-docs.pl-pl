@@ -1,6 +1,6 @@
 ---
 title: Podstawowe raporty z usługi Verizon | Dokumentacja firmy Microsoft
-description: 'Można wyświetlić wzorców użycia dla sieci CDN, za pomocą następujących raportów: przepustowości, przetransferowane dane, trafienia, stany pamięci podręcznej, Współczynnik trafień w pamięci podręcznej, przetransferowane dane IPV4 i IPV6.'
+description: 'Aby wyświetlić wzorców użycia dla sieci CDN, za pomocą następujących raportów: Przepustowość, przetransferowane dane, trafienia, stany pamięci podręcznej, współczynnik, przesłanych danych protokołów IPV4/IPV6 trafień w pamięci podręcznej.'
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: d10a40d03f0f76676e70afdec94e9adfaa0dd09f
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 6eb0fe592196466f7f49c21ce38afdf13b254d86
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162074"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61061539"
 ---
 # <a name="core-reports-from-verizon"></a>Raporty podstawowe z usługi Verizon
 
@@ -86,10 +86,10 @@ Aby zmniejszyć trafień w pamięci podręcznej wygasłe, ustaw zasobów `max-ag
 ![Raport stany pamięci podręcznej](./media/cdn-reports/cdn-cache-statuses.png)
 
 ### <a name="main-cache-statuses-include"></a>Stany pamięci podręcznej głównego obejmują:
-* TCP_HIT: Są udostępniane przez serwer graniczny. Obiekt w pamięci podręcznej i nie przekroczył jego max-age.
+* TCP_HIT: Obsługiwane z serwer graniczny. Obiekt w pamięci podręcznej i nie przekroczył jego max-age.
 * TCP_MISS: Obsługiwane z serwera źródłowego. Obiekt nie był w pamięci podręcznej, a odpowiedź była do źródła.
-* TCP_EXPIRED _MISS: udostępniana z serwera źródłowego po ponownej weryfikacji za pomocą źródła. Obiekt był w pamięci podręcznej, ale przekroczył jego max-age. Ponowne sprawdzenie poprawności zależnego przy użyciu źródła spowodowała obiektu pamięci podręcznej, jest zastępowany przez nową odpowiedź od źródła.
-* TCP_EXPIRED _HIT: obsługiwane z przeglądarki Microsoft Edge po ponownej weryfikacji za pomocą źródła. Obiekt w pamięci podręcznej, ale przekroczył jego max-age. Ponowne sprawdzenie poprawności zależnego w serwerze źródłowym w wyniku obiektu pamięci podręcznej są modyfikowane.
+* TCP_EXPIRED _MISS: Obsługiwane z serwera źródłowego po ponownej weryfikacji za pomocą źródła. Obiekt był w pamięci podręcznej, ale przekroczył jego max-age. Ponowne sprawdzenie poprawności zależnego przy użyciu źródła spowodowała obiektu pamięci podręcznej, jest zastępowany przez nową odpowiedź od źródła.
+* TCP_EXPIRED _HIT: Obsługiwane z przeglądarki Edge po ponownej weryfikacji za pomocą źródła. Obiekt w pamięci podręcznej, ale przekroczył jego max-age. Ponowne sprawdzenie poprawności zależnego w serwerze źródłowym w wyniku obiektu pamięci podręcznej są modyfikowane.
 
 ### <a name="full-list-of-cache-statuses"></a>Pełna lista stany pamięci podręcznej
 * TCP_HIT — ten stan jest zgłaszany, gdy żądanie jest obsługiwany bezpośrednio w punkcie POP do klienta. Element zawartości natychmiast są dostarczane z punktu POP, gdy jest buforowana na POP najbliżej danego klienta, a ma nieprawidłowy czas wygaśnięcia (TTL). Czas wygaśnięcia jest określany przez następujące nagłówki odpowiedzi:
@@ -106,7 +106,7 @@ Aby zmniejszyć trafień w pamięci podręcznej wygasłe, ustaw zasobów `max-ag
 * Brak — ten stan wskazuje, czy nie było wykonywane sprawdzanie aktualności zawartości pamięci podręcznej.
 * TCP_CLIENT_REFRESH_MISS: Ten stan jest zgłaszany, gdy klient HTTP, takie jak przeglądarki, wymusza krawędź POP, aby pobrać nową wersję starych zasobów z serwera pochodzenia. Domyślnie serwery uniemożliwić klienta HTTP wymuszanie serwerów brzegowych, aby pobrać nową wersję elementu zawartości z serwera pochodzenia.
 * TCP_PARTIAL_HIT: Ten stan jest zgłaszany, gdy żądania zakresu bajtów powoduje trafień dla częściowo pamięci podręcznej elementu zawartości. Żądany zakres bajtów natychmiast jest obsługiwany w punkcie POP do klienta.
-* UNCACHEABLE: Ten stan jest zgłaszany po zasobów `Cache-Control` i `Expires` nagłówki wskazują, że go powinien nie być buforowany w menu Podręcznym przez klienta HTTP. Te typy żądań, które są obsługiwane z serwera pochodzenia.
+* UNCACHEABLE: Ten stan jest zgłaszany, gdy zasób `Cache-Control` i `Expires` nagłówki wskazują, że go powinien nie być buforowany w menu Podręcznym przez klienta HTTP. Te typy żądań, które są obsługiwane z serwera pochodzenia.
 
 ## <a name="cache-hit-ratio"></a>Stosunek trafień w pamięci podręcznej
 Ten raport wskazuje procent żądań, które były przekazywane bezpośrednio z pamięci podręcznej z pamięci podręcznej.
@@ -123,7 +123,7 @@ Raport nie zawiera:
 * Żądania zasobów, w których nagłówki wskazują, że nie powinny one zapisywane. Na przykład `Cache-Control: private`, `Cache-Control: no-cache`, lub `Pragma: no-cache` nagłówki zabrania buforowania zasobów.
 * Żądania zakresu bajtów dla częściowo buforowanej zawartości.
 
-Formuła jest: (TRAFIEŃ TCP_ / (TCP_ TRAFIEŃ + TCP_MISS)) * 100
+Formuła jest następująca: (TCP_ HIT/(TCP_ HIT+TCP_MISS))*100
 
 ![Raport Stosunek trafień w pamięci podręcznej](./media/cdn-reports/cdn-cache-hit-ratio.png)
 

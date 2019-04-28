@@ -12,11 +12,11 @@ ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: c417950e07ae3c6922aa260a3ef40d862870aa1e
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452332"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61042887"
 ---
 # <a name="sample-data-in-azure-hdinsight-hive-tables"></a>Przykładowe dane w tabelach usługi Azure HDInsight Hive
 W tym artykule opisano, jak obniżenie częstotliwości próbkowania danych przechowywanych w usłudze Azure HDInsight Hive tabel przy użyciu zapytań programu Hive, aby zmniejszyć jego rozmiar łatwiejszych do analizy. Trzy metody pobierania próbek co jest często używany ona obejmować:

@@ -2,19 +2,20 @@
 title: Konfigurowanie urządzenia na potrzeby usługi Azure IoT Hub Device Provisioning
 description: Konfigurowanie urządzenia na potrzeby aprowizacji za pośrednictwem usługi IoT Hub Device Provisioning w procesie jego produkcji
 author: wesmc7777
-ms.author: wesmc
-ms.date: 04/10/2019
+ms.author: v-yiso
+origin.date: 04/10/2019
+ms.date: 05/06/2019
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
-manager: philmea
+manager: timlt
 ms.custom: mvc
 ms.openlocfilehash: 344cc3b8ba3f7698f5124d464f3c277b6cb5cdde
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59500978"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61249092"
 ---
 # <a name="set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>Konfigurowanie urządzenia na potrzeby aprowizacji przy użyciu usługi Azure IoT Hub Device Provisioning
 

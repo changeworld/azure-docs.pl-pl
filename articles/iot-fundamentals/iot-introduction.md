@@ -8,11 +8,11 @@ ms.topic: overview
 ms.date: 10/11/2018
 ms.author: robinsh
 ms.openlocfilehash: e1cb588d68153a88d8b55b2696b376c4eb8704f5
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199285"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61232255"
 ---
 # <a name="what-is-azure-internet-of-things-iot"></a>Co to jest usługa Azure Internet of Things (IoT)?
 
@@ -121,7 +121,7 @@ Na platformie Azure istnieje kilka usług powiązanych z IoT i ustalenie, które
 
 8. [**Azure Maps**](/azure/azure-maps): ta usługa udostępnia informacje geograficzne aplikacjom internetowym i mobilnym. Dostępny jest pełny zestaw interfejsów API REST, a także internetowa kontrolka JavaScript, za pomocą których można tworzyć elastyczne aplikacje działające na komputerach oraz aplikacje mobilne dla urządzeń zarówno firmy Apple, jak i z systemem Windows.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Rzeczywiste przypadki zastosowań biznesowych i opisy używanej architektury można znaleźć na stronie [Microsoft Azure IoT Technical Case Studies](https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured) (Techniczne analizy przypadków usługi Microsoft Azure IoT).
 
