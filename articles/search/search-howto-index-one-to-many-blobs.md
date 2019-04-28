@@ -11,11 +11,11 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seofeb2018
 ms.openlocfilehash: e95eff015340659b642dff800a03f615e22c1577
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57220571"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60871203"
 ---
 # <a name="indexing-blobs-producing-multiple-search-documents"></a>Indeksowanie obiektów blob, tworzyć wiele dokumentów wyszukiwania plików
 Domyślnie indeksatora obiektów blob będzie traktowany zawartość obiektu blob jako wyszukiwania pojedynczego dokumentu. Niektóre **parsingMode** wartości obsługi scenariuszy, w którym poszczególnych obiektów blob może spowodować wiele dokumentów wyszukiwania. Różne rodzaje **parsingMode** umożliwiające indeksator do wyodrębniania więcej niż jednego wyszukiwania dokumentów z obiektu blob są:
@@ -64,7 +64,7 @@ Po utworzeniu indeksatora i ustawianie **parsingMode** do `jsonLines` — bez ok
 
 Ten Instalator będzie skutkować indeksu usługi Azure Search, zawierający poniższe informacje (zakodowany w formacie base64 identyfikator skrócony dla zwięzłości)
 
-| id | temperature | pressure | sygnatura czasowa |
+| id | temperature | pressure | timestamp |
 |----|-------------|----------|-----------|
 | aHR0... YjEuanNvbjsx | 100 | 100 | 2019-02-13T00:00:00Z |
 | aHR0... YjEuanNvbjsy | 33 | 30 | 2019-02-14T00:00:00Z |

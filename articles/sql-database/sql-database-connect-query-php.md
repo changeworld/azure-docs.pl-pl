@@ -12,11 +12,11 @@ ms.reviewer: v-masebo
 manager: craigg
 ms.date: 02/12/2019
 ms.openlocfilehash: 4a53d733b30c06cb48fe2a57f7be232d914dc79c
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58448944"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61408881"
 ---
 # <a name="quickstart-use-php-to-query-an-azure-sql-database"></a>Szybki start: Korzystanie z języka PHP do wykonywania zapytań w bazie danych Azure SQL Database
 

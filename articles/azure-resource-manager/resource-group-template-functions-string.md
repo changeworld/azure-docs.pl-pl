@@ -13,11 +13,11 @@ ms.workload: na
 ms.date: 04/08/2019
 ms.author: tomfitz
 ms.openlocfilehash: bf9faa34c1f0923761ce583c22ba4084d7bd42a8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59278789"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60782926"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Funkcje ciągów dla szablonów usługi Azure Resource Manager
 
@@ -120,7 +120,7 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | ---- | ---- | ----- |
 | base64Output | String | b25lLCB0d28sIHRocmVl |
 | toStringOutput | String | Raz dwa trzy |
-| toJsonOutput | Obiekt | {"jeden": "", "dwóch": "b"} |
+| toJsonOutput | Object | {"jeden": "", "dwóch": "b"} |
 
 ## <a name="base64tojson"></a>base64ToJson
 
@@ -185,7 +185,7 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | ---- | ---- | ----- |
 | base64Output | String | b25lLCB0d28sIHRocmVl |
 | toStringOutput | String | Raz dwa trzy |
-| toJsonOutput | Obiekt | {"jeden": "", "dwóch": "b"} |
+| toJsonOutput | Object | {"jeden": "", "dwóch": "b"} |
 
 ## <a name="base64tostring"></a>base64ToString
 
@@ -250,7 +250,7 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | ---- | ---- | ----- |
 | base64Output | String | b25lLCB0d28sIHRocmVl |
 | toStringOutput | String | Raz dwa trzy |
-| toJsonOutput | Obiekt | {"jeden": "", "dwóch": "b"} |
+| toJsonOutput | Object | {"jeden": "", "dwóch": "b"} |
 
 ## <a name="concat"></a>concat
 

@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 6/10/2018
 ms.author: aljo, subramar
 ms.openlocfilehash: b8012cbdad02995c3fc98a3ea1fa02a3a08bd2dc
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665903"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60870880"
 ---
 # <a name="service-fabric-azure-files-volume-driver-preview"></a>Sterownik woluminu plików platformy Azure dla usługi sieci szkieletowej (wersja zapoznawcza)
-Dodatek woluminu plików platformy Azure jest [wtyczki woluminu Docker](https://docs.docker.com/engine/extend/plugins_volume/) zapewniający [usługi Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) na podstawie woluminów na potrzeby kontenerów platformy Docker. Ta wtyczka woluminu platformy Docker jest spakowany jako aplikacji usługi Service Fabric, który może być wdrożony w klastrach usługi Service Fabric. Jego celem jest zapewnienie usługi Azure Files na podstawie woluminów dla innych aplikacji kontenera usługi Service Fabric, które zostały wdrożone w klastrze.
+Dodatek woluminu plików platformy Azure jest [wtyczki woluminu Docker](https://docs.docker.com/engine/extend/plugins_volume/) zapewniający [usługi Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) na podstawie woluminów na potrzeby kontenerów platformy Docker. Ta wtyczka woluminu platformy Docker ma postać pakietu aplikacji usługi Service Fabric, który można wdrożyć w klastrach usługi Service Fabric. Ma ona na celu udostępnianie woluminów opartych na usłudze Azure Files w innych aplikacjach kontenerów usługi Service Fabric wdrożonych w klastrze.
 
 > [!NOTE]
 > Wersja 6.4.571.9590 wtyczki woluminu plików platformy Azure jest wersja zapoznawcza, która jest dostępna z tego dokumentu. Jako wersji zapoznawczej, jest **nie** przeznaczony do użytku w środowiskach produkcyjnych.

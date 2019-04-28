@@ -3,17 +3,18 @@ title: Dodać usługę do monitorowania zdalnego interfejsu użytkownika rozwią
 description: W tym artykule przedstawiono sposób dodawania nowej usługi do monitorowania zdalnego rozwiązania akceleratora internetowego interfejsu użytkownika.
 author: dominicbetts
 manager: timlt
-ms.author: dobett
+ms.author: v-yiso
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 10/02/2018
+origin.date: 10/02/2018
+ms.date: 11/26/2018
 ms.topic: conceptual
 ms.openlocfilehash: e44aa8ade512a6005959e795cb1d4ad861da1338
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094605"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61447050"
 ---
 # <a name="add-a-custom-service-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Dodaj niestandardowe usługi do monitorowania zdalnego rozwiązania akceleratora internetowego interfejsu użytkownika
 
@@ -37,7 +38,7 @@ Aby wykonać kroki opisane w tym przewodniku z instrukcjami, potrzebne są nast�
 
 Należy wykonać czynności opisane w [dodawania niestandardowej strony do monitorowania zdalnego rozwiązania akceleratora internetowego interfejsu użytkownika](iot-accelerators-remote-monitoring-customize-page.md) artykule przed kontynuowaniem.
 
-## <a name="add-a-service"></a>Dodaj usługę
+## <a name="add-a-service"></a>Dodawanie usługi
 
 Aby dodać usługę do interfejsu użytkownika sieci web, należy dodać pliki źródłowe, które definiują usługi i zmodyfikować niektóre istniejące pliki, aby uświadomić interfejsu użytkownika sieci web nowej usługi.
 
@@ -47,13 +48,13 @@ Aby rozpocząć pracę, **wskazówki/src/usług** folder zawiera pliki, które d
 
 **exampleService.js**
 
-[!code-javascript[Example service](~/remote-monitoring-webui/src/walkthrough/services/exampleService.js?name=service "Example service")]
+
 
 Aby dowiedzieć się więcej na temat sposobu implementacji usług, zobacz [wprowadzenie do programowania reaktywnego dotąd istniała Brak](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754).
 
 **model/exampleModels.js**
 
-[!code-javascript[Example model](~/remote-monitoring-webui/src/walkthrough/services/models/exampleModels.js?name=models "Example model")]
+
 
 Kopiuj **exampleService.js** do **src/usługi** folder i skopiuj **exampleModels.js** do **src/services/modeli** folderu.
 
@@ -75,7 +76,7 @@ Aby rozpocząć pracę, **src/wskazówki/store/reduktorów** folder zawiera redu
 
 **exampleReducer.js**
 
-[!code-javascript[Example reducer](~/remote-monitoring-webui/src/walkthrough/store/reducers/exampleReducer.js?name=reducer "Example reducer")]
+
 
 Kopiuj **exampleReducer.js** do **src/store/reduktorów** folderu.
 

@@ -16,11 +16,11 @@ ms.date: 02/27/2019
 ms.author: kumud
 ms.custom: seodec18
 ms.openlocfilehash: 56568cfb8fc659308475e581955e5acbdfd32b44
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59489318"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61318504"
 ---
 # <a name="tutorial-balance-internal-traffic-load-with-a-basic-load-balancer-in-the-azure-portal"></a>Samouczek: Równoważenie obciążenia ruchu wewnętrznego przy użyciu podstawowego modułu równoważenia obciążenia w witrynie Azure Portal
 
@@ -95,7 +95,7 @@ Utwórz podstawowy wewnętrzny moduł równoważenia obciążenia przy użyciu p
     | Grupa zasobów         | Wybierz pozycję **Utwórz nową** i wpisz *MyResourceGroupLB* w polu tekstowym.|
     | Name (Nazwa)                   | *myLoadBalancer*                                   |
     | Region         | Wybierz pozycję **Europa Zachodnia**.                                        |
-    | Typ          | wybierz pozycję **Wewnętrzny**.                                        |
+    | Type          | wybierz pozycję **Wewnętrzny**.                                        |
     | SKU           | Wybierz pozycję **Podstawowa**.                          |
     | Sieć wirtualna           | Wybierz wartość *MojaSiećWirtualna*.                          |    
     | Przypisanie adresu IP              | Wybierz wartość **Statyczny**.   |

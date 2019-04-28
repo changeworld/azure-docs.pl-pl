@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: magoedte
 ms.openlocfilehash: 3f3de81197b05d4f025a3fd8638cffe4b07cecad
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429520"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61424661"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Ujednolicenie wiele zasobów usługi Azure Monitor Application Insights 
 W tym artykule opisano, jak wykonywać zapytania i wyświetlić wszystkie usługi Application Insights dziennika danych aplikacji w jednym miejscu, nawet wtedy, gdy są one w różnych subskrypcjach platformy Azure, jako zamiennika amortyzacja łącznik usługi Application Insights. Liczba zasobów zasoby usługi Application Insights, uwzględnionych w ramach pojedynczego zapytania jest ograniczona do 100.  
@@ -108,7 +108,7 @@ W poniższej tabeli przedstawiono różnice w schemacie między usługi Log Anal
 | AvailabilityRunLocation | location |
 | AvailabilityTestId | id |
 | AvailabilityTestName | name |
-| AvailabilityTimestamp | sygnatura czasowa |
+| AvailabilityTimestamp | timestamp |
 | Przeglądarka | client_browser |
 | Miasto | client_city |
 | ClientIP | client_IP |

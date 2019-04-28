@@ -9,12 +9,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 06/02/2017
-ms.openlocfilehash: 11fbec81e88eec6c7daa9136eb5421387b79d71c
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: f0591b47ce7ba6837f300088c856c0098fb66710
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124338"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60998830"
 ---
 # <a name="b2b-errors-and-solutions-for-azure-logic-apps"></a>Błędy B2B i rozwiązania dla usługi Azure Logic Apps
 
@@ -145,7 +145,7 @@ Na przykład:
 
 |   |   | 
 |---|---|
-| Opis błędu | InvalidTemplate. Nie można wyrażeń języka szablonu procesu w akacji "Flat_File_Decoding" w wierszu "1" i kolumnie "1902": "Wymagana właściwość"content"oczekuje, że wartość, a uzyskano o wartości null. Ścieżka ".". |
+| Opis błędu | InvalidTemplate. Nie można przetworzyć wyrażeń języka szablonu w akcji "Flat_File_Decoding" danych wejściowych w wierszu "1" i kolumnie "1902": ' Wymagana właściwość "content" oczekuje, że wartość, a uzyskano o wartości null. Ścieżka ".". |
 | Akcja użytkownika | Ten błąd wskazuje, że komunikat wejściowy nie zawiera treści. |
 |   |   | 
 

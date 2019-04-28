@@ -10,12 +10,12 @@ ms.reviewer: klam, jehollan, LADocs
 ms.topic: article
 ms.assetid: a6727ebd-39bd-4298-9e68-2ae98738576e
 ms.date: 10/15/2017
-ms.openlocfilehash: 994e7945a7107815029bd415f4cc0d45bb68e335
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 62a74364939fffb6e06f51f1c0cabb6cce8c10e1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123691"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60999810"
 ---
 # <a name="troubleshoot-and-diagnose-workflow-failures-in-azure-logic-apps"></a>Rozwiązywanie problemów i diagnozowanie błędów przepływu pracy w usłudze Azure Logic Apps
 
@@ -40,9 +40,9 @@ Każda aplikacja logiki rozpoczyna się od wyzwalacza. Jeśli wyzwalacz nie zost
 
    | Stan | Opis | 
    | ------ | ----------- | 
-   | **Powiodło się.** | Wyzwalacz zaznaczone punkt końcowy, a znaleziono dostępnych danych. Zazwyczaj stan "Fired" pojawia się również wraz z tego stanu. Jeśli nie, definicji wyzwalacza może mieć warunku lub `SplitOn` polecenia, który nie został spełniony. <p>Ten stan może dotyczyć wyzwalacza ręcznego, wyzwalacza lub wyzwalacza sondowania. Pomyślnie uruchomić wyzwalacz, ale akcje generować błędy nieobsługiwany nadal może spowodować błąd samego przebiegu. | 
+   | **Powodzenie** | Wyzwalacz zaznaczone punkt końcowy, a znaleziono dostępnych danych. Zazwyczaj stan "Fired" pojawia się również wraz z tego stanu. Jeśli nie, definicji wyzwalacza może mieć warunku lub `SplitOn` polecenia, który nie został spełniony. <p>Ten stan może dotyczyć wyzwalacza ręcznego, wyzwalacza lub wyzwalacza sondowania. Pomyślnie uruchomić wyzwalacz, ale akcje generować błędy nieobsługiwany nadal może spowodować błąd samego przebiegu. | 
    | **Pominięto** | Wyzwalacz zaznaczone punkt końcowy, ale można znaleźć żadnych danych. | 
-   | **Nie powiodło się** | Wystąpił błąd. Aby przejrzeć komunikaty o błędach wygenerowane dla wyzwalacza nie powiodło się, zaznaczyć taka próba wyzwalacza, a następnie wybierz **dane wyjściowe**. Na przykład może się okazać dane wejściowe, które nie są prawidłowe. | 
+   | **Niepowodzenie** | Wystąpił błąd. Aby przejrzeć komunikaty o błędach wygenerowane dla wyzwalacza nie powiodło się, zaznaczyć taka próba wyzwalacza, a następnie wybierz **dane wyjściowe**. Na przykład może się okazać dane wejściowe, które nie są prawidłowe. | 
    ||| 
 
    Może mieć wiele wpisów wyzwalacza z tę samą datę i czas, który się dzieje, gdy Twoja aplikacja logiki znajdzie wiele elementów. 
@@ -81,10 +81,10 @@ Każdy aktywowany wyzwalacz jest uruchamiany przebiegu przepływu pracy. Możesz
 
    | Stan | Opis | 
    | ------ | ----------- | 
-   | **Powiodło się.** | Wszystkie akcje zakończyło się pomyślnie. <p>Jeśli zakończą się niepowodzeniem w określonej akcji, przeprowadź następujące działania w przepływie pracy obsługiwane tego błędu. | 
-   | **Nie powiodło się** | Co najmniej jedna akcja nie powiodła się, a nie późniejsze akcje w przepływie pracy były ustawić, aby obsłużyć błąd. | 
+   | **Powodzenie** | Wszystkie akcje zakończyło się pomyślnie. <p>Jeśli zakończą się niepowodzeniem w określonej akcji, przeprowadź następujące działania w przepływie pracy obsługiwane tego błędu. | 
+   | **Niepowodzenie** | Co najmniej jedna akcja nie powiodła się, a nie późniejsze akcje w przepływie pracy były ustawić, aby obsłużyć błąd. | 
    | **Anulowane** | Przepływ pracy był uruchomiony, ale Odebrano żądanie anulowania. | 
-   | **Uruchamianie** | Przepływ pracy jest obecnie uruchomiony. <p>Ten stan może się zdarzyć, ograniczone przepływów pracy lub z powodu bieżącego planu cenowego. Aby uzyskać więcej informacji, zobacz [limity akcji na stronie cennika](https://azure.microsoft.com/pricing/details/logic-apps/). Jeśli skonfigurowano [rejestrowania diagnostycznego](../logic-apps/logic-apps-monitor-your-logic-apps.md), można także uzyskać informacje dotyczące ograniczania zdarzeń, które odbywa się. | 
+   | **Uruchomiono** | Przepływ pracy jest obecnie uruchomiony. <p>Ten stan może się zdarzyć, ograniczone przepływów pracy lub z powodu bieżącego planu cenowego. Aby uzyskać więcej informacji, zobacz [limity akcji na stronie cennika](https://azure.microsoft.com/pricing/details/logic-apps/). Jeśli skonfigurowano [rejestrowania diagnostycznego](../logic-apps/logic-apps-monitor-your-logic-apps.md), można także uzyskać informacje dotyczące ograniczania zdarzeń, które odbywa się. | 
    ||| 
 
 2. Przejrzyj szczegóły dla każdego kroku w określonym przebiegu. W obszarze **Historia przebiegów**, wybierz polecenie Uruchom, który chcesz zbadać.

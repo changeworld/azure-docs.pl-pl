@@ -11,11 +11,11 @@ ms.topic: article
 ms.assetid: a5413f80-eaad-4bcf-b371-2ad0ef629c3d
 ms.date: 01/27/2017
 ms.openlocfilehash: 1db324006e1e6332b5fdd8afd28ebed8a32ac707
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195187"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60845770"
 ---
 # <a name="create-schemas-for-tracking-x12-messages-in-integration-accounts-for-azure-logic-apps"></a>Tworzenie schematów do śledzenia X12 wiadomości w kont integracji dla usługi Azure Logic Apps
 
@@ -72,10 +72,10 @@ Aby ułatwić sukcesu monitora, błędy i właściwości wiadomości dla transak
 | transactionSetControlNumber | String | Numer kontrolny zestawu transakcji. (Opcjonalnie) |
 | CorrelationMessageId | String | Identyfikator korelacji wiadomości. Kombinacja {AgreementName} {*GroupControlNumber*} {TransactionSetControlNumber}. (Opcjonalnie) |
 | messageType | String | Transakcja zestawu lub typu dokumentu. (Opcjonalnie) |
-| isMessageFailed | Wartość logiczna | Czy X12 wiadomości nie powiodło się. (Obowiązkowe) |
-| isTechnicalAcknowledgmentExpected | Wartość logiczna | Czy pomoc potwierdzenia jest skonfigurowana w X12 umowy. (Obowiązkowe) |
-| isFunctionalAcknowledgmentExpected | Wartość logiczna | Czy funkcjonalności potwierdzenia jest skonfigurowany w X12 umowy. (Obowiązkowe) |
-| needAk2LoopForValidMessages | Wartość logiczna | Czy pętla pętlę AK2 jest wymagany prawidłowy komunikat. (Obowiązkowe) |
+| isMessageFailed | Boolean | Czy X12 wiadomości nie powiodło się. (Obowiązkowe) |
+| isTechnicalAcknowledgmentExpected | Boolean | Czy pomoc potwierdzenia jest skonfigurowana w X12 umowy. (Obowiązkowe) |
+| isFunctionalAcknowledgmentExpected | Boolean | Czy funkcjonalności potwierdzenia jest skonfigurowany w X12 umowy. (Obowiązkowe) |
+| needAk2LoopForValidMessages | Boolean | Czy pętla pętlę AK2 jest wymagany prawidłowy komunikat. (Obowiązkowe) |
 | segmentsCount | Liczba całkowita | Liczba segmentów w X12 zestawu transakcji. (Opcjonalnie) |
 ||||
 
@@ -131,11 +131,11 @@ Aby ułatwić sukcesu monitora, błędy i właściwości wiadomości dla transak
 | respondingFunctionalGroupId | String | Odpowiada identyfikator grupy funkcjonalnej, który mapuje AK101 w potwierdzeniu. (Opcjonalnie) |
 | respondingtransactionSetControlNumber | String | Numer kontrolny zestawu transakcji odpowiada. (Opcjonalnie) |
 | respondingTransactionSetId | String | Transakcja odpowiada Ustaw identyfikator, który mapuje AK201 w potwierdzeniu. (Opcjonalnie) |
-| statusCode | Wartość logiczna | Kod stanu potwierdzenia zestawu transakcji. (Obowiązkowe) |
+| statusCode | Boolean | Kod stanu potwierdzenia zestawu transakcji. (Obowiązkowe) |
 | segmentsCount | Wyliczenia | Kod stanu potwierdzenia. Dozwolone wartości to **zaakceptowano**, **odrzucony**, i **AcceptedWithErrors**. (Obowiązkowe) |
 | processingStatus | Wyliczenia | Stan przetwarzania potwierdzenia. Dozwolone wartości to **odebrane**, **Generated**, i **wysłane**. (Obowiązkowe) |
 | CorrelationMessageId | String | Identyfikator korelacji wiadomości. Kombinacja {AgreementName} {*GroupControlNumber*} {TransactionSetControlNumber}. (Opcjonalnie) |
-| isMessageFailed | Wartość logiczna | Czy X12 wiadomości nie powiodło się. (Obowiązkowe) |
+| isMessageFailed | Boolean | Czy X12 wiadomości nie powiodło się. (Obowiązkowe) |
 | ak2Segment | String | Potwierdzenie dla transakcji w grupie funkcjonalnej odebrane. (Opcjonalnie) |
 | ak3Segment | String | Zgłasza błędy w segmencie danych. (Opcjonalnie) |
 | ak5Segment | String | Raporty, czy zestaw określonych w segmencie pętlę AK2 transakcji zostanie zaakceptowany lub odrzucony i dlaczego. (Opcjonalnie) |
@@ -183,8 +183,8 @@ Aby ułatwić sukcesu monitora, błędy i właściwości wiadomości dla transak
 | kierunek | Wyliczenia | Kierunek przepływu wiadomości odbierania lub wysyłania. (Obowiązkowe) |
 | interchangeControlNumber | String | Numer kontrolny wymiany. (Opcjonalnie) |
 | isaSegment | String | Segment ISA wiadomości. (Opcjonalnie) |
-| isTechnicalAcknowledgmentExpected | Wartość logiczna | Czy pomoc potwierdzenia jest skonfigurowana w X12 umowy. (Obowiązkowe) |
-| isMessageFailed | Wartość logiczna | Czy X12 wiadomości nie powiodło się. (Obowiązkowe) |
+| isTechnicalAcknowledgmentExpected | Boolean | Czy pomoc potwierdzenia jest skonfigurowana w X12 umowy. (Obowiązkowe) |
+| isMessageFailed | Boolean | Czy X12 wiadomości nie powiodło się. (Obowiązkowe) |
 | isa09 | String | X12 dokumentu wymiany daty. (Opcjonalnie) |
 | isa10 | String | X12 dokumentu czasu wymiany. (Opcjonalnie) |
 | isa11 | String | X12 wymiany kontroli identyfikator standardy. (Opcjonalnie) |
@@ -235,7 +235,7 @@ Aby ułatwić sukcesu monitora, błędy i właściwości wiadomości dla transak
 | interchangeControlNumber | String | Numer kontrolny potwierdzenia technicznych, odebrane od partnerów wymiany. (Opcjonalnie) |
 | isaSegment | String | Segment ISA na potwierdzenie technicznych, odebrane od partnerów. (Opcjonalnie) |
 | respondingInterchangeControlNumber |String | Numer kontrolny potwierdzenia technicznych, odebrane od partnerów wymiany. (Opcjonalnie) |
-| isMessageFailed | Wartość logiczna | Czy X12 wiadomości nie powiodło się. (Obowiązkowe) |
+| isMessageFailed | Boolean | Czy X12 wiadomości nie powiodło się. (Obowiązkowe) |
 | statusCode | Wyliczenia | Wymiany kod stanu potwierdzenia. Dozwolone wartości to **zaakceptowano**, **odrzucony**, i **AcceptedWithErrors**. (Obowiązkowe) |
 | processingStatus | Wyliczenia | Stan potwierdzenia. Dozwolone wartości to **odebrane**, **Generated**, i **wysłane**. (Obowiązkowe) |
 | ta102 | String | Wymiany daty. (Opcjonalnie) |
@@ -288,9 +288,9 @@ Aby ułatwić sukcesu monitora, błędy i właściwości wiadomości dla transak
 | interchangeControlNumber | String | Numer kontrolny wymiany. (Opcjonalnie) |
 | functionalGroupControlNumber | String | Numer kontrolny funkcjonalności. (Opcjonalnie) |
 | gsSegment | String | Segment komunikat GS. (Opcjonalnie) |
-| isTechnicalAcknowledgmentExpected | Wartość logiczna | Czy pomoc potwierdzenia jest skonfigurowana w X12 umowy. (Obowiązkowe) |
-| isFunctionalAcknowledgmentExpected | Wartość logiczna | Czy funkcjonalności potwierdzenia jest skonfigurowany w X12 umowy. (Obowiązkowe) |
-| isMessageFailed | Wartość logiczna | Czy X12 wiadomości nie powiodło się. (Obowiązkowe)|
+| isTechnicalAcknowledgmentExpected | Boolean | Czy pomoc potwierdzenia jest skonfigurowana w X12 umowy. (Obowiązkowe) |
+| isFunctionalAcknowledgmentExpected | Boolean | Czy funkcjonalności potwierdzenia jest skonfigurowany w X12 umowy. (Obowiązkowe) |
+| isMessageFailed | Boolean | Czy X12 wiadomości nie powiodło się. (Obowiązkowe)|
 | gs01 | String | Identyfikator funkcjonalny kod. (Opcjonalnie) |
 | gs02 | String | Kod aplikacji nadawcy. (Opcjonalnie) |
 | gs03 | String | Kod aplikacji odbiornika. (Opcjonalnie) |
@@ -347,7 +347,7 @@ Aby ułatwić sukcesu monitora, błędy i właściwości wiadomości dla transak
 | gsSegment | String | Takie same jak grupa funkcjonalna kontrolować liczbę, ale wypełnione tylko w szczególnych przypadkach. (Opcjonalnie) |
 | respondingfunctionalGroupControlNumber | String | Numer kontrolny grupy oryginalnego funkcjonalnej. (Opcjonalnie) |
 | respondingFunctionalGroupId | String | Mapuje do AK101 w grupie funkcjonalnej potwierdzania identyfikatora. (Opcjonalnie) |
-| isMessageFailed | Wartość logiczna | Czy X12 wiadomości nie powiodło się. (Obowiązkowe) |
+| isMessageFailed | Boolean | Czy X12 wiadomości nie powiodło się. (Obowiązkowe) |
 | statusCode | Wyliczenia | Kod stanu potwierdzenia. Dozwolone wartości to **zaakceptowano**, **odrzucony**, i **AcceptedWithErrors**. (Obowiązkowe) |
 | processingStatus | Wyliczenia | Stan przetwarzania potwierdzenia. Dozwolone wartości to **odebrane**, **Generated**, i **wysłane**. (Obowiązkowe) |
 | ak903 | String | Liczba zestawów transakcji odebrane. (Opcjonalnie) |

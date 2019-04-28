@@ -17,11 +17,11 @@ ms.custom: mvc
 ms.date: 01/04/2019
 ms.author: jowargo
 ms.openlocfilehash: 03374f63345bd6c9e4f2b603443a1448493e1cdc
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57894618"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60875867"
 ---
 # <a name="tutorial-push-notifications-to-chrome-apps-with-azure-notification-hubs"></a>Samouczek: wysyłanie powiadomień push do aplikacji dla programu Chrome przy użyciu usługi Azure Notification Hubs
 

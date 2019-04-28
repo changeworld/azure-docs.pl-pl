@@ -15,11 +15,11 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 95c49eec6964984894f75ecd0a9e50c9c947683b
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015818"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61257646"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Wywoływanie programów platformy Spark z potoków usługi Azure Data Factory
 
@@ -73,7 +73,7 @@ Aby utworzyć fabrykę danych, wykonaj następujące kroki:
 1. Na **nowa fabryka danych** bloku, w obszarze **nazwa**, wprowadź **SparkDF**.
 
    > [!IMPORTANT]
-   > Nazwa fabryki danych Azure musi być globalnie unikatowa. Jeśli zostanie wyświetlony błąd "Nazwa fabryki danych SparkDF jest niedostępna", Zmień nazwę fabryki danych. Na przykład użyć yournameSparkDFdate i ponownie utworzyć fabrykę danych. Aby uzyskać więcej informacji na temat reguł nazewnictwa, zobacz [usługi Data Factory: Reguły nazewnictwa](data-factory-naming-rules.md).
+   > Nazwa fabryki danych Azure musi być globalnie unikatowa. Jeśli zostanie wyświetlony błąd "Nazwa fabryki danych SparkDF jest niedostępna", Zmień nazwę fabryki danych. Na przykład użyć yournameSparkDFdate i ponownie utworzyć fabrykę danych. Aby uzyskać więcej informacji na temat reguł nazewnictwa, zobacz [Data Factory: Naming rules (Data Factory: reguły nazewnictwa)](data-factory-naming-rules.md).
 
 1. W obszarze **Subskrypcja** wybierz subskrypcję platformy Azure, w ramach której chcesz utworzyć fabrykę danych.
 
@@ -267,7 +267,8 @@ W tym kroku utworzysz potok z działaniem HDInsightSpark. W tym przypadku wyjśc
 
     ![Wyniki zapytania programu Jupyter](media/data-factory-spark/jupyter-notebook-results.png)
 
-<!-- Removed bookmark #run-a-hive-query-using-spark-sql since it doesn't exist in the target article --> Aby uzyskać szczegółowe instrukcje, zobacz sekcję [uruchomienia zapytania Spark SQL](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). 
+<!-- Removed bookmark #run-a-hive-query-using-spark-sql since it doesn't exist in the target article -->
+Aby uzyskać szczegółowe instrukcje, zobacz sekcję [uruchomienia zapytania Spark SQL](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). 
 
 ### <a name="troubleshooting"></a>Rozwiązywanie problemów
 Ponieważ getdebuginfo — jest ustawiona na **zawsze**, zostanie wyświetlony w podfolderze dziennika w folderze pyFiles w kontenerze obiektów blob. Dodatkowe informacje znajdują się w pliku dziennika w folderze dziennika. Ten plik dziennika jest szczególnie przydatne, gdy występuje błąd. W środowisku produkcyjnym warto ustawić ją na **błąd**.
@@ -346,7 +347,7 @@ Działanie platformy Spark nie obsługuje wbudowany skrypt jako Pig i wykonaj dz
 
 Utwórz następującą strukturę folderów w usłudze blob storage przywoływany przez usługę HDInsight połączone. Następnie przekaż pliki zależne do odpowiednich podfolderów w folderze głównym, reprezentowane przez **właściwość entryFilePath**. Na przykład przekazywania plików języka Python do podfolderu pyFiles i pliki do podfolderu folderu głównego w plikach JAR jar. W czasie wykonywania usługa Data Factory oczekuje następującą strukturę folderów w magazynie obiektów blob: 
 
-| Ścieżka | Opis | Wymagane | Typ |
+| Ścieżka | Opis | Wymagane | Type |
 | ---- | ----------- | -------- | ---- |
 | . | Ścieżka katalogu głównego zadania Spark w połączonej usługi storage. | Yes | Folder |
 | &lt;zdefiniowane przez użytkownika &gt; | Ścieżka, który wskazuje na pliku wejściowego zadania Spark. | Yes | Plik |

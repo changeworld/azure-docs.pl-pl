@@ -11,11 +11,11 @@ ms.topic: article
 ms.assetid: f169c411-1bd7-4554-80c1-84351247bf94
 ms.date: 01/27/2017
 ms.openlocfilehash: 180d90450497b38f107f3601944385a003f50282
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193521"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60845787"
 ---
 # <a name="create-schemas-for-tracking-as2-messages-and-mdns-in-integration-accounts-for-azure-logic-apps"></a>Tworzenie schematów do śledzenia komunikatów AS2 i komunikatów Mdn w ramach kont integracji dla usługi Azure Logic Apps
 
@@ -67,15 +67,15 @@ Aby pomóc monitorować Powodzenie, błędy i właściwości wiadomości dla tra
 | messageId | String | Identyfikator komunikatu AS2, z nagłówków komunikatu AS2 (opcjonalnie) |
 | dispositionType |String | Wartość typu dyspozycji dyspozycji powiadomienia (powiadomienia MDN) wiadomości. (Opcjonalnie) |
 | fileName | String | Nazwa pliku z nagłówka komunikatu AS2. (Opcjonalnie) |
-| isMessageFailed |Wartość logiczna | Czy komunikat AS2 nie powiodło się. (Obowiązkowe) |
-| isMessageSigned | Wartość logiczna | Czy komunikat AS2 został podpisany. (Obowiązkowe) |
-| isMessageEncrypted | Wartość logiczna | Czy został zaszyfrowany komunikatu AS2. (Obowiązkowe) |
-| isMessageCompressed |Wartość logiczna | Czy komunikat AS2 był skompresowany. (Obowiązkowe) |
+| isMessageFailed |Boolean | Czy komunikat AS2 nie powiodło się. (Obowiązkowe) |
+| isMessageSigned | Boolean | Czy komunikat AS2 został podpisany. (Obowiązkowe) |
+| isMessageEncrypted | Boolean | Czy został zaszyfrowany komunikatu AS2. (Obowiązkowe) |
+| isMessageCompressed |Boolean | Czy komunikat AS2 był skompresowany. (Obowiązkowe) |
 | correlationMessageId | String | Identyfikator komunikatu AS2 korelowanie komunikatów za pomocą komunikatów Mdn. (Opcjonalnie) |
 | incomingHeaders |Słownik JToken | Przychodzące szczegóły nagłówka komunikatu AS2. (Opcjonalnie) |
 | outgoingHeaders |Słownik JToken | Wychodzący szczegółowe informacje o nagłówku komunikatu AS2. (Opcjonalnie) |
-| isNrrEnabled | Wartość logiczna | Jeśli wartość nie jest znana, użyj wartości domyślnej. (Obowiązkowe) |
-| isMdnExpected | Wartość logiczna | Jeśli wartość nie jest znana, użyj wartości domyślnej. (Obowiązkowe) |
+| isNrrEnabled | Boolean | Jeśli wartość nie jest znana, użyj wartości domyślnej. (Obowiązkowe) |
+| isMdnExpected | Boolean | Jeśli wartość nie jest znana, użyj wartości domyślnej. (Obowiązkowe) |
 | mdnType | Wyliczenia | Dozwolone wartości to **NotConfigured**, **synchronizacji**, i **Async**. (Obowiązkowe) |
 ||||
 
@@ -120,9 +120,9 @@ Aby pomóc monitorować Powodzenie, błędy i właściwości wiadomości dla tra
 | messageId | String | Identyfikator komunikatu AS2 (Opcjonalnie) |
 | originalMessageId |String | Identyfikator AS2 oryginalnego komunikatu. (Opcjonalnie) |
 | dispositionType | String | Wartość typu dyspozycji powiadomienia MDN. (Opcjonalnie) |
-| isMessageFailed |Wartość logiczna | Czy komunikat AS2 nie powiodło się. (Obowiązkowe) |
-| isMessageSigned |Wartość logiczna | Czy komunikat AS2 został podpisany. (Obowiązkowe) |
-| isNrrEnabled | Wartość logiczna | Jeśli wartość nie jest znana, użyj wartości domyślnej. (Obowiązkowe) |
+| isMessageFailed |Boolean | Czy komunikat AS2 nie powiodło się. (Obowiązkowe) |
+| isMessageSigned |Boolean | Czy komunikat AS2 został podpisany. (Obowiązkowe) |
+| isNrrEnabled | Boolean | Jeśli wartość nie jest znana, użyj wartości domyślnej. (Obowiązkowe) |
 | statusCode | Wyliczenia | Dozwolone wartości to **zaakceptowano**, **odrzucony**, i **AcceptedWithErrors**. (Obowiązkowe) |
 | micVerificationStatus | Wyliczenia | Dozwolone wartości to **NotApplicable**, **zakończyło się pomyślnie**, **i**. (Obowiązkowe) |
 | correlationMessageId | String | Identyfikator korelacji. Oryginalny messaged ID (identyfikator wiadomości, dla której skonfigurowano powiadomienia MDN). (Opcjonalnie) |

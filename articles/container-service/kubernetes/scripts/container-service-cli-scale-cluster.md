@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 05/30/2017
 ms.author: iainfou
 ms.openlocfilehash: 199a2f09df57878d6523cfed6873001f190e14f5
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52992234"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60895250"
 ---
 # <a name="deprecated-scale-an-azure-container-service-cluster"></a>(PRZESTARZAŁE) Skalowanie klastra usługi Azure Container Service
 
@@ -55,7 +55,7 @@ Ten skrypt używa następujących poleceń w celu utworzenia wdrożenia. Każda 
 |---|---|
 | [az acs scale](/cli/azure/acs#az-acs-scale) | Skaluje klaster usługi ACS. |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure).
 

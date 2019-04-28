@@ -9,11 +9,11 @@ ms.date: 01/08/2019
 ms.author: yuemlu
 ms.custom: include file
 ms.openlocfilehash: ad57d373422e0fc310e51ac31f2a2e76999abf22
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56331226"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61127161"
 ---
 # <a name="cost-effective-standard-storage-and-unmanaged-and-managed-azure-vm-disks"></a>Ekonomicznego magazynu w warstwie standardowa oraz zarządzane i niezarządzane dyski maszyny Wirtualnej platformy Azure
 
@@ -144,7 +144,7 @@ Za pomocą usługi Azure Backup i dyski Managed Disks do utworzenia zadania twor
 
 * [Tworzenie konta magazynu](../articles/storage/common/storage-quickstart-create-account.md)
 
-* [Omówienie usługi Managed Disks](../articles/virtual-machines/linux/managed-disks-overview.md)
+* [Omówienie funkcji Dyski zarządzane](../articles/virtual-machines/linux/managed-disks-overview.md)
 
 * [Tworzenie maszyny wirtualnej przy użyciu usługi Resource Manager i programu PowerShell](../articles/virtual-machines/windows/quick-create-powershell.md)
 

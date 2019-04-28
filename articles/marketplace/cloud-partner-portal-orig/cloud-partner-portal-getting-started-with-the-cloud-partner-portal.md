@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 00558b9effed39e160aef93c22431863daf6aa0d
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810270"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61067446"
 ---
 # <a name="getting-started-with-the-cloud-partner-portal"></a>Wprowadzenie do portalu Cloud Partner
 
@@ -51,7 +51,7 @@ Samouczek, należy zaznaczyć, po uruchomieniu nowej oferty lub możesz wrócić
 ![Strona oferty](./media/cloud-partner-portal-getting-started-with-the-cloud-partner-portal/offer-page.png)
 
 Na stronie oferty można wykonywać następujące czynności:
-- Dodaj zawartość lub Sprawdź stan swojej oferty, przełączając się między dwoma trybami najwyższego poziomu: **edytora** i **stan**.
+- Dodaj zawartość lub Sprawdź stan swojej oferty, przełączając się między dwoma trybami najwyższego poziomu: **Edytor** i **stan**.
 - Użyj **pasek akcji** jawnie Zarządzanie zmianami w ofercie, zapisywania i odrzucania dane wejściowe.
 - Przechodzenie między wymagane **formularzy** dla każdej oferty, jak zmienić ustawienia swojej oferty.
 

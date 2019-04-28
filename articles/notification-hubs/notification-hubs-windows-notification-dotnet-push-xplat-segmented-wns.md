@@ -16,17 +16,17 @@ ms.custom: mvc
 ms.date: 03/22/2019
 ms.author: jowargo
 ms.openlocfilehash: 9cfe5f490ef4063e02d9407f23130c1a216961ed
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402460"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60872385"
 ---
 # <a name="tutorial-push-notifications-to-specific-windows-devices-running-universal-windows-platform-applications"></a>Samouczek: wysyłanie powiadomień push do konkretnych urządzeń z systemem Windows z uruchomionymi aplikacjami platformy uniwersalnej systemu Windows
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Korzystając z tego samouczka, dowiesz się, jak rozgłaszać ważne wiadomości do aplikacji ze Sklepu Windows lub aplikacji dla systemu Windows Phone 8.1 (bez użycia platformy Silverlight) przy użyciu usługi Azure Notification Hubs. Jeśli aplikacja ma być przeznaczona dla systemu Windows Phone 8.1 z platformą Silverlight, zobacz wersję dla systemu [Windows Phone](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md).
 

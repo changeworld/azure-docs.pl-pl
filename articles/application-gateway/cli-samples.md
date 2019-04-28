@@ -1,6 +1,6 @@
 ---
-title: Przykłady Azure CLI bramy aplikacji Azure | Dokumentacja firmy Microsoft
-description: Przykłady Azure CLI bramy aplikacji
+title: Przykłady wiersza polecenia platformy Azure bramy aplikacji platformy Azure | Dokumentacja firmy Microsoft
+description: Przykłady wiersza polecenia platformy Azure brama aplikacji
 services: application-gateway
 documentationcenter: networking
 author: vhorne
@@ -11,22 +11,24 @@ ms.service: application-gateway
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 01/30/2018
-ms.author: victorh
+origin.date: 01/30/2018
+ms.date: 07/02/2018
+ms.author: v-junlch
 ms.custom: mvc
-ms.openlocfilehash: 10857e248382156f7f65b343e3eedb65229f6639
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 90e5c52c9efae7538308371a157b552d4e4d12ee
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33201015"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60831133"
 ---
-# <a name="azure-application-gateway-azure-cli-samples"></a>Przykładów dla platformy Azure wiersza polecenia platformy Azure bramy aplikacji
+# <a name="azure-application-gateway-azure-cli-samples"></a>Przykłady bramy aplikacji interfejsu wiersza polecenia platformy Azure
 
-Poniższa tabela zawiera linki do przykłady skryptów wiersza polecenia platformy Azure utworzonych bramy aplikacji.
+Poniższa tabela zawiera linki do przykładowych skryptów interfejsu wiersza polecenia platformy Azure tworzące bramy application Gateway.
 
 | | |
 |---|---|
-| [Zarządzanie ruchem w sieci web](./scripts/create-vmss-cli.md) | Tworzy bramę aplikacji i wszystkie powiązane zasoby. |
-| [Ograniczanie ruchu w sieci web](./scripts/create-vmss-waf-cli.md) | Tworzy bramę aplikacji, która ogranicza komunikację za pomocą reguł OWASP.|
+| [Zarządzanie ruchem internetowym](./scripts/create-vmss-cli.md) | Tworzy bramę aplikacji i wszystkich powiązanych zasobów. |
+| [Ograniczanie ruchu internetowego](./scripts/create-vmss-waf-cli.md) | Tworzy bramę aplikacji, które ogranicza ruch przy użyciu reguł OWASP.|
 | | |
+

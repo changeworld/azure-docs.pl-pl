@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 6e041e41372c72c6792c1fb4a1fbdc3bbe475b21
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58661654"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60844413"
 ---
 # <a name="defragmentation-of-metrics-and-load-in-service-fabric"></a>Defragmentacji metryk i obciążenia w usłudze Service Fabric
 Menedżer zasobów klastra Service Fabric Service domyślną strategię zarządzania metryk obciążenia w klastrze jest rozdzielenie obciążenia. Zapewnienie, że węzły są równomiernie wykorzystywane pozwala uniknąć gorące i zimne punkty, które mogą prowadzić do rywalizacji o zasoby i ograniczenia marnowania zasobów. Dystrybucja obciążeń w klastrze jest również najbezpieczniejszy pod względem pozostałych błędy, ponieważ gwarantuje to, że błąd nie przyjmuje się znaczną część danego obciążenia. 

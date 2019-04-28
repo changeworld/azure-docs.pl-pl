@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
 ms.openlocfilehash: a17bc3cf8c8f1ffbb2a91e17944bfc1c203f439d
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111870"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60905858"
 ---
 # <a name="update-os-version-in-azure-security-center"></a>Zaktualizuj wersję systemu operacyjnego w usłudze Azure Security Center
 W przypadku maszyn wirtualnych (VM) w usługach w chmurze usługi Azure Security Center zaleci, czy systemu operacyjnego (OS) można zaktualizować, jeśli jest dostępna nowsza wersja.  Jedyna chmura usług ról sieć web i procesów roboczych działających w środowisku produkcyjnym, które mają być monitorowane przez miejsc.

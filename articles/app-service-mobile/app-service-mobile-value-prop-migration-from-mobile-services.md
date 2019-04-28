@@ -15,14 +15,14 @@ ms.topic: conceptual
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: 8a0bf1c39977d1659d398fce7c4bb3ae0024c88a
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57771144"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60859923"
 ---
 # <a name="getting-started"> </a>Korzystam z usługi Mobile Services. Jak usługa App Service może mi pomóc?
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Istniejąca Usługa mobilna jest bezpieczna i pozostanie objęta pomocą techniczną. Platforma usługi *Azure App Service* oferuje jednak pewne korzyści związane z aplikacją mobilną, które nie są obecnie dostępne w usłudze Mobile Services:
 
 * Prostsze, łatwiejsze i bardziej ekonomiczne oferty aplikacji obejmujących klientów internetowych i mobilnych

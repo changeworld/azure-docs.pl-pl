@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 1/4/2018
 ms.author: sogup
 ms.openlocfilehash: b4ecebc6bef7f49a23455c7a85f25680df087a95
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57530760"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60848371"
 ---
 # <a name="upgrade-a-backup-vault-to-a-recovery-services-vault"></a>Uaktualnienie magazynu usługi Backup do magazynu usługi Recovery Services
 

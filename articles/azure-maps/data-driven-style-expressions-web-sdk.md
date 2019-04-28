@@ -10,11 +10,11 @@ services: azure-maps
 manager: cpendleton
 ms.custom: codepen
 ms.openlocfilehash: 3b234ca37783fe557baf307f198de9636b06a382
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579499"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60904979"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Styl opartych na danych wyrażeń (zestaw SDK sieci Web)
 
@@ -83,11 +83,11 @@ Wyrażenia danych zapewniają dostęp do danych właściwości w funkcji.
 |------------|-------------|-------------|
 | `['at', number, array]` | obiekt | Pobiera element z tablicy. |
 | `['geometry-type']` | string | Pobiera typ geometrii funkcji: Point, MultiPoint, LineString, MultiLineString, Polygon, MultiPolygon. |
-| `['get', string]` | wartość | Pobiera wartość właściwości przy użyciu właściwości bieżącej funkcji. Zwraca wartość null, jeśli brakuje wymaganej właściwości. |
-| `['get', string, object]` | wartość | Pobiera wartość właściwości z właściwości podanych obiektu. Zwraca wartość null, jeśli brakuje wymaganej właściwości. |
+| `['get', string]` | value | Pobiera wartość właściwości przy użyciu właściwości bieżącej funkcji. Zwraca wartość null, jeśli brakuje wymaganej właściwości. |
+| `['get', string, object]` | value | Pobiera wartość właściwości z właściwości podanych obiektu. Zwraca wartość null, jeśli brakuje wymaganej właściwości. |
 | `['has', string]` | wartość logiczna | Określa, jeśli właściwości funkcji mają określoną właściwość. |
 | `['has', string, object]` | wartość logiczna | Określa, jeśli właściwości obiektu mają określoną właściwość. |
-| `['id']` | wartość | Pobiera identyfikator funkcji, jeśli taki istnieje. |
+| `['id']` | value | Pobiera identyfikator funkcji, jeśli taki istnieje. |
 | `['length', string | array]` | numer | Pobiera długość ciągu lub tablicy. |
 
 **Przykłady**

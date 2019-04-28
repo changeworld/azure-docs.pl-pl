@@ -13,16 +13,16 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: 49686e407b2d733c04bad31706c6c4f315bf28bf
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58008662"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61075207"
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>Migrowanie istniejących baz danych do skalowania w poziomie
 Łatwe zarządzanie istniejących skalowanych w poziomie podzielonych na fragmenty baz danych przy użyciu narzędzia graficzne bazy danych Azure SQL Database (takie jak [Biblioteka kliencka Elastic Database](sql-database-elastic-database-client-library.md)). Najpierw przekonwertuj istniejącego zestawu baz danych do użycia [Menedżera mapowań fragmentów](sql-database-elastic-scale-shard-map-management.md). 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Aby przeprowadzić migrację istniejącej bazy danych podzielonej na fragmenty: 
 
 1. Przygotowanie [bazy danych Menedżera mapowań fragmentów](sql-database-elastic-scale-shard-map-management.md).

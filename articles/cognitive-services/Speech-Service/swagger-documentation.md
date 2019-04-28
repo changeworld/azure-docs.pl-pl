@@ -11,13 +11,13 @@ ms.topic: overview
 ms.date: 04/12/2019
 ms.author: erhopf
 ms.openlocfilehash: 29fcbd058651c428b488f5ce1c767105cb7921a6
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59580410"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61461667"
 ---
-# <a name="swagger-documentation"></a>Dokumentacja programu swagger
+# <a name="swagger-documentation"></a>Dokumentacja platformy Swagger
 
 Usługi mowy oferują Specyfikacja Swagger do interakcji z kilku interfejsów API REST umożliwia importowanie danych, tworzenie modeli, testowanie dokładności modelu, tworzenie niestandardowych punktów końcowych, transkrypcje usługi batch w kolejce i zarządzania subskrypcjami. Większość operacji dostępne za pośrednictwem portalu usługi Custom Speech mogą być wprowadzane w sposób programowy za pomocą tych interfejsów API. 
 

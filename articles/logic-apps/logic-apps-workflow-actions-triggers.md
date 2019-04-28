@@ -10,11 +10,11 @@ ms.suite: integration
 ms.topic: reference
 ms.date: 06/22/2018
 ms.openlocfilehash: bd588eeec8b560411e3fb4b6f84ec8a4a45f08d2
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617923"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60844181"
 ---
 # <a name="reference-for-trigger-and-action-types-in-workflow-definition-language-for-azure-logic-apps"></a>Dokumentacja dla typów akcji i wyzwalaczy w język definicji przepływów pracy dla usługi Azure Logic Apps
 
@@ -50,7 +50,7 @@ Wyzwalacze mają te elementy najwyższego poziomu, mimo że niektóre są opcjon
 
 *Wymagane*
 
-| Wartość | Typ | Opis | 
+| Wartość | Type | Opis | 
 |-------|------|-------------| 
 | <*trigger-name*> | String | Nazwa wyzwalacza | 
 | <*trigger-type*> | String | Typ wyzwalacza, takiego jak "Http" lub "ApiConnection" | 
@@ -61,7 +61,7 @@ Wyzwalacze mają te elementy najwyższego poziomu, mimo że niektóre są opcjon
 
 *Opcjonalne*
 
-| Wartość | Typ | Opis | 
+| Wartość | Type | Opis | 
 |-------|------|-------------| 
 | <*array-with-conditions*> | Tablica | Tablica, która zawiera co najmniej jeden [warunki](#trigger-conditions) określające, czy chcesz uruchomić przepływ pracy. Dostępne tylko dla wyzwalaczy. | 
 | <*runtime-config-options*> | Obiekt JSON | Można zmienić zachowanie środowiska uruchomieniowego wyzwalacza, ustawiając `runtimeConfiguration` właściwości. Aby uzyskać więcej informacji, zobacz [ustawień konfiguracji środowiska uruchomieniowego](#runtime-config-options). | 
@@ -130,7 +130,7 @@ Sprawdza, czy ten wyzwalacz lub *sond* punktu końcowego przy użyciu [zarządza
 
 *Wymagane*
 
-| Wartość | Typ | Opis | 
+| Wartość | Type | Opis | 
 |-------|------|-------------| 
 | <*APIConnection_trigger_name*> | String | Nazwa wyzwalacza | 
 | <*connection-name*> | String | Nazwa połączenia zarządzanego interfejsu API, który korzysta z przepływu pracy | 
@@ -142,7 +142,7 @@ Sprawdza, czy ten wyzwalacz lub *sond* punktu końcowego przy użyciu [zarządza
 
 *Opcjonalne*
 
-| Wartość | Typ | Opis | 
+| Wartość | Type | Opis | 
 |-------|------|-------------| 
 | <*sposób ponawiania*> | Obiekt JSON | Dostosowuje zachowanie ponawiania sporadycznych błędów, które mają 408, 429 i kod stanu 5XX oraz wszystkie wyjątki łączności. Aby uzyskać więcej informacji, zobacz [zasady ponawiania](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
 | <*query-parameters*> | Obiekt JSON | Wywołaj żadnych parametrów zapytania do uwzględnienia przy użyciu interfejsu API. Na przykład `"queries": { "api-version": "2018-01-01" }` dodaje obiekt `?api-version=2018-01-01` wywołania. | 
@@ -154,7 +154,7 @@ Sprawdza, czy ten wyzwalacz lub *sond* punktu końcowego przy użyciu [zarządza
 
 *Dane wyjściowe*
  
-| Element | Typ | Opis |
+| Element | Type | Opis |
 |---------|------|-------------|
 | Nagłówki | Obiekt JSON | Nagłówki z odpowiedzi |
 | treść | Obiekt JSON | Jednostka z odpowiedzi |
@@ -224,7 +224,7 @@ Ten wyzwalacz wysyła żądanie subskrypcji do punktu końcowego usługi za pomo
 
 *Wymagane*
 
-| Wartość | Typ | Opis | 
+| Wartość | Type | Opis | 
 |-------|------|-------------| 
 | <*connection-name*> | String | Nazwa połączenia zarządzanego interfejsu API, który korzysta z przepływu pracy | 
 | <*body-content*> | Obiekt JSON | Wszelkie zawartość komunikatu do wysłania jako ładunek do zarządzanego interfejsu API | 
@@ -232,7 +232,7 @@ Ten wyzwalacz wysyła żądanie subskrypcji do punktu końcowego usługi za pomo
 
 *Opcjonalne*
 
-| Wartość | Typ | Opis | 
+| Wartość | Type | Opis | 
 |-------|------|-------------| 
 | <*sposób ponawiania*> | Obiekt JSON | Dostosowuje zachowanie ponawiania sporadycznych błędów, które mają 408, 429 i kod stanu 5XX oraz wszystkie wyjątki łączności. Aby uzyskać więcej informacji, zobacz [zasady ponawiania](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
 | <*query-parameters*> | Obiekt JSON | Wszelkie parametry zapytania do uwzględnienia przy użyciu wywołania interfejsu API <p>Na przykład `"queries": { "api-version": "2018-01-01" }` dodaje obiekt `?api-version=2018-01-01` wywołania. | 
@@ -303,7 +303,7 @@ Ten wyzwalacz sprawdza lub sonduje określony punkt końcowy opierają na harmon
 
 *Wymagane*
 
-| Wartość | Typ | Opis | 
+| Wartość | Type | Opis | 
 |-------|------|-------------| 
 | <*method-type*> | String | Metoda HTTP na potrzeby sondowania określony punkt końcowy: "POBIERZ", "PUT", "POST", "POPRAWKA", "DELETE" | 
 | <*endpoint-URL*> | String | HTTP lub HTTPS URL punktu końcowego, sondowanie <p>Maksymalny rozmiar ciągu: 2 KB | 
@@ -313,7 +313,7 @@ Ten wyzwalacz sprawdza lub sonduje określony punkt końcowy opierają na harmon
 
 *Opcjonalne*
 
-| Wartość | Typ | Opis | 
+| Wartość | Type | Opis | 
 |-------|------|-------------| 
 | <*header-content*> | Obiekt JSON | Nagłówki do wysłania wraz z żądaniem <p>Na przykład, aby ustawić język i typ żądania: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
 | <*body-content*> | String | Zawartość komunikatu do wysłania jako ładunek z żądaniem | 
@@ -327,7 +327,7 @@ Ten wyzwalacz sprawdza lub sonduje określony punkt końcowy opierają na harmon
 
 *Dane wyjściowe*
 
-| Element | Typ | Opis |
+| Element | Type | Opis |
 |---------|------|-------------| 
 | Nagłówki | Obiekt JSON | Nagłówki z odpowiedzi | 
 | treść | Obiekt JSON | Jednostka z odpowiedzi | 
@@ -400,7 +400,7 @@ Niektóre wartości, takie jak <*typ metody*>, są dostępne zarówno dla `"subs
 
 *Wymagane*
 
-| Wartość | Typ | Opis | 
+| Wartość | Type | Opis | 
 |-------|------|-------------| 
 | <*method-type*> | String | Metoda HTTP do użycia dla żądania subskrypcji: "Pobierz", "PUT", "POST", "Poprawka" lub "DELETE" | 
 | <*endpoint-subscribe-URL*> | String | Adres URL punktu końcowego, gdzie wysyłać żądania subskrypcji | 
@@ -408,7 +408,7 @@ Niektóre wartości, takie jak <*typ metody*>, są dostępne zarówno dla `"subs
 
 *Opcjonalne*
 
-| Wartość | Typ | Opis | 
+| Wartość | Type | Opis | 
 |-------|------|-------------| 
 | <*method-type*> | String | Metoda HTTP do użycia na żądanie anulowania. "Pobierz", "PUT", "POST", "Poprawka" lub "DELETE" | 
 | <*endpoint-unsubscribe-URL*> | String | Adres URL punktu końcowego, gdzie wysyłać żądania anulowania | 
@@ -422,7 +422,7 @@ Niektóre wartości, takie jak <*typ metody*>, są dostępne zarówno dla `"subs
 
 *Dane wyjściowe* 
 
-| Element | Typ | Opis |
+| Element | Type | Opis |
 |---------|------|-------------| 
 | Nagłówki | Obiekt JSON | Nagłówki z odpowiedzi | 
 | treść | Obiekt JSON | Jednostka z odpowiedzi | 
@@ -494,7 +494,7 @@ Ten wyzwalacz jest uruchamiany na podstawie na harmonogramie cyklu określonego 
 
 *Wymagane*
 
-| Wartość | Typ | Opis | 
+| Wartość | Type | Opis | 
 |-------|------|-------------| 
 | <*time-unit*> | String | Jednostka czasu, który w tym artykule opisano, jak często wyzwalacza: "Drugi", "Minute", "Hour", "Day", "Week", "Month" | 
 | <*Liczba z godziny jednostek*> | Liczba całkowita | Wartość, która określa, jak często wyzwalacza na podstawie częstotliwości, czyli liczba jednostek czasu, poczekać, aż wyzwalacz uruchamia się ponownie <p>Poniżej przedstawiono minimalne i maksymalne odstępach czasu: <p>-Miesiąc: 1 – 16 miesięcy </br>-Dzień: 1 – 500 dni </br>-Godzinny: 1-12 000 godzin </br>-Minutowy: 1 72,000 min </br>-Sekundowych: 1 9,999,999 sekundy<p>Na przykład jeśli interwał wynosi 6 i częstotliwość wynosi "Month", cykl jest co 6 miesięcy. | 
@@ -502,7 +502,7 @@ Ten wyzwalacz jest uruchamiany na podstawie na harmonogramie cyklu określonego 
 
 *Opcjonalne*
 
-| Wartość | Typ | Opis | 
+| Wartość | Type | Opis | 
 |-------|------|-------------| 
 | <*start-date-time-with-format-YYYY-MM-DDThh:mm:ss*> | String | Data i godzina rozpoczęcia w następującym formacie: <p>RRRR-MM-Ddtgg, jeśli określona strefa czasowa <p>— lub — <p>RRRR-MM-Ddtgg, jeśli nie określisz strefy czasowej <p>Tak na przykład, jeśli chcesz 18 września 2017 r. o 14:00, następnie określ "2017-09-18T14:00:00" i określić strefę czasową, np. "Pacyfik (czas standardowy)" lub podaj "2017-09-18T14:00:00Z" bez strefy czasowej. <p>**Uwaga:** Ten czas rozpoczęcia musi stosować [specyfikacji czasu daty ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) w [format daty i godziny UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), ale bez [przesunięcie czasu UTC](https://en.wikipedia.org/wiki/UTC_offset). Jeśli nie określisz strefy czasowej, należy dodać litera "Z" na końcu bez żadnych spacji. Ta "Z" odnosi się do równowartości [morskich czasu](https://en.wikipedia.org/wiki/Nautical_time). <p>W przypadku prostych harmonogramów czas rozpoczęcia przypada po pierwszym wystąpieniu, natomiast w przypadku harmonogramów złożonych wyzwalacz nie zostanie wyzwolony wszelkie wcześniej niż czas rozpoczęcia. Aby uzyskać więcej informacji na temat daty rozpoczęcia i godziny, zobacz [Utwórz i harmonogram, regularnie wykonywanych zadań](../connectors/connectors-native-recurrence.md). | 
 | <*Strefa czasowa*> | String | Ma zastosowanie tylko po określeniu godziny rozpoczęcia, ponieważ ten wyzwalacz nie zaakceptuje [przesunięcie czasu UTC](https://en.wikipedia.org/wiki/UTC_offset). Określ strefę czasową, który chcesz zastosować. | 
@@ -603,7 +603,7 @@ Aby wywołać ten wyzwalacz, należy użyć `listCallbackUrl` interfejsu API, kt
 
 *Wymagane*
 
-| Wartość | Typ | Opis | 
+| Wartość | Type | Opis | 
 |-------|------|-------------| 
 | <*property-name*> | String | Nazwa właściwości w schemacie JSON, który opisuje ładunku | 
 | <*property-type*> | String | Typ właściwości | 
@@ -611,7 +611,7 @@ Aby wywołać ten wyzwalacz, należy użyć `listCallbackUrl` interfejsu API, kt
 
 *Opcjonalne*
 
-| Wartość | Typ | Opis | 
+| Wartość | Type | Opis | 
 |-------|------|-------------| 
 | <*method-type*> | String | Metoda żądania przychodzące, należy użyć do wywoływania aplikacji logiki: "POBIERZ", "PUT", "POST", "POPRAWKA", "DELETE" |
 | <*relative-path-for-accepted-parameter*> | String | Ścieżka względna dla parametru, który może zaakceptować adresu URL usługi punktu końcowego | 
@@ -776,7 +776,7 @@ Akcje są te elementy wysokiego poziomu, chociaż niektóre są opcjonalne:
 
 *Wymagane*
 
-| Wartość | Typ | Opis | 
+| Wartość | Type | Opis | 
 |-------|------|-------------|
 | <*Nazwa akcji*> | String | Nazwa akcji | 
 | <*action-type*> | String | Typ akcji, na przykład "Http" lub "ApiConnection"| 
@@ -787,7 +787,7 @@ Akcje są te elementy wysokiego poziomu, chociaż niektóre są opcjonalne:
 
 *Opcjonalne*
 
-| Wartość | Typ | Opis | 
+| Wartość | Type | Opis | 
 |-------|------|-------------|
 | <*sposób ponawiania*> | Obiekt JSON | Dostosowuje zachowanie ponawiania sporadycznych błędów, które mają 408, 429 i kod stanu 5XX oraz wszystkie wyjątki łączności. Aby uzyskać więcej informacji zobacz zasady ponawiania prób. | 
 | <*runtime-config-options*> | Obiekt JSON | W przypadku niektórych działań, można zmienić zachowanie działania w czasie wykonywania, ustawiając `runtimeConfiguration` właściwości. Aby uzyskać więcej informacji, zobacz [ustawień konfiguracji środowiska uruchomieniowego](#runtime-config-options). | 
@@ -889,7 +889,7 @@ Ta akcja spowoduje wysłanie żądania HTTP do [zarządzanych przez firmę Micro
 
 *Wymagane*
 
-| Wartość | Typ | Opis | 
+| Wartość | Type | Opis | 
 |-------|------|-------------| 
 | <*Nazwa akcji*> | String | Nazwa akcji, podany przez łącznik | 
 | <*Nazwa interfejsu API*> | String | Nazwa zarządzanych przez firmę Microsoft interfejs API, który jest używany dla połączenia | 
@@ -899,7 +899,7 @@ Ta akcja spowoduje wysłanie żądania HTTP do [zarządzanych przez firmę Micro
 
 *Opcjonalne*
 
-| Wartość | Typ | Opis | 
+| Wartość | Type | Opis | 
 |-------|------|-------------| 
 | <*other-action-specific-input-properties*> | Obiekt JSON | Inne wejściowe właściwości, które mają zastosowanie do tej określonej akcji | 
 | <*sposób ponawiania*> | Obiekt JSON | Dostosowuje zachowanie ponawiania sporadycznych błędów, które mają 408, 429 i kod stanu 5XX oraz wszystkie wyjątki łączności. Aby uzyskać więcej informacji, zobacz [zasady ponawiania](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
@@ -969,7 +969,7 @@ Niektóre wartości, takie jak <*typ metody*>, są dostępne zarówno dla `"subs
 
 *Wymagane*
 
-| Wartość | Typ | Opis | 
+| Wartość | Type | Opis | 
 |-------|------|-------------| 
 | <*Nazwa akcji*> | String | Nazwa akcji, podany przez łącznik | 
 | <*method-type*> | String | Metoda HTTP do użycia dla subskrypcji lub anulowania subskrypcji z punktu końcowego: "Pobierz", "PUT", "POST", "Poprawka" lub "DELETE" | 
@@ -978,7 +978,7 @@ Niektóre wartości, takie jak <*typ metody*>, są dostępne zarówno dla `"subs
 
 *Opcjonalne*
 
-| Wartość | Typ | Opis | 
+| Wartość | Type | Opis | 
 |-------|------|-------------| 
 | <*api-unsubscribe-URL*> | String | Identyfikator URI do użycia dla anulowania subskrypcji z interfejsu API | 
 | <*header-content*> | Obiekt JSON | Wszystkie nagłówki, aby wysyłać w żądaniu <p>Na przykład, aby ustawić język, a następnie wpisz na żądanie: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
@@ -1009,7 +1009,7 @@ Wynik akcji można następnie użyć w innych działań.
 
 *Wymagane* 
 
-| Wartość | Typ | Opis | 
+| Wartość | Type | Opis | 
 |-------|------|-------------| 
 | <*dane wejściowe redagowania*> | Dowolne | Dane wejściowe do utworzenia pojedynczego wyjścia | 
 |||| 
@@ -1072,7 +1072,7 @@ Ta akcja wymaga wcześniej utworzony [funkcji platformy Azure](../azure-function
 
 *Wymagane*
 
-| Wartość | Typ | Opis | 
+| Wartość | Type | Opis | 
 |-------|------|-------------|  
 | <*Identyfikator platformy Azure — funkcja*> | String | Identyfikator zasobu dla funkcji platformy Azure, który ma zostać wywołana. Oto formatu dla tej wartości:<p>"/subscriptions/<*Azure-subscription-ID*>/resourceGroups/<*Azure-resource-group*>/providers/Microsoft.Web/sites/<*Azure-function-app-name*>/functions/<*Azure-function-name*>" | 
 | <*method-type*> | String | Metoda HTTP do użycia podczas wywoływania funkcji: "Pobierz", "PUT", "POST", "Poprawka" lub "DELETE" <p>Jeśli nie zostanie określony, wartość domyślna to metoda "POST". | 
@@ -1080,7 +1080,7 @@ Ta akcja wymaga wcześniej utworzony [funkcji platformy Azure](../azure-function
 
 *Opcjonalne*
 
-| Wartość | Typ | Opis | 
+| Wartość | Type | Opis | 
 |-------|------|-------------|  
 | <*header-content*> | Obiekt JSON | Wszystkie nagłówki, aby wysłać z wywołania <p>Na przykład, aby ustawić język, a następnie wpisz na żądanie: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
 | <*body-content*> | Obiekt JSON | Zawartość komunikatu do wysłania w żądaniu | 
@@ -1143,7 +1143,7 @@ Ta akcja spowoduje wysłanie żądania do określonego punktu końcowego i spraw
 
 *Wymagane*
 
-| Wartość | Typ | Opis | 
+| Wartość | Type | Opis | 
 |-------|------|-------------| 
 | <*method-type*> | String | Metoda do użycia podczas wysyłania żądania: "Pobierz", "PUT", "POST", "Poprawka" lub "DELETE" | 
 | <*HTTP-or-HTTPS-endpoint-URL*> | String | HTTP lub HTTPS punkt końcowy do wywołania. Maksymalny rozmiar ciągu: 2 KB | 
@@ -1151,7 +1151,7 @@ Ta akcja spowoduje wysłanie żądania do określonego punktu końcowego i spraw
 
 *Opcjonalne*
 
-| Wartość | Typ | Opis | 
+| Wartość | Type | Opis | 
 |-------|------|-------------| 
 | <*header-content*> | Obiekt JSON | Wszelkie nagłówki do wysłania wraz z żądaniem <p>Na przykład, aby ustawić język i typ: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
 | <*body-content*> | Obiekt JSON | Zawartość komunikatu do wysłania w żądaniu | 
@@ -1194,7 +1194,7 @@ Ta akcja tworzy ciąg ze wszystkich elementów w tablicy i oddziela te elementy 
 
 *Wymagane*
 
-| Wartość | Typ | Opis | 
+| Wartość | Type | Opis | 
 |-------|------|-------------| 
 | <*array*> | Tablica | Tablica lub wyrażenie, które zawiera elementy źródła. Jeśli określisz wyrażenia, należy ująć to wyrażenie z podwójnymi cudzysłowami. | 
 | <*delimiter*> | Ciąg jednego znaku | Znak oddzielający każdego elementu w ciągu | 
@@ -1238,7 +1238,7 @@ Ta akcja powoduje utworzenie pola przyjazny dla użytkownika lub *tokenów* przy
 
 *Wymagane*
 
-| Wartość | Typ | Opis | 
+| Wartość | Type | Opis | 
 |-------|------|-------------| 
 | <*JSON-source*> | Obiekt JSON | Zawartość JSON, który chcesz przeanalizować | 
 | <*JSON-schema*> | Obiekt JSON | Schemat JSON opisujące zawartość JSON, używanym w akcji do analizowania źródła zawartości JSON bazowego. <p>**Porada**: W Projektancie aplikacji logiki możesz podać schematu lub podać przykładowy ładunek akcji można wygenerować schematu. | 
@@ -1340,7 +1340,7 @@ Ta akcja tworzy tablicę z elementów w innej tablicy na podstawie określonego 
 
 *Wymagane*
 
-| Wartość | Typ | Opis | 
+| Wartość | Type | Opis | 
 |-------|------|-------------| 
 | <*array*> | Tablica | Tablica lub wyrażenie, które zawiera elementy źródła. Jeśli określisz wyrażenia, należy ująć to wyrażenie z podwójnymi cudzysłowami. |
 | <*condition-or-filter*> | String | Na warunek używany do filtrowania elementów w tablicy źródłowej <p>**Uwaga**: Jeśli żadne wartości nie spełnia warunku, ta akcja stworzy pustą tablicę. |
@@ -1381,14 +1381,14 @@ Ta akcja powoduje utworzenie ładunek odpowiedzi na żądania HTTP.
 
 *Wymagane*
 
-| Wartość | Typ | Opis | 
+| Wartość | Type | Opis | 
 |-------|------|-------------| 
 | <*response-status-code*> | Liczba całkowita | Kod stanu HTTP są wysyłane do żądania przychodzącego. Domyślny kod to "200 OK", ale kod może być prawidłowym stanem kodu, który rozpoczyna się za pomocą 2xx, 4xx lub 5xx, ale nie z 3xxx. | 
 |||| 
 
 *Opcjonalne*
 
-| Wartość | Typ | Opis | 
+| Wartość | Type | Opis | 
 |-------|------|-------------| 
 | <*response-headers*> | Obiekt JSON | Jeden lub więcej nagłówków do uwzględnienia z odpowiedzią | 
 | <*response-body*> | Różne | Treść odpowiedzi, który może być ciąg, obiekt JSON lub nawet binarne zawartość z poprzedniej akcji | 
@@ -1456,7 +1456,7 @@ Ta akcja tworzy tablicę z obiektami JSON poprzez przekształcenie elementów z 
 
 *Wymagane* 
 
-| Wartość | Typ | Opis | 
+| Wartość | Type | Opis | 
 |-------|------|-------------| 
 | <*array*> | Tablica | Tablica lub wyrażenie, które zawiera elementy źródła. Upewnij się, że ujmij wyrażenie z podwójnymi cudzysłowami. <p>**Uwaga**: Jeśli tablica źródłowa jest pusta, ta akcja stworzy pustą tablicę. | 
 | <*key-name*> | String | Nazwa właściwości, przypisane do wynik <*wyrażenia*> <p>Aby dodać nową właściwość dla wszystkich obiektów w tablicy danych wyjściowych, należy podać <*nazwa klucza*> dla tej właściwości oraz element <*wyrażenie*> dla wartości właściwości. <p>Aby usunąć właściwość z wszystkich obiektów w tablicy, należy pominąć <*nazwa klucza*> dla tej właściwości. | 
@@ -1554,7 +1554,7 @@ Ta akcja tworzy tabelę CSV lub HTML z tablicy. Dla tablic z obiektami JSON, ta 
 
 *Wymagane* 
 
-| Wartość | Typ | Opis | 
+| Wartość | Type | Opis | 
 |-------|------|-------------| 
 | < CSV *lub* HTML >| String | Format dla tabeli, którą chcesz utworzyć | 
 | <*array*> | Tablica | Tablica lub wyrażenie, które zawiera elementy źródła w tabeli <p>**Uwaga**: Jeśli tablica źródłowa jest pusta, ta akcja stworzy pustej tabeli. | 
@@ -1564,7 +1564,7 @@ Ta akcja tworzy tabelę CSV lub HTML z tablicy. Dla tablic z obiektami JSON, ta 
 
 Aby określić lub dostosowywanie nagłówków kolumn i wartości, użyj `columns` tablicy. Gdy `header-value` pary mają taką samą nazwę nagłówka, ich wartości są wyświetlane w tej samej kolumnie pod nazwą tego nagłówka. W przeciwnym razie każdy nagłówek unikatowy definiuje unikatową kolumnę.
 
-| Wartość | Typ | Opis | 
+| Wartość | Type | Opis | 
 |-------|------|-------------| 
 | <*column-name*> | String | Nazwa nagłówka kolumny | 
 | <*column-value*> | Dowolne | Wartość w tej kolumnie | 
@@ -1667,7 +1667,7 @@ Ta akcja zatrzymuje działanie dla wystąpienia przepływu pracy, anuluje wszyst
 
 *Wymagane*
 
-| Wartość | Typ | Opis | 
+| Wartość | Type | Opis | 
 |-------|------|-------------| 
 | <*status*> | String | Stan aby powrócić do uruchomienia: "Nie", "Anulowane" lub "Powodzenie" |
 |||| 
@@ -1676,7 +1676,7 @@ Ta akcja zatrzymuje działanie dla wystąpienia przepływu pracy, anuluje wszyst
 
 Właściwości dla obiektu "runStatus" mają zastosowanie tylko wtedy, gdy dla właściwości "runStatus" ustawiono stan "Niepowodzenie".
 
-| Wartość | Typ | Opis | 
+| Wartość | Type | Opis | 
 |-------|------|-------------| 
 | <*error-code-or-name*> | String | Kod lub nazwa błędu |
 | <*error-message*> | String | Może podjąć wiadomości lub tekst, który opisuje błąd i wszelkie akcje użytkownika aplikacji | 
@@ -1737,7 +1737,7 @@ Ta akcja wstrzymuje wykonywanie przepływu pracy przez określony interwał lub 
 
 *Wymagane*
 
-| Wartość | Typ | Opis | 
+| Wartość | Type | Opis | 
 |-------|------|-------------| 
 | <*Liczba jednostek*> | Liczba całkowita | Aby uzyskać **opóźnienie** akcji, liczba oczekiwania | 
 | <*interval*> | String | Aby uzyskać **opóźnienie** akcji, interwał oczekiwania: "Drugi", "Minute", "Hour", "Day", "Week", "Month" | 
@@ -1810,7 +1810,7 @@ Aparat usługi Logic Apps sprawdza, czy dostęp do wyzwalacza, który chcesz wyw
 
 *Wymagane*
 
-| Wartość | Typ | Opis | 
+| Wartość | Type | Opis | 
 |-------|------|-------------| 
 | <*nested-logic-app-name*> | String | Nazwa aplikacji logiki, który chcesz wybrać | 
 | <*trigger-name*> | String | Nazwa wyzwalacza w aplikacji logiki zagnieżdżonych, który ma zostać wywołana | 
@@ -1821,7 +1821,7 @@ Aparat usługi Logic Apps sprawdza, czy dostęp do wyzwalacza, który chcesz wyw
 
 *Opcjonalne*
 
-| Wartość | Typ | Opis | 
+| Wartość | Type | Opis | 
 |-------|------|-------------|  
 | <*header-content*> | Obiekt JSON | Wszystkie nagłówki, aby wysłać z wywołania | 
 | <*body-content*> | Obiekt JSON | Wszelkie zawartość komunikatu do wysłania z wywołania | 
@@ -1887,7 +1887,7 @@ Ta akcja pętli wykonuje iterację przez tablicę i wykonuje akcje dla każdego 
 
 *Wymagane* 
 
-| Wartość | Typ | Opis | 
+| Wartość | Type | Opis | 
 |-------|------|-------------| 
 | <*Akcja — 1 n*> | String | Nazwy akcji, które są uruchamiane dla każdego elementu tablicy | 
 | <*Akcja definition-1... n*> | Obiekt JSON | Definicje akcje, które są uruchamiane | 
@@ -1896,7 +1896,7 @@ Ta akcja pętli wykonuje iterację przez tablicę i wykonuje akcje dla każdego 
 
 *Opcjonalne*
 
-| Wartość | Typ | Opis | 
+| Wartość | Type | Opis | 
 |-------|------|-------------| 
 | <*count*> | Liczba całkowita | Domyślnie pętla "for each" iteracji wykonywać w tym samym czasie lub w sposób równoległy maksymalnie [domyślny limit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić ten limit, ustawiając nową <*liczba*> wartość, zobacz [zmienić pętli "for each" współbieżności](#change-for-each-concurrency). | 
 | <*Opcja operacji*> | String | Aby uruchomić pętlę "for each", po kolei, a nie w sposób równoległy, ustaw <*opcji operacji*> do `Sequential` lub <*liczba*> do `1`, ale nie oba. Aby uzyskać więcej informacji, zobacz [Uruchom "for each" w pętli sekwencyjnie](#sequential-for-each). | 
@@ -1960,7 +1960,7 @@ Ta akcja, która jest *instrukcji warunkowej*, ocenia wyrażenie, które repreze
 }
 ```
 
-| Wartość | Typ | Opis | 
+| Wartość | Type | Opis | 
 |-------|------|-------------| 
 | <*Warunek*> | Obiekt JSON | Warunek, który może być wyrażenie do oceny | 
 | <*action-1*> | Obiekt JSON | Akcję do przeprowadzenia podczas <*warunek*> zwraca wartość true | 
@@ -2050,7 +2050,7 @@ Ta akcja logicznie grup akcji do *zakresy*, który uzyskać ich stanu po akcji w
 
 *Wymagane*
 
-| Wartość | Typ | Opis | 
+| Wartość | Type | Opis | 
 |-------|------|-------------|  
 | <*wewnętrzne — Akcja-1... n*> | Obiekt JSON | Co najmniej jednej akcji, które są uruchamiane w zakresie |
 | <*dane wejściowe akcji*> | Obiekt JSON | Dane wejściowe dla każdej akcji |
@@ -2091,7 +2091,7 @@ Tej akcji, nazywana również *switch, instrukcja*, umożliwia organizowanie inn
 
 *Wymagane*
 
-| Wartość | Typ | Opis | 
+| Wartość | Type | Opis | 
 |-------|------|-------------| 
 | <*expression-object-or-token*> | Różna | Wyrażenie, obiekt JSON lub tokenu, aby oceniać | 
 | <*Nazwa akcji*> | String | Nazwa akcji do uruchomienia uwzględniania wielkości liter | 
@@ -2101,7 +2101,7 @@ Tej akcji, nazywana również *switch, instrukcja*, umożliwia organizowanie inn
 
 *Opcjonalne*
 
-| Wartość | Typ | Opis | 
+| Wartość | Type | Opis | 
 |-------|------|-------------| 
 | <*default-action-name*> | String | Nazwa domyślnej akcji do uruchomienia, gdy istnieje nie uwzględniania wielkości liter | 
 | <*default-action-definition*> | Obiekt JSON | Definicja akcji do uruchomienia, gdy istnieje nie uwzględniania wielkości liter | 
@@ -2217,7 +2217,7 @@ Ta akcja pętla zawiera akcje, które uruchamiane aż określony warunek ma wart
 }
 ```
 
-| Wartość | Typ | Opis | 
+| Wartość | Type | Opis | 
 |-------|------|-------------| 
 | <*Nazwa akcji*> | String | Nazwa akcji, którą chcesz uruchomić wewnątrz pętli | 
 | <*action-type*> | String | Typ akcji, którą chcesz uruchomić | 
@@ -2309,7 +2309,7 @@ Można zmienić domyślne zachowanie środowiska uruchomieniowego dla wyzwalaczy
 
 Można zmienić domyślne zachowanie dla wyzwalaczy i akcji przy użyciu `operationOptions` właściwości w definicji wyzwalacza lub akcji.
 
-| Opcja operacji | Typ | Opis | Wyzwalacza lub akcji | 
+| Opcja operacji | Type | Opis | Wyzwalacza lub akcji | 
 |------------------|------|-------------|-------------------| 
 | `DisableAsyncPattern` | String | Uruchom działania oparte na protokole HTTP, synchronicznie zamiast asynchronicznie. <p><p>Aby ustawić tę opcję, zobacz [akcje były uruchamiane synchronicznie](#asynchronous-patterns). | Akcje: <p>[ApiConnection](#apiconnection-action), <br>[HTTP](#http-action), <br>[Odpowiedź](#response-action) | 
 | `OptimizedForHighThroughput` | String | Zmiana [domyślny limit](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) liczby wykonań akcji na 5 minut, aby [maksymalny limit](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). <p><p>Aby ustawić tę opcję, zobacz [działania w trybie wysokiej przepływności](#run-high-throughput-mode). | Wszystkie akcje | 

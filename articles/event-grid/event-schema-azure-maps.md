@@ -8,11 +8,11 @@ ms.topic: reference
 ms.date: 02/08/2019
 ms.author: v-musehg
 ms.openlocfilehash: 74a3674e632f8dc3f0755bc2ad48376708c7966f
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56008384"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60861858"
 ---
 # <a name="azure-event-grid-event-schema-for-azure-maps"></a>Schemat zdarzeń Azure Event Grid dla usługi Azure Maps
 
@@ -104,21 +104,21 @@ Zdarzenie zawiera następujące dane najwyższego poziomu:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| temat | ciąg | Zasobów Pełna ścieżka do źródła zdarzeń. To pole nie jest zapisywalna. Usługa Event Grid udostępnia tę wartość. |
-| temat | ciąg | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
-| eventType | ciąg | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. |
-| eventTime | ciąg | Czas, którego zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
-| id | ciąg | Unikatowy identyfikator zdarzenia. |
+| temat | string | Zasobów Pełna ścieżka do źródła zdarzeń. To pole nie jest zapisywalna. Usługa Event Grid udostępnia tę wartość. |
+| temat | string | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
+| eventType | string | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. |
+| eventTime | string | Czas, którego zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
+| id | string | Unikatowy identyfikator zdarzenia. |
 | dane | obiekt | Dane zdarzenia wirtualnego Grodzenia. |
-| dataVersion | ciąg | Wersja schematu dla obiektu danych. Wydawca Określa wersję schematu. |
-| metadataVersion | ciąg | Wersja schematu dla metadanych zdarzenia. Usługa Event Grid definiuje schemat właściwości najwyższego poziomu. Usługa Event Grid udostępnia tę wartość. |
+| dataVersion | string | Wersja schematu dla obiektu danych. Wydawca Określa wersję schematu. |
+| metadataVersion | string | Wersja schematu dla metadanych zdarzenia. Usługa Event Grid definiuje schemat właściwości najwyższego poziomu. Usługa Event Grid udostępnia tę wartość. |
 
 Obiekt danych ma następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| apiCategory | ciąg | Interfejs API kategorii zdarzenia. |
-| apiName | ciąg | Nazwa interfejsu API zdarzenia. |
+| apiCategory | string | Interfejs API kategorii zdarzenia. |
+| apiName | string | Nazwa interfejsu API zdarzenia. |
 | Problemy | obiekt | Wyświetla listę problemów napotkanych podczas przetwarzania. Jeśli zwracane są wszystkie problemy, będą nie geometrii zwrócony z odpowiedzią. |
 | responseCode | numer | Kod odpowiedzi HTTP |
 | Geometrii | obiekt | Wyświetla geometrii ogrodzenia, które zawierają współrzędnych pozycji lub nakładania się searchBuffer wokół pozycji. |
@@ -133,26 +133,26 @@ Obiekt ErrorDetails jest zwracany, gdy wystąpi błąd w interfejsie API map. Sz
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| kod | ciąg | Kod stanu HTTP. |
-| message | ciąg | Jeśli to możliwe, ludzi, czytelny opis błędu. |
+| kod | string | Kod stanu HTTP. |
+| message | string | Jeśli to możliwe, ludzi, czytelny opis błędu. |
 | innererror | InnerError | Jeśli to możliwe, obiekt zawierający informacje specyficzne dla usługi o błędzie. |
 
 InnerError to obiekt zawierający informacje specyficzne dla usługi o błędzie. Obiekt InnerError ma następujące właściwości: 
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| kod | ciąg | Komunikat o błędzie. |
+| kod | string | Komunikat o błędzie. |
 
 Obiekt geometrii wymieniono geometrii identyfikatory wirtualne ogrodzenia, wygasłych względem czasu użytkownika w żądaniu. Obiekt geometrii ma geometrii elementy z następującymi właściwościami: 
 
 | Właściwość | Typ | Opis |
 |:-------- |:---- |:----------- |
-| Identyfikator urządzenia | ciąg | Identyfikator urządzenia. |
-| odległość | ciąg | <p>Odległość od współrzędnych do najbliższej granicy wirtualnym ogrodzeniu. Wynik dodatni oznacza, że współrzędnych znajduje się poza wirtualnym ogrodzeniu. Jeśli współrzędnych znajduje się poza wirtualnego ogrodzenia, ale większa niż wartość searchBuffer daleko od najbliższej granicy wirtualnego ogrodzenia, wartość jest 999. Ujemna oznacza, że współrzędnych jest w wirtualnym ogrodzeniu. Jeśli współrzędnych znajduje się wewnątrz wielokąta, ale większa niż wartość searchBuffer daleko od najbliższej granicy geofencing, wartość jest-999 = sprawdzanie. Wartość 999 oznacza, że istnieje pewnie współrzędnych znajduje się również poza wirtualnym ogrodzeniu. Wartość oznacza-999 = sprawdzanie, czy jest pewnie współrzędnych jest również w wirtualnym ogrodzeniu.<p> |
-| geometryid |ciąg | Unikatowy identyfikator identyfikuje geometrii wirtualnym ogrodzeniu. |
+| Identyfikator urządzenia | string | Identyfikator urządzenia. |
+| odległość | string | <p>Odległość od współrzędnych do najbliższej granicy wirtualnym ogrodzeniu. Wynik dodatni oznacza, że współrzędnych znajduje się poza wirtualnym ogrodzeniu. Jeśli współrzędnych znajduje się poza wirtualnego ogrodzenia, ale większa niż wartość searchBuffer daleko od najbliższej granicy wirtualnego ogrodzenia, wartość jest 999. Ujemna oznacza, że współrzędnych jest w wirtualnym ogrodzeniu. Jeśli współrzędnych znajduje się wewnątrz wielokąta, ale większa niż wartość searchBuffer daleko od najbliższej granicy geofencing, wartość jest-999 = sprawdzanie. Wartość 999 oznacza, że istnieje pewnie współrzędnych znajduje się również poza wirtualnym ogrodzeniu. Wartość oznacza-999 = sprawdzanie, czy jest pewnie współrzędnych jest również w wirtualnym ogrodzeniu.<p> |
+| geometryid |string | Unikatowy identyfikator identyfikuje geometrii wirtualnym ogrodzeniu. |
 | nearestlat | numer | Szerokość najbliższy punkt geometrii. |
 | nearestlon | numer | Długość geograficzna najbliższego punktu geometrii. |
-| udId | ciąg | Unikatowy identyfikator, zwrócone z usługi przekazywania użytkownika podczas przekazywania wirtualnego ogrodzenia. Nie będą uwzględniane w interfejsie API wpis wirtualnego grodzenia. |
+| udId | string | Unikatowy identyfikator, zwrócone z usługi przekazywania użytkownika podczas przekazywania wirtualnego ogrodzenia. Nie będą uwzględniane w interfejsie API wpis wirtualnego grodzenia. |
 
 Obiekt danych ma następujące właściwości:
 

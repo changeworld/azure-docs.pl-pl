@@ -10,11 +10,11 @@ ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 04/30/2018
 ms.openlocfilehash: d80ffa862546f56e93a338a7a1db031e2cb55990
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59616805"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60845756"
 ---
 # <a name="schema-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Odwołanie do schematu dla język definicji przepływów pracy w usłudze Azure Logic Apps
 
@@ -103,7 +103,7 @@ Poniżej przedstawiono ogólną strukturę definicji danych wyjściowych dla:
 |---------|----------|------|-------------|
 | <*key-name*> | Yes | String | Nazwa klucza dla produktu wyjściowego zwracają wartość |
 | type | Yes | int, float, string, securestring, bool, tablicę, obiekt JSON | Typ dla wartości zwracanej w danych wyjściowych |
-| wartość | Yes | Takie same jak `type` | Wartość zwracana w danych wyjściowych |
+| value | Yes | Takie same jak `type` | Wartość zwracana w danych wyjściowych |
 |||||
 
 Aby uzyskać dane wyjściowe z przebiegu przepływu pracy, Przejrzyj historię uruchamiania aplikacji logiki i szczegółowe informacje w witrynie Azure portal lub [interfejsu API REST przepływu pracy](https://docs.microsoft.com/rest/api/logic/workflows). Można również przekazać dane wyjściowe z systemami zewnętrznymi, na przykład usługa Power BI, dzięki czemu można tworzyć pulpity nawigacyjne.

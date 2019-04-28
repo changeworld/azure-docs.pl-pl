@@ -1,20 +1,22 @@
 ---
 title: UPSERT danych w usłudze Azure Cosmos DB Cassandra interfejs API, z platformy Spark
 description: Ten artykuł zawiera instrukcje upsert do tabel na interfejs API usługi Azure Cosmos DB Cassandra z platformy Spark
-author: kanshiG
-ms.author: govindk
+author: rockboyfor
+ms.author: v-yeche
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
-ms.date: 09/24/2018
+origin.date: 09/24/2018
+ms.date: 03/18/2019
 ms.openlocfilehash: 7770e7fbe846defc865b3fcc702fcb00bae1b73c
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033704"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60893422"
 ---
+<!--Verify sucessfully-->
 # <a name="upsert-data-into-azure-cosmos-db-cassandra-api-from-spark"></a>UPSERT danych w usłudze Azure Cosmos DB Cassandra interfejs API, z platformy Spark
 
 W tym artykule opisano sposób upsert danych do interfejsu API usługi Azure Cosmos DB Cassandra z platformy Spark.
@@ -31,7 +33,7 @@ import com.datastax.spark.connector.cql.CassandraConnector
 import com.microsoft.azure.cosmosdb.cassandra
 
 //Connection-related
-spark.conf.set("spark.cassandra.connection.host","YOUR_ACCOUNT_NAME.cassandra.cosmosdb.azure.com")
+spark.conf.set("spark.cassandra.connection.host","YOUR_ACCOUNT_NAME.cassandra.cosmosdb.azure.cn")
 spark.conf.set("spark.cassandra.connection.port","10350")
 spark.conf.set("spark.cassandra.connection.ssl.enabled","true")
 spark.conf.set("spark.cassandra.auth.username","YOUR_ACCOUNT_NAME")
@@ -90,7 +92,11 @@ cdbConnector.withSessionDo(session => session.execute("update books_ks.books set
 ## <a name="next-steps"></a>Kolejne kroki
 
 Przejdź do następujące artykuły, aby wykonywać inne operacje na danych przechowywanych w tabelach interfejsu API usługi Azure Cosmos DB Cassandra:
- 
+
 * [Operacje usuwania](cassandra-spark-delete-ops.md)
 * [Operacje agregacji](cassandra-spark-aggregation-ops.md)
 * [Operacje kopiowania tabeli](cassandra-spark-table-copy-ops.md)
+
+<!--Verify sucessfully-->
+<!--Update_Description: new articles on  -->
+<!--ms.date: 03/18/2019-->

@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: ramkris
 ms.openlocfilehash: 60afd8128224050d456699e798d814a259e106ae
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59543825"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61330250"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Przyspiesz analizy danych big data przy użyciu platformy Apache Spark do łącznika usługi Azure Cosmos DB
 
@@ -203,7 +203,7 @@ Mamy więcej informacji w `azure-cosmosdb-spark` [wiki](https://github.com/Azure
 * [Przebiegi testowe zapytanie](https://github.com/Azure/azure-documentdb-spark/wiki/Query-Test-Runs)
 * [Pisanie testów](https://github.com/Azure/azure-cosmosdb-spark/wiki/Writing-Test-Runs)
 
-### <a name="change-feed"></a>Kanał informacyjny zmian
+### <a name="change-feed"></a>Zestawienie zmian
 
 * [Stream przetwarzania zmian przy użyciu usługi Azure Cosmos DB kanału informacyjnego zmian i Apache Spark](https://github.com/Azure/azure-cosmosdb-spark/wiki/Stream-Processing-Changes-using-Azure-Cosmos-DB-Change-Feed-and-Apache-Spark)
 * [Pokazy kanału informacyjnego zmian](https://github.com/Azure/azure-cosmosdb-spark/wiki/Change-Feed-demos)

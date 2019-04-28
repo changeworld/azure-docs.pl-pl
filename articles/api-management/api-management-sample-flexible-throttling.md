@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 02/03/2018
 ms.author: apimpm
 ms.openlocfilehash: 22c3987121e2ab3479274c89c359c679f5f1135e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59783792"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61087134"
 ---
 # <a name="advanced-request-throttling-with-azure-api-management"></a>Zaawansowane żądanie ograniczania usługi Azure API Management
 Możliwość ograniczania żądań przychodzących jest kluczową rolę usługi Azure API Management. Albo poprzez kontrolowanie współczynnika żądań lub łączna liczba żądań/przesyłane dane, usługa API Management umożliwia także dostawcami interfejsów API do ochrony swoich interfejsów API z nadużyć i utworzyć wartości dla różnych warstw produktu interfejsu API.

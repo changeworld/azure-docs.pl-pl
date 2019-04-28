@@ -16,15 +16,15 @@ ms.date: 10/16/2018
 ms.author: glenga;msangapu;david.ebbo;suwatch;pbatum;naren.soni;
 ms.custom: seodec18
 ms.openlocfilehash: 0f2053e978b7c890f4e175515ed54f69694950c6
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56749923"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60833584"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Uruchamianie zadań w tle za pomocą zadań Webjob w usłudze Azure App Service
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Zadania Webjob są funkcją [usługi Azure App Service](https://docs.microsoft.com/azure/app-service/) , pozwala na uruchamianie programu lub skryptu w tym samym kontekście jako aplikację sieci web, aplikacji mobilnej lub aplikacji interfejsu API. Brak bez dodatkowych kosztów korzystania z zadań WebJobs.
 
 > [!IMPORTANT]
@@ -125,7 +125,7 @@ when making changes in one don't forget the other two.
    | **Nazwa** | myTriggeredWebJob | Nazwa, która jest unikatowa w obrębie aplikacji usługi App Service. Musi rozpoczynać się literą lub cyfrą i nie może zawierać znaków specjalnych innych niż "-" i "_".|
    | **Przekazywanie pliku** | ConsoleApp.zip | A *zip* pliku, który zawiera plik wykonywalny lub skrypt, a także wszelkie pliki pomocnicze, potrzebne do uruchomienia programu lub skryptu. Obsługiwane typy plików plik wykonywalny lub skrypt są wymienione w [obsługiwane typy plików](#acceptablefiles) sekcji. |
    | **Typ** | Wyzwolone | [Typy zadań WebJob](#webjob-types) są opisane we wcześniejszej części tego artykułu. |
-   | **Wyzwalacze** | Ręczne | |
+   | **Wyzwalacze** | Ręcznie | |
 
 4. Kliknij przycisk **OK**.
 

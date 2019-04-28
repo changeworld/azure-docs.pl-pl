@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 02/03/2019
 ms.author: juliako
 ms.openlocfilehash: 10600d8f3ff4e08b8d90f28ec15d3cb0c56bcae0
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746748"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61230900"
 ---
 # <a name="streaming-policies"></a>Zasady przesyłania strumieniowego
 
@@ -70,5 +70,5 @@ Zobacz [filtrowanie, porządkowanie, stronicowanie jednostek usługi Media Servi
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Strumieniowe przesyłanie pliku](stream-files-dotnet-quickstart.md)
-* [Dynamiczne szyfrowanie AES-128 i usługę dostarczania kluczy](protect-with-aes128.md)
+* [Używanie dynamicznego szyfrowania AES-128 i usługi dostarczania kluczy](protect-with-aes128.md)
 * [Użyj DRM dynamiczne szyfrowanie i licencji usługi dostarczania](protect-with-drm.md)

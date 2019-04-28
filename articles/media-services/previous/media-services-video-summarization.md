@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: milanga;juliako;
 ms.openlocfilehash: 0fcacf68f4b41ed8945a6a40d7da125aef499947
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313264"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60825541"
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Umożliwia tworzenie podsumowań wideo miniatur wideo multimediów platformy Azure  
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 **Miniatur wideo multimediów Azure** procesor multimediów (MP) pozwala na tworzenie podsumowanie wideo, które są przydatne do klientów, którzy po prostu chcesz podsumowanie długich wideo w wersji zapoznawczej. Klienci mogą na przykład chcesz zobaczyć short "Podsumowanie wideo" po zatrzymaniu wskaźnika myszy na miniaturze. Przez dostosowywanie parametrów **miniatur wideo multimediów Azure** przy użyciu predefiniowanej konfiguracji, można użyć MP zaawansowaną zrzut wykrywania i łączenia technologię algorithmically wygenerować opisu klipu podrzędnego.  
 
 **Miniatur wideo multimediów Azure** pakiet administracyjny jest obecnie w wersji zapoznawczej.

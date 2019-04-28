@@ -11,11 +11,11 @@ ms.date: 03/19/2019
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.openlocfilehash: acea42f7f4ab986e9828000ab7cfc9e302ed92a3
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58885461"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61082946"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-azure-sql-data-warehouse"></a>Wskazówki dotyczące projektowania dotyczące korzystania z zreplikowane tabele w usłudze Azure SQL Data Warehouse
 Ten artykuł zawiera zalecenia dotyczące projektowania zreplikowanych tabel w schemacie usługi SQL Data Warehouse. Użyj tych zaleceń, aby poprawić wydajność zapytań, redukowania poziomu złożoności procesów przepływu i zapytanie danych.

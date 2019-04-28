@@ -5,27 +5,29 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/11/2019
+ms.date: 04/22/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 5c8f70ff76da458fcc1433226a51012fb7ccd18e
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 81947baccf723ab759f2dc24df40b81af4502e09
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544640"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61004005"
 ---
 # <a name="understand-cost-management-data"></a>Omówienie danych usługi Cost Management
 
 Ten artykuł pomoże Ci lepiej zrozumieć, jakie dane znajdują się w usłudze Azure Cost Management. I wyjaśniono, jak często dane są przetwarzane, zebranych, jak pokazano i zamknięte. Są naliczane za użycie systemu Azure co miesiąc. Jednak do typu Twojej subskrypcji platformy Azure Określa, kiedy kończy się miesiąca rozliczeniowego. Jak często Cost Management odbiera użycia, który różni się w danych na podstawie różnych czynników. Takie czynniki obejmują, jak długo trwa przetwarzanie danych i jak często usług platformy Azure emitować użycia systemów rozliczeniowych.
 
+Usługa Cost Management obejmuje wszystkie użycia i zakupów, w tym zastrzeżenia i ofert innych firm dla kont z umową Enterprise Agreement (EA). Umowy klienta firmy Microsoft (MCA) kont i subskrypcji zgodnie z rzeczywistym użyciem są uwzględnione jedynie użycia z usług platformy Azure i Portal Marketplace. Pomoc techniczna i innych kosztów z góry nie są uwzględniane. Koszty są szacowane, dopóki nie jest generowany faktury i nie wziąć pod uwagę środków.
+
 ## <a name="supported-microsoft-offers"></a>Obsługiwane oferty firmy Microsoft
 
 Poniższe informacje zawierają aktualnie obsługiwany [platforma Microsoft Azure oferuje](https://azure.microsoft.com/support/legal/offer-details/) w usłudze Azure Cost Management.  Oferta platformy Azure jest typ subskrypcji platformy Azure, czy masz.
 
-| Kategoria  | **Nazwa oferty** | **Identyfikator przydziału** | **Numer oferty** |
+| Category  | **Nazwa oferty** | **Identyfikator przydziału** | **Numer oferty** |
 | --- | --- | --- | --- |
 | **Azure (Niemcy)** | [Płatność za rzeczywiste użycie platformy Azure (Niemcy)](https://azure.microsoft.com/offers/ms-azr-de-0003p)      | PayAsYouGo_2014-09-01 | MS-AZR-DE-0003P |
 | **Platforma Azure Government** | Azure Government — przedsiębiorstwa                                                         | EnterpriseAgreement_2014-09-01 | MS-AZR-USGOV-0017P |
@@ -49,7 +51,7 @@ Poniższe informacje zawierają aktualnie obsługiwany [platforma Microsoft Azur
 
 W poniższej tabeli przedstawiono oferty nieobsługiwany.
 
-| Kategoria  | **Nazwa oferty** | **Identyfikator przydziału** | **Numer oferty** |
+| Category  | **Nazwa oferty** | **Identyfikator przydziału** | **Numer oferty** |
 | --- | --- | --- | --- |
 | **Dostawca rozwiązań w chmurze (CSP)** | Microsoft Azure                                    | CSP_2015-05-01 | MS-AZR-0145P |
 | **Dostawca rozwiązań w chmurze (CSP)** | Azure Government — CSP                               | CSP_2015-05-01 | MS-AZR-USGOV-0145P |
@@ -86,6 +88,7 @@ W poniższych tabelach przedstawiono dane, które ma włączone lub nie znajduje
 |   | Środki na korzystanie z — Aby uzyskać więcej informacji, zobacz [warunki wyjaśniono faktur](../billing/billing-understand-your-invoice.md). |
 
 <sup>1</sup> opiera się na rezerwacji użycie usług platformy azure i umożliwić jego negocjację ceny.
+
 <sup>2</sup> użycia oferty w portalu marketplace nie jest dostępna dla płatność za rzeczywiste użycie, MSDN, i Visual Studio oferuje w tej chwili.
 
 **Metadata**
@@ -113,7 +116,7 @@ Subskrypcje zgodnie z rzeczywistym użyciem — w przypadku miesiąca rozliczeni
 
 ### <a name="rerated-data"></a>Rerated danych
 
-Czy używać [interfejsów API usługi Cost Management](https://aka.ms/costmgmt/docs), usługi Power bi lub w portalu Azure w celu pobrania danych, należy oczekiwać bieżącego okresu rozliczeniowego opłaty ponownie uzyskiwanie oceniane i w związku z tym zmienić, dopóki nie zostanie zamknięty faktury.
+Czy używać [interfejsów API usługi Cost Management](https://aka.ms/costmgmt/docs), usługa Power BI lub portalu Azure, które można pobrać danych, należy oczekiwać bieżącego okresu rozliczeniowego opłaty ponownie uzyskiwanie oceniane i w związku z tym zmienić, dopóki nie zostanie zamknięty faktury.
 
 ## <a name="usage-data-update-frequency-varies"></a>Różni się częstotliwości aktualizacji danych użycia
 

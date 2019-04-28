@@ -9,11 +9,11 @@ ms.topic: sample
 ms.custom: sample, mvc
 ms.date: 02/28/2018
 ms.openlocfilehash: b2364448f7994146bf79cdb23d5573003b87076a
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53539872"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61091563"
 ---
 # <a name="azure-cli-samples-for-azure-database-for-postgresql"></a>Przykłady interfejsu wiersza polecenia platformy Azure dla usługi Azure Database for PostgreSQL 
 Poniższa tabela zawiera linki do przykładowych skryptów interfejsu wiersza polecenia platformy Azure dla usługi Azure Database for PostgreSQL.

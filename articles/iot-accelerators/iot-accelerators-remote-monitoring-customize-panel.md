@@ -3,17 +3,18 @@ title: Dodawanie panelu z rozwiązaniem monitorowania zdalnego interfejsu użytk
 description: W tym artykule przedstawiono sposób dodawania nowego panelu do pulpitu nawigacyjnego w zdalne monitorowanie rozwiązań akceleratora internetowego interfejsu użytkownika.
 author: dominicbetts
 manager: timlt
-ms.author: dobett
+ms.author: v-yiso
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 10/05/2018
+origin.date: 10/05/2018
+ms.date: 11/26/2018
 ms.topic: conceptual
 ms.openlocfilehash: 3b855c3bed75945f44b55463bdacd049b7930aa7
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165882"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61447067"
 ---
 # <a name="add-a-custom-panel-to-the-dashboard-in-the-remote-monitoring-solution-accelerator-web-ui"></a>Dodawanie panelu niestandardowe do pulpitu nawigacyjnego w zdalne monitorowanie rozwiązań akceleratora internetowego interfejsu użytkownika
 
@@ -45,7 +46,6 @@ Ułatwią Ci rozpoczęcie pracy, **src/wskazówki/składniki/stron/pulpit nawiga
 
 **examplePanel.js**
 
-[!code-javascript[Example panel](~/remote-monitoring-webui/src/walkthrough/components/pages/dashboard/panels/examplePanel/examplePanel.js?name=panel "Example panel")]
 
 Kopiowanie **src/wskazówki/składniki/stron/pulpit nawigacyjny/panele/examplePanel** folder do **src/składniki/stron/pulpit nawigacyjny/paneli** folderu.
 

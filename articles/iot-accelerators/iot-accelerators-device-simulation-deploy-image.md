@@ -10,11 +10,11 @@ ms.custom: mvc
 ms.date: 11/06/2018
 ms.author: dobett
 ms.openlocfilehash: c1f321f452b65016c11cb66d08ebab108509cc62
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51284950"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61448417"
 ---
 # <a name="deploy-a-custom-device-simulation-docker-image"></a>Wdrażanie niestandardowego obrazu docker symulacji urządzenia
 
@@ -32,7 +32,7 @@ Kroki opisane w tym jak-to-przewodniku pokazano, jak do:
 Aby wykonać kroki opisane w tym przewodniku z instrukcjami, potrzebne są:
 
 * Wdrożony [symulacji urządzenia](quickstart-device-simulation-deploy.md) wystąpienia.
-* Platformy docker. Pobierz [platformę Docker Community Edition](https://www.docker.com/products/docker-engine#/download) dla danej platformy.
+* Docker. Pobierz [platformę Docker Community Edition](https://www.docker.com/products/docker-engine#/download) dla danej platformy.
 * A [konto usługi Docker Hub](https://hub.docker.com/) gdzie możesz przekazać obrazy usługi Docker. W ramach konta usługi Docker Hub, utworzyć publicznego repozytorium o nazwie **symulacji urządzenia**.
 * Element zmodyfikowany i przetestowane [symulacji urządzenia rozwiązania](https://github.com/Azure/device-simulation-dotnet/archive/master.zip) na komputerze lokalnym. Na przykład można zmodyfikować rozwiązanie, aby [serializacji danych telemetrycznych za pomocą Protocol Buffers](iot-accelerators-device-simulation-protobuf.md).
 * Powłoka, która może uruchomić SSH. Po zainstalowaniu usługi Git dla Windows, można użyć **bash** powłoka, która jest częścią tej instalacji. Można również użyć usługi [usługi Azure Cloud Shell](https://shell.azure.com/).

@@ -15,11 +15,11 @@ ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 9484cf0f549db94be8f1ac2363addca952a3cff3
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810770"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61096067"
 ---
 <a name="retrieve-a-specific-offer"></a>Pobieranie określonej oferty
 =========================
@@ -47,10 +47,10 @@ Można również pobrać określoną wersję oferty lub pobrać oferty w widoku,
 
 | **Nazwa**    | **Opis**                                                                          | **Typ danych** |
 |-------------|------------------------------------------------------------------------------------------|---------------|
-| publisherId | publisherId. Na przykład Contoso                                                        | Ciąg        |
-| identyfikatora oferty     | Identyfikator GUID, który unikatowo identyfikuje oferty.                                                 | Ciąg        |
+| publisherId | publisherId. Na przykład Contoso                                                        | String        |
+| offerId     | Identyfikator GUID, który unikatowo identyfikuje oferty.                                                 | String        |
 | version     | Wersja oferty, trwa pobieranie. Domyślnie są pobierane najnowszą ofertę. | Liczba całkowita       |
-| Identyfikator_gniazda      | Może to być jednym z miejsca, z którego ma zostać pobrane, oferty:      <br/>  - `Draft` (ustawienie domyślne) pobiera wersję oferty, obecnie w wersji roboczej.  <br/>  -  `Preview` Pobiera wersję oferty, obecnie w wersji zapoznawczej.     <br/>  -  `Production` Pobiera wersję oferty, obecnie w środowisku produkcyjnym.          |      Wyliczenia |
+| slotId      | Może to być jednym z miejsca, z którego ma zostać pobrane, oferty:      <br/>  - `Draft` (ustawienie domyślne) pobiera wersję oferty, obecnie w wersji roboczej.  <br/>  -  `Preview` Pobiera wersję oferty, obecnie w wersji zapoznawczej.     <br/>  -  `Production` Pobiera wersję oferty, obecnie w środowisku produkcyjnym.          |      Wyliczenia |
 | wersja interfejsu API | Najnowszą wersję interfejsu API                                                                    | Date          |
 |  |  |  |
 

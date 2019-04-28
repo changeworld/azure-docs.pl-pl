@@ -16,11 +16,11 @@ ms.date: 07/01/2016
 ms.author: dariagrigoriu
 ms.custom: seodec18
 ms.openlocfilehash: fc3749a9ebfbf0319a57b471b6fce9f62042ba27
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57849787"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60852686"
 ---
 # <a name="best-practices-for-azure-app-service"></a>Najlepsze rozwiązania dotyczące usługi Azure App Service
 Ten artykuł zawiera podsumowanie najlepsze rozwiązania dotyczące używania [usługi Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). 

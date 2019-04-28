@@ -9,11 +9,11 @@ ms.date: 01/03/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 093f749ac29dc2bd341712d87b404de769d0b7bc
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55865577"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61427222"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Wprowadzenie do usługi Azure Blob Storage
 
@@ -71,7 +71,7 @@ Istnieje wiele rozwiązań do migrowania istniejących danych do magazynu obiekt
 - **Azure Data Box Disk** jest usługą służącą do przenoszenia danych lokalnych do magazynu obiektów blob, gdy ograniczenia dotyczące dużych zestawów danych lub sieci uniemożliwiają przekazywanie danych przez sieć. Możesz użyć usługi [Azure Data Box Disk](../../databox/data-box-disk-overview.md), aby poprosić o dyski SSD od firmy Microsoft. Możesz następnie skopiować dane na te dyski i odesłać je do firmy Microsoft do przekazania do usługi Blob Storage.
 - **Usługa Azure Import/Export** umożliwia eksportowanie dużych ilości danych z konta magazynu na dyski twarde dostarczone przez użytkownika, które potem firma Microsoft odsyła do użytkownika. Aby uzyskać więcej informacji, zobacz [Use the Microsoft Azure Import/Export service to transfer data to Blob Storage](../common/storage-import-export-service.md) (Przesyłanie danych do usługi Blob Storage za pomocą usługi Microsoft Azure Import/Export).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Tworzenie konta magazynu](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 * [Azure Storage scalability and performance targets](../common/storage-scalability-targets.md) (Cele dotyczące skalowalności i wydajności usługi Azure Storage)

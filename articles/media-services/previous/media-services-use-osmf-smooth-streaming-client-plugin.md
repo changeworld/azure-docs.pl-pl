@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: c40d8b93a7487619cc94586c7e6b4cdc550435cd
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314063"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60825595"
 ---
 # <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>Jak używać zestawu Microsoft Smooth Streaming dodatek dla programu Adobe typu Open Source Media Framework  
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Dodatek Microsoft Smooth Streaming dla Otwórz źródła Media Framework w wersji 2.0 (SS dla platformy OSMF) rozszerza możliwości domyślne OSMF i dodaje Microsoft Smooth Streaming odtwarzanie zawartości dla nowych i istniejących odtwarzaczy OSMF. Wtyczka dodaje również możliwości odtwarzania Smooth Streaming do Strobe Media Playback (SMP).
 
 SS dla platformy OSMF zawiera dwie wersje wtyczki:

@@ -9,11 +9,11 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 02/26/2018
 ms.openlocfilehash: dfb1e0093893fadf22c7a92ef5f351ae8920a977
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036464"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60929291"
 ---
 # <a name="how-to-globally-distribute-reads-using-azure-cosmos-dbs-api-for-mongodb"></a>Jak globalnie dystrybuować odczytuje przy użyciu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB
 
@@ -172,4 +172,4 @@ Jeśli nie zamierzasz nadal korzystać z tej aplikacji, należy usunąć wszystk
 
 * [Importowanie danych z bazy danych MongoDB do usługi Azure Cosmos DB](mongodb-migrate.md)
 * [Instalator globalnie rozproszonej bazy danych za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB](tutorial-global-distribution-mongodb.md)
-* [Opracowywanie w środowisku lokalnym przy użyciu emulatora usługi Azure Cosmos DB](local-emulator.md)
+* [Programowanie w środowisku lokalnym przy użyciu emulatora usługi Azure Cosmos DB](local-emulator.md)

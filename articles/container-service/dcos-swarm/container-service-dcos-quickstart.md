@@ -10,11 +10,11 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: efaf82c3f378f572c289b587dbe5df1923a58c62
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000516"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61457060"
 ---
 # <a name="deprecated-deploy-a-dcos-cluster"></a>(PRZESTARZAŁE) Wdrażanie klastra DC/OS
 
@@ -165,7 +165,7 @@ Gdy klaster nie będzie już potrzebny, można użyć polecenia [az group delete
 az group delete --name myResourceGroup --no-wait
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Podczas pracy z tym przewodnikiem Szybki start wdrożono klaster DC/OS i uruchomiono w nim prosty kontener platformy Docker. Aby dowiedzieć się więcej na temat usługi Azure Container Service, przejdź do samouczków dotyczących usługi Azure Container Service.
 

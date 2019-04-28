@@ -3,8 +3,8 @@ title: Diagnozowanie problemu z filtrowaniem ruchu sieciowego maszyny wirtualnej
 description: W tym przewodniku Szybki start zawarto informacje na temat sposobu diagnozowania problemu z filtrowaniem ruchu sieciowego maszyny wirtualnej przy użyciu możliwości weryfikowania przepływu adresów IP w usłudze Azure Network Watcher.
 services: network-watcher
 documentationcenter: network-watcher
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to diagnose a virtual machine (VM) network traffic filter problem that prevents communication to and from a VM.
@@ -15,14 +15,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
 ms.date: 04/20/2018
-ms.author: jdial
+ms.author: kumud
 ms.custom: mvc
 ms.openlocfilehash: d469ee5148e3742f30795c09acf1a217db1b997a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58004636"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61065131"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem-using-the-azure-portal"></a>Szybki start: Diagnozowanie problemu z filtrowaniem ruchu sieciowego maszyny wirtualnej przy użyciu witryny Azure Portal
 
@@ -82,7 +82,7 @@ Podczas tworzenia maszyny wirtualnej platforma Azure domyślnie zezwala na i blo
     | Maszyna wirtualna   | Wybierz pozycję myVm                                                                                       |
     | Interfejs sieciowy | myvm — nazwa interfejsu sieciowego utworzonego w portalu podczas tworzenia maszyny wirtualnej jest inna. |
     | Protokół          | TCP                                                                                               |
-    | Kierunek         | Wychodzący                                                                                          |
+    | Direction         | Wychodzący                                                                                          |
     | Lokalny adres IP  | 10.0.0.4                                                                                          |
     | Port lokalny      | 60000                                                                                                |
     | Zdalny adres IP | 13.107.21.200 — jeden z adresów dla < www.bing.com>.                                             |

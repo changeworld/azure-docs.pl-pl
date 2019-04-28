@@ -9,11 +9,11 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.openlocfilehash: ea96b2b996ea79efacdcda50c6370f25e26e0aa2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58793779"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61447016"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>Wdrażanie akceleratora rozwiązania monitorowania zdalnego przy użyciu interfejsu wiersza polecenia
 
@@ -68,7 +68,7 @@ Wdrożenie w warstwie Podstawowa to wdrożenie ukierunkowane na prezentowanie ro
 
 Podstawowe wdrożenie tworzy następujące usługi w subskrypcji platformy Azure:
 
-| Licznik | Zasób                       | Typ         | Używane dla |
+| Licznik | Resource                       | Type         | Używane dla |
 |-------|--------------------------------|--------------|----------|
 | 1     | [Maszyny wirtualnej systemu Linux](https://azure.microsoft.com/services/virtual-machines/) | Standardowa D1, wersja 2  | Mikrousługi hostingu |
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                  | S1 — warstwa standardowa | Zarządzanie urządzeniami i komunikacja |
@@ -89,7 +89,7 @@ Standardowe wdrożenie to wdrożenie gotowe do produkcji, który deweloper możn
 
 Standardowe wdrożenie tworzy następujące usługi w subskrypcji platformy Azure:
 
-| Licznik | Zasób                                     | Jednostka SKU / rozmiar      | Używane dla |
+| Licznik | Resource                                     | Jednostka SKU / rozmiar      | Używane dla |
 |-------|----------------------------------------------|-----------------|----------|
 | 1     | [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service)| Użyj w pełni zarządzanej usługi organizowania kontenerów Kubernetes, wartość domyślna to 3 agentów|
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                     | S2 — warstwa standardowa | Zarządzanie urządzeniami, poleceń i kontroli |

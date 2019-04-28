@@ -7,11 +7,11 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 69330e9d5a05fbcc892889f70a04f5eb4a4a2fb9
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53541425"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60935555"
 ---
 # <a name="supported-azure-database-for-mariadb-server-versions"></a>Obsługiwane usługi Azure Database dla wersji serwera MariaDB
 Azure Database dla serwera MariaDB został opracowany z "open source" [serwera MariaDB](https://downloads.mariadb.org/), za pomocą aparat InnoDB. Azure Database dla serwera MariaDB obecnie obsługuje następującą wersję:

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 9b9a1839bf4b028aec13b764b4de66385de4189e
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: a0bc618a9c0a02aae884d8be359df6bdbf4c0d2a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47090755"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60868094"
 ---
 # <a name="resize-a-vm-in-a-lab-in-azure-devtest-labs"></a>Zmień rozmiar maszyny Wirtualnej w laboratorium Azure DevTest Labs
 Jedną z ważnych funkcji maszyn wirtualnych platformy Azure jest, że dzięki temu można zmienić rozmiar maszyny wirtualnej (VM) w zależności od potrzeb dla procesora CPU, sieci lub wydajność dysku. Usługa Azure DevTest Labs obsługuje tę funkcję dla maszyn wirtualnych w laboratorium teraz. Funkcja zmiany rozmiaru jest zgodna z zasadami laboratorium dozwolonych rozmiarów maszyn wirtualnych w środowisku laboratoryjnym. Oznacza to, że można zmienić rozmiaru maszyny Wirtualnej do tylko dozwolone rozmiary w środowisku laboratoryjnym. 

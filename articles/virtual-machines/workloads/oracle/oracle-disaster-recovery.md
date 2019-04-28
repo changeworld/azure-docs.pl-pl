@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 9f525e68502e32a3f9c7e7cebe6d45627f9077c3
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 09df1421d6deae6db305cef2a46d6c40d0c12ba3
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495031"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60835878"
 ---
 # <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>Odzyskiwanie po awarii dla bazy danych Oracle database 12c w środowisku platformy Azure
 
@@ -32,7 +32,7 @@ ms.locfileid: "39495031"
 ## <a name="goals"></a>Cele
 - Projektowanie topologii i konfiguracji, które spełniają wymagania odzyskiwania po awarii.
 
-## <a name="scenario-1-primary-and-dr-sites-on-azure"></a>Scenariusz 1: Lokacje podstawową i odzyskiwania po awarii na platformie Azure
+## <a name="scenario-1-primary-and-dr-sites-on-azure"></a>Scenariusz 1: Podstawowej i lokacji odzyskiwania po awarii na platformie Azure
 
 Klient ma Oracle bazy danych zestaw w lokacji głównej. Element odzyskiwania po awarii, lokacja znajduje się w innym regionie. Klient używa środowiska Oracle Data Guard dla Szybkie odzyskiwanie między tymi lokacjami. Lokacja główna ma również dodatkowej bazy danych raportowania i do innych celów. 
 
@@ -52,7 +52,7 @@ Poniżej przedstawiono podsumowanie konfiguracji platformy Azure:
 
 ![Zrzut ekranu przedstawiający stronę topologii odzyskiwania po awarii](./media/oracle-disaster-recovery/oracle_topology_01.png)
 
-## <a name="scenario-2-primary-site-on-premises-and-dr-site-on-azure"></a>Scenariusz 2: Lokacją główną w środowisku lokalnym i lokacji odzyskiwania po awarii na platformie Azure
+## <a name="scenario-2-primary-site-on-premises-and-dr-site-on-azure"></a>Scenariusz 2: Lokacja główna w środowisku lokalnym i lokacji odzyskiwania po awarii na platformie Azure
 
 Klient ma Konfiguracja bazy danych Oracle lokalną (lokacja główna). Element odzyskiwania po awarii lokacji jest na platformie Azure. Środowiska Oracle Data Guard jest używana do szybkiego odzyskiwania między tymi lokacjami. Lokacja główna ma również dodatkowej bazy danych raportowania i do innych celów. 
 
@@ -78,7 +78,7 @@ Poniżej znajduje się podsumowanie konfiguracji platformy Azure:
 
 ![Zrzut ekranu przedstawiający stronę topologii odzyskiwania po awarii](./media/oracle-disaster-recovery/oracle_topology_02.png)
 
-### <a name="approach-2-site-to-site-vpn"></a>Podejście 2: Site-to-site VPN
+### <a name="approach-2-site-to-site-vpn"></a>Podejście 2: Sieci VPN typu lokacja lokacja
 Sieci VPN typu lokacja lokacja jest lepszym rozwiązaniem. Aby uzyskać więcej informacji na temat konfigurowania sieci VPN, zobacz [tworzenie sieci wirtualnej z połączeniem sieci VPN typu lokacja-lokacja przy użyciu interfejsu wiersza polecenia](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli).
 
 #### <a name="topology"></a>Topologia

@@ -7,11 +7,11 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.openlocfilehash: 99deef907818ffdb1ce858c8e988e26cbd53a1a1
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195102"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60871537"
 ---
 # <a name="server-logs-in-azure-database-for-postgresql"></a>Dzienników serwera w usłudze Azure Database for PostgreSQL 
 Usługa Azure Database for postgresql w warstwie generuje zapytania i błąd dzienników. Dziennikami zapytań, błędów i może służyć do identyfikowania, rozwiązywanie problemów i naprawić błędy konfiguracji i nieoptymalne wydajności. (Dostęp do dzienników transakcji nie jest dołączony). 
@@ -46,8 +46,8 @@ W poniższej tabeli opisano, co znajduje się w każdym dzienniku. W zależnośc
 | ResourceProvider | Nazwa dostawcy zasobów. zawsze `MICROSOFT.DBFORPOSTGRESQL` |
 | ResourceType | `Servers` |
 | ResourceId | Identyfikator URI zasobu |
-| Zasób | Nazwa serwera |
-| Kategoria | `PostgreSQLLogs` |
+| Resource | Nazwa serwera |
+| Category | `PostgreSQLLogs` |
 | OperationName | `LogEvent` |
 | Zmienna środowiskowa errorLevel | Przykład poziomu rejestrowania: DZIENNIK BŁĘDÓW, POWIADOMIENIA |
 | Komunikat | Komunikat w dzienniku podstawowego | 

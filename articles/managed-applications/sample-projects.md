@@ -12,11 +12,11 @@ ms.workload: na
 ms.date: 01/02/2019
 ms.author: tomfitz
 ms.openlocfilehash: c0e2ab5cbf45aa2b3836be760ca256bd28e7459a
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993233"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61423917"
 ---
 # <a name="sample-projects-for-azure-managed-applications"></a>Przykładowe projekty aplikacji zarządzanych platformy Azure
 

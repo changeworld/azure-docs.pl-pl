@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: shlo
 ms.openlocfilehash: c5c12a66e8f66195a096588d779648d7486ab47b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58092008"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60808768"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Działanie ForEach w usłudze Azure Data Factory
 Działanie ForEach definiuje powtarzający się przepływ sterowania w potoku. To działanie służy do wykonywania iteracji po kolekcji i wykonuje określone działania w pętli. Implementacja pętli tego działania przypomina strukturę pętli Foreach w językach programowania.
@@ -73,7 +73,7 @@ Właściwość | Opis | Dozwolone wartości | Wymagane
 -------- | ----------- | -------------- | --------
 name | Nazwa dla każdego działania. | String | Yes
 type | Musi być równa **ForEach** | String | Yes
-isSequential | Określa, czy pętla powinny być wykonywane kolejno lub równolegle.  Maksymalna liczba iteracji pętli 20 mogą być wykonywane jednocześnie równolegle). Na przykład, jeśli masz ForEach działania Iterowanie działania kopiowania przy użyciu 10 różnych danych źródła i ujścia przy użyciu **isSequential** ma wartość False, wszystkie kopie są wykonywane tylko raz. Domyślną jest False. <br/><br/> Jeśli "isSequential" jest ustawiona na "false", upewnij się, że jest poprawną konfigurację do uruchamiania wielu aplikacji wykonywalnych. W przeciwnym razie tej właściwości należy używać ostrożnie w celu uniknięcia konfliktów przy zapisywaniu. Aby uzyskać więcej informacji, zobacz [równoległym](#parallel-execution) sekcji. | Wartość logiczna | Nie. Domyślną jest False.
+isSequential | Określa, czy pętla powinny być wykonywane kolejno lub równolegle.  Maksymalna liczba iteracji pętli 20 mogą być wykonywane jednocześnie równolegle). Na przykład, jeśli masz ForEach działania Iterowanie działania kopiowania przy użyciu 10 różnych danych źródła i ujścia przy użyciu **isSequential** ma wartość False, wszystkie kopie są wykonywane tylko raz. Domyślną jest False. <br/><br/> Jeśli "isSequential" jest ustawiona na "false", upewnij się, że jest poprawną konfigurację do uruchamiania wielu aplikacji wykonywalnych. W przeciwnym razie tej właściwości należy używać ostrożnie w celu uniknięcia konfliktów przy zapisywaniu. Aby uzyskać więcej informacji, zobacz [równoległym](#parallel-execution) sekcji. | Boolean | Nie. Domyślną jest False.
 batchCount | Liczba partii, która ma być używany do kontrolowania liczby przetwarzania równoległego, (gdy isSequential jest ustawiona na wartość false). | Liczba całkowita (maksymalna 50) | Nie. Domyślna to 20.
 Items | Wyrażenie, które zwraca tablicę JSON, aby być powtarzana. | Wyrażenie (która zwraca tablicę JSON) | Yes
 Działania | Czynności do wykonania. | Lista działań | Yes

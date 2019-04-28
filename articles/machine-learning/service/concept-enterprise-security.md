@@ -11,11 +11,11 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/10/2019
 ms.openlocfilehash: b950e7d38235d089c6236c76136d8ec2fc7a1f74
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731333"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60821348"
 ---
 # <a name="enterprise-security-for-azure-machine-learning-service"></a>Bezpieczeństwo przedsiębiorstwa w usłudze Azure Machine Learning
 
@@ -83,10 +83,10 @@ Każdy obszar roboczy ma również skojarzonych przypisany systemowo tożsamośc
 
 Aby uzyskać więcej informacji na temat zarządzanych tożsamości, zobacz [zarządzanych tożsamości dla zasobów platformy Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
 
-| Zasób | Uprawnienia |
+| Resource | Uprawnienia |
 | ----- | ----- |
 | Obszar roboczy | Współautor | 
-| Konto magazynu | Współautor danych obiektu Blob magazynu | 
+| Konto magazynu | Współautor danych obiektu blob usługi Storage | 
 | Usługa Key Vault | Dostęp do wszystkich certyfikatów kluczy, wpisów tajnych oraz ich | 
 | Azure Container Registry | Współautor | 
 | Grupa zasobów, która zawiera obszar roboczy | Współautor | 

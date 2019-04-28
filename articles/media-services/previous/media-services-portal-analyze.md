@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: d3917f65d8be08d6355013393f6c6675ea6c7fc5
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58619445"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61131819"
 ---
 # <a name="analyze-your-media-using-the-azure-portal"></a>Analiza multimediów za pomocą witryny Azure Portal 
 > [!NOTE]
@@ -27,7 +27,7 @@ ms.locfileid: "58619445"
 > 
 > 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Analiza usługi multimediów Azure to kolekcja składników mowy i obrazu (w skali przedsiębiorstwa, zgodność, bezpieczeństwo i globalny zasięg), które ułatwiają organizacjom i przedsiębiorstwom uzyskiwanie przydatnych wyników analiz na podstawie posiadanych plików wideo. Aby uzyskać bardziej szczegółowe omówienie usługi Azure Media Services Analytics zobacz [to](media-services-analytics-overview.md) tematu. 
 
 W tym temacie omówiono sposób przetwarzania multimediów procesory multimediów usługi Media Analytics (MP) przy użyciu witryny Azure portal. Pakiety administracyjne analiza multimediów tworzą pliki MP4 lub pliki w formacie JSON. Plik MP4 utworzony przez procesor multimediów można pobrać progresywnie. Plik JSON utworzony przez procesor multimediów można pobrać plik z magazynu obiektów blob platformy Azure. 

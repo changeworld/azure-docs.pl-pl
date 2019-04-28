@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 21fcac62c9335652d0c682a6ac889be82e649464
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58661551"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60844146"
 ---
 # <a name="configuring-cluster-resource-manager-settings-for-service-fabric-services"></a>Konfigurowanie ustawień Menedżer zasobów klastra usługi Service Fabric
 Menedżer zasobów klastra usługi Service Fabric umożliwia szczegółową kontrolę nad tym reguły rządzące każda osoba, o nazwie usługi. Każda usługa o nazwie można określić zasady jak powinna zostać przydzielona w klastrze. Każda usługa o nazwie można również zdefiniować zestaw metryk, którą chce do raportu, w tym jak ważne są one do tej usługi. Konfigurowanie usług dzieli się na trzy różne zadania:

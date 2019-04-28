@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
 ms.openlocfilehash: 82418c03039219adedf45828d769d278a14499ff
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816173"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61259730"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-dbs-api-for-mongodb-by-using-azure-data-factory"></a>Kopiowanie danych do lub z interfejsem API usługi Azure Cosmos DB dla bazy danych MongoDB przy użyciu usługi Azure Data Factory
 
@@ -49,7 +49,7 @@ Następujące właściwości są obsługiwane dla interfejsu API usługi Azure C
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | **Typu** właściwość musi być równa **CosmosDbMongoDbApi**. | Yes |
-| Parametry połączenia |Określ parametry połączenia dla interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB. Można znaleźć w witrynie Azure portal -> bloku usługi Cosmos DB -> Parametry połączenia podstawowej lub dodatkowej, za pomocą wzorca `mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb`. <br/><br />Oznacz to pole jako **SecureString** typ, aby bezpiecznie przechowywać w usłudze Data Factory. Możesz również [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Yes |
+| connectionString |Określ parametry połączenia dla interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB. Można znaleźć w witrynie Azure portal -> bloku usługi Cosmos DB -> Parametry połączenia podstawowej lub dodatkowej, za pomocą wzorca `mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb`. <br/><br />Oznacz to pole jako **SecureString** typ, aby bezpiecznie przechowywać w usłudze Data Factory. Możesz również [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Yes |
 | baza danych | Nazwa bazy danych, który chcesz uzyskać dostęp. | Yes |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) nawiązywania połączenia z magazynem danych. (Jeśli Twój magazyn danych znajduje się w sieci prywatnej), można użyć środowiska Azure Integration Runtime lub własnego środowiska integration runtime. Jeśli ta właściwość nie jest określona, używana jest domyślna Azure Integration Runtime. |Nie |
 

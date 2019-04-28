@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.openlocfilehash: ac1a0e4eadc0b84fdd2a170c2e0f6e0a2f2af3a4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59361778"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60922001"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Porównanie opcji magazynu do użycia z klastrami usługi Azure HDInsight
 
@@ -29,9 +29,9 @@ Poniższa tabela zawiera podsumowanie usług Azure Storage, które są obsługiw
 | Usługa magazynu | Typ konta | Typ Namespace | Obsługiwane usługi | Warstwy wydajności obsługiwane | Warstwy dostępu obsługiwane | Wersja usługi HDInsight | Typ klastra |
 |---|---|---|---|---|---|---|---|
 |Usługa Azure Data Lake Storage 2. generacji| Ogólnego przeznaczenia w wersji 2 | Hierarchiczne (system plików) | Obiekt blob | Standardowa (Standard) | Gorąca, chłodna, archiwum | 3.6 + | Wszyscy |
-|Azure Storage| Ogólnego przeznaczenia w wersji 2 | Obiekt | Obiekt blob | Standardowa (Standard) | Gorąca, chłodna, archiwum | 3.6 + | Wszyscy |
-|Azure Storage| Ogólnego przeznaczenia w wersji 1 | Obiekt | Obiekt blob | Standardowa (Standard) | ND | Wszyscy | Wszyscy |
-|Azure Storage| Blob Storage | Obiekt | Obiekt blob | Standardowa (Standard) | Gorąca, chłodna, archiwum | Wszyscy | Wszyscy |
+|Azure Storage| Ogólnego przeznaczenia w wersji 2 | Object | Obiekt blob | Standardowa (Standard) | Gorąca, chłodna, archiwum | 3.6 + | Wszyscy |
+|Azure Storage| Ogólnego przeznaczenia w wersji 1 | Object | Obiekt blob | Standardowa (Standard) | ND | Wszyscy | Wszyscy |
+|Azure Storage| Blob Storage | Object | Obiekt blob | Standardowa (Standard) | Gorąca, chłodna, archiwum | Wszyscy | Wszyscy |
 |Usługa Azure Data Lake Storage 1. generacji| ND | Hierarchiczne (system plików) | ND | ND | ND | Tylko 3.6 | Wszystkie regiony z wyjątkiem HBase |
 
 Aby uzyskać więcej informacji na temat warstw dostępu do magazynu Azure, zobacz [usługi Azure Blob storage: — Wersja Premium (wersja zapoznawcza), warstw magazynowania gorąca, chłodna i archiwum](../storage/blobs/storage-blob-storage-tiers.md)

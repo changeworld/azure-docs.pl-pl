@@ -9,11 +9,11 @@ ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
 ms.openlocfilehash: 052a462da5349b0886d6d99cd59d1a4ce816220f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462719"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60931030"
 ---
 # <a name="quickstart-create-an-azure-storage-table-in-the-azure-portal"></a>Szybki start: Tworzenie tabeli usługi Azure Storage w witrynie Azure Portal 
 
@@ -41,6 +41,6 @@ Teraz możesz użyć usługi Table service w witrynie Azure Portal, aby utworzy�
 
    ![Azure Portal](media/table-storage-quickstart-portal/table-storage-quickstart-03.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Wytyczne dotyczące projektu tabel](table-storage-design-guidelines.md)

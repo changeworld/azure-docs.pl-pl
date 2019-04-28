@@ -10,11 +10,11 @@ ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: cdffc339bee1f5456e4eeb619e566b1f9c34b143
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58093181"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61076797"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Tworzenie autonomicznego konta usługi Azure Automation
 
@@ -89,7 +89,7 @@ Aby utworzyć konto usługi Azure Automation w witrynie Azure portal, wykonaj na
 
 Po pomyślnym utworzeniu konta usługi Automation automatycznie zostanie utworzonych kilka zasobów. Po utworzeniu tych elementów runbook można bezpiecznie usunąć, jeśli nie chcesz zachować. Konta Uruchom jako, może być używany do uwierzytelniania do swojego konta w elemencie runbook, a powinien pozostać, chyba że Utwórz inny i nie wymagają je. Poniższa tabela zawiera podsumowanie zasobów dla konta Uruchom jako.
 
-| Zasób | Opis |
+| Resource | Opis |
 | --- | --- |
 | AzureAutomationTutorial Runbook |Przykładowy graficzny element runbook, który demonstruje sposób uwierzytelniania przy użyciu konta Uruchom jako. Element runbook pobiera wszystkie zasoby usługi Resource Manager. |
 | AzureAutomationTutorialScript Runbook |Przykładowy element runbook programu PowerShell, który demonstruje sposób uwierzytelniania przy użyciu konta Uruchom jako. Element runbook pobiera wszystkie zasoby usługi Resource Manager. |
@@ -99,7 +99,7 @@ Po pomyślnym utworzeniu konta usługi Automation automatycznie zostanie utworzo
 
 Poniższa tabela zawiera podsumowanie zasobów dla klasycznego konta Uruchom jako.
 
-| Zasób | Opis |
+| Resource | Opis |
 | --- | --- |
 | AzureClassicAutomationTutorial Runbook |Przykładowy graficzny element runbook. Element runbook pobiera wszystkie klasyczne maszyny wirtualne w subskrypcji przy użyciu klasycznego konta Uruchom jako (certyfikatu). Następnie wyświetla nazwy maszyn wirtualnych i stan. |
 | AzureClassicAutomationTutorial Script Runbook |Przykładowy element runbook programu PowerShell. Element runbook pobiera wszystkie klasyczne maszyny wirtualne w subskrypcji przy użyciu klasycznego konta Uruchom jako (certyfikatu). Następnie wyświetla nazwy maszyn wirtualnych i stan. |

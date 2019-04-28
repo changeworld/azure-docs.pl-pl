@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 05/30/2017
 ms.author: iainfou
 ms.openlocfilehash: 2d9f58527908a17dd445b6afecbcd7e93f70de2c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001628"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60896085"
 ---
 # <a name="deprecated-create-an-azure-container-service-dcos-cluster"></a>(PRZESTARZAŁE) Tworzenie klastra DC/OS usługi Azure Container Service
 
@@ -62,7 +62,7 @@ Ten skrypt używa następujących poleceń w celu utworzenia wdrożenia. Każda 
 | [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
 | [az acs create](https://docs.microsoft.com/cli/azure/acs#az-acs-create) | Tworzy klaster usługi ACS. |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure).
 

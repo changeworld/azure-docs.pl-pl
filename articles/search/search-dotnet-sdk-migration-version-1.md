@@ -11,11 +11,11 @@ ms.date: 01/15/2018
 ms.author: brjohnst
 ms.custom: seodec2018
 ms.openlocfilehash: 82823bae76521080634d4f7ff285d94ce8495fbf
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53317291"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61292804"
 ---
 # <a name="upgrading-to-the-azure-search-net-sdk-version-11"></a>Uaktualnianie do zestawu .NET SDK rozszerzenia usługi Azure Search w wersji 1.1
 
@@ -347,7 +347,7 @@ i ustawiasz `IntValue` 0, ta wartość jest teraz prawidłowo serializowana jako
 
 Istnieje jeden potencjalny problem pod uwagę w przypadku tej metody: Jeśli używasz typu modelu z właściwością dopuszcza trzeba **gwarantuje** że żaden dokument w indeksie nie zawiera wartości null w odpowiednim polu. Zestaw SDK ani interfejsu API REST usługi Azure Search nie pomoże Ci tego wymusić.
 
-Nie jest to czysto hipotetyczny problem: Wyobraź sobie scenariusz, w którym dodajesz nowe pole do istniejącego indeksu typu `Edm.Int32`. Po zaktualizowaniu definicji indeksu wszystkie dokumenty będą miały wartość null dla tego nowego pola (ponieważ wszystkie typy w usłudze Azure Search dopuszczają wartość null). Jeśli następnie dla tego pola użyjesz klasy modelu z właściwością `int` niedopuszczającą wartości null, podczas próby pobrania dokumentów otrzymasz wyjątek `JsonSerializationException` podobny do poniższego:
+Nie jest to czysto hipotetyczny problem. Wyobraź sobie scenariusz, w którym dodajesz nowe pole do istniejącego indeksu typu `Edm.Int32`. Po zaktualizowaniu definicji indeksu wszystkie dokumenty będą miały wartość null dla tego nowego pola (ponieważ wszystkie typy w usłudze Azure Search dopuszczają wartość null). Jeśli następnie dla tego pola użyjesz klasy modelu z właściwością `int` niedopuszczającą wartości null, podczas próby pobrania dokumentów otrzymasz wyjątek `JsonSerializationException` podobny do poniższego:
 
     Error converting value {null} to type 'System.Int32'. Path 'IntValue'.
 

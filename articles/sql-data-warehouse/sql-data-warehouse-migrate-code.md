@@ -2,20 +2,21 @@
 title: Migrowanie kodu SQL w usłudze SQL Data Warehouse | Dokumentacja firmy Microsoft
 description: Wskazówki dotyczące migracji kodu SQL do usługi Azure SQL Data Warehouse związane z opracowywaniem rozwiązań.
 services: sql-data-warehouse
-author: jrowlandjones
-manager: craigg
+author: WenJason
+manager: digimobile
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: implement
-ms.date: 04/17/2018
-ms.author: jrj
+origin.date: 04/17/2018
+ms.date: 04/01/2019
+ms.author: v-jay
 ms.reviewer: igorstan
 ms.openlocfilehash: fae3ae16ee0100ad446c0b6c7851553a3376bb4f
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400977"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61126791"
 ---
 # <a name="migrate-your-sql-code-to-sql-data-warehouse"></a>Migrowanie kodu SQL w usłudze SQL Data Warehouse
 
@@ -139,3 +140,5 @@ Aby uzyskać pełną listę wszystkich obsługiwanych instrukcji języka T-SQL, 
 <!--MSDN references-->
 
 <!--Other Web references-->
+
+<!--Update_Description: update meta properties, wording update-->

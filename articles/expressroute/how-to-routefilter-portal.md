@@ -1,5 +1,5 @@
 ---
-title: 'Konfigurowanie filtrów tras dla komunikacji równorzędnej firmy Microsoft: usługi Azure ExpressRoute — Portal | Dokumentacja firmy Microsoft'
+title: 'Konfigurowanie filtrów tras dla komunikacji równorzędnej firmy Microsoft: Usługa Azure ExpressRoute — Portal | Dokumentacja firmy Microsoft'
 description: W tym artykule opisano sposób konfigurowania filtrów tras dla komunikacji równorzędnej firmy Microsoft przy użyciu witryny Azure portal.
 services: expressroute
 author: ganesr
@@ -9,13 +9,13 @@ ms.date: 09/26/2018
 ms.author: ganesr
 ms.custom: seodec18
 ms.openlocfilehash: 0515b5e85c3bcf56f1f238620d6036d1be0bec7e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104209"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60839277"
 ---
-# <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>Konfigurowanie filtrów tras dla komunikacji równorzędnej firmy Microsoft: witryna Azure portal
+# <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>Konfigurowanie filtrów tras dla komunikacji równorzędnej firmy Microsoft: Azure Portal
 > [!div class="op_single_selector"]
 > * [Azure Portal](how-to-routefilter-portal.md)
 > * [Azure PowerShell](how-to-routefilter-powershell.md)
@@ -71,7 +71,7 @@ Przed rozpoczęciem konfiguracji upewnij się, że spełniają następujące kry
  - Konieczne jest posiadanie aktywnej komunikacji równorzędnej firmy Microsoft. Postępuj zgodnie z instrukcjami zawartymi w sekcji [tworzenie i modyfikowanie konfiguracji komunikacji równorzędnej](expressroute-howto-routing-portal-resource-manager.md)
 
 
-## <a name="prefixes"></a>Krok 1: Pobierz listę prefiksów i wartości społeczności BGP
+## <a name="prefixes"></a>Krok 1. Pobierz listę prefiksów i wartości społeczności BGP
 
 ### <a name="1-get-a-list-of-bgp-community-values"></a>1. Pobierz listę wartości społeczności BGP
 
@@ -81,7 +81,7 @@ Wartości społeczności BGP skojarzone z usługami za pośrednictwem komunikacj
 
 Tworzenie listy wartości społeczności BGP, którego chcesz użyć do filtru trasy. Na przykład wartość społeczności BGP dla usługi Dynamics 365 jest 12076:5040.
 
-## <a name="filter"></a>Krok 2: Tworzenie filtru tras i regułę filtru
+## <a name="filter"></a>Krok 2. Tworzenie filtru tras i regułę filtru
 
 Filtr trasy może mieć tylko jedną regułę, a reguła musi być typu "Zezwalaj". Ta zasada może mieć listę wartości społeczności BGP skojarzonych z nim.
 
@@ -106,7 +106,7 @@ Można wybrać usługi, który chcesz nawiązać połączenie z listy rozwijanej
 ![Tworzenie filtru tras](./media/how-to-routefilter-portal/AddRouteFilterRule.png)
 
 
-## <a name="attach"></a>Krok 3: Dołącz filtru tras do obwodu usługi ExpressRoute
+## <a name="attach"></a>Krok 3. Dołącz filtru tras do obwodu usługi ExpressRoute
 
 Można dołączyć filtru tras do obwodu, wybierając przycisk "Dodaj obwód" i wybierając obwód usługi ExpressRoute z listy rozwijanej.
 

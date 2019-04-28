@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 04/12/2019
 ms.author: spelluru
 ms.openlocfilehash: a653a785e99619c3e256613d6a4d2c7592f54c8c
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149397"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60848491"
 ---
 # <a name="troubleshoot-virtual-machine-vm-and-environment-creation-failures-in-azure-devtest-labs"></a>Rozwiązywanie problemów dotyczących maszyny wirtualnej (VM) i błędy tworzenia środowiska w usłudze Azure DevTest Labs
 DevTest Labs umożliwia ostrzeżenia, jeśli nazwa komputera jest nieprawidłowa lub jeśli masz zamiar narusza zasady laboratorium. Czasami, zobaczysz czerwony `X` obok laboratorium stan maszyny Wirtualnej lub środowiska, informujące o tym, że wystąpił problem.  Ten artykuł zawiera kilka sztuczek, które można znaleźć podstawowego problemu i mamy nadzieję, że w przyszłości uniknąć tego problemu.

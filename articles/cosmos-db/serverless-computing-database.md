@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
 ms.openlocfilehash: 4d259523d3f7fe7165d0ef4c8a5aac12bd7cd823
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58123780"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61330815"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Bezserwerowa baza danych obliczeń z użyciem usługi Azure Cosmos DB i Azure Functions
 
@@ -19,7 +19,7 @@ Operacje obliczeniowe jest możliwość skupić się na poszczególnych elementa
 
 Za pomocą natywna integracja pomiędzy usługą [usługi Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db) i usługi Azure Functions, można utworzyć wyzwalacze bazy danych, powiązania danych wejściowych i powiązania danych wyjściowych bezpośrednio z konta usługi Azure Cosmos DB. Za pomocą usługi Azure Functions i Azure Cosmos DB, można tworzyć i wdrażać oparte na zdarzeniach aplikacje niewymagające użycia serwera, z małymi opóźnieniami dostępem do zaawansowanych danych dla globalnej bazy użytkowników.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Usługa Azure Cosmos DB i Azure Functions umożliwiają integrowanie baz danych i aplikacji bez użycia serwera w następujący sposób:
 

@@ -16,11 +16,11 @@ ms.date: 09/18/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: a60c42310f0698b8290e7ba6195eeed44fe0b95e
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56815794"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60810492"
 ---
 # <a name="tutorial-remove-azure-resources"></a>Samouczek: usuwanie zasobów platformy Azure
 
@@ -64,7 +64,7 @@ Remove-AzureRmResourceGroup -Name sfmeshTutorial1RG
 
 Alternatywnie możesz usunąć grupę zasobów **sfmeshTutorial1RG** [z poziomu portalu](../azure-resource-manager/manage-resource-groups-portal.md#delete-resource-groups). 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Teraz, po zakończeniu publikowania aplikacji usługi Service Fabric Mesh na platformie Azure, spróbuj wykonać następujące czynności:
 

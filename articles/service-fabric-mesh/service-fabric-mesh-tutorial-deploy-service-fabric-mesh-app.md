@@ -16,11 +16,11 @@ ms.date: 09/18/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: eef4cfaff38a96597794354cc991f5d3eeae9404
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56806627"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60810553"
 ---
 # <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>Samouczek: Wdrażanie aplikacji usługi Service Fabric Mesh
 
@@ -136,7 +136,7 @@ Możesz użyć polecenia „app list” w celu uzyskania listy aplikacji wdrożo
 az mesh app list --output table
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tej części samouczka zawarto informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]

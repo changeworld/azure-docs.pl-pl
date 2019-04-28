@@ -15,13 +15,13 @@ ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pbutlerm
 ms.openlocfilehash: de9261548ec79e206b0db87caabc1fa4c9ad6771
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56591554"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61094509"
 ---
-<a name="retrieve-offers"></a>Oferuje pobierania
+<a name="retrieve-offers"></a>Pobieranie oferty
 ===============
 
 Pobiera jest skrócona lista ofert w ramach danego obszaru nazw wydawcy.

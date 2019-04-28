@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: f3d1fb393138aeb590bc0645d6abe93652a52a5b
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052585"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61247556"
 ---
 # <a name="prepare-your-development-and-test-environment-for-iot-edge"></a>Przygotuj swój rozwój i środowisko testowe dla usługi IoT Edge
 
@@ -80,12 +80,12 @@ Istnieje kilka narzędzi do testowania ułatwiające symulowanie urządzenia us�
 
 Tylko środowisko uruchomieniowe usługi IoT Edge jest obsługiwana w przypadku wdrożeń produkcyjnych, ale następujące narzędzia umożliwiają symulowanie i łatwo utworzyć usługi IoT Edge urządzenia do tworzenia i testowania. Narzędzia te nie są wzajemnie się wykluczają, ale mogą współpracować ze sobą środowisko programowania pełną. 
 
-| Narzędzie | Tzw. | Obsługiwane platformy | Najlepsze dla |
+| Tool | Tzw. | Obsługiwane platformy | Najlepsze dla |
 | ---- | ------------- | ------------------- | --------- |
 | Narzędzia deweloperskie IoT EdgeHub  | iotedgehubdev | System Windows, Linux, MacOS | Symulowanie urządzenia do debugowania modułów. |
-| Kontener deweloperów usługi IoT Edge | Microsoft/iotedgedev | System Windows, Linux, MacOS | Tworzenie, bez konieczności instalowania zależności. |
+| Kontener deweloperów usługi IoT Edge | microsoft/iotedgedev | System Windows, Linux, MacOS | Tworzenie, bez konieczności instalowania zależności. |
 | Środowisko uruchomieniowe usługi IoT Edge w kontenerze | iotedgec | Windows, Linux, MacOS, ARM | Testowanie na urządzeniu, które mogą nie obsługiwać środowiska uruchomieniowego. |
-| Kontener urządzeń usługi IoT Edge | toolboc/azure-iot-edge urządzenia — container | Windows, Linux, MacOS, ARM | Testowanie scenariusza za pomocą wielu urządzeń usługi IoT Edge na dużą skalę. |
+| Kontener urządzeń usługi IoT Edge | toolboc/azure-iot-edge-device-container | Windows, Linux, MacOS, ARM | Testowanie scenariusza za pomocą wielu urządzeń usługi IoT Edge na dużą skalę. |
 
 ### <a name="iot-edgehub-dev-tool"></a>Narzędzia deweloperskie IoT EdgeHub
 

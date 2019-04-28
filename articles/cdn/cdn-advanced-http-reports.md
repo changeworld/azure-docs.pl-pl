@@ -1,6 +1,6 @@
 ---
-title: Analizowanie statystyk użycia z usługą Azure CDN zaawansowane raporty HTTP | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć zaawansowane raporty HTTP w usłudze Microsoft Azure CDN. Te raporty zawierają szczegółowe informacje w działaniu usługi CDN.
+title: Analizowanie statystyk użycia z usługą Azure CDN, zaawansowane raporty HTTP | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak tworzyć zaawansowane raporty HTTP w usłudze Microsoft Azure CDN. Te raporty zawierają szczegółowe informacje o aktywności sieci CDN.
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -14,194 +14,194 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 2dfbc046674b2da692f30c945aee3ea25ae524eb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c8cb4713e38ca0da610c687325f3810f57da2b26
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23843616"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61216155"
 ---
-# <a name="analyze-usage-statistics-with-azure-cdn-advanced-http-reports"></a>Analizowanie statystyk użycia z usługą Azure CDN zaawansowane raporty HTTP
+# <a name="analyze-usage-statistics-with-azure-cdn-advanced-http-reports"></a>Analizowanie statystyk użycia z usługą Azure CDN, zaawansowane raporty HTTP
 ## <a name="overview"></a>Omówienie
-W tym dokumencie opisano zaawansowane HTTP raportowania w programie Microsoft Azure CDN. Te raporty zawierają szczegółowe informacje w działaniu usługi CDN.
+W tym dokumencie wyjaśniono, zaawansowanych raportów HTTP w usłudze Microsoft Azure CDN. Te raporty zawierają szczegółowe informacje o aktywności sieci CDN.
 
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
-## <a name="accessing-advanced-http-reports"></a>Uzyskiwanie dostępu do zaawansowane raporty HTTP
-1. Blok profilu CDN, kliknij **Zarządzaj** przycisku.
+## <a name="accessing-advanced-http-reports"></a>Dostęp do zaawansowanych raportów HTTP
+1. Z poziomu bloku profil CDN kliknij **Zarządzaj** przycisku.
    
-    ![Przycisk Zarządzaj blok profilu CDN](./media/cdn-advanced-http-reports/cdn-manage-btn.png)
+    ![Blok profilu CDN Zarządzanie przycisku](./media/cdn-advanced-http-reports/cdn-manage-btn.png)
    
     Zostanie otwarty w portalu zarządzania usługi CDN.
-2. Umieść kursor nad **Analytics** , a następnie umieść kursor nad **zaawansowane raporty HTTP** wysuwane okno.  Polecenie **HTTP platformy dużych**.
+2. Umieść kursor nad **Analytics** kartę, a następnie umieść kursor nad **zaawansowane raporty HTTP** okno wysuwane.  Kliknij pozycję **HTTP platformy dużych**.
    
-    ![Portal zarządzania w sieci CDN — menu Zaawansowane raporty](./media/cdn-advanced-http-reports/cdn-advanced-reports.png)
+    ![Portal zarządzania usługi CDN — menu Zaawansowane raporty](./media/cdn-advanced-http-reports/cdn-advanced-reports.png)
    
     Opcje raportu są wyświetlane.
 
-## <a name="geography-reports-map-based"></a>Lokalizacja geograficzna raporty (w oparciu o mapy)
-Służą pięć raporty, które korzystają z mapy, aby wskazać regionów, z których żąda zawartości. Te raporty są World mapy, mapy Stanów Zjednoczonych, Kanady mapy, mapy Europy i Azja i Pacyfik mapy.
+## <a name="geography-reports-map-based"></a>Raporty lokalizacji geograficznej (opartą na mapie)
+Istnieje pięć raportów, które wykorzystują mapę, aby wskazać, regionów, z których żąda zawartości. Te raporty są mapę świata, mapę Stanów Zjednoczonych, Kanadzie mapy, mapa Europa i Azja i Pacyfik mapy.
 
-Każdy raport na podstawie mapy rangi geograficzne jednostek (tj. krajach, Stany i prowincje) zgodnie z procent trafień, które pochodzą z tego regionu. Ponadto mapy podano ułatwiają wizualizowanie lokalizacje, z których zawartość jest wymagany. Jest w stanie to zrobić przez kolorowania poszczególnych regionach, zależnie od ilości żądanie w tym regionie. Jaśniejsze przyciemnione regionów wskazują niższe żądanie dla zawartości, gdy ciemniejszego regionów wskazać wyższego poziomu żądanie dla zawartości.
+Każdy raport na podstawie mapy szereguje geograficzne jednostki (czyli krajów, regionów i prowincje) na podstawie procent trafień, które pochodzą z tego regionu. Ponadto mapy znajduje się na ułatwianiu wizualizacji lokalizacji, z których żąda zawartości. Jest w stanie to zrobić za kodowanie kolorami każdego regionu, zależnie od ilości żądanie doświadczenie w danym regionie. Jaśniejsze Zacieniowane regiony wskazują niższe zapotrzebowanie na zawartości, a ciemniejsze regionów wskazują wyższe poziomy żądanie dotyczące Twojej zawartości.
 
-Szczegółowe informacje ruchu i przepustowości dla każdego regionu, znajduje się bezpośrednio pod mapy. Dzięki temu można wyświetlić całkowitej liczby trafień, procent trafień, łączną ilość danych przesyłanych (w gigabajtach) i wartość procentowa danych przesyłanych w poszczególnych regionach. Wyświetl opis każdego z tych metryk. Na koniec, po umieszczeniu na region (tj., kraj, Województwo), nazwę i procent trafień, które wystąpiły w regionie zostaną wyświetlone jako etykietka narzędzia.
+Szczegółowe informacje ruchu sieciowego i przepustowości dla każdego regionu, znajduje się bezpośrednio poniżej mapy. Dzięki temu do wyświetlania całkowita liczba trafień, procent trafień, łączna ilość danych przesyłanych (w gigabajtach) i wartość procentowa danych przesyłanych w poszczególnych regionach. Wyświetl opis każdego z tych metryk. Na koniec po najechaniu kursorem na region (czyli kraju, stanu lub prowincji), nazwę i procent trafień, które wystąpiły w regionie, pojawi się jako etykietka narzędzia.
 
-Krótki opis podano poniżej dla każdego typu raportu na podstawie mapy geograficzne.
+Krótki opis znajduje się poniżej dla każdego typu raportu opartą na mapie lokalizacji geograficznej.
 
 | Nazwa raportu | Opis |
 | --- | --- |
-| Mapa świata |Ten raport umożliwia wyświetlenie na całym świecie żądanie dla zawartości usługi CDN. Każdego kraju jest oznaczone kolorami na mapie world, aby wskazać procent trafień, które pochodzą z tego regionu. |
-| Mapy Stanów Zjednoczonych |Ten raport umożliwia wyświetlenie żądanie dla zawartości w sieci CDN w Stanach Zjednoczonych. Każdy stan jest oznaczone kolorami na mapie tego wskazująca procent trafień, które pochodzą z tego regionu. |
-| Kanada mapy |Ten raport umożliwia wyświetlenie żądanie dla zawartości CDN Kanady. Każdy region jest oznaczone kolorami na mapie tego wskazująca procent trafień, które pochodzą z tego regionu. |
-| Europa mapy |Ten raport umożliwia wyświetlenie żądanie dla zawartości w sieci CDN w Europie. Każdego kraju jest oznaczone kolorami na mapie tego wskazująca procent trafień, które pochodzą z tego regionu. |
-| Azja pacyficzny mapy |Ten raport umożliwia wyświetlenie żądanie dla zawartości w sieci CDN w Azji. Każdego kraju jest oznaczone kolorami na mapie tego wskazująca procent trafień, które pochodzą z tego regionu. |
+| Mapa świata |Ten raport służy do wyświetlania na całym świecie żądanie dotyczące Twojej zawartości w sieci CDN. Każdego kraju jest oznaczone kolorami na mapę świata, aby wskazać procent trafień, które pochodzą z tego regionu. |
+| Mapa USA |Ten raport służy do wyświetlania żądanie dotyczące Twojej zawartości w sieci CDN w Stanach Zjednoczonych. Każdy stan jest oznaczone kolorami na tej mapie, aby wskazać procent trafień, które pochodzą z tego regionu. |
+| Kanada mapy |Ten raport służy do wyświetlania żądanie dotyczące Twojej zawartości w sieci CDN w Kanadzie. Każdy region jest oznaczone kolorami na tej mapie, aby wskazać procent trafień, które pochodzą z tego regionu. |
+| Mapa Europa |Ten raport służy do wyświetlania żądanie dotyczące Twojej zawartości w sieci CDN w Europie. Każdego kraju jest oznaczone kolorami na tej mapie, aby wskazać procent trafień, które pochodzą z tego regionu. |
+| Azja i Pacyfik, część mapy |Ten raport służy do wyświetlania żądanie dotyczące Twojej zawartości w sieci CDN w Azji. Każdego kraju jest oznaczone kolorami na tej mapie, aby wskazać procent trafień, które pochodzą z tego regionu. |
 
 ## <a name="geography-reports-bar-charts"></a>Lokalizacja geograficzna raportów (wykresy słupkowe)
-Istnieją dwa dodatkowe raporty zapewniające informacje statystyczne według lokalizacji geograficznej, miasta i krajów Top. Te raporty rank miejscowości i krajów, odpowiednio, zgodnie z liczbą trafień pochodzących z tych obszarów. Podczas generowania raportu z tego typu, wykres słupkowy poinformuje o najwyższym miast 10 lub krajach, którzy zażądali zawartości na danej platformie. Ten wykres słupkowy pozwala szybko ocenić regionów generujących największa liczba żądań dla zawartości.
+Istnieją dwa dodatkowe raporty zapewniające informacje statystyczne według lokalizacji geograficznej, miasta i pierwszych krajów. Te raporty priorytetyzować miast i kraje, odpowiednio, zgodnie z liczbą trafień, które pochodzą z tych regionów. Podczas generowania ten typ raportu, wykres słupkowy poinformuje 10 pierwszych miast lub krajach, które zażądał zawartości za pośrednictwem określonej platformy. Ten wykres słupkowy pozwala szybko ocenić, regionów, które generują najwyższej liczby żądań dotyczących zawartości.
 
-Po lewej stronie wykresu (oś y) wskazuje, ile razy wystąpiły w wybranym regionie. Bezpośrednio pod wykresem (oś x) można znaleźć etykiety dla każdego z najwyższym regionów 10.
+Po lewej stronie programu graph (oś y) wskazuje, ile razy wystąpił w wybranym regionie. Bezpośrednio pod wykresem (oś x) można znaleźć etykietę dla każdego najważniejsze 10 regionach.
 
-### <a name="using-the-bar-charts"></a>Przy użyciu wykresy słupkowe
-* Jeśli wskaźnik nad paskiem, nazwę i łączna liczba trafień, które wystąpiły w regionie będzie wyświetlany jako etykietka narzędzia.
-* Etykietka narzędzia dla raportu miasta identyfikuje Miasto według jego nazwy, Województwo i skrót kraju.
-* Jeśli nie można ustalić miasta lub regionu (np. pola Województwo), z której pochodzi żądanie, następnie go będzie wskazuje, że są nieznane. Jeśli kraju jest nieznany, a następnie dwa znaki zapytania (tj.??), zostanie wyświetlony.
-* Raport może zawierać metryki "Europie" lub "Region Azji i Pacyfiku." Te elementy nie są przeznaczone do udostępniają informacje statystyczne dotyczące wszystkich adresów IP w regionach. Zamiast dotyczą wyłącznie żądań, które pochodzą z adresów IP, które są rozproszone na Europie i Azji i Pacyfiku, zamiast do określonych miasta lub kraju.
+### <a name="using-the-bar-charts"></a>Przy użyciu wykresów słupkowych
+* Po umieszczeniu wskaźnika myszy nad paskiem, nazwę i łączna liczba trafień, które wystąpiły w tym regionie będą wyświetlane jako etykietka narzędzia.
+* Etykietka narzędzia raportu miasta identyfikuje Miasto jego nazwy, województwa oraz skrót kraju.
+* Jeśli nie można określić miasto lub region (czyli stan/prowincję/województwo), z której pochodzi żądanie, następnie go będzie wskazuje, że są nieznane. Jeśli kraj jest nieznany, a następnie dwa znaki zapytania (tj.)?), zostanie wyświetlony.
+* Raport może zawierać metryki dla "Europa" lub "Azja/Region." Te elementy nie są przeznaczone do zapewnienia informacji statystycznych na wszystkie adresy IP w tych regionach. Przeciwnie dotyczą wyłącznie żądań pochodzących z adresów IP, które są rozproszone na Europa lub Azja zamiast określonym mieście lub kraju.
 
-Można wyświetlić dane, które zostało użyte do wygenerowania na wykresie słupkowym poniżej. Można znaleźć całkowitej liczby trafień, procent trafień, ilość danych przesyłanych (w gigabajtach), a części danych przetransferowanych w regionach pierwszych 250. Wyświetl opis każdego z tych metryk.
+Poniżej można wyświetlić danych, który został użyty do wygenerowania wykres słupkowy. Można znaleźć całkowita liczba trafień, procent trafień, ilość danych przesyłanych (w gigabajtach), a wartość procentowa danych zostaną przeniesione do góry 250 regionów. Wyświetl opis każdego z tych metryk.
 
-Krótki opis jest dostępna dla obu typów raportów poniżej.
+Dla obu typów raportów poniżej znajduje się krótki opis.
 
 | Nazwa raportu | Opis |
 | --- | --- |
 | Miasta |Ten raport szereguje miast zgodnie z liczbą trafień, które pochodzą z tego regionu. |
-| Górny krajach |Ten raport szereguje krajów zgodnie z liczbą trafień, które pochodzą z tego regionu. |
+| Kraje |Ten raport szereguje krajów zgodnie z liczbą trafień, które pochodzą z tego regionu. |
 
-## <a name="daily-summary"></a>Dzienne podsumowanie
-Raport dzienne podsumowanie umożliwia wyświetlenie całkowita liczba trafień i danych przesyłanych w konkretnej platformy codziennie. Te informacje mogą służyć do szybkiego wykrycia wzorce działania w sieci CDN w warstwie. Na przykład ten raport ułatwia wykrywanie dni doświadczonym wyższe lub niższe od oczekiwanego natężenia ruchu.
+## <a name="daily-summary"></a>Codzienne podsumowanie
+Raport z podsumowaniem codzienne służy do wyświetlania łączną liczbą trafień i transfery danych za pośrednictwem danej platformy codziennie. Te informacje mogą służyć do szybko rozpoznać wzorców działania usługi CDN. Na przykład ten raport może pomóc wykryć dni doświadczonym nowszego lub mniejsza niż oczekiwanego natężenia ruchu.
 
-Podczas generowania raportu z tego typu, wykres słupkowy zapewni wizualnego wskazania ilość doświadczonym żądanie specyficzne dla platformy codziennie w okresie objętego raportem. Zostanie ona to wyświetlając pasek dla poszczególnych dni w raporcie. Na przykład, wybierając w okresie o nazwie "Ostatniego tygodnia" wygeneruje wykres słupkowy siedmiu pasków. Każdy pasek będzie wskazywać łączna liczba trafień doświadczenie w tym dniu.
+Podczas generowania ten typ raportu, wykres słupkowy zapewni visual wskazaniem ilość doświadczonym żądanie specyficzne dla platformy codziennie przedziale czasu objętego raportem. Będzie dokonywać, wyświetlając pasek dla każdego dnia w raporcie. Na przykład wybranie czasu o nazwie "Ostatni tydzień" generuje wykres słupkowy z siedmiu słupkami. Każdy słupek będzie wskazywać łączna liczba trafień doświadczenie w tym dniu.
 
-Po lewej stronie wykresu (oś y) wskazuje, ile razy wystąpił na określony dzień. Bezpośrednio pod wykresem (oś x), można znaleźć etykiety, który wskazuje datę (Format: RRRR-MM-DD) dla każdego dnia uwzględnione w raporcie.
-
-> [!TIP]
-> Jeśli wskaźnik nad paskiem, łączna liczba trafień, które wystąpiły w tym dniu będą wyświetlane jako etykietka narzędzia.
-> 
-> 
-
-Można wyświetlić dane, które zostało użyte do wygenerowania na wykresie słupkowym poniżej. Można znaleźć łączna liczba trafień i ilość danych przesyłanych (w gigabajtach) dla każdego dnia objętego raportem.
-
-## <a name="by-hour"></a>Według godzin
-Godzina przez raport umożliwia wyświetlenie całkowita liczba trafień i danych przesyłanych w konkretnej platformy co godzinę. Te informacje mogą służyć do szybkiego wykrycia wzorce działania w sieci CDN w warstwie. Na przykład ten raport ułatwia wykrywanie okresy w dniu wystąpić wyższe lub niższe od oczekiwanego natężenia ruchu.
-
-Podczas generowania raportu z tego typu, wykres słupkowy zapewni wizualnego wskazania ilość żądanie specyficzne dla platformy wystąpił na godzinę w przedziale czasu objętego raportem. Zostanie ona to wyświetlając pasek dla każdej godziny objętego raportem. Na przykład wybranie 24-godzinnym przedziale czasu wygeneruje wykres słupkowy z paskami 24. Każdy pasek będzie wskazywać całkowita liczba trafień w czasie tej godziny.
-
-Po lewej stronie wykresu (oś y) wskazuje, ile razy wystąpił na określoną godzinę. Bezpośrednio pod wykresem (oś x), można znaleźć etykietę wskazującą Data/Godzina (Format: RRRR-MM-DD gg: mm) dla każdej godziny uwzględnione w raporcie. Czas jest zgłaszany w formacie 24-godzinnym i zostanie określona, przy użyciu strefy czasowej UTC/GMT.
+Po lewej stronie programu graph (oś y) wskazuje, ile razy wystąpił w określonym dniu. Bezpośrednio pod wykresem (oś x), możesz znaleźć etykietę, która wskazuje dzień (Format: YYYY-MM-DD) za każdy dzień zawarte w raporcie.
 
 > [!TIP]
-> Jeśli wskaźnik nad paskiem, łączna liczba trafień, które wystąpiły podczas danej godziny będą wyświetlane jako etykietka narzędzia.
+> Po umieszczeniu wskaźnika myszy nad paskiem, łączna liczba trafień, które wystąpiły w tym dniu, będą wyświetlane jako etykietka narzędzia.
 > 
 > 
 
-Można wyświetlić dane, które zostało użyte do wygenerowania na wykresie słupkowym poniżej. Można znaleźć łączna liczba trafień i ilość danych przesyłanych (w gigabajtach) dla każdej godziny objętego raportem.
+Poniżej można wyświetlić danych, który został użyty do wygenerowania wykres słupkowy. Można znaleźć łączna liczba trafień i ilość danych przesyłanych (w gigabajtach) za każdy dzień objętego raportem.
 
-## <a name="by-file"></a>W pliku
-Raport po pliku umożliwia wyświetlenie ilość żądanie i ruchu poniesionych w konkretnej platformy najbardziej żądanych zasobów. Podczas generowania raportu z tego typu, wykres słupkowy zostaną wygenerowane na najwyższym 10 najczęściej żądanych zasobów w określonym przedziale czasu.
+## <a name="by-hour"></a>Za godzinę
+Raport za godzinę służy do wyświetlania łączną liczbą trafień i transfery danych za pośrednictwem danej platformy w systemie godzinowym. Te informacje mogą służyć do szybko rozpoznać wzorców działania usługi CDN. Na przykład ten raport może pomóc wykryć okresach czasu w ciągu dnia, które wystąpić wyższej lub niższej niż oczekiwanego natężenia ruchu.
+
+Podczas generowania ten typ raportu, wykres słupkowy zapewni visual wskazaniem ilość żądanie specyficzne dla platformy wystąpił w systemie godzinowym w przedziale czasu objętego raportem. Będzie dokonywać, wyświetlając pasek za każdą godzinę objętego raportem. Na przykład wybranie 24-godzinnym przedziale czasu wygeneruje wykres słupkowy z paskami 24. Każdy słupek będzie wskazywać łączna liczba trafień doświadczenie w trakcie tej godziny.
+
+Po lewej stronie programu graph (oś y) wskazuje, ile razy wystąpił na określoną godzinę. Bezpośrednio pod wykresem (oś x), możesz znaleźć etykietę, która wskazuje, Data/Godzina (Format: YYYY-MM-DD gg: mm) dla każdej godziny uwzględnione w raporcie. Czas jest zgłaszany w formacie 24-godzinnego i jest określony, przy użyciu strefy czasowej UTC/GMT.
+
+> [!TIP]
+> Po umieszczeniu wskaźnika myszy nad paskiem, łączna liczba trafień, które wystąpiły w trakcie tej godziny będą wyświetlane jako etykietka narzędzia.
+> 
+> 
+
+Poniżej można wyświetlić danych, który został użyty do wygenerowania wykres słupkowy. Można znaleźć łączna liczba trafień i ilość danych przesyłanych (w gigabajtach) dla każdej godziny objętego raportem.
+
+## <a name="by-file"></a>Za pomocą pliku
+Raport w pliku umożliwia wyświetlenie ilości żądanie, jak i ruchu naliczane za pośrednictwem danej platformy najczęściej żądanych zasobów. Podczas generowania ten typ raportu, wykres słupkowy zostanie wygenerowany na górnym 10 najczęściej żądanych zasobów w określonym przedziale czasu.
 
 > [!NOTE]
-> Na potrzeby tego raportu adresy URL CNAME krawędzi są konwertowane na ich równoważne adresy URL usługi CDN. Dzięki temu dokładne zgadzają całkowitej liczby trafień skojarzone z zasobów, niezależnie od sieci CDN i krawędzi CNAME adres URL używany do żądania.
+> Na potrzeby tego raportu adresy URL CNAME edge są konwertowane na ich równoważne adresy URL usługi CDN. Dzięki temu dokładne tally dla całkowitej liczby trafień skojarzone z elementem zawartości, niezależnie od tego, czy usługi CDN lub Microsoft edge CNAME adres URL używany do żądania.
 > 
 > 
 
-Lewa strona graph (oś y) wskazuje liczbę żądań dla każdego zasobu w określonym przedziale czasu. Bezpośrednio pod wykresem (oś x), można znaleźć etykiety, który wskazuje nazwę pliku dla każdego z najwyższym 10 żądanych zasobów.
+Po lewej stronie programu graph (oś y) wskazuje liczbę żądań dla każdego zasobu w określonym przedziale czasu. Bezpośrednio pod wykresem (oś x) zawiera etykietę, która wskazuje nazwę pliku dla każdego z 10 najważniejszych żądanych zasobów.
 
-Można wyświetlić dane, które zostało użyte do wygenerowania na wykresie słupkowym poniżej. Można znaleźć następujące informacje dla każdego z najwyższym 250 żądanych zasobów: ścieżka względna, łączna liczba trafień, procent trafień, ilość danych przesyłanych (w gigabajtach), a części danych zostaną przeniesione.
+Poniżej można wyświetlić danych, który został użyty do wygenerowania wykres słupkowy. Znajdziesz następujące informacje dotyczące wszystkich najważniejszych 250 żądanych zasobów: ścieżka względna, całkowita liczba trafień, procent trafień, ilość danych przesyłanych (w gigabajtach), a wartość procentowa danych zostaną przeniesione.
 
 ## <a name="by-file-detail"></a>Według szczegółów pliku
-Raport przez szczegółów pliku umożliwia wyświetlanie ilości żądanie i ruchu poniesionych w konkretnej platformy dla określonego zasobu. Na górze tego raportu jest szczegółów pliku dla opcji. Ta opcja zawiera listę zasobów najbardziej pożądanych na wybranej platformie. Aby wygenerować raport przez szczegółów pliku, konieczne będzie wybierz żądany zawartości z pliku szczegółów dla opcji. Po upływie którego wykres słupkowy wskazuje ilość dzienny popyt generowany w określonym przedziale czasu.
+Raport według szczegółów pliku umożliwia wyświetlenie ilości żądanie, jak i ruchu naliczane za pośrednictwem danej platformy dla określonego zasobu. Na samej górze tego raportu jest opcja pliku szczegółów dla. Ta opcja zawiera listę najczęściej żądanych zasobów na wybranej platformie. Aby wygenerować raport, szczegóły plików, będzie konieczne wybranie żądanego zasobu z poziomu opcji pliku szczegółów dla. Po upływie którego wykres słupkowy wskazuje ilość codzienne zapotrzebowania, które on generowany w określonym przedziale czasu.
 
-Lewa strona graph (oś y) wskazuje całkowita liczba żądań, że zasób wystąpił w określonym dniu. Bezpośrednio pod wykresem (oś x), można znaleźć etykiety, który wskazuje datę (Format: RRRR-MM-DD) dla których CDN zostało zgłoszone żądanie dla elementu zawartości.
+Po lewej stronie programu graph (oś y) wskazuje, całkowita liczba żądań, że zasób usługi wystąpił w określonym dniu. Bezpośrednio pod wykresem (oś x), możesz znaleźć etykietę, która wskazuje dzień (Format: YYYY-MM-DD) dla CDN, które zostało zgłoszone żądanie dla elementu zawartości.
 
-Można wyświetlić dane, które zostało użyte do wygenerowania na wykresie słupkowym poniżej. Można znaleźć łączna liczba trafień i ilość danych przesyłanych (w gigabajtach) dla każdego dnia objętego raportem.
+Poniżej można wyświetlić danych, który został użyty do wygenerowania wykres słupkowy. Można znaleźć łączna liczba trafień i ilość danych przesyłanych (w gigabajtach) za każdy dzień objętego raportem.
 
 ## <a name="by-file-type"></a>Według typu pliku
-Raport według typu plików umożliwia wyświetlanie ilości żądanie i ruchu poniesionych przez typ pliku. Podczas generowania raportu z tego typu, wykres pierścieniowy przedstawiający wskazuje procent trafień generowane przez górny typów plików 10.
+Raport według typu pliku umożliwia wyświetlenie ilości żądanie, jak i ruchu poniesione przez typ pliku. Podczas generowania ten typ raportu, wykres pierścieniowy wskazuje procent trafień generowane przez najważniejszych typów 10 plików.
 
 > [!TIP]
-> Jeśli w ustawieniu kursora wycinek wykresu pierścień Internet typ nośnika czy typ pliku będzie wyświetlany jako etykietka narzędzia.
+> Po umieszczeniu wskaźnika myszy nad wycinek wykresu pierścieniowego Internet typ nośnika, typu pliku, będą wyświetlane jako etykietka narzędzia.
 > 
 > 
 
-Można wyświetlić dane, które zostało użyte do wygenerowania wykres pierścieniowy przedstawiający poniżej. Można znaleźć typu nośnika rozszerzenia/Internet nazwy pliku, łączna liczba trafień, procent trafień, ilość danych przetransferowanych (w gigabajtach), a części danych transferu dla każdego typu pliku pierwszych 250.
+Poniżej można wyświetlić danych, który został użyty do wygenerowania wykres pierścieniowy. Można znaleźć typu nośnika rozszerzenia/Internet nazwy pliku, łączna liczba trafień, procent trafień, ilość danych przetransferowanych (w gigabajtach) i wartość procentowa danych przesłanych dla każdego typu pliku górnej 250.
 
-## <a name="by-directory"></a>Za pomocą katalogu
-Raport w katalogu umożliwia wyświetlanie ilości żądanie i ruchu poniesionych w danej platformy na zawartość z określonego katalogu. Podczas generowania raportu z tego typu, wykres słupkowy wskaże całkowita liczba trafień generowane przez zawartość w górnym katalogów 10.
+## <a name="by-directory"></a>W katalogu
+Raport według Directory służy do wyświetlania ilość żądanie, jak i ruchu naliczane za pośrednictwem danej platformy, dla zawartości z określonego katalogu. Podczas generowania ten typ raportu, wykres słupkowy poinformuje całkowita liczba trafień generowane przez zawartość w górnym 10 katalogów.
 
-### <a name="using-the-bar-chart"></a>Przy użyciu wykres słupkowy
+### <a name="using-the-bar-chart"></a>Za pomocą wykres słupkowy
 * Umieść kursor nad paskiem, aby wyświetlić ścieżkę względną do odpowiedniego katalogu.
-* Zawartości przechowywanej w podfolderze katalogu nie będą uwzględniane podczas obliczania żądanie za pomocą katalogu. Obliczona w ten sposób zależy od wyłącznie liczba żądań wygenerowany dla zawartości przechowywanej w katalogu rzeczywistych.
-* Na potrzeby tego raportu adresy URL CNAME krawędzi są konwertowane na ich równoważne adresy URL usługi CDN. Dzięki temu dokładne zgadzają się dla wszystkich statystyk skojarzone z zasobów, niezależnie od sieci CDN i krawędzi CNAME adres URL używany do żądania.
+* Zawartości przechowywanej w podfolderze katalogu nie są liczone przy obliczaniu żądanie przez katalog. To obliczenie opiera się wyłącznie na liczbę żądań wygenerowanych zawartości przechowywanej w katalogu.
+* Na potrzeby tego raportu adresy URL CNAME edge są konwertowane na ich równoważne adresy URL usługi CDN. Dzięki temu dokładne zgadzają się dla wszystkich statystyk skojarzone z elementem zawartości, niezależnie od tego, czy usługi CDN lub Microsoft edge CNAME adres URL używany do żądania.
 
-Całkowita liczba żądań dotyczących zawartości przechowywanych w katalogach 10 pierwszych wskazuje, po lewej stronie wykresu (oś y). Każdy słupek na wykresie reprezentuje katalog. Schemat kolorów umożliwia dopasowanie pasek do katalogu wymienione w sekcji górnej 250 pełne katalogów.
+Po lewej stronie programu graph (oś y) wskazuje, całkowita liczba żądań dotyczących zawartości przechowywanej w katalogach pierwszych 10. Każdy słupek na wykresie reprezentuje katalog. Użyj schemat kodowania kolorami porównywać pasek do katalogu, wymienione w sekcji katalogi pełną 250 pierwszych.
 
-Można wyświetlić dane, które zostało użyte do wygenerowania na wykresie słupkowym poniżej. Można znaleźć następujące informacje dla każdego z góry 250 katalogi: ścieżki względnej, łączna liczba trafień, procent trafień, ilość danych przesyłanych (w gigabajtach), a części danych zostaną przeniesione.
+Poniżej można wyświetlić danych, który został użyty do wygenerowania wykres słupkowy. Znajdziesz następujące informacje dotyczące wszystkich katalogów najwyższego 250: ścieżka względna, całkowita liczba trafień, procent trafień, ilość danych przesyłanych (w gigabajtach), a wartość procentowa danych zostaną przeniesione.
 
-## <a name="by-browser"></a>W przeglądarce
-Raport w przeglądarce służy do wyświetlania przeglądarki, które były używane do żądania zawartości. Podczas generowania raportu z tego typu, wykres kołowy wskazuje procent żądań obsłużonych przez górny 10 przeglądarki.
+## <a name="by-browser"></a>Według przeglądarki
+Raport w przeglądarce służy do wyświetlania, przeglądarek, które zostały użyte do żądania zawartości. Podczas generowania ten typ raportu, wykres kołowy wskazuje procent żądań obsługiwanych przez pierwsze 10 przeglądarki.
 
-### <a name="using-the-pie-chart"></a>Przy użyciu wykresu kołowego
-* Umieść kursor nad wycinek wykresu kołowego, aby wyświetlić nazwy i wersji przeglądarki.
+### <a name="using-the-pie-chart"></a>Za pomocą wykresu kołowego
+* Umieść kursor nad wycinek wykresu kołowego, aby wyświetlić nazwę i wersję przeglądarki.
 * Na potrzeby tego raportu każda kombinacja unikatowe przeglądarki/wersji jest uznawany za innej przeglądarki.
-* Wycinek o nazwie "Inne" wskazuje procent żądań obsłużonych przez wszystkie przeglądarki i wersje.
+* Wycinek o nazwie "Other" oznacza odsetek żądań obsługiwanych przez wszystkie przeglądarki i wersji.
 
-Poniżej można wyświetlić dane, które zostało użyte do generowania wykresu kołowego. Można znaleźć numer typu i wersji przeglądarki, łączna liczba trafień i procent trafień dla każdego z góry 250 przeglądarki.
+Poniżej można wyświetlić danych, który został użyty do wygenerowania wykresu kołowego. Znajdziesz numer typu i wersji przeglądarki, łączna liczba trafień i procent trafień dla wszystkich przeglądarek górnej 250.
 
 ## <a name="by-referrer"></a>Według odwołania
-Raport według odwołania umożliwia wyświetlenie najczęstsze do zawartości na wybranej platformie. Odwołania wskazuje nazwę hosta, na którym żądanie zostało wygenerowane. Podczas generowania raportu z tego typu, wykres słupkowy wskazuje ilość generowanych przez 10 najczęstsze żądanie (tj. liczba trafień).
+Raport według odwołania służy do wyświetlania najczęstsze do zawartości na wybranej platformie. Odwołania wskazuje nazwę hosta, na którym zostało wygenerowane żądanie. Podczas generowania ten typ raportu, wykres słupkowy wskazuje ilość generowanych przez 10 najczęstsze żądanie (czyli trafień).
 
-Lewa strona graph (oś y) wskazuje całkowita liczba żądań, że zasób wystąpił dla każdego odwołania. Każdy słupek na wykresie reprezentuje odwołania. Schemat kolorów umożliwia dopasowanie pasek do odwołania, wymienione w sekcji górnej 250 odwołania.
+Po lewej stronie programu graph (oś y) wskazuje, całkowita liczba żądań, że zasób usługi wystąpił dla każdego odwołania. Każdy słupek na wykresie reprezentuje odwołania. Schemat kodowania kolorami umożliwia pasek do odwołania, wymienione w sekcji odwołania 250 pierwszych są zgodne.
 
-Można wyświetlić dane, które zostało użyte do wygenerowania na wykresie słupkowym poniżej. Można znaleźć adres URL, łączna liczba trafień i procent trafień wygenerowane z każdej najczęstsze 250.
+Poniżej można wyświetlić danych, który został użyty do wygenerowania wykres słupkowy. Można znaleźć adres URL, łączna liczba trafień i procent trafień wygenerowany na podstawie wszystkich najczęstsze 250.
 
 ## <a name="by-download"></a>Do pobrania
-Pobierany raport umożliwia analizę wzorce pobierania najbardziej żądanej zawartości. Na początku raport zawiera wykres słupkowy, że porównanie podjęto pliki do pobrania z pobrania zakończone top 10 żądanych zasobów. Każdy pasek jest oznaczone kolorami według tego, czy jest próba pobrania (niebieski) lub Pobieranie ukończone (zielony).
+Przez Pobierz raport umożliwia analizowanie wzorców pobierania najczęściej żądanej zawartości. Początku raport zawiera wykres słupkowy, że porównuje podjęto próbę pobrania z pobrania zakończone najważniejsze 10 żądanych zasobów. Każdy słupek jest oznaczone kolorami zgodnie z tego, czy jest próba pobrania (niebieski) lub Pobieranie ukończone (zielony).
 
 > [!NOTE]
-> Na potrzeby tego raportu adresy URL CNAME krawędzi są konwertowane na ich równoważne adresy URL usługi CDN. Dzięki temu dokładne zgadzają się dla wszystkich statystyk skojarzone z zasobów, niezależnie od sieci CDN i krawędzi CNAME adres URL używany do żądania.
+> Na potrzeby tego raportu adresy URL CNAME edge są konwertowane na ich równoważne adresy URL usługi CDN. Dzięki temu dokładne zgadzają się dla wszystkich statystyk skojarzone z elementem zawartości, niezależnie od tego, czy usługi CDN lub Microsoft edge CNAME adres URL używany do żądania.
 > 
 > 
 
-Lewa strona graph (oś y) wskazuje nazwę pliku dla każdego z najwyższym 10 żądanych zasobów. Bezpośrednio pod wykresem (oś x) można znaleźć etykiety, które wskazuje całkowitą liczbę pobrań podjęto ukończone.
+Po lewej stronie programu graph (oś y) wskazuje nazwę pliku dla każdego z 10 najważniejszych żądanych zasobów. Bezpośrednio pod wykresem (oś x) można znaleźć etykiety, które wskazuje całkowitą liczbę pobrań podjęto zakończone.
 
-Bezpośrednio poniżej na wykresie słupkowym następujące informacje zostaną wyświetlone top 250 żądanych zasobów: ścieżka względna (łącznie z nazwą pliku), ile razy został pobrany do ukończenia liczbę jej żądanie zostało przesłane i procent żądania, które spowodowało ukończenia pobierania.
+Bezpośrednio poniżej wykres słupkowy następujące informacje zostaną wyświetlone najważniejsze 250 żądanych zasobów: ścieżka względna (łącznie z nazwą pliku), ile razy został on pobrany do zakończenia, ile razy żądano jej i wartość procentowa żądania, które wpłynęły na zakończenie pobierania.
 
 > [!TIP]
-> Nasze CDN nie otrzymuje informacji przez klienta protokołu HTTP (tj. przeglądarki) gdy zasób został całkowicie pobrany. W związku z tym mamy obliczanie, czy zasób całkowitym pobraniu zgodnie z kodów stanu i zakres bajtów żądania. Najpierw szukamy podczas wprowadzania tego obliczenia jest Określa, czy żądanie wyniki w kodzie 200 OK stanu. Jeśli tak, możemy Przyjrzyj się żądania zakresu bajtów, aby upewnić się, że będą one obejmować cały zasobów. Na koniec mamy porównać ilość danych przesyłanych do rozmiaru żądanych zasobów. Jeśli przesyłane dane jest równa lub większa niż rozmiar pliku i żądania zakresu bajtów są odpowiednie dla tego zasobu, naciśnij klawisz będą przeliczane pobrać pełną.
+> Nasze usługi CDN nie otrzymuje informacji przez klienta protokołu HTTP (np. przeglądarka) po element zawartości został całkowicie pobrany. Co w efekcie mamy do obliczania, czy element zawartości całkowitym pobraniu zgodnie z kodów stanu i zakres bajtów żądania. Pierwszą rzeczą, jaką szukamy podczas wprowadzania tego obliczenia jest, czy żądanie skutkuje kod stanu 200 OK. Jeśli tak, następnie przyjrzymy się żądania zakresu bajtów, aby upewnić się, że dotyczą całej zawartości. Na koniec możemy porównać ilość danych przesyłanych do rozmiaru żądanych zasobów. Jeśli przesyłane dane jest równy lub większy niż rozmiar pliku, a żądania zakresu bajtów są odpowiednie dla tego zasobu, naciśnij klawisz będzie traktowane jak zakończenie pobierania.
 > 
-> Ze względu na specyfikę interpretive tego raportu należy mieć na uwadze następujące kwestie, które nie może zmienić spójności dokładność tego raportu.
+> Ze względu na charakter interpretacyjny tego raportu należy mieć na uwadze następujące kwestie, które nie może zmienić spójności dokładności tego raportu.
 > 
-> * Wzorce ruchu nie można dokładnie przewidzieć, gdy agenci użytkownika zachowywać się inaczej. Może to powodować wyniki pobierania zakończonych, które są większe niż 100%.
-> * Zasoby, które korzystają z pobierania progresywnego HTTP nie może być dokładnie reprezentowany przez ten raport. Jest to spowodowane użytkownikom znalezienia w inne miejsca wideo.
+> * Wzorce ruchu nie mogli do dokładnie przewidzieć podczas agentów użytkownika zachowywać się inaczej. Może to zwrócić wyniki Pobieranie ukończone, które są większe niż 100%.
+> * Zasoby, które wykorzystują pobierania progresywnego HTTP nie może być dokładnie reprezentowany przez ten raport. Jest to spowodowane użytkownikom wyszukiwanie w inne miejsca w filmie wideo.
 > 
 > 
 
-## <a name="by-404-errors"></a>Z powodu błędów 404
-Raport według błędów 404 umożliwia zidentyfikowanie typu zawartości, która generuje największej liczby kodów stanu 404 Nie znaleziono. Na początku raport zawiera wykres słupkowy trwałych 10 pierwszych, dla których został zwrócony kod stanu nie znaleziono 404. Ten wykres słupkowy porównuje całkowita liczba żądań z żądaniami, które spowodowało 404 Nie odnaleziono kodu stanu tych zasobów. Każdy pasek jest oznaczone kolorami. Żółty pasek jest służy do wskazania, że żądanie spowodowało 404 Nie odnaleziono kodu stanu. Czerwony pasek służy do wskazywania całkowita liczba żądań dla elementu zawartości.
+## <a name="by-404-errors"></a>Przez błędy 404
+Raport przez błędy 404 umożliwia określenie typu zawartości, która generuje największą liczbę kodów stanu 404 Nie znaleziono. Początku raport zawiera wykres słupkowy 10 najważniejszych zasobów, dla których został zwrócony 404 Nie odnaleziono kodu stanu. Ten wykres słupkowy porównuje całkowita liczba żądań z żądaniami, które spowodowało 404 Nie znaleziono kod stanu dla tych zasobów. Każdy słupek jest oznaczone kolorami. Żółty pasek jest używany do wskazania, że żądanie spowodowało 404 Nie odnaleziono kodu stanu. Czerwony pasek jest używany do wskazania całkowita liczba żądań dla zasobu.
 
 > [!NOTE]
-> Na potrzeby tego raportu należy uwzględnić następujące informacje:
+> Na potrzeby tego raportu Pamiętaj o następujących kwestiach:
 > 
-> * Trafienie reprezentuje wszystkie żądania dla zasobów, niezależnie od tego, kod stanu.
-> * Adresy URL CNAME krawędzi są konwertowane na ich równoważne adresy URL usługi CDN. Dzięki temu dokładne zgadzają się dla wszystkich statystyk skojarzone z zasobów, niezależnie od sieci CDN i krawędzi CNAME adres URL używany do żądania.
+> * Trafienie reprezentuje każde żądanie dla elementu zawartości, niezależnie od tego, kod stanu.
+> * Adresy URL CNAME Edge są konwertowane na ich równoważne adresy URL usługi CDN. Dzięki temu dokładne zgadzają się dla wszystkich statystyk skojarzone z elementem zawartości, niezależnie od tego, czy usługi CDN lub Microsoft edge CNAME adres URL używany do żądania.
 > 
 > 
 
-Lewa strona graph (oś y) wskazuje nazwę pliku dla każdego z górnego żądanych zasobów 10, które wywołały kod stanu nie znaleziono 404. Bezpośrednio pod wykresem (oś x) można znaleźć etykiet wskazujących całkowita liczba żądań i liczba żądań, które wywołały kod stanu nie znaleziono 404.
+Po lewej stronie programu graph (oś y) wskazuje nazwę pliku dla wszystkich najważniejszych żądanych zasobów 10, które wpłynęły na 404 Nie odnaleziono kodu stanu. Bezpośrednio pod wykresem (oś x) można znaleźć etykiety, które wskazują, całkowita liczba żądań i liczbę żądań, które spowodowały 404 Nie odnaleziono kodu stanu.
 
-Bezpośrednio poniżej na wykresie słupkowym następujące informacje zostaną wyświetlone top 250 żądanych zasobów: ścieżka względna (takie jak nazwa pliku), liczba żądań, które spowodowało 404 Nie odnaleziono kodu stanu, całkowita liczba przypadków, w których zażądano elementu zawartości, i Procent żądań, które spowodowało 404 Nie odnaleziono kodu stanu.
+Bezpośrednio poniżej wykres słupkowy następujące informacje zostaną wyświetlone najważniejsze 250 żądanych zasobów: ścieżka względna (takie jak nazwa pliku), liczba żądań, które spowodowały 404 Nie odnaleziono kodu stanu, całkowita liczba prób zażądano elementu zawartości, i Procent żądań, które spowodowały 404 Nie odnaleziono kodu stanu.
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 * [Omówienie usługi Azure CDN](cdn-overview.md)
 * [Statystyki w czasie rzeczywistym w usłudze Microsoft Azure CDN](cdn-real-time-stats.md)
 * [Zastępowanie domyślnego zachowania HTTP przy użyciu aparatu reguł](cdn-rules-engine.md)
-* [Analizowanie wydajności](cdn-edge-performance.md)
+* [Analyze Edge Performance](cdn-edge-performance.md)
 

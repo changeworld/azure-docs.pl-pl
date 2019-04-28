@@ -8,14 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 02/08/2019
-ms.author: erhopf
+origin.date: 02/08/2019
+ms.date: 03/12/2019
+ms.author: v-junlch
 ms.openlocfilehash: 37ea719811d9b47dbe809278a0ad8f0bd9d25081
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55982934"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60879161"
 ---
 # <a name="quickstart-transliterate-text-with-the-translator-text-rest-api-ruby"></a>Szybki start: Transliteracja tekstu przy użyciu interfejsu API REST tłumaczenia tekstu w usłudze Translator (Ruby)
 
@@ -49,8 +50,8 @@ require 'securerandom'
 
 # Replace the key string value with your valid subscription key.
 key = 'ENTER KEY HERE'
-
-host = 'https://api.cognitive.microsofttranslator.com'
+region = 'your region'
+host = 'https://api.translator.azure.cn'
 path = '/transliterate?api-version=3.0'
 
 # Transliterate text in Japanese from Japanese script (i.e. Hiragana/Katakana/Kanji) to Latin script.
@@ -67,6 +68,7 @@ request = Net::HTTP::Post.new(uri)
 request['Content-type'] = 'application/json'
 request['Content-length'] = content.length
 request['Ocp-Apim-Subscription-Key'] = key
+request['Ocp-Apim-Subscription-Region'] = region
 request['X-ClientTraceId'] = SecureRandom.uuid
 request.body = content
 
@@ -93,9 +95,10 @@ Po pomyślnym przetworzeniu żądania jest zwracana odpowiedź w formacie JSON, 
 ]
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Zapoznaj się z kodem przykładowym tego przewodnika Szybki start i innych, w tym obejmującym tłumaczenie i identyfikację języka, jak również innymi projektami przykładowymi dla tłumaczenia tekstu w usłudze Translator dostępnymi w usłudze GitHub.
 
 > [!div class="nextstepaction"]
 > [Poznaj przykłady dla języka Ruby w usłudze GitHub](https://aka.ms/TranslatorGitHub?type=&language=ruby)
+

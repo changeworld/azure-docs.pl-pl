@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 ms.openlocfilehash: 9e5da96cb02e681c83bd707fc038117050712ccf
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044250"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61262066"
 ---
 # <a name="datasets-and-linked-services-in-azure-data-factory"></a>Zestawy danych i połączone usługi w usłudze Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -28,14 +28,14 @@ W tym artykule opisano, jakie zestawy danych są, jak są one definiowane w form
 
 Jeśli jesteś nowym użytkownikiem usługi Data Factory, zobacz [wprowadzenie do usługi Azure Data Factory](introduction.md) omówienie.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Fabryka danych może obejmować jeden lub wiele potoków. A **potoku** jest logicznym grupowaniem **działania** wspólnie wykonują zadanie. Działania w potoku definiują akcje do wykonania na danych. Może na przykład użyć działania kopiowania, aby skopiować dane z lokalnego programu SQL Server do usługi Azure Blob storage. Następnie należy użyć działania programu Hive, które uruchamia skrypt Hive w klastrze usługi HDInsight platformy Azure do przetwarzania danych z magazynu obiektów Blob w celu wygenerowania danych wyjściowych. Może na koniec użyj drugiego działania kopiowania, aby skopiować dane wyjściowe do usługi Azure SQL Data Warehouse, na podstawie której raportowania dotyczącego rozwiązania analizy biznesowej (BI). Aby uzyskać więcej informacji na temat potoków i działań, zobacz [potoki i działania](concepts-pipelines-activities.md) w usłudze Azure Data Factory.
 
 Teraz **dataset** jest nazwany widok danych, które po prostu wskazuje lub odwołuje się do danych, które mają być używane w Twojej **działania** jako dane wejściowe i wyjściowe. Zestawy danych identyfikują dane w różnych magazynach danych, takich jak tabele, pliki, foldery i dokumenty. Na przykład zestaw danych obiektów blob platformy Azure określa kontener obiektów blob i folder w usłudze Blob Storage, z których działanie ma odczytywać dane.
 
 Przed utworzeniem zestawu danych, należy utworzyć **połączoną usługę** połączyć usługi magazynu danych w usłudze data factory. Połączone usługi działają podobnie do parametrów połączenia, umożliwiając definiowanie informacji wymaganych przez usługę Data Factory do nawiązywania połączeń z zasobami zewnętrznymi. Mechanizm działa w ten sposób; zestaw danych reprezentuje strukturę danych w połączonych magazynach danych, a połączona usługa zawiera definicję połączenia ze źródłem danych. Na przykład Azure Storage połączona usługa łączy konto usługi storage z fabryką danych. Zestaw danych obiektów Blob platformy Azure reprezentuje kontener obiektów blob oraz folder, w ramach tego konta magazynu platformy Azure, który zawiera wejściowe obiekty BLOB mają być przetwarzane.
 
-Poniżej przedstawiono przykładowy scenariusz. Aby skopiować dane z magazynu obiektów Blob do usługi SQL database, utworzysz dwie połączone usługi: Usługa Azure Storage i Azure SQL Database. Następnie należy utworzyć dwa zestawy danych: Azure zestaw danych obiektów Blob (która odwołuje się do połączonej usługi Azure Storage) i zestaw danych tabeli SQL Azure, (która odwołuje się do usługi Azure SQL Database, połączone). Usługi Azure Storage i Azure SQL Database, połączone usługi zawiera parametry połączenia, które usługi Data Factory używa w środowisku uruchomieniowym połączyć się z usługi Azure Storage i Azure SQL Database, odpowiednio. Zestaw danych obiektów Blob platformy Azure Określa kontener obiektów blob i folder obiektów blob, który zawiera wejściowe obiekty BLOB w usłudze Blob storage. Zestaw danych tabeli SQL Azure Określa tabelę SQL w usłudze SQL database, do której ma zostać skopiowane dane.
+Poniżej przedstawiono przykładowy scenariusz. Aby skopiować dane z magazynu obiektów Blob do usługi SQL database, utworzysz dwie połączone usługi: Azure Storage i Azure SQL Database. Następnie należy utworzyć dwa zestawy danych: Azure zestaw danych obiektów Blob (która odwołuje się do połączonej usługi Azure Storage) i zestaw danych tabeli SQL Azure, (która odwołuje się do usługi Azure SQL Database, połączone). Usługi Azure Storage i Azure SQL Database, połączone usługi zawiera parametry połączenia, które usługi Data Factory używa w środowisku uruchomieniowym połączyć się z usługi Azure Storage i Azure SQL Database, odpowiednio. Zestaw danych obiektów Blob platformy Azure Określa kontener obiektów blob i folder obiektów blob, który zawiera wejściowe obiekty BLOB w usłudze Blob storage. Zestaw danych tabeli SQL Azure Określa tabelę SQL w usłudze SQL database, do której ma zostać skopiowane dane.
 
 Na poniższym diagramie przedstawiono relacje między potoku, działania, zestaw danych i połączonej usługi w usłudze Data Factory:
 
@@ -91,7 +91,7 @@ Następujące połączonej usługi jest połączona usługa Azure Storage. Nale�
 }
 ```
 
-## <a name="dataset-json"></a>JSON dla zestawu danych
+## <a name="dataset-json"></a>Dataset JSON
 Zestaw danych w usłudze Data Factory jest zdefiniowany w formacie JSON:
 
 ```json
@@ -122,7 +122,7 @@ W poniższej tabeli opisano właściwości w powyższy kod JSON:
 Właściwość | Opis | Wymagane |
 -------- | ----------- | -------- |
 name | Nazwa zestawu danych. Zobacz [usługi Azure Data Factory — reguły nazewnictwa](naming-rules.md). |  Yes |
-type | Typ zestawu danych. Określ jeden z typów obsługiwanych przez usługę Data Factory (na przykład: Obiektu blob platformy Azure, AzureSqlTable). <br/><br/>Aby uzyskać więcej informacji, zobacz [typy zestawów danych](#dataset-type). | Yes |
+type | Typ zestawu danych. Określ jeden z typów obsługiwanych przez usługę Data Factory (na przykład: AzureBlob, AzureSqlTable). <br/><br/>Aby uzyskać więcej informacji, zobacz [typy zestawów danych](#dataset-type). | Yes |
 Struktura | Schemat zestawu danych. Aby uzyskać więcej informacji, zobacz [struktury zestawu danych](#dataset-structure). | Nie |
 typeProperties | Właściwości typu są różne dla każdego typu (na przykład: Usługa Azure Blob, tabela Azure SQL). Szczegółowe informacje na temat obsługiwanych typów i ich właściwości, [typ zestawu danych](#dataset-type). | Yes |
 

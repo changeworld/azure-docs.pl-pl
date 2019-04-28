@@ -2,19 +2,19 @@
 title: Wprowadzenie do funkcji obsługi okien usługi Azure Stream Analytics
 description: W tym artykule opisano cztery funkcji obsługi okien (wirowania przeskokiem, przesuwanie, "sesja"), które są używane w zadaniach usługi Azure Stream Analytics.
 services: stream-analytics
-author: jseb225
-ms.author: jeanb
-manager: kfile
+author: lingliw
+ms.author: v-lingwu
+manager: digimobile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/07/2018
+ms.date: 01/21/19
 ms.openlocfilehash: 04c19e7e51777db4c59bfab3d5a8a7598560556a
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231652"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60844770"
 ---
 # <a name="introduction-to-stream-analytics-windowing-functions"></a>Wprowadzenie do funkcji obsługi okien usługi Stream Analytics
 W scenariuszach z przesyłania strumieniowego w czasie wykonywania operacji na danych znajdujących się na danych czasowych systemu windows jest to typowy wzorzec. Stream Analytics zapewnia natywną obsługę funkcji obsługi okien, dzięki czemu deweloperzy mogą zadania przetwarzania strumieniowego złożonych Autor przy minimalnym nakładzie pracy.
@@ -51,7 +51,6 @@ Jeśli zdarzenia zachować przed upływem określonego limitu czasu, okna sesji 
 
 Jeśli zostanie podany klucz partycji, zdarzenia są grupowane według klucza i okna sesji jest stosowana do każdej grupy niezależnie. Ta Partycjonowanie jest przydatne w sytuacjach wymagających innej sesji systemu windows dla różnych użytkowników lub urządzeń.
 
-
 ## <a name="next-steps"></a>Kolejne kroki
 * [Wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics (Rozpoczynanie pracy z usługą Azure Stream Analytics)](stream-analytics-real-time-fraud-detection.md)
@@ -59,3 +58,4 @@ Jeśli zostanie podany klucz partycji, zdarzenia są grupowane według klucza i 
 * [Azure Stream Analytics Query Language Reference (Dokumentacja dotycząca języka zapytań usługi Azure Stream Analytics)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Azure Stream Analytics Management REST API Reference (Dokumentacja interfejsu API REST zarządzania usługą Azure Stream Analytics)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
+<!--Update_Description: update meta properties -->

@@ -5,14 +5,15 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 2/14/2019
-ms.author: victorh
+origin.date: 02/14/2019
+ms.date: 02/26/2019
+ms.author: v-junlch
 ms.openlocfilehash: abfe33ff679bef125d9bf5b78e1790a1a4c64863
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301608"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60832036"
 ---
 # <a name="create-application-gateway-custom-error-pages"></a>Tworzenie bramy Application Gateway strony błędów niestandardowych
 
@@ -34,7 +35,6 @@ Strony błędów niestandardowych można zdefiniować na poziomie globalnym i po
 - **Zarówno** — strona błędu niestandardowego, zdefiniowany na poziomie odbiornika zastępuje jednego zestawu na poziomie globalnym.
 
 Aby utworzyć stronę błędu niestandardowego, musisz mieć:
-
 - Kod stanu odpowiedzi HTTP.
 - odpowiedniej lokalizacji strony błędu. 
 - obiektu blob magazynu Azure ogólnie dostępny dla lokalizacji.
@@ -48,10 +48,10 @@ Po określeniu stronę błędu, bramy aplikacji powoduje jego pobranie z lokaliz
 
 1. Przejdź do usługi Application Gateway w portalu i wybierz bramę aplikacji.
 
-    ![ag-overview](media/custom-error/ag-overview.png)
+    ![ag-overview](./media/custom-error/ag-overview.png)
 2. Kliknij przycisk **odbiorników** i przejdź do określonego odbiornika, które chcesz określić stronę błędu.
 
-    ![Odbiorniki bramy aplikacji](media/custom-error/ag-listener.png)
+    ![Odbiorniki bramy aplikacji](./media/custom-error/ag-listener.png)
 3. Konfigurowanie niestandardowej strony błędu 403 błędu zapory aplikacji sieci Web lub strony 502 konserwacji na poziomie odbiornika.
 
     > [!NOTE]
@@ -59,7 +59,7 @@ Po określeniu stronę błędu, bramy aplikacji powoduje jego pobranie z lokaliz
 
 4. Określ adres URL dostępny publicznie obiektu blob dla kodu stanu danego błędu, a następnie kliknij przycisk **Zapisz**. Application Gateway jest skonfigurowany za pomocą niestandardowej strony błędu.
 
-   ![Kody błędów bramy aplikacji](media/custom-error/ag-error-codes.png)
+   ![Kody błędów bramy aplikacji](./media/custom-error/ag-error-codes.png)
 
 ## <a name="azure-powershell-configuration"></a>Konfiguracja programu Azure PowerShell
 
@@ -76,3 +76,5 @@ Aby uzyskać więcej informacji, zobacz [AzApplicationGatewayCustomError Dodaj](
 ## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać informacji na temat diagnostyki usługi Application Gateway, zobacz [kondycja zaplecza, dzienniki diagnostyczne i metryki dla usługi Application Gateway](application-gateway-diagnostics.md).
+
+<!-- Update_Description: wording update -->

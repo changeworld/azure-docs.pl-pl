@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 91fad34073d7505c596bedfb6c93946ee7393dd7
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58315134"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60825612"
 ---
 # <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>Użyj analizy multimediów Azure, aby przekonwertować na tekst cyfrowych, zawartości tekstowej w plikach wideo  
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Jeśli zachodzi potrzeba wyodrębnić zawartość tekstu z plików wideo i wygenerować go edytować, którą można przeszukiwać tekst cyfrowych, należy użyć usługi Azure Media Analytics OCR (optyczne rozpoznawanie znaków). To procesor multimediów Azure wykrywa zawartość tekstową plików wideo i generuje pliki tekstowe do użycia. Optyczne rozpoznawanie znaków umożliwia automatyzację ekstrakcji istotne metadane z multimediów sygnału wideo.
 
 W przypadku użycia w połączeniu z wyszukiwarką, możesz łatwo indeksowanie multimediów według tekstu i Zwiększ możliwości odnajdywania Twojej zawartości. Jest to bardzo przydatne w wysoce tekstową wideo, takich jak nagranie wideo lub Przechwytywanie ekranu prezentacji pokaz slajdów. Procesor multimediów Azure optyczne rozpoznawanie znaków jest zoptymalizowany pod kątem cyfrowego tekstu.
@@ -106,7 +106,7 @@ Dane wyjściowe zawierają następujące atrybuty:
 | Element | Opis |
 | --- | --- |
 | Skala czasu |"impulsów", na sekundę filmu wideo |
-| Przesunięcie |Czas przesunięcia sygnatur czasowych. W wersji 1.0 interfejsów API Video ta będzie zawsze równa 0. |
+| Offset |Czas przesunięcia sygnatur czasowych. W wersji 1.0 interfejsów API Video ta będzie zawsze równa 0. |
 | Framerate |Liczba klatek na sekundę filmu wideo |
 | Szerokość |szerokość obrazu wideo w pikselach |
 | Wysokość |wysokość w pikselach |

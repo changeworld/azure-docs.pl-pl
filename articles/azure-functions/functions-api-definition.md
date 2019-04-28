@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alkarche
 ms.openlocfilehash: 6d11961f06a75341e633c7a8963e6b83ed37cf13
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58076738"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61341714"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Obsługa metadanych interfejsu OpenAPI 2.0 w usłudze Azure Functions (wersja zapoznawcza)
 Standard OpenAPI 2.0 (dawniej Swagger) Obsługa metadanych w usłudze Azure Functions jest funkcją w wersji zapoznawczej, która służy do pisania definicji interfejsu OpenAPI 2.0 w aplikacji funkcji. Ten plik może być następnie hostować przy użyciu aplikacji funkcji.

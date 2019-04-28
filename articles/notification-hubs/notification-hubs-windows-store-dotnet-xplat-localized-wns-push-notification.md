@@ -16,11 +16,11 @@ ms.custom: mvc
 ms.date: 03/22/2019
 ms.author: jowargo
 ms.openlocfilehash: f3880db813072ca0bcecf073a8db24b21c87189f
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402716"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60871823"
 ---
 # <a name="tutorial-push-localized-notifications-to-windows-apps-by-using-azure-notification-hubs"></a>Samouczek: wysyłanie zlokalizowanych powiadomień push do aplikacji systemu Windows przy użyciu usługi Azure Notification Hubs
 
@@ -28,7 +28,7 @@ ms.locfileid: "58402716"
 > * [Sklep Windows — C#](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
 > * [iOS](notification-hubs-ios-xplat-localized-apns-push-notification.md)
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 W tym samouczku przedstawiono sposób wysyłania zlokalizowanych powiadomień push do urządzeń przenośnych zarejestrowanych w usłudze Notification Hubs. W tym samouczku zaktualizujesz aplikacje utworzone w temacie [Samouczek: wysyłanie powiadomień do konkretnych urządzeń (platforma uniwersalna systemu Windows)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) na potrzeby obsługi następujących scenariuszy:
 

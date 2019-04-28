@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 9a8ab024443744f50482dd2ca1cfb33db43359e9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58802817"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61463376"
 ---
 # <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>Strumieniowa na żywo za pomocą koderów lokalnych przy użyciu witryny Azure portal
 > [!div class="op_single_selector"]

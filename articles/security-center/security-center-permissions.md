@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 10/28/2018
 ms.author: rkarlin
 ms.openlocfilehash: aa6c154e14fbf5291e2493f4f27b9d4501ba18f4
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117990"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60905623"
 ---
 # <a name="permissions-in-azure-security-center"></a>Uprawnienia w usłudze Azure Security Center
 
@@ -49,7 +49,7 @@ Poniższa tabela przedstawia role i dozwolonych akcji w usłudze Security Center
 | Współautor grupy zasobów | -- | X | -- | X |
 | Czytelnik | -- | -- | -- | X |
 | Administrator zabezpieczeń | X | -- | X | X |
-| Odczytywanie zabezpieczeń | -- | -- | -- | X |
+| Czytelnik zabezpieczeń | -- | -- | -- | X |
 
 > [!NOTE]
 > Zaleca się przypisanie użytkownikom najbardziej ograniczonej roli wystarczającej do wykonywania zadań. Dla użytkowników, którzy tylko przeglądać informacje o kondycji zabezpieczeń zasobu, ale nie podejmować działań, np. stosować zaleceń ani edytować zasad, na przykład przypisać rolę czytelnika.

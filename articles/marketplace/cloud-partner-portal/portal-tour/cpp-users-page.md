@@ -15,13 +15,13 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 22768e90a419e7a5c3c9e286953afbf3ba2ab311
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52267162"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60825583"
 ---
-# <a name="users-page"></a>Strona Użytkownicy
+# <a name="users-page"></a>Strona użytkowników
 
 [ **Użytkowników** ](https://cloudpartner.azure.com/#users) strony wyświetli listę wszystkich zarejestrowanych użytkowników portalu Cloud Partner.  Kolumny zawierają adres e-mail każdego użytkownika, roli w portalu, typ oferty i publikacji organizacji. Wyniki można uporządkowane według kolumny lub filtrowane wg określonego ciągu.  
 
@@ -32,7 +32,7 @@ Ta strona wyświetla również **Dodaj użytkownika** przycisk dodawania użytko
 
 Na poniższej ilustracji przedstawiono **użytkowników** strona jest filtrowana na ciąg `contoso`.
 
-![Strona Użytkownicy](./media/users-page1.png)
+![Strona użytkowników](./media/users-page1.png)
 
 
 ## <a name="next-steps"></a>Kolejne kroki

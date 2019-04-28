@@ -14,11 +14,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 72c88ef10bf1df217ec6e24ac744d0b30386b4a3
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311532"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60824018"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Przenoszenie danych z bazy danych DB2 za pomocą działania kopiowania w fabryce danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -313,15 +313,15 @@ Następujące mapowania są używane podczas działania kopiowania konwertuje da
 | BigInt |Int64 |
 | Real |Single |
 | Double |Double |
-| Liczba zmiennoprzecinkowa |Double |
+| Float |Double |
 | Dziesiętna |Decimal |
 | DecimalFloat |Decimal |
-| Liczbowy |Decimal |
+| Numeric |Decimal |
 | Date |DateTime |
 | Time |TimeSpan |
 | Znacznik czasu |DateTime |
 | Xml |Byte[] |
-| Char |String |
+| char |String |
 | VarChar |String |
 | LongVarChar |String |
 | DB2DynArray |String |
@@ -339,15 +339,15 @@ Następujące mapowania są używane podczas działania kopiowania konwertuje da
 | BigInt |Int64 |
 | Real |Single |
 | Double |Double |
-| Liczba zmiennoprzecinkowa |Double |
+| Float |Double |
 | Dziesiętna |Decimal |
 | DecimalFloat |Decimal |
-| Liczbowy |Decimal |
+| Numeric |Decimal |
 | Date |DateTime |
 | Time |TimeSpan |
 | Znacznik czasu |DateTime |
 | Xml |Byte[] |
-| Char |String |
+| char |String |
 
 ## <a name="map-source-to-sink-columns"></a>Mapy źródła do ujścia kolumn
 Aby dowiedzieć się, jak mapowania kolumn w zestawie danych źródłowych do kolumn w zestawie danych ujścia, zobacz [mapowanie kolumny zestawu danych w usłudze Azure Data Factory](data-factory-map-columns.md).

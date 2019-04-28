@@ -15,11 +15,11 @@ ms.topic: overview
 ms.date: 03/28/2018
 ms.author: b-juche
 ms.openlocfilehash: d7eb73c8fb4573084ba0a213282fdb71e14ff5fa
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59546744"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61086337"
 ---
 # <a name="introduction-to-azure-netapp-files"></a>Wprowadzenie do usługi Azure NetApp Files
 Usługa Azure NetApp Files to usługa klasy korporacyjnej udostępniająca mierzony magazyn plików o wysokiej wydajności. Usługa Azure NetApp Files obsługuje wszystkie typy obciążeń i zapewnia domyślnie wysoką dostępność. W tej usłudze można wybrać gwarantowane poziomy usług i wydajności oraz konfigurować migawki. 

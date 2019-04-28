@@ -8,11 +8,11 @@ ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
 ms.openlocfilehash: 07d5aa752d6613f6733a44c9b34e48f537eb67ae
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245239"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60889586"
 ---
 # <a name="data-encryption-in-azure-cosmos-db"></a>Szyfrowanie danych w usłudze Azure Cosmos DB 
 
@@ -36,25 +36,25 @@ Podstawowy przepływ żądania użytkownika jest następująca:
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
-### <a name="q-how-much-more-does-azure-storage-cost-if-storage-service-encryption-is-enabled"></a>PYT.: O ile bardziej kosztuje się usługa Azure Storage, jeśli włączono szyfrowanie usługi Storage?
+### <a name="q-how-much-more-does-azure-storage-cost-if-storage-service-encryption-is-enabled"></a>Pyt.: O ile bardziej kosztuje się usługa Azure Storage, jeśli włączono szyfrowanie usługi Storage?
 Odp.: Nie ma żadnych dodatkowych kosztów.
 
-### <a name="q-who-manages-the-encryption-keys"></a>PYT.: Kto zarządza kluczami szyfrowania?
+### <a name="q-who-manages-the-encryption-keys"></a>Pyt.: Kto zarządza kluczami szyfrowania?
 Odp.: Klucze są zarządzane przez firmę Microsoft.
 
-### <a name="q-how-often-are-encryption-keys-rotated"></a>PYT.: Jak często są obracane klucze szyfrowania
+### <a name="q-how-often-are-encryption-keys-rotated"></a>Pyt.: Jak często są obracane klucze szyfrowania
 Odp.: Firma Microsoft ma zbiór wewnętrzne wytyczne dla wymiany kluczy szyfrowania, który jest zgodny z usługi Cosmos DB. Konkretne wskazówki nie są publikowane. Publikowanie Microsoft [cykl projektowania zabezpieczeń (SDL)](https://www.microsoft.com/sdl/default.aspx), który jest widoczny jako część wewnętrzne wskazówki i zawiera przydatne wskazówki dla deweloperów.
 
-### <a name="q-can-i-use-my-own-encryption-keys"></a>PYT.: Można użyć własnych kluczy szyfrowania?
+### <a name="q-can-i-use-my-own-encryption-keys"></a>Pyt.: Można użyć własnych kluczy szyfrowania?
 Odp.: Usługa cosmos DB to usługa PaaS i możemy włożyła wiele wysiłku, zachować usługi jest łatwa w użyciu. Zauważyliśmy, że to pytanie jest często zadawane jako serwer proxy pytanie odnośnie do spełniające wymagania zgodności, takie jak PCI-DSS. W ramach tworzenia tej funkcji wspólnie ze audytorów zgodności, aby upewnić się, że klienci, którzy korzystają z usługi Cosmos DB spełnienie rządowych wymagań dotyczących bez konieczności zarządzania kluczami, samodzielnie.
 
-### <a name="q-what-regions-have-encryption-turned-on"></a>PYT.: Jakie regiony z włączonym szyfrowaniem?
+### <a name="q-what-regions-have-encryption-turned-on"></a>Pyt.: Jakie regiony z włączonym szyfrowaniem?
 Odp.: Regiony usługi Azure Cosmos DB z szyfrowania włączone dla wszystkich danych użytkownika.
 
-### <a name="q-does-encryption-affect-the-performance-latency-and-throughput-slas"></a>PYT.: Szyfrowanie wpływa na wydajność opóźnienia i przepływności umów SLA?
+### <a name="q-does-encryption-affect-the-performance-latency-and-throughput-slas"></a>Pyt.: Szyfrowanie wpływa na wydajność opóźnienia i przepływności umów SLA?
 Odp.: Nie ma wpływu na lub zmiany wydajności umowy SLA, skoro szyfrowanie w spoczynku jest włączona dla wszystkich istniejących i nowych kont. Więcej informacji o [umowa SLA dla usługi Cosmos DB](https://azure.microsoft.com/support/legal/sla/cosmos-db) strony, aby zobaczyć najnowsze gwarancji.
 
-### <a name="q-does-the-local-emulator-support-encryption-at-rest"></a>PYT.: Lokalne emulator obsługuje szyfrowanie w spoczynku?
+### <a name="q-does-the-local-emulator-support-encryption-at-rest"></a>Pyt.: Lokalne emulator obsługuje szyfrowanie w spoczynku?
 Odp.: Emulator to autonomiczne narzędzie tworzenia i testowania i nie używa usługi zarządzania kluczami, które używa zarządzanej usługi Cosmos DB. Nasze zalecenie, jest włączenie funkcji BitLocker na dyskach, gdzie będą przechowywane dane testowe poufnych emulatora. [Emulator obsługuje zmiana domyślnego katalogu danych](local-emulator.md) oraz przy użyciu dobrze znanej lokalizacji.
 
 ## <a name="next-steps"></a>Kolejne kroki

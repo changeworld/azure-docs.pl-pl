@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 02091f1b650e3e9932f9924bf36a5841861d3b1e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58876959"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60878855"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>Operacje systemu plików w usłudze Azure Data Lake magazynu Gen1 przy użyciu zestawu .NET SDK
 > [!div class="op_single_selector"]
@@ -47,7 +47,7 @@ Przykładowy kod dostępny [w usłudze GitHub](https://github.com/Azure-Samples/
 
    | Właściwość | Wartość |
    | --- | --- |
-   | Kategoria |Szablony/Visual C#/Windows |
+   | Category |Szablony/Visual C#/Windows |
    | Szablon |Aplikacja konsolowa |
    | Name (Nazwa) |CreateADLApplication |
 

@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: genli
 ms.openlocfilehash: ef6aac0d97c38798f826304475779ea8059875c7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097985"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60848561"
 ---
 # <a name="get-started-creating-an-internal-load-balancer-classic-using-powershell"></a>Wprowadzenie do tworzenia wewnętrznego modułu równoważenia obciążenia (klasycznego) przy użyciu programu PowerShell
 
@@ -30,7 +30,7 @@ ms.locfileid: "53097985"
 [!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
 > [!IMPORTANT]
-> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [model wdrażania przy użyciu usługi Azure Resource Manager i model klasyczny](../azure-resource-manager/resource-manager-deployment-model.md).  Ten artykuł dotyczy klasycznego modelu wdrożenia. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager. Dowiedz się, jak [wykonać te kroki przy użyciu modelu usługi Resource Manager](load-balancer-get-started-ilb-arm-ps.md).
+> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi:  [model wdrażania przy użyciu usługi Resource Manager i model klasyczny](../azure-resource-manager/resource-manager-deployment-model.md).  Ten artykuł dotyczy klasycznego modelu wdrożenia. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager. Dowiedz się, jak [wykonać te kroki przy użyciu modelu usługi Resource Manager](load-balancer-get-started-ilb-arm-ps.md).
 
 [!INCLUDE [load-balancer-get-started-ilb-scenario-include.md](../../includes/load-balancer-get-started-ilb-scenario-include.md)]
 
@@ -44,7 +44,7 @@ Aby utworzyć zestaw wewnętrznego modułu równoważenia obciążenia, a także
 2. Dodaj punkty końcowe odpowiadające maszynom wirtualnym, które będą otrzymywać ruch przychodzący.
 3. Skonfiguruj serwery wysyłające ruch, którego obciążenie ma zostać zrównoważone, aby wysyłały ruch na wirtualny adres IP (VIP) wystąpienia wewnętrznego równoważenia obciążenia.
 
-### <a name="step-1-create-an-internal-load-balancing-instance"></a>Krok 1: utwórz wystąpienie wewnętrznego równoważenia obciążenia
+### <a name="step-1-create-an-internal-load-balancing-instance"></a>Krok 1: Utwórz wystąpienie wewnętrznego równoważenia obciążenia
 
 W przypadku istniejącej usługi w chmurze lub usługi w chmurze wdrożonej w ramach regionalnej sieci wirtualnej można utworzyć wystąpienie wewnętrznego równoważenia obciążenia za pomocą następujących poleceń programu Windows PowerShell:
 
@@ -59,7 +59,7 @@ Add-AzureInternalLoadBalancer -ServiceName $svc -InternalLoadBalancerName $ilb �
 
 Należy zauważyć, że to polecenie cmdlet [Add-AzureEndpoint](https://msdn.microsoft.com/library/dn495300.aspx) programu Windows PowerShell korzysta z zestawu parametrów DefaultProbe. Aby uzyskać więcej informacji na temat dodatkowych zestawów parametrów, zobacz artykuł [Add-AzureEndpoint](https://msdn.microsoft.com/library/dn495300.aspx).
 
-### <a name="step-2-add-endpoints-to-the-internal-load-balancing-instance"></a>Krok 2: dodaj punkty końcowe do wystąpienia wewnętrznego równoważenia obciążenia
+### <a name="step-2-add-endpoints-to-the-internal-load-balancing-instance"></a>Krok 2: Dodaj punkty końcowe do wystąpienia wewnętrznego równoważenia obciążenia
 
 Oto przykład:
 
@@ -75,7 +75,7 @@ $ilb="ilbset"
 Get-AzureVM –ServiceName $svc –Name $vmname | Add-AzureEndpoint -Name $epname -Lbset $lbsetname -Protocol $prot -LocalPort $locport -PublicPort $pubport –DefaultProbe -InternalLoadBalancerName $ilb | Update-AzureVM
 ```
 
-### <a name="step-3-configure-your-servers-to-send-their-traffic-to-the-new-internal-load-balancing-endpoint"></a>Krok 3: skonfiguruj serwery tak, aby przesyłały ruch do nowego punktu końcowego wewnętrznego równoważenia obciążenia
+### <a name="step-3-configure-your-servers-to-send-their-traffic-to-the-new-internal-load-balancing-endpoint"></a>Krok 3: Skonfiguruj serwery tak, aby wysyłały ruch na nowy punkt końcowy wewnętrznego równoważenia obciążenia
 
 Musisz skonfigurować serwery, których obciążenie ruchu ma być równoważone, aby korzystały z nowego adresu IP (VIP) wystąpienia wewnętrznego równoważenia obciążenia. Jest to adres, na którym nasłuchuje wystąpienie wewnętrznego równoważenia obciążenia. W większości przypadków należy po prostu dodać lub zmodyfikować rekord DNS dla adresu VIP wystąpienia wewnętrznego równoważenia obciążenia.
 

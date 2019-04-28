@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/15/2017
 ms.author: yegu
 ms.openlocfilehash: d4b8fd6ccb3fc7cb2627d4bd3e103239181e4d9d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57994385"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60831067"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Jak skonfigurować Obsługa sieci wirtualnej dla usługi Azure Cache w warstwie Premium dla usługi Redis
 Pamięć podręczna systemu Azure dla usługi Redis zawiera pamięci podręcznej różnych ofert, które zapewniają elastyczność przy wyborze rozmiar pamięci podręcznej i funkcji, takich jak funkcje warstwy Premium, takich jak klastrowanie, trwałość i obsługę sieci wirtualnej. Sieć wirtualna jest prywatna sieć w chmurze. Po skonfigurowaniu usługi Azure Cache dla wystąpienia pamięci podręcznej Redis przy użyciu sieci wirtualnej nie jest adresowany publicznie i może zostać oceniony jedynie z maszyn wirtualnych i aplikacji w ramach sieci wirtualnej. W tym artykule opisano sposób konfigurowania obsługi sieci wirtualnej dla warstwy premium usługi Azure Cache dla wystąpienia usługi Redis.
@@ -110,7 +110,7 @@ Istnieje siedem wymagań wychodząca przez port.
 - Trzy porty kierować ruch do punkty końcowe platformy Azure, obsługę usługi Azure Storage i Azure DNS.
 - Pozostałe zakresy portów i komunikacji podsieci wewnętrznej pamięci podręcznej Redis. Nie reguły sieciowej grupy zabezpieczeń w podsieci są wymagane do komunikacji podsieci wewnętrznej pamięci podręcznej Redis.
 
-| Porty | Kierunek | Protokół transportowy | Przeznaczenie | Lokalny adres IP | Zdalny adres IP |
+| Porty | Direction | Protokół transportowy | Przeznaczenie | Lokalny adres IP | Zdalny adres IP |
 | --- | --- | --- | --- | --- | --- |
 | 80, 443 |Wychodzący |TCP |Redis zależności w usłudze Azure Storage/infrastruktury kluczy publicznych (Internet) | (Redis podsieci) |* |
 | 53 |Wychodzący |TCP/UDP |Redis zależności w systemie DNS (Internet/sieć wirtualna) | (Redis podsieci) |* |
@@ -126,7 +126,7 @@ Istnieje siedem wymagań wychodząca przez port.
 
 Ma osiem wymagań zakresu portów przychodzących. Przychodzące żądania w tych zakresach są ruch przychodzący z innych usług hostowanych w tej samej sieci Wirtualnej lub wewnętrznego komunikacja podsieci pamięci podręcznej Redis.
 
-| Porty | Kierunek | Protokół transportowy | Przeznaczenie | Lokalny adres IP | Zdalny adres IP |
+| Porty | Direction | Protokół transportowy | Przeznaczenie | Lokalny adres IP | Zdalny adres IP |
 | --- | --- | --- | --- | --- | --- |
 | 6379, 6380 |Przychodzący |TCP |Komunikacja klienta z pamięci podręcznej Redis, równoważenia obciążenia platformy Azure | (Redis podsieci) | (Redis podsieć), sieć wirtualną, usługa Azure Load Balancer |
 | 8443 |Przychodzący |TCP |Wewnętrzny komunikację z usługą redis Cache | (Redis podsieci) |(Redis podsieci) |

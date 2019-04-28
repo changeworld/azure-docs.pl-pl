@@ -10,11 +10,11 @@ ms.custom: mvc
 ms.date: 03/18/2019
 ms.author: troyhop
 ms.openlocfilehash: 4401d4b93a27e76554368ce72d256b38de61df4c
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286129"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61449063"
 ---
 # <a name="create-an-advanced-device-model"></a>Utwórz model zaawansowanych urządzeń
 
@@ -161,8 +161,8 @@ Pola wymienione w schemacie można się z następujących typów:
 
 * Obiekt - zserializowanym przy użyciu formatu JSON
 * Plik binarny - serializacji przy użyciu base64
-* Tekst
-* Wartość logiczna
+* Text
+* Boolean
 * Liczba całkowita
 * Double
 * DateTime

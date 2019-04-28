@@ -16,16 +16,16 @@ ms.date: 03/15/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5104d630e2b4e97b80a6fedfb6d863061c2722fb
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55810545"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61416341"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-hyper-v"></a>Wdrażanie macierzy wirtualnej StorSimple — Aprowizacja za pomocą funkcji Hyper-V
 ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/hyperv4.png)
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 W tym samouczku opisano, jak wykonać aprowizację rozwiązania StorSimple Virtual Array na komputerze hosta z funkcją Hyper-V w systemie Windows Server 2012 R2, Windows Server 2012 lub Windows Server 2008 R2. Ten artykuł dotyczy wdrożenia macierzach wirtualnych StorSimple w witrynie Azure portal i chmury platformy Microsoft Azure dla instytucji rządowych.
 
 Niezbędne są uprawnienia administratora do aprowizacji i konfigurowanie macierzy wirtualnej. Aprowizacja i wstępna konfiguracja może zająć około 10 minut.

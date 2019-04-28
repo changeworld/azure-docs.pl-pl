@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: spelluru
 ms.openlocfilehash: bb8b5f7d6578390fd0f48c3de154cfdb034ac6c1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59795532"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60777172"
 ---
 # <a name="connect-an-environment-to-your-labs-virtual-network-in-azure-devtest-labs"></a>Środowisko nawiązać połączenie z sieci wirtualnej w środowisku laboratoryjnym w usłudze Azure DevTest Labs
 Usługa Azure DevTest Labs ułatwia tworzenie maszyn wirtualnych w laboratorium obejmującym [wbudowanymi funkcjami sieci](devtest-lab-configure-vnet.md). Ma on dużą elastyczność dzięki możliwości [tworzenie środowisk z wieloma Maszynami wirtualnymi](devtest-lab-test-env.md). W tym artykule przedstawiono sposób łączenia maszyn wirtualnych w środowisku do sieci wirtualnej w laboratorium. Jeden scenariusz, w których możesz korzystać z tej funkcji jest konfigurowanie aplikacji N-warstwowa za pomocą warstwy danych programu SQL Server, który jest podłączony do laboratorium sieć wirtualna umożliwiająca test maszyny wirtualne w laboratorium, aby uzyskać do niego dostęp.  

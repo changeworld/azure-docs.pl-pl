@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: mbullwin
 ms.openlocfilehash: a08a67a78362325e29b1002b44f390a94e78888a
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54028639"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60784881"
 ---
 # <a name="application-performance-monitoring-using-application-insights-for-scom"></a>Monitorowanie wydajności aplikacji za pomocą usługi Application Insights dla oprogramowania SCOM
 Jeśli używasz programu System Center Operations Manager (SCOM) do zarządzania serwerami z można monitorować wydajność i diagnozować problemy z wydajnością za pomocą [usługi Azure Application Insights](../../azure-monitor/app/asp-net.md). Application Insights monitoruje aplikację sieci web przychodzące żądania wychodzące, REST i wywołania SQL, wyjątki i ślady dzienników. Usługa udostępnia pulpity nawigacyjne wykresy metryk i inteligentne alerty, a także zaawansowane wyszukiwanie diagnostyczne i zapytań analitycznych za pośrednictwem tych danych telemetrycznych. 
@@ -74,7 +74,7 @@ Na komputerze, na którym uruchamiasz programu Operations Manager:
      Te ustawienia można zmienić później.
      
      ![Na karcie Ustawienia usługi Application Insights kliknij przycisk "Zaloguj", a następnie podaj swoje poświadczenia konta Microsoft na platformie Azure. Następnie wybierz subskrypcję, grupy zasobów i zasobów.](./media/scom/060.png)
-3. Ukończ pracę kreatora.
+3. Wykonaj kroki kreatora.
    
     ![Kliknięcie pozycji Utwórz](./media/scom/070.png)
 

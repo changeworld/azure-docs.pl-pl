@@ -15,11 +15,11 @@ ms.date: 02/02/2018
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 576627c96b19dd3563ab21a5d478b779e4a3ed64
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53731336"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60838998"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Systemu operacyjnego i środowiska uruchomieniowego poprawki w usłudze Azure App Service
 
@@ -101,5 +101,5 @@ W poniższej tabeli przedstawiono sposób wersji systemu Windows i środowiska u
 
 ## <a name="more-resources"></a>Więcej zasobów
 
-[Centrum zaufania: Zabezpieczenia](https://www.microsoft.com/en-us/trustcenter/security)  
+[Centrum zaufania: zabezpieczenia](https://www.microsoft.com/en-us/trustcenter/security)  
 [64-bitowy platformy ASP.NET Core w usłudze Azure App Service](https://gist.github.com/glennc/e705cd85c9680d6a8f1bdb62099c7ac7)

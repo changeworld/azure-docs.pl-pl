@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/18/2017
 ms.author: ancav
-ms.subservice: autoscale
+ms.component: autoscale
 ms.openlocfilehash: 02840b8a909f46c37130bdb7162674c694a0ff96
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54474833"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60787499"
 ---
 # <a name="understand-autoscale-settings"></a>Omówienie ustawień automatycznego skalowania
 Ustawienia automatycznego skalowania pomóc, upewnij się, że masz odpowiednią ilość zasobów do obsługi zmian obciążenia aplikacji. Można skonfigurować ustawienia automatycznego skalowania wyzwolenie oparciu metryki, które wskazują obciążenia lub wydajności lub wyzwalane w zaplanowanym czasie. Ten artykuł przedstawia szczegółowy widok anatomia ustawienia automatycznego skalowania. Artykuł zaczyna się od schematu i właściwości ustawienia, a następnie przeprowadzi typy innego profilu, które można skonfigurować. Na koniec, w tym artykule omówiono sposób funkcja automatycznego skalowania na platformie Azure ocenia profilu, który można wykonać w dowolnym momencie.
@@ -110,7 +110,7 @@ Aby zilustrować schematu ustawienie skalowania automatycznego, służy następu
 | metricTrigger | timeAggregation | Metoda agregacji używana do agregowania próbkowanych metryk. Na przykład **TimeAggregation = "Average"** powinien zagregowanie próbkowanych metryk przy średniej. W przypadku poprzedniego pobierania dziesięć próbek 1 minutę, a średni je. |
 | zasada | scaleAction | Działanie podejmowane w momencie wyzwolenia metricTrigger reguły. |
 | scaleAction | kierunek | "Zwiększ" do skalowania w poziomie lub "Zmniejsz" do skalowania do wewnątrz.|
-| scaleAction | wartość | Ile, aby zwiększyć lub zmniejszyć wydajność zasobu. |
+| scaleAction | value | Ile, aby zwiększyć lub zmniejszyć wydajność zasobu. |
 | scaleAction | ochładzania | Ilość czasu oczekiwania po zakończeniu operacji skalowania przed ponownym skalowaniem. Na przykład jeśli **ochładzania = "PT10M"**, automatycznego skalowania nie jest podejmowana próba skalowania ponownie dla innego 10 minut. Ochładzania jest umożliwienie metryk w celu stabilizacji po dodawania lub usuwania wystąpień. |
 
 ## <a name="autoscale-profiles"></a>Profile automatycznego skalowania
@@ -310,4 +310,3 @@ Więcej informacji na temat automatycznego skalowania, odwołując się do nast�
 * [Najlepsze rozwiązania dotyczące skalowania automatycznego usługi Azure Monitor](../../azure-monitor/platform/autoscale-best-practices.md)
 * [Użyj akcji skalowania automatycznego, aby wysyłać wiadomości e-mail i elementy webhook powiadomienia o alertach](../../azure-monitor/platform/autoscale-webhook-email.md)
 * [Interfejs API REST automatycznego skalowania](https://msdn.microsoft.com/library/dn931953.aspx)
-
