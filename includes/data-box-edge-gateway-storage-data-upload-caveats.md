@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 02/21/2019
 ms.author: alkohli
 ms.openlocfilehash: 8c87e14071b3bb40421ab655c172df739570e295
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56660315"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60755214"
 ---
 Następujące zastrzeżenia stosowane do danych, kiedy przesuwa się on na platformie Azure.
 

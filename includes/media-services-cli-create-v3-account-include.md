@@ -9,11 +9,11 @@ ms.date: 02/21/2019
 ms.author: juliako
 ms.custom: include file
 ms.openlocfilehash: 79af6512e9ce3d3f897be216ee3626c5d4fbcf1d
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56740744"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60733894"
 ---
 ## <a name="create-a-media-services-account"></a>Tworzenie konta usługi Media Services
 
@@ -33,7 +33,7 @@ Podczas tworzenia konta usługi Media Services musisz podać nazwę zasobu konta
 
 Musisz mieć jedno **główne** konto magazynu i możesz mieć dowolną liczbę **dodatkowych** kont magazynu skojarzonych z Twoim kontem usługi Media Services. Usługa Media Services obsługuje konta **Ogólnego przeznaczenia, wersja 2** (GPv2) i **Ogólnego przeznaczenia, wersja 1** (GPv1). Konta tylko obiektów blob nie są dozwolone jako **główne**. Jeśli chcesz dowiedzieć się więcej o kontach magazynu, zobacz [Opcje konta usługi Azure Storage](../articles/storage/common/storage-account-options.md). 
 
-W tym przykładzie utworzymy ogólnego przeznaczenia w wersji 2, konta Standard LRS. Jeśli chcesz poeksperymentować z kontami magazynu, użyj `--sku Standard_LRS`. Jednak podczas wybierania jednostki SKU w środowisku produkcyjnym należy rozważyć, `--sku Standard_RAGRS`, zapewniającą replikacji geograficznej dla ciągłości działania. Aby uzyskać więcej informacji, zobacz [kont magazynu](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest).
+W tym przykładzie utworzymy konto ogólnego przeznaczenia w wersji 2 magazynu LRS w warstwie Standardowa. Jeśli chcesz poeksperymentować z kontami magazynu, użyj parametru `--sku Standard_LRS`. Jednak podczas wybierania jednostki SKU dla środowiska produkcyjnego weź pod uwagę użycie parametru `--sku Standard_RAGRS`, co zapewnia replikację geograficzną na potrzeby zapewnienia ciągłości działania. Aby uzyskać więcej informacji, zobacz temat [Konta magazynu](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest).
  
 Poniższe polecenie tworzy konto usługi Storage, które ma zostać skojarzone z kontem usługi Media Services. W poniższym skrypcie możesz zastąpić wartość `storageaccountforams` swoją wartością. Nazwa konta musi mieć długość mniejszą niż 24.
 

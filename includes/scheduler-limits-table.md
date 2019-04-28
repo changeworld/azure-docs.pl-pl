@@ -9,15 +9,15 @@ ms.date: 08/16/2016
 ms.author: deli
 ms.custom: include file
 ms.openlocfilehash: b3788ede23a423bebf96661ea88b227bfb5fdf4c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553873"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60531281"
 ---
 W poniższej tabeli opisano każdy z głównych przydziały, limity, wartości domyślne i ograniczenia w usłudze Azure Scheduler.
 
-| Zasób | Opis elementu limit |
+| Resource | Opis elementu limit |
 | -------- | ----------------- |
 | **Rozmiar zadania** | Maksymalny rozmiar zadania to 16 000. Jeśli operacja PATCH lub PUT powoduje przekracza ten limit rozmiaru zadania, 400 Niewłaściwe żądanie zwróciła kod stanu. | 
 | **Kolekcje zadań** | Maksymalna liczba kolekcji zadań na subskrypcję platformy Azure wynosi 200 000. | 

@@ -9,14 +9,14 @@ ms.date: 09/15/2018
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 06e6e491fa1e9a047527efb78149855b125771ef
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49960270"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60543790"
 ---
 # <a name="back-up-azure-unmanaged-vm-disks-with-incremental-snapshots"></a>Tworzenie kopii zapasowej Azure niezarządzanych dysków maszyn wirtualnych przy użyciu migawek przyrostowych
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Usługa Azure Storage zapewnia możliwość robienia migawek obiektów blob. Migawki przechwytują stan obiektu blob w danym momencie. W tym artykule opisano scenariusz, w którym można zachować kopii zapasowych dysków maszyny wirtualnej przy użyciu migawek. Możesz użyć tej metody, możesz zrezygnować z używania usługi Azure Backup i Recovery Service, gdy chcesz utworzyć niestandardowe strategii tworzenia kopii zapasowych dysków maszyny wirtualnej.
 
 Dyski maszyny wirtualnej platformy Azure są przechowywane jako stronicowe obiekty BLOB w usłudze Azure Storage. Ponieważ firma Microsoft zawierająca opis strategii tworzenia kopii zapasowej dla dysków maszyny wirtualnej, w tym artykule nazywamy migawki w kontekście stronicowych obiektów blob. Aby dowiedzieć się więcej na temat migawek, zobacz [Tworzenie migawki obiektu Blob](https://docs.microsoft.com/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob).
@@ -58,7 +58,7 @@ Pod warunkiem, że są spełnione następujące warunki,
 * Obiekt blob został utworzony w sty-1-2016 lub nowszym.
 * Obiekt blob nie został zastąpiony [PutPage](https://docs.microsoft.com/rest/api/storageservices/Put-Page) lub [obiektu Blob kopiowania](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) między dwiema migawkami.
 
-**Uwaga**: Ta funkcja jest dostępna w wersji Premium i standardowa usługi Azure BLOB typu Page.
+**Uwaga**: Ta funkcja jest dostępna dla wersji Premium i standardowa usługi Azure stronicowe obiekty BLOB.
 
 W przypadku strategii tworzenia kopii zapasowej niestandardowych przy użyciu migawek Kopiowanie migawki z jednego konta magazynu do innego może działać powoli i może używać dużej ilości miejsca do magazynowania. Zamiast kopiować całą migawkę do konta magazynu kopii zapasowej, można napisać różnią się kolejne migawki kopii zapasowej stronicowy obiekt blob. W ten sposób znacznie zmniejszyć czas do skopiowania i miejsce do przechowywania kopii zapasowych.
 

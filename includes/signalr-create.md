@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/17/2018
 ms.author: wesmc
 ms.custom: include file
-ms.openlocfilehash: c26e2de2c492c51c35527979ef0450ed7c2de499
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
-ms.translationtype: HT
+ms.openlocfilehash: 57407606214d8d3a305476cfbfdabca9eee937e8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37100831"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60690318"
 ---
 1. Aby utworzyć nowy zasób usługi Azure SignalR Service, najpierw zaloguj się do [witryny Azure Portal](https://portal.azure.com). W lewej górnej części strony kliknij polecenie **+ Utwórz zasób**. W polu tekstowym **Przeszukaj witrynę Marketplace** wpisz ciąg **SignalR Service** i naciśnij klawisz **Enter**.
 

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 51e1fd18b52d7e215ba43be540156199fb41778e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55889764"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60482734"
 ---
 #### <a name="to-attach-the-sas-cables"></a>Aby dołączyć kabli SAS
 1. Zidentyfikuj podstawowe i obudowy EBOD. Dwie obudowy, można zidentyfikować, analizując ich odpowiednich płaszczyznach Wstecz. Zobacz poniższy obraz, aby uzyskać wskazówki. 
@@ -18,7 +18,7 @@ ms.locfileid: "55889764"
    
     **Tworzenie kopii widoku podstawowych i obudowy EBOD**
    
-   | Etykieta | Opis |
+   | Label | Opis |
    |:--- |:--- |
    | 1 |Podstawowy obudowy |
    | 2 |Obudowa EBOD |
@@ -28,7 +28,7 @@ ms.locfileid: "55889764"
    
     **Lokalizacja nalepkę numer seryjny**
    
-   | Etykieta | Opis |
+   | Label | Opis |
    |:--- |:--- |
    | 1 |Wyczyść obudowa |
 3. Za pomocą podanego kabli SAS obudowy EBOD połączyć się z podstawowym obudowy w następujący sposób:
@@ -41,7 +41,7 @@ ms.locfileid: "55889764"
       
       **Sygnatury dostępu Współdzielonego okablowania**
       
-      | Etykieta | Opis |
+      | Label | Opis |
       |:--- |:--- |
       | A |Podstawowy obudowy |
       | B |Obudowa EBOD |

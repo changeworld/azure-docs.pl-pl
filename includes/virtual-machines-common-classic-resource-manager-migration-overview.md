@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/18/2018
 ms.author: jeconnoc
 ms.custom: include file
-ms.openlocfilehash: d1a6ff8dbd17d2792709a1ce065bcf793154e585
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: ca4063d31d93aab3814abed202b6b91b7726185f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37780676"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60542940"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Obsługiwane platformy migracji zasobów rozwiązania IaaS z wersji klasycznej do usługi Azure Resource Manager
 W tym artykule opisano sposób migracji infrastruktury jako zasoby usługi (IaaS) z klasycznego modelu wdrażania usługi Resource Manager i szczegółowe informacje, jak połączyć zasoby z dwa modele wdrażania, które współistnieć w subskrypcji przy użyciu sieci wirtualnej bramy lokacja lokacja. Przeczytaj więcej o [funkcje usługi Azure Resource Manager i korzyści](../articles/azure-resource-manager/resource-group-overview.md). 
@@ -28,10 +28,10 @@ Te klasycznych zasobów IaaS są obsługiwane podczas migracji
 
 * Maszyny wirtualne
 * Zestawy dostępności
-* Cloud Services z maszynami wirtualnymi
+* Usługi Cloud Services i Virtual Machines
 * Konta magazynu
 * Sieci wirtualne
-* Bramy VPN Gateway
+* Bramy sieci VPN
 * Express Route bram _(w tej samej subskrypcji co sieć wirtualną tylko)_
 * Grupy zabezpieczeń sieci
 * Tabele tras

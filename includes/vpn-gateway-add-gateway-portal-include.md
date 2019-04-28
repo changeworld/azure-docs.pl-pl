@@ -9,11 +9,11 @@ ms.date: 10/24/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 35f987f26ce47c19e3d5eb1ca5d2bb32d0c7ad1b
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53444292"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60407807"
 ---
 1. Na stronie portalu po lewej kliknij pozycję **+** i wpisz tekst „brama sieci wirtualnej” w polu wyszukiwania. W obszarze **Wyniki** zlokalizuj i kliknij pozycję **Brama sieci wirtualnej**.
 2. U dołu strony „Brama sieci wirtualnej” kliknij pozycję **Utwórz**. Spowoduje to otwarcie strony **Tworzenie bramy sieci wirtualnej**.
@@ -22,9 +22,9 @@ ms.locfileid: "53444292"
     ![Pola strony Tworzenie bramy sieci wirtualnej](./media/vpn-gateway-add-gateway-portal-include/create-gateway.png "Nowa brama")
 
    - **Nazwa**: Nazwa bramy. Nie chodzi o nazwę podsieci bramy. Jest to nazwa obiektu bramy, który zostanie utworzony.
-   - **Typ bramy**: Wybierz **VPN**. Bramy sieci VPN używają typu bramy sieci wirtualnej **Sieć VPN**. 
+   - **Typ bramy**: wybierz pozycję **VPN**. Bramy sieci VPN używają typu bramy sieci wirtualnej **Sieć VPN**. 
    - **Typ sieci VPN**: Wybierz typ sieci VPN, który jest określony dla danej konfiguracji. Większość konfiguracji wymaga zastosowania typu sieci VPN opartego na trasach.
-   - **JEDNOSTKA SKU**: Wybierz jednostkę SKU bramy z listy rozwijanej. Jednostki SKU wymienione na liście rozwijanej zależą od wybranego typu sieci VPN. Więcej informacji o jednostkach SKU bramy zawiera artykuł [Gateway SKUs](../articles/vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsku) (Jednostki SKU bramy).
+   - **SKU**: Wybierz jednostkę SKU bramy z listy rozwijanej. Jednostki SKU wymienione na liście rozwijanej zależą od wybranego typu sieci VPN. Więcej informacji o jednostkach SKU bramy zawiera artykuł [Gateway SKUs](../articles/vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsku) (Jednostki SKU bramy).
 
      Ustawienie **Włącz tryb aktywny-aktywny** wybierz tylko wtedy, gdy tworzysz konfigurację bramy typu aktywne-aktywne. W przeciwnym razie pozostaw to ustawienie niewybrane.
    - **Lokalizacja**: Może być konieczne przewinięcie w celu wyświetlenia lokalizacji. Dostosuj pole **Lokalizacja**, aby wskazywało miejsce, w którym znajduje się sieć wirtualna. Na przykład: Zachodnie stany USA. Jeśli lokalizacja nie wskazuje regionu, w którym znajduje się Twoja sieć wirtualna, sieć ta nie będzie widoczna na liście rozwijanej po wybraniu sieci wirtualnej w następnym kroku.

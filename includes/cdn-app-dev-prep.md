@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/21/2018
 ms.author: mazha
 ms.openlocfilehash: 7f80c8f1773cfeb8ddfb222d068a5c6571c2e5c7
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52331297"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60564241"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 Przed napisaniem kodu zarządzania sieci CDN, należy wykonać kilka operacji przygotowania, aby włączyć kod do interakcji z usługą Azure Resource Manager. Aby zrobić to przygotowanie, należy:
@@ -32,7 +32,7 @@ Przed napisaniem kodu zarządzania sieci CDN, należy wykonać kilka operacji pr
     ![Nazwy grupy zasobów](./media/cdn-app-dev-prep/cdn-subscription-id-include.png)
 
 ### <a name="creating-the-azure-ad-application-and-applying-permissions"></a>Tworzenie aplikacji usługi Azure AD i stosowanie uprawnień
-Istnieją dwa podejścia do uwierzytelniania aplikacji za pomocą usługi Azure Active Directory: poszczególnych użytkowników lub ta jednostka usługi. Jednostki usługi jest podobny do konta usługi w Windows.  A nie konkretnego użytkownika uprawnień do interakcji z profilów CDN, są zamiast tego uprawnienia do jednostki usługi.  Nazwy główne usług są zwykle używane do automatycznego, nieinterakcyjnych procesów.  Mimo że w tym samouczku zapisuje aplikację konsoli interaktywnej, skupimy się na temat podejścia do nazwy głównej usługi.
+Istnieją dwa podejścia do uwierzytelniania aplikacji za pomocą usługi Azure Active Directory: Poszczególnych użytkowników lub jednostki usługi. Jednostki usługi jest podobny do konta usługi w Windows.  A nie konkretnego użytkownika uprawnień do interakcji z profilów CDN, są zamiast tego uprawnienia do jednostki usługi.  Nazwy główne usług są zwykle używane do automatycznego, nieinterakcyjnych procesów.  Mimo że w tym samouczku zapisuje aplikację konsoli interaktywnej, skupimy się na temat podejścia do nazwy głównej usługi.
 
 Tworzenie nazwy głównej usługi składa się z kilku kroków w tym tworzenie aplikacji usługi Azure Active Directory.  Aby go utworzyć, którą zamierzamy [wykonaj kroki tego samouczka](../articles/active-directory/develop/howto-create-service-principal-portal.md).
 

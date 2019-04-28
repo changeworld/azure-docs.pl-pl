@@ -13,7 +13,7 @@ ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/23/2019
-ms.locfileid: "60187693"
+ms.locfileid: "60418658"
 ---
 Jeśli napotkasz problemy podczas wykonywania jakichkolwiek operacji na galeriach obrazów udostępnionych, definicjach obrazów i wersjach obrazów, uruchom ponownie w trybie debugowania polecenie powodujące niepowodzenie. Tryb debugowania jest aktywowana przez przekazanie **— debugowania** przełączyć się z interfejsem wiersza polecenia i **-Debug** Przełącz przy użyciu programu PowerShell. Po zlokalizowaniu błąd, postępuj zgodnie z tym dokumentem, aby rozwiązać problemy z błędami.
 
@@ -69,7 +69,7 @@ Aby zobaczyć, jeśli jest obsługiwany region źródła zamierzony, należy uż
 
 | Tworzenie galerii w lub "region źródła"   | Replikacja wersji lub "region docelowy" |
 |----------------------------------------|-------------------------------------------|
-| Zachodnio-środkowe stany USA                        | Wszystkie regiony w chmurze publicznej platformy Azure            |
+| Środkowo-zachodnie stany USA                        | Wszystkie regiony w chmurze publicznej platformy Azure            |
 | Środkowo-południowe stany USA                       |                                           |
 | Wschodnie stany USA 2                              |                                           |
 | Azja Południowo-Wschodnia                         |                                           |

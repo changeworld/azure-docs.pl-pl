@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: nitinme
 ms.openlocfilehash: fccc036a5e0422508f7ebc3370a4b5faa5176dc2
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572493"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60527914"
 ---
 Bing obsługuje wyróżnianie, która oznacza terminów zapytania trafień (lub inne warunki tego Bing znajduje odpowiednich) ciągów wyświetlania niektórych odpowiedzi. Na przykład strony sieci Web firmy `name`, `displayUrl`, i `snippet` pola może oznaczyć terminów zapytania.
 
@@ -25,28 +25,28 @@ Jeśli `textDecorations` jest **true**, Bing może obejmować następujące znac
 
 |Unicode|HTML|Opis
 |-|-|-
-|U + E000|\<b >|Oznacza początek wyrażenia kwerendy (wyróżnianie trafień)
-|U + E001|\</b >|Oznacza koniec wyszukiwanego terminu
-|U + E002|\<Czy mogę >|Oznacza początek kursywą zawartości 
-|U + E003|\</i >|Oznacza koniec zawartości kursywą
-|U + E004|\<br / >|Znaki końca wiersza
-|U + E005||Oznacza początek numeru telefonu
-|U + E006||Oznacza koniec numeru telefonu
-|U + E007||Oznacza początek adresu
-|U + E008||Oznacza koniec adresu
-|U + E009|\&nbsp;|Oznacza spacja nierozdzielająca
-|U + E00C|\<strong >|Oznacza początek bold zawartości
-|U + E00D|\</ strong >|Oznacza koniec zawartości pogrubienia
-|U + E00E||Oznacza początek zawartości, w których tło powinny być cieńszego niż jego otaczającego tła
-|U + E00F||Oznacza koniec zawartości, w których tło powinny być cieńszego niż jego otaczającego tła
-|U + E010||Oznacza początek zawartości, w których tło powinny być ciemniejsze od jego otaczającego tła
-|U + E011||Oznacza koniec zawartości, w których tło powinny być ciemniejsze od jego otaczającego tła
-|U + E012|\<del >|Oznacza początek zawartości, która powinna być przekreślone
-|U + E013|\</ del >|Oznacza koniec zawartości, która powinna być przekreślone
-|U + E016|\<Sub >|Oznacza początek zawartości indeksu dolnego
-|U + E017|\</ Sub->|Oznacza koniec zawartości indeksu dolnego
-|U + E018|\<sup >|Oznacza początek superscript zawartości
-|U + E019|\</ sup >|Oznacza koniec superscript zawartości
+|U+E000|\<b>|Oznacza początek wyrażenia kwerendy (wyróżnianie trafień)
+|U+E001|\</b>|Oznacza koniec wyszukiwanego terminu
+|U+E002|\<i>|Oznacza początek kursywą zawartości 
+|U+E003|\</i>|Oznacza koniec zawartości kursywą
+|U+E004|\<br/>|Znaki końca wiersza
+|U+E005||Oznacza początek numeru telefonu
+|U+E006||Oznacza koniec numeru telefonu
+|U+E007||Oznacza początek adresu
+|U+E008||Oznacza koniec adresu
+|U+E009|\&nbsp;|Oznacza spacja nierozdzielająca
+|U+E00C|\<strong>|Oznacza początek bold zawartości
+|U+E00D|\</ strong >|Oznacza koniec zawartości pogrubienia
+|U+E00E||Oznacza początek zawartości, w których tło powinny być cieńszego niż jego otaczającego tła
+|U+E00F||Oznacza koniec zawartości, w których tło powinny być cieńszego niż jego otaczającego tła
+|U+E010||Oznacza początek zawartości, w których tło powinny być ciemniejsze od jego otaczającego tła
+|U+E011||Oznacza koniec zawartości, w których tło powinny być ciemniejsze od jego otaczającego tła
+|U+E012|\<del>|Oznacza początek zawartości, która powinna być przekreślone
+|U+E013|\</del>|Oznacza koniec zawartości, która powinna być przekreślone
+|U+E016|\<sub>|Oznacza początek zawartości indeksu dolnego
+|U+E017|\</ Sub->|Oznacza koniec zawartości indeksu dolnego
+|U+E018|\<sup>|Oznacza początek superscript zawartości
+|U+E019|\</ sup >|Oznacza koniec superscript zawartości
 
 W poniższym przykładzie przedstawiono `Computation` odpowiedź, która zawiera indeksu dolnego znaczniki log(2) wyszukiwanego terminu. `expression` Pole zawiera znaczników tylko wtedy, gdy `textDecoration` jest **true**.
 

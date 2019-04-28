@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
 ms.openlocfilehash: b275a86f8fd35c43865fd920d1bfc9994a796a9c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59804788"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60557160"
 ---
 >[!NOTE]
 >Dla zasobów, które nie są rozwiązywane Otwórz bilet pomocy technicznej, aby poprosić o zwiększenie limitów przydziału. Nie twórz dodatkowych kont usługi Azure Media Services w celu podjęcia próby uzyskania wyższych limitów.
 
-| Zasób | Limit domyślny | 
+| Resource | Limit domyślny | 
 | --- | --- | 
 | Konta platformy Azure Media Services w ramach jednej subskrypcji | 25 (stały) |
 | Zarezerwowane multimediów jednostek na konto usługi Media Services |25 (S1)<br/>10 (S2, S3)<sup>1</sup> | 

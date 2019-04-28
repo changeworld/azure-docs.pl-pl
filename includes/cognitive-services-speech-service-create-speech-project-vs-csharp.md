@@ -4,16 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/13/2018
 ms.author: wolfma
-ms.openlocfilehash: 7a028f65467c517be59be6f0c6d2c45ef9a7685e
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: afe6f1493c7fa8272c67f23d6708ad6e4eea9381
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51285767"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60619780"
 ---
 1. Uruchom program Visual Studio 2017.
 
-1. Na pasku menu w programie Visual Studio wybierz pozycję **Narzędzia > Pobierz narzędzia** i upewnij się, że jest dostępne obciążenie **Programowanie aplikacji klasycznych dla platformy .NET**. Jeśli to obciążenie nie zostało zainstalowane, zaznacz to pole wyboru, a następnie kliknij przycisk **Modyfikuj**, aby rozpocząć instalację. Pobranie i zainstalowanie tego składnika może potrwać kilka minut.
+1. Na pasku menu w programie Visual Studio wybierz **Narzędzia > Pobierz narzędzia** i upewnij się, że **programowanie aplikacji klasycznych dla platformy .NET** obciążenie jest dostępne. Jeśli to obciążenie nie zostało zainstalowane, zaznacz to pole wyboru, a następnie kliknij przycisk **Modyfikuj**, aby rozpocząć instalację. Pobranie i zainstalowanie tego składnika może potrwać kilka minut.
 
    Jeśli pole wyboru **Programowanie aplikacji klasycznych dla platformy .NET** jest zaznaczone, możesz teraz zamknąć to okno dialogowe.
 

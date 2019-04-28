@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/13/2018
 ms.author: nitinme
 ms.openlocfilehash: eedfd4e3b46a104fdfeed84034536e98b4c6ddaa
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50973908"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60513974"
 ---
 > [!NOTE] 
-> Nowe usługi rozpoznawania mowy i zestawu SDK jest wymiana rozpoznawania mowy Bing, które nie będą już działać uruchamianie 15 października 2019 r. Aby uzyskać informacje na przełączenie do usługi rozpoznawania mowy, zobacz [migracji z rozpoznawania mowy Bing z usługą mowy](../articles/cognitive-services/Speech-Service/how-to-migrate-from-bing-speech.md).
+> Nowa usługa Speech Service i zestaw SDK zastępują funkcję rozpoznawania mowy Bing, która przestanie działać 15 października 2019 r. Aby uzyskać informacje na przełączenie do usługi rozpoznawania mowy, zobacz [migracji z rozpoznawania mowy Bing z usługą mowy](../articles/cognitive-services/Speech-Service/how-to-migrate-from-bing-speech.md).

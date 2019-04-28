@@ -9,11 +9,11 @@ ms.date: 03/27/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: b2549abd3a4f87de99efa9a916e39b99c6fc8747
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58616483"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60457898"
 ---
 1. Przejdź do strony wirtualne sieci WAN. Jest jednym ze sposobów, aby przejść do strony, aby przejść do **wszystkich usług**, a następnie wyszukaj wirtualne sieci WAN.
 1. Kliknij polecenie **+Dodaj**, aby otworzyć stronę **Tworzenie sieci WAN**.

@@ -8,42 +8,42 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: a79184a5e08aa43a4675194adf5f10b9807418db
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 52084b065ef65a69a6691b6646d1e199f011910d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36329556"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60419603"
 ---
 ### <a name="gwipnoconnection"></a> Aby zmodyfikować adres IP bramy sieci lokalnej — Brak połączenia bramy
 
 Użyj przykładu, aby zmodyfikować bramę sieci lokalnej bez połączenia bramy. Podczas modyfikowania tej wartości możesz również zmodyfikować prefiksy adresów.
 
-1. Dla zasobu bramy sieci lokalnej w **ustawienia** kliknij **konfiguracji**.
-2. W **adres IP** zmodyfikuj adres IP.
+1. W zasobie bramy sieci lokalnej w **ustawienia** kliknij **konfiguracji**.
+2. W **adresu IP** zmodyfikuj adres IP.
 3. Kliknij polecenie **Zapisz**, aby zapisać ustawienia.
 
-### <a name="gwipwithconnection"></a>Aby zmodyfikować adres IP bramy sieci lokalnej - istniejące połączenie z bramą
+### <a name="gwipwithconnection"></a>Aby zmodyfikować adresu IP bramy sieci lokalnej — istniejące połączenie bramy
 
-Aby zmodyfikować bramy sieci lokalnej, która ma połączenie, należy najpierw usunąć połączenie. Po usunięciu połączenia możesz zmodyfikować adres IP bramy i ponownie utworzyć nowe połączenie. Jednocześnie możesz również zmodyfikować prefiksy adresów. Spowoduje to pewien przestój połączenia sieci VPN. W przypadku modyfikowania adresu IP bramy nie musisz usuwać bramy sieci VPN. Musisz usunąć tylko połączenie.
+Aby zmodyfikować bramę sieci lokalnej, która ma połączenie, musisz najpierw usunąć połączenie. Po usunięciu połączenia możesz zmodyfikować adres IP bramy i ponownie utworzyć nowe połączenie. Jednocześnie możesz również zmodyfikować prefiksy adresów. Spowoduje to pewien przestój połączenia sieci VPN. W przypadku modyfikowania adresu IP bramy nie musisz usuwać bramy sieci VPN. Musisz usunąć tylko połączenie.
  
 #### <a name="1-remove-the-connection"></a>1. Usuń połączenie.
 
-1. Dla zasobu bramy sieci lokalnej w **ustawienia** kliknij **połączenia**.
-2. Kliknij przycisk **...**  w wierszu dla połączenia, następnie kliknij przycisk **usunąć**.
-3. Kliknij przycisk **zapisać** Aby zapisać ustawienia.
+1. W zasobie bramy sieci lokalnej w **ustawienia** kliknij **połączeń**.
+2. Kliknij przycisk **...**  w wierszu dla połączenia, następnie kliknij przycisk **Usuń**.
+3. Kliknij przycisk **Zapisz** można zapisać ustawień.
 
-#### <a name="2-modify-the-ip-address"></a>2. Zmodyfikuj adres IP.
+#### <a name="2-modify-the-ip-address"></a>2. Modyfikowanie adresu IP.
 
 Jednocześnie możesz również zmodyfikować prefiksy adresów.
 
-1. W **adres IP** zmodyfikuj adres IP.
+1. W **adresu IP** zmodyfikuj adres IP.
 2. Kliknij polecenie **Zapisz**, aby zapisać ustawienia.
 
-#### <a name="3-recreate-the-connection"></a>3. Utwórz ponownie połączenie.
+#### <a name="3-recreate-the-connection"></a>3. Ponowne utworzenie połączenia.
 
-1. Przejdź do bramy sieci wirtualnej sieci wirtualnej. (Nie bramy sieci lokalnej.)
-2. W bramie sieci wirtualnej w **ustawienia** kliknij **połączenia**.
+1. Przejdź do bramy sieci wirtualnej dla sieci wirtualnej. (Nie brama sieci lokalnej.)
+2. Na bramy sieci wirtualnej w **ustawienia** kliknij **połączeń**.
 3. Kliknij przycisk **+ Dodaj** otworzyć **Dodaj połączenie** bloku.
 4. Utwórz ponownie połączenie.
 5. Kliknij przycisk **OK** do utworzenia połączenia.

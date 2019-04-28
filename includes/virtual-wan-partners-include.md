@@ -9,11 +9,11 @@ ms.date: 03/04/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: de9bc91e438ff694c96966486908c54562e93902
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57410374"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60459855"
 ---
 Możesz sprawdzić linki w tej sekcji, aby uzyskać więcej informacji o usługach oferowanych przez partnerów. Jeśli partner urządzenia gałęzi nie znajduje się w dalszej części tego artykułu, należy mieć dostawcą urządzenia gałęzi, skontaktuj się z nami. Kontaktowania się z nami, wysyłając wiadomość e-mail na adres azurevirtualwan@microsoft.com.
 

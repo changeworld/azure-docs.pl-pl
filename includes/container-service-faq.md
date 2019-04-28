@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
 ms.openlocfilehash: f903828285b0d4fdc8fbd932fa7c85056e937481
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56213137"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60510554"
 ---
 # <a name="deprecated-container-service-frequently-asked-questions"></a>(PRZESTARZAŁE) Często zadawane pytania dotyczące usługi Container Service
 
@@ -117,7 +117,7 @@ Istnieją znane problemy z usługą DNS w systemie Windows, dla których poprawk
 | Dostęp do adresu VIP usługi nie działa | Skonfiguruj element [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) tak, aby zawsze był uruchomiony jeden normalny (nieuprzywilejowany) zasobnik |
 |Gdy węzeł, na którym działa kontener, staje się niedostępny, zapytania DNS mogą kończyć się niepowodzeniem dającym w efekcie „ujemny wpis pamięci podręcznej”. | Uruchom następujące polecenia wewnątrz kontenerów, których to dotyczy: <ul><li> `New-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters' -Name MaxCacheTtl -Value 0 -Type DWord`</li><li>`New-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters' -Name MaxNegativeCacheTtl -Value 0 -Type DWord`</li><li>`Restart-Service dnscache` </li></ul><br> Jeśli to nie rozwiąże problemu, spróbuj całkowicie wyłączyć buforowanie DNS: <ul><li>`Set-Service dnscache -StartupType disabled`</li><li>`Stop-Service dnscache`</li></ul> |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Dowiedz się więcej](../articles/container-service/kubernetes/container-service-intro-kubernetes.md) o usłudze Azure Container Service.
 * Wdrażanie klastra usługi kontenera przy użyciu [portalu](../articles/container-service/dcos-swarm/container-service-deployment.md) lub [interfejsu wiersza polecenia platformy Azure](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md).
