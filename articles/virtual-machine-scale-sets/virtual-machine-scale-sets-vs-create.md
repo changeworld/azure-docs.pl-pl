@@ -17,18 +17,18 @@ ms.topic: article
 ms.date: 03/13/2017
 ms.author: manayar
 ms.openlocfilehash: 3d472aeaae7e7f02eba58aadea1df042d6c0f27b
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741432"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62108068"
 ---
 # <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>Jak utworzyć zestaw skalowania maszyn wirtualnych z programem Visual Studio
 W tym artykule przedstawiono sposób wdrażania maszyny wirtualnej zestawu skalowania platformy Azure przy użyciu programu Visual Studio wdrożenia grupy zasobów.
 
 [Usługa Azure Virtual Machine Scale Sets](https://azure.microsoft.com/blog/azure-vm-scale-sets-public-preview/) jest zasobem usługi Azure Compute, wdrażanie i zarządzanie kolekcją podobne maszyny wirtualne z automatycznego skalowania i równoważenia obciążenia. Można aprowizować i wdrażać za pomocą programu Virtual Machine Scale Sets [szablonów usługi Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates). Szablony usługi Azure Resource Manager można wdrożyć przy użyciu interfejsu wiersza polecenia platformy Azure, programu PowerShell, REST, a także bezpośrednio z programu Visual Studio. Program Visual Studio udostępnia zestaw przykładowych szablonów, które można wdrożyć jako część projektu wdrożenia grupy zasobów platformy Azure.
 
-Wdrożenia grupy zasobów platformy Azure to sposób grupowania i opublikować zestaw powiązanych zasobów platformy Azure w ramach operacji pojedynczego wdrożenia. Można uzyskać więcej informacji o nich tutaj: [tworzenie i wdrażanie grup zasobów platformy Azure za pomocą programu Visual Studio](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
+Wdrożenia grupy zasobów platformy Azure to sposób grupowania i opublikować zestaw powiązanych zasobów platformy Azure w ramach operacji pojedynczego wdrożenia. Więcej informacji o nich można znaleźć tutaj: [Tworzenie i wdrażanie grup zasobów platformy Azure za pomocą programu Visual Studio](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
 
 ## <a name="pre-requisites"></a>Wymagania wstępne
 Aby rozpocząć wdrażanie zestawów skalowania maszyn wirtualnych w programie Visual Studio, potrzebne są następujące elementy:
@@ -84,12 +84,12 @@ Moduł równoważenia obciążenia umożliwia podłączenie do wystąpień maszy
 
 5. Teraz klikaj polecenie **Wdróż**. **Dane wyjściowe** okno pokazuje postęp wdrażania. Należy zauważyć, że akcja jest wykonywana **AzureResourceGroup.ps1 Wdróż** skryptu.
    
-   ![Okno danych wyjściowych][output_window]
+   ![Okno wyniku][output_window]
 
 ## <a name="exploring-your-virtual-machine-scale-set"></a>Eksplorowanie zestawu skalowania maszyn wirtualnych
 Po zakończeniu wdrożenia można wyświetlać nowego zestawu skalowania maszyn wirtualnych w programie Visual Studio **programu Cloud Explorer** (odświeżenie listy). Eksplorator chmury umożliwia zarządzanie zasobami platformy Azure w programie Visual Studio podczas tworzenia aplikacji. Można również wyświetlić zestawie skalowania maszyn wirtualnych w [witryny Azure portal](https://portal.azure.com) i [Eksploratora zasobów Azure](https://resources.azure.com/).
 
-![Eksplorator chmury][cloud_explorer]
+![Cloud Explorer][cloud_explorer]
 
  Portal zawiera najlepszym sposobem wizualnie zarządzających infrastrukturą platformy Azure za pomocą przeglądarki sieci web, gdy Eksploratora zasobów Azure umożliwia łatwe Eksplorowanie i debugować zasobów platformy Azure, zapewniając okna w widoku"wystąpienia" i również wyświetlanie poleceń programu PowerShell dla zasobów przeglądasz.
 

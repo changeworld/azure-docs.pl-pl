@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 04/21/2019
 ms.author: juliako
-ms.openlocfilehash: c9254c8dd629230a549dd95aba9afbd932746007
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 90af9d40f797e493696d52e4cd744b99e3b57911
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58886458"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62104126"
 ---
 # <a name="dynamic-packaging"></a>Dynamiczne tworzenie pakietów
 
@@ -73,7 +73,7 @@ Wydarzenie na żywo może być jednym z dwóch typów: kodowanie przekazywania i
 
 Na poniższym diagramie przedstawiono, przesyłanie strumieniowe na żywo za pomocą funkcji dynamicznego tworzenia pakietów przepływu pracy.
 
-![przekazywane](./media/live-streaming/pass-through.svg)
+![Przekazywanie](./media/live-streaming/pass-through.svg)
 
 ## <a name="delivery-protocols"></a>Protokoły dostarczania
 
@@ -197,6 +197,10 @@ Filtrowanie dynamiczne służy do kontrolowania liczby ścieżek, formatów, szy
 
 > [!NOTE]
 > Obecnie nie można zarządzać zasobami w wersji 3 z witryny Azure Portal. Użyj [interfejsu API REST](https://aka.ms/ams-v3-rest-ref), [interfejsu wiersza polecenia](https://aka.ms/ams-v3-cli-ref) lub jednego z obsługiwanych [zestawów SDK](developers-guide.md).
+
+## <a name="provide-feedback"></a>Przekazywanie opinii
+
+Zapoznaj się z [społeczności usługi Azure Media Services](media-services-community.md) artykuł, aby wyświetlić różne sposoby zadawaj pytania, Prześlij opinię i pobrać aktualizacje o usłudze Media Services.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

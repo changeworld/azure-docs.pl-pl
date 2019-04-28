@@ -10,11 +10,11 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/19/2018
 ms.openlocfilehash: 8cf5d9f3ee1503769a2ec199847175899bcd86bf
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193215"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62120130"
 ---
 # <a name="track-b2b-messages-with-azure-monitor-logs"></a>Śledzenie komunikatów B2B przy użyciu dzienników usługi Azure Monitor
 
@@ -153,7 +153,7 @@ Poniżej przedstawiono opisy właściwości dla każdego komunikatu AS2.
 | Aplikacja logiki | Aplikacja logiki gdzie skonfigurować akcje AS2 |
 | Stan | Stan komunikatu AS2 <br>Powodzenie = odebranych lub wysłanych prawidłowy komunikat AS2. Nie powiadomienia MDN jest skonfigurowany. <br>Powodzenie = odebranych lub wysłanych prawidłowy komunikat AS2. Ustawianie i odbierane powiadomienia MDN, lub są wysyłane powiadomienia MDN. <br>Nie powiodło się = Odebrano nieprawidłowy komunikat AS2. Nie powiadomienia MDN jest skonfigurowany. <br>Oczekujące = odebranych lub wysłanych prawidłowy komunikat AS2. Skonfigurowano powiadomienia MDN, a oczekiwano powiadomienia MDN. |
 | Potwierdzenia | Stan komunikatu MDN <br>Zaakceptowane = odebranych lub wysłanych dodatnią powiadomienia MDN. <br>Oczekujące = oczekiwanie na odbierania lub wysyłania komunikatu MDN. <br>Odrzucone = odebrane lub wysyłane ujemna powiadomienia MDN. <br>Niewymagane = powiadomienia MDN nie jest skonfigurowany w umowie. |
-| Kierunek | Kierunek komunikatu AS2 |
+| Direction | Kierunek komunikatu AS2 |
 | Identyfikator korelacji | Identyfikator, który jest skorelowane wszystkich wyzwalaczy i akcji w aplikacji logiki |
 | Identyfikator komunikatu | Identyfikator komunikatu AS2 z nagłówków komunikatu AS2 |
 | Znacznik czasu | Czas, kiedy akcja AS2 przetworzony komunikat |
@@ -184,7 +184,7 @@ Poniżej przedstawiono opisy właściwości dla każdego X12 wiadomości.
 | Aplikacja logiki | Aplikacja logiki gdzie X12 akcje zostały skonfigurowane. |
 | Stan | X12 komunikatu stanu <br>Powodzenie = odebranych lub wysłanych X12 prawidłowy komunikat. Nie potwierdzenia funkcjonalności jest skonfigurowany. <br>Powodzenie = odebranych lub wysłanych X12 prawidłowy komunikat. Potwierdzenia funkcjonalnych została ustawiona i odebranych lub funkcjonalności potwierdzenia są wysyłane. <br>Nie powiodło się = odebranych lub wysłanych X12 nieprawidłowy komunikat. <br>Oczekujące = odebranych lub wysłanych X12 prawidłowy komunikat. Funkcjonalności potwierdzenia jest skonfigurowany, a oczekiwano funkcjonalności potwierdzenia. |
 | Potwierdzenia | Funkcjonalności stan potwierdzenia (997) <br>Zaakceptowane = odebranych lub wysłanych pozytywne potwierdzenie funkcjonalności <br>Odrzucone = odebranych lub wysłanych ujemna potwierdzenie funkcjonalności <br>Oczekujące =, oczekiwano potwierdzenia funkcjonalności, ale nie otrzymano. <br>Oczekujące = wygenerowana potwierdzenia funkcjonalności, ale nie można wysłać do partnera. <br>Niewymagane = funkcjonalnej potwierdzenia nie zostało skonfigurowane. |
-| Kierunek | X12 komunikatu kierunku |
+| Direction | X12 komunikatu kierunku |
 | Identyfikator korelacji | Identyfikator, który jest skorelowane wszystkich wyzwalaczy i akcji w aplikacji logiki |
 | Typ komunikatu | Typ komunikatu 12 EDI, X |
 | ICN | Numer kontrolny wymiany dla X12 wiadomości |
@@ -217,7 +217,7 @@ Poniżej przedstawiono opisy właściwości dla każdego komunikatu EDIFACT.
 | Aplikacja logiki | Aplikacja logiki gdzie skonfigurować akcje EDIFACT |
 | Stan | Stan komunikatu EDIFACT <br>Powodzenie = odebranych lub wysłanych prawidłowy komunikat EDIFACT. Nie potwierdzenia funkcjonalności jest skonfigurowany. <br>Powodzenie = odebranych lub wysłanych prawidłowy komunikat EDIFACT. Potwierdzenia funkcjonalnych została ustawiona i odebranych lub funkcjonalności potwierdzenia są wysyłane. <br>Nie powiodło się = odebranych lub wysłanych nieprawidłowy komunikat EDIFACT <br>Oczekujące = odebranych lub wysłanych prawidłowy komunikat EDIFACT. Funkcjonalności potwierdzenia jest skonfigurowany, a oczekiwano funkcjonalności potwierdzenia. |
 | Potwierdzenia | Funkcjonalności stan potwierdzenia (997) <br>Zaakceptowane = odebranych lub wysłanych pozytywne potwierdzenie funkcjonalności <br>Odrzucone = odebranych lub wysłanych ujemna potwierdzenie funkcjonalności <br>Oczekujące =, oczekiwano potwierdzenia funkcjonalności, ale nie otrzymano. <br>Oczekujące = wygenerowana potwierdzenia funkcjonalności, ale nie można wysłać do partnera. <br>Niewymagane = funkcjonalności potwierdzenia nie zostało skonfigurowane. |
-| Kierunek | Kierunek komunikatu EDIFACT |
+| Direction | Kierunek komunikatu EDIFACT |
 | Identyfikator korelacji | Identyfikator, który jest skorelowane wszystkich wyzwalaczy i akcji w aplikacji logiki |
 | Typ komunikatu | Typ komunikatu EDIFACT |
 | ICN | Numer kontrolny wymiany komunikatu EDIFACT |

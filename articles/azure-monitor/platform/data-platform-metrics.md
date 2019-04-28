@@ -11,18 +11,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 2646941e2384acf6d303615f564b65d616931180
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: c00f703c5cfa606eaeb6ea0dea5fe5d754d3de5d
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59794256"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62108088"
 ---
 # <a name="metrics-in-azure-monitor"></a>Metryki w usłudze Azure Monitor
 
 > [!NOTE]
 > Platforma danych usługi Azure Monitor jest oparty na dwa typy danych podstawowych: Metryki i dzienniki. W tym artykule opisano metryki. Zapoznaj się [dzienników w usłudze Azure Monitor](data-platform-logs.md) szczegółowy opis dzienniki i [platforn danych usługi Azure Monitor](data-platform.md) porównanie dwóch.
-
 
 Metryki w usłudze Azure Monitor są uproszczone i może obsługiwać w scenariuszach w czasie rzeczywistym, dzięki czemu jest szczególnie przydatne w przypadku zgłaszania alertów i szybkie wykrywanie problemów. W tym artykule opisano, jak metryki są skonstruowane, co można zrobić z nimi i identyfikuje różnych źródłach danych przechowujących dane w metrykach.
 
@@ -42,7 +41,6 @@ W poniższej tabeli wymieniono różne sposoby, można użyć danych metryk w us
 | Pobierz | Dostęp do wartości metryk z wiersza polecenia przy użyciu [poleceń cmdlet programu PowerShell](https://docs.microsoft.com/powershell/module/az.applicationinsights)<br>Dostęp do wartości metryk z niestandardowych aplikacji przy użyciu [interfejsu API REST](rest-api-walkthrough.md).<br>Dostęp do wartości metryk z wiersza polecenia przy użyciu [interfejsu wiersza polecenia](/cli/azure/monitor/metrics). |
 | Archiwum | [Archiwum](..//learn/tutorial-archive-data.md) historii wydajności i kondycji zasobu pod kątem zgodności, inspekcji lub w trybie offline do celów raportowania. |
 
-
 ## <a name="how-is-data-in-azure-monitor-metrics-structured"></a>W jaki sposób dane ze strukturą metryk usługi Azure Monitor?
 Dane zbierane przez metryk usługi Azure Monitor jest przechowywane w bazie danych szeregów czasowych, który jest zoptymalizowany pod kątem analizowania danych z sygnaturami czasowymi. Każdy zestaw wartości metryk jest szeregów czasowych z następującymi właściwościami:
 
@@ -52,8 +50,6 @@ Dane zbierane przez metryk usługi Azure Monitor jest przechowywane w bazie dany
 * Nazwa metryki
 * Sama wartość
 * Niektóre metryki mogą mieć wiele wymiarów, zgodnie z opisem w [metryk wielowymiarowych](#multi-dimensional-metrics). Metryki niestandardowe mogą mieć maksymalnie 10 wymiarów.
-
-Metryki na platformie Azure są przechowywane przez 93 dni. Możesz [wysyłanie metryk platformy dla zasobów usługi Azure Monitor do obszaru roboczego usługi Log Analytics](diagnostic-logs-stream-log-store.md) umożliwia analizę trendów w długim okresie.
 
 ## <a name="multi-dimensional-metrics"></a>Metryk wielowymiarowych
 Jest jednym z wyzwań do danych metryk, że często ma mniej informacji, aby zapewnić kontekst dla zebranych wartości. Usługa Azure Monitor sprostać temu wyzwaniu przy użyciu metryk wielowymiarowych. Wymiary metryki są pary nazwa wartość, zawierających dodatkowe dane do opisania wartość metryki. Na przykład metryka _dostępnego miejsca na dysku_ może mieć wymiar o nazwie _dysku_ wartościami _C:_, _D:_, co umożliwiłoby wyświetlania wartość dostępnego miejsca na dysku na wszystkich dyskach lub dla każdego dysku indywidualnie.
@@ -101,6 +97,13 @@ Istnieją trzy podstawowe źródła metryki zebrane przez usługi Azure Monitor.
 
 **Metryki niestandardowe** metryki, które definiują oprócz standardowych metryk, które są automatycznie dostępne. Możesz [zdefiniować metryki niestandardowe w aplikacji](../app/api-custom-events-metrics.md) który jest monitorowany przez usługę Application Insights lub utworzyć niestandardowe metryki dla usługi za pomocą usługi Azure [niestandardowy interfejs API metryk](metrics-store-custom-rest-api.md).
 
+## <a name="retention-of-metrics"></a>Przechowywanie metryki
+Dla większości zasobów na platformie Azure metryki są przechowywane przez 93 dni. Istnieje kilka wyjątków:
+  * **Klasyczne metryk systemu operacyjnego gościa**. Metryki systemu operacyjnego gościa klasyczne są przechowywane przez 14 dni. W dłuższy okres przechowywania, zalecamy używanie nowych metryk systemu operacyjnego gościa, które są zbierane z [Windows rozszerzenia diagnostyki (WAD)](../platform/diagnostics-extension-overview.md) i maszyn wirtualnych systemu Linux przy użyciu [agenta Telegraf InfluxData](https://www.influxdata.com/time-series-platform/telegraf/).
+  * **Application Insights opartych na dzienniku metryki**. Za sceną [metryk opartych na dzienniku](../app/pre-aggregated-metrics-log-metrics.md) przekłada się na zapytaniach dzienników. Ich zachowanie pasuje do przechowywania zdarzeń w dziennikach bazowego. Zasoby usługi Application Insights dzienniki są przechowywane przez 90 dni. 
+
+> [!NOTE]
+> Możesz [wysyłanie metryk platformy dla zasobów usługi Azure Monitor do obszaru roboczego usługi Log Analytics](diagnostic-logs-stream-log-store.md) umożliwia analizę trendów w długim okresie.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

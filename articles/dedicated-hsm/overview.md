@@ -13,12 +13,12 @@ ms.topic: overview
 ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: 447518d2189a3b2723edc7c7db74ccc8435b71b7
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: 88a49c9c124c5399749d2b60595d7f5c7ec77b20
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56110374"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62117996"
 ---
 # <a name="what-is-azure-dedicated-hsm"></a>Co to jest dedykowany moduł HSM platformy Azure?
 
@@ -81,7 +81,7 @@ Sytuacje, w których trzeba będzie rozważyć dostępne opcje, mogą być nast�
 - Szyfrowanie po stronie klienta usługi Azure Storage
 - SQL Server i Azure SQL DB Always Encrypted
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Ta usługa jest wysoce wyspecjalizowana. Z tego względu zalecamy, aby szczegółowo zapoznać się z kluczowymi pojęciami opisanymi w tym zestawie dokumentacji, w tym z cenami, pomocą techniczną i umowami dotyczącymi poziomu usług. 
 

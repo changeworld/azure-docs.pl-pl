@@ -2,19 +2,27 @@
 title: Wydajność Phoenix w usłudze Azure HDInsight
 description: Najlepsze rozwiązania w celu zoptymalizowania wydajności Phoenix.
 services: hdinsight
+documentationcenter: ''
+tags: azure-portal
 author: ashishthaps
-ms.reviewer: jasonh
+manager: jhubbard
+editor: cgronlun
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 01/22/2018
-ms.author: ashishth
-ms.openlocfilehash: da227151dd056dd5e852ae8790b6f20ac3c0c790
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
-ms.translationtype: MT
+ms.workload: big-data
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+origin.date: 01/22/2018
+ms.date: 01/14/2019
+ms.author: v-yiso
+ms.openlocfilehash: 4fc4d1843ddb8d007ca062d928ebbddf90909583
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653309"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62114311"
 ---
 # <a name="apache-phoenix-performance-best-practices"></a>Najlepsze rozwiązania w zakresie wydajności dla rozwiązania Apache Phoenix
 
@@ -32,33 +40,33 @@ Klucz podstawowy, zdefiniowanego w tabeli Phoenix Określa, jak dane są przecho
 
 Na przykład tabela kontaktów ma imię, ostatnia nazwa, numer telefonu i adres, w tej samej rodziny kolumn. Można zdefiniować klucz podstawowy, w oparciu o rosnący numer kolejny:
 
-|rowkey|       Adres|   telefon| Imię| Nazwisko|
+|rowkey|       adres|   phone| firstName| lastName|
 |------|--------------------|--------------|-------------|--------------|
-|  1000|1111 San Gabriel odzyskiwania po awarii.|1-425-000-0002|    Jan|Dole|
-|  8396|5415 San Gabriel odzyskiwania po awarii.|1-230-555-0191|  Calvina|Raji|
+|  1000|1111 San Gabriel Dr.|1-425-000-0002|    Jan|Dole|
+|  8396|5415 San Gabriel Dr.|1-230-555-0191|  Calvina|Raji|
 
 Jednak po wykonaniu zapytania według nazwiska często tego klucza podstawowego może nie działać poprawnie, ponieważ każde zapytanie wymaga pełne skanowanie tabeli można odczytać wartości każdego lastName. Zamiast tego można zdefiniować klucz podstawowy na lastName, imię i numer ubezpieczenia społecznego kolumn. Jest to ostatnia kolumna do odróżniania dwóch mieszkańców na ten sam adres o takiej samej nazwie, takie jak ojcem i syn.
 
-|rowkey|       Adres|   telefon| Imię| Nazwisko| socialSecurityNum |
+|rowkey|       adres|   phone| firstName| lastName| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
-|  1000|1111 San Gabriel odzyskiwania po awarii.|1-425-000-0002|    Jan|Dole| 111 |
-|  8396|5415 San Gabriel odzyskiwania po awarii.|1-230-555-0191|  Calvina|Raji| 222 |
+|  1000|1111 San Gabriel Dr.|1-425-000-0002|    Jan|Dole| 111 |
+|  8396|5415 San Gabriel Dr.|1-230-555-0191|  Calvina|Raji| 222 |
 
 Przy użyciu nowego klucza podstawowego wiersza będzie klucze generowane przez Phoenix:
 
-|rowkey|       Adres|   telefon| Imię| Nazwisko| socialSecurityNum |
+|rowkey|       adres|   phone| firstName| lastName| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
-|  Dole-John-111|1111 San Gabriel odzyskiwania po awarii.|1-425-000-0002|    Jan|Dole| 111 |
-|  Raji Calvina-222|5415 San Gabriel odzyskiwania po awarii.|1-230-555-0191|  Calvina|Raji| 222 |
+|  Dole-John-111|1111 San Gabriel Dr.|1-425-000-0002|    Jan|Dole| 111 |
+|  Raji Calvina-222|5415 San Gabriel Dr.|1-230-555-0191|  Calvina|Raji| 222 |
 
 W pierwszym wierszu powyżej jest reprezentowany dane rowkey, jak pokazano:
 
-|rowkey|       key|   wartość| 
+|rowkey|       key|   value| 
 |------|--------------------|---|
-|  Dole-John-111|Adres |1111 San Gabriel odzyskiwania po awarii.|  
-|  Dole-John-111|telefon |1-425-000-0002|  
-|  Dole-John-111|Imię |Jan|  
-|  Dole-John-111|Nazwisko |Dole|  
+|  Dole-John-111|adres |1111 San Gabriel Dr.|  
+|  Dole-John-111|phone |1-425-000-0002|  
+|  Dole-John-111|firstName |Jan|  
+|  Dole-John-111|lastName |Dole|  
 |  Dole-John-111|socialSecurityNum |111| 
 
 Ta rowkey teraz przechowuje kopię danych. Należy wziąć pod uwagę rozmiar i liczba kolumn, które uwzględniasz w klucz podstawowy, ponieważ ta wartość jest dołączone do każdej komórki w tabeli podstawowej bazy danych HBase.
@@ -114,10 +122,10 @@ Pokryte indeksy są indeksy, które zawierają dane z wiersza, oprócz wartości
 
 Na przykład w tym przykładzie należy skontaktować się z tabeli, można utworzyć pomocniczego indeksu tylko kolumny socialSecurityNum. Ten indeks pomocniczy może przyspieszyć działanie zapytań, które filtrować według wartości socialSecurityNum, ale pobieranie innych wartości pól będzie wymagać innego odczytu względem tabeli głównej.
 
-|rowkey|       Adres|   telefon| Imię| Nazwisko| socialSecurityNum |
+|rowkey|       adres|   phone| firstName| lastName| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
-|  Dole-John-111|1111 San Gabriel odzyskiwania po awarii.|1-425-000-0002|    Jan|Dole| 111 |
-|  Raji Calvina-222|5415 San Gabriel odzyskiwania po awarii.|1-230-555-0191|  Calvina|Raji| 222 |
+|  Dole-John-111|1111 San Gabriel Dr.|1-425-000-0002|    Jan|Dole| 111 |
+|  Raji Calvina-222|5415 San Gabriel Dr.|1-230-555-0191|  Calvina|Raji| 222 |
 
 Jednak zazwyczaj chcesz wyszukać imię i nazwisko, biorąc pod uwagę socialSecurityNum, można utworzyć ustawy indeks, który zawiera rzeczywiste dane w tabeli indeksów imię i nazwisko:
 

@@ -15,16 +15,16 @@ ms.workload: na
 ms.date: 12/1/2016
 ms.author: alkohli
 ms.openlocfilehash: bb6bb491ca71e5ced5aecc8137e9e1cbd950e80b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58091872"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62123809"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-virtual-array"></a>Używanie usługi Menedżer urządzeń StorSimple do administrowania rozwiązania StorSimple Virtual Array
 ![przepływ procesu instalacji](./media/storsimple-virtual-array-manager-service-administration/manage4.png)
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Ten artykuł zawiera opis interfejsu usługi Menedżer urządzeń StorSimple, w tym sposób nawiązywania połączeń i różnych dostępnych opcjach i zawiera łącza do określonych przepływów pracy, które mogą być wykonywane za pośrednictwem tego interfejsu użytkownika.
 
 Po przeczytaniu tego artykułu, będzie wiadomo, jak:

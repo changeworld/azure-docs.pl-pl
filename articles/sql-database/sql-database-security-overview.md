@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
 ms.date: 04/11/2019
-ms.openlocfilehash: cb4ff203a69e04aeaff6d446d6ce3719f4158305
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: f466a1c3fd0b2d527fc4ab407d096f6bb9b7d8b9
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60001086"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63766910"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Omówienie funkcji zabezpieczeń usługi Azure SQL Database
 
@@ -66,19 +66,17 @@ Uwierzytelnianie jest to proces potwierdzania użytkownika, który podaje. Usłu
 > [!IMPORTANT]
 > Zarządzanie bazami danych i serwerów w ramach platformy Azure jest kontrolowane przez przypisania ról konta użytkownika portalu. Aby uzyskać więcej informacji na temat tego artykułu, zobacz [kontroli dostępu opartej na rolach w witrynie Azure portal](../role-based-access-control/overview.md). Kontrola dostępu za pomocą reguł zapory jest *nie* dotyczą **wystąpienia zarządzanego**. Zobacz następujący artykuł w [nawiązywania połączenia z wystąpieniem zarządzanym](sql-database-managed-instance-connect-app.md) uzyskać więcej informacji o konfiguracji sieci niezbędnej.
 
-Autoryzacja odwołuje się do uprawnienia przypisane do użytkownika w ramach usługi Azure SQL Database i określa, jakie użytkownik może wykonywać. Uprawnienia są kontrolowane przez dodawanie kont użytkowników do [ról bazy danych](/sql/relational-databases/security/authentication-access/database-level-roles) definiują uprawnienia na poziomie bazy danych lub przyznawanie użytkownikowi niektórych [uprawnienia na poziomie obiektu](/sql/relational-databases/security/permissions-database-engine). Aby uzyskać więcej informacji, zobacz [identyfikatory logowania i użytkowników](sql-database-manage-logins.md)
+## <a name="authorization"></a>Autoryzacja
 
-Najlepszym rozwiązaniem należy dodać użytkowników do roli z co najmniej uprawnienia wymagane do ich funkcję zadania. Konto administratora serwera jest członkiem roli db_owner, która ma szersze uprawnienia i może być przyznany użytkownikom ostrożnie. Podczas korzystania z aplikacji z usługą Azure SQL Database, używać [ról aplikacji](/sql/relational-databases/security/authentication-access/application-roles) z ograniczonymi uprawnieniami. Dzięki temu aplikacja z bazą danych ma minimalnych uprawnień wymaganych przez aplikację.
+Autoryzacja odwołuje się do uprawnienia przypisane do użytkownika w ramach usługi Azure SQL Database i określa, jakie użytkownik może wykonywać. Uprawnienia są kontrolowane przez dodawanie kont użytkowników do [ról bazy danych](/sql/relational-databases/security/authentication-access/database-level-roles) i przypisywanie uprawnień na poziomie bazy danych do tych ról lub przez udzielanie użytkownikowi określone [uprawnienia na poziomie obiektu](/sql/relational-databases/security/permissions-database-engine). Aby uzyskać więcej informacji, zobacz [identyfikatory logowania i użytkowników](sql-database-manage-logins.md)
+
+Najlepszym rozwiązaniem jest tworzenie ról niestandardowych, gdy potrzebne. Dodawanie użytkowników do roli z co najmniej uprawnienia wymagane do ich funkcję zadania. Nie należy przypisywać uprawnienia bezpośrednio do użytkowników. Konto administratora serwera jest członkiem roli db_owner wbudowanych, która ma szersze uprawnienia i może być przyznany wyłącznie do kilku użytkowników za pomocą obowiązki administracyjne. W przypadku aplikacji usługi Azure SQL Database, użyj [EXECUTE AS](/sql/t-sql/statements/execute-as-clause-transact-sql) do określenia kontekstu wykonania modułu o nazwie lub użyj [ról aplikacji](/sql/relational-databases/security/authentication-access/application-roles) z ograniczonymi uprawnieniami. Daje to gwarancję, że aplikacja, który nawiązuje połączenie z bazą danych ma minimalnych uprawnień wymaganych przez aplikację. Również zastosowaniu tych najlepszych rozwiązań zaznajomić rozdzielenia obowiązków.
 
 ### <a name="row-level-security"></a>Zabezpieczenia na poziomie wiersza
 
-Zabezpieczenia na poziomie wiersza umożliwiają klientom kontrolowanie dostępu do wierszy w tabeli bazy danych na podstawie właściwości użytkownika wykonującego zapytanie (na przykład grupy członkostwa lub kontekstu wykonania). Aby uzyskać więcej informacji, zobacz [Zabezpieczenia na poziomie wierszy](/sql/relational-databases/security/row-level-security).
+Zabezpieczenia na poziomie wiersza umożliwiają klientom kontrolowanie dostępu do wierszy w tabeli bazy danych na podstawie właściwości użytkownika wykonującego zapytanie (na przykład grupy członkostwa lub kontekstu wykonania). Zabezpieczenia na poziomie wiersza można również zaimplementować pojęcia dotyczące zabezpieczeń na podstawie etykiet niestandardowych. Aby uzyskać więcej informacji, zobacz [Zabezpieczenia na poziomie wierszy](/sql/relational-databases/security/row-level-security).
 
 ![azure-database-rls.png](media/sql-database-security-overview/azure-database-rls.png)
-
-  Ta metoda uwierzytelniania używa nazwy użytkownika i hasła. 
-
-Aby uzyskać omówienie uprawnień w usłudze Azure SQL Database, zobacz [identyfikatory logowania i użytkowników](sql-database-manage-logins.md#permissions)
 
 ## <a name="threat-protection"></a>Ochrona przed zagrożeniami
 

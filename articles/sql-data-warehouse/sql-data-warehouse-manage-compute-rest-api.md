@@ -11,11 +11,11 @@ ms.date: 03/29/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: 658b35163e20d024118bc7a3142c86614540f00c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59790250"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62105330"
 ---
 # <a name="rest-apis-for-azure-sql-data-warehouse"></a>Interfejsy API REST dla usługi Azure SQL Data Warehouse
 Interfejsy API REST zarządzania zasobów obliczeniowych w usłudze Azure SQL Data Warehouse.

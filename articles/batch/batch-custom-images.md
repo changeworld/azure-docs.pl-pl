@@ -6,14 +6,14 @@ author: laurenhughes
 manager: jeconnoc
 ms.service: batch
 ms.topic: article
-ms.date: 10/04/2018
+ms.date: 04/15/2019
 ms.author: lahugh
-ms.openlocfilehash: 0bc43b82a987ab065677bdbb56de73ef341c249d
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: MT
+ms.openlocfilehash: 233b26b330fabe7da8664114ba1857f74feea4bc
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752130"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63764284"
 ---
 # <a name="use-a-custom-image-to-create-a-pool-of-virtual-machines"></a>Używanie niestandardowego obrazu, aby utworzyć pulę maszyn wirtualnych 
 
@@ -48,9 +48,9 @@ Przy użyciu niestandardowego obrazu skonfigurowany dla danego scenariusza możn
 
 Na platformie Azure można przygotować obrazu zarządzanego z migawek systemu operacyjnego w maszynie Wirtualnej platformy Azure i dysków z danymi, uogólnionej maszyny Wirtualnej platformy Azure z dyskami zarządzanymi lub lokalnego uogólnionego wirtualnego dysku twardego przekazane. Aby skalować pule usługi Batch niezawodnie przy użyciu niestandardowego obrazu, zaleca się utworzenie obrazu zarządzanego przy użyciu *tylko* pierwszej metody: przy użyciu migawek dysków maszyny Wirtualnej. Zobacz poniższe kroki, aby przygotować Maszynę wirtualną, Utwórz migawkę i tworzenie obrazu na podstawie migawki. 
 
-### <a name="prepare-a-vm"></a>Przygotowywanie maszyny Wirtualnej 
+### <a name="prepare-a-vm"></a>Przygotowywanie maszyny Wirtualnej
 
-Jeśli tworzysz nową maszynę Wirtualną dla obrazu użyć obsługiwane przy użyciu usługi Batch jako obrazu podstawowego dla obrazu zarządzanego obrazu portalu Azure Marketplace, a następnie ją Dostosuj.  Aby uzyskać listę obsługiwanych przez usługę Azure Batch odwołań do obrazu portalu Azure Marketplace, zobacz [jednostki SKU agenta węzła listy](/rest/api/batchservice/account/listnodeagentskus) operacji. 
+W przypadku tworzenia nowej maszyny Wirtualnej dla obrazu, należy użyć pierwszego obrazu portalu Azure Marketplace innych firm obsługiwane przy użyciu usługi Batch jako obrazu podstawowego dla obrazu zarządzanego. Tylko obrazy firmy Microsoft może służyć jako obrazu podstawowego. Aby uzyskać pełną listę obsługiwanych przez usługę Azure Batch odwołań do obrazu portalu Azure Marketplace, zobacz [jednostki SKU agenta węzła listy](/rest/api/batchservice/account/listnodeagentskus) operacji.
 
 > [!NOTE]
 > Nie można użyć obrazu innych firm, który ma dodatkową licencję i warunki zakupu jako obrazu podstawowego. Aby uzyskać informacji na temat tych obrazów z witryny Marketplace, zobacz wskazówki dotyczące [Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
@@ -78,6 +78,7 @@ Po zapisaniu z obrazem niestandardowym i znasz jego nazwę lub identyfikator zas
 > [!NOTE]
 > W przypadku tworzenia puli przy użyciu jednego z interfejsów API usługi Batch, upewnij się, że tożsamości używany do uwierzytelniania usługi AAD ma uprawnienia do zasobu obrazu. Zobacz [uwierzytelnianie rozwiązań usługi Batch service z usługą Active Directory](batch-aad-auth.md).
 >
+> Zasób obrazu zarządzanego, musi istnieć przez okres istnienia puli. Jeśli bazowego zasobu zostanie usunięty, nie można skalować w puli. 
 
 1. W witrynie Azure Portal przejdź do swojego konta usługi Batch. To konto musi być w tej samej subskrypcji i regionie co grupa zasobów zawierająca obraz niestandardowy. 
 2. W **ustawienia** oknie po lewej stronie, wybierz opcję **pule** elementu menu.
@@ -109,6 +110,16 @@ Również pamiętać o następujących kwestiach:
 - **Limit czasu zmiany rozmiaru** — Jeśli pula zawiera stałą liczbę węzłów automatyczne skalowanie nie zwiększ właściwość resizeTimeout puli, aby wartością, taką jak 20 – 30 minutach. Jeśli pula nie dociera do rozmiaru docelowego przed upływem limitu czasu, przeprowadzenie [operacja zmiany rozmiaru](/rest/api/batchservice/pool/resize).
 
   Jeśli planujesz puli za pomocą ponad 300 węzłów obliczeniowych, może być konieczne zmiany rozmiaru puli wielokrotnie nawiązać rozmiar docelowy.
+
+## <a name="considerations-for-using-packer"></a>Zagadnienia dotyczące za pomocą narzędzia Packer
+
+Tworzenie obrazu zarządzanego zasobu bezpośrednio za pomocą usługi Packer może być przeprowadzone wyłącznie z konta usługi Batch w trybie subskrypcji użytkownika. W przypadku kont tryb usługi Batch, musisz najpierw utworzyć wirtualny dysk twardy, a następnie importowanie dysku VHD do zasobu obrazu zarządzanego. Zależności od trybu alokacji puli (subskrypcja użytkownika lub usługi Batch) kroki w taki sposób, aby utworzyć zasób obrazu zarządzanego będą się różnić.
+
+Upewnij się, czy zasób umożliwiający utworzenie obrazu zarządzanego istnieje dla czasu istnienia każdej puli odwołuje się do niestandardowego obrazu. Niewykonanie tej czynności może powodować błędy alokacji puli i/lub zmienić rozmiar błędów. 
+
+Jeśli obraz lub bazowego zasobu zostanie usunięty, użytkownik może wystąpić błąd podobny do: `There was an error encountered while performing the last resize on the pool. Please try resizing the pool again. Code: AllocationFailed`. W takim przypadku upewnij się, że bazowego zasobu nie został usunięty.
+
+Aby uzyskać więcej informacji na temat za pomocą narzędzia Packer, aby utworzyć Maszynę wirtualną, zobacz [budowania obrazu systemu Linux za pomocą usługi Packer](../virtual-machines/linux/build-image-with-packer.md) lub [budowania obrazu Windows za pomocą usługi Packer](../virtual-machines/windows/build-image-with-packer.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

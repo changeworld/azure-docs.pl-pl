@@ -9,22 +9,22 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 04/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 8f21374ae5da76c9954acc5227f593ab4be19ce9
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
-ms.translationtype: MT
+ms.openlocfilehash: 74a4ee03562963c8a50159f085e4b76b6d461ed9
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630550"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62103856"
 ---
 # <a name="media-services-concepts"></a>Pojęcia dotyczące usługi Media Services
 
 Ten temat zawiera krótkie omówienie koncepcji usługi Azure Media Services i zawiera linki do artykułów o szczegółowe informacje z usługi Media Services v3 pojęć i funkcji. Przed rozpoczęciem programowania należy zapoznać się z opisami podstawowych pojęć zawartymi w tych tematach.
 
 > [!NOTE]
-> Obecnie nie można użyć witryny Azure portal do zarządzania zasobami v3. Użyj [interfejsu API REST](https://aka.ms/ams-v3-rest-ref), [interfejsu wiersza polecenia](https://aka.ms/ams-v3-cli-ref), lub jeden z obsługiwanych [zestawów SDK](developers-guide.md).
+> Obecnie nie można zarządzać zasobami w wersji 3 z witryny Azure Portal. Użyj [interfejsu API REST](https://aka.ms/ams-v3-rest-ref), [interfejsu wiersza polecenia](https://aka.ms/ams-v3-cli-ref) lub jednego z obsługiwanych [zestawów SDK](developers-guide.md).
 
 ## <a name="cloud-upload-and-storage"></a>Przekazywanie do chmury i magazynowanie w niej
 
@@ -89,7 +89,7 @@ Usługa Azure Media Services umożliwia dostarczanie wydarzeń na żywo dla klie
 
 Na poniższym obrazie przedstawiono przepływu pracy typu przekazywania:
 
-![przekazywane](./media/live-streaming/pass-through.svg)
+![Przekazywanie](./media/live-streaming/pass-through.svg)
 
 - [Omówienie transmisji strumieniowej na żywo](live-streaming-overview.md)
 - [Wydarzenia i dane wyjściowe na żywo](live-events-outputs-concept.md)
@@ -115,6 +115,10 @@ Monitorowanie metryk i dzienników diagnostycznych, które pomagają zrozumieć,
 Usługa Azure Media Player umożliwia odtwarzanie multimediów udostępnianych przesyłane strumieniowo przez usługę Media Services na podstawie różnych przeglądarek i urządzeń. Usługa Azure Media Player używa standardów branżowych, takich jak HTML5, rozszerzenia źródło nośnika (MSE) i Encrypted Media Extensions (EME), aby zapewnić zaawansowane adaptacyjne środowisko przesyłania strumieniowego. 
 
 - [Omówienie usługi Azure Media Player](use-azure-media-player.md)
+
+## <a name="provide-feedback"></a>Przekazywanie opinii
+
+Zapoznaj się z [społeczności usługi Azure Media Services](media-services-community.md) artykuł, aby wyświetlić różne sposoby zadawaj pytania, Prześlij opinię i pobrać aktualizacje o usłudze Media Services.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

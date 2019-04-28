@@ -2,7 +2,6 @@
 title: HUE przy użyciu usługi Hadoop w klastrach opartych na systemie HDInsight Linux — Azure
 description: Dowiedz się, jak instalowanie aplikacji Hue w klastrach HDInsight i korzystanie z tunelowania do kierowania żądań do aplikacji Hue. Korzystanie z rozwiązania Hue, Przeglądaj magazyn do uruchomienia programu Hive i Pig.
 keywords: HUE hadoop
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -10,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: hrasheed
-ms.openlocfilehash: 9a5a3e7354d3d89a53e94553ed504df7c8117922
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
-ms.translationtype: MT
+ms.openlocfilehash: b0354803a117e8e2c2382ae888bde94a502f24c6
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314998"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63760619"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Instalowanie i korzystanie z rozwiązania Hue w klastrach usługi HDInsight Hadoop
 

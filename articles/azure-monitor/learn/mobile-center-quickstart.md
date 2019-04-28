@@ -1,22 +1,22 @@
 ---
 title: Szybki start — Azure Application Insights | Microsoft Docs
-description: W tym artykule przedstawiono instrukcje pozwalające szybko skonfigurować aplikację mobilną w celu jej monitorowania za pomocą usługi Application Insights i Centrum aplikacji
+description: Przedstawiono instrukcje pozwalające szybko skonfigurować aplikację mobilną w celu monitorowania za pomocą usługi Application Insights i Centrum aplikacji
 services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 07/11/2018
+ms.date: 04/22/2019
 ms.service: application-insights
 ms.reviewer: daviste
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 6f0a59d2b0954c9847219ad1ac8b2fa805767084
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 67ddedbaca88d46e706c9a143100b215a0d16a90
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54080959"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62126871"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>Rozpoczęcie analizowania aplikacji mobilnej za pomocą Centrum aplikacji i usługi Application Insights
 
@@ -67,7 +67,7 @@ Aby upewnić się, że zdarzenia niestandardowe są otrzymywane, przejdź do kar
 
 Gdy aplikacja wysyła zdarzenia niestandardowe i są one odbierane przez Centrum aplikacji, musisz utworzyć zasób usługi Application Insights typu Centrum aplikacji w witrynie Azure Portal:
 
-1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 2. Wybierz pozycję **Utwórz zasób** > **Narzędzia do zarządzania** > **Application Insights**.
 
     ![Dodawanie zasobu usługi Application Insights](./media/mobile-center-quickstart/add-b.png)
@@ -87,7 +87,9 @@ Jeśli aplikacja obsługuje wiele platform (iOS, Android itp.), najlepiej utworz
 
 ## <a name="export-to-application-insights"></a>Eksportowanie do usługi Application Insights
 
-W nowym zasobie usługi Application Insights na stronie **Przegląd** w sekcji **Podstawy** u góry skopiuj klucz instrumentacji dla tego zasobu.
+W przypadku nowego zasobu usługi Application Insights na **Przegląd** strony. Skopiuj klucz Instrumentacji z zasobu.
+
+   ![Przycisk Analiza w usłudze Application Insights](./media/mobile-center-quickstart/overview-01.png)
 
 W wystąpieniu Centrum aplikacji dla Twojej aplikacji:
 
@@ -108,7 +110,7 @@ Usługa Application Insights umożliwia wykonywanie zapytań, segmentowanie, fil
 
 1. **Wykonaj zapytanie względem danych telemetrycznych zdarzeń niestandardowych.** Na stronie **Przegląd** usługi Application Insights wybierz przycisk **Analiza**. 
 
-   ![Przycisk Analiza w usłudze Application Insights](./media/mobile-center-quickstart/analytics.png)
+   ![Przycisk Analiza w usłudze Application Insights](./media/mobile-center-quickstart/analytics-001.png)
 
    Spowoduje to otwarcie portalu Analiza usługi Application Insights skojarzonego z zasobem usługi Application Insights. Portal Analiza pozwala na bezpośrednie wyszukiwanie danych przy użyciu języka zapytań Log Analytics, dzięki czemu możesz zadawać dowolnie złożone pytania dotyczące aplikacji i jej użytkowników.
    
@@ -121,7 +123,7 @@ Usługa Application Insights umożliwia wykonywanie zapytań, segmentowanie, fil
    | order by dcount_user_Id desc 
    ```
 
-   ![Portal Analiza](./media/mobile-center-quickstart/analytics-portal.png)
+   ![Portal Analiza](./media/mobile-center-quickstart/analytics-portal-001.png)
 
    1. Wybierz zapytanie, klikając w dowolnym miejscu zapytania w edytorze tekstów.
    2. Następnie kliknij pozycję **Przejdź**, aby wykonać zapytanie. 
@@ -131,17 +133,17 @@ Usługa Application Insights umożliwia wykonywanie zapytań, segmentowanie, fil
 
 2. **Przeprowadź segmentację i filtrowanie danych telemetrycznych zdarzeń niestandardowych.** Na stronie **Przegląd** usługi Application Insights wybierz w spisie treści pozycję **Użytkownicy**.
 
-   ![Ikona narzędzia Użytkownicy](./media/mobile-center-quickstart/users-icon.png)
+   ![Ikona narzędzia Użytkownicy](./media/mobile-center-quickstart/users-icon-001.png)
 
    Narzędzie Użytkownicy wyświetla liczbę użytkowników aplikacji, którzy kliknęli określone przyciski, odwiedzili określone ekrany lub wykonali jakąkolwiek inną akcję śledzoną jako zdarzenie za pomocą zestawu SDK Centrum aplikacji. Jeśli szukasz sposobu na segmentowanie i filtrowanie zdarzeń Centrum aplikacji, narzędzie Użytkownicy jest doskonałym wyborem.
 
-   ![Narzędzie Użytkownicy](./media/mobile-center-quickstart/users.png) 
+   ![Narzędzie Użytkownicy](./media/mobile-center-quickstart/users-001.png) 
 
    Na przykład możesz podzielić użycie według lokalizacji geograficznej, wybierając pozycję **Kraj lub region** w menu rozwijanym **Podziel wg**.
 
 3. **Przeprowadź analizę wzorców konwersji, przechowywania i nawigacji w aplikacji.** Na stronie **Przegląd** usługi Application Insights wybierz w spisie treści pozycję **Przepływy użytkownika**.
 
-   ![Narzędzie Przepływy użytkownika](./media/mobile-center-quickstart/user-flows.png)
+   ![Narzędzie Przepływy użytkownika](./media/mobile-center-quickstart/user-flows-001.png)
 
    Narzędzie Przepływy użytkownika wizualizuje zdarzenia, które zostały wysłane przez użytkowników po jakimś zdarzeniu początkowym. Przydaje się ono do uzyskania ogólnego obrazu sposobu, w jaki użytkownicy nawigują w aplikacjach. Pozwala również ujawnić miejsca, w których wielu użytkowników wychodzi z aplikacji lub wciąż powtarza te same akcje.
 
@@ -166,7 +168,7 @@ Aby usunąć zasób usługi Application Insights:
 1. W menu po lewej stronie portalu Azure kliknij pozycję **Grupy zasobów**, a następnie wybierz grupę zasobów, w której został utworzony zasób usługi Application Insights.
 2. Otwórz zasób usługi Application Insights, który chcesz usunąć. Następnie kliknij pozycję **Usuń** w menu u góry zasobu i potwierdź. Spowoduje to trwałe usunięcie kopii danych, które zostały wyeksportowane do usługi Application Insights.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Informacje o sposobie używania aplikacji przez klientów](../../azure-monitor/app/usage-overview.md)

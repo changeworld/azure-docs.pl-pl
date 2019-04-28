@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 04/12/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 35639dac0eacd5eae04b7848bdbbc1bc30fbf214
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.openlocfilehash: 18780deba1910b3ea77f7313bfb6d204dacabd82
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680778"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62112025"
 ---
 # <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>Architektury oparte na zdarzeniach bezserwerowe za pomocą usługi Azure Cosmos DB i Azure Functions
 
-Usługa Azure Functions zapewnia Najprostszym sposobem, aby nawiązać połączenie [zestawienia zmian](). Małe reaktywne usługi Azure Functions wyzwalającego automatycznie można tworzyć na każde nowe zdarzenie w kontenerze usługi Azure Cosmos zmiany w źródle danych.
+Usługa Azure Functions zapewnia Najprostszym sposobem, aby nawiązać połączenie [zestawienia zmian](change-feed.md). Małe reaktywne usługi Azure Functions wyzwalającego automatycznie można tworzyć na każde nowe zdarzenie w kontenerze usługi Azure Cosmos zmiany w źródle danych.
 
 ![Funkcje niewymagające użycia serwera opartego na zdarzeniach — Praca z wyzwalacza usługi Azure Cosmos DB](./media/change-feed-functions/functions.png)
 

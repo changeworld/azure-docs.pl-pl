@@ -12,11 +12,11 @@ ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
 ms.openlocfilehash: 68378c87e18df874059579445352b8fd1b2b6c13
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232719"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62105584"
 ---
 # <a name="exchange-messages-in-the-cloud-with-azure-service-bus-and-azure-logic-apps"></a>Wymiana komunikatów w chmurze za pomocą usługi Azure Service Bus i Azure Logic Apps
 
@@ -74,7 +74,7 @@ Upewnij się, że Twoja aplikacja logiki ma uprawnienia do uzyskiwania dostępu 
 
 1. Aby dodać *wyzwalacza* do pustej aplikacji logiki, w polu wyszukiwania wpisz "Azure Service Bus" jako filtr. W obszarze listy wyzwalaczy wybierz wyzwalacz, który ma. 
 
-   Na przykład, aby wyzwolić aplikację logiki, gdy nowy element jest wysyłany do kolejki usługi Service Bus, wybierz ten wyzwalacz: **gdy wiadomość zostaje odebrana w kolejce (Automatyczne zakończenie)**
+   Na przykład aby wyzwolić aplikację logiki, gdy nowy element jest wysyłany do kolejki usługi Service Bus, wybierz ten wyzwalacz: **Gdy wiadomość zostaje odebrana w kolejce (Automatyczne zakończenie)**
 
    ![Wybieranie wyzwalacza usługi Service Bus](./media/connectors-create-api-azure-service-bus/select-service-bus-trigger.png)
 
@@ -95,7 +95,7 @@ Upewnij się, że Twoja aplikacja logiki ma uprawnienia do uzyskiwania dostępu 
    1. W polu wyszukiwania wprowadź "Azure Service Bus" jako filtr. 
    W obszarze listy akcji wybierz akcję, którą chcesz. 
  
-      Na przykład, wybierz tę akcję: **Wyślij wiadomość**
+      Na przykład wybierz tę akcję: **Wyślij wiadomość**
 
       ![Wybierz akcję usługi Service Bus](./media/connectors-create-api-azure-service-bus/select-service-bus-send-message-action.png) 
 

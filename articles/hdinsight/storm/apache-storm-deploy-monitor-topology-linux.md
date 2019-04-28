@@ -1,7 +1,6 @@
 ---
 title: Wdrażanie topologii Apache Storm w usłudze Azure HDInsight i zarządzanie
 description: Dowiedz się, jak wdrażanie, monitorowanie i zarządzanie topologii usługi Apache Storm na HDInsight opartych na systemie Linux przy użyciu pulpitu nawigacyjnego Storm. Użyj narzędzi usługi Hadoop dla programu Visual Studio.
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.openlocfilehash: 32ad4434db8c2816fe7792b1b851e020021d543a
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
-ms.translationtype: MT
+ms.openlocfilehash: 8b27ad34bdc6fcbd7a1eb46515fbf33c96d02528
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447110"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62125242"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Wdrażanie topologii Apache Storm w usłudze Azure HDInsight i zarządzanie 
 

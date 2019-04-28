@@ -1,19 +1,18 @@
 ---
 title: Rozwiązywanie problemów z systemem plików HDFS w usłudze Azure HDinsight
 description: Uzyskaj odpowiedzi na często zadawane pytania na temat pracy z systemem plików HDFS i Azure HDInsight.
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: fca763d04cc8cbf22d1578b18d504ec3ce9656d9
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
-ms.translationtype: MT
+ms.openlocfilehash: 0a310eaeb9baf6ed2438b9f824cd6ad7eb492915
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993029"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63764010"
 ---
 # <a name="troubleshoot-apache-hadoop-hdfs-by-using-azure-hdinsight"></a>Rozwiązywanie problemów z systemem plików HDFS Apache Hadoop przy użyciu usługi Azure HDInsight
 

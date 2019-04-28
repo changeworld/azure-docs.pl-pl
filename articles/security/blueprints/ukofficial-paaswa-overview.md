@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
 ms.openlocfilehash: 95e10f4727de239016a2e3c88571e74267e3967b
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482991"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62109331"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Zabezpieczenia platformy Azure i zgodności planu: Hosting w przypadku obciążeń oficjalne UK aplikacji sieci Web PaaS
 
@@ -21,7 +21,7 @@ ms.locfileid: "58482991"
 
 Plany usługi Azure składają się z dokumentów ze wskazówkami dotyczącymi i szablonów do automatyzacji wdrażania architektury oparte na chmurze oferowanie rozwiązań do scenariuszy, które mają akredytacji lub wymagań dotyczących zgodności. Plany usługi Azure są wskazówki i automatyzacji kolekcji szablonów, które umożliwiają klientom przyspieszanie wprowadzania swoich celów biznesowych za pomocą udostępniania architektura foundation, można rozszerzać w celu spełnienia dodatkowych wymogów, Microsoft Azure.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Tych samych zabezpieczeń platformy Azure i zgodności planu zapewnia wskazówki i automatyzacji skrypty dopasowane do dostarczania Microsoft Azure [platforma jako usługa (PaaS)](https://azure.microsoft.com/overview/what-is-paas/) hostowane odpowiednie do obsługi obciążeń sklasyfikowane Architektura aplikacji sieci web jako [UK-OFFICIAL](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/715778/May-2018_Government-Security-Classifications-2.pdf). Ta klasyfikacja zabezpieczeń obejmuje większość informacji utworzone lub przetworzone przez usługę z sektora publicznego. Obejmuje to operacje biznesowe procedur i usług, które if utracone, skradzione lub opublikowane na nośniku, z których część może mieć konsekwencje szkodliwe. Profil typowych zagrożeń oficjalne klasyfikacji jest bardzo podobne do firm prywatnych, który udostępnia cenne informacje i usługi. OFICJALNE UK oszacowano, trzeba chronić dane Rządu Zjednoczonego Królestwa lub usług zagrożenie lub naruszenia przez osoby atakujące przy użyciu ograniczonych możliwości i zasobów takich jak (ale nie jest ograniczona do) hactivists single-issue grup wykorzystanie dochodzeniowych dziennikarzy właściwe poszczególnych przed hakerami i większość osób karnego i grup.
 

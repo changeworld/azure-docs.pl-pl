@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.date: 09/12/2018
 ms.author: aahi
 ms.openlocfilehash: 6c28b02d68239bac658954caf447b6ff738c1b65
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55881252"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122527"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Samouczek: Tworzenie aplikacji jednostronicowej przy użyciu interfejsu API wyszukiwania w Internecie Bing
 
@@ -464,7 +464,7 @@ cors-proxy-server
 
 Podczas korzystania z przykładowej aplikacji pozostaw okno polecenia otwarte, ponieważ jego zamknięcie spowoduje zatrzymanie serwera proxy. W sekcji rozwijanej nagłówków HTTP poniżej wyników wyszukiwania powinien być widoczny nagłówek `X-MSEdge-ClientID`. Sprawdź, czy jest taki sam dla każdego żądania.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Dokumentacja interfejsu API wyszukiwania w sieci Web Bing w wersji 7](//docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference)

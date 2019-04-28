@@ -2,7 +2,6 @@
 title: Hadoop stosu śledzenia komunikatów o błędach — Azure HDInsight
 description: Indeks związanych z usługą Hadoop stosu śledzenia komunikaty o błędach w usłudze Azure HDInsight. Znajdź błąd na liście, aby wyświetlić informacje dotyczące rozwiązywania problemów.
 keywords: ślad stosu, komunikaty o błędach
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -10,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: 20d13f3df730ff4a81c7304ae1ad7e4158403521
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
-ms.translationtype: MT
+ms.openlocfilehash: 0fb884c46525c0d5d14deb1521f086451a969656
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337786"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63761159"
 ---
 # <a name="index-of-apache-hadoop-in-hdinsight-troubleshooting-articles"></a>Indeks Apache Hadoop w HDInsight artykuły dotyczące rozwiązywania problemów
 Artykuły są zorganizowane według typów błędów.

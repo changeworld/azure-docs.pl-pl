@@ -2,19 +2,20 @@
 title: Niepowodzenie ponownie maszyny wirtualne platformy Azure replikowane do regionu pomocniczego platformy Azure w celu odzyskiwania po awarii przy użyciu usługi Azure Site Recovery.
 description: Dowiedz się, jak zakończyć się niepowodzeniem ponownie Azure maszyn wirtualnych przy użyciu usługi Azure Site Recovery.
 services: site-recovery
-author: rayne-wiselman
-manager: carmonm
+author: rockboyfor
+manager: digimobile
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 03/18/2019
-ms.author: raynew
+origin.date: 03/18/2019
+ms.date: 04/22/2019
+ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: c8ce05e644ad556542314b17151b808586734824
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58315321"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62118183"
 ---
 # <a name="fail-back-azure-vms-between-azure-regions"></a>Niepowodzenie ponownie Azure maszyn wirtualnych między regionami platformy Azure
 
@@ -68,3 +69,6 @@ Po ponownego włączenia jego ochrony maszyn wirtualnych można powrotu po awari
 ## <a name="next-steps"></a>Kolejne kroki
 
 [Dowiedz się więcej](azure-to-azure-how-to-reprotect.md#what-happens-during-reprotection) o przepływie ponownego włączania ochrony.
+
+<!--Update_Description: new articles on azure to azure tutorial failback -->
+<!--ms.date: 04/22/2019-->

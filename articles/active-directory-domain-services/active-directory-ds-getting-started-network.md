@@ -16,11 +16,11 @@ ms.topic: conceptual
 ms.date: 05/23/2018
 ms.author: ergreenl
 ms.openlocfilehash: 3020d7b29f19ec2ab578acbebac8db8ea320a844
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58098029"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62103578"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Włączanie usługi Azure Active Directory Domain Services w witrynie Azure portal
 
@@ -29,7 +29,7 @@ ms.locfileid: "58098029"
 Zapoznaj się z tematem [Networking considerations for Azure Active Directory Domain Services](active-directory-ds-networking.md) (Zagadnienia dotyczące sieci w usłudze Azure Active Directory Domain Services).
 
 
-## <a name="task-2-configure-network-settings"></a>Zadanie 2: Konfigurowanie ustawień sieciowych
+## <a name="task-2-configure-network-settings"></a>Zadanie 2. Konfigurowanie ustawień sieciowych
 Następne zadanie konfiguracji jest tworzenie sieci wirtualnej platformy Azure i dedykowanej podsieci w nim. Usługi Azure Active Directory Domain Services w tej podsieci możesz włączyć w sieci wirtualnej. Możesz również wybrać istniejącą sieć wirtualną i Utwórz dedykowanej podsieci w obrębie tej.
 
 1. Kliknij przycisk **sieć wirtualna** do wybrania sieci wirtualnej.

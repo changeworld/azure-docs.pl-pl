@@ -1,6 +1,6 @@
 ---
-title: Limity tablicy wirtualnego StorSimple | Dokumentacja firmy Microsoft
-description: Opis ograniczeń systemowych i zalecane rozmiary dla elementów tablicy wirtualnej Microsoft Azure StorSimple i połączenia.
+title: Limity macierzy wirtualnej StorSimple | Dokumentacja firmy Microsoft
+description: Opis ograniczeń systemowych i zalecane rozmiary dla połączeń i składniki programu Microsoft Azure StorSimple Virtual Array.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,18 +15,18 @@ ms.workload: TBD
 ms.date: 03/15/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 43f8d338cf07999d7791cbd5d3e8ddcc0d6b2b59
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 43e8134ede0735c40b18be739f58b7b69e88fce1
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23875053"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62127866"
 ---
-# <a name="what-are-storsimple-virtual-array-limits"></a>Jakie są limity tablicy wirtualnego StorSimple?
+# <a name="what-are-storsimple-virtual-array-limits"></a>Jakie są limity macierzy wirtualnej StorSimple?
 
 ## <a name="overview"></a>Omówienie
-Te limity wziąć pod uwagę planowania, wdrażania i obsługi programu Microsoft Azure StorSimple wirtualnego tablicy. W poniższej tabeli opisano te limity dla urządzenia wirtualnego.
+Te limity wziąć pod uwagę planowanie, wdrażanie i obsługiwanie usługi Microsoft Azure StorSimple Virtual Array. W poniższej tabeli opisano limity dla urządzenia wirtualnego.
 
-## <a name="storsimple-virtual-array-limits"></a>Limity tablicy wirtualnego StorSimple
+## <a name="storsimple-virtual-array-limits"></a>Limity macierzy wirtualnej StorSimple
 [!INCLUDE [storsimple-virtual-array-limits](../../includes/storsimple-virtual-array-limits.md)]
 

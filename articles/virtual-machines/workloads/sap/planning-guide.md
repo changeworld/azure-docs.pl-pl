@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/05/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d4798f8c3e262129135a6677ccf90dc0fb3be7f2
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 097b5e8ee69d945e0a9e24ba1c62b0ae82dd896b
+ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59999539"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62732421"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines, planowania i implementacji środowiska SAP NetWeaver
 
@@ -451,7 +451,11 @@ Odczyt [w tym artykule] [ vpn-gateway-create-site-to-site-rm-powershell] Aby uzy
 >
 > Przyczyną tych ograniczeń jest konieczność sieć o małym opóźnieniu o wysokiej wydajności w ramach jednego systemu SAP, szczególnie między wystąpieniami aplikacji a warstwy system DBMS systemu SAP.
 >
->
+> Specjalne planowania systemów i regiony musi wystąpić podczas korzystania z wielu systemów SAP, które są wysoce zintegrowane. Upewnij się, że wdrażanie tych systemów, jak najbliżej siebie, aby zminimalizować opóźnienie sieci. Wysoce zintegrowanych systemów SAP należą do nich:
+> * System SAP BW, odczytywanie danych z systemów SAP OLTP, takich jak ERP i CRM lub SRM; lub
+> * SLT SAP on używany do replikacji danych między wieloma systemami SPA lub nawet pomiędzy firmami SAP i systemów innych niż SAP. lub
+> * SAP S/4 nawiązanie połączenia z systemem SAP ERP; itp.
+
 
 ### <a name="supported-os-and-database-releases"></a>Obsługiwane systemu operacyjnego i wersji bazy danych
 * Oprogramowanie serwerowe firmy Microsoft, obsługiwane w przypadku usług Azure Virtual Machine znajduje się w tym artykule: <https://support.microsoft.com/kb/2721672>.

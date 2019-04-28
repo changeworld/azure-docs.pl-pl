@@ -8,14 +8,14 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/10/2019
+ms.date: 04/23/2019
 ms.author: carlrab
-ms.openlocfilehash: 9b961436c81282381f963d16c6c6dd5f289d1259
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: e6d702c7a3194f07f9d04139acbc9b6101b296ea
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59495109"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63759455"
 ---
 # <a name="sql-database-release-notes"></a>Informacje o wersji bazy danych SQL
 
@@ -45,6 +45,22 @@ Ten artykuł zawiera listę nowych funkcji i ulepszeń, w ramach usługi SQL Dat
 |SQL Analytics|Aby uzyskać informacje, zobacz [usługi Azure SQL Analytics](../azure-monitor/insights/azure-sql.md)|
 | Obsługa strefy czasowej dla wystąpienia zarządzanego|Aby uzyskać więcej informacji, zobacz [strefę czasową w wystąpieniu zarządzanym usługi Azure SQL Database](sql-database-managed-instance-timezone.md)|
 |||
+
+## <a name="april-2019"></a>2019 kwietnia
+
+### <a name="service-improvements"></a>Udoskonalenia usługi
+
+| Udoskonalenia usługi | Szczegóły |
+| --- | --- |
+| Publiczne punkty końcowe dla wystąpienia zarządzanego | Aby uzyskać więcej informacji, zobacz [wystąpienia, bezpiecznie z publicznym punktem końcowym zarządzanego przy użyciu usługi Azure SQL Database](sql-database-managed-instance-public-endpoint-securely.md)
+| Obsługa strefy czasowej dla wystąpienia zarządzanego | Aby uzyskać więcej informacji, zobacz [strefę czasową w bazie danych wystąpienia zarządzanego Azure SQL (wersja zapoznawcza)](sql-database-managed-instance-timezone.md)
+
+### <a name="documentation-improvements"></a>Udoskonalenia dokumentacji
+
+| Udoskonalenia dokumentacji | Szczegóły |
+| --- | --- |
+| Publiczne punkty końcowe dla wystąpienia zarządzanego | Aby uzyskać więcej informacji, zobacz [wystąpienia, bezpiecznie z publicznym punktem końcowym zarządzanego przy użyciu usługi Azure SQL Database](sql-database-managed-instance-public-endpoint-securely.md)
+| Obsługa strefy czasowej dla wystąpienia zarządzanego | Aby uzyskać więcej informacji, zobacz [strefę czasową w bazie danych wystąpienia zarządzanego Azure SQL (wersja zapoznawcza)](sql-database-managed-instance-timezone.md)
 
 ## <a name="march-2019"></a>Marca 2019 r
 

@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 01/28/2019
+ms.date: 04/22/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 588b8b11a02551a790145aafb013759699004267
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: bc85de0c8ec89ea88d2bae8e3f226da7d3163f53
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59009969"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62115356"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Stream metryki na żywo: Monitorowanie i diagnozowanie z opóźnieniem 1 sekundę
 
@@ -50,10 +50,13 @@ Metryki na żywo są obecnie obsługiwane w przypadku aplikacji ASP.NET, ASP.NET
 
 4. [Bezpieczny kanał kontrolny](#secure-the-control-channel) Jeśli poufnych danych, takich jak nazwy klienta można użyć w filtry.
 
+### <a name="nodejs"></a>Node.js
+
+Metryki na żywo za pomocą środowiska Node.js, należy zaktualizować do wersji 1,30 lub nowszej zestawu SDK. Domyślnie metryki na żywo jest wyłączone w zestawie SDK środowiska Node.js. Aby włączyć metryki na żywo należy dodać `setSendLiveMetrics(true)` do Twojej [metody konfiguracji](https://github.com/Microsoft/ApplicationInsights-node.js#configuration) jak zainicjować zestaw SDK.
+
 ### <a name="no-data-check-your-server-firewall"></a>Brak danych? Sprawdź Zapora serwera
 
 Sprawdź [porty wychodzące dla Live Stream metryki](../../azure-monitor/app/ip-addresses.md#outgoing-ports) są otwarte w zaporze serwerów. 
-
 
 ## <a name="how-does-live-metrics-stream-differ-from-metrics-explorer-and-analytics"></a>Czym różni się Live Stream metryk z Eksploratora metryk i analiza?
 
@@ -65,7 +68,6 @@ Sprawdź [porty wychodzące dla Live Stream metryki](../../azure-monitor/app/ip-
 |Bezpłatna|Nie ma opłat dla danych Live Stream.|Podlegają [ceny](../../azure-monitor/app/pricing.md)
 |Próbkowanie|Wszystkie wybrane metryk i liczników są przesyłane. Błędy i ślady stosu są próbkowane. TelemetryProcessors nie są stosowane.|Zdarzenia mogą być [próbkowania](../../azure-monitor/app/api-filtering-sampling.md)|
 |Kanał kontrolny|Sygnały formant filtru są wysyłane do zestawu SDK. Zaleca się, że zabezpieczenia tego kanału.|Komunikacja jest jednokierunkowe do portalu|
-
 
 ## <a name="select-and-filter-your-metrics"></a>Wybierania i filtrowania metryk
 

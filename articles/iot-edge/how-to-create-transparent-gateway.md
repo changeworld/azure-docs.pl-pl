@@ -4,21 +4,21 @@ description: Używanie usługi Azure IoT Edge urządzenia rolę przezroczystej b
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/29/2018
+ms.date: 04/23/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 95ee0a4d5d150741e59c0c2d20abebe9609e179f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 722ee6197b467454818026c960e1ce0e5b39efb4
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59699017"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63766320"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Konfigurowanie urządzenia usługi IoT Edge, aby pełnić rolę przezroczystej bramy
 
-Ten artykuł zawiera szczegółowe instrukcje dotyczące konfigurowania urządzenia usługi IoT Edge działa jak przezroczystej bramy w przypadku innych urządzeń do komunikowania się z usługą IoT Hub. W tym artykule określenie *brama usługi IoT Edge* odwołuje się do urządzenia usługi IoT Edge używany jako przezroczystej bramy. Aby uzyskać więcej informacji, zobacz [jak IoT Edge urządzenia mogą być używane jako brama](./iot-edge-as-gateway.md), który zawiera omówienie pojęć.
+Ten artykuł zawiera szczegółowe instrukcje dotyczące konfigurowania urządzenia usługi IoT Edge działa jak przezroczystej bramy w przypadku innych urządzeń do komunikowania się z usługą IoT Hub. W tym artykule określenie *brama usługi IoT Edge* odwołuje się do urządzenia usługi IoT Edge używany jako przezroczystej bramy. Aby uzyskać więcej informacji, zobacz [jak IoT Edge urządzenia mogą być używane jako brama](./iot-edge-as-gateway.md).
 
 >[!NOTE]
 >Obecnie:
@@ -26,21 +26,21 @@ Ten artykuł zawiera szczegółowe instrukcje dotyczące konfigurowania urządze
 > * Urządzenia z włączoną obsługą usługi Edge nie można nawiązać połączenia bramy usługi IoT Edge. 
 > * Podrzędne urządzenia nie mogą używać przekazywania plików.
 
-W przypadku urządzeń do działania jako brama musi mieć możliwość nawiązania bezpiecznego połączenia podrzędnego urządzeń. Usługa Azure IoT Edge umożliwia użycie infrastruktury kluczy publicznych (PKI) do skonfigurowania bezpiecznych połączeń między urządzeniami. W tym przypadku możemy zezwolenie podrzędnym urządzenia połączyć się z urządzenia usługi IoT Edge, działając jako przezroczystej bramy. Aby zachować bezpieczeństwo uzasadnione, podrzędne urządzenia należy się upewnić tożsamość urządzenia usługi Edge, ponieważ mają tylko urządzenia nawiązywania połączenia z bramami i potencjalnie złośliwych bramy.
+W przypadku urządzeń do działania jako brama musi mieć możliwość nawiązania bezpiecznego połączenia podrzędnego urządzeń. Usługa Azure IoT Edge umożliwia użycie infrastruktury kluczy publicznych (PKI) do skonfigurowania bezpiecznych połączeń między urządzeniami. W tym przypadku możemy zezwolenie podrzędnym urządzenia połączyć się z urządzenia usługi IoT Edge, działając jako przezroczystej bramy. Aby zachować bezpieczeństwo uzasadnione, podrzędnym urządzenia powinny potwierdzenia tożsamości urządzenia usługi IoT Edge. Chcesz, aby urządzenia, na nawiązywanie połączeń tylko bram, nie wszystkie bramy mogą okazać się złośliwe.
 
 Podrzędne urządzenie może pozostawać w dowolnej aplikacji lub platformy, który został utworzony za pomocą tożsamości [usługi Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub) usługi w chmurze. W wielu przypadkach te aplikacje korzystają [zestaw SDK urządzeń Azure IoT](../iot-hub/iot-hub-devguide-sdks.md). Praktycznego podrzędne urządzenia można nawet aplikację działającą na samym urządzeniu bramy usługi IoT Edge. 
 
-Można utworzyć żadnej infrastruktury certyfikatów, umożliwiająca zaufania wymagane dla topologii urządzenia bramy. W tym artykule przyjęto założenie, że tę samą konfigurację certyfikatu, który zostanie wykorzystany do włączenia [zabezpieczeń urzędu certyfikacji X.509](../iot-hub/iot-hub-x509ca-overview.md) w usłudze IoT Hub, który obejmuje certyfikat X.509 urzędu certyfikacji, powiązanych z określonej usługi IoT hub (IoT hub właściciel urzędu certyfikacji) i serii certyfikatów, zarejestrowana za pomocą tego urzędu certyfikacji i urzędu certyfikacji do urządzenia usługi Edge.
+Można utworzyć żadnej infrastruktury certyfikatów, umożliwiająca zaufania wymagane dla topologii urządzenia bramy. W tym artykule przyjęto założenie, że tę samą konfigurację certyfikatu, który zostanie wykorzystany do włączenia [zabezpieczeń urzędu certyfikacji X.509](../iot-hub/iot-hub-x509ca-overview.md) w usłudze IoT Hub, który obejmuje certyfikat X.509 urzędu certyfikacji, powiązanych z określonej usługi IoT hub (IoT hub właściciel urzędu certyfikacji) i serii certyfikatów, zarejestrowana za pomocą tego urzędu certyfikacji i urzędu certyfikacji do urządzenia usługi IoT Edge.
 
 ![Konfiguracja certyfikatu bramy](./media/how-to-create-transparent-gateway/gateway-setup.png)
 
-Brama przedstawia swój certyfikat urzędu certyfikacji urządzenia Edge na urządzeniu podrzędnego podczas inicjowania połączenia. Podrzędne urządzenie sprawdza upewnij się, że certyfikat urzędu certyfikacji urządzenia Edge jest podpisany przez właściciela certyfikatu urzędu certyfikacji. Ten proces umożliwia podrzędnym urządzenia upewnić się, że brama pochodzi z zaufanego źródła.
+Brama przedstawia informacje o jego usługi IoT Edge urządzenia urzędu certyfikacji, aby podrzędnym urządzenia podczas inicjowania połączenia. Podrzędne urządzenie sprawdza upewnij się, że certyfikat urzędu certyfikacji urządzenia usługi IoT Edge jest podpisany przez właściciela certyfikatu urzędu certyfikacji. Ten proces umożliwia podrzędnym urządzenia upewnić się, że brama pochodzi z zaufanego źródła.
 
 W poniższych krokach objaśniono proces tworzenia certyfikatów i instalowania ich w odpowiednich miejscach.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Urządzenia z systemem Azure IoT Edge można skonfigurować jako bramę. Komputerze deweloperskim lub maszyna wirtualna służy jako urządzenia usługi IoT Edge wykonując kroki dla następujących systemów operacyjnych:
+Urządzenia z systemem Azure IoT Edge można skonfigurować jako bramę. Wykonaj kroki instalacji usługi IoT Edge dla następujących systemów operacyjnych:
 * [Windows](./how-to-install-iot-edge-windows.md)
 * [Linux x64](./how-to-install-iot-edge-linux.md)
 * [ARM32 systemu Linux](./how-to-install-iot-edge-linux-arm.md)
@@ -52,7 +52,7 @@ Można użyć dowolnej maszyny do generowania certyfikatów, a następnie skopiu
 
 ## <a name="generate-certificates-with-windows"></a>Generowanie certyfikatów z Windows
 
-Wykonaj kroki w tej sekcji, aby wygenerować Certyfikaty testowe na urządzeniu z systemem Windows. Można wygenerować certyfikaty na urządzeniu usługi IoT Edge, lub użyć osobnej maszyny i skopiować końcowej certyfikaty na dowolne urządzenie usługi IoT Edge, w dowolnym obsługiwanym systemem operacyjnym. 
+Wykonaj kroki w tej sekcji, aby wygenerować Certyfikaty testowe na urządzeniu z systemem Windows. Te kroki służą do generowania certyfikatów na urządzeniu Windows IoT Edge. Alternatywnie można wygenerować certyfikaty na komputerze deweloperskim Windows, a następnie skopiuj je na dowolne urządzenie usługi IoT Edge. 
 
 Certyfikatów wygenerowanych w tej sekcji są przeznaczone tylko do celów testowych. 
 
@@ -133,13 +133,13 @@ W tej sekcji utworzysz trzy certyfikaty i połączyć je w łańcuch. Umieszczen
       New-CACertsCertChain rsa
       ```
 
-2. Utwórz certyfikat urzędu certyfikacji urządzenia usługi Edge i klucza prywatnego za pomocą następującego polecenia. Podaj nazwę dla urządzenia bramy, która będzie służyć do nazwy plików i podczas generowania certyfikatów. 
+2. Tworzenie usługi IoT Edge urządzenia certyfikatu urzędu certyfikacji i klucza prywatnego za pomocą następującego polecenia. Podaj nazwę dla urządzenia bramy, która będzie służyć do nazwy plików i podczas generowania certyfikatów. 
 
    ```powershell
    New-CACertsEdgeDevice "<gateway name>"
    ```
 
-3. Tworzenie łańcucha certyfikatów z certyfikatu urzędu certyfikacji właściciela, pośredniego certyfikatu i certyfikat urzędu certyfikacji urządzeń brzegowych za pomocą następującego polecenia. 
+3. Tworzenie łańcucha certyfikatów od właściciela certyfikatu urzędu certyfikacji, pośredniego certyfikatu i certyfikat urzędu certyfikacji urządzenia usługi IoT Edge przy użyciu następującego polecenia. 
 
    ```powershell
    Write-CACertsCertificatesForEdgeDevice "<gateway name>"
@@ -193,7 +193,7 @@ W tej sekcji utworzysz trzy certyfikaty i połączyć je w łańcuch. Umieszczen
    * `<WRKDIR>/private/azure-iot-test-only.root.ca.key.pem`
    * `<WRKDIR>/private/azure-iot-test-only.intermediate.key.pem`
 
-2. Utwórz certyfikat urzędu certyfikacji urządzenia usługi Edge i klucza prywatnego za pomocą następującego polecenia. Podaj nazwę dla urządzenia bramy, która będzie służyć do nazwy plików i podczas generowania certyfikatów. 
+2. Tworzenie usługi IoT Edge urządzenia certyfikatu urzędu certyfikacji i klucza prywatnego za pomocą następującego polecenia. Podaj nazwę dla urządzenia bramy, która będzie służyć do nazwy plików i podczas generowania certyfikatów. 
 
    ```bash
    ./certGen.sh create_edge_device_certificate "<gateway name>"
@@ -203,7 +203,7 @@ W tej sekcji utworzysz trzy certyfikaty i połączyć je w łańcuch. Umieszczen
    * `<WRKDIR>/certs/new-edge-device.*`
    * `<WRKDIR>/private/new-edge-device.key.pem`
 
-3. Tworzenie łańcucha certyfikatów, o nazwie **nowy edge — urządzenia — pełny — chain.cert.pem** właściciela urzędu certyfikacji certyfikatu, certyfikat pośredniego i krawędzi urządzeń urzędu certyfikacji certyfikat.
+3. Tworzenie łańcucha certyfikatów, o nazwie **nowy edge — urządzenia — pełny — chain.cert.pem** od właściciela urzędu certyfikacji certyfikat pośredniego certyfikatu i certyfikat urzędu certyfikacji urządzenia usługi IoT Edge.
 
    ```bash
    cat ./certs/new-edge-device.cert.pem ./certs/azure-iot-test-only.intermediate.cert.pem ./certs/azure-iot-test-only.root.ca.cert.pem > ./certs/new-edge-device-full-chain.cert.pem
@@ -215,7 +215,7 @@ Po utworzeniu łańcucha certyfikatów, należy go zainstalować na urządzeniu 
 
 1. Skopiuj następujące pliki z  *\<WRKDIR >*. Zapisz je w dowolnym miejscu na urządzeniu usługi IoT Edge. Będziemy odnosić się do katalogu docelowego na twoim urządzeniu usługi IoT Edge jako  *\<CERTDIR >*. 
 
-   Jeśli certyfikaty na samym urządzeniu usługi Edge jest generowany, możesz pominąć ten krok i użyć ścieżki do katalogu roboczego.
+   Jeśli certyfikaty na samym urządzeniu usługi IoT Edge jest generowany, możesz pominąć ten krok i użyć ścieżki do katalogu roboczego.
 
    * Certyfikat dostępu Warunkowego do urządzeń —  `<WRKDIR>\certs\new-edge-device-full-chain.cert.pem`
    * Klucz prywatny urzędu certyfikacji urządzenia — `<WRKDIR>\private\new-edge-device.key.pem`
@@ -228,16 +228,28 @@ Po utworzeniu łańcucha certyfikatów, należy go zainstalować na urządzeniu 
 
 3. Ustaw **certyfikatu** właściwości w pliku config.yaml do ścieżki, w którym została umieszczona certyfikat i klucz plików na urządzeniu usługi IoT Edge.
 
-```yaml
-certificates:
-  device_ca_cert: "<CERTDIR>\\certs\\new-edge-device-full-chain.cert.pem"
-  device_ca_pk: "<CERTDIR>\\private\\new-edge-device.key.pem"
-  trusted_ca_certs: "<CERTDIR>\\certs\\azure-iot-test-only.root.ca.cert.pem"
-```
+   * W systemie Windows:
+
+      ```yaml
+      certificates:
+        device_ca_cert: "<CERTDIR>\\certs\\new-edge-device-full-chain.cert.pem"
+        device_ca_pk: "<CERTDIR>\\private\\new-edge-device.key.pem"
+        trusted_ca_certs: "<CERTDIR>\\certs\\azure-iot-test-only.root.ca.cert.pem"
+      ```
+   
+   * W systemie Linux: 
+      ```yaml
+      certificates:
+        device_ca_cert: "<CERTDIR>/certs/new-edge-device-full-chain.cert.pem"
+        device_ca_pk: "<CERTDIR>/private/new-edge-device.key.pem"
+        trusted_ca_certs: "<CERTDIR>/certs/azure-iot-test-only.root.ca.cert.pem"
+      ```
+
+4. Na urządzeniach z systemem Linux, upewnij się, że użytkownik **iotedge** ma uprawnienia odczytu wobec katalogu zawierający certyfikaty. 
 
 ## <a name="deploy-edgehub-to-the-gateway"></a>Wdrażanie EdgeHub do bramy
 
-Podczas pierwszej instalacji usługi IoT Edge na urządzeniu, moduł tylko jeden system jest uruchamiany automatycznie: agent usługi Edge. Twoje urządzenie z miejscem pracy jako bramy należy oba moduły systemu. Jeśli wszystkie moduły nie zostały wdrożone na urządzeniu bramy przed, należy utworzyć wdrożenia dla Twojego urządzenia, które można uruchomić modułu systemu z drugiego Centrum usługi Edge. Wdrożenie będzie wyglądać pusty, ponieważ wszystkie moduły nie dodawaj kreatora, ale zostanie wdrożona, oba moduły systemu. 
+Podczas pierwszej instalacji usługi IoT Edge na urządzeniu, moduł tylko jeden system jest uruchamiany automatycznie: agenta usługi IoT Edge. Twoje urządzenie z miejscem pracy jako bramy należy oba moduły systemu. Jeśli wszystkie moduły nie zostały wdrożone na urządzeniu bramy przed, należy utworzyć wdrożenia dla Twojego urządzenia, które można uruchomić modułu systemu z drugiego Centrum usługi IoT Edge. Wdrożenie będzie wyglądać pusty, ponieważ wszystkie moduły nie dodawaj kreatora, ale zostanie wdrożona, oba moduły systemu. 
 
 Możesz sprawdzić, które moduły są uruchomione na urządzeniu za pomocą polecenia `iotedge list`.
 
@@ -265,7 +277,7 @@ Możesz sprawdzić, które moduły są uruchomione na urządzeniu za pomocą pol
 
 Standardowa urządzenia usługi IoT Edge nie jest konieczne połączenie przychodzące do funkcji, ponieważ cała komunikacja z usługą IoT Hub odbywa się za pośrednictwem połączeń wychodzących. Jednak urządzenia bramy są różne, ponieważ muszą być w stanie odbierać komunikaty z urządzeń podrzędnego.
 
-Scenariusz bramy do pracy co najmniej jeden z obsługiwanych protokołów Centrum IoT Edge musi być otwarty dla ruchu przychodzącego z podrzędnym urządzeń. Obsługiwane portocols są MQTT, AMQP i HTTPS.
+Scenariusz bramy do pracy co najmniej jeden z obsługiwanych protokołów Centrum IoT Edge musi być otwarty dla ruchu przychodzącego z podrzędnym urządzeń. Obsługiwane protokoły to MQTT, AMQP i HTTPS.
 
 | Port | Protokół |
 | ---- | -------- |
@@ -274,7 +286,7 @@ Scenariusz bramy do pracy co najmniej jeden z obsługiwanych protokołów Centru
 | 443 | HTTPS <br> MQTT+WS <br> AMQP+WS | 
 
 ## <a name="route-messages-from-downstream-devices"></a>Routing komunikatów z urządzeń podrzędne
-Komunikaty wysyłane z urządzeń podrzędne, podobnie jak komunikaty wysyłane przez moduły można kierować do środowiska uruchomieniowego usługi IoT Edge. Pozwala na przeprowadzanie analiz w module uruchomiona na bramie przed wysłaniem danych do chmury. 
+Komunikaty wysyłane z urządzeń podrzędne, podobnie jak komunikaty wysyłane przez moduły można kierować do środowiska uruchomieniowego usługi IoT Edge. Ta funkcja umożliwia przeprowadzanie analiz w module uruchomiona na bramie przed wysłaniem danych do chmury. 
 
 Obecnie sposobem, w który trasy wiadomości wysyłanych przez urządzenia podrzędnego jest różnicując je na wiadomości wysłane przez moduły. Komunikaty wysyłane przez wszystkie moduły zawierają właściwość systemu o nazwie **connectionModuleId** , ale nie obsługują komunikaty wysyłane przez urządzenia podrzędnego. Aby wykluczyć wszystkie komunikaty, które zawierają tę właściwość systemu, można użyć klauzuli WHERE trasy. 
 

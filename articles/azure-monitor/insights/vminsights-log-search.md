@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 04/10/2019
 ms.author: magoedte
 ms.openlocfilehash: 8b6745a2b9afe8d3101585e3f7a13f2fc978c84a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59492092"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122595"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Tworzenie zapytań względem dzienników z usługi Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)
 Usługa Azure Monitor dla maszyn wirtualnych umożliwia zbieranie informacji o wydajności i metryki połączeń, komputera i przetwarzanie magazynu danych i informacji o stanie kondycji i przekazuje go do obszaru roboczego usługi Log Analytics w usłudze Azure Monitor.  Dane te są dostępne dla [zapytania](../../azure-monitor/log-query/log-query-overview.md) w usłudze Azure Monitor. Dane te można zastosować do scenariuszy obejmujących planowania migracji, analizy wydajności, wykrywanie i rozwiązywanie problemów z wydajnością na żądanie.
@@ -53,12 +53,12 @@ Aby zarządzać, koszt i złożoność, rekordy połączeń nie przedstawiają p
 | Właściwość | Opis |
 |:--|:--|
 |Direction |Kierunek połączenia, wartość jest *dla ruchu przychodzącego* lub *ruchu wychodzącego* |
-|Machine |Nazwa FQDN komputera |
-|Process |Tożsamość procesu lub grupy procesów, inicjowanie/akceptować połączenia |
+|Maszyna |Nazwa FQDN komputera |
+|Przetwórz |Tożsamość procesu lub grupy procesów, inicjowanie/akceptować połączenia |
 |SourceIp |Adres IP źródła |
 |DestinationIp |Adres IP miejsca docelowego |
 |DestinationPort |Numer portu docelowego |
-|Protocol |Protokół używany dla połączenia.  Wartości *tcp*. |
+|Protokół |Protokół używany dla połączenia.  Wartości *tcp*. |
 
 Aby uwzględnić wpływ grupowania, informacje o liczbie pogrupowanych połączeń fizycznych znajduje się w następujących właściwości rekordu:
 
@@ -77,7 +77,7 @@ Oprócz metryki liczbę połączeń informacji na temat ilości danych wysłanyc
 |:--|:--|
 |BytesSent |Całkowita liczba bajtów wysłanych raportowania przedziale czasu |
 |BytesReceived |Całkowita liczba bajtów odebranych w przedziale czasu raportowania |
-|Responses |Liczba odpowiedzi zaobserwowane w przedziale czasu raportowania. 
+|Odpowiedzi |Liczba odpowiedzi zaobserwowane w przedziale czasu raportowania. 
 |ResponseTimeMax |Największy czas odpowiedzi (w milisekundach) zaobserwowane w przedziale czasu raportowania. Jeśli brak wartości właściwości jest pusta.|
 |ResponseTimeMin |Najmniejszy czas odpowiedzi (w milisekundach) zaobserwowane w przedziale czasu raportowania. Jeśli brak wartości właściwości jest pusta.|
 |ResponseTimeSum |Suma czasów odpowiedzi (w milisekundach) zaobserwowane w przedziale czasu raportowania. Jeśli brak wartości właściwości jest pusta.|
@@ -112,10 +112,10 @@ Dla każdej właściwości RemoteIp w *VMConnection* tabeli jest sprawdzana wzgl
 |:--|:--|
 |MaliciousIp |Adres RemoteIp |
 |IndicatorThreadType |Wskaźnik zagrożenia wykryte jest jednym z następujących wartości *Botnet*, *C2*, *CryptoMining*, *zakres sieci Darknet*, *przed atakami DDos* , *MaliciousUrl*, *złośliwego oprogramowania*, *wyłudzania informacji*, *Proxy*, *potencjalnie niechciane aplikacje*, *Listy do obejrzenia*.   |
-|Description |Opis obserwowanych zagrożeń. |
+|Opis |Opis obserwowanych zagrożeń. |
 |TLPLevel |Poziom Rack (RECENT sygnalizacji ulicznej Protocol) jest jednym ze zdefiniowanymi wartościami *biały*, *zielony*, *żółtą*, *Red*. |
-|Confidence |Wartości są *0 – 100*. |
-|Severity |Wartości są *0 – 5*, gdzie *5* jest najpoważniejsze i *0* nie jest poważny wcale. Wartość domyślna to *3*.  |
+|Ufność |Wartości są *0 – 100*. |
+|Ważność |Wartości są *0 – 5*, gdzie *5* jest najpoważniejsze i *0* nie jest poważny wcale. Wartość domyślna to *3*.  |
 |FirstReportedDateTime |Po raz pierwszy dostawca zgłosił wskaźnika. |
 |LastReportedDateTime |Czas ostatniego wskaźnika widzianego przez Interflow. |
 |IsActive |Wskazuje, wskaźniki zostaną dezaktywowane z *True* lub *False* wartość. |
@@ -136,10 +136,10 @@ Każdy rekord w VMBoundPort jest identyfikowane za pomocą następujących pól:
 
 | Właściwość | Opis |
 |:--|:--|
-|Process | Tożsamość procesu (lub grupy procesów), z którymi jest skojarzony z portu.|
-|Ip | Port adresu IP (mogą być symbolami wieloznacznymi adres IP, *0.0.0.0*) |
+|Przetwórz | Tożsamość procesu (lub grupy procesów), z którymi jest skojarzony z portu.|
+|Adres IP | Port adresu IP (mogą być symbolami wieloznacznymi adres IP, *0.0.0.0*) |
 |Port |Numer portu |
-|Protocol | Protokół.  Przykład *tcp* lub *udp* (tylko *tcp* jest obecnie obsługiwane).|
+|Protokół | Protokół.  Przykład *tcp* lub *udp* (tylko *tcp* jest obecnie obsługiwane).|
  
 Tożsamość portu jest tworzony na podstawie powyższych pięć pól i jest przechowywany we właściwości identyfikator portu. Ta właściwość umożliwia szybkie znajdowanie rekordy na określonym porcie w czasie. 
 

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 04/02/2019
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 61a17842158326c927f049af893a00818f3acc55
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: be120ea8ae588da486c9a5acd4eb7bfdb4e45dee
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59793390"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62109821"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>Szybki start: Skompiluj i uruchom obraz kontenera przy użyciu zadań rejestru kontenera platformy Azure
 
@@ -52,7 +52,7 @@ Ten przykład tworzy *podstawowe* rejestru, to opcja optymalizacji kosztów dla 
 Teraz używać usługi Azure Container Registry, aby skompilować obraz. Najpierw utwórz katalog roboczy, a następnie utwórz plik Dockerfile o nazwie *pliku Dockerfile* o następującej zawartości. Jest to prosty przykład, aby utworzyć obraz kontenera systemu Linux, ale można tworzyć własne standardowy plik Dockerfile i kompilowanie obrazów na innych platformach.
 
 ```bash
-echo "FROM hello-world" > Dockerfile
+echo FROM hello-world > Dockerfile
 ```
 
 Uruchom [az acr build] [ az-acr-build] polecenie, aby utworzyć obraz. Gdy pomyślnie skompilowany obraz, który zostanie przypisany do rejestru. Poniższy przykład umieszcza `sample/hello-world:v1` obrazu. `.` Na końcu polecenie ustawia lokalizację pliku Dockerfile, w tym przypadku bieżącego katalogu.

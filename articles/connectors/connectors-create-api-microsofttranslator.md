@@ -1,6 +1,6 @@
 ---
-title: Nawiązać Microsoft Translator — aplikacje logiki platformy Azure | Dokumentacja firmy Microsoft
-description: Tłumaczenie tekstu i wykonywać inne zadania języka z interfejsów API REST Translator firmy Microsoft i usługi Azure Logic Apps
+title: Łączenie z usługą Microsoft Translator — Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Tłumaczenie tekstu i wykonywanie innych zadań języka, interfejsów API REST w usłudze Translator firmy Microsoft i Azure Logic Apps
 author: ecfan
 manager: jeconnoc
 ms.author: estfan
@@ -11,29 +11,29 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: f6b8d96b7be3c87692b9a3db47e7e8e7d8e2649c
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 29212cf1c1f06ecae9892e0fc8aaaa4a01b2612b
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295748"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62105789"
 ---
-# <a name="get-started-with-the-microsoft-translator-connector"></a>Rozpoczynanie pracy z łącznika Microsoft Translator
-Nawiązać translatora firmy Microsoft w celu tłumaczenie tekstu, wykrywa język i inne. Translator firmy Microsoft możesz: 
+# <a name="get-started-with-the-microsoft-translator-connector"></a>Rozpoczynanie pracy z usługą łącznika usługi Microsoft Translator
+Połączyć z usługą Microsoft Translator, aby tłumaczenie tekstu, wykrywanie języka i nie tylko. Usługa Microsoft Translator umożliwia: 
 
-* Tworzenie sieci przepływu biznesowe na podstawie danych otrzymywanych z Microsoft Translator. 
-* Akcje umożliwia tłumaczenie tekstu, wykrywa język i inne. Te akcje uzyskać odpowiedzi, a następnie udostępnić dane wyjściowe do innych działań. Na przykład podczas tworzenia nowego pliku skrzynki może dokonywać translacji tekstu w pliku na inny język przy użyciu translatora firmy Microsoft.
+* Tworzenie przepływu biznesowych na podstawie danych, który jest pobierany z Microsoft Translator. 
+* Akcje umożliwia tłumaczenie tekstu, wykrywanie języka i nie tylko. Te akcje uzyskać odpowiedzi, a następnie udostępnić dane wyjściowe do innych działań. Na przykład po utworzeniu nowego pliku w usłudze Dropbox można tłumaczyć tekst w pliku na inny język przy użyciu Microsoft Translator.
 
-Rozpoczynanie pracy przez teraz tworzenie aplikacji logiki, zobacz [tworzenie aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Możesz rozpocząć od teraz tworzenie aplikacji logiki, zobacz [tworzenie aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-## <a name="create-a-connection-to-microsoft-translator"></a>Utwórz połączenie Translator firmy Microsoft
+## <a name="create-a-connection-to-microsoft-translator"></a>Utworzyć połączenie z usługą Microsoft Translator
 > [!INCLUDE [Steps to create a connection to Microsoft Translator](../../includes/connectors-create-api-microsofttranslator.md)]
 > 
 > 
 
-## <a name="connector-specific-details"></a>Szczegóły dotyczące łącznika
+## <a name="connector-specific-details"></a>Szczegóły specyficzne dla łącznika
 
-Wyświetl wszystkie wyzwalacze i akcje zdefiniowane w swagger i zobacz też żadnych limitów w [szczegóły łącznika](/connectors/microsofttranslator/).
+Wyświetlanie wszystkich wyzwalaczy i akcji zdefiniowanych w strukturze swagger i zobacz też jakiekolwiek ograniczenia w [szczegóły łącznika](/connectors/microsofttranslator/).
 
 ## <a name="more-connectors"></a>Więcej łączników
 Wróć do [listy interfejsów API](apis-list.md).

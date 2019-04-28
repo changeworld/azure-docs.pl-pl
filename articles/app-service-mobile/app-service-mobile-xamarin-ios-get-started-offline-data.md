@@ -1,6 +1,6 @@
 ---
-title: Włączanie synchronizacji w trybie offline dla aplikacji mobilnej Azure (Xamarin iOS)
-description: Dowiedz się, jak używać aplikacji usługi Mobile App do pamięci podręcznej i synchronizacji danych w trybie offline w aplikacji platformy Xamarin iOS
+title: Włączanie synchronizacji offline dla aplikacji mobilnej platformy Azure (Xamarin iOS)
+description: Dowiedz się, jak używać aplikacji usługi Mobile App do pamięci podręcznej i synchronizacji danych w trybie offline w aplikacji platformy Xamarin dla systemu iOS
 documentationcenter: xamarin
 author: conceptdev
 manager: cfowler
@@ -14,62 +14,62 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 287977d55656a4b2bc42d90730d16f522fae9b9e
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 6a43ed0a50082cc37587752631c707bf9b5059ab
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2018
-ms.locfileid: "27594670"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62097463"
 ---
 # <a name="enable-offline-sync-for-your-xamarinios-mobile-app"></a>Włączanie synchronizacji w trybie offline dla aplikacji mobilnej platformy Xamarin.iOS
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
-## <a name="overview"></a>Przegląd
-Ten samouczek przedstawia funkcję synchronizacji w trybie offline w usłudze Azure Mobile Apps dla platformy Xamarin.iOS. Synchronizacja w trybie offline umożliwia użytkownikom końcowym interakcję z aplikacji mobilnej — przeglądanie, dodawanie lub modyfikowanie danych — nawet wtedy, gdy istnieje połączenie sieciowe. Zmiany są przechowywane w lokalnej bazie danych. Gdy urządzenie jest w trybie online, te zmiany są synchronizowane z usługi zdalnej.
+## <a name="overview"></a>Omówienie
+Ten samouczek zawiera funkcję synchronizacji w trybie offline, które usługi Azure Mobile Apps dla platformy Xamarin.iOS. Synchronizacja w trybie offline umożliwia użytkownikom końcowym interakcję z aplikacją mobilną — wyświetlanie, dodawanie lub modyfikowanie danych — nawet w przypadku braku połączenia sieciowego. Zmiany są przechowywane w lokalnej bazie danych. Gdy urządzenie jest w trybie online, zmiany te są synchronizowane z usługi zdalnej.
 
-W tym samouczku, zaktualizuj projekt aplikacji platformy Xamarin.iOS z [tworzenie aplikacji platformy Xamarin.IOS] do obsługi funkcji w trybie offline z usługą Azure Mobile Apps. Jeśli nie używasz szybki start pobrany Projekt serwera, należy dodać pakietów rozszerzenia dostępu do danych do projektu. Aby uzyskać więcej informacji na temat pakietów rozszerzenia serwera, zobacz [pracować z serwera wewnętrznej bazy danych .NET SDK usługi Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
+W tym samouczku aktualizacji projektu aplikacji platformy Xamarin.iOS z [tworzenie aplikacji platformy Xamarin.IOS] do obsługi w trybie offline funkcji usługi Azure Mobile Apps. Jeśli nie używasz projektu serwera pobranego — szybki start, należy dodać pakiety rozszerzeń dostępu do danych do projektu. Aby uzyskać więcej informacji na temat pakietów rozszerzeń serwera, zobacz [pracy z zestawem SDK serwera zaplecza platformy .NET dla usługi Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
 
-Aby dowiedzieć się więcej na temat funkcji synchronizacji w trybie offline, zobacz temat [synchronizacji danych w trybie Offline w usłudze Azure Mobile Apps].
+Aby dowiedzieć się więcej na temat funkcji synchronizacji w trybie offline, zobacz temat [Synchronizowanie danych w trybie offline w usłudze Azure Mobile Apps].
 
-## <a name="update-the-client-app-to-support-offline-features"></a>Aktualizowanie aplikacji klienta do obsługi funkcji w trybie offline
-Funkcje platformy Azure w trybie offline aplikacji mobilnej pozwala na interakcję z lokalnej bazy danych podczas pracy w trybie offline scenariuszu. Aby korzystać z tych funkcji w aplikacji, należy zainicjować [SyncContext] do lokalnego magazynu. Odwoływać się do tabeli za pomocą interfejsu [IMobileServiceSyncTable]. SQLite jest używany w magazynie lokalnym urządzenia.
+## <a name="update-the-client-app-to-support-offline-features"></a>Aktualizuj aplikację kliencką do obsługi funkcji w trybie offline
+Funkcje offline usług Azure Mobile App umożliwiają interakcję z lokalnej bazy danych, gdy znajdują się w ramach scenariusza w trybie offline. Korzystanie z tych funkcji w aplikacji należy zainicjować [SyncContext] do magazynu lokalnego. Odwoływać się do tabeli za pomocą interfejsu [IMobileServiceSyncTable]. Bazy danych SQLite jest używana jako magazynu lokalnego na urządzeniu.
 
-1. Otwórz Menedżera pakietów NuGet w projekcie, który zakończył w [tworzenie aplikacji platformy Xamarin.IOS] samouczek, a następnie wyszukaj i zainstaluj **Microsoft.Azure.Mobile.Client.SQLiteStore** pakietu NuGet.
-2. Otwórz plik QSTodoService.cs i Usuń komentarz `#define OFFLINE_SYNC_ENABLED` definicji.
-3. Ponownie skompilować i uruchomić aplikację klienta. Aplikacja działa tak samo jak przed włączeniem synchronizacji w trybie offline. Jednak lokalnej bazy danych jest teraz wypełniona dane, które mogą być używane w scenariuszu w trybie offline.
+1. Otwórz Menedżera pakietów NuGet w projekcie, który należy wykonać w [tworzenie aplikacji platformy Xamarin.IOS] samouczek, a następnie wyszukaj i zainstaluj **Microsoft.Azure.Mobile.Client.SQLiteStore** pakietu NuGet.
+2. Otwórz plik QSTodoService.cs i usuń znaczniki komentarza `#define OFFLINE_SYNC_ENABLED` definicji.
+3. Ponownie skompiluj i uruchom aplikację kliencką. Aplikacja działa tak samo jak przed włączeniem synchronizacji w trybie offline. Jednak lokalnej bazy danych jest teraz wypełniana z danymi, które mogą być używane w ramach scenariusza w trybie offline.
 
-## <a name="update-sync"></a>Aktualizowanie aplikacji, aby zakończyć połączenie z wewnętrznej bazy danych
-W tej sekcji możesz przerwać połączenie do zaplecza aplikacji mobilnej do symulowania sytuacji w trybie offline. Po dodaniu elementów danych z programu obsługi wyjątków informuje, że dana aplikacja jest w trybie offline. W tym stanie nowe elementy dodane w lokalnym magazynie i będą synchronizowane z zaplecza aplikacji mobilnej przy następnym uruchomieniu wypychania jest niepodłączony.
+## <a name="update-sync"></a>Zaktualizować aplikację tak, aby zakończyć połączenie z wewnętrznej bazy danych
+W tej sekcji możesz przerwać połączenie do zaplecza aplikacji mobilnej do symulacji taka sytuacja jest w trybie offline. Po dodaniu elementów danych, obsłudze wyjątków informujący o tym, że aplikacja jest w trybie offline. W tym stanie nowe elementy dodane w magazynie lokalnym i będą synchronizowane z zaplecza aplikacji mobilnej, po następnym uruchomieniu wypychania niepodłączony.
 
-1. Edytuj QSToDoService.cs w projekcie udostępnionym. Zmień **applicationURL** wskaż nieprawidłowy adres URL:
+1. Edytuj QSToDoService.cs projektu udostępnionego. Zmiana **applicationURL** wskaż nieprawidłowy adres URL:
 
          const string applicationURL = @"https://your-service.azurewebsites.fail";
 
-    Zachowanie w trybie offline można także pokazują, wyłączając sieci Wi-Fi i sieci komórkowych na urządzeniu lub w trybie samolotowy.
-2. Skompiluj i uruchom aplikację. Zwróć uwagę, synchronizacji nie powiodło się podczas odświeżania, gdy aplikacja jest uruchamiana.
-3. Wprowadź nowe elementy i zwróć uwagę, że wypychania nie powiedzie się ze stanem [CancelledByNetworkError] każdym kliknięciu **zapisać**. Jednak nowych elementów todo istnieje w lokalnym magazynie dopóki nie może zostać przeniesiony do zaplecza aplikacji mobilnej.  W aplikacji produkcyjnej Jeśli pominąć te wyjątki aplikacji klienckiej zachowuje się tak, jakby nadal jest podłączony do zaplecza aplikacji mobilnej.
-4. Zamknij aplikację i uruchom ponownie, aby sprawdzić, czy nowe elementy utworzone zostały utrwalone w magazynie lokalnym.
-5. (Opcjonalnie) Jeśli masz zainstalowanego na komputerze programu Visual Studio Otwórz **Eksploratora serwera**. Przejdź do bazy danych w **Azure**-> **baz danych SQL**. Kliknij prawym przyciskiem myszy bazę danych i wybierz **Otwórz w Eksploratorze obiektów SQL Server**. Możesz teraz przejść do tabeli bazy danych SQL i jego zawartość. Sprawdź, czy dane w bazie danych zaplecza nie uległy zmianie.
-6. (Opcjonalnie) Zapytania z zaplecze aplikacji mobilnej, za pomocą zapytania GET w formularzu za pomocą narzędzia REST, takie jak Fiddler lub Postman `https://<your-mobile-app-backend-name>.azurewebsites.net/tables/TodoItem`.
+    Można również pokazują działanie w trybie offline, wyłączając sieć Wi-Fi i sieci komórkowych na urządzeniu, lub za pomocą tryb samolotowy.
+2. Skompiluj i uruchom aplikację. Zwróć uwagę, usługi synchronizacji nie powiodło się podczas odświeżania, gdy aplikacja jest uruchamiana.
+3. Wprowadź nowe elementy i zwróć uwagę, że wypychania kończy się niepowodzeniem ze stanem [CancelledByNetworkError] każde kliknięcie **Zapisz**. Jednak nowe elementy zadań do wykonania istnieje w magazynie lokalnym do czasu może zostać przeniesiony do zaplecza aplikacji mobilnej.  W aplikacji produkcyjnej Jeśli pominąć te wyjątki aplikacji klienckiej zachowuje się tak, jakby nadal jest podłączony do zaplecza aplikacji mobilnej.
+4. Zamknij aplikację i uruchom ponownie, aby sprawdzić, czy nowych elementów, który został utworzony są utrwalane w magazynie lokalnym.
+5. (Opcjonalnie) Jeśli masz zainstalowany na komputerze program Visual Studio, otwórz **Eksploratora serwera**. Przejdź do bazy danych w **Azure**-> **baz danych SQL**. Kliknij prawym przyciskiem myszy bazę danych, a następnie wybierz pozycję **Otwórz w Eksploratorze obiektów SQL Server**. Teraz możesz przejść do tabeli bazy danych SQL i jego zawartość. Upewnij się, że dane w wewnętrznej bazy danych nie została zmieniona.
+6. (Opcjonalnie) Za pomocą narzędzia REST narzędzia Fiddler lub Postman do wykonywania zapytań w zapleczu mobilnym za pomocą zapytania GET w formie `https://<your-mobile-app-backend-name>.azurewebsites.net/tables/TodoItem`.
 
-## <a name="update-online-app"></a>Aktualizowanie aplikacji ponownie połączyć zaplecza aplikacji mobilnej
-W tej sekcji ponowne łączenie aplikacji z zapleczem aplikacji mobilnej. Symuluje to aplikacji przejście z trybu offline w tryb online z zaplecza aplikacji mobilnej.   Jeśli uszkodzenie sieci jest symulowane przez wyłączenie opcji łączności sieciowej, nie są konieczne żadne zmiany kodu.
-Ponownie włącz sieci.  Przy pierwszym uruchomieniu aplikacji, `RefreshDataAsync` metoda jest wywoływana. To z kolei wywołuje `SyncAsync` do synchronizacji z bazy danych zaplecza magazynu lokalnego.
+## <a name="update-online-app"></a>Zaktualizować aplikację tak, aby ponownie połączyć zaplecze aplikacji mobilnej
+W tej sekcji ponowne łączenie aplikacji z zapleczem aplikacji mobilnej. Symuluje to aplikacji przejście ze stanu offline do trybu online, przy użyciu zaplecza aplikacji mobilnej.   Jeśli uszkodzenie sieci jest symulowane przez wyłączenie opcji łączności sieciowej, są wymagane żadne zmiany w kodzie.
+Ponownie włącz sieci.  Przy pierwszym uruchomieniu aplikacji, `RefreshDataAsync` metoda jest wywoływana. To z kolei wywołuje `SyncAsync` do synchronizacji magazynu lokalnego przy użyciu wewnętrznej bazy danych.
 
-1. Otwórz QSToDoService.cs w projekcie udostępnionym, a następnie przywrócić zmiana **applicationURL** właściwości.
-2. Ponownie skompilować i uruchomić aplikację. Aplikacja przeprowadza synchronizację zmian z zaplecza aplikacji mobilnej Azure przy użyciu operacji wypychania i ściągania podczas `OnRefreshItemsSelected` metoda jest wykonywana.
-3. (Opcjonalnie) Wyświetlanie zaktualizowanych danych przy użyciu Eksplorator obiektów SQL Server lub narzędzia REST, takiego jak Fiddler. Powiadomienie danych został zsynchronizowany między bazą danych zaplecza aplikacji mobilnej Azure i lokalnego magazynu.
-4. W aplikacji kliknij pole wyboru obok kilka elementów, aby zakończyć je w lokalnym magazynie.
+1. Otwórz QSToDoService.cs w projekcie udostępnionym i przywrócić zmiana **applicationURL** właściwości.
+2. Ponownie skompiluj i uruchom aplikację. Aplikacja synchronizuje zmiany lokalne przy użyciu zaplecza aplikacji mobilnej platformy Azure przy użyciu operacji wypychania i ściągania podczas `OnRefreshItemsSelected` metoda jest wykonywana.
+3. (Opcjonalnie) Wyświetl zaktualizowane dane za pomocą Eksplorator obiektów SQL Server lub narzędzia REST, takiego jak Fiddler. Ogłoszenie dane zostały zsynchronizowane między bazy danych zaplecza aplikacji mobilnej platformy Azure i Magazyn lokalny.
+4. W aplikacji kliknij pole wyboru obok kilka elementów, aby zakończyć je w magazynie lokalnym.
 
-   `CompleteItemAsync`wywołania `SyncAsync` do elementu synchronizacja każdego z zaplecza aplikacji mobilnej. `SyncAsync`wywołuje wypychania i ściągania.
-   **Przy każdym wykonaniu ściągania przed tabelę, w której klient wprowadził zmiany do wypychania klienta kontekstu synchronizacji jest zawsze najpierw automatycznie wykonywać**. Niejawne wypychania gwarantuje, że wszystkie tabele w lokalnym magazynie wraz z relacji zachować spójność. Aby uzyskać więcej informacji dotyczących tego zachowania, zobacz [synchronizacji danych w trybie Offline w usłudze Azure Mobile Apps].
+   `CompleteItemAsync` wywołania `SyncAsync` do synchronizacji każdego elementu przy użyciu zaplecza aplikacji mobilnej. `SyncAsync` wywołuje operacje wypychania i ściągania.
+   **Po każdym wykonaniu ściągnięcia względem tabeli, który klient wprowadził zmiany do, powiadomienie wypychane na kontekst synchronizacji klienta jest zawsze wykonywane jako pierwsze automatycznie**. Niejawne wypychania gwarantuje, że wszystkie tabele w magazynie lokalnym oraz relacje pozostają spójne. Aby uzyskać więcej informacji na temat tego zachowania, zobacz [Synchronizowanie danych w trybie offline w usłudze Azure Mobile Apps].
 
-## <a name="review-the-client-sync-code"></a>Przegląd kodu klienta synchronizacji
-Pobrany po ukończeniu samouczka projekt klienta Xamarin [tworzenie aplikacji platformy Xamarin.IOS] już zawiera kod obsługujący synchronizacji w trybie offline przy użyciu lokalnej bazy danych SQLite. Oto krótkie omówienie co to jest już uwzględniony w kodzie samouczka. Omówienie koncepcji funkcji, zobacz [synchronizacji danych w trybie Offline w usłudze Azure Mobile Apps].
+## <a name="review-the-client-sync-code"></a>Przejrzyj kod klienta synchronizacji
+Projektu klienta Xamarin, który został pobrany, po ukończeniu tego samouczka [tworzenie aplikacji platformy Xamarin.IOS] już zawiera kod obsługi synchronizacji w trybie offline przy użyciu lokalnej bazy danych SQLite. Poniżej przedstawiono krótkie omówienie co to jest już uwzględniony w kodu z samouczka dotyczącego. Aby uzyskać omówienie pojęć dotyczących tej funkcji, zobacz [Synchronizowanie danych w trybie offline w usłudze Azure Mobile Apps].
 
-* Aby można było wykonać wszystkie operacje tabeli, muszą zostać zainicjowane magazynu lokalnego. Magazyn lokalny jest inicjowana po `QSTodoListViewController.ViewDidLoad()` wykonuje `QSTodoService.InitializeStoreAsync()`. Ta metoda tworzy nowego lokalnego SQLite bazy danych przy użyciu `MobileServiceSQLiteStore` klasy dostarczonych przez klienta aplikacji mobilnej Azure SDK.
+* Można było wykonać żadnych operacji tabeli, musi zostać zainicjowany Magazyn lokalny. Magazyn lokalny jest inicjowana po `QSTodoListViewController.ViewDidLoad()` wykonuje `QSTodoService.InitializeStoreAsync()`. Ta metoda tworzy nowy lokalnej bazy danych SQLite bazy danych przy użyciu `MobileServiceSQLiteStore` klasy udostępniane przez zestaw SDK klienta usługi Azure Mobile App.
 
-    `DefineTable` Metoda tworzy tabelę w lokalnym magazynie odpowiadającego pola udostępnionego typu `ToDoItem` w takim przypadku. Typ nie ma zawierać wszystkie kolumny, które znajdują się w zdalnej bazy danych. Istnieje możliwość przechowywania tylko ich podzbiór kolumn.
+    `DefineTable` Metoda tworzy tabelę w magazynie lokalnym, odpowiadającą polom w podany typ `ToDoItem` w tym przypadku. Typ nie musi zawierać wszystkie kolumny, które znajdują się w zdalnej bazy danych. Istnieje możliwość przechowywania tylko podzbiór kolumn.
 
         // QSTodoService.cs
 
@@ -83,11 +83,11 @@ Pobrany po ukończeniu samouczka projekt klienta Xamarin [tworzenie aplikacji pl
         }
 * `todoTable` Członkiem `QSTodoService` jest `IMobileServiceSyncTable` wpisz zamiast `IMobileServiceTable`. IMobileServiceSyncTable kieruje wszystkie tworzenia, odczytu, aktualizacji i usuwania (CRUD) operacje tabeli w bazie danych magazynu lokalnego.
 
-    Zdecyduj, kiedy te zmiany są przenoszone do zaplecza aplikacji mobilnej Azure przez wywołanie metody `IMobileServiceSyncContext.PushAsync()`. Kontekst synchronizacji pomaga zachować relacje między tabelami, śledzenia i wypychanie zmiany we wszystkich tabelach aplikacji klienckiej został zmodyfikowany podczas obliczania `PushAsync` jest wywoływana.
+    Zdecyduj, kiedy te zmiany są przekazywane z zapleczem aplikacji mobilnej platformy Azure przez wywołanie metody `IMobileServiceSyncContext.PushAsync()`. Kontekst synchronizacji pomaga zachować relacje między tabelami, śledzenia i wypychaniu zmian można znaleźć we wszystkich tabelach aplikacji klienckiej został zmodyfikowany podczas `PushAsync` jest wywoływana.
 
-    Podany kod wywołuje `QSTodoService.SyncAsync()` do synchronizacji przy każdym odświeżeniu listy todoitem lub dodano lub wykonać zadania do wykonania. Synchronizacje aplikacji, po każdej zmianie lokalnego. Ściąganie jest wykonywane względem tabeli, która ma oczekujące aktualizacje lokalnego śledzone przez kontekst, tej operacji replikacji ściąganej automatycznie wyzwoli wypychania kontekstu najpierw.
+    Podany kod wywołuje `QSTodoService.SyncAsync()` do synchronizacji przy każdym odświeżeniu listy todoitem lub dodano lub zakończona czynność do wykonania. Synchronizacje aplikacji po każdej zmianie lokalnego. Jeśli ściągnięcia jest wykonywana na tabeli, która ma oczekujące aktualizacje lokalnego śledzona przez kontekst, tej operacji ściągania automatycznie wyzwoli powiadomienie wypychane kontekstu najpierw.
 
-    Podany kod wszystkie rekordy w obiekcie zdalnym `TodoItem` badane są tabele tabeli, ale jest również możliwe filtrowanie rekordów przez przekazanie identyfikator zapytania i kwerendę `PushAsync`. Aby uzyskać więcej informacji, zobacz sekcję *synchronizacja przyrostowa* w [synchronizacji danych w trybie Offline w usłudze Azure Mobile Apps].
+    Podany kod, wszystkie rekordy w zdalnym `TodoItem` zapytania dotyczącego tabeli, ale jest również możliwe do filtrowania rekordów, przekazując identyfikator zapytania i Wyślij zapytanie w celu `PushAsync`. Aby uzyskać więcej informacji, zobacz sekcję *synchronizacja przyrostowa* w [Synchronizowanie danych w trybie offline w usłudze Azure Mobile Apps].
 
         // QSTodoService.cs
         public async Task SyncAsync()
@@ -105,13 +105,13 @@ Pobrany po ukończeniu samouczka projekt klienta Xamarin [tworzenie aplikacji pl
         }
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
-* [synchronizacji danych w trybie Offline w usłudze Azure Mobile Apps]
+* [Synchronizowanie danych w trybie offline w usłudze Azure Mobile Apps]
 * [Porada zestawu SDK .NET usługi Azure Mobile Apps][8]
 
 <!-- Images -->
 
 <!-- URLs. -->
-[tworzenie aplikacji platformy Xamarin.IOS]: app-service-mobile-xamarin-ios-get-started.md
-[synchronizacji danych w trybie Offline w usłudze Azure Mobile Apps]: app-service-mobile-offline-data-sync.md
+[Tworzenie aplikacji platformy Xamarin.IOS]: app-service-mobile-xamarin-ios-get-started.md
+[Synchronizowanie danych w trybie offline w usłudze Azure Mobile Apps]: app-service-mobile-offline-data-sync.md
 [SyncContext]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient.synccontext(v=azure.10).aspx
 [8]: app-service-mobile-dotnet-how-to-use-client-library.md

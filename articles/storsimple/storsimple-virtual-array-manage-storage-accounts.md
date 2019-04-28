@@ -15,15 +15,15 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.openlocfilehash: a992851deda0659509c0ee4ea5de76b19734f017
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867614"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62128842"
 ---
 # <a name="use-storsimple-device-manager-to-manage-storage-account-credentials-for-storsimple-virtual-array"></a>Menedżer urządzeń StorSimple Użyj zarządzania poświadczeń konta magazynu dla macierzy wirtualnej StorSimple
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 **Konfiguracji** części bloku usługi Menedżer urządzeń StorSimple z rozwiązania StorSimple Virtual Array przedstawia parametry usługi global service, które mogą być tworzone w usłudze StorSimple Manager. Te parametry mogą być stosowane do wszystkich urządzeń podłączonych do usługi i obejmują:
 
 * Poświadczenia konta magazynu

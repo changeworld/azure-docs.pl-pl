@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 04/18/2019
+ms.date: 04/23/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: d0e39f9e24b3c486eccd71eb1c19823cfd33391a
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: dffbb2c52b4e43eefe6b4f377bd7af529bae8cc5
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60004775"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62125563"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Często zadawane pytania — program VMware do platformy Azure replikacji
 
@@ -245,11 +245,15 @@ Tak, ale należy pamiętać, że tylko można ten komputer fizyczny do maszyny W
 
 W magazynie usługi Recovery Services kliknij **serwery konfiguracji** w **infrastruktura usługi Site Recovery** > **Zarządzaj**. Następnie w **serwerów**, wybierz opcję **Pobierz klucz rejestracji** można pobrać pliku poświadczeń magazynu.
 
+## <a name="process-server"></a>Serwer Process Server
 
+### <a name="unable-to-select-process-server-during-enable-replication"></a>Nie można wybrać serwer przetwarzania podczas. Włączanie replikacji
 
+Od wersji 9.24 ulepszenia zostały wprowadzone w zapewnienie [wskazówki w produkcie](vmware-azure-manage-process-server.md#process-server-selection-guidance) o tym, kiedy do skonfigurowania serwera przetwarzania skalowalnego w poziomie. To, aby uniknąć ograniczania serwera przetwarzania i uniknąć użycia serwera przetwarzania w złej kondycji.
 
+### <a name="what-should-i-do-to-obtain-accurate-health-status-of-process-server"></a>Co należy zrobić, aby uzyskać dokładne Kondycja serwera przetwarzania?
 
-
+Uaktualnij składniki usługi Site Recovery do [najnowsze wersje](service-updates-how-to.md#links-to-currently-supported-update-rollups) (co najmniej 9.24 lub nowszej).
 
 ## <a name="failover-and-failback"></a>Praca w trybie failover i powrót po awarii
 ### <a name="can-i-use-the-process-server-at-on-premises-for-failback"></a>Czy za pomocą serwera przetwarzania w lokalnych uzyskać powrotu po awarii

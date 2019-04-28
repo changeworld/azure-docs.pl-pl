@@ -12,19 +12,19 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 03/26/2018
+ms.date: 04/23/2019
 ms.author: cephalin;robmcm
 ms.custom: seodec18
-ms.openlocfilehash: 3af585ede27536dfb644dd374e54183c3539d585
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: f1411ee28ca4e371f68c375242a2445c8b48f8d7
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60007359"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63760031"
 ---
 # <a name="create-your-first-java-web-app-in-azure"></a>Tworzenie pierwszej aplikacji internetowej w środowisku Java na platformie Azure
 
-Usługa [Azure App Service](overview.md) oferuje wysoce skalowalną i samonaprawialną usługę hostingu w Internecie. W tym przewodniku Szybki start pokazano, jak wdrożyć aplikację internetową w języku Java przy użyciu środowiska [Eclipse IDE for Java EE Developers](https://www.eclipse.org/).
+Usługa Azure App Service oferuje wysoce skalowalną i samonaprawialną usługę hostingu w Internecie. Ten przewodnik Szybki Start przedstawia sposób wdrażania aplikacji sieci web Java w usłudze App Service przy użyciu środowiska Eclipse IDE for Java EE Developers.
 
 > [!IMPORTANT]
 > Usługa Azure App Service w systemie Linux jest również opcja hostowanie aplikacji sieci web Java natywnie w systemie Linux przy użyciu zarządzanych Tomcat, Java SE i WildFly ofert. Jeśli interesuje Cię wprowadzenie do usługi App Service w systemie Linux, zobacz [Szybki Start: Tworzenie aplikacji Java w usłudze App Service w systemie Linux](containers/quickstart-java.md).

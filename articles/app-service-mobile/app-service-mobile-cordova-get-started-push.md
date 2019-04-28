@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
 ms.openlocfilehash: 40a7552ffd0bfcab173d2e35c52313a94ec3d0bb
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960332"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62114361"
 ---
 # <a name="add-push-notifications-to-your-apache-cordova-app"></a>Dodawanie powiadomień wypychanych do aplikacji Apache Cordova
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 W ramach tego samouczka, możesz dodać powiadomienia wypychane do [Szybki Start Apache Cordova] [ 5] projektu, dzięki czemu jest wysyłane powiadomienie push do urządzenia, za każdym razem, gdy rekord zostanie wstawiona.
 
@@ -244,7 +244,7 @@ Możesz teraz testowych powiadomień wypychanych, uruchamiając aplikację, a na
 
   Udostępnianie ekranu aplikacje, takie jak [Mobizen] [ 20] mogą pomóc w rozwoju aplikacji dla systemu Android. Mobizen projektów dla systemu Android ekranu do przeglądarki sieci web na komputerze.
 
-* *W emulatorze systemu Android:* istnieją dodatkowe czynności konfiguracyjne, które są wymagane, jeśli korzystasz z emulatora.
+* *W emulatorze systemu Android:* Istnieją dodatkowe czynności konfiguracyjne, które są wymagane, jeśli korzystasz z emulatora.
 
     Upewnij się, że są wdrażane do urządzenia wirtualnego, który ma ustawioną jako docelową, interfejsy API Google, jak pokazano w programie Android Virtual Device (AVD) manager.
 
@@ -385,7 +385,7 @@ Sprawdź, czy otrzyma powiadomienie po dodaniu elementu.
 Dowiedz się, jak korzystać z następujących zestawów SDK:
 
 * [Zestaw Apache Cordova SDK][15]
-* [Zestaw ASP.NET Server SDK][1]
+* [ASP.NET Server SDK][1]
 * [Zestaw node.js Server SDK][16]
 
 <!-- Images -->

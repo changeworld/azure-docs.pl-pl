@@ -3,20 +3,21 @@ title: Łączenie z usługą Office 365 Outlook — Azure Logic Apps | Dokumenta
 description: Zarządzanie poczty e-mail, kontaktów i kalendarzy z interfejsów API REST usługi Office 365 i Azure Logic Apps
 author: ecfan
 manager: jeconnoc
-ms.author: estfan
-ms.date: 10/18/2016
+ms.author: v-yiso
+origin.date: 10/18/2016
+ms.date: 09/03/2018
 ms.topic: article
 ms.service: logic-apps
 services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 0355f121a09e1ba89f98a8af5037eb1371db2242
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 52abf17e869216e65780129a7b48df79bd79f67a
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215642"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62105058"
 ---
 # <a name="get-started-with-the-office-365-outlook-connector"></a>Rozpoczynanie pracy z łącznikiem usługi Office 365 Outlook
 Łącznik usługi Office 365 Outlook umożliwia interakcję z programem Outlook w usłudze Office 365. Aby utworzyć, edytować, aktualizować kontakty i elementy kalendarza i również uzyskać, wysyłanie i Odpowiedz na wiadomość e-mail, należy użyć tego łącznika.
@@ -68,7 +69,7 @@ Wyzwalacz to zdarzenie, który może służyć do uruchamiania tego przepływu, 
 ## <a name="use-an-action"></a>Użyj akcji
 Akcja jest operacją przeprowadzanych przez przepływ pracy zdefiniowane w aplikacji logiki. [Dowiedz się więcej o akcjach](../logic-apps/logic-apps-overview.md#logic-app-concepts).
 
-1. Wybierz znak plus. Widzisz kilka opcji: **Dodaj akcję**, **Dodaj warunek**, lub jeden z **więcej** opcje.
+1. Wybierz znak plus. Zostaną wyświetlone kilka opcji: **Dodaj akcję**, **Dodaj warunek**, lub jeden z **więcej** opcje.
    
     ![](./media/connectors-create-api-office365-outlook/add-action.png)
 2. Wybierz **Dodaj akcję**.

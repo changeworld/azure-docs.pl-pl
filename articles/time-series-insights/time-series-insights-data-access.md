@@ -11,24 +11,27 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.custom: seodec18
-ms.openlocfilehash: 9aea7a9c9dd96bf30ebb3def9354df9e4bd30114
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
-ms.translationtype: MT
+ms.openlocfilehash: dd4c5e1652eb4dbff66591aa4bbe74e51be3e6c0
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558526"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63759551"
 ---
 # <a name="grant-data-access-to-an-environment"></a>Przyznawanie dostępu do danych w środowisku
 
 W tym artykule omówiono dwa rodzaje zasad dostępu Azure czas Series Insights w wersji zapoznawczej.
 
-## <a name="grant-data-access"></a>Przyznawanie dostępu do danych
-
-Wykonaj następujące kroki, aby zezwolić na dostęp do nazwy głównej użytkownika.
+## <a name="sign-in-to-tsi"></a>Zaloguj się w usłudze TSI
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 1. Znajdź środowiska usługi Time Series Insights. Wprowadź `Time Series` w **wyszukiwania** pole. Wybierz **środowiska usługi Time Series** w wynikach wyszukiwania.
 1. Wybierz środowisko usługi Time Series Insights z listy.
+
+## <a name="grant-data-access"></a>Przyznawanie dostępu do danych
+
+Wykonaj następujące kroki, aby zezwolić na dostęp do nazwy głównej użytkownika.
+
 1. Wybierz **zasady dostępu do danych**, a następnie wybierz pozycję **+ Dodaj**.
 
     ![Data access jednego][1]
@@ -55,18 +58,15 @@ Wykonaj następujące kroki, aby zezwolić na dostęp do nazwy głównej użytko
 
     ![Pięć w przypadku dostępu do danych][5]
 
-## <a name="provide-guest-access-to-a-user-from-another-azure-active-directory-tenant"></a>Dostęp gościa do użytkownika z innej dzierżawy usługi Azure Active Directory
+## <a name="provide-guest-access-from-another-aad-tenant"></a>Dostęp gościa z innej dzierżawy usługi AAD
 
 `Guest` nie jest rolą zarządzania. To termin używany dla konta które zostało zaproszone jednej dzierżawy do innego. Po konta gościa otrzymał zaproszenie do katalogu dzierżawy, może mieć tej samej kontroli dostępu, zastosowano podobnie jak inne konto. Za udzielić dostępu do zarządzania i środowiska usługi Time Series Insights za pomocą bloku kontrola dostępu (IAM). Lub możesz udzielić dostępu do danych w środowisku za pomocą bloku zasady dostępu do danych. Aby uzyskać więcej informacji na temat dostępu gościa dzierżawy usługi Azure Active Directory (Azure AD), przeczytaj [użytkowników we współpracy Dodawanie usługi Azure Active Directory B2B, w witrynie Azure portal](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator).
 
 Wykonaj następujące kroki, aby udzielić dostępu gościa do środowiska usługi Time Series Insights do użytkownika usługi Azure AD z innej dzierżawy.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
-1. Znajdź środowiska usługi Time Series Insights. Wprowadź **szeregów czasowych** w **wyszukiwania** pole. Wybierz **środowiska usługi Time Series** w wynikach wyszukiwania.
-1. Wybierz środowisko usługi Time Series Insights z listy.
 1. Wybierz **zasady dostępu do danych**, a następnie wybierz pozycję **+ zaprosić**.
 
-    ![sześć w przypadku dostępu do danych][6]
+    ![Data-access-six][6]
 
 1. Wprowadź adres e-mail użytkownika, które chcesz zaprosić. Ten adres e-mail musi być skojarzony z usługą Azure AD. Możesz opcjonalnie dołączyć osobistą wiadomość z zaproszeniem.
 
@@ -98,7 +98,7 @@ Wykonaj następujące kroki, aby udzielić dostępu gościa do środowiska usłu
 
 1. Teraz użytkownik-Gość musi wykonać kroki, aby uzyskiwać dostęp do środowiska, znajduje się w dzierżawie platformy Azure, do którego zaproszenie. Po pierwsze mogą zaakceptować zaproszenie, wysłane. To zaproszenie jest wysyłane za pośrednictwem poczty e-mail na adres e-mail, którego użyto w kroku 5. Wybierają **wprowadzenie** zaakceptować.
 
-    ![dane access 12][12]
+    ![Data-access-twelve][12]
 
 1. Następnie użytkownik-Gość akceptuje uprawnienia związane z organizacji przez administratora.
 
@@ -106,18 +106,20 @@ Wykonaj następujące kroki, aby udzielić dostępu gościa do środowiska usłu
 
 1. Po użytkownik-Gość jest zalogowany na adres e-mail używany Aby zaprosić go i ich zaakceptowanie zaproszenia, komputery przechodzą do insights.azure.com. Jeden raz, wybierają awatara obok swojego adresu e-mail w prawym górnym rogu ekranu.
 
-    ![Data-access czternastu][14]
+    ![Data-access-fourteen][14]
 
 1. Następnie wybiera użytkownika gościa dzierżawy platformy Azure, z menu rozwijanego katalogu. Ta dzierżawa jest jeden, do którego zaproszenie.
 
-    ![Data-access 15][15]
+    ![Data-access-fifteen][15]
 
-Po użytkownik-Gość wybierze dzierżawy, użytkownik zobaczy środowiska usługi Time Series Insights, do którego zostanie udostępniony im dostęp. Ma teraz wszystkie funkcje, które są skojarzone z rolą je za pomocą podane w kroku 8.
+Po użytkownik-Gość wybierze dzierżawy, użytkownik zobaczy środowiska usługi Time Series Insights, do którego zostanie udostępniony im dostęp. Klienci mają teraz wszystkie funkcje, które są skojarzone z rolą podanym je w **kroku 5**.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 * Dowiedz się, [sposób dodawania źródła zdarzeń usługi Azure Event Hubs](./time-series-insights-how-to-add-an-event-source-eventhub.md) do środowiska usługi Time Series Insights.
+
 * Wyślij [zdarzenia do źródła zdarzeń](./time-series-insights-send-events.md).
+
 * Widok [środowiska w Eksploratorze czasu Series Insights w wersji zapoznawczej](./time-series-insights-update-explorer.md).
 
 <!-- Images -->

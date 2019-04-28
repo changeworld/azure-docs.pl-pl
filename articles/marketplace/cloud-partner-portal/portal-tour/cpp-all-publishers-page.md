@@ -15,13 +15,13 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: pbutlerm
 ms.openlocfilehash: e2c780992143ab753dad1ca89b22593d20fdedc4
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52267109"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62128689"
 ---
-# <a name="all-publishers-page"></a>Wszystkie strony wydawcy
+# <a name="all-publishers-page"></a>Strona wszystkich wydawców
 
 [ **Wszystkich wydawców** ](https://cloudpartner.azure.com/#publishers) stronie wyświetlana jest lista wszystkich zarejestrowanych Microsoft cloud wydawców, łącznie z ich wydawcy unikatową nazwę i nazwę wyświetlaną. Można Uporządkuj wyników według kolumny lub podać ciąg do filtrowania wyników.  Ta strona wyświetla również **dodać wydawcę** przycisk, ale ten przycisk jest włączony tylko dla administratorów w portalu.  Wybranie wydawcę na tej liście spowoduje wyświetlenie profilu dla tego wydawcy.  Aby uzyskać więcej informacji, zobacz [Zarządzanie profilem wydawcy](./../../cloud-partner-portal-orig/cloud-partner-portal-manage-publisher-profile.md).
 
@@ -30,7 +30,7 @@ ms.locfileid: "52267109"
 
 Na poniższej ilustracji przedstawiono wydawcy, wyświetlanie listy filtrowane wg contoso ciąg ".  
 
-![Wszystkie strony wydawcy](./media/all-publishers-page1.png)
+![Strona wszystkich wydawców](./media/all-publishers-page1.png)
 
 Kliknięcie na pierwszej pozycji spowoduje wyświetlenie strony profilu firmy Contoso.  Można edytować tylko profilu wydawcy.
 

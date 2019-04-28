@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 9b5b151c62c4294563f704dc9a0cf7daeaca874f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: ac7b662bc9ef4f3ae675c4cbde18e159383d3d8e
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59279979"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63767027"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Tworzenie dynamicznych schematy za pomocą parametrów
 
@@ -169,7 +169,7 @@ Tworzenie **parametry statyczne** na artefakt jest podobny, ale przyjmuje warto�
 
 ### <a name="dynamic-parameters"></a>Parametry dynamiczne
 
-Jest przeciwieństwem statyczne parametr **parametru dynamicznego**. Ten parametr nie jest zdefiniowany dla planu, ale zamiast tego jest zdefiniowany podczas każdego przydziału planu. W tym przykładzie grupa zasobów wykorzystania **parametru dynamicznego** pasujące do nazwy grupy zasobów. Zapewnia inną nazwę dla każdego przydziału planu.
+Jest przeciwieństwem statyczne parametr **parametru dynamicznego**. Ten parametr nie jest zdefiniowany dla planu, ale zamiast tego jest zdefiniowany podczas każdego przydziału planu. W tym przykładzie grupa zasobów wykorzystania **parametru dynamicznego** pasujące do nazwy grupy zasobów. Zapewnia inną nazwę dla każdego przydziału planu. Aby uzyskać listę funkcji planu, zobacz [planu funkcje](../reference/blueprint-functions.md) odwołania.
 
 #### <a name="setting-dynamic-parameters-in-the-portal"></a>Ustawianie parametrów dynamicznych w portalu
 
@@ -185,9 +185,7 @@ Jest przeciwieństwem statyczne parametr **parametru dynamicznego**. Ten paramet
 
 #### <a name="setting-dynamic-parameters-from-rest-api"></a>Ustawianie parametrów dynamicznych z interfejsu API REST
 
-Ustawienie **parametrów dynamicznych** przypisanie jest wykonywana, wprowadzając wartość bezpośrednio.
-Zamiast korzystać z funkcji, takich jak `parameters()`, podana wartość jest odpowiedni ciąg.
-Artefakty dla grupy zasobów są definiowane za pomocą "Nazwa szablonu," **nazwa**, i **lokalizacji** właściwości. Wszystkie inne parametry dla artefaktu uwzględniane są zdefiniowane w obszarze **parametry** z **\<nazwa\>** i **wartość** pary kluczy. Planu jest skonfigurowany dla parametrów dynamicznych, które nie są oferowane w trakcie przypisywania, przypisanie zakończy się niepowodzeniem.
+Ustawienie **parametrów dynamicznych** przypisanie jest wykonywana, wprowadzając wartość bezpośrednio. Zamiast korzystać z funkcji, takich jak [parameters()](../reference/blueprint-functions.md#parameters), podana wartość jest odpowiedni ciąg. Artefakty dla grupy zasobów są definiowane za pomocą "Nazwa szablonu," **nazwa**, i **lokalizacji** właściwości. Wszystkie inne parametry dla artefaktu uwzględniane są zdefiniowane w obszarze **parametry** z **\<nazwa\>** i **wartość** pary kluczy. Planu jest skonfigurowany dla parametrów dynamicznych, które nie są oferowane w trakcie przypisywania, przypisanie zakończy się niepowodzeniem.
 
 - Identyfikator URI interfejsu API REST
 
@@ -240,6 +238,7 @@ Artefakty dla grupy zasobów są definiowane za pomocą "Nazwa szablonu," **nazw
 
 ## <a name="next-steps"></a>Kolejne kroki
 
+- Przejrzyj listę rzeczy, [planu funkcji](../reference/blueprint-functions.md).
 - Uzyskaj informacje na temat [cyklu życia strategii](lifecycle.md).
 - Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](sequencing-order.md).
 - Dowiedz się, jak używać [blokowania zasobów strategii](resource-locking.md).

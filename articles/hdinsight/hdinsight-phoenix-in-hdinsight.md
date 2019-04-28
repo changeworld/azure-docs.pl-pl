@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: ashishth
-ms.openlocfilehash: 833f240572b10e9d07da0ded27f5848822a70f46
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
-ms.translationtype: MT
+ms.openlocfilehash: 7d9aafeb920eab7f6a87061a135bf2e464add436
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744344"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63763642"
 ---
 # <a name="apache-phoenix-in-hdinsight"></a>Oprogramowanie Apache Phoenix w usłudze HDInsight
 
@@ -94,7 +94,7 @@ Aby zmodyfikować istniejącą tabelę transakcyjnej, należy użyć tej samej w
 ALTER TABLE my_other_table SET TRANSACTIONAL=true;
 ```
 
-> [!NOTE]  
+> [!NOTE]
 > Nie można przełączyć transakcyjna tabeli wstecz do są nietransakcyjnej.
 
 ### <a name="salted-tables"></a>Solone tabel

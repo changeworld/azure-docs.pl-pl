@@ -12,12 +12,12 @@ ms.date: 12/14/2017
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: ''
-ms.openlocfilehash: 662c78fc7074b0dafc53c393962aa4b578779095
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 31e18285bf6211e73d994e037a91adc396972715
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092262"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62106974"
 ---
 # <a name="call-a-function-from-microsoft-flow"></a>Wywoływanie funkcji z usługi Microsoft Flow
 
@@ -132,7 +132,7 @@ Najpierw Utwórz przepływ od podstaw (bez szablonu) i Dodaj *wyzwalacza* genero
 
     ![Dodaj warunek](media/functions-flow-scenario/add-condition.png)
 
-    Microsoft Flow dodaje dwie gałęzie z przepływem: **tak** i **Jeśli**. Dodaj kroki do jednego lub obu gałęzi po zdefiniowaniu warunek, który chcesz dopasować.
+    Microsoft Flow dodaje dwie gałęzie do przepływu: **Jeśli tak** i **Jeśli**. Dodaj kroki do jednego lub obu gałęzi po zdefiniowaniu warunek, który chcesz dopasować.
 
     ![Warunek gałęzi](media/functions-flow-scenario/condition-branches.png)
 

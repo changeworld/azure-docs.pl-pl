@@ -1,7 +1,6 @@
 ---
 title: Nawiązywanie połączenia przy użyciu sieci wirtualnych — Azure HDInsight Kafka
 description: Dowiedz się, jak łączyć się bezpośrednio do platformy Kafka w HDInsight przy użyciu usługi Azure Virtual Network. Dowiedz się, jak połączyć się z platformy Kafka z klientami programowania przy użyciu bramy sieci VPN lub klientów w sieci lokalnej za pomocą urządzenia bramy sieci VPN.
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 6807a14bb7b46389abbc4c5a44e7699c79e29dff
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
-ms.translationtype: MT
+ms.openlocfilehash: 93b5aeafafdc6ab7ee233f6360bb5e09f45b387f
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361627"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62115339"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Nawiązać połączenie z platformy Apache Kafka w HDInsight przy użyciu sieci wirtualnej platformy Azure
 

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 12/07/2018
 ms.author: bwren
 ms.openlocfilehash: b66d9cf15aaeaca975b60f24601b8ad7f555f458
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887560"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62110161"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Monitorowanie rozwiązań w usłudze Azure Monitor
 Rozwiązania do monitorowania korzystać z usług na platformie Azure, aby zapewnić dodatkowy wgląd w działania określonej aplikacji lub usługi. Ten artykuł zawiera krótkie omówienie rozwiązania na platformie Azure i uzyskać szczegółowe informacje na temat używania i instalując je do monitorowania.
@@ -41,7 +41,7 @@ Otwórz **Przegląd** strony w usłudze Azure Monitor, aby wyświetlić Kafelek 
 1. Użyj pola listy rozwijanej w górnej części ekranu, aby zmienić obszar roboczy lub zakres czasu używany w przypadku kafelków.
 1. Kliknij Kafelek rozwiązania otworzyć jej widok, który zawiera bardziej szczegółowe analizy jego zebranych danych.
 
-![Przegląd](media/solutions/overview.png)
+![Omówienie](media/solutions/overview.png)
 
 Rozwiązania do monitorowania może zawierać wiele typów zasobów platformy Azure i wyświetlić wszystkie zasoby dołączone do rozwiązania, tak jak każdy inny zasób. Na przykład żadnych zapytań log zawarty w rozwiązaniu są wyświetlane w obszarze **zapytania rozwiązania** w [Eksplorator zapytań](../log-query/get-started-portal.md#load-queries) te zapytania można używać podczas wykonywania analiz ad hoc z [rejestrowania zapytań ](../log-query/log-query-overview.md).
 

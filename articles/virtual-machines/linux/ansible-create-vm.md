@@ -1,30 +1,31 @@
 ---
-title: Tworzenie maszyny wirtualnej z systemem Linux na platformie Azure za pomocą rozwiązania Ansible
-description: Dowiedz się, jak utworzyć maszynę wirtualną z systemem Linux na platformie Azure przy użyciu rozwiązania Ansible
-ms.service: virtual-machines-linux
+title: Przewodnik Szybki Start — Konfigurowanie maszyn wirtualnych systemu Linux na platformie Azure, za pomocą rozwiązania Ansible | Dokumentacja firmy Microsoft
+description: W tym przewodniku Szybki Start Dowiedz się, jak utworzyć maszynę wirtualną systemu Linux na platformie Azure za pomocą rozwiązania Ansible
 keywords: ansible, azure, devops, maszyna wirtualna
+ms.topic: tutorial
+ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.topic: quickstart
-ms.date: 08/22/2018
-ms.openlocfilehash: 38cc6cd8f375fe7c60a706541bc74313e8ea2c4f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 04/22/2019
+ms.openlocfilehash: 4bf7d43b682a2a42d9909f9cd33aa9542a1a9330
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60188144"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63760527"
 ---
-# <a name="use-ansible-to-create-a-linux-virtual-machine-in-azure"></a>Tworzenie maszyny wirtualnej z systemem Linux na platformie Azure za pomocą rozwiązania Ansible
-Rozwiązanie Ansible umożliwia automatyczne tworzenie, konfigurowanie i wdrażanie zasobów platformy Azure przy użyciu języka deklaratywnego, za pośrednictwem *podręczników* rozwiązania Ansible. W poszczególnych sekcjach tego artykułu opisano kolejne sekcje podręcznika rozwiązania Ansible, umożliwiające tworzenie i konfigurowanie różnych aspektów maszyny wirtualnej z systemem Linux. Na końcu tego artykułu znajdziesz [kompletny podręcznik rozwiązania Ansible](#complete-sample-ansible-playbook).
+# <a name="quickstart-configure-linux-virtual-machines-in-azure-using-ansible"></a>Szybki start: Konfigurowanie maszyn wirtualnych systemu Linux na platformie Azure, za pomocą rozwiązania Ansible
+
+Rozwiązanie Ansible umożliwia automatyczne tworzenie, konfigurowanie i wdrażanie zasobów platformy Azure przy użyciu języka deklaratywnego, za pośrednictwem *podręczników* rozwiązania Ansible. W tym artykule przedstawiono przykładowe playbook rozwiązania Ansible, konfigurowania maszyn wirtualnych systemu Linux. Na końcu tego artykułu znajdziesz [kompletny podręcznik rozwiązania Ansible](#complete-sample-ansible-playbook).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- **Subskrypcja Azure** — jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-
-- [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)]
+- [!INCLUDE [open-source-devops-prereqs-azure-sub.md](../../../includes/open-source-devops-prereqs-azure-subscription.md)]
+- [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation1.md](../../../includes/ansible-prereqs-cloudshell-use-or-vm-creation1.md)]
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+
 Rozwiązanie Ansible wymaga grupy zasobów, w której wdrażane są Twoje zasoby. W poniższej sekcji przykładowego podręcznika rozwiązania Ansible tworzona jest grupa zasobów o nazwie `myResourceGroup` w lokalizacji `eastus`:
 
 ```yaml
@@ -35,6 +36,7 @@ Rozwiązanie Ansible wymaga grupy zasobów, w której wdrażane są Twoje zasoby
 ```
 
 ## <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
+
 Utworzenie maszyny wirtualnej platformy Azure wymaga utworzenia [sieci wirtualnej](/azure/virtual-network/virtual-networks-overview) lub użycia istniejącej sieci wirtualnej. Należy także określić sposób uzyskiwania dostępu do maszyn wirtualnych w sieci wirtualnej. W poniższej sekcji przykładowego podręcznika rozwiązania Ansible tworzona jest sieć wirtualna o nazwie `myVnet` w przestrzeni adresowej `10.0.0.0/16`:
 
 ```yaml
@@ -59,7 +61,12 @@ W poniższej sekcji przykładowego podręcznika rozwiązania Ansible tworzona je
 ```
 
 ## <a name="create-a-public-ip-address"></a>Tworzenie publicznego adresu IP
-[Publiczne adresy IP](/azure/virtual-network/virtual-network-ip-addresses-overview-arm) umożliwiają zasobom internetowym komunikowanie się w ramach ruchu przychodzącego z zasobami platformy Azure. Publiczne adresy IP umożliwiają również zasobom platformy Azure komunikowanie się w ramach ruchu wychodzącego z Internetem i publicznymi usługami platformy Azure za pomocą adresu IP przypisanego do zasobu. Ten adres jest dedykowany zasobowi, dopóki nie cofniesz jego przypisania. Jeśli publiczny adres IP nie jest przypisany do zasobu, zasób nadal może łączyć się z Internetem w ramach komunikacji wychodzącej, ale platforma Azure dynamicznie przypisuje dostępny adres IP, który nie jest dedykowany dla zasobu. 
+
+
+
+
+
+[Publiczne adresy IP](/azure/virtual-network/virtual-network-ip-addresses-overview-arm) umożliwiają zasobom internetowym komunikowanie się w ramach ruchu przychodzącego z zasobami platformy Azure. Publiczne adresy IP umożliwiają również zasoby platformy Azure komunikację wychodzącą z publicznymi usługami platformy Azure. W obu przypadkach adres IP jest przypisywany do zasobu, do którego uzyskiwany jest dostęp. Ten adres jest dedykowany zasobowi, dopóki nie można cofnąć przypisania. Jeśli publiczny adres IP nie jest przypisany do zasobu, zasób może nadal komunikować się ruch wychodzący do Internetu. Połączenie jest nawiązywane przez platformę Azure, dynamiczne przydzielanie dostępnego adresu IP. Dynamicznie przypisany adres nie jest dedykowany zasobowi.
 
 W poniższej sekcji przykładowego podręcznika rozwiązania Ansible tworzony jest publiczny adres IP o nazwie `myPublicIP`:
 
@@ -72,9 +79,10 @@ W poniższej sekcji przykładowego podręcznika rozwiązania Ansible tworzony je
 ```
 
 ## <a name="create-a-network-security-group"></a>Tworzenie sieciowej grupy zabezpieczeń
-[Sieciowa grupa zabezpieczeń](/azure/virtual-network/security-overview) umożliwia filtrowanie ruchu sieciowego przychodzącego do zasobów platformy Azure i wychodzącego z nich w sieci wirtualnej platformy Azure. Sieciowa grupa zabezpieczeń zawiera reguły zabezpieczeń, które zezwalają na lub blokują przychodzący ruch sieciowy lub wychodzący ruch sieciowy dla kilku typów zasobów platformy Azure. 
 
-W poniższej sekcji przykładowego podręcznika rozwiązania Ansible tworzona jest sieciowa grupa zabezpieczeń o nazwie `myNetworkSecurityGroup` i jest definiowana reguła zezwalająca na ruch SSH do portu TCP 22:
+[Sieciowe grupy zabezpieczeń](/azure/virtual-network/security-overview) filtrowanie ruchu sieciowego między zasobami platformy Azure w sieci wirtualnej. Zasady zabezpieczeń są zdefiniowane określające przychodzący i wychodzący ruch do i z zasobów platformy Azure. Aby uzyskać więcej informacji na temat sieciowych grup zabezpieczeń i zasobów platformy Azure, zobacz [Integracja sieci wirtualnej dla usług platformy Azure](/azure/virtual-network/virtual-network-for-azure-services)
+
+Następujący element playbook tworzy sieciową grupę zabezpieczeń o nazwie `myNetworkSecurityGroup`. Sieciowa grupa zabezpieczeń zawiera regułę zezwalającą na ruch SSH na porcie TCP 22.
 
 ```yaml
 - name: Create Network Security Group that allows SSH
@@ -90,11 +98,11 @@ W poniższej sekcji przykładowego podręcznika rozwiązania Ansible tworzona je
         direction: Inbound
 ```
 
-
 ## <a name="create-a-virtual-network-interface-card"></a>Tworzenie wirtualnej karty sieciowej
+
 Wirtualna karta sieciowa łączy maszynę wirtualną z daną siecią wirtualną, publicznym adresem IP oraz sieciową grupą zabezpieczeń. 
 
-W poniższej sekcji przykładowego podręcznika rozwiązania Ansible tworzona jest wirtualna karta sieciowa o nazwie `myNIC` połączona z zasobami utworzonej sieci wirtualnej:
+Poniższej sekcji, w sekcji element playbook rozwiązania Ansible przykładowy tworzy wirtualną kartę sieciową o nazwie `myNIC` połączone zasoby sieci wirtualne utworzone:
 
 ```yaml
 - name: Create virtual network inteface card
@@ -107,7 +115,8 @@ W poniższej sekcji przykładowego podręcznika rozwiązania Ansible tworzona je
     security_group: myNetworkSecurityGroup
 ```
 
-## <a name="create-a-virtual-machine"></a>Utwórz maszynę wirtualną
+## <a name="create-a-virtual-machine"></a>Tworzenie maszyny wirtualnej
+
 Ostatnim krokiem jest utworzenie maszyny wirtualnej, która wykorzystuje wszystkie zasoby utworzone w poprzednich sekcjach tego artykułu. 
 
 W tej sekcji przykładowego podręcznika rozwiązania Ansible jest tworzona maszyna wirtualna o nazwie `myVM`, do której jest dołączana wirtualna karta sieciowa o nazwie `myNIC`. Zastąp symbol zastępczy &lt;your-key-data> własnymi kompletnymi danymi klucza publicznego.
@@ -278,5 +287,6 @@ W tej sekcji omówiono uruchamianie przykładowego podręcznika rozwiązania Ans
     ```
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 > [!div class="nextstepaction"] 
-> [Zarządzanie maszyną wirtualną z systemem Linux na platformie Azure za pomocą rozwiązania Ansible](./ansible-manage-linux-vm.md)
+> [Szybki start: Zarządzanie maszyny wirtualnej z systemem Linux na platformie Azure za pomocą rozwiązania Ansible](./ansible-manage-linux-vm.md)

@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 1/16/2019
 ms.author: fmegen
 ms.openlocfilehash: 5fa0b6d2a361fdbf372ba73fed9d8e2c48cb3630
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55871221"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62123539"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-nodejs"></a>Szybki start: rozpoznawanie mowy przy użyciu zestawu SDK usługi Mowa dla środowiska Node.js
 
@@ -124,7 +124,7 @@ Przykład możesz też uruchomić z programu Visual Studio Code. Wykonaj następ
 
    ![Konsola debugowania](media/sdk/qs-js-node-07-debug_output.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Poznaj przykłady dla platformy Node.js w serwisie GitHub](https://aka.ms/csspeech/samples)

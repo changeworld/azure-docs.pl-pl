@@ -16,11 +16,11 @@ ms.topic: troubleshooting
 ms.date: 09/09/2016
 ms.author: cjiang
 ms.openlocfilehash: 9fea914fdf9b025fd5d38219a6bfc81b4a9cc584
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57450307"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62125620"
 ---
 # <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>Rozwiązywanie problemów dotyczących wdrożenia usługi Resource Manager za pomocą tworzenia nowej maszyny wirtualnej systemu Linux na platformie Azure
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -30,7 +30,7 @@ ms.locfileid: "57450307"
 ## <a name="top-issues"></a>Najczęstsze problemy
 [!INCLUDE [support-disclaimer](../../../includes/virtual-machines-linux-troubleshoot-deploy-vm-top.md)]
 
-Inne problemy z wdrażaniem maszyn wirtualnych i pytania można znaleźć [problemów wdrażanie systemu Linux maszyny wirtualnej na platformie Azure](troubleshoot-deploy-vm-linux.md).
+Inne problemy i pytania dotyczące wdrażania maszyn wirtualnych można znaleźć w artykule [Rozwiązywanie problemów z wdrażaniem maszyny wirtualnej z systemem Linux na platformie Azure](troubleshoot-deploy-vm-linux.md).
 
 ## <a name="collect-activity-logs"></a>Dzienniki aktywności zbieranie
 Aby rozpocząć rozwiązywanie problemów, zbieranie dzienników aktywności, aby zidentyfikować ten błąd, skojarzone z emisją. Poniższe linki zawierają szczegółowe informacje na temat procesu do wykonania.

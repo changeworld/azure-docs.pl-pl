@@ -11,18 +11,82 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/30/2018
+ms.date: 04/23/2019
 ms.author: magoedte
-ms.openlocfilehash: de27d5c4fd65515e25319f9e7ac3eafc4110b137
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
-ms.translationtype: MT
+ms.openlocfilehash: 19530aa676e681f9a6ec50d2cacf77711dcb0110
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58481571"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63764088"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Zarządzania i konserwacji agenta usługi Log Analytics dla Windows i Linux
 
-Po początkowym wdrożeniu programu Windows Analytics dziennika lub agenta systemu Linux w usłudze Azure Monitor konieczne może być ponownie skonfigurować agenta, lub usuń go z komputera, jeśli został osiągnięty na etapie wycofanie etapie jej cyklu życia. Te zadania rutynowej konserwacji umożliwia łatwe zarządzanie, ręcznie lub za pomocą automatyzacji, co zmniejsza zarówno błędu operacyjnego, jak i koszty.
+Po początkowym wdrożeniu programu Windows Analytics dziennika lub agenta systemu Linux w usłudze Azure Monitor konieczne może być ponownie skonfigurować agenta, ją uaktualnić lub usunąć go z komputera, jeśli został osiągnięty na etapie wycofanie etapie jej cyklu życia. Te zadania rutynowej konserwacji umożliwia łatwe zarządzanie, ręcznie lub za pomocą automatyzacji, co zmniejsza zarówno błędu operacyjnego, jak i koszty.
+
+## <a name="upgrading-agent"></a>Uaktualnianie agenta
+
+Agenta usługi Log Analytics dla Windows i Linux można uaktualnić do najnowszej wersji ręcznie lub automatycznie w zależności od scenariusza wdrażania i środowisko, w których maszyna wirtualna jest uruchomiona w. Następujące metody może służyć do uaktualnienia tego agenta.
+
+| Środowisko | Metody instalacji | Metoda aktualizacji |
+|--------|----------|-------------|
+| Maszyna wirtualna platformy Azure | Zaloguj się rozszerzenia maszyny Wirtualnej agenta Analytics dla systemu Windows/Linux | Agent jest automatycznie uaktualniany domyślnie, chyba że skonfigurowano szablon usługi Azure Resource Manager, aby zrezygnować z nowego, ustawiając właściwość *autoUpgradeMinorVersion* do **false**. |
+| Niestandardowe obrazy maszyn wirtualnych platformy Azure | Ręczna instalacja agenta usługi Log Analytics dla systemu Windows/Linux | Aktualizowanie maszyn wirtualnych do najnowszej wersji agenta musi zostać wykonana w wierszu polecenia z pakietu Instalatora Windows lub Linux samowyodrębniający i możliwe do zainstalowania powłoki skrypt pakietu.|
+| Maszyny wirtualne poza platformą Azure | Ręczna instalacja agenta usługi Log Analytics dla systemu Windows/Linux | Aktualizowanie maszyn wirtualnych do najnowszej wersji agenta musi zostać wykonana w wierszu polecenia z pakietu Instalatora Windows lub Linux samowyodrębniający i możliwe do zainstalowania powłoki skrypt pakietu. |
+
+### <a name="upgrade-windows-agent"></a>Uaktualnij agenta Windows 
+
+Aby zaktualizować agenta na maszynie Wirtualnej Windows do najnowszej wersji, nie zainstalowano za pomocą rozszerzenia Log Analytics VM, należy uruchomić z wiersza polecenia, skryptu lub innego rozwiązania automatyzacji lub za pomocą MMASetup -\<platformy\>Instalatora MSI Kreator.  
+
+Możesz pobrać najnowszą wersję agenta Windows z obszaru roboczego usługi Log Analytics, wykonując następujące kroki.
+
+1. Zaloguj się do Portalu Azure.
+
+2. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi**. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz **obszarów roboczych usługi Log Analytics**.
+
+3. Na liście obszarów roboczych usługi Log Analytics wybierz obszar roboczy.
+
+4. W obszarze roboczym usługi Log Analytics wybierz **Zaawansowane ustawienia**, a następnie wybierz **połączone źródła**, a na koniec **serwerów Windows**.
+
+5. Z **serwerów Windows** wybierz odpowiednią **Pobierz agenta Windows** wersję do pobrania w zależności od architektury procesora systemu operacyjnego Windows.
+
+>[!NOTE]
+>Podczas uaktualniania agenta usługi Log Analytics dla Windows nie obsługuje konfigurowania ani ponownej konfiguracji obszaru roboczego, aby zgłosić. Aby skonfigurować agenta, należy wykonać jedną z obsługiwanych metod, które są wyświetlane w obszarze [Dodawanie lub usuwanie obszaru roboczego](#adding-or-removing-a-workspace).
+>
+
+#### <a name="to-upgrade-using-the-setup-wizard"></a>Aby uaktualnić, za pomocą Kreatora instalacji
+
+1. Zaloguj się do komputera przy użyciu konta z uprawnieniami administracyjnymi.
+
+2. Wykonaj **MMASetup -\<platformy\>.exe** Aby uruchomić Kreatora instalacji.
+
+3. Na pierwszej stronie Kreatora instalacji, kliknij przycisk **dalej**.
+
+4. W **Instalator programu Microsoft Monitoring Agent** okno dialogowe, kliknij przycisk **zgodę** aby zaakceptować umowę licencyjną.
+
+5. W **Instalator programu Microsoft Monitoring Agent** okno dialogowe, kliknij przycisk **uaktualnienia**. Na stronie stanu wyświetlany postęp uaktualnienia.
+
+6. Gdy **Konfiguracja programu Microsoft Monitoring Agent została pomyślnie ukończona.** zostanie wyświetlona strona, kliknij przycisk **Zakończ**.
+
+#### <a name="to-upgrade-from-the-command-line"></a>Aby uaktualnić z wiersza polecenia
+
+1. Zaloguj się do komputera przy użyciu konta z uprawnieniami administracyjnymi.
+
+2. Aby wyodrębnić pliki instalacyjne agenta z wiersza polecenia z podwyższonym poziomem uprawnień uruchom `MMASetup-<platform>.exe /c` i zostanie wyświetlony monit dla ścieżki wyodrębnić pliki do. Alternatywnie, można określić ścieżkę przez przekazanie argumentów `MMASetup-<platform>.exe /c /t:<Full Path>`.
+
+3. Uruchom następujące polecenie, w którym D:\ jest lokalizacją pliku dziennika uaktualnienia.
+
+    ```dos
+    setup.exe /qn /l*v D:\logs\AgentUpgrade.log AcceptEndUserLicenseAgreement=1
+    ```
+
+### <a name="upgrade-linux-agent"></a>Uaktualnienie agenta systemu Linux 
+
+Uaktualnianie z wcześniejszych wersji (> 1.0.0-47) jest obsługiwana. Przeprowadzanie instalacji przy użyciu `--upgrade` polecenie uaktualni wszystkie składniki agenta do najnowszej wersji.
+
+Uruchom następujące polecenie, aby uaktualnić agenta.
+
+`sudo sh ./omsagent-*.universal.x64.sh --upgrade`
 
 ## <a name="adding-or-removing-a-workspace"></a>Dodawanie lub usuwanie obszaru roboczego
 
@@ -31,10 +95,15 @@ Po początkowym wdrożeniu programu Windows Analytics dziennika lub agenta syste
 #### <a name="update-settings-from-control-panel"></a>Aktualizowanie ustawień w Panelu sterowania
 
 1. Zaloguj się do komputera przy użyciu konta z uprawnieniami administracyjnymi.
+
 2. Otwórz **Panel sterowania**.
+
 3. Wybierz **Microsoft Monitoring Agent** a następnie kliknij przycisk **usługi Azure Log Analytics** kartę.
+
 4. Jeżeli usunięcie obszaru roboczego, wybierz ją, a następnie kliknij przycisk **Usuń**. Powtórz ten krok dla inny obszar roboczy ma przestają raportować do agenta.
+
 5. Dodawanie obszaru roboczego, kliknij przycisk **Dodaj** i **Dodaj obszar roboczy usługi Log Analytics** okno dialogowe, wklej identyfikator obszaru roboczego i klucz obszaru roboczego (klucz podstawowy). Jeśli komputer powinien wysyłać raporty do obszaru roboczego usługi Log Analytics w chmurze Azure dla instytucji rządowych, wybierz dla administracji USA, z listy rozwijanej w chmurze platformy Azure.
+
 6. Kliknij przycisk **OK**, aby zapisać zmiany.
 
 #### <a name="remove-a-workspace-using-powershell"></a>Usuwanie obszaru roboczego przy użyciu programu PowerShell
@@ -109,9 +178,12 @@ Aby skonfigurować agenta do komunikowania się z usługą za pośrednictwem ser
 #### <a name="update-settings-using-control-panel"></a>Aktualizowanie ustawień za pomocą Panelu sterowania
 
 1. Zaloguj się do komputera przy użyciu konta z uprawnieniami administracyjnymi.
+
 2. Otwórz **Panel sterowania**.
+
 3. Wybierz **Microsoft Monitoring Agent** a następnie kliknij przycisk **ustawienia serwera Proxy** kartę.
-4. Kliknij przycisk **Użyj serwera proxy** i podaj adres URL i port numer bramy lub serwera proxy. Jeśli serwer proxy lub bramy usługi Log Analytics wymaga uwierzytelniania, wpisz nazwę użytkownika i hasło do uwierzytelniania, a następnie kliknij przycisk **OK**.
+
+4. Kliknij pozycję **Użyj serwera proxy** i podaj adres URL oraz numer portu serwera proxy lub bramy. Jeśli Twój serwer proxy lub brama usługi Log Analytics wymaga uwierzytelniania, wpisz nazwę użytkownika i hasło, aby się uwierzytelnić, a następnie kliknij przycisk **OK**.
 
 #### <a name="update-settings-using-powershell"></a>Ustawienia aktualizacji przy użyciu programu PowerShell
 
@@ -165,7 +237,9 @@ Użyj jednej z poniższych procedur można odinstalować agenta Windows lub Linu
 
 #### <a name="uninstall-from-control-panel"></a>Odinstaluj z poziomu Panelu sterowania
 1. Zaloguj się do komputera przy użyciu konta z uprawnieniami administracyjnymi.
+
 2. W **Panelu sterowania**, kliknij przycisk **programy i funkcje**.
+
 3. W **programy i funkcje**, kliknij przycisk **Microsoft Monitoring Agent**, kliknij przycisk **Odinstaluj**, a następnie kliknij przycisk **tak**.
 
 >[!NOTE]
@@ -175,7 +249,9 @@ Użyj jednej z poniższych procedur można odinstalować agenta Windows lub Linu
 Pobrany plik agenta jest pakietem instalacyjnym niezależna utworzonych za pomocą IExpress. Program instalacyjny programu agent i pliki pomocnicze są zawarte w pakiecie i muszą zostać wyodrębnione w celu poprawnego odinstalowania przy użyciu wiersza polecenia, pokazano w poniższym przykładzie.
 
 1. Zaloguj się do komputera przy użyciu konta z uprawnieniami administracyjnymi.
+
 2. Aby wyodrębnić pliki instalacyjne agenta z wiersza polecenia z podwyższonym poziomem uprawnień uruchom `extract MMASetup-<platform>.exe` i zostanie wyświetlony monit dla ścieżki wyodrębnić pliki do. Alternatywnie, można określić ścieżkę przez przekazanie argumentów `extract MMASetup-<platform>.exe /c:<Path> /t:<Path>`. Aby uzyskać więcej informacji na temat parametrów wiersza polecenia obsługiwane przez IExpress, zobacz [przełączniki wiersza polecenia dla IExpress](https://support.microsoft.com/help/197147/command-line-switches-for-iexpress-software-update-packages) , a następnie zaktualizuj przykład do własnych potrzeb.
+
 3. W wierszu polecenia wpisz `%WinDir%\System32\msiexec.exe /x <Path>:\MOMAgent.msi /qb`.
 
 ### <a name="linux-agent"></a>Agent systemu Linux
@@ -191,14 +267,23 @@ Wykonaj poniższe kroki, aby skonfigurować agenta usługi Log Analytics dla Win
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
 1. Zaloguj się do komputera przy użyciu konta z uprawnieniami administracyjnymi.
+
 2. Otwórz **Panel sterowania**.
+
 3. Kliknij przycisk **Microsoft Monitoring Agent** a następnie kliknij przycisk **programu Operations Manager** kartę.
+
 4. Jeśli serwery programu Operations Manager są zintegrowane z usługą Active Directory, kliknij przycisk **automatycznie Aktualizuj przypisania grupy zarządzania z usług AD DS**.
+
 5. Kliknij przycisk **Dodaj** otworzyć **Dodaj grupę zarządzania** okno dialogowe.
+
 6. W **Nazwa grupy zarządzania** wpisz nazwę grupy zarządzania.
+
 7. W **podstawowego serwera zarządzania** wpisz nazwę komputera w podstawowy serwer zarządzania.
+
 8. W **port serwera zarządzania** wpisz numer portu TCP.
+
 9. W obszarze **konto akcji agenta**, wybierz konto systemu lokalnego lub konta domeny lokalnej.
+
 10. Kliknij przycisk **OK** zamknąć **Dodaj grupę zarządzania** okno dialogowe, a następnie kliknij przycisk **OK** zamknąć **właściwości programu Microsoft Monitoring Agent** okno dialogowe.
 
 ### <a name="linux-agent"></a>Agent systemu Linux
@@ -207,7 +292,9 @@ Wykonaj poniższe kroki, aby skonfigurować agenta usługi Log Analytics dla sys
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
 1. Edytuj plik `/etc/opt/omi/conf/omiserver.conf`
+
 2. Upewnij się, że wiersz zaczynający się od `httpsport=` definiuje portu 1270. Przykład: `httpsport=1270`
+
 3. Uruchom ponownie serwer OMI: `sudo /opt/omi/bin/service_control restart`
 
 ## <a name="next-steps"></a>Kolejne kroki

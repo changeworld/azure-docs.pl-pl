@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: 'Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s '
-ms.openlocfilehash: 4617e878f2af446608ede4e0aed644848564a074
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
-ms.translationtype: MT
+ms.openlocfilehash: 044e997703f5b274215fb05c7152186948b331b4
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59609079"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63761406"
 ---
 # <a name="troubleshooting-guide"></a>Przewodnik rozwiązywania problemów
 
@@ -296,7 +296,7 @@ Ponowne uruchamianie węzłów agenta w klastrze zwykle rozwiązuje ten problem.
 ## <a name="azure-dev-spaces-proxy-can-interfere-with-other-pods-running-in-a-dev-space"></a>Serwer proxy usługi Azure Dev miejsca do magazynowania może zakłócać innych zasobników w miejsce dev
 
 ### <a name="reason"></a>Przyczyna
-Po włączeniu Dev miejsca do magazynowania w przestrzeni nazw w klastrze AKS dodatkowy kontener o nazwie _mindaro proxy_ jest instalowany na każdym zasobników działającym wewnątrz tego obszaru nazw. Ten kontener przechwytuje wywołania usług pod, który jest dołączony do funkcji tworzenia zespołu miejsca do magazynowania Dev; jednak może to zakłócać pewne usługi działające w tych zasobników. Jest on znany kolidować z zasobników systemem pamięć podręczna systemu Azure dla usługi Redis, powodując błędy połączeń i błędów w komunikacie główny/podrzędny.
+Po włączeniu Dev miejsca do magazynowania w przestrzeni nazw w klastrze AKS dodatkowy kontener o nazwie _mindaro proxy_ jest instalowany na każdym zasobników działającym wewnątrz tego obszaru nazw. Ten kontener przechwytuje wywołania usług pod, który jest dołączony do funkcji tworzenia zespołu miejsca do magazynowania Dev; jednak może to zakłócać pewne usługi działające w tych zasobników. Jest on znany kolidować z zasobników systemem pamięć podręczna systemu Azure dla usługi Redis, powodując błędy połączeń i błędów w komunikacie podstawowy/dodatkowy.
 
 ### <a name="try"></a>Wypróbuj:
 Dotyczy zasobników można przenieść do przestrzeni nazw w ramach klastra, który wykonuje _nie_ zawierać spacji Dev włączone. Pozostała część aplikacji, mogą w dalszym ciągu uruchamiać wewnątrz przestrzeni nazw z obsługą tworzenia miejsca do magazynowania. Dev miejsca do magazynowania nie spowoduje zainstalowania _mindaro proxy_ kontenerów wewnątrz spacje innych deweloperów włączone obszary nazw.

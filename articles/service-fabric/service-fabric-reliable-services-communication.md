@@ -15,11 +15,11 @@ ms.workload: required
 ms.date: 11/01/2017
 ms.author: vturecek
 ms.openlocfilehash: 15b45cadc69830827952d87ffc2315b06b07b02c
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663404"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62124993"
 ---
 # <a name="how-to-use-the-reliable-services-communication-apis"></a>Jak używać interfejsów API komunikacji usług Reliable Services
 Usługa Azure Service Fabric jako platforma jest całkowicie niezależny od o komunikacji między usługami. Wszystkie protokoły i stosów są dopuszczalne, z UDP, HTTP. To Ty dla deweloperów usługi do wyboru komunikowania usług. Struktura aplikacji usług Reliable Services zapewnia stosów komunikacji wbudowanej, a także interfejsów API, które służy do tworzenia składników niestandardowych komunikacji.

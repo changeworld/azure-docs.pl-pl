@@ -11,11 +11,11 @@ ms.date: 12/06/2018
 ms.custom: seodec18
 Customer intent: As a developer, I want to build a Java application to access and manage Azure Cosmos DB resources so that customers can store key/value data and utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
 ms.openlocfilehash: b6876bf8210d47729ad8e765ccffe709a0fccacc
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958698"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62120350"
 ---
 # <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>Samouczek: Tworzenie konta interfejsu API Cassandra w usłudze Azure Cosmos DB przy użyciu aplikacji języka Java w celu przechowywania danych kluczy/wartości
 
@@ -222,7 +222,7 @@ Ta sekcja zawiera opis sposobu dodawania bazy danych (przestrzeni kluczy) oraz t
    
 2. Teraz w witrynie Azure Portal otwórz **Eksplorator danych**, aby potwierdzić utworzenie przestrzeni kluczy i tabeli.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku przedstawiono sposób tworzenia konta, bazy danych i tabeli interfejsu API Cassandra w usłudze Azure Cosmos DB przy użyciu aplikacji języka Java. Teraz możesz przejść do następnego artykułu:
 

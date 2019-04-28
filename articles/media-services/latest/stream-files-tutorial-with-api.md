@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 02/18/2019
+ms.date: 03/22/2019
 ms.author: juliako
-ms.openlocfilehash: 82d8a8085ca285c95a550678cdc534e586a4faa7
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 53f69b6b8eb6cbbb8082ea0777af9dbceb7bdba1
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415968"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62125410"
 ---
 # <a name="tutorial-upload-encode-and-stream-videos-using-net"></a>Samouczek: Przekazywanie, kodowanie i przesyłanie strumieniowe wideo za pomocą platformy .NET
 
@@ -198,7 +198,11 @@ az group delete --name amsResourceGroup
 
 Zestawy SDK usługi Azure Media Services 3 nie są bezpieczne wątkowo. Podczas opracowywania aplikacji wielowątkowej należy wygenerować nowy obiekt AzureMediaServicesClient dla każdego wątku i użyć go.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="provide-feedback"></a>Przekazywanie opinii
+
+Zapoznaj się z [społeczności usługi Azure Media Services](media-services-community.md) artykuł, aby wyświetlić różne sposoby zadawaj pytania, Prześlij opinię i pobrać aktualizacje o usłudze Media Services.
+
+## <a name="next-steps"></a>Kolejne kroki
 
 Teraz, kiedy już wiesz, jak przekazywać, kodować i przesyłać strumieniowo wideo, zobacz następujący artykuł: 
 

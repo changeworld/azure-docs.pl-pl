@@ -15,15 +15,15 @@ ms.date: 02/20/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: ebced83346a7b130598e4a5f49a72d51ffd18e4f
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56584900"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62118777"
 ---
 # <a name="create-custom-roles-for-azure-resources-using-azure-cli"></a>Tworzenie ról niestandardowych dla zasobów platformy Azure przy użyciu wiersza polecenia platformy Azure
 
-Jeśli [wbudowane role zasobów platformy Azure](built-in-roles.md) nie spełnienia specyficznych potrzeb swojej organizacji, możesz utworzyć własne niestandardowe role. W tym artykule opisano, jak tworzyć i zarządzać nimi role niestandardowe przy użyciu wiersza polecenia platformy Azure.
+Jeśli [wbudowane role dla zasobów platformy Azure](built-in-roles.md) nie spełniają potrzeb Twojej organizacji, możesz tworzyć własne role niestandardowe. W tym artykule opisano, jak tworzyć i zarządzać nimi role niestandardowe przy użyciu wiersza polecenia platformy Azure.
 
 Aby uzyskać samouczek krok po kroku dotyczące sposobu tworzenia roli niestandardowej, zobacz [samouczka: Tworzenie roli niestandardowej na potrzeby zasobów platformy Azure przy użyciu wiersza polecenia platformy Azure](tutorial-custom-role-cli.md).
 
@@ -32,7 +32,7 @@ Aby uzyskać samouczek krok po kroku dotyczące sposobu tworzenia roli niestanda
 Aby utworzyć niestandardowe role, potrzebne są:
 
 - Uprawnienia do tworzenia ról niestandardowych, takie jak [Właściciel](built-in-roles.md#owner) lub [Administrator dostępu użytkowników](built-in-roles.md#user-access-administrator)
-- [Usługi Azure Cloud Shell](../cloud-shell/overview.md) lub [wiersza polecenia platformy Azure](/cli/azure/install-azure-cli)
+- [Azure Cloud Shell](../cloud-shell/overview.md) lub [interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli)
 
 ## <a name="list-custom-roles"></a>Wyświetlanie ról niestandardowych
 
@@ -239,5 +239,5 @@ az role definition delete --name "Virtual Machine Operator"
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Samouczek: Tworzenie roli niestandardowej na potrzeby zasobów platformy Azure przy użyciu wiersza polecenia platformy Azure](tutorial-custom-role-cli.md)
-- [Role niestandardowe dla zasobów platformy Azure](custom-roles.md)
+- [Niestandardowe role dla zasobów platformy Azure](custom-roles.md)
 - [Operacje dostawcy zasobów w usłudze Azure Resource Manager](resource-provider-operations.md)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: f7a14e975a5ca3aee5588f55f43b28081c100074
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: e60b202a32745062d2078d9721dfeba7aba69bda
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59358157"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63763907"
 ---
 # <a name="best-practices-to-use-azure-maps-search-service"></a>Najlepsze rozwiązania usługi Azure Maps Search
 
@@ -132,9 +132,9 @@ https://atlas.microsoft.com/search/address/reverse/json?api-version=1.0&subscrip
 
 ### <a name="predictive-mode-auto-suggest"></a>Tryb predykcyjne (Zaproponuj automatycznie)
 
-Aby znaleźć więcej dopasowań dla zapytania częściowego `typeHead` parametru powinna być równa się "true". Zapytanie, które będą interpretowane jako częściowe dane wejściowe i wyszukiwania przejdzie w tryb predykcyjne. W przeciwnym razie usługa zakłada, że wszystkie istotne informacje został przekazany w.
+Aby znaleźć więcej dopasowań dla zapytania częściowego `typeahead` parametru powinna być równa się "true". Zapytanie, które będą interpretowane jako częściowe dane wejściowe i wyszukiwania przejdzie w tryb predykcyjne. W przeciwnym razie usługa zakłada, że wszystkie istotne informacje został przekazany w.
 
-W przykładzie poniżej możesz zapytanie znajduje czy wyszukiwania usługi adresu zostaje przesłane zapytanie "Microso" z `typehead` parametr **true**. Jeśli zauważysz odpowiedzi, widać, Usługa wyszukiwania interpretowane zapytanie jako zapytanie częściowe, i odpowiedź zawiera najlepszych wyników zapytania sugerowany automatycznie.
+W przykładzie poniżej możesz zapytanie znajduje czy wyszukiwania usługi adresu zostaje przesłane zapytanie "Microso" z `typeahead` parametr **true**. Jeśli zauważysz odpowiedzi, widać, Usługa wyszukiwania interpretowane zapytanie jako zapytanie częściowe, i odpowiedź zawiera najlepszych wyników zapytania sugerowany automatycznie.
 
 **Przykładowe zapytanie:**
 

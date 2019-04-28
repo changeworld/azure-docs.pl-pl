@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: tulasim
-ms.openlocfilehash: c18ededc428b215720f8a6a6857a2eabd93bff8b
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.openlocfilehash: b634467381dc97e4a733e862e86632a089bf5f67
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59683612"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63765652"
 ---
 # <a name="get-a-knowledge-answer-with-the-generateanswer-api-and-metadata"></a>Uzyskaj odpowiedzi wiedzy, za pomocą interfejsu API GenerateAnswer i metadane
 
@@ -67,7 +67,7 @@ Możesz wywołać GenerateAnswer za pomocą żądania HTTP POST. Przykładowy ko
 https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 ```
 
-|Właściwości żądania HTTP|Name (Nazwa)|Typ|Przeznaczenie|
+|Właściwości żądania HTTP|Name (Nazwa)|Type|Przeznaczenie|
 |--|--|--|--|
 |Parametr trasy adresu URL|Identyfikator bazy wiedzy|string|Identyfikator GUID bazy wiedzy.|
 |Parametr trasy adresu URL|Host punktu końcowego interfejsu QnAMaker|string|Nazwa hosta punktu końcowego, wdrożonych w ramach subskrypcji platformy Azure. Jest on dostępny na stronie ustawień, po opublikowaniu w bazie wiedzy knowledge base. |
@@ -78,11 +78,12 @@ https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 
 Treść kodu JSON ma kilka ustawień:
 
-|Właściwość treść JSON|Wymagane|Typ|Przeznaczenie|
+|Właściwość treść JSON|Wymagane|Type|Przeznaczenie|
 |--|--|--|--|
 |`question`|wymagane|string|Pytanie użytkownika mają być wysyłane do bazy wiedzy.|
 |`top`|opcjonalne|liczba całkowita|Liczba wyników w rankingu do uwzględnienia w danych wyjściowych. Wartość domyślna to 1.|
 |`userId`|opcjonalne|string|Unikatowy identyfikator, aby zidentyfikować użytkownika. Ten identyfikator będą rejestrowane w dziennikach rozmowy.|
+|`scoreThreshold`|opcjonalne|liczba całkowita|Zostaną zwrócone tylko odpowiedzi z oceną zaufania powyżej wartości progowej. Wartość domyślna to 0.|
 |`isTest`|opcjonalne|wartość logiczna|Jeśli ustawionej na wartość true, zwraca wyniki z `testkb` indeksu wyszukiwania zamiast opublikowanych indeksu.|
 |`strictFilters`|opcjonalne|string|Jeśli zostanie określony, informuje narzędzie QnA Maker, aby zwrócić tylko odpowiedzi, które mają określonych metadanych. Użyj `none` oznacza odpowiedzi powinien mieć żadnych filtrów metadanych. |
 
@@ -93,6 +94,7 @@ Przykładowy kod JSON wygląda następująco:
     "question": "qna maker and luis",
     "top": 6,
     "isTest": true,
+    "scoreThreshold": 20,
     "strictFilters": [
     {
         "name": "category",

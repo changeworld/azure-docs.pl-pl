@@ -2,18 +2,18 @@
 title: Tworzenie oprogramowania dla usługi Azure Files przy użyciu języka C++ | Dokumentacja firmy Microsoft
 description: Informacje o sposobie tworzenia aplikacji w języku C++ i usług korzystających z usługi Azure Files do przechowywania danych plików.
 services: storage
-author: renashahmsft
+author: roygara
 ms.service: storage
 ms.topic: article
 ms.date: 09/19/2017
-ms.author: renashahmsft
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 3432794c6b6d2323392f0b56b364400d05b10afc
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
-ms.translationtype: MT
+ms.openlocfilehash: 424db4435c569475f9463894b5364fc22190689a
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649712"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63766379"
 ---
 # <a name="develop-for-azure-files-with-c"></a>Tworzenie oprogramowania dla usługi Azure Files przy użyciu języka C++
 

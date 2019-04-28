@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: alkohli
-ms.openlocfilehash: 522dddde4994bb019e6547fcd18465b201f048d8
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
-ms.translationtype: MT
+ms.openlocfilehash: c2803ba598895834bb197f4a06ff0635354fcaca
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401730"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63759979"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge"></a>Twórz C# moduł usługi IoT Edge, aby przenieść pliki na krawędzi pola danych
 
@@ -36,7 +36,7 @@ Urządzenie brzegowe pole danych wdrażać i uruchamiać moduły usługi IoT Edg
 2. Generator zdarzeń pliku Tworzy zdarzenie pliku dla każdego pliku zapisywane do udziału lokalnego. Zdarzenia pliku również są generowane, gdy plik zostanie zmodyfikowany. Zdarzenia w pliku są następnie wysyłane do usługi IoT Edge Hub (środowisko uruchomieniowe usługi IoT Edge).
 3. Niestandardowy moduł usługi IoT Edge przetwarza zdarzenia pliku do utworzenia obiektu zdarzenia pliku, który również zawiera ścieżkę względną do pliku. Moduł generuje przy użyciu ścieżki względnej ścieżki bezwzględnej i kopiuje plik z udziału lokalnego do udziału w chmurze. Moduł następnie usuwa plik z lokalnego udziału.
 
-![Jak działa moduł usługi Azure IoT Edge na krawędzi pola danych](./media/data-box-edge-create-iot-edge-module/how-module-works.png)
+![Jak działa moduł usługi Azure IoT Edge na krawędzi pola danych](./media/data-box-edge-create-iot-edge-module/how-module-works-1.png)
 
 Gdy plik znajduje się w udziale chmury, automatycznie zostaje on przesłany do konta usługi Azure Storage.
 

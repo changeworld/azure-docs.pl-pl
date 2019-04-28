@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: spelluru
-ms.openlocfilehash: c26418d36271b4d2d39a43eda7e8b23585d69f4a
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.openlocfilehash: 91c598bde0912cffb8aa1dd7ba022c86a9084faa
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149431"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62127399"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs — często zadawane pytania
 Uzyskaj odpowiedzi na niektóre często zadawane pytania dotyczące usługi Azure DevTest Labs.
@@ -350,7 +350,7 @@ Dla innych ciągłej integracji (CI) / kompilatorach ciągłe dostarczanie (CD) 
 ### <a name="when-should-i-create-a-new-virtual-network-for-my-devtest-labs-environment-vs-using-an-existing-virtual-network"></a>Kiedy utworzyć nową sieć wirtualną dla środowiska Moje DevTest Labs, a za pomocą istniejącej sieci wirtualnej?
 Jeśli Twoje maszyny wirtualne muszą wchodzić w interakcje z istniejącą infrastrukturą, rozważ użycie istniejącej sieci wirtualnej w środowisku laboratorium. Jeśli korzystasz z usługi ExpressRoute, możesz chcieć minimalizację liczby sieci wirtualnych / podsieci, aby nie fragmentu przestrzenią adresów IP, pobiera przypisaną do użycia w ramach subskrypcji. 
 
-Rozważ użycie wzorca komunikacji równorzędnej sieci wirtualnej w tym miejscu ([modelu piasty i szprych](/architecture/reference-architectures/hybrid-networking/hub-spoke)) zbyt. Takie podejście umożliwia sieci wirtualnej/podsieci komunikacji między subskrypcjami. W przeciwnym razie każde środowisko usługi DevTest Labs może mieć własną sieć wirtualną. 
+Rozważ użycie wzorca komunikacji równorzędnej sieci wirtualnej w tym miejscu ([modelu piasty i szprych](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)) zbyt. Takie podejście umożliwia sieci wirtualnej/podsieci komunikacji między subskrypcjami. W przeciwnym razie każde środowisko usługi DevTest Labs może mieć własną sieć wirtualną. 
 
 Istnieją [limity](../azure-subscription-service-limits.md) liczby sieci wirtualnych na subskrypcję. Wartość domyślna wynosi 50, chociaż ten limit może wzrosnąć do 100.
 

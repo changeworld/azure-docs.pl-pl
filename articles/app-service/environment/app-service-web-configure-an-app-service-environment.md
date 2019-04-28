@@ -16,11 +16,11 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 5c0b4117f6e7b48dce1746ad6eb3dbe29c0d16af
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723216"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62130623"
 ---
 # <a name="configuring-an-app-service-environment-v1"></a>Konfigurowanie aplikacji usługi Environment w wersji 1
 
@@ -28,7 +28,7 @@ ms.locfileid: "53723216"
 > Ten artykuł dotyczy środowiska App Service Environment w wersji 1.  Istnieje nowsza wersja usługi App Service Environment jest łatwiejszy w obsłudze, która działa na bardziej zaawansowanych infrastruktury. Aby dowiedzieć się więcej na temat nowej wersji rozpoczynać [wprowadzenie do usługi App Service Environment](intro.md).
 > 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Na wysokim poziomie Azure App Service Environment składa się z kilku głównych składników:
 
 * Usługa hostowana zasoby obliczeniowe, które działają w środowisku App Service

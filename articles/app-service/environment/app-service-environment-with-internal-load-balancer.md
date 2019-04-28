@@ -16,11 +16,11 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 88f100bc780d8df0202cfcce9b390085a71fc905
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310474"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62130606"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>Przy użyciu wewnętrznego modułu równoważenia obciążenia w środowisku usługi App Service
 
@@ -30,7 +30,7 @@ ms.locfileid: "53310474"
 
 Funkcja App Service Environment (ASE) to opcja usługi Premium usługi Azure App Service, która dostarcza możliwości rozszerzonej konfiguracji, która nie jest dostępna w sygnatury wielodostępu. Funkcja środowiska ASE wdraża przede wszystkim usłudze Azure App Service w Twoja sieć wirtualna platformy Azure. Aby uzyskać lepsze zrozumienie możliwości oferowane przez odczyt środowisk App Service Environment [co to jest środowisko usługi App Service] [ WhatisASE] dokumentacji. Jeśli nie znasz korzyści systemu operacyjnego podczas odczytywania sieci wirtualnej [często zadawane pytania sieci wirtualnych Azure][virtualnetwork]. 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Środowisko ASE można wdrożyć z dostępnym punkcie końcowym Internetu lub adresu IP w sieci wirtualnej. Aby ustawić adres IP adres sieci wirtualnej należy wdrożyć środowisko ASE przy użyciu wewnętrznego Balancer(ILB) obciążenia. Po skonfigurowaniu środowiska ASE z wewnętrznym modułem równoważenia obciążenia zawierają:
 
 * własne domeny lub poddomeny. Ułatwia, w tym dokumencie przyjęto założenie, domeny podrzędnej, ale można skonfigurować w obu przypadkach. 

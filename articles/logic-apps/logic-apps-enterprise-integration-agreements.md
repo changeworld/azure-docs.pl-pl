@@ -1,6 +1,6 @@
 ---
-title: Umowy dotyczące komunikacji B2B — Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Tworzenie umów dla modelu B2B handlowymi partnera komunikacji z usługą Azure Logic Apps i pakiet integracyjny dla przedsiębiorstw
+title: Tworzenie i zarządzanie nimi umowy z partnerami handlowymi — Azure Logic Apps
+description: Tworzenie i zarządzanie umowami między partnerami handlowymi przy użyciu usługi Azure Logic Apps i pakiet integracyjny dla przedsiębiorstw
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,67 +9,100 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 447ffb8e-3e91-4403-872b-2f496495899d
-ms.date: 06/29/2016
-ms.openlocfilehash: 09bee10649e2bc0d745e42b8aa13ae9c21df35aa
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
-ms.translationtype: MT
+ms.date: 04/05/2019
+ms.openlocfilehash: 26d653b873e959f0804e0456ed87ee68c39413e5
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128831"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63761274"
 ---
-# <a name="partner-agreements-for-b2b-communication-with-azure-logic-apps-and-enterprise-integration-pack"></a>Umów z partnerami komunikacji B2B przy użyciu usługi Azure Logic Apps i pakiet integracyjny dla przedsiębiorstw
+# <a name="create-and-manage-trading-partner-agreements-by-using-azure-logic-apps-and-enterprise-integration-pack"></a>Tworzenie i zarządzanie nimi umowy z partnerami handlowymi przy użyciu usługi Azure Logic Apps i pakiet integracyjny dla przedsiębiorstw
 
-Umowy dotyczące umożliwiają jednostek biznesowych, które komunikują się bezproblemowo przy użyciu standardowych w branży protokołów i to podstawa, business-to-business (B2B) komunikacji. Podczas włączania scenariuszy B2B dla usługi logic apps z pakietem integracyjnym dla przedsiębiorstw, Umowa jest w układzie komunikacji między partnerami handlowymi B2B. Niniejsza Umowa jest oparte na komunikacji, że partnerzy chcesz ustanowić i protokół lub specyficzne dla transportu.
+A [partner handlowy](../logic-apps/logic-apps-enterprise-integration-partners.md) 
+*umowy* pozwala organizacji i przedsiębiorstw, definiując określone standardowym protokołem do użycia podczas wymiany bezproblemowo łączy ze sobą komunikaty Business-to-business (B2B). Umowy zawierają typowe korzyści, na przykład:
 
-Integracja w przedsiębiorstwie obsługuje te standardy protokołu lub transportu:
+* Pozwalają organizacjom wymiany informacji przy użyciu znanego formatu.
+* Zwiększ wydajność podczas przeprowadzania transakcji B2B.
+* To ułatwia tworzenie i zarządzanie nimi na użytek tworzenie rozwiązań integracji przedsiębiorstwa.
 
-* [AS2](logic-apps-enterprise-integration-as2.md)
-* [X12](logic-apps-enterprise-integration-x12.md)
-* [EDIFACT](logic-apps-enterprise-integration-edifact.md)
+W tym artykule przedstawiono sposób tworzenia AS2, EDIFACT lub X12 umowy, używanego podczas tworzenia rozwiązań integracji dla scenariuszy B2B przedsiębiorstwa przy użyciu [pakiet integracyjny dla przedsiębiorstw](../logic-apps/logic-apps-enterprise-integration-overview.md) i [usługi Azure Logic Apps](../logic-apps/logic-apps-overview.md). Po utworzeniu umowę, możesz następnie użyć AS2, EDIFACT lub X12 łączników na potrzeby wymiany komunikatów B2B.
 
-## <a name="why-use-agreements"></a>Dlaczego warto korzystać z umowy
+## <a name="prerequisites"></a>Wymagania wstępne
 
-Poniżej przedstawiono niektóre typowe korzyści, korzystając z umowy:
+* Subskrypcja platformy Azure. Jeśli nie masz jeszcze subskrypcji platformy Azure [Załóż bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
 
-* Umożliwia różne organizacje i przedsiębiorstwa mogą wymieniać informacje w formacie dobrze znane.
-* Zwiększa wydajność podczas przeprowadzania transakcji B2B
-* Łatwe tworzenie i zarządzanie nimi podczas tworzenia integracji aplikacji przedsiębiorstwa
+* [Konta integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) do przechowywania umowy i innych artefaktów B2B. To konto integracji muszą być skojarzone z subskrypcją platformy Azure.
 
-## <a name="how-to-create-agreements"></a>Tworzenie umów
+* Co najmniej dwóch [partnerami handlowymi](../logic-apps/logic-apps-enterprise-integration-partners.md) już utworzoną na koncie integracji. Umowa wymaga zarówno partner hosta, jak i partnera gościa. Obu partnerach musi używać tego samego kwalifikator "tożsamość firmy", co umowy, którą chcesz utworzyć, takie jak AS2, X 12 lub EDIFACT.
 
-* [Tworzenie umowy AS2](logic-apps-enterprise-integration-as2.md)
-* [Utwórz X12 umowy](logic-apps-enterprise-integration-x12.md)
-* [Tworzenie umowy EDIFACT](logic-apps-enterprise-integration-edifact.md)
+* Opcjonalnie: Aplikacja logiki, w której chcesz użyć umowy i wyzwalacza uruchamiającego przepływ pracy aplikacji logiki. Po prostu utworzenie konta integracji i artefaktów B2B, nie potrzebujesz aplikacji logiki. Jednak zanim aplikacja logiki można użyć artefaktów B2B na koncie integracji, należy połączyć swoje konto integracji aplikacji logiki. Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps](../logic-apps/logic-apps-overview.md) i [Szybki Start: Utwórz swoją pierwszą aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-## <a name="how-to-use-an-agreement"></a>Jak używać umowę
+## <a name="create-agreements"></a>Tworzenie umów
 
-Możesz utworzyć [aplikacje logiki](logic-apps-overview.md "Dowiedz się więcej o usłudze Logic apps") z możliwościami B2B przy użyciu umowy, który został utworzony.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+W głównym menu platformy Azure, wybierz **wszystkich usług**. W polu wyszukiwania wprowadź "integration" jako filtr. Z listy wyników wybierz tego zasobu: **Integracja kont**
 
-## <a name="how-to-edit-an-agreement"></a>Jak edytować umowy
+   ![Znajdź swoje konto integracji](./media/logic-apps-enterprise-integration-agreements/find-integration-accounts.png)
 
-Można edytować każdej umowy, wykonując następujące czynności:
+1. W obszarze **kont integracji**, wybierz konto integracji, w którym chcesz utworzyć umowy.
 
-1. Wybierz konto integracji, które ma Umowy, którą chcesz zaktualizować.
+   ![Wybierz miejsce utworzenia umowę konta integracji](./media/logic-apps-enterprise-integration-agreements/select-integration-account.png)
 
-2. Wybierz **umów** kafelka.
+1. W okienku po prawej stronie w obszarze **składniki**, wybierz **umów** kafelka.
 
-3. Na **umów** bloku wybierz umowę.
+   ![Wybierz pozycję "Umowy"](./media/logic-apps-enterprise-integration-agreements/agreement-1.png)
 
-4. Wybierz **Edytuj**. Wprowadź zmiany.
+1. W obszarze **umów**, wybierz **Dodaj**. W **Dodaj** okienku, podaj informacje o umowy, na przykład:
 
-5. Aby zapisać zmiany, wybierz opcję **OK**.
+   ![Wybieranie pozycji "Dodaj"](./media/logic-apps-enterprise-integration-agreements/agreement-2.png)
 
-## <a name="how-to-delete-an-agreement"></a>Jak usunąć umowy
+   | Właściwość | Wymagany | Value | Opis |
+   |----------|----------|-------|-------------|
+   | **Nazwa** | Yes | <*agreement-name*> | Nazwa umowy |
+   | **Typ umowy** | Yes | **AS2**, **X12**, lub **EDIFACT** | Typ protokołu dla umowy. Podczas tworzenia pliku umowy zawartości w tym pliku musi być zgodna z typem umowy. | |  
+   | **Host Partner** | Yes | <*host-partner-name*> | Partner hosta reprezentuje organizację, która określa umowy |
+   | **Tożsamość hosta** | Yes | <*host-partner-identifier*> | Identyfikator partnera hosta |
+   | **Partner gościa** | Yes | <*guest-partner-name*> | Partner gościa reprezentuje organizację, która jest prowadzących działalność we współpracy z partnerem hosta |
+   | **Tożsamość gościa** | Yes | <*guest-partner-identifier*> | Identyfikator partnera gościa |
+   | **Ustawienia odbierania** | Różna | Różna | Te właściwości określają sposób obsługi komunikaty przychodzące odebranych przez umowy. Aby uzyskać więcej informacji zobacz typ odpowiedniej umowy: <p>- [Ustawienia komunikatu AS2](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [Ustawienia komunikatu EDIFACT](logic-apps-enterprise-integration-edifact.md) <br>- [X12 komunikatu ustawienia](logic-apps-enterprise-integration-x12.md) |
+   | **Ustawienia wysyłania** | Różna | Różna | Te właściwości określają sposób obsługi wszystkich wiadomości wychodzących, wysłanych przez umowy. Aby uzyskać więcej informacji zobacz typ odpowiedniej umowy: <p>- [Ustawienia komunikatu AS2](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [Ustawienia komunikatu EDIFACT](logic-apps-enterprise-integration-edifact.md) <br>- [X12 komunikatu ustawienia](logic-apps-enterprise-integration-x12.md) |
+   |||||
 
-Aby usunąć każdej umowy, wykonaj następujące czynności:
+1. Po zakończeniu tworzenia umowy, na **Dodaj** wybierz **OK**i wrócić do swojego konta integracji.
 
-1. Wybierz konto integracji, które ma Umowy, które chcesz usunąć.
-2. Wybierz **umów** kafelka.
-3. Na **umów** bloku wybierz umowę.
-4. Wybierz **Usuń**.
-5. Upewnij się, że chcesz usunąć wybraną umowę.
+   **Umów** lista zawiera teraz nowe umowy.
 
-    Blok Umowy nie powoduje już zgłaszania usunięto umowy.
+## <a name="edit-agreements"></a>Edytowanie umów
+
+1. W [witryny Azure portal](https://portal.azure.com), w menu głównym platformy Azure wybierz **wszystkich usług**.
+
+1. W polu wyszukiwania wprowadź "integration" jako filtr. Z listy wyników wybierz tego zasobu: **Integracja kont**
+
+1. W obszarze **kont integracji**, wybrać konto integracji, które ma umowę, którą chcesz edytować.
+
+1. W okienku po prawej stronie w obszarze **składniki**, wybierz **umów** kafelka.
+
+1. W obszarze **umów**, wybierz umowy i wybierz **Edytuj**.
+
+1. Upewnij, a następnie zapisz zmiany.
+
+## <a name="delete-agreements"></a>Usuwanie umowy
+
+1. W [witryny Azure portal](https://portal.azure.com), w menu głównym platformy Azure wybierz **wszystkich usług**.
+
+1. W polu wyszukiwania wprowadź "integration" jako filtr. Z listy wyników wybierz tego zasobu: **Integracja kont**
+
+1. W obszarze **kont integracji**, wybrać konto integracji, które ma umowę do usunięcia.
+
+1. W okienku po prawej stronie w obszarze **składniki**, wybierz **umów** kafelka.
+
+1. W obszarze **umów**, wybierz umowy i wybierz **Usuń**.
+
+1. Upewnij się, że chcesz usunąć wybraną umowę.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Tworzenie umowy AS2](logic-apps-enterprise-integration-as2.md)
+
+* [Wymienianie komunikatów AS2](logic-apps-enterprise-integration-as2.md)
+* [Wymienianie komunikatów EDIFACT](logic-apps-enterprise-integration-edifact.md)
+* [Wymiana X12 komunikatów](logic-apps-enterprise-integration-x12.md)

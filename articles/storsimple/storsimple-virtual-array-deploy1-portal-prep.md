@@ -16,16 +16,16 @@ ms.date: 01/11/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 7c6f0a6371b38f0271237db0f7d80b831ecc145c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58088710"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62127144"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>Wdrażanie rozwiązania StorSimple Virtual Array — przygotowanie witryny Azure portal
 
 ![](./media/storsimple-virtual-array-deploy1-portal-prep/getstarted4.png)
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Jest to pierwszy artykuł z tej serii samouczków wdrożenia wymagane całkowicie wdrożenie macierz wirtualna jako serwer plików lub serwer iSCSI przy użyciu modelu usługi Resource Manager. W tym artykule opisano przygotowania wymagane do tworzenia i konfigurowania usługi Menedżer urządzeń StorSimple przed aprowizowania macierzy wirtualnej. Ten artykuł zawiera również linki się lista kontrolna konfiguracji wdrażania i konfiguracji wymagań wstępnych.
 

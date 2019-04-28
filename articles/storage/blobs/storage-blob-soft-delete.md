@@ -5,15 +5,15 @@ services: storage
 author: MichaelHauss
 ms.service: storage
 ms.topic: article
-ms.date: 07/15/2018
+ms.date: 04/23/2019
 ms.author: mihauss
 ms.subservice: blobs
-ms.openlocfilehash: 08d51b1b6a09bb4df3986bd8c4c44d3834882def
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
-ms.translationtype: MT
+ms.openlocfilehash: d9055b0c0decbeca0bb43969af4e854c396c3bb6
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55506129"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63764220"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Nietrwałe usuwanie obiektów blob usługi Azure Storage
 Usługa Azure Storage oferuje teraz usuwania nietrwałego dla obiektów blob, tak, aby łatwiej można odzyskać dane, gdy jest błędnie zmodyfikowany lub usunięty przez aplikację lub innego użytkownika do konta magazynu.
@@ -278,6 +278,9 @@ blockBlob.StartCopy(copySource);
 Jeśli istnieje ryzyko, że danych przypadkowo zmienione lub usunięte przez aplikację lub innemu użytkownikowi konta magazynu, zaleca się włączenie usuwania nietrwałego. Usuwanie nietrwałego jest częścią strategii ochrony danych i może pomóc w uniknięciu utraty danych przypadkowego.
 
 ## <a name="faq"></a>Często zadawane pytania
+**Czy istnieją wszystkie uwagi dotyczące Korzystanie z miękkiego usuwania?**  
+Włączanie usuwania nietrwałego dla często zastępowane danych może spowodować naliczenie opłaty za pojemność zasobów pamięci masowej i większe opóźnienia, podczas wyświetlania listy obiektów blob. Można temu zaradzić, przechowując dane często zastąpione w oddzielne konto magazynu przy użyciu usuwania nietrwałego wyłączone. 
+
 **Dla jakich typów pamięci masowej można używać usuwania nietrwałego?**  
 Obecnie usuwania nietrwałego jest dostępna tylko dla magazynu obiektów blob (obiekt).
 

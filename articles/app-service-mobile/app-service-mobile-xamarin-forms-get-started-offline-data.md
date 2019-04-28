@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 10/04/2016
 ms.author: crdun
 ms.openlocfilehash: 506c59ca24aeafbac59b1508bb78142051302765
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001817"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62127883"
 ---
 # <a name="enable-offline-sync-for-your-xamarinforms-mobile-app"></a>Włączanie synchronizacji w trybie offline dla aplikacji mobilnej platformy Xamarin.Forms
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Ten samouczek zawiera funkcję synchronizacji w trybie offline, które usługi Azure Mobile Apps dla platformy Xamarin.Forms. Synchronizacja w trybie offline umożliwia użytkownikom końcowym interakcję z aplikacją mobilną — wyświetlanie, dodawanie lub modyfikowanie danych — nawet w przypadku braku połączenia sieciowego. Zmiany są przechowywane w lokalnej bazie danych. Gdy urządzenie jest w trybie online, zmiany te są synchronizowane z usługi zdalnej.
 
 Ten samouczek opiera się na rozwiązanie Xamarin.Forms w przewodniku Szybki Start dla aplikacji mobilnych, utworzony po ukończeniu tego samouczka [tworzenie aplikacji platformy Xamarin.IOS]. Rozwiązania Xamarin.Forms w przewodniku Szybki Start zawiera kod w celu obsługi synchronizacji w trybie offline, który po prostu musi być włączona. W tym samouczku należy zaktualizować rozwiązanie szybkiego startu, aby włączyć funkcje trybu offline z usługą Azure Mobile Apps. Możemy też wyróżnić kodu specyficznego dla trybu offline w aplikacji. Jeśli nie używasz rozwiązania pobrany Szybki Start, należy dodać pakiety rozszerzeń dostępu do danych do projektu. Aby uzyskać więcej informacji na temat pakietów rozszerzeń serwera, zobacz [pracy z zestawem SDK serwera zaplecza platformy .NET dla usługi Azure Mobile Apps][1].
@@ -40,8 +40,8 @@ Kod synchronizacji w trybie offline jest dołączona do projektu przy użyciu C#
         #define OFFLINE_SYNC_ENABLED
 3. (Opcjonalnie) Do obsługi urządzeń Windows, należy zainstalować jedną z następujących pakietów dla środowiska uruchomieniowego bazy danych SQLite:
 
-   * **Środowisko wykonawcze Windows 8.1:** zainstalować [SQLite dla Windows 8.1][3].
-   * **Windows Phone 8.1:** zainstalować [SQLite dla Windows Phone 8.1][4].
+   * **Środowisko wykonawcze Windows 8.1:** Zainstaluj [SQLite dla Windows 8.1][3].
+   * **Windows Phone 8.1:** Zainstaluj [SQLite dla Windows Phone 8.1][4].
    * **Platforma Universal Windows** zainstalować [SQLite for Universal Windows Universal][5].
 
      Mimo że tego przewodnika Szybki Start nie zawiera projektu Universal Windows, platforma Universal Windows jest obsługiwana przy użyciu narzędzia Xamarin Forms.

@@ -12,11 +12,11 @@ ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
 ms.openlocfilehash: 0fbd89202796cb4543dbecbeee605c9b87cc9d05
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230663"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62104990"
 ---
 # <a name="monitor-and-manage-twitter-by-using-azure-logic-apps"></a>Monitorowanie i zarządzanie nimi Twitter przy użyciu usługi Azure Logic Apps
 
@@ -70,7 +70,7 @@ Możesz użyć wyzwalaczy, które uzyskać odpowiedzi z kontem w usłudze Twitte
 
 ## <a name="examples"></a>Przykłady
 
-### <a name="twitter-trigger-when-a-new-tweet-is-posted"></a>Wyzwalacz usługi Twitter: po wysłaniu nowego tweetu
+### <a name="twitter-trigger-when-a-new-tweet-is-posted"></a>Wyzwalacz usługi Twitter: Po wysłaniu nowego tweetu
 
 Ten wyzwalacz jest uruchamiany przepływ pracy aplikacji logiki, jeśli wyzwalacz wykryje nowy tweet, na przykład z hasztagiem, #Seattle. Na przykład gdy znajdują się te tweety, można dodać plik z zawartością tweetów do magazynu, takich jak konta usługi Dropbox za pomocą łącznika usługi Dropbox. 
 
@@ -78,7 +78,7 @@ Można opcjonalnie dodać warunek, który kwalifikujących się tweetów muszą 
 
 **Przykład Enterprise**: Ten wyzwalacz umożliwia monitorowanie tweetów o Twojej firmie i przekaż zawartość tweetów do usługi SQL database.
 
-### <a name="twitter-action-post-a-tweet"></a>Akcja w usłudze Twitter: Opublikuj tweet
+### <a name="twitter-action-post-a-tweet"></a>Akcja Twitter: Wyślij tweet
 
 Ta akcja publikuje tweet, ale można skonfigurować akcję, dzięki czemu tweet zawiera zawartość z tweetów znaleziono wyzwalaczu opisany wcześniej. 
 

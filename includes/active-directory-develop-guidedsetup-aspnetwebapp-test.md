@@ -15,11 +15,11 @@ ms.date: 04/19/2018
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: 8795c9ab0a4dbb76327d0ead48ed33fb0cff9e86
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59528552"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60298213"
 ---
 ## <a name="test-your-code"></a>testowanie kodu
 
@@ -47,7 +47,7 @@ Po przejściu do widoku kontrolera, powinny zostać wyświetlone tabeli, która 
 |---|---|---|
 |**Nazwa** |Imię i nazwisko użytkownika | Użytkownik na imię i nazwisko.
 |**Nazwa użytkownika** |Użytkownik<span>@domain.com</span> | Nazwa użytkownika, który służy do identyfikowania użytkownika.
-|**Temat** |Podmiot |Ciąg, który unikatowo identyfikuje użytkownika w sieci Web.|
+|**Temat** |Subject |Ciąg, który unikatowo identyfikuje użytkownika w sieci Web.|
 |**Tenant ID (Identyfikator dzierżawy)** |Guid | A **guid** który w unikatowy sposób identyfikuje użytkownika usługi Azure AD organizacja.|
 
 Ponadto powinien zostać wyświetlony spis wszystkich oświadczeń, które znajdują się w żądaniu uwierzytelnienia. Aby uzyskać więcej informacji, zobacz [lista oświadczeń, które znajdują się w usłudze Azure AD identyfikator tokenu](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims).

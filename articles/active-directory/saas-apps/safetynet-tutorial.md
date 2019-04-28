@@ -17,11 +17,11 @@ ms.date: 04/16/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4fadebc689f10b40131bb0feb12d846d3bdde704
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56206688"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62104698"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-safetynet"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą rozwiązania SafetyNet
 
@@ -166,7 +166,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
  
 ### <a name="create-a-safetynet-test-user"></a>Tworzenie użytkownika testowego SafetyNet
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w SafetyNet. Praca z [zespołem pomocy technicznej SafetyNet](mailto:dev@predictivesolutions.com) Aby dodać użytkowników na platformie SafetyNet. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w SafetyNet. Praca z [zespołem pomocy technicznej SafetyNet](mailto:dev@predictivesolutions.com) Aby dodać użytkowników na platformie SafetyNet. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -207,7 +207,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

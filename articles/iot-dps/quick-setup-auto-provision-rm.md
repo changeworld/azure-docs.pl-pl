@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 45558e25f2f61090cfb3ddb5c382170ab40792d0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 3360bfa7eed15f72fb78f698e837d887e9c8aa85
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999050"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62126481"
 ---
 # <a name="set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>Konfigurowanie usługi IoT Hub Device Provisioning przy użyciu szablonu usługi Azure Resource Manager
 
@@ -342,7 +342,7 @@ az group delete --name {your resource group name}
 
 Grupy zasobów i poszczególne zasoby można usuwać również przy użyciu witryny Azure Portal, programu PowerShell lub interfejsów API REST, bądź obsługiwanych zestawów SDK platformy opublikowanych na potrzeby usługi Azure Resource Manager lub usługi IoT Hub Device Provisioning.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym przewodniku Szybki start zostały wdrożone centrum IoT i wystąpienie usługi Device Provisioning Service, po czym te dwa zasoby zostały połączone ze sobą. Aby dowiedzieć się, jak za pomocą tej konfiguracji zaaprowizować symulowane urządzenie, przejdź do przewodnika Szybki start omawiającego tworzenie symulowanego urządzenia.
 

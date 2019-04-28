@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 ms.author: sgilley
 author: sdgilley
 ms.date: 04/19/2019
-ms.openlocfilehash: cc6c93420e939e90e12b989def491199fd2c6b15
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: ca43a6cff6a32a30d93e42f6a6624439b2fe83a7
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60007002"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63766809"
 ---
 # <a name="create-an-azure-machine-learning-service-workspace"></a>Utwórz obszar roboczy usługi Azure Machine Learning
 
@@ -73,7 +73,7 @@ Instrukcje w tym artykule zainstaluje wszystkie pakiety, musisz uruchomić notes
 
 ### <a name="create-an-isolated-python-environment"></a>Tworzenia izolowanego środowiska języka Python
 
-1. Otwórz okno wiersza polecenia, utwórz nowe środowisko conda o nazwie *myenv* i zainstaluj język Python 3.6.5. Zestaw SDK usługi Azure Machine Learning będzie działał z językiem Python w wersji 3.5.2 lub nowszym, ale zautomatyzowane składniki uczenia maszynowego nie są w pełni funkcjonalne w wersji języka Python 3.7.  Utworzenie środowiska, podczas gdy składniki i pakiety będą pobierane, potrwa kilka minut.
+1. Otwórz Anaconda monitu, a następnie utwórz nowe środowiska conda, o nazwie *myenv* i zainstaluj język Python 3.6.5. Zestaw SDK usługi Azure Machine Learning będzie działał z językiem Python w wersji 3.5.2 lub nowszym, ale zautomatyzowane składniki uczenia maszynowego nie są w pełni funkcjonalne w wersji języka Python 3.7.  Utworzenie środowiska, podczas gdy składniki i pakiety będą pobierane, potrwa kilka minut. 
 
     ```shell
     conda create -n myenv python=3.6.5

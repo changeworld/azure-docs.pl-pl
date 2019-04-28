@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 10fb44b0e76282ad78e7687beaa2e50e819e5cd9
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667722"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62110013"
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Przewodnik po konwersji w sieci Web i ról procesów roboczych do usługi bezstanowej usługi Service Fabric
 W tym artykule opisano sposób migracji z usług sieci Web i chmury ról procesów roboczych do usługi bezstanowej usługi Service Fabric. Jest to najprostsza ścieżka migracji z usług Cloud Services do usługi Service Fabric dla aplikacji, w których ogólna architektura ma około pozostają takie same.

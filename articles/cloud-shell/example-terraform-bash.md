@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: tarcher
 ms.openlocfilehash: a08a4e7df6cf0493ab1aa6aced1abf888a61072a
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159268"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62119116"
 ---
 # <a name="deploy-with-terraform-from-bash-in-azure-cloud-shell"></a>Wdrażanie przy użyciu programu Terraform z powłoki Bash w usłudze Azure Cloud Shell
 W tym artykule opisano proces tworzenia grupy zasobów za pomocą [dostawcy Terraform AzureRM](https://www.terraform.io/docs/providers/azurerm/index.html). 

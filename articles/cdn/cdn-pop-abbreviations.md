@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/20/2018
 ms.author: magattus
 ms.openlocfilehash: eac699a68558f0a8c9f94f0a8b75aabee561ebb3
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60006006"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62113889"
 ---
 # <a name="azure-cdn-pop-locations-by-abbreviation"></a>Lokalizacje POP sieci CDN platformy Azure według skrótu
 > [!div class="op_single_selector"]

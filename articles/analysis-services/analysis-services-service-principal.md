@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 04/23/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b10be061e015686c68684723fd2d73c1431c7266
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: a440494b183d18c1d888b5d39836eb4317190d02
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59699410"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63764331"
 ---
 # <a name="automation-with-service-principals"></a>Automatyzacja przy użyciu jednostek usługi
 
@@ -47,13 +47,37 @@ Identyfikator aplikacji nazwy głównej usługi i hasło lub certyfikat, które 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-W przypadku używania nazwy głównej usługi dla zasobu operacje zarządzania za pomocą [Az.AnalysisServices](/powershell/module/az.analysisservices) moduł, użyj `Connect-AzAccount` polecenia cmdlet. W przypadku używania nazwy głównej usługi dla operacji serwera przy użyciu [SQLServer](https://www.powershellgallery.com/packages/SqlServer) moduł, użyj `Add-AzAnalysisServicesAccount` polecenia cmdlet. 
+#### <a name="a-nameazmodule-using-azanalysisservices-module"></a><a name="azmodule" />Za pomocą modułu Az.AnalysisServices
+
+W przypadku używania nazwy głównej usługi dla zasobu operacje zarządzania za pomocą [Az.AnalysisServices](/powershell/module/az.analysisservices) moduł, użyj `Connect-AzAccount` polecenia cmdlet. 
+
+W poniższym przykładzie appID i hasło są używane do wykonywania operacje warstwy kontroli synchronizacji repliki tylko do odczytu i skalowanie w górę/out:
+
+```powershell
+Param (
+        [Parameter(Mandatory=$true)] [String] $AppId,
+        [Parameter(Mandatory=$true)] [String] $PlainPWord,
+        [Parameter(Mandatory=$true)] [String] $TenantId
+       )
+$PWord = ConvertTo-SecureString -String $PlainPWord -AsPlainText -Force
+$Credential = New-Object -TypeName "System.Management.Automation.PSCredential" -ArgumentList $AppId, $PWord
+
+# Connect using Az module
+Connect-AzAccount -Credential $Credential -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx"
+
+# Syncronize a database for query scale out
+Sync-AzAnalysisServicesInstance -Instance "asazure://westus.asazure.windows.net/testsvr" -Database "testdb"
+
+# Scale up the server to an S1, set 2 read-only replicas, and remove the primary from the query pool. The new replicas will hydrate from the synchronized data.
+Set-AzAnalysisServicesServer -Name "testsvr" -ResourceGroupName "testRG" -Sku "S1" -ReadonlyReplicaCount 2 -DefaultConnectionMode Readonly
+```
+
+#### <a name="using-sqlserver-module"></a>Za pomocą modułu SQLServer
 
 W poniższym przykładzie appID i hasło są używane do wykonywania operacji odświeżania bazy danych modelu:
 
 ```powershell
 Param (
-
         [Parameter(Mandatory=$true)] [String] $AppId,
         [Parameter(Mandatory=$true)] [String] $PlainPWord,
         [Parameter(Mandatory=$true)] [String] $TenantId

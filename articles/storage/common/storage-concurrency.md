@@ -9,19 +9,19 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: jasontang501
 ms.subservice: common
-ms.openlocfilehash: c45061db77c21b82744f69f00265870d5e1a8d00
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: MT
+ms.openlocfilehash: 9e786aed031d528b8ae574444b71753ac538cf47
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56883845"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63766200"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Zarządzanie współbieżnością w usłudze Microsoft Azure Storage
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Nowoczesne aplikacje internetowe na podstawie zwykle mają wielu użytkownikom wyświetlanie i aktualizowanie danych jednocześnie. Wymaga to deweloperom aplikacji należy dobrze przemyśleć sposób zapewnić przewidywalne doświadczenia własnych użytkowników końcowych, zwłaszcza w przypadku scenariuszy, w których wielu użytkowników można zaktualizować te same dane. Istnieją trzy Strategie współbieżności główne dane, które deweloperzy zazwyczaj należy wziąć pod uwagę:  
 
 1. Optymistycznej współbieżności — aplikacja działa który aktualizację w ramach jego aktualizacji sprawdzi, jeśli dane zostały zmienione od czasu jej ostatniego odczytu danych. Na przykład jeśli dwóch użytkowników, wyświetlanie strony typu wiki dokonać aktualizacji do tej samej strony platformy wiki musi zapewnić drugi aktualizacja nie zastępuje pierwszą aktualizacją — i że zarówno użytkownicy wiedzą, czy ich aktualizacji zakończyła się powodzeniem. Ta strategia jest najczęściej używana w aplikacjach sieci web.
-2. Współbieżność pesymistyczna — wyszukiwanie do przeprowadzenia aktualizacji aplikacji potrwa blokadę na obiekcie uniemożliwi innym użytkownikom aktualizowanie danych, dopóki blokada jest zwalniana. Na przykład w przypadku replikacji danych główny/podrzędny, gdzie tylko wzorcu wykona aktualizacje wzorca będzie zazwyczaj przechowują blokady na wyłączność przez dłuższy czas na danych, aby upewnić się, że nikt inny nie mogli go zaktualizować.
+2. Współbieżność pesymistyczna — wyszukiwanie do przeprowadzenia aktualizacji aplikacji potrwa blokadę na obiekcie uniemożliwi innym użytkownikom aktualizowanie danych, dopóki blokada jest zwalniana. Na przykład w przypadku replikacji danych typu nadrzędny/podrzędny, gdzie tylko wzorcu wykona aktualizacje wzorca będzie zazwyczaj przechowują blokady na wyłączność przez dłuższy czas na danych, aby upewnić się, że nikt inny nie mogli go zaktualizować.
 3. Ostatni składnik zapisywania usługi wins — metody, która zezwala na wszystkie operacje aktualizacji kontynuować bez sprawdzenia, jeśli wszystkie inne aplikacje zaktualizował dane ponieważ aplikacji najpierw odczytywać dane. Tej strategii (lub brak formalne strategii) jest zwykle używany, gdzie dane są partycjonowane w taki sposób, że nie istnieje prawdopodobieństwo czy wielu użytkowników będą miały dostęp tych samych danych. Można również go przydatne gdzie przetwarzania strumieni danych krótkotrwałych.  
 
 Ten artykuł zawiera omówienie, jak platforma Azure Storage upraszcza tworzenie, zapewniając obsługę pierwszej klasy w ramach wszystkich trzech z następujących strategii współbieżności.  

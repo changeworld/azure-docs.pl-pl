@@ -3,8 +3,8 @@ title: Migrowanie maszyn wirtualnych platformy Azure do usługi Managed Disks | 
 description: Migrowanie maszyn wirtualnych platformy Azure utworzone przy użyciu dysków niezarządzanych na kontach magazynu, aby korzystać z dysków zarządzanych.
 services: virtual-machines-windows
 documentationcenter: ''
-author: cynthn
-manager: jeconnoc
+author: roygara
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2018
-ms.author: cynthn
+ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: f1f786ea4fbf9cea5afbbd2ff038b2b3f8bc3eaf
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
-ms.translationtype: MT
+ms.openlocfilehash: 12cd1caa4cb96dbd5862776589d4a34aeb294ca1
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56803587"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63763762"
 ---
 # <a name="migrate-azure-vms-to-managed-disks-in-azure"></a>Migrowanie maszyn wirtualnych platformy Azure do usługi Managed Disks na platformie Azure
 
@@ -34,7 +34,7 @@ Można migrować do usługi Managed Disks w następujących scenariuszach:
 
 | **Migrowanie...**                                            | **Link do dokumentacji**                                                                                                                                                                                                                                                                  |
 |----------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Konwertuj autonomiczny maszyn wirtualnych i maszyn wirtualnych w zestawie do usługi managed disks dostępności   | [Konwertowanie maszyn wirtualnych w celu używania dysków zarządzanych](convert-unmanaged-to-managed-disks.md) |
+| Konwertowanie autonomicznych maszyn wirtualnych i maszyn wirtualnych w zestawie dostępności na dyski zarządzane   | [Konwertowanie maszyn wirtualnych w celu używania dysków zarządzanych](convert-unmanaged-to-managed-disks.md) |
 | Pojedyncza maszyna wirtualna z wersji klasycznej do usługi Resource Manager na dyskach zarządzanych     | [Tworzenie maszyny Wirtualnej z klasycznym wirtualnego dysku twardego](create-vm-specialized-portal.md)  | 
 | Wszystkie maszyny wirtualne w sieci wirtualnej z wersji klasycznej do usługi Resource Manager na dyskach zarządzanych     | [Migrację zasobów IaaS od modelu klasycznego do usługi Resource Manager](migration-classic-resource-manager-ps.md) i następnie [konwertowanie maszyny Wirtualnej z dysków niezarządzanych do usługi managed disks](convert-unmanaged-to-managed-disks.md) | 
 

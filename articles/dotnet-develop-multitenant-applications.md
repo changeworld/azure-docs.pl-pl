@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/05/2015
 ms.author: wpickett
 ms.openlocfilehash: 342c7903e58a5c3bc41278152630187fa0c63b7b
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425050"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62119151"
 ---
 # <a name="multitenant-applications-in-azure"></a>Aplikacji wielodostępnych na platformie Azure
 Wielodostępnej aplikacji jest zasobem współdzielonym, umożliwiająca oddzielne użytkowników lub "dzierżawy" wyświetlić aplikację tak, jakby była swoje własne. Typowy scenariusz, który jest przydatna w aplikacji wielodostępnej jest jeden w którym wszyscy użytkownicy aplikacji mogą chcieć dostosować środowisko użytkownika, ale mają te same wymagania podstawowe biznesowych. Przykłady dużych wielodostępne aplikacje usługi Office 365, Outlook.com i visualstudio.com.
@@ -28,16 +28,16 @@ Z perspektywy dostawcy aplikacji zalety wielodostępności odnoszą się przede 
 
 Poniżej wymieniono najważniejsze cele i wymagania z perspektywy dostawcy.
 
-* **Inicjowanie obsługi administracyjnej**: musi umożliwiać aprowizowanie nowych dzierżaw w aplikacji.  Dla aplikacji wielodostępnych z wieloma dzierżawami jest zazwyczaj konieczne zautomatyzować ten proces, należy włączyć samoobsługowe Inicjowanie obsługi administracyjnej.
-* **Łatwość konserwacji**: użytkownik musi mieć możliwość uaktualnienia aplikacji i wykonywać inne zadania konserwacji, gdy jest używany przez wielu dzierżawców.
-* **Monitorowanie**: musi mieć możliwość monitorowania aplikacji przez cały czas, aby zidentyfikować wszelkie problemy i aby rozwiązać ten problem. Dotyczy to monitorowania, jak Każda dzierżawa korzysta z aplikacji.
+* **Inicjowanie obsługi administracyjnej**: Musi umożliwiać aprowizowanie nowych dzierżaw w aplikacji.  Dla aplikacji wielodostępnych z wieloma dzierżawami jest zazwyczaj konieczne zautomatyzować ten proces, należy włączyć samoobsługowe Inicjowanie obsługi administracyjnej.
+* **Łatwość konserwacji**: Musi być w stanie Uaktualnij aplikację i wykonywać inne zadania konserwacji, gdy jest używany przez wielu dzierżawców.
+* **Monitorowanie**: Należy monitorować aplikacji przez cały czas, aby zidentyfikować wszelkie problemy i aby rozwiązać ten problem. Dotyczy to monitorowania, jak Każda dzierżawa korzysta z aplikacji.
 
 Właściwie zaimplementowana wielodostępnej aplikacji zapewnia następujące korzyści dla użytkowników.
 
-* **Izolacja**: działania poszczególnych dzierżaw nie wpływają na korzystanie z aplikacji przez innych dzierżawców. Dzierżawcy nie mają dostępu dane innych osób. Wydaje się do dzierżawy, tak, jakby mają wyłącznego użytku aplikacji.
-* **Dostępność**: poszczególnych dzierżawcy chcą, aby aplikacja ma być stale dostępny, być może gwarancje zdefiniowane w umowie SLA. Ponownie działania innych dzierżaw powinien wpływa na dostępność aplikacji.
-* **Skalowalność**: aplikacja jest skalowana w celu spełnienia określonych wymagań poszczególnych dzierżaw. Obecność i działania innych dzierżaw powinien wpływa na wydajność aplikacji.
-* **Koszty**: koszty są niższe niż uruchamianie aplikacji dedykowaną, pojedynczej dzierżawy, ponieważ wielodostępu umożliwia udostępnianie zasobów.
+* **Izolacja**: Działania indywidualnych dzierżawcy nie wpływają na korzystanie z aplikacji przez innych dzierżawców. Dzierżawcy nie mają dostępu dane innych osób. Wydaje się do dzierżawy, tak, jakby mają wyłącznego użytku aplikacji.
+* **Dostępność**: Poszczególne dzierżawcy chcą, aby aplikacja ma być stale dostępny, być może gwarancje zdefiniowane w umowie SLA. Ponownie działania innych dzierżaw powinien wpływa na dostępność aplikacji.
+* **Skalowalność**: Aplikacja jest skalowana w celu spełnienia określonych wymagań poszczególnych dzierżaw. Obecność i działania innych dzierżaw powinien wpływa na wydajność aplikacji.
+* **Koszty**: Koszty są niższe niż uruchamianie aplikacji dedykowaną, pojedynczej dzierżawy, ponieważ wielodostępu umożliwia udostępnianie zasobów.
 * **Dostosowywalności**. Możliwość dostosowywania aplikacji dla dzierżawy usługi na różne sposoby, takie jak dodawanie lub usuwanie funkcji, zmienianie kolorów i logo lub nawet dodanie własnych kodu lub skryptu.
 
 Krótko mówiąc dostępnych jest wiele kwestii, które należy wziąć pod uwagę, do świadczenia usług o wysokim stopniu skalowalności, istnieją również liczbę cele i wymagania, które są wspólne dla wielu aplikacji wielodostępnych. Niektóre mogą nie być odpowiednie w określonych scenariuszach i ważność poszczególnych cele i wymagania różnią się w każdym scenariuszu. Jako dostawca aplikacji wielodostępnej Ponadto będziesz mieć cele i wymagania, takie jak spełnia wymagania dzierżawców cele wymagania, rentowność, rozliczenia, wiele poziomów usług, inicjowanie obsługi administracyjnej, łatwość konserwacji oraz monitorowania i automatyzacji.

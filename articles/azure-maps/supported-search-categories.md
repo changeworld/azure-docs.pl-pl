@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 64b28fc0db56be77bce9c22f9332110205a42b1d
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: MT
+ms.openlocfilehash: 4d854aef62af1004faacf73c11bb417cf508a727
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437349"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63763554"
 ---
 # <a name="azure-maps-supported-categories"></a>Usługi Azure Maps obsługiwane kategorie
 
@@ -105,7 +105,7 @@ Podczas ustalania [wyszukiwanie według kategorii](https://docs.microsoft.com/re
 | NAPRAW\_FUNKCJI | bodyshops, usługi opony (opona), warsztatów, sklepach zastąpienie szkła samochód, naprawy ogólne samochodu, obsługi, w ramach instalacji sprzedaży Akcesoria samochód, napraw motocykl, truck usługę napraw funkcji |
 | BADANIA\_FUNKCJI | funkcji badania |
 | REZYDENTNA\_ZAKWATEROWANIA | wycofanie społeczności rezydencja miejska wersja złożonych, produkty płaskie/osiedla, condominium złożonych, zamieszkania kombi, zakwaterowanie zamieszkania |
-| RESTAURACJI | Niemiecki, Cajun haitański, holenderski, pokoje bankiet, bistro, Izraela, słowackim, jamajski, vegetarian, owoce morza, wietnamski, maltański, prowincji Syczuan, walijski, chińskim, japońskim, przedstawicielami Algierii Californian syntezy jądrowej, Shandong, Sałatka pasku główki, hiszpański, Birr, tajwańskich, pierścienie, Iranu, kanadyjski, American, norweski, francuski, Hunan, polinezyjski, afghan, drogach, Wschodnia, Szwajcaria, erotic, crêperie, Surinamese egipska, węgierski, Nepalu, barbecue, pot ciepłej, hamburgers, Śródziemnego, Ameryce Łacińskiej, tapas, British, Polską, Guangdong, Azji (inne), buffet, sushi, mongolski, international, małży, Thai, Boliwar, Rumanian, kurczaka, od początku kosher, steak dom, pasek jogurt/soku, włoski, koreański, Cypriot, bośniacki, boliwijskie, Dominikana, Belgia, tunezyjska, Szkocki, Angielski, pakistańskich, czeski, Hawajski, Maghrib, Tybetański, arabskiego, środkowy Wschodniej, chilijskie, Szanghaj, Polski, Filipiny, sudański, ormiański, Birmański, Brazylia, skandynawskich, bułgarski, duszę żywności, Kolumbii, żydowski, głosi, Sicilian organiczny, grecki, baskijski, Urugwajskiej, bufetach, fiński, Afryki, Korsykański, arabska, Karaibów, Dongbei, rosyjski, gril, wynos, szybko żywności, pub irlandzki, Australii, żywności, fondue Libańską indonezyjski, duński, Provençal, teppanyaki, Rupia, Mauritiusa western kontynentalnych, Nuevo Riel, przekąsek, szwedzki, macrobiotic, lodów parlor, Słowiański, turecki, Argentinean, Austria, egzotycznych, portugalskim, Luksemburski, marokański, restauracji Cuban, sandwich, |
+| RESTAURACJI | Niemiecki, Cajun haitański, holenderski, pokoje bankiet, bistro, Izraela, słowackim, jamajski, vegetarian, owoce morza, wietnamski, maltański, prowincji Syczuan, walijski, chińskim, japońskim, przedstawicielami Algierii Californian syntezy jądrowej, Shandong, Sałatka pasku główki, hiszpański, Birr, tajwańskich, pierścienie, Iranu, Kanadzie, Ameryce, norweski, francuski, Hunan, polinezyjski, afghan, drogach, Azji, Szwajcaria, erotic crêperie, Surinamese egipska, węgierski, Nepalu, barbecue, pot ciepłej, hamburgers, Śródziemnego, Ameryce Łacińskiej, tapas, British, Polską, Guangdong, Azji (inne), buffet, sushi, mongolski, international, małży, Thai, Boliwar, Rumanian, kurczaka, od początku kosher, steak dom, pasek jogurt/soku, włoski, koreański, Cypriot, bośniacki, boliwijskie, Dominikana, Belgia, tunezyjska, Szkocki, Angielski, pakistańskich, czeski, Hawajski, Maghrib, Tybetański, arabskiego, środkowy Wschodniej, chilijskie, Szanghaj, Polski, Filipiny, sudański, ormiański, Birmański, Brazylia, skandynawskich, bułgarski, duszę żywności, Kolumbii, żydowski, głosi, Sicilian organiczny, grecki, baskijski, Urugwajskiej, bufetach, fiński, Afryki, Korsykański, arabska, Karaibów, Dongbei, rosyjski, gril, wynos, szybko żywności, pub irlandzki, Australii, żywności, fondue Libańską indonezyjski, duński, Provençal, teppanyaki, Rupia, Mauritiusa western kontynentalnych, Nuevo Riel, przekąsek, szwedzki, macrobiotic, lodów parlor, Słowiański, turecki, Argentinean, Austria, egzotycznych, portugalskim, Luksemburski, marokański, restauracji Cuban, sandwich, |
 | RESTAURACJA\_OBSZARU | obszar restauracji |
 | REST\_OBSZARU | REST obszarze powstrzymanie zmniejszania miejsce |
 | SCENIC\_PANORAMIC\_VIEW | Widok scen/panoramicznych punktu obserwacji |

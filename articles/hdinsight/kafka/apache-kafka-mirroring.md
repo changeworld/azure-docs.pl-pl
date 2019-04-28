@@ -1,7 +1,6 @@
 ---
 title: Takie same jak stosowane tematów platformy Apache Kafka — Azure HDInsight
 description: Dowiedz się, jak za pomocą funkcji dublowania platformy Apache Kafka Obsługa repliki platformy Kafka w klastrze HDInsight Dublując tematy, aby pomocniczy klastra.
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.openlocfilehash: 0c37ad6de867c4abe4ebf0e6c7a40b5cf27c4541
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: ba04ed7c95cbf00d5996ef237d3ac65053da0662
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58079643"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62115064"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>Replikowanie tematów platformy Apache Kafka z platformą Kafka w HDInsight przy użyciu narzędzia MirrorMaker
 

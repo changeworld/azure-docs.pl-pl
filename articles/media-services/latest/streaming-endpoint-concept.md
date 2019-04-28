@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/16/2019
+ms.date: 04/21/2019
 ms.author: juliako
-ms.openlocfilehash: 4a29da2b070133f87ca5fdab0be607368c83790f
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 8b6deadca610916a10f719d715fe6a17e29148bb
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59999454"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62125427"
 ---
 # <a name="streaming-endpoints"></a>Punkty końcowe przesyłania strumieniowego
 
@@ -39,7 +39,7 @@ Istnieją dwa typy **punktów końcowych przesyłania strumieniowego**: **Standa
 
 Tabela zawiera opis typów:  
 
-|Typ|Jednostki skalowania|Opis|
+|Type|Jednostki skalowania|Opis|
 |--------|--------|--------|  
 |**Standardowy punkt końcowy przesyłania strumieniowego** (zalecany)|0|Domyślny punkt końcowy przesyłania strumieniowego jest **standardowa** typu, ale można ją zmienić na typ Premium.<br/> Standardowy typ jest to zalecana opcja, do niemal wszystkich scenariuszy przesyłania strumieniowego i publiczność każdej wielkości. Typ **Standardowy** automatycznie skaluje przepustowość wychodzącą. Przepływność z tego typu punktu końcowego przesyłania strumieniowego jest do 600 MB/s. Wideo fragmenty są przechowywane w usłudze CDN nie należy używać przepustowości punkt końcowy przesyłania strumieniowego.<br/>W przypadku klientów z bardzo dużymi wymaganiami usługa Media Services oferuje punkty końcowe przesyłania strumieniowego **Premium**, które umożliwiają skalowanie pojemności w poziomie dla największych odbiorców w Internecie. Jeśli spodziewasz się dużej liczby odbiorców i osoby przeglądające współbieżnych, skontaktuj się z nami pod amsstreaming\@microsoft.com, aby uzyskać wskazówki dotyczące tego, czy należy przenieść do **Premium** typu. |
 |**Punkt końcowy przesyłania strumieniowego Premium**|>0|Punkty końcowe przesyłania strumieniowego **Premium** są odpowiednie w przypadku zaawansowanych obciążeń, ponieważ zapewniają dedykowaną i skalowalną pojemność przepustowości. Przenieś do **Premium** typu, dostosowując `scaleUnits`. `scaleUnits` umożliwiają pojemności dedykowanej ruch wychodzący, który można zakupić według przyrostów 200 MB/s. W przypadku korzystania z typu **Premium** każda włączona jednostka zapewnia dodatkową przepustowość w aplikacji. |
@@ -149,6 +149,10 @@ Integracja usługi CDN jest włączona w centrach danych platformy Azure z wyją
 ### <a name="determine-if-dns-change-has-been-made"></a>Określić, jeśli wprowadzono zmiany w systemie DNS
 
 Jeśli wprowadzono zmiany w systemie DNS w punkcie końcowym przesyłania strumieniowego (ruch jest być kierowany do usługi Azure CDN) można określić za pomocą https://www.digwebinterface.com. Jeśli wyniki zawiera nazwy domeny azureedge.net, w wynikach, ruch jest teraz wskazywany sieci CDN.
+
+## <a name="provide-feedback"></a>Przekazywanie opinii
+
+Zapoznaj się z [społeczności usługi Azure Media Services](media-services-community.md) artykuł, aby wyświetlić różne sposoby zadawaj pytania, Prześlij opinię i pobrać aktualizacje o usłudze Media Services.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

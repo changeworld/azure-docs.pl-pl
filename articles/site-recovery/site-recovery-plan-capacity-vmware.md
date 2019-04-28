@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: c198e6cd9d5c5e0aca69491db9df5d0ab8e08c7a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 7b10db06ab4ade1b23985b1a259d82d4818941b1
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59358013"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62124970"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Planowanie wydajności i skalowanie na potrzeby odzyskiwania po awarii programu VMware na platformę Azure
 
@@ -120,7 +120,7 @@ Przed skonfigurowaniem infrastruktura usługi Site Recovery dostęp do środowis
 
 ## <a name="deploy-additional-process-servers"></a>Wdrażanie dodatkowych serwerów przetwarzania
 
-Możesz skalować wdrożenie ponad 200 maszyn źródłowych lub masz łącznie codziennie współczynnik więcej niż 2 TB do zmian danych, należy dodać serwerów przetwarzania do obsługi natężenia ruchu. Aby dowiedzieć się, jak skonfigurować serwer przetwarzania, zobacz [skali na potrzeby powrotu po awarii przy użyciu dodatkowych serwerów przetwarzania](vmware-azure-set-up-process-server-scale.md). Po skonfigurowaniu serwera przetwarzania można migrować maszyny źródłowe z niego korzystać.
+Możesz skalować wdrożenie ponad 200 maszyn źródłowych lub masz łącznie codziennie współczynnik więcej niż 2 TB do zmian danych, należy dodać serwerów przetwarzania do obsługi natężenia ruchu. Rozszerzyliśmy produktu w wersji 9.24 zapewnienie [wskazówki w produkcie](vmware-azure-manage-process-server.md#process-server-selection-guidance) o tym, kiedy do skonfigurowania serwera przetwarzania skalowalnego w poziomie. [Konfigurowanie serwera przetwarzania](vmware-azure-set-up-process-server-scale.md) ochrony maszyny źródłowej lub [Równoważenie obciążenia](vmware-azure-manage-process-server.md#balance-the-load-on-process-server).
 
 ### <a name="migrate-machines-to-use-the-new-process-server"></a>Migrowanie maszyn do użycia nowego serwera przetwarzania
 

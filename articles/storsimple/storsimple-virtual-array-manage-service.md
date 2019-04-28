@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/29/2016
 ms.author: alkohli
-ms.openlocfilehash: 1881a0625b107ae1a90e5b772f5296a4d728973d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 9f6e5b606caa661429a3c4d4a53e2021d57730aa
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38688157"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62116959"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-virtual-array"></a>Wdrażanie usługi Menedżer urządzeń StorSimple dla macierzy wirtualnej StorSimple
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Usługa Menedżer urządzeń StorSimple działa na platformie Microsoft Azure i nawiązanie połączenia z wieloma urządzeniami StorSimple. Po utworzeniu usługi, można użyć go do zarządzania urządzeniami z poziomu portalu Microsoft Azure, uruchomiony w przeglądarce. Dzięki temu można monitorować wszystkie urządzenia, które są podłączone do usługi Menedżer urządzeń StorSimple z jednym, centralnym miejscu, minimalizując w ten sposób nakładu prac administracyjnych.
 
@@ -67,7 +67,7 @@ Wykonaj poniższe kroki, aby usunąć usługę.
 
 #### <a name="to-delete-a-service"></a>Aby usunąć usługi
 
-1. Przejdź do **wszystkie zasoby**. Wyszukiwanie usługi Menedżer urządzeń StorSimple. Wybierz usługę, którą chcesz usunąć.
+1. Przejdź do sekcji **Wszystkie zasoby**. Wyszukiwanie usługi Menedżer urządzeń StorSimple. Wybierz usługę, którą chcesz usunąć.
    
     ![Wybierz usługę do usunięcia](./media/storsimple-virtual-array-manage-service/deleteservice2.png)
 2. Przejdź do pulpitu nawigacyjnego usługi, aby upewnić się, Brak z usługą jest połączonych urządzeń. Jeśli nie istnieją żadne urządzenia zarejestrowane w tej usłudze, pojawi się także komunikat transparentu efekt. Kliknij polecenie **Usuń**.

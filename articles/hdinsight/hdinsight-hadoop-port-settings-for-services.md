@@ -1,7 +1,6 @@
 ---
 title: Porty używane przez usługi Hadoop w HDInsight — Azure
 description: Lista portów używanych przez usług Hadoop działających w HDInsight.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: be264be41b198e95dae64730ef31f431ec06a2e7
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: MT
+ms.openlocfilehash: 2d0b8aba95787f179733dd596e783f097cba4299
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715464"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63761255"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>Porty używane przez usługi Apache Hadoop w HDInsight
 
@@ -41,7 +40,7 @@ Wszystkie węzły w klastrze usługi HDInsight znajdują się w usłudze Azure V
 | sshd |22 |Protokół SSH |Klientom nawiązanie połączenia sshd na podstawowym węzłem głównym. Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md). |
 | sshd |22 |Protokół SSH |Klientom nawiązanie połączenia sshd na węźle krawędzi. Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md). |
 | sshd |23 |Protokół SSH |Łączy się sshd na dodatkowy węzeł główny z klientów. Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md). |
-| Ambari |443 |HTTPS |Interfejs webowy Ambari. Zobacz [Zarządzanie HDInsight przy użyciu Interfejsu sieci Web Apache Ambari](hdinsight-hadoop-manage-ambari.md) |
+| Ambari |443 |HTTPS |Ambari web UI. Zobacz [Zarządzanie HDInsight przy użyciu Interfejsu sieci Web Apache Ambari](hdinsight-hadoop-manage-ambari.md) |
 | Ambari |443 |HTTPS |Interfejs API REST Ambari. Zobacz [Zarządzanie HDInsight przy użyciu interfejsu API Apache Ambari REST](hdinsight-hadoop-manage-ambari-rest-api.md) |
 | WebHCat |443 |HTTPS |HCatalog interfejsu API REST. Zobacz [Apache Hive za pomocą programu Curl](hadoop/apache-hadoop-use-pig-curl.md), [Apache Pig za pomocą programu Curl](hadoop/apache-hadoop-use-pig-curl.md), [używanie technologii MapReduce z programu Curl](hadoop/apache-hadoop-use-mapreduce-curl.md) |
 | HiveServer2 |443 |ODBC |Nawiązywanie połączeń za pośrednictwem sterownika ODBC programu Hive. Zobacz [Connect Excel to HDInsight przy użyciu sterownika Microsoft ODBC](hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md). |
@@ -77,8 +76,8 @@ Wszystkie usługi publicznie dostępne w Internecie, musi zostać uwierzytelnion
 
 | Usługa | Węzły | Port | Ścieżka adresu URL | Protokół | 
 | --- | --- | --- | --- | --- |
-| Interfejs użytkownika sieci web systemu Ambari | Węzły główne | 8080 | / | HTTP |
-| Interfejs API REST systemu Ambari | Węzły główne | 8080 | / api/v1 | HTTP |
+| Ambari web UI | Węzły główne | 8080 | / | HTTP |
+| Interfejs API REST systemu Ambari | Węzły główne | 8080 | /api/v1 | HTTP |
 
 Przykłady:
 
@@ -114,7 +113,7 @@ Przykłady:
 | Usługa | Węzły | Port | Protokół | Opis |
 | --- | --- | --- | --- | --- |
 | HiveServer2 |Węzły główne |10001 |Thrift |Usługa do łączenia się z programu Hive (Thrift/JDBC) |
-| Magazyn metadanych hive |Węzły główne |9083 |Thrift |Usługa do łączenia się z metadanych programu Hive (Thrift/JDBC) |
+| Magazyn metadanych Hive |Węzły główne |9083 |Thrift |Usługa do łączenia się z metadanych programu Hive (Thrift/JDBC) |
 
 ### <a name="webhcat-ports"></a>Porty usługi WebHCat
 
@@ -148,7 +147,7 @@ Przykłady:
 
 | Usługa | Węzły | Port | Protokół | Opis |
 | --- | --- | --- | --- | --- |
-| Serwera HMaster |Węzły główne |16000 |&nbsp; |&nbsp; |
+| HMaster |Węzły główne |16000 |&nbsp; |&nbsp; |
 | Informacje o serwera HMaster interfejs użytkownika sieci Web |Węzły główne |16010 |HTTP |Port dla interfejsu użytkownika sieci web głównego interfejsu użytkownika HBase |
 | Serwer regionu |Wszystkich węzłów procesu roboczego |16020 |&nbsp; |&nbsp; |
 | &nbsp; |&nbsp; |2181 |&nbsp; |Port, którego klienci używają nawiązać dozorcy |

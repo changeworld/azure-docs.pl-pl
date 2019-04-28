@@ -16,14 +16,14 @@ ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
 ms.openlocfilehash: 5bc7e618b047660992d631eb77ddbf9009266a79
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579859"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62127535"
 ---
 # <a name="technical-deep-dive-on-platform-supported-migration-from-classic-to-azure-resource-manager"></a>Rozbudowana technicznie migracja z obsługą platformy od modelu klasycznego do modelu opartego na usłudze Azure Resource Manager
-Weźmy szczegółowe na temat migracji z systemu Azure klasycznego modelu wdrażania do modelu wdrażania usługi Azure Resource Manager. Przyjrzymy się zasoby na poziomie zasobów i funkcji, które pomagają zrozumieć, jak platforma Azure przeprowadza migrację zasobów między dwa modele wdrażania. Aby uzyskać więcej informacji, przeczytaj artykuł ogłoszeniu usługi: [obsługiwanej przez platformę migracji zasobów rozwiązania IaaS z wersji klasycznej do usługi Azure Resource Manager](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Weźmy szczegółowe na temat migracji z systemu Azure klasycznego modelu wdrażania do modelu wdrażania usługi Azure Resource Manager. Przyjrzymy się zasoby na poziomie zasobów i funkcji, które pomagają zrozumieć, jak platforma Azure przeprowadza migrację zasobów między dwa modele wdrażania. Aby uzyskać więcej informacji przeczytaj artykuł ogłoszeniu usługi: [Obsługiwane platformy migracji zasobów rozwiązania IaaS z wersji klasycznej do usługi Azure Resource Manager](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 [!INCLUDE [virtual-machines-common-migration-deep-dive](../../../includes/virtual-machines-common-classic-resource-manager-migration-deep-dive.md)]
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 9ee4a9fb5c63061eed32389b5672652aad01208a
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: c0f8da779ca656cf357c418b8766a53307643695
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59994952"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63764336"
 ---
 # <a name="api-management-authentication-policies"></a>Zasady uwierzytelniania usługi API Management
 Ten temat zawiera odwołania do następujących zasad usługi API Management. Aby uzyskać informacje na temat dodawania i konfigurowania zasad, zobacz [zasad w usłudze API Management](https://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -49,13 +49,13 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
   
 ### <a name="elements"></a>Elementy  
   
-|Name (Nazwa)|Opis|Wymagany|  
+|Name (Nazwa)|Opis|Wymagane|  
 |----------|-----------------|--------------|  
 |Uwierzytelnianie podstawowe|Element główny.|Yes|  
   
 ### <a name="attributes"></a>Atrybuty  
   
-|Name (Nazwa)|Opis|Wymagany|Domyślne|  
+|Name (Nazwa)|Opis|Wymagane|Domyślne|  
 |----------|-----------------|--------------|-------------|  
 |nazwa użytkownika|Określa atrybut username podstawowych poświadczeń.|Yes|ND|  
 |password|Określa hasło podstawowych poświadczeń.|Yes|ND|  
@@ -73,26 +73,32 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
 ### <a name="policy-statement"></a>Deklaracja zasad  
   
 ```xml  
-<authentication-certificate thumbprint="thumbprint" />  
+<authentication-certificate thumbprint="thumbprint" certificate-id="resource name"/>  
 ```  
   
-### <a name="example"></a>Przykład  
+### <a name="examples"></a>Przykłady  
   
+W tym przykładzie kliencie certyfikatu jest identyfikowane przez jego odcisk palca.
 ```xml  
-<authentication-certificate thumbprint="....." />  
+<authentication-certificate thumbprint="CA06F56B258B7A0D4F2B05470939478651151984" />  
+``` 
+W tym przykładzie certyfikat klienta jest identyfikowane przez nazwę zasobu.
+```xml  
+<authentication-certificate certificate-id="544fe9ddf3b8f30fb490d90f" />  
 ```  
-  
+
 ### <a name="elements"></a>Elementy  
   
-|Name (Nazwa)|Opis|Wymagany|  
+|Name (Nazwa)|Opis|Wymagane|  
 |----------|-----------------|--------------|  
 |authentication-certificate|Element główny.|Yes|  
   
 ### <a name="attributes"></a>Atrybuty  
   
-|Name (Nazwa)|Opis|Wymagany|Domyślne|  
+|Name (Nazwa)|Opis|Wymagane|Domyślne|  
 |----------|-----------------|--------------|-------------|  
-|thumbprint|Odcisk palca certyfikatu klienta.|Yes|ND|  
+|thumbprint|Odcisk palca certyfikatu klienta.|Albo `thumbprint` lub `certificate-id` musi być obecny.|ND|  
+|Identyfikator certyfikatu|Nazwa zasobu certyfikatu.|Albo `thumbprint` lub `certificate-id` musi być obecny.|ND|  
   
 ### <a name="usage"></a>Sposób użycia  
  Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
@@ -118,13 +124,13 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
   
 ### <a name="elements"></a>Elementy  
   
-|Name (Nazwa)|Opis|Wymagany|  
+|Name (Nazwa)|Opis|Wymagane|  
 |----------|-----------------|--------------|  
 |Uwierzytelnianie zarządzane identity |Element główny.|Yes|  
   
 ### <a name="attributes"></a>Atrybuty  
   
-|Name (Nazwa)|Opis|Wymagany|Domyślne|  
+|Name (Nazwa)|Opis|Wymagane|Domyślne|  
 |----------|-----------------|--------------|-------------|  
 |zasób|ciąg. Identyfikator URI Identyfikatora aplikacji docelowej sieci Web interfejsu API (zabezpieczono zasób) w usłudze Azure Active Directory.|Yes|ND|  
 |dane wyjściowe — token-— nazwa zmiennej|ciąg. Nazwa zmiennej kontekstu, który otrzyma wartość tokenu jako typ obiektu `string`.|Nie|ND|  

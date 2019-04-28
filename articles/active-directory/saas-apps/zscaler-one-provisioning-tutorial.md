@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Konfigurowanie rozwiązania Zscaler jeden dla automatycznej aprowizacji użytkowników z usługą Azure Active Directory | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować usługi Azure Active Directory do automatycznego aprowizowania lub cofania aprowizacji kont użytkowników do jednego rozwiązania Zscaler
+description: Dowiedz się, jak skonfigurować usługi Azure Active Directory, aby automatycznie aprowizować i anulować aprowizację kont użytkowników do jednego rozwiązania Zscaler
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -15,80 +15,77 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: v-ant-msft
-ms.openlocfilehash: 26448d5056e58cf1110e825ad04c5123fca20684
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 5319b0ac06c4ddf1a7627a4e7fe0bfb2694f79f6
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59259443"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62114614"
 ---
 # <a name="tutorial-configure-zscaler-one-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie rozwiązania Zscaler jeden dla automatycznej aprowizacji użytkowników
 
-Celem tego samouczka jest aby zademonstrować czynności wykonywanych w jednego rozwiązania Zscaler i Azure Active Directory (Azure AD) do konfigurowania usługi Azure AD do automatycznego aprowizowania lub cofania aprowizacji użytkowników i/lub grup do jednego rozwiązania Zscaler.
+Ten samouczek przedstawia kroki do wykonania w jednym rozwiązania Zscaler i usługi Azure Active Directory (Azure AD) do konfigurowania usługi Azure AD automatycznie aprowizować i anulowanie aprowizacji użytkowników i grup do jednego rozwiązania Zscaler.
 
 > [!NOTE]
-> W tym samouczku opisano łącznika, który został zbudowany na podstawie usługi aprowizacji użytkownika usługi Azure AD. Ważne szczegółowe informacje na temat tej usługi nie, jak działa i często zadawane pytania, [Automatyzowanie aprowizacji użytkowników i anulowania obsługi do aplikacji SaaS w usłudze Azure Active Directory](../active-directory-saas-app-provisioning.md).
+> W tym samouczku opisano łącznika, który bazuje na usłudze usługa aprowizowania użytkowników w usłudze Azure AD. Aby uzyskać informacji na temat tej usługi nie, jak działa i często zadawane pytania, zobacz [Automatyzowanie aprowizacji użytkowników i anulowania obsługi aplikacjom software-as-a-service (SaaS) w usłudze Azure Active Directory](../active-directory-saas-app-provisioning.md).
 >
-
-> Ten łącznik jest obecnie w publicznej wersji zapoznawczej. Aby uzyskać więcej informacji na temat ogólnych Microsoft Azure warunki użytkowania dla funkcji w wersji zapoznawczej, zobacz [dodatkowym warunkom użytkowania wersji zapoznawczych platformy Microsoft](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Ten łącznik jest obecnie dostępna w wersji zapoznawczej. Aby uzyskać więcej informacji na temat ogólnych Microsoft Azure warunki użytkowania dla funkcji w wersji zapoznawczej, zobacz [dodatkowe warunki użytkowania wersji zapoznawczych usług Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Scenariusz opisany w tym samouczku przyjęto założenie, że masz już następujące czynności:
+Scenariusz opisany w tym samouczku przyjęto założenie, że masz:
 
-* Dzierżawa usługi Azure AD
-* Rozwiązania Zscaler jednej dzierżawy
-* Konto użytkownika w jednym rozwiązania Zscaler z uprawnieniami administratora
+* Dzierżawa usługi Azure AD.
+* Rozwiązania Zscaler jednej dzierżawy.
+* Konto użytkownika w jednym rozwiązania Zscaler z uprawnieniami administratora.
 
 > [!NOTE]
-> Integracja inicjowania obsługi usługi Azure AD opiera się na API Standard SCIM jednego rozwiązania Zscaler, który jest dostępny dla jednego rozwiązania Zscaler deweloperów dla kont z pakietem Enterprise.
+> Inicjowanie obsługi administracyjnej integracji usługi Azure AD zależy od interfejsu API rozwiązania Zscaler jeden standard SCIM. Ten interfejs API jest dostępna dla jednego rozwiązania Zscaler deweloperów dla kont z pakietem Enterprise.
 
-## <a name="adding-zscaler-one-from-the-gallery"></a>Dodawanie rozwiązania Zscaler jednego z galerii
+## <a name="add-zscaler-one-from-the-azure-marketplace"></a>Dodaj rozwiązania Zscaler jednego z witryny Azure Marketplace
 
-Przed skonfigurowaniem rozwiązania Zscaler jednego użytkownika automatyczne Inicjowanie obsługi administracyjnej z usługą Azure AD, musisz dodać rozwiązania Zscaler jednego z galerii aplikacji usługi Azure AD z listą zarządzanych aplikacji SaaS.
+Przed skonfigurowaniem rozwiązania Zscaler jednego użytkownika automatyczne Inicjowanie obsługi administracyjnej z usługą Azure AD należy dodać jednego rozwiązania Zscaler w portalu Azure Marketplace z listą zarządzanych aplikacji SaaS.
 
-**Aby dodać jednego rozwiązania Zscaler z galerii aplikacji usługi Azure AD, wykonaj następujące czynności:**
+Aby dodać jednego rozwiązania Zscaler z witryny Marketplace, wykonaj następujące kroki.
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W [witryny Azure portal](https://portal.azure.com), w okienku nawigacji po lewej stronie wybierz **usługi Azure Active Directory**.
 
-    ![Przycisk Azure Active Directory](common/select-azuread.png)
+    ![Ikona usługi Azure Active Directory](common/select-azuread.png)
 
-2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
+2. Przejdź do **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+3. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja** w górnej części okna dialogowego.
 
     ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **jednego rozwiązania Zscaler**, wybierz opcję **jednego rozwiązania Zscaler** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wprowadź **jednego rozwiązania Zscaler** i wybierz **jednego rozwiązania Zscaler** z panelu wyników. Aby dodać aplikację, wybierz **Dodaj**.
 
     ![Na liście wyników jednego rozwiązania Zscaler](common/search-new-app.png)
 
-## <a name="assigning-users-to-zscaler-one"></a>Przypisywanie użytkowników do jednego rozwiązania Zscaler
+## <a name="assign-users-to-zscaler-one"></a>Przypisywanie użytkowników do jednego rozwiązania Zscaler
 
-Usługa Azure Active Directory używa koncepcji o nazwie "przypisania", aby określić, użytkowników, którzy otrzymają dostęp do wybranych aplikacji. W kontekście automatyczna aprowizacja użytkowników są synchronizowane tylko użytkowników i/lub grup, które "przypisano" do aplikacji w usłudze Azure AD.
+Usługa Azure Active Directory korzysta z koncepcji, o nazwie *przypisania* ustalenie, użytkowników, którzy otrzymają dostęp do wybranych aplikacji. W kontekście automatyczna aprowizacja użytkowników są synchronizowane tylko użytkowników lub grup, które zostały przypisane do aplikacji w usłudze Azure AD.
 
-Przed Skonfiguruj i Włącz automatyczne aprowizowanie użytkowników, należy zdecydować, użytkowników i/lub grup w usłudze Azure AD muszą mieć dostęp do jednego rozwiązania Zscaler. Po decyzję, należy przypisać do jednego rozwiązania Zscaler użytkowników i/lub grup zgodnie z instrukcjami w tym miejscu:
-
-* [Przypisywanie użytkownika lub grupy do aplikacji przedsiębiorstwa](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+Przed skonfigurowaniem i włączanie automatycznej aprowizacji użytkowników, należy zdecydować, którzy użytkownicy lub grupy w usłudze Azure AD muszą mieć dostęp do jednego rozwiązania Zscaler. Aby przypisać tych użytkowników lub grup do jednego rozwiązania Zscaler, postępuj zgodnie z instrukcjami [przypisać użytkownika lub grupy do aplikacji przedsiębiorstwa](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal).
 
 ### <a name="important-tips-for-assigning-users-to-zscaler-one"></a>Ważne wskazówki dotyczące przypisywania użytkowników do jednego rozwiązania Zscaler
 
-* Zalecane jest jeden użytkownik usługi Azure AD jest przypisane do jednego rozwiązania Zscaler do testowania automatyczne aprowizowanie konfiguracji użytkowników. Później można przypisać dodatkowych użytkowników i/lub grup.
+* Firma Microsoft zaleca, aby przypisać jeden użytkownik usługi Azure AD do rozwiązania Zscaler jednej, aby przetestować automatyczne aprowizowanie konfiguracji użytkowników. Później można przypisać dodatkowych użytkowników lub grup.
 
-* Podczas przypisywania użytkowników do jednego rozwiązania Zscaler, należy wybrać prawidłową rolą specyficzne dla aplikacji (jeśli jest dostępny) w oknie dialogowym przydział. Użytkownicy z **domyślnego dostępu** roli są wyłączone, od zainicjowania obsługi administracyjnej.
+* Kiedy użytkownik przypisany do jednego rozwiązania Zscaler wybierz wszystkie prawidłową rolą specyficzne dla aplikacji, jeśli to możliwe, w oknie dialogowym przydział. Użytkownicy z **domyślnego dostępu** roli są wyłączone, od zainicjowania obsługi administracyjnej.
 
-## <a name="configuring-automatic-user-provisioning-to-zscaler-one"></a>Konfigurowanie automatycznej aprowizacji użytkowników do jednego rozwiązania Zscaler
+## <a name="configure-automatic-user-provisioning-to-zscaler-one"></a>Konfigurowanie automatycznej aprowizacji użytkowników do jednego rozwiązania Zscaler
 
-Ta sekcja przeprowadzi Cię przez kroki, aby skonfigurować usługi Azure AD inicjowania obsługi usługi do tworzenia, aktualizacji i wyłączyć użytkowników i/lub grup w jednym rozwiązania Zscaler oparte na użytkownika i/lub przypisania grupy w usłudze Azure AD.
+Ta sekcja przeprowadzi Cię przez kroki, aby skonfigurować usługi aprowizacji usługi Azure AD. Umożliwia tworzenie, aktualizowanie i wyłączyć użytkowników lub grup w jednym rozwiązania Zscaler na podstawie użytkownika lub przypisań do grup w usłudze Azure AD.
 
 > [!TIP]
-> Można też włączyć opartej na SAML logowania jednokrotnego dla jednego rozwiązania Zscaler, wykonując instrukcje podane w [jednego rozwiązania Zscaler pojedynczego logowania jednokrotnego samouczek](zscaler-One-tutorial.md). Logowanie jednokrotne można skonfigurować niezależnie od automatyczna aprowizacja użytkowników, że te dwie funkcje uzupełnienie siebie nawzajem.
+> Ponadto można włączyć opartej na SAML logowania jednokrotnego dla jednego rozwiązania Zscaler. Postępuj zgodnie z instrukcjami w [jednego rozwiązania Zscaler pojedynczego logowania jednokrotnego samouczek](zscaler-One-tutorial.md). Logowanie jednokrotne można skonfigurować niezależnie od automatyczna aprowizacja użytkowników, mimo że te dwie funkcje uzupełniają się wzajemnie.
 
-### <a name="to-configure-automatic-user-provisioning-for-zscaler-one-in-azure-ad"></a>Aby skonfigurować automatyczna aprowizacja użytkowników dla jednego rozwiązania Zscaler w usłudze Azure AD:
+### <a name="configure-automatic-user-provisioning-for-zscaler-one-in-azure-ad"></a>Konfigurowanie automatycznej aprowizacji użytkowników dla jednego rozwiązania Zscaler w usłudze Azure AD
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) i wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **jednego rozwiązania Zscaler**.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). Wybierz **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje** > **jednego rozwiązania Zscaler**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
@@ -102,63 +99,65 @@ Ta sekcja przeprowadzi Cię przez kroki, aby skonfigurować usługi Azure AD ini
 
 4. Ustaw **tryb obsługi administracyjnej** do **automatyczne**.
 
-    ![Inicjowanie obsługi administracyjnej jednego rozwiązania Zscaler](./media/zscaler-one-provisioning-tutorial/provisioning-credentials.png)
+    ![Jeden tryb obsługi administracyjnej rozwiązania Zscaler](./media/zscaler-one-provisioning-tutorial/provisioning-credentials.png)
 
-5. W obszarze **poświadczeń administratora** sekcji danych wejściowych **adres URL dzierżawy** i **klucz tajny tokenu** Twojego rozwiązania Zscaler jednego konta, zgodnie z opisem w kroku 6.
+5. W obszarze **poświadczeń administratora** sekcji, wypełnij **adres URL dzierżawy** i **klucz tajny tokenu** pola z ustawieniami dla jednego rozwiązania Zscaler konta zgodnie z opisem w kroku 6.
 
-6. Aby uzyskać **adres URL dzierżawy** i **klucz tajny tokenu**, przejdź do **Administracja > Ustawienia uwierzytelniania** rozwiązania Zscaler jeden interfejs użytkownika portalu i kliknij pozycję  **SAML** w obszarze **typ uwierzytelniania**.
+6. Aby uzyskać dzierżawy adresu URL i token wpisu tajnego, przejdź do **administracji** > **ustawienia uwierzytelniania** w portalu rozwiązania Zscaler jednego interfejsu użytkownika. W obszarze **typ uwierzytelniania**, wybierz opcję **SAML**.
 
-    ![Inicjowanie obsługi administracyjnej jednego rozwiązania Zscaler](./media/zscaler-one-provisioning-tutorial/secret-token-1.png)
+    ![Ustawienia uwierzytelniania jednego rozwiązania Zscaler](./media/zscaler-one-provisioning-tutorial/secret-token-1.png)
 
-    Kliknij pozycję **skonfigurować SAML** otworzyć **konfiguracji SAML** opcje.
+    a. Wybierz **skonfigurować SAML** otworzyć **skonfigurować SAML** opcje.
 
-    ![Inicjowanie obsługi administracyjnej jednego rozwiązania Zscaler](./media/zscaler-one-provisioning-tutorial/secret-token-2.png)
+    ![Rozwiązania Zscaler jeden skonfigurować SAML](./media/zscaler-one-provisioning-tutorial/secret-token-2.png)
 
-    Wybierz **aprowizacji Enable SCIM-Based** można pobrać **podstawowy adres URL** i **tokenu elementu nośnego**, następnie Zapisz ustawienia. Kopiuj **podstawowy adres URL** do **adres URL dzierżawy** i **tokenu elementu nośnego** do **klucz tajny tokenu** w witrynie Azure portal.
+    b. Wybierz **aprowizacji Enable SCIM-Based** można pobrać ustawień w **podstawowy adres URL** i **tokenu elementu nośnego**. Następnie Zapisz ustawienia. Kopiuj **podstawowy adres URL** ustawienie **adres URL dzierżawy** w witrynie Azure portal. Kopiuj **tokenu elementu nośnego** ustawienie **klucz tajny tokenu** w witrynie Azure portal.
 
-7. Podczas wypełniania pola wyświetlane w kroku 5, kliknij przycisk **Testuj połączenie** aby upewnij się, Azure AD można połączyć się z jednego rozwiązania Zscaler. Jeśli połączenie nie powiedzie się, upewnij się, że Twoje rozwiązania Zscaler jedno konto ma uprawnienia administratora i spróbuj ponownie.
+7. Po wypełnieniu pól wyświetlane w kroku 5 wybierz **Testuj połączenie** aby upewnij się, że usługi Azure AD można połączyć się z jednego rozwiązania Zscaler. Jeśli połączenie nie powiedzie się, upewnij się, że Twoje rozwiązania Zscaler jedno konto ma uprawnienia administratora i spróbuj ponownie.
 
-    ![Inicjowanie obsługi administracyjnej jednego rozwiązania Zscaler](./media/zscaler-one-provisioning-tutorial/test-connection.png)
+    ![Połączenie testowe jednego rozwiązania Zscaler](./media/zscaler-one-provisioning-tutorial/test-connection.png)
 
-8. W **wiadomość E-mail z powiadomieniem** wprowadź adres e-mail osoby lub grupy, który powinien otrzymywać powiadomienia błąd inicjowania obsługi administracyjnej i zaznacz pole wyboru **Wyślij wiadomość e-mail z powiadomieniem, gdy wystąpi awaria**.
+8. W **wiadomość E-mail z powiadomieniem** pole, wprowadź adres e-mail osoby lub grupy do odbierania powiadomień błąd inicjowania obsługi administracyjnej. Wybierz **Wyślij wiadomość e-mail z powiadomieniem, gdy wystąpi awaria** pole wyboru.
 
-    ![Inicjowanie obsługi administracyjnej jednego rozwiązania Zscaler](./media/zscaler-one-provisioning-tutorial/notification.png)
+    ![Wiadomość E-mail z powiadomieniem jednego rozwiązania Zscaler](./media/zscaler-one-provisioning-tutorial/notification.png)
 
-9. Kliknij pozycję **Zapisz**.
+9. Wybierz pozycję **Zapisz**.
 
 10. W obszarze **mapowania** zaznacz **synchronizacji Azure użytkownicy usługi Active Directory do jednego rozwiązania Zscaler**.
 
-    ![Inicjowanie obsługi administracyjnej jednego rozwiązania Zscaler](./media/zscaler-one-provisioning-tutorial/user-mappings.png)
+    ![Synchronizacja użytkownika jednego rozwiązania Zscaler](./media/zscaler-one-provisioning-tutorial/user-mappings.png)
 
-11. Przejrzyj atrybuty użytkownika, które są synchronizowane z usługi Azure AD do jednego rozwiązania Zscaler w **mapowanie atrybutu** sekcji. Atrybuty wybrany jako **zgodne** właściwości są używane do dopasowania kont użytkowników w jednym rozwiązania Zscaler operacji aktualizacji. Wybierz **Zapisz** przycisk, aby zatwierdzić zmiany.
+11. Przejrzyj atrybuty użytkownika, które są synchronizowane z usługi Azure AD do jednego rozwiązania Zscaler w **mapowania atrybutów** sekcji. Atrybuty wybrany jako **zgodne** właściwości są używane do dopasowania kont użytkowników w jednym rozwiązania Zscaler operacji aktualizacji. Aby zapisać zmiany, wybierz pozycję **Zapisz**.
 
-    ![Inicjowanie obsługi administracyjnej jednego rozwiązania Zscaler](./media/zscaler-one-provisioning-tutorial/user-attribute-mappings.png)
+    ![Jednego rozwiązania Zscaler pasujące atrybuty użytkownika](./media/zscaler-one-provisioning-tutorial/user-attribute-mappings.png)
 
 12. W obszarze **mapowania** zaznacz **synchronizacji Azure grup usługi Active Directory do jednego rozwiązania Zscaler**.
 
-    ![Inicjowanie obsługi administracyjnej jednego rozwiązania Zscaler](./media/zscaler-one-provisioning-tutorial/group-mappings.png)
+    ![Rozwiązania Zscaler jednej grupy synchronizacji](./media/zscaler-one-provisioning-tutorial/group-mappings.png)
 
-13. Przejrzyj atrybuty grupy, które są synchronizowane z usługi Azure AD do jednego rozwiązania Zscaler w **mapowanie atrybutu** sekcji. Atrybuty wybrany jako **zgodne** właściwości są używane do dopasowania grup w jednym rozwiązania Zscaler operacji aktualizacji. Wybierz **Zapisz** przycisk, aby zatwierdzić zmiany.
+13. Przejrzyj atrybuty grupy, które są synchronizowane z usługi Azure AD do jednego rozwiązania Zscaler w **mapowania atrybutów** sekcji. Atrybuty wybrany jako **zgodne** właściwości są używane do dopasowania grup w jednym rozwiązania Zscaler operacji aktualizacji. Aby zapisać zmiany, wybierz pozycję **Zapisz**.
 
-    ![Inicjowanie obsługi administracyjnej jednego rozwiązania Zscaler](./media/zscaler-one-provisioning-tutorial/group-attribute-mappings.png)
+    ![Jednego rozwiązania Zscaler pasujące atrybuty grupy](./media/zscaler-one-provisioning-tutorial/group-attribute-mappings.png)
 
-14. Aby skonfigurować filtrów określania zakresu, można znaleźć w następujących instrukcjach podanych w [samouczek filtru Scoping](./../active-directory-saas-scoping-filters.md).
+14. Aby skonfigurować filtrów określania zakresu, postępuj zgodnie z instrukcjami [zakresu filtru samouczek](./../active-directory-saas-scoping-filters.md).
 
-15. Aby włączyć usługi Azure AD, usługi dla jednego rozwiązania Zscaler inicjowania obsługi administracyjnej, zmień **stanie aprowizacji** do **na** w **ustawienia** sekcji.
+15. Aby włączyć usługi Azure AD, usługi dla jednego rozwiązania Zscaler inicjowania obsługi administracyjnej w **ustawienia** sekcji, zmień **stanie aprowizacji** do **na**.
 
-    ![Inicjowanie obsługi administracyjnej jednego rozwiązania Zscaler](./media/zscaler-one-provisioning-tutorial/provisioning-status.png)
+    ![Jeden stan inicjowania obsługi administracyjnej rozwiązania Zscaler](./media/zscaler-one-provisioning-tutorial/provisioning-status.png)
 
-16. Zdefiniuj użytkowników i/lub grup, które chcesz aby obsługiwać je na rozwiązania Zscaler jeden, wybierając odpowiednie wartości w **zakres** w **ustawienia** sekcji.
+16. Zdefiniuj użytkowników lub grup, które mają dla aprowizacji funkcji do jednego rozwiązania Zscaler. W **ustawienia** wybierz wartości, które mają w **zakres**.
 
-    ![Inicjowanie obsługi administracyjnej jednego rozwiązania Zscaler](./media/zscaler-one-provisioning-tutorial/scoping.png)
+    ![Zakres jednego rozwiązania Zscaler](./media/zscaler-one-provisioning-tutorial/scoping.png)
 
-17. Gdy wszystko jest gotowe do aprowizowania, kliknij przycisk **Zapisz**.
+17. Gdy wszystko będzie gotowe do aprowizowania, wybierz pozycję **Zapisz**.
 
-    ![Inicjowanie obsługi administracyjnej jednego rozwiązania Zscaler](./media/zscaler-one-provisioning-tutorial/save-provisioning.png)
+    ![Zscaler One Save](./media/zscaler-one-provisioning-tutorial/save-provisioning.png)
 
-Ta operacja uruchamia początkowa synchronizacja wszystkich użytkowników i/lub grup zdefiniowanych w **zakres** w **ustawienia** sekcji. Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które występują co około 40 minut, tak długo, jak działa usługa aprowizacji usługi Azure AD. Możesz użyć **szczegóły synchronizacji** sekcji, aby monitorować postęp i skorzystaj z linków do inicjowania obsługi administracyjnej raportu działań w tym artykule opisano wszystkie akcje wykonywane przez usługę Azure AD, inicjowania obsługi usługi na jeden rozwiązania Zscaler.
+Ta operacja uruchamia początkowa synchronizacja wszystkich użytkowników lub grup zdefiniowanych w **zakres** w **ustawienia** sekcji. Synchronizacji początkowej trwa dłużej niż synchronizacje nowsze. Występują one co około 40 minut, tak długo, jak działa usługa aprowizacji usługi Azure AD. 
 
-Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](../active-directory-saas-provisioning-reporting.md).
+Możesz użyć **szczegóły synchronizacji** sekcji, aby monitorować postęp i skorzystaj z linków, aby raport o działaniach aprowizacji. Raport w tym artykule opisano wszystkie akcje wykonywane przez usługę Azure AD usługi na rozwiązania Zscaler One inicjowania obsługi administracyjnej.
+
+Aby uzyskać informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](../active-directory-saas-provisioning-reporting.md).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 

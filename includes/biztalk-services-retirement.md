@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 11/09/2017
 ms.author: mandia
 ms.custom: include file
-ms.openlocfilehash: 81e053c8258d24177d5c7ea499595c4dd4a3b0f0
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: 58a97ddf46a611d9a70c6662e315379629ffbec1
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38946168"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62108873"
 ---
 > [!IMPORTANT]
 > Usługa Microsoft Azure BizTalk Services (MABS) została wycofana i zastąpiona usługą Azure Logic Apps.
-> Jeśli obecnie używasz usługi MABS, przejrzyj ten artykuł, aby uzyskać wskazówki dotyczące migrowania rozwiązań integracji do usługi Logic Apps: [Move from BizTalk Services to Logic Apps](../articles/logic-apps/logic-apps-move-from-mabs.md) (Przejście z usługi BizTalk Services do usługi Logic Apps) 
+> Jeśli obecnie używasz usługi MABS, należy przejrzeć ten artykuł, aby uzyskać wskazówki dotyczące migracji rozwiązania do integracji z usługi Logic Apps: [Przenoszenie z usługi BizTalk Services do usługi Logic Apps](../articles/logic-apps/logic-apps-move-from-mabs.md) 
 > 
 > Jeśli dopiero zaczynasz pracę z usługą Logic Apps, spróbuj rozpocząć tutaj: 
 > 

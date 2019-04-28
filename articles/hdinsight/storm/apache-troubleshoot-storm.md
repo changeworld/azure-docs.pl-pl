@@ -2,7 +2,6 @@
 title: Rozwiązywanie problemów z systemu Storm przy użyciu usługi Azure HDInsight
 description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące korzystania z platformy Apache Storm przy użyciu usługi Azure HDInsight.
 keywords: Usługa Azure HDInsight, Storm, często zadawane pytania, przewodnik, typowych problemów dotyczących rozwiązywania problemów
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -10,12 +9,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5634d812b3fbd4e904516767b008f63104b3d7b7
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
-ms.translationtype: MT
+ms.openlocfilehash: 3866e25cc3c87f569e84b2d5639d25aa9386cc78
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632742"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62116452"
 ---
 # <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>Rozwiązywanie problemów z platformą Apache Storm przy użyciu usługi Azure HDInsight
 

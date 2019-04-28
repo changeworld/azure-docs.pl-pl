@@ -1,7 +1,6 @@
 ---
 title: Zapytanie usługi Azure Monitor dzienników do monitorowania klastrów Azure HDInsight
 description: Dowiedz się, jak uruchamiać zapytania dotyczące dzienników usługi Azure Monitor do monitorowania zadań uruchamianych w klastrze usługi HDInsight.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/05/2018
 ms.author: hrasheed
-ms.openlocfilehash: 2ca2fdc2627245a8b7676ed0d6d5877788eb7930
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
-ms.translationtype: MT
+ms.openlocfilehash: cbaaed3fff99778bfab1feeacdab02bf8245a85a
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336800"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63761222"
 ---
 # <a name="query-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Zapytanie usługi Azure Monitor dzienników do monitorowania klastrów HDInsight
 

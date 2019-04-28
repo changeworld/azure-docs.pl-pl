@@ -7,11 +7,11 @@ ms.topic: article
 ms.date: 01/10/2019
 ms.author: raynew
 ms.openlocfilehash: 8419d7e7a91e4cbfd0eebfe00d35bf498cf5998c
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200313"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62129827"
 ---
 # <a name="customize-an-assessment"></a>Dostosowywanie oceny
 
@@ -45,19 +45,19 @@ ms.locfileid: "54200313"
 
 ### <a name="what-is-the-difference-between-as-on-premises-sizing-and-performance-based-sizing"></a>Jaka jest różnica między ustalania rozmiaru jako — w środowisku lokalnym i ustalania rozmiaru na podstawie wydajności?
 
-Po określeniu kryterium ustalania rozmiaru jako jako on-premises zmiany rozmiaru, usługa Azure Migrate nie należy wziąć pod uwagę dane wydajności maszyn wirtualnych i rozmiarach maszyn wirtualnych na podstawie konfiguracji w środowisku lokalnym. Jeśli kryterium ustalania rozmiaru jest oparte na wydajności, zmiany rozmiaru odbywa się na podstawie danych użycia. Na przykład, jeśli istnieje lokalna maszyna wirtualna z 4 rdzenie i 8 GB pamięci RAM z 50 wykorzystanie procesora CPU i użycie pamięci 50%. Jeśli kryterium ustalania rozmiaru jest rozmiaru jednostki SKU maszyny Wirtualnej platformy Azure z 4 rdzenie lokalne i 8 GB pamięci RAM zaleca się, jednak jeśli kryterium ustalania rozmiaru na podstawie wydajności jako jednostki SKU maszyny Wirtualnej 2 rdzeni i 4 GB mogłoby być zaleca się jako procent wykorzystania jest uznawana za podczas rekomendowanie rozmiar.
+Po określeniu kryterium ustalania rozmiaru jako jako on-premises zmiany rozmiaru, usługa Azure Migrate nie należy wziąć pod uwagę dane wydajności maszyn wirtualnych i rozmiarach maszyn wirtualnych na podstawie konfiguracji w środowisku lokalnym. Jeśli kryterium ustalania rozmiaru jest oparte na wydajności, zmiany rozmiaru odbywa się na podstawie danych użycia. Załóżmy na przykład, że istnieje lokalna maszyna wirtualna z 4 rdzeniami i 8 GB pamięci RAM, mająca 50% użycia procesora CPU i 50% użycia pamięci. Jeśli kryterium jest ustalanie rozmiaru jako lokalnego, zalecana jest jednostka SKU maszyny wirtualnej platformy Azure z 4 rdzeniami i 8 GB pamięci, ale jeśli kryterium ustalania rozmiaru jest oparte na wydajności, zalecana jest jednostka SKU maszyny wirtualnej z 2 rdzeniami i 4 GB, ponieważ procent użycia jest uwzględniany podczas rekomendowania rozmiaru.
 
-Podobnie dysków, rozmiaru dysku zależy od dwóch właściwości oceny — zmiany rozmiaru typu kryterium i magazynu. Jeśli kryterium ustalania rozmiaru jest oparte na wydajności i magazynu jest uruchomiana automatycznie, wartości operacje We/Wy i przepływność dysku są traktowane jako do identyfikowania typ dysku docelowego (standardowa / Premium). Jeśli kryterium ustalania rozmiaru jest oparte na wydajności i typ magazynu jest premium, zaleca się dysku w warstwie premium, dysku w warstwie premium, jednostki SKU na platformie Azure jest wybierane na podstawie rozmiaru dysku w środowisku lokalnym. Ta sama logika jest używany do dysku zmiany rozmiaru, jeśli kryterium ustalania rozmiaru jest lokalne ustalanie rozmiaru i typu magazynu to standardowa lub premium.
+Podobnie dysków, rozmiaru dysku zależy od dwóch właściwości oceny — zmiany rozmiaru typu kryterium i magazynu. Jeśli kryterium ustalania rozmiaru jest oparte na wydajności, a typ magazynu to Automatyczny, uwzględniane są wartości przepływności i liczby operacji we/wy na sekundę dysku w celu zidentyfikowania docelowego typu dysku (warstwa Standardowa lub Premium). Jeśli kryterium ustalania rozmiaru jest oparte na wydajności, a typ magazynu to Premium, zalecany jest dysk w warstwie Premium. Jednostka SKU dysku w warstwie Premium na platformie Azure jest wybierana na podstawie rozmiaru dysku lokalnego. Ta sama logika jest używana do ustalania rozmiaru dysków, gdy kryterium jest ustalanie rozmiaru jako lokalnego, a typ magazynu to warstwa Standardowa lub Premium.
 
 ### <a name="what-impact-does-performance-history-and-percentile-utilization-have-on-the-size-recommendations"></a>Jaki wpływ wydajności historii i percentyl użycia ma na zaleceń dotyczących rozmiarów?
 
-Te właściwości są tylko odpowiednie dla rozmiaru na podstawie wydajności. Usługa Azure Migrate umożliwia zbieranie informacji o historii wydajności maszyn lokalnych i używa ich do zaleca się typu dysk i rozmiar maszyny Wirtualnej na platformie Azure.
+Te właściwości dotyczą tylko ustalania rozmiaru na podstawie wydajności. Usługa Azure Migrate zbiera informacje o historii wydajności maszyn lokalnych i używa ich do określania zalecanych rozmiarów maszyn wirtualnych i typów dysków na platformie Azure.
 
-- Urządzenie modułu zbierającego stale profilów w środowisku lokalnym na potrzeby zbierania danych użycia w czasie rzeczywistym, co 20 sekund.
-- Urządzenie zbiera przykłady 20 sekund i tworzy jeden punkt danych co 15 minut. Aby utworzyć jeden punkt danych, urządzenia szczytowa wartość wybierana jest opcja wszystkie przykłady 20 sekund i wysyła je do platformy Azure.
-- Po utworzeniu oceny na platformie Azure, w oparciu o czas trwania wydajności i wartość percentylu historii wydajności, usługa Azure Migrate oblicza wartość efektywne wykorzystanie i używa go na potrzeby zmiany rozmiaru.
+- Urządzenie modułu zbierającego stale profiluje środowisko lokalne w celu zbierania danych użycia w czasie rzeczywistym co 20 sekund.
+- Urządzenie podsumowuje 20-sekundowe próbki i tworzy jeden punkt danych co 15 minut. Aby utworzyć jeden punkt danych, urządzenie wybiera szczytową wartość z wszystkich 20-sekundowych próbek i wysyła ją do platformy Azure.
+- Podczas tworzenia oceny na platformie Azure (na podstawie czasu trwania wydajności i wartości percentylu historii wydajności) usługa Azure Migrate oblicza wartość efektywnego użycia i na tej podstawie ustala rozmiar.
 
-Na przykład jeśli zostały ustawione czas trwania wydajności za 1 dzień i percentyl wartości 95. percentyl, usługa Azure Migrate używa punktów przykładowe 15-minutowy wysyłanych przez moduł zbierający na ostatni dzień, posortowane w kolejności rosnącej i wybiera wartość 95. percentyla jako obowiązującą wykorzystanie. Wartość 95. percentyla gwarantuje, że ignorujesz jakiekolwiek elementy odstające, które mogą występować w przypadku wybrania 99. percentylu. Jeśli chcesz wybrać szczytowe użycie w okresie, a nie chcesz przeoczyć jakiekolwiek elementy odstające, należy wybrać 99. percentylu.
+Jeśli na przykład ustawiono czas trwania wydajności na 1 dzień oraz wartość percentylu na 95. percentyl, usługa Azure Migrate używa punktów próbek 15-minutowych wysłanych przez moduł zbierający dla ostatniego dnia, sortuje je w kolejności rosnącej i wybiera wartość 95. percentylu jako efektywne użycie. Wartość 95. percentylu zapewnia, że zostaną zignorowane wszelkie elementy odstające, które mogą występować w przypadku wybrania 99. percentylu. Jeśli chcesz wybrać szczytowe użycie w danym okresie i nie pomijać żadnych elementów odstających, wybierz 99. percentyl.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -2,19 +2,18 @@
 title: Przesyłanie zadań usługi Apache Hadoop w HDInsight
 description: Dowiedz się, jak można przesłać zadania technologii Apache Hadoop w usłudze Azure HDInsight.
 ms.reviewer: jasonh
-services: hdinsight
 ms.author: hrasheed
 author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: 419f34d6240df9b4df160c6ff9665b32aef1e3ca
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
-ms.translationtype: MT
+ms.openlocfilehash: 48365d8fcb5e95fc9b9fa605321baf28e07eee66
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653870"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62114561"
 ---
 # <a name="submit-apache-hadoop-jobs-in-hdinsight"></a>Przesyłanie zadań usługi Apache Hadoop w HDInsight
 
@@ -22,7 +21,7 @@ Możesz przesłać zadania technologii Apache Hadoop w usłudze Azure HDInsight 
 
 ## <a name="resources"></a>Zasoby
 
-- **ZESTAW SDK PLATFORMY .NET**:
+- **.NET SDK**:
 
   - [Tworzenie aplikacji .NET z uwierzytelnianiem nieinterakcyjnym](../hdinsight-create-non-interactive-authentication-dotnet-applications.md)
   - [Uruchom zapytania usługi Apache Hive przy użyciu zestawu .NET SDK HDInsight](apache-hadoop-use-hive-dotnet-sdk.md)
@@ -37,7 +36,7 @@ Możesz przesłać zadania technologii Apache Hadoop w usłudze Azure HDInsight 
   - [Uruchamiać zadania Apache Sqoop z usługą Apache Hadoop w HDInsight przy użyciu programu curl](apache-hadoop-use-sqoop-curl.md)
   - [Wykonywanie zadań MapReduce z usługą Apache Hadoop w HDInsight przy użyciu programu curl](apache-hadoop-use-mapreduce-curl.md)
 
-- **Program PowerShell**:
+- **PowerShell**:
 
   - [Uruchamianie zapytania usługi Apache Hive przy użyciu programu PowerShell](apache-hadoop-use-hive-powershell.md)
   - [Uruchamiać zadania Apache Pig przy użyciu programu PowerShell](apache-hadoop-use-pig-powershell.md)

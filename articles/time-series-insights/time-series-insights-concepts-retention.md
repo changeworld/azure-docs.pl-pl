@@ -11,18 +11,18 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/09/2018
 ms.custom: seodec18
-ms.openlocfilehash: c44b09e15a227e11426d2798fc071778ca47ebd3
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
-ms.translationtype: MT
+ms.openlocfilehash: b230ac48cf2ca14c9ed988f869b5abba3e347215
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557467"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63761579"
 ---
 # <a name="understand-data-retention-in-time-series-insights"></a>Omówienie przechowywania danych w usłudze Time Series Insights
 
 W tym artykule opisano dwa ustawienia, które mają wpływ na przechowywanie danych w środowisku usługi Time Series Insights (TSI).
 
-## <a name="video"></a>Wideo: 
+## <a name="video"></a>Połączenia wideo
 
 ### <a name="in-this-video-we-cover-time-series-insights-data-retention-and-how-to-plan-for-itbr"></a>W tym filmie omówione przechowywanie danych usługi Time Series Insights oraz sposobu planowania dla niego.</br>
 
@@ -41,25 +41,29 @@ Informacje na temat przechowywania zachowania przełączania można przejrzeć [
 
 Porównaj zachowania w zakresie przechowywania danych:
 
-## <a name="purge-old-data"></a>Usuwanie starych danych
+## <a name="purge-old-data"></a>Przeczyść stare dane
+
 - To zachowanie jest zachowaniem domyślnym dla środowisk usługi TSI i wystawach wykazywał tego samego środowiska usługi TSI zachowanie, ponieważ uruchomiona w publicznej wersji zapoznawczej.  
 - To zachowanie jest preferowane w przypadku, gdy użytkownicy chcą zobaczyć zawsze ich *najbardziej aktualne dane* w swoim środowisku TSI. 
 - To zachowanie *Przeczyszcza* danych środowiska po osiągnięciu limitu (czas przechowywania, rozmiar lub count, osiągnięta jako pierwsza). Przechowywanie jest domyślnie do 30 dni. 
 - Najstarszy pozyskiwanych danych są przeczyszczane pierwszy (podejście FIFO).
 
-### <a name="example-1"></a>Przykład 1:
-Należy wziąć pod uwagę przykładowe środowisko z zachowaniem przechowywania **nadal transferu danych przychodzących i czyszczenie starych danych**: W tym przykładzie **czas przechowywania danych** jest ustawiona na 400 dni. **Pojemność** jest ustawiona na jednostki S1, co zawiera 30 GB łączna pojemność.   Załóżmy, że dla ruchu przychodzącego dane są gromadzone do 500 MB dziennie średnio. To środowisko można zachować tylko 60 dni ważności danych, biorąc pod uwagę współczynnik danych przychodzących, ponieważ osiągnięto maksymalną pojemność w ciągu 60 dni. Dane przychodzące są gromadzone jako: 500 MB każdy dzień x 60 dni = 30 GB. 
+### <a name="example-one"></a>Przykład jednego
+
+Należy wziąć pod uwagę przykładowe środowisko z zachowaniem przechowywania **nadal transferu danych przychodzących i czyszczenie starych danych**: W tym przykładzie **czas przechowywania danych** jest ustawiona na 400 dni. **Pojemność** jest ustawiona na jednostki S1, co zawiera 30 GB łączna pojemność.   Załóżmy, że dla ruchu przychodzącego dane są gromadzone do 500 MB dziennie średnio. To środowisko można zachować tylko 60 dni ważności danych, biorąc pod uwagę współczynnik danych przychodzących, ponieważ osiągnięto maksymalną pojemność w ciągu 60 dni. Dane przychodzące są gromadzone jako: 500 MB każdy dzień x 60 dni = 30 GB.
 
 W tym przykładzie dnia 61st środowiska pokazuje zawierać najświeższe dane, ale Przeczyszcza najstarsze dane starsze niż 60 dni. Przeczyszczanie sprawia, że miejsce dla nowych danych przesyłania strumieniowego, tak aby nowe dane mogą w dalszym ciągu być eksplorowana. 
 
 Jeśli użytkownik zamierza przechowywać dane dłużej, można zwiększyć rozmiar środowiska, dodając usługę o kolejne jednostki lub wypchnąć mniejszej ilości danych.  
 
-### <a name="example-2"></a>Przykład 2:
+### <a name="example-two"></a>Przykład 2
+
 Należy wziąć pod uwagę środowisko skonfigurowane również zachowanie przechowywania **nadal transferu danych przychodzących i czyszczenie starych danych**. W tym przykładzie **czas przechowywania danych** jest ustawiona na niższą wartość 180 dni. **Pojemność** jest ustawiona na jednostki S1, co zawiera 30 GB łączna pojemność. Aby można było przechowywać dane przez pełne 180 dni, dzienny ruch przychodzący nie może przekraczać 0.166 GB (166 MB) na dzień.  
 
 Zawsze, gdy to środowisko dzienny transfer przychodzący przekroczy 0.166 GB dziennie, dane nie mogą być przechowywane przez 180 dni, ponieważ pobiera przeczyścić dane. Należy wziąć pod uwagę tego samego środowiska zajęty horyzoncie czasowym. Załóżmy, że szybkość transferu danych przychodzących środowiska może wzrosnąć do średniej 0.189 GB dziennie. W tym okresie zajęty 158 dni danych zostaną zachowane (30GB/0.189 = 158,73 dni przechowywania). Ten czas jest mniejszy niż przedział czasu przechowywania żądanych danych.
 
-## <a name="pause-ingress"></a>Wstrzymaj transferu danych przychodzących
+## <a name="pause-ingress"></a>Wstrzymaj ruch przychodzący
+
 - To zachowanie jest przeznaczony do upewnij się, że dane nie są przeczyszczane, jeśli osiągnięciu limitów rozmiaru i liczby przed ich okresu przechowywania.  
 - Takie zachowanie odznacza się dodatkowy czas dla użytkowników zwiększyć jej pojemność, ich środowiska, zanim dane są przeczyszczane ze względu na naruszenie okres przechowywania danych
 - To zachowanie pomaga chronić przed utratą danych, ale tworzy szansy sprzedaży związane z utratą najnowszych danych, jeśli ruch przychodzący jest wstrzymana, po upływie okresu przechowywania źródła zdarzeń.
@@ -67,10 +71,12 @@ Zawsze, gdy to środowisko dzienny transfer przychodzący przekroczy 0.166 GB dz
    - Możesz zwiększyć maksymalną pojemność środowiska. Aby uzyskać więcej informacji, zobacz [sposób skalowania środowiska usługi Time Series Insights](time-series-insights-how-to-scale-your-environment.md) można dodać kolejne jednostki skalowania.
    - Okres przechowywania danych, a dane są przeczyszczane możliwe. Dzięki temu środowisko poniżej maksymalnej pojemności.
 
-### <a name="example-3"></a>Przykład 3:
+### <a name="example-three"></a>Przykład 3
+
 Należy wziąć pod uwagę środowisko, z zachowaniem przechowywania skonfigurowane do **wstrzymać ruch przychodzący**. W tym przykładzie **okres przechowywania danych** jest skonfigurowany do 60 dni. **Pojemność** jest równa 3 jednostki S1. Załóżmy, że w tym środowisku obowiązują transferu danych przychodzących, 2GB danych dziennie. W tym środowisku ruch przychodzący jest wstrzymany, po osiągnięciu maksymalnej pojemności. W tym czasie środowiska pokazuje tego samego zestawu danych, dopóki wznawia transferu danych przychodzących lub do momentu "continue przychodzące" jest włączona (który będzie przeczyścić starszych danych, aby zwolnić miejsce dla nowych danych). 
 
 Po wznowieniu działania transferu danych przychodzących:
+
 - Dane przepływają w kolejności, w której zostało przesłane przez źródło zdarzenia
 - Zdarzenia są indeksowane w oparciu o ich sygnatury czasowej, chyba że przekroczono zasady przechowywania w źródle zdarzenia. Aby uzyskać więcej informacji na temat konfiguracji przechowywania źródła zdarzeń [Event Hubs często zadawane pytania](../event-hubs/event-hubs-faq.md)
 
@@ -86,4 +92,5 @@ Brak właściwości skonfigurowanie źródła zdarzeń (timeStampPropertyName) T
 Jeśli chcesz skalować środowiska do uwzględnienia dodatkowej pojemności lub zwiększyć okres przechowywania, zobacz [sposób skalowania środowiska usługi Time Series Insights](time-series-insights-how-to-scale-your-environment.md) Aby uzyskać więcej informacji.  
 
 ## <a name="next-steps"></a>Kolejne kroki
-Informacje na temat przechowywania zachowania przełączania można przejrzeć [konfigurowania przechowywania w usłudze Time Series Insights](time-series-insights-how-to-configure-retention.md).
+
+- Informacje na temat przechowywania zachowania przełączania można przejrzeć [konfigurowania przechowywania w usłudze Time Series Insights](time-series-insights-how-to-configure-retention.md).

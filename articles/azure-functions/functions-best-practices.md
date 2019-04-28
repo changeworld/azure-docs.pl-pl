@@ -10,15 +10,16 @@ ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 10/16/2017
-ms.author: glenga
+origin.date: 10/16/2017
+ms.date: 03/25/2019
+ms.author: v-junlch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 30b187676f0c1fb03b7124d93b3991b0e32d61ae
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57848953"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62104681"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optymalizuj wydajność i niezawodność usługi Azure Functions
 
@@ -122,3 +123,5 @@ Więcej informacji zawierają następujące zasoby:
 
 * [Sposób zarządzania połączeniami w usłudze Azure Functions](manage-connections.md)
 * [Najlepsze rozwiązania platformy Azure App Service](../app-service/app-service-best-practices.md)
+
+<!-- Update_Description: wording update -->

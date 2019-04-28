@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f8590c9ef89e68a823beefd7e74a894edd219359
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 0975b23a8f96da6fc2dfcc8bd9ad046847a68aa9
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57779389"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62104834"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Dodawanie usługi Log Analytics zapisane wyszukiwania i alerty w rozwiązaniu do zarządzania (wersja zapoznawcza)
 
@@ -120,11 +120,13 @@ Zapisane wyszukiwanie może mieć co najmniej jeden harmonogram z każdym harmon
         }
     }
 Właściwości harmonogramu zasoby są opisane w poniższej tabeli.
+
 | Nazwa elementu | Wymagane | Opis |
 |:--|:--|:--|
 | enabled       | Yes | Określa, czy alert jest włączony podczas jego tworzenia. |
 | interval      | Yes | Jak często zapytanie działa w ciągu kilku minut. |
 | queryTimeSpan | Yes | Długość czasu w minutach, względem którego ma zostać ocena wyników. |
+
 Zasób harmonogramu powinna zależeć od zapisane wyszukiwanie, tak, aby jest tworzony przed harmonogramu.
 > [!NOTE]
 > Nazwa harmonogramu musi być unikatowa w danym obszarze roboczym; dwa harmonogramy nie może mieć ten sam identyfikator, nawet jeśli są one skojarzone z inną zapisanych wyszukiwań. Również nazwa wszystkie zapisane wyszukiwania, harmonogramów i działań utworzonych za pomocą interfejsu API analizy dziennika musi być pisane małymi literami.
@@ -231,9 +233,9 @@ Każdy harmonogram ma jeden **alertu** akcji. Definiuje szczegóły alertu, i op
 
 | Nazwa elementu | Wymagane | Opis |
 |:--|:--|:--|
-| Adresaci | Yes | Rozdzielana przecinkami lista adresów e-mail, aby wysłać powiadomienia, gdy jest tworzony alert, takie jak w poniższym przykładzie.<br><br>**[ "recipient1@contoso.com", "recipient2@contoso.com" ]** |
-| Podmiot | Yes | Wiersz tematu wiadomości e-mail. |
-| Załącznik | Nie | Załączniki nie są obecnie obsługiwane. Jeśli ten element jest włączone, należy go **Brak**. |
+| Recipients | Yes | Rozdzielana przecinkami lista adresów e-mail, aby wysłać powiadomienia, gdy jest tworzony alert, takie jak w poniższym przykładzie.<br><br>**["recipient1\@contoso.com", "recipient2\@contoso.com"]** |
+| Subject | Yes | Wiersz tematu wiadomości e-mail. |
+| Attachment | Nie | Załączniki nie są obecnie obsługiwane. Jeśli ten element jest włączone, należy go **Brak**. |
 
 ##### <a name="remediation"></a>Korygowanie
 Ta sekcja jest opcjonalna dołączyć ją, jeśli chcesz, aby element runbook można uruchomić w odpowiedzi na alert. 
@@ -242,7 +244,7 @@ Ta sekcja jest opcjonalna dołączyć ją, jeśli chcesz, aby element runbook mo
 |:--|:--|:--|
 | RunbookName | Yes | Nazwa elementu runbook, aby rozpocząć. |
 | WebhookUri | Yes | Identyfikator URI elementu webhook dla elementu runbook. |
-| Data wygaśnięcia | Nie | Data i godzina wygaśnięcia korygowania. |
+| Expiry | Nie | Data i godzina wygaśnięcia korygowania. |
 
 ##### <a name="webhook-actions"></a>Akcje elementu Webhook
 
@@ -266,6 +268,7 @@ Jeśli alert będzie wywołanie elementu webhook, a następnie będzie musiała 
       }
     }
 W poniższych tabelach opisano właściwości zasobów akcji elementu Webhook.
+
 | Nazwa elementu | Wymagane | Opis |
 |:--|:--|:--|
 | type | Yes | Typ akcji. Jest to **elementu Webhook** przypadku akcji elementów webhook. |

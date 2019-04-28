@@ -1,18 +1,17 @@
 ---
 title: Rozwiązywanie problemów z usługi YARN w usłudze Azure HDInsight
 description: Uzyskaj odpowiedzi na często zadawane pytania na temat pracy z usługą Apache Hadoop YARN i Azure HDInsight.
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: d5582038c35ba3b599be89b7b7939e644d55ea78
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
-ms.translationtype: MT
+ms.openlocfilehash: 4ca3dddb2b5ea4897ff82f1d91e88dc656305453
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408834"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63764287"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Rozwiązywanie problemów z Apache Hadoop YARN, za pomocą usługi Azure HDInsight
 
@@ -25,8 +24,9 @@ Dowiedz się więcej o najważniejszych problemach i ich rozwiązania podczas pr
 Wykonaj następujące kroki w Ambari, aby utworzyć nową kolejkę usługi YARN, a następnie równoważyć przydziału pojemności wśród wszystkich kolejek. 
 
 W tym przykładzie dwie istniejącej kolejki (**domyślne** i **thriftsvr**) są zarówno zmieniła się z 50% pojemność przepustowości 25%, co daje nową pojemność kolejki (spark) w 50%.
+
 | Kolejka | Pojemność | Maksymalna pojemność |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | default | 25% | 50% |
 | thrftsvr | 25% | 50% |
 | Platforma Spark | 50% | 50% |

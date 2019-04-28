@@ -11,18 +11,18 @@ ms.date: 01/11/2018
 ms.author: rogarana
 ms.subservice: queues
 ms.openlocfilehash: 0f9cc11e64e2517ef7aff0cd51705c39bf212b37
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58011432"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62109873"
 ---
 # <a name="how-to-use-queue-storage-from-php"></a>Jak używać Magazynu kolejek w języku PHP
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
 [!INCLUDE [storage-try-azure-tools-queues](../../../includes/storage-try-azure-tools-queues.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Ten przewodnik pokazuje, jak realizować typowe scenariusze za pomocą usługi Azure Queue storage. Przykłady są napisane przy użyciu klas z [biblioteki klienta usługi Azure Storage dla języka PHP][download]. Pokryte scenariusze obejmują wstawiania, wgląd, pobierania i usuwaniem komunikatów kolejek, a także tworzenia i usuwania kolejek.
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]

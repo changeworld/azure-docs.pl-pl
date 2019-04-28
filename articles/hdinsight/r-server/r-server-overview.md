@@ -1,7 +1,6 @@
 ---
 title: Wprowadzenie do usługi ML w usłudze Azure HDInsight
 description: Dowiedz się, jak używać usługi ML na HDInsight do tworzenia aplikacji do analizy danych big data.
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: a07f052cf89da039bb9fe091f1cd997c19d2fcc7
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
-ms.translationtype: MT
+ms.openlocfilehash: 56a11a17de3c66a3d45edb71c72be20ce1a1c89e
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584534"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62124734"
 ---
 # <a name="introduction-to-ml-services-and-open-source-r-capabilities-on-hdinsight"></a>Wprowadzenie do usługi uczenie Maszynowe i możliwości języka R typu open source w HDInsight
 

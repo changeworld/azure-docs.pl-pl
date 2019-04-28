@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
 ms.openlocfilehash: 3fdb0f566789382a1606b19e4fac179f9ecf40cd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57887463"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122961"
 ---
 # <a name="viewing-and-modifying-hostnames"></a>Wyświetlanie i modyfikowanie nazw hostów
 Aby umożliwić wystąpień roli przywoływanie według nazwy hosta, należy ustawić wartość dla nazwy hosta w pliku konfiguracji usługi dla każdej roli. Można to zrobić, dodając nazwę wybranego hosta do **vmName** atrybutu **roli** elementu. Wartość **vmName** atrybut jest używany jako podstawa dla nazwy hosta dla wszystkich wystąpień roli. Na przykład jeśli **vmName** jest *webrole* istnieją trzy wystąpienia tej roli, nazwy hosta wystąpień będą *webrole0*, *webrole1*, i *webrole2*. Nie należy określić nazwę hosta dla maszyn wirtualnych w pliku konfiguracji, ponieważ nazwa hosta dla maszyny wirtualnej jest wypełniana na podstawie nazwy maszyny wirtualnej. Aby uzyskać więcej informacji na temat konfigurowania usługi Microsoft Azure, zobacz [schematu konfiguracji usługi platformy Azure (cscfg pliku)](https://msdn.microsoft.com/library/azure/ee758710.aspx)

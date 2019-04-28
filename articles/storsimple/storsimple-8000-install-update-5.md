@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/13/2017
 ms.author: alkohli
-ms.openlocfilehash: d6e17c7609fd41b8f4457edda373f6882a1a9d2b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: d86e77ef0148c0fac3dfa31153364de153b094ef
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38698714"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62126753"
 ---
 # <a name="install-update-5-on-your-storsimple-device"></a>Instalowanie aktualizacji Update 5 na urządzeniu StorSimple
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 W tym samouczku opisano sposób instalowania aktualizacji Update 5 na urządzeniu StorSimple ze starszą wersją oprogramowania za pośrednictwem witryny Azure portal i za pomocą metody poprawki. Metoda poprawka jest używana, podczas próby zainstalowania aktualizacji 5 na urządzeniu z systemem przed aktualizacją 3 wersji. Metoda poprawkę również jest używana, gdy brama jest skonfigurowana w interfejsie sieciowym innym niż dane 0 urządzenia StorSimple i próbujesz zaktualizować wersję oprogramowania z 1 przed aktualizacją.
 
@@ -76,28 +76,28 @@ Metoda poprawkę obejmuje następujące trzy kroki:
 
 Należy pobrać i zainstalować następujące poprawki w zalecanej kolejności i sugerowane folderów:
 
-| Kolejność | KB | Opis | Typ aktualizacji | Godzina instalacji |Zainstaluj w folderze|
+| Zamówienie | KB | Opis | Typ aktualizacji | Godzina instalacji |Zainstaluj w folderze|
 | --- | --- | --- | --- | --- | --- |
-| 1. |KB4037264 |Aktualizacja oprogramowania<br> Pobierz zarówno _HcsSoftwareUpdate.exe_ i _CisMSDAgent.exe_ |Regularne <br></br>Bezproblemowa |~ 25 minut |FirstOrderUpdate|
+| 1. |KB4037264 |Aktualizacja oprogramowania<br> Pobierz zarówno _HcsSoftwareUpdate.exe_ i _CisMSDAgent.exe_ |Normalna <br></br>Bezproblemowa |~ 25 minut |FirstOrderUpdate|
 
 Aktualizowania z urządzenia z uruchomioną aktualizacją Update 4, wystarczy zainstalować aktualizacje zbiorcze systemu operacyjnego jako drugi aktualizacje zamówienia.
 
-| Kolejność | KB | Opis | Typ aktualizacji | Godzina instalacji |Zainstaluj w folderze|
+| Zamówienie | KB | Opis | Typ aktualizacji | Godzina instalacji |Zainstaluj w folderze|
 | --- | --- | --- | --- | --- | --- |
-| 2A. |KB4025336 |Pakiet aktualizacji zbiorczej systemu operacyjnego <br> Pobierz wersję systemu Windows Server 2012 R2 |Regularne <br></br>Bezproblemowa |- |SecondOrderUpdate|
+| 2A. |KB4025336 |Pakiet aktualizacji zbiorczej systemu operacyjnego <br> Pobierz wersję systemu Windows Server 2012 R2 |Normalna <br></br>Bezproblemowa |- |SecondOrderUpdate|
 
 Jeśli instalowanie z urządzenia z uruchomioną aktualizacją Update 3 lub starszym, należy zainstalować następujące oprócz aktualizacje zbiorcze.
 
-| Kolejność | KB | Opis | Typ aktualizacji | Godzina instalacji |Zainstaluj w folderze|
+| Zamówienie | KB | Opis | Typ aktualizacji | Godzina instalacji |Zainstaluj w folderze|
 | --- | --- | --- | --- | --- | --- |
-| 2B. |KB4011841 <br> KB4011842 |Sterownik LSI i aktualizacje oprogramowania układowego <br> Aktualizacja oprogramowania układowego USM (wersja 3.38) |Regularne <br></br>Bezproblemowa |~ 3 godzin <br> (w tym 2A. + 2B. + 2C.)|SecondOrderUpdate|
-| 2C. |KB3139398 <br> KB3142030 <br> KB3108381 <br> KB3153704 <br> KB3174644 <br> KB3139914   |Pakiet aktualizacji zabezpieczeń systemu operacyjnego <br> Pobierz wersję systemu Windows Server 2012 R2 |Regularne <br></br>Bezproblemowa |- |SecondOrderUpdate|
-| 2D. |KB3146621 <br> KB3103616 <br> KB3121261 <br> KB3123538 |Pakiet aktualizacji systemu operacyjnego <br> Pobierz wersję systemu Windows Server 2012 R2 |Regularne <br></br>Bezproblemowa |- |SecondOrderUpdate|
+| 2B. |KB4011841 <br> KB4011842 |Sterownik LSI i aktualizacje oprogramowania układowego <br> Aktualizacja oprogramowania układowego USM (wersja 3.38) |Normalna <br></br>Bezproblemowa |~ 3 godzin <br> (w tym 2A. + 2B. + 2C.)|SecondOrderUpdate|
+| 2C. |KB3139398 <br> KB3142030 <br> KB3108381 <br> KB3153704 <br> KB3174644 <br> KB3139914   |Pakiet aktualizacji zabezpieczeń systemu operacyjnego <br> Pobierz wersję systemu Windows Server 2012 R2 |Normalna <br></br>Bezproblemowa |- |SecondOrderUpdate|
+| 2D. |KB3146621 <br> KB3103616 <br> KB3121261 <br> KB3123538 |Pakiet aktualizacji systemu operacyjnego <br> Pobierz wersję systemu Windows Server 2012 R2 |Normalna <br></br>Bezproblemowa |- |SecondOrderUpdate|
 
 
 Również może być konieczne zainstalowanie aktualizacji oprogramowania układowego dysku, na podstawie wszystkich aktualizacji, które są wyświetlane w poprzednich tabelach. Możesz sprawdzić, czy potrzebujesz aktualizacje oprogramowania układowego dysku, uruchamiając `Get-HcsFirmwareVersion` polecenia cmdlet. Jeśli używasz tych wersji oprogramowania układowego: `XMGJ`, `XGEG`, `KZ50`, `F6C2`, `VR08`, `N003`, `0107`, nie musisz zainstalować te aktualizacje.
 
-| Kolejność | KB | Opis | Typ aktualizacji | Godzina instalacji | Zainstaluj w folderze|
+| Zamówienie | KB | Opis | Typ aktualizacji | Godzina instalacji | Zainstaluj w folderze|
 | --- | --- | --- | --- | --- | --- |
 | 3. |KB4037263 |Oprogramowanie układowe dysku |Konserwacja <br></br>Szkodliwe |~ 30 mins | ThirdOrderUpdate |
 

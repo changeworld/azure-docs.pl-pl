@@ -10,12 +10,12 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 1f645a9c9161fb2fd71b2fd9af9ade65bff0be94
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: d642addac36c6f3dbf361ec71102eabc00efd191
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59361131"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63764251"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Uaktualnienie magazynu danych do Gen2
 
@@ -33,7 +33,7 @@ Poniższa tabela zawiera podsumowanie według regionu, gdy warstwa wystąpień o
 | **Region** | **Niższe Gen2 dostępne** | **Rozpocznij automatycznych uaktualnień** |
 |:--- |:--- |:--- |
 | Australia Wschodnia |Dostępne |1 czerwca 2019 r. |
-| Australia Południowo-Wschodnia |15 kwietnia 2019 r. |1 maja 2019 r. |
+| Australia Południowo-Wschodnia |26 kwietnia 2019 r. |1 maja 2019 r. |
 | Brazylia Południowa |15 maja 2019 r. |1 czerwca 2019 r. |
 | Kanada Środkowa |Dostępne |1 czerwca 2019 r. |
 | Kanada Wschodnia |\* |\* |
@@ -49,16 +49,16 @@ Poniższa tabela zawiera podsumowanie według regionu, gdy warstwa wystąpień o
 | Niemcy Środkowe |\* |\* |
 | Niemcy Środkowo-Zachodnie |1 września 2019 r.|2 stycznia 2020 roku. |
 | Indie Środkowe |Dostępne |1 czerwca 2019 r. |
-| Indie Południowe |15 kwietnia 2019 r. |1 czerwca 2019 r. |
+| Indie Południowe |26 kwietnia 2019 r. |1 czerwca 2019 r. |
 | Japonia Wschodnia |Dostępne |1 czerwca 2019 r. |
 | Japonia Zachodnia |Dostępne |1 maja 2019 r. |
-| Korea Środkowa |15 kwietnia 2019 r. |1 czerwca 2019 r. |
-| Korea Południowa |15 kwietnia 2019 r. |1 maja 2019 r. |
-| Środkowo-północne stany USA |15 kwietnia 2019 r. |1 maja 2019 r. |
+| Korea Środkowa |26 kwietnia 2019 r. |1 czerwca 2019 r. |
+| Korea Południowa |26 kwietnia 2019 r. |1 maja 2019 r. |
+| Środkowo-północne stany USA |26 kwietnia 2019 r. |1 maja 2019 r. |
 | Europa Północna |Dostępne |1 czerwca 2019 r. |
 | Środkowo-południowe stany USA |Dostępne |1 czerwca 2019 r. |
 | Azja Południowo-Wschodnia |Dostępne |1 czerwca 2019 r. |
-| Południowe Zjednoczone Królestwo |15 kwietnia 2019 r. |1 czerwca 2019 r. |
+| Południowe Zjednoczone Królestwo |26 kwietnia 2019 r. |1 czerwca 2019 r. |
 | Zachodnie Zjednoczone Królestwo |\*|\* |
 | Środkowo-zachodnie stany USA |2 września 2019 r. |2 stycznia 2020 roku.|
 | Europa Zachodnia |Dostępne |1 czerwca 2019 r. |

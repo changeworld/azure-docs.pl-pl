@@ -1,7 +1,6 @@
 ---
 title: Przykład topologii Apache Storm w usłudze Azure HDInsight
 description: Listę przykładowych topologii Storm utworzone i przetestowane za pomocą Storm Apache na HDInsight, takich jak podstawowe topologie C# i Java oraz pracy z usługą Event Hubs.
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2018
-ms.openlocfilehash: 42780eae0a85ec8a2ca7e9d6ca1149f6530c25e1
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
-ms.translationtype: MT
+ms.openlocfilehash: b2407200b995ad956f233248f6cdd58488b583d6
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58448977"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62112548"
 ---
 # <a name="example-apache-storm-topologies-and-components-for-apache-storm-on-hdinsight"></a>Przykład topologii Apache Storm i składniki dla Storm Apache na HDInsight
 

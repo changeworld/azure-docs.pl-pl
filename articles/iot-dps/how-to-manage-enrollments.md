@@ -9,11 +9,11 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.openlocfilehash: 51b072bfd0827528a5504133dff8c1cdd7a7ca86
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58089390"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122779"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-portal"></a>Jak zarządzać rejestracjami urządzeń przy użyciu witryny Azure Portal
 
@@ -29,8 +29,8 @@ Istnieją dwa sposoby, które mogą rejestrować urządzenia z usługą aprowiza
     Można utworzyć grupę rejestracji w portalu dla grupy urządzeń wykonując następujące czynności:
 
   1. Zaloguj się do witryny Azure portal, a następnie kliknij przycisk **wszystkie zasoby** z menu po lewej stronie.  
-  1. Kliknij opcję usługi Device Provisioning, aby zarejestrować urządzenia w celu z listy zasobów.  
-  1. W usłudze aprowizacji:  
+  2. Kliknij opcję usługi Device Provisioning, aby zarejestrować urządzenia w celu z listy zasobów.  
+  3. W usłudze aprowizacji:  
      a. Kliknij przycisk **Zarządzanie rejestracjami**, a następnie wybierz **grup rejestracji** kartę.  
      b. Kliknij przycisk **Dodaj** na górze.  
      c. Gdy zostanie wyświetlony panel "Dodaj grupę rejestracji", wprowadź informacje dla wpisu listy rejestracji.  **Nazwa grupy** jest wymagana. Również wybrać opcję "Urzędu certyfikacji lub pośredniego" dla **typ certyfikatu**i przekaż głównego **podstawowy certyfikat** dla grupy urządzeń.  

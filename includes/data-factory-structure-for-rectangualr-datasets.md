@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 1ab404b838af65dcb75395dfeee1ca0553e497a1
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572510"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60309170"
 ---
 ## <a name="specifying-structure-definition-for-rectangular-datasets"></a>Określanie definicji struktury dla prostokątnych zestawów danych
 Sekcja struktury w zestawach danych JSON jest **opcjonalne** sekcji prostokątny tabel (wiersze i kolumny) i zawiera kolekcję kolumn dla tabeli. W sekcji struktury użyje albo udostępnianie informacji o typie dla konwersji typu lub sposób mapowania kolumn. W poniższych sekcjach opisano te funkcje szczegółowo. 
@@ -21,7 +21,7 @@ Każda kolumna zawiera następujące właściwości:
 | name |Nazwa kolumny. |Yes |
 | type |Typ danych kolumny. Zobacz więcej szczegółów typu konwersje sekcji poniżej dotyczącą tego, możesz określić informacje o typie |Nie |
 | Kultury |Kultura ma być używany, gdy typ jest określony, a typ architektury .NET, Datetime i Datetimeoffset oparte na platformie .NET. Wartość domyślna to "en-us". |Nie |
-| Format |Ciąg formatu, które ma być używany, gdy typ jest określony, a .NET typu Datetime i Datetimeoffset. |Nie |
+| format |Ciąg formatu, które ma być używany, gdy typ jest określony, a .NET typu Datetime i Datetimeoffset. |Nie |
 
 Poniższy przykład pokazuje sekcji strukturze JSON dla tabeli, która ma trzy kolumny userid, nazwę oraz lastlogindate.
 
@@ -49,14 +49,14 @@ Usługi Data factory obsługuje następujące zgodny ze specyfikacją zgodne .NE
 * Int16
 * Int32 
 * Int64
-* Pojedyncze
-* Podwójne
-* Dziesiętna
+* Single
+* Double
+* Decimal
 * Byte[]
-* wartość logiczna
-* Ciąg 
-* Identyfikator GUID
-* Data/godzina
+* Bool
+* String 
+* Guid
+* DateTime
 * Datetimeoffset
 * Zakres czasu 
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/24/2018
 ms.author: anshan
 ms.custom: seodec18
-ms.openlocfilehash: c076d425a7740bd0eb6398e6b8720fa873f2fc30
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
-ms.translationtype: MT
+ms.openlocfilehash: 2d42b7ebdee291e7c71351fa2c3a5583a121b79e
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54201265"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63760679"
 ---
 # <a name="how-to-shape-json-to-maximize-query-performance"></a>Sposób kształtowania JSON, aby zmaksymalizować wydajność zapytań 
 
@@ -97,7 +97,7 @@ Tabela danych odwołania (właściwość klucza jest deviceId):
 
 Tabela zdarzeń Series Insights czasu (po spłaszczanie):
 
-| deviceId | messageId | deviceLocation | sygnatura czasowa | Seria. Przepływ współczynnika ft3/s | Seria. Aparat wykorzystanie ropa naftowa psi |
+| deviceId | messageId | deviceLocation | timestamp | Seria. Przepływ współczynnika ft3/s | Seria. Aparat wykorzystanie ropa naftowa psi |
 | --- | --- | --- | --- | --- | --- |
 | FXXX | WIERSZ\_DANYCH | Unia Europejska | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34.7 |
 | FXXX | WIERSZ\_DANYCH | Unia Europejska | 2018-01-17T01:17:00Z | 2.445906400680542 | 49.2 |
@@ -173,7 +173,7 @@ Dane referencyjne (właściwości klucza są deviceId i series.tagId):
 
 Tabela zdarzeń Series Insights czasu (po spłaszczanie):
 
-| deviceId | series.tagId | messageId | deviceLocation | type | jednostka | sygnatura czasowa | Series.Value |
+| deviceId | series.tagId | messageId | deviceLocation | type | jednostka | timestamp | Series.Value |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | FXXX | pumpRate | WIERSZ\_DANYCH | Unia Europejska | Przepływ | ft3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 |
 | FXXX | oilPressure | WIERSZ\_DANYCH | Unia Europejska | Wykorzystanie ropa naftowa aparatu | psi | 2018-01-17T01:17:00Z | 34.7 |

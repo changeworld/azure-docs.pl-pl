@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/14/2019
 ms.author: TomSh
-ms.openlocfilehash: eb2f42b690099002f2f14aa4e782906a76c01d4c
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 6ab6ec6a88dbba066be9ecf9919be876090cfdff
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57241514"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62121505"
 ---
 # <a name="azure-logging-and-auditing"></a>Rejestrowanie i przeprowadzanie inspekcji na platformie Azure
 
@@ -101,7 +101,7 @@ Dzienniki diagnostyczne platformy Azure oferuje wiele opcji konfiguracji, takich
 **Obsługiwane usługi, schematu dla dzienników diagnostyki i Rejestruj obsługiwane kategorie według typu zasobów**
 
 
-| Usługa | Schemat i dokumentacji | Typ zasobu | Kategoria |
+| Usługa | Schemat i dokumentacji | Typ zasobu | Category |
 | ------- | ------------- | ------------- | -------- |
 |Azure Load Balancer| [Dzienniki platformy Azure Monitor dla modułu równoważenia obciążenia (wersja zapoznawcza)](https://docs.microsoft.com/azure/load-balancer/load-balancer-monitor-log)|Microsoft.Network/loadBalancers<br>Microsoft.Network/loadBalancers|    LoadBalancerAlertEvent<br>LoadBalancerProbeHealthStatus|
 |Grupy zabezpieczeń sieci|[Dzienniki monitora platformy Azure dla sieciowych grup zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)|Microsoft.Network/networksecuritygroups<br>Microsoft.Network/networksecuritygroups|NetworkSecurityGroupEvent<br>NetworkSecurityGroupRuleCounter|
@@ -135,7 +135,7 @@ Raporty uwzględnione są wymienione w poniższej tabeli:
 |Logowania z urządzeń, które mogą być zainfekowane|   Działania użytkownika||
 |Nietypowe działania użytkowników związane z logowaniem| Raport dotyczący działań grup||
 ||Raport aktywności rejestracji resetowania hasła||
-||Działania związane z resetowaniem haseł|||
+||Działania związane z resetowaniem haseł||
 
 Dane w tych raportach mogą być przydatne w aplikacjach, takich jak systemów Security Information and Event Management (SIEM), inspekcji i narzędzia do analizy biznesowej. Interfejsy API raportów usługi Azure AD umożliwiają dostęp programowy do danych za pomocą zestawu interfejsów API opartych na architekturze REST. Można je wywoływać [interfejsów API](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started) z różnych języków programowania i narzędzi.
 
@@ -230,15 +230,15 @@ Oprócz możliwości rejestrowania wymienionych wcześniej usługi Network Watch
 
 - [Przechwytywanie pakietów zmiennych](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview): Umożliwia przechwytywanie danych pakietów do i z maszyny wirtualnej. Zaawansowane opcje filtrowania i dostosowawczych formanty, takie jak ustawienia limitu czasu i rozmiaru zapewniają uniwersalność. Dane pakietu mogą być przechowywane w magazynie obiektów blob lub na dysku lokalnym w *.cap* format pliku.
 
-* [Weryfikacja przepływu adresów IP](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview): Sprawdza, czy pakiet jest dozwolony lub zablokowany na podstawie przepływ informacji 5-elementowe spójne kolekcje pakietów parametrów (oznacza to, że docelowy adres IP, źródłowy adres IP, port docelowy, port źródłowy i protokół). Jeśli pakiet zostanie odrzucona przez grupę zabezpieczeń, zwracany jest reguła i grupy, która odrzuciła pakiet.
+- [Weryfikacja przepływu adresów IP](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview): Sprawdza, czy pakiet jest dozwolony lub zablokowany na podstawie przepływ informacji 5-elementowe spójne kolekcje pakietów parametrów (oznacza to, że docelowy adres IP, źródłowy adres IP, port docelowy, port źródłowy i protokół). Jeśli pakiet zostanie odrzucona przez grupę zabezpieczeń, zwracany jest reguła i grupy, która odrzuciła pakiet.
 
-* [Dla następnego przeskoku](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview): Określa następny przeskok dla pakiety przesyłane w sieci szkieletowej sieci platformy Azure, dzięki czemu możesz zdiagnozować wszelkie nieprawidłowo trasy zdefiniowane przez użytkownika.
+- [Dla następnego przeskoku](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview): Określa następny przeskok dla pakiety przesyłane w sieci szkieletowej sieci platformy Azure, dzięki czemu możesz zdiagnozować wszelkie nieprawidłowo trasy zdefiniowane przez użytkownika.
 
-* [Widok grup zabezpieczeń](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview): Pobiera reguły zabezpieczeń efektywny i zastosowane, które są stosowane na maszynie Wirtualnej.
+- [Widok grup zabezpieczeń](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview): Pobiera reguły zabezpieczeń efektywny i zastosowane, które są stosowane na maszynie Wirtualnej.
 
-* [Brama sieci wirtualnej i rozwiązywanie problemów z połączeniem](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest): Ułatwia rozwiązywanie problemów z bramy sieci wirtualnej i połączenia.
+- [Brama sieci wirtualnej i rozwiązywanie problemów z połączeniem](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest): Ułatwia rozwiązywanie problemów z bramy sieci wirtualnej i połączenia.
 
-* [Limity subskrypcji sieci](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview): Umożliwia wyświetlenie użycia zasobów sieciowych limitów.
+- [Limity subskrypcji sieci](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview): Umożliwia wyświetlenie użycia zasobów sieciowych limitów.
 
 ### <a name="application-insights"></a>Application Insights
 
@@ -276,17 +276,17 @@ Poniższej tabeli wymieniono i opisano scenariusze integracji:
 
 | Scenariusz integracji | Opis |
 | --------------------- | :---------- |
-|[Mapa aplikacji](https://docs.microsoft.com/azure/application-insights/app-insights-app-map)|Składniki Twojej aplikacji wraz z kluczowymi metrykami i alertami.||
-|[Na przykład wyszukiwanie diagnostyki danych](https://docs.microsoft.com/azure/application-insights/app-insights-diagnostic-search)| Wyszukiwanie i filtrowanie zdarzeń, takich jak żądania, wyjątki, wywołania zależności, dzienniki śledzenia i wyświetlenia stron.||
-|[Eksplorator metryk dla danych zagregowanych](https://docs.microsoft.com/azure/azure-monitor/app/metrics-explorer)|Eksploruj, filtruj i segmentuj zagregowane dane, takie jak liczby żądań, błędów i wyjątków, czasy reakcji, czasy ładowania stron.||
-|[Pulpity nawigacyjne](https://docs.microsoft.com/azure/application-insights/app-insights-dashboards#dashboards)|Połącz dane z wielu zasobów i udostępnij innym osobom. Opcja ta doskonale nadaje się dla aplikacji wieloskładnikowych i ciągłego wyświetlania w pomieszczeniu zespołu.||
-|[Stream metryki na żywo](https://docs.microsoft.com/azure/azure-monitor/app/live-stream)|Podczas wdrażania nowej kompilacji obejrzyj te wskaźniki wydajności prawie w czasie rzeczywistym, aby upewnić się, że wszystko działa zgodnie z oczekiwaniami.||
-|[Analiza](https://docs.microsoft.com/azure/application-insights/app-insights-analytics)|Odpowiedz na trudne pytania dotyczące wydajności i użycia Twojej aplikacji za pomocą tego zaawansowanego języka zapytań.||
-|[Alerty automatyczne i ręczne](https://docs.microsoft.com/azure/application-insights/app-insights-alerts)|Alerty automatyczne dostosowanie się do normalnych wzorców telemetrii Twojej aplikacji i są wyzwalane, gdy wystąpi coś poza zwykłym wzorcem. Możesz też ustawić alerty dla konkretnych poziomów metryk niestandardowych lub standardowych.||
-|[Program Visual Studio](https://docs.microsoft.com/azure/application-insights/app-insights-visual-studio)|Wyświetl dane dotyczące wydajności w kodzie. Przejdź do kodu ze śladów stosu.||
-|[Power BI](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi)|Integruje metryki użycia z innymi analizami biznesowymi.||
-|[Interfejs API REST](https://dev.applicationinsights.io/)|Napisz kod, aby uruchamiać zapytania dla swoich metryk i danych pierwotnych.||
-|[Eksport ciągły](https://docs.microsoft.com/azure/application-insights/app-insights-export-telemetry)|Zbiorczy Eksport danych pierwotnych do magazynu po odebraniu.||
+|[Mapa aplikacji](https://docs.microsoft.com/azure/application-insights/app-insights-app-map)|Składniki Twojej aplikacji wraz z kluczowymi metrykami i alertami.|
+|[Na przykład wyszukiwanie diagnostyki danych](https://docs.microsoft.com/azure/application-insights/app-insights-diagnostic-search)| Wyszukiwanie i filtrowanie zdarzeń, takich jak żądania, wyjątki, wywołania zależności, dzienniki śledzenia i wyświetlenia stron.|
+|[Eksplorator metryk dla danych zagregowanych](https://docs.microsoft.com/azure/azure-monitor/app/metrics-explorer)|Eksploruj, filtruj i segmentuj zagregowane dane, takie jak liczby żądań, błędów i wyjątków, czasy reakcji, czasy ładowania stron.|
+|[Pulpity nawigacyjne](https://docs.microsoft.com/azure/application-insights/app-insights-dashboards#dashboards)|Połącz dane z wielu zasobów i udostępnij innym osobom. Opcja ta doskonale nadaje się dla aplikacji wieloskładnikowych i ciągłego wyświetlania w pomieszczeniu zespołu.|
+|[Stream metryki na żywo](https://docs.microsoft.com/azure/azure-monitor/app/live-stream)|Podczas wdrażania nowej kompilacji obejrzyj te wskaźniki wydajności prawie w czasie rzeczywistym, aby upewnić się, że wszystko działa zgodnie z oczekiwaniami.|
+|[Analiza](https://docs.microsoft.com/azure/application-insights/app-insights-analytics)|Odpowiedz na trudne pytania dotyczące wydajności i użycia Twojej aplikacji za pomocą tego zaawansowanego języka zapytań.|
+|[Alerty automatyczne i ręczne](https://docs.microsoft.com/azure/application-insights/app-insights-alerts)|Alerty automatyczne dostosowanie się do normalnych wzorców telemetrii Twojej aplikacji i są wyzwalane, gdy wystąpi coś poza zwykłym wzorcem. Możesz też ustawić alerty dla konkretnych poziomów metryk niestandardowych lub standardowych.|
+|[Program Visual Studio](https://docs.microsoft.com/azure/application-insights/app-insights-visual-studio)|Wyświetl dane dotyczące wydajności w kodzie. Przejdź do kodu ze śladów stosu.|
+|[Power BI](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi)|Integruje metryki użycia z innymi analizami biznesowymi.|
+|[Interfejs API REST](https://dev.applicationinsights.io/)|Napisz kod, aby uruchamiać zapytania dla swoich metryk i danych pierwotnych.|
+|[Eksport ciągły](https://docs.microsoft.com/azure/application-insights/app-insights-export-telemetry)|Zbiorczy Eksport danych pierwotnych do magazynu po odebraniu.|
 
 ### <a name="azure-security-center-alerts"></a>Alerty usługi Azure Security Center
 
@@ -358,7 +358,7 @@ Istnieją cztery sposoby [gromadzenia dzienników i metryk dla usług platformy 
 ||Microsoft.Compute/<br>virtualMachineScaleSets/<br>maszyn wirtualnych||||
 |Farmach serwerów sieci Web|Microsoft.Web/<br>farm serwerów||   Diagnostyka
 |Witryny internetowe|  Microsoft.Web/<br>lokacje ||      Diagnostyka|    [Więcej informacji](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webappazure-oms-monitoring)|
-||Microsoft.Web/<br>Lokacje /<br>gniazda|||||
+||Microsoft.Web/<br>Lokacje /<br>gniazda||||
 
 
 ## <a name="log-integration-with-on-premises-siem-systems"></a>Integracja dzienników przy użyciu lokalnych systemów SIEM

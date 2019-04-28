@@ -11,11 +11,11 @@ ms.date: 07/30/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.openlocfilehash: 93c24f88fcd6a002493933ef71c5c80bd2ff8c10
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231648"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62120183"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Wykonaj operacje na danych w usłudze Azure Logic Apps
 
@@ -38,8 +38,8 @@ Te akcje ułatwiają pracę z danymi w tablicach.
 | [**Utwórz tabelę CSV**](#create-csv-table-action) | Utwórz tabelę wartości rozdzielanych przecinkami (CSV) z tablicy. | 
 | [**Utwórz tabelę HTML**](#create-html-table-action) | Utwórz tabelę HTML z tablicy. | 
 | [**Filtruj tablicę**](#filter-array-action) | Utwórz podzbiór tablicy z tablicy, na podstawie określonego filtra lub warunku. | 
-| [**sprzężenia**](#join-action) | Tworzenie ciągu z wszystkich elementów w tablicy i Oddziel poszczególne elementy określonego znaku. | 
-| [**Wybierz pozycję**](#select-action) | Utwórz tablicę ze określonych właściwości dla wszystkich elementów w innej tablicy. | 
+| [**Join**](#join-action) | Tworzenie ciągu z wszystkich elementów w tablicy i Oddziel poszczególne elementy określonego znaku. | 
+| [**Select**](#select-action) | Utwórz tablicę ze określonych właściwości dla wszystkich elementów w innej tablicy. | 
 ||| 
 
 **Akcje JSON**
@@ -48,8 +48,8 @@ Działania te ułatwiają pracę z danymi w formacie JavaScript Object Notation 
 
 | Akcja | Opis | 
 |--------|-------------| 
-| [**Narzędzia Compose**](#compose-action) | Tworzenie wiadomości lub ciąg, z wielu danych wejściowych, które mogą mieć różnych typów danych. Następnie można użyć tego ciągu jako pojedynczy dane wejściowe, a nie wielokrotnego wprowadzania tych samych danych wejściowych. Na przykład można utworzyć pojedynczy komunikat JSON z różnych danych wejściowych. | 
-| [**Przeanalizuj dane JSON**](#parse-json-action) | Utwórz tokeny przyjazny dla użytkownika danych dla właściwości w formacie JSON zawartości, dzięki czemu łatwiej można użyć właściwości w aplikacjach logiki. | 
+| [**Compose**](#compose-action) | Tworzenie wiadomości lub ciąg, z wielu danych wejściowych, które mogą mieć różnych typów danych. Następnie można użyć tego ciągu jako pojedynczy dane wejściowe, a nie wielokrotnego wprowadzania tych samych danych wejściowych. Na przykład można utworzyć pojedynczy komunikat JSON z różnych danych wejściowych. | 
+| [**Parse JSON**](#parse-json-action) | Utwórz tokeny przyjazny dla użytkownika danych dla właściwości w formacie JSON zawartości, dzięki czemu łatwiej można użyć właściwości w aplikacjach logiki. | 
 ||| 
 
 Aby utworzyć bardziej złożonych przekształceń JSON, zobacz [wykonaj zaawansowane przekształceń JSON i łącznika Liquid szablony](../logic-apps/logic-apps-enterprise-integration-liquid-transform.md).
@@ -62,7 +62,7 @@ Aby skorzystać z przykładów w tym artykule, będą potrzebne następujące el
 
 * Aplikacja logiki gdzie potrzebujesz operacji do pracy z danymi 
 
-  Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps](../logic-apps/logic-apps-overview.md) i [Szybki Start: tworzenie pierwszej aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+  Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps](../logic-apps/logic-apps-overview.md) i [Szybki Start: Utwórz swoją pierwszą aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 * A [wyzwalacza](../logic-apps/logic-apps-overview.md#logic-app-concepts) jako pierwszy krok w aplikacji logiki 
 
@@ -82,7 +82,7 @@ i tworzy następujące dane wyjściowe:
 
 `{"age":35,"fullName":"Owens,Sophie"}`
 
-Aby wypróbować przykładową, wykonaj następujące czynności za pomocą projektanta aplikacji logiki. Lub, jeśli wolisz, Praca w edytorze widoku kodu, możesz skopiować przykładu **Compose** i **inicjowane zmiennej** przepływu pracy podstawowej definicji działania z tego artykułu w aplikacji logiki Definicja: [przykładów kod operacji na danych — tworzenie](../logic-apps/logic-apps-data-operations-code-samples.md#compose-action-example) 
+Aby wypróbować przykładową, wykonaj następujące czynności za pomocą projektanta aplikacji logiki. Lub, jeśli wolisz, Praca w edytorze widoku kodu, możesz skopiować przykładu **Compose** i **inicjowane zmiennej** przepływu pracy podstawowej definicji działania z tego artykułu w aplikacji logiki Definicja: [Przykłady kodu operacji danych - Compose](../logic-apps/logic-apps-data-operations-code-samples.md#compose-action-example) 
 
 1. W <a href="https://portal.azure.com" target="_blank">witryny Azure portal</a> lub Visual Studio, Otwórz aplikację logiki w Projektancie aplikacji logiki. 
 
@@ -95,12 +95,12 @@ Aby wypróbować przykładową, wykonaj następujące czynności za pomocą proj
 
    * Aby dodać akcję w ostatnim kroku, wybierz **nowy krok** > **Dodaj akcję**.
 
-     ![Dodawanie akcji](./media/logic-apps-perform-data-operations/add-compose-action.png)
+     ![Dodaj akcję](./media/logic-apps-perform-data-operations/add-compose-action.png)
 
    * Aby dodać akcję między krokami, przesuń wskaźnik myszy strzałkę łączącego się więc pojawia się znak plusa (+). 
    Wybierz znak plusa, a następnie wybierz **Dodaj akcję**.
 
-3. W polu wyszukiwania wprowadź "compose" jako filtr. Z listy akcji wybierz następującą akcję: **Compose**
+3. W polu wyszukiwania wprowadź "compose" jako filtr. Z listy akcji wybierz następującą akcję: **Redaguj**
 
    ![Wybierz akcję "Utwórz"](./media/logic-apps-perform-data-operations/select-compose-action.png)
 
@@ -142,7 +142,7 @@ Aby upewnić się, czy **Compose** akcja powoduje utworzenie oczekiwanych rezult
 
 Aby utworzyć tabelę wartości rozdzielanych przecinkami (CSV) zawierający właściwości i wartości z JavaScript Object Notation (JSON) obiektów w tablicy, należy użyć **operacje na danych — Utwórz tabelę CSV** akcji. Można następnie użyć tabeli wynikowej w akcjach, które należy wykonać **Utwórz tabelę CSV** akcji. 
 
-Jeśli wolisz, Praca w edytorze widoku kodu, możesz skopiować przykładu **Utwórz tabelę CSV** i **inicjowane zmiennej** przepływu pracy podstawowej definicji działania z tego artykułu w aplikacji logiki Definicja: [przykładów kod operacji na danych — Utwórz tabelę CSV](../logic-apps/logic-apps-data-operations-code-samples.md#create-csv-table-action-example) 
+Jeśli wolisz, Praca w edytorze widoku kodu, możesz skopiować przykładu **Utwórz tabelę CSV** i **inicjowane zmiennej** przepływu pracy podstawowej definicji działania z tego artykułu w aplikacji logiki Definicja: [Przykłady kodu operacji danych — Utwórz tabelę CSV](../logic-apps/logic-apps-data-operations-code-samples.md#create-csv-table-action-example) 
 
 1. W <a href="https://portal.azure.com" target="_blank">witryny Azure portal</a> lub Visual Studio, Otwórz aplikację logiki w Projektancie aplikacji logiki. 
 
@@ -156,7 +156,7 @@ Jeśli wolisz, Praca w edytorze widoku kodu, możesz skopiować przykładu **Utw
 
    * Aby dodać akcję w ostatnim kroku, wybierz **nowy krok** > **Dodaj akcję**.
 
-     ![Dodawanie akcji](./media/logic-apps-perform-data-operations/add-create-table-action.png)
+     ![Dodaj akcję](./media/logic-apps-perform-data-operations/add-create-table-action.png)
 
    * Aby dodać akcję między krokami, przesuń wskaźnik myszy strzałkę łączącego się więc pojawia się znak plusa (+). 
    Wybierz znak plusa, a następnie wybierz **Dodaj akcję**.
@@ -211,7 +211,7 @@ Aby upewnić się, czy **Utwórz tabelę CSV** akcja powoduje utworzenie oczekiw
 
 Aby utworzyć tabelę HTML, który ma właściwości i wartości z JavaScript Object Notation (JSON) obiektów w tablicy, należy użyć **operacje na danych — Utwórz tabelę HTML** akcji. Można następnie użyć tabeli wynikowej w akcjach, które należy wykonać **Utwórz tabelę HTML** akcji.
 
-Jeśli wolisz, Praca w edytorze widoku kodu, możesz skopiować przykładu **Utwórz tabelę HTML** i **inicjowane zmiennej** przepływu pracy podstawowej definicji działania z tego artykułu w aplikacji logiki Definicja: [przykładów kod operacji na danych — Utwórz tabelę HTML](../logic-apps/logic-apps-data-operations-code-samples.md#create-html-table-action-example) 
+Jeśli wolisz, Praca w edytorze widoku kodu, możesz skopiować przykładu **Utwórz tabelę HTML** i **inicjowane zmiennej** przepływu pracy podstawowej definicji działania z tego artykułu w aplikacji logiki Definicja: [Przykłady kodu operacji danych — Utwórz tabelę HTML](../logic-apps/logic-apps-data-operations-code-samples.md#create-html-table-action-example) 
 
 1. W <a href="https://portal.azure.com" target="_blank">witryny Azure portal</a> lub Visual Studio, Otwórz aplikację logiki w Projektancie aplikacji logiki. 
 
@@ -225,7 +225,7 @@ Jeśli wolisz, Praca w edytorze widoku kodu, możesz skopiować przykładu **Utw
 
    * Aby dodać akcję w ostatnim kroku, wybierz **nowy krok** > **Dodaj akcję**.
 
-     ![Dodawanie akcji](./media/logic-apps-perform-data-operations/add-create-table-action.png)
+     ![Dodaj akcję](./media/logic-apps-perform-data-operations/add-create-table-action.png)
 
    * Aby dodać akcję między krokami, przesuń wskaźnik myszy strzałkę łączącego się więc pojawia się znak plusa (+). 
    Wybierz znak plusa, a następnie wybierz **Dodaj akcję**.
@@ -288,7 +288,7 @@ Aby utworzyć mniejsze tablica, która zawiera elementy, które spełniają okre
 > 
 > Dla akcji umożliwiających korzystanie z danych wyjściowych tablicy **Filtruj tablicę** akcji, te akcje muszą zaakceptować tablic jako dane wejściowe lub może być konieczne przekształcenie tablicy danych wyjściowych w innym formacie zgodne. 
 
-Jeśli wolisz, Praca w edytorze widoku kodu, możesz skopiować przykładu **Filtruj tablicę** i **inicjowane zmiennej** przepływu pracy podstawowej definicji działania z tego artykułu w aplikacji logiki Definicja: [przykładów kod operacji na danych — Filtruj tablicę](../logic-apps/logic-apps-data-operations-code-samples.md#filter-array-action-example) 
+Jeśli wolisz, Praca w edytorze widoku kodu, możesz skopiować przykładu **Filtruj tablicę** i **inicjowane zmiennej** przepływu pracy podstawowej definicji działania z tego artykułu w aplikacji logiki Definicja: [Przykłady kodu operacji danych — Filtruj tablicę](../logic-apps/logic-apps-data-operations-code-samples.md#filter-array-action-example) 
 
 1. W <a href="https://portal.azure.com" target="_blank">witryny Azure portal</a> lub Visual Studio, Otwórz aplikację logiki w Projektancie aplikacji logiki. 
 
@@ -304,7 +304,7 @@ Jeśli wolisz, Praca w edytorze widoku kodu, możesz skopiować przykładu **Fil
 
    * Aby dodać akcję w ostatnim kroku, wybierz **nowy krok** > **Dodaj akcję**.
 
-     ![Dodawanie akcji](./media/logic-apps-perform-data-operations/add-filter-array-action.png)
+     ![Dodaj akcję](./media/logic-apps-perform-data-operations/add-filter-array-action.png)
 
    * Aby dodać akcję między krokami, przesuń wskaźnik myszy strzałkę łączącego się więc pojawia się znak plusa (+). 
    Wybierz znak plusa, a następnie wybierz **Dodaj akcję**.
@@ -357,7 +357,7 @@ Aby upewnić się, czy **Filtruj tablicę** akcja powoduje utworzenie oczekiwany
 
 Aby utworzyć ciąg, który zawiera wszystkie elementy z tablicy i tych elementów należy oddzielić znak ogranicznika określonego, użyj **operacje na danych — Połącz** akcji. Można następnie używać ciągu w akcjach, które należy wykonać po **Dołącz** akcji.
 
-Jeśli wolisz, Praca w edytorze widoku kodu, możesz skopiować przykładu **Dołącz** i **inicjowane zmiennej** definicji działania z tego artykułu w aplikacji logiki podstawowej definicji przepływu pracy: [ Przykłady kodu operacji danych — sprzężenia](../logic-apps/logic-apps-data-operations-code-samples.md#join-action-example) 
+Jeśli wolisz, Praca w edytorze widoku kodu, możesz skopiować przykładu **Dołącz** i **inicjowane zmiennej** definicji działania z tego artykułu w aplikacji logiki podstawowej definicji przepływu pracy: [Przykłady kodu operacji danych — sprzężenia](../logic-apps/logic-apps-data-operations-code-samples.md#join-action-example) 
 
 1. W <a href="https://portal.azure.com" target="_blank">witryny Azure portal</a> lub Visual Studio, Otwórz aplikację logiki w Projektancie aplikacji logiki. 
 
@@ -371,12 +371,12 @@ Jeśli wolisz, Praca w edytorze widoku kodu, możesz skopiować przykładu **Do�
 
    * Aby dodać akcję w ostatnim kroku, wybierz **nowy krok** > **Dodaj akcję**.
 
-     ![Dodawanie akcji](./media/logic-apps-perform-data-operations/add-join-action.png)
+     ![Dodaj akcję](./media/logic-apps-perform-data-operations/add-join-action.png)
 
    * Aby dodać akcję między krokami, przesuń wskaźnik myszy strzałkę łączącego się więc pojawia się znak plusa (+). 
    Wybierz znak plusa, a następnie wybierz **Dodaj akcję**.
 
-3. W polu wyszukiwania wprowadź "join" jako filtr. Z listy akcji wybierz następującą akcję: **Join**
+3. W polu wyszukiwania wprowadź "join" jako filtr. Z listy akcji wybierz następującą akcję: **Dołącz**
 
    ![Wybierz akcję "Danych operacji Join —"](./media/logic-apps-perform-data-operations/select-join-action.png)
 
@@ -421,7 +421,7 @@ Aby upewnić się, czy **Dołącz** akcja powoduje utworzenie oczekiwanych rezul
 Odwołanie i dostęp do właściwości w JavaScript Object Notation (JSON) zawartości pola przyjazny dla użytkownika lub tokenów dla tych właściwości można utworzyć przy użyciu **operacje na danych — Przeanalizuj dane JSON** akcji.
 W ten sposób można wybrać te właściwości z listy zawartości dynamicznej po określeniu dane wejściowe dla twojej aplikacji logiki. Dla tej akcji możesz podać schematu JSON lub generowanie schematu JSON z przykładowej zawartości JSON lub ładunku.
 
-Jeśli wolisz, Praca w edytorze widoku kodu, możesz skopiować przykładu **Przeanalizuj dane JSON** i **inicjowane zmiennej** definicji działania z tego artykułu w aplikacji logiki podstawowej definicji przepływu pracy : [Przykładów kod operacji na danych — Przeanalizuj dane JSON](../logic-apps/logic-apps-data-operations-code-samples.md#parse-json-action-example) 
+Jeśli wolisz, Praca w edytorze widoku kodu, możesz skopiować przykładu **Przeanalizuj dane JSON** i **inicjowane zmiennej** definicji działania z tego artykułu w aplikacji logiki podstawowej definicji przepływu pracy : [Przykłady kodu operacji danych — Przeanalizuj dane JSON](../logic-apps/logic-apps-data-operations-code-samples.md#parse-json-action-example) 
 
 1. W <a href="https://portal.azure.com" target="_blank">witryny Azure portal</a> lub Visual Studio, Otwórz aplikację logiki w Projektancie aplikacji logiki. 
 
@@ -435,7 +435,7 @@ Jeśli wolisz, Praca w edytorze widoku kodu, możesz skopiować przykładu **Prz
 
    * Aby dodać akcję w ostatnim kroku, wybierz **nowy krok** > **Dodaj akcję**.
 
-     ![Dodawanie akcji](./media/logic-apps-perform-data-operations/add-parse-json-action.png)
+     ![Dodaj akcję](./media/logic-apps-perform-data-operations/add-parse-json-action.png)
 
    * Aby dodać akcję między krokami, przesuń wskaźnik myszy strzałkę łączącego się więc pojawia się znak plusa (+). 
    Wybierz znak plusa, a następnie wybierz **Dodaj akcję**.
@@ -499,7 +499,7 @@ Aby utworzyć tablicę z obiektami JSON utworzony na podstawie wartości w istni
 > [!NOTE]
 > Dla akcji umożliwiających korzystanie z danych wyjściowych tablicy **wybierz** akcji, te akcje muszą zaakceptować tablic jako dane wejściowe lub może być konieczne przekształcenie tablicy danych wyjściowych w innym formacie zgodne. 
 
-Jeśli wolisz, Praca w edytorze widoku kodu, możesz skopiować przykładu **wybierz** i **inicjowane zmiennej** definicji działania z tego artykułu w aplikacji logiki podstawowej definicji przepływu pracy: [Przykładów kod operacji na danych — wybierz](../logic-apps/logic-apps-data-operations-code-samples.md#select-action-example) 
+Jeśli wolisz, Praca w edytorze widoku kodu, możesz skopiować przykładu **wybierz** i **inicjowane zmiennej** definicji działania z tego artykułu w aplikacji logiki podstawowej definicji przepływu pracy: [Przykłady kodu operacji danych — wybierz](../logic-apps/logic-apps-data-operations-code-samples.md#select-action-example) 
 
 1. W <a href="https://portal.azure.com" target="_blank">witryny Azure portal</a> lub Visual Studio, Otwórz aplikację logiki w Projektancie aplikacji logiki. 
 
@@ -513,12 +513,12 @@ Jeśli wolisz, Praca w edytorze widoku kodu, możesz skopiować przykładu **wyb
 
    * Aby dodać akcję w ostatnim kroku, wybierz **nowy krok** > **Dodaj akcję**.
 
-     ![Dodawanie akcji](./media/logic-apps-perform-data-operations/add-select-action.png)
+     ![Dodaj akcję](./media/logic-apps-perform-data-operations/add-select-action.png)
 
    * Aby dodać akcję między krokami, przesuń wskaźnik myszy strzałkę łączącego się więc pojawia się znak plusa (+). 
    Wybierz znak plusa, a następnie wybierz **Dodaj akcję**.
 
-3. W polu wyszukiwania wprowadź "Wybierz" jako filtr. Z listy akcji wybierz następującą akcję: **wybierz**
+3. W polu wyszukiwania wprowadź "Wybierz" jako filtr. Z listy akcji wybierz następującą akcję: **Wybierz**
 
    ![Wybieranie akcji "Select"](./media/logic-apps-perform-data-operations/select-select-action.png)
 

@@ -16,11 +16,11 @@ ms.date: 06/20/2017
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: fdc2cd8f2218d50aa49d6b4eab2800eb6c92d9c9
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869096"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62118115"
 ---
 # <a name="create-an-automatic-scaling-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Utwórz formułę skalowania automatycznego skalowania węzłów obliczeniowych w puli usługi Batch
 
@@ -126,7 +126,7 @@ Te typy są obsługiwane w formule:
 * double
 * doubleVec
 * doubleVecList
-* ciąg
+* string
 * Sygnatura czasowa — sygnatura czasowa jest złożone struktury, która zawiera następujące elementy:
 
   * rocznie
@@ -160,8 +160,8 @@ Te operacje są dozwolone w typach, które są wymienione w poprzedniej sekcji.
 | doubleVec *operator* doubleVec |+, -, *, / |doubleVec |
 | TimeInterval *operator* double |*, / |timeinterval |
 | TimeInterval *operator* timeinterval |+, - |timeinterval |
-| TimeInterval *operator* znacznik czasu: |+ |sygnatura czasowa |
-| Sygnatura czasowa *operator* timeinterval |+ |sygnatura czasowa |
+| TimeInterval *operator* znacznik czasu: |+ |timestamp |
+| Sygnatura czasowa *operator* timeinterval |+ |timestamp |
 | Sygnatura czasowa *operator* znacznik czasu: |- |timeinterval |
 | *operator*double |-, ! |double |
 | *operator*timeinterval |- |timeinterval |
@@ -195,7 +195,7 @@ Te wstępnie zdefiniowane **funkcje** są dostępne do użycia podczas definiowa
 | STD(doubleVecList) |double |Zwraca odchylenie standardowe przykładowych wartości w doubleVecList. |
 | stop() | |Zatrzymuje obliczenia wyrażenia skalowania automatycznego. |
 | sum(doubleVecList) |double |Zwraca sumę wszystkich składników doubleVecList. |
-| czas (ciąg daty/godziny = "") |sygnatura czasowa |Zwraca sygnaturę czasową od bieżącego czasu, jeśli nie przekazano żadnych parametrów, sygnaturę czasową ciągu daty i godziny, jeśli został przekazany. Formatów obsługiwanych daty/godziny są W3C DTF i RFC 1123. |
+| czas (ciąg daty/godziny = "") |timestamp |Zwraca sygnaturę czasową od bieżącego czasu, jeśli nie przekazano żadnych parametrów, sygnaturę czasową ciągu daty i godziny, jeśli został przekazany. Formatów obsługiwanych daty/godziny są W3C DTF i RFC 1123. |
 | Val (v doubleVec podwójny i:) |double |Zwraca wartość elementu, który znajduje się w lokalizacji i w wektorze v początkowy indeks o wartości zero. |
 
 Niektóre funkcje, które są opisane w poprzedniej tabeli można zaakceptować listy jako argument. Rozdzielana przecinkami lista to dowolna kombinacja *double* i *doubleVec*. Na przykład:

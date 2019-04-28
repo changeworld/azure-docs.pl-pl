@@ -1,19 +1,18 @@
 ---
 title: Za pomocą usług Azure Data Lake Storage Gen2 klastrów Azure HDInsight
 description: Dowiedz się, jak używać usługi Azure Data Lake Storage Gen2 z klastrami usługi Azure HDInsight.
-services: hdinsight
 author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: hrasheed
-ms.openlocfilehash: 43f335bdd8b918fa717d9084d3c9c30d97920c10
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 6452e73b2429ab89a466b1c3b59cc892eca31205
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60004962"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63766929"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Za pomocą usług Azure Data Lake Storage Gen2 klastrów Azure HDInsight
 
@@ -69,7 +68,7 @@ Przypisz tożsamość zarządzaną do **właściciela danych obiektu Blob magazy
         ![Ustawienia tożsamości Data Lake Storage Gen2 przy użyciu usługi Azure HDInsight](./media/hdinsight-hadoop-data-lake-storage-gen2/managed-identity-cluster-creation.png)
         
 > [!Note]
-> Można dodać co najmniej jednego konta Data Lake Storage Gen2 jako pomocniczego magazynu na tym samym klastrze. Po prostu Powtórz powyższe kroki dla każdego konta Data Lake Storage Gen2, który chcesz dodać, używając tej samej tożsamości zarządzanej.
+> Aby dodać konta Data Lake Storage Gen2 pomocniczego, na poziomie konta magazynu, po prostu przypisać tożsamość zarządzaną utworzony wcześniej do nowego konta magazynu Data Lake Storage Gen2, który chcesz dodać. Należy pamiętać, że dodanie pomocniczego konta Data Lake Storage Gen2 za pośrednictwem bloku "dodatkowe konta magazynu" na HDInsight nie jest obsługiwany. 
 
 ## <a name="create-a-cluster-with-data-lake-storage-gen2-through-the-azure-cli"></a>Tworzenie klastra z usługą Data Lake Storage Gen2 za pośrednictwem wiersza polecenia platformy Azure
 

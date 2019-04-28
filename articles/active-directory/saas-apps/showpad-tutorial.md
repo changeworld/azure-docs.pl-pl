@@ -16,11 +16,11 @@ ms.date: 07/12/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ec16aabeb1c8b956b4e525aca4e1c2eb7b133686
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: MT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188566"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62130300"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-showpad"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Showpad
 
@@ -134,7 +134,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 1. Logowanie jednokrotne do swojej dzierżawy Showpad jako administrator.
 
-1. W menu u góry kliknij **ustawienia**.
+1. W menu u góry kliknij pozycję **Settings** (Ustawienia).
    
     ![Konfigurowanie logowania jednokrotnego po stronie aplikacji](./media/showpad-tutorial/tutorial_showpad_001.png) 
 
@@ -238,7 +238,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction t
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

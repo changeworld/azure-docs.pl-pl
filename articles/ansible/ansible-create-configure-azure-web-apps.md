@@ -1,36 +1,47 @@
 ---
-title: Tworzenie aplikacji internetowych platformy Azure za pomocą rozwiązania Ansible
-description: Dowiedz się, jak za pomocą rozwiązania Ansible utworzyć aplikację internetową w języku Java 8 korzystającą ze środowiska uruchomieniowego kontenera Tomcat w ramach usługi App Service w systemie Linux
-ms.service: azure
+title: Samouczek — Konfigurowanie aplikacji w usłudze Azure App Service za pomocą rozwiązania Ansible | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć aplikację w usłudze Azure App Service przy użyciu języka Java 8 i środowisko uruchomieniowe kontenera Tomcat
 keywords: ansible, azure, devops, bash, element playbook, Azure App Service, aplikacja internetowa, Java
+ms.topic: tutorial
+ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.topic: tutorial
-ms.date: 12/08/2018
-ms.openlocfilehash: 5f67a9f7d629eec9ab1462a25940355869c1cd28
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
-ms.translationtype: MT
+ms.date: 04/22/2019
+ms.openlocfilehash: 357dfd9c840b0235ab9576a6448e2b5a3b89abee
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791226"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63763666"
 ---
-# <a name="create-azure-app-service-web-apps-by-using-ansible"></a>Tworzenie aplikacji internetowych w ramach usługi Azure App Service za pomocą rozwiązania Ansible
-[Funkcja Azure App Service Web Apps](https://docs.microsoft.com/azure/app-service/overview) (lub po prostu Web Apps) hostuje aplikacje internetowe, interfejsy API REST i zaplecza aplikacji mobilnych. Możesz programować w ulubionym języku &mdash; .NET, .NET Core, Java, Ruby, Node.js, PHP lub Python.
+# <a name="tutorial-configure-apps-in-azure-app-service-using-ansible"></a>Samouczek: Konfigurowanie aplikacji w usłudze Azure App Service za pomocą rozwiązania Ansible
 
-Rozwiązanie Ansible umożliwia zautomatyzowanie wdrażania i konfigurowania zasobów w Twoim środowisku. Ten artykuł przedstawia, jak można utworzyć aplikację internetową za pomocą rozwiązania Ansible i środowiska uruchomieniowego języka Java. 
+[!INCLUDE [ansible-27-note.md](../../includes/ansible-27-note.md)]
+
+[!INCLUDE [open-source-devops-intro-app-service.md](../../includes/open-source-devops-intro-app-service.md)]
+
+[!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
+
+> [!div class="checklist"]
+>
+> * Tworzenie aplikacji w usłudze Azure App Service przy użyciu języka Java 8 i środowisko uruchomieniowe kontenera Tomcat
+> * Tworzenie profilu usługi Azure Traffic Manager
+> * Definiowanie punktu końcowego usługi Traffic Manager przy użyciu utworzonej aplikacji
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-- **Subskrypcja Azure** — jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
 
-> [!Note]
-> Rozwiązanie Ansible 2.7 jest wymagane do uruchamiania następujących przykładowych elementów playbook w ramach tego samouczka.
+- [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
+- [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
-## <a name="create-a-simple-app-service"></a>Tworzenie prostej usługi aplikacji
-W tej sekcji przedstawiono przykładowy podręcznik rozwiązania Ansible, który definiuje następujące zasoby:
-- Grupa zasobów, w której zostanie wdrożony plan usługi App Service i aplikacja internetowa
-- Aplikacja internetowa w języku Java 8 korzystającą ze środowiska uruchomieniowego kontenera Tomcat w ramach usługi App Service w systemie Linux
+## <a name="create-a-basic-app-service"></a>Tworzenie podstawowej aplikacji usługi
+
+Kod elementu playbook w tej sekcji definiuje następujące zasoby:
+
+* Grupa zasobów platformy Azure, w którym są wdrażane planu usługi App Service i aplikacji
+* Usługa App service w systemie Linux z rozwiązaniami Java 8 i środowisko uruchomieniowe kontenera Tomcat
+
+Zapisz następujący podręcznik jako `firstwebapp.yml`:
 
 ```yml
 - hosts: localhost
@@ -63,46 +74,49 @@ W tej sekcji przedstawiono przykładowy podręcznik rozwiązania Ansible, który
               java_container: tomcat
               java_container_version: 8.5
 ```
-Zapisz powyższy element playbook jako plik **firstwebapp.yml**.
 
-Aby uruchomić element playbook, użyj polecenia **ansible-playbook** w następujący sposób:
+Uruchamianie elementu playbook, przy użyciu `ansible-playbook` polecenia:
+
 ```bash
 ansible-playbook firstwebapp.yml
 ```
 
-Dane wyjściowe z uruchomienia elementu playbook rozwiązania Ansible pokazują, że aplikacja internetowa została utworzona pomyślnie:
+Po uruchomieniu elementu playbook, zobaczysz dane wyjściowe podobne do następujących wyników:
 
 ```Output
-PLAY [localhost] *************************************************
+PLAY [localhost] 
 
-TASK [Gathering Facts] *************************************************
+TASK [Gathering Facts] 
 ok: [localhost]
 
-TASK [Create a resource group] *************************************************
+TASK [Create a resource group] 
 changed: [localhost]
 
-TASK [Create App Service on Linux with Java Runtime] *************************************************
+TASK [Create App Service on Linux with Java Runtime] 
  [WARNING]: Azure API profile latest does not define an entry for WebSiteManagementClient
 
 changed: [localhost]
 
-PLAY RECAP *************************************************
+PLAY RECAP 
 localhost                  : ok=3    changed=2    unreachable=0    failed=0
 ```
 
-## <a name="create-an-app-service-by-using-traffic-manager"></a>Tworzenie usługi aplikacji przy użyciu usługi Traffic Manager
-Usługi [Azure Traffic Manager](https://docs.microsoft.com/azure/app-service/web-sites-traffic-manager) możesz użyć do kontrolowania dystrybucji żądań klientów internetowych kierowanych do aplikacji w usłudze Azure App Service. Gdy punkty końcowe usługi App Service zostaną dodane do profilu usługi Azure Traffic Manager, usługa Traffic Manager śledzi stan aplikacji usługi App Service. Obejmuje to następujące stany: uruchomiono, zatrzymano i usunięto. Usługa Traffic Manager może następnie zdecydować, które z tych punktów końcowych powinny odbierać ruch.
+## <a name="create-an-app-and-use-azure-traffic-manager"></a>Tworzenie aplikacji i używanie usługi Azure Traffic Manager
 
-W usłudze App Service aplikacje są uruchamiane w ramach [planu usługi App Service](https://docs.microsoft.com/azure/app-service/overview-hosting-plans
-). Plan usługi App Service definiuje zestaw zasobów obliczeniowych dla aplikacji internetowej używanych podczas jej uruchamiania. Planem usługi App Service i aplikacją internetową można zarządzać w różnych grupach.
+[Usługa Azure Traffic Manager](/azure/app-service/web-sites-traffic-manager) umożliwia kontrolowanie sposobu żądania od klientów sieci web są dystrybuowane do aplikacji w usłudze Azure App Service. Gdy punkty końcowe usługi App Service zostaną dodane do profilu usługi Azure Traffic Manager, usługa Traffic Manager śledzi stan aplikacji usługi App Service. Obejmuje to następujące stany: uruchomiono, zatrzymano i usunięto. Usługa Traffic Manager służy do określania, które punkty końcowe powinny odbierać ruch.
 
-W tej sekcji przedstawiono przykładowy podręcznik rozwiązania Ansible, który definiuje następujące zasoby:
-- Grupę zasobów, do której zostanie wdrożony plan usługi aplikacji
-- Plan usługi App Service
-- Pomocnicza grupa zasobów, w której zostanie wdrożona aplikacja internetowa
-- Aplikacja internetowa w języku Java 8 korzystającą ze środowiska uruchomieniowego kontenera Tomcat w ramach usługi App Service w systemie Linux
-- Profil usługi Traffic Manager
-- Punkt końcowy usługi Traffic Manager używający utworzonej witryny internetowej
+W usłudze App Service aplikacje są uruchamiane w ramach [planu usługi App Service](/azure/app-service/overview-hosting-plans). Plan usługi App Service definiuje zestaw zasobów obliczeniowych dla aplikacji do uruchomienia. Planem usługi App Service i aplikacją internetową można zarządzać w różnych grupach.
+
+Kod elementu playbook w tej sekcji definiuje następujące zasoby:
+
+* Grupa zasobów platformy Azure, w którym jest wdrażany planu usługi App Service
+* Plan usługi App Service
+* Grupa zasobów platformy Azure, w którym aplikacja jest wdrożona
+* Usługa App service w systemie Linux z rozwiązaniami Java 8 i środowisko uruchomieniowe kontenera Tomcat
+* Profil usługi Traffic Manager
+* Punkt końcowy usługi Traffic Manager przy użyciu utworzonej aplikacji
+
+Zapisz następujący podręcznik jako `webapp.yml`:
 
 ```yml
 - hosts: localhost
@@ -184,52 +198,54 @@ W tej sekcji przedstawiono przykładowy podręcznik rozwiązania Ansible, który
       location: "{{ location }}"
       target_resource_id: "{{ webapp.webapps[0].id }}"
 ```
-Zapisz powyższy element playbook jako plik **webapp.yml** lub [pobierz element playbook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/webapp.yml).
 
-Aby uruchomić element playbook, użyj polecenia **ansible-playbook** w następujący sposób:
+Uruchamianie elementu playbook, przy użyciu `ansible-playbook` polecenia:
+
 ```bash
 ansible-playbook webapp.yml
 ```
 
-Dane wyjściowe będące wynikiem uruchomienia elementu playbook rozwiązania Ansible wskazują, że plan usługi App Service, aplikacja internetowa, profil usługi Traffic Manager i punkt końcowy zostały utworzone pomyślnie:
-```Output
-PLAY [localhost] *************************************************
+Po uruchomieniu elementu playbook, zobaczysz dane wyjściowe podobne do następujących wyników:
 
-TASK [Gathering Facts] *************************************************
+```Output
+PLAY [localhost] 
+
+TASK [Gathering Facts] 
 ok: [localhost]
 
-TASK [Create resource group] ****************************************************************************
+TASK [Create resource group] 
 changed: [localhost]
 
-TASK [Create resource group for app service plan] ****************************************************************************
+TASK [Create resource group for app service plan] 
 changed: [localhost]
 
-TASK [Create App Service Plan] ****************************************************************************
+TASK [Create App Service Plan] 
  [WARNING]: Azure API profile latest does not define an entry for WebSiteManagementClient
 
 changed: [localhost]
 
-TASK [Create App Service on Linux with Java Runtime] ****************************************************************************
+TASK [Create App Service on Linux with Java Runtime] 
 changed: [localhost]
 
-TASK [Get web app facts] *****************************************************************************
+TASK [Get web app facts] 
 ok: [localhost]
 
-TASK [Create Traffic Manager Profile] *****************************************************************************
+TASK [Create Traffic Manager Profile] 
  [WARNING]: Azure API profile latest does not define an entry for TrafficManagerManagementClient
 
 changed: [localhost]
 
-TASK [Add endpoint to traffic manager profile, using the web site created above] *****************************************************************************
+TASK [Add endpoint to traffic manager profile, using the web site created above] 
 changed: [localhost]
 
-TASK [Get Traffic Manager Profile facts] ******************************************************************************
+TASK [Get Traffic Manager Profile facts] 
 ok: [localhost]
 
-PLAY RECAP ******************************************************************************
+PLAY RECAP 
 localhost                  : ok=9    changed=6    unreachable=0    failed=0
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 > [!div class="nextstepaction"] 
-> [Skalowanie aplikacji internetowych w ramach usługi Azure App Service za pomocą rozwiązania Ansible](https://docs.microsoft.com/azure/ansible/ansible-scale-azure-web-apps)
+> [Samouczek: Skalowanie aplikacji w usłudze Azure App Service za pomocą rozwiązania Ansible](/azure/ansible/ansible-scale-azure-web-apps)

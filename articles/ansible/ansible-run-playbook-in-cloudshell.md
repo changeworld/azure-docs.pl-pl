@@ -1,52 +1,54 @@
 ---
-title: Uruchamianie rozwiązania Ansible przy użyciu programu Bash w usłudze Azure Cloud Shell
-description: Dowiedz się, jak wykonywać różne zadania rozwiązania Ansible przy użyciu programu Bash w usłudze Azure Cloud Shell
-ms.service: azure
+title: Przewodnik Szybki Start — elementy playbook rozwiązania Ansible przebiegu, za pośrednictwem funkcji Bash w usłudze Azure Cloud Shell | Dokumentacja firmy Microsoft
+description: W tym przewodniku Szybki Start Dowiedz się, jak wykonywać różne zadania Ansible przy użyciu programu Bash w usłudze Azure Cloud Shell
 keywords: ansible, azure, devops, bash, cloudshell, playbook, bash
+ms.topic: quickstart
+ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.date: 08/07/2018
-ms.topic: quickstart
-ms.openlocfilehash: 37426f1cdc51734c28b2c9739e26ad35f08e606f
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
-ms.translationtype: MT
+ms.date: 04/22/2019
+ms.openlocfilehash: a0d0544601bfc6ce0c7ef642f576ed780c8642ba
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791396"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63763377"
 ---
-# <a name="run-ansible-with-bash-in-azure-cloud-shell"></a>Uruchamianie rozwiązania Ansible przy użyciu programu Bash w usłudze Azure Cloud Shell
+# <a name="quickstart-run-ansible-playbooks-via-bash-in-azure-cloud-shell"></a>Szybki start: Uruchom elementy playbook rozwiązania Ansible za pośrednictwem funkcji Bash w usłudze Azure Cloud Shell
 
-Z tego samouczka dowiesz się, jak skonfigurować subskrypcję platformy Azure jako obszar roboczy rozwiązania Ansible przy użyciu programu Bash w ramach usługi Cloud Shell. 
+Usługa Azure Cloud Shell jest powłoką interaktywne, dostępny w przeglądarce do zarządzania zasobami platformy Azure. Usługa cloud Shell zapewnia umożliwia przy użyciu wiersza polecenia powłoki Bash lub programu Powershell. W tym artykule umożliwia Bash w usłudze Azure Cloud Shell Uruchom element playbook rozwiązania Ansible.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- **Subskrypcja Azure** — jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-
-- **Skonfiguruj usługę Azure Cloud Shell** — jeśli jesteś nowym użytkownikiem usługi Azure Cloud Shell, zapoznaj się z artykułem [Szybki start: powłoka Bash w usłudze Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart), w którym pokazano, jak uruchomić i skonfigurować usługę Cloud Shell. 
-
+- [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
+- **Konfigurowanie usługi Azure Cloud Shell** — Jeśli jesteś nowym użytkownikiem usługi Azure Cloud Shell, zobacz [Szybki Start dla programu Bash w usłudze Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart).
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="automatic-credential-configuration"></a>Konfiguracja poświadczeń automatycznych
 
-Rozwiązanie Ansible uwierzytelnia się na platformie Azure po zalogowaniu do usługi Cloud Shell, umożliwiając zarządzanie infrastrukturą bez konieczności przeprowadzania jakiejkolwiek dodatkowej konfiguracji. Jeśli masz więcej niż jedną subskrypcję, możesz wybrać tę, z którą ma współpracować rozwiązanie Ansible, eksportując zmienną środowiskową `AZURE_SUBSCRIPTION_ID`. Aby wyświetlić listę wszystkich swoich subskrypcji platformy Azure, uruchom następujące polecenie:
+Rozwiązanie Ansible uwierzytelnia się na platformie Azure po zalogowaniu do usługi Cloud Shell, umożliwiając zarządzanie infrastrukturą bez konieczności przeprowadzania jakiejkolwiek dodatkowej konfiguracji. 
+
+Podczas pracy z wieloma subskrypcjami, określ subskrypcję korzysta z rozwiązania Ansible, eksportując `AZURE_SUBSCRIPTION_ID` zmiennej środowiskowej. 
+
+Aby wyświetlić listę wszystkich swoich subskrypcji platformy Azure, uruchom następujące polecenie:
 
 ```azurecli-interactive
 az account list
 ```
 
-Używając **identyfikatora** subskrypcji, z którą chcesz pracować, ustaw parametr **AZURE_SUBSCRIPTION_ID** w następujący sposób:
+Przy użyciu swojego Identyfikatora subskrypcji platformy Azure, ustaw `AZURE_SUBSCRIPTION_ID` w następujący sposób:
 
 ```azurecli-interactive
 export AZURE_SUBSCRIPTION_ID=<your-subscription-id>
 ```
 
 ## <a name="verify-the-configuration"></a>Sprawdzanie konfiguracji
-Aby sprawdzić, czy konfiguracja zakończyła się pomyślnie, użyj rozwiązania Ansible w celu utworzenia grupy zasobów.
+Aby sprawdzić, Konfiguracja zakończyła się pomyślnie, za pomocą rozwiązania Ansible, aby utworzyć grupę zasobów platformy Azure.
 
-[!INCLUDE [create-resource-group-with-ansible.md](../../includes/ansible-create-resource-group.md)]
+[!INCLUDE [create-resource-group-with-ansible.md](../../includes/ansible-snippet-create-resource-group.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"] 
-> [Tworzenie podstawowej maszyny wirtualnej na platformie Azure za pomocą rozwiązania Ansible](/azure/virtual-machines/linux/ansible-create-vm)
+> [Szybki start: Konfigurowanie maszyny wirtualnej na platformie Azure, za pomocą rozwiązania Ansible](/azure/virtual-machines/linux/ansible-create-vm)

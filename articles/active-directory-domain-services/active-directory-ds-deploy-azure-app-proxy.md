@@ -16,11 +16,11 @@ ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
 ms.openlocfilehash: 867d061e46494e5ef65340ce325a71638acc8dfa
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58099631"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62104137"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Wdrażanie aplikacji serwera Proxy Azure AD w domenie zarządzanej usług domenowych Azure AD
 Serwer Proxy aplikacji usługi Azure Active Directory (AD) pomaga wspierać pracowników zdalnych przez publikowanie lokalnych aplikacji można uzyskać dostęp za pośrednictwem Internetu. Korzystając z usług domenowych Azure AD możesz teraz lift-and-shift starszych aplikacji lokalnych do usług infrastruktury platformy Azure. Następnie można opublikować te aplikacje przy użyciu usługi Azure AD serwera Proxy aplikacji, co zapewnia bezpieczny dostęp zdalny do użytkowników w Twojej organizacji.
@@ -49,7 +49,7 @@ Wykonaj poniższe kroki, aby umożliwić aplikacji serwera Proxy Azure AD dla ka
     ![Wybierz katalog usługi Azure AD](./media/app-proxy/app-proxy-enable-start.png)
 3. Kliknij przycisk **serwera proxy aplikacji**. Jeśli nie masz subskrypcji usługi Azure AD w wersji podstawowa lub Azure AD Premium, zobaczysz opcję, aby włączyć korzystania z wersji próbnej. Przełącz **Włączanie serwera Proxy aplikacji?** do **Włącz** i kliknij przycisk **Zapisz**.
 
-    ![Włączanie serwera Proxy aplikacji](./media/app-proxy/app-proxy-enable-proxy-blade.png)
+    ![Włączanie serwera proxy aplikacji](./media/app-proxy/app-proxy-enable-proxy-blade.png)
 4. Aby pobrać łącznik, kliknij **łącznika** przycisku.
 
     ![Pobierz łącznik](./media/app-proxy/app-proxy-enabled-download-connector.png)

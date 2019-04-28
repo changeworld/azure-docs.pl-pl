@@ -3,16 +3,16 @@ title: Tworzenie niestandardowej definicji zasad
 description: Opracuj niestandardową definicję zasad usługi Azure Policy, aby wymusić niestandardowe reguły biznesowe.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/12/2019
+ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: bf3582036a28603c3b6ef33a2af28cb61926d91f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: e808bd18e2b23c211f1c5257881fc8a8b72271fc
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59267756"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63760856"
 ---
 # <a name="create-a-custom-policy-definition"></a>Tworzenie niestandardowej definicji zasad
 
@@ -69,9 +69,9 @@ Istnieje wiele sposobów określania właściwości zasobu platformy Azure. Omó
 #### <a name="existing-resource-in-the-portal"></a>Istniejący zasób w portalu
 
 Najprostszym sposobem na znalezienie właściwości jest przyjrzenie się istniejącemu zasobowi tego samego typu. Zasoby już skonfigurowane za pomocą ustawienia, które ma być wymuszane, służą także do porównywania wartości.
-Zapoznaj się ze stroną **Skrypt automatyzacji** (w obszarze **Ustawienia**) w witrynie Azure Portal dla tego konkretnego zasobu.
+Przyjrzyj się **Eksportuj szablon** strony (w obszarze **ustawienia**) w witrynie Azure portal dla tego określonego zasobu.
 
-![Eksport strony szablonu w istniejącym zasobie](../media/create-custom-policy-definition/automation-script.png)
+![Eksport strony szablonu w istniejącym zasobie](../media/create-custom-policy-definition/export-template.png)
 
 Wykonanie tego działania dla konta magazynu spowoduje wyświetlenie szablonu podobnego do następującego przykładu:
 
@@ -197,8 +197,9 @@ Podobnie jak w przypadku interfejsu wiersza polecenia platformy Azure, w wynikac
 
 [Azure Resource Graph](../../resource-graph/overview.md) to nowa usługa dostępna w wersji zapoznawczej. Oferuje ona kolejną metodę znajdowania właściwości zasobów platformy Azure. Tutaj przedstawiono przykładowe zapytanie umożliwiające przejrzenie pojedynczego konta magazynu przy użyciu usługi Resource Graph:
 
-```Query
-where type=~'microsoft.storage/storageaccounts' | limit 1
+```kusto
+where type=~'microsoft.storage/storageaccounts'
+| limit 1
 ```
 
 ```azurecli-interactive
@@ -209,7 +210,23 @@ az graph query -q "where type=~'microsoft.storage/storageaccounts' | limit 1"
 Search-AzGraph -Query "where type=~'microsoft.storage/storageaccounts' | limit 1"
 ```
 
-Wyniki są podobne do wyników uzyskanych za pomocą szablonów usługi Resource Manager i usługi Azure Resource Explorer. Jednak wyniki usługi Azure Resource Graph zawierają także szczegóły [aliasu](../concepts/definition-structure.md#aliases). Tutaj przedstawiono przykładowe dane wyjściowe dla konta magazynu dotyczące aliasów:
+Wyniki są podobne do wyników uzyskanych za pomocą szablonów usługi Resource Manager i usługi Azure Resource Explorer. Jednak wyniki wykres zasobów platformy Azure może również obejmować [alias](../concepts/definition-structure.md#aliases) szczegóły przez _przewidywania_ _aliasy_ tablicy:
+
+```kusto
+where type=~'microsoft.storage/storageaccounts'
+| limit 1
+| project aliases
+```
+
+```azurecli-interactive
+az graph query -q "where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
+```
+
+```azurepowershell-interactive
+Search-AzGraph -Query "where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
+```
+
+Tutaj przedstawiono przykładowe dane wyjściowe dla konta magazynu dotyczące aliasów:
 
 ```json
 "aliases": {

@@ -1,6 +1,6 @@
 ---
-title: Azure elementu interfejsu użytkownika z listy rozwijanej | Dokumentacja firmy Microsoft
-description: Opis elementu Microsoft.Common.DropDown interfejsu użytkownika do portalu Azure.
+title: Usługa Azure elementu interfejsu użytkownika z listy rozwijanej | Dokumentacja firmy Microsoft
+description: Opis elementu Microsoft.Common.DropDown interfejsu użytkownika dla witryny Azure portal.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: f953e1dc15e12c37c30a86ebd7536b1126bf18f7
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: e78fa419b067c0bad48229dcfd8d4e986fc16903
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062004"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62117305"
 ---
 # <a name="microsoftcommondropdown-ui-element"></a>Element Microsoft.Common.DropDown interfejsu użytkownika
-Formant wyboru z listy rozwijanej.
+Kontrolka, wybór z listy rozwijanej.
 
 ## <a name="ui-sample"></a>Przykład interfejsu użytkownika
 ![Microsoft.Common.DropDown](./media/managed-application-elements/microsoft.common.dropdown.png)
@@ -54,9 +54,9 @@ Formant wyboru z listy rozwijanej.
 ## <a name="remarks"></a>Uwagi
 
 - Etykieta dla `constraints.allowedValues` jest wyświetlany tekst dla elementu i jego wartość jest wartością danych wyjściowych w przypadku wybrania elementu.
-- Jeśli jest określony, wartość domyślna musi być obecne w etykiecie `constraints.allowedValues`. Jeśli nie zostanie określony, pierwszy element `constraints.allowedValues` jest zaznaczone. Wartość domyślna to **null**.
+- Jeśli zostanie określony, wartość domyślna musi być obecny w etykietę `constraints.allowedValues`. Jeśli nie zostanie określony, pierwszy element `constraints.allowedValues` jest zaznaczone. Wartość domyślna to **null**.
 - `constraints.allowedValues` musi mieć co najmniej jeden element.
-- Aby emulować wartość nie jest wymagane, należy dodać element z etykiety i wartości `""` (pusty ciąg) do `constraints.allowedValues`.
+- Aby emulować wartość nie jest wymagane, Dodaj element z etykiety i wartość `""` (pusty ciąg), aby `constraints.allowedValues`.
 
 ## <a name="sample-output"></a>Przykładowe dane wyjściowe
 ```json
@@ -64,5 +64,5 @@ Formant wyboru z listy rozwijanej.
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Aby obejrzeć wprowadzenie do tworzenia definicji interfejsu użytkownika, zobacz [wprowadzenie CreateUiDefinition](create-uidefinition-overview.md).
-* Opis właściwości wspólnych elementów interfejsu użytkownika, zobacz [elementy CreateUiDefinition](create-uidefinition-elements.md).
+* Wprowadzenie do tworzenia definicji interfejsu użytkownika, zobacz [wprowadzenie do zasobu CreateUiDefinition](create-uidefinition-overview.md).
+* Aby uzyskać opis wspólne właściwości w elementach interfejsu użytkownika, zobacz [elementy CreateUiDefinition](create-uidefinition-elements.md).

@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: article
 ms.date: 08/23/2018
-ms.openlocfilehash: 59c8effb4c5feae99755b7937f4796e8f11fde46
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 221bcbfb2517efae41005641321a651dfdf8e39f
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58895887"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63759430"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Łączniki dla usługi Azure Logic Apps
 
@@ -117,7 +117,7 @@ Poniżej przedstawiono łączniki do tworzenia rozwiązań biznesowych (B2B) za 
 
 |   |   |   |   | 
 |---|---|---|---| 
-| [![Ikona interfejsu API][as2-icon]<br/>**AS2</br> dekodowanie**][as2-decode-doc] | [![Ikona interfejsu API][as2-icon]<br/>**AS2</br> kodowania**][as2-encode-doc] | [![Ikona interfejsu API][edifact-icon]<br/>**EDIFACT</br> dekodowanie**][edifact-decode-doc] | [![Ikona interfejsu API][edifact-icon]<br/>**EDIFACT</br> kodowania**][edifact-encode-doc] | 
+| [![Ikona interfejsu API][as2-icon]<br/>**AS2</br> dekodowanie**][as2-doc] | [![Ikona interfejsu API][as2-icon]<br/>**AS2</br> kodowania**][as2-doc] | [![Ikona interfejsu API][edifact-icon]<br/>**EDIFACT</br> dekodowanie**][edifact-decode-doc] | [![Ikona interfejsu API][edifact-icon]<br/>**EDIFACT</br> kodowania**][edifact-encode-doc] | 
 | [![Ikona interfejsu API][flat-file-decode-icon]<br/>**pliku prostego</br> dekodowanie**][flat-file-decode-doc] | [![Ikona interfejsu API][flat-file-encode-icon]<br/>**pliku prostego</br> kodowania**][flat-file-encode-doc] | [![Ikona interfejsu API][integration-account-icon]<br/>**integracji<br/>konta**][integration-account-doc] | [![Ikona interfejsu API][liquid-icon]<br/>**Liquid**</br>**przekształcenia**][json-liquid-transform-doc] | 
 | [![Ikona interfejsu API][x12-icon]<br/>**X12</br> dekodowanie**][x12-decode-doc] | [![Ikona interfejsu API][x12-icon]<br/>**X12</br> kodowania**][x12-encode-doc] | [![Ikona interfejsu API][xml-transform-icon]<br/>**XML**</br>**przekształcenia**][xml-transform-doc] | [![Ikona interfejsu API][xml-validate-icon]<br/>**XML <br/>sprawdzania poprawności**][xml-validate-doc] |  
 ||||| 
@@ -257,8 +257,6 @@ Aby udostępnić funkcję niestandardowe aplikacje interfejsu API i łączniki d
 
 <!--Enterprise Intregation Pack doc links-->
 [as2-doc]: ../logic-apps/logic-apps-enterprise-integration-as2.md "Więcej informacji na temat integracji dla przedsiębiorstw — AS2."
-[as2-decode-doc]: ../logic-apps/logic-apps-enterprise-integration-as2-decode.md "Więcej informacji na temat integracji dla przedsiębiorstw — dekodowanie komunikatów AS2."
-[as2-encode-doc]:../logic-apps/logic-apps-enterprise-integration-as2-encode.md "Więcej informacji na temat integracji dla przedsiębiorstw — kodowanie komunikatów AS2."
 [edifact-decode-doc]: ../logic-apps/logic-apps-enterprise-integration-EDIFACT-decode.md "Więcej informacji na temat integracji dla przedsiębiorstw — dekodowanie komunikatów EDIFACT."
 [edifact-encode-doc]: ../logic-apps/logic-apps-enterprise-integration-EDIFACT-encode.md "Więcej informacji na temat integracji dla przedsiębiorstw — kodowanie komunikatów EDIFACT."
 [flat-file-decode-doc]:../logic-apps/logic-apps-enterprise-integration-flatfile.md "Więcej informacji na temat integracji dla przedsiębiorstw — plik prosty."

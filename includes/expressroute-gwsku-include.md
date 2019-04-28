@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 03/22/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: d949aa7e3d77f8580a5eed672afa434fc05caab3
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: bf526ebeebb18e22f133383e7956d68584db2486
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30197537"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60367973"
 ---
 Podczas tworzenia bramy sieci wirtualnej musisz wybrać jednostkę SKU bramy do użycia. W przypadku wybrania wyższej jednostki SKU bramy bramie przydzielane jest więcej procesorów CPU oraz wyższa przepustowość sieci, dlatego może obsługiwać wyższą przepływność sieci do sieci wirtualnej. 
 
-ExpressRoute bram sieci wirtualnej można użyć następujących wersji produktu: 
+Bramy sieci wirtualnej usługi ExpressRoute, można użyć następujących jednostek SKU: 
 
 * Standardowa (Standard)
 * Wysoka wydajność (HighPerformance)

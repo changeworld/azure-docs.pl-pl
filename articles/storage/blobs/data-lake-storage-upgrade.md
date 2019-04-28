@@ -8,12 +8,12 @@ ms.author: normesta
 ms.date: 02/07/2019
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 1a9d26736a444efb83f9040b51676202b1ea4450
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 84e3aff9c1c8cb3e7fe399c861c2c7d58c278fed
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60006118"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62107877"
 ---
 # <a name="upgrade-your-big-data-analytics-solutions-from-azure-data-lake-storage-gen1-to-azure-data-lake-storage-gen2"></a>Uaktualnienie rozwiązań do analizy danych big data z usługi Azure Data Lake Storage Gen1 do usługi Azure Data Lake Storage Gen2
 
@@ -249,7 +249,7 @@ Głównym zadaniem jest sformułowanie identyfikatory URI, które mają prefiks 
 
 Schemat identyfikatora URI Data Lake Storage Gen1 mowa [tutaj](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-store) w szczegóły, ale ogólnie rzecz biorąc, zaleca się *adl://mydatalakestore.azuredatalakestore.net/\<file_path\>.*
 
-Schemat identyfikatora URI do uzyskiwania dostępu do plików Data Lake Storage Gen2 zostało wyjaśnione [tutaj](https://docs.microsoft.com/azure/storage/data-lake-storage/use-hdi-cluster) w szczegóły, ale ogólnie rzecz biorąc, zaleca się `abfss://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.widows.net/<PATH>`.
+Schemat identyfikatora URI do uzyskiwania dostępu do plików Data Lake Storage Gen2 zostało wyjaśnione [tutaj](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md) w szczegóły, ale ogólnie rzecz biorąc, zaleca się `abfss://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.widows.net/<PATH>`.
 
 Musisz przejść przez istniejące aplikacje i upewnić się, że zmiany zostały wprowadzone identyfikatory URI odpowiednio wskaż Data Lake Storage Gen2 te. Ponadto należy dodać odpowiednie poświadczenia. Na koniec jak wycofywanie oryginalnej aplikacji i Zamień na nową aplikację należy ściśle wyrównywana strategii ogólną uaktualnienia.
 

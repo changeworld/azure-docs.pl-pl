@@ -10,26 +10,26 @@ ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: raynew
 ms.openlocfilehash: 35ab150670cdc27efcedca233928e0c2184aeca6
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52880101"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62116179"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-with-azure-backup-server"></a>Tworzenie kopii zapasowej stanu systemu i przywracanie na komputerach bez systemu operacyjnego za pomocą usługi Azure Backup Server
 
 Usługa Azure Backup Server tworzy kopię zapasową stanu systemu i zapewnia ochronę odzyskiwania zera (BMR).
 
-*   **Kopia zapasowa stanu systemu**: kopia zapasowa plików systemu operacyjnego, dzięki czemu będzie można odzyskać, gdy komputer jest uruchamiany, ale pliki systemowe i rejestr zostaną utracone. Kopię zapasową stanu systemu zawiera:
-    * Członek domeny: pliki rozruchowe, database rejestracji klasy COM +, rejestr
+*   **Kopia zapasowa stanu systemu**: Tworzy kopie zapasowe plików systemu operacyjnego, dzięki czemu będzie można odzyskać, gdy komputer jest uruchamiany, ale pliki systemowe i rejestr zostaną utracone. Kopię zapasową stanu systemu zawiera:
+    * Członek domeny: Pliki rozruchowe, database rejestracji klasy COM +, rejestr
     * Kontroler domeny: Windows Server Active Directory (NTDS), pliki rozruchowe, database rejestracji klasy COM +, rejestr, wolumin systemowy (SYSVOL)
-    * Komputer z systemem usług klastrowania: metadanych serwera klastra
-    * Komputer z systemem usług certyfikatów: dane dotyczące certyfikatu
-* **Kopie zapasowe kompletnego**: tworzy kopie zapasowe plików systemu operacyjnego i wszystkich danych na woluminach krytycznych (z wyjątkiem danych użytkownika). Zgodnie z definicją kopii zapasowej BMR obejmuje kopię zapasową stanu systemu. Zapewnia ochronę, gdy komputer nie uruchamia się i trzeba wszystko odzyskać.
+    * Komputer z systemem usług klastrowania: Metadanych serwera klastra
+    * Komputer z systemem usług certyfikatów: Dane dotyczące certyfikatu
+* **Kopie zapasowe kompletnego**: Tworzy kopię zapasową plików systemu operacyjnego i wszystkich danych na woluminach krytycznych (z wyjątkiem danych użytkownika). Zgodnie z definicją kopii zapasowej BMR obejmuje kopię zapasową stanu systemu. Zapewnia ochronę, gdy komputer nie uruchamia się i trzeba wszystko odzyskać.
 
 W poniższej tabeli podsumowano, co można utworzyć kopię zapasową, a odzyskiwanie. Aby uzyskać szczegółowe informacje o wersjach aplikacji, które mogą być chronione przy użyciu stanu systemu i BMR, zobacz [działanie usługi Azure Backup Server Utwórz kopię zapasową?](backup-mabs-protection-matrix.md).
 
-|Backup|Problem|Odzyskiwane z kopii zapasowej serwera usługi Azure Backup|Odzyskiwanie z kopii zapasowej stanu systemu|ODZYSKIWANIA SYSTEMU OD ZERA|
+|Backup|Problem|Odzyskiwane z kopii zapasowej serwera usługi Azure Backup|Odzyskiwanie z kopii zapasowej stanu systemu|BMR|
 |----------|---------|---------------------------|------------------------------------|-------|
 |**Dane pliku**<br /><br />Regularnego tworzenia kopii zapasowych<br /><br />Kopia zapasowa stanu systemu/BMR|Utracone dane pliku|Tak|Nie|Nie|
 |**Dane pliku**<br /><br />Usługa Azure backup Server kopii zapasowej danych plików<br /><br />Kopia zapasowa stanu systemu/BMR|Uszkodzony lub utracony system operacyjny|Nie|Tak|Tak|

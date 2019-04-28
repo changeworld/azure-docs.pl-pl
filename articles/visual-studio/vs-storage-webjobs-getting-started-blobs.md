@@ -13,22 +13,22 @@ ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
 ms.openlocfilehash: 5a7c16e6ac565d1660fee02cb7df178344b195e7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254404"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122927"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-webjob-projects"></a>Rozpoczynanie pracy z usługą Azure Blob storage i Visual Studio podłączone usługi (projekty, zadania WebJob)
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Ten artykuł zawiera C# przykłady kodu, które pokazują, jak wyzwolić proces w przypadku tworzenia lub aktualizowania obiektu blob platformy Azure. Przykłady kodu, użyj [zestawu SDK usługi WebJobs](https://github.com/Azure/azure-webjobs-sdk/wiki) wersji 1.x. Po dodaniu konta magazynu do projektu zadania WebJob przy użyciu programu Visual Studio **Dodaj usługi połączone** okno dialogowe, jest zainstalowany odpowiedni pakiet NuGet usługi Azure Storage, odpowiednie odwołania .NET są dodawane do projektu, i Parametry połączenia dla konta magazynu są aktualizowane w pliku App.config.
 
 ## <a name="how-to-trigger-a-function-when-a-blob-is-created-or-updated"></a>Jak wyzwolić funkcję podczas tworzenia lub aktualizowania obiektu blob
 W tej sekcji pokazano, jak używać **BlobTrigger** atrybutu.
 
- **Uwaga:** zestaw SDK zadań Webjob skanuje pliki dziennika, aby obejrzeć dla nowych lub zmienionych obiektów blob. Ten proces jest natury powolne; funkcja może nie wyzwalane do kilku minut lub dłużej po utworzeniu obiektu blob.  Jeśli aplikacja wymaga w celu przetwarzania obiektów BLOB od razu, zalecaną metodą jest utworzenia komunikatu w kolejce, podczas tworzenia obiektu blob i używania **QueueTrigger** atrybutu zamiast **BlobTrigger** atrybut dla funkcji, która przetwarza obiekt blob.
+ **Uwaga:** Zestaw SDK zadań Webjob skanuje pliki dziennika, aby obejrzeć dla nowych lub zmienionych obiektów blob. Ten proces jest natury powolne; funkcja może nie wyzwalane do kilku minut lub dłużej po utworzeniu obiektu blob.  Jeśli aplikacja wymaga w celu przetwarzania obiektów BLOB od razu, zalecaną metodą jest utworzenia komunikatu w kolejce, podczas tworzenia obiektu blob i używania **QueueTrigger** atrybutu zamiast **BlobTrigger** atrybut dla funkcji, która przetwarza obiekt blob.
 
 ### <a name="single-placeholder-for-blob-name-with-extension"></a>Pojedynczego symbolu zastępczego dla nazwy obiektu blob z rozszerzeniem
 Poniższy przykładowy kod kopiuje tekst obiektów blob, które pojawiają się w *wejściowych* kontener *dane wyjściowe* kontenera:
@@ -193,7 +193,7 @@ Zestaw SDK zadań Webjob zapewniają, że nie **BlobTrigger** funkcja jest wywo�
 
 Potwierdzenia obiektów blob są przechowywane w kontenerze o nazwie *azure webjobs hostów* koncie magazynu platformy Azure, określona przez ciąg połączenia AzureWebJobsStorage. Odbieranie obiektów blob zawiera następujące informacje:
 
-* Funkcja, która została wywołana dla obiektu blob ("*{Nazwa zadania WebJob}*. Funkcje. *{Nazwa funkcji}*", na przykład:"WebJob1.Functions.CopyBlob")
+* Funkcja, która została wywołana dla obiektu blob ("*{Nazwa zadania WebJob}*. Funkcje. *{Nazwa funkcji}*", na przykład: "WebJob1.Functions.CopyBlob")
 * Nazwa kontenera
 * Typ obiektu blob ("BlockBlob" lub "PageBlob")
 * Nazwa obiektu blob

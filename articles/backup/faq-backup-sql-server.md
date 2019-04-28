@@ -6,18 +6,22 @@ author: sachdevaswati
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/19/2019
+ms.date: 04/23/2019
 ms.author: sachdevaswati
-ms.openlocfilehash: 8d6323c73e5313a29b7b0df09ebdd24a190879f5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 649e50634d901ab48f1cb36c39d7331401c0cc51
+ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59791897"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62733552"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Często zadawane pytania dotyczące bazy danych programu SQL Server, działające w kopii zapasowej maszyny Wirtualnej platformy Azure
 
 W tym artykule odpowiedzi na często zadawane pytania dotyczące tworzenia kopii zapasowych baz danych programu SQL Server z programem na maszynach wirtualnych Azure (maszyny wirtualne) i które używają [kopia zapasowa Azure](backup-overview.md) usługi.
+
+## <a name="can-i-use-azure-backup-for-iaas-vm-as-well-as-sql-server-on-the-same-machine"></a>Czy można używać usługi Azure backup dla maszyn wirtualnych IaaS, a także programu SQL Server na tym samym komputerze?
+Tak, może mieć zarówno kopii zapasowych maszyn wirtualnych, jak i obsługi kopii zapasowych SQL na tej samej maszyny Wirtualnej. W tym przypadku wewnętrznie wyzwalamy tylko do kopiowania pełnej kopii zapasowej na maszynie Wirtualnej nie Obcinaj dzienników.
+
 
 ## <a name="does-the-solution-retry-or-auto-heal-the-backups"></a>Rozwiązania ponów próbę lub automatycznego naprawiania kopie zapasowe?
 
@@ -45,7 +49,8 @@ Tak. Możesz ograniczyć szybkość, o których uruchamiany jest zasad tworzenia
   `{"DefaultBackupTasksThreshold": 5}`
 
 3. Zapisz zmiany i zamknij plik.
-4. W wystąpieniu programu SQL Server otwórz **Menedżera zadań**. Uruchom ponownie usługę **AzureWLBackupCoordinatorSvc**.
+4. W wystąpieniu programu SQL Server otwórz **Menedżera zadań**. Uruchom ponownie usługę **AzureWLBackupCoordinatorSvc**.<br/> <br/>
+ Podczas tej metody pomaga w przypadku tworzenia kopii zapasowej aplikacja zużywa dużo zasobów, program SQL Server [zarządcy zasobów](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor?view=sql-server-2017) jest bardziej ogólny sposób określić ograniczenia ilości procesora CPU, fizycznych we/wy i pamięci, która może być przychodzących żądań aplikacji Użycie.
 
 > [!NOTE]
 > W Interfejsie, nadal możesz teraz i Zaplanuj dowolną liczbę kopii zapasowych w dowolnym momencie jednak będą przetwarzane w przesuwającego się okna, 5, zgodnie z powyższym przykładzie.

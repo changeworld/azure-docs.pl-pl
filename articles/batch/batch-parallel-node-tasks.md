@@ -12,15 +12,15 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 05/22/2017
+ms.date: 04/17/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5583ccb6076dae2f33e265b95387bcd35aa9fa4d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
-ms.translationtype: MT
+ms.openlocfilehash: 79b45bd423ed6715cdb7cc7c0e079c150eefede5
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57547286"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63763698"
 ---
 # <a name="run-tasks-concurrently-to-maximize-usage-of-batch-compute-nodes"></a>Węzły obliczeniowe uruchamiania zadań jednocześnie w celu zmaksymalizowania użycia usługi Batch 
 
@@ -41,7 +41,7 @@ Zamiast przy użyciu standardu\_węzły D1, które mają 1 rdzenia Procesora, mo
 ## <a name="enable-parallel-task-execution"></a>Włącz równoległe wykonywanie zadań podrzędnych
 Węzły obliczeniowe, aby równoległe wykonywanie zadań podrzędnych można konfigurować na poziomie puli. Za pomocą biblioteki .NET usługi Batch, należy ustawić [CloudPool.MaxTasksPerComputeNode] [ maxtasks_net] właściwość podczas tworzenia puli. Jeśli używasz interfejsu API REST usługi Batch, ustaw [maxTasksPerNode] [ rest_addpool] elementu w treści żądania podczas tworzenia puli.
 
-Usługa Azure Batch umożliwia ustawienie maksymalnej zadań na węzeł maksymalnie cztery razy (4 x) liczbę rdzeni węzła. Na przykład, jeśli pula jest skonfigurowana z węzłami rozmiaru "Duże" (4 rdzenie) `maxTasksPerNode` może być ustawiona na 16. Szczegółowe informacje na temat liczby rdzeni dla każdego rozmiary węzłów, [rozmiary usług Cloud Services](../cloud-services/cloud-services-sizes-specs.md). Aby uzyskać więcej informacji o limitach usługi, zobacz [przydziały i limity dla usługi Azure Batch](batch-quota-limit.md).
+Usługa Azure Batch umożliwia ustawienie zadań na węzeł (4 x) — maksymalna liczba węzłów core. Na przykład, jeśli pula jest skonfigurowana z węzłami rozmiaru "Duże" (4 rdzenie) `maxTasksPerNode` może być ustawiona na 16. Jednak niezależnie od tego, liczba rdzeni na węzeł zawiera, nie może mieć więcej niż 256 zadań na węzeł. Szczegółowe informacje na temat liczby rdzeni dla każdego rozmiary węzłów, [rozmiary usług Cloud Services](../cloud-services/cloud-services-sizes-specs.md). Aby uzyskać więcej informacji o limitach usługi, zobacz [przydziały i limity dla usługi Azure Batch](batch-quota-limit.md).
 
 > [!TIP]
 > Pamiętaj wziąć pod uwagę `maxTasksPerNode` wartości podczas konstruowania [formułę skalowania automatycznego] [ enable_autoscaling] dla puli. Na przykład formuła, której wynikiem `$RunningTasks` może znacząco wpływać wzrost zadań na węzeł. Zobacz [automatyczne skalowanie węzłów obliczeniowych w puli usługi Azure Batch](batch-automatic-scaling.md) Aby uzyskać więcej informacji.

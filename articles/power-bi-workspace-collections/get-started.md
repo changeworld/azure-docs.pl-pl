@@ -3,17 +3,17 @@ title: Wprowadzenie do kolekcji obszarów roboczych usługi Microsoft Power BI
 description: Kolekcje obszarów roboczych usługi Power BI to usługa platformy Azure, która umożliwia programistom dodawanie interaktywnych raportów usługi Power BI do własnych aplikacji.
 services: power-bi-workspace-collections
 ms.service: power-bi-workspace-collections
-author: markingmyname
-ms.author: maghan
+author: rkarlin
+ms.author: rkarlin
 ms.topic: conceptual
 ms.workload: powerbi
 ms.date: 09/25/2017
-ms.openlocfilehash: 751d69cd9b52cf88bb54900e67283fdff3d90579
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
-ms.translationtype: MT
+ms.openlocfilehash: d1011a8fd8f181233be8e1fa27c3bfaea3d86141
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520483"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62110456"
 ---
 # <a name="get-started-with-microsoft-power-bi-workspace-collections"></a>Wprowadzenie do kolekcji obszarów roboczych usługi Microsoft Power BI
 

@@ -15,15 +15,15 @@ ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
 ms.openlocfilehash: df7866d4f87f55523e8139232e48d81cb17c80e4
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763167"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62117337"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>Wdrażanie urządzenia StorSimple w chmurze oraz zarządzanie nim na platformie Azure (aktualizacja Update 3 i nowsze)
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Urządzenie z serii StorSimple 8000 w chmurze oferuje dodatkową funkcję dołączoną do rozwiązania Microsoft Azure StorSimple. Urządzenie StorSimple w chmurze działa na maszynie wirtualnej w sieci wirtualnej platformy Microsoft Azure i służy do tworzenia kopii zapasowych oraz klonowania danych z hostów.
 
