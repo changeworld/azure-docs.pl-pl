@@ -15,14 +15,14 @@ ms.workload: iaas-sql-server
 ms.date: 01/31/2017
 ms.author: mikeray
 ms.openlocfilehash: 1b6660a1565b3c119cc1dec0823870c7dd5bd24f
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53654091"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61477148"
 ---
 # <a name="use-azure-storage-for-sql-server-backup-and-restore"></a>Użyj usługi Azure Storage dla programu SQL Server z kopii zapasowej i przywracania
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Począwszy od pakietu CU2 programu SQL Server 2012 z dodatkiem SP1, można teraz zapisywania kopii zapasowych programu SQL Server bezpośrednio do usługi Azure Blob storage. Ta funkcja służy do kopii zapasowych i przywracania usługi obiektów Blob platformy Azure przy użyciu lokalnej bazy danych programu SQL Server lub bazy danych programu SQL Server na maszynie wirtualnej platformy Azure. Kopia zapasowa w chmurze oferuje zalety dostępność, nieograniczone możliwości magazynowania poza siedzibą firmy replikowana geograficznie i łatwość migracji danych do i z chmury. Za pomocą języka Transact-SQL lub SMO można wydać instrukcji tworzenia kopii zapasowej lub przywracania.
 
 SQL Server 2016 wprowadzono nowe funkcje; Możesz użyć [kopii zapasowych migawki plików](https://msdn.microsoft.com/library/mt169363.aspx) do wykonywania niemal natychmiastowych kopii zapasowych i niezwykle szybkie przywracanie danych.
@@ -70,7 +70,7 @@ Następujące składniki programu SQL Server są używane podczas wykonywania ko
 1. Utwórz konto platformy Azure, jeśli nie masz jeszcze jeden. Jeśli dokonujesz oceny usługi Azure, należy wziąć pod uwagę [bezpłatna wersja próbna](https://azure.microsoft.com/free/).
 2. Następnie wykonaj jedną z następujących samouczków, które przeprowadzą Cię przez tworzenie konta magazynu i operacji przywracania.
    
-   * **Program SQL Server 2014**: [Samouczek: Kopia zapasowa programu SQL Server 2014 i przywracania na platformie Microsoft Azure Blob usługi Storage](https://msdn.microsoft.com/library/jj720558\(v=sql.120\).aspx).
+   * **SQL Server 2014**: [Samouczek: Kopia zapasowa programu SQL Server 2014 i przywracania na platformie Microsoft Azure Blob usługi Storage](https://msdn.microsoft.com/library/jj720558\(v=sql.120\).aspx).
    * **SQL Server 2016**: [Samouczek: Za pomocą usługi Microsoft Azure Blob storage z bazami danych programu SQL Server 2016](https://msdn.microsoft.com/library/dn466438.aspx)
 3. Przejrzyj dokumentację, zaczynając od [kopii zapasowej programu SQL Server i przywracania w usłudze Microsoft Azure Blob Storage](https://msdn.microsoft.com/library/jj919148.aspx).
 

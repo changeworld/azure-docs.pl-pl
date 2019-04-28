@@ -9,11 +9,11 @@ ms.date: 03/06/2018
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: ac13b40ae58054b091963de198213c1a68fcdc05
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244848"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61427697"
 ---
 # <a name="create-a-blob-snapshot"></a>Tworzenie migawki obiektu blob
 
@@ -33,7 +33,7 @@ Wszystkie dzierżawy skojarzony z podstawowego obiektu blob nie wpływają na mi
 
 Plik wirtualnego dysku twardego jest używany do przechowywania informacji bieżący i stan dysku maszyny Wirtualnej. Można odłączyć dysk od na maszynie wirtualnej lub zamykania maszyny Wirtualnej, a następnie utworzenie migawki jego pliku wirtualnego dysku twardego. Ten plik z migawki można użyć później, pobrania pliku VHD w danym momencie i ponowne utworzenie maszyny Wirtualnej.
 
-## <a name="create-a-snapshot"></a>Utwórz migawkę
+## <a name="create-a-snapshot"></a>Tworzenie migawki
 Poniższy przykład kodu pokazuje sposób tworzenia migawki za pomocą [biblioteki klienta usługi Azure Storage dla platformy .NET](https://www.nuget.org/packages/WindowsAzure.Storage/). W tym przykładzie określa dodatkowe metadane dla migawki podczas jego tworzenia.
 
 ```csharp

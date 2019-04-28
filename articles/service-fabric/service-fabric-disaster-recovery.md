@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 7153a6ed4a91e59eea936f1e17d827a40bb99371
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58883245"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60948520"
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Odzyskiwanie po awarii w usłudze Azure Service Fabric
 Kluczową częścią dostarczania wysokiej dostępności jest zapewnienie, że usługi mogą przetrwać różne rodzaje błędów. Jest to szczególnie ważne w przypadku awarii, znajdujących się niezaplanowane i poza Twoją kontrolą. W tym artykule opisano niektóre typowe trybów awarii, które może być awarii, w przeciwnym razie modelowane i poprawnie zarządzać. Omówiono także środki zaradcze i akcje do wykonania w przypadku awarii mimo to się stało. Celem jest ograniczenie lub wyeliminowania ryzyka przestoju lub utraty danych, gdy wystąpią błędy, planowane lub w przeciwnym razie wystąpić.

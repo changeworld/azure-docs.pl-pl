@@ -1,7 +1,6 @@
 ---
 title: Zarządzanie klastrami Apache Hadoop w HDInsight przy użyciu witryny Azure portal
 description: Dowiedz się, jak utworzyć i zarządzać klastrami HDInsight przy użyciu witryny Azure portal.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: 80c27d588bb8b4c60ae8432fbd3a2ac3d2db1394
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 003aeadba1f4683af40f390d40dd3bbe32e02a83
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58802664"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62096365"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Zarządzanie klastrami Apache Hadoop w HDInsight przy użyciu witryny Azure portal
 
@@ -106,7 +105,7 @@ Z [klastra, strona główna](#homePage)w obszarze **ustawienia** wybierz **wła�
 |Region|Lokalizacja platformy Azure. Aby uzyskać listę obsługiwanych lokalizacji platformy Azure, zobacz **Region** pole listy rozwijanej na [ceny HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).|
 |Data utworzenia|Data została wdrożona w klastrze.|
 |System operacyjny|Albo **Windows** lub **Linux**.|
-|Typ|Hadoop, HBase, Storm, Spark.|
+|Type|Hadoop, HBase, Storm, Spark.|
 |Wersja|Zobacz [wersji HDInsight](hdinsight-component-versioning.md).|
 |Subskrypcja|Nazwa subskrypcji.|
 |Domyślne źródło danych|Domyślny system plików klastra.|

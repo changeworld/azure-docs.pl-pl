@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 07/10/2018
 ms.author: dobett
-ms.openlocfilehash: 4af93b5667181941585cc1ac89f5696379962026
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 05befc72f512f502456f798f25b6c72571451363
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39076245"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61450984"
 ---
 # <a name="use-features-in-the-connected-factory-solution-accelerator-dashboard"></a>Używanie funkcji na pulpicie nawigacyjnym akcelerator rozwiązania połączonej fabryki
 

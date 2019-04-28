@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2018
 ms.author: alkohli
-ms.openlocfilehash: a2b764e76cd1987c83e7be38d365c1dfa8513db9
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 116ac5c4efda87b5d16336dd326d516299f6955d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214792"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61481981"
 ---
 # <a name="deactivate-and-delete-a-storsimple-device"></a>Dezaktywacja i usuwanie urządzenia StorSimple
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 W tym artykule opisano sposób Dezaktywacja i usuwanie urządzenia StorSimple, która jest połączona z usługą Menedżera urządzeń StorSimple. Wskazówki zawarte w tym artykule dotyczą tylko urządzeń z serii StorSimple 8000 w tym urządzeń StorSimple w chmurze. Jeśli używasz rozwiązania StorSimple Virtual Array, następnie przejdź do strony [dezaktywowanie i usuwanie rozwiązania StorSimple Virtual Array](storsimple-virtual-array-deactivate-and-delete-device.md).
 

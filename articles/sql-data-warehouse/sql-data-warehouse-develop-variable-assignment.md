@@ -2,20 +2,21 @@
 title: Przypisz zmiennych w usłudze Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
 description: Porady dotyczące przypisywania zmiennych języka T-SQL w usłudze Azure SQL Data Warehouse do opracowywania rozwiązań.
 services: sql-data-warehouse
-author: ckarst
-manager: craigg
+author: WenJason
+manager: digimobile
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: implement
-ms.date: 04/17/2018
-ms.author: cakarst
+origin.date: 04/17/2017
+ms.date: 04/01/2019
+ms.author: v-jay
 ms.reviewer: igorstan
 ms.openlocfilehash: ee97f7e5cda8b954fb697f73746e416d88d38c2d
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401688"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61480837"
 ---
 # <a name="assigning-variables-in-azure-sql-data-warehouse"></a>Przypisywanie zmiennych w usłudze Azure SQL Data Warehouse
 

@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: b06fec8ab726f48e1937bae4cfbdbd9842788d0a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58109311"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61480812"
 ---
 # <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning"></a>Przeprowadzanie analizy tonacji przy użyciu usługi Azure Stream Analytics i Azure Machine Learning
 W tym artykule opisano, jak szybko skonfigurować proste zadanie usługi Azure Stream Analytics, która integruje usługi Azure Machine Learning. Używasz modelem analizy tonacji usługi Machine Learning w galerii Cortana Intelligence do analizowania danych przesyłanych strumieniowo tekstu i ustalić wyniku tonacji w czasie rzeczywistym. Przy użyciu pakietu Cortana Intelligence pozwala wykonać to zadanie, nie martwiąc się o niewymagającego tworzenia modelu analizy tonacji.

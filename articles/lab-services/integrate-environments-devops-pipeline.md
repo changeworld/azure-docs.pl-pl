@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 04/02/2019
 ms.author: spelluru
 ms.openlocfilehash: deb5595ac6a8b0d189e5594fda8e4b60480d038c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59357393"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61318394"
 ---
 # <a name="integrate-environments-into-your-azure-devops-cicd-pipelines"></a>Integrowanie środowiska potoków usługi Azure DevOps ciągłej integracji/ciągłego wdrażania
 Można użyć rozszerzenia usługi Azure DevTest Labs zadania, które jest zainstalowany w usługom DevOps platformy Azure (dawniej Visual Studio Team Services), aby w łatwy sposób zintegrować swoje ciągłej integracji (CI) / ciągłe dostarczanie (CD) kompilacji i wydania potoku za pomocą platformy Azure Usługa DevTest Labs. Rozszerzenia te ułatwiają szybkie wdrożenie [środowiska](devtest-lab-test-env.md) dla określonego testu zadania i usunąć go po zakończeniu testu. 

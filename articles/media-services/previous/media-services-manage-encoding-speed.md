@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 6bcaadc8dd61899aff860ad246e30170c99ec0f6
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58188632"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61463756"
 ---
 #  <a name="manage-speed-and-concurrency-of-your-encoding"></a>Zarządzanie szybkością i współbieżnością kodowania  
 
 Ten artykuł zawiera krótkie omówienie, jak można zarządzać szybkością i współbieżnością kodowania zadań/zadań.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 W usłudze Media Services **zastrzeżony typ jednostki** określającym szybkość, z jaką są przetwarzane zadania przetwarzania multimediów. Można wybrać jeden z następujących typów jednostki zarezerwowanej: **S1**, **S2** lub **S3**. Na przykład to samo zadanie kodowania jest wykonywane szybciej przy użyciu typu jednostki zarezerwowanej **S2** niż w przypadku użycia typu **S1**. [Skalowania jednostek kodowania](media-services-scale-media-processing-overview.md) temat zawiera tabelę, która pomoże Ci w podjęciu decyzji, wybierając między różne szybkości kodowania.
 

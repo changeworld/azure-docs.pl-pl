@@ -11,11 +11,11 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
 ms.openlocfilehash: e1b411ab54a5b666849893ba9d246eff85e7e54e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57306888"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60871238"
 ---
 # <a name="index-azure-table-storage-with-azure-search"></a>Indeks usługi Azure Table storage z usługą Azure Search
 W tym artykule pokazano, jak używać usługi Azure Search do indeksowania danych przechowywanych w usłudze Azure Table storage.

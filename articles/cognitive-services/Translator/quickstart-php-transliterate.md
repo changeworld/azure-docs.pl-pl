@@ -8,14 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 02/08/2019
-ms.author: erhopf
+origin.date: 02/08/2019
+ms.date: 03/12/2019
+ms.author: v-junlch
 ms.openlocfilehash: a737b9ee73c567f397fda672a8ed7840f626de64
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534297"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60879395"
 ---
 # <a name="quickstart-transliterate-text-with-the-translator-text-rest-api-php"></a>Szybki start: Transliteracja tekstu przy użyciu interfejsu API REST tłumaczenia tekstu w usłudze Translator (PHP)
 
@@ -48,8 +49,8 @@ Następujący kod konwertuje tekst w jednym języku z danego systemu zapisu na i
 
 // Replace the subscriptionKey string value with your valid subscription key.
 $key = 'ENTER KEY HERE';
-
-$host = "https://api.cognitive.microsofttranslator.com";
+$region = 'your region';
+$host = "https://api.translator.azure.cn";
 $path = "/transliterate?api-version=3.0";
 
 // Transliterate text in Japanese from Japanese script (i.e. Hiragana/Katakana/Kanji) to Latin script.
@@ -70,11 +71,12 @@ if (!function_exists('com_create_guid')) {
   }
 }
 
-function Transliterate ($host, $path, $key, $params, $content) {
+function Transliterate ($host, $path, $key, $params, $content, $region) {
 
     $headers = "Content-type: application/json\r\n" .
         "Content-length: " . strlen($content) . "\r\n" .
         "Ocp-Apim-Subscription-Key: $key\r\n" .
+        "Ocp-Apim-Subscription-Region: $region\r\n" .
         "X-ClientTraceId: " . com_create_guid() . "\r\n";
 
     // NOTE: Use the key 'http' even if you are making an HTTPS request. See:
@@ -98,7 +100,7 @@ $requestBody = array (
 );
 $content = json_encode($requestBody);
 
-$result = Transliterate ($host, $path, $key, $params, $content);
+$result = Transliterate ($host, $path, $key, $params, $content, $region);
 
 // Note: We convert result, which is JSON, to and from an object so we can pretty-print it.
 // We want to avoid escaping any Unicode characters that result contains. See:
@@ -127,3 +129,4 @@ Zapoznaj się z kodem przykładowym tego przewodnika Szybki start i innych, w ty
 
 > [!div class="nextstepaction"]
 > [Zapoznaj się z przykładami dla języka PHP w usłudze GitHub](https://aka.ms/TranslatorGitHub?type=&language=php)
+

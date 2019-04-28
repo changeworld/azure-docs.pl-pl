@@ -9,11 +9,11 @@ ms.date: 03/29/2018
 ms.author: alkohli;
 ms.subservice: common
 ms.openlocfilehash: b01c8a3fe9b0c0856dceb5c05f449504ce8c75d6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58120367"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61483297"
 ---
 # <a name="open-a-support-ticket-for-an-importexport-job"></a>Otwórz bilet pomocy technicznej do zadania importu/eksportu
 
@@ -22,7 +22,7 @@ Jeśli napotkasz jakiekolwiek problemy przy użyciu usługi Import/Export można
 * Jak utworzyć żądanie pomocy technicznej.
 * Jak zarządzać żądanie zasady świadczenia pomocy technicznej z poziomu portalu.
 
-## <a name="create-a-support-request"></a>Utwórz żądanie obsługi
+## <a name="create-a-support-request"></a>Tworzenie żądania obsługi
 
 Wykonaj poniższe kroki, aby utworzyć żądanie pomocy technicznej:
 

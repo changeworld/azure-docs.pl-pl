@@ -11,11 +11,11 @@ ms.date: 04/02/2019
 ms.author: cakarst
 ms.reviewer: igorstan
 ms.openlocfilehash: 8a53a63b7425935e117d7af951717999bc9340b7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59794832"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61439717"
 ---
 # <a name="using-stored-procedures-in-sql-data-warehouse"></a>Korzystanie z procedur składowanych w usłudze SQL Data Warehouse
 Porady dotyczące wykonywania procedur składowanych w usłudze Azure SQL Data Warehouse do opracowywania rozwiązań.

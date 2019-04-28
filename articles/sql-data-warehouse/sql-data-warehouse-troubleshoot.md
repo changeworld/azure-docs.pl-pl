@@ -11,11 +11,11 @@ ms.date: 12/04/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: dc78fbc93d625b39379e07f240eef7fbad10d194
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60003857"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61474848"
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>Rozwiązywanie problemów z usługi Azure SQL Data Warehouse
 W tym artykule wymieniono typowe pytania dotyczące rozwiązywania problemów.

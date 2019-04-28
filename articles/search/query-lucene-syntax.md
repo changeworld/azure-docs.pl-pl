@@ -20,11 +20,11 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 64a688df3b6ed8602bb440d72e7f061c5f5893d1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58885608"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61317587"
 ---
 # <a name="lucene-query-syntax-in-azure-search"></a>Składnia zapytań Lucene w usłudze Azure Search
 Można napisać zapytań względem usługi Azure Search oparte na zaawansowanych [analizator składni zapytań Lucene](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) składnia wyspecjalizowane kwerendy forms: symbole wieloznaczne, Wyszukiwanie rozmyte, wyszukiwanie w sąsiedztwie wyrażeń regularnych przedstawiono kilka przykładów. Jest wiele składni analizatora zapytań Lucene [zaimplementowane opublikowane w usłudze Azure Search](search-lucene-query-architecture.md), z wyjątkiem produktów *zakresu wyszukiwania* zbudowanych w usłudze Azure Search przy użyciu `$filter` wyrażenia. 

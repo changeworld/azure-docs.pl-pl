@@ -1,7 +1,6 @@
 ---
 title: Praca z technologią Hive w HDInsight (Apache Hadoop) — Azure przy użyciu widoków Ambari Apache
 description: Dowiedz się, jak przesłać zapytania Hive przy użyciu programu Hive widoku z przeglądarki sieci web. Widok programu Hive jest częścią Interfejsu sieci Web Ambari, które są dostarczane z klastra usługi HDInsight opartych na systemie Linux.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: hrasheed
-ms.openlocfilehash: 978b865f6dd7e3427a0139e7e71ed4b2d937fbe5
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 55f8f453faf35d52c5c292e6b309194443980466
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517304"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62095323"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Użyj widoku Hive narzędzia Ambari Apache przy użyciu technologii Apache Hadoop w HDInsight
 

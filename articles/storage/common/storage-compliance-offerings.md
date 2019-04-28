@@ -9,11 +9,11 @@ ms.date: 06/27/2018
 ms.author: fryu
 ms.subservice: common
 ms.openlocfilehash: 1ad41b0b7391236a15b7c1be7d42ed81aaf5b51a
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55568587"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61483438"
 ---
 # <a name="azure-storage-compliance-offerings"></a>Ofert zgodności w usłudze Azure Storage
 
@@ -53,7 +53,7 @@ Można znaleźć poniżej ofert zgodności w usłudze Azure Storage, aby upewni�
 * [CDSA](https://www.microsoft.com/trustcenter/compliance/cdsa)
 * [DPP (UK)](https://aka.ms/AzureCompliance)
 * [FAKT (ZJEDNOCZONE KRÓLESTWO)](https://www.microsoft.com/trustcenter/compliance/fact)
-* [FCA (ZJEDNOCZONE KRÓLESTWO)](https://aka.ms/AzureCompliance)
+* [FCA (WIELKA BRYTANIA)](https://aka.ms/AzureCompliance)
 * [FFIEC](https://www.microsoft.com/trustcenter/compliance/FFIEC)
 * [FISC (Japonia)](https://www.microsoft.com/trustcenter/compliance/fisc)
 * [GLBA](https://aka.ms/AzureCompliance)
@@ -87,7 +87,7 @@ Można znaleźć poniżej ofert zgodności w usłudze Azure Storage, aby upewni�
 * [MTCS (Singapur)](https://www.microsoft.com/trustcenter/compliance/mtcs)
 * [Mój numer (Japonia)](https://www.microsoft.com/trustcenter/privacy/we-set-and-adhere-to-stringent-standards#my_number)
 * [NZ DW Framework (Nowa Zelandia)](https://www.microsoft.com/trustcenter/compliance/nzcc)
-* [PASF (ZJEDNOCZONE KRÓLESTWO)](https://aka.ms/AzureCompliance)
+* [PASF (WIELKA BRYTANIA)](https://aka.ms/AzureCompliance)
 * [PDPA (Argentyna)](https://www.microsoft.com/trustcenter/privacy/we-set-and-adhere-to-stringent-standards#argentina)
 * [PIPEDA (Kanada)](https://www.microsoft.com/trustcenter/privacy/we-set-and-adhere-to-stringent-standards#canadian_privacy_laws)
 * [TRUCS (Chiny)](https://www.trustcenter.cn/compliance/default.html#TCS)

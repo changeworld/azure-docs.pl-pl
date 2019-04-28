@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 370d8160661c1f73124151a3a49d0bb3170dfb77
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276044"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60910995"
 ---
 # <a name="iot-edge-module-skus-tab"></a>Karty jednostki SKU modułu usługi IoT Edge
 
@@ -41,7 +41,7 @@ Po rozpoczęciu tworzenia nowej oferty, nie ma żadnych jednostek SKU skojarzone
 
 |  **Pole**       |     **Opis**                                                          |
 |  ---------       |     ---------------                                                          |
-| **IDENTYFIKATOR JEDNOSTKI SKU**       | Identyfikator dla tej jednostki SKU. Ta nazwa może zawierać maksymalnie 50 znaków, składający się z małych znaków alfanumerycznych i kresek (-), ale nie może kończyć się kreską. **Uwaga:** po opublikowane oferty nie można zmienić tej nazwy. Nazwa jest widoczna publicznie w adresach URL produktu. |
+| **IDENTYFIKATOR JEDNOSTKI SKU**       | Identyfikator dla tej jednostki SKU. Ta nazwa może zawierać maksymalnie 50 znaków, składający się z małych znaków alfanumerycznych i kresek (-), ale nie może kończyć się kreską. **Uwaga:** Opublikowane oferty nie można zmienić tej nazwy. Nazwa jest widoczna publicznie w adresach URL produktu. |
 
 ## <a name="sku-details"></a>Szczegóły jednostki SKU
 
@@ -106,10 +106,10 @@ W poniższej tabeli opisano przeznaczenie zawartości i formatowania pól dla:
 |  **Pole**       |     **Opis**                                                          |
 |  ---------       |     ---------------                                                          |
 |  ***Szczegółowe informacje dotyczące obrazu repozytorium***   |  |
-| **Identyfikator subskrypcji**        | Identyfikator subskrypcji platformy Azure rekordu ACR.|
+| **Subscription ID (Identyfikator subskrypcji)**        | Identyfikator subskrypcji platformy Azure rekordu ACR.|
 | **Nazwa grupy zasobów**      | Nazwa grupy zasobów rekordu ACR.|
 | **Nazwa rejestru**  | Nazwa rejestru ACR. Kopiuj tylko nazwę rejestru, a nie nazwę serwera logowania (na przykład, bez `azurecr.io`.) |
-| **Nazwa repozytorium**  | Nazwa repozytorium usługi ACR, zawierający modułu usługi IoT Edge. **Uwaga:** po ustawieniu nazwy nie można zmienić później. Użyj unikatowej nazwy, aby upewnić się, że żadne inne oferty w ramach Twojego konta ma taką samą nazwę. |
+| **Nazwa repozytorium**  | Nazwa repozytorium usługi ACR, zawierający modułu usługi IoT Edge. **Uwaga:** Po ustawieniu nazwy nie można zmienić później. Użyj unikatowej nazwy, aby upewnić się, że żadne inne oferty w ramach Twojego konta ma taką samą nazwę. |
 | **Nazwa użytkownika** | Nazwa użytkownika skojarzony z rekordu ACR (nazwa użytkownika administratora). |
 | **Hasło** | Hasło skojarzone z rekordu ACR. |
 |  ***Wersja obrazu***   |  |

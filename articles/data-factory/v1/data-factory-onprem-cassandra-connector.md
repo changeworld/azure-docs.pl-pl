@@ -14,11 +14,11 @@ ms.date: 06/07/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 0a3adbd082c68121e762fd03c2221a0c800f0bc5
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57892646"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60823984"
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>Przenoszenie danych z bazy danych Cassandra w środowisku lokalnym za pomocą usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -71,7 +71,7 @@ Poniższa tabela zawiera opis dla elementów JSON, które są specyficzne dla ro
 | port |Port TCP, którego serwer Cassandra korzysta do nasłuchiwania połączeń klientów. |Nie, wartość domyślna: 9042 |
 | Element authenticationType |Podstawowe lub anonimowe |Yes |
 | nazwa użytkownika |Określ nazwę użytkownika dla konta użytkownika. |Tak, jeśli element authenticationType ustawiany jest podstawowy. |
-| hasło |Określ hasło dla konta użytkownika. |Tak, jeśli element authenticationType ustawiany jest podstawowy. |
+| password |Określ hasło dla konta użytkownika. |Tak, jeśli element authenticationType ustawiany jest podstawowy. |
 | gatewayName |Nazwa bramy, która służy do łączenia z bazą danych Cassandra w środowisku lokalnym. |Yes |
 | encryptedCredential |Poświadczenie szyfrowane przez bramę. |Nie |
 
@@ -265,7 +265,7 @@ Zobacz [właściwości typu RelationalSource](#copy-activity-properties) listy w
 | ASCII |String |
 | BIGINT |Int64 |
 | BLOB |Byte[] |
-| ATRYBUT TYPU WARTOŚĆ LOGICZNA |Wartość logiczna |
+| ATRYBUT TYPU WARTOŚĆ LOGICZNA |Boolean |
 | DECIMAL |Decimal |
 | DOUBLE |Double |
 | FLOAT |Single |

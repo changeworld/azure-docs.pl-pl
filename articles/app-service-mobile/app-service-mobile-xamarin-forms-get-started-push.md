@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 10/12/2016
 ms.author: crdun
 ms.openlocfilehash: 99f2d9fb7c9a74e57eff3cd0b007fcee459cab88
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000222"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62098730"
 ---
 # <a name="add-push-notifications-to-your-xamarinforms-app"></a>Dodawanie powiadomień wypychanych do aplikacji platformy Xamarin.Forms
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 W tym samouczku, jak dodawać powiadomienia wypychane do wszystkich projektów, które powstały w wyniku [Xamarin.Forms — szybki start](app-service-mobile-xamarin-forms-get-started.md). Oznacza to, że powiadomienia wypychane są wysyłane do wszystkich klientów dla wielu platform, za każdym razem, gdy rekord zostanie wstawiona.
 
@@ -406,7 +406,7 @@ Ta sekcja dotyczy uruchamiania aplikacji platformy Xamarin.Forms i WinPhone81 pr
 Możesz dowiedzieć się więcej na temat powiadomień wypychanych:
 
 * [Wysyłanie powiadomień wypychanych z usługi Azure Mobile Apps](https://developer.xamarin.com/guides/xamarin-forms/cloud-services/push-notifications/azure/)
-* [Usługa firebase Cloud Messaging](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/firebase-cloud-messaging/)
+* [Usługa Firebase Cloud Messaging](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/firebase-cloud-messaging/)
 * [Zdalne powiadomienia przy użyciu usługi Firebase Cloud Messaging](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/remote-notifications-with-fcm/)
 * [Diagnozowanie problemów z powiadomień wypychanych](../notification-hubs/notification-hubs-push-notification-fixer.md)  
   Istnieją różne powody, dlaczego powiadomienia porzucane może lub nie znajdą się na urządzeniach. W tym temacie dowiesz się, jak analizować i ustalić główną przyczynę niepowodzenia powiadomień wypychanych.

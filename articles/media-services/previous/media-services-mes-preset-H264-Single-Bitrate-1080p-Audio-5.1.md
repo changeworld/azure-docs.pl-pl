@@ -1,8 +1,8 @@
 ---
 title: H264 Pojedyncza szybkość transmisji bitów h264 1080p Audio 5.1 | Dokumentacja firmy Microsoft
 description: Temat zawiera omówienie **pojedyncza szybkość transmisji bitów H264 1080p Audio 5.1** ustawienie wstępne zadania.
-author: Juliako
-manager: femila
+author: WenJason
+manager: digimobile
 editor: ''
 services: media-services
 documentationcenter: ''
@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
+origin.date: 03/19/2019
+ms.date: 04/01/2019
+ms.author: v-jay
 ms.openlocfilehash: 83d1c279552a75b959c19fb37e859806571f48eb
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259491"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61463620"
 ---
-# <a name="h264-single-bitrate-1080p-audio-51"></a>H264 Pojedyncza szybkość transmisji bitów, 1080p Audio 5.1
+# <a name="h264-single-bitrate-1080p-audio-51"></a>Pojedyncza szybkość transmisji bitów H264 1080p Audio 5.1
 
 `Media Encoder Standard` definiuje zestaw kodowania ustawienia wstępne, których można użyć podczas tworzenia zadań kodowania. Można użyć `preset name` do określenia do formatu, który chcesz zakodować pliku multimedialnego. Lub można utworzyć własne JSON lub XML na podstawie ustawień wstępnych (przy użyciu kodowania UTF-8 lub UTF-16. Następnie należy wprowadzić niestandardowego ustawienia wstępnego z koderem. Aby uzyskać listę wszystkich wstępnie zdefiniowanych nazw obsługiwanych przez to `Media Encoder Standard` encoder, zobacz [ustawienia wstępne zadań usługi Media Encoder Standard](media-services-mes-presets-overview.md).  
   

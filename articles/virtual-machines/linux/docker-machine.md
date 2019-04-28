@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.openlocfilehash: da0e393dc2ae0d93ecc49745a42ffac4669ed74b
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56326310"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61386946"
 ---
 # <a name="how-to-use-docker-machine-to-create-hosts-in-azure"></a>Jak używać maszyny platformy Docker do tworzenia hostów na platformie Azure
 Ten artykuł szczegółowo opisuje sposób używania [maszyny platformy Docker](https://docs.docker.com/machine/) tworzenia hostów na platformie Azure. `docker-machine` Polecenie tworzy maszynę wirtualną systemu Linux (VM) na platformie Azure, a następnie zainstalowanie platformy Docker. Następnie można zarządzać hostów platformy Docker na platformie Azure przy użyciu tych samych narzędzi lokalnych i przepływów pracy. Aby używać maszyny platformy docker w systemie Windows 10, należy użyć powłoki bash w systemie Linux.

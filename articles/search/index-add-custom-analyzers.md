@@ -20,11 +20,11 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 9a15078c953c1fab40ad521eff079a623c93b9d9
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577547"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60914912"
 ---
 # <a name="add-custom-analyzers-to-an-azure-search-index"></a>Dodaj niestandardowe analizatory do indeksu usługi Azure Search
 
@@ -32,7 +32,7 @@ A *analizatora niestandardowego* jest określonego typu [analizatora tekstu](sea
 
  Można zdefiniować wiele analizatory niestandardowe, będzie się różnić w kombinacji filtrów, ale każde pole do indeksowania, analizy i jeden dla analizy wyszukiwania można używać tylko jednego analizatora. Ilustracja wygląda analizatora klienta znajduje się [przykład analizatora niestandardowego](search-analyzers.md#Custom-analyzer-example).
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
  Rola [aparat wyszukiwania pełnotekstowego](search-lucene-query-architecture.md), mówiąc najprościej, jest do przetwarzania i przechowywania dokumentów w sposób, który umożliwia wydajne wykonywanie zapytań i pobierania. Na wysokim poziomie wszystkie sprowadza się do wyodrębniania słów ważne dokumenty, umieszczenie ich w indeksie i następnie przy użyciu indeksu do wyszukiwania dokumentów, które odpowiadają słów danego zapytania. Proces wyodrębniania wyrazy w dokumentach i zapytaniach wyszukiwania jest nazywany *poddawać analizie leksykalnej*. Składniki, które wykonują poddawać analizie leksykalnej są nazywane *analizatory*.
 

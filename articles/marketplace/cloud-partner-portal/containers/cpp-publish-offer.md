@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 7533d1a133c9c474bc39f0f64c5f1a8183ab30f8
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979752"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61472898"
 ---
 # <a name="publish-container-offer"></a>Publikowanie oferty kontenera
 
@@ -38,9 +38,9 @@ W poniższej tabeli opisano każdy krok publikowania. Szacowany czas do zakończ
 |  -------------------           | --------    | ---------------                                                            |
 | Weryfikowanie wymagań wstępnych         | 15 min   | Oferuje informacje i ofertę, ustawienia zostaną zweryfikowane.                        |
 | Certyfikacja                  | 1 tydzień | Oferty są analizowane przez zespół certyfikacji platformy Azure. Oferta jest skanowany w poszukiwaniu wirusów, złośliwego oprogramowania, bezpieczeństwo, zgodność i problemy z zabezpieczeniami. Oferta jest sprawdzenie spełnia kryteria kwalifikacyjne. Aby uzyskać więcej informacji, zobacz [wymagania wstępne](./cpp-prerequisites.md) i [przygotowywanie zasobów technicznych](./cpp-create-technical-assets.md). Opinia firmy pod warunkiem, jeśli problem zostanie znaleziony. |
-| Pakowanie | 1 godzina  | Zasoby techniczne oferty są pakowane do użytku klienta i systemy potencjalnych klientów są konfigurowane i konfiguracji. |
+| Tworzenie pakietów | 1 godzina  | Zasoby techniczne oferty są pakowane do użytku klienta i systemy potencjalnych klientów są konfigurowane i konfiguracji. |
 |  Podpisywania wydawcy             |  -        | Wydawcy ostateczny Przegląd i potwierdzenie oferty przejdzie na żywo. Sprawdź, czy spełnia wszystkie wymagania dotyczące można wdrożyć swoją ofertę w wybranych subskrypcjach (w krokach informacji oferty).  Wybierz **Go Live** dzięki ofercie przejściem do następnego kroku. |
-| Pakowanie                 | 1 godzina | Zakończono oferty jest replikowana w regionach i systemów produkcyjnych w portalu marketplace. | 
+| Tworzenie pakietów                 | 1 godzina | Zakończono oferty jest replikowana w regionach i systemów produkcyjnych w portalu marketplace. | 
 | Na żywo                           | 4 dni |Oferta jest zwolniony, replikowane do określonych regionów wymagane i udostępnione publicznie. |
 
 Zezwalaj na maksymalnie 10 dni roboczych. proces publikowania zakończyć i udostępnieniu oferty. Po zakończeniu procesu publikowania oferty kontenera zostaną wyświetlone w [Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules).

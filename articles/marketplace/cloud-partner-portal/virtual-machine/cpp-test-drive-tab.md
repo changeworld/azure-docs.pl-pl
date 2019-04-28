@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/19/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 97fb21dc390bd365357f6395c72aa282423c83c9
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49640011"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61344626"
 ---
 # <a name="virtual-machine-test-drive-tab"></a>Karta wersji testowej maszyny wirtualnej
 
@@ -44,7 +44,7 @@ W poniższej tabeli opisano przeznaczenie i zawartość tych pól.
 | **Demonstracyjny materiał wideo stacji testu** | Przekaż wideo, w których rozwiązania.  Jeśli wybierzesz tę opcję, musisz podać nazwę, adres URL wideo (w serwisie YouTube lub Vimeo) i miniatury (w pikselach 533 x 324) filmu wideo. |
 | *Pomoc konfiguracji* |  |
 | **Wystąpienia**             | Określ region, a stosunkowo wystąpienia maszyny wirtualnej (kliknij ikonę informacji, aby uzyskać więcej informacji).  <br/>Potencjalne równoczesnych sesji testowej nie powinna przekraczać limit przydziału dla Twojej subskrypcji.  Pierwsza jest obliczany jako: [liczba regionów zaznaczonego] x [gorąca wystąpień] + [z regionów wybrać numer] x [ciepło wystąpień] + [liczba regionów zaznaczonego] x [zimnych wystąpień] |
-| **Czas trwania testu dysku**   | Maksymalny czas trwania sesji czas w godzinach. Sesji testowej kończy się automatycznie po tym okresie zostanie przekroczony.  |
+| **Test Drive Duration**   | Maksymalny czas trwania sesji czas w godzinach. Sesji testowej kończy się automatycznie po tym okresie zostanie przekroczony.  |
 |**Testuj szablon ARM dysku**| Przekaż szablon usługi Azure Resource Manager skojarzonych z tej wersji testowej. Aby uzyskać więcej informacji, zobacz [przekształcania szablonu wdrożenia maszyny wirtualnej dla wersji testowej](https://github.com/Azure/AzureTestDrive/wiki/Transforming-Virtual-Machine-Deployment-Template-for-Test-Drive). |
 | **Uzyskiwanie dostępu do informacji**    | Dostęp usługi Azure Resource Manager i informacje logowania wersji próbnej, zapisane jako zwykły tekst lub HTML proste. |
 | *Szczegóły subskrypcji wdrożenia dysku testu* |  |

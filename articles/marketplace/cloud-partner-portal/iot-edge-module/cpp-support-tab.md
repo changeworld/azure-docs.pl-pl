@@ -15,15 +15,15 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 9926c9a0443eb5220e7689dfc6e49e4b8d661d65
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49431546"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60909858"
 ---
 # <a name="iot-edge-module-support-tab"></a>Kartę Pomoc techniczna moduł usługi IoT Edge
 
-Użyj **obsługuje** karcie **nowa oferta** stronę, aby dostarczyć technicznych i użytkownika, zasoby pomocy technicznej oferty.  Następujące obszary wejściowe znajdują się w formularzu pomocy technicznej: **kontakt techniczny**, **techniczną**, i **adresy URL pomocy technicznej**. Znak gwiazdki (*) dodanym na końcu nazwy pola wskazuje, że jest to wymagane.
+Użyj **obsługuje** karcie **nowa oferta** stronę, aby dostarczyć technicznych i użytkownika, zasoby pomocy technicznej oferty.  W formularzu pomocy technicznej dostępne są następujące obszary danych wejściowych: **Inżynierów skontaktuj się z pomocą**, **techniczną**, i **obsługuje adresy URL**. Znak gwiazdki (*) dodanym na końcu nazwy pola wskazuje, że jest to wymagane.
 
 ![Kartę Pomoc techniczna w formularzu nowa oferta dla modułów usługi IoT Edge](./media/iot-edge-module-support-tab.png)
 

@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: xpouyat
 ms.openlocfilehash: 505def9cde7cddf2ddcc23408fa3159de886167a
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294573"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61472728"
 ---
 # <a name="licensing-microsoft-smooth-streaming-client-porting-kit"></a>Licencjonowania Microsoft® Smooth Streaming Client Porting Kit 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Microsoft Smooth Streaming klienta przenoszenie Kit (**SSPK** w skrócie) jest Smooth Streaming implementacji klienta, który jest zoptymalizowany pod kątem ułatwiające producenci urządzeń osadzonych, kabel i operatorów komórkowych, dostawców usług zawartości, słuchawki producentów niezależnych dostawców oprogramowania (ISV) i dostawców rozwiązań do tworzenia produktów i usług do przesyłania strumieniowego zawartości przesyłanej w formacie Smooth Streaming. SSPK to urządzenie i niezależne od platformy implementacji klienta Smooth Streaming, które mogą być przenoszone przez licencjobiorcę do dowolnego urządzenia i platformy. 
 
 Przedstawiony poniżej jest Architektura wysokiego poziomu i pole IIS Smooth Streaming przenoszenie Kit jest udostępniana przez firmę Microsoft implementacją Smooth Streaming Client i obejmuje wszystkie podstawowe zasady logiczne do odtwarzania zawartości Smooth Streaming. Ta zawartość następnie są przenoszone przez partnerów dla określonego urządzenia lub platformy z zastosowaniem odpowiednich interfejsów. 

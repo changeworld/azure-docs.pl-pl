@@ -9,11 +9,11 @@ ms.topic: article
 ms.service: storage
 ms.subservice: blobs
 ms.openlocfilehash: 4bc683908646a5c05fee14f721e2c26482518947
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751399"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61427634"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reagowanie na zdarzenia usługi Blob storage
 
@@ -43,24 +43,24 @@ Zdarzenia usługi blob storage zawiera wszystkie informacje potrzebne do reagowa
 
 > |Właściwość|Typ|Opis|
 > |-------------------|------------------------|-----------------------------------------------------------------------|
-> |temat|ciąg|Pełny identyfikator usługi Azure Resource Manager konta magazynu, który emituje zdarzenia.|
-> |temat|ciąg|Ścieżka względna zasobu do obiektu, który jest przedmiotem zdarzenia, korzystając z tych samych rozszerzony format usługi Azure Resource Manager, której używamy w celu opisania kont magazynu, usługi i kontenery dla RBAC platformy Azure.  Ten format obejmuje zachowywanie nazwa obiektu blob.|
-> |eventTime|ciąg|Data/Godzina, który wygenerowania zdarzenia w formacie ISO 8601|
-> |eventType|ciąg|"Microsoft.Storage.BlobCreated" or "Microsoft.Storage.BlobDeleted"|
-> |Identyfikator|ciąg|Unikatowy identyfikator, jeśli to zdarzenie|
-> |dataVersion|ciąg|Wersja schematu dla obiektu danych.|
-> |metadataVersion|ciąg|Wersja schematu właściwości najwyższego poziomu.|
+> |temat|string|Pełny identyfikator usługi Azure Resource Manager konta magazynu, który emituje zdarzenia.|
+> |temat|string|Ścieżka względna zasobu do obiektu, który jest przedmiotem zdarzenia, korzystając z tych samych rozszerzony format usługi Azure Resource Manager, której używamy w celu opisania kont magazynu, usługi i kontenery dla RBAC platformy Azure.  Ten format obejmuje zachowywanie nazwa obiektu blob.|
+> |eventTime|string|Data/Godzina, który wygenerowania zdarzenia w formacie ISO 8601|
+> |eventType|string|"Microsoft.Storage.BlobCreated" or "Microsoft.Storage.BlobDeleted"|
+> |Identyfikator|string|Unikatowy identyfikator, jeśli to zdarzenie|
+> |dataVersion|string|Wersja schematu dla obiektu danych.|
+> |metadataVersion|string|Wersja schematu właściwości najwyższego poziomu.|
 > |dane|obiekt|Zbieranie danych zdarzeń specyficznych dla magazynu obiektów blob|
-> |data.contentType|ciąg|Typ zawartości obiektu blob, ponieważ do zwrócenia w nagłówku Content-Type z obiektu blob|
+> |data.contentType|string|Typ zawartości obiektu blob, ponieważ do zwrócenia w nagłówku Content-Type z obiektu blob|
 > |data.contentLength|numer|Rozmiar obiektu blob, tak jak w liczbę całkowitą reprezentującą liczbę bajtów, ponieważ do zwrócenia w nagłówku Content-Length z obiektu blob.  Wysyłane z BlobCreated zdarzenia, ale nie z BlobDeleted.|
-> |data.url|ciąg|Adres url obiektu, który jest przedmiotem zdarzenia|
-> |data.eTag|ciąg|Element etag obiektu, gdy to zdarzenie wyzwolone.  Nie jest dostępna dla zdarzenia BlobDeleted.|
-> |data.api|ciąg|Nazwa operacji interfejsu api, która wyzwoliła tego zdarzenia. W przypadku zdarzeń BlobCreated ta wartość jest "PutBlob", "PutBlockList" lub "CopyBlob". W przypadku zdarzeń BlobDeleted ta wartość jest "DeleteBlob". Te wartości są takie same nazwy interfejsu api, które znajdują się w dziennikach diagnostycznych usługi Azure Storage. Zobacz [rejestrowane komunikaty o stanie i operacje](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages).|
-> |data.sequencer|ciąg|Nieprzezroczysty Ciąg reprezentującą logiczne sekwencję zdarzeń o dowolną nazwę określonego obiektu blob.  Użytkownicy mogą używać standardowego porównywania ciągów zrozumienie względne sekwencji dwa zdarzenia w tej samej nazwy obiektu blob.|
-> |data.requestId|ciąg|Identyfikator generowanych przez usługi żądania dla operacji interfejsu API usługi storage. Może służyć do odnoszą się do usługi Azure Storage diagnostyczne dzienniki, korzystając z pola "żądanie id-header" w dziennikach i zwracany jest zainicjowanie wywołanie interfejsu API w nagłówku "x-ms-request-id". Zobacz [Format dziennika](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format).|
-> |data.clientRequestId|ciąg|Identyfikator żądania dostarczonych przez klienta do przechowywania operacji interfejsu API. Może służyć do odnoszą się do dzienników diagnostycznych usługi Azure Storage, korzystając z pola "client-request-id" w dziennikach i mogą otrzymywać żądania klientów przy użyciu nagłówek "x-ms klient request-id". Zobacz [Format dziennika](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format). |
+> |data.url|string|Adres url obiektu, który jest przedmiotem zdarzenia|
+> |data.eTag|string|Element etag obiektu, gdy to zdarzenie wyzwolone.  Nie jest dostępna dla zdarzenia BlobDeleted.|
+> |data.api|string|Nazwa operacji interfejsu api, która wyzwoliła tego zdarzenia. W przypadku zdarzeń BlobCreated ta wartość jest "PutBlob", "PutBlockList" lub "CopyBlob". W przypadku zdarzeń BlobDeleted ta wartość jest "DeleteBlob". Te wartości są takie same nazwy interfejsu api, które znajdują się w dziennikach diagnostycznych usługi Azure Storage. Zobacz [rejestrowane komunikaty o stanie i operacje](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages).|
+> |data.sequencer|string|Nieprzezroczysty Ciąg reprezentującą logiczne sekwencję zdarzeń o dowolną nazwę określonego obiektu blob.  Użytkownicy mogą używać standardowego porównywania ciągów zrozumienie względne sekwencji dwa zdarzenia w tej samej nazwy obiektu blob.|
+> |data.requestId|string|Identyfikator generowanych przez usługi żądania dla operacji interfejsu API usługi storage. Może służyć do odnoszą się do usługi Azure Storage diagnostyczne dzienniki, korzystając z pola "żądanie id-header" w dziennikach i zwracany jest zainicjowanie wywołanie interfejsu API w nagłówku "x-ms-request-id". Zobacz [Format dziennika](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format).|
+> |data.clientRequestId|string|Identyfikator żądania dostarczonych przez klienta do przechowywania operacji interfejsu API. Może służyć do odnoszą się do dzienników diagnostycznych usługi Azure Storage, korzystając z pola "client-request-id" w dziennikach i mogą otrzymywać żądania klientów przy użyciu nagłówek "x-ms klient request-id". Zobacz [Format dziennika](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format). |
 > |data.storageDiagnostics|obiekt|Dane diagnostyczne od czasu do czasu dołączane przez usługę Azure Storage. Jeśli jest obecny, mają być ignorowane przez odbiorców zdarzeń.|
-|data.blobType|ciąg|Typ obiektu blob. Prawidłowe wartości to "BlockBlob" lub "PageBlob".| 
+|data.blobType|string|Typ obiektu blob. Prawidłowe wartości to "BlockBlob" lub "PageBlob".| 
 
 Oto przykład zdarzenia BlobCreated:
 ```json

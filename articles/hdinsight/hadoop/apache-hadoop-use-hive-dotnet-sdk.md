@@ -2,19 +2,18 @@
 title: Uruchamianie zapytania usługi Apache Hive przy użyciu HDInsight platformy .NET SDK — platformy Azure
 description: Dowiedz się, jak można przesłać zadania technologii Apache Hadoop do usługi Azure HDInsight Apache Hadoop przy użyciu zestawu .NET SDK HDInsight.
 ms.reviewer: jasonh
-services: hdinsight
 author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 31e759baa4f5e7b220eabf2bb9ffcc5cc011a354
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 947e797842000e4da2f9e22077bc32c24d6c6a74
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58200467"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62095388"
 ---
 # <a name="run-apache-hive-queries-using-hdinsight-net-sdk"></a>Uruchamianie zapytania usługi Apache Hive przy użyciu zestawu .NET SDK HDInsight
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]

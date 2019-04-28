@@ -15,15 +15,15 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 90a103bcdfdcd5d61433c05d4cadfa746c67e192
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979769"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61472740"
 ---
 # <a name="container-support-tab"></a>Kontener kartę Pomoc techniczna
 
-Użyj **obsługuje** karcie **nowa oferta** stronę, aby dostarczyć technicznych i użytkownika, zasoby pomocy technicznej oferty.  Następujące obszary wejściowe znajdują się w formularzu pomocy technicznej: **kontakt techniczny**, **techniczną**, i **adresy URL pomocy technicznej**. Znak gwiazdki (*) dodanym na końcu nazwy pola wskazuje, że jest to wymagane.
+Użyj **obsługuje** karcie **nowa oferta** stronę, aby dostarczyć technicznych i użytkownika, zasoby pomocy technicznej oferty.  W formularzu pomocy technicznej dostępne są następujące obszary danych wejściowych: **Inżynierów skontaktuj się z pomocą**, **techniczną**, i **obsługuje adresy URL**. Znak gwiazdki (*) dodanym na końcu nazwy pola wskazuje, że jest to wymagane.
 
 ## <a name="support-form-fields"></a>Obsługa pól formularza
 

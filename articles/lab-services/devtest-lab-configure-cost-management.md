@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/07/2019
 ms.author: spelluru
 ms.openlocfilehash: f761af3a5a3f08e4da89d8869aea5d666ecd69d0
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517270"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60868290"
 ---
 # <a name="track-costs-associated-with-a-lab-in-azure-devtest-labs"></a>Śledź koszty związane z laboratorium Azure DevTest Labs
 Ten artykuł zawiera informacje na temat śledzenia kosztów środowiska laboratoryjnego. Pokazuje sposób wyświetlania szacowany koszt trent w bieżącym miesiącu dla laboratorium. Artykuł przedstawia również sposób wyświetlania data miesiąca koszt zasobów w środowisku laboratoryjnym

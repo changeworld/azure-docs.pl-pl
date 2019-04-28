@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 03/17/2019
 ms.author: monhaber
 ms.openlocfilehash: 27acda2496adea39321e498868aebcc2f824df3c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58905294"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60905739"
 ---
 # <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>Uaktualnienie do warstwy standardowa Security Center w celu uzyskania zwiększonych zabezpieczeń
 Usługa Azure Security Center zapewnia ujednolicone zarządzanie zabezpieczeniami i zaawansowaną ochronę przed zagrożeniami na potrzeby obciążeń uruchamianych na platformie Azure, lokalnie i w innych chmurach. System ten zapewnia widoczność i kontrolę nad obciążeniach chmury hybrydowej, aktywne mechanizmów obronnych pozwalających ograniczyć narażenie na zagrożenia i wykrywanie inteligentne, które ułatwią Ci zmieniającego się szybko ewoluującymi cyberatakami.

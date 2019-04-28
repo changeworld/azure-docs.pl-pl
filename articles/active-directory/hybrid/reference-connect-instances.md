@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ca481d50efb99d6e36c66388192e9f27cd66bf45
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217194"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62096100"
 ---
 # <a name="azure-ad-connect-special-considerations-for-instances"></a>Program Azure AD Connect: Specjalne uwagi dotyczące wystąpień
 Program Azure AD Connect jest najczęściej używana z wystąpienia na całym świecie usługi Azure AD i Office 365. Ale istnieją również inne wystąpienia, a te mają różne wymagania dotyczące adresów URL i inne zagadnienia specjalne.

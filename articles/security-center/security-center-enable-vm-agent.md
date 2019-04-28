@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
 ms.openlocfilehash: 12934ad53050d16b89dd5b4175ca19a24d1ec4d9
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118194"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60916297"
 ---
 # <a name="enable-vm-agent-in-azure-security-center"></a>Włącz agenta maszyny Wirtualnej w usłudze Azure Security Center
 Agent maszyny Wirtualnej musi być zainstalowany na maszynach wirtualnych (VM), w celu [Włącz zbieranie danych](security-center-enable-data-collection.md).  Usługa Azure Security Center umożliwia można sprawdzić, którą maszyny wirtualne wymagają agenta maszyny Wirtualnej i oferuje rekomendacje dotyczące włączenia agenta maszyny Wirtualnej na tych maszynach wirtualnych.

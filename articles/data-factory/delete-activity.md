@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.openlocfilehash: 00658b650cdc0b1752bb9f2f205420018c1d6edd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58881787"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61346347"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Usuń działanie w usłudze Azure Data Factory
 
@@ -115,7 +115,7 @@ Istnieją dwa miejsca, w którym można wyświetlić i monitorować wyniki dzia�
 
 ### <a name="sample-log-file-of-the-delete-activity"></a>Przykładowy plik dziennika aktywności Delete
 
-| Name (Nazwa) | Kategoria | Stan | Błąd |
+| Name (Nazwa) | Category | Stan | Błąd |
 |:--- |:--- |:--- |:--- |
 | test1/yyy.json | Plik | Usunięte |  |
 | test2/hello789.txt | Plik | Usunięte |  |

@@ -17,11 +17,11 @@ ms.date: 07/19/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cb64debca10cf7be6e2e328a1f401f125b67d940
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: MT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447170"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62098511"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workrite"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Workrite
 
@@ -234,7 +234,7 @@ Po kliknięciu kafelka Workrite w panelu dostępu, użytkownik powinien uzyskać
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->

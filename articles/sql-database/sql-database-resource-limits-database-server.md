@@ -13,11 +13,11 @@ ms.reviewer: sashan,moslake,josack
 manager: craigg
 ms.date: 04/18/2019
 ms.openlocfilehash: 04a5b98daf94275c6a95503c518248abeaeaeaa6
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59998281"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61482044"
 ---
 # <a name="sql-database-resource-limits-for-azure-sql-database-server"></a>Limity zasobów bazy danych SQL dla serwera Azure SQL Database
 
@@ -28,7 +28,7 @@ Ten artykuł zawiera omówienie limitów zasobów bazy danych SQL dla serwera ba
 
 ## <a name="maximum-resource-limits"></a>Limity zasobów maksymalna
 
-| Zasób | Limit |
+| Resource | Limit |
 | :--- | :--- |
 | Baz danych na jednym serwerze | 5000 |
 | Domyślna liczba serwerów na subskrypcję w dowolnym regionie | 20 |

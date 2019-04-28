@@ -16,11 +16,11 @@ ms.topic: troubleshooting
 ms.date: 05/30/2017
 ms.author: genli
 ms.openlocfilehash: 81e00c4a3b9490a05667d58952f7bdf8945bacdb
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58446573"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61405258"
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Rozwiązywanie problemów z połączeniami SSH na maszynie Wirtualnej systemu Linux platformy Azure, który zakończy się niepowodzeniem, błędy, lub w przypadku odmowy
 Ten artykuł pomoże Ci znaleźć i rozwiązać problemy, które występują z powodu błędów protokołu Secure Shell (SSH), błędy połączenia SSH, lub odmówiono SSH, podczas próby nawiązania połączenia z maszyną wirtualną systemu Linux (VM). Można użyć witryny Azure portal, interfejsu wiersza polecenia platformy Azure lub rozszerzenie dostępu do maszyny Wirtualnej dla systemu Linux, aby rozwiązać problemy z połączeniem.

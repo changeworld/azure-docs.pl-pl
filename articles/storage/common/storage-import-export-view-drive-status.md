@@ -9,11 +9,11 @@ ms.date: 05/17/2018
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 225164fe00f70839446f8b74155cd3959f745a49
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467751"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61478049"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>Wyświetlanie stanu zadania usługi Azure Import/Export
 
@@ -34,7 +34,7 @@ Zostanie wyświetlony jeden z następujących stanów zadań w zależności od t
 | Wysyłka | Po wysyłasz pakietu, należy zaktualizować informacje o śledzeniu w witrynie Azure portal.  Spowoduje to włączenie zadania do **wysyłania** stanu. Zadanie pozostanie w **wysyłania** stanie do dwóch tygodni. 
 | Odebrano | Po wszystkie dyski są odbierane w centrum danych, stan zadania jest ustawiana na **odebrane**. |
 | Transferowanie | Po co najmniej jeden dysk rozpoczął przetwarzanie, stan zadania jest ustawiony na **transferowanie**. Aby uzyskać więcej informacji, przejdź do [stany stacji](#view-drive-status). |
-| Pakowanie | Po wszystkich dysków przetwarzania, zadanie jest umieszczona w **pakowania** stan do momentu dyski są wysyłane do Ciebie. |
+| Tworzenie pakietów | Po wszystkich dysków przetwarzania, zadanie jest umieszczona w **pakowania** stan do momentu dyski są wysyłane do Ciebie. |
 | Zakończone | Po wszystkie dyski są dostarczane do Ciebie, jeśli zadanie zostało ukończone bez błędów, następnie zadanie jest ustawiana na **Ukończono**. Zadania są automatycznie usuwane po 90 dniach w **Ukończono** stanu. |
 | Zamknięte | Po wszystkie dyski są dostarczane do Ciebie, jeśli wystąpiły błędy podczas przetwarzania zadania, zadanie jest ustawiana na **zamknięte**. Zadania są automatycznie usuwane po 90 dniach w **zamknięte** stanu. |
 

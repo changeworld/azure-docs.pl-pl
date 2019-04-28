@@ -1,7 +1,6 @@
 ---
 title: Konfigurowanie ustawień platformy Spark — Azure HDInsight
 description: Sposób konfigurowania platformy Spark dla klastra usługi Azure HDInsight.
-services: hdinsight
 author: maxluk
 ms.author: maxluk
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 91f706b882c4f245dbd111b0f9cac269db6fd65f
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 77f4ec9cce5d02ea4cbcc4968d02773a13edfe5b
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652239"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62098387"
 ---
 # <a name="configure-apache-spark-settings"></a>Konfigurowanie ustawień platformy Apache Spark
 
@@ -70,7 +69,7 @@ Aby wyświetlić i zmienić poszczególne wartości konfiguracji aparatu Spark, 
 
 * Niestandardowe Spark2 wartości domyślne
 * Niestandardowe właściwości Spark2 — metryki
-* Zaawansowane Spark2 wartości domyślne
+* Advanced Spark2-defaults
 * Zaawansowane środowisko Spark2
 * Zaawansowane spark2-hive — lokacji — zastąpienie
 
@@ -111,8 +110,8 @@ Oto przykład z dwoma węzłami procesu roboczego z wartościami różnych konfi
 Na poniższej liście przedstawiono kluczowe wykonawca Spark parametrów pamięci.
 
 * `spark.executor.memory` Definiuje łączna ilość pamięci dostępnej dla wykonawcy.
-* `spark.storage.memoryFraction` (opcja domyślna około 60%) określa ilość pamięci dostępna do przechowywania danych utrwalonych.
-* `spark.shuffle.memoryFraction` (~ 20% opcja domyślna) określa ilość pamięci zarezerwowanej dla losowa.
+* `spark.storage.memoryFraction` (wartość domyślna około 60%) Określa ilość pamięci dostępna do przechowywania danych utrwalonych.
+* `spark.shuffle.memoryFraction` (wartość domyślna ~ 20%) Określa ilość pamięci zarezerwowanej dla losowa.
 * `spark.storage.unrollFraction` i `spark.storage.safetyFraction` (łącznie 30 procent całkowitej ilości pamięci) — te wartości są używane wewnętrznie przez rozwiązanie Spark i nie powinny być zmieniane.
 
 YARN steruje maksymalną suma pamięci używanych przez kontenery w każdym węźle platformy Spark. Na poniższym diagramie przedstawiono na węzeł relacje między obiektami konfiguracji usługi YARN i platformy Spark.

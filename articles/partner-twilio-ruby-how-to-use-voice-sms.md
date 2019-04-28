@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: MicrosoftHelp@twilio.com
 ms.openlocfilehash: 40b633c4e51a34e6640a9557be49bbe30543daf5
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426439"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61457655"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-ruby"></a>Sposób użycia usługi Twilio dla połączeń głosowych i SMS funkcji w języku Ruby
 Ten przewodnik pokazuje sposób wykonywania typowych zadań programistycznych w usłudze interfejsu API usługi Twilio, na platformie Azure. Omówione scenariusze obejmują tworzenie połączenia telefonicznego i wysyłanie wiadomości wiadomości usługi (SMS). Aby uzyskać więcej informacji na temat usługi Twilio i używania połączeń głosowych i wiadomości SMS w swoich aplikacjach, zobacz [następne kroki](#NextSteps) sekcji.
@@ -47,21 +47,21 @@ Na przykład następujące TwiML czy Konwertowanie tekstu **Witaj, świecie** do
 
 Wszystkie dokumenty TwiML mają `<Response>` jako ich elementu głównego. W tym miejscu Twilio zlecenia służy do Definiowanie zachowania aplikacji.
 
-### <a id="Verbs"></a>TwiML zlecenia
+### <a id="Verbs"></a>TwiML Verbs
 Twilio zlecenia są tagi XML, określające Twilio, co **czy**. Na przykład **&lt;Say&gt;** Twilio komputerowi dostarczenia komunikatu w wywołaniu powoduje, że zlecenie. 
 
 Oto lista poleceń usługi Twilio.
 
-* **&lt;Wybierania&gt;**: obiekt wywołujący nawiązanie połączenia z innego numeru telefonu.
-* **&lt;Zbierz&gt;**: zbiera cyfry wprowadzone na klawiaturze telefonu.
-* **&lt;Rozłączanie&gt;**: kończy wywołanie.
-* **&lt;Odtwórz&gt;**: odtwarza plik audio.
-* **&lt;Wstrzymaj&gt;**: czeka określoną liczbę sekund w trybie dyskretnym.
-* **&lt;Rekord&gt;**: rejestruje głosu wywołującego i zwraca adres URL pliku, który zawiera nagrywania.
-* **&lt;Przekieruj&gt;**: przekazuje kontrolę nad połączenia lub wiadomości SMS do TwiML na inny adres URL.
-* **&lt;Odrzuć&gt;**: odrzuca połączenie na numer Twilio bez możesz rozliczeń
+* **&lt;Wybierania&gt;**: Obiekt wywołujący nawiązanie połączenia innego numeru telefonu.
+* **&lt;Gather&gt;**: Gromadzi informacje o cyfry wprowadzone na klawiaturze telefonu.
+* **&lt;Rozłączanie&gt;**: Kończy wywołanie.
+* **&lt;Play&gt;**: Odtwarza plik audio.
+* **&lt;Pause&gt;**: Dyskretnie czeka określoną liczbę sekund.
+* **&lt;Rekord&gt;**: Rejestruje głosu wywołującego i zwraca adres URL pliku, który zawiera nagrywania.
+* **&lt;Redirect&gt;**: Transfer kontroli połączenia lub wiadomości SMS do TwiML na inny adres URL.
+* **&lt;Reject&gt;**: Odrzuca połączenie na numer Twilio bez możesz rozliczeń
 * **&lt;Powiedz&gt;**: Konwertuje tekst na mowę, który składa się na wywołanie.
-* **&lt;SMS&gt;**: wysyła wiadomość SMS.
+* **&lt;Sms&gt;**: Wysyła wiadomość SMS.
 
 Aby uzyskać więcej informacji na temat Twilio zleceń, ich atrybuty i TwiML zobacz [TwiML][twiml]. Aby uzyskać dodatkowe informacje na temat interfejsu API usługi Twilio, zobacz [interfejsu API usługi Twilio][twilio_api].
 
@@ -109,7 +109,7 @@ W wierszu polecenia Uruchom `bundle install`. Teraz Otwórz `web.rb` oraz ten wi
 
 Teraz wszystko jest gotowe do użycia Biblioteka pomocnicza Twilio dla języka Ruby w aplikacji sieci web.
 
-## <a id="howto_make_call"></a>Porady: wykonywanie wywołania interfejsu wychodzącego
+## <a id="howto_make_call"></a>Jak: Wykonywanie wywołania interfejsu wychodzącego
 Poniżej przedstawiono sposób wykonania wywołania wychodzącego. Kluczowe założenia obejmują przy użyciu biblioteki pomocnika Twilio dla języka Ruby do wykonywania wywołań interfejsu API REST i renderowanie TwiML. Podstaw wartości **z** i **do** numerów telefonów i upewnij się, aby zweryfikować **z** numer telefonu dla konta usługi Twilio, przed uruchomieniem kodu.
 
 Dodaj tę funkcję, aby `web.md`:
@@ -146,7 +146,7 @@ Jeśli open up `http://yourdomain.cloudapp.net/make_call` w przeglądarce, któr
 
 Trzeci parametr (`url`) jest adresem URL, który żąda Twilio, aby uzyskać instrukcje, co należy zrobić po nawiązaniu połączenia. W takim przypadku firma Microsoft konfiguracji, a adres URL (`http://yourdomain.cloudapp.net`), zwraca prosty dokument TwiML i używa `<Say>` zlecenie pewne zamiany tekstu na mowę i powiedzieć "Hello małp", aby osobę otrzymania wywołania.
 
-## <a id="howto_receive_sms"></a>Porady: odbieranie wiadomości SMS
+## <a id="howto_receive_sms"></a>Jak: Odbieranie wiadomości SMS
 W poprzednim przykładzie mamy zainicjowane **wychodzących** połączeń telefonicznych. Ten czas, użyjemy numer telefonu Twilio z dużą dozą podczas rejestracji do procesu **przychodzących** wiadomości SMS.
 
 Po pierwsze, zaloguj się do Twojej [pulpit nawigacyjny Twilio][twilio_account]. Kliknij pozycję "Cyfry" w górnym okienku nawigacji, a następnie kliknij polecenie numer usługi Twilio, do którego zostały podane. Zostaną wyświetlone dwa adresy URL, które można skonfigurować. Adres URL żądania adresie URL żądania głosowe i wiadomość SMS. Są to adresy URL, które wywołuje Twilio, zawsze, gdy rozmowy telefonicznej lub wiadomości SMS są wysyłane do numeru. Adresy URL są również określane jako "web hooks".
@@ -161,13 +161,13 @@ Prosimy o poświęcenie do przetwarzania przychodzących wiadomości SMS, więc 
 
 Po wprowadzeniu zmian, upewnij się, że ponowne uruchomienie aplikacji sieci web. Teraz Twój telefon w działaniu i Wyślij wiadomość SMS na numer usługi Twilio. Niezwłocznie powinna pojawić się odpowiedź programu SMS, która mówi "Hej, dziękuję ping! Rock Twilio i na platformie Azure! ".
 
-## <a id="additional_services"></a>Porady: Korzystanie z usług dodatkowe usługi Twilio
+## <a id="additional_services"></a>Jak: Za pomocą usługi Twilio dodatkowych usług
 Oprócz przykładów, w tym miejscu Twilio oferuje oparte na sieci web interfejsów API, które można wykorzystać dodatkowych funkcji usługi Twilio, z aplikacji systemu Azure. Aby uzyskać szczegółowe informacje, zobacz [dokumentacji interfejsu API usługi Twilio][twilio_api_documentation].
 
 ### <a id="NextSteps"></a>Następne kroki
 Teraz, kiedy znasz już podstawy usługi Twilio, skorzystaj z poniższych linków, aby dowiedzieć się więcej:
 
-* [Wytyczne dotyczące zabezpieczeń usługi Twilio][twilio_security_guidelines]
+* [Twilio Security Guidelines][twilio_security_guidelines]
 * [HowTos usługi Twilio i przykładowy kod][twilio_howtos]
 * [Samouczki szybkiego startu usługi Twilio][twilio_quickstarts] 
 * [Twilio w witrynie GitHub][twilio_on_github]

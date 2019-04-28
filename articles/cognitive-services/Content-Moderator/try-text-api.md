@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 08/05/2017
 ms.author: sajagtap
 ms.openlocfilehash: 794638496931f72a12fcb3bd8819b04c7e2e7c97
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55877052"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60995724"
 ---
 # <a name="moderate-text-from-the-api-console"></a>Moderowanie tekstu z poziomu konsoli interfejsu API
 

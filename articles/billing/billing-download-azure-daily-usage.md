@@ -16,11 +16,11 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
 ms.openlocfilehash: 520d3f6a45b44ba2023dee34642f796689f48221
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648850"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60919005"
 ---
 # <a name="view-and-download-your-azure-usage-and-charges"></a>Przeglądanie i pobieranie swoje użycie platformy Azure oraz opłaty
 
@@ -77,9 +77,9 @@ Jeśli masz umowy klienta firmy Microsoft, możesz pobrać Twoje użycie platfor
 ### <a name="download-usage-for-billed-charges"></a>Pobierz dane użycia opłaty rozliczane
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Wyszukiwanie **Cost Management + rozliczenia**.
+2. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
 3. Wybierz profil rozliczeniowy. W zależności od dostęp może być konieczne najpierw wybrać konta rozliczeniowego.
-4. Wybierz **faktur**.
+4. Wybierz pozycję **Faktury**.
 5. W siatce faktury Znajdź wiersz faktury odpowiadający użycia, który chcesz pobrać.
 6. Kliknij wielokropek (`...`) na końcu wiersza.
 
@@ -94,7 +94,7 @@ Jeśli masz umowy klienta firmy Microsoft, możesz pobrać Twoje użycie platfor
 Można również pobrać użycia data miesiąca dla bieżącego okresu rozliczeniowego. Te opłaty, które nie zostały jeszcze naliczane.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Wyszukiwanie **Cost Management + rozliczenia**.
+2. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
 3. Wybierz profil rozliczeniowy. W zależności od dostęp może być konieczne najpierw wybrać konta rozliczeniowego.
 4. W **Przegląd** bloku Znajdź łącza pobierania poniżej opłaty od początku miesiąca.
 5. Wybierz **użycia platformy Azure i opłaty za**.
@@ -113,7 +113,7 @@ Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https:
 Aby dowiedzieć się więcej na temat opłat faktur i danych użycia, zobacz:
 
 - [Zrozumienie warunki na usługi Microsoft Azure szczegółowe użycia](billing-understand-your-usage.md)
-- [Opis zawartości rachunku dla systemu Microsoft Azure](billing-understand-your-bill.md)
+- [Opis zawartości rachunku za korzystanie z platformy Microsoft Azure](billing-understand-your-bill.md)
 - [Wyświetl i Pobierz fakturę usługi Microsoft Azure](billing-download-azure-invoice.md)
 - [Przeglądanie i pobieranie cen platformy Azure w Twojej organizacji](billing-ea-pricing.md)
 

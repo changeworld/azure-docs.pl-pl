@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: jingwang
 ms.openlocfilehash: cb1b8171dc45c286d3f87a3c33e366d818cfaad9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59283413"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61456822"
 ---
 # <a name="copy-data-to-and-from-sql-server-using-azure-data-factory"></a>Kopiowanie danych do i z programu SQL Server przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -512,35 +512,35 @@ Podczas kopiowania danych z i do programu SQL Server, następujące mapowania s�
 | Typ danych programu SQL Server | Typ danych tymczasowych fabryki danych |
 |:--- |:--- |
 | bigint |Int64 |
-| dane binarne |Byte[] |
-| Bitowe |Wartość logiczna |
-| Char |String, Char[] |
+| binary |Byte[] |
+| bit |Boolean |
+| char |String, Char[] |
 | date |DateTime |
-| Data/godzina |DateTime |
+| Datetime |DateTime |
 | datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
-| Dziesiętna |Dziesiętna |
-| Atrybut FILESTREAM (varbinary(max)) |Byte[] |
-| Liczba zmiennoprzecinkowa |Podwójne |
+| Decimal |Decimal |
+| FILESTREAM attribute (varbinary(max)) |Byte[] |
+| Float |Double |
 | image |Byte[] |
 | int |Int32 |
-| pieniędzy |Dziesiętna |
+| money |Decimal |
 | nchar |String, Char[] |
 | ntext |String, Char[] |
-| Numeryczne |Dziesiętna |
+| Numeryczne |Decimal |
 | nvarchar |String, Char[] |
-| rzeczywiste |Pojedyncze |
-| ROWVERSION |Byte[] |
+| real |Single |
+| rowversion |Byte[] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
-| smallmoney |Dziesiętna |
-| sql_variant |Obiekt |
+| smallmoney |Decimal |
+| sql_variant |Object |
 | tekst |String, Char[] |
-| time |Przedział czasu |
+| time |TimeSpan |
 | timestamp |Byte[] |
 | tinyint |Int16 |
 | uniqueidentifier |Guid |
-| varbinary |Byte[] |
+| Varbinary |Byte[] |
 | varchar |String, Char[] |
 | xml |Xml |
 

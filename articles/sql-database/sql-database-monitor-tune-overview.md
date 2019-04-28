@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 0c93888af16ed7f7162f38c73be5f6330c886c65
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 2a7a6ed5bd28bcc83500da6e82b6c4ff48b2989c
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60001579"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62097780"
 ---
 # <a name="monitoring-and-performance-tuning"></a>Monitorowanie i dostrajanie wydajności
 
@@ -87,7 +87,7 @@ Jeśli okaże się, że masz problemu z wydajnością dotyczące uruchamiania, c
 
 ### <a name="ParamSniffing"></a> Rozwiązywanie problemów z zapytań z problemami z planu wykonania zależne od parametru zapytania
 
-Problem z parametrem plan poufnych (PSP) odwołuje się do scenariusza, w którym Optymalizator zapytań generuje planu wykonania zapytania, który jest optymalna tylko dla określonego parametru wartości (lub zestaw wartości) i buforowanego planu jest następnie optymalnej wartości parametrów używanych w kolejne wykonania. Inne niż optymalne plany następnie może spowodować problemy z wydajnością zapytań i ogólną degradacji przepływności obciążenia. Aby uzyskać więcej informacji na temat wykrywanie parametrów i przetwarzanie zapytań, zobacz [przewodnik dotyczący architektury przetwarzania zapytania](https://docs.microsoft.com/sql/relational-databases/query-processing-architecture-guide.md7#ParamSniffing).
+Problem z parametrem plan poufnych (PSP) odwołuje się do scenariusza, w którym Optymalizator zapytań generuje planu wykonania zapytania, który jest optymalna tylko dla określonego parametru wartości (lub zestaw wartości) i buforowanego planu jest następnie optymalnej wartości parametrów używanych w kolejne wykonania. Inne niż optymalne plany następnie może spowodować problemy z wydajnością zapytań i ogólną degradacji przepływności obciążenia. Aby uzyskać więcej informacji na temat wykrywanie parametrów i przetwarzanie zapytań, zobacz [przewodnik dotyczący architektury przetwarzania zapytania](/sql/relational-databases/query-processing-architecture-guide#ParamSniffing).
 
 Istnieje kilka obejść zastosować, aby zminimalizować problemy, każdy z nich skojarzone wady i zalety i wady:
 

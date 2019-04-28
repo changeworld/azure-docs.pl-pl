@@ -10,11 +10,11 @@ ms.service: iot-accelerators
 services: iot-accelerators
 manager: philmea
 ms.openlocfilehash: ba5eb50dcf800c186124db348ac584ff6f55cebb
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467319"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61450321"
 ---
 # <a name="introduction-to-the-azure-iot-reference-architecture"></a>Wprowadzenie do architektura referencyjna IoT platformy Azure
 
@@ -22,7 +22,7 @@ W tym artykule przedstawiono [architektura referencyjna IoT platformy Azure](htt
 
 Open source [zdalne monitorowanie](iot-accelerators-remote-monitoring-sample-walkthrough.md) i [połączonej fabryki](iot-accelerators-connected-factory-sample-walkthrough.md) akceleratorów rozwiązań, należy wykonać wiele zaleceń architektury odwołanie. Akceleratory rozwiązań służy jako punkt początkowy dla własnych rozwiązań IoT lub narzędzi do uczenia.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Architektura referencyjna opisano elementy rozwiązania IoT, takich jak zasady technologii, skład usług Azure IoT i urządzeń. Architektura sprawia, że zalecenia dotyczące wdrożenia technologii.
 

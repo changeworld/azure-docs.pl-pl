@@ -16,16 +16,16 @@ ms.date: 01/11/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3c9fe597957057dc61da5c2b1cf6f9216711764a
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247847"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61419158"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>Wdrażanie macierzy wirtualnej StorSimple — Aprowizacja w oprogramowaniu VMware
 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/vmware4.png)
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 W tym samouczku opisano, jak aprowizować i nawiązać połączenie z rozwiązania StorSimple Virtual Array na komputerze hosta z systemem VMware ESXi 5.0, 5.5, 6.0 lub 6.5. Ten artykuł dotyczy wdrożenia macierzach wirtualnych StorSimple w witrynie Azure portal i chmury platformy Microsoft Azure dla instytucji rządowych.
 
 Do aprowizowania urządzenia wirtualnego i nawiązania z nim połączenia wymagane są uprawnienia administratora. Aprowizacja i wstępna konfiguracja może zająć około 10 minut.

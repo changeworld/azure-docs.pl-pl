@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 08/03/2018
 ms.author: damaerte
 ms.openlocfilehash: 4fc4f6523eb19294cabdf6b5b910dd346a877502
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49645050"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62095341"
 ---
 # <a name="powershell-in-azure-cloud-shell-for-windows-users"></a>Program PowerShell w użytkownicy usługi Azure Cloud Shell dla Windows
 
@@ -39,7 +39,7 @@ Określonego środowiska PowerShell środowisk, takich jak `tab-completing` nazw
 Niektóre istniejące aliasy programu PowerShell mają takie same nazwy wbudowanego polecenia systemu Linux, takie jak `cat`,`ls`, `sort`, `sleep`itp. W programie PowerShell Core 6 zostały usunięte aliasy, które kolidują z wbudowanego polecenia systemu Linux.
 Poniżej przedstawiono typowe aliasy, które zostały usunięte, a także ich równoważne polecenia:  
 
-|Usunąć aliasu   |Równoważne polecenia   |
+|Usunąć aliasu   |Equivalent Command   |
 |---|---|
 |`cat`    | `Get-Content` |
 |`curl`   | `Invoke-WebRequest` |

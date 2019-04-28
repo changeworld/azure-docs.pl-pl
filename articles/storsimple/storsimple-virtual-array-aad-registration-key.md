@@ -1,6 +1,6 @@
 ---
-title: Nowe uwierzytelniania dla tablic wirtualnego StorSimple | Dokumentacja firmy Microsoft
-description: Wyjaśniono, jak używać uwierzytelniania w usłudze AAD, na podstawie usługi, wygenerować nowy klucz rejestracji i dokonać ręcznej rejestracji urządzeń.
+title: Nowe uwierzytelnianie dla macierzy wirtualnych StorSimple | Dokumentacja firmy Microsoft
+description: Wyjaśnia, jak używać uwierzytelniania usługi AAD na podstawie usługi, wygeneruj nowy klucz rejestracji i przeprowadzenia ręcznej rejestracji urządzeń.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,82 +14,82 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: alkohli
-ms.openlocfilehash: e33a3f843017ec24f3a79701fac9a62e15b4f9ba
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 080f49ca1078858462264f229e9acfee6fad17d1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37109192"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61387656"
 ---
-# <a name="use-the-new-authentication-for-your-storsimple"></a>Użyj nowego uwierzytelniania dla Twojego urządzenia StorSimple
+# <a name="use-the-new-authentication-for-your-storsimple"></a>Nowe uwierzytelnianie dla usługi StorSimple
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
-Usługa Menedżera urządzeń StorSimple działa na platformie Microsoft Azure i łączy wiele tablic wirtualne StorSimple. Data, usługi Menedżer StorSimple urządzenia został użyty do uwierzytelnienia usługi dla urządzenia StorSimple, usługi kontroli dostępu (ACS). Mechanizm ACS będzie niedługo przestarzała i zastępuje uwierzytelniania usługi Azure Active Directory (AAD).
+Usługa Menedżer urządzeń StorSimple działa na platformie Microsoft Azure i łączy wiele macierzy wirtualnej StorSimple. Do tej pory, usługi Menedżer urządzeń StorSimple został użyty do uwierzytelnienia usługi do urządzenia StorSimple, usługi Access Control service (ACS). Mechanizm ACS będzie niedługo przestarzała i zastąpione przez uwierzytelnianie usługi Azure Active Directory (AAD).
 
-Informacje zawarte w tym artykule ma zastosowanie do obu StorSimple 1200 serii wirtualnego tablic tylko. W tym artykule opisano uwierzytelniania w usłudze AAD skojarzony nowy klucz rejestracji usługi i modyfikacji reguły zapory, co dotyczy urządzeń StorSimple.
+Informacje zawarte w tym artykule dotyczy zarówno StorSimple 1200 serii macierzy wirtualnych tylko. W tym artykule opisano szczegóły uwierzytelniania w usłudze AAD i skojarzone nowy klucz rejestracji usługi i modyfikacji reguły zapory, jeśli ma zastosowanie do urządzeń StorSimple.
 
-Uwierzytelnianie usługi AAD odbywa się w tablicach wirtualnego StorSimple (model 1200) z aktualizacji 1 lub nowszą.
+Uwierzytelnianie usługi AAD odbywa się w macierzach wirtualnych StorSimple (model 1200) z aktualizacją Update 1 lub nowszym.
 
-Z powodu wprowadzenia uwierzytelniania w usłudze AAD zmian w:
+Z powodu wprowadzenia uwierzytelnianie w usłudze AAD zmian w:
 
-- Adres URL wzorce dla reguł zapory.
+- Wzorce adresów URL dla reguł zapory.
 - Klucz rejestracji usługi.
 
 Zmiany te omówiono szczegółowo w poniższych sekcjach.
 
 ## <a name="url-changes-for-aad-authentication"></a>Zmiany adresu URL dla uwierzytelniania w usłudze AAD
 
-Aby upewnić się, że usługa korzysta z uwierzytelniania opartego na usłudze AAD, wszyscy użytkownicy muszą zawrzeć nowe adresy URL uwierzytelniania w ich reguł zapory.
+Aby upewnić się, że usługa korzysta z uwierzytelniania opartego na usłudze AAD, wszyscy użytkownicy musi zawierać nowe adresy URL uwierzytelniania w ich reguł zapory.
 
-Jeśli przy użyciu tablicy wirtualnego StorSimple, upewnij się, czy następujący adres URL jest uwzględniona w reguły zapory:
+Jeśli używasz rozwiązania StorSimple Virtual Array, upewnij się, że następujący adres URL znajduje się w regułach zapory:
 
 | Wzorzec URL                         | Chmura | Składnik/funkcji         |
 |------------------------------------|-------|---------------------------------|
 | `https://login.windows.net`        | Azure Public |Usługa uwierzytelniania usługi AAD      |
 | `https://login.microsoftonline.us` | Rząd USA |Usługa uwierzytelniania usługi AAD      |
 
-Aby uzyskać pełną listę adresów URL wzorce dla tablic wirtualnego StorSimple, przejdź do [wzorców adresów URL dla reguł zapory](storsimple-ova-system-requirements.md#url-patterns-for-firewall-rules).
+Aby uzyskać pełną listę adresów URL wzorce dla macierzy wirtualnych StorSimple, przejdź do [wzorce adresów URL dla reguł zapory](storsimple-ova-system-requirements.md#url-patterns-for-firewall-rules).
 
-Jeśli adres URL uwierzytelniania nie jest uwzględniony w zasadach zapory poza Data zaprzestania, użytkownicy widzą alert krytyczny, który ich urządzenia StorSimple nie można uwierzytelnić w usłudze. Usługa nie będzie mogła nawiązać połączenia z urządzeniem. Użytkownicy widzą ten alert, muszą zawierać nowy adres URL uwierzytelniania. Aby uzyskać więcej informacji o alercie, przejdź do [Użyj alertów do monitorowania urządzenia StorSimple](storsimple-virtual-array-manage-alerts.md#networking-alerts).
+Jeśli adres URL uwierzytelniania nie jest uwzględniony w regułach zapory po dacie zakończenia obsługi, widzą alert krytyczny, że ich urządzenia StorSimple nie mogło przeprowadzić uwierzytelniania w usłudze. Usługa nie będzie mogła nawiązać połączenia z urządzeniem. Użytkownicy widzą ten alert, muszą zawierać nowy adres URL uwierzytelniania. Aby uzyskać więcej informacji na temat alertu, przejdź do [Użyj alerty, aby monitorować urządzenie StorSimple](storsimple-virtual-array-manage-alerts.md#networking-alerts).
 
-## <a name="device-version-and-authentication-changes"></a>Zmiany wersji i uwierzytelnianie urządzenia
+## <a name="device-version-and-authentication-changes"></a>Zmiany wersji i uwierzytelnianie urządzeń
 
-Jeśli używany jest tablicą wirtualnego StorSimple, skorzystaj z poniższej tabeli, aby ustalić, jakie działania należy podjąć oparta na wersji oprogramowania urządzenia, którym jest uruchomiony.
+Jeśli używasz rozwiązania StorSimple Virtual Array, skorzystaj z poniższej tabeli, aby ustalić, jakie działania muszą być oparte na wersji oprogramowania urządzenia, które są uruchomione.
 
-| Jeśli urządzenie korzysta  | Wykonaj następującą akcję                                    |
+| Jeśli na urządzeniu jest uruchomiona  | Wykonaj następującą akcję                                    |
 |----------------------------|--------------------------------------------------------------|
-| Aktualizacja z wersji 1.0 lub nowszej i jest w trybie offline. <br> Zostanie wyświetlony alert, że adres URL nie jest białej.| 1. Modyfikowanie reguły zapory w celu uwzględnienia adres URL uwierzytelniania. Zobacz [adresów URL uwierzytelniania](#url-changes-for-aad-authentication). <br> 2. [Pobierz klucz rejestracji usługi AAD z usługi](#aad-based-registration-keys). <br> 3. Wykonaj kroki 1-5, aby [Połącz z interfejsu programu Windows PowerShell wirtualnego tablicy](storsimple-virtual-array-deploy2-provision-hyperv.md#step-2-provision-a-virtual-array-in-hypervisor).<br> 4. Użyj `Invoke-HcsReRegister` polecenia cmdlet, aby zarejestrować urządzenia za pomocą programu Windows PowerShell. Określ klucz uzyskanego w poprzednim kroku.|
-| Aktualizacji wersji 1.0 lub nowszej, a urządzenie jest w trybie online.| Nie jest wymagana żadna akcja.                                       |
-| Aktualizacja 0,6 lub starszym i urządzenie jest w trybie offline. | 1. [Pobierz aktualizację w wersji 1.0 za pośrednictwem serwera katalogu](storsimple-virtual-array-install-update-1.md#download-the-update-or-the-hotfix).<br>2. [Zastosuj Update 1.0 za pośrednictwem lokalnego interfejsu użytkownika sieci web](storsimple-virtual-array-install-update-1.md#install-the-update-or-the-hotfix).<br>3. [Pobierz klucz rejestracji usługi AAD z usługi](#aad-based-registration-keys). <br>4. Wykonaj kroki 1-5, aby [Połącz z interfejsu programu Windows PowerShell wirtualnego tablicy](storsimple-virtual-array-deploy2-provision-hyperv.md#step-2-provision-a-virtual-array-in-hypervisor).<br>5. Użyj `Invoke-HcsReRegister` polecenia cmdlet, aby zarejestrować urządzenia za pomocą programu Windows PowerShell. Określ klucz uzyskanego w poprzednim kroku.|
-| Aktualizacja 0,6 lub starszym i urządzenie jest w trybie online | Modyfikowanie reguły zapory w celu uwzględnienia adres URL uwierzytelniania.<br> Zainstaluj Update 1.0 za pośrednictwem portalu Azure. |
+| Aktualizacja wersji 1.0 lub nowszej i jest w trybie offline. <br> Zostanie wyświetlony alert, że adres URL nie jest umieszczona na białej liście.| 1. Modyfikowanie reguły zapory, aby zawierały adres URL uwierzytelniania. Zobacz [adresy URL uwierzytelniania](#url-changes-for-aad-authentication). <br> 2. [Pobieranie klucza rejestracji usługi AAD z usługi](#aad-based-registration-keys). <br> 3. Wykonaj kroki od 1 do 5, aby [nawiązywanie połączenia z interfejsu programu Windows PowerShell macierzy wirtualnej](storsimple-virtual-array-deploy2-provision-hyperv.md#step-2-provision-a-virtual-array-in-hypervisor).<br> 4. Użyj `Invoke-HcsReRegister` polecenia cmdlet, aby zarejestrować urządzenia za pomocą programu Windows PowerShell. Podaj klucz uzyskany w poprzednim kroku.|
+| Update 1.0 lub nowszej, a urządzenie jest w trybie online.| Nie jest wymagana żadna akcja.                                       |
+| Update 0.6 lub wcześniejszej i urządzenie jest w trybie offline. | 1. [Pobierz aktualizację 1.0 za pośrednictwem serwera katalogu](storsimple-virtual-array-install-update-1.md#download-the-update-or-the-hotfix).<br>2. [Stosowanie aktualizacji 1.0 przy użyciu lokalnego Interfejsu w przeglądarce](storsimple-virtual-array-install-update-1.md#install-the-update-or-the-hotfix).<br>3. [Pobieranie klucza rejestracji usługi AAD z usługi](#aad-based-registration-keys). <br>4. Wykonaj kroki od 1 do 5, aby [nawiązywanie połączenia z interfejsu programu Windows PowerShell macierzy wirtualnej](storsimple-virtual-array-deploy2-provision-hyperv.md#step-2-provision-a-virtual-array-in-hypervisor).<br>5. Użyj `Invoke-HcsReRegister` polecenia cmdlet, aby zarejestrować urządzenia za pomocą programu Windows PowerShell. Podaj klucz uzyskany w poprzednim kroku.|
+| Update 0.6 lub wcześniejszej i urządzenie jest w trybie online | Modyfikowanie reguły zapory, aby zawierały adres URL uwierzytelniania.<br> Zainstaluj aktualizację 1.0 za pośrednictwem witryny Azure portal. |
 
 ## <a name="aad-based-registration-keys"></a>Klucze rejestracji opartych na usłudze AAD
 
-Początek Update 1.0 dla tablic wirtualnego StorSimple, nowej rejestracji na podstawie AAD klucze są używane. Klucze rejestracji jest używany do rejestrowania usługi Menedżer StorSimple urządzenia z urządzeniem.
+Począwszy od aktualizacji 1.0 dla macierzy wirtualnych StorSimple, nowej rejestracji opartych na usłudze AAD używane klucze. Klucze rejestracji umożliwia rejestrowanie usługi Menedżer urządzeń StorSimple z urządzeniem.
 
-Nie można używać nowych kluczy rejestracji usługi AAD, jeśli używasz tablice wirtualnego StorSimple, uruchomioną aktualizacją 0,6 lub starszym. Musisz ponownie wygenerować klucz rejestracji usługi. Po wygenerowaniu klucza nowy klucz służy do rejestrowania wszystkich kolejnych urządzeń. Stary klucz nie jest już prawidłowy.
+Nie można użyć nowych kluczy rejestracji usługi AAD, jeśli używasz macierze wirtualne StorSimple z aktualizacją Update 0.6 lub wcześniejszej. Musisz ponownie wygenerować klucz rejestracji usługi. Po wygenerowaniu klucza, nowy klucz jest używany do rejestrowania wszystkich kolejnych urządzeń. Stary klucz nie jest już prawidłowy.
 
-- Nowy klucz rejestracji usługi AAD wygasa po 3 dni.
-- Praca klucze rejestracji usługi AAD tylko z serii StorSimple 1200 wirtualnego stałych uruchomionych Update 1 lub nowszej. Klucz rejestracji usługi AAD z serii StorSimple 8000 urządzenia nie będzie działać.
-- Klucze rejestracji usługi AAD są dłuższe niż odpowiadające im klucze rejestracji ACS.
+- Nowy klucz rejestracji usługi AAD wygasa po 3 dniach.
+- Pracy klucze rejestracji usługi AAD tylko z serii StorSimple 1200 wirtualnego tablic uruchomionej Update 1 lub nowszej. Klucz rejestracji usługi AAD z urządzenia z serii StorSimple 8000, nie będzie działać.
+- Klucze rejestracji usługi AAD są dłuższe niż odpowiadające klucze rejestracji usługi ACS.
 
 Wykonaj poniższe kroki, aby wygenerować klucz rejestracji usługi AAD.
 
 #### <a name="to-generate-the-aad-service-registration-key"></a>Aby wygenerować klucz rejestracji usługi AAD
 
-1. W **Menedżera urządzeń StorSimple**, przejdź do **zarządzania &gt;**  **klucze**.
+1. W **Menedżer urządzeń StorSimple**, przejdź do **zarządzania &gt;**  **klucze**.
     
     ![Przejdź do kluczy](./media/storsimple-virtual-array-aad-registration-key/aad-registration-key1.png)
 
-2. Kliknij przycisk **generowanie klucza**.
+2. Kliknij przycisk **Wygeneruj klucz**.
 
-    ![Kliknij przycisk regenerate](./media/storsimple-virtual-array-aad-registration-key/aad-click-generate-registration-key.png)
+    ![Kliknij przycisk Wygeneruj ponownie klucz](./media/storsimple-virtual-array-aad-registration-key/aad-click-generate-registration-key.png)
 
-3. Skopiuj nowy klucz. Starsze klucz nie działa.
+3. Skopiuj nowy klucz. Starszy klucz nie będzie działać.
 
-    ![Potwierdź regenerate](./media/storsimple-virtual-array-aad-registration-key/aad-registration-key2.png)
+    ![Upewnij się, Wygeneruj ponownie klucz](./media/storsimple-virtual-array-aad-registration-key/aad-registration-key2.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Dowiedz się więcej o sposobie wdrażania [tablicy wirtualnego StorSimple](storsimple-virtual-array-deploy1-portal-prep.md)
+* Dowiedz się więcej o sposobie wdrażania [macierzy wirtualnej StorSimple](storsimple-virtual-array-deploy1-portal-prep.md)

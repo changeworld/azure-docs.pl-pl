@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
 ms.openlocfilehash: ebd9939128d1f2b870541e82710792d13b69728e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58099005"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62095453"
 ---
 # <a name="apply-system-updates-in-azure-security-center"></a>Zastosuj aktualizacje systemu w usłudze Azure Security Center
 Usługa Azure Security Center monitoruje dzienne Windows i Linux maszyn wirtualnych (VM) i komputerów w celu znalezienia brakujących aktualizacji systemu operacyjnego. Usługa Security Center pobiera listę dostępnych zabezpieczeń i aktualizacje krytyczne z witryny Windows Update lub Windows Server Update Services (WSUS) w zależności od którego usługa jest skonfigurowana na komputerze Windows. Centrum zabezpieczeń sprawdza również uzyskać najnowsze aktualizacje w systemach Linux. Jeśli komputera lub maszyny Wirtualnej, na których brakuje aktualizacji systemu, usługa Security Center zaleca zastosowanie aktualizacji systemu.

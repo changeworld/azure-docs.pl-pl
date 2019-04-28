@@ -13,11 +13,11 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 03/25/2019
 ms.openlocfilehash: 7c444235ed7aa641fe218b4d1667e661ff05d77e
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58443663"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61409748"
 ---
 # <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-an-azure-sql-database"></a>Szybki start: Korzystanie z platformy .NET i języka C# w programie Visual Studio w celu nawiązywania połączenia i wykonywania zapytań w bazie danych Azure SQL Database
 

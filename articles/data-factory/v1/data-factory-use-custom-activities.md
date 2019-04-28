@@ -14,11 +14,11 @@ ms.author: abnarain
 manager: craigg
 robots: noindex
 ms.openlocfilehash: 0ddc235064d99e9d6385ab48e78f893952eefa15
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487485"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61254643"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Korzystanie z działań niestandardowych w potoku usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -48,7 +48,7 @@ Następujące instruktaż zawiera szczegółowe instrukcje dotyczące tworzenia 
 * Pobierz i zainstaluj zestaw [SDK .NET Azure](https://azure.microsoft.com/downloads/).
 
 ### <a name="azure-batch-prerequisites"></a>Wymagania wstępne usługi Azure Batch
-W instruktażu możesz uruchamiać swoje niestandardowe działania programu .NET przy użyciu usługi Azure Batch jako zasobów obliczeniowych. **Usługa Azure Batch** jest przetwarzanie platformy usługi do uruchamiania dużych równoległych i o wysokiej wydajności aplikacji (HPC), wydajnie w chmurze. Usługa Azure Batch planuje pracę intensywnych obliczeń do uruchamiania na zarządzanej **kolekcji maszyn wirtualnych**, i może automatycznie skalować zasoby obliczeniowe do potrzeb Twojego zadania. Zobacz [podstawy usługi Azure Batch] [ batch-technical-overview] artykułu szczegółowe omówienie usługi Azure Batch.
+W instruktażu możesz uruchamiać swoje niestandardowe działania programu .NET przy użyciu usługi Azure Batch jako zasobów obliczeniowych. Usługa **Azure Batch** to usługa platformy służąca do wydajnego uruchamiania w chmurze aplikacji równoległych oraz aplikacji do obliczeń o wysokiej wydajności w wielkiej skali. Usługa Azure Batch planuje pracę intensywnych obliczeń do uruchamiania na zarządzanej **kolekcji maszyn wirtualnych**, i może automatycznie skalować zasoby obliczeniowe do potrzeb Twojego zadania. Zobacz [podstawy usługi Azure Batch] [ batch-technical-overview] artykułu szczegółowe omówienie usługi Azure Batch.
 
 Samouczek należy utworzyć konto usługi Azure Batch przy użyciu puli maszyn wirtualnych. Oto konkretne kroki:
 

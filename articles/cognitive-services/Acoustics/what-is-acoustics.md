@@ -11,11 +11,11 @@ ms.topic: overview
 ms.date: 03/20/2019
 ms.author: kegodin
 ms.openlocfilehash: 1fc125322b83a0eb51095fac21dee05c7ffb39c1
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313621"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61432453"
 ---
 # <a name="what-is-project-acoustics"></a>Co to jest akustyka projektu?
 Akustyka projektu jest aparatem Akustyka wave 3D środowiska interaktywnego. Modeluje ona efektów wave, jak diffraction, portaling i pogłosu efekty w złożonych scen, bez konieczności ręcznego strefy znaczników. Zawiera także aparatu do tworzenia gier i integracji audio oprogramowania pośredniczącego. Filozofia Akustyka projektu jest podobna do statycznego oświetlenia: wprowadzić w trybie offline szczegółowe fizyki zapewnienie fizycznych linii bazowej, a za pomocą uproszczonego środowiska uruchomieniowego ekspresyjny projektowania formanty do zrealizowania określonych celów sztuki.

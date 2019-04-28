@@ -10,14 +10,14 @@ ms.date: 02/28/2017
 ms.author: seguler
 ms.subservice: common
 ms.openlocfilehash: d00bf87a80e13808c42a5839ad0f4508ad7214b9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58011105"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61477488"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Korzystanie z usługi Azure Storage z rozwiązaniem ciągłej integracji Hudson
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Poniżej pokazano, jak używać magazynu obiektów Blob jako repozytorium artefaktów kompilacji utworzonego przez rozwiązanie Hudson ciągłej integracji (CI) lub jako źródło plików do pobrania ma być używany w procesie kompilacji. Jednego ze scenariuszy, w którym użytkownik może to być przydatne jest one kodowania w środowisku zwinne Wytwarzanie oprogramowania (przy użyciu platformy Java lub innych języków), wykonywane są kompilacje zależności o ciągłej integracji, gdy potrzebujesz repozytorium artefaktów kompilacji, dzięki czemu można wykonać następujące akcje, na przykład udostępniać je innym członkom organizacji, klientów lub Obsługa archiwum.  Inny scenariusz polega na podczas samego zadania kompilacji wymaga innych plików, na przykład, zależności, aby pobrać jako część kompilacji danych wejściowych.
 
 W ramach tego samouczka używana będzie wtyczka usługi Azure Storage dla ciągłej integracji Hudson udostępnianych przez firmę Microsoft.

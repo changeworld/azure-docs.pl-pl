@@ -13,12 +13,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: rclaus
-ms.openlocfilehash: d3d1769766053b513a98df153cb635ae148f26b1
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: fc35077e00bc6322a815a52ca6ab3571a4e06d3d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867374"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60937718"
 ---
 # <a name="sap-hana-azure-backup-on-file-level"></a>SAP HANA usługi Azure Backup na poziomie plików
 
@@ -36,7 +36,7 @@ Poniższy rysunek pokazuje okno dialogowe elementu menu kopii zapasowych w syste
 
 Gdy ten wybór wydaje się prosta i proste, istnieją pewne zagadnienia. Jak wspomniano wcześniej, Maszynie wirtualnej platformy Azure ma ograniczenie liczby dysków z danymi, które mogą być dołączone. Nie może być przygotowanie wydajności niezbędnej do przechowywania plików kopii zapasowych oprogramowania SAP HANA w systemach plików maszyny wirtualnej, w zależności od rozmiaru bazy danych i dysku przepływności wymagań, które może obejmować oprogramowania rozkładania na wielu dyskach danych. Różne opcje dotyczące przenoszenia tych plików kopii zapasowej i zarządzanie ograniczenia rozmiaru plików i wydajności podczas obsługi terabajty danych, znajdują się w dalszej części tego artykułu.
 
-Innym rozwiązaniem, która zapewnia większą swobodę w sprawie łączna pojemność, jest usługa Azure blob storage. Pojedynczy obiekt blob jest także ograniczona do 1 TB, łączna pojemność jednego kontenera obiektów blob jest obecnie 500 TB. Ponadto go daje klientom możliwość wybierz tak zwane &quot;chłodna&quot; usługi blob storage, która ma obniżenie kosztów. Zobacz [usługi Azure Blob Storage: gorąca i chłodna warstw magazynowania](../../../storage/blobs/storage-blob-storage-tiers.md) szczegółowe informacje na temat chłodnego magazynu obiektów blob.
+Innym rozwiązaniem, która zapewnia większą swobodę w sprawie łączna pojemność, jest usługa Azure blob storage. Pojedynczy obiekt blob jest także ograniczona do 1 TB, łączna pojemność jednego kontenera obiektów blob jest obecnie 500 TB. Ponadto go daje klientom możliwość wybierz tak zwane &quot;chłodna&quot; usługi blob storage, która ma obniżenie kosztów. Zobacz [usługi Azure Blob Storage: Gorącego i chłodnego warstw magazynowania](../../../storage/blobs/storage-blob-storage-tiers.md) szczegółowe informacje na temat chłodnego magazynu obiektów blob.
 
 Dla dodatkowego bezpieczeństwa należy użyć konta magazynu z replikacją geograficzną do przechowywania kopii zapasowych oprogramowania SAP HANA. Zobacz [replikacja usługi Azure Storage](../../../storage/common/storage-redundancy.md) szczegółowe informacje na temat replikacji konta magazynu.
 
@@ -70,7 +70,7 @@ Powtarzanie kopii zapasowej tego samego oprogramowania RAID z Rozkładanie w pi�
 
 ## <a name="copy-sap-hana-backup-files-to-azure-blob-storage"></a>Skopiuj pliki kopii zapasowej platformy SAP HANA w usłudze Azure blob storage
 
-Inną opcją szybkiego przechowywania plików kopii zapasowych oprogramowania SAP HANA jest usługi Azure blob storage. Jeden kontener obiektów blob pojedynczego obowiązuje limit 500 TB, wystarczająca dla niektórych mniejszych systemów SAP HANA, użycie typów M32ts, M32ls, M64ls i maszyna wirtualna GS5 platformy Azure, aby zapewnić wystarczające kopie zapasowe oprogramowania SAP HANA. Klienci mogą sami między &quot;gorąca&quot; i &quot;zimnych&quot; magazynu obiektów blob (zobacz [usługi Azure Blob Storage: gorąca i chłodna warstw magazynowania](../../../storage/blobs/storage-blob-storage-tiers.md)).
+Inną opcją szybkiego przechowywania plików kopii zapasowych oprogramowania SAP HANA jest usługi Azure blob storage. Jeden kontener obiektów blob pojedynczego obowiązuje limit 500 TB, wystarczająca dla niektórych mniejszych systemów SAP HANA, użycie typów M32ts, M32ls, M64ls i maszyna wirtualna GS5 platformy Azure, aby zapewnić wystarczające kopie zapasowe oprogramowania SAP HANA. Klienci mogą sami między &quot;gorąca&quot; i &quot;zimnych&quot; magazynu obiektów blob (zobacz [usługi Azure Blob Storage: Gorącego i chłodnego warstw magazynowania](../../../storage/blobs/storage-blob-storage-tiers.md)).
 
 Za pomocą narzędzia blobxfer jest łatwe skopiować pliki kopii zapasowych oprogramowania SAP HANA bezpośrednio w usłudze Azure blob storage.
 

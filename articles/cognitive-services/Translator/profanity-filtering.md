@@ -3,19 +3,20 @@ title: Filtrowanie wulgaryzmów — interfejs API tekstu usługi Translator
 titlesuffix: Azure Cognitive Services
 description: Użyj wulgaryzmów filtrowanie danych na interfejs API tekstu usługi Translator.
 services: cognitive-services
-author: v-pawal
+author: Jann-Skotdal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 02/21/2019
-ms.author: v-jansko
+origin.date: 02/21/2019
+ms.date: 03/12/2019
+ms.author: v-junlch
 ms.openlocfilehash: bd7a05f2f597d1882293387e5aac8e4d7367d051
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58916635"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60880034"
 ---
 # <a name="add-profanity-filtering-with-the-translator-text-api"></a>Dodaj wulgaryzmów filtrowanie przy użyciu interfejsu API tłumaczenia tekstu
 
@@ -35,3 +36,4 @@ Metoda Translate() przyjmuje parametr "Opcje", który zawiera nowy element "Prof
 ## <a name="next-steps"></a>Kolejne kroki
 > [!div class="nextstepaction"]
 > [Zastosuj wulgaryzmów filtrowanie przy użyciu wywołania interfejsu API usługi Translator](reference/v3-0-translate.md)
+

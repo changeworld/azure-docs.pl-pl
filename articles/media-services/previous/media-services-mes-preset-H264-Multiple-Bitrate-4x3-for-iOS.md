@@ -1,8 +1,8 @@
 ---
 title: Wiele szybkość transmisji bitów H264 4 x 3 dla systemu iOS | Dokumentacja firmy Microsoft
 description: Temat zawiera omówienie **wielu szybkość transmisji bitów H264 4 x 3 dla systemu iOS** ustawienie wstępne zadania.
-author: Juliako
-manager: femila
+author: WenJason
+manager: digimobile
 editor: ''
 services: media-services
 documentationcenter: ''
@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+origin.date: 03/18/2019
+ms.date: 04/01/2019
+ms.author: v-jay
 ms.openlocfilehash: 45dbaea4e2c6f8cdbe3d33df5d3b82b9df519ff2
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58188003"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61463654"
 ---
-# <a name="h264-multiple-bitrate-4x3-for-ios"></a>Wiele szybkość transmisji bitów H264 4 x 3 dla systemu iOS
+# <a name="h264-multiple-bitrate-4x3-for-ios"></a>Wielokrotna szybkość transmisji bitów H264 4x3 dla systemu iOS
 `Media Encoder Standard` definiuje zestaw kodowania ustawienia wstępne, których można użyć podczas tworzenia zadań kodowania. Można użyć `preset name` do określenia do formatu, który chcesz zakodować pliku multimedialnego. Lub można utworzyć własne JSON lub XML na podstawie ustawień wstępnych (przy użyciu kodowania UTF-8 lub UTF-16. Następnie należy wprowadzić niestandardowego ustawienia wstępnego z koderem. Aby uzyskać listę wszystkich wstępnie zdefiniowanych nazw obsługiwanych przez to `Media Encoder Standard` encoder, zobacz [ustawienia wstępne zadań usługi Media Encoder Standard](media-services-mes-presets-overview.md).  
   
  W tym temacie przedstawiono `H264 Multiple Bitrate 4x3 for iOS` wstępnie ustawione w formacie XML i JSON.  

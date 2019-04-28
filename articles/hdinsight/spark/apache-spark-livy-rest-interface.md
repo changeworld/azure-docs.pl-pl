@@ -1,7 +1,6 @@
 ---
 title: Przesyłanie zadań do klastra Spark w usłudze Azure HDInsight za pomocą platformy Spark usługi Livy
 description: Dowiedz się, jak używać interfejsu API REST programu Apache Spark do przesyłania zadań platformy Spark zdalne z klastrem usługi Azure HDInsight.
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 62056b27669f334f1d8007d5284979ac4701f9d9
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
-ms.translationtype: MT
+ms.openlocfilehash: 99175f79e030a55991947313e4a7e32a738d6adb
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53650511"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62097404"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>Użyj interfejsu API REST programu Apache Spark, aby przesłać zdalnej obsługi zadań do klastra usługi HDInsight Spark
 
@@ -31,13 +30,13 @@ Za pomocą usługi Livy do uruchamiania interakcyjnego Spark powłoki lub przesy
 ## <a name="submit-an-apache-livy-spark-batch-job"></a>Przesyłanie zadania usługi batch Apache Spark usługi Livy
 Przed przesłaniem zadania usługi batch, należy przekazać plik jar aplikacji w magazynie klastra skojarzonego z klastrem. Możesz to zrobić za pomocą narzędzia wiersza polecenia [**AzCopy**](../../storage/common/storage-use-azcopy.md). Brak różnych klientów, których można użyć w celu przekazywania danych. Więcej informacji na ten temat można znaleźć w artykule [Przekazywanie danych dla zadań Apache Hadoop w usłudze HDInsight](../hdinsight-upload-data.md).
 
-    curl -k --user "<hdinsight user>:<user password>" -v -H <content-type> -X POST -d '{ "file":"<path to application jar>", "className":"<classname in jar>" }' 'https://<spark_cluster_name>.azurehdinsight.net/livy/batches' -H "X-Requested-By: admin"
+    curl -k --user "<hdinsight user>:<user password>" -v -H "Content-Type: application/json" -X POST -d '{ "file":"<path to application jar>", "className":"<classname in jar>" }' 'https://<spark_cluster_name>.azurehdinsight.net/livy/batches' -H "X-Requested-By: admin"
 
 **Przykłady**:
 
 * Jeśli plik jar znajduje się w magazynie klastra (WASB)
   
-        curl -k --user "admin:mypassword1!" -v -H 'Content-Type: application/json' -X POST -d '{ "file":"wasb://mycontainer@mystorageaccount.blob.core.windows.net/data/SparkSimpleTest.jar", "className":"com.microsoft.spark.test.SimpleFile" }' "https://mysparkcluster.azurehdinsight.net/livy/batches" -H "X-Requested-By: admin"
+        curl -k --user "admin:mypassword1!" -v -H "Content-Type: application/json" -X POST -d '{ "file":"wasb://mycontainer@mystorageaccount.blob.core.windows.net/data/SparkSimpleTest.jar", "className":"com.microsoft.spark.test.SimpleFile" }' "https://mysparkcluster.azurehdinsight.net/livy/batches" -H "X-Requested-By: admin"
 * Jeśli chcesz przekazać pliku jar i classname jako część pliku wejściowego (w tym przykładzie input.txt)
   
         curl -k  --user "admin:mypassword1!" -v -H "Content-Type: application/json" -X POST --data @C:\Temp\input.txt "https://mysparkcluster.azurehdinsight.net/livy/batches" -H "X-Requested-By: admin"
@@ -73,7 +72,7 @@ W tej sekcji przyjrzymy się przykładów, aby przesłać zadanie usługi batch,
 * Za pośrednictwem pliku jar aplikacji zostały już skopiowane do konta magazynu skojarzonego z klastrem.
 * Masz CuRL zainstalowane na komputerze, na którym próbujesz następujące kroki.
 
-Wykonaj następujące czynności:
+Wykonaj poniższe czynności:
 
 1. Daj nam najpierw sprawdzić, czy usługi Livy Spark działa w klastrze. Możemy to zrobić przez pobranie listy uruchomionych partii. Jeśli używasz zadania przy użyciu programu Livy po raz pierwszy, danych wyjściowych powinna zwrócić zero.
    

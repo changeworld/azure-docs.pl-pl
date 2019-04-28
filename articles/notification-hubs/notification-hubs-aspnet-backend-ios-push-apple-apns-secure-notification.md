@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
 ms.openlocfilehash: d88bdb1eaeb95413df84bf69ed4fc763b6d4901f
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54449271"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61458510"
 ---
 # <a name="azure-notification-hubs-secure-push"></a>Azure Notification Hubs bezpieczne wypychanie
 
@@ -28,7 +28,7 @@ ms.locfileid: "54449271"
 > * [iOS](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md)
 > * [Android](notification-hubs-aspnet-backend-android-secure-google-gcm-push-notification.md)
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Obsługę powiadomień wypychanych w systemie Microsoft Azure umożliwia dostęp do infrastruktury wypychania łatwy w użyciu, wieloplatformową i skalowanych w poziomie, który znacznie upraszcza implementację powiadomienia wypychane dla aplikacji firmowych i komercyjnych dla urządzeń przenośnych platform.
 

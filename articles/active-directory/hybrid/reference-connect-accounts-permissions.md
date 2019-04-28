@@ -18,11 +18,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d145407331ed652f21510483b51a4617bf28e2fa
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: MT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56879122"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62096177"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Program Azure AD Connect: Konta i uprawnienia
 
@@ -73,7 +73,7 @@ Te poświadczenia są używane tylko podczas instalacji i nie są używane po za
 ### <a name="ad-ds-connector-account-required-permissions-for-express-settings"></a>Usługi AD DS łącznika konta wymagane uprawnienia dla ustawień ekspresowych
 Konta usługi AD DS łącznika jest tworzony dla odczytu i zapisu do systemu Windows Server AD i ma następujące uprawnienia w tworzeniu ustawień ekspresowych:
 
-| Uprawnienie | Używane dla |
+| Uprawnienie | Używana do |
 | --- | --- |
 | <li>Replikuj zmiany katalogu</li><li>Replikacja katalogu zmienia wszystkie |Synchronizacja skrótów haseł |
 | Odczyt/zapis wszystkich właściwości użytkownika |Importowanie i Exchange hybrydowych |
@@ -146,7 +146,7 @@ Kiedy uaktualniasz z jednej wersji programu Azure AD Connect do nowej wersji, po
 >Program Azure AD Connect, począwszy od kompilacji 1.1.484 wprowadzono usterkę regresji, co wymaga uprawnień administratora systemu, aby uaktualnić bazę danych SQL.  Ten problem został rozwiązany w kompilacji 1.1.647.  Jeśli uaktualniasz z bieżącą kompilacją, konieczne będzie uprawnienia administratora systemu.  Uprawnienia dbo nie są wystarczające.  Jeśli użytkownik podejmie próbę uaktualnić program Azure AD Connect bez uprawnień administratora systemu, uaktualnienie nie powiedzie i Azure AD Connect nie będzie już działać poprawnie po tym dniu.  Firma Microsoft zapoznała się z tym i dokłada starań, aby rozwiązać ten problem.
 
 
-| Podmiot zabezpieczeń | Wymagane uprawnienia | Używane dla |
+| Podmiot zabezpieczeń | Wymagane uprawnienia | Używana do |
 | --- | --- | --- |
 | Uruchomienie Kreatora instalacji użytkownika |Administrator serwera lokalnego |Aktualizowanie plików binarnych. |
 | Uruchomienie Kreatora instalacji użytkownika |Członek ADSyncAdmins |Wprowadź zmiany do reguły synchronizacji i innych konfiguracji. |

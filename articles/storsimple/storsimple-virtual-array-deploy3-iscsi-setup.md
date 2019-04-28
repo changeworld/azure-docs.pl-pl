@@ -15,17 +15,17 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.openlocfilehash: 5d3525952ec09474d60618c4f99138cef1fce57a
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317514"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61417311"
 ---
 # <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>Podczas wdrażania rozwiązania StorSimple Virtual Array — zestaw się jako serwera iSCSI za pośrednictwem witryny Azure portal
 
 ![przepływ procesu instalacji iSCSI](./media/storsimple-virtual-array-deploy3-iscsi-setup/iscsi4.png)
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 W tym samouczku wdrażania stosuje się do programu Microsoft Azure StorSimple Virtual Array. W tym samouczku opisano sposób wykonywania początkowej konfiguracji, zarejestrować serwer iSCSI StorSimple, przeprowadzić konfigurację urządzenia następnie utworzyć, instalacji, zainicjować i sformatować woluminy na rozwiązania StorSimple Virtual Array, skonfigurowany jako serwer iSCSI. 
 

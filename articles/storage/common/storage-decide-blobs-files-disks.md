@@ -9,11 +9,11 @@ ms.date: 11/28/2018
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 869d2105ccf635a46a21e9b7f382ddbef713d68b
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327014"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61483421"
 ---
 # <a name="deciding-when-to-use-azure-blobs-azure-files-or-azure-disks"></a>Kiedy używać obiektów blob platformy Azure, Azure Files lub Azure Disks
 Microsoft Azure oferuje kilka funkcji w usłudze Azure Storage do przechowywania i uzyskiwania dostępu do danych w chmurze. Ten artykuł dotyczy usługi Azure Files, obiekty BLOB i dyski i zaprojektowano, aby ułatwić wybór między tymi funkcjami.

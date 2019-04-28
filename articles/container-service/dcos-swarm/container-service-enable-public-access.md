@@ -10,11 +10,11 @@ ms.date: 08/26/2016
 ms.author: saudas
 ms.custom: mvc
 ms.openlocfilehash: 3e4ba15fa1925ca40ad7760acbd14331fbdd1343
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996591"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61457388"
 ---
 # <a name="deprecated-enable-public-access-to-an-azure-container-service-application"></a>(PRZESTARZAŁE) Włączanie dostępu publicznego do aplikacji usługi Azure Container Service
 
@@ -54,7 +54,7 @@ Najpierw należy otworzyć port, którego potrzebujemy.
    | Port zaplecza |Port wewnętrzny publicznego kontenera do kierowania ruchu do. |
    | Pula zaplecza |Kontenery w tej puli będzie cel dla tego modułu równoważenia obciążenia. |
    | Sondy |Sondowania użyte do określenia, czy element docelowy w **puli zaplecza** jest w dobrej kondycji. |
-   | Trwałość sesji |Określa sposób obsługi ruchu w kliencie na czas trwania sesji.<br><br>**Brak**: kolejne żądania z tego samego klienta mogą być obsługiwane przez żaden kontener.<br>**Klient IP**: kolejne żądania z tego samego adresu IP klienta są obsługiwane przez ten sam kontener.<br>**Klient IP i protokół**: kolejne żądania z tej samej kombinacji adresu IP i Protokół klienta są obsługiwane przez ten sam kontener. |
+   | Trwałość sesji |Określa sposób obsługi ruchu w kliencie na czas trwania sesji.<br><br>**Brak**: Kolejne żądania z tego samego klienta mogą być obsługiwane przez żaden kontener.<br>**Klient IP**: Kolejne żądania z tego samego adresu IP klienta są obsługiwane przez ten sam kontener.<br>**Klient IP i protokół**: Kolejne żądania z tej samej kombinacji adresu IP i Protokół klienta są obsługiwane przez ten sam kontener. |
    | Limit czasu bezczynności |(Tylko TCP) W ciągu kilku minut, czas do klienta protokołu TCP/HTTP Otwórz bez polegania na *keep-alive* wiadomości. |
 
 ## <a name="add-a-security-rule-portal"></a>Dodawanie reguły zabezpieczeń (portal)

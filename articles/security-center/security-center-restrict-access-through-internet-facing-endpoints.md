@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
 ms.openlocfilehash: b736bb5549b7d236e746ba7b161cde79209e927b
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56110527"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60906584"
 ---
 # <a name="restrict-access-through-internet-facing-endpoints-in-azure-security-center"></a>Ograniczanie dostępu przez punkty końcowe łączące dostępnego z Internetu w usłudze Azure Security Center
 Usługa Azure Security Center zaleci, ograniczanie dostępu przez punkty końcowe dostępnego z Internetu, jeśli którakolwiek z sieciowymi grupami zabezpieczeń (NSG) z nich ma co najmniej jedną regułę ruchu przychodzącego zezwalające na dostęp z "Dowolna" źródłowy adres IP. Otwieranie dla "dowolnej" mogą umożliwić osobom atakującym dostęp do zasobów. Usługa Security Center oferuje rekomendacje dotyczące edytowania tych reguł dla ruchu przychodzącego, aby ograniczyć dostęp do źródłowych adresów IP, które faktycznie muszą mieć dostęp.

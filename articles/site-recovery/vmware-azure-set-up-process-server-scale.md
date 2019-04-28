@@ -1,28 +1,30 @@
 ---
-title: Skonfigurować serwer przetwarzania na platformie Azure, aby zakończyć się niepowodzeniem w trakcie odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych z usługą Azure Site Recovery | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak skonfigurować serwer przetwarzania na platformie Azure, aby zakończyć się niepowodzeniem powrót po awarii z platformy Azure do lokalnych podczas odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych.
+title: Konfigurowanie serwera przetwarzania skalowalnego w poziomie podczas odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych z usługą Azure Site Recovery | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób konfigurowania serwera przetwarzania skalowalnego w poziomie podczas odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych.
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 4/9/2019
+ms.date: 4/23/2019
 ms.author: ramamill
-ms.openlocfilehash: 6849ffb6fa46365aa775b9410067cb0874c70ef8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 678f9aa60d4970540ded8ba0bb1a4ddaa6281a49
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59362157"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62101901"
 ---
-# <a name="scale-for-failback-with-additional-process-servers"></a>Skalowanie na potrzeby powrotu po awarii przy użyciu dodatkowych serwerów przetwarzania
+# <a name="scale-with-additional-process-servers"></a>Skalowanie za pomocą dodatkowych serwerów przetwarzania
 
-Domyślnie, Jeśli replikujesz maszyny wirtualne VMware lub serwery fizyczne do platformy Azure za pomocą [Site Recovery](site-recovery-overview.md), serwer przetwarzania jest zainstalowany na komputerze z serwerem konfiguracji i służy do koordynowania innych transfer danych między Site Recovery i infrastruktury lokalnej. Aby zwiększyć wydajność i skalowanie w poziomie wdrożenie replikacji, możesz dodać autonomicznego dodatkowych serwerów przetwarzania. W tym artykule opisano, jak to zrobić.
+Domyślnie, Jeśli replikujesz maszyny wirtualne VMware lub serwery fizyczne do platformy Azure za pomocą [Site Recovery](site-recovery-overview.md), serwer przetwarzania jest zainstalowany na komputerze z serwerem konfiguracji i służy do koordynowania innych transfer danych między Site Recovery i infrastruktury lokalnej. Aby zwiększyć wydajność i skalowanie w poziomie wdrożenie replikacji, możesz dodać autonomicznego dodatkowych serwerów przetwarzania. W tym artykule opisano sposób konfigurowania serwera przetwarzania skalowalnego w poziomie.
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
 ### <a name="capacity-planning"></a>Planowanie pojemności
 
 Upewnij się, że zostały wykonane [planowania pojemności](site-recovery-plan-capacity-vmware.md) potrzeby replikacji oprogramowania VMware. Pomaga to identyfikować jak i kiedy należy wdrażać dodatkowych serwerów przetwarzania.
+
+Od wersji 9.24 wskazówki jest dodawany podczas wyboru serwera przetwarzania dla nowych replikacji. Serwer przetwarzania zostanie oznaczona w dobrej kondycji, ostrzeżenie i krytyczna na podstawie określonych kryteriów. Aby poznać różne scenariusze, które mogą mieć wpływ na stan serwera przetwarzania, odwiedź stronę [procesami wybór serwera](vmware-azure-manage-process-server.md#process-server-selection-guidance).
 
 > [!NOTE]
 > Korzystanie ze sklonowanym składnika serwera przetwarzania nie jest obsługiwana. Wykonaj kroki opisane w tym artykule, aby każdy PS skalowalnego w poziomie.
@@ -44,8 +46,6 @@ W przypadku, gdy każda chronione maszyny źródłowej skonfigurowano 3 dyskami 
 Wymagania wstępne dotyczące dodatkowym serwerze przetwarzania są podsumowane w poniższej tabeli.
 
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
-
-
 
 ## <a name="download-installation-file"></a>Pobierz plik instalacyjny
 

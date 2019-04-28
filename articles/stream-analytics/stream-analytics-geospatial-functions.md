@@ -9,11 +9,11 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.openlocfilehash: ad789a597da759b9a2d58138c7ed441389a12adb
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103136"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61479987"
 ---
 # <a name="introduction-to-stream-analytics-geospatial-functions"></a>Wprowadzenie do funkcji geoprzestrzennych usługi Stream Analytics
 
@@ -27,7 +27,7 @@ Przykładowe scenariusze, które mogą korzystać z funkcji geoprzestrzennych ob
 * Grodzenia
 * Śledzenie Phone między lokacjami komórki
 
-Język zapytań usługi Stream Analytics zawiera siedem wbudowanych funkcji geoprzestrzennych: **CreateLineString**, **CreatePoint**, **CreatePolygon**, **ST_DISTANCE** , **ST_OVERLAPS**, **ST_INTERSECTS**, i **ST_WITHIN**.
+Język zapytań usługi Stream Analytics zawiera siedem wbudowanych funkcji geoprzestrzennych: **CreateLineString**, **CreatePoint**, **CreatePolygon**, **ST_DISTANCE**, **ST_OVERLAPS**, **ST_ PRZECINA**, i **ST_WITHIN**.
 
 ## <a name="createlinestring"></a>CreateLineString
 
@@ -50,9 +50,9 @@ FROM input
   
 ### <a name="output-example"></a>Przykład danych wyjściowych  
 
- {"type": "LineString", "coordinates": [[-10.2, 3.0], [10.0, 10.0], [10.5, 10.5]]}
+ {"type" : "LineString", "coordinates": [[-10.2, 3.0], [10.0, 10.0], [10.5, 10.5]]}
 
- {"type": "LineString", "coordinates": [[20.2321,-87.33], [10.0, 10.0], [10.5, 10.5]]}
+ {"type" : "LineString", "coordinates": [[20.2321,-87.33], [10.0, 10.0], [10.5, 10.5]]}
 
 Aby dowiedzieć się więcej, odwiedź stronę [CreateLineString](https://msdn.microsoft.com/azure/stream-analytics/reference/createlinestring) odwołania.
 
@@ -77,9 +77,9 @@ FROM input
   
 ### <a name="output-example"></a>Przykład danych wyjściowych
   
- {"type": "Point", "coordinates": [-10.2, 3.0]}  
+ {"type" : "Point", "coordinates": [-10.2, 3.0]}  
   
- {"type": "Point", "coordinates": [20.2321,-87.33]}  
+ {"type" : "Point", "coordinates": [20.2321,-87.33]}  
 
 Aby dowiedzieć się więcej, odwiedź stronę [CreatePoint](https://msdn.microsoft.com/azure/stream-analytics/reference/createpoint) odwołania.
 
@@ -104,9 +104,9 @@ FROM input
   
 ### <a name="output-example"></a>Przykład danych wyjściowych  
 
- {"type": "Polygon", "coordinates": [[[-10.2, 3.0], [10.0, 10.0], [10.5, 10.5], [-10.2, 3.0]]]}
+ {"type" : "Polygon", "coordinates": [[[-10.2, 3.0], [10.0, 10.0], [10.5, 10.5], [-10.2, 3.0]]]}
  
- {"type": "Polygon", "coordinates": [[[20.2321,-87.33], [10.0, 10.0], [10.5, 10.5], [20.2321,-87.33]]]}
+ {"type" : "Polygon", "coordinates": [[[20.2321,-87.33], [10.0, 10.0], [10.5, 10.5], [20.2321,-87.33]]]}
 
 Aby dowiedzieć się więcej, odwiedź stronę [CreatePolygon](https://msdn.microsoft.com/azure/stream-analytics/reference/createpolygon) odwołania.
 

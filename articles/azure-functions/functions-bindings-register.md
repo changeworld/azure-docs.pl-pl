@@ -8,14 +8,15 @@ manager: jeconnoc
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-ms.date: 02/18/2019
-ms.author: cshoe
+origin.date: 02/18/2019
+ms.date: 04/26/2019
+ms.author: v-junlch
 ms.openlocfilehash: 5534086d5754691f650370e465fa2c63210e0dc7
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56739611"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61437858"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Rejestrowanie rozszerzeń powiązania usługi Azure Functions
 
@@ -37,7 +38,7 @@ Wyjątki, które nie wymagają jawna rejestracja, ponieważ są automatycznie re
 
 ## <a name="azure-portal-development"></a>Programowanie na platformie Azure portal
 
-Podczas tworzenia funkcji lub dodać powiązanie, zostanie wyświetlony monit, gdy rozszerzenie dla wyzwalaczem lub powiązaniem wymaga rejestracji. Odpowiadanie do wiersza polecenia, klikając **zainstalować** do zarejestrowania rozszerzenia. Instalacja może trwać do 10 minut, w ramach planu zużycie.
+Podczas tworzenia funkcji lub dodać powiązanie, zostanie wyświetlony monit, gdy rozszerzenie dla wyzwalaczem lub powiązaniem wymaga rejestracji. Odpowiadanie do wiersza polecenia, klikając **zainstalować** do zarejestrowania rozszerzenia. Instalacja może trwać do 10 minut, w ramach planu zużycie. 
 
 Każdego rozszerzenia, należy zainstalować jeden raz dla danej funkcji aplikacji. Dla obsługiwanych powiązań, które nie są dostępne w portalu lub zaktualizować zainstalowanego rozszerzenia można także [ręczne instalowanie lub aktualizowanie usługi Azure Functions powiązania rozszerzeń z portalu](install-update-binding-extensions-manual.md).  
 
@@ -75,4 +76,5 @@ Zastąp `<target_version>` w przykładzie z określoną wersją pakietu, takich 
 ## <a name="next-steps"></a>Kolejne kroki
 > [!div class="nextstepaction"]
 > [Usługa Azure przykład wyzwalacz i powiązania funkcji](./functions-bindings-example.md)
+
 

@@ -9,11 +9,11 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 75d2930363b6ad1aeace22d7529df04f31deefe5
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037230"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60893640"
 ---
 # <a name="connect-to-azure-cosmos-db-cassandra-api-from-spark"></a>Łączenie do usługi Azure Cosmos DB Cassandra API z platformy Spark
 
@@ -42,14 +42,14 @@ W poniższej tabeli przedstawiono parametry konfiguracji przepływności specyfi
 
 | **Nazwa właściwości** | **Wartość domyślna** | **Opis** |
 |---------|---------|---------|
-| Spark.cassandra.Output.Batch.size.Rows |  1 |Liczba wierszy w jednej partii. Ustaw ten parametr na wartość 1. Ten parametr jest używany w celu uzyskania większej przepływności dla dużych obciążeń. |
-| Spark.cassandra.connection.connections_per_executor_max  | Brak | Maksymalna liczba połączeń na węzeł przetwarzania. 10 * n jest odpowiednikiem połączenia o szybkości 10 każdy węzeł w klastrze Cassandra n węzłów. Tak Jeśli potrzebujesz 5 połączeń na węzeł przetwarzania dla 5 węzłami klastra oprogramowania Cassandra, następnie należy ustawić tę konfigurację do 25. Zmodyfikuj tę wartość na podstawie stopień równoległości lub liczbie funkcji wykonawczych, skonfigurowane dla zadań platformy spark.   |
-| Spark.cassandra.Output.Concurrent.Writes  |  100 | Definiuje liczbę równoległych operacji zapisu, które mogą wystąpić na wykonawcy. Ponieważ "batch.size.rows" jest ustawiona na 1, pamiętaj odpowiednio skalować tę wartość. Zmodyfikować tę wartość, w oparciu o stopień równoległości lub przepływność, którą chcesz osiągnąć obciążenia. |
-| Spark.cassandra.Concurrent.Reads |  512 | Definiuje liczbę równoległych odczytów, które mogą wystąpić na wykonawcy. Zmodyfikować tę wartość, w oparciu o stopień równoległości lub przepływność, którą chcesz osiągnąć obciążenia  |
-| Spark.cassandra.Output.throughput_mb_per_sec  | Brak | Definiuje przepływności łączna liczba operacji zapisu dla funkcji wykonawczej. Ten parametr może służyć jako górna ograniczenia dla przepływność zadanie platformy spark i bazowanie na aprowizowana przepływność kolekcji Cosmos DB.   |
-| Spark.cassandra.Input.reads_per_sec| Brak   | Definiuje całkowita przepływność odczytu na wykonawcy. Ten parametr może służyć jako górna ograniczenia dla przepływność zadanie platformy spark i bazowanie na aprowizowana przepływność kolekcji Cosmos DB.  |
-| Spark.cassandra.Output.Batch.GROUPING.Buffer.size |  1000  | Określa liczbę wsadów poszczególnych zadań jednej platformy spark, które mogą być przechowywane w pamięci przed wysłaniem do interfejsu API rozwiązania Cassandra |
-| Spark.cassandra.connection.keep_alive_ms | 60000 | Definiuje okres, do której są dostępne nieużywane połączeń. | 
+| spark.cassandra.output.batch.size.rows |  1 |Liczba wierszy w jednej partii. Ustaw ten parametr na wartość 1. Ten parametr jest używany w celu uzyskania większej przepływności dla dużych obciążeń. |
+| spark.cassandra.connection.connections_per_executor_max  | Brak | Maksymalna liczba połączeń na węzeł przetwarzania. 10 * n jest odpowiednikiem połączenia o szybkości 10 każdy węzeł w klastrze Cassandra n węzłów. Tak Jeśli potrzebujesz 5 połączeń na węzeł przetwarzania dla 5 węzłami klastra oprogramowania Cassandra, następnie należy ustawić tę konfigurację do 25. Zmodyfikuj tę wartość na podstawie stopień równoległości lub liczbie funkcji wykonawczych, skonfigurowane dla zadań platformy spark.   |
+| spark.cassandra.output.concurrent.writes  |  100 | Definiuje liczbę równoległych operacji zapisu, które mogą wystąpić na wykonawcy. Ponieważ "batch.size.rows" jest ustawiona na 1, pamiętaj odpowiednio skalować tę wartość. Zmodyfikować tę wartość, w oparciu o stopień równoległości lub przepływność, którą chcesz osiągnąć obciążenia. |
+| spark.cassandra.concurrent.reads |  512 | Definiuje liczbę równoległych odczytów, które mogą wystąpić na wykonawcy. Zmodyfikować tę wartość, w oparciu o stopień równoległości lub przepływność, którą chcesz osiągnąć obciążenia  |
+| spark.cassandra.output.throughput_mb_per_sec  | Brak | Definiuje przepływności łączna liczba operacji zapisu dla funkcji wykonawczej. Ten parametr może służyć jako górna ograniczenia dla przepływność zadanie platformy spark i bazowanie na aprowizowana przepływność kolekcji Cosmos DB.   |
+| spark.cassandra.input.reads_per_sec| Brak   | Definiuje całkowita przepływność odczytu na wykonawcy. Ten parametr może służyć jako górna ograniczenia dla przepływność zadanie platformy spark i bazowanie na aprowizowana przepływność kolekcji Cosmos DB.  |
+| spark.cassandra.output.batch.grouping.buffer.size |  1000  | Określa liczbę wsadów poszczególnych zadań jednej platformy spark, które mogą być przechowywane w pamięci przed wysłaniem do interfejsu API rozwiązania Cassandra |
+| spark.cassandra.connection.keep_alive_ms | 60000 | Definiuje okres, do której są dostępne nieużywane połączeń. | 
 
 Dostosuj przepływności i stopień równoległości tych parametrów, na podstawie obciążeń, których oczekujesz od dla zadań platformy spark i przepływności, aprowizowanej dla konta usługi Cosmos DB.
 

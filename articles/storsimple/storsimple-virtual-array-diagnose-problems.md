@@ -1,6 +1,6 @@
 ---
-title: Rozwiązywanie problemów z tablicy wirtualnego StorSimple | Dokumentacja firmy Microsoft
-description: W tym artykule opisano Menedżera urządzeń StorSimple diagnozowanie możliwości i wyjaśniono, jak użyć go w celu rozwiązania tablica wirtualnego StorSimple.
+title: Rozwiązywanie problemów z rozwiązania StorSimple Virtual Array | Dokumentacja firmy Microsoft
+description: W tym artykule opisano Menedżera urządzeń StorSimple diagnozować możliwości i wyjaśniono, jak korzystać z niego do Rozwiązywanie problemów z rozwiązania StorSimple Virtual Array.
 services: storsimple
 documentationcenter: ''
 author: manuaery
@@ -14,34 +14,34 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.openlocfilehash: a75e68c84a50977b162ca4d3a4a02936ca78cb6b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9d222097f9fb99a24f6213584a3419ed777f4a22
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23875256"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61408442"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-troubleshoot-the-storsimple-virtual-array"></a>Rozwiązywanie problemów z tablicy wirtualnego StorSimple przy użyciu usługi Menedżer StorSimple urządzenia
+# <a name="use-the-storsimple-device-manager-service-to-troubleshoot-the-storsimple-virtual-array"></a>Rozwiązywanie problemów z rozwiązania StorSimple Virtual Array przy użyciu usługi Menedżer urządzeń StorSimple
 ## <a name="overview"></a>Omówienie
 
-Zawiera Menedżera urządzeń StorSimple **diagnozowanie i rozwiązywanie problemów** ustawienie w bloku podsumowania usługi, które opisano niektóre często występujące problemy, które może wystąpić z wirtualnych tablica i sposoby ich rozwiązywania. Ten samouczek przedstawia Samoobsługa możliwości rozwiązywania problemów w usługi Menedżer StorSimple urządzenia.
+Menedżer urządzeń StorSimple zapewnia **diagnozowanie i rozwiązywanie problemów** ustawienia w bloku podsumowania usługi, które przedstawia niektóre z najczęściej występujących problemów, które mogą wystąpić przy użyciu macierz wirtualna i sposoby ich rozwiązywania. W tym samouczku przedstawiono samodzielnego rozwiązywania problemów oferowana możliwość w usłudze Menedżer urządzeń StorSimple.
 
 ![Diagnozowanie i rozwiązywanie problemów](./media/storsimple-virtual-array-diagnose-problems/diagnose-problems-main.png)
 
 ## <a name="diagnose-and-solve-issues"></a>Diagnozowanie i rozwiązywanie problemów
 
-Można wyświetlić niektórych typowych problemów z tablicy wirtualnego StorSimple i przejrzyj rozwiązania tych problemów prawo z Menedżera urządzeń StorSimple bloku podsumowania usługi.
+Można wyświetlić niektórych typowych problemów związanych z rozwiązania StorSimple Virtual Array i przejrzyj rozwiązania tych problemów, które są odpowiednie w bloku podsumowania usługi Menedżer urządzeń StorSimple.
 
-#### <a name="to-diagnose-an-issue-with-your-virtual-array"></a>Aby zdiagnozować problem z wirtualnych tablica
+#### <a name="to-diagnose-an-issue-with-your-virtual-array"></a>Aby zdiagnozować problem z macierz wirtualna
 
-1. Kliknij przycisk **diagnozowanie i rozwiązywanie problemów** ustawienie w lewym okienku Menedżera urządzeń StorSimple bloku podsumowania usługi, aby wyświetlić listę typowych problemów.
+1. Kliknij przycisk **diagnozowanie i rozwiązywanie problemów** ustawienia w okienku po lewej stronie bloku podsumowania usługi Menedżer urządzeń StorSimple, aby wyświetlić listę typowych problemów.
 
-2. **Rozwiń węzeł** na objaw problem pojawiły się Przejrzyj **zalecane kroki** z myślą o ułatwianiu w rozwiązaniu problemu. Jeśli chcesz, możesz przejrzeć łączy szczegółowa dokumentacja dla dalszego odwołania.
+2. **Rozwiń** na objaw problem napotkasz Przejrzyj **zalecane kroki** do pomocy w rozwiązywaniu problemu. Jeśli chcesz, możesz przejrzeć łączy szczegółową dokumentację dostępnych dla odwołania do dalszych.
    
     ![Rozwiązywanie problemu](./media/storsimple-virtual-array-diagnose-problems/diagnose-problems-offline.png)
 
-3. Jeśli nie można odnaleźć odwołania do problemu lub go rozwiązać, dostępu do firmy Microsoft Support Aby uzyskać dalszą pomoc.
+3. Jeśli nie można odnaleźć odwołania do problemu lub rozwiązać ten problem, skontaktuj się z Microsoft Support Aby uzyskać dalszą pomoc.
 
-## <a name="next-steps"></a>Następne kroki
-Dowiedz się, jak [dziennika biletu pomocy technicznej](storsimple-virtual-array-log-support-ticket.md)
+## <a name="next-steps"></a>Kolejne kroki
+Dowiedz się, jak [zgłoszenie do pomocy technicznej](storsimple-virtual-array-log-support-ticket.md)
 

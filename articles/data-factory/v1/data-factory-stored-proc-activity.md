@@ -14,11 +14,11 @@ ms.author: abnarain
 manager: craigg
 robots: noindex
 ms.openlocfilehash: 77842b60108629168f423f25eb03b01079cf55e5
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57775361"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61256022"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>Działanie procedury składowanej programu SQL Server
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -36,7 +36,7 @@ ms.locfileid: "57775361"
 > [!NOTE]
 > Ten artykuł dotyczy wersji 1 usługi Azure Data Factory. Jeśli używasz bieżącą wersję usługi Data Factory, zobacz [przekształcania danych za pomocą działania procedury składowanej w usłudze Data Factory](../transform-data-using-stored-procedure.md).
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Użyj działania przekształcania danych w usłudze Data Factory [potoku](data-factory-create-pipelines.md) do przekształcania i Przetwarzaj danych pierwotnych w prognozy i szczegółowych informacji. Działania dotyczącego procedury składowanej jest jednym z działania przekształcania, które obsługuje usługi Data Factory. W tym artykule opiera się na [działania przekształcania danych](data-factory-data-transformation-activities.md) artykułu, który przedstawia ogólny przegląd działań przekształcania obsługiwanych w usłudze Data Factory i przekształcania danych.
 
 Działania dotyczącego procedury składowanej umożliwia wywoływanie procedury składowanej w jednym z następujących magazynów danych w przedsiębiorstwie lub na maszynie wirtualnej platformy Azure (VM):

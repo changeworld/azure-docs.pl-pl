@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: apimpm
 ms.openlocfilehash: 3d1847b6001ef8e32f00a4e1cd9728d5ca0662f8
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008270"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62097201"
 ---
 # <a name="how-to-set-or-edit-azure-api-management-policies"></a>Ustawianie lub edytowanie zasad usługi Azure API Management
 

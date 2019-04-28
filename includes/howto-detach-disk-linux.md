@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: cynthn
 ms.openlocfilehash: 94f662cea5f20485659a7b93549b758fdd7770f6
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327926"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61476272"
 ---
 Gdy już nie potrzebujesz dysku danych dołączonego do maszyny wirtualnej, możesz go łatwo odłączyć. Po odłączeniu dysku od maszyny wirtualnej nie zostanie on usunięty z magazynu. Jeśli chcesz ponownie użyć danych znajdujących się na dysku, możesz dołączyć go ponownie do tej samej lub innej maszyny wirtualnej.  
 

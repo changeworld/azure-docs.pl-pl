@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 48c09a6100586c0c99f3d54f9708c770488c681f
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189051"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61463871"
 ---
 #  <a name="create-an-encoding-task-that-generates-fmp4-chunks"></a>Utwórz zadanie kodowania, które fragmenty fMP4
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 W tym artykule przedstawiono sposób tworzenia zadania kodowania, która generuje plik MP4 fragmenty (fMP4) zamiast plików ISO MP4. Aby wygenerować fragmenty fMP4, należy użyć **Media Encoder Standard** lub **Media Encoder Premium Workflow** kodera, aby utworzyć zadanie kodowania, a także określić **AssetFormatOption.AdaptiveStreaming**  opcji, jak pokazano w poniższym przykładzie:  
     

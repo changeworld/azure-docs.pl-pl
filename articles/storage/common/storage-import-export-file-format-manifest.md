@@ -9,11 +9,11 @@ ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: ee53cc3a639a79e1b29ac6cd537bfb04e05b1bca
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55692480"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61478627"
 ---
 # <a name="azure-importexport-service-manifest-file-format"></a>Format pliku manifestu usługi w usłudze Azure Import/Export
 Plik manifestu dysku opisuje mapowanie między obiektów blob w usłudze Azure Blob storage i plików na dysku wchodzących w skład zadania importu lub eksportu. Dla operacji importowania pliku manifestu jest tworzony jako część procesu przygotowywania dysku i są przechowywane na dysku przed wysłaniem dysk do centrum danych platformy Azure. Podczas operacji eksportowania manifest jest tworzone i przechowywane na dysku przez usługę Azure Import/Export.  

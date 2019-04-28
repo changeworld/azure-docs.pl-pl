@@ -15,15 +15,15 @@ ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
 ms.openlocfilehash: 9f81e2b7537a5ecc6778baa93a1bab23dd30ff8a
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57451913"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61475511"
 ---
 # <a name="powershell-dsc-extension"></a>Rozszerzenie DSC programu PowerShell
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Rozszerzenie DSC programu PowerShell dla Windows publikowana i obsługiwane przez firmę Microsoft. Rozszerzenie przekazuje i ma zastosowanie konfiguracji DSC programu PowerShell na Maszynie wirtualnej platformy Azure. Wywołuje rozszerzenia DSC programu PowerShell DSC wprowadzenie otrzymana Konfiguracja DSC na maszynie Wirtualnej. W tym dokumencie przedstawiono obsługiwanych platform, konfiguracji i opcje wdrażania rozszerzenia DSC maszyny wirtualnej dla Windows.
 

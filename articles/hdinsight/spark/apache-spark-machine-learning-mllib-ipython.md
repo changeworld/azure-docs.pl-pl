@@ -2,7 +2,6 @@
 title: Machine learning przykład z Biblioteka MLlib platformy Spark na HDInsight — Azure
 description: Dowiedz się, jak utworzyć aplikację learning maszyny, która analizuje zestawu danych za pomocą funkcji klasyfikacji, za pomocą regresji logistycznej przy użyciu MLlib platformy Spark.
 keywords: Platforma Spark uczenia maszynowego, spark machine learning przykład
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -10,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: bf29fd8d9b707636fb5965669ad800517a6cf58f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 31755dcc247ea3be5fb38249afd98dc72dcbc544
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58075565"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62097103"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Biblioteka MLlib platformy Spark Apache umożliwia tworzenie aplikacji uczenia maszynowego i analizować zestaw danych
 

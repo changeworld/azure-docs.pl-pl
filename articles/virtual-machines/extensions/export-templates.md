@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: roiyz
 ms.openlocfilehash: f56cfeeede393dbdb9632ea4120d3a81e89f3f7c
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451973"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61484055"
 ---
 # <a name="exporting-resource-groups-that-contain-vm-extensions"></a>Eksportowanie grupy zasobów, która zawiera rozszerzenia maszyn wirtualnych
 
@@ -36,7 +36,7 @@ Następujące rozszerzenia można wyeksportować za pomocą funkcji skryptów au
 
 | Wewnętrzny ||||
 |---|---|---|---|
-| Kopia zapasowa Acronis | Agent Windows pomocą usługi Datadog | Stosowanie poprawek dla systemu Linux systemu operacyjnego | Migawki maszyny Wirtualnej w systemie Linux
+| Acronis Backup | Agent Windows pomocą usługi Datadog | Stosowanie poprawek dla systemu Linux systemu operacyjnego | Migawki maszyny Wirtualnej w systemie Linux
 | Kopia zapasowa Acronis systemu Linux | Rozszerzenia platformy docker | Puppet Agent |
 | Bg Info | Rozszerzenie DSC | Szczegółowe informacje o lokacji w trybie 24 x 7 Apm |
 | Linux Agent CTM kontrolera zarządzania płytą GŁÓWNĄ | Dynatrace Linux | 24 x 7 Linux serwer lokacji |

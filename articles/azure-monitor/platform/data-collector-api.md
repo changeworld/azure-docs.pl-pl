@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: bwren
 ms.openlocfilehash: 9fd65dc0a6d2a5756acd2de7cb46fbf7943a8758
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59264099"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60931823"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>Wyślij dane dziennika do usługi Azure Monitor za pomocą interfejsu API modułu zbierającego dane HTTP (publiczna wersja zapoznawcza)
 W tym artykule pokazano, jak używać interfejsu API modułu zbierającego dane HTTP do wysyłania dzienników danych do usługi Azure Monitor z klienta interfejsu API REST.  Przedstawiono sposób formatowania danych zbieranych przez skrypt lub aplikację, uwzględnić go w żądaniu i ma to żądanie autoryzacji usługi Azure Monitor.  Przykłady są udostępniane dla programu PowerShell, C# i Python.
@@ -52,7 +52,7 @@ Aby użyć interfejsu API modułu zbierającego dane HTTP, należy utworzyć ż�
 | Parametr | Opis |
 |:--- |:--- |
 | CustomerID |Unikatowy identyfikator dla obszaru roboczego usługi Log Analytics. |
-| Zasób |Nazwa zasobu interfejsu API: / api/logs. |
+| Resource |Nazwa zasobu interfejsu API: / api/logs. |
 | Wersja interfejsu API |Wersja interfejsu API do użycia z tym żądaniem. Obecnie jest 2016-04-01. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
@@ -142,7 +142,7 @@ Aby określić typ danych właściwości, usługi Azure Monitor dodaje sufiks na
 | Typ danych właściwości | Sufiks |
 |:--- |:--- |
 | String |_s |
-| Wartość logiczna |_b |
+| Boolean |_b |
 | Double |_d |
 | Data/Godzina |_t |
 | GUID |_g |
@@ -171,7 +171,7 @@ Jeśli następujący wpis jest następnie przesłane, przed utworzeniem typ reko
 ## <a name="reserved-properties"></a>Właściwości zastrzeżone
 Następujące właściwości są zarezerwowane i nie należy używać w typie rekordu niestandardowego. Jeśli Twoje ładunek zawiera dowolne z tych nazw właściwości, zostanie zwrócony błąd.
 
-- dzierżawa
+- tenant
 
 ## <a name="data-limits"></a>Limity danych
 Istnieją pewne ograniczenia wokół danych opublikowane w usłudze Azure Monitor interfejsu API zbierania danych.

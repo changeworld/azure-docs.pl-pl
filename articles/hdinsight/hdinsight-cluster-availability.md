@@ -2,7 +2,6 @@
 title: Jak monitorować dostępność klastra z dziennikami Ambari i usługi Azure Monitor
 description: Dowiedz się, jak używać narzędzia Ambari, i usługi Azure Monitor dzienniki do monitorowania kondycji klastra i dostępności.
 keywords: monitorowanie systemu ambari, monitorowanie, usługi log analytics, alert, dostępności, kondycji
-services: hdinsight
 ms.reviewer: jasonh
 author: tylerfox
 ms.service: hdinsight
@@ -10,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: tyfox
-ms.openlocfilehash: 9bf0c0f45007f81312ac08230d571b727220bcd9
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 459de569916af14b0efea0ff08b92e5c93ed2369
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58671489"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62097051"
 ---
 # <a name="how-to-monitor-cluster-availability-with-ambari-and-azure-monitor-logs"></a>Jak monitorować dostępność klastra z dziennikami Ambari i usługi Azure Monitor
 

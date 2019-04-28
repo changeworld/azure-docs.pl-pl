@@ -14,14 +14,14 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: milanga;juliako;
 ms.openlocfilehash: e0b083cba575f4d1c0eb19afb76fca29431ae75e
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259106"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61463535"
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>Wykrywanie ruchów za pomocą usługi Azure Media Analytics
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 **Wykrywanie ruchu multimediów Azure** procesor multimediów (MP) pozwala na efektywne identyfikują sekcje zainteresowania w wideo w przeciwnym razie długich i procesu. Wykrywanie ruchu można na statyczne aparatu nagrań z monitorowania identyfikują sekcje wideo, w której występuje ruchu. Generuje plik JSON zawierający metadane za pomocą sygnatur czasowych i otaczający region, w której wystąpiło zdarzenie.
 
 Skierowany strumieniowych źródeł wideo zabezpieczeń, ta technologia jest w stanie kategoryzowanie ruchu do odpowiednie zdarzenia i fałszywych alarmów, takie jak cieni i zmian oświetlenia. Umożliwia generowanie alertów zabezpieczeń z kanałami informacyjnymi aparatu bez otrzymywania wiadomości-śmieci nieskończone zdarzeń nie ma znaczenia, będąc wyodrębnić chwil zainteresowania z nadzoru długich wideo.
@@ -96,7 +96,7 @@ W poniższej tabeli opisano elementy danych wyjściowych pliku JSON.
 | --- | --- |
 | Wersja |Odnosi się do wersji interfejsu API wideo. Bieżąca wersja to 2. |
 | Skala czasu |"Impulsów" na sekundę filmu wideo. |
-| Przesunięcie |Przesunięcie czasu dla sygnatury czasowe w "taktów." W wersji 1.0 interfejsów API Video ta będzie zawsze równa 0. W przyszłości scenariusze, które firma Microsoft obsługuje, ta wartość może ulec zmianie. |
+| Offset |Przesunięcie czasu dla sygnatury czasowe w "taktów." W wersji 1.0 interfejsów API Video ta będzie zawsze równa 0. W przyszłości scenariusze, które firma Microsoft obsługuje, ta wartość może ulec zmianie. |
 | Framerate |Liczba klatek na sekundę w wideo. |
 | Szerokość, wysokość |Odnosi się do szerokości i wysokości wideo w pikselach. |
 | Uruchamianie |Sygnatura czasowa rozpoczęcia w "taktach". |

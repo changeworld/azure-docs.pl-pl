@@ -8,14 +8,15 @@ manager: jeconnoc
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-ms.date: 01/14/2019
-ms.author: cshoe
+origin.date: 01/14/2019
+ms.date: 03/04/2019
+ms.author: v-junlch
 ms.openlocfilehash: 4ccfe192eaea94cb9b199bd3c6f0bdacf1685519
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56739914"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61437722"
 ---
 # <a name="using-the-azure-function-return-value"></a>Przy użyciu wartości zwracanej funkcji platformy Azure
 
@@ -23,8 +24,8 @@ W tym artykule opisano sposób zwrócenia wartości pracy wewnątrz funkcji.
 
 W przypadku języków, które mają wartość zwracaną można powiązać funkcji [powiązania danych wyjściowych](./functions-triggers-bindings.md#binding-direction) zwracaną wartość:
 
-* W języku C# biblioteki klas należy zastosować atrybut wiązania danych wyjściowych na wartość zwracaną metody.
-* W innych językach, należy ustawić `name` właściwość *function.json* do `$return`.
+- W języku C# biblioteki klas należy zastosować atrybut wiązania danych wyjściowych na wartość zwracaną metody.
+- W innych językach, należy ustawić `name` właściwość *function.json* do `$return`.
 
 W przypadku wielu powiązania danych wyjściowych, użyj wartości zwracanej tylko dla jednego z nich.
 
@@ -32,11 +33,11 @@ W języku C# i skrypt języka C#, są alternatywne sposoby wysyłania danych do 
 
 Zobacz przykład specyficzny dla języka, przedstawiający użycie zwracanej wartości:
 
-* [C#](#c-example)
-* [Skryptu C# (csx)](#c-script-example)
-* [F#](#f-example)
-* [JavaScript](#javascript-example)
-* [Python](#python-example)
+- [C#](#c-example)
+- [Skryptu C# (csx)](#c-script-example)
+- [F#](#f-example)
+- [JavaScript](#javascript-example)
+- [Python](#python-example)
 
 ## <a name="c-example"></a>Przykład w języku C#
 
@@ -169,3 +170,4 @@ def main(input: azure.functions.InputStream) -> str:
 
 > [!div class="nextstepaction"]
 > [Obsługa błędów powiązań usługi Azure Functions](./functions-bindings-errors.md)
+

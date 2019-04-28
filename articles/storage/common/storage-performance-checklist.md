@@ -9,11 +9,11 @@ ms.date: 12/08/2016
 ms.author: rogarana
 ms.subservice: common
 ms.openlocfilehash: b8451a1195ab64d3cd7afda074d786a3209ce785
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58793972"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61477300"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Lista kontrolna dotycząca wydajności i skalowalności usługi Microsoft Azure Storage
 ## <a name="overview"></a>Omówienie
@@ -29,7 +29,7 @@ W tym artykule organizuje sprawdzonych rozwiązań w następujących grupach. Sp
 * Tabele
 * Kolejki  
 
-| Gotowe | Obszar | Kategoria | Pytanie |
+| Gotowe | Obszar | Category | Pytanie |
 | --- | --- | --- | --- |
 | &nbsp; | Wszystkie usługi |Cele skalowalności |[Aplikacja zaprojektowano w celu uniknięcia zbliża się cele skalowalności?](#subheading1) |
 | &nbsp; | Wszystkie usługi |Cele skalowalności |[Konwencja nazewnictwa zaprojektowana w celu umożliwienia lepszego równoważenia obciążenia?](#subheading47) |

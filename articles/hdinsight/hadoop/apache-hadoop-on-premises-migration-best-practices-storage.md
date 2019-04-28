@@ -1,7 +1,6 @@
 ---
 title: Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — najlepsze rozwiązania magazynu
 description: Poznaj najlepsze rozwiązania magazynu migracji lokalnych klastrów Hadoop do usługi Azure HDInsight.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: ashishth
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: f3ac60eb45c86b6cd2ded0340ac6bde478086464
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: c62a5384edf66fd9309bc7afcb50ada48e3fca7d
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000066"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62095289"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---storage-best-practices"></a>Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — najlepsze rozwiązania magazynu
 
@@ -172,11 +171,11 @@ HDInsight domyślnie ma pełny dostęp do danych w ramach kont usługi Azure Sto
 
 5. Aby ograniczyć dostęp do kontenera przy użyciu sygnatura dostępu współdzielonego, należy dodać wpis niestandardowego do konfiguracji lokacji podstawowej dla klastra, w obszarze Ambari systemu plików HDFS konfiguracje zaawansowane lokacji podstawowej Dodawanie właściwości niestandardowych.
 
-6. Użyj następujących wartości dla **klucz** i **wartość** pola:
+6. Użyj następujących wartości dla **klucz** i **wartość** pola:
 
     **Klucz**: `fs.azure.sas.YOURCONTAINER.YOURACCOUNT.blob.core.windows.net` **Wartość**: KLUCZ sygnatury dostępu Współdzielonego zwracane przez FROM aplikacji języka Python w kroku 4 powyżej.
 
-7. Kliknij przycisk **Dodaj** przycisk, aby zapisać ten klucz i wartość, a następnie kliknij przycisk **Zapisz** przycisk, aby zapisać zmiany konfiguracji. Po wyświetleniu monitu, Dodaj opis zmiany ("Dodawanie dostępu do magazynu sygnatur dostępu Współdzielonego" na przykład), a następnie kliknij przycisk **Zapisz**.
+7. Kliknij przycisk **Dodaj** przycisk, aby zapisać ten klucz i wartość, a następnie kliknij przycisk **Zapisz** przycisk, aby zapisać zmiany konfiguracji. Po wyświetleniu monitu, Dodaj opis zmiany ("Dodawanie dostępu do magazynu sygnatur dostępu Współdzielonego" na przykład), a następnie kliknij przycisk **Zapisz**.
 
 8. W Ambari web UI, wybierz systemu plików HDFS z listy po lewej stronie, a następnie wybierz **ponowne uruchomienie wszystkich wpływ** z akcji z listy rozwijanej po prawej stronie. Po wyświetleniu monitu wybierz **upewnij się, uruchom ponownie wszystkie**.
 

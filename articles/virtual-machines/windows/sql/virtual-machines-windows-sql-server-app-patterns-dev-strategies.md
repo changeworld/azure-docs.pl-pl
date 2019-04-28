@@ -16,11 +16,11 @@ ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: ninarn
 ms.openlocfilehash: 988acec8d7044afe87523637e46c9a4deb92b55e
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53719714"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61477738"
 ---
 # <a name="application-patterns-and-development-strategies-for-sql-server-in-azure-virtual-machines"></a>Wzorce aplikacji i strategie programowania dla programu SQL Server w usłudze Azure Virtual Machines
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]

@@ -11,11 +11,11 @@ ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
 ms.openlocfilehash: 860c00b876427af7395e3c04e0626131c27aca67
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56878085"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60896425"
 ---
 # <a name="azure-blockchain-workbench-messaging-integration"></a>Aplikacji Azure Blockchain Workbench komunikatów integracji
 
@@ -477,7 +477,7 @@ Zawiera informacje o kontraktu. Komunikat zawiera sekcja właściwości kontrakt
 |--------------------|-------------|
 | workflowPropertyId | Unikatowy identyfikator właściwości przepływu pracy w aplikacji Azure Blockchain Workbench |
 | name | Nazwa właściwości przepływu pracy |
-| wartość | Wartość właściwości przepływu pracy |
+| value | Wartość właściwości przepływu pracy |
 
 Przykład *ContractMessage* z aplikacji Blockchain Workbench:
 
@@ -588,7 +588,7 @@ Zawiera informacje, po wywołaniu funkcji kontraktu, takich jak nazwy funkcji, p
 | Name (Nazwa) | Opis |
 |------|-------------|
 | name | Nazwa parametru |
-| wartość | Wartość parametru |
+| value | Wartość parametru |
 
 #### <a name="event-message-transaction-information"></a>Informacje o transakcji komunikat zdarzenia
 

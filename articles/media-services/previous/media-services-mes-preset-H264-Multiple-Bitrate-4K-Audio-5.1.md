@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 2466edb3d14ebbe9296fad087fce432b83005437
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58187697"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61463688"
 ---
-# <a name="h264-multiple-bitrate-4k-audio-51"></a>H264 Szybkość transmisji bitów 4K Audio 5.1
+# <a name="h264-multiple-bitrate-4k-audio-51"></a>Wielokrotna szybkość transmisji bitów H264 4K Audio 5.1
 `Media Encoder Standard` definiuje zestaw kodowania ustawienia wstępne, których można użyć podczas tworzenia zadań kodowania. Można użyć `preset name` do określenia do formatu, który chcesz zakodować pliku multimedialnego. Lub można utworzyć własne JSON lub XML na podstawie ustawień wstępnych (przy użyciu kodowania UTF-8 lub UTF-16. Następnie należy wprowadzić niestandardowego ustawienia wstępnego z koderem. Aby uzyskać listę wszystkich wstępnie zdefiniowanych nazw obsługiwanych przez to `Media Encoder Standard` encoder, zobacz [ustawienia wstępne zadań usługi Media Encoder Standard](media-services-mes-presets-overview.md).  
   
  W tym temacie przedstawiono `H264 Multiple Bitrate 4K Audio 5.1` wstępnie ustawione w formacie XML i JSON.  

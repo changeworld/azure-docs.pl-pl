@@ -12,11 +12,11 @@ ms.date: 02/13/2019
 ms.author: diberry
 ms.custom: seodec18
 ms.openlocfilehash: c7f0afb2776f11ac9406fced1209dfedd769a96f
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245596"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60913786"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-c"></a>Jak używać interfejsu API REST Maker pytań i odpowiedzi zC# 
 <a name="HOLTop"></a>

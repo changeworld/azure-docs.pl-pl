@@ -10,13 +10,13 @@ ms.custom: mvc
 ms.date: 10/25/2018
 ms.author: troyhop
 ms.openlocfilehash: 302b863e7ad7d6df286adf53342356f279ab92d2
-ms.sourcegitcommit: 3dcb1a3993e51963954194ba2a5e42260d0be258
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50756852"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61450588"
 ---
-# <a name="tutorial-create-a-custom-simulated-device"></a>Samouczek: tworzenie niestandardowego urządzenia symulowanego
+# <a name="tutorial-create-a-custom-simulated-device"></a>Samouczek: Tworzenie niestandardowego symulowanego urządzenia
 
 W tym samouczku użyjesz symulacji urządzenia w celu tworzenia niestandardowego urządzenia symulowanego do użycia w symulacjach. Aby rozpocząć pracę z symulacją urządzenia, możesz użyć jednego z uwzględnionych przykładowych urządzeń symulowanych. Możesz również utworzyć niestandardowe urządzenie symulowane zgodnie z opisem w tym artykule. Aby uzyskać więcej opcji dostosowywania, zobacz [Create an advanced device model (Tworzenie zaawansowanego modelu urządzenia)](iot-accelerators-device-simulation-advanced-device.md).
 
@@ -96,7 +96,7 @@ Każdy niestandardowy model urządzenia można usunąć. Aby usunąć model urz�
 
 ![Usuwanie modelu urządzenia](media/iot-accelerators-device-simulation-create-custom-device/deletedevice.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku przedstawiono sposób tworzenia, klonowania i usuwania niestandardowych modeli urządzeń. Aby dowiedzieć się więcej na temat modeli urządzeń, zobacz następujący artykuł z instrukcjami:
 

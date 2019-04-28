@@ -2,18 +2,19 @@
 title: Wzorce projektowe oparte na usłudze Azure storage table | Dokumentacja firmy Microsoft
 description: Wzorce na użytek rozwiązania usługi Azure table.
 services: storage
-author: tamram
+author: WenJason
 ms.service: storage
 ms.topic: article
-ms.date: 04/08/2019
-ms.author: tamram
+origin.date: 04/08/2019
+ms.date: 04/22/2019
+ms.author: v-jay
 ms.subservice: tables
 ms.openlocfilehash: a428abd95f955a16d03c4ab86f05644f6db65da5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59271632"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62101439"
 ---
 # <a name="table-design-patterns"></a>Wzorce projektowe tabel
 W tym artykule opisano niektóre wzorce, które są przeznaczone do użycia z rozwiązaniami usługi tabeli. Ponadto zobaczysz, jak praktycznie rozwiązać niektóre problemy i charakterystyczne kompromisowe omówione w innych artykułach projektowania magazynu tabeli. Poniższy diagram przedstawia relacje między różnych wzorców:  
@@ -348,7 +349,7 @@ Możesz wrócić do wartość Data / czas, używając następującego kodu:
 
 Zapytanie dotyczące tabeli wygląda następująco:  
 
-`https://myaccount.table.core.windows.net/EmployeeExpense(PartitionKey='empid')?$top=10`  
+`https://myaccount.table.core.chinacloudapi.cn/EmployeeExpense(PartitionKey='empid')?$top=10`  
 
 ### <a name="issues-and-considerations"></a>Problemy i kwestie do rozważenia
 Podczas podejmowania decyzji o sposobie wdrożenia tego wzorca należy rozważyć następujące punkty:  

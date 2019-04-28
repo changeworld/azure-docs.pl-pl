@@ -10,11 +10,11 @@ ms.date: 04/05/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: 6f95aa701228730682c0122dc1fd46d8a2537ce1
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001612"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61473255"
 ---
 # <a name="deprecated-monitor-a-kubernetes-cluster-with-log-analytics"></a>(PRZESTARZAŁE) Monitorowanie klastra usługi Kubernetes przy użyciu usługi Log Analytics
 
@@ -158,7 +158,7 @@ Podobnie w witrynie Azure Portal wybierz pozycję **Log Analytics** i wybierz na
 
 Szczegółowy przewodnik dotyczący odpytywania i analizowania danych monitorowania znajduje się w [dokumentacji usługi Azure Log Analytics](../../azure-monitor/log-query/log-query-overview.md).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku przedstawiono sposób monitorowania klastra Kubernetes za pomocą usługi Log Analytics. Wykonano następujące zadania:
 

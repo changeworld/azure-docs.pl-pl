@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
 ms.openlocfilehash: ff77a955c34941d87a1f653726ab3f19e84aa440
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58101979"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61458352"
 ---
 # <a name="register-the-current-user-for-push-notifications-by-using-aspnet"></a>Rejestrowanie bieżącego użytkownika dla powiadomień wypychanych za pomocą programu ASP.NET
 
 > [!div class="op_single_selector"]
 > * [iOS](notification-hubs-ios-aspnet-register-user-from-backend-to-push-notification.md)
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 W tym temacie dowiesz się, jak utworzyć żądanie rejestracji powiadomień wypychanych przy użyciu usługi Azure Notification Hubs, gdy rejestracja odbywa się przez interfejs API sieci Web platformy ASP.NET. Ten temat rozszerza samouczka [powiadamianie użytkowników za pomocą usługi Notification Hubs]. Należy zostały już wykonane kroki wymagane w tym samouczku, aby utworzyć usługę mobilną uwierzytelniony. Aby uzyskać więcej informacji od scenariusza, Powiadom użytkowników, zobacz [powiadamianie użytkowników za pomocą usługi Notification Hubs].
 

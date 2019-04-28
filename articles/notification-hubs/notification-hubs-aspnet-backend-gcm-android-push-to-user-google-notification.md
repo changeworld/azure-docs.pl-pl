@@ -16,11 +16,11 @@ ms.custom: mvc
 ms.date: 01/04/2019
 ms.author: jowargo
 ms.openlocfilehash: fc248292e2323d44a353473be87c2b0f1be8ea12
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55091671"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60880166"
 ---
 # <a name="tutorial-push-notification-to-specific-android-application-users-by-using-azure-notification-hubs"></a>Samouczek: wysyłanie powiadomień push do konkretnych użytkowników aplikacji systemu Android przy użyciu usługi Azure Notification Hubs
 
@@ -475,7 +475,7 @@ Kolejnym krokiem jest zaktualizowanie aplikacji systemu Android utworzonej w ram
 6. Wpisz wiadomość dla użytkownika, która zostanie odebrana w formie powiadomienia push.
 7. Kliknij przycisk **Send Notification** (Wyślij powiadomienie).  Każde urządzenie, które zostało zarejestrowane przy użyciu pasującego tagu nazwy użytkownika, otrzyma powiadomienie push.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku przedstawiono sposób wysyłania powiadomień push do konkretnych użytkowników, którzy mają tagi skojarzone ze swoimi rejestracjami. Aby dowiedzieć się, jak wypychać powiadomienia oparte na lokalizacji, przejdź do następującego samouczka:
 

@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 02/13/2019
 ms.author: jowargo
 ms.openlocfilehash: 890577c013a96fc06acf3b05881649ad8202a083
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56671645"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60872374"
 ---
 # <a name="token-based-http2-authentication-for-apns"></a>Uwierzytelnianie oparte na tokenach (HTTP/2) dla usługi APNS
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 W tym artykule opisano, jak nowy protokół HTTP/2 usługi APNS za pomocą uwierzytelniania na podstawie tokenu.
 

@@ -13,13 +13,13 @@ ms.workload: na
 ms.date: 04/12/2019
 ms.author: banders
 ms.openlocfilehash: e15dcdbbcaed32d836bb751ef93ce17e90bd6905
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011099"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60771247"
 ---
-# <a name="prepay-for-azure-software-plans"></a>Zapłać z góry za plany oprogramowania platformy Azure
+# <a name="prepay-for-azure-software-plans"></a>Opłacanie planów oprogramowania platformy Azure z góry
 
 Gdy wpłacenia zaliczki użycia oprogramowania SUSE a RedHat na platformie Azure możesz zaoszczędzić pieniądze w porównaniu z tego względu koszt zgodnie z rzeczywistym użyciem. Zniżki dotyczą tylko w przypadku, SUSE i RedHat i nie na użycie maszyny wirtualnej. Możesz kupować rezerwacje w przypadku maszyn wirtualnych niezależnie w celu uzyskania dodatkowych oszczędności.
 
@@ -35,7 +35,7 @@ Możesz kupić plany oprogramowania SUSE i RedHat w witrynie Azure portal. Aby k
 2. Kliknij przycisk **Dodaj** i następnie wybierz plan oprogramowania, który chcesz kupić.
 Wypełnij wymagane pola. Maszyny Wirtualnej z systemem SUSE Linux dowolnej maszyny Wirtualnej z systemem RedHat, odpowiadający atrybuty można zakupić pobiera rabat. Rzeczywista liczba wdrożeń, które zawierają Rabat zależy od tego, zakresu i ilość wybrana.
 3. Wybierz subskrypcję. Służy do zapłacenia za plan.
-Metoda płatności subskrypcji jest naliczana opłata z góry kosztów rezerwacji. Typ subskrypcji musi być umowy Enterprise Agreement (oferują liczb: MS-AZR-0017P lub MS-AZR - 0148 P) lub płatność za rzeczywiste użycie (oferują liczb: MS-AZR-0003P lub MS-AZR - 0023 P).
+Metoda płatności subskrypcji jest naliczana opłata z góry kosztów rezerwacji. Typ subskrypcji musi być umowy Enterprise Agreement (oferują liczb: MS-AZR-0017P lub MS-AZR - 0148 P) lub płatność za rzeczywiste użycie (oferują liczb: MS-AZR-0003P lub MS-AZR-0023P).
     - W przypadku subskrypcji Enterprise opłaty są odliczane od salda zobowiązania pieniężnego rejestracji lub naliczane jako nadwyżka.
     - W przypadku subskrypcji płatności opłaty są naliczane do metody płatności karty kredytowej lub faktury dla subskrypcji.
 4. Wybierz zakres. Zakres może obejmować subskrypcji jednej lub wielu subskrypcji (zakres udostępniony).

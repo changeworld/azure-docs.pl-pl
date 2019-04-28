@@ -1,7 +1,6 @@
 ---
 title: 'Samouczek: Korzystanie z systemu Apache Storm i platformy Apache Kafka do odczytu i zapisu danych — Azure HDInsight'
 description: Dowiedz się, jak utworzyć potok przesyłania strumieniowego przy użyciu systemu Apache Storm i platformy Apache Kafka w usłudze HDInsight. W tym samouczku składniki KafkaBolt i KafkaSpout są używane do przesyłania strumieniowego z platformy Kafka.
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 12/06/2018
-ms.openlocfilehash: dca789a850e5df58024d13b8f592765e55c39485
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: bf62b4f8f8dbfc7df73102bb06e4f16c0fdb806c
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316953"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62097322"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Samouczek: Korzystanie z systemu Apache Storm z platformą Apache Kafka w usłudze HDInsight
 

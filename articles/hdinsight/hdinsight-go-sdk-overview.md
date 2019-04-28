@@ -1,23 +1,22 @@
 ---
 title: Zestaw SDK usługi Azure HDInsight z rzeczywistym użyciem
 description: Dokumentacja dotycząca usługi Azure HDInsight Go SDK
-services: hdinsight
 author: tylerfox
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: tyfox
 ms.custom: seodec18
-ms.openlocfilehash: b430c69f4ed9206b34f8ca66534aa82e85c0b240
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 2e5b7816fda89e25dcb0de26f526e5187e0640b9
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58224791"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62098562"
 ---
 # <a name="hdinsight-go-management-sdk-preview"></a>HDInsight Go Management SDK w wersji zapoznawczej
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Zestaw SDK języka Go HDInsight zawiera klasy i funkcje, które umożliwiają zarządzanie klastrami usługi HDInsight. Obejmuje ona na tworzenie, usuwanie, aktualizowanie, listy, zmiany rozmiaru, wykonywanie akcji skryptu, monitorować i pobieranie właściwości klastrów HDInsight i innych operacji.
 
 > [!NOTE]  

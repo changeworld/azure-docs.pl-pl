@@ -9,11 +9,11 @@ ms.date: 09/24/2018
 ms.author: govindk
 ms.reviewer: sngun
 ms.openlocfilehash: 9d948164177b7acd2df722078ae590f409c8e795
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036515"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60899103"
 ---
 # <a name="introduction-to-the-azure-cosmos-db-cassandra-api"></a>Wprowadzenie do interfejsu API Cassandra usługi Azure Cosmos DB
 
@@ -37,7 +37,7 @@ Interfejs API Cassandra pozwala na interakcję z danymi przechowywanymi w usłud
 
 **Klasa korporacyjna**: usługa Azure Cosmos DB udostępnia [certyfikaty zgodności](https://www.microsoft.com/trustcenter), aby zapewnić użytkownikom możliwość bezpiecznego korzystania z platformy. Usługa Azure Cosmos DB oferuje również szyfrowanie danych magazynowanych i w ruchu, zaporę adresów IP oraz dzienniki inspekcji na potrzeby działań płaszczyzny sterowania.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Możesz szybko rozpocząć od kompilowania następujących aplikacji specyficznych dla języka do tworzenia i zarządzania danymi interfejsu API Cassandra:
   - [Aplikacja platformy Node.js](create-cassandra-nodejs.md)

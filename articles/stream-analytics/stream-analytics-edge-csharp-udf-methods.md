@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
 ms.openlocfilehash: 5df4c9dfe18b02ade3a37717da9c68acbfcf1853
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106604"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61480987"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-edge-jobs-preview"></a>Programowanie .NET Standard funkcje zdefiniowane przez użytkownika dla zadania usługi Azure Stream Analytics Edge (wersja zapoznawcza)
 
@@ -134,6 +134,6 @@ Wersja zapoznawcza funkcji zdefiniowanej przez użytkownika aktualnie ma następ
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Samouczek: Pisanie funkcji C# zdefiniowanych przez użytkownika do zadania usługi Azure Stream Analytics Edge (wersja zapoznawcza)](stream-analytics-edge-csharp-udf.md)
-* [Samouczek: Usługa Azure Stream Analytics JavaScript zdefiniowanych przez użytkownika funkcje](stream-analytics-javascript-user-defined-functions.md)
-* [Wyświetl zadania usługi Azure Stream Analytics przy użyciu programu Visual Studio](stream-analytics-vs-tools.md)
+* [Samouczek: Zapis C# funkcji zdefiniowanej przez użytkownika do zadania usługi Azure Stream Analytics Edge (wersja zapoznawcza)](stream-analytics-edge-csharp-udf.md)
+* [Samouczek: Funkcje usługi Azure Stream Analytics JavaScript zdefiniowane przez użytkownika](stream-analytics-javascript-user-defined-functions.md)
+* [Use Visual Studio to view Azure Stream Analytics jobs (Wyświetlanie zadań usługi Azure Stream Analytics za pomocą programu Visual Studio)](stream-analytics-vs-tools.md)
