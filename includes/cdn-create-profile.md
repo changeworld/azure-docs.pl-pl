@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/24/2018
 ms.author: cfowler
 ms.custom: include file
-ms.openlocfilehash: e431e7c45dc2cb41db5b9fa762abc908cc76b375
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: c58b226c0f3bd63cb2a54bd3d8c91eb750a26f0a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34665294"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60684661"
 ---
 ## <a name="create-a-new-cdn-profile"></a>Tworzenie nowego profilu CDN
 
@@ -35,7 +35,7 @@ Profil usługi CDN jest kontenerem dla punktów końcowych usługi CDN i określ
     | -------- | ----- |
     | **Nazwa** | Jako nazwę profilu wprowadź *my-cdn-profile-123*. Ta nazwa musi być globalnie unikatowa; jeśli jest już używana, można wprowadzić inną nazwę. |
     | **Subskrypcja** | Z listy rozwijanej wybierz subskrypcję platformy Azure. |
-    | **Grupa zasobów** | Wybierz pozycję **Utwórz nowy**, a następnie jako nazwę grupy zasobów wprowadź *my-resource-group-123*. Ta nazwa musi być unikatowa w skali globalnej. Jeśli jest już używana, możesz wprowadzić inną nazwę lub wybrać pozycję **Użyj istniejącej** i wybrać wartość **my-resource-group-123** z listy rozwijanej. | 
+    | **Grupa zasobów** | Wybierz pozycję **Utwórz nowy**, a następnie jako nazwę grupy zasobów wprowadź *my-resource-group-123*. Ta nazwa musi być unikatowa w skali globalnej. Jeśli jest już używana, możesz wprowadzić inną nazwę lub wybrać **Użyj istniejącej** i wybrać **my-resource-group-123** z listy rozwijanej. | 
     | **Lokalizacja grupy zasobów** | Z listy rozwijanej wybierz pozycję **Środkowe stany USA**. |
     | **Warstwa cenowa** | Z listy rozwijanej wybierz pozycję **Verizon — Standardowa**. |
     | **Utwórz teraz nowy punkt końcowy CDN** | Pozostaw niezaznaczone. |  

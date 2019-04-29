@@ -2,25 +2,25 @@
 title: Plik dyrektywy include
 description: Plik dyrektywy include
 services: virtual-network
-author: genlin
+author: rockboyfor
 ms.service: virtual-network
 ms.topic: include
-ms.date: 04/13/2018
-ms.author: genli
+origin.date: 04/13/2018
+ms.date: 06/11/2018
+ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 226dfd9add69e8d89a030b858c819691d7b20627
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 482241deb1081ac8a5265a076eabbdc3fb6d659e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31805159"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60743395"
 ---
 Chociaż korzystanie z tras systemowych automatycznie umożliwia ruch sieciowy we wdrożeniu, istnieją przypadki, w których użytkownik chce sterować przekazywaniem pakietów przez urządzenia wirtualne. Można to zrobić, tworząc trasy definiowane przez użytkownika, które wskazują kolejny krok na drodze pakietu do określonej podsieci, aby zamiast tego przeszły do urządzeń wirtualnych, i włączając funkcję przesyłania dalej IP dla maszyny wirtualnej uruchomionej jako urządzenie wirtualne.
 
-Oto niektóre przypadków, w których można używać urządzeń wirtualnych:
+Oto niektóre z przypadków użycia wirtualnych urządzeń sieciowych:
 
 * Monitorowanie ruchu przy użyciu systemu wykrywania nieautoryzowanego dostępu (ID)
-* Kontrolowanie ruchu z zaporą
+* Kontrolowanie ruchu za pomocą zapory
 
-Aby uzyskać więcej informacji na temat przekazywania przez i adres IP, odwiedź stronę [trasy zdefiniowane przez użytkownika i przesyłania dalej protokołu IP](../articles/virtual-network/virtual-networks-udr-overview.md).
-
+Aby uzyskać więcej informacji na temat przekazywania trasy zdefiniowanej przez użytkownika i adres IP, odwiedź stronę [tras zdefiniowanych przez użytkownika i przekazywanie adresów IP](../articles/virtual-network/virtual-networks-udr-overview.md).

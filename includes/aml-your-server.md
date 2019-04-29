@@ -10,11 +10,11 @@ ms.custom: include file
 ms.topic: include
 ms.date: 01/25/2019
 ms.openlocfilehash: 8d8b314965253dc00b39d0b068b1d6fb3e4aa471
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58395649"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60753464"
 ---
 1. Postępuj zgodnie z instrukcjami w [Utwórz obszar roboczy usługi Azure Machine Learning](../articles/machine-learning/service/setup-create-workspace.md#portal) Aby utworzyć środowisko Miniconda, Utwórz obszar roboczy, a następnie zapisać pliku konfiguracji obszaru roboczego (**aml_config/config.json**) .
 

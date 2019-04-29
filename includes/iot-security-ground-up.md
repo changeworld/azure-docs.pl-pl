@@ -9,11 +9,11 @@ ms.date: 04/24/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 14e8eb7c73a1e2cf5047410d3571008c1cd1e1ca
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289278"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60626483"
 ---
 # <a name="security-for-internet-of-things-iot-from-the-ground-up"></a>Zabezpieczenia dla Internetu rzeczy (IoT) od podstaw
 
@@ -103,14 +103,14 @@ Akceleratory rozwiązań kompilacja w środki bezpieczeństwa, zgodnie z projekt
 
 Każdy akcelerator rozwiązań tworzy wystąpienia usług platformy Azure, takich jak:
 
-* [**Usługa Azure IoT Hub**](https://azure.microsoft.com/services/iot-hub/): bramy łączącej z chmury do urządzeń. Dzięki obsłudze uwierzytelniania poszczególnych urządzeń pomaga zabezpieczyć rozwiązanie sieci, można skalować do milionów połączeń dla jednej Centrum i przetwarzania dużych ilości danych.
+* [**Azure IoT Hub**](https://azure.microsoft.com/services/iot-hub/): Bramy łączącej z chmury do urządzeń. Dzięki obsłudze uwierzytelniania poszczególnych urządzeń pomaga zabezpieczyć rozwiązanie sieci, można skalować do milionów połączeń dla jednej Centrum i przetwarzania dużych ilości danych.
 
-* [**Usługa Azure Cosmos DB**](https://azure.microsoft.com/services/cosmos-db/): skalowalne, w pełni indeksowane usługa bazy danych dla danych z częściową strukturą, zarządzającą metadanych dla urządzeń możesz aprowizować, takie jak atrybuty, konfiguracji i właściwości zabezpieczeń. Usługa Azure Cosmos DB oferuje przetwarzanie o wysokiej wydajności i dużej przepustowości, niezależny od schematów indeksowanie danych i interfejs zaawansowanych zapytań SQL.
+* [**Azure Cosmos DB**](https://azure.microsoft.com/services/cosmos-db/): Skalowalne, w pełni indeksowane usługa bazy danych dla danych z częściową strukturą, zarządzającą metadanych dla urządzeń, które można udostępnić, takie jak atrybuty, konfiguracji i właściwości zabezpieczeń. Usługa Azure Cosmos DB oferuje przetwarzanie o wysokiej wydajności i dużej przepustowości, niezależny od schematów indeksowanie danych i interfejs zaawansowanych zapytań SQL.
 
-* [**Usługa Azure Stream Analytics**](https://azure.microsoft.com/services/stream-analytics/): strumienia w czasie rzeczywistym, przetwarzanie w chmurze, która pozwala na szybkie tworzenie i wdrażanie rozwiązania analizy ekonomiczne zdobywania w czasie rzeczywistym z urządzeń, czujników, infrastruktury i aplikacji . Dane z tej w pełni zarządzanej usługi można skalować do żadnego woluminu przy zachowaniu wysokiej przepływności, małego opóźnienia i elastyczność.
+* [**Azure Stream Analytics**](https://azure.microsoft.com/services/stream-analytics/): Przetwarzanie w chmurze, która pozwala na szybkie tworzenie i wdrażanie rozwiązania analizy ekonomiczne zdobywania w czasie rzeczywistym z urządzeń, czujników, infrastruktury i aplikacji w czasie rzeczywistym strumienia. Dane z tej w pełni zarządzanej usługi można skalować do żadnego woluminu przy zachowaniu wysokiej przepływności, małego opóźnienia i elastyczność.
 
-* [**Usługi Azure App Services**](https://azure.microsoft.com/services/app-service/): Platforma usług w chmurze do tworzenia zaawansowanych aplikacji internetowych i mobilnych łączących dane w dowolnym miejscu; w chmurze lub lokalnie. Twórz interesujące aplikacje mobilne dla systemów iOS, Android i Windows. Integracja z oprogramowaniem jako usługa (SaaS) oraz aplikacje dla przedsiębiorstw z łącznością poza pole do wielu usług w chmurze i aplikacje dla przedsiębiorstw. Kod w ulubionym języku i środowisku IDE — .NET, Node.js, PHP, Python lub Java — tworzenie aplikacji sieci web i interfejsy API szybciej niż kiedykolwiek wcześniej.
+* [**Usługa Azure App Services**](https://azure.microsoft.com/services/app-service/): Platforma usług w chmurze do tworzenia zaawansowanych aplikacji internetowych i mobilnych łączących się z danymi przechowywanymi; w chmurze lub lokalnie. Twórz interesujące aplikacje mobilne dla systemów iOS, Android i Windows. Integracja z oprogramowaniem jako usługa (SaaS) oraz aplikacje dla przedsiębiorstw z łącznością poza pole do wielu usług w chmurze i aplikacje dla przedsiębiorstw. Kod w ulubionym języku i środowisku IDE — .NET, Node.js, PHP, Python lub Java — tworzenie aplikacji sieci web i interfejsy API szybciej niż kiedykolwiek wcześniej.
 
-* [**Usługa Logic Apps**](https://azure.microsoft.com/services/app-service/logic/): funkcji Logic Apps w usłudze Azure App Service ułatwia integrowanie rozwiązania IoT do istniejących systemów line-of-business oraz automatyzowanie procesów przepływu pracy. Usługa Logic Apps umożliwia deweloperom projektowanie przepływów pracy rozpoczynających się od wyzwalacza, a następnie wykonanie serii czynności — reguły i akcje, które umożliwia zaawansowane łączniki integracji z procesów biznesowych. Usługa Logic Apps oferuje out-of--box łączności z obszernym ekosystemem SaaS i opartych na chmurze i aplikacji lokalnych.
+* [**Aplikacje logiki**](https://azure.microsoft.com/services/app-service/logic/): Funkcja Logic Apps w usłudze Azure App Service ułatwia integrowanie rozwiązania IoT do istniejących systemów line-of-business oraz automatyzowanie procesów przepływu pracy. Usługa Logic Apps umożliwia deweloperom projektowanie przepływów pracy rozpoczynających się od wyzwalacza, a następnie wykonanie serii czynności — reguły i akcje, które umożliwia zaawansowane łączniki integracji z procesów biznesowych. Usługa Logic Apps oferuje out-of--box łączności z obszernym ekosystemem SaaS i opartych na chmurze i aplikacji lokalnych.
 
-* [**Usługa Azure Blob storage**](https://azure.microsoft.com/services/storage/): przechowywanie w chmurze niezawodnego i ekonomicznego danych, które urządzenia są wysyłane do chmury.
+* [**Usługa Azure Blob storage**](https://azure.microsoft.com/services/storage/): Magazyn w chmurze niezawodnego i ekonomicznego dla danych, które urządzenia są wysyłane do chmury.

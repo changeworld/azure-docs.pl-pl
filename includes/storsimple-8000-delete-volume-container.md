@@ -8,33 +8,33 @@ ms.topic: include
 ms.date: 06/08/2018
 ms.author: alkohli
 ms.custom: include file
-ms.openlocfilehash: e7f3f80c886f90a8bc3ae8c38e7d101c506439a6
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: e683d17422321b780a1c01b3011292f2e2c631cb
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35250226"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60724736"
 ---
-Aby usunąć kontener woluminów, musisz
- - Usuń woluminy w kontenerze woluminów. Jeśli kontener woluminów ma skojarzone woluminy, wykonać tych woluminów w trybie offline najpierw. Postępuj zgodnie z instrukcjami [Przełącz do trybu offline wolumin](../articles/storsimple/storsimple-8000-manage-volumes-u2.md#take-a-volume-offline). Po woluminy są w trybie offline, można je usunąć. 
- - Usuń skojarzone zasady tworzenia kopii zapasowej i migawki w chmurze. Sprawdź, czy kontener woluminów ma skojarzone zasady tworzenia kopii zapasowej i migawki w chmurze. Jeśli tak, następnie [usunąć zasady tworzenia kopii zapasowej](../articles/storsimple/storsimple-8000-manage-backup-policies-u2.md#delete-a-backup-policy). Spowoduje to również usunięcie migawki w chmurze. 
+Aby usunąć kontener woluminów, musisz mieć
+ - Usuń woluminy w kontenerze woluminów. Jeśli kontener woluminów ma skojarzone woluminy, Przełącz te woluminy trybu offline najpierw. Postępuj zgodnie z instrukcjami w [przełączyć wolumin w tryb offline](../articles/storsimple/storsimple-8000-manage-volumes-u2.md#take-a-volume-offline). Po woluminy są w trybie offline, możesz je usunąć. 
+ - Usuń skojarzone zasady tworzenia kopii zapasowej, a migawki w chmurze. Sprawdź, jeśli kontener woluminów ma skojarzone zasady tworzenia kopii zapasowych i migawki w chmurze. Jeśli tak, następnie [usuwanie zasady tworzenia kopii zapasowych](../articles/storsimple/storsimple-8000-manage-backup-policies-u2.md#delete-a-backup-policy). Spowoduje to również usunięcie migawki w chmurze. 
  
-Gdy kontener woluminów nie zawiera skojarzone woluminy, zasad tworzenia kopii zapasowych i migawki w chmurze, można ją usunąć. Wykonaj następującą procedurę, aby usunąć kontener woluminów.
+Gdy kontener woluminów ma nie skojarzone woluminy, zasadami tworzenia kopii zapasowych i migawki w chmurze, można ją usunąć. Wykonaj następującą procedurę, aby usunąć kontener woluminów.
 
-#### <a name="to-delete-a-volume-container"></a>Aby usunąć kontener woluminów
+#### <a name="to-delete-a-volume-container"></a>Można usunąć kontenera woluminów
 1. Przejdź do usługi Menedżer urządzeń StorSimple i kliknij pozycję **Urządzenia**. Wybierz i kliknij urządzenie, a następnie przejdź do **Ustawienia > Zarządzaj > kontenery woluminów**.
 
-    ![Wolumin kontenerów bloku](./media/storsimple-8000-create-volume-container/createvolumecontainer2.png)
+    ![Blok kontenery woluminów](./media/storsimple-8000-create-volume-container/createvolumecontainer2.png)
 
-2. Z listy tabelarycznej kontenery woluminów, wybierz kontener woluminów, które chcesz usunąć, kliknij prawym przyciskiem myszy **...**  , a następnie wybierz **usunąć**.
+2. Z tabelarycznej listy kontenery woluminów, wybierz kontener woluminów, które chcesz usunąć, kliknij prawym przyciskiem myszy **...**  , a następnie wybierz **Usuń**.
 
-    ![Usunięcie kontenera woluminów](./media/storsimple-8000-delete-volume-container/deletevolumecontainer1.png)
+    ![Usuwanie kontenera woluminów](./media/storsimple-8000-delete-volume-container/deletevolumecontainer1.png)
 
-3. Jeśli kontener woluminów nie ma skojarzone woluminy, zasad tworzenia kopii zapasowych i migawki w chmurze, mogą zostać usunięte. Po wyświetleniu monitu o potwierdzenie, przejrzyj i zaznacz pole wyboru, podając wpływ usunięcie kontenera woluminów. Kliknij przycisk **usunąć** aby następnie usunąć kontener woluminów.
+3. Jeśli kontener woluminów ma nie skojarzone woluminy, zasadami tworzenia kopii zapasowych i migawki w chmurze, można je usunąć. Po wyświetleniu monitu o potwierdzenie Przejrzyj i zaznacz pole wyboru, podając konsekwencje usunięcia kontenera woluminów. Kliknij przycisk **Usuń** można następnie usunąć kontenera woluminów.
 
     ![Potwierdzenie usunięcia](./media/storsimple-8000-delete-volume-container/deletevolumecontainer2.png)
 
-Lista kontenery woluminów jest aktualizowana do uwzględnienia kontenera usuniętych woluminów.
+Lista kontenerów woluminów jest aktualizowany w celu odzwierciedlenia kontenera woluminów usunięte.
 
 ![](./media/storsimple-8000-delete-volume-container/deletevolumecontainer5.png)
 

@@ -4,27 +4,26 @@ ms.service: databox
 ms.topic: include
 ms.date: 04/16/2019
 ms.author: alkohli
-ms.openlocfilehash: fa8340ec6f555258f159e14133305b847e2e3cc3
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.openlocfilehash: af4c3829c8b12bfcaae0602dde8f459de7e50f3a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59684454"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60754344"
 ---
-- **Szczegóły zamówienia** — po utworzeniu zamówienia na platformie Azure zostaną zapisane dane kontaktowe użytkowników, adres wysyłki, adres e-mail. Zapisane informacje obejmują:
+- **Szczegóły zamówienia**. Po utworzeniu zamówienia adresu wysyłkowego, adres e-mail i dane kontaktowe użytkownika, są przechowywane w witrynie Azure portal. Zapisane informacje obejmują:
   - Nazwisko osoby kontaktowej
   - Numer telefonu
-  - Email
+  - Adres e-mail
   - Adres
   - Miasto
   - Kod pocztowy
   - Stan
-  - Kraj/Województwo/Region
+  - Kraj/Województwo/region
   - Numer śledzenia dostawy
 
-    Szczegóły zamówienia są zaszyfrowane i przechowywane w usłudze. Usługa zachowuje te informacje, dopóki nie usuniesz jawnie zasobu lub zamówienia. Ponadto usunięcie zasobu i odpowiadającego im zamówienia jest zablokowana od chwili, gdy urządzenie jest dostarczany, dopóki urządzenie powraca do firmy Microsoft.
+    Szczegóły zamówienia są zaszyfrowane i przechowywane w usłudze. Usługa zachowuje te informacje, dopóki nie usuniesz jawnie zasobu lub zamówienia. Usuwanie zasobu i odpowiadającego im zamówienia jest zablokowana od chwili, gdy urządzenie jest dostarczany, dopóki urządzenie powraca do firmy Microsoft.
 
-- **Adres wysyłkowy** — po umieszczeniu kolejności, usługa Data Box zapewnia adres wysyłkowy operatorów innych firm, takich jak UPS.
+- **Adres wysyłkowy**. Po umieszczeniu zamówienie usługi Data Box zapewnia adres wysyłkowy operatorów innych firm, takich jak UPS.
 
-- **Udostępnianie użytkownikom** — użytkownicy na urządzeniu z systemem również mogą uzyskiwać dostęp do danych znajdujących się w udziałach. Lista użytkowników, którzy mają dostęp do danych udziału jest wyświetlany i mogą być wyświetlane. Ta lista są także usuwane, gdy udziały zostaną usunięte.
-
+- **Udostępnianie użytkownikom**. Użytkowników na urządzeniu z systemem również można uzyskać dostęp do danych znajdujących się w udziałach. Można wyświetlić listę użytkowników, którzy mogą uzyskiwać dostęp do udziału. Gdy udziały zostaną usunięte, także usunąć tej listy.

@@ -1,15 +1,10 @@
 ---
-author: vladvino
-ms.service: api-management
-ms.topic: include
-ms.date: 11/09/2018
-ms.author: vlvinogr
 ms.openlocfilehash: 2bfa356deeede1c16bd5a464ea7081132a67faf6
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572477"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60798447"
 ---
 ## <a name="append-other-apis"></a>Dołączanie innych interfejsów API
 
@@ -24,3 +19,5 @@ Aby dołączyć inny interfejs API do istniejących interfejsów API, wykonaj na
 3. Kliknij przycisk **...** obok interfejsu API, który chcesz dołączyć do innego interfejsu API.
 4. Z menu rozwijanego wybierz pozycję **Importuj**.
 5. Wybierz usługę, z której chcesz zaimportować interfejs API.
+
+

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: sttramer
 ms.openlocfilehash: ebdfadcb70cc9788a3d18fa99261412506889764
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54899366"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60821455"
 ---
 Aby uruchomić ten przykład, musisz zainstalować najnowszą wersję [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). Aby rozpocząć, uruchom polecenie `az login` w celu nawiązania połączenia z platformą Azure.
 

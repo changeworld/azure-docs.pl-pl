@@ -9,15 +9,15 @@ ms.date: 06/21/2018
 ms.author: mbullwin
 ms.custom: include file
 ms.openlocfilehash: 31ff6ae66b13eb5e5abcde94e8d3df7f6e32f63c
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407839"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60794424"
 ---
 Istnieją pewne ograniczenia liczby metryk i zdarzeń w każdej aplikacji, czyli na klucz instrumentacji. Ograniczenia zależą od wybranego [planu cenowego](https://azure.microsoft.com/pricing/details/application-insights/).
 
-| Zasób | Limit domyślny | Uwaga
+| Resource | Limit domyślny | Uwaga
 | --- | --- | --- |
 | Łączna ilość danych na dzień | 100 GB | Ilość danych możesz zmniejszyć, ustawiając limit. Jeśli potrzebujesz większej ilości danych, możesz zwiększyć limit, w portalu do 1000 GB. Większe niż 1000 GB pojemności, Wyślij wiadomość e-mail do AIDataCap@microsoft.com.
 | Ograniczanie przepływności | 32000 zdarzeń/s | Limit jest mierzony przez minutę.

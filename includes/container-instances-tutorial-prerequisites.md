@@ -9,19 +9,19 @@ ms.date: 03/20/2018
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: da63a5418ab94623f6ce3c9f35a085dd8b198d1a
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48858098"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60684188"
 ---
 Aby ukończyć ten samouczek, musisz spełniać następujące wymagania:
 
-**Interfejs wiersza polecenia platformy Azure**: musisz mieć interfejs wiersza polecenia platformy Azure w wersji 2.0.29 lub nowszej zainstalowany na komputerze lokalnym. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
+**Interfejs wiersza polecenia platformy Azure**: Musi mieć wiersza polecenia platformy Azure w wersji 2.0.29 lub nowszej zainstalowany na komputerze lokalnym. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
 
-**Docker**: ten samouczek zakłada, że masz podstawową wiedzę na temat najważniejszych pojęć usługi Docker, takich jak kontenery, obrazy kontenera i podstawowe polecenia `docker`. Aby uzyskać podstawowe informacje na temat platformy Docker i kontenerów, zapoznaj się z artykułem [Docker overview][docker-get-started] (Przegląd platformy Docker).
+**Docker**: W tym samouczku założono podstawową wiedzę na temat najważniejszych pojęć usługi Docker, takich jak kontenery, obrazy kontenera i podstawowe `docker` poleceń. Aby uzyskać podstawowe informacje na temat platformy Docker i kontenerów, zapoznaj się z artykułem [Docker overview][docker-get-started] (Przegląd platformy Docker).
 
-**Aparat platformy Docker**: do ukończenia tego samouczka potrzebny jest aparat platformy Docker zainstalowany lokalnie. Platforma Docker udostępnia pakiety, które konfigurują środowisko platformy Docker w systemach [macOS][docker-mac], [Windows][docker-windows] i [Linux][docker-linux].
+**Aparat platformy docker**: Aby ukończyć ten samouczek, konieczne jest aparat platformy Docker zainstalowany lokalnie. Platforma Docker udostępnia pakiety, które konfigurują środowisko platformy Docker w systemach [macOS][docker-mac], [Windows][docker-windows] i [Linux][docker-linux].
 
 > [!IMPORTANT]
 > Ponieważ usługa Azure Cloud Shell nie zawiera demona platformy Docker, w celu ukończenia tego samouczka *musisz* zainstalować na swoim *komputerze lokalnym* wiersz polecenia platformy Azure i aparat platformy Docker. W tym samouczku nie możesz korzystać z usługi Azure Cloud Shell.

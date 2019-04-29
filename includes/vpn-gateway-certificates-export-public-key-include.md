@@ -9,11 +9,11 @@ ms.date: 02/13/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: afd4836229c60ebef1536d4fa1ca4206a492e56d
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56418113"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60764006"
 ---
 Po utworzeniu certyfikatu głównego z podpisem własnym, należy wyeksportować plik cer klucza publicznego certyfikatu głównego (nie klucz prywatny). Ten plik zostanie później przekazany na platformę Azure. Poniższe kroki pomogą Ci wyeksportować plik cer dla certyfikatu głównego z podpisem własnym:
 

@@ -9,11 +9,11 @@ ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 42b6dde708e2a1dbda225fd95e3db964267ae48a
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56334046"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60613798"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>Omówienie ponownych rozruchów maszyn wirtualnych — konserwacja a przestój
 Istnieją trzy scenariusze, które mogą prowadzić do maszyny wirtualnej platformy Azure: nieplanowana konserwacja sprzętu, nieoczekiwany Przestój i planowana konserwacja.
@@ -47,7 +47,8 @@ Każda maszyna wirtualna w zestawie dostępności ma przypisaną **domenę aktua
 
 Domeny błędów definiują grupę maszyn wirtualnych, które korzystają ze wspólnego źródła zasilania i przełącznika sieciowego. Domyślnie maszyny wirtualne skonfigurowane w zestawie dostępności są rozdzielane między maksymalnie trzy domeny błędów w przypadku wdrożeń usługi Resource Manager (dwie domeny błędów w przypadku modelu klasycznego). Umieszczenie maszyn wirtualnych w zestawie dostępności nie chroni aplikacji przed błędami związanymi z systemem operacyjnym lub daną aplikacją, ale ogranicza wpływ potencjalnych awarii sprzętu fizycznego, awarii sieci i przerw w dostawie prądu.
 
-<!--Image reference--> ![Rysunek koncepcyjny przedstawiający konfigurację domeny domeny i odporności aktualizacji](./media/virtual-machines-common-manage-availability/ud-fd-configuration.png)
+<!--Image reference-->
+   ![Rysunek koncepcyjny przedstawiający konfigurację domeny domeny i odporności aktualizacji](./media/virtual-machines-common-manage-availability/ud-fd-configuration.png)
 
 ## <a name="use-managed-disks-for-vms-in-an-availability-set"></a>Używanie dysków zarządzanych dla maszyn wirtualnych w zestawie dostępności
 Jeśli obecnie korzystasz z maszyn wirtualnych z dyskami niezarządzanymi, zdecydowanie zalecamy [konwersję maszyn wirtualnych w zestawie dostępności do korzystania z dysków zarządzanych](../articles/virtual-machines/windows/convert-unmanaged-to-managed-disks.md).
@@ -75,7 +76,8 @@ Jeśli wszystkie maszyny wirtualne są niemal identyczne i służą temu samemu 
 
 Możesz na przykład umieścić wszystkie maszyny wirtualne w frontonie aplikacji uruchamiającej usługi IIS, Apache i Nginx w pojedynczym zestawie dostępności. Upewnij się, że tylko maszyny wirtualne frontonu są umieszczane w tym samym zestawie dostępności. Upewnij się również, że tylko maszyny wirtualne warstwy danych, takie jak replikowane maszyny wirtualne programu SQL Server lub maszyny wirtualne języka MySQL, są umieszczane we własnym zestawie dostępności.
 
-<!--Image reference--> ![Warstwy aplikacji](./media/virtual-machines-common-manage-availability/application-tiers.png)
+<!--Image reference-->
+   ![Warstwy aplikacji](./media/virtual-machines-common-manage-availability/application-tiers.png)
 
 ## <a name="combine-a-load-balancer-with-availability-sets"></a>Łączenie modułu równoważenia obciążenia z zestawami dostępności
 Połącz usługę [Azure Load Balancer](../articles/load-balancer/load-balancer-overview.md) z zestawem dostępności, aby uzyskać najlepszą odporność aplikacji. Usługa Azure Load Balancer dystrybuuje ruch między wieloma maszynami wirtualnymi. W przypadku naszych maszyn wirtualnych w warstwie Standardowa usługa Azure Load Balancer jest uwzględniana. Nie wszystkie warstwy maszyn wirtualnych obejmują usługę Azure Load Balancer. Aby uzyskać więcej informacji na temat równoważenia obciążenia maszyn wirtualnych, zobacz [Load Balancing virtual machines](../articles/virtual-machines/virtual-machines-linux-load-balance.md) (Równoważenie obciążenia maszyn wirtualnych).

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 04/15/2019
 ms.author: alkohli
 ms.openlocfilehash: e02c0b86cd542b3ea12914e35a6577cf4e9b43d8
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59618562"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60755045"
 ---
 Można również wyświetlić metryki do monitorowania wydajności urządzenia i w niektórych przypadkach, aby informacje o rozwiązywaniu problemów z urządzeniami.
 

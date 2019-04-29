@@ -4,13 +4,13 @@ ms.service: databox
 ms.topic: include
 ms.date: 04/16/2019
 ms.author: alkohli
-ms.openlocfilehash: cfd4ce1838ba2b48cbda3442d88362f4f1e0fd67
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.openlocfilehash: 248d10e8814d195a515a658653cfc38de7dd4652
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59684465"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60754274"
 ---
-- Dostęp do usługi krawędź pola danych wymaga Twoja organizacja ma umowy Enterprise Agreement (EA) lub w ramach subskrypcji Cloud Solution Provider (CSP). Aby uzyskać więcej informacji, przejdź do [Zamów subskrypcję platformy Azure](https://azure.microsoft.com/resources/videos/sign-up-for-microsoft-azure/)!
-- Ponieważ usługi zarządzania jest hostowany na platformie Azure, jest chroniony przy użyciu funkcji zabezpieczeń platformy Azure. Aby uzyskać więcej informacji na temat funkcji zabezpieczeń platformy Microsoft Azure, zobacz [Centrum zaufania Microsoft Azure](https://azure.microsoft.com/support/trust-center/security/).
-- Zestaw SDK operacji zarządzania, klucz szyfrowania będzie dostępny dla zasobu w obszarze **właściwości urządzenia**. Klucz szyfrowania można wyświetlić tylko wtedy, gdy masz uprawnienia do interfejsu API programu Graph zasobów.
+- Aby uzyskać dostęp do usługi krawędź pola danych, Twoja organizacja wymaga posiadania subskrypcji Enterprise Agreement (EA) lub dostawcy rozwiązań w chmurze (CSP). Aby uzyskać więcej informacji, zobacz [Zamów subskrypcję platformy Azure](https://azure.microsoft.com/resources/videos/sign-up-for-microsoft-azure/).
+- Ponieważ ta usługa zarządzania jest hostowany na platformie Azure, jest chroniony przy użyciu funkcji zabezpieczeń platformy Azure. Aby uzyskać więcej informacji o funkcjach zabezpieczeń zapewnianych przez platformę Azure, przejdź do [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/security/).
+- Klucz szyfrowania dla operacji zarządzania zestawu SDK, można uzyskać zasobu bazy danych w **właściwości urządzenia**. Klucz szyfrowania można wyświetlić tylko wtedy, gdy masz uprawnienia do interfejsu API programu Graph zasobów.

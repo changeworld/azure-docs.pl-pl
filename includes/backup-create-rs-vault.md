@@ -10,26 +10,26 @@ ms.date: 10/18/2018
 ms.author: raynew
 ms.custom: include file
 ms.openlocfilehash: 74fe531c07aa871b06b5d0773f7e8fb0ade80be4
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49946219"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60850776"
 ---
 ## <a name="create-a-recovery-services-vault"></a>Tworzenie magazynu usługi Recovery Services
 Magazyn usługi Recovery Services jest jednostką, która przechowuje kopie zapasowe i punkty odzyskiwania utworzone wraz z upływem czasu. Magazyn usługi Recovery Services zawiera także zasady tworzenia kopii zapasowych, które są skojarzone z chronionych maszyn wirtualnych.
 
 Aby utworzyć magazyn Usług odzyskiwania:
 
-1. Zaloguj się do Twojej subskrypcji w [witryny Azure portal](https://portal.azure.com/).
+1. Zaloguj się do subskrypcji w witrynie [Azure Portal](https://portal.azure.com/).
 
-2. W menu po lewej stronie wybierz **wszystkich usług**.
+2. W menu po lewej stronie wybierz pozycję **Wszystkie usługi**.
 
-    ![Wybierz wszystkie usługi](./media/backup-create-rs-vault/click-all-services.png)
+    ![Wybieranie pozycji Wszystkie usługi](./media/backup-create-rs-vault/click-all-services.png)
 
-3. W **wszystkich usług** okna dialogowego wprowadź **usługi Recovery Services**. Filtruje listę zasobów zgodnie z dane wejściowe. Na liście zasobów wybierz **Magazyny usługi Recovery Services**.
+3. W oknie dialogowym **Wszystkie usługi** wprowadź frazę **Recovery Services**. Filtruje listę zasobów zgodnie z dane wejściowe. Na liście zasobów wybierz **Magazyny usługi Recovery Services**.
 
-    ![Wprowadź i wybierz pozycję magazynów usługi Recovery Services](./media/backup-create-rs-vault/all-services.png)
+    ![Wprowadzanie i wybieranie pozycji Magazyny usługi Recovery Services](./media/backup-create-rs-vault/all-services.png)
 
     Zostanie wyświetlona lista magazynów usługi Recovery Services w ramach subskrypcji.
     

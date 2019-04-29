@@ -9,11 +9,11 @@ ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: f3e05f213821b053f8cf6abbbc50a14e9ea62295
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58124999"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60626607"
 ---
 # <a name="internet-of-things-iot-security-architecture"></a>Architektura zabezpieczeń Internetu rzeczy (IoT)
 
@@ -171,13 +171,13 @@ W każdej kategorii, opisane w architekturze usługi Azure IoT, w tym przykładz
 
 **Fałszowanie (S)**: Osoba atakująca może wyodrębnić materiału klucza kryptograficznego z urządzenia, albo w oprogramowania lub poziomie sprzętu, a następnie dostępu do systemu za pomocą innego urządzenia fizycznego lub wirtualnego z tożsamością urządzenia materiału klucza jest zajęty z. Dobre ilustracja to zdalnego sterowania, który można wyłączyć wszelkie TV i które są prankster popularnych narzędzi.
 
-**Odmowa usługi (D)**: Urządzenie może być renderowany zdolny do funkcjonowania lub komunikacji przez nie zakłócają częstotliwości lub cuttinga przewodów. Na przykład kamery nadzoru, który miał jego zasilania lub połączenia sieciowego celowo wycinane nie danych raportu, w ogóle.
+**Odmowa usługi (D)**: Urządzenie można pozbawić możliwości funkcjonowania lub komunikowania się przez zakłócenie częstotliwości radiowych lub przecięcie przewodów. Na przykład kamera nadzoru wizyjnego, którą celowo pozbawiono zasilania lub połączenia sieciowego, nie może w ogóle zgłaszać danych.
 
-**Manipulowanie (T)**: Osoba atakująca może częściowo lub całkowicie zastąpić oprogramowanie działające na urządzeniu, potencjalnie umożliwiając zamieniono oprogramowania wykorzystywać oryginalnego tożsamości urządzenia materiału klucza lub funkcji kryptograficznych zawierający kluczy materiały były dostępne dla program nielegalnemu dostępowi. Na przykład osoba atakująca może wykorzystać wyodrębnione materiału klucza do przechwycenia i pominąć dane z urządzenia do ścieżki komunikacji i zastąp go false dane, które jest uwierzytelniana przy użyciu skradzionych materiału klucza.
+**Manipulowanie (T)**: Atakujący może częściowo lub całkowicie zastąpić oprogramowanie działające na urządzeniu, potencjalnie umożliwiając temu oprogramowaniu wykorzystanie prawdziwej tożsamości urządzenia, jeśli dane dotyczące klucza lub urządzenia kryptograficzne przechowujące dane dotyczące klucza były dostępne dla takiego nielegalnego programu. Na przykład osoba atakująca może wykorzystać wyodrębnione materiału klucza do przechwycenia i pominąć dane z urządzenia do ścieżki komunikacji i zastąp go false dane, które jest uwierzytelniana przy użyciu skradzionych materiału klucza.
 
 **Ujawnienie informacji, (I)**: Jeśli urządzenie działa manipulować oprogramowania, takie oprogramowanie manipulować potencjalnie mogą spowodować przeciek tych danych nieautoryzowanym osobom. Na przykład osoba atakująca może wykorzystać wyodrębnione materiału klucza iniekcję się do ścieżki komunikacji między urządzenia i bramy kontrolera lub pola lub brama chmury do Lewarek poza informacji.
 
-**Podniesienie poziomu uprawnień (E)**: Urządzenia, która wykonuje określoną funkcję można wymusić czymś innym. Na przykład można zwiódł już zawór, który jest zaprogramowane, aby otworzyć połowie, aby otworzyć aż.
+**Podniesienie poziomu uprawnień (E)**: Urządzenie realizujące określoną funkcję może zostać zmuszone do robienia czegoś innego. Na przykład można zwiódł już zawór, który jest zaprogramowane, aby otworzyć połowie, aby otworzyć aż.
 
 | **Składnik** | **Przed zagrożeniami** | **Środki zaradcze** | **Ryzyko** | **Implementacja** |
 | --- | --- | --- | --- | --- |
@@ -192,9 +192,9 @@ Poniżej przedstawiono kilka przykładów zagrożenia w tej kategorii:
 
 **Fałszowanie**: Osoba atakująca może wyodrębnić materiału klucza kryptograficznego z urządzenia, albo w oprogramowania lub poziomie sprzętu, a następnie dostępu do systemu za pomocą innego urządzenia fizycznego lub wirtualnego z tożsamością urządzenia materiału klucza jest zajęty z.
 
-**Odmowa usługi**: Urządzenie może być renderowany zdolny do funkcjonowania lub komunikacji przez nie zakłócają częstotliwości lub cuttinga przewodów. Na przykład kamery nadzoru, który miał jego zasilania lub połączenia sieciowego celowo wycinane nie danych raportu, w ogóle.
+**Odmowa usługi**: Urządzenie można pozbawić możliwości funkcjonowania lub komunikowania się przez zakłócenie częstotliwości radiowych lub przecięcie przewodów. Na przykład kamera nadzoru wizyjnego, którą celowo pozbawiono zasilania lub połączenia sieciowego, nie może w ogóle zgłaszać danych.
 
-**Manipulowanie**: Osoba atakująca może częściowo lub całkowicie zastąpić oprogramowanie działające na urządzeniu, potencjalnie umożliwiając zamieniono oprogramowania wykorzystywać oryginalnego tożsamości urządzenia materiału klucza lub funkcji kryptograficznych zawierający kluczy materiały były dostępne dla program nielegalnemu dostępowi.
+**Manipulowanie**: Atakujący może częściowo lub całkowicie zastąpić oprogramowanie działające na urządzeniu, potencjalnie umożliwiając temu oprogramowaniu wykorzystanie prawdziwej tożsamości urządzenia, jeśli dane dotyczące klucza lub urządzenia kryptograficzne przechowujące dane dotyczące klucza były dostępne dla takiego nielegalnego programu.
 
 **Manipulowanie**: Kamera nadzoru, która jest wyświetlany obraz widoczne spektrum pusty korytarzowych może mieć na celu fotografii takich korytarzowych. Czujnik dymu lub ognia może zgłaszać ktoś zawierający jaśniejszego pod nim. W obu przypadkach urządzenie może być z technicznego punktu widzenia pełni godna zaufania do systemu, ale zgłasza manipulować informacji.
 
@@ -210,7 +210,7 @@ Poniżej przedstawiono kilka przykładów zagrożenia w tej kategorii:
 
 **Manipulowanie**: Urządzenie można tak skonfigurować, aby działają w stan nieznany system kontroli (poza odwzorowania znane parametry), a zatem mogą udostępniać dane, które mogą zostać błędnie zinterpretowane
 
-**Podniesienie uprawnień**: Urządzenia, która wykonuje określoną funkcję można wymusić czymś innym. Na przykład można zwiódł już zawór, który jest zaprogramowane, aby otworzyć połowie, aby otworzyć aż.
+**Podniesienie uprawnień**: Urządzenie realizujące określoną funkcję może zostać zmuszone do robienia czegoś innego. Na przykład można zwiódł już zawór, który jest zaprogramowane, aby otworzyć połowie, aby otworzyć aż.
 
 **Odmowa usługi**: Urządzenia mogą być uwzględniane w stanie, gdy komunikacja nie jest możliwe.
 
