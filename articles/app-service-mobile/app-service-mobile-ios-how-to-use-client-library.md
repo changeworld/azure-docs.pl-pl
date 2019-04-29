@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: b6f93cc3c35ab18ecd50ccd6b3090985497baabf
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121774"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122459"
 ---
 # <a name="how-to-use-ios-client-library-for-azure-mobile-apps"></a>Sposób użycia biblioteki klienta usługi Azure Mobile Apps-iOS
 
@@ -45,7 +45,7 @@ W tym przewodniku założono, że utworzono zaplecza za pomocą tabeli. W tym pr
 
 Aby uzyskać dostęp do zaplecza usługi Azure Mobile Apps w swoim projekcie, należy utworzyć `MSClient`. Zastąp `AppUrl` przy użyciu adresu URL aplikacji. Można pozostawić `gatewayURLString` i `applicationKey` puste. Po skonfigurowaniu bramy uwierzytelniania wypełnić `gatewayURLString` za pomocą adresu URL bramy.
 
-**Języka Objective-C**:
+**Objective-C**:
 
 ```objc
 MSClient *client = [MSClient clientWithApplicationURLString:@"AppUrl"];
@@ -61,7 +61,7 @@ let client = MSClient(applicationURLString: "AppUrl")
 
 Aby uzyskać dostęp do danych lub je zaktualizować, utwórz odwołanie do tabeli zaplecza. Zastąp ciąg `TodoItem` nazwą tabeli
 
-**Języka Objective-C**:
+**Objective-C**:
 
 ```objc
 MSTable *table = [client tableWithName:@"TodoItem"];
@@ -77,7 +77,7 @@ let table = client.tableWithName("TodoItem")
 
 Aby utworzyć zapytanie bazy danych, zapytań `MSTable` obiektu. Następujące zapytanie pobiera wszystkie elementy w `TodoItem` i rejestruje tekst każdego elementu.
 
-**Języka Objective-C**:
+**Objective-C**:
 
 ```objc
 [table readWithCompletion:^(MSQueryResult *result, NSError *error) {
@@ -111,7 +111,7 @@ Aby filtrować wyniki, istnieje wiele dostępnych opcji.
 
 Aby filtrować, używając predykatu, użyj `NSPredicate` i `readWithPredicate`. Następujące filtry zwrócone dane w celu znalezienia tylko niezakończonych elementów zadań do wykonania.
 
-**Języka Objective-C**:
+**Objective-C**:
 
 ```objc
 // Create a predicate that finds items where complete is false
@@ -145,11 +145,11 @@ table.readWithPredicate(predicate) { (result, error) in
 }
 ```
 
-## <a name="query-object"></a>Jak: Użyj MSQuery
+## <a name="query-object"></a>Jak: Use MSQuery
 
 Aby wykonać zapytanie złożone (w tym sortowanie i stronicowanie), należy utworzyć `MSQuery` obiektu bezpośrednio lub za pomocą predykat:
 
-**Języka Objective-C**:
+**Objective-C**:
 
 ```objc
 MSQuery *query = [table query];
@@ -178,7 +178,7 @@ Wykonaj `MSQuery` zapytania, wywołując `readWithCompletion` obiektu.
 
 Aby posortować wyniki, Przyjrzyjmy się przykładowi. Aby posortować według pola "text" w kolejności rosnącej, a następnie według malejących "Pełna", należy wywołać `MSQuery` w następujący sposób:
 
-**Języka Objective-C**:
+**Objective-C**:
 
 ```objc
 [query orderByAscending:@"text"];
@@ -214,7 +214,7 @@ query.readWithCompletion { (result, error) in
 
 Aby ograniczyć liczbę pól do zwrócenia w zapytaniu, określ nazwy pól w **selectFields** właściwości. W tym przykładzie zwraca tylko tekst i ukończone pola:
 
-**Języka Objective-C**:
+**Objective-C**:
 
 ```objc
 query.selectFields = @[@"text", @"complete"];
@@ -228,7 +228,7 @@ query.selectFields = ["text", "complete"]
 
 Dołącz dodatkowe parametry parametry zapytania w żądaniu serwera (na przykład, ponieważ używa niestandardowego skryptu po stronie serwera, ich), wypełnij `query.parameters` w następujący sposób:
 
-**Języka Objective-C**:
+**Objective-C**:
 
 ```objc
 query.parameters = @{
@@ -257,7 +257,7 @@ To ustawienie jest również *numer* rekordy danych nie *rozmiar w bajtach*.
 
 Zwiększenie rozmiaru strony klienta, należy również zwiększyć rozmiar strony na serwerze. Zobacz ["jak: Dostosuj rozmiar stronicowania w tabeli"](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) kroki opisane w tym celu.
 
-**Języka Objective-C**:
+**Objective-C**:
 
 ```objc
   MSPullSettings *pullSettings = [[MSPullSettings alloc] initWithPageSize:3];
@@ -288,7 +288,7 @@ Jeśli `id` nie zostanie podana, wewnętrznej bazy danych automatycznie generuje
 
 `result` Zawiera nowy element, który został wstawiony. W zależności od logika serwera może mieć dodatkowe lub zmodyfikowanych danych co został przekazany do serwera.
 
-**Języka Objective-C**:
+**Objective-C**:
 
 ```objc
 NSDictionary *newItem = @{@"id": @"custom-id", @"text": @"my new item", @"complete" : @NO};
@@ -318,7 +318,7 @@ table.insert(newItem) { (result, error) in
 
 Aby zaktualizować istniejący wiersz, zmodyfikuj element i wywołania `update`:
 
-**Języka Objective-C**:
+**Objective-C**:
 
 ```objc
 NSMutableDictionary *newItem = [oldItem mutableCopy]; // oldItem is NSDictionary
@@ -349,7 +349,7 @@ if let newItem = oldItem.mutableCopy() as? NSMutableDictionary {
 
 Alternatywnie można podać identyfikator wiersza i zaktualizowane pole:
 
-**Języka Objective-C**:
+**Objective-C**:
 
 ```objc
 [table update:@{@"id":@"custom-id", @"text":"my EDITED item"} completion:^(NSDictionary *result, NSError *error) {
@@ -379,7 +379,7 @@ Co najmniej `id` podczas wprowadzania aktualizacji, należy ustawić dla atrybut
 
 Aby usunąć element, należy wywołać `delete` z elementem:
 
-**Języka Objective-C**:
+**Objective-C**:
 
 ```objc
 [table delete:item completion:^(id itemId, NSError *error) {
@@ -405,7 +405,7 @@ table.delete(newItem as [NSObject: AnyObject]) { (itemId, error) in
 
 Alternatywnie usunąć, podając identyfikator wiersza:
 
-**Języka Objective-C**:
+**Objective-C**:
 
 ```objc
 [table deleteWithId:@"37BBF396-11F0-4B39-85C8-B319C729AF6D" completion:^(id itemId, NSError *error) {
@@ -437,7 +437,7 @@ Za pomocą niestandardowego interfejsu API może narazić żadnych funkcji wewn�
 
 Aby wywołać niestandardowy interfejs API, należy wywołać `MSClient.invokeAPI`. Żądanie i odpowiedź zawartości są traktowane jako dane JSON. Aby korzystać z innych typów nośników [Użyj innego przeciążenia `invokeAPI` ] [ 5].  Aby `GET` żądania zamiast `POST` żądania parametru zestawu `HTTPMethod` do `"GET"` i parametru `body` do `nil` (ponieważ żądania GET nie ma treści wiadomości.) Jeśli niestandardowy interfejs API obsługuje inne zleceń HTTP, zmień `HTTPMethod` odpowiednio.
 
-**Języka Objective-C**:
+**Objective-C**:
 
 ```objc
 [self.client invokeAPI:@"sendEmail"
@@ -476,7 +476,7 @@ client.invokeAPI("sendEmail",
 
 Aby zarejestrować szablony, przekazywać szablonów za pomocą usługi **client.push registerDeviceToken** metody w aplikacji klienckiej.
 
-**Języka Objective-C**:
+**Objective-C**:
 
 ```objc
 [client.push registerDeviceToken:deviceToken template:iOSTemplate completion:^(NSError *error) {
@@ -498,7 +498,7 @@ client.push?.registerDeviceToken(NSData(), template: iOSTemplate, completion: { 
 
 Szablony są typu NSDictionary i może zawierać wiele szablonów w następującym formacie:
 
-**Języka Objective-C**:
+**Objective-C**:
 
 ```objc
 NSDictionary *iOSTemplate = @{ @"templateName": @{ @"body": @{ @"aps": @{ @"alert": @"$(message)" } } } };
@@ -518,7 +518,7 @@ Podczas wywoływania zaplecza aplikacji mobilnych w usłudze Azure App Service z
 
 Plik [ `<WindowsAzureMobileServices/MSError.h>` ] [ 6] definiuje stałe `MSErrorResponseKey`, `MSErrorRequestKey`, i `MSErrorServerItemKey`. Aby wyświetlić więcej danych związane z błędem:
 
-**Języka Objective-C**:
+**Objective-C**:
 
 ```objc
 NSDictionary *serverItem = [error.userInfo objectForKey:MSErrorServerItemKey];
@@ -532,7 +532,7 @@ let serverItem = error.userInfo[MSErrorServerItemKey]
 
 Ponadto plik definiuje stałe każdy kod błędu:
 
-**Języka Objective-C**:
+**Objective-C**:
 
 ```objc
 if (error.code == MSErrorPreconditionFailed) {
@@ -567,7 +567,7 @@ Active Directory Authentication Library (ADAL) służy do logowania się użytko
    * Zastąp **INSERT klienta-ID — tutaj** z Identyfikatorem klienta został skopiowany z aplikacja kliencka macierzystego.
    * Zastąp **INSERT PRZEKIEROWANIA-URI-tutaj** z witryny */.auth/login/done* punktu końcowego, przy użyciu schematu HTTPS. Ta wartość powinna być podobna do *https://contoso.azurewebsites.net/.auth/login/done*.
 
-**Języka Objective-C**:
+**Objective-C**:
 
 ```objc
 #import <ADALiOS/ADAuthenticationContext.h>
@@ -658,7 +658,7 @@ Zestaw SDK usługi Facebook dla systemu iOS można użyć do logowania się uży
 4. Oprócz dodawania `FBSDKCoreKit.framework` do projektu, a także dodać odwołanie do `FBSDKLoginKit.framework` w taki sam sposób.
 5. Dodaj następujący kod do aplikacji, zgodnie z językiem, którego używasz.
 
-    **Języka Objective-C**:
+    **Objective-C**:
 
     ```objc
     #import <FBSDKLoginKit/FBSDKLoginKit.h>
@@ -722,7 +722,7 @@ Service Fabric dla systemu iOS można użyć do logowania się użytkowników do
 
     Jeśli zdecydujesz się używać kluczy tajnych, która została utworzona wcześniej, Dodaj następujący kod do delegata Twojej aplikacji:
 
-    **Języka Objective-C**:
+    **Objective-C**:
 
     ```objc
     #import <Fabric/Fabric.h>
@@ -753,7 +753,7 @@ Service Fabric dla systemu iOS można użyć do logowania się użytkowników do
 
 3. Dodaj następujący kod do aplikacji, zgodnie z językiem, którego używasz.
 
-    **Języka Objective-C**:
+    **Objective-C**:
 
     ```objc
     #import <TwitterKit/TwitterKit.h>
@@ -800,7 +800,7 @@ Google Sign-In SDK dla systemu iOS można użyć do logowania się użytkownikó
 2. Zainstaluj zestaw SDK Google dla systemu iOS, wykonując [Sign In Google dla systemu iOS — Rozpocznij integrowanie](https://developers.google.com/identity/sign-in/ios/start-integrating) dokumentacji. Możesz pominąć w sekcji "Uwierzytelnianie przy użyciu serwera wewnętrznej bazy danych".
 3. Dodaj następujący kod do pełnomocnika `signIn:didSignInForUser:withError:` metodę, zgodnie z językiem, którego używasz.
 
-    **Języka Objective-C**:
+    **Objective-C**:
     ```objc
     NSDictionary *payload = @{
                                 @"id_token":user.authentication.idToken,
@@ -823,7 +823,7 @@ Google Sign-In SDK dla systemu iOS można użyć do logowania się użytkownikó
 
 4. Upewnij się, możesz również dodać następujące polecenie, aby `application:didFinishLaunchingWithOptions:` w swoim delegacie aplikacji, zastępując "SERVER_CLIENT_ID" o tym samym identyfikatorze, którego użyto do skonfigurowania usługi App Service w kroku 1.
 
-    **Języka Objective-C**:
+    **Objective-C**:
 
     ```objc
     [GIDSignIn sharedInstance].serverClientID = @"SERVER_CLIENT_ID";
@@ -837,7 +837,7 @@ Google Sign-In SDK dla systemu iOS można użyć do logowania się użytkownikó
 
 5. Dodaj następujący kod do aplikacji w UIViewController, który implementuje `GIDSignInUIDelegate` protokołu, zgodnie z językiem, którego używasz.  Zalogowano przed Trwa logowanie ponownie, a mimo że nie trzeba ponownie wprowadź swoje poświadczenia, zobaczysz okno dialogowe zgody.  Tę metodę należy wywołać tylko wtedy, gdy wygasł token sesji.
 
-   **Języka Objective-C**:
+   **Objective-C**:
 
     ```objc
     #import <Google/SignIn.h>

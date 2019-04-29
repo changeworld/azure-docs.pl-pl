@@ -14,20 +14,20 @@ ms.devlang: java
 ms.topic: article
 ms.date: 11/17/2017
 ms.author: crdun
-ms.openlocfilehash: 557f6f6a6d4925ec167760455dfc67449582c05c
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 352e64664e6796fb4e0a7941de91ef4045076aed
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42811674"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62104613"
 ---
 # <a name="add-push-notifications-to-your-android-app"></a>Dodawanie powiadomień wypychanych do aplikacji systemu Android
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
-W ramach tego samouczka, możesz dodać powiadomienia wypychane do [dla systemu Android — szybki start] projektu, dzięki czemu jest wysyłane powiadomienie push do urządzenia, za każdym razem, gdy rekord zostanie wstawiona.
+W ramach tego samouczka, możesz dodać powiadomienia wypychane do [Android — szybki start] projektu, dzięki czemu jest wysyłane powiadomienie push do urządzenia, za każdym razem, gdy rekord zostanie wstawiona.
 
 Jeśli nie używasz projektu serwera pobranego — szybki start, należy pakiet rozszerzenia powiadomień wypychanych. Aby uzyskać więcej informacji, zobacz [pracy z zestawem SDK serwera zaplecza platformy .NET dla usługi Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
 
@@ -40,7 +40,7 @@ Potrzebne są następujące elementy:
   * [Program android Studio](https://developer.android.com/sdk/index.html) Jeśli ta aplikacja ma zaplecza Node.js.
   * [Program Visual Studio Community 2013](https://go.microsoft.com/fwLink/p/?LinkID=391934) lub nowszy, jeśli ta aplikacja ma zaplecza programu Microsoft .NET.
 * System android 2.3 lub nowszy, Google Repository w wersji 27 lub nowszej i sklepu Google Play Services 9.0.2 lub nowsze dla usługi Firebase Cloud Messaging.
-* Wykonaj [dla systemu Android — szybki start].
+* Wykonaj [Android — szybki start].
 
 ## <a name="create-a-project-that-supports-firebase-cloud-messaging"></a>Tworzenie projektu obsługującego usługę Firebase Cloud Messaging
 
@@ -68,7 +68,7 @@ W tej sekcji należy zaktualizować klienta aplikacji systemu Android do obsług
 
 Następnym krokiem jest do zainstalowania usług Google Play. Usługi firebase Cloud Messaging ma niektóre minimalne interfejsu API poziomu wymagań dotyczących tworzenia i testowania, która **minSdkVersion** musi odpowiadać właściwości w manifeście.
 
-Jeśli testujesz starsze urządzenia, zapoznaj się z [Dodaj Firebase do projektu systemu Android] ustalenie, jak mała można ustawić tę wartość i odpowiednio ją ustawić.
+Jeśli testujesz starsze urządzenia, zapoznaj się z [Dodawanie usługi Firebase do projektu systemu Android] ustalenie, jak mała można ustawić tę wartość i odpowiednio ją ustawić.
 
 ### <a name="add-firebase-cloud-messaging-to-the-project"></a>Dodawanie usługi Firebase Cloud Messaging dla projektu
 
@@ -92,5 +92,5 @@ Teraz, w tym samouczku została zakończona, należy wziąć pod uwagę przejśc
   Dowiedz się, jak dodać obsługę trybu offline do aplikacji przy użyciu zaplecze funkcji Mobile Apps. Synchronizacja w trybie offline, użytkownicy mogą wchodzić w interakcje z aplikacją mobilną&mdash;wyświetlanie, dodawanie lub modyfikowanie danych&mdash;nawet w przypadku braku połączenia sieciowego.
 
 <!-- URLs -->
-[dla systemu Android — szybki start]: app-service-mobile-android-get-started.md
-[Dodaj Firebase do projektu systemu Android]:https://firebase.google.com/docs/android/setup
+[Android — szybki start]: app-service-mobile-android-get-started.md
+[Dodawanie usługi Firebase do projektu systemu Android]:https://firebase.google.com/docs/android/setup

@@ -1,6 +1,6 @@
 ---
-title: Dodawanie uwierzytelniania na Apache Cordova w usłudze Mobile Apps | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak korzystać z aplikacji mobilnych w usłudze Azure App Service uwierzytelniać użytkowników aplikacji oprogramowania Apache Cordova za pomocą różnych dostawców tożsamości, obejmującej Google, Facebook, Twitter i Microsoft.
+title: Dodawanie uwierzytelniania na Apache Cordova z usługą Mobile Apps | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać usługi Mobile Apps w usłudze Azure App Service do uwierzytelniania użytkowników w swojej aplikacji Apache Cordova za pomocą różnych dostawców tożsamości, m.in. Google, Facebook, Twitter i Microsoft.
 services: app-service\mobile
 documentationcenter: javascript
 author: conceptdev
@@ -14,57 +14,57 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
-ms.openlocfilehash: b5cce832ae7ae83552c2a5ded2f5f5bda0ac76bf
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 23b5967782cf237ed5af2b802aabbbf9c2f781e7
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2018
-ms.locfileid: "27591950"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62114214"
 ---
-# <a name="add-authentication-to-your-apache-cordova-app"></a>Dodawanie uwierzytelniania do aplikacji platformy Apache Cordova
+# <a name="add-authentication-to-your-apache-cordova-app"></a>Dodawanie uwierzytelniania do aplikacji Apache Cordova
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
 ## <a name="summary"></a>Podsumowanie
-W tym samouczku należy dodać do listy zadań projektu szybkiego startu w programie Apache Cordova przy użyciu dostawcy tożsamości obsługiwanych uwierzytelniania. W tym samouczku jest oparta na [Rozpoczynanie pracy z usługą Mobile Apps] — samouczek, należy najpierw wykonać.
+W tym samouczku można dodać do listy zadań projektu quickstart na Apache Cordova przy użyciu dostawcy tożsamości obsługiwanych uwierzytelniania. Ten samouczek opiera się na [Rozpoczynanie pracy z usługą Mobile Apps] — samouczek, należy najpierw wykonać.
 
-## <a name="register"></a>Zarejestrować aplikację do uwierzytelniania i konfigurowanie usługi aplikacji
+## <a name="register"></a>Rejestrowanie aplikacji do uwierzytelniania i konfigurowanie usługi App Service
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
 [Obejrzyj wideo przedstawiające podobne kroki](https://channel9.msdn.com/series/Azure-connected-services-with-Cordova/Azure-connected-services-task-8-Azure-authentication)
 
-## <a name="permissions"></a>Ogranicz uprawnienia dla uwierzytelnionych użytkowników
+## <a name="permissions"></a>Ogranicz uprawnienia do uwierzytelnionych użytkowników
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
-Teraz można sprawdzić dostępu anonimowego z wewnętrzną bazą danych zostało wyłączone. W programie Visual Studio:
+Można teraz, upewnij się, że anonimowy dostęp do swojej wewnętrznej bazy danych zostały wyłączone. W programie Visual Studio:
 
-* Otwórz projekt, który został utworzony po ukończeniu samouczka [Rozpoczynanie pracy z usługą Mobile Apps].
+* Otwórz projekt, który został utworzony po ukończeniu tego samouczka [Rozpoczynanie pracy z usługą Mobile Apps].
 * Uruchom aplikację w **Emulator systemu Google Android**.
 * Sprawdź, czy wystąpił nieoczekiwany błąd połączenia jest wyświetlany po uruchomieniu aplikacji.
 
-Następnie zaktualizuj aplikację do uwierzytelniania użytkowników przed wysłaniem żądania zasobów z zaplecza aplikacji mobilnej.
+Następnie zaktualizuj aplikację do uwierzytelniania kont użytkowników przed zażądaniem zasoby z zaplecza aplikacji mobilnej.
 
 ## <a name="add-authentication"></a>Dodawanie uwierzytelniania do aplikacji
-1. Otwórz projekt w **programu Visual Studio**, następnie otwórz `www/index.html` plik do edycji.
-2. Zlokalizuj `Content-Security-Policy` metatag elementu head.  Dodaj hosta OAuth do listy dozwolonych źródeł.
+1. Otwórz projekt w programie **programu Visual Studio**, a następnie otwórz `www/index.html` plik do edycji.
+2. Znajdź `Content-Security-Policy` metatag elementu head.  Dodaj hosta protokołu OAuth do listy dozwolonych źródeł.
 
-   | Dostawca | Nazwa dostawcy zestawu SDK | OAuth Host |
+   | Dostawca | Nazwa dostawcy zestawu SDK | Host protokołu OAuth |
    |:--- |:--- |:--- |
    | Usługa Azure Active Directory | usługi AAD | https://login.microsoftonline.com |
-   | Facebook | Usługi Facebook | https://www.Facebook.com |
-   | Google | Google | https://accounts.Google.com |
-   | Microsoft | MicrosoftAccount | https://login.Live.com |
-   | Twitter | W usłudze Twitter | https://API.twitter.com |
+   | Facebook | facebook | https://www.facebook.com |
+   | Google | google | https://accounts.google.com |
+   | Microsoft | microsoftaccount | https://login.live.com |
+   | Twitter | W usłudze Twitter | https://api.twitter.com |
 
-    Przykład zawartość--zasady zabezpieczeń (zaimplementowany dla usługi Azure Active Directory) jest następujący:
+    Przykładem zawartości-Security-Policy (zaimplementowano usługi Azure Active Directory), jest następujący:
 
         <meta http-equiv="Content-Security-Policy" content="default-src 'self'
             data: gap: https://login.microsoftonline.com https://yourapp.azurewebsites.net; style-src 'self'">
 
-    Zastąp `https://login.microsoftonline.com` z hostem OAuth z powyższej tabeli.  Aby uzyskać więcej informacji o metatag zawartości zabezpieczeń zasad, zobacz [zasadę zawartość dokumentacji].
+    Zastąp `https://login.microsoftonline.com` z hostem OAuth z powyższej tabeli.  Aby uzyskać więcej informacji na temat zawartości security-policy metatag zobacz [Dokumentacja zawartości-Security-Policy].
 
-    Niektórzy dostawcy uwierzytelniania nie wymaga się, że zawartość zabezpieczeń zasady zostanie zmieniona, gdy na urządzeniach przenośnych odpowiednie.  Na przykład żadnych zmian zawartości zabezpieczeń zasady są wymagane w przypadku przy użyciu uwierzytelniania serwisu Google na urządzeniu z systemem Android.
+    Niektórzy dostawcy uwierzytelniania nie wymagają zmian zawartości-Security-Policy, gdy jest używana na urządzeniach przenośnych odpowiednie.  Na przykład bez zmian zawartości, zabezpieczeń, zasady są wymagane w przypadku urządzenia z systemem Android przy użyciu uwierzytelniania serwisu Google.
 
-3. Otwórz `www/js/index.js` pliku do edycji, Znajdź `onDeviceReady()` metody i w obszarze tworzenia klienta kodzie Dodaj następujący kod:
+3. Otwórz `www/js/index.js` plik do edycji, odszukaj `onDeviceReady()` metody i w ramach tworzenia klienta kodu Dodaj następujący kod:
 
         // Login to the service
         client.login('SDK_Provider_Name')
@@ -88,14 +88,14 @@ Następnie zaktualizuj aplikację do uwierzytelniania użytkowników przed wysł
 
     Ten kod zastępuje istniejący kod, który tworzy odwołania do tabeli i odświeża interfejsu użytkownika.
 
-    Metoda: login() uruchamia uwierzytelniania z dostawcą. Metoda: login() jest z funkcji asynchronicznych, która zwraca JavaScript Promise.  Pozostałe inicjowanie jest umieszczony wewnątrz odpowiedzi promise, tak aby nie jest wykonywany przed zakończeniem metody: login().
+    Metoda: login() uruchamia uwierzytelniania za pomocą dostawcy. Metoda: login() jest zwracające JavaScript Promise funkcji asynchronicznej.  Pozostałe inicjowanie jest umieszczony wewnątrz odpowiedzi promise, tak aby nie jest wykonywany do momentu ukończenia metoda: login().
 
-4. W kodzie, który właśnie został dodany, Zastąp `SDK_Provider_Name` o nazwie dostawcą logowania. Na przykład dla usługi Azure Active Directory, należy użyć `client.login('aad')`.
-5. Uruchom projekt.  Po zakończeniu projektu podczas inicjowania aplikacji zawiera strony logowania OAuth dla dostawcy uwierzytelniania wybrany.
+4. W kodzie, który właśnie został dodany, Zastąp `SDK_Provider_Name` o nazwie dostawcy logowania. Na przykład usługi Azure Active Directory, należy użyć `client.login('aad')`.
+5. Uruchom projekt.  Po zakończeniu projektu Inicjowanie aplikacji pokazuje strony logowania OAuth dla dostawcy uwierzytelniania wybrany.
 
 ## <a name="next-steps"></a>Następne kroki
-* Dowiedz się więcej [o uwierzytelniania] z usługi Azure App Service.
-* Kontynuuj samouczek, dodając [powiadomień wypychanych] do swojej aplikacji Apache Cordova.
+* Dowiedz się więcej [Uwierzytelnianie — informacje] za pomocą usługi Azure App Service.
+* Kontynuuj samouczka, dodając [Powiadomienia wypychane] do swojej aplikacji Apache Cordova.
 
 Dowiedz się, jak korzystać z zestawów SDK.
 
@@ -105,9 +105,9 @@ Dowiedz się, jak korzystać z zestawów SDK.
 
 <!-- URLs. -->
 [Rozpoczynanie pracy z usługą Mobile Apps]: app-service-mobile-cordova-get-started.md
-[zasadę zawartość dokumentacji]: https://cordova.apache.org/docs/en/latest/guide/appdev/whitelist/index.html
-[powiadomień wypychanych]: app-service-mobile-cordova-get-started-push.md
-[o uwierzytelniania]: app-service-mobile-auth.md
+[Dokumentacja zawartości-Security-Policy]: https://cordova.apache.org/docs/en/latest/guide/appdev/whitelist/index.html
+[Powiadomienia wypychane]: app-service-mobile-cordova-get-started-push.md
+[Uwierzytelnianie — informacje]: app-service-mobile-auth.md
 [Zestaw Apache Cordova SDK]: app-service-mobile-cordova-how-to-use-client-library.md
 [Zestaw ASP.NET Server SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [Zestaw Node.js Server SDK]: app-service-mobile-node-backend-how-to-use-server-sdk.md

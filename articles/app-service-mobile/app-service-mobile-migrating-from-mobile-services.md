@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/03/2016
 ms.author: crdun
 ms.openlocfilehash: dfc5e2923215b1669b0a3300653ad0cae7379655
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55960745"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122476"
 ---
 # <a name="article-top"></a>Migrowanie istniejącej usługi mobilnej platformy Azure w usłudze Azure App Service
 Za pomocą [ogólnie dostępne w usłudze Azure App Service], witryn usług Azure Mobile Services mogą zostać łatwo zmigrowane w miejscu można korzystać ze wszystkich funkcji usługi Azure App Service.  W tym dokumencie opisano, czego można oczekiwać podczas migracji lokacji z usług Azure Mobile Services w usłudze Azure App Service.

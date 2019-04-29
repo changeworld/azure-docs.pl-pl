@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: 1283f812799fe71ef6987dbc7fab092aed4d3417
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57435137"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62112654"
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>Włączanie synchronizacji w trybie offline za pomocą aplikacji mobilnych systemu iOS
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 W tym samouczku opisano, synchronizacji w trybie offline przy użyciu funkcji Mobile Apps w usłudze Azure App Service dla systemu iOS. Za pomocą synchronizacji w trybie offline w użytkownicy końcowi mogą wchodzić w interakcje z aplikacją mobilną, aby wyświetlić, dodać ani modyfikować dane nawet wtedy, gdy mają one braku połączenia sieciowego. Zmiany są przechowywane w lokalnej bazie danych. Gdy urządzenie jest w trybie online, zmiany są synchronizowane za pomocą zdalnego zaplecza.
 
 Jeśli jest to Twój pierwszy kontakt z usługą Mobile Apps, najpierw należy Ukończ samouczek [tworzenie aplikacji systemu iOS]. Jeśli nie używasz projektu pobrany serwer szybki start, należy dodać pakiety rozszerzeń dostępu do danych do projektu. Aby uzyskać więcej informacji na temat pakietów rozszerzeń serwera, zobacz [pracy z zestawem SDK serwera zaplecza platformy .NET dla usługi Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
@@ -189,7 +189,7 @@ Gdy używasz funkcji synchronizacji w trybie offline, należy zdefiniować tabel
 | key |String |
 | keyType |Liczba całkowita 64 |
 | tabela |String |
-| wartość |String |
+| value |String |
 
 ### <a name="data-table"></a>Tabela danych
 
@@ -198,7 +198,7 @@ Gdy używasz funkcji synchronizacji w trybie offline, należy zdefiniować tabel
 | Atrybut | Type | Uwaga |
 | --- | --- | --- |
 | id | Ciąg, oznaczone jako wymagane |klucz podstawowy w magazynie zdalnym |
-| Wykonaj | Wartość logiczna | Pole elementu do wykonania |
+| Wykonaj | Boolean | Pole elementu do wykonania |
 | tekst |String |Pole elementu do wykonania |
 | createdAt | Date | (opcjonalnie) Mapuje **createdAt** właściwości systemu |
 | updatedAt | Date | (opcjonalnie) Mapuje **updatedAt** właściwości systemu |

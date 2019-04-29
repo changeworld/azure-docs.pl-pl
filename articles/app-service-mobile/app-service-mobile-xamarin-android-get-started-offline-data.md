@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: 7e951b9f2c2fda3c63f154b5b144addcbf65aacf
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57530335"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62127968"
 ---
 # <a name="enable-offline-sync-for-your-xamarinandroid-mobile-app"></a>Włączanie synchronizacji offline dla aplikacji mobilnej platformy Xamarin.Android
 
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Ten samouczek zawiera funkcję synchronizacji w trybie offline, które usługi Azure Mobile Apps dla platformy Xamarin.Android. Synchronizacja w trybie offline umożliwia użytkownikom końcowym interakcję z aplikacją mobilną — wyświetlanie, dodawanie lub modyfikowanie danych — nawet w przypadku braku połączenia sieciowego. Zmiany są przechowywane w lokalnej bazie danych.
 Gdy urządzenie jest w trybie online, zmiany te są synchronizowane z usługi zdalnej.

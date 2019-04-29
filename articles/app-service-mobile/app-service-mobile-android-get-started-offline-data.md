@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: a20c79acce8c9dc9051651a0473fd07b8e62f5de
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960349"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62126906"
 ---
 # <a name="enable-offline-sync-for-your-android-mobile-app"></a>Włączanie synchronizacji offline dla aplikacji mobilnej systemu Android
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Ten samouczek obejmuje funkcję synchronizacji w trybie offline z usługą Azure Mobile Apps dla systemu Android. Synchronizacja w trybie offline umożliwia użytkownikom końcowym interakcję z aplikacją mobilną&mdash;wyświetlanie, dodawanie lub modyfikowanie danych&mdash;nawet w przypadku braku połączenia sieciowego. Zmiany są przechowywane w lokalnej bazie danych. Gdy urządzenie jest w trybie online, zmiany te są synchronizowane za pomocą zdalnego wewnętrznej bazy danych.
 
 Jeśli jest to Twój pierwszy kontakt z usługą Azure Mobile Apps, najpierw należy Ukończ samouczek [tworzenie aplikacji dla systemu Android]. Jeśli nie używasz projektu serwera pobranego — szybki start, należy dodać pakiety rozszerzeń dostępu do danych do projektu. Aby uzyskać więcej informacji na temat pakietów rozszerzeń serwera, zobacz [pracy z zestawem SDK serwera zaplecza platformy .NET dla usługi Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
@@ -93,7 +93,7 @@ Po naciśnięciu tego przycisku, rozpoczyna nowe zadanie w tle. Umieszcza ono na
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 * [Synchronizowanie danych w trybie offline w usłudze Azure Mobile Apps]
-* [Cloud Cover: Synchronizowanie w trybie Offline w usługach Azure Mobile Services] \(Uwaga: wideo jest w usłudze Mobile Services, ale synchronizacja w trybie offline, działa w podobny sposób jak w usłudze Azure Mobile Apps\)
+* [Cloud Cover: Synchronizacja offline w usługach Azure Mobile Services] \(Uwaga: wideo jest w usłudze Mobile Services, ale synchronizacja w trybie offline, działa w podobny sposób jak w usłudze Azure Mobile Apps\)
 
 <!-- URLs. -->
 
@@ -101,6 +101,6 @@ Po naciśnięciu tego przycisku, rozpoczyna nowe zadanie w tle. Umieszcza ono na
 
 [Tworzenie aplikacji dla systemu Android]: app-service-mobile-android-get-started.md
 
-[Cloud Cover: Synchronizowanie w trybie Offline w usługach Azure Mobile Services]: https://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
+[Cloud Cover: Synchronizacja offline w usługach Azure Mobile Services]: https://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 [Azure Friday: Offline-enabled apps in Azure Mobile Services]: https://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
 

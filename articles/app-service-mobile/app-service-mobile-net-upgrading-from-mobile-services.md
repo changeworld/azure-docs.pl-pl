@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: f5ffc795e6469971d1eaf335d6683f94d05f0807
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278620"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122442"
 ---
 # <a name="upgrade-your-existing-net-azure-mobile-service-to-app-service"></a>Uaktualnianie istniejącej usługi mobilnej Azure .NET w usłudze App Service
 Mobile App Service jest nowy sposób na tworzenie aplikacji mobilnych przy użyciu Microsoft Azure. Aby dowiedzieć się więcej, zobacz [co to jest usługa Mobile Apps?].
@@ -92,7 +92,7 @@ ConfigOptions options = new ConfigOptions();
 HttpConfiguration config = ServiceConfig.Initialize(new ConfigBuilder(options));
 ```
 
-z 
+z
 
 ```csharp
 HttpConfiguration config = new HttpConfiguration();
@@ -160,12 +160,12 @@ Jeśli aplikacja kliencka zostanie uaktualniony z usług Mobile Services do funk
 
 W systemach iOS należy zmienić schematu danych podstawowych dla Twojego jednostek danych dopasować następujące czynności. Należy pamiętać, że właściwości `createdAt`, `updatedAt` i `version` nie będzie już `ms_` prefiksu:
 
-| Atrybut | Typ | Uwaga |
+| Atrybut | Type | Uwaga |
 | --- | --- | --- |
 | id |Ciąg, oznaczone jako wymagane |klucz podstawowy w magazynie zdalnym |
 | createdAt |Date |mapy właściwości systemu createdAt i (opcjonalnie) |
 | updatedAt |Date |mapy właściwości systemu updatedAt i (opcjonalnie) |
-| version |Ciąg |(opcjonalnie) służącą do wykrywania konfliktów, mapy do wersji |
+| version |String |(opcjonalnie) służącą do wykrywania konfliktów, mapy do wersji |
 
 #### <a name="querying-system-properties"></a>Tworzenie zapytań właściwości systemu
 W usługach Azure Mobile Services właściwości systemu nie są wysyłane domyślnie, ale tylko wtedy, gdy żądanie przy użyciu ciągu zapytania `__systemProperties`. Z kolei w systemie Azure Mobile Apps właściwości są **zawsze zaznaczony** ponieważ są one częścią modelu obiektów serwera zestawu SDK.

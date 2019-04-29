@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: 831f6b4bdc99e63859b390f8a9bb88d74301284e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57997527"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62128104"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>Jak używać zestawu SDK środowiska Node.js w aplikacji mobilnej
 
@@ -374,7 +374,7 @@ Większość ustawień w pliku azureMobile.js ma ustawienia aplikacji równoważ
 |:--- |:--- |:--- |:--- |
 | **MS_MobileAppName** |name |Nazwa aplikacji |string |
 | **MS_MobileLoggingLevel** |logging.level |Minimalny poziom rejestrowania komunikatów do zarejestrowania |błąd, ostrzeżenie, informacje o verbose, debug, niemądre |
-| **MS_DebugMode** |Debugowanie |Włącza lub wyłącza tryb debugowania |wartość true, false |
+| **MS_DebugMode** |debuguj |Włącza lub wyłącza tryb debugowania |wartość true, false |
 | **MS_TableSchema** |data.schema |Domyślna nazwa schematu dla tabel programu SQL |ciąg (domyślne: dbo) |
 | **MS_DynamicSchema** |data.dynamicSchema |Włącza lub wyłącza tryb debugowania |wartość true, false |
 | **MS_DisableVersionHeader** |Wersja (ustawione do niezdefiniowanego) |Wyłącza nagłówka X-ZUMO-Server-Version |wartość true, false |
@@ -942,7 +942,7 @@ Za pomocą witryny Azure portal, możesz edytować pliki skryptów zaplecza Node
 
 1. W okienku wybierz opcję dla zaplecza usługi Mobile Apps **wszystkie ustawienia** > albo **łatwych tabel** lub **łatwe interfejsy API**. Wybierz tabelę lub interfejsu API, a następnie wybierz **Przeprowadź edycję skryptu**. Plik skryptu zostanie otwarty w edytorze usługi aplikacji.
 
-   ![App Service Editor](./media/app-service-mobile-node-backend-how-to-use-server-sdk/mobile-apps-visual-studio-editor.png)
+   ![Edytor usługi App Service](./media/app-service-mobile-node-backend-how-to-use-server-sdk/mobile-apps-visual-studio-editor.png)
 1. Wprowadź zmiany do pliku kodu w edytorze online. Zmiany są zapisywane automatycznie podczas pisania.
 
 <!-- Images -->

@@ -14,20 +14,20 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: crdun
-ms.openlocfilehash: b84990d053d92b9408e119b8aba28c8b9f8b046e
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 4d56453eb05e88c3558b66250439d6211e8069fd
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42819002"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122578"
 ---
 # <a name="add-push-notifications-to-your-ios-app"></a>Dodawanie powiadomień wypychanych do aplikacji dla systemu iOS
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
-W ramach tego samouczka, możesz dodać powiadomienia wypychane do [Szybki Start dla systemu iOS] projektu, dzięki czemu jest wysyłane powiadomienie push do urządzenia, za każdym razem, gdy rekord zostanie wstawiona.
+W ramach tego samouczka, możesz dodać powiadomienia wypychane do [Przewodnik Szybki Start dla systemu iOS] projektu, dzięki czemu jest wysyłane powiadomienie push do urządzenia, za każdym razem, gdy rekord zostanie wstawiona.
 
 Jeśli nie używasz pobrany projekt szybkiego startu server, konieczne będzie pakiet rozszerzenia powiadomień wypychanych. Aby uzyskać więcej informacji, zobacz [pracy z zestawem SDK serwera zaplecza platformy .NET dla usługi Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) przewodnik.
 
@@ -66,4 +66,4 @@ Jeśli nie używasz pobrany projekt szybkiego startu server, konieczne będzie p
 <!-- Images. -->
 
 <!-- URLs. -->
-[Szybki Start dla systemu iOS]: app-service-mobile-ios-get-started.md
+[Przewodnik Szybki Start dla systemu iOS]: app-service-mobile-ios-get-started.md

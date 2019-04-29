@@ -9,16 +9,16 @@ ms.date: 05/11/2017
 ms.author: fhryo-msft
 ms.subservice: common
 ms.openlocfilehash: 6edb1abae91a675a3fe47b417a112f0951886aaf
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351919"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62103863"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Monitorowanie, diagnozowanie i rozwiązywanie problemów z usługą Microsoft Azure Storage
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Diagnozowanie i rozwiązywanie problemów w aplikacji rozproszonej hostowanej w środowisku chmury może być bardziej skomplikowane niż w tradycyjnych środowiskach. Aplikacje można wdrożyć w infrastrukturze PaaS lub IaaS, w środowisku lokalnym, na urządzeniu przenośnym lub w kombinacji tych środowisk. Zazwyczaj ruchem sieciowym Twojej aplikacji mogą przechodzić publicznych i prywatnych sieci i aplikacji mogą używać wielu technologii magazynowania, takich jak Microsoft Azure Storage tabele, obiekty BLOB, kolejek lub przechowuje pliki oprócz innych danych, takich jak relacyjne i bazy danych dokumentów.
 
 Do zarządzania pomyślnie takich aplikacji należy aktywne monitorowanie i zrozumienie, jak diagnozowanie i rozwiązywanie problemów z wszystkimi aspektami ich i ich technologie zależne. Jako użytkownik usługi Azure Storage należy ciągłego monitorowania usług magazynu używanych przez aplikację nieoczekiwane zmiany w zachowaniu (na przykład wolniej niż zwykłe czasy) i używać rejestrowania w celu zbierania bardziej szczegółowych danych i do analizowania problemu w głębokość. Informacje diagnostyczne, którego można uzyskać od zarówno monitorowanie i rejestrowanie pomoże w celu ustalenia głównej przyczyny aplikacji wystąpił problem. Następnie można rozwiązać ten problem i określić odpowiednie czynności, które można wykonać w celu jego rozwiązania. Usługa Azure Storage jest podstawowe usługi platformy Azure i stanowi ważną część większość rozwiązań, które klienci wdrożyć do infrastruktury platformy Azure. Usługa Azure Storage obejmuje funkcje, aby uprościć monitorowanie, diagnozowanie i rozwiązywanie problemów z magazynowaniem w swoich aplikacjach opartych na chmurze.
