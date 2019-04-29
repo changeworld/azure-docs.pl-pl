@@ -278,8 +278,8 @@ Poniższa tabela zawiera przykłady dotyczące sposobu określania **tableName**
 | --- | --- | --- |
 | dbo |MyTable |MyTable lub dbo. MyTable lub [dbo]. [MyTable] |
 | dbo1 |MyTable |dbo1. MyTable lub [dbo1]. [MyTable] |
-| dbo |My.Table |[My.Table] lub [dbo]. [My.Table] |
-| dbo1 |My.Table |[dbo1]. [My.Table] |
+| dbo |My.Table |[My.Table] lub [dbo].[My.Table] |
+| dbo1 |My.Table |[dbo1].[My.Table] |
 
 Jeśli zostanie wyświetlony następujący błąd, może to być problem z wartością, która została określona jako właściwość tableName. Zobacz tabelę w prawidłowy sposób określić wartości dla właściwości JSON tableName.
 

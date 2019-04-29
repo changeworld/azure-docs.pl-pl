@@ -14,11 +14,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 4ae5b3b9016af0d35e40d66d527e51230e0f11ce
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527221"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60486569"
 ---
 # <a name="move-data-from-on-premises-hdfs-using-azure-data-factory"></a>Przenoszenie danych z lokalnym systemem plików HDFS, za pomocą usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -71,7 +71,7 @@ Połączona usługa łączy magazyn danych do usługi data factory. Tworzenie po
 | Url |Adres URL do systemu plików HDFS |Yes |
 | Element authenticationType |Anonimowe lub Windows. <br><br> Aby użyć **uwierzytelnianie Kerberos** łącznika systemu plików HDFS można znaleźć w [w tej sekcji](#use-kerberos-authentication-for-hdfs-connector) odpowiednio skonfigurować swoje środowisko lokalne. |Yes |
 | userName |Uwierzytelnianie nazwy użytkownika dla Windows. Dla uwierzytelniania Kerberos, określ `<username>@<domain>.com`. |Tak (dla uwierzytelniania Windows) |
-| hasło |Hasło do uwierzytelniania Windows. |Tak (dla uwierzytelniania Windows) |
+| password |Hasło do uwierzytelniania Windows. |Tak (dla uwierzytelniania Windows) |
 | gatewayName |Nazwa bramy, która powinna być używana w usłudze Data Factory, połączyć się z systemu plików HDFS. |Yes |
 | encryptedCredential |[Nowe AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) poświadczeń dostępu do danych wyjściowych. |Nie |
 
