@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ad0c1ac2ce39fd919cb82ce2bdb0841edf9c777
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e9fa951e50a38b8bc63cc4e26ef54c013531bd7d
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/23/2019
-ms.locfileid: "60278938"
+ms.locfileid: "62098491"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-factset"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją FactSet
 
@@ -105,12 +105,12 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją FactSet, 
 
     ![Informacje o domenie i adresach URL logowania jednokrotnego aplikacji FactSet](common/sp-identifier.png)
 
-    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://login.factset.com/services/auth-test?idpid=<GUID>`
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://<intendedDestinationURL>.factset.com?idpid=<GUID>`
 
     b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, używając następującego wzorca: `https://login.factset.com`
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. Skontaktuj się z [zespołem obsługi klienta aplikacji FactSet](mailto:support@factset.com), aby uzyskać te wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. Skontaktuj się z przedstawicielem FactSet, aby uzyskać te wartości. Jeśli nie wiesz, kto jest Twoim przedstawicielem FactSet, możesz znaleźć pomocy na [stronie pomocy technicznej FactSet](https://www.factset.com/support-numbers). Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
@@ -128,7 +128,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją FactSet, 
 
 ### <a name="configure-factset-single-sign-on"></a>Konfigurowanie logowania jednokrotnego aplikacji FactSet
 
-Aby skonfigurować logowanie jednokrotne po stronie aplikacji **FactSet**, musisz wysłać pobrany **kod XML metadanych federacji** i odpowiednie adresy URL skopiowane z witryny Azure Portal [zespołowi pomocy technicznej aplikacji FactSet](mailto:support@factset.com). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
+Aby skonfigurować logowanie jednokrotne na **FactSet** stronie, musisz wysłać pobrany **XML metadanych Federacji** i odpowiednie skopiowany adresy URL z witryny Azure portal do obsługi FactSet osób w kontakcie za pomocą. Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
@@ -183,7 +183,7 @@ W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z
 
 ### <a name="create-factset-test-user"></a>Tworzenie użytkownika testowego aplikacji FactSet
 
-W tej sekcji utworzysz w aplikacji FactSet użytkownika o nazwie Britta Simon. We współpracy z [zespołem pomocy technicznej aplikacji FactSet](mailto:support@factset.com) możesz dodać użytkowników do platformy aplikacji FactSet. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
+W tej sekcji utworzysz w aplikacji FactSet użytkownika o nazwie Britta Simon. Praca z działu pomocy technicznej FactSet konta, aby dodać użytkowników na platformie FactSet. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 

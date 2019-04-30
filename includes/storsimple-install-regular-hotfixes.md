@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 8cc5dbb907c342b766cebe6da36cf580ddac5e2c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55888758"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61410021"
 ---
 #### <a name="to-install-regular-hotfixes-via-windows-powershell-for-storsimple"></a>Aby zainstalować regularne poprawek za pomocą programu Windows PowerShell dla usługi StorSimple
 1. Łączenie z konsolą szeregową urządzenia. Aby uzyskać więcej informacji, zobacz [krok 1: Łączenie z konsolą szeregową](../articles/storsimple/storsimple-update-device.md#step1).

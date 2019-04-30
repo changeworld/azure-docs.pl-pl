@@ -1,15 +1,16 @@
 ---
-author: cynthn
+author: rockboyfor
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 10/26/2018
-ms.author: cynthn
+origin.date: 10/26/2018
+ms.date: 11/26/2018
+ms.author: v-yeche
 ms.openlocfilehash: 8861396db6f6b680ddb55ce020e5579dc25b118e
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50227066"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62097724"
 ---
 Należy weź pod uwagę, że istnieją dwa sposoby konfigurowania odbiornika grupy dostępności na platformie Azure. Sposoby różnią się w typie modułu równoważenia obciążenia platformy Azure, używane podczas tworzenia odbiornika. W poniższej tabeli opisano różnice:
 
@@ -25,3 +26,4 @@ Należy weź pod uwagę, że istnieją dwa sposoby konfigurowania odbiornika gru
 
 Wewnętrznym modułem równoważenia obciążenia można skonfigurować tylko w sieciach wirtualnych o zakresie regionalnym. Istniejące sieci wirtualne, które zostały skonfigurowane dla grupy koligacji nie można użyć wewnętrznego modułu równoważenia obciążenia. Aby uzyskać więcej informacji, zobacz [omówienie modułu równoważenia obciążenia wewnętrznego](../articles/load-balancer/load-balancer-internal-overview.md).
 
+<!-- Update_Description: update meta properties -->
