@@ -13,7 +13,7 @@ ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/23/2019
-ms.locfileid: "60187776"
+ms.locfileid: "61036144"
 ---
 Pojęcia z usługi Azure Compute jednostki (ACU) umożliwia porównanie wydajności obliczeniowej (procesora CPU) w jednostkach SKU platformy Azure. Ten parametr pomoże łatwo zidentyfikować jednostkę SKU, która najprawdopodobniej spełni określone potrzeby związane z wydajnością.  Jednostka ACU jest obecnie standaryzowana na małej maszynie wirtualnej (Standardowa_A1) jako równa 100, a wszystkie pozostałe jednostki SKU reprezentują w przybliżeniu, o ile szybciej dana jednostka SKU może uruchomić standardowy test porównawczy. 
 
@@ -24,7 +24,7 @@ Pojęcia z usługi Azure Compute jednostki (ACU) umożliwia porównanie wydajno�
 
 <br>
 
-| Rodzina SKU | ACU/procesor wirtualny vCPU | Procesor wirtualny: Rdzeń |
+| Rodzina SKU | ACU/procesor wirtualny vCPU | Procesor wirtualny: Podstawowe |
 | --- | --- |---|
 | [A0](../articles/virtual-machines/windows/sizes-general.md) |50 | 1:1 |
 | [A1 - A4](../articles/virtual-machines/windows/sizes-general.md) |100 | 1:1 |

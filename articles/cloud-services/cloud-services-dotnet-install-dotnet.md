@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/22/2018
 ms.author: jeconnoc
-ms.openlocfilehash: 4b6aeb2968d7642881535753cb6c8434cfe10886
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bc861b6730e8bf9db6ba2ab005496914f7b9ed89
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60409311"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63759801"
 ---
 # <a name="install-net-on-azure-cloud-services-roles"></a>Zainstaluj program .NET w ramach ról usług Azure Cloud Services
 W tym artykule opisano sposób instalowania wersji programu .NET Framework, które nie pochodzą z systemu operacyjnego gościa platformy Azure. Aby skonfigurować role usługi w chmurze w sieci web i proces roboczy, można użyć platformy .NET w systemie operacyjnym gościa.
@@ -34,6 +34,7 @@ Aby zainstalować program .NET w roli sieci web i proces roboczy, obejmują Inst
 ## <a name="add-the-net-installer-to-your-project"></a>Dodaj Instalatora .NET do projektu
 Aby pobrać Instalator internetowy programu .NET Framework, należy wybrać wersję, która ma zostać zainstalowany:
 
+* [Instalator sieci web 4.8 platformy .NET](https://dotnet.microsoft.com/download/thank-you/net48)
 * [Instalator sieci web platformy .NET 4.7.2](https://go.microsoft.com/fwlink/?LinkId=863262)
 * [Instalator sieci web platformy .NET 4.6.2](https://www.microsoft.com/download/details.aspx?id=53345)
 
@@ -102,7 +103,8 @@ Zadania uruchamiania służy do wykonywania operacji przed rozpoczęciem roli. I
    REM ***** To install .NET 4.7.1 set the variable netfx to "NDP471" ***** https://go.microsoft.com/fwlink/?LinkId=852095
    REM ***** To install .NET 4.7.2 set the variable netfx to "NDP472" ***** https://go.microsoft.com/fwlink/?LinkId=863262
    set netfx="NDP472"
-   
+   REM ***** To install .NET 4.8 set the variable netfx to "NDP48" ***** https://dotnet.microsoft.com/download/thank-you/net48
+      
    REM ***** Set script start timestamp *****
    set timehour=%time:~0,2%
    set timestamp=%date:~-4,4%%date:~-10,2%%date:~-7,2%-%timehour: =0%%time:~3,2%

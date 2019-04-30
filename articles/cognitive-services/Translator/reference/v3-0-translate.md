@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: f69fd7af23c360edc208561f915bd351c3fd373c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 593cd83dab6e0cd93cdd1aedac278f4d94a27cc5
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60336800"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63760589"
 ---
 # <a name="translator-text-api-30-translate"></a>Translator Text API 3.0: Translate
 
@@ -42,11 +42,11 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
   <tr>
     <td>z</td>
-    <td><em>Opcjonalny parametr</em>.<br/>Określa język tekstu wejściowego. Dowiedz się, jakie języki są dostępne do tłumaczenia z przez wyszukanie [obsługiwane języki](./v3-0-languages.md) przy użyciu <code>translation</code> zakresu. Jeśli <code>from</code> parametr nie zostanie określony, funkcja automatycznego wykrywania języka jest stosowane w celu określenia języka źródłowego.</td>
+    <td><em>Opcjonalny parametr</em>.<br/>Określa język tekstu wejściowego. Dowiedz się, jakie języki są dostępne do tłumaczenia z przez wyszukanie <a href="./v3-0-languages.md">obsługiwane języki</a> przy użyciu <code>translation</code> zakresu. Jeśli <code>from</code> parametr nie zostanie określony, funkcja automatycznego wykrywania języka jest stosowane w celu określenia języka źródłowego.</td>
   </tr>
   <tr>
     <td>na</td>
-    <td><em>Wymagany parametr</em>.<br/>Określa język tekstu wyjściowego. Język docelowy musi mieć jedną z [obsługiwane języki](./v3-0-languages.md) objęte <code>translation</code> zakresu. Na przykład użyć <code>to=de</code> do tłumaczenia na język niemiecki.<br/>Istnieje możliwość translacji jednocześnie do wielu języków, powtarzając parametr ciągu zapytania. Na przykład użyć <code>to=de&to=it</code> do translacji niemieckim i włoskim.</td>
+    <td><em>Wymagany parametr</em>.<br/>Określa język tekstu wyjściowego. Język docelowy musi mieć jedną z <a href="./v3-0-languages.md">obsługiwane języki</a> objęte <code>translation</code> zakresu. Na przykład użyć <code>to=de</code> do tłumaczenia na język niemiecki.<br/>Istnieje możliwość translacji jednocześnie do wielu języków, powtarzając parametr ciągu zapytania. Na przykład użyć <code>to=de&to=it</code> do translacji niemieckim i włoskim.</td>
   </tr>
   <tr>
     <td>textType</td>
@@ -54,15 +54,15 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
   <tr>
     <td>category</td>
-    <td><em>Opcjonalny parametr</em>.<br/>Ciąg określający kategoria tłumaczenia (domena). Ten parametr umożliwia uzyskiwanie tłumaczenia niestandardowych utworzonych za pomocą systemu [niestandardowe w usłudze Translator](../customization.md). Dodaj identyfikator kategorii z projektu niestandardowe w usłudze Translator do tego parametru, aby użyć wdrożonego systemu dostosowane. Wartość domyślna to: <code>general</code>.</td>
+    <td><em>Opcjonalny parametr</em>.<br/>Ciąg określający kategoria tłumaczenia (domena). Ten parametr umożliwia uzyskiwanie tłumaczenia niestandardowych utworzonych za pomocą systemu <a href="../customization.md">niestandardowe w usłudze Translator</a>. Dodaj identyfikator kategorii z projektu niestandardowe w usłudze Translator do tego parametru, aby użyć wdrożonego systemu dostosowane. Wartość domyślna to: <code>general</code>.</td>
   </tr>
   <tr>
     <td>profanityAction</td>
-    <td><em>Opcjonalny parametr</em>.<br/>Określa, jak profanities powinny być traktowane w translacji. Możliwe wartości to: <code>NoAction</code> (ustawienie domyślne), <code>Marked</code> lub <code>Deleted</code>. Aby poznać sposoby traktować wulgaryzmów, zobacz [obsługi wulgaryzmów](#handle-profanity).</td>
+    <td><em>Opcjonalny parametr</em>.<br/>Określa, jak profanities powinny być traktowane w translacji. Możliwe wartości to: <code>NoAction</code> (ustawienie domyślne), <code>Marked</code> lub <code>Deleted</code>. Aby poznać sposoby traktować wulgaryzmów, zobacz <a href="#handle-profanity">obsługi wulgaryzmów</a>.</td>
   </tr>
   <tr>
     <td>profanityMarker</td>
-    <td><em>Opcjonalny parametr</em>.<br/>Określa, jak profanities powinien być oznaczony w translacji. Możliwe wartości to: <code>Asterisk</code> (ustawienie domyślne) lub <code>Tag</code>. Aby poznać sposoby traktować wulgaryzmów, zobacz [obsługi wulgaryzmów](#handle-profanity).</td>
+    <td><em>Opcjonalny parametr</em>.<br/>Określa, jak profanities powinien być oznaczony w translacji. Możliwe wartości to: <code>Asterisk</code> (ustawienie domyślne) lub <code>Tag</code>. Aby poznać sposoby traktować wulgaryzmów, zobacz <a href="#handle-profanity">obsługi wulgaryzmów</a>.</td>
   </tr>
   <tr>
     <td>includeAlignment</td>

@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: 6911e06dc023027ab32b99387b9f7d3f5e708f86
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50166449"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122738"
 ---
 ## <a name="configure-your-application-to-access-azure-storage"></a>Konfigurowanie aplikacji dostępu do magazynu Azure
 Istnieją dwa sposoby uwierzytelniania aplikacji na dostęp do usług magazynu:
 
-* Klucz współużytkowany: Użyj udostępnionego klucza tylko do celów testowych
-* Udostępnionego podpis dostępu (SAS): Użyj sygnatury dostępu Współdzielonego dla aplikacji produkcyjnych
+* Klucz współużytkowany: Użyj klucza wspólnego tylko do celów testowych
+* Sygnatura dostępu współdzielonego (SAS): Użyj sygnatury dostępu Współdzielonego dla aplikacji produkcyjnych
 
 ### <a name="shared-key"></a>Klucz wspólny
 Uwierzytelnianie za pomocą udostępnionego klucza oznacza, że aplikacja będzie używać swojego konta i klucz konta dostępu do usług magazynu. Na potrzeby szybkiego przedstawiający sposób użycia tej biblioteki firma Microsoft będzie używać uwierzytelniania klucza wspólnego, w tym wprowadzenie.
@@ -49,5 +49,5 @@ Poniższy przykład pokazuje, jak wygenerować sygnaturę dostępu Współdzielo
    
    `"SharedAccessSignature=sv=2015-04-05&ss=b&srt=sco&sp=rw&se=2016-07-21T18%3A00%3A00Z&sig=3ABdLOJZosCp0o491T%2BqZGKIhafF1nlM3MzESDDD3Gg%3D;BlobEndpoint=https://youraccount.blob.core.windows.net"`
 
-Jak widać, korzystając z sygnatury dostępu Współdzielonego, klucz konta jest ujawniany nie w aplikacji. Dowiedz się więcej na temat sygnatury dostępu Współdzielonego i najlepsze rozwiązania dotyczące przy użyciu sygnatury dostępu Współdzielonego, sprawdzając [sygnatur dostępu współdzielonego: opis modelu sygnatur dostępu Współdzielonego](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md).
+Jak widać, korzystając z sygnatury dostępu Współdzielonego, klucz konta jest ujawniany nie w aplikacji. Dowiedz się więcej na temat sygnatury dostępu Współdzielonego i najlepsze rozwiązania dotyczące przy użyciu sygnatury dostępu Współdzielonego, sprawdzając [sygnatur dostępu współdzielonego: Opis modelu sygnatur dostępu Współdzielonego](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md).
 

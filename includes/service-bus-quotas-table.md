@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: bb5dc4e01a872178af1bc7d5d57fc189424e7e9d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 7add8c10fd3224b9c287ea4cc672191157f56a09
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57554097"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60861901"
 ---
 W poniższej tabeli przedstawiono informacje o limitach przydziału specyficzne dla usługi Azure Service Bus messaging. Aby uzyskać informacje o cenach i inne limity przydziału dla usługi Service Bus, zobacz [cennika usługi Service Bus](https://azure.microsoft.com/pricing/details/service-bus/).
 
 | Nazwa limitu przydziału | Zakres | Uwagi | Wartość |
-| --- | --- | --- | --- | --- |
+| --- | --- | --- | --- |
 | Maksymalna liczba Basic lub Standard przestrzeni nazw na subskrypcję platformy Azure |Przestrzeń nazw |Każde kolejne wywołanie dodatkowe przestrzenie nazw Basic lub Standard są odrzucane przez witryny Azure portal. |100|
 | Maksymalna liczba przestrzeni nazw Premium na subskrypcję platformy Azure |Przestrzeń nazw |Każde kolejne wywołanie dodatkowe przestrzenie nazw w warstwie Premium są odrzucane przez portal. |25 |
 | Rozmiar kolejki lub tematu |Jednostka |Zdefiniowane podczas tworzenia kolejki lub tematu. <br/><br/> Kolejne komunikaty przychodzące są odrzucane, a wyjątek jest odbierany przez kod wywołujący. |1, 2, 3, 4 GB lub 5 GB.<br /><br />Jednostki SKU Premium i standardowa jednostka SKU z [partycjonowanie](/azure/service-bus-messaging/service-bus-partitioning) włączone, maksymalny rozmiar kolejki lub tematu jest 80 GB. |
@@ -37,6 +37,6 @@ W poniższej tabeli przedstawiono informacje o limitach przydziału specyficzne 
 | Liczba filtry korelacji przypadających na temat |Jednostka |Kolejne żądania do tworzenia dodatkowych filtrów tematu są odrzucane, a wyjątek jest odbierany przez kod wywołujący. |100 000 |
 | Rozmiar filtry SQL lub akcje |Przestrzeń nazw |Kolejne żądania do tworzenia dodatkowych filtrów są odrzucane, a wyjątek jest odbierany przez kod wywołujący. |Maksymalna długość ciągu warunek filtru: 1024 (1 KB).<br /><br />Maksymalna długość ciągu działanie reguły: 1024 (1 KB).<br /><br />Maksymalna liczba wyrażeń na działanie reguły: 32. |
 | Liczba [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) reguł na przestrzeń nazw, kolejki lub tematu |Jednostki, przestrzeń nazw |Każde kolejne wywołanie tworzenia dodatkowych reguł są odrzucane, a wyjątek jest odbierany przez kod wywołujący. |Maksymalna liczba reguł: 12. <br /><br /> Reguły, które są skonfigurowane w przestrzeni nazw usługi Service Bus dotyczą wszystkie kolejki i tematy w tej przestrzeni nazw. |
-| Liczba komunikatów na transakcję | Transakcji | Dodatkowe wiadomości przychodzące są odrzucane, a wyjątek z informacją "nie można wysyłać więcej niż 100 komunikatów w ramach jednej transakcji" jest odbierany przez kod wywołujący. | 100 <br /><br /> Dla obu **Send()** i **SendAsync()** operacji. |
+| Liczba komunikatów na transakcję | Transakcja | Dodatkowe wiadomości przychodzące są odrzucane, a wyjątek z informacją "nie można wysyłać więcej niż 100 komunikatów w ramach jednej transakcji" jest odbierany przez kod wywołujący. | 100 <br /><br /> Dla obu **Send()** i **SendAsync()** operacji. |
 
 [Azure portal]: https://portal.azure.com

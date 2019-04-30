@@ -7,18 +7,20 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: iainfou
-ms.openlocfilehash: 86b9609d5141798be40f53aab8b18897484bbef8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c403d809aa1fc6cdbb0555eef414f79b02ab5a8a
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60467582"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63764123"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>Integrowanie usługi Azure Active Directory z usługą Azure Kubernetes Service przy użyciu wiersza polecenia platformy Azure
 
 Usługa Azure Kubernetes Service (AKS) można skonfigurować do uwierzytelniania użytkowników usługi Azure Active Directory (AD). W tej konfiguracji możesz zalogować się do klastra usługi AKS przy użyciu tokenu uwierzytelniania usługi Azure AD. Operatorów klastra można również skonfigurować kontroli dostępu opartej na rolach Kubernetes (RBAC) na podstawie członkostwa grupy użytkownika tożsamości lub katalogu.
 
 W tym artykule pokazano, jak utworzyć wymaganych składników usługi Azure AD, następnie wdrożyć klastrze platformy Azure z obsługą usługi AD i utworzyć rolę RBAC podstawowa w klastrze AKS. Możesz również [wykonaj następujące kroki w witrynie Azure portal][azure-ad-portal].
+
+Aby uzyskać kompletny przykładowy skrypt używane w tym artykule, zobacz [przykłady interfejsu wiersza polecenia platformy Azure — usłudze AKS integracji z usługą Azure AD][complete-script].
 
 Obowiązują następujące ograniczenia:
 

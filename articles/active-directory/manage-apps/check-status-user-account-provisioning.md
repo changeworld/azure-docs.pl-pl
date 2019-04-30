@@ -15,12 +15,12 @@ ms.date: 09/09/2018
 ms.author: celested
 ms.reviewer: asmalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a6d1684c4bc0031978fb5e76548a3112b0f1ef2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e293eb555269a1f8beeeccd74000358abe1ef5c8
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60442010"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63759760"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Samouczek: Raporty dotyczące aprowizacja kont użytkowników
 
@@ -43,7 +43,7 @@ W tym artykule używane następujące terminy, określonych poniżej:
 
 * **Źródłowy System** — repozytorium użytkowników, którzy inicjowania obsługi administracyjnej usługi AD Azure synchronizuje z. Usługa Azure Active Directory jest system źródłowy dla większości wstępnie zintegrowanych łączników inicjowania obsługi administracyjnej, jednak istnieją pewne wyjątki (przykład: WORKDAY synchronizacji ruchu przychodzącego).
 
-* **Docelowy System** — repozytorium użytkowników, którzy synchronizuje usługi aprowizacji usługi Azure AD. Zazwyczaj jest to aplikacja SaaS (przykłady: SalesForce, ServiceNow, Google Apps, usługa Dropbox dla firm), ale w niektórych przypadkach może być systemu lokalnego, takich jak usługi Active Directory (przykład: WORKDAY synchronizacji ruchu przychodzącego do usługi Active Directory).
+* **Docelowy System** — repozytorium użytkowników, którzy synchronizuje usługi aprowizacji usługi Azure AD. Zazwyczaj jest to aplikacja SaaS (przykłady: SalesForce, ServiceNow, usługi G Suite, usługa Dropbox dla firm), ale w niektórych przypadkach może być systemu lokalnego, takich jak usługi Active Directory (przykład: WORKDAY synchronizacji ruchu przychodzącego do usługi Active Directory).
 
 
 ## <a name="getting-provisioning-reports-from-the-azure-management-portal"></a>Wprowadzenie udostępniania raportów z portalu zarządzania systemu Azure

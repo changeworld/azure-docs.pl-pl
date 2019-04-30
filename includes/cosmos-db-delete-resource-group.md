@@ -1,27 +1,27 @@
 ---
-author: SnehaGunda
+author: rockboyfor
 ms.service: cosmos-db
 ms.topic: include
-ms.date: 11/09/2018
-ms.author: sngun
-ms.openlocfilehash: 30efb963f34ff567c70d845a4a8891ead285b178
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
-ms.translationtype: HT
+origin.date: 03/23/2019
+ms.date: 04/15/2019
+ms.author: v-yeche
+ms.openlocfilehash: e7fc8f57c0fe290809354ce19fe92337178a84b6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572491"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60890389"
 ---
-Jeśli nie zamierzasz w przyszłości korzystać z tej aplikacji i nie chcesz, aby zostały naliczone jakiekolwiek opłaty, wykonaj następujące czynności w celu usunięcia wszystkich zasobów w ramach tego przewodnika Szybki start:
+Po zakończeniu korzystania z aplikacji sieci web i usługi Azure Cosmos DB, możesz usunąć zasoby platformy Azure, który został utworzony, więc nie powodują naliczania opłat więcej. Aby usunąć zasoby:
 
-1. W witrynie Azure Portal wybierz **grupy zasobów** daleko po lewej stronie, a następnie wybierz utworzoną grupę zasobów.  
+1. W witrynie Azure Portal na końcu z lewej strony wybierz pozycję **Grupy zasobów**. Jeśli menu po lewej stronie jest zwinięte, wybierz ![przycisk Rozwiń](./media/cosmos-db-delete-resource-group/expand.png) aby ją rozwinąć.
 
-    Jeśli menu po lewej stronie jest zwinięte, kliknij ![przycisk Rozwiń,](./media/cosmos-db-delete-resource-group/expand.png) aby je rozwinąć.
+2. Wybierz grupę zasobów, utworzone dla tego przewodnika Szybki Start.  
 
-   ![Metryki w witrynie Azure Portal](./media/cosmos-db-delete-resource-group/delete-resources-select.png)
+    ![Metryki w witrynie Azure Portal](./media/cosmos-db-delete-resource-group/delete-resources-select.png)
 
-2. W nowym oknie wybierz grupę zasobów, a następnie kliknij pozycję **Usuń grupę zasobów**.
+2. W nowym oknie Wybierz **Usuń grupę zasobów**.
 
-   ![Metryki w witrynie Azure Portal](./media/cosmos-db-delete-resource-group/delete-resources.png)   
+    ![Metryki w witrynie Azure Portal](./media/cosmos-db-delete-resource-group/delete-resources.png)   
 
-3. W nowym oknie wpisz nazwę grupy zasobów, która ma zostać usunięta, a następnie kliknij pozycję **Usuń**.
-
+3. W następnym oknie wpisz nazwę grupy zasobów do usunięcia, a następnie wybierz pozycję **Usuń**.

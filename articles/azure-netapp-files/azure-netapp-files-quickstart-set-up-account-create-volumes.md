@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie usługi Azure Files NetApp i utworzyć wolumin | Dokumentacja firmy Microsoft
+title: Konfigurowanie usługi Azure Files NetApp i Utwórz wolumin systemu plików NFS | Dokumentacja firmy Microsoft
 description: W tym artykule opisano, jak szybko skonfigurować usługi Azure Files NetApp i utworzyć wolumin.
 services: azure-netapp-files
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: b-juche
-ms.openlocfilehash: 634f23cf3161fff09f21c79fd8300cb269dcc5b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5b9e85da29b3130d5183f577a7d83d164e217310
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60454495"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63759828"
 ---
-# <a name="set-up-azure-netapp-files-and-create-a-volume"></a>Konfigurowanie usługi Azure NetApp Files i tworzenie woluminu 
+# <a name="set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Konfigurowanie usługi Azure Files NetApp i Utwórz wolumin systemu plików NFS 
 
 W tym artykule pokazano, jak szybko skonfigurować usługi Azure Files NetApp i utworzyć wolumin. 
 
@@ -88,7 +88,7 @@ Musisz uczestniczyć w programie podglądu publicznego i znajdować się na liś
 
 5. Kliknij przycisk **OK**.
 
-## <a name="create-a-volume-for-azure-netapp-files"></a>Tworzenie woluminu dla usługi Azure NetApp Files
+## <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Utwórz wolumin systemu plików NFS dla usługi Azure Files NetApp
 
 1. W bloku zarządzania usługi Azure Files NetApp Twojego konta rozwiązania NetApp, kliknij **woluminów**.
 
@@ -100,7 +100,6 @@ Musisz uczestniczyć w programie podglądu publicznego i znajdować się na liś
 
 3. W tworzenie okna woluminu Podaj informacje dla danego woluminu: 
    1. Wprowadź **myvol1** jako nazwa woluminu. 
-   2. Wprowadź **myfilepath1** jako ścieżkę pliku, która będzie służyć do tworzenia ścieżki eksportu woluminu.
    3. Wybierz pojemność puli (**mypool1**).
    4. Użyj wartości domyślnej dla limitu przydziału. 
    5. W ramach sieci wirtualnej, kliknij przycisk **Utwórz nową** do tworzenia nowej sieci wirtualnej platformy Azure (Vnet).  Następnie wprowadź następujące informacje:
@@ -116,7 +115,13 @@ Musisz uczestniczyć w programie podglądu publicznego i znajdować się na liś
 
       ![Tworzenie sieci wirtualnej okna](../media/azure-netapp-files/azure-netapp-files-create-virtual-network-window.png)  
 
-4. Kliknij pozycję **Przegląd + utwórz**.
+4. Kliknij przycisk **protokołu**, a następnie wybierz **systemu plików NFS** jako typ protokołu dla woluminu.   
+
+    Wprowadź **myfilepath1** jako ścieżkę pliku, która będzie służyć do tworzenia ścieżki eksportu woluminu. 
+
+    ![Określenie protokołu NFS w przewodniku Szybki Start](../media/azure-netapp-files/azure-netapp-files-quickstart-protocol-nfs.png)
+
+5. Kliknij pozycję **Przegląd + utwórz**.
 
     ![Przejrzyj i utworzyć okno](../media/azure-netapp-files/azure-netapp-files-review-and-create-window.png)  
 

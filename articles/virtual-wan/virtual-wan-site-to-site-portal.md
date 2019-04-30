@@ -5,19 +5,19 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 02/26/2019
+ms.date: 04/23/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 4b44eec5557d2083c38fe2714d93800f79b21b0f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e8e251aa5031a8eadd2d567bff2830449c7decc3
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60457923"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63766659"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Samouczek: Utwórz połączenie lokacja-lokacja przy użyciu Azure wirtualnego WAN
 
-W tym samouczku pokazano, w jaki sposób przy użyciu usługi Azure Virtual WAN utworzyć połączenie z zasobami na platformie Azure za pośrednictwem połączenia sieci VPN protokołu IPsec/IKE (IKEv1 i IKEv2). Ten typ połączenia wymaga lokalnego urządzenia sieci VPN z przypisanym publicznym adresem IP dostępnym z zewnątrz. Aby uzyskać więcej informacji na temat usługi Virtual WAN, zobacz [Omówienie usługi Virtual WAN](virtual-wan-about.md)
+W tym samouczku pokazano, w jaki sposób przy użyciu usługi Azure Virtual WAN utworzyć połączenie z zasobami na platformie Azure za pośrednictwem połączenia sieci VPN protokołu IPsec/IKE (IKEv1 i IKEv2). Ten typ połączenia wymaga lokalnego urządzenia sieci VPN z przypisanym publicznym adresem IP dostępnym z zewnątrz. Aby uzyskać więcej informacji na temat usługi Virtual WAN, zobacz [Omówienie usługi Virtual WAN](virtual-wan-about.md).
 
 > [!NOTE]
 > Jeśli masz wiele lokacji, skorzystaj z usług [partnera usługi Virtual WAN](https://aka.ms/virtualwan) w celu utworzenia tej konfiguracji. Możesz też utworzyć tę konfigurację samodzielnie, jeśli masz wiedzę z zakresu sieci i doświadczenie w konfigurowaniu urządzeń sieci VPN.
@@ -32,6 +32,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Tworzenie lokacji
 > * Tworzenie koncentratora
 > * Łączenie koncentratora z lokacją
+> * Tworzenie sieci wirtualnej zgodny, (Jeśli nie masz jeszcze jeden)
 > * Łączenie sieci wirtualnej z koncentratorem
 > * Pobieranie i stosowanie konfiguracji urządzenia sieci VPN
 > * Wyświetlanie wirtualnej sieci WAN
@@ -40,21 +41,15 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 [!INCLUDE [Before you begin](../../includes/virtual-wan-tutorial-vwan-before-include.md)]
 
-## <a name="vnet"></a>1. Tworzenie sieci wirtualnej
-
-[!INCLUDE [Create a virtual network](../../includes/virtual-wan-tutorial-vnet-include.md)]
-
-## <a name="openvwan"></a>2. Tworzenie wirtualnej sieci WAN
+## <a name="openvwan"></a>1. Tworzenie wirtualnej sieci WAN
 
 Przejdź w przeglądarce do witryny [Azure Portal](https://aka.ms/azurevirtualwanpreviewfeatures) i zaloguj się przy użyciu konta platformy Azure.
 
 [!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-vwan-include.md)]
 
-## <a name="site"></a>3. Tworzenie lokacji
+## <a name="site"></a>2. Tworzenie lokacji
 
 Możesz utworzyć dowolną liczbę lokacji, tak aby odpowiadała liczbie lokalizacji fizycznych. Jeśli na przykład masz oddziały w Nowym Jorku, Londynie i Los Angeles, należy utworzyć trzy oddzielne lokacje. W tych lokacjach znajdują się punkty końcowe lokalnych urządzeń sieci VPN. Obecnie można określić tylko jedną prywatną przestrzeń adresową na lokację.
 
@@ -62,21 +57,21 @@ Możesz utworzyć dowolną liczbę lokacji, tak aby odpowiadała liczbie lokaliz
 2. Na stronie **Lokacje sieci VPN** kliknij pozycję **+Utwórz lokację**.
 3. Na stronie **Tworzenie lokacji** wypełnij następujące pola:
 
-   * **Nazwa** — jest to nazwa używana do odwoływania się do lokacji lokalnej.
-   * **Publiczny adres IP** — jest to publiczny adres IP urządzenia sieci VPN znajdującego się w lokacji lokalnej.
+   * **Nazwa** — nazwę, za pomocą którego do odwoływania się do witryny w środowisku lokalnym.
+   * **Publiczny adres IP** — publiczny adres IP urządzenia sieci VPN, który znajduje się w lokacji lokalnej.
    * **Prywatna przestrzeń adresowa** — to przestrzeń adresowa IP znajdująca się w lokacji lokalnej. Ruch do tej przestrzeni adresowej jest kierowany do lokacji lokalnej.
    * **Subskrypcja** — sprawdź, czy wybrano właściwą subskrypcję.
    * **Grupa zasobów** — grupa zasobów, której chcesz używać.
-   * **Lokalizacja**.
-4. Kliknij pozycję **Pokaż zaawansowane**, aby wyświetlić dodatkowe ustawienia. Możesz wybrać pozycję **BGP**, aby włączyć protokół BGP, co spowoduje włączenie tej funkcji dla wszystkich połączeń utworzonych dla tej lokacji na platformie Azure. Możesz też wprowadzić **Informacje o urządzeniu** (pola opcjonalne). Pomogą one zespołowi platformy Azure lepiej zrozumieć środowisko i dodać nowe opcje optymalizacji w przyszłości. Mogą też ułatwić Ci rozwiązywanie problemów.
+   * **Lokalizacja**
+4. Kliknij pozycję **Pokaż zaawansowane**, aby wyświetlić dodatkowe ustawienia. Możesz wybrać **BGP** można włączyć protokołu BGP, która spowoduje włączenie funkcji protokołu BGP dla wszystkich połączeń, utworzone w tej witrynie na platformie Azure. Możesz też wprowadzić **Informacje o urządzeniu** (pola opcjonalne). To może pomóc lepiej zrozumieć środowiska można dodać możliwości optymalizacji dodatkowe w przyszłości lub ułatwiających rozwiązywanie problemów z zespołu platformy Azure.
 5. Kliknij pozycję **Potwierdź**.
 6. Po kliknięciu pozycji **Potwierdź** wyświetl stan na stronie lokacji sieci VPN. Stan lokacji zmieni się z **Aprowizowanie** na **Aprowizowano**.
 
-## <a name="hub"></a>4. Tworzenie koncentratora
+## <a name="hub"></a>3. Tworzenie koncentratora
 
 [!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-hub-include.md)]
 
-## <a name="associate"></a>5. Kojarzenie lokacji z koncentratorem
+## <a name="associate"></a>4. Kojarzenie lokacji z koncentratorem
 
 Zasadniczo koncentratory powinny być skojarzone z lokacjami znajdującymi się w tym samym regionie, w którym znajduje się sieć wirtualna.
 
@@ -85,6 +80,12 @@ Zasadniczo koncentratory powinny być skojarzone z lokacjami znajdującymi się 
 3. Możesz również dodać w tym miejscu określony **klucz wstępny** lub użyć domyślnego.
 4. Kliknij pozycję **Potwierdź**.
 5. Możesz wyświetlić stan połączenia na stronie **Lokacje sieci VPN**.
+
+## <a name="vnet"></a>5. Tworzenie sieci wirtualnej
+
+Jeśli nie masz jeszcze sieci wirtualnej, można szybko utworzyć ją przy użyciu programu PowerShell lub witryny Azure portal. Jeśli masz już sieć wirtualną, sprawdź, czy spełnia ona wymagane kryteria i nie ma bramy sieci wirtualnej.
+
+[!INCLUDE [Create a virtual network](../../includes/virtual-wan-tutorial-vnet-include.md)]
 
 ## <a name="vnet"></a>6. Łączenie sieci wirtualnej z koncentratorem
 
@@ -114,7 +115,7 @@ Skorzystaj z konfiguracji urządzenia sieci VPN, aby skonfigurować swoje lokaln
 Plik konfiguracji urządzenia zawiera ustawienia używane podczas konfigurowania lokalnego urządzenia sieci VPN. Podczas przeglądania tego pliku należy zwrócić uwagę na następujące informacje:
 
 * **vpnSiteConfiguration —** ta sekcja zawiera szczegółowe informacje o urządzeniu skonfigurowanym jako lokacja połączona z wirtualną sieci WAN. Zawiera nazwę i publiczny adres IP urządzenia w oddziale.
-* **vpnSiteConnections —** ta sekcja zawiera informacje dotyczące następujących kwestii:
+* **vpnSiteConnections -** ta sekcja zawiera informacje o następujących ustawień:
 
     * **Przestrzeń adresowa** sieci wirtualnej koncentratora<br>Przykład:
  
@@ -126,7 +127,7 @@ Plik konfiguracji urządzenia zawiera ustawienia używane podczas konfigurowania
          ```
         "ConnectedSubnets":["10.2.0.0/16","10.30.0.0/16"]
          ```
-    * **Adresy IP** bramy vpngateway koncentratora wirtualnego. Ponieważ każde połączenie z bramą vpngateway obejmuje 2 tunele w konfiguracji aktywne-aktywne, w pliku wymienione będą oba adresy IP. W tym przykładzie są to wartości „Instance0” i „Instance1” dla każdej lokacji.<br>Przykład:
+    * **Adresy IP** bramy vpngateway koncentratora wirtualnego. Ponieważ każde połączenie bramy vpngateway składa się z dwóch tuneli w konfiguracji aktywne aktywne, zobaczysz oba adresy IP wymienione w tym pliku. W tym przykładzie są to wartości „Instance0” i „Instance1” dla każdej lokacji.<br>Przykład:
 
         ``` 
         "Instance0":"104.45.18.186"

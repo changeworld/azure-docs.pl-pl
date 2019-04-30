@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/15/2018
 ms.author: cshoe
-ms.openlocfilehash: c1c20e225e15769a8cb09f60dfc371f4ec4d81f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3e67737e26edfee94a5a4d740d6c575817c66ff0
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60306870"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63766178"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Usługa Azure powiązania magazynu obiektów Blob dla usługi Azure Functions
 
@@ -426,7 +426,7 @@ Usługa Azure Functions magazynów obiektów blob potwierdzenia w kontenerze o n
 * Nazwa obiektu blob
 * Element ETag (identyfikator wersji obiektów blob, na przykład: "0x8D1DC6E70A277EF")
 
-Aby wymusić ponowne przetworzenie obiektu blob, należy usunąć potwierdzenia obiektów blob, dla tego obiektu blob z *azure webjobs hostów* kontenera ręcznie.
+Aby wymusić ponowne przetworzenie obiektu blob, należy usunąć potwierdzenia obiektów blob, dla tego obiektu blob z *azure webjobs hostów* kontenera ręcznie. Podczas ponownego przetwarzania może nastąpić z opóźnieniem, jest gwarantowane występuje w dowolnym momencie w czasie.
 
 ## <a name="trigger---poison-blobs"></a>Wyzwalacz - skażone obiektów blob
 
@@ -450,9 +450,13 @@ Funkcje języka JavaScript i Java załadować cały obiekt blob do pamięci, a C
 
 ## <a name="trigger---polling"></a>Wyzwalanie - sondowania
 
-Jeśli kontener obiektów blob, które są monitorowane zawiera ponad 10 000 obiektów blob (we wszystkich kontenerów), funkcje skanowania środowiska uruchomieniowego plików dziennika do obserwacji nowych lub zmienionych obiektów blob. Ten proces może powodować opóźnienia. Funkcja może nie wyzwalane do kilku minut lub dłużej po utworzeniu obiektu blob. Ponadto [dzienników magazynu są tworzone na "starań"](/rest/api/storageservices/About-Storage-Analytics-Logging) podstawy. Nie ma żadnej gwarancji, że wszystkie zdarzenia są przechwytywane. W niektórych warunkach Dzienniki mogą zostać pominięci.
+Jeśli kontener obiektów blob, które są monitorowane zawiera ponad 10 000 obiektów blob (we wszystkich kontenerów), funkcje skanowania środowiska uruchomieniowego plików dziennika do obserwacji nowych lub zmienionych obiektów blob. Ten proces może powodować opóźnienia. Funkcja może nie wyzwalane do kilku minut lub dłużej po utworzeniu obiektu blob.
 
-Jeśli konieczne jest przetworzenie szybsze i bardziej niezawodne obiektów blob, należy rozważyć utworzenie [komunikatu w kolejce](../storage/queues/storage-dotnet-how-to-use-queues.md) podczas tworzenia obiektu blob. Następnie użyj [wyzwalacz kolejki](functions-bindings-storage-queue.md) zamiast wyzwalacz obiektu blob do przetwarzania obiektu blob. Innym rozwiązaniem jest użycie usługi Event Grid; Zapoznaj się z samouczkiem [automatyzacja zmiany rozmiaru przekazanych obrazów, które przy użyciu usługi Event Grid](../event-grid/resize-images-on-storage-blob-upload-event.md).
+> [!WARNING]
+> Ponadto [dzienników magazynu są tworzone na "starań"](/rest/api/storageservices/About-Storage-Analytics-Logging) podstawy. Nie ma żadnej gwarancji, że wszystkie zdarzenia są przechwytywane. W niektórych warunkach Dzienniki mogą zostać pominięci.
+> 
+> Jeśli konieczne jest przetworzenie szybsze i bardziej niezawodne obiektów blob, należy rozważyć utworzenie [komunikatu w kolejce](../storage/queues/storage-dotnet-how-to-use-queues.md) podczas tworzenia obiektu blob. Następnie użyj [wyzwalacz kolejki](functions-bindings-storage-queue.md) zamiast wyzwalacz obiektu blob do przetwarzania obiektu blob. Innym rozwiązaniem jest użycie usługi Event Grid; Zapoznaj się z samouczkiem [automatyzacja zmiany rozmiaru przekazanych obrazów, które przy użyciu usługi Event Grid](../event-grid/resize-images-on-storage-blob-upload-event.md).
+>
 
 ## <a name="input"></a>Dane wejściowe
 

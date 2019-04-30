@@ -15,12 +15,12 @@ ms.date: 04/02/2019
 ms.author: celested
 ms.reviewer: asmalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40e8aaa60359fcfb85c79c4210f7c5cc14633c7b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 516faed0f41ae36079d0f26f0311b35d5582d57a
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60291217"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63759790"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatyzowanie użytkownika aprowizacji i cofania aprowizacji do aplikacji SaaS w usłudze Azure Active Directory
 
@@ -143,7 +143,7 @@ Po uruchomieniu usługi aprowizacji, pierwsza synchronizacja nigdy nie Uruchom w
 6. Jeśli mapowania atrybutów zawierają atrybuty "odwołanie", usługa odbywa się dodatkowe aktualizacje, aby utworzyć i połączyć przywoływane obiekty w systemie docelowym. Na przykład użytkownik może mieć z atrybutem "Manager" w systemie docelowym, który został połączony z innym użytkownikiem utworzony w systemie docelowym.
 7. Znak wodny po zakończeniu początkowej synchronizacji znajdują się punkty wyjścia dotyczące później synchronizacje przyrostowe są zachowywane.
 
-Niektóre aplikacje, takie jak obsługa usługi ServiceNow, Google Apps i pole nie tylko aprowizacji użytkowników, ale również Inicjowanie obsługi administracyjnej grupy i ich elementów członkowskich. W takich przypadkach jeśli aprowizacji grupy jest włączona w [mapowania](customize-application-attributes.md), usługi aprowizacji synchronizuje użytkowników i grup, a następnie synchronizuje członkostwa w grupach. 
+Niektóre aplikacje, takie jak obsługa usługi ServiceNow, usługi G Suite i pole nie tylko aprowizacji użytkowników, ale również Inicjowanie obsługi administracyjnej grupy i ich elementów członkowskich. W takich przypadkach jeśli aprowizacji grupy jest włączona w [mapowania](customize-application-attributes.md), usługi aprowizacji synchronizuje użytkowników i grup, a następnie synchronizuje członkostwa w grupach. 
 
 ### <a name="incremental-syncs"></a>Synchronizacje przyrostowe
 
@@ -196,7 +196,7 @@ Aby uzyskać **początkowej synchronizacje**, czas zadania zależy od wielu czyn
 
 Aby uzyskać **synchronizacje przyrostowe**, czas zadania zależy od liczby zmian wykrytych w tym cyklu synchronizacji. W przypadku mniej niż 5000 użytkownika lub zmiany członkostwa w grupie, zakończyć zadanie w jednej synchronizacji przyrostowych cyklu. 
 
-Poniższa tabela podsumowuje godziny synchronizacji dla typowych scenariuszy inicjowania obsługi administracyjnej. W tych scenariuszach w systemie źródłowym jest usługa Azure AD i system docelowy jest aplikacją SaaS. Czas synchronizacji są uzyskiwane z analizy statystycznej zadania synchronizacji pod kątem aplikacji SaaS usługi ServiceNow, obszar roboczy, Salesforce i Google Apps.
+Poniższa tabela podsumowuje godziny synchronizacji dla typowych scenariuszy inicjowania obsługi administracyjnej. W tych scenariuszach w systemie źródłowym jest usługa Azure AD i system docelowy jest aplikacją SaaS. Czas synchronizacji są uzyskiwane z analizy statystycznej zadania synchronizacji pod kątem aplikacji SaaS usługi ServiceNow, obszar roboczy, Salesforce i usługi G Suite.
 
 
 | Konfiguracja zakresu | Użytkownicy, grupy i elementy członkowskie w zakresie | Czas synchronizacji początkowej | Czas synchronizacji przyrostowej |

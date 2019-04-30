@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: dc871b29cdafa57d337f9be6cf01e76212f31b67
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50226968"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62125366"
 ---
 ## <a name="migrate-iaas-resources-from-the-classic-deployment-model-to-azure-resource-manager"></a>Migrację zasobów IaaS od modelu wdrażania klasycznego do usługi Azure Resource Manager
 Po pierwsze należy zrozumieć różnicę między operacjami płaszczyzny danych i płaszczyzny zarządzania w infrastrukturze jako zasoby usługi (IaaS).

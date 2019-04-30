@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/19/2019
+ms.date: 04/23/2019
 ms.author: jingwang
-ms.openlocfilehash: b97d21503e8dcd75906581faf1851533bcd69fa6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8f1e2aebae88d34334200504915be4043f32013b
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/23/2019
-ms.locfileid: "60203387"
+ms.locfileid: "62107383"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopiuj dane do / z usługi Azure SQL Data Warehouse przy użyciu usługi Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
@@ -35,9 +35,6 @@ W szczególności ten łącznik usługi Azure SQL Data Warehouse obsługuje te f
 - Kopiowanie danych przy użyciu uwierzytelniania SQL i uwierzytelnianie tokenu aplikacji usługi Azure Active Directory (Azure AD) przy użyciu tożsamości podmiotu zabezpieczeń lub zarządzanej usługi dla zasobów platformy Azure.
 - Jako źródło pobierać dane przy użyciu zapytania SQL lub procedury składowanej.
 - Jako obiekt sink ładowanie danych przy użyciu technologii PolyBase lub zbiorczego wstawiania. Firma Microsoft zaleca program PolyBase do podniesienia wydajności kopiowania.
-
-> [!IMPORTANT]
-> Należy pamiętać, że funkcja PolyBase obsługuje tylko uwierzytelnianie SQL, ale uwierzytelniania usługi Azure AD.
 
 > [!IMPORTANT]
 > W przypadku kopiowania danych za pomocą usługi Azure Data Factory Integration Runtime, skonfiguruj [zapory serwera Azure SQL](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) tak, aby usług platformy Azure mają dostęp do serwera.
@@ -541,7 +538,7 @@ W poniższej tabeli przedstawiono przykłady sposobu określania **tableName** w
 | --- | --- | --- |
 | dbo | MyTable | MyTable lub dbo. MyTable lub [dbo]. [MyTable] |
 | dbo1 | MyTable | dbo1. MyTable lub [dbo1]. [MyTable] |
-| dbo | My.Table | [My.Table] lub [dbo]. [My.Table] |
+| dbo | My.Table | [My.Table] lub [dbo].[My.Table] |
 | dbo1 | My.Table | [dbo1]. [My.Table] |
 
 Jeśli zostanie wyświetlony następujący błąd, problem może polegać na wartość określona dla **tableName** właściwości. Można znaleźć w poprzedniej tabeli prawidłowym sposobem, aby określić wartości dla **tableName** właściwość JSON.

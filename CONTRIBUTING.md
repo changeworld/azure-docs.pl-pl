@@ -1,14 +1,12 @@
 ---
-ms.openlocfilehash: a1a57cbcd9284489e00bf36b25baf7e04fbea9e6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 55adc512447160b409af0002a72ec2473409d796
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60306805"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63759506"
 ---
 # <a name="contributing-to-microsoft-azure-documentation"></a>Współtworzenie dokumentacji platformy Microsoft Azure
-
-> W dniach 5–9 marca 2019 r. repozytorium MicrosoftDocs/azure-docs zostanie poddane migracji z bieżącego aparatu Markdown do aparatu Markdown o nazwie [Markdig](https://github.com/lunet-io/markdig). W tym czasie będziemy wyłączać możliwość zawieszania scalania publicznych żądań ściągnięcia w celu przeprowadzenia migracji.
 
 Dziękujemy za poświęcenie czasu na potrzeby współtworzenia dokumentacji firmy Microsoft Azure.
 

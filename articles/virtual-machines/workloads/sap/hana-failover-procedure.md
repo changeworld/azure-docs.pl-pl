@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/10/2018
+ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ca4d5912d75dd7b33737f61737a209284b7a5a47
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 76d8bb816bdf229d13a49fa61337899a8bf29ecd
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/23/2019
-ms.locfileid: "60338556"
+ms.locfileid: "62098290"
 ---
 # <a name="disaster-recovery-failover-procedure"></a>Procedura przechodzenia w tryb failover odzyskiwania po awarii
 
@@ -35,34 +35,20 @@ Istnieją dwa przypadki, które należy uwzględnić podczas przechodzenia w try
 >[!NOTE]
 >Poniższe kroki muszą być wykonywane na jednostce dużych wystąpień HANA, która reprezentuje jednostkę odzyskiwania po awarii. 
  
-Aby przywrócić najnowsze migawek replikowanego magazynu, wykonaj następujące czynności: 
+Aby przywrócić najnowsze replikowanego magazynu migawek, wykonaj kroki zgodnie z opisem w sekcji **"Wykonywania pełnego odzyskiwania po awarii trybu failover — azure_hana_dr_failover"** dokumentu [Microsoft migawki narzędzia dla oprogramowania SAP HANA na platformie Azure ](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.0/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.0.pdf). 
 
-1. Zamknij wystąpienie nieprodukcyjnych HANA w jednostce odzyskiwania po awarii w dużych wystąpień HANA, której używasz. Jest to spowodowane istnieje wstępnie zainstalowane wystąpienie nieaktywni produkcji HANA.
-1. Upewnij się, że są uruchomione żadne procesy platformy SAP HANA. Użyj następującego polecenia dla tego sprawdzenia: `/usr/sap/hostctrl/exe/sapcontrol –nr <HANA instance number> - function GetProcessList`. Powinny zostać wyświetlone dane wyjściowe **hdbdaemon** przetwarzanie w stanie zatrzymania, a żadne inne procesy HANA w stanie uruchomiona lub jest uruchomiona.
-1. W jednostce dużych wystąpień HANA lokacji odzyskiwania po awarii, uruchom skrypt *azure_hana_dr_failover.pl*. Skrypt jest zapytaniem dla identyfikatora SID SAP HANA, należy przywrócić. Gdy żądanie, wpisz w jednym lub tylko SAP HANA SID, został zreplikowany, która jest przechowywana w *HANABackupCustomerDetails.txt* plikiem w jednostce duże wystąpienie oprogramowania HANA w lokacji odzyskiwania po awarii. 
+Jeśli chcesz mieć wiele wystąpień oprogramowania SAP HANA w trybie Failover, należy uruchomić polecenie azure_hana_dr_failover kilka razy. Gdy żądanie, wpisz identyfikator SID HANA SAP, aby tryb failover i przywrócić. 
 
-      Jeśli chcesz mieć wiele wystąpień oprogramowania SAP HANA w trybie Failover, należy uruchomić skrypt kilka razy. Gdy żądanie, wpisz identyfikator SID HANA SAP, aby tryb failover i przywrócić. Po zakończeniu skrypt pokazuje listę punktów instalacji woluminów, które są dodawane do jednostki dużych wystąpień HANA. Ta lista zawiera również przywróconych woluminów odzyskiwania po awarii.
 
-1. Zainstalować woluminu odzyskiwania po awarii przywróconej przy użyciu poleceń systemu operacyjnego Linux do jednostki duże wystąpienie oprogramowania HANA w lokacji odzyskiwania po awarii. 
-1. Rozpocznij nieaktywni wystąpienie SAP HANA w środowisku produkcyjnym.
-1. Jeśli wybrano opcję Kopiuj dzienniki kopii zapasowych dziennika transakcji w celu skrócenia czasu cel punktu odzyskiwania, musisz scalić te kopie zapasowe dziennika transakcji w nowo zainstalowanego odzyskiwania po awarii/hana lub logbackups katalogu. Nie Nadpisz istniejące kopie zapasowe. Skopiuj nowszych kopii zapasowych, które nie zostały zreplikowane przy użyciu najnowszych replikacji migawki magazynu.
-1. Można także przywrócić pojedynczych plików z migawek, które zostały zreplikowane do woluminu /hana/shared/PRD w regionie odzyskiwania po awarii platformy Azure. 
-
-Możesz również testowanie trybu failover odzyskiwania po awarii, bez wywierania wpływu na relacji replikacji rzeczywiste. Aby wykonać test trybu failover, wykonaj wcześniejsze kroki 1 i 2, a następnie kontynuuj następujący krok 3.
+Możesz również testowanie trybu failover odzyskiwania po awarii, bez wywierania wpływu na relacji replikacji rzeczywiste. Aby wykonać test trybu failover, wykonaj kroki opisane w **"Wykonywania testu trybu failover odzyskiwania po awarii — azure_hana_test_dr_failover"** dokumentu [Microsoft migawki narzędzia dla oprogramowania SAP HANA na platformie Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.0/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.0.pdf). 
 
 >[!IMPORTANT]
->Czy *nie* uruchamiania dowolnej transakcji do produkcji w wystąpieniu, który został utworzony w lokacji odzyskiwania po awarii w procesie **testowania pracy w trybie failover** ze skryptem wprowadzone w kroku 3. To polecenie tworzy zestaw woluminów, które nie mają relacji z lokacją główną. W wyniku synchronizacji do lokacji głównej jest *nie* możliwe. 
+>Czy *nie* uruchamiania dowolnej transakcji do produkcji w wystąpieniu, który został utworzony w lokacji odzyskiwania po awarii w procesie **testowania pracy w trybie failover**. Tego polecenia azure_hana_test_dr_failover tworzy zestaw woluminów, które nie mają relacji z lokacją główną. W wyniku synchronizacji do lokacji głównej jest *nie* możliwe. 
 
-Krok 3 dla testu trybu failover
+Jeśli chcesz mieć wiele wystąpień oprogramowania SAP HANA do testowania, należy uruchomić skrypt kilka razy. Gdy żądanie, wpisz identyfikator SID HANA SAP wystąpienie, które chcesz przetestować tryb failover. 
 
-W jednostce dużych wystąpień HANA lokacji odzyskiwania po awarii, uruchom skrypt **azure_hana_test_dr_failover.pl**. Ten skrypt jest *nie* zatrzymywanie relacji replikacji między lokacją podstawową a lokacją odzyskiwania po awarii. Zamiast tego należy ten skrypt jest Klonowanie woluminów magazynu odzyskiwania po awarii. Po pomyślnym procesu klonowania, sklonowany woluminy są przywrócony do stanu najnowszej migawki, a następnie instalowane do jednostki odzyskiwania po awarii. Skrypt jest zapytaniem dla identyfikatora SID SAP HANA, należy przywrócić. Wpisz jeden lub tylko SAP HANA SID, został zreplikowany, która jest przechowywana w *HANABackupCustomerDetails.txt* plikiem w jednostce duże wystąpienie oprogramowania HANA w lokacji odzyskiwania po awarii. 
-
-Jeśli chcesz mieć wiele wystąpień oprogramowania SAP HANA do testowania, należy uruchomić skrypt kilka razy. Gdy żądanie, wpisz identyfikator SID HANA SAP wystąpienie, które chcesz przetestować tryb failover. Po ukończeniu skryptu pokazuje listę punktów instalacji woluminów, które są dodawane do jednostki dużych wystąpień HANA. Ta lista zawiera również sklonowany woluminów odzyskiwania po awarii.
-
-Przejdź do kroku 4.
-
-   >[!NOTE]
-   >Jeśli potrzebujesz do trybu failover do lokacji odzyskiwania po awarii i ratunkowe niektórych danych została usunięta, godz. temu woluminów odzyskiwania po awarii, należy ustawić wcześniejszej migawki, ta procedura ma zastosowanie. 
+>[!NOTE]
+>Ta procedura ma zastosowanie, jeśli musisz przełączyć tryb failover do lokacji odzyskiwania po awarii do ratunkowe niektóre dane, który został usunięty godz. temu i wymagają woluminów odzyskiwania po awarii, należy ustawić wcześniejszej migawki. 
 
 1. Zamknij wystąpienie nieprodukcyjnych HANA w jednostce odzyskiwania po awarii w dużych wystąpień HANA, której używasz. Jest to spowodowane istnieje wstępnie zainstalowane wystąpienie nieaktywni produkcji HANA.
 1. Upewnij się, że są uruchomione żadne procesy platformy SAP HANA. Użyj następującego polecenia dla tego sprawdzenia: `/usr/sap/hostctrl/exe/sapcontrol –nr <HANA instance number> - function GetProcessList`. Powinny zostać wyświetlone dane wyjściowe **hdbdaemon** przetwarzanie w stanie zatrzymania i żadne inne procesy HANA w stanie uruchomiona lub jest uruchomiona.
@@ -121,34 +107,8 @@ Jest to sekwencja czynności do wykonania:
 
 ## <a name="monitor-disaster-recovery-replication"></a>Monitorowanie replikacji odzyskiwania po awarii
 
-Możesz monitorować stan postęp replikacji magazynu, wykonując skrypt `azure_hana_replication_status.pl`. Ten skrypt należy uruchomić z jednostki w lokalizacji odzyskiwania danych po awarii, które działają zgodnie z oczekiwaniami. Skrypt działa niezależnie od tego, czy replikacja jest aktywna. Skrypt można uruchomić dla każdej jednostki dużych wystąpień HANA dzierżawy w lokalizacji odzyskiwania danych po awarii. Nie można uzyskać szczegółowe informacje o woluminie rozruchowym.
+Możesz monitorować stan postęp replikacji magazynu, wykonując skrypt `azure_hana_replication_status`. To polecenie należy uruchomić z jednostki w lokalizacji odzyskiwania danych po awarii, które działają zgodnie z oczekiwaniami. Polecenie działa niezależnie od tego, czy replikacja jest aktywna. Polecenie można uruchomić dla każdej jednostki dużych wystąpień HANA dzierżawy w lokalizacji odzyskiwania danych po awarii. Nie można uzyskać szczegółowe informacje o woluminie rozruchowym. Szczegóły polecenia i jego dane wyjściowe można znaleźć **"Pobierz stan replikacji dla odzyskiwania po awarii — azure_hana_replication_status"** dokumentu [Microsoft migawki narzędzia dla oprogramowania SAP HANA na platformie Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.0/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.0.pdf).
 
-Wywołania skryptu za pomocą następującego polecenia:
-```
-./azure_hana_replication_status.pl
-```
 
-Dane wyjściowe są podzielone według woluminu na następujące sekcje:  
-
-- Stan linku
-- Bieżące działanie replikacji
-- Ostatnia migawka replikowane 
-- Rozmiar najnowszej migawki
-- Bieżący czas opóźnienia między migawkami (od ostatniej replikacji migawki ukończone, a teraz)
-
-Stan łącza jest wyświetlany jako **Active** chyba że łącza między lokacjami nie działa lub jest zdarzeniem aktualnie trwająca trybu failover. Działanie replikacji adresów, czy wszystkie dane, jest obecnie replikowana lub jest w stanie bezczynności, czy obecnie występują inne działania łącza. Ostatnia migawka replikowane tylko powinny się wyświetlać jako `snapmirror…`. Rozmiar ostatnia migawka zostanie wyświetlona. Na koniec jest wyświetlany czas opóźnienia. Czas opóźnienia reprezentuje czas zaplanowanej replikacji, aby po zakończeniu replikacji. Opóźnienie może być większa niż godziny replikacji danych, szczególnie w przypadku replikacji początkowej, mimo że uruchomieniu replikacji. Czas opóźnienia w dalszym ciągu zwiększyć zakończenie trwającej replikacji.
-
-Oto przykładowe dane wyjściowe:
-
-```
-hana_data_hm3_mnt00002_t020_dp
--------------------------------------------------
-Link Status: Broken-Off
-Current Replication Activity: Idle
-Latest Snapshot Replicated: snapmirror.c169b434-75c0-11e6-9903-00a098a13ceb_2154095454.2017-04-21_051515
-Size of Latest Snapshot Replicated: 244KB
-Current Lag Time between snapshots: -   ***Less than 90 minutes is acceptable***
-```
-
-**Następne kroki**
+## <a name="next-steps"></a>Kolejne kroki
 - Zapoznaj się [monitorowanie i rozwiązywanie problemów ze strony HANA](hana-monitor-troubleshoot.md).

@@ -5,17 +5,17 @@ services: billing
 author: rothja
 ms.service: billing
 ms.topic: include
-ms.date: 04/02/2019
+ms.date: 04/22/2019
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: d490cab4d437c30fdb211ea27397777afc27e72e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 712b70960e09a9c2b0e7a998bc0bddbc28c1e112
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59804799"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63765878"
 ---
-| Zasób | Limit domyślny | Limit maksymalny |
+| Resource | Limit domyślny | Limit maksymalny |
 | --- | --- | --- |
 | Maszyny wirtualne na [subskrypcję](../articles/billing-buy-sign-up-azure-subscription.md) |25 000<sup>1</sup> na region. |25 000 na region. |
 | Całkowita liczba rdzeni maszyn wirtualnych na [subskrypcję](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> na region. | Skontaktuj się z pomocą techniczną. |
@@ -29,13 +29,15 @@ ms.locfileid: "59804799"
 | Obliczenia unikatowych tagów na subskrypcję<sup>2</sup> | 10 000 | 10 000 |
 | [Usługi w chmurze](../articles/cloud-services/cloud-services-choose-me.md) na subskrypcję |N/D<sup>3</sup> |N/D<sup>3</sup> |
 | [Grupy koligacji](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) na subskrypcję |N/D<sup>3</sup> |N/D<sup>3</sup> |
-| [Poziom subskrypcji wdrożeń](../articles/azure-resource-manager/deploy-to-subscription.md) według lokalizacji | 800 | 800 |
+| [Poziom subskrypcji wdrożeń](../articles/azure-resource-manager/deploy-to-subscription.md) według lokalizacji | 800<sup>4</sup> | 800 |
 
 <sup>1</sup>domyślne limity zależą przez typ kategorii oferty, np. bezpłatnej wersji próbnej i płatność za rzeczywiste użycie i serii Dv2, F i G.
 
 <sup>2</sup>można zastosować dowolną liczbę tagów na subskrypcję. Liczba tagów na zasób lub grupę zasobów jest ograniczona do 15. Zwraca usługi Resource Manager [listę nazw i wartości tagów unikatowy](/rest/api/resources/tags) w subskrypcji tylko wtedy, gdy liczba tagów wynosi 10 000 lub mniej. Nadal można znaleźć zasobu według tagów gdy ich liczba przekracza 10 000.  
 
 <sup>3</sup>te funkcje nie są już wymagane z grupami zasobów platformy Azure i usługi Resource Manager.
+
+<sup>4</sup>w przypadku osiągnięcia limitu 800 wdrożeń usunięcie wdrożeń z historii, które nie są już potrzebne. Aby usunąć wdrożeń poziomu subskrypcji, użyj [AzDeployment Usuń](/powershell/module/az.resources/Remove-AzDeployment) lub [Usuń wdrożenie az](/cli/azure/deployment?view=azure-cli-latest#az-deployment-delete).
 
 > [!NOTE]
 > Rdzenie maszyny wirtualnej mają regionalny limit całkowitej. Mają one również limit serii na rozmiar regionalnych, takich jak Dv2 i F. Te limity są wymuszane oddzielnie. Rozważmy na przykład subskrypcję z całkowitym limitem rdzeni maszyn wirtualnych dla regionu Wschodnie stany USA wynoszącym 30, limitem rdzeni dla serii A wynoszącym 30 i limitem rdzeni dla serii D wynoszącym 30. Ta subskrypcja można wdrożyć 30 maszyn wirtualnych A1 lub 30 maszyn wirtualnych D1 albo kombinacji obu, aby nie przekroczyć 30 rdzeni. Przykładem kombinację jest 10 maszyn wirtualnych A1 i 20 maszyn wirtualnych D1.  
