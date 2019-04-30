@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: ramamill
-ms.openlocfilehash: ba80c8ce57495eaa46e915cb0c472eb4aabcee57
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0a0b6c83f800c0a479ba7a16c91b497d1a11da9e
+ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/23/2019
-ms.locfileid: "60318628"
+ms.locfileid: "62732489"
 ---
 # <a name="manage-process-servers"></a>Zarządzanie serwerami przetwarzania
 
@@ -68,6 +68,19 @@ Za pomocą tej opcji całe obciążenie chroniony w obszarze serwer przetwarzani
 2. Monitorowanie postępu zadania w obszarze **magazyn usługi Recovery Services** > **monitorowanie** > **zadania usługi Site Recovery**.
 3. W ciągu 15 minut zmieniony, aby odzwierciedlić po pomyślnym zakończeniu tej operacji lub [Odśwież serwer konfiguracji](vmware-azure-manage-configuration-server.md#refresh-configuration-server) efekt natychmiastowy.
 
+## <a name="process-server-selection-guidance"></a>Wskazówek dotyczących procesu wyboru serwera
+
+Usługa Azure Site Recovery automatycznie rozpoznaje, jeśli serwer przetwarzania zbliża się do swoich limitów użycia. Wskazówki dotyczące znajduje się w przypadku skonfigurowania skalowalnym w poziomie serwera przetwarzania.
+
+|Kondycja  |Wyjaśnienie  | Dostępność zasobów  | Zalecenie|
+|---------|---------|---------|---------|
+| Zdrowy (zielony)    |   Serwer przetwarzania jest połączony i działa prawidłowo      |Wykorzystanie Procesora i pamięci jest niższy niż 80%; Dostępność wolnego miejsca jest ponad 30%| Tego serwera przetwarzania może służyć do ochrony dodatkowych serwerów. Upewnij się, że nowe obciążenie w ramach [określone limity serwera przetwarzania](vmware-azure-set-up-process-server-scale.md#sizing-requirements).
+|Ostrzeżenie (kolor pomarańczowy)    |   Serwer przetwarzania jest połączony, ale niektóre zasoby mają osiągnąć maksymalny limit  |   Wykorzystanie Procesora i pamięci jest między 80 – 95%; Dostępność wolnego miejsca jest od 25% — 30%       | Użycie serwera przetwarzania zbliża się wartości progowe. Dodawanie nowych serwerów do tego samego serwera przetwarzania doprowadzi do przekroczenia wartości progowych i może mieć wpływ na istniejące elementy chronione. Zaleca się [konfiguracji serwera przetwarzania skalowalnego w poziomie](vmware-azure-set-up-process-server-scale.md#before-you-start) dla nowych replikacji.
+|Ostrzeżenie (kolor pomarańczowy)   |   Serwer przetwarzania jest połączony, ale dane nie został przekazany na platformę Azure w ostatnich 30 minut  |   Wykorzystanie zasobów znajduje się w wartości progowych       | Rozwiązywanie problemów z [błędy przekazywania danych](vmware-azure-troubleshoot-replication.md#monitor-process-server-health-to-avoid-replication-issues) przed dodaniem nowych obciążeń **lub** [konfiguracji serwera przetwarzania skalowalnego w poziomie](vmware-azure-set-up-process-server-scale.md#before-you-start) dla nowych replikacji.
+|Krytyczny (czerwony)    |     Serwer przetwarzania będzie mógł zostać odłączony  |  Wykorzystanie zasobów znajduje się w wartości progowych      | Rozwiązywanie problemów z [problemy z łącznością serwera przetwarzania](vmware-azure-troubleshoot-replication.md#monitor-process-server-health-to-avoid-replication-issues) lub [konfiguracji serwera przetwarzania skalowalnego w poziomie](vmware-azure-set-up-process-server-scale.md#before-you-start) dla nowych replikacji.
+|Krytyczny (czerwony)    |     Wykorzystanie zasobów przekroczyło wartość progową limity |  Wykorzystanie Procesora i pamięci jest powyżej 95%; Dostępność wolnego miejsca jest mniejsza niż 25%.   | Dodawanie nowych obciążeń na ten sam serwer przetwarzania jest wyłączona, ponieważ próg zasobów, które już limitów. Dlatego [konfiguracji serwera przetwarzania skalowalnego w poziomie](vmware-azure-set-up-process-server-scale.md#before-you-start) dla nowych replikacji.
+Krytyczny (czerwony)    |     Dane nie przekazywane z platformy Azure do platformy Azure w ostatnich 45 min. |  Wykorzystanie zasobów znajduje się w wartości progowych      | Rozwiązywanie problemów z [błędy przekazywania danych](vmware-azure-troubleshoot-replication.md#monitor-process-server-health-to-avoid-replication-issues) przed dodaniem nowych obciążeń do tego samego serwera przetwarzania lub [konfiguracji serwera przetwarzania skalowalnego w poziomie](vmware-azure-set-up-process-server-scale.md#before-you-start)
+
 ## <a name="reregister-a-process-server"></a>Zarejestruj ponownie serwer przetwarzania
 
 Jeśli chcesz ponownie zarejestrować serwer przetwarzania, działającego lokalnie lub na platformie Azure z serwerem konfiguracji, wykonaj następujące czynności:
@@ -109,7 +122,6 @@ Jeśli serwer przetwarzania używa serwera proxy do łączenia z usługą Site R
    exit
    ```
 
-
 ## <a name="remove-a-process-server"></a>Usuń serwer przetwarzania
 
 [!INCLUDE [site-recovery-vmware-unregister-process-server](../../includes/site-recovery-vmware-unregister-process-server.md)]
@@ -126,4 +138,3 @@ Jeśli oprogramowanie antywirusowe jest aktywna na autonomicznym serwerze przetw
 - C:\ProgramData\LogUploadServiceLogs
 - C:\ProgramData\Microsoft Azure Site Recovery
 - Katalog instalacyjny serwera przetwarzania, przykład: C:\Program Files (x86) \Microsoft Azure Site Recovery
-
