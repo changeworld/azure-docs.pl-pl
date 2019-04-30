@@ -260,7 +260,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |---------|---------|----------------------|
 |**type** || Musi być równa `cosmosDBTrigger`. |
 |**direction** || Musi być równa `in`. Ten parametr jest ustawiany automatycznie po utworzeniu wyzwalacza w witrynie Azure portal. |
-|**name** || Nazwa zmiennej, używany w kodzie funkcji, który reprezentuje listę dokumentów za pomocą zmian. |
+|**Nazwa** || Nazwa zmiennej, używany w kodzie funkcji, który reprezentuje listę dokumentów za pomocą zmian. |
 |**connectionStringSetting**|**ConnectionStringSetting** | Nazwa ustawienia aplikacji zawierającego parametry połączenia używane do łączenia z konta usługi Azure Cosmos DB są monitorowane. |
 |**databaseName**|**DatabaseName**  | Nazwa bazy danych Azure Cosmos DB za pomocą kolekcji są monitorowane. |
 |**collectionName** |**collectionName** | Nazwa kolekcji są monitorowane. |
@@ -1713,13 +1713,13 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |---------|---------|----------------------|
 |**type**     || Musi być równa `cosmosDB`.        |
 |**direction**     || Musi być równa `in`.         |
-|**name**     || Nazwa parametru powiązania, który reprezentuje dokument w funkcji.  |
+|**Nazwa**     || Nazwa parametru powiązania, który reprezentuje dokument w funkcji.  |
 |**databaseName** |**DatabaseName** |Baza danych zawiera dokument.        |
 |**collectionName** |**collectionName** | Nazwa kolekcji, która zawiera dokument. |
 |**id**    | **Identyfikator** | Identyfikator dokumentu do pobrania. Ta właściwość obsługuje [powiązania wyrażeń](./functions-bindings-expressions-patterns.md). Nie należy ustawiać zarówno **identyfikator** i **sqlQuery** właściwości. Jeśli nie ustawisz pojedynczo, zostanie pobrana całą kolekcję. |
 |**sqlQuery**  |**SqlQuery**  | Zapytania SQL usługi Azure Cosmos DB używane do pobierania wiele dokumentów. Właściwość obsługuje powiązań środowiska uruchomieniowego, jak w poniższym przykładzie: `SELECT * FROM c where c.departmentId = {departmentId}`. Nie należy ustawiać zarówno **identyfikator** i **sqlQuery** właściwości. Jeśli nie ustawisz pojedynczo, zostanie pobrana całą kolekcję.|
 |**connectionStringSetting**     |**ConnectionStringSetting**|Nazwa ustawienia aplikacji zawierającego parametry połączenia usługi Azure Cosmos DB.        |
-|**partitionKey**|**właściwości partitionKey**|Określa wartość klucza partycji do wyszukiwania. Może zawierać parametrów wiązania.|
+|**właściwości partitionKey**|**właściwości partitionKey**|Określa wartość klucza partycji do wyszukiwania. Może zawierać parametrów wiązania.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -2298,11 +2298,11 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |---------|---------|----------------------|
 |**type**     || Musi być równa `cosmosDB`.        |
 |**direction**     || Musi być równa `out`.         |
-|**name**     || Nazwa parametru powiązania, który reprezentuje dokument w funkcji.  |
+|**Nazwa**     || Nazwa parametru powiązania, który reprezentuje dokument w funkcji.  |
 |**databaseName** | **DatabaseName**|Baza danych, zawierający kolekcję, w którym zostanie utworzona dokumentu.     |
 |**collectionName** |**collectionName**  | Nazwa kolekcji jest tworzona dokumentu. |
 |**createIfNotExists**  |**createIfNotExists**    | Wartość logiczna, aby wskazać, czy kolekcja jest tworzona, gdy nie istnieje. Wartość domyślna to *false* ponieważ nowych kolekcji są tworzone z zarezerwowaną przepływnością, co ma koszt skutki. Aby uzyskać więcej informacji, odwiedź [stronę cennika](https://azure.microsoft.com/pricing/details/cosmos-db/).  |
-|**partitionKey**|**właściwości partitionKey** |Gdy `CreateIfNotExists` ma wartość true, określa ścieżkę klucza partycji dla utworzonej kolekcji.|
+|**właściwości partitionKey**|**właściwości partitionKey** |Gdy `CreateIfNotExists` ma wartość true, określa ścieżkę klucza partycji dla utworzonej kolekcji.|
 |**collectionThroughput**|**collectionThroughput**| Gdy `CreateIfNotExists` ma wartość true, określa [przepływności](../cosmos-db/set-throughput.md) utworzonej kolekcji.|
 |**connectionStringSetting**    |**ConnectionStringSetting** |Nazwa ustawienia aplikacji zawierającego parametry połączenia usługi Azure Cosmos DB.        |
 
@@ -2345,7 +2345,7 @@ W tej sekcji opisano globalne ustawienia konfiguracji dostępne dla tego powiąz
 |Właściwość  |Domyślne | Opis |
 |---------|---------|---------| 
 |GatewayMode|Brama|Tryb połączenia używane przez funkcję, podczas nawiązywania połączenia z usługą Azure Cosmos DB. Dostępne są opcje `Direct` i `Gateway`|
-|Protocol|HTTPS|Protokół połączenia używane przez funkcję podczas połączenia z usługą Azure Cosmos DB.  Odczyt [tutaj objaśnienia dotyczące oba tryby](../cosmos-db/performance-tips.md#networking)| 
+|Protokół|HTTPS|Protokół połączenia używane przez funkcję podczas połączenia z usługą Azure Cosmos DB.  Odczyt [tutaj objaśnienia dotyczące oba tryby](../cosmos-db/performance-tips.md#networking)| 
 |leasePrefix|Nie dotyczy|Prefiks dzierżawy do użycia we wszystkich funkcji w aplikacji.| 
 
 ## <a name="next-steps"></a>Kolejne kroki

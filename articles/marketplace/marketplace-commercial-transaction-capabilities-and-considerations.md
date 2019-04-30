@@ -2,21 +2,15 @@
 title: Portal Marketplace transakcji handlowych możliwości i zagadnienia | Azure
 description: W tym artykule opisano zagadnienia cen, rozliczeń, fakturowania i informacje dotyczące wypłat Transact dla typu oferty.
 services: Azure, Marketplace, Compute, Storage, Networking, Transact Offer Type
-documentationcenter: ''
 author: yijenj
 manager: nuno costa
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
 ms.openlocfilehash: 3c07f7ac2b6407a3edf53fd5d3a4b402714fefbb
 ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "61065014"
