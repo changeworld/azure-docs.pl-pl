@@ -11,13 +11,13 @@ ms.topic: article
 ms.date: 03/15/2019
 ms.author: sajagtap
 ms.openlocfilehash: f88ccbabc925b651abbc06f571a9d4220ed8aeb2
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756523"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61285555"
 ---
-# <a name="configure-the-review-tool"></a>Skonfiguruj narzędzie do przeglądu
+# <a name="configure-the-review-tool"></a>Konfigurowanie narzędzia do przeglądu
 
 [Narzędzie do przeglądu](https://contentmoderator.cognitive.microsoft.com) ma kilka ważnych funkcji, które są dostępne za pośrednictwem **ustawienia** menu na pulpicie nawigacyjnym.
 
@@ -66,7 +66,7 @@ Jeśli jesteś członkiem więcej niż jeden ustalenie, można przełączać si�
 
 ## <a name="tags"></a>Tagi
 
-**Tagi** kartę umożliwia definiowanie tagów niestandardowych Moderowanie oprócz tagów Moderowanie dwóch domyślnych&mdash;**isadult** (****) i **isracy**  (**r**). Możesz utworzyć niestandardowy tag, staje się dostępna w przeglądach obok znaczniki domyślne. Można zmienić, jakie znaczniki mają wyświetlane w recenzji, przełączając ich ustawień widoczności.
+**Tagi** kartę umożliwia definiowanie tagów niestandardowych Moderowanie oprócz tagów Moderowanie dwóch domyślnych&mdash;**isadult** (**a**) i **isracy**  (**r**). Możesz utworzyć niestandardowy tag, staje się dostępna w przeglądach obok znaczniki domyślne. Można zmienić, jakie znaczniki mają wyświetlane w recenzji, przełączając ich ustawień widoczności.
 
 ![Wyświetlanie tagów, łącznie z pola wyboru "Jest widoczny"](images/tags-4-disable.png)
 
