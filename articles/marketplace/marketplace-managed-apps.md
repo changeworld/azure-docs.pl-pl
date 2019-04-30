@@ -2,15 +2,9 @@
 title: Podręcznik publikowania oferty aplikacji zarządzanej aplikacji platformy Azure
 description: W tym artykule opisano wymagania aby opublikować aplikację zarządzaną w witrynie Marketplace
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: ellacroi
 manager: nunoc
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 12/19/2018
 ms.author: ellacroi

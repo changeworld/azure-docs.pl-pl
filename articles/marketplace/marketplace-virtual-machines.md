@@ -2,15 +2,8 @@
 title: Oferty maszyny wirtualnej publikowania Przewodnik po portalu Azure Marketplace
 description: W tym artykule opisano wymagania aby opublikować maszynę wirtualną i bezpłatnej wersji próbnej oprogramowania do wdrożenia w portalu Marketplace.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: ellacroi
-manager: nunoc
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: ellacroi

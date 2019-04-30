@@ -483,7 +483,7 @@ Awarii może być spowodowany różnych czynników. W poniższej tabeli wymienio
 W tym artykule przywoływane następujące dokumenty:
 
 - [StorSimple Wielościeżkowe We/Wy Instalatora](storsimple-configure-mpio-windows-server.md)
-- [Scenariusze usługi Storage: alokowanie elastyczne](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
+- [Scenariusze usługi Storage: Alokowanie elastyczne](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
 - [Za pomocą GPT dysków](https://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)
 - [Konfigurowanie kopii w tle dla folderów udostępnionych](https://technet.microsoft.com/library/cc771893.aspx)
 

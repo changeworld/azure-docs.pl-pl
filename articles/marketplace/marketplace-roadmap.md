@@ -2,15 +2,9 @@
 title: Portal Azure Marketplace i AppSource plan | Azure
 description: Plan na tym, co dzieje się w witrynie Marketplace
 services: Azure, Marketplace, Compute
-documentationcenter: ''
 author: qianw211
 manager: MaggiePucciEvans
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 03/29/2019
 ms.author: BrianLevenson
