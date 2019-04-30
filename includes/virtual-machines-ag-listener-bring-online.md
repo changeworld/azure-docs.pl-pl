@@ -1,15 +1,16 @@
 ---
-author: cynthn
+author: rockboyfor
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 10/26/2018
-ms.author: cynthn
+origin.date: 10/26/2018
+ms.date: 11/26/2018
+ms.author: v-yeche
 ms.openlocfilehash: 760bb5b62e9bba9b7a83f99760f7fe5d8c399dfb
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50227265"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62097745"
 ---
 1. W Menedżerze klastra trybu Failover rozwiń **role**, a następnie zaznacz grupy dostępności.  
 
@@ -22,11 +23,11 @@ ms.locfileid: "50227265"
 5. Kliknij prawym przyciskiem myszy odbiornik o nazwie, a następnie kliknij przycisk **przejdź do trybu Online**.
 
 6. Po odbiornika jest w trybie online na **zasobów** kartę, kliknij prawym przyciskiem myszy grupę dostępności, a następnie kliknij **właściwości**.
-   
+
     ![Skonfiguruj zasób grupy dostępności](./media/virtual-machines-sql-server-configure-alwayson-availability-group-listener/IC678772.gif)
 
 7. Zależność od zasobu Nazwa odbiornika (nie nazwa adresu IP zasobów), a następnie kliknij polecenie **OK**.
-   
+
     ![Dodaj zależność na odbiornik o nazwie](./media/virtual-machines-sql-server-configure-alwayson-availability-group-listener/IC678773.gif)
 
 8. Uruchom program SQL Server Management Studio, a następnie połącz się z repliką podstawową.
@@ -38,3 +39,4 @@ ms.locfileid: "50227265"
 
 11. W **portu** polu Określ numer portu odbiornika grupy dostępności przy użyciu $EndpointPort użytego wcześniej (w tym samouczku 1433 była wartość domyślna), a następnie kliknij przycisk **OK**.
 
+<!-- Update_Description: update meta properties -->

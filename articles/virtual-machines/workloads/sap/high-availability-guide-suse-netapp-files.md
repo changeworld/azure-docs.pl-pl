@@ -18,7 +18,7 @@ ms.date: 03/015/2019
 ms.author: radeltch
 ms.openlocfilehash: 18bbeef833e1c82999e87451d279c0d3464af509
 ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "60711142"

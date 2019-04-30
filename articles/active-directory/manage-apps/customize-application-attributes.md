@@ -15,15 +15,15 @@ ms.date: 04/03/2019
 ms.author: celested
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a2965fecd3aca17d6c4df7e49ad466377de9762
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b63118a7c5fae49edebe4ae4976a1362781ae8cf
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60291691"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63759778"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Dostosowywanie użytkownika aprowizacji mapowań atrybutów dla aplikacji SaaS w usłudze Azure Active Directory
-Microsoft Azure AD zapewnia obsługę aprowizacji użytkowników do aplikacji SaaS innych firm, takich jak Salesforce, Google Apps i innych. Jeśli zostanie włączone, aprowizacja użytkowników dla aplikacji SaaS innych firm, witryny Azure portal steruje jego wartości atrybutu za pomocą mapowania atrybutów.
+Microsoft Azure AD zapewnia obsługę aprowizacji użytkowników do aplikacji SaaS innych firm, takich jak Salesforce, usługi G Suite i inne. Jeśli zostanie włączone, aprowizacja użytkowników dla aplikacji SaaS innych firm, witryny Azure portal steruje jego wartości atrybutu za pomocą mapowania atrybutów.
 
 Istnieje wstępnie skonfigurowany zestaw atrybutów i mapowania atrybutów między obiektami użytkownika usługi Azure AD i obiektów użytkowników każdej aplikacji SaaS. Niektóre aplikacje zarządzania innymi typami obiektów wraz z użytkownikami, takich jak grupy.
 
@@ -84,7 +84,7 @@ Wraz z tej właściwości mapowania atrybutów obsługują następujące atrybut
 
 ## <a name="editing-group-attribute-mappings"></a>Mapowania atrybutów grupy do edycji
 
-Wybranej liczby aplikacji, takich jak usługi ServiceNow, Box i Google Apps obsługuje możliwość inicjowania obsługi grupy obiektów i obiektów użytkownika. Obiekty grupy może zawierać właściwości grupy, takie jak nazwy wyświetlane i wiadomości e-mail aliasy, wraz z elementami członkowskimi grupy.
+Wybranej liczby aplikacji, takich jak usługi ServiceNow, Box i usługi G Suite obsługuje możliwość inicjowania obsługi grupy obiektów i obiektów użytkownika. Obiekty grupy może zawierać właściwości grupy, takie jak nazwy wyświetlane i wiadomości e-mail aliasy, wraz z elementami członkowskimi grupy.
 
 ![ServiceNow](./media/customize-application-attributes/24.png)
 

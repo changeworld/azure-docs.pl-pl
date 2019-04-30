@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/27/2018
 ms.author: iainfou
 ms.openlocfilehash: 56b13a0ba6a93f1acd8edf1ce6c95561f63758c8
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002182"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61217073"
 ---
 > [!WARNING]
 >  **Usługa Azure Container Service (ACS) stała się przestarzała. Do usługi ACS nie są już dodawane żadne nowe funkcje. Wszystkie interfejsy API, środowisko portalu, polecenia interfejsu wiersza polecenia i dokumentacja są oznaczone jako przestarzałe.**

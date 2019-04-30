@@ -2,24 +2,18 @@
 title: Wprowadzenie do Eksploratora usługi Storage | Dokumentacja firmy Microsoft
 description: Zarządzanie zasobami usługi Azure storage za pomocą Eksploratora usługi Storage
 services: storage
-documentationcenter: na
 author: cawaMS
-manager: paulyuk
-editor: ''
-ms.assetid: 1ed0f096-494d-49c4-ab71-f4164ee19ec8
 ms.service: storage
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 07/17/2017
+ms.date: 04/22/2019
 ms.author: cawa
-ms.openlocfilehash: 38a857b1d309b92c48137a46655155e0e131908c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3db1d638aa1e0d8488c310593a593465c2b9b336
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/23/2019
-ms.locfileid: "60459432"
+ms.locfileid: "62128283"
 ---
 # <a name="get-started-with-storage-explorer"></a>Wprowadzenie do Eksploratora usługi Storage
 
@@ -115,7 +109,9 @@ Ponadto można pracować z kontami magazynu na globalnej i krajowej platformie A
 
 Za pomocą Eksploratora usługi Storage możesz pracować z magazynem lokalnym przy użyciu emulatora. Takie podejście umożliwia symulowanie pracy z usługą Azure Storage bez konieczności posiadania konta magazynu wdrożonego na platformie Azure.
 
-Począwszy od wersji 1.1.0 lokalnym emulatorze magazynu jest obsługiwane na wszystkich platformach. Eksplorator usługi Storage można nawiązać dowolnej usługi emulowanej nasłuchiwania na jego domyślnymi punktami końcowymi magazynu lokalnego.
+Począwszy od wersji 1.1.0 Eksploratora usługi Storage obsługuje, za pomocą emulatora magazynu lokalnego na wszystkich platformach. Eksplorator usługi Storage można nawiązać dowolnej usługi emulowanej nasłuchiwania na jego domyślnymi punktami końcowymi magazynu lokalnego.
+
+[Emulatora usługi Azure storage](storage/common/storage-use-emulator.md) działa obecnie tylko na Windows. Dla osób, biorąc pod uwagę emulatora magazynu, dla systemu Linux, jedną z opcji jest społeczności utrzymywane emulatora magazynu typu open source [Azurite](https://github.com/azure/azurite).
 
 > [!NOTE]
 > Obsługa usług i funkcji magazynowych może różnią w zależności od wybranego emulatora. Upewnij się, że Twoje emulator obsługuje usługi i funkcje, które zamierzasz pracować.

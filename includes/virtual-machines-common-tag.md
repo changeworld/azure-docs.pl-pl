@@ -5,20 +5,20 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: ccc2b574ea054a1b0ecf32a1e59691050fb66fcf
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50226608"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62108308"
 ---
 ## <a name="tagging-a-virtual-machine-through-templates"></a>Tagowanie maszyny wirtualnej za pomocą szablonów
-Najpierw Przyjrzyjmy się tagowanie za pomocą szablonów. [Ten szablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-tags) umieszcza tagi dla następujących zasobów: obliczeniowych (maszyny wirtualnej), magazynu (konta magazynu) i sieci (publiczny adres IP, sieci wirtualnej i interfejsu sieciowego). Ten szablon jest dla maszyny Wirtualnej z systemem Windows, ale mogą być dostosowane do maszyn wirtualnych systemu Linux.
+Najpierw Przyjrzyjmy się tagowanie za pomocą szablonów. [Ten szablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-tags) umieszcza tagi w następujących zasobach: Obliczeń (maszyna wirtualna), magazynu (konta magazynu) i sieci, (publiczny adres IP, sieci wirtualnej i interfejsu sieciowego). Ten szablon jest dla maszyny Wirtualnej z systemem Windows, ale mogą być dostosowane do maszyn wirtualnych systemu Linux.
 
 Kliknij przycisk **Wdróż na platformie Azure** przycisk [link szablonu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-tags). Spowoduje to przejście do [witryny Azure portal](https://portal.azure.com/) którym można wdrożyć tego szablonu.
 
 ![Proste wdrożenie przy użyciu tagów](./media/virtual-machines-common-tag/deploy-to-azure-tags.png)
 
-Ten szablon obejmuje następujące tagi: *działu*, *aplikacji*, i *utworzony przez*. Możesz można Dodawanie/edytowanie tych znaczników bezpośrednio w szablonie Jeśli różnych nazwach.
+Ten szablon zawiera następujące tagi: *Dział*, *aplikacji*, i *utworzone przez*. Możesz można Dodawanie/edytowanie tych znaczników bezpośrednio w szablonie Jeśli różnych nazwach.
 
 ![Usługa Azure tagów w szablonie](./media/virtual-machines-common-tag/azure-tags-in-a-template.png)
 

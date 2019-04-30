@@ -9,7 +9,7 @@ ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/23/2019
-ms.locfileid: "60188353"
+ms.locfileid: "62091579"
 ---
 > [!NOTE]
 > Ten artykuł został zaktualizowany o korzystanie z nowego modułu Azure PowerShell Az. Można nadal używać moduł AzureRM, który będzie w dalszym ciągu otrzymywać poprawek przynajmniej aż do grudnia 2020 r.
