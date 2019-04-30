@@ -16,11 +16,11 @@ ms.topic: conceptual
 ms.date: 05/23/2018
 ms.author: ergreenl
 ms.openlocfilehash: 637ad62744affa37630df9c841f3c7529674e788
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58122913"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60418208"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Włączanie usługi Azure Active Directory Domain Services w witrynie Azure portal
 W tym artykule przedstawiono sposób włączania Azure Active Directory Domain Services (Azure AD DS) w witrynie Azure portal.
@@ -52,7 +52,7 @@ Aby uruchomić **włączyć usługi Azure AD Domain Services** kreatora, wykonaj
 5. **Włączyć usługi Azure AD Domain Services** uruchomić kreatora.
 
 
-## <a name="task-1-configure-basic-settings"></a>Zadanie 1: Konfigurowanie ustawień podstawowych
+## <a name="task-1-configure-basic-settings"></a>Zadanie 1. Konfigurowanie ustawień podstawowych
 W **podstawy** strona kreatora określ nazwę domeny DNS dla domeny zarządzanej. Możesz również grupę zasobów i lokalizacji platformy Azure, do którego powinny zostać wdrożone domeny zarządzanej.
 
 ![Konfigurowanie podstawy](./media/getting-started/domain-services-blade-basics.png)
