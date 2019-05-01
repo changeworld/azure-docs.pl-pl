@@ -3,19 +3,18 @@ title: Omówienie usługi Azure Data Factory ceny przykłady | Dokumentacja firm
 description: W tym artykule opisano i przedstawiono usługi Azure Data Factory, model o szczegółowe przykłady cen
 documentationcenter: ''
 author: shlo
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: shlo
-ms.openlocfilehash: 80b1f90ee0d9f5003c39eb6a853a07d2d64ca482
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 454899cd7cc592b87f96233d73ca8c4ed6ac333f
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60787487"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935765"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Informacje o przykładach ceny usługi Data Factory
 
@@ -122,6 +121,45 @@ Do wykonywania scenariusz, należy utworzyć potok z następującymi elementami:
   - Działania przenoszenia danych = $0.166 (Prorated przez 10 minut czasu wykonywania. 0,25 USD/godz. na platformie Azure Integration Runtime)
   - Potok działania = $0.00003 (Prorated 1 minuty w czasie wykonywania. 0,002 USD za godzinę na platformie Azure Integration Runtime)
   - Działania potoku zewnętrznego = $0.000041 (Prorated przez 10 minut czasu wykonywania. $0.00025/godz. na platformie Azure Integration Runtime)
+
+## <a name="using-mapping-data-flow-debug-for-a-normal-workday"></a>Za pomocą debugowania przepływu danych mapowania dla normalnych workday
+
+Jako inżynier danych możesz odpowiadają za projektowanie, tworzenie i testowanie mapowanie przepływu danych każdego dnia. Zaloguj się do interfejsu użytkownika usługi ADF rano i włączyć tryb debugowania dla przepływu danych. Domyślny czas wygaśnięcia sesji debugowania jest 60 minut. Możesz pracować w ciągu dnia, przez 10 godzin, więc nigdy nie wygasa sesję debugowania. W związku z tym, Twoja opłata na ten dzień wyniesie:
+
+**10 (godziny) x 8 (rdzenie) x $0.112 = 8.96 $**
+
+## <a name="transform-data-in-blob-store-with-mapping-data-flows"></a>Przekształcanie danych w magazynie obiektów blob za pomocą mapowania przepływu danych
+
+W tym scenariuszu chcesz przekształcić dane obiektów Blob Store wizualne w usłudze ADF mapowanie przepływu danych w przypadku harmonogramu co godzinę.
+
+Do wykonywania scenariusz, należy utworzyć potok z następującymi elementami:
+
+1. Przepływ danych działanie z logiką transformacji.
+
+2. Wejściowy zestaw danych dla danych w usłudze Azure Storage.
+
+3. Wyjściowy zestaw danych dla danych w usłudze Azure Storage.
+
+4. Wyzwalacz harmonogramu można wykonać potok co godzinę.
+
+| **Operacje** | **Typy i jednostki** |
+| --- | --- |
+| Tworzenie usługi połączonej | 2 podmiot odczyt/zapis  |
+| Tworzenie zestawów danych | 4 jednostek odczytu/zapisu, (2 w celu utworzenia zestawu danych, 2 dla odwołania do połączonej usługi) |
+| Tworzenie potoku | 3 jednostki odczytu/zapisu (1 w celu utworzenia potoku, 2 dla odwołań do zestawu danych) |
+| Pobierz potoku | 1 jednostka odczytu/zapisu |
+| Uruchamianie potoku | 2 uruchomień działań (1 dla wyzwalacza Uruchom 1 w przypadku uruchomienia działania) |
+| Czas wykonywania założenia przepływu danych: = 10 min + 10-minutowy materiał czas wygaśnięcia | 10 \* 8 rdzeni obliczeniowych ogólne TTL 10 |
+| Monitorowanie potoku założenia: Tylko 1 uruchomić wystąpił | 2 rekordy monitorowanie Uruchom ponowione (1-uruchomienie potoku, 1 w przypadku uruchomienia działania) |
+
+**Łączna liczba scenariusz kalkulacji cen: $0.3011**
+
+- Operacje na danych fabryki = **0,0001 USD**
+  - Odczyt/zapis = 10\*00001 0,0001 USD = [1 odczytu i zapisu = $ 0,50/50000 = 0,00001]
+  - Monitorowanie = 2\*000005 = $0,00001 [monitorowania 1 = $ 0,25/50000 = 0.000005]
+- Organizowanie potoku &amp; wykonywania = **0.301 $**
+  - Uruchomienia działania = 001\*2 = 0,002 [1, uruchom = 1/1000 USD = 0,001]
+  - Działania przepływu danych = $0.299 Prorated przez 20 minut (10 minut czasu wykonywania + 10 minut. czas wygaśnięcia). obliczenia 0.112 $/ godz. na platformie Azure Integration Runtime z 8 rdzeni, ogólne
 
 ## <a name="next-steps"></a>Kolejne kroki
 

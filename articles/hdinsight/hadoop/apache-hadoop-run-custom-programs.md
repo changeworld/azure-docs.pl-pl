@@ -1,7 +1,6 @@
 ---
 title: Uruchamianie niestandardowych programów MapReduce — Azure HDInsight
 description: Kiedy i jak uruchamianie niestandardowych programów MapReduce w HDInsight.
-services: hdinsight
 author: ashishthaps
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/04/2017
 ms.author: ashishth
-ms.openlocfilehash: c9cbea913a86a681620eea4adc0a5c99cc84f920
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 5ed82fc21aedc9af394922059859f81cfba1867e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53433869"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64713090"
 ---
 # <a name="run-custom-mapreduce-programs"></a>Uruchamianie niestandardowych programów MapReduce
 
@@ -38,7 +37,6 @@ W większości przypadków HDInsight przetwarzania jest prostszy i bardziej wyda
 Składniki niestandardowe/mapreduce zwykle są napisane w języku Java. Hadoop dostarcza interfejs przesyłania strumieniowego, który umożliwia także składniki do użycia, które są opracowywane w innych językach, takich jak C#, F#, Visual Basic, Python i JavaScript.
 
 * Aby uzyskać wskazówki na temat tworzenia niestandardowych programów MapReduce w języku Java, zobacz [programów opracowywanie MapReduce w języku Java dla usługi Hadoop w HDInsight](apache-hadoop-develop-deploy-java-mapreduce-linux.md).
-* Aby zapoznać się przykładem dotyczącym używania języka Python, zobacz [opracowywanie programów MapReduce przesyłania strumieniowego HDInsight języka Python](apache-hadoop-streaming-python.md).
 
 Należy rozważyć utworzenie własnego mapy i zmniejszyć składniki dla następujących warunków:
 
@@ -76,6 +74,5 @@ Najbardziej typowe programów MapReduce są napisane w języku Java i kompilowan
 
 * [Użyj C# o MapReduce, przesyłanie strumieniowe na technologii Apache Hadoop w HDInsight](apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
 * [Opracowywanie programów MapReduce w języku Java dla usługi Apache Hadoop w HDInsight](apache-hadoop-develop-deploy-java-mapreduce-linux.md)
-* [Opracowywanie programów MapReduce przesyłania strumieniowego HDInsight w języku Python](apache-hadoop-streaming-python.md)
 * [Używanie zestawu narzędzi platformy Azure dla środowiska Eclipse do tworzenia aplikacji platformy Apache Spark dla klastra usługi HDInsight](../spark/apache-spark-eclipse-tool-plugin.md)
 * [Funkcje (UDF) zdefiniowane przez użytkownika języka Python korzystanie z programu Apache Hive i Apache Pig w HDInsight](python-udf-hdinsight.md)

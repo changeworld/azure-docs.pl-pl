@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: monhaber
 ms.manager: shaik
-ms.openlocfilehash: 78338ece1bc70d8410bd71183a34aaf1a52f2d1b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: c42867ff7aea2210f20a2cd2adb5c067b8f36c80
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61484222"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926502"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Usługa Advanced Threat Protection dla usługi Azure Storage
 
@@ -23,7 +23,7 @@ Alerty zabezpieczeń są wyzwalane, gdy wystąpią nieprawidłowości w działan
 
 > [!NOTE]
 > * Zaawansowana ochrona przed zagrożeniami dla usługi Azure Storage jest obecnie dostępna wyłącznie dla magazynu obiektów Blob.
-> * Aby uzyskać szczegóły cennika, łącznie z bezpłatnej 30-dniowej wersji próbnej, zobacz [usługi Azure Security Center, na stronie z cennikiem]( https://azure.microsoft.com/en-us/pricing/details/security-center/).
+> * Aby uzyskać szczegóły cennika, łącznie z bezpłatnej 30-dniowej wersji próbnej, zobacz [usługi Azure Security Center, na stronie z cennikiem]( https://azure.microsoft.com/pricing/details/security-center/).
 > * Zaawansowanej ochrony przed zagrożeniami dla funkcji usługi Azure storage nie jest obecnie dostępna w regionach należących do suwerennej chmury i platformy Azure dla instytucji rządowych.
 
 Zaawansowana ochrona przed zagrożeniami dla usługi Azure Storage pozyskuje dzienniki diagnostyczne odczytu, zapisu i usuwania żądań do usługi Blob storage na potrzeby wykrywania zagrożeń. Aby zbadać alertów z zaawansowanej ochrony przed zagrożeniami, można wyświetlić działania magazynu powiązanych korzystania z rejestrowania analizy magazynu. Aby uzyskać więcej informacji, zobacz instrukcje [skonfigurować rejestrowanie dla usługi Storage Analytics](storage-monitor-storage-account.md#configure-logging).

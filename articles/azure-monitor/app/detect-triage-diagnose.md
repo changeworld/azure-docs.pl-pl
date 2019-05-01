@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: overview
 ms.date: 09/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 45824ba93e86622b1bbd92aae01f18f89bee6adf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 24523a7b244b6dee0e240291b7187e38d82a2e08
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60795349"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572900"
 ---
 # <a name="overview-of-application-insights-for-devops"></a>Omówienie usługi Azure Application Insights dla metodyki DevOps
 
@@ -182,7 +182,7 @@ Diagnostyka to nie to samo co debugowanie. Zanim zaczniesz przeglądać kod, mus
 
 ![Wykresy niepowodzenia zależności i czasu trwania wywołań do zależności](./media/detect-triage-diagnose/11-dependencies.png)
 
-Wolne działanie zależności czasem jest związane z problemami geolokalizacji. Fabrikam Bank korzysta z maszyn wirtualnych platformy Azure i okazało się, że nieumyślnie zlokalizowano serwer internetowy oraz serwer konta w różnych krajach. Osiągnięto znaczną poprawę, migrując jeden z nich.
+Wolne działanie zależności czasem jest związane z problemami geolokalizacji. Fabrikam Bank korzysta z maszyn wirtualnych platformy Azure i wykryte, że ma przypadkowo się one zlokalizowano serwer internetowy oraz serwer konta w różnych krajach/regionach. Osiągnięto znaczną poprawę, migrując jeden z nich.
 
 **Co zrobiliśmy?** Jeśli wydaje się, że problem nie jest kwestią zależności i nie zawsze występował, został prawdopodobnie wywołany przez niedawną zmianę. Perspektywa historyczna, którą zapewniają wykresy metryk i zdarzeń, ułatwia odnalezienie korelacji pomiędzy gwałtownymi zmianami a wdrożeniami. To zawęża obszar poszukiwań przyczyny problemu. Aby określić, które wiersze w kodzie aplikacji spowodowały spowolnienie działania, należy włączyć narzędzie Application Insights Profiler. Zapoznaj się z artykułem [Profiling live Azure web apps with Application Insights](./../../azure-monitor/app/profiler.md) (Profilowanie aktywnych aplikacji internetowych platformy Azure za pomocą usługi Application Insights). Po włączeniu narzędzia Profiler zostanie wyświetlony ślad podobny do widocznego poniżej. W tym przykładzie można łatwo zauważyć, że to metoda *GetStorageTableData* spowodowała problem.  
 

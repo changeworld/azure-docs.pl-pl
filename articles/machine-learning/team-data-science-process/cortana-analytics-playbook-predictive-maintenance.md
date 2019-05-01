@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 547b6a629677830b6f37883a4be835c12a62e599
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f0faad91e9e3ff9384dcae57ed27c21fa21946b5
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60234013"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64573771"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Przewodnik sztucznej Inteligencji platformy Azure dla rozwiązania do konserwacji zapobiegawczej
 
@@ -92,7 +92,7 @@ Ta sekcja koncentruje się na zbiór przypadki użycia program PdM w branżach, 
 |**Finanse** |                         |
 |_Uszkodzenie_ jest to powszechny problem w branży bankowości. Problem polega na tym zgłoszenia prawdopodobieństwo, że ATM środków pieniężnych wycofania transakcji zostanie przerwane z powodu błędu zakleszczenie lub części dokument rozdzielacz środków pieniężnych. Oparte na prognozy błędów transakcji, bankomatami może być obsługiwany aktywnie aby zapobiec występowaniu błędów.| A nie zezwolić na maszynę aby zakończyć się niepowodzeniem przy użyciu transakcji w połowie drogi, pożądane alternatywą jest program maszyny do odmowy usługi oparte na prognozowania.|
 |**Energii** |                          |
-|_Błędy turbiny wiatru_: Turbiny wiatru są źródłem główny energii w krajach przyjazne i obejmują wysokich kosztów kapitałowych. Kluczowym czynnikiem wiatru turbiny jest mechanicznych generator. jego uszkodzenia renderuje turbiny nieefektywne. Jest również bardzo drogie do naprawienia.|Prognozowanie kluczowe wskaźniki wydajności, takich jak MTTF (średniego czasu awarii) może pomóc firmom energetycznym zapobiec błędom turbiny i upewnij się, minimalnym czasem przestojów. Prawdopodobieństwa niepowodzeń informuje pracowników technicznych, aby monitorować turbiny, które mogą wkrótce się nie powieść i planowanie systemów opartych na czas konserwacji. Modele predykcyjne zapewniają wgląd w różne czynniki wpływające na błędy, co pomaga techników lepiej zrozumieć głównych przyczyn problemów.|
+|_Błędy turbiny wiatru_: Turbiny wiatru są źródłem główny energii w przyjazne krajów/regionów i obejmują wysokich kosztów kapitałowych. Kluczowym czynnikiem wiatru turbiny jest mechanicznych generator. jego uszkodzenia renderuje turbiny nieefektywne. Jest również bardzo drogie do naprawienia.|Prognozowanie kluczowe wskaźniki wydajności, takich jak MTTF (średniego czasu awarii) może pomóc firmom energetycznym zapobiec błędom turbiny i upewnij się, minimalnym czasem przestojów. Prawdopodobieństwa niepowodzeń informuje pracowników technicznych, aby monitorować turbiny, które mogą wkrótce się nie powieść i planowanie systemów opartych na czas konserwacji. Modele predykcyjne zapewniają wgląd w różne czynniki wpływające na błędy, co pomaga techników lepiej zrozumieć głównych przyczyn problemów.|
 |_Błędy wyłącznik_: Dystrybucja energii elektrycznej do odporności domów i firm wymaga linie zasilania mają działać przez cały czas, aby zagwarantować dostarczanie energii. Wyłączniki pomóc ograniczyć lub uniknąć uszkodzenia power warunki pogodowe wierszy podczas przeciążenie lub niepożądane. W tym miejscu problem biznesowy jest przewiduje awarie wyłącznika.| Program PdM rozwiązania pomagają obniżenie kosztów napraw i zwiększenie cyklem życia urządzeń, takich jak wyłączniki. Pomagają poprawić jakość sieci zasilania, zmniejszając nieoczekiwanych awarii i przerw w działaniu usług.|
 |**Transport i logistyka** |    |
 |_Błędy drzwi elevator_: Windy dużych firm obsługi pełnego stosu dla milionów funkcjonalności windy na całym świecie. Windy bezpieczeństwa, niezawodności i czas pracy to główne kwestie dla swoich klientów. Te firmy śledzić te i różnych innych atrybutów za pośrednictwem czujników, aby pomóc im dzięki naprawcze i prewencyjnej konserwacji. W elevator najczęściej występujący problem klienta działa poprawnie drzwi elevator. Problem biznesowy w tym przypadku jest zapewnienie bazy wiedzy knowledge base predykcyjna aplikacja która przewiduje się, że powoduje, że ryzyko błędów drzwi biblioteki.| Windy są inwestycji kapitałowych dla potencjalnie czas 20 – 30 roku. Dlatego może być wysoce konkurencyjnych; każdej potencjalnej sprzedaży Dlatego do obsługi i pomocy technicznej oczekują. Konserwacji predykcyjnej można zapewnić tym firmom z przewagę nad ich konkurentów w swoich produktach i oferty usług.|

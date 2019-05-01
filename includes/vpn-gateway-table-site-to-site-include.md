@@ -5,20 +5,20 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 04/19/2018
+ms.date: 04/26/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 06809f7afb318c358ef958b1ffd21844ddfa4738
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 7238138c8a8a66c974e160a5beda45c8a464a4f2
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31805288"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64929428"
 ---
 | **Model/metoda wdrażania** | **Azure Portal** | **Program PowerShell** | **Interfejs wiersza polecenia platformy Azure** |
 | --- | --- | --- | --- |
-| Resource Manager |[Artykuł](../articles/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)<br>[Artykuł+](../articles/vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md) |[Artykuł](../articles/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md) | [Artykuł](../articles/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md) |
-| Wdrożenie klasyczne |[Artykuł ** ](../articles/vpn-gateway/vpn-gateway-howto-site-to-site-classic-portal.md) |[Artykuł+](../articles/vpn-gateway/vpn-gateway-multi-site.md) | Nieobsługiwane |
+| Resource Manager |[Samouczek](../articles/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)<br>[Samouczek +](../articles/vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md) |[Samouczek](../articles/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md) | [Samouczek](../articles/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md) |
+| Wdrożenie klasyczne |[Samouczek **](../articles/vpn-gateway/vpn-gateway-howto-site-to-site-classic-portal.md) |[Samouczek +](../articles/vpn-gateway/vpn-gateway-multi-site.md) | Nieobsługiwane |
 
 ( ** ) oznacza, że ta metoda zawiera kroki, które wymagają programu PowerShell.
 

@@ -1,6 +1,6 @@
 ---
-title: Przesyłanie strumieniowe punktów końcowych w usłudze Azure Media Services | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera wyjaśnienie, co to są punkty końcowe przesyłania strumieniowego i jak są one używane przez usługi Azure Media Services.
+title: Przesyłanie strumieniowe punktów końcowych (źródło) w usłudze Azure Media Services | Dokumentacja firmy Microsoft
+description: W usłudze Azure Media Services punktu końcowego przesyłania strumieniowego (źródło) reprezentuje dynamiczne tworzenie pakietów i przesyłania strumieniowego usługi, która umożliwia dostarczanie zawartości bezpośrednio do aplikacji odtwarzacza klienta lub aby Content Delivery Network (CDN) w celu dalszego rozpowszechniania.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,18 +9,20 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/21/2019
+ms.date: 04/27/2019
 ms.author: juliako
-ms.openlocfilehash: 8b6deadca610916a10f719d715fe6a17e29148bb
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 1b29e75531c9e24d2f296442d528a28a23ffa947
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62125427"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64867610"
 ---
-# <a name="streaming-endpoints"></a>Punkty końcowe przesyłania strumieniowego
+# <a name="streaming-endpoints-origin"></a>Punkty końcowe przesyłania strumieniowego (źródła)
 
-W programie Microsoft Azure Media Services (AMS), [punkty końcowe przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streamingendpoints) jednostki reprezentuje usługę przesyłania strumieniowego, który może dostarczać zawartość bezpośrednio do aplikacji odtwarzacza klienta lub dalsze do Content Delivery Network (CDN) dla Dystrybucja. Strumień wychodzący, z **punkt końcowy przesyłania strumieniowego** usługa może być strumień na żywo lub element zawartości wideo na żądanie w ramach konta usługi Media Services. Po utworzeniu konta usługi Media Services, **domyślne** punkt końcowy przesyłania strumieniowego zostanie utworzony w stanie zatrzymania. Nie można usunąć **domyślne** punkt końcowy przesyłania strumieniowego. Dodatkowe punkty końcowe przesyłania strumieniowego mogą być tworzone w ramach konta. 
+W usłudze Microsoft Azure Media Services [punkt końcowy przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streamingendpoints) reprezentuje dynamiczny (just-in-time) pakowania i pochodzenia usługę która umożliwia dostarczanie zawartości na żywo i na żądanie bezpośrednio do aplikacji odtwarzacza klienta, przy użyciu jednej z wspólnych protokołów przesyłania strumieniowego multimediów (HLS lub DASH). Ponadto **punkt końcowy przesyłania strumieniowego** zapewnia szyfrowania dynamicznego (just-in-time) do branży protokołów DRM.
+
+Po utworzeniu konta usługi Media Services, **domyślne** punkt końcowy przesyłania strumieniowego zostanie utworzony w stanie zatrzymania. Nie można usunąć **domyślne** punkt końcowy przesyłania strumieniowego. Można utworzyć dodatkowe punkty końcowe przesyłania strumieniowego na koncie (zobacz [przydziały i ograniczenia](limits-quotas-constraints.md)). 
 
 > [!NOTE]
 > Aby rozpocząć przesyłanie strumieniowe filmów wideo, wówczas musisz uruchomić **punkt końcowy przesyłania strumieniowego** z którego chcesz strumieniowo przesyłać wideo. 
@@ -35,33 +37,37 @@ Aby uzyskać wszystkie dodatkowe punkty końcowe: `{EndpointName}-{AccountName}-
 
 ## <a name="types"></a>Typy  
 
-Istnieją dwa typy **punktów końcowych przesyłania strumieniowego**: **Standardowy** i **Premium**. Typ jest zdefiniowany przez liczbę jednostek skalowania (`scaleUnits`) możesz przydzielić dla punktu końcowego przesyłania strumieniowego. 
+Istnieją dwa typy **punktów końcowych przesyłania strumieniowego**: **Standardowa** (wersja zapoznawcza) i **Premium**. Typ jest zdefiniowany przez liczbę jednostek skalowania (`scaleUnits`) możesz przydzielić dla punktu końcowego przesyłania strumieniowego. 
 
 Tabela zawiera opis typów:  
 
 |Type|Jednostki skalowania|Opis|
 |--------|--------|--------|  
-|**Standardowy punkt końcowy przesyłania strumieniowego** (zalecany)|0|Domyślny punkt końcowy przesyłania strumieniowego jest **standardowa** typu, ale można ją zmienić na typ Premium.<br/> Standardowy typ jest to zalecana opcja, do niemal wszystkich scenariuszy przesyłania strumieniowego i publiczność każdej wielkości. Typ **Standardowy** automatycznie skaluje przepustowość wychodzącą. Przepływność z tego typu punktu końcowego przesyłania strumieniowego jest do 600 MB/s. Wideo fragmenty są przechowywane w usłudze CDN nie należy używać przepustowości punkt końcowy przesyłania strumieniowego.<br/>W przypadku klientów z bardzo dużymi wymaganiami usługa Media Services oferuje punkty końcowe przesyłania strumieniowego **Premium**, które umożliwiają skalowanie pojemności w poziomie dla największych odbiorców w Internecie. Jeśli spodziewasz się dużej liczby odbiorców i osoby przeglądające współbieżnych, skontaktuj się z nami pod amsstreaming\@microsoft.com, aby uzyskać wskazówki dotyczące tego, czy należy przenieść do **Premium** typu. |
-|**Punkt końcowy przesyłania strumieniowego Premium**|>0|Punkty końcowe przesyłania strumieniowego **Premium** są odpowiednie w przypadku zaawansowanych obciążeń, ponieważ zapewniają dedykowaną i skalowalną pojemność przepustowości. Przenieś do **Premium** typu, dostosowując `scaleUnits`. `scaleUnits` umożliwiają pojemności dedykowanej ruch wychodzący, który można zakupić według przyrostów 200 MB/s. W przypadku korzystania z typu **Premium** każda włączona jednostka zapewnia dodatkową przepustowość w aplikacji. |
- 
-## <a name="comparing-streaming-types"></a>Porównywanie typów przesyłania strumieniowego
+|**Standardowa**|0|Domyślny punkt końcowy przesyłania strumieniowego jest **standardowa** wpisz, można zmienić typu Premium, dostosowując `scaleUnits`.|
+|**Premium**|>0|**Premium** punkty końcowe przesyłania strumieniowego są odpowiednie dla zaawansowanych obciążeń i zapewniają dedykowaną i skalowalną przepustowość. Przenieś do **Premium** typu, dostosowując `scaleUnits` (jednostek przesyłania strumieniowego). `scaleUnits` umożliwiają pojemności dedykowanej ruch wychodzący, który można zakupić według przyrostów 200 MB/s. W przypadku korzystania z typu **Premium** każda włączona jednostka zapewnia dodatkową przepustowość w aplikacji. |
 
-### <a name="features"></a>Funkcje
+> [!NOTE]
+> Klienci, którzy chcą do dostarczania zawartości do dużej liczby odbiorców w Internecie zalecamy, aby włączyć usługi CDN w punkcie końcowym przesyłania strumieniowego.
+
+Aby uzyskać informacje o umowie SLA, zobacz [cennik i umowy SLA](https://azure.microsoft.com/pricing/details/media-services/).
+
+## <a name="comparing-streaming-types"></a>Porównywanie typów przesyłania strumieniowego
 
 Cecha|Standardowa (Standard)|Premium
 ---|---|---
-Bezpłatne pierwsze 15 dni| Yes |Nie
-Przepływność |Do 600 MB/s, gdy nie jest używana sieć CDN systemu Azure. Skaluje się przy użyciu usługi CDN.|200 MB/s dla przesyłania strumieniowego (SU) jednostki. Skaluje się przy użyciu usługi CDN.
+Pierwsze 15 dni wolne <sup>1</sup>| Yes |Nie
+Przepływność |Do 600 MB/s i zapewnia znacznie większą przepływność skuteczne stosowania sieci CDN.|200 MB/s dla przesyłania strumieniowego (SU) jednostki. Zapewnia znacznie większą przepływność skuteczne, stosowania sieci CDN.
 CDN|Usługa Azure CDN, innej sieci CDN lub nie sieci CDN.|Usługa Azure CDN, innej sieci CDN lub nie sieci CDN.
 Opłaty są naliczane proporcjonalnie| Codziennie|Codziennie
 Szyfrowanie dynamiczne|Yes|Yes
 Dynamiczne tworzenie pakietów|Yes|Yes
-Skalowanie|Automatyczne jest skalowany w górę docelowe przepływności.|Dodatkowe jednostki przesyłania strumieniowego
-Host filtrowanie/G20/Custom IP <sup>1</sup>|Yes|Yes
+Skalowanie|Automatyczne jest skalowany w górę docelowe przepływności.|Dodatkowe SUs
+Host filtrowanie/G20/Custom IP <sup>2</sup>|Yes|Yes
 Pobierania progresywnego|Yes|Yes
-Zalecane użycie |Zalecane w przypadku większość przesyłania strumieniowego scenariuszy.|Użycie Professional.<br/>Jeśli Twoim zdaniem mogą mieć potrzeb poza Standard. Skontaktuj się z nami (amsstreaming@microsoft.com) Jeśli oczekujesz, rozmiar współbieżnych odbiorców większych niż 50 000 osób przeglądających.
+Zalecane użycie |Zalecane w przypadku większość przesyłania strumieniowego scenariuszy.|Użycie Professional.
 
-<sup>1</sup> warunkiem bezpośrednio na punkt końcowy przesyłania strumieniowego nie włączono usługę CDN w punkcie końcowym.
+<sup>1</sup> bezpłatnej wersji próbnej ma zastosowanie tylko do konta usług media nowo utworzony i domyślnego punktu końcowego przesyłania strumieniowego.<br/>
+<sup>2</sup> warunkiem bezpośrednio na punkt końcowy przesyłania strumieniowego nie włączono usługę CDN w punkcie końcowym.<br/>
 
 ## <a name="properties"></a>Właściwości 
 

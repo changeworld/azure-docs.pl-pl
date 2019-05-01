@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 04/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2a5fb822a84792cec059aa6c78b66b3a628f25af
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 3de444d509684f0b4227abe91ec3c967f2bf8f03
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60611295"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926281"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Usługa Azure Disk Encryption dla maszyn wirtualnych IaaS — często zadawane pytania
 
@@ -162,7 +162,7 @@ Woluminy XFS są obsługiwane w przypadku szyfrowania dysku danych tylko z Encry
 
 ## <a name="can-i-backup-and-restore-an-encrypted-vm"></a>Czy mogę utworzyć kopię zapasową i przywrócić zaszyfrowanej maszyny Wirtualnej? 
 
-Usługa Azure Backup udostępnia mechanizm do tworzenia kopii zapasowych i przywracanie zaszyfrowanych maszyn wirtualnych w ramach tej samej subskrypcji i regionu.  Aby uzyskać instrukcje, zobacz [kopii zapasowej i przywracanie zaszyfrowanych maszyn wirtualnych za pomocą usługi Azure Backup](https://docs.microsoft.com/en-us/azure/backup/backup-azure-vms-encryption).  Przywracanie zaszyfrowanych maszyn wirtualnych do innego regionu nie jest obecnie obsługiwane.  
+Usługa Azure Backup udostępnia mechanizm do tworzenia kopii zapasowych i przywracanie zaszyfrowanych maszyn wirtualnych w ramach tej samej subskrypcji i regionu.  Aby uzyskać instrukcje, zobacz [kopii zapasowej i przywracanie zaszyfrowanych maszyn wirtualnych za pomocą usługi Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption).  Przywracanie zaszyfrowanych maszyn wirtualnych do innego regionu nie jest obecnie obsługiwane.  
 
 ## <a name="where-can-i-go-to-ask-questions-or-provide-feedback"></a>Gdzie można zadawać pytania lub opinię?
 

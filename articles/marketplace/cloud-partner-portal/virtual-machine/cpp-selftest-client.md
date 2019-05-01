@@ -1,25 +1,18 @@
 ---
-title: Samodzielnie przetestować klienta w celu wstępnego zweryfikowania maszyny wirtualnej — Portal Azure Marketplace | Dokumentacja firmy Microsoft
+title: Samodzielnie przetestować klienta w celu wstępnego zweryfikowania maszyny wirtualnej | Portal Azure Marketplace
 description: Jak utworzyć samodzielnie przetestować klienta wstępnie weryfikowania obraz maszyny wirtualnej w portalu Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal, Virtual Machine
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/23/2018
-ms.author: pbutlerm
-ms.openlocfilehash: ae01b0fb088035240e670c16d4d457d8abda1bfa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: pabutler
+ms.openlocfilehash: 117249feea04381b34f8fc1d95f77c2c1a567dba
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60847088"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938721"
 ---
 # <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>Tworzenie testu automatycznego klienta w celu wstępnego zweryfikowania obrazów maszyn wirtualnych platformy Azure
 

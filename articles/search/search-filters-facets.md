@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/13/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 8793f6f4d135d6099541d24aa5f5cfc0b6c21b30
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: ec87bdadc0e7f77cdeebb16403758026fd956c30
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61290072"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939859"
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-search"></a>Jak utworzyć filtr zestawu reguł w usłudze Azure Search 
 
@@ -35,7 +35,7 @@ Jesteś nowym użytkownikiem aspektowa nawigacji i chcesz więcej szczegółów?
 
 ## <a name="choose-fields"></a>Wybierz pola
 
-Aspektami może zostać obliczona za pośrednictwem pojedynczej wartości pola, jak również kolekcje. Pola, które najlepiej działać w nawigacji aspektowej ma niski kardynalności: niewielkiej liczby różne wartości, które powtarzają się w całym dokumentów w głównej części usługi wyszukiwania (na przykład lista kolorów, krajów lub firmowe). 
+Aspektami może zostać obliczona za pośrednictwem pojedynczej wartości pola, jak również kolekcje. Pola, które najlepiej działać w nawigacji aspektowej ma niski kardynalności: niewielkiej liczby różne wartości, które powtarzają się w całym dokumentów w głównej części usługi wyszukiwania (na przykład lista kolorów, kraje/regiony lub firmowe). 
 
 Wielopoziomowe jest włączona na podstawie pól pola podczas tworzenia indeksu, ustawiając następujące atrybuty na wartość TRUE: `filterable`, `facetable`. Aspekty mogą być tworzone tylko na podstawie pól z możliwością filtrowania.
 

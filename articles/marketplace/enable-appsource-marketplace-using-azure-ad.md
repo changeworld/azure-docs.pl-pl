@@ -2,24 +2,18 @@
 title: Włącz listę Microsoft AppSource i portalu Azure Marketplace przy użyciu usługi Azure Active Directory | Azure
 description: Włącz typ oferty przy użyciu usługi Azure Active Directory w portalu Azure Marketplace i AppSource dla wydawcy aplikacji i usługi.
 services: Azure, AppSource, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: qianw211
 manager: pabutler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: qianw211
-ms.openlocfilehash: 247a45a38d732ace0455c6ca2ebbd5c44c384004
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 981d9427dc8407c7300f01c941e39ba9723d53a8
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60734256"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938082"
 ---
 # <a name="enable-an-appsource-and-marketplace-listing-by-using-azure-active-directory"></a>Włączanie możliwości publikowania ofert w witrynach AppSource i Marketplace z użyciem usługi Azure Active Directory
 

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 11e92b4c6b8799cde489369a202f8f7c8c05ca6c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 964e6235923402814879fe59a204985b8aaac2b4
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60568512"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64573823"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>Samouczek: tworzenie pierwszej fabryki danych przy użyciu witryny Azure Portal
 > [!div class="op_single_selector"]
@@ -209,16 +209,16 @@ W tym kroku opisano tworzenie zestawów danych do reprezentowania danych wejści
     ```
     Poniższa tabela zawiera opis właściwości JSON użytych w tym fragmencie kodu.
 
-   | Właściwość | Opis |
-   |:--- |:--- |
-   | type |Właściwość type jest ustawiona na wartość **AzureBlob**, ponieważ dane znajdują się w magazynie obiektów blob. |
-   | linkedServiceName |Odnosi się do utworzonego wcześniej elementu AzureStorageLinkedService. |
-   | folderPath | Określa kontener obiektów blob oraz folder, który zawiera wejściowe obiekty blob. | 
-   | fileName |Ta właściwość jest opcjonalna. Jeśli pominiesz tę właściwość, zostaną wybrane wszystkie pliki z folderu folderPath. W tym samouczku zostanie przetworzony tylko plik input.log. |
-   | type |Pliki dziennika są w formacie tekstowym, więc używana jest wartość **TextFormat**. |
-   | columnDelimiter |Kolumny w plikach dziennika są rozdzielane przecinkami (`,`). |
-   | frequency/interval |Właściwość frequency (częstotliwość) jest ustawiona na wartość **Miesiąc**, a wartość interwału wynosi **1**, co oznacza, że wycinki wejściowe są dostępne co miesiąc. |
-   | external | Ta właściwość ma wartość **true** (prawda), jeśli dane wejściowe nie są generowane przez ten potok. W tym samouczku plik input.log nie jest generowany w tym potoku, dlatego możemy ustawić właściwość na **true**. |
+   | Właściwość | Zagnieżdżony w | Opis |
+   |:--- |:--- |:--- |
+   | type | properties |Właściwość type jest ustawiona na wartość **AzureBlob**, ponieważ dane znajdują się w magazynie obiektów blob. |
+   | linkedServiceName | format |Odnosi się do utworzonego wcześniej elementu AzureStorageLinkedService. |
+   | folderPath | typeProperties | Określa kontener obiektów blob oraz folder, który zawiera wejściowe obiekty blob. | 
+   | fileName | typeProperties |Ta właściwość jest opcjonalna. Jeśli pominiesz tę właściwość, zostaną wybrane wszystkie pliki z folderu folderPath. W tym samouczku zostanie przetworzony tylko plik input.log. |
+   | type | format |Pliki dziennika są w formacie tekstowym, więc używana jest wartość **TextFormat**. |
+   | columnDelimiter | format |Kolumny w plikach dziennika są rozdzielane przecinkami (`,`). |
+   | frequency/interval | availability |Właściwość frequency (częstotliwość) jest ustawiona na wartość **Miesiąc**, a wartość interwału wynosi **1**, co oznacza, że wycinki wejściowe są dostępne co miesiąc. |
+   | external | properties | Ta właściwość ma wartość **true** (prawda), jeśli dane wejściowe nie są generowane przez ten potok. W tym samouczku plik input.log nie jest generowany w tym potoku, dlatego możemy ustawić właściwość na **true**. |
 
     Aby uzyskać więcej informacji o tych właściwościach JSON, zobacz [Łącznik obiektu blob platformy Azure](data-factory-azure-blob-connector.md#dataset-properties).
 

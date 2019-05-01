@@ -1,19 +1,19 @@
 ---
-title: Zamawianie urządzenia Microsoft Azure Data Box | Microsoft Docs
+title: Samouczek zamówienie urządzenia Azure Data Box | Dokumentacja firmy Microsoft
 description: Informacje o wymaganiach wstępnych dotyczących wdrażania oraz sposobie zamawiania urządzenia Azure Data Box
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 03/05/2019
+ms.date: 04/23/2019
 ms.author: alkohli
-ms.openlocfilehash: 07ccd2aaec6b2325d6eef09a466a5d0707836b4b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 05d522550b96813c6b8326d83f09d7028466c835
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57834272"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926213"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Samouczek: zamawianie urządzenia Azure Data Box
 
@@ -69,7 +69,7 @@ Wykonaj poniższe czynności w witrynie Azure Portal, aby zamówić urządzenie.
     |Kraj źródłowy     |   Wybierz kraj, w którym aktualnie znajdują się dane.         |
     |Docelowy region platformy Azure     |     Wybierz region platformy Azure, do którego chcesz przenieść dane.        |
 
-5. Wybierz pozycję **Data Box**. Maksymalnej pojemności do wykorzystania dla pojedynczego zamówienia jest 786 TB. W przypadku większych ilości danych możesz utworzyć wiele zamówień.
+5. Wybierz pozycję **Data Box**. Maksymalnej pojemności do wykorzystania dla pojedynczego zamówienia to 80 TB. W przypadku większych ilości danych możesz utworzyć wiele zamówień.
 
       [![Wybieranie opcji 1 urządzenia Data Box](media/data-box-deploy-ordered/select-data-box-option1.png)](media/data-box-deploy-ordered/select-data-box-option1.png#lightbox)
 

@@ -2,17 +2,17 @@
 title: Omówienie konfiguracji usługi Azure Application Gateway
 description: W tym artykule opisano sposób konfigurowania składników usługi Azure Application Gateway
 services: application-gateway
-author: abshamsft
+author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 4/30/2019
 ms.author: absha
-ms.openlocfilehash: 4b8e04babfffaf49d3719d8a7e90af16598814f4
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 5bfd1f930c190e717e435856f424f0cdf80deb2c
+ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59998910"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64946809"
 ---
 # <a name="application-gateway-configuration-overview"></a>Omówienie konfiguracji bramy aplikacji
 
@@ -71,7 +71,7 @@ W tym scenariuszu należy używać sieciowych grup zabezpieczeń w podsieci bram
 
 Dla obiektu SKU v1 trasy zdefiniowane przez użytkownika (Udr) są obsługiwane w podsieci bramy aplikacji, tak długo, jak nie zmieniają komunikacji end-to-end żądania/odpowiedzi. Można na przykład skonfigurować trasy zdefiniowanej przez użytkownika w podsieci bramy Application Gateway wskaż urządzenie zapory dla inspekcja pakietów. Jednak należy się upewnić, pakiet dotrzeć do jego przeznaczenia po kontroli. Niewykonanie tej czynności może spowodować nieprawidłowe sondy kondycji lub zachowania routingu ruchu. Obejmuje to zapamiętane trasy lub domyślne trasy 0.0.0.0/0, które są propagowane przez usługę Azure ExpressRoute lub bram sieci VPN w sieci wirtualnej.
 
-Dla jednostki SKU w wersji 2 i tras zdefiniowanych przez użytkownika nie są obsługiwane w podsieci bramy aplikacji. Aby uzyskać więcej informacji, zobacz [skalowania automatycznego i nadmiarowości strefy dla usługi Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#known-issues-and-limitations).
+Dla jednostki SKU w wersji 2 i tras zdefiniowanych przez użytkownika nie są obsługiwane w podsieci bramy aplikacji. Aby uzyskać więcej informacji, zobacz [jednostki SKU w wersji 2 usługi Azure Application Gateway](application-gateway-autoscaling-zone-redundant.md#differences-with-v1-sku).
 
 > [!NOTE]
 > Przy użyciu tras zdefiniowanych przez użytkownika w podsieci bramy aplikacji powoduje, że stan kondycji w [widoku kondycji zaplecza](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health) aby pojawiało się jako "Nieznane". Powoduje generowanie dzienniki bramy aplikacji i metryki, aby zakończyć się niepowodzeniem. Zaleca się, że nie używasz tras zdefiniowanych przez użytkownika w podsieci bramy aplikacji tak, aby wyświetlić kondycja zaplecza, dzienniki i metryki.
@@ -84,7 +84,7 @@ Publiczny adres IP nie jest wymagana dla wewnętrznego punktu końcowego, który
 
 Tylko 1 publicznego adresu IP lub 1 prywatny adres IP jest obsługiwany. Podczas tworzenia bramy aplikacji możesz wybrać adres IP frontonu.
 
-- Dla publicznego adresu IP można utworzyć nowego publicznego adresu IP lub użyć istniejącego publicznego adresu IP w tej samej lokalizacji co usługa application gateway. Jeśli tworzysz nowy publiczny adres IP, należy wybrać typ adresu IP (statyczne lub dynamiczne) nie można zmienić później. Aby uzyskać więcej informacji, zobacz [statycznego i dynamicznego publicznego adresu IP](https://docs.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-vs-dynamic-public-ip-address).
+- Dla publicznego adresu IP można utworzyć nowego publicznego adresu IP lub użyć istniejącego publicznego adresu IP w tej samej lokalizacji co usługa application gateway. Jeśli tworzysz nowy publiczny adres IP, należy wybrać typ adresu IP (statyczne lub dynamiczne) nie można zmienić później. Aby uzyskać więcej informacji, zobacz [statycznego i dynamicznego publicznego adresu IP](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#static-vs-dynamic-public-ip-address).
 
 - Aby uzyskać prywatny adres IP można określić prywatny adres IP z podsieci, w którym zostanie utworzona brama aplikacji. Jeśli nie zostanie określony, dowolnego adresu IP jest wybrany automatycznie z podsieci. Aby uzyskać więcej informacji, zobacz [Tworzenie bramy aplikacji przy użyciu wewnętrznego modułu równoważenia obciążenia](https://docs.microsoft.com/azure/application-gateway/application-gateway-ilb-arm).
 

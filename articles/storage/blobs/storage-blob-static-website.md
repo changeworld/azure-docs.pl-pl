@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 02/25/2019
+ms.date: 04/29/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 67d3dcad4ec73ee09ec40282b2fbdea945daefe4
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 21944c62f09518e20619313cd6ac28fb2ad600c7
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62122680"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925280"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Hostowania statycznej witryny internetowej w usłudze Azure Storage
 Konta magazynu GPv2 platformy Azure umożliwiają obsługę zawartości statycznej (HTML, CSS, JavaScript i plików obrazów) bezpośrednio z kontenera magazynu o nazwie *$web*. Korzystając z zalet hosting w usłudze Azure Storage pozwala na używanie architektur bez użycia serwera, w tym [usługi Azure Functions](/azure/azure-functions/functions-overview) i inne usługi PaaS.
@@ -52,16 +52,21 @@ Wybrane domyślnej nazwy pliku jest używana w katalogu głównym i wszystkich p
 
 ## <a name="cdn-and-ssl-support"></a>Obsługa sieci CDN i protokołu SSL
 
-Zapewnienie swoje statycznej witryny sieci Web pliki dostępne za pośrednictwem protokołu HTTPS, zobacz [dostęp do obiektów blob z zastosowaniem domen niestandardowych przy użyciu protokołu HTTPS przy użyciu usługi Azure CDN](storage-https-custom-domain-cdn.md). W ramach tego procesu, musisz *punktu sieci CDN w punkcie końcowym sieci web* w przeciwieństwie do punktu końcowego obiektu blob. Może być konieczne Poczekaj kilka minut, zanim zawartość jest widoczna, zgodnie z konfiguracją sieci CDN nie jest wykonywane natychmiast.
+Aby udostępnić pliki statycznej witryny internetowej za pośrednictwem protokołu HTTPS i domeną niestandardową, na których, zobacz [dostęp do obiektów blob z zastosowaniem domen niestandardowych przy użyciu protokołu HTTPS przy użyciu usługi Azure CDN](storage-https-custom-domain-cdn.md). W ramach tego procesu, musisz *punktu sieci CDN w punkcie końcowym sieci web* w przeciwieństwie do punktu końcowego obiektu blob. Może być konieczne Poczekaj kilka minut, zanim zawartość jest widoczna, zgodnie z konfiguracją sieci CDN nie jest wykonywane natychmiast.
 
 Po zaktualizowaniu statycznej witryny internetowej, należy wyczyścić buforowanej zawartości na serwerach granicznych usługi CDN według przeczyszczanie punktu końcowego usługi CDN. Aby uzyskać więcej informacji, zobacz [Przeczyszczanie punktu końcowego usługi Azure CDN](../../cdn/cdn-purge-endpoint.md).
+
+> [!NOTE]
+> Protokół HTTPS jest obsługiwany natywnie za pośrednictwem punktu końcowego sieci web konta. Użyj domen niestandardowych przy użyciu protokołu HTTPS wymaga użycia usługi Azure CDN w tej chwili. 
+>
+> Konto publicznego punktu końcowego sieci web przy użyciu protokołu HTTPS: `https://<ACCOUNT_NAME>.<ZONE_NAME>.web.core.windows.net/<FILE_NAME>`
 
 ## <a name="custom-domain-names"></a>Niestandardowe nazwy domen
 
 Możesz [Konfigurowanie niestandardowej nazwy domeny dla konta usługi Azure Storage](storage-custom-domain-name.md) udostępnić statycznej witryny internetowej przy użyciu domeny niestandardowej. Dla przyjrzeć się hosting domeny na [platformy Azure, zobacz Hostuj swoją domenę, w usłudze Azure DNS](../../dns/dns-delegate-domain-azure-dns.md).
 
 ## <a name="pricing"></a>Cennik
-Podano hostowania statycznej witryny internetowej bez ponoszenia dodatkowych kosztów. Aby uzyskać szczegółowe informacje na temat cen usługi Azure Blob Storage, zapoznaj się [stronie cennika usługi Azure Blob Storage](https://azure.microsoft.com/pricing/details/storage/blobs/).
+Włączanie hostowania statycznej witryny internetowej jest bezpłatne. Klienci są obciążani koszty magazynowania i operacje wykorzystywanych obiektu blob. Aby uzyskać szczegółowe informacje na temat cen usługi Azure Blob Storage, zapoznaj się [stronie cennika usługi Azure Blob Storage](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
 ## <a name="quickstart"></a>Szybki start
 
@@ -159,7 +164,10 @@ Nie, hostowania statycznej witryny internetowej jest dostępna tylko na kontach 
 Tak, nowy punkt końcowy web przestrzegają zasad sieci Wirtualnej i zapory, skonfigurowany dla konta magazynu.
 
 **Punkt końcowy sieci web jest uwzględniana wielkość liter?**  
-Tak, punkt końcowy sieci web jest rozróżniana wielkość liter, podobnie jak punkt końcowy obiektu blob. 
+Tak, punkt końcowy sieci web jest rozróżniana wielkość liter, podobnie jak punkt końcowy obiektu blob.
+
+**Punkt końcowy sieci web jest dostępna za pośrednictwem protokołów HTTP i HTTPS?**
+Tak, punkt końcowy sieci web jest dostępna za pośrednictwem protokołów HTTP i HTTPS. Jednak jeśli konto magazynu jest skonfigurowany do Wymaganie bezpiecznego transferu za pośrednictwem protokołu HTTPS, następnie użytkownicy mogą używać punktu końcowego HTTPS. Aby uzyskać więcej informacji, zobacz [Wymaganie bezpiecznego transferu w usłudze Azure Storage](../common/storage-require-secure-transfer.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Uzyskiwanie dostępu do obiektów blob z zastosowaniem domen niestandardowych przy użyciu protokołu HTTPS za pomocą sieci Azure CDN](storage-https-custom-domain-cdn.md)

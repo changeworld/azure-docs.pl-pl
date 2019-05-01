@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
 ms.author: suchiagicha
-ms.openlocfilehash: e4c698dc5aa8a07d09835adeac39db6ee35f720c
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 01430c40ec9fcf1af3a463f8f86d646d15b6dd49
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62123182"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925937"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Diagnostyka i monitorowanie wydajności dla wiarygodnych zdalna komunikacja usług
 Emituje ServiceRemoting niezawodne środowisko uruchomieniowe [liczniki wydajności](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx). Te zapewniają wgląd w jaki sposób działa ServiceRemoting i ułatwić rozwiązywanie problemów i monitorowania wydajności.
@@ -100,5 +100,5 @@ Gdy klient wywołuje metodę za pośrednictwem obiektu serwera proxy usługi, wy
 | Usługa Service Fabric |Średni czas serializacji odpowiedzi (milisekundy) |Czas trwania (w milisekundach), można serializować komunikatu odpowiedzi usługi na usługę przed odpowiedź jest wysyłana do klienta |
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Przykładowy kod](https://azure.microsoft.com/en-us/resources/samples/?service=service-fabric&sort=0)
+* [Przykładowy kod](https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0)
 * [EventSource dostawców w PerfView](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)

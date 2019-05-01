@@ -12,22 +12,22 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 7db796b33bab941f038afab1b80127aded50b54a
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: a8b77cea34344062c981d8f452094cffabe1e568
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000021"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572494"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>Integracja z potokiem ciągłej integracji/ciągłego wdrażania
 
-Możesz zwiększyć odporność aplikacji możliwość zdalnego nie będą mogli nawiązać połączenie konfiguracji aplikacji platformy Azure. Aby to zrobić, Utwórz pakiet bieżące dane konfiguracji do pliku, który jest wdrożony z aplikacją i ładowanie lokalnie podczas jego uruchamiania. Ta metoda gwarantuje, że Twoja aplikacja ma domyślne ustawienie wartości co najmniej. Te wartości są zastępowane przez wszystkie nowsze zmiany wprowadzone w konfiguracji sklepu z aplikacjami, gdy będzie ona dostępna.
+Aplikacja może przestać działać do uruchomienia, jeśli zależy od konfiguracji aplikacji platformy Azure i nie można przejść do niego. Możesz zwiększyć odporność aplikacji radzenia sobie z takich przypadkach jednak prawdopodobnie nie jest w stanie. Aby to zrobić, Utwórz pakiet bieżące dane konfiguracji do pliku, który jest wdrożony z aplikacją i ładowanie lokalnie podczas jego uruchamiania. Ta metoda gwarantuje, że Twoja aplikacja ma domyślne ustawienie wartości co najmniej. Te wartości są zastępowane przez wszystkie nowsze zmiany wprowadzone w konfiguracji sklepu z aplikacjami, gdy będzie ona dostępna.
 
 Za pomocą [wyeksportować](./howto-import-export-data.md#export-data) funkcję konfiguracji aplikacji platformy Azure, możesz zautomatyzować proces pobierania bieżące dane konfiguracji jako pojedynczy plik. Następnie osadź ten plik w kroku kompilacji lub wdrożenia ciągłej integracji i ciągłego wdrażania (CI/CD) potoku.
 
 Poniższy przykład pokazuje, jak konfiguracja aplikacji obejmują dane jako kompilację krok dla aplikacji sieci web, wprowadzona w Szybki Start. Przed kontynuowaniem należy zakończyć [tworzenie aplikacji platformy ASP.NET Core z konfiguracji aplikacji](./quickstart-aspnet-core-app.md) pierwszy.
 
-Wykonaj kroki w tym przewodniku Szybki Start, można użyć dowolnego edytora kodu. [Visual Studio Code](https://code.visualstudio.com/) jest doskonałą opcją dostępne w Windows, macOS i platformy Linux.
+Wykonaj kroki w tym samouczku, można użyć dowolnego edytora kodu. [Visual Studio Code](https://code.visualstudio.com/) jest doskonałą opcją dostępne w Windows, macOS i platformy Linux.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -48,7 +48,7 @@ Aby wykonać kompilację w chmurze, za pomocą usługi Azure DevOps na przykład
 
     Dodaj *ConnectionString* skojarzonych z Twoim sklepie z aplikacjami konfiguracji jako zmienną środowiskową.
 
-2. Otwórz plik Program.cs i zaktualizuj `CreateWebHostBuilder` metodę wyeksportowany plik JSON, wywołując `config.AddJsonFile()` metody.
+2. Otwórz *Program.cs*i zaktualizuj `CreateWebHostBuilder` metodę wyeksportowany plik JSON, wywołując `config.AddJsonFile()` metody.
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>

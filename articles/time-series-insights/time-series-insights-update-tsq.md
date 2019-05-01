@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7885473d029556e10663675a9886c7ea3b9c709c
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 0b1c43cb82d6dc2b7f0708dee8471f077befe349
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53555425"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64722162"
 ---
 # <a name="data-querying"></a>Wykonywanie zapytań dotyczących danych
 
@@ -75,11 +75,11 @@ Dostępne są następujące interfejsy API zapytań serii czasu:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Przeczytaj:
+- Dowiedz się więcej o [magazynu i transferu danych przychodzących](./time-series-insights-update-storage-ingress.md) w wersji zapoznawczej Azure czas serii szczegółowych informacji.
 
-- [Magazyn i ruch przychodzący usługi Azure Time Series Insights w wersji zapoznawczej](./time-series-insights-update-storage-ingress.md)
-- [Modelowanie danych](./time-series-insights-update-tsm.md)
-- [Najważniejsze wskazówki podczas wybierania Identyfikatora serii czasu](./time-series-insights-update-how-to-id.md)
+- Przeczytaj serii czasu Insights (wersja zapoznawcza) [modelowania danych](./time-series-insights-update-tsm.md) artykułu.
+
+- Odkryj [najważniejsze wskazówki podczas wybierania Identyfikatora serii czasu](./time-series-insights-update-how-to-id.md).
 
 <!-- Images -->
 [1]: media/v2-update-tsq/tsq.png

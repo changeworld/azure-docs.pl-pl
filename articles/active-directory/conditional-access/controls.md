@@ -18,12 +18,12 @@ ms.date: 03/23/2019
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a92d10f67533efc2f5893b012aefbcb92efee59a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: a5c6f1064d2d73ab3d99ca341cffd9b296723e97
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60411683"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64571111"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Jakie są mechanizmy kontroli dostępu w funkcji dostępu warunkowego usługi Azure Active Directory?
 
@@ -113,7 +113,7 @@ Użytkownik może wymagać w dzierżawie, aby wyrazić zgodę na warunki użytko
 
 ### <a name="custom-controls-preview"></a>Kontrolki niestandardowe (wersja zapoznawcza)
 
-Możesz utworzyć niestandardowe formanty dostępu warunkowego, które przekierować użytkowników do usługi zgodne w celu dalszego spełniają wymagania poza usługą Azure Active Directory. Dzięki temu można używać niektórych zewnętrznego uwierzytelniania wieloskładnikowego i dostawców weryfikacji do wymuszania zasad dostępu warunkowego lub tworzyć własne niestandardowe usługi. W celu spełnienia tego formantu, przeglądarki użytkownika jest przekierowywany do zewnętrznej usługi, wykonuje wszelkie wymagane uwierzytelnianie lub sprawdzania poprawności działania i jest następnie przekierowywane do usługi Azure Active Directory. Jeśli użytkownik został pomyślnie uwierzytelniony ani zweryfikowany, użytkownik będzie nadal w przepływ dostępu warunkowego. 
+Można dodać niestandardowe formanty dostępu warunkowego, które przekierować użytkowników do usługi zgodne w celu dalszego spełniają wymagania poza usługą Azure Active Directory. Dzięki temu można używać niektórych zewnętrznego uwierzytelniania wieloskładnikowego i dostawców weryfikacji do wymuszania wymagań dotyczących dostępu warunkowego. W celu spełnienia tego formantu, przeglądarki użytkownika jest przekierowywany do zewnętrznej usługi, wykonuje wszelkie wymagane uwierzytelnianie lub sprawdzania poprawności działania i jest następnie przekierowywane do usługi Azure Active Directory. Jeśli użytkownik został pomyślnie uwierzytelniony ani zweryfikowany, użytkownik będzie nadal w przepływ dostępu warunkowego. 
 
 ## <a name="custom-controls"></a>Formanty niestandardowe
 
@@ -137,6 +137,8 @@ Aby uzyskać więcej informacji na temat tych usług skontaktuj się bezpośredn
 ### <a name="creating-custom-controls"></a>Tworzenie niestandardowych formantów
 
 Aby utworzyć formant niestandardowy, najpierw skontaktuj się dostawcą, który chcesz wykorzystać. Każdy dostawca firm innych niż Microsoft ma swój własny proces i wymagania dotyczące Zarejestruj, subskrybowanie lub w przeciwnym razie stają się częścią usługi i wskazują, że chcesz zintegrować z dostępem warunkowym. W tym momencie dostawcę udostępni bloku danych w formacie JSON. Te dane umożliwia dostawcy i dostępu warunkowego współpracują ze sobą w dzierżawie, tworzy nowy formant i definiuje, jak dostęp warunkowy można stwierdzić, jeśli użytkownicy mają wykonane pomyślnie weryfikacji za pomocą dostawcy.
+
+Nie można użyć niestandardowych kontrolek, za pomocą usługi Identity Protection automation wymaganie uwierzytelniania wieloskładnikowego lub podniesienie poziomu ról w Privileged Identity Manager (PIM).
 
 Kopiowanie danych JSON, a następnie wklej go w polu tekstowym powiązane. Nie należy wprowadzać żadnych zmian za pomocą pliku JSON, chyba że jawnie zrozumieć zmiany, które wprowadzasz. Wprowadzania żadnych zmian może przerwać połączenie między dostawcą a firmą Microsoft i potencjalnie zablokować Ty i Twoi użytkownicy spoza Twojego konta.
 

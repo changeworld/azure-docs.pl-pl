@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/27/2019
+ms.date: 04/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26f3fe9c2483dda3b9350c110b2e8adf60dcd21e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: e2e783a7c34216624126946eef84f56977d4c049
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60387217"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572410"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Program Azure AD Connect: Historia wersji
 Zespół usługi Azure Active Directory (Azure AD) regularnie aktualizuje program Azure AD Connect z nowych funkcji i funkcji. Nie wszystkie dodatki mają zastosowanie do wszystkich odbiorców.
@@ -43,12 +43,12 @@ Pobierz | [Pobieranie programu Azure AD Connect](https://go.microsoft.com/fwlink
 Gdy przejdziemy przez ten proces, numer wersji, wersji będą wyświetlane ze znakiem "X" w pozycji numeru wersji pomocniczej, jak "1.3.X.0" — oznacza to, że informacje o wersji, w tym dokumencie są prawidłowe dla wszystkich wersji rozpoczynające się od "1.3.". Jak najszybciej ostatecznych procesu tworzenia wersji numer wydania zostaną zaktualizowane do wersji niedawno wydany i stanu wersji zostanie zaktualizowana w celu "Wydania do pobrania i automatyczne uaktualnianie".
 Nie wszystkie wersje programu Azure AD Connect będzie dostępna dla uaktualnienie automatyczne. Stan wersji wskazuje, czy wydanie jest udostępniana dla uaktualnienie automatyczne lub tylko pobieranie. Jeśli automatyczne uaktualnianie zostało włączone na serwerze programu Azure AD Connect tego serwera zostanie automatycznie uaktualniona do najnowszej wersji programu Azure AD Connect, wydawanego dla uaktualnienie automatyczne. Należy pamiętać, że nie wszystkie konfiguracje program Azure AD Connect kwalifikujące się do automatycznego uaktualnienia. Postępuj zgodnie z tego linku, aby dowiedzieć się więcej o [automatyczne uaktualnianie](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade)
 
-## <a name="13x0"></a>1.3.X.0 
+## <a name="13200"></a>1.3.20.0 
 
 ### <a name="release-status"></a>Stan zlecenia 
 
-3/25/2019: Oczekujące
- 
+04/24/2019: Ogólnie dostępnych do pobrania
+
 ### <a name="new-features-and-improvements"></a>Nowe funkcje i ulepszenia 
 
 - Dodano obsługę Odśwież domeny 
@@ -64,7 +64,7 @@ Nie wszystkie wersje programu Azure AD Connect będzie dostępna dla uaktualnien
 - Uaktualnij do biblioteki ADAL 3.19.8 na odebranie poprawkę WS-Trust, dla polecenia Ping i dodanie obsługi dla nowych wystąpień platformy Azure 
 - Modyfikuj grupę reguł synchronizacji przepływ samAccountName, DomainNetbios i DomainFQDN do chmury — wymagane oświadczenia 
 - Zmodyfikowane domyślna obsługa reguły synchronizacji — Dowiedz się więcej [tutaj](how-to-connect-fix-default-rules.md).
-- Dodano nowy agent, uruchomione jako usługa systemu windows. Ten agent o nazwie "Admin Agent", umożliwia bardziej szczegółową diagnostykę zdalnego z serwera Azure AD Connect, aby ułatwić Engineers firmy Microsoft rozwiązywanie problemów podczas otwierania zgłoszenia do pomocy technicznej. Dowiedz się więcej o Agent administracyjny [tutaj](whatis-aadc-admin-agent.md). 
+- Dodano nowy agent, uruchomione jako usługa systemu windows. Ten agent o nazwie "Admin Agent", umożliwia bardziej szczegółową diagnostykę zdalnego z serwera Azure AD Connect, aby ułatwić Engineers firmy Microsoft rozwiązywanie problemów podczas otwierania zgłoszenia do pomocy technicznej. Ten agent nie jest zainstalowane i jest domyślnie włączone.  Aby uzyskać więcej informacji na temat sposobu instalowania i włączyć agenta zobacz [co to jest Agent programu Azure AD Connect administratora?](whatis-aadc-admin-agent.md). 
 - Zaktualizowana Umowa licencyjna użytkownika (oprogramowania EULA) 
 - Dodano obsługę uaktualniania automatycznie w przypadku wdrożeń korzystających z usług AD FS jako ich typ logowania.  To również usunięcie wymagania aktualizacji usługi AD FS Azure AD zaufania jednostki uzależnionej w ramach procesu uaktualniania. 
 - Dodano zadanie zarządzania zaufania usługi Azure AD, która oferuje dwie opcje: analizowanie/zaktualizuj zaufania i resetowania relacji zaufania. 

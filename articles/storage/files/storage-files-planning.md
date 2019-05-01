@@ -5,15 +5,15 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e2b2621ac8ee5b9ee84aaa978e8b915c98c5b702
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: fecefbbed39f4fc12db79c7466006409e3da7dd1
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61095634"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574477"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planowanie wdrażania usługi Pliki Azure
 
@@ -77,26 +77,16 @@ Jeśli używasz usługi Azure File Sync na dostęp do udziału plików platformy
 Usługa Azure Files oferuje dwie warstwy wydajności: standardowa i premium.
 
 * **Udziały plików standardowych** są wspierane przez obrotowych dysków twardych (HDD), które zapewniają niezawodność, wydajność dla obciążeń we/wy, które są mniej podatne na zmiany wydajności, takich jak udziały plików ogólnego przeznaczenia i środowiska deweloperskie i testowe. Udziały plików standardowa są dostępne tylko w modelu rozliczeń zgodnie z rzeczywistym użyciem.
-* **Udziały plików w warstwie Premium (wersja zapoznawcza)** są wspierane przez dyski półprzewodnikowe (SSD), które umożliwiają spójne, wysokiej wydajności i niskich opóźnieniach, w milisekundach oznaczona jedną cyfrą dla większości operacji We/Wy, dla większości obciążeń intensywnie korzystających z operacji We/Wy. To sprawia, że ich odpowiednie dla różnych obciążeń, takich jak bazy danych, hostowanie witryn sieci web, środowisk deweloperskich itp. Udziały plików w warstwie Premium są dostępne tylko w elastycznie model rozliczeń. Udziały plików w warstwie Premium korzystają z modelu wdrożenia, niezależnie od udziałów plików standardowych. Jeśli chcesz dowiedzieć się, jak utworzyć udział plików — wersja premium, zobacz artykułem na temat: [Jak utworzyć konto magazynu plików Azure w warstwie premium](storage-how-to-create-premium-fileshare.md).
+* **Udziały plików w warstwie Premium (wersja zapoznawcza)** są wspierane przez dyski półprzewodnikowe (SSD), które umożliwiają spójne, wysokiej wydajności i niskich opóźnieniach, w milisekundach oznaczona jedną cyfrą dla większości operacji We/Wy, dla większości obciążeń intensywnie korzystających z operacji We/Wy. To sprawia, że ich odpowiednie dla różnych obciążeń, takich jak bazy danych, hostowanie witryn sieci web, środowisk deweloperskich itp. Udziały plików w warstwie Premium są dostępne tylko w elastycznie model rozliczeń. Udziały plików w warstwie Premium korzystają z modelu wdrożenia, niezależnie od udziałów plików standardowych.
+
+Usługa Azure Backup jest dostępna dla udziałów plików w warstwie premium i usługi Azure Kubernetes Service obsługuje udziały plików w warstwie premium w wersji 1.13 lub nowszym.
+
+Jeśli chcesz dowiedzieć się, jak utworzyć udział plików — wersja premium, zobacz artykułem na temat: [Jak utworzyć konto magazynu plików Azure w warstwie premium](storage-how-to-create-premium-fileshare.md).
+
+Obecnie nie można bezpośrednio konwersji między standardowy udział plików i udział plików w warstwie premium. Jeśli chcesz przełączyć się do każdej warstwy, należy utworzyć nowy udział plików w danej warstwie i ręcznie skopiować dane z oryginalnego udziału do nowego udziału, który został utworzony. Można to zrobić przy użyciu dowolnego narzędzia kopiowania obsługiwane usługi pliki Azure, takich jak narzędzia AzCopy.
 
 > [!IMPORTANT]
-> Plik Premium akcje są nadal w wersji zapoznawczej dostępne tylko dzięki magazynowi LRS i są dostępne tylko w regionach przez z obsługą usługi Azure Backup jest dostępna w Wybierz regiony:
-
-|Dostępny region  |Obsługa usługi Azure Backup  |
-|---------|---------|
-|Wschodnie stany USA 2      | Yes|
-|Wschodnie stany USA       | Yes|
-|Zachodnie stany USA       | Nie |
-|Zachodnie stany USA 2      | Nie |
-|Środkowe stany USA    | Nie |
-|Europa Północna  | Nie |
-|Europa Zachodnia   | Yes|
-|Azja       | Yes|
-|Azja Wschodnia     | Nie |
-|Japonia Wschodnia    | Nie |
-|Japonia Zachodnia    | Nie |
-|Korea Środkowa | Nie |
-|Australia Wschodnia| Nie |
+> Udziały plików w warstwie Premium są nadal w wersji zapoznawczej są dostępne tylko dla magazynu LRS i są dostępne w większości regionów, które oferują kont magazynu. Aby dowiedzieć się, w przypadku udziałów plików w warstwie premium są obecnie dostępne w danym regionie, zobacz [dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=storage) strony dla platformy Azure.
 
 ### <a name="provisioned-shares"></a>Elastycznie udziałów
 
@@ -115,7 +105,9 @@ Udziały musi być obsługiwana wielokrotność 1 GiB. Minimalny rozmiar to 100 
 >
 > szybkość transferu danych przychodzących = 40 MiB/s + 0,04 * aprowizowane GiB
 
-Rozmiar udziału w dowolnym momencie można zwiększyć, ale można zmniejszyć tylko po 24 godzin od momentu ostatniego wzrost. Po upływie 24 godzin bez zwiększenia rozmiaru, można zmniejszyć rozmiar udziału tyle razy, dopóki nie zostanie zwiększony ponownie. Zmiana skali na SEKUNDĘ lub przepływności będą obowiązywać w ciągu kilku minut po zmianie rozmiaru.
+Rozmiar udziału w dowolnym momencie można zwiększyć, ale można zmniejszyć tylko po 24 godzin od momentu ostatniego wzrost. Po upływie 24 godzin bez zwiększenia rozmiaru, można zmniejszyć rozmiar udziału dowolną liczbę razy, ile chcesz, dopóki nie zostanie zwiększony ponownie. Zmiana skali na SEKUNDĘ lub przepływności będą obowiązywać w ciągu kilku minut po zmianie rozmiaru.
+
+Istnieje możliwość zmniejszyć rozmiar udziału elastycznie poniżej swoje używanych GiB. Jeśli to zrobisz, nie nastąpi utrata danych, ale, będą nadal obciążani rozmiaru używanego i odbierania wydajności (operacje We/Wy w linii bazowej, przepływność i serii operacji We/Wy) elastycznie udziału, a nie do rozmiaru, które są używane.
 
 W poniższej tabeli przedstawiono kilka przykładów tych formuł dla rozmiarów elastycznie udziału:
 
@@ -141,7 +133,7 @@ Udziały plików w warstwie Premium, możesz podwyższyć ich operacje We/Wy naw
 Środki są gromadzone w zasobniku serii zawsze wtedy, gdy ruch dla udziału plików poniżej linii bazowej operacje We/Wy. Na przykład 100 udział GiB ma odniesienia 100 operacji We/Wy. Jeśli rzeczywisty ruch w udziale 40 operacje We/Wy dla określonego interwału 1 sekundę, 60 operacje nieużywane We/Wy są zapisywane na zasobnik dużego ruchu. Te środki na korzystanie z zostaną użyte później podczas operacji spowoduje przekroczenie linii bazowej operacje We/Wy.
 
 > [!TIP]
-> Rozmiar zasobnika serii = Baseline_IOPS * 2 * 3600.
+> Rozmiar zasobnika serii linii bazowej operacje We/Wy = * 2 * 3600.
 
 Zawsze, gdy udział przekracza linii bazowej operacje We/Wy i ma środki na korzystanie z w zasobniku serii, będzie serii. Udziały mogą nadal serii tak długo, jak pozostałych środków, chociaż tylko pozostaną udziałów mniejszy niż 50 TiB osiągnęło limit dużego ruchu do nawet przez godzinę. Większe niż 50 TiB udziałów z technicznego punktu widzenia można przekroczyć tego limitu jedną godzinę, się do dwóch godzin, ale to zależy od liczby naliczane środki na korzystanie z serii. Każdej operacji We/Wy poza linii bazowej operacje We/Wy wykorzystuje jedną środki i zwróci zużyty wszystkie środki na korzystanie z udziału do linii bazowej operacje We/Wy.
 

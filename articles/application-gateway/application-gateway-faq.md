@@ -6,14 +6,14 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 3/20/2019
+ms.date: 4/30/2019
 ms.author: victorh
-ms.openlocfilehash: 3c8a2fe9f4486fe4d33754b58f4e7ebec1b3252d
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 72eaa18d570e85274efbea80f12e9a7301eecbfa
+ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59682955"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64947085"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Często zadawane pytania na temat usługi Application Gateway
 
@@ -119,7 +119,7 @@ Traffic Manager można używać do rozdzielenia ruchu między wiele bram aplikac
 
 ### <a name="does-application-gateway-support-autoscaling"></a>Usługa Application Gateway obsługuje Skalowanie automatyczne?
 
-Tak, usługa Application Gateway jednostkę SKU v2 obsługuje funkcję skalowania automatycznego. Aby uzyskać więcej informacji, zobacz [Skalowanie automatyczne i strefowo nadmiarowe Application Gateway (publiczna wersja zapoznawcza)](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant).
+Tak, usługa Application Gateway jednostkę SKU v2 obsługuje funkcję skalowania automatycznego. Aby uzyskać więcej informacji, zobacz [Skalowanie automatyczne i strefowo nadmiarowe Application Gateway](application-gateway-autoscaling-zone-redundant.md).
 
 ### <a name="does-manual-scale-up-or-scale-down-cause-downtime"></a>Jest ręczne skalowanie w lub w dół przestój Przyczyna?
 
@@ -267,7 +267,7 @@ Usługa Application Gateway obsługuje maksymalnie 10 certyfikaty uwierzytelnian
 
 ### <a name="does-application-gateway-natively-integrate-with-azure-key-vault"></a>Czy usługa Application Gateway można natywnie zintegrować z usługą Azure Key Vault?
 
-Nie.
+Tak, usługa Application Gateway jednostkę SKU v2 obsługuje usługi Key Vault. Aby uzyskać więcej informacji, zobacz [kończenia żądań SSL z certyfikatami usługi Key Vault](key-vault-certs.md).
 
 ### <a name="how-do-i-configure-https-listeners-for-com-and-net-sites"></a>Jak skonfigurować odbiorników HTTPS dla witryny .com i .net? 
 

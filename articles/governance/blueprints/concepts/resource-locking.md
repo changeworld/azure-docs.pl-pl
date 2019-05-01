@@ -3,17 +3,17 @@ title: Zrozumienie blokowanie zasobów
 description: Informacje o opcjach blokowania, aby chronić zasoby podczas przypisywania planu.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/28/2019
+ms.date: 04/24/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 232d823f364f9f98d1da1bade50ba369b898a57d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: db0b5bbe1261c7bdf76393c69a1189d2a850cd07
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60683026"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64719757"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Zrozumienie blokowania w plany usługi Azure resource
 
@@ -53,6 +53,13 @@ Usunięcie przypisania blokad utworzone przez schematy są usuwane. Jednakże za
 RBAC [Odmów przypisania](../../../role-based-access-control/deny-assignments.md) Odmów, akcja jest stosowane do artefaktu zasobów podczas przypisywania planu, jeśli wybrane przypisania **tylko do odczytu** lub **nie usuwaj** Opcja. Akcja odmowy jest dodawany przez zarządzaną tożsamością przypisanie planu i może zostać usunięty tylko ze źródeł artefaktów w tej samej tożsamości zarządzanej. To zabezpieczenie wymusza mechanizm blokowania i uniemożliwia usunięcie blokady plan poza schematy.
 
 ![Plan Odmów przypisania dla grupy zasobów](../media/resource-locking/blueprint-deny-assignment.png)
+
+[Odmów przypisania właściwości](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties) każdego trybu są następujące:
+
+|Tryb |Permissions.Actions |Permissions.NotActions |Nazwy główne [i]. Typ |ExcludePrincipals[i].Id | DoNotApplyToChildScopes |
+|-|-|-|-|-|-|
+|Tylko do odczytu |**\*** |**\*/ odczytu** |SystemDefined (wszyscy) |Przypisanie planu i zdefiniowane przez użytkownika w **excludedPrincipals** |Grupa zasobów - _true_; Zasób - _false_ |
+|Nie usuwaj |**\*/ DELETE** | |SystemDefined (wszyscy) |Przypisanie planu i zdefiniowane przez użytkownika w **excludedPrincipals** |Grupa zasobów - _true_; Zasób - _false_ |
 
 > [!IMPORTANT]
 > Usługa Azure Resource Manager buforuje Szczegóły przypisania roli dla maksymalnie 30 minut. Odmów co w efekcie przypisania odmowy Akcja zasobów planu natychmiast może nie być w pełnego wpływu. W tym okresie czasu może istnieć możliwość usuwania zasobu mają być chronione przez planu blokad.

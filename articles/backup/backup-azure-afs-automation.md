@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: pullabhk
-ms.openlocfilehash: 83fe8d17699c19d442fd734d71d828eb9fd9d6ed
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 46719d3f72c57a44fb48489891e2348bb418da1e
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258364"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918950"
 ---
 # <a name="back-up-and-restore-azure-files-with-powershell"></a>Tworzenie kopii zapasowej i przywracanie usługi Azure Files przy użyciu programu PowerShell
 
@@ -317,7 +317,7 @@ Po wybraniu punktu odzyskiwania odpowiednie możesz przywrócić udziału plikó
 
 ### <a name="restore-an-azure-file-share-to-an-alternate-location"></a>Przywróć udział plików platformy Azure do lokalizacji alternatywnej
 
-Użyj [AzRecoveryServicesBackupItem przywracania](https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) można przywrócić do wybranego punktu odzyskiwania. Określ parametry, aby zidentyfikować w alternatywnej lokalizacji: 
+Użyj [AzRecoveryServicesBackupItem przywracania](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) można przywrócić do wybranego punktu odzyskiwania. Określ parametry, aby zidentyfikować w alternatywnej lokalizacji: 
 
 - **TargetStorageAccountName**: Konto magazynu, do którego zostanie przywrócona zawartość kopii zapasowej. Docelowe konto magazynu musi być w tej samej lokalizacji co magazyn.
 - **TargetFileShareName**: Konto zostanie przywrócona zawartość kopii zapasowej udziałów plików w ramach magazynu docelowego.
@@ -340,7 +340,7 @@ testAzureFS        Restore              InProgress           12/10/2018 9:56:38 
 
 ### <a name="restore-an-azure-file-to-an-alternate-location"></a>Przywracanie plików platformy Azure do lokalizacji alternatywnej
 
-Użyj [AzRecoveryServicesBackupItem przywracania](https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) można przywrócić do wybranego punktu odzyskiwania. Określ te parametry, aby zidentyfikować lokalizacji alternatywnej, a do unikatowego identyfikowania plików, które mają zostać przywrócone.
+Użyj [AzRecoveryServicesBackupItem przywracania](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) można przywrócić do wybranego punktu odzyskiwania. Określ te parametry, aby zidentyfikować lokalizacji alternatywnej, a do unikatowego identyfikowania plików, które mają zostać przywrócone.
 
 * **TargetStorageAccountName**: Konto magazynu, do którego zostanie przywrócona zawartość kopii zapasowej. Docelowe konto magazynu musi być w tej samej lokalizacji co magazyn.
 * **TargetFileShareName**: Konto zostanie przywrócona zawartość kopii zapasowej udziałów plików w ramach magazynu docelowego.

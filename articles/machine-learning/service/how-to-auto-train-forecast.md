@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 03/19/2019
-ms.openlocfilehash: c4f94dd2730dd302951b4476a292b006041b7ee8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: d79154a8792b9017b98f9d21a2ab0360b7304d1c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60820034"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64697860"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Auto — szkolenie modelu prognozowania szeregów czasowych
 
@@ -67,7 +67,7 @@ y_test = X_test.pop("sales_quantity").values
 > [!NOTE]
 > Podczas uczenia modelu do prognozowania przyszłych wartości, upewnij się, wszystkie funkcje używane szkolenia i mogą być używane podczas wykonywania prognoz dla Twojego zamierzony horyzoncie. Na przykład podczas tworzenia prognozę, funkcji bieżąca cena akcji w tym może wysoce zwiększyć dokładność szkolenia. Jednak jeśli zamierzasz Prognozuj z długich horizon, nie może być możliwość dokładnego przewidywania przyszłego podstawowych wartości odpowiadające przyszłych punktów szeregów czasowych i dokładności modelu może to spowodować obniżenie.
 
-## <a name="configure-experiment"></a>Konfigurowanie eksperymentu
+## <a name="configure-and-run-experiment"></a>Konfigurowanie i uruchamianie eksperymentu
 
 Do prognozowania zadania, uczenie maszynowe automatyczne wykorzystuje przetwarzania wstępnego i Szacowanie czynności, które są specyficzne dla danych szeregów czasowych. Zostaną wykonane następujące kroki przetwarzania wstępnego:
 
@@ -126,6 +126,20 @@ best_run, fitted_model = local_run.get_output()
 > [!NOTE]
 > Procedurę krzyżowego sprawdzania poprawności (CV) dane szeregów czasowych może naruszyć podstawowe założenia statystyczne strategii canonical zwijania K krzyżowa Weryfikacja, więc automatyczne uczeniu implementuje stopniowe procedurze weryfikacji źródła, aby utworzyć krzyżowa Weryfikacja złożeń danych szeregów czasowych. Aby użyć tej procedury, należy określić `n_cross_validations` parametru w `AutoMLConfig` obiektu. Można pominąć sprawdzanie poprawności i użycia własnego weryfikacji zestawów z `X_valid` i `y_valid` parametrów.
 
+### <a name="view-feature-engineering-summary"></a>Podsumowanie Inżynieria funkcji widoku
+
+Dla typów podzadań szeregu czasowego automatycznych machine Learning można wyświetlić szczegółowe informacje z tej funkcji, inżynierów procesów. Poniższy kod pokazuje poszczególne funkcje pierwotne wraz z następującymi atrybutami:
+
+* Nazwa funkcji nieprzetworzone
+* Wiele funkcji zaprojektowanych utworzone z tej funkcji nieprzetworzone
+* Wykryto typ
+* Czy funkcja została porzucona
+* Lista funkcji przekształcenia dla funkcji nieprzetworzone
+
+```python
+fitted_model.named_steps['timeseriestransformer'].get_featurization_summary()
+```
+
 ## <a name="forecasting-with-best-model"></a>Prognozowanie za pomocą najlepszy model
 
 Użyj najlepsze iteracji modelu do prognozowania wartości dla zestawu danych testowych.
@@ -133,6 +147,16 @@ Użyj najlepsze iteracji modelu do prognozowania wartości dla zestawu danych te
 ```python
 y_predict = fitted_model.predict(X_test)
 y_actual = y_test.flatten()
+```
+
+Alternatywnie, można użyć `forecast()` zamiast funkcji `predict()`, co pozwoli specyfikacji rozpoczęcia prognozy. W poniższym przykładzie najpierw Zastąp wszystkie wartości w `y_pred` z `NaN`. Prognozy źródła będzie na końcu danych szkoleniowych w tym przypadku tak jak zwykle korzystając z `predict()`. Jednak jeśli zastąpione tylko w drugiej połowie `y_pred` z `NaN`, funkcja spowoduje, że wartości numeryczne w pierwszej połowie zostały zmodyfikowane, ale prognozy `NaN` wartości w drugiej połowie. Funkcja zwraca wartości prognozowanych i wyrównane funkcji.
+
+Można również użyć `forecast_destination` parametru w `forecast()` funkcji do przewidywania wartości aż do określonej daty.
+
+```python
+y_query = y_test.copy().astype(np.float)
+y_query.fill(np.nan)
+y_fcst, X_trans = fitted_pipeline.forecast(X_test, y_query, forecast_destination=pd.Timestamp(2019, 1, 8))
 ```
 
 Oblicz RMSE (błąd kwadrat oznacza główny) między `y_test` wartościami rzeczywistymi a przewidywane wartości w `y_pred`.

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/29/2019
+ms.date: 04/25/2019
 ms.author: alkohli
-ms.openlocfilehash: b4d047f4266d11a5f6b77f33054eb93e31f7090b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8cd89b21e80662ec50746e0c7721a5544cfbce30
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58791579"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64717502"
 ---
 # <a name="manage-an-azure-data-box-edge-device-via-windows-powershell"></a>Zarządzanie urządzeniem usługi Azure Data Box Edge za pośrednictwem programu Windows PowerShell
 
@@ -24,7 +24,6 @@ Ten artykuł koncentruje się na zadaniach, które można zrobić, za pomocą in
 W tym artykule opisano następujące procedury:
 
 - Nawiązać połączenie z interfejsu programu PowerShell
-- Rozpocząć sesję pomocy technicznej
 - Tworzenie pakietu pomocy technicznej
 - Przekazywanie certyfikatu
 - Resetowanie urządzenia
@@ -59,7 +58,6 @@ Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cer
 Aby uzyskać więcej informacji na temat certyfikatów, przejdź do [certyfikaty usługi Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/iot-edge-certs) lub [instalowanie certyfikatów na bramie](https://docs.microsoft.com/azure/iot-edge/how-to-create-transparent-gateway#install-certificates-on-the-gateway).
 
 ## <a name="view-device-information"></a>Wyświetl informacje na urządzeniu
-
  
 [!INCLUDE [View device information](../../includes/data-box-edge-gateway-view-device-info.md)]
 
@@ -90,6 +88,9 @@ Skonfigurowanie ról obliczeniowych na urządzeniu z systemem dzienniki obliczen
 
 [!INCLUDE [Monitor and troubleshoot compute modules](../../includes/data-box-edge-monitor-troubleshoot-compute.md)]
 
+## <a name="exit-the-remote-session"></a>Zamknij sesję zdalną
+
+Aby zakończyć pracę zdalną sesję programu PowerShell, zamknij okno programu PowerShell.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

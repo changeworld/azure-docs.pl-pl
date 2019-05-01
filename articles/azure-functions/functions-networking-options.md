@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: b7af0149a690e3cc3a357a5cb769751e3674d374
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 49f89d39b3b917ec6357b241d7c413c2790eca25
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61437688"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64575600"
 ---
 # <a name="azure-functions-networking-options"></a>Usługa Azure Functions opcji sieciowych
 
@@ -31,15 +31,14 @@ Możesz hostować aplikacje funkcji na kilka sposobów:
 
 ## <a name="matrix-of-networking-features"></a>Macierz funkcji sieciowych
 
-|                |[Plan zużycia](functions-scale.md#consumption-plan)|⚠ [Plan w warstwie Premium](functions-scale.md#premium-plan-public-preview)|[Plan usługi App Service](functions-scale.md#app-service-plan)|[Środowisko usługi App Service](../app-service/environment/intro.md)|
+|                |[Plan zużycia](functions-scale.md#consumption-plan)|[Plan w warstwie Premium (wersja zapoznawcza)](functions-scale.md#premium-plan-public-preview)|[Plan usługi App Service](functions-scale.md#app-service-plan)|[Środowisko usługi App Service](../app-service/environment/intro.md)|
 |----------------|-----------|----------------|---------|-----------------------|  
 |[Ograniczenia adresów IP dla ruchu przychodzącego](#inbound-ip-restrictions)|✅Yes|✅Yes|✅Yes|✅Yes|
+|[Ograniczenia adresów IP ruchu wychodzącego](#private-site-access)|❌No| ❌No|❌No|✅Yes|
 |[Integracja sieci wirtualnej](#virtual-network-integration)|❌No|❌No|✅Yes|✅Yes|
-|[(Wersja zapoznawcza), integracji sieci wirtualnej (usługi Azure ExpressRoute i punktów końcowych usługi)](#preview-version-of-virtual-network-integration)|❌No|⚠Tak|⚠Tak|✅Yes|
+|[Integracja sieci wirtualnej (usługi Azure ExpressRoute i ruchu wychodzącego punktów końcowych usługi) w wersji zapoznawczej](#preview-version-of-virtual-network-integration)|❌No|✅Yes|✅Yes|✅Yes|
 |[Połączenia hybrydowe](#hybrid-connections)|❌No|❌No|✅Yes|✅Yes|
-|[dostęp do prywatnej witryny](#private-site-access)|❌No| ❌No|❌No|✅Yes|
-
-⚠ Tę funkcję wersji zapoznawczej nie jest do użytku produkcyjnego.
+|[dostęp do prywatnej witryny](#private-site-access)|❌No| ✅Yes|✅Yes|✅Yes|
 
 ## <a name="inbound-ip-restrictions"></a>Ograniczenia adresów IP dla ruchu przychodzącego
 
@@ -49,6 +48,10 @@ Ograniczenia adresów IP umożliwia definiowanie listy uporządkowane priorytet 
 > Aby użyć edytorze portalu Azure, portalu należy bezpośrednio uzyskać dostępu do uruchomionej aplikacji funkcji. Ponadto urządzenie, używanym do korzystania z portalu, musi mieć jego listy dozwolonych adresów IP. Bez ograniczeń sieci w miejscu, możesz uzyskiwać dostęp wszystkie funkcje na **funkcje platformy** kartę.
 
 Aby dowiedzieć się więcej, zobacz [ograniczenia dostępu statycznych w usłudze Azure App Service](../app-service/app-service-ip-restrictions.md).
+
+## <a name="outbound-ip-restrictions"></a>Ograniczenia adresów IP ruchu wychodzącego
+
+Ograniczenia ruchu wychodzącego IP są dostępne tylko dla funkcji wdrożony w środowisku usługi App Service. Można skonfigurować ograniczenia ruchu wychodzącego dla sieci wirtualnej, w której wdrożono środowisko App Service Environment.
 
 ## <a name="virtual-network-integration"></a>Integracja sieci wirtualnej
 
@@ -88,7 +91,10 @@ Aby dowiedzieć się więcej, zobacz [dokumentacja usługi App Service dla poł�
 
 ## <a name="private-site-access"></a>Dostęp do witryn prywatnych
 
-Dostęp do prywatnej witryny odnosi się do wprowadzania aplikacji jest dostępny tylko w sieci prywatnej takich jak z w obrębie sieci wirtualnej platformy Azure. Dostęp do prywatnej witryny jest dostępna tylko w środowisku usługi App Service skonfigurowana przy użyciu wewnętrznego modułu równoważenia obciążenia (ILB). Aby uzyskać więcej informacji, zobacz [tworzenia i używania wewnętrznego modułu równoważenia obciążenia w środowisku usługi App Service](../app-service/environment/create-ilb-ase.md).
+Dostęp do prywatnej witryny odnosi się do wprowadzania aplikacji jest dostępny tylko w sieci prywatnej takich jak z w obrębie sieci wirtualnej platformy Azure. 
+* Dostęp do prywatnej witryny jest dostępna w wersji Premium i usługi App Service podczas planowania **punktów końcowych usługi** są skonfigurowane. Aby uzyskać więcej informacji, zobacz [punkty końcowe usługi sieci wirtualnej](../virtual-network/virtual-network-service-endpoints-overview.md)
+    * Należy pamiętać, że z punktami końcowymi usługi, funkcji nadal ma pełne wychodzący dostęp do Internetu, nawet w przypadku skonfigurowano integrację z siecią Wirtualną.
+* Dostęp do prywatnej witryny jest dostępna tylko w środowisku usługi App Service skonfigurowana przy użyciu wewnętrznego modułu równoważenia obciążenia (ILB). Aby uzyskać więcej informacji, zobacz [tworzenia i używania wewnętrznego modułu równoważenia obciążenia w środowisku usługi App Service](../app-service/environment/create-ilb-ase.md).
 
 Istnieje wiele sposobów dostępu do zasobów sieci wirtualnej w inne opcje hostingu. Ale w środowisku usługi App Service jest jedynym sposobem, aby umożliwić wyzwalaczy, funkcji uzyskanie odbywa się za pośrednictwem sieci wirtualnej.
 

@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 04/23/2019
+ms.date: 04/26/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: dffbb2c52b4e43eefe6b4f377bd7af529bae8cc5
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 22d3bdf8c60e6682c360395b44fe6f1dcc1207b0
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62125563"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925515"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Często zadawane pytania — program VMware do platformy Azure replikacji
 
@@ -93,8 +93,8 @@ Możesz zainstalować na każdej maszynie Wirtualnej, którą chcesz replikować
 
 Usługa Site Recovery replikuje lokalnych maszyn wirtualnych z programu VMware i serwerów fizycznych do usługi managed disks na platformie Azure.
 - Serwer przetwarzania Site Recovery zapisuje dzienników replikacji na konto magazynu pamięci podręcznej w regionie docelowym.
-- Dzienniki te są używane do tworzenia punktów odzyskiwania na dyskach zarządzanych.
-- Po przejściu do trybu failover, wybrany punkt odzyskiwania jest używany do utworzenia dysku zarządzanego w sieci docelowej.
+- Dzienniki te są używane do tworzenia punktów odzyskiwania na platformie Azure usługa managed disks, które mają prefiks asrseeddisk.
+- Po przejściu do trybu failover, wybrany punkt odzyskiwania jest używany do tworzenia nowego dysku zarządzanego docelowego. Ten dysk zarządzany jest dołączony do maszyny Wirtualnej na platformie Azure.
 - Nie ma wpływu na maszyny wirtualne, które wcześniej zostały zreplikowane do konta magazynu (przed marca 2019 r).
 
 
@@ -111,7 +111,7 @@ Replikacja nowych maszyn wirtualnych na konto magazynu jest dostępne tylko przy
 
 ### <a name="can-i-change-the-managed-disk-type-after-machine-is-protected"></a>Typ dysku zarządzanego można zmienić po włączeniu ochrony maszyny?
 
-Tak, możesz z łatwością [zmienić typ dysku zarządzanego](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage). Przed zmianą typu, upewnij się, odwołanie adresu URL sygnatury dostępu Współdzielonego dla dysku, przechodząc do zasobu dysku zarządzanego w witrynie Azure portal. Z poziomu bloku Przegląd anulować wszelkie trwające eksportu. Po odebraniu adresu URL sygnatury dostępu Współdzielonego należy zmienić typ dysku w ciągu najbliższych kilku minut. Jednakże jeśli zmienisz typ dysku zarządzanego, poczekaj, aż punkty odzyskiwania świeże generowanej przez usługę Azure Site Recovery. Użyj nowe punkty odzyskiwania dla każdego testu trybu failover lub pracy awaryjnej w przyszłości.
+Tak, możesz z łatwością [zmienić typ dysku zarządzanego](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage) dla trwającej replikacji. Przed zmianą typu, upewnij się, że żaden adres URL sygnatury dostępu Współdzielonego jest generowany na dysku zarządzanego. Przejdź do zasobu dysku zarządzanego w witrynie Azure portal i sprawdź, czy transparent adresu URL sygnatury dostępu Współdzielonego w bloku przeglądu. Jeśli jest obecny, kliknij je, można anulować eksportu ciągłego. Po zakończeniu należy zmienić typ dysku w ciągu najbliższych kilku minut. Jednakże jeśli zmienisz typ dysku zarządzanego, poczekaj, aż punkty odzyskiwania świeże generowanej przez usługę Azure Site Recovery. Użyj nowe punkty odzyskiwania dla każdego testu trybu failover lub pracy awaryjnej w przyszłości.
 
 ### <a name="can-i-switch-replication-from-managed-disks-to-unmanaged-disks"></a>Czy mogę przełączać replikacji z dysków zarządzanych do dysków niezarządzanych
 
@@ -133,6 +133,10 @@ Replikacja rozszerzona lub łańcuchowa nie jest obsługiwana. Zażądać tej fu
 
 ### <a name="can-i-do-an-offline-initial-replication"></a>Można zrobić początkowej replikacji offline?
 Ta funkcja nie jest obsługiwana. Zażądać tej funkcji w [forum z opiniami](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from).
+
+
+### <a name="what-is-asrseeddisk"></a>Co to jest asrseeddisk?
+Dla każdego dysku źródłowego dane są replikowane na dysk zarządzany na platformie Azure. Ten dysk ma prefiks asrseeddisk. Przechowuje kopię dysku źródłowego i wszystkie migawki punktu odzyskiwania.
 
 ### <a name="can-i-exclude-disks-from-replication"></a>Czy można wykluczyć dyski z replikacji?
 Tak, można wykluczyć dysków.
@@ -249,7 +253,7 @@ W magazynie usługi Recovery Services kliknij **serwery konfiguracji** w **infra
 
 ### <a name="unable-to-select-process-server-during-enable-replication"></a>Nie można wybrać serwer przetwarzania podczas. Włączanie replikacji
 
-Od wersji 9.24 ulepszenia zostały wprowadzone w zapewnienie [wskazówki w produkcie](vmware-azure-manage-process-server.md#process-server-selection-guidance) o tym, kiedy do skonfigurowania serwera przetwarzania skalowalnego w poziomie. To, aby uniknąć ograniczania serwera przetwarzania i uniknąć użycia serwera przetwarzania w złej kondycji.
+Od wersji 9.24 ulepszenia zostały wprowadzone w zapewnienie [alerty serwera przetwarzania](vmware-physical-azure-monitor-process-server.md#process-server-alerts) o tym, kiedy do skonfigurowania serwera przetwarzania skalowalnego w poziomie. To, aby uniknąć ograniczania serwera przetwarzania i uniknąć użycia serwera przetwarzania w złej kondycji.
 
 ### <a name="what-should-i-do-to-obtain-accurate-health-status-of-process-server"></a>Co należy zrobić, aby uzyskać dokładne Kondycja serwera przetwarzania?
 

@@ -1,30 +1,23 @@
 ---
-title: Opis witryny Marketplace dla modułu usługi Azure IoT Edge | Dokumentacja firmy Microsoft
+title: Opis witryny Marketplace dla modułu usługi Azure IoT Edge | Portal Azure Marketplace
 description: Utwórz opis witryny marketplace moduł usługi IoT Edge.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 10/18/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 30f44e0e8bae4071403b5c28cd4133970fc4d468
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 04/24/2019
+ms.author: pabutler
+ms.openlocfilehash: aa0c908e18233926965d8dc3cd1b474f876b8dda
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60913313"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942428"
 ---
 # <a name="iot-edge-module-marketplace-tab"></a>Kartę Marketplace moduł usługi IoT Edge
 
-
 **Marketplace** karcie **nowa oferta** strony umożliwia udostępnianie potencjalnych klientów. marketingu, sprzedaży i prawne informacji i umowy i zarządzanie potencjalnymi klientami wygenerowany na podstawie Portal Marketplace. Ta długich fragmentów jest podzielony na cztery sekcje: **Omówienie**, **marketingowych artefaktów**, **Zarządzanie potencjalnymi**, i **prawne**.
+
 
 ## <a name="overview"></a>Omówienie
 
@@ -32,22 +25,25 @@ W tej sekcji należy wprowadzić ogólne informacje o ofercie Azure Marketplace.
 
 ![Omówienie części karty portalu Marketplace w formularzu nowa oferta dla modułów usługi IoT Edge](./media/iot-edge-module-marketplace-tab-overview.png)
 
-W poniższej tabeli opisano przeznaczenie i zawartość tych pól.
+W poniższej tabeli opisano przeznaczenie i zawartość tych pól. Wymagane pola są wskazanych przez znak gwiazdki (*).
 
 |  **Pole**                |     **Opis**                                                          |
 |  ---------                |     ---------------                                                          |
-| **Tytuł**                 | Tytuł oferty. Będzie ona wyświetlana ważnej w portalu marketplace.  Składać z maksymalnie 50 znaków. <!--ADD PICTURE IN ACTION-->|
-| **Podsumowanie**               | Krótkie podsumowanie oferty. Składać z maksymalnie 100 znaków. <!--ADD PICTURE IN ACTION-->|
-| **Długie podsumowanie**          | Już podsumowanie ofertę (chociaż może być taka sama jak **podsumowania**).  Maksymalna długość 256 znaków. <!--ADD PICTURE IN ACTION-->|
-| **Opis**           | Opis oferty.  Maksymalną długość znaków 3000 obsługuje prosty format HTML.<br/> Musi on zawierać *minimalne wymagania sprzętowe* akapitu na dole. Na przykład: <br/> <p><u>Minimalne wymagania sprzętowe:</u> X64 systemu Linux i OS arm32, 1 GB pamięci RAM, 500 Mb pamięci masowej</p>
-| **Identyfikator marketingu**  | Unikatowy adres URL, aby skojarzyć tę ofertę, obejmują zazwyczaj organizacji i nazwę rozwiązania, maksymalnej długości 50 znaków.  Na przykład: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleIoTEdgeModule`  |
+| **Tytuł\***                 | Tytuł oferty. Będzie ona wyświetlana ważnej w portalu marketplace.  Składać z maksymalnie 50 znaków. <!--ADD PICTURE IN ACTION-->|
+| **Podsumowanie\***               | Krótkie podsumowanie oferty. Składać z maksymalnie 100 znaków. <!--ADD PICTURE IN ACTION-->|
+| **Długie podsumowanie\***          | Już podsumowanie ofertę (chociaż może być taka sama jak **podsumowania**).  Maksymalna długość 256 znaków. <!--ADD PICTURE IN ACTION-->|
+| **Opis elementu\***           | Opis oferty.  Maksymalną długość znaków 3000 obsługuje prosty format HTML.<br/> Musi on zawierać *minimalne wymagania sprzętowe* akapitu na dole. Na przykład: <br/> <p><u>Minimalne wymagania sprzętowe:</u> X64 systemu Linux i OS arm32, 1 GB pamięci RAM, 500 Mb pamięci masowej</p>
+| **Identyfikator marketingu\***  | Unikatowy adres URL, aby skojarzyć tę ofertę, obejmują zazwyczaj organizacji i nazwę rozwiązania, maksymalnej długości 50 znaków.  Na przykład: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleIoTEdgeModule`  |
 | **Identyfikatory subskrypcji (wersja zapoznawcza)** | Dodaj jeden do 100 identyfikatorów subskrypcji podglądy. Te subskrypcje biały na liście mają dostęp do tej oferty, po opublikowaniu, zanim usługa zostanie wprowadzona na żywo. |
 | **Przydatne linki**          | Wielokrotnego wyboru biznesowe i techniczne kategorie, które oferują może być najlepiej skojarzony.  Maksymalnie 10 dozwolone. Upewnij się dodać co najmniej jedno łącze do dokumentacji i jedno połączenie zgodne z urządzeniem usługi IoT Edge [Azure IoT — wykaz urządzeń](https://catalog.azureiotsolutions.com/). |
-| **Sugerowane kategorie** | Wybierz maksymalnie pięć kategorii. Będą one wyświetlane na stronie szczegółów produktu. Na stronach Przeglądaj wszystkie moduły usługi IoT Edge zostaną wyświetlone w obszarze *Internet of Things \> moduł usługi IoT Edge* kategorii.|
+| **Sugerowane kategorie\*** | Wybierz maksymalnie pięć kategorii. Będą one wyświetlane na stronie szczegółów produktu. Na stronach Przeglądaj wszystkie moduły usługi IoT Edge zostaną wyświetlone w obszarze *Internet of Things \> moduł usługi IoT Edge* kategorii.|
+|  |  |
+
 
 ### <a name="offer-example"></a>Przykład oferty
 
  W poniższych przykładach pokazano sposób oferty **tytuł**, **Podsumowanie**, **opis**, **logo**, i **zrzutyekranu** pola są wyświetlane w różnych widokach.
+
  
 #### <a name="on-the-azure-marketplace-website"></a>W witrynie Azure Marketplace:
 
@@ -58,6 +54,7 @@ W poniższej tabeli opisano przeznaczenie i zawartość tych pól.
 - Przyglądając się szczegóły oferty:
 
     ![Jak moduł usługi IoT Edge zostaną wyświetlone podczas wyszukiwania szczegóły produktu w witrynie sieci Web](./media/iot-edge-module-ampdotcom-pdp.png)
+
 
 #### <a name="on-the-azure-portal-website"></a>W witrynie Azure portal:
 
@@ -88,18 +85,19 @@ Ta sekcja zawiera następujące podsekcje: **Logo**, **zrzut ekranu**, i **wideo
 |  **Pole**                |     **Opis**                                                          |
 |  ---------                |     ---------------                                                          |
 | *Logos*  | Zobacz, że przechwytuje poprzedni ekran, aby zobaczyć, jak i gdzie będą używane z logo.  |
-| **Małe**                 | format PNG 40 x 40 pikseli                                                     |
-| **Średni**                | format PNG 90 x 90 pikseli                                                     |
-| **Duże**                 | format PNG 115 x 115 pikseli                                                  |
-| **Szerokie**                  | format PNG 255 x 115 pikseli                                                   |
+| **Małe\***                 | format PNG 40 x 40 pikseli                                                     |
+| **Średni\***                | format PNG 90 x 90 pikseli                                                     |
+| **Duże\***                 | format PNG 115 x 115 pikseli                                                  |
+| **Szerokie\***                  | format PNG 255 x 115 pikseli                                                   |
 | **Element Hero**                  | format PNG 815 x 290 pikseli.  Opcjonalne, jednak po przekazany, nie można usunąć ikonę elementu hero. |
 | *Zrzuty ekranu*  | Zrzuty ekranu są wyświetlane na stronie szczegółów produktu. Są one dobrym sposobem na wizualne przedstawianie działanie modułu usługi IoT Edge i sposób jej działania. Można wyświetlić diagramy architektury, lub użyj ilustracje wielkości liter dla wystąpienia. Opcjonalne, ale maksymalnie pięć zrzuty ekranu na jednostki SKU. |
 | **Nazwa**                  | Nazwa lub tytuł. Składać z maksymalnie 100 znaków.                             |
-| **Obraz**                 | Obraz przechwytywania ekranie, format PNG 533 x 324 pikseli                                         |
+| **Obraz**                 | Obraz przechwytywania ekranie, format PNG 533 x 324 pikseli                               |
 | *Filmy wideo*  | Filmy wideo są wyświetlane na stronie szczegółów produktu. Są one dobrym sposobem na wizualne przedstawianie działanie modułu usługi IoT Edge i sposób jej działania. |
-| **Nazwa**                  | Nazwa lub tytuł. Składać z maksymalnie 100 znaków.                              |
+| **Nazwa**                  | Nazwa lub tytuł. Składać z maksymalnie 100 znaków.                             |
 | **Link**                  | Adres URL filmu wideo, w serwisie YouTube lub Vimeo                                        |
-| **Miniatura**             | format PNG 533 x 324 pikseli                                                           |
+| **Miniatura**             | format PNG 533 x 324 pikseli                                                     |
+|  |  |
 
 
 ### <a name="logo-guidelines"></a>Wytyczne dotyczące logo
@@ -114,6 +112,7 @@ Wszystkie logo, które są przekazywane do portalu Cloud Partner powinien postę
 *  Nie używaj gradientu tła na logo.
 *  Należy unikać wprowadzania tekstu — nawet Twoja firma lub marką — na logo. Wygląd i działanie logo powinno być "płaską" i unikać gradientów.
 *  Nie rozciąganie logo.
+
 
 #### <a name="hero-logo"></a>Logo Duży obraz
 
@@ -158,16 +157,18 @@ Po pomyślnym opublikowaniu oferty, zweryfikowaniu połączenia potencjalnych kl
 3. amp.com the pricing tab
 4. amp.com the tile -->
 
+
 ## <a name="legal"></a>Informacje prawne
 
 Ta sekcja umożliwia dostarczanie dwa dokumenty prawne, które są wymagane dla każdej oferty: Zasady ochrony prywatności i warunki użytkowania.
 
-|  **Pole**                |     **Opis**                                                          |
-|  ---------                |     ---------------                                                          |
-| **Adres URL zasad ochrony prywatności**    | Adres URL do zasad zachowania opublikowane                                            |
-| **Warunki użytkowania**          | Warunki użytkowania jako inline proste HTML lub link do Twoich przesłanych warunków użytkowania       |
+|  **Pole**                    |     **Opis**                                                          |
+|  ---------                    |     ---------------                                                          |
+| **Adres URL zasad ochrony prywatności\***      | Adres URL do zasad zachowania opublikowane                                            |
+| **Użyj standardowych Constract\***  | Określa, czy użyć standardowego szablonu umowy firmy Microsoft.  Aby uzyskać więcej informacji, zobacz [standardowej umowy](https://docs.microsoft.com/azure/marketplace/standard-contract).   |
+| **Warunki użytkowania\***            | *Warunki użytkowania* jako inline proste HTML lub link do Twoich przesłanych warunków strony     |
+|  |  |
 
-<br/>
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/19/2017
 ms.author: magoedte
-ms.openlocfilehash: f431613d9fa1020f523e03c90cbe31f4d42ccf42
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 568ff99364923c43b7199bed1dacd32cf0d18ab9
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60596058"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64571155"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Rozwiązanie Agent Health w usłudze Azure Monitor
 Rozwiązanie Agent Health na platformie Azure pomoże Ci zrozumieć, dla wszystkich agentów raportujących bezpośrednio do obszaru roboczego usługi Log Analytics w usłudze Azure Monitor lub grupy zarządzania programu System Center Operations Manager podłączony do usługi Azure Monitor, które są nie odpowiada i przesyłanie danych operacyjnych.  Można także śledzić liczbę wdrożonych agentów i ich geograficzne rozmieszczenie oraz wykonywać inne zapytania dające informacje na temat rozmieszczenia agentów wdrożonych na platformie Azure, w innych środowiskach w chmurze i lokalnie.    
@@ -63,7 +63,7 @@ Kliknij kafelek **Agent Health**, aby otworzyć pulpit nawigacyjny rozwiązania 
 | Rozkład według wersji agenta | Rozkład różnych wersji agentów zainstalowanych w Twoim środowisku i liczba agentów dla każdej z nich.|
 | Rozkład według kategorii agenta | Rozkład różnych kategorii agentów wysyłających zdarzenia pulsu: bezpośredni agenci, agenci programu OpsMgr i serwer zarządzania programu OpsMgr.|
 | Rozkład według grupy zarządzania | Rozkład różnych grup zarządzania programu Operations Manager w środowisku.|
-| Lokalizacja geograficzna agentów | Rozkład różnych krajów, w których masz agentów, i łączna liczba agentów zainstalowanych w każdym kraju.|
+| Lokalizacja geograficzna agentów | Rozkład różnych krajów/regionów, których masz agentów i łączna liczba liczbę agentów, które zostały zainstalowane w każdym kraju/regionu.|
 | Liczba zainstalowanych bram | Liczba serwerów, które mają zainstalowanej bramy usługi Log Analytics, a lista tych serwerów.|
 
 ![Przykład pulpitu nawigacyjnego rozwiązania Agent Health](./media/solution-agenthealth/agenthealth-solution-dashboard.png)  

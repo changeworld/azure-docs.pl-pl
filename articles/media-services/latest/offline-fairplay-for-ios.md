@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
-ms.openlocfilehash: 25bc7798853d350139a7802eaad68d52a1d7d99f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 58315e639a54b67bdef6751004b7a768e4f92224
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60996629"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937519"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>W trybie offline FairPlay Streaming dla systemu iOS 
 
@@ -36,8 +36,8 @@ Zarządzania prawami cyfrowymi (DRM) / szyfrowania Advanced Encryption Standard 
 Oprócz ochrony zawartości do przesyłania strumieniowego online za pośrednictwem różnych protokołów transmisji strumieniowej, trybu offline dla chronionej zawartości jest również funkcją często. Obsługa trybu offline jest wymagane w następujących scenariuszach:
 
 * Odtwarzanie, gdy połączenie z Internetem nie jest dostępne, takich jak podczas podróży.
-* Niektórzy dostawcy zawartości może nie zezwalaj na dostarczanie licencji DRM poza obramowania kraju. Użytkownicy, którzy chcą obejrzeć zawartość podczas podróży poza jego krajem, pobierania w trybie offline jest potrzebna.
-* W niektórych krajach jest nadal ograniczona dostępność internetowych i/lub przepustowości. Użytkownicy mogą zdecydować się na pobieranie najpierw, aby móc obejrzeć zawartość w rozdzielczości, która jest wystarczająco wysoka, środowisko przeglądania zadowalające. W takim przypadku problem zwykle nie jest dostępność sieci, ale ograniczona przepustowość sieci. Ott (OTT) / dostawców platformę wideo online (OVP) żądania pomocy technicznej w trybie offline.
+* Niektórzy dostawcy zawartości może nie zezwalaj na dostarczanie licencji DRM poza krawędź kraj/region. Użytkownicy, którzy chcą obejrzeć zawartość podczas podróży poza kraj/region, w trybie offline pobierania jest potrzebna.
+* W niektórych krajach/regionach jest nadal ograniczona dostępność internetowych i/lub przepustowości. Użytkownicy mogą zdecydować się na pobieranie najpierw, aby móc obejrzeć zawartość w rozdzielczości, która jest wystarczająco wysoka, środowisko przeglądania zadowalające. W takim przypadku problem zwykle nie jest dostępność sieci, ale ograniczona przepustowość sieci. Ott (OTT) / dostawców platformę wideo online (OVP) żądania pomocy technicznej w trybie offline.
 
 W tym artykule omówiono obsługę trybu offline FairPlay Streaming (FPS), która jest przeznaczony dla urządzeń z systemem iOS 10 lub nowszym. Ta funkcja nie jest obsługiwana dla innych platform firmy Apple, takich jak systemu watchOS, tvOS lub Safari w systemie macOS.
 

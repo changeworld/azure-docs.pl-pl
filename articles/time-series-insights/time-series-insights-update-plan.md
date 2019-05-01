@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: 251e95744f57d9b5e42df9bdc3743f4880ff5381
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0472f53d11ec4c990fcf6face633444fe66ba937
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58077000"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64702348"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Planowanie środowiska Azure czas Series Insights w wersji zapoznawczej
 
@@ -90,9 +90,7 @@ Usługa Time Series Insights to usługa o wysokiej dostępności, która używa 
 Aby uzyskać informacji na temat wbudowanych funkcji na platformie Azure dla ciągłości działania i odzyskiwania po awarii (BCDR), zobacz [ciągłości biznesowej platformy Azure — wskazówki techniczne](https://docs.microsoft.com/azure/resiliency/resiliency-technical-guidance). Aby uzyskać wskazówki dotyczące architektury strategii dla aplikacji platformy Azure w celu osiągnięcia wysokiej dostępności i odzyskiwania po awarii, zobacz dokument na [odzyskiwania po awarii i wysoka dostępność dla aplikacji platformy Azure](https://docs.microsoft.com/azure/architecture/resiliency/index).
 
 > [!NOTE]
-> 
->  Usługa Time Series Insights nie ma wbudowanych BCDR.
-> Domyślnie usługi Azure Storage, Azure IoT Hub i Azure Event Hubs mają wbudowane odzyskiwania.
+> Usługa Time Series Insights nie ma wbudowanych BCDR. Domyślnie usługi Azure Storage, Azure IoT Hub i Azure Event Hubs mają wbudowane odzyskiwania.
 
 Aby dowiedzieć się więcej, przeczytaj:
 
@@ -115,7 +113,6 @@ Wykonaj następujące kroki, aby utworzyć i użyć dodatkowej środowiska usłu
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby dowiedzieć się więcej, przeczytaj:
+- Przeczytaj więcej na temat [magazynu i transferu danych przychodzących](./time-series-insights-update-storage-ingress.md) w serii czasu Insights (wersja zapoznawcza).
 
-- [Magazyn i ruch przychodzący usługi Azure Time Series Insights w wersji zapoznawczej](./time-series-insights-update-storage-ingress.md)
-- [Modelowanie danych](./time-series-insights-update-tsm.md)
+- Dowiedz się więcej o [modelowania danych](./time-series-insights-update-tsm.md) w serii czasu Insights (wersja zapoznawcza).

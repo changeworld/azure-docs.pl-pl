@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: ae89ab811015fca9bcb50fcc149534754533c25f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 826a38dd80db7cd0e6e500949d2c259c3808c0a9
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60337750"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64914952"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Rozwiązywanie problemów z awarii usługi Azure Backup Problemy związane z rozszerzenia lub agenta
 
@@ -121,9 +121,9 @@ Ostatnie zadanie tworzenia kopii zapasowej nie powiodło się, ponieważ ma istn
 3. W menu pulpitu nawigacyjnego magazynu kliknij **zadania tworzenia kopii zapasowej** Wyświetla wszystkie zadania tworzenia kopii zapasowej.
 
     * Jeśli zadanie tworzenia kopii zapasowej jest w toku, zaczekaj na jej ukończyć lub anulować zadanie tworzenia kopii zapasowej.
-        * Aby anulować zadanie tworzenia kopii zapasowej kliknij prawym przyciskiem myszy zadanie tworzenia kopii zapasowej, a następnie kliknij przycisk **anulować** lub użyj [PowerShell](https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0).
+        * Aby anulować zadanie tworzenia kopii zapasowej kliknij prawym przyciskiem myszy zadanie tworzenia kopii zapasowej, a następnie kliknij przycisk **anulować** lub użyj [PowerShell](https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0).
     * Jeśli konfiguracja została zmieniona kopii zapasowej w innym magazynie, następnie upewnij się, Brak zadań tworzenia kopii zapasowych działające w starym magazynie. Jeśli istnieje następnie anulować zadanie tworzenia kopii zapasowej.
-        * Aby anulować zadanie tworzenia kopii zapasowej kliknij prawym przyciskiem myszy zadanie tworzenia kopii zapasowej, a następnie kliknij przycisk **anulować** lub użyj [programu PowerShell](https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0)
+        * Aby anulować zadanie tworzenia kopii zapasowej kliknij prawym przyciskiem myszy zadanie tworzenia kopii zapasowej, a następnie kliknij przycisk **anulować** lub użyj [programu PowerShell](https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0)
 4. Ponów próbę wykonania operacji tworzenia kopii zapasowej.
 
 Jeśli zaplanowanych operacji tworzenia kopii zapasowej trwa dłużej powodującą konflikt z następnym konfiguracji kopii zapasowej następnie przejrzyj [najlepszych rozwiązań](backup-azure-vms-introduction.md#best-practices), [wydajności tworzenia kopii zapasowych](backup-azure-vms-introduction.md#backup-performance) i [przywrócić brany pod uwagę ](backup-azure-vms-introduction.md#backup-and-restore-considerations).

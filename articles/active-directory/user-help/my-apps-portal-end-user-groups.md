@@ -14,11 +14,11 @@ ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 578ca5fa1de338a92280e2dc7cc252fb616e2111
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60483411"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64706684"
 ---
 # <a name="update-your-groups-info-from-the-my-apps-portal"></a>Zaktualizować swoje informacje grup z portalu Moje aplikacje
 Za pomocą swojego konta firmowego lub szkolnego oparta na sieci web **Moje aplikacje** portalu, aby wyświetlić i uruchomić wiele organizacji aplikacji w chmurze, aby zaktualizować niektóre z Twoich informacji profilu i konta, aby wyświetlić swoje **grup** informacji i wykonywać **przeglądów dostępu** dla aplikacji i grup. Jeśli nie masz dostępu do **Moje aplikacje** portal, należy skontaktować się z pomocą techniczną o uprawnienia.

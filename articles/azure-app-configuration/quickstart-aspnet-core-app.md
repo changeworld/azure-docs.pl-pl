@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: b527199fd7b61609f292b13c73bfc1d6e0a6b896
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 90a39693778e01da76baf19765be8801f55813b7
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60203795"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64683052"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Szybki start: Tworzenie aplikacji platformy ASP.NET Core używającej usługi Azure App Configuration
 
@@ -28,6 +28,8 @@ Usługa Azure App Configuration to zarządzana usługa konfiguracji na platformi
 Platforma ASP.NET Core tworzy obiekt jednej konfiguracji na podstawie wartości klucza przy użyciu ustawienia ze źródeł danych, które są określone przez aplikację. Te źródła danych są znane jako *dostawcy konfiguracji*. Ponieważ konfiguracja aplikacji .NET Core, klient jest implementowany jako takie dostawcy, usługa wygląda innego źródła danych.
 
 Wykonaj kroki w tym przewodniku Szybki Start, można użyć dowolnego edytora kodu. [Visual Studio Code](https://code.visualstudio.com/) jest doskonałą opcją dostępne w Windows, macOS i platformy Linux.
+
+![Lokalne uruchamianie aplikacji z przewodnika Szybki start](./media/quickstarts/aspnet-core-app-launch-local.png)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -118,15 +120,12 @@ Dodaj [narzędzie Menedżer klucz tajny](https://docs.microsoft.com/aspnet/core/
             .ConfigureAppConfiguration((hostingContext, config) =>
             {
                 var settings = config.Build();
-                config.AddAzureAppConfiguration(options => {
-                    options.Connect(settings["ConnectionStrings:AppConfig"])
-                           .SetOfflineCache(new OfflineFileCache());
-                });
+                config.AddAzureAppConfiguration(settings["ConnectionStrings:AppConfig"]);
             })
             .UseStartup<Startup>();
     ```
 
-6. Otwórz Index.cshtml w widokach > Strona główna katalogu i zastąp jego zawartość następującym kodem:
+6. Otwórz *Index.cshtml* w widokach > Strona główna katalogu i zastąp jego zawartość następującym kodem:
 
     ```html
     @using Microsoft.Extensions.Configuration
@@ -152,7 +151,7 @@ Dodaj [narzędzie Menedżer klucz tajny](https://docs.microsoft.com/aspnet/core/
     </html>
     ```
 
-7. Otwórz _Layout.cshtml w widokach > udostępniony katalog i zastąp jego zawartość następującym kodem:
+7. Otwórz *_Layout.cshtml* w widokach > udostępniony katalog i zastąp jego zawartość następującym kodem:
 
     ```html
     <!DOCTYPE html>
@@ -190,8 +189,6 @@ Dodaj [narzędzie Menedżer klucz tajny](https://docs.microsoft.com/aspnet/core/
         dotnet run
 
 3. Otwórz okno przeglądarki i przejdź do `http://localhost:5000`, która jest domyślny adres URL aplikacji sieci web hostowanych lokalnie.
-
-    ![Lokalne uruchamianie aplikacji z przewodnika Szybki start](./media/quickstarts/aspnet-core-app-launch-local.png)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

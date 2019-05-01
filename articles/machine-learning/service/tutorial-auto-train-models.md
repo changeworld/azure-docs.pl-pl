@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: trbye
 ms.date: 04/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: ee024d627efc42a87d7f6b1971fa8e2e92357a00
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4d09fca68af55b577c47316363ed386e98525baf
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60760210"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925760"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Samouczek: Kompilowanie modelu regresji przy użyciu zautomatyzowanego uczenia maszynowego
 
@@ -101,7 +101,7 @@ import os
 
 ### <a name="configure-workspace"></a>Konfigurowanie obszaru roboczego
 
-Utwórz obiekt obszaru roboczego na podstawie istniejącego obszaru roboczego. A [obszaru roboczego](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) to klasa, która akceptuje usługi Azure information subskrypcji i zasobów. Tworzy ona również zasób w chmurze służący do monitorowania i śledzenia przebiegów modelu.
+Utwórz obiekt obszaru roboczego na podstawie istniejącego obszaru roboczego. A [obszaru roboczego](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) to klasa, która akceptuje usługi Azure information subskrypcji i zasobów. Tworzy ona również zasób w chmurze służący do monitorowania i śledzenia przebiegów modelu.
 
 Metoda `Workspace.from_config()` odczytuje plik **config.json** i ładuje szczegóły do obiektu o nazwie `ws`.  Obiekt `ws` jest używany w kodzie w tym samouczku.
 

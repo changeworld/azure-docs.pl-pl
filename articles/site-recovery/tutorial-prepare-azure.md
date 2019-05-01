@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 3d2b22fc507b209a96870daa8bf12ea9ab60a466
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: d2de871176917dcc24d910b3742bdb2700c4f25d
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617418"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64691770"
 ---
 # <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>Przygotowywanie zasobów platformy Azure na potrzeby odzyskiwania po awarii maszyn lokalnych
 
@@ -35,7 +35,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
 - Przegląd architektury [VMware](vmware-azure-architecture.md), [funkcji Hyper-V](hyper-v-azure-architecture.md), i [serwera fizycznego](physical-azure-architecture.md) odzyskiwania po awarii.
-- Przeczytaj często zadawane pytania dotyczące [VMware](vmware-azure-common-questions.md) i Hyper-V(hyper-v-azure-common-questions.md)
+- Przeczytaj często zadawane pytania dotyczące [VMware](vmware-azure-common-questions.md) i [funkcji Hyper-V](hyper-v-azure-common-questions.md)
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/). Następnie zaloguj się do [witryny Azure portal](https://portal.azure.com).
 

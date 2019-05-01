@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: a067d83c32f11e0bf091b0efc5528995ab6a021a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 04/26/2019
+ms.openlocfilehash: cae806953721f3cedead023f013c7d1d585efeb6
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60341646"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64573389"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>Usługa Azure SQL Database słownik pojęć
 
@@ -39,6 +39,7 @@ Obiekty bazy danych|Baza danych Azure SQL Database|Wszystkie bazy danych w usłu
 ||Bazy danych ogólnego przeznaczenia|Bazy danych utworzone w ramach lub przeniesiony do warstwy usług ogólnego przeznaczenia modelu zakupu opartego na rdzeniach wirtualnych|
 ||Bazy danych na dużą skalę|Bazy danych utworzone w ramach lub przeniesiony do warstwy usług na dużą skalę modelu zakupu opartego na rdzeniach wirtualnych|
 ||Krytyczne bazy danych firmy|Bazy danych utworzone w ramach lub przeniesiony do warstwy usług krytycznych biznesowej modelu zakupu opartego na rdzeniach wirtualnych|
+||Elastycznie bazy danych|Bazy danych skonfigurowanych w warstwie zainicjowanych zasobów obliczeniowych|
 |[Modelami zakupów i zasoby](sql-database-purchase-models.md)|Model zakupu w oparciu o jednostki DTU|[Model zakupu w oparciu o jednostki DTU](sql-database-service-tiers-dtu.md)|
 ||Model zakupów oparty na rdzeniach wirtualnych|[model zakupu w oparciu o rdzeń wirtualny](sql-database-service-tiers-vcore.md)|
 ||Rdzeń wirtualny|Podstawowa dostarczane do systemu operacyjnego gościa przez funkcję hypervisor.|

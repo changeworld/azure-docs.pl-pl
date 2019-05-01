@@ -11,30 +11,25 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: 46a620900896d07273da22e53171330b85d3f1ec
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.date: 04/26/2019
+ms.openlocfilehash: 89ff11246c7cd36732df1332da94ec5318d7f1d7
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59360189"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574092"
 ---
-# <a name="azure-sql-database-purchasing-models"></a>Usługa Azure SQL Database zakupu modeli
+# <a name="choose-between-the-vcore-and-the-dtu-purchasing-model"></a>Wybieranie między rdzeni wirtualnych i model zakupu jednostek DTU
 
 Usługa Azure SQL Database umożliwia łatwy zakup w pełni zarządzany aparat bazy danych PaaS, który spełnia Twoje potrzeby wydajności i kosztów. W zależności od modelu wdrażania usługi Azure SQL Database można wybrać model zakupu, która spełnia Twoje potrzeby:
-
-- [model zakupu w oparciu o rdzeń wirtualny](sql-database-service-tiers-vcore.md) (zalecane), pozwala wybrać dokładne zalecenia dotyczące ilości pojemność magazynu i obliczeń potrzebne dla danego obciążenia.
-- [Model zakupu w oparciu o jednostki DTU](sql-database-service-tiers-dtu.md) , aby wybrać powiązane zasoby obliczeniowe i Magazyn pakiety ze zrównoważonym dla typowych obciążeń.
 
 Różne modele zakupu są dostępne w modelach wdrażania usługi Azure SQL Database:
 
 - [Pojedynczej bazy danych](sql-database-single-databases-manage.md) i [puli elastycznej](sql-database-elastic-pool.md) opcje wdrażania w [usługi Azure SQL Database](sql-database-technical-overview.md) oferują zarówno [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) i [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md).
 - [Wystąpienia zarządzanego](sql-database-managed-instance.md) opcja wdrożenia w usłudze Azure SQL Database tylko oferuje [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md).
 
-> [!IMPORTANT]
-> [Warstwę usługi na dużą skalę (wersja zapoznawcza)](sql-database-service-tier-hyperscale.md) w publicznej wersji zapoznawczej tylko w przypadku pojedynczych baz danych za pomocą rdzeni wirtualnych zakupem modelu.
 
-Następujących tabel i wykresów porównania i porównać te dwa modele zakupu.
+Następujących tabel i wykresów porównania i porównać rdzeni wirtualnych i jednostek DTU, zakup modeli.
 
 |**Model zakupu**|**Opis**|**Najlepsze dla**|
 |---|---|---|
@@ -46,7 +41,10 @@ Następujących tabel i wykresów porównania i porównać te dwa modele zakupu.
 
 ## <a name="compute-costs"></a>Koszty operacji obliczeniowych
 
-Koszt obliczeń odpowiada moc obliczeniową całkowita, które jest obsługiwane dla aplikacji. W warstwie krytyczne usługi biznesowej firma Microsoft automatycznie Przydziel co najmniej 3 replik. Aby uwzględnić ten dodatkowy przydział zasobów obliczeniowych, cena w modelu zakupu opartego na rdzeniach wirtualnych jest większa w warstwie krytyczne usługi biznesowe, niż w warstwie ogólnego przeznaczenia około 2.7 x. Z tego samego powodu wyższe cena magazynu za GB w warstwie krytyczne biznesowych odzwierciedla wysokiej We/Wy i małe opóźnienia magazyn SSD. W tym samym czasie koszt magazynu kopii zapasowych nie jest różnica między tymi warstwami dwóch usług, ponieważ w obu przypadkach używamy klasę magazynu w warstwie standardowa.
+### <a name="provisioned-compute-costs"></a>Koszty zainicjowanych zasobów obliczeniowych
+
+W warstwie zainicjowanych zasobów obliczeniowych koszt obliczeń odzwierciedla moc obliczeniową całkowita, które jest obsługiwane dla aplikacji.  W warstwie krytyczne usługi biznesowej firma Microsoft automatycznie Przydziel co najmniej 3 replik. Aby uwzględnić ten dodatkowy przydział zasobów obliczeniowych, cena w modelu zakupu opartego na rdzeniach wirtualnych jest większa w warstwie krytyczne usługi biznesowe, niż w warstwie ogólnego przeznaczenia około 2.7 x. Z tego samego powodu wyższe cena magazynu za GB w warstwie krytyczne biznesowych odzwierciedla wysokiej We/Wy i małe opóźnienia magazyn SSD. W tym samym czasie koszt magazynu kopii zapasowych nie jest różnica między tymi warstwami dwóch usług, ponieważ w obu przypadkach używamy klasę magazynu w warstwie standardowa.
+
 
 ## <a name="storage-costs"></a>Koszty magazynowania
 
@@ -110,7 +108,7 @@ Jeśli chcesz migrować istniejące lokalne lub obciążenie maszyny wirtualnej 
 
 Pule są odpowiednie dla wielu baz danych o określonych wzorcach użycia. Dla danej bazy danych ten wzorzec charakteryzuje się średnio o niskim zapotrzebowaniu, przy użyciu stosunkowo rzadkimi okresami zwiększonego. Usługa SQL Database automatycznie ocenia historyczne użycie zasobów przez bazy danych na istniejącym serwerze usługi SQL Database i zaleca odpowiednią konfigurację puli w witrynie Azure Portal. Aby uzyskać więcej informacji, zobacz [Kiedy należy użyć puli elastycznej?](sql-database-elastic-pool.md)
 
-## <a name="purchase-model-frequently-asked-questions-faq"></a>Model zakupowy — często zadawane pytania (FAQ)
+## <a name="purchase-models-frequently-asked-questions-faq"></a>Kup modeli: często zadawane pytania (FAQ)
 
 ### <a name="do-i-need-to-take-my-application-offline-to-convert-from-a-dtu-based-database-to-a-vcore-based-service-tier"></a>Czy muszę przenieść aplikację do trybu offline można przekonwertować z bazy danych oparty na jednostkach DTU do warstwy usług oparte na rdzeniach wirtualnych
 

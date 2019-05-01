@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 10/27/2016
 ms.author: sumuth
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 0887f58ca455dfec0474c8d6a1acba584224f0d7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 1838dbb627a6dec46f817101fc1d0cca0961ef77
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60929454"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574172"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>Często zadawane pytania dotyczące baz danych ClearDB MySQL w usłudze Azure App Service
 Często zadawane pytania odpowiedzi na często zadawane pytania dotyczące używania i kupowanie baz danych ClearDB MySQL dla aplikacji sieci Web platformy Azure.
@@ -49,7 +49,7 @@ Domyślna opcja bazy danych jest Titan, czyli $3.50. Firma Microsoft nie pokazuj
 ## <a name="i-am-running-mysql-on-my-own-azure-virtual-machine-can-i-connect-my-azure-web-app-to-my-database"></a>Używam MySQL na własnych maszyn wirtualnych platformy Azure. Moja aplikacja sieci web platformy Azure można podłączyć do bazy danych?
 Tak. Twoja aplikacja sieci web można połączyć z bazą danych, tak długo, jak Twoja maszyna wirtualna Azure udzielił dostępu zdalnego do aplikacji sieci web. Aby uzyskać więcej informacji, zobacz [zainstalować bazy danych MySQL na maszynie wirtualnej](virtual-machines/windows/classic/mysql-2008r2.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
-## <a name="in-which-countries-are-cleardb-premium-mysql-clusters-supported"></a>W którym kraje są klastry ClearDB MySQL — wersja Premium, obsługiwane?
+## <a name="in-which-countriesregions-are-cleardb-premium-mysql-clusters-supported"></a>W którym kraje/regiony są klastry ClearDB MySQL — wersja Premium, obsługiwane?
 Klastry ClearDB Premium MySQL są dostępne we wszystkich regionach platformy Azure na całym świecie, z wyjątkiem Indie, Australia, Brazylia Południowa i Chiny.
 
 ## <a name="can-i-create-a-new-cluster-prior-to-creating-a-database-with-cleardb-premium-cluster-solution"></a>Można utworzyć nowy klaster, przed utworzeniem bazy danych za pomocą rozwiązania klastra premium ClearDB?
@@ -68,7 +68,7 @@ Użyć podstawowa lub wyższej warstwy cenowej dla aplikacji sieci Web. Baza dan
 W [witryny Azure portal](https://portal.azure.com), możesz skalować w górę ClearDB udostępnionej hostowania bazy danych. Przeczytaj ten artykuł [artykułu](https://blogs.msdn.microsoft.com/appserviceteam/2016/10/06/upgrade-your-cleardb-mysql-database-in-azure-portal/) Aby dowiedzieć się więcej. Obecnie nie obsługujemy uaktualniania klastrów ClearDB — wersja Premium w witrynie Azure portal.
 
 ## <a name="i-cant-see-my-cleardb-database-in-azure-portal"></a>Nie widzę baza danych ClearDB w witrynie Azure portal?
-Jeśli utworzono bazę danych ClearDB w modelu klasycznym nie będzie mógł wyświetlić bazy danych w [witryny Azure Portal](https://portal.azure.com). Nie ma żadnych obejście dla tego scenariusza.
+Jeśli utworzono bazę danych ClearDB w modelu klasycznym nie będzie mógł wyświetlić bazy danych w [witryny Azure portal](https://portal.azure.com). Nie ma żadnych obejście dla tego scenariusza.
 
 ## <a name="who-do-i-contact-for-support-when-my-database-is-down"></a>Skontaktować się z pomocy technicznej, gdy baza danych nie działa?
 Skontaktuj się z pomocą [pomocy technicznej firmy ClearDB](https://www.cleardb.com/developers/help/support) dla dowolnej bazy danych powiązane zagadnienia. Przygotuj się na udostępnianie informacji o subskrypcji platformy Azure.

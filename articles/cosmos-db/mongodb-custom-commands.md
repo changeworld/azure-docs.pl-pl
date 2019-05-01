@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: sngun
-ms.openlocfilehash: aef77f121f20d867c8ec5e764d8c9639c961713d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 94b1048befc8716caf5f7f51adb1f95d047d4077
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60446588"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925652"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>Polecenia rozszerzenia bazy danych MongoDB umożliwia zarządzanie danymi zapisanymi w interfejsie API usługi Azure Cosmos DB dla bazy danych MongoDB 
 
@@ -162,7 +162,7 @@ W poniższej tabeli opisano parametry w ramach polecenia:
 
 |**Pole**|**Typ** |**Opis** |
 |---------|---------|---------|
-| Akcja niestandardowa    | string | Nazwa polecenia niestandardowego. Musi być "CreateDatabase"     |
+| Akcja niestandardowa    | string | Nazwa polecenia niestandardowego. Musi być "CreateCollection"     |
 | kolekcja      | string | Nazwa kolekcji                                   |
 | offerThroughput | int    | Aprowizowana przepływność można ustawić w bazie danych. Jest to parametr opcjonalny |
 | shardKey        | string | Ścieżka klucza fragmentu do utworzenia kolekcji podzielonych na fragmenty. Jest to parametr opcjonalny |

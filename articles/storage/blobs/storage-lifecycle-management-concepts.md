@@ -5,15 +5,15 @@ services: storage
 author: yzheng-msft
 ms.service: storage
 ms.topic: conceptual
-ms.date: 3/20/2019
+ms.date: 4/29/2019
 ms.author: yzheng
 ms.subservice: common
-ms.openlocfilehash: 2de194e501c05ba0bdb9971ca6045e67a42b0fd9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f1fdd1b239301a5340716e1d5d098487afe27f9f
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60392470"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938566"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Zarządzanie usługą Azure Blob storage w cyklu życia
 
@@ -42,7 +42,7 @@ Funkcja zarządzania cyklem życia jest dostępna we wszystkich publicznych regi
 
 ## <a name="add-or-remove-a-policy"></a>Dodawanie lub usuwanie zasad 
 
-Dodawanie, edytowanie lub usuwanie zasady za pomocą witryny Azure portal [programu Azure PowerShell](https://github.com/Azure/azure-powershell/releases), wiersza polecenia platformy Azure [interfejsów API REST](https://docs.microsoft.com/en-us/rest/api/storagerp/managementpolicies), lub narzędzia klienta. W tym artykule przedstawiono sposób zarządzania zasady za pomocą portalu i metod programu PowerShell.  
+Dodawanie, edytowanie lub usuwanie zasady za pomocą witryny Azure portal [programu Azure PowerShell](https://github.com/Azure/azure-powershell/releases), wiersza polecenia platformy Azure [interfejsów API REST](https://docs.microsoft.com/rest/api/storagerp/managementpolicies), lub narzędzia klienta. W tym artykule przedstawiono sposób zarządzania zasady za pomocą portalu i metod programu PowerShell.  
 
 > [!NOTE]
 > Włączenie reguły zapory dla konta magazynu, mogą być zablokowane żądania zarządzania cyklem życia. Zapewniając wyjątków, mogą odblokować te żądania. Pomiń wymagane są: `Logging,  Metrics,  AzureServices`. Aby uzyskać więcej informacji, zobacz sekcję wyjątki w [skonfigurować zapory i sieci wirtualne](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
@@ -80,7 +80,47 @@ $rule1 = New-AzStorageAccountManagementPolicyRule -Name Test -Action $action -Fi
 $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountName $accountName -Rule $rule1
 
 ```
+## <a name="arm-template-with-lifecycle-management-policy"></a>Szablon ARM przy użyciu zasad zarządzania cyklem życia
 
+Można zdefiniować i wdrażania zarządzania cyklem życia jako część wdrożenia rozwiązania platformy Azure przy użyciu szablonów ARM. Poniżej przedstawiono przykładowy szablon wdrażania konta magazynu GPv2 RA-GRS za pomocą zasad zarządzania cyklem życia. 
+
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {},
+  "variables": {
+    "storageAccountName": "[uniqueString(resourceGroup().id)]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "name": "[variables('storageAccountName')]",
+      "location": "[resourceGroup().location]",
+      "apiVersion": "2019-04-01",
+      "sku": {
+        "name": "Standard_RAGRS"
+      },
+      "kind": "StorageV2",
+      "properties": {
+        "networkAcls": {}
+      }
+    },
+    {
+      "name": "[concat(variables('storageAccountName'), '/default')]",
+      "type": "Microsoft.Storage/storageAccounts/managementPolicies",
+      "apiVersion": "2019-04-01",
+      "dependsOn": [
+        "[variables('storageAccountName')]"
+      ],
+      "properties": {
+        "policy": {...}
+      }
+    }
+  ],
+  "outputs": {}
+}
+```
 
 ## <a name="policy"></a>Zasady
 
@@ -305,8 +345,8 @@ W przypadku danych, który został zmodyfikowany i uzyskać dostęp regularnie w
   ]
 }
 ```
-## <a name="faq---i-created-a-new-policy-why-are-the-actions-not-run-immediately"></a>Często zadawane pytania — I utworzyć nowe zasady, dlaczego akcje nie są uruchamiane natychmiast? 
-
+## <a name="faq"></a>Często zadawane pytania 
+**Utworzono nowe zasady, dlaczego akcje nie są uruchamiane natychmiast?**  
 Platforma działa zasady cyklu życia raz dziennie. Po skonfigurowaniu zasad, może upłynąć do 24 godzin w przypadku niektórych działań (np. warstw i usuwanie) do uruchomienia po raz pierwszy.  
 
 ## <a name="next-steps"></a>Kolejne kroki

@@ -1,23 +1,22 @@
 ---
-author: rothja
+author: mdgattuso
 ms.service: billing
 ms.topic: include
-ms.date: 11/09/2018
-ms.author: jroth
-ms.openlocfilehash: b3a610fd1c4da99d1e98a5caea9e1a4151fc1fea
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.date: 04/29/2019
+ms.author: magattus
+ms.openlocfilehash: 0c989aa32c4f4defc9d22a2e510d85d7583ed1c8
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553868"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64951551"
 ---
-| Zasób | Limit domyślny | Limit maksymalny | 
-| --- | --- | --- |
-| Usługa Azure Content Delivery Network profilów |25 |25 |
-| Content Delivery Network punktów końcowych dla profilu |10 |25 |
-| Domeny niestandardowe na punkt końcowy |10 |25 |
+| Resource | Limit domyślny |
+| --- | --- |
+| Usługa Azure Content Delivery Network profilów |25 |
+| Content Delivery Network punktów końcowych dla profilu |25 |
+| Domeny niestandardowe na punkt końcowy |25 |
 
 Subskrypcja Content Delivery Network może zawierać co najmniej jeden profil Content Delivery Network. Profil Content Delivery Network może zawierać jeden lub więcej punktów końcowych Content Delivery Network. Można używać wielu profilów, aby zorganizować punkty końcowe usługi Content Delivery Network, według domeny internetowych, aplikacji sieci web lub innych kryteriów. 
 
-Aby zażądać aktualizacji do Twojej subskrypcji domyślne limity, należy otworzyć bilet pomocy technicznej.
 

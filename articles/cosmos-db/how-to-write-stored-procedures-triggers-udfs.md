@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 12/11/2018
 ms.author: mjbrown
-ms.openlocfilehash: c94509fb39d1c5ebb9aec1acfe1cbacc9cd6fd4a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: eaf2d4a5a34a42867debcff4163f692431c8e0ab
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61052394"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64573852"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Jak pisać procedury składowane, wyzwalacze i funkcje zdefiniowane przez użytkownika w usłudze Azure Cosmos DB
 
@@ -48,7 +48,7 @@ Po napisaniu procedurę składowaną należy zarejestrować w kolekcji. Aby dowi
 
 ### <a id="create-an-item"></a>Tworzenie elementu za pomocą procedury składowanej
 
-Po utworzeniu elementu za pomocą procedury składowanej jest on wstawiany do kontenera usługi Azure Cosmos DB, a następnie dla tego nowo utworzonego elementu jest zwracany identyfikator. Tworzenie elementu jest operacją asynchroniczną i zależy od funkcji wywołania zwrotnego języka JavaScript. Funkcja wywołania zwrotnego ma dwa parametry — jeden dla obiektu błędu na wypadek, gdyby operacja zakończyła się niepowodzeniem, a drugi dla wartości zwracanej, czyli w tym przypadku dla utworzonego obiektu. Wewnątrz wywołania zwrotnego można obsłużyć wyjątek lub zgłosić błąd. W przypadku, gdy wywołanie zwrotne nie zostanie podane i wystąpi błąd, środowisko uruchomieniowe usługi Azure Cosmos DB zgłosi błąd. 
+Po utworzeniu elementu za pomocą procedury składowanej element jest wstawiany do kontenera usługi Azure Cosmos DB i zwracany jest identyfikator nowo utworzonego elementu. Tworzenie elementu jest operacją asynchroniczną i zależy od funkcji wywołania zwrotnego języka JavaScript. Funkcja wywołania zwrotnego ma dwa parametry — jeden dla obiektu błędu na wypadek, gdyby operacja zakończyła się niepowodzeniem, a drugi dla wartości zwracanej, czyli w tym przypadku dla utworzonego obiektu. Wewnątrz wywołania zwrotnego można obsłużyć wyjątek lub zgłosić błąd. W przypadku, gdy wywołanie zwrotne nie zostanie podane i wystąpi błąd, środowisko uruchomieniowe usługi Azure Cosmos DB zgłosi błąd. 
 
 Procedura składowana obejmuje również parametr umożliwiający ustawienie opisu — jest to wartość logiczna. Jeśli dla tego parametru zostanie ustawiona wartość „true”, a opisu nie będzie, procedura składowana zgłosi wyjątek. W przeciwnym razie pozostała część procedury składowanej zostanie wykonana.
 

@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: overview
 ms.date: 02/20/2019
 ms.author: pafarley
-ms.openlocfilehash: dcfb50c58f1205a5ab31c3fc6b9b22fdb503e4ec
-ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
+ms.openlocfilehash: 6fba9e6387e60f2156ee01461c3bba22405376fc
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2019
-ms.locfileid: "57588962"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64729560"
 ---
 # <a name="what-is-the-azure-face-api"></a>Co to jest interfejs API rozpoznawania twarzy na platformie Azure?
 
@@ -24,18 +24,18 @@ Interfejs API rozpoznawania twarzy oferuje kilka różnych funkcji opisanych w p
 
 ## <a name="face-detection"></a>Wykrywanie twarzy
 
-Interfejs API rozpoznawania twarzy może wykrywać ludzkie twarzy na obrazie i zwracać współrzędne prostokąta ich lokalizacji. Opcjonalnie funkcja wykrywania twarzy może wyodrębniać szereg atrybutów dotyczących twarzy, takich jak postawa, ułożenie głowy, płeć, wiek, emocje, zarost i okulary.
+Interfejs API rozpoznawania twarzy może wykrywać ludzkie twarzy na obrazie i zwracać współrzędne prostokąta ich lokalizacji. Opcjonalnie wykrywanie twarzy można wyodrębnić szereg związane z twarzy atrybutów, takich jak poza siedzibę, płeć, wiek, emocje, zarost i okularów.
 
-> [!NOTE] 
+> [!NOTE]
 > Funkcja wykrywania twarzy jest również dostępna za pośrednictwem [interfejsu API przetwarzania obrazów](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home), ale aby wykonywać dalsze operacje przy użyciu danych twarzy, należy użyć interfejsu API rozpoznawania twarzy (tej usługi).
 
 ![Obraz przedstawiający kobietę i mężczyznę z prostokątami narysowanymi wokół twarzy oraz wyświetlonym wiekiem i płcią](./Images/Face.detection.jpg)
 
-Aby uzyskać więcej informacji na temat wykrywania twarzy, zobacz [poradnik wykrywanie twarzy](face-api-how-to-topics/howtodetectfacesinimage.md), lub Wyszukaj [API wykrywania](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) dokumentację referencyjną.
+Aby uzyskać więcej informacji na temat wykrywania twarzy, zobacz [wykrywanie twarzy](concepts/face-detection.md) pojęcia artykule lub Przejdź [API wykrywania](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) dokumentację referencyjną.
 
 ## <a name="face-verification"></a>Weryfikacja twarzy
 
-Interfejs API weryfikacji wykonuje uwierzytelnianie względem dwóch wykrytych twarzy lub jednego obiektu osoby na podstawie jednej wykrytej twarzy. W praktyce ocenia on, czy dwie twarze należą do tej samej osoby. Jest to potencjalnie przydatne w scenariuszach związanych z ochroną bezpieczeństwa. Aby uzyskać więcej informacji, zobacz [Verify API (Interfejs API weryfikacji)](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a).
+Interfejs API weryfikacji wykonuje uwierzytelnianie względem dwóch wykrytych twarzy lub jednego obiektu osoby na podstawie jednej wykrytej twarzy. W praktyce ocenia on, czy dwie twarze należą do tej samej osoby. Jest to potencjalnie przydatne w scenariuszach związanych z ochroną bezpieczeństwa. Aby uzyskać więcej informacji, zobacz [rozpoznawania twarzy](concepts/face-recognition.md) przewodnik pojęcia lub [Sprawdź API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) dokumentację referencyjną.
 
 ## <a name="find-similar-faces"></a>Wyszukiwanie podobnych twarzy
 
@@ -49,11 +49,11 @@ A to są twarze do przeszukania:
 
 ![Pięć obrazów uśmiechniętych osób. Obrazy a) i b) przedstawiają tę samą osobę](./Images/FaceFindSimilar.Candidates.jpg)
 
-W przypadku wyszukiwania czterech podobnych twarzy tryb **matchPerson** zwraca obrazy (a) i (b), czyli twarze należące do tej samej osoby, co twarz docelowa. Tryb **matchFace** zwraca obrazy (a), (b), (c) i (d) &mdash; dokładnie cztery wybrane obrazy, nawet jeśli niektóre z nich przedstawiają inne osoby lub jeśli podobieństwo jest niewielkie. Aby uzyskać więcej informacji, zobacz [Find Similar API (Interfejs API wyszukiwania podobnych twarzy)](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237).
+W przypadku wyszukiwania czterech podobnych twarzy tryb **matchPerson** zwraca obrazy (a) i (b), czyli twarze należące do tej samej osoby, co twarz docelowa. Tryb **matchFace** zwraca obrazy (a), (b), (c) i (d) &mdash; dokładnie cztery wybrane obrazy, nawet jeśli niektóre z nich przedstawiają inne osoby lub jeśli podobieństwo jest niewielkie. Aby uzyskać więcej informacji, zobacz [rozpoznawania twarzy](concepts/face-recognition.md) przewodnik pojęcia lub [znaleźć podobne API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) dokumentację referencyjną.
 
 ## <a name="face-grouping"></a>Grupowanie twarzy
 
-Interfejs API grupowania dzieli zestaw nieznanych twarzy na kilka grup na podstawie podobieństwa. Każda grupa jest odpowiednim rozłącznym podzestawem oryginalnego zestawu twarzy. Wszystkie twarze w grupie prawdopodobnie należą do tej samej osoby, ale dla jednej osoby może istnieć kilka różnych grup (różniących się jednym elementem, na przykład wyrazem twarzy). Aby uzyskać więcej informacji, zobacz [Group API (Interfejs API grupowania)](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238).
+Interfejs API grupowania dzieli zestaw nieznanych twarzy na kilka grup na podstawie podobieństwa. Każda grupa jest odpowiednim rozłącznym podzestawem oryginalnego zestawu twarzy. Wszystkie twarze w grupie prawdopodobnie należą do tej samej osoby, ale dla jednej osoby może istnieć kilka różnych grup (różniących się jednym elementem, na przykład wyrazem twarzy). Aby uzyskać więcej informacji, zobacz [rozpoznawania twarzy](concepts/face-recognition.md) przewodnik koncepcje lub [API grupy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238) dokumentację referencyjną.
 
 ## <a name="person-identification"></a>Identyfikacja osoby
 
@@ -65,7 +65,7 @@ Poniższa ilustracja przedstawia przykład bazy danych o nazwie „myfriends”.
 
 Po utworzeniu i przeprowadzeniu uczenia bazy danych można wykonać identyfikację nowo wykrytej twarzy względem grupy. Jeśli twarz zostanie zidentyfikowana jako należąca do osoby w grupie, zostanie zwrócony obiekt osoby.
 
-Aby uzyskać więcej informacji na temat identyfikowania osób, zobacz [Identify API (Interfejs API identyfikacji)](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239).
+Aby uzyskać więcej informacji na temat identyfikacji osoby zobacz [rozpoznawania twarzy](concepts/face-recognition.md) przewodnik pojęcia lub [identyfikowania interfejsu API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) dokumentację referencyjną.
 
 ## <a name="use-containers"></a>Korzystanie z kontenerów
 
@@ -80,9 +80,10 @@ Następujące przykładowe aplikacje pokazują kilka sposobów używania interfe
 
 ## <a name="data-privacy-and-security"></a>Prywatność i zabezpieczenia danych
 
-Podobnie jak w przypadku wszystkich usług Cognitive Services, deweloperzy korzystający z usługi rozpoznawania twarzy powinni wiedzieć o zasadach firmy Microsoft dotyczących danych klientów. Zobacz [stronę usług Cognitive Services](https://www.microsoft.com/en-us/trustcenter/cloudservices/cognitiveservices) w Centrum zaufania firmy Microsoft, aby dowiedzieć się więcej.
+Podobnie jak w przypadku wszystkich usług Cognitive Services, deweloperzy korzystający z usługi rozpoznawania twarzy powinni wiedzieć o zasadach firmy Microsoft dotyczących danych klientów. Zobacz [stronę usług Cognitive Services](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) w Centrum zaufania firmy Microsoft, aby dowiedzieć się więcej.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 Wykonaj czynności opisane w przewodniku Szybki start, aby zaimplementować prosty scenariusz wykrywania twarzy w kodzie.
+
 - [Szybki start: wykrywanie twarzy na obrazie za pomocą zestawu .NET SDK przy użyciu języka C#](quickstarts/csharp.md) (inne języki są dostępne)

@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 04/16/2019
-ms.openlocfilehash: fa19ea0c7ebeea0170822db0dae298f84e958983
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 399e2585f541f28b3880e69b508cfd643b2f2263
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60006135"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64686288"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Architektura łączności dla wystąpienia zarządzanego usługi Azure SQL Database
 
@@ -80,7 +80,7 @@ Firma Microsoft zarządza wystąpienia zarządzanego przy użyciu punktu końcow
 Podczas połączenia start wewnątrz wystąpienia zarządzanego (podobnie jak w przypadku tworzenia kopii zapasowych i dzienników inspekcji), ruch jest wyświetlana do uruchamiania z punktu końcowego zarządzania publicznego adresu IP. Można ograniczyć dostęp do usług publicznych z wystąpienia zarządzanego przez ustawienie reguły zapory zezwalające na tylko adres IP wystąpienia zarządzanego. Aby uzyskać więcej informacji, zobacz [Sprawdź wystąpienia zarządzanego wbudowanej zapory](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md).
 
 > [!NOTE]
-> Traffice prowadzącego do usług platformy Azure, które znajdują się w regionie wystąpienia zarządzanego jest zoptymalizowany i z tego powodu nie NATed wystąpień zarządzanych zarządzania punktu końcowego publicznego adresu IP. Dlatego jeśli musisz użyć adresu IP na podstawie reguł zapory, najczęściej w celu skorzystania z magazynu usługi musi być w innym regionie z wystąpienia zarządzanego.
+> Zoptymalizowane pod kątem ruchu, który prowadzi do usług platformy Azure, które znajdują się w regionie wystąpienia zarządzanego i z tego powodu nie NATed do zarządzanego wystąpienia zarządzania punktu końcowego publicznego adresu IP. Dlatego jeśli musisz użyć adresu IP na podstawie reguł zapory, najczęściej w celu skorzystania z magazynu usługi musi być w innym regionie z wystąpienia zarządzanego.
 
 ## <a name="network-requirements"></a>Wymagania dotyczące sieci
 

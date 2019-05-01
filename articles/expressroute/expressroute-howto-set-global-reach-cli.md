@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/12/2018
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 28df8f59944ccac9d731e15a558d864beed2f3ae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 89ada41c5f3c9cf1ca7a2ac707363f57080c361d
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60364218"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869982"
 ---
 # <a name="configure-expressroute-global-reach-by-using-the-azure-cli"></a>Konfigurowanie usługi ExpressRoute zasięgu globalnym, przy użyciu wiersza polecenia platformy Azure
 
@@ -48,7 +48,7 @@ az account set --subscription <your subscription ID>
 
 ### <a name="identify-your-expressroute-circuits-for-configuration"></a>Identyfikowanie obwodów usługi ExpressRoute dla konfiguracji
 
-Zasięgu globalnym usługi ExpressRoute można włączyć między wszystkie dwa obwody usługi ExpressRoute, tak długo, jak znajdują się w obsługiwane kraje i zostały utworzone w różnych lokalizacjach komunikacji równorzędnej. Jeśli Twoja subskrypcja jest właścicielem zarówno obwody, można wybrać obu obwodu, Uruchom konfigurację, zgodnie z opisem w dalszej części tego artykułu. Jeśli dwa obwody należą do różnych subskrypcji platformy Azure, musisz mieć autoryzacji z jedną subskrypcją platformy Azure i musi upłynąć w jego klucza autoryzacji, po uruchomieniu polecenia konfiguracji w ramach subskrypcji platformy Azure.
+Zasięgu globalnym usługi ExpressRoute można włączyć między wszystkie dwa obwody usługi ExpressRoute, tak długo, jak one znajdują się w obsługiwane kraje/regiony i zostały utworzone w różnych lokalizacjach komunikacji równorzędnej. Jeśli Twoja subskrypcja jest właścicielem zarówno obwody, można wybrać obu obwodu, Uruchom konfigurację, zgodnie z opisem w dalszej części tego artykułu. Jeśli dwa obwody należą do różnych subskrypcji platformy Azure, musisz mieć autoryzacji z jedną subskrypcją platformy Azure i musi upłynąć w jego klucza autoryzacji, po uruchomieniu polecenia konfiguracji w ramach subskrypcji platformy Azure.
 
 ## <a name="enable-connectivity-between-your-on-premises-networks"></a>Włącz łączność między sieci lokalnej
 

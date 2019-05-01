@@ -14,7 +14,7 @@ metadata:
   ms.author: jovanpop-msft
   ms.reviewer: carlrab
   manager: craigg
-  ms.date: 05/06/2019
+  ms.date: 04/26/2019
 abstract:
   description: 'Azure SQL Database to relacyjna baza danych jako usługa (DBaaS), na podstawie najnowszej stabilnej wersji aparatu bazy danych programu Microsoft SQL Server. SQL Database to wysokiej wydajności, łatwy w użyciu, niezawodną i bezpiecznej bazie danych używanej do tworzenia nowych aplikacji, witryn sieci Web i mikrousług w wybranym języku programowania bez konieczności zarządzania infrastrukturą. Dowiedz się, jak używać usługi SQL Database, korzystając z przewodników Szybki Start, samouczków i przykładów.'
   aside:

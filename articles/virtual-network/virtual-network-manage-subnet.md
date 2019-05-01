@@ -4,20 +4,21 @@ titlesuffix: Azure Virtual Network
 description: Dowiedz się, jak dodawanie, zmienianie lub usuwanie podsieci sieci wirtualnej na platformie Azure.
 services: virtual-network
 documentationcenter: na
-author: jimdial
+author: KumudD
+manager: twooley
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
-ms.author: jdial
-ms.openlocfilehash: b4fd3d7cd1d25415ba5938586aee448bdc512aa7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: kumud
+ms.openlocfilehash: 8a8feb0f12fbf5eadcddf239ff2e13c058a566fe
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58100466"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64693305"
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>Dodawanie, zmienianie lub usuwanie podsieci sieci wirtualnej
 

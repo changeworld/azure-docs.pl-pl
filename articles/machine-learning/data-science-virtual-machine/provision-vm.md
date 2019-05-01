@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: gokuma
-ms.openlocfilehash: 0b8349c6c59ac64be15c75b28c083a4483f2f68a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1f9ee5cf28de8fdb824bebf222e5e8d80e22c34f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57896266"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64712439"
 ---
 # <a name="provision-a-windows-data-science-virtual-machine-on-azure"></a>Aprowizowanie maszyny wirtualnej do nauki o danych z Windows na platformie Azure
 
@@ -116,7 +116,7 @@ Można użyć Microsoft Enterprise Library dla skalowalnych R lub Python do cel�
 
 Serwer usługi Machine Learning obsługuje różne statystyki danych big data, modelowanie predykcyjne i zadania uczenia maszynowego. Obsługuje ona pełnego zakresu analytics: eksplorację, analizę, wizualizacji i modelowania. Dzięki użyciu i rozszerzenie typu open source R i Python, serwer Machine Learning jest zgodny z języków R i Python, skryptach i funkcjach. Jest również zgodna z sieci CRAN, pip i pakietów Conda, do analizowania danych w skali przedsiębiorstwa.
 
-Serwer Machine Learning adresy ograniczeniami pamięci języka r typu open source, dodając równoległe i fragmentaryczne przetwarzania danych. Oznacza to, że możesz uruchomić analitykę na dużą ilość danych większe niż w pamięci głównej. Program Visual Studio Community znajduje się na maszynie Wirtualnej. Posiada R tools for Visual Studio i narzędzi Python Tools dla rozszerzeń programu Visual Studio (PTVS), które zapewnia pełne środowisko IDE do pracy z języka R lub Python. Firma Microsoft udostępnia również innych środowisk IDE, takie jak [RStudio](http://www.rstudio.com) i [platformy PyCharm Community edition](https://www.jetbrains.com/pycharm/) na maszynie Wirtualnej.
+Serwer Machine Learning adresy ograniczeniami pamięci języka r typu open source, dodając równoległe i fragmentaryczne przetwarzania danych. Oznacza to, że możesz uruchomić analitykę na dużą ilość danych większe niż w pamięci głównej. Program Visual Studio Community znajduje się na maszynie Wirtualnej. Posiada R tools for Visual Studio i narzędzi Python Tools dla rozszerzeń programu Visual Studio (PTVS), które zapewnia pełne środowisko IDE do pracy z języka R lub Python. Firma Microsoft udostępnia również innych środowisk IDE, takie jak [RStudio](https://www.rstudio.com) i [platformy PyCharm Community edition](https://www.jetbrains.com/pycharm/) na maszynie Wirtualnej.
 
 ### <a name="python"></a>Python
 

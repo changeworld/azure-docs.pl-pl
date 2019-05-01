@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/02/2019
 ms.author: mbullwin
-ms.openlocfilehash: 4c3ecdd01106cc8d305764206bc75535fa4dac3a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: d75544a30a441b5178a1e9dd368f1ce41cd4d321
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60691954"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574264"
 ---
 # <a name="analytics-in-application-insights"></a>Analiza w usłudze Application Insights
 Analytics to zaawansowane narzędzie wyszukiwania i zapytanie o [usługi Application Insights](app-insights-overview.md). Analytics to narzędzia sieci web, aby konfiguracja nie jest wymagana.
@@ -38,7 +38,7 @@ Nie można bezpośrednio dostęp do danych w obszarze roboczym usługi Log Analy
 
 ## <a name="query-data-in-analytics"></a>Wykonywanie zapytań dotyczących danych w usłudze Analytics
 Typowe zapytania zaczyna się od nazwy tabeli, następuje szereg *operatory* rozdzielone `|`.
-Na przykład znajdźmy się, ile żądań aplikacji w języku odebranych z różnych krajów, w ciągu ostatnich 3 godzin:
+Na przykład spróbujmy dowiedzieć się jak wiele żądań aplikacji w języku odebranych z różnych krajów/regionów, w ciągu ostatnich 3 godzin:
 ```AIQL
 requests
 | where timestamp > ago(3h)

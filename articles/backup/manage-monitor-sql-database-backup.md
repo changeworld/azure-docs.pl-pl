@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: raynew
-ms.openlocfilehash: ea5495867d5f453db014e000e01d533d049dc628
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: f5ec5a64f1de39cd0d196242fb1a93669dbab15d
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60849364"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64681845"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Zarządzanie i monitorowanie kopii zapasowej bazy danych programu SQL Server
 
@@ -31,7 +31,7 @@ Usługa Azure Backup pokazuje wszystkie zadania wyzwalanych ręcznie w **zadania
 > **Zadania tworzenia kopii zapasowej** portal nie wyświetla zaplanowanych zadań kopii zapasowej. Do monitorowania zaplanowanych zadań kopii zapasowych należy użyć programu SQL Server Management Studio zgodnie z opisem w następnej sekcji.
 >
 
-Aby uzyskać szczegółowe informacje dotyczące scenariuszy monitorowania, przejdź do [monitorowania w witrynie Azure Portal](backup-azure-monitoring-built-in-monitor.md) i [monitorowanie za pomocą usługi Azure Monitor](backup-azure-monitoring-use-azuremonitor.md).  
+Aby uzyskać szczegółowe informacje dotyczące scenariuszy monitorowania, przejdź do [monitorowania w witrynie Azure portal](backup-azure-monitoring-built-in-monitor.md) i [monitorowanie za pomocą usługi Azure Monitor](backup-azure-monitoring-use-azuremonitor.md).  
 
 
 ## <a name="view-backup-alerts"></a>Wyświetlanie alertów dotyczących kopii zapasowych
@@ -129,9 +129,9 @@ Po wyłączeniu ochrony, ale przed usunięciem magazynu, należy wyrejestrować 
 
 3. W **serwerów chronionych**, wybierz serwer, które chcesz wyrejestrować. Aby usunąć magazyn, musisz wyrejestrować wszystkie serwery.
 
-4. Kliknij prawym przyciskiem myszy serwer chroniony, a następnie wybierz pozycję **Usuń**.
+4. Kliknij prawym przyciskiem myszy serwer chroniony, a następnie wybierz pozycję **Wyrejestruj**.
 
-   ![Wybieranie pozycji Usuń](./media/backup-azure-sql-database/delete-protected-server.png)
+   ![Wybieranie pozycji Usuń](./media/backup-azure-sql-database/delete-protected-server.jpg)
 
 ## <a name="re-register-extension-on-the-sql-server-vm"></a>Ponowne zarejestrowanie rozszerzenia na maszynie Wirtualnej programu SQL Server
 

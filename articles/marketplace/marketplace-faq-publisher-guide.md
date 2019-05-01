@@ -1,25 +1,18 @@
 ---
-title: Portal Marketplace — często zadawane pytania | Azure
+title: Portal Azure Marketplace — często zadawane pytania
 description: Odpowiedzi na często zadawane pytania dotyczące portalu Microsoft Azure Marketplace
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: qianw211
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 03/02/2019
 ms.author: ellacroi
-ms.openlocfilehash: 34b9fadc976d3f37612f59a7fc8520c48b178f5c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 3e1bad5902bb35ce0c037835359c267582cc8bc7
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60709380"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938654"
 ---
 # <a name="marketplace-faqs"></a>Witryna Marketplace — często zadawane pytania
 
@@ -92,9 +85,9 @@ Zależności nie są zarządzane automatycznie dla ofert portalu Azure Marketpla
 
 Jeśli wydawca skonfigurował oferty mają być dostępne za pośrednictwem kanału dostawcy usług Kryptograficznych, będzie on dostępny za pośrednictwem swojego odsprzedawcy.
 
-**W jakich krajach za zakup aplikacji i usług sprzedawane/dostarczanymi za pośrednictwem portalu Azure Marketplace?**
+**Kraje/regiony są obsługiwane w przypadku zakupu, aplikacje i usługi, sprzedawana/dostarczanymi za pośrednictwem portalu Azure Marketplace?**
 
-Portal Azure Marketplace jest dostępny dla klientów Microsoft Azure w krajach na liście [— zasady udziału](https://docs.microsoft.com/legal/marketplace/participation-policy).
+Portal Azure Marketplace jest dostępny dla klientów Microsoft Azure w krajach/regionach wymienionych w [— zasady udziału](https://docs.microsoft.com/legal/marketplace/participation-policy).
 
 **Jakich walutach są obsługiwane przez Portal Azure Marketplace?**
 
@@ -134,7 +127,7 @@ Subskrypcja platformy Azure jest dołączony do wydawcy niezależnych dostawców
 
 *Opłata miesięczna:* Kursy są obciążenie opłatami lub ich comiesięczną, stałą opłatą za subskrypcję oferty (od daty rozpoczęcia subskrypcji dla tego planu). Opłata miesięczna może być naliczana proporcjonalnie w przypadku rezygnacji w połowie miesiąca lub nieużywanych usług.
 
-Szczegóły cen określonych ofert można znaleźć na stronie szczegółów rozwiązania w [ https://azure.microsoft.com/en-us/pricing/ ](https://azure.microsoft.com/pricing/) lub w ramach [portalu zarządzania Microsoft Azure](https://portal.azure.com/).
+Szczegóły cen określonych ofert można znaleźć na stronie szczegółów rozwiązania w [ https://azure.microsoft.com/pricing/ ](https://azure.microsoft.com/pricing/) lub w ramach [portalu zarządzania Microsoft Azure](https://portal.azure.com/).
 
 >[!Note]
 > Z wyjątkiem opłat miesięcznych opłaty za użycie platformy Azure są mające zastosowanie do wszystkich modeli cenowych, chyba że określono inaczej.
@@ -381,7 +374,7 @@ Po zakończeniu oferty i konfigurowania miejsca docelowego potencjalny klient, l
 
 **Kraje/regiony są dostępne dla wydawców do sprzedaży w portalu Azure Marketplace?**
 
-W witrynie Azure Marketplace sprzedaż mogą obecnie prowadzić wydawcy z następujących krajów: Afganistan, Albania, Algieria, Angola, Antigua i Barbuda, Argentyna, Armenia, Australia, Austria, Azerbejdżan, Bahrajn, Bangladesz, Białoruś, Belgia, Benin, Boliwia, Bośnia i Hercegowina, Botswany, Brazylia, Bułgaria, Burkina Faso, Burundi, Kambodża, Kamerun, Kanada, Republika Środkowoafrykańska, Czad, Chile, Kolumbia, komory, Kongo, Kongo (DRK), Kostaryka, Wybrzeże Kości Słoniowej, Chorwacja, Cypr, Czechy, Dania, Dominika, Dominikana, Ekwador, Egipt, Salwador, Erytrea, Estonia, Etiopia, Fidżi Wyspy, Finlandia, Francja, Georgia, (Niemcy), Ghana, Grecja, Gwatemala, Gwinea, Haiti, Honduras, SRA Hongkong, Węgry, Islandia, Indie, Indonezja, Irak, Irlandii, Izrael, Włochy, Jamajka, Japonia, Jordania, Kazachstan, Kenia, Korea Południowa, Kuwejt, Laos, Łotwa, Liban, Liberia, Liechtenstein, Litwa, Luksemburg, Madagaskar, Malawi, Malezja, Mali, Malta, Mauritius, Meksyk, Monako, Mongolia, Czarnogóra, Maroko, Mozambik, Nepal, Holandia, Nowej Zelandii, Nikaragua, Niger, Nigeria, Norwegia, Oman, Pakistan, Panama, Paragwaj, Peru, Filipiny, Polska, Portugalia, Katar, Rumunia, Rosja, Ruandy, Arabia Saudyjska, Senegal, Serbia, Sierra Leone, Singapur, Słowacja, Słowenia, Somalia, Republika Południowej Afryki, Hiszpania, Sri Lanka, Szwecja, Szwajcaria, Tadżykistan, Tanzania, Tajlandia, Timor-Leste, Togo, Tonga, Trynidad i Tobago, Tunezja, Turcja, Turkmenistan, ugandyjski, Ukraina, Zjednoczone Emiraty Arabskie, Zjednoczone Królestwo, Stany Zjednoczone, Urugwaj, Uzbekistan, Wenezuela, Wietnam, Zambia i Zimbabwe.
+Wydawcy w następujących krajach/regionach mogą obecnie sprzedawać w portalu Azure Marketplace: Afganistan, Albania, Algieria, Angola, Antigua i Barbuda, Argentyna, Armenia, Australia, Austria, Azerbejdżan, Bahrajn, Bangladesz, Białoruś, Belgia, Benin, Boliwia, Bośnia i Hercegowina, Botswany, Brazylia, Bułgaria, Burkina Faso, Burundi, Kambodża, Kamerun, Kanada, Republika Środkowoafrykańska, Czad, Chile, Kolumbia, komory, Kongo, Kongo (DRK), Kostaryka, Wybrzeże Kości Słoniowej, Chorwacja, Cypr, Czechy, Dania, Dominika, Dominikana, Ekwador, Egipt, Salwador, Erytrea, Estonia, Etiopia, Fidżi Wyspy, Finlandia, Francja, Georgia, (Niemcy), Ghana, Grecja, Gwatemala, Gwinea, Haiti, Honduras, SRA Hongkong, Węgry, Islandia, Indie, Indonezja, Irak, Irlandii, Izrael, Włochy, Jamajka, Japonia, Jordania, Kazachstan, Kenia, Korea Południowa, Kuwejt, Laos, Łotwa, Liban, Liberia, Liechtenstein, Litwa, Luksemburg, Madagaskar, Malawi, Malezja, Mali, Malta, Mauritius, Meksyk, Monako, Mongolia, Czarnogóra, Maroko, Mozambik, Nepal, Holandia, Nowej Zelandii, Nikaragua, Niger, Nigeria, Norwegia, Oman, Pakistan, Panama, Paragwaj, Peru, Filipiny, Polska, Portugalia, Katar, Rumunia, Rosja, Ruandy, Arabia Saudyjska, Senegal, Serbia, Sierra Leone, Singapur, Słowacja, Słowenia, Somalia, Republika Południowej Afryki, Hiszpania, Sri Lanka, Szwecja, Szwajcaria, Tadżykistan, Tanzania, Tajlandia, Timor-Leste, Togo, Tonga, Trynidad i Tobago, Tunezja, Turcja, Turkmenistan, ugandyjski, Ukraina, Zjednoczone Emiraty Arabskie, Zjednoczone Królestwo, Stany Zjednoczone, Urugwaj, Uzbekistan, Wenezuela, Wietnam, Zambia i Zimbabwe.
 
 **Jak usunąć listę w portalu Azure Marketplace?**
 
@@ -486,19 +479,19 @@ Zależności nie są zarządzane automatycznie dla ofert portalu Azure Marketpla
 
 **Kto może kupować aplikacje i usługi, sprzedawana/dostarczanymi za pośrednictwem portalu Azure Marketplace?**
 
-Portal Azure Marketplace jest dostępny dla klientów platformy Microsoft Azure w następujących krajach:
+W portalu Azure Marketplace jest dostępny dla klientów Microsoft Azure w następujących krajach/regionach:
 
 Algieria, Argentyna, Australia, Austria, Bahrajn, Białoruś, Belgia, Brazylia, Bułgaria, Kanada, Chile, Kolumbia, Kostaryka, Chorwacja, Cypr, Czechy, Dania, Dominikana, Ekwador, Egipt, Salwador, Estonia, Finlandia, (Francja), (Niemcy), Grecja , Gwatemala, SRA Hongkong, Węgry, Islandia, Indie, Indonezja, Irlandii, Izrael, Włochy, Japonia, Jordania, Kazachstan, Kenia, Kuwejt, Łotwa, Liechtenstein, Litwa, Luksemburg, Macedonia Północna, Malezja, Malta, Meksyk, Czarnogóra, Maroko, Holandia, nowe Zelandia, Nigeria, Norwegia, Oman, Pakistan, Panama, Paragwaj, Peru, Filipiny, Polska, Portugalia, Portoryko, Katar, Rumunia, Rosja, Arabia Saudyjska, Serbia, Singapur, Słowacja, Słowenia, Republika Południowej Afryki, Korea Południowa, Hiszpania, Sri Lanka, Szwecja, Szwajcaria, Tajwan, Tajlandia, Trynidad i Tobago, Tunezja, Turcja, Ukraina, Zjednoczone Emiraty Arabskie, Zjednoczone Królestwo, Stany Zjednoczone, Urugwaj, Wenezuela.
 
-**Jak zdefiniować Moje dotyczącą dostępności geograficznej umożliwiające sprzedaży w różnych krajach?**
+**Jak określić Mój dotyczącą dostępności geograficznej umożliwia sprzedaż w różnych krajach/regionach?**
 
-1.  W portalu Cloud Partner przejdź do jednostki SKU, do której chcesz dodać nowych krajach.  W ciągu "Szczegóły jednostki SKU" Przejdź do "Kraj/Region availability", a następnie kliknij przycisk "Wybierz regiony".
+1.  W portalu Cloud Partner przejdź do jednostki SKU, do której chcesz dodać nowe kraje/regiony.  W ciągu "Szczegóły jednostki SKU" Przejdź do "Kraj/Region availability", a następnie kliknij przycisk "Wybierz regiony".
 
     ![Wybierz regiony](media/marketplace-publishers-guide/FAQ-choose-geo.png)
 
-1.  Lista będzie się pojawiać, przy użyciu wszystkich krajów dostępne, aby je.  Kliknij pole wyboru obok każdego kraju, które chcesz udostępnić tej jednostki SKU. Kliknij przycisk "OK".
+1.  Lista będzie się pojawiać, przy użyciu wszystkich dostępnych krajach/regionach można sprzedawać.  Kliknij pole wyboru obok każdego kraju/regionu, chcesz udostępnić tej jednostki SKU. Kliknij przycisk "OK".
 
-    ![Wybierz listę krajów](media/marketplace-publishers-guide/FAQ-select-countries.png)
+    ![Wybierz listę krajów/regionów](media/marketplace-publishers-guide/FAQ-select-countries.png)
 
 1.  Na koniec zmian, które mają być stosowane do oferty na żywo, kliknij pozycję "Publikuj".  
 
@@ -509,11 +502,11 @@ Algieria, Argentyna, Australia, Austria, Bahrajn, Białoruś, Belgia, Brazylia, 
 
 **Jak wydawca zmienić dostępność geograficzna dla istniejącej oferty**
 
-Wydawcy mogą edytować istniejące oferty, wybierz nowych krajach, a następnie użyć funkcji pobierania/przekazywania arkusza kalkulacyjnego można ustawić, ceny.
+Wydawcy można edytować istniejące oferty, wybierz nowe kraje/regiony i użyć funkcji pobierania/przekazywania arkusza kalkulacyjnego można ustawić ceny.
 
-**W jakich krajach klienci mogą kupować ofert portalu Azure Marketplace?**
+**W jakich krajach/regionach klienci mogą kupować ofert portalu Azure Marketplace?**
 
-Witryna Azure Marketplace obsługuje 141 zakup z różnych lokalizacji geograficznych, zgodnie z definicją adresu rozliczeniowego przez klienta. Zobacz [— zasady udziału](https://docs.microsoft.com/legal/marketplace/participation-policy) listę krajów.
+Witryna Azure Marketplace obsługuje 141 zakup z różnych lokalizacji geograficznych, zgodnie z definicją adresu rozliczeniowego przez klienta. Zobacz [— zasady udziału](https://docs.microsoft.com/legal/marketplace/participation-policy) listę krajów/regionów.
 
 **Jakich walutach są obsługiwane przez Portal Azure Marketplace?**
 
@@ -545,7 +538,7 @@ Ceny różnią się w zależności od typów produktów i specyfikacji wydawcy. 
 
 * **Opłata miesięczna**: Naliczania i rozliczane comiesięczną, stałą opłatą za subskrypcję oferty, od początku danego planu. Opłata miesięczna może być naliczana proporcjonalnie w przypadku rezygnacji w połowie miesiąca lub nieużywanych usług.
 
-Szczegóły można znaleźć na stronie szczegółów rozwiązania w [ https://azure.microsoft.com/en-us/pricing/ ](https://azure.microsoft.com/pricing/), lub w portalu zarządzania Microsoft Azure.
+Szczegóły można znaleźć na stronie szczegółów rozwiązania w [ https://azure.microsoft.com/pricing/ ](https://azure.microsoft.com/pricing/), lub w portalu zarządzania Microsoft Azure.
 
 >[!Note]
 >Z wyjątkiem opłat miesięcznych opłaty za użycie platformy Azure są mające zastosowanie do wszystkich modeli cenowych, chyba że określono inaczej.

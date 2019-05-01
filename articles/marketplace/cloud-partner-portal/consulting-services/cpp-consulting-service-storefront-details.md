@@ -1,25 +1,18 @@
 ---
-title: Platforma Azure i doradcze oferty usługi Dynamics 365 - wprowadź szczegóły sklepu | Dokumentacja firmy Microsoft
-description: Przewodnik Definiowanie StoreFront — szczegółowe informacje w platformie Azure lub Dynamics 365 doradcze usługi oferty w portalu Cloud Partner.
+title: Wprowadź szczegóły storefront konsultacji oferty | Portal Azure Marketplace
+description: Zdefiniuj szczegóły storefront w platformie Azure lub Dynamics 365 doradcze usługi oferty w portalu Cloud Partner.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: qianw211
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 11/30/2018
-ms.author: pbutlerm
-ms.openlocfilehash: ac383c85938f5cb7dfe4f711714f5bacd0c96b89
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 04/23/2019
+ms.author: pabutler
+ms.openlocfilehash: 1b028fe016d6ae3df8c1dfce548fc0c11479d5a6
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60865381"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942709"
 ---
 # <a name="storefront-details-tab"></a>Karta szczegółów sklepu
 
@@ -32,14 +25,16 @@ W tym artykule opisano sposób wprowadź szczegóły dotyczące witryny Sklepu. 
 
 ![Tworzenie nowej usługi doradcze oferty usługi — Karta Szczegóły sklepu](media/consultingoffer-storefront-details.png)
 
+
 ## <a name="offer-details"></a>Szczegóły oferty
 
 **Szczegółach oferty** sekcja zawiera następujące pola:
 
--   **Podsumowanie oferty**
--   **Opis oferty**
+-   **Podsumowanie oferty\***
+-   **Opis oferty\***
 
-### <a name="offer-summary"></a>Podsumowanie oferty
+
+### <a name="offer-summary"></a>Podsumowanie oferty\*
 
 Podsumowanie oferty jest krótki opis oferty, zostanie wyświetlony tuż poniżej Nazwa oferty. Użyj zwykłego tekstu, aby wprowadzić podsumowanie oferty, bez podziałów wierszy. Poniższe przykłady są podsumowania dobra oferta wraz z odpowiadającymi im nazwami oferty.
 
@@ -68,7 +63,8 @@ Podsumowanie oferty jest krótki opis oferty, zostanie wyświetlony tuż poniże
 -   **Nazwa oferty**: Dynamics i projektów: Ocena 3 dni
 -   **Oferują Podsumowanie**: Zbieranie informacji o wymaganiach i oceny dla rozwiązania ERP i przeniesieniu jej przeznaczone dla profesjonalnych usług przedsiębiorstw i przedsiębiorstw oparte na projekt.
 
-### <a name="offer-description"></a>Opis oferty
+
+### <a name="offer-description"></a>Opis oferty\*
 
 Wprowadź opis oferty usługi doradcze w **opis oferty** pole. Opis dobra oferta obejmuje szczegółowymi informacjami na temat asysty wygląda jak i końcowy elementu dostarczanego klientowi. Wyraźnie powinny pomóc w klientów, zrozumienie, jakie korzyści. To, jak Twoja oferta odnosi się do produktu firmy Microsoft, dla którego one oferty usług doradczych.
 
@@ -144,6 +140,7 @@ Jeśli nie masz, wprowadź nowy identyfikator Centrum partnerskiego.
 Wprowadź klucz tajny w celu wyświetlenia podglądu oferty w usłudze AppSource, zanim usługa zostanie wprowadzona na żywo.
 Ten identyfikator jest hasło.
 
+
 ## <a name="listing-details"></a>Szczegółowe informacje dotyczące listy
 
 **Typ usługi doradcze**
@@ -166,7 +163,7 @@ Uwzględnione są następujące pięć typów ofert:
 Wybierz kraj i region, gdzie dostępna jest oferta usługi doradcze. Nie można opublikować jednej oferty w wielu krajach lub regionach. Nowa oferta musi zostać utworzony dla każdego kraju lub regionu.
 
 >[!Note]
->Usługi doradcze AppSource są aktualnie aktywny w Stanach Zjednoczonych, Zjednoczone Królestwo i Kanadzie. Możesz przesłać ofertę dla kraju, który nie jest jeszcze na żywo i zostanie sprawdzone i przygotowane do emisji na żywo. Minimalna liczba gotowa do aktywowania oferty są potrzebne nowego kraju, tak aby mogli otwierać zachęca się ofert, w przypadku krajów, które nie znajdują się na żywo.
+>Usługi doradcze AppSource są aktualnie aktywny w Stanach Zjednoczonych, Zjednoczone Królestwo i Kanadzie. Możesz przesłać ofertę dla kraju/regionu, który nie jest jeszcze na żywo i zostanie sprawdzone i przygotowane do emisji na żywo. Minimalna liczba gotowa do aktywowania oferty są wymagane do Otwórz nowy kraj/region, więc zachęcamy oferty dla krajów/regionów, które nie znajdują się na żywo.
 
 **Branże**
 
@@ -207,6 +204,7 @@ Przekaż broszura marketingu, opisujący ofertą usługi konsultingowe szczegó�
 **Zrzuty ekranu (maksymalnie pięć)**
 
 Przekaż do pięciu obrazów, które zapewniają więcej informacji na temat oferty, jego elementy dostarczane lub Twoja firma. Fragment broszura marketingu, odpowiednie slajd z prezentacji lub obraz, który pokazuje pęd firmy lub doświadczenie przedstawiono kilka przykładów.
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 

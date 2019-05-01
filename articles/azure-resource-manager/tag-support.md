@@ -4,14 +4,14 @@ description: Pokazuje, jakie typy zasobów platformy Azure obsługuje tagi. Zawi
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 02/13/2019
+ms.date: 04/26/2019
 ms.author: tomfitz
-ms.openlocfilehash: dd6836ef4f859ce77c1a56095d32373d8e08f468
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 32156f39d36d8485c76dada5fd00f9ea0918598c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60388067"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64575457"
 ---
 # <a name="tag-support-for-azure-resources"></a>Obsługa tagów dla zasobów platformy Azure
 W tym artykule opisano, czy typ zasobu obsługuje [tagi](resource-group-using-tags.md).
@@ -862,7 +862,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | dnszones/SOA | Nie | 
 | dnszones/SRV | Nie | 
 | dnszones/TXT | Nie | 
-| expressRouteCircuits | Yes | 
+| expressRouteCircuits | Tak (wartość tagu nie wyglądają obecnie w raporcie kosztów) | 
 | expressRouteServiceProviders | Nie | 
 | usługi Frontdoor | Yes | 
 | frontdoorWebApplicationFirewallPolicies | Yes | 
@@ -876,7 +876,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | Interfejsy | Yes | 
 | networkProfiles | Yes | 
 | networkSecurityGroups | Yes | 
-| networkWatchers | Yes | 
+| networkWatchers | Tak (wartość tagu nie wyglądają obecnie w raporcie kosztów) | 
 | networkWatchers/connectionMonitors | Yes | 
 | networkWatchers/lenses | Yes | 
 | networkWatchers/pingMeshes | Yes | 
@@ -892,9 +892,10 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | virtualHubs | Yes | 
 | virtualNetworkGateways | Yes | 
 | virtualNetworks | Yes | 
+| virtualNetworks/subnets | Nie | 
 | virtualNetworkTaps | Yes | 
 | virtualWans | Yes | 
-| vpnGateways | Yes | 
+| vpnGateways | Tak (wartość tagu nie wyglądają obecnie w raporcie kosztów) | 
 | vpnSites | Yes | 
 | webApplicationFirewallPolicies | Yes | 
 

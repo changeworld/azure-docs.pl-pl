@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 65a29d16f2a2d66425f568e7307e6202b8d55d24
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 06156b1050bbf77fbbd5be8559b3c1683c2ced24
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60317063"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64698943"
 ---
 # <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>Jednostronicowych zalogować się przy użyciu niejawnego przepływu OAuth 2.0 w usłudze Azure Active Directory B2C
 

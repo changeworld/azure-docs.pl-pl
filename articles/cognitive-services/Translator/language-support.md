@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: 3b938f07ef5b1feb9d5859f27423eaa79c2937cc
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 8de9d7e6aac052ca24f1eef5f99c3146029bddbb
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59577596"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64690152"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Obsługa języka i regionu dla interfejsu API tłumaczenia tekstu
 
@@ -28,7 +28,7 @@ Interfejs API tekstu usługi Translator obsługuje następujące języki do tłu
 **W wersji 2 Translator interfejsu API**
 
 > [!NOTE]
-> W wersji 2 została zakończona w dniu 30 kwietnia 2018 i zostanie zakończona w dniu 30 kwietnia 2019 r.
+> W wersji 2 została zakończona na 30 kwietnia 2018 r. Przeprowadź migrację aplikacji do wersji 3, aby można było korzystać z zalet nowych funkcji dostępnych wyłącznie w wersji 3.
 
 * Statystyczne tylko: System neuronowej, nie jest dostępna dla tego języka.
 * Neuronowych dostępne: Neuronowych system jest niedostępny. Użyj parametru `category=generalnn` dostęp do tego systemu neuronowych.
@@ -230,14 +230,17 @@ Następujące języki są możliwe do dostosowania do lub z angielskiego przy u�
 | Indonezyjski|   `id`    |
 | Włoski      | `it`          |
 | Japoński      | `ja`          |
+|Suahili| `sw`    |
 | Koreański      | `ko`          |
 | Łotewski      | `lv`          |
 | Litewski      | `lt`          |
+|Malgaski|  `mg`    |
 | Norweski      | `nb`          |
 | Polski      | `pl`          |
 | Portugalski      | `pt`          |
 | Rumuński      | `ro`          |
 | Rosyjski      | `ru`          |
+|Samoański|    `sm`    |
 | Serbski (łaciński)      | `sr-Latn`          |
 | Słowacki     | `sk`          |
 | Słoweński      | `sl`          |

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: juliako
-ms.openlocfilehash: 23c87ae92a0f22b4a1a31c054df730af2efc07d1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 7ce57e1f8b2732ea909625c89f3e8148cb70635c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60322101"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64728841"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs"></a>Monitorowanie metryk usług Media Services i dzienników diagnostycznych
 

@@ -1,64 +1,60 @@
 ---
-title: Karta Marketplace maszyny wirtualnej w portalu Cloud Partner na platformie Azure | Dokumentacja firmy Microsoft
+title: Karta Marketplace maszyny wirtualnej w portalu Cloud Partner portalu Azure Marketplace
 description: W tym artykule opisano kartę Marketplace używanego podczas tworzenia oferty maszyny Wirtualnej portalu Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal, virtual machine
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
-ms.date: 10/19/2018
-ms.author: pbutlerm
-ms.openlocfilehash: b1b62c68ef4e18f4d4d36a78078ad7431717b754
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 04/25/2019
+ms.author: pabutler
+ms.openlocfilehash: d9b259ba93be369658638d034f109a3a6ba4c4a4
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60332759"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938184"
 ---
 # <a name="virtual-machine-marketplace-tab"></a>Karta Marketplace maszyny wirtualnej
 
-**Marketplace** karcie **nowa oferta** strony umożliwia udostępnianie potencjalnych klientów. marketingu, sprzedaży i prawne informacji i umowy i zarządzanie potencjalnymi klientami wygenerowany na podstawie Portal Marketplace. Ta długich fragmentów jest podzielony na cztery sekcje: **Omówienie**, **marketingowych artefaktów**, **Zarządzanie potencjalnymi**, i **prawne**. 
+**Marketplace** karcie **nowa oferta** strony umożliwia udostępnianie potencjalnych klientów. marketingu, sprzedaży i prawne informacji i umowy i zarządzanie potencjalnymi klientami wygenerowany na podstawie Portal Marketplace. Ta długich fragmentów jest podzielony na cztery sekcje: **Omówienie**, **marketingowych artefaktów**, **Zarządzanie potencjalnymi**, i **prawne**.
+
 
 ## <a name="overview-section"></a>Sekcja — Omówienie
 W tej sekcji należy wprowadzić ogólne informacje o ofercie Azure Marketplace.  Dołączonych gwiazdki (*) na nazwę pola wskazuje, że jest wymagane.
 
-![Omówienie części karty portalu Marketplace w formularzu nowa oferta dla maszyn wirtualnych](./media/publishvm_008.png)
+![Omówienie części karty witryny Marketplace dla maszyn wirtualnych](./media/publishvm_008.png)
 
-W poniższej tabeli opisano przeznaczenie i zawartość tych pól.
+W poniższej tabeli opisano przeznaczenie i zawartość tych pól. Wymagane pola są wskazanych przez znak gwiazdki (*).
 
 |  **Pole**                |     **Opis**                                                          |
 |  ---------                |     ---------------                                                          |
-| **Tytuł**                 | Tytuł oferty, często długie, posiadanie nazwy. Ten tytuł będą wyróżniane w portalu marketplace.  Składać z maksymalnie 50 znaków. |
-| **Podsumowanie**               | Krótki opis przeznaczenia lub funkcja rozwiązania.  Składać z maksymalnie 100 znaków. |
-| **Długie podsumowanie**          | Cel lub funkcja rozwiązania.  Maksymalna długość 256 znaków. |
-| **Opis**           | Opis rozwiązania.  Maksymalną długość znaków 3000 obsługuje prosty format HTML. |
-| **Kanał odsprzedawców dostawcy usług Kryptograficznych Microsoft** | Dostawcy rozwiązań (CSP) partnera kanału zoptymalizowany pod kątem w chmurze jest teraz dostępna.  Zobacz [dostawców rozwiązań w chmurze](../../cloud-solution-providers.md) więcej informacji na temat marketingowych oferty za pośrednictwem programu Microsoft CSP partner kanałów. |
-| **Identyfikator marketingu**  | Unikatowy adres URL, aby skojarzyć tę ofertę, obejmują zazwyczaj organizacji i nazwę rozwiązania, maksymalnej długości 50 znaków.  Na przykład: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  |
-| **Identyfikatory subskrypcji (wersja zapoznawcza)** | Dodaj jeden do 100 identyfikatorów subskrypcji podglądy. Te subskrypcje biały na liście mają dostęp do tej oferty, po opublikowaniu, zanim usługa zostanie wprowadzona na żywo. |
+| **Tytuł\***                 | Tytuł oferty, często długie, posiadanie nazwy. Ten tytuł będą wyróżniane w portalu marketplace.  Składać z maksymalnie 50 znaków. |
+| **Podsumowanie\***               | Krótki opis przeznaczenia lub funkcja rozwiązania.  Składać z maksymalnie 100 znaków. |
+| **Długie podsumowanie\***          | Cel lub funkcja rozwiązania.  Maksymalna długość 256 znaków. |
+| **Opis elementu\***           | Opis rozwiązania.  Maksymalną długość znaków 3000 obsługuje prosty format HTML. |
+| **Kanał odsprzedawców dostawcy usług Kryptograficznych Microsoft\*** | Dostawcy rozwiązań (CSP) partnera kanału zoptymalizowany pod kątem w chmurze jest teraz dostępna.  Zobacz [dostawców rozwiązań w chmurze](../../cloud-solution-providers.md) więcej informacji na temat marketingowych oferty za pośrednictwem programu Microsoft CSP partner kanałów. |
+| **Identyfikator marketingu\***  | Unikatowy adres URL, aby skojarzyć tę ofertę, obejmują zazwyczaj organizacji i nazwę rozwiązania, maksymalnej długości 50 znaków.  Na przykład: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  |
+| **Identyfikatory subskrypcji (wersja zapoznawcza)\*** | Dodaj jeden do 100 identyfikatorów subskrypcji podglądy. Te subskrypcje biały na liście mają dostęp do tej oferty, po opublikowaniu, zanim usługa zostanie wprowadzona na żywo. |
 | **Przydatne linki**          | Dodaj adresy URL do przekazywania, informacje o wersji, często zadawane pytania i tak dalej. |
-| **Sugerowane kategorie (maks. 5)** | Wielokrotnego wyboru biznesowe i techniczne kategorie, które oferują może być najlepiej skojarzony.  Maksymalnie pięciu dozwolone.  |
+| **Sugerowane kategorie (maks. 5)\*** | Wielokrotnego wyboru biznesowe i techniczne kategorie, które oferują może być najlepiej skojarzony.  Maksymalnie pięciu dozwolone.  |
 |  |  |
 
 
 ## <a name="marketing-artifacts-section"></a>Sekcja artefaktów marketingu
 
-Ta druga sekcja odbywa się w trzech podsekcje: **Logo**, **zrzut ekranu**, i **wideo**. Logo są jedynymi wymagane marketingowych artefaktów, jednak wszystkie są zdecydowanie zaleca się najlepsze odwołania klienta.
+Ta druga sekcja odbywa się w trzech podsekcje: **Logo**, **zrzut ekranu**, i **wideo**. Logo są jedynymi wymagane marketingowych artefaktów, jednak wszystkie są zdecydowanie zaleca się najlepsze odwołania klienta. 
 
 ![Marketing artefaktów części karty portalu Marketplace w formularzu nowa oferta dla maszyn wirtualnych](./media/publishvm_009.png)
+
+W poniższej tabeli opisano przeznaczenie i zawartość tych pól. Wymagane pola są wskazanych przez znak gwiazdki (*).
 
 |  **Pole**                |     **Opis**                                                          |
 |  ---------                |     ---------------                                                          |
 | *Logos*  |  |
-| **Małe**                 | Mapa bitowa .ico 40 x 40 pikseli                                                      |
-| **Średni**                | Mapa bitowa .ico 90 x 90 pikseli                                                      |
-| **Duże**                 | Mapa bitowa .ico 115 x 115 pikseli                                                   |
-| **Szerokie**                  | Mapa bitowa .ico 255 x 115 pikseli                                                    |
+| **Małe\***                 | Mapa bitowa .ico 40 x 40 pikseli                                                      |
+| **Średni\***                | Mapa bitowa .ico 90 x 90 pikseli                                                      |
+| **Duże\***                 | Mapa bitowa .ico 115 x 115 pikseli                                                   |
+| **Szerokie\***                  | Mapa bitowa .ico 255 x 115 pikseli                                                    |
 | **Element Hero**                  | 815 x 290 mapy bitowej.  Opcjonalne, jednak po przekazany, nie można usunąć ikonę elementu hero. |
 | *Zrzuty ekranu*  | Opcjonalne, ale maksymalnie pięć zrzuty ekranu na jednostki SKU. |
 | **Nazwa**                  | Nazwa lub tytuł <!-- TODO - max char length? none specified in UI -->                               |
@@ -67,8 +63,7 @@ Ta druga sekcja odbywa się w trzech podsekcje: **Logo**, **zrzut ekranu**, i **
 | **Nazwa**                  | Nazwa lub tytuł  <!-- TODO - max char length? -->                              |
 | **Link**                  | Adres URL filmu wideo, w serwisie YouTube lub Vimeo                                        |
 | **Miniatura**             | 533 x 324 mapy bitowej                                                               |
-|  |  |
-
+|   |   |
 
 ### <a name="logo-guidelines"></a>Wytyczne dotyczące logo
 
@@ -105,7 +100,6 @@ Poniższa ilustracja pokazuje, jak marketing informacji jest wyświetlana na str
 
 
 ## <a name="lead-management-section"></a>Prowadzić sekcji Zarządzanie
-<!-- this all should be referenced in a common location for lead management, not in this file. nothing unique for a vm specifically. -->
 
 Trzecia sekcja umożliwia klientom zbieranie potencjalnych klientów jest generowany na podstawie Twoich ofert w portalu Azure Marketplace. Oferuje następujące opcje magazynu (z listy rozwijanej) informacje o potencjalnych klientach.
 
@@ -122,15 +116,16 @@ Po pomyślnym opublikowaniu oferty, połączenia potencjalny klient zostanie zwe
 
 ## <a name="legal-section"></a>Sekcja prawne
 
-Ta ostatnia sekcja umożliwia podanie dwa dokumenty prawne wymagane dla każdej oferty: Zasady ochrony prywatności i warunki użytkowania.
+Ta ostatnia sekcja umożliwia podanie wymagane dokumenty prawne wymagane dla każdej oferty.  
 
-|  **Pole**                |     **Opis**                                                          |
-|  ---------                |     ---------------                                                          |
-| **Adres URL zasad ochrony prywatności**    | Adres URL do zasad zachowania opublikowane                                            |
-| **Warunki użytkowania**          | zasady jako zwykły tekst lub HTML proste.  <!-- TODO - max char length? -->       |
+|  **Pole**                    |     **Opis**                                        |
+|  ---------                    |     ---------------                                        |
+| **Adres URL zasad ochrony prywatności\***      | Adres URL do zasad zachowania opublikowane                          |
+| **Użyj standardowej umowy?\***  |   |
+| **Warunki użytkowania\***            | zasady jako zwykły tekst lub HTML proste.                       |
 |  |  |
 
-<br/>
+
+## <a name="next-steps"></a>Kolejne kroki
 
 W ciągu następnych [obsługuje](./cpp-support-tab.md) karcie podaje się technicznych i użytkownika zasoby pomocy technicznej oferty.
-

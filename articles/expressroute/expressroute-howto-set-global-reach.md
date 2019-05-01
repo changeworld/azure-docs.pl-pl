@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 8ea3b3580cb70d0453a5ec6a38f6063788ebf7f4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: de9cbd9cfac766e2a67274684d3fb6b447e45200
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60364775"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572756"
 ---
 # <a name="configure-expressroute-global-reach"></a>Konfigurowanie usługi ExpressRoute Global Reach
 
@@ -39,7 +39,7 @@ Przed rozpoczęciem konfiguracji upewnij się, że:
 1. Aby uruchomić konfigurację, zaloguj się do konta platformy Azure i wybierz subskrypcję, której chcesz użyć.
 
    [!INCLUDE [sign in](../../includes/expressroute-cloud-shell-connect.md)]
-2. Zidentyfikuj obwodów usługi ExpressRoute, którego chcesz używać. Aby umożliwić zasięgu globalnym usługi ExpressRoute między wszystkie dwa obwody usługi ExpressRoute tak długo, jak znajdują się w obsługiwane kraje i zostały utworzone w różnych lokalizacjach komunikacji równorzędnej. 
+2. Zidentyfikuj obwodów usługi ExpressRoute, którego chcesz używać. Aby umożliwić zasięgu globalnym usługi ExpressRoute między wszystkie dwa obwody usługi ExpressRoute tak długo, jak one znajdują się w obsługiwane kraje/regiony i zostały utworzone w różnych lokalizacjach komunikacji równorzędnej. 
 
    * Jeśli Twoja subskrypcja jest właścicielem zarówno obwody, można wybrać albo obwodu, Uruchom konfigurację w poniższych sekcjach.
    * Jeśli dwa obwody znajdują się w różnych subskrypcjach platformy Azure, konieczne będzie autoryzacji z jedną subskrypcją platformy Azure. Następnie są przekazywane w klucza autoryzacji podczas uruchamiania polecenia konfiguracji w ramach subskrypcji platformy Azure.

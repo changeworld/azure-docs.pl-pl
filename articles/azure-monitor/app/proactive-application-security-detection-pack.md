@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: 16dd381301bdc650022ba5580f96a1733aeb32b0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 90d58d1b22e893e922aa0f3770198fc95f539419
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60199956"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572886"
 ---
 # <a name="application-security-detection-pack-preview"></a>Pakiet wykrywania zabezpieczeń aplikacji (wersja zapoznawcza)
 
@@ -29,7 +29,7 @@ Ta funkcja wymaga nie specjalne ustawienia innego niż [konfigurowania aplikacji
 Istnieją trzy rodzaje problemów z zabezpieczeniami, które są wykrywane:
 1. Do niezabezpieczonych adresów URL: adres URL w aplikacji jest uzyskiwany za pośrednictwem protokołów HTTP i HTTPS. Zazwyczaj adres URL, który akceptuje żądania HTTPS nie powinna obsługiwać żądań HTTP. Może to oznaczać błąd lub zabezpieczeń problem w aplikacji.
 2. Formularz niezabezpieczone: formularza (lub inne żądanie "POST") w aplikacji korzysta z protokołu HTTP zamiast HTTPS. Przy użyciu protokołu HTTP mogą wpłynąć na dane użytkownika, które są wysyłane przez formularz.
-3. Podejrzanej działalności użytkownika: aplikacja jest uzyskiwany w wielu krajach przez tego samego użytkownika w tym samym czasie. Na przykład tego samego użytkownika uzyskać dostępu do aplikacji z Hiszpanii i Stanach Zjednoczonych w ciągu jednej godziny. Wykrywanie wskazuje próba potencjalnie złośliwego dostępu do aplikacji.
+3. Podejrzanej działalności użytkownika: aplikacja jest uzyskiwany z wielu krajów/regionów przez tego samego użytkownika w tym samym czasie. Na przykład tego samego użytkownika uzyskać dostępu do aplikacji z Hiszpanii i Stanach Zjednoczonych w ciągu jednej godziny. Wykrywanie wskazuje próba potencjalnie złośliwego dostępu do aplikacji.
 
 ## <a name="does-my-app-definitely-have-a-security-issue"></a>Moja aplikacja zdecydowanie ma problem z zabezpieczeniami?
 Nie, powiadomienia nie oznacza, że Twoja aplikacja ma zdecydowanie problem z zabezpieczeniami. Wykrywanie żadnej z powyższych scenariuszy może w wielu przypadkach wskazywać problem z zabezpieczeniami. Jednak wykrycie może mieć uzasadnienie biznesowe naturalnych i można zignorować.
@@ -46,5 +46,5 @@ Nie, powiadomienia nie oznacza, że Twoja aplikacja ma zdecydowanie problem z za
 
 ## <a name="how-do-i-fix-the-suspicious-user-activity-detection"></a>Jak naprawić wykrywania "podejrzanej działalności użytkownika"?
 1. **Klasyfikacja.** Powiadomienie zawiera liczbę różnych użytkowników, którzy uwidocznione podejrzanego zachowania. Może to pomóc Ci przypisać priorytet problemu.
-2. **Zakres.** Z których krajach podejrzane żądania pochodzą? Użytkownika, który był najbardziej podejrzanych? Te informacje można uzyskać z powiadomienia.
-3. **Diagnozowanie.** Wykrywanie zawiera listę podejrzanych użytkowników i listę krajów, dla każdego użytkownika, aby pomóc w dalszym diagnozowaniu problemu.
+2. **Zakres.** Z jakich krajach/regionach podejrzane żądania pochodzą? Użytkownika, który był najbardziej podejrzanych? Te informacje można uzyskać z powiadomienia.
+3. **Diagnozowanie.** Wykrywanie zawiera listę podejrzanych użytkowników i listę kraje/regiony dla każdego użytkownika, aby pomóc w dalszym diagnozowaniu problemu.

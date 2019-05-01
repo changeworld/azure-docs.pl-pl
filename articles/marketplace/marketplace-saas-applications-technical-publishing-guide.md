@@ -2,24 +2,17 @@
 title: Portal Azure Marketplace SaaS Applications technicznych, Podręcznik publikowania
 description: Przewodnik krok po kroku i publikowania listy kontrolne dotyczące publikowania aplikacji SaaS w portalu Azure Marketplace
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
-documentationcenter: ''
 author: keithcharlie
-manager: nunoc
-editor: keithcharlie
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: keithcharlie
-ms.openlocfilehash: b653b0276cedea1e3b45adf7a9dc390b24f0d03f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5106b22500b73b650742e7fe0f881c2a4c984eff
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60765401"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937715"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>Aplikacje SaaS oferują Podręcznik publikowania
 

@@ -10,19 +10,19 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: d3ffdcb79a56bf2f9f4a6eb192293bbc6bab7dab
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: fa1733ddd70de3f8ef93452a880094ccf8b9ef56
+ms.sourcegitcommit: 807c318f5c034f8256f91c241e9d6f8f4d7de90a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58916720"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64951476"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>W usłudze Translator tekstu interfejsu API w wersji 2 do migracji V3
 
 > [!NOTE]
-> W wersji 2 została zakończona w dniu 30 kwietnia 2018 i zostanie zakończona w dniu 30 kwietnia 2019 r.
+> W wersji 2 została zakończona na 30 kwietnia 2018 r. Przeprowadź migrację aplikacji do wersji 3, aby można było korzystać z zalet nowych funkcji dostępnych wyłącznie w wersji 3.
 > 
-> Centrum Microsoft Translator zostanie wycofana 30 kwietnia 2019 r. [Wyświetl informacje na temat migracji ważne i dat](https://www.microsoft.com/translator/business/hub/).  
+> W Centrum w usłudze Translator firmy Microsoft zostaną wycofane z dniem 17 maja 2019 r. [Wyświetl informacje na temat migracji ważne i dat](https://www.microsoft.com/translator/business/hub/).  
 
 Zespół Microsoft Translator została wydana w wersji 3 (V3) z interfejsu API tłumaczenia tekstu. Ta wersja zawiera nowe funkcje, metody przestarzałe i nowego formatu do wysyłania do i odbierania danych z usługi Microsoft Translator. Ten dokument zawiera informacje dotyczące zmieniania aplikacji do korzystania z wersji 3. 
 
@@ -110,7 +110,7 @@ Globalny
 
 > [!NOTE]
 > 
-> Centrum Microsoft Translator zostanie wycofana 30 kwietnia 2019 r. [Wyświetl informacje na temat migracji ważne i dat](https://www.microsoft.com/translator/business/hub/).   
+> W Centrum w usłudze Translator firmy Microsoft zostaną wycofane z dniem 17 maja 2019 r. [Wyświetl informacje na temat migracji ważne i dat](https://www.microsoft.com/translator/business/hub/).   
 
 Domyślnie V3 w usłudze Translator firmy Microsoft używa neuronowego tłumaczenia maszynowego. W efekcie nie można używać z Centrum w usłudze Translator firmy Microsoft. Centrum usługi Translator obsługuje tylko starszego statystycznego tłumaczenia maszynowego. Dostosowywanie na potrzeby tłumaczenie neuronowe jest teraz dostępna, przy użyciu niestandardowych w usłudze Translator. [Dowiedz się więcej o dostosowywaniu neuronowego tłumaczenia maszynowego](custom-translator/overview.md)
 
@@ -130,7 +130,6 @@ Tłumaczenie neuronowe z tekstem w wersji 3 interfejsu API nie obsługuje korzys
 Używasz wersji 3 interfejsu API Rozpoznawania tekstu usługi Translator, korzystając z punktu końcowego api.cognitive.microsofttranslator.com.
 
 **Interfejs API tekstu usługi Translator w wersji 2**
-* jest przestarzały. Zostanie ona zakończona 30 kwietnia 2019 r. 
 * Nie spełnia wszystkich ISO 20001,20018 i wymagania dotyczące certyfikacji SOC 3. 
 * Umożliwia wywoływanie systemów translation sieci neuronowych, które zostały dostosowane przy użyciu funkcji dostosowywania w usłudze Translator.
 * Zapewnia dostęp do systemów tłumaczenia niestandardowych utworzone za pomocą Centrum w usłudze Translator firmy Microsoft.

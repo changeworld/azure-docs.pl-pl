@@ -2,24 +2,18 @@
 title: Określić publikowania opcji w portalu Azure Marketplace | Azure
 description: W tym artykule opisano kryteria kwalifikacyjne i publikowania partnerów wymagania próby dowiedzieć się, jak publikować aplikacje w portalu Azure Marketplace.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: jm-aditi-ms
 manager: pabutler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: 2755232ea81f1551477431f4eb1f0aeab8b8bfe8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cb306a32a9388113a9c81fa363a6e1ee2c3b30ad
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60726654"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938111"
 ---
 # <a name="determine-your-publishing-option"></a>Określić swoje opcja publikowania
 Opcja publikowania, wybranej oferty bezpośrednio dotyczy zarówno wymagania kwalifikacyjne, jak i portalu marketplace GTM korzyści. Co ważniejsze wybór publikowania opcja i typ oferty w portalu Cloud Partner definiuje interakcji użytkowników z oferty w portalu marketplace.

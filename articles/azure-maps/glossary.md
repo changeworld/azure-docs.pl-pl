@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 11e49d362508e9720cf65fc20e020930b5f5c3ad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 9be99bc9ac4683fea97333c9d6cb783f0fde35c5
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60769842"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64575356"
 ---
 # <a name="glossary"></a>Słownik
 
@@ -63,7 +63,7 @@ Oto lista popularnych wyrazów, używany przy użyciu usługi Azure Maps.
 
 <a name="bearing"></a> **Mając**: Poziomy kierunek punkt w odniesieniu do innego punktu. To wymaganie jest wyrażone jako wartość kąta względem Północna z 0-stopni 360-stopni w prawo. 
 
-<a name="boundary"></a> **Granica**: Wiersz lub wielokąta oddzielenie sąsiadujących polityczne jednostki, takie jak kraje, okręgi i właściwości. Granica jest wiersz, który może być lub może nie być zgodne z fizycznego funkcje, takie jak rzek górach oraz ścian.
+<a name="boundary"></a> **Granica**: Wiersz lub wielokąta oddzielenie sąsiadujących polityczne jednostki, takie jak kraje/regiony, okręgi i właściwości. Granica jest wiersz, który może być lub może nie być zgodne z fizycznego funkcje, takie jak rzek górach oraz ścian.
 
 <a name="bounds"></a> **Granice**: Zobacz [pole Bounding](#bounding-box).
 
@@ -91,13 +91,13 @@ Oto lista popularnych wyrazów, używany przy użyciu usługi Azure Maps.
 
 <a name="coordinate-system"></a> **System współrzędnych**: Punkt odniesienia używany do definiowania położenie punktów w przestrzeni w dwóch lub trzech wymiarach.
 
-<a name="country-code"></a> **Numer kierunkowy kraju**: Unikatowy identyfikator dla kraju, oparty na standardzie ISO. ISO2 to dwuznakowy kod kraju (na przykład US), który reprezentuje ISO3 3 znakowy kod (np. USA).
+<a name="country-code"></a> **Numer kierunkowy kraju**: Unikatowy identyfikator dla kraju/regionu, oparty na standardzie ISO. ISO2 to dwuznakowy kod kraju (na przykład US), który reprezentuje ISO3 3 znakowy kod (np. USA).
 
-<a name="country-subdivision"></a> **Podpodział kraju**: Fragment pierwszego poziomu kraju, powszechnie znane jako województwo.
+<a name="country-subdivision"></a> **Podpodział kraju**: Fragment pierwszego poziomu Kraj/region, powszechnie znane jako województwo.
 
-<a name="country-secondary-subdivision"></a> **Podpodział dodatkowej kraju**: Kraj, powszechnie znane jako Powiat fragment drugiego poziomu.
+<a name="country-secondary-subdivision"></a> **Podpodział dodatkowej kraju**: Fragment drugiego poziomu Kraj/region, powszechnie znane jako powiat.
 
-<a name="country-tertiary-subdivision"></a> **Podpodział trzeciorzędny kraju**: Fragment trzeciego poziomu kraju, zwykle o nazwie obszaru, takiego jak tyłu.
+<a name="country-tertiary-subdivision"></a> **Podpodział trzeciorzędny kraju**: Fragment trzeciego poziomu Kraj/region, zwykle o nazwie obszaru, takiego jak tyłu.
 
 <a name="cross-street"></a> **Ulica między**: Punkt przecięcia się co najmniej dwóch Streets (ulice).
 
@@ -283,7 +283,7 @@ Oto lista popularnych wyrazów, używany przy użyciu usługi Azure Maps.
 
 <a name="post-code"></a> **Kod pocztowy**: Zobacz [kod pocztowy](#postal-code).
 
-<a name="postal-code"></a> **Kod pocztowy**: Seria litery lub cyfry lub zarówno w określonym formacie używane przez usługi pocztowe kraju zostać podzielona obszarów geograficznych stref w celu uproszczenia dostarczania poczty.
+<a name="postal-code"></a> **Kod pocztowy**: Seria litery lub cyfry lub zarówno w określonym formacie używane przez usługi pocztowe w kraju/regionu można podzielić obszarów geograficznych stref w celu uproszczenia dostarczania poczty.
 
 <a name="prime-meridian"></a> **Pierwsze południków**: Wiersz długość geograficzna, który reprezentuje 0 stopni długości geograficznej. Ogólnie rzecz biorąc, wartości długości geograficznej zmniejszyć podczas podróży w kierunku zachodnim aż do 180 stopni i zwiększyć podczas poruszania się we wschodnim kierunkach-180-stopni. 
 
@@ -351,11 +351,11 @@ Oto lista popularnych wyrazów, używany przy użyciu usługi Azure Maps.
 
 <a name="terrain"></a> **Terenu**: Obszar terenu o szczególne cechy, takie jak piaszczystej terenu lub po górach terenu.
 
-<a name="thematic-maps"></a> **Mapy tematycznych**: Tematycznych mapa jest proste mapy wprowadzone w celu odzwierciedlenia motywu o obszaru geograficznego. Typowy scenariusz dla tego typu mapy jest kolorów regionów administracyjnych, takich jak krajach, w oparciu o niektóre metryki danych.
+<a name="thematic-maps"></a> **Mapy tematycznych**: Tematycznych mapa jest proste mapy wprowadzone w celu odzwierciedlenia motywu o obszaru geograficznego. Typowy scenariusz dla tego typu mapy jest kolorów regionów administracyjnych, takich jak kraje/regiony, w oparciu o niektóre metryki danych.
 
 <a name="tile-layer"></a> **Warstwa kafelków**: Warstwa, wyświetlane przez łączenie kafelków map (prostokątna sekcje) do ciągłego warstwy. Kafelki są albo rastrowych obrazów kafelków lub wektorowych kafelków. Warstwy kafelków rastrowych są zwykle renderowane wcześniejsze i przechowywane jako obrazy z serwera. Może to zająć dużo miejsca do magazynowania. Wektor kafelka warstwy są renderowane na bieżąco w aplikacji klienta, dlatego są mniejsze wymagania dotyczące magazynu po stronie serwera.
 
-<a name="time-zone"></a> **Strefa czasowa**: Obszar świata, która przestrzega jednolita postać czasu standardowego do celów prawnych, komercyjnych i społecznościowych. Stref czasowych zwykle postępuj zgodnie z granicami krajów i ich części.
+<a name="time-zone"></a> **Strefa czasowa**: Obszar świata, która przestrzega jednolita postać czasu standardowego do celów prawnych, komercyjnych i społecznościowych. Strefy czasowe często wykonują granice krajów/regionów i ich części.
 
 <a name="transaction"></a> **Transakcja**: Usługi Azure Maps używa transakcji modelu licencjonowania gdzie;
 
@@ -398,5 +398,5 @@ Oto lista popularnych wyrazów, używany przy użyciu usługi Azure Maps.
 
 <a name="zip-code"></a> **Kod pocztowy**: Zobacz [kod pocztowy](#postal-code).
 
-<a name="Zoom level"></a> **Poziom powiększenia**: Określa poziom szczegółowości oraz ile mapy jest widoczna. Pomniejszeniu aż poziom 0, mapę świata pełną często będzie w widoku, ale pokaże ograniczone szczegóły, takie jak nazwy kraju i obramowanie i nazwy ocean. Po powiększeniu bliżej poziomu 17 mapy wyświetli obszar kilka bloków Miasto drogowej szczegółowe informacje. Aby uzyskać więcej informacji, zobacz [poziomy powiększenia i siatka kafelków](zoom-levels-and-tile-grid.md) dokumentacji.
+<a name="Zoom level"></a> **Poziom powiększenia**: Określa poziom szczegółowości oraz ile mapy jest widoczna. Pomniejszeniu aż poziom 0, mapę świata pełną często będzie w widoku, ale pokaże ograniczone szczegóły, takie jak nazwy kraju/regionu i obramowanie i nazwy ocean. Po powiększeniu bliżej poziomu 17 mapy wyświetli obszar kilka bloków Miasto drogowej szczegółowe informacje. Aby uzyskać więcej informacji, zobacz [poziomy powiększenia i siatka kafelków](zoom-levels-and-tile-grid.md) dokumentacji.
 

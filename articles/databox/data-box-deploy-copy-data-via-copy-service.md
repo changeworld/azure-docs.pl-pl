@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Kopiowanie danych na urządzenie Microsoft Azure Data Box przy użyciu usługi kopiowania danych | Microsoft Docs'
+title: Samouczek, aby skopiować dane do urządzenia Azure Data Box za pomocą usługi kopiowania danych | Dokumentacja firmy Microsoft
 description: Z tego samouczka dowiesz się, jak skopiować dane na urządzenie Azure Data Box przy użyciu usługi kopiowania danych
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 01/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 3f76721129906b57a05e597aade9f2febb609968
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 412b554710c552bdfdf8bf94a59e822beed55b32
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60727919"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925318"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-preview"></a>Samouczek: Korzystanie z usługi kopiowania danych w celu skopiowanie danych na urządzenie Azure Data Box (wersja zapoznawcza)
 

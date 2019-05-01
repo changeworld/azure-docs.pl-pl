@@ -2,18 +2,17 @@
 title: Akcja skryptu — instalowanie pakietów języka Python z rozwiązaniem Jupyter w usłudze Azure HDInsight
 description: Instrukcje krok po kroku dotyczące konfigurowania notesów programu Jupyter dostępne przy użyciu klastrów HDInsight Spark przy użyciu akcji skryptu za pomocą pakietów zewnętrznych języka python.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/20/2019
-ms.author: hrasheed
-ms.openlocfilehash: 876037e0e8e795ca98ddd3adf74dd0a304192a35
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.date: 04/22/2019
+ms.openlocfilehash: c07326cc3a4334f1873eef2dc23da05156a93577
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62097916"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574664"
 ---
 # <a name="use-script-action-to-install-external-python-packages-for-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Użyj akcji skryptu, aby zainstalować zewnętrznych pakietów języka Python dla notesów programu Jupyter w klastrach platformy Apache Spark w HDInsight
 > [!div class="op_single_selector"]
@@ -75,10 +74,10 @@ Istnieją dwa typy składników typu open source, które są dostępne w usłudz
 
     ```bash
     #!/usr/bin/env bash
-    /usr/bin/anaconda/bin/conda install -c conda-forge tensorflow
+    /usr/bin/anaconda/bin/conda install --yes tensorflow
     ```
 
-5. Wybierz pozycję **Utwórz**.  Odwiedź stronę dokumentacji na [sposób użyć niestandardowego skryptu akcji](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux).
+5. Wybierz pozycję **Utwórz**.  Odwiedź stronę dokumentacji na [sposób użyć niestandardowego skryptu akcji](../hdinsight-hadoop-customize-cluster-linux.md).
 
 6. Poczekaj na wykonanie skryptu.  **Akcji skryptu** okienko będzie zawierać informację **nowe akcje skryptów można przesłać po zakończeniu bieżącej operacji klastra** podczas wykonywania skryptu.  Pasek postępu, mogą być wyświetlane w interfejsie użytkownika Ambari **operacji w tle** okna.
 

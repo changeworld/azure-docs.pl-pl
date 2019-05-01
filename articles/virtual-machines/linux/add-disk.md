@@ -16,12 +16,12 @@ ms.date: 06/13/2018
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
 ms.subservice: disks
-ms.openlocfilehash: 1915051380a514cf8143d43bddc0d0d475f43c07
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.openlocfilehash: 3f33fb09a4b6c19bae3c02ecc47dae193a3a6cb0
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63765832"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925237"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Dodawanie dysku do maszyny wirtualnej z systemem Linux
 W tym artykule pokazano, jak dołączyć dysk trwały z maszyną wirtualną tak, aby zachować swoje dane — nawet wtedy, gdy maszyna wirtualna jest aprowizowany ponownie z powodu konserwacji lub zmienianie jej rozmiaru.
@@ -205,7 +205,7 @@ UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail 
 >
 > *Nofail* opcja gwarantuje, że maszyna wirtualna zacznie nawet, jeśli system plików jest uszkodzony lub dysk nie istnieje w czasie rozruchu. Bez tej opcji, możesz napotkać zachowanie zgodnie z opisem w [nie SSH do maszyny Wirtualnej systemu Linux z powodu błędów FSTAB](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting/)
 >
-> Konsoli szeregowej maszyny Wirtualnej platformy Azure może służyć do dostępu do konsoli dla maszyny wirtualnej, jeśli modyfikowanie fstab spowodowało błąd rozruchu. Więcej szczegółów znajduje się w [dokumentację konsoli szeregowej](https://docs.microsoft.com/en-us/azure/virtual-machines/troubleshooting/serial-console-linux).
+> Konsoli szeregowej maszyny Wirtualnej platformy Azure może służyć do dostępu do konsoli dla maszyny wirtualnej, jeśli modyfikowanie fstab spowodowało błąd rozruchu. Więcej szczegółów znajduje się w [dokumentację konsoli szeregowej](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux).
 
 ### <a name="trimunmap-support-for-linux-in-azure"></a>TRIM/UNMAP obsługę systemu Linux na platformie Azure
 Niektóre jądra systemu Linux obsługuje TRIM/UNMAP operacji można odrzucić nieużywanych bloków na dysku. Ta funkcja jest szczególnie przydatne w magazynie standard storage platformy Azure, które usunięto strony nie są już prawidłowe i można odrzucać i może oszczędzać pieniądze, jeśli utworzysz dużych plików, a następnie je usunąć.

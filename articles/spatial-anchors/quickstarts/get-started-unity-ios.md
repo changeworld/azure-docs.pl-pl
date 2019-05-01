@@ -1,5 +1,5 @@
 ---
-title: Szybki start — tworzenie aplikacji aparatu Unity dla systemu iOS przy użyciu usługi Azure Spatial Anchors | Microsoft Docs
+title: Przewodnik Szybki Start — tworzenie aplikacji dla systemu iOS Unity za pomocą Azure przestrzenne kotwic | Dokumentacja firmy Microsoft
 description: Z tego przewodnika Szybki start dowiesz się, jak utworzyć aplikację dla systemu iOS, używając aparatu Unity i usługi Spatial Anchors.
 author: craigktreasure
 manager: aliemami
@@ -8,16 +8,16 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: e3320cd6131497d0b2c794646bae7fae578488cd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 41189d4945ef22f8a587a51717b7dd6f40ac39ce
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60235202"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64690547"
 ---
-# <a name="quickstart-create-an-ios-unity-app-with-azure-spatial-anchors"></a>Szybki start: Tworzenie aplikacji aparatu Unity dla systemu iOS przy użyciu usługi Azure Spatial Anchors
+# <a name="quickstart-create-a-unity-ios-app-with-azure-spatial-anchors"></a>Szybki start: Tworzenie aplikacji dla systemu iOS Unity za pomocą kotwic przestrzenne platformy Azure
 
-W tym przewodniku Szybki start opisano, jak utworzyć aplikację aparatu Unity dla systemu iOS przy użyciu usługi [Azure Spatial Anchors](../overview.md). Azure Spatial Anchors to usługa dla deweloperów programujących dla wielu platform, która pozwala kreować rozwiązania z rzeczywistością mieszaną z użyciem obiektów, których lokalizacja jest taka sama na różnych urządzeniach mimo upływu czasu. Gdy skończysz, będziesz mieć aplikację ARKit dla systemu iOS utworzoną za pomocą aparatu Unity, która może zapisywać i przywoływać kotwicę przestrzenną.
+Ten przewodnik Szybki Start opisano, jak utworzyć Unity dla systemu iOS app przy użyciu [kotwic przestrzenne Azure](../overview.md). Azure Spatial Anchors to usługa dla deweloperów programujących dla wielu platform, która pozwala kreować rozwiązania z rzeczywistością mieszaną z użyciem obiektów, których lokalizacja jest taka sama na różnych urządzeniach mimo upływu czasu. Gdy skończysz, będziesz mieć aplikację ARKit dla systemu iOS utworzoną za pomocą aparatu Unity, która może zapisywać i przywoływać kotwicę przestrzenną.
 
 Omawiane tematy:
 

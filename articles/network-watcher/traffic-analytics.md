@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;kumud
-ms.openlocfilehash: 2f283421a851914822f5b0c9d05ed6bc929d28c4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: a4ae997398c85dc99af8711f1c6ce4e743592d73
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60430129"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939893"
 ---
 # <a name="traffic-analytics"></a>Analiza ruchu
 
@@ -176,7 +176,7 @@ Wybierz następujące opcje, jak pokazano na ilustracji:
 
     ![Wybór konta magazynu, obszar roboczy usługi Log Analytics i włączanie analizy ruchu](./media/traffic-analytics/selection-of-storage-account-log-analytics-workspace-and-traffic-analytics-enablement-nsg-flowlogs-v2.png)
 
-Powtórz poprzednie kroki dla innych NSG, dla których chcesz włączyć analizy ruchu. Dane z dzienników przepływu są wysyłane do obszaru roboczego, dlatego upewnij się, że lokalnymi przepisami i regulacjami w Twoim kraju na przechowywanie danych w regionie, w którym istnieje obszar roboczy.
+Powtórz poprzednie kroki dla innych NSG, dla których chcesz włączyć analizy ruchu. Dane z dzienników przepływu są wysyłane do obszaru roboczego, dlatego upewnij się, że lokalnymi przepisami i regulacjami w kraju/regionu na przechowywanie danych w regionie, w którym istnieje obszar roboczy.
 
 Można również skonfigurować za pomocą analizy ruchu [AzNetworkWatcherConfigFlowLog zestaw](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) polecenia cmdlet programu PowerShell w programie Azure PowerShell. Uruchom `Get-Module -ListAvailable Az` można odnaleźć zainstalowanej wersji. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-Az-ps).
 
@@ -270,13 +270,13 @@ Niektóre szczegółowe informacje, które możesz chcieć uzyskać po w pełni 
 
     ![Prezentacja Dystrybucja ruchu pulpitu nawigacyjnego](./media/traffic-analytics/dashboard-showcasing-traffic-distribution.png)
 
-- Mapy geograficznej przedstawiono najważniejsze wstążki do wyboru parametrów, takich jak centra danych (obsługujące analizę wdrożono/No wdrożenia/aktywny/nieaktywny/ruchu/nie obsługujące analizę ruchu) oraz krajów, w których pochodzi ruch Benign/złośliwym kodem do aktywnej Wdrożenie:
+- Mapy geograficznej przedstawiono najważniejsze wstążki do wyboru parametrów, takich jak centra danych (obsługujące analizę wdrożono/No wdrożenia/aktywny/nieaktywny/ruchu/nie obsługujące analizę ruchu) i kraje/regiony, w których pochodzi ruch Benign/złośliwym kodem do aktywnej Wdrożenie:
 
     ![Widok mapy geograficznej przedstawiająca aktywne wdrożenie](./media/traffic-analytics/geo-map-view-showcasing-active-deployment.png)
 
-- Mapy geograficznej pokazuje dystrybucji ruchu do centrum danych z innych krajów i kontynentach komunikowania się go w niebieska (nieszkodliwy ruch) i czerwona (ruch złośliwego) kolorowe wiersze:
+- Mapy geograficznej pokazuje dystrybucji ruchu do centrum danych z krajów/regionów i kontynentach komunikowania się go w niebieska (nieszkodliwy ruch) i czerwona (ruch złośliwego) kolorowe wierszy:
 
-    ![Zaprezentować dystrybucji ruchu do innych krajów i kontynentach widoku mapy geograficznej](./media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png)
+    ![Zaprezentować rozkładania ruchu kraje/regiony i kontynentach widoku mapy geograficznej](./media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png)
 
     ![Szczegóły dla dystrybucji ruchu na wyszukiwanie w dziennikach przepływu](./media/traffic-analytics/flow-details-for-traffic-distribution-in-log-search.png)
 

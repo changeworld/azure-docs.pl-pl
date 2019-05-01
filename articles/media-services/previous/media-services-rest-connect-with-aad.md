@@ -13,14 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: willzhan;juliako;johndeu
-ms.openlocfilehash: 4b6bd97d7e87832f774f7a09f7e0deeb4047e695
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 6284a1aa0cc3a49291553309b058e4d9f65b24c6
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60598723"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64701013"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>Uwierzytelnianie usługi Azure AD umożliwia dostęp do interfejsu API Media Services za pomocą architektury REST
+
+> [!NOTE]
+> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówek dotyczących migracji od v2 do v3](../latest/migrate-from-v2-to-v3.md)
 
 Podczas korzystania z uwierzytelniania usługi Azure AD za pomocą usługi Azure Media Services, można uwierzytelniać się w jeden z dwóch sposobów:
 

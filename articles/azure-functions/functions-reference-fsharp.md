@@ -12,12 +12,12 @@ ms.devlang: fsharp
 ms.topic: reference
 ms.date: 10/09/2018
 ms.author: syclebsc
-ms.openlocfilehash: 981ffce34c56f4becee2ed0c72da72baa220e395
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: fbc5a149e59bff1897d3949185272e9ca664f989
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61020267"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64717826"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Usługa Azure Functions F# dokumentacja dla deweloperów
 
@@ -54,7 +54,7 @@ FunctionsProject
 
 Brak udostępnionej [host.json](functions-host-json.md) pliku, który może służyć do konfigurowania aplikacji funkcji. Każda funkcja ma swój własny plik kodu (.fsx) i plik konfiguracji powiązania (function.json).
 
-Rozszerzenia powiązania wymagane w [wersji 2.x](functions-versions.md) funkcji środowiska uruchomieniowego są zdefiniowane w `extensions.csproj` pliku z plikami rzeczywistej biblioteki w `bin` folderu. Podczas tworzenia lokalnie, należy najpierw [zarejestrować rozszerzeń powiązania](./functions-bindings-register.md#local-development-azure-functions-core-tools). Podczas tworzenia funkcji w witrynie Azure portal, rejestracja odbywa się za Ciebie.
+Rozszerzenia powiązania wymagane w [wersji 2.x](functions-versions.md) funkcji środowiska uruchomieniowego są zdefiniowane w `extensions.csproj` pliku z plikami rzeczywistej biblioteki w `bin` folderu. Podczas tworzenia lokalnie, należy najpierw [zarejestrować rozszerzeń powiązania](./functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles). Podczas tworzenia funkcji w witrynie Azure portal, rejestracja odbywa się za Ciebie.
 
 ## <a name="binding-to-arguments"></a>Powiązanie z argumentami
 Każde powiązanie obsługuje niektóre argumenty, zgodnie z opisem w [dokumentacja dla deweloperów usługi wyzwalaczy i powiązań usługi Azure Functions](functions-triggers-bindings.md). Na przykład, jedno z powiązań argument obsługuje wyzwalacz obiektu blob jest POCO, które mogą być wyrażone za pomocą F# rekordu. Na przykład:

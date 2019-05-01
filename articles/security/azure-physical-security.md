@@ -1,6 +1,6 @@
 ---
-title: Urządzenia platformy Azure, lokalnie i zabezpieczenia fizyczne | Dokumentacja firmy Microsoft
-description: W artykule opisano centrach danych platformy Azure, w tym infrastruktury fizycznej, zabezpieczeń i ofertom obsługi zgodności.
+title: Zabezpieczeń fizycznych centrów danych platformy Azure — Microsoft Azure | Dokumentacja firmy Microsoft
+description: W artykule opisano, co firma Microsoft używa do bezpiecznego centrach danych platformy Azure, tym fizycznych ofert infrastrukturę, bezpieczeństwo i zgodność.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -12,19 +12,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/28/2018
+ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 5f8378de18796fd679354c88880942df83399ad5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: d1b95695de809668987ebb6ef6720a3751205171
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60586804"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939847"
 ---
 # <a name="azure-facilities-premises-and-physical-security"></a>Urządzenia platformy Azure, lokalnie i zabezpieczenia fizyczne
+W tym artykule opisano, co robi firma Microsoft do zabezpieczania infrastruktury platformy Azure.
+
+## <a name="datacenter-infrastructure"></a>Infrastrukturę centrów danych
 Azure składa się z [infrastrukturę centrów danych rozproszonych globalnie](https://azure.microsoft.com/global-infrastructure/), obsługa tysięcy usług online i obejmujące więcej niż 100 kompleksowo zabezpieczonych obiektów na całym świecie.
 
-Infrastruktura jest przeznaczona do przybliżania aplikacji do użytkowników na świecie, jednocześnie zachowuje rezydencję danych oraz oferując kompleksowe opcje zgodności i odporności dla klientów. Platforma Azure ma 52 regionów na całym świecie i jest dostępna w 140 krajach.
+Infrastruktura jest przeznaczona do przybliżania aplikacji do użytkowników na świecie, jednocześnie zachowuje rezydencję danych oraz oferując kompleksowe opcje zgodności i odporności dla klientów. Platforma Azure ma 52 regionów na całym świecie i jest dostępna w 140 krajach/regionach.
 
 Region to zestaw centrów danych, która jest połączona za pośrednictwem sieci dużych i odporny na błędy. Domyślnie sieć zawiera dystrybucji zawartości, równoważenia obciążenia, nadmiarowość i szyfrowania. Za pomocą więcej regionów globalnych niż którykolwiek inny dostawca chmury platformy Azure zapewnia elastyczność do wdrażania aplikacji gdzie ich potrzebujesz.
 
@@ -67,9 +70,9 @@ Firma Microsoft korzysta z najlepszą praktyką procedur i wiping rozwiązanie, 
 Od systemu zakończenia eksploatacji pracowników operacyjnych firmy Microsoft wykonaj i obsługi danych rygorystyczne procedury usuwania sprzętu, aby mieć pewność, że sprzętu zawierający dane nie będą dostępne dla niezaufane. Używamy podejście bezpiecznego wymazywania dla dysków twardych, które go obsługują. Dla dysków twardych, które nie mogą zostać wyczyszczone używamy proces zniszczenie niszczy dysku, która renderuje niemożliwe do odzyskiwania informacji. Ten proces zniszczenie może zająć do rozpaść, typu, rozpylać lub spalania. Określamy sposoby usuwania zależnie od typu zasobu. Firma Microsoft zachowuje rekordów zniszczenia. Wszystkich usług platformy Azure za pomocą usług zarządzania przechowywania i usuwania zatwierdzonych nośnika.
 
 ## <a name="compliance"></a>Zgodność
-Firma Microsoft projektowania i Zarządzaj infrastrukturą platformy Azure w celu spełnienia szeroką gamę standardy zgodności międzynarodowych i branżowych, takich jak ISO 27001, HIPAA, FedRAMP, SOC 1 i SOC 2. Stosujemy również ze standardami krajowymi, takimi jak IRAP w Australii, G-Cloud Wielkiej Brytanii i Mtcs w Singapurze. Rygorystyczne audyty innych firm, takich jak to zrobić przez British Standards Institute, potwierdzają rygorystyczne kontrole zabezpieczeń narzucanymi przez te standardy.
+Firma Microsoft projektowania i Zarządzaj infrastrukturą platformy Azure w celu spełnienia szeroką gamę standardy zgodności międzynarodowych i branżowych, takich jak ISO 27001, HIPAA, FedRAMP, SOC 1 i SOC 2. Stosujemy również ze standardami określonego kraju lub regionu, takimi jak IRAP w Australii, G-Cloud Wielkiej Brytanii i Mtcs w Singapurze. Rygorystyczne audyty innych firm, takich jak to zrobić przez British Standards Institute, potwierdzają rygorystyczne kontrole zabezpieczeń narzucanymi przez te standardy.
 
-Aby uzyskać pełną listę standardy zgodności, które platformy Azure jest zgodna, zobacz [ofertom obsługi zgodności](https://www.microsoft.com/trustcenter/compliance/complianceofferings). 
+Aby uzyskać pełną listę standardy zgodności, które platformy Azure jest zgodna, zobacz [ofertom obsługi zgodności](https://www.microsoft.com/trustcenter/compliance/complianceofferings).
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby dowiedzieć się, co firma Microsoft używa do zabezpieczania infrastruktury platformy Azure, zobacz:

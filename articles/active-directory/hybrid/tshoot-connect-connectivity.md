@@ -1,5 +1,5 @@
 ---
-title: 'Program Azure AD Connect: Rozwiązywanie problemów z łącznością | Dokumentacja firmy Microsoft'
+title: 'Program Azure AD Connect: Rozwiązywanie problemów z usługi Azure AD problemy z łącznością | Dokumentacja firmy Microsoft'
 description: Wyjaśnia, jak rozwiązywać problemy z łącznością w programie Azure AD Connect.
 services: active-directory
 documentationcenter: ''
@@ -12,18 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/18/2017
+ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0afc31bf08a5037d91885bc6a85c6aeaf858825
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7519f47037d2d7ff37564ab27c1cc58b65ff6c14
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60386694"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572785"
 ---
-# <a name="troubleshoot-connectivity-issues-with-azure-ad-connect"></a>Rozwiązywanie problemów z łącznością z programem Azure AD Connect
+# <a name="troubleshoot-azure-ad-connectivity"></a>Rozwiązywanie problemów z łącznością z usługi Azure AD
 W tym artykule wyjaśniono, jak działa łączność między program Azure AD Connect a usługą Azure AD i jak rozwiązać problemy z łącznością. Te problemy z największym prawdopodobieństwem mogą być widoczne w środowisku przy użyciu serwera proxy.
 
 ## <a name="troubleshoot-connectivity-issues-in-the-installation-wizard"></a>Rozwiązywanie problemów z łącznością w Kreatorze instalacji

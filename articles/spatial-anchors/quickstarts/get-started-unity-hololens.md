@@ -1,5 +1,5 @@
 ---
-title: Przewodnik Szybki Start — tworzenie aplikacji HoloLens Unity z Azure kotwic przestrzenne | Dokumentacja firmy Microsoft
+title: Przewodnik Szybki Start — tworzenie Unity HoloLens aplikacji przy użyciu Azure kotwic przestrzenne | Dokumentacja firmy Microsoft
 description: Z tego przewodnika Szybki start dowiesz się, jak utworzyć aplikację dla urządzenia HoloLens, używając aparatu Unity i usługi Spatial Anchors.
 author: craigktreasure
 manager: aliemami
@@ -8,14 +8,14 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: ce9bca3f11911677a6009b4cfe0c3f6413b9f837
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 31c7af3edf6364ebca021f87240e73c74e64ebc4
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60240575"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64704135"
 ---
-# <a name="quickstart-create-a-hololens-unity-app-that-uses-azure-spatial-anchors"></a>Szybki start: Tworzenie aplikacji HoloLens Unity, która używa kotwic przestrzenne platformy Azure
+# <a name="quickstart-create-a-unity-hololens-app-that-uses-azure-spatial-anchors"></a>Szybki start: Tworzenie aplikacji Unity HoloLens, która używa kotwic przestrzenne platformy Azure
 
 W tym przewodniku Szybki Start utworzysz aplikację HoloLens Unity, który używa [kotwic przestrzenne Azure](../overview.md). Kotwice przestrzennego jest usługa programistycznych dla wielu platform, która umożliwia tworzenie środowisk rzeczywistość mieszana z obiektami, które ulegają zmianie lokalizacji urządzenia wraz z upływem czasu. Gdy skończysz, będziesz mieć aplikację dla urządzenia HoloLens utworzoną za pomocą aparatu Unity, która może zapisywać i przywoływać kotwicę przestrzenną.
 

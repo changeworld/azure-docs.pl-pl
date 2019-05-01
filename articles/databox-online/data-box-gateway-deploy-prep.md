@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 03/28/2019
+ms.date: 04/23/2019
 ms.author: alkohli
-ms.openlocfilehash: 34bc4d7cbdbb89cd9ff3f334ca32087c474735b7
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: f9650cdb6935fb45f0c59e8a114a9ce1c8e2d809
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620091"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64686531"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway"></a>Samouczek: Przygotowanie do wdrożenia bramy pola danych platformy Azure
 
@@ -51,6 +51,8 @@ W tym miejscu opisano wymagania wstępne dotyczące konfiguracji zasobu usługi 
 Przed rozpoczęciem upewnij się, że:
 
 - Twoja subskrypcja Microsoft Azure powinna być obsługiwana dla zasobu bramy pola danych. Płatność za rzeczywiste użycie subskrypcje nie są obsługiwane.
+- Masz właściciela lub współautora dostęp do Twojej subskrypcji.
+- Masz administratora lub użytkownika, dostęp do interfejsu API usługi Azure Active Directory Graph. Aby uzyskać więcej informacji, zobacz [interfejsu API usługi Azure Active Directory Graph](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
 - Masz konto magazynu platformy Microsoft Azure z poświadczeniami dostępu.
 
 ### <a name="for-the-data-box-gateway-device"></a>Urządzenie usługi Data Box Gateway
@@ -85,7 +87,7 @@ Do utworzenia zasobu bramy pola danych, wykonaj następujące kroki w witrynie A
 
 1. Użyj swoich poświadczeń Microsoft Azure, aby zalogować się do:
 
-    - Witryny Azure portal pod tym adresem URL: [ https://portal.azure.com ](http://portal.azure.com).
+    - Witryny Azure portal pod tym adresem URL: [ https://portal.azure.com ](https://portal.azure.com).
     - Lub, w portalu Azure dla instytucji rządowych pod tym adresem URL: [ https://portal.azure.us ](https://portal.azure.us). Aby uzyskać więcej informacji, przejdź do [nawiązywanie połączenia z platformy Azure Government przy użyciu portalu](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal).
 
 2. W okienku po lewej stronie wybierz **+ Utwórz zasób**. Wyszukaj **Data Box Edge / Data Box bramy**. Wybierz krawędź pola Data / Data Box bramy. Wybierz pozycję **Utwórz**.

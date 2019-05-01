@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 3b31e796b07bea8c11bccb3f2bb306a4279f2ca3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 21c75c0f377f55614e2c7fa0bb27628cf598e3e7
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61291661"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924586"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Jak wdrożyć nawigację aspektową w usłudze Azure Search
 Nawigacja aspektowa jest mechanizm filtrowania, który zapewnia kierunkowane samodzielnie przez użytkowników Przechodzenie do szczegółów nawigacji w aplikacji do wyszukiwania. Termin "nawigacji aspektowej" mogą być nieznane, ale prawdopodobnie użyto go przed. Jak pokazano na poniższym przykładzie, nawigacji aspektowej ma więcej niż kategorii, używana do filtrowania wyników.
@@ -34,7 +34,7 @@ W zakresie opracowywania aplikacji pisanie kodu, który konstruuje zapytania sta
 ## <a name="sample-code-and-demo"></a>Przykładowy kod i wersji demonstracyjnej
 Tym artykule użyto portalu do wyszukiwania zadania jako przykład. Przykład jest implementowany jako aplikację ASP.NET MVC.
 
--   Obejrzeć i przetestować pokaz pracy w [usługi Azure Search zadania Portal Demo](http://azjobsdemo.azurewebsites.net/).
+-   Obejrzeć i przetestować pokaz pracy w [usługi Azure Search zadania Portal Demo](https://azjobsdemo.azurewebsites.net/).
 
 -   Pobierz kod ze [repozytorium przykładów dla platformy Azure w serwisie GitHub](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs).
 

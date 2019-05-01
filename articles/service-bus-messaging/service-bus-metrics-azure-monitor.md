@@ -10,12 +10,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 11/06/2018
 ms.author: aschhab
-ms.openlocfilehash: 175d5d5d4495986c29b75427a325088c14279e17
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: d5f5c1d9b1884c6e9975ceb0ce28ecd5f25e89b2
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60308663"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64716095"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor-preview"></a>Metryki usługi Azure Service Bus w usłudze Azure Monitor (wersja zapoznawcza)
 
@@ -83,14 +83,14 @@ Dwa rodzaje błędów sklasyfikowanych jako błędy użytkownika:
 |Komunikaty wychodzące (wersja zapoznawcza)|Liczba zdarzeń lub komunikatów odebranych z usługi Service Bus w określonym czasie.<br/><br/> Jednostka: Licznik <br/> Typ agregacji: Łącznie <br/> Wymiar: EntityName|
 | Komunikaty (wersja zapoznawcza) | Liczba komunikatów w kolejce/temacie. <br/><br/> Jednostka: Licznik <br/> Typ agregacji: Średnia <br/> Wymiar: EntityName |
 | ActiveMessages (wersja zapoznawcza) | Liczba aktywnych komunikatów w kolejce/temacie. <br/><br/> Jednostka: Licznik <br/> Typ agregacji: Średnia <br/> Wymiar: EntityName |
+| Lettered Obsługa utraconych komunikatów (wersja zapoznawcza) | Liczba lettered Obsługa utraconych komunikatów w kolejce/temacie. <br/><br/> Jednostka: Licznik <br/> Typ agregacji: Średnia <br/>Wymiar: EntityName |
+| Zaplanowane wiadomości (wersja zapoznawcza) | Liczba zaplanowanych wiadomości w kolejce/temacie. <br/><br/> Jednostka: Licznik <br/> Typ agregacji: Średnia  <br/> Wymiar: EntityName |
 
 ## <a name="connection-metrics"></a>Metryki połączeń
 
 | Nazwa metryki | Opis |
 | ------------------- | ----------------- |
 |Połączeń ActiveConnections (wersja zapoznawcza)|Liczba aktywnych połączeń w przestrzeni nazw, a także w jednostce.<br/><br/> Jednostka: Licznik <br/> Typ agregacji: Łącznie <br/> Wymiar: EntityName|
-|Otwartego połączenia (wersja zapoznawcza)|Liczba otwartych połączeń.<br/><br/> Jednostka: Licznik <br/> Typ agregacji: Łącznie <br/> Wymiar: EntityName|
-|Połączenia zamknięte (wersja zapoznawcza)|Liczba zamkniętych połączeń.<br/><br/> Jednostka: Licznik <br/> Typ agregacji: Łącznie <br/> Wymiar: EntityName |
 
 ## <a name="resource-usage-metrics"></a>Metryki użycia zasobów
 
@@ -115,7 +115,7 @@ Usługa Azure Service Bus obsługuje następujące wymiary metryk w usłudze Azu
 1. Na **metryki** karcie **usługi Service Bus Namespace** wybierz opcję **Konfigurowanie alertów**. 
 
     ![Metryki stronie — Konfigurowanie menu alerty](./media/service-bus-metrics-azure-monitor/metrics-page-configure-alerts-menu.png)
-2. Wybierz **Wybieranie lokalizacji docelowej**, i wykonaj następujące czynności na **wybierz zasób** strony: 
+2. Wybierz **Wybieranie lokalizacji docelowej** opcji, a następnie wykonaj następujące czynności na **wybierz zasób** strony: 
     1. Wybierz **przestrzeniami nazw magistrali usług** dla **Filtruj według typu zasobu** pola. 
     2. Wybierz swoją subskrypcję dla **Filtruj według subskrypcji** pola.
     3. Wybierz **przestrzeń nazw magistrali usług** z listy. 

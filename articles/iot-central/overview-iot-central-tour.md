@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: edc75711d8f727d8b1c9359835c6d5ebd575ff71
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 654528ed6137ee62ea22d552d36fda5ac5331adc
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678653"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64688648"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>Przewodnik po interfejsie użytkownika usługi Azure IoT Central
 
@@ -51,7 +51,7 @@ Górne menu jest wyświetlane na każdej stronie:
 - Aby wyszukać szablonów urządzeń i urządzeń, należy wprowadzić **wyszukiwania** wartość.
 - Aby zmienić język interfejsu użytkownika lub motywu, wybierz **ustawienia** ikony.
 - Aby Wyloguj się z aplikacji, wybierz opcję **konta** ikony.
-- Aby uzyskać pomoc i pomoc techniczną, wybierz pozycję rozwijaną **Pomoc**, aby uzyskać listę zasobów.
+- Aby uzyskać pomoc i pomoc techniczną, wybierz pozycję rozwijaną **Pomoc**, aby uzyskać listę zasobów. W wersji próbnej aplikacji, zasoby pomocy technicznej oferują dostęp do [Czat na żywo](howto-show-hide-chat.md).
 
 Możesz wybrać jasny lub ciemny motyw interfejsu użytkownika:
 

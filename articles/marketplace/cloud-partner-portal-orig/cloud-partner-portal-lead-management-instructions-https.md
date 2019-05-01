@@ -1,25 +1,18 @@
 ---
-title: Punkt końcowy HTTPS | Dokumentacja firmy Microsoft
+title: HTTPS Endpoint | Azure Marketplace
 description: Skonfiguruj zarządzanie potencjalnymi klientami dla punktu końcowego protokołu HTTPS.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/24/2018
-ms.author: pbutlerm
-ms.openlocfilehash: cfcd154b2f44c9e8acf12a9666abc9ce95fb3c26
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: 058ab30358811cb66ae033fb464974639569ae18
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62124068"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935265"
 ---
 # <a name="configure-lead-management-using-an-https-endpoint"></a>Skonfiguruj zarządzanie potencjalnymi klientami przy użyciu punktu końcowego HTTPS
 

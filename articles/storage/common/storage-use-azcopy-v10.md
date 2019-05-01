@@ -1,23 +1,23 @@
 ---
-title: Kopiowanie lub przenoszenie danych do usługi Azure Storage za pomocą narzędzia AzCopy v10 (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Użyj AzCopy v10 (wersja zapoznawcza) narzędzia wiersza polecenia do przeniesienia lub skopiowania danych do lub z obiektu blob, usługa data lake i zawartości pliku. Kopiowanie danych do usługi Azure Storage z lokalnych plików lub kopiowania danych w ramach lub między kontami magazynu. Łatwo Migruj dane do usługi Azure Storage.
+title: Kopiowanie lub przenoszenie danych do usługi Azure Storage za pomocą narzędzia AzCopy v10 | Dokumentacja firmy Microsoft
+description: Użyj narzędzia wiersza polecenia AzCopy do przeniesienia lub skopiowania danych do lub z obiektów blob, usługa data lake i zawartość pliku. Kopiowanie danych do usługi Azure Storage z lokalnych plików lub kopiowania danych w ramach lub między kontami magazynu. Łatwo Migruj dane do usługi Azure Storage.
 services: storage
 author: seguler
 ms.service: storage
 ms.topic: article
-ms.date: 04/05/2019
+ms.date: 04/23/2019
 ms.author: seguler
 ms.subservice: common
-ms.openlocfilehash: ffd448db86c8658619da5339cd34eb9dba7e05ce
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c1de40b6bf3bb4dc6854a11eca92902203d492c3
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59278432"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64723185"
 ---
-# <a name="transfer-data-with-azcopy-v10-preview"></a>Transferowanie danych za pomocą narzędzia AzCopy v10 (wersja zapoznawcza)
+# <a name="transfer-data-with-azcopy-v10"></a>Transferowanie danych za pomocą narzędzia AzCopy w wersji 10
 
-Narzędzie AzCopy v10 (wersja zapoznawcza) to narzędzie wiersza polecenia do kopiowania danych do / z magazynu obiektów Blob Azure firmy Microsoft i plików. Narzędzie AzCopy v10 oferuje przeprojektowany interfejs wiersza polecenia i transferuje nowej architektury wiarygodnych danych. Za pomocą narzędzia AzCopy, ale dane można kopiować między systemem plików i konto magazynu lub między kontami magazynu.
+AzCopy to narzędzie wiersza polecenia do kopiowania danych do / z magazynu obiektów Blob Azure firmy Microsoft i plików. Narzędzie AzCopy oferuje przeprojektowany interfejs wiersza polecenia, a następnie przesyła nowej architektury wiarygodnych danych. Za pomocą narzędzia AzCopy, ale dane można kopiować między systemem plików i konto magazynu lub między kontami magazynu.
 
 ## <a name="whats-new-in-azcopy-v10"></a>What's new in v10 narzędzia AzCopy
 
@@ -33,28 +33,24 @@ Narzędzie AzCopy v10 (wersja zapoznawcza) to narzędzie wiersza polecenia do ko
 
 ## <a name="download-and-install-azcopy"></a>Pobierz i zainstaluj narzędzia AzCopy
 
-### <a name="latest-preview-version-v10"></a>Najnowszej wersji zapoznawczej (v10)
+### <a name="latest-production-version-v10"></a>Najnowsza wersja produkcyjna (v10)
 
-Pobierz najnowszą wersję zapoznawczą narzędzia AzCopy:
+Pobierz najnowszą wersję narzędzia AzCopy:
 - [Windows](https://aka.ms/downloadazcopy-v10-windows) (zip)
 - [Linux](https://aka.ms/downloadazcopy-v10-linux) (docelowy)
 - [System MacOS](https://aka.ms/downloadazcopy-v10-mac) (zip)
 
-### <a name="latest-production-version-v81"></a>Najnowsza wersja produkcyjna (w wersji 8.1)
-
-Pobierz [najnowszą wersję produkcyjną narzędzia AzCopy dla Windows](https://aka.ms/downloadazcopy).
-
-### <a name="azcopy-supporting-table-storage-service-v73"></a>Usługa Table storage (v7.3) obsługuje narzędzia AzCopy
+### <a name="latest-azcopy-supporting-table-storage-service-v73"></a>Najnowsze narzędzia AzCopy, obsługa usługa Table storage (v7.3)
 
 Pobierz [v7.3 AzCopy obsługa kopiowania danych do i z usługi Microsoft Azure Table storage](https://aka.ms/downloadazcopynet).
 
 ## <a name="post-installation-steps"></a>Kroki po instalacji
 
-Narzędzie AzCopy v10 nie wymaga instalacji. Otwórz preferowaną aplikacji wiersza polecenia i przejdź do folderu, gdzie `azcopy.exe` znajduje się. Jeśli to konieczne, możesz dodać do ścieżki systemowej w celu ułatwienia lokalizacji folderu Narzędzia AzCopy.
+Narzędzie AzCopy nie wymaga instalacji. Otwórz preferowaną aplikacji wiersza polecenia i przejdź do folderu, gdzie `azcopy.exe` znajduje się. Jeśli to konieczne, możesz dodać do ścieżki systemowej w celu ułatwienia lokalizacji folderu Narzędzia AzCopy.
 
 ## <a name="authentication-options"></a>Opcje uwierzytelniania
 
-Podczas uwierzytelniania w usłudze Azure Storage, narzędzia AzCopy v10 obsługuje następujące opcje:
+Podczas uwierzytelniania w usłudze Azure Storage, narzędzie AzCopy obsługuje następujące opcje:
 - **Usługa Azure Active Directory** (obsługiwane w przypadku **usług obiektów Blob i Data Lake Storage Gen2**). Użyj ```.\azcopy login``` zalogować się przy użyciu usługi Azure Active Directory.  Użytkownik powinien mieć [przypisaną rolę "Współautor danych obiektu Blob magazynu"](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) można zapisać do magazynu obiektów Blob przy użyciu uwierzytelniania usługi Azure Active Directory. W przypadku uwierzytelniania za pomocą tożsamości zarządzanych zasobów platformy Azure, użyj `azcopy login --identity`.
 - **Udostępnione tokenów sygnatur dostępu [obsługiwane usługi obiektów Blob i plików]**. Dołącz token sygnatury (SAS) dostępu do ścieżki obiektu blob w wierszu polecenia z niego korzystać. Można generować tokeny sygnatur dostępu Współdzielonego za pomocą witryny Azure portal [Eksploratora usługi Storage](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/), [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageblobsastoken), lub innych wybranych przez siebie narzędzi. Aby uzyskać więcej informacji, zobacz [przykłady](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2).
 
@@ -198,7 +194,7 @@ Można również synchronizować kontener obiektów blob do lokalnego systemu pl
 .\azcopy sync "https://account.blob.core.windows.net/mycontainer1" "C:\local\path" --recursive=true
 ```
 
-To polecenie synchronizuje przyrostowo źródła do miejsca docelowego, na podstawie ostatniej modyfikacji sygnatur czasowych. Jeśli dodawanie lub usuwanie pliku w źródle, narzędzia AzCopy v10 będzie się tak samo w miejscu docelowym. Przed usunięciem narzędzia AzCopy spowoduje wyświetlenie monitu o potwierdzenie.
+To polecenie synchronizuje przyrostowo źródła do miejsca docelowego, na podstawie ostatniej modyfikacji sygnatur czasowych. Jeśli dodawanie lub usuwanie pliku w źródle, narzędzia AzCopy będzie się tak samo w miejscu docelowym. Przed usunięciem narzędzia AzCopy spowoduje wyświetlenie monitu o potwierdzenie.
 
 ## <a name="copy-data-from-amazon-web-services-aws-s3"></a>Kopiowanie danych z usługi Amazon Web Services (AWS) S3
 
@@ -283,7 +279,7 @@ cat 04dc9ca9-158f-7945-5933-564021086c79.log | grep -i UPLOADFAILED
 ```
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Narzędzie AzCopy v10 tworzy pliki dziennika i plan dla każdego zadania. Dzienniki można użyć, aby zbadać i rozwiązać wszelkie potencjalne problemy. Dzienniki będą zawierać stanu błędu (UPLOADFAILED COPYFAILED i DOWNLOADFAILED), pełną ścieżkę i przyczynę błędu. Plan plików i dzienników zadań znajdują się w folderze % USERPROFILE\\.azcopy folder Windows lub $HOME\\.azcopy folderu na komputerach Mac i Linux.
+Narzędzie AzCopy utworzy pliki dziennika i plan dla każdego zadania. Dzienniki można użyć, aby zbadać i rozwiązać wszelkie potencjalne problemy. Dzienniki będą zawierać stanu błędu (UPLOADFAILED COPYFAILED i DOWNLOADFAILED), pełną ścieżkę i przyczynę błędu. Plan plików i dzienników zadań znajdują się w folderze % USERPROFILE\\.azcopy folder Windows lub $HOME\\.azcopy folderu na komputerach Mac i Linux.
 
 > [!IMPORTANT]
 > Podczas przesyłania żądania do firmy Microsoft Support (lub tego problemu, obejmujące żadnym podmiotom trzecim), udostępnianie zostały zredagowane wersję polecenie, które chcesz wykonać. Gwarantuje to, że sygnatury dostępu Współdzielonego przypadkowo nie są udostępniane nikomu. Możesz znaleźć zostały zredagowane wersji na początku pliku dziennika.

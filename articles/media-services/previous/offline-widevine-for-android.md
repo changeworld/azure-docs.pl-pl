@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan, dwgeo
-ms.openlocfilehash: 55d59871ee72f755fcd881e4f89e56e6d6d1d84e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 64c5bff0e48f55406476e71c82763bd8f3c03afd
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60637577"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937238"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Widevine w trybie offline, przesyłania strumieniowego dla systemu Android  
 
@@ -32,8 +32,8 @@ ms.locfileid: "60637577"
 
 Oprócz ochrony zawartości online do przesyłania strumieniowego, multimediów zawartości subskrypcji i dzierżawa usługi oferty do pobrania zawartości, która działa, gdy nie są połączone z Internetem. Może być konieczne pobrać zawartość na telefonie lub tablecie do odtwarzania w tryb samolotowy, gdy pod odłączony od sieci. Dodatkowe scenariusze, w których możesz chcieć pobierania zawartości:
 
-- Niektórzy dostawcy zawartości może nie zezwalaj na dostarczanie licencji DRM poza obramowania kraju. Jeśli użytkownik chce, aby obejrzeć zawartość podczas podróży granicą, pobierania w trybie offline jest konieczne.
-- W niektórych krajach dostępność internetowych i/lub przepustowości jest ograniczona. Użytkownicy mogą zdecydować się na pobieranie zawartości, aby móc obejrzeć go na tyle wysokiej rozdzielczości dla środowiska oglądania zadowalające.
+- Niektórzy dostawcy zawartości może nie zezwalaj na dostarczanie licencji DRM poza krawędź kraj/region. Jeśli użytkownik chce, aby obejrzeć zawartość podczas podróży granicą, pobierania w trybie offline jest konieczne.
+- W niektórych krajach/regionach jest ograniczona dostępność internetowych i/lub przepustowości. Użytkownicy mogą zdecydować się na pobieranie zawartości, aby móc obejrzeć go na tyle wysokiej rozdzielczości dla środowiska oglądania zadowalające.
 
 W tym artykule omówiono sposób implementacji w trybie offline odtwarzanie zawartości DASH chronione przez Widevine na urządzeniach z systemem Android. W trybie offline DRM pozwala na dostarczenie subskrypcję, wypożyczeń oraz zakupów modeli dla zawartości, dzięki czemu klienci usług mogą łatwo pobrać zawartość, która z nich podczas połączenia z Internetem.
 

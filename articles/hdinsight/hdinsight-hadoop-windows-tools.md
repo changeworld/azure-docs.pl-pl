@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.topic: conceptual
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 05/17/2017
-ms.openlocfilehash: 4d9d1ef6b7906ecebc399948a1ca0dcd590d5910
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.date: 04/24/2019
+ms.openlocfilehash: 5045c48a00c51a16d37dcf4b7f72f25633f23b3f
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63765817"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926028"
 ---
 # <a name="work-in-the-apache-hadoop-ecosystem-on-hdinsight-from-a-windows-pc"></a>Działa w ekosystemie usługi Apache Hadoop w HDInsight z komputera z systemem Windows
 
@@ -29,11 +29,11 @@ Przykłady zadań, które można wykonać przy użyciu programu PowerShell:
 * [Uruchamianie zapytania usługi Apache Hive przy użyciu programu PowerShell](hadoop/apache-hadoop-use-hive-powershell.md).
 * [Zarządzanie klastrami przy użyciu programu PowerShell](hdinsight-administer-use-powershell.md).
 
-Wykonaj kroki, aby [Instalowanie i konfigurowanie programu Azure Powershell](https://docs.microsoft.com/powershell/azure/install-az-ps) można pobrać najnowszą wersję. Jeśli masz skrypty wymagające modyfikacji w celu użycia nowych poleceń cmdlet usługi Azure Resource Manager, zobacz artykuł [migracja do narzędzi programistycznych opartych na usłudze Azure Resource Manager w celu obsługi klastrów HDInsight](hdinsight-hadoop-development-using-azure-resource-manager.md).
+Wykonaj kroki, aby [Instalowanie i konfigurowanie programu Azure Powershell](https://docs.microsoft.com/powershell/azure/install-az-ps) można pobrać najnowszą wersję.
 
 ## <a name="utilities-you-can-run-in-a-browser"></a>Narzędzia, które można uruchomić w przeglądarce
 Poniższe narzędzia mają interfejs użytkownika, który działa w przeglądarce sieci web:
-* **[Usługa Azure Cloud Shell (wersja zapoznawcza)](https://docs.microsoft.com/azure/cloud-shell/quickstart)**  jest interaktywny, wiersza polecenia powłoki, który działa w przeglądarce, a także z poziomu witryny Azure portal.
+* **[Usługa Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)**  jest interaktywny, wiersza polecenia powłoki, który działa w przeglądarce, a także z poziomu witryny Azure portal.
 * **[Apache Ambari Web UI](hdinsight-hadoop-manage-ambari.md)**  zarządzania i dostępnych w witrynie Azure portal, który może służyć do różnych rodzajów zadań zarządzania, takimi jak narzędzia do monitorowania:
     * [Apache Ambari za pomocą interfejsu API REST](hdinsight-hadoop-manage-ambari-rest-api.md)
     * [Apache Hive widoku Apache Ambari](hadoop/apache-hadoop-use-hive-ambari-view.md)
@@ -57,9 +57,6 @@ Przykłady zadań, które można wykonać przy użyciu zestawu SDK platformy .NE
 * [Uruchamianie zapytania usługi Apache Hive przy użyciu zestawu .NET SDK](hadoop/apache-hadoop-use-hive-dotnet-sdk.md).
 * [Użyj C# funkcje zdefiniowane przez użytkownika przy użyciu Apache Hive i Apache Pig, przesyłanie strumieniowe na technologii Apache Hadoop](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md).
 
-> [!TIP]
-> Jeśli korzystasz z rozwiązań platformy .NET przy użyciu klastrów HDInsight z systemem Windows, jest odpowiedni moment, aby zaplanować migrację do klastrów opartych na systemie Linux. Aby uzyskać więcej informacji, zobacz [migracji .NET rozwiązanie oparte na Windows HDInsight do HDInsight opartych na systemie Linux](hdinsight-hadoop-migrate-dotnet-to-linux.md).
-
 ## <a name="intellij-idea-and-eclipse-ide-for-spark-clusters"></a>Intellij IDEA i Eclipse IDE for klastrów Spark
 Zarówno [Intellij IDEA](https://www.jetbrains.com/idea/download) i [środowiska IDE Eclipse](https://www.eclipse.org/downloads/) można używać do:
 * Programuj i przesyłaj aplikację Scala Spark w klastrze usługi HDInsight Spark.
@@ -77,14 +74,17 @@ Klastry Apache Spark w HDInsight obejmują z notesów Apache Zeppelin i jądra, 
 * [Dowiedz się, jak używać jądra za pomocą notesów programu Jupyter w klastrach platformy Apache Spark do testowania aplikacji Spark](spark/apache-spark-zeppelin-notebook.md)
 * [Dowiedz się, jak korzystanie z notesów Apache Zeppelin w klastrach platformy Apache Spark, uruchamianie zadań Spark](spark/apache-spark-jupyter-notebook-kernels.md) 
 
-
 ## <a name="run-linux-based-tools-and-technologies-on-windows"></a>Uruchamianie narzędzi opartych na systemie Linux i technologii na Windows
 
 Jeśli napotkasz sytuację, w którym należy użyć narzędzia lub technologia, która jest dostępna tylko w systemie Linux, należy wziąć pod uwagę następujące opcje:
 
-* **Bash (beta) w systemie Windows 10** zawiera podsystemu systemu Linux na Windows. Bash umożliwia bezpośrednio uruchomić narzędzia Linux bez konieczności obsługi dedykowanych instalacja systemu Linux. [Zainstaluj i uruchom powłokę Bash w wersji beta w systemie Windows 10](https://msdn.microsoft.com/commandline/wsl/install_guide)
+* **Powłoka bash w systemie Ubuntu w systemie Windows 10** zawiera podsystemu systemu Linux na Windows. Bash umożliwia bezpośrednio uruchomić narzędzia Linux bez konieczności obsługi dedykowanych instalacja systemu Linux. Zobacz [podsystemu Windows dla systemu Linux instalacji Guide for Windows 10](https://docs.microsoft.com/windows/wsl/install-win10) dla czynności instalacyjne.  Inne [powłoki systemu Unix](https://www.gnu.org/software/bash/) będzie działać tak dobrze.
 * **Docker for Windows** zapewnia dostęp do wielu narzędzi opartych na systemie Linux i mogą być uruchamiane bezpośrednio z Windows. Na przykład można używać platformy Docker Aby uruchomić klienta z usługi Beeline gałęzi bezpośrednio z Windows. Można również korzystać z aparatu Docker do uruchamiania lokalnego notesu programu Jupyter i zdalne łączenie z platformą Spark na HDInsight. [Rozpoczynanie pracy z usługą Docker for Windows](https://docs.docker.com/docker-for-windows/)
 * **[MobaXTerm](https://mobaxterm.mobatek.net/)**  umożliwia graficzne przeglądania systemu plików klastra za pośrednictwem połączenia SSH.
+
+## <a name="cross-platform-tools"></a>Narzędzia dla wielu platform
+
+Interfejs wiersza polecenia platformy Azure to wieloplatformowe środowisko wiersza polecenia do zarządzania zasobami platformy Azure.  Aby uzyskać więcej informacji, zobacz [interfejsu wiersza polecenia platformy Azure (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
 
 ## <a name="next-steps"></a>Kolejne kroki
 Jeśli dopiero zaczynasz pracę w klastrach opartych na systemie Linux, zobacz artykuły wykonaj:

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: f53e21b8121006a6a6a1d2099b26e7cb28ca0ed9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 1d3099da3d449e29d378e2f350fdc87ce5166f2e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60692743"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574405"
 ---
 # <a name="create-a-store-locator-by-using-azure-maps"></a>Tworzenie lokalizatora sklepów przy użyciu usługi Azure Maps
 
@@ -71,7 +71,7 @@ Powyższe szkielety pokazują dość prostą aplikację. Aplikacja zawiera pole 
 
 ## <a name="create-the-store-location-dataset"></a>Tworzenie zestawu danych lokalizacji sklepów
 
-Zanim opracujemy aplikację lokalizatora sklepów, musimy utworzyć zestaw danych sklepów, które chcemy wyświetlać na mapie. W tym samouczku używamy zestawu danych dla fikcyjnej kawiarni o nazwie Contoso Coffee. Zestaw danych dla tego prostego lokalizatora sklepów jest zarządzany w skoroszycie programu Excel. Zestaw danych zawiera 10 213 lokalizacji kawiarni Contoso Coffee w dziewięciu krajach: Stany Zjednoczone, Kanada, Zjednoczone Królestwo, Francja, Niemcy, Włochy, Holandia, Dania i Hiszpania. Oto zrzut ekranu przedstawiający te dane:
+Zanim opracujemy aplikację lokalizatora sklepów, musimy utworzyć zestaw danych sklepów, które chcemy wyświetlać na mapie. W tym samouczku używamy zestawu danych dla fikcyjnej kawiarni o nazwie Contoso Coffee. Zestaw danych dla tego prostego lokalizatora sklepów jest zarządzany w skoroszycie programu Excel. Zestaw danych zawiera 10,213 lokalizacje kawiarni kawy Contoso rozkłada dziewięciu krajach/regionach: Stanów Zjednoczonych, Kanadzie, Zjednoczone Królestwo, Francja, (Niemcy), Włochy, Holandia, Dania i Hiszpania. Oto zrzut ekranu przedstawiający te dane:
 
 <br/>
 <center>
@@ -403,7 +403,7 @@ Na tym etapie w interfejsie użytkownika wszystko jest skonfigurowane. Teraz mus
 
 1. Dodaj kod do pliku *index.js*. Poniższy kod inicjuje mapę, dodaje [odbiornik zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events), który czeka, aż ładowanie strony zostanie ukończone, podłącza zdarzenia w celu monitorowania ładowania mapy oraz obsługuje przycisk wyszukiwania i przycisk Moja lokalizacja.
 
-   Kiedy użytkownik wybierze przycisk wyszukiwania lub naciśnie klawisz Enter po wprowadzeniu lokalizacji w polu wyszukiwania, inicjowane jest wyszukiwanie rozmyte względem zapytania użytkownika. Przekaż tablicę wartości ISO 2 kraju do opcji `countrySet`, aby ograniczyć wyniki wyszukiwania do tych krajów. Ograniczenie krajów do wyszukiwania pomaga zwiększyć dokładność zwracanych wyników. 
+   Kiedy użytkownik wybierze przycisk wyszukiwania lub naciśnie klawisz Enter po wprowadzeniu lokalizacji w polu wyszukiwania, inicjowane jest wyszukiwanie rozmyte względem zapytania użytkownika. Przekazać tablicę wartości ISO 2 kraju `countrySet` opcję, aby ograniczyć wyniki wyszukiwania do tych krajów/regionów. Ograniczanie krajach/regionach, aby wyszukać pomaga zwiększyć dokładność wyników, które są zwracane. 
   
    Po zakończeniu wyszukiwania weź pierwszy wynik i ustaw aparat mapy na ten obszar. Kiedy użytkownik wybierze przycisk Moja lokalizacja, użyj interfejsu API geolokalizacji języka HTML5, który jest wbudowany w przeglądarce, aby pobrać lokalizację użytkownika i wyśrodkować na niej mapę.  
 

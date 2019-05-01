@@ -2,26 +2,23 @@
 title: Ponownie zapisuje nagłówki HTTP w usłudze Azure Application Gateway
 description: Ten artykuł zawiera informacje na temat sposobu tworzenia usługi Azure Application Gateway i ponownie zapisuje nagłówki HTTP przy użyciu programu Azure PowerShell
 services: application-gateway
-author: abshamsft
+author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 12/20/2018
+ms.date: 4/30/2019
 ms.author: absha
-ms.openlocfilehash: 4747d824dcf531ed883d476a0daad182ea081c39
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ba74bb8970949a15425a66f7cd4475749fd183df
+ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60715100"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64947087"
 ---
-# <a name="tutorial-create-an-application-gateway-and-rewrite-http-headers"></a>Samouczek: Tworzenie bramy aplikacji i ponownie zapisuje nagłówki HTTP
+# <a name="create-an-application-gateway-and-rewrite-http-headers"></a>Tworzenie bramy aplikacji i ponownie zapisuje nagłówki HTTP
 
 Można użyć programu Azure PowerShell, aby skonfigurować [reguły ponownego zapisywania nagłówki żądania i odpowiedzi HTTP](rewrite-http-headers.md) podczas tworzenia nowego [skalowania automatycznego i jednostki SKU bramy aplikacji strefowo nadmiarowy](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant)
 
-> [!IMPORTANT] 
-> Jednostka SKU autoskalowanej i strefowo nadmiarowej bramy aplikacji jest aktualnie w publicznej wersji zapoznawczej. Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
-
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
 >
@@ -37,7 +34,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Ten samouczek wymaga, aby program Azure PowerShell działał lokalnie. Musi mieć Az modułu Wersja 1.0.0 lub nowszy. Uruchom `Import-Module Az` i następnie`Get-Module Az` Aby znaleźć wersję. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps). Po zweryfikowaniu wersji programu PowerShell uruchom polecenie `Login-AzAccount`, aby utworzyć połączenie z platformą Azure.
+Ten artykuł będzie wymagał programu Azure PowerShell lokalnie. Musi mieć Az modułu Wersja 1.0.0 lub nowszy. Uruchom `Import-Module Az` i następnie`Get-Module Az` Aby znaleźć wersję. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps). Po zweryfikowaniu wersji programu PowerShell uruchom polecenie `Login-AzAccount`, aby utworzyć połączenie z platformą Azure.
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
@@ -178,5 +175,4 @@ Najpierw zapoznaj się z zasobami utworzonymi przy użyciu bramy aplikacji. Nast
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-> [!div class="nextstepaction"]
-> [Tworzenie bramy aplikacji za pomocą reguł routingu bazujących na ścieżce adresu URL](./tutorial-url-route-powershell.md)
+- [Tworzenie bramy aplikacji za pomocą reguł routingu bazujących na ścieżce adresu URL](./tutorial-url-route-powershell.md)

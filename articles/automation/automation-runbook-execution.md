@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 38dd4d13aa45b69fc846ef9b6b2e1b56f56de573
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: f851fd2857650dd00e365abf71ec5f0199db6d57
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60738193"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64711584"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Wykonanie elementu Runbook w usłudze Azure Automation
 
@@ -78,6 +78,9 @@ else
 ### <a name="time-dependant-scripts"></a>Czas zależnych skryptów
 
 Szczególną uwagę należy uwzględnić podczas tworzenia elementów runbook. Jak wspomniano wcześniej, elementy runbook muszą zostać utworzone w taki sposób, że są one niezawodne i może obsługiwać błędy przejściowe, które może spowodować, że element runbook, aby ponownie uruchomić lub się nie powieść. Jeśli element runbook nie powiedzie się, próba jest ponawiana. Jeśli element runbook jest uruchamiany normalnie w ramach ograniczenia czasu, Logic Apps, sprawdź, czy powinny być zrealizowane w czasie wykonywania w elemencie runbook, aby upewnić się, operacje, takie jak początek, zamknij lub skalowania w poziomie są uruchamiane tylko w określonych godzinach.
+
+> [!NOTE]
+> Czas lokalny na temat procesu piaskownicy usługi Azure jest ustawiona na czas UTC. Obliczenia daty i godziny w elementach runbook należy wziąć pod uwagę.
 
 ### <a name="tracking-progress"></a>Śledzenie postępu
 

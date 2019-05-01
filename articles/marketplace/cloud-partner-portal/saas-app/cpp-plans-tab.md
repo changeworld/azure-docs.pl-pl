@@ -1,25 +1,18 @@
 ---
-title: Usługa Azure planów oferty aplikacji SaaS | Dokumentacja firmy Microsoft
+title: Usługa Azure planów oferty aplikacji SaaS | Portal Azure Marketplace
 description: Utwórz plan dla oferty aplikacji SaaS w portalu Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/04/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 0394fa759f4b6f6af59e075d9bc67668886d8075
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: 2ff86b39f67b170ce99b045f5cfa888e06057bbe
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62120209"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64943341"
 ---
 # <a name="saas-application-plans-tab"></a>Karta planów aplikacji SaaS
 

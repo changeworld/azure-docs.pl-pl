@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 0c4b8d1646ba851acc6a0e2d9a3b920634098846
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 3eb53fa88a0757d22fc4575e9d9f402d6eebee13
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62119339"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64719292"
 ---
 # <a name="service-connectivity-monitor"></a>Monitorowanie łączności usług
 
@@ -59,7 +59,7 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
 Zacznij tworzyć testy do monitorowania łączności sieciowej do punktów końcowych usługi.
 
 1. Wybierz **Monitor łączności usługi** kartę.
-2. Wybierz **Dodaj Test**, a następnie wprowadź nazwę testu i opis. 
+2. Wybierz **Dodaj Test**, a następnie wprowadź nazwę testu i opis. Możesz utworzyć maksymalna testy 450 danego obszaru roboczego. 
 3. Wybierz typ testu:<br>
 
     * Wybierz **Web** do monitorowania łączności z usługą, który odpowiada na żądania HTTP/Https, np. Exchange.office365.com lub bing.com.<br>

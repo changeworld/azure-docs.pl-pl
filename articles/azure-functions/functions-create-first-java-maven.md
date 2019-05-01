@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 08/10/2018
 ms.author: routlaw, glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: d25fbfc058337c7a96414cf41f321e039ebc2258
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 287cab034079c54c027e0dc7b84564458d31fc31
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61341456"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64696158"
 ---
 # <a name="create-your-first-function-with-java-and-maven"></a>Tworzenie pierwszej funkcji przy użyciu języka Java i narzędzia Maven
 
@@ -29,10 +29,10 @@ Ten artykuł opisuje używanie narzędzia wiersza polecenia Maven do tworzenia i
 
 Aby opracowywać funkcje przy użyciu języka Java, musisz mieć zainstalowane następujące składniki:
 
-- Zestaw [Java Developer Kit](https://www.azul.com/downloads/zulu/), wersja 8.
-- Narzędzie [Apache Maven](https://maven.apache.org), wersja 3.0 lub nowsza.
+- [Zestaw Java Developer Kit](https://www.azul.com/downloads/zulu/), wersja 8
+- [Narzędzia Apache Maven](https://maven.apache.org), wersja 3.0 lub nowszej
 - [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure)
-- [Narzędzia Azure Functions Core Tools](functions-run-local.md#v2) (wymagany **zestaw SDK platformy .NET Core 2.x**)
+- [Podstawowe narzędzia usługi Azure Functions](./functions-run-local.md#v2) wersji 2.6.666 lub nowszy
 
 > [!IMPORTANT]
 > Aby wykonać wszystkie czynności opisane w tym przewodniku Szybki start, dla zmiennej środowiskowej JAVA_HOME należy ustawić lokalizację instalacji zestawu JDK.
@@ -107,6 +107,10 @@ public class Function {
 }
 
 ```
+
+## <a name="reference-bindings"></a>Odwołanie do powiązania
+
+[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
 ## <a name="run-the-function-locally"></a>Lokalne uruchamianie funkcji
 

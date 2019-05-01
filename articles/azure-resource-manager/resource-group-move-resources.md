@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/19/2019
+ms.date: 04/25/2019
 ms.author: tomfitz
-ms.openlocfilehash: dfe2a103005cc48860c7bbeb3036afe94ff3a559
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 4e94bc7686203bfbcd93200e5a1fb65b43ceeb91
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60239111"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64698486"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 
@@ -221,6 +221,22 @@ Podczas przenoszenia aplikacji sieci Web _w subskrypcjach_, obowiązują następ
     - Środowiska usługi App Service
 - Wszystkie zasoby usługi App Service w grupie zasobów, muszą zostać przeniesione razem.
 - Zasoby usługi App Service mogą być przenoszone z grupy zasobów, w której zostały pierwotnie utworzone. Jeśli zasób usługi App Service nie jest już w jego oryginalnej grupie zasobów, należy je przenieść wróć do tej grupy oryginalnego najpierw, a następnie mogą być przenoszone między subskrypcjami.
+
+Jeśli nie pamiętasz oryginalnej grupy zasobów, mogą ją odnaleźć za pomocą diagnostyki. Dla aplikacji sieci web wybierz **diagnozowanie i rozwiązywanie problemów**. Następnie wybierz **Konfiguracja i zarządzanie nim**.
+
+![Wybierz pozycję Diagnostyka](./media/resource-group-move-resources/select-diagnostics.png)
+
+Wybierz **opcje migracji**.
+
+![Wybierz opcje migracji](./media/resource-group-move-resources/select-migration.png)
+
+Wybierz opcję, aby uzyskać zalecane kroki, aby przenieść aplikację sieci web.
+
+![Wybierz zalecane czynności](./media/resource-group-move-resources/recommended-steps.png)
+
+Zostanie wyświetlony zalecane akcje, które należy wykonać przed przenoszenia zasobów. Informacje dotyczące oryginalnej grupy zasobów dla aplikacji sieci web.
+
+![Zalecenia](./media/resource-group-move-resources/recommendations.png)
 
 ### <a name="app-service-certificate-limitations"></a>Ograniczenia dotyczące certyfikatu usługi aplikacji
 

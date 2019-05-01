@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 01/03/2018
 ms.author: juliako
-ms.openlocfilehash: 6de626323c82689d0ead4f5aaad2a2e43187ebd0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: fd5bf9f7bca9c667191d0d3f83be6e29a96c8dbe
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61466650"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926527"
 ---
 # <a name="azure-media-player-overview"></a>Omówienie usługi Azure Media Player
 
@@ -24,7 +24,7 @@ Usługa Azure Media Player jest odtwarzacz wideo w sieci web utworzona w celu od
 
 Microsoft Azure Media Services umożliwia zawartości do być udostępniany przy użyciu protokołu HLS, DASH, Smooth Streaming, formatów przesyłania strumieniowego do odtwarzania zawartości. Usługa Azure Media Player uwzględnia te różne formaty i automatycznie odtwarza łącze najlepsze możliwości platformy/przeglądarki. Usługa Media Services umożliwia również dynamiczne szyfrowanie zasobów za pomocą szyfrowanie PlayReady lub AES-128-bitowego szyfrowania koperty. Usługa Azure Media Player umożliwia odszyfrowywanie PlayReady i szyfrowania AES-128-bitowego zaszyfrowaną zawartość, gdy jest skonfigurowany prawidłowo. 
 
-[Rozpocznij bezpłatną wersję próbną](https://azure.microsoft.com/en-us/pricing/free-trial/)
+[Rozpocznij bezpłatną wersję próbną](https://azure.microsoft.com/pricing/free-trial/)
 
 ## <a name="use-azure-media-player-demo-page"></a>Użyj strony pokaz usługi Azure Media Player
 

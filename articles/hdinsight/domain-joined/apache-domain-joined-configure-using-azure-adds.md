@@ -8,26 +8,26 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 04/23/2019
-ms.openlocfilehash: 7ad6d4b3a1f465f3d15e00f0164da9f2778f7f1c
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.openlocfilehash: ed2611896f2c23a3cf1d2fec5d9e711f518a65c6
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63760786"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926348"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Konfigurowanie klastra usługi HDInsight z pakietem Enterprise Security przy użyciu usług Azure Active Directory Domain Services
 
-Klastry Enterprise Security pakietu (ESP) zapewniają dostęp wielu użytkowników w klastrach usługi Azure HDInsight. Klastrami HDInsight przy użyciu ESP są podłączone do domeny, dzięki czemu użytkownicy domeny mogą używać swoich poświadczeń domeny przy użyciu klastrów i uruchamiać zadania obsługi danych big data. 
+Klastry Enterprise Security pakietu (ESP) zapewniają dostęp wielu użytkowników w klastrach usługi Azure HDInsight. Klastrami HDInsight przy użyciu ESP są podłączone do domeny, dzięki czemu użytkownicy domeny mogą używać swoich poświadczeń domeny przy użyciu klastrów i uruchamiać zadania obsługi danych big data.
 
 W tym artykule dowiesz się, jak skonfigurować klaster HDInsight przy użyciu ESP przy użyciu Azure Active Directory Domain Services (Azure AD DS).
 
 > [!NOTE]  
-> ESP jest w wersji ogólnie dostępnej w usłudze HDI 3.6 dla platformy Apache Spark, interaktywny i Apache Hadoop. Jest ESP dla typów klastrów Apache HBase i Apache Kafka w wersji zapoznawczej.
+> ESP jest ogólnie dostępna w usłudze HDI 3.6 typy klastrów: Platforma Apache Spark, interaktywnych i rozwiązania Apache Hadoop. Jest ESP dla typów klastrów Apache HBase i Apache Kafka w wersji zapoznawczej.
 
 ## <a name="enable-azure-ad-ds"></a>Włączanie usługi Azure AD DS
 
 > [!NOTE]  
-> Tylko Administratorzy dzierżawy mają uprawnienia do włączenia usług AD DS Azure. Czy za pomocą magazynu klastra usługi Azure Data Lake Storage (ADLS) Gen1 lub Gen2 tylko dla użytkowników, którzy chcą uzyskać dostęp do klastra przy użyciu uwierzytelnienia Kerberose podstawowe, należy wyłączyć uwierzytelnianie wieloskładnikowe (MFA). Możesz użyć [zaufane adresy IP](../../active-directory/authentication/howto-mfa-mfasettings.md#trusted-ips) lub [dostępu warunkowego](../../active-directory/conditional-access/overview.md) wyłączania uwierzytelnianie wieloskładnikowe dla określonych użytkowników tylko wtedy gdy uzyskują dostęp do klastra HDInsight zakres adresów IP w sieci Wirtualnej. Korzystania z dostępu warunkowego upewnij się, że punkt końcowy usługi AD w włączone w sieci Wirtualnej HDInsight.
+> Tylko Administratorzy dzierżawy mają uprawnienia do włączenia usług AD DS Azure. Czy za pomocą magazynu klastra usługi Azure Data Lake Storage (ADLS) Gen1 lub Gen2 tylko dla użytkowników, którzy chcą uzyskać dostęp do klastra przy użyciu podstawowe uwierzytelnianie Kerberos, należy wyłączyć uwierzytelnianie wieloskładnikowe (MFA). Możesz użyć [zaufane adresy IP](../../active-directory/authentication/howto-mfa-mfasettings.md#trusted-ips) lub [dostępu warunkowego](../../active-directory/conditional-access/overview.md) wyłączania uwierzytelnianie wieloskładnikowe dla określonych użytkowników tylko wtedy gdy uzyskują dostęp do klastra HDInsight zakres adresów IP w sieci Wirtualnej. Jeśli używasz warunkowego dostępu upewnij się, ten punkt końcowy usługi AD w włączone w sieci Wirtualnej HDInsight.
 >
 > Jeśli magazyn klastra usługi Azure Blob Storage (WASB), nie należy wyłączać usługi MFA.
 
@@ -44,7 +44,7 @@ $lifetime=Get-Date
 New-SelfSignedCertificate -Subject contoso100.onmicrosoft.com `
   -NotAfter $lifetime.AddDays(365) -KeyUsage DigitalSignature, KeyEncipherment `
   -Type SSLServerAuthentication -DnsName *.contoso100.onmicrosoft.com, contoso100.onmicrosoft.com
-``` 
+```
 
 ## <a name="check-azure-ad-ds-health-status"></a>Sprawdź stan kondycji usług AD DS platformy Azure
 Wyświetlanie stanu kondycji usługi Azure Active Directory Domain Services, wybierając **kondycji** w obszarze **Zarządzaj** kategorii. Upewnij się, że jest w stanie usługi Azure AD — DS kolor zielony (uruchomione), a synchronizacja została zakończona.
@@ -68,7 +68,7 @@ Po utworzeniu tożsamości zarządzanej i biorąc pod uwagę odpowiednią rolę,
 ## <a name="networking-considerations"></a>Zagadnienia dotyczące pracy w sieci
 
 > [!NOTE]  
-> Azure AD DS musi zostać wdrożony w sieci wirtualnej na podstawie usługi Azure Resource Manager (ARM). Klasyczne sieci wirtualne nie są obsługiwane dla usługi Azure AD — DS. Aby uzyskać więcej informacji, zobacz [włączyć usługi Azure Active Directory Domain Services w witrynie Azure portal](../../active-directory-domain-services/active-directory-ds-getting-started-network.md).
+> Azure AD DS musi zostać wdrożony w sieci wirtualnej na podstawie usługi Azure Resource Manager (ARM). Klasyczne sieci wirtualne nie są obsługiwane dla usługi Azure AD — DS. Zapoznaj się [włączyć usługi Azure Active Directory Domain Services w witrynie Azure portal](../../active-directory-domain-services/active-directory-ds-getting-started-network.md) Aby uzyskać więcej informacji.
 
 Po włączeniu usług AD DS platformy Azure, lokalnego serwera usługi nazw domen (DNS, Domain Name System) działa na maszynach wirtualnych (VM) AD. Konfigurowanie usługi Azure usług AD DS Virtual Network (VNET) do użycia tych niestandardowych serwerów DNS. Aby znaleźć odpowiednie adresy IP, wybierz **właściwości** w obszarze **Zarządzaj** kategorii i spójrz na adresy IP na liście poniżej **adresu IP w sieci wirtualnej**.
 
@@ -96,7 +96,6 @@ Po skonfigurowaniu poprawnie w poprzednich krokach, następnym krokiem jest twor
 > [!NOTE]  
 > Pierwsze sześć znaków nazwy klastrów ESP musi być unikatowa w danym środowisku. Na przykład jeśli masz wiele klastrów ESP w różnych sieciach wirtualnych, należy wybrać convension nazewnictwa, która gwarantuje, że pierwsze sześć znaków na nazwy klastra są unikatowe.
 
-
 ![Weryfikacja domeny pakietu zabezpieczeń Azure HDInsight Enterprise](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-create-cluster-esp-domain-validate.png)
 
 Po włączeniu ESP, typowych błędów konfiguracji związane z usługi Azure AD — DS będzie można automatycznie wykryte i sprawdzone. Po rozwiązaniu tych problemów, można przejść do następnego kroku: 
@@ -119,7 +118,7 @@ Tożsamość zarządzaną, który został utworzony można wybrać w z listy roz
 
 ![Konfiguracja usługi Azure HDInsight ESP Active Directory Domain Services](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-identity-managed-identity.png).
 
-
 ## <a name="next-steps"></a>Kolejne kroki
+
 * Konfigurowanie zasad usługi Hive i uruchamiania zapytań programu Hive, zobacz [zasady skonfiguruj Apache Hive HDInsight klastrów przy użyciu ESP](apache-domain-joined-run-hive.md).
 * Aby połączyć się z klastrami HDInsight przy użyciu ESP, przy użyciu protokołu SSH, zobacz [używanie protokołu SSH z opartą na systemie Linux platformą Apache Hadoop w HDInsight z systemów Linux, Unix lub OS X](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).

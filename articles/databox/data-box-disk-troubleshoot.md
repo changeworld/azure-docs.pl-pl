@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 02/06/2019
+ms.date: 04/2/2019
 ms.author: alkohli
-ms.openlocfilehash: ed6d567be255fe9b72be564c31d734541a1ffa73
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f9d01b56da2650be395878ce07e4aae73495061f
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60564938"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939637"
 ---
 # <a name="troubleshoot-issues-in-azure-data-box-disk"></a>Rozwiązywanie problemów z dysku Azure Data Box
 
@@ -54,12 +54,12 @@ Aby przejść do ścieżki dziennika kopiowania, przejdź do konta magazynu skoj
 Możesz użyć dzienników aktywności do znalezienia błędu podczas rozwiązywania problemów lub do monitorowania sposobu, w jaki zasób został zmodyfikowany przez użytkownika w organizacji. Za pomocą dzienników aktywności można określić:
 
 - Jakie operacje zostały wykonane na zasobach w subskrypcji.
-- Użytkownik, który zainicjował operację. 
+- Użytkownik, który zainicjował operację.
 - Kiedy została wykonana operacja.
 - Stan operacji.
 - Wartości innych właściwości, które mogą ułatwić zbadanie operacji.
 
-Dziennik aktywności zawiera informacje o wszystkich operacjach zapisu (takich jak PUT, POST, DELETE) wykonywanych względem zasobów, ale nie zawiera informacji dotyczących operacji odczytu (na przykład GET). 
+Dziennik aktywności zawiera informacje o wszystkich operacjach zapisu (takich jak PUT, POST, DELETE) wykonywanych względem zasobów, ale nie zawiera informacji dotyczących operacji odczytu (na przykład GET).
 
 Dzienniki aktywności są przechowywane przez 90 dni. Możesz wykonać zapytanie dotyczące dowolnego zakresu dat, jednak data początkowa nie może być wcześniejsza od daty bieżącej o więcej niż 90 dni. Możesz również filtrować dane, używając jednej z wbudowanych opcji zapytań w sekcji Szczegółowe informacje. Możesz na przykład kliknąć błąd, a następnie wybrać i kliknąć konkretne rodzaje błędów, aby określić główną przyczynę.
 
@@ -79,7 +79,7 @@ Dzienniki aktywności są przechowywane przez 90 dni. Możesz wykonać zapytanie
 
 |Komunikat o błędzie/ostrzeżenia  |Zalecenia |
 |---------|---------|
-|[Informacje] Pobieranie hasła funkcji BitLocker dla woluminu: m <br>[Błąd] Przechwycono wyjątek podczas pobierania klucza funkcji BitLocker dla woluminu m:<br> Sekwencja nie zawiera elementów.|Ten błąd jest zwracany, jeśli docelowe dyski Data Box Disk są w trybie offline. <br> W przypadku dysków w trybie online należy użyć narzędzia `diskmgmt.msc`.|
+|[Informacje o] Trwa pobieranie hasła funkcji BitLocker dla woluminu: m <br>[Błąd] Wystąpił wyjątek podczas pobierania klucza funkcji BitLocker dla woluminu m:<br> Sekwencja nie zawiera elementów.|Ten błąd jest zwracany, jeśli docelowe dyski Data Box Disk są w trybie offline. <br> W przypadku dysków w trybie online należy użyć narzędzia `diskmgmt.msc`.|
 |[Błąd] Zgłoszono wyjątek: Nie można wykonać operacji usługi WMI:<br> Method = UnlockWithNumericalPassword, ReturnValue = 2150694965, <br>Win32Message = format podanego hasła odzyskiwania jest nieprawidłowy. <br>Hasła odzyskiwania funkcji BitLocker są 48-cyfrowe. <br>Sprawdź, czy hasło odzyskiwania ma poprawny format, a następnie spróbuj ponownie.|Użyj narzędzia do odblokowywania dysków Data Box Disk, aby odblokować dyski i ponowić próbę wykonania polecenia. Aby uzyskać więcej informacji, przejdź na stronę <li> [Odblokowywanie dysków Data Box Disk dla klientów systemu Windows](data-box-disk-deploy-set-up.md#unlock-disks-on-windows-client). </li><li> [Odblokowywanie dysków Data Box Disk dla klientów systemu Linux](data-box-disk-deploy-set-up.md#unlock-disks-on-linux-client). </li>|
 |[Błąd] Zgłoszono wyjątek: Plik DriveManifest.xml istnieje na dysku docelowego. <br> Oznacza to, że dysk docelowy został prawdopodobnie przygotowany przy użyciu innego pliku dziennika. <br>Aby dodać więcej danych do tego samego dysku, użyj poprzedniego pliku dziennika. Aby usunąć istniejące dane i ponownie użyć dysku docelowego dla nowego zadania importu, usuń plik DriveManifest.xml z dysku. Ponownie uruchom to polecenie, używając nowego pliku dziennika.| Ten błąd zostanie wyświetlony podczas próby użycia tego samego zestawu dysków w wielu sesjach importowania. <br> Z jedną sesją dzielenia i kopiowania można użyć tylko jednego zestawu dysków.|
 |[Błąd] Zgłoszono wyjątek: CopySessionId dane importowania września test-1 odwołuje się do poprzedniej sesji kopii i nie można użyć ponownie dla nowej sesji kopiowania.|Ten błąd jest zgłaszany w przypadku próby użycia tej samej nazwy zadania dla nowego zadania, które zostało poprzednio pomyślnie ukończone.<br> Należy przypisać unikatową nazwę dla nowego zadania.|
@@ -96,7 +96,7 @@ W tej sekcji przedstawiono niektóre najważniejsze problemy sterowaną podczas 
 
 Może to być spowodowane system nieczyste plików. 
 
-Woluminom dysk w trybie odczytu i zapisu nie działa z dyskami pola danych. Ten scenariusz nie jest obsługiwany z stacje odszyfrować dislocker. Użytkownik może mieć pomyślnie ponownej instalacji urządzenia przy użyciu następującego polecenia: 
+Woluminom dysk w trybie odczytu i zapisu nie działa z dyskami pola danych. Ten scenariusz nie jest obsługiwany z stacje odszyfrować dislocker. Użytkownik może mieć pomyślnie ponownej instalacji urządzenia przy użyciu następującego polecenia:
 
     `# mount -o remount, rw /mnt/DataBoxDisk/mountVol1`
 
@@ -104,15 +104,37 @@ Chociaż woluminom zakończyło się pomyślnie, dane nie będą zachowywane.
 
 **Rozdzielczość**
 
-Jeśli zostanie wyświetlony błąd powyżej, można wypróbować jedno z następujących rozwiązań:
+Wykonaj następujące kroki w systemie Linux:
 
-- Zainstaluj [ `ntfsfix` ](https://linux.die.net/man/8/ntfsfix) (dostępne w `ntfsprogs` pakietu) i uruchamiać odpowiednie partycji.
+1. Zainstaluj `ntfsprogs` pakietów dla narzędzia ntfsfix.
+2. Odinstaluj udostępniane na potrzeby dysku narzędzia unlock punktów instalacji. Liczba punktów instalacji różnią się dla dysków.
 
-- Jeśli masz dostęp do systemu Windows
+    ```
+    unmount /mnt/DataBoxDisk/mountVol1
+    ```
 
-    - Załaduj dysk do systemu Windows.
-    - Otwórz wiersz polecenia z uprawnieniami administracyjnymi. Uruchom `chkdsk` na woluminie.
-    - Bezpiecznie usunąć wolumin i spróbuj ponownie.
+3. Uruchom `ntfsfix` odpowiedniej ścieżki. Wyróżnione liczba może być taki sam jak krok 2.
+
+    ```
+    ntfsfix /mnt/DataBoxDisk/bitlockerVol1/dislocker-file
+    ```
+
+4. Uruchom następujące polecenie, aby usunąć metadane hibernacji, które mogą być przyczyną problemu instalacji.
+
+    ```
+    ntfs-3g -o remove_hiberfile /mnt/DataBoxDisk/bitlockerVol1/dislocker-file /mnt/DataBoxDisk/mountVol1
+    ```
+
+5. Czy czyste odinstalowanie.
+
+    ```
+    ./DataBoxDiskUnlock_x86_64 /unmount
+    ```
+
+6. Wykonaj czystą unlock i instalacji.
+7. Testowanie punktu instalacji przez napisanie pliku.
+8. Odinstaluj i zainstaluj, aby sprawdzić stan trwały plik.
+9. Przejdź do kopiowania danych.
  
 ### <a name="issue-error-with-data-not-persisting-after-copy"></a>Problem: Błąd nie utrzymuje się po kopiowania danych
  

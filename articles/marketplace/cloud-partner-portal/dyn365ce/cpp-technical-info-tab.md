@@ -1,25 +1,18 @@
 ---
-title: Dynamics 365 dla karty informacje techniczne zaangażowania klientów — portalu Azure Marketplace | Dokumentacja firmy Microsoft
+title: Dynamics 365 dla karty informacje techniczne zaangażowania klientów | Portal Azure Marketplace
 description: Jak określić informacje techniczne dotyczące Dynamics 365 Customer Engagement aplikacji w witrynie Marketplace usługi AppSource.
 services: Dynamics 365 for Customer Engagement Offer, Azure, Marketplace, Cloud Partner Portal, AppSource
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 03/05/2019
-ms.author: pbutlerm
-ms.openlocfilehash: 1dd488c2eb419b5e210a48d7a94f7d0bb423a2b1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 04/24/2019
+ms.author: pabutler
+ms.openlocfilehash: df7f3be5a92a183176da7851ce1943793b8b57d0
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60332892"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942391"
 ---
 # <a name="dynamics-365-for-customer-engagement-technical-info-tab"></a>Dynamics 365 dla karty informacje techniczne zaangażowania klientów
 
@@ -32,13 +25,13 @@ Należy podać szczegóły dotyczące aplikacji Dynamics 365 w tej sekcji.
 
 ![Karta informacje techniczne sekcji informacji o aplikacji](./media/dynce-technical-info-tab1.png)
 
-W poniższej tabeli opisano te pola.
+W poniższej tabeli opisano te pola. Wymagane pola są wskazanych przez znak gwiazdki (*).
 
 |      Pole                    |    Opis                  |
 |    ---------                  |  ---------------                |
-|   Model licencji podstawowej          |  Model licencji określa, jak klienci są przypisywane aplikacji w Centrum administracyjnym usługi Dynamics 365. **Zasób** licencjonowania jest oparta na wystąpieniach, natomiast **użytkownika** licencje są przypisane w jednej dzierżawie.  |
-|  Wychodzące S2S & bezpiecznego dostępu Store CRM |  Konfiguracja umożliwia dostęp ruchu wychodzącego między serwerami (S2S) lub Store bezpiecznego CRM. *Ta funkcja wymaga specjalne zagadnienia od zespołu Dynamics 365 w fazie certyfikacji.* Firmy Microsoft z Tobą, aby wykonać dodatkowe kroki, aby obsługiwać tę funkcję.  |
-| Subskrybowanie do zdarzeń cyklu życia aplikacji CRM | Integracja z usługą zdarzenia cyklu życia usługi Dynamics 365 wymaga podania dedykowana usługa, która jest zarejestrowana za pomocą specjalnych umowy z firmą Microsoft. *Ta funkcja wymaga specjalne zagadnienia od zespołu Dynamics 365 w fazie certyfikacji.* Skontaktuje się z Tobą można wykonać dodatkowe kroki Obsługa tej możliwości.  |
+|   Model licencji podstawowej\*          |  Model licencji określa, jak klienci są przypisywane aplikacji w Centrum administracyjnym usługi Dynamics 365. **Zasób** licencjonowania jest oparta na wystąpieniach, natomiast **użytkownika** licencje są przypisane w jednej dzierżawie.  |
+|  Wychodzące S2S & bezpiecznego dostępu Store CRM\* |  Konfiguracja umożliwia dostęp ruchu wychodzącego między serwerami (S2S) lub Store bezpiecznego CRM. *Ta funkcja wymaga specjalne zagadnienia od zespołu Dynamics 365 w fazie certyfikacji.* Firmy Microsoft z Tobą, aby wykonać dodatkowe kroki, aby obsługiwać tę funkcję.  |
+| Subskrybowanie do zdarzeń cyklu życia aplikacji CRM\* | Integracja z usługą zdarzenia cyklu życia usługi Dynamics 365 wymaga podania dedykowana usługa, która jest zarejestrowana za pomocą specjalnych umowy z firmą Microsoft. *Ta funkcja wymaga specjalne zagadnienia od zespołu Dynamics 365 w fazie certyfikacji.* Skontaktuje się z Tobą można wykonać dodatkowe kroki Obsługa tej możliwości.  |
 | Adres Url konfiguracji aplikacji | Adres URL strony sieci web, która umożliwia użytkownikowi konfigurowanie aplikacji |
 | Objęte produkty Dynamics 365  | Wybierz produkty Dynamics 365, których dotyczy ta oferta. Ta oferta będzie wyświetlany w obszarze wybrane produkty w usłudze AppSource.  |
 | Marketing tylko zmiany         | Ustawienie tej opcji na Tak oznacza, że tylko marketing/opisowy zostały zmienione na istniejące oferty.  Takie zmiany umożliwiają oferty pominąć etapów inicjowania obsługi administracyjnej i certyfikacji.  |
@@ -51,14 +44,14 @@ Należy podać szczegółowe informacje o pliku pakietu usługi AppSource w tej 
 
 ![Pakiet aplikacji CRM części karta informacje techniczne](./media/dynce-technical-info-tab2.png)
 
-W poniższej tabeli opisano te pola.
+W poniższej tabeli opisano te pola.  Wymagane pola są wskazanych przez znak gwiazdki (*).
 
 |      Pole                    |    Opis                  |
 |    ---------                  |  ---------------                |
-|  Nazwa pliku pakietu     |  Nazwa pliku pakietu (zip).  Ta nazwa jest *nie* publicznych i będą używane wewnętrznie przez zespół certyfikacji Dynamics 365.  |
-|  Url                          |  Adres URL konta usługi Azure Storage, który zawiera plik przesłanym pakiecie. Ten adres URL powinien zawierać tylko do odczytu klucza sygnatury dostępu Współdzielonego umożliwia nasz zespół pobrać pakiet do weryfikacji.  |
-| Więcej niż jeden pakiet aplikacji crm     | Wybierz tak tylko, jeśli są obsługiwanie wielu wersji programu crm przy użyciu różnych pakietach.  Każda wersja ma odpowiedni umożliwiający pliku pakietu, które należy utworzyć osobno.  |
-| Scenariusz i użycie zasobów wielkości liter   | Umożliwia przekazywanie dokumentu specyfikacji funkcjonalności aplikacji, do użytku przez zespół weryfikacyjny Dynamics 365.  Jest w formacie ten spec [szablon scenariusza użytkownika E2E](https://isvdocumentation.blob.core.windows.net/d365documentation/Power%20Platform%20E2E%20document.docx).  |
+|  Nazwa pliku pakietu\*     |  Nazwa pliku pakietu (zip).  Ta nazwa jest *nie* publicznych i będą używane wewnętrznie przez zespół certyfikacji Dynamics 365.  |
+|  Adres URL lokalizacji pakietu\*      |  Adres URL konta usługi Azure Storage, który zawiera plik przesłanym pakiecie. Ten adres URL powinien zawierać tylko do odczytu klucza sygnatury dostępu Współdzielonego umożliwia nasz zespół pobrać pakiet do weryfikacji.  |
+| Więcej niż jeden pakiet aplikacji crm\*     | Wybierz tak tylko, jeśli są obsługiwanie wielu wersji programu crm przy użyciu różnych pakietach.  Każda wersja ma odpowiedni umożliwiający pliku pakietu, które należy utworzyć osobno.  |
+| Scenariusz i użycie zasobów wielkości liter\*   | Umożliwia przekazywanie dokumentu specyfikacji funkcjonalności aplikacji, do użytku przez zespół weryfikacyjny Dynamics 365.  Jest w formacie ten spec [szablon scenariusza użytkownika E2E](https://isvdocumentation.blob.core.windows.net/d365documentation/Power%20Platform%20E2E%20document.docx).  |
 |  |  |
 
 

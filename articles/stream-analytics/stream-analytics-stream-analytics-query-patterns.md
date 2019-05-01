@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: 9c9a5f219af0d474e1608f98595abe027b894117
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ef302ecaa6defc6ac0dc1dd58d4f8acc0f2fd263
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58001742"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64711447"
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>Przykłady dla typowych wzorców użycia usługi Stream Analytics zapytania
 
@@ -493,7 +493,7 @@ Na przykład generują zdarzenie co 5 sekund, któremu podlega najbardziej nieda
 
 **Dane wejściowe**:
 
-| t | wartość |
+| t | value |
 | --- | --- |
 | "2014-01-01T06:01:00" |1 |
 | "2014-01-01T06:01:05" |2 |
@@ -537,7 +537,7 @@ Na przykład w scenariuszu IoT dla głównego piekarników alert musi zostać wy
 
 **Dane wejściowe**:
 
-| time | deviceId | sensorName | wartość |
+| time | deviceId | sensorName | value |
 | --- | --- | --- | --- |
 | "2018-01-01T16:01:00" | "Oven1" | "temp" |120 |
 | "2018-01-01T16:01:00" | "Oven1" | "power" |15 |
@@ -605,7 +605,7 @@ WHERE
 **Explanation**: Pierwsze zapytanie `max_power_during_last_3_mins`, używa [okna ruchomej](https://msdn.microsoft.com/azure/stream-analytics/reference/sliding-window-azure-stream-analytics) można znaleźć maksymalną wartość czujnik zasilania dla każdego urządzenia w ciągu ostatnich 3 minut. Drugie zapytanie jest dołączony do pierwszego zapytania do odnalezienia wartości zasilania w oknie najnowszych istotne dla bieżącego zdarzenia. A następnie, pod warunkiem warunki są spełnione, alert jest generowany dla tego urządzenia.
 
 ## <a name="query-example-process-events-independent-of-device-clock-skew-substreams"></a>Przykład zapytania: Przetwarzanie zdarzeń niezależnie od urządzenia zegara pochylanie (substreams)
-**Opis**: Zdarzenia mogą pojawić się opóźnienia lub poza kolejnością z powodu wynikających z przesunięcia czasowego zegara między producentami zdarzeń, pochyla zegara między partycjami lub opóźnienia sieci. W poniższym przykładzie zegara urządzenia TollID 2 to dziesięć sekund za TollID 1 i zegara urządzenia dla TollID 3 wynosi pięć sekund za TollID 1. 
+**Opis**: Zdarzenia mogą pojawić się opóźnienia lub poza kolejnością z powodu wynikających z przesunięcia czasowego zegara między producentami zdarzeń, pochyla zegara między partycjami lub opóźnienia sieci. W poniższym przykładzie zegara urządzenia TollID 2 jest pięć sekund za TollID 1 i zegara urządzenia dla TollID 3 to dziesięć sekund za TollID 1. 
 
 
 **Dane wejściowe**:

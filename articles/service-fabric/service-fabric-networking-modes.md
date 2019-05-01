@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: aljo, subramar
-ms.openlocfilehash: 6f14b3184cabd1dfd84f04260f6b8c831037cbcf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: ecb7ac4d3359142d3aef247e4b918f517e10c3bb
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60718159"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926130"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Tryby sieci kontenera usługi Service Fabric
 
@@ -30,7 +30,7 @@ Jeśli masz jedną usługę kontenera przy użyciu statycznego punktu końcowego
 Gdy z nich usługę kontenera powoduje ponowne uruchomienie lub przechodzi do innego węzła w klastrze, adres IP zmienia się. Z tego powodu nie zaleca się przy użyciu przydzielony dynamicznie adres IP usługi kontenerów. Dla potrzeb odnajdowania usługi należy używać tylko Usługa nazewnictwa usługi Service Fabric lub usługi DNS. 
 
 >[!WARNING]
->Platforma Azure zezwoli daje w sumie 65 356 adresy IP na sieć wirtualną. Suma liczba węzłów i liczbę wystąpień usługi kontenera, (które korzystają z Otwórz tryb) nie może przekraczać 65 356 adresów IP w sieci wirtualnej. W przypadku scenariuszy o wysokiej gęstości, firma Microsoft zaleca tryb sieci translatora adresów sieciowych. Ponadto inne zależności, np. moduł równoważenia obciążenia będzie mieć inne [ograniczenia](https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits) wziąć pod uwagę. Obecnie maksymalnie 50 adresy IP na węzeł zostały sprawdzone i sprawdzone stabilne. 
+>Platforma Azure zezwoli daje w sumie 65 356 adresy IP na sieć wirtualną. Suma liczba węzłów i liczbę wystąpień usługi kontenera, (które korzystają z Otwórz tryb) nie może przekraczać 65 356 adresów IP w sieci wirtualnej. W przypadku scenariuszy o wysokiej gęstości, firma Microsoft zaleca tryb sieci translatora adresów sieciowych. Ponadto inne zależności, np. moduł równoważenia obciążenia będzie mieć inne [ograniczenia](https://docs.microsoft.com/azure/azure-subscription-service-limits) wziąć pod uwagę. Obecnie maksymalnie 50 adresy IP na węzeł zostały sprawdzone i sprawdzone stabilne. 
 >
 
 ## <a name="set-up-open-networking-mode"></a>Konfigurowanie Otwórz tryb sieci

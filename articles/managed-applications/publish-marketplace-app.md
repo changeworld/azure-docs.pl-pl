@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.date: 07/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 0bf1558f81f2936b4556ee658a235cd09dddf905
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 61cac49c34eb193d641a94c9a7839282289dd9c7
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60484018"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572584"
 ---
 # <a name="azure-managed-applications-in-the-marketplace"></a>Aplikacje zarządzane platformy Azure w witrynie Marketplace
 
@@ -29,7 +29,7 @@ Aby wykonać czynności opisane w tym artykule, trzeba mieć przygotowany plik z
 
 Ponadto istnieje kilka biznesowych wymagań wstępnych. Oto one:
 
-* Siedziba firmy (lub firmy od niej zależnej) musi znajdować się w kraju, w którym jest obsługiwana sprzedaż w witrynie Marketplace.
+* Twoją firmę lub jego zależnej od firmy Microsoft musi znajdować się w kraju/regionu, gdzie sprzedaż są obsługiwane w portalu marketplace.
 * Produkt musi być licencjonowany w sposób, który jest zgodny z modelami rozliczeń obsługiwanymi przez witrynę Marketplace.
 * Klienci muszą mieć dostęp do pomocy technicznej zorganizowanej w sposób rozsądny z komercyjnego punktu widzenia. Może być ona bezpłatna, płatna lub może działać na zasadzie wsparcia społeczności.
 * Oprogramowanie dostawcy i wszelkie oprogramowanie podmiotów zależnych musi być licencjonowane.
@@ -43,7 +43,7 @@ Aby zostać wydawcą w witrynie Azure Marketplace, należy wykonać następując
 
 1. Utwórz identyfikator Microsoft — Utwórz konto Microsoft przy użyciu adresu e-mail, który należy do domeny firmy, ale nie do jednej osoby. Ten adres e-mail będzie używany zarówno w Centrum deweloperów firmy Microsoft, jak i w portalu Cloud Partner. Aby uzyskać więcej informacji, zobacz [Azure Marketplace — przewodnik dla wydawcy](https://aka.ms/sellerguide).
 1. Prześlij [Formularz nominacji witryny Azure Marketplace](https://aka.ms/ampnomination) — W polu **Rozwiązanie, które chcesz opublikować** wybierz pozycję **Aplikacja zarządzana**. Po przesłaniu formularza zespół ds. dołączania do witryny Marketplace zapozna się z aplikacją i zweryfikuje Twoje żądanie. Proces zatwierdzania może potrwać od jednego do trzech dni. Po zatwierdzeniu nominacji otrzymasz kod promocyjny umożliwiający anulowanie opłaty rejestracyjnej w Centrum deweloperów. Jeśli **nie** wypełnisz formularza nominacji witryny Marketplace, zostanie Ci naliczona opłata rejestracyjna w wysokości 99 USD.
-1. Zarejestruj się w [Centrum deweloperów](https://dev.windows.com/registration?accountprogram=azure) — firma Microsoft sprawdzi, czy Twoja organizacja jest podmiotem prawnym i posiada identyfikator podatkowy w kraju, w którym jest zarejestrowana. Proces zatwierdzania może potrwać od 5 do 10 dni. Aby uniknąć opłaty rejestracyjnej, użyj kodu promocyjnego otrzymanego w wiadomości e-mail dotyczącej procesu nominacji. Aby uzyskać więcej informacji, zobacz [Azure Marketplace — przewodnik dla wydawcy](https://aka.ms/sellerguide).
+1. Rejestrowanie w [Centrum deweloperów](https://dev.windows.com/registration?accountprogram=azure) — Microsoft sprawdza, czy Twoja organizacja jest prawidłowy firmy przy użyciu prawidłowego Identyfikatora podatku dla kraju/regionu, w którym jest zarejestrowana. Proces zatwierdzania może potrwać od 5 do 10 dni. Aby uniknąć opłaty rejestracyjnej, użyj kodu promocyjnego otrzymanego w wiadomości e-mail dotyczącej procesu nominacji. Aby uzyskać więcej informacji, zobacz [Azure Marketplace — przewodnik dla wydawcy](https://aka.ms/sellerguide).
 1. Zaloguj się w [portalu Cloud Partner](https://cloudpartner.azure.com) — w profilu wydawcy skojarz swoje konto Centrum deweloperów z profilem wydawcy witryny Marketplace. Aby uzyskać więcej informacji, zobacz [Azure Marketplace — przewodnik dla wydawcy](https://aka.ms/sellerguide).
 
 ## <a name="create-a-new-azure-application-offer"></a>Tworzenie nowej oferty aplikacji platformy Azure
@@ -94,8 +94,8 @@ Jednostka SKU jest widoczna poniżej oferty nadrzędnej w witrynie Marketplace. 
    * **Podsumowanie**: Wprowadź krótkie podsumowanie dla tej jednostki SKU. Ten tekst jest wyświetlany pod tytułem.
    * **Opis**: Wprowadź szczegółowy opis jednostki SKU.
    * **Typ jednostki SKU**: Dozwolone wartości to *Aplikacja zarządzana* i *Szablony rozwiązań*. W tym przypadku wybierz pozycję *Aplikacja zarządzana*.
-   * **Dostępność w kraju/regionie**: Wybierz kraje, w których dana aplikacja zarządzana jest dostępna.
-   * **Cennik**: Podaj cenę za zarządzanie aplikacją. Przed ustawieniem ceny wybierz dostępne kraje.
+   * **Dostępność w kraju/regionie**: Wybierz kraje/regiony, w których jest dostępna w aplikacji zarządzanej.
+   * **Cennik**: Podaj cenę za zarządzanie aplikacją. Wybierz kraje/regiony dostępne przed ustawieniem cenę.
 
 1. Dodaj nowy pakiet. Wypełnij sekcję **Szczegóły pakietu** w następującym formularzu:
 

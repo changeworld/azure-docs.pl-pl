@@ -1,112 +1,110 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory przy użyciu sieci szkieletowej zabezpieczeń chmury | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i sieci szkieletowej zabezpieczeń chmury.
+title: 'Samouczek: Integracja usługi Azure Active Directory przy użyciu sieci szkieletowej chmury zabezpieczeń | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i sieci szkieletowej chmury zabezpieczeń.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 549e8810-1b3b-4351-bf4b-f07de98980d1
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 06/20/2018
+ms.topic: tutorial
+ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a556b38ca4947b71555ba7b023607b392900bdaf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 6c43a38a456eb0fce3f46409bd256f0fc42e8ade
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60429519"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64691438"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-the-cloud-security-fabric"></a>Samouczek: Integracja usługi Azure Active Directory przy użyciu sieci szkieletowej zabezpieczeń chmury
+# <a name="tutorial-azure-active-directory-integration-with-cloud-security-fabric"></a>Samouczek: Integracja usługi Azure Active Directory przy użyciu sieci szkieletowej chmury zabezpieczeń
 
 W tym samouczku dowiesz się, jak zintegrować sieci szkieletowej zabezpieczeń chmury z usługi Azure Active Directory (Azure AD).
+Integrowanie sieci szkieletowej chmury zabezpieczeń z usługą Azure AD zapewnia następujące korzyści:
 
-Integrowanie sieci szkieletowej zabezpieczeń chmury z usługi Azure AD zapewnia następujące korzyści:
+* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do sieci szkieletowej chmury zabezpieczeń.
+* Użytkownikom można automatycznie zalogowany do sieci szkieletowej zabezpieczeń chmury (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-- Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do sieci szkieletowej zabezpieczeń chmury.
-- Użytkowników, aby automatycznie uzyskać zalogowanych do sieci szkieletowej zabezpieczeń chmury (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD.
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
-
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby skonfigurować integrację usługi Azure AD przy użyciu sieci szkieletowej zabezpieczeń chmury, potrzebne są następujące elementy:
 
-- Subskrypcji usługi Azure AD
-- Sieci szkieletowej zabezpieczeń chmury logowanie jednokrotne włączone subskrypcji
-
-> [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
-
-Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
-
-- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja usługi Azure AD. Jeśli nie ma środowiska usługi Azure AD, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/)
+* Cloud Security Service Fabric logowanie jednokrotne włączone subskrypcji
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie zabezpieczeń sieci szkieletowej chmury z galerii
-1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-## <a name="adding-the-cloud-security-fabric-from-the-gallery"></a>Dodawanie zabezpieczeń sieci szkieletowej chmury z galerii
-Aby skonfigurować integrację z sieci szkieletowej zabezpieczeń chmury w usłudze Azure AD, należy dodać sieci szkieletowej zabezpieczeń chmury z galerii z listą zarządzanych aplikacji SaaS.
+* Cloud Security Service Fabric obsługuje **SP** jednokrotne logowanie inicjowane przez
 
-**Aby dodać sieci szkieletowej zabezpieczeń chmury z galerii, wykonaj następujące czynności:**
+## <a name="adding-cloud-security-fabric-from-the-gallery"></a>Dodawanie sieci szkieletowej chmury zabezpieczeń z galerii
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+Aby skonfigurować integrację z sieci szkieletowej chmury zabezpieczeń w usłudze Azure AD, należy dodać sieci szkieletowej chmury zabezpieczeń z galerii z listą zarządzanych aplikacji SaaS.
 
-    ![Przycisk usługi Azure Active Directory][1]
+**Aby dodać sieci szkieletowej chmury zabezpieczeń z galerii, wykonaj następujące czynności:**
 
-1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
-    ![W bloku aplikacji przedsiębiorstwa][2]
-    
-1. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-    ![Nowy przycisk aplikacji][3]
+2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
 
-1. W polu wyszukiwania wpisz **sieci szkieletowej zabezpieczeń chmury**, wybierz opcję **sieci szkieletowej zabezpieczeń chmury** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-    ![Sieci szkieletowej zabezpieczeń chmury na liście wyników](./media/ciscocloudlock-tutorial/tutorial_ciscocloudlock_addfromgallery.png)
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą zabezpieczeń sieci szkieletowej chmury oparte na użytkownika testu o nazwie "Britta Simon".
+4. W polu wyszukiwania wpisz **sieci szkieletowej chmury zabezpieczeń**, wybierz opcję **sieci szkieletowej chmury zabezpieczeń** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
-Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w sieci szkieletowej zabezpieczeń chmury dla użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w sieci szkieletowej zabezpieczeń chmury musi zostać ustanowione.
+    ![Sieci szkieletowej zabezpieczeń chmury na liście wyników](common/search-new-app.png)
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne z sieci szkieletowej zabezpieczeń chmury, należy wykonać poniższe bloki konstrukcyjne:
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-1. **[Tworzenie użytkownika testowego sieci szkieletowej zabezpieczeń chmury](#create-a-the-cloud-security-fabric-test-user)**  — aby odpowiednikiem Britta Simon w chmurze zabezpieczeń sieci szkieletowej jest połączony z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
+W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą sieci szkieletowej zabezpieczeń chmury na podstawie użytkownika testowego, o nazwie **Britta Simon**.
+Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w sieci szkieletowej chmury zabezpieczeń musi zostać nawiązane.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne z sieci szkieletowej chmury zabezpieczeń, należy wykonać poniższe bloki konstrukcyjne:
 
-W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji Fabric zabezpieczeń chmury.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Konfigurowanie chmury zabezpieczeń sieci szkieletowej logowania jednokrotnego](#configure-cloud-security-fabric-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Tworzenie użytkownika testowego sieci szkieletowej chmury zabezpieczeń](#create-cloud-security-fabric-test-user)**  — aby odpowiednikiem Britta Simon w sieci szkieletowej zabezpieczeń chmury, która jest połączona z usługi Azure AD reprezentacja użytkownika.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-**Aby skonfigurować usługę Azure AD logowanie jednokrotne z sieci szkieletowej zabezpieczeń chmury, wykonaj następujące czynności:**
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-1. W witrynie Azure portal na **sieci szkieletowej zabezpieczeń chmury** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej][4]
+Aby skonfigurować usługę Azure AD logowania jednokrotnego z sieci szkieletowej chmury zabezpieczeń, wykonaj następujące czynności:
 
-1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
+1. W [witryny Azure portal](https://portal.azure.com/)na **sieci szkieletowej chmury zabezpieczeń** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
 
-    ![Okno dialogowe rejestracji jednokrotnej](./media/ciscocloudlock-tutorial/tutorial_ciscocloudlock_samlbase.png)
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
-1. Na **Cloud Security Service Fabric domena i adresy URL** sekcji, wykonaj następujące czynności:
+2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
-    ![Cloud Security Service Fabric domena i adresy URL pojedynczego logowania jednokrotnego informacje](./media/ciscocloudlock-tutorial/tutorial_ciscocloudlock_url.png)
+    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
+
+3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
+
+    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
+
+4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
+
+    ![Cloud Security Service Fabric domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/sp-identifier.png)
 
     a. W **adres URL logowania** pole tekstowe, wpisz adres URL:
 
@@ -115,114 +113,99 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     | `https://platform.cloudlock.com` |
     | `https://app.cloudlock.com` |
 
-    b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca:
-    
+    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, korzystając z następującego wzorca:
+
     | |
     |--|
     | `https://platform.cloudlock.com/gate/saml/sso/<subdomain>` |
     | `https://app.cloudlock.com/gate/saml/sso/<subdomain>` |
 
     > [!NOTE]
-    > Wartość identyfikatora nie jest prawdziwe. Zaktualizuj wartość za pomocą rzeczywisty identyfikator. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta sieci szkieletowej zabezpieczeń chmury](mailto:support@cloudlock.com) można uzyskać wartość. 
+    > Wartość identyfikatora nie jest prawdziwa. Zaktualizuj wartość za pomocą rzeczywisty identyfikator. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta sieci szkieletowej zabezpieczeń chmury](mailto:support@cloudlock.com) można uzyskać wartość. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
+5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link pobierania certyfikatu](./media/ciscocloudlock-tutorial/tutorial_ciscocloudlock_certificate.png)
+    ![Link do pobierania certyfikatu](common/metadataxml.png)
 
-1. Kliknij przycisk **Zapisz** przycisku.
+6. Na **konfigurowania sieci szkieletowej chmury zabezpieczeń** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
 
-    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/ciscocloudlock-tutorial/tutorial_general_400.png)
+    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-1. Aby skonfigurować logowanie jednokrotne na **sieci szkieletowej zabezpieczeń chmury** stronie, musisz wysłać pobrany **XML metadanych** do [zespołem pomocy technicznej w sieci szkieletowej zabezpieczeń chmury](mailto:support@cloudlock.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+    a. Adres URL logowania
+
+    b. Identyfikator usługi Azure AD
+
+    c. Adres URL wylogowywania
+
+### <a name="configure-cloud-security-fabric-single-sign-on"></a>Konfigurowanie chmury zabezpieczeń sieci szkieletowej logowania jednokrotnego
+
+Aby skonfigurować logowanie jednokrotne na **sieci szkieletowej chmury zabezpieczeń** stronie, musisz wysłać pobrany **XML metadanych Federacji** i odpowiednie skopiowany adresy URL z portalu Azure, aby [Cloud Security Zespół pomocy technicznej w sieci szkieletowej](mailto:support@cloudlock.com). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-   ![Tworzenie użytkownika testowego usługi Azure AD][100]
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-1. W witrynie Azure portal w okienku po lewej stronie kliknij pozycję **usługi Azure Active Directory** przycisku.
+2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
-    ![Przycisk usługi Azure Active Directory](./media/ciscocloudlock-tutorial/create_aaduser_01.png)
+    ![Przycisk Nowy użytkownik](common/new-user.png)
 
-1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
+3. We właściwościach użytkownika wykonaj następujące kroki.
 
-    !["Użytkownicy i grupy" i "All users" linki](./media/ciscocloudlock-tutorial/create_aaduser_02.png)
+    ![Okno dialogowe Użytkownik](common/user-properties.png)
 
-1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+  
+    b. W **nazwa_użytkownika** typ pola `brittasimon@yourcompanydomain.extension`. Na przykład: BrittaSimon@contoso.com
 
-    ![Przycisk Dodaj](./media/ciscocloudlock-tutorial/create_aaduser_03.png)
-
-1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
-
-    ![Okno dialogowe użytkownika](./media/ciscocloudlock-tutorial/create_aaduser_04.png)
-
-    a. W **nazwa** wpisz **BrittaSimon**.
-
-    b. W **nazwa_użytkownika** wpisz adres e-mail użytkownika Britta Simon.
-
-    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
     d. Kliknij pozycję **Utwórz**.
 
-### <a name="create-a-the-cloud-security-fabric-test-user"></a>Tworzenie użytkownika testowego sieci szkieletowej zabezpieczeń chmury
-
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w sieci szkieletowej zabezpieczeń chmury. Praca z [zespołem pomocy technicznej w sieci szkieletowej zabezpieczeń chmury](mailto:support@cloudlock.com) Aby dodać użytkowników w sieci szkieletowej zabezpieczeń chmury platformy. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego. 
-
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do sieci szkieletowej zabezpieczeń chmury.
+W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do sieci szkieletowej chmury zabezpieczeń.
 
-![Przypisanie roli użytkownika][200]
+1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **sieci szkieletowej chmury zabezpieczeń**.
 
-**Aby przypisać Britta Simon do sieci szkieletowej zabezpieczeń chmury, wykonaj następujące czynności:**
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+2. Na liście aplikacji wybierz **sieci szkieletowej chmury zabezpieczeń**.
 
-    ![Przypisz użytkownika][201]
+    ![Link sieci szkieletowej zabezpieczeń chmury na liście aplikacji](common/all-applications.png)
 
-1. Na liście aplikacji wybierz **sieci szkieletowej zabezpieczeń chmury**.
+3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
-    ![Link sieci szkieletowej zabezpieczeń chmury na liście aplikacji](./media/ciscocloudlock-tutorial/tutorial_ciscocloudlock_app.png)  
+    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-1. W menu po lewej stronie kliknij **użytkowników i grup**.
+4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
 
-    ![Link "Użytkownicy i grupy"][202]
+    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
 
-1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-    ![Okienko Dodawanie przypisania][203]
+6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+### <a name="create-cloud-security-fabric-test-user"></a>Tworzenie użytkownika testowego sieci szkieletowej chmury zabezpieczeń
 
-1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
+W tej sekcji utworzysz użytkownika w sieci szkieletowej chmury zabezpieczeń o nazwie Britta Simon. Praca z [zespołem pomocy technicznej w sieci szkieletowej chmury zabezpieczeń](mailto:support@cloudlock.com) Aby dodać użytkowników na platformie chmury zabezpieczeń w sieci szkieletowej. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka sieci szkieletowej zabezpieczeń chmury na panelu dostępu, możesz powinien pobrać automatycznie zalogowanych do sieci szkieletowej zabezpieczeń chmury aplikacji.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md).
+Po kliknięciu kafelka sieci szkieletowej chmury zabezpieczenia w panelu dostępu, możesz powinny być automatycznie zalogowany do sieci szkieletowej zabezpieczeń chmury, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: ./media/ciscocloudlock-tutorial/tutorial_general_01.png
-[2]: ./media/ciscocloudlock-tutorial/tutorial_general_02.png
-[3]: ./media/ciscocloudlock-tutorial/tutorial_general_03.png
-[4]: ./media/ciscocloudlock-tutorial/tutorial_general_04.png
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-[100]: ./media/ciscocloudlock-tutorial/tutorial_general_100.png
-
-[200]: ./media/ciscocloudlock-tutorial/tutorial_general_200.png
-[201]: ./media/ciscocloudlock-tutorial/tutorial_general_201.png
-[202]: ./media/ciscocloudlock-tutorial/tutorial_general_202.png
-[203]: ./media/ciscocloudlock-tutorial/tutorial_general_203.png

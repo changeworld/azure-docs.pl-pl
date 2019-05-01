@@ -5,15 +5,15 @@ manager: kfile
 description: Informacje dotyczące sposobu nawiązywania połączenia z usługami Azure Analysis Services za pomocą programu Power BI Desktop.
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 01/09/2019
+ms.date: 04/25/2019
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 5d021aa7a6d55bb071340ebcd8e7090a4b0c2e2f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: ea2a6612a568d4080a8df2c569f79aaaa283e9c4
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60788236"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64702837"
 ---
 # <a name="tutorial-connect-with-power-bi-desktop"></a>Samouczek: Nawiązywanie połączenia za pomocą programu Power BI Desktop
 
@@ -71,4 +71,4 @@ Skopiuj nazwę serwera z **portalu Azure** > serwer > **Omówienie** > **Nazwa s
 Jeśli raport nie będzie już potrzebny, nie zapisuj go lub usuń pliki, jeśli raport został już zapisany.
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym samouczku przedstawiono sposób użycia programu Power BI Desktop do nawiązywania połączenia z modelem danych na serwerze i tworzenia podstawowego raportu. Jeśli nie masz doświadczenia w tworzeniu modelu danych, zobacz [Adventure Works Internet Sales tabular data modeling tutorial](aas-adventure-works-tutorial.md) (Samouczek dotyczący modelowania danych tabelarycznych sprzedaży internetowych w przykładzie Adventure Works).
+W tym samouczku przedstawiono sposób użycia programu Power BI Desktop do nawiązywania połączenia z modelem danych na serwerze i tworzenia podstawowego raportu. Jeśli nie znasz sposób tworzenia modelu danych, zobacz [samouczka modelowania tabelarycznego Adventure Works Internet Sales](https://docs.microsoft.com/sql/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial) w dokumentacji SQL Server Analysis Services.

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: b3cfc33f435c6ddaabe8358c344b1944f7c271f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 2130dcc27f81eb1e33fa56a7a4f963d81ac0de5b
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60799557"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926112"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Wprowadzenie do procedury obsługi rozszerzenia Azure Desired State Configuration
 
@@ -82,7 +82,7 @@ Te informacje są widoczne w [witryny Azure portal](../../automation/automation-
 ```
 
 Nazwa konfiguracji węzła upewnij się, czy przy użyciu nazwy *konfiguracji węzła* i nie konfiguracji.
-Konfiguracja jest zdefiniowany w skrypcie, który jest używany [do kompilacji konfiguracji węzła (plik MOF)](https://docs.microsoft.com/en-us/azure/automation/automation-dsc-compile).
+Konfiguracja jest zdefiniowany w skrypcie, który jest używany [do kompilacji konfiguracji węzła (plik MOF)](https://docs.microsoft.com/azure/automation/automation-dsc-compile).
 Nazwa będzie zawsze konfiguracji następuje kropka `.` i `localhost` lub określonej nazwy komputera.
 
 ## <a name="dsc-extension-in-resource-manager-templates"></a>Rozszerzenie DSC w szablonach usługi Resource Manager

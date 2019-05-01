@@ -10,15 +10,15 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/18/2017
-ms.openlocfilehash: 320dd28ba22d7919e3f3afdcd8baa47780f363dd
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: e6a7eaa94e7196c830a66b2d77023bd562119c92
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57856131"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64699439"
 ---
 # <a name="analyze-customer-churn-using-azure-machine-learning-studio"></a>Analizowanie zmienności klientów za pomocą usługi Azure Machine Learning Studio
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Ten artykuł przedstawia informacje o referencyjnej implementacji projektu analizy zmienności klientów, która powstała przy użyciu usługi Azure Machine Learning Studio. W tym artykule omówiono powiązanych modelach ogólny na potrzeby całościowe rozwiązanie problemu odpływu klientów przemysłowe. Możemy również mierzenia dokładności modeli, które są tworzone przy użyciu uczenia maszynowego i ocenić używany na potrzeby dalszego rozwoju.  
 
 ### <a name="acknowledgements"></a>Potwierdzenia
@@ -217,7 +217,7 @@ W tym dokumencie opisano rozsądne podejście na co dzień do czynienia powszech
 
 [3] [CRISP-DM 1.0: Przewodnik dotyczący wyszukiwania danych krok po kroku](https://www.the-modeling-agency.com/crisp-dm.pdf)   
 
-[4] [Big Data Marketing: Bardziej efektywne angażować swoich klientów i Zwiększaj wartość](http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
+[4] [Big Data Marketing: Bardziej efektywne angażować swoich klientów i Zwiększaj wartość](https://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
 
 [5] [Telco postęp dokonany w szablonie model](https://gallery.azure.ai/Experiment/Telco-Customer-Churn-5) w [Galeria sztucznej Inteligencji platformy Azure](https://gallery.azure.ai/) 
  

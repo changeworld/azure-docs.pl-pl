@@ -1,25 +1,18 @@
 ---
-title: Certyfikowanie obrazu maszyny Wirtualnej w portalu Azure Marketplace | Dokumentacja firmy Microsoft
+title: Certyfikowanie obrazu maszyny Wirtualnej w portalu Azure Marketplace
 description: Opisano sposób testowania i przesłać obraz maszyny Wirtualnej do certyfikacji w portalu Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 09/26/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 24430b1b785a24da06a8ea51594147040e6d5bd6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: pabutler
+ms.openlocfilehash: 0dbf1abbb91f9e5c3bd2d042c57f87591d52c9cd
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60638393"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938502"
 ---
 # <a name="certify-your-vm-image"></a>Certyfikowanie obrazu maszyny Wirtualnej
 

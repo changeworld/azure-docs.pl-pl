@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/13/2017
+ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6775f6e37a5b282afcfcdce7f93751e852923366
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1495c14ae4c588661452aa3696019da00be47548
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60349566"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64571378"
 ---
 # <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Program Azure AD Connect: Jeśli masz dzierżawę celowe
 Większość tematów w zakresie używania usługi Azure AD Connect przyjęto założenie, rozpoczynać się nowej usługi Azure AD dzierżawy i się, że żadni użytkownicy ani innych obiektów. Ale jeśli rozpoczęto za pomocą dzierżawy usługi Azure AD wypełnić go użytkowników i innych obiektów, a teraz chcesz użyć Connect, a następnie w tym temacie jest dla Ciebie.
@@ -58,6 +58,15 @@ Do nowej instalacji programu Connect nie ma praktyczne różnic między soft - i
 
 ### <a name="other-objects-than-users"></a>Innych obiektów niż użytkownicy
 Grupy obsługujące pocztę i kontakty możesz można soft-match na podstawie proxyAddresses. Twarde dopasowanie nie ma zastosowania, ponieważ można aktualizować tylko sourceAnchor/wartość immutableID (przy użyciu programu PowerShell) dotyczące użytkowników tylko. Dla grup, które nie są z włączoną obsługą poczty obecnie nie jest obsługiwane dla miękkiego lub twardych dopasowania.
+
+### <a name="admin-role-considerations"></a>Zagadnienia dotyczące roli administratora
+Aby uniemożliwić niezaufanym lokalnych użytkowników pasującej do użytkownika chmury, który ma dowolnej roli administratora, program Azure AD Connect nie będą zgodne obiekty użytkowników lokalnych z obiektami, które ma rolę administratora. Jest to domyślnie. Aby obejść ten problem, możesz skorzystać z poniższej procedury:
+
+1.  Usuwanie ról w katalogu z obiektu użytkowników tylko w chmurze
+2.  Wyzwalanie synchronizacji
+3.  Opcjonalnie Dodaj role katalogu do obiektu użytkownika w chmurze po wystąpiło dopasowanie.
+
+
 
 ## <a name="create-a-new-on-premises-active-directory-from-data-in-azure-ad"></a>Tworzenie nowej lokalnej usługi Active Directory z danych w usłudze Azure AD
 Niektórzy klienci rozpoczynać się tylko na chmurze rozwiązania z usługą Azure AD i nie mają lokalnej usługi AD. Później chcą używać zasobów lokalnych i chcesz utworzyć lokalną AD oparte na danych usługi Azure AD. Program Azure AD Connect nie może pomóc w przypadku tego scenariusza. Nie powoduje utworzenia użytkowników w środowisku lokalnym i nie ma żadnych możliwość ustawiania hasła lokalnego do tej samej, tak jak w usłudze Azure AD.

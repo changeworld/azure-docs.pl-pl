@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 7c239bbf577645ddb8ab12c525d1b3a8832421df
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 3a0ae782d3fe97752ca8b9e786c3c2672f554277
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60680536"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64936020"
 ---
 # <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>Wizualizowanie wzorców ruchu sieciowego do i z maszyn wirtualnych przy użyciu narzędzi typu open source
 
@@ -76,9 +76,9 @@ CapAnalysis oferuje różne opcje usługi przechwycenie pakietu każdej dostarcz
 
 1. Mapę geograficzną
 
-    W tym okienku zapewnia widoku mapy, ruchu sieciowego, kolory, skalowanie do wielkości ruchu z każdego kraju. Możesz wybrać wyróżnione kraje, aby wyświetlić przepływ dodatkowe statystyki, takie jak część danych wysyłane i odbierane z adresów IP w danym kraju.
+    W tym okienku zapewnia widoku mapy, ruchu sieciowego, kolory, skalowanie do wielkości ruchu z każdego kraju/regionu. Możesz wybrać wyróżnione krajów/regionów, aby wyświetlić przepływ dodatkowe statystyki, takie jak część danych wysyłane i odbierane z adresów IP w danym kraju/regionie.
 
-    ![mapę geograficzną][8]
+    ![Mapę geograficzną][8]
 
 1. Filtry
 

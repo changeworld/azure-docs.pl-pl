@@ -6,14 +6,14 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: overview
 ms.custom: mvc
-ms.date: 4/18/2019
+ms.date: 4/30/2019
 ms.author: victorh
-ms.openlocfilehash: 91e94c70444430725ffec836d1663aef99eb5496
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 78dd4b31991a15d3d946c47c5394f64bb3afea95
+ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60715949"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64947266"
 ---
 # <a name="what-is-azure-application-gateway"></a>Co to jest Azure Application Gateway?
 
@@ -21,48 +21,29 @@ Azure Application Gateway to moduł równoważenia obciążenia ruchu internetow
 
 ![Koncepcja modułu Application Gateway](media/overview/figure1-720.png)
 
-Jednak usługa Application Gateway umożliwia bardziej szczegółowe zarządzanie ruchem. Na przykład można kierować ruch na podstawie przychodzącego adresu URL. Jeśli w przychodzącym adresie URL jest element `/images`, można kierować ruch do określonego zestawu serwerów (nazywanego pulą) skonfigurowanego na potrzeby obrazów. Jeśli w adresie URL jest element `/video`, ruch jest kierowany do innej puli zoptymalizowanej pod kątem wideo.
+Z usługą Application Gateway ułatwia decyzje w kwestii routingu na podstawie atrybutów dodatkowe żądania HTTP, takich jak nagłówki hosta lub ścieżka identyfikatora URI. Na przykład można kierować ruch na podstawie przychodzącego adresu URL. Jeśli w przychodzącym adresie URL jest element `/images`, można kierować ruch do określonego zestawu serwerów (nazywanego pulą) skonfigurowanego na potrzeby obrazów. Jeśli `/video` jest w adresie URL, że ruch jest kierowany do innej puli, który jest zoptymalizowany pod kątem filmów wideo.
 
 ![imageURLroute](./media/application-gateway-url-route-overview/figure1-720.png)
 
-Ten typ routingu jest nazywany równoważeniem obciążenia warstwy aplikacji (warstwy OSI 7). Usługa Azure Application Gateway może wykonywać routing oparty na adresach URL i nie tylko. 
+Ten typ routingu jest nazywany równoważeniem obciążenia warstwy aplikacji (warstwy OSI 7). Usługa Azure Application Gateway może wykonywać routing oparty na adresach URL i nie tylko.
 
 W usłudze Azure Application Gateway są dostępne następujące funkcje:
 
-## <a name="autoscaling-public-preview"></a>Skalowanie automatyczne w publicznej wersji zapoznawczej
-
-Oprócz funkcji opisanych w tym artykule usługa Application Gateway oferuje również nową jednostkę SKU [Standard_V2] w publicznej wersji zapoznawczej, oferującą skalowanie automatyczne i inne udoskonalenia kluczowe dla poprawy wydajności.
-
-- **Skalowanie automatyczne** — wdrożenie usługi Application Gateway lub WAF w ramach skalowania automatycznego jednostki SKU umożliwia skalowanie w górę lub dół na podstawie zmieniających się wzorców obciążenia ruchu. Dzięki skalowaniu automatycznemu nie trzeba również wybierać rozmiaru wdrożenia ani liczby wystąpień podczas aprowizowania usługi. 
-
-- **Nadmiarowość strefy** — wdrożenie usługi Application Gateway lub WAF może obejmować kilka stref dostępności, dzięki czemu nie trzeba już aprowizować i uruchamiać oddzielnych wystąpień usługi Application Gateway w każdej strefie przy użyciu usługi Traffic Manager.
-
-- **Statyczny adres VIP** — adres VIP usługi Application Gateway teraz obsługuje wyłącznie typ statyczny adresu VIP. Dzięki temu adres VIP skojarzony z usługą Application Gateway nie zmienia się nawet po ponownym uruchomieniu.
-
-- **Krótszy czas wdrożenia i aktualizacji** w porównaniu z ogólnie dostępną jednostką SKU. 
-
-- **Pięć razy lepsza wydajność odciążenia protokołu SSL** w porównaniu z ogólnie dostępną jednostką SKU.
-
-Aby uzyskać więcej informacji na temat funkcji usługi Application Gateway w publicznej wersji zapoznawczej, zobacz [Autoskalowana i strefowo nadmiarowa usługa Application Gateway (publiczna wersja zapoznawcza)](application-gateway-autoscaling-zone-redundant.md).
-
 ## <a name="secure-sockets-layer-ssl-termination"></a>Kończenie żądań protokołu Secure Sockets Layer (SSL)
 
-Usługa Application Gateway obsługuje przerywanie połączenia SSL na bramie, po którym ruch na ogół płynie niezaszyfrowany do serwerów zaplecza. Ta funkcja umożliwia odciążenie serwerów sieci Web z nadmiaru kosztownych operacji szyfrowania i odszyfrowywania. Jednak czasami nieszyfrowana komunikacja z serwerami jest opcją niemożliwą do zaakceptowania. Może to być spowodowane wymaganiami dotyczącymi zabezpieczeń lub zgodności albo aplikacja może akceptować jedynie bezpieczne połączenia. Na potrzeby takich aplikacji usługa Application Gateway obsługuje kompleksowe szyfrowanie SSL.
+Usługa Application Gateway obsługuje przerywanie połączenia SSL na bramie, po którym ruch na ogół płynie niezaszyfrowany do serwerów zaplecza. Ta funkcja umożliwia odciążenie serwerów sieci Web z nadmiaru kosztownych operacji szyfrowania i odszyfrowywania. Jednak czasami nieszyfrowana komunikacja z serwerami jest opcją niemożliwą do zaakceptowania. Może to być ze względu na wymagania dotyczące zabezpieczeń, w przypadku wymagań dotyczących zgodności albo aplikacja może akceptować jedynie bezpieczne połączenia. Na potrzeby takich aplikacji usługa Application Gateway obsługuje kompleksowe szyfrowanie SSL.
 
-## <a name="azure-kubernetes-service-aks-ingress-controller-preview"></a>Kontroler ruchu przychodzącego w usłudze Azure Kubernetes Service (AKS) — wersja zapoznawcza 
+## <a name="autoscaling"></a>Skalowanie automatyczne
 
-Kontroler ruchu przychodzącego w usłudze Application Gateway jest uruchamiany jako zasobnik w ramach klastra usługi AKS i umożliwia usłudze Application Gateway obsługę ruchu przychodzącego do klastra usługi AKS. Jest to obsługiwane za pomocą tylko v2 Application Gateway.
+Usługa Application Gateway i zapory aplikacji sieci Web wdrożenia w ramach Standard_v2 lub jednostki SKU WAF_v2 obsługuje Skalowanie automatyczne i skalować w górę lub dół zależności od zmieniających się wzorców obciążenia ruchu. Dzięki skalowaniu automatycznemu nie trzeba również wybierać rozmiaru wdrożenia ani liczby wystąpień podczas aprowizowania usługi. Aby uzyskać więcej informacji na temat standard_v2 bramy aplikacji i funkcji WAF_v2 zobacz [jednostek SKU v2 skalowania automatycznego](application-gateway-autoscaling-zone-redundant.md).
 
-Aby uzyskać więcej informacji, zobacz [Azure Application Gateway Ingress Controller (Kontroler ruchu przychodzącego w usłudze Azure Application Gateway)](https://azure.github.io/application-gateway-kubernetes-ingress/).
+## <a name="zone-redundancy"></a>Nadmiarowości strefy
 
-## <a name="connection-draining"></a>Opróżnianie połączeń
+Usługa Application Gateway i zapory aplikacji sieci Web wdrożenia w ramach Standard_v2 lub WAF_v2 jednostki SKU może obejmować wielu strefach dostępności, oferując większą odporność błędów i konieczność aprowizowanie osobnych bramach aplikacji w każdej strefie.
 
-Opróżnianie połączeń umożliwia bezproblemowe usunięcie członków puli zaplecza podczas planowanych aktualizacji usługi. To ustawienie jest włączane za pośrednictwem ustawienia http zaplecza i można je zastosować do wszystkich członków puli zaplecza podczas tworzenia reguły. Po włączeniu tego ustawienia usługa Application Gateway zapewnia, że żadne wyrejestrowane wystąpienia puli zaplecza nie otrzymują nowych żądań, ale jednocześnie umożliwia wykonanie istniejących żądań w ramach skonfigurowanego limitu czasu. Dotyczy to zarówno wystąpień zaplecza, które są jawnie usuwane z puli zaplecza przez wywołanie interfejsu API, jak i wystąpień zaplecza, które zostały zgłoszone jako niepoprawne według oceny sond kondycji.
+## <a name="static-vip"></a>Statyczny adres VIP
 
-## <a name="custom-error-pages"></a>Niestandardowe strony błędów
-Usługa Application Gateway umożliwia tworzenie niestandardowych stron błędów wyświetlanych zamiast domyślnych strony błędów. W przypadku niestandardowych stron błędów możesz użyć własnych oznakowań i układu.
-
-Aby uzyskać więcej informacji, zobacz [Create Application Gateway custom error pages (Tworzenie niestandardowych stron błędów w usłudze Application Gateway)](custom-error.md).
+Usługa application gateway adresów VIP na Standard_v2 lub WAF_v2 jednostki SKU, które wyłącznie obsługuje typu statycznego adresu VIP. Daje to gwarancję, że adres VIP skojarzony z usługą application gateway nie zmienia się nawet w okresie istnienia usługi Application Gateway.
 
 ## <a name="web-application-firewall"></a>Zapora aplikacji internetowej
 
@@ -92,9 +73,9 @@ Aby uzyskać więcej informacji, zobacz [wielu lokacjach hostingu z usługą App
 
 ## <a name="redirection"></a>Przekierowania
 
-Typowy scenariusz dla wielu aplikacji internetowych obejmuje obsługę automatycznego przekierowania protokołu HTTP do HTTPS, aby zagwarantować, że cała komunikacja między aplikacją a jej użytkownikami odbywa się za pośrednictwem ścieżki szyfrowanej. 
+Typowy scenariusz dla wielu aplikacji internetowych obejmuje obsługę automatycznego przekierowania protokołu HTTP do HTTPS, aby zagwarantować, że cała komunikacja między aplikacją a jej użytkownikami odbywa się za pośrednictwem ścieżki szyfrowanej.
 
-W przeszłości być może zdarzyło Ci się korzystać z technik takich jak tworzenie dedykowanej puli, której jedynym celem jest przekierowywanie żądań otrzymywanych przez nią w protokole HTTP do protokołu HTTPS. Usługa Application Gateway obsługuje możliwość przekierowywania ruchu sieciowego w tej usłudze. Upraszcza to konfigurację aplikacji, optymalizuje wykorzystanie zasobów i umożliwia obsługę nowych scenariuszy przekierowania, w tym przekierowania globalnego i opartego na ścieżce. Obsługa przekierowania w usłudze Application Gateway nie jest ograniczona tylko do przekierowania protokołu HTTP do protokołu HTTPS. Jest to ogólny mechanizm przekierowania, dzięki czemu możliwe jest przekierowanie z i do dowolnego portu zdefiniowanego przy użyciu reguł. Obsługiwane jest również przekierowanie do zewnętrznej witryny.
+W przeszłości mógł zostać użyty technik, takich jak tworzenie dedykowanej puli, którego jedynym celem jest Przekierowywanie żądań otrzymywanych od protokołu HTTP do HTTPS. Usługa Application Gateway obsługuje możliwość przekierowywania ruchu sieciowego w tej usłudze. Upraszcza to konfigurację aplikacji, optymalizuje wykorzystanie zasobów i umożliwia obsługę nowych scenariuszy przekierowania, w tym przekierowania globalnego i opartego na ścieżce. Obsługa przekierowania bramy aplikacji nie jest ograniczony do protokołu HTTP do przekierowania protokołu HTTPS samodzielnie. Jest to ogólny mechanizm przekierowania, dzięki czemu możliwe jest przekierowanie z i do dowolnego portu zdefiniowanego przy użyciu reguł. Obsługiwane jest również przekierowanie do zewnętrznej witryny.
 
 Obsługa przekierowania dla usługi Application Gateway oferuje następujące możliwości:
 
@@ -112,24 +93,43 @@ Funkcja koligacji sesji na podstawie plików cookie jest przydatna, gdy chcesz z
 
 Usługa Application Gateway zapewnia natywną obsługę protokołów WebSocket i HTTP/2. Nie ma żadnych ustawień konfigurowanych przez użytkownika umożliwiających selektywne włączenie lub wyłączenie obsługi protokołu WebSocket.
 
-Protokoły WebSocket i HTTP/2 umożliwiają pełnodupleksową komunikację między serwerem i klientem przez długotrwałe połączenie TCP. Pozwala to na bardziej interaktywną komunikację między serwerem internetowym a klientem, która może być dwukierunkowa bez konieczności sondowania, co jest wymagane w implementacjach opartych na protokole HTTP. Te protokoły mają niskie obciążenie, w odróżnieniu od protokołu HTTP, i mogą ponownie używać tego samego połączenia TCP dla wielu żądań/odpowiedzi, co zapewnia bardziej efektywne wykorzystanie zasobów. Te protokoły są przeznaczone do pracy z użyciem tradycyjnych portów HTTP, tj. 80 i 443.
+Protokoły WebSocket i HTTP/2 umożliwiają pełnodupleksową komunikację między serwerem i klientem przez długotrwałe połączenie TCP. Pozwala to na bardziej interaktywną komunikację między serwerem internetowym a klientem, która może być dwukierunkowa bez konieczności sondowania, co jest wymagane w implementacjach opartych na protokole HTTP. Te protokoły niski mają obciążenie, w odróżnieniu od protokołu HTTP i można ponownie użyć tego samego połączenia protokołu TCP dla wielu żądań/odpowiedzi skutkuje bardziej wydajne wykorzystanie zasobów. Te protokoły są przeznaczone do pracy z użyciem tradycyjnych portów HTTP, tj. 80 i 443.
 
-Aby uzyskać więcej informacji, zobacz [Obsługa protokołu WebSocket](https://docs.microsoft.com/azure/application-gateway/application-gateway-websocket) i [Obsługa protokołu HTTP/2](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http2-support). 
+Aby uzyskać więcej informacji, zobacz [Obsługa protokołu WebSocket](https://docs.microsoft.com/azure/application-gateway/application-gateway-websocket) i [Obsługa protokołu HTTP/2](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http2-support).
 
-## <a name="rewrite-http-headers-public-preview"></a>Ponowne zapisywanie nagłówków HTTP (publiczna wersja zapoznawcza)
+## <a name="azure-kubernetes-service-aks-ingress-controller-preview"></a>Kontroler ruchu przychodzącego w usłudze Azure Kubernetes Service (AKS) — wersja zapoznawcza 
+
+Kontroler ruchu przychodzącego w usłudze Application Gateway jest uruchamiany jako zasobnik w ramach klastra usługi AKS i umożliwia usłudze Application Gateway obsługę ruchu przychodzącego do klastra usługi AKS. Jest to obsługiwane za pomocą tylko v2 Application Gateway.
+
+Aby uzyskać więcej informacji, zobacz [Azure Application Gateway Ingress Controller (Kontroler ruchu przychodzącego w usłudze Azure Application Gateway)](https://azure.github.io/application-gateway-kubernetes-ingress/).
+
+## <a name="connection-draining"></a>Opróżnianie połączeń
+
+Opróżnianie połączeń umożliwia bezproblemowe usunięcie członków puli zaplecza podczas planowanych aktualizacji usługi. To ustawienie jest włączane za pośrednictwem ustawienia http zaplecza i można je zastosować do wszystkich członków puli zaplecza podczas tworzenia reguły. Po włączeniu usługa Application Gateway zapewnia, że wszystkie wystąpienia bez rejestrowania puli zaplecza nie otrzymują wszelkie nowe żądanie zezwalając istniejącymi żądaniami zakończyć w ciągu skonfigurowanego limitu czasu. Dotyczy to zarówno wystąpieniami zaplecza, które są jawnie usuwane z puli zaplecza przez wywołanie interfejsu API i wystąpieniami zaplecza, które są zgłaszane jako w złej kondycji zgodnie z ustaleniami sond kondycji.
+
+## <a name="custom-error-pages"></a>Niestandardowe strony błędów
+
+Usługa Application Gateway umożliwia tworzenie niestandardowych stron błędów wyświetlanych zamiast domyślnych strony błędów. W przypadku niestandardowych stron błędów możesz użyć własnych oznakowań i układu.
+
+Aby uzyskać więcej informacji, zobacz [nagłówków HTTP Nadpisz](rewrite-http-headers.md).
+
+## <a name="rewrite-http-headers"></a>Ponowne zapisywanie nagłówków HTTP
 
 Zezwalaj na nagłówki HTTP, klienta i serwera przekazać dodatkowe informacje z żądania lub odpowiedzi. Ponowne napisanie tych nagłówków HTTP pomaga osiągnąć kilku ważnych scenariuszy, takich jak:
+
 - Dodawanie pola nagłówka związanych z zabezpieczeniami, takich jak HSTS / X XSS ochrony.
 - Usuwanie pola nagłówka odpowiedzi, które może ujawnić poufne informacje.
 - Usuwanie z nagłówków X-Forwarded-Aby uzyskać informacje o porcie.
 
 Usługa Application Gateway obsługuje możliwość dodać, usunąć lub zaktualizować nagłówki żądania i odpowiedzi HTTP, gdy pakiety żądań i odpowiedzi, przenoszenie między klientem a pule zaplecza. On również zapewnia możliwość dodawania warunków, aby upewnić się, że określone nagłówki są przepisany tylko wtedy, gdy zostaną spełnione określone warunki.
 
-Aby uzyskać więcej informacji na temat tej funkcji w publicznej wersji zapoznawczej, zobacz artykuł [Ponowne zapisywanie nagłówków HTTP](rewrite-http-headers.md).
+Aby uzyskać więcej informacji, zobacz [nagłówków HTTP Nadpisz](rewrite-http-headers.md).
 
 ## <a name="sizing"></a>Ustalanie rozmiaru
 
-Usługa Application Gateway jest obecnie oferowana w trzech rozmiarach: małym (**Small**), średnim (**Medium**) i dużym (**Large**). Rozmiary małych wystąpień są przeznaczone na potrzeby programowania i scenariuszy testowania.
+Standard_v2 bramy aplikacji i jednostki SKU WAF_v2 można skonfigurować na potrzeby skalowania automatycznego lub ustalony rozmiar wdrożenia. Te jednostki SKU nie oferują rozmiary innego wystąpienia.
+
+Standardowa brama aplikacji i jednostki SKU zapory aplikacji sieci Web jest obecnie oferowana w trzech rozmiarach: małym (**Small**), średnim (**Medium**) i dużym (**Large**). Rozmiary małych wystąpień są przeznaczone na potrzeby programowania i scenariuszy testowania.
 
 Pełna lista limitów usługi Application Gateway znajduje się na stronie [ograniczeń usługi Application Gateway](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits).
 
@@ -147,6 +147,6 @@ W poniższej tabeli przedstawiono przepływność przy średniej wydajności dla
 
 W zależności od wymagań i środowiska możesz utworzyć testową usługę Application Gateway przy użyciu witryny Azure Portal, programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure:
 
-- [Szybki start: bezpośredni ruch internetowy w usłudze Azure Application Gateway — Azure Portal](quick-create-portal.md).
+- [Szybki start: Ruchem internetowym bezpośredniego przy użyciu usługi Azure Application Gateway — witryna Azure portal](quick-create-portal.md)
 - [Szybki start: bezpośredni ruch internetowy w usłudze Azure Application Gateway — Azure PowerShell](quick-create-powershell.md)
 - [Szybki start: bezpośredni ruch internetowy w usłudze Azure Application Gateway — interfejs wiersza polecenia platformy Azure](quick-create-cli.md)

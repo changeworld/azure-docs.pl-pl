@@ -16,12 +16,12 @@ ms.date: 5/4/2018
 ms.author: celested
 ms.reviewer: japere,asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 216568ac43c8e1b04c91d9a8f611a0ceb2e430af
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 92999f23b468c975d0f95f2628b9a5069d929031
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60294195"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64707323"
 ---
 # <a name="install-the-access-panel-browser-extension"></a>Zainstaluj rozszerzenie przeglądarki panelu dostępu
 
@@ -63,7 +63,8 @@ Aby zainstalować rozszerzenie przeglądarki panelu dostępu, wykonaj następuj�
 Możesz również pobrać rozszerzenie dla programu Chrome i Microsoft Edge bezpośrednio z następujących witryn:
 
 - [Rozszerzenie przeglądarki Chrome](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
-- [Rozszerzenia Microsoft Edge](https://www.microsoft.com/store/apps/9pc9sckkzk84) 
+- [Rozszerzenia Microsoft Edge](https://www.microsoft.com/store/apps/9pc9sckkzk84)
+- [Rozszerzenia programu Firefox](https://addons.mozilla.org/en-US/firefox/addon/access-panel-extension/)
 
 ## <a name="use-the-my-apps-secure-sign-in-extension"></a>Użyj mojej aplikacji bezpiecznego logowania rozszerzenia
 * Jeśli używasz Mój adres URL aplikacji innych niż `https://myapps.microsoft.com`, skonfigurować domyślny adres URL, wykonując następujące czynności:

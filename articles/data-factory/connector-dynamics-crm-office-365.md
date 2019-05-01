@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/28/2018
+ms.date: 04/26/2019
 ms.author: jingwang
-ms.openlocfilehash: 772b9b191a2e6464ff481ff6661308e00ef6033a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6a52749c78cd0f090e66220fe51e3d04985f96e7
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60535324"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869532"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Kopiowanie danych z i Dynamics 365 (Common Data Service) lub programu Dynamics CRM przy użyciu usługi Azure Data Factory
 
@@ -69,9 +69,6 @@ Następujące właściwości są obsługiwane w przypadku połączonej usługi D
 | password | Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 | connectVia | [Środowiska integration runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. | Nie dla źródła, tak ujścia Jeśli źródłem jest połączona usługa nie ma środowiska integration runtime |
 
->[!IMPORTANT]
->Po skopiowaniu danych do systemu Dynamics domyślnego środowiska Azure Integration Runtime nie może służyć do wykonywania kopii. Innymi słowy, jeśli połączona ze źródłem usługi nie ma określonego IR jawnie [utworzyć środowisko IR Azure](create-azure-integration-runtime.md#create-azure-ir) z lokalizacją w pobliżu wystąpienie usługi Dynamics. Dowiedz się, gdzie znajduje się wystąpienie usługi Dynamics, odwołując się do [listy regionów na Dynamics 365](https://docs.microsoft.com/dynamics365/customer-engagement/admin/datacenter/new-datacenter-regions). Skojarz go w połączonej usłudze Dynamics, jak w poniższym przykładzie.
-
 >[!NOTE]
 >Łącznik Dynamics, używany na potrzeby opcjonalne "nazwa_organizacji" właściwość identyfikuje Twoje wystąpienie usługi Dynamics CRM/365 Online. Gdy go nadal działa, są zalecane do określ nową właściwość "serviceUri" zamiast tego w celu uzyskania lepszej wydajności odnajdywania dla wystąpienia.
 
@@ -117,9 +114,6 @@ Następujące właściwości są obsługiwane w przypadku połączonej usługi D
 | password | Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. Można wybrać opcję Oznacz to pole jako SecureString bezpiecznie przechowywać w usłudze ADF lub przechowywać haseł w usłudze Azure Key Vault i umożliwić działanie kopiowania pobierania w tym miejscu podczas kopiowania danych — Dowiedz się więcej z [Store poświadczeń w usłudze Key Vault](store-credentials-in-key-vault.md). | Yes |
 | connectVia | [Środowiska integration runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. | Brak źródła tak dla ujścia |
 
->[!IMPORTANT]
->Aby skopiować dane do systemu Dynamics, jawnie [utworzyć środowisko IR Azure](create-azure-integration-runtime.md#create-azure-ir) z lokalizacji, w pobliżu wystąpienie usługi Dynamics. Skojarz go w połączonej usłudze, jak w poniższym przykładzie.
-
 **Przykład: Dynamics lokalnie przy użyciu IFD przy użyciu uwierzytelniania IFD**
 
 ```json
@@ -160,8 +154,8 @@ Aby skopiować dane z i do usługi Dynamics, należy ustawić właściwość typ
 | entityName | Nazwa logicznej jednostki do pobrania. | Nie dla źródła (Jeśli określono parametr "zapytanie" w źródle działania) tak dla ujścia |
 
 > [!IMPORTANT]
->- Podczas kopiowania danych z systemu Dynamics, w sekcji "strukturę" jest opcjonalne, ale recommanded w zestawie danych Dynamics, aby upewnić się, wynik deterministyczne kopiowania. Definiuje typ danych kolumny danych Dynamics, który chcesz skopiować. Aby dowiedzieć się więcej, zobacz [struktury zestawu danych](concepts-datasets-linked-services.md#dataset-structure) i [mapowanie typu danych dla usługi Dynamics](#data-type-mapping-for-dynamics).
->- Podczas importowania schematu w tworzeniu interfejsu użytkownika, ADF wnioskowanie schematu przez próbkowanie pierwszych wierszy z wyników kwerendy Dynamics zainicjować konstrukcji struktury, pominąć przypadków kolumn bez wartości. Możesz przejrzeć i dodać większą liczbę kolumn w Dynamics zestawu danych schematu/strukturę zgodnie z potrzebami, które będą honorowane w czasie wykonywania kopii.
+>- Podczas kopiowania danych z systemu Dynamics, w sekcji "strukturę" jest opcjonalne, ale zdecydowanie recommanded w zestawie danych Dynamics, aby upewnić się, wynik deterministyczne kopiowania. Definiuje typ danych kolumny danych Dynamics, który chcesz skopiować. Aby dowiedzieć się więcej, zobacz [struktury zestawu danych](concepts-datasets-linked-services.md#dataset-structure-or-schema) i [mapowanie typu danych dla usługi Dynamics](#data-type-mapping-for-dynamics).
+>- Podczas importowania schematu w tworzeniu interfejsu użytkownika, ADF wnioskowanie schematu przez próbkowanie pierwszych wierszy z wyników kwerendy Dynamics zainicjować konstrukcji struktury, pominąć przypadków kolumn bez wartości. Takie samo zachowanie ma zastosowanie do skopiowania wykonania, jeśli brak definicji struktury jawnej. Możesz przejrzeć i dodać większą liczbę kolumn w Dynamics zestawu danych schematu/strukturę zgodnie z potrzebami, które będą honorowane w czasie wykonywania kopii.
 >- Podczas kopiowania danych do usługi Dynamics, w sekcji "strukturę" jest opcjonalna w zestawie danych Dynamics. Kolumny do skopiowania do jest określany przez schemat danych źródłowych. Jeśli źródłem jest plik CSV, bez nagłówka w wejściowego zestawu danych, należy określić "strukturę" z typem danych kolumny. Mapują do pól w pliku CSV pojedynczo, w kolejności.
 
 **Przykład:**
@@ -330,7 +324,7 @@ Skonfiguruj odpowiedni typ danych Data Factory w strukturze zestawu danych, na p
 |:--- |:--- |:--- |:--- |
 | AttributeTypeCode.BigInt | Długie | ✓ | ✓ |
 | AttributeTypeCode.Boolean | Boolean | ✓ | ✓ |
-| AttributeType.Customer | Guid | ✓ | | 
+| AttributeType.Customer | Guid | ✓ | |
 | AttributeType.DateTime | DateTime | ✓ | ✓ |
 | AttributeType.Decimal | Decimal | ✓ | ✓ |
 | AttributeType.Double | Double | ✓ | ✓ |

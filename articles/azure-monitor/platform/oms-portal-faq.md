@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
-ms.openlocfilehash: 8947d235894ffc021243a64244b4904c5ca7f128
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b353e3c0ed14c7ae42e6b1f2c8a92904bf0befd7
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60453184"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64916293"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>Często zadawane pytania dotyczące przejścia z portalu pakietu OMS do witryny Azure portal dla użytkowników usługi Log Analytics
 Usługi log Analytics swój własny portal o nazwie portalu pakietu OMS początkowo użyty do zarządzania jej konfiguracji i analizowania zebranych danych.  Wszystkie funkcje z tego portalu został przeniesiony do witryny Azure portal gdzie będą opracowywane.
@@ -97,9 +97,9 @@ Większość ustawień danych zarządzania w **Zaawansowane ustawienia** menu dl
 | Dzienniki niestandardowe                  | **Zaawansowane ustawienia** menu dla obszaru roboczego. |
 | Dziennik systemu                       | **Zaawansowane ustawienia** menu dla obszaru roboczego. |
 | Application Insights         | To rozwiązanie jest przestarzała, skoro usługa Log Analytics i usługi Application Insights udostępnianie tego samego silnika danych.  |
-| Śledzenie plików systemu Windows        | **Śledzenie zmian** menu w usłudze Azure Automation. Zobacz [śledzenia zmian w środowisku przy użyciu rozwiązania Change Tracking](../../automation/automation-change-tracking.md) Aby uzyskać szczegółowe informacje. |
-| Śledzenie rejestru systemu Windows        | **Śledzenie zmian** menu w usłudze Azure Automation. Zobacz [śledzenia zmian w środowisku przy użyciu rozwiązania Change Tracking](../../automation/automation-change-tracking.md) Aby uzyskać szczegółowe informacje. |
-| Śledzenie plików w systemie Linux          | **Śledzenie zmian** menu w usłudze Azure Automation. Zobacz [śledzenia zmian w środowisku przy użyciu rozwiązania Change Tracking](../../automation/automation-change-tracking.md) Aby uzyskać szczegółowe informacje. |
+| Śledzenie plików systemu Windows        | **Śledzenie zmian** menu w usłudze Azure Automation. Zobacz [śledzenia zmian w środowisku przy użyciu rozwiązania Change Tracking](../../automation/change-tracking.md) Aby uzyskać szczegółowe informacje. |
+| Śledzenie rejestru systemu Windows        | **Śledzenie zmian** menu w usłudze Azure Automation. Zobacz [śledzenia zmian w środowisku przy użyciu rozwiązania Change Tracking](../../automation/change-tracking.md) Aby uzyskać szczegółowe informacje. |
+| Śledzenie plików w systemie Linux          | **Śledzenie zmian** menu w usłudze Azure Automation. Zobacz [śledzenia zmian w środowisku przy użyciu rozwiązania Change Tracking](../../automation/change-tracking.md) Aby uzyskać szczegółowe informacje. |
 
 ### <a name="solutions"></a>Rozwiązania
 Zarządzanie rozwiązaniami w **rozwiązania** menu dla obszaru roboczego. 

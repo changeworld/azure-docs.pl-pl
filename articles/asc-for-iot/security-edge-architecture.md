@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
-ms.openlocfilehash: c6ac3d9dbbb16caed51243fea852adea541b9f04
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a71a0cd5888cec5c3af0e2853edf5a7f014939b4
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60505410"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919924"
 ---
 # <a name="azure-iot-edge-security-module"></a>Moduł zabezpieczeń w usłudze Azure IoT Edge
 
@@ -27,7 +27,7 @@ ms.locfileid: "60505410"
 > Centrum zabezpieczeń Azure dla IoT jest obecnie w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza jest dostarczane bez umowy dotyczącej poziomu usług, a nie jest zalecana dla produkcyjnego worklo§1ads. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-[Usługa Azure IoT Edge](https://docs.microsoft.com/en-us/azure/iot-edge/) zapewnia zaawansowane możliwości zarządzania i wykonać biznesowe przepływy pracy na urządzeniach brzegowych.
+[Usługa Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/) zapewnia zaawansowane możliwości zarządzania i wykonać biznesowe przepływy pracy na urządzeniach brzegowych.
 Kluczowym elementem, IoT Edge jest odtwarzany w środowiskach IoT ułatwiają szczególnie atrakcyjne dla uczestników złośliwych działań.
 
 Usługa Azure Security Center (ASC) dla modułu zabezpieczeń IoT zapewnia rozwiązanie kompleksowych funkcji zabezpieczeń dla usługi IoT Edge urządzenia.
@@ -44,7 +44,7 @@ ASC modułu zabezpieczeń IoT, IoT Edge zapewnia następujące funkcje:
 
 - Analiza manifesty wdrożenia usługi IoT Edge.
 
-- Zdarzenia zabezpieczeń pierwotne są agregowane we wiadomości wysłane za pośrednictwem [usługi IoT Edge Hub](https://docs.microsoft.com/en-us/azure/iot-edge/iot-edge-runtime#iot-edge-hub).
+- Zdarzenia zabezpieczeń pierwotne są agregowane we wiadomości wysłane za pośrednictwem [usługi IoT Edge Hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub).
 
 - Usuń konfigurację za pośrednictwem bliźniaczą reprezentację modułu zabezpieczeń.
 

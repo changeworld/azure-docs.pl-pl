@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: 2f27105aed940f0411abaa534cb09adf0be34bfe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: a16421182f533f5aa2ad4bcc2e58e910cc7e8ca6
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60830337"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64702408"
 ---
 # <a name="how-an-application-gateway-works"></a>Jak działa bramy aplikacji
 
@@ -26,7 +26,7 @@ W tym artykule wyjaśniono, jak usługa application gateway akceptuje żądania 
 
 2. System DNS Azure zwracany jest adres IP klienta, czyli adresu IP frontonu bramy aplikacji.
 
-3. Application gateway akceptuje ruch przychodzący na co najmniej jednego odbiornika. Odbiornik jest logicznej jednostki, która sprawdza, czy żądania połączenia. Jest ona skonfigurowana z fronted adresu IP, protokół i numer portu dla połączenia od klientów do usługi application gateway.
+3. Application gateway akceptuje ruch przychodzący na co najmniej jednego odbiornika. Odbiornik jest logicznej jednostki, która sprawdza, czy żądania połączenia. Jest ona skonfigurowana przy użyciu adresu IP frontonu, protokół i numer portu dla połączenia od klientów do usługi application gateway.
 
 4. Jeśli zapory aplikacji sieci web (WAF) jest używany, bramy application gateway sprawdza nagłówki żądania i treści, jeśli jest obecny, względem reguły zapory aplikacji sieci Web. Ta akcja określa, czy żądanie jest prawidłowym żądaniem lub zagrożenie bezpieczeństwa. Jeśli żądanie jest prawidłowe, odbywa się do wewnętrznej bazy danych. Jeśli żądanie nie jest prawidłowy, jest zablokowany jako zagrożenie bezpieczeństwa.
 

@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 04/24/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 6d1ce56ef66d224b89f49a00c2883ebbf22a5745
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: e1f94b7b2ab71afaa40831446e5e5aede00db7b1
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60365064"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64570853"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>Utworzyć i zmodyfikować komunikację równorzędną dla obwodu usługi ExpressRoute
 
@@ -91,7 +91,7 @@ Ta sekcja ułatwia tworzenie, pobieranie, aktualizacji i usuwania konfiguracji k
 
 ### <a name="getmsft"></a>Aby wyświetlić szczegóły dotyczące komunikacji równorzędnej firmy Microsoft
 
-Możesz wyświetlić właściwości publicznej komunikacji równorzędnej Azure, wybierając ją.
+Można wyświetlić właściwości komunikacji równorzędnej, wybierając komunikacji równorzędnej firmy Microsoft.
 
 ![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft3.png)
 
@@ -159,6 +159,10 @@ Możesz usunąć konfigurację komunikacji równorzędnej, wybierając ikonę us
 ## <a name="public"></a>Publicznej komunikacji równorzędnej Azure
 
 Ta sekcja ułatwia tworzenie, pobieranie, aktualizowanie i usuwanie publicznej komunikacji równorzędnej konfiguracji Azure dla obwodu usługi ExpressRoute.
+
+> [!Note]
+> Publicznej komunikacji równorzędnej Azure jest przestarzała w przypadku obwodów. Aby uzyskać więcej informacji, zobacz [komunikacji równorzędnej usługi ExpressRoute](expressroute-circuit-peerings.md).
+>
 
 ### <a name="to-create-azure-public-peering"></a>Aby utworzyć publiczną komunikację równorzędną Azure
 

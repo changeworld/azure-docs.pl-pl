@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 3/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 03871c3f3627e85cc2af2f05a5fba38bd8069a15
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: f9663fb502d9eda4810c54a89a94481b7d00cd43
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61481189"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926064"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Zrozumieć dane wyjściowe z usługi Azure Stream Analytics
 W tym artykule opisano typy danych wyjściowych jest dostępny dla zadania usługi Azure Stream Analytics. Dane wyjściowe pozwalają na przechowywanie i zapisać wyniki zadania usługi Stream Analytics. Korzystając z danych wyjściowych, możesz zrobić dalszych analiz biznesowych i danych magazynu danych.
@@ -182,7 +182,7 @@ Usługa Power BI używa pierwszego in, first-out (FIFO) zasad przechowywania. Da
 ### <a name="convert-a-data-type-from-stream-analytics-to-power-bi"></a>Konwersję typu danych z usługi Stream Analytics w usłudze Power BI
 Usługa Azure Stream Analytics aktualizacji modelu danych dynamicznie w czasie wykonywania, jeśli zmieni się schemat danych wyjściowych. Zmiany nazw kolumn, zmiana typu kolumny oraz dodawanie i usuwanie kolumn są wszystkie śledzone.
 
-W tej tabeli opisano konwersje typów danych z [typów danych usługi Stream Analytics](https://msdn.microsoft.com/library/azure/dn835065.aspx) do usługi Power BI [typy Entity Data Model (EDM) struktury](https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/entity-data-model), jeśli zestaw danych usługi Power BI i tabela nie istnieje.
+W tej tabeli opisano konwersje typów danych z [typów danych usługi Stream Analytics](https://msdn.microsoft.com/library/azure/dn835065.aspx) do usługi Power BI [typy Entity Data Model (EDM) struktury](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model), jeśli zestaw danych usługi Power BI i tabela nie istnieje.
 
 Z usługi Stream Analytics | To Power BI
 -----|-----

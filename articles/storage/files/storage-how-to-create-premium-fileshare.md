@@ -1,6 +1,6 @@
 ---
-title: Tworzenie konta magazynu plików Azure w warstwie premium
-description: W tym artykule dowiesz się, jak utworzyć konto magazynu plików Azure w warstwie premium i premium udziału plików.
+title: Tworzenie konta usługi storage Azure filestorage
+description: W tym artykule dowiesz się, jak utworzyć filestorage (wersja zapoznawcza) i udział plików w warstwie premium.
 services: storage
 author: roygara
 ms.service: storage
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 72dec14dde47580313e57bb3b8d7315604929277
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 0eca706c9082b1fa60e13a0878fbb3061425c9bf
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60844548"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574415"
 ---
 # <a name="how-to-create-an-azure-premium-file-share"></a>Jak utworzyć udział plików platformy Azure — wersja premium
 
-Typ konta magazynu FileStorage (wersja zapoznawcza) stanowi nową warstwę dla usługi Azure Files, co pozwala na tworzenie udziałów plików za pomocą charakterystyki wydajności premium. Te udziały plików są przeznaczone do wysokiej wydajności i aplikacji w skali przedsiębiorstwa, zapewniając niskie opóźnienia, wysoka operacje We/Wy i wysoką przepływność akcji.
+Typ konta magazynu filestorage (wersja zapoznawcza) stanowi nową warstwę dla usługi Azure Files, co pozwala na tworzenie udziałów plików za pomocą charakterystyki wydajności premium. Te udziały plików są przeznaczone do wysokiej wydajności i aplikacji w skali przedsiębiorstwa, zapewniając niskie opóźnienia, wysoka operacje We/Wy i wysoką przepływność akcji.
 
 W tym artykule dowiesz się, jak utworzyć tego nowego konta typu przy użyciu [witryny Azure portal](https://portal.azure.com/), programu Azure PowerShell i wiersza polecenia platformy Azure.
 
@@ -31,7 +31,7 @@ Aby uzyskać dostęp do usługi Azure Storage, potrzebujesz subskrypcji platform
 
 Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
-### <a name="create-a-filestorage-preview-storage-account"></a>Utwórz konto magazynu FileStorage (wersja zapoznawcza)
+### <a name="create-a-filestorage-preview-storage-account"></a>Utwórz konto magazynu filestorage (wersja zapoznawcza)
 
 Teraz możesz przystąpić do tworzenia konta magazynu.
 
@@ -115,7 +115,7 @@ New-AzResourceGroup -Name $resourceGroup -Location $location
 
 ### <a name="create-a-filestorage-preview-storage-account"></a>Utwórz konto magazynu filestorage (wersja zapoznawcza)
 
-Aby utworzyć konto magazynu FileStorage (wersja zapoznawcza) za pomocą programu PowerShell, użyj [New AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) polecenia:
+Aby utworzyć konto magazynu filestorage (wersja zapoznawcza) za pomocą programu PowerShell, użyj [New AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) polecenia:
 
 ```powershell
 $storageAcct = New-AzStorageAccount -ResourceGroupName $resourceGroup -Name "fileshowto" -SkuName "Premium_LRS" -Location "westus2" -Kind "FileStorage"
@@ -123,7 +123,7 @@ $storageAcct = New-AzStorageAccount -ResourceGroupName $resourceGroup -Name "fil
 
 ### <a name="create-a-premium-file-share"></a>Tworzenie udziału plików w warstwie Premium
 
-Teraz, gdy masz konto FileStorage, można utworzyć udziału plików — wersja premium. Użyj [New AzStorageShare](/powershell/module/az.storage/New-AzStorageShare) polecenia cmdlet, aby go utworzyć.
+Teraz, gdy masz konto filestorage, można utworzyć udziału plików — wersja premium. Użyj [New AzStorageShare](/powershell/module/az.storage/New-AzStorageShare) polecenia cmdlet, aby go utworzyć.
 
 > [!NOTE]
 > Rozmiary elastycznie udziału jest określona przez przydziału udziału udziały plików są rozliczane w systemie zarezerwowany rozmiar, zapoznaj się [stronę z cennikiem](https://azure.microsoft.com/pricing/details/storage/files/) Aby uzyskać więcej informacji.
@@ -168,9 +168,9 @@ az group create `
     --location westus2
 ```
 
-### <a name="create-a-filestorage-preview-storage-account"></a>Utwórz konto magazynu FileStorage (wersja zapoznawcza)
+### <a name="create-a-filestorage-preview-storage-account"></a>Utwórz konto magazynu filestorage (wersja zapoznawcza)
 
-Aby utworzyć konto magazynu FileStorage (wersja zapoznawcza) z wiersza polecenia platformy Azure, użyj [Tworzenie konta magazynu az](/cli/azure/storage/account) polecenia.
+Aby utworzyć konto magazynu filestorage (wersja zapoznawcza) z wiersza polecenia platformy Azure, użyj [Tworzenie konta magazynu az](/cli/azure/storage/account) polecenia.
 
 ```azurecli-interactive
 az storage account create `
@@ -194,7 +194,7 @@ STORAGEKEY=$(az storage account keys list \
 
 ### <a name="create-a-premium-file-share"></a>Tworzenie udziału plików w warstwie Premium
 
-Teraz, gdy masz konto FileStorage, można utworzyć udziału plików — wersja premium. Użyj [Utwórz udział magazynu az](/cli/azure/storage/share) polecenie, aby go utworzyć.
+Teraz, gdy masz konto filestorage, można utworzyć udziału plików — wersja premium. Użyj [Utwórz udział magazynu az](/cli/azure/storage/share) polecenie, aby go utworzyć.
 
 > [!NOTE]
 > Rozmiary elastycznie udziału jest określona przez przydziału udziału udziały plików są rozliczane w systemie zarezerwowany rozmiar, zapoznaj się [stronę z cennikiem](https://azure.microsoft.com/pricing/details/storage/files/) Aby uzyskać więcej informacji.

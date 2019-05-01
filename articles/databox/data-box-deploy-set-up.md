@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie urządzenia Azure Data Box | Microsoft Docs
+title: Samouczek, aby skonfigurować urządzenia Azure Data Box | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak podłączyć kable do urządzenia Azure Data Box i nawiązać z nim połączenie
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 02/08/2019
 ms.author: alkohli
-ms.openlocfilehash: b601ad5936820e2c237b7b9d37d9af73aa468bbc
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 2da6bf971cc966e27fac46546bfd4e3dcac6d12f
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62123301"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926159"
 ---
 # <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>Samouczek: Podłączanie kabli do urządzenia Azure Data Box i nawiązywanie z nim połączenia
 
@@ -40,7 +40,7 @@ Przed rozpoczęciem upewnij się, że:
     - Połączenie z siecią o dużej szybkości. Zdecydowanie zaleca się posiadanie co najmniej jednego połączenia 10 GbE. Jeśli połączenie 10 GbE nie jest dostępne, można użyć połączenia danych 1 GbE, ale będzie miało to wpływ na szybkość kopiowania. 
 6. Należy mieć dostęp do płaskiej powierzchni, na której można umieścić urządzenie Data Box. Jeśli chcesz umieścić urządzenie na standardowej półce na stojaku, na stojaku centrum danych potrzebne jest gniazdo 7U. Urządzenie możesz umieścić na stojaku płasko lub pionowo.
 7. Należy zapewnić następujące kable w celu podłączenia urządzenia Data Box do komputera hosta.
-    - Co najmniej jeden kabel miedziany SFP+ Twinax 10 GbE lub kable światłowodowe SFP+ (do użytku z interfejsami sieciowymi DATA 1 i DATA 2). Urządzenie Data Box jest wyposażone w karty Mellanox ConnectX®-3 Pro EN Dual-Port 10GBASE-T z interfejsem sieciowym PCI Express 3.0, więc kable, które są zgodne z tym interfejsem, powinny działać. Na przykład do testowania użyto kabla CISCO SFP-H10GB-CU3M 10GBASE-CU TWINMAX SFP +3M. Aby uzyskać więcej informacji, zobacz [listę obsługiwanych kabli i przełączników z Mellanox](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf).
+    - Co najmniej jeden kabel miedziany SFP+ Twinax 10 GbE lub kable światłowodowe SFP+ (do użytku z interfejsami sieciowymi DATA 1 i DATA 2). Urządzenie Data Box jest wyposażone w karty Mellanox ConnectX®-3 Pro EN Dual-Port 10GBASE-T z interfejsem sieciowym PCI Express 3.0, więc kable, które są zgodne z tym interfejsem, powinny działać. Na przykład CISCO SFP-H10GB-CU3M 10GBASE CU TWINMAX SFP + 3 M kabel został użyty do testowania w firmie. Aby uzyskać więcej informacji, zobacz [listę obsługiwanych kabli i przełączników z Mellanox](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf).
     - Jeden kabel sieciowy RJ-45 CAT 6 (do użytku z interfejsem sieciowym MGMT)
     - Jeden kabel sieciowy RJ-45 CAT 6A lub RJ-45 CAT 6 (do użytku z interfejsem sieciowym DATA 3 skonfigurowanym odpowiednio dla przepływności 10 GB/s lub 1 GB/s)
 

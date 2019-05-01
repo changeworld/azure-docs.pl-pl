@@ -11,17 +11,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 04/18/2019
-ms.openlocfilehash: 471ded9cd94623929630155f1a3c613bf00576a8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 04/26/2019
+ms.openlocfilehash: 4288eb7d051c44149a6f1970430dc8c409ca957d
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60331846"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572868"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Skalowanie pojedynczej bazy danych zasobów w usłudze Azure SQL Database
 
-W tym artykule opisano, jak skalować zasoby obliczeniowe i magazynowe, które muszą być dostępne dla pojedynczej bazy danych w usłudze Azure SQL Database.
+W tym artykule opisano, jak skalować zasoby obliczeniowe i magazynowe, które muszą być dostępne dla pojedynczej bazy danych w warstwie zainicjowanych zasobów obliczeniowych. 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
@@ -69,7 +69,7 @@ Czas oczekiwania, aby zmienić warstwę usługi lub zmienić rozmiar obliczeń p
 
 ### <a name="cancelling-service-tier-changes-or-compute-rescaling-operations"></a>Anulowanie zmiany warstwy usługi lub obliczeń podczas ponownego skalowania operacji
 
-Warstwy usług, zmienić lub obliczeń podczas ponownego skalowania operacji można anulować.
+Warstwy usług, zmienić lub obliczeniowe mogą zostać anulowane podczas ponownego skalowania operacji.
 
 #### <a name="azure-portal"></a>Azure Portal
 

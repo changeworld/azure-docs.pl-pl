@@ -2,19 +2,19 @@
 title: Ustawianie uprawnień dla usługi Data Lake Storage Gen2 za pomocą Eksploratora usługi Azure Storage
 description: Z tego artykułu z instrukcjami dowiesz się, jak za pomocą Eksploratora usługi Azure Storage skonfigurować uprawnienia do plików i katalogów na koncie magazynu obsługującego usługę Azure Data Lake Storage Gen2.
 services: storage
-author: roygara
+author: normesta
 ms.custom: mvc
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
 ms.date: 12/11/2018
-ms.author: rogarana
-ms.openlocfilehash: f2569b29ab6124f1cfa22fa745d45082c213a6be
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: normesta
+ms.openlocfilehash: 5f0211765c96cad668abaad7d42da87ec88298c3
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60627901"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939305"
 ---
 # <a name="set-file-and-directory-level-permissions-using-azure-storage-explorer-with-azure-data-lake-storage-gen2"></a>Ustawianie uprawnień na poziomie plików i katalogów przy użyciu Eksploratora usługi Azure Storage w usłudze Azure Data Lake Storage Gen2
 

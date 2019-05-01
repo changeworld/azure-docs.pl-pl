@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a945316df27460fef48a8bb4d43e46d412d2ae81
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 080a37a88e46117a9963f07c14d64f00c6bae6d5
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60359232"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64570476"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrowanie istniejącej infrastruktury NPS przy użyciu usługi Azure Multi-Factor Authentication
 
@@ -183,6 +183,8 @@ Jeśli nie chcesz używać certyfikatów (zamiast certyfikatów z podpisem włas
 6. Po zakończeniu działania skryptu, PowerShell wyświetla komunikat o powodzeniu.  
 
 Powtórz te kroki dla pozostałych serwerów zasad Sieciowych, które chcesz skonfigurować Równoważenie obciążenia sieciowego.
+
+Jeśli wygasł poprzedniego certyfikat komputera, a nowy certyfikat został wygenerowany, należy usunąć wszelkie wygasłych certyfikatów. Posiadanie wygasłych certyfikatów może spowodować problemy z rozszerzeniem serwera NPS, uruchamianie.
 
 > [!NOTE]
 > Jeśli używasz własnych certyfikatów zamiast generowania certyfikatów za pomocą skryptu programu PowerShell, upewnij się, zostaną wyrównane do konwencji nazewnictwa serwera NPS. Nazwa podmiotu musi być **CN =\<TenantID\>, OU = rozszerzenia serwera NPS Microsoft**. 

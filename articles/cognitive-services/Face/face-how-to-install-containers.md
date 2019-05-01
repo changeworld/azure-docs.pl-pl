@@ -11,12 +11,12 @@ ms.subservice: face-api
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: diberry
-ms.openlocfilehash: 5028a05fe74f1d19ed5e43ac797df87bbe3382e8
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: a3087718a3eece1e19f05757ace64ba00aa0dc58
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680727"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64682684"
 ---
 # <a name="install-and-run-face-containers"></a>Instalowanie i uruchamianie kontenerów twarzy
 
@@ -34,10 +34,9 @@ Przed rozpoczęciem korzystania z interfejsu API rozpoznawania twarzy, kontenery
 |Znajomość platformy Docker | Należy mieć podstawową wiedzę na temat pojęć usługi Docker, takich jak rejestry, repozytoria, kontenery i obrazów kontenerów, a także wiedzę na temat basic `docker` poleceń.| 
 |Azure `Cognitive Services` zasobów |Aby można było używać kontenera, musisz mieć:<br><br>A _usług Cognitive Services_ zasobów platformy Azure i skojarzone opłaty klucz rozliczeń identyfikator URI punktu końcowego. Obie wartości są dostępne na stronach przeglądu i klucze zasobu i wymagane do uruchomienia kontenera. Musisz dodać `face/v1.0` routingu do identyfikator URI punktu końcowego, jak pokazano w poniższym przykładzie BILLING_ENDPOINT_URI. <br><br>**{BILLING_KEY}** : klucz zasobu<br><br>**{BILLING_ENDPOINT_URI}** : przykład identyfikatora URI punktu końcowego: `https://westus.api.cognitive.microsoft.com/face/v1.0`|
 
-
 ## <a name="request-access-to-the-private-container-registry"></a>Poproś o dostęp do prywatnego rejestru kontenerów
 
-[!INCLUDE [Request access to private preview](../../../includes/cognitive-services-containers-request-access.md)]
+[!INCLUDE [Request access to private container registry](../../../includes/cognitive-services-containers-request-access.md)]
 
 ### <a name="the-host-computer"></a>Komputer-host
 
@@ -162,5 +161,4 @@ W tym artykule przedstawiono pojęcia i przepływ pracy na potrzeby pobierania, 
 * Przegląd [skonfigurować kontenery](face-resource-container-config.md) ustawień konfiguracji
 * Przegląd [Przegląd twarzy](Overview.md) Aby dowiedzieć się więcej na temat wykrywania i identyfikacji twarzy  
 * Zapoznaj się [interfejsu API rozpoznawania twarzy](//westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) szczegółowe informacje na temat metod obsługiwanych przez kontener.
-* Zapoznaj się [— często zadawane pytania (FAQ)](FAQ.md) Aby rozwiązać problemy związane z funkcji rozpoznawania twarzy.
 * Użycie [kontenerów usługi Cognitive Services](../cognitive-services-container-support.md)

@@ -1,6 +1,6 @@
 ---
 title: Usługa Azure Service Bus — często zadawane pytania (FAQ) | Dokumentacja firmy Microsoft
-description: Odpowiedzi na często zadawane pytania dotyczące usługi Azure Service Bus.
+description: Odpowiedzi na niektóre często zadawane pytania dotyczące usługi Azure Service Bus.
 services: service-bus-messaging
 author: axisc
 manager: timlt
@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 41a5f08be833d1235146d6e748580751af2c9d73
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 8461764a3f1f682ffb97420a4efdf2803f518872
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60311033"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64707137"
 ---
 # <a name="service-bus-faq"></a>Service Bus — często zadawane pytania
 
@@ -41,6 +41,48 @@ Konwencjonalne kolejki lub tematu są obsługiwane przez brokera pojedynczy komu
 Kolejność nie jest zapewnione przy użyciu partycjonowane jednostki. W przypadku, gdy partycja jest niedostępny, nadal można wysyłać i odbierać komunikaty z innych partycji.
 
  Partycjonowane jednostki nie są już obsługiwane w [jednostki SKU Premium](service-bus-premium-messaging.md). 
+
+### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Które porty należy otworzyć w zaporze? 
+Następujące protokoły za pomocą usługi Azure Service Bus umożliwia wysyłanie i odbieranie wiadomości:
+
+- Advanced Message Queuing Protocol (AMQP)
+- Protokół (SBMP) komunikatów usługi Service Bus
+- HTTP
+
+Zobacz poniższą tabelę dla portów wychodzących, które należy otworzyć, aby używać tych protokołów do komunikacji z usługą Azure Event Hubs. 
+
+| Protokół | Porty | Szczegóły | 
+| -------- | ----- | ------- | 
+| AMQP | 5671 i 5672 | Zobacz [przewodnik dotyczący protokołu AMQP](service-bus-amqp-protocol-guide.md) | 
+| SBMP | 9350 do 9354. | Zobacz [tryb łączności](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet) |
+| HTTP, HTTPS | 80, 443 | 
+
+### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>Jakie adresy IP należy do listy dozwolonych?
+Aby znaleźć odpowiednie adresy IP w celu białą listę połączeń, wykonaj następujące kroki:
+
+1. Uruchom następujące polecenie w wierszu polecenia: 
+
+    ```
+    nslookup <YourNamespaceName>.servicebus.windows.net
+    ```
+2. Zanotuj adres IP zwrócony `Non-authoritative answer`. Ten adres IP jest statyczne. Tylko punkt, w czasie, które go zmienić jest, jeśli można przywrócić przestrzeni nazw do innego klastra.
+
+Jeśli używasz nadmiarowości strefy dla swojego obszaru nazw, należy wykonać kilka dodatkowych kroków: 
+
+1. Najpierw uruchom narzędzie nslookup w przestrzeni nazw.
+
+    ```
+    nslookup <yournamespace>.servicebus.windows.net
+    ```
+2. Zanotuj nazwę w **nieautorytatywnej odpowiedzi** sekcji, która znajduje się w jednej z następujących formatów: 
+
+    ```
+    <name>-s1.servicebus.windows.net
+    <name>-s2.servicebus.windows.net
+    <name>-s3.servicebus.windows.net
+    ```
+3. Uruchom narzędzie nslookup dla każdego z nich przy użyciu sufiksy s1, s2 i s3 w celu uzyskania adresów IP wszystkich trzech wystąpień w trzech strefach dostępności 
+
 
 ## <a name="best-practices"></a>Najlepsze praktyki
 ### <a name="what-are-some-azure-service-bus-best-practices"></a>Jakie są najlepsze rozwiązania usługi Azure Service Bus?

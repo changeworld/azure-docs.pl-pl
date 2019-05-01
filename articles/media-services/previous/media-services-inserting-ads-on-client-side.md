@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 8b0f5cdcf5a24513b89a2523be71dd74a1a2859b
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 8f5cdc33e48d647dba8caeb09b57e233d64712f6
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58484835"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64687742"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>Wstawianie reklam po stronie klienta
 Ten artykuł zawiera informacje na temat sposobu Wstaw różnego rodzaju reklam po stronie klienta.
@@ -170,7 +170,7 @@ Application/x-shockwave-flash — zasób jest wyświetlany w odtwarzaczu Flash.
 
 **IFrameResource** opisuje zasobu HTML, która może być wyświetlana w ramce IFrame. **HTMLResource** opisuje fragment kodu HTML, które mogą być wstawiane do strony sieci web. **TrackingEvents** Określ zdarzenia śledzenia i identyfikatora URI żądania po wystąpieniu zdarzenia. W tym przykładzie acceptInvitation i Zwiń zdarzeń są śledzone. Aby uzyskać więcej informacji na temat **NonLinearAds** elementu i jego elementy podrzędne, zobacz IAB.NET/VAST. Należy pamiętać, że **TrackingEvents** element znajduje się w obrębie **NonLinearAds** elementu zamiast **NonLinear** elementu.
 
-Pomocnik reklam są zdefiniowane w ramach `<CompanionAds>` elementu. `<CompanionAds>` Element może zawierać jeden lub więcej `<Companion>` elementów. Każdy `<Companion>` element w tym artykule opisano ad pomocnika i może zawierać `<StaticResource>`, `<IFrameResource>`, lub `<HTMLResource>` określone w taki sam sposób jak nieliniowych ad. OGROMNA plik może zawierać wiele reklam pomocnika, a aplikacja odtwarzacza można wybrać najbardziej odpowiedni ad, aby wyświetlić. Aby uzyskać więcej informacji na temat VAST zobacz [OGROMNA 3.0](http://www.iab.net/media/file/VASTv3.0.pdf).
+Pomocnik reklam są zdefiniowane w ramach `<CompanionAds>` elementu. `<CompanionAds>` Element może zawierać jeden lub więcej `<Companion>` elementów. Każdy `<Companion>` element w tym artykule opisano ad pomocnika i może zawierać `<StaticResource>`, `<IFrameResource>`, lub `<HTMLResource>` określone w taki sam sposób jak nieliniowych ad. OGROMNA plik może zawierać wiele reklam pomocnika, a aplikacja odtwarzacza można wybrać najbardziej odpowiedni ad, aby wyświetlić. Aby uzyskać więcej informacji na temat VAST zobacz [OGROMNA 3.0](https://www.iab.net/media/file/VASTv3.0.pdf).
 
 ### <a name="using-a-digital-video-multiple-ad-playlist-vmap-file"></a>#Using Digital Video wielu Ad listy odtwarzania (VMAP)
 Plik VMAP można określić po wystąpieniu przerwy ad, jak długo trwa każdego podziału, jak wiele reklam, może być wyświetlana w podziału i jakie typy AD może być wyświetlany podczas podziału. Następujące opcje w VMAP przykładowy plik, który definiuje podziału pojedynczej usługi ad:
@@ -243,7 +243,7 @@ W ramach `<AdBreak>` elementu, może istnieć tylko jeden <**AdSource**> element
 * `<AdTagURI>` Identyfikator URI, który odwołuje się do ad odpowiedzi z innego systemu
 * `<CustomAdData>` -dowolny ciąg, który reprezentuje odpowiedź — duże
 
-W tym przykładzie odpowiedź ad w tekście jest określony za pomocą `<VASTAdData>` element, który zawiera odpowiedź OGROMNA ad. Aby uzyskać więcej informacji na temat innych elementów zobacz [VMAP](http://www.iab.net/guidelines/508676/digitalvideo/vsuite/vmap).
+W tym przykładzie odpowiedź ad w tekście jest określony za pomocą `<VASTAdData>` element, który zawiera odpowiedź OGROMNA ad. Aby uzyskać więcej informacji na temat innych elementów zobacz [VMAP](https://www.iab.net/guidelines/508676/digitalvideo/vsuite/vmap).
 
 <**AdBreak**> element może także zawierać jeden <**TrackingEvents**> element. <**TrackingEvents**> element służy do śledzenia początku lub końcu parametru break ad lub tego, czy wystąpił błąd podczas podziału usługi ad. <**TrackingEvents**> element zawiera co najmniej jeden <**śledzenia**> elementy, z których każdy określa zdarzenie śledzenia i śledzenie identyfikatora URI. Zdarzenia śledzenia możliwe są:
 
@@ -363,7 +363,7 @@ Wykonywalny ad jest tworzony w kodzie, który musi zostać wykonana w środowisk
     </MediaFiles>
 ```
 
-Wykonywalny ad mogą być inicjowane przy użyciu `<AdParameters>` elemencie `<Linear>` lub `<NonLinear>` elementów w OBSZERNYM odpowiedzi. Aby uzyskać więcej informacji na temat `<AdParameters>` elementu, zobacz [OGROMNA 3.0](http://www.iab.net/media/file/VASTv3.0.pdf). Aby uzyskać więcej informacji na temat interfejsu API VPAID zobacz [VPAID 2.0](http://www.iab.net/media/file/VPAID_2.0_Final_04-10-2012.pdf).
+Wykonywalny ad mogą być inicjowane przy użyciu `<AdParameters>` elemencie `<Linear>` lub `<NonLinear>` elementów w OBSZERNYM odpowiedzi. Aby uzyskać więcej informacji na temat `<AdParameters>` elementu, zobacz [OGROMNA 3.0](https://www.iab.net/media/file/VASTv3.0.pdf). Aby uzyskać więcej informacji na temat interfejsu API VPAID zobacz [VPAID 2.0](https://www.iab.net/media/file/VPAID_2.0_Final_04-10-2012.pdf).
 
 ## <a name="implementing-a-windows-or-windows-phone-8-player-with-ad-support"></a>Implementowanie Windows lub Windows Phone 8 Player z obsługą usługi Ad
 Microsoft Media Platform: Player Framework dla systemu Windows 8 i Windows Phone 8 zawiera kolekcję przykładowych aplikacji, które pokazują, jak wdrażanie przy użyciu platformy aplikacji odtwarzacza wideo. Możesz pobrać Player Framework i przykładów z poziomu [Player Framework dla systemu Windows 8 i Windows Phone 8](https://playerframework.codeplex.com).

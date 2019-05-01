@@ -1,19 +1,20 @@
 ---
 title: Tworzenie konta magazynu usługi Azure Data Lake Storage 2. generacji | Microsoft Docs
-description: Szybko naucz się, jak utworzyć nowe konto magazynu z dostępem do usługi Data Lake Storage 2. generacji przy użyciu witryny Azure Portal, programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure
+description: Szybka nauka tworzenia nowego konta magazynu z uprawnieniami do Data Lake Storage Gen2 przy użyciu witryny Azure portal, programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure.
 services: storage
-author: jamesbak
+author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
 ms.date: 12/06/2018
-ms.author: jamesbak
-ms.openlocfilehash: 50cd039395b477a93d050458c2a014e768fc5f0a
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.author: normesta
+ms.reviewer: jamesbak
+ms.openlocfilehash: 18132ac4c218c766efdc9a9afae2cc3508c4f732
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995680"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939421"
 ---
 # <a name="quickstart-create-an-azure-data-lake-storage-gen2-storage-account"></a>Szybki start: Tworzenie konta usługi Azure Data Lake Storage 2. generacji
 

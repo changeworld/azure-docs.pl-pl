@@ -1,25 +1,19 @@
 ---
-title: Usługa Azure Resource Manager testowej | Dokumentacja firmy Microsoft
+title: Usługa Azure Resource Manager testowej | Portal Azure Marketplace
 description: Tworzenie wersję testową w portalu Marketplace przy użyciu usługi Azure Resource Manager
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
 manager: Patrick .Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 2fe1a1fc1ff82415a5c2f88c72ae707b12cd5283
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: pabutler
+ms.openlocfilehash: 7665050dfc9a561f42fec00c40d0a40dfa5cc183
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60774525"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64941572"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Wersja testowa usługi Azure Resource Manager
 

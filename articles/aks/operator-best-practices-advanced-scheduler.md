@@ -2,18 +2,17 @@
 title: Operator najlepsze rozwiązania — zaawansowane funkcje usługi scheduler w usłudze Azure Kubernetes usługi (AKS)
 description: Dowiedz się, operator klastra najlepsze rozwiązania dotyczące używania harmonogramu zaawansowane funkcje, takie jak nasłonecznieniem i tolerations, selektory węzła i koligacji lub koligację między pod i konfiguracji zapobiegającej koligacji w usłudze Azure Kubernetes Service (AKS)
 services: container-service
-author: rockboyfor
+author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-origin.date: 11/26/2018
-ms.date: 04/08/2019
-ms.author: v-yeche
-ms.openlocfilehash: 27c9c872f4dfb82b4a1389189d62c4e1f06ee272
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 11/26/2018
+ms.author: iainfou
+ms.openlocfilehash: 9aa394a405e5b4392f900d1e7520d93e6d152e49
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60464972"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64690464"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące harmonogramu zaawansowanych funkcji w usłudze Azure Kubernetes Service (AKS)
 
@@ -37,7 +36,7 @@ Harmonogram Kubernetes nasłonecznieniem i umożliwia tolerations ograniczyć, j
 * A **skażenia** jest stosowany do węzła, który wskazuje na nich można zaplanować tylko określonych zasobników.
 * A **toleration** jest następnie stosowane do zasobników, które umożliwia im *tolerować* zmiany barwy węzła.
 
-Podczas wdrażania zasobnika klaster AKS rozwiązania Kubernetes tylko planuje zasobników w węzłach, w którym toleration jest powiązana z zmiany barwy. Na przykład załóżmy, że masz nodepool klastra AKS węzłów z procesora GPU, pomocy technicznej. Zdefiniuj nazwę, taką jak *procesora gpu*, następnie wartość do planowania. Jeśli ta wartość jest ustawiona na *NoSchedule*, harmonogram Kubernetes nie można zaplanować zasobników w węźle, jeśli Zasobnik nie zdefiniowano toleration odpowiednie.
+Podczas wdrażania zasobnika klaster AKS rozwiązania Kubernetes tylko planuje zasobników w węzłach, w którym toleration jest powiązana z zmiany barwy. Na przykład załóżmy, że masz pulę węzłów w klastrze AKS dla węzłów z procesorem GPU pomocy technicznej. Zdefiniuj nazwę, taką jak *procesora gpu*, następnie wartość do planowania. Jeśli ta wartość jest ustawiona na *NoSchedule*, harmonogram Kubernetes nie można zaplanować zasobników w węźle, jeśli Zasobnik nie zdefiniowano toleration odpowiednie.
 
 ```console
 kubectl taint node aks-nodepool1 sku=gpu:NoSchedule
@@ -53,7 +52,7 @@ metadata:
 spec:
   containers:
   - name: tf-mnist
-    image: dockerhub.azk8s.cn/microsoft/samples-tf-mnist-demo:gpu
+    image: microsoft/samples-tf-mnist-demo:gpu
   resources:
     requests:
       cpu: 0.5
@@ -73,6 +72,23 @@ Podczas wdrażania tego zasobnika, takiej jak `kubectl apply -f gpu-toleration.y
 Po zastosowaniu nasłonecznieniem współpracować z Twojej aplikacji deweloperzy i właściciele umożliwia im do definiowania tolerations wymagane w bieżących wdrożeń.
 
 Aby uzyskać więcej informacji na temat nasłonecznieniem i tolerations zobacz [stosowanie nasłonecznieniem i tolerations][k8s-taints-tolerations].
+
+### <a name="behavior-of-taints-and-tolerations-in-aks"></a>Zachowanie nasłonecznieniem i tolerations w usłudze AKS
+
+Podczas uaktualniania pulę węzłów w usłudze AKS nasłonecznieniem i tolerations wykonaj wzorzec zestawu, są one stosowane do nowych węzłów:
+
+- **Klastry domyślnej bez Obsługa skalowania maszyn wirtualnych**
+  - Załóżmy, że masz dwa węzły klastra - *Węzeł1* i *Węzeł2*. Podczas uaktualniania, dodatkowego węzła (*Węzeł3*) jest tworzony.
+  - Nasłonecznieniem z *Węzeł1* są stosowane do *Węzeł3*, następnie *Węzeł1* jest usuwany.
+  - Inny nowy węzeł zostanie utworzony (o nazwie *Węzeł1*, od czasu poprzedniego *Węzeł1* został usunięty) i *Węzeł2* nasłonecznieniem są stosowane do nowych *Węzeł1*. Następnie *Węzeł2* zostanie usunięty.
+  - W zasadzie *Węzeł1* staje się *Węzeł3*, i *Węzeł2* staje się *Węzeł1*.
+
+- **Zestawy skalowania klastrów korzystających z maszyny wirtualnej** (obecnie dostępna w wersji zapoznawczej w usłudze AKS)
+  - Ponownie, załóżmy, że masz dwa węzły klastra - *Węzeł1* i *Węzeł2*. Możesz uaktualnić pulę węzłów.
+  - Dwa dodatkowe węzły są tworzone, *Węzeł3* i *Węzeł4*, a nasłonecznieniem są przekazywane na odpowiednio.
+  - Oryginalny *Węzeł1* i *Węzeł2* zostaną usunięte.
+
+Skalowanie puli węzeł w usłudze AKS nasłonecznieniem oraz tolerations nie mają przez projekt.
 
 ## <a name="control-pod-scheduling-using-node-selectors-and-affinity"></a>Zasobnik kontroli, tworzenie harmonogramów przy użyciu koligacji i selektorów węzła
 
@@ -96,7 +112,7 @@ metadata:
 spec:
   containers:
   - name: tf-mnist
-    image: dockerhub.azk8s.cn/microsoft/samples-tf-mnist-demo:gpu
+    image: microsoft/samples-tf-mnist-demo:gpu
     resources:
       requests:
         cpu: 0.5
@@ -126,7 +142,7 @@ metadata:
 spec:
   containers:
   - name: tf-mnist
-    image: dockerhub.azk8s.cn/microsoft/samples-tf-mnist-demo:gpu
+    image: microsoft/samples-tf-mnist-demo:gpu
     resources:
       requests:
         cpu: 0.5

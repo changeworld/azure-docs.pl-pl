@@ -16,12 +16,12 @@ ms.date: 09/25/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7675441316e42c7f0a220abe77bc8c62158ef918
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4169b15304afe1ecc4af9c5354798b29ad9dba38
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60351602"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64571353"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Przeglądy dostępu usługa Azure AD do zarządzania użytkownikami wykluczone z zasad dostępu warunkowego
 
@@ -38,7 +38,7 @@ Inny przykład można użyć [lokalizacje z nazwą](../conditional-access/locati
 
 ![Lokalizacje nazwane](./media/conditional-access-exclusion/named-locations.png)
 
-Jednak w niektórych przypadkach użytkownicy mogą mieć uzasadniona Przyczyna, aby zalogować się z tych krajów zablokowane. Na przykład użytkownicy mogą podróżować do pracy lub osobistych powodów. W tym przykładzie zasady dostępu warunkowego do blokowania tych krajów może mieć chmura dedykowana grupy zabezpieczeń dla użytkowników, którzy są wykluczeni z zasad. Użytkownicy, którzy muszą mieć dostęp podczas podróży, można samodzielnie dodać do grupy przy użyciu [Zarządzanie grupami samoobsługi usługi Azure AD](../users-groups-roles/groups-self-service-management.md).
+Jednak w niektórych przypadkach użytkownicy mogą mieć uzasadniona Przyczyna, aby zalogować się z tymi zablokowanych krajów/regionów. Na przykład użytkownicy mogą podróżować do pracy lub osobistych powodów. W tym przykładzie zasady dostępu warunkowego do blokowania tych krajów/regionów może mieć chmura dedykowana grupy zabezpieczeń dla użytkowników, którzy są wykluczeni z zasad. Użytkownicy, którzy muszą mieć dostęp podczas podróży, można samodzielnie dodać do grupy przy użyciu [Zarządzanie grupami samoobsługi usługi Azure AD](../users-groups-roles/groups-self-service-management.md).
 
 Innym przykładem mogą być, że masz zasad dostępu warunkowego, [bloki uwierzytelnianie starszych większość użytkowników](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/07/azure-ad-conditional-access-support-for-blocking-legacy-auth-is-in-public-preview/). Firma Microsoft zaleca, zablokować użycie elementu starszych protokołów w dzierżawie, aby zwiększyć poziom bezpieczeństwa. Jednak w przypadku niektórych użytkowników, którzy absolutnie należy użyć metody uwierzytelniania w starszej wersji, dostęp do zasobów za pomocą pakietu Office 2010 lub IMAP/SMTP/POP oparty na klientach, następnie można wykluczyć użytkowników z zasad blokowania metod uwierzytelniania w starszej wersji.
 
@@ -97,9 +97,9 @@ Teraz możesz utworzyć zasady dostępu warunkowego, która używa tej grupy do 
 
 Teraz obejmuje dwa przykłady, których można użyć przeglądów dostępu do wykluczenia w zasadach dostępu warunkowego do zarządzania.
 
-## <a name="example-1-access-review-for-users-accessing-from-blocked-countries"></a>Przykład 1: Przegląd dostępu dla użytkowników uzyskujących dostęp do z krajów zablokowane
+## <a name="example-1-access-review-for-users-accessing-from-blocked-countriesregions"></a>Przykład 1: Przegląd dostępu dla użytkowników uzyskujących dostęp do z zablokowanych krajów/regionów
 
-Załóżmy, że zasady dostępu warunkowego które blokuje dostęp z niektórych krajów. Zawiera grupy, który jest wykluczony z zasad. Poniżej przedstawiono przegląd dostępu zalecane gdzie członkowie grupy są przeglądane.
+Załóżmy, że mają zasady dostępu warunkowego, które blokuje dostęp z niektórych krajów/regionów. Zawiera grupy, który jest wykluczony z zasad. Poniżej przedstawiono przegląd dostępu zalecane gdzie członkowie grupy są przeglądane.
 
 > [!NOTE]
 > Administrator globalny lub roli administratora użytkownika jest wymagana do utworzenia przeglądów dostępu.
@@ -110,9 +110,9 @@ Załóżmy, że zasady dostępu warunkowego które blokuje dostęp z niektórych
 
 3. Wszyscy członkowie tej grupy będą uwzględnione w zakresie przeglądu.
 
-4. Każdy użytkownik będzie musiał własnym potwierdzają, że nadal potrzebują może korzystać z tych krajów zablokowanych, w związku z tym nadal muszą należeć do grupy.
+4. Każdy użytkownik będzie musiał własnym potwierdzają, że nadal potrzebują dostępu z tych zablokowanych krajów/regionów, w związku z tym nadal muszą należeć do grupy.
 
-5. Jeśli użytkownik nie odpowie na żądanie przeglądu, będzie zostaną automatycznie usunięte z grupy, a w związku z tym, można nie uzyskać dostępu do dzierżawy podczas podróży w tych krajach.
+5. Jeśli użytkownik nie odpowie na żądanie przeglądu, będzie zostaną automatycznie usunięte z grupy, a w związku z tym, można nie uzyskać dostępu do dzierżawy podczas podróży do tych krajów/regionów.
 
 6. Włącz powiadomienia pocztowe, dzięki czemu użytkownicy są powiadamiani o rozpoczęcia i zakończenia Przegląd dostępu.
 

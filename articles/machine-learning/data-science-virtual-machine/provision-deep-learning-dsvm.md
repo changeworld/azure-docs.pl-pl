@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 42430c847149f7eda2f0dbed1cff006a92f372ee
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1fc4a4024893c29c35b4369d13227830cfbbca84
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60578609"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64943921"
 ---
 # <a name="provision-a-deep-learning-virtual-machine-on-azure"></a>Aprowizowanie maszyny wirtualnej na platformie Azure do uczenia głębokiego 
 
@@ -35,10 +35,11 @@ Poniżej przedstawiono kroki, aby utworzyć wystąpienie programu Deep maszyna w
 ).
 2. Wybierz **Utwórz** znajdujący się u dołu, aby uwzględnić kreatora.![ Utwórz dlvm](./media/dlvm-provision-wizard.PNG)
 3. Kreator pozwala utworzyć DLVM wymaga **dane wejściowe** dla każdego z **cztery kroki** wyliczane po prawej stronie tej liczby. Poniżej przedstawiono dane wejściowe wymagane do skonfigurowania każdego z następujących czynności:
-   
+
+   <a name="basics"></a>   
    1. **Podstawy**
       
-      1. **Nazwa**: Nazwa tworzonej serwera do nauki o danych.
+      1. **Nazwa**: Nazwa serwera do nauki o danych, który tworzysz.
       2. **Wybierz typ systemu operacyjnego dla maszyny Wirtualnej z głębokiego uczenia**: Wybierz pozycję Windows lub Linux (dla Windows 2016 i Ubuntu Linux-DSVM podstawowy)
       2. **Nazwa użytkownika**: Identyfikator logowania konta administratora.
       3. **Hasło**: Hasło do konta administratora.
@@ -46,13 +47,14 @@ Poniżej przedstawiono kroki, aby utworzyć wystąpienie programu Deep maszyna w
       5. **Grupa zasobów**: Możesz utworzyć nową lub użyj **pusty** istniejącą grupę zasobów platformy Azure w ramach subskrypcji.
       6. **Lokalizacja**: Wybierz centrum danych, które jest najbardziej odpowiednie. Zazwyczaj jest centrum danych, który zawiera większość danych lub znajduje się najbliżej Twojej lokalizacji fizycznej najszybszy dostęp do sieci. 
       
-> [!NOTE]
-> DLVM obsługuje wszystkie NC i ND serii wystąpień maszyn wirtualnych procesorów GPU. Podczas aprowizowania DLVM, musisz wybrać jedną z lokalizacji platformy Azure, która ma procesorów GPU. Sprawdź [produkty Azure według regionu strony](https://azure.microsoft.com/regions/services/) stronie dostępnych lokalizacji i poszukaj **seria NC**, **seria NCv2**, **seria NCv3** , lub **seria ND** w obszarze **obliczenia**. 
+      > [!NOTE]
+      > DLVM obsługuje wszystkie NC i ND serii wystąpień maszyn wirtualnych procesorów GPU. Podczas aprowizowania DLVM, musisz wybrać jedną z lokalizacji platformy Azure, która ma procesorów GPU. Sprawdź [produkty Azure według regionu strony](https://azure.microsoft.com/regions/services/) stronie dostępnych lokalizacji i poszukaj **seria NC**, **seria NCv2**, **seria NCv3** , lub **seria ND** w obszarze **obliczenia**. 
 
-1. **Ustawienia**: Wybierz jeden z serii NC (NC, NCv2, NCv3) lub seria ND rozmiarów maszyn wirtualnych GPU, który spełnia Twoje wymagania funkcjonalne i ograniczenia kosztów. Tworzenie konta magazynu dla maszyny Wirtualnej.  ![dlvm-settings](./media/dlvm-provision-step-2.PNG)
+   1. **Ustawienia**: Wybierz jeden z serii NC (NC, NCv2, NCv3) lub seria ND rozmiarów maszyn wirtualnych GPU, który spełnia Twoje wymagania funkcjonalne i ograniczenia kosztów. Tworzenie konta magazynu dla maszyny Wirtualnej.  ![dlvm-settings](./media/dlvm-provision-step-2.PNG)
    
-1. **Podsumowanie**: Sprawdź, czy wszystkie wprowadzone informacje jest poprawna.
-1. **Kup**: Kliknij przycisk **Kup** do uruchomienia, jego obsługi. Dostępny jest link do warunków transakcji. Maszyna wirtualna nie ma żadnych dodatkowych kosztów poza obliczenia rozmiaru serwera wybranej w ramach **rozmiar** kroku. 
+   1. **Podsumowanie**: Sprawdź, czy wszystkie wprowadzone informacje jest poprawna.
+
+   1. **Kup**: Kliknij przycisk **Kup** do uruchomienia, jego obsługi. Dostępny jest link do warunków transakcji. Maszyna wirtualna nie ma żadnych dodatkowych kosztów poza obliczenia rozmiaru serwera wybranej w ramach **rozmiar** kroku. 
 
 > [!NOTE]
 > Aprowizacja powinno zająć około 10-20 minut. Stan aprowizacji jest wyświetlany w witrynie Azure portal.
@@ -66,7 +68,7 @@ Po utworzeniu maszyny Wirtualnej możesz pulpitu zdalnego do niej przy użyciu p
 
 ### <a name="linux-edition"></a>Wersja systemu Linux
 
-Po utworzeniu maszyny Wirtualnej możesz można Zaloguj się do niej przy użyciu protokołu SSH. Użyj poświadczeń konta, które zostały utworzone w **podstawy** sekcji Krok 3 dla interfejsu powłoki tekstu. Na komputerze klienckim aWindows można pobrać narzędzia klienta SSH, takiego jak [Putty](https://www.putty.org). Jeśli wolisz graficzny desktop (X w systemie Windows), możesz użyć X11 przekazywania w programie Putty lub zainstalować klienta X2Go.
+Po utworzeniu maszyny Wirtualnej możesz można Zaloguj się do niej przy użyciu protokołu SSH. Użyj poświadczeń konta, które zostały utworzone w [ **podstawy** ](#basics) sekcji Krok 3 dla interfejsu powłoki tekstu. Aby uzyskać więcej informacji na temat połączeń SSH do maszyn wirtualnych platformy Azure, zobacz [Instalowanie i konfigurowanie pulpitu zdalnego, aby nawiązać połączenie z maszyny Wirtualnej z systemem Linux na platformie Azure](/azure/virtual-machines/linux/use-remote-desktop). Na komputerze klienckim Windows można pobrać narzędzia klienta SSH, takiego jak [Putty](http://www.putty.org). Jeśli wolisz graficzny desktop (X w systemie Windows), możesz użyć X11 przekazywania w programie Putty lub zainstalować klienta X2Go. 
 
 > [!NOTE]
 > Klient X2Go spisywała się lepiej niż X11 przekazywania podczas testów. Zaleca się przy użyciu klienta X2Go dla interfejsu graficznego pulpitu.

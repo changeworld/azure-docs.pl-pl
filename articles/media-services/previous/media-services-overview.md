@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/19/2019
 ms.author: juliako
-ms.openlocfilehash: efdc3f657712794325f8af6f1b0178915e7a8e6b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 7f0a071012685ee192d4f866396a5953d0a4508c
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61463501"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937251"
 ---
 # <a name="azure-media-services-overview"></a>Omówienie usługi Azure Media Services 
 
@@ -50,7 +50,10 @@ W celu tworzenia rozwiązań Media Services można użyć następujących elemen
 
 * [Interfejs API REST usługi Media Services](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)
 * Jeden z dostępnych zestawów SDK klienta:
-    * [Zestaw SDK usługi Azure Media Services dla platformy .NET](https://github.com/Azure/azure-sdk-for-media-services)
+    * Usługi Azure Media Services SDK dla platformy .NET
+    
+        * [Pakiet NuGet](https://www.nuget.org/packages/windowsazure.mediaservices/)
+        * [Kod źródłowy w serwisie Github](https://github.com/Azure/azure-sdk-for-media-services)
     * [Zestaw Azure SDK dla języka Java](https://github.com/Azure/azure-sdk-for-java)
     * [Zestaw Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php)
     * [Azure Media Services dla środowiska Node.js](https://github.com/michelle-becker/node-ams-sdk/blob/master/lib/request.js) (Jest to wersja zestawu Node.js SDK firmy innej niż Microsoft. Jest ona opracowywana przez społeczność i aktualnie nie obsługuje 100% interfejsów API usług AMS.)

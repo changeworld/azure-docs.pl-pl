@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 360b822bc78d353e91612459a70334a0bf3a56e6
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: 8bd0014518dc93abb952114a1728f8fc1d3fb4a5
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189635"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64708082"
 ---
 # <a name="how-to-configure-on-premises-encoders-when-using-azure-media-services-to-create-multi-bitrate-streams"></a>Konfigurowanie koderów lokalnych podczas korzystania z usługi Azure Media Services do tworzenia strumieni o różnej szybkości transmisji bitów
 Ten temat zawiera listę lokalnych koderów na żywo, które służą do przechwytywania zdarzeń na żywo i wysyłania strumienia na żywo o pojedynczej szybkości transmisji bitów w kanałach usługi AMS, (które są włączone kodowania na żywo) do dalszego przetwarzania. Temat zawiera także linki do samouczków, które pokazują, jak skonfigurować koderów uwzględnione na liście.
 
 > [!NOTE]
-> Podczas przesyłania strumieniowego za pośrednictwem protokołu RTMP, sprawdź ustawienia zapory i/lub serwer proxy, aby upewnić się, że porty TCP ruchu wychodzącego 1935 i 1936 są otwarte.
+> Podczas przesyłania strumieniowego za pośrednictwem protokołu RTMP sprawdź ustawienia zapory i/lub serwera proxy, aby upewnić się, że porty TCP ruchu wychodzącego 1935 i 1936 są otwarte.
 
 ## <a name="flash-media-live-encoder"></a>Flash Media Live Encoder
 Aby uzyskać informacje na temat konfigurowania [Flash Media Live Encoder](https://www.adobe.com/products/flash-media-encoder.html) Zobacz encoder (FMLE) do wysyłania strumienia na żywo o pojedynczej szybkości transmisji bitów do kanału usługi AMS [Konfigurowanie FMLE](media-services-configure-fmle-live-encoder.md).
@@ -37,7 +37,7 @@ Aby uzyskać informacje na temat konfigurowania [Haivision KB koder](https://www
 Aby uzyskać informacje na temat konfigurowania [Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm) Zobacz kodera do wysyłania strumienia na żywo o pojedynczej szybkości transmisji bitów do kanału usługi AMS [Konfigurowanie Wirecast](media-services-configure-wirecast-live-encoder.md).
 
 ## <a name="newtek-tricaster"></a>Koder NewTek TriCaster
-Aby uzyskać informacje na temat konfigurowania [Tricaster](http://newtek.com/products/tricaster-40.html) Zobacz kodera do wysyłania strumienia na żywo o pojedynczej szybkości transmisji bitów do kanału usługi AMS [Konfigurowanie Tricaster](media-services-configure-tricaster-live-encoder.md).
+Aby uzyskać informacje na temat konfigurowania [Tricaster](https://newtek.com/products/tricaster-40.html) Zobacz kodera do wysyłania strumienia na żywo o pojedynczej szybkości transmisji bitów do kanału usługi AMS [Konfigurowanie Tricaster](media-services-configure-tricaster-live-encoder.md).
 
 ## <a name="elemental-live"></a>Elemental Live
 Aby uzyskać więcej informacji, zobacz [Elemental Live](https://www.elementaltechnologies.com/products/elemental-live).

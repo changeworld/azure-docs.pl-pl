@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/23/2019
 ms.author: ramamill
-ms.openlocfilehash: 678f9aa60d4970540ded8ba0bb1a4ddaa6281a49
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 1b6084b4e93f3dc17f633f1b8496f9c26e7f576f
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62101901"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925492"
 ---
 # <a name="scale-with-additional-process-servers"></a>Skalowanie za pomocą dodatkowych serwerów przetwarzania
 
@@ -24,7 +24,7 @@ Domyślnie, Jeśli replikujesz maszyny wirtualne VMware lub serwery fizyczne do 
 
 Upewnij się, że zostały wykonane [planowania pojemności](site-recovery-plan-capacity-vmware.md) potrzeby replikacji oprogramowania VMware. Pomaga to identyfikować jak i kiedy należy wdrażać dodatkowych serwerów przetwarzania.
 
-Od wersji 9.24 wskazówki jest dodawany podczas wyboru serwera przetwarzania dla nowych replikacji. Serwer przetwarzania zostanie oznaczona w dobrej kondycji, ostrzeżenie i krytyczna na podstawie określonych kryteriów. Aby poznać różne scenariusze, które mogą mieć wpływ na stan serwera przetwarzania, odwiedź stronę [procesami wybór serwera](vmware-azure-manage-process-server.md#process-server-selection-guidance).
+Od wersji 9.24 wskazówki jest dodawany podczas wyboru serwera przetwarzania dla nowych replikacji. Serwer przetwarzania są oznaczane dobra kondycja, ostrzegawczy i krytyczny na podstawie określonych kryteriów. Aby poznać różne scenariusze, które mogą mieć wpływ na stan serwera przetwarzania, zobacz [alerty serwera przetwarzania](vmware-physical-azure-monitor-process-server.md#process-server-alerts).
 
 > [!NOTE]
 > Korzystanie ze sklonowanym składnika serwera przetwarzania nie jest obsługiwana. Wykonaj kroki opisane w tym artykule, aby każdy PS skalowalnego w poziomie.

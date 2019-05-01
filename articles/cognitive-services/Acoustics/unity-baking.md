@@ -10,18 +10,18 @@ ms.subservice: acoustics
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 8875674b0f9c621a573dda591b4dc2b6f018a83c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2f0fcdcdf781c86179b67eeef0223d46da0fc65b
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60388428"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917004"
 ---
 # <a name="project-acoustics-unity-bake-tutorial"></a>Samouczek tworzenie Unity Akustyka projektu
 W tym samouczku opisano Akustyka pieczenie przy użyciu Akustyka projektu na platformie Unity.
 
 Wymagania dotyczące oprogramowania:
-* [Unity 2018.2 +](http://unity3d.com) dla Windows
+* [Unity 2018.2 +](https://unity3d.com) dla Windows
 * [Wtyczka Akustyka projektu zintegrowane w swoim projekcie aparatu Unity](unity-integration.md) lub [Unity Akustyka projektu przykładowej zawartości](unity-quickstart.md)
 * Opcjonalnie: [Konta usługi Azure Batch](create-azure-account.md) aby przyspieszyć tworzony przy użyciu chmury obliczeniowej
 

@@ -5,14 +5,14 @@ services: container-service
 author: sauryadas
 ms.service: container-service
 ms.topic: article
-ms.date: 02/15/2019
+ms.date: 04/26/2019
 ms.author: saudas
-ms.openlocfilehash: aafc6c5a240a1dd3e3c75dd33da26bde918b2288
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: d4287307ee3ed7f65b91f2865242113aa5b22bfd
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61031615"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64684170"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Obsługiwane wersje rozwiązania Kubernetes w usłudze Azure Kubernetes Service (AKS)
 
@@ -29,7 +29,7 @@ Usługa AKS obsługuje cztery wersje pomocnicze platformy Kubernetes:
 
 Na przykład, jeśli wprowadzono AKS *1.12.x* obecnie Pomoc techniczna jest świadczona również dla *1.11.a* + *1.11.b*, *1.10.c*  +  *1,10 d*, *1.9.e* + *1.9f* (gdzie wersji własną literą poprawki są dwie kompilacje najnowszy stabilny).
 
-Po wprowadzeniu nowej wersji pomocniczej obsługa najstarszej wersji pomocniczej i wydań poprawek jest wycofywana. 15 dni przed wprowadzeniem nowych wersji pomocniczej i wycofanie mającej się ukazać wersji anons jest nawiązywane za pomocą [kanałów aktualizacji usługi Azure][azure-update-channel]. W przykładzie powyżej gdzie *1.12.x* jest zwolniony, wycofane wersje są *1.8.g* + *1.8.h*.
+Po wprowadzeniu nowej wersji pomocniczej obsługa najstarszej wersji pomocniczej i wydań poprawek jest wycofywana. 30 dni przed wprowadzeniem nowych wersji pomocniczej i wycofanie mającej się ukazać wersji anons jest nawiązywane za pomocą [kanałów aktualizacji usługi Azure][azure-update-channel]. W przykładzie powyżej gdzie *1.12.x* jest zwolniony, wycofane wersje są *1.8.g* + *1.8.h*.
 
 Podczas wdrażania klastra AKS w portalu lub za pomocą interfejsu wiersza polecenia platformy Azure klaster jest zawsze ustawiany na wersję pomocniczą n-1 i najnowszą poprawkę. Na przykład, jeśli obsługuje AKS *1.12.x*, *1.11.a* + *1.11.b*, *1.10.c*  +   *1,10 d*, *1.9.e* + *1.9f*, jest wersja domyślna dla nowych klastrów *1.11.b*.
 

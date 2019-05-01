@@ -28,12 +28,12 @@ ms.author:
 - minale
 - btalb
 - prachank
-ms.openlocfilehash: 1e8605a41cbe610c971b891309b2149d221b8b27
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 31ca0ee666ff37afa37fb9636860c557d92a52c7
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61032455"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924788"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Wydajność protokołu TCP/IP automatycznego dostrajania dla maszyn wirtualnych platformy Azure
 
@@ -304,7 +304,7 @@ Przyspieszona sieć jest przeznaczony do poprawiania wydajności sieci, w tym cz
 
 Usługa Azure virtual machines ma co najmniej jeden interfejs sieciowy dołączony do nich. Mogą mieć kilka. Przepustowość przydzielona do maszyny wirtualnej jest sumą cały ruch wychodzący we wszystkich interfejsów sieciowych dołączonych do maszyny. Innymi słowy przepustowość jest przydzielany na podstawie na wirtualnej maszynie, niezależnie od tego, jak wiele interfejsów sieciowych dołączonych do maszyny.
 
-Oczekiwanej przepływności wychodzące i liczbę interfejsów sieciowych obsługiwanych przez każdego rozmiaru maszyny Wirtualnej są wyszczególnione w [rozmiary dla Windows maszyn wirtualnych na platformie Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json). Aby wyświetlić maksymalną przepustowość, wybierz typ, takie jak **ogólnego przeznaczenia**, a następnie znajdź sekcję dotyczącą serii rozmiar na wynikowej stronie (na przykład "serii Dv2"). Dla każdej serii jest tabela, która zapewnia sieci specyfikacji w ostatniej kolumnie, który jest zatytułowana "Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s)."
+Oczekiwanej przepływności wychodzące i liczbę interfejsów sieciowych obsługiwanych przez każdego rozmiaru maszyny Wirtualnej są wyszczególnione w [rozmiary dla Windows maszyn wirtualnych na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json). Aby wyświetlić maksymalną przepustowość, wybierz typ, takie jak **ogólnego przeznaczenia**, a następnie znajdź sekcję dotyczącą serii rozmiar na wynikowej stronie (na przykład "serii Dv2"). Dla każdej serii jest tabela, która zapewnia sieci specyfikacji w ostatniej kolumnie, który jest zatytułowana "Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s)."
 
 Limit przepływności stosuje się do maszyny wirtualnej. Przepływność nie ma wpływ następujące czynniki:
 
@@ -388,4 +388,4 @@ Jednak te typy pakietów są wskazania, że przepustowość TCP nie osiąga zwi�
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Teraz, kiedy znasz już o dostrajanie wydajności protokołu TCP/IP dla maszyn wirtualnych platformy Azure, warto przeczytać o inne uwagi dotyczące [Planowanie sieci wirtualnej](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-vnet-plan-design-arm) lub [Dowiedz się więcej na temat łączenia i konfigurowanie sieci wirtualnych ](https://docs.microsoft.com/en-us/azure/virtual-network/).
+Teraz, kiedy znasz już o dostrajanie wydajności protokołu TCP/IP dla maszyn wirtualnych platformy Azure, warto przeczytać o inne uwagi dotyczące [Planowanie sieci wirtualnej](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm) lub [Dowiedz się więcej na temat łączenia i konfigurowanie sieci wirtualnych ](https://docs.microsoft.com/azure/virtual-network/).

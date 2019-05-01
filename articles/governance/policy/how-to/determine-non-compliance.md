@@ -3,16 +3,16 @@ title: Ustalanie przyczyn niezgodności
 description: Jeśli zasób jest niezgodne, istnieje wiele możliwych przyczyn. Dowiedz się dowiedzieć się, co było przyczyną braku zgodności.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/30/2019
+ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 0af3fd8596bf558f9d5cc97c95be773aa40954cc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2f856e9c42b26d4e286493e2eb5d019a8cff6c23
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60499367"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64868711"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Ustalanie przyczyn niezgodności
 
@@ -105,9 +105,107 @@ Następujące macierzy mapuje każdą możliwą _Przyczyna_ w odpowiedzialne [wa
 |Bieżąca wartość nie może być zgodna z wartością docelową (bez uwzględniania wielkości liter). |notMatchInsensitively lub **nie** matchInsensitively |
 |Żadne powiązane zasoby nie są zgodne ze szczegółami efektu w definicji zasad. |Zasób typu zdefiniowanego w **then.details.type** i powiązane z zasobem zdefiniowane w **Jeśli** część reguły zasad nie istnieje. |
 
-## <a name="change-history-preview"></a>Historia zmian (wersja zapoznawcza)
+## <a name="compliance-details-for-guest-configuration"></a>Szczegóły zgodności konfiguracji gościa
 
-Jako część nowego **publicznej wersji zapoznawczej**, w ciągu ostatnich 14 dni zmian historii jest dostępna dla wszystkich zasobów platformy Azure, które obsługują [ukończyć usuwanie tryb](../../../azure-resource-manager/complete-mode-deletion.md). Historię zmian zawiera szczegółowe informacje o, gdy wykryte zmiany i a _visual diff_ dla każdej zmiany. Wykrywanie zmian jest wyzwalany, gdy dodane, usunięte lub zmienione właściwości Menedżera zasobów.
+Aby uzyskać _inspekcji_ zasad w _konfiguracji gościa_ kategorii, może istnieć wiele ustawień, ocenione w ramach maszyny Wirtualnej i konieczne będzie wyświetlać szczegóły poszczególnych ustawień. Na przykład, jeśli masz inspekcji, aby uzyskać listę zainstalowanych aplikacji i stanu przypisania jest _niezgodne_, musisz wiedzieć, określonych aplikacji, które są nieobecne.
+
+Możesz również utracić dostęp do bezpośrednio zalogować się do maszyny Wirtualnej, ale należy sporządzić raport na temat przyczyny maszyna wirtualna jest _niezgodne_. Na przykład może być inspekcji, że maszyny wirtualne są przyłączone do domeny i obejmują bieżącego członkostwa w domenie, w obszarze szczegółów raportowania.
+
+### <a name="azure-portal"></a>Azure Portal
+
+1. Uruchom usługę Azure Policy w witrynie Azure Portal, klikając pozycję **Wszystkie usługi**, a następnie wyszukując i wybierając opcję **Zasady**.
+
+1. Na **Przegląd** lub **zgodności** wybierz przypisanie zasad dla dowolnego inicjatywy, który zawiera definicję zasad konfiguracji gościa to _niezgodne_.
+
+1. Wybierz _inspekcji_ zasad w inicjatywy to _niezgodne_.
+
+   ![Wyświetl szczegóły definicji inspekcji](../media/determine-non-compliance/guestconfig-audit-compliance.png)
+
+1. Na **zgodność zasobów** karcie podano następujące informacje:
+
+   - **Nazwa** — nazwa przypisania konfiguracji gościa.
+   - **Zasób nadrzędny** -maszynę wirtualną w _niezgodne_ stanu dla wybranego przypisania konfiguracji gościa.
+   - **Typ zasobu** — _guestConfigurationAssignments_ pełnej nazwy.
+   - **Ostatnio oceniono** — czas ostatniego powiadomienia, usługi gościa konfiguracji usługi Azure Policy o stanie docelowej maszyny wirtualnej.
+
+   ![Wyświetl szczegóły zgodności.](../media/determine-non-compliance/guestconfig-assignment-view.png)
+
+1. Wybierz nazwę przypisanie konfiguracji gościa w **nazwa** kolumnie, aby otworzyć **zgodność zasobów** strony.
+
+1. Wybierz **Wyświetl zasób** znajdujący się u góry strony Aby otworzyć **przypisania gościa** strony.
+
+**Przypisania gościa** strony wyświetli wszystkie szczegóły dostępne zgodności. Każdy wiersz w widoku reprezentuje wersję próbną, która została wykonana na maszynie wirtualnej. W **Przyczyna** kolumny, frazę opisujące, dlaczego jest przypisanie gościa _niezgodne_ jest wyświetlany. Jeśli masz inspekcji, że maszyny wirtualne powinny być przyłączony do domeny, na przykład **Przyczyna** kolumny zostanie wyświetlony tekst w tym bieżące członkostwo w domenie.
+
+![Wyświetl szczegóły zgodności.](../media/determine-non-compliance/guestconfig-compliance-details.png)
+
+### <a name="azure-powershell"></a>Azure PowerShell
+
+Można również wyświetlić szczegółowe informacje o zgodności z programu Azure PowerShell. Najpierw upewnij się, że masz zainstalowany moduł konfiguracji gościa.
+
+```azurepowershell-interactive
+Install-Module Az.GuestConfiguration
+```
+
+Można wyświetlić bieżący stan wszystkich przypisań gościa dla maszyny Wirtualnej przy użyciu następującego polecenia:
+
+```azurepowershell-interactive
+Get-AzVMGuestPolicyReport -ResourceGroupName <resourcegroupname> -VMName <vmname>
+```
+
+```output
+PolicyDisplayName                                                         ComplianceReasons
+-----------------                                                         -----------------
+Audit that an application is installed inside Windows VMs                 {[InstalledApplication]bwhitelistedapp}
+Audit that an application is not installed inside Windows VMs.            {[InstalledApplication]NotInstalledApplica...
+```
+
+Aby wyświetlić tylko _Przyczyna_ frazę, która opisuje, dlaczego maszyna wirtualna jest _niezgodne_, zwraca tylko właściwości elementu podrzędnego przyczyna.
+
+```azurepowershell-interactive
+Get-AzVMGuestPolicyReport -ResourceGroupName <resourcegroupname> -VMName <vmname> | % ComplianceReasons | % Reasons | % Reason
+```
+
+```output
+The following applications are not installed: '<name>'.
+```
+
+Historia zgodności można również danych wyjściowych przydziałów gościa w zakresie dla maszyny wirtualnej. Dane wyjściowe tego polecenia zawiera szczegóły każdego raportu dla maszyny Wirtualnej.
+
+> [!NOTE]
+> Dane wyjściowe mogą zwracać dużej ilości danych. Zalecane jest przechowywanie danych wyjściowych w zmiennej.
+
+```azurepowershell-interactive
+$guestHistory = Get-AzVMGuestPolicyStatusHistory -ResourceGroupName <resourcegroupname> -VMName <vmname>
+$guestHistory
+```
+
+```output
+PolicyDisplayName                                                         ComplianceStatus ComplianceReasons StartTime              EndTime                VMName LatestRepor
+                                                                                                                                                                  tId
+-----------------                                                         ---------------- ----------------- ---------              -------                ------ -----------
+[Preview]: Audit that an application is installed inside Windows VMs      NonCompliant                       02/10/2019 12:00:38 PM 02/10/2019 12:00:41 PM VM01  ../17fg0...
+<truncated>
+```
+
+Aby uprościć ten widok, należy użyć **ShowChanged** parametru. Dane wyjściowe tego polecenia obejmuje tylko raporty, które następnie zmianę stanu zgodności.
+
+```azurepowershell-interactive
+$guestHistory = Get-AzVMGuestPolicyStatusHistory -ResourceGroupName <resourcegroupname> -VMName <vmname> -ShowChanged
+$guestHistory
+```
+
+```output
+PolicyDisplayName                                                         ComplianceStatus ComplianceReasons StartTime              EndTime                VMName LatestRepor
+                                                                                                                                                                  tId
+-----------------                                                         ---------------- ----------------- ---------              -------                ------ -----------
+Audit that an application is installed inside Windows VMs                 NonCompliant                       02/10/2019 10:00:38 PM 02/10/2019 10:00:41 PM VM01  ../12ab0...
+Audit that an application is installed inside Windows VMs.                Compliant                          02/09/2019 11:00:38 AM 02/09/2019 11:00:39 AM VM01  ../e3665...
+Audit that an application is installed inside Windows VMs                 NonCompliant                       02/09/2019 09:00:20 AM 02/09/2019 09:00:23 AM VM01  ../15ze1...
+```
+
+## <a name="a-namechange-historychange-history-preview"></a><a name="change-history"/>Historia zmian (wersja zapoznawcza)
+
+Jako część nowego **publicznej wersji zapoznawczej**, ostatnich 14 dni historii zmian są dostępne dla wszystkich zasobów platformy Azure, które obsługują [ukończyć usuwanie tryb](../../../azure-resource-manager/complete-mode-deletion.md). Historię zmian zawiera szczegółowe informacje o, gdy wykryte zmiany i a _visual diff_ dla każdej zmiany. Wykrywanie zmian jest wyzwalany, gdy dodane, usunięte lub zmienione właściwości Menedżera zasobów.
 
 1. Uruchom usługę Azure Policy w witrynie Azure Portal, klikając pozycję **Wszystkie usługi**, a następnie wyszukując i wybierając opcję **Zasady**.
 
@@ -129,10 +227,10 @@ Dane historii zmian są udostępniane przez [wykres zasobów Azure](../../resour
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Przejrzyj przykłady na [przykładów usługi Azure Policy](../samples/index.md)
-- Przegląd [struktura definicji zasad](../concepts/definition-structure.md)
-- Przegląd [zrozumienia efektów zasad](../concepts/effects.md)
-- Zrozumienie sposobu [programowe tworzenie zasad](programmatically-create.md)
-- Dowiedz się, jak [uzyskać dane na temat zgodności](getting-compliance-data.md)
-- Dowiedz się, jak [korygowanie niezgodnych zasobów](remediate-resources.md)
-- Sprawdzanie, co to jest grupa zarządzania, na stronie [Organize your resources with Azure management groups (Organizowanie zasobów za pomocą grup zarządzania platformy Azure)](../../management-groups/overview.md)
+- Przejrzyj przykłady na [przykładów usługi Azure Policy](../samples/index.md).
+- Przejrzyj [strukturę definicji usługi Azure Policy](../concepts/definition-structure.md).
+- Przejrzyj [wyjaśnienie działania zasad](../concepts/effects.md).
+- Zrozumienie sposobu [programowe tworzenie zasad](programmatically-create.md).
+- Dowiedz się, jak [Pobierz dane zgodności](getting-compliance-data.md).
+- Dowiedz się, jak [korygowanie niezgodnych zasobów](remediate-resources.md).
+- Przejrzyj grupy zarządzania jest [organizowanie zasobów przy użyciu grup zarządzania platformy Azure](../../management-groups/overview.md).

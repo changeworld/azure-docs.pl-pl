@@ -11,12 +11,12 @@ ms.date: 05/09/2018
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: seoapril2019
-ms.openlocfilehash: 62007624bdf2b5f1b9c387bcc51d58c020860913
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 7ef5c0a4e6694e9babcb3054831e88d9edceae85
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61474950"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937276"
 ---
 # <a name="table-statistics-in-azure-sql-data-warehouse"></a>Statystyki tabeli w usłudze Azure SQL Data Warehouse
 
@@ -71,7 +71,7 @@ Nazwa_tabeli jest nazwą tabeli zawierającej statystykę do wyświetlenia. Nie 
 
 ## <a name="updating-statistics"></a>Zaktualizowanie statystyk
 
-Jeden najlepszym rozwiązaniem jest można zaktualizować statystyki dla kolumn daty każdego dnia, ponieważ są dodawane nowe daty. Każdy czas nowe wiersze są ładowane do magazynu danych, nowe obciążenia daty lub daty transakcji są dodawane. Te zmiany dystrybucję danych i upewnij się nieaktualna statystyki. Z drugiej strony, statystyki dotyczące kraju kolumny w tabeli klientów nigdy nie potrzebować do zaktualizowania, ponieważ rozkładu wartości zwykle nie ulega zmianie. Przy założeniu, że dystrybucja jest stałe od klientów, dodawanie nowych wierszy do tabeli zmian nie zamierza zmienić dystrybucję danych. Jednak jeśli magazyn danych zawiera tylko w jednym kraju, możesz wyświetlić dane z nowego kraju wynikające dane z wielu krajów i przechowywane, następnie należy zaktualizować statystyki dotyczące kolumn kraju.
+Jeden najlepszym rozwiązaniem jest można zaktualizować statystyki dla kolumn daty każdego dnia, ponieważ są dodawane nowe daty. Każdy czas nowe wiersze są ładowane do magazynu danych, nowe obciążenia daty lub daty transakcji są dodawane. Te zmiany dystrybucję danych i upewnij się nieaktualna statystyki. Z drugiej strony, statystyki dla kolumny Kraj/region, w tabeli klientów nigdy nie potrzebować do zaktualizowania, ponieważ rozkładu wartości zwykle nie ulega zmianie. Przy założeniu, że dystrybucja jest stałe od klientów, dodawanie nowych wierszy do tabeli zmian nie zamierza zmienić dystrybucję danych. Jednak jeśli magazyn danych zawiera tylko jednego kraju/regionu i przenieść dane z nowego kraju/regionu, wynikowe dane z wielu krajów/regionów są przechowywane, będzie konieczne aktualizowanie statystyk w kolumnie kraj/region.
 
 Poniżej przedstawiono zalecenia dotyczące zaktualizowanie statystyk:
 

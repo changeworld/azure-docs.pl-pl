@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2017
 ms.author: rli
-ms.openlocfilehash: 877d994968dbc575c8baa7ac4c8a40b76f6d617f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 75fe965a04bd02a1086551053c28d2072eae6468
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60323828"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869509"
 ---
 # <a name="azure-cdn-rules-engine-match-conditions"></a>Pasujące aparat reguł w usłudze Azure CDN 
 W tym artykule przedstawiono szczegółowy opis warunków dopasowania dostępne dla usługi Azure Content Delivery Network (CDN) [aparat reguł](cdn-rules-engine.md).
@@ -28,7 +28,7 @@ Druga część reguły jest warunkiem dopasowania. Warunek dopasowania identyfik
 
 Na przykład można użyć warunek dopasowania:
 - Filtrowanie żądań dla zawartości w danej lokalizacji.
-- Filtrowanie żądań jest generowany na podstawie określonego adresu IP lub kraju.
+- Filtrowanie żądań jest generowany na podstawie określonego adresu IP lub kraju/regionu.
 - Filtruj żądania według informacje nagłówka.
 
 ## <a name="always-match-condition"></a>Zawsze warunek dopasowania
@@ -54,7 +54,7 @@ Warunki dopasowań lokalizacji zidentyfikować żądania na podstawie lokalizacj
 Name (Nazwa) | Przeznaczenie
 -----|--------
 [JAKO liczba](#as-number) | Identyfikuje żądań pochodzących z określonej sieci.
-[Country](#country) | Identyfikuje żądań pochodzących z określonego krajach.
+[Country](#country) | Identyfikuje żądań pochodzących z określonego krajów/regionów.
 
 ## <a name="origin-match-conditions"></a>Warunki dopasowań źródła
 
@@ -235,7 +235,7 @@ Informacje o kluczu:
 
 ---
 ### <a name="country"></a>Kraj
-Można określić kraj za pośrednictwem jego numer kierunkowy kraju. 
+Można określić kraj/region za pośrednictwem jego numer kierunkowy kraju. 
 
 **Dopasowania**/**nie odpowiada** opcja określa warunki, na jakich kraju odpowiada warunek jest spełniony:
 - **Dopasowuje**: Wymaga zawierają wartości kodu kraju określonego żądania. 
@@ -260,9 +260,9 @@ Ten warunek dopasowania umożliwia wykonywanie wielu dostosowań na podstawie lo
 - Adres URL ścieżki symboli wieloznacznych: Ustaw [symboli wieloznacznych ścieżki adresu URL dopasować stan](#url-path-wildcard) do katalogu, który zostanie zabezpieczone. 
     Dołącz gwiazdkę na końcu ścieżki względnej, aby upewnić się, że dostęp do wszystkich jego obiektów podrzędnych będą ograniczone przez tę regułę.
 
-- Dopasowanie kraju: Warunek dopasowania kraju dla żądanej grupy krajów.
-   - Zezwalaj na: Warunek dopasowania kraju na **nie odpowiada** Aby zezwolić na dostęp w określonym krajów do zawartości przechowywanej w lokalizacji zdefiniowanej przez warunek dopasowania symboli wieloznacznych ścieżki adresu URL.
-   - Blok: Warunek dopasowania kraju na **dopasowania** blokowania określonego krajów dostęp do zawartości przechowywanej w lokalizacji zdefiniowanej przez warunek dopasowania symboli wieloznacznych ścieżki adresu URL.
+- Dopasowanie kraju: Warunek dopasowania kraju dla żądanej grupy krajów/regionów.
+   - Zezwalaj na: Warunek dopasowania kraju na **nie odpowiada** Aby zezwolić na dostęp w określonym kraje/regiony do zawartości przechowywanej w lokalizacji zdefiniowanej przez warunek dopasowania symboli wieloznacznych ścieżki adresu URL.
+   - Blok: Warunek dopasowania kraju na **dopasowania** blokowania określonego kraje/regiony dostęp do zawartości przechowywanej w lokalizacji zdefiniowanej przez warunek dopasowania symboli wieloznacznych ścieżki adresu URL.
 
 - Odmów dostępu (403) funkcji: Włącz [funkcja odmowy dostępu (403)](cdn-rules-engine-reference-features.md#deny-access-403) do replikowania dozwolonych lub zablokowanych część funkcji filtrowanie kraju.
 

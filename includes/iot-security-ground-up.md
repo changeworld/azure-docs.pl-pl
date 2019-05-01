@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 14e8eb7c73a1e2cf5047410d3571008c1cd1e1ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b952763378de562f35c2e1ecaf49c56f0145c559
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60626483"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64951552"
 ---
 # <a name="security-for-internet-of-things-iot-from-the-ground-up"></a>Zabezpieczenia dla Internetu rzeczy (IoT) od podstaw
 
@@ -33,7 +33,7 @@ Biorąc pod uwagę zabezpieczeń, ochrony prywatności, przejrzystości i zgodno
 
 ## <a name="secure-infrastructure-from-the-ground-up"></a>Bezpieczną infrastrukturę od podstaw
 
-[Microsoft Cloud](https://azure.microsoft.com) infrastruktury obsługuje ponad miliard klientów ze 127 Państw. Opierając się na firmy Microsoft wieloletnie doświadczenie w tworzeniu oprogramowania korporacyjnego i obsługiwaniu jednych z największych usług online na świecie, Microsoft Cloud przedstawiono wyższego poziomu zwiększonych zabezpieczeń, ochrony prywatności, zgodności i zagrożeń rozwiązania środki zaradcze niż większość klientów może osiągnąć własnych.
+[Microsoft Cloud](https://azure.microsoft.com) infrastruktury obsługuje ponad miliard klientów w krajach/regionach 127. Opierając się na firmy Microsoft wieloletnie doświadczenie w tworzeniu oprogramowania korporacyjnego i obsługiwaniu jednych z największych usług online na świecie, Microsoft Cloud przedstawiono wyższego poziomu zwiększonych zabezpieczeń, ochrony prywatności, zgodności i zagrożeń rozwiązania środki zaradcze niż większość klientów może osiągnąć własnych.
 
 [Cykl projektowania zabezpieczeń (SDL)](https://www.microsoft.com/sdl/) udostępnia proces obowiązkowe rozwoju w firmie, który uwzględnia wymagania dotyczące bezpieczeństwa w cały cykl życia oprogramowania. Aby upewnić się, że działania operacyjne są wykonywane postępuj zgodnie z tym samym poziomie rozwiązania w zakresie zabezpieczeń, SDL korzysta z rygorystycznymi wytycznymi dotyczącymi zabezpieczeń w procesie Operational Security Assurance (OSA) firmy Microsoft. Firma Microsoft współpracuje również z innych firm audytorów trwającą weryfikacji, że spełnia ona swoich zobowiązań zgodności i Microsoft angażuje się w działaniach związanych z zabezpieczeniami szerokiego poprzez utworzenie centra doskonałości, w tym Microsoft Digital Crimes Unit, Microsoft Security Response Center i Microsoft Malware Protection Center.
 

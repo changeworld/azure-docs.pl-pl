@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: c767406ceec703b5c14680ec96fdf703c2316044
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2c206d42e220534225cfef0415a65c1f9494f761
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60403771"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64569796"
 ---
 # <a name="message-sessions-first-in-first-out-fifo"></a>Sesje wiadomości: pierwszy, najpierw FIFO 
 
@@ -79,8 +79,7 @@ Stan sesji przechowywane w kolejce lub w, że subskrypcja liczy się do tej jedn
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Pełny przykład](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/BasicSendReceiveUsingQueueClient) wysyłania i odbierania komunikatów oparte na sesji z usługi Service Bus, kolejki, za pomocą biblioteki .NET Standard.
-- [Przykład](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/Sessions) używającej klienta .NET Framework do obsługi komunikatów obsługujących sesji. 
+- Można znaleźć [przykłady Microsoft.Azure.ServiceBus](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/Sessions) lub [przykłady Microsoft.ServiceBus.Messaging](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/Sessions) przykład, które używa klienta .NET Framework do obsługi komunikatów obsługujących sesji. 
 
 Aby dowiedzieć się więcej na temat obsługi komunikatów usługi Service Bus, zobacz następujące tematy:
 

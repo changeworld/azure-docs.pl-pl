@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
 ms.date: 06/22/2018
-ms.openlocfilehash: bd588eeec8b560411e3fb4b6f84ec8a4a45f08d2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 76783ffd91a8ad17fca912ac9c3a66a5f0f15821
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60844181"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64691927"
 ---
 # <a name="reference-for-trigger-and-action-types-in-workflow-definition-language-for-azure-logic-apps"></a>Dokumentacja dla typów akcji i wyzwalaczy w język definicji przepływów pracy dla usługi Azure Logic Apps
 
@@ -2301,6 +2301,7 @@ Można zmienić domyślne zachowanie środowiska uruchomieniowego dla wyzwalaczy
 | `runtimeConfiguration.concurrency.runs` | Liczba całkowita | Zmiana [ *domyślny limit* ](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) na liczbę wystąpień przepływu pracy, które można uruchomić w tym samym czasie lub w sposób równoległy. Ta wartość może pomóc ograniczyć liczbę żądań, które odbierają systemów zaplecza. <p>Ustawienie `runs` właściwości `1` działa tak samo jak ustawienie `operationOptions` właściwość `SingleInstance`. Możesz ustawić wartość właściwości, ale nie oba. <p>Aby zmienić domyślny limit, zobacz [współbieżności wyzwalacza zmiany](#change-trigger-concurrency) lub [sekwencyjnie wyzwolić wystąpień](#sequential-trigger). | Wszystkie wyzwalacze | 
 | `runtimeConfiguration.concurrency.maximumWaitingRuns` | Liczba całkowita | Zmiana [ *domyślny limit* ](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) na liczbę wystąpień przepływu pracy, które można poczekać i uruchamiany, gdy przepływ pracy jest już uruchomiona maksymalna liczba współbieżnych wystąpień. Limit współbieżności w można zmienić `concurrency.runs` właściwości. <p>Aby zmienić domyślny limit, zobacz [ograniczać przebiegi oczekujących zmian](#change-waiting-runs). | Wszystkie wyzwalacze | 
 | `runtimeConfiguration.concurrency.repetitions` | Liczba całkowita | Zmiana [ *domyślny limit* ](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) "for each" liczby iteracji, które można uruchomić w tym samym czasie lub równolegle w pętli. <p>Ustawienie `repetitions` właściwości `1` działa tak samo jak ustawienie `operationOptions` właściwość `SingleInstance`. Możesz ustawić wartość właściwości, ale nie oba. <p>Aby zmienić domyślny limit, zobacz [zmienić "for each" współbieżności](#change-for-each-concurrency) lub [Uruchom "for each" w pętli sekwencyjnie](#sequential-for-each). | Akcja: <p>[Instrukcja foreach](#foreach-action) | 
+| `runtimeConfiguration.paginationPolicy.minimumItemCount` | Liczba całkowita | Konkretne akcje, które obsługują i mieć włączone stronicowanie, ta wartość Określa *minimalne* liczba wyników do pobrania. <p>Aby włączyć funkcję podziału na strony, zobacz [uzyskać dane zbiorcze, elementy lub wyniki za pomocą dzielenia na strony](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md) | Akcja: Zróżnicowane |
 ||||| 
 
 <a name="operation-options"></a>
@@ -2651,7 +2652,7 @@ W tym przykładzie definicję akcji HTTP `authentication` sekcja określa `Clien
 
 Dla [uwierzytelniania OAuth usługi AD Azure](../active-directory/develop/authentication-scenarios.md), definicji wyzwalacza lub akcji mogą obejmować `authentication` obiekt JSON, który zawiera właściwości określone w poniższej tabeli. Aby uzyskać dostęp do wartości parametrów w czasie wykonywania, można użyć `@parameters('parameterName')` wyrażenie, które są dostarczane przez [język definicji przepływów pracy](https://aka.ms/logicappsdocs).
 
-| Właściwość | Wymagany | Value | Opis |
+| Właściwość | Wymagany | Wartość | Opis |
 |----------|----------|-------|-------------|
 | **type** | Yes | `ActiveDirectoryOAuth` | Typ uwierzytelniania do użycia, czyli "ActiveDirectoryOAuth" dla usługi Azure AD OAuth |
 | **Urząd** | Nie | <*URL-for-authority-token-issuer*> | Adres URL urząd certyfikacji który zawiera token uwierzytelniania |

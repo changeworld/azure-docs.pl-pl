@@ -1,25 +1,18 @@
 ---
-title: Wdróż Maszynę wirtualną platformy Azure przez użytkownika wirtualnego dysku twardego | Dokumentacja firmy Microsoft
+title: Wdróż Maszynę wirtualną platformy Azure przez użytkownika wirtualnego dysku twardego | Portal Azure Marketplace
 description: Wyjaśnia, jak wdrożyć obraz wirtualnego dysku twardego użytkownika w celu utworzenia wystąpienia maszyny Wirtualnej platformy Azure.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 11/29/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 0885b187c4b9e9636144a3ab2a94b941008bec20
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: pabutler
+ms.openlocfilehash: e4da523fa54a513fe77fda037aea0a5fd530250b
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59046739"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938239"
 ---
 # <a name="deploy-an-azure-vm-from-a-user-vhd"></a>Wdróż Maszynę wirtualną platformy Azure przez użytkownika wirtualnego dysku twardego
 

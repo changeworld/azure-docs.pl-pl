@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: a13d3b24cd7845de144183d9f2ea825e0e24219f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 38353ed68469ac35f04d68e19afd11ac4b47f2ae
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60818403"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64943948"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Rozpoczęcie korzystania z usługi Azure Stream Analytics: Wykrywanie oszustw w czasie rzeczywistym
 
@@ -30,7 +30,7 @@ W tym samouczku użyto przykładu wykrywanie oszustw w czasie rzeczywistym na po
 
 ## <a name="scenario-telecommunications-and-sim-fraud-detection-in-real-time"></a>Scenariusz: Telekomunikacji i SIM wykrywanie oszustw w czasie rzeczywistym
 
-Firma ma dużą ilość danych dla połączeń przychodzących. Firma chce wykrywanie fałszywych połączeń w czasie rzeczywistym, aby mogli powiadomienie dla klientów lub wyłączenie usługi dla określonej liczby. Jeden typ o oszustwie SIM obejmuje wiele wywołań z tej samej tożsamości, w tym samym czasie, ale w geograficznie różnych lokalizacjach. Aby wykryć tego rodzaju oszustwa, firma musi sprawdzić rekordach przychodzących telefonu i poszukaj pod kątem określonych wzorców — w tym przypadku do wywołania na tym samym czasie w różnych krajach. Wszystkie rekordy telefonu, które należą do tej kategorii są zapisywane do magazynu w celu dalszej analizy.
+Firma ma dużą ilość danych dla połączeń przychodzących. Firma chce wykrywanie fałszywych połączeń w czasie rzeczywistym, aby mogli powiadomienie dla klientów lub wyłączenie usługi dla określonej liczby. Jeden typ o oszustwie SIM obejmuje wiele wywołań z tej samej tożsamości, w tym samym czasie, ale w geograficznie różnych lokalizacjach. Aby wykryć tego rodzaju oszustwa, firma musi sprawdzić rekordach przychodzących telefonu i poszukaj pod kątem określonych wzorców — w tym przypadku do wywołania w tym samym czasie w różnych krajach/regionach. Wszystkie rekordy telefonu, które należą do tej kategorii są zapisywane do magazynu w celu dalszej analizy.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -150,7 +150,7 @@ Niektóre pola klucza, które będą używane w tej aplikacji wykrywanie oszustw
 |**Rekord**|**Definicja**|
 |----------|--------------|
 |`CallrecTime`|Znacznik czasu godziny rozpoczęcia połączenia. |
-|`SwitchNum`|Centrala telefoniczna używana do wykonania połączenia. W tym przykładzie centrale są ciągami reprezentującymi kraj pochodzenia (USA, Chiny, Zjednoczone Królestwo, Niemcy lub Australia). |
+|`SwitchNum`|Centrala telefoniczna używana do wykonania połączenia. W tym przykładzie centrale są ciągami, które reprezentują kraj/region pochodzenia (USA, Chiny, Zjednoczone Królestwo, Niemcy lub Australia). |
 |`CallingNum`|Numer telefonu dzwoniącego. |
 |`CallingIMSI`|Numer IMSI (International Mobile Subscriber Identity). Jest to unikatowy identyfikator dzwoniącego. |
 |`CalledNum`|Numer telefonu odbiorcy połączenia. |
@@ -276,7 +276,7 @@ W wielu przypadkach analizy nie potrzebuje wszystkich kolumn ze strumienia wejś
 
 Załóżmy, że zechcesz policzyć liczbę wywołań przychodzących na region. W danych przesyłanych strumieniowo, gdy chcesz wykonać funkcje agregujące, takie jak inwentaryzacja, musisz segmentu strumienia do jednostek danych czasowych (ponieważ sam strumień danych jest skutecznie nieskończone). Możesz to zrobić za pomocą usługi Stream Analytics [funkcji okna](stream-analytics-window-functions.md). Możesz pracować z danych wewnątrz tego okna, jako jednostka.
 
-Dla tej transformacji sekwencja danych czasowych systemu Windows, które się nie nakładały — każde okno będzie mieć odrębny zestaw danych, które można grupować i agregacji. Ten typ okna jest nazywany *okno wirowania*. W ramach okna wirowania, możesz uzyskać liczbę wywołań przychodzących, pogrupowane według `SwitchNum`, która reprezentuje kraju, gdzie zainicjowane było wywołanie. 
+Dla tej transformacji sekwencja danych czasowych systemu Windows, które się nie nakładały — każde okno będzie mieć odrębny zestaw danych, które można grupować i agregacji. Ten typ okna jest nazywany *okno wirowania*. W ramach okna wirowania, możesz uzyskać liczbę wywołań przychodzących, pogrupowane według `SwitchNum`, która reprezentuje kraj/region, gdzie zainicjowane było wywołanie. 
 
 1. Zmień zapytanie w edytorze kodu do następujących:
 
@@ -292,7 +292,7 @@ Dla tej transformacji sekwencja danych czasowych systemu Windows, które się ni
 
     Obejmuje projekcji `System.Timestamp`, która zwraca sygnaturę czasową na koniec każdego okna. 
 
-    Aby określić, czy użyć okna wirowania, należy użyć [TUMBLINGWINDOW](https://msdn.microsoft.com/library/dn835055.aspx) działa w programach `GROUP BY` klauzuli. W funkcji należy określić jednostkę czasu (dowolnym z mikrosekund na dzień) i rozmiaru okna (liczbę jednostek). W tym przykładzie okno wirowania składa się z odstępach 5-sekundowego, dzięki czemu otrzymasz liczba według kraju dla co 5 sekund, przez które wywołania.
+    Aby określić, czy użyć okna wirowania, należy użyć [TUMBLINGWINDOW](https://msdn.microsoft.com/library/dn835055.aspx) działa w programach `GROUP BY` klauzuli. W funkcji należy określić jednostkę czasu (dowolnym z mikrosekund na dzień) i rozmiaru okna (liczbę jednostek). W tym przykładzie okno wirowania składa się z odstępach 5-sekundowego, dzięki czemu otrzymasz liczbą według kraju/regionu dla co 5 sekund, przez które wywołania.
 
 2. Kliknij przycisk **testu** ponownie. W wynikach, zwróć uwagę, że sygnatury czasowe, w obszarze **WindowEnd** znajdują się w przyrostach co 5 sekund.
 
@@ -302,7 +302,7 @@ Dla tej transformacji sekwencja danych czasowych systemu Windows, które się ni
 
 W tym przykładzie należy rozważyć użycie fałszywe się wywołania, które pochodzą z tego samego użytkownika, ale w różnych lokalizacjach w ciągu 5 sekund od siebie. Na przykład ten sam użytkownik nie może rzeczywiście wykonywać w tym samym czasie połączeń ze Stanów Zjednoczonych i Australii. 
 
-Aby sprawdzić, czy te przypadki, służy samosprzężenie danych strumieniowych do dołączenia do strumienia do samego siebie na podstawie `CallRecTime` wartości. Następnie można wyszukać wywołanie rekordy, w których `CallingIMSI` wartość (numer źródłowy) jest taka sama, ale `SwitchNum` wartość (kraj źródłowy) nie jest taka sama.
+Aby sprawdzić, czy te przypadki, służy samosprzężenie danych strumieniowych do dołączenia do strumienia do samego siebie na podstawie `CallRecTime` wartości. Następnie można wyszukać wywołanie rekordy, w których `CallingIMSI` wartość (numer źródłowy) jest taka sama, ale `SwitchNum` wartość (kraj/region źródła) nie jest taka sama.
 
 Gdy używasz sprzężenia danych przesyłanych strumieniowo sprzężenie musi udostępniać pewne ograniczenia odległość między dwoma pasującymi wierszami, można oddzielić w czasie. (Jak wspomniano wcześniej, strumień danych jest skutecznie nieskończone). Granice czasowe dla relacji są określone w `ON` klauzuli sprzężenia, przy użyciu `DATEDIFF` funkcji. W tym przypadku przyłączenia opiera się na 5-sekundowego interwału połączenia danych.
 

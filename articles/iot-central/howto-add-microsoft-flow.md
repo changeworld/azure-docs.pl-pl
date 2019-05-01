@@ -4,16 +4,16 @@ description: Korzystania z łącznika IoT Central w Microsoft Flow, aby wyzwala�
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 03/26/2019
+ms.date: 04/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: hegate
-ms.openlocfilehash: 2c4ee6a2feb737bcafc64b1c8503c03757a53364
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 5d1e9941244defbf84b20f95e9f2e0402bbe19f2
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60887737"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64693594"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-microsoft-flow"></a>Tworzenie przepływów pracy z łącznikiem usługi IoT Central w Microsoft Flow
 
@@ -101,9 +101,12 @@ W tej sekcji dowiesz się, jak zaktualizować ustawień i właściwości w IoT C
 
 1. Dodaj nową akcję. Wyszukaj **Azure IoT Central — aktualizacja urządzenia** akcji.
 
-1. Wybierz aplikację z listy rozwijanej. Teraz należy identyfikator istniejącego urządzenia, które chcesz zaktualizować. Możesz uzyskać identyfikator urządzenia IoT Central z **Device Explorer**.
+1. Wybierz aplikację z listy rozwijanej. Teraz należy identyfikator istniejącego urządzenia, które chcesz zaktualizować. 
 
-    ![Identyfikator urządzenia w Eksploratorze urządzenia IoT Central](./media/howto-add-microsoft-flow/iotcdeviceid.png)
+    > [!NOTE] 
+    > **Możesz korzystać z Identyfikatorem znalezionym w adresie URL** na stronie szczegółów urządzenia z urządzenia, które chcesz zaktualizować. Identyfikator urządzenia w programie device explorer listę urządzeń nie jest właściwy do użycia w Microsoft Flow.
+
+    ![Identyfikator IoT Central z adresu URL](./media/howto-add-microsoft-flow/iotcdeviceidurl.png)
 
 1. Można zaktualizować nazwy urządzenia. Do aktualizacji właściwości urządzenia i ustawienia, należy wybrać szablon urządzenia urządzenia, które chcesz zaktualizować w **szablon urządzenia** listy rozwijanej. Kafelek akcji rozwijany, aby wyświetlić wszystkie właściwości i ustawienia mogą być aktualizowane.
 
@@ -117,19 +120,32 @@ W tej sekcji dowiesz się, jak zaktualizować ustawień i właściwości w IoT C
 
 ## <a name="get-device-information-in-a-workflow"></a>Pobierz informacje o urządzeniu w przepływie pracy
 
-Możesz uzyskać informacje o urządzeniu za pomocą jego Identyfikatora urządzenia **Azure IoT Central — Pobierz urządzenie** akcji. Aby uzyskać informacje, takie jak nazwa urządzenia, nazwę szablonu w urządzeniu, wartości właściwości i wartości ustawień do przekazania do kolejnych akcjach w przepływie pracy. Oto przykładowy przepływ pracy, który przekazuje wartość właściwości nazwy klienta z urządzenia do Microsoft Teams.
+Możesz uzyskać informacje o urządzeniu za pomocą jego Identyfikatora **Azure IoT Central — Pobierz urządzenie** akcji. 
+> [!NOTE] 
+> **Możesz korzystać z Identyfikatorem znalezionym w adresie URL** na stronie szczegółów urządzenia z urządzenia, które chcesz zaktualizować. Identyfikator urządzenia w programie device explorer listę urządzeń nie jest właściwy do użycia w Microsoft Flow.
+
+Aby uzyskać informacje, takie jak nazwa urządzenia, nazwę szablonu w urządzeniu, wartości właściwości i wartości ustawień do przekazania do kolejnych akcjach w przepływie pracy. Oto przykładowy przepływ pracy, który przekazuje wartość właściwości nazwy klienta z urządzenia do Microsoft Teams.
 
    ![Przepływ pracy usługi Flow get urządzenia](./media/howto-add-microsoft-flow/flowgetdevice.png)
 
 
 ## <a name="run-a-command-on-a-device-in-a-workflow"></a>Uruchom polecenie na urządzeniu w przepływie pracy
-Na urządzeniu określone za pomocą jego Identyfikatora urządzenia, można uruchomić polecenie **usługi Azure IoT Central — Uruchom polecenie** akcji. Możesz wybrać polecenie Uruchom i przekaż parametry polecenia za pomocą tej akcji. Oto przykładowy przepływ pracy, który uruchamia polecenie ponownego uruchomienia urządzenia przy użyciu przycisku w aplikacji mobilnej Microsoft Flow.
+Można uruchomić polecenie na urządzeniu, określony przez jego identyfikator za pomocą **usługi Azure IoT Central — Uruchom polecenie** akcji. 
+
+> [!NOTE] 
+> **Możesz korzystać z Identyfikatorem znalezionym w adresie URL** na stronie szczegółów urządzenia z urządzenia, które chcesz zaktualizować. Identyfikator urządzenia w programie device explorer listę urządzeń nie jest właściwy do użycia w Microsoft Flow.
+    
+Możesz wybrać polecenie Uruchom i przekaż parametry polecenia za pomocą tej akcji. Oto przykładowy przepływ pracy, który uruchamia polecenie ponownego uruchomienia urządzenia przy użyciu przycisku w aplikacji mobilnej Microsoft Flow.
 
    ![Przepływ pracy usługi Flow get urządzenia](./media/howto-add-microsoft-flow/flowrunacommand.png)
 
 ## <a name="delete-a-device-in-a-workflow"></a>Usuwanie urządzenia w przepływie pracy
 
-Możesz usunąć urządzenia za pomocą jego Identyfikatora urządzenia **Azure IoT Central — Usuń urządzenia z systemem** akcji. Oto przykładowy przepływ pracy, który służy do usuwania urządzenia o naciśnięcie przycisku w aplikacji mobilnej Microsoft Flow.
+Możesz usunąć urządzenia za pomocą jego Identyfikatora **Azure IoT Central — Usuń urządzenia z systemem** akcji. 
+> [!NOTE] 
+> **Możesz korzystać z Identyfikatorem znalezionym w adresie URL** na stronie szczegółów urządzenia z urządzenia, które chcesz zaktualizować. Identyfikator urządzenia w programie device explorer listę urządzeń nie jest właściwy do użycia w Microsoft Flow.
+
+Oto przykładowy przepływ pracy, który służy do usuwania urządzenia o naciśnięcie przycisku w aplikacji mobilnej Microsoft Flow.
 
    ![Przepływ pracy urządzenia usuwanie przepływu](./media/howto-add-microsoft-flow/flowdeletedevice.png)
 

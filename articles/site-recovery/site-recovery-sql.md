@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 67526eddd19c5869aa54432f963d9b80396f878d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 7725563a80182be8f8c02d94ef1e6cfa382c04d3
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61471727"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924850"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>Konfigurowanie odzyskiwania po awarii dla programu SQL Server
 
@@ -170,7 +170,7 @@ W przypadku aplikacji korzystających z transakcji rozproszonych, zaleca się wd
 
 W tym scenariuszu firma Microsoft zaleca użycie replikacji usługi Site Recovery do ochrony komputera programu SQL Server. Konkretne kroki zależy, czy jest SQL Server na maszynie Wirtualnej lub serwer fizyczny i czy ma zostać zreplikowana na platformę Azure lub dodatkowej lokacji lokalnej. Dowiedz się więcej o [scenariuszy odzyskiwania lokacji](site-recovery-overview.md).
 
-## <a name="protect-a-sql-server-cluster-standard-editionwindows-server-2008-r2"></a>Ochrona klastra programu SQL Server (standard edition/Windows Server 2008 R2)
+## <a name="protect-a-sql-server-cluster-standard-editionsql-server-2008-r2"></a>Ochrona klastra programu SQL Server (standard edition/SQL Server 2008 R2)
 
 W przypadku klastra z programem SQL Server Standard edition lub SQL Server 2008 R2 zalecane jest użycie replikacji usługi Site Recovery do ochrony programu SQL Server.
 

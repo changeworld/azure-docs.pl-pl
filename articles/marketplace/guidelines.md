@@ -2,24 +2,18 @@
 title: Wytyczne dotyczące wydawcy w portalu Azure Marketplace i AppSource | Azure
 description: 'Wskazówki dotyczące witryny Azure Marketplace i AppSource dla: wydawcy aplikacji i usługi'
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: jm-aditi-ms
 manager: pabutler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: a0ab88b1375f5178ca6f41689de8d2f30f8d7808
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 05bb531a88677125318ddc23563cd08a3901aa4e
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60739445"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937942"
 ---
 # <a name="guidelines"></a>Wytyczne  
 

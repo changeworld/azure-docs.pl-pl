@@ -1,5 +1,5 @@
 ---
-title: Szybki start — tworzenie aplikacji aparatu Unity dla systemu Android przy użyciu usługi Azure Spatial Anchors | Microsoft Docs
+title: Przewodnik Szybki Start — tworzenie aplikacji dla systemu Android Unity z Azure kotwic przestrzenne | Dokumentacja firmy Microsoft
 description: Z tego przewodnika Szybki start dowiesz się, jak utworzyć aplikację dla systemu Android, używając aparatu Unity i usługi Spatial Anchors.
 author: craigktreasure
 manager: aliemami
@@ -8,16 +8,16 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: bce71db594d2bbd869dcc5a1ff5cb494a7a6f1c2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 001042a5499b492db151853172e999cf7a3c5f88
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60342527"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64687806"
 ---
-# <a name="quickstart-create-an-android-unity-app-with-azure-spatial-anchors"></a>Szybki start: Tworzenie aplikacji aparatu Unity dla systemu Android przy użyciu usługi Azure Spatial Anchors
+# <a name="quickstart-create-a-unity-android-app-with-azure-spatial-anchors"></a>Szybki start: Tworzenie aplikacji dla systemu Android Unity z Azure kotwic przestrzenne
 
-W tym przewodniku Szybki start opisano, jak utworzyć aplikację aparatu Unity dla systemu Android przy użyciu usługi [Azure Spatial Anchors](../overview.md). Azure Spatial Anchors to usługa dla deweloperów programujących dla wielu platform, która pozwala kreować rozwiązania z rzeczywistością mieszaną z użyciem obiektów, których lokalizacja jest taka sama na różnych urządzeniach mimo upływu czasu. Gdy skończysz, będziesz mieć aplikację ARCore dla systemu Android utworzoną za pomocą aparatu Unity, która może zapisywać i przywoływać kotwicę przestrzenną.
+Ten przewodnik Szybki Start opisano, jak utworzyć aplikację dla systemu Android Unity za pomocą [kotwic przestrzenne Azure](../overview.md). Azure Spatial Anchors to usługa dla deweloperów programujących dla wielu platform, która pozwala kreować rozwiązania z rzeczywistością mieszaną z użyciem obiektów, których lokalizacja jest taka sama na różnych urządzeniach mimo upływu czasu. Gdy skończysz, będziesz mieć aplikację ARCore dla systemu Android utworzoną za pomocą aparatu Unity, która może zapisywać i przywoływać kotwicę przestrzenną.
 
 Omawiane tematy:
 

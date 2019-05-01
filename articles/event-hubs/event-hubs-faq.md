@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: d1ed16465efb6c70b4426f22e8b9983112142c79
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ce9c6a83d664bc9ad1798792f7762556c9a0d541
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162649"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64690283"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Usługa Event Hubs — często zadawane pytania
 
@@ -50,6 +50,47 @@ Event Hubs w warstwie standardowa warstwa obsługuje obecnie maksymalny okres pr
 
 ### <a name="how-do-i-monitor-my-event-hubs"></a>Jak monitorować mojej usługi Event Hubs?
 Usługa Event Hubs emituje wyczerpujący metryki, które zapewniają stan zasobów w celu [usługi Azure Monitor](../azure-monitor/overview.md). Pozwalają one również ocenić ogólną kondycję usługi Event Hubs, nie tylko na poziomie przestrzeni nazw, ale także na poziomie jednostki. Dowiedz się więcej o funkcji monitorowania, które jest oferowana w przypadku [usługi Azure Event Hubs](event-hubs-metrics-azure-monitor.md).
+
+### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Które porty należy otworzyć w zaporze? 
+Następujące protokoły za pomocą usługi Azure Service Bus umożliwia wysyłanie i odbieranie wiadomości:
+
+- Advanced Message Queuing Protocol (AMQP)
+- HTTP
+- Apache Kafka
+
+Zobacz poniższą tabelę dla portów wychodzących, które należy otworzyć, aby używać tych protokołów do komunikacji z usługą Azure Event Hubs. 
+
+| Protokół | Porty | Szczegóły | 
+| -------- | ----- | ------- | 
+| AMQP | 5671 i 5672 | Zobacz [przewodnik dotyczący protokołu AMQP](../service-bus-messaging/service-bus-amqp-protocol-guide.md) | 
+| HTTP, HTTPS | 80, 443 |  |
+| Kafka | 9092 | Zobacz [za pomocą Event Hubs z poziomu aplikacji platformy Kafka](event-hubs-for-kafka-ecosystem-overview.md)
+
+### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>Jakie adresy IP należy do listy dozwolonych?
+Aby znaleźć odpowiednie adresy IP w celu białą listę połączeń, wykonaj następujące kroki:
+
+1. Uruchom następujące polecenie w wierszu polecenia: 
+
+    ```
+    nslookup <YourNamespaceName>.servicebus.windows.net
+    ```
+2. Zanotuj adres IP zwrócony `Non-authoritative answer`. Ten adres IP jest statyczne. Tylko punkt, w czasie, które go zmienić jest, jeśli można przywrócić przestrzeni nazw do innego klastra.
+
+Jeśli używasz nadmiarowości strefy dla swojego obszaru nazw, należy wykonać kilka dodatkowych kroków: 
+
+1. Najpierw uruchom narzędzie nslookup w przestrzeni nazw.
+
+    ```
+    nslookup <yournamespace>.servicebus.windows.net
+    ```
+2. Zanotuj nazwę w **nieautorytatywnej odpowiedzi** sekcji, która znajduje się w jednej z następujących formatów: 
+
+    ```
+    <name>-s1.servicebus.windows.net
+    <name>-s2.servicebus.windows.net
+    <name>-s3.servicebus.windows.net
+    ```
+3. Uruchom narzędzie nslookup dla każdego z nich przy użyciu sufiksy s1, s2 i s3 w celu uzyskania adresów IP wszystkich trzech wystąpień w trzech strefach dostępności 
 
 ## <a name="apache-kafka-integration"></a>Integracja platformy Apache Kafka
 

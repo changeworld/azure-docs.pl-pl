@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/01/2019
+ms.date: 04/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 6c3accdd74ce3277181f6cdfc890de0d8c55bf07
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 13db0406681f676f47a3764cf2a59c4dbf251715
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60344635"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64729190"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Operacje dostawcy zasobów w usłudze Azure Resource Manager
 
@@ -38,6 +38,9 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.AAD/domainServices/oucontainer/read | Odczytaj jednostki organizacyjnej kontenerów |
 > | Akcja | Microsoft.AAD/domainServices/oucontainer/write | Zapis kontenera jednostki organizacyjnej |
 > | Akcja | Microsoft.AAD/domainServices/read | Read Domain Services |
+> | Akcja | Microsoft.AAD/domainServices/ReplicaSets/delete | Usuń lokację klastra |
+> | Akcja | Microsoft.AAD/domainServices/ReplicaSets/read | Witryna klastra odczytu |
+> | Akcja | Microsoft.AAD/domainServices/ReplicaSets/write | Zapis witryna klastra |
 > | Akcja | Microsoft.AAD/domainServices/write | Write Domain Service |
 > | Akcja | Microsoft.AAD/locations/operationresults/read |  |
 > | Akcja | Microsoft.AAD/Operations/read |  |
@@ -100,9 +103,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.ADHybridHealthService/reports/availabledeployments/read | Pobiera listę dostępnych regionów, używane przez DevOps do odbiorcy zdarzeń pomocy technicznej. |
 > | Akcja | Microsoft.ADHybridHealthService/reports/badpassword/read | Pobiera listę nieudane próby wprowadzenia hasła dla wszystkich użytkowników w Active Directory Federation Services. |
 > | Akcja | Microsoft.ADHybridHealthService/reports/badpassworduseridipfrequency/read | Pobiera identyfikator URI sygnatury dostępu Współdzielonego obiektów Blob zawierający stan i ostateczną wynikiem nowo dodawanych do kolejki zadania raportowania dla częstotliwości nieprawidłowo podawali nazwę użytkownika/hasło prób na identyfikator użytkownika na adres IP na dzień dla danej dzierżawy. |
-> | Akcja | Microsoft.ADHybridHealthService/reports/blobUris/read | Pobiera wszystkie raport ryzykownych adresów IP, identyfikatorów URI dla ostatnich 7 dni. |
 > | Akcja | Microsoft.ADHybridHealthService/reports/consentedtodevopstenants/read | Pobiera listę DevOps wyraził zgodę dzierżaw. Zwykle używane przez dział pomocy technicznej. |
-> | Akcja | Microsoft.ADHybridHealthService/reports/generateBlobUri/action | Generuje raport ryzykownych adresów IP i zwraca identyfikator URI wskazujących na niego. |
 > | Akcja | Microsoft.ADHybridHealthService/reports/isdevops/read | Pobiera wartość wskazującą, czy dzierżawcy jest wyraził zgodę metodyki DevOps, czy nie. |
 > | Akcja | Microsoft.ADHybridHealthService/reports/selectdevopstenant/read | Aktualizuje userid(objectid) dla dzierżawy ops wybranego deweloperów. |
 > | Akcja | Microsoft.ADHybridHealthService/reports/selecteddeployment/read | Pobiera wybrane wdrożenie do danej dzierżawy. |
@@ -125,7 +126,9 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.ADHybridHealthService/services/monitoringconfigurations/write | Dodawanie lub aktualizacji konfiguracji monitorowania dla usługi. |
 > | Akcja | Microsoft.ADHybridHealthService/services/premiumcheck/read | Ten interfejs API pobiera listę wszystkich usług dołączono dla dzierżawy w warstwie premium. |
 > | Akcja | Microsoft.ADHybridHealthService/services/read | Odczytuje wystąpień usługi w dzierżawie. |
+> | Akcja | Microsoft.ADHybridHealthService/services/reports/blobUris/read | Pobiera wszystkie raport ryzykownych adresów IP, identyfikatorów URI dla ostatnich 7 dni. |
 > | Akcja | Microsoft.ADHybridHealthService/services/reports/details/read | Raport pobiera 50 pierwszych użytkowników z błędami nieprawidłowego hasła z ostatnich 7 dni |
+> | Akcja | Microsoft.ADHybridHealthService/services/reports/generateBlobUri/action | Generuje raport ryzykownych adresów IP i zwraca identyfikator URI wskazujących na niego. |
 > | Akcja | Microsoft.ADHybridHealthService/services/servicemembers/action | Tworzy wystąpienie serwera w usłudze. |
 > | Akcja | Microsoft.ADHybridHealthService/services/servicemembers/alerts/read | Odczytuje alerty dla serwera. |
 > | Akcja | Microsoft.ADHybridHealthService/services/servicemembers/credentials/read | Podczas rejestracji serwera ten interfejs api jest wywoływana, aby uzyskać poświadczenia dla dołączania nowych serwerów. |
@@ -213,163 +216,169 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.ApiManagement/operations/read | Odczytywać wszystkie operacje interfejsu API dostępne dla zasobu Microsoft.ApiManagement |
 > | Akcja | Microsoft.ApiManagement/register/action | Rejestruj subskrypcję dostawcy zasobów Microsoft.ApiManagement |
 > | Akcja | Microsoft.ApiManagement/reports/read | Pobierz raporty agregowane przez okresy czasu, regionu geograficznego, deweloperów, produktów, interfejsów API, operacje, subskrypcji i byRequest. |
-> | Akcja | Microsoft.ApiManagement/service/apis/delete | Usuwanie istniejącego interfejsu API |
-> | Akcja | Microsoft.ApiManagement/service/apis/diagnostics/delete | Usuń istniejące diagnostyki |
-> | Akcja | Microsoft.ApiManagement/service/apis/diagnostics/read | Pobierz listę diagnostyki lub Uzyskaj szczegóły diagnostyczne |
-> | Akcja | Microsoft.ApiManagement/service/apis/diagnostics/write | Dodaj nowe diagnostyki lub zaktualizować istniejące dane diagnostyczne |
-> | Akcja | Microsoft.ApiManagement/service/apis/issues/attachments/delete | Usuwa istniejące załącznika |
-> | Akcja | Microsoft.ApiManagement/service/apis/issues/attachments/read | Szczegółowe informacje załączniki problem lub problem, pobiera z usługi API Management załącznika |
-> | Akcja | Microsoft.ApiManagement/service/apis/issues/attachments/write | Dodaj załącznik problem interfejsu api |
-> | Akcja | Microsoft.ApiManagement/service/apis/issues/comments/delete | Usuwa istniejące komentarz |
-> | Akcja | Microsoft.ApiManagement/service/apis/issues/comments/read | Pobiera komentarze lub problem, pobiera z usługi API Management komentarz szczegóły problemu |
-> | Akcja | Microsoft.ApiManagement/service/apis/issues/comments/write | Dodawanie komentarza dotyczącego problemu z interfejsu api |
-> | Akcja | Microsoft.ApiManagement/service/apis/issues/delete | Usuwa istniejący problem |
-> | Akcja | Microsoft.ApiManagement/service/apis/issues/read | Pobieranie problemów związanych z interfejsu API lub usługi API Management pobiera szczegółowe informacje o problemie |
-> | Akcja | Microsoft.ApiManagement/service/apis/issues/write | Dodawanie interfejsu api problem lub aktualizowanie problem interfejsu api |
-> | Akcja | Microsoft.ApiManagement/service/apis/operations/delete | Usuń istniejące operacji interfejsu API |
-> | Akcja | Microsoft.ApiManagement/service/apis/operations/policies/delete | Usuń konfigurację zasad z zasad operacji interfejsu API |
-> | Akcja | Microsoft.ApiManagement/service/apis/operations/policies/read | Pobieranie zasad dla operacji interfejsu API lub pobranie szczegółów konfiguracji zasad dla operacji interfejsu API |
-> | Akcja | Microsoft.ApiManagement/service/apis/operations/policies/write | Ustaw szczegóły konfiguracji zasad dla operacji interfejsu API |
-> | Akcja | Microsoft.ApiManagement/service/apis/operations/policy/delete | Usuwanie konfiguracji zasad działania |
-> | Akcja | Microsoft.ApiManagement/service/apis/operations/policy/read | Pobierz szczegóły konfiguracji zasad na potrzeby operacji |
-> | Akcja | Microsoft.ApiManagement/service/apis/operations/policy/write | Ustaw szczegóły konfiguracji zasad dla operacji |
-> | Akcja | Microsoft.ApiManagement/service/apis/operations/read | Pobierz listę istniejących operacji interfejsu API lub Uzyskaj szczegółowe informacje o operacji interfejsu API |
-> | Akcja | Microsoft.ApiManagement/service/apis/operations/tags/delete | Usuń skojarzenie istniejących Tag z istniejącej operacji |
-> | Akcja | Microsoft.ApiManagement/service/apis/operations/tags/read | Pobierz Znaczniki skojarzone ze szczegółami operacji lub pobieranie tagów |
-> | Akcja | Microsoft.ApiManagement/service/apis/operations/tags/write | Kojarzenie istniejącego tagu z istniejącej operacji |
-> | Akcja | Microsoft.ApiManagement/service/apis/operations/write | Utwórz nową operację interfejsu API lub zaktualizuj istniejący operacji interfejsu API |
-> | Akcja | Microsoft.ApiManagement/service/apis/operationsByTags/read | Pobierz listę operacji/znaczników powiązania |
-> | Akcja | Microsoft.ApiManagement/service/apis/policies/delete | Usuń konfigurację zasad z zasad interfejsu API |
-> | Akcja | Microsoft.ApiManagement/service/apis/policies/read | Pobierz zasady interfejsu API lub Pobierz zasady szczegółowe informacje dotyczące konfiguracji dla interfejsu API |
-> | Akcja | Microsoft.ApiManagement/service/apis/policies/write | Ustaw szczegóły konfiguracji zasady dla interfejsu API |
-> | Akcja | Microsoft.ApiManagement/service/apis/policy/delete | Usuń konfigurację zasad z interfejsu API |
-> | Akcja | Microsoft.ApiManagement/service/apis/policy/read | Pobierz szczegóły konfiguracji zasady dla interfejsu API |
-> | Akcja | Microsoft.ApiManagement/service/apis/policy/write | Ustaw szczegóły konfiguracji zasady dla interfejsu API |
-> | Akcja | Microsoft.ApiManagement/service/apis/products/read | Pobierz wszystkie produkty, których interfejs API jest częścią |
-> | Akcja | Microsoft.ApiManagement/service/apis/read | Pobierz listę wszystkich zarejestrowanych interfejsów API lub Pobierz szczegóły interfejsu API |
-> | Akcja | Microsoft.ApiManagement/service/apis/releases/delete | Usuwa wszystkie wersje wersji interfejsu API lub usunąć interfejsu API |
-> | Akcja | Microsoft.ApiManagement/service/apis/releases/read | Pobierz wersje interfejsu API lub Pobierz szczegółowe informacje o wersji interfejsu API |
-> | Akcja | Microsoft.ApiManagement/service/apis/releases/write | Tworzenie nowej wersji interfejsu API lub aktualizacji istniejącej wersji interfejsu API |
+> | Akcja | Microsoft.ApiManagement/service/apis/delete | Usuwa określony interfejs API wystąpienia usługi API Management. |
+> | Akcja | Microsoft.ApiManagement/service/apis/diagnostics/delete | Usuwa określony diagnostyczne z interfejsu API. |
+> | Akcja | Microsoft.ApiManagement/service/apis/diagnostics/read | Wyświetla listę wszystkich diagnostyki interfejsu API. lub pobiera szczegóły diagnostyczne dla interfejsu API, określony przez jego identyfikator. |
+> | Akcja | Microsoft.ApiManagement/service/apis/diagnostics/write | Tworzy nowy diagnostyczne dla interfejsu API lub aktualizuje istniejący zestaw. lub aktualizacje szczegóły diagnostyczne dla interfejsu API określony przez jego identyfikator. |
+> | Akcja | Microsoft.ApiManagement/service/apis/issues/attachments/delete | Usuwa określony komentarz z problemu. |
+> | Akcja | Microsoft.ApiManagement/service/apis/issues/attachments/read | Wyświetla wszystkie załączniki dla wydania skojarzone z określonego interfejsu API. lub pobiera szczegóły problemu załącznika dla interfejsu API, określony przez jego identyfikator. |
+> | Akcja | Microsoft.ApiManagement/service/apis/issues/attachments/write | Tworzy nowy załącznik do problemu w interfejsie API, lub aktualizuje istniejący zestaw. |
+> | Akcja | Microsoft.ApiManagement/service/apis/issues/comments/delete | Usuwa określony komentarz z problemu. |
+> | Akcja | Microsoft.ApiManagement/service/apis/issues/comments/read | Wyświetla wszystkie komentarze do wydania skojarzone z określonego interfejsu API. lub pobiera szczegóły problemu komentarz dotyczący interfejsu API, określony przez jego identyfikator. |
+> | Akcja | Microsoft.ApiManagement/service/apis/issues/comments/write | Tworzy nowego komentarza dotyczącego problemu w interfejsie API, lub aktualizuje istniejący zestaw. |
+> | Akcja | Microsoft.ApiManagement/service/apis/issues/delete | Usuwa określony problem z interfejsu API. |
+> | Akcja | Microsoft.ApiManagement/service/apis/issues/read | Wyświetla listę wszystkich problemów skojarzonych z określonym interfejsem API. lub pobiera szczegóły problemu dla interfejsu API, określony przez jego identyfikator. |
+> | Akcja | Microsoft.ApiManagement/service/apis/issues/write | Tworzy nowy problem dla interfejsu API lub aktualizuje istniejący zestaw. lub aktualizacji istniejącej wydania dla interfejsu API. |
+> | Akcja | Microsoft.ApiManagement/service/apis/operations/delete | Usuwa określonej operacji interfejsu API. |
+> | Akcja | Microsoft.ApiManagement/service/apis/operations/policies/delete | Usuwa konfigurację zasad w operacji interfejsu Api. |
+> | Akcja | Microsoft.ApiManagement/service/apis/operations/policies/read | Pobierz listę konfiguracji zasad na poziomie operacji interfejsu API. lub Konfiguracja zasad na poziomie operacji interfejsu API. |
+> | Akcja | Microsoft.ApiManagement/service/apis/operations/policies/write | Tworzy lub aktualizuje konfigurację zasad na poziomie operacji interfejsu API. |
+> | Akcja | Microsoft.ApiManagement/service/apis/operations/policy/delete | Usuwanie konfiguracji zasad na poziomie operacji |
+> | Akcja | Microsoft.ApiManagement/service/apis/operations/policy/read | Pobierz konfigurację zasad na poziomie operacji |
+> | Akcja | Microsoft.ApiManagement/service/apis/operations/policy/write | Tworzenie konfiguracji zasad na na operację |
+> | Akcja | Microsoft.ApiManagement/service/apis/operations/read | Wyświetla listę to kolekcja operacji dla określonego interfejsu API. lub pobiera szczegóły operacji interfejsu API, określony przez jego identyfikator. |
+> | Akcja | Microsoft.ApiManagement/service/apis/operations/tags/delete | Odłącz tag z działania. |
+> | Akcja | Microsoft.ApiManagement/service/apis/operations/tags/read | Wyświetla wszystkie znaczniki skojarzone z operacją. lub Pobierz tag skojarzone z operacją. |
+> | Akcja | Microsoft.ApiManagement/service/apis/operations/tags/write | Przypisywanie tagów do operacji. |
+> | Akcja | Microsoft.ApiManagement/service/apis/operations/write | Tworzy nową operację w interfejsie API, lub aktualizuje istniejący zestaw. lub aktualizacje szczegóły operacji w interfejsie API określony przez jego identyfikator. |
+> | Akcja | Microsoft.ApiManagement/service/apis/operationsByTags/read | Zawiera kolekcję operacji skojarzonych z tagami. |
+> | Akcja | Microsoft.ApiManagement/service/apis/policies/delete | Usuwa konfigurację zasad w interfejsie Api. |
+> | Akcja | Microsoft.ApiManagement/service/apis/policies/read | Pobierz konfigurację zasad na poziomie interfejsu API. lub Konfiguracja zasad na poziomie interfejsu API. |
+> | Akcja | Microsoft.ApiManagement/service/apis/policies/write | Tworzy lub aktualizuje konfigurację zasad interfejsu API. |
+> | Akcja | Microsoft.ApiManagement/service/apis/policy/delete | Usuwanie konfiguracji zasad na poziomie interfejsu API |
+> | Akcja | Microsoft.ApiManagement/service/apis/policy/read | Pobierz konfigurację zasad na poziomie interfejsu API |
+> | Akcja | Microsoft.ApiManagement/service/apis/policy/write | Tworzenie konfiguracji zasad na na interfejs API |
+> | Akcja | Microsoft.ApiManagement/service/apis/products/read | Wyświetla listę wszystkich produktów, które interfejs API jest częścią. |
+> | Akcja | Microsoft.ApiManagement/service/apis/read | Wyświetla listę wszystkich interfejsów API wystąpienia usługi API Management. lub pobiera szczegółowe informacje o interfejsie API, określony przez jego identyfikator. |
+> | Akcja | Microsoft.ApiManagement/service/apis/releases/delete | Usuwa wszystkie wersje interfejsu API lub usuwa z określonej wersji w interfejsie API. |
+> | Akcja | Microsoft.ApiManagement/service/apis/releases/read | Wyświetla listę wszystkich wersji interfejsu API.<br>Wersja interfejsu API jest tworzony podczas wykonywania bieżącej poprawki interfejsu API.<br>Wersje są również używane do wycofania do poprzedniej poprawki.<br>Wyniki będą stronicowane i może być ograniczona przez parametry $top i $skip.<br>lub zwraca szczegółowe informacje o interfejs API wersji. |
+> | Akcja | Microsoft.ApiManagement/service/apis/releases/write | Tworzy nową wersję interfejsu API. lub aktualizacje, szczegółowe informacje o wersji interfejsu API określony przez jego identyfikator. |
 > | Akcja | Microsoft.ApiManagement/service/apis/revisions/delete | Usuwa wszystkie poprawki interfejsu API |
-> | Akcja | Microsoft.ApiManagement/service/apis/revisions/read | Pobierz wersje należących do interfejsu API |
-> | Akcja | Microsoft.ApiManagement/service/apis/schemas/delete | Usuwa istniejące schematu |
-> | Akcja | Microsoft.ApiManagement/service/apis/schemas/document/read | Pobierz dokument z opisem schematu |
-> | Akcja | Microsoft.ApiManagement/service/apis/schemas/document/write | Zaktualizuj schemat opisujący |
-> | Akcja | Microsoft.ApiManagement/service/apis/schemas/read | Pobiera wszystkich schematów dla danego interfejsu API lub pobiera schematy używane przez interfejs API |
-> | Akcja | Microsoft.ApiManagement/service/apis/schemas/write | Ustawia schematy używane przez interfejs API |
-> | Akcja | Microsoft.ApiManagement/service/apis/tagDescriptions/delete | Usuń Tag opis z interfejsu API |
-> | Akcja | Microsoft.ApiManagement/service/apis/tagDescriptions/read | Pobieranie tagów, opisów w zakresie opis interfejsu API lub pobieranie tagów w zakresie interfejsu API |
-> | Akcja | Microsoft.ApiManagement/service/apis/tagDescriptions/write | Opis tworzenia zmiany tagu w zakresie interfejsu API |
-> | Akcja | Microsoft.ApiManagement/service/apis/tags/delete | Usuń istniejące skojarzenie interfejsu API/tagu |
-> | Akcja | Microsoft.ApiManagement/service/apis/tags/read | Pobierz wszystkie skojarzenia interfejsu API/tagu dla interfejsu API lub Pobierz szczegóły skojarzenie interfejsu API/tagu |
-> | Akcja | Microsoft.ApiManagement/service/apis/tags/write | Dodaj nowe skojarzenie interfejsu API/tagu |
-> | Akcja | Microsoft.ApiManagement/service/apis/write | Tworzenie nowego interfejsu API lub zaktualizować istniejące szczegóły interfejsu API |
-> | Akcja | Microsoft.ApiManagement/service/apisByTags/read | Pobierz listę skojarzenia interfejsu API/tagu |
-> | Akcja | Microsoft.ApiManagement/service/apiVersionSets/delete | Usuń istniejące VersionSet |
-> | Akcja | Microsoft.ApiManagement/service/apiVersionSets/read | Pobierz listę jednostek grupy wersji lub pobiera szczegóły VersionSet |
+> | Akcja | Microsoft.ApiManagement/service/apis/revisions/read | Wyświetla wszystkie poprawki interfejsu API. |
+> | Akcja | Microsoft.ApiManagement/service/apis/schemas/delete | Usuwa konfigurację schematu w interfejsie Api. |
+> | Akcja | Microsoft.ApiManagement/service/apis/schemas/read | Uzyskaj konfiguracją w schemacie na poziomie interfejsu API. lub konfiguracją w schemacie na poziomie interfejsu API. |
+> | Akcja | Microsoft.ApiManagement/service/apis/schemas/write | Tworzy lub aktualizuje schemat konfiguracji dla interfejsu API. |
+> | Akcja | Microsoft.ApiManagement/service/apis/tagDescriptions/delete | Usuń tag opis interfejsu API. |
+> | Akcja | Microsoft.ApiManagement/service/apis/tagDescriptions/read | Wyświetla wszystkie opisy tagów w zakresie interfejsu API. Model podobne do struktury swagger — tagDescription jest zdefiniowana na poziomie interfejsu API, ale tagu może być przypisana do operacji lub pobrać opisu tagu w zakresie interfejsu API |
+> | Akcja | Microsoft.ApiManagement/service/apis/tagDescriptions/write | Utwórz/zaktualizuj opis tagu w zakresie interfejsu Api. |
+> | Akcja | Microsoft.ApiManagement/service/apis/tags/delete | Odłącz tag z interfejsu Api. |
+> | Akcja | Microsoft.ApiManagement/service/apis/tags/read | Wyświetla wszystkie znaczniki skojarzone z interfejsem API. lub Pobierz tag skojarzonych z interfejsem API. |
+> | Akcja | Microsoft.ApiManagement/service/apis/tags/write | Przypisywanie tagów do interfejsu Api. |
+> | Akcja | Microsoft.ApiManagement/service/apis/write | Nowe tworzy lub aktualizuje istniejące API określonego wystąpienia usługi API Management. lub aktualizacji interfejsu API określonego wystąpienia usługi API Management. |
+> | Akcja | Microsoft.ApiManagement/service/apisByTags/read | Wyświetla listę zbiór interfejsów API skojarzone z tagami. |
+> | Akcja | Microsoft.ApiManagement/service/apiVersionSets/delete | Usuwa określone ustawiona wersja interfejsu Api. |
+> | Akcja | Microsoft.ApiManagement/service/apiVersionSets/read | Zawiera kolekcję zestawów wersji interfejsu API w wystąpieniu określonej usługi. lub pobiera szczegółowe informacje o wersji interfejsu Api zestawu określonego przez jego identyfikator. |
 > | Akcja | Microsoft.ApiManagement/service/apiVersionSets/versions/read | Pobierz listę jednostek wersji |
-> | Akcja | Microsoft.ApiManagement/service/apiVersionSets/write | Utwórz nowy VersionSet lub zaktualizuj istniejące dane VersionSet |
+> | Akcja | Microsoft.ApiManagement/service/apiVersionSets/write | Tworzy lub aktualizuje zestaw wersji interfejsu Api. lub aktualizacje szczegóły VersionSet interfejsu Api, określony przez jego identyfikator. |
 > | Akcja | Microsoft.ApiManagement/service/applynetworkconfigurationupdates/action | Aktualizuje zasoby Microsoft.ApiManagement działać w sieci wirtualnej, aby pobrać zaktualizowane ustawienia sieciowe. |
-> | Akcja | Microsoft.ApiManagement/service/authorizationServers/delete | Usuwanie istniejącego serwera autoryzacji |
-> | Akcja | Microsoft.ApiManagement/service/authorizationServers/read | Pobieranie listy serwerów autoryzacji lub uzyskiwanie szczegółowych informacji z serwera autoryzacji |
-> | Akcja | Microsoft.ApiManagement/service/authorizationServers/write | Utwórz nowy serwer autoryzacji lub szczegółowe informacje dotyczące aktualizacji istniejącego serwera autoryzacji |
-> | Akcja | Microsoft.ApiManagement/service/backends/delete | Usuwanie istniejącego zaplecza |
-> | Akcja | Microsoft.ApiManagement/service/backends/read | Pobierz listę zaplecza lub Uzyskaj szczegółowe informacje o wewnętrznej bazy danych |
-> | Akcja | Microsoft.ApiManagement/service/backends/reconnect/action | Utwórz żądanie ponownego nawiązania połączenia |
-> | Akcja | Microsoft.ApiManagement/service/backends/write | Dodawanie nowego zaplecza lub zaktualizować istniejące dane do wewnętrznej bazy danych |
+> | Akcja | Microsoft.ApiManagement/service/authorizationServers/delete | Usuwa wystąpienie serwera określonego autoryzacji. |
+> | Akcja | Microsoft.ApiManagement/service/authorizationServers/read | Wyświetla listę kolekcji serwerów autoryzacji zdefiniowane w ramach wystąpienia usługi. lub pobiera szczegóły serwera autoryzacji, określony przez jego identyfikator. |
+> | Akcja | Microsoft.ApiManagement/service/authorizationServers/write | Tworzy nowy serwer autoryzacji lub aktualizuje istniejący serwer autoryzacji. lub aktualizacje szczegóły serwera autoryzacji, określony przez jego identyfikator. |
+> | Akcja | Microsoft.ApiManagement/service/backends/delete | Usuwa określony wewnętrznej bazy danych. |
+> | Akcja | Microsoft.ApiManagement/service/backends/read | Zawiera kolekcję zapleczy w wystąpieniu określonej usługi. lub pobiera szczegółowe informacje o wewnętrznej bazy danych określony przez jego identyfikator. |
+> | Akcja | Microsoft.ApiManagement/service/backends/reconnect/action | Powiadamia serwera proxy usługi APIM utworzyć nowe połączenie z zapleczem usługi po określonym czasie. Jeśli nie określono limitu czasu, limit czasu równy 2 minuty jest używany. |
+> | Akcja | Microsoft.ApiManagement/service/backends/write | Tworzy lub aktualizuje zaplecza. lub aktualizuje istniejącego zaplecza. |
 > | Akcja | Microsoft.ApiManagement/service/backup/action | Kopii zapasowych usługi API Management do określonego kontenera w użytkownika podane konto magazynu |
-> | Akcja | Microsoft.ApiManagement/service/certificates/delete | Usuń istniejący certyfikat |
-> | Akcja | Microsoft.ApiManagement/service/certificates/read | Pobierz listę certyfikatów lub Uzyskaj szczegółowe informacje o certyfikacie |
-> | Akcja | Microsoft.ApiManagement/service/certificates/write | Dodaj nowy certyfikat |
+> | Akcja | Microsoft.ApiManagement/service/caches/delete | Usuwa określonych pamięci podręcznej. |
+> | Akcja | Microsoft.ApiManagement/service/caches/read | Zawiera zbiór wszystkich zewnętrznych pamięci podręcznych w wystąpieniu określonej usługi. lub pobiera szczegółowe informacje o pamięci podręcznej, określony przez jego identyfikator. |
+> | Akcja | Microsoft.ApiManagement/service/caches/write | Tworzy lub aktualizuje zewnętrzna pamięć podręczna, które zostaną użyte w wystąpienia usługi Api Management. lub aktualizacje szczegółowe informacje o pamięci podręcznej, określony przez jego identyfikator. |
+> | Akcja | Microsoft.ApiManagement/service/certificates/delete | Usuwa określonego certyfikatu. |
+> | Akcja | Microsoft.ApiManagement/service/certificates/read | Wyświetla listę kolekcji wszystkie certyfikaty w wystąpieniu określonej usługi. lub pobiera szczegóły certyfikatu określonego przez jego identyfikator. |
+> | Akcja | Microsoft.ApiManagement/service/certificates/write | Tworzy lub aktualizuje certyfikat używany do uwierzytelniania przy użyciu wewnętrznej bazy danych. |
 > | Akcja | Microsoft.ApiManagement/service/contentTypes/contentItems/delete | Usuwa określony element zawartości. |
 > | Akcja | Microsoft.ApiManagement/service/contentTypes/contentItems/read | Zwraca listę elementów zawartości lub zwraca szczegóły elementu zawartości |
 > | Akcja | Microsoft.ApiManagement/service/contentTypes/contentItems/write | Tworzy nowy element zawartości lub aktualizuje określony element zawartości |
 > | Akcja | Microsoft.ApiManagement/service/contentTypes/read | Zwraca listę typów zawartości |
 > | Akcja | Microsoft.ApiManagement/service/delete | Usuń wystąpienie usługi API Management |
-> | Akcja | Microsoft.ApiManagement/service/diagnostics/delete | Usuń istniejące diagnostyki |
-> | Akcja | Microsoft.ApiManagement/service/diagnostics/read | Pobierz listę diagnostyki lub Uzyskaj szczegóły diagnostyczne |
-> | Akcja | Microsoft.ApiManagement/service/diagnostics/write | Dodaj nowe diagnostyki lub zaktualizować istniejące dane diagnostyczne |
+> | Akcja | Microsoft.ApiManagement/service/diagnostics/delete | Usuwa określony diagnostyki. |
+> | Akcja | Microsoft.ApiManagement/service/diagnostics/read | Wyświetla listę wszystkich diagnostykę wystąpienia usługi API Management. lub pobiera szczegóły diagnostyczne określony przez jego identyfikator. |
+> | Akcja | Microsoft.ApiManagement/service/diagnostics/write | Tworzy nowy diagnostyki lub aktualizuje istniejący zestaw. lub aktualizacje szczegóły diagnostyczne określony przez jego identyfikator. |
 > | Akcja | Microsoft.ApiManagement/service/getssotoken/action | Pobiera token logowania jednokrotnego, który może służyć do logowania do interfejsu API zarządzania usługi w starszej wersji portalu jako administrator |
-> | Akcja | Microsoft.ApiManagement/service/groups/delete | Usuń istniejącą grupę |
-> | Akcja | Microsoft.ApiManagement/service/groups/read | Pobieranie listy grup lub pobiera szczegóły grupy |
-> | Akcja | Microsoft.ApiManagement/service/groups/users/delete | Usuwanie istniejącego użytkownika z istniejącej grupy |
-> | Akcja | Microsoft.ApiManagement/service/groups/users/read | Pobieranie listy grup użytkowników |
+> | Akcja | Microsoft.ApiManagement/service/groups/delete | Usuwa określoną grupę wystąpienia usługi API Management. |
+> | Akcja | Microsoft.ApiManagement/service/groups/read | Zawiera kolekcję grup zdefiniowanych w ramach wystąpienia usługi. lub pobiera szczegóły grupy określonej przez jego identyfikator. |
+> | Akcja | Microsoft.ApiManagement/service/groups/users/delete | Usuwanie istniejącego użytkownika z istniejącej grupy. |
+> | Akcja | Microsoft.ApiManagement/service/groups/users/read | Zawiera kolekcję obiektów użytkownika skojarzone z grupą. |
 > | Akcja | Microsoft.ApiManagement/service/groups/users/write | Dodawanie istniejącego użytkownika do istniejącej grupy |
-> | Akcja | Microsoft.ApiManagement/service/groups/write | Utwórz nową grupę lub zaktualizować istniejące szczegóły grupy |
-> | Akcja | Microsoft.ApiManagement/service/identityProviders/delete | Usuwanie istniejącego dostawcy tożsamości |
-> | Akcja | Microsoft.ApiManagement/service/identityProviders/read | Pobierz listę dostawców tożsamości lub Uzyskaj szczegóły dostawcy tożsamości |
-> | Akcja | Microsoft.ApiManagement/service/identityProviders/write | Utwórz nowe szczegóły dostawcy tożsamości lub aktualizację istniejącego dostawcy tożsamości |
+> | Akcja | Microsoft.ApiManagement/service/groups/write | Tworzy lub aktualizuje grupę. lub aktualizacje szczegóły grupy określonej przez jego identyfikator. |
+> | Akcja | Microsoft.ApiManagement/service/identityProviders/delete | Usuwa konfigurację dostawcy określonej tożsamości. |
+> | Akcja | Microsoft.ApiManagement/service/identityProviders/read | Wyświetla listę kolekcji przez dostawcę tożsamości, które skonfigurowano w wystąpieniu określonej usługi. lub pobiera szczegóły konfiguracji dostawcy tożsamości zostały skonfigurowane w wystąpieniu określonej usługi. |
+> | Akcja | Microsoft.ApiManagement/service/identityProviders/write | Tworzy lub aktualizuje konfigurację dostawca tożsamości. lub aktualizuje istniejącą konfigurację dostawca tożsamości. |
+> | Akcja | Microsoft.ApiManagement/service/issues/read | Wyświetla listę kolekcji problemów w wystąpieniu określonej usługi. lub szczegółowe informacje o problemie pobiera z usługi API Management |
 > | Akcja | Microsoft.ApiManagement/service/locations/networkstatus/read | Pobiera stan dostępu do sieci, zasobów, od których zależy od usługi, w tym miejscu. |
-> | Akcja | Microsoft.ApiManagement/service/loggers/delete | Usuń istniejące rejestratora |
-> | Akcja | Microsoft.ApiManagement/service/loggers/read | Pobierz listę rejestratorów lub Uzyskaj szczegółowe informacje o rejestratora |
-> | Akcja | Microsoft.ApiManagement/service/loggers/write | Dodaj nowy Rejestrator lub zaktualizować istniejące dane rejestratora |
+> | Akcja | Microsoft.ApiManagement/service/loggers/delete | Usuwa określonego rejestratora. |
+> | Akcja | Microsoft.ApiManagement/service/loggers/read | Zawiera kolekcję rejestratorów w wystąpieniu określonej usługi. lub pobiera szczegóły rejestratora określony przez jego identyfikator. |
+> | Akcja | Microsoft.ApiManagement/service/loggers/write | Tworzy lub aktualizuje rejestrator. lub aktualizuje istniejące rejestratora. |
 > | Akcja | Microsoft.ApiManagement/service/managedeployments/action | Zmiana jednostki SKU/jednostek, dodawać i usuwać regionalnych wdrożeń usługi API Management |
 > | Akcja | Microsoft.ApiManagement/service/networkstatus/read | Pobiera stan dostępu do sieci, zasobów, od których zależy usługa. |
 > | Akcja | Microsoft.ApiManagement/service/notifications/action | Wysyła powiadomienie do określonego użytkownika |
-> | Akcja | Microsoft.ApiManagement/service/notifications/read | Pobiera wszystkie powiadomienia wydawcy usługi API Management lub pobrać z usługi API Management wydawcy szczegóły powiadomienia |
-> | Akcja | Microsoft.ApiManagement/service/notifications/recipientEmails/delete | Usuwa istniejącego adresu E-mail skojarzonego z powiadomieniem |
-> | Akcja | Microsoft.ApiManagement/service/notifications/recipientEmails/read | Pobierz adresatów wiadomości E-mail skojarzony z interfejsu API zarządzania wydawcy powiadomień |
-> | Akcja | Microsoft.ApiManagement/service/notifications/recipientEmails/write | Utwórz nowy adres E-mail odbiorcy powiadomienia |
-> | Akcja | Microsoft.ApiManagement/service/notifications/recipientUsers/delete | Usuwa użytkownika skojarzone z adresatów powiadomień |
-> | Akcja | Microsoft.ApiManagement/service/notifications/recipientUsers/read | Odbiorca użytkowników skojarzonych z powiadomienia |
-> | Akcja | Microsoft.ApiManagement/service/notifications/recipientUsers/write | Dodawanie użytkownika do adresatów powiadomień |
-> | Akcja | Microsoft.ApiManagement/service/notifications/write | Tworzenie lub powiadomienia o wydawcy usługi API Management Update |
-> | Akcja | Microsoft.ApiManagement/service/openidConnectProviders/delete | Usuwanie dostawcy istniejących OpenID Connect |
-> | Akcja | Microsoft.ApiManagement/service/openidConnectProviders/read | Pobierz listę dostawców uwierzytelniania OpenID Connect lub Uzyskaj szczegóły dostawcy OpenID Connect |
-> | Akcja | Microsoft.ApiManagement/service/openidConnectProviders/write | Utwórz nowe szczegóły dostawcy OpenID Connect lub aktualizację istniejącego dostawcy OpenID Connect |
+> | Akcja | Microsoft.ApiManagement/service/notifications/read | Zawiera kolekcję właściwości zdefiniowane w ramach wystąpienia usługi. lub pobiera szczegóły powiadomienia, określony przez jego identyfikator. |
+> | Akcja | Microsoft.ApiManagement/service/notifications/recipientEmails/delete | Usuwa wiadomości e-mail z listy powiadomień. |
+> | Akcja | Microsoft.ApiManagement/service/notifications/recipientEmails/read | Pobiera listę adresatów wiadomości E-mail z powiadomieniem subskrypcję powiadomienia. |
+> | Akcja | Microsoft.ApiManagement/service/notifications/recipientEmails/write | Dodaje adres E-mail do listy adresatów powiadomienia. |
+> | Akcja | Microsoft.ApiManagement/service/notifications/recipientUsers/delete | Usuwa użytkownika usługi API Management z listy powiadomień. |
+> | Akcja | Microsoft.ApiManagement/service/notifications/recipientUsers/read | Pobiera listę użytkowników adresata powiadomień subskrypcję powiadomienia. |
+> | Akcja | Microsoft.ApiManagement/service/notifications/recipientUsers/write | Dodaje użytkownika zarządzania interfejsu API do listy adresatów powiadomienia. |
+> | Akcja | Microsoft.ApiManagement/service/notifications/write | Tworzenie lub powiadomienia o wydawcy usługi API Management Update. |
+> | Akcja | Microsoft.ApiManagement/service/openidConnectProviders/delete | Usuwa określonego dostawcy OpenID Connect wystąpienia usługi API Management. |
+> | Akcja | Microsoft.ApiManagement/service/openidConnectProviders/read | Wyświetla listę wszystkich dostawców uwierzytelniania OpenId Connect. lub pobiera określonego dostawcy OpenID Connect. |
+> | Akcja | Microsoft.ApiManagement/service/openidConnectProviders/write | Tworzy lub aktualizuje dostawcy OpenID Connect. lub aktualizacje określonego dostawcy OpenID Connect. |
 > | Akcja | Microsoft.ApiManagement/service/operationresults/read | Pobiera bieżący stan długotrwałej operacji |
-> | Akcja | Microsoft.ApiManagement/service/policies/delete | Usuwanie konfiguracji zasad zasady dzierżawy |
-> | Akcja | Microsoft.ApiManagement/service/policies/read | Pobierz zasady dzierżawy lub Pobierz zasady szczegółowe informacje dotyczące konfiguracji dla dzierżawy |
-> | Akcja | Microsoft.ApiManagement/service/policies/write | Ustaw szczegóły konfiguracji zasad dla dzierżawy |
-> | Akcja | Microsoft.ApiManagement/service/policySnippets/read | Pobierz wszystkie fragmenty kodu zasad |
-> | Akcja | Microsoft.ApiManagement/service/portalsettings/read | Pobierz rejestracja ustawienia portalu lub Get podpisywania w ustawieniach portalu lub uzyskać ustawienia delegowania dla portalu |
-> | Akcja | Microsoft.ApiManagement/service/portalsettings/write | Aktualizacji Zarejestruj ustawienia lub aktualizacji Zarejestruj ustawienia lub ustawienia aktualizacji logowania lub ustawienia aktualizacji logowania lub ustawień delegowania aktualizacji lub ustawień delegowania aktualizacji |
-> | Akcja | Microsoft.ApiManagement/service/products/apis/delete | Usuwanie istniejącego interfejsu API z istniejącego produktu |
-> | Akcja | Microsoft.ApiManagement/service/products/apis/read | Pobierz listę interfejsów API dodane do istniejącego produktu |
-> | Akcja | Microsoft.ApiManagement/service/products/apis/write | Dodawanie istniejącego interfejsu API do produktu |
-> | Akcja | Microsoft.ApiManagement/service/products/delete | Usuwanie istniejącego produktu |
-> | Akcja | Microsoft.ApiManagement/service/products/groups/delete | Usuń skojarzenie z istniejącej grupy deweloperów przy użyciu istniejącego produktu |
-> | Akcja | Microsoft.ApiManagement/service/products/groups/read | Pobierz listę grup dla deweloperów skojarzonych z produktu |
-> | Akcja | Microsoft.ApiManagement/service/products/groups/write | Kojarzenie istniejącej grupy deweloperów z istniejącego produktu |
-> | Akcja | Microsoft.ApiManagement/service/products/policies/delete | Usuwanie konfiguracji zasad zasady produktu |
-> | Akcja | Microsoft.ApiManagement/service/products/policies/read | Pobierz zasady produktu lub Pobierz zasady szczegółowe informacje dotyczące konfiguracji dla produktu |
-> | Akcja | Microsoft.ApiManagement/service/products/policies/write | Ustaw szczegóły konfiguracji zasady dla produktu |
-> | Akcja | Microsoft.ApiManagement/service/products/policy/delete | Usuń konfigurację zasad z istniejącego produktu |
-> | Akcja | Microsoft.ApiManagement/service/products/policy/read | Pobieranie zasad konfiguracji istniejącego produktu |
-> | Akcja | Microsoft.ApiManagement/service/products/policy/write | Ustawienia zasad konfiguracji dla istniejącego produktu |
-> | Akcja | Microsoft.ApiManagement/service/products/read | Pobierz listę produktów lub Uzyskaj szczegółowe informacje o produkcie |
-> | Akcja | Microsoft.ApiManagement/service/products/subscriptions/read | Pobierz listę subskrypcji produktu |
-> | Akcja | Microsoft.ApiManagement/service/products/tags/delete | Usuń skojarzenie istniejących Tag z istniejącego produktu |
-> | Akcja | Microsoft.ApiManagement/service/products/tags/read | Pobierz Znaczniki skojarzone ze szczegółami produktu lub pobieranie tagów |
-> | Akcja | Microsoft.ApiManagement/service/products/tags/write | Kojarzenie istniejącego tagu z istniejącego produktu |
-> | Akcja | Microsoft.ApiManagement/service/products/write | Tworzenie nowego produktu lub zaktualizować istniejące szczegóły produktu |
-> | Akcja | Microsoft.ApiManagement/service/productsByTags/read | Pobierz listę skojarzeń produktu/tagu |
-> | Akcja | Microsoft.ApiManagement/service/properties/delete | Usuwa istniejące właściwości |
-> | Akcja | Microsoft.ApiManagement/service/properties/read | Pobiera listę wszystkich właściwości lub pobiera szczegóły określonej właściwości |
-> | Akcja | Microsoft.ApiManagement/service/properties/write | Tworzy nową właściwość lub aktualizuje wartość określonej właściwości |
+> | Akcja | Microsoft.ApiManagement/service/policies/delete | Usuwa konfigurację globalnych zasad usługi Api Management. |
+> | Akcja | Microsoft.ApiManagement/service/policies/read | Wyświetla listę wszystkich definicji globalnych zasad usługi Api Management. lub Pobierz definicję globalnych zasad usługi Api Management. |
+> | Akcja | Microsoft.ApiManagement/service/policies/write | Tworzy lub aktualizuje konfigurację globalnych zasad usługi Api Management. |
+> | Akcja | Microsoft.ApiManagement/service/policy/delete | Usuwanie konfiguracji zasad na poziomie dzierżawy |
+> | Akcja | Microsoft.ApiManagement/service/policy/read | Pobierz konfigurację zasad na poziomie dzierżawy |
+> | Akcja | Microsoft.ApiManagement/service/policy/write | Tworzenie konfiguracji zasad na w dzierżawie |
+> | Akcja | Microsoft.ApiManagement/service/policySnippets/read | Wyświetla wszystkie fragmenty kodu zasad. |
+> | Akcja | Microsoft.ApiManagement/service/portalsettings/read | Uzyskaj logowania w ustawieniach portalu lub logowania Odbierz Konfigurowanie ustawień portalu lub uzyskać ustawienia delegowania dla portalu. |
+> | Akcja | Microsoft.ApiManagement/service/portalsettings/write | Aktualizowanie ustawień logowania. lub ustawienia tworzenia lub aktualizacji logowania. lub ustawienia aktualizacji Zarejestruj lub aktualizacji Zarejestruj ustawień lub ustawień delegowania aktualizacji. lub ustawienia tworzenia lub aktualizacji delegowania. |
+> | Akcja | Microsoft.ApiManagement/service/products/apis/delete | Usuwa określony interfejs API z określonego produktu. |
+> | Akcja | Microsoft.ApiManagement/service/products/apis/read | Listy to zbiór interfejsów API skojarzone z produktem. |
+> | Akcja | Microsoft.ApiManagement/service/products/apis/write | Dodaje interfejs API do określonego produktu. |
+> | Akcja | Microsoft.ApiManagement/service/products/delete | Usuń produkt. |
+> | Akcja | Microsoft.ApiManagement/service/products/groups/delete | Usuwa skojarzenie między określonej grupy i produkt. |
+> | Akcja | Microsoft.ApiManagement/service/products/groups/read | Zawiera kolekcję grup dla deweloperów, które skojarzony z określonym produktem. |
+> | Akcja | Microsoft.ApiManagement/service/products/groups/write | Dodaje skojarzenie między grupą deweloperów określony za pomocą określonego produktu. |
+> | Akcja | Microsoft.ApiManagement/service/products/policies/delete | Usuwa konfigurację zasad w produkcie. |
+> | Akcja | Microsoft.ApiManagement/service/products/policies/read | Pobierz konfigurację zasad na poziomie produktu. lub Konfiguracja zasad na poziomie produktu. |
+> | Akcja | Microsoft.ApiManagement/service/products/policies/write | Tworzy lub aktualizuje konfigurację zasad dla produktu. |
+> | Akcja | Microsoft.ApiManagement/service/products/policy/delete | Usuwanie konfiguracji zasad na poziomie produktu |
+> | Akcja | Microsoft.ApiManagement/service/products/policy/read | Pobierz konfigurację zasad na poziomie produktu |
+> | Akcja | Microsoft.ApiManagement/service/products/policy/write | Tworzenie konfiguracji zasad na produktu |
+> | Akcja | Microsoft.ApiManagement/service/products/read | Wyświetla listę kolekcji produktów w wystąpieniu określonej usługi. lub pobiera szczegóły produktu, określony przez jego identyfikator. |
+> | Akcja | Microsoft.ApiManagement/service/products/subscriptions/read | Wyświetla listę kolekcji w subskrypcji określonego produktu. |
+> | Akcja | Microsoft.ApiManagement/service/products/tags/delete | Odłącz tag z produktu. |
+> | Akcja | Microsoft.ApiManagement/service/products/tags/read | Wyświetla wszystkie znaczniki skojarzone z produktem. lub Pobierz tag skojarzony z produktem. |
+> | Akcja | Microsoft.ApiManagement/service/products/tags/write | Przypisywanie tagu produktu. |
+> | Akcja | Microsoft.ApiManagement/service/products/write | Tworzy lub aktualizuje produktu. lub zaktualizować istniejące szczegółowe informacje. |
+> | Akcja | Microsoft.ApiManagement/service/productsByTags/read | Zawiera kolekcję produkty powiązane z tagami. |
+> | Akcja | Microsoft.ApiManagement/service/properties/delete | Usuwa określoną właściwość z wystąpienia usługi API Management. |
+> | Akcja | Microsoft.ApiManagement/service/properties/read | Zawiera kolekcję właściwości zdefiniowane w ramach wystąpienia usługi. lub pobiera szczegółowe informacje o właściwości określony przez jego identyfikator. |
+> | Akcja | Microsoft.ApiManagement/service/properties/write | Tworzy lub aktualizuje właściwości. lub aktualizuje określoną właściwość. |
 > | Akcja | Microsoft.ApiManagement/service/quotas/periods/read | Pobierz wartość licznika limitu przydziału dla okresu |
 > | Akcja | Microsoft.ApiManagement/service/quotas/periods/write | Ustaw bieżącą wartość licznika limitu przydziału |
 > | Akcja | Microsoft.ApiManagement/service/quotas/read | Pobieranie wartości do limitu przydziału |
 > | Akcja | Microsoft.ApiManagement/service/quotas/write | Ustaw bieżącą wartość licznika limitu przydziału |
 > | Akcja | Microsoft.ApiManagement/service/read | Odczytywanie metadanych dla wystąpienia usługi API Management |
+> | Akcja | Microsoft.ApiManagement/service/regions/read | Wyświetla listę wszystkich regionach platformy azure, w których usługa istnieje. |
 > | Akcja | Microsoft.ApiManagement/service/reports/read | Pobierz raport agregowane przez okresów lub Pobierz raport agregowane według regionu geograficznego lub raport Get agregowane przez deweloperów.<br>lub Pobierz raport agregowane przez produktów.<br>lub Pobierz raport agregowane przez interfejsy API lub Pobierz raport agregowane przez operacje lub Pobierz raport agregowane według subskrypcji.<br>lub Pobierz żądań danych raportowania |
 > | Akcja | Microsoft.ApiManagement/service/restore/action | Przywracanie usługi API Management z określonego kontenera użytkownika podane konto magazynu |
-> | Akcja | Microsoft.ApiManagement/service/subscriptions/delete | Usuń subskrypcję. Ta operacja służy do usuwania subskrypcji |
-> | Akcja | Microsoft.ApiManagement/service/subscriptions/read | Pobierz listę subskrypcji produktu lub uzyskać szczegółów subskrypcji produktu |
-> | Akcja | Microsoft.ApiManagement/service/subscriptions/regeneratePrimaryKey/action | Wygeneruj ponownie klucz podstawowy subskrypcji |
-> | Akcja | Microsoft.ApiManagement/service/subscriptions/regenerateSecondaryKey/action | Wygeneruj ponownie klucz pomocniczy dla subskrypcji |
-> | Akcja | Microsoft.ApiManagement/service/subscriptions/write | Subskrybowanie istniejącego użytkownika do istniejącego produktu lub zaktualizować istniejące Szczegóły subskrypcji. Ta operacja może służyć do odnowienia subskrypcji |
-> | Akcja | Microsoft.ApiManagement/service/tagResources/read | Pobieranie listy tagów ze skojarzonymi zasobami |
-> | Akcja | Microsoft.ApiManagement/service/tags/delete | Usuń istniejące Tag |
-> | Akcja | Microsoft.ApiManagement/service/tags/read | Pobieranie listy tagów lub Pobierz szczegóły tagu |
-> | Akcja | Microsoft.ApiManagement/service/tags/write | Dodawanie nowego tagu lub zaktualizować istniejące Szczegóły tagu |
+> | Akcja | Microsoft.ApiManagement/service/subscriptions/delete | Usuwa określoną subskrypcję. |
+> | Akcja | Microsoft.ApiManagement/service/subscriptions/read | Wyświetla listę wszystkich subskrypcji wystąpienia usługi API Management. lub pobiera określonej jednostki subskrypcji. |
+> | Akcja | Microsoft.ApiManagement/service/subscriptions/regeneratePrimaryKey/action | Generuje ponownie klucz podstawowy istniejącej subskrypcji wystąpienia usługi API Management. |
+> | Akcja | Microsoft.ApiManagement/service/subscriptions/regenerateSecondaryKey/action | Generuje ponownie klucz pomocniczy dla istniejącej subskrypcji wystąpienia usługi API Management. |
+> | Akcja | Microsoft.ApiManagement/service/subscriptions/write | Tworzy lub aktualizuje subskrypcji określonego użytkownika z określonym produktem. lub aktualizacje Szczegóły subskrypcji, określony przez jego identyfikator. |
+> | Akcja | Microsoft.ApiManagement/service/tagResources/read | Zawiera kolekcję zasobów skojarzonych z tagami. |
+> | Akcja | Microsoft.ApiManagement/service/tags/delete | Usuwa określony tag wystąpienia usługi API Management. |
+> | Akcja | Microsoft.ApiManagement/service/tags/read | Zawiera kolekcję tagów zdefiniowany w ramach wystąpienia usługi. lub pobiera Szczegóły tagu określony przez jego identyfikator. |
+> | Akcja | Microsoft.ApiManagement/service/tags/write | Tworzy tag. lub aktualizacje Szczegóły tagu określony przez jego identyfikator. |
 > | Akcja | Microsoft.ApiManagement/service/templates/delete | Resetuj domyślny szablon wiadomości e-mail usługi API Management |
 > | Akcja | Microsoft.ApiManagement/service/templates/read | Pobiera wszystkie szablony wiadomości e-mail lub wiadomości e-mail są pobierane z usługi API Management Szczegóły szablonu |
 > | Akcja | Microsoft.ApiManagement/service/templates/write | Tworzenie lub aktualizowanie szablonu wiadomości e-mail usługi API Management lub aktualizacji usługi API Management, szablon wiadomości e-mail |
 > | Akcja | Microsoft.ApiManagement/service/tenant/delete | Usuń konfigurację zasad dla dzierżawy |
 > | Akcja | Microsoft.ApiManagement/service/tenant/deploy/action | Uruchamia zadanie wdrożenia, aby zastosować zmiany z gałęzi git określony w konfiguracji w bazie danych. |
 > | Akcja | Microsoft.ApiManagement/service/tenant/operationResults/read | Pobierz listę wyników operacji lub Pobierz wyniki operacji |
-> | Akcja | Microsoft.ApiManagement/service/tenant/read | Szczegółowe informacje konfiguracji zasad dla dzierżawy lub dzierżawy Get dostęp do informacji |
+> | Akcja | Microsoft.ApiManagement/service/tenant/read | Uzyskaj definicję globalnych zasad usługi Api Management. lub Pobierz dzierżawy dostęp do informacji o szczegóły |
 > | Akcja | Microsoft.ApiManagement/service/tenant/regeneratePrimaryKey/action | Ponowne generowanie podstawowego klucza dostępu |
 > | Akcja | Microsoft.ApiManagement/service/tenant/regenerateSecondaryKey/action | Wygeneruj ponownie pomocniczy klucz dostępu |
 > | Akcja | Microsoft.ApiManagement/service/tenant/save/action | Tworzy zatwierdzenie z migawki konfiguracji w określonej gałęzi w repozytorium |
@@ -379,21 +388,16 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.ApiManagement/service/updatecertificate/action | Przekaż certyfikat SSL dla usługi API Management |
 > | Akcja | Microsoft.ApiManagement/service/updatehostname/action | Konfigurowanie, zaktualizować lub usunąć niestandardowe nazwy domen dla usługi API Management |
 > | Akcja | Microsoft.ApiManagement/service/users/action | Rejestrowanie nowego użytkownika |
-> | Akcja | Microsoft.ApiManagement/service/users/applications/attachments/delete | Usuwa załącznik |
-> | Akcja | Microsoft.ApiManagement/service/users/applications/attachments/read | Pobiera załączniki z aplikacji lub pobiera załącznika |
-> | Akcja | Microsoft.ApiManagement/service/users/applications/attachments/write | Dodaj załącznik do aplikacji |
-> | Akcja | Microsoft.ApiManagement/service/users/applications/delete | Usuwa istniejące aplikacji |
-> | Akcja | Microsoft.ApiManagement/service/users/applications/read | Pobierz listę wszystkich aplikacji użytkownika lub pobiera z usługi API Management szczegóły aplikacji |
-> | Akcja | Microsoft.ApiManagement/service/users/applications/write | Rejestruje aplikację do usługi API Management lub aktualizacji aplikacji: szczegóły |
 > | Akcja | Microsoft.ApiManagement/service/users/confirmations/send/action | Wysyła potwierdzenie z |
-> | Akcja | Microsoft.ApiManagement/service/users/delete | Usuń konto użytkownika |
-> | Akcja | Microsoft.ApiManagement/service/users/generateSsoUrl/action | Generowanie adresu URL logowania jednokrotnego. Adres URL można uzyskać dostęp do portalu administratora |
-> | Akcja | Microsoft.ApiManagement/service/users/groups/read | Pobieranie listy grup użytkowników |
-> | Akcja | Microsoft.ApiManagement/service/users/keys/read | Pobierz listę kluczy użytkowników |
-> | Akcja | Microsoft.ApiManagement/service/users/read | Pobierz listę zarejestrowanych użytkowników lub pobrać szczegółów konta użytkownika |
-> | Akcja | Microsoft.ApiManagement/service/users/subscriptions/read | Pobierz listę subskrypcji użytkownika |
-> | Akcja | Microsoft.ApiManagement/service/users/token/action | Uzyskiwanie tokenów dostępu tokenu dla użytkownika |
-> | Akcja | Microsoft.ApiManagement/service/users/write | Rejestrowanie nowego użytkownika lub konto informacje na temat aktualizacji istniejącego użytkownika |
+> | Akcja | Microsoft.ApiManagement/service/users/delete | Usuwa określonego użytkownika. |
+> | Akcja | Microsoft.ApiManagement/service/users/generateSsoUrl/action | Pobiera adres URL przekierowania zawierający token uwierzytelniania dla danego użytkownika logowania się do portalu dla deweloperów. |
+> | Akcja | Microsoft.ApiManagement/service/users/groups/read | Wyświetla listę wszystkich grup użytkowników. |
+> | Akcja | Microsoft.ApiManagement/service/users/identities/read | Lista wszystkich tożsamości użytkownika. |
+> | Akcja | Microsoft.ApiManagement/service/users/keys/read | Pobierz klucze skojarzone z użytkownikiem |
+> | Akcja | Microsoft.ApiManagement/service/users/read | Zawiera kolekcję zarejestrowanych użytkowników w wystąpieniu określonej usługi. lub pobiera szczegóły użytkownika określonego przez jego identyfikator. |
+> | Akcja | Microsoft.ApiManagement/service/users/subscriptions/read | Wyświetla listę kolekcji w subskrypcji określonego użytkownika. |
+> | Akcja | Microsoft.ApiManagement/service/users/token/action | Pobiera Token autoryzacji dostępu współdzielonego dla użytkownika. |
+> | Akcja | Microsoft.ApiManagement/service/users/write | Tworzy lub aktualizuje użytkownika. lub aktualizacje szczegóły użytkownika określonego przez jego identyfikator. |
 > | Akcja | Microsoft.ApiManagement/service/write | Utwórz nowe wystąpienie usługi API Management |
 > | Akcja | Microsoft.ApiManagement/unregister/action | Wyrejestruj subskrypcję dostawcy zasobów Microsoft.ApiManagement |
 
@@ -718,11 +722,13 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
 > | Akcja | Microsoft.Capacity/appliedreservations/read | Odczyt wszystkich rezerwacji |
+> | Akcja | Microsoft.Capacity/calculateexchange/action | Oblicza ilość programu exchange i ceny zakupu nowego i przywraca zasadom błędy. |
 > | Akcja | Microsoft.Capacity/calculateprice/action | Oblicz cenę dowolnej rezerwacji |
 > | Akcja | Microsoft.Capacity/catalogs/read | Wykaz odczytu rezerwacji |
 > | Akcja | Microsoft.Capacity/checkoffers/action | Sprawdź wszystkie oferty subskrypcji |
 > | Akcja | Microsoft.Capacity/checkscopes/action | Sprawdź dowolnej subskrypcji |
 > | Akcja | Microsoft.Capacity/commercialreservationorders/read | Pobierz zamówienia rezerwacji utworzone w ramach dowolnej dzierżawy |
+> | Akcja | Microsoft.Capacity/exchange/action | Exchange żadnych rezerwacji |
 > | Akcja | Microsoft.Capacity/operations/read | Wszelkie operacja odczytu |
 > | Akcja | Microsoft.Capacity/register/action | Rejestruje dostawcę zasobów pojemności i włącza funkcję tworzenia zasobów pojemności. |
 > | Akcja | Microsoft.Capacity/reservationorders/action | Aktualizuj żadnych rezerwacji |
@@ -1448,15 +1454,24 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
+> | Akcja | Microsoft.CostManagement/cloudConnectors/delete | Usuń określoną wartość cloudConnector. |
+> | Akcja | Microsoft.CostManagement/cloudConnectors/read | Wyświetl listę cloudConnectors dla tego uwierzytelnionego użytkownika. |
+> | Akcja | Microsoft.CostManagement/cloudConnectors/write | Utwórz lub zaktualizuj określoną wartość cloudConnector. |
 > | Akcja | Microsoft.CostManagement/dimensions/read | Wyświetl listę wszystkich obsługiwanych wymiarów przez zakres. |
 > | Akcja | Microsoft.CostManagement/exports/action | Uruchom określony eksportu. |
 > | Akcja | Microsoft.CostManagement/exports/delete | Usuń eksport określony. |
 > | Akcja | Microsoft.CostManagement/exports/read | Wyświetl listę eksportu w zakresie. |
+> | Akcja | Microsoft.CostManagement/exports/run/action | Eksportuje przebiegu. |
 > | Akcja | Microsoft.CostManagement/exports/write | Utwórz lub zaktualizuj określoną eksportu. |
+> | Akcja | Microsoft.CostManagement/externalBillingAccounts/externalSubscriptions/read | Wyświetl listę externalSubscriptions w ramach externalBillingAccount dla tego uwierzytelnionego użytkownika. |
+> | Akcja | Microsoft.CostManagement/externalBillingAccounts/read | Wyświetl listę externalBillingAccounts dla tego uwierzytelnionego użytkownika. |
+> | Akcja | Microsoft.CostManagement/externalSubscriptions/read | Wyświetl listę externalSubscriptions dla tego uwierzytelnionego użytkownika. |
+> | Akcja | Microsoft.CostManagement/externalSubscriptions/write | Aktualizowanie grupy zarządzania skojarzony z externalSubscription |
 > | Akcja | Microsoft.CostManagement/query/action | Wykonywanie zapytań o dane użycia przez zakres. |
 > | Akcja | Microsoft.CostManagement/query/read | Wykonywanie zapytań o dane użycia przez zakres. |
 > | Akcja | Microsoft.CostManagement/reports/action | Harmonogram raportów dotyczących danych użycia w ramach zakresu. |
 > | Akcja | Microsoft.CostManagement/reports/read | Harmonogram raportów dotyczących danych użycia w ramach zakresu. |
+> | Akcja | Microsoft.CostManagement/tenants/register/action | Rejestrowanie akcji dla zakresu Microsoft.CostManagement przez dzierżawcę. |
 
 ## <a name="microsoftcustomerinsights"></a>Microsoft.CustomerInsights
 
@@ -1587,6 +1602,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/alerts/read | Wyświetla lub pobiera alerty |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/alerts/read | Wyświetla lub pobiera alerty |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/bandwidthSchedules/delete | Usuwa harmonogramy przepustowości |
+> | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/bandwidthSchedules/operationResults/read | Wyświetla lub pobiera wynik operacji |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/bandwidthSchedules/read | Wyświetla lub pobiera harmonogramy przepustowości |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/bandwidthSchedules/read | Wyświetla lub pobiera harmonogramy przepustowości |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/bandwidthSchedules/write | Tworzy lub aktualizuje harmonogramy przepustowości |
@@ -1597,8 +1613,10 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/installUpdates/action | Zainstaluj aktualizacje na urządzeniu |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/jobs/read | Wyświetla lub pobiera zadania |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/networkSettings/read | Wyświetla lub pobiera ustawienia sieciowe urządzenia |
+> | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/operationResults/read | Wyświetla lub pobiera wynik operacji |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/operationsStatus/read | Wyświetla lub pobiera stan operacji |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/orders/delete | Usuwa zamówienia |
+> | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/orders/operationResults/read | Wyświetla lub pobiera wynik operacji |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/orders/read | Wyświetla lub pobiera zamówienia |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/orders/read | Wyświetla lub pobiera zamówienia |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/orders/write | Tworzy lub aktualizuje zamówienia |
@@ -1606,27 +1624,33 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/read | Wyświetla lub pobiera urządzenia brzegowe pole danych |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/read | Wyświetla lub pobiera urządzenia brzegowe pole danych |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/delete | Usuwa ról |
+> | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/operationResults/read | Wyświetla lub pobiera wynik operacji |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/read | Wyświetla lub pobiera role |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/read | Wyświetla lub pobiera role |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/write | Tworzy lub aktualizuje ról |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/scanForUpdates/action | Skanowanie w poszukiwaniu aktualizacji |
+> | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/securitySettings/operationResults/read | Wyświetla lub pobiera wynik operacji |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/securitySettings/update/action | Aktualizowanie ustawień zabezpieczeń |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/shares/delete | Usuwa akcji |
+> | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/shares/operationResults/read | Wyświetla lub pobiera wynik operacji |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/shares/read | Wyświetla lub pobiera akcje |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/shares/read | Wyświetla lub pobiera akcje |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/shares/refresh/action | Odświeżanie metadanych udostępniania, za pomocą danych z chmury |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/shares/write | Tworzy lub aktualizuje akcji |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/storageAccountCredentials/delete | Usuwa poświadczenia konta magazynu |
+> | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/storageAccountCredentials/operationResults/read | Wyświetla lub pobiera wynik operacji |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/storageAccountCredentials/read | Wyświetla lub pobiera poświadczenia konta magazynu |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/storageAccountCredentials/read | Wyświetla lub pobiera poświadczenia konta magazynu |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/storageAccountCredentials/write | Tworzy lub aktualizuje poświadczenia konta magazynu |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/triggers/delete | Usuwa wyzwalacze |
+> | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/triggers/operationResults/read | Wyświetla lub pobiera wynik operacji |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/triggers/read | Wyświetla lub pobiera wyzwalacze |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/triggers/read | Wyświetla lub pobiera wyzwalacze |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/triggers/write | Tworzy lub aktualizuje wyzwalacze |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/updateSummary/read | Wyświetla lub pobiera Podsumowanie aktualizacji |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/uploadCertificate/action | Przekaż certyfikat do rejestracji urządzeń |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/users/delete | Usuwa użytkownicy udziału |
+> | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/users/operationResults/read | Wyświetla lub pobiera wynik operacji |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/users/read | Wyświetla lub pobiera użytkownicy udziału |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/users/read | Wyświetla lub pobiera użytkownicy udziału |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/users/write | Tworzy lub aktualizuje użytkownicy udziału |
@@ -1651,13 +1675,12 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
-> | Akcja | Microsoft.DataCatalog/catalogs/delete | Usuwa katalog. |
-> | Akcja | Microsoft.DataCatalog/catalogs/read | Pobrać właściwości dla katalogu lub katalogów w ramach subskrypcji lub grupy zasobów. |
-> | Akcja | Microsoft.DataCatalog/catalogs/write | Tworzy katalog lub aktualizacji tagów i właściwości dla katalogu. |
-> | Akcja | Microsoft.DataCatalog/checkNameAvailability/action | Służy do sprawdzania dostępności nazwy katalogu dla dzierżawy. |
-> | Akcja | Microsoft.DataCatalog/operations/read | Wyświetla operacje dostępne dla dostawcy zasobów Microsoft.DataCatalog. |
-> | Akcja | Microsoft.DataCatalog/register/action | Rejestruje subskrypcję dostawcy zasobów Microsoft.DataCatalog. |
-> | Akcja | Microsoft.DataCatalog/unregister/action | Wyrejestrowuje subskrypcję z Microsoft.DataCatalog dostawcy zasobów. |
+> | Akcja | Microsoft.DataCatalog/datacatalogs/delete | Usuń zasób DataCatalog dla dostawcy zasobów usługi Data Catalog. |
+> | Akcja | Microsoft.DataCatalog/datacatalogs/read | Odczytaj zasób DataCatalog dla dostawcy zasobów usługi Data Catalog. |
+> | Akcja | Microsoft.DataCatalog/datacatalogs/write | Napisz DataCatalog zasobów dla dostawcy zasobów usługi Data Catalog. |
+> | Akcja | Microsoft.DataCatalog/operations/read | Odczytuje wszystkie operacje dostępne w dostawcy zasobów usługi Data Catalog. |
+> | Akcja | Microsoft.DataCatalog/register/action | Rejestruj subskrypcję dostawcy zasobów usługi Data Catalog |
+> | Akcja | Microsoft.DataCatalog/unregister/action | Wyrejestruj subskrypcję dla dostawcy zasobów usługi Data Catalog |
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
 
@@ -1873,26 +1896,40 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
+> | Akcja | Microsoft.DBforMariaDB/locations/azureAsyncOperation/read | Zwraca wyniki operacji serwera MariaDB |
+> | Akcja | Microsoft.DBforMariaDB/locations/operationResults/read | ResourceGroup zwracane na podstawie wyników operacji serwera MariaDB |
+> | Akcja | Microsoft.DBforMariaDB/locations/operationResults/read | Zwraca wyniki operacji serwera MariaDB |
 > | Akcja | Microsoft.DBforMariaDB/locations/performanceTiers/read | Zwraca listę dostępnych warstw wydajności. |
+> | Akcja | Microsoft.DBforMariaDB/locations/securityAlertPoliciesAzureAsyncOperation/read | Zwraca listę wynik operacji wykrywania zagrożeń serwera. |
+> | Akcja | Microsoft.DBforMariaDB/locations/securityAlertPoliciesOperationResults/read | Zwraca listę wynik operacji wykrywania zagrożeń serwera. |
+> | Akcja | Microsoft.DBforMariaDB/operations/read | Zwraca listę operacji MariaDB. |
 > | Akcja | Microsoft.DBforMariaDB/performanceTiers/read | Zwraca listę dostępnych warstw wydajności. |
+> | Akcja | Microsoft.DBforMariaDB/register/action | Zarejestruj dostawcę zasobów MariaDB |
 > | Akcja | Microsoft.DBforMariaDB/servers/configurations/read | Zwraca listę konfiguracji serwera lub pobiera właściwości dla określonej konfiguracji. |
 > | Akcja | Microsoft.DBforMariaDB/servers/configurations/write | Zaktualizuj wartość dla określonej konfiguracji |
+> | Akcja | Microsoft.DBforMariaDB/servers/databases/delete | Usuwa istniejącą bazę danych MariaDB. |
+> | Akcja | Microsoft.DBforMariaDB/servers/databases/read | Zwraca listę baz danych MariaDB lub pobiera właściwości dla określonej bazy danych. |
+> | Akcja | Microsoft.DBforMariaDB/servers/databases/write | Tworzy bazę danych MariaDB z określonymi parametrami, lub zaktualizuj właściwości określonej bazy danych. |
 > | Akcja | Microsoft.DBforMariaDB/servers/delete | Usuwa istniejącego serwera. |
 > | Akcja | Microsoft.DBforMariaDB/servers/firewallRules/delete | Usuwa istniejącą regułę zapory. |
 > | Akcja | Microsoft.DBforMariaDB/servers/firewallRules/read | Zwraca listę zapory reguły dla serwera lub pobiera właściwości dla reguły zapory określony. |
 > | Akcja | Microsoft.DBforMariaDB/servers/firewallRules/write | Tworzy regułę zapory z podanymi parametrami lub aktualizuje istniejącą regułę. |
+> | Akcja | Microsoft.DBforMariaDB/servers/logFiles/read | Zwraca listę MariaDB LogFiles. |
 > | Akcja | Microsoft.DBforMariaDB/servers/providers/Microsoft.Insights/diagnosticSettings/read | Pobiera disagnostic ustawienie dla zasobu |
 > | Akcja | Microsoft.DBforMariaDB/servers/providers/Microsoft.Insights/diagnosticSettings/write | Tworzy lub aktualizuje ustawienie diagnostyczne dla zasobu |
 > | Akcja | Microsoft.DBforMariaDB/servers/providers/Microsoft.Insights/logDefinitions/read | Pobiera dostępne dzienniki dla serwerów MariaDB |
 > | Akcja | Microsoft.DBforMariaDB/servers/providers/Microsoft.Insights/metricDefinitions/read | Zwracane typy metryk, które są dostępne dla baz danych |
+> | Akcja | Microsoft.DBforMariaDB/servers/queryTexts/action | Zwróć tekstów, aby uzyskać listę zapytań |
 > | Akcja | Microsoft.DBforMariaDB/servers/read | Zwraca listę serwerów lub pobiera właściwości dla określonego serwera. |
 > | Akcja | Microsoft.DBforMariaDB/servers/recoverableServers/read | Zwraca informacje możliwe do odzyskania serwera MariaDB |
 > | Akcja | Microsoft.DBforMariaDB/servers/securityAlertPolicies/read | Pobierz szczegóły zasady wykrywania zagrożeń serwera skonfigurowane na danym serwerze |
 > | Akcja | Microsoft.DBforMariaDB/servers/securityAlertPolicies/write | Zmień zasady wykrywania zagrożeń serwera dla danego serwera |
+> | Akcja | Microsoft.DBforMariaDB/servers/topQueryStatistics/read | Zwraca listę statystyki zapytań najpopularniejsze zapytania. |
 > | Akcja | Microsoft.DBforMariaDB/servers/updateConfigurations/action | Aktualizowanie konfiguracji dla określonego serwera |
 > | Akcja | Microsoft.DBforMariaDB/servers/virtualNetworkRules/delete | Usuwa istniejącą regułę sieci wirtualnej |
 > | Akcja | Microsoft.DBforMariaDB/servers/virtualNetworkRules/read | Zwraca listę sieci wirtualnej reguł lub pobiera właściwości dla reguły określonej sieci wirtualnej. |
 > | Akcja | Microsoft.DBforMariaDB/servers/virtualNetworkRules/write | Tworzy regułę sieci wirtualnej z określonymi parametrami lub aktualizuje właściwości bądź tagi dla reguły określonej sieci wirtualnej. |
+> | Akcja | Microsoft.DBforMariaDB/servers/waitStatistics/read | Zwraca statystyki oczekiwania dla wystąpienia |
 > | Akcja | Microsoft.DBforMariaDB/servers/write | Tworzy serwer z określonymi parametrami lub aktualizuje właściwości bądź tagi dla określonego serwera. |
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
@@ -1900,14 +1937,25 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
+> | Akcja | Microsoft.DBforMySQL/locations/azureAsyncOperation/read | Zwraca wyniki operacji serwera MySQL |
+> | Akcja | Microsoft.DBforMySQL/locations/operationResults/read | ResourceGroup zwracane na podstawie wyników operacji serwera MySQL |
+> | Akcja | Microsoft.DBforMySQL/locations/operationResults/read | Zwraca wyniki operacji serwera MySQL |
 > | Akcja | Microsoft.DBforMySQL/locations/performanceTiers/read | Zwraca listę dostępnych warstw wydajności. |
+> | Akcja | Microsoft.DBforMySQL/locations/securityAlertPoliciesAzureAsyncOperation/read | Zwraca listę wynik operacji wykrywania zagrożeń serwera. |
+> | Akcja | Microsoft.DBforMySQL/locations/securityAlertPoliciesOperationResults/read | Zwraca listę wynik operacji wykrywania zagrożeń serwera. |
+> | Akcja | Microsoft.DBforMySQL/operations/read | Zwraca listę operacji MySQL. |
 > | Akcja | Microsoft.DBforMySQL/performanceTiers/read | Zwraca listę dostępnych warstw wydajności. |
+> | Akcja | Microsoft.DBforMySQL/register/action | Rejestrowanie dostawcy zasobów MySQL |
 > | Akcja | Microsoft.DBforMySQL/servers/configurations/read | Zwraca listę konfiguracji serwera lub pobiera właściwości dla określonej konfiguracji. |
 > | Akcja | Microsoft.DBforMySQL/servers/configurations/write | Zaktualizuj wartość dla określonej konfiguracji |
+> | Akcja | Microsoft.DBforMySQL/servers/databases/delete | Usuwa istniejącą bazę danych MySQL. |
+> | Akcja | Microsoft.DBforMySQL/servers/databases/read | Zwraca listę baz danych MySQL lub pobiera właściwości dla określonej bazy danych. |
+> | Akcja | Microsoft.DBforMySQL/servers/databases/write | Tworzy bazę danych MySQL przy użyciu określonych parametrów lub zaktualizuj właściwości określonej bazy danych. |
 > | Akcja | Microsoft.DBforMySQL/servers/delete | Usuwa istniejącego serwera. |
 > | Akcja | Microsoft.DBforMySQL/servers/firewallRules/delete | Usuwa istniejącą regułę zapory. |
 > | Akcja | Microsoft.DBforMySQL/servers/firewallRules/read | Zwraca listę zapory reguły dla serwera lub pobiera właściwości dla reguły zapory określony. |
 > | Akcja | Microsoft.DBforMySQL/servers/firewallRules/write | Tworzy regułę zapory z podanymi parametrami lub aktualizuje istniejącą regułę. |
+> | Akcja | Microsoft.DBforMySQL/servers/logFiles/read | Zwraca listę PostgreSQL LogFiles. |
 > | Akcja | Microsoft.DBforMySQL/servers/providers/Microsoft.Insights/diagnosticSettings/read | Pobiera disagnostic ustawienie dla zasobu |
 > | Akcja | Microsoft.DBforMySQL/servers/providers/Microsoft.Insights/diagnosticSettings/write | Tworzy lub aktualizuje ustawienie diagnostyczne dla zasobu |
 > | Akcja | Microsoft.DBforMySQL/servers/providers/Microsoft.Insights/logDefinitions/read | Pobiera dostępne dzienniki dla serwerów MySQL |
@@ -1922,6 +1970,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.DBforMySQL/servers/virtualNetworkRules/delete | Usuwa istniejącą regułę sieci wirtualnej |
 > | Akcja | Microsoft.DBforMySQL/servers/virtualNetworkRules/read | Zwraca listę sieci wirtualnej reguł lub pobiera właściwości dla reguły określonej sieci wirtualnej. |
 > | Akcja | Microsoft.DBforMySQL/servers/virtualNetworkRules/write | Tworzy regułę sieci wirtualnej z określonymi parametrami lub aktualizuje właściwości bądź tagi dla reguły określonej sieci wirtualnej. |
+> | Akcja | Microsoft.DBforMySQL/servers/waitStatistics/read | Zwraca statystyki oczekiwania dla wystąpienia |
 > | Akcja | Microsoft.DBforMySQL/servers/write | Tworzy serwer z określonymi parametrami lub aktualizuje właściwości bądź tagi dla określonego serwera. |
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
@@ -1929,17 +1978,28 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
+> | Akcja | Microsoft.DBforPostgreSQL/locations/azureAsyncOperation/read | Zwraca wyniki operacji serwera PostgreSQL |
+> | Akcja | Microsoft.DBforPostgreSQL/locations/operationResults/read | ResourceGroup zwracane na podstawie wyników operacji serwera PostgreSQL |
+> | Akcja | Microsoft.DBforPostgreSQL/locations/operationResults/read | Zwraca wyniki operacji serwera PostgreSQL |
 > | Akcja | Microsoft.DBforPostgreSQL/locations/performanceTiers/read | Zwraca listę dostępnych warstw wydajności. |
+> | Akcja | Microsoft.DBforPostgreSQL/locations/securityAlertPoliciesAzureAsyncOperation/read | Zwraca listę wynik operacji wykrywania zagrożeń serwera. |
+> | Akcja | Microsoft.DBforPostgreSQL/locations/securityAlertPoliciesOperationResults/read | Zwraca listę wynik operacji wykrywania zagrożeń serwera. |
+> | Akcja | Microsoft.DBforPostgreSQL/operations/read | Zwraca listę operacji PostgreSQL. |
 > | Akcja | Microsoft.DBforPostgreSQL/performanceTiers/read | Zwraca listę dostępnych warstw wydajności. |
+> | Akcja | Microsoft.DBforPostgreSQL/register/action | Zarejestruj dostawcę zasobów PostgreSQL |
 > | Akcja | Microsoft.DBforPostgreSQL/servers/advisors/read | Zwraca listę doradców |
 > | Akcja | Microsoft.DBforPostgreSQL/servers/advisors/recommendedActions/read | Zwraca listę zalecanych akcji |
 > | Akcja | Microsoft.DBforPostgreSQL/servers/advisors/recommendedActionSessions/action | Zalecenia |
 > | Akcja | Microsoft.DBforPostgreSQL/servers/configurations/read | Zwraca listę konfiguracji serwera lub pobiera właściwości dla określonej konfiguracji. |
 > | Akcja | Microsoft.DBforPostgreSQL/servers/configurations/write | Zaktualizuj wartość dla określonej konfiguracji |
+> | Akcja | Microsoft.DBforPostgreSQL/servers/databases/delete | Usuwa istniejącą bazę danych PostgreSQL. |
+> | Akcja | Microsoft.DBforPostgreSQL/servers/databases/read | Zwraca listę baz danych PostgreSQL lub pobiera właściwości dla określonej bazy danych. |
+> | Akcja | Microsoft.DBforPostgreSQL/servers/databases/write | Tworzy bazę danych PostgreSQL z określonymi parametrami lub aktualizuje właściwości określonej bazy danych. |
 > | Akcja | Microsoft.DBforPostgreSQL/servers/delete | Usuwa istniejącego serwera. |
 > | Akcja | Microsoft.DBforPostgreSQL/servers/firewallRules/delete | Usuwa istniejącą regułę zapory. |
 > | Akcja | Microsoft.DBforPostgreSQL/servers/firewallRules/read | Zwraca listę zapory reguły dla serwera lub pobiera właściwości dla reguły zapory określony. |
 > | Akcja | Microsoft.DBforPostgreSQL/servers/firewallRules/write | Tworzy regułę zapory z podanymi parametrami lub aktualizuje istniejącą regułę. |
+> | Akcja | Microsoft.DBforPostgreSQL/servers/logFiles/read | Zwraca listę PostgreSQL LogFiles. |
 > | Akcja | Microsoft.DBforPostgreSQL/servers/providers/Microsoft.Insights/diagnosticSettings/read | Pobiera disagnostic ustawienie dla zasobu |
 > | Akcja | Microsoft.DBforPostgreSQL/servers/providers/Microsoft.Insights/diagnosticSettings/write | Tworzy lub aktualizuje ustawienie diagnostyczne dla zasobu |
 > | Akcja | Microsoft.DBforPostgreSQL/servers/providers/Microsoft.Insights/logDefinitions/read | Pobiera dostępne dzienniki dla serwerów Postgres |
@@ -1957,6 +2017,10 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.DBforPostgreSQL/servers/virtualNetworkRules/write | Tworzy regułę sieci wirtualnej z określonymi parametrami lub aktualizuje właściwości bądź tagi dla reguły określonej sieci wirtualnej. |
 > | Akcja | Microsoft.DBforPostgreSQL/servers/waitStatistics/read | Zwraca statystyki oczekiwania dla wystąpienia |
 > | Akcja | Microsoft.DBforPostgreSQL/servers/write | Tworzy serwer z określonymi parametrami lub aktualizuje właściwości bądź tagi dla określonego serwera. |
+> | Akcja | Microsoft.DBforPostgreSQL/serversv2/providers/Microsoft.Insights/diagnosticSettings/read | Pobiera disagnostic ustawienie dla zasobu |
+> | Akcja | Microsoft.DBforPostgreSQL/serversv2/providers/Microsoft.Insights/diagnosticSettings/write | Tworzy lub aktualizuje ustawienie diagnostyczne dla zasobu |
+> | Akcja | Microsoft.DBforPostgreSQL/serversv2/providers/Microsoft.Insights/logDefinitions/read | Pobiera dostępne dzienniki dla serwerów Postgres |
+> | Akcja | Microsoft.DBforPostgreSQL/serversv2/providers/Microsoft.Insights/metricDefinitions/read | Zwracane typy metryk, które są dostępne dla baz danych |
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
 
@@ -2055,6 +2119,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.DevSpaces/controllers/listConnectionDetails/action | Szczegóły połączenia listy dla infrastruktury kontrolera Azure Dev miejsca do magazynowania |
 > | Akcja | Microsoft.DevSpaces/controllers/read | Właściwości odczytu Azure Dev miejsca do magazynowania kontrolera |
 > | Akcja | Microsoft.DevSpaces/controllers/write | Tworzenie lub właściwości aktualizacji usługi Azure Dev miejsca do magazynowania kontrolera |
+> | Akcja | Microsoft.DevSpaces/locations/operationresults/read | Odczytaj stan dla operacji asynchronicznej |
 > | Akcja | Microsoft.DevSpaces/register/action | Procedura Rejestruj dostawcę zasobów miejsca do magazynowania firmy Microsoft Dev z subskrypcją |
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
@@ -2105,6 +2170,12 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.DevTestLab/labs/serviceRunners/delete | Usuń usługę drugie miejsca. |
 > | Akcja | Microsoft.DevTestLab/labs/serviceRunners/read | Drugie miejsca usługi odczytu. |
 > | Akcja | Microsoft.DevTestLab/labs/serviceRunners/write | Dodaje lub modyfikuje używanych modułów uruchamiających usługi. |
+> | Akcja | Microsoft.DevTestLab/labs/sharedGalleries/delete | Usuń udostępniony galerii. |
+> | Akcja | Microsoft.DevTestLab/labs/sharedGalleries/read | Galerie udostępnionych do odczytu. |
+> | Akcja | Microsoft.DevTestLab/labs/sharedGalleries/sharedImages/delete | Usuń udostępnianych obrazów. |
+> | Akcja | Microsoft.DevTestLab/labs/sharedGalleries/sharedImages/read | Przeczytaj udostępnianych obrazów. |
+> | Akcja | Microsoft.DevTestLab/labs/sharedGalleries/sharedImages/write | Dodaje lub modyfikuje udostępnianych obrazów. |
+> | Akcja | Microsoft.DevTestLab/labs/sharedGalleries/write | Dodaje lub modyfikuje galerie udostępnionych. |
 > | Akcja | Microsoft.DevTestLab/labs/users/delete | Usuń profile użytkowników. |
 > | Akcja | Microsoft.DevTestLab/labs/users/disks/Attach/action | Dołączanie i utworzyć dzierżawę dysku do maszyny wirtualnej. |
 > | Akcja | Microsoft.DevTestLab/labs/users/disks/delete | Usuń dyski. |
@@ -2170,6 +2241,41 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
 > | Akcja | Microsoft.DocumentDB/databaseAccountNames/read | Sprawdza dostępność nazwy. |
+> | Akcja | Microsoft.DocumentDB/databaseAccounts/apis/databases/collections/delete | Usuwanie kolekcji. Dotyczy to tylko typy interfejsów API: "bazy danych mongodb". |
+> | Akcja | Microsoft.DocumentDB/databaseAccounts/apis/databases/collections/read | Przeczytaj kolekcję lub listę, wszystkie kolekcje. Dotyczy to tylko typy interfejsów API: "bazy danych mongodb". |
+> | Akcja | Microsoft.DocumentDB/databaseAccounts/apis/databases/collections/settings/throughput/read | Przeczytaj przepływność kolekcji. Dotyczy to tylko typy interfejsów API: "bazy danych mongodb". |
+> | Akcja | Microsoft.DocumentDB/databaseAccounts/apis/databases/collections/settings/throughput/write | Zaktualizuj przepływność kolekcji. Dotyczy to tylko typy interfejsów API: "bazy danych mongodb". |
+> | Akcja | Microsoft.DocumentDB/databaseAccounts/apis/databases/collections/write | Utwórz lub zaktualizuj kolekcję. Dotyczy to tylko typy interfejsów API: "bazy danych mongodb". |
+> | Akcja | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/delete | Usuń kontener. Dotyczy to tylko typy interfejsów API: "sql". |
+> | Akcja | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/read | Przeczytaj kontener lub listę wszystkich kontenerów. Dotyczy to tylko typy interfejsów API: "sql". |
+> | Akcja | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/settings/throughput/read | Przeczytaj przepływności kontenerów. Dotyczy to tylko typy interfejsów API: "sql". |
+> | Akcja | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/settings/throughput/write | Zaktualizuj przepływności kontenerów. Dotyczy to tylko typy interfejsów API: "sql". |
+> | Akcja | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/write | Utwórz lub zaktualizuj kontenera. Dotyczy to tylko typy interfejsów API: "sql". |
+> | Akcja | Microsoft.DocumentDB/databaseAccounts/apis/databases/delete | Usuwanie bazy danych. Dotyczy to tylko typy interfejsów API: "sql", "mongodb", "gremlin". |
+> | Akcja | Microsoft.DocumentDB/databaseAccounts/apis/databases/graphs/delete | Usuwanie wykresu. Dotyczy to tylko typy interfejsów API: "gremlin". |
+> | Akcja | Microsoft.DocumentDB/databaseAccounts/apis/databases/graphs/read | Przeczytaj wykres lub wyświetlić listę wszystkich wykresów. Dotyczy to tylko typy interfejsów API: "gremlin". |
+> | Akcja | Microsoft.DocumentDB/databaseAccounts/apis/databases/graphs/settings/throughput/read | Przeczytaj przepływności wykresu. Dotyczy to tylko typy interfejsów API: "gremlin". |
+> | Akcja | Microsoft.DocumentDB/databaseAccounts/apis/databases/graphs/settings/throughput/write | Zaktualizuj przepływności wykresu. Dotyczy to tylko typy interfejsów API: "gremlin". |
+> | Akcja | Microsoft.DocumentDB/databaseAccounts/apis/databases/graphs/write | Utwórz lub zaktualizuj wykresu. Dotyczy to tylko typy interfejsów API: "gremlin". |
+> | Akcja | Microsoft.DocumentDB/databaseAccounts/apis/databases/read | Przeczytaj bazę danych lub wyświetlić listę wszystkich baz danych. Dotyczy to tylko typy interfejsów API: "sql", "mongodb", "gremlin". |
+> | Akcja | Microsoft.DocumentDB/databaseAccounts/apis/databases/settings/throughput/read | Przeczytaj przepływności bazy danych. Dotyczy to tylko typy interfejsów API: "sql", "mongodb", "gremlin". |
+> | Akcja | Microsoft.DocumentDB/databaseAccounts/apis/databases/settings/throughput/write | Zaktualizuj przepływności bazy danych. Dotyczy to tylko typy interfejsów API: "sql", "mongodb", "gremlin". |
+> | Akcja | Microsoft.DocumentDB/databaseAccounts/apis/databases/write | Tworzenie bazy danych Dotyczy to tylko typy interfejsów API: "sql", "mongodb", "gremlin". |
+> | Akcja | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/delete | Usuń przestrzeń kluczy. Dotyczy to tylko typy interfejsów API: "cassandra". |
+> | Akcja | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/read | Przeczytaj przestrzeń kluczy lub wyświetlić listę wszystkich keyspaces. Dotyczy to tylko typy interfejsów API: "cassandra". |
+> | Akcja | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/settings/throughput/read | Przeczytaj przepływności przestrzeń kluczy. Dotyczy to tylko typy interfejsów API: "cassandra". |
+> | Akcja | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/settings/throughput/write | Zaktualizuj przepływności przestrzeń kluczy. Dotyczy to tylko typy interfejsów API: "cassandra". |
+> | Akcja | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/tables/delete | Usuń tabelę. Dotyczy to tylko typy interfejsów API: "cassandra". |
+> | Akcja | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/tables/read | Odczyt tabeli lub wyświetlić listę wszystkich tabel. Dotyczy to tylko typy interfejsów API: "cassandra". |
+> | Akcja | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/tables/settings/throughput/read | Przeczytaj przepływności tabeli. Dotyczy to tylko typy interfejsów API: "cassandra". |
+> | Akcja | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/tables/settings/throughput/write | Zaktualizuj przepływności tabeli. Dotyczy to tylko typy interfejsów API: "cassandra". |
+> | Akcja | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/tables/write | Utwórz lub zaktualizuj tabelę. Dotyczy to tylko typy interfejsów API: "cassandra". |
+> | Akcja | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/write | Utwórz przestrzeń kluczy. Dotyczy to tylko typy interfejsów API: "cassandra". |
+> | Akcja | Microsoft.DocumentDB/databaseAccounts/apis/tables/delete | Usuń tabelę. Dotyczy to tylko typy interfejsów API: "table". |
+> | Akcja | Microsoft.DocumentDB/databaseAccounts/apis/tables/read | Odczyt tabeli lub wyświetlić listę wszystkich tabel. Dotyczy to tylko typy interfejsów API: "table". |
+> | Akcja | Microsoft.DocumentDB/databaseAccounts/apis/tables/settings/throughput/read | Przeczytaj przepływności tabeli. Dotyczy to tylko typy interfejsów API: "table". |
+> | Akcja | Microsoft.DocumentDB/databaseAccounts/apis/tables/settings/throughput/write | Zaktualizuj przepływności tabeli. Dotyczy to tylko typy interfejsów API: "table". |
+> | Akcja | Microsoft.DocumentDB/databaseAccounts/apis/tables/write | Utwórz lub zaktualizuj tabelę. Dotyczy to tylko typy interfejsów API: "table". |
 > | Akcja | Microsoft.DocumentDB/databaseAccounts/backup/action | Prześlij żądanie do skonfigurowania kopii zapasowej |
 > | Akcja | Microsoft.DocumentDB/databaseAccounts/changeResourceGroup/action | Zmień grupę zasobów konta bazy danych |
 > | Akcja | Microsoft.DocumentDB/databaseAccounts/databases/collections/metricDefinitions/read | Odczytuje definicje metryk w kolekcji. |
@@ -2653,6 +2759,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Insights/MetricDefinitions/Microsoft.Insights/Read | Przeczytaj definicje metryk |
 > | Akcja | Microsoft.Insights/MetricDefinitions/providers/Microsoft.Insights/Read | Przeczytaj definicje metryk |
 > | Akcja | Microsoft.Insights/MetricDefinitions/Read | Przeczytaj definicje metryk |
+> | Akcja | Microsoft.Insights/Metricnamespaces/Read | Odczytaj przestrzenie nazw metryki |
 > | Akcja | Microsoft.Insights/Metrics/Action | Metryki akcji |
 > | Akcja | Microsoft.Insights/Metrics/Microsoft.Insights/Read | Odczytaj metryki |
 > | Akcja | Microsoft.Insights/Metrics/providers/Metrics/Read | Odczytaj metryki |
@@ -2689,6 +2796,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
+> | Akcja | Microsoft.IoTCentral/appTemplates/action | Pobiera wszystkie szablony aplikacji dostępnych w usłudze Azure IoT Central |
 > | Akcja | Microsoft.IoTCentral/checkNameAvailability/action | Sprawdza, czy nazwa IoT Central aplikacji jest dostępna |
 > | Akcja | Microsoft.IoTCentral/checkSubdomainAvailability/action | Sprawdza, czy poddomeny IoT Central aplikacji jest dostępna |
 > | Akcja | Microsoft.IoTCentral/IoTApps/delete | Usuwa aplikacje IoT Central |
@@ -3602,6 +3710,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Network/locations/checkDnsNameAvailability/read | Sprawdza, czy etykieta dns jest dostępna w określonej lokalizacji |
 > | Akcja | Microsoft.Network/locations/operationResults/read | Pobiera wynik operacji asynchronicznej POST lub operacja usuwania |
 > | Akcja | Microsoft.Network/locations/operations/read | Pobiera zasób operacji, który reprezentuje stan operacji asynchronicznej |
+> | Akcja | Microsoft.Network/locations/serviceTags/read | Pobierz tagi usługi |
 > | Akcja | Microsoft.Network/locations/supportedVirtualMachineSizes/read | Pobiera obsługiwane rozmiary maszyn wirtualnych |
 > | Akcja | Microsoft.Network/locations/usages/read | Pobiera zasoby metryki użycia |
 > | Akcja | Microsoft.Network/locations/virtualNetworkAvailableEndpointServices/read | Pobiera listę dostępnych usług punktu końcowego sieci wirtualnej |
@@ -3911,7 +4020,9 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | --- | --- | --- |
 > | Akcja | Microsoft.OperationalInsights/linkTargets/read | Wyświetla listę istniejących kont, które nie są skojarzone z subskrypcją platformy Azure. Aby połączyć tej subskrypcji platformy Azure do obszaru roboczego, użyj identyfikatora klienta zwróconego przez tę operację we właściwości identyfikatora klienta operacji Tworzenie obszaru roboczego. |
 > | Akcja | Microsoft.operationalinsights/Operations/Read | Wyświetla listę wszystkich dostępnych operacji interfejsu API Rest OperationalInsights. |
+> | Akcja | Microsoft.operationalinsights/Register/Action | Rergisters subskrypcji. |
 > | Akcja | Microsoft.OperationalInsights/register/action | Zarejestruj subskrypcję u dostawcy zasobów. |
+> | Akcja | Microsoft.operationalinsights/unregister/Action | Wyrejestrowuje subskrypcję. |
 > | Akcja | Microsoft.OperationalInsights/workspaces/analytics/query/action | Wyszukaj przy użyciu nowego aparatu. |
 > | Akcja | Microsoft.OperationalInsights/workspaces/analytics/query/schema/read | Pobierz schemat wyszukiwania w wersji 2. |
 > | Akcja | Microsoft.OperationalInsights/workspaces/api/query/action | Wyszukaj przy użyciu nowego aparatu. |
@@ -3963,6 +4074,16 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/ContainerLog/read | Odczytaj dane z tabeli ContainerLog |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/ContainerNodeInventory/read | Odczyt danych z tabeli ContainerNodeInventory |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/ContainerServiceLog/read | Odczytaj dane z tabeli ContainerServiceLog |
+> | Akcja | Microsoft.OperationalInsights/workspaces/query/DatabricksAccounts/read | Odczyt danych z tabeli DatabricksAccounts |
+> | Akcja | Microsoft.OperationalInsights/workspaces/query/DatabricksClusters/read | Odczyt danych z tabeli DatabricksClusters |
+> | Akcja | Microsoft.OperationalInsights/workspaces/query/DatabricksDBFS/read | Odczyt danych z tabeli DatabricksDBFS |
+> | Akcja | Microsoft.OperationalInsights/workspaces/query/DatabricksJobs/read | Odczyt danych z tabeli DatabricksJobs |
+> | Akcja | Microsoft.OperationalInsights/workspaces/query/DatabricksNotebook/read | Odczyt danych z tabeli DatabricksNotebook |
+> | Akcja | Microsoft.OperationalInsights/workspaces/query/DatabricksSecrets/read | Odczyt danych z tabeli DatabricksSecrets |
+> | Akcja | Microsoft.OperationalInsights/workspaces/query/DatabricksSQLPermissions/read | Odczyt danych z tabeli DatabricksSQLPermissions |
+> | Akcja | Microsoft.OperationalInsights/workspaces/query/DatabricksSSH/read | Odczyt danych z tabeli DatabricksSSH |
+> | Akcja | Microsoft.OperationalInsights/workspaces/query/DatabricksTables/read | Odczyt danych z tabeli DatabricksTables |
+> | Akcja | Microsoft.OperationalInsights/workspaces/query/DatabricksWorkspace/read | Odczyt danych z tabeli DatabricksWorkspace |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/DeviceAppCrash/read | Odczytaj dane z tabeli DeviceAppCrash |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/DeviceAppLaunch/read | Odczytaj dane z tabeli DeviceAppLaunch |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/DeviceCalendar/read | Odczytaj dane z tabeli DeviceCalendar |
@@ -3993,6 +4114,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/HuntingBookmark/read | Odczyt danych z tabeli HuntingBookmark |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/IISAssessmentRecommendation/read | Odczytaj dane z tabeli IISAssessmentRecommendation |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/InboundConnection/read | Odczytaj dane z tabeli InboundConnection |
+> | Akcja | Microsoft.OperationalInsights/workspaces/query/InsightsMetrics/read | Odczyt danych z tabeli InsightsMetrics |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/IntuneAuditLogs/read | Odczyt danych z tabeli IntuneAuditLogs |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/IntuneOperationalLogs/read | Odczyt danych z tabeli IntuneOperationalLogs |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/KubeEvents/read | Odczyt danych z tabeli KubeEvents |
@@ -4010,6 +4132,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/MADeploymentPlan/read | Odczytaj dane z tabeli MADeploymentPlan |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/MADevice/read | Odczytaj dane z tabeli MADevice |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/MADeviceNotEnrolled/read | Odczyt danych z tabeli MADeviceNotEnrolled |
+> | Akcja | Microsoft.OperationalInsights/workspaces/query/MADeviceNRT/read | Odczyt danych z tabeli MADeviceNRT |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/MADevicePnPHealth/read | Odczytaj dane z tabeli MADevicePnPHealth |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/MADevicePnPHealthAlternativeVersions/read | Odczytaj dane z tabeli MADevicePnPHealthAlternativeVersions |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/MADevicePnPHealthIssues/read | Odczytaj dane z tabeli MADevicePnPHealthIssues |
@@ -4035,7 +4158,9 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/MAOfficeCurrencyAssessment/read | Odczytaj dane z tabeli MAOfficeCurrencyAssessment |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/MAOfficeCurrencyAssessmentDailyCounts/read | Odczytaj dane z tabeli MAOfficeCurrencyAssessmentDailyCounts |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/MAOfficeDeploymentStatus/read | Odczytaj dane z tabeli MAOfficeDeploymentStatus |
+> | Akcja | Microsoft.OperationalInsights/workspaces/query/MAOfficeDeploymentStatusNRT/read | Odczyt danych z tabeli MAOfficeDeploymentStatusNRT |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/MAOfficeMacroErrorNRT/read | Odczyt danych z tabeli MAOfficeMacroErrorNRT |
+> | Akcja | Microsoft.OperationalInsights/workspaces/query/MAOfficeMacroGlobalHealth/read | Odczyt danych z tabeli MAOfficeMacroGlobalHealth |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/MAOfficeMacroHealth/read | Odczytaj dane z tabeli MAOfficeMacroHealth |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/MAOfficeMacroHealthIssues/read | Odczytaj dane z tabeli MAOfficeMacroHealthIssues |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/MAOfficeMacroIssueInstanceReadiness/read | Odczytaj dane z tabeli MAOfficeMacroIssueInstanceReadiness |
@@ -4048,6 +4173,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/MAWindowsCurrencyAssessment/read | Odczytaj dane z tabeli MAWindowsCurrencyAssessment |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/MAWindowsCurrencyAssessmentDailyCounts/read | Odczytaj dane z tabeli MAWindowsCurrencyAssessmentDailyCounts |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/MAWindowsDeploymentStatus/read | Odczytaj dane z tabeli MAWindowsDeploymentStatus |
+> | Akcja | Microsoft.OperationalInsights/workspaces/query/MAWindowsDeploymentStatusNRT/read | Odczyt danych z tabeli MAWindowsDeploymentStatusNRT |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/MAWindowsSysReqInstanceReadiness/read | Odczytaj dane z tabeli MAWindowsSysReqInstanceReadiness |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/NetworkMonitoring/read | Odczytaj dane z tabeli NetworkMonitoring |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/OfficeActivity/read | Odczytaj dane z tabeli OfficeActivity |
@@ -4162,6 +4288,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
 > | Akcja | Microsoft.PolicyInsights/asyncOperationResults/read | Pobiera wynik operacji asynchronicznej. |
+> | Akcja | Microsoft.PolicyInsights/operations/read | Pobiera obsługiwane operacje na Microsoft.PolicyInsights w przestrzeni nazw |
 > | Akcja | Microsoft.PolicyInsights/policyEvents/queryResults/action | Wykonaj zapytanie o informacje dotyczące zdarzeń zasad. |
 > | Akcja | Microsoft.PolicyInsights/policyEvents/queryResults/read | Wykonaj zapytanie o informacje dotyczące zdarzeń zasad. |
 > | Akcja | Microsoft.PolicyInsights/policyStates/queryResults/action | Wykonaj zapytanie o informacje dotyczące stanów zasad. |
@@ -4466,6 +4593,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Resources/deployments/operations/read | Pobiera operacje wdrażania lub wyświetla ich listę. |
 > | Akcja | Microsoft.Resources/deployments/read | Pobiera wdrożenia lub wyświetla ich listę. |
 > | Akcja | Microsoft.Resources/deployments/validate/action | Weryfikuje wdrożenie. |
+> | Akcja | Microsoft.Resources/deployments/whatIf/action | Przewiduje zmiany dotyczące wdrożenia szablonu. |
 > | Akcja | Microsoft.Resources/deployments/write | Tworzy lub aktualizuje wdrożenie. |
 > | Akcja | Microsoft.Resources/links/delete | Usuwa link do zasobu. |
 > | Akcja | Microsoft.Resources/links/read | Pobiera linki do zasobów lub wyświetla ich listę. |
@@ -5060,6 +5188,8 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Sql/servers/keys/read | Zwraca listę server kluczy lub pobiera właściwości dla klucza określonego serwera. |
 > | Akcja | Microsoft.Sql/servers/keys/write | Tworzy klucz z określonymi parametrami lub aktualizuje właściwości bądź tagi dla klucza określonego serwera. |
 > | Akcja | Microsoft.Sql/servers/operationResults/read | Pobiera w trakcie operacji serwera |
+> | Akcja | Microsoft.Sql/servers/privateEndpointConnections/delete | Usuwa istniejące połączenie prywatnych punktów końcowych |
+> | Akcja | Microsoft.Sql/servers/privateEndpointConnections/read | Zwraca listę połączeń prywatnych punktów końcowych lub pobiera właściwości dla połączenia prywatnego określonym w punkcie końcowym. |
 > | Akcja | Microsoft.Sql/servers/providers/Microsoft.Insights/metricDefinitions/read | Zwracane typy metryk, które są dostępne dla serwerów |
 > | Akcja | Microsoft.Sql/servers/read | Zwraca listę serwerów lub pobiera właściwości dla określonego serwera. |
 > | Akcja | Microsoft.Sql/servers/recommendedElasticPools/databases/read | Pobierz metryki dla zalecane elastyczne pule baz danych dla danego serwera |
@@ -5106,7 +5236,6 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/deleteAutomaticSnapshot/action | Zwraca wynik usunięcia automatycznej migawki |
 > | DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action | Zwraca listę obiektów blob w ramach konta ze zgodnym filtrem tagów |
 > | DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | Zwraca obiekt blob lub listę obiektów blob |
-> | DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/runAsSuperUser/action | Zwraca wynik polecenia obiektu blob |
 > | DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/read | Zwraca wynik odczytywania tagów obiektów blob |
 > | DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write | Zwraca wynik zapisywania tagów obiektów blob |
 > | DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | Zwraca wynik zapisania obiektu blob |

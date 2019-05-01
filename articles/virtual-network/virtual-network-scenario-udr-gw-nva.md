@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2016
 ms.author: kumud
-ms.openlocfilehash: c959ee3bea24955e3281feb9db66e4e0cadc8bf9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 1bdc485dfb352144e8a8d0fb75965cbb78288e2c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61034159"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64575587"
 ---
 # <a name="virtual-appliance-scenario"></a>Urządzenie wirtualne scenariusza
 Typowy scenariusz w większych klientów platformy Azure to konieczność zapewnienia dwuwarstwowej aplikacji, połączenie z Internetem, zapewniając dostęp do tyłu warstwy z lokalnego centrum danych. Ten dokument przeprowadzi Cię scenariusz przy użyciu tras zdefiniowanych użytkownika (UDR), bramy sieci VPN i wirtualnych urządzeń sieciowych przeprowadzić wdrożenie w środowisku dwuwarstwowa, która spełnia następujące wymagania:
@@ -30,14 +30,14 @@ Typowy scenariusz w większych klientów platformy Azure to konieczność zapewn
 * Całego ruchu kierowanego do serwera aplikacji musi przejść przez urządzenie wirtualne zapory. To urządzenie wirtualne będą używane dla dostępu do serwera wewnętrznej bazy danych w celu i dostępu odbierane z siecią lokalną za pośrednictwem bramy sieci VPN.
 * Administratorzy muszą mieć możliwość zarządzania urządzenie wirtualne zapory z ich komputerów w środowisku lokalnym, za pomocą innego zapory używane wyłącznie do celów zarządzania urządzenia wirtualnego.
 
-Jest to standardowy scenariusz sieci obwodowej i chronionej sieci. Taki scenariusz można konstruować na platformie Azure przy użyciu sieciowych grup zabezpieczeń, urządzenie wirtualne zapory lub jako kombinację obu tych. W poniższej tabeli przedstawiono niektóre z zalet i wad między grup zabezpieczeń sieci i zapory wirtualnych urządzeń sieciowych.
+To standardowe scenariusz sieci (również knowns jako strefa DMZ), za pomocą sieci Obwodowej i chronionej sieci. Taki scenariusz można konstruować na platformie Azure przy użyciu sieciowych grup zabezpieczeń, urządzenie wirtualne zapory lub jako kombinację obu tych. W poniższej tabeli przedstawiono niektóre z zalet i wad między grup zabezpieczeń sieci i zapory wirtualnych urządzeń sieciowych.
 
 |  | Specjaliści | Wady |
 | --- | --- | --- |
-| Sieciowa grupa zabezpieczeń |Żadnych kosztów. <br/>Zintegrowany RBAC platformy Azure. <br/>Zasady mogą być tworzone w szablonach ARM. |Złożoność może się różnić w większych środowiskach. |
+| Sieciowa grupa zabezpieczeń |Żadnych kosztów. <br/>Zintegrowany RBAC platformy Azure. <br/>Zasady mogą być tworzone w szablonach usługi Azure Resource Manager. |Złożoność może się różnić w większych środowiskach. |
 | Zapora |Pełną kontrolę nad płaszczyzny danych. <br/>Centralne zarządzanie za pomocą konsoli zapory. |Koszt urządzenia zapory. <br/>Nie jest zintegrowana z usługą Azure RBAC. |
 
-Rozwiązanie poniżej używa urządzenie wirtualne zapory do implementacji scenariusza sieci obwodowej/chronione.
+Poniżej rozwiązanie używa urządzenie wirtualne zapory, aby wdrożyć w sieci obwodowej (DMZ) / chronioną scenariusz sieci.
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia
 Możesz wdrożyć środowisko wyjaśniono powyżej na platformie Azure przy użyciu różnych funkcji dostępnych już dziś, wykonując następujące czynności.

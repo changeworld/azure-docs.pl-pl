@@ -13,12 +13,12 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: ada09959391c551a9eff4d96b186be29c1e3b7a8
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: cfc70b3d8e364c25ccf9fd221699695641a66ef0
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60013270"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64708590"
 ---
 # <a name="create-and-run-simple-r-scripts-in-azure-sql-database-machine-learning-services-preview"></a>Utworzyć i uruchomić proste skrypty języka R w usłudze Azure SQL Database usług Machine Learning (wersja zapoznawcza)
 
@@ -102,9 +102,9 @@ Dane wejściowe tej procedury składowanej obejmują:
 
 | | |
 |-|-|
-|*@language* | Określa rozszerzenie języka do wywołania w tym przypadku języka R |
-|*@script* | definiuje polecenia przekazywane do środowiska wykonawczego języka R. Cały skrypt języka R muszą być ujęte w tym argumencie jako tekst w formacie Unicode. Można także dodać go do zmiennej typu **nvarchar** , a następnie wywołać zmiennej |
-|*@input_data_1* | danych zwróconych przez zapytanie, przekazana do środowiska uruchomieniowego języka R, która zwraca dane do programu SQL Server jako ramkę danych |
+| @language | Określa rozszerzenie języka do wywołania w tym przypadku języka R |
+| @script | definiuje polecenia przekazywane do środowiska wykonawczego języka R. Cały skrypt języka R muszą być ujęte w tym argumencie jako tekst w formacie Unicode. Można także dodać go do zmiennej typu **nvarchar** , a następnie wywołać zmiennej |
+| @input_data_1 | danych zwróconych przez zapytanie, przekazana do środowiska uruchomieniowego języka R, która zwraca dane do programu SQL Server jako ramkę danych |
 |ZA POMOCĄ ZESTAWÓW WYNIKÓW | Klauzula definiuje schemat tabeli zwracanych danych dla programu SQL Server, dodając "Hello World" jako nazwa kolumny **int** dla typu danych |
 
 Polecenie wyświetla następujący tekst:
@@ -146,7 +146,7 @@ Na razie Przyjrzyjmy Użyj domyślne dane wejściowe i wyjściowe zmienne [sp_ex
 
     **Results**
 
-    ![Zawartość tabeli RTestData](./media/sql-database-connect-query-r/select-rtestdata.png)
+    ![Zawartość tabeli RTestData](./media/sql-database-quickstart-r-create-script/select-rtestdata.png)
 
 1. Uruchom poniższy skrypt języka R. Pobiera dane z tabeli przy użyciu `SELECT` instrukcję, przechodzi środowiskiem uruchomieniowym języka r. i zwraca dane jako ramkę danych. `WITH RESULT SETS` Klauzuli definiuje schemat tabeli zwracanych danych usługi SQL Database, dodanie nazwy kolumny *NewColName*.
 
@@ -159,7 +159,7 @@ Na razie Przyjrzyjmy Użyj domyślne dane wejściowe i wyjściowe zmienne [sp_ex
 
     **Results**
 
-    ![Dane wyjściowe skryptu języka R, który zwraca dane z tabeli](./media/sql-database-connect-query-r/r-output-rtestdata.png)
+    ![Dane wyjściowe skryptu języka R, który zwraca dane z tabeli](./media/sql-database-quickstart-r-create-script/r-output-rtestdata.png)
 
 1. Teraz zmienimy nazwy zmiennych wejściowych i wyjściowych. Domyślnie dane wejściowe i dane wyjściowe w nazwach zmiennych jest **InputDataSet** i **OutputDataSet**, ten skrypt umożliwia zmianę nazwy **SQL_in** i **SQL_out**:
 
@@ -193,7 +193,7 @@ Na razie Przyjrzyjmy Użyj domyślne dane wejściowe i wyjściowe zmienne [sp_ex
 
     **Results**
 
-    ![Wyniki zapytania używającego @script jako danych wejściowych](./media/sql-database-connect-query-r/r-data-generated-output.png)
+    ![Wyniki zapytania używającego @script jako danych wejściowych](./media/sql-database-quickstart-r-create-script/r-data-generated-output.png)
 
 ## <a name="check-r-version"></a>Sprawdzanie wersji języka R
 
@@ -251,7 +251,7 @@ Dane wyjściowe pochodzą z `installed.packages()` w języku R i jest zwracana w
 
 **Results**
 
-![Zainstalowane pakiety w języku R](./media/sql-database-connect-query-r/r-installed-packages.png)
+![Zainstalowane pakiety w języku R](./media/sql-database-quickstart-r-create-script/r-installed-packages.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
@@ -260,10 +260,8 @@ Aby utworzyć model uczenia maszynowego przy użyciu języka R w usłudze SQL Da
 > [!div class="nextstepaction"]
 > [Utwórz i wytrenuj model predykcyjny w języku R z SQL bazy danych usług Azure Machine Learning (wersja zapoznawcza)](sql-database-quickstart-r-train-score-model.md)
 
-Aby uzyskać więcej informacji na temat usługi Machine Learning Services, zobacz poniższe artykuły. Mimo że niektóre z tych artykułów dotyczą programu SQL Server, większość informacji ma również zastosowanie do usługi Machine Learning Services (z językiem R) w usłudze Azure SQL Database.
+Aby uzyskać więcej informacji na temat usług Azure SQL Database Machine Learning przy użyciu języka R (wersja zapoznawcza) zobacz następujące artykuły.
 
-- [Azure SQL Database Machine Learning Services (z językiem R)](sql-database-machine-learning-services-overview.md)
-- [SQL Server Machine Learning Services](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning)
-- [Samouczek: Analiza w bazie danych przy użyciu języka R w programie SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)
-- [Kompleksowy przewodnik po nauce o danych dla języka R i programu SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)
-- [Samouczek: Używanie funkcji RevoScaleR z danymi programu SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/deepdive-data-science-deep-dive-using-the-revoscaler-packages)
+- [SQL Database usługi Azure Machine Learning przy użyciu języka R (wersja zapoznawcza)](sql-database-machine-learning-services-overview.md)
+- [Zapisywanie zaawansowane funkcje języka R w usłudze Azure SQL Database przy użyciu usług Machine Learning (wersja zapoznawcza)](sql-database-machine-learning-services-functions.md)
+- [Praca z danymi SQL i języka R w SQL bazy danych usług Azure Machine Learning (wersja zapoznawcza)](sql-database-machine-learning-services-data-issues.md)

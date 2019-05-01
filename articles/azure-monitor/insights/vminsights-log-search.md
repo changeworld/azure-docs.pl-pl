@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/10/2019
 ms.author: magoedte
-ms.openlocfilehash: 8b6745a2b9afe8d3101585e3f7a13f2fc978c84a
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: bca1b96e7dc5673cabef26fe6b2cfb8daa41fbf5
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62122595"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64702524"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Tworzenie zapytań względem dzienników z usługi Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)
 Usługa Azure Monitor dla maszyn wirtualnych umożliwia zbieranie informacji o wydajności i metryki połączeń, komputera i przetwarzanie magazynu danych i informacji o stanie kondycji i przekazuje go do obszaru roboczego usługi Log Analytics w usłudze Azure Monitor.  Dane te są dostępne dla [zapytania](../../azure-monitor/log-query/log-query-overview.md) w usłudze Azure Monitor. Dane te można zastosować do scenariuszy obejmujących planowania migracji, analizy wydajności, wykrywanie i rozwiązywanie problemów z wydajnością na żądanie.
@@ -202,7 +202,7 @@ Rekordy z typem *ServiceMapProcess_CL* mają dane spisu dla procesy połączone 
 | ProductVersion_s | Wersja produktu |
 | FileVersion_s | Wersja pliku |
 | CommandLine_s | W wierszu polecenia |
-| ExecutablePath _s | Ścieżka do pliku wykonywalnego |
+| ExecutablePath_s | Ścieżka do pliku wykonywalnego |
 | WorkingDirectory_s | Katalog roboczy |
 | UserName | Konta, w którym proces jest wykonywany |
 | UserDomain | Domeny, w którym proces jest wykonywany |

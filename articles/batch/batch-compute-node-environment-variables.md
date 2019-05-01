@@ -1,6 +1,6 @@
 ---
-title: Zmienne środowiskowe węzła — Azure Batch COMPUTE | Dokumentacja firmy Microsoft
-description: Obliczenia Odnośnik zmiennej środowiskowej węzła usługi Azure Batch Analytics.
+title: Zadanie zmienne środowiska uruchomieniowego — Azure Batch | Dokumentacja firmy Microsoft
+description: Zadania środowiska uruchomieniowego środowiska zmiennej wskazówki i usługi Azure Batch Analytics.
 services: batch
 author: laurenhughes
 manager: jeconnoc
@@ -10,16 +10,16 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 02/07/2019
+ms.date: 04/23/2019
 ms.author: lahugh
-ms.openlocfilehash: 9902f38ddfd3035adcce697c2eb5b77bdc1d8c9c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: c46f75c447becc8b15d4a6b8f979330db7ab95c7
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60782235"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64575582"
 ---
-# <a name="azure-batch-compute-node-environment-variables"></a>Zmienne środowiskowe węzła obliczeniowego usługi Azure Batch
+# <a name="azure-batch-runtime-environment-variables"></a>Zmienne środowiska uruchomieniowego w usłudze Azure Batch
 
 [Usługi Azure Batch](https://azure.microsoft.com/services/batch/) ustawia następujące zmienne środowiskowe w węzłach obliczeniowych. Można odwoływać się tych zmiennych środowiskowych w wierszach polecenia zadań podrzędnych oraz w programach i skryptach uruchamianych przez wiersze polecenia.
 
@@ -28,6 +28,12 @@ Aby uzyskać dodatkowe informacje dotyczące używania zmiennych środowiskowych
 ## <a name="environment-variable-visibility"></a>Widoczność zmiennych środowiskowych
 
 Te zmienne środowiskowe są widoczne tylko w kontekście **zadania użytkownika**, konto użytkownika w węźle, w którym zadanie jest wykonywane. Będą one *niewidoczne*, jeśli [zdalnie połączysz się](https://azure.microsoft.com/documentation/articles/batch-api-basics/#connecting-to-compute-nodes) z węzłem obliczeniowym, za pomocą protokołu RDP lub SSH i wyświetlisz listę zmiennych środowiskowych. Dzieje się tak dlatego, że konto użytkownika, używane na potrzeby połączenia zdalnego jest inne niż konto używane przez zadanie podrzędne.
+
+Aby uzyskać bieżącą wartość zmiennej środowiskowej, uruchom `cmd.exe` Windows węzła obliczeniowego lub `/bin/sh` w węźle systemu Linux:
+
+`cmd /c set <ENV_VARIABLE_NAME>`
+
+`/bin/sh printenv <ENV_VARIABLE_NAME>`
 
 ## <a name="command-line-expansion-of-environment-variables"></a>Wiersza polecenia rozszerzanie zmiennych środowiskowych
 

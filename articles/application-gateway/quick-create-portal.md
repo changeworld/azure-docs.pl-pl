@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 1/8/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 42d3bd2285574b4416ec06af13006353880a7ca5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6f91b424398df7839c251d994fd3d484422d5e2c
+ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58903526"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64947306"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>Szybki start: bezpośredni ruch internetowy w usłudze Azure Application Gateway — Azure Portal
 
@@ -65,7 +65,9 @@ Do komunikacji między tworzonymi zasobami platforma Azure potrzebuje sieci wirt
 
 3. Wybierz przycisk **OK**, aby wrócić do strony **Ustawienia**.
 
-4. Wybierz **konfiguracja adresu IP frontonu**. W obszarze **Konfiguracja adresu IP frontonu** sprawdź, czy **Typ adresu IP** ustawiono na **Publiczny**. W obszarze **Publiczny adres IP** sprawdź, czy wybrano pozycję **Utwórz nową**. <br>Można skonfigurować adresu IP frontonu za publicznych lub prywatnych zgodnie z danego przypadku użycia. W tym przykładzie Wybierzmy publicznego adresu IP frontonu. 
+4. Wybierz **konfiguracja adresu IP frontonu**. W obszarze **Konfiguracja adresu IP frontonu** sprawdź, czy **Typ adresu IP** ustawiono na **Publiczny**. W obszarze **Publiczny adres IP** sprawdź, czy wybrano pozycję **Utwórz nową**. <br>Można skonfigurować adresu IP frontonu za publicznych lub prywatnych zgodnie z danego przypadku użycia. W tym przykładzie Wybierzmy publicznego adresu IP frontonu.
+   > [!NOTE]
+   > W ramach jednostki SKU bramy Application Gateway w wersji 2, można wybrać tylko **publicznych** konfigurację adresu IP. Konfiguracja prywatny adres IP nie jest obecnie włączona dla jednostek SKU v2.
 
 5. Wprowadź ciąg *myAGPublicIPAddress* jako nazwę publicznego adresu IP. 
 

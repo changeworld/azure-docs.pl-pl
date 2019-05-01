@@ -7,22 +7,20 @@ keywords: Wysoka dostępność usługi hadoop
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 03/22/2018
+ms.date: 04/24/2019
 ms.author: hrasheed
-ms.openlocfilehash: 596b53d468a7dfc719c16dc6e6339492381d7f41
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.openlocfilehash: 6cb72730ef3dbef81e2b2c9bc1c5cfd3bbd88b65
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63763792"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64704925"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Dostępność i niezawodność klastrów Apache Hadoop w HDInsight
 
 Klastry HDInsight zapewniają dwa węzły główne, aby zwiększyć dostępność i niezawodność usługi Apache Hadoop i uruchamianie zadań.
 
 Hadoop osiąga wysoką dostępność i niezawodność przez replikowanie usług i danych w wielu węzłach w klastrze. Jednak standardowymi dystrybucjami platformy hadoop zwykle mają tylko jeden węzeł główny. Ewentualnej awarii jednego węzła głównego może spowodować nieoczekiwane zatrzymanie działania klastra. HDInsight dostarcza dwóch węzłów głównych, aby zwiększyć dostępność i niezawodność usługi Hadoop.
-
-[!INCLUDE [windows-retirement-notice](../../includes/windows-retirement-notice.md)]
 
 ## <a name="availability-and-reliability-of-nodes"></a>Dostępność i niezawodność węzłów
 
@@ -104,7 +102,7 @@ Aby sprawdzić stan usług korzystających z węzłami głównymi, użyj Interfe
 
 ### <a name="ambari-web-ui"></a>Ambari Web UI
 
-Interfejs użytkownika sieci Web Ambari będzie widoczny w https://CLUSTERNAME.azurehdinsight.net. Zastąp ciąg **CLUSTERNAME** nazwą klastra. Po wyświetleniu monitu wprowadź poświadczenia użytkownika protokołu HTTP dla klastra. Domyślna nazwa użytkownika protokołu HTTP jest **administratora** , a hasło to hasło wprowadzone podczas tworzenia klastra.
+Interfejs użytkownika sieci Web Ambari będzie widoczny w `https://CLUSTERNAME.azurehdinsight.net`. Zastąp ciąg **CLUSTERNAME** nazwą klastra. Po wyświetleniu monitu wprowadź poświadczenia użytkownika protokołu HTTP dla klastra. Domyślna nazwa użytkownika protokołu HTTP jest **administratora** , a hasło to hasło wprowadzone podczas tworzenia klastra.
 
 Gdy zostanie wyświetlony na stronie narzędzia Ambari, zainstalowanych usług będą wyświetlane w lewej części strony.
 
@@ -247,27 +245,25 @@ Z poziomu interfejsu użytkownika sieci Web Ambari wybierz usługę, którą chc
 
 ## <a name="how-to-configure-the-node-size"></a>Jak skonfigurować rozmiar węzła
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 Rozmiar węzła można wybrać tylko podczas tworzenia klastra. Można znaleźć listę dostępnych rozmiarów maszyn wirtualnych różnych HDInsight na [HDInsight stronę z cennikiem](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-Podczas tworzenia klastra, można określić rozmiar węzłów. Poniższe informacje znajdują się wskazówki dotyczące sposobu określania rozmiaru, za pomocą [witryny Azure portal][preview-portal], [programu Azure PowerShell][azure-powershell]i [Klasycznego wiersza polecenia platformy azure][azure-cli]:
+Podczas tworzenia klastra, można określić rozmiar węzłów. Poniższe informacje znajdują się wskazówki dotyczące sposobu określania rozmiaru, za pomocą [witryny Azure portal][preview-portal], [modułu Azure PowerShell Az][azure-powershell], i [wiersza polecenia platformy Azure][azure-cli]:
 
 * **Witryna Azure portal**: Podczas tworzenia klastra, można ustawić rozmiar węzłów, używane przez klaster:
 
     ![Obraz przedstawiający Kreatora tworzenia klastra przy użyciu wybór rozmiaru węzła](./media/hdinsight-high-availability-linux/headnodesize.png)
 
-* **Klasyczny interfejs wiersza polecenia Azure**: Korzystając z `azure hdinsight cluster create` polecenia, należy określić rozmiar head, procesu roboczego i węzły dozorcy przy użyciu `--headNodeSize`, `--workerNodeSize`, i `--zookeeperNodeSize` parametrów.
+* **Interfejs wiersza polecenia platformy Azure**: Korzystając z [tworzenia usługi hdinsight az](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) polecenia, należy określić rozmiar head, procesu roboczego i węzły dozorcy przy użyciu `--headnode-size`, `--workernode-size`, i `--zookeepernode-size` parametrów.
 
-* **Azure PowerShell**: Korzystając z `New-AzHDInsightCluster` polecenia cmdlet, należy określić rozmiar head, procesu roboczego i węzły dozorcy przy użyciu `-HeadNodeVMSize`, `-WorkerNodeSize`, i `-ZookeeperNodeSize` parametrów.
+* **Azure PowerShell**: Korzystając z [New AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) polecenia cmdlet, należy określić rozmiar head, procesu roboczego i węzły dozorcy przy użyciu `-HeadNodeSize`, `-WorkerNodeSize`, i `-ZookeeperNodeSize` parametrów.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 Użyj następujących łączy, aby dowiedzieć się więcej na temat czynności opisane w tym dokumencie.
 
 * [Dokumentacja programu Apache Ambari REST](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
-* [Instalowanie i Konfigurowanie interfejsu wiersza polecenia Azure Classic](../cli-install-nodejs.md)
-* [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview)
+* [Instalowanie i Konfigurowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com//cli/azure/install-azure-cli?view=azure-cli-latest)
+* [Instalowanie i konfigurowanie programu Azure PowerShell module Az](/powershell/azure/overview)
 * [Zarządzanie HDInsight przy użyciu narzędzia Apache Ambari](hdinsight-hadoop-manage-ambari.md)
 * [Obsługa administracyjna klastrów HDInsight opartych na systemie Linux](hdinsight-hadoop-provision-linux-clusters.md)
 

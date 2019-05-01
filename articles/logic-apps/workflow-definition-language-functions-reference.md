@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 08/15/2018
-ms.openlocfilehash: d7ea62c51065cbe85a905b4ff78743fdc11c1e10
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: e69d43b8bec7945c5aa1b394ce7402338f6fbbfb
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60502274"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64693263"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps-and-microsoft-flow"></a>Dokumentacja funkcji programu język definicji przepływów pracy w usłudze Azure Logic Apps i Microsoft Flow
 
@@ -1344,7 +1344,7 @@ I zwraca wynik: `"data:text/plain;charset=utf-8;base64,aGVsbG8="`
 
 Zwraca binarną wersję dla danych identyfikatora uniform resource identifier (URI).
 Aby użyć tej funkcji zamiast [decodeDataUri()](#decodeDataUri).
-Mimo że obie funkcje działają tak samo, `decodeDataUri()` jest preferowana.
+Mimo że obie funkcje działają tak samo, `dataUriBinary()` jest preferowana.
 
 ```
 dataUriToBinary('<value>')

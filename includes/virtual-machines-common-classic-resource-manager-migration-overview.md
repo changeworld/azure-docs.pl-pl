@@ -5,15 +5,15 @@ services: virtual-machines
 author: jpconnock
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/18/2018
+ms.date: 04/25/2019
 ms.author: jeconnoc
 ms.custom: include file
-ms.openlocfilehash: ca4063d31d93aab3814abed202b6b91b7726185f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f60b5421f2bc66cf09ede4178ce18e2394030264
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60542940"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64929429"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Obsługiwane platformy migracji zasobów rozwiązania IaaS z wersji klasycznej do usługi Azure Resource Manager
 W tym artykule opisano sposób migracji infrastruktury jako zasoby usługi (IaaS) z klasycznego modelu wdrażania usługi Resource Manager i szczegółowe informacje, jak połączyć zasoby z dwa modele wdrażania, które współistnieć w subskrypcji przy użyciu sieci wirtualnej bramy lokacja lokacja. Przeczytaj więcej o [funkcje usługi Azure Resource Manager i korzyści](../articles/azure-resource-manager/resource-group-overview.md). 
@@ -74,7 +74,20 @@ Jeśli konto magazynu nie ma żadnych skojarzone dyski lub dane maszyn wirtualny
 
 > [!NOTE]
 > Model wdrażania usługi Resource Manager nie ma koncepcji Classic obrazów i dysków. Gdy konto magazynu jest migrowane, klasyczne obrazów i dysków nie są widoczne w stosie usługi Resource Manager, ale zapasowy wirtualne dyski twarde pozostaną na koncie magazynu.
->
+
+Poniższych zrzutach ekranu przedstawiono sposób uaktualniania klasyczne konta magazynu do konta magazynu usługi Azure Resource Manager przy użyciu witryny Azure portal:
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+2. Przejdź do swojego konta magazynu.
+3. W **ustawienia** kliknij **Przeprowadź migrację do ARM**.
+4. Kliknij pozycję **weryfikacji** oceniać możliwości mieszania migracji.
+5. Jeśli weryfikacja zakończy się pomyślnie, kliknij polecenie **przygotowanie** do utworzenia konta magazynu zmigrowane.
+6. Typ **tak** potwierdzić migrację, a następnie kliknij przycisk **zatwierdzić** na zakończenie migracji.
+
+    ![Sprawdzanie poprawności konta magazynu](../includes/media/storage-account-upgrade-classic/storage-migrate-resource-manager-1.png)
+    
+    ![Przygotowywanie konta magazynu](../includes/media/storage-account-upgrade-classic/storage-migrate-resource-manager-2.png)
+    
+    ![Zakończ migrację konta magazynu](../includes/media/storage-account-upgrade-classic/storage-migrate-resource-manager-3.png)
 
 ### <a name="migration-of-unattached-resources"></a>Migracja zasobów niedołączone
 Konta magazynu bez skojarzone dyski i maszyny wirtualne, dane można migrować niezależnie.
@@ -102,7 +115,7 @@ Następujące konfiguracje nie są obecnie obsługiwane.
 
 | Usługa | Konfigurowanie | Zalecenie |
 | --- | --- | --- |
-| Resource Manager |Rola na podstawie kontroli dostępu (RBAC) dla zasobów klasycznych |Ponieważ identyfikator URI zasobów został zmodyfikowany po migracji, zaleca się zaplanowanie aktualizacji zasad RBAC, które należy wykonać po zakończeniu migracji. |
+| Resource Manager |Oparta na rolach kontrola dostępu (RBAC) dla zasobów klasycznych |Ponieważ identyfikator URI zasobów został zmodyfikowany po migracji, zaleca się zaplanowanie aktualizacji zasad RBAC, które należy wykonać po zakończeniu migracji. |
 | Wystąpienia obliczeniowe |Wiele podsieci skojarzonych z maszyną Wirtualną |Zaktualizuj konfigurację podsieci, aby odwoływać się tylko w jednej podsieci. Może to wymagać usunięcia pomocniczej karty Sieciowej (do którego odwołuje się do innej podsieci) z maszyny Wirtualnej i dołączyć go ponownie po ukończeniu migracji. |
 | Wystąpienia obliczeniowe |Maszyny wirtualne, które należą do sieci wirtualnej, ale nie mają jawnych podsieci przypisane |Opcjonalnie można usunąć maszyny Wirtualnej. |
 | Wystąpienia obliczeniowe |Maszyny wirtualne, które mają alerty, zasady automatycznego skalowania |Migracja przechodzi przez, a te ustawienia są usuwane. Zdecydowanie zaleca się, oceń swoje środowisko, przed wykonaniem migracji. Alternatywnie po zakończeniu migracji można ponownie skonfigurować ustawienia alertów. |

@@ -8,11 +8,11 @@ ms.date: 04/12/2019
 ms.author: rimman
 ms.reviewer: sngun
 ms.openlocfilehash: 18780deba1910b3ea77f7313bfb6d204dacabd82
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62112025"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64692760"
 ---
 # <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>Architektury oparte na zdarzeniach bezserwerowe za pomocą usługi Azure Cosmos DB i Azure Functions
 

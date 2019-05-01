@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fcf2ef10cbc8f6f54a65e596ea003a98f410a7b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 78889cb3c04b9854a4cebb27c35488d5142ad3a7
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60415008"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64694830"
 ---
 # <a name="what-is-password-writeback"></a>Co to jest funkcja zapisywania zwrotnego haseł?
 
@@ -85,9 +85,6 @@ Skrót federacyjnego lub hasło są synchronizowane użytkownik próbuje Resetow
    * Link z obiektu łącznika usługi Active Directory, aby MV musi mieć reguły synchronizacji `Microsoft.InfromADUserAccountEnabled.xxx` łącze.
    
    Po wywołaniu pochodzą z chmury, korzysta z aparatu synchronizacji **atrybutu cloudAnchor** atrybutu, aby wyszukać obiektu przestrzeni łącznika usługi Azure Active Directory. Następnie lokalizuje łącze obiektu MV, a następnie lokalizuje łącze obiektu usługi Active Directory. Ponieważ może istnieć wiele obiektów usługi Active Directory (obejmującego wiele lasów) dla tego samego użytkownika, aparat synchronizacji opiera się na `Microsoft.InfromADUserAccountEnabled.xxx` link, aby wybrać właściwy.
-
-   > [!Note]
-   > W wyniku tę logikę dla hasła funkcja zapisywania zwrotnego działała usługa Azure AD Connect musi mieć możliwość komunikowania się z emulator podstawowego kontrolera domeny (PDC). Jeśli musisz ręcznie włączyć, możesz połączyć program Azure AD Connect z emulatorem podstawowego kontrolera domeny. Kliknij prawym przyciskiem myszy **właściwości** łącznika synchronizacji usługi Active Directory, następnie wybierz pozycję **Konfigurowanie partycji katalogu**. Z tego miejsca poszukaj **ustawienia połączenia kontrolera domeny** sekcji, a następnie zaznacz pole o nazwie **korzystają z kontrolerów domeny preferowanych**. Nawet jeśli kontroler domeny preferowanych nie jest to emulator podstawowego kontrolera domeny, program Azure AD Connect próbuje nawiązać połączenie podstawowego kontrolera domeny na potrzeby zapisywania zwrotnego haseł.
 
 1. Po użytkownik konta zostanie znaleziony, zostanie podjęta próba resetowania hasła bezpośrednio w odpowiedniej lasu usługi Active Directory.
 1. W przypadku powodzenia operacji Ustaw hasło użytkownika jest informację, że ich hasło zostało zmienione.

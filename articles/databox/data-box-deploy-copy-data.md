@@ -1,5 +1,5 @@
 ---
-title: Kopiowanie danych na urządzenie Microsoft Azure Data Box za pośrednictwem protokołu SMB | Microsoft Docs
+title: Samouczek, aby skopiować dane za pośrednictwem protokołu SMB na platformie Azure Data Box | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak skopiować dane na urządzenie Azure Data Box za pośrednictwem protokołu SMB
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 3474d4ee8751bcd472aa109e9e541d639344276d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 04f7710d95f5ce7a2b6195383c2737ff3b1fbf04
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60466213"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925550"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-smb"></a>Samouczek: Kopiowanie danych na urządzenie Azure Data Box Disk za pośrednictwem protokołu SMB
 
@@ -41,8 +41,8 @@ Przed rozpoczęciem upewnij się, że:
 
 W zależności od wybranego konta magazynu dla urządzenia Data Box są tworzone następujące elementy:
 - Maksymalnie trzy udziały dla każdego skojarzonego konta magazynu (GPv1 i GPv2).
-- Jeden udział dla usługi premium storage. 
-- Jeden udział dla konta usługi blob storage. 
+- Jeden udział dla usługi premium storage.
+- Jeden udział dla konta usługi blob storage.
 
 W obszarze udziałów blokowych obiektów blob i stronicowych obiektów blob jednostki pierwszego poziomu są kontenerami, a jednostki drugiego poziomu są obiektami blob. W obszarze udziałów dla usługi Azure Files jednostki pierwszego poziomu są udziałami, a jednostki drugiego poziomu są plikami.
 
@@ -91,7 +91,7 @@ Jeśli używasz komputera-hosta z systemem Windows Server, wykonaj następujące
 
     **Zawsze należy utworzyć w udziale folder na pliki, które chcesz skopiować, a następnie skopiować pliki do tego folderu**. Folder utworzony w ramach udziałów blokowych obiektów blob i stronicowych obiektów blob reprezentuje kontener, do którego dane są przekazywane w postaci obiektów blob. Plików nie można kopiować bezpośrednio do folderu *głównego* na koncie magazynu.
     
-W przypadku korzystania z klienta systemu Linux użyj następującego polecenia, aby zainstalować udział SMB. Parametr „vers” poniżej to wersja protokołu SMB obsługiwana przez Twój host z systemem Linux. Podłącz odpowiednią wersję w poleceniu poniżej. W przypadku wersji protokołu SMB obsługiwanych przez urządzenia Data Box zobacz [Obsługiwane systemy plików dla klientów systemu Linux](https://docs.microsoft.com/en-us/azure/databox/data-box-system-requirements#supported-file-systems-for-linux-clients) 
+W przypadku korzystania z klienta systemu Linux użyj następującego polecenia, aby zainstalować udział SMB. Parametr „vers” poniżej to wersja protokołu SMB obsługiwana przez Twój host z systemem Linux. Podłącz odpowiednią wersję w poleceniu poniżej. W przypadku wersji protokołu SMB obsługiwanych przez urządzenia Data Box zobacz [Obsługiwane systemy plików dla klientów systemu Linux](https://docs.microsoft.com/azure/databox/data-box-system-requirements#supported-file-systems-for-linux-clients) 
 
     `sudo mount -t nfs -o vers=2.1 10.126.76.172:/devicemanagertest1_BlockBlob /home/databoxubuntuhost/databox`
     
@@ -132,7 +132,7 @@ Po nawiązaniu połączenia z udziałem SMB rozpocznij kopiowanie danych. Do kop
 |/z    | Kopiuje pliki w trybie ponownego uruchomienia. Użyj tego atrybutu w przypadku niestabilnego środowiska. Ta opcja powoduje zmniejszenie przepływności ze względu na dodatkowe rejestrowanie.      |
 | /zb     | Używa trybu ponownego uruchomienia. W przypadku odmowy dostępu ta opcja używa trybu tworzenia kopii zapasowej. Ta opcja powoduje zmniejszenie przepływności ze względu na tworzenie punktów kontrolnych.         |
 |/efsraw     | Kopiuje wszystkie zaszyfrowane pliki w surowym trybie EFS. Używaj tej opcji tylko względem zaszyfrowanych plików.         |
-|log+:<LogFile>| Dołącza dane wyjściowe do istniejącego pliku dziennika.|    
+|Dziennik +:\<pliku dziennika >| Dołącza dane wyjściowe do istniejącego pliku dziennika.|    
  
 Poniższy przykład przedstawia dane wyjściowe polecenia kopiowania plików na urządzenie Data Box za pomocą narzędzia Robocopy.
     

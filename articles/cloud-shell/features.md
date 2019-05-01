@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 04/10/2019
+ms.date: 04/26/2019
 ms.author: damaerte
-ms.openlocfilehash: 46c9350dd2a33d0d25fe193b2ae50c954f2d1f95
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: f873f20f97b822e1f4dee716cb69535b0522dc2c
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60614362"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64866506"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Funkcje i narzędzia dla usługi Azure Cloud Shell
 
@@ -50,6 +50,18 @@ Możesz użyć znanej [poleceń cmdlet programu Azure PowerShell](https://docs.m
 Wszelkie zmiany wprowadzone do zasobów platformy Azure, albo bezpośrednio w witrynie Azure portal lub za pomocą poleceń cmdlet programu Azure PowerShell są odzwierciedlane na dysku platformy Azure.  Możesz uruchomić `dir -Force` odświeżyć swoje zasoby.
 
 ![](media/features-powershell/azure-drive.png)
+
+### <a name="manage-exchange-online"></a>Zarządzanie programem Exchange Online
+
+Program PowerShell w usłudze Cloud Shell zawiera prywatne kompilacje moduł usługi Exchange Online.  Uruchom `Connect-EXOPSSession` można pobrać poleceń cmdlet programu Exchange.
+
+![](media/features-powershell/exchangeonline.png)
+
+ Uruchom polecenie `Get-Command -Module tmp_*`
+> [!NOTE]
+> Nazwa modułu powinien zaczynać się `tmp_`, jeśli zainstalowano moduły z tym samym prefiksem, ich poleceń cmdlet również zostaną wyświetlone. 
+
+![](media/features-powershell/exchangeonlinecmdlets.png)
 
 ### <a name="deep-integration-with-open-source-tooling"></a>Ścisła integracja z narzędziami open source
 

@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 381ecd4681bf1d7abfc8939e256bf84db9bc2172
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 3ab3c680f7279ff78e0319f28f67c1cc8c203b47
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60460597"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64708035"
 ---
 # <a name="diagnose-and-troubleshoot"></a>Diagnozowanie i rozwiązywanie problemów
 
@@ -109,7 +109,8 @@ Ten problem może wystąpić, jeśli Twoje środowisko nie ma hierarchii modelu 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Odczyt [pracować z modeli szeregów czasowych](./time-series-insights-update-how-to-tsm.md).
-- Odczyt [kształty JSON obsługiwany](./how-to-shape-query-json.md).
+
+- Dowiedz się więcej o [obsługiwane kształty JSON](./how-to-shape-query-json.md).
 
 <!-- Images -->
 [1]: media/v2-update-diagnose-and-troubleshoot/environment.png

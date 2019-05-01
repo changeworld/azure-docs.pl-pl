@@ -1,25 +1,19 @@
 ---
-title: Przygotowanie pakietów usługi AppSource | Dokumentacja firmy Microsoft
+title: Przygotowanie pakietów usługi AppSource | Portal Azure Marketplace
 description: Explanaion w jak przygotować i skompilować pakiety w usłudze AppSource.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
 manager: Ricardo.Villalobos
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: cc06ddf2fce93bef27e7aaee85b47179608e192b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: ff822e87bfec5daa161172c0d47975eb06cc2808
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60625475"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935643"
 ---
 # <a name="appsource-package-preparation"></a>Przygotowanie pakietów usługi AppSource
 
@@ -117,7 +111,7 @@ Poniżej przedstawiono przykładowy kod, aby uzyskać plik input.xml. Zobacz def
 |SolutionAnchorName |Nazwa pliku zip rozwiązanie w narzędzia do wdrażania pakietów używany nazwę wyświetlaną i opis zasobów rozwiązania.|
 | Oprócz parametru startDate| Jest to data pakietu rozwiązania staną się dostępne. Format jest MM/DD/RRRR|
 |endDate|Jest to data pakietu rozwiązań zostanie zatrzymane, jest dostępna. Format jest MM/DD/RRRR |
-|SupportedCountries |Jest to rozdzielana przecinkami lista krajów, które powinny zostać wyświetlone tego pakietu. Skontaktuj się z usług online, aby uzyskać listę wszystkich bieżącego numerów kierunkowych krajów. W czasie pisania tego dokumentu lista została: AE, AL, AM, AO, AR, AT, AUSTRALIA, AZ, BA, BB, BD, BYĆ, BG, BH, BM BN, BO, BR PRZEZ URZĄD CERTYFIKACJI, CH, CIĄGŁEJ INTEGRACJI, CL, CM, CO, CR, CV, EFEKTYWNA, CY, CZ, DE, DK, CZY, DZ, WE, ESTONIA, NA PRZYKŁAD, ES, FI, FR, GB, GE, GH, GR, GT, HK , HN, HR, HU, ID, IE, IL, INDIE, IQ, JEST, GO, JM, JO, JP, KE, KG, KN, KOREA, KW, KY, KZ, MODUŁU RÓWNOWAŻENIA OBCIĄŻENIA, LK, LT, LU, ŁOTWA, LY, MA, MC, MD, MNIE, MK, MN, MIESIĄC, MT, MU, MX, MY, NG, NI, NL, NO, NZ, OM, PA, PE, PH , KLUCZ PODSTAWOWY, PL, ŻĄDANIA ŚCIĄGNIĘCIA, PS, (CZAS PACYFICZNY), PY, ODPOWIEDZI NA PYTANIA, RO, R, RU, RW, SA, SE, SG, SI, SK, SN, SV, TH, TM, TN, TR, TT, TW, UA, STANY ZJEDNOCZONE, UY, UŻ, VE, VI, VN, ZA, ZW |
+|SupportedCountries |Jest to rozdzielana przecinkami lista krajów/regionów, które powinien zostać wyświetlony ten pakiet. Skontaktuj się z usług online, aby uzyskać listę wszystkich bieżącego numerów kierunkowych krajów. W czasie pisania tego dokumentu lista została: AE, AL, AM, AO, AR, AT, AUSTRALIA, AZ, BA, BB, BD, BYĆ, BG, BH, BM BN, BO, BR PRZEZ URZĄD CERTYFIKACJI, CH, CIĄGŁEJ INTEGRACJI, CL, CM, CO, CR, CV, EFEKTYWNA, CY, CZ, DE, DK, CZY, DZ, WE, ESTONIA, NA PRZYKŁAD, ES, FI, FR, GB, GE, GH, GR, GT, HK , HN, HR, HU, ID, IE, IL, INDIE, IQ, JEST, GO, JM, JO, JP, KE, KG, KN, KOREA, KW, KY, KZ, MODUŁU RÓWNOWAŻENIA OBCIĄŻENIA, LK, LT, LU, ŁOTWA, LY, MA, MC, MD, MNIE, MK, MN, MIESIĄC, MT, MU, MX, MY, NG, NI, NL, NO, NZ, OM, PA, PE, PH , KLUCZ PODSTAWOWY, PL, ŻĄDANIA ŚCIĄGNIĘCIA, PS, (CZAS PACYFICZNY), PY, ODPOWIEDZI NA PYTANIA, RO, R, RU, RW, SA, SE, SG, SI, SK, SN, SV, TH, TM, TN, TR, TT, TW, UA, STANY ZJEDNOCZONE, UY, UŻ, VE, VI, VN, ZA, ZW |
 |LearnMoreLink | Adres URL do strony więcej informacje dla tego pakietu. |
 |Ustawienia regionalne|Jedno wystąpienie tego węzła dla każdego języka środowiska użytkownika, które mają być obsługiwane w rozwiązaniu preferowane najlepsze środowisko użytkownika. Ten węzeł zawiera elementy podrzędne, które opisują ustawień regionalnych, logo i warunki dla każdego z języków|
 |Ustawienia regionalne: PackageLocale.Code|Identyfikator LCID języka dla tego węzła. Przykład: Angielski (US) to 1033|

@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: cenkdin;juliako
-ms.openlocfilehash: 6bec12893591fb36298e9c2f1664646a4d598073
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 8baff356e1a4916bcc21b28f422a6e98342c0d34
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61222256"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869444"
 ---
 # <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-net"></a>Do prowadzenia transmisji strumieniowych na żywo za pomocą koderów lokalnych przy użyciu platformy .NET
 > [!div class="op_single_selector"]
@@ -28,13 +28,17 @@ ms.locfileid: "61222256"
 > 
 > 
 
+> [!NOTE]
+> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówek dotyczących migracji od v2 do v3](../latest/migrate-from-v2-to-v3.md)
+
 Ten samouczek przeprowadzi Cię przez kroki przy użyciu usługi Azure Media Services .NET SDK do tworzenia **kanału** skonfigurowanego dla konfigurowanego do dostarczania. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Do wykonania czynności przedstawionych w tym samouczku są niezbędne następujące elementy:
 
 * Konto platformy Azure.
-* Konto usługi Media Services.    Aby utworzyć konto usługi Media Services, zobacz temat [Jak utworzyć konto usługi Media Services](media-services-portal-create-account.md).
+* Konto usługi Media Services. Aby utworzyć konto usługi Media Services, zobacz temat [Jak utworzyć konto usługi Media Services](media-services-portal-create-account.md).
+* Upewnij się, że punkt końcowy przesyłania strumieniowego, z którego chcesz strumieniowo przesyłać zawartość, ma stan **Uruchomiony**. 
 * Konfigurowanie środowiska deweloperskiego. Aby uzyskać więcej informacji, zobacz [służą do konfigurowania środowiska](media-services-set-up-computer.md).
 * Kamera internetowa. Na przykład [koder Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm).
 
@@ -48,6 +52,7 @@ Zaleca, aby zapoznać się z następującymi artykułami:
 Skonfiguruj środowisko projektowe i wypełnij plik app.config przy użyciu informacji dotyczących połączenia, zgodnie z opisem w sekcji [Projektowanie usługi Media Services na platformie .NET](media-services-dotnet-how-to-use.md). 
 
 ## <a name="example"></a>Przykład
+
 Poniższy przykład kodu pokazuje, jak wykonać następujące zadania:
 
 * Łączenie się z usługą Media Services
@@ -60,9 +65,6 @@ Poniższy przykład kodu pokazuje, jak wykonać następujące zadania:
 * Tworzenie i uruchamianie StreamingEndpoint
 * Aktualizacja punktu końcowego przesyłania strumieniowego
 * Zamknij zasobów
-
->[!IMPORTANT]
->Upewnij się, że punkt końcowy przesyłania strumieniowego, z którego chcesz strumieniowo przesyłać zawartość, ma stan **Uruchomiony**. 
     
 >[!NOTE]
 >Limit różnych zasad usługi AMS wynosi 1 000 000 (na przykład zasad lokalizatorów lub ContentKeyAuthorizationPolicy). Należy używać tego samego identyfikatora zasad, jeśli zawsze są używane uprawnienia dotyczące tych samych dni lub tego samego dostępu, na przykład dla lokalizatorów przeznaczonych do długotrwałego stosowania (nieprzekazywanych zasad). Więcej informacji znajduje się w [tym](media-services-dotnet-manage-entities.md#limit-access-policies) artykule.

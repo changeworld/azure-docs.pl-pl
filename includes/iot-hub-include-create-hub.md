@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 11/02/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: d373bc188a4d93c122cdf2cffbc4323aca16b4a4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: cc83d94acd25914ee57473de53afbc018f310887
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60346210"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64575776"
 ---
 W tej sekcji opisano, jak utworzyć centrum IoT przy użyciu witryny [Azure Portal](https://portal.azure.com).
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com). 
 
-2. Wybierz pozycję +**Utwórz zasób**, następnie pozycję **Internet rzeczy**.
+2. Wybierz +**Utwórz zasób**, następnie *Przeszukaj witrynę Marketplace* dla **usługi IoT Hub**.
 
-3. Kliknij pozycję **Iot Hub** na liście po prawej stronie. Pojawi się pierwszy ekran do tworzenia centrum IoT.
+3. Wybierz **usługi IoT Hub** i kliknij przycisk **Utwórz** przycisku. Pojawi się pierwszy ekran do tworzenia centrum IoT.
 
    ![Utwórz koncentrator w witrynie Azure portal](./media/iot-hub-include-create-hub/iot-hub-create-screen-basics.png)
 

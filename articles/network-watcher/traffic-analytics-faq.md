@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: kumud
-ms.openlocfilehash: 0a5bbc0bb4b934ae9e60cbd8233b5efbae2a6e6e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 88acfebcc6dd8489703014d790f09313ab9302ec
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60236614"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939904"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Analiza ruchu — często zadawane pytania
 
@@ -241,7 +241,7 @@ Na przykład zgodnie [planu cenowego](https://azure.microsoft.com/pricing/detail
 
 ## <a name="how-frequently-does-traffic-analytics-process-data"></a>Jak często Traffic Analytics może przetwarzać dane?
 
-Zapoznaj się [sekcji agregacji danych](https://docs.microsoft.com/en-us/azure/network-watcher/traffic-analytics-schema#data-aggregation) Traffic Analytics schematu i danych agregacji dokumencie
+Zapoznaj się [sekcji agregacji danych](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-schema#data-aggregation) Traffic Analytics schematu i danych agregacji dokumencie
 
 ## <a name="how-does-traffic-analytics-decide-that-an-ip-is-malicious"></a>Jak analiza ruchu zdecydować, czy adres IP jest złośliwego? 
 
@@ -253,14 +253,14 @@ Analiza ruchu nie ma wbudowana obsługa alertów. Jednak ponieważ analizy ruchu
 - Skróconym można użyć usługi Log Analytics w usłudze Traffic Analytics. 
 - Użyj [schematu opisane tutaj](traffic-analytics-schema.md) można zapisać zapytania 
 - Kliknij pozycję "Nowa reguła alertu" do utworzenia alertu
-- Zapoznaj się [dziennika alertów dokumentacji](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/alerts-log) do utworzenia alertu
+- Zapoznaj się [dziennika alertów dokumentacji](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log) do utworzenia alertu
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-geo-map-view"></a>Jak można przejść za pomocą klawiatury w widoku mapy geograficznej?
 
 Strona mapy geograficznej zawiera dwa główne obszary:
     
-- **Transparent**: Baner w górnej części mapy geograficznej zawiera przyciski, aby wybrać filtry dystrybucji ruchu (na przykład wdrożenia, ruch z krajów i złośliwym kodem). Po wybraniu przycisku, odpowiedni filtr jest stosowany na mapie. Na przykład jeśli wybierzesz przycisk aktywne, mapy wyróżnia active centrów danych w danym wdrożeniu.
-- **Mapa**: Pod nagłówkiem sekcji map pokazuje Dystrybucja ruchu między centrami danych platformy Azure i krajów.
+- **Transparent**: Baner w górnej części mapy geograficznej zawiera przyciski, aby wybrać filtry dystrybucji ruchu (na przykład wdrożenia, ruch z krajów/regionów i złośliwym kodem). Po wybraniu przycisku, odpowiedni filtr jest stosowany na mapie. Na przykład jeśli wybierzesz przycisk aktywne, mapy wyróżnia active centrów danych w danym wdrożeniu.
+- **Mapa**: Poniżej baneru sekcji map pokazuje Dystrybucja ruchu między centrami danych platformy Azure i kraje/regiony.
     
 ### <a name="keyboard-navigation-on-the-banner"></a>Nawigowanie przy użyciu klawiatury na banerze
     

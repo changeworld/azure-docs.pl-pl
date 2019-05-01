@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 01d982d91d772ccfd468ccdac6391f971be4f43b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 7e4364a06a3d20edc7aafd54a4dcd86dfd039043
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60765050"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64573576"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Tworzenie i używanie wewnętrznego modułu równoważenia obciążenia ze środowiskiem App Service Environment #
 
@@ -56,7 +56,7 @@ Pewnych zadań nie można realizować w przypadku używania środowiska ASE z we
 
 Aby utworzyć środowisko ASE z wewnętrznym modułem równoważenia obciążenia:
 
-1. W witrynie Azure Portal wybierz pozycję  **Utwórz zasób** > **Internet** > **App Service Environment**.
+1. W witrynie Azure Portal wybierz pozycję **Utwórz zasób** > **Internet** > **App Service Environment**.
 
 2. Wybierz subskrypcję.
 
@@ -66,7 +66,7 @@ Aby utworzyć środowisko ASE z wewnętrznym modułem równoważenia obciążeni
 
 5. W przypadku wybrania istniejącej sieci wirtualnej należy utworzyć podsieć, w której zostanie umieszczone środowisko ASE. Ustaw wystarczająco duży rozmiar podsieci, aby pomieścić środowisko ASE, nawet gdy w przyszłości się rozrośnie. Zalecamy rozmiar `/24`, który zapewnia 256 adresów i może obsłużyć środowiska ASE o maksymalnym rozmiarze i dowolnych potrzebach dotyczących skalowania. 
 
-6. Wybierz pozycję  **Sieć wirtualna/lokalizacja** > **Konfiguracja sieci wirtualnej**. Skonfiguruj dla ustawienia **Typ adresu VIP** wartość **Wewnętrzny**.
+6. Wybierz pozycję **Sieć wirtualna/lokalizacja** > **Konfiguracja sieci wirtualnej**. Skonfiguruj dla ustawienia **Typ adresu VIP** wartość **Wewnętrzny**.
 
 7. Wprowadź nazwę domeny. Jest to domena używana w przypadku aplikacji tworzonych w tym środowisku ASE. Obowiązują pewne ograniczenia. Nie mogą to być następujące domeny:
 
@@ -96,14 +96,14 @@ W bloku **Sieć wirtualna** dostępna jest opcja **Konfiguracja sieci wirtualnej
 
 Po wybraniu opcji **Wewnętrzny** możliwość dodawania kolejnych adresów IP do środowiska ASE zostaje usunięta. Zamiast tego należy podać domenę środowiska ASE. W przypadku środowiska ASE z zewnętrznym wirtualnym adresem IP nazwa środowiska ASE jest używana w domenie dla aplikacji tworzonych w tym środowisku ASE.
 
-Jeśli dla ustawienia **Typ adresu VIP** została wybrana opcja **Wewnętrzny**, nazwa środowiska ASE nie jest używana w domenie dla środowiska ASE. Domenę określa się jawnie. Jeśli domena to *contoso.corp.net* i utworzysz w tym środowisku ASE aplikację o nazwie  *raportowanieczasu*, adres URL dla tej aplikacji to raportowanieczasu.contoso.corp.net.
+Jeśli dla ustawienia **Typ adresu VIP** została wybrana opcja **Wewnętrzny**, nazwa środowiska ASE nie jest używana w domenie dla środowiska ASE. Domenę określa się jawnie. Jeśli domena to *contoso.corp.net* i utworzysz w tym środowisku ASE aplikację o nazwie *raportowanieczasu*, adres URL dla tej aplikacji to raportowanieczasu.contoso.corp.net.
 
 
 ## <a name="create-an-app-in-an-ilb-ase"></a>Tworzenie aplikacji w środowisku ASE z wewnętrznym modułem równoważenia obciążenia ##
 
 Aplikację w środowisku ASE z wewnętrznym modułem równoważenia obciążenia tworzy się tak samo jak w normalnym środowisku ASE.
 
-1. W witrynie Azure Portal wybierz pozycję  **Utwórz zasób** > **Sieć Web + aplikacje mobilne** > **Aplikacja internetowa**.
+1. W witrynie Azure Portal wybierz pozycję **Utwórz zasób** > **Sieć Web + aplikacje mobilne** > **Aplikacja internetowa**.
 
 1. Wprowadź nazwę aplikacji.
 
@@ -117,7 +117,7 @@ Aplikację w środowisku ASE z wewnętrznym modułem równoważenia obciążenia
 
 1. Wybierz lub utwórz plan usługi App Service. Jeśli chcesz utworzyć nowy plan usługi App Service, wybierz środowisko ASE jako lokalizację. Wybierz pulę procesów roboczych, w której ma zostać utworzony plan usługi App Service. Podczas tworzenia planu usługi App Service wybierz środowisko ASE jako lokalizację i pulę procesów roboczych. Po określeniu nazwy aplikacji domena w obszarze nazwy aplikacji zostanie zamieniona na domenę środowiska ASE.
 
-1. Wybierz pozycję **Utwórz**. Jeśli aplikacja ma być wyświetlana na pulpicie nawigacyjnym, zaznacz pole wyboru  **Przypnij do pulpitu nawigacyjnego** .
+1. Wybierz pozycję **Utwórz**. Jeśli aplikacja ma być wyświetlana na pulpicie nawigacyjnym, zaznacz pole wyboru **Przypnij do pulpitu nawigacyjnego**.
 
     ![Tworzenie planu usługi App Service][2]
 
@@ -127,7 +127,7 @@ Aplikację w środowisku ASE z wewnętrznym modułem równoważenia obciążenia
 
 Środowisko ASE z wewnętrznym modułem równoważenia obciążenia różni się nieco od wersji bez tego modułu. Jak już wspomniano, trzeba zarządzać własną usługą DNS. Konieczne jest też zapewnienie własnego certyfikatu do połączeń HTTPS.
 
-Po utworzeniu środowiska ASE jako nazwa domeny wskazywana jest podana nazwa domeny. W menu  **Ustawienie**  jest wyświetlany nowy element menu o nazwie  **Certyfikat wewnętrznego modułu równoważenia obciążenia**. Środowisko ASE jest tworzone wraz z certyfikatem, który nie określa domeny środowiska ASE z wewnętrznym modułem równoważenia obciążenia. Jeśli spróbujesz użyć środowiska ASE z tym certyfikatem, przeglądarka poinformuje, że jest on nieprawidłowy. Ten certyfikat ułatwia przetestowanie usługi HTTPS, ale należy przekazać własny certyfikat powiązany z domeną środowiska ASE z wewnętrznym modułem równoważenia obciążenia. Ten krok jest niezbędny niezależnie od tego, czy certyfikat jest z podpisem własnym, czy otrzymano go od urzędu certyfikacji.
+Po utworzeniu środowiska ASE jako nazwa domeny wskazywana jest podana nazwa domeny. W menu **Ustawienie** jest wyświetlany nowy element menu o nazwie **Certyfikat wewnętrznego modułu równoważenia obciążenia**. Środowisko ASE jest tworzone wraz z certyfikatem, który nie określa domeny środowiska ASE z wewnętrznym modułem równoważenia obciążenia. Jeśli spróbujesz użyć środowiska ASE z tym certyfikatem, przeglądarka poinformuje, że jest on nieprawidłowy. Ten certyfikat ułatwia przetestowanie usługi HTTPS, ale należy przekazać własny certyfikat powiązany z domeną środowiska ASE z wewnętrznym modułem równoważenia obciążenia. Ten krok jest niezbędny niezależnie od tego, czy certyfikat jest z podpisem własnym, czy otrzymano go od urzędu certyfikacji.
 
 ![Nazwa domeny środowiska ASE z wewnętrznym modułem równoważenia obciążenia][3]
 
@@ -154,7 +154,7 @@ Certyfikat wygenerowany za pomocą tych poleceń programu PowerShell jest oflago
 
 Aby przekazać własne certyfikaty i przetestować dostęp:
 
-1. Po utworzeniu środowiska ASE przejdź do interfejsu użytkownika tego środowiska. Wybierz pozycję **ASE** > **Ustawienia** > **Certyfikat wewnętrznego modułu równoważenia obciążenia**.
+1. Po utworzeniu środowiska ASE przejdź do interfejsu użytkownika tego środowiska. Wybierz pozycję **ASE** > **Ustawienia** > **Certyfikat wewnętrznego modułu równoważenia obciążenia**.
 
 1. Aby ustawić certyfikat wewnętrznego modułu równoważenia obciążenia, wybierz plik certyfikatu pfx, a następnie wprowadź hasło. Ten krok zajmuje trochę czasu. Pojawi się komunikat z informacją, że operacja przekazywania jest w toku.
 

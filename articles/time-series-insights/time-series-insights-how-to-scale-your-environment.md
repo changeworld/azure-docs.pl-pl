@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.custom: seodec18
-ms.openlocfilehash: f6c2c8c49f34c707c7b0fb4d525337fbfa169a3e
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: fcdfc78a62d901bdaf50c18e9286e6f2d30c5b13
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55692429"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64714133"
 ---
 # <a name="how-to-scale-your-time-series-insights-environment"></a>Jak skalować środowiska usługi Time Series Insights
 
@@ -60,5 +60,5 @@ Możliwości jest skalowane liniowo, więc S1 SKU usługi o pojemności 2 obsłu
 4. Wybierz **Zapisz** Skalowanie środowiska. Wskaźnik postępu jest wyświetlany, dopóki zmiana zostaje zatwierdzona, chwilowo. 
 
 ## <a name="next-steps"></a>Kolejne kroki
-> [!div class="nextstepaction"]
-> [Sprawdź, czy nową pojemność jest wystarczające, aby zapobiec ograniczania](time-series-insights-diagnose-and-solve-problems.md).
+
+- Sprawdź, czy jest nową pojemność [wystarczające, aby zapobiec ograniczania](time-series-insights-diagnose-and-solve-problems.md).

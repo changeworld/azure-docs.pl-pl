@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 04/01/2019
+ms.date: 04/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: f505f922685cd192525814df25cca1a1401d2913
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 36a98ea52ea48c9828ca5857dc480742632056fb
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60749329"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64689860"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Wbudowane role zasobów platformy Azure
 
@@ -87,6 +87,7 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 | [DocumentDB Account Contributor](#documentdb-account-contributor) | Można zarządzać kontami usługi Azure Cosmos DB. Usługa Azure Cosmos DB jest znana wcześniej jako baza danych DocumentDB. |
 | [Współautor EventSubscription EventGrid](#eventgrid-eventsubscription-contributor) | Pozwala zarządzać operacjami subskrypcji zdarzeń usługi Event Grid. |
 | [Czytnik EventSubscription EventGrid](#eventgrid-eventsubscription-reader) | Pozwala odczytywać subskrypcje zdarzeń usługi Event Grid. |
+| [Klaster HDInsight — Operator](#hdinsight-cluster-operator) | Umożliwia odczytu i modyfikowania konfiguracji klastra HDInsight. |
 | [Współautor usługi HDInsight domeny](#hdinsight-domain-services-contributor) | Może odczytywać, tworzyć, modyfikować i usuwać powiązane z Domain Services operacje wymagane w przypadku pakietu Enterprise Security w usłudze HDInsight |
 | [Współautor konta usługi systemy inteligentne](#intelligent-systems-account-contributor) | Umożliwia zarządzanie kontami usługi Intelligent Systems, ale nie umożliwia uzyskiwania do nich dostępu. |
 | [Współautor magazynu kluczy](#key-vault-contributor) | Umożliwia zarządzanie magazynami kluczy, ale nie umożliwia uzyskiwania do nich dostępu. |
@@ -121,6 +122,7 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 | [Właściciel konta kotwic przestrzenne](#spatial-anchors-account-owner) | Umożliwia zarządzanie zakotwiczeniami przestrzennymi na Twoim koncie, w tym ich usuwanie |
 | [Kotwice przestrzenne konta czytnika](#spatial-anchors-account-reader) | Umożliwia lokalizowanie i odczytywanie właściwości zakotwiczeń przestrzennych na Twoim koncie |
 | [Współautor bazy danych SQL](#sql-db-contributor) | Umożliwia zarządzanie bazami danych SQL, ale nie umożliwia uzyskiwania dostępu do nich. Ponadto nie można zarządzać ich zasad związanych z bezpieczeństwem ani nadrzędnymi serwerami SQL. |
+| [Współautor wystąpienie zarządzane SQL](#sql-managed-instance-contributor) | Umożliwia zarządzanie wystąpienia zarządzane SQL i wymaganych konfiguracji sieci, ale nie przyznawania dostępu innym osobom. |
 | [SQL Security Manager](#sql-security-manager) | Umożliwia zarządzanie zasadami serwerów i baz danych SQL związanymi z zabezpieczeniami, ale nie umożliwia uzyskiwania do nich dostępu. |
 | [Współautor serwera SQL Server](#sql-server-contributor) | Umożliwia zarządzanie serwerami i bazami danych SQL, ale nie umożliwia uzyskiwania dostępu do nich ani do ich zasad związanych z zabezpieczeniami. |
 | [Współautor konta magazynu](#storage-account-contributor) | Umożliwia zarządzanie kontami magazynu, ale nie dostęp do nich. |
@@ -327,7 +329,7 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
 > | **notActions** |  |
-> | Microsoft.ApiManagement/service/users/keys/read | Pobierz listę kluczy użytkowników |
+> | Microsoft.ApiManagement/service/users/keys/read | Pobierz klucze skojarzone z użytkownikiem |
 > | **Elementy DataActions** |  |
 > | *Brak* |  |
 > | **NotDataActions** |  |
@@ -349,7 +351,7 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
 > | **notActions** |  |
-> | Microsoft.ApiManagement/service/users/keys/read | Pobierz listę kluczy użytkowników |
+> | Microsoft.ApiManagement/service/users/keys/read | Pobierz klucze skojarzone z użytkownikiem |
 > | **Elementy DataActions** |  |
 > | *Brak* |  |
 > | **NotDataActions** |  |
@@ -1385,6 +1387,28 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | **NotDataActions** |  |
 > | *Brak* |  |
 
+## <a name="hdinsight-cluster-operator"></a>Klaster HDInsight — Operator
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Opis** | Umożliwia odczytu i modyfikowania konfiguracji klastra HDInsight. |
+> | **Identyfikator** | 61ed4efc-fab3-44fd-b111-e24485cc132a |
+> | **Akcje** |  |
+> | Microsoft.HDInsight/*/read |  |
+> | Microsoft.HDInsight/clusters/getGatewaySettings/action | Pobieranie ustawień bramy dla klastra HDInsight |
+> | Microsoft.HDInsight/clusters/updateGatewaySettings/action | Aktualizowanie ustawień bramy dla klastra HDInsight |
+> | Microsoft.HDInsight/clusters/configurations/* |  |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
+> | Microsoft.Resources/deployments/operations/read | Pobiera operacje wdrażania lub wyświetla ich listę. |
+> | Microsoft.Insights/alertRules/* | Tworzenie i zarządzanie nimi reguły alertów usługi Insights |
+> | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
+
 ## <a name="hdinsight-domain-services-contributor"></a>HDInsight Domain Services — współautor
 > [!div class="mx-tableFixed"]
 > | | |
@@ -1807,6 +1831,7 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | **Identyfikator** | c12c1c16-33a1-487b-954d-41c89c60f349 |
 > | **Akcje** |  |
 > | Microsoft.Storage/storageAccounts/listKeys/action | Zwraca klucze dostępu dla podanego konta magazynu. |
+> | Microsoft.Storage/storageAccounts/ListAccountSas/action | Zwraca token sygnatury dostępu współdzielonego konta dla określonego konta magazynu. |
 > | Microsoft.Storage/storageAccounts/read | Zwraca listę kont magazynu bądź pobiera właściwości dla podanego konta magazynu. |
 > | **notActions** |  |
 > | *Brak* |  |
@@ -2228,6 +2253,34 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentScans/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentSettings/* |  |
 > | Microsoft.Sql/servers/vulnerabilityAssessments/* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
+
+## <a name="sql-managed-instance-contributor"></a>Współautor wystąpienie zarządzane SQL
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Opis** | Umożliwia zarządzanie wystąpienia zarządzane SQL i wymaganych konfiguracji sieci, ale nie przyznawania dostępu innym osobom. |
+> | **Identyfikator** | 4939a1f6-9ae0-4e48-a1e0-f2cbe897382d |
+> | **Akcje** |  |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | Pobiera stany dostępności wszystkich zasobów w określonym zakresie |
+> | Microsoft.Resources/deployments/* | Tworzenie i zarządzanie wdrożeniami grup zasobów |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
+> | Microsoft.Network/networkSecurityGroups/* |  |
+> | Microsoft.Network/routeTables/* |  |
+> | Microsoft.Sql/locations/*/read |  |
+> | Microsoft.Sql/managedInstances/* |  |
+> | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | Microsoft.Network/virtualNetworks/subnets/* |  |
+> | Microsoft.Network/virtualNetworks/* |  |
+> | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
+> | Microsoft.Insights/alertRules/* | Tworzenie i zarządzanie nimi reguły alertów usługi Insights |
+> | Microsoft.Insights/metrics/read | Odczytaj metryki |
+> | Microsoft.Insights/metricDefinitions/read | Przeczytaj definicje metryk |
+> | **notActions** |  |
+> | *Brak* |  |
 > | **Elementy DataActions** |  |
 > | *Brak* |  |
 > | **NotDataActions** |  |

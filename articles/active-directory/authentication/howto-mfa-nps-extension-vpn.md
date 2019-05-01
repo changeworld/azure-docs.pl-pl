@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2674e5ca12269d44e111f140fce77bd8bc0c9ae7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e94b307d562c4317a87713612a62e6da007f9703
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60361951"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64570644"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Integrowanie infrastruktury sieci VPN z usługą Azure MFA za pomocą rozszerzenia serwera zasad sieciowych na platformie Azure
 
@@ -76,7 +76,7 @@ Gdy rozszerzenia serwera NPS dla platformy Azure jest zintegrowany z serwera NPS
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-W tej sekcji przedstawiono wymagania wstępne, które należy wykonać, zanim włączysz usługę MFA z bramą usług pulpitu zdalnego. Przed przystąpieniem do wykonywania, konieczne jest posiadanie następujących wymagań wstępnych w miejscu:
+W tej sekcji przedstawiono wymagania wstępne, które należy wykonać, zanim włączysz usługę MFA z siecią VPN. Przed przystąpieniem do wykonywania, konieczne jest posiadanie następujących wymagań wstępnych w miejscu:
 
 * Infrastrukturę sieci VPN
 * Rola usług zasad sieciowych i dostępu
@@ -338,7 +338,7 @@ W ramach konfiguracji rozszerzenia serwera NPS musisz podać poświadczenia admi
 
 ### <a name="install-the-nps-extension"></a>Instalowanie rozszerzenia serwera NPS
 
-Rozszerzenia serwera NPS musi być zainstalowany na serwerze zasad sieciowych i zainstalowaną rolą usługi dostępu do tej funkcji jako serwer RADIUS w projekcie. Czy *nie* zainstalować rozszerzenia serwera NPS na serwerze usług pulpitu zdalnego.
+Rozszerzenia serwera NPS musi być zainstalowany na serwerze zasad sieciowych i zainstalowaną rolą usługi dostępu do tej funkcji jako serwer RADIUS w projekcie. Czy *nie* zainstalować rozszerzenia serwera NPS na serwerze sieci VPN.
 
 1. Pobierz rozszerzenia serwera NPS z [Microsoft Download Center](https://aka.ms/npsmfa).
 

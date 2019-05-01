@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/09/2019
+ms.date: 04/24/2019
 ms.author: jeedes
-ms.openlocfilehash: 4a7ddc6b9f4a8638d18262e458d61108c00b618d
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: e2729a47771f2c3073d91cb5b0de4684b51badbd
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59564557"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64681875"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-three"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą trzech rozwiązania Zscaler
 
@@ -38,7 +38,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 Aby skonfigurować integrację usługi Azure AD za pomocą rozwiązania Zscaler trzy, potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
+* Subskrypcja usługi Azure AD. Jeśli nie ma środowiska usługi Azure AD, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/)
 * Trzy rozwiązania Zscaler logowanie jednokrotne włączone subskrypcja pojedyncza
 
 ## <a name="scenario-description"></a>Opis scenariusza
@@ -154,9 +154,17 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne za pomocą rozwiązan
 
 ### <a name="configure-zscaler-three-single-sign-on"></a>Konfigurowanie rozwiązania Zscaler trzech logowania jednokrotnego
 
-1. W oknie przeglądarki internetowej innej Zaloguj się w trzech rozwiązania Zscaler witryny firmy jako administrator.
+1. Aby zautomatyzować konfigurację w ramach rozwiązania Zscaler trzy, musisz zainstalować **rozszerzenia przeglądarki do bezpiecznego Moje aplikacje logowania** , klikając **zainstalować rozszerzenie**.
 
-2. Przejdź do obszaru **Administracja > Uwierzytelnianie > Ustawienia uwierzytelniania** i wykonaj następujące kroki:
+    ![Moje rozszerzenie aplikacji](common/install-myappssecure-extension.png)
+
+2. Po dodaniu rozszerzenia do przeglądarki, kliknij pozycję **instalacji rozwiązania Zscaler trzy** nastąpi bezpośrednie przekierowanie do rozwiązania Zscaler trzech aplikacji. W tym miejscu podaj poświadczenia administratora do logowania się do trzech rozwiązania Zscaler. Rozszerzenie przeglądarki automatycznie skonfiguruje aplikację i zautomatyzować kroki od 3 do 6.
+
+    ![Konfigurowanie logowania jednokrotnego](common/setup-sso.png)
+
+3. Jeśli chcesz, aby Instalator trzy rozwiązania Zscaler ręcznie, Otwórz nowe okno przeglądarki sieci web i logowania do witryny rozwiązania Zscaler trzy firmy jako administrator i wykonaj następujące czynności:
+
+4. Przejdź do obszaru **Administracja > Uwierzytelnianie > Ustawienia uwierzytelniania** i wykonaj następujące kroki:
    
     ![Administracja](./media/zscaler-three-tutorial/ic800206.png "Administracja")
 
@@ -164,7 +172,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne za pomocą rozwiązan
 
     b. Kliknij pozycję **Skonfiguruj język SAML**.
 
-3. W oknie **Edytowanie języka SAML** wykonaj następujące kroki i kliknij pozycję Zapisz.  
+5. W oknie **Edytowanie języka SAML** wykonaj następujące kroki i kliknij pozycję Zapisz.  
             
     ![Zarządzanie użytkownikami i uwierzytelnianiem](./media/zscaler-three-tutorial/ic800208.png "Zarządzanie użytkownikami i uwierzytelnianiem")
     
@@ -184,7 +192,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne za pomocą rozwiązan
 
     h. Kliknij pozycję **Zapisz**.
 
-4. Na stronie okna dialogowanie **Konfigurowanie uwierzytelniania użytkownika** wykonaj następujące kroki:
+6. Na stronie okna dialogowanie **Konfigurowanie uwierzytelniania użytkownika** wykonaj następujące kroki:
 
     ![Administracja](./media/zscaler-three-tutorial/ic800207.png)
 
@@ -241,7 +249,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola brittasimon@yourcompanydomain.extension. Na przykład: BrittaSimon@contoso.com
+    b. W **nazwa_użytkownika** typ pola `brittasimon@yourcompanydomain.extension`. Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 

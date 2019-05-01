@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
 ms.author: sujayt
-ms.openlocfilehash: c7c91a2cf9a25d0a5a4aeed6621e89f9c7cc18f0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: fafa791039397e93e9bf8ab6be04a2190e8ed784
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60789902"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64699076"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Rozwiązywanie problemów z replikacją maszyny Wirtualnej platformy Azure do platformy Azure
 
@@ -221,7 +221,17 @@ Upewnij się, dyski danych zostały zainicjowane, a następnie spróbuj ponownie
 
 Jeśli problem będzie się powtarzać, skontaktuj się z pomocą techniczną.
 
+## <a name="one-or-more-disks-are-available-for-protectionerror-code-153039"></a>Jeden lub więcej dysków są dostępne do ochrony (kod błędu: 153039)
+- **Możliwa przyczyna** </br>
+  - Jeśli jeden lub więcej dysków zostały ostatnio dodane do maszyny wirtualnej po ochronę. 
+  - Jeśli co najmniej jeden dyski zostały zainicjowane później, po ochronę maszyny wirtualnej.
 
+### <a name="fix-the-problem"></a>Rozwiąż problem
+Można albo do ochrony dysków lub zignorować to ostrzeżenie, aby umożliwić stan replikacji maszyny wirtualnej ponownie w dobrej kondycji.</br>
+1. Aby chronić dyski. Przejdź do zreplikowane elementy > Maszyna wirtualna > dyski > kliknij niechronionego dysku > włączania replikacji.
+ ![add_disks](./media/azure-to-azure-troubleshoot-errors/add-disk.png)
+2. Aby zignorować to ostrzeżenie. Przejdź do zreplikowany elementy > Maszyna wirtualna > kliknij pozycję Odrzuć alert w sekcji Przegląd.
+![dismiss_warning](./media/azure-to-azure-troubleshoot-errors/dismiss-warning.png)
 ## <a name="unable-to-see-the-azure-vm-for-selection-in-enable-replication"></a>Nie można wyświetlić maszyny Wirtualnej platformy Azure do wyboru w "Włącz replikację"
 
  **Przyczyny 1:  Grupa zasobów i źródłowa maszyna wirtualna znajdują się w innej lokalizacji** <br>

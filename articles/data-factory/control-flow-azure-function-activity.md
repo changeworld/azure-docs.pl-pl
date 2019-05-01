@@ -11,12 +11,12 @@ ms.date: 01/09/2019
 author: sharonlo101
 ms.author: shlo
 manager: craigg
-ms.openlocfilehash: b98d20a1f96a6ab4a0dc72330e85fdc98ba04eae
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: 82786b8f01ce409179f4ddd37127679f9357cd0e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576382"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64727061"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Aktywności funkcji platformy Azure w usłudze Azure Data Factory
 
@@ -28,7 +28,7 @@ Wprowadzenie minutę 8 i pokaz działania tej funkcji Obejrzyj poniższy film wi
 
 ## <a name="azure-function-linked-service"></a>Usługa połączona — funkcja
 
-Zwracany typ funkcji platformy Azure musi być prawidłowym `JObject`. (Należy pamiętać, że [JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) jest *nie* `JObject`.) Dowolny zwracany typ inny niż `JObject` kończy się niepowodzeniem i zgłasza błąd ogólny użytkownik *błąd podczas wywoływania punktu końcowego*.
+Zwracany typ funkcji platformy Azure musi być prawidłowym `JObject`. (Należy pamiętać, że [JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) jest *nie* `JObject`.) Dowolny zwracany typ inny niż `JObject` kończy się niepowodzeniem i zgłasza błąd użytkownika *zawartość odpowiedzi nie jest prawidłową jobject zostanie opróżniony*.
 
 | **Właściwość** | **Opis** | **Wymagane** |
 | --- | --- | --- |
@@ -52,11 +52,18 @@ Zwracany typ funkcji platformy Azure musi być prawidłowym `JObject`. (Należy 
 
 Wyświetlić schemat ładunek żądania w [schematu ładunku żądania](control-flow-web-activity.md#request-payload-schema) sekcji.
 
-## <a name="more-info"></a>Więcej informacji
+## <a name="routing-and-queries"></a>Routing i zapytań
 
-Działanie funkcji platformy Azure obsługuje **routingu**. Na przykład, jeśli aplikacja używa następujących routing - `https://functionAPP.azurewebsites.net/api/functionName/{value}?code=<secret>` — a następnie `functionName` jest `functionName/{value}`, który można zdefiniować parametry zapewnienie żądaną `functionName` w czasie wykonywania.
+Działanie funkcji platformy Azure obsługuje **routingu**. Na przykład, jeśli funkcji platformy Azure ma punkt końcowy `https://functionAPP.azurewebsites.net/api/<functionName>/<value>?code=<secret>`, a następnie `functionName` do użycia w ramach działania funkcji platformy Azure jest `<functionName>/<value>`. Możecie tę funkcję, aby zapewnić żądany `functionName` w czasie wykonywania.
 
-Działanie funkcji platformy Azure obsługuje również **zapytania**. Zapytanie ma być częścią `functionName` — na przykład `HttpTriggerCSharp2?name=hello` — gdzie `function name` jest `HttpTriggerCSharp2`.
+Działanie funkcji platformy Azure obsługuje również **zapytania**. Zapytanie musi być dołączane jako część `functionName`. Na przykład, jeśli nazwa funkcji jest `HttpTriggerCSharp` i jest zapytanie, które mają zostać uwzględnione `name=hello`, a następnie można skonstruować `functionName` w ramach działania funkcji platformy Azure jako `HttpTriggerCSharp?name=hello`. Ta funkcja może być sparametryzowany, dzięki czemu można określić wartości w czasie wykonywania.
+
+## <a name="timeout-and-long-running-functions"></a>Limit czasu i długo działających funkcji
+
+Usługa Azure Functions limit czasu po 230 sekundy, niezależnie od tego `functionTimeout` ustawienia zostały skonfigurowane w ustawieniach. Więcej informacji znajduje się w [tym artykule](../azure-functions/functions-versions.md#timeout). Aby obejść ten problem, postępuj zgodnie z wzorca asynchronicznego lub funkcje trwałe. Zaletą funkcje trwałe jest, że oferują one ich własny mechanizm śledzenia stanu, dzięki czemu nie trzeba implementować własne.
+
+Dowiedz się więcej o funkcje trwałe w [w tym artykule](../azure-functions/durable/durable-functions-overview.md). Możesz skonfigurować działanie funkcji platformy Azure do wywołania funkcji trwałe, która zwróci odpowiedź z innego identyfikatora URI, takich jak [w tym przykładzie](../azure-functions/durable/durable-functions-http-api.md#http-api-url-discovery). Ponieważ `statusQueryGetUri` zwraca HTTP 202 stan podczas funkcja działa, można sondować stan funkcji za pomocą działania w sieci Web. Po prostu skonfigurować działanie internetowe za pomocą `url` pola `@activity('<AzureFunctionActivityName>').output.statusQueryGetUri`. Po zakończeniu funkcji trwałych danych wyjściowych funkcji będą dane wyjściowe działania w sieci Web.
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 

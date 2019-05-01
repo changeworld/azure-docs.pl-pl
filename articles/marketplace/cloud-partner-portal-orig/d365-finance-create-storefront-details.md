@@ -1,25 +1,18 @@
 ---
-title: Jak wypełnić formularz szczegółów Storefront | Dokumentacja firmy Microsoft
+title: Jak wypełnić formularz szczegółów sklepu
 description: W tym artykule wyjaśniono wartości w formularzu Szczegóły Storefront dla nowej aplikacji Dynamics 365 Business Central.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.author: pbutlerm
-ms.openlocfilehash: f69a7f9ca94c0a83098300f01e9413b342bd4ae8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: pabutler
+ms.openlocfilehash: a22a2ebe870280ddcdf18c037141b92894742400
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60397945"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935022"
 ---
 <a name="how-to-fill-out-the-storefront-details-form"></a>Jak wypełnić formularz szczegółów sklepu
 ===========================================
@@ -57,9 +50,9 @@ Musi to być link do pomocy active przeprowadza klientów do pomocy online o pro
 
 ### <a name="supported-countriesregions"></a>Obsługiwane kraje/regiony
 
-To pole określa krajów/regionów, w których Twoja oferta będzie dostępna dla wersji próbnej. Można wybrać tylko krajach Microsoft Dynamics 365 Business Central jest już dostępna, albo w wersji zapoznawczej. Aby uzyskać bieżącą listę, zobacz [krajów i obsługiwanych tłumaczeń](https://docs.microsoft.com/dynamics-nav/compliance/apptest-countries-and-translations).
+To pole określa krajów/regionów, w których Twoja oferta będzie dostępna dla wersji próbnej. Można wybrać tylko kraje/regiony, w którym Microsoft Dynamics 365 Business Central jest już dostępna, albo w wersji zapoznawczej. Aby uzyskać bieżącą listę, zobacz [kraje/regiony i obsługiwanych tłumaczeń](https://docs.microsoft.com/dynamics-nav/compliance/apptest-countries-and-translations).
 
-![Wybierz kraje i obsługiwanych tłumaczeń](./media/d365-financials/image008.png)
+![Wybierz kraje/regiony i obsługiwanych tłumaczeń](./media/d365-financials/image008.png)
 
 
 ### <a name="supported-languages"></a>Obsługiwane języki

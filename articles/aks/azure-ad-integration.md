@@ -5,20 +5,20 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 08/09/2018
+ms.date: 04/26/2019
 ms.author: iainfou
-ms.openlocfilehash: db92526bd02ba55be5df7ce6999e3099e72b8fa5
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: c23c13969fd4e2814fdc1894a98a3f876da7315b
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62116781"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574302"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Integrowanie usługi Azure Active Directory z usługą Azure Kubernetes Service
 
 Usługa Azure Kubernetes Service (AKS) można skonfigurować do uwierzytelniania użytkowników usługi Azure Active Directory (AD). W tej konfiguracji należy zalogować się do klastra usługi AKS przy użyciu tokenu uwierzytelniania usługi Azure Active Directory. Ponadto administratorzy klastra mogą Konfigurowanie kontroli dostępu opartej na rolach Kubernetes (RBAC) na podstawie członkostwa grupy użytkownika tożsamości lub katalogu.
 
-W tym artykule dowiesz się, jak wdrażanie wstępnie wymaganych składników dla usługi AKS i Azure AD, a następnie wdrożyć klaster usługi platformy Azure z obsługą usługi AD i tworzeniu Podstawowa rola RBAC w klastrze AKS.
+W tym artykule dowiesz się, jak wdrażanie wstępnie wymaganych składników dla usługi AKS i Azure AD, a następnie wdrożyć klaster usługi platformy Azure z obsługą usługi AD i tworzeniu Podstawowa rola RBAC w klastrze usługi AKS przy użyciu witryny Azure portal. Możesz również [wykonaj te kroki przy użyciu wiersza polecenia platformy Azure][azure-ad-cli].
 
 Obowiązują następujące ograniczenia:
 
@@ -46,7 +46,7 @@ Pierwszą aplikację usługi Azure AD umożliwia uzyskiwanie członkostwa grupy 
 
 2. Wybierz **manifestu** i edytować `groupMembershipClaims` wartość `"All"`.
 
-   Zapisz aktualizacje po wykonaniu tych czynności.
+   **Zapisz** aktualizacji po wykonaniu tych czynności.
 
    ![Członkostwo w grupie aktualizacji do wszystkich](media/aad-integration/edit-manifest.png)
 
@@ -64,11 +64,11 @@ Pierwszą aplikację usługi Azure AD umożliwia uzyskiwanie członkostwa grupy 
 
    ![Ustaw uprawnienia aplikacji do wykresu](media/aad-integration/read-directory.png)
 
-6. W obszarze **DELEGOWANE uprawnienia**, należy zaznaczyć **Zaloguj się i odczytuj profil użytkownika** i **Odczyt danych katalogu**. Zapisz aktualizacje po zakończeniu.
+6. W obszarze **DELEGOWANE uprawnienia**, należy zaznaczyć **Zaloguj się i odczytuj profil użytkownika** i **Odczyt danych katalogu**. Wybierz **wybierz** Aby zapisać aktualizacje.
 
    ![Ustaw uprawnienia aplikacji do wykresu](media/aad-integration/delegated-permissions.png)
 
-   Wybierz pozycję **Done** (Gotowe).
+   Następnie wybierz **gotowe**.
 
 7. Wybierz *programu Microsoft Graph* wybierz z listy interfejsów API, następnie **Udziel uprawnień**. Ten krok zakończy się niepowodzeniem, jeśli bieżące konto nie jest administratorem dzierżawy.
 
@@ -96,11 +96,13 @@ Druga aplikacja usługi Azure AD jest używany podczas logowania się przy użyc
 
    ![Skonfiguruj uprawnienia aplikacji](media/aad-integration/select-api.png)
 
-3. Umieść znacznik wyboru obok aplikacji i kliknij przycisk **wybierz**.
+    Wybierz aplikację serwera, a następnie wybierz **wybierz**.
+
+3. Po powrocie *dostępu Dodaj interfejs API* oknie Wybierz **wybierz uprawnienia**. Znacznik wyboru w obszarze, zapoznaj się z *delegowane uprawnienia* do uzyskiwania dostępu do aplikacji, następnie wybierz **wybierz**.
 
    ![Wybierz punkt końcowy aplikacji serwera usługi AAD usługi AKS](media/aad-integration/select-server-app.png)
 
-   Wybierz **gotowe**
+   Po powrocie *dostępu Dodaj interfejs API* wybierz **gotowe**.
 
 4. Wybierz swój serwer interfejsu API z listy, a następnie wybierz **Udziel uprawnień**:
 
@@ -259,3 +261,4 @@ Aby uzyskać najlepsze rozwiązania dotyczące kontrolowanie tożsamości i zaso
 [rbac-authorization]: concepts-identity.md#role-based-access-controls-rbac
 [operator-best-practices-identity]: operator-best-practices-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md
+[azure-ad-cli]: azure-ad-integration-cli.md

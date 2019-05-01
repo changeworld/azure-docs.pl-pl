@@ -12,12 +12,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: jowargo
-ms.openlocfilehash: c24fcd5f007b641bb594bb07348491f70c03ea41
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: d7e38e8eca58c06fc6896887522b320a797fc42e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60623990"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64575300"
 ---
 # <a name="export-and-import-azure-notification-hubs-registrations-in-bulk"></a>Eksportowanie i importowanie usługi Azure Notification Hubs rejestracji zbiorczej
 Istnieją scenariusze, w których jest wymagany, aby utworzyć lub zmodyfikować dużą liczbę rejestracji w Centrum powiadomień. Niektóre z tych scenariuszy są aktualizacje tag następujące obliczeń wsadowych, czy migrujesz istniejącą implementację wypychania używać usługi Notification Hubs.
@@ -34,7 +34,7 @@ W tej sekcji założono, że masz następujące jednostki:
 
 - Centrum powiadomień elastycznie.
 - Kontener obiektów blob usługi Azure Storage.
-- Odwołuje się do [pakietu NuGet usługi Azure Storage](https://www.nuget.org/packages/windowsazure.storage/) i [pakietu NuGet usługi Notification Hubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/1.0.9).
+- Odwołuje się do [pakietu NuGet usługi Azure Storage](https://www.nuget.org/packages/windowsazure.storage/) i [pakietu NuGet usługi Notification Hubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
 ### <a name="create-input-file-and-store-it-in-a-blob"></a>Tworzenie pliku wejściowego i zapisz go w obiekcie blob
 Plik wejściowy zawiera listę rejestracje serializowane w kodzie XML, jeden na wiersz. Przy użyciu zestawu SDK platformy Azure, w poniższym przykładzie kodu pokazano, jak do serializacji rejestracji i przekazać je do kontenera obiektów blob.

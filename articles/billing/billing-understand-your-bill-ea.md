@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/01/2019
 ms.author: banders
-ms.openlocfilehash: 810d0795bd005cc313ec3567811ad55ba1d9d522
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: be20ad0583558949f65b9706f0a478669360bf3d
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60370037"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64571209"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Opis zawartości rachunku Enterprise Agreement platformy Azure
 
@@ -29,7 +29,7 @@ Klienci platformy Azure z umową Enterprise Agreement otrzymywanie faktury przek
 
 ## <a name="invoices-for-most-customers"></a>Faktury dla większości klientów
 
-W tej sekcji nie ma zastosowania do klientów platformy Azure w Australii, Japonia, część lub Singapurze. Jeśli jesteś w jednej z tych krajów, zobacz [faktur pozostali klienci powinni](#invoices-for-other-customers).
+W tej sekcji nie ma zastosowania do klientów platformy Azure w Australii, Japonia, część lub Singapurze. Jeśli jesteś w jednej z tych krajów/regionów, zobacz [faktur pozostali klienci powinni](#invoices-for-other-customers).
 
 Faktury platformy Azure jest wyświetlany, gdy wystąpi jedno z następujących cyklu rozliczeniowego:
 

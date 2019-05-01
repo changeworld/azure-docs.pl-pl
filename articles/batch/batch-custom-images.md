@@ -8,18 +8,18 @@ ms.service: batch
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: lahugh
-ms.openlocfilehash: 233b26b330fabe7da8664114ba1857f74feea4bc
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.openlocfilehash: 886dea0e53519870aaa27dea721a9eb78515cf86
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63764284"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64706332"
 ---
 # <a name="use-a-custom-image-to-create-a-pool-of-virtual-machines"></a>Używanie niestandardowego obrazu, aby utworzyć pulę maszyn wirtualnych 
 
 Podczas tworzenia puli usługi Azure Batch za pomocą konfiguracji maszyny wirtualnej, należy określić obraz maszyny Wirtualnej, który zawiera system operacyjny na każdym węźle obliczeniowym w puli. Można utworzyć puli maszyn wirtualnych, przy użyciu obsługiwanych obrazów portalu Azure Marketplace lub przy użyciu niestandardowego obrazu (obraz maszyny Wirtualnej zostanie utworzony i skonfigurowany samodzielnie). Niestandardowy obraz musi być *obrazu zarządzanego* zasobów w tej samej subskrypcji platformy Azure i regionie co konto usługi Batch.
 
-## <a name="why-use-a-custom-image"></a>Dlaczego warto używać obrazu niestandardowego?
+## <a name="benefits-of-custom-images"></a>Korzyści z niestandardowych obrazów
 
 Jeśli podasz niestandardowego obrazu, masz kontrolę nad konfiguracji systemu operacyjnego i typ systemu operacyjnego i dysków z danymi ma być używany. Obraz niestandardowy może zawierać aplikacji i danych referencyjnych, które staną się dostępne we wszystkich węzłach puli usługi Batch, zaraz po ich udostępnieniu.
 
@@ -32,12 +32,11 @@ Przy użyciu niestandardowego obrazu skonfigurowany dla danego scenariusza możn
 - **Zapisz czas ponownego uruchomienia na maszynach wirtualnych.** Instalacja aplikacji zwykle wymaga ponownego uruchomienia maszyny Wirtualnej, czasochłonne. Aby zaoszczędzić czas ponownego uruchomienia, należy wstępnie instalowania aplikacji. 
 - **Skopiuj jeden raz bardzo dużych ilości danych.** Należy dane statyczne część zarządzany obraz niestandardowy, kopiując go do dysków z danymi obrazu zarządzanego. To musi odbywać się jeden raz i tylko udostępnia dane w każdym węźle puli.
 - **Wybór typów dysków.** Masz do wyboru używania usługi premium storage dla dysku systemu operacyjnego i dysk z danymi.
-- **Zwiększanie puli do dużych rozmiarów.** Gdy używasz zarządzany obraz niestandardowy do tworzenia puli, pula można powiększać bez konieczności można utworzyć kopie obiektu blob obrazu vhd. 
-
+- **Zwiększanie puli do dużych rozmiarów.** Gdy używasz zarządzany obraz niestandardowy do tworzenia puli, pula można powiększać bez konieczności można utworzyć kopie obiektu blob obrazu vhd.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- **Zasób obrazu zarządzanego**. Tworzenie puli maszyn wirtualnych przy użyciu niestandardowego obrazu, należy mieć lub utworzyć zasób obrazu zarządzanego w tej samej subskrypcji platformy Azure i regionie co konto usługi Batch. Obraz, który powinien zostać utworzony z migawki dysku systemu operacyjnego maszyny Wirtualnej i opcjonalnie jego dołączonych dysków z danymi. Aby uzyskać więcej informacji i czynności, aby przygotować do zarządzanego obrazu zobacz następującą sekcję. 
+- **Zasób obrazu zarządzanego**. Tworzenie puli maszyn wirtualnych przy użyciu niestandardowego obrazu, należy mieć lub utworzyć zasób obrazu zarządzanego w tej samej subskrypcji platformy Azure i regionie co konto usługi Batch. Obraz, który powinien zostać utworzony z migawki dysku systemu operacyjnego maszyny Wirtualnej i opcjonalnie jego dołączonych dysków z danymi. Aby uzyskać więcej informacji i czynności, aby przygotować do zarządzanego obrazu zobacz następującą sekcję.
   - Użyj unikatowy obrazu niestandardowego dla każdej puli, który tworzysz.
   - Aby utworzyć pulę przy użyciu obrazu przy użyciu interfejsów API usługi Batch, należy określić **identyfikator zasobu** obrazu, który ma postać `/subscriptions/xxxx-xxxxxx-xxxxx-xxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/myImage`. Aby korzystać z portalu, użyj **nazwa** obrazu.  
   - Zasób obrazu zarządzanego powinna istnieć okres istnienia puli, aby umożliwić skalowanie w górę i może zostać usunięta po usunięciu puli.
@@ -46,7 +45,7 @@ Przy użyciu niestandardowego obrazu skonfigurowany dla danego scenariusza możn
 
 ## <a name="prepare-a-custom-image"></a>Przygotowanie obrazu niestandardowego
 
-Na platformie Azure można przygotować obrazu zarządzanego z migawek systemu operacyjnego w maszynie Wirtualnej platformy Azure i dysków z danymi, uogólnionej maszyny Wirtualnej platformy Azure z dyskami zarządzanymi lub lokalnego uogólnionego wirtualnego dysku twardego przekazane. Aby skalować pule usługi Batch niezawodnie przy użyciu niestandardowego obrazu, zaleca się utworzenie obrazu zarządzanego przy użyciu *tylko* pierwszej metody: przy użyciu migawek dysków maszyny Wirtualnej. Zobacz poniższe kroki, aby przygotować Maszynę wirtualną, Utwórz migawkę i tworzenie obrazu na podstawie migawki. 
+Na platformie Azure można przygotować obrazu zarządzanego z migawek systemu operacyjnego w maszynie Wirtualnej platformy Azure i dysków z danymi, uogólnionej maszyny Wirtualnej platformy Azure z dyskami zarządzanymi lub lokalnego uogólnionego wirtualnego dysku twardego przekazane. Aby skalować pule usługi Batch niezawodnie przy użyciu niestandardowego obrazu, zaleca się utworzenie obrazu zarządzanego przy użyciu *tylko* pierwszej metody: przy użyciu migawek dysków maszyny Wirtualnej. Zobacz poniższe kroki, aby przygotować Maszynę wirtualną, Utwórz migawkę i tworzenie obrazu na podstawie migawki.
 
 ### <a name="prepare-a-vm"></a>Przygotowywanie maszyny Wirtualnej
 
@@ -60,6 +59,7 @@ W przypadku tworzenia nowej maszyny Wirtualnej dla obrazu, należy użyć pierws
 
 * Upewnij się, że maszyna wirtualna jest tworzona w przypadku dysków zarządzanych. To domyślne ustawienie magazynu podczas tworzenia maszyny Wirtualnej.
 * Nie należy instalować rozszerzeń platformy Azure, takich jak rozszerzenie niestandardowego skryptu na maszynie Wirtualnej. Jeśli obraz zawiera wstępnie zainstalowane rozszerzenie, Azure, mogą wystąpić problemy podczas wdrażania puli usługi Batch.
+* Przy użyciu dołączone dyski danych, musisz zainstalować i sformatować dyski z na maszynie wirtualnej, aby umożliwić ich używanie.
 * Upewnij się, że podstawowy obraz systemu operacyjnego, których udzielasz używa domyślnego dysku tymczasowego. Agent węzłów usługi Batch oczekuje domyślnego dysku tymczasowego.
 * Gdy maszyna wirtualna jest uruchomiona, się z nim za pośrednictwem protokołu RDP (dla Windows) lub SSH (dla systemu Linux). Zainstaluj oprogramowanie niezbędne lub skopiuj żądanych danych.  
 

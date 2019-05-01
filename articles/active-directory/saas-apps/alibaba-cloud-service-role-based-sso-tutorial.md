@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0ab129d7b215f0f10841b13fc2835af59227198
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: 6b03dfa5a33850dfedf23375536278c4e08bed68
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565245"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64687164"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-alibaba-cloud-service-role-based-sso"></a>Samouczek: Integracja usługi Azure Active Directory z usługą w chmurze firmę Alibaba (logowanie Jednokrotne oparte na rolach)
 
@@ -120,7 +120,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z usługą w chmurze 
     | `https://signin.aliyun.com/saml-role/SSO` |
     | `https://signin.alibabacloud.com/saml-role/SSO` |
 
-5. Aplikacja usługi w chmurze firmę Alibaba (logowanie Jednokrotne oparte na rolach) oczekuje twierdzenia SAML w określonym formacie, który wymaga dodania mapowania atrybutów niestandardowych konfiguracji atrybuty tokenu języka SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych. Kliknij ikonę  **Edytuj** , aby otworzyć okno dialogowe  **Atrybuty użytkownika** .
+5. Aplikacja usługi w chmurze firmę Alibaba (logowanie Jednokrotne oparte na rolach) oczekuje twierdzenia SAML w określonym formacie, który wymaga dodania mapowania atrybutów niestandardowych konfiguracji atrybuty tokenu języka SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych. Kliknij przycisk **Edytuj** ikonę, aby otworzyć **atrybutów użytkownika** okna dialogowego.
 
     ![image](common/edit-attribute.png)
 
@@ -220,7 +220,7 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
 ### <a name="create-alibaba-cloud-service-role-based-sso-test-user"></a>Tworzenie użytkownika testowego firmę Alibaba usługi w chmurze (Role-based logowanie Jednokrotne)
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon firmę Alibaba w usłudze w chmurze (Role-based SSO). Praca z [zespołu pomocy technicznej usługi w chmurze firmę Alibaba (logowanie Jednokrotne oparte na rolach)](https://www.aliyun.com/service/) Aby dodać użytkowników na platformie firmę Alibaba usługi w chmurze (Role-based SSO). Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon firmę Alibaba w usłudze w chmurze (Role-based SSO). Praca z [zespołu pomocy technicznej usługi w chmurze firmę Alibaba (logowanie Jednokrotne oparte na rolach)](https://www.aliyun.com/service/) Aby dodać użytkowników na platformie firmę Alibaba usługi w chmurze (Role-based SSO). Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 

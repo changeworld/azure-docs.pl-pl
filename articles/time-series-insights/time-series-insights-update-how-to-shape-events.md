@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: eb398ad621167ad9f9b245fb8aa98c6942b87668
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 344f3a8b1bdfb789251479baffeb4df15bbf2842
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557431"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64718360"
 ---
 # <a name="shape-events-with-azure-time-series-insights-preview"></a>Kształt zdarzeń za pomocą usługi Azure czas Series Insights w wersji zapoznawczej
 
@@ -129,6 +129,6 @@ W poprzednim przykładzie Pamiętaj o następujących kwestiach:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby umieścić te wytyczne w praktyce, zobacz [składni zapytań Azure czas Series Insights w wersji zapoznawczej](./time-series-insights-query-data-csharp.md). Dowiesz się więcej o składni zapytań dla danych czasu Series Insights w wersji zapoznawczej dostęp do interfejsu API REST.
+- Aby umieścić te wytyczne w praktyce, zobacz [składni zapytań Azure czas Series Insights w wersji zapoznawczej](./time-series-insights-query-data-csharp.md). Dowiesz się więcej o składni zapytań dla danych czasu Series Insights w wersji zapoznawczej dostęp do interfejsu API REST.
 
-Aby dowiedzieć się więcej na temat obsługiwane kształty JSON, zobacz [kształty JSON obsługiwany](./time-series-insights-send-events.md#json).
+- Aby dowiedzieć się więcej na temat obsługiwane kształty JSON, zobacz [kształty JSON obsługiwany](./time-series-insights-send-events.md#json).

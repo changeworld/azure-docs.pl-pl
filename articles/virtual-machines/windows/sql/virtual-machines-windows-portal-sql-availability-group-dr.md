@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: 8f5b470cb3f75f434033a245f4aaa185aeb665c0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f9e31ac7685d597c741033bc165c6a51280e3d72
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60325992"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64571730"
 ---
 # <a name="configure-an-always-on-availability-group-on-azure-virtual-machines-in-different-regions"></a>Konfigurowanie zawsze włączonej grupy dostępności na maszynach wirtualnych platformy Azure w różnych regionach
 
@@ -145,7 +145,7 @@ Repliki w centrum danych zdalnych jest częścią grupy dostępności, ale jest 
 
 Najlepiej, zaktualizuj ciągi połączeń klienta, aby ustawić `MultiSubnetFailover=Yes`. Zobacz [połączenie z usługą MultiSubnetFailover](https://msdn.microsoft.com/library/gg471494#Anchor_0).
 
-Jeśli nie można zmodyfikować parametry połączenia, można skonfigurować buforowanie rozpoznawania nazw. Zobacz [limitów czasu połączenia w grupie dostępności wiele podsieci](https://blogs.msdn.microsoft.com/alwaysonpro/2014/06/03/connection-timeouts-in-multi-subnet-availability-group/).
+Jeśli nie można zmodyfikować parametry połączenia, można skonfigurować buforowanie rozpoznawania nazw. Zobacz [błędem przekroczenia limitu czasu i nie można nawiązać połączenia odbiornika grupy dostępności AlwaysOn programu SQL Server 2012, w środowisku obejmującym wiele podsieci](https://support.microsoft.com/help/2792139/time-out-error-and-you-cannot-connect-to-a-sql-server-2012-alwayson-av).
 
 ## <a name="fail-over-to-remote-region"></a>Do zdalnego regionu pracy awaryjnej
 

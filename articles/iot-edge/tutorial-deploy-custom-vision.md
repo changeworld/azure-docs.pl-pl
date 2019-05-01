@@ -9,12 +9,12 @@ ms.date: 11/01/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 7a5a92635114be87e59fe8f779c36d4c401a1427
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 194ebcc1f1779c927503e09e9c42a96afddb12c9
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60612879"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64575806"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Samouczek: Wykonywanie klasyfikacji obrazów na urządzeniach brzegowych za pomocą usługi Custom Vision Service
 
@@ -25,7 +25,6 @@ Na przykład usługa Custom Vision na urządzeniu usługi IoT Edge może określ
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności: 
 
 > [!div class="checklist"]
->
 > * Tworzenie klasyfikatora obrazów za pomocą usługi Custom Vision.
 > * Tworzenie modułu usługi IoT Edge wysyłającego zapytania do serwera internetowego usługi Custom Vision na urządzeniu.
 > * Wysyłanie wyników klasyfikatora obrazów do usługi IoT Hub.
@@ -39,25 +38,19 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Urządzenie usługi Azure IoT Edge:
+Przed rozpoczęciem tego samouczka, powinien wykonano za pomocą poprzedniego samouczka, aby skonfigurować środowisko programowania do tworzenia aplikacji kontenera systemu Linux: [Twórz moduły usługi IoT Edge dla urządzeń z systemem Linux](tutorial-develop-for-linux.md). Przez wykonanie kroków tego samouczka, musisz mieć następujące wymagania wstępne spełnione: 
 
-* Jako urządzenia brzegowego możesz użyć maszyny deweloperskiej albo maszyny wirtualnej, postępując zgodnie z instrukcjami w [przewodniku Szybki start dla urządzeń z systemem Linux](quickstart-linux.md).
-* Obecnie moduł usługi Custom Vision jest dostępny tylko jako kontener systemu Linux dla architektury x64. 
+* Usługa [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) w warstwie Bezpłatna lub Standardowa na platformie Azure.
+* A [Linux urządzenia z usługą Azure IoT Edge](quickstart-linux.md)
+* Rejestr kontenera, takiej jak [usługi Azure Container Registry](https://docs.microsoft.com/azure/container-registry/).
+* [Visual Studio Code](https://code.visualstudio.com/) skonfigurowano [narzędzia IoT Azure](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
+* [Docker CE](https://docs.docker.com/install/) skonfigurowane do uruchamiania kontenerów systemu Linux.
 
-Zasoby w chmurze:
-
-* Usługa [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) w warstwie Standardowa na platformie Azure. 
-* Rejestr kontenerów. W tym samouczku jest używana usługa [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/). 
-* Znajomość poświadczeń Twojego [konta administratora](../container-registry/container-registry-authentication.md#admin-account) rejestru kontenerów.
-
-Zasoby do programowania:
+Aby opracować moduł usługi IoT Edge przy użyciu usługi Custom Vision, należy zainstalować następujące dodatkowe wymagania wstępne na komputerze deweloperskim: 
 
 * [Python](https://www.python.org/downloads/)
 * [Usługa Git](https://git-scm.com/downloads)
-* [Visual Studio Code](https://code.visualstudio.com/)
-* Rozszerzenie usługi [Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) dla programu Visual Studio Code
 * Rozszerzenie języka [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) dla programu Visual Studio Code
-* [Program Docker CE](https://docs.docker.com/install/)
 
 ## <a name="build-an-image-classifier-with-custom-vision"></a>Tworzenie klasyfikatora obrazów za pomocą usługi Custom Vision
 
@@ -169,6 +162,22 @@ Rozwiązanie jest logicznym sposobem tworzenia i organizowania wielu modułów d
    ![Udostępnianie repozytorium obrazów platformy Docker](./media/tutorial-deploy-custom-vision/repository.png)
 
 W oknie programu Visual Studio Code zostanie załadowany obszar roboczy rozwiązania usługi IoT Edge.
+
+### <a name="add-your-registry-credentials"></a>Dodawanie poświadczeń rejestru
+
+W pliku środowiska przechowywane są poświadczenia rejestru kontenerów udostępniane środowisku uruchomieniowemu usługi IoT Edge. Środowisko uruchomieniowe wymaga tych poświadczeń do ściągnięcia prywatnych obrazów na urządzenie usługi IoT Edge.
+
+1. W eksploratorze programu VS Code otwórz plik env.
+2. Zaktualizuj pola, używając **nazwy użytkownika** i **hasła**, które zostały skopiowane z usługi Azure Container Registry.
+3. Zapisz ten plik.
+
+### <a name="select-your-target-architecture"></a>Wybierz swoje Architektura docelowa
+
+Obecnie usługa Visual Studio Code można tworzyć modułów na potrzeby urządzeń AMD64 systemu Linux i ARM32v7 systemu Linux. Musisz wybrać architektury objęci za pomocą każdego rozwiązania, ponieważ skompilowane i uruchom w różny sposób dla każdego typu architektury kontenera. Wartość domyślna to AMD64 systemu Linux. 
+
+1. Otwórz paletę poleceń i wyszukaj **usługi Azure IoT Edge: Ustaw domyślne platformę docelową dla nowoczesne rozwiązanie**, lub wybierz ikonę skrótu prowadzącą w pasku bocznym, w dolnej części okna. 
+
+2. W palecie poleceń Wybierz architektury docelowej z listy opcji. W tym samouczku używamy maszynę wirtualną Ubuntu jako urządzenie usługi IoT Edge, dzięki czemu będzie Zachowaj ustawienie domyślne **amd64**. 
 
 ### <a name="add-your-image-classifier"></a>Dodawanie klasyfikatora obrazów
 
@@ -392,28 +401,6 @@ Rozszerzenie usługi IoT Edge dla programu Visual Studio Code zawiera w każdym 
 
 7. Zapisz plik **deployment.template.json**.
 
-### <a name="add-your-registry-credentials"></a>Dodawanie poświadczeń rejestru
-
-W wymaganiach wstępnych dla tego samouczka został wymieniony rejestr kontenerów, który jest niezbędny do przechowywania obrazów kontenerów dla utworzonych przez Ciebie modułów. Poświadczenia dostępu do rejestru musisz podać w dwóch miejscach: w programie Visual Studio Code, aby kompilować i wypychać obrazy do rejestru, oraz w manifeście wdrożenia, aby urządzenie usługi IoT Edge mogło ściągać i wdrażać obrazy. 
-
-Jeśli używasz usługi Azure Container Registry, upewnij się, znasz nazwę użytkownika, serwer logowania i hasło dla [konta administratora](../container-registry/container-registry-authentication.md#admin-account). 
-
-1. W programie Visual Studio Code otwórz zintegrowany terminal, wybierając pozycję **Widok** > **Terminal**. 
-
-2. W zintegrowanym terminalu wprowadź następujące polecenie: 
-
-    ```csh/sh
-    docker login -u <registry username> <registry login server>
-    ```
-
-3. Po wyświetleniu monitu podaj hasło rejestru i naciśnij klawisz **Enter**.
-
-4. Otwórz plik **ENV** w folderze rozwiązania. Ten plik jest ignorowany przez repozytorium git i przechowuje poświadczenia rejestru, dzięki czemu nie ma potrzeby umieszczania ich na stałe w pliku szablonu wdrożenia. 
-
-5. Podaj nazwę użytkownika i hasło dla rejestru kontenerów bez znaków cudzysłowu wokół wartości. 
-
-6. Zapisz plik **ENV**.
-
 ## <a name="build-and-deploy-your-iot-edge-solution"></a>Tworzenie i wdrażanie rozwiązania usługi IoT Edge
 
 Mając utworzone oba moduły i skonfigurowany szablon manifestu wdrożenia, możesz przystąpić do tworzenia obrazów kontenerów i wypychania ich do rejestru kontenerów. 
@@ -426,13 +413,7 @@ Najpierw skompiluj swoje rozwiązanie i wypchnij je do rejestru kontenerów.
 2. Zwróć uwagę, że do Twojego rozwiązania został dodany nowy folder **config**. Rozwiń ten folder i otwórz znajdujący się w nim plik **deployment.json**.
 3. Przejrzyj informacje w pliku deployment.json. Plik deployment.json jest tworzony (lub aktualizowany) automatycznie na podstawie skonfigurowanego pliku szablonu wdrożenia oraz informacji z rozwiązania, w tym pliku ENV i plików module.json. 
 
-Następnie skonfiguruj dostęp do usługi IoT Hub z poziomu programu Visual Studio Code. 
-
-1. W palecie poleceń programu VS Code wybierz polecenie **Azure IoT Hub: Select IoT Hub**  (Azure IoT Hub: wybierz centrum IoT Hub).
-2. Postępuj zgodnie z monitami, aby zalogować się na koncie platformy Azure. 
-3. W palecie poleceń wybierz subskrypcję platformy Azure, a następnie wybierz centrum IoT Hub. 
-
-Na koniec wybierz urządzenie i wdróż rozwiązanie.
+Następnie wybierz swoje urządzenie i wdrażać rozwiązania.
 
 1. W eksploratorze programu VS rozwiń sekcję **Urządzenia usługi Azure IoT Hub**. 
 2. Kliknij prawym przyciskiem myszy urządzenie, które ma być urządzeniem docelowym wdrożenia, i wybierz polecenie **Create deployment for single device** (Utwórz wdrożenie dla pojedynczego urządzenia). 
@@ -465,12 +446,9 @@ Wyniki z modułu usługi Custom Vision, które są wysyłane jako komunikaty z m
 
 Jeśli zamierzasz przejść do kolejnego zalecanego artykułu, możesz zachować utworzone zasoby oraz konfiguracje i użyć ich ponownie. Możesz także nadal używać tego samego urządzenia usługi IoT Edge jako urządzenia testowego. 
 
-W przeciwnym razie możesz usunąć konfigurację lokalną i zasoby platformy Azure utworzone podczas pracy z tym artykułem, aby uniknąć naliczania opłat. 
+W przeciwnym razie można usunąć lokalnej konfiguracji i zasobów platformy Azure używane w tym artykule Aby uniknąć naliczania opłat. 
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
-
-[!INCLUDE [iot-edge-clean-up-local-resources](../../includes/iot-edge-clean-up-local-resources.md)]
-
 
 
 ## <a name="next-steps"></a>Kolejne kroki
@@ -482,4 +460,4 @@ Jeśli chcesz wypróbować bardziej pogłębioną wersję tego scenariusza z kan
 Kontynuuj pracę z kolejnymi samouczkami, aby dowiedzieć się o innych metodach, za pomocą których usługa Azure IoT Edge może ułatwiać przekształcanie danych w analizy biznesowe na brzegu sieci.
 
 > [!div class="nextstepaction"]
-> [Znajdowanie średnich przy użyciu okna ruchomego w usłudze Azure Stream Analytics](tutorial-deploy-stream-analytics.md)
+> [Store data at the edge with SQL Server databases (Przechowywanie danych na brzegu sieci przy użyciu baz danych programu SQL Server)](tutorial-store-data-sql-server.md)

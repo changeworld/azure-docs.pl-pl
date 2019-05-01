@@ -8,18 +8,22 @@ ms.topic: article
 ms.date: 04/26/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 0f87645537576f49ee04b823341acf8853798f88
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: ad6d7a60700727b73b87a78e364fde3fa1caa8c3
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60730059"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572566"
 ---
 # <a name="transfer-data-with-azcopy-on-linux"></a>Transferowanie danych za pomocą narzędzia AzCopy w systemie Linux
 
 AzCopy to narzędzie wiersza polecenia przeznaczone do kopiowania danych z magazynu obiektów Blob Azure firmy Microsoft i plików, przy użyciu prostych poleceń zaprojektowane pod kątem optymalnej wydajności. Dane można kopiować między systemem plików i kontem magazynu lub między kontami magazynu.  
 
-Istnieją dwie wersje narzędzia AzCopy, który można pobrać. Narzędzie AzCopy w systemie Linux jest przeznaczony dla platform Linux, oferuje opcje wiersza polecenia w stylu POSIX. [Narzędzie AzCopy w Windows](../storage-use-azcopy.md) oferuje Windows style opcje wiersza polecenia. W tym artykule opisano narzędzia AzCopy w systemie Linux. 
+> [!IMPORTANT]
+> W tym artykule opisano starszą wersję narzędzia AzCopy.
+>Aby zainstalować najnowszą wersję narzędzia AzCopy, zobacz [AzCopy v10](storage-use-azcopy-v10.md).
+
+Jeśli zdecydujesz się zainstalować starszą wersję programu AzCopy (AzCopy v8.1), następnie istnieje wiele wersji narzędzia AzCopy w wersji 8.1, którą można pobrać. Narzędzie AzCopy w systemie Linux jest przeznaczony dla platform Linux, oferuje opcje wiersza polecenia w stylu POSIX. [Narzędzie AzCopy w Windows](../storage-use-azcopy.md) oferuje Windows style opcje wiersza polecenia. W tym artykule opisano narzędzia AzCopy w systemie Linux. 
 
 > [!NOTE]  
 > Począwszy od wersji AzCopy 7.2 zależności platformy .NET Core, są dostarczane przy użyciu pakietu Narzędzia AzCopy. Jeśli używasz wersji w wersji 7.2 lub później, nie potrzebujesz już do zainstalowania platformy .NET Core to wymaganie wstępne.

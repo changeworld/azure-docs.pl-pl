@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 4ddbec6b163a939c1663630e39e89140ac6f7efe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 2400f80c67527027aee3a98baaa869c5c66d46ee
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60761492"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64573643"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Przy użyciu danych referencyjnych dla wyszukiwania w usłudze Stream Analytics
 Dane referencyjne (znany także jako tabela odnośnika) jest ograniczone zestaw danych, który jest statyczny lub wolno zmieniający się charakter, używane do wyszukiwania lub do skorelowania ze strumienia danych. Można na przykład w scenariuszu IoT są przechowywane metadane dotyczące czujniki, (które nie zmieniają się często) w danych referencyjnych i przyłączyć go ze strumieniami danych IoT w czasie rzeczywistym. Usługa Azure Stream Analytics ładuje dane referencyjne w pamięci w celu uzyskania małych opóźnień przetwarzania strumienia. Aby korzystać z danych referencyjnych w ramach zadania usługi Azure Stream Analytics, będzie na ogół służy [Dołącz dane odwołanie](https://msdn.microsoft.com/library/azure/dn949258.aspx) w zapytaniu. 
@@ -49,7 +49,7 @@ Jeśli dane odwołanie nie powinna się zmienić, obsługuje odwołania statyczn
 
 Jeśli dane odwołanie jest wolno zmieniający zestawu danych, następnie wspierać odświeżania odwołanie do danych jest włączona, określając wzorzec ścieżki w danych wejściowych konfiguracji za pomocą {date} i {time} tokenów podstawienia. Stream Analytics przejmuje definicje danych zaktualizowano odwołania na podstawie tego wzorca ścieżki. Na przykład wzorzec `sample/{date}/{time}/products.csv` z datą o postaci **"RRRR-MM-DD"** i format czasu **"HH mm"** powoduje, że usługi Stream Analytics do pobrania zaktualizowanych obiektów blob `sample/2015-04-16/17-30/products.csv` o 17:30:00 na 16 kwietnia , Strefie czasowej UTC 2015.
 
-Usługa Azure Stream Analytics automatycznie skanuje w poszukiwaniu obiekty BLOB danych referencyjnych odświeżane w odstępach jednej minuty.
+Usługa Azure Stream Analytics automatycznie skanuje w poszukiwaniu obiekty BLOB danych referencyjnych odświeżane w odstępach jednej minuty. Jeśli obiekt blob z znacznik czasu: 10:30:00 jest przekazywany razem z niewielkim opóźnieniem (na przykład 10:30:30), zauważysz małe opóźnienia w ramach zadania usługi Stream Analytics odwołuje się do tego obiektu blob. Aby uniknąć takich scenariuszy, zalecane jest wcześniejsze niż docelowy czas przekazywania obiektu blob (10: 30:00 w tym przykładzie) poczekać zadania usługi Stream Analytics do odnajdywania i ładować je w pamięci i wykonywać operacje. 
 
 > [!NOTE]
 > Obecnie zadania usługi Stream Analytics Wyszukaj odświeżanie obiektów blob tylko wtedy, gdy czas maszyny jest przesuwany do czasu zakodowane w nazwie obiektu blob. Na przykład, zadanie będzie szukać `sample/2015-04-16/17-30/products.csv` tak szybko, jak to możliwe, ale nie wcześniej niż 17:30:00 od 16 kwietnia 2015 UTC strefę czasową. Będzie ono *nigdy nie* Wyszukaj obiekt blob z wcześniej, niż ostatni odnaleziono zakodowany czasu.

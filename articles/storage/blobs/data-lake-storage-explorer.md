@@ -2,19 +2,19 @@
 title: 'Szybki start: zarządzanie danymi w usłudze Azure Data Lake Storage Gen2 przy użyciu Eksploratora usługi Azure Storage '
 description: W tym przewodniku Szybki Start dowiesz się, jak utworzyć systemu plików w konta usługi Azure Data Lake Storage Gen2, a także katalogu i pliku za pomocą Eksploratora usługi Azure Storage. Następnie dowiesz się, jak pobrać plik na komputer lokalny i jak wyświetlać widok wszystkich plików w katalogu.
 services: storage
-author: tamram
+author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
 ms.date: 12/05/2018
-ms.author: tamram
-ms.openlocfilehash: b6add3c2402df9c0db2284945269d3fbaa1c65e1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: normesta
+ms.openlocfilehash: 01743eb7ec7f6650a0fd28fd9c4f090bebd524b3
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60708777"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939340"
 ---
 # <a name="quickstart-use-azure-storage-explorer-to-manage-data-in-an-azure-data-lake-storage-gen2-account"></a>Szybki start: zarządzanie danymi na koncie usługi Azure Data Lake Storage Gen2 przy użyciu Eksploratora usługi Azure Storage
 

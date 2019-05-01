@@ -1,25 +1,18 @@
 ---
-title: Utwórz Dynamics 365 Customer Engagement zasobów Technical Preview - Portal Azure Marketplace | Dokumentacja firmy Microsoft
+title: Utwórz Dynamics 365 for Customer Engagement, zasoby techniczne | Portal Azure Marketplace
 description: Utwórz zasoby techniczne dla Dynamics 365 Customer Engagement aplikacji oferty.
 services: Dynamics 365 for Customer Engagement, Azure, Marketplace, Cloud Partner Portal, AppSource
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 12/29/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 50c4fd512206cdf17ebb555acb88de2a3f74c2bd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: eff175264677d6b8ffb885229b5e68b306424335
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61472672"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64943105"
 ---
 # <a name="create-technical-assets-for-azure-application-offer"></a>Utwórz zasoby techniczne w celu skorzystania z oferty aplikacji platformy Azure
 

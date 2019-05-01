@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0277180f0d768bbcc83a0d8d05fbc4b8b25301e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: bbebbeaad681618e8420ad842ec370ce62bc9eba
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60357481"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64570833"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Często zadawane pytania dotyczące usługi Azure Multi-Factor Authentication
 
@@ -59,7 +59,7 @@ W Kanadzie, firma Microsoft używa następujących krótkich kodów SMS:
    * 759731 
    * 673801
 
-Microsoft nie gwarantuje spójne dostarczania monitu wiadomości SMS lub uwierzytelniania wieloskładnikowego opartego na głos przez ten sam numer. W celu poprawy naszych użytkowników firmy Microsoft można dodać lub usunąć krótkich kodów w dowolnym momencie, jak możemy dostosować trasy zwiększyć skuteczność programu SMS. Firma Microsoft obsługuje krótkie kody krajów poza USA i Kanady
+Microsoft nie gwarantuje spójne dostarczania monitu wiadomości SMS lub uwierzytelniania wieloskładnikowego opartego na głos przez ten sam numer. W celu poprawy naszych użytkowników firmy Microsoft można dodać lub usunąć krótkich kodów w dowolnym momencie, jak możemy dostosować trasy zwiększyć skuteczność programu SMS. Microsoft nie obsługuje krótkich kodów dla kraje/regiony poza USA i Kanady.
 
 ## <a name="billing"></a>Rozliczenia
 
@@ -95,7 +95,7 @@ Uwierzytelnianie wieloskładnikowe dla użytkowników usługi Office 365 oferuje
 
 Jeśli Twoja organizacja zakupi uwierzytelnianie wieloskładnikowe jako usługa autonomiczna z rozliczeniem na podstawie użycia, możesz wybrać model rozliczeń, po utworzeniu dostawcy usługi MFA. Model rozliczeń nie można zmienić po utworzeniu dostawcy usługi MFA. Można jednak usunąć dostawcę usługi MFA i następnie utworzyć go za pomocą innego modelu rozliczeń.
 
-Po utworzeniu dostawcy usługi MFA może być połączony z usługą Azure Active Directory (zwane również "dzierżawa usługi Azure AD"). Jeśli bieżący dostawca usługi MFA jest połączony z dzierżawą usługi Azure AD, możesz bezpiecznie usunąć dostawcę usługi MFA i utwórz je, który jest połączony z tą samą dzierżawą usługi Azure AD. Alternatywnie, jeśli masz zakupionych dostatecznie dużo licencji MFA, Azure AD Premium lub Enterprise Mobility + Security (EMS), aby objęły one wszystkich użytkowników włączonych do usługi MFA, możesz zupełnie usunąć dostawcę usługi MFA.
+Po utworzeniu dostawcy usługi MFA może zostać powiązany z usługi Azure Active Directory lub "Usługi Azure AD tenant". Jeśli bieżący dostawca usługi MFA jest połączony z dzierżawą usługi Azure AD, możesz bezpiecznie usunąć dostawcę usługi MFA i utwórz je, który jest połączony z tą samą dzierżawą usługi Azure AD. Alternatywnie, jeśli masz zakupionych dostatecznie dużo licencji MFA, Azure AD Premium lub Enterprise Mobility + Security (EMS), aby objęły one wszystkich użytkowników włączonych do usługi MFA, możesz zupełnie usunąć dostawcę usługi MFA.
 
 Jeśli dostawca usługi MFA *nie* połączony z dzierżawą usługi Azure AD lub łączysz nowego dostawcę usługi MFA do innej usługi Azure AD dzierżawcy, ustawienia użytkownika i opcje konfiguracji nie są przenoszone. Ponadto należy ponownie aktywować istniejące serwery usługi Azure MFA przy użyciu poświadczeń aktywacji wygenerowanych za pośrednictwem nowego dostawcy usługi MFA. Ponowne aktywowanie serwerów usługi MFA w celu ich połączenia z nowym dostawcą usługi MFA nie wpływa na uwierzytelnianie za pośrednictwem połączeń telefonicznych i wiadomości SMS, ale powiadomienia w aplikacji mobilnej przestaną działać dla wszystkich użytkowników do momentu, w którym ponownie aktywują aplikację mobilną.
 
@@ -142,7 +142,7 @@ Jeśli Twoja organizacja nie ma starszych klientów, nie należy zezwalać użyt
 > [!NOTE]
 > Nowoczesne uwierzytelnianie dla klientów pakietu Office 2013
 >
-> Hasła aplikacji są tylko niezbędnych dla aplikacji, które nie obsługują nowoczesnego uwierzytelniania. Klienci pakietu Office 2013 obsługuje protokoły nowoczesnego uwierzytelniania, ale muszą być skonfigurowane. Teraz nowoczesnego uwierzytelniania są dostępne dla każdego klienta z aktualizacją update marca 2015 lub nowszego, pakietu Office 2013. Aby uzyskać więcej informacji, zobacz [pakietu Office 2013 publicznej wersji nowoczesnego uwierzytelniania ogłosiła](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/).
+> Hasła aplikacji są tylko niezbędnych dla aplikacji, które nie obsługują nowoczesnego uwierzytelniania. Klienci pakietu Office 2013 obsługuje protokoły nowoczesnego uwierzytelniania, ale muszą być skonfigurowane. Teraz nowoczesnego uwierzytelniania są dostępne dla każdego klienta z aktualizacją update marca 2015 lub nowszego, pakietu Office 2013. Aby uzyskać więcej informacji, zobacz wpis w blogu [nowoczesne uwierzytelnianie usługi Office 365 zaktualizowane](https://www.microsoft.com/microsoft-365/blog/2015/11/19/updated-office-365-modern-authentication-public-preview/).
 
 **Pyt.: Moi użytkownicy mówią, że czasami nie otrzymasz wiadomość SMS lub ich odpowiedzi na wiadomości tekstowe dwukierunkowe, ale Weryfikacja upłynie limit czasu.**
 

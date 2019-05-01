@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 03/12/2019
+ms.date: 04/24/2019
 ms.author: juliako
-ms.openlocfilehash: a182b9ec0fb945b4c2ffddd7a977df8ad9a8d250
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: a8812e8a24082bd8c3a2e9bd489e12a12c80c76d
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60559871"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574128"
 ---
 # <a name="what-is-video-indexer"></a>Co to jest Video Indexer?
 
@@ -37,7 +37,7 @@ Usługa Azure Video Indexer to aplikacja w chmurze utworzona za pomocą usługi 
 
 ## <a name="audio-insights"></a>Audio insights
 
-- **Automatyczne wykrywanie języka**: Automatycznie rozpoznaje dominujący język mówiony. Obsługiwane języki: angielski, chiński (uproszczony), francuski, hiszpański, japoński, niemiecki, portugalski (Brazylia), rosyjski i włoski. Gdy języka nie będzie można wykryć, użyty zostanie język angielski.
+- **Automatyczne wykrywanie języka**: Automatycznie rozpoznaje dominujący język mówiony. Obsługiwane języki angielski, hiszpański, francuski, niemiecki, włoski, chiński (uproszczony), japoński, rosyjski i portugalskim portugalski będzie powrót do języka angielskiego, gdy nie można wykryć język.
 - **Transkrypcję audio**: Konwertuje mowy na tekst w 12 języków i umożliwia rozszerzeń. Obsługiwane języki angielski, hiszpański, francuski, niemiecki, włoski, chiński (uproszczony), japoński, arabski, rosyjski, portugalski (Brazylia), Hindi i koreańskim.
 - **Podpisy kodowane**: Tworzy kodowanych w trzech formatach: VTT, TTML, SRT.
 - **Dwa kanału przetwarzania**: Automatycznie wykryje, oddziel transkrypcji i scalenia na pojedynczej osi czasu.
@@ -47,7 +47,7 @@ Usługa Azure Video Indexer to aplikacja w chmurze utworzona za pomocą usługi 
 - **Statystyki osoby mówiącej**: Zawiera dane statystyczne prelegentów mowy proporcji.
 - **Moderowanie zawartości tekstowej**: Wykrywa jawnego tekstu transkrypcji audio.
 - **Efekty dźwiękowe**: Identyfikuje efekty dźwiękowe, takie jak Oklaski ręcznie, mowy i wyciszenia.
-- **Wykrywanie emocji**: Rozpoznaje emocje, które oparte na podpowiedzi mowy i audio. Mogą to być emocje takie jak radość, smutek, gniew czy strach.
+- **Wykrywanie emocji**: Rozpoznaje emocje, w oparciu o mowy (co to jest po uwzględnieniu) i tony głosowej, (jak jest ono).  Mogą to być emocje takie jak radość, smutek, gniew czy strach.
 - **Tłumaczenie**: Tworzy tłumaczenia transkrypcjach audio do 54 różnych języków.
 
 ## <a name="audio-and-video-insights-multi-channels"></a>Insights audio i wideo (Obsługa wielu kanałów)

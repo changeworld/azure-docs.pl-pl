@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 01/11/2019
 ms.author: annayak
-ms.openlocfilehash: 673101ad7f55969c216adf7e970402a2109f8254
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 35f8a766c6d260e23ff854284d5b8ee047e64b42
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60864345"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926226"
 ---
 # <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>Rozwiązywanie problemów z błędami usuwania zasobów magazynu klasycznego
 Ten artykuł zawiera wskazówki dotyczące rozwiązywania problemów, gdy wystąpi jedno z następujących błędów, w trakcie usuwania Azure klasycznego konta magazynu, kontenera lub pliku obiektów blob strony *.vhd. 
@@ -37,7 +37,7 @@ Zasób "Dysk" jest używany do instalacji pliku obiektu blob strony *.vhd na mas
 3. Po dzierżawy dysków jest uszkodzona, można usunąć obiektów blob strony, sam. Usunięcie wszystkich zasobów "Dysk" jest obecny w nich można usunąć konta magazynu lub kontenera.
 
 >[!NOTE] 
->Jeśli użytkownik usunie maszynę Wirtualną, ale nie wirtualnego dysku twardego, opłaty za magazyn będą nadal naliczane pliku *.vhd blob strony. Opłaty zostaną naliczone tworzone są typ konta magazynu, sprawdź [stronę z cennikiem](https://azure.microsoft.com/en-us/pricing/details/storage/) Aby uzyskać więcej informacji. Jeśli użytkownik nie chce już używać wirtualnymi dyskami twardymi, Usuń it/je aby uniknąć naliczania opłat w przyszłości. 
+>Jeśli użytkownik usunie maszynę Wirtualną, ale nie wirtualnego dysku twardego, opłaty za magazyn będą nadal naliczane pliku *.vhd blob strony. Opłaty zostaną naliczone tworzone są typ konta magazynu, sprawdź [stronę z cennikiem](https://azure.microsoft.com/pricing/details/storage/) Aby uzyskać więcej informacji. Jeśli użytkownik nie chce już używać wirtualnymi dyskami twardymi, Usuń it/je aby uniknąć naliczania opłat w przyszłości. 
 
 ## <a name="unable-to-delete-storage-account"></a>Można usunąć konta magazynu 
 

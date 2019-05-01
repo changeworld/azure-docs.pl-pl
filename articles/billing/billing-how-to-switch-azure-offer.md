@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: banders
-ms.openlocfilehash: bbdcbdc7ef288eeeb279c7e5e59baee492e1f292
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 11d3deb029ef0d8478844b64c54db7982ed1091e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60918795"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64570981"
 ---
 # <a name="change-your-azure-pay-as-you-go-subscription-to-a-different-offer"></a>Zmień subskrypcję Azure rozliczana według bieżącego użycia na inną ofertę
 
@@ -86,7 +86,7 @@ Może nie być wyświetlana **Przełącz na inną ofertę** przycisk, jeśli:
 ### <a name="why-do-i-see-there-are-no-offers-available-in-your-region-or-country-at-this-time"></a>Dlaczego widzę "Nie są dostępne żadne oferty w kraj lub region w tej chwili"?
 
 * Nie może być uprawnieni do skorzystania z oferty przełączników. Sprawdź [listę dostępnych ofert, możesz przełączyć się do](#whats-supported) i upewnij się, czy aktywowano prawo korzyści z programu Visual Studio lub Bizspark.
-* Niektóre oferty nie mogą być dostępne we wszystkich krajach.
+* Niektóre oferty może nie być dostępne we wszystkich krajach/regionach.
 
 ### <a name="what-does-switching-azure-offers-do-to-my-service-and-billing"></a>Ile kosztuje przełączanie oferty platformy Azure, czy do mojej usługi i rozliczeń?
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 99175f79e030a55991947313e4a7e32a738d6adb
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: c8504c6bf25b186a4bc87c4e7565444dd3e57209
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62097404"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64570485"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>Użyj interfejsu API REST programu Apache Spark, aby przesłać zdalnej obsługi zadań do klastra usługi HDInsight Spark
 
@@ -164,16 +164,6 @@ HDInsight 3.5 klastrów i powyżej, domyślnie wyłączyć użycie lokalne ście
 ## <a name="submitting-livy-jobs-for-a-cluster-within-an-azure-virtual-network"></a>Przesyłanie zadań usługi Livy klastra w ramach sieci wirtualnej platformy Azure
 
 Jeśli łączysz się z klastrem usługi HDInsight Spark z w ramach usługi Azure Virtual Network możesz mogą łączyć się bezpośrednio do usługi Livy w klastrze. W takim przypadku adres URL punktu końcowego usługi Livy jest `http://<IP address of the headnode>:8998/batches`. W tym miejscu **8998** jest port, na którym usługi Livy działa na głównym węzłem klastra. Aby uzyskać więcej informacji na temat uzyskiwania dostępu do usług w niepublicznych portów, zobacz [porty używane przez usługi Apache Hadoop w HDInsight](../hdinsight-hadoop-port-settings-for-services.md).
-
-## <a name="troubleshooting"></a>Rozwiązywanie problemów
-
-Poniżej przedstawiono niektóre problemy, które możesz napotkać podczas przy użyciu programu Livy do przesłania zdalnych zadań do klastrów platformy Spark.
-
-### <a name="using-an-external-jar-from-the-additional-storage-is-not-supported"></a>Za pomocą zewnętrznego pliku jar z dodatkowego magazynu nie jest obsługiwana.
-
-**Problem:** Jeśli zadanie platformy Spark usługi Livy odwołuje się do zewnętrznego pliku jar z konta magazynu dodatkowego skojarzonego z klastrem, zadanie kończy się niepowodzeniem.
-
-**Rozwiązanie:** Upewnij się, że plik jar, którego chcesz użyć jest dostępny w domyślnego magazynu skojarzonego z klastrem HDInsight.
 
 
 

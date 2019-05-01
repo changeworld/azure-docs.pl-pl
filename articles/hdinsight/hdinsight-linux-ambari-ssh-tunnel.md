@@ -1,21 +1,19 @@
 ---
 title: Używanie protokołu SSH tunelowania do dostępu do usługi Azure HDInsight
 description: Dowiedz się, jak bezpiecznie przeglądać zasoby sieci web hostowanych w węzłach usługi HDInsight opartych na systemie Linux za pomocą tunelu SSH.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-origin.date: 04/30/2018
-ms.date: 02/04/2019
+ms.date: 12/15/2018
 ms.author: hrasheed
 ms.openlocfilehash: 0361539cefbacb8fc0473a1f863cf2ae4638b444
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63766761"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64682536"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-web-uis"></a>Korzystanie z tunelowania SSH do uzyskania dostępu do systemu Apache Ambari web UI, JobHistory, NameNode, Apache Oozie i innych web UI
 
@@ -35,7 +33,7 @@ Następujących interfejsów użytkownika sieci Web wymagają tunelu SSH:
 
 W przypadku dostosowywania klastra przy użyciu akcji skryptu, żadnych usług ani programów narzędziowych, które zostały zainstalowane, które udostępniają usługi sieci web należy wymagać tunelu SSH. Na przykład po zainstalowaniu aplikacji Hue, za pomocą akcji skryptu, musi być tunelu SSH dostęp do interfejsu użytkownika sieci web aplikacji Hue.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Jeśli masz bezpośredni dostęp do HDInsight za pośrednictwem sieci wirtualnej, jest konieczne używanie tunelu SSH. Aby uzyskać przykład bezpośredni dostęp do HDInsight za pośrednictwem sieci wirtualnej, zobacz [Connect HDInsight z siecią lokalną](connect-on-premises-network.md) dokumentu.
 
 ## <a name="what-is-an-ssh-tunnel"></a>Co to jest tunel SSH
@@ -48,7 +46,7 @@ W przypadku dostosowywania klastra przy użyciu akcji skryptu, żadnych usług a
 
 * Przeglądarka sieci web, które mogą być skonfigurowane do korzystania z serwera proxy SOCKS5.
 
-    > [!WARNING]
+    > [!WARNING]  
     > Obsługa serwera proxy SOCKS wbudowanych ustawień internetowych Windows nie obsługuje SOCKS5, a nie działa z krokami w tym dokumencie. Następujące przeglądarki zależą od ustawień serwera proxy Windows i obecnie nie współpracujesz z krokami w tym dokumencie:
     >
     > * Microsoft Edge
@@ -111,14 +109,14 @@ Po zakończeniu działania polecenia ruch wysyłany do portu 9876 na komputerze 
 
 ## <a name="use-the-tunnel-from-your-browser"></a>Korzystał z tunelu z przeglądarki
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Kroki opisane w tej sekcji Użyj przeglądarki Mozilla FireFox, ponieważ oferuje te same ustawienia serwera proxy na wszystkich platformach. Nowoczesnych przeglądarek, takich jak Google Chrome, mogą wymagać rozszerzeniem, na przykład FoxyProxy do pracy z tunelu.
 
 1. Skonfiguruj przeglądarkę, aby użyć **localhost** i port używany podczas tworzenia tunelu jako **SOCKS v5** serwera proxy. Poniżej przedstawiono wygląd ustawień przeglądarki Firefox. Jeśli użyto innego portu niż 9876 zmiany portu, na który została użyta:
    
     ![Obraz ustawień przeglądarki Firefox](./media/hdinsight-linux-ambari-ssh-tunnel/firefoxproxy.png)
    
-   > [!NOTE]
+   > [!NOTE]  
    > Wybieranie **DNS zdalnego** rozpoznaje żądań systemu nazw domen (DNS, Domain Name System) przy użyciu klastra HDInsight. To ustawienie jest rozpoznawany jako DNS przy użyciu węzła głównego klastra.
 
 2. Sprawdź, czy tunelu działa, odwiedzając witrynę sieci, takich jak [ https://www.whatismyip.com/ ](https://www.whatismyip.com/). Adres IP zwrócony powinien być używany przez centrum danych Microsoft Azure.
@@ -140,7 +138,7 @@ Po ustanowieniu klastra, wykonaj następujące kroki, aby sprawdzić, czy są do
 
     ![Obraz z rozwinięte menu spisach](./media/hdinsight-linux-ambari-ssh-tunnel/namenodedropdown.png)
 
-   > [!NOTE]
+   > [!NOTE]  
    > Po wybraniu __szybkich łączy__, możesz otrzymać wskaźnik oczekiwania. Ten stan może wystąpić w przypadku wolnego połączenia internetowego. Poczekaj minutę lub dwie danych odbierane z serwera, a następnie spróbuj ponownie listę.
    >
    > Niektóre wpisy w **szybkich łączy** menu może zostać przerwane przez po prawej stronie ekranu. Jeśli tak, rozwiń menu przy użyciu myszy, a następnie użyj klawisza Strzałka w prawo przewiń ekran w prawo, aby zobaczyć pozostałą część menu.

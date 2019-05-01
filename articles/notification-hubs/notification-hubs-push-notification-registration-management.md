@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.author: jowargo
 ms.date: 04/08/2019
-ms.openlocfilehash: 64c2cd0ed1572fdaaa42f4731519ba6d5c320f1c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 5a70eec15003a1f75a80740f269f6df3523012a8
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61457740"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64685392"
 ---
 # <a name="registration-management"></a>Zarządzanie rejestracją
 
@@ -40,7 +40,7 @@ Rejestracji kojarzy uchwyt usług powiadomień platformy (PNS, Domain Name Syste
 
 ### <a name="installations"></a>Instalacje
 
-Instalacja jest rozszerzonych właściwości powiązanych z rejestracji, który zawiera zbiór wypychania. Jest to najnowsze i najlepsze podejście do rejestrowania urządzeń. Jednak nie jest obsługiwany przez zestaw SDK platformy .NET po stronie klienta ([zestawu SDK usługi Notification Hub dla operacji zaplecza](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)) jeszcze wdrożone.  Oznacza to, czy rejestrujesz na urządzeniu klienckim, trzeba użyć [interfejsu API REST centrów powiadomień](https://docs.microsoft.com/en-us/rest/api/notificationhubs/create-overwrite-installation) podejście do obsługi instalacji. Jeśli używasz usługi wewnętrznej bazy danych powinno być możliwe do użycia [zestawu SDK usługi Notification Hub dla operacji zaplecza](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
+Instalacja jest rozszerzonych właściwości powiązanych z rejestracji, który zawiera zbiór wypychania. Jest to najnowsze i najlepsze podejście do rejestrowania urządzeń. Jednak nie jest obsługiwany przez zestaw SDK platformy .NET po stronie klienta ([zestawu SDK usługi Notification Hub dla operacji zaplecza](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)) jeszcze wdrożone.  Oznacza to, czy rejestrujesz na urządzeniu klienckim, trzeba użyć [interfejsu API REST centrów powiadomień](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation) podejście do obsługi instalacji. Jeśli używasz usługi wewnętrznej bazy danych powinno być możliwe do użycia [zestawu SDK usługi Notification Hub dla operacji zaplecza](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
 Poniżej przedstawiono niektóre kluczowe zalety korzystania z instalacji:
 
@@ -48,7 +48,7 @@ Poniżej przedstawiono niektóre kluczowe zalety korzystania z instalacji:
 - Model instalacji obsługuje format specjalny znacznik (`$InstallationId:{INSTALLATION_ID}`), który umożliwia wysłanie powiadomienia bezpośrednio do określonego urządzenia. Na przykład, jeśli kod aplikacji Ustawia identyfikator instalacji `joe93developer` dla tego konkretnego urządzenia, deweloper można wskazać to urządzenie podczas wysyłania powiadomień do `$InstallationId:{joe93developer}` tagu. Dzięki temu można pod kątem określonego urządzenia bez konieczności dodatkowego kodowania.
 - Przy użyciu instalacji umożliwia także wykonaj aktualizacje częściowe rejestracji. Zażądano częściową aktualizację instalacji przy użyciu metody PATCH [standard poprawki JSON](https://tools.ietf.org/html/rfc6902). Jest to przydatne, gdy chcesz aktualizacji tagów na rejestracji. Nie masz ściągnąć całego rejestracji, a następnie ponownie Wyślij ponownie wszystkie poprzednie tagi.
 
-Instalacja może zawierać następujące właściwości. Aby uzyskać pełną listę właściwości instalacji, zobacz [utworzyć ani zastąpić instalacji przy użyciu interfejsu API REST](https://docs.microsoft.com/en-us/rest/api/notificationhubs/create-overwrite-installation) lub [właściwości instalacji](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation_properties.aspx).
+Instalacja może zawierać następujące właściwości. Aby uzyskać pełną listę właściwości instalacji, zobacz [utworzyć ani zastąpić instalacji przy użyciu interfejsu API REST](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation) lub [właściwości instalacji](https://docs.microsoft.com/dotnet/api/microsoft.azure.notificationhubs.installation).
 
 ```json
 // Example installation format to show some supported properties
@@ -95,7 +95,7 @@ Instalacji i rejestracji musi zawierać prawidłowe dojście systemu powiadomie�
 
 Jeśli chcesz używać [szablony](notification-hubs-templates-cross-platform-push-messages.md), instalacji urządzeń zawiera również wszystkie szablony związane z danym urządzeniem w formacie JSON formatu (Zobacz przykład powyżej). Nazwy szablonów pomóc różne szablony docelowego dla tego samego urządzenia.
 
-Nazwa każdego szablonu mapuje treści szablonu i opcjonalny zestaw znaczników. Ponadto każdej z platform może mieć właściwości dodatkowe szablony. Windows Store (za pomocą usługi WNS) i Windows Phone 8 (przy użyciu usługi MPNS), aby uzyskać dodatkowy zestaw nagłówków może być częścią szablonu. W przypadku usługi APNs można ustawić właściwości wygaśnięcia, albo stałą lub wyrażeniem szablonu. Aby uzyskać pełną listę, zobacz właściwości instalacji [utworzyć ani zastąpić instalację z użyciem usług REST](https://msdn.microsoft.com/library/azure/mt621153.aspx) tematu.
+Nazwa każdego szablonu mapuje treści szablonu i opcjonalny zestaw znaczników. Ponadto każdej z platform może mieć właściwości dodatkowe szablony. Windows Store (za pomocą usługi WNS) i Windows Phone 8 (przy użyciu usługi MPNS), aby uzyskać dodatkowy zestaw nagłówków może być częścią szablonu. W przypadku usługi APNs można ustawić właściwości wygaśnięcia, albo stałą lub wyrażeniem szablonu. Aby uzyskać pełną listę, zobacz właściwości instalacji [utworzyć ani zastąpić instalację z użyciem usług REST](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation) tematu.
 
 ### <a name="secondary-tiles-for-windows-store-apps"></a>Pomocniczy kafelków dla aplikacji Windows Store
 
@@ -120,7 +120,7 @@ Rejestracja urządzenia jest najprostsza metoda, ale ma pewne wady:
 
 ### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-an-installation"></a>Przykładowy kod, aby zarejestrować za pomocą Centrum powiadomień z urządzeniem przy użyciu instalacji
 
-W tym momencie jest to obsługiwane tylko za pomocą [interfejsu API REST centrów powiadomień](https://msdn.microsoft.com/library/mt621153.aspx).
+W tym momencie jest to obsługiwane tylko za pomocą [interfejsu API REST centrów powiadomień](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation).
 
 Można również użyć przy użyciu metody PATCH [standard poprawki JSON](https://tools.ietf.org/html/rfc6902) aktualizacji instalacji.
 

@@ -10,16 +10,16 @@ ms.topic: overview
 ms.date: 02/20/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 9e01ba8ae53dbcca686a9844600a5df416a685ae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 33c6f9e06439ebeb17608aa374532ac4f7a020cf
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60317364"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64701354"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Co to jest usługa Azure Active Directory B2C?
 
-Usługa Azure Active Directory (Azure AD) B2C to usługa zarządzania tożsamościami. Usługa ta umożliwia dostosowywanie i kontrolowanie bezpiecznych interakcji użytkowników z aplikacjami internetowymi, klasycznymi, mobilnymi i jednostronicowymi. Za pomocą usługi Azure AD B2C użytkownicy mogą tworzyć konta, logować się, resetować hasła i edytować profile. W usłudze Azure AD B2C zaimplementowano formę protokołów OpenID Connect i OAuth 2.0. Kluczowym elementem implementacji tych protokołów są tokeny zabezpieczające i ich oświadczenia, które umożliwiają bezpieczny dostęp do zasobów.
+Usługa Azure Active Directory (Azure AD) B2C to usługa zarządzania tożsamościami firma klient. Usługa ta umożliwia dostosowywanie i kontrolowanie bezpiecznych interakcji użytkowników z aplikacjami internetowymi, klasycznymi, mobilnymi i jednostronicowymi. Za pomocą usługi Azure AD B2C użytkownicy mogą tworzyć konta, logować się, resetować hasła i edytować profile. W usłudze Azure AD B2C zaimplementowano formę protokołów OpenID Connect i OAuth 2.0. Kluczowym elementem implementacji tych protokołów są tokeny zabezpieczające i ich oświadczenia, które umożliwiają bezpieczny dostęp do zasobów.
 
 *Podróż użytkownika* to żądanie, które określa zasady sterujące interakcjami użytkownika i aplikacji z usługą Azure AD B2C. Na potrzeby zdefiniowania podróży użytkownika w usłudze Azure AD B2C są dostępne Dwie ścieżki. 
 

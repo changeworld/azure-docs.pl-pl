@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 379b8ee4a78cd8b487407e92ae32a7525f428bf0
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.openlocfilehash: 0d606a489a069c4265088d8e07301693dc2f1c83
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63763846"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64694271"
 ---
 # <a name="what-is-windows-virtual-desktop-preview"></a>Co to jest Windows wirtualnego pulpitu (wersja zapoznawcza)? 
 
@@ -63,8 +63,8 @@ Planujemy dodanie obsługi następujących systemów operacyjnych, dlatego upewn
 
 |System operacyjny|Wymagana licencja|
 |---|---|
-|Wiele sesji systemu Windows 10 Enterprise lub Windows 10 Enterprise|Microsoft E3, E5, A3, A5, Business<br>Windows E3, E5, A3, A5|
-|Windows 7 Enterprise |Microsoft E3, E5, A3, A5, Business<br>Windows E3, E5, A3, A5|
+|Wiele sesji systemu Windows 10 Enterprise lub Windows 10 Enterprise|Microsoft 365 E3, E5, A3, A5, F1, Business<br>Windows E3, E5, A3, A5|
+|Windows 7 Enterprise |Microsoft 365 E3, E5, A3, A5, F1, Business<br>Windows E3, E5, A3, A5|
 |Windows Server 2012 R2, 2016 r. 2019 r|Licencja dostępu klienta usług pulpitu zdalnego (CAL) z pakietem Software Assurance|
 
 Infrastruktury musi mieć następujące elementy do obsługi Windows pulpitu wirtualnego:

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: f204f01fae0bd01f9f2f0e242c63ec2070d6d195
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 905901c2a21c59bab9f48bf4229333663bc39131
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62121164"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938642"
 ---
 # <a name="comparing-appsource-and-the-azure-marketplace"></a>Porównanie usługi AppSource i portalu Azure Marketplace
 Sklepów w [portalu Azure Marketplace](https://azuremarketplace.microsoft.com) i [Microsoft AppSource](https://appsource.microsoft.com) obsługi unikatowych wymagań klientów. Użyj sklepów na skierowane do klientów przez rolę. Możesz zaoferować odpowiednich rozwiązań lub usługą opartą na klienta.

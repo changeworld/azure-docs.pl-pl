@@ -11,20 +11,21 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: edba858f9be3350034ff48ea16d3c9137254bb97
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 04/26/2019
+ms.openlocfilehash: 0f7765e5b13f2d9c1e1213064d778ce6db5ef115
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59357946"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572682"
 ---
-# <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>warstwy usług (rdzeń wirtualny), korzyść użycia hybrydowego platformy Azure i migracji
+# <a name="choose-among-the-vcore-service-tiers-and-migrate-from-dtu-service-tiers"></a>Można wybrać jedną z warstwy usługi (rdzeń wirtualny), a następnie przeprowadzenie migracji z warstwy usługi jednostki DTU
 
 Model zakupu opartego na rdzeniach wirtualnych umożliwia niezależnie skalować zasoby obliczeniowe i magazynowe, Dopasuj wydajność środowiska lokalnego i optymalizacja ceny. Umożliwia również można wybrać generacji sprzętu:
 
 - 4. generacji — maksymalnie 24 logiczne procesory CPU, procesory Intel E5-2673 v3 (Haswell) 2,4 GHz procesorów, pamięci rdzeń wirtualny = 1 PP (rdzeni fizycznych), 7 GB na rdzeń procesora, dołączonych dysków SSD
 - 5. generacji — maksymalnie 80 logiczne procesory CPU, procesory Intel E5-2673 v4 (broadwell z zegarem) 2,3 GHz, — rdzeń wirtualny = LP 1 (funkcja hyper wątek), 5.1 GB na rdzeń procesora, szybkie eNVM dysków SSD
+
 
 4. generacji sprzętu oferuje znacznie więcej pamięci na rdzeń wirtualny. 5. generacji sprzętu pozwala jednak skalować zasoby obliczeniowe, które znacznie wyższa.
 
@@ -40,9 +41,9 @@ Poniższa tabela pomoże Ci zrozumieć różnice między trzy warstwy:
 ||**Ogólnego przeznaczenia**|**Krytyczne dla działania**|**Na dużą skalę (wersja zapoznawcza)**|
 |---|---|---|---|
 |Najlepsze dla|Większości obciążeń biznesowych. Oferty budżetu, aby poznać podstawy zrównoważonych oraz skalowalnych opcji obliczeniowych i magazynu.|Aplikacje biznesowe z wysokimi wymaganiami w zakresie operacji wejścia/wyjścia. Oferuje najwyższą odporność na awarie, korzystając z kilku izolowanych replik.|Większości obciążeń biznesowych za pomocą wysoce skalowalny magazyn i wymagań skali odczytu|
-|Wystąpienia obliczeniowe|Gen4: 1-24 (rdzeń wirtualny)<br/>5. generacji: 1 do 80 (rdzeń wirtualny)|Gen4: 1-24 (rdzeń wirtualny)<br/>5. generacji: 1 do 80 (rdzeń wirtualny)|Gen4: 1-24 (rdzeń wirtualny)<br/>5. generacji: 1 do 80 (rdzeń wirtualny)|
-|Memory (Pamięć)|Gen4: 7 GB na rdzeń<br>5. generacji: 5.1 GB na rdzeń | Gen4: 7 GB na rdzeń<br>5. generacji: 5.1 GB na rdzeń |Gen4: 7 GB na rdzeń<br>5. generacji: 5.1 GB na rdzeń|
-|Magazyn|Używa magazynu zdalnego:<br/>Pojedyncza baza danych: 5 GB – 4 TB<br/>Wystąpienie zarządzane: 32 GB - 8 TB |Używa lokalnego magazynu SSD:<br/>Pojedyncza baza danych: 5 GB – 4 TB<br/>Wystąpienie zarządzane: 32 GB - 4 TB |Elastyczne, automatyczne zwiększanie magazynu zgodnie z potrzebami. Obsługuje maksymalnie 100 TB pamięci masowej i nie tylko. Lokalny magazyn SSD w pamięci podręcznej puli bufora lokalnych i lokalne przechowywanie danych. Usługa Azure storage zdalnego końcowego długoterminowego przechowywania danych. |
+|Procesor CPU|**Zainicjowano obsługę administracyjną obliczeń**:<br/>Gen4: 1-24 (rdzeń wirtualny)<br/>5. generacji: 1 do 80 (rdzeń wirtualny)<br/>**Bezserwerowe środowisko obliczeniowe**<br/>5. generacji: 0.5 — rdzeń wirtualny 4|**Zainicjowano obsługę administracyjną obliczeń**:<br/>Gen4: 1-24 (rdzeń wirtualny)<br/>5. generacji: 1 do 80 (rdzeń wirtualny)|**Zainicjowano obsługę administracyjną obliczeń**:<br/>Gen4: 1-24 (rdzeń wirtualny)<br/>5. generacji: 1 do 80 (rdzeń wirtualny)|
+|Memory (Pamięć)|**Zainicjowano obsługę administracyjną obliczeń**:<br/>Gen4: 7 GB na rdzeń<br/>5. generacji: 5.1 GB na rdzeń<br/>**Bezserwerowe środowisko obliczeniowe**<br/>5. generacji: 3 GB na rdzeń|**Zainicjowano obsługę administracyjną obliczeń**:<br/>Gen4: 7 GB na rdzeń<br/>5. generacji: 5.1 GB na rdzeń |**Zainicjowano obsługę administracyjną obliczeń**:<br/>Gen4: 7 GB na rdzeń<br/>5. generacji: 5.1 GB na rdzeń|
+|Magazyn|Używa magazynu zdalnego:<br/>**Pojedynczą bazę danych aprowizowane obliczeń**:<br/>5 GB – 4 TB<br/>**Pojedynczą bazę danych bezserwerowe środowisko obliczeniowe**:<br/>5 GB - 1 TB<br/>**Wystąpienie zarządzane**: 32 GB - 8 TB |Używa lokalnego magazynu SSD:<br/>**Pojedynczą bazę danych aprowizowane obliczeń**:<br/>5 GB – 4 TB<br/>**Wystąpienie zarządzane**:<br/>32 GB - 4 TB |Elastyczne, automatyczne zwiększanie magazynu zgodnie z potrzebami. Obsługuje maksymalnie 100 TB pamięci masowej i nie tylko. Lokalny magazyn SSD w pamięci podręcznej puli bufora lokalnych i lokalne przechowywanie danych. Usługa Azure storage zdalnego końcowego długoterminowego przechowywania danych. |
 |Przepustowość operacji We/Wy (w przybliżeniu)|Pojedyncza baza danych: 500 operacji We/Wy na rdzeniach wirtualnych za pomocą 7000 maksymalna liczba IOPS</br>Wystąpienie zarządzane: Zależy od [rozmiar pliku](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)|5000 operacji We/Wy na rdzeń z 200 000 maksymalna liczba IOPS|TBD|
 |Dostępność|1 repliki, bez skalowania odczytu|3 repliki, 1 [skali odczytu replik](sql-database-read-scale-out.md),<br/>Strefa nadmiarowe wysokiej dostępności|?|
 |Tworzenie kopii zapasowych|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7 – 35 dni (domyślnie co 7 dni)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7 – 35 dni (domyślnie co 7 dni)|na podstawie migawki kopii zapasowej w magazynie zdalnym platformy Azure i przywracanie na użytek migawek Szybkie odzyskiwanie. Kopie zapasowe są natychmiastowe i nie wpływać na wydajność operacji We/Wy, mocy obliczeniowej. Operacje przywracania są bardzo szybkie i nie rozmiar operacji danych (trwa minuty, a nie godziny lub dni).|
@@ -56,16 +57,18 @@ Poniższa tabela pomoże Ci zrozumieć różnice między trzy warstwy:
 - Aby uzyskać więcej informacji na temat warstw usługi ogólnego przeznaczenia i krytyczne dla działania firmy, zobacz [warstwy usług ogólnego przeznaczenia i krytyczne dla działania firmy](sql-database-service-tiers-general-purpose-business-critical.md).
 - Szczegółowe informacje na temat warstwy usług na dużą skalę w modelu zakupu opartego na rdzeniach wirtualnych, [warstwy usługi w Hiperskali](sql-database-service-tier-hyperscale.md).  
 
-> [!IMPORTANT]
-> Jeśli potrzebujesz mniejszej niż jeden rdzeń wirtualny mocy obliczeniowej, przy użyciu modelu zakupu opartego na jednostkach DTU.
+
 
 ## <a name="azure-hybrid-benefit"></a>Korzyść użycia hybrydowego platformy Azure
 
-Oparty na rdzeniach wirtualnych model zakupu mogą wymieniać swoich istniejących licencji do korzystania z taryf rabatowych na temat korzystania z bazy danych SQL [korzyść użycia hybrydowego platformy Azure dla programu SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/). Ta korzyść platformy Azure pozwala na używanie licencji programu SQL Server w środowisku lokalnym można zapisać do 30% w usłudze Azure SQL Database przy użyciu lokalnych licencji programu SQL Server z pakietem Software Assurance.
+W modelu zakupu opartego na rdzeniach wirtualnych w warstwie zainicjowanego komputera może wymieniać swoich istniejących licencji do korzystania z taryf rabatowych na temat korzystania z bazy danych SQL [korzyść użycia hybrydowego platformy Azure dla programu SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/). Ta korzyść platformy Azure pozwala na używanie licencji programu SQL Server w środowisku lokalnym można zapisać do 30% w usłudze Azure SQL Database przy użyciu lokalnych licencji programu SQL Server z pakietem Software Assurance.
 
 ![cennik](./media/sql-database-service-tiers/pricing.png)
 
-Dzięki korzyści użycia hybrydowego platformy Azure, możesz płacić tylko za podstawową infrastrukturą platformy Azure przy użyciu istniejących licencji programu SQL Server dla aparatu bazy danych SQL, sama (**BasePrice**) i płacić za zarówno podstawowej infrastruktury i licencję programu SQL Server (**LicenseIncluded**). Można wybrać lub zmienić modelu licencjonowania przy użyciu witryny Azure portal lub przy użyciu jednej z poniższych interfejsów API.
+Dzięki korzyści użycia hybrydowego platformy Azure, możesz płacić tylko za podstawową infrastrukturą platformy Azure przy użyciu istniejących licencji programu SQL Server dla aparatu bazy danych SQL, sama (**BasePrice**) i płacić za zarówno podstawowej infrastruktury i licencję programu SQL Server (**LicenseIncluded**).
+
+
+Można wybrać lub zmienić modelu licencjonowania przy użyciu witryny Azure portal lub przy użyciu jednej z poniższych interfejsów API.
 
 - Aby ustawić lub zaktualizowania typu licencji przy użyciu programu PowerShell:
 
@@ -130,5 +133,5 @@ Można skopiować dowolną bazę danych o rozmiarze mocą obliczeniową opartą 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Aby uzyskać szczegółowe informacje na temat określonych zasobów obliczeniowych, rozmiary i opcje rozmiaru magazynu jest dostępny dla pojedynczej bazy danych, zobacz [limity zasobów opartych na rdzeniach wirtualnych bazy danych SQL Database dla pojedynczych baz danych](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-storage-sizes-and-compute-sizes)
+- Aby uzyskać szczegółowe informacje na temat określonych zasobów obliczeniowych, rozmiary i opcje rozmiaru magazynu jest dostępny dla pojedynczej bazy danych, zobacz [limity zasobów opartych na rdzeniach wirtualnych bazy danych SQL Database dla pojedynczych baz danych](sql-database-vcore-resource-limits-single-databases.md)
 - Aby uzyskać szczegółowe informacje na temat określonych zasobów obliczeniowych, rozmiary i opcje rozmiaru magazynu jest dostępne dla pul elastycznych, zobacz [bazy danych SQL Database oparty na rdzeniach wirtualnych zasobów limity dla pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose-service-tier-storage-sizes-and-compute-sizes).

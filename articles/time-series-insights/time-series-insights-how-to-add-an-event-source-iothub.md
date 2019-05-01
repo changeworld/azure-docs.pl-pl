@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.custom: seodec18
-ms.openlocfilehash: 933d411f67655b49b4aef7bf413dfe5f87e4ff08
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: ee52cde6feeb69f9140df497a9abee300c93fd71
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556734"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64692107"
 ---
 # <a name="add-an-iot-hub-event-source-to-your-time-series-insights-environment"></a>Dodawanie źródła zdarzeń Centrum IoT do środowiska usługi Time Series Insights
 
@@ -107,7 +107,9 @@ Aby dodać nową grupę odbiorców do Centrum IoT:
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Zdefiniuj zasady dostępu do danych](time-series-insights-data-access.md) do zabezpieczania danych.
+
 * [Wysyłanie zdarzeń](time-series-insights-send-events.md) do źródła zdarzenia.
+
 * Dostęp do środowiska w [Eksploratora usługi Time Series Insights](https://insights.timeseries.azure.com).
 
 <!-- Images -->

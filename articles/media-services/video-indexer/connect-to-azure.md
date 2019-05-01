@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 01/12/2019
 ms.author: juliako
-ms.openlocfilehash: affa6f9a808543401b7d57812c7d2bef4324a83c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: 08f2dac6317f294c3c7360cc00cf9aaa60c9a7ca
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59796549"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64715101"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Utwórz konto usługi Video Indexer połączony z platformą Azure
 
@@ -103,7 +103,7 @@ Jeśli połączenie z platformą Azure nie powiodła się, można spróbować ro
 
 1. Użyj [Azure](https://portal.azure.com/) portalu, aby utworzyć konto usługi Azure Media Services, zgodnie z opisem w [Tworzenie konta usługi](../previous/media-services-portal-create-account.md).
 
-    Podczas tworzenia konta magazynu dla konta usługi Media Services, wybierz **StorageV2** dla rodzaju konta i **geograficznie nadmiarowy (RGS)** dla pól replikacji.
+    Podczas tworzenia konta magazynu dla konta usługi Media Services, wybierz **StorageV2** dla rodzaju konta i **geograficznie nadmiarowy (GRS)** dla pól replikacji.
 
     ![nowe konto usługi AMS](./media/create-account/create-ams-account1.png)
 

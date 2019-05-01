@@ -9,11 +9,11 @@ manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/22/2019
 ms.openlocfilehash: 2d2ab769c2d4c5a594cb57f2fa9dfed599578506
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63764605"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64692831"
 ---
 # <a name="quickstart-deploy-the-ansible-solution-template-for-azure-to-centos"></a>Szybki start: Wdrażanie szablonu rozwiązania Ansible platformy Azure w systemie CentOS
 

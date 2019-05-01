@@ -1,23 +1,22 @@
 ---
 title: Macierz obsługi na potrzeby odzyskiwania po awarii maszyn wirtualnych platformy Azure między regionami platformy Azure za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft
-description: Zawiera podsumowanie obsługiwanych systemów operacyjnych i konfiguracji do usługi Azure Site Recovery replikacji maszyn wirtualnych (VM) z jednego regionu do innego na potrzeby odzyskiwania po awarii.
-services: site-recovery
+description: Zawiera podsumowanie wymagań wstępnych i pomoc techniczna dla odzyskiwania po awarii maszyn wirtualnych platformy Azure z jednego regionu do innego za pomocą usługi Azure Site Recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 04/22/2019
+ms.date: 04/29/2019
 ms.author: raynew
-ms.openlocfilehash: c64148fbc0432bd25c5b02fb20b3e44134c1d9d5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 9b905d532dfe71fea7c4ec0377eb53b9e3073907
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60502106"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926588"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Macierz obsługi na potrzeby replikacji maszyn wirtualnych platformy Azure z jednego regionu do innego
 
-Ten artykuł zawiera podsumowanie obsługiwanych konfiguracji i składników podczas wdrażania odzyskiwania po awarii dzięki replikacji, trybu failover i odzyskiwania maszyn wirtualnych platformy Azure między regionami platformy Azure do innego, za pomocą [usługi Azure Site Recovery](site-recovery-overview.md) usługi.
+Ten artykuł zawiera podsumowanie obsługi i wymagań wstępnych podczas ustawiania odzyskiwania po awarii dla maszyn wirtualnych platformy Azure między regionami platformy Azure do innego, przy użyciu [usługi Azure Site Recovery](site-recovery-overview.md) usługi.
 
 
 ## <a name="deployment-method-support"></a>Obsługa metody wdrażania
@@ -96,10 +95,10 @@ Windows Server 2008 R2 | Z dodatkiem SP1 lub nowszym
 Red Hat Enterprise Linux | 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6  
 CentOS | 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6
 Ubuntu 14.04 LTS Server | [Wersje obsługiwanych jądra](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
-Ubuntu 16.04 LTS Server | [Wersja jądra obsługiwane](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)<br/><br/> Serwery systemu Ubuntu przy użyciu uwierzytelniania opartego na hasłach i logowania oraz pakietu cloud-init do konfigurowania chmur maszyn wirtualnych, może być logowania opartego na hasłach, wyłączona w trybie failover (w zależności od konfiguracji cloudinit). Logowania opartego na hasłach, można ponownie włączyć na maszynie wirtualnej poprzez zresetowanie hasła z obsługi > Rozwiązywanie problemów > menu Ustawienia (w trybie Failover maszyny Wirtualnej w witrynie Azure portal.
+Ubuntu 16.04 LTS Server | [Wersja jądra obsługiwane](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)<br/><br/> Serwery systemu Ubuntu przy użyciu uwierzytelniania opartego na hasłach i zaloguj się i pakiet cloud-init, aby skonfigurować chmury maszyn wirtualnych, Niewykluczone, logowania opartego na hasłach wyłączony w trybie failover (w zależności od konfiguracji cloudinit). Na podstawie hasła logowania może być ponownie włączyć na maszynie wirtualnej poprzez zresetowanie hasła z obsługi > Rozwiązywanie problemów > menu Ustawienia (w trybie Failover maszyny Wirtualnej w witrynie Azure portal.
 Debian 7 | [Wersje obsługiwanych jądra](#supported-debian-kernel-versions-for-azure-virtual-machines)
 Debian 8 | [Wersje obsługiwanych jądra](#supported-debian-kernel-versions-for-azure-virtual-machines)
-SUSE Linux Enterprise Server 12 | SP1,SP2,SP3,SP4. [(Wersje jądra obsługiwane)](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines)
+SUSE Linux Enterprise Server 12 | SP1, SP2, SP3, SP4. [(Wersje jądra obsługiwane)](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines)
 SUSE Linux Enterprise Server 11 | SP3<br/><br/> Replikowanie maszyn z dodatkiem SP3 do SP4 uaktualnienie nie jest obsługiwane. Jeśli został uaktualniony replikowanej maszyny, należy wyłączyć replikację i ponownie włączyć replikację po uaktualnieniu.
 SUSE Linux Enterprise Server 11 | SP4
 Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5 <br/><br/> System Red Hat zgodne jądra lub podzielenie Enterprise jądra wersji 3 (UEK3).
@@ -132,8 +131,8 @@ Debian 8 | 9.21, 9.22, 9.23, 9.24 | 3.16.0-4-AMD64 do 3.16.0-7-amd64, 4.9.0-0.bp
 **Wydania** | **Wersja usługi mobilności** | **Wersja jądra** |
 --- | --- | --- |
 SUSE Linux Enterprise Server 12 (SP1,SP2,SP3,SP4) | 9.24 | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.107-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4.4.121-92.73-default SP2(LTSS) do 4.4.121-92.101-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.175-94.79-default</br></br>Z dodatkiem SP4 4.12.14-94.41-default do 4.12.14-95.6-default |
-SUSE Linux Enterprise Server 12 (SP1,SP2,SP3,SP4) | 9.23 | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.107-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4.4.121-92.73-default SP2(LTSS) do 4.4.121-92.101-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.162-94.69-default</br></br>Z dodatkiem SP4 4.12.14-94.41-default do 4.12.14-95.6-default |
-SUSE Linux Enterprise Server 12 (SP1,SP2,SP3) | 9.22 | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.107-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4.4.121-92.73-default SP2(LTSS) do 4.4.121-92.98-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.162-94.72-default |
+SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9.23 | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.107-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4.4.121-92.73-default SP2(LTSS) do 4.4.121-92.101-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.162-94.69-default</br></br>Z dodatkiem SP4 4.12.14-94.41-default do 4.12.14-95.6-default |
+SUSE Linux Enterprise Server 12 (SP1, SP2, SP3) | 9.22 | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.107-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4.4.121-92.73-default SP2(LTSS) do 4.4.121-92.98-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.162-94.72-default |
 SUSE Linux Enterprise Server 12 (SP1,SP2,SP3) | 9.21 | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.107-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4.4.121-92.73-default SP2(LTSS) do 4.4.121-92.98-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.162-94.72-default |
 
 ## <a name="replicated-machines---linux-file-systemguest-storage"></a>Replikowane maszyny - magazyn systemu/gościa pliku systemu Linux
@@ -148,7 +147,7 @@ SUSE Linux Enterprise Server 12 (SP1,SP2,SP3) | 9.21 | Z dodatkiem SP1 3.12.49-1
 **Ustawienie** | **Pomoc techniczna** | **Szczegóły**
 --- | --- | ---
 Rozmiar | Dowolny rozmiar maszyny Wirtualnej platformy Azure, co najmniej 2 rdzeni procesora CPU i 1 GB pamięci RAM | Sprawdź [rozmiarów maszyn wirtualnych platformy Azure](../virtual-machines/windows/sizes.md).
-Zestawy dostępności | Obsługiwane | Po włączeniu replikacji dla maszyny Wirtualnej platformy Azure z opcjami domyślnymi, zestaw dostępności jest tworzony automatycznie w oparciu o ustawienia regionu źródłowego. Te ustawienia można modyfikować.
+Zestawy dostępności | Obsługiwane | Po włączeniu replikacji dla maszyny Wirtualnej platformy Azure z opcjami domyślnymi, zestaw dostępności jest tworzony automatycznie, zgodnie z ustawieniami regionu źródłowego. Te ustawienia można modyfikować.
 Strefy dostępności | Obsługiwane |
 Korzyści z używania hybrydowej (HUB) | Obsługiwane | Jeśli źródłowa maszyna wirtualna ma włączone, licencję Centrum testowania trybu failover lub przełączone w tryb failover maszyny Wirtualnej używa również licencji KONCENTRATORA.
 Zestawy skalowania maszyn wirtualnych | Nieobsługiwane |
@@ -191,7 +190,8 @@ Miejsca do magazynowania | Obsługiwane |
 Szyfrowanie danych magazynowanych (SSE) | Obsługiwane | Funkcja SSE jest ustawieniem domyślnym dla kont magazynu.   
 Usługa Azure Disk Encryption (ADE) dla systemu operacyjnego Windows | Włączone dla maszyn wirtualnych [szyfrowanie za pomocą aplikacji usługi Azure AD](https://aka.ms/ade-aad-app) są obsługiwane |
 Usługa Azure Disk Encryption (ADE) dla systemu Linux, systemu operacyjnego | Nieobsługiwane |
-Dodaj lub usuń gorąco dysku | Nieobsługiwane | Dodaj lub Usuń dysk danych na maszynie Wirtualnej, należy wyłączyć replikację i włącz ponownie replikację maszyny Wirtualnej.
+Gorąco Dodawanie | Obsługiwane | Włączanie replikacji dla dysku z danymi, które dodasz do zreplikowanej maszyny Wirtualnej platformy Azure jest obsługiwana dla maszyn wirtualnych, które korzystają z dysków zarządzanych.
+Hot Usuń dysk | Nieobsługiwane | Możesz usunąć dysk danych na maszynie Wirtualnej, należy wyłączyć replikację i włącz ponownie replikację maszyny Wirtualnej.
 Wykluczanie dysku | Pomoc techniczna. Należy użyć [Powershell](azure-to-azure-exclude-disks.md) do skonfigurowania. |  Dyski tymczasowe są wyłączone domyślnie.
 Bezpośrednie miejsca do magazynowania  | Obsługiwane w przypadku punktów odzyskiwania spójnego na poziomie awarii. Punkty odzyskiwania zapewniających spójność aplikacji nie są obsługiwane. |
 Serwer plików skalowalny w poziomie  | Obsługiwane w przypadku punktów odzyskiwania spójnego na poziomie awarii. Punkty odzyskiwania zapewniających spójność aplikacji nie są obsługiwane. |
@@ -241,7 +241,7 @@ System DNS platformy Azure | Obsługiwane |
 Niestandardowe DNS  | Obsługiwane |
 Nieuwierzytelnione serwera proxy | Obsługiwane | [Dowiedz się więcej]. (site-recovery-azure-to-azure-networking-guidance.md)   
 Uwierzytelnionego serwera Proxy | Nieobsługiwane | Jeśli maszyna wirtualna korzysta z uwierzytelnionego serwera proxy dla połączenia wychodzącego, nie może być replikowane za pomocą usługi Azure Site Recovery.    
-Połączenie lokacja lokacja sieci VPN do sieci lokalnej<br/><br/>(z lub bez usługi ExpressRoute)| Obsługiwane | Upewnij się, że tras zdefiniowanych przez użytkownika i sieciowymi grupami zabezpieczeń są skonfigurowane w taki sposób, ruch odzyskiwania lokacji nie jest kierowany do sieci lokalnej. [Dowiedz się więcej](site-recovery-azure-to-azure-networking-guidance.md)    
+Połączenie lokacja lokacja sieci VPN do sieci lokalnej<br/><br/>(z lub bez usługi ExpressRoute)| Obsługiwane | Upewnij się, że tras zdefiniowanych przez użytkownika i sieciowymi grupami zabezpieczeń są skonfigurowane w taki sposób, ruch Site Recovery nie jest kierowany do sieci lokalnej. [Dowiedz się więcej](site-recovery-azure-to-azure-networking-guidance.md)    
 Połączenie między sieciami Wirtualnymi | Obsługiwane | [Dowiedz się więcej](site-recovery-azure-to-azure-networking-guidance.md)  
 Punkty końcowe usługi dla sieci wirtualnej | Obsługiwane | Jeśli jest ograniczenie dostępu sieci wirtualnej, dla kont magazynu, upewnij się, że zaufanych usług firmy Microsoft będą miały dostęp do konta magazynu.
 Wydajniejsze sieci | Obsługiwane | Przyspieszona sieć musi być włączona na źródłowej maszynie Wirtualnej. [Dowiedz się więcej](azure-vm-disaster-recovery-with-accelerated-networking.md).

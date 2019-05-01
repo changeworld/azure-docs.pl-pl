@@ -2,24 +2,18 @@
 title: Rejestrowanie w Centrum deweloperów | Azure
 description: Jak zarejestrować się w Centrum deweloperów (systemu Windows Dev Center).
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: jm-aditi-ms
 manager: pabutler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 682c9e209c4fa4a9f4971af5da901faf1ec58c22
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 559b5a519a48d4aa8022961a59f6f29cef28f948
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60735796"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937605"
 ---
 # <a name="register-in-dev-center"></a>Rejestracja w Centrum deweloperów  
 Aby sprawdzić, czy użytkownik nie jest zalogowany do konta osobistego przeglądarki, otwórz nowy Internet Explorer InPrivate lub Incognito przeglądarki Chrome sesji przeglądania.  
@@ -34,7 +28,7 @@ Aby sprawdzić, czy użytkownik nie jest zalogowany do konta osobistego przeglą
     ![Informacje o koncie z polem dla kraju/regionu](./media/marketplace-publishers-guide/devcenterregistrationaccountinfo.png)  
    
     >[!WARNING]
-    >Aby sprzedawać swoje usługi w portalu Azure Marketplace, sprawdź, czy jednostka zarejestrowane z jednej z zatwierdzonych *siedziba* krajach. Ograniczenie lokalizacji jest wymagana ze względu na informacje dotyczące wypłat i opodatkowania. 
+    >Aby sprzedawać swoje usługi w portalu Azure Marketplace, sprawdź, czy jednostka zarejestrowane z jednej z zatwierdzonych *siedziba* krajów/regionów. Ograniczenie lokalizacji jest wymagana ze względu na informacje dotyczące wypłat i opodatkowania. 
     >*   Aby uzyskać więcej informacji, odwiedź witrynę Azure Marketplace — zasady udziału strony znajduje się w [azure.microsoft.com/support/legal/marketplace/participation-policies](https://azure.microsoft.com/support/legal/marketplace/participation-policies).  
 
 4.  Aby uzyskać *typ konta*, wybierz opcję `Company` przycisku radiowego.  

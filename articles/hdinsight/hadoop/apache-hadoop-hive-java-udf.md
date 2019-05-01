@@ -1,27 +1,19 @@
 ---
 title: Java funkcji zdefiniowanej przez użytkownika (UDF) przy użyciu technologii Hive w HDInsight — Azure
 description: Informacje o sposobie tworzenia opartych na języku Java — funkcja zdefiniowana przez użytkownika (UDF) współdziałająca z usługą Apache Hive. W tym przykładzie UDF Konwertuje tabelę ciągów tekstowych na małe litery.
-services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 8d4f8efe-2f01-4a61-8619-651e873c7982
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: big-data
-origin.date: 03/21/2019
-ms.date: 04/29/2019
-ms.author: v-yiso
+ms.date: 03/21/2019
+ms.author: hrasheed
 ms.openlocfilehash: 24c2e8b9600b3d622d3d6b42b3bc3615a87ff853
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62122034"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64686630"
 ---
 # <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>Korzystanie z języka Java funkcji zdefiniowanej przez użytkownika przy użyciu Apache Hive w HDInsight
 
@@ -201,13 +193,13 @@ W poniższych poleceń Zastąp `sshuser` rzeczywiste nazwy użytkownika, jeśli 
 2. Użyj `scp` polecenie, aby skopiować plik z klastrem HDInsight, wprowadzając następujące polecenie:
 
     ```cmd
-    scp ./target/ExampleUDF-1.0-SNAPSHOT.jar sshuser@mycluster-ssh.azurehdinsight
+    scp ./target/ExampleUDF-1.0-SNAPSHOT.jar sshuser@mycluster-ssh.azurehdinsight.net:
     ```
 
 3. Połącz się z klastrem przy użyciu protokołu SSH, wprowadzając następujące polecenie:
 
     ```cmd
-    ssh sshuser@mycluster-ssh.azurehdinsight.cn
+    ssh sshuser@mycluster-ssh.azurehdinsight.net
     ```
 
 4. Otwieranie sesji SSH należy skopiować plik jar do magazynu HDInsight.

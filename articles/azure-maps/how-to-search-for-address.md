@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8ab2c73030c0860fc709a774b9fd84d20a6d7c99
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 497ffb5acf6262dfb42f490efe68e1ea26c777cb
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60904146"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572376"
 ---
 # <a name="find-an-address-using-the-azure-maps-search-service"></a>Znajdowanie adresu przy użyciu usługi Azure Maps usługi wyszukiwania
 
@@ -68,7 +68,7 @@ Domyślnie większość zapytań wyszukiwania `maxFuzzyLevel=1` wydajność i ob
 
     Ciąg zapytania niejednoznaczne "głosi" zwracana 10 [punktu wyników zainteresowania](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi#searchpoiresponse) wyniki (punktów POI) z kategorii w "głosi" i "restauracji". Każdy wynik zwraca adres ulicy, szerokość geograficzna / wyświetlić wartości długości geograficznej, portów i punktów wejścia do lokalizacji.
   
-    Wyniki są zróżnicowane dla tego zapytania nie są powiązane z dowolnej lokalizacji szczególnym odniesieniem. Możesz użyć **countrySet** parametru, aby określić kraje, dla których aplikacja wymaga pokrycia, zgodnie z domyślnym zachowaniem jest na całym świecie, potencjalnie zwracanie niepotrzebnego wyników wyszukiwania.
+    Wyniki są zróżnicowane dla tego zapytania nie są powiązane z dowolnej lokalizacji szczególnym odniesieniem. Możesz użyć **countrySet** parametru do określenia tylko kraje/regiony dla których aplikacja wymaga pokrycia, zgodnie z domyślnym zachowaniem jest na całym świecie, potencjalnie zwracanie niepotrzebnego wyników wyszukiwania.
 
 5. Dodaj następujący klucz / wartość pary do **Params** sekcji, a następnie kliknij przycisk **wysyłania**:
 

@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: f4e14435c2ccab98619bec57fef0e121e2df4403
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 677d0458acb9fa29f91a7fb849da56cb3cd67678
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431618"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64707086"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Przypadki użycia w usłudze Azure czas Series Insights w wersji zapoznawczej
 
@@ -58,7 +58,7 @@ Istnieją trzy podstawowe sposoby interakcji z danymi przechowywanymi w usłudze
 
 Usługa Time Series Insights umożliwia monitorowanie kondycji, użycia i wydajności sprzętu na dużą skalę. Usługa Time Series Insights zapewnia prosty sposób, aby zmierzyć wydajność operacyjną. Usługa Time Series Insights pomaga zarządzać zróżnicowanymi i nieprzewidywalnymi obciążeniami IoT bez pogarszania wydajności procesów pozyskiwania danych i wykonywania zapytań.
 
-![Przegląd][2]
+![Omówienie][2]
 
 Przesyłanie strumieniowe i ciągłe przetwarzanie danych pochodzących z procesów operacyjnych pomyślnie przekształcić każdej firmy, jeśli jest połączona z odpowiednią technologię lub rozwiązania. Często rozwiązania te stanowią połączenie wielu systemów. Umożliwiają one eksploracji i analizy danych, ciągle się zmienia się szczególnie w przypadku obszaru IoT, która udostępnia wspólny wzorzec.
 
@@ -93,7 +93,9 @@ Usługi Time Series Insights Most między danymi IoT i zaawansowane funkcje anal
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Dowiedz się więcej o [czasu Series Insights w wersji zapoznawczej Eksplorator](./time-series-insights-update-explorer.md).
+
 - Aby zaplanować środowisko, przeczytaj [planowania czasu Series Insights w wersji zapoznawczej](./time-series-insights-update-plan.md).
+
 - Odczyt [klienta usługi Time Series Insights](https://github.com/Microsoft/tsiclient) dokumentacji.
 
 <!-- Images -->

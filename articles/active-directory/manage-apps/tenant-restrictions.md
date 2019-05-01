@@ -15,12 +15,12 @@ ms.date: 03/28/2019
 ms.author: celested
 ms.reviewer: richagi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b78897e2e03085a20f07ce8724226f0e0171861e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: fa4eeb0a21525d636c7c1193c125d525774fa3fe
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60291244"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64707172"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Zarządzanie dostępem do aplikacji SaaS w chmurze za pomocą ograniczenia dotyczące dzierżawy
 
@@ -42,7 +42,7 @@ Ogólne rozwiązanie obejmuje następujące składniki:
 
 3. **Oprogramowanie klienckie**: Obsługuje ograniczenia dzierżawy, oprogramowanie klienckie należy zażądać tokenów bezpośrednio z usługi Azure AD, dzięki czemu infrastruktury serwera proxy można przechwytywać ruch. Podobnie jak klientów pakietu Office, które korzystają z nowoczesnego uwierzytelniania (takich jak OAuth 2.0), oparte na przeglądarce aplikacji usługi Office 365 obsługują obecnie ograniczenia dzierżawy.
 
-4. **Nowoczesne uwierzytelnianie**: Usługi w chmurze musi korzystają z nowoczesnego uwierzytelniania, użyj ograniczeń dzierżawy i zablokować dostęp do wszystkich dzierżawców — dozwolone. Należy skonfigurować usługi w chmurze usługi Office 365 domyślnie używają nowoczesnego uwierzytelniania, protokołów. Aby uzyskać najnowsze informacje na temat obsługi usługi Office 365 nowoczesnego uwierzytelniania, przeczytaj [nowoczesne uwierzytelnianie usługi Office 365 zaktualizowane](https://blogs.office.com/2015/11/19/updated-office-365-modern-authentication-public-preview/).
+4. **Nowoczesne uwierzytelnianie**: Usługi w chmurze musi korzystają z nowoczesnego uwierzytelniania, użyj ograniczeń dzierżawy i zablokować dostęp do wszystkich dzierżawców — dozwolone. Należy skonfigurować usługi w chmurze usługi Office 365 domyślnie używają nowoczesnego uwierzytelniania, protokołów. Aby uzyskać najnowsze informacje na temat obsługi usługi Office 365 nowoczesnego uwierzytelniania, przeczytaj [nowoczesne uwierzytelnianie usługi Office 365 zaktualizowane](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/).
 
 Na poniższym diagramie przedstawiono przepływ ruchu wysokiego poziomu. Ograniczenia dotyczące dzierżawy wymaga inspekcji połączenia SSL tylko na ruch do usługi Azure AD, a nie do usługi w chmurze usługi Office 365. Ta różnica jest ważne, ponieważ natężenia ruchu uwierzytelniania do usługi Azure AD jest zwykle znacznie niższa niż natężeniem ruchu do aplikacji SaaS, takich jak Exchange Online i SharePoint Online.
 
@@ -128,7 +128,7 @@ Aplikacje usługi Office 365, musi spełniać dwa kryteria, aby w pełni obsług
 1. Klient używany obsługuje nowoczesnego uwierzytelniania.
 2. Nowoczesne uwierzytelnianie jest włączony w domyślnym protokołem uwierzytelniania dla usługi w chmurze.
 
-Zapoznaj się [nowoczesne uwierzytelnianie usługi Office 365 zaktualizowane](https://blogs.office.com/2015/11/19/updated-office-365-modern-authentication-public-preview/) najnowsze informacje na Office klienci obecnie obsługują nowoczesnego uwierzytelniania. Ta strona zawiera także łącza do instrukcje dotyczące włączania nowoczesnego uwierzytelniania na określonych usług Exchange Online i Skype dla firm Online dzierżaw. SharePoint Online już nowoczesnego uwierzytelniania domyślnie włączone.
+Zapoznaj się [nowoczesne uwierzytelnianie usługi Office 365 zaktualizowane](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/) najnowsze informacje na Office klienci obecnie obsługują nowoczesnego uwierzytelniania. Ta strona zawiera także łącza do instrukcje dotyczące włączania nowoczesnego uwierzytelniania na określonych usług Exchange Online i Skype dla firm Online dzierżaw. SharePoint Online już nowoczesnego uwierzytelniania domyślnie włączone.
 
 Aplikacje oparte na przeglądarce usługi Office 365 (SharePoint portalu usługi Office, usługi Yammer, witryn, aplikacji Outlook w sieci Web i więcej) obecnie obsługuje ograniczenia dotyczące dzierżawy. Gęstych klientów (program Outlook, Skype dla firm, Word, Excel i PowerPoint) może wymuszać ograniczenia dzierżawy, tylko wtedy, gdy korzystających z nowoczesnego uwierzytelniania.  
 
@@ -185,5 +185,5 @@ Szczegółowe informacje zapoznaj się z dokumentacją serwera proxy.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Przeczytaj o [aktualizacji usługi Office 365 nowoczesnego uwierzytelniania](https://blogs.office.com/2015/11/19/updated-office-365-modern-authentication-public-preview/)
+- Przeczytaj o [aktualizacji usługi Office 365 nowoczesnego uwierzytelniania](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)
 - Przegląd [URL usługi Office 365 i zakresy adresów IP](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)

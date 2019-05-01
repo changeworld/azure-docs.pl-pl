@@ -1,5 +1,5 @@
 ---
-title: Dostęp do urządzeń pole danych platformy Azure przeglądarki Microsoft Edge, moc i tryb łączności | Dokumentacja firmy Microsoft
+title: Dostęp urządzeń w usłudze Azure krawędź pola danych, moc i tryb łączności | Dokumentacja firmy Microsoft
 description: Opisuje sposób zarządzania dostęp, moc i tryb łączności dla urządzenia usługi Azure Data Box Edge, że ułatwia przesyłanie danych do platformy Azure
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 813563b500b9365289285a89536f2724fb87acad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 5fbe8f3eb05ac60918e488c68869c3fe44051a3f
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60757337"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924363"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-edge"></a>Zarządzanie dostępem, power i tryb łączności na krawędzi sieci Azure Data Box
 

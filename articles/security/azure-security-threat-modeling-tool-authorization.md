@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 3c078f7246140ee966f1d202d2248758dde49059
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: c922556417ac92cc3667927fc8f846ace960a14a
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62121525"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935880"
 ---
 # <a name="security-frame-authorization--mitigations"></a>Ramka zabezpieczeń: Autoryzacja | Środki zaradcze 
 | Produkt/usługę | Artykuł |
@@ -280,7 +280,7 @@ Należy pamiętać, że zabezpieczenia na poziomie wiersza jako funkcja bazy dan
 | **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | StorageType — tabela |
 | **Odwołania**              | [Jak delegować dostęp do obiektów na koncie magazynu platformy Azure przy użyciu sygnatury dostępu Współdzielonego](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_data-plane-security) |
-| **Kroki** | W niektórych scenariuszach biznesowych usługa Azure Table Storage może być konieczne przechowywanie danych poufnych, który jest przeznaczony dla innej strony. Np. poufne dane dotyczące różnych krajów. W takich przypadkach można konstruować sygnatury SAS, określając zakresów kluczy partycji i wiersza tak, aby użytkownik mógł korzystać z danych specyficznych dla określonego kraju.| 
+| **Kroki** | W niektórych scenariuszach biznesowych usługa Azure Table Storage może być konieczne przechowywanie danych poufnych, który jest przeznaczony dla innej strony. Np. poufne dane dotyczące różnych krajów/regionów. W takich przypadkach można konstruować sygnatury SAS, określając zakresów kluczy partycji i wiersza tak, aby użytkownik mógł korzystać z danych specyficznych dla określonego kraju/regionu.| 
 
 ## <a id="rbac-azure-manager"></a>Włącz opartej na rolach kontrola dostępu (RBAC) do konta usługi Azure storage za pomocą usługi Azure Resource Manager
 

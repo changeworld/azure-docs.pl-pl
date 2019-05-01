@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: ef62ec78bc7fc01bd2e6dd7c5561b15be85540d2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 028f16b480ceb57598c6499739ab0e5745b4a132
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60768805"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64870007"
 ---
 # <a name="azure-maps-routing-coverage"></a>Usługi Azure Maps pokrycie routingiem
 
@@ -48,7 +48,7 @@ Poniższa tabela zawiera informacje o pokryciu dla usługi Azure Maps routingu.
 | Burkina Faso                   |        ✓       |                       |             |
 | Burundi                        |        ✓       |                       |             |
 | Kamerun                       |        ✓       |                       |             |
-| Cabo Verde                     |        ✓       |                       |             |
+| Wyspy Zielonego Przylądka                     |        ✓       |                       |             |
 | Kongo Brazzaville Kinszasa    |        ✓       |                       |             |
 | Kongo - Kinszasa                |        ✓       |                       |             |
 | Wybrzeże Kości Słoniowej (Côte d’Ivoire)                  |        ✓       |                       |             |

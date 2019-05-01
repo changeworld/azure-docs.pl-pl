@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.author: mibender
-ms.openlocfilehash: 1222395fd8efb7cf189ae6678f6c39f5a6c63157
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1f8972c89ecb0fc7d8cc7ceb9bfdeab9e905e862
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60538012"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64570610"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Wprowadzenie dla operatorów IT na platformie Azure
 
@@ -145,7 +145,7 @@ Aby uzyskać szczegółową dokumentację usług platformy Azure, zobacz [dokume
 
 Azure to platforma chmury globalnej, która jest ogólnie dostępna w wielu regionach na całym świecie. Podczas aprowizowania usługi, aplikacji lub maszyny Wirtualnej na platformie Azure, zostanie wyświetlony monit wybierz region. Wybrany region reprezentuje speciﬁc centrum danych, której działa Twoja aplikacja. Aby uzyskać więcej informacji, zobacz [regionów świadczenia usługi Azure](https://azure.microsoft.com/regions/).
 
-Jeden beneﬁts użycia platformy Azure jest wdrożenie aplikacji w różnych centrach danych na całym świecie. Region, który wybierzesz można aﬀect wydajność aplikacji. Jest optymalne, aby wybrać region, który jest bliżej większość klientów, aby zmniejszyć opóźnienia w żądaniach sieci. Możesz również wybrać region, aby spełnić wymagania prawne dystrybucji aplikacji w przypadku pewnych krajów.
+Jeden beneﬁts użycia platformy Azure jest wdrożenie aplikacji w różnych centrach danych na całym świecie. Region, który wybierzesz można aﬀect wydajność aplikacji. Jest optymalne, aby wybrać region, który jest bliżej większość klientów, aby zmniejszyć opóźnienia w żądaniach sieci. Możesz również wybrać region, aby spełnić wymagania prawne dystrybucji aplikacji w niektórych krajach/regionach.
 
 ### <a name="azure-portal"></a>Azure Portal
 

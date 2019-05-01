@@ -17,12 +17,12 @@ ms.date: 04/22/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 894c42e4102a3565ff43798d33afb4046fda76bd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 4b924746c00a438ec4ac81dacc02905565adf30e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60286688"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64682112"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Dzienniki aktywności usługi platformy Azure AD w usłudze Azure Monitor
 
@@ -72,14 +72,24 @@ Jeśli masz już licencję usługi Azure AD, potrzebujesz subskrypcji platformy 
 
 Każde zdarzenie dziennika inspekcji używa około 2 KB magazynu danych. W przypadku dzierżawy z 100 000 użytkowników, którzy generują około 1,5 miliona zdarzeń dziennie, będziesz potrzebować około 3 GB magazynu danych na dzień. Ponieważ operacje zapisu są przetwarzane w partiach w około pięciominutowych odstępach, możesz oczekiwać około 9000 operacji zapisu miesięcznie. 
 
-Poniższa tabela zawiera oszacowanie kosztów w zależności od rozmiaru dzierżawy w przypadku konta magazynu ogólnego przeznaczenia w wersji 2 w regionie Zachodnie stany USA z okresem przechowywania co najmniej jeden rok. Aby utworzyć bardziej dokładne oszacowanie dla ilości danych, którą przewidujesz dla aplikacji, użyj [kalkulatora cen usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/blobs/). Tabela zawiera tylko koszty przetwarzania i magazynowania i nie koszt subskrypcji. 
+
+Poniższa tabela zawiera oszacowanie kosztów w zależności od rozmiaru dzierżawy w przypadku konta magazynu ogólnego przeznaczenia w wersji 2 w regionie Zachodnie stany USA z okresem przechowywania co najmniej jeden rok. Aby utworzyć bardziej dokładne oszacowanie dla ilości danych, którą przewidujesz dla aplikacji, użyj [kalkulatora cen usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
 
-| Kategoria dziennika       | Liczba użytkowników | Zdarzenia dziennie | Liczba zdarzeń miesięcznie: (30 dni) | Koszt na miesiąc w USD (est). |
-| ---                | ---             | ---            | ---                        | ---                          | 
-| Inspekcja oraz operacje logowania | 100 000         | 16,500,000     | 495,000,000                | $1093                        |
-| Inspekcja              | 100 000         | 1,500,000      | 45,000,000                 | $246.66                      |
-| Logowania           | 100 000         | 15,000,000     | 450,000,000                | $847.28                      |
+| Kategoria dziennika | Liczba użytkowników | Zdarzenia dziennie | Ilość danych na miesiąc (szac.) | Koszt za miesiąc (szac.) | Koszt za rok (szac.) |
+|--------------|-----------------|----------------------|--------------------------------------|----------------------------|---------------------------|
+| Inspekcja | 100 000 | 1,5&nbsp;mln | 90 GB | 1,93 USD | 23,12 USD |
+| Inspekcja | 1000 | 15 000 | 900 MB | 0,02 USD | 0,24 USD |
+| Logowania | 1000 | 34 800 | 4 GB | 0,13 USD | 1,56 USD |
+| Logowania | 100 000 | 15&nbsp;mln | 1,7 TB | 35,41 USD | 424,92 USD |
+ 
+
+
+
+
+
+
+
 
 
 ### <a name="event-hub-messages-for-activity-logs"></a>Komunikaty centrum zdarzeń dotyczące dzienników aktywności

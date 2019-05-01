@@ -1,5 +1,5 @@
 ---
-title: Importuj dane z wirtualnych dysków twardych, a następnie skopiuj do dysków zarządzanych przy użyciu systemu Microsoft Azure Data Box | Dokumentacja firmy Microsoft
+title: Samouczek, aby skopiować dane z wirtualnych dysków twardych do usługi managed disks za pomocą usługi Azure Data Box | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak skopiować dane z wirtualnych dysków twardych z lokalnych obciążeń maszyny Wirtualnej do usługi Azure Data Box
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 02/27/2019
 ms.author: alkohli
-ms.openlocfilehash: ec2013a793f766221a66912d6de9d8da8b8106dd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3284821e0ec65a76b29d5195315136639304e411
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60463256"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925473"
 ---
 # <a name="tutorial-use-data-box-to-import-data-as-managed-disks-in-azure"></a>Samouczek: Użyj Data Box, aby importować dane jako usługa managed disks na platformie Azure
 

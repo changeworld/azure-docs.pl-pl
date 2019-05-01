@@ -1,25 +1,18 @@
 ---
-title: Utwórz zasoby techniczne dla oferty maszyny wirtualnej w portalu Azure Marketplace | Dokumentacja firmy Microsoft
+title: Utwórz zasoby techniczne dla oferty maszyny wirtualnej w portalu Azure Marketplace
 description: Wyjaśnia, jak utworzyć zasoby techniczne dla oferty maszyny wirtualnej w portalu Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 08/20/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 6f1a93c3d3059e612d8c309b263e263dbb84c67f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: pabutler
+ms.openlocfilehash: 6113c10cd152a22bd31e7212d86925b0c2107e58
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59050105"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938412"
 ---
 # <a name="create-technical-assets-for-a-virtual-machine-offer"></a>Utwórz zasoby techniczne dla oferty maszyny wirtualnej
 

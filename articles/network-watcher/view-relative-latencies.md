@@ -3,8 +3,8 @@ title: Wyświetlanie względnej opóźnienia do regionów platformy Azure z okre
 description: Dowiedz się, jak wyświetlić względne wartości opóźnienia między dostawców Internetu w regionach platformy Azure z określonych lokalizacji.
 services: network-watcher
 documentationcenter: ''
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/14/2017
-ms.author: jdial
+ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 895e29d9855372e418ad5ebf2a3949dc01ddb8de
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b4a50657442422786f49c931aa6c2610d49846b1
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792422"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939874"
 ---
 # <a name="view-relative-latency-to-azure-regions-from-specific-locations"></a>Wyświetl względnego opóźnienia do regionów platformy Azure z określonych lokalizacji
 
@@ -60,7 +60,7 @@ Get-AzNetworkWatcherReachabilityReport `
 ```
 
 > [!NOTE]
-> Region, który określisz w poprzednim poleceniu nie musi być taki sam jak region, który określiłeś, podczas pobierania usługi network watcher. Poprzednie polecenie wymaga po prostu, że podajesz istniejącej usługi network watcher. Usługa network watcher można w dowolnym regionie. W przypadku określenia wartości `-Country` i `-State`, musi być prawidłowy. Wartości jest rozróżniana wielkość liter. Dane są dostępne dla ograniczonej liczby krajów, regionów i miast. Uruchom polecenia w [wyświetlić dostępnych krajów, Stany, miasta i dostawców](#view-available) Aby wyświetlić listę dostępnych krajów, miast i stanów do użycia z poprzedniego polecenia. 
+> Region, który określisz w poprzednim poleceniu nie musi być taki sam jak region, który określiłeś, podczas pobierania usługi network watcher. Poprzednie polecenie wymaga po prostu, że podajesz istniejącej usługi network watcher. Usługa network watcher można w dowolnym regionie. W przypadku określenia wartości `-Country` i `-State`, musi być prawidłowy. Wartości jest rozróżniana wielkość liter. Dane są dostępne dla ograniczonej liczby krajów/regionów, regionów i miast. Uruchom polecenia w [wyświetlić dostępne krajów/regionów, Stany, miasta i dostawców](#view-available) Aby wyświetlić listę dostępnych krajów/regionów, miast i stanów do użycia z poprzedniego polecenia. 
 
 > [!WARNING]
 > Należy określić datę w ciągu ostatnich 30 dni dla `-StartTime` i `-EndTime`. Określanie w ubiegłym spowoduje żadne dane nie zostały zwrócone.
@@ -125,15 +125,15 @@ Get-AzNetworkWatcherReachabilityReport `
 > [!NOTE]
 > W odróżnieniu od po określeniu jednej lokalizacji, jeśli nie Określ lokalizację lub określ wiele lokalizacji, na przykład "Zachodnie stany USA 2", "Zachodnie stany USA", należy określić usługodawcy internetowego przy uruchamianiu polecenia. 
 
-## <a name="view-available"></a>Wyświetl dostępne krajów, miasta i dostawców
+## <a name="view-available"></a>Wyświetl dostępne krajów/regionów, Stany, miasta i dostawców
 
-Dane są dostępne dla określonego dostawcy usług internetowych, krajów, regionów i miast. Aby wyświetlić listę wszystkich dostępnych usługodawców internetowych, krajów, regionów i miast, które można wyświetlać dane, wprowadź następujące polecenie:
+Dane są dostępne dla określonego dostawcy usług internetowych, kraje/regiony, regionów i miast. Aby wyświetlić listę wszystkich internetowych dostępnych dostawców usług, kraje/regiony, stanów i miasta, które można wyświetlać dane, wprowadź następujące polecenie:
 
 ```powershell
 Get-AzNetworkWatcherReachabilityProvidersList -NetworkWatcherName NetworkWatcher_eastus -ResourceGroupName NetworkWatcherRG
 ```
 
-Data jest dostępna tylko dla krajów, regionów i miast zwrócony przez poprzednie polecenie. Poprzednie polecenie wymaga określenia istniejącej usługi network watcher. Przykład określony *NetworkWatcher_eastus* usługi network watcher w grupie zasobów o nazwie *NetworkWatcherRG*, ale można określić wszelkie istniejące usługi network watcher. Jeśli nie masz istniejącej usługi network watcher, utwórz ją, wykonywania zadań w [utworzyć usługę network watcher](#create-a-network-watcher). 
+Data jest dostępna tylko dla krajów/regionów, stanów i zwrócony przez poprzednie polecenie miast. Poprzednie polecenie wymaga określenia istniejącej usługi network watcher. Przykład określony *NetworkWatcher_eastus* usługi network watcher w grupie zasobów o nazwie *NetworkWatcherRG*, ale można określić wszelkie istniejące usługi network watcher. Jeśli nie masz istniejącej usługi network watcher, utwórz ją, wykonywania zadań w [utworzyć usługę network watcher](#create-a-network-watcher). 
 
 Po uruchomieniu w poprzednim poleceniu, można filtrować dane wyjściowe zwracane, określając prawidłowe wartości dla **kraju**, **stanu**, i **Miasto**, jeśli to konieczne.  Na przykład aby wyświetlić listę usługodawców internetowych dostępnych w Seattle, Waszyngton w Stanach Zjednoczonych, wprowadź następujące polecenie:
 

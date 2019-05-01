@@ -1,25 +1,18 @@
 ---
-title: Oferta Azure moduł usługi IoT Edge publikowania — omówienie | Dokumentacja firmy Microsoft
+title: Oferta Azure moduł usługi IoT Edge publikowania — omówienie | Portal Azure Marketplace
 description: Omówienie procesu publikowania moduł usługi IoT Edge oferty w portalu Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 5b4d4471d9c77b5d13dfd5f8c2e9394b1c2d2a87
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: pabutler
+ms.openlocfilehash: 319031ec99d449ea5866bb5234cc617145954173
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60910703"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942612"
 ---
 # <a name="iot-edge-module-offer-publishing-overview"></a>Moduł usługi IoT Edge oferują publikowania — omówienie
 

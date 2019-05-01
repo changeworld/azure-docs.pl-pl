@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: ced74cc5af829c3677a12aaf4bffdf9a518f6053
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 243df4457263a3653c501c7a409d2c3a77ee07e1
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60384757"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64690168"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>Samouczek: włączanie uwierzytelniania w aplikacji internetowej przy użyciu usługi Azure Active Directory B2C
 

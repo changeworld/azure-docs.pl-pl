@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 9849b8209db0a4aa73a80d461b67bda9b0b3656a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 3e40e72a4cbb154a7ccef153959e81f7054ea003
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59049731"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926379"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Rozwiązywanie problemów z usługą Azure Files w Windows
 
@@ -96,7 +96,7 @@ Jeśli połączenie zostało pomyślnie nawiązane, powinny pojawić się nastę
 ### <a name="solution-for-cause-1"></a>Rozwiązanie przyczyny 1
 
 #### <a name="solution-1---use-azure-file-sync"></a>Rozwiązanie 1. Użyj usługi Azure File Sync
-Usługa Azure File Sync może przekształca lokalnego systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Usługa Azure File Sync działa za pośrednictwem portu 443 i dlatego można obejść ten problem dostęp do usługi Azure Files z klientów, którzy mają portu 445 zablokowane. [Dowiedz się, jak skonfigurować usługę Azure File Sync](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-extend-servers).
+Usługa Azure File Sync może przekształca lokalnego systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Usługa Azure File Sync działa za pośrednictwem portu 443 i dlatego można obejść ten problem dostęp do usługi Azure Files z klientów, którzy mają portu 445 zablokowane. [Dowiedz się, jak skonfigurować usługę Azure File Sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-extend-servers).
 
 #### <a name="solution-2---use-vpn"></a>Rozwiązanie 2 — użycie sieci VPN
 Konfigurując sieci VPN do określonego konta magazynu, ruch zaczną za pośrednictwem bezpiecznego tunelu, w przeciwieństwie do za pośrednictwem Internetu. Postępuj zgodnie z [instrukcjami, aby skonfigurować sieci VPN](https://github.com/Azure-Samples/azure-files-samples/tree/master/point-to-site-vpn-azure-files
@@ -106,7 +106,7 @@ Konfigurując sieci VPN do określonego konta magazynu, ruch zaczną za pośredn
 Praca z personelem informatycznym lub usługodawcy internetowego, aby otworzyć port 445 ruch wychodzący do [zakresów adresów IP platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653).
 
 #### <a name="solution-4---use-rest-api-based-tools-like-storage-explorerpowershell"></a>Rozwiązanie 4 — Korzystanie z interfejsu API REST oparte narzędzi takich jak Storage Explorer/programu Powershell
-Usługa pliki systemu Azure obsługuje również REST, oprócz protokołu SMB. Dostęp interfejsu REST działa za pośrednictwem portu 443 (standardowy protokół tcp). Istnieją różne narzędzia, które są zapisywane z użyciem interfejsu API REST, umożliwiających bogate funkcje interfejsu użytkownika. [Eksplorator usługi Storage](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) jest jednym z nich. [Pobieranie i instalowanie Eksploratora usługi Storage](https://azure.microsoft.com/en-us/features/storage-explorer/) i nawiąż połączenie z udziałem plików obsługiwane przez usługi Azure Files. Można również użyć [PowerShell](https://docs.microsoft.com/en-us/azure/storage/files/storage-how-to-use-files-powershell) który również użytkowników interfejsu API REST.
+Usługa pliki systemu Azure obsługuje również REST, oprócz protokołu SMB. Dostęp interfejsu REST działa za pośrednictwem portu 443 (standardowy protokół tcp). Istnieją różne narzędzia, które są zapisywane z użyciem interfejsu API REST, umożliwiających bogate funkcje interfejsu użytkownika. [Eksplorator usługi Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) jest jednym z nich. [Pobieranie i instalowanie Eksploratora usługi Storage](https://azure.microsoft.com/features/storage-explorer/) i nawiąż połączenie z udziałem plików obsługiwane przez usługi Azure Files. Można również użyć [PowerShell](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-powershell) który również użytkowników interfejsu API REST.
 
 
 ### <a name="cause-2-ntlmv1-is-enabled"></a>Przyczyny 2: Włączono NTLMv1

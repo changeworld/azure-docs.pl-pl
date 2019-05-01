@@ -10,12 +10,12 @@ ms.date: 09/18/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0b544bfcb59bf4c2b44e6b666fcd33e9fb493692
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 96d4c2c8d6c2dd7722b7377dd7a0ffd42acd3126
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60256664"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572522"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Dziennik i wstępnie zagregowane metryki w usłudze Application Insights
 
@@ -63,7 +63,7 @@ Zbiór wymiarów metryki niestandardowe jest domyślnie wyłączone, ponieważ w
 
 ## <a name="creating-charts-and-exploring-log-based-and-standard-pre-aggregated-metrics"></a>Tworzenie wykresów i przeglądanie dzienników i standard wstępnie zagregowane metryki
 
-Eksplorator metryk usługi Azure Monitor umożliwia będzie wykreślanie wykresów z wstępnie zagregowane i opartych na dzienniku metryki i autor pulpity nawigacyjne z wykresami. Po wybraniu żądanego zasobu usługi Application Insights, użyj selektora obszaru nazw w celu przełączania się między standard (wersja zapoznawcza) i metryk opartych na dzienniku lub wybrać metryki niestandardowej przestrzeni nazw:
+Użyj [Eksploratora metryk usługi Azure Monitor](../platform/metrics-getting-started.md) wykreślanie wykresów z wstępnie zagregowane i opartych na dzienniku metryki i autor pulpity nawigacyjne z wykresami. Po wybraniu żądanego zasobu usługi Application Insights, użyj selektora obszaru nazw w celu przełączania się między standard (wersja zapoznawcza) i metryk opartych na dzienniku lub wybrać metryki niestandardowej przestrzeni nazw:
 
 ![Metryki przestrzeni nazw](./media/pre-aggregated-metrics-log-metrics/002-metric-namespace.png)
 

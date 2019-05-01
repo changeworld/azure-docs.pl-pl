@@ -1,6 +1,6 @@
 ---
 title: Przewodnik Szybki Start Microsoft tożsamości platformy systemu iOS | Azure
-description: Dowiedz się, w jaki sposób logować użytkowników i wykonywać zapytania do programu Microsoft Graph w aplikacji natywnej dla systemu iOS.
+description: Dowiedz się, jak logować użytkowników i zapytań programu Microsoft Graph w aplikacji systemu iOS.
 services: active-directory
 documentationcenter: dev-center-name
 author: danieldobalian
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/20/2019
+ms.date: 04/18/2019
 ms.author: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6340e0f349d66ecf6baaca481722396a6d786c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 32cc373421e6b04737f40dc987b10c6ace858e17
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60298838"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937340"
 ---
-# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-native-app"></a>Szybki start: Logowanie użytkowników i wywoływanie interfejsu API programu Microsoft Graph z poziomu aplikacji natywnej dla systemu iOS
+# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-app"></a>Szybki start: Logowanie użytkowników i wywołanie interfejsu API programu Microsoft Graph z aplikacji systemu iOS
 
 [!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
@@ -32,101 +32,130 @@ Ten przewodnik Szybki start zawiera przykładowy kod, który pokazuje, w jaki sp
 
 ![Pokazuje, jak działa przykładowej aplikacji wygenerowane przez ten przewodnik Szybki Start](media/quickstart-v2-ios/ios-intro.svg)
 
+> [!NOTE]
+> **Wymagania wstępne**
+> * Środowisko XCode 10 +
+> * iOS 10+ 
+
 > [!div renderon="docs"]
-> ## <a name="register-and-download"></a>Rejestrowanie i pobieranie
-> ### <a name="register-and-configure-your-application-and-code-sample"></a>Rejestrowanie i konfigurowanie aplikacji i przykładowego kodu
+> ## <a name="register-and-download-your-quickstart-app"></a>Rejestrowanie i pobieranie aplikacji Szybki start
+> Istnieją dwie opcje uruchamiania aplikacji Szybki start:
+> * [Ekspresowo] [Opcja 1: zarejestrowanie i automatyczne skonfigurowanie aplikacji, a następnie pobranie przykładowego kodu](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
+> * [Ręcznie] [Opcja 2: zarejestrowanie i ręczne skonfigurowanie aplikacji oraz przykładowego kodu](#option-2-register-and-manually-configure-your-application-and-code-sample)
+>
+> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Opcja 1: zarejestrowanie i automatyczne skonfigurowanie aplikacji, a następnie pobranie przykładowego kodu
 > #### <a name="step-1-register-your-application"></a>Krok 1: Rejestrowanie aplikacji
-> Aby zarejestrować aplikację i dodać informacje na temat rejestracji aplikacji do rozwiązania, wykonaj następujące czynności:
-> 1. Przejdź do [portalu rejestracji aplikacji firmy Microsoft](https://apps.dev.microsoft.com/portal/register-app), aby zarejestrować aplikację.
-> 1. W polu **Application Name** (Nazwa aplikacji) wprowadź nazwę aplikacji.
-> 1. Upewnij się, że pole **Guided Setup** (Konfiguracja z przewodnikiem) jest wyczyszczone, a następnie wybierz pozycję **Create** (Utwórz).
-> 1. Wybierz kolejno pozycje **Add platform** (Dodaj platformę), **Native Application** (Aplikacja natywna) i **Save** (Zapisz).
+> Aby zarejestrować aplikację,
+> 1. Przejdź do nowego [witryna Azure portal — rejestracje aplikacji](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/IosQuickstartPage/sourceType/docs) okienka.
+> 1. Wprowadź nazwę aplikacji i wybierz pozycję **Zarejestruj**.
+> 1. Postępuj zgodnie z instrukcjami, aby pobrać i automatycznie skonfigurować nową aplikację za pomocą tylko jednego kliknięcia.
+>
+> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Opcja 2: zarejestrowanie i ręczne skonfigurowanie aplikacji oraz przykładowego kodu
+>
+> #### <a name="step-1-register-your-application"></a>Krok 1: Rejestrowanie aplikacji
+> Aby ręcznie zarejestrować aplikację i dodać informacje na temat rejestracji aplikacji do rozwiązania, wykonaj następujące czynności:
+>
+> 1. Przejdź do platforma tożsamości firmy Microsoft dla deweloperów [rejestracje aplikacji](https://aka.ms/MobileAppReg) strony.
+> 1. Wybierz **nowej rejestracji**.
+> 1. Po wyświetleniu strony **Rejestrowanie aplikacji** podaj informacje dotyczące rejestracji aplikacji:
+>      - W **nazwa** sekcji, wprowadź nazwę opisową aplikacji, która będzie wyświetlana dla użytkowników aplikacji, podczas logowania, lub wyrazić zgodę na aplikację, na przykład `iOSQuickstart`.
+>      - Pomiń innych ustawień na tej stronie. 
+>      - Trafienia `Register` przycisku.
+> 1. Kliknij nową aplikację > Przejdź do `Authentication`  >  `Add Platform`  >  `iOS`.    
+>      - Wprowadź ***identyfikatora pakietu*** dla aplikacji. 
+> 1. Wybierz `Configure` i Zapisz ***konfiguracji biblioteki MSAL*** szczegóły później. 
 
 > [!div renderon="portal" class="sxs-lookup"]
+>
 > #### <a name="step-1-configure-your-application"></a>Krok 1: Konfigurowanie aplikacji
-> Dla przykładu kodu dla tego przewodnika Szybki Start do pracy, należy dodać adres URL odpowiedzi jako `msal<AppId>://auth` (gdzie msal\<AppId > jest identyfikator aplikacji).
+> Dla przykładu kodu dla tego przewodnika Szybki Start do pracy należy dodać przekierowania URI zgodna z brokera uwierzytelniania. 
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Wprowadź tę zmianę automatycznie]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Already configured](media/quickstart-v2-ios/green-check.png) (Już skonfigurowano) Twoja aplikacja została skonfigurowana za pomocą tego atrybutu
+> > ![Already configured](media/quickstart-v2-ios/green-check.png) (Już skonfigurowano) Twoja aplikacja została skonfigurowana za pomocą tych atrybutów
 
 #### <a name="step-2-download-your-web-server-or-project"></a>Krok 2: Pobieranie serwera internetowego lub projektu
 
-- [Pobieranie projektu XCode](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
+- [Pobierz przykładowy kod](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
 
 #### <a name="step-3-configure-your-project"></a>Krok 3: Konfigurowanie projektu
 
-1. Wyodrębnij plik zip i otwórz projekt w programie XCode.
-1. Edytuj plik **ViewController.swift** i zastąp wiersz rozpoczynający się od ciągu „let kClientID” następującym fragmentem kodu:
-
-    > [!div renderon="portal" class="sxs-lookup"]
-    > ```swift
-    > let kClientID = "Enter_the_Application_Id_here"
-    > ```
-
-    > [!div renderon="docs"]
-    > ```swift
-    > let kClientID = "<ENTER_THE_APPLICATION_ID_HERE>"
-    > ```   
-1. Naciśnij klawisz Control, klikając pozycję **Info.plist**, aby wywołać menu kontekstowe, a następnie wybierz pozycję **Open As** (Otwórz jako)  > **Source Code** (Kod źródłowy).
-1. W obszarze węzła głównego dict dodaj następujący kod:
-
-    > [!div renderon="portal" class="sxs-lookup"]
-    > ```xml
-    > <key>CFBundleURLTypes</key>
-    > <array>
-    >     <dict>
-    >         <key>CFBundleTypeRole</key>
-    >         <string>Editor</string>
-    >         <key>CFBundleURLName</key>
-    >         <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
-    >         <key>CFBundleURLSchemes</key>
-    >         <array>
-    >             <string>msalEnter_the_Application_Id_here</string>
-    >         </array>
-    >     </dict>
-    > </array>
-    > ```
-
-    > [!div renderon="docs"]
-    > ```xml
-    > <key>CFBundleURLTypes</key>
-    > <array>
-    >     <dict>
-    >         <key>CFBundleTypeRole</key>
-    >         <string>Editor</string>
-    >         <key>CFBundleURLName</key>
-    >         <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
-    >         <key>CFBundleURLSchemes</key>
-    >         <array>
-    >             <string>msal<ENTER_THE_APPLICATION_ID_HERE></string>
-    >         </array>
-    >     </dict>
-    > </array>
-    > ```
-    
 > [!div renderon="docs"]
-> <span>5.</span> Zastąp ciąg `<ENTER_THE_APPLICATION_ID_HERE>` *identyfikatorem aplikacji*. Jeśli chcesz znaleźć *identyfikator aplikacji*, przejdź do strony *Omówienie*.
+> Jeśli została wybrana opcja 1 powyżej, można pominąć tę procedurę. 
+
+> [!div renderon="portal" class="sxs-lookup"]
+> 1. Wyodrębnij plik zip i otwórz projekt w programie XCode.
+> 1. Edytuj plik **ViewController.swift** i zastąp wiersz rozpoczynający się od ciągu „let kClientID” następującym fragmentem kodu:
+>    ```swift
+>    let kClientID = "Enter_the_Application_Id_here"
+>    let kAuthority = "https://login.microsoftonline.com/Enter_the_Tenant_Info_Here"
+>
+>    ```
+> 1. Kliknij prawym przyciskiem myszy **Info.plist** i wybierz **Otwórz jako** > **kod źródłowy**.
+> 1. W węźle głównym dict Zamień swoje ***identyfikator pakietu***:
+>
+>    ```xml
+>    <key>CFBundleURLTypes</key>
+>    <array>
+>       <dict>
+>          <key>CFBundleURLSchemes</key>
+>          <array>
+>             <string>msauth.Enter_the_Bundle_Id_Here</string>
+>          </array>
+>       </dict>
+>    </array>
+> 
+>    ```
+> 1. Kompilowanie i uruchamianie aplikacji! 
+
+> [!div renderon="docs"]
+>
+> 1. Wyodrębnij plik zip i otwórz projekt w programie XCode.
+> 1. Edytuj **ViewController.swift** i Zastąp wiersz rozpoczynający umożliwiają kClientID następującym fragmentem kodu:
+>
+>    ```swift
+>    let kClientID = "<ENTER_YOUR_APPLICATION/CLIENT_ID>"
+> 
+>    ```
+> 1. Kliknij prawym przyciskiem myszy **Info.plist** i wybierz **Otwórz jako** > **kod źródłowy**.
+> 1. W węźle głównym dict Zamień swoje ***identyfikator pakietu***:
+>
+>    ```xml
+>    <key>CFBundleURLTypes</key>
+>    <array>
+>       <dict>
+>          <key>CFBundleURLSchemes</key>
+>          <array>
+>             <string>msauth.<ENTER_YOUR_BUNDLE_ID></string>
+>          </array>
+>       </dict>
+>    </array>
+>
+>    ```
+> 1. Kompilowanie i uruchamianie aplikacji! 
 
 ## <a name="more-information"></a>Więcej informacji
 
 Zapoznaj się z następującymi sekcjami, aby dowiedzieć się więcej na temat tego przewodnika Szybki start.
 
-### <a name="msal"></a>BIBLIOTEKA MSAL
+### <a name="getting-msal"></a>Pobieranie biblioteki MSAL
 
-Biblioteka MSAL ([MSAL.framework](https://github.com/AzureAD/microsoft-authentication-library-for-objc)) to biblioteka umożliwiająca logowanie użytkowników i przesyłanie żądań tokenów używanych do uzyskiwania dostępu do interfejsu API chronionego przez usługę Azure Active Directory. Możesz dodać bibliotekę MSAL do aplikacji w następujący sposób:
+Biblioteka MSAL ([MSAL.framework](https://github.com/AzureAD/microsoft-authentication-library-for-objc)) to biblioteka używane do logowania użytkowników i żądać tokenów, które umożliwiają dostęp do interfejsu API chronionego przez platforma tożsamości usługi Microsoft. Możesz dodać bibliotekę MSAL do aplikacji w następujący sposób:
 
 ```
 $ vi Podfile
-```
-Dodaj następujący kod do tego pliku podfile:
 
 ```
- target 'QuickStart' do
-   use_frameworks!
- pod 'MSAL'
- end
+Dodaj następujący kod do tego pliku podfile (z elementem docelowym projektu):
+
+```
+use_frameworks!
+
+target 'MSALiOS' do
+   pod 'MSAL', '~> 0.4.0'
+end
+
 ```
 
 ### <a name="msal-initialization"></a>Inicjowanie biblioteki MSAL
@@ -140,52 +169,83 @@ import MSAL
 Następnie zainicjuj bibliotekę MSAL, używając następującego kodu:
 
 ```swift
-let authority = MSALAuthority(url: URL(string: kAuthority)!)
-self.applicationContext = try MSALPublicClientApplication(clientId: kClientID, authority: authority)
+let authority = try MSALAADAuthority(url: URL(string: kAuthority)!)
+            
+let msalConfiguration = MSALPublicClientApplicationConfig(clientId: kClientID, redirectUri: nil, authority: authority)
+self.applicationContext = try MSALPublicClientApplication(configuration: msalConfiguration)
+
 ```
 
 > |Gdzie: ||
 > |---------|---------|
 > | `clientId` | Identyfikator aplikacji z aplikacji zarejestrowanej w witrynie *portal.azure.com* |
 > | `authority` | Punkt końcowy platforma tożsamości firmy Microsoft. W większości przypadków będzie to adres *https<span/>://login.microsoftonline.com/common* |
+> | `redirectUri` | Przekierowania URI Identyfikatora aplikacji. Można przekazać zero, aby użyć wartości domyślne lub niestandardowy identyfikator URI przekierowania. |
 
-### <a name="requesting-tokens"></a>Przesyłanie żądań tokenów
+### <a name="additional-app-requirements"></a>Wymagania dotyczące dodatkowych aplikacji  
+
+Aplikacja musi także mieć następujące czynności w Twojej `AppDelegate`. Dzięki temu zestaw SDK biblioteki MSAL obsługi odpowiedzi tokenu z aplikacji brokera uwierzytelniania podczas wykonywania uwierzytelniania.
+
+ ```swift
+ func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+         guard let sourceApplication = options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String else {
+             return false
+         }
+         
+         return MSALPublicClientApplication.handleMSALResponse(url, sourceApplication: sourceApplication)
+     }
+
+```
+
+Ponadto aplikacja musi ma `LSApplicationQueriesSchemes` wpisu w swojej ***Info.plist*** obok `CFBundleURLTypes`. Próbka jest powiązana z tym uwzględnione. 
+
+   ```xml 
+   <key>LSApplicationQueriesSchemes</key>
+   <array>
+      <string>msauth</string>
+      <string>msauthv2</string>
+   </array>
+   ```
+
+### <a name="sign-in-users--request-tokens"></a>Konta użytkowników i żądać tokenów
 
 Biblioteka MSAL oferuje dwie metody uzyskiwania tokenów: `acquireToken` i `acquireTokenSilent`.
 
-#### <a name="getting-an-access-token-interactively"></a>Interaktywne uzyskiwanie tokenów dostępu
+#### <a name="acquiretoken-getting-a-token-interactively"></a>acquireToken: Uzyskanie tokenu interaktywnie
 
-Sytuacje wymagają wymuszanie użytkownikom na interakcję z końcowym platforma tożsamości firmy Microsoft, co spowoduje, że przełączenie kontekstu do przeglądarki systemu, aby to zweryfikować poświadczeń użytkownika, lub o wyrażenie zgody. Oto niektóre przykłady:
+Sytuacje wymagają użytkownikom na interakcję z platformą Microsoft identity. W takich przypadkach użytkownik końcowy może być konieczne wybierz swoje konto, wprowadź swoje poświadczenia lub wyrazić zgodę na uprawnienia dotyczące Twojej aplikacji. Na przykład: 
 
 * Gdy nowi użytkownicy logują się do aplikacji po raz pierwszy.
-* Gdy użytkownicy muszą ponownie wprowadzić poświadczenia, ponieważ hasło wygasło.
-* Gdy aplikacja żąda dostępu do zasobów wymagającego zgody użytkownika.
-* Gdy wymagane jest uwierzytelnianie dwuetapowe.
+* Jeśli użytkownik resetuje hasła, należy wprowadzić swoje poświadczenia 
+* Gdy aplikacja żąda dostępu do zasobu po raz pierwszy
+* Gdy wymagane są usługi MFA lub innymi zasadami dostępu warunkowego
 
 ```swift
-applicationContext.acquireToken(forScopes: self.kScopes) { (result, error) in /* Add your handling logic */}
+let parameters = MSALInteractiveTokenParameters(scopes: kScopes)
+applicationContext.acquireToken(with: parameters) { (result, error) in /* Add your handling logic */}
 ```
 
 > |Gdzie:||
 > |---------|---------|
-> | `forScopes` | Zawiera żądane zakresy (czyli `[ "user.read" ]` dla programu Microsoft Graph lub `[ "<Application ID URL>/scope" ]` dla niestandardowych interfejsów internetowych API — czyli `api://<Application ID>/access_as_user`) |
+> | `scopes` | Zawiera zakresy żądanej (czyli `[ "user.read" ]` dla programu Microsoft Graph lub `[ "<Application ID URL>/scope" ]` dla niestandardowych interfejsów API sieci Web (`api://<Application ID>/access_as_user`) |
 
-#### <a name="getting-an-access-token-silently"></a>Dyskretne uzyskiwanie tokenów dostępu
+#### <a name="acquiretokensilent-getting-an-access-token-silently"></a>acquireTokenSilent: Dyskretne uzyskiwanie tokenów dostępu
 
-Nie chcesz, aby użytkownik musiał weryfikować poświadczenia za każdym razem, gdy musi uzyskać dostęp do zasobu. Przez większość czasu uzyskiwanie i odnawianie tokenów powinno odbywać się bez żadnej interakcji z użytkownikiem. Możesz użyć metody `acquireTokenSilent` do uzyskiwania tokenów umożliwiających dostęp do chronionych zasobów po początkowym skorzystaniu z metody `acquireToken`:
+Aplikacje nie wymagają użytkownikom zalogować się za każdym razem, gdy będą one żądać tokenu. Jeśli użytkownik ma już logowanie, ta metoda umożliwia aplikacji, aby żądać tokenów w trybie dyskretnym. 
 
 ```swift
-applicationContext.acquireTokenSilent(forScopes: self.kScopes, account: applicationContext.allAccounts().first) { (result, error) in /* Add your handling logic */}
+let parameters = MSALSilentTokenParameters(scopes: kScopes, account: applicationContext.allAccounts().first)
+applicationContext.acquireTokenSilent(with: parameters) { (result, error) in /* Add your handling logic */}
 ```
 
 > |Gdzie: ||
 > |---------|---------|
-> | `forScopes` | Zawiera żądane zakresy (czyli `[ "user.read" ]` dla programu Microsoft Graph lub `[ "<Application ID URL>/scope" ]` dla niestandardowych interfejsów internetowych API — czyli `api://<Application ID>/access_as_user`) |
-> | `account` | Konto przesyłające żądanie tokenu (biblioteka MSAL obsługuje wiele kont w jednej aplikacji). W przypadku tego przewodnika Szybki start wartość wskazuje na pierwsze konto w pamięci podręcznej (`applicationContext.allAccounts().first`). |
+> | `scopes` | Zawiera zakresy żądanej (czyli `[ "user.read" ]` dla programu Microsoft Graph lub `[ "<Application ID URL>/scope" ]` dla niestandardowych interfejsów API sieci Web (`api://<Application ID>/access_as_user`) |
+> | `account` | Są żądane konto tokenu. Ten przewodnik Szybki Start jest aplikacją jedno konto, jeśli chcesz utworzyć aplikację wielu konta, musisz zdefiniować logikę w celu identyfikacji konta, którego należy użyć dla żądania tokenu `applicationContext.account(forHomeAccountId: self.homeAccountId)` |
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Wypróbuj samouczek dotyczący systemu iOS, aby uzyskać instrukcje krok po kroku dotyczące tworzenia aplikacji i nowych funkcji, w tym pełne objaśnienie informacji zawartych w tym przewodniku Szybki start.
+Wypróbuj samouczek z systemem iOS w kompletny przewodnik krok po kroku dotyczących tworzenia aplikacji, w tym pełne wyjaśnienie tego przewodnika Szybki Start.
 
 ### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>Dowiedz się więcej na temat czynności, które są wymagane to utworzenia aplikacji użytej w tym przewodniku Szybki start
 

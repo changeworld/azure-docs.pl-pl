@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
-ms.date: 02/05/2019
+ms.date: 04/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1a6aa75f3d25cd88cd1edb9b2cdcfabc3b4ec8f9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ece32754ae51bde5db52d20ab44f0d748bf46533
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60818534"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64943942"
 ---
 # <a name="use-ssl-to-secure-web-services-with-azure-machine-learning-service"></a>Użyj protokołu SSL do zabezpieczania usług sieci web za pomocą usługi Azure Machine Learning
 
 W tym artykule dowiesz się, jak zabezpieczyć usługę sieci web wdrażane za pomocą usługi Azure Machine Learning. Można ograniczyć dostęp do usług sieci web i zabezpieczanie danych przesyłanych przez klientów przy użyciu [Hypertext Transfer Protocol bezpieczne (HTTPS)](https://en.wikipedia.org/wiki/HTTPS).
 
-Protokół HTTPS jest używany do zabezpieczania komunikacji między klientem a usługi sieci web dzięki szyfrowaniu komunikacji między nimi. Szyfrowanie jest obsługiwane za pomocą [zabezpieczeń TLS (Transport Layer)](https://en.wikipedia.org/wiki/Transport_Layer_Security). Czasami jest to nadal określane jako Secure Sockets Layer (SSL), która poprzednika protokołu TLS była.
+Protokół HTTPS jest używany do zabezpieczania komunikacji między klientem a usługi sieci web dzięki szyfrowaniu komunikacji między nimi. Szyfrowanie jest obsługiwane za pomocą [zabezpieczeń TLS (Transport Layer)](https://en.wikipedia.org/wiki/Transport_Layer_Security). Czasami protokół TLS jest nadal określane jako Secure Sockets Layer (SSL), która poprzednika protokołu TLS była.
 
 > [!TIP]
 > Zestaw SDK usługi Azure Machine Learning używany jest termin "SSL" dla właściwości powiązany z włączaniem bezpieczną komunikację. Nie oznacza to, że protokół TLS, nie jest używany przez usługi sieci web, po prostu ten protokół SSL jest bardziej rozpoznawalnych terminem dla wielu czytników.
@@ -34,7 +34,7 @@ Protokoły TLS i SSL obie opierają się na __certyfikaty cyfrowe__, które są 
 >
 > Protokół HTTPS umożliwia także klienta w celu sprawdzenia autentyczności serwera, który nawiązuje połączenie z. To chroni klientów przed [ataków typu man-in--middle](https://en.wikipedia.org/wiki/Man-in-the-middle_attack) ataków.
 
-Proces zabezpieczania nowej usługi sieci web lub istniejąca jest następująca:
+Ogólny proces zabezpieczania nowej usługi sieci web lub istniejąca jest następująca:
 
 1. Pobierz nazwę domeny.
 
@@ -43,6 +43,9 @@ Proces zabezpieczania nowej usługi sieci web lub istniejąca jest następująca
 3. Wdrażanie lub zaktualizować usługę sieci web przy użyciu ustawienia protokołu SSL, włączona.
 
 4. Zaktualizuj serwer DNS, aby wskazać usługę sieci web.
+
+> [!IMPORTANT]
+> Jeśli wdrażasz do usługi Azure Kubernetes Service (AKS), możesz podać własne certyfikatu lub używany certyfikat dostarczony przez firmę Microsoft. Jeśli używasz certyfikatu oferowanych przez firmę Microsoft, nie musisz uzyskać nazwy domeny lub certyfikatu protokołu SSL. Aby uzyskać więcej informacji, zobacz [włączenia protokołu SSL i wdrażanie](#enable) sekcji.
 
 Istnieją drobne różnice podczas zabezpieczania usług sieci web w [celów wdrażania](how-to-deploy-and-where.md).
 
@@ -65,19 +68,49 @@ Podczas żądania certyfikatu, podaj w pełni kwalifikowana nazwa domeny (FQDN) 
 > [!WARNING]
 > Certyfikaty z podpisem własnym należy używać tylko w celach deweloperskich. Nie powinny one być używane w środowisku produkcyjnym. Certyfikaty z podpisem własnym może powodować problemy w swoim kliencie aplikacji. Aby uzyskać więcej informacji zobacz dokumentację bibliotek sieciowych używanych w aplikacji klienckiej.
 
-## <a name="enable-ssl-and-deploy"></a>Włącz protokół SSL i wdrażanie
+## <a id="enable"></a> Włącz protokół SSL i wdrażanie
 
-Aby wdrożyć (lub ponownie wdrożyć) usługi z włączonym protokołem SSL, ustaw `ssl_enabled` parametr `True`, gdy mają zastosowanie. Ustaw `ssl_certificate` parametru na wartość __certyfikatu__ pliku i `ssl_key` wartość __klucz__ pliku.
+Aby wdrożyć (lub ponownego wdrażania) usługi z włączonym protokołem SSL, ustaw `ssl_enabled` parametr `True`, gdy mają zastosowanie. Ustaw `ssl_certificate` parametru na wartość __certyfikatu__ pliku i `ssl_key` wartość __klucz__ pliku.
 
 + **Wdrażanie w usłudze Azure Kubernetes Service (AKS)**
 
-  Podczas aprowizowania klastra usługi AKS, podaj wartości dla parametrów związanych z protokołu SSL, jak pokazano we fragmencie kodu:
+  Podczas wdrażania usługi AKS, możesz utworzyć nowy klaster AKS lub dołączenie istniejącego. Tworzenie nowego klastra używa [AksCompute.provisionining_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#provisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none-) podczas dołączania do istniejącego klastra używa [AksCompute.attach_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none-). Oba zwracają obiekt konfiguracji, który ma `enable_ssl` metody.
+
+  `enable_ssl` Metody można użyć certyfikatu dostarczane przez firmę Microsoft lub jednego, który podasz.
+
+  * W przypadku używania certyfikatu __obsługiwane przez firmę Microsoft__, należy użyć `leaf_domain_label` parametru. Użycie tego parametru spowoduje utworzenie usługi przy użyciu certyfikatu, który został dostarczony przez firmę Microsoft. `leaf_domain_label` Służy do generowania nazwy DNS dla usługi. Na przykład, wartość `myservice` tworzy nazwę domeny `myservice<6-random-characters>.<azureregion>.cloudapp.azure.com`, gdzie `<azureregion>` to region, które zawiera tę usługę. Opcjonalnie możesz użyć `overwrite_existing_domain` parametru, aby zastąpić istniejącą etykietę domeny typu liść.
+
+    Aby wdrożyć (lub ponownie wdrożyć) usługi z włączonym protokołem SSL, ustaw `ssl_enabled` parametr `True`, gdy mają zastosowanie. Ustaw `ssl_certificate` parametru na wartość __certyfikatu__ pliku i `ssl_key` wartość __klucz__ pliku.
+
+    > [!IMPORTANT]
+    > W przypadku używania certyfikatu, obsługiwane przez firmę Microsoft, nie musisz kupować własnego certyfikatu lub nazwy domeny.
+
+    Poniższy przykład pokazuje, jak tworzyć konfiguracje, które umożliwiają certyfikat SSL utworzony przez firmę Microsoft:
 
     ```python
     from azureml.core.compute import AksCompute
-
-    provisioning_config = AksCompute.provisioning_configuration(ssl_cert_pem_file="cert.pem", ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
+    # Config used to create a new AKS cluster and enable SSL
+    provisioning_config = AksCompute.provisioning_configuration().enable_ssl(leaf_domain_label = "myservice")
+    # Config used to attach an existing AKS cluster to your workspace and enable SSL
+    attach_config = AksCompute.attach_configuration(resource_group = resource_group,
+                                          cluster_name = cluster_name).enable_ssl(leaf_domain_label = "myservice")
     ```
+
+  * Korzystając z __certyfikatu zakupiono__, użyj `ssl_cert_pem_file`, `ssl_key_pem_file`, i `ssl_cname` parametrów.  Poniższy przykład pokazuje, jak tworzyć konfiguracje, które używają certyfikatu SSL należy wprowadzać za pomocą `.pem` plików:
+
+    ```python
+    from azureml.core.compute import AksCompute
+    # Config used to create a new AKS cluster and enable SSL
+    provisioning_config = AksCompute.provisioning_configuration(ssl_cert_pem_file="cert.pem", ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
+    provisioning_config = AksCompute.provisioning_configuration().enable_ssl(ssl_cert_pem_file="cert.pem",
+                                        ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
+    # Config used to attach an existing AKS cluster to your workspace and enable SSL
+    attach_config = AksCompute.attach_configuration(resource_group = resource_group,
+                                         cluster_name = cluster_name).enable_ssl(ssl_cert_pem_file="cert.pem",
+                                        ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
+    ```
+
+  Aby uzyskać więcej informacji na temat `enable_ssl`, zobacz [AksProvisioningConfiguration.enable_ssl()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksprovisioningconfiguration?view=azure-ml-py#enable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-) i [AksAttachConfiguration.enable_ssl()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksattachconfiguration?view=azure-ml-py#enable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-).
 
 + **Wdrażanie w usłudze Azure Container Instances (ACI)**
 
@@ -89,15 +122,7 @@ Aby wdrożyć (lub ponownie wdrożyć) usługi z włączonym protokołem SSL, us
     aci_config = AciWebservice.deploy_configuration(ssl_enabled=True, ssl_cert_pem_file="cert.pem", ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
     ```
 
-+ **Wdrażanie na Tablice bramek programowane (FPGA)**
-
-  Podczas wdrażania FPGA, podaj wartości dla parametrów związanych z protokołu SSL, jak pokazano we fragmencie kodu:
-
-    ```python
-    from azureml.contrib.brainwave import BrainwaveWebservice
-
-    deployment_config = BrainwaveWebservice.deploy_configuration(ssl_enabled=True, ssl_cert_pem_file="cert.pem", ssl_key_pem_file="key.pem")
-    ```
+  Aby uzyskać więcej informacji, zobacz [AciWebservice.deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none-).
 
 ## <a name="update-your-dns"></a>Zaktualizuj serwer DNS
 
@@ -111,6 +136,9 @@ Następnie należy zaktualizować serwer DNS, aby wskazać usługę sieci web.
 
 + **Dla usługi AKS**:
 
+  > [!WARNING]
+  > Jeśli użyto `leaf_domain_label` do tworzenia usługi przy użyciu certyfikatu firmy Microsoft, nie ręcznie zaktualizować wartość DNS dla klastra. Wartość powinna być ustawiane automatycznie.
+
   Aktualizowanie systemu DNS, na karcie "Konfiguracja" "Publiczny adres IP" dla klastra AKS, jak pokazano na ilustracji. Możesz znaleźć publiczny adres IP jako jeden z typów zasobów utworzonych w ramach grupy zasobów, która zawiera węzły agenta usługi AKS i innych zasobów sieciowych.
 
   ![Usługa Azure Machine Learning: Zabezpieczanie usług sieci web przy użyciu protokołu SSL](./media/how-to-secure-web-service/aks-public-ip-address.png)
@@ -119,3 +147,4 @@ Następnie należy zaktualizować serwer DNS, aby wskazać usługę sieci web.
 Instrukcje:
 + [Korzystanie z usługi machine learning model wdrożyć jako usługę sieci web](how-to-consume-web-service.md)
 + [Bezpiecznego uruchamiania eksperymentów oraz wnioskowania wewnątrz usługi Azure Virtual Network](how-to-enable-virtual-network.md)
+

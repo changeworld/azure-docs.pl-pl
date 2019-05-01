@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/15/2019
+ms.date: 04/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 81602f1a30fb753d7a8fcfccace581cd8c7b2f0c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 94912d5aa10ddd2e67c33bcbb416f007c85f105c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60880366"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574105"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Integracja kontroli źródła w usłudze Automatyzacja Azure
 
@@ -52,14 +52,16 @@ Na **źródło sterowania — Podsumowanie** strony, wprowadź informacje i klik
 |Repozytorium     | Nazwa repozytorium lub projektu. Pierwszych 200 repozytoria są zwracane. Aby znaleźć repozytorium, wpisz nazwę w polu, a następnie kliknij przycisk **wyszukiwania w witrynie GitHub**.|
 |Branch     | Odgałęzienie do pobierania plików źródłowych z. Przeznaczone dla gałęzi jest niedostępna dla kontrolek typu źródłowego TFVC.          |
 |Ścieżka folderu     | Folder, który zawiera elementy runbook w celu synchronizacji. Przykład: /Runbooks </br>*Tylko elementy runbook w folderze określonym są synchronizowane. Rekursja nie jest obsługiwane.*        |
-|Automatyczna synchronizacja     | Włącza lub wyłącza automatyczne synchronizacji, gdy przeprowadzane jest zatwierdzenie w repozytorium kontroli źródła         |
+|Auto Sync<sup>1</sup>     | Włącza lub wyłącza automatyczne synchronizacji, gdy przeprowadzane jest zatwierdzenie w repozytorium kontroli źródła         |
 |Publikowanie elementu Runbook     | Jeśli ustawiono **na**po elementach runbook są synchronizowane z kontroli źródła będzie były automatycznie publikowane.         |
 |Opis     | Pole tekstowe w celu dostarczenie dodatkowych szczegółów        |
+
+<sup>1</sup> umożliwia automatyczną synchronizację podczas konfigurowania integracji kontroli źródła korzystając z repozytoriów platformy Azure, musi być administratorem projektu.
 
 ![Źródło sterowania — podsumowanie](./media/source-control-integration/source-control-summary.png)
 
 > [!NOTE]
-> Upewnij się, że zalogowano się za pomocą prawidłowe konto podczas konfigurowania kontroli źródła. W przypadku wątpliwości, otwórz nową kartę w przeglądarce Wyloguj się z witryną visualstudio.com lub github.com i spróbuj ponownie nawiązującego połączenie kontroli źródła.
+> Twoje dane logowania dla repozytorium kontroli źródła może być inna niż nazwa logowania do witryny Azure portal. Upewnij się, że zalogowano się za pomocą prawidłowe konto dla repozytorium kontroli źródła podczas konfigurowania kontroli źródła. W przypadku wątpliwości, otwórz nową kartę w przeglądarce Wyloguj się z witryną visualstudio.com lub github.com i spróbuj ponownie nawiązującego połączenie kontroli źródła.
 
 ## <a name="configure-source-control---powershell"></a>Konfigurowanie kontroli źródła — PowerShell
 

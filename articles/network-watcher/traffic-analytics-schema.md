@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
-ms.openlocfilehash: 246c5256f56fd0b891d4e7d642c421b1e340fc6d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 491f19abfd87c28ede45e98a24f31fe7e599b18b
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59799338"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64691413"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Agregacja schematu i danych w analizy ruchu
 
@@ -35,7 +35,7 @@ Analiza ruchu jest oparta na chmurze rozwiązania, który zapewnia wgląd w akty
 1. Wszystkie dzienniki przepływu w lokalizacji sieciowej grupy zabezpieczeń między "FlowIntervalStartTime_t" i "FlowIntervalEndTime_t" są przechwytywane w odstępach jednej minuty na koncie magazynu jako obiekty BLOB, mogła zostać przetworzona przez analizę ruchu. 
 2. Przetwarzanie analizy ruchu odbywa się domyślnie 60 minut. Oznacza to, że co 60 minut, w których analiza ruchu wybiera obiekty BLOB z magazynu na potrzeby agregacji.
 3. Przepływy, które mają ten sam źródłowy adres IP, docelowy adres IP, port docelowy, nazwa sieciowej grupy zabezpieczeń, reguła sieciowej grupy zabezpieczeń, kierunek przepływu i Transport layer protocol (TCP lub UDP) (Uwaga: Port źródłowy jest wyłączone dla agregacji) jest uwzględniona w jednej usłudze flow za analizę ruchu
-4. Jest to pojedynczy rekord dekorowane (szczegóły w sekcji poniżej) i pozyskanych w usłudze Log Analytics za analizę ruchu.
+4. Ten pojedynczy rekord jest ozdobione (szczegóły w dalszej części tego artykułu) i odebrane w dzienniku analizy ruchu Analytics.This proces może potrwać maksymalnie 1 godzinę max.
 5. Pole FlowStartTime_t wskazuje pierwszego wystąpienia takich zagregowane przepływu (tego samego czterech podwójny) w dzienniku przepływ przetwarzania interwał między "FlowIntervalStartTime_t" i "FlowIntervalEndTime_t". 
 6. Dla dowolnego zasobu w TA przepływów wskazane w interfejsie użytkownika są łączna liczba przepływów widzianych przez sieciową grupę zabezpieczeń, ale w dzienniku Anlaytics użytkownik będzie widział tylko jednego, zmniejszone rekord. Aby wyświetlić wszystkie przepływy, użyj pola blob_id, które mogą być przywoływane z magazynu. Ogólny przepływ uznawane za, że rekord będzie odnosić się do poszczególnych przepływów, które występuje w obiekcie blob.
 
@@ -60,7 +60,7 @@ Poniżej wymieniono pól w schemacie i ich oznaczającego
 | SrcIP_s | Źródłowy adres IP | Jest puste w przypadku AzurePublic i ExternalPublic przepływów |
 | DestIP_s | Docelowy adres IP | Jest puste w przypadku AzurePublic i ExternalPublic przepływów |
 | VMIP_s | Adresu IP maszyny Wirtualnej | Używany do AzurePublic i ExternalPublic przepływów |
-| PublicIP_S | Publiczne adresy IP | Używany do AzurePublic i ExternalPublic przepływów |
+| PublicIP_s | Publiczne adresy IP | Używany do AzurePublic i ExternalPublic przepływów |
 | DestPort_d | Port docelowy | Port ruchu przychodzącego | 
 | L4Protocol_s  | * T <br> * U  | Protokół transportu. T = TCP <br> U = UDP | 
 | L7Protocol_s  | Nazwa protokołu | Pochodną port docelowy |
@@ -121,6 +121,7 @@ Poniżej wymieniono pól w schemacie i ich oznaczającego
 1. MaliciousFlow — która jeden z adresów IP należą do sieci wirtualnej platformy azure w adres IP jest publiczny adres IP, który nie znajduje się w usłudze Azure i jest zgłaszana jako złośliwe w kanałach informacyjnych ASC, które Traffic Analytics wykorzystuje interwał przetwarzania między" FlowIntervalStartTime_t"i"FlowIntervalEndTime_t". 
 1. UnknownPrivate — która jeden z adresów IP należą do sieci wirtualnej platformy Azure w adres IP należy do zakresu prywatnych adresów IP, zgodnie z definicją w dokumencie RFC 1918 i nie można zamapować za analizę ruchu należących do klienta lokacji lub w usłudze Azure Virtual Network.
 1. Nieznany — nie można zamapować albo adresu IP adresów w przepływy z topologią klienta na platformie Azure oraz w środowisku lokalnym (lokacja).
+1. Niektóre nazwy pól są dołączane za pomocą _s lub _d. Te nie oznaczają, źródłowe i docelowe.
 
 ### <a name="next-steps"></a>Następne kroki
 Aby uzyskać odpowiedzi na często zadawane pytania, zobacz [Traffic analytics — często zadawane pytania](traffic-analytics-faq.md) Aby wyświetlić szczegółowe informacje o funkcjach, zobacz [dokumentacji analizy ruchu](traffic-analytics.md)

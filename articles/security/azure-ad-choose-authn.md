@@ -9,12 +9,12 @@ ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: 1f950841946b65d618c7335ea3d8d42993a89481
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 773d4dd28da3165261d75e4f800750c1f54377d0
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58805265"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64702302"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Wybierz metodę uwierzytelniania odpowiednie dla Twojego rozwiązania tożsamości hybrydowej usługi Azure Active Directory 
 
@@ -49,7 +49,7 @@ Usługa Azure AD obsługuje następujące metody uwierzytelniania dla hybrydowyc
 ### <a name="cloud-authentication"></a>Uwierzytelnianie w chmurze
 W przypadku wybrania tej metody uwierzytelniania, usługi Azure AD obsługuje proces logowania użytkowników. Powiązane z bezproblemowego logowania jednokrotnego (SSO), użytkownicy mogą się logować do aplikacji w chmurze bez konieczności ponownego wprowadzania poświadczeń. Za pomocą uwierzytelniania w chmurze można wybrać jeden z dwóch opcji: 
 
-**Synchronizacja skrótów haseł w usłudze Azure AD**. Najprostszym sposobem, aby włączyć uwierzytelnianie dla obiektów katalogu lokalnego, w usłudze Azure AD. Użytkownicy mogą używać tej samej nazwy użytkownika i hasło, którego używają lokalnie bez konieczności wdrażania jakiejkolwiek dodatkowej infrastruktury. Niektóre funkcje premium usługi Azure AD, takie jak ochrona tożsamości wymagają synchronizacji skrótów haseł dla niezależnie od tego, którą metodę uwierzytelniania wybierz.
+**Synchronizacja skrótów haseł w usłudze Azure AD**. Najprostszym sposobem, aby włączyć uwierzytelnianie dla obiektów katalogu lokalnego, w usłudze Azure AD. Użytkownicy mogą używać tej samej nazwy użytkownika i hasło, którego używają lokalnie bez konieczności wdrażania jakiejkolwiek dodatkowej infrastruktury. Niektóre funkcje premium usługi Azure AD Identity Protection, takich jak i [usług domenowych Azure AD](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-password-sync), wymagają synchronizacji skrótów haseł, niezależnie od tego, którą metodę uwierzytelniania wybierz.
 
 > [!NOTE] 
 > Hasła nigdy nie są przechowywane w postaci zwykłego tekstu lub szyfrowane przy użyciu algorytmu odwracalnego w usłudze Azure AD. Aby uzyskać więcej informacji na temat procesu rzeczywistej synchronizacji skrótów haseł, zobacz [Implementowanie synchronizacji skrótów haseł z usługą Azure AD Connect sync](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization). 
@@ -92,7 +92,7 @@ Szczegółowe informacje dotyczące decyzji pytania:
 
 * **Środowisko użytkownika**. Aby poprawić środowisko logowania użytkowników, należy wdrożyć bezproblemowe logowanie Jednokrotne za pomocą synchronizacji skrótów haseł. Bezproblemowe logowanie Jednokrotne eliminuje niepotrzebne monitów, gdy użytkownicy są zalogowani.
 
-* **Zaawansowane scenariusze**. Jeśli chce się organizacji jest możliwość użycia szczegółowych informacji z tożsamości za pomocą usługi Azure AD Identity Protection raporty w usłudze Azure AD Premium P2. Przykładem jest raport ujawnione poświadczenia. Ma Windows Hello dla firm [konkretne wymagania w sytuacji, gdy używasz synchronizacji skrótów haseł](https://docs.microsoft.com/windows/access-protection/hello-for-business/hello-identity-verification). 
+* **Zaawansowane scenariusze**. Jeśli chce się organizacji jest możliwość użycia szczegółowych informacji z tożsamości za pomocą usługi Azure AD Identity Protection raporty w usłudze Azure AD Premium P2. Przykładem jest raport ujawnione poświadczenia. Ma Windows Hello dla firm [konkretne wymagania w sytuacji, gdy używasz synchronizacji skrótów haseł](https://docs.microsoft.com/windows/access-protection/hello-for-business/hello-identity-verification). [Usługi domenowe Azure AD](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-password-sync) wymagają synchronizacji skrótów haseł aprowizacja użytkowników przy użyciu poświadczeń firmowych w domenie zarządzanej.
 
     Organizacje, które wymagają uwierzytelniania wieloskładnikowego za pomocą synchronizacji skrótów haseł, należy użyć uwierzytelniania wieloskładnikowego w usłudze Azure AD. Organizacje, nie można używać innych firm lub lokalne metod uwierzytelniania wieloskładnikowego.
 

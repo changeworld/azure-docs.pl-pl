@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/01/2019
 ms.author: willzhan
-ms.openlocfilehash: 9e29b08da35b9fd2f479f1d4e3b0d89ed881344b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d3ff97dc86ea6932ba51a4a30e53edf1082d5305
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60326437"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937481"
 ---
 # <a name="offline-playready-streaming-for-windows-10"></a>PlayReady w trybie offline, przesyłania strumieniowego dla systemu Windows 10
 
@@ -32,9 +32,9 @@ Usługa Azure Media Services obsługuje pobieranie/odtwarzania w trybie offline 
 
 W tej sekcji zawiera podstawowe informacje dotyczące odtwarzania w trybie offline, szczególnie Dlaczego:
 
-* W niektórych krajach jest nadal ograniczona dostępność internetowych i/lub przepustowości. Użytkownicy mogą zdecydować się na pobieranie najpierw, aby móc obejrzeć zawartość w tyle wysokiej rozdzielczości dla środowiska oglądania zadowalające. W tym przypadku częściej, problem nie jest dostępność sieci, lecz jest ograniczona przepustowość sieci. Dostawców OTT/OVP prośbę o pomocy technicznej w trybie offline.
+* W niektórych krajach/regionach jest nadal ograniczona dostępność internetowych i/lub przepustowości. Użytkownicy mogą zdecydować się na pobieranie najpierw, aby móc obejrzeć zawartość w tyle wysokiej rozdzielczości dla środowiska oglądania zadowalające. W tym przypadku częściej, problem nie jest dostępność sieci, lecz jest ograniczona przepustowość sieci. Dostawców OTT/OVP prośbę o pomocy technicznej w trybie offline.
 * Ujawnione podczas konferencji akcjonariuszy Netflix 2016 K3, pobierania zawartości jest "strony Żądana funkcja" i "się otwarty do niego" powiedział przez Reed Hastings, Dyrektor Generalny firmy Netflix.
-* Niektórzy dostawcy zawartości może nie zezwalaj na dostarczanie licencji DRM poza obramowania kraju. Jeśli użytkownik musi przyjechać zagranicy i nadal chce obejrzeć zawartość, jest konieczne pobierania w trybie offline.
+* Niektórzy dostawcy zawartości może nie zezwalaj na dostarczanie licencji DRM poza krawędź kraj/region. Jeśli użytkownik musi przyjechać zagranicy i nadal chce obejrzeć zawartość, jest konieczne pobierania w trybie offline.
  
 Wyzwaniem, któremu możemy twarzy we wdrażaniu w trybie offline jest następująca:
 

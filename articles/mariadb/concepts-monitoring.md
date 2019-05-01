@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 11/10/2018
-ms.openlocfilehash: f34e32b9bda83ac1185d0c7b7dcaaaa7b47161a1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 04/29/2019
+ms.openlocfilehash: babe2ac55953940370daa0731463ed6ed8988502
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60332810"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925923"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>Monitorowanie usługi Azure Database dla serwera MariaDB
 Dane dotyczące serwerów monitorowania ułatwia rozwiązywanie problemów i zoptymalizować dla obciążenia. Usługa Azure Database dla serwera MariaDB oferuje różne metryki, które zapewniają wgląd w zachowania serwera.
@@ -41,7 +41,7 @@ Te metryki są dostępne dla usługi Azure Database dla serwera MariaDB:
 |network_bytes_ingress|Sieć — wejście|Bajty|Sieć w różnych aktywnych połączeń.|
 
 ## <a name="server-logs"></a>Dzienniki serwera
-Można włączyć wolnych zapytań rejestrowania na serwerze. Aby dowiedzieć się więcej na temat rejestrowania, odwiedź stronę [dzienniki serwera](concepts-server-logs.md) strony.
+Można włączyć wolnych zapytań rejestrowania na serwerze. Te dzienniki są również dostępne dzienniki diagnostyczne platformy Azure w dzienniki usługi Azure Monitor, usługa Event Hubs i konta magazynu. Aby dowiedzieć się więcej na temat rejestrowania, odwiedź stronę [dzienniki serwera](concepts-server-logs.md) strony.
 
 ## <a name="next-steps"></a>Kolejne kroki
 - Aby uzyskać więcej informacji na temat sposobu uzyskania dostępu i eksportowanie metryk przy użyciu witryny Azure portal, interfejsu API REST lub interfejsu wiersza polecenia, zobacz [Przegląd metryk usługi Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md).

@@ -2,24 +2,17 @@
 title: Portal Azure Marketplace i AppSource usługi doradcze
 description: W tym artykule opisano kryteria kwalifikacyjne i publikowania wymagania dla nowych ofert usług doradczych w witrynie Azure Marketplace.
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: yijenj
-manager: nuno costa
-editor: ''
-ms.assetid: e8d228c8-f9e8-4a80-9319-7b94d41c43a6
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
-ms.openlocfilehash: fbaa89140033ee3b07017370e31e69601aa298db
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: e13111eb241c7734e25a28fcaeea55b1c70bc267
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62121135"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938306"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Usługi konsultingowe dla witryny Azure Marketplace i AppSource
 Usługi w portalu Azure Marketplace i AppSource doradcze zapewnia partnerów firmy Microsoft, cel połączenia klientów z usługami do obsługi i rozszerzać ich korzystanie z platformy Azure i celów biznesowych. 
@@ -48,7 +41,7 @@ Oferty usługi, które są oparte na Microsoft Dynamics 365, Office 365 i Power 
 > [!TIP]
 > Aby opublikować w sklepie Azure Marketplace, wprowadzisz zaznacz to pole wyboru, wybierając pozycję "Azure" z menu rozwijanego "Podstawowy produkt" w portalu Cloud Partner. Aby opublikować w usłudze AppSource, użytkownik udostępni zaznacz to pole wyboru, wybierając pozycję "Dynamics 365", "Power BI" lub "Power Apps" z menu rozwijanego "Podstawowy produkt" w portalu Cloud Partner.
 
-## <a name="eligible-partners-and-supported-countries"></a>Uprawnieni partnerzy i obsługiwane kraje
+## <a name="eligible-partners-and-supported-countriesregions"></a>Uprawnieni partnerzy i obsługiwane kraje/regiony
 
 Partnerzy muszą mieć **kompetencji silver lub gold** w obszarze istotne dla ich usługi. 
 
@@ -74,9 +67,9 @@ Partnerzy muszą mieć **kompetencji silver lub gold** w obszarze istotne dla ic
 <b> Aby uzyskać więcej informacji, zobacz [kompetencji za pośrednictwem sieci Microsoft Partner Network](https://partner.microsoft.com/membership/competencies). </b>
  
 
-**Partnerów SI mogą przesyłać oferty usług doradczych w przypadku następujących krajów 18**
+**Partnerów SI mogą przesyłać oferty usługi konsultingowe dla następujących krajach/regionach 18**
 
-|Wybranych krajach |   |   |   |
+|Kwalifikujące się kraje/regiony |   |   |   |
 |---------|----------|----------|----------|
 |Australia |Francja  |     Meksyk          |Hiszpania       |
 |Belgia   |Niemcy |     Holandia     |Szwecja       |
@@ -84,7 +77,7 @@ Partnerzy muszą mieć **kompetencji silver lub gold** w obszarze istotne dla ic
 |Dania   |Włochy   |     Norwegia          |Stany Zjednoczone |
 |Finlandia   |Japonia   |     Polska          
 
-Uruchamianie usługi doradcze zaczną na żywo w określonym regionie geograficznym. Pierwsze uruchomienie będzie: Stanów Zjednoczonych, Kanadzie, Zjednoczonym Królestwie i Australii. Katalogi dla innych krajów zostanie umieszczona na żywo po kilku istotnych i atrakcyjne wybór ofert usług zostały przesłane przez partnerów i zatwierdzone przez firmę Microsoft.
+Uruchamianie usługi doradcze zaczną na żywo w określonym regionie geograficznym. Pierwsze uruchomienie będzie: Stanów Zjednoczonych, Kanadzie, Zjednoczonym Królestwie i Australii. Katalogi dla innych krajach/regionach zaczną na żywo po kilku istotnych i atrakcyjne wybór ofert usług zostały przesłane przez partnerów i zatwierdzone przez firmę Microsoft.
 
 ## <a name="how-to-register-for-consulting-services-in-azure-marketplace-and-appsource"></a>Jak zarejestrować dla usługi w portalu Azure Marketplace i AppSource doradcze
 Rozpocznij od [rejestrowanie](https://azuremarketplace.microsoft.com/sell/signup) danych firmowych w portalu marketplace. Wydawcy mogą odwoływać się do [zostać wydawcą w portalu Marketplace](https://docs.microsoft.com/azure/marketplace/become-publisher), aby uzyskać pełną listę wymagań dotyczących rejestracji. 
@@ -124,7 +117,7 @@ Wyświetlanie listy usług doradczych dotyczących oferty w portalu Azure Market
 3. **Prześlij**: Podaj wymagane informacje, który znajduje się w instrukcji. Zawartość i wszystkie materiały pomocnicze musi zostać przesłany w języku angielskim. 
 4. **Przegląd**: Nasz zespół marketingu i redakcyjnych monitoruje swoje zgłoszenie i optymalizuje je dla czytelności, gramatyka i efektywność. 
 5. **Przemieszczania**: Przesłane dane są przygotowywane do zapoznania się z nimi. 
-6. **Publikowanie**: Gdy klient i firma Microsoft jest zadowalająca zawartości przejściowej, Twoja lista jest gotowa do aktywowania w portalu marketplace. Data gotowej do pracy z listy, zależy od kraju, który jest określony w swojej ofercie. Jeśli katalog dla wybranego kraju działa już na portalu Azure Marketplace lub w usłudze AppSource, Twoja lista pojawi się w ciągu kilku godzin. W przeciwnym razie listę pojawi się jak najszybciej wykazu przechodzi na żywo.
+6. **Publikowanie**: Gdy klient i firma Microsoft jest zadowalająca zawartości przejściowej, Twoja lista jest gotowa do aktywowania w portalu marketplace. Data gotowej do pracy Twojego listę zależy od kraju/regionu, który jest określony w swojej ofercie. Jeśli katalog dla wybranego kraju/regionu jest już na żywo w witrynie Azure Marketplace i AppSource, Twoja lista pojawi się w ciągu kilku godzin. W przeciwnym razie listę pojawi się jak najszybciej wykazu przechodzi na żywo.
 
 ## <a name="offer-listings-and-content-review-criteria"></a>Kryteria przeglądu zawartości i ofert
 Oferty musi być jednym z następujących pięć typów usługi (możesz wyświetlić listę więcej niż jedną): 

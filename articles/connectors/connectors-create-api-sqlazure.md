@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 29d53c7fbd26d3c8e2356ce82ff25c7e1b165728
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 998fcba50636cd92b14bdbe1633c2548e84a6bfc
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60541159"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64696417"
 ---
 # <a name="connect-to-sql-server-or-azure-sql-database-from-azure-logic-apps"></a>Nawiązywanie połączenia programu SQL Server lub usługi Azure SQL Database z usługi Azure Logic Apps
 
@@ -116,23 +116,26 @@ W usłudze Azure Logic Apps [akcji](../logic-apps/logic-apps-overview.md#logic-a
 
 [!INCLUDE [Create a connection to SQL Server or Azure SQL Database](../../includes/connectors-create-api-sqlazure.md)]
 
-## <a name="process-data-in-bulk"></a>Przetwarzanie danych w trybie zbiorczym
+## <a name="handle-bulk-data"></a>Dojście do zbiorczego danych
 
-Podczas pracy z zestawów wyników tak duża, że łącznik nie zwraca wszystkie wyniki, w tym samym czasie lub mają lepszą kontrolę nad rozmiarem i struktury dla zestawów wyników, możesz użyć *dzielenia na strony*, który pomaga zarządzać takimi zasobami wyniki w postaci mniejszych zestawów. 
+Czasami trzeba pracować tak duża, że łącznik nie zwraca wszystkie wyniki, w tym samym czasie lub mają lepszą kontrolę nad rozmiarem i struktury dla zestawów wyników zestawów wyników. Oto kilka sposobów obsługi takich dużych zestawów wyników:
 
-[!INCLUDE [Set up pagination for results exceeding default page size](../../includes/connectors-pagination-bulk-data-transfer.md)]
+* Aby ułatwić zarządzanie wyniki w postaci mniejszych zestawów, należy włączyć funkcję *dzielenia na strony*. Aby uzyskać więcej informacji, zobacz [uzyskać dane zbiorcze, rekordy i elementy za pomocą dzielenia na strony](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md).
 
-### <a name="create-a-stored-procedure"></a>Utwórz procedurę składowaną
+* Utwórz procedurę składowaną, który organizuje wyniki w żądany sposób.
 
-Podczas pobierania lub wstawianie wiele wierszy, aplikacja logiki może wykonać iterację te elementy przy użyciu [ *pętlą until* ](../logic-apps/logic-apps-control-flow-loops.md#until-loop) w ramach tych [limity](../logic-apps/logic-apps-limits-and-config.md). Jednak czasami aplikacja logiki ma do pracy z zestawami rekordów tak dużych, takich jak tysięcy lub milionów wierszy, które chcesz zminimalizować koszty dla połączeń z bazą danych. 
+  Podczas pobierania lub wstawianie wiele wierszy, aplikacja logiki może wykonać iterację te wiersze przy użyciu [ *pętlą until* ](../logic-apps/logic-apps-control-flow-loops.md#until-loop) w ramach tych [limity](../logic-apps/logic-apps-limits-and-config.md). 
+  Jednak jeśli Twoja aplikacja logiki ma do pracy z zestawami rekordów tak dużych, na przykład, tysięcy lub milionów wierszy, chcesz zminimalizować koszty wynikające z wywołania do bazy danych.
 
-Zamiast tego można utworzyć <a href="https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine" target="blank"> *procedury składowanej* </a> , w ramach wystąpienia SQL, korzysta z **wybierz - ORDER BY** instrukcję, aby zorganizować wyniki w sposób. To rozwiązanie zapewnia większą kontrolę nad rozmiarem i struktury wyników. Twoja aplikacja logiki wywołuje procedury składowanej przy użyciu łącznika programu SQL Server **wykonaj procedurę składowaną** akcji. 
+  Aby uporządkować wyniki w taki sposób, który chcesz, możesz utworzyć [ *procedury składowanej* ](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine) , w ramach wystąpienia SQL, korzysta z **wybierz - ORDER BY** instrukcji. 
+  To rozwiązanie zapewnia większą kontrolę nad rozmiarem i struktury wyników. 
+  Twoja aplikacja logiki wywołuje procedury składowanej przy użyciu łącznika programu SQL Server **wykonaj procedurę składowaną** akcji.
 
-Aby uzyskać szczegółowe informacje z rozwiązania zobacz następujące artykuły:
+  Aby uzyskać szczegółowe informacje z rozwiązania zobacz następujące artykuły:
 
-* <a href="https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx" target="_blank">Stronicowanie SQL do zbiorczego transferu danych za pomocą aplikacji logiki</a>
+  * [Stronicowanie SQL do zbiorczego transferu danych za pomocą aplikacji logiki](https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx)
 
-* <a href="https://docs.microsoft.com/sql/t-sql/queries/select-order-by-clause-transact-sql" target="_blank">Należy wybrać - ORDER BY — klauzula</a>
+  * [Należy wybrać - ORDER BY — klauzula](https://docs.microsoft.com/sql/t-sql/queries/select-order-by-clause-transact-sql)
 
 ## <a name="connector-specific-details"></a>Szczegóły specyficzne dla łącznika
 

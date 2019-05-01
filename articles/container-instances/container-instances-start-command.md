@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: danlep
-ms.openlocfilehash: 78136a081e52ef3f12d672d01449ce616534462e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: da94a4c79694f511d41e5c8dda8c786fc7049726
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60537653"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64569633"
 ---
 # <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>Ustaw w wierszu polecenia w wystąpieniu kontenera, aby zastąpić domyślne działania wiersza polecenia
 
@@ -24,7 +24,15 @@ Ustawienia, takie jak [zmienne środowiskowe](container-instances-environment-va
 
 * Określa wiersz polecenia, domyślnie *pojedynczego procesu, który uruchamia bez powłokę* w kontenerze. Na przykład wiersza polecenia może uruchomić skrypt w języku Python lub pliku wykonywalnego. 
 
-* Do wykonania wielu poleceń, należy rozpocząć wierszu polecenia, ustawiając środowisko powłoki w systemie operacyjnym kontenera (przykłady: `bin/sh`, `/bin/bash`, `cmd`). Postępuj zgodnie z Konwencji powłoki połączenie kilku poleceń do uruchamiania w sekwencji.
+* Do wykonania wielu poleceń, należy rozpocząć wierszu polecenia, ustawiając środowisko powłoki, który jest obsługiwany w systemie operacyjnym kontenera. Przykłady:
+
+  |System operacyjny  |Domyślnej powłoki  |
+  |---------|---------|
+  |Ubuntu     |   `/bin/bash`      |
+  |Firma Alpine     |   `/bin/sh`      |
+  |Windows     |    `cmd`     |
+
+  Postępuj zgodnie z Konwencji powłoki połączenie kilku poleceń do uruchamiania w sekwencji.
 
 * W zależności od konfiguracji kontenera może być konieczne ustawienie pełną ścieżkę do pliku wykonywalnego wiersza polecenia lub argumentów.
 

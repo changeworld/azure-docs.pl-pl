@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: aschhab
-ms.openlocfilehash: d2aa018566695b5b94cd8a7e64931a8b776b151d
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.openlocfilehash: 65f89e234317c5a17e4443e767528fb9be9a8b72
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63766297"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64687080"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>Migrowanie istniejących standardowych przestrzeni nazw usługi Azure Service Bus w warstwie premium
 Azure Service Bus oferowane wcześniej, przestrzenie nazw tylko w warstwie standardowa. Przestrzenie nazw są konfiguracje wielodostępnych, które są zoptymalizowane pod kątem niskiej przepustowości i środowisk deweloperskich. Warstwa premium oferuje dedykowanych zasobów na przestrzeń nazw przewidywalne opóźnienie i zwiększać przepustowość w stałej cenie. Warstwa premium jest zoptymalizowany pod kątem wysokiej przepływności i środowisk produkcyjnych, które wymagają funkcji przedsiębiorstwa.
@@ -62,7 +62,7 @@ Aby przeprowadzić migrację standardową przestrzeń nazw usługi Service Bus d
    ```
 
     >[!IMPORTANT]
-    > Nazwa po migracji (post_migration_dns_name) będzie służyć do dostępu do starego standardową przestrzeń nazw po migracji. Użyj tego, aby opróżnić kolejek i subskrypcji, a następnie usunąć przestrzeni nazw.
+    > Po przeprowadzeniu migracji/nazwa aliasu (post_migration_dns_name) będzie służyć do dostępu do starego standardową przestrzeń nazw po migracji. Użyj tego, aby opróżnić kolejek i subskrypcji, a następnie usunąć przestrzeni nazw.
 
 1. Sparuj przestrzeni nazw warstwy standardowa i premium, a następnie uruchomić synchronizacji przy użyciu następującego polecenia:
 

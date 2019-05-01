@@ -1,5 +1,5 @@
 ---
-title: Ograniczenia adresów IP klienta - usługi Azure App Service | Dokumentacja firmy Microsoft
+title: Ograniczanie dostępu — usługa Azure App Service | Dokumentacja firmy Microsoft
 description: Sposób ograniczenia dostępu za pomocą usługi Azure App Service
 author: ccompy
 manager: stefsch
@@ -12,59 +12,71 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 07/30/2018
+ms.date: 04/22/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: bb6ab29f02282a394e3f93e41682ceaec5208b75
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 558b67b5b0e1ce4f452ce2ca2e97dd7e785c80b6
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60853281"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64728703"
 ---
-# <a name="azure-app-service-static-access-restrictions"></a>Ograniczenia dostępu statycznych w usłudze Azure App Service #
+# <a name="azure-app-service-access-restrictions"></a>Ograniczenia dostępu do usługi Azure App Service #
 
-Ograniczenia dostępu umożliwiają definiowanie priorytetu, uporządkowane zezwalania/niezezwalania na listę adresów IP, które mogą uzyskiwać dostęp do aplikacji. Lista dozwolonych może zawierać adresów IPv4 i IPv6. W przypadku co najmniej jeden wpis istnieje, a następnie niejawna odmowa, wszystkie, znajdującą się na końcu listy.
+Ograniczenia dostępu umożliwiają definiowanie priorytetu uporządkowane zezwalania/niezezwalania listę kontroli dostępu do sieci do swojej aplikacji. Lista może zawierać adresy IP lub podsieci sieci wirtualnej platformy Azure. W przypadku co najmniej jeden wpis jest następnie niejawny "odmowa wszystkie", które występuje na końcu listy.
 
-Możliwość ograniczenia dostępu działa w przypadku wszystkich obciążeń pracą, które obejmują; hostowana usługa aplikacji aplikacje sieci Web, aplikacje interfejsu API, aplikacje systemu Linux, aplikacji kontenera systemu Linux i funkcje.
+Możliwość ograniczenia dostępu do projektów w programach wszystkie usługi App Service hostowanej pracy ładuje, w tym; aplikacje sieci Web, aplikacje interfejsu API, aplikacje systemu Linux, aplikacji kontenera systemu Linux i funkcje.
 
-Po wysłaniu żądania do aplikacji, adres IP z zostaną ocenione względem listy ograniczeń dostępu. Jeśli adres nie jest dozwolony dostęp na podstawie reguł na liście, w odpowiedzi usługa [HTTP 403](https://en.wikipedia.org/wiki/HTTP_403) kod stanu.
+Po wysłaniu żądania do aplikacji, adres nadawcy zostaną ocenione względem zasady adres IP na liście ograniczeń dostępu. Jeśli adres nadawcy znajduje się w podsieci, który jest skonfigurowany z punktów końcowych usługi dla Microsoft.Web, następnie podsieć źródłowa jest porównywana reguł sieci wirtualnej, na liście ograniczeń dostępu. Jeśli adres nie jest dozwolony dostęp na podstawie reguł na liście, w odpowiedzi usługa [HTTP 403](https://en.wikipedia.org/wiki/HTTP_403) kod stanu.
 
-Możliwość ograniczenia dostępu jest zaimplementowana w ról frontonu usługi App Service, które są nadrzędne hostów procesu roboczego, w której kod jest wykonywany. W związku z tym ograniczenia dostępu są faktycznymi list ACL w sieci.  
+Możliwość ograniczenia dostępu jest zaimplementowana w ról frontonu usługi App Service, które są nadrzędne hostów procesu roboczego, w której kod jest wykonywany. W związku z tym ograniczenia dostępu są faktycznymi list ACL w sieci.
 
-![Przepływ ograniczeń dostępu](media/app-service-ip-restrictions/ip-restrictions-flow.png)
+Możliwość ograniczenia dostępu do aplikacji sieci web z usługą Azure Virtual Network (VNet) jest nazywany [punkty końcowe usługi][serviceendpoints]. Punkty końcowe usługi pozwalają ograniczyć dostęp do usługi wielodostępne z wybranej podsieci. Musi być włączona na zarówno sieci po stronie, a także usługa, która jest włączane przy użyciu. 
 
-Czas możliwość ograniczenia dostępu w portalu była warstwy na podstawie możliwości ipSecurity w usługach IIS. Bieżąca możliwość ograniczenia dostępu jest inny. IpSecurity nadal można skonfigurować w ramach Twojego pliku web.config aplikacji, ale frontonu zasady ograniczeń dostępu na podstawie zostaną zastosowane, zanim cały ruch osiągnie usług IIS.
+![Przepływ ograniczeń dostępu](media/app-service-ip-restrictions/access-restrictions-flow.png)
 
 ## <a name="adding-and-editing-access-restriction-rules-in-the-portal"></a>Dodawanie i edytowanie reguły ograniczenie dostępu w portalu ##
 
 Aby dodać reguły ograniczenie dostępu do aplikacji, użyj menu, aby otworzyć **sieci**>**ograniczenia dostępu** i kliknij pozycję **Konfigurowanie ograniczeń dostępu**
 
-![Opcje sieciowe w usłudze App Service](media/app-service-ip-restrictions/ip-restrictions.png)  
+![Opcje sieciowe w usłudze App Service](media/app-service-ip-restrictions/access-restrictions.png)  
 
 Z poziomu interfejsu użytkownika ograniczenia dostępu możesz przejrzeć listę reguł ograniczenia dostępu zdefiniowane dla twojej aplikacji.
 
-![ograniczenia dostępu do listy](media/app-service-ip-restrictions/ip-restrictions-browse.png)
+![ograniczenia dostępu do listy](media/app-service-ip-restrictions/access-restrictions-browse.png)
 
-Jeśli Twoje reguły zostały skonfigurowane tak jak ten obraz, aplikacja będzie akceptować tylko ruch z 131.107.159.0/24 i odrzucone z dowolnego adresu IP.
+Na liście zostaną wyświetlone wszystkie bieżące ograniczenia, które znajdują się w aplikacji. Jeśli masz ograniczeń sieci wirtualnej w swojej aplikacji, tabeli zostaną wyświetlone, jeśli punkty końcowe usługi są włączone dla Microsoft.Web. Jeśli nie ma ograniczeń zdefiniowanych w aplikacji, aplikacja nie będzie dostępny z dowolnego miejsca.  
 
 Możesz kliknąć **[+] Dodaj** można dodać nowej reguły ograniczeń dostępu. Jeśli dodasz regułę, jego zostanie zaczynają obowiązywać natychmiast. Zasady są wymuszane w kolejności priorytetów, począwszy od najniższej liczbie i przedsiębiorstw. Istnieje niejawna odmowa wszystko, co jest aktywna, po dodaniu jednej reguły.
 
-![Dodaj regułę ograniczeń dostępu](media/app-service-ip-restrictions/ip-restrictions-add.png)
+![Dodaj regułę ograniczeń dostępu do adresów IP](media/app-service-ip-restrictions/access-restrictions-ip-add.png)
 
-Notacja adres IP musi być określona w notacji CIDR dla adresów IPv4 i IPv6. Aby określić dokładny adres, można użyć podobny 1.2.3.4/32 gdzie pierwsze cztery oktety reprezentują adresu IP, a /32 to maski. Notacja IPv4 CIDR dla wszystkich adresów jest 0.0.0.0/0. Aby dowiedzieć się więcej na temat notacji CIDR, możesz przeczytać [Bezklasowego routingu międzydomenowego](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).  
+Podczas tworzenia reguły należy wybrać zezwalania/niezezwalania, a także typ reguły. Wymagane są także zapewnienie, że wartość priorytetu i co to jest ograniczenie dostępu do.  Możesz opcjonalnie dodać nazwę i opis reguły.  
+
+Aby ustawić adres IP na podstawie reguły, wybierz typ protokołu IPv4 lub IPv6. Notacja adres IP musi być określona w notacji CIDR dla adresów IPv4 i IPv6. Aby określić dokładny adres, można użyć podobny 1.2.3.4/32 gdzie pierwsze cztery oktety reprezentują adresu IP, a /32 to maski. Notacja IPv4 CIDR dla wszystkich adresów jest 0.0.0.0/0. Aby dowiedzieć się więcej na temat notacji CIDR, możesz przeczytać [Bezklasowego routingu międzydomenowego](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing). 
+
+![Dodaj regułę ograniczeń dostępu do sieci wirtualnej](media/app-service-ip-restrictions/access-restrictions-vnet-add.png)
+
+Aby ograniczyć dostęp do wybranej podsieci, wybierz typ sieci wirtualnej. Poniżej można wybrać subskrypcję, sieć wirtualną i podsieć, którą chcesz udzielić lub odmówić dostępu za pomocą. Jeśli punkty końcowe usługi nie są już włączone za pomocą Microsoft.Web dla podsieci, które wybrano, jego zostaną automatycznie włączone dla Ciebie, jeśli nie zaznaczysz pole zapytaniem w tym celu. Sytuacja, w którym chcesz ją włączyć w aplikacji, ale nie podsieci jest powiązana z dużym stopniu, jeśli masz uprawnienia, aby włączyć punkty końcowe usługi w podsieci, czy nie. Jeśli potrzebujesz uzyskać osoby, aby włączyć punkty końcowe usługi w podsieci można zaznacz pole wyboru i aplikacji skonfigurowany dla punktów końcowych usługi w oczekiwaniu go później włączane w podsieci. 
 
 Kliknięcie dowolnego wiersza, aby edytować istniejącą regułę ograniczeń dostępu. Zmiany zaczynają obowiązywać, natychmiast łącznie ze zmianami w kolejności priorytetu.
 
-![Edytuj zasady ograniczeń dostępu](media/app-service-ip-restrictions/ip-restrictions-edit.png)
+![Edytuj zasady ograniczeń dostępu](media/app-service-ip-restrictions/access-restrictions-ip-edit.png)
+
+Podczas edytowania reguły nie można zmienić typu między reguła adresów IP i reguły sieci wirtualnej. 
+
+![Edytuj zasady ograniczeń dostępu](media/app-service-ip-restrictions/access-restrictions-vnet-edit.png)
 
 Aby usunąć regułę, kliknij przycisk **...**  na swoje zasady, a następnie kliknij **Usuń**.
 
-![Usuń regułę ograniczeń dostępu](media/app-service-ip-restrictions/ip-restrictions-delete.png)
+![Usuń regułę ograniczeń dostępu](media/app-service-ip-restrictions/access-restrictions-delete.png)
 
-Można również ograniczyć dostęp do wdrożenia, w następnej karcie. Do Dodawanie/edytowanie/usuwanie każdej reguły, postępuj zgodnie z tego samego kroku opisanych powyżej.
+### <a name="scm-site"></a>Witryny SCM 
 
-![ograniczenia dostępu do listy](media/app-service-ip-restrictions/ip-restrictions-scm-browse.png)
+Oprócz możliwości kontrolowania dostępu do aplikacji, można również ograniczyć dostęp do witryny scm, używanych przez aplikację. Witryny scm jest, narzędzie web deploy punktu końcowego, a także do konsoli Kudu. Oddzielnie można przypisać ograniczenia dostępu do witryny scm z aplikacji lub używać tego samego zestawu dla witryny scm i aplikacji. Jeśli zaznaczysz to pole, aby te same ograniczenia co aplikacja, wszystko jest wygaszony. Jeśli usuniesz zaznaczenie pola wyboru pola są stosowane niezależnie od ustawienia była wcześniej w witryny scm. 
+
+![ograniczenia dostępu do listy](media/app-service-ip-restrictions/access-restrictions-scm-browse.png)
 
 ## <a name="programmatic-manipulation-of-access-restriction-rules"></a>Programowe operowanie zasady ograniczeń dostępu ##
 
@@ -88,6 +100,10 @@ Jest ze składnią pliku JSON dla poprzedniego przykładu:
 
 ## <a name="function-app-ip-restrictions"></a>Ograniczenia adresów IP aplikacji — funkcja
 
-Ograniczenia adresów IP są dostępne dla obu aplikacji funkcji z taką samą funkcjonalność jak planów usługi App Service. Należy pamiętać, że włączenie IP ograniczenia spowoduje wyłączenie edytora kodu portalu żadnych niedozwolonych adresów IP.
+Ograniczenia adresów IP są dostępne dla obu aplikacji funkcji z taką samą funkcjonalność jak planów usługi App Service. Włączenie ograniczeń adresów IP spowoduje wyłączenie edytora kodu portalu żadnych niedozwolonych adresów IP.
 
 [Dowiedz się więcej tutaj](../azure-functions/functions-networking-options.md#inbound-ip-restrictions)
+
+
+<!--Links-->
+[serviceendpoints]: https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview

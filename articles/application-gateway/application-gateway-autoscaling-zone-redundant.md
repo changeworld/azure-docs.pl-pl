@@ -1,37 +1,104 @@
 ---
-title: Skalowanie automatyczne i strefowo nadmiarowe Application Gateway na platformie Azure (publiczna wersja zapoznawcza)
-description: W tym artykule przedstawiono SKU v2 aplikacji na platformie Azure, w tym funkcji skalowania automatycznego i strefowo nadmiarowe.
+title: Skalowanie automatyczne i strefowo nadmiarowe Application Gateway na platformie Azure
+description: W tym artykule przedstawiono Standard_v2 aplikacji platformy Azure i jednostki SKU, WAF_v2, która zawiera funkcje automatycznego skalowania i strefowo nadmiarowe.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 3/6/2019
+ms.date: 4/30/2019
 ms.author: victorh
-ms.openlocfilehash: 95b14a0028134e522206f3595bc3b9ebf9aaf396
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 86693e829ab08c3cb7befc6f0047472e8faa61fa
+ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62128484"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64947209"
 ---
-# <a name="autoscaling-and-zone-redundant-application-gateway-public-preview"></a>Skalowanie automatyczne i brama aplikacji strefowo nadmiarowy (publiczna wersja zapoznawcza)
+# <a name="autoscaling-and-zone-redundant-application-gateway"></a>Skalowanie automatyczne i strefowo nadmiarowe Application Gateway 
 
-Usługa Application Gateway i zapory aplikacji sieci Web (WAF) są teraz dostępne w publicznej wersji zapoznawczej w ramach nowej jednostki SKU v2, oferuje ulepszenia wydajności, która dodaje obsługę krytyczne nowe funkcje, takie jak skalowanie automatyczne, nadmiarowości strefy i obsługę statycznych adresów VIP. Istniejących funkcji w ramach jednostki SKU jest ogólnie dostępna w dalszym ciągu być obsługiwane w nowej jednostki SKU w wersji 2 z pewnymi wyjątkami, wymienione w sekcji znanych ograniczeń polecenia. Nowe jednostki SKU w wersji 2 obejmują następujące ulepszenia:
+Usługa Application Gateway i zapory aplikacji sieci Web (WAF) są również dostępne w obszarze Standard_v2 i WAF_v2 jednostki SKU, która oferuje ulepszenia wydajności i dodaje obsługę krytyczne nowe funkcje, takie jak skalowanie automatyczne, nadmiarowości strefy i obsługę statycznych adresów VIP. Istniejących funkcji w obszarze standardowa i jednostki SKU zapory aplikacji sieci Web w dalszym ciągu być obsługiwane w nowej jednostki SKU w wersji 2 z pewnymi wyjątkami, wymienione w sekcji porównania. 
 
-- **Skalowanie automatyczne**: Usługa Application Gateway i zapory aplikacji sieci Web wdrożenia w ramach jednostki SKU skalowania automatycznego można skalować w górę lub dół zależności od zmieniających się wzorców obciążenia ruchu. Dzięki skalowaniu automatycznemu nie trzeba również wybierać rozmiaru wdrożenia ani liczby wystąpień podczas aprowizowania usługi. Ta jednostka SKU oferuje elastyczność wartość true. W ramach nowej jednostki SKU bramy Application Gateway mogą działać zarówno w stałym pojemności (skalowanie automatyczne wyłączone), jak i w trybie z włączonym skalowaniem automatycznym. Tryb stałych pojemności jest przydatne w scenariuszach ze spójnego i przewidywalnego obciążenia. Tryb skalowania automatycznego jest korzystne w aplikacjach, które Zobacz mnóstwo wariancji w ruchu aplikacji.
+Nowe jednostki SKU w wersji 2 obejmuje następujące ulepszenia:
 
-- **Strefa nadmiarowości**: Wdrożenie usługi Application Gateway lub zapory aplikacji sieci Web może obejmować wielu strefach dostępności, usuwając konieczność do aprowizacji i pokrętła osobnych wystąpień bramy Application Gateway w każdej strefie przy użyciu usługi Traffic Manager. Możesz wybrać jedną strefę lub wieloma strefami wdrożonym wystąpień bramy Application Gateway, dlatego zapewnianie odporności błąd strefy. Pula zaplecza dla aplikacji można rozpowszechniać podobnie w różnych strefach dostępności.
-- **Ulepszenia wydajności**: Skalowanie automatyczne, jednostki SKU oferty maksymalnie 5 X, lepsze SSL offload wydajność w porównaniu z ogólnie dostępnymi jednostkami SKU.
-- **Krótszy czas wdrożenia i zaktualizuj** skalowania automatycznego jednostki SKU zapewnia krótszy czas wdrażania i aktualizacji w porównaniu z ogólnie dostępnymi jednostkami SKU.
-- **Statyczny adres VIP**: Adres VIP bramy aplikacji obsługuje teraz typu statycznego adresu VIP wyłącznie. Daje to gwarancję, że adres VIP skojarzony z usługą application gateway nie zmienia się nawet po ponownym uruchomieniu.
-
-> [!IMPORTANT]
-> Jednostka SKU autoskalowanej i strefowo nadmiarowej bramy aplikacji jest aktualnie w publicznej wersji zapoznawczej. Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+- **Skalowanie automatyczne**: Usługa Application Gateway i zapory aplikacji sieci Web wdrożenia w ramach jednostki SKU skalowania automatycznego można skalować w górę lub dół zależności od zmieniających się wzorców obciążenia ruchu. Dzięki skalowaniu automatycznemu nie trzeba również wybierać rozmiaru wdrożenia ani liczby wystąpień podczas aprowizowania usługi. Ta jednostka SKU oferuje elastyczność wartość true. Standard_v2 i jednostki SKU WAF_v2 usługa Application Gateway mogą działać zarówno w stałym pojemności (skalowanie automatyczne wyłączone), jak i w trybie z włączonym skalowaniem automatycznym. Tryb stałych pojemności jest przydatne w scenariuszach ze spójnego i przewidywalnego obciążenia. Tryb skalowania automatycznego jest korzystne w aplikacjach, które Zobacz wariancja w ruchu aplikacji.
+- **Strefa nadmiarowości**: Usługa Application Gateway lub wdrażania zapory aplikacji sieci Web może obejmować wielu strefach dostępności konieczność aprowizowanie osobnych wystąpień bramy Application Gateway w każdej strefie przy użyciu usługi Traffic Manager. Możesz wybrać jedną strefę lub wieloma strefami wdrożonym wystąpień bramy Application Gateway, dlatego zapewnianie odporności błąd strefy. Pula zaplecza dla aplikacji można rozpowszechniać podobnie w różnych strefach dostępności.
+- **Statyczny adres VIP**: Application gateway w wersji 2 jednostki SKU obsługuje statycznego adresu VIP wpisz wyłącznie. Daje to gwarancję, że adres VIP skojarzony z usługą application gateway nie zmienia się do zarządzania cyklem życia wdrożenia, nawet po ponownym uruchomieniu.
+- **Napisz ponownie nagłówek**: Usługa Application Gateway umożliwia dodać, usunąć lub zaktualizować nagłówki żądania i odpowiedzi HTTP z jednostką SKU v2. Aby uzyskać więcej informacji, zobacz [ponownie zapisuje nagłówki protokołu HTTP z usługą Application Gateway](rewrite-http-headers.md)
+- **Integracji magazynu kluczy (wersja zapoznawcza)**: Brama aplikacji w wersji 2 obsługuje integrację z usługą Key Vault (w publicznej wersji zapoznawczej) dla serwera certyfikatów, które są dołączone do odbiorników obsługujące protokół HTTPS. Aby uzyskać więcej informacji, zobacz [kończenia żądań SSL z certyfikatami usługi Key Vault](key-vault-certs.md).
+- **Usługa Azure Kubernetes Service kontroler danych przychodzących w (wersja zapoznawcza)**: Usługa Application Gateway kontroler danych przychodzących w wersji 2 umożliwia usługi Azure Application Gateway ma być używany jako transferu danych przychodzących dla usługi Azure Kubernetes Service (AKS) nazywany klastrem AKS. Aby uzyskać więcej informacji, zobacz [stronę z dokumentacją dotyczącą](https://azure.github.io/application-gateway-kubernetes-ingress/).
+- **Ulepszenia wydajności**: V2, jednostki SKU oferty maksymalnie 5 X, lepsze SSL offload wydajność w porównaniu z jednostki SKU Standard/zapory aplikacji sieci Web.
+- **Krótszy czas wdrożenia i zaktualizuj** jednostki SKU w wersji 2 oferuje skrócić czas wdrażania i aktualizacji w porównaniu do jednostki SKU Standard/zapory aplikacji sieci Web. Obejmuje to zmian w konfiguracji zapory aplikacji sieci Web.
 
 ![](./media/application-gateway-autoscaling-zone-redundant/application-gateway-autoscaling-zone-redundant.png)
 
+## <a name="supported-regions"></a>Obsługiwane regiony
+
+Standard_v2 i WAF_v2 jednostki SKU jest dostępna w następujących regionach: Północna środkowe stany USA, południowo-środkowe stany USA, zachodnie stany USA, zachodnie stany USA 2, wschodnie stany USA, wschodnie stany USA 2, środkowe stany USA, Europa Północna, Europa Zachodnia, Azja południowo-wschodnia, Francja środkowa, zachodnie Zjednoczone Królestwo, Japonia Wschodnia, Japonia, część zachodnia. Nadchodzące jest obsługa dodatkowych regionów.
+
+## <a name="pricing"></a>Cennik
+
+Z jednostką SKU v2 model rozliczania usług jest wymuszany przez użycie i nie jest już dołączony do wystąpienia liczby i rozmiarów. Cena jednostki SKU v2 ma dwa składniki:
+
+- **Stała cena** — jest to co godzinę (lub niepełna godzina) cenę aprowizowanie Standard_v2 lub WAF_v2 bramy.
+- **Cena jednostki pojemności** — jest to koszt na podstawie użycia, która jest rozliczana oprócz koszt stały. Opłata za jednostkę pojemności jest również obliczane co godzinę lub częściowe co godzinę. Istnieją trzy wymiary do jednostki pojemności — obliczeniowych jednostki, połączeń trwałych i przepływności. Jednostka to miara mocy procesora używane obliczeń. Czynniki wpływające na jednostek obliczeniowych są połączeń TLS na sekundę, ponowne zapisywanie adresów URL obliczeń i przetwarzanie reguł zapory aplikacji sieci Web. Trwałe połączenie jest miarą ustanowionych połączeń TCP do usługi application gateway w danym interwale rozliczeń. Przepływność jest średnia megabitów na sekundę przetwarzanych przez system w danym interwale rozliczeń.
+
+Każda jednostka pojemności składa się z co najwyżej: 1 obliczeniowe o jednostkę lub połączeń trwałych 2500 lub 2.22 przepustowość w MB/s.
+
+Obliczenia wskazówki jednostki:
+
+- **Standard_v2** — każda jednostka obliczeniowa jest w stanie około 50 połączeń na sekundę przy użyciu certyfikatu TLS klucza szyfrowania RSA 2048-bitowych.
+- **WAF_v2** — każdego obliczenia, jednostka jest w stanie około 10 równoczesnych żądań na sekundę dla 70 30% kombinacji ruchu przy użyciu 70% żądań w mniej niż 2 KB GET/POST, a pozostałe wyższy. Zapora aplikacji sieci Web jest nie wpływ na wydajność, rozmiar odpowiedzi obecnie.
+
 > [!NOTE]
-> Skalowanie automatyczne i strefowo nadmiarowe usługa application gateway jednostkę SKU obsługuje teraz [domyślnej funkcji badania kondycji](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#default-health-probe) automatyczne monitorowanie kondycji wszystkich zasobów w puli zaplecza i wyróżnianie tych członków wewnętrznej bazy danych, które są traktowane jako złej kondycji. #Identyfikator sondy kondycji domyślne można automatycznie skonfigurować dla tych zaplecza, dla których nie skonfigurowano żadnej konfiguracji niestandardowej sondy. Aby dowiedzieć się więcej, zobacz [sondy kondycji w usłudze application gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview).
+> Każde wystąpienie aktualnie obsługuje około 10 jednostek pojemności.
+> Liczba żądań, które może obsłużyć jednostek obliczeniowych, zależy od różnych kryteriów, takich jak rozmiar klucza certyfikatu TLS, algorytm wymiany kluczy, ponownego nagłówka, a w przypadku przychodzących rozmiar żądania zapory aplikacji sieci Web. Firma Microsoft zaleca wykonywać testy aplikacji w celu ustalenia liczby żądań według jednostek obliczeniowych. Jednostka obliczeniowa i jednostki pojemności zostanie udostępniona jako metryki przed rozliczeń rozpoczyna się.
+
+**Ceny w wschodnie stany USA**:
+
+|              Nazwa jednostki SKU                             | Stała cena ($/ godz.)  | Cena pojemności ($/ CU-godz.)   |
+| ------------------------------------------------- | ------------------- | ------------------------------- |
+| Standard_v2                                       |    0.20             | 0.0080                          |
+| WAF_v2                                            |    0.36             | 0.0144                          |
+
+[Stronę z cennikiem](https://azure.microsoft.com/en-us/pricing/details/application-gateway/) zostanie zaktualizowana w celu odzwierciedlenia cen regionalnych na 14 maja 2019 r. Rozliczanie jest zaplanowane do uruchomienia w dniu 1 czerwca 2019 r.
+
+**Przykład 1**
+
+Standard_v2 bramy aplikacji był zaopatrzony bez skalowania automatycznego w trybie skalowanie ręczne stałą wydajność pięć wystąpień.
+
+Stała cena = 744(hours) * 0,20 USD = 148.8 $ <br>
+Jednostki pojemności = 744 (godziny) 10 jednostki pojemności dla każdego wystąpienia * pięć wystąpień * $0.008 za godzinę używania jednostki pojemności = 297.6 $
+
+Łączna cena = 148.8 $ + $297.6 = 446.4 $
+
+**Przykład 2**
+
+Standard_v2 Application Gateway jest przygotowany przez jeden miesiąc, a w tym czasie odbierze 25 nowe SSL połączeń na sekundę, średnia 8.88 transferu danych w MB/s. Przy założeniu, że połączenia są krótkie krótkotrwałe, będzie cen:
+
+Stała cena = 744(hours) * 0,20 USD = 148.8 $
+
+Cena jednostki pojemności = 744(hours) * Max (jednostka obliczeniowa 25/50 dla połączeń na sekundę, 8.88/2.22 pojemność jednostki przepływności) * $0.008 = 744 * 4 * 0.008 = 23.81 $
+
+Łączna cena = $148. 23.81 8 + = $172.61
+
+**Przykład 3**
+
+WAF_v2 bramy aplikacji jest przygotowany przez jeden miesiąc, a w tym czasie odbierze 25 nowe SSL połączeń na sekundę, średnia 8.88 transferu danych w MB/s i jest 80 żądań na sekundę. Przy założeniu, że połączenia są krótkie krótkotrwałe, a cen obliczania jednostki obliczeniowej dla aplikacji obsługiwane przez 10 RPS poszczególnych jednostek obliczeniowych, będzie:
+
+Stała cena = 744(hours) * $0.36 = 267.84 $
+
+Cena jednostki pojemności = 744(hours) * Max (Max(25/50 for connections/sec, 80/10 WAF RPS) jednostek obliczeniowych, 8.88/2.22 pojemność jednostki przepływności) * $0.0144 = 744 * 8 * 0.0144 = 85.71 $
+
+Łączna cena = 267.84 $ + $85.71 = 353.55 $
+
+[Stronę z cennikiem](https://azure.microsoft.com/en-us/pricing/details/application-gateway/) zostanie zaktualizowana w celu odzwierciedlenia cen regionalnych na 14 maja 2019 r. Rozliczanie jest zaplanowane do uruchomienia w dniu 1 czerwca 2019 r.
+
+## <a name="scaling-application-gateway-and-waf-v2"></a>Skalowanie usługa Application Gateway i zapory aplikacji sieci Web w wersji 2
+
+Usługa Application Gateway i zapory aplikacji sieci Web można skonfigurować do skalowania w dwóch trybach:
+
+- **Skalowanie automatyczne** — z włączonym skalowaniem automatycznym bramy aplikacji i jednostki SKU v2 zapory aplikacji sieci Web będzie skalować w górę lub w dół w zależności od wymagań ruchu aplikacji. W tym trybie oferuje lepsze elastyczność aplikacji i eliminuje potrzebę odgadnięcia licznik rozmiaru lub wystąpienia bramy aplikacji. Ten tryb umożliwia obniżenie kosztów przez nie wymaga, by było uruchamiane bram szczytu aprowizowana pojemność dla przewidywanego ruchu maksymalnego obciążenia. Klienci muszą określać minimalną i opcjonalnie maksymalną liczbą wystąpień. Wydajność minimalną gwarantuje, że usługa Application Gateway i zapory aplikacji sieci Web w wersji 2 nie spadnie poniżej minimalnej liczby wystąpień określony nawet w przypadku braku ruchu. Użytkownik jest naliczana dla tej minimalnej pojemności nawet w przypadku braku dowolnego ruchu. Możesz również opcjonalnie określić maksymalną liczbę wystąpień, dzięki któremu Application Gateway nie jest skalowany po przekroczeniu określonej liczby wystąpień. Będą nadal rozliczane według ilości ruch przez bramę. Liczbę wystąpień może należeć do zakresu od 0 do 125. Jeśli nie zostanie określony, domyślna wartość maksymalna liczba wystąpień to 20.
+- **Ręczne** — może też trybu ręcznego, gdy brama zostanie przeprowadzi automatycznego skalowania. W tym trybie Jeśli więcej ruch jest wysyłany niż jakie Application Gateway i zapory aplikacji sieci Web jest w stanie obsługi, może to spowodować utratę ruchu. W trybie ręczne określanie liczby wystąpień jest obowiązkowy. Liczba wystąpień może się różnić od 1 do 125 wystąpień.
 
 ## <a name="feature-comparison-between-v1-sku-and-v2-sku"></a>Porównanie funkcji jednostki SKU v1 i v2 jednostki SKU
 
@@ -41,7 +108,10 @@ W poniższej tabeli porównano funkcje dostępne w każdej jednostki SKU.
 | ------------------------------------------------- | -------- | -------- |
 | Skalowanie automatyczne                                       |          | &#x2713; |
 | Nadmiarowości strefy                                   |          | &#x2713; |
-| &nbsp;Statyczny adres VIP&nbsp;&nbsp;                      |          | &#x2713; |
+| Statyczny adres VIP                                        |          | &#x2713; |
+| Usługa Azure kontrolera danych przychodzących rozwiązania Kubernetes Service (AKS) |          | &#x2713; |
+| Integracja magazynu kluczy Azure                       |          | &#x2713; |
+| Ponownie zapisuje nagłówki HTTP (S)                           |          | &#x2713; |
 | Routing oparty na adresach URL                                 | &#x2713; | &#x2713; |
 | Hostowanie wielu witryn                             | &#x2713; | &#x2713; |
 | Przekierowywanie ruchu                               | &#x2713; | &#x2713; |
@@ -50,35 +120,30 @@ W poniższej tabeli porównano funkcje dostępne w każdej jednostki SKU.
 | End-to-end szyfrowania SSL                         | &#x2713; | &#x2713; |
 | Koligacja sesji                                  | &#x2713; | &#x2713; |
 | Niestandardowe strony błędów                                | &#x2713; | &#x2713; |
-| Ponownie zapisuje nagłówki HTTP (S)                           |          | &#x2713; |
 | Obsługa protokołu WebSocket                                 | &#x2713; | &#x2713; |
 | Obsługa protokołu HTTP/2                                    | &#x2713; | &#x2713; |
 | Opróżnianie połączeń                               | &#x2713; | &#x2713; |
-| Usługa Azure kontrolera danych przychodzących rozwiązania Kubernetes Service (AKS) |          | &#x2713; |
 
-## <a name="supported-regions"></a>Obsługiwane regiony
+> [!NOTE]
+> Skalowanie automatyczne i strefowo nadmiarowe usługa application gateway jednostkę SKU obsługuje teraz [sondy kondycji domyślne](application-gateway-probe-overview.md#default-health-probe) automatyczne monitorowanie kondycji wszystkich zasobów w puli zaplecza i wyróżnianie tych członków wewnętrznej bazy danych, które są traktowane jako złej kondycji. #Identyfikator sondy kondycji domyślne można automatycznie skonfigurować dla tych zaplecza, dla których nie skonfigurowano żadnej konfiguracji niestandardowej sondy. Aby dowiedzieć się więcej, zobacz [sondy kondycji w usłudze application gateway](application-gateway-probe-overview.md).
 
-Automatyczne skalowanie jednostek SKU jest dostępna w następujących regionach: Północna środkowe stany USA, południowo-środkowe stany USA, zachodnie stany USA, zachodnie stany USA 2, wschodnie stany USA, wschodnie stany USA 2, środkowe stany USA, Europa Północna, Europa Zachodnia, Azja południowo-wschodnia, Francja środkowa, zachodnie Zjednoczone Królestwo, Japonia Wschodnia, Japonia, część zachodnia.
+## <a name="differences-with-v1-sku"></a>Różnice z jednostką SKU v1
 
-## <a name="pricing"></a>Cennik
-
-W trakcie okresu zapoznawczego nie ma opłat. Opłaty naliczane są za zasobów innych niż bramy aplikacji, takich jak usługi Key Vault, maszyny wirtualne i tak dalej.
-
-## <a name="known-issues-and-limitations"></a>Znane problemy i ograniczenia
-
-|Problem|Szczegóły|
+|Różnica|Szczegóły|
 |--|--|
 |Certyfikat uwierzytelniania|Nieobsługiwane.<br>Aby uzyskać więcej informacji, zobacz [omówienie kompleksowej usługi SSL z usługą Application Gateway](ssl-overview.md#end-to-end-ssl-with-the-v2-sku).|
 |Mieszanie Standard_v2 i standardowa usługa Application Gateway w tej samej podsieci|Nieobsługiwane|
 |Zdefiniowaną przez użytkownika (UDR) w podsieci bramy aplikacji|Nieobsługiwane|
 |Sieciowa grupa zabezpieczeń dla zakresu portów dla ruchu przychodzącego| -65200 do 65535, aby uzyskać Standard_v2 jednostki SKU<br>-65503 do 65534 dla standardowej jednostki SKU.<br>Aby uzyskać więcej informacji, zobacz [— często zadawane pytania](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet).|
 |Dzienniki wydajności w usłudze Diagnostyka Azure|Nieobsługiwane.<br>Metryki platformy Azure powinna być używana.|
-|Rozliczenia|Nie ma obecnie nie rozliczeń.|
+|Rozliczenia|Rozliczenia zaplanowane do uruchomienia w dniu 1 czerwca 2019 r.|
 |Tryb FIPS|Te nie są obecnie obsługiwane.|
 |Trybie tylko do wewnętrznego modułu równoważenia obciążenia|To nie jest obecnie obsługiwane. Publiczne i tryb wewnętrznego modułu równoważenia obciążenia ze sobą jest obsługiwany.|
-|Sieć, obserwator integracji|Nie są obsługiwane w publicznej wersji zapoznawczej.|
+|Sieć, obserwator integracji|Nieobsługiwane.|
 
 ## <a name="next-steps"></a>Kolejne kroki
+
+- [Szybki start: Ruchem internetowym bezpośredniego przy użyciu usługi Azure Application Gateway — witryna Azure portal](quick-create-portal.md)
 - [Tworzenie automatycznego skalowania, strefa nadmiarowe usługa application gateway z zarezerwowanym wirtualnym adresem IP przy użyciu programu Azure PowerShell](tutorial-autoscale-ps.md)
 - Dowiedz się więcej o [Application Gateway](overview.md).
 - Dowiedz się więcej o [zapory usługi Azure](../firewall/overview.md).

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: dc44cfbd24bd04caeede03dcbcfc60da06f61135
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 99e043adeac9a43432fb1eba85527b561c477354
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60921771"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64570555"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Przewodnik dla początkujących deweloperów platformy Azure
 
@@ -199,7 +199,7 @@ Azure to platforma chmury globalnej, która jest ogólnie dostępna w wielu regi
 
 ### <a name="choose-the-best-region-for-your-application-and-data"></a>Wybierz region najlepsze dla aplikacji i danych
 
-Jedną z zalet korzystania z systemu Azure jest wdrożenie aplikacji w różnych centrach danych na całym świecie. Region, który wybierzesz może mieć wpływ na wydajność aplikacji. Na przykład jest lepszym rozwiązaniem wybierz region, który jest bliżej większość klientami w celu zmniejszenia opóźnień w żądaniach sieci. Można również wybrać swój region, aby spełnić wymagania prawne dystrybucji aplikacji w przypadku pewnych krajów. Zawsze jest najlepszym rozwiązaniem do przechowywania danych aplikacji, w tym samym centrum danych lub w centrum danych jako niemal jako możliwe do centrum danych, który jest hostem aplikacji.
+Jedną z zalet korzystania z systemu Azure jest wdrożenie aplikacji w różnych centrach danych na całym świecie. Region, który wybierzesz może mieć wpływ na wydajność aplikacji. Na przykład jest lepszym rozwiązaniem wybierz region, który jest bliżej większość klientami w celu zmniejszenia opóźnień w żądaniach sieci. Można również wybrać swój region, aby spełnić wymagania prawne dystrybucji aplikacji w niektórych krajach/regionach. Zawsze jest najlepszym rozwiązaniem do przechowywania danych aplikacji, w tym samym centrum danych lub w centrum danych jako niemal jako możliwe do centrum danych, który jest hostem aplikacji.
 
 ### <a name="multi-region-apps"></a>Aplikacje dla wielu regionów
 

@@ -1,25 +1,19 @@
 ---
-title: Instalowanie aplikacji w portalu wydawców | Dokumentacja firmy Microsoft
+title: Instalowanie aplikacji w portalu wydawców
 description: Instrukcje w sposób konfigurowania aplikacji w portalu wydawców w chmurze.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
 manager: Ricardo.Villalobos
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 8ac0fbb1c62e4162e1c4ad040365a16d055e4552
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: pabutler
+ms.openlocfilehash: 6da80bd3b5fe487a44400f4f3c21e8fa49da75d4
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60483232"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64943556"
 ---
 # <a name="setup-your-application-in-the-publishing-portal"></a>Instalowanie aplikacji w portalu wydawców
 
@@ -88,7 +82,7 @@ Oto wyjaśnienia dla tych pól:
 
 ### <a name="crm-package-availability"></a>Dostępność pakietu CRM
 
-W tej sekcji należy wybrać jakie regiony CRM, pakiet zostanie udostępniona w celu. Aby uzyskać informacje, na którym regionach obsługiwać które kraje zobacz łącza: [https://o365datacentermap.azurewebsites.net/](https://o365datacentermap.azurewebsites.net/)
+W tej sekcji należy wybrać jakie regiony CRM, pakiet zostanie udostępniona w celu. Aby uzyskać informacje na które CRM regiony obsługi którego kraje/regiony, zobacz łącze: [https://o365datacentermap.azurewebsites.net/](https://o365datacentermap.azurewebsites.net/)
 
 Uwaga: Wdrażanie w Niemczech "Suwerennych i chmura rządowa USA" suwerennych wymaga uprawnień specjalnych i sprawdzanie poprawności podczas certyfikacji
 

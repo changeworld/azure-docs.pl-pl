@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/16/2017
 ms.author: alkohli
-ms.openlocfilehash: ff2ea89c257a4941c801f3056450e005a9b37039
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e290feb278a1cddf1cfecfcb66458d8290ec122a
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60628904"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64943591"
 ---
 # <a name="available-regions-for-your-storsimple"></a>Dostępne regiony dla usługi StorSimple
 
@@ -32,7 +32,7 @@ Wybór z regionu platformy Azure jest bardzo ważne, i wybranego regionu jest za
 Dla rozwiązania StorSimple wybranego regionu specjalnie zależy od następujących czynników:
 
 - Regiony, w których usługa Menedżer urządzeń StorSimple jest dostępna.
-- Kraje, w których jest dostępna fizycznych StorSimple, w chmurze lub na urządzeniu wirtualnym.
+- Kraje/regiony, których fizycznych StorSimple, w chmurze lub na urządzenie wirtualne jest dostępna.
 - Regiony, do których kont magazynu, w których są przechowywane dane usługi StorSimple powinien być zlokalizowany w celu uzyskania optymalnej wydajności.
 
 W tym samouczku opisano dostępność regionów dla usługi Menedżer urządzeń StorSimple, fizycznego w środowisku lokalnym i urządzenia w chmurze. Informacje zawarte w tym artykule dotyczy StorSimple 8000 i urządzeń z serii 1200.
@@ -61,36 +61,36 @@ Jeśli używasz urządzenia StorSimple w chmurze, następnie zaleca się że us�
 
 ## <a name="availability-of-storsimple-device"></a>Dostępność urządzenia StorSimple
 
-W zależności od modelu urządzenia StorSimple może być dostępny w różnych lokalizacjach geograficznych lub krajach.
+W zależności od modelu urządzenia StorSimple może być dostępna w krajach/regionach lub w różnych lokalizacjach geograficznych.
 
 ### <a name="storsimple-physical-device-models-81008600"></a>Urządzenie fizyczne StorSimple (modeli 8100/8600)
 
-Jeśli używasz StorSimple 8100 lub 8600 urządzenie fizyczne, urządzenie jest dostępne w następujących krajach.
+Jeśli używasz StorSimple 8100 lub 8600 urządzenie fizyczne, urządzenie jest dostępna w następujących krajach/regionach.
 
-| #  | Kraj        | #  | Kraj     | #  | Kraj      | #  | Kraj              |
-|----|----------------|----|-------------|----|--------------|----|----------------------|
-| 1  | Australia      | 16 | SRA Hongkong| 31 | Nowa Zelandia  | 46 | Republika Południowej Afryki         |
-| 2  | Austria        | 17 | Węgry     | 32 | Nigeria      | 47 | Korea Południowa          |
-| 3  | Bahrajn        | 18 | Islandia     | 33 | Norwegia       | 48 | Hiszpania                |
-| 4  | Belgia        | 19 | Indie       | 34 | Peru         | 49 | Sri Lanka            |
-| 5  | Brazylia         | 20 | Indonezja   | 35 | Filipiny  | 50 | Szwecja               |
-| 6  | Kanada         | 21 | Irlandia     | 36 | Polska       | 51 | Szwajcaria          |
-| 7  | Chile          | 22 | Izrael      | 37 | Portugalia     | 52 | Tajwan               |
-| 8  | Kolumbia       | 23 | Włochy       | 38 | Portoryko  | 53 | Tajlandia             |
-| 9  | Czechy | 24 | Japonia       | 39 | Katar        | 54 | Turcja               |
-| 10 | Dania        | 25 | Kenia       | 40 | Rumunia      | 55 | Ukraina              |
-| 11 | Egipt          | 26 | Kuwejt      | 41 | Rosja       | 56 | Zjednoczone Emiraty Arabskie |
-| 12 | Finlandia        | 27 | SRA Makau   | 42 | Arabia Saudyjska | 57 | Zjednoczone Królestwo       |
-| 13 | Francja         | 28 | Malezja    | 43 | Singapur    | 58 | Stany Zjednoczone        |
-| 14 | Niemcy        | 29 | Meksyk      | 44 | Słowacja     | 59 | Wietnam              |
-| 15 | Grecja         | 30 | Holandia | 45 | Słowenia     | 60 | Chorwacja              |
+| #  | Kraj/region        | #  | Kraj/region     | #  | Kraj/region      | #  | Kraj/region             |
+|----|-----------------------|----|--------------------|----|---------------------|----|----------------------------|
+| 1  | Australia             | 16 | SRA Hongkong      | 31 | Nowa Zelandia         | 46 | Republika Południowej Afryki               |
+| 2  | Austria               | 17 | Węgry            | 32 | Nigeria             | 47 | Korea Południowa                |
+| 3  | Bahrajn               | 18 | Islandia            | 33 | Norwegia              | 48 | Hiszpania                      |
+| 4  | Belgia               | 19 | Indie              | 34 | Peru                | 49 | Sri Lanka                  |
+| 5  | Brazylia                | 20 | Indonezja          | 35 | Filipiny         | 50 | Szwecja                     |
+| 6  | Kanada                | 21 | Irlandia            | 36 | Polska              | 51 | Szwajcaria                |
+| 7  | Chile                 | 22 | Izrael             | 37 | Portugalia            | 52 | Tajwan                     |
+| 8  | Kolumbia              | 23 | Włochy              | 38 | Portoryko         | 53 | Tajlandia                   |
+| 9  | Czechy        | 24 | Japonia              | 39 | Katar               | 54 | Turcja                     |
+| 10 | Dania               | 25 | Kenia              | 40 | Rumunia             | 55 | Ukraina                    |
+| 11 | Egipt                 | 26 | Kuwejt             | 41 | Rosja              | 56 | Zjednoczone Emiraty Arabskie       |
+| 12 | Finlandia               | 27 | SRA Makau          | 42 | Arabia Saudyjska        | 57 | Zjednoczone Królestwo             |
+| 13 | Francja                | 28 | Malezja           | 43 | Singapur           | 58 | Stany Zjednoczone              |
+| 14 | Niemcy               | 29 | Meksyk             | 44 | Słowacja            | 59 | Wietnam                    |
+| 15 | Grecja                | 30 | Holandia        | 45 | Słowenia            | 60 | Chorwacja                    |
 
-Ta lista zmienia się po dodaniu więcej krajów. Aby uzyskać najbardziej aktualną listę obszarów geograficznych, przejdź do dodatku warunki tablicy magazynu w [postanowieniach dotyczących produktu](https://www.microsoft.com/en-us/licensing/product-licensing/products).
+Ta lista zmienia się po dodaniu więcej krajów/regionów. Aby uzyskać najbardziej aktualną listę obszarów geograficznych, przejdź do dodatku warunki tablicy magazynu w [postanowieniach dotyczących produktu](https://www.microsoft.com/en-us/licensing/product-licensing/products).
 
 Firmy Microsoft można wysłać sprzętu fizycznego i udostępniać wymiana części zamiennych sprzętu dla usługi StorSimple do różnych lokalizacji geograficznych na powyższej liście.
 
 > [!IMPORTANT]
-> Nie należy umieszczać urządzenia fizycznego StorSimple w regionie, w których StorSimple nie jest obsługiwane. Microsoft nie będzie dostarczanie dowolnej części zamiennych w krajach, w których StorSimple nie jest obsługiwane.
+> Nie należy umieszczać urządzenia fizycznego StorSimple w regionie, w których StorSimple nie jest obsługiwane. Microsoft nie będzie dostarczanie dowolnej części zamiennych do krajów/regionów, których StorSimple nie jest obsługiwane.
 
 ### <a name="storsimple-cloud-appliance-models-80108020"></a>Urządzenia StorSimple w chmurze (modele 8010/8020)
 

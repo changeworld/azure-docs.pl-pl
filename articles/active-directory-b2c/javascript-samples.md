@@ -1,5 +1,5 @@
 ---
-title: Przykładowe skrypty JavaScript do użycia w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
+title: Przykładowe skrypty JavaScript — Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Informacje o używaniu języka JavaScript w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
@@ -7,25 +7,28 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/05/2018
+ms.date: 04/25/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 3645945400bcc58cdf11721458bfab529d89f0b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 972c8ec1b67161a3998a1b165072f584db2f7fbb
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60397094"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64570528"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>Przykładowe skrypty JavaScript do użycia w usłudze Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Do aplikacji w usłudze Azure Active Directory (Azure AD) B2C można dodać własny kod po stronie klienta języka JavaScript. W tym artykule opisano, jak możesz zmienić swoje [przepływ użytkownika](user-flow-javascript-overview.md) lub [zasad niestandardowych](active-directory-b2c-overview-custom.md) umożliwiające wykonywanie skryptu.
+Do aplikacji w usłudze Azure Active Directory (Azure AD) B2C można dodać własny kod po stronie klienta języka JavaScript. Aby włączyć język JavaScript dla aplikacji, należy dodać element do Twojej [zasad niestandardowych](active-directory-b2c-overview-custom.md), wybierz opcję [strony umowy](page-contract.md)i użyj [z usługi b2clogin.com](b2clogin.md) w żądaniach. W tym artykule opisano, jak zmienić zasady niestandardowe umożliwiające wykonywanie skryptu.
+
+> [!NOTE]
+> Jeśli chcesz włączyć język JavaScript, w przypadku przepływów użytkownika, zobacz [języków JavaScript i strony umowy wersji w usłudze Azure Active Directory B2C](user-flow-javascript-overview.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Wybierz [strony umowy](page-contract.md) elementów interfejsu użytkownika aplikacji. Jeśli zamierzasz użyć języka JavaScript, musisz zdefiniować wersja kontraktu strony dla wszystkich definicji zawartości przepływu użytkownika lub niestandardowych zasad.
+Zaznacz kontrakt strony dla elementów interfejsu użytkownika aplikacji. Jeśli zamierzasz użyć języka JavaScript, musisz zdefiniować wersja kontraktu strony dla wszystkich definicji zawartości w zasadach niestandardowych.
 
 ## <a name="add-the-scriptexecution-element"></a>Dodaj ScriptExecution element
 
@@ -140,7 +143,7 @@ function addTermsOfUseLink() {
 }
 ```
 
-W kodzie, Zastąp `termsOfUseUrl` z linkiem do Twoich warunków użytkowania. Dla katalogu, należy utworzyć nowy atrybut użytkownika o nazwie **termsOfUse** , a następnie dołącz **termsOfUse** jako atrybut użytkownika przepływu użytkownika.
+W kodzie, Zastąp `termsOfUseUrl` z linkiem do Twoich warunków użytkowania. Dla katalogu, należy utworzyć nowy atrybut użytkownika o nazwie **termsOfUse** , a następnie dołącz **termsOfUse** jako atrybut użytkownika.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

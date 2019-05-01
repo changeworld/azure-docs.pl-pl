@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/10/2019
+ms.date: 04/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44f0c99a66088aeb54ba061308fefb111610d4dc
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 45c9268495ed42ca67f815615b441986cf03332f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59501233"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64683650"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-confluence-saml-sso-by-microsoft"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją Confluence SAML SSO by Microsoft
 
@@ -37,7 +37,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 ## <a name="description"></a>Opis:
 
-Użyj konta usługi Microsoft Azure Active Directory w połączeniu z serwerem Atlassian Confluence, aby umożliwić logowanie jednokrotne. W ten sposób wszystkich użytkowników w Twojej organizacji można użyć poświadczeń usługi Azure AD do logowania do aplikacji Confluence. Ta wtyczka używa protokołu SAML 2.0 na potrzeby federacji.
+Użyj konta usługi Microsoft Azure Active Directory w połączeniu z serwerem Atlassian Confluence, aby umożliwić logowanie jednokrotne. W ten sposób wszystkich użytkowników w Twojej organizacji można używać poświadczeń usługi Azure AD do logowania się do aplikacji Confluence. Ta wtyczka używa protokołu SAML 2.0 na potrzeby federacji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -80,7 +80,7 @@ Aktualnie obsługiwane są następujące wersje aplikacji Confluence:
 - Confluence: 6.12.0
 
 > [!NOTE]
-> Należy pamiętać, że Confluence obsługuje również Linux Ubuntu 16.04 wersji
+> Należy pamiętać, że nasze wtyczki Confluence, działa również w Ubuntu 16.04 wersji
 
 ## <a name="scenario-description"></a>Opis scenariusza
 

@@ -1,25 +1,18 @@
 ---
-title: Utwórz konto Microsoft Developer | Dokumentacja firmy Microsoft
+title: Utwórz konto Microsoft Developer | Portal Azure Marketplace
 description: Wymagania i procedury dotyczące tworzenia konta Microsoft Developer.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: adfe0af646fae79bc9a954cd5d654626880915d3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: pabutler
+ms.openlocfilehash: 4fde5d81fb97bec23fdb46ff53b05874c88d9d67
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60326845"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935859"
 ---
 <a name="create-a-microsoft-developer-account"></a>Utwórz konto Microsoft Developer
 ====================================
@@ -106,7 +99,7 @@ Microsoft Developer Center jest używane do rejestrowania danych firmy, jeden ra
    ![Wybierz kraj/region](./media/cloud-partner-portal-create-dev-center-registration/imgRegisterCo_04.png)
 
     >[!WARNING]
-    >"Sprzedaż — od" krajach: Aby sprzedawać swoje usługi w portalu Azure Marketplace, zarejestrowanych jednostka musi być z jednej z zatwierdzonych "sprzedaż — od" krajów wyświetlane na liście rozwijanej. To ograniczenie jest ze względu na informacje dotyczące wypłat i opodatkowania. Aby uzyskać więcej informacji zobacz zasad uczestnictwa w portalu Marketplace.
+    >"Sprzedaż — od" krajach/regionach: Aby sprzedawać swoje usługi w portalu Azure Marketplace, zarejestrowanych jednostka musi być z jednej z zatwierdzonych "sprzedaż — od" kraje/regiony wyświetlane na liście rozwijanej. To ograniczenie jest ze względu na informacje dotyczące wypłat i opodatkowania. Aby uzyskać więcej informacji zobacz zasad uczestnictwa w portalu Marketplace.
 
 5. Wybierz **firmy** jako "Konto Type" i następnie wybierz pozycję **dalej**.
 

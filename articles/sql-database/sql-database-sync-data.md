@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: a887c79a51c7a239e7057171e51e67a53af2f84b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f83eb87d2eecb91aa18b1caceb42f9d8bd6c2a0e
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60580253"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939585"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Synchronizowanie danych w wielu bazach danych w chmurze i lokalnych z usługą SQL Data Sync
 
@@ -32,7 +32,7 @@ Synchronizacja danych jest przydatne w sytuacjach, w którym dane muszą być pr
 
 - **Synchronizacja danych hybrydowych:** Z opcją synchronizacji danych możesz przechowywać dane synchronizowane między lokalnymi bazami danych i baz danych Azure SQL, aby umożliwić aplikacji hybrydowych. Ta funkcja może odwołać się do klientów, którzy rozważają przejście do chmury i chcesz umieścić niektóre z aplikacji na platformie Azure.
 - **Aplikacje rozproszone:** W wielu przypadkach jest korzystne różnych obciążeń w różnych bazach danych. Na przykład jeśli masz duży produkcyjnej bazy danych, ale trzeba będzie również uruchomić raportowania lub analizy obciążenia oparte na tych danych, warto drugi bazy danych to dodatkowe obciążenie. To podejście minimalizuje wpływu na obciążenia produkcyjne. Aby zachować te dwie bazy danych synchronizacji, można użyć synchronizacji danych.
-- **Globalnie dystrybuowane aplikacje:** Wiele firm obejmują wiele regionów i krajów nawet kilka. Aby zminimalizować opóźnienie sieci, najlepiej jest mieć swoje dane w regionie bliską. Z opcją synchronizacji danych można pracować z bazami danych w regionach na całym świecie zsynchronizowane.
+- **Globalnie dystrybuowane aplikacje:** Wiele firm span kilku regionach, a nawet kilka krajów/regionów. Aby zminimalizować opóźnienie sieci, najlepiej jest mieć swoje dane w regionie bliską. Z opcją synchronizacji danych można pracować z bazami danych w regionach na całym świecie zsynchronizowane.
 
 Synchronizacja danych nie jest preferowanym rozwiązaniem w następujących scenariuszach:
 

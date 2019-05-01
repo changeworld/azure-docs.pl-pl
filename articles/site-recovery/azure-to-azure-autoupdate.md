@@ -6,14 +6,14 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 04/29/2098
 ms.author: rajanaki
-ms.openlocfilehash: 67eb01ad596393c9095d72670e61b8c09776c588
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: aa135fef2850a692d45d932c15d4be74ccba5724
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792932"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925711"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Automatyczna aktualizacja usługi mobilności w replikacji Azure – Azure
 
@@ -31,9 +31,10 @@ Gdy usługa Site Recovery umożliwia zarządzanie aktualizacjami, wdraża global
 Domyślny harmonogram elementu runbook jest powtarzany codziennie o godzinie 12:00 AM w strefie czasowej lokalizacja geograficzna zreplikowanej maszyny Wirtualnej. Można również zmienić harmonogram elementu runbook za pomocą konta usługi automation.
 
 > [!NOTE]
+> Począwszy od 35 pakiet zbiorczy aktualizacji, możesz wybrać istniejące konto usługi automation do użycia do aktualizacji. Przed tą aktualizacją domyślnie Usługa Site Recovery tworzone tego konta. Ta opcja jest dostępna po włączeniu replikacji dla maszyny Wirtualnej. Możesz zmienić to ustawienie, zostanie zastosowana dla wszystkich maszyn wirtualnych platformy Azure chronione w tym samym magazynie.
+ 
 > Włączone aktualizacje automatyczne nie jest konieczne ponowne uruchomienie maszyn wirtualnych platformy Azure i mają wpływ na trwającą replikację.
 
-> [!NOTE]
 > Zadanie rozliczenia na koncie usługi automation opiera się na liczbę minut czasu wykonywania zadania wykorzystanych w miesiącu. Domyślnie 500 minut są dołączone jako bezpłatny limit jednostek dla konta usługi automation. Wykonanie zadania trwa kilka sekund do około minutę dziennie, które zostały omówione jako bezpłatny limit jednostek.
 
 | Bezpłatny limit jednostek (każdego miesiąca) | Cena |
@@ -63,7 +64,7 @@ Po włączeniu replikacji dla maszyny Wirtualnej albo uruchamianie [z widoku mas
 
 
 > [!Note]
-> Jedną z opcji powiadamia o używanych do zarządzania aktualizacjami konta usługi automation. Jeśli używasz tej funkcji w magazynie po raz pierwszy, jest tworzone nowe konto usługi automation. Wszystkie replikacje kolejnych Włącz w tym samym magazynie Użyj utworzonej wcześniej.
+> Jedną z opcji powiadamia o używanych do zarządzania aktualizacjami konta usługi automation. Jeśli używasz tej funkcji w magazynie po raz pierwszy, domyślnie jest tworzone nowe konto usługi automation. Alternatywnie możesz dostosować ustawienie i wybierz istniejące konto usługi automation. Wszystkie replikacje kolejnych Włącz w tym samym magazynie Użyj utworzonej wcześniej.
 
 Konto Automatyzacja niestandardowa Użyj następującego skryptu:
 

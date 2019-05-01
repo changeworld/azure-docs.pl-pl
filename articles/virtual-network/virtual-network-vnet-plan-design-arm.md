@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: kumud
-ms.openlocfilehash: acd7a88acb31b9d3bd3ba714387561e91b3524a6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 3843b5022aaf218bf91e25ecf6d9c36bb2db2dee
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61034743"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64575427"
 ---
 # <a name="plan-virtual-networks"></a>Planowanie sieci wirtualnej
 
@@ -77,7 +77,7 @@ Można filtrować ruch sieciowy do i z zasobami w sieci wirtualnej przy użyciu 
 - Jeśli zasady zabezpieczeń zastosowanych do nich różnych maszyn wirtualnych w podsieci, można skojarzyć interfejsu sieciowego w maszynie Wirtualnej na co najmniej jedną grupę zabezpieczeń aplikacji. W jego źródło i miejsce docelowe, reguły zabezpieczeń można określić grupy zabezpieczeń aplikacji. Tej reguły następnie dotyczy tylko do interfejsów sieciowych, które są członkami grupy zabezpieczeń aplikacji. Dowiedz się więcej o [sieciowe grupy zabezpieczeń](security-overview.md) i [grupy zabezpieczeń aplikacji](security-overview.md#application-security-groups).
 - Platforma Azure utworzy domyślną kilka reguł zabezpieczeń w każdej grupie zabezpieczeń sieci. Jedna domyślna reguła zezwala na cały ruch przepływ między wszystkimi zasobami w sieci wirtualnej. Aby zmienić to zachowanie, należy użyć zabezpieczeń sieci groups, niestandardowego routingu do kierowania ruchu do urządzenia WUS i / lub. Zalecane jest, zapoznaj się ze wszystkimi Azure [domyślnych regułach zabezpieczeń](security-overview.md#default-security-rules) i zrozumieć, jak reguły sieciowej grupy zabezpieczeń są stosowane do zasobu.
 
-Możesz wyświetlić przykładowe projekty na implementowanie strefy DMZ między platformą Azure i z Internetu za pomocą [urządzenie WUS](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2Fazure%2Fvirtual-network%2Ftoc.json) lub [sieciowe grupy zabezpieczeń](virtual-networks-dmz-nsg.md).
+Możesz wyświetlić przykładowe projekty do implementowania sieci obwodowej (DMZ) między platformą Azure i z Internetu za pomocą [urządzenie WUS](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2Fazure%2Fvirtual-network%2Ftoc.json) lub [sieciowe grupy zabezpieczeń](virtual-networks-dmz-nsg.md).
 
 ### <a name="traffic-routing"></a>Routing ruchu
 

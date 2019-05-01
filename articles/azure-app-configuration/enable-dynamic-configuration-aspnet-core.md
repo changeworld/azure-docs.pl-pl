@@ -9,27 +9,27 @@ editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.workload: tbd
-ms.devlang: na
+ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: cf872766a18c5691f6c094d71a0c29f6bcf736da
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: b8a466234489e65458b0136619076154fa4c9f37
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579040"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64688909"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Samouczek: Używanie dynamicznej konfiguracji w aplikacji platformy ASP.NET Core
 
-Platforma ASP.NET Core ma system podłączanych konfiguracji, który może odczytać dane konfiguracyjne z różnych źródeł. Może obsługiwać zmiany na bieżąco bez powodowania ponowne uruchomienie aplikacji. Platforma ASP.NET Core obsługuje wiązania ustawienia konfiguracji do silnie typizowanej klasy .NET. Jego wprowadza je w kodzie za pomocą różnych `IOptions<T>` wzorców. Jedną z tych wzorców w szczególności `IOptionsSnapshot<T>`powoduje automatyczne ponowne załadowanie konfiguracji aplikacji, po zmianie danych bazowych. 
+Platforma ASP.NET Core ma system podłączanych konfiguracji, który może odczytać dane konfiguracyjne z różnych źródeł. Może obsługiwać zmiany na bieżąco bez powodowania ponowne uruchomienie aplikacji. Platforma ASP.NET Core obsługuje wiązania ustawienia konfiguracji do silnie typizowanej klasy .NET. Jego wprowadza je w kodzie za pomocą różnych `IOptions<T>` wzorców. Jedną z tych wzorców w szczególności `IOptionsSnapshot<T>`powoduje automatyczne ponowne załadowanie konfiguracji aplikacji, po zmianie danych bazowych.
 
 Wzorzec `IOptionsSnapshot<T>` możesz wprowadzać do kontrolerów w aplikacji, aby uzyskiwać dostęp do najnowszej konfiguracji przechowywanej w usłudze Azure App Configuration. Możesz również skonfigurować biblioteki klienta aplikacji konfiguracji platformy ASP.NET Core, stale monitorować i pobrać wszelkie zmiany w konfiguracji sklepu z aplikacjami. Należy zdefiniować okresowe interwał sondowania.
 
 W tym samouczku pokazano, jak zaimplementować dynamiczne aktualizacje konfiguracji w swoim kodzie. Opiera się on na aplikacji internetowej wprowadzonej w przewodnikach Szybki start. Przed kontynuowaniem należy zakończyć [tworzenie aplikacji platformy ASP.NET Core z konfiguracji aplikacji](./quickstart-aspnet-core-app.md) pierwszy.
 
-Wykonaj kroki w tym przewodniku Szybki Start, można użyć dowolnego edytora kodu. [Visual Studio Code](https://code.visualstudio.com/) doskonałym rozwiązaniem, która jest dostępna w Windows, macOS i platformy Linux.
+Wykonaj kroki w tym samouczku, można użyć dowolnego edytora kodu. [Visual Studio Code](https://code.visualstudio.com/) doskonałym rozwiązaniem, która jest dostępna w Windows, macOS i platformy Linux.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -39,13 +39,13 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Ten przewodnik Szybki Start, instaluje [zestawu .NET Core SDK](https://dotnet.microsoft.com/download).
+Aby skorzystać z tego samouczka, należy zainstalować [zestawu .NET Core SDK](https://dotnet.microsoft.com/download).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="reload-data-from-app-configuration"></a>Ponowne ładowanie danych z usługi App Configuration
 
-1. Otwórz plik Program.cs i zaktualizuj `CreateWebHostBuilder` metody, dodając `config.AddAzureAppConfiguration()` metody.
+1. Otwórz *Program.cs*i zaktualizuj `CreateWebHostBuilder` metody, dodając `config.AddAzureAppConfiguration()` metody.
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -64,7 +64,7 @@ Ten przewodnik Szybki Start, instaluje [zestawu .NET Core SDK](https://dotnet.mi
 
     Drugi parametr w `.Watch` metodą jest interwał sondowania, jaką Biblioteka klienta ASP.NET zapytania konfiguracji sklepu z aplikacjami. Biblioteka klienta sprawdza, czy ustawienie określonej konfiguracji, aby zobaczyć, czy każda zmiana wystąpił.
 
-2. Dodawanie pliku Settings.cs, który definiuje i implementuje nową `Settings` klasy.
+2. Dodaj plik *Settings.cs*, który definiuje i implementuje nową klasę `Settings`.
 
     ```csharp
     namespace TestAppConfig
@@ -79,7 +79,7 @@ Ten przewodnik Szybki Start, instaluje [zestawu .NET Core SDK](https://dotnet.mi
     }
     ```
 
-3. Otwórz plik Startup.cs i zaktualizuj `ConfigureServices` metodę, aby powiązać dane konfiguracji do `Settings` klasy.
+3. Otwórz *Startup.cs*i zaktualizuj `ConfigureServices` metodę, aby powiązać dane konfiguracji do `Settings` klasy.
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -98,7 +98,13 @@ Ten przewodnik Szybki Start, instaluje [zestawu .NET Core SDK](https://dotnet.mi
 
 ## <a name="use-the-latest-configuration-data"></a>Używanie najnowszych danych konfiguracji
 
-1. Otwórz HomeController.cs w katalogu kontrolerów. Aktualizacja `HomeController` klasy, aby otrzymać `Settings` za pomocą iniekcji zależności. Ponadto upewnij korzystanie z jej wartości.
+1. Otwórz *HomeController.cs* w katalogu kontrolery i Dodaj odwołanie do `Microsoft.Extensions.Options` pakietu.
+
+    ```csharp
+    using Microsoft.Extensions.Options;
+    ```
+
+2. Aktualizacja `HomeController` klasy, aby otrzymać `Settings` za pomocą iniekcji zależności. Ponadto upewnij korzystanie z jej wartości.
 
     ```csharp
     public class HomeController : Controller
@@ -121,7 +127,7 @@ Ten przewodnik Szybki Start, instaluje [zestawu .NET Core SDK](https://dotnet.mi
     }
     ```
 
-2. Otwórz Index.cshtml w widokach > Strona główna katalogu i zastąp jego zawartość następującym skryptem:
+3. Otwórz *Index.cshtml* w widokach > Strona główna katalogu i zastąp jego zawartość następującym skryptem:
 
     ```html
     <!DOCTYPE html>
@@ -164,7 +170,7 @@ Ten przewodnik Szybki Start, instaluje [zestawu .NET Core SDK](https://dotnet.mi
 
     | Klucz | Wartość |
     |---|---|
-    | TestAppSettings:BackgroundColor | blue |
+    | TestAppSettings:BackgroundColor | zielony |
     | TestAppSettings:FontColor | lightGray |
     | TestAppSettings:Message | Dane z usługi Azure App Configuration — teraz z aktualizacjami na żywo! |
 

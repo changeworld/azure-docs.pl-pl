@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 0d520a9dc8d60a386d25694d441931fbc3ed38e4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dec40f7ec21a4a059c6e4a7c75f6378f9757a479
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61457605"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64916846"
 ---
 # <a name="get-started-with-the-speech-devices-sdk"></a>Wprowadzenie do zestawu Speech Devices SDK
 
@@ -28,7 +28,7 @@ Kod źródłowy przykładowej aplikacji jest dołączone do zestawu Speech Devic
 
 Przed rozpoczęciem tworzenia przy użyciu zestawu Speech Devices SDK, Zbierz informacje i oprogramowania, które są potrzebne:
 
-* Pobierz [deweloperski z ROOBO](http://ddk.roobo.com/). Zestawy są dostępne z konfiguracjami tablicy liniowego lub cykliczne mikrofonu. Wybierz poprawną konfigurację do własnych potrzeb.
+* Pobierz [deweloperski z ROOBO](https://ddk.roobo.com/). Zestawy są dostępne z konfiguracjami tablicy liniowego lub cykliczne mikrofonu. Wybierz poprawną konfigurację do własnych potrzeb.
 
     |Tworzenie konfiguracji zestawu|Lokalizacja osoby mówiącej|
     |-----------------------------|------------|
@@ -199,4 +199,4 @@ Jeśli pojawi się błędy certyfikatów, korzystając z usług przetwarzania mo
 
 ### <a name="audio"></a>Audio
 
-ROOBO udostępnia narzędzia, która przechwytuje wszystkie audio w pamięci flash. Mogą pomóc rozwiązać problemy. Wersja narzędzia towarzyszy konfiguracjami development kit. Na [witryny ROOBO](http://ddk.roobo.com/), wybierz urządzenie, a następnie wybierz **narzędzia ROOBO** widocznego u dołu strony.
+ROOBO udostępnia narzędzia, która przechwytuje wszystkie audio w pamięci flash. Mogą pomóc rozwiązać problemy. Wersja narzędzia towarzyszy konfiguracjami development kit. Na [witryny ROOBO](https://ddk.roobo.com/), wybierz urządzenie, a następnie wybierz **narzędzia ROOBO** widocznego u dołu strony.
