@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 12/17/2018
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 20ebcb502e03f2d817fe18624d8c790e920c667f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ea2381287729579e10d457912c4147f59716bcc4
+ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61372062"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64875710"
 ---
 # <a name="test-your-knowledge-base-interactively-in-qna-maker"></a>Testowanie bazy wiedzy interaktywnie w usługi QnA Maker
 
@@ -24,8 +24,8 @@ Testowanie bazy wiedzy usługi QnA Maker jest ważną częścią proces iteracyj
 
 ## <a name="test-answer-matching"></a>Dopasowanie odpowiedzi testu
 
-1.  Dostęp do bazy wiedzy, wybierając jego nazwę na **moich baz wiedzy** strony.
-2.  Aby uzyskać dostęp do panelu slajdów w poziomie testu, wybierz pozycję **testu** w Twojej aplikacji na górnym panelu.
+1.  Dostęp do bazy wiedzy, wybierając jego nazwę na **moich baz wiedzy** strony.
+2.  Aby uzyskać dostęp do panelu slajdów w poziomie testu, wybierz pozycję **testu** w Twojej aplikacji na górnym panelu.
 
     ![Dostęp do panelu testu](../media/qnamaker-how-to-test-kb/access-test.png)
 
@@ -35,17 +35,17 @@ Testowanie bazy wiedzy usługi QnA Maker jest ważną częścią proces iteracyj
 
 ## <a name="clear-test-panel"></a>Testu zwykłego panelu
 
-Aby wyczyścić wszystkie zapytania wprowadzony testu i ich wyniki z konsoli testów, wybierz **zacząć od początku** w lewym górnym rogu panelu testu.
+Aby wyczyścić wszystkie zapytania wprowadzony testu i ich wyniki z konsoli testów, wybierz **zacząć od początku** w lewym górnym rogu panelu testu.
 
 ## <a name="close-test-panel"></a>Test Zamknij panel
 
-Aby zamknąć panel testu, wybierz **testu** ponownie przycisk. Gdy Test jest otwarty panel, nie można edytować zawartość bazy wiedzy Knowledge Base.
+Aby zamknąć panel testu, wybierz **testu** ponownie przycisk. Gdy Test jest otwarty panel, nie można edytować zawartość bazy wiedzy Knowledge Base.
 
 ## <a name="inspect-score"></a>Sprawdź wynik
 
 Możesz sprawdzić szczegóły wyniku testu w panelu Sprawdź.
 
-1.  Otwórz panel slajdów w poziomie testu wybierz **Sprawdź** więcej informacji na temat tej odpowiedzi.
+1.  Otwórz panel slajdów w poziomie testu wybierz **Sprawdź** więcej informacji na temat tej odpowiedzi.
 
     ![Sprawdź odpowiedzi](../media/qnamaker-how-to-test-kb/inspect.png)
 

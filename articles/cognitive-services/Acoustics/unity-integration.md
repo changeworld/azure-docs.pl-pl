@@ -10,18 +10,18 @@ ms.subservice: acoustics
 ms.topic: how-to
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: aa7c5c513d65310bf9bffab29c1d18e7e7a85b49
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8605fe2ea86f875b5c5fd8ea451a287442dcd51b
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60389496"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922484"
 ---
 # <a name="project-acoustics-unity-integration"></a>Integracja aparatu Unity Akustyka projektu
 Niniejszy instruktaż wyjaśnia integracja wtyczki projektu Akustyka Unity w swoim projekcie aparatu Unity.
 
 Wymagania dotyczące oprogramowania:
-* [Unity 2018.2 +](http://unity3d.com) dla Windows
+* [Unity 2018.2 +](https://unity3d.com) dla Windows
 * [Pakiet Unity Akustyka projektu](https://www.microsoft.com/download/details.aspx?id=57346)
 
 ## <a name="import-the-plugin"></a>Importuj wtyczki

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: apimpm
-ms.openlocfilehash: 95e501eca0f7765cc5201f7b315703c3ca43df8f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 422c2a8a61b1df36b452c153aa6cd78ba7e2dcef
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60529478"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64723647"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Autoryzowanie kont deweloperów za pomocą usługi Azure Active Directory w usłudze Azure API Management
 
@@ -79,12 +79,12 @@ W tym artykule pokazano, jak umożliwić dostęp do portalu dla deweloperów dla
 
 Po zapisaniu zmian użytkowników w określonej usłudze Azure AD wystąpienia zalogować się do portalu dla deweloperów, wykonując kroki opisane w [Zaloguj się do portalu dla deweloperów przy użyciu konta usługi Azure AD](#log_in_to_dev_portal).
 
-
 ## <a name="add-an-external-azure-ad-group"></a>Dodaj zewnętrzne grupy usługi Azure AD
 
 Po włączeniu dostępu dla użytkowników w wystąpieniu usługi Azure AD, można dodać grupy usługi Azure AD w usłudze API Management. Następnie można łatwiej zarządzać skojarzenie deweloperów w grupie z żądane produkty.
 
-Aby skonfigurować zewnętrznego grupy usługi Azure AD, należy najpierw skonfigurować wystąpienie usługi Azure AD na **tożsamości** kartę zgodnie z procedurą w poprzedniej sekcji. 
+ > [!IMPORTANT]
+ > Aby dodać zewnętrznego grupy usługi Azure AD, należy najpierw skonfigurować wystąpienie usługi Azure AD na **tożsamości** kartę zgodnie z procedurą w poprzedniej sekcji. Ponadto aplikacja musi otrzymać dostęp do interfejsu API programu Graph usługi Azure AD, za pomocą `Directory.Read.All` uprawnień. 
 
 Dodaj zewnętrzne Azure grup usługi AD z **grup** kartę wystąpienia usługi API Management.
 

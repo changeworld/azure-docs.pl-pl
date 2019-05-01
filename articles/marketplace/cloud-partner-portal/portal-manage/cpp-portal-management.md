@@ -1,25 +1,18 @@
 ---
-title: Portal dla partnerów — zarządzanie w portalu Azure Marketplace w chmurze | Dokumentacja firmy Microsoft
+title: Zarządzanie w portalu dla partnerów w chmurze | Portal Azure Marketplace
 description: Opisuje typy działań dostępne na potrzeby zarządzania kont dla portalu Cloud Partner portalu Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 04/01/2019
-ms.author: pbutlerm
-ms.openlocfilehash: 539bc7861a487e6eb563f565d3475efdda99b093
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: pabutler
+ms.openlocfilehash: d35e221790c2f94caf582859f78389ecca987709
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60332673"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942201"
 ---
 # <a name="cloud-partner-portal-management"></a>Zarządzanie w portalu dla partnerów w chmurze
 

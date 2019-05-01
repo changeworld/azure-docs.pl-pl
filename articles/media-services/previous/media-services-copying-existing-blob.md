@@ -13,25 +13,27 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 36bfd1787e9f35ac4eaa8b8418df1e592386e8f4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 15d2f16b2c4133e40c7f77390e83504397c47980
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61243354"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64868156"
 ---
 # <a name="copying-existing-blobs-into-a-media-services-asset"></a>Kopiowanie istniejących obiektów blob do zasobu usługi multimediów
+
+> [!NOTE]
+> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówek dotyczących migracji od v2 do v3](../latest/migrate-from-v2-to-v3.md)
+
 W tym artykule przedstawiono sposób kopiowania obiektów blob z konta magazynu do nowego zasobu usługi Azure Media Services (AMS), za pomocą [rozszerzenia SDK .NET usługi Azure Media Services](https://github.com/Azure/azure-sdk-for-media-services-extensions/).
+
+Nie należy próbować zmienić zawartość kontenerów obiektów blob, które zostały wygenerowane przez usługę Media Services bez korzystania z interfejsów API usługi Media.
 
 Metody rozszerzające pracować:
 
 - Regularne zasoby.
 - Dynamiczne archiwum zasoby (w formacie FragBlob).
 - Źródłowe i docelowe zasoby należące do różnych kont usługi Media Services (nawet w różnych centrach danych). Jednak może być opłaty naliczone w ten sposób. Aby uzyskać więcej informacji o cenach, zobacz [transfery danych](https://azure.microsoft.com/pricing/#header-11).
-
-> [!NOTE]
-> Nie należy próbować zmienić zawartość kontenerów obiektów blob, które zostały wygenerowane przez usługę Media Services bez korzystania z interfejsów API usługi Media.
-> 
 
 W tym artykule opisano dwa przykłady kodu:
 

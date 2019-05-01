@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 11/21/2017
 ms.custom: seodec18
-ms.openlocfilehash: 172e6f53b25a1aeef67afea0c1769e6fcaf497cd
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 3b6c4b8cebdff772ea1bd4ac95e4c8c06043f5d5
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487876"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64728160"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Udostępnianie widoku niestandardowego przy użyciu sparametryzowanego adresu URL
 
@@ -63,13 +63,13 @@ Akceptowane wartości odpowiadają wartościom w **szybkim menu czasu** eksplora
 
 Parametr `timeSeriesDefinitions=<collection of term objects>` określa terminy widoku usługi Time Series Insights, gdzie:
 
-- "name":"<string>"
+- "name":"\<string>"
   - Nazwa *terminu*.
-- "splitBy":"<string>"
+- "splitBy":"\<string>"
   - Nazwa kolumny, według której ma zostać wykonany *podział*.
-- "measureName":"<string>"
+- "measureName":"\<string>"
   - Nazwa kolumny *miary*.
-- "predicate":"<string>"
+- "predicate":"\<string>"
   - Klauzula *where* na potrzeby filtrowania po stronie serwera.
 - "useSum":"true"
   - Jest to opcjonalny parametr określający użycie sumy dla miary.  Uwaga: Jeśli wybrana miara to „Events”, domyślnie jest zaznaczona liczba.  Jeśli miara „Events” nie jest zaznaczona, domyślnie jest zaznaczona średnia.  
@@ -121,4 +121,5 @@ Pełny widok (w tym wykres) wyglądałby następująco:
 ![Widok wykresu](media/parameterized-url/url2.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Wykonywanie zapytań o dane przy użyciu języka C#](time-series-insights-query-data-csharp.md)
+
+- Dowiedz się, jak [kwerendy danych przy użyciu C# ](time-series-insights-query-data-csharp.md).

@@ -6,12 +6,12 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/07/2018
-ms.openlocfilehash: f3b744f676dd352bb38e5cbca6e532c650617816
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 45fd716ad8542f86e4c58bb559a3745c2e61776f
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60931695"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64867698"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Partnerzy platformy Azure Cosmos DB NoSQL migracji i application development
 
@@ -19,14 +19,14 @@ Od migracji NoSQL do tworzenia aplikacji można wybierać spośród różnych na
 
 ## <a name="migration-tools"></a>Narzędzia migracji
 
-|**Partner**  |**Funkcje i środowisko**  |**Obsługiwane kraje**  |**Skontaktuj się z**  |
+|**Partner**  |**Funkcje i środowisko**  |**Obsługiwane kraje/regiony**  |**Skontaktuj się z**  |
 |---------|---------|---------|---------|
 |![ImanisData][1]   | [Migracja danych](https://www.imanisdata.com/wp-content/uploads/2018/02/Imanis_DS_MongoDB_Azure_FINAL.pdf) z bazy danych MongoDB do usługi Azure Cosmos DB. <br/> Imanis danych umożliwia globalny przedsiębiorstwom szybko i łatwo migrować lokalnych lub w chmurze bazy danych MongoDB do usługi Azure Cosmos DB. Dane Imanis zapewnia podejście do migracji bez wykorzystania agentów przyrostowe nieustannego w chmurze dla magazynów danych bazy danych MongoDB, które upraszcza migrację i znacznie skraca czas przestoju.|  Stany Zjednoczone  |   [Witryny sieci Web](http://www.imanisdata.com/)      |
 |![Striim][2]    |  [Przenoszenie danych w czasie rzeczywistym do usługi Azure Cosmos DB](https://www.striim.com/striim-for-azure-cosmos-db/) z wielu różnych źródeł danych. <br/> Striim upraszcza kolekcji w czasie rzeczywistym i przenoszenia danych z wielu źródeł lokalnych, w tym dokumencie przedsiębiorstwa i relacyjnych baz danych, czujniki i plików dziennika do usługi Azure Cosmos DB. |   Stany Zjednoczone   |  [Witryny sieci Web](https://www.striim.com/)       |
 
 ## <a name="systems-integrator-partners"></a>Partnerzy będący Integratorami systemów
 
-|**Partner**  |**Funkcje i środowisko**  |**Obsługiwane kraje**  |**Skontaktuj się z**  |
+|**Partner**  |**Funkcje i środowisko**  |**Obsługiwane kraje/regiony**  |**Skontaktuj się z**  |
 |---------|---------|---------|---------|
 | ![10thMagnitude][13] | Migracja NoSQL; Tworzenie nowej aplikacji | Stany Zjednoczone | [Witryny sieci Web](https://www.10thmagnitude.com/)|
 |![Programowanie Altoros LLC][3]    |  Migracja NoSQL <br/> Wprowadzanie innowacji aplikacji (istniejących aplikacji) <br/> Tworzenie nowej aplikacji |   Stany Zjednoczone, Norwegia, Finlandia, Białoruś, Argentyna |  [Witryny sieci Web](https://www.altoros.com/)     |

@@ -6,19 +6,19 @@ ms.service: signalr
 ms.topic: overview
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: 09788f4ded66b43fd5ecae20301a28cd01d77320
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e9e41ffa335aa95b139a5d5658424c1c5915b569
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60646649"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64914962"
 ---
 # <a name="azure-signalr-service-faq"></a>Azure SignalR Service — FAQ
 
 ## <a name="is-azure-signalr-service-ready-for-production-use"></a>Czy usługa Azure SignalR Service jest gotowa do użycia w środowisku produkcyjnym?
 
 Tak.
-Nasze zawiadomienie o ogólnej dostępności można znaleźć w artykule [Azure SignalR Service now generally available](https://azure.microsoft.com/en-us/blog/azure-signalr-service-now-generally-available/) (Usługa Azure SignalR Service jest teraz ogólnie dostępna). 
+Nasze zawiadomienie o ogólnej dostępności można znaleźć w artykule [Azure SignalR Service now generally available](https://azure.microsoft.com/blog/azure-signalr-service-now-generally-available/) (Usługa Azure SignalR Service jest teraz ogólnie dostępna). 
 
 [Biblioteka SignalR platformy ASP.NET Core](https://docs.microsoft.com/aspnet/core/signalr/introduction) jest w pełni obsługiwana.
 

@@ -1,25 +1,19 @@
 ---
-title: Dynamics 365 for Operations pomocy witryny typu Wiki | Dokumentacja firmy Microsoft
+title: Dynamics 365 for Operations pomocy witryny typu Wiki
 description: Dynamics 365 for Operations pomocy strony typu Wiki informacji
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
 manager: Ricardo.Villalobos
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 9bbb6a8f8edf42ceb2ffb6d8e632f66a3ad9c6a6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: pabutler
+ms.openlocfilehash: d957055a3545d790b9419ed1523352155ecc3add
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60776679"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935174"
 ---
 # <a name="dynamics-365-for-operations-help-wiki"></a>Dynamics 365 for Operations pomocy witryny typu Wiki
 

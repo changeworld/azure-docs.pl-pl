@@ -11,39 +11,43 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/28/2017
+ms.date: 04/05/2019
 ms.author: celested
 ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62578fe037dc1c9672bd0a4cf28500c658344c53
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: dbebc528227ebb06bd66e31b802dd4fd618d6a99
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60440406"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64718758"
 ---
-# <a name="change-the-name-or-logo-of-an-enterprise-app-in-azure-active-directory"></a>Zmiana nazwy lub logo aplikacji przedsiębiorstwa w usłudze Azure Active Directory
+# <a name="change-the-name-or-logo-of-an-enterprise-application-in-azure-active-directory"></a>Zmiana nazwy lub logo aplikacji przedsiębiorstwa w usłudze Azure Active Directory
+
 To proste zmienić nazwę lub logo aplikacji niestandardowych organizacji w usłudze Azure Active Directory (Azure AD). Musi mieć odpowiednie uprawnienia, aby wprowadzić te zmiany, a musi być twórcą aplikacji niestandardowej.
 
-## <a name="how-do-i-change-an-enterprise-apps-name-or-logo"></a>Jak zmienić nazwę lub logo aplikacji przedsiębiorstwa
-1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu konta, które jest administratorem globalnym katalogu.
-2. Wybierz **wszystkich usług**, wprowadź **usługi Azure Active Directory** w polu tekstowym, a następnie wybierz pozycję **Enter**.
-3. Na **usługi Azure Active Directory — *directoryname***  okienku (oznacza to, że usługi Azure AD dla katalogu zarządzasz), wybierz **aplikacje dla przedsiębiorstw**.
+## <a name="how-do-i-change-an-enterprise-applications-name-or-logo"></a>Jak zmienić nazwę lub logo aplikacji przedsiębiorstwa
 
-    ![Otwieranie aplikacji dla przedsiębiorstw](./media/change-name-or-logo-portal/open-enterprise-apps.png)
-4. Na **aplikacje dla przedsiębiorstw** okienku wybierz **wszystkie aplikacje**. Zobaczysz listę aplikacji, którymi można zarządzać.
-5. Na **aplikacje w przedsiębiorstwie — wszystkie aplikacje** okienku, wybierz aplikację.
-6. Na ***appname*** okienku (czyli nazwę wybranej aplikacji w tytule), wybierz **właściwości**.
+1. Zaloguj się do [portalu Azure Active Directory](https://aad.portal.azure.com/) przy użyciu konta, które jest administratorem globalnym katalogu. **Centrum administracyjne usługi Azure Active Directory** zostanie wyświetlona strona.
+2. W lewym okienku wybierz pozycję **Aplikacje dla przedsiębiorstw**. Zostanie wyświetlona lista aplikacji dla przedsiębiorstwa.
+3. Wybierz aplikację. Zostanie wyświetlona strona Omówienie aplikacji.
+4. W okienku przeglądu aplikacji w obszarze **Zarządzaj** nagłówka, wybierz **właściwości**. **Właściwości** zostanie wyświetlona strona.
+5. Jeśli chcesz zmienić nazwę, wybierz opcję **nazwa** pole, wpisz nową nazwę i naciśnij klawisz **Enter**.
+6. Jeśli chcesz zmienić logo, Znajdź **Logo** pola i wybierz ikonę folderu **wybierz plik** okno, które znajduje się poniżej bieżącego obrazu logo aplikacji.
 
-    ![Wybierając polecenie Właściwości](./media/change-name-or-logo-portal/select-app.png)
-7. Na ***appname*** **— właściwości** okienko, przeglądanie w poszukiwaniu pliku pełnić nowe logo lub Edytuj nazwę aplikacji lub obu.
+   ![Wybierając polecenie Właściwości](./media/change-name-or-logo-portal/change-logo.png)
 
-    ![Zmienianie logo lub nameproperties polecenie aplikacji](./media/change-name-or-logo-portal/change-logo.png)
-8. Wybierz **Zapisz** polecenia.
+   W przeciwnym razie jeśli nie są zmiany logo, przejdź do kroku 8.
+7. W selektorze plików wybierz plik, który ma jako nowe logo. Nazwa pliku jest wyświetlana w polu poniżej bieżącego obrazu logo.
+
+   > [!NOTE]
+   > Platforma Azure wymaga obraz logo, który ma być plikiem PNG i mają zastosowanie limity na szerokość, wysokość i rozmiaru pliku.
+8. Wybierz pozycję **Zapisz**. Jeśli została wybrana opcja nowe logo **Logo** pola obrazu zmieniony, aby odzwierciedlić nowy plik logo.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Zobacz wszystkie moje grupy](../fundamentals/active-directory-groups-view-azure-portal.md)
+
+* [Szybki start: Wyświetlanie grup i elementów członkowskich organizacji w usłudze Azure Active Directory](../fundamentals/active-directory-groups-view-azure-portal.md)
 * [Przypisywanie użytkownika lub grupy do aplikacji przedsiębiorstwa](assign-user-or-group-access-portal.md)
 * [Usuń przypisanie użytkownika lub grupy z aplikacji przedsiębiorstwa](remove-user-or-group-access-portal.md)
 * [Wyłączanie logowania użytkowników dla aplikacji przedsiębiorstwa](disable-user-sign-in-portal.md)

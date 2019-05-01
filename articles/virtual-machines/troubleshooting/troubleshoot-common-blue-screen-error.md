@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: genli
-ms.openlocfilehash: 7e37d8e732408e70dbcdc86d3e21556f553506cd
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 26306489b11e24ab50f0ae893f11137d279c6127
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57768488"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64719794"
 ---
 # <a name="windows-shows-blue-screen-error-when-booting-an-azure-vm"></a>Windows pokazuje błękitny ekran błędu podczas rozruchu maszyny Wirtualnej platformy Azure
 W tym artykule opisano niebieskich ekranów, które można napotkać podczas rozruchu Windows maszyn wirtualnych (VM) w systemie Microsoft Azure. Zapewnia kroki ułatwiające zbieranie danych dla biletu pomocy technicznej. 
@@ -56,7 +56,7 @@ Aby rozwiązać ten problem, będziesz potrzebować pierwszy do gromadzenia plik
 ### <a name="locate-dump-file-and-submit-a-support-ticket"></a>Zlokalizuj plik zrzutu i Wyślij bilet pomocy technicznej
 
 1. Na maszynie Wirtualnej odzyskiwania przejdź do folderu systemu windows w dołączonym dysku systemu operacyjnego. Litera sterownika, która jest przypisana do dołączonym dysku systemu operacyjnego jest F, musisz przejść do F:\Windows.
-2. Znajdź plik memory.dmp kwietnia, a następnie [Wyślij bilet pomocy technicznej](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) przy użyciu pliku zrzutu. 
+2. Znajdź plik memory.dmp, a następnie [Wyślij bilet pomocy technicznej](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) przy użyciu pliku zrzutu. 
 
 Jeśli nie można odnaleźć pliku zrzutu, Przenieś do następnego kroku, aby włączyć dziennik zrzutu i konsoli szeregowej.
 

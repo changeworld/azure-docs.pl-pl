@@ -10,18 +10,18 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.custom: seodec18
-ms.openlocfilehash: 85d5bb822bc9b89c68c70633a22a1bed74118f49
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: a73be313daa3b45cabc2adb07bb3d2592c7d307e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758186"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64725462"
 ---
 # <a name="provision-and-manage-azure-time-series-insights-preview"></a>Aprowizowanie i zarządzanie nimi Azure czas Series Insights w wersji zapoznawczej
 
 W tym artykule opisano sposób tworzenia i zarządzanie środowiskiem Azure czas Series Insights w wersji zapoznawczej za pomocą [witryny Azure portal](https://portal.azure.com/).
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Środowiska czasu Series Insights w wersji zapoznawczej platformy Azure są środowisk płatność za rzeczywiste użycie (PAYG).
 
@@ -92,11 +92,11 @@ W poniższych krokach opisano sposób tworzenia środowiska Azure czas Series In
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Odczyt [Planowanie środowiska](./time-series-insights-update-plan.md).
+- Odczyt [Planowanie środowiska](./time-series-insights-update-plan.md).
 
-Odczyt [dodawania źródła zdarzeń Centrum](./time-series-insights-how-to-add-an-event-source-eventhub.md).
+- Dowiedz się, jak [dodawania źródła zdarzeń Centrum](./time-series-insights-how-to-add-an-event-source-eventhub.md).
 
-Odczyt [Dodawanie źródła Centrum IoT](./time-series-insights-how-to-add-an-event-source-iothub.md).
+- Konfigurowanie [źródłem Centrum IoT](./time-series-insights-how-to-add-an-event-source-iothub.md).
 
 <!-- Images -->
 [1]: media/v2-update-manage/manage_one.PNG

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: fc52512f48050c46894996d5a79b26f36fc6ad6c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 99766c0f2ed5f61cc5c5bd44b77eb7dde6537c76
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60879966"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64916584"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-translate-a-string-using-c"></a>Szybki start: Tłumaczenie ciągu za pomocą interfejsu API tłumaczenia tekstu w usłudze Translator oraz języka C#
 
@@ -155,7 +155,7 @@ dotnet run
 
 ## <a name="sample-response"></a>Przykładowa odpowiedź
 
-Znajdź skrót kraju, w tym [listę języków](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/language-support).
+Znajdź skrót kraju, w tym [listę języków](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
 
 ```json
 [

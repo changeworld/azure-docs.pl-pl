@@ -12,18 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-origin.date: 09/24/2018
-ms.date: 04/08/2019
-ms.author: v-junlch
+ms.date: 09/24/2018
+ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0337f3de40e75ada86c0a5265fc99b34f1c2ecae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ea3e1b951a683d7ee1def09024e531e94dd905b4
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60296825"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918527"
 ---
 # <a name="web-apps"></a>Aplikacje internetowe
 
@@ -46,7 +45,7 @@ Zobacz przykłady kodu dla scenariuszy aplikacji sieci web w przeglądarce inter
 
 ## <a name="app-registration"></a>Rejestracja aplikacji
 
-Aby zarejestrować aplikację sieci web, zobacz [rejestrowanie aplikacji z punktem końcowym usługi Azure AD w wersji 1.0](quickstart-v1-add-azure-ad-app.md).
+Aby zarejestrować aplikację sieci web, zobacz [rejestrowanie aplikacji](quickstart-register-app.md).
 
 * Pojedynczej dzierżawy — Jeśli tworzysz aplikację tylko dla Twojej organizacji, należy zarejestrować w katalogu firmy przy użyciu witryny Azure portal.
 * Wielodostępne — Jeśli tworzysz aplikację, która może być używane przez użytkowników spoza organizacji, ten musi być zarejestrowana w katalogu firmy, ale musi być zarejestrowana w każdej organizacji katalogu, który będzie używany w aplikacji. Aby udostępnić aplikację w jego katalogu, możesz dołączyć procesu rejestracji dla klientów, co pozwala na wyrażanie zgody na aplikację. Po utworzeniu konta dla aplikacji, zobaczą okno dialogowe, które przedstawiono uprawnienia, których wymaga aplikacja i opcji do wyrażenia zgody. W zależności od wymagane uprawnienia administratora w innej organizacji może być konieczne wyrazić zgodę. Po użytkownik lub administrator wyraża zgodę, aplikacja jest zarejestrowana w ich katalogu.
@@ -59,5 +58,3 @@ Sesja użytkownika wygasa po upływie okresu istnienia tokenu wystawionego przez
 
 * Dowiedz się więcej o innych [typów aplikacji i scenariuszy](app-types.md)
 * Dowiedz się więcej o usłudze Azure AD [podstawowe informacje o uwierzytelnianiu](authentication-scenarios.md)
-
-<!-- Update_Description: wording update -->

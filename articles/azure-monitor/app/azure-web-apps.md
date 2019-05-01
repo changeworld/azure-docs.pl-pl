@@ -7,14 +7,14 @@ author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 04/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: 25f620cb36c2bfb548ecf08c33dc04b37118a256
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c447a14f72c56e3e1e244011aa215a33b3f222a6
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59489626"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922460"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Monitorowanie wydajności w usłudze Azure App Service
 
@@ -40,6 +40,10 @@ Istnieją dwa sposoby, aby włączyć monitorowanie aplikacji dla aplikacji host
 > Jeśli zarówno na podstawie monitorowania agentów, jak i ręczne zestawu SDK na podstawie Instrumentacji wykrycia tylko ustawienia ręcznej Instrumentacji będą uznawane. Pozwala to uniknąć zduplikowanych danych z wysyłane. Aby dowiedzieć się więcej o tym wyewidencjonowanie [Rozwiązywanie problemów z sekcji](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting) poniżej.
 
 ## <a name="enable-agent-based-monitoring-net"></a>Włącz opartej o agentów monitorowania .NET
+
+> [!NOTE]
+> Kombinacja APPINSIGHTS_JAVASCRIPT_ENABLED i urlCompression nie jest obsługiwana. Aby uzyskać więcej informacji, zobacz objaśnienia w [Rozwiązywanie problemów z sekcji](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting).
+
 
 1. **Wybierz usługę Application Insights** w Panelu sterowania platformy Azure dla usługi app service.
 
@@ -352,6 +356,15 @@ W poniższej tabeli przedstawiono bardziej szczegółowe wyjaśnienie, co oznacz
 |`AppContainsAspNetTelemetryCorrelationAssembly: true` | Ta wartość wskazuje, że rozszerzenie wykryto odwołania do `Microsoft.AspNet.TelemetryCorrelation` w aplikacji i będzie wycofywania. | Usuń odwołanie.
 |`AppContainsDiagnosticSourceAssembly**:true`|Ta wartość wskazuje, że rozszerzenie wykryto odwołania do `System.Diagnostics.DiagnosticSource` w aplikacji i będzie wycofywania.| Usuń odwołanie.
 |`IKeyExists:false`|Ta wartość wskazuje, że klucz Instrumentacji nie jest obecny w AppSetting `APPINSIGHTS_INSTRUMENTATIONKEY`. Możliwe przyczyny: Wartości mogą przypadkowo usunięte, to, że nie można ustawić wartości w skrypt automatyzacji itp. | Upewnij się, że to ustawienie znajduje się w ustawieniach aplikacji w usłudze App Service.
+
+### <a name="appinsightsjavascriptenabled-and-urlcompression-is-not-supported"></a>APPINSIGHTS_JAVASCRIPT_ENABLED i urlCompression nie jest obsługiwane
+
+Jeśli używasz APPINSIGHTS_JAVASCRIPT_ENABLED = true w przypadku, gdy zawartość jest zaszyfrowana, możesz otrzymać błędy takie jak: 
+
+- Błąd podczas ponownego zapisywania adresów 500 URL
+- 500.53 nie można zastosować błąd moduł ponowne zapisywanie adresów URL wiadomości wychodzące reguły ponownego zapisywania, gdy zawartość odpowiedzi HTTP jest zakodowany ("gzip"). 
+
+To jest ze względu na ustawienie aplikacji APPINSIGHTS_JAVASCRIPT_ENABLED ustawiana na wartość true i kodowania zawartości są obecne w tym samym czasie. W tym scenariuszu nie jest jeszcze obsługiwany. Obejście polega na usuwanie APPINSIGHTS_JAVASCRIPT_ENABLED z ustawienia aplikacji. Niestety oznacza to, że jeśli Instrumentacji języka JavaScript/przeglądarki po stronie klienta jest nadal wymagane, ręczne odwołania do zestawu SDK są potrzebne dla strony sieci Web. Postępuj zgodnie z [instrukcje](https://github.com/Microsoft/ApplicationInsights-JS#snippet-setup-ignore-if-using-npm-setup) ręcznej Instrumentacji za pomocą zestawu SDK języka JavaScript.
 
 Aby uzyskać najnowsze informacje dotyczące agenta/rozszerzenie usługi Application Insights, zapoznaj się [informacje o wersji](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/app-insights-web-app-extensions-releasenotes.md).
 

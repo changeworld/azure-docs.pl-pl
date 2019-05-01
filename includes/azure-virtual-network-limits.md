@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 04/10/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: ff6e08929d5ede86ba0632e7cfb38d81d21ca7ec
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 79c4530878783cbdb62cac630d81b65dc73c52a4
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59804794"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64733736"
 ---
 <a name="virtual-networking-limits-classic"></a>Poniższe limity mają zastosowanie tylko w przypadku zasobów sieciowych zarządzanych przy użyciu klasycznego modelu wdrażania, które przypadają na jedną subskrypcję. Dowiedz się, jak [wyświetlić bieżące użycie zasobów względem limitów subskrypcji](../articles/networking/check-usage-against-limits.md).
 
-| Zasób | Limit domyślny | Limit maksymalny |
+| Resource | Limit domyślny | Limit maksymalny |
 | --- | --- | --- |
 | Sieci wirtualne |50 |100 |
 | Lokalne lokacje sieciowe |20 |Skontaktuj się z pomocą techniczną. |
@@ -40,7 +40,7 @@ Następujące limity mają zastosowanie tylko w przypadku zasobów sieciowych za
 > [!NOTE]
 > Firma Microsoft niedawno zwiększono wszystkie domyślne limity do ich maksymalnych limitów. W przypadku żadnej kolumny maksymalny limit zasób nie ma limitów dostosowywalnych. Jeśli ma limity wzrosła o pomocy technicznej w przeszłości, a nie widzisz limity zaktualizowane w poniższych tabelach [Otwórz żądanie obsługi klienta online bez dodatkowych opłat](../articles/azure-resource-manager/resource-manager-quota-errors.md)
 
-| Zasób | Limit domyślny | 
+| Resource | Domyślny limit/maksymalny limit | 
 | --- | --- |
 | Sieci wirtualne |1000 |
 | Podsieci na sieć wirtualną |3,000 |
@@ -65,7 +65,7 @@ Następujące limity mają zastosowanie tylko w przypadku zasobów sieciowych za
 | Konfiguracji wzorca TAP interfejsu sieciowego na PODSŁUCHU sieci wirtualnej |100 |
 
 #### <a name="publicip-address"></a>Publiczne ograniczeń adresów IP
-| Zasób | Limit domyślny | Limit maksymalny |
+| Resource | Limit domyślny | Limit maksymalny |
 | --- | --- | --- |
 | Publiczne adresy IP — dynamiczny | 1000 Basic. |Skontaktuj się z pomocą techniczną. |
 | Publiczne adresy IP — statyczny | 1000 Basic. |Skontaktuj się z pomocą techniczną. |
@@ -75,7 +75,7 @@ Następujące limity mają zastosowanie tylko w przypadku zasobów sieciowych za
 #### <a name="load-balancer"></a>Limity usługi równoważenia obciążenia
 Następujące limity mają zastosowanie tylko w przypadku zasobów sieciowych zarządzanych przy użyciu usługi Azure Resource Manager, które przypadają na region na subskrypcję. Dowiedz się, jak [wyświetlić bieżące użycie zasobów względem limitów subskrypcji](../articles/networking/check-usage-against-limits.md).
 
-| Zasób | Limit domyślny |
+| Resource | Limit domyślny |
 | --- | --- |
 | Moduły równoważenia obciążenia | 1000 | 
 | Zasady dla każdego zasobu, Basic | 250 |

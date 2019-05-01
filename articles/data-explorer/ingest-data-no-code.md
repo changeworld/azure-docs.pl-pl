@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: tutorial
-ms.date: 04/07/2019
-ms.openlocfilehash: 9f4b7ee0dcc87ca03fd051be0dacedf0912b5320
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 04/29/2019
+ms.openlocfilehash: 187aa4b02e389c485b24ad7de256422d1880182b
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60759865"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64872601"
 ---
 # <a name="tutorial-ingest-data-in-azure-data-explorer-without-one-line-of-code"></a>Samouczek: Pozyskiwanie danych w usłudze Azure Data Explorer bez pisania ani jednego wiersza kodu
 
@@ -380,7 +380,7 @@ Teraz należy utworzyć połączenia danych dla dzienników aktywności i dzienn
     |---|---|---|
     | **Tabela** | *DiagnosticLogsRawRecords* | Tabela utworzona w bazie danych *TestDatabase*. |
     | **Format danych** | *JSON* | Format używany w tabeli. |
-    | **Mapowanie kolumn** | *DiagnosticLogsRecordsMapping* | Mapowanie utworzone w bazie danych *TestDatabase*, które mapuje przychodzące dane JSON na nazwy kolumn i typy danych tabeli *DiagnosticLogsRecords*.|
+    | **Mapowanie kolumn** | *DiagnosticLogsRecordsMapping* | Mapowanie utworzone w *TestDatabase* bazy danych, która mapuje przychodzące dane JSON do kolumny nazwy i typy danych *DiagnosticLogsRawRecords* tabeli.|
     | | |
 
 1. Wybierz pozycję **Utwórz**.  

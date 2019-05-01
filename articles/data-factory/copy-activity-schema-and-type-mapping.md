@@ -5,57 +5,118 @@ services: data-factory
 documentationcenter: ''
 author: linda33wj
 manager: craigg
-ms.reviewer: douglasl
+ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/20/2018
+ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: 99798b35419ec9574c99aaba42803fbeeb1555f1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 9108f83e854b51720c64c5a74a828543cc5e7688
+ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60615617"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64875801"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>Mapowanie schematu w działaniu kopiowania
+
 W tym artykule opisano, jakie działania kopiowania w usłudze Azure Data Factory mapowanie schematu i mapowanie typu danych ze źródła danych do ujścia danych podczas wykonywania kopii danych.
 
-## <a name="column-mapping"></a>Mapowanie kolumn
+## <a name="schema-mapping"></a>mapowanie schematu
 
-Mapowanie kolumny ma zastosowanie, gdy kopiowanie danych między danych tabelarycznych w kształcie. Działanie kopiowania domyślnie **mapowania danych źródła do ujścia przy użyciu nazw kolumn**, chyba że [mapowania kolumn jawne](#explicit-column-mapping) jest skonfigurowany. W szczególności działania kopiowania:
+Odnosi się to mapowanie kolumn podczas kopiowania danych ze źródła do ujścia. Działanie kopiowania domyślnie **mapowania danych źródła do ujścia przy użyciu nazw kolumn**. Można określić [jawnego mapowania](#explicit-mapping) Dostosowywanie mapowania kolumn, zgodnie z potrzebami. W szczególności działania kopiowania:
 
 1. Odczytywać dane ze źródła i określić schematu źródłowego
-
-    * W przypadku źródeł danych przy użyciu wstępnie zdefiniowanego schematu w magazynie/format pliku danych, na przykład/pliki baz danych za pomocą metadanych (Avro/ORC/Parquet/tekstu z nagłówkiem), schematu źródła są wyodrębniane z metadanych pliku lub wynik zapytania.
-    * W przypadku źródeł danych z elastycznym schematem, na przykład Azure tabeli/Cosmos DB schematu źródła jest wnioskowany z wyniku zapytania. Można go zmienić, konfigurując "strukturę" w zestawie danych.
-    * Plik tekstowy bez nagłówka domyślne nazwy kolumn są generowane przy użyciu wzorca "Prop_0", "Prop_1"... Można go zmienić, konfigurując "strukturę" w zestawie danych.
-    * Dla źródła Dynamics musisz podać informacje o schemacie w sekcji "strukturę" zestawu danych.
-
-2. Mają zastosowanie mapowania kolumn jawne, jeśli określony.
-
+2. Umożliwia mapowanie kolumny domyślne mapowanie kolumn według nazwy lub zastosować mapowanie kolumn jawne, jeśli określony.
 3. Zapisywanie danych do ujścia
 
-    * Dla magazynów danych za pomocą wstępnie zdefiniowany schemat dane są zapisywane do kolumn o takiej samej nazwie.
-    * Magazyny danych bez stałego schematu i formatów plików nazwy/metadanych kolumn zostanie wygenerowany na podstawie schematu źródła.
+### <a name="explicit-mapping"></a>Jawnego mapowania
 
-### <a name="explicit-column-mapping"></a>Jawne mapowanie kolumn
+Można określić kolumn do mapowania w działaniu kopiowania -> `translator`  ->  `mappings` właściwości. W poniższym przykładzie zdefiniowano działania kopiowania w potoku w celu skopiowania danych z tekstu rozdzielanego do usługi Azure SQL Database.
 
-Można określić **columnMappings** w **typeProperties** sekcji działaniem kopiowania, aby wykonać mapowania kolumn jawnego. W tym scenariuszu sekcji "strukturę" jest wymagana dla wejściowe i wyjściowe zestawy danych. Obsługuje mapowanie kolumny **mapowania wszystkich lub podzestawu kolumn w zestawie danych źródłowych "strukturę" do wszystkich kolumn w zestawie danych ujścia "strukturę"**. Dostępne są następujące warunki błędów, które powoduje wyjątek:
+```json
+{
+    "name": "CopyActivity",
+    "type": "Copy",
+    "inputs": [{
+        "referenceName": "DelimitedTextInput",
+        "type": "DatasetReference"
+    }],
+    "outputs": [{
+        "referenceName": "AzureSqlOutput",
+        "type": "DatasetReference"
+    }],
+    "typeProperties": {
+        "source": { "type": "DelimitedTextSource" },
+        "sink": { "type": "SqlSink" },
+        "translator": {
+            "type": "TabularTranslator",
+            "mappings": [
+                {
+                    "source": {
+                        "name": "UserId",
+                        "type": "Guid"
+                    },
+                    "sink": {
+                        "name": "MyUserId"
+                    }
+                }, 
+                {
+                    "source": {
+                        "name": "Name",
+                        "type": "String"
+                    },
+                    "sink": {
+                        "name": "MyName"
+                    }
+                }, 
+                {
+                    "source": {
+                        "name": "Group",
+                        "type": "String"
+                    },
+                    "sink": {
+                        "name": "MyGroup"
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
+Następujące właściwości są wspierane w ramach `translator`  ->  `mappings` -> obiekt z `source` i `sink`:
+
+| Właściwość | Opis                                                  | Wymagane |
+| -------- | ------------------------------------------------------------ | -------- |
+| name     | Nazwa kolumny źródła lub ujścia.                           | Yes      |
+| Liczba porządkowa  | Indeks kolumny. Zacznij od 1. <br>Zastosuj i wymagany, gdy za pomocą rozdzielany tekst bez nagłówków wiersza. | Nie       |
+| ścieżka     | Wyrażenie ścieżki JSON dla każdego pola, do wyodrębnienia lub mapy. Mają zastosowanie dla danych hierarchicznych np. bazy danych MongoDB REST.<br>W przypadku pól w obiekcie głównym ścieżkę JSON zaczyna się od głównego $; w przypadku pól wewnątrz tablicy wybranej przez `collectionReference` właściwości JSON ścieżka zaczyna się od elementu tablicy. | Nie       |
+| type     | Fabryka danych tymczasowych typ danych kolumny źródła lub ujścia. | Nie       |
+| Kultury  | Kultura kolumny źródła lub ujścia. <br>Są stosowane, gdy typ jest `Datetime` lub `Datetimeoffset`. Wartość domyślna to `en-us`. | Nie       |
+| format   | Format ciągu ma być używany, gdy typem jest `Datetime` lub `Datetimeoffset`. Zapoznaj się [Custom Date and Time Format Strings](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) w sposób formatowania daty/godziny. | Nie       |
+
+Następujące właściwości są wspierane w ramach `translator`  ->  `mappings` oprócz obiektu z `source` i `sink`:
+
+| Właściwość            | Opis                                                  | Wymagane |
+| ------------------- | ------------------------------------------------------------ | -------- |
+| collectionReference | Obsługiwane tylko wtedy, gdy dane hierarchiczne, np. bazy danych MongoDB REST jest źródła.<br>Jeśli chcesz wykonać iterację i ekstrakcję danych z obiektów **wewnątrz pola tablicy** przy użyciu tego samego wzorca i przekonwertować każdego wiersza dla każdego obiektu, określ ścieżkę JSON tej tablicy cross-zastosować. | Nie       |
+
+### <a name="alternative-column-mapping"></a>Mapowanie kolumn alternatywnego
+
+Można określić kopiowania activity -> `translator`  ->  `columnMappings` do mapowania danych tabelarycznych w kształcie. W tym przypadku "strukturę" sekcja jest wymagana do wejściowe i wyjściowe zestawy danych. Obsługuje mapowanie kolumny **mapowania wszystkich lub podzestawu kolumn w zestawie danych źródłowych "strukturę" do wszystkich kolumn w zestawie danych ujścia "strukturę"**. Dostępne są następujące warunki błędów, które powoduje wyjątek:
 
 * Zapytanie, że wynik nie jest nazwa kolumny, które jest określone w sekcji "strukturę" wejściowy zestaw danych magazynu danych źródłowych.
 * Magazyn danych ujścia (Jeśli za pomocą wstępnie zdefiniowany schemat) nie ma nazwę kolumny, który jest określony w sekcji "strukturę" wyjściowego zestawu danych.
 * Mniejszą liczbę kolumn lub większą liczbę kolumn "Struktura" zestaw danych ujścia niż określony w mapowaniu.
 * Zduplikowane mapowania.
 
-#### <a name="explicit-column-mapping-example"></a>Jawne Przykładowe mapowanie kolumn
-
-W tym przykładzie Tabela wejściowa ma strukturę i wskazuje do tabeli w bazie danych SQL w środowisku lokalnym.
+W poniższym przykładzie wejściowego zestawu danych ma strukturę i wskazuje do tabeli w bazie danych Oracle w środowisku lokalnym.
 
 ```json
 {
-    "name": "SqlServerInput",
+    "name": "OracleDataset",
     "properties": {
         "structure":
          [
@@ -63,9 +124,9 @@ W tym przykładzie Tabela wejściowa ma strukturę i wskazuje do tabeli w bazie 
             { "name": "Name"},
             { "name": "Group"}
          ],
-        "type": "SqlServerTable",
+        "type": "OracleTable",
         "linkedServiceName": {
-            "referenceName": "SqlServerLinkedService",
+            "referenceName": "OracleLinkedService",
             "type": "LinkedServiceReference"
         },
         "typeProperties": {
@@ -75,11 +136,11 @@ W tym przykładzie Tabela wejściowa ma strukturę i wskazuje do tabeli w bazie 
 }
 ```
 
-W tym przykładzie tabela danych wyjściowych ma strukturę i wskazuje do tabeli w bazie danych SQL Azure.
+W tym przykładzie wyjściowy zestaw danych ma strukturę i wskazuje z tabelą w Salesfoce.
 
 ```json
 {
-    "name": "AzureSqlOutput",
+    "name": "SalesforceDataset",
     "properties": {
         "structure":
         [
@@ -87,9 +148,9 @@ W tym przykładzie tabela danych wyjściowych ma strukturę i wskazuje do tabeli
             { "name": "MyName" },
             { "name": "MyGroup"}
         ],
-        "type": "AzureSqlTable",
+        "type": "SalesforceObject",
         "linkedServiceName": {
-            "referenceName": "AzureSqlLinkedService",
+            "referenceName": "SalesforceLinkedService",
             "type": "LinkedServiceReference"
         },
         "typeProperties": {
@@ -99,7 +160,7 @@ W tym przykładzie tabela danych wyjściowych ma strukturę i wskazuje do tabeli
 }
 ```
 
-Następujący kod JSON definiuje działania kopiowania w potoku. Kolumny ze źródła mapowane na kolumny w ujściu (**columnMappings**) przy użyciu **translator** właściwości.
+Następujący kod JSON definiuje działania kopiowania w potoku. Kolumny ze źródła mapowane na kolumny w ujściu przy użyciu **translator** -> **columnMappings** właściwości.
 
 ```json
 {
@@ -107,23 +168,23 @@ Następujący kod JSON definiuje działania kopiowania w potoku. Kolumny ze źr�
     "type": "Copy",
     "inputs": [
         {
-            "referenceName": "SqlServerInput",
+            "referenceName": "OracleDataset",
             "type": "DatasetReference"
         }
     ],
     "outputs": [
         {
-            "referenceName": "AzureSqlOutput",
+            "referenceName": "SalesforceDataset",
             "type": "DatasetReference"
         }
     ],
     "typeProperties":    {
-        "source": { "type": "SqlSource" },
-        "sink": { "type": "SqlSink" },
+        "source": { "type": "OracleSource" },
+        "sink": { "type": "SalesforceSink" },
         "translator":
         {
             "type": "TabularTranslator",
-            "columnMappings": 
+            "columnMappings":
             {
                 "UserId": "MyUserId",
                 "Group": "MyGroup",
@@ -136,23 +197,19 @@ Następujący kod JSON definiuje działania kopiowania w potoku. Kolumny ze źr�
 
 Jeśli używasz składni `"columnMappings": "UserId: MyUserId, Group: MyGroup, Name: MyName"` do określenia mapowania kolumn, nadal możliwe jest jako-to.
 
-**Przepływ mapowania kolumn:**
+### <a name="alternative-schema-mapping"></a>Alternatywny schemat mapowania
 
-![Przepływ mapowanie kolumn](./media/copy-activity-schema-and-type-mapping/column-mapping-sample.png)
-
-## <a name="schema-mapping"></a>mapowanie schematu
-
-Mapowanie schematu ma zastosowanie, gdy kopiowanie danych między hierarchiczne ukształtowane dane i tabelarycznym ukształtowane dane, np. kopiowanie danych z bazy danych MongoDB REST do pliku tekstowego i kopiowanie danych z programu SQL API usługi Azure Cosmos DB dla bazy danych MongoDB. Następujące właściwości są obsługiwane w działaniu kopiowania `translator` sekcji:
+Można określić kopiowania activity -> `translator`  ->  `schemaMapping` do mapowania miedzy hierarchiczne ukształtowane dane i tabelarycznym kształcie, np. skopiuj z REST bazy danych MongoDB do pliku tekstowego i kopiowanie danych z bazy danych Oracle do interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB. Następujące właściwości są obsługiwane w działaniu kopiowania `translator` sekcji:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość type translator aktywności kopiowania musi być równa: **TabularTranslator** | Yes |
-| schemaMapping | Kolekcji pary klucz wartość, która reprezentuje relację mapowania **po stronie źródła do ujścia po stronie**.<br/>- **Klucz:** reprezentuje źródło. Aby uzyskać **tabelaryczne źródła**, określ nazwę kolumny, zgodnie z definicją w strukturze zestawu danych; w przypadku **źródła w hierarchiczny**, określa wyrażenie ścieżki JSON dla każdego pola wyodrębnić i mapy.<br/>- **Wartość:** reprezentuje ujścia. Dla **tabelarycznych ujścia**, określ nazwę kolumny, zgodnie z definicją w strukturze zestawu danych; w przypadku **hierarchiczne ujścia**, określa wyrażenie ścieżki JSON dla każdego pola wyodrębnić i mapy. <br/> W przypadku danych hierarchicznych, dla pola w obiekcie głównym ścieżkę JSON zaczyna się od głównego $; w przypadku pól wewnątrz tablicy wybranej przez `collectionReference` właściwości JSON ścieżka zaczyna się od elementu tablicy.  | Yes |
+| schemaMapping | Kolekcji pary klucz wartość, która reprezentuje relację mapowania **po stronie źródła do ujścia po stronie**.<br/>- **Klucz:** reprezentuje źródło. Aby uzyskać **tabelaryczne źródła**, określ nazwę kolumny, zgodnie z definicją w strukturze zestawu danych; w przypadku **źródła w hierarchiczny**, określa wyrażenie ścieżki JSON dla każdego pola wyodrębnić i mapy.<br>- **Wartość:** reprezentuje ujścia. Dla **tabelarycznych ujścia**, określ nazwę kolumny, zgodnie z definicją w strukturze zestawu danych; w przypadku **hierarchiczne ujścia**, określa wyrażenie ścieżki JSON dla każdego pola wyodrębnić i mapy. <br>W przypadku danych hierarchicznych, dla pola w obiekcie głównym ścieżkę JSON zaczyna się od głównego $; w przypadku pól wewnątrz tablicy wybranej przez `collectionReference` właściwości JSON ścieżka zaczyna się od elementu tablicy.  | Yes |
 | collectionReference | Jeśli chcesz wykonać iterację i ekstrakcję danych z obiektów **wewnątrz pola tablicy** przy użyciu tego samego wzorca i przekonwertować każdego wiersza dla każdego obiektu, określ ścieżkę JSON tej tablicy cross-zastosować. Ta właściwość jest obsługiwana tylko wtedy, gdy źródło danych hierarchicznych. | Nie |
 
-**Przykład: kopiowanie danych z bazy danych MongoDB do bazy danych SQL:**
+**Przykład: kopiowanie danych z bazy danych MongoDB do bazy danych Oracle:**
 
-Na przykład, jeśli masz bazy danych MongoDB dokumentów o następującej zawartości: 
+Na przykład, jeśli masz bazy danych MongoDB dokumentów o następującej zawartości:
 
 ```json
 {
@@ -191,21 +248,21 @@ Skonfiguruj reguły mapowania schematu jako następujący przykładowy kod JSON 
 
 ```json
 {
-    "name": "CopyFromMongoDBToSqlAzure",
+    "name": "CopyFromMongoDBToOracle",
     "type": "Copy",
     "typeProperties": {
         "source": {
             "type": "MongoDbV2Source"
         },
         "sink": {
-            "type": "SqlSink"
+            "type": "OracleSink"
         },
         "translator": {
             "type": "TabularTranslator",
             "schemaMapping": {
-                "orderNumber": "$.number", 
-                "orderDate": "$.date", 
-                "order_pd": "prod", 
+                "orderNumber": "$.number",
+                "orderDate": "$.date",
+                "order_pd": "prod",
                 "order_price": "price",
                 "city": " $.city[0].name"
             },
@@ -226,7 +283,7 @@ Można znaleźć mapowania między typem natywnym typowi przejściowym w sekcji 
 
 ### <a name="supported-data-types"></a>Obsługiwane typy danych
 
-Usługa Data Factory obsługuje następujące typy danych tymczasowych: Możesz określić poniższe wartości podczas konfigurowania informacji o typie w [struktury zestawu danych](concepts-datasets-linked-services.md#dataset-structure) konfiguracji:
+Usługa Data Factory obsługuje następujące typy danych tymczasowych: Możesz określić poniższe wartości podczas konfigurowania informacji o typie w [struktury zestawu danych](concepts-datasets-linked-services.md#dataset-structure-or-schema) konfiguracji:
 
 * Byte[]
 * Boolean
@@ -242,31 +299,7 @@ Usługa Data Factory obsługuje następujące typy danych tymczasowych: Możesz 
 * String
 * Zakres czasu
 
-### <a name="explicit-data-type-conversion"></a>Konwersja typu jawnego danych
-
-Jeśli kopiowanie danych na dane przechowuje stały schemat, na przykład SQL Server/Oracle, gdy źródła i ujścia ma inny typ w tej samej kolumnie jawną konwersję typu powinien być zadeklarowany jako po stronie źródła:
-
-* Dla pliku źródłowego na przykład, CSV/Avro konwersji typów są zgłaszane za pośrednictwem struktury źródła z listy kolumn pełny (po stronie kolumny nazwy i ujścia po stronie Typ źródła)
-* Dla relacyjnego źródła (na przykład SQL/Oracle) należy osiągnąć konwersji typu rzutowania jawnego typu w instrukcji zapytania.
-
-## <a name="when-to-specify-dataset-structure"></a>Kiedy należy określić strukturę"zestawu danych"
-
-W poniższych scenariuszach "strukturę" w zestawie danych jest wymagane:
-
-* Stosowanie [konwersja typu jawnego danych](#explicit-data-type-conversion) dla plikowych źródeł podczas kopiowania (wejściowy zestaw danych)
-* Stosowanie [mapowania kolumn jawne](#explicit-column-mapping) podczas kopiowania (zarówno wejściowy i wyjściowy zestaw danych)
-* Kopiowanie ze źródła Dynamics 365/CRM (wejściowy zestaw danych)
-* Kopiowanie do usługi Cosmos DB jako obiekt zagnieżdżony, gdy źródłem nie są pliki JSON (wyjściowy zestaw danych)
-
-W poniższych scenariuszach sugerowana jest "strukturę" w zestawie danych:
-
-* Kopiowanie z pliku tekstowego, bez nagłówka (wejściowy zestaw danych). Można określić nazwy kolumn do pliku tekstowego, dopasowanie się do odpowiednich kolumn ujścia, można zapisać mapowania kolumn jawne Konfigurowanie.
-* Kopiowanie danych są przechowywane z elastycznym schematem, na przykład Azure tabeli/Cosmos DB (wejściowy zestaw danych), aby zagwarantować oczekiwanych danych (kolumny), które są kopiowane zamiast kopiowania pozwalają działania wnioskowania dotyczącego schematu oparte na górnym wierszy podczas każdego uruchomienia działania.
-
-
 ## <a name="next-steps"></a>Kolejne kroki
 Zobacz inne artykuły dotyczące działania kopiowania:
 
 - [Omówienie działania kopiowania](copy-activity-overview.md)
-- [Kopiuj działania odporności na uszkodzenia](copy-activity-fault-tolerance.md)
-- [Wydajności działania kopiowania](copy-activity-performance.md)

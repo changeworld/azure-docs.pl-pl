@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/05/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 5c393916bc977f4e0bc51913bdb2dfbbd6677c97
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c26c9021637b1b6ec2b3808db1307de9955bb660
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60323966"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922391"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint-using-resource-manager-template"></a>Szybki start: Tworzenie usługi Azure CDN profilu i punktu końcowego przy użyciu szablonu usługi Resource Manager
 
@@ -51,7 +51,7 @@ az group create --name cdn --location eastus
 
 W tym kroku utworzysz plik szablonu, który służy do wdrażania zasobów.
 
-Chociaż w tym przykładzie przedstawiono scenariusz ogólne przyspieszania witryny sieci Web, istnieje wiele ustawień, które można skonfigurować. Te ustawienia są dostępne w odwołaniu do szablonu usługi Azure Resource Manager. Zobacz odwołania do [profil CDN](https://docs.microsoft.com/en-us/azure/templates/microsoft.cdn/2017-10-12/profiles) i [punktu końcowego profilu CDN](https://docs.microsoft.com/en-us/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints).
+Chociaż w tym przykładzie przedstawiono scenariusz ogólne przyspieszania witryny sieci Web, istnieje wiele ustawień, które można skonfigurować. Te ustawienia są dostępne w odwołaniu do szablonu usługi Azure Resource Manager. Zobacz odwołania do [profil CDN](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles) i [punktu końcowego profilu CDN](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints).
 
 Należy pamiętać, że Microsoft CDN nie obsługuje modyfikowania lista typów zawartości.
 
@@ -224,8 +224,8 @@ az group delete --name cdn
 
 ## <a name="references"></a>Dokumentacja
 
-* Profil CDN - [dokumentacja szablonu usługi Azure Resource Manager](https://docs.microsoft.com/en-us/azure/templates/microsoft.cdn/2017-10-12/profiles)
-* Punkt końcowy usługi CDN - [dokumentacji dokumentacja szablonu usługi Azure Resource Manager](https://docs.microsoft.com/en-us/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints)
+* Profil CDN - [dokumentacja szablonu usługi Azure Resource Manager](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles)
+* Punkt końcowy usługi CDN - [dokumentacji dokumentacja szablonu usługi Azure Resource Manager](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: ed8a829bd73a53dc94bf8b08648b3d6684f718f6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d348592589f448dab9b8b4f3a1a3eb286d464417
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58109767"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64723456"
 ---
 # <a name="visualize-data-in-the-explorer-preview"></a>Wizualizowanie danych w programie explorer (wersja zapoznawcza)
 
@@ -216,10 +216,11 @@ Można pokazać i ukryć elementy w panelu wykresu, wybierając ikonę widoczne,
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Zobacz następujące artykuły:
-* [Usługi Azure storage czasu Series Insights w wersji zapoznawczej i transferu danych przychodzących](./time-series-insights-update-storage-ingress.md)
-* [Modelowanie danych](./time-series-insights-update-tsm.md)
-* [Diagnozowanie i rozwiązywanie problemów](./time-series-insights-update-how-to-troubleshoot.md)
+- Dowiedz się więcej o [magazynu i transferu danych przychodzących](./time-series-insights-update-storage-ingress.md) w wersji zapoznawczej Azure czas serii szczegółowych informacji.
+
+- Przeczytaj dokument czasu Series Insights w wersji zapoznawczej na [modelowania danych](./time-series-insights-update-tsm.md).
+
+- Dowiedz się, [sposób diagnozowania i rozwiązywania problemów](./time-series-insights-update-how-to-troubleshoot.md) wystąpienia usługi Time Series Insights.
 
 <!-- Images -->
 [1]: media/v2-update-explorer/explorer-one.png

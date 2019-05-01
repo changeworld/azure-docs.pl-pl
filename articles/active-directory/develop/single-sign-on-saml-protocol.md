@@ -18,12 +18,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d976a43173ce4f9deee0a723a895b40678e173b3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 033740d1ae75bb6f6fe8509d9ad123d55d9c6770
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60250506"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64704993"
 ---
 # <a name="single-sign-on-saml-protocol"></a>Protokół SAML logowania jednokrotnego
 
@@ -90,7 +90,7 @@ Jeśli `NameIDPolicy` zostanie podana, możesz uwzględnić jego opcjonalne `For
 Usługa Azure AD ignoruje `AllowCreate` atrybutu.
 
 ### <a name="requestauthncontext"></a>RequestAuthnContext
-`RequestedAuthnContext` Element określa metody uwierzytelnianie żądaną. Jest to opcjonalne w `AuthnRequest` elementów wysłanych do usługi Azure AD. Usługa Azure AD obsługuje tylko jeden `AuthnContextClassRef` wartość: `urn:oasis:names:tc:SAML:2.0:ac:classes:Password`.
+`RequestedAuthnContext` Element określa metody uwierzytelnianie żądaną. Jest to opcjonalne w `AuthnRequest` elementów wysłanych do usługi Azure AD. Usługa Azure AD obsługuje `AuthnContextClassRef` wartości, takich jak `urn:oasis:names:tc:SAML:2.0:ac:classes:Password`.
 
 ### <a name="scoping"></a>Wyznaczanie zakresu
 `Scoping` Elementu, który zawiera listę dostawców tożsamości, jest opcjonalny w `AuthnRequest` elementów wysłanych do usługi Azure AD.

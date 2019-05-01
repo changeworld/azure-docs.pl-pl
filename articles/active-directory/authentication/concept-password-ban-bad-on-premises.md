@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d58c019cf3d801ce938a4ca6eca70b1606bf4ff6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 644054960e12979c231bbf50a5979bc12d343f89
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60415858"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64694770"
 ---
 # <a name="enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>Wymuszanie ochrona za pomocą hasła usługi Azure AD dla usługi Active Directory systemu Windows Server
 
-Ochrony hasłem w usłudze Azure AD jest funkcją, która rozszerza zasady haseł w organizacji. Ochrona za pomocą hasła wdrożenia w środowisku lokalnym używa zarówno globalnych i niestandardowych zakazanych haseł listy, które są przechowywane w usłudze Azure AD. Robi się tego samego sprawdzenia lokalnego jako usługi Azure AD dla zmian oparte na chmurze.
+Ochrony hasłem w usłudze Azure AD jest funkcją, która rozszerza zasady haseł w organizacji. Lokalne wdrożenie ochrony hasłem używa zarówno globalnych i niestandardowych zakazanych haseł listy, które są przechowywane w usłudze Azure AD. Robi się tego samego sprawdzenia lokalnego jako usługi Azure AD dla zmian oparte na chmurze.
 
 ## <a name="design-principles"></a>Zasady projektowania
 

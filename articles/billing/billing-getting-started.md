@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: banders
-ms.openlocfilehash: d215e2ba5d650b532b9d7554ccca9ad5537cf4de
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 146c74fe751e75fb85563378be6f812802928fe2
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60919450"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918933"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Uniknąć nieoczekiwanych opłat za pomocą rozliczeń platformy Azure i zarządzania kosztami
 
@@ -203,7 +203,7 @@ Umowa SLA progi różnią się usługi. Na przykład warstwa sieci Web SQL zgodn
 
 W przypadku niektórych usług istnieją wymagania wstępne dotyczące umowy SLA do zastosowania. Na przykład maszyny wirtualne, musi mieć co najmniej dwóch wystąpieniach wdrożonych w tym samym zestawie dostępności.
 
-Aby uzyskać więcej informacji, zobacz [umowy dotyczące poziomu usług](https://azure.microsoft.com/en-us/support/legal/sla/) dokumentacji i [podsumowanie umów SLA dla usług platformy Azure](https://azure.microsoft.com/en-us/support/legal/sla/summary/) dokumentacji.
+Aby uzyskać więcej informacji, zobacz [umowy dotyczące poziomu usług](https://azure.microsoft.com/support/legal/sla/) dokumentacji i [podsumowanie umów SLA dla usług platformy Azure](https://azure.microsoft.com/support/legal/sla/summary/) dokumentacji.
 
 ## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: yili
 ms.custom: seodec18
-ms.openlocfilehash: e3b6eed6f70eb2803ef4fa4e6b5d32fb0a4d843a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 7cc3a4d98901e618369c98ceee8125d2abbe94e3
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60851157"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919978"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Usługa Azure App Service w systemie Linux — często zadawane pytania
 
@@ -136,7 +136,7 @@ Dodaj nazwę pełnego obrazu, łącznie z adresem URL prywatnego rejestru (na pr
 
 **Czy mogę udostępnić więcej niż jeden port w mojej niestandardowego obrazu kontenera?**
 
-Obecnie obsługujemy udostępnianie więcej niż jeden port.
+Nie obsługujemy udostępnianie więcej niż jeden port.
 
 **Czy mogę przenieść mój własny magazyn**
 
@@ -154,11 +154,11 @@ Mamy automatyczne wykrywanie portu. Można również określić, że aplikacja n
 
 Nie, platforma obsługuje zakończenia połączenia HTTPS w udostępnionym frontonów.
 
-## <a name="multi-container-with-docker-compose-and-kubernetes"></a>Tworzenia wielu kontenerów przy użyciu rozwiązania Docker i Kubernetes
+## <a name="multi-container-with-docker-compose"></a>Wielu kontenerów przy użyciu rozwiązania Docker Compose
 
 **Jak skonfigurować usługi Azure Container Registry (ACR) do użycia z wieloma kontenerami?**
 
-Aby można było używać usługi ACR z wieloma kontenerami **wszystkie obrazy kontenerów** musi być hostowane na tym samym serwerze rejestru ACR. Gdy są one na tym samym serwerze rejestru, należy utworzyć ustawienia aplikacji, a następnie zaktualizuj plik konfiguracji narzędzia Docker Compose lub Kubernetes, aby zawierał on nazwę obrazu usługi ACR.
+Aby można było używać usługi ACR z wieloma kontenerami **wszystkie obrazy kontenerów** musi być hostowane na tym samym serwerze rejestru ACR. Gdy są one na tym samym serwerze rejestru, należy utworzyć ustawienia aplikacji, a następnie zaktualizuj plik konfiguracji narzędzia Docker Compose, aby zawierał on nazwę obrazu usługi ACR.
 
 Utwórz następujące ustawienia aplikacji:
 

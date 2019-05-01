@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/14/2019
+ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6911b19c680c2fdb8c372347c4dd0fca60bb0e0b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ff151ff8e14b5cf9602d4e7e2e9c6cb2118a8a65
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60245523"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918499"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Program Azure AD Connect: Skonfiguruj uprawnienia dla konta usługi AD DS łącznika 
 
@@ -25,7 +25,7 @@ Moduł programu PowerShell o nazwie [ADSyncConfig.psm1](reference-connect-adsync
 ## <a name="overview"></a>Omówienie 
 Następujące polecenia cmdlet programu PowerShell może służyć do ustawienia uprawnień usługi Active Directory, konta usługi AD DS łącznika dla każdej funkcji, którą wybrano do włączenia w programie Azure AD Connect. Aby uniknąć problemów, przygotuj uprawnień usługi Active Directory z wyprzedzeniem zawsze wtedy, gdy chcesz zainstalować program Azure AD Connect przy użyciu konta domeny niestandardowej, aby nawiązać połączenie z lasem usługi. Ten moduł ADSyncConfig można również skonfigurować uprawnienia, po wdrożeniu usługi Azure AD Connect.
 
-![](media/how-to-connect-configure-ad-ds-connector-account/configure1.png)
+![Omówienie usługi ad ds konto](media/how-to-connect-configure-ad-ds-connector-account/configure1.png)
 
 Dla usługi Azure AD Connect instalacji programu Express, automatycznie generowanych (MSOL_nnnnnnnnnn) utworzono konto w usłudze Active Directory wszystkie niezbędne uprawnienia, więc nie trzeba używać tego modułu ADSyncConfig, chyba że został zablokowany uprawnień dziedziczenie w jednostkach organizacyjnych lub w określonych obiektach usługi Active Directory, które chcesz zsynchronizować z usługą Azure AD. 
  

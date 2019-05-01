@@ -1,9 +1,8 @@
 ---
-title: Usługa Azure Network Security Best Practices | Dokumentacja firmy Microsoft
+title: Najlepsze rozwiązania dotyczące zabezpieczeń sieci — Microsoft Azure
 description: Ten artykuł zawiera zestaw najlepszych rozwiązań dla sieci zabezpieczeń przy użyciu wbudowanych funkcji platformy Azure.
 services: security
-documentationcenter: na
-author: TomShinder
+author: TerryLanfear
 manager: barbkess
 editor: TomShinder
 ms.assetid: 7f6aa45f-138f-4fde-a611-aaf7e8fe56d1
@@ -12,18 +11,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/17/2018
+ms.date: 04/28/2019
 ms.author: TomSh
-ms.openlocfilehash: b644a175814fb28563a2524e27f52d0285415d66
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 5bec7db1c4409165242416df16e437b121381b49
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60610957"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64872558"
 ---
 # <a name="azure-network-security-best-practices"></a>Najlepsze rozwiązania dotyczące zabezpieczeń sieci platformy Azure
-Możesz połączyć [maszyn wirtualnych (VM)](https://azure.microsoft.com/services/virtual-machines/) i do innych urządzeń sieciowych, umieszczając je na [sieciami wirtualnymi platformy Azure](https://azure.microsoft.com/documentation/services/virtual-network/). Oznacza to, że możesz połączyć karty interfejsu sieci wirtualnej z siecią wirtualną, aby umożliwić komunikację opartego na protokole IP między urządzeniami z włączoną obsługą sieci. Maszyny wirtualne połączone z siecią wirtualną platformy Azure mogą łączyć się urządzenia w tej samej sieci wirtualnej, w różnych sieciach wirtualnych, w Internecie lub w sieci lokalnej.
-
 W tym artykule omówiono kolekcja najlepszych rozwiązań dotyczących zabezpieczeń sieci platformy Azure. Następujące najlepsze rozwiązania są uzyskiwane z naszych doświadczeniach z sieci platformy Azure i procesy, przez klientów, takie jak samodzielnie.
 
 Dla każdego najlepszym rozwiązaniem w tym artykule opisano:
@@ -35,8 +32,6 @@ Dla każdego najlepszym rozwiązaniem w tym artykule opisano:
 * Jak można dowiesz się umożliwić najlepszym rozwiązaniem jest
 
 W tym artykule najlepszych rozwiązań dotyczących platformy Azure sieci zabezpieczeń opiera się na opinii consensus i funkcji platformy Azure i zestawy funkcji występujących w czasie, który został zapisany w tym artykule. Opinie i technologii zmieniają się wraz z upływem czasu, a w tym artykule zostanie zaktualizowana w regularnych odstępach czasu, aby odzwierciedlać wprowadzone zmiany.
-
-W poniższych sekcjach opisano najlepsze rozwiązania dotyczące zabezpieczeń sieci.
 
 ## <a name="logically-segment-subnets"></a>Logicznie segmentu podsieci
 Sieci wirtualne platformy Azure są podobne do sieci lokalnej w sieci lokalnej. Idei siecią wirtualną platformy Azure jest utworzenie pojedynczego adresu IP adres oparte na przestrzeni sieci prywatnej w którym można umieścić wszystkich maszynach wirtualnych platformy Azure. Prywatnych przestrzeni adresów IP dostępnych znajdują się w klasie (10.0.0.0/8), klasy B (172.16.0.0/12) i zakresy adresów klasy C (192.168.0.0/16).

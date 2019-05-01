@@ -8,12 +8,12 @@ ms.date: 01/02/2019
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 77f07394eb895c08ef3e366bd486b4270714c2fc
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.openlocfilehash: 4186af31e17acea09e6b3c1a0121d2fcbe63f800
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63766267"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917608"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Często zadawane pytania (FAQ) dotyczące usługi Azure Files
 [Usługa Azure Files](storage-files-introduction.md) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem będące standardami branżowymi [protokołu bloku komunikatów serwera (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Udziały plików platformy Azure można zainstalować równolegle na chmurowych lub lokalnych wdrożeń systemu Windows, Linux i macOS. Udziały plików platformy Azure na komputerach z systemem Windows Server, również buforujesz przy użyciu usługi Azure File Sync w celu zapewnienia szybkiego dostępu blisko użycia danych.
@@ -249,7 +249,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi A
 * <a id="port-445-blocked"></a>
 **Zainstaluj Moje usługodawcy internetowego lub IT bloki portu 445 kończy się niepowodzeniem usługi Azure Files. Co zrobić?**
 
-    Informacje na temat [różne sposoby obejścia zablokowany port 445 tutaj](https://docs.microsoft.com/en-us/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked). Usługa Azure Files umożliwia tylko nawiązywanie połączeń za pomocą protokołu SMB 3.0 (z obsługą szyfrowania) z poza region lub centrum danych. Protokół SMB 3.0 wprowadził wielu funkcji zabezpieczeń, łącznie z szyfrowaniem kanału, który jest bardzo bezpieczny do użycia przez internet. Jednak jego się zdarzyć, że port 445 został zablokowany z przyczyn historycznych luk w zabezpieczeniach w niższych wersji protokołu SMB. W idealnym przypadku port powinien zostać zablokowany na tylko dla ruchu SMB 1.0 oraz protokół SMB 1.0 powinno zostać wyłączone na wszystkich klientach.
+    Informacje na temat [różne sposoby obejścia zablokowany port 445 tutaj](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked). Usługa Azure Files umożliwia tylko nawiązywanie połączeń za pomocą protokołu SMB 3.0 (z obsługą szyfrowania) z poza region lub centrum danych. Protokół SMB 3.0 wprowadził wielu funkcji zabezpieczeń, łącznie z szyfrowaniem kanału, który jest bardzo bezpieczny do użycia przez internet. Jednak jego się zdarzyć, że port 445 został zablokowany z przyczyn historycznych luk w zabezpieczeniach w niższych wersji protokołu SMB. W idealnym przypadku port powinien zostać zablokowany na tylko dla ruchu SMB 1.0 oraz protokół SMB 1.0 powinno zostać wyłączone na wszystkich klientach.
 
 * <a id="expressroute-not-required"></a>
 **Należy ponownie nawiązać połączenie z usługą Azure Files przy użyciu usługi Azure ExpressRoute lub używania usługi Azure File Sync w środowisku lokalnym?**  

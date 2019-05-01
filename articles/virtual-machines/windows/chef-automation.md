@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: diviso
-ms.openlocfilehash: a973d8dbab18e9ea66afb5ffff83f47c3ad98f93
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 9cb7172fb529d8f0cd8650db7c06a78176ef342d
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60845009"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64729559"
 ---
 # <a name="automating-azure-virtual-machine-deployment-with-chef"></a>Automatyzowanie wdrażania maszyny wirtualnej platformy Azure przy użyciu narzędzia Chef
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -134,7 +134,9 @@ cookbook_path       ["#{current_dir}/cookbooks"]
 
 Dodaj następujące informacje do swojej knife.rb:
 
-validation_key validation_client_name "moduł sprawdzania myorg" "" #{current_dir}/myorg.pem"
+validation_client_name "moduł sprawdzania myorg"
+
+validation_key           "#{current_dir}/myorg.pem"
 
 Dodaj również następującą pliku ustawień publikowania wiersza odzwierciedlający Nazwa subskrypcji platformy Azure.
 

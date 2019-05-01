@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: fc05c5c5917667d4bd9c869c9370ac952893ab26
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 68d16a7e25e6f9a294dee1f077d53aa4551cda5e
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60456211"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924810"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Informacje o wersji programu Microsoft Azure Storage Explorer
 
@@ -38,7 +38,7 @@ Ten artykuł zawiera informacje o wersji programu Azure Storage Explorer 1.4.3 w
 ### <a name="new"></a>Nowa
 
 * Teraz można zmienić właściciela i grupy będącej właścicielem, podczas zarządzania dostępem dla kontenera usługi ADLS Gen2, pliku lub folderu.
-* W Windows aktualizowanie Eksploratora usługi Storage z poziomu produktu jest teraz przyrostowej instalacji. Powinno to spowodować szybsze działanie aktualizacji. Jeśli użytkownik sobie tego życzy czysta instalacja, a następnie możesz pobrać [Instalatora](https://azure.microsoft.com/en-us/features/storage-explorer/) samodzielnie, a następnie zainstalować ręcznie. #1089
+* W Windows aktualizowanie Eksploratora usługi Storage z poziomu produktu jest teraz przyrostowej instalacji. Powinno to spowodować szybsze działanie aktualizacji. Jeśli użytkownik sobie tego życzy czysta instalacja, a następnie możesz pobrać [Instalatora](https://azure.microsoft.com/features/storage-explorer/) samodzielnie, a następnie zainstalować ręcznie. #1089
 
 ### <a name="preview-features"></a>Funkcje do testowania
 
@@ -59,7 +59,7 @@ Ten artykuł zawiera informacje o wersji programu Azure Storage Explorer 1.4.3 w
 
 ### <a name="known-issues"></a>Znane problemy
 
-* Korzystając z funkcji RBAC, Eksploratora usługi Storage wymaga niektóre uprawnienia warstwy zarządzania w celu uzyskania dostępu do zasobów magazynu. Zobacz [przewodnik rozwiązywania problemów z](https://docs.microsoft.com/en-us/azure/storage/common/storage-explorer-troubleshooting) Aby uzyskać więcej informacji.
+* Korzystając z funkcji RBAC, Eksploratora usługi Storage wymaga niektóre uprawnienia warstwy zarządzania w celu uzyskania dostępu do zasobów magazynu. Zobacz [przewodnik rozwiązywania problemów z](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) Aby uzyskać więcej informacji.
 * Podjęto próbę dostępu do obiektów blob Gen2 usługi ADLS, gdy używasz serwera proxy może zakończyć się niepowodzeniem.
 * Odłączanie od zasobu dołączone za pomocą identyfikatora URI połączenia SAS, takich jak kontener obiektów blob może spowodować błąd uniemożliwiający inne załączniki z pojawią się poprawnie. Aby obejść ten problem, wystarczy odświeżyć węzeł grupy. Zobacz 537 # Aby uzyskać więcej informacji.
 * Odłączanie od zasobu dołączone za pomocą identyfikatora URI połączenia SAS, takich jak kontener obiektów blob może spowodować błąd uniemożliwiający inne załączniki z pojawią się poprawnie. Aby obejść ten problem, wystarczy odświeżyć węzeł grupy. Aby uzyskać więcej informacji zobacz #537.

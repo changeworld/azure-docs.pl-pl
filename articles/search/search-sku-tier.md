@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: b50d0c0ca9a4000cc0c725453a3ef04b4bed9275
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 9c48703676dad16f5f86035400056a8c90f28f60
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61282514"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64873119"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Wybierz warstwę cenową dla usługi Azure Search
 
@@ -60,7 +60,7 @@ Poniższa tabela zawiera listę dostępnych warstw. Inne źródła informacji wa
 
 ## <a name="how-billing-works"></a>Sposób działania rozliczeń
 
-W usłudze Azure Search są naliczane opłaty w Azure Search na trzy sposoby, a istnieją składniki, stałe i zmienne. W tej sekcji omówiono z kolei w każdej części rozliczeń.
+W usłudze Azure Search istnieją trzy sposoby ponosić kosztów w usłudze Azure Search, a istnieją składniki, stałe i zmienne. W tej sekcji omówiono z kolei w każdej części rozliczeń.
 
 ### <a name="1-core-service-costs-fixed-and-variable"></a>1. Koszty usługi podstawowej (stałe i zmienne)
 

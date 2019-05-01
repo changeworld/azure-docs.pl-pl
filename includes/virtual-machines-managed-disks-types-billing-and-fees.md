@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 3e303ce2b6f28500406bacf5b66d26f9c78ba46d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 42ab8be45d4086589f0793531003700e7552a440
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60618057"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64744417"
 ---
 **Wychodzące transfery danych**: [Wychodzące transfery danych](https://azure.microsoft.com/pricing/details/bandwidth/) (dane wychodzące z centrów danych platformy Azure) Naliczanie opłat za zużycie przepustowości.
 
-**Transakcje**: Są naliczane dla liczby transakcji, które można wykonać na standardowa dysku zarządzanego.
+**Transakcje**: Są naliczane dla liczby transakcji, które można wykonać na standardowa dysku zarządzanego. Dla standardowych dysków SSD rozmiar jednostki we/wy 256 KiB służy do księgowość liczby transakcji. Większego rozmiaru operacji We/Wy są liczone jako wiele operacji We/Wy o rozmiarze 256 KiB. Dla standardowych dysków twardych każda operacja We/Wy jest traktowany jako pojedynczą transakcję, bez względu na rozmiar operacji We/Wy.
 
 Szczegółowe informacje na temat cennika usługi Managed Disks, w tym koszty transakcji, zobacz [cennika usługi Managed Disks](https://azure.microsoft.com/pricing/details/managed-disks).
 

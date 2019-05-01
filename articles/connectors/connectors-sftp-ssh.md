@@ -10,12 +10,12 @@ ms.reviewer: divswa, LADocs
 ms.topic: article
 tags: connectors
 ms.date: 01/15/2019
-ms.openlocfilehash: 660d785baf12052bddf5206d8641116c9ac606aa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5f82c654b443d58c9ce38c2fb0f48c1654daeb34
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60537704"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922249"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Monitorowanie, tworzenie i zarządzanie plikami SFTP przy użyciu protokołu SSH i Azure Logic Apps
 
@@ -32,7 +32,7 @@ Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jes
 
 ## <a name="limits"></a>Limits
 
-* Akcje SFTP-SSH może odczytać lub zapisywać pliki, które są *1 GB lub mniej* za zarządzanie danymi jako *50 MB fragmentów*, nie 1 GB elementy.
+* Akcje SFTP-SSH może odczytać lub zapisywać pliki, które są *1 GB lub mniej* za zarządzanie danymi jako *15 MB fragmentów*, nie 1 GB elementy.
 
 * Dla plików *większą niż 1 GB*, można użyć akcji [segmentu komunikat](../logic-apps/logic-apps-handle-large-messages.md). Obecnie usługa SFTP-SSH wyzwalaczy nie obsługują segmentu.
 
@@ -44,7 +44,7 @@ Więcej różnic, można przejrzeć [porównania SFTP-SSH i SFTP](#comparison) p
 
 Poniżej przedstawiono inne podstawowe różnice między łącznik SFTP-SSH i łącznika SFTP, w którym łącznik SFTP-SSH ma te możliwości:
 
-* Używa <a href="https://github.com/sshnet/SSH.NET" target="_blank"> **SSH.NET** </a> biblioteki, która to biblioteka Secure Shell (SSH) typu open source, która obsługuje platformy .NET.
+* Używa [biblioteki SSH.NET](https://github.com/sshnet/SSH.NET), czyli biblioteki Secure Shell (SSH) typu open source, który obsługuje platformy .NET.
 
   > [!NOTE]
   >
@@ -54,7 +54,7 @@ Poniżej przedstawiono inne podstawowe różnice między łącznik SFTP-SSH i ł
   > * **Algorytmy szyfrowania**: EDE3-DES-CBC, DES-EDE3-CFB DES-CBC, AES-128-CBC, 192-AES-CBC i AES-256-CBC
   > * **Odcisk palca**: MD5
 
-* Akcje może odczytać lub zapisać pliki *do 1 GB* w porównaniu do łącznika SFTP, ale obsługuje dane w 50 MB fragmentów, nie 1 GB fragmentów. W przypadku plików większych niż 1 GB, można również użyć akcji [segmentu komunikat](../logic-apps/logic-apps-handle-large-messages.md). Obecnie usługa SFTP-SSH wyzwalaczy nie obsługują segmentu.
+* Akcje może odczytać lub zapisać pliki *do 1 GB* w porównaniu do łącznika SFTP, ale obsługuje dane w 15 MB fragmentów, nie 1 GB fragmentów. W przypadku plików większych niż 1 GB, można również użyć akcji [segmentu komunikat](../logic-apps/logic-apps-handle-large-messages.md). Obecnie usługa SFTP-SSH wyzwalaczy nie obsługują segmentu.
 
 * Udostępnia **Utwórz folder** akcji, która tworzy folder w określonej ścieżce na serwerze SFTP.
 
@@ -136,7 +136,7 @@ Wyzwalacze SFTP-SSH działają przez sondowanie system plików SFTP i szukasz ka
 
 Jeśli wyzwalacz wykryje nowy plik, wyzwalacz sprawdzi, czy nowy plik jest pełny i niezapisane częściowo. Na przykład plik może mieć zmiany w toku, gdy wyzwalacz sprawdza, czy serwer plików. Aby uniknąć, zwracając częściowo napisane pliku, wyzwalacz — informacje o sygnaturę czasową dla pliku, który zawiera ostatnie zmiany, ale nie natychmiast przywrócić ten plik. Wyzwalacz zwraca plik tylko wtedy, gdy ponownie sondowania serwera. Czasami to zachowanie może powodować opóźnienia, która jest maksymalnie dwa razy tego wyzwalacza interwał sondowania. 
 
-Podczas żądania zawartości pliku, wyzwalaczy nie uzyskasz plików większych niż 50 MB. Aby pobrać pliki większe niż 50 MB, należy korzystać z tego wzoru: 
+Podczas żądania zawartości pliku, wyzwalaczy nie uzyskasz pliki większe niż 15 MB. Aby pobrać pliki większe niż 15 MB, należy korzystać z tego wzoru: 
 
 * Użyj wyzwalacz, który zwraca wartość właściwości pliku, taką jak **gdy plik jest dodawany lub modyfikowany (tylko właściwości)**.
 
@@ -152,7 +152,7 @@ Ten wyzwalacz jest uruchamiany przepływ pracy aplikacji logiki, gdy plik zostan
 
 **Przykład Enterprise**: Tego wyzwalacza można używać do monitorowania folderu SFTP dla nowych plików, które reprezentują zamówienia. Można następnie użyć akcji SFTP takich jak **Pobierz zawartość pliku** , Pobierz zawartość w kolejności do dalszego przetwarzania i przechowywania tej kolejności w bazie danych zamówień.
 
-Podczas żądania zawartości pliku, wyzwalaczy nie uzyskasz plików większych niż 50 MB. Aby pobrać pliki większe niż 50 MB, należy korzystać z tego wzoru: 
+Podczas żądania zawartości pliku, wyzwalaczy nie uzyskasz pliki większe niż 15 MB. Aby pobrać pliki większe niż 15 MB, należy korzystać z tego wzoru: 
 
 * Użyj wyzwalacz, który zwraca wartość właściwości pliku, taką jak **gdy plik jest dodawany lub modyfikowany (tylko właściwości)**.
 
@@ -164,7 +164,7 @@ Podczas żądania zawartości pliku, wyzwalaczy nie uzyskasz plików większych 
 
 Ta akcja pobiera zawartość z pliku na serwer SFTP. Na przykład można dodać wyzwalacza z poprzedniego przykładu i warunek, który musi spełniać zawartość pliku. Jeśli warunek jest spełniony, można uruchomić akcję, która pobiera zawartość. 
 
-Podczas żądania zawartości pliku, wyzwalaczy nie uzyskasz plików większych niż 50 MB. Aby pobrać pliki większe niż 50 MB, należy korzystać z tego wzoru: 
+Podczas żądania zawartości pliku, wyzwalaczy nie uzyskasz pliki większe niż 15 MB. Aby pobrać pliki większe niż 15 MB, należy korzystać z tego wzoru: 
 
 * Użyj wyzwalacz, który zwraca wartość właściwości pliku, taką jak **gdy plik jest dodawany lub modyfikowany (tylko właściwości)**.
 

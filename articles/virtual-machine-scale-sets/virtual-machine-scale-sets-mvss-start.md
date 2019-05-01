@@ -1,10 +1,10 @@
 ---
 title: Więcej informacji na temat szablonów zestawów skalowania maszyn wirtualnych | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć szablon zestawu minimalnej wielkości dla zestawów skalowania maszyn wirtualnych
+description: Dowiedz się, jak utworzyć szablon zestawu skalowania podstawowe dla zestawów skalowania maszyn wirtualnych
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: mayanknayar
-manager: jeconnoc
+manager: drewm
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
@@ -13,27 +13,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/01/2017
+ms.date: 04/26/2019
 ms.author: manayar
-ms.openlocfilehash: d4a3dd6ae390fd48a8085cca33063a6bb74bd96c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 8b6a6b78dc74572b22d397b5536efa1394401bbc
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60805586"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64868926"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>Więcej informacji na temat szablonów zestawów skalowania maszyn wirtualnych
-[Szablony usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment) to doskonały sposób wdrażania grup powiązanych zasobów. W tej serii samouczków pokazano, jak utworzyć szablon zestawu minimalnej wielkości oraz jak zmodyfikować ten szablon służy do potrzeb różnych scenariuszy. Wszystkie przykłady pochodzą z tego [repozytorium GitHub](https://github.com/gatneil/mvss). 
+[Szablony usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment) to doskonały sposób wdrażania grup powiązanych zasobów. W tej serii samouczków pokazano sposób tworzenia szablonu zestawu skalowania podstawowe oraz jak zmodyfikować ten szablon służy do potrzeb różnych scenariuszy. Wszystkie przykłady pochodzą z tego [repozytorium GitHub](https://github.com/gatneil/mvss).
 
 Ten szablon ma być proste. Bardziej kompletny przykładów dotyczących skalowania zestawu szablonów, zobacz [repozytorium szablonów szybkiego startu platformy Azure w witrynie GitHub](https://github.com/Azure/azure-quickstart-templates) i Wyszukaj foldery, które zawierają ciąg `vmss`.
 
 Jeśli znasz już tworzenia szablonów, możesz przejść do sekcji "Następne kroki", aby zobaczyć, jak zmodyfikować tego szablonu.
-
-## <a name="review-the-template"></a>Sprawdź szablon
-
-Usługa GitHub umożliwia szablon zestawu minimalnej wielkości, przejrzyj [azuredeploy.json](https://raw.githubusercontent.com/gatneil/mvss/minimum-viable-scale-set/azuredeploy.json).
-
-W tym samouczku Przeanalizujmy różnice (`git diff master minimum-viable-scale-set`) do utworzenia minimalnej wielkości szablon zestawu eliminujemy.
 
 ## <a name="define-schema-and-contentversion"></a>Zdefiniuj $schema i contentversion —
 Najpierw należy zdefiniować `$schema` i `contentVersion` w szablonie. `$schema` Element określa wersję języka szablonu i służy do wyróżniania składni w programie Visual Studio i podobne funkcje sprawdzania poprawności. `contentVersion` Element nie jest używany przez platformę Azure. Zamiast tego pomaga Ci śledzić wersję szablonu.
@@ -43,6 +37,7 @@ Najpierw należy zdefiniować `$schema` i `contentVersion` w szablonie. `$schema
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
   "contentVersion": "1.0.0.0",
 ```
+
 ## <a name="define-parameters"></a>Zdefiniuj parametry
 Następnie zdefiniuj dwa parametry `adminUsername` i `adminPassword`. Parametry są wartościami, które określisz po ich wdrożeniu. `adminUsername` Parametr jest po prostu `string` typu, ale ponieważ `adminPassword` jest przedstawienie wpisu tajnego, wpisz ją `securestring`. Później te parametry są przekazywane do konfiguracji zestawu skalowania.
 
@@ -70,13 +65,13 @@ Następnym ekranem jest sekcji zasobów szablonu. W tym miejscu możesz zdefinio
    "resources": [
 ```
 
-Wszystkie zasoby wymagają `type`, `name`, `apiVersion`, i `location` właściwości. W tym przykładzie pierwszy zasób ma typ [siecią Microsoft.Network/virtualNetwork](/azure/templates/microsoft.network/virtualnetworks), nazwa `myVnet`i apiVersion `2016-03-30`. (Aby uzyskać najnowszą wersję interfejsu API dla typu zasobu, zobacz [odwołanie do szablonu usługi Azure Resource Manager](/azure/templates/).)
+Wszystkie zasoby wymagają `type`, `name`, `apiVersion`, i `location` właściwości. W tym przykładzie pierwszy zasób ma typ [siecią Microsoft.Network/virtualNetwork](/azure/templates/microsoft.network/virtualnetworks), nazwa `myVnet`i apiVersion `2018-11-01`. (Aby uzyskać najnowszą wersję interfejsu API dla typu zasobu, zobacz [odwołanie do szablonu usługi Azure Resource Manager](/azure/templates/).)
 
 ```json
      {
        "type": "Microsoft.Network/virtualNetworks",
        "name": "myVnet",
-       "apiVersion": "2016-12-01",
+       "apiVersion": "2018-11-01",
 ```
 
 ## <a name="specify-location"></a>Określ lokalizację
@@ -117,7 +112,7 @@ W tym przypadku istnieje tylko jeden element na liście sieci wirtualnej z poprz
      {
        "type": "Microsoft.Compute/virtualMachineScaleSets",
        "name": "myScaleSet",
-       "apiVersion": "2016-04-30-preview",
+       "apiVersion": "2019-03-01",
        "location": "[resourceGroup().location]",
        "dependsOn": [
          "Microsoft.Network/virtualNetworks/myVnet"
@@ -136,7 +131,7 @@ Zestaw skalowania musi wiedzieć, jaki rozmiar maszyny Wirtualnej do utworzenia 
 ```
 
 ### <a name="choose-type-of-updates"></a>Wybierz typ aktualizacji
-Również zestawu skalowania, trzeba wiedzieć, jak obsługiwać aktualizacje w zestawie skalowania. Obecnie dostępne są dwie opcje `Manual` i `Automatic`. Aby uzyskać więcej informacji na temat różnic między nimi, zobacz dokumentację na [sposobu uaktualniania zestawu skalowania](./virtual-machine-scale-sets-upgrade-scale-set.md).
+Również zestawu skalowania, trzeba wiedzieć, jak obsługiwać aktualizacje w zestawie skalowania. Obecnie dostępne są trzy opcje `Manual`, `Rolling` i `Automatic`. Aby uzyskać więcej informacji na temat różnic między nimi, zobacz dokumentację na [sposobu uaktualniania zestawu skalowania](./virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model).
 
 ```json
        "properties": {

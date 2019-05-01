@@ -2,21 +2,29 @@
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: include
-ms.date: 10/26/2018
+ms.date: 04/28/2019
 ms.author: raynew
-ms.openlocfilehash: e18d0a6a01a86f844edc213fc95003cf4f4b46c9
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: cf39baf34096691144181332566cf567ebc02310
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50166454"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925604"
 ---
-* Połącz się z maszyną wirtualną serwera przetwarzania za pomocą Podłączania pulpitu zdalnego.
-* Narzędzie cspsconfigtool.exe można uruchamiać przez kliknięcie skrótu dostępnego na pulpicie. (Narzędzie zostanie automatycznie uruchomiony, jeśli to po raz pierwszy logujesz się do serwera przetwarzania).
-  - W pełni kwalifikowana nazwa domeny (FQDN) lub adres IP.
-  - Port, na którym nasłuchuje serwer konfiguracji. Ta wartość powinna być równa 443.
-  - Hasło połączenia do łączenia się z serwerem konfiguracji.
-  - Port transferu danych do skonfigurowania dla tego serwera przetwarzania. Pozostaw wartość domyślną, chyba że w swoim środowisku masz ustawiony inny numer portu.
+1. Ustanowienia połączenia pulpitu zdalnego do maszyny z systemem serwera przetwarzania. 
+2. Uruchom cspsconfigtool.exe, aby uruchomić narzędzie konfiguracji serwera procesu odzyskiwania lokacji platformy Azure.
+    - Narzędzie jest uruchamiane automatycznie podczas pierwszego logowania się do serwera przetwarzania.
+    - Jeśli go nie jest otwierany automatycznie, kliknij jego skrót na pulpicie.
 
+3. W **serwera konfiguracji, nazwy FQDN lub adres IP**, określ nazwę lub adres IP serwera konfiguracji za pomocą którego ma zostać zarejestrowany na serwerze przetwarzania.
+4. W **Port serwera konfiguracji**, upewnij się, że określono 443. Jest to port, na którym nasłuchuje serwer konfiguracji dla żądań.
+5. W **hasło połączenia**, określ hasło określone podczas konfigurowania serwera konfiguracji. Aby znaleźć hasło:
+    -  Na serwerze konfiguracji, przejdź do folderu instalacji usługi Site Recovery **\home\svssystems\bin\**. 
+    - Uruchom następujące polecenie: **genpassphrase.exe.n**. Pokazuje lokalizację hasło, które można następnie zanotuj.
+
+6. W **Port transferu danych**, pozostaw wartość domyślną, chyba że został określony port niestandardowy.
+
+7. Kliknij przycisk **Zapisz** zapisać ustawienia i rejestrowanie serwera przetwarzania.
+
+    
     ![Rejestrowanie serwera przetwarzania](./media/site-recovery-vmware-register-process-server/register-ps.png)
-* Kliknij przycisk Zapisz, aby zapisać konfigurację i zarejestrować serwer przetwarzania.

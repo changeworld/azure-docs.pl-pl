@@ -8,19 +8,20 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 56b846ae-a1e7-45ae-a79d-992a87f075ba
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/16/2018
+ms.date: 04/24/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b09e14bfee700750192c5a007cbb3140fd49d137
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c7770cd5b12a14e69c00d93b1b518e5007afd9c3
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57885491"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64693713"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-beta"></a>Samouczek: integracja usługi Azure Active Directory z usługą Zscaler Beta
 
@@ -38,7 +39,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 Do skonfigurowania integracji usługi Azure AD z usługą Zscaler Beta są potrzebne następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
+* Subskrypcja usługi Azure AD. Jeśli nie ma środowiska usługi Azure AD, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/)
 * Subskrypcja usługi Zscaler Beta z obsługą logowania jednokrotnego
 
 ## <a name="scenario-description"></a>Opis scenariusza
@@ -111,11 +112,11 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w usłudze Zscaler Bet
     > [!NOTE]
     > Ta wartość nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Skontaktuj się z [zespołem pomocy technicznej klienta usługi Zscaler Beta](https://www.zscaler.com/company/contact), aby uzyskać tę wartość.
 
-5. Aplikacja Zscaler Beta oczekuje asercji SAML w konkretnym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Wartościami tych atrybutów możesz zarządzać w sekcji **Atrybuty użytkownika** na stronie integracji aplikacji. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij przycisk **Edytuj**, aby otworzyć okno dialogowe **Atrybuty użytkownika**.
+5. Aplikacja rozwiązania Zscaler Beta oczekuje twierdzenia SAML w określonym formacie, który wymaga dodania mapowania atrybutów niestandardowych konfiguracji atrybuty tokenu języka SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych. Kliknij ikonę  **Edytuj** , aby otworzyć okno dialogowe  **Atrybuty użytkownika** .
 
     ![image](common/edit-attribute.png)
 
-6. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** edytuj oświadczenia, korzystając z **ikony edycji**, lub dodaj je za pomocą opcji **Dodaj nowe oświadczenie**, aby skonfigurować atrybut tokenu języka SAML, jak pokazano na ilustracji powyżej, a następnie wykonaj następujące czynności:
+6. Ponadto powyżej rozwiązania Zscaler Beta aplikacji oczekuje, że kilka więcej atrybutów, które mają być przekazywane w odpowiedzi SAML. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** wykonaj następujące czynności, aby dodać atrybut tokenu SAML, jak pokazano w poniższej tabeli:
     
     | Name (Nazwa) | Atrybut źródłowy | 
     | ---------------| --------------- |
@@ -154,13 +155,21 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w usłudze Zscaler Bet
 
     b. Identyfikator usługi Azure AD
 
-    d. Adres URL wylogowywania
+    c. Adres URL wylogowywania
 
 ### <a name="configure-zscaler-beta-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Zscaler Beta
 
-1. W innym oknie przeglądarki internetowej zaloguj się do firmowej witryny usługi Zscaler Beta jako administrator.
+1. Aby zautomatyzować konfigurację w ramach rozwiązania Zscaler w wersji Beta, należy zainstalować **rozszerzenia przeglądarki do bezpiecznego Moje aplikacje logowania** , klikając **zainstalować rozszerzenie**.
 
-2. Przejdź do obszaru **Administracja > Uwierzytelnianie > Ustawienia uwierzytelniania** i wykonaj następujące kroki:
+    ![Moje rozszerzenie aplikacji](common/install-myappssecure-extension.png)
+
+2. Po dodaniu rozszerzenia do przeglądarki, kliknij pozycję **instalacji rozwiązania Zscaler Beta** nastąpi bezpośrednie przekierowanie do aplikacji rozwiązania Zscaler w wersji Beta. W tym miejscu podaj poświadczenia administratora do logowania się do rozwiązania Zscaler w wersji Beta. Rozszerzenie przeglądarki automatycznie skonfiguruje aplikację i zautomatyzować kroki od 3 do 6.
+
+    ![Konfiguracja instalacji](common/setup-sso.png)
+
+3. Jeśli chcesz ręcznie skonfigurować rozwiązania Zscaler w wersji Beta, Otwórz nowe okno przeglądarki sieci web i logowania do witryny rozwiązania Zscaler Beta firmy jako administrator i wykonaj następujące czynności:
+
+4. Przejdź do obszaru **Administracja > Uwierzytelnianie > Ustawienia uwierzytelniania** i wykonaj następujące kroki:
    
     ![Administracja](./media/zscaler-beta-tutorial/ic800206.png "Administracja")
 
@@ -168,7 +177,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w usłudze Zscaler Bet
 
     b. Kliknij pozycję **Skonfiguruj język SAML**.
 
-3. W oknie **Edytowanie języka SAML** wykonaj następujące kroki i kliknij pozycję Zapisz.  
+5. W oknie **Edytowanie języka SAML** wykonaj następujące kroki i kliknij pozycję Zapisz.  
             
     ![Zarządzanie użytkownikami i uwierzytelnianiem](./media/zscaler-beta-tutorial/ic800208.png "Zarządzanie użytkownikami i uwierzytelnianiem")
     
@@ -188,7 +197,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w usłudze Zscaler Bet
 
     h. Kliknij pozycję **Zapisz**.
 
-4. Na stronie okna dialogowanie **Konfigurowanie uwierzytelniania użytkownika** wykonaj następujące kroki:
+6. Na stronie okna dialogowanie **Konfigurowanie uwierzytelniania użytkownika** wykonaj następujące kroki:
 
     ![Administracja](./media/zscaler-beta-tutorial/ic800207.png)
 
@@ -245,8 +254,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
-    Na przykład: BrittaSimon@contoso.com
+    b. W **nazwa_użytkownika** typ pola `brittasimon@yourcompanydomain.extension`. Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 

@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: d146027ea3a21ab8df3750014c02893bc2f50dd6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: cfa9d6a1a287281bec91facf04c73506db81f84a
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58097733"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64711558"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>Dostosowywanie ustawień środowiska Azure-SSIS integration Runtime
 
@@ -82,7 +82,7 @@ Dostosowywanie środowiska IR Azure-SSIS, potrzebne są następujące elementy:
 
       ![Tworzenie kontenera obiektów blob](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image4.png)
 
-   1. Wybierz nowy kontener, a następnie Przekaż skrypt instalacji niestandardowej oraz skojarzone z nią pliki. Upewnij się, że przekazujesz `main.cmd` na najwyższym poziomie kontenera, nie w dowolnym folderze. Ponadto upewnij się, że kontener zawiera tylko pliki wymagane ustawienia niestandardowe, więc pobierania ich do środowiska IR Azure-SSIS później nie będzie zająć dużo czasu.
+   1. Wybierz nowy kontener, a następnie Przekaż skrypt instalacji niestandardowej oraz skojarzone z nią pliki. Upewnij się, że przekazujesz `main.cmd` na najwyższym poziomie kontenera, nie w dowolnym folderze. Ponadto upewnij się, że kontener zawiera tylko pliki wymagane ustawienia niestandardowe, więc pobierania ich do środowiska IR Azure-SSIS później nie będzie zająć dużo czasu. Maksymalny czas instalacji niestandardowej aktualnie jest ustawiony na 45 minut, zanim upłynie limit czasu i obejmuje to czas, aby pobrać wszystkie pliki z kontenera i zainstalowania go na platformie Azure-SSIS IR. Jeśli potrzebne jest dłuższy okres, zgłoś bilet pomocy technicznej.
 
       ![Przekazywanie plików do kontenera obiektów blob](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image5.png)
 

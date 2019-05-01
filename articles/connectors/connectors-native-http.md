@@ -11,26 +11,28 @@ ms.assetid: e11c6b4d-65a5-4d2d-8e13-38150db09c0b
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 01da06ca55199989a3a27012bec101580f5ef853
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 22b21512c78a06f2639ca9339f3b7a20c7f5bfa3
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60447607"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64713810"
 ---
 # <a name="call-http-or-https-endpoints-with-azure-logic-apps"></a>Wywoływanie punktów końcowych HTTP lub HTTPS w usłudze Azure Logic Apps
 
-Korzystając z usługi Azure Logic Apps i łącznik protokołu HTTP (Hypertext Transfer) możesz zautomatyzować przepływy pracy, które komunikują się z dowolnego punktu końcowego HTTP lub HTTPS, tworząc aplikacje logiki. Na przykład można monitorować punkt końcowy usługi dla witryny sieci Web. W tym punkcie końcowym, takich jak witryny sieci Web zostanie wyłączona, w przypadku wystąpienia zdarzenia zdarzenie wyzwala przepływ pracy aplikacji logiki i uruchamia określone działania. 
+Korzystając z usługi Azure Logic Apps i łącznik protokołu HTTP (Hypertext Transfer) możesz zautomatyzować przepływy pracy, które komunikują się z dowolnego punktu końcowego HTTP lub HTTPS, tworząc aplikacje logiki. Na przykład można monitorować punkt końcowy usługi dla witryny sieci Web. W tym punkcie końcowym, takich jak witryny sieci Web zostanie wyłączona, w przypadku wystąpienia zdarzenia zdarzenie wyzwala przepływ pracy aplikacji logiki i uruchamia określone działania.
 
 Można wyzwalacza HTTP jako pierwszy krok w swojej przepływ pracy sprawdzania lub *sondowania* punktu końcowego zgodnie z ustalonym harmonogramem. W przypadku każdego wyboru wyzwalacz wysyła wywołania lub *żądania* do punktu końcowego. Odpowiedzi punktu końcowego określa, czy wykonywania przepływu pracy aplikacji logiki. Wyzwalacz jest przekazywane wraz z dowolnej zawartości z odpowiedzi na działania w aplikacji logiki. 
 
-Akcja HTTP można użyć innych krokiem w przepływie pracy wywoływania punktu końcowego, jeśli chcesz. Odpowiedzi punktu końcowego określa sposób uruchamiania pozostałych akcji Twój przepływ pracy.
+Akcja HTTP można użyć innych krokiem w przepływie pracy wywoływania punktu końcowego, jeśli chcesz. Odpowiedzi punktu końcowego określa sposób uruchamiania pozostałych akcji Twój przepływ pracy. 
+
+Na podstawie możliwości docelowy punkt końcowy ten łącznik obsługuje zabezpieczeń TLS (Transport Layer) w wersjach 1.0, 1.1 i 1.2. Usługa Logic Apps negocjuje z punktem końcowym za pośrednictwem za pomocą najwyższej obsługiwana wersja to możliwe. Tak na przykład, jeśli punkt końcowy obsługuje 1.2, łącznik używa 1.2 najpierw. W przeciwnym razie łącznik używa dalej najwyższy obsługiwanej wersji.
 
 Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zarejestruj się w celu założenia bezpłatnego konta platformy Azure</a>. 
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, [zarejestruj się w celu założenia bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/). 
 
 * Adres URL dla docelowego punktu końcowego, który chcesz wybrać 
 

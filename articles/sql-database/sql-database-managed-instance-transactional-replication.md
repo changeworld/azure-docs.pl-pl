@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 409c1abd7e9f532bb243ecab00228b402215c77e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: c8d5df0f83a7ae37b9f06a5e255e9809288b6d67
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61313669"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917040"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Replikacja transakcyjna, za pomocą pojedynczej, puli i wystąpienie bazy danych w usłudze Azure SQL Database
 
@@ -79,7 +79,7 @@ Istnieją różne [typy replikacji](https://docs.microsoft.com/sql/relational-da
   > - Próba skonfigurowania replikacji za pomocą starszej wersji może spowodować błąd, numer MSSQL_REPL20084 (ten proces nie może połączyć się subskrybenta.) i MSSQ_REPL40532 (nie można otworzyć serwera \<name > żądanego podczas logowania. Logowanie nie powiodło się.)
   > - Aby korzystać ze wszystkich funkcji usługi Azure SQL Database, należy używać najnowszej wersji [programu SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) i [programu SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt).
   
-  ### <a name="supportabilty-matrix-for-instance-databases-and-on-premises-systems"></a>Tabela Supportabilty dla wystąpienia bazy danych i lokalnymi systemami
+  ### <a name="supportability-matrix-for-instance-databases-and-on-premises-systems"></a>Macierz obsługi dla wystąpienia bazy danych i lokalnymi systemami
   Macierz obsługi replikacji dla wystąpienia bazy danych jest taka sama, jak dla programu SQL Server w środowisku lokalnym. 
   
   | **Wydawca**   | **Dystrybutor** | **Dla subskrybentów** |
@@ -140,7 +140,7 @@ W tej konfiguracji usługi Azure SQL Database (pojedyncze, puli i wystąpienia b
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-1. [Konfigurowanie replikacji transakcyjnej dla wystąpienia zarządzanego](replication-with-sql-database-managed-instance.md#configure-publishing-and-distribution-example). 
+1. [Konfigurowanie replikacji transakcyjnej dla wystąpienia zarządzanego](replication-with-sql-database-managed-instance.md). 
 1. [Utwórz publikację](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication).
 1. [Tworzenie subskrypcji wypychanej](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription) przy użyciu nazwy serwera Azure SQL Database jako subskrybenta (na przykład `N'azuresqldbdns.database.windows.net` i nazwę bazy danych SQL Azure jako docelowej bazy danych (na przykład **Adventureworks**. )
 

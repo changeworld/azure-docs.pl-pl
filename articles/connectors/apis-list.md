@@ -9,18 +9,18 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: article
 ms.date: 08/23/2018
-ms.openlocfilehash: 221bcbfb2517efae41005641321a651dfdf8e39f
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.openlocfilehash: e008d9fd2734af6a355771c321ecaea9150bcc33
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63759430"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64722989"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Łączniki dla usługi Azure Logic Apps
 
 Łączniki udostępniają szybki dostęp z usługi Azure Logic Apps do zdarzeń, danych i akcje w innych aplikacjach, usług, systemów, protokołów i platform. Za pomocą łączników w aplikacjach logiki, możesz rozszerzyć możliwości dla aplikacji w chmurze i lokalnych do wykonywania zadań z danymi, które tworzysz i masz już.
 
-Podczas gdy Logic Apps oferuje [~ ponad 200 łączników](https://docs.microsoft.com/connectors), w tym artykule opisano popularnych i najczęściej używanych łączników tysiące aplikacji i milionach wykonań pomyślnie są używane do przetwarzania danych i informacji. Aby znaleźć pełną listę łączników i informacje referencyjne poszczególnych łączników, takich jak wyzwalacze, akcje i ograniczeń, przejrzyj łącznika odwołuje się do strony w obszarze [omówienie łączników](https://docs.microsoft.com/connectors). Ponadto Dowiedz się więcej o [wyzwalacze i akcje](#triggers-actions).
+Podczas gdy Logic Apps oferuje [~ ponad 200 łączników](https://docs.microsoft.com/connectors), w tym artykule opisano popularnych i najczęściej używanych łączników tysiące aplikacji i milionach wykonań pomyślnie są używane do przetwarzania danych i informacji. Aby znaleźć pełną listę łączników i informacje referencyjne poszczególnych łączników, takich jak wyzwalacze, akcje i ograniczeń, zapoznaj się z strony podręcznika łącznika, w obszarze [omówienie łączników](https://docs.microsoft.com/connectors). Ponadto Dowiedz się więcej o [wyzwalacze i akcje](#triggers-actions).
 
 > [!NOTE]
 > Aby zintegrować z usługą lub interfejsu API, który nie ma łącznika, można bezpośrednio wywołać usługę za pośrednictwem protokołu, takich jak HTTP lub utworzyć [łącznika niestandardowego](#custom).
@@ -29,27 +29,32 @@ Podczas gdy Logic Apps oferuje [~ ponad 200 łączników](https://docs.microsoft
 
 * [**Elementy wbudowane**](#built-ins): Te wbudowane akcje i wyzwalacze są "natywnego" do usługi Azure Logic Apps oraz pomagają Ci tworzyć aplikacje logiki, które systemem niestandardowe harmonogramy, komunikować się z innych punktów końcowych, otrzymywanie i odpowiadanie na żądania i wywoływać funkcje platformy Azure, usługi Azure API Apps (aplikacje sieci Web), z własnymi interfejsami API zarządzane i opublikowanych przy użyciu usługi Azure API Management i zagnieżdżone logic apps, które mogą odbierać żądania. Możesz również użyć wbudowane akcje, które pomagają organizować kontrolowania przepływu pracy aplikacji logiki i także pracować z danymi.
 
-* **Zarządzane łączniki**: Wdrożone i zarządzane przez firmę Microsoft, te łączniki udostępniają wyzwalacze i akcje do uzyskiwania dostępu do innych usług i systemów, takich jak usługi Office 365, Azure Blob Storage, SQL Server i Salesforce. Niektóre łączniki wymagają, należy najpierw utworzyć połączenia, które są zarządzane przez usługę Azure Logic Apps. Zarządzane łączniki są zorganizowane w tych grupach:
+* **Zarządzane łączniki**: Wdrożone i zarządzane przez firmę Microsoft, te łączniki udostępniają wyzwalacze i akcje do uzyskiwania dostępu do usług w chmurze, w systemach lokalnych lub obydwu, w tym usługi Office 365, Azure Blob Storage, SQL Server, Dynamics, Salesforce, SharePoint i więcej. Niektóre łączniki specjalnie obsługują scenariusze komunikacji programu business-to-business (B2B) i wymagają [konta integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) połączony do aplikacji logiki. Przed użyciem niektórych łączników, być może trzeba najpierw utworzyć połączenia, które są zarządzane przez usługę Azure Logic Apps. 
+
+  Na przykład, jeśli używasz Microsoft BizTalk Server aplikacji usługi logic apps może nawiązać połączenie i komunikować się z programu BizTalk Server przy użyciu [programu BizTalk Server w środowisku lokalnym łącznika](#on-premises-connectors). 
+  Można rozszerzyć lub wykonywać operacje przypominającej BizTalk w aplikacji logiki przy użyciu [łączniki konta integracji](#integration-account-connectors).
+
+  Łączniki są klasyfikowane jako Standard lub Enterprise. 
+  [Łączniki dla przedsiębiorstw](#enterprise-connectors) zapewniają dostęp do systemów przedsiębiorstwa, takich jak SAP, IBM MQ i IBM 3270 za dodatkową opłatą. Aby ustalić, czy łącznik jest wersja Standard lub Enterprise, zobacz szczegóły techniczne w stronie referencyjnej każdy łącznik w obszarze [omówienie łączników](https://docs.microsoft.com/connectors). 
+  
+  Łączników można również zidentyfikować za pomocą tych kategorii, mimo że niektóre łączniki mogą przechodzić przez wiele kategorii. 
+  Na przykład SAP jest łącznik przedsiębiorstwa i lokalny łącznik:
 
   |   |   |
   |---|---|
-  | [**Zarządzane łączniki interfejsu API**](#managed-api-connectors) | Tworzenie aplikacji logiki, które korzystają z usług takich jak Azure Blob Storage, usługi Office 365, Dynamics, usługa Power BI, OneDrive, Salesforce, SharePoint Online i wiele innych. | 
-  | [**Łączniki lokalne**](#on-premises-connectors) | Po zainstalowaniu i skonfigurować [lokalnej bramy danych][gateway-doc], pomagają one dostęp do usługi logic apps w środowisku lokalnym systemów, takich jak SQL Server, SharePoint Server, Oracle DB, udziały plików i innych łączników. | 
-  | [**Łączniki konta integracji**](#integration-account-connectors) | Dostępne w przypadku tworzenia i opłaty za konto integracji, przekształcenie tych łączników i Walidacja danych XML, kodować i dekodować pliki proste i przetwarzania business-to-business (B2B) komunikatów AS2, EDIFACT i X12 protokołów. | 
-  | [**Łączniki dla przedsiębiorstw**](#enterprise-connectors) | Zapewniają dostęp do systemów przedsiębiorstwa, takich jak SAP i IBM MQ za dodatkową opłatą. |
-  ||| 
-
-  Na przykład, jeśli używasz Microsoft BizTalk Server aplikacji usługi logic apps może nawiązać połączenie i komunikować się z programu BizTalk Server przy użyciu [łącznik programu BizTalk Server](#on-premises-connectors). 
-  Można rozszerzyć lub wykonywać operacje przypominającej BizTalk w aplikacji logiki przy użyciu [łączniki konta integracji](#integration-account-connectors). 
+  | [**Zarządzane łączniki interfejsu API**](#managed-api-connectors) | Tworzenie aplikacji logiki, które korzystają z usług takich jak Azure Blob Storage, usługi Office 365, Dynamics, usługa Power BI, OneDrive, Salesforce, SharePoint Online i wiele innych. |
+  | [**Łączniki lokalne**](#on-premises-connectors) | Po zainstalowaniu i skonfigurować [lokalnej bramy danych][gateway-doc], pomagają one dostęp do usługi logic apps w środowisku lokalnym systemów, takich jak SQL Server, SharePoint Server, Oracle DB, udziały plików i innych łączników. |
+  | [**Łączniki konta integracji**](#integration-account-connectors) | Dostępne w przypadku tworzenia i opłaty za konto integracji, przekształcenie tych łączników i Walidacja danych XML, kodować i dekodować pliki proste i przetwarzania business-to-business (B2B) komunikatów AS2, EDIFACT i X12 protokołów. |
+  |||
 
 > [!NOTE]
-> Aby uzyskać pełną listę łączników i informacje referencyjne poszczególnych łączników, takich jak działania i wszelkie wyzwalacze, które są zdefiniowane w opisach platformy Swagger, oraz wszelkie limity można znaleźć pełną listę w obszarze [omówienie łączników](/connectors/). Aby uzyskać informacje o cenach, zobacz [Logic Apps, cennik](https://azure.microsoft.com/pricing/details/logic-apps/) i [model cen aplikacji logiki](../logic-apps/logic-apps-pricing.md). 
+> Aby uzyskać pełną listę łączników i informacje referencyjne poszczególnych łączników, np. wszelkie wyzwalacze i akcje, które są definiowane przez interfejs OpenAPI (dawniej Swagger) opis, a także żadnych limitów można znaleźć pełną listę w obszarze [omówienie łączników ](/connectors/). Aby uzyskać informacje o cenach, zobacz [Logic Apps, cennik](https://azure.microsoft.com/pricing/details/logic-apps/) i [model cen aplikacji logiki](../logic-apps/logic-apps-pricing.md). 
 
 <a name="built-ins"></a>
 
 ## <a name="built-ins"></a>Elementy wbudowane
 
-Usługa Logic Apps oferuje wbudowane wyzwalaczy i akcji, aby można było utworzyć na podstawie harmonogramu przepływów pracy pomocy aplikacje logiki komunikować się z innych aplikacji i usług, kontroli przepływu pracy za pomocą aplikacji logiki oraz zarządzanie nimi i manipulowanie danymi. 
+Usługa Logic Apps oferuje wbudowane wyzwalaczy i akcji, aby można było utworzyć na podstawie harmonogramu przepływów pracy pomocy aplikacje logiki komunikować się z innych aplikacji i usług, kontroli przepływu pracy za pomocą aplikacji logiki oraz zarządzanie nimi i manipulowanie danymi.
 
 |   |   |   |   | 
 |---|---|---|---| 
@@ -128,10 +133,10 @@ Poniżej przedstawiono łączniki do tworzenia rozwiązań biznesowych (B2B) za 
 
 Aplikacje logiki mieli dostęp do systemów dla przedsiębiorstw, takimi jak SAP i IBM MQ:
 
-|   |   | 
-|---|---| 
-| [![Ikona interfejsu API][ibm-mq-icon]<br/>**IBM MQ**][ibm-mq-doc] | [![Ikona interfejsu API][sap-icon]<br/>**SAP**][sap-connector-doc] |
-||| 
+|   |   |   | 
+|---|---|---| 
+| [![Ikona interfejsu API][ibm-3270-icon]<br/>**IBM 3270**][ibm-3270-doc] | [![Ikona interfejsu API][ibm-mq-icon]<br/>**IBM MQ**][ibm-mq-doc] | [![Ikona interfejsu API][sap-icon]<br/>**SAP**][sap-connector-doc] |
+|||| 
 
 <a name="triggers-actions"></a>
 
@@ -156,9 +161,9 @@ Poniżej przedstawiono ogólne rodzaje wyzwalaczy udostępnianych przez usługi 
 
 Wyzwalacze i akcje każdy łącznik Podaj własne właściwości do skonfigurowania. Również wymagać wiele łączników, należy najpierw utworzyć *połączenia* do docelowej usługi lub systemu i podaj poświadczenia uwierzytelniania lub innych szczegółów konfiguracji, zanim użyjesz wyzwalacza lub akcji w aplikacji logiki. Na przykład należy autoryzować połączenie z kontem usługi Twitter do uzyskiwania dostępu do danych lub w Twoim imieniu. 
 
-Dla łączników, które używają protokołu OAuth tworzenia połączenia oznacza, że logowanie się do usługi, takie jak usługi Office 365, Salesforce lub GitHub, gdzie token dostępu jest zaszyfrowany i bezpiecznie przechowywane w sklepie systemu Azure dla wpisu tajnego. Innych łączników, takich jak FTP i SQL, wymaga połączenia, który ma szczegóły konfiguracji, takie jak adres serwera, nazwę użytkownika i hasło. Szczegóły konfiguracji tego połączenia są również są szyfrowane i bezpiecznie przechowywane. 
+Dla łączników, które używają protokołu OAuth tworzenia połączenia oznacza, że logowanie się do usługi, takie jak usługi Office 365, Salesforce lub GitHub, gdzie token dostępu jest zaszyfrowany i bezpiecznie przechowywane w sklepie systemu Azure dla wpisu tajnego. Innych łączników, takich jak FTP i SQL, wymaga połączenia, który ma szczegóły konfiguracji, takie jak adres serwera, nazwę użytkownika i hasło. Te dane konfiguracyjne połączenia są również są szyfrowane i bezpiecznie przechowywane. 
 
-Połączenia można uzyskać dostęp do Usługa docelowa lub system tak długo, jak umożliwia tej usługi lub systemu. Dla usług korzystających z połączeń protokołu OAuth usługi Azure Active Directory (AD), takie jak usługi Office 365 i Dynamics Azure Logic Apps odświeża tokenów dostępu przez czas nieokreślony. Inne usługi może stanowić limity na jak długo Azure Logic Apps można użyć tokenu bez odświeżania. Ogólnie rzecz biorąc niektóre akcje unieważnienie wszystkich tokenów dostępu, takich jak zmienić hasło.
+Połączenia można uzyskać dostęp do Usługa docelowa lub system tak długo, jak umożliwia tej usługi lub systemu. Dla usług korzystających z połączeń protokołu OAuth usługi Azure Active Directory (AD), takie jak usługi Office 365 i Dynamics Azure Logic Apps odświeża tokenów dostępu przez czas nieokreślony. Inne usługi może mieć limity na jak długo Azure Logic Apps można użyć tokenu bez odświeżania. Ogólnie rzecz biorąc niektóre akcje unieważnienie wszystkich tokenów dostępu, takich jak zmienić hasło.
 
 <a name="custom"></a>
 
@@ -222,6 +227,7 @@ Aby udostępnić funkcję niestandardowe aplikacje interfejsu API i łączniki d
 [google-drive-doc]: ./connectors-create-api-googledrive.md "Łączenie z Dyskiem Google i korzystanie z danych"
 [google-sheets-doc]: ./connectors-create-api-googlesheet.md "Łączenie z arkuszami Google, co pozwala modyfikować arkusze"
 [google-tasks-doc]: ./connectors-create-api-googletasks.md "Łączenie z Zadaniami Google i zarządzanie zadaniami"
+[ibm-3270-doc]: ./connectors-run-3270-apps-ibm-mainframe-create-api-3270.md "Połącz aplikacje 3270 na komputery mainframe firmy IBM"
 [ibm-db2-doc]: ./connectors-create-api-db2.md "Łączenie z bazą danych IBM DB2 w chmurze lub lokalnie. Aktualizowanie wiersza, pobieranie tabeli oraz inne funkcje"
 [ibm-informix-doc]: ./connectors-create-api-informix.md "Łączenie z usługą Informix w chmurze lub lokalnie. Odczytywanie wiersza, wyświetlanie listy tabel i inne funkcje"
 [ibm-mq-doc]: ./connectors-create-api-mq.md "Połączenia z programem IBM MQ w środowisku lokalnym lub na platformie Azure w celu wysyłania i odbierania komunikatów"
@@ -328,6 +334,7 @@ Aby udostępnić funkcję niestandardowe aplikacje interfejsu API i łączniki d
 [google-sheets-icon]: ./media/apis-list/google-sheet.png
 [google-tasks-icon]: ./media/apis-list/google-tasks.png
 [hipchat-icon]: ./media/apis-list/hipchat.png
+[ibm-3270-icon]: ./media/apis-list/ibm-3270.png
 [ibm-db2-icon]: ./media/apis-list/ibm-db2.png
 [ibm-informix-icon]: ./media/apis-list/ibm-informix.png
 [ibm-mq-icon]: ./media/apis-list/ibm-mq.png

@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: 11d0648ee5090f02cb96c2d42a8d90cc3ea0ed28
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: dc6d3fd2239624e6fccecfbd565eb815b372ed3d
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60853307"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920434"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>Konfigurowanie aplikacji w języku PHP w systemie Linux dla usługi Azure App Service
 
@@ -141,7 +141,7 @@ Popularne platformy internetowe umożliwiają dostęp do informacji `X-Forwarded
 
 ## <a name="customize-phpini-settings"></a>Dostosowywanie ustawień w pliku php.ini
 
-Jeśli potrzebujesz wprowadzić zmiany w instalacji PHP, można zmienić dowolne z [dyrektywy php.ini](http://www.php.net/manual/ini.list.php) wykonaj następujące czynności.
+Jeśli potrzebujesz wprowadzić zmiany w instalacji PHP, można zmienić dowolne z [dyrektywy php.ini](https://www.php.net/manual/ini.list.php) wykonaj następujące czynności.
 
 > [!NOTE]
 > Najlepszym sposobem na wersji środowiska PHP i bieżący *php.ini* konfiguracji jest wywołanie [phpinfo()](https://php.net/manual/function.phpinfo.php) w swojej aplikacji.
@@ -149,7 +149,7 @@ Jeśli potrzebujesz wprowadzić zmiany w instalacji PHP, można zmienić dowolne
 
 ### <a name="customize-non-phpinisystem-directives"></a>Dostosowywanie innych PHP_INI_SYSTEM dyrektywy
 
-Dostosowywanie PHP_INI_USER PHP_INI_PERDIR i PHP_INI_ALL dyrektywy (zobacz [dyrektywy php.ini](http://www.php.net/manual/ini.list.php)), Dodaj *.htaccess* plik do katalogu głównego aplikacji.
+Dostosowywanie PHP_INI_USER PHP_INI_PERDIR i PHP_INI_ALL dyrektywy (zobacz [dyrektywy php.ini](https://www.php.net/manual/ini.list.php)), Dodaj *.htaccess* plik do katalogu głównego aplikacji.
 
 W *.htaccess* plików, dodawanie dyrektyw przy użyciu `php_value <directive-name> <value>` składni. Na przykład:
 
@@ -165,11 +165,11 @@ php_value upload_max_filesize 10M
 
 Ponowne wdrażanie aplikacji ze zmianami, a następnie uruchom go ponownie. W przypadku wdrożenia za pomocą aparatu Kudu (na przykład za pomocą [Git](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)), zostanie automatycznie uruchomiony ponownie po wdrożeniu.
 
-Jako alternatywa dla użycia *.htaccess*, możesz użyć [ini_set()](http://www.php.net/manual/function.ini-set.php) w swojej aplikacji, aby dostosować te dyrektywy bez PHP_INI_SYSTEM.
+Jako alternatywa dla użycia *.htaccess*, możesz użyć [ini_set()](https://www.php.net/manual/function.ini-set.php) w swojej aplikacji, aby dostosować te dyrektywy bez PHP_INI_SYSTEM.
 
 ### <a name="customize-phpinisystem-directives"></a>Customize PHP_INI_SYSTEM directives
 
-Aby dostosować PHP_INI_SYSTEM dyrektywy (zobacz [dyrektywy php.ini](http://www.php.net/manual/ini.list.php)), nie można użyć *.htaccess* podejście. Usługa App Service udostępnia oddzielny mechanizm przy użyciu `PHP_INI_SCAN_DIR` ustawienia aplikacji.
+Aby dostosować PHP_INI_SYSTEM dyrektywy (zobacz [dyrektywy php.ini](https://www.php.net/manual/ini.list.php)), nie można użyć *.htaccess* podejście. Usługa App Service udostępnia oddzielny mechanizm przy użyciu `PHP_INI_SCAN_DIR` ustawienia aplikacji.
 
 Po pierwsze, uruchom następujące polecenie [Cloud Shell](https://shell.azure.com) dodać aplikację nosi nazwę `PHP_INI_SCAN_DIR`:
 
@@ -237,7 +237,7 @@ Gdy działającą aplikację PHP zachowuje się inaczej w usłudze App Service l
     - W zależności od Twojego *composer.json*, różnych pakietach mogą być zainstalowane dla trybu produkcyjnego (`require` a `require-dev`).
     - Niektóre platformy internetowe mogą wdrożyć pliki statyczne inaczej w trybie produkcyjnym.
     - Niektóre platformy internetowe może używać własne skrypty uruchamiania, podczas uruchamiania w trybie produkcyjnym.
-- Uruchom aplikację w usłudze App Service w trybie debugowania. Na przykład w [platformy Laravel](http://meanjs.org/), można skonfigurować aplikację, aby dane wyjściowe komunikaty debugowania w środowisku produkcyjnym przez [ustawienie `APP_DEBUG` ustawienia aplikacji `true` ](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
+- Uruchom aplikację w usłudze App Service w trybie debugowania. Na przykład w [platformy Laravel](https://meanjs.org/), można skonfigurować aplikację, aby dane wyjściowe komunikaty debugowania w środowisku produkcyjnym przez [ustawienie `APP_DEBUG` ustawienia aplikacji `true` ](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
 
 ### <a name="robots933456"></a>robots933456
 

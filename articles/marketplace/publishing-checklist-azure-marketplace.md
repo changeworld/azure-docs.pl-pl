@@ -2,24 +2,18 @@
 title: Publikowanie Lista kontrolna dotycząca portalu Azure Marketplace | Azure
 description: Lista kontrolna dotycząca publikowania dla witryny Azure Marketplace przy użyciu portalu Cloud Partner.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: jm-aditi-ms
 manager: pabutler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 26041bbf392f9b2afaaf5af38f758deb7708b651
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b1bf77b7c04374ee81b730600658462a6283dedf
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60734987"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937679"
 ---
 # <a name="publishing-checklist-for-azure-marketplace"></a>Publikowanie Lista kontrolna dotycząca portalu Azure Marketplace    
 Sprawdź wymagane składniki przed rozpoczęciem procesu publikowania.  

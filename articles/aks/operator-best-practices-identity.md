@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 11/26/2018
+ms.date: 04/24/2019
 ms.author: iainfou
-ms.openlocfilehash: 42f6fefa930a36fbfcca7b3f792cc749723f7b99
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 1c20e7796d152c9198786c491f9a61752d88ea6f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60464495"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64726613"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące uwierzytelniania i autoryzacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -108,7 +108,8 @@ W poniższym przykładzie deweloper tworzy zasobnik, który korzysta z tożsamo�
 1. Deweloper wdraża zasobnik za pomocą tożsamości zarządzanej, który żąda tokenu dostępu za pośrednictwem serwera NMI.
 1. Token jest zwracana do zasobnika ustawiany i umożliwiają dostęp do wystąpienia programu SQL Server Azure.
 
-Tożsamości zarządzanej zasobnik to projekt typu open source AKS i nie jest obsługiwana przez pomoc techniczną systemu Azure. Jest ona udostępniana do zbierania opinii i błędy z naszej społeczności. Projekt nie jest zalecane do użytku produkcyjnego.
+> [!NOTE]
+> Tożsamości zarządzanej zasobnik to projekt typu open source, a nie jest obsługiwana przez pomoc techniczną systemu Azure.
 
 Aby użyć tożsamości zasobników, zobacz [tożsamości usługi Azure Active Directory dla aplikacji platformy Kubernetes][aad-pod-identity].
 

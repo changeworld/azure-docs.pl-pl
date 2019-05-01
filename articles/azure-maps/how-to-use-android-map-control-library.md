@@ -1,24 +1,24 @@
 ---
-title: Jak używać kontrolki mapy dla systemu Android w usługi Azure Maps | Dokumentacja firmy Microsoft
+title: Wprowadzenie do kontrolki mapy dla systemu Android w usłudze Azure Maps | Dokumentacja firmy Microsoft
 description: Kontrolka mapy dla systemu Android w usłudze Azure Maps.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/12/2019
+ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 15706addbe6b7f6310223978130158c792a47c89
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: e655b442ba9290d4b4525108521f2d1a0c766b48
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60770373"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869828"
 ---
-# <a name="how-to-use-the-azure-maps-android-sdk"></a>Jak używać usługi Azure Maps SDK dla systemu Android
+# <a name="getting-started-with-azure-maps-android-sdk"></a>Wprowadzenie do usługi Azure Maps Android SDK
 
-Zestaw Azure SDK dla systemu Android mapy jest biblioteka map wektorów dla systemu Android. Ten artykuł przeprowadzi Cię przez procesy, Instalowanie zestawu Azure SDK dla systemu Android map, trwa ładowanie mapy i wprowadzania numeru pin na mapie.
+Zestaw Azure SDK dla systemu Android mapy jest biblioteka map wektorów dla systemu Android. Ten artykuł przeprowadzi Cię przez procesy Instalowanie zestawu Azure SDK dla systemu Android mapy i ładowanie mapy.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -28,7 +28,7 @@ Aby wykonać procedury opisane w tym artykule, należy najpierw [utworzyć konto
 
 ### <a name="download-android-studio"></a>Pobierz program Android Studio
 
-Należy pobrać program Android Studio i Utwórz projekt za pomocą pustego działania, zanim będzie można zainstalować zestawu Azure SDK dla systemu Android mapy. Możesz [Pobierz program Android Studio](https://developer.android.com/studio/) bezpłatnie od firmy Google. 
+Musisz Pobierz program Android Studio i Utwórz projekt za pomocą pustego działania, przed zainstalowaniem zestawu Azure SDK dla systemu Android mapy. Możesz [Pobierz program Android Studio](https://developer.android.com/studio/) bezpłatnie od firmy Google. 
 
 ## <a name="create-a-project-in-android-studio"></a>Utwórz projekt w programie Android Studio
 
@@ -55,7 +55,7 @@ Dowiedz się więcej o konfigurowaniu AVD w [dokumentacji programu Android Studi
 
 Następnym krokiem w tworzeniu aplikacji jest Zainstaluj zestaw Azure SDK dla systemu Android mapy. Wykonaj następujące kroki, aby zainstalować zestaw SDK:
 
-1. Dodaj następujący kod do **wszystkie projekty**, **repozytoriów** blok w swojej **build.gradle** pliku.
+1. Otwórz najwyższego poziomu **build.gradle** pliku i Dodaj następujący kod do **wszystkie projekty**, **repozytoriów** zablokować sekcji:
 
     ```
     maven {
@@ -64,8 +64,10 @@ Następnym krokiem w tworzeniu aplikacji jest Zainstaluj zestaw Azure SDK dla sy
     ```
 
 2. Aktualizacja usługi **app/build.gradle** i Dodaj do niej następujący kod:
+    
+    1. Upewnij się, że projektu **minSdkVersion** jest na poziomie 21 interfejsu API lub nowszej.
 
-    1. Dodaj następujący kod do bloku dla systemu Android:
+    2. Dodaj następujący kod do sekcji dla systemu Android:
 
         ```
         compileOptions {
@@ -73,24 +75,16 @@ Następnym krokiem w tworzeniu aplikacji jest Zainstaluj zestaw Azure SDK dla sy
             targetCompatibility JavaVersion.VERSION_1_8
         }
         ```
-    2. Zaktualizuj swoje bloku zależności i Dodaj do niej następujący kod:
+    3. Zaktualizuj swoje bloku zależności i Dodaj nowy wiersz zależności implementacji dla najnowszych Azure Maps zestawu Android SDK:
 
         ```
-        implementation "com.microsoft.azure.maps:mapcontrol:0.1"
+        implementation "com.microsoft.azure.maps:mapcontrol:0.2"
         ```
 
-3. Skonfiguruj uprawnienia, dodając następujący kod XML do Twojej **AndroidManifest.xml** pliku:
+    > [!Note]
+    > Zestaw Azure SDK dla systemu Android mapy regularnie jest uaktualniony i ulepszone. Możesz zobaczyć [wprowadzenie do kontrolki mapy dla systemu Android](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) dokumentację, aby uzyskać numer najnowszej wersji wdrożenia usługi Azure Maps. Ponadto można ustawić numer wersji od "0,2" do "0 +" Aby zawsze wskazywała do najnowszej wersji.
 
-    ```xml
-    <?xml version="1.0" encoding="utf-8"?>
-    <manifest>
-        ...
-        <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-        ...
-    </manifest>
-    ```
-
-4. Edytuj **res** > **układ** > **activity_main.xml** tak wygląda jak poniższy kod XML:
+3. Edytuj **res** > **układ** > **activity_main.xml** i zastąp go następującym kodem:
     
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -105,16 +99,20 @@ Następnym krokiem w tworzeniu aplikacji jest Zainstaluj zestaw Azure SDK dla sy
             android:id="@+id/mapcontrol"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:mapcontrol_cameraTargetLat="47.64"
-            app:mapcontrol_cameraTargetLng="-122.33"
-            app:mapcontrol_cameraZoom="12"
             />
-
     </FrameLayout>
     ```
 
-5. Edytuj **MainActivity.java** do utworzenia klasy działania widoku mapy. Po zakończeniu edycji, powinien on wyglądać podobnie do tej klasy:
+4. W **MainActivity.java** pliku będzie konieczne:
+    
+    * Dodaj Import dla zestawu SDK usługi Azure Maps
+    * Ustaw informacje o uwierzytelnianiu usługi Azure Maps
+    * Pobierz wystąpienie kontrolki mapy w **onCreate** — metoda
 
+    Ustawianie informacji o uwierzytelnianiu dla klasy AzureMaps globalnie za pomocą metody setSubscriptionKey lub setAadProperties sprawia, że tak nie będzie trzeba dodać informacje o uwierzytelnianiu w każdym widoku. Kontrolka mapy zawiera własnej metody cyklu życia zarządzania cyklem życia OpenGL dla urządzeń systemu Android, które muszą być wywoływane bezpośrednio z zawierającego działanie. Aby poprawnie, wywołania metod cyklu życia kontrolki mapy aplikacji należy zastąpić następujące metody cyklu życia w działaniu, który zawiera formant mapy i wywołać metodę kontrolki mapy odpowiednich. 
+
+    Edytuj **MainActivity.java** pliku w następujący sposób:
+    
     ```java
     package com.example.myapplication;
 
@@ -129,7 +127,7 @@ Następnym krokiem w tworzeniu aplikacji jest Zainstaluj zestaw Azure SDK dla sy
     public class MainActivity extends AppCompatActivity {
         
         static {
-            AzureMaps.setSubscriptionKey("{subscription-key}");
+            AzureMaps.setSubscriptionKey("<Your Azure Maps subscription key>");
         }
 
         MapControl mapControl;
@@ -197,97 +195,21 @@ Kliknij przycisk Uruchom, jak pokazano w poniższej grafiki (lub klawisz formant
 
 Program android Studio zajmie kilka sekund, aby skompilować aplikację. Po ukończeniu kompilacji można przetestować aplikację w urządzeniu z systemem Android emulowane. Powinna pojawić się mapa, podobny do poniższego:
 
-![Mapy dla systemu android](./media/how-to-use-android-map-control-library/android-map.png)
+<center>
 
-## <a name="add-a-marker-to-the-map"></a>Dodaj znacznik do mapy
+![Mapy dla systemu android](./media/how-to-use-android-map-control-library/android-map.png)</center>
 
-Aby dodać znacznik do mapy `mapView.getMapAsync()` funkcja `MainActivity.java`. Końcowe `MainActivity.java` kod powinien wyglądać następująco:
+## <a name="next-steps"></a>Kolejne kroki
 
-```java
-package com.example.myapplication;
+Aby dodać elementy do mapy, zobacz:
 
-import android.app.Activity;
-import android.os.Bundle;
-import com.mapbox.geojson.Feature;
-import com.mapbox.geojson.Point;
-import com.microsoft.azure.maps.mapcontrol.AzureMaps;
-import com.microsoft.azure.maps.mapcontrol.MapControl;
-import com.microsoft.azure.maps.mapcontrol.layer.SymbolLayer;
-import com.microsoft.azure.maps.mapcontrol.source.DataSource;
-import static com.microsoft.azure.maps.mapcontrol.options.SymbolLayerOptions.iconImage;
-public class MainActivity extends AppCompatActivity {
-    
-    static{
-            AzureMaps.setSubscriptionKey("{subscription-key}");
-        }
+> [!div class="nextstepaction"]
+> [Dodaj warstwę symbol do mapowania dla systemu Android](https://review.docs.microsoft.com/azure/azure-maps/how-to-add-symbol-to-android-map)
 
-    MapControl mapControl;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+> [!div class="nextstepaction"]
+> [Dodawanie kształtów do mapowania dla systemu Android](https://docs.microsoft.com/azure/azure-maps/how-to-add-shapes-to-android-map)
 
-        mapControl = findViewById(R.id.mapcontrol);
+> [!div class="nextstepaction"]
+> [Zmień style mapy w społeczności maps dla systemu Android](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)
 
-        mapControl.onCreate(savedInstanceState);
 
-        mapControl.getMapAsync(map -> {
-            DataSource dataSource = new DataSource();
-            dataSource.add(Feature.fromGeometry(Point.fromLngLat(-122.33, 47.64)));
-
-            SymbolLayer symbolLayer = new SymbolLayer(dataSource);
-            symbolLayer.setOptions(iconImage("my-icon"));
-
-            map.images.add("my-icon", R.drawable.mapcontrol_marker_red);
-            map.sources.add(dataSource);
-            map.layers.add(symbolLayer);
-        });
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        mapControl.onStart();
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        mapControl.onResume();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        mapControl.onPause();
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        mapControl.onStop();
-    }
-
-    @Override
-    public void onLowMemory() {
-        super.onLowMemory();
-        mapControl.onLowMemory();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mapControl.onDestroy();
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        mapControl.onSaveInstanceState(outState);
-    }
-}
-```
-
-Uruchom ponownie aplikację. Znacznik powinny zostać wyświetlone na mapie, jak pokazano poniżej:
-
-![Przypnij mapę dla systemu android](./media/how-to-use-android-map-control-library/android-map-pin.png)

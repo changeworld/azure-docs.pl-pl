@@ -1,6 +1,6 @@
 ---
-title: Dostępność infrastruktury platformy Azure
-description: W artykule opisano poziomy nadmiarowości w celu zapewnienia maksymalnej dostępności danych klientów.
+title: Dostępność infrastruktury platformy Azure — zabezpieczenia platformy Azure
+description: Ten artykuł zawiera informacje o jakie firma Microsoft używa do zabezpieczania infrastruktury platformy Azure i zapewnienia maksymalnej dostępności danych klientów.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/06/2018
+ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: a9a55f61f032512be032897d5f21ece405844634
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: d13c79152afe00cb326f69b523e9fd7f0c3550b0
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60587197"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64872605"
 ---
 # <a name="azure-infrastructure-availability"></a>Dostępność infrastruktury platformy Azure
-System Azure oferuje niezawodne dostępność, oparte na rozbudowane nadmiarowości osiągane przy użyciu technologii wirtualizacji. System Azure oferuje wiele poziomów nadmiarowości w celu zapewnienia maksymalnej dostępności danych klientów.
+Ten artykuł zawiera informacje o jakie firma Microsoft używa do zabezpieczania infrastruktury platformy Azure i zapewnienia maksymalnej dostępności danych klientów. System Azure oferuje niezawodne dostępność, oparte na rozbudowane nadmiarowości osiągane przy użyciu technologii wirtualizacji.
 
 ## <a name="temporary-outages-and-natural-disaster"></a>Tymczasowe awarii i klęskami żywiołowymi
 Zespół infrastruktury chmury firmy Microsoft i operacje projektuje, tworzy, działa i zwiększa bezpieczeństwo infrastruktury chmurowej. Ten zespół zapewnia udostępnia infrastrukturę platformy Azure o wysokiej dostępności i niezawodności, wysokiej wydajności i skalowalności inteligentne. Zespół zapewnia chmura bezpieczniejsze, prywatne i zaufanych.

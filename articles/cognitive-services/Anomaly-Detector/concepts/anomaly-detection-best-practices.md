@@ -1,5 +1,5 @@
 ---
-title: Najlepsze rozwiązania w przypadku korzystania z interfejsu API wykrywanie anomalii
+title: Najlepsze rozwiązania dotyczące interfejsu API narzędzia do wykrywania anomalii
 description: Dowiedz się więcej o najlepszych rozwiązaniach podczas wykrywania anomalii przy użyciu interfejsu API wykrywanie anomalii.
 services: cognitive-services
 author: aahill
@@ -9,12 +9,12 @@ ms.subservice: anomaly-detector
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 467ac4e475a1c23e25b62c76cfbc959e7ed49465
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 766d009be3cd664d928a3c12f5fea38c26bbbdde
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58484045"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64692193"
 ---
 # <a name="best-practices-for-using-the-anomaly-detector-api"></a>Najlepsze rozwiązania dotyczące korzystania z interfejsu API wykrywanie anomalii
 
@@ -25,6 +25,29 @@ Interfejs API usługi Wykrywanie anomalii jest usługa wykrywania anomalii bezst
 * Liczba punktów danych w Twoim żądaniu interfejsu API. 
 
 Aby poznać najlepsze rozwiązania dotyczące korzystania z interfejsu API, uzyskania najlepszych rezultatów dla swoich danych, należy użyć w tym artykule. 
+
+## <a name="when-to-use-batch-entire-or-latest-last-point-anomaly-detection"></a>Kiedy należy używać usługi batch (całkowity) lub najnowsze (ostatnia) wskazują wykrywania anomalii
+
+Punktu końcowego wykrywania usługi batch API wykrywanie anomalii pozwala wykrywać nieprawidłowe stany, przez cały czas serii danych. W tym trybie wykrywania pojedynczego modelu statystyczne jest utworzony i zastosowane do każdego punktu w zestawie danych. Jeśli Twoje szeregów czasowych ma pod cech, zaleca się przy użyciu wykrywania usługi batch, aby wyświetlić podgląd danych w jednym wywołaniu interfejsu API.
+
+* Szeregów czasowych sezonowe, za pomocą okazjonalne anomalii.
+* Płaski trend szeregów czasowych, z okazjonalne wzrostów/spadku. 
+
+Nie zaleca się przy użyciu wykrywania anomalii w usłudze batch dla danych w czasie rzeczywistym, monitorowania lub korzystania z niego w danych szeregów czasowych, która nie ma powyżej właściwości. 
+
+* Wykrywanie Batch tworzy i stosuje tylko jeden model, wykrywania dla każdego punktu odbywa się w kontekście całej serii. Czas serii trendy danych górę i w dół bez sezonowości, punktów niektóre zmiany (adresy DIP i gwałtowny wzrost danych) mogą zostać pominięci przez model. Podobnie niektóre punkty zmian, które są mniej istotne niż te, które później w zestawie danych nie mogą być liczone jako tyle znaczące, należy włączyć do modelu.
+
+* Wykrywanie partii jest mniejsza niż wykrywania anomalii stan najnowszego punktu, w trakcie monitorowania danych w czasie rzeczywistym, ze względu na liczbę punktów analizowane.
+
+Do monitorowania danych w czasie rzeczywistym, firma Microsoft zaleca, wykrywanie anomalii stan tylko najnowsze punktu danych. Stosując stale ostatnie wykrywanie punktu, przesyłanie strumieniowe danych monitorowania może odbywać się bardziej wydajne i dokładne.
+
+W poniższym przykładzie opisano wpływ tych trybów wykrywania może mieć na wydajność. Pierwsze obraz przedstawia wynik stale wykrywania anomalii stan najnowszego punktu wzdłuż punktów danych poprzednio oglądaną 28. Czerwony punkty są anomalie.
+
+![Obraz przedstawiający wykrywanie anomalii przy użyciu najnowszego punktu](../media/last.png)
+
+Poniżej znajduje się ten sam zestaw danych przy użyciu wykrywania anomalii w usłudze batch. Model tworzony dla operacji został zignorowany kilka anomalie, oznaczony za prostokąty.
+
+![Obraz przedstawiający wykrywanie anomalii przy użyciu metody usługi batch](../media/entire.png)
 
 ## <a name="data-preparation"></a>Przygotowywanie danych
 
@@ -68,7 +91,7 @@ Aby uzyskać najlepsze wyniki, należy podać 4 `period`użytkownika, przez któ
 
 Jeśli dane przesyłania strumieniowego są próbkowane tak, w krótkich odstępach czasu (w sekundach lub minutach), wysyłając zalecana liczba punktów danych może przekroczyć API wykrywanie anomalii maksymalna liczba dozwolonych (8640 punkty danych). Jeśli dane pokazuje stabilny wzorcu sezonowym, należy wziąć pod uwagę wysyłania próbkę danych szeregów czasowych w większych odstępach czasu, takich jak godziny. Próbkowanie danych w ten sposób może również znacznie poprawić czas odpowiedzi interfejsu API. 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Co to jest interfejs API usługi Wykrywanie anomalii?](../overview.md)
 * [Szybki start: Wykrywanie anomalii w danych szeregów czasowych za pomocą interfejsu API REST wykrywanie anomalii](../quickstarts/detect-data-anomalies-csharp.md)

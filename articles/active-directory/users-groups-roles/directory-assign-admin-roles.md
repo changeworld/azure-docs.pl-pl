@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82afadef58310f46046c8c3168ed93a34769b316
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c0811ce1509b7886bf0061cba955ca5e18990cd1
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60472400"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920493"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Uprawnienia roli administratora w usłudze Azure Active Directory
 
@@ -58,6 +58,18 @@ Dostępne są następujące role administratora:
   * Grupy zabezpieczeń i grupy usługi Office 365 właścicieli, którzy mogą zarządzać członkostwem. Te grupy mogą udzielać dostępu do informacje poufne lub prywatne lub krytyczne konfiguracji w usłudze Azure AD i w innych miejscach.
   * Administratorzy w innych usługach poza usługi Azure AD, takich jak Exchange Online, zabezpieczenia pakietu Office i Centrum zgodności i zarządzania zasobami ludzkimi systemów.
   * Kierownicy doradcą prawnym i pracownicy działu kadr, którzy mogą uzyskiwać dostęp do poufne lub prywatne informacje, takie jak użytkownicy niebędący administratorami.
+
+* **[Administrator przepływ użytkownika B2C](#b2c-user-flow-administrator)**: Użytkownicy posiadający tę rolę można tworzyć i zarządzać B2C obszarze przepływy użytkownika (zwane również "wbudowane" zasady) w witrynie Azure Portal. Przez utworzenie lub edycję przepływy użytkownika, tych użytkowników można zmienić zawartość html/CSS/javascript środowisko użytkownika, Zmień wymagania uwierzytelniania MFA na przepływ użytkownika, zmień oświadczenia w tokenie i dostosować ustawienia sesji dla wszystkich zasad w ramach dzierżawy. Z drugiej strony ta rola nie obejmują możliwość sprawdzenia danych użytkownika, lub wprowadzić zmiany atrybutów, które znajdują się w schemacie dzierżawy. Zmiany platformy środowiska tożsamości (zwane również niestandardowych) zasady również znajduje się poza zakresem tej roli.
+
+* **[Administrator atrybut przepływ użytkownika B2C](#b2c-user-flow-attribute-administrator)**: Użytkownicy z tą rolą, dodawanie lub usuwanie atrybutów niestandardowych, które są dostępne dla wszystkich przepływów użytkownika w dzierżawie. Jako takie użytkownicy z tą rolą można zmienić lub dodać nowe elementy do schematu użytkownika końcowego i mieć wpływ na zachowanie wszystkie przepływy użytkownika i pośrednio powodują zmiany w jakie dane mogą być zadawane użytkowników końcowych i ostatecznie wysyłane jako oświadczenia do aplikacji. Tej roli nie można edytować przepływy użytkownika.
+
+* **[Administrator zestawu kluczy IEF B2C](#b2c-ief-keyset-administrator)**:    Użytkownika można tworzyć i zarządzać zasadami kluczy i wpisów tajnych dla funkcji szyfrowania tokenów podpisów tokenów i oświadczeń szyfrowania i odszyfrowywania. Przez dodawanie nowych kluczy do istniejących kontenerów kluczy, ograniczony administrator może przerzucania kluczy tajnych, zgodnie z potrzebami, bez wywierania wpływu na istniejące aplikacje. Ten użytkownik może wyświetlić pełnej zawartości tych kluczy tajnych oraz ich daty wygaśnięcia, nawet po ich utworzeniu.
+    
+  <b>Ważne:</b> jest rola poufnych. Rola administratora zestawu kluczy należy starannie inspekcji i przypisane z rozwagą w środowisku przedprodukcyjnym i produkcyjnych.
+
+* **[Administrator zasad IEF B2C](#b2c-ief-policy-administrator)**: Użytkownicy w tej roli ma możliwość tworzenia, odczytu, aktualizacji i Usuń wszystkie zasady niestandardowe w usłudze Azure AD B2C i w związku z tym mają pełną kontrolę nad struktura środowiska tożsamości w odpowiednich dzierżawy usługi Azure AD B2C. Edytując zasady, tego użytkownika można ustanowić bezpośrednie Federację z usługą zewnętrzny dostawca tożsamości, zmienianie schematu katalogu, zmiana zawartości wszystkich widocznych dla użytkownika (HTML, CSS, JavaScript), zmienianie wymagania aby zakończyć uwierzytelnianie, tworzenie nowych użytkowników, wysyłać dane użytkownika z systemami zewnętrznymi, łącznie z pełnej migracji i edytować wszystkie informacje o użytkownikach, w tym pól poufnych, takich jak hasła i numery telefonów. Z drugiej strony ta rola nie można zmienić klucze szyfrowania lub edytowania wpisów tajnych, używana do Federacji w dzierżawie.
+
+  <b>Ważne:</b> Administrator zasad IEF B2 jest wysoce poufne roli, która powinna być przydzielona w bardzo ograniczonym zakresie, w przypadku dzierżaw w środowisku produkcyjnym. Działań w oparciu o tych użytkowników należy ściśle monitorowane, szczególnie w przypadku dzierżaw w środowisku produkcyjnym.
 
 * **[Administrator rozliczeń](#billing-administrator)**: Dokonuje zakupów, zarządza subskrypcjami, zarządza biletami pomocy technicznej i monitoruje kondycję usługi.
 
@@ -110,6 +122,9 @@ Dostępne są następujące role administratora:
   > [!NOTE]
   > W interfejsu API Microsoft Graph, interfejs API usługi Azure AD Graph i Azure AD PowerShell ta rola jest rozpoznawana jako "Administrator usługi Exchange". Jest on "Administrator programu Exchange" [witryny Azure portal](https://portal.azure.com). Jest "Exchange Online polu" [Centrum administracyjne Exchange](https://go.microsoft.com/fwlink/p/?LinkID=529144). 
 
+* **[Administrator dostawcy tożsamości zewnętrznych](#external-identity-provider-administrator)**: Administrator zarządza federacji między dzierżawami usługi Azure Active Directory i zewnętrzny dostawca tożsamości. Z tą rolą użytkownicy mogą dodawać nowych dostawców tożsamości i skonfigurować wszystkie ustawienia dostępne (np. ścieżka uwierzytelniania, identyfikator usługi, przypisane kontenery kluczy). Temu użytkownikowi można włączyć dzierżawcy w celu zaufania uwierzytelnienia od dostawcy tożsamości zewnętrznej. Wynikowy wpływ na wrażenia użytkownika końcowego, zależy od typu dzierżawy:
+  * Dzierżaw usługi Azure Active Directory dla pracowników i partnerów: Dodanie federacyjnego (np. z usługi Gmail) natychmiast będzie miało wpływ na wszystkie zaproszenia gościa nie zostały jeszcze zrealizowane. Zobacz [Dodawanie Google jako dostawcy tożsamości dla użytkowników-gości B2B](https://docs.microsoft.com/azure/active-directory/b2b/google-federation).
+  * Dzierżawy usługi Azure Active Directory B2C: Dodanie federacyjnego (np. Facebook, lub z innej usługi Azure Active Directory) nie natychmiast wpływu na przepływy użytkownika końcowego do momentu dostawca tożsamości został dodany jako opcja w przepływ użytkownika (zwane również wbudowane zasady). Zobacz [Konfigurowanie konta Microsoft jako dostawcy tożsamości](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-msa-app) przykład. Aby zmienić przepływy użytkownika, wymagany jest ograniczona rolę "Administrator przepływu użytkowników B2C".
 
 * **[Administrator globalny / Administrator firmy](#company-administrator)**: Użytkownicy z tą rolą mają dostęp do wszystkich funkcji administracyjnych w usłudze Azure Active Directory, a także usług korzystających z tożsamości usługi Azure Active Directory, takich jak Centrum zabezpieczeń firmy Microsoft 365, Microsoft 365 Centrum zgodności, Exchange Online, SharePoint Online i Skype dla firm Online. Osoba, która zarejestruje się dla dzierżawy usługi Azure Active Directory staje się administratorem globalnym. Tylko administratorzy globalni mogą przypisywać pozostałe role administratorów. Może istnieć więcej niż jednego administratora globalnego w Twojej firmie. Administratorzy globalni mogą resetować hasła dla wszystkich użytkowników oraz wszystkich innych administratorów.
 
@@ -314,6 +329,34 @@ Można wyświetlić, wartości i zresetować informacje dotyczące metody uwierz
 | microsoft.office365.webPortal/allEntities/basic/read | Odczytywanie podstawowych właściwości we wszystkich zasobach w elemencie microsoft.office365.webPortal. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Odczytywanie i konfigurowanie kondycji usługi Office 365. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Tworzenie i zarządzanie biletami pomocy technicznej usługi Office 365. |
+
+### <a name="b2c-user-flow-administrator"></a>Administrator przepływ użytkownika B2C
+Utwórz i Zarządzaj wszystkimi aspektami przepływy użytkownika.
+
+| **Akcje** | **Opis** |
+| --- | --- |
+| microsoft.aad.b2c/userFlows/allTasks | Przeczytaj i skonfigurować przepływy użytkownika w usłudze Azure Active Directory B2C. |
+
+### <a name="b2c-user-flow-attribute-administrator"></a>Administrator atrybut przepływ użytkownika B2C
+Tworzenie i Zarządzanie schematami atrybut dostępne dla wszystkich przepływów użytkownika.
+
+| **Akcje** | **Opis** |
+| --- | --- |
+| microsoft.aad.b2c/userAttributes/allTasks | Przeczytaj i konfigurowanie atrybutów użytkownika w usłudze Azure Active Directory B2C. |
+
+### <a name="b2c-ief-keyset-administrator"></a>B2C IEF zestawu kluczy administratora
+Zarządzanie wpisami tajnymi federacyjnych i szyfrowania w struktura środowiska tożsamości.
+
+| **Akcje** | **Opis** |
+| --- | --- |
+| microsoft.aad.b2c/trustFramework/keySets/allTasks | Przeczytaj i zestaw kluczy należy skonfigurować w usłudze Azure Active Directory B2C. |
+
+### <a name="b2c-ief-policy-administrator"></a>Administrator zasad IEF B2C
+Tworzenie i zarządzanie zasadami framework zaufania w struktura środowiska tożsamości.
+
+| **Akcje** | **Opis** |
+| --- | --- |
+| microsoft.aad.b2c/trustFramework/policies/allTasks | Przeczytaj i skonfigurować zasady niestandardowe w usłudze Azure Active Directory B2C. |
 
 ### <a name="billing-administrator"></a>Administrator rozliczeń
 Może wykonywać typowe zadania związane z rozliczeniami, takie jak aktualizowanie informacji o płatności.
@@ -675,6 +718,13 @@ Może zarządzać wszystkimi aspektami produktu Exchange.
 | microsoft.office365.exchange/allEntities/allTasks | Zarządzaj wszystkimi aspektami usługi Exchange Online. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Odczytywanie i konfigurowanie kondycji usługi Office 365. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Tworzenie i zarządzanie biletami pomocy technicznej usługi Office 365. |
+
+### <a name="external-identity-provider-administrator"></a>Administrator dostawcy tożsamości zewnętrznych
+Skonfiguruj dostawców tożsamości do użycia w bezpośrednich federacji.
+
+| **Akcje** | **Opis** |
+| --- | --- |
+| microsoft.aad.b2c/identityProviders/allTasks | Przeczytaj i Konfigurowanie dostawcy tożsamości w usłudze Azure Active Directory B2C. |
 
 ### <a name="guest-inviter"></a>Osoba zapraszająca gościa
 Może zapraszać użytkowników-gości niezależnie od ustawienia „członkowie mogą zapraszać gości”.

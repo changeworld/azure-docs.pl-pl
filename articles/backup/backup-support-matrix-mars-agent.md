@@ -8,12 +8,12 @@ ms.date: 02/17/2019
 ms.topic: conceptual
 ms.author: raynew
 manager: carmonm
-ms.openlocfilehash: 3e2c6a550a9358656fd0870c7e785d131c5b6380
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9799914cdabf1f64fccfd6bfd891f9498b860e39
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57894397"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922999"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Macierz obsługi kopii zapasowej za pomocą agenta usługi Microsoft Azure Recovery Services (MARS)
 
@@ -24,14 +24,14 @@ Możesz użyć [usługi Azure Backup](backup-overview.md) do tworzenia kopii zap
 Usługa Azure Backup używa agenta usług MARS, wykonywanie kopii zapasowych danych maszyn lokalnych i maszyn wirtualnych platformy Azure do tworzenia kopii zapasowej magazynu usługi Recovery Services na platformie Azure. Agenta usług MARS wykonywać następujące czynności:
 - Tak, aby ich kopię zapasową można wykonać bezpośrednio do tworzenia kopii zapasowej magazynu usługi Recovery Services na platformie Azure, należy uruchomić na maszynach Windows w środowisku lokalnym.
 - Tak, aby ich kopię zapasową można wykonać bezpośrednio do magazynu, należy uruchomić na maszynach wirtualnych Windows.
-- Uruchom na serwerze System Center Data Protection Manager (DPM) lub Microsoft Azure Backup Server (MABS). W tym scenariuszu maszyn i obciążeń Utwórz kopię zapasową serwera usługi Mab lub serwerze programu DPM. Agenta usług MARS, a następnie tworzy kopię zapasową tego serwera do magazynu na platformie Azure. 
+- Uruchom na serwerze System Center Data Protection Manager (DPM) lub Microsoft Azure Backup Server (MABS). W tym scenariuszu maszyn i obciążeń Utwórz kopię zapasową serwera usługi Mab lub serwerze programu DPM. Agenta usług MARS, a następnie tworzy kopię zapasową tego serwera do magazynu na platformie Azure.
 
 Opcje kopii zapasowej zależą od tego, gdzie agent jest zainstalowany. Aby uzyskać więcej informacji, zobacz [architektury usługi Azure Backup przy użyciu agenta usług MARS](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders). Aby uzyskać informacje o architekturze usługi tworzenia kopii zapasowej programu DPM i serwera usługi Mab, zobacz [wykonaj kopię zapasową programu DPM lub MABS](backup-architecture.md#architecture-back-up-to-dpmmabs). Zobacz też [wymagania](backup-support-matrix-mabs-dpm.md) architektury kopii zapasowej.
 
 **Instalacja** | **Szczegóły**
 --- | ---
 Pobierz najnowszą wersję agenta usług MARS | Możesz pobrać najnowszą wersję agenta z magazynu, lub [pobrać go bezpośrednio](https://aka.ms/azurebackup_agent).
-Zainstaluj bezpośrednio na maszynie | Można zainstalować agenta usług MARS bezpośrednio na serwerze Windows w środowisku lokalnym lub na maszynie Wirtualnej Windows, który jest uruchomiony jeden z [obsługiwane systemy operacyjne](https://docs.microsoft.com/en-us/azure/backup/backup-support-matrix-mabs-dpm#supported-mabs-and-dpm-operating-systems).
+Zainstaluj bezpośrednio na maszynie | Można zainstalować agenta usług MARS bezpośrednio na serwerze Windows w środowisku lokalnym lub na maszynie Wirtualnej Windows, który jest uruchomiony jeden z [obsługiwane systemy operacyjne](https://docs.microsoft.com/azure/backup/backup-support-matrix-mabs-dpm#supported-mabs-and-dpm-operating-systems).
 Zainstaluj na serwerze kopii zapasowej | Po skonfigurowaniu programu DPM lub serwera usługi Mab do tworzenia kopii zapasowych na platformie Azure, Pobierz i zainstaluj agenta usług MARS na serwerze. Można zainstalować agenta na [obsługiwane systemy operacyjne](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems) w macierzy obsługi Utwórz kopię zapasową serwera.
 
 > [!NOTE]
@@ -45,8 +45,8 @@ Podczas tworzenia kopii zapasowych za pomocą agenta usług MARS, agent tworzy m
 
 **Pamięć podręczna** | **Szczegóły**
 --- | ---
-Rozmiar |  Wolne miejsce w folderze pamięci podręcznej powinien być co najmniej 5 – 10 procent całkowitego rozmiaru danych kopii zapasowej. 
-Lokalizacja | Folder pamięci podręcznej muszą być przechowywane lokalnie na komputerze, na którym jest tworzona kopia zapasowa, a musi być w trybie online. Folder pamięci podręcznej nie powinien być w udziale sieciowym, nośnik wymienny lub wolumin w trybie offline. 
+Rozmiar |  Wolne miejsce w folderze pamięci podręcznej powinien być co najmniej 5 – 10 procent całkowitego rozmiaru danych kopii zapasowej.
+Lokalizacja | Folder pamięci podręcznej muszą być przechowywane lokalnie na komputerze, na którym jest tworzona kopia zapasowa, a musi być w trybie online. Folder pamięci podręcznej nie powinien być w udziale sieciowym, nośnik wymienny lub wolumin w trybie offline.
 Folder | Folder pamięci podręcznej powinien być szyfrowany w deduplikowanym woluminie lub w folderze, który jest skompresowany, jest rozrzedzony lub zawierającego punkt ponownej analizy.
 Zmiany lokalizacji | Możesz zmienić lokalizację pamięci podręcznej, zatrzymując Aparat kopii zapasowej (`net stop bengine`) oraz kopiowania folderu pamięci podręcznej do nowego dysku. (Upewnij się, że nowy dysk ma wystarczająco dużo miejsca). Następnie zaktualizuj dwóch wpisów rejestru w obszarze **kopia zapasowa Azure HKLM\SOFTWARE\Microsoft\Windows** (**Config/ScratchLocation** i **CloudBackupProvider-Config-ScratchLocation**) do nowej lokalizacji i uruchom ponownie aparat.
 
@@ -103,9 +103,9 @@ Windows 7   | 1700 GB
 
 ## <a name="supported-file-types-for-backup"></a>Obsługiwane typy plików do utworzenia kopii zapasowej
 
-**Typ** | **Pomoc techniczna** 
---- | --- 
-Zaszyfrowane   | Obsługiwane. 
+**Typ** | **Pomoc techniczna**
+--- | ---
+Zaszyfrowane   | Obsługiwane.
 Skompresowane | Obsługiwane.
 Rozrzedzone | Obsługiwane.
 Skompresowane i rozrzedzone | Obsługiwane.
@@ -114,7 +114,7 @@ Punkt ponownej analizy   | Nieobsługiwane. Pominięto.
 Zaszyfrowane i rozrzedzone |  Nieobsługiwane. Pominięto.
 Skompresowany strumień   | Nieobsługiwane. Pominięto.
 Rozrzedzony strumień   | Nieobsługiwane. Pominięto.
-OneDrive (zsynchronizowane pliki są strumienie rozrzedzone)  | Nieobsługiwane. 
+OneDrive (zsynchronizowane pliki są strumienie rozrzedzone)  | Nieobsługiwane.
 
 ## <a name="supported-drives-or-volumes-for-backup"></a>Obsługiwane dyski lub woluminy do utworzenia kopii zapasowej
 

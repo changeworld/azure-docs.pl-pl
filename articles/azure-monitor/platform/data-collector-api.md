@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: bwren
-ms.openlocfilehash: 9fd65dc0a6d2a5756acd2de7cb46fbf7943a8758
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 0f5a996d68c80fd9b1f55a36de37579ea245d99d
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60931823"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922781"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>Wyślij dane dziennika do usługi Azure Monitor za pomocą interfejsu API modułu zbierającego dane HTTP (publiczna wersja zapoznawcza)
 W tym artykule pokazano, jak używać interfejsu API modułu zbierającego dane HTTP do wysyłania dzienników danych do usługi Azure Monitor z klienta interfejsu API REST.  Przedstawiono sposób formatowania danych zbieranych przez skrypt lub aplikację, uwzględnić go w żądaniu i ma to żądanie autoryzacji usługi Azure Monitor.  Przykłady są udostępniane dla programu PowerShell, C# i Python.
@@ -476,7 +476,7 @@ Interfejsu API modułu zbierającego dane powinny obejmować większość potrze
 
 | Alternatywna | Opis | Najodpowiedniejsza dla |
 |---|---|---|
-| [Zdarzenia niestandardowe](https://docs.microsoft.com/en-us/azure/azure-monitor/app/api-custom-events-metrics?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#properties): Natywny zestaw SDK oparte na przyjmowanie danych w usłudze Application Insights | Usługa Application Insights, zwykle Instrumentacji za pomocą zestawu SDK w aplikacji, oferuje możliwość przesyłania danych niestandardowych zdarzeń niestandardowych. | <ul><li> Dane wygenerowane w aplikacji, ale nie są pobierane przez zestaw SDK za pomocą jednego z domyślnych typów danych (ie: żądania, zależności, wyjątki, itp.).</li><li> Dane, które najczęściej są skorelowane z innymi danymi aplikacji w usłudze Application Insights </li></ul> |
+| [Zdarzenia niestandardowe](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#properties): Natywny zestaw SDK oparte na przyjmowanie danych w usłudze Application Insights | Usługa Application Insights, zwykle Instrumentacji za pomocą zestawu SDK w aplikacji, oferuje możliwość przesyłania danych niestandardowych zdarzeń niestandardowych. | <ul><li> Dane wygenerowane w aplikacji, ale nie są pobierane przez zestaw SDK za pomocą jednego z domyślnych typów danych (ie: żądania, zależności, wyjątki, itp.).</li><li> Dane, które najczęściej są skorelowane z innymi danymi aplikacji w usłudze Application Insights </li></ul> |
 | [Interfejs API modułu zbierającego dane](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api) w dziennikach w usłudze Azure Monitor | Interfejsu API modułu zbierającego dane w dziennikach monitora platformy Azure jest całkowicie nieograniczony sposób pozyskiwania danych. W tym miejscu można wysyłać żadnych danych sformatowanych w obiekcie JSON. Po wysłaniu będą przetwarzane i dostępne w dzienniki będą skorelowane z innymi danymi w dziennikach lub inne usługi Application Insights danych. <br/><br/> Jest to dość proste przekazać dane jako pliki do obiektu blob usługi Azure Blob z których przetwarzane i przekazany do usługi Log Analytics tych plików. Zobacz [to](https://docs.microsoft.com/azure/log-analytics/log-analytics-create-pipeline-datacollector-api) artykuł, aby przykład implementacji takich potoku. | <ul><li> Dane, które nie są zawsze generowane w obrębie aplikacji zinstrumentowane w ramach usługi Application Insights.</li><li> Przykłady obejmują tabel odnośników i faktów, dane referencyjne, wstępnie zagregowanych danych statystycznych, itp. </li><li> Przeznaczona dla danych, który ma być odsyłaczy względem innych danych usługi Azure Monitor (na przykład usługi Application Insights, inne dzienniki typy danych, usługa Security Center, usługa Azure Monitor, kontenerów lub maszyny wirtualne itp). </li></ul> |
 | [Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/ingest-data-overview) | Usługa Azure Data Explorer (ADX) jest platformy danych, która obsługuje analizy usługi Application Insights i Azure Monitor dzienniki. Teraz jest ogólnie już dostępna ("GA"), za pomocą platformy danych w nieprzetworzonej postaci zapewnia pełną elastyczność (ale wymaga pracy związanej z zarządzaniem) za pośrednictwem klastra (RBAC, współczynnik utrzymania schematu, itp.). ADX jest dostępnych wiele [opcji pozyskiwania](https://docs.microsoft.com/azure/data-explorer/ingest-data-overview#ingestion-methods) tym [CSV, TSV i JSON](https://docs.microsoft.com/azure/kusto/management/mappings?branch=master) plików. | <ul><li> Dane, które nie będą zostać skorelowane z wszelkimi innymi danymi, w ramach usługi Application Insights lub dzienniki. </li><li> Danych wymagających zaawansowanych pozyskiwania lub nie jest obecnie dostępna w dzienników monitora platformy Azure możliwości przetwarzania. </li></ul> |
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: magoedte
-ms.openlocfilehash: 89e73a4578134493a25ec3cbd2385433a2b36156
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 58abe3a3973986ab489456be7958361ad8ab06f4
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60775884"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922835"
 ---
 # <a name="overview-of-the-azure-monitoring-agents"></a>Omówienie usługi Azure, agentów monitorowania 
 Microsoft Azure oferuje wiele sposobów, aby zbierać różne typy danych z maszyn wirtualnych z systemem Microsoft Windows i Linux hostowanych na platformie Azure, centrum danych lub innych dostawców rozwiązań w chmurze. Są trzy typy dostępnych do monitorowania maszyn wirtualnych agentów:
@@ -66,7 +66,7 @@ Wcześniej kilka usług platformy Azure były powiązane jako *pakietu Operation
 
 * [Azure zarządzania aktualizacjami automatyzacji](../../automation/automation-update-management.md) aktualizacji systemu operacyjnego.
 * [Usługi Azure Automation Desired State Configuration](../../automation/automation-dsc-overview.md) do zarządzania stanem spójnej konfiguracji.
-* Śledź zmiany konfiguracji przy użyciu [spis i śledzenie zmian w usłudze Azure Automation](../../automation/automation-change-tracking.md).
+* Śledź zmiany konfiguracji przy użyciu [spis i śledzenie zmian w usłudze Azure Automation](../../automation/change-tracking.md).
 * Usługi systemu Azure, takich jak [usługi Application Insights](https://docs.microsoft.com/azure/application-insights/) i [usługi Azure Security Center](https://docs.microsoft.com/azure/security-center/), która natywnie przechowują swoje dane bezpośrednio w usłudze Log Analytics.  
 
 ## <a name="dependency-agent"></a>Agent zależności

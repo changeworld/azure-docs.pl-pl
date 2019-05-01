@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/30/2018
+ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73d64cac3812d8daf8ac34b93c91338e1dfab88a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 39495e11e42853bf3cf9481475d970667c56223f
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60382003"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919101"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>Definiowanie strategii wdrażania tożsamości hybrydowej
 To zadanie służy do definiowania strategii wdrażania tożsamości hybrydowej dla Twojego rozwiązania tożsamości hybrydowej w celu spełnienia wymagań biznesowych, które zostały omówione w:
@@ -37,7 +37,7 @@ Musi mieć pierwszy adresy zadań określania biznesowych organizacji.  Może to
 ## <a name="define-an-integration-strategy"></a>Definiowanie strategii integracji
 Firma Microsoft ma trzy scenariusze integracji głównego, będące tożsamości w chmurze, synchronizacja tożsamości i tożsamości federacyjnych.  Należy zaplanować na przyjmującą jeden z następujących strategii integracji.  Strategii, którą wybierzesz mogą się różnić i mogą obejmować decyzje, wybierając jeden, jakiego rodzaju środowisko użytkownika, które chcesz udostępnić, czy masz istniejącą infrastrukturę, co to jest najbardziej ekonomiczne.  
 
-![](./media/plan-hybrid-identity-design-considerations/integration-scenarios.png)
+![Kompleksowe scenariusze integracji](./media/plan-hybrid-identity-design-considerations/integration-scenarios.png)
 
 Scenariusze zdefiniowane na powyższej ilustracji są następujące:
 
@@ -111,14 +111,14 @@ W ciągu lat kilka narzędzi synchronizacji mają istniał i używane dla różn
 ### <a name="supported-topologies"></a>Obsługiwane topologie
 Podczas definiowania strategii synchronizacji, należy określić topologię, która jest używana. W zależności od informacji, które zostało określone w kroku 2 można określić, która topologia jest odpowiednią z nich do użycia. Pojedynczy las, pojedynczy topologii usługi Azure AD jest najbardziej typowe i składa się z jednego lasu usługi Active Directory i jedno wystąpienie usługi Azure AD.  To ma być używane w większości scenariuszy i jest oczekiwany topologii, gdy za pomocą usługi Azure AD Connect instalacji programu Express, jak pokazano na poniższej ilustracji.
 
-![](./media/plan-hybrid-identity-design-considerations/single-forest.png) Scenariusz pojedynczego lasu jest typowe dla nawet małych i dużych organizacji mają wiele lasów, jak pokazano na rysunku 5.
+![Obsługiwane topologie](./media/plan-hybrid-identity-design-considerations/single-forest.png) pojedynczego lasu scenariusza są często nawet małych i dużych organizacji mają wiele lasów, jak pokazano na rysunku 5.
 
 > [!NOTE]
 > Aby uzyskać więcej informacji na temat różnych lokalnych i topologii usługi Azure AD za pomocą usługi Azure AD Connect sync, przeczytaj artykuł [topologie obsługiwane w programie Azure AD Connect](plan-connect-topologies.md).
 > 
 > 
 
-![](./media/plan-hybrid-identity-design-considerations/multi-forest.png) 
+![Topologia obejmującego wiele lasów](./media/plan-hybrid-identity-design-considerations/multi-forest.png) 
 
 Scenariusza obejmującego wiele lasów
 
@@ -140,7 +140,7 @@ Jeśli jest to wymagane, a następnie jedną obejmującego wiele lasów topologi
 
 Jeśli masz więcej niż jedno konto active lub więcej niż jedną skrzynkę pocztową powyższe warunki nie zostaną spełnione, program Azure AD Connect wybierz jedną, a druga Ignoruj.  Jeśli zostały połączone skrzynek pocztowych, ale żadne inne konto, te konta nie zostaną wyeksportowane do usługi Azure AD, a ten użytkownik nie będą członkami żadnych grup.  To różni się od sposobu z przeszłości w przypadku narzędzia DirSync i jest zamierzone, aby lepiej Obsługa tych scenariuszy obejmującego wiele lasów. Na poniższej ilustracji przedstawiono scenariusza obejmującego wiele lasów.
 
-![](./media/plan-hybrid-identity-design-considerations/multiforest-multipleAzureAD.png) 
+![Wiele dzierżaw usługi Azure AD](./media/plan-hybrid-identity-design-considerations/multiforest-multipleAzureAD.png) 
 
 **Wiele lasów wielu scenariuszy usługi Azure AD**
 
@@ -148,7 +148,7 @@ Zaleca się mają jeden katalog, w usłudze Azure AD dla organizacji, ale jest o
 
 Jest to możliwe i obsługiwanych połączyć lokalne wystąpienie usługi Active Directory wiele katalogów usługi Azure AD, jak pokazano na poniższej ilustracji:
 
-![](./media/plan-hybrid-identity-design-considerations/single-forest-flitering.png) 
+![Filtrowanie jednego lasu](./media/plan-hybrid-identity-design-considerations/single-forest-flitering.png) 
 
 **Scenariusz filtrowania obejmujących jeden las**
 

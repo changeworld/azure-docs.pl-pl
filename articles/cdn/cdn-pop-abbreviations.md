@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2018
 ms.author: magattus
-ms.openlocfilehash: eac699a68558f0a8c9f94f0a8b75aabee561ebb3
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 3de7f36228bba4cfc84e17dd056683a1a76df684
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62113889"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869615"
 ---
 # <a name="azure-cdn-pop-locations-by-abbreviation"></a>Lokalizacje POP sieci CDN platformy Azure według skrótu
 > [!div class="op_single_selector"]
@@ -41,7 +41,7 @@ AMS | Amsterdam, Holandia | Europa
 ARN | Sztokholm, Szwecja | Europa
 ATL | Atlanta, Georgia, USA | Ameryka Północna: Wschodnim wybrzeżu Stanów Zjednoczonych
 BAQ | Barranquilla, Colombia | Ameryka Łacińska
-BLR | Bangalur, Indie | Azja
+BLR | Bengaluru (Bangalur), Indie | Azja
 BNJ | Newark, New Jersey, USA | Ameryka Północna: Wschodnim wybrzeżu Stanów Zjednoczonych
 BOS | Boston, Massachusetts, USA | Ameryka Północna: Wschodnim wybrzeżu Stanów Zjednoczonych
 BTH | Batam, Indonesia | Azja

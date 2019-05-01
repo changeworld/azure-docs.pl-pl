@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: quickstart
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: 88a5a1bcff8542ac500bbb5e0da790f77c90a825
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 999d44e394d47e350187f9175389e04e68567d5e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60809675"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64724654"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>Szybki start: tworzenie przekazów komunikatów w czasie rzeczywistym z poziomu aplikacji konsolowej
 
@@ -181,4 +181,4 @@ Wersja | Metoda HTTP interfejsu API | Adres URL żądania
 W tym przewodniku Szybki Start przedstawiono sposób użycia interfejsu API REST w celu emisji komunikatów w czasie rzeczywistym z usługi SignalR dla klientów. Następnie Dowiedz się więcej o tym, jak opracowywać i wdrażać usługi Azure Functions przy użyciu usługi SignalR powiązanie, które bazuje na usłudze interfejsu API REST.
 
 > [!div class="nextstepaction"]
-> [Tworzenie funkcji platformy Azure przy użyciu powiązania wtyczkę usługi Azure SignalR Service](signalr-quickstart-azure-functions-csharp.md)
+> [Tworzenie usługi Azure Functions za pomocą powiązań usługi Azure SignalR Service](signalr-quickstart-azure-functions-csharp.md)

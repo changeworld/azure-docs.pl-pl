@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 4/12/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 3d06024b7fa4356d4ad0e8b52c45c2ead62ef784
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 1c772756a90c3eee4e2b3fb4fd4a0ec9e98fa0da
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60778380"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919093"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Tworzenie grup i zarządzanie nimi akcji w witrynie Azure portal
 ## <a name="overview"></a>Omówienie ##
@@ -78,7 +78,7 @@ Po utworzeniu grupy akcji, jest ona widoczna na **grup akcji** części **Monito
 
 Mogą mieć ograniczoną liczbę akcji poczty e-mail do grupy akcji. Zobacz [ograniczania informacje o szybkości](./../../azure-monitor/platform/alerts-rate-limiting.md) artykułu
 
-**ITSM** — może być ograniczona liczba ograniczoną liczbę akcje ITSM w grupy akcji. Akcja ITSM wymaga połączenia narzędzia ITSM. Dowiedz się, jak utworzyć [połączenia narzędzia ITSM](../../azure-monitor/platform/itsmc-overview.md).
+**ITSM** — mogą mieć ograniczoną liczbę akcje ITSM w grupy akcji. Akcja ITSM wymaga połączenia narzędzia ITSM. Dowiedz się, jak utworzyć [połączenia narzędzia ITSM](../../azure-monitor/platform/itsmc-overview.md).
 
 **Aplikacji logiki** — może być ograniczona liczba akcji aplikacji logiki do grupy akcji.
 
@@ -105,15 +105,12 @@ Zakresy adresów IP źródła
  - 51.5.148.86
  - 51.5.149.19
 
-Aby otrzymywać aktualizacje o zmianach na te adresy IP, firma Microsoft zaleca skonfigurować [usługa alert o kondycji, która monitoruje informacyjny powiadomień dotyczących usługi grupy akcji.
-
+Aby otrzymywać aktualizacje o zmianach na te adresy IP, zalecane Konfigurowanie alertu usługa kondycji monitoruje informacyjny powiadomień dotyczących usługi grupy akcji.
 
 ## <a name="next-steps"></a>Kolejne kroki ##
-
 * Dowiedz się więcej o [SMS alert zachowanie](../../azure-monitor/platform/alerts-sms-behavior.md).  
 * Uzyskaj [zrozumieć schemat elementów webhook alertu dziennika aktywności](../../azure-monitor/platform/activity-log-alerts-webhook.md).  
 * Dowiedz się więcej o [łącznik ITSM](../../azure-monitor/platform/itsmc-overview.md)
 * Dowiedz się więcej o [szybkości](../../azure-monitor/platform/alerts-rate-limiting.md) alerty.
 * Pobierz [Przegląd alertów dziennika aktywności](../../azure-monitor/platform/alerts-overview.md)i Dowiedz się, jak otrzymywać alerty.  
 * Dowiedz się, jak [Konfigurowanie alertów po każdym opublikowaniu powiadomienia kondycji usługi](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
-

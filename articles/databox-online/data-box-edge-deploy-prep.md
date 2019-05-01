@@ -1,20 +1,20 @@
 ---
-title: Samouczek dotyczący przygotowywania witryny Azure Portal do wdrożenia usługi Data Box Edge | Microsoft Docs
+title: Samouczek, aby przygotować środowisko platformy Azure portal, centrum danych do wdrożenia usługi Azure Data Box Edge | Dokumentacja firmy Microsoft
 description: Pierwszy samouczek dotyczący wdrażania usługi Azure Data Box Edge obejmuje przygotowywanie witryny Azure Portal.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 03/07/2019
+ms.date: 04/23/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 19c4fc96653f966ea5642149d944886e4b7f4483
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: d7e66970db3397531c798bc37bf7c1f346e999bf
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401676"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924769"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-edge"></a>Samouczek: Przygotowywanie do wdrażania usługi Azure Data Box Edge  
 
@@ -55,6 +55,8 @@ Poniżej opisano wymagania wstępne dotyczące konfiguracji zasobu usługi Data 
 Przed rozpoczęciem upewnij się, że:
 
 - Twoja subskrypcja platformy Microsoft Azure obsługuje zasób usługi Data Box Edge. Płatność za rzeczywiste użycie subskrypcje nie są obsługiwane.
+- Masz właściciela lub współautora dostęp do Twojej subskrypcji.
+- Masz administratora lub użytkownika, dostęp do interfejsu API usługi Azure Active Directory Graph. Aby uzyskać więcej informacji, zobacz [interfejsu API usługi Azure Active Directory Graph](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
 - Masz konto magazynu platformy Microsoft Azure z poświadczeniami dostępu.
 
 ### <a name="for-the-data-box-edge-device"></a>Urządzenie Data Box Edge
@@ -87,11 +89,15 @@ Aby utworzyć zasób usługi Data Box Edge, wykonaj poniższe czynności w witry
 
 1. Użyj swoich poświadczeń Microsoft Azure do logowania się na 
     
-    - Witryny Azure portal pod tym adresem URL: [ https://portal.azure.com ](http://portal.azure.com).
-    - Lub portalu Azure dla instytucji rządowych pod tym adresem URL: [https://portal.azure.us](https://portal.azure.us)
+    - Witryny Azure portal pod tym adresem URL: [ https://portal.azure.com ](https://portal.azure.com).
+    - Lub, w portalu Azure dla instytucji rządowych pod tym adresem URL: [ https://portal.azure.us ](https://portal.azure.us). Aby uzyskać więcej informacji, przejdź do [nawiązywanie połączenia z platformy Azure Government przy użyciu portalu](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal).
 
 2. W okienku po lewej stronie wybierz **+ Utwórz zasób**. Wyszukaj **Data Box Edge / Data Box bramy**. Wybierz **Data Box Edge / Data Box bramy**. Wybierz pozycję **Utwórz**.
-3. Wybierz subskrypcję, dla której chcesz użyć dla tego urządzenia krawędź pola danych. Wybierz region, w którym chcesz wdrożyć zasób rozwiązania Data Box Edge. W tej wersji są dostępne wschodnie stany USA, Azja południowo-wschodnia i Europa Zachodnia. Wybierz lokalizację najbliżej regionu geograficznego, w którym chcesz wdrożyć urządzenie. W opcji usługi **Data Box Edge** wybierz pozycję **Utwórz**.
+3. Wybierz subskrypcję, dla której chcesz użyć dla tego urządzenia krawędź pola danych. Wybierz region, w którym chcesz wdrożyć zasób rozwiązania Data Box Edge. W tej wersji są dostępne wschodnie stany USA, Azja południowo-wschodnia i Europa Zachodnia. 
+
+    Wybierz lokalizację najbliżej regionu geograficznego, w którym chcesz wdrożyć urządzenie. Region przechowuje trafiają tam jedynie metadane do zarządzania urządzeniami. Rzeczywiste dane mogą być przechowywane w wszystkich kont magazynu. 
+    
+    W opcji usługi **Data Box Edge** wybierz pozycję **Utwórz**.
 
     ![Wyszukiwanie usługi Data Box Edge](media/data-box-edge-deploy-prep/data-box-edge-sku.png)
 

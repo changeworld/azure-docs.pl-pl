@@ -5,16 +5,16 @@ services: service-fabric-mesh
 keywords: ''
 author: chackdan
 ms.author: chackdan
-ms.date: 12/12/2018
+ms.date: 4/23/2019
 ms.topic: troubleshooting
 ms.service: service-fabric-mesh
 manager: jeanpaul.connock
-ms.openlocfilehash: 27cf4d31f11eaf861d1cafc093d912aa15c8bec0
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 7f3bed454bce90d797ca5829043c7e5f8ce5b051
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979755"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64728576"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Często zadawane pytania usługi Service Fabric siatki
 
@@ -77,7 +77,9 @@ Na przykład:
 
 Aby usunąć grupę zasobów, użyj `az group delete <nameOfResourceGroup>` polecenia.
 
-## <a name="supported-container-os-images"></a>Obrazy obsługiwane kontenerów systemu operacyjnego
+## <a name="deployments"></a>Wdrożenia
+
+### <a name="what-container-images-are-supported"></a>Jakie obrazy kontenerów są obsługiwane?
 
 Jeśli tworzysz na komputerze aktualizacji Windows Fall Creators Update (wersja 1709), można używać tylko obrazy platformy docker systemu Windows w wersji 1709.
 
@@ -90,6 +92,10 @@ Następujące obrazy systemu operacyjnego kontener może służyć do wdrożenia
     - Windows Server w wersji 1803
 - Linux
     - Nie znane ograniczenia
+
+### <a name="what-types-of-applications-can-i-deploy"></a>Jakie typy aplikacji można wdrożyć? 
+
+Możesz wdrożyć niczego, który jest uruchamiany w kontenerach, które mieszczą się w ograniczenia umieścić w zasobu aplikacji (zobacz wyżej, aby uzyskać więcej informacji na limity przydziału). Jeśli zostanie wykryte, że używasz siatki dla obciążeń niedozwolony lub nadużywanie systemu (czyli wyszukiwania), następnie firma Microsoft zastrzega sobie prawo do zakończenia wdrożeń i listy blokowania subskrypcji z uruchomionych w usłudze. Skontaktuj się z nami, jeśli masz jakiekolwiek pytania na temat uruchamiania określonego obciążenia. 
 
 ## <a name="developer-experience-issues"></a>Problemy z środowisko dla deweloperów
 

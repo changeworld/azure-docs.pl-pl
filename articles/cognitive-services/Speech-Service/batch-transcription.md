@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 2/20/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: b389d86fe4d23e3f4ee1c66e4270a74351098129
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 1a2d24be00b0e1224b5f8d52105e2969d64e5f64
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61059609"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922476"
 ---
 # <a name="why-use-batch-transcription"></a>Dlaczego warto używać usługi Batch transkrypcji?
 
@@ -29,7 +29,7 @@ Transkrypcja partii jest idealnym rozwiązaniem, jeśli chcesz także dużej ilo
 Jak z wszystkich funkcji usługi rozpoznawania mowy, tworzenie klucz subskrypcji z [witryny Azure portal](https://portal.azure.com) postępując zgodnie z naszym [Wprowadzenie — przewodnik](get-started.md). Jeśli planujesz uzyskiwanie transkrypcje modeli podstawowych w naszym Tworzenie klucza jest wszystko, co należy zrobić.
 
 >[!NOTE]
-> Standardowa subskrypcja (S0) dla usług przetwarzania mowy wymagane jest wprowadzenie transkrypcji usługi batch. Bezpłatna subskrypcja kluczy (F0) nie będzie działać. Aby uzyskać więcej informacji, zobacz [ceny i limity](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/speech-services/).
+> Standardowa subskrypcja (S0) dla usług przetwarzania mowy wymagane jest wprowadzenie transkrypcji usługi batch. Bezpłatna subskrypcja kluczy (F0) nie będzie działać. Aby uzyskać więcej informacji, zobacz [ceny i limity](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
 ### <a name="custom-models"></a>Modele niestandardowe
 
@@ -72,7 +72,8 @@ Parametry konfiguracji są dostarczane jako dane JSON:
   "properties": {
     "ProfanityFilterMode": "Masked",
     "PunctuationMode": "DictatedAndAutomatic",
-    "AddWordLevelTimestamps" : "True"
+    "AddWordLevelTimestamps" : "True",
+    "AddSentiment" : "True"
   }
 }
 ```
@@ -87,6 +88,7 @@ Parametry konfiguracji są dostarczane jako dane JSON:
 | `ProfanityFilterMode` | Określa sposób obsługi wulgaryzmów w wyniki rozpoznawania. Akceptowane wartości to `none` która wyłącza filtrowanie wulgaryzmów `masked` gwiazdek, która zastępuje wulgaryzmów `removed` z wyników, które powoduje usunięcie wszystkich wulgaryzmów lub `tags` dodaje tagi "wulgaryzmów". Ustawieniem domyślnym jest `masked`. | Optional (Opcjonalność) |
 | `PunctuationMode` | Określa sposób obsługi znaków interpunkcyjnych w wyniki rozpoznawania. Akceptowane wartości to `none` która wyłącza znak interpunkcyjny, `dictated` co oznacza jawne znak interpunkcyjny, `automatic` umożliwiającą dekodera przeciwdziałania znak interpunkcyjny, lub `dictatedandautomatic` co oznacza definiowane znaków interpunkcyjnych lub automatyczny. | Optional (Opcjonalność) |
  | `AddWordLevelTimestamps` | Określa, jeśli sygnatury czasowe z poziomu programu word powinna być dodana do danych wyjściowych. Akceptowane wartości to `true` umożliwiająca sygnatury czasowe z poziomu programu word i `false` (wartość domyślna) można ją wyłączyć. | Optional (Opcjonalność) |
+ | `AddSentiment` | Określa, że wskaźniki nastrojów klientów powinny zostać dodane do wypowiedź. Akceptowane wartości to `true` umożliwiająca tonacji na wypowiedź i `false` (wartość domyślna) można ją wyłączyć. | Optional (Opcjonalność) |
 
 ### <a name="storage"></a>Magazyn
 
@@ -97,6 +99,57 @@ Usługa Batch obsługuje transkrypcji [usługi Azure Blob storage](https://docs.
 Sondowania stanu transkrypcji nie może być większość wydajne lub zapewnia najlepsze środowisko użytkownika. Aby wykonać sondowanie dotyczące stanu, należy zarejestrować wywołania zwrotne, które powiadomi klienta po zakończeniu długotrwałych zadań transkrypcji.
 
 Aby uzyskać więcej informacji, zobacz [elementów Webhook](webhooks.md).
+
+## <a name="sentiment"></a>Opinia
+
+Wskaźniki nastrojów klientów jest nowa funkcja interfejsu API usługi Batch transkrypcji i ważną funkcję w domenie Centrum połączenia. Klienci mogą używać `AddSentiment` parametrów na ich żądania 
+
+1.  Uzyskuj szczegółowe informacje dotyczące zadowolenia klientów
+2.  Uzyskaj wgląd na wydajność agentów (zespół przyjmowanie wywołań)
+3.  Wykrywanie dokładny moment w czasie, gdy wywołanie trwało Włącz w kierunku ujemna
+4.  Wykrywanie, co poszło dobrze w przypadku, gdy włączenie wywołania ujemny wynik dodatni
+5.  Identyfikowanie klientów lubi i co one podoba produktu lub usługi
+
+Wynik tonacji skategoryzowano według segmentu audio, gdzie audio segmentu jest zdefiniowany jako okres od początku wypowiedź (przesunięciem) i wyciszenia wykrywania końca strumienia bajtów. Cały tekst w tym segmencie jest używane do obliczania wskaźniki nastrojów klientów. Firma Microsoft nie obliczać wartości tonacji agregacji całego połączenia lub całego mowy poszczególnych kanałów. Te są pozostawiane do właściciela domeny, do dalszego zastosowania.
+
+Wskaźniki nastrojów klientów są stosowane w formularzu leksykalne.
+
+Przykładowe dane wyjściowe JSON wygląda jak poniżej:
+
+```json
+{
+  "AudioFileResults": [
+    {
+      "AudioFileName": "Channel.0.wav",
+      "AudioFileUrl": null,
+      "SegmentResults": [
+        {
+          "RecognitionStatus": "Success",
+          "ChannelNumber": null,
+          "Offset": 400000,
+          "Duration": 13300000,
+          "NBest": [
+            {
+              "Confidence": 0.976174,
+              "Lexical": "what's the weather like",
+              "ITN": "what's the weather like",
+              "MaskedITN": "what's the weather like",
+              "Display": "What's the weather like?",
+              "Words": null,
+              "Sentiment": {
+                "Negative": 0.206194,
+                "Neutral": 0.793785,
+                "Positive": 0.0
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+Funkcje korzysta z modelu tonacji, która jest obecnie dostępna w wersji Beta.
 
 ## <a name="sample-code"></a>Przykładowy kod
 

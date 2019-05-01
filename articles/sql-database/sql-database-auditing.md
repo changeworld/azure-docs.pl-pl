@@ -12,12 +12,12 @@ ms.author: arib
 ms.reviewer: vanto
 manager: craigg
 ms.date: 04/16/2019
-ms.openlocfilehash: add3521a3961f230188e04ff23dda5aac537571a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 15d195361b9fe8523ae6e46ba035ca5927c4d242
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61418496"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924761"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Rozpoczynanie pracy z inspekcją bazy danych SQL
 
@@ -90,7 +90,7 @@ W poniższej sekcji opisano konfigurację inspekcji przy użyciu witryny Azure p
 5. **Nowe** — masz teraz wiele opcji dotyczących konfigurowania której będą zapisywane dzienniki inspekcji. Konto usługi Azure storage, obszar roboczy usługi Log Analytics do użycia przez dzienniki usługi Azure Monitor lub Centrum zdarzeń do użycia z Centrum zdarzeń, można napisać dzienników. Można skonfigurować dowolną kombinację tych opcji, a do każdego będą zapisywane w dziennikach inspekcji.
 
    > [!WARNING]
-   > Włączenie inspekcji w usłudze Log Analytics spowoduje naliczenie opłat zgodnie z szybkości pozyskiwania. Należy mieć świadomość kosztów skojarzonych z za pomocą tego [opcji](https://azure.microsoft.com/en-us/pricing/details/monitor/), lub rozważ przechowywanie inspekcji logowania na koncie usługi Azure storage.
+   > Włączenie inspekcji w usłudze Log Analytics spowoduje naliczenie opłat zgodnie z szybkości pozyskiwania. Należy mieć świadomość kosztów skojarzonych z za pomocą tego [opcji](https://azure.microsoft.com/pricing/details/monitor/), lub rozważ przechowywanie inspekcji logowania na koncie usługi Azure storage.
 
     ![Opcje magazynu](./media/sql-database-auditing-get-started/auditing-select-destination.png)
 

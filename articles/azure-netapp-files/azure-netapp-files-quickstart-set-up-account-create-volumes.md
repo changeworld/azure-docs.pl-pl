@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie usługi Azure Files NetApp i Utwórz wolumin systemu plików NFS | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak szybko skonfigurować usługi Azure Files NetApp i utworzyć wolumin.
+title: Ustaw Szybki Start — Konfigurowanie usługi Azure Files NetApp i utworzyć wolumin systemu plików NFS | Dokumentacja firmy Microsoft
+description: Przewodnik Szybki Start — w tym artykule opisano sposób szybkiego konfigurowania usługi Azure Files NetApp i utworzyć wolumin.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,18 +12,27 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 2/20/2019
+ms.date: 4/16/2019
 ms.author: b-juche
-ms.openlocfilehash: 5b9e85da29b3130d5183f577a7d83d164e217310
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.openlocfilehash: f0f3dea1c30790bb109d7cb7af07abd8fbb1ace4
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63759828"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64702875"
 ---
-# <a name="set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Konfigurowanie usługi Azure Files NetApp i Utwórz wolumin systemu plików NFS 
+# <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Szybki start: Konfigurowanie usługi Azure Files NetApp i Utwórz wolumin systemu plików NFS 
 
 W tym artykule pokazano, jak szybko skonfigurować usługi Azure Files NetApp i utworzyć wolumin. 
+
+W tym przewodniku Szybki Start będzie skonfigurować następujące elementy:
+
+- Rejestracja w celu uzyskania plików NetApp platformy Azure i dostawcy zasobów NetApp
+- Konto NetApp
+- Pojemność puli
+- Wolumin systemu plików NFS dla usługi Azure Files NetApp
+
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem 
 
@@ -33,7 +42,7 @@ Musisz uczestniczyć w programie podglądu publicznego i znajdować się na liś
 
 1. W witrynie Azure portal kliknij ikonę usługi Azure Cloud Shell w prawym górnym rogu.
 
-      ![Ikona usługi Azure Cloud Shell](../media/azure-netapp-files/azure-netapp-files-azure-cloud-shell.png)
+    ![Ikona usługi Azure Cloud Shell](../media/azure-netapp-files/azure-netapp-files-azure-cloud-shell-window.png)
 
 2. Określ subskrypcję, która została umieszczona na białej liście dla usługi Azure Files NetApp:
     
@@ -130,7 +139,31 @@ Musisz uczestniczyć w programie podglądu publicznego i znajdować się na liś
 
     ![Wolumin utworzony](../media/azure-netapp-files/azure-netapp-files-create-volume-created.png)  
 
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+
+Gdy wszystko będzie gotowe, i chcesz, możesz usunąć grupę zasobów. Akcja usuwania grupy zasobów jest nieodwracalne.  
+
+> [!IMPORTANT]
+> Wszystkie zasoby w ramach grupy zasobów zostaną trwale usunięte i nie można cofnąć. 
+
+1. W polu wyszukiwania w witrynie Azure portal, wprowadź **usługi Azure Files NetApp** , a następnie wybierz **usługi Azure Files NetApp** z wyświetlonej listy.
+
+2. Na liście subskrypcji kliknij grupę zasobów (myRG1), który chcesz usunąć. 
+
+    ![Przejdź do grupy zasobów](../media/azure-netapp-files/azure-netapp-files-azure-navigate-to-resource-groups.png)
+
+
+3. Na stronie grupy zasobów kliknij **Usuń grupę zasobów**.
+
+    ![Usuwanie grupy zasobów](../media/azure-netapp-files/azure-netapp-files-azure-delete-resource-group.png) 
+
+    Zostanie otwarte okno zawierające ostrzeżenie dotyczące zasobów, które zostaną usunięte razem z grupą zasobów.
+
+4. Wprowadź nazwę grupy zasobów (myRG1), aby upewnić się, że chcesz trwale usunąć grupę zasobów i wszystkie zawarte w niej zasoby, a następnie kliknij przycisk **Usuń**.
+
+    ![Usuwanie grupy zasobów](../media/azure-netapp-files/azure-netapp-files-azure-confirm-resource-group-deletion.png ) 
+
 ## <a name="next-steps"></a>Kolejne kroki  
 
-* [Omówienie hierarchii magazynu usługi Azure NetApp Files](azure-netapp-files-understand-storage-hierarchy.md)
-* [Zarządzanie woluminami za pomocą usługi Azure Files NetApp](azure-netapp-files-manage-volumes.md) 
+> [!div class="nextstepaction"]
+> [Zarządzanie woluminami za pomocą usługi Azure Files NetApp](azure-netapp-files-manage-volumes.md)  

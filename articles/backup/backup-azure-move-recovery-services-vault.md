@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: sogup
-ms.openlocfilehash: 8d5d6ed6c14927c57279cf500518f3b3a86d591d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 72bfbc34f57e7725ae9556e893825900474317cb
+ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60699841"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64876847"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Przenoszenie magazynu usługi Recovery Services między subskrypcjami platformy Azure i grup zasobów
 
@@ -21,7 +21,7 @@ W tym artykule opisano sposób przenoszenia magazynu usługi Recovery Services, 
 
 ## <a name="supported-region"></a>Obsługiwany region
 
-Przenoszenie zasobów magazynu usługi Recovery Services jest obsługiwane w Australia Wschodnia, Australia Wschodnia Południowa, Kanada Środkowa, Kanada Wschodnia, Azja południowo-wschodnia, Azja Wschodnia, środkowe stany USA, północno-środkowe stany USA, wschodnie stany USA, wschodnie stany USA 2, południowo centralnej USA, zachodnio-środkowe stany USA, centralnej zachodnie stany USA 2, zachodnie stany USA, Indie środkowe, Indie Południowe, Japonia, część wschodnia, Japonia, część zachodnia, Korea środkowa, Korea Południowa, Europa Północna, Europa Zachodnia, Północna RPA, Republika Południowej Afryki Zachodnia, południowe Zjednoczone Królestwo, zachodnie Zjednoczone Królestwo, środkowe Zjednoczone Emiraty Arabskie i Północne Zjednoczone Emiraty Arabskie.
+Przenoszenie zasobów magazynu usługi Recovery Services jest obsługiwane w Australia Wschodnia, Australia Wschodnia Południowa, Kanada Środkowa, Kanada Wschodnia, Azja południowo-wschodnia, Azja Wschodnia, środkowe stany USA, północno-środkowe stany USA, wschodnie stany USA, wschodnie stany USA 2, południowo centralnej USA, zachodnio-środkowe stany USA, centralnej zachodnie stany USA 2, zachodnie stany USA, Indie środkowe, Indie Południowe, Japonia, część wschodnia, Japonia, część zachodnia, Korea środkowa, Korea Południowa, Europa Północna, Europa Zachodnia, Północna RPA, Republika Południowej Afryki Zachodnia, południowe Zjednoczone Królestwo i zachodnie Zjednoczone Królestwo.
 
 ## <a name="prerequisites-for-moving-recovery-services-vault"></a>Wymagania wstępne dotyczące przenoszenia magazynu usługi Recovery Services
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mezha
-ms.openlocfilehash: 75d6fb063a6cb5336a4d9945bf6a79a65ed25d40
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 640c65b1f6995a6c5fb7a3a1fcfeb580aecf5c43
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60324564"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869405"
 ---
 # <a name="securing-azure-cdn-assets-with-token-authentication"></a>Zabezpieczanie zasobów usługi Azure CDN przy użyciu tokenu uwierzytelniania
 
@@ -33,7 +33,7 @@ Uwierzytelnianie przy użyciu tokenów to mechanizm, który pozwala na zapobiega
 
 Uwierzytelnianie przy użyciu tokenów sprawdza, czy żądania są generowane przez zaufanych witryn, wymagając żądania zawiera wartość tokenu, że przechowuje zakodowany informacji na temat osoby żądającej. Zawartość są dostarczane do żądającego tylko wtedy, gdy dane zakodowane spełnia wymagania dotyczące programu w przeciwnym razie żądania są odrzucane. Wymagania można skonfigurować przy użyciu co najmniej jeden z następujących parametrów:
 
-- Kraj: Akceptować lub odrzucać żądania, które pochodzą z krajów, określony przez ich [numer kierunkowy kraju](/previous-versions/azure/mt761717(v=azure.100)).
+- Kraj: Akceptować lub odrzucać żądania, które pochodzą z krajów/regionów, określonego przez ich [numer kierunkowy kraju](/previous-versions/azure/mt761717(v=azure.100)).
 - Adres URL: Zezwalaj na tylko te żądania, które odpowiadają określonym zasobie lub ścieżki.
 - Host: Zezwalaj lub Odmów żądań korzystających z określonych hostach w nagłówku żądania.
 - Odwołania: Zezwolenie lub zablokowanie żądania z określonego odwołania.
@@ -86,7 +86,7 @@ Następujące schemat blokowy opisano, jak usługi Azure CDN weryfikuje żądani
 
       ![Klucz konfiguracji token uwierzytelniania usługi CDN](./media/cdn-token-auth/cdn-token-auth-setupkey.png)
     
-   4. Narzędzie Szyfruj ustawienie szyfrowania parametrów do generowania tokenu. Za pomocą narzędzia Szyfruj możesz można akceptować lub odrzucać żądania na podstawie czasu wygaśnięcia, kraj, odwołania, protokół i adres IP klienta (w dowolnej kombinacji). Mimo że nie ma żadnego limitu liczby i kombinacji parametrów, które mogą być połączone do utworzenia tokenu, całkowita długość token jest ograniczona do 512 znaków. 
+   4. Narzędzie Szyfruj ustawienie szyfrowania parametrów do generowania tokenu. Za pomocą narzędzia Szyfruj możesz można akceptować lub odrzucać żądania na podstawie czasu wygaśnięcia, kraj/region, odwołania, protokół i adres IP klienta (w dowolnej kombinacji). Mimo że nie ma żadnego limitu liczby i kombinacji parametrów, które mogą być połączone do utworzenia tokenu, całkowita długość token jest ograniczona do 512 znaków. 
 
       ![Sieci CDN szyfrowania narzędzia](./media/cdn-token-auth/cdn-token-auth-encrypttool.png)
 
@@ -120,11 +120,11 @@ Następujące schemat blokowy opisano, jak usługi Azure CDN weryfikuje żądani
       > </tr>
       > <tr>
       >    <td><b>ec_country_allow</b></td> 
-      >    <td>Umożliwia tylko żądań pochodzących z jednego lub więcej określonych krajów. Żądania, które pochodzą z innych krajów są odrzucane. Użyj dwuliterowych [ISO 3166 numer kierunkowy kraju](/previous-versions/azure/mt761717(v=azure.100)) dla każdego kraju i oddziel je przecinkami; nie należy dodawać spacji. Na przykład, jeśli chcesz zezwolić na dostęp w Stanach Zjednoczonych i (Francja), wprowadź `US,FR`.</td>
+      >    <td>Umożliwia tylko żądania, które pochodzą z co najmniej jeden określony krajów/regionów. Żądania, które pochodzą od wszystkich innych krajach/regionach są odrzucane. Użyj dwuliterowych [ISO 3166 numer kierunkowy kraju](/previous-versions/azure/mt761717(v=azure.100)) dla każdego kraju i oddziel je przecinkami; nie należy dodawać spacji. Na przykład, jeśli chcesz zezwolić na dostęp w Stanach Zjednoczonych i (Francja), wprowadź `US,FR`.</td>
       > </tr>
       > <tr>
       >    <td><b>ec_country_deny</b></td> 
-      >    <td>Umożliwia odrzucanie żądań, które pochodzą z jednego lub więcej określonych krajów. Żądania, które pochodzą z innych krajów są dozwolone. Implementacja jest taka sama jak <b>ec_country_allow</b> parametru. Jeśli kod kraju znajduje się w obu <b>ec_country_allow</b> i <b>ec_country_deny</b> parametrów, <b>ec_country_allow</b> parametr ma pierwszeństwo.</td>
+      >    <td>Umożliwia odrzucanie żądań, które pochodzą z co najmniej jeden określony krajów/regionów. Żądania, które pochodzą od wszystkich innych krajach/regionach są dozwolone. Implementacja jest taka sama jak <b>ec_country_allow</b> parametru. Jeśli kod kraju znajduje się w obu <b>ec_country_allow</b> i <b>ec_country_deny</b> parametrów, <b>ec_country_allow</b> parametr ma pierwszeństwo.</td>
       > </tr>
       > <tr>
       >    <td><b>ec_ref_allow</b></td>

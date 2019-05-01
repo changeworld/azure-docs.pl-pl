@@ -1,30 +1,30 @@
 ---
 title: Przygotowywanie do migracji alertów klasycznych usługi Azure Monitor, aktualizując usługi logic apps i elementów runbook
-description: Dowiedz się, jak zmodyfikować element webhook, aplikację logiki i elementy runbook w celu przygotowania do migracji dobrowolne.
+description: Dowiedz się, jak zmodyfikować swoje elementy webhook, logic apps i elementy runbook w celu przygotowania do migracji dobrowolne.
 author: snehithm
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: 3c47404826d5055d4a82d4842523f790fb11f000
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 347c89991cbb4d28b46eafff0a783148793ad2f7
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60346895"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64727486"
 ---
-# <a name="prepare-your-logic-apps-and-run-books-for-classic-alert-rules-migration"></a>Przygotowanie aplikacji usługi logic apps i uruchom książki na potrzeby migracji klasycznej reguły alertu
+# <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>Przygotowanie usługi logic apps i elementów runbook do migracji z klasycznej reguły alertu
 
-Jako [ogłoszonej wcześniej](monitoring-classic-retirement.md), alertów klasycznych w usłudze Azure Monitor są zostanie wycofana w lipcu 2019 r. Narzędzie migracji, aby wyzwolić dobrowolnie migracji jest dostępne w witrynie Azure portal i wprowadza się klienci, którzy używają klasycznej reguły alertu.
+Jako [ogłoszonej wcześniej](monitoring-classic-retirement.md), alertów klasycznych w usłudze Azure Monitor są zostanie wycofana w lipcu 2019 r. Narzędzie migracji jest dostępne w portalu Azure, aby klienci używają reguł alertów klasycznych i którzy chcą wyzwolić migrację samodzielnie.
 
-Jeśli zdecydujesz się dobrowolnie regułami alertów klasycznych na nowe reguły alertu, istnieją pewne różnice między dwoma systemami, które należy wiedzieć. Ten artykuł przeprowadzi Cię różnice między dwoma systemami i jak można przygotować zmiany.
+Jeśli zdecydujesz się dobrowolnie regułami alertów klasycznych na nowe reguły alertu, należy pamiętać, że istnieją pewne różnice między dwoma systemami. W tym artykule opisano te różnice i jak można przygotować zmiany.
 
 ## <a name="api-changes"></a>Zmiany interfejsu API
 
-Interfejsy API używane do tworzenia/zarządzania klasyczne reguły alertów (`microsoft.insights/alertrules`) różni się od interfejsy API używane do tworzenia/zarządzania nowych alertów dotyczących metryk (`microsoft.insights/metricalerts`). Jeśli możesz programowo utworzyć/Zarządzanie klasycznej reguły alertu już dziś, należy zaktualizować skrypty wdrażania do pracy z nowych interfejsów API.
+Interfejsy API, które tworzenie i zarządzanie nimi reguły alertów klasycznych (`microsoft.insights/alertrules`) różni się od interfejsów API, które tworzenie i zarządzanie nimi nowych alertów dotyczących metryk (`microsoft.insights/metricalerts`). Jeśli można programowo tworzyć i zarządzać klasycznej reguły alertu już dziś, należy zaktualizować skrypty wdrażania do pracy z nowych interfejsów API.
 
-Poniższa tabela zawiera odwołanie do interfejsów programistycznych, klasycznych i nowych alertów.
+Poniższa tabela jest odwołaniem do interfejsów programistycznych dla klasycznych i nowych alertów:
 
 |         |Alerty klasyczne  |Nowe alerty metryki |
 |---------|---------|---------|
@@ -35,53 +35,56 @@ Poniższa tabela zawiera odwołanie do interfejsów programistycznych, klasyczny
 
 ## <a name="notification-payload-changes"></a>Powiadomienie ulega zmianie z ładunku
 
-Format ładunku powiadomień różni się nieco między [klasycznej reguły alertu](alerts-webhooks.md) i [nowych alertów dotyczących metryk](alerts-metric-near-real-time.md#payload-schema). W przypadku dowolnego elementu webhook, aplikacja logiki lub elementu runbook akcje inicjowane przez reguły alertów klasycznych, należy zaktualizować tych punktów końcowych powiadomień o zaakceptowanie format ładunku nowych alertów dotyczących metryk.
+Format ładunku powiadomień różni się nieco między [klasycznej reguły alertu](alerts-webhooks.md) i [nowych alertów dotyczących metryk](alerts-metric-near-real-time.md#payload-schema). W przypadku dowolnego elementu webhook, aplikacja logiki lub akcji elementu runbook, które są wyzwalane przez reguły alertów klasycznych, należy zaktualizować tych punktów końcowych powiadomień o zaakceptowanie format ładunku nowych alertów dotyczących metryk.
 
-Poniższa tabela umożliwia mapowanie pól między klasycznej reguły alertu, ładunek elementu webhook i nowe ładunek elementu webhook na alertu metryki.
+Poniższa tabela umożliwia mapowanie pól ładunek elementu webhook z klasycznym formatu do nowego formatu:
 
 |  |Alerty klasyczne  |Nowe alerty metryki |
 |---------|---------|---------|
-|Został alert aktywowany lub rozwiązane     | status       | data.status |
-|Informacje kontekstowe o alercie     | Kontekst        | data.context        |
-|Sygnatura czasowa, o której aktywowane lub rozwiązany alert      | context.timestamp       | data.context.timestamp        |
-| Identyfikator reguły alertu | context.ID | data.context.id |
-| Nazwa reguły alertu | context.name | data.context.name |
-| Opis reguły alertu | context.description | data.context.description |
-| Warunek reguły alertu | context.condition | data.context.condition|
-| Nazwa metryki | context.condition.metricName| data.context.condition.allOf[0].metricName|
-| Agregacja czasu (w sposób zagregowane metryki przedziale oceny)|data.context.condition.timeAggregation|data.context.condition.timeAggregation|
-| Okres próbny | context.condition.windowSize | data.context.condition.windowSize|
-| Operator (jak zagregowanych wartość metryki jest porównywana wartość progową) | context.condition.operator | data.context.condition.operator|
-| Próg | context.condition.threshold| data.context.condition.allOf[0].threshold|
-| Wartość metryki | context.condition.metricValue | data.context.condition.allOf[0].metricValue|
-| Identyfikator subskrypcji | context.subscriptionId | data.context.subscriptionId|
-| Grupa zasobów zasobu | context.resourceGroup | data.context.resourceGroup|
-| Nazwa zasobu | context.resourceName | data.context.resourceName |
-| Typ zasobu | context.resourceType | data.context.resourceType |
-|  Identyfikator zasobu zasobu | context.resourceId | data.context.resourceId |
-| Bezpośredni link do strony Podsumowanie zasobu portalu | context.portalLink | data.context.portalLink|
-| Niestandardowy ładunek pola, które zostaną przekazane do elementu webhook lub aplikacja logiki | properties |data.properties |
+|Został alert aktywowany lub rozwiązane    | **status**       | **data.status** |
+|Informacje kontekstowe o alercie     | **Kontekst**        | **data.context**        |
+|Sygnatura czasowa, o której aktywowane lub rozwiązany alert     | **context.timestamp**       | **data.context.timestamp**        |
+| Identyfikator reguły alertu | **context.ID** | **data.context.id** |
+| Nazwa reguły alertu | **context.name** | **data.context.name** |
+| Opis reguły alertu | **context.description** | **data.context.description** |
+| Warunek reguły alertu | **context.condition** | **data.context.condition** |
+| Nazwa metryki | **context.condition.metricName** | **data.context.condition.allOf[0].metricName** |
+| Agregacja czasu (w sposób zagregowane metryki przedziale oceny)| **data.context.condition.timeAggregation** | **data.context.condition.timeAggregation** |
+| Okres próbny | **context.condition.windowSize** | **data.context.condition.windowSize** |
+| Operator (jak zagregowanych wartość metryki jest porównywana wartość progową) | **context.condition.operator** | **data.context.condition.operator** |
+| Próg | **context.condition.threshold** | **data.context.condition.allOf[0].threshold** |
+| Wartość metryki | **context.condition.metricValue** | **data.context.condition.allOf[0].metricValue** |
+| Identyfikator subskrypcji | **context.subscriptionId** | **data.context.subscriptionId** |
+| Grupa zasobów zasobu | **context.resourceGroup** | **data.context.resourceGroup** |
+| Nazwa zasobu | **context.resourceName** | **data.context.resourceName** |
+| Typ zasobu | **context.resourceType** | **data.context.resourceType** |
+| Identyfikator zasobu zasobu | **context.resourceId** | **data.context.resourceId** |
+| Bezpośredni link do strony Podsumowanie zasobu portalu | **context.portalLink** | **data.context.portalLink** |
+| Niestandardowy ładunek pola, które zostaną przekazane do elementu webhook lub aplikacja logiki | **Właściwości** | **data.properties** |
 
-Jak widać, zarówno ładunki są podobne. Tej sekcji zawiera szczegółowe informacje na temat przykładowych aplikacji logiki i przykładowego elementu runbook można przeanalizować ładunek powiadomienia dotyczące nowych alertów.
+Ładunki są podobne, jak pokazano. Oferują następującą sekcję:
 
-## <a name="using-a-logic-app-that-receives-a-metric-alert-notification"></a>Przy użyciu aplikacji logiki, który otrzyma powiadomienie o alertu metryki
+- Szczegółowe informacje dotyczące modyfikowania aplikacji logiki do pracy z nowym formatem.
+- Przykład elementu runbook, który analizuje ładunek powiadomienia dotyczące nowych alertów.
 
-Jeśli używasz aplikacji logiki za pomocą alertów klasycznych, należy zmodyfikować aplikację logiki, aby przeanalizować ładunku nowych alertów dotyczących metryk.
+## <a name="modify-a-logic-app-to-receive-a-metric-alert-notification"></a>Zmodyfikuj aplikację logiki w celu odbierania powiadomień o alertach metryki
+
+Jeśli używasz aplikacji logiki za pomocą alertów klasycznych, należy zmodyfikować kod aplikacji logiki można przeanalizować ładunku nowych alertów dotyczących metryk. Wykonaj następujące kroki:
 
 1. Utwórz nową aplikację logiki.
 
-2. Szablon "Azure Monitor — metryki obsługi alertu". Ten szablon zawiera **żądania HTTP** wyzwalacza przy użyciu odpowiedniego schematu, które są zdefiniowane
+1. Szablon "Azure Monitor — metryki obsługi alertu". Ten szablon zawiera **żądania HTTP** wyzwalacza przy użyciu odpowiedniego schematu, które są zdefiniowane.
 
     ![szablon aplikacji logiki](media/alerts-migration/logic-app-template.png "szablon alertu metryki")
 
-3. Dodawanie akcji do hostowania swojej logiki przetwarzania.
+1. Dodawanie akcji do hostowania swojej logiki przetwarzania.
 
-## <a name="using-an-automation-runbook-that-receives-a-metric-alert-notification"></a>Przy użyciu elementu runbook usługi automation, który otrzyma powiadomienie o alertu metryki
+## <a name="use-an-automation-runbook-that-receives-a-metric-alert-notification"></a>Użyj elementu runbook usługi automation, który otrzyma powiadomienie o alertu metryki
 
-Poniższy przykład zawiera kod programu PowerShell, który może służyć w elemencie runbook, które mogą przeanalizować ładunków dla reguł alertów dotyczących metryk klasycznych i nowych reguł alertów dotyczących metryk.
+W poniższym przykładzie przedstawiono kod programu PowerShell do użycia w elemencie runbook. Ten kod można przeanalizować ładunków dla reguł alertów dotyczących metryk klasycznych i nowych reguł alertów dotyczących metryk.
 
-```PS
-## Sample PowerShell code to be used in a runbook to handle parsing of both classic and new metric alerts
+```PowerShell
+## Example PowerShell code to use in a runbook to handle parsing of both classic and new metric alerts.
 
 [OutputType("PSAzureOperationResponse")]
 
@@ -98,38 +101,38 @@ if ($WebhookData)
     # Get the data object from WebhookData.
     $WebhookBody = (ConvertFrom-Json -InputObject $WebhookData.RequestBody)
 
-    # Identify if the alert triggering the runbook is a classic metric alert or a new metric alert (depends on the payload schema).
+    # Determine whether the alert triggering the runbook is a classic metric alert or a new metric alert (depends on the payload schema).
     $schemaId = $WebhookBody.schemaId
     Write-Verbose "schemaId: $schemaId" -Verbose
     if ($schemaId -eq "AzureMonitorMetricAlert") {
 
-        # This is the new Metric Alert schema
+        # This is the new metric alert schema.
         $AlertContext = [object] ($WebhookBody.data).context
         $status = ($WebhookBody.data).status
 
-        # Parse fields related to alert rule condition
+        # Parse fields related to alert rule condition.
         $metricName = $AlertContext.condition.allOf[0].metricName
         $metricValue = $AlertContext.condition.allOf[0].metricValue
         $threshold = $AlertContext.condition.allOf[0].threshold
         $timeAggregation = $AlertContext.condition.allOf[0].timeAggregation
     }
     elseif ($schemaId -eq $null) {
-        # This is the classic Metric Alert schema
+        # This is the classic metric alert schema.
         $AlertContext = [object] $WebhookBody.context
         $status = $WebhookBody.status
 
-        # Parse fields related to alert rule condition
+        # Parse fields related to alert rule condition.
         $metricName = $AlertContext.condition.metricName
         $metricValue = $AlertContext.condition.metricValue
         $threshold = $AlertContext.condition.threshold
         $timeAggregation = $AlertContext.condition.timeAggregation
     }
     else {
-        # The schema is not either a classic metric alert or a new metric alert
+        # The schema is neither a classic metric alert nor a new metric alert.
         Write-Error "The alert data schema - $schemaId - is not supported."
     }
 
-    #parse fields related to resource affected
+    # Parse fields related to resource affected.
     $ResourceName = $AlertContext.resourceName
     $ResourceType = $AlertContext.resourceType
     $ResourceGroupName = $AlertContext.resourceGroupName
@@ -145,17 +148,17 @@ else {
 
 ```
 
-Zobacz pełny przykład element runbook, który zatrzymuje Maszynę wirtualną, gdy alert jest wyzwalany w [dokumentacji usługi Azure Automation](https://docs.microsoft.com/azure/automation/automation-create-alert-triggered-runbook).
+Aby uzyskać pełny przykład element runbook, który zatrzymuje maszynę wirtualną, gdy alert jest wyzwalany, zobacz [dokumentacji usługi Azure Automation](https://docs.microsoft.com/azure/automation/automation-create-alert-triggered-runbook).
 
 ## <a name="partner-integration-via-webhooks"></a>Integracja z partnerami za pośrednictwem elementów webhook
 
-Większość [naszych partnerów, które integrują się z alertów klasycznych](https://docs.microsoft.com/azure/azure-monitor/platform/partners) już obsługuje nowszych alertów metryk za pośrednictwem ich integracji. Poniżej przedstawiono znane integracji, które już działają z nowych alertów dotyczących metryk.
+Większość [naszych partnerów, które integrują się z alertów klasycznych](https://docs.microsoft.com/azure/azure-monitor/platform/partners) już obsługuje nowszych alertów metryk za pośrednictwem ich integracji. Dostępne są następujące znane integracji, które już działają z nowych alertów dotyczących metryk:
 
 - [PagerDuty](https://www.pagerduty.com/docs/guides/azure-integration-guide/)
 - [OpsGenie](https://docs.opsgenie.com/docs/microsoft-azure-integration)
 - [Aplikacji Signl4](https://www.signl4.com/blog/mobile-alert-notifications-azure-monitor/)
 
-Korzystając z integracji z partnerami, który nie znajduje się w tym miejscu, upewnij się, za pomocą dostawcy integracji że integracji współpracuje z nowych alertów dotyczących metryk.
+Jeśli używasz Integracja z partnerami, który nie znajduje się w tym miejscu, upewnij się, za pomocą dostawcy integracji że integracji współpracuje z nowych alertów dotyczących metryk.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

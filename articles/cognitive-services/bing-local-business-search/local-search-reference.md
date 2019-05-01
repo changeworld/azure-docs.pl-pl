@@ -9,16 +9,16 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: bc38b4457179c11f9d6b2656aacb8aa66848c444
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c3628670d2393d7b6921c60317719ccf8e72a451
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60581041"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64866358"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Odwołanie do lokalnych firm interfejsu API wyszukiwania Bing w wersji 7
 
-Interfejsu API wyszukiwania w lokalnych firm wysyła zapytanie wyszukiwania do usługi Bing w celu uzyskania wyników, które zawierają restauracje, hotele lub innych lokalnych firm. Dla miejsc zapytanie można określić nazwę lokalnych firmach lub kategorii (na przykład, restauracje w pobliżu). Wyniki dotyczące jednostek to między innymi osoby, miejsca i rzeczy. Miejsce, w tym kontekście jest jednostek biznesowych, Stany, kraje, itp.  
+Interfejsu API wyszukiwania w lokalnych firm wysyła zapytanie wyszukiwania do usługi Bing w celu uzyskania wyników, które zawierają restauracje, hotele lub innych lokalnych firm. Dla miejsc zapytanie można określić nazwę lokalnych firmach lub kategorii (na przykład, restauracje w pobliżu). Wyniki dotyczące jednostek to między innymi osoby, miejsca i rzeczy. Miejsce, w tym kontekście jest jednostek biznesowych, Stany, kraje/regiony itp.  
 
 Ta sekcja zawiera szczegółowe informacje techniczne dotyczące obiektów odpowiedzi i parametrów zapytania i nagłówków, które mają wpływ na wyniki wyszukiwania. Przykłady pokazujące, jak żądań, zobacz [lokalnego wyszukiwania firm C# Szybki Start](quickstarts/local-quickstart.md) lub [Szybki Start lokalnych firm wyszukiwania Java](quickstarts/local-search-java-quickstart.md). 
   

@@ -16,12 +16,12 @@ ms.date: 01/25/2018
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d009022d4ec03990d3ed0321ebcb13c72c674ed8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: e988d03b60469940d8750cc07188a61fc7ab8b3a
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60294212"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64709615"
 ---
 # <a name="azure-active-directory-identity-protection-risk-events-reference"></a>Dokumentacja zdarzeń o podwyższonym ryzyku w usłudze Azure Active Directory Identity Protection
 
@@ -80,10 +80,16 @@ Ten typ zdarzenia o podwyższonym ryzyku wskazuje logowania z adresów IP zainfe
 
 ## <a name="unfamiliar-sign-in-properties"></a>Nieznane właściwości logowania
 
-**Typ wykrywania:** Czas rzeczywisty  
-**Stara nazwa:** Logowania z nieznanych lokalizacji
+**Typ wykrywania:** W czasie rzeczywistym **stara nazwa:** Logowania z nieznanych lokalizacji
 
 Tego typu zdarzenia o podwyższonym ryzyku uwzględnia ostatnie historię logowania (IP, szerokości / długości geograficznej i jego numer ASN) do wyszukania nietypowe logowania. System przechowuje informacje o powyższych lokalizacjach, używane przez użytkownika i uwzględnia te lokalizacje "znanych". Zdarzenia o podwyższonym ryzyku jest wyzwalany, gdy logowania wystąpi z lokalizacji, która nie jest już na liście zaznajomiony lokalizacji. Nowo utworzony użytkownicy będą w "trybie uczenia" w okresie czasu w nieznanym logowania właściwości, które zdarzenia o podwyższonym ryzyku są wyłączone podczas nasze algorytmy Dowiedz się, zachowanie użytkowników. Szkoleniowe tryb czasu trwania jest dynamiczny, a także od tego, na ile czasu zajmuje algorytmu do zebrania wystarczającej ilości informacji na temat wzorców logowania użytkownika. Minimalny czas trwania wynosi pięć dni. Użytkownika można wrócić do trybu nauki po dłuższym okresie nieaktywności. System ignoruje także logowania z dobrze znanych urządzeń i lokalizacji, które geograficznie znajdują się blisko znanej lokalizacji. 
 
 Przeprowadzamy również wykrywanie dla uwierzytelniania podstawowego (lub starszych protokołów). Ponieważ te protokoły nie ma właściwości modern, takie jak identyfikator klienta, jest ograniczona telemetrię, aby redukować liczbę fałszywych alarmów. Zalecamy naszym klientom migrację do nowoczesnego uwierzytelniania.
 
+
+## <a name="azure-ad-threat-intelligence"></a>Analiza zagrożeń w usłudze Azure AD
+
+**Typ wykrywania:** Offline <br>
+**Stara nazwa:** Wykrywanie pojawią się w starszych raportach usługi Azure AD Identity Protection (użytkownicy oflagowani w związku z ryzykiem, zdarzeń o podwyższonym ryzyku) jako "Użytkownicy z ujawnionymi poświadczeniami"
+
+Ten typ zdarzenia o podwyższonym ryzyku wskazuje aktywności użytkownika, który jest nietypowy dla danego użytkownika lub jest zgodne ze znanymi wzorcami ataków opartych na źródłach analizy zagrożeń wewnętrznych i zewnętrznych firmy Microsoft.

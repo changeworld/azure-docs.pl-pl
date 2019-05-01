@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 7bb25aa1f77a49363fe2e08d1430282b9b33caae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 87f86f861ffc036077b25a2514fbd2d0c57da735
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60311645"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64716765"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definicji zasad platformy Azure
 
@@ -66,7 +66,7 @@ Na przykład następujący kod JSON przedstawiono zasady, które ogranicza, gdzi
 }
 ```
 
-Wszystkie przykłady usługi Azure Policy znajdują się na [Przykłady zasad](../samples/index.md).
+Wszystkie przykłady usługi Azure Policy znajdują się na [przykładów usługi Azure Policy](../samples/index.md).
 
 [!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
@@ -99,6 +99,7 @@ Parametr ma następujące właściwości, które są używane w definicji zasad:
   - `description`: Opis dotyczący przeznaczenia parametru. Może służyć do zapewnienia przykładowe dopuszczalne wartości.
   - `displayName`: Przyjazna nazwa wyświetlana w portalu dla parametru.
   - `strongType`: (Opcjonalnie) Używane podczas przypisywania definicji zasad za pośrednictwem portalu. Zawiera listę pamiętać kontekstu. Aby uzyskać więcej informacji, zobacz [strongType](#strongtype).
+  - `assignPermissions`: (Opcjonalnie) Ustaw jako _true_ mieć witryny Azure portal utworzyć przypisania roli podczas przypisywania zasad. Ta właściwość jest przydatna w przypadku, gdy chcesz przypisać uprawnienia poza zakres przypisania. Istnieje jedno przypisanie roli na definicji roli w ramach zasad (lub definicji roli we wszystkich zasad w inicjatywy). Wartość tego parametru musi być prawidłowym zasobem lub zakresu.
 - `defaultValue`: (Opcjonalnie) Jeśli wartość nie zostanie określony, ustawia wartość parametru w przypisania. Wymagane podczas aktualizowania istniejącej definicji zasad, która jest przypisana.
 - `allowedValues`: (Opcjonalnie) Zawiera tablicę wartości, które akceptuje parametr, podczas przypisywania.
 
@@ -148,6 +149,7 @@ W ramach `metadata` właściwości, można użyć **strongType** zapewnienie wie
 - `omsWorkspace`
 - `Microsoft.EventHub/Namespaces/EventHubs`
 - `Microsoft.EventHub/Namespaces/EventHubs/AuthorizationRules`
+- `Microsoft.EventHub/Namespaces/AuthorizationRules`
 - `Microsoft.RecoveryServices/vaults`
 - `Microsoft.RecoveryServices/vaults/backupPolicies`
 
@@ -375,7 +377,7 @@ Reguły zasad poprawione `if()` sprawdza długość **nazwa** przed próby uzysk
 
 ### <a name="effect"></a>Efekt
 
-Zasady obsługuje następujące typy wpływu:
+Usługa Azure Policy obsługuje następujące typy wpływu:
 
 - **Odmów**: generuje zdarzenie w dzienniku aktywności i kończy się niepowodzeniem żądania
 - **Inspekcja**: generuje to zdarzenie ostrzegawcze w dzienniku aktywności, ale nie zakończy się niepowodzeniem żądania
@@ -410,7 +412,7 @@ Wartość może być ciąg lub obiekt do formatu JSON.
 }
 ```
 
-Aby uzyskać szczegółowe informacje dotyczące każdego skutku, kolejność oceny, właściwości i przykłady, zobacz [zrozumienie zasad efekty](effects.md).
+Aby uzyskać szczegółowe informacje dotyczące każdego skutku, kolejność oceny, właściwości i przykłady, zobacz [Understanding Azure zasad efekty](effects.md).
 
 ### <a name="policy-functions"></a>Funkcje zasad
 
@@ -593,9 +595,9 @@ Poniższy przykład ilustruje sposób tworzenia inicjatywy do obsługi dwa tagi:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Przejrzyj przykłady na [przykładów usługi Azure Policy](../samples/index.md)
-- Przegląd [zrozumienia efektów zasad](effects.md)
-- Zrozumienie sposobu [programowe tworzenie zasad](../how-to/programmatically-create.md)
-- Dowiedz się, jak [uzyskać dane na temat zgodności](../how-to/getting-compliance-data.md)
-- Dowiedz się, jak [korygowanie niezgodnych zasobów](../how-to/remediate-resources.md)
-- Sprawdzanie, co to jest grupa zarządzania, na stronie [Organize your resources with Azure management groups (Organizowanie zasobów za pomocą grup zarządzania platformy Azure)](../../management-groups/overview.md)
+- Przejrzyj przykłady na [przykładów usługi Azure Policy](../samples/index.md).
+- Przejrzyj [wyjaśnienie działania zasad](effects.md).
+- Zrozumienie sposobu [programowe tworzenie zasad](../how-to/programmatically-create.md).
+- Dowiedz się, jak [Pobierz dane zgodności](../how-to/getting-compliance-data.md).
+- Dowiedz się, jak [korygowanie niezgodnych zasobów](../how-to/remediate-resources.md).
+- Przejrzyj grupy zarządzania jest [organizowanie zasobów przy użyciu grup zarządzania platformy Azure](../../management-groups/overview.md).

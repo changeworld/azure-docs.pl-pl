@@ -6,14 +6,14 @@ author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 08/17/2018
+ms.date: 04/25/2019
 ms.author: iainfou
-ms.openlocfilehash: ae92a5c894b186a1c8b471c1b446a88299742aec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 04ed95317311b81af49f5d96addb203b7cfeb74a
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60466379"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64725642"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Często zadawane pytania dotyczące usługi Azure Kubernetes Service (AKS)
 
@@ -53,10 +53,27 @@ Aby uzyskać więcej informacji na temat używania kured zobacz [stosowania aktu
 
 Każde wdrożenie usługi AKS obejmuje dwie grupy zasobów:
 
-- Pierwszej grupy zasobów jest tworzony przez użytkownika i zawiera zasób usługi Kubernetes. Dostawca zasobów usługi AKS automatycznie tworzy drugi podczas wdrażania, takie jak *MC_myResourceGroup_myAKSCluster_eastus*.
+- Pierwszej grupy zasobów jest tworzony przez użytkownika i zawiera zasób usługi Kubernetes. Dostawca zasobów usługi AKS automatycznie tworzy drugi podczas wdrażania, takie jak *MC_myResourceGroup_myAKSCluster_eastus*. Instrukcje dotyczące określania nazwy tej drugiej grupy zasobów Zobacz następną sekcję.
 - Ten zasób drugiej grupy, takie jak *MC_myResourceGroup_myAKSCluster_eastus*, zawiera wszystkie zasoby infrastruktury skojarzonego z klastrem. Te zasoby obejmują maszyny wirtualne z węzła usługi Kubernetes, sieci wirtualnych i magazynu. Ta grupa osobny zasób jest tworzony uprościć czyszczenie zasobów.
 
 Jeśli tworzysz zasoby przeznaczone do użycia z klastrem usługi AKS, takich jak konta magazynu lub zastrzeżone publiczne adresy IP, należy je umieścić w grupie zasobów automatycznie wygenerowany.
+
+## <a name="can-i-provide-my-own-name-for-the-aks-infrastructure-resource-group"></a>Czy mogę przekazać własną nazwę grupy zasobów infrastruktury usługi AKS
+
+Tak. Domyślnie dostawca zasobów usługi AKS automatycznie tworzy grupę zasobów pomocniczych podczas wdrażania, takie jak *MC_myResourceGroup_myAKSCluster_eastus*. Aby zapewnić zgodność z zasadami firmowymi, zapewniają swoją własną nazwę dla tego klastra zarządzanego (*MC_*) grupy zasobów.
+
+Aby określić własne nazwy grupy zasobów, należy zainstalować [podglądu usługi aks] [ aks-preview-cli] wiersza polecenia platformy Azure w wersji rozszerzenia *wersji 0.3.2* lub nowszej. Podczas tworzenia klastra usługi AKS przy użyciu [tworzenie az aks] [ az-aks-create] poleceń, użyj *— węzeł resource-group* parametru i określ nazwę grupy zasobów. Jeśli użytkownik [używania szablonu usługi Azure Resource Manager] [ aks-rm-template] wdrożyć klaster usługi AKS, można zdefiniować, używając nazwy grupy zasobów *nodeResourceGroup* właściwości.
+
+* Ta grupa zasobów jest automatycznie tworzona przez dostawcę zasobów platformy Azure w ramach własnej subskrypcji.
+* Nazwa grupy zasobów niestandardowych można określić tylko wtedy, gdy został utworzony klaster.
+
+Nie są obsługiwane następujące scenariusze:
+
+* Nie można określić istniejącą grupę zasobów dla *MC_* grupy.
+* Nie można określić inną subskrypcję dla *MC_* grupy zasobów.
+* Nie można zmienić *MC_* nazwy grupy zasobów po utworzeniu klastra.
+* Nie można określić nazwy zasobów zarządzanych w ramach *MC_* grupy zasobów.
+* Nie można zmodyfikować lub usunąć tagów zasobów zarządzanych w ramach *MC_* grupy zasobów (Zobacz dodatkowe informacje w następnej sekcji).
 
 ## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-mc-resource-group"></a>Można zmodyfikować tagów i innych właściwości zasobów usługi AKS w grupie zasobów MC_ *?
 
@@ -100,6 +117,9 @@ Umowa dotycząca poziomu usług (SLA) dostawca zgadza się, zwrócić klienta ko
 [aks-advanced-networking]: ./configure-azure-cni.md
 [aks-rbac-aad]: ./azure-ad-integration.md
 [node-updates-kured]: node-updates-kured.md
+[aks-preview-cli]: /cli/azure/ext/aks-preview/aks
+[az-aks-create]: /cli/azure/aks#az-aks-create
+[aks-rm-template]: /rest/api/aks/managedclusters/createorupdate#managedcluster
 
 <!-- LINKS - external -->
 
@@ -108,4 +128,3 @@ Umowa dotycząca poziomu usług (SLA) dostawca zgadza się, zwrócić klienta ko
 [hexadite]: https://github.com/Hexadite/acs-keyvault-agent
 [admission-controllers]: https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/
 [keyvault-flexvolume]: https://github.com/Azure/kubernetes-keyvault-flexvol
-

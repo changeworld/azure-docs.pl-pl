@@ -10,21 +10,19 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: da321aa2a4db441fa5bb51e4986d00889cb7482d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 178747ffddbadb06751ce0db7d16701c3cea7416
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60513713"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64712818"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>Jak korzystać z raportowania na platformie CTF (Collaborative Translation Framework)
 
 > [!NOTE]
 > Ta metoda jest przestarzała. Nie jest dostępna w wersji 3.0 z interfejsu API tłumaczenia tekstu.
 > 
-> Współpracy tłumaczenia Framework (CTF), wcześniej dostępne dla V2.0 interfejsu API tłumaczenia tekstu, została zakończona, począwszy od 1 lutego 2018 r. Funkcje AddTranslation i AddTranslationArray umożliwiają użytkownikom włączanie poprawek za pomocą współpracy Framework tłumaczenia. Po 31 stycznia 2018 r. te dwie funkcje nie zaakceptował nowe zgłoszenia zdania, a użytkownicy otrzymają komunikat o błędzie. Te funkcje zostały zostanie wycofana i nie podlegają wymianie.
-> 
-> Podobne funkcje są dostępne w interfejsie API Centrum usługi Translator, co umożliwia stworzenie systemu tłumaczenia niestandardowych terminologii i stylu i wywołać go przy użyciu Identyfikatora kategorii w interfejsie API tekstu usługi Translator. Centrum usługi Translator: [ https://hub.microsofttranslator.com ](https://hub.microsofttranslator.com). W usłudze Translator Centrum interfejsu API: [ https://hub.microsofttranslator.com/swagger ](https://hub.microsofttranslator.com/swagger).
+> Współpracy tłumaczenia Framework (CTF), wcześniej dostępne dla V2.0 interfejsu API tłumaczenia tekstu, została zakończona, począwszy od 1 lutego 2018 r. Funkcje AddTranslation i AddTranslationArray umożliwiają użytkownikom włączanie poprawek za pomocą współpracy Framework tłumaczenia. Po 31 stycznia 2018 r. te dwie funkcje nie zaakceptował nowe zgłoszenia zdania, a użytkownicy otrzymają komunikat o błędzie. Te funkcje zostały wycofane i nie podlegają wymianie.
 
 Interfejs API raportowania współpracy Translation Framework (CTF) zwraca statystyki i rzeczywistej zawartości w magazynie CTF. Ten interfejs API różni się od metody GetTranslations() ponieważ go:
 * Zwraca tłumaczonej zawartości i jego łączna liczba tylko z Twojego konta (appId lub konto w portalu Azure Marketplace).

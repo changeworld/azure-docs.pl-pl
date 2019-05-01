@@ -3,18 +3,18 @@ title: Obsługiwane formaty plików w usłudze Azure Data Factory | Dokumentacja
 description: W tym temacie opisano formaty plików i kody kompresji, które są obsługiwane przez łączników opartych na plikach w usłudze Azure Data Factory.
 author: linda33wj
 manager: craigg
-ms.reviewer: douglasl
+ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: d7e2ecd9c9c27140fff4d483e01eaaca632e929a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f117e02a063b93b8b1badbd9868f78da95c3c671
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60394447"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925150"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Obsługiwane formaty plików i kompresji koderów-dekoderów w usłudze Azure Data Factory
 
@@ -29,9 +29,12 @@ Jeśli chcesz **skopiuj pliki — jest** między opartych na plikach magazynów 
 * [Avro format](#avro-format)
 
 > [!TIP]
-> Dowiedz się, jak działanie kopiowania mapuje dane źródła do ujścia z [mapowanie schematu w działaniu kopiowania](copy-activity-schema-and-type-mapping.md), w tym jak metadanych jest określone w oparciu o ustawienia formatu pliku i porady w tym, kiedy należy określić [dataset `structure` ](concepts-datasets-linked-services.md#dataset-structure) sekcji.
+> Dowiedz się, jak działanie kopiowania mapuje dane źródła do ujścia z [mapowanie schematu w działaniu kopiowania](copy-activity-schema-and-type-mapping.md), w tym jak metadanych jest określone w oparciu o ustawienia formatu pliku i porady w tym, kiedy należy określić [dataset `structure` ](concepts-datasets-linked-services.md#dataset-structure-or-schema) sekcji.
 
 ## <a name="text-format"></a>Format tekstu
+
+>[!NOTE]
+>Data Factory wprowadzono nowe rozdzielany datset format tekstu, zobacz [format tekstu rozdzielanego](format-delimited-text.md) artykułu zawierającego szczegóły. Następujące konfiguracje dla zestawu danych magazynu danych oparte na plikach jest nadal obsługiwany jako — dotyczy compabitility z poprzednimi wersjami. Zaleca się używać nowego modelu, w przyszłości.
 
 Jeśli chcesz odczytać z pliku tekstowego lub zapisać do pliku tekstowego, ustaw `type` właściwość `format` części zestawu danych na **TextFormat**. Ponadto możesz określić następujące **opcjonalne** właściwości w sekcji `format`. Aby uzyskać informacje na temat sposobu konfigurowania, zobacz sekcję [Przykład formatu TextFormat](#textformat-example).
 
@@ -97,7 +100,7 @@ Jeśli chcesz analizować pliki JSON lub zapisywać dane w formacie JSON, ustaw 
 | nestingSeparator |Znak używany do rozdzielania poziomów zagnieżdżenia. Wartość domyślna to „.” (kropka). |Nie |
 
 >[!NOTE]
->W przypadku krzyżowe stosowanie danych w tablicy na wiele wierszy (przypadek 1 -> przykład 2 w [przykłady JsonFormat](#jsonformat-example)) rozwinąć pojedynczą tablicę przy użyciu właściwości można wybrać tylko `jsonNodeReference`. 
+>W przypadku krzyżowe stosowanie danych w tablicy na wiele wierszy (przypadek 1 -> przykład 2 w [przykłady JsonFormat](#jsonformat-example)) rozwinąć pojedynczą tablicę przy użyciu właściwości można wybrać tylko `jsonNodeReference`.
 
 ### <a name="json-file-patterns"></a>Wzorce plików JSON
 
@@ -196,7 +199,7 @@ Działanie kopiowania może przeanalizować poniższe wzorce plików JSON:
 
 **Przykład 1. Wyodrębnianie danych z obiektu i tablicy**
 
-W tym przykładzie oczekiwany jest jeden główny obiekt JSON mapowany na pojedynczy rekord w wyniku tabelarycznym. Jeśli masz plik JSON z następującą zawartością:  
+W tym przykładzie oczekiwany jest jeden główny obiekt JSON mapowany na pojedynczy rekord w wyniku tabelarycznym. Jeśli masz plik JSON z następującą zawartością:
 
 ```json
 {
@@ -408,6 +411,9 @@ Zestaw danych wyjściowych typu **JsonFormat** jest zdefiniowany następująco: 
 
 ## <a name="parquet-format"></a>Parquet format
 
+>[!NOTE]
+>Data Factory wprowadzono nowe datset format Parquet, zobacz [formatu Parquet](format-delimited-text.md) artykułu zawierającego szczegóły. Następujące konfiguracje dla zestawu danych magazynu danych oparte na plikach jest nadal obsługiwany jako — dotyczy compabitility z poprzednimi wersjami. Zaleca się używać nowego modelu, w przyszłości.
+
 Jeśli chcesz analizować pliki Parquet lub zapisywać dane w formacie Parquet, ustaw właściwość `format` `type` na wartość **ParquetFormat**. Nie musisz określać żadnych właściwości w sekcji Format należącej do sekcji typeProperties. Przykład:
 
 ```json
@@ -426,13 +432,13 @@ Pamiętaj o następujących kwestiach:
 > [!IMPORTANT]
 > Dla kopiowania upoważniony przez własne środowisko IR np. między lokalizacją lokalną i chmurą magazyny danych, jeśli nie kopiujesz plików Parquet **jako — jest**, musisz zainstalować **64-bitowego środowiska JRE 8 (Java Runtime Environment) lub OpenJDK** na swojej maszynie Podczerwieni. Zapoznaj się z bardziej szczegółowymi informacjami.
 
-Związanym z kopiowaniem działających w własne środowisko IR za pomocą pliku Parquet serializacji/deserializacji, ADF lokalizuje środowisko wykonawcze języka Java po pierwsze, sprawdzając w rejestrze *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* dla środowiska JRE, jeśli nie znaleziono, po drugie sprawdzanie zmiennej systemowej *`JAVA_HOME`* dla OpenJDK. 
+Związanym z kopiowaniem działających w własne środowisko IR za pomocą pliku Parquet serializacji/deserializacji, ADF lokalizuje środowisko wykonawcze języka Java po pierwsze, sprawdzając w rejestrze *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* dla środowiska JRE, jeśli nie znaleziono, po drugie sprawdzanie zmiennej systemowej *`JAVA_HOME`* dla OpenJDK.
 
 - **Aby użyć środowiska JRE**: Środowisko IR 64-bitowego wymaga 64-bitowego środowiska JRE. Znajdziesz go z [tutaj](https://go.microsoft.com/fwlink/?LinkId=808605).
 - **Aby użyć OpenJDK**: jest ona obsługiwana od środowiska IR wersji 3.13. Pakiet jvm.dll z pozostałych wymagane w związku z tym zestawy OpenJDK własne środowisko IR maszyny i zestaw systemowej zmiennej środowiskowej JAVA_HOME.
 
 >[!TIP]
->Po skopiowaniu danych do/z Parquet formatowanie przy użyciu środowiskiem Integration Runtime i trafień informacją o tym błędzie "Wystąpił błąd podczas wywoływania kodu java, komunikat: **miejsca na stercie java.lang.OutOfMemoryError:Java**", można dodać zmienną środowiskową `_JAVA_OPTIONS` na komputerze hostującym IR produktem, aby dopasować rozmiar sterty minimalnej/maksymalnej dla maszyny JVM przeznaczonych dla takich kopiowania następnie ponowne uruchamianie potoku. 
+>Po skopiowaniu danych do/z Parquet formatowanie przy użyciu środowiskiem Integration Runtime i trafień informacją o tym błędzie "Wystąpił błąd podczas wywoływania kodu java, komunikat: **miejsca na stercie java.lang.OutOfMemoryError:Java**", można dodać zmienną środowiskową `_JAVA_OPTIONS` na komputerze hostującym IR produktem, aby dopasować rozmiar sterty minimalnej/maksymalnej dla maszyny JVM przeznaczonych dla takich kopiowania następnie ponowne uruchamianie potoku.
 
 ![Ustaw rozmiar sterty maszyny JVM na własne środowisko IR](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
 
@@ -483,7 +489,7 @@ Pamiętaj o następujących kwestiach:
 > [!IMPORTANT]
 > Dla kopiowania upoważniony przez własne środowisko IR np. między lokalizacją lokalną i chmurą magazyny danych, jeśli nie kopiujesz plików ORC **jako — jest**, musisz zainstalować **64-bitowego środowiska JRE 8 (Java Runtime Environment) lub bibliotekę OpenJDK**  na swojej maszynie Podczerwieni. Zapoznaj się z bardziej szczegółowymi informacjami.
 
-Związanym z kopiowaniem działających w własne środowisko IR za pomocą pliku ORC serializacji/deserializacji, ADF lokalizuje środowisko wykonawcze języka Java po pierwsze, sprawdzając w rejestrze *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* dla środowiska JRE, jeśli nie znaleziono, po drugie sprawdzanie zmiennej systemowej *`JAVA_HOME`* dla OpenJDK. 
+Związanym z kopiowaniem działających w własne środowisko IR za pomocą pliku ORC serializacji/deserializacji, ADF lokalizuje środowisko wykonawcze języka Java po pierwsze, sprawdzając w rejestrze *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* dla środowiska JRE, jeśli nie znaleziono, po drugie sprawdzanie zmiennej systemowej *`JAVA_HOME`* dla OpenJDK.
 
 - **Aby użyć środowiska JRE**: Środowisko IR 64-bitowego wymaga 64-bitowego środowiska JRE. Znajdziesz go z [tutaj](https://go.microsoft.com/fwlink/?LinkId=808605).
 - **Aby użyć OpenJDK**: jest ona obsługiwana od środowiska IR wersji 3.13. Pakiet jvm.dll z pozostałych wymagane w związku z tym zestawy OpenJDK własne środowisko IR maszyny i zestaw systemowej zmiennej środowiskowej JAVA_HOME.
@@ -538,7 +544,7 @@ Usługa Azure Data Factory obsługuje Kompresuj/dekompresji danych podczas kopio
 * Odczytaj plik zip z serwera FTP Dekompresuj ją, aby pobrać pliki wewnątrz i te pliki znajdą się w usłudze Azure Data Lake Store. Zdefiniuj wejściowy zestaw danych FTP za pomocą `compression` `type` właściwość jako ZipDeflate.
 * Odczytywanie danych z kompresji GZIP obiektu blob platformy Azure, zdekompresować, skompresować je przy użyciu BZIP2 i zapisać dane wynikowe do usługi Azure blob. Zdefiniuj wejściowy zestaw danych obiektów Blob platformy Azure za pomocą `compression` `type` GZIP i wyjściowy zestaw danych z ustawioną `compression` `type` równa BZIP2.
 
-Aby określić kompresji dla zestawu danych, użyj **kompresji** właściwość w zestawie danych JSON, jak w poniższym przykładzie:   
+Aby określić kompresji dla zestawu danych, użyj **kompresji** właściwość w zestawie danych JSON, jak w poniższym przykładzie:
 
 ```json
 {
@@ -579,11 +585,12 @@ Aby określić kompresji dla zestawu danych, użyj **kompresji** właściwość 
 
 ## <a name="unsupported-file-types-and-compression-formats"></a>Nieobsługiwane typy plików i kompresji
 
-Funkcje rozszerzalności usługi Azure Data Factory umożliwia przekształcanie plików, które nie są obsługiwane. Dwie opcje obejmują usługi Azure Functions i niestandardowe zadania za pomocą usługi Azure Batch.
+Funkcje rozszerzalności usługi Azure Data Factory umożliwia przekształcanie plików, które nie są obsługiwane.
+Dwie opcje obejmują usługi Azure Functions i niestandardowe zadania za pomocą usługi Azure Batch.
 
 Możesz zobaczyć przykładu korzystającego z funkcji platformy Azure, aby [Wyodrębnij zawartość pliku tar](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction). Aby uzyskać więcej informacji, zobacz [działania usługi Azure Functions](https://docs.microsoft.com/azure/data-factory/control-flow-azure-function-activity).
 
-Można także utworzyć tej funkcjonalności za pomocą działania niestandardowego dotnet. Więcej informacji jest dostępnych [tutaj](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-dotnet-custom-activity)
+Można także utworzyć tej funkcjonalności za pomocą działania niestandardowego dotnet. Więcej informacji jest dostępnych [tutaj](https://docs.microsoft.com/azure/data-factory/transform-data-using-dotnet-custom-activity)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/18/2019
+ms.date: 04/29/2019
 ms.author: mlottner
-ms.openlocfilehash: cac2f740c1b2ae109f29ce44cd035fc6a83dd148
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0236050ffcf7ad1d18ff3a8a763d0469d91eeeb5
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60505431"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919922"
 ---
 # <a name="quickstart-enable-service-in-iot-hub"></a>Szybki start: Włącz usługę w usłudze IoT Hub
 
@@ -39,6 +39,7 @@ Ten artykuł zawiera wyjaśnienie, jak włączyć usługi Azure Security Center 
   - Dwa typy informacji są domyślnie przechowywane w obszarze roboczym usługi Log Analytics przez usługę ASC dla IoT; **alerty zabezpieczeń** i **zalecenia**. 
   - Można wybrać dodać magazyn typu dodatkowe informacje, **nieprzetworzonych zdarzeń**. Należy pamiętać, że przechowywanie **nieprzetworzonych zdarzeń** w usłudze Log Analytics niesie ze sobą dodatkowe koszty. 
 - Usługa IoT Hub (w warstwie standardowa lub wyższa)
+- Spełnisz [usługi prerequities](service-prerequisites.md) 
 
 ## <a name="enable-asc-for-iot-on-your-iot-hub"></a>Włączanie usługi ASC dla Internetu rzeczy na Twoim Centrum IoT Hub 
 
@@ -50,8 +51,7 @@ Aby włączyć zabezpieczenia w usłudze IoT Hub, wykonaj następujące czynnoś
 4. Podaj szczegóły obszaru roboczego usługi Log Analytics. 
    - Zdecydować się na przechowywanie **nieprzetworzonych zdarzeń** oprócz domyślne typy informacji magazynu, pozostawiając **nieprzetworzone zdarzenia** Przełącz **na**. 
    - Wybiera umożliwiające **bliźniaczej reprezentacji kolekcji** , pozostawiając **bliźniaczej reprezentacji kolekcji** Przełącz **na**. 
-5. Kliknij przycisk **OK**. 
-6. Kliknij pozycję **Zapisz**. 
+5. Kliknij pozycję **Zapisz**. 
 
 Gratulacje! Ukończono włączanie ASC IoT w usłudze IoT Hub. 
 

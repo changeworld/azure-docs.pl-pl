@@ -10,12 +10,12 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: alch
-ms.openlocfilehash: bd37665e962ada59149b54075d7f8acbea895c50
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 92844b5faf691b67617c9f3424a1322aa05429bb
+ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61336828"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64875739"
 ---
 # <a name="paper-entity"></a>Jednostka papieru
 
@@ -26,7 +26,7 @@ Name (Nazwa)    |Opis                                        |Type       | Opera
 ------- | ------------------------------------------------- | --------- | ----------------------------
 Identyfikator      |Identyfikator jednostki                                          |Int64      |Równa się
 Oś      |Dokument tytułu                                        |String     |Równa się,<br/>StartsWith
-L       |Kod języka dokument oddzielone "\@@@"            |String     |Równa się
+L       |Kod języka dokument oddzielone "\@\@\@"          |String     |Równa się
 Tak       |Rok papieru                                         |Int32      |Równa się,<br/>IsBetween
 D       |Data papieru                                         |Date       |Równa się,<br/>IsBetween
 DW      |Liczba cytatu                                     |Int32      |brak  

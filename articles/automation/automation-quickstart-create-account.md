@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: automation
 ms.subservice: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 7f7905a4b09e685ad98a1663333aa32bc1d7ae90
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 89f32499d02978294398aae7be21f63b5d6aa028
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60738431"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919810"
 ---
 # <a name="create-an-azure-automation-account"></a>Tworzenie konta usługi Azure Automation
 
@@ -37,7 +37,7 @@ Zaloguj się do platformy Azure w witrynie https://portal.azure.com
     ![Wprowadzanie na stronie informacji dotyczących konta usługi Automation](./media/automation-quickstart-create-account/create-automation-account-portal-blade.png)  
 
     > [!NOTE]
-    > Aby uzyskać zaktualizowaną listę lokalizacji, w których można wdrożyć konto usługi Automation, zobacz [Dostępność produktów według regionów](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=automation&regions=all).
+    > Aby uzyskać zaktualizowaną listę lokalizacji, w których można wdrożyć konto usługi Automation, zobacz [Dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=automation&regions=all).
 
 1. Po zakończeniu wdrożenia kliknij pozycję **Wszystkie usługi**, wybierz pozycję **Konta usługi Automation**, a następnie wybierz utworzone konto usługi Automation.
 

@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/13/2017
+ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c5cad3f735494ee74156e22a9bf150911c36eb0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 05c1575781f280b3be1843abee0469af52baeb2d
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60381663"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918427"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>Definiowanie strategii ochrony danych dla rozwiązania tożsamości hybrydowej
 W tym zadaniu należy zdefiniować strategię ochrony danych do hybrydowego tożsamości rozwiązania w celu spełnienia wymagań biznesowych zdefiniowaną w:
@@ -89,7 +89,7 @@ Jest to ważna część zarządzania zawartością, aby dowiedzieć się, kto ma
 ## <a name="define-access-control-options"></a>Zdefiniuj opcje kontroli dostępu
 Dzięki wykorzystaniu uwierzytelniania, autoryzacji i kontroli dostępu, których dostępne w usłudze Azure AD umożliwia firmie używać repozytorium tożsamości centralnej, pozwalając użytkownikom i partnerami, aby użyć jednego logowania jednokrotnego (SSO) jak pokazano na poniższej ilustracji:
 
-![](./media/plan-hybrid-identity-design-considerations/centralized-management.png)
+![scentralizowane zarządzanie](./media/plan-hybrid-identity-design-considerations/centralized-management.png)
 
 Scentralizowane zarządzanie i w pełni integrację z innych katalogów
 
@@ -115,7 +115,7 @@ Dzięki obsłudze usługi Azure AD, aplikacje biznesowe mobilnych, można użyć
 
 Po użytkownik jest uwierzytelniany przy użyciu usługi Azure AD, jest ważne dla oceny poziomu dostępu, których użytkownik ma. Poziom dostępu, których użytkownik ma wobec zasobu mogą się różnić. Gdy usługa Azure AD można dodać jako dodatkowa warstwa zabezpieczeń poprzez kontrolowanie dostępu do niektórych zasobów, należy pamiętać, że samego zasobu może również mieć swój własny listy kontroli dostępu oddzielnie, takich jak kontrola dostępu do plików znajdujących się na serwerze plików. Poniższa ilustracja zawiera podsumowanie poziomów kontroli dostępu, który może mieć w scenariuszu hybrydowym:
 
-![](./media/plan-hybrid-identity-design-considerations/accesscontrol.png)
+![Kontrola dostępu](./media/plan-hybrid-identity-design-considerations/accesscontrol.png)
 
 Każdy interakcja w diagramie pokazano na rysunku x reprezentuje jeden scenariusz kontroli dostępu, który może być objętych przez usługę Azure AD. Poniżej są opis poszczególnych scenariuszy:
 

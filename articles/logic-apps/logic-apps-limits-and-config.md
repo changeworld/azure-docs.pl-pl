@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 11/16/2018
-ms.openlocfilehash: c211d479efe086bb739b91034c6d9e349358b2d7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: f371376a7c801eecb6231d551546b13dbc68dd26
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60303676"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64916812"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Limity i informacje o konfiguracji dla usługi Azure Logic Apps
 
@@ -179,45 +179,18 @@ Poniżej przedstawiono limity łączników niestandardowych, które można utwor
 
 W tym miejscu są ograniczenia na liczbę artefaktów dla każdego konta integracji. Aby uzyskać więcej informacji, zobacz [Logic Apps — cennik](https://azure.microsoft.com/pricing/details/logic-apps/).
 
-*Warstwa bezpłatna*
+> [!NOTE] 
+> Korzystać z bezpłatnej warstwy tylko na potrzeby scenariuszy eksploracyjnego, a nie scenariuszy produkcyjnych. Ta warstwa ogranicza przepustowość i użycia i ma nie umową dotyczącą poziomu usług (SLA).
 
-Korzystać z bezpłatnej warstwy tylko na potrzeby scenariuszy eksploracyjnego, a nie scenariuszy produkcyjnych. Ta warstwa ogranicza przepustowość i użycia i ma nie umową dotyczącą poziomu usług (SLA).
-
-| Artefakt | Limit | Uwagi |
-|----------|-------|-------|
-| Zestawy | 10 | |
-| Konfiguracje partii | 5 |
-| Certyfikaty | 25 | |
-| Handlowym umów integracji EDI | 10 | |
-| Partnerzy handlowi EDI | 25 | |
-| Maps | 25 | |
-| Schematy | 25 |
-||||
-
-*Warstwa podstawowa*
-
-| Artefakt | Limit | Uwagi |
-|----------|-------|-------|
-| Zestawy | 25 | |
-| Konfiguracje partii | 1 | |
-| Certyfikaty | 2 | |
-| Handlowym umów integracji EDI | 1 | |
-| Partnerzy handlowi EDI | 2 | |
-| Maps | 500 | |
-| Schematy | 500 |
-||||
-
-*Warstwa standardowa*
-
-| Artefakt | Limit | Uwagi |
-|----------|-------|-------|
-| Zestawy | 50 | |
-| Konfiguracje partii | 50 |
-| Certyfikaty | 500 | |
-| Handlowym umów integracji EDI | 500 | |
-| Partnerzy handlowi EDI | 500 | |
-| Maps | 1000 | |
-| Schematy | 1000 |
+| Artefakt | Bezpłatna | Podstawowa | Standardowa (Standard) |
+|----------|------|-------|----------|
+| Handlowym umów integracji EDI | 10 | 1 | 500 |
+| Partnerzy handlowi EDI | 25 | 2 | 500 |
+| Maps | 25 | 500 | 1000 |
+| Schematy | 25 | 500 | 1000 |
+| Zestawy | 10 | 25 | 50 |
+| Certyfikaty | 25 | 2 | 500 |
+| Konfiguracje partii | 5 | 1 | 50 |
 ||||
 
 <a name="artifact-capacity-limits"></a>
@@ -304,7 +277,7 @@ Usługa Logic Apps nie obsługuje bezpośredniego połączenia z konta usługi A
 | Indie Południowe | 52.172.9.47, 52.172.49.43, 52.172.51.140, 104.211.225.152 |
 | Azja Południowo-Wschodnia | 52.163.93.214, 52.187.65.81, 52.187.65.155, 104.215.181.6 |
 | Środkowo-zachodnie stany USA | 13.78.137.247, 52.161.8.128, 52.161.19.82, 52.161.26.172 |
-| Europa Zachodnia | 13.95.155.53, 52.174.49.6, 52.174.49.6, 52.174.54.218 |
+| Europa Zachodnia | 13.95.155.53, 51.144.176.185, 52.174.49.6, 52.174.54.218 |
 | Indie Zachodnie | 104.211.157.237, 104.211.164.25, 104.211.164.112, 104.211.165.81 |
 | Zachodnie stany USA | 13.91.252.184, 52.160.90.237, 138.91.188.137, 157.56.160.212 |
 | Zachodnie stany USA 2 | 13.66.128.68, 13.66.224.169, 52.183.30.10, 52.183.39.67 |

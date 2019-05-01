@@ -4,14 +4,14 @@ description: Pokazuje, jak typy zasobów obsługuje usuwania w trybie w szablona
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 02/13/2019
+ms.date: 04/24/2019
 ms.author: tomfitz
-ms.openlocfilehash: fded37fee844a01f4d51518f2ca56dcf575704b2
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
-ms.translationtype: HT
+ms.openlocfilehash: 21b3972a96c1601b15c403275474d58873753b08
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60150153"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64712995"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Usuwanie zasobów platformy Azure w przypadku wdrożeń w trybie
 W tym artykule opisano, jak typy zasobów obsługuje usuwania, gdy nie w szablonie, które zostało wdrożone w trybie.
@@ -633,7 +633,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
 | Typ zasobu | Usuwanie w trybie pełnym |
 | ------------- | ----------- |
-| Klastry | Nie | 
+| Klastry | Yes | 
 | klastry/aplikacji | Nie | 
 
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport

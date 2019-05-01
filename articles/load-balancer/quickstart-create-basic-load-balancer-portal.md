@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: fe095b8f5a0080c0f28ec570303c9dc23962dfc8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: db781899a3fe0d13d030943ed3ab4ebd3d105ad1
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60507967"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64727583"
 ---
 # <a name="quickstart-create-a-basic-load-balancer-by-using-the-azure-portal"></a>Szybki start: Tworzenie podstawowego modułu równoważenia obciążenia przy użyciu witryny Azure Portal
 
@@ -235,21 +235,27 @@ Zainstaluj usługi Internet Information Services (IIS) na maszynach wirtualnych,
    
    Pulpit maszyny wirtualnej zostanie otwarty w nowym oknie. 
    
-**Aby zainstalować usługi IIS na maszynie wirtualnej:**
+**Aby zainstalować usługi IIS**
 
-1. Jeśli **Menedżer serwera** nie jest jeszcze otwarty na pulpicie serwera, przejdź do ekranu **Narzędzia administracyjne systemu Windows** > **Menedżer serwera**.
-   
-1. W **Menedżerze serwera** wybierz pozycję **Dodaj role i funkcje**.
-   
-   ![Dodawanie roli Menedżera serwera](./media/load-balancer-get-started-internet-portal/servermanager.png)
-   
-1. W **kreatorze dodawania ról i funkcji**:
-   1. Na stronie **Wybieranie typu instalacji** wybierz pozycję **Instalacja oparta na rolach lub funkcjach**.
-   1. Na stronie **Wybieranie serwera docelowego** wybierz pozycję **MyVM1**.
-   1. Na stronie **Wybieranie roli serwera** wybierz pozycję **Serwer internetowy (IIS)**. 
-   1. Po wyświetleniu monitu o zainstalowanie wymaganych narzędzi wybierz pozycję **Dodaj funkcje**. 
-   1. Zaakceptuj ustawienia domyślne i wybierz pozycję **Instaluj**. 
-   1. Po zakończeniu instalowania funkcji wybierz pozycję **Zamknij**. 
+1. Wybierz **wszystkich usług** w menu po lewej stronie wybierz **wszystkie zasoby**, a następnie na liście zasobów wybierz **myVM1** znajdującą się w  *myResourceGroupSLB* grupy zasobów.
+2. Na stronie **Przegląd** wybierz pozycję **Połącz** dla protokołu RDP z maszyną wirtualną.
+5. Zaloguj się do maszyny wirtualnej przy użyciu poświadczeń podanych podczas jej tworzenia. Spowoduje to uruchomienie sesji pulpitu zdalnego z maszyną wirtualną — *myVM1*.
+6. Na pulpicie serwera przejdź do pozycji **Narzędzia administracyjne systemu Windows**>**Windows PowerShell**.
+7. W oknie programu PowerShell uruchom poniższe polecenia, aby zainstalować serwer usług IIS, usunąć domyślny plik iisstart.htm i dodać nowy plik iisstart.htm, który wyświetla nazwę maszyny wirtualnej:
+
+   ```azurepowershell
+    
+    # install IIS server role
+    Install-WindowsFeature -name Web-Server -IncludeManagementTools
+    
+    # remove default htm file
+    remove-item  C:\inetpub\wwwroot\iisstart.htm
+    
+    # Add a new htm file that displays server name
+    Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from " + $env:computername)
+   ```
+6. Zamknij sesję protokołu RDP na maszynie wirtualnej *myVM1*.
+7. Powtórz kroki od 1 do 6, aby zainstalować usługi IIS i zaktualizowany plik iisstart.htm na maszynie wirtualnej *myVM2*.
    
 1. Powtórz te kroki dla maszyny wirtualnej **MyVM2**, tylko dla serwera docelowego ustaw wartość **MyVM2**.
 
@@ -257,9 +263,9 @@ Zainstaluj usługi Internet Information Services (IIS) na maszynach wirtualnych,
 
 Otwórz przeglądarkę i wklej publiczny adres IP modułu równoważenia obciążenia na pasku adresu przeglądarki. W przeglądarce powinna zostać wyświetlona domyślna strona serwera internetowego usług IIS.
 
-![Internetowy serwer usług IIS](./media/load-balancer-get-started-internet-portal/9-load-balancer-test.png)
+![Internetowy serwer usług IIS](./media/tutorial-load-balancer-standard-zonal-portal/load-balancer-test.png)
 
-Aby zobaczyć, jak moduł równoważenia obciążenia rozdziela ruch między trzy maszyny wirtualne używane przez aplikację, możesz wymusić odświeżenie w przeglądarce internetowej.
+Aby zobaczyć, jak moduł równoważenia obciążenia rozdziela ruch między dwie maszyny wirtualne używane przez aplikację, możesz wymusić odświeżenie w przeglądarce internetowej.
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 Aby usunąć moduł równoważenia obciążenia i wszystkie powiązane z nim zasoby, kiedy nie będą już potrzebne, otwórz grupę zasobów **MyResourceGroupLB** i wybierz pozycję **Usuń grupę zasobów**.

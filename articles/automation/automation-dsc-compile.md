@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 09/10/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f2c6f45081b78d330033570ff322f90cd06e50dd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 847c928681451b4fef93198e2f2272d5bb04b1b8
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61074193"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919800"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>Kompilowanie konfiguracji DSC usługi Azure Automation stanu konfiguracji
 
@@ -287,11 +287,11 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -A
 
 ## <a name="partial-configuration"></a>Częściowe konfiguracji
 
-Konfiguracja stanu usługi Azure Automation obsługuje użycie [konfiguracje częściowe](https://docs.microsoft.com/en-us/powershell/dsc/pull-server/partialconfigs).
+Konfiguracja stanu usługi Azure Automation obsługuje użycie [konfiguracje częściowe](https://docs.microsoft.com/powershell/dsc/pull-server/partialconfigs).
 W tym scenariuszu skonfigurowano niezależnie zarządzać wieloma konfiguracjami DSC, a każda z konfiguracji jest retreieved z usługi Azure Automation.
 Jednak tylko jedną konfigurację można przypisać do węzła na konto usługi automation.
 Oznacza to, jeśli używane są dwie konfiguracje dla węzła będzie wymagać dwóch kont usługi automation.
-Aby dowiedzieć się więcej o tym, jak zespoły mogą współdziałać razem wspólnie zarządzać serwerami przy użyciu konfiguracji jako kodu zobacz [DSC opis roli w potoku CI/CD](https://docs.microsoft.com/en-us/powershell/dsc/overview/authoringadvanced).
+Aby dowiedzieć się więcej o tym, jak zespoły mogą współdziałać razem wspólnie zarządzać serwerami przy użyciu konfiguracji jako kodu zobacz [DSC opis roli w potoku CI/CD](https://docs.microsoft.com/powershell/dsc/overview/authoringadvanced).
 
 ## <a name="importing-node-configurations"></a>Importowanie konfiguracji węzła
 

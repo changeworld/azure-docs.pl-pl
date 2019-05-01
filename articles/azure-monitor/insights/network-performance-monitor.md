@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: vinigam
-ms.openlocfilehash: 29826f7f842f8dfbd7cd2a754c919f06542a161c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a5d5a9e07c28ab3059872f4d187c96586456a200
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60401940"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64916758"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor rozwiązanie na platformie Azure
 
@@ -263,8 +263,8 @@ Jeśli jesteś użytkownikiem NPM tworzenia alertu za pośrednictwem witryny Azu
 3. Jeśli zdecydujesz się użyć grup akcji, należy wybrać grupy akcji utworzone wcześniej. Możesz dowiedzieć się, jak utworzyć grupy akcji [tutaj.](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#create-an-action-group-by-using-the-azure-portal) 
 4. Po pomyślnym utworzeniu alertu, można użyć łącza Zarządzanie alertami zarządzania alertami. 
 
-W przypadku tworzenia alertu, NPM tworzy na podstawie zapytania reguł alertów dzienników w usłudze Azure Monitor. To zapytanie jest wyzwalana co 5 minut, domyślnie. Usługa Azure monitor nie jest opłata w wysokości 250 pierwszego logowania reguły alertów utworzone, a wszystkie reguły alertów powyżej limit 250 reguł alertów dzienników będą naliczane zgodnie [alerty ceny w usłudze Azure Monitor stronę z cennikiem](https://azure.microsoft.com/en-us/pricing/details/monitor/).
-Powiadomienia są rozliczane osobno zgodnie [powiadomienia ceny w usłudze Azure Monitor stronę z cennikiem](https://azure.microsoft.com/en-us/pricing/details/monitor/).
+W przypadku tworzenia alertu, NPM tworzy na podstawie zapytania reguł alertów dzienników w usłudze Azure Monitor. To zapytanie jest wyzwalana co 5 minut, domyślnie. Usługa Azure monitor nie jest opłata w wysokości 250 pierwszego logowania reguły alertów utworzone, a wszystkie reguły alertów powyżej limit 250 reguł alertów dzienników będą naliczane zgodnie [alerty ceny w usłudze Azure Monitor stronę z cennikiem](https://azure.microsoft.com/pricing/details/monitor/).
+Powiadomienia są rozliczane osobno zgodnie [powiadomienia ceny w usłudze Azure Monitor stronę z cennikiem](https://azure.microsoft.com/pricing/details/monitor/).
 
 
 ## <a name="pricing"></a>Cennik

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bc4118e54b2049f7e5d6cf4ed3b92bfc5e41ae7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 011991a3951adde9a0d062b40584caa74d172023
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60280525"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918734"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-domo"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją Domo
 
@@ -174,7 +174,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją Domo, wyk
 
 ### <a name="configure-domo-single-sign-on"></a>Konfigurowanie logowania jednokrotnego w aplikacji Domo
 
-Aby skonfigurować logowanie jednokrotne po stronie aplikacji **Domo**, przejdź do artykułu bazy wiedzy aplikacji Domo, który można znaleźć [tutaj](http://knowledge.domo.com?cid=azuread), i postępuj zgodnie z instrukcjami.
+Aby skonfigurować logowanie jednokrotne po stronie aplikacji **Domo**, przejdź do artykułu bazy wiedzy aplikacji Domo, który można znaleźć [tutaj](https://knowledge.domo.com?cid=azuread), i postępuj zgodnie z instrukcjami.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 

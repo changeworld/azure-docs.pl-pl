@@ -1,20 +1,20 @@
 ---
 title: 'Samouczek: Analiza tonacji na strumieniu danych przy użyciu usługi Azure Databricks'
-description: Dowiedz się, jak przeprowadzać analizę tonacji na strumieniu danych za pomocą usług Azure Databricks i Event Hubs oraz interfejsu API usług Cognitive Services w czasie niemal rzeczywistym.
+description: Dowiedz się, za pomocą usługi Azure Databricks i Event Hubs oraz interfejsu API usług Cognitive Services przeprowadzać analizę tonacji na strumieniu danych w czasie zbliżonym do rzeczywistego.
 services: azure-databricks
 author: lenadroid
 ms.author: alehall
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 12/07/2018
-ms.openlocfilehash: 54a7f308163cb2463554da32f0fae8b897c0742f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 04/29/2019
+ms.openlocfilehash: a4762f78b16b7798ff746770f1ea69ccebd30130
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60786325"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919025"
 ---
 # <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>Samouczek: Analiza tonacji na strumieniu danych przy użyciu usługi Azure Databricks
 
@@ -55,9 +55,9 @@ Przed rozpoczęciem pracy z tym samouczkiem upewnij się, że zostały spełnion
 
 Aby spełnić te wymagania, wystarczy wykonać kroki opisane w artykule [Create an Azure Event Hubs namespace and event hub (Tworzenie przestrzeni nazw i centrum zdarzeń usługi Azure Event Hubs)](../event-hubs/event-hubs-create.md).
 
-## <a name="log-in-to-the-azure-portal"></a>Logowanie do witryny Azure Portal
+## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się do witryny [Azure Portal](https://portal.azure.com/).
+Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-an-azure-databricks-workspace"></a>Tworzenie obszaru roboczego usługi Azure Databricks
 
@@ -154,7 +154,7 @@ W tym samouczku tweety są wysyłane do usługi Event Hubs za pomocą interfejs�
 
 ## <a name="get-a-cognitive-services-access-key"></a>Pobieranie klucza dostępu usług Cognitive Services
 
-W tym samouczku do przeprowadzania analizy tonacji na strumieniu tweetów w czasie niemal rzeczywistym są używane [interfejsy API analizy tekstu usług Microsoft Cognitive Services](../cognitive-services/text-analytics/overview.md). Przed użyciem interfejsów API analizy tekstu musisz utworzyć konto usług Microsoft Cognitive Services na platformie Azure i pobrać klucz dostępu.
+W tym samouczku użyjesz [Azure Cognitive Services interfejsów API analizy tekstu](../cognitive-services/text-analytics/overview.md) przeprowadzać analizę tonacji na strumieniu tweetów w czasie zbliżonym do rzeczywistego. Przed użyciem interfejsów API, należy utworzyć konto usług Azure Cognitive Services na platformie Azure i pobrać klucz dostępu do użycia interfejsów API analizy tekstu.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
@@ -227,7 +227,7 @@ val connStr = new ConnectionStringBuilder()
             .setSasKeyName(sasKeyName)
             .setSasKey(sasKey)
 
-val pool = Executors.newFixedThreadPool(1)
+val pool = Executors.newScheduledThreadPool(1)
 val eventHubClient = EventHubClient.create(connStr.toString(), pool)
 
 def sendEvent(message: String) = {

@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 12/10/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 5c9f70650f518c72a75d9a7826e7cbc30a95a00c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: f19d193bef718bd4ad3d98f2112a7e705051b729
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60852723"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920077"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>Przewodnik dla deweloperów języka Java dla usługi App Service w systemie Linux
 
@@ -112,7 +112,7 @@ Deweloperzy uruchomił jedną aplikację z gniazdem jedno wdrożenie w planu us�
 
 Podczas dostosowywania ustawienia sterty aplikacji, przejrzyj szczegóły planu usługi App Service i wziąć pod uwagę wiele aplikacji i miejsca wdrożenia musi znaleźć optymalne alokacji pamięci.
 
-Jeśli wdrażasz aplikację JAR, powinien zostać nazwany `app.jar` tak, aby wbudowanym obrazem można poprawnie identyfikacji danej aplikacji. (Wtyczki Maven nie, ta zmiana nazw automatycznie.) Jeśli nie chcesz zmienić nazwę Twojego pliku JAR do `app.jar`, możesz przesłać skrypt powłoki, za pomocą polecenia do uruchomienia usługi JAR. Następnie wklej pełną ścieżkę do tego skryptu w [plik startowy](https://docs.microsoft.com/en-us/azure/app-service/containers/app-service-linux-faq#startup-file) pole tekstowe w sekcji konfiguracji portalu.
+Jeśli wdrażasz aplikację JAR, powinien zostać nazwany `app.jar` tak, aby wbudowanym obrazem można poprawnie identyfikacji danej aplikacji. (Wtyczki Maven nie, ta zmiana nazw automatycznie.) Jeśli nie chcesz zmienić nazwę Twojego pliku JAR do `app.jar`, możesz przesłać skrypt powłoki, za pomocą polecenia do uruchomienia usługi JAR. Następnie wklej pełną ścieżkę do tego skryptu w [plik startowy](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-faq#startup-file) pole tekstowe w sekcji konfiguracji portalu.
 
 ### <a name="turn-on-web-sockets"></a>Włącz gniazda sieci web
 

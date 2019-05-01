@@ -2,39 +2,41 @@
 author: Rajeswari-Mamilla
 ms.service: site-recovery
 ms.topic: include
-ms.date: 03/11/2019
+ms.date: 04/28/2019
 ms.author: ramamill
-ms.openlocfilehash: 0d090f43b69b42a07f1c8949d1662e8e720f3cf4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 00b0c1b1a40ad16db177916c57dba6e9d5a187a7
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57908539"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925581"
 ---
-Kroki wyrejestrowywania serwera przetwarzania różnią się zależnie od jego stanu połączenia z serwerem konfiguracji.
+Wykonaj kroki dla Twojego określonych okolicznościach.
 
-### <a name="unregister-a-process-server-that-is-in-a-connected-state"></a>Wyrejestrowywanie serwera przetwarzania, który jest w stanie Połączono
+### <a name="unregister-a-connected-process-server"></a>Wyrejestrowywanie serwera przetwarzania połączone
 
-1. Zaloguj się zdalnie do serwera przetwarzania jako administrator.
-2. Uruchom **Panelu sterowania** , a następnie otwórz **programy > Odinstaluj program**.
-3. Odinstaluj program o nazwie **Microsoft Azure lokacji odzyskiwania mobilności usługi/główny serwer docelowy**.
-4. Odinstaluj program o nazwie **serwera konfiguracji/przetwarzania usługi Microsoft Azure Site Recovery**.
-5. Odinstalowanie programów w kroku 3 i 4, możesz odinstalować **zależności serwera konfiguracji/przetwarzania odzyskiwania witryny Microsoft Azure**.
+1. Nawiąż połączenie zdalne do serwera przetwarzania jako Administrator.
+2. W **Panelu sterowania**, otwórz **programy > Odinstaluj program**.
+3. Odinstaluj program **Microsoft Azure lokacji odzyskiwania mobilności usługi/główny serwer docelowy**.
+4. Odinstaluj program **serwera konfiguracji/przetwarzania usługi Microsoft Azure Site Recovery**.
+5. Po odinstalowaniu są programy w kroku 3 i 4, należy odinstalować **zależności serwera konfiguracji/przetwarzania odzyskiwania witryny Microsoft Azure**.
 
-### <a name="unregister-a-process-server-that-is-in-a-disconnected-state"></a>Wyrejestrowywanie serwera przetwarzania, który jest w stanie Rozłączono
+### <a name="unregister-a-disconnected-process-server"></a>Wyrejestrowywanie serwera przetwarzania odłączony
 
-> [!WARNING]
-> Użyj poniższych kroków, jeśli ma sposobu reaktywowania maszyny wirtualnej, na którym zainstalowano serwer przetwarzania.
+Te kroki należy używać tylko, jeśli nie sposobu reaktywowania maszyny, na którym jest zainstalowany na serwerze przetwarzania.
 
-1. Zaloguj się do serwera konfiguracji jako Administrator.
-2. Otwórz administracyjny wiersz polecenia i przejdź do katalogu `%ProgramData%\ASR\home\svsystems\bin`.
-3. Teraz uruchom polecenie.
+1. Zaloguj się na serwerze konfiguracji jako Administrator.
+2. Otwórz administracyjny wiersz polecenia i przejdź do `%ProgramData%\ASR\home\svsystems\bin`.
+3. Uruchom następujące polecenie w celu uzyskania listy jeden lub więcej serwerów przetwarzania.
 
     ```
     perl Unregister-ASRComponent.pl -IPAddress <IP_of_Process_Server> -Component PS
     ```
-4. Powyższe polecenie będzie dostarczać listę serwery przetwarzania (może mieć więcej niż jednym przypadku zduplikowane wpisy) number(S.No) szeregowe, adres IP (IP), Nazwa maszyny Wirtualnej, na który serwer procesu wdrażania (nazwa), serce zapewniała maszyny wirtualnej (pulsu), jak pokazano poniżej.
+    - Mag. Nie: numer seryjny serwera przetwarzania.
+    - IP/nazwa: Adres IP i nazwę maszyny z uruchomionym serwerem przetwarzania.
+    - Pulsu: Ostatni Puls z komputera serwera przetwarzania.
     ![Unregister-cmd](media/site-recovery-vmware-unregister-process-server/Unregister-cmd.PNG)
-5. Teraz wprowadź numer seryjny serwera przetwarzania, którą chcesz, aby wyrejestrować.
-6. Spowoduje to wyczyszczenie informacji o serwerze przetwarzania z systemu i wyświetli komunikat: **Pomyślnie wyrejestrowano nazwa serwera > (-adres IP serwera-)**
+
+4. Określ numer seryjny serwera przetwarzania, które chcesz wyrejestrować.
+5. Wyrejestrowywanie serwera przetwarzania usunąć wszystkie szczegółowe informacje z systemu i wyświetla komunikat: **Pomyślnie wyrejestrowano nazwa serwera > (-adres IP serwera-)**
 

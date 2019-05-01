@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dad05221376fa5871aadf6d89dcb15dff55a6dfa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7471bb82aece2b4c11f5071b6b3746f1a55a4a60
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60300187"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917345"
 ---
 # <a name="microsoft-identity-platform-protocols"></a>Protokoły platforma tożsamości firmy Microsoft
 
@@ -51,7 +51,7 @@ Każda aplikacja, która chce zaakceptować zarówno osobistych i kont służbow
 * A **identyfikator URI przekierowania** lub **identyfikator pakietu** który może służyć do kierowania odpowiedzi z powrotem do aplikacji
 * Kilka innych wartości specyficznych dla danego scenariusza.
 
-Aby uzyskać więcej szczegółowych informacji, zapoznaj się z procedurą [rejestracji aplikacji](quickstart-v2-register-an-app.md).
+Aby uzyskać więcej szczegółowych informacji, zapoznaj się z procedurą [rejestracji aplikacji](quickstart-register-app.md).
 
 ## <a name="endpoints"></a>Punkty końcowe
 

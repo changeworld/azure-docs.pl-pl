@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 5670d8b3c97cc1f9f6d149e8eadaa60d527e45f5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: d1b4bb58d777d2dc5bd79b66e128a0edd7a88adc
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60361119"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64702958"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>Żądanie tokenu dostępu w usłudze Azure Active Directory B2C
 

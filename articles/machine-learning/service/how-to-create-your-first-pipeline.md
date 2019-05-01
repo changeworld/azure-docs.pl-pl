@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.author: sanpil
 author: sanpil
-ms.date: 01/08/2019
+ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2e6bc0fd9de4fdba1188b40c49ebf9459d684d38
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 3ec3e915c26abf38653d1bddfe0a5ba44d5e6de1
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60819896"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64914889"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-by-using-azure-machine-learning-sdk"></a>Tworzenie i uruchamianie potoku uczenia maszynowego przy użyciu zestawu SDK usługi Azure Machine Learning
 
@@ -359,6 +359,7 @@ response = requests.post(published_pipeline1.endpoint,
     json={"ExperimentName": "My_Pipeline",
         "ParameterAssignments": {"pipeline_arg": 20}})
 ```
+
 ## <a name="view-results"></a>Wyświetlanie wyników
 
 Zobacz listę wszystkich potoków i ich szczegóły przebiegu:
@@ -368,6 +369,25 @@ Zobacz listę wszystkich potoków i ich szczegóły przebiegu:
  ![listy potoków uczenia maszynowego](./media/how-to-create-your-first-pipeline/list_of_pipelines.png)
  
 1. Wybierz określone potoku, aby zobaczyć wyniki jego działania.
+
+## <a name="caching--reuse"></a>Buforowanie i ponowne użycie  
+
+Aby zoptymalizować i dostosować zachowanie potoków można wykonać kilka czynności wokół pamięci podręcznej i wielokrotnie używać. Na przykład możesz:
++ **Wyłącz domyślne ponownemu krok dane wyjściowe przebiegu** , ustawiając `allow_reuse=False` podczas [krok definicji](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py)
++ **Rozszerzanie mieszania poza skrypt**, aby dołączyć również ścieżki bezwzględnej lub względnej ścieżki, aby katalog_źródłowy do innych plików i katalogów przy użyciu `hash_paths=['<file or directory']` 
++ **Wymuszenie ponownego wygenerowania danych wyjściowych, wszystkie kroki w przebiegu** z `pipeline_run = exp.submit(pipeline, regenerate_outputs=False)`
+
+Domyślnie krok ponownego użycia jest włączona i mieszana jest tylko plik głównego skryptu. Więc, jeśli skrypt dla danego kroku pozostają takie same (`script_name`, dane wejściowe i parametrów), dane wyjściowe poprzedniego kroku uruchom zostanie ponownie użyty, zadanie nie jest przesyłany do obliczeń i wyników z poprzedniego uruchomienia są natychmiast dostępne do następnego kroku w zamian .  
+
+```python
+step = PythonScriptStep(name="Hello World", 
+                        script_name="hello_world.py",  
+                        compute_target=aml_compute,  
+                        source_directory= source_directory, 
+                        allow_reuse=False, 
+                        hash_paths=['hello_world.ipynb']) 
+```
+ 
 
 ## <a name="next-steps"></a>Kolejne kroki
 - Użyj [tych aplikacji Jupyter notebooks w usłudze GitHub](https://aka.ms/aml-pipeline-readme) do eksplorowania dalsze potoków uczenia maszynowego.

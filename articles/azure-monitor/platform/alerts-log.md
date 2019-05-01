@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: d3285a6b2aa09dd78bbb63c384bd1f65c17034ff
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d893fb1023188498260813642678397a39bb2442
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59006953"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64872365"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Tworzenie, wyświetlanie i zarządzanie alerty dzienników przy użyciu usługi Azure Monitor
 
@@ -312,7 +312,7 @@ Przykładowy kod json powyżej, można zapisać jako (np.) sampleScheduledQueryR
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Usługa Azure Monitor — zaplanowane reguł zapytań interfejsu API] (https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) jest w pełni zgodna z usługą Azure Resource Manager REST API i interfejs API REST. Dlatego można używać za pośrednictwem programu Powershell przy użyciu polecenia cmdlet usługi Resource Manager, a także wiersza polecenia platformy Azure.
+Usługa Azure Monitor — [interfejs API reguły zapytania zaplanowane](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) jest w pełni zgodna z usługą Azure Resource Manager REST API i interfejs API REST. Dlatego można używać za pośrednictwem programu Powershell przy użyciu polecenia cmdlet usługi Resource Manager, a także wiersza polecenia platformy Azure.
 
 
 > [!NOTE]
@@ -328,11 +328,13 @@ Przedstawione poniżej użycia za pomocą polecenia usługi Azure Resource Manag
 
 ```azurecli
 az group deployment create --resource-group contosoRG --template-file sampleScheduledQueryRule.json
-On successful operation, 201 will be returned to state new alert rule creation or 200 will be returned if an existing alert rule was modified.
+```
 
-## Next steps
+Na powodzenie operacji 201 zostanie przywrócony do stanu nowych Tworzenie reguły alertu lub 200 zostanie zwrócona, jeśli istniejącą regułę alertu został zmodyfikowany.
 
-* Learn about [Log Alerts in Azure Alerts](../../azure-monitor/platform/alerts-unified-log.md)
-* Understand [Webhook actions for log alerts](../../azure-monitor/platform/alerts-log-webhook.md)
-* Learn more about [Application Insights](../../azure-monitor/app/analytics.md)
-* Learn more about [log queries](../log-query/log-query-overview.md).
+## <a name="next-steps"></a>Kolejne kroki
+
+* Dowiedz się więcej o [alerty dzienników w alertów platformy Azure](../../azure-monitor/platform/alerts-unified-log.md)
+* Zrozumienie [Akcje elementu Webhook dla alertów dzienników](../../azure-monitor/platform/alerts-log-webhook.md)
+* Dowiedz się więcej o [usługi Application Insights](../../azure-monitor/app/analytics.md)
+* Dowiedz się więcej o [rejestrowania zapytań](../log-query/log-query-overview.md).

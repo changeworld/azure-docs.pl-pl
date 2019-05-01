@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: overview
 ms.date: 03/27/2019
 ms.author: scottwhi
-ms.openlocfilehash: 8bcb0372ebb60ac3a46cf06bf85322b288e153ba
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bd93166cb878fbd961795492ed9a035c919429a8
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60511505"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64916623"
 ---
 # <a name="what-is-the-bing-visual-search-api"></a>Co to jest interfejs API wyszukiwania wizualnego Bing?
 
@@ -47,7 +47,7 @@ Wyniki wyszukiwania wizualnego Bing także blokujących pola dla regionów zaint
 
 Interfejs API wyszukiwania wizualnego Bing jest usługą internetową zgodną z wzorcem REST, łatwą do wywołania z dowolnego języka programowania, który może wysyłać żądania HTTP i analizować format JSON. Można użyć interfejsu API REST lub zestawu SDK dla usługi.
 
-1. Tworzenie [konta usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) dostęp do interfejsów API wyszukiwania Bing. Jeśli nie masz subskrypcji platformy Azure, możesz [bezpłatnie utworzyć konto](https://azure.microsoft.com/free/). Możesz uzyskać klucz subskrypcji z [witryny Azure portal](https://docs.microsoft.com/en-us/azure/cognitive-services/cognitive-services-apis-create-account#access-your-resource) po utworzeniu konta, lub [witryny sieci Web Azure](https://azure.microsoft.com/try/cognitive-services/my-apis) po aktywowaniu bezpłatnej wersji próbnej.
+1. Tworzenie [konta usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) dostęp do interfejsów API wyszukiwania Bing. Jeśli nie masz subskrypcji platformy Azure, możesz [bezpłatnie utworzyć konto](https://azure.microsoft.com/free/). Możesz uzyskać klucz subskrypcji z [witryny Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#access-your-resource) po utworzeniu konta, lub [witryny sieci Web Azure](https://azure.microsoft.com/try/cognitive-services/my-apis) po aktywowaniu bezpłatnej wersji próbnej.
 2. Wyślij żądanie do interfejsu API przy użyciu zapytania wyszukiwania prawidłowe.
 3. Przetwórz odpowiedź interfejsu API, analizując zwrócony komunikat JSON.
 

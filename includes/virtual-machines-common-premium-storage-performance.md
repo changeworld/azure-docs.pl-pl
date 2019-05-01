@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c81b0926b88ad2f1dbb3af7c1a2c51e8a79430f9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ee721558e0e643a4b5fdcfa4cf0fe9c2195fa479
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59737226"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64736968"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Usługi Azure premium storage: Projektowanie pod kątem wysokiej wydajności
 
@@ -299,7 +299,7 @@ Na przykład można zastosować następujących wytycznych programu SQL Server u
 1. Konfigurowanie pamięci podręcznej "None" w przypadku dysków magazynu premium zawierających pliki dziennika.  
    a.  Pliki dziennika mają głównie operacje zapisu obciążenie. W związku z tym że nie korzystają z pamięci podręcznej tylko do odczytu.
 
-### <a name="optimize-performance-on-linux-vms"></a>Optymalizuj wydajność na maszynach wirtualnych z systemem Linux
+## <a name="optimize-performance-on-linux-vms"></a>Optymalizuj wydajność na maszynach wirtualnych z systemem Linux
 
 Dla wszystkich dysków SSD w warstwie premium lub ultra dysków z pamięcią podręczną równa **tylko do odczytu** lub **Brak**, należy wyłączyć "bariery", podczas instalacji systemu plików. Nie potrzebujesz barier w tym scenariuszu, ponieważ operacje zapisu do dysków magazynu premium storage są trwałe dla tych ustawień pamięci podręcznej Podczas żądania zapisu zakończy się pomyślnie, dane został zapisany w magazynie trwałym. Aby wyłączyć "bariery", użyj jednej z następujących metod. Wybierz jeden dla systemu plików:
   
@@ -328,7 +328,7 @@ Najnowsze usługi LIS (Linux Integration), wersja 4.0, niektóre wersje wymagaj�
 | Oracle | 7.0-7.1 | &nbsp; | UEK4 lub RHCK z[LIS 4.1 lub nowszym](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
 | Oracle | 6.4-6.7 | &nbsp; | UEK4 lub RHCK z[LIS 4.1 lub nowszym](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
 
-## <a name="lis-drivers-for-openlogic-centos"></a>Sterowników LIS systemie OpenLogic CentOS
+### <a name="lis-drivers-for-openlogic-centos"></a>Sterowników LIS systemie OpenLogic CentOS
 
 Jeśli korzystasz z maszyn wirtualnych z OpenLogic CentOS, uruchom następujące polecenie, aby zainstalować najnowsze sterowniki:
 

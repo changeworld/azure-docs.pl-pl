@@ -3,20 +3,19 @@ title: Zarządzanie logowania jednokrotnego i dostosowywanie tokenu za pomocą z
 description: Dowiedz się więcej o zarządzaniu logowania jednokrotnego i dostosowywanie tokenu za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-origin.date: 10/09/2018
-ms.date: 04/01/2019
-ms.author: v-junlch
+ms.date: 10/09/2018
+ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: c0f5be7fd77ae195b66f8a8fb052ab8573d48171
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 2033d37a4a847380003fb95243138082df804bbf
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60317177"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64703381"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>Zarządzanie logowania jednokrotnego i dostosowywanie tokenu za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C
 
@@ -24,7 +23,11 @@ Ten artykuł zawiera informacje o jak można zarządzać z tokenów, sesji i kon
 
 ## <a name="token-lifetimes-and-claims-configuration"></a>Konfiguracja tokenu okresy istnienia i oświadczenia
 
-Aby zmienić ustawienia na Twoje okresów istnienia tokenu, można dodać [ClaimsProviders](claimsproviders.md) elementu w pliku strony jednostki uzależnionej zasady, które chcesz mieć wpływ na.  **ClaimsProviders** element jest elementem podrzędnym [elementu TrustFrameworkPolicy](trustframeworkpolicy.md) elementu. Wewnątrz należy umieścić informacje, które ma wpływ na Twoje okresów istnienia tokenu. Plik XML wygląda następująco:
+Aby zmienić ustawienia na Twoje okresów istnienia tokenu, można dodać [ClaimsProviders](claimsproviders.md) elementu w pliku strony jednostki uzależnionej zasady, które chcesz mieć wpływ na.  **ClaimsProviders** element jest elementem podrzędnym [elementu TrustFrameworkPolicy](trustframeworkpolicy.md) elementu. 
+
+Wstaw element ClaimsProviders między elementem BasePolicy i element RelyingParty pliku strony jednostki uzależnionej.
+
+Wewnątrz należy umieścić informacje, które ma wpływ na Twoje okresów istnienia tokenu. Plik XML wygląda następująco:
 
 ```XML
 <ClaimsProviders>
@@ -101,4 +104,3 @@ Następujące wartości są konfigurowane w poprzednim przykładzie:
 - **Jednokrotne logowanie jednokrotne (SSO)** — logowanie jednokrotne jest konfigurowana **SingleSignOn**. Odpowiednie wartości są `Tenant`, `Application`, `Policy`, i `Suppressed`. 
 - **Aplikacja sieci Web okres istnienia sesji (w minutach)** — sesji aplikacji sieci web okres istnienia została ustawiona za pomocą **SessionExpiryInSeconds** elementu. Wartość domyślna to 86400 sekund (1440 minut).
 - **Limit czasu sesji aplikacji sieci Web** — limit czasu można ustawić za pomocą sesji aplikacji sieci web **wartość SessionExpiryType** elementu. Odpowiednie wartości są `Absolute` i `Rolling`.
-

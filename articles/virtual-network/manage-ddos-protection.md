@@ -4,8 +4,8 @@ titlesuffix: Azure Virtual Network
 description: Dowiedz się, jak korzystanie z telemetrii usługi Standard platformy Azure przed atakami DDoS Protection w usłudze Azure Monitor złagodzić ataku.
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,13 +15,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
-ms.author: jdial
-ms.openlocfilehash: 32c4516c7dc68b04826b362d34841160936d682d
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.author: kumud
+ms.openlocfilehash: 6b1d62f4cedb7add843a5ddae24125019130d58f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244523"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64728346"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Zarządzanie Standard platformy Azure przed atakami DDoS Protection w witrynie Azure portal
 
@@ -101,7 +101,7 @@ Można wybrać dowolny z dostępnych metryk ochrony przed atakami DDoS do wysył
     |Name (Nazwa)                     | myDdosAlert                                                                                        |
     |Subskrypcja             | Wybierz subskrypcję, która zawiera publiczny adres IP, które chcesz otrzymywać alerty.        |
     |Grupa zasobów           | Wybierz grupę zasobów, która zawiera publiczny adres IP, które chcesz otrzymywać alerty.      |
-    |Zasób                 | Wybierz publiczny adres IP, który zawiera publiczny adres IP, które chcesz otrzymywać alerty. Przed atakami DDoS monitoruje publiczne adresy IP przypisane do zasobów w ramach sieci wirtualnej. Jeśli nie masz żadnych zasobów mających publiczne adresy IP w sieci wirtualnej, należy najpierw utworzyć zasobu z publicznym adresem IP. Możesz monitorować publiczny adres IP wszystkich zasobów wdrożonych przy użyciu usługi Resource Manager (nie klasycznej) na liście [sieć wirtualna dla usług platformy Azure](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network), z wyjątkiem środowiska usługi Azure App Service i Azure VPN Gateway. Aby kontynuować z tego samouczka, możesz szybko utworzyć [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lub [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) maszyny wirtualnej.                   |
+    |Resource                 | Wybierz publiczny adres IP, który zawiera publiczny adres IP, które chcesz otrzymywać alerty. Przed atakami DDoS monitoruje publiczne adresy IP przypisane do zasobów w ramach sieci wirtualnej. Jeśli nie masz żadnych zasobów mających publiczne adresy IP w sieci wirtualnej, należy najpierw utworzyć zasobu z publicznym adresem IP. Możesz monitorować publiczny adres IP wszystkich zasobów wdrożonych przy użyciu usługi Resource Manager (nie klasycznej) na liście [sieć wirtualna dla usług platformy Azure](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network), z wyjątkiem środowiska usługi Azure App Service i Azure VPN Gateway. Aby kontynuować z tego samouczka, możesz szybko utworzyć [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lub [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) maszyny wirtualnej.                   |
     |Metryka                   | W obszarze przed atakami DDoS ataku lub nie                                                                            |
     |Próg                | 1 — **1** oznacza, że są celem ataku. **0** oznacza, że nie są celem ataku.                         |
     |Okres                   | Wybierz dowolną wartość, możesz wybrać.                                                                   |

@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmon
 ms.service: multiple
 ms.topic: article
-ms.date: 04/17/2019
+ms.date: 04/28/2019
 ms.author: raynew
-ms.openlocfilehash: ecbe73e02631e3c3601bd929282d467cb05b41e4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: e23b5ff9917eda7272e378aa70d6e2dd79f4b9f1
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60616844"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918966"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Business ciągłości działania i odzyskiwania po awarii (BCDR): Sparowanych regionów platformy Azure
 
@@ -38,7 +38,6 @@ Rysunek 1 — pary regionalne platformy Azure
 | Europa |Europa Północna |Europa Zachodnia |
 | Francja |Francja Środkowa|Francja Południowa|
 | Niemcy |Niemcy Środkowe |Niemcy Północno-Wschodnie |
-| Niemcy |Niemcy Północne | Niemcy Środkowo-Zachodnie
 | Indie |Indie Środkowe |Indie Południowe |
 | Indie |Indie Zachodnie |Indie Południowe |
 | Japonia |Japonia Wschodnia |Japonia Zachodnia |
@@ -47,13 +46,8 @@ Rysunek 1 — pary regionalne platformy Azure
 | Ameryka Północna |Wschodnie stany USA 2 |Środkowe stany USA |
 | Ameryka Północna |Środkowo-północne stany USA |Środkowo-południowe stany USA |
 | Ameryka Północna |Zachodnie stany USA 2 |Środkowo-zachodnie stany USA 
-| Ameryka Północna |Zachodnie stany USA 3 |Wschodnie stany USA
-| Norwegia |Norwegia Wschodnia |Norwegia Zachodnia
 | Republika Południowej Afryki | Republika Południowej Afryki (północ) | Republika Południowej Afryki (zachód)
-| Szwecja |Szwecja środkowa |Szwecja Południowa
-| Szwajcaria | Szwajcaria Północna | Szwajcaria Zachodnia
 | Zjednoczone Królestwo |Zachodnie Zjednoczone Królestwo |Południowe Zjednoczone Królestwo |
-| Zjednoczone Królestwo |Północne Zjednoczone Królestwo |Południowe Zjednoczone Królestwo 2
 | Zjednoczone Emiraty Arabskie | Północne Zjednoczone Emiraty Arabskie | Zjednoczone Emiraty Arabskie Centrum
 | Departamentu Obrony USA |US DoD — wschodnie stany |US DoD — środkowe stany |
 | Rząd USA |Administracja USA — Arizona |Administracja USA — Teksas |

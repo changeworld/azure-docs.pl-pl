@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 04/03/2019
 ms.author: rambala
-ms.openlocfilehash: 4923c7f2048b7368af6314d5e2288216115bc3bc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3bc189cf269084fdb26f141a36755c96554cad7b
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60368880"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64866008"
 ---
 # <a name="cross-network-connectivity"></a>Łączność między sieciami
 
@@ -119,7 +119,7 @@ W poniższej tabeli przedstawiono tabeli tras prywatnej komunikacji równorzędn
 
 Zobacz [sieć wirtualna — często zadawane pytania][VNet-FAQ], w przypadku dalszych pytań dotyczących sieci wirtualnej i komunikacja równorzędna sieci wirtualnych. Zobacz [ExpressRoute — często zadawane pytania] [ ER-FAQ] dla połączenia sieciowego dalsze pytania w ramach usługi ExpressRoute i wirtualnych.
 
-Globalny zasięg, jest wdrażana na podstawie kraju, kraju. Aby zobaczyć, czy zasięgu globalnym jest dostępna w krajach, które mają, zobacz [zasięgu globalnym ExpressRoute][Global Reach].
+Globalny zasięg, jest wdrażana na podstawie kraj/region, kraj/region. Aby dowiedzieć się, jeśli jest dostępna w krajach/regionach, które mają zasięgu globalnym, zobacz [zasięgu globalnym ExpressRoute][Global Reach].
 
 <!--Image References-->
 [1]: ./media/cross-network-connectivity/premergerscenario.png "scenariusza aplikacji"

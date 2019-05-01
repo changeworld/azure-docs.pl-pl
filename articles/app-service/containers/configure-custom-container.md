@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: 1e5faa8d356b891d825586414c0a1a1b9fa47090
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: feeb9ae4472fb3439ecc5d6505860cc407f9e4d3
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60853324"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919736"
 ---
 # <a name="configure-a-custom-linux-container-for-azure-app-service"></a>Konfigurowanie niestandardowego kontenera systemu Linux dla usługi Azure App Service
 
@@ -109,7 +109,6 @@ Protokół SSH umożliwia bezpieczną komunikację między kontenerem i klientem
 - [Korzystanie z magazynu trwałego w narzędzia Docker Compose](#use-persistent-storage-in-docker-compose)
 - [Ograniczenia wersji zapoznawczej](#preview-limitations)
 - [Opcje tworzenia platformy docker](#docker-compose-options)
-- [Opcje konfiguracji rozwiązania Kubernetes](#kubernetes-configuration-options)
 
 ### <a name="use-persistent-storage-in-docker-compose"></a>Korzystanie z magazynu trwałego w narzędzia Docker Compose
 
@@ -132,19 +131,6 @@ wordpress:
   - ${WEBAPP_STORAGE_HOME}/site/wwwroot:/var/www/html
   - ${WEBAPP_STORAGE_HOME}/phpmyadmin:/var/www/phpmyadmin
   - ${WEBAPP_STORAGE_HOME}/LogFiles:/var/log
-```
-
-### <a name="use-custom-storage-in-docker-compose"></a>Użyj magazynu niestandardowego w narzędzia Docker Compose
-
-Usługa Azure Storage (Azure Files lub Azure Blob) mogą być instalowane przy użyciu aplikacji obsługującej wiele kontenerów przy użyciu identyfikatora niestandardowe. Aby wyświetlić nazwę niestandardowego id, uruchom [ `az webapp config storage-account list --name <app_name> --resource-group <resource_group>` ](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-list).
-
-W swojej *docker-compose.yml* plików, mapowanie `volumes` opcję `custom-id`. Na przykład:
-
-```yaml
-wordpress:
-  image: wordpress:latest
-  volumes:
-  - <custom-id>:<path_in_container>
 ```
 
 ### <a name="preview-limitations"></a>Ograniczenia wersji zapoznawczej
@@ -179,22 +165,6 @@ Poniższej przedstawiono obsługiwane i nieobsługiwane opcje narzędzia Docker 
 
 > [!NOTE]
 > Inne opcje nie są jawnie wywoływane są ignorowane w publicznej wersji zapoznawczej.
-
-### <a name="kubernetes-configuration-options"></a>Opcje konfiguracji rozwiązania Kubernetes
-
-Następujące opcje konfiguracji są obsługiwane w przypadku rozwiązania Kubernetes:
-
-- args
-- command
-- containers
-- image
-- name
-- ports
-- spec
-
-> [!NOTE]
-> Inne opcje nie są jawnie przywołane nie są obsługiwane w publicznej wersji zapoznawczej.
->
 
 ## <a name="next-steps"></a>Kolejne kroki
 

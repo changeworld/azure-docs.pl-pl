@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: 43dc76e6d1e1ec2a6167f1d3e3cc7b8780f843db
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 3074048dd4426a10e706e37e6d375ea4995fcbbb
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60850237"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919782"
 ---
 # <a name="configure-a-linux-nodejs-app-for-azure-app-service"></a>Konfigurowanie aplikacji Node.js w systemie Linux dla usługi Azure App Service
 
@@ -55,7 +55,7 @@ To ustawienie określa wersję środowiska Node.js do użycia zarówno w czasie 
 
 ## <a name="configure-nodejs-server"></a>Konfigurowanie serwera Node.js
 
-Kontenery Node.js dołączone [PM2](http://pm2.keymetrics.io/), menedżera procesów produkcyjnych. Można skonfigurować aplikację do uruchamiania z PM2, lub za pomocą pakietu NPM lub za pomocą polecenia niestandardowe.
+Kontenery Node.js dołączone [PM2](https://pm2.keymetrics.io/), menedżera procesów produkcyjnych. Można skonfigurować aplikację do uruchamiania z PM2, lub za pomocą pakietu NPM lub za pomocą polecenia niestandardowe.
 
 - [Uruchom polecenie niestandardowe](#run-custom-command)
 - [Uruchom Menedżera npm start](#run-npm-start)
@@ -99,12 +99,12 @@ Kontener automatycznie zaczyna się od aplikacji PM2 po znalezieniu jednego z ty
 - *app.js*
 - *index.js*
 - *hostingstart.js*
-- Jedną z następujących [pliki PM2](http://pm2.keymetrics.io/docs/usage/application-declaration/#process-file): *process.json* i *ecosystem.config.js*
+- Jedną z następujących [pliki PM2](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file): *process.json* i *ecosystem.config.js*
 
 Można również skonfigurować pliku startowego niestandardowe z następującymi rozszerzeniami:
 
 - A *js* pliku
-- A [pliku PM2](http://pm2.keymetrics.io/docs/usage/application-declaration/#process-file) z rozszerzeniem *.json*, *. config.js*, *.yaml*, lub *yml*
+- A [pliku PM2](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file) z rozszerzeniem *.json*, *. config.js*, *.yaml*, lub *yml*
 
 Aby dodać plik Rozpoczęcie niestandardowe, uruchom następujące polecenie [Cloud Shell](https://shell.azure.com):
 
@@ -226,7 +226,7 @@ fi
 
 W usłudze App Service [kończenie żądań SSL](https://wikipedia.org/wiki/TLS_termination_proxy) odbywa się w modułach równoważenia obciążenia sieciowego, dzięki czemu wszystkie żądania HTTPS docierają do aplikacji jako niezaszyfrowane żądania HTTP. Jeśli logika aplikacji musi sprawdzać, czy żądania użytkownika są szyfrowane, czy nie, zbadaj nagłówek `X-Forwarded-Proto`.
 
-Popularne platformy internetowe umożliwiają dostęp do informacji `X-Forwarded-*` w standardowym wzorcu aplikacji. W [Express](https://expressjs.com/), możesz użyć [ufać serwery proxy](http://expressjs.com/guide/behind-proxies.html). Na przykład:
+Popularne platformy internetowe umożliwiają dostęp do informacji `X-Forwarded-*` w standardowym wzorcu aplikacji. W [Express](https://expressjs.com/), możesz użyć [ufać serwery proxy](https://expressjs.com/guide/behind-proxies.html). Na przykład:
 
 ```javascript
 app.set('trust proxy', 1)
@@ -253,7 +253,7 @@ Gdy działającą aplikację Node.js zachowuje się inaczej w usłudze App Servi
     - W zależności od Twojego *package.json*, różnych pakietach mogą być zainstalowane dla trybu produkcyjnego (`dependencies` a `devDependencies`).
     - Niektóre platformy internetowe mogą wdrożyć pliki statyczne inaczej w trybie produkcyjnym.
     - Niektóre platformy internetowe może używać własne skrypty uruchamiania, podczas uruchamiania w trybie produkcyjnym.
-- Uruchom aplikację w usłudze App Service w trybie projektowania. Na przykład w [MEAN.js](http://meanjs.org/), można ustawić aplikację do trybu projektowania w czasie wykonywania przez [ustawienie `NODE_ENV` ustawienia aplikacji](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
+- Uruchom aplikację w usłudze App Service w trybie projektowania. Na przykład w [MEAN.js](https://meanjs.org/), można ustawić aplikację do trybu projektowania w czasie wykonywania przez [ustawienie `NODE_ENV` ustawienia aplikacji](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

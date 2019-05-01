@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5085acad8a82394340892a3a67a3d1e5d85384b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 46537ac1ca0ee8b1a163656d14f325a93f3a8717
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60410369"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917269"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>Instrukcje: Włączanie logowania jednokrotnego dla wielu aplikacji, w systemie Android za pomocą biblioteki ADAL
 
@@ -39,7 +39,7 @@ W tym instruktażu dowiesz się, jak skonfigurować zestaw SDK w swojej aplikacj
 
 Niniejszy instruktaż przyjęto założenie, że wiesz, jak:
 
-- Aprowizacja aplikacji przy użyciu starszej wersji portalu usługi Azure Active Directory (Azure AD). Aby uzyskać więcej informacji, zobacz [rejestrowanie aplikacji z punktem końcowym usługi Azure AD w wersji 1.0](quickstart-v1-add-azure-ad-app.md)
+- Aprowizacja aplikacji przy użyciu starszej wersji portalu usługi Azure Active Directory (Azure AD). Aby uzyskać więcej informacji, zobacz [rejestrowanie aplikacji](quickstart-register-app.md)
 - Integrowanie aplikacji za pomocą [usługi Azure AD dla systemu Android SDK](https://github.com/AzureAD/azure-activedirectory-library-for-android).
 
 ## <a name="single-sign-on-concepts"></a>Pojęcia rejestracji jednokrotnej

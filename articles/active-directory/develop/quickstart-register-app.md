@@ -1,5 +1,5 @@
 ---
-title: Rejestrowanie aplikacji za pomocą platformy tożsamości firmy Microsoft (wersja zapoznawcza) | Azure
+title: Rejestrowanie aplikacji z platformą tożsamości Microsoft — platforma tożsamości firmy Microsoft
 description: Dowiedz się, jak dodawać i rejestrować aplikacje za pomocą platformy tożsamości firmy Microsoft.
 services: active-directory
 documentationcenter: ''
@@ -12,23 +12,23 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/02/2018
+ms.date: 04/30/2019
 ms.author: celested
 ms.custom: aaddev
-ms.reviewer: lenalepa, sureshja
+ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 366d6fe8921a5330f48da2879444e0b80cbc9bd2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d2e78a837588ef177182f0c13db49e480845f772
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60299603"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918753"
 ---
-# <a name="quickstart-register-an-application-with-the-microsoft-identity-platform-preview"></a>Szybki start: Rejestrowanie aplikacji za pomocą platformy tożsamości firmy Microsoft (wersja zapoznawcza)
+# <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Szybki start: Rejestrowanie aplikacji w usłudze Microsoft platformy tożsamości
 
 Deweloperzy w przedsiębiorstwach i dostawcy oprogramowania jako usługi (SaaS) mogą tworzyć komercyjne usługi w chmurze lub aplikacje biznesowe i integrować je z platformą tożsamości firmy Microsoft, aby zapewnić bezpieczne logowanie i autoryzację dla swoich usług.
 
-Ten przewodnik Szybki start przedstawia dodawanie i rejestrowanie aplikacji w środowisku **Rejestracje aplikacji (wersja zapoznawcza)** w witrynie Azure Portal, co umożliwia jej integrację z platformą tożsamości firmy Microsoft. Aby dowiedzieć się więcej na temat nowych funkcji i ulepszeń w nowym środowisku rejestrowania aplikacji, zobacz [ten wpis w blogu](https://developer.microsoft.com/graph/blogs/new-app-registration/). 
+Ten przewodnik Szybki Start dowiesz się, jak dodać i rejestrowanie aplikacji za pomocą **rejestracje aplikacji** środowisko w witrynie Azure portal, dzięki czemu aplikacja może zostać zintegrowany z platformą Microsoft identity. Aby dowiedzieć się więcej na temat nowych funkcji i ulepszeń w nowym środowisku rejestrowania aplikacji, zobacz [ten wpis w blogu](https://developer.microsoft.com/graph/blogs/new-app-registration/).
 
 ## <a name="prerequisite"></a>Wymagania wstępne
 

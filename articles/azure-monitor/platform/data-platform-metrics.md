@@ -11,17 +11,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: c00f703c5cfa606eaeb6ea0dea5fe5d754d3de5d
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 319def9072dbf38eff44ca4459428f1ef99a2b54
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62108088"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64867963"
 ---
 # <a name="metrics-in-azure-monitor"></a>Metryki w usłudze Azure Monitor
 
 > [!NOTE]
-> Platforma danych usługi Azure Monitor jest oparty na dwa typy danych podstawowych: Metryki i dzienniki. W tym artykule opisano metryki. Zapoznaj się [dzienników w usłudze Azure Monitor](data-platform-logs.md) szczegółowy opis dzienniki i [platforn danych usługi Azure Monitor](data-platform.md) porównanie dwóch.
+> Platforma danych usługi Azure Monitor jest oparty na dwa typy danych podstawowych: Metryki i dzienniki. W tym artykule opisano metryki. Zapoznaj się [dzienników w usłudze Azure Monitor](data-platform-logs.md) szczegółowy opis dzienniki i [platforma danych usługi Azure Monitor](data-platform.md) porównanie dwóch.
 
 Metryki w usłudze Azure Monitor są uproszczone i może obsługiwać w scenariuszach w czasie rzeczywistym, dzięki czemu jest szczególnie przydatne w przypadku zgłaszania alertów i szybkie wykrywanie problemów. W tym artykule opisano, jak metryki są skonstruowane, co można zrobić z nimi i identyfikuje różnych źródłach danych przechowujących dane w metrykach.
 

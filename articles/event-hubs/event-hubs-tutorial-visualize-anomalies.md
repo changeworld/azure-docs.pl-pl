@@ -9,16 +9,16 @@ ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: seodec18
 ms.date: 02/26/2019
-ms.openlocfilehash: 4ade1b05b1ec5c81774b5340cfdceb97e41218f3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d6786e4e3382c7c4d7a6a6a28c3cd3621df221c1
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60369428"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64867140"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Samouczek: Wizualizowanie anomalii dotyczących danych w zdarzeniach w czasie rzeczywistym wysyłanych do usługi Azure Event Hubs
 
-Dzięki usłudze Azure Event Hubs można za pomocą usługi Azure Stream Analytics sprawdzić dane przychodzące i wyodrębnić anomalie, które następnie można wizualizować w usłudze Power BI. Załóżmy, że mamy tysiące urządzeń, wysyłających nieustannie dane w czasie rzeczywistym do centrum zdarzeń, co daje w efekcie miliony zdarzeń na sekundę. Jak sprawdzić takie ilości danych pod kątem anomalii lub błędów w danych? Na przykład co zrobić, gdy urządzenia wysyłają transakcje kart kredytowych i zachodzi potrzeba przechwytywania przypadków dokonywania wielu transakcji, w wielu krajach, w ciągu 5-sekundowego przedziału czasu? Może się to zdarzyć w przypadku kradzieży kart kredytowych, a następnie użycia ich do realizowania zakupów na całym świecie w tym samym czasie. 
+Dzięki usłudze Azure Event Hubs można za pomocą usługi Azure Stream Analytics sprawdzić dane przychodzące i wyodrębnić anomalie, które następnie można wizualizować w usłudze Power BI. Załóżmy, że mamy tysiące urządzeń, wysyłających nieustannie dane w czasie rzeczywistym do centrum zdarzeń, co daje w efekcie miliony zdarzeń na sekundę. Jak sprawdzić takie ilości danych pod kątem anomalii lub błędów w danych? Na przykład co zrobić, gdy urządzenia wysyłają transakcje kart kredytowych i zachodzi potrzeba przechwytywania w dowolnym miejscu mieć wiele transakcji w wielu krajach/regionach, w ciągu 5-sekundowego interwału? Może się to zdarzyć w przypadku kradzieży kart kredytowych, a następnie użycia ich do realizowania zakupów na całym świecie w tym samym czasie. 
 
 W tym samouczku przeprowadzamy symulację takiej sytuacji. Możesz uruchomić aplikację, która tworzy i wysyła transakcje kart kredytowych do centrum zdarzeń. Później odczytać strumień danych w czasie rzeczywistym za pomocą usługi Azure Stream Analytics, która oddzieli prawidłowe transakcje od transakcji nieprawidłowych, a następnie użyć usługi Power BI, aby wizualnie zidentyfikować transakcje, które zostaną oznaczone jako nieprawidłowe.
 

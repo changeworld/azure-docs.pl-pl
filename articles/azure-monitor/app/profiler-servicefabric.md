@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 0b1a06d181fc4d2a44d389d47d1f9480c2fdcb40
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 5c01c2721a29bf142ee0ba53c9bc29ec66a7278f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401106"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64727911"
 ---
 # <a name="profile-live-azure-service-fabric-applications-with-application-insights"></a>Profil aplikacji usługi Azure Service Fabric na żywo z usługą Application Insights
 
@@ -32,7 +32,7 @@ Application Insights Profiler jest dołączony do usługi Azure Diagnostics. Roz
 
 Aby skonfigurować środowisko, wykonaj następujące czynności:
 
-1. Aby upewnić się, że używasz [platformy .NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) lub nowszym będą wystarczające, aby potwierdzić, że wdrożonego systemu operacyjnego jest `Windows Server 2012 R2` lub nowszej.
+1. Profiler obsługuje środowiska .NET Framework i.Net Core. Jeśli używasz środowiska .NET Framework, upewnij się, używasz [platformy .NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) lub nowszej. Wystarczy upewnić się, że wdrożonego systemu operacyjnego jest `Windows Server 2012 R2` lub nowszej. Profiler obsługuje platformy .NET Core 2.1 i nowszych aplikacji.
 
 1. Wyszukaj [diagnostyki Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) rozszerzenia w pliku szablonu wdrożenia.
 
@@ -55,11 +55,10 @@ Aby skonfigurować środowisko, wykonaj następujące czynności:
   Ustawienia są prawidłowe, Application Insights Profiler zostanie zainstalowana i włączona po zainstalowaniu rozszerzenia diagnostyki Azure. 
 
 1. Dodaj usługę Application Insights do aplikacji usługi Service Fabric.  
-  Profiler do zbierania profile swoich żądań aplikacja musi być śledzenia operacji za pomocą usługi Application Insights. Bezstanowe interfejsów API, możesz zapoznać się z instrukcjami dotyczącymi [śledzenia żądań dla profilowania](profiler-trackrequests.md?toc=/azure/azure-monitor/toc.json). Aby uzyskać więcej informacji na temat śledzenie operacji niestandardowych w inne rodzaje aplikacji dotyczą [śledzenie operacji niestandardowych za pomocą zestawu SDK .NET usługi Application Insights](custom-operations-tracking.md?toc=/azure/azure-monitor/toc.json).
+  Profiler do zbierania profile swoich żądań aplikacja musi być śledzenia operacji za pomocą usługi Application Insights. Bezstanowe interfejsów API, możesz zapoznać się z instrukcjami dotyczącymi [śledzenia żądań dla profilowania](profiler-trackrequests.md?toc=/azure/azure-monitor/toc.json). Aby uzyskać więcej informacji na temat śledzenie operacji niestandardowych w innych rodzajów aplikacji, zobacz [śledzenie operacji niestandardowych za pomocą zestawu SDK .NET usługi Application Insights](custom-operations-tracking.md?toc=/azure/azure-monitor/toc.json).
 
 1. Ponownego wdrażania aplikacji.
 
-> [PORADA] W przypadku maszyn wirtualnych zamiast powyższych kroków opartych na formacie JSON jest do nawigacji w witrynie Azure portal, **maszyn wirtualnych** > **ustawień diagnostycznych** > **Wychwytywanie** > **zestaw Wyślij dane diagnostyczne do usługi Application Insights na włączone** a następnie wybierz konto usługi Application Insights lub określonych klucz instrumentacji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

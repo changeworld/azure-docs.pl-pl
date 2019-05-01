@@ -11,13 +11,13 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: carlrab, jovanpop
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: 43793380fab2bcece215c53b82e09a3c3a849af3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 04/25/2019
+ms.openlocfilehash: f54950ab96664b17aab056b468db0644216e8654
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57833917"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64706101"
 ---
 # <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-database-managed-instance"></a>Migrację certyfikatu chronione TDE w bazie danych do wystąpienia zarządzanego Azure SQL Database
 
@@ -31,7 +31,7 @@ Podczas migracji bazy danych chronionych przez [funkcji Transparent Data Encrypt
 Alternatywną możliwość bezproblemowej migracji zarówno bazy danych chronionej przez funkcję TDE, jak i odpowiedniego certyfikatu, korzystającą z w pełni zarządzanej usługi opisano w artykule [Jak przeprowadzić migrację lokalnej bazy danych do wystąpienia zarządzanego przy użyciu usługi Azure Database Migration Service](../dms/tutorial-sql-server-to-managed-instance.md).
 
 > [!IMPORTANT]
-> Przezroczyste szyfrowanie danych dla wystąpienia zarządzanego Azure SQL Database działa w trybie zarządzane przez usługę. Migrowany certyfikat jest używany tylko do przywracania bazy danych chronionej przez funkcję TDE. Wkrótce po zakończeniu przywracania migrowany certyfikat jest zastępowany innym certyfikatem zarządzanym przez system.
+> Migrowany certyfikat jest używany tylko do przywracania bazy danych chronionej przez funkcję TDE. Po zakończeniu przywracania migrowanych certyfikatu pobiera zastąpione przez inną funkcję ochrony, zarządzane przez usługę certyfikatu lub klucza asymetrycznego z magazynu kluczy, w zależności od rodzaju technologii transparent data encryption, zostaną ustawione na wystąpienie.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

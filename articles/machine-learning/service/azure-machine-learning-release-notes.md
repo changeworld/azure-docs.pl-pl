@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: e79e610638b5ff271607da2e8855003707ea5932
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: cdd639f690d98651661226fbd340964dfdc7861f
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60821289"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64914925"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Informacje o wersji usługi Azure Machine Learning
 
@@ -69,7 +69,7 @@ Uwaga: Zestaw SDK języka Python przygotowania bazy danych już nie zainstaluje 
 + **Nowe funkcje**
   + Zestaw SDK usługi Azure Machine Learning obsługuje teraz 3.7 języka Python.
   + Azure Machine Learning DNN aplikacjom udostępniają teraz wbudowaną obsługę wielu wersji. Na przykład `TensorFlow`  narzędzie do szacowania będzie teraz akceptować `framework_version` parametru i użytkowników, można określić wersji "1.10" lub "1.12". Listę wersji obsługiwanych przez swojej bieżącej wersji zestawu SDK, można wywołać `get_supported_versions()` klasy framework żądaną (np. `TensorFlow.get_supported_versions()`).
-  Aby uzyskać listę wersji obsługiwanych przez najnowszą wersję zestawu SDK, zobacz [dokumentacji DNN narzędzie do szacowania](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.dnn?view=azure-ml-py).
+  Aby uzyskać listę wersji obsługiwanych przez najnowszą wersję zestawu SDK, zobacz [dokumentacji DNN narzędzie do szacowania](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn?view=azure-ml-py).
 
 ### <a name="azure-machine-learning-data-prep-sdk-v111"></a>Zestaw SDK v1.1.1 przeznaczonego do przygotowania danych usługi Azure Machine Learning
 
@@ -143,13 +143,13 @@ Uwaga: Zestaw SDK języka Python przygotowania bazy danych już nie zainstaluje 
 
 + **Nowe funkcje**
 
-  + Usługa Azure Machine Learning teraz obsługuje najwyższej klasy popularnego środowiska DNN Chainer. Za pomocą [ `Chainer` ](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) klasy użytkowników można łatwo uczenie i wdrażanie modeli Chainer.
+  + Usługa Azure Machine Learning teraz obsługuje najwyższej klasy popularnego środowiska DNN Chainer. Za pomocą [ `Chainer` ](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) klasy użytkowników można łatwo uczenie i wdrażanie modeli Chainer.
     + Dowiedz się, jak [Uruchom rozproszonego szkolenia z ChainerMN](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/distributed-chainer/distributed-chainer.ipynb)
     + Dowiedz się, jak [Uruchom strojenia hiperparametrycznego przy użyciu HyperDrive Chainer](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-chainer/train-hyperparameter-tune-deploy-with-chainer.ipynb)
   + Azure potoków uczenia maszynowego dodano możliwość wyzwalacza, uruchomienie potoku, zależnie od zmian magazynu danych. Potok [notesu harmonogram](https://aka.ms/pl-schedule) zostanie zaktualizowany w celu uwzględnienia tej funkcji.
 
 + **Poprawki błędów i ulepszenia**
-  + Dodaliśmy obsługę potoki usługi Azure Machine Learning do ustawiania właściwości source_directory_data_store żądanego magazynu danych (takich jak magazyn obiektów blob) na [RunConfigurations](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) , są dostarczane do [ PythonScriptStep](https://docs.microsoft.com/en-us/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py). Domyślnie kroki używają magazyn plików Azure jako zapasowy magazyn danych, które mogą być uruchamiane do ograniczania problemy, gdy dużą liczbę czynności są wykonywane jednocześnie.
+  + Dodaliśmy obsługę potoki usługi Azure Machine Learning do ustawiania właściwości source_directory_data_store żądanego magazynu danych (takich jak magazyn obiektów blob) na [RunConfigurations](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) , są dostarczane do [ PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py). Domyślnie kroki używają magazyn plików Azure jako zapasowy magazyn danych, które mogą być uruchamiane do ograniczania problemy, gdy dużą liczbę czynności są wykonywane jednocześnie.
 
 ### <a name="azure-portal"></a>Azure Portal
 

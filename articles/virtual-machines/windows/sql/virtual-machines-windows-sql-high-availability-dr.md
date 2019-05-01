@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2017
 ms.author: mikeray
-ms.openlocfilehash: 463ef5f4a655617074915078fb4ced9e596f8957
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 8a9d4699ba625f575cdcba2a85af900a7c04843e
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61478369"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924457"
 ---
 # <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Wysoka dostępność i odzyskiwanie awaryjne na potrzeby programu SQL Server na maszynach wirtualnych platformy Azure
 
@@ -59,7 +59,7 @@ Możesz mieć rozwiązanie odzyskiwania po awarii dla bazy danych programu SQL S
 | Technologia | Przykładowe architektury |
 | --- | --- |
 | **Grupy dostępności** |Repliki dostępności jest uruchomiona w wielu centrach danych na maszynach wirtualnych Azure w celu odzyskiwania po awarii. To rozwiązanie między regionami chroni przed awarią całej lokacji. <br/> ![Grupy dostępności](./media/virtual-machines-windows-sql-high-availability-dr/azure_only_dr_alwayson.png)<br/>W danym regionie, w ramach jednej usługi w chmurze i tej samej sieci wirtualnej należy wszystkie repliki. Ponieważ każdy region będzie mieć oddzielną sieć wirtualną, te rozwiązania wymagają sieci wirtualnej połączenie między sieciami wirtualnymi. Aby uzyskać więcej informacji, zobacz [Konfigurowanie połączenia sieć wirtualna-sieć wirtualna za pomocą witryny Azure portal](../../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md). Aby uzyskać szczegółowe instrukcje, zobacz [konfigurować grupy dostępności programu SQL Server na maszynach wirtualnych Azure w różnych regionach](virtual-machines-windows-portal-sql-availability-group-dr.md).|
-| **Funkcja dublowania baz danych** |Podmiot zabezpieczeń i dublowania i serwerów działających w różnych centrach danych na potrzeby odzyskiwania po awarii. Należy wdrożyć przy użyciu certyfikatów serwera, ponieważ domeny usługi active directory nie może obejmować wiele centrów danych.<br/>![Funkcja dublowania baz danych](./media/virtual-machines-windows-sql-high-availability-dr/azure_only_dr_dbmirroring.gif) |
+| **Funkcja dublowania baz danych** |Podmiot zabezpieczeń i dublowania i serwerów działających w różnych centrach danych na potrzeby odzyskiwania po awarii. Należy wdrożyć przy użyciu certyfikatów serwera. <br/>![Funkcja dublowania baz danych](./media/virtual-machines-windows-sql-high-availability-dr/azure_only_dr_dbmirroring.gif) |
 | **Kopia zapasowa i przywracanie za pomocą usługi Azure Blob Storage** |Produkcji kopie zapasowe baz danych bezpośrednio do usługi blob storage w innym centrum danych, odzyskiwania po awarii.<br/>![Tworzenie kopii zapasowej i przywracanie](./media/virtual-machines-windows-sql-high-availability-dr/azure_only_dr_backup_restore.gif)<br/>Aby uzyskać więcej informacji, zobacz [kopia zapasowa i przywracanie programu SQL Server w usłudze Azure Virtual Machines](virtual-machines-windows-sql-backup-recovery.md). |
 | **Replikuj i trybu Failover programu SQL Server w systemie Azure za pomocą usługi Azure Site Recovery** |Produkcyjne programu SQL Server z jednego centrum danych platformy Azure replikowane bezpośrednio do usługi Azure Storage innego centrum danych platformy Azure w celu odzyskiwania po awarii.<br/>![Są replikowane przy użyciu usługi Azure Site Recovery](./media/virtual-machines-windows-sql-high-availability-dr/azure_only_dr_standalone_sqlserver-asr.png)<br/>Aby uzyskać więcej informacji, zobacz [ochrona programu SQL Server za pomocą odzyskiwania po awarii programu SQL Server i usługi Azure Site Recovery](../../../site-recovery/site-recovery-sql.md). |
 

@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2018
+ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82139178d4c1db4774d539180e41e49699d8ee12
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1e56d4d94e38e5095ef2223d0cc2875cbf1dcd46
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60382458"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919118"
 ---
 # <a name="troubleshoot-object-synchronization-with-azure-ad-connect-sync"></a>Rozwiązywanie problemów z synchronizacją obiektu za pomocą usługi Azure AD Connect sync
 Ten artykuł zawiera instrukcje dotyczące rozwiązywania problemów z synchronizacją obiektu za pomocą zadania rozwiązywania problemów. Aby zobaczyć, jak rozwiązywanie problemów z działa w usłudze Azure Active Directory (Azure AD) Connect, obejrzyj [ten krótki film wideo](https://aka.ms/AADCTSVideo).
@@ -37,13 +37,13 @@ Aby uruchomić zadanie dotyczące rozwiązywania problemów w kreatorze, wykonaj
 4.  Przejdź do strony dodatkowych zadań, wybrać Rozwiązywanie problemów i kliknij przycisk Dalej.
 5.  Na stronie Rozwiązywanie problemów kliknij przycisk Uruchom, aby uruchomić menu rozwiązywania problemów w programie PowerShell.
 6.  W menu głównym wybierz Rozwiązywanie problemów z synchronizacją obiektu.
-![](media/tshoot-connect-objectsync/objsynch11.png)
+![Rozwiązywanie problemów z synchronizacją obiektu](media/tshoot-connect-objectsync/objsynch11.png)
 
 ### <a name="troubleshooting-input-parameters"></a>Rozwiązywanie problemów z parametrów wejściowych
 Następujące parametry wejściowe są wymagane przez zadanie dotyczące rozwiązywania problemów:
 1.  **Nazwa wyróżniająca obiektu** — jest to nazwa wyróżniająca obiektu, który wymaga rozwiązywania problemów
 2.  **Nazwa łącznika AD** — jest to nazwa lasu usługi AD, w którym znajduje się obiekt powyżej.
-3.  Poświadczenia administratora globalnego dzierżawy usługi Azure AD ![](media/tshoot-connect-objectsync/objsynch1.png)
+3.  Poświadczenia administratora globalnego dzierżawy usługi Azure AD ![poświadczenia administratora globalnego](media/tshoot-connect-objectsync/objsynch1.png)
 
 ### <a name="understand-the-results-of-the-troubleshooting-task"></a>Zrozumienie wyników zadania dotyczące rozwiązywania problemów
 Zadanie dotyczące rozwiązywania problemów wykonuje następujące testy:
@@ -60,27 +60,27 @@ W pozostałej części tej sekcji opisano określone wyniki, które są zwracane
 ### <a name="upn-suffix-is-not-verified-with-azure-ad-tenant"></a>Sufiks głównej nazwy użytkownika nie została zweryfikowana za pomocą dzierżawy usługi Azure AD
 Gdy UserPrincipalName (UPN) / sufiksu alternatywnego Identyfikatora logowania nie jest weryfikowany za pomocą dzierżawy usługi Azure AD, a następnie usługi Azure Active Directory zastępuje sufiksy nazw UPN nazwy domeny domyślnej "onmicrosoft.com".
 
-![](media/tshoot-connect-objectsync/objsynch2.png)
+![Usługa Azure AD zastępuje nazwy UPN](media/tshoot-connect-objectsync/objsynch2.png)
 
 ### <a name="changing-upn-suffix-from-one-federated-domain-to-another-federated-domain"></a>Zmiana sufiks głównej nazwy użytkownika z jednej domeny federacyjnej do innej domeny federacyjnej
 Usługa Azure Active Directory nie zezwala na synchronizację UserPrincipalName (UPN) / Zmiana sufiksu alternatywnego Identyfikatora logowania z jednej domeny federacyjnej do innego federacyjnego domeny. Dotyczy to domen, które są weryfikowane za pomocą dzierżawy usługi Azure AD i korzystają z tego typu uwierzytelniania, co Sfederowane.
 
-![](media/tshoot-connect-objectsync/objsynch3.png) 
+![Nie synchronizacji nazwy UPN z jednej domeny federacyjnej do innego](media/tshoot-connect-objectsync/objsynch3.png) 
 
 ### <a name="azure-ad-tenant-dirsync-feature-synchronizeupnformanagedusers-is-disabled"></a>Usługa Azure AD dzierżawy DirSync funkcja "SynchronizeUpnForManagedUsers" jest wyłączona
 Po wyłączeniu funkcji DirSync dzierżawy usługi Azure AD "SynchronizeUpnForManagedUsers" Azure Active Directory nie zezwala na synchronizację aktualizacji UserPrincipalName/alternatywny identyfikator logowania dla kont licencjonowanego użytkownika przy użyciu uwierzytelniania zarządzanych.
 
-![](media/tshoot-connect-objectsync/objsynch4.png)
+![SynchronizeUpnForManagedUsers](media/tshoot-connect-objectsync/objsynch4.png)
 
 ## <a name="object-is-filtered-due-to-domain-filtering"></a>Obiekt jest filtrowana ze względu na filtrowanie domeny
 ### <a name="domain-is-not-configured-to-sync"></a>Domeny nie jest skonfigurowany do synchronizacji
 Obiekt jest poza zakres z powodu domeny nie jest skonfigurowane. W poniższym przykładzie obiekt jest zsynchronizowany zakresu, zgodnie z filtrowania należącą do domeny z synchronizacji.
 
-![](media/tshoot-connect-objectsync/objsynch5.png)
+![Domeny nie jest skonfigurowany do synchronizacji](media/tshoot-connect-objectsync/objsynch5.png)
 
 ### <a name="domain-is-configured-to-sync-but-is-missing-run-profilesrun-steps"></a>Domena jest skonfigurowany do synchronizacji, ale nie ma profilów/uruchamianie wykonywania kroków
 Obiekt jest poza zakresem ponieważ brakuje domeny uruchamiane profile/uruchamianie kroków. W poniższym przykładzie obiekt jest zsynchronizowany zakresu należącego do domeny jest brak pełne importowanie profilu uruchamiania wykonywania czynności.
-![](media/tshoot-connect-objectsync/objsynch6.png)
+![Brak profilów przebiegu](media/tshoot-connect-objectsync/objsynch6.png)
 
 ## <a name="object-is-filtered-due-to-ou-filtering"></a>Obiekt jest filtrowana powodu w celu filtrowania jednostek organizacyjnych
 Obiekt jest zsynchronizowany zakres z powodu konfiguracji filtrowania jednostek organizacyjnych. W poniższym przykładzie obiekt należy do jednostki Organizacyjnej = NoSync, DC = bvtadwbackdc, DC = com.  Tej jednostki Organizacyjnej nie znajduje się w zakresie synchronizacji.</br>
@@ -99,7 +99,7 @@ Z powodu różnych różnic między lokalnej usługi Active Directory i Azure Ac
 ## <a name="html-report"></a>Raport w formacie HTML
 Oprócz analizowania obiektu, rozwiązywania problemów zadanie generuje raport HTML, który zawiera wszystko, co jest znane o obiekcie. Ten raport HTML, mogą być współużytkowane z zespołem pomocy technicznej w celu dalszego rozwiązywania problemów, jeśli to konieczne.
 
-![](media/tshoot-connect-objectsync/objsynch8.png)
+![Raport w formacie HTML](media/tshoot-connect-objectsync/objsynch8.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 Dowiedz się więcej na temat [integrowania tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md).

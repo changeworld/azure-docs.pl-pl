@@ -1,28 +1,19 @@
 ---
 title: Przesyłania strumieniowego w usłudze Azure HDInsight Spark
 description: Jak korzystać z aplikacji przesyłania strumieniowego platformy Spark w klastrach HDInsight Spark.
-services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: maxluk
-manager: jhubbard
-editor: cgronlun
-ms.assetid: ''
 ms.service: hdinsight
+author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-origin.date: 03/11/2019
-ms.date: 04/15/2019
-ms.author: v-yiso
+ms.topic: conceptual
+ms.date: 03/11/2019
 ms.openlocfilehash: 19d77d4aa49008232a01cd3ac2761a796505a35c
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62098222"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64712000"
 ---
 # <a name="overview-of-apache-spark-streaming"></a>Przegląd platformy Apache Spark Streaming
 
@@ -42,7 +33,7 @@ Rozpoczynać pojedyncze zdarzenie, na przykład temperatury odczytu z połączon
 
 Każdy RDD reprezentuje zdarzenia zebrane za pośrednictwem przedziału czasu zdefiniowanych przez użytkownika o nazwie *odstęp czasu dla partii*. Zgodnie z każdej partii on upłynie, nowe RDD jest generowany, która zawiera wszystkie dane z tego interwału. Ciągłego zestawu danych są zbierane w DStream. Na przykład jeśli czasu dla partii jest jedna sekunda długie, Twoje DStream emituje partii co drugi zawierający RDD jeden, zawierający wszystkie dane pozyskane w ciągu sekundy tego. Podczas przetwarzania DStream, temperatury zdarzenie pojawi się jeden z tych partii. Aplikacja usługi Spark Streaming przetwarza partii, które zawiera zdarzenia i ostatecznie działa na danych przechowywanych w każdej RDD.
 
-![Przykład DStream ze zdarzeniami temperatury ](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-example.png)
+![Przykład DStream ze zdarzeniami temperatury](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-example.png)
 
 ## <a name="structure-of-a-spark-streaming-application"></a>Struktura aplikacji do przesyłania strumieniowego platformy Spark
 
@@ -62,7 +53,8 @@ Definicji aplikacji logiki ma cztery kroki:
 Ta definicja jest statyczna, a nie dane są przetwarzane do czasu uruchomienia aplikacji.
 
 #### <a name="create-a-streamingcontext"></a>Utwórz StreamingContext
-Utwórz StreamingContext na podstawie odporne rozproszone zestawy, wskazujący na klaster. Podczas tworzenia StreamingContext, należy określić rozmiar partii w sekundach, na przykład:
+
+Utwórz StreamingContext na podstawie odporne rozproszone zestawy, wskazujący na klaster. Podczas tworzenia StreamingContext, należy określić rozmiar partii w sekundach, na przykład:  
 
 ```
 import org.apache.spark._
@@ -98,6 +90,7 @@ wordCounts.print()
 ```
 
 ### <a name="run-the-application"></a>Uruchamianie aplikacji
+
 Uruchom aplikację przesyłania strumieniowego i uruchom do momentu otrzymania sygnału zakończenia.
 
 ```
@@ -112,44 +105,44 @@ Następujące Przykładowa aplikacja jest niezależne, aby można było uruchomi
 ```
 class DummySource extends org.apache.spark.streaming.receiver.Receiver[(Int, Long)](org.apache.spark.storage.StorageLevel.MEMORY_AND_DISK_2) {
 
-        /** Start the thread that simulates receiving data */
-        def onStart() {
-            new Thread("Dummy Source") { override def run() { receive() } }.start()
-        }
+    /** Start the thread that simulates receiving data */
+    def onStart() {
+        new Thread("Dummy Source") { override def run() { receive() } }.start()
+    }
 
-        def onStop() {  }
+    def onStop() {  }
 
-        /** Periodically generate a random number from 0 to 9, and the timestamp */
-        private def receive() {
-            var counter = 0  
-            while(!isStopped()) {
+    /** Periodically generate a random number from 0 to 9, and the timestamp */
+    private def receive() {
+        var counter = 0  
+        while(!isStopped()) {
             store(Iterator((counter, System.currentTimeMillis)))
             counter += 1
             Thread.sleep(5000)
-            }
         }
     }
+}
 
-    // A batch is created every 30 seconds
-    val ssc = new org.apache.spark.streaming.StreamingContext(spark.sparkContext, org.apache.spark.streaming.Seconds(30))
+// A batch is created every 30 seconds
+val ssc = new org.apache.spark.streaming.StreamingContext(spark.sparkContext, org.apache.spark.streaming.Seconds(30))
 
-    // Set the active SQLContext so that we can access it statically within the foreachRDD
-    org.apache.spark.sql.SQLContext.setActive(spark.sqlContext)
+// Set the active SQLContext so that we can access it statically within the foreachRDD
+org.apache.spark.sql.SQLContext.setActive(spark.sqlContext)
 
-    // Create the stream
-    val stream = ssc.receiverStream(new DummySource())
+// Create the stream
+val stream = ssc.receiverStream(new DummySource())
 
-    // Process RDDs in the batch
-    stream.foreachRDD { rdd =>
+// Process RDDs in the batch
+stream.foreachRDD { rdd =>
 
-        // Access the SQLContext and create a table called demo_numbers we can query
-        val _sqlContext = org.apache.spark.sql.SQLContext.getOrCreate(rdd.sparkContext)
-        _sqlContext.createDataFrame(rdd).toDF("value", "time")
-            .registerTempTable("demo_numbers")
-    } 
+    // Access the SQLContext and create a table called demo_numbers we can query
+    val _sqlContext = org.apache.spark.sql.SQLContext.getOrCreate(rdd.sparkContext)
+    _sqlContext.createDataFrame(rdd).toDF("value", "time")
+        .registerTempTable("demo_numbers")
+} 
 
-    // Start the stream processing
-    ssc.start()
+// Start the stream processing
+ssc.start()
 ```
 
 Poczekaj około 30 sekund po uruchomieniu aplikacji powyżej.  Następnie możesz zbadać DataFrame okresowo, aby wyświetlić bieżący zestaw wartości znajdujących się w usłudze batch, np. przy użyciu tego zapytania SQL:

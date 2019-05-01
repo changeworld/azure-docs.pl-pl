@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2019
 ms.author: magattus
-ms.openlocfilehash: 53002fba9883d4ae0276ee1d91e915587f89177b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: ae316749d3e88bc8bfd99d0f4856d5386916a27f
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60627585"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869637"
 ---
 # <a name="azure-cdn-coverage-by-metro"></a>Usługa Azure CDN pokrycia, Metro 
 > [!div class="op_single_selector"]
@@ -43,7 +43,7 @@ W tym artykule wymieniono bieżącego Metro zawierający lokalizacji (POP) typu 
 | Europa | Wiedeń, Austria<br />Bruksela, Belgia<br />Praga, Czechy<br />Kopenhaga, Dania<br /> Helsinki, Finlandia<br />Marsylii, Francja<br />Paryż, Francja<br />Berlin, Niemcy<br />Frankfurt, Niemcy<br />Ateny, Grecja<br />Budapeszt, Węgry<br />Dublin, Irlandia<br />Mediolan, Włochy<br />Amsterdam, Holandia<br />Warszawa, Polska<br />Barcelona, Hiszpania<br />Madryt, Hiszpania<br />Sztokholm, Szwecja<br />Zurych, Szwajcaria<br />London, UK<br />Manchester, Zjednoczone Królestwo | Wiedeń, Austria<br />Kopenhaga, Dania<br />Helsinki, Finlandia<br />Marsylii, Francja<br />Paryż, Francja<br />Frankfurt, Niemcy<br />Mediolan, Włochy<br />Ryga, Łotwa<br />Amsterdam, Holandia<br />Warszawa, Polska<br />Madryt, Hiszpania<br />Sztokholm, Szwecja<br />London, UK | Austria<br />Bułgaria<br />Dania<br />Finlandia<br />Francja<br />Niemcy<br />Grecja<br />Irlandia<br />Włochy<br />Holandia<br />Polska<br />Rosja<br />Hiszpania<br />Szwecja<br />Szwajcaria<br />Zjednoczone Królestwo |
 | Afryka | Kapsztad, Republika Południowej Afryki<br />Johannesburg, Republika Południowej Afryki | Johannesburg, Republika Południowej Afryki | Republika Południowej Afryki |
 | Bliski Wschód | Dubaj, Zjednoczone Emiraty Arabskie | Maskat, Oman<br />Fujirah, Zjednoczone Emiraty Arabskie | Katar<br />Zjednoczone Emiraty Arabskie |
-| Indie | Chennai (Madras), Indie<br />Mumbaj (Bombaj), Indie<br />Nowe Delhi, Indie | Bangalur, Indie<br />Chennai (Madras), Indie<br />Mumbaj (Bombaj), Indie<br />Nowe Delhi, Indie<br /> | Indie |
+| Indie | Chennai (Madras), Indie<br />Mumbaj (Bombaj), Indie<br />Nowe Delhi, Indie | Bengaluru (Bangalur), Indie<br />Chennai (Madras), Indie<br />Mumbaj (Bombaj), Indie<br />Nowe Delhi, Indie<br /> | Indie |
 | Azja | SRA Hongkong<br />Osaka, Japonia<br />Tokio, Japonia<br />Kuala Lumpur, Malaysia<br />Manila, Filipiny<br />Singapur<br />Pusan, Korea Południowa<br />Seul, Korea Południowa<br />Tajpej, Tajwan<br />Bangkok, Tajlandia | SRA Hongkong<br />Batam, Indonesia<br />Jakarta, Indonesia<br />Osaka, Japonia<br />Tokio, Japonia<br />Singapur<br />Pusan, Korea Południowa<br />Seul, Korea Południowa<br />Kaohsiung, Tajwan | SRA Hongkong<br />Indonezja<br />Izrael<br />Japonia<br />SRA Makau<br />Malezja<br />Filipiny<br />Singapur<br />Korea Południowa<br />Tajwan<br />Tajlandia<br />Turcja<br />Wietnam |
 | Australia i Nowa Zelandia | Brisbane, Australia<br />Melbourne, Australia<br />Perth, Australia<br />Sydney, Australia<br />Auckland, Nowej Zelandii | Melbourne, Australia<br />Sydney, Australia<br />Auckland, Nowej Zelandii | Australia<br />Nowa Zelandia |
 

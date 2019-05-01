@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/22/2019
+ms.date: 04/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f49b8ef3717675ae6d93d07218a00f2c22890de0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: b39d9788372fb0f682bc1e5b737542b400dd4035
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61306533"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919708"
 ---
 # <a name="update-management-solution-in-azure"></a>Rozwiązania Update Management na platformie Azure
 
@@ -54,7 +54,9 @@ Rozwiązanie informuje, jak aktualne, komputer jest oparty na źródle jest skon
 
 Aktualizacje oprogramowania można wdrożyć i zainstalować na komputerach, które ich wymagają, tworząc zaplanowane wdrożenie. Aktualizacje sklasyfikowane jako *opcjonalnie* nie są uwzględnione w zakresie wdrożenia dla komputerów Windows. Tylko wymagane aktualizacje są uwzględnione w zakresie wdrażania.
 
-Zaplanowane wdrożenie definiuje, które komputery docelowe otrzymywać odpowiednie aktualizacje, jawnie określając komputerów lub wybierając [grupa](../azure-monitor/platform/computer-groups.md) opartego na dziennikach z konkretnego zestawu komputerów. Należy również określić harmonogram zatwierdzania i ustawić okres, w którym można instalować aktualizacje. Termin ten nosi nazwę okna obsługi. Dziesięć minut okna obsługi jest zarezerwowana do ponownego uruchamiania, jeśli wymagane jest ponowne uruchomienie i została wybrana opcja odpowiednie ponowny rozruch. Poprawianie trwa dłużej, niż oczekiwano, jeśli ma mniej niż dziesięć minut okna obsługi, nie nastąpi ponowne uruchomienie komputera.
+Zaplanowane wdrożenie definiuje, które komputery docelowe otrzymywać odpowiednie aktualizacje, jawnie określając komputerów lub wybierając [grupa](../azure-monitor/platform/computer-groups.md) opartego na dziennikach z konkretnego zestawu komputerów, lub [Azure zapytania](#azure-machines) wybiera dynamicznie maszyn wirtualnych platformy Azure, w oparciu o określone kryteria. Grupy te różnią się od [konfiguracji zakresu](../azure-monitor/insights/solution-targeting.md), która służy tylko do określenia, jakie maszyny pobrać pakiety administracyjne, które umożliwiają rozwiązania. 
+
+Należy również określić harmonogram zatwierdzania i ustawić okres, w którym można instalować aktualizacje. Termin ten nosi nazwę okna obsługi. Dziesięć minut okna obsługi jest zarezerwowana do ponownego uruchamiania, jeśli wymagane jest ponowne uruchomienie i została wybrana opcja odpowiednie ponowny rozruch. Poprawianie trwa dłużej, niż oczekiwano, jeśli ma mniej niż dziesięć minut okna obsługi, nie nastąpi ponowne uruchomienie komputera.
 
 Aktualizacje są instalowane przez elementy runbook w usłudze Azure Automation. Nie można wyświetlić tych elementów runbook i elementy runbook nie wymaga żadnej konfiguracji. Po utworzeniu wdrożenia aktualizacji wdrożenia aktualizacji powoduje utworzenie harmonogramu, który uruchamia główny element runbook aktualizacji w określonym czasie na uwzględnionych komputerach. Główny element runbook uruchamia podrzędny element runbook na każdym agencie w celu zainstalowania wymaganych aktualizacji.
 
@@ -76,6 +78,9 @@ W poniższej tabeli przedstawiono listę obsługiwanych systemów operacyjnych:
 |Red Hat Enterprise 6 (x86/x64) i 7 (x64)     | Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) i 12 (x64)     | Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.        |
 |Ubuntu 14.04 LTS, 16.04 LTS i 18.04 — x86/x64 64      |Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.         |
+
+> [!NOTE]
+> Zestawy skalowania maszyn wirtualnych platformy Azure można zarządzać przy użyciu rozwiązania Update Management. Rozwiązanie Update Management działa na wystąpieniach samodzielnie i obrazu podstawowego. Należy zaplanować aktualizacje w sposób przyrostowe, aby nie aktualizować wszystkie wystąpienia maszyn wirtualnych jednocześnie.
 
 ### <a name="unsupported-client-types"></a>Typy klientów nieobsługiwanych
 

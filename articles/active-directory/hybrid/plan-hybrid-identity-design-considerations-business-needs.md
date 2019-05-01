@@ -12,24 +12,24 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/27/2018
+ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47273bf687d88e82afba5de878f08bd53422479c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7711c3476ac9118406a86430e5ade238bec2c028
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60381387"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918626"
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>Określić wymagania dotyczące tożsamości dla Twojego rozwiązania tożsamości hybrydowej
 Pierwszym krokiem podczas projektowania rozwiązania tożsamości hybrydowej jest do określenia wymagań dla organizacji biznesowej, która będzie wykorzystaniu tego rozwiązania.  Tożsamość hybrydowa startuje jako rolę pomocniczą (obsługuje on wszystkie inne rozwiązania w chmurze, zapewniając uwierzytelniania) i przechodzi do możliwości i interesujące, które uwalniają nowych obciążeń dla użytkowników.  Te obciążenia lub usługi, które chcesz przyjmuje użytkowników określają wymagania dotyczące projektowania tożsamości hybrydowej.  Te usługi i obciążeń musiał skorzystać tożsamości hybrydowej w środowisku lokalnym i w chmurze.  
 
 Należy zapoznać się z kluczowymi aspektami biznesowe, aby zrozumieć, jakie są wymagania teraz i firma planuje w przyszłości. Jeśli nie masz widoczność długoterminowych strategii projektowania tożsamości hybrydowej jest szansa, że rozwiązanie nie będzie skalowalne potrzeb i rozwoju firmy.   T on na diagramie poniżej przedstawiono przykład architektury tożsamości hybrydowej i obciążeń, które są jest odblokowana dla użytkowników. To przykładowe wszystkich nowych możliwości, które mogą być odblokowane i dostarczane dzięki strategii w zakresie tożsamości hybrydowej stałych. 
 
-Niektóre składniki, które są częścią architektury tożsamości hybrydowej ![](./media/plan-hybrid-identity-design-considerations/hybrid-identity-architechture.png)
+Niektóre składniki, które są częścią architektury tożsamości hybrydowej ![architektury tożsamości hybrydowej](./media/plan-hybrid-identity-design-considerations/hybrid-identity-architechture.png)
 
 ## <a name="determine-business-needs"></a>Określanie potrzeb biznesowych
 Każda firma będzie miała inne wymagania, nawet jeśli te firmy są częścią tej samej branży rzeczywistych biznesowych, które wymagań może się różnić. Można wykorzystywać najlepsze rozwiązania z branży, ale ostatecznie to potrzeby biznesowe firmy, które spowoduje przejście do definiowania wymagań dotyczących projektowania tożsamości hybrydowej. 

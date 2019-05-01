@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 01/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 9e4308eea3384b20f21ffcf378f711a705f9f9e8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c9cef479c1d4af55ae58c61a07ff1d5348ed7183
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60405464"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64868257"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Często zadawane pytania
 
@@ -50,7 +50,7 @@ A. Usługa Data Box jest dostępna za symboliczną opłatą przez 10 dni. Po wyb
 A. Urządzenie Data Box ma 100 TB niesformatowanej pojemności i 80 TB pojemności do wykorzystania. Za pomocą urządzenia Data Box możesz przetransferować do 80 TB danych. Aby przetransferować większą ilość danych, musisz zamówić więcej urządzeń.
 
 ### <a name="q-how-can-i-check-if-data-box-is-available-in-my-region"></a>PYTANIE: Jak sprawdzić, czy usługa Data Box jest dostępna w moim regionie? 
-A.  Aby uzyskać informacje o krajach, w których jest dostępna usługa Data Box, przejdź do tematu [Dostępność regionalna](data-box-overview.md#region-availability).  
+A.  Aby uzyskać informacje, w jakich krajach/regionach urządzenie Data Box jest dostępny, przejdź do [dostępność w poszczególnych regionach](data-box-overview.md#region-availability).  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box"></a>PYTANIE: W jakich regionach mogę przechowywać dane, korzystając z usługi Data Box?
 A. Usługa Data Box jest obsługiwana we wszystkich regionach Stanów Zjednoczonych oraz w regionach Europa Zachodnia, Europa Północna, Francja i Zjednoczone Królestwo. Obsługiwane są tylko regiony chmury publicznej Azure. Usługa Azure Government ani inne suwerenne chmury nie są obsługiwane. Aby uzyskać więcej informacji, przejdź do tematu [Dostępność regionalna](data-box-overview.md#region-availability).

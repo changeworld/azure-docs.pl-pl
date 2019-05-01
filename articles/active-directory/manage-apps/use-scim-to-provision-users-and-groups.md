@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a404b5e6769c7bb91b4f7b5830cea18372ec456d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0bb7032c2741cc8c407c8d7d0285e58647f0bfd5
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60291419"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918536"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Przy użyciu systemu dla Standard międzydomenowe zarządzania tożsamościami (SCIM), aby automatycznie aprowizować użytkowników i grup z usługi Azure Active Directory do aplikacji
 
@@ -128,7 +128,7 @@ Podczas implementowania punktu końcowego Standard SCIM w celu zapewnienia zgodn
      - `and`
 * Nie wymagają dopasowanie uwzględniające na elementy strukturalne w Standard SCIM w konkretnej poprawki `op` wartości operacji, zgodnie z definicją w https://tools.ietf.org/html/rfc7644#section-3.5.2. Usługi Azure AD generuje wartość "op" jako `Add`, `Replace`, i `Remove`.
 * Microsoft Azure AD zgłasza żądania do pobrania losowe użytkowników i grup, aby upewnić się, że punktu końcowego i poświadczenia są prawidłowe. Również odbywa się w ramach **Testuj połączenie** przepływ w [witryny Azure portal](https://portal.azure.com). 
-* Atrybut, który może być odpytywany zasoby na powinna być ustawiona jako pasujący atrybut na tę aplikację w [witryny Azure portal](https://portal.azure.com). Aby uzyskać więcej informacji, zobacz [Dostosowywanie użytkownika aprowizacji mapowania atrybutów](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-customizing-attribute-mappings)
+* Atrybut, który może być odpytywany zasoby na powinna być ustawiona jako pasujący atrybut na tę aplikację w [witryny Azure portal](https://portal.azure.com). Aby uzyskać więcej informacji, zobacz [Dostosowywanie użytkownika aprowizacji mapowania atrybutów](https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings)
 
 ### <a name="user-provisioning-and-de-provisioning"></a>Inicjowanie obsługi użytkowników i anulowanie obsługi.
 Poniższa ilustracja przedstawia komunikatów usługi Azure Active Directory i wysyła do usługi Standard SCIM do zarządzania cyklem życia użytkowników w aplikacji magazynu tożsamości.  

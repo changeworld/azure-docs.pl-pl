@@ -17,12 +17,12 @@ ms.date: 11/21/2018
 ms.author: joflore
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b59471cd8af02513186fa4437a2249b056cc324
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 12d603ddbba9e36d562c8dcd6e3844af28c91255
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60354522"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918831"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Instrukcje: Planowanie implementacji dołączania do usługi Azure AD
 
@@ -135,7 +135,11 @@ Funkcja Azure AD join:
 
 ### <a name="management-platform"></a>Platforma zarządzania
 
-Zarządzanie urządzeniami dla urządzeń przyłączonych do usługi Azure AD opiera się na platformie zarządzania urządzeniami Przenośnymi, takie jak usługa Intune) i zarządzania urządzeniami Przenośnymi dostawców usług kryptograficznych. Windows 10 ma wbudowanego agenta MDM, który działa we wszystkich rozwiązaniach MDM zgodne.
+Zarządzanie urządzeniami dla urządzeń przyłączonych do usługi Azure AD opiera się na platformie zarządzania urządzeniami Przenośnymi, takich jak usługa Intune i zarządzania urządzeniami Przenośnymi dostawców usług kryptograficznych. Windows 10 ma wbudowanego agenta MDM, który działa we wszystkich rozwiązaniach MDM zgodne.
+
+> [!NOTE]
+> Zasady grupy nie są obsługiwane na urządzeniach przyłączonych do usługi Azure AD, ponieważ nie są one połączone z usługi Active Directory w środowisku lokalnym. Zarządzanie urządzeniami dołączonymi do usługi Azure AD jest możliwe tylko w za pomocą oprogramowania MDM
+
 
 Na urządzeniach przyłączonych do zarządzania usługą Azure AD, dostępne są dwie opcje:
 
@@ -143,7 +147,6 @@ Na urządzeniach przyłączonych do zarządzania usługą Azure AD, dostępne s�
 
 - **Współzarządzanie** — urządzenie jest zarządzane przez dostawcy usług MDM i SCCM. W tym podejściu na urządzenia zarządzane przez system MDM do administrowania niektóre aspekty zainstalowano agenta programu SCCM.
 
-Ponieważ do usługi Azure AD urządzenia nie są podłączone do usługi Active Directory w środowisku lokalnym, zasady grupy nie są obsługiwane.
 
 
 Jeśli używasz zasad grupy, ocenić z parzystością zasad zarządzania urządzeniami Przenośnymi za pomocą [MDM migracji analizy narzędzie (MMAT)](https://github.com/WindowsDeviceManagement/MMAT). 

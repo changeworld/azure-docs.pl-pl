@@ -1,5 +1,5 @@
 ---
-title: Funkcje zabezpieczeń platformy Azure używane w usłudze Azure virtual machines | Dokumentacja firmy Microsoft
+title: Funkcje zabezpieczeń, używane w usłudze Azure virtual machines — zabezpieczenia platformy Azure | Dokumentacja firmy Microsoft
 description: Ten artykuł zawiera omówienie podstawowych funkcji zabezpieczeń platformy Azure, których można użyć z usługą Azure Virtual Machines.
 services: security
 documentationcenter: na
@@ -12,16 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/30/2018
+ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: c0a4a8ae270c8d8f6f3c2e86db9deed4e14f668e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3467050214cba6ce5723c2747d2c13e40e86609b
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60444252"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64872025"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Omówienie zabezpieczeń usługi Azure Virtual Machines
+Ten artykuł zawiera omówienie podstawowych funkcji zabezpieczeń platformy Azure, które mogą być używane z maszyn wirtualnych.
 
 Azure Virtual Machines umożliwia zwinne wdrażanie szerokiego zakresu rozwiązań obliczeniowych. Usługa obsługuje program Microsoft Windows, Linux, Microsoft SQL Server, Oracle, IBM, SAP i usługi Azure BizTalk Services. Dlatego możesz wdrożyć dowolne obciążenie i język w niemal dowolnym systemie operacyjnym.
 
@@ -33,9 +34,7 @@ Dzięki systemowi Azure możesz tworzyć rozszerzone zabezpieczenia i zgodnej ze
 * Szyfrowanie poufnych danych.
 * Zabezpieczanie ruchu sieciowego.
 * Identyfikowanie i wykrywanie zagrożeń.
-* Spełnianie wymagań dotyczących zgodności.
-
-Celem tego artykułu jest zapewnienie omówienie podstawowych funkcji zabezpieczeń platformy Azure, które mogą być używane z maszyn wirtualnych. Linki do artykułów podać szczegóły każdej funkcji, dzięki czemu możesz dowiedzieć się więcej.  
+* Spełnianie wymagań dotyczących zgodności.  
 
 ## <a name="antimalware"></a>Oprogramowanie chroniące przed złośliwym kodem
 
@@ -77,14 +76,14 @@ Dla bardziej zaawansowanych ochrony, należy wziąć pod uwagę przy użyciu [za
 * [Zarządzanie i interfejsów API](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/management-apis)
 * [Ochrona przed zagrożeniami firmy Microsoft](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/threat-protection-integration)
 
-Więcej informacji: 
+Więcej informacji:
 
 * [Rozpoczynanie pracy z usługą WDATP](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/get-started)  
 * [Omówienie funkcji WDATP](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/overview)  
 
 ## <a name="hardware-security-module"></a>Sprzętowy moduł zabezpieczeń
 
-Zwiększanie bezpieczeństwa może zwiększyć zabezpieczenia szyfrowania i uwierzytelniania. Dzięki przechowywaniu ich w usłudze Azure Key Vault można uprościć zarządzanie i bezpieczeństwo, wpisami tajnymi i kluczami. 
+Zwiększanie bezpieczeństwa może zwiększyć zabezpieczenia szyfrowania i uwierzytelniania. Dzięki przechowywaniu ich w usłudze Azure Key Vault można uprościć zarządzanie i bezpieczeństwo, wpisami tajnymi i kluczami.
 
 Usługa Key Vault oferuje możliwość przechowywania kluczy w sprzętowych modułach zabezpieczeń z certyfikatami poświadczającymi zgodność ze standardami FIPS 140-2 (poziom 2). Klucze szyfrowania programu SQL Server, do utworzenia kopii zapasowej lub [technologii transparent data encryption](https://msdn.microsoft.com/library/bb934049.aspx) można przechowywać w usłudze Key Vault przy użyciu dowolne klucze i wpisy tajne z aplikacji. Uprawnienia i dostęp do tych chronionych elementów są zarządzane za pośrednictwem [usługi Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/).
 
@@ -133,7 +132,7 @@ Więcej informacji:
 
 ## <a name="virtual-networking"></a>Sieć wirtualna
 
-Maszyny wirtualne muszą łączność sieciową. W celu spełnienia tego wymagania, platforma Azure wymaga maszyn wirtualnych, które będą podłączone do sieci wirtualnej platformy Azure. 
+Maszyny wirtualne muszą łączność sieciową. W celu spełnienia tego wymagania, platforma Azure wymaga maszyn wirtualnych, które będą podłączone do sieci wirtualnej platformy Azure.
 
 Usługa Azure virtual network jest konstrukcją logiczną, zbudowany na podstawie sieci szkieletowej sieci fizycznej usługi Azure. Każdy logicznej sieci wirtualnej platformy Azure jest odizolowana od innych Azure sieci wirtualnej. Izolacja pomaga upewnić się, że ruch sieciowy we wdrożeniach nie jest dostępna dla innych klientów firmy Microsoft Azure.
 
@@ -169,14 +168,13 @@ Więcej informacji:
 
 ## <a name="confidential-computing"></a>Obliczenia poufnego
 
-Gdy poufne przetwarzania nie jest technicznie zabezpieczenia maszyn wirtualnych, temat zabezpieczenia maszyn wirtualnych należy do wyższego poziomu podmiotu zabezpieczeń "compute". Obliczenia poufnego należy w kategorii "compute" zabezpieczeń. 
+Gdy poufne przetwarzania nie jest technicznie zabezpieczenia maszyn wirtualnych, temat zabezpieczenia maszyn wirtualnych należy do wyższego poziomu podmiotu zabezpieczeń "compute". Obliczenia poufnego należy w kategorii "compute" zabezpieczeń.
 
 Obliczenia poufnego gwarantuje, że jeśli danych jest "Wyczyść", co jest niezbędne do wydajnego przetwarzania, danych jest chroniony w zaufanym środowisku wykonywania https://en.wikipedia.org/wiki/Trusted_execution_environment (TEE — nazywanego także enklawy), na poniższej ilustracji przedstawiono przykład .  
 
-Trójniki upewnij się, że nie ma możliwości z danymi widoku lub operacji wewnątrz z zewnątrz, nawet w przypadku debugera. Zapewniają one nawet tylko autoryzowanym kod będzie mógł uzyskać dostęp do danych. Jeśli kod jest zmienione lub przez nikogo, operacje są odrzucane i środowiska wyłączone. TEE wymusza te zabezpieczenia stosowane w całym realizację kodu znajdujący się w nim. 
+Trójniki upewnij się, że nie ma możliwości z danymi widoku lub operacji wewnątrz z zewnątrz, nawet w przypadku debugera. Zapewniają one nawet tylko autoryzowanym kod będzie mógł uzyskać dostęp do danych. Jeśli kod jest zmienione lub przez nikogo, operacje są odrzucane i środowiska wyłączone. TEE wymusza te zabezpieczenia stosowane w całym realizację kodu znajdujący się w nim.
 
 Więcej informacji:
 
 * [Wprowadzenie do przetwarzania danych poufnych platformy Azure](https://azure.microsoft.com/blog/introducing-azure-confidential-computing/)  
 * [Poufne obliczeń platformy Azure](https://azure.microsoft.com/blog/azure-confidential-computing/)  
-

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.openlocfilehash: 1f6c14c15d4930902ced642bd02d1d1833e0b361
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: c43dacaf7bb5ab17fe740dd429e4a40dbc11bb6e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61032541"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64726934"
 ---
 # <a name="manage-endpoint-access-control-lists-using-powershell-in-the-classic-deployment-model"></a>Zarządzanie listami kontroli dostępu do punktu końcowego w klasycznym modelu wdrażania przy użyciu programu PowerShell
 Można tworzyć i zarządzać sieci list kontroli dostępu (ACL) dla punktów końcowych przy użyciu programu Azure PowerShell lub w portalu zarządzania. W tym temacie znajdziesz procedury dla listy ACL typowych zadań, które można wykonać przy użyciu programu PowerShell. Na liście programu Azure PowerShell polecenia cmdlet zobacz [poleceń cmdlet do zarządzania platformy Azure](https://go.microsoft.com/fwlink/?LinkId=317721). Aby uzyskać więcej informacji na temat list ACL, zobacz [co to jest sieć kontroli listy dostępu (ACL)?](virtual-networks-acl.md). Jeśli chcesz zarządzać Twojej listy kontroli dostępu za pomocą portalu zarządzania, zobacz [jak się punkty końcowe do maszyny wirtualnej](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).

@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/19/2018
+ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3485639062f33d013152cd30f6785df4d1c79790
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7ae0e87fddabee9f42cbb5506dce4cd7a5f4f082
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60350325"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918852"
 ---
 # <a name="move-azure-ad-connect-database-from-sql-server-express-to-sql-server"></a>Przenoszenie bazy danych programu Azure AD Connect z serwera SQL Server Express do serwera SQL Server 
 
@@ -25,7 +25,7 @@ W tym dokumencie opisano sposób przenoszenia bazy danych programu Azure AD Conn
 ## <a name="about-this-scenario"></a>Informacje o tym scenariuszu
 Poniżej przedstawiono krótkie informacje na temat tego scenariusza.  W tym scenariuszu program Azure AD Connect w wersji (1.1.819.0) jest instalowany na pojedynczym kontrolerze domeny z systemem Windows Server 2016.  Do przechowywania bazy danych używa on serwera SQL Server 2012 Express Edition.  Baza danych zostanie przeniesiona na serwer SQL Server 2017.
 
-![](media/how-to-connect-install-move-db/move1.png)
+![Architektura scenariusza](media/how-to-connect-install-move-db/move1.png)
 
 ## <a name="move-the-azure-ad-connect-database"></a>Przenoszenie bazy danych programu Azure AD Connect
 Wykonaj następujące kroki, aby przenieść bazę danych programu Azure AD Connect na zdalny serwer SQL Server.
@@ -37,7 +37,7 @@ Wykonaj następujące kroki, aby przenieść bazę danych programu Azure AD Conn
 5. Na zdalnym serwerze SQL Server otwórz program SQL Server Management Studio.
 6. W sekcji Bazy danych kliknij prawym przyciskiem myszy i wybierz pozycję Dołącz.
 7. Na ekranie **Dołączanie baz danych** kliknij pozycję **Dodaj** i przejdź do pliku ADSync.mdf.  Kliknij przycisk **OK**.
-   ![](media/how-to-connect-install-move-db/move2.png)
+   ![dołączanie bazy danych](media/how-to-connect-install-move-db/move2.png)
 
 8. Po dołączeniu bazy danych wróć do serwera programu Azure AD Connect i zainstaluj program Azure AD Connect.
 9. Po zakończeniu instalacji pliku MSI kreator programu Azure AD Connect rozpocznie instalację w trybie ekspresowym. Zamknij ekran, klikając ikonę zakończenia.

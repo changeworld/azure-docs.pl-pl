@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/11/2019
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 77e322e32d19433d9ce4629c2e04c8bbd7e17f3f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: f4f54273262f60dc01f78f4bb5828c8fdd2b97a9
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60405528"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64707265"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Szybki start: Tworzenie usługi Load Balancer w warstwie Standardowa przy użyciu witryny Azure Portal w celu równoważenia obciążenia maszyn wirtualnych
 
@@ -44,7 +44,7 @@ W tej sekcji opisano tworzenie standardowego modułu równoważenia obciążenia
     | Subskrypcja               | Wybierz subskrypcję.    |    
     | Grupa zasobów         | Wybierz **Utwórz nową** i typ *myResourceGroupSLB* w polu tekstowym.|
     | Name (Nazwa)                   | *myLoadBalancer*                                   |
-    | Region         | Wybierz pozycję **Europa Zachodnia**.                                        |
+    | Region         | Wybierz pozycję **Wschodnie stany USA**.                                        |
     | Type          | Wybierz pozycję **Publiczna**.                                        |
     | SKU           | Wybierz opcję **Standardowa**.                          |
     | Publiczny adres IP | Wybierz pozycję**Utwórz nowy**. |
@@ -79,8 +79,8 @@ Aby zezwolić na moduł równoważenia obciążenia monitorować stan aplikacji,
     | Protokół | Wybierz **HTTP**. |
     | Port | Wprowadź *80*.|
     | Interval | Wprowadź *15* liczbę **interwał** w ciągu kilku sekund między próbami sondy. |
-    | Próg złej kondycji | Wybierz *2* liczbę **próg złej kondycji** lub kolejnych niepowodzeń sondy musi wystąpić, zanim maszyny Wirtualnej jest uznawana za złą.|
-    | Sonda kondycji | Wybierz *myHealthProbe*. |
+    | Próg złej kondycji | Wybierz **2** liczbę **próg złej kondycji** lub kolejnych niepowodzeń sondy musi wystąpić, zanim maszyny Wirtualnej jest uznawana za złą.|
+    | | |
 4. Kliknij przycisk **OK**.
 
 ### <a name="create-a-load-balancer-rule"></a>Tworzenie reguły modułu równoważenia obciążenia
@@ -99,11 +99,11 @@ Reguła modułu równoważenia obciążenia służy do definiowania sposobu dyst
     | Pula zaplecza | Select *myBackendPool*.|
     | Sonda kondycji | Wybierz *myHealthProbe*. |
 4. Pozostaw resztę ustawień domyślnych, a następnie wybierz pozycję **OK**.
-4. Kliknij przycisk **OK**.
+
 
 ## <a name="create-backend-servers"></a>Tworzenie serwerów zaplecza
 
-W tej sekcji Utwórz sieć wirtualną, Utwórz dwie maszyny wirtualne dla puli zaplecza modułu równoważenia obciążenia i następnie zainstalujesz usługi IIS na maszynach wirtualnych, aby ułatwić testowanie modułu równoważenia obciążenia.
+W tej sekcji Utwórz sieć wirtualną, utworzyć trzy maszyny wirtualne dla puli zaplecza modułu równoważenia obciążenia i następnie zainstalujesz usługi IIS na maszynach wirtualnych, aby ułatwić testowanie modułu równoważenia obciążenia.
 
 ### <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
 1. W lewym górnym rogu ekranu wybierz pozycję **Utwórz zasób** > **Sieć** > **Sieć wirtualna**.
@@ -122,9 +122,9 @@ W tej sekcji Utwórz sieć wirtualną, Utwórz dwie maszyny wirtualne dla puli z
 1. Pozostaw resztę ustawień domyślnych, a następnie wybierz pozycję **Utwórz**.
 
 ### <a name="create-virtual-machines"></a>Tworzenie maszyn wirtualnych
-Load Balancer w warstwie standardowa obsługuje tylko maszyny wirtualne z adresami IP w warstwie standardowa w puli zaplecza. W tej sekcji utworzysz dwie maszyny wirtualne (*myVM1* i *myVM2*) przy użyciu standardowego publicznego adresu IP w dwóch różnych stref (*strefa 1* i *strefa 2*), są dodawane do puli zaplecza standardowego modułu równoważenia obciążenia, który został utworzony wcześniej.
+Load Balancer w warstwie standardowa obsługuje tylko maszyny wirtualne z adresami IP w warstwie standardowa w puli zaplecza. W tej sekcji utworzysz trzy maszyny wirtualne (*myVM1*, *myVM2* i *myVM3*) przy użyciu standardowego publicznego adresu IP w trzech różnych stref (*strefa 1*, *Strefa 2*, i *strefa 3*) nowszym dodawane do puli zaplecza standardowego modułu równoważenia obciążenia, który został utworzony wcześniej.
 
-1. W lewej górnej części portalu wybierz pozycję **Utwórz zasób** > **Compute** > **Windows Server 2016 Datacenter**. 
+1. W lewym górnym rogu portalu wybierz **Utwórz zasób** > **obliczenia** > **systemie Windows Datacenter 2019**. 
    
 1. W obszarze **Tworzenie maszyny wirtualnej** wpisz lub wybierz następujące wartości na karcie **Podstawowe**:
    - **Subskrypcja** > **Grupa zasobów**: Select **myResourceGroupSLB**.
@@ -132,26 +132,35 @@ Load Balancer w warstwie standardowa obsługuje tylko maszyny wirtualne z adresa
    - **Szczegóły wystąpienia** > **Region** > Wybierz **Europa Zachodnia**.
    - **Szczegóły wystąpienia** > **opcji dostępności** > Wybierz **strefy dostępności**. 
    - **Szczegóły wystąpienia** > **strefy dostępności** > Wybierz **1**.
+   - **Konto administratora**> wprowadź **Username**, **hasło** i **Potwierdź hasło** informacji.
+   - Wybierz kartę **Sieć** lub wybierz pozycję **Dalej: Dyski**, a następnie pozycję **Dalej: Sieć**.
   
-1. Wybierz kartę **Sieć** lub wybierz pozycję **Dalej: Dyski**, a następnie pozycję **Dalej: Sieć**. 
-   
-   - Upewnij się, że zostały wybrane następujące opcje:
-       - **Sieć wirtualna**: *myVnet*
-       - **Podsieci**: *myBackendSubnet*
-       - **Publiczny adres IP** > Wybierz **Utwórz nową**i w **tworzenie publicznego adresu IP** oknie dla **jednostki SKU**, wybierz opcję **standardowa**, i **strefy dostępności**, wybierz opcję **strefowo nadmiarowe**, a następnie wybierz pozycję **OK**.
+1. W **sieć** karcie upewnij się, że wybrane są następujące:
+   - **Sieć wirtualna**: *myVnet*
+   - **Podsieci**: *myBackendSubnet*
+   - **Publiczny adres IP** > Wybierz **Utwórz nową**i w **tworzenie publicznego adresu IP** oknie dla **jednostki SKU**, wybierz opcję **standardowa**, i **strefy dostępności**, wybierz opcję **strefowo nadmiarowe**, a następnie wybierz pozycję **OK**.
    - Aby utworzyć nową sieciową grupę zabezpieczeń (NSG, network security group), czyli pewien typ zapory, w obszarze **Sieciowa grupa zabezpieczeń** wybierz pozycję **Zaawansowane**. 
        1. W polu **Konfigurowanie sieciowej grupy zabezpieczeń** wybierz pozycję **Utwórz nową**. 
        1. Typ *myNetworkSecurityGroup*i wybierz **OK**.
    - Aby utworzyć maszynę Wirtualną częścią puli zaplecza modułu równoważenia obciążenia, wykonaj następujące czynności:
         - W **Równoważenie obciążenia**, aby uzyskać **umieścić tej maszyny wirtualnej za modułem istniejące rozwiązanie do równoważenia obciążenia?**, wybierz opcję **tak**.
         - W **ustawienia równoważenia obciążenia**, aby uzyskać **opcje równoważenia obciążenia**, wybierz opcję **usługa Azure load balancer**.
-        - Aby uzyskać **wybrać moduł równoważenia obciążenia**, *myLoadBalancer*. 
-1. Wybierz kartę **Zarządzanie** lub wybierz pozycję **Dalej** > **Zarządzanie**. W obszarze **Monitorowanie** dla opcji **Diagnostyka rozruchu** ustaw wartość **Wyłączone**. 
+        - Aby uzyskać **wybrać moduł równoważenia obciążenia**, *myLoadBalancer*.
+        - Wybierz kartę **Zarządzanie** lub wybierz pozycję **Dalej** > **Zarządzanie**.
+2. W **zarządzania** , w obszarze **monitorowanie**ustaw **diagnostykę rozruchu** do **poza**. 
 1. Wybierz pozycję **Przegląd + utwórz**.   
 1. Przejrzyj ustawienia, a następnie wybierz pozycję **Utwórz**.
-1. Postępuj zgodnie z instrukcjami, aby utworzyć drugą maszynę Wirtualną o nazwie *myVM2*, za pomocą standardowej jednostki SKU publicznego adresu IP o nazwie *myVM2 ip*, i **strefy dostępności** ustawienie **2** i inne ustawienia takie same jak *myVM1*. 
+1. Wykonaj kroki 2 do 6, aby utworzyć dwie dodatkowe maszyny wirtualne z następujących wartości i inne ustawienia, takie same jak *myVM1*:
 
-### <a name="create-nsg-rule"></a>Tworzenie reguły sieciowej grupy zabezpieczeń
+    | Ustawienie | VM 2| VM 3|
+    | ------- | ----- |---|
+    | Name (Nazwa) |  *myVM1* |*myVM3*|
+    | Strefa dostępności | 2 |3|
+    |Publiczny adres IP| **Standardowa** jednostki SKU|**Standardowa** jednostki SKU|
+    | Publiczny adres IP — strefa dostępności| Strefowo nadmiarowe |
+    | Sieciowa grupa zabezpieczeń | Wybierz istniejący *myNetworkSecurity grupy*| Wybierz istniejący *myNetworkSecurity grupy*|
+
+ ### <a name="create-nsg-rule"></a>Tworzenie reguły sieciowej grupy zabezpieczeń
 
 W tej sekcji utworzysz reguły sieciowej grupy zabezpieczeń, aby zezwolić na połączenia przychodzące za pośrednictwem protokołu HTTP.
 
@@ -166,30 +175,38 @@ W tej sekcji utworzysz reguły sieciowej grupy zabezpieczeń, aby zezwolić na p
     - *100* — w polu **Priorytet**
     - *myHTTPRule* — jako nazwę
     - *Zezwalaj na HTTP* —jako opis
-4. Kliknij przycisk **OK**.
+4. Wybierz pozycję **Dodaj**.
  
 ### <a name="install-iis"></a>Instalowanie usług IIS
 
 1. Wybierz **wszystkich usług** w menu po lewej stronie wybierz **wszystkie zasoby**, a następnie na liście zasobów wybierz **myVM1** znajdującą się w  *myResourceGroupSLB* grupy zasobów.
 2. Na stronie **Przegląd** wybierz pozycję **Połącz** dla protokołu RDP z maszyną wirtualną.
-3. Zaloguj się do maszyny wirtualnej przy użyciu nazwy użytkownika *azureuser*.
-4. Na pulpicie serwera przejdź do pozycji **Narzędzia administracyjne systemu Windows**>**Menedżer serwera**.
-5. W Menedżerze serwera wybierz **Dodaj role i funkcje**.
-6. W **kreatorze dodawania ról i funkcji** użyj następujących wartości:
-    - W **Wybieranie typu instalacji** wybierz **Instalacja oparta na rolach lub oparta na funkcjach**.
-    - W **serwer docelowy wybierz** wybierz **myVM1**
-    - W **Wybieranie roli serwera** wybierz **serwer sieci Web (IIS)**
-    - Postępuj zgodnie z instrukcjami, aby ukończyć pozostałą część kreatora. 
-7. Powtórz kroki od 1 do 6 dla maszyny wirtualnej *myVM2*.
+5. Zaloguj się do maszyny wirtualnej przy użyciu poświadczeń podanych podczas jej tworzenia. Spowoduje to uruchomienie sesji pulpitu zdalnego z maszyną wirtualną — *myVM1*.
+6. Na pulpicie serwera przejdź do pozycji **Narzędzia administracyjne systemu Windows**>**Windows PowerShell**.
+7. W oknie programu PowerShell uruchom poniższe polecenia, aby zainstalować serwer usług IIS, usunąć domyślny plik iisstart.htm i dodać nowy plik iisstart.htm, który wyświetla nazwę maszyny wirtualnej:
+
+   ```azurepowershell-interactive
+    
+    # install IIS server role
+    Install-WindowsFeature -name Web-Server -IncludeManagementTools
+    
+    # remove default htm file
+     remove-item  C:\inetpub\wwwroot\iisstart.htm
+    
+    # Add a new htm file that displays server name
+     Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from " + $env:computername)
+   ```
+6. Zamknij sesję protokołu RDP na maszynie wirtualnej *myVM1*.
+7. Powtórz kroki od 1 do 6, aby zainstalować usługi IIS i zaktualizowany plik iisstart.htm na maszynach *myVM2* i *myVM3*.
 
 ## <a name="test-the-load-balancer"></a>Testowanie modułu równoważenia obciążenia
 1. Znajdź publiczny adres IP dla usługi Load Balancer na ekranie **Przegląd**. Wybierz **wszystkich usług** w menu po lewej stronie wybierz **wszystkie zasoby**, a następnie wybierz pozycję **myPublicIP**.
 
 2. Skopiuj publiczny adres IP, a następnie wklej go na pasku adresu przeglądarki. W przeglądarce jest wyświetlana domyślna strona internetowego serwera usług IIS.
 
-      ![Internetowy serwer usług IIS](./media/load-balancer-standard-public-portal/9-load-balancer-test.png)
+   ![Internetowy serwer usług IIS](./media/tutorial-load-balancer-standard-zonal-portal/load-balancer-test.png)
 
-Aby zobaczyć moduł równoważenia obciążenia rozdziela ruch między wszystkie trzy maszyny wirtualne z tą aplikacją, możesz wymusić odświeżenie przeglądarki sieci web.
+Aby zobaczyć moduł równoważenia obciążenia rozdziela ruch między wszystkie trzy maszyny wirtualne, można dostosować domyślną stronę serwera sieci Web usług IIS każdej maszyny Wirtualnej i następnie wymusić odświeżenie w przeglądarce sieci web z komputera klienckiego.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

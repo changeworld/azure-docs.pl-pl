@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e79b73123b33a012c062a89fb9748fa101fabcea
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1d90af62c8d6267001ede567c71b7e1204f6ce74
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60299621"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917216"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Instrukcje: Włączanie logowania jednokrotnego dla wielu aplikacji, w systemie iOS za pomocą biblioteki ADAL
 
@@ -44,7 +44,7 @@ Niniejszy instruktaż mają zastosowanie do:
 
 Niniejszy instruktaż przyjęto założenie, że wiesz, jak:
 
-* Aprowizacja aplikacji przy użyciu starszej wersji portalu usługi Azure AD. Aby uzyskać więcej informacji, zobacz [rejestrowanie aplikacji z punktem końcowym usługi Azure AD w wersji 1.0](quickstart-v1-add-azure-ad-app.md)
+* Aprowizacja aplikacji przy użyciu starszej wersji portalu usługi Azure AD. Aby uzyskać więcej informacji, zobacz [rejestrowanie aplikacji](quickstart-register-app.md)
 * Integrowanie aplikacji za pomocą [zestaw SDK systemu iOS usługi Azure AD](https://github.com/AzureAD/azure-activedirectory-library-for-objc).
 
 ## <a name="single-sign-on-concepts"></a>Pojęcia rejestracji jednokrotnej

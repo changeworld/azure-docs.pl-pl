@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/28/2019
 ms.author: astay;cephalin;kraigb
 ms.custom: seodec18
-ms.openlocfilehash: f8894132dae179be2d5d9d9b6887851be78d7746
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7bbbe9629404733a76064d270480a0e162e2612b
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60854908"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919902"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Konfigurowanie aplikacji w języku Python w systemie Linux dla usługi Azure App Service
 
@@ -182,8 +182,6 @@ Popularne platformy internetowe umożliwiają dostęp do informacji `X-Forwarded
 - [Dostęp do strumienia dziennika](#access-diagnostic-logs).
 
 ## <a name="next-steps"></a>Kolejne kroki
-
-Wbudowanym obrazem języka Python w usłudze App Service w systemie Linux jest obecnie w wersji zapoznawczej, a następnie dostosować polecenia używane do uruchamiania aplikacji. Można też tworzyć aplikacje produkcyjne w języku Python przy użyciu kontenera niestandardowego.
 
 > [!div class="nextstepaction"]
 > [Samouczek: Aplikację w języku Python z bazą danych PostgreSQL](tutorial-python-postgresql-app.md)

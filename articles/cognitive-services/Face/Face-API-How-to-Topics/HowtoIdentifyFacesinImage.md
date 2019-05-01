@@ -8,26 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: sample
-ms.date: 03/01/2018
+ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: 013467cb64220b525d429c901c48028bf65b3852
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 7da146cafaf9af5c91bbbb2a3a23d8a90d49d8cd
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864931"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64699344"
 ---
-# <a name="example-how-to-identify-faces-in-images"></a>Przykład: Jak identyfikować twarze na obrazie
+# <a name="example-identify-faces-in-images"></a>Przykład: Identyfikowanie twarzy na obrazach
 
 Ten przewodnik pokazuje sposób identyfikowania nieznanych twarzy przy użyciu elementów PersonGroup, które należy utworzyć wcześniej na podstawie zdjęć znanych osób. Przykłady są zapisywane w języku C# przy użyciu biblioteki klienta interfejsu API rozpoznawania twarzy.
-
-## <a name="concepts"></a>Pojęcia
-
-Jeśli nie znasz poniższych pojęć z tego przewodnika, możesz wyszukać ich definicje w naszym [słowniku](../Glossary.md):
-
-- Face - Detect
-- Face - Identify
-- PersonGroup
 
 ## <a name="preparation"></a>Przygotowanie
 
@@ -38,7 +30,7 @@ W tym przykładzie pokażemy:
 
 Aby zademonstrować ten przykład, musisz przygotować zdjęcia:
 
-- Kilka zdjęć twarzy danej osoby. [Kliknij tutaj, aby pobrać przykładowe zdjęcia](https://github.com/Microsoft/Cognitive-Face-Windows/tree/master/Data) Anny, Billa i Clare.
+- Kilka zdjęć twarzy danej osoby. [Pobierz przykładowy zdjęcia](https://github.com/Microsoft/Cognitive-Face-Windows/tree/master/Data) Anna, rachunku i Clare.
 - Seria używanych do testowania identyfikacji zdjęć testowych, na których znajdują lub nie znajdują się twarze Anny, Billa lub Clare. Przykładowe zdjęcia można też pobrać, używając powyższego łącza.
 
 ## <a name="step-1-authorize-the-api-call"></a>Krok 1: Autoryzowanie wywołania interfejsu API
@@ -187,6 +179,7 @@ W tym przewodniku przedstawiono proces tworzenia elementu PersonGroup i identyfi
 
 ## <a name="related-topics"></a>Tematy pokrewne
 
+- [Pojęcia rozpoznawania twarzy](../concepts/face-recognition.md)
 - [Wykrywanie twarzy na obrazie](HowtoDetectFacesinImage.md)
 - [Jak dodawać twarze](how-to-add-faces.md)
 - [Jak używać funkcji na dużą skalę](how-to-use-large-scale.md)

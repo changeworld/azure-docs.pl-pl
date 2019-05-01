@@ -1,25 +1,19 @@
 ---
-title: Biblioteki procesów biznesowych | Dokumentacja firmy Microsoft
+title: Biblioteki procesów biznesowych | Portal Azure Marketplace
 description: Omówienie biblioteki procesów biznesowych i metody.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
 manager: Ricardo.Villalobos
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: df323d121b42ab1200844f3fefb713122ba43106
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: pabutler
+ms.openlocfilehash: 870e77f3390c820278970f5ffda002b4826b82a4
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60625078"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935622"
 ---
 # <a name="business-process-libraries"></a>Biblioteki procesów biznesowych
 

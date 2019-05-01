@@ -1,5 +1,5 @@
 ---
-title: Wprowadzenie do usługi Azure NetApp Files | Microsoft Docs
+title: Co to jest Azure NetApp Files | Dokumentacja firmy Microsoft
 description: Omówienie usługi Azure NetApp Files i kluczowych zadań.
 services: azure-netapp-files
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: d7eb73c8fb4573084ba0a213282fdb71e14ff5fa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: a957ac3536bff06f990e60da90df7235b6917dfe
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61086337"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64730557"
 ---
-# <a name="introduction-to-azure-netapp-files"></a>Wprowadzenie do usługi Azure NetApp Files
+# <a name="what-is-azure-netapp-files"></a>Co to jest Azure NetApp Files
 Usługa Azure NetApp Files to usługa klasy korporacyjnej udostępniająca mierzony magazyn plików o wysokiej wydajności. Usługa Azure NetApp Files obsługuje wszystkie typy obciążeń i zapewnia domyślnie wysoką dostępność. W tej usłudze można wybrać gwarantowane poziomy usług i wydajności oraz konfigurować migawki. 
 
 Dokumentacja usługi Azure NetApp Files zawiera instrukcje dotyczące tworzenia woluminów i zarządzania nimi w usłudze Azure NetApp Files. 
@@ -29,7 +29,7 @@ Dokumentacja usługi Azure NetApp Files zawiera instrukcje dotyczące tworzenia 
 > [!IMPORTANT] 
 > Wszystkie zadania opisane w tej dokumentacji wymagają uczestnictwa w programie podglądu publicznego i obecności na liście dozwolonych, aby można było uzyskiwać dostęp do dostawcy zasobów platformy Azure Microsoft.NetApp. Aby poprosić o dołączenie do programu podglądu publicznego, zobacz [Rejestrowanie w usłudze Azure NetApp Files](azure-netapp-files-register.md). 
 
-**Wprowadzenie** 
+**Następne kroki** 
 
 * [Omówienie hierarchii magazynu usługi Azure NetApp Files](azure-netapp-files-understand-storage-hierarchy.md) 
-* [Szybki start: Konfigurowanie usługi Azure NetApp Files i tworzenie woluminu](azure-netapp-files-quickstart-set-up-account-create-volumes.md)
+* [Szybki start: Konfigurowanie usługi Azure Files NetApp i Utwórz wolumin systemu plików NFS](azure-netapp-files-quickstart-set-up-account-create-volumes.md)

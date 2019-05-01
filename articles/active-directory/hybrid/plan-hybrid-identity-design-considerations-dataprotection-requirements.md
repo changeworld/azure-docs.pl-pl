@@ -12,22 +12,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/30/2018
+ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e734b932976896b2fb4d86e2627b7827d40a2545
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 056d0caf2bfc6e99d5d659a2561bc41844feb79a
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60454891"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918775"
 ---
 # <a name="plan-for-enhancing-data-security-through-a-strong-identity-solution"></a>Planowanie wzmocnienia zabezpieczeń danych za pośrednictwem rozwiązania silna tożsamość
 Pierwszym środkiem ochrony danych jest w celu zidentyfikowania, kto ma dostęp do tych danych. Ponadto musisz mieć rozwiązanie tożsamości, które można zintegrować z systemu w celu zapewnienia funkcji uwierzytelniania i autoryzacji. Uwierzytelnianie i autoryzacja są często mylona z cyfrą siebie nawzajem i ich ról źle zrozumiane. W rzeczywistości są one różne, jak pokazano na poniższej ilustracji:
 
-![](./media/plan-hybrid-identity-design-considerations/mobile-devicemgt-lifecycle.png)
+![cykl życia urządzenia przenośnego](./media/plan-hybrid-identity-design-considerations/mobile-devicemgt-lifecycle.png)
 
 **Etapy cyklu życia zarządzania urządzeniami przenośnymi**
 
@@ -44,7 +44,7 @@ W wieku mobilności w większości firm mają wspólny cel: zezwolić użytkowni
 Istnieją jednak pewne aspekty zabezpieczeń, które powinny być zbadane i zweryfikowany, bez względu na branżę.
 
 ## <a name="data-protection-paths"></a>Ścieżki do ochrony danych
-![](./media/plan-hybrid-identity-design-considerations/data-protection-paths.png)
+![Ścieżki do ochrony danych](./media/plan-hybrid-identity-design-considerations/data-protection-paths.png)
 
 **Ścieżki do ochrony danych**
 

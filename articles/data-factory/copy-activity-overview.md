@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 28d8c077f106f12812f7ed710217febd24d81efc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d04bb965ddf9616aaa01f4c8822ac42aea6dab2d
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60387794"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869560"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Działanie kopiowania w usłudze Azure Data Factory
 
@@ -54,7 +54,7 @@ Działanie kopiowania przechodzi przez następujące etapy do kopiowania danych 
 
 Można użyć działania kopiowania do **skopiuj pliki — jest** między dwoma magazynami danych opartych na plikach, w których przypadku dane są kopiowane efektywnie bez żadnych serializacji/deserializacji.
 
-Działanie kopiowania obsługuje również odczytywanie z oraz zapisywanie do plików w określonym formatów: **Tekst, JSON, Avro, ORC i Parquet**i kompresowania i decompresing pliki za pomocą następujących koderów-dekoderów: **GZip, Deflate, BZip2 i ZipDeflate**. Zobacz [obsługiwane formaty plików i kompresji](supported-file-formats-and-compression-codecs.md) ze szczegółowymi informacjami.
+Działanie kopiowania obsługuje również odczytywanie z oraz zapisywanie do plików w określonym formatów: **Tekst, JSON, Avro, ORC i Parquet**i kompresowania i dekompresowania plików za pomocą następujących koderów-dekoderów: **GZip, Deflate, BZip2 i ZipDeflate**. Zobacz [obsługiwane formaty plików i kompresji](supported-file-formats-and-compression-codecs.md) ze szczegółowymi informacjami.
 
 Na przykład należy wykonać następujące działania kopiowania:
 
@@ -74,7 +74,7 @@ Aby użyć działania kopiowania w usłudze Azure Data Factory, musisz:
 
 1. **Utwórz połączone usługi dla źródłowego magazynu danych i magazynu danych ujścia.** Zobacz artykuł dotyczący łącznika "Właściwości połączonej usługi" sekcję na temat sposobu konfigurowania i obsługiwanych właściwości. Można znaleźć na liście obsługiwanych łączników w [obsługiwane magazyny danych i formatów](#supported-data-stores-and-formats) sekcji.
 2. **Tworzenie zestawów danych dla źródła i ujścia.** Zapoznaj się z źródła i ujścia sekcję "Dataset properties" łącznik artykuły na temat sposobu konfigurowania i obsługiwanych właściwości.
-3. **Tworzenie potoku za pomocą działania kopiowania.** Następna sekcja zawiera przykład.  
+3. **Tworzenie potoku za pomocą działania kopiowania.** Następna sekcja zawiera przykład.
 
 ### <a name="syntax"></a>Składnia
 
@@ -139,7 +139,7 @@ Następujący szablon działania kopiowania zawiera stanowi wyczerpującej listy
 | translator | Określ mapowania kolumn jawne ze źródła do ujścia. Ma zastosowanie, gdy domyślne zachowanie kopiowania nie może spełnić Twoje potrzeby.<br/><br/>Dowiedz się, szczegółowe informacje z [schemat i dane mapowania typów](copy-activity-schema-and-type-mapping.md). | Nie |
 | dataIntegrationUnits | Określ powerfulness z [Azure Integration Runtime](concepts-integration-runtime.md) umożliwiające kopiowanie danych. Wcześniej znane jako chmury jednostek przenoszenia danych (DMU). <br/><br/>Dowiedz się, szczegółowe informacje z [jednostek integracji danych](copy-activity-performance.md#data-integration-units). | Nie |
 | parallelCopies | Określanie równoległości, który ma działanie kopiowania do użycia podczas odczytu danych ze źródła i zapisywania danych do ujścia.<br/><br/>Dowiedz się, szczegółowe informacje z [równoległych kopii](copy-activity-performance.md#parallel-copy). | Nie |
-| enableStaging<br/>stagingSettings | Wybierz etap przejściowy danych w magazynie obiektów blob aa zamiast bezpośrednio kopiowania danych ze źródła do ujścia.<br/><br/>Dowiedz się przydatne w scenariuszach i szczegółów konfiguracji z [kopiowania etapowego](copy-activity-performance.md#staged-copy). | Nie |
+| enableStaging<br/>stagingSettings | Wybierz etap przejściowy danych w magazynie obiektów blob, a nie bezpośrednio kopiowania danych ze źródła do ujścia.<br/><br/>Dowiedz się przydatne w scenariuszach i szczegółów konfiguracji z [kopiowania etapowego](copy-activity-performance.md#staged-copy). | Nie |
 | enableSkipIncompatibleRow<br/>redirectIncompatibleRowSettings| Wybierz sposób obsługi niezgodnych wierszy podczas kopiowania danych ze źródła do ujścia.<br/><br/>Dowiedz się, szczegółowe informacje z [odporność na uszkodzenia](copy-activity-fault-tolerance.md). | Nie |
 
 ## <a name="monitoring"></a>Monitorowanie
@@ -148,7 +148,7 @@ Możesz monitorować działanie kopiowania służy do uruchamiania w usłudze Az
 
 ### <a name="monitor-visually"></a>Monitorowanie wizualne
 
-Aby wizualnego monitorowania uruchomienia działania kopiowania, przejdź do usługi data factory -> **tworzenie i monitorowanie** -> **kartę Monitor**, zobaczysz listę potok jest uruchamiany za pomocą łącza "Wyświetl uruchomienia działań"  **Akcje** kolumny. 
+Aby wizualnego monitorowania uruchomienia działania kopiowania, przejdź do usługi data factory -> **tworzenie i monitorowanie** -> **kartę Monitor**, zobaczysz listę potok jest uruchamiany za pomocą łącza "Wyświetl uruchomienia działań"  **Akcje** kolumny.
 
 ![Monitorowanie uruchomień potoku](./media/load-data-into-azure-data-lake-store/monitor-pipeline-runs.png)
 
@@ -156,7 +156,7 @@ Kliknij, aby wyświetlić listę działań w tym przebiegu potoku. W **akcje** k
 
 ![Monitorowanie uruchomień działania](./media/load-data-into-azure-data-lake-store/monitor-activity-runs.png)
 
-Kliknij przycisk "**szczegóły**" link w obszarze **akcje** Aby wyświetlić szczegóły wykonania działania kopiowania i charakterystyk wydajności. Przedstawia on informacje takie jak wolumin/wiersze/pliki danych skopiowane ze źródła do ujścia, przepływności, kroki przechodzi przez odpowiedni czas trwania i używane konfiguracje dla danego scenariusza kopiowania. 
+Kliknij przycisk "**szczegóły**" link w obszarze **akcje** Aby wyświetlić szczegóły wykonania działania kopiowania i charakterystyk wydajności. Przedstawia on informacje takie jak wolumin/wiersze/pliki danych skopiowane ze źródła do ujścia, przepływności, kroki przechodzi przez odpowiedni czas trwania i używane konfiguracje dla danego scenariusza kopiowania.
 
 >[!TIP]
 >W niektórych scenariuszach, pojawi się także "**porady dotyczące dostrajania wydajności**" na podstawie kopii monitorowania strony, która informuje, zidentyfikować wąskie gardło i prowadzi Cię w celu zmiany w taki sposób, aby zwiększyć przepływność kopiowania, zobacz przykład ze szczegółowymi informacjami [tutaj](#performance-and-tuning).
@@ -241,12 +241,12 @@ W niektórych przypadkach po wykonaniu działania kopiowania w usłudze ADF, bez
 
 **Przykład: kopiowania do bazy danych SQL Azure, za pomocą wskazówki dotyczące dostrajania wydajności**
 
-W tym przykładzie podczas kopiowania Uruchom ADF Zauważ, że ujścia Azure SQL DB osiągnie wysokie wykorzystanie jednostek DTU, której spowalnia operacje zapisu, dlatego sugestię jest zwiększenie warstwy bazy danych SQL Azure za pomocą więcej jednostek DTU. 
+W tym przykładzie podczas kopiowania Uruchom ADF Zauważ, że ujścia Azure SQL DB osiągnie wysokie wykorzystanie jednostek DTU, której spowalnia operacje zapisu, dlatego sugestię jest zwiększenie warstwy bazy danych SQL Azure za pomocą więcej jednostek DTU.
 
 ![Skopiuj monitorowanie za pomocą wskazówki dotyczące dostrajania wydajności](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
 
-## <a name="incremental-copy"></a>Przyrostowa kopia 
-Usługa Data Factory obsługuje scenariusze dla przyrostowego kopiowania danych różnicowych z magazynu danych źródłowych do docelowego magazynu danych. Zobacz [samouczek: przyrostowe kopiowanie danych](tutorial-incremental-copy-overview.md). 
+## <a name="incremental-copy"></a>Przyrostowa kopia
+Usługa Data Factory obsługuje scenariusze dla przyrostowego kopiowania danych różnicowych z magazynu danych źródłowych do docelowego magazynu danych. Zobacz [samouczek: przyrostowe kopiowanie danych](tutorial-incremental-copy-overview.md).
 
 ## <a name="read-and-write-partitioned-data"></a>Odczyt i zapis danych partycjonowanych
 W wersji 1 usługi Azure Data Factory obsługiwane Odczyt lub zapis danych podzielonych na partycje, korzystając z parametru SliceStart/SliceEnd/WindowStart/WindowEnd zmiennych systemowych. W bieżącej wersji tego zachowania można osiągnąć przy użyciu parametrów potoku i czas/zaplanowana godzina rozpoczęcia wyzwalacza jako wartość parametru. Aby uzyskać więcej informacji, zobacz [jak Odczyt lub zapis partycjonowania danych](how-to-read-write-partitioned-data.md).

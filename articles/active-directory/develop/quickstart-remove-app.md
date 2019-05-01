@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/25/2018
+ms.date: 04/30/2019
 ms.author: celested
 ms.custom: aaddev
-ms.reviewer: lenalepa, sureshja
+ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20d7218b9b1d53b3cfb72a12ee34a77956327ce2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 86c90f05734f793842cf506721db9c4fd5b2b1a3
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60299468"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918563"
 ---
-# <a name="quickstart-remove-an-application-registered-with-the-microsoft-identity-platform-preview"></a>Szybki start: Usuwanie aplikacji zarejestrowanej za pomocą platformy tożsamości firmy Microsoft (wersja zapoznawcza)
+# <a name="quickstart-remove-an-application-registered-with-the-microsoft-identity-platform"></a>Szybki start: Usunąć aplikację, który został zarejestrowany z platformą Microsoft identity
 
 Deweloperzy w przedsiębiorstwach oraz dostawcy oprogramowania jako usługi (SaaS), którzy zarejestrowali aplikacje za pomocą platformy tożsamości firmy Microsoft, mogą potrzebować usunąć rejestrację aplikacji.
 

@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: 6cca6692da37714c76f5241ed14e24c967b00563
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5850b683189136eac70451075933b0c57ecc37cd
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60467701"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920442"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Poprawianie wydajności aplikacji Azure za pomocą usługi Azure Advisor
 
@@ -88,11 +88,11 @@ Wysokie użycie procesora przez dłuższy czas może spowodować wolnych zapyta�
 Współczynnik trafień pamięci podręcznej niski może skutkować mniejszą wydajność zapytań i zwiększonej operacje We/Wy. Może to wynikać z planu zapytania lub uruchamiania obciążenia intensywnie korzystających z pamięci. Naprawianie planu zapytania lub [zwiększenie ilości pamięci](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers) usługi Azure Database dla serwera bazy danych PostgreSQL, serwer bazy danych Azure MySQL lub Azure MariaDB server będzie optymalizowania wykonywania obciążenie bazy danych. Usługa Azure Advisor identyfikuje serwery, których to dotyczy, z powodu tych zmian puli buforów o wysokiej i zaleca zastosowanie ustalania planu zapytania, przejście do wyższej wersji jednostki SKU z większej ilości pamięci lub zwiększenie rozmiaru magazynu, aby uzyskać więcej operacji We/Wy.
 
 ### <a name="use-a-azure-mysql-or-azure-postgresql-read-replica-to-scale-out-reads-for-read-intensive-workloads"></a>Umożliwia skalowanie w poziomie operacje odczytu dla obciążeń intensywnie korzystających z odczytu Azure MySQL i Azure PostgreSQL odczytu repliki
-Usługa Azure Advisor wykorzystuje oparte na obciążeniu Algorytm heurystyczny, takie jak stosunek odczytów w stosunku do zapisów na serwerze w ciągu ostatnich siedmiu dni do identyfikowania intensywnie odczytujących obciążeń. Twoja usługa Azure database for postgresql w warstwie zasobów lub usługa Azure database for MySQL zasobu o stosunku bardzo duże odczyt/zapis może spowodować rywalizacje procesora CPU lub pamięci, co prowadzi do wydłużenia wydajność zapytań. Dodawanie [repliki](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal) zapewni pomoc przy określaniu skalowanie w poziomie odczytów w stosunku do serwera repliki, zapobiegając ograniczenia procesora CPU lub pamięci na serwerze podstawowym. Klasyfikator zidentyfikuje serwerów za pomocą takich wysokiej intensywnie odczytujących obciążeń i zaleca się dodanie [odczytu replik](https://docs.microsoft.com/en-us/azure/postgresql/concepts-read-replicas) odciążania część obciążeniami odczytu.
+Usługa Azure Advisor wykorzystuje oparte na obciążeniu Algorytm heurystyczny, takie jak stosunek odczytów w stosunku do zapisów na serwerze w ciągu ostatnich siedmiu dni do identyfikowania intensywnie odczytujących obciążeń. Twoja usługa Azure database for postgresql w warstwie zasobów lub usługa Azure database for MySQL zasobu o stosunku bardzo duże odczyt/zapis może spowodować rywalizacje procesora CPU lub pamięci, co prowadzi do wydłużenia wydajność zapytań. Dodawanie [repliki](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal) zapewni pomoc przy określaniu skalowanie w poziomie odczytów w stosunku do serwera repliki, zapobiegając ograniczenia procesora CPU lub pamięci na serwerze podstawowym. Klasyfikator zidentyfikuje serwerów za pomocą takich wysokiej intensywnie odczytujących obciążeń i zaleca się dodanie [odczytu replik](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas) odciążania część obciążeniami odczytu.
 
 
 ### <a name="scale-your-azure-mysql-azure-postgresql-or-azure-mariadb-server-to-a-higher-sku-to-prevent-connection-constraints"></a>Skalowanie serwera usługi Azure MySQL, Azure PostgreSQL lub MariaDB platformy Azure do wyższej jednostki SKU, aby zapobiec ograniczeń połączeń
-Każdego nowego połączenia z serwerem bazy danych zajmuje trochę pamięci. Spadku wydajności serwera bazy danych, jeśli połączenia z serwerem kończą się niepowodzeniem z powodu [górny limit](https://docs.microsoft.com/en-us/azure/postgresql/concepts-limits) w pamięci. Usługa Azure Advisor zidentyfikuje serwerów z systemem za pomocą wielu błędów połączenia i zaleca się uaktualnienie serwera limitów połączeń zapewnienie większej ilości pamięci do serwera przez skalowanie w górę obliczeń lub przy użyciu pamięci zoptymalizowane pod kątem SKU, która ma większą moc obliczeniową na każdy rdzeń.
+Każdego nowego połączenia z serwerem bazy danych zajmuje trochę pamięci. Spadku wydajności serwera bazy danych, jeśli połączenia z serwerem kończą się niepowodzeniem z powodu [górny limit](https://docs.microsoft.com/azure/postgresql/concepts-limits) w pamięci. Usługa Azure Advisor zidentyfikuje serwerów z systemem za pomocą wielu błędów połączenia i zaleca się uaktualnienie serwera limitów połączeń zapewnienie większej ilości pamięci do serwera przez skalowanie w górę obliczeń lub przy użyciu pamięci zoptymalizowane pod kątem SKU, która ma większą moc obliczeniową na każdy rdzeń.
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Jak uzyskać dostęp zalecenia dotyczące wydajności w usługi Advisor
 

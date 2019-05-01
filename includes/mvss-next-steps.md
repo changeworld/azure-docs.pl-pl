@@ -1,21 +1,24 @@
 ---
-ms.openlocfilehash: 8b3879d87c7a17aff0a10c81f428a48119c606a6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+author: mayanknayar
+ms.service: virtual-machine-scale-sets
+ms.topic: include
+ms.date: 04/26/2019
+ms.author: manayar
+ms.openlocfilehash: c41beda6c9d6bb4b63a45944126421dd22799904
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60803350"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64868895"
 ---
 Poprzedni szablon można wdrożyć, wykonując instrukcje opisane w [dokumentacji usługi Azure Resource Manager](../articles/azure-resource-manager/resource-group-template-deploy.md).
 
-Tę serię samouczka można uruchomić z poziomu [artykułu opisującego szablon minimalnego możliwego do użycia zestawu skalowania](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md).
+Można uruchomić w tej serii samouczków z [artykułu szablon zestawu skalowania podstawowe](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md).
 
-Dowiesz się, jak zmodyfikować [szablon minimalnego możliwego do użycia zestawu skalowania](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md) w celu [wdrożenia zestawu skalowania w istniejącej sieci wirtualnej](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-existing-vnet.md).
+Możesz dowiedzieć się, jak zmodyfikować [szablon zestawu skalowania podstawowe](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md) do [wdrażanie zestawu skalowania w istniejącej sieci wirtualnej](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-existing-vnet.md).
 
-Poznasz również sposób modyfikowania [szablonu minimalnego możliwego do użycia zestawu skalowania](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md) w celu [wdrożenia zestawu skalowania z użyciem obrazu niestandardowego](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-custom-image.md).
+Możesz dowiedzieć się, jak zmodyfikować [szablon zestawu skalowania podstawowe](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md) do [wdrażanie zestawu skalowania przy użyciu niestandardowego obrazu](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-custom-image.md).
 
-Ponadto dowiesz się, jak zmodyfikować [szablon minimalnego możliwego do użycia zestawu skalowania](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md) w celu [wdrożenia zestawu skalowania systemu Linux za pomocą skalowania automatycznego w oparciu o gości](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-guest-based-autoscale-linux.md).
+Możesz dowiedzieć się, jak zmodyfikować [szablon zestawu skalowania podstawowe](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md) do [wdrażanie systemu Linux zestaw skalowania z automatyczne skalowanie na podstawie gościa](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-guest-based-autoscale-linux.md).
 
-Więcej ogólnych informacji na temat zestawów skalowania można znaleźć na [stronie przeglądu zestawów skalowania](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md).
-
-<!-- ms.date: 12/20/2018 -->
+Aby uzyskać więcej informacji o zestawach skalowania, dotyczą [stronie przeglądu zestawów skalowania](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md).

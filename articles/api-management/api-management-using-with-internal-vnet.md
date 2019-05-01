@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 738dd451ca44801c799d793e6501c547655bd0e0
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 7db40de921c0eb8826a2fee832c1a51c57796f6d
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524153"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919834"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Przy użyciu usługi Azure API Management z wewnętrzną siecią wirtualną
 Sieci wirtualnych platformy Azure usługi Azure API Management umożliwia zarządzanie interfejsami API nie jest dostępny w Internecie. Wiele technologii sieci VPN są dostępne do nawiązania połączenia. Usługa API Management można wdrożyć w dwa główne tryby wewnątrz sieci wirtualnej:
@@ -48,7 +48,7 @@ Aby wykonać kroki opisane w tym artykule, musisz mieć:
 + Po wdrożeniu usługi API Management w sieci wirtualnej, [listę portów](./api-management-using-with-vnet.md#required-ports) są używane i muszą być otwarte. 
 
 ## <a name="enable-vpn"> </a>Tworzenie usługi API Management w wewnętrznej sieci wirtualnej
-Usługa API Management w wewnętrznej sieci wirtualnej znajduje się za zaporą [wewnętrznego modułu równoważenia obciążenia (klasyczny)](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-get-started-ilb-classic-cloud). To jest jedyna dostępna opcja i nie można jej zmienić.
+Usługa API Management w wewnętrznej sieci wirtualnej znajduje się za zaporą [wewnętrznego modułu równoważenia obciążenia (klasyczny)](https://docs.microsoft.com/azure/load-balancer/load-balancer-get-started-ilb-classic-cloud). To jest jedyna dostępna opcja i nie można jej zmienić.
 
 ### <a name="enable-a-virtual-network-connection-using-the-azure-portal"></a>Włączanie połączenia z siecią wirtualną przy użyciu witryny Azure portal
 

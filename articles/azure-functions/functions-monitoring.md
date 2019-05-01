@@ -11,18 +11,18 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: glenga
-ms.openlocfilehash: 96656da078b79474dbf6576455a485d17868db49
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fecf6759dd7b277dda10fa2656e6ae9407490370
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60406757"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922965"
 ---
 # <a name="monitor-azure-functions"></a>Monitorowanie usługi Azure Functions
 
 [Usługa Azure Functions](functions-overview.md) oferuje wbudowaną integrację z [usługi Azure Application Insights](../azure-monitor/app/app-insights-overview.md) do monitorowania funkcji. W tym artykule przedstawiono sposób konfigurowania usługi Azure Functions do wysyłania plików dziennika generowanych przez system do usługi Application Insights.
 
-Firma Microsoft zaleca, za pomocą usługi Application Insights, ponieważ zbiera dzienniki, wydajności i danych o błędach. Automatycznie wykrywa anomalie wydajność i obejmują zaawansowane narzędzia analityczne ułatwiające diagnozowanie problemów i aby zrozumieć, jak są używane funkcje. Usługa ta pomaga w ciągłym udoskonalaniu wydajności i użyteczności tworzonych rozwiązań. Możesz nawet Application Insights mogą służyć podczas tworzenia projektu aplikacji funkcji lokalnej. Aby uzyskać więcej informacji, zobacz [co to jest usługa Application Insights?](../azure-monitor/app/app-insights-overview.md)
+Firma Microsoft zaleca, za pomocą usługi Application Insights, ponieważ zbiera dzienniki, wydajności i danych o błędach. Automatycznie wykrywa anomalie wydajność i obejmują zaawansowane narzędzia analityczne ułatwiające diagnozowanie problemów i aby zrozumieć, jak są używane funkcje. Usługa ta pomaga w ciągłym udoskonalaniu wydajności i użyteczności tworzonych rozwiązań. Możesz nawet Application Insights mogą służyć podczas tworzenia projektu aplikacji funkcji lokalnej. Aby uzyskać więcej informacji, zobacz [co to jest usługa Application Insights?](../azure-monitor/app/app-insights-overview.md).
 
 Jak wymagane Instrumentacji usługi Application Insights jest wbudowana w usłudze Azure Functions, wszystko co potrzebne jest kluczem Instrumentacji prawidłowe połączyć swoją aplikację funkcji do zasobu usługi Application Insights.
 
@@ -626,7 +626,7 @@ Ta aplikacja łączy się z dzienników przesyłania strumieniowego usługi i dz
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
-Dzienniki przesyłania strumieniowego można włączyć za pomocą [interfejsu wiersza polecenia platformy Azure (CLI)](/cli/azure/install-azure-cli). Wiersza polecenia platformy Azure Użyj następujących poleceń, aby zalogować się, wybierz subskrypcję i przesyłanie strumieniowe plików dziennika:
+Dzienniki przesyłania strumieniowego można włączyć za pomocą [wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). Aby zalogować się, wybierz subskrypcję i przesyłanie strumieniowe plików dziennika, użyj następujących poleceń:
 
 ```azurecli
 az login

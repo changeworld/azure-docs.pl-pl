@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: kumud;tyao
-ms.openlocfilehash: 1d6343705e8d27fb2d22827cf792de332861456e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: da56c9664ce533709676ded677add4a2391dce03
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60736602"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64865864"
 ---
 # <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>Co to jest filtrowania geograficznego w domenie usługi Azure drzwiami frontowymi?
 
-Domyślnie usługa Azure Front Door Service odpowiada na żądania użytkowników niezależnie od lokalizacji użytkownika wysyłającego żądanie. Jednak czasami może być konieczne ograniczenie dostępu do aplikacji internetowych według kraju. Usługa umożliwiającymi zainstalowanie zapory aplikacji sieci Web na wejściu umożliwia zdefiniowanie zasad przy użyciu reguły niestandardowej dostępu do określonej ścieżki w punkcie końcowym usługi do zezwalania lub blokowania dostępu z określonym krajów. 
+Domyślnie usługa Azure Front Door Service odpowiada na żądania użytkowników niezależnie od lokalizacji użytkownika wysyłającego żądanie. Jednak w niektórych przypadkach można ograniczyć dostęp do aplikacji sieci web według kraju/regionu. Usługa umożliwiającymi zainstalowanie zapory aplikacji sieci Web na wejściu umożliwia zdefiniowanie zasad przy użyciu reguły niestandardowej dostępu do określonej ścieżki w punkcie końcowym usługi do zezwalania lub blokowania dostępu z określonym krajów/regionów. 
 
 Zasady zapory aplikacji sieci Web zwykle zawiera zestaw reguł niestandardowych. Reguła składa się z warunków dopasowań, akcji i priorytetu. W warunku dopasowania należy zdefiniować zmienną dopasowania, operator i wartość dopasowania.  W przypadku reguły filtrowania geograficznego zmienna dopasowania to REMOTE_ADDR, operator to GeoMatch, a wartość to dwuliterowy kod kraju. Możesz połączyć warunek GeoMatch i warunek dopasowania ciągu REQUEST_URI, aby utworzyć regułę filtrowania geograficznego opartą na ścieżkach.
 
@@ -72,7 +72,7 @@ Można skonfigurować zasady filtrowania geograficznego dla Twojego drzwiami fro
 | CO | Kolumbia|
 | CR | Kostaryka|
 | CU | Kuba|
-| CV | Cabo Verde|
+| CV | Wyspy Zielonego Przylądka|
 | CY | Cypr|
 | CZ | Czechy|
 | DE | Niemcy|

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2019
 ms.author: mlottner
-ms.openlocfilehash: 8f5a6187b0a651da9dd8de1cb5670a8faffded1a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: c0a5e04b91d79b99935b52fd7f24752fb5d1b115
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61358407"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919636"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>Wybierz i wdrożyć agenta zabezpieczeń na urządzeniu IoT
 
@@ -49,7 +49,7 @@ Agent zabezpieczenia oparty na C ma mniejsze obciążenie pamięci i jest idealn
 | Oprogramowanie typu „open source” | Dostępne w obszarze [licencją MIT](https://en.wikipedia.org/wiki/MIT_License) w [Github](https://aka.ms/iot-security-github-cs) | Dostępne w obszarze [licencją MIT](https://en.wikipedia.org/wiki/MIT_License) w [Github](https://aka.ms/iot-security-github-c) |
 | Języka programowania    | C | C# |
 | Obsługiwane platformy Windows? | Nie | Yes |
-| Wymagania wstępne Windows | --- | [USŁUGI WMI](https://docs.microsoft.com/en-us/windows/desktop/wmisdk/) |
+| Wymagania wstępne Windows | --- | [USŁUGI WMI](https://docs.microsoft.com/windows/desktop/wmisdk/) |
 | Obsługiwane platformy Linux? | Tak, x64 i x86 | Tak, tylko x64 |
 | Wymagania wstępne systemu Linux | libunwind8 libcurl3, środowisko uruchomieniowe identyfikatora uuid, wykorzystują, audispd wtyczek | libunwind8 libcurl3, środowisko uruchomieniowe uuid, wykorzystują, audispd wtyczek, "sudo", polecenia netstat, iptables |
 | Przestrzeń dyskową | 10.5 MB | 90MB |

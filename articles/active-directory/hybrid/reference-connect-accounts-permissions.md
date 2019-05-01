@@ -13,22 +13,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 01/24/2019
+ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d145407331ed652f21510483b51a4617bf28e2fa
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 466b1aadb84bc92981b9adf1b1affa69f5f2ec25
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62096177"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919165"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Program Azure AD Connect: Konta i uprawnienia
 
 ## <a name="accounts-used-for-azure-ad-connect"></a>Konta używane dla usługi Azure AD Connect
 
-![](media/reference-connect-accounts-permissions/account5.png)
+![omówienie kont](media/reference-connect-accounts-permissions/account5.png)
 
 Program Azure AD Connect używa kont 3, aby można było zsynchronizować informacji z lokalnych lub Windows Server Active Directory do usługi Azure Active Directory.  Te konta są:
 
@@ -111,10 +111,10 @@ Oto Podsumowanie strony Kreatora instalacji niestandardowej poświadczenia groma
 | Zainstaluj usługi synchronizacji i opcji konta usługi |Usługi AD lub poświadczenia konta użytkownika lokalnego |Użytkownik, uprawnienia są przyznawane przez Kreatora instalacji |Jeśli administrator określa konto, to konto jest używane jako konto usługi dla usługi synchronizacji. |
 | Łączenie z usługą Azure AD |Poświadczenia katalogu usługi Azure AD |Rola administratora globalnego w usłudze Azure AD |<li>Włączanie synchronizacji w katalogu usługi Azure AD.</li>  <li>Tworzenie konta łącznika usługi Azure AD, które jest używane dla operacji synchronizacji w toku w usłudze Azure AD.</li> |
 | Podłączanie katalogów |W środowisku lokalnym poświadczeń usługi Active Directory dla każdego lasu, która jest połączona z usługą Azure AD |Uprawnienia są zależne od funkcji, które można włączyć i znajdują się w tworzenie konta usługi AD DS łącznika |To konto jest używane do odczytywania i zapisywania informacji o katalogu podczas synchronizacji. |
-| Serwery usług AD FS |Dla każdego serwera, na liście Kreator umożliwia zbieranie informacji o poświadczenia podczas poświadczenia logowania użytkownika, uruchom kreatora są niewystarczające do łączenia z |Administrator domeny |Instalacja i Konfiguracja roli serwera usług AD FS. |
-| Serwery proxy aplikacji sieci Web |Dla każdego serwera, na liście Kreator umożliwia zbieranie informacji o poświadczenia podczas poświadczenia logowania użytkownika, uruchom kreatora są niewystarczające do łączenia z |Administrator lokalny na komputerze docelowym |Instalacja i Konfiguracja roli serwera proxy aplikacji sieci Web. |
+| Serwery usług AD FS |Dla każdego serwera, na liście Kreator umożliwia zbieranie informacji o poświadczenia podczas poświadczeń logowania użytkownika, uruchom kreatora są niewystarczające do łączenia z |Administrator domeny |Instalacja i Konfiguracja roli serwera usług AD FS. |
+| Serwery proxy aplikacji sieci Web |Dla każdego serwera, na liście Kreator umożliwia zbieranie informacji o poświadczenia podczas poświadczeń logowania użytkownika, uruchom kreatora są niewystarczające do łączenia z |Administrator lokalny na komputerze docelowym |Instalacja i Konfiguracja roli serwera proxy aplikacji sieci Web. |
 | Poświadczenia relacji zaufania serwera proxy |Poświadczenia relacji zaufania usługi federacyjnej (poświadczenia serwera proxy używa do rejestrowania certyfikatu relacji zaufania z FS |Konto domeny, które jest lokalnym administratorem serwera usług AD FS |Wstępnej rejestracji certyfikatu zaufania FS WAP. |
-| Strona usług AD FS, konto usługi, "Użyj opcji konta użytkownika domeny" |Poświadczenia konta użytkownika usługi AD |Domena użytkownik |AD konto użytkownika, którego poświadczenia są udostępniane jest używane jako konto logowania usługi AD FS. |
+| Strona usług AD FS, konto usługi, "Użyj opcji konta użytkownika domeny" |Poświadczenia konta użytkownika usługi AD |Domena użytkownik |Konto użytkownika usługi Azure AD, którego poświadczenia są udostępniane jest używane jako konto logowania usługi AD FS. |
 
 ### <a name="create-the-ad-ds-connector-account"></a>Tworzenie konta usługi AD DS łącznika
 
@@ -239,6 +239,11 @@ Konto zostanie utworzone za pomocą długie, złożone hasło, które nie wygasa
 Istnieje limit 20 kont usługi synchronizacji w usłudze Azure AD. Aby uzyskać listę istniejących kont usługi Azure AD w usłudze Azure AD, uruchom następujące polecenie cmdlet programu PowerShell usługi Azure AD: `Get-AzureADDirectoryRole | where {$_.DisplayName -eq "Directory Synchronization Accounts"} | Get-AzureADDirectoryRoleMember`
 
 Aby usunąć nieużywane usługi Azure AD konta usług, uruchom następujące polecenie cmdlet programu PowerShell usługi Azure AD: `Remove-AzureADUser -ObjectId <ObjectId-of-the-account-you-wish-to-remove>`
+
+>[!NOTE]
+>Zanim będzie można użyć poleceń programu PowerShell powyżej będą musieli zainstalować [Azure Active Directory PowerShell module wykres](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0#installing-the-azure-ad-module) i nawiąż połączenie z wystąpieniem usługi Azure AD przy użyciu [Connect-AzureAD](https://docs.microsoft.com/powershell/module/azuread/connect-azuread?view=azureadps-2.0)
+
+Aby uzyskać dodatkowe informacje na temat sposobu zarządzania lub zresetuj hasło konta łącznika usługi Azure AD, zobacz [zarządzania kontem usługi Azure AD Connect](how-to-connect-azureadaccount.md)
 
 ## <a name="related-documentation"></a>Dokumentacja pokrewna
 Jeśli nie przeczytać dokumentację na [integrowanie tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md), Poniższa tabela zawiera linki do powiązanych tematów.

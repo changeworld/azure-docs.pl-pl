@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: ef473ea5f88b9108894787785fe1e9083fab1b0a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 197f5ba9d6921f4a9921b7074b9e05162d3e37b8
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61348179"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64868121"
 ---
 # <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Mapowanie transformacji odnośnika przepływu danych w usłudze Azure Data Factory
 
@@ -25,6 +25,10 @@ Użyj wyszukiwania, aby dodać dane referencyjne z innego źródła, aby przepł
 Zaznacz pola klucza, które mają być zgodne na przychodzące pola strumienia i pola ze źródła odniesienia. Należy najpierw utworzono nowe źródło na kanwę projektu przepływu danych, aby użyć po prawej stronie do wyszukiwania.
 
 W przypadku znalezienia dopasowania wynikowy wiersze i kolumny źródłowej odwołania zostaną dodane do przepływu danych. Możesz wybrać pola, które interesujące, który chcesz uwzględnić w obiektu Sink na końcu przepływu danych.
+
+## <a name="match--no-match"></a>Zgodne / Brak dopasowania
+
+Po przekształceniu usługi wyszukiwania można użyć kolejnych przekształceń można sprawdzić wyniki każdego wiersza dopasowania za pomocą funkcji wyrażenia `isMatch()` może wprowadzać dalszych opcji w logice w oparciu o czy wyszukiwanie spowodowało dopasowanie wiersza lub nie.
 
 ## <a name="optimizations"></a>Optymalizacje
 

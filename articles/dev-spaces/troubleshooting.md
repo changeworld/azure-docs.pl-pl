@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: 'Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s '
-ms.openlocfilehash: 044e997703f5b274215fb05c7152186948b331b4
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.openlocfilehash: 508fe597a494ed89b4c2f406337c6b565943387a
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63761406"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64728812"
 ---
 # <a name="troubleshooting-guide"></a>Przewodnik rozwiązywania problemów
 
@@ -157,7 +157,7 @@ Można napotkać ten błąd, jeśli azds.exe nie jest zainstalowane lub prawidł
 
 ### <a name="try"></a>Wypróbuj:
 
-1. Sprawdź %ProgramFiles%/Microsoft lokalizacji SDKs\Azure\Azure Dev miejsca do magazynowania interfejs wiersza polecenia (wersja zapoznawcza) dla azds.exe. Jeśli jest określony, dodanie jej do zmiennej środowiskowej PATH.
+1. Sprawdź %ProgramFiles%/Microsoft lokalizacji SDKs\Azure\Azure Dev miejsca do magazynowania interfejs wiersza polecenia dla azds.exe. Jeśli jest określony, dodanie jej do zmiennej środowiskowej PATH.
 2. Jeśli nie zainstalowano azds.exe, uruchom następujące polecenie:
 
     ```cmd
@@ -292,6 +292,16 @@ Ten błąd występuje, jeśli klient narzędzia Helm już nie może komunikować
 
 ### <a name="try"></a>Wypróbuj:
 Ponowne uruchamianie węzłów agenta w klastrze zwykle rozwiązuje ten problem.
+
+## <a name="error-release-azds-identifier-spacename-servicename-failed-services-servicename-already-exists-or-pull-access-denied-for-servicename-repository-does-not-exist-or-may-require-docker-login"></a>"Błąd: wersji azds -\<identyfikator\>-\<spacename\>-\<servicename\> nie powiodło się: usług\<servicename\>"już istnieje" lub "odmowa dostępu do ściągnięcia \<servicename\>, repozytorium nie istnieje lub mogą wymagać"docker login""
+
+### <a name="reason"></a>Przyczyna
+Te błędy mogą występować po przemieszaniu uruchamianie direct poleceń narzędzia Helm (takie jak `helm install`, `helm upgrade`, lub `helm delete`) za pomocą poleceń Dev miejsca do magazynowania (takich jak `azds up` i `azds down`) w tej samej przestrzeni deweloperów. Występują, ponieważ Dev miejsca do magazynowania ma własne wystąpienie Tiller, który powoduje konflikt z własnego wystąpienia Tiller w tej samej przestrzeni deweloperów.
+
+### <a name="try"></a>Wypróbuj:
+Możesz użyć polecenia narzędzia Helm i poleceń Dev miejsca do magazynowania dla tego samego klastra AKS, ale każda przestrzeń nazw z obsługą tworzenia miejsca do magazynowania, należy użyć jednego lub drugiego.
+
+Na przykład załóżmy, że używasz polecenia Helm uruchamiane całej aplikacji w obszarze dev nadrzędnego. Możesz utworzyć podrzędne dev miejsca do magazynowania poza elementem nadrzędnym, użyj spacji Dev, aby uruchomić poszczególnych usług wewnątrz elementu podrzędnego dev miejsca do magazynowania i testowanie usług ze sobą. Gdy wszystko będzie gotowe sprawdzić zmiany, należy użyć polecenia Helm wdrożyć zaktualizowany kod do obszaru dev nadrzędnej. Nie używaj `azds up` do usługi zaktualizowany w obiekcie nadrzędnym dev obszaru uruchamiania, ponieważ spowoduje ona konflikt z usługą początkowo uruchamiać przy użyciu narzędzia Helm.
 
 ## <a name="azure-dev-spaces-proxy-can-interfere-with-other-pods-running-in-a-dev-space"></a>Serwer proxy usługi Azure Dev miejsca do magazynowania może zakłócać innych zasobników w miejsce dev
 

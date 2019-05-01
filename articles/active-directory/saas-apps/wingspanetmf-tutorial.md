@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: a41bdda303c9e636929fba00a2fe4279002e42b3
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6c3a7a8644e0e391f8817a7ae3a4cb9b8af5dab7
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59280761"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920373"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wingspan-etmf"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Wingspan eTMF
 
@@ -112,7 +112,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Wingspan eTMF, wyko
     c. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<customer name>.<instance name>.mywingspan.com/`
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Zastąp je rzeczywistymi wartościami adresu URL logowania, identyfikatora i adresu URL odpowiedzi. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta eTMF Wingspan](http://www.wingspan.com/contact-us/) do uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Te wartości nie są prawdziwe. Zastąp je rzeczywistymi wartościami adresu URL logowania, identyfikatora i adresu URL odpowiedzi. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta eTMF Wingspan](https://www.wingspan.com/contact-us/) do uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
@@ -130,7 +130,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Wingspan eTMF, wyko
 
 ### <a name="configure-wingspan-etmf-single-sign-on"></a>Konfigurowanie eTMF Wingspan logowania jednokrotnego
 
-Aby skonfigurować logowanie jednokrotne na **Wingspan eTMF** stronie, musisz wysłać pobrany **XML metadanych Federacji** i odpowiednie skopiowany adresy URL z portalu Azure, aby [zespołem pomocy technicznej eTMF Wingspan ](http://www.wingspan.com/contact-us/). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
+Aby skonfigurować logowanie jednokrotne na **Wingspan eTMF** stronie, musisz wysłać pobrany **XML metadanych Federacji** i odpowiednie skopiowany adresy URL z portalu Azure, aby [zespołem pomocy technicznej eTMF Wingspan ](https://www.wingspan.com/contact-us/). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
@@ -184,7 +184,7 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
 ### <a name="create-wingspan-etmf-test-user"></a>Tworzenie użytkownika testowego eTMF Wingspan
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w Wingspan eTMF. Praca z [zespołem pomocy technicznej eTMF Wingspan](http://www.wingspan.com/contact-us/) Aby dodać użytkowników na platformie eTMF Wingspan. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w Wingspan eTMF. Praca z [zespołem pomocy technicznej eTMF Wingspan](https://www.wingspan.com/contact-us/) Aby dodać użytkowników na platformie eTMF Wingspan. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 

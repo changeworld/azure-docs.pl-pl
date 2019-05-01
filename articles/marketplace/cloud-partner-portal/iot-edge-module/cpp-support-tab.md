@@ -1,25 +1,18 @@
 ---
-title: Obsługa modułu usługi Azure IoT Edge | Dokumentacja firmy Microsoft
+title: Obsługa modułu usługi Azure IoT Edge | Portal Azure Marketplace
 description: Opcje pomocy technicznej moduł usługi IoT Edge.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 10/18/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 9926c9a0443eb5220e7689dfc6e49e4b8d661d65
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 04/24/2019
+ms.author: pabutler
+ms.openlocfilehash: fba5ac7669f7e2b1cfd3320e813891b5f99551d4
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60909858"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64943170"
 ---
 # <a name="iot-edge-module-support-tab"></a>Kartę Pomoc techniczna moduł usługi IoT Edge
 
@@ -29,21 +22,22 @@ Użyj **obsługuje** karcie **nowa oferta** stronę, aby dostarczyć technicznyc
 
 ## <a name="support-form-fields"></a>Obsługa pól formularza
 
-W poniższej tabeli opisano pola formularza i dane wejściowe wymagane dla każdego pola.
+W poniższej tabeli opisano pola formularza i dane wejściowe wymagane dla każdego pola. Wymagane pola są wskazanych przez znak gwiazdki (*).
 
 |  **Pole**                |     **Opis**                                                          |
 |  ---------                |     ---------------                                                          |
 | ***Kontakt techniczny***  |  *Służy jako technicznych skontaktuj się z między firmami Microsoft i organizacji* | 
-| **Nazwa**                  | Nazwa osoby lub grupy, która służy jako technical/inżynierów pomocy technicznej     |
-| **Wiadomość e-mail**                 | Adres e-mail tego kontaktu Technical Preview                                      |
-| **Telefon**                 | Numer telefonu, aby uzyskać pomoc techniczną                                           |
+| **Nazwa\***                  | Nazwa osoby lub grupy, która służy jako technical/inżynierów pomocy technicznej     |
+| **Adres e-mail\***                 | Adres e-mail tego kontaktu Technical Preview                                      |
+| **Telefon\***                 | Numer telefonu, aby uzyskać pomoc techniczną                                           |
 | ***Dział obsługi klienta***  | *Odbiera biletami pomocy technicznej otwierane przez klientów na platformie Azure* |
-| **Nazwa**                  | Nazwa osoby lub grupy, która służy jako dział obsługi klienta                  |
-| **Wiadomość e-mail**                 | Adres e-mail pomocy technicznej klienta                                            |
-| **Telefon**                 | Numer telefonu pomocy technicznej dla klienta                                            |
+| **Nazwa\***                  | Nazwa osoby lub grupy, która służy jako dział obsługi klienta                  |
+| **Adres e-mail\***                 | Adres e-mail pomocy technicznej klienta                                            |
+| **Telefon\***                 | Numer telefonu pomocy technicznej dla klienta                                            |
 | ***Adresy URL pomocy technicznej***  | *Obsługa witryn, które firma Microsoft będzie używać swoich klientów otwierania biletów pomocy technicznej* |
 | **Publiczna platforma Azure**          | Adres URL witryny pomocy technicznej usługi publiczny internet                                         |
 | **Chmura platformy Azure dla instytucji rządowych**| Adres URL witryny obsługi chmury dla instytucji rządowych                                        |
+|   |   |
 
 ## <a name="next-steps"></a>Kolejne kroki
 

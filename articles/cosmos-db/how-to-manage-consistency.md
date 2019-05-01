@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 04/17/2019
 ms.author: rimman
-ms.openlocfilehash: a93bf9a9f43a0929aeb5f3d3121092739396c6a8
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 4a444631de4bc26881ab195333b1b798a7ee6719
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678449"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925331"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Zarządzanie poziomami spójności w usłudze Azure Cosmos DB
 
@@ -211,7 +211,7 @@ item = client.ReadItem(doc_link, options)
 
 ## <a name="monitor-probabilistically-bounded-staleness-pbs-metric"></a>Monitorowanie metryki PBS (Probabilistically Bounded Staleness)
 
-Jak ostatecznej jest spójność ostateczna? W przypadku średniej może oferujemy granice nieaktualność względem historii wersji i godziny. [ **Probabilistically powiązana nieaktualność książek Telefonicznych** ](http://pbs.cs.berkeley.edu/) metryki podejmuje próbę określają ilościowo prawdopodobieństwo nieaktualność i pojawia się jako metrykę. Aby wyświetlić metryki PBS, przejdź do swojego konta usługi Azure Cosmos w witrynie Azure portal. Otwórz okienko **Metryki** i wybierz kartę **Spójność**. Spójrz na wykres o nazwie **Probability of strongly consistent reads based on your workload (see PBS)** (Prawdopodobieństwo silnie spójnych odczytów na podstawie obciążenia (zobacz PBS)).
+Jak ostatecznej jest spójność ostateczna? W przypadku średniej może oferujemy granice nieaktualność względem historii wersji i godziny. [ **Probabilistically powiązana nieaktualność książek Telefonicznych** ](https://pbs.cs.berkeley.edu/) metryki podejmuje próbę określają ilościowo prawdopodobieństwo nieaktualność i pojawia się jako metrykę. Aby wyświetlić metryki PBS, przejdź do swojego konta usługi Azure Cosmos w witrynie Azure portal. Otwórz okienko **Metryki** i wybierz kartę **Spójność**. Spójrz na wykres o nazwie **Probability of strongly consistent reads based on your workload (see PBS)** (Prawdopodobieństwo silnie spójnych odczytów na podstawie obciążenia (zobacz PBS)).
 
 ![Wykres PBS w witrynie Azure Portal](./media/how-to-manage-consistency/pbs-metric.png)
 

@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b477171be0f306431b0f7c5965ebede4f4680c22
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f344a4f928030c07f59c2f7aba201d153da123f1
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60249925"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918716"
 ---
 # <a name="web-api"></a>Interfejs API sieci Web
 
@@ -69,7 +69,7 @@ Zobacz przykłady kodu dla aplikacji sieci Web do internetowego interfejsu API s
 
 ## <a name="app-registration"></a>Rejestracja aplikacji
 
-Aby zarejestrować aplikację z punktem końcowym usługi Azure AD w wersji 1.0, zobacz [rejestrowanie aplikacji z punktem końcowym usługi Azure AD w wersji 1.0](quickstart-v1-add-azure-ad-app.md).
+Aby zarejestrować aplikację z punktem końcowym usługi Azure AD w wersji 1.0, zobacz [rejestrowanie aplikacji](quickstart-register-app.md).
 
 * Pojedynczej dzierżawy — usługi tożsamości aplikacji i delegowany użytkownik tożsamości przypadków, aplikacji sieci web i interfejsu API sieci web musi być zarejestrowany w tym samym katalogu w usłudze Azure AD. Interfejs API sieci web można skonfigurować do udostępnienia zestaw uprawnień, które są używane do ograniczania dostępu do aplikacji sieci web, do jej zasobów. Jeśli jest używany typ tożsamości delegowany użytkownik musi wybierz żądane uprawnienia z aplikacji sieci web **uprawnień dotyczących innych aplikacji** menu rozwijane w witrynie Azure portal. Ten krok nie jest wymagane, jeśli jest używany typ tożsamości aplikacji.
 * Wielodostępne — najpierw aplikacji sieci web jest skonfigurowana do wskazania uprawnienia, które wymaga, aby działała prawidłowo. Ta lista wymaganych uprawnień jest wyświetlany w oknie dialogowym po użytkownik lub administrator w katalogu docelowym powoduje zgody aplikacji, która udostępnia je do swojej organizacji. Niektóre aplikacje wymagają tylko uprawnienia na poziomie użytkownika, które każdy użytkownik w organizacji mogą wyrazić zgodę na. Inne aplikacje wymagają uprawnień na poziomie administratora, które użytkownik w organizacji nie może wyrażać zgody na. Tylko administrator katalogu mogą wyrazić zgodę, do aplikacji, które wymagają tego poziomu uprawnień. Gdy użytkownik lub administrator wyraża zgodę, interfejsu API sieci web i aplikacji sieci web są zarówno zarejestrowane w ich katalogu.

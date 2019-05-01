@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d48977c60fb4a13e1fc0dbd294fa4e7708f1cd5d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: a7462536443b2be23eef0f8b4c6f6b6412fb7032
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60277526"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64724881"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-g-suite"></a>Samouczek: Integracja usługi Azure Active Directory z usługą G Suite
 
@@ -239,11 +239,11 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w usłudze G Suite, wy
 
     a. Zaznacz pole wyboru **Setup SSO with third-party identity provider** (Skonfiguruj logowanie jednokrotne za pomocą dostawcy tożsamości innej firmy).
 
-    b. W polu **Sign-in page URL** (Adres URL strony logowania) w usłudze G Suite wklej wartość pola  **Adres URL logowania**  skopiowaną z witryny Azure Portal.
+    b. W **adres URL logowania strony** pola w usłudze G Suite, Wklej wartość **adres URL logowania** skopiowanej w witrynie Azure portal.
 
-    c. W polu **Sign-out page URL** (Adres URL strony wylogowywania) w usłudze G Suite wklej wartość pola  **Adres URL wylogowywania**  skopiowaną z witryny Azure Portal.
+    c. W **adres URL strony wylogowania** pola w usłudze G Suite, Wklej wartość **adres URL wylogowania** skopiowanej w witrynie Azure portal.
 
-    d. W polu **Change password URL** (Adres URL zmiany hasła) w usłudze G Suite wklej wartość pola  **Adres URL zmiany hasła**  skopiowaną z witryny Azure Portal.
+    d. W **zmienić adres URL hasła** pola w usłudze G Suite, Wklej wartość **zmienić adres URL hasła** skopiowanej w witrynie Azure portal.
 
     e. W usłudze G Suite w polu **Verification certificate** (Certyfikat weryfikacji) przekaż certyfikat pobrany z witryny Azure Portal.
 

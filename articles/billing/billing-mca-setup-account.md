@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
-ms.openlocfilehash: 90f832319fa2343003af58bd99eb64c0cbd94dd8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 284480ab8b9973c02f365dbf3ebfd3a103ef4b42
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60371807"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919147"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Ustawianie konta rozliczeniowego dla umowy klienta firmy Microsoft
 
@@ -108,7 +108,7 @@ Dzierżawy usługi Azure Active Directory jest zaznaczone dla nowego konta rozli
 
 Nowe konto obsługuje tylko użytkownicy z dzierżawy, który został wybrany podczas podpisywania umowy klienta firmy Microsoft. Jeśli użytkownicy z uprawnieniami administracyjnymi w ramach umowy Enterprise Agreement są częścią dzierżawy, uzyskają dostęp do nowego konta rozliczeniowego podczas instalacji. Jeśli tak nie jest częścią dzierżawy, będą mogli korzystać z nowego konta rozliczeniowego, chyba, że możesz zaprosić.
 
-Zaproszenie użytkowników są dodawane do dzierżawy jako gość użytkowników i uzyskać dostęp do konta rozliczeniowego. Aby zaprosić użytkowników, dostęp gościa musi być wyłączony dla dzierżawy. Aby uzyskać więcej informacji, zobacz [kontrolować dostęp gościa w usłudze Azure Active Directory](https://docs.microsoft.com/en-us/microsoftteams/teams-dependencies#control-guest-access-in-azure-active-directory). Dostęp gościa jest wyłączony, należy skontaktować się z Administratorzy globalni w Twojej dzierżawy, aby włączyć tę funkcję. <!-- Todo - How can they find their global administrator -->
+Zaproszenie użytkowników są dodawane do dzierżawy jako gość użytkowników i uzyskać dostęp do konta rozliczeniowego. Aby zaprosić użytkowników, dostęp gościa musi być wyłączony dla dzierżawy. Aby uzyskać więcej informacji, zobacz [kontrolować dostęp gościa w usłudze Azure Active Directory](https://docs.microsoft.com/microsoftteams/teams-dependencies#control-guest-access-in-azure-active-directory). Dostęp gościa jest wyłączony, należy skontaktować się z Administratorzy globalni w Twojej dzierżawy, aby włączyć tę funkcję. <!-- Todo - How can they find their global administrator -->
 
 ## <a name="view-features-replaced-by-the-new-billing-account"></a>Funkcje widoku zastąpione przez nowe konto rozliczeniowe
 

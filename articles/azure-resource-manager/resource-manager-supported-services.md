@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/25/2019
+ms.date: 04/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: 520aeb8e47b5e94e6346e682f21f46cb0814f8f3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: a3c6eca548eb61d6b7b239b4292b9c77ca2dec6f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60389719"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64702703"
 ---
 # <a name="azure-resource-providers-and-types"></a>Dostawcy zasobów platformy Azure i ich typy
 
@@ -31,6 +31,8 @@ Podczas wdrażania zasobów, często jest potrzebne do pobierania informacji o d
 * Wyświetl prawidłowych wersji interfejsu API dla typu zasobu
 
 Można wykonać następujące kroki, za pośrednictwem witryny Azure portal, programu Azure PowerShell lub wiersza polecenia platformy Azure.
+
+Aby uzyskać listę, która mapuje dostawcy zasobów usługi platformy Azure, zobacz [dostawcy zasobów usługi platformy Azure](azure-services-resource-providers.md).
 
 ## <a name="azure-portal"></a>Azure Portal
 
@@ -291,5 +293,5 @@ West US
 
 * Aby dowiedzieć się więcej na temat tworzenia szablonów usługi Resource Manager, zobacz [tworzenia usługi Azure Resource Manager](resource-group-authoring-templates.md). 
 * Aby wyświetlić schematy szablonów dostawcy zasobów, zobacz [odwołanie do szablonu](/azure/templates/).
-* Aby dowiedzieć się więcej na temat wdrażania zasobów, zobacz [wdrażania aplikacji przy użyciu szablonu usługi Azure Resource Manager](resource-group-template-deploy.md).
+* Aby uzyskać listę, która mapuje dostawcy zasobów usługi platformy Azure, zobacz [dostawcy zasobów usługi platformy Azure](azure-services-resource-providers.md).
 * Aby wyświetlić operacje dla dostawcy zasobów, zobacz [interfejsu API REST usługi Azure](/rest/api/).

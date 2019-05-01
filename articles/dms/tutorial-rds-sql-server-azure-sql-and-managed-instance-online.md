@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 04/20/2019
-ms.openlocfilehash: 7294236a7b79ad093480e9063d886dd30ccf7fc1
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.date: 04/24/2019
+ms.openlocfilehash: 75228098bcb62b83f8e93aebe600bffac62d6179
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59998978"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64727359"
 ---
 # <a name="tutorial-migrate-rds-sql-server-to-azure-sql-database-or-an-azure-sql-database-managed-instance-online-using-dms"></a>Samouczek: Migrowanie usług pulpitu zdalnego programu SQL Server do usługi Azure SQL Database lub wystąpienia zarządzanego usługi Azure SQL Database i online przy użyciu usługi DMS
 Azure Database Migration Service można użyć do migracji baz danych z wystąpienia programu SQL Server dla usług pulpitu zdalnego do [usługi Azure SQL Database](https://docs.microsoft.com/azure/sql-database/) lub [wystąpienie zarządzane usługi Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index) przy minimalnych przestojach. W tym samouczku, wykonywana jest migracja **Adventureworks2012** Przywrócono bazę danych do programu SQL Server dla usług pulpitu zdalnego wystąpienia programu SQL Server 2012 (lub nowszego) do usługi Azure SQL Database lub usługi Azure SQL Database wystąpienie zarządzane przy użyciu usługi Azure Database Migration Usługa.
@@ -199,7 +199,7 @@ Po utworzeniu usługi znajdź ją w witrynie Azure Portal, otwórz ją, a nastę
     ![Tworzenie projektu usługi Database Migration Service](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-create-project4.png)
 
     > [!NOTE]
-    > Możesz też wybrać opcję **Utwórz tylko projekt**, aby utworzyć projekt migracji teraz i wykonać migrację później.
+    > Alternatywnie można wybrać **Tworzenie projektu** można teraz utworzyć projekt migracji i wykonaj migrację później.
 
 6. Wybierz pozycję **Zapisz**.
 

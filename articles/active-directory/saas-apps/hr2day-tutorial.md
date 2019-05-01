@@ -4,270 +4,235 @@ description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usł
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 853d08c9-27b1-48d4-b8e7-3705140eb67f
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 06/24/2017
+ms.topic: tutorial
+ms.date: 03/25/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 378aab82fac5298c3785f752478e3bfc3c6e325b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 491f1704cf08bd31a1b089d178afb3c281d636e6
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60275454"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64723482"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą HR2day przez Merces
 
 W tym samouczku dowiesz się, jak zintegrować HR2day przez Merces w usłudze Azure Active Directory (Azure AD).
-
 Integrowanie HR2day przez Merces z usługą Azure AD zapewnia następujące korzyści:
 
-- Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do HR2day przez Merces.
-- Aby umożliwić użytkownikom automatyczne pobieranie zalogujesz się HR2day przy Merces za pomocą kont usługi Azure AD.
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do HR2day przez Merces.
+* Aby umożliwić użytkownikom można automatycznie zalogowany HR2day przez Merces (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-Aby uzyskać więcej informacji na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby skonfigurować integrację usługi Azure AD za pomocą HR2day przez Merces, potrzebne są następujące elementy:
 
-- Subskrypcja usługi Azure AD.
-- HR2day przez Merces logowanie jednokrotne włączone subskrypcji.
-
-> [!NOTE]
-> Nie zaleca się testowanie kroki opisane w tym samouczku przy użyciu środowiska produkcyjnego.
-
-Aby przetestować kroki w tym samouczku, musisz mieć dostęp do następujących elementów:
-
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Pobierz [miesięcznej bezpłatnej wersji próbnej usługi Azure AD](https://azure.microsoft.com/pricing/free-trial/) Jeśli nie jeszcze.  
+* Subskrypcja usługi Azure AD. Jeśli nie ma środowiska usługi Azure AD, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/)
+* HR2day przez Merces logowanie jednokrotne włączone subskrypcji
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz, który jest opisany w tym miejscu składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie HR2day przez Merces z galerii.
-1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne.
+W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-## <a name="add-hr2day-by-merces-from-the-gallery"></a>Dodaj HR2day przez Merces z galerii
+* Obsługuje HR2day przez Merces **SP** jednokrotne logowanie inicjowane przez
+
+## <a name="adding-hr2day-by-merces-from-the-gallery"></a>Dodawanie HR2day przez Merces z galerii
+
 Aby skonfigurować integrację HR2day przez Merces w usłudze Azure AD, należy dodać HR2day przez Merces z galerii z listą zarządzanych aplikacji SaaS.
 
 **Aby dodać HR2day przez Merces z galerii, wykonaj następujące czynności:**
 
-1. W [witryny Azure portal](https://portal.azure.com), w okienku nawigacji po lewej stronie wybierz **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
-    ![Usługa Active Directory][1]
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
 
-    ![Aplikacje][2]
-    
-1. Aby dodać nową aplikację, wybierz **nową aplikację** przycisk u góry okna dialogowego.
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-    ![Aplikacje][3]
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-1. W polu wyszukiwania wpisz **HR2day przez Merces**.
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/hr2day-tutorial/tutorial_hr2daybymerces_search.png)
+4. W polu wyszukiwania wpisz **HR2day przez Merces**, wybierz opcję **HR2day przez Merces** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
-1. W panelu wyników wybierz **HR2day przez Merces**, a następnie wybierz pozycję **Dodaj** przycisk, aby dodać aplikację.
+     ![HR2day przez Merces na liście wyników](common/search-new-app.png)
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/hr2day-tutorial/tutorial_hr2daybymerces_addfromgallery.png)
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
-W tej sekcji możesz skonfigurować i przetestować usługi Azure AD logowanie jednokrotne za pomocą HR2day przez Merces, w oparciu o użytkownika testu o nazwie "Britta Simon."
-
-Dla logowania jednokrotnego do pracy usługi Azure AD musi wiedzieć, który użytkownik odpowiednika w HR2day przez Merces użytkownika w usłudze Azure AD. Innymi słowy należy ustanowić łącze między użytkownika usługi Azure AD i powiązanych użytkowników w HR2day przez Merces.
-
-HR2day przez Merces, przypisywanie **nazwa_użytkownika** w usłudze Azure AD **Username** do ustanawiania relacji.
+W tej sekcji możesz skonfigurować i przetestować usługi Azure AD logowanie jednokrotne za pomocą HR2day przez Merces, w oparciu o użytkownika testu o nazwie **Britta Simon**.
+Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w HR2day przez Merces musi zostać ustanowione.
 
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą HR2day przez Merces, należy wykonać poniższe bloki konstrukcyjne:
 
-1. Konfigurowanie usługi Azure AD logowania jednokrotnego: Umożliwianie użytkownikom korzystać z tej funkcji.
-1. Utwórz użytkownika testowego usługi Azure AD: Testowanie usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-1. Utwórz HR2day przez użytkownika testowego Merces: Utwórz odpowiednikiem Britta Simon w HR2day przez Merces połączonego z usługi Azure AD reprezentacja użytkownika.
-1. Przypisz użytkownika testowego usługi Azure AD: Włącz Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. Testowanie logowania jednokrotnego: Sprawdź, czy konfiguracja działa.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Konfigurowanie HR2day przez Merces logowania jednokrotnego](#configure-hr2day-by-merces-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Utwórz HR2day przez użytkownika testowego Merces](#create-hr2day-by-merces-test-user)**  — aby odpowiednikiem Britta Simon w HR2day przez Merces połączonego z usługi Azure AD reprezentacja użytkownika.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azure portal, a podczas konfigurowania logowania jednokrotnego w sieci HR2day Merces aplikacji.
+W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-**Aby skonfigurować usługę Azure AD logowanie jednokrotne z HR2day przez Merces, wykonaj następujące czynności:**
+Aby skonfigurować usługę Azure AD logowanie jednokrotne z HR2day przez Merces, wykonaj następujące czynności:
 
-1. W witrynie Azure portal na **HR2day przez Merces** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. W [witryny Azure portal](https://portal.azure.com/)na **HR2day przez Merces** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
 
-    ![Konfigurowanie logowania jednokrotnego][4]
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
-1. Aby włączyć logowanie jednokrotne, w **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego**.
- 
-    ![Konfigurowanie logowania jednokrotnego](./media/hr2day-tutorial/tutorial_hr2daybymerces_samlbase.png)
+2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
-1. W **HR2day Merces domena i adresy URL** sekcji, wykonaj następujące czynności:
+    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
 
-    ![Konfigurowanie logowania jednokrotnego](./media/hr2day-tutorial/tutorial_hr2daybymerces_url.png)
+3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
 
-    a. W **adres URL logowania** wpisz adres URL przy użyciu następującego wzorca: `https://<tenantname>.force.com/<instancename>`.
+    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-    b. W **identyfikator** wpisz adres URL przy użyciu następującego wzorca: `https://hr2day.force.com/<companyname>`.
+4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
 
-    > [!NOTE] 
-    > Te wartości nie są prawdziwe. Zaktualizuj te wartości, używając rzeczywistego identyfikatora i adresu URL logowania. Skontaktuj się z pomocą [HR2day przez zespół pomocy technicznej klienta Merces](mailto:servicedesk@merces.nl) do uzyskania tych wartości. 
- 
+    ![HR2day Merces domena i adresy URL pojedynczego logowania jednokrotnego informacje](common/sp-identifier.png)
 
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://<tenantname>.force.com/<instancename>`
 
-1. Na **certyfikat podpisywania SAML** zaznacz **Certificate(Base64)**, a następnie zapisz plik certyfikatu na komputerze.
-
-    ![Konfigurowanie logowania jednokrotnego](./media/hr2day-tutorial/tutorial_hr2daybymerces_certificate.png) 
-
-1. W tej sekcji opisano, jak umożliwić użytkownikom na uwierzytelnianie HR2day przez Merces za pomocą konta w usłudze Azure AD. Mogą to zrobić przy użyciu Federacji, który jest oparty na protokole SAML.
-
-    Twoje HR2day przez aplikację Merces oczekuje twierdzenia SAML w określonym formacie, który wymaga dodania mapowania atrybutów niestandardowych do tokenu SAML. Poniższy zrzut ekranu przedstawia przykład. 
-
-    ![Konfigurowanie logowania jednokrotnego](./media/hr2day-tutorial/tutorial_hr2day_00.png)
-    
-   > [!NOTE]
-   >  Aby można było skonfigurować potwierdzenie SAML, należy skontaktować się [HR2day przez zespół pomocy technicznej klienta Merces](mailto:servicedesk@merces.nl) i zażądać wartość atrybutu unikatowego identyfikatora dla Twojej dzierżawy. Należy tę wartość, aby wykonać kroki opisane w następnej sekcji. 
-
-1. W **logowanie jednokrotne** dialogowym **atrybutów użytkownika** sekcji, skonfigurowanie atrybutu tokenu SAML, jak pokazano na poniższej ilustracji. Następnie wykonaj następujące kroki.
-    
-      | Nazwa atrybutu    |   Wartość atrybutu |  
-    | ------------------- | -------------------- |    
-    | ATTR_LOGINCLAIM | `join([mail],"102938475Z","@"` |
-    
-      a. Aby otworzyć **Dodawanie atrybutu** okno dialogowe, wybierz opcję **Dodaj atrybut**.
-
-    ![Konfigurowanie logowania jednokrotnego](./media/hr2day-tutorial/tutorial_attribute_04.png)
-
-    ![Konfigurowanie logowania jednokrotnego](./media/hr2day-tutorial/tutorial_attribute_05.png)
-
-    b. W **nazwa** wpisz **ATTR_LOGINCLAIM**.
-
-    c. Z **wartość** listy wybierz **Join()**.
-
-    d. Z **ciąg1** listy wybierz **user.mail**.
-
-    e. Aby uzyskać **ciąg2**, wpisz unikatowy identyfikator, który jest udostępniany przez Twój zespół HR2day.
-
-    f. W **Separator** wpisz **\@**.
-    
-    g. Wybierz przycisk **OK**.
-
-1. Wybierz ikonę **Zapisz**.
-
-    ![Konfigurowanie logowania jednokrotnego](./media/hr2day-tutorial/tutorial_general_400.png)
-
-1. W **HR2day przez konfigurację Merces** zaznacz **skonfigurować HR2day przez Merces** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania**, **identyfikator jednostki SAML**, i **SAML pojedynczego logowania jednokrotnego adres URL usługi** z **krótki przewodnik po** sekcji.
-
-    ![Konfigurowanie logowania jednokrotnego](./media/hr2day-tutorial/tutorial_hr2daybymerces_configure.png) 
-
-1. Aby skonfigurować logowanie Jednokrotne dla aplikacji, skontaktuj się z pomocą [HR2day przez zespół pomocy technicznej klienta Merces](mailTo:servicedesk@merces.nl). Dołącz pobrany **Certificate(Base64)** pliku do wiadomości e-mail. Zapewniają również **adres URL wylogowania**, **identyfikator jednostki SAML**, i **SAML pojedynczego logowania jednokrotnego usługi adresu URL** tak, aby można je skonfigurować integrację logowania jednokrotnego.
+    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, używając następującego wzorca: `https://hr2day.force.com/<companyname>`
 
     > [!NOTE]
-    >Wspominanie zespołu Merces, że ta integracja wymaga Identyfikatora jednostki można ustawić za pomocą wzorca **https://hr2day.force.com/INSTANCENAME**.
+    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. Skontaktuj się z pomocą [HR2day przez zespół pomocy technicznej klienta Merces](mailto:servicedesk@merces.nl) do uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-    > [!TIP]
-    >Teraz możesz korzystać ze zwięzłej wersji tych instrukcji w witrynie [Azure Portal](https://portal.azure.com) podczas konfigurowania aplikacji.  Po dodaniu tej aplikacji z **usługi Active Directory** > **aplikacje dla przedsiębiorstw** zaznacz **logowania jednokrotnego** kartę. Następnie uzyskać dostęp do dokumentacji embedded za pomocą **konfiguracji** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzone w [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
-   > 
+5. Twoje HR2day przez aplikację Merces oczekuje twierdzenia SAML w określonym formacie, który wymaga dodania mapowania atrybutów niestandardowych konfiguracji atrybuty tokenu języka SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych. Kliknij ikonę  **Edytuj** , aby otworzyć okno dialogowe  **Atrybuty użytkownika** .
+
+    ![image](common/edit-attribute.png)
+
+    > [!NOTE]
+    > Aby można było skonfigurować potwierdzenie SAML, należy skontaktować się [HR2day przez zespół pomocy technicznej klienta Merces](mailto:servicedesk@merces.nl) i zażądać wartość atrybutu unikatowego identyfikatora dla Twojej dzierżawy. Należy tę wartość, aby wykonać kroki opisane w następnej sekcji.
+
+6. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** edytuj oświadczenia, korzystając z **ikony edycji**, lub dodaj je za pomocą opcji **Dodaj nowe oświadczenie**, aby skonfigurować atrybut tokenu języka SAML, jak pokazano na ilustracji powyżej, a następnie wykonaj następujące czynności:
+
+    | Name (Nazwa) |  Atrybut źródłowy |
+    | ---------- | ----------- |
+    | ATTR_LOGINCLAIM | `join([mail],"102938475Z","@"` |
+    | | |
+
+    a. Kliknij przycisk **Dodaj nowe oświadczenie**, aby otworzyć okno dialogowe **Zarządzanie oświadczeniami użytkownika**.
+
+    ![image](common/new-save-attribute.png)
+
+    ![image](common/new-attribute-details.png)
+
+    b. W polu tekstowym **Nazwa** wpisz nazwę atrybutu pokazaną dla tego wiersza.
+
+    d. Pozostaw pole **Przestrzeń nazw** puste.
+
+    d. Dla opcji Źródło wybierz wartość **Atrybut**.
+
+    e. Na liście **Atrybut źródłowy** wpisz wartość atrybutu pokazaną dla tego wiersza.
+
+    f. Kliknij przycisk **OK**.
+
+    g. Kliknij pozycję **Zapisz**.
+
+7. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
+
+    ![Link do pobierania certyfikatu](common/certificatebase64.png)
+
+8. Na **HR2day ustanowionego Merces** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+
+    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
+
+    a. Adres URL logowania
+
+    b. Identyfikator usługi Azure AD
+
+    c. Adres URL wylogowywania
+
+### <a name="configure-hr2day-by-merces-single-sign-on"></a>Konfigurowanie HR2day przez Merces logowanie jednokrotne
+
+Aby skonfigurować logowanie jednokrotne na **HR2day przez Merces** stronie, musisz wysłać pobrany **certyfikat (Base64)** i odpowiednie skopiowany adresy URL z portalu Azure w celu [HR2day przez dział pomocy technicznej Merces zespół](mailto:servicedesk@merces.nl). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
+
+> [!NOTE]
+> Wspominanie zespołu Merces, że ta integracja wymaga Identyfikatora jednostki można ustawić za pomocą wzorca **https://hr2day.force.com/INSTANCENAME**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
+
 W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-![Utwórz użytkownika usługi Azure AD][100]
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-1. W **witryny Azure portal**, w okienku nawigacji po lewej stronie wybierz **usługi Azure Active Directory** ikony.
+2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/hr2day-tutorial/create_aaduser_01.png) 
+    ![Przycisk Nowy użytkownik](common/new-user.png)
 
-1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie wybierz pozycję **wszyscy użytkownicy**.
-    
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/hr2day-tutorial/create_aaduser_02.png) 
+3. We właściwościach użytkownika wykonaj następujące kroki.
 
-1. Aby otworzyć **użytkownika** okno dialogowe, wybierz opcję **Dodaj** u góry okna dialogowego.
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/hr2day-tutorial/create_aaduser_03.png) 
+    ![Okno dialogowe Użytkownik](common/user-properties.png)
 
-1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/hr2day-tutorial/create_aaduser_04.png) 
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+  
+    b. W **nazwa_użytkownika** typ pola `brittasimon@yourcompanydomain.extension`  
+    Na przykład: BrittaSimon@contoso.com
 
-    a. W **nazwa** wpisz **BrittaSimon**.
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
-    b. W **nazwa_użytkownika** wpisz **adres e-mail** z BrittaSimon.
+    d. Kliknij pozycję **Utwórz**.
 
-    c. Wybierz **Pokaż hasło**, a następnie Zapisz hasło.
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-    d. Wybierz pozycję **Utwórz**.
- 
-### <a name="create-an-hr2day-by-merces-test-user"></a>Utwórz HR2day przez Merces użytkownika testowego
+W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do HR2day przez Merces.
 
-Celem tej sekcji jest utworzyć użytkownika o nazwie Britta Simon w HR2day przez Merces. Aby dodać użytkowników w ramach konta HR2day, pracować [HR2day przez zespół pomocy technicznej klienta Merces](mailto:servicedesk@merces.nl). 
+1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **HR2day przez Merces**.
+
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+
+2. Na liście aplikacji wybierz **HR2day przez Merces**.
+
+    ![HR2day przez łącze Merces na liście aplikacji](common/all-applications.png)
+
+3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
+
+    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
+
+4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
+
+    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
+
+5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+
+6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+
+7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+
+### <a name="create-hr2day-by-merces-test-user"></a>Utwórz HR2day przez Merces użytkownika testowego
+
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w HR2day przez Merces. Praca z [zespołu pomocy technicznej HR2day przez Merces](mailto:servicedesk@merces.nl) Aby dodać użytkowników w HR2day przez platformę Merces. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
 
 > [!NOTE]
 > Jeśli musisz ręcznie utworzyć użytkownika, skontaktuj się z [HR2day przez zespół pomocy technicznej klienta Merces](mailto:servicedesk@merces.nl).
 
-### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
-
-W tej sekcji możesz włączyć Britta Simon korzystać z platformy Azure logowania jednokrotnego przez udostępnienie jej HR2day przez Merces.
-
-![Przypisz użytkownika][200] 
-
-**Aby przypisać Britta Simon HR2day przez Merces, wykonaj następujące czynności:**
-
-1. W witrynie Azure portal Otwórz widok aplikacji, przejdź do widoku katalogu, a następnie przejdź do **aplikacje dla przedsiębiorstw**. Następnie wybierz pozycję **wszystkie aplikacje**.
-
-    ![Przypisz użytkownika][201] 
-
-1. Na liście aplikacji wybierz **HR2day przez Merces**.
-
-    ![Konfigurowanie logowania jednokrotnego](./media/hr2day-tutorial/tutorial_hr2daybymerces_app.png) 
-
-1. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
-
-    ![Przypisz użytkownika][202] 
-
-1. Wybierz przycisk **Add** (Dodaj). Następnie w **Dodaj przydziału** okno dialogowe, wybierz opcję **użytkowników i grup**.
-
-    ![Przypisz użytkownika][203]
-
-1. W **użytkowników i grup** dialogowym **użytkowników** listy wybierz **Britta Simon**.
-
-1. Kliknij przycisk **wybierz** przycisku.
-
-1. W oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Przypisz**.
-    
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-Celem tej sekcji jest do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.  
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po wybraniu HR2day przez Merces kafelka w panelu dostępu, automatycznie uzyskać zarejestrowaniu w usłudze usługi HR2day Merces aplikacji.
+Kliknięcie HR2day Merces kafelka w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze HR2day przez Merces, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących sposobu integracji aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/hr2day-tutorial/tutorial_general_01.png
-[2]: ./media/hr2day-tutorial/tutorial_general_02.png
-[3]: ./media/hr2day-tutorial/tutorial_general_03.png
-[4]: ./media/hr2day-tutorial/tutorial_general_04.png
-
-[100]: ./media/hr2day-tutorial/tutorial_general_100.png
-
-[200]: ./media/hr2day-tutorial/tutorial_general_200.png
-[201]: ./media/hr2day-tutorial/tutorial_general_201.png
-[202]: ./media/hr2day-tutorial/tutorial_general_202.png
-[203]: ./media/hr2day-tutorial/tutorial_general_203.png
-
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

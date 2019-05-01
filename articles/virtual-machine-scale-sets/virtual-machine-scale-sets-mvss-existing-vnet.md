@@ -13,25 +13,26 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 06/27/2017
-ms.date: 11/30/2018
-ms.author: v-junlch
-ms.openlocfilehash: 1dcb97a94bd5790edc2e40acf890bb47baec7a4b
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.date: 04/26/2019
+ms.author: manayar
+ms.openlocfilehash: 8b75b9898eb767866c0843594a82570cfb65d122
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62108031"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64868950"
 ---
 # <a name="add-reference-to-an-existing-virtual-network-in-an-azure-scale-set-template"></a>Dodaj odwołanie do istniejącej sieci wirtualnej w szablonie zestawu skalowania na platformie Azure
 
-W tym artykule przedstawiono sposób modyfikowania [minimalnego możliwego do użycia zestawu skalowania szablonu](./virtual-machine-scale-sets-mvss-start.md) do wdrożenia w istniejącej sieci wirtualnej, zamiast tworzyć nowy.
+W tym artykule przedstawiono sposób modyfikowania [szablon zestawu skalowania podstawowe](virtual-machine-scale-sets-mvss-start.md) do wdrożenia w istniejącej sieci wirtualnej, zamiast tworzyć nowy.
 
 ## <a name="change-the-template-definition"></a>Zmiana definicji szablonu
 
-Szablon zestawu minimalnej wielkości są widoczne [tutaj](https://raw.githubusercontent.com/gatneil/mvss/minimum-viable-scale-set/azuredeploy.json), i szablon do wdrażania zestawu skalowania w istniejącej sieci wirtualnej są widoczne [tutaj](https://raw.githubusercontent.com/gatneil/mvss/existing-vnet/azuredeploy.json). Przeanalizujmy diff, używany do tworzenia tego szablonu (`git diff minimum-viable-scale-set existing-vnet`) eliminujemy:
+W [poprzednim artykule](virtual-machine-scale-sets-mvss-start.md) miał utworzyliśmy szablonu zestawu skalowania podstawowe. Teraz możemy użyć szablonu, którego wcześniej i zmodyfikuj go, aby utworzyć szablon, który służy do wdrażania zestawu skalowania w istniejącej sieci wirtualnej. 
 
-Najpierw dodaj `subnetId` parametru. Ten ciąg jest przekazywany do konfiguracji zestawu skalowania, umożliwiając zidentyfikować wstępnie utworzonych podsieci w celu wdrożenia maszyn wirtualnych w zestawie skalowania. Ten ciąg musi mieć postać: `/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<virtual-network-name>/subnets/<subnet-name>`. Na przykład ustawić do wdrożenia skalowania w istniejącej sieci wirtualnej o nazwie `myvnet`, podsieci `mysubnet`, grupy zasobów `myrg`, subskrypcji i `00000000-0000-0000-0000-000000000000`, byłoby subnetId: `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/mysubnet`.
+Najpierw dodaj `subnetId` parametru. Ten ciąg jest przekazywany do konfiguracji zestawu skalowania, umożliwiając zidentyfikować wstępnie utworzonych podsieci w celu wdrożenia maszyn wirtualnych w zestawie skalowania. Ten ciąg musi mieć postać: `/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<virtual-network-name>/subnets/<subnet-name>`
+
+Na przykład ustawić do wdrożenia skalowania w istniejącej sieci wirtualnej o nazwie `myvnet`, podsieci `mysubnet`, grupy zasobów `myrg`, subskrypcji i `00000000-0000-0000-0000-000000000000`, byłoby subnetId: `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/mysubnet`.
 
 ```diff
      },
@@ -53,7 +54,7 @@ Następnie należy usunąć zasób sieci wirtualnej z `resources` tablicy, jak u
 -      "type": "Microsoft.Network/virtualNetworks",
 -      "name": "myVnet",
 -      "location": "[resourceGroup().location]",
--      "apiVersion": "2016-12-01",
+-      "apiVersion": "2018-11-01",
 -      "properties": {
 -        "addressSpace": {
 -          "addressPrefixes": [
@@ -79,7 +80,7 @@ Sieć wirtualna już istnieje przed wdrożeniem szablon, więc nie ma potrzeby d
        "type": "Microsoft.Compute/virtualMachineScaleSets",
        "name": "myScaleSet",
        "location": "[resourceGroup().location]",
-       "apiVersion": "2016-04-30-preview",
+       "apiVersion": "2019-03-01",
 -      "dependsOn": [
 -        "Microsoft.Network/virtualNetworks/myVnet"
 -      ],
@@ -88,7 +89,7 @@ Sieć wirtualna już istnieje przed wdrożeniem szablon, więc nie ma potrzeby d
          "capacity": 2
 ```
 
-Na koniec Przekaż `subnetId` parametru ustawiony przez użytkownika (zamiast `resourceId` Aby uzyskać identyfikator sieci wirtualnej, w tym samym wdrożeniu, czyli co minimalnego możliwego do użycia zestawu skalowania szablonu przeprowadza).
+Na koniec Przekaż `subnetId` parametru ustawiony przez użytkownika (zamiast `resourceId` Aby uzyskać identyfikator sieci wirtualnej, w tym samym wdrożeniu, czyli co szablon zestawu skalowania możliwego do użycia podstawowego przeprowadza).
 
 ```diff
                        "name": "myIpConfig",
@@ -107,5 +108,3 @@ Na koniec Przekaż `subnetId` parametru ustawiony przez użytkownika (zamiast `r
 ## <a name="next-steps"></a>Kolejne kroki
 
 [!INCLUDE [mvss-next-steps-include](../../includes/mvss-next-steps.md)]
-
-<!-- Update_Description: update metedata properties -->

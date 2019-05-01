@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef180fb444e32e8b055837fd418e21162ff58339
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: aa4b68d48ec3f4fbb61c7144a133d9c42938c723
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60411204"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917280"
 ---
 # <a name="application-types-in-v10"></a>Typy aplikacji w wersji 1.0
 
@@ -63,7 +63,7 @@ Każda aplikacja, która outsources uwierzytelniania usługi Azure AD, musi być
   * **Klucz** -key, przesyłany wraz z identyfikator aplikacji podczas uwierzytelniania w usłudze Azure AD do wywołania interfejsu API sieci web.
 * Usługa Azure AD wymaga upewnić się, że aplikacja ma wymaganych uprawnień, aby uzyskiwać dostęp do danych katalogu, inne aplikacje w Twojej organizacji i tak dalej.
 
-Aby uzyskać szczegółowe informacje, Dowiedz się, jak [rejestrowanie aplikacji z punktem końcowym usługi Azure AD w wersji 1.0](quickstart-v1-add-azure-ad-app.md).
+Aby uzyskać szczegółowe informacje, Dowiedz się, jak [rejestrowanie aplikacji](quickstart-register-app.md).
 
 ## <a name="single-tenant-and-multi-tenant-apps"></a>Aplikacje jednej dzierżawy i wieloma dzierżawcami
 

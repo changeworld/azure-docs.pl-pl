@@ -1,25 +1,18 @@
 ---
-title: Usuwanie oferty w witrynie Marketplace — witryna Azure Marketplace | Dokumentacja firmy Microsoft
+title: Usuwanie oferty w witrynie marketplace | Portal Azure Marketplace
 description: Usuwanie oferty na platformie Azure i usługi AppSource rynków przy użyciu portalu Cloud Partner
 services: Azure, AppSource, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/09/2019
-ms.author: pbutlerm
-ms.openlocfilehash: 1d5d02d65dd3dcf5978639818fba4ebe36ffaaff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: 542bc611ac8820385c3f749aa151afc1dcdf6db5
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60825153"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942142"
 ---
 # <a name="delete-azure-marketplace-and-appsource-offers-or-skus"></a>Usuwanie ofert portalu Azure Marketplace i AppSource lub jednostek SKU
 
@@ -28,7 +21,7 @@ Z różnych powodów może podjąć decyzję wycofania oferty z jej witryny Micr
 - *Usunięcie oferty* gwarantuje, że nowi klienci mogą już zakup lub wdrożenie oferty, ale nie ma wpływu na istniejących klientów, których musi obsługiwać zgodnie ze swoją umowę licencyjną i stosownych przepisów. 
 - *Zakończenie oferty* to proces zakończenia świadczenia usługi i/lub umowę między Tobą i Twoimi obecnymi klientami licencjonowania. 
 
-Wskazówki i zasady dotyczące usuwania i kończenia oferty podlegają [umowie wydawcy portalu Microsoft Marketplace](https://go.microsoft.com/fwlink/?LinkID=699560) i [— zasady udziału](https://azure.microsoft.com/support/legal/marketplace/participation-policies/) (sekcja [oferty zawieszenie i usunięcie](https://docs.microsoft.com/en-us/legal/marketplace/participation-policy#offering-suspension-and-removal)). 
+Wskazówki i zasady dotyczące usuwania i kończenia oferty podlegają [umowie wydawcy portalu Microsoft Marketplace](https://go.microsoft.com/fwlink/?LinkID=699560) i [— zasady udziału](https://azure.microsoft.com/support/legal/marketplace/participation-policies/) (sekcja [oferty zawieszenie i usunięcie](https://docs.microsoft.com/legal/marketplace/participation-policy#offering-suspension-and-removal)). 
 
 Rozmowy tego artykułu, o różnych obsługiwane usunięcia scenariusze i kroki wymagane do wykonania każdego.  
 

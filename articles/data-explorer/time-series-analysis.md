@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/07/2019
-ms.openlocfilehash: 8492f736e64366802b3601f9b5fc8bd1d9b6ea79
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: cb5e41feb9be978592a1c1708ade0188ba20d504
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60827437"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64873149"
 ---
 # <a name="time-series-analysis-in-azure-data-explorer"></a>Analiza serii czasu w Eksploratorze danych platformy Azure
 
@@ -260,3 +260,8 @@ demo_many_series1
 W niespełna dwie minuty ADX analizowane blisko 20 000 szeregów czasowych i wykryto dwa szeregów czasowych nietypowe, w których nagle porzucony odczytu liczby.
 
 Te zaawansowane możliwości w połączeniu z wysoką wydajność ADX Podaj unikatowe i zaawansowane rozwiązanie do analizy serii czasowych.
+
+## <a name="next-steps"></a>Kolejne kroki
+
+* Dowiedz się więcej o [czas serii wykrywanie anomalii i przygotowywać trafniejsze prognozy](/azure/data-explorer/anomaly-detection) w Eksploratorze danych platformy Azure.
+* Dowiedz się więcej o [możliwości uczenia maszynowego](/azure/data-explorer/machine-learning-clustering) w Eksploratorze danych platformy Azure.

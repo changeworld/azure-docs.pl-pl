@@ -12,16 +12,16 @@ ms.topic: article
 ms.date: 04/05/2019
 ms.author: sethm
 ms.custom: ''
-ms.openlocfilehash: 3c50502a8b873503ee937914fac5f2d92cb23a2b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: b0b5a74a6ca0085f945075a8896c05a724ff062c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60733490"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64717951"
 ---
 # <a name="experimental-preset-for-content-aware-encoding"></a>Eksperymentalne ustawienie wstępne kodowania zawartości
 
-Aby przygotować zawartość do przekazania przez [streaming z adaptacyjną szybkością transmisji bitów](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming), wideo, musi być zakodowany na wielu — szybkości transmisji bitów (wysoka, niski). Aby zapewnić bezpieczne pogorszenia się jakości, ponieważ szybkość transmisji bitów jest obniżony więc rozdzielczości wideo. Skutkuje to tak zwane drabiny kodowania — spis rozdzielczości i szybkości transmisji, jak widać w niektóre z naszych stały ustawienia wstępne kodowania, takich jak [H264MultipleBitrate1080p](../previous/media-services-mes-preset-h264-multiple-bitrate-1080p.md).
+Aby przygotować zawartość do przekazania przez [streaming z adaptacyjną szybkością transmisji bitów](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming), wideo, musi być zakodowany na wielu — szybkości transmisji bitów (wysoka, niski). Aby zapewnić bezpieczne pogorszenia się jakości, ponieważ szybkość transmisji bitów jest obniżony więc rozdzielczości wideo. Skutkuje to tak zwane drabiny kodowania — spis rozdzielczości i szybkości transmisji; Zapoznaj się z usługami Media [wbudowane ustawienia wstępne kodowania](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset).
 
 ## <a name="overview"></a>Omówienie
 

@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81d09978c3333a5b76c09f8c7dac85998d342f03
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f4b61b661d9da0748bc354b8defa4e6d67a047a2
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60472896"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920481"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpieczanie uprzywilejowanego dostępu dla wdrożeń hybrydowych i w chmurze w usłudze Azure AD
 
@@ -261,7 +261,7 @@ Jeśli już używasz usługi Azure AD Privileged Identity Management, należy do
 
 #### <a name="determine-exposure-to-password-based-sign-in-protocols-if-using-exchange-online"></a>Określić narażenia na protokołów opartych na hasło logowania (w przypadku korzystania z usługi Exchange Online)
 
-W przeszłości protokołów przyjęto, że kombinacji nazwy użytkownika/hasła zostały osadzone w urządzeniach, konta e-mail, telefonach i tak dalej. Ale teraz ze sobą ryzyko ataków cybernetycznych, w chmurze, zaleca się zidentyfikowanie wszystkich potencjalnych użytkowników, którzy, jeśli ich poświadczenia zostały naruszone, może być krytyczny do organizacji i je wykluczyć mogli zalogować się do swojej poczty e-mail za pomocą nazwy użytkownika / hasło, implementując wymagania silnego uwierzytelniania i dostępu warunkowego. Możesz zablokować [starsze uwierzytelnianie przy użyciu dostępu warunkowego](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/block-legacy-authentication). Sprawdź szczegóły w [sposobu blokowania uwierzytelnianie podstawowe](https://docs.microsoft.com/en-us/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online) za pośrednictwem Exchnage w trybie online. 
+W przeszłości protokołów przyjęto, że kombinacji nazwy użytkownika/hasła zostały osadzone w urządzeniach, konta e-mail, telefonach i tak dalej. Ale teraz ze sobą ryzyko ataków cybernetycznych, w chmurze, zaleca się zidentyfikowanie wszystkich potencjalnych użytkowników, którzy, jeśli ich poświadczenia zostały naruszone, może być krytyczny do organizacji i je wykluczyć mogli zalogować się do swojej poczty e-mail za pomocą nazwy użytkownika / hasło, implementując wymagania silnego uwierzytelniania i dostępu warunkowego. Możesz zablokować [starsze uwierzytelnianie przy użyciu dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/conditional-access/block-legacy-authentication). Sprawdź szczegóły w [sposobu blokowania uwierzytelnianie podstawowe](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online) za pośrednictwem Exchnage w trybie online. 
 
 #### <a name="complete-a-roles-review-assessment-for-office-365-roles-if-using-office-365"></a>Ukończenie oceny Przegląd ról dla ról usługi Office 365 (w przypadku korzystania z usługi Office 365)
 

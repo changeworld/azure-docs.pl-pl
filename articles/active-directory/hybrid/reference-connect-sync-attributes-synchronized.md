@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 01/24/2019
+ms.date: 04/24/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb7010ec16592fea2f530329916e00056ca03a70
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 4d32564808151c4895d2b3802fb48d2bd2d8f753
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62096131"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64729531"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Synchronizacja programu Azure AD Connect: Atrybuty synchronizowane z usługą Azure Active Directory
 Ten temat zawiera listę atrybutów, które są synchronizowane przez program Azure AD Connect sync.  
@@ -158,7 +158,6 @@ W tym przypadku rozpoczynać lista atrybutów, w tym temacie i zidentyfikować t
 | pwdLastSet |X | | |tych właściwości. Używane do ustalenia, kiedy unieważnienie już wystawionych tokenów. Używane przez synchronizacji haseł i federacji. |
 | reportToOriginator | | |X | |
 | reportToOwner | | |X | |
-| securityEnabled | | |X |Pochodną groupType |
 | numery seryjne |X |X | | |
 | sourceAnchor |X |X |X |tych właściwości. Niemodyfikowalny identyfikator do utrzymania relacji między usług AD DS i Azure AD. |
 | St |X |X | | |
@@ -241,7 +240,6 @@ W tym przypadku rozpoczynać lista atrybutów, w tym temacie i zidentyfikować t
 | pwdLastSet |X | | |tych właściwości. Używane do ustalenia, kiedy unieważnienie już wystawionych tokenów. Używane przez synchronizacji skrótów haseł, uwierzytelniania przekazywanego i federacji. |
 | reportToOriginator | | |X | |
 | reportToOwner | | |X | |
-| securityEnabled | | |X |Pochodną groupType |
 | numery seryjne |X |X | | |
 | sourceAnchor |X |X |X |tych właściwości. Niemodyfikowalny identyfikator do utrzymania relacji między usług AD DS i Azure AD. |
 | St |X |X | | |
@@ -294,7 +292,6 @@ W tym przypadku rozpoczynać lista atrybutów, w tym temacie i zidentyfikować t
 | preferredLanguage |X | | | |
 | proxyAddresses |X |X |X | |
 | pwdLastSet |X | | |tych właściwości. Używane do ustalenia, kiedy unieważnienie już wystawionych tokenów. Używane przez synchronizacji skrótów haseł, uwierzytelniania przekazywanego i federacji. |
-| securityEnabled | | |X |Pochodną groupType |
 | numery seryjne |X |X | | |
 | sourceAnchor |X |X |X |tych właściwości. Niemodyfikowalny identyfikator do utrzymania relacji między usług AD DS i Azure AD. |
 | St |X |X | | |
@@ -317,7 +314,6 @@ W tym przypadku rozpoczynać lista atrybutów, w tym temacie i zidentyfikować t
 | atrybuty objectSID |X | |X |tych właściwości. Usługi AD identyfikator użytkownika, używany w celu zachowania synchronizacji między platformą Azure AD i AD. |
 | proxyAddresses |X |X |X |tych właściwości. Używane przez usługę Azure AD. Zawiera wszystkie adresy pomocniczego adresu e-mail użytkownika. |
 | pwdLastSet |X | | |tych właściwości. Używane do ustalenia, kiedy unieważnienie już wystawionych tokenów. |
-| securityEnabled | | |X |Pochodną groupType. |
 | sourceAnchor |X |X |X |tych właściwości. Niemodyfikowalny identyfikator do utrzymania relacji między usług AD DS i Azure AD. |
 | usageLocation |X | | |tych właściwości. Kraj użytkownika. Używane w celu przypisania licencji. |
 | userPrincipalName |X | | |Ta nazwa UPN jest identyfikator logowania dla użytkownika. W większości przypadków wartość taka sama jak [pocztą]. |
@@ -336,7 +332,6 @@ W tym przypadku rozpoczynać lista atrybutów, w tym temacie i zidentyfikować t
 | atrybuty objectSID |X | |X |tych właściwości. Usługi AD identyfikator użytkownika, używany w celu zachowania synchronizacji między platformą Azure AD i AD. |
 | proxyAddresses |X |X |X | |
 | pwdLastSet |X | | |tych właściwości. Używane do ustalenia, kiedy unieważnienie już wystawionych tokenów. Używane przez synchronizacji skrótów haseł, uwierzytelniania przekazywanego i federacji. |
-| securityEnabled | | |X |Pochodną groupType |
 | sourceAnchor |X |X |X |tych właściwości. Niemodyfikowalny identyfikator do utrzymania relacji między usług AD DS i Azure AD. |
 | usageLocation |X | | |tych właściwości. Kraj użytkownika. Używane w celu przypisania licencji. |
 | userPrincipalName |X | | |Nazwa UPN jest identyfikator logowania dla użytkownika. W większości przypadków wartość taka sama jak [pocztą]. |
@@ -364,7 +359,6 @@ W tym przypadku rozpoczynać lista atrybutów, w tym temacie i zidentyfikować t
 | postalCode |X |X | | |
 | preferredLanguage |X | | | |
 | pwdLastSet |X | | |tych właściwości. Używane do ustalenia, kiedy unieważnienie już wystawionych tokenów. Używane przez synchronizacji skrótów haseł, uwierzytelniania przekazywanego i federacji. |
-| securityEnabled | | |X |Pochodną groupType |
 | numery seryjne |X |X | | |
 | sourceAnchor |X |X |X |tych właściwości. Niemodyfikowalny identyfikator do utrzymania relacji między usług AD DS i Azure AD. |
 | St |X |X | | |

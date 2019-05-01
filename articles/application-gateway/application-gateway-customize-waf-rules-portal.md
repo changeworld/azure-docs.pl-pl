@@ -6,12 +6,12 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 2/22/2019
 ms.author: victorh
-ms.openlocfilehash: b18c9666e58925746a3b61740db6fb5118c2010b
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: f7ffb8d6adfd4afc75618834a3fe82cf9a3d0c9f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56733720"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64720386"
 ---
 # <a name="customize-web-application-firewall-rules-through-the-azure-portal"></a>Dostosowywanie reguł zapory aplikacji sieci web za pośrednictwem witryny Azure portal
 
@@ -33,11 +33,14 @@ Zapora aplikacji sieci web usługi Azure Application Gateway (WAF) zapewnia ochr
 
 ## <a name="search-for-rules-to-disable"></a>Wyszukaj reguły, aby wyłączyć
 
-**Ustawienia zapory aplikacji internetowych** bloku umożliwia filtrowanie reguł za pomocą funkcji wyszukiwania tekstu. Wynik przedstawia tylko grup reguł i reguł, które zawierają tekst, który wyszukiwany.
+**Ustawienia zapory aplikacji internetowych** strona zapewnia możliwość filtrowania reguły za pomocą funkcji wyszukiwania tekstu. Wynik przedstawia tylko grup reguł i reguł, które zawierają tekst, który wyszukiwany.
 
 ![Wyszukaj reguły][2]
 
 ## <a name="disable-rule-groups-and-rules"></a>Wyłącz grup reguł i reguł
+
+> [!IMPORTANT]
+> Wyłączanie wszystkich innych grup reguł i reguł, należy zachować ostrożność. Może to wystawić na zagrożenia bezpieczeństwa.
 
 Masz wyłączając reguły można wyłączyć grupy całej reguły lub określone zasady w co najmniej jedną grupę reguł. 
 
@@ -51,7 +54,9 @@ Masz wyłączając reguły można wyłączyć grupy całej reguły lub określon
 
 ## <a name="mandatory-rules"></a>Obowiązujące reguły
 
-Poniższa lista zawiera warunki powodujące zapory aplikacji sieci Web zablokować żądania w trybie zapobiegania (w trybie wykrywania, są rejestrowane jako wyjątki). Nie są skonfigurowane lub wyłączone:
+Poniższa lista zawiera warunki powodujące zapory aplikacji sieci Web zablokować żądania w trybie zapobiegania. W trybie wykrywania są rejestrowane jako wyjątki.
+
+Nie są skonfigurowane lub wyłączone:
 
 * Nie można przeanalizować treść żądania wyników w żądaniu blokowane, chyba że jednostka inspekcji jest wyłączona (XML, JSON, dane formularza)
 * Długość danych treści (nie plikami) żądania jest większy niż skonfigurowany limit

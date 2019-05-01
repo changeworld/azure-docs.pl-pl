@@ -1,25 +1,18 @@
 ---
-title: Zdefiniuj platformy Azure i doradcze oferty usługi Dynamics 365 — ustawienia oferty | Dokumentacja firmy Microsoft
-description: Przewodnik do definiowania oferują ustawienia w platformie Azure lub Dynamics 365 doradcze usługi oferty w portalu Cloud Partner.
+title: Zdefiniuj ustawienia oferty dla oferty usługi konsultingowe | Portal Azure Marketplace
+description: Zdefiniować ustawienia oferty na platformie Azure lub Dynamics 365 doradcze usługi oferty w portalu Cloud Partner, w portalu Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: qianw211
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 11/30/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 590aa440f35f97e854fa827b0d8db1c3f9211faf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 04/23/2019
+ms.author: pabutler
+ms.openlocfilehash: 601ad62bddd1373742b0cab5a388a55cfd52f4bc
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60749659"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942787"
 ---
 # <a name="offer-settings-tab"></a>Karta ustawień oferty
 
@@ -27,7 +20,8 @@ Na **nowa oferta** ekranu, pierwszym krokiem jest utworzenie tożsamości oferty
 
 ![Utwórz nową ofertę usługi doradcze — oferuje karta Ustawienia](media/consultingoffer-settings-tab.png)
 
-### <a name="offer-id"></a>Identyfikator oferty
+
+### <a name="offer-id"></a>Identyfikator oferty *
 
 Ten identyfikator jest unikatową nazwą, utworzonej po przesłaniu najpierw oferty. Musi ona zawierać tylko małe znaki alfanumeryczne, łączniki i podkreślenia. **Identyfikatora oferty Offer ID** jest widoczna w adresie URL i wpływa na wynikach wyszukiwarki. Na przykład *yourcompanyname_exampleservice*.
 
@@ -36,11 +30,13 @@ Jak pokazano w przykładzie **identyfikatora oferty Offer ID** jest dołączany 
 >[!Note]
 >Po oferta jest przeznaczona na żywo, nie można zaktualizować jego identyfikator.
 
-### <a name="publisher-id"></a>Identyfikator wydawcy
+
+### <a name="publisher-id"></a>Wydawca identyfikator *
 
 Ten identyfikator jest związane z Twoim kontem. Po zalogowaniu się przy użyciu konta organizacyjnego usługi **Identyfikatora wydawcy** pojawia się w menu rozwijanym.
 
-### <a name="name"></a>Name (Nazwa)
+
+### <a name="name"></a>Nazwa*
 
 Ten ciąg wyświetla się jako nazwa oferty w usłudze AppSource lub w witrynie Azure Marketplace. **Nazwa** pole jest ograniczona do 50 znaków. Recenzent może być konieczne edytowanie tytułu Dołącz czas trwania i oferować typu na nazwę swojej oferty.
 

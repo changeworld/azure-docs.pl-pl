@@ -1,20 +1,19 @@
 ---
 title: Co to jest Azure Backup?
-description: Zawiera omówienie usługi Azure Backup oraz sposobu wdrażania jej w ramach strategii ciągłości działania i odzyskiwania po awarii (BDCR).
-services: backup
+description: Omówienie usługi Azure Backup i jak przyczynia się do Twojej ciągłość działalności biznesowej i odzyskiwanie po awarii (BCDR) strategii odzyskiwania.
 author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: overview
-ms.date: 04/05/2019
+ms.date: 04/24/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 5408f920a16860972dca6450d5e51152048bbf82
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: bd90d315fd5590a8bd862a1a3397cf8c254fccc8
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60254696"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64714283"
 ---
 # <a name="what-is-azure-backup"></a>Co to jest Azure Backup?
 
@@ -31,11 +30,7 @@ Usługa Azure Backup oferuje następujące kluczowe korzyści:
 - **Uzyskać nieograniczony transfer danych**: Usługa Azure Backup nie ogranicza ilość danych przychodzących lub wychodzących przetransferowana lub opłaty za przesyłane dane.
     - Dane wychodzące to dane transferowane z magazynu usługi Recovery Services podczas operacji przywracania.
     - Jeśli tworzysz wstępną kopię zapasową w trybie offline za pomocą usługi Azure Import/Export w celu importowania dużych ilości danych, istnieje koszt związany z danymi przychodzącymi.  [Dowiedz się więcej](backup-azure-backup-import-export.md).
-- **Bezpieczeństwo danych**:
-    - W środowisku lokalnym, przesyłane dane są szyfrowane na maszynie lokalnej przy użyciu AES256. Dane przesyłane jest chroniony przez protokół HTTPS między magazynu i kopii zapasowych. Protokół iSCSI zabezpiecza dane przesyłane między kopią zapasową i komputera użytkownika. Bezpiecznego tunelowania jest używany do ochrony kanału iSCSI.
-    - W przypadku środowiska lokalnego do usługi Azure backup dane na platformie Azure jest zaszyfrowanych danych w spoczynku przy użyciu hasła, podane podczas konfigurowania kopii zapasowej. Hasło lub klucz nigdy nie jest on przesyłane ani przechowywane na platformie Azure. Jeśli jest konieczne przywrócenie jakichkolwiek danych, tylko Ty masz hasło lub klucz szyfrowania.
-    - W przypadku maszyn wirtualnych platformy Azure, dane są szyfrowane przy użyciu szyfrowania usługi Storage (SSE) na resetowanie. Kopia zapasowa automatycznie szyfruje dane przed przekazaniem jej. Usługa Azure Storage odszyfrowuje dane przed ich pobraniem.
-    - Kopia zapasowa obsługuje również maszyn wirtualnych platformy Azure, zaszyfrowane za pomocą szyfrowania dysków Azure (ADE). [Dowiedz się więcej](backup-azure-vms-introduction.md#encryption-of-azure-vm-backups).
+- **Bezpieczeństwo danych**: Usługa Azure Backup oferuje rozwiązania do zabezpieczania danych przesyłanych i magazynowanych.
 - **Kopie zapasowe spójne na poziomie aplikacji**: kopia zapasowa spójna na poziomie aplikacji oznacza, że punkt odzyskiwania ma wszystkie dane wymagane do przywrócenia kopii zapasowej. Usługa Azure Backup umożliwia wykonywanie kopii zapasowych spójnych na poziomie aplikacji, które zapewniają, że do przywrócenia danych nie są wymagane dodatkowe poprawki. Przywracanie danych spójnych na poziomie aplikacji skraca czas przywracania, co pozwala szybko powrócić do stanu roboczego.
 - **Krótkoterminowe i długoterminowe przechowywanie danych**: Magazynów usług Recovery Services możesz użyć do krótko- i długoterminowego przechowywania danych. Platforma Azure nie ogranicza czasu przechowywania danych w magazynie usługi Recovery Services. Możesz je przechowywać przez dowolny czas. Usługa Azure Backup ma limit 9999 punktów odzyskiwania dla każdego chronionego wystąpienia. [Dowiedz się więcej](backup-introduction-to-azure-backup.md#backup-and-retention) o wpływie tego limitu na wymagania dotyczące tworzenia kopii zapasowych.
 - **Automatyczne zarządzanie magazynem** — hybrydowe środowiska często wymagają heterogenicznego magazynu — znajdującego się w części lokalnie, a w części w chmurze. W usłudze Azure Backup nie płaci się za korzystanie z lokalnych urządzeń magazynujących. Usługa Azure Backup automatycznie przydziela magazyn kopii zapasowych i zarządza nim oraz używa modelu płatności zgodnie z rzeczywistym użyciem, dzięki czemu płacisz tylko za używane miejsce w magazynie. [Dowiedz się więcej](https://azure.microsoft.com/pricing/details/backup) o cenach.
@@ -100,20 +95,26 @@ Dowiedz się więcej o [sposobie działania kopii zapasowych](backup-architectur
 --- | ---
 **Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure** | Agent nie jest wymagany. Rozszerzenie maszyny wirtualnej platformy Azure do tworzenia kopii zapasowych jest instalowane na maszynie wirtualnej platformy Azure przy pierwszym uruchomieniu tworzenia kopii zapasowej tej maszyny.<br/><br/> Obsługa systemów Windows i Linux.
 **Tworzenie kopii zapasowych maszyn z systemem Windows w środowisku lokalnym** | Pobierz, zainstaluj i uruchom agenta MARS bezpośrednio na maszynie.
-**Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure za pomocą agenta MARS** | Pobierz, zainstaluj i uruchom agenta MARS bezpośrednio na maszynie. Agent MARS może działać równocześnie z rozszerzeniem kopii zapasowej.
+**Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure za pomocą agenta usług MARS** | Pobierz, zainstaluj i uruchom agenta MARS bezpośrednio na maszynie. Agent MARS może działać równocześnie z rozszerzeniem kopii zapasowej.
 **Tworzenie kopii zapasowych maszyn lokalnych i maszyn wirtualnych platformy Azure chronionych przez program DPM lub usługę MABS** | Agent ochrony programu DPM lub usługi MABS jest uruchomiony na maszynach, które mają być chronione. Agent MARS jest uruchomiony na serwerze programu DPM lub w usłudze MABS w celu tworzenia kopii zapasowych na platformie Azure.
 
 ## <a name="which-backup-agent-should-i-use"></a>Którego agenta kopii zapasowej należy używać?
 
 **Tworzenie kopii zapasowych** | **Rozwiązanie** | **Ograniczenie**
 --- | --- | ---
-**Chcę tworzyć kopie zapasowe całej maszyny wirtualnej platformy Azure** | Włącz tworzenie kopii zapasowych dla maszyny wirtualnej. Rozszerzenie kopii zapasowej zostanie automatycznie skonfigurowane na maszynie wirtualnej platformy Azure z systemem Windows lub Linux. | Tworzona jest kopia zapasowa całej maszyny wirtualnej <br/><br/> W przypadku maszyn wirtualnych z systemem Windows kopia zapasowa jest spójna na poziomie aplikacji. W przypadku systemu Linux kopia zapasowa jest spójna na poziomie plików. Aby uwzględniać aplikacje na maszynach wirtualnych z systemem Linux, musisz to skonfigurować za pomocą skryptów niestandardowych.
+**Chcę tworzyć kopie zapasowe całej maszyny wirtualnej platformy Azure** | Włącz tworzenie kopii zapasowych dla maszyny wirtualnej. Rozszerzenie kopii zapasowej zostanie automatycznie skonfigurowane na maszynie wirtualnej platformy Azure z systemem Windows lub Linux. | Tworzona jest kopia zapasowa całej maszyny wirtualnej <br/><br/> W przypadku maszyn wirtualnych z systemem Windows kopia zapasowa jest spójna na poziomie aplikacji. W przypadku systemu Linux kopia zapasowa jest spójna na poziomie plików. Jeśli potrzebujesz programu app-aware dla maszyn wirtualnych systemu Linux, należy skonfigurować to za pomocą skryptów niestandardowych.
 **Chcę tworzyć kopie zapasowe określonych plików/folderów na maszynie wirtualnej platformy Azure** | Wdróż agenta MARS na maszynie wirtualnej.
 **Chcę bezpośrednio tworzyć kopie zapasowe maszyn lokalnych z systemem Windows** | Zainstaluj agenta usługi MARS na maszynie. | Możesz wykonywać kopie zapasowe plików, folderów i stanu systemu na platformie Azure. Kopie zapasowe nie uwzględniają aplikacji.
-**Chcę bezpośrednio tworzyć kopie zapasowe maszyn lokalnych z systemem Linux** | Musisz wdrożyć program DPM lub usługę MABS, aby móc wykonać kopię zapasową na platformie Azure. | Kopia zapasowa hosta systemu Linux nie jest obsługiwana, można tylko kopii zapasowych systemu Linux maszyny gościa hostowanych na funkcji Hyper-V lub VMWare.
+**Chcę bezpośrednio tworzyć kopie zapasowe maszyn lokalnych z systemem Linux** | Musisz wdrożyć program DPM lub usługę MABS, aby móc wykonać kopię zapasową na platformie Azure. | Kopia zapasowa hosta systemu Linux nie jest obsługiwana, tylko kopię zapasową można wykonywać maszyny gościa z systemem Linux hostowanych w funkcji Hyper-V lub VMWare.
 **Chcę tworzyć kopie zapasowe aplikacji działających lokalnie** | Aby można było tworzyć kopie zapasowe z uwzględnieniem aplikacji, maszyny muszą być chronione przez program DPM lub usługę MABS.
 **Potrzebuję szczegółowych i elastycznych ustawień kopii zapasowych i odzyskiwania dla maszyn wirtualnych platformy Azure** | Chroń maszyny wirtualne platformy Azure za pomocą usługi MABS lub programu DPM na platformie Azure, aby uzyskać dodatkową elastyczność w przypadku planowania tworzenia kopii zapasowych oraz pełną elastyczność podczas ochrony i przywracania plików, folderów, woluminów, aplikacji i stanu systemu.
 
+## <a name="how-does-azure-backup-work-with-encryption"></a>Jak działa usługa Azure Backup przy użyciu szyfrowania
+
+**Szyfrowanie** | **Tworzenie kopii zapasowych w środowisku lokalnym** | **Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure** | **Tworzenie kopii zapasowej bazy danych SQL na maszynach wirtualnych platformy Azure**
+--- | --- | --- | ---
+Szyfrowanie w spoczynku<br/> (Szyfrowanie danych, gdzie jest utrwalony/są przechowywane) | Hasło określony przez klienta jest używany do szyfrowania danych | Azure [szyfrowanie usługi Storage (SSE)](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) jest używany do szyfrowania danych przechowywanych w magazynie.<br/><br/> Kopia zapasowa automatycznie szyfruje dane przed przekazaniem jej. Usługa Azure Storage odszyfrowuje dane przed ich pobraniem. Korzystanie z kluczy zarządzanych przez klienta dla SSE nie jest obecnie obsługiwane.<br/><br/> Można utworzyć kopię zapasową maszyn wirtualnych, które używają [usługa Azure disk encryption (ADE)](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview) do szyfrowania dysków systemu operacyjnego i danych. Usługa Azure Backup obsługuje maszyny wirtualne szyfrowane przy użyciu klucza szyfrowania bloków — tylko i przy użyciu zarówno klucz szyfrowania bloków i [KEK](https://blogs.msdn.microsoft.com/cclayton/2017/01/03/creating-a-key-encrypting-key-kek/). Przegląd [ograniczenia](backup-azure-vms-encryption.md#encryption-support). | Usługa Azure Backup obsługuje kopie zapasowe baz danych programu SQL Server lub serwera z [TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017) włączone. Backup obsługuje funkcję TDE, za pomocą kluczy zarządzanych przez platformę Azure lub za pomocą kluczy zarządzanych przez klienta (BYOK).<br/><br/> Kopia zapasowa nie wykonuje żadnych szyfrowanie SQL jako część procesu tworzenia kopii zapasowej.
+Szyfrowanie podczas transferu<br/> (Szyfrowanie danych wysyłanych z jednej lokalizacji do innej) | Dane są szyfrowane przy użyciu AES256 i wysyłane do magazynu na platformie Azure przy użyciu protokołu HTTPS | W ramach platformy Azure danych między magazynu platformy Azure i magazyn jest chroniony przez protokół HTTPS. Te dane pozostają w sieci szkieletowej platformy Azure.<br/><br/> Podczas odzyskiwania plików iSCSI zabezpiecza dane przesyłane między magazynu i maszyn wirtualnych platformy Azure. Bezpiecznego tunelowania chroni kanału iSCSI. | W ramach platformy Azure danych między magazynu platformy Azure i magazyn jest chroniony przez protokół HTTPS.<br/><br/> Odzyskiwanie plików nie są istotne dla programu SQL.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

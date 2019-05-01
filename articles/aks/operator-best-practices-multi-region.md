@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: lastcoolnameleft
-ms.openlocfilehash: 926f470b8a4dbdb6d6cbfe09ee61349a819600e7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 5cac42505cd015cb018664b765e88f40667b1759
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60464600"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920464"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące firm ciągłości działania i odzyskiwania po awarii w usłudze Azure Kubernetes Service (AKS)
 
@@ -33,7 +33,7 @@ To najlepsze rozwiązania, które artykuł koncentruje się na zagadnienia, któ
 
 Klaster AKS jest wdrażany w jednym regionie. Aby zabezpieczyć się przed awariami regionu, należy wdrożyć aplikację w wielu klastrów usługi AKS w różnych regionach. Planując jakie regiony, do wdrożenia klastra usługi AKS, obowiązują następujące zastrzeżenia:
 
-* [Dostępność usługi AKS w danym regionie](https://docs.microsoft.com/azure/aks/container-service-quotas#region-availability)
+* [Dostępność usługi AKS w danym regionie](https://docs.microsoft.com/azure/aks/quotas-skus-regions#region-availability)
   * Wybierz regiony, w pobliżu użytkowników. AKS jest stale rozszerzasz działalność o nowe regiony.
 * [Regiony sparowane platformy Azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)
   * Dla tego obszaru Wybierz dwa regiony, które są skojarzone ze sobą. Te regiony koordynować aktualizacje platformy i określać priorytety w zakresie odzyskiwania w razie potrzeby.
@@ -62,7 +62,7 @@ Aby uzyskać instrukcje dotyczące sposobu konfigurowania tych punktów końcowy
 
 ### <a name="layer-7-application-routing-with-azure-front-door"></a>Routing aplikacji za pomocą usługi Azure drzwiami frontowymi warstwy 7
 
-Usługa Azure Traffic Manager wykorzystuje system DNS (warstwa 3) dla ruchu kształtu. [Usługa Azure drzwiami frontowymi (obecnie w wersji zapoznawczej)](https://docs.microsoft.com/azure/frontdoor/front-door-overview) zapewnia routing opcjonalnym HTTP/HTTPS (warstwa 7). Dodatkowe funkcje drzwiami frontowymi obejmują SSL zakończenia, domenę niestandardową, zapory aplikacji sieci Web, ponowne zapisywanie adresów URL i koligacja sesji.
+Usługa Azure Traffic Manager wykorzystuje system DNS (warstwa 3) dla ruchu kształtu. [Usługa Azure drzwiami frontowymi](https://docs.microsoft.com/azure/frontdoor/front-door-overview) zapewnia routing opcjonalnym HTTP/HTTPS (warstwa 7). Dodatkowe funkcje drzwiami frontowymi obejmują SSL zakończenia, domenę niestandardową, zapory aplikacji sieci Web, ponowne zapisywanie adresów URL i koligacja sesji.
 
 Sprawdź wymaga ruchu aplikacji, aby zrozumieć, jakie rozwiązanie będzie najbardziej odpowiedni.
 

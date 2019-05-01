@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 3dbf0aea50f382a0b325bf068a200cde42098733
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 337f2a31d60d54b47c692b06b5d63c28c0964061
+ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60679874"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64876218"
 ---
 # <a name="using-azure-cdn-with-cors"></a>Usługa Azure CDN przy użyciu mechanizmu CORS
 ## <a name="what-is-cors"></a>Co to jest mechanizm CORS?
@@ -30,9 +30,9 @@ Istnieją dwa typy żądań CORPS *prostych żądań* i *złożonych żądań.*
 
 ### <a name="for-simple-requests"></a>W przypadku prostych żądań:
 
-1. Przeglądarka wysyła żądanie CORS przy użyciu dodatkowego **pochodzenia** nagłówek żądania HTTP. Wartość tego nagłówka origin, która obsłużyła stronę nadrzędną, która jest zdefiniowana jako kombinacja *protokołu* *domeny* i *portu.*  Gdy strona z https://www.contoso.com próbuje uzyskać dostęp do danych użytkownika w początek fabrikam.com, następujący nagłówek żądania, które będą wysyłane na fabrikam.com:
+1. Przeglądarka wysyła żądanie CORS przy użyciu dodatkowego **pochodzenia** nagłówek żądania HTTP. Wartość tego nagłówka origin, która obsłużyła stronę nadrzędną, która jest zdefiniowana jako kombinacja *protokołu* *domeny* i *portu.*  Gdy strona z protokołu https\:/ / www.contoso.com próbuje uzyskać dostęp do danych użytkownika w pochodzenia fabrikam.com, następujący nagłówek żądania będą wysyłane na fabrikam.com:
 
-   `Origin: https:\//www.contoso.com`
+   `Origin: https://www.contoso.com`
 
 2. Serwer może odpowiadać z dowolnymi z następujących czynności:
 

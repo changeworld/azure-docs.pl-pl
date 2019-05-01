@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 9603c45443c6339a127f977600eeff2ba57a283f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 2bc32e28ffd6dd9dab2da61078684791a04709cc
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61228236"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922983"
 ---
 # <a name="configure-application-insights-profiler"></a>Konfigurowanie narzędzia Application Insights Profiler
 
@@ -41,7 +41,7 @@ W zależności od sposobu skonfigurowania środowiska Azure App Service Environm
 ## <a id="profileondemand"></a> Ręcznie wyzwalać Profiler
 
 ### <a name="minimum-requirements"></a>Minimalne wymagania 
-Użytkownik może ręcznie wyzwolić sesji profilera wymagają co najmniej "" dostęp do zapisu w ich roli, składnika usługi Application Insights. W większości przypadków można uzyskać dostęp automatycznie i jest wymagane żadne dodatkowe czynności. Jeśli występują problemy, roli zakres subskrypcji, aby dodać będzie "Application Insights składnik rolę"współautor. [Zobacz więcej informacji na temat kontroli dostępu roli z usługą Azure Monitoring](https://docs.microsoft.com/en-us/azure/azure-monitor/app/resources-roles-access-control).
+Użytkownik może ręcznie wyzwolić sesji profilera wymagają co najmniej "" dostęp do zapisu w ich roli, składnika usługi Application Insights. W większości przypadków można uzyskać dostęp automatycznie i jest wymagane żadne dodatkowe czynności. Jeśli występują problemy, roli zakres subskrypcji, aby dodać będzie "Application Insights składnik rolę"współautor. [Zobacz więcej informacji na temat kontroli dostępu roli z usługą Azure Monitoring](https://docs.microsoft.com/azure/azure-monitor/app/resources-roles-access-control).
 
 Profiler można uruchomić ręcznie za pomocą jednego kliknięcia. Załóżmy, że uruchomieniu testu wydajności sieci web. Potrzebna będzie śladów, które pomagają zrozumieć, jak działa aplikacja sieci web pod obciążeniem. Masz kontrolę nad kiedy są przechwytywane dane śledzenia jest niezwykle istotne, ponieważ wiadomo, kiedy zostanie uruchomiony test obciążeniowy. Ale interwał próbkowania losowe może jej przeoczyć.
 

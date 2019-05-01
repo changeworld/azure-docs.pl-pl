@@ -1,25 +1,19 @@
 ---
-title: Wymagania wstępne dotyczące danych aplikacji nadzoru | Dokumentacja firmy Microsoft
+title: Wymagania wstępne dotyczące danych aplikacji nadzoru
 description: Lista wymagań wstępnych dotyczących nadzorowaną aplikacji.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
 manager: Ricardo.Villalobos
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.author: pbutlerm
-ms.openlocfilehash: a4596b711cd90610051faee0d09501c075548062
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: pabutler
+ms.openlocfilehash: 0219d7e8a94dd6710c553f2133442867e39f6870
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60625299"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935542"
 ---
 # <a name="prerequisites-for-application-curation"></a>Wymagania wstępne dotyczące danych aplikacji nadzoru
 

@@ -8,12 +8,12 @@ ms.assetid: 89de9137-a0a4-40d1-9f8d-625acad31619
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 42e4b545a48bcbd0ad4b7faf077ebdbfe21648b1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 3cfd6bd453cd06be4676a806997697a71afb0b59
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61002677"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64727397"
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Pojęcia dla deweloperów w usłudze Azure Data Catalog
 Microsoft **usługi Azure Data Catalog** to usługa w pełni zarządzana usługa w chmurze, która zapewnia możliwości Odnajdowanie źródeł danych oraz crowdsourcing metadanych źródła danych. Deweloperzy mogą używać usługi za pośrednictwem jej interfejsów API REST. Zrozumienie z pojęciami dotyczącymi usługi jest ważne dla deweloperów pomyślnie zintegrować z usługą **usługi Azure Data Catalog**.
@@ -174,9 +174,9 @@ Popularne typy może służyć jako typy właściwości, ale nie są elementami.
 
 <tr><td>DataSourceLocation</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>protokół</td><td>string</td><td>Wymagany. W tym artykule opisano protokół używany do komunikowania się ze źródłem danych. Na przykład: "tds" dla programu SQl Server "oracle" Oracle itp. Zapoznaj się <a href="https://docs.microsoft.com/azure/data-catalog/data-catalog-dsr">Specyfikacja odwołania - DSL struktury źródła danych</a> listę aktualnie obsługiwanych protokołów.</td></tr>
-<tr><td></td><td>adres</td><td>Słownik<string, object></td><td>Wymagany. Adres jest zestaw danych, które są specyficzne dla protokołu, który jest używany do identyfikowania źródła danych, do którego nastąpiło odwołanie. Dane adres zakresu określonego protokołu, czyli jest bez znaczenia, nie wiedząc o tym protokołu.</td></tr>
+<tr><td></td><td>adres</td><td>Słownik&lt;ciąg, obiekt&gt;</td><td>Wymagany. Adres jest zestaw danych, które są specyficzne dla protokołu, który jest używany do identyfikowania źródła danych, do którego nastąpiło odwołanie. Dane adres zakresu określonego protokołu, czyli jest bez znaczenia, nie wiedząc o tym protokołu.</td></tr>
 <tr><td></td><td>uwierzytelnianie</td><td>string</td><td>Opcjonalny. Schemat uwierzytelniania używany do komunikowania się ze źródłem danych. Na przykład: windows, oauth, itp.</td></tr>
-<tr><td></td><td>connectionProperties</td><td>Słownik<string, object></td><td>Opcjonalny. Dodatkowe informacje na temat nawiązywania połączenia ze źródłem danych.</td></tr>
+<tr><td></td><td>connectionProperties</td><td>Słownik&lt;ciąg, obiekt&gt;</td><td>Opcjonalny. Dodatkowe informacje na temat nawiązywania połączenia ze źródłem danych.</td></tr>
 
 <tr><td>SecurityPrincipal</td><td></td><td></td><td>Wewnętrznej bazy danych nie wykonuje żadnych weryfikacji podanej właściwości względem usługi AAD podczas publikowania.</td></tr>
 <tr><td></td><td>upn</td><td>string</td><td>Unikatowy adres e-mail użytkownika. Musi być określona, jeśli nie zostanie podany identyfikator obiektu lub w kontekście właściwość "wartość elementu lastRegisteredBy", w przeciwnym razie opcjonalny.</td></tr>

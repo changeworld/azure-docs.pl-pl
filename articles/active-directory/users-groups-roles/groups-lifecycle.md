@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c19ee3bdd14ee6a2c5b59294f475f6c18b570fa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 1be88f0938a16302be4cf2308ba463900c067104
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60471960"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920152"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Konfigurowanie zasad wygasania grup usługi Office 365
 
@@ -86,7 +86,7 @@ Grupy można przywrócić w ciągu 30 dni od jego usunięcia, wybierając **Przy
 Jeśli grupy, do której są przywracane zawiera dokumentów, witryn programu SharePoint lub inne obiekty trwałe, może upłynąć do 24 godzin potrzeba pełnego przywrócenia grupy i jego zawartość.
 
 ## <a name="how-to-retrieve-office-365-group-expiration-date"></a>Jak pobrać datę wygaśnięcia grupy usługi Office 365
-Oprócz panelu dostępu, w którym użytkownicy mogą wyświetlać szczegóły grupy, w tym datę wygaśnięcia i Data ostatniego odnowienia datę wygaśnięcia grupy usługi Office 365 mogą być pobierane z programu Microsoft Graph REST API w wersji Beta. expirationDateTime jako właściwość grupy została włączona w wersji Beta programu Microsoft Graph. Mogą być pobierane przy użyciu żądania GET. Aby uzyskać więcej informacji, zapoznaj się [w tym przykładzie](https://docs.microsoft.com/en-us/graph/api/group-get?view=graph-rest-beta#example).
+Oprócz panelu dostępu, w którym użytkownicy mogą wyświetlać szczegóły grupy, w tym datę wygaśnięcia i Data ostatniego odnowienia datę wygaśnięcia grupy usługi Office 365 mogą być pobierane z programu Microsoft Graph REST API w wersji Beta. expirationDateTime jako właściwość grupy została włączona w wersji Beta programu Microsoft Graph. Mogą być pobierane przy użyciu żądania GET. Aby uzyskać więcej informacji, zapoznaj się [w tym przykładzie](https://docs.microsoft.com/graph/api/group-get?view=graph-rest-beta#example).
 
 > [!NOTE]
 > Aby zarządzać członkostwem w grupach na panelu dostępu, "Ogranicz dostęp do grup w panelu dostępu" musi być równa "No", w ustawieniu ogólne usługi Azure Active Directory grupy.
@@ -101,10 +101,10 @@ Zasady przechowywania zostały skonfigurowane za pomocą Centrum zabezpieczeń i
 ## <a name="powershell-examples"></a>Przykłady programu PowerShell
 Poniżej przedstawiono przykłady jak można użyć poleceń cmdlet programu PowerShell, aby skonfigurować ustawienia wygasania grup usługi Office 365 w Twojej dzierżawie:
 
-1. Zainstaluj moduł programu PowerShell w wersji 2.0 (wersja zapoznawcza) (2.0.0.137), a następnie zaloguj się w wierszu polecenia programu PowerShell:
+1. Zainstaluj moduł programu PowerShell w wersji 2.0, a następnie zaloguj się w wierszu polecenia programu PowerShell:
    ```powershell
-   Install-Module -Name AzureADPreview
-   connect-azuread 
+   Install-Module -Name AzureAD
+   Connect-AzureAD
    ```
 2. Skonfiguruj ustawienia wygaśnięcia New-AzureADMSGroupLifecyclePolicy:  To polecenie cmdlet Ustawia okres istnienia dla wszystkich grup usługi Office 365 w ramach dzierżawy do 365 dni. Powiadomienia o odnowieniu dla usługi Office 365 grup bez właścicieli zostanie wysłany do "emailaddress@contoso.com"
   

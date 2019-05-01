@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b141de4c22ba1ba1325982d8e027fa46e0909fbb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 06b6fdf7a3d21a6b7dc84c4347824d4eaeac046f
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60248764"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918414"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Skojarzyć lub dodać subskrypcję platformy Azure z dzierżawą usługi Azure Active Directory
 
@@ -31,7 +31,7 @@ Wszyscy użytkownicy mają jeden *macierzystego* katalogu do uwierzytelniania. J
 > [!Important]
 > Kiedy należy skojarzyć subskrypcję z innym katalogiem, użytkowników, którzy mają przypisane przy użyciu ról [kontroli dostępu opartej na rolach (RBAC)](../../role-based-access-control/role-assignments-portal.md) utracą dostęp. Klasyczni Administratorzy (Administrator usługi i Współadministratorzy) również utracą dostęp.
 > 
-> Ponadto przenoszenie klastra Azure Kubernetes Service (AKS) do innej subskrypcji lub przenoszenie subskrypcji będącej właścicielem klastra do nowego dzierżawcy, powoduje, że klaster, aby utracić funkcjonalność ze względu na przypisań ról utracone i praw podmiotów zabezpieczeń usługi. Aby uzyskać więcej informacji o usłudze AKS, zobacz [Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/).
+> Ponadto przenoszenie klastra Azure Kubernetes Service (AKS) do innej subskrypcji lub przenoszenie subskrypcji będącej właścicielem klastra do nowego dzierżawcy, powoduje, że klaster, aby utracić funkcjonalność ze względu na przypisań ról utracone i praw podmiotów zabezpieczeń usługi. Aby uzyskać więcej informacji o usłudze AKS, zobacz [Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/).
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 

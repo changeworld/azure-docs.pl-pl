@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 72348085a69746306e40029bc7473df271b60221
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: bf5126360140580282ebc1cb2bf73e1afa4d8829
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60946613"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920525"
 ---
 # <a name="api-management-transformation-policies"></a>Zasady transformacji usługi API Management
 Ten temat zawiera odwołania do następujących zasad usługi API Management. Aby uzyskać informacje na temat dodawania i konfigurowania zasad, zobacz [zasad w usłudze API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -215,7 +215,7 @@ lub
 ```
 
 > [!NOTE]
-> Jednostki zaplecza mogą być zarządzane za pośrednictwem funkcji zarządzania [API](https://docs.microsoft.com/en-us/rest/api/apimanagement/backend) i [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement).
+> Jednostki zaplecza mogą być zarządzane za pośrednictwem funkcji zarządzania [API](https://docs.microsoft.com/rest/api/apimanagement/backend) i [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement).
 
 ### <a name="example"></a>Przykład
 
@@ -270,7 +270,7 @@ W tym przykładzie zasady kieruje żądanie do usługi zaplecza Service fabric, 
 |Name (Nazwa)|Opis|Wymagane|Domyślne|
 |----------|-----------------|--------------|-------------|
 |podstawowy adres url|Nowe zaplecze podstawowy adres URL usługi.|Jedną z `base-url` lub `backend-id` musi być obecny.|ND|
-|Identyfikator wewnętrznej bazy danych|Identyfikator zaplecza do kierowania do. (Jednostki zaplecza są zarządzane za pośrednictwem [API](https://docs.microsoft.com/en-us/rest/api/apimanagement/backend) i [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement).)|Jedną z `base-url` lub `backend-id` musi być obecny.|ND|
+|Identyfikator wewnętrznej bazy danych|Identyfikator zaplecza do kierowania do. (Jednostki zaplecza są zarządzane za pośrednictwem [API](https://docs.microsoft.com/rest/api/apimanagement/backend) i [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement).)|Jedną z `base-url` lub `backend-id` musi być obecny.|ND|
 |sf-partition-key|Dotyczy tylko gdy wewnętrznej bazy danych jest usługi Service Fabric i jest określony przy użyciu "backend-id". Używana do rozpoznawania określonej partycji z usługi rozpoznawania nazw.|Nie|ND|
 |sf-replica-type|Dotyczy tylko gdy wewnętrznej bazy danych jest usługi Service Fabric i jest określony przy użyciu "backend-id". Kontroluje, czy żądanie należy przejść do podstawowej lub pomocniczej replice partycji. |Nie|ND|
 |sf-resolve-condition|Dotyczy tylko w przypadku wewnętrznej bazy danych usługi Service Fabric. Warunek, identyfikowanie, jeśli wywołanie do zaplecza usługi Service Fabric musi być powtarzana z nowego rozwiązania.|Nie|ND|

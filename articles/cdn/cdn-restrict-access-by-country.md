@@ -1,6 +1,6 @@
 ---
-title: Ogranicz zawartość sieci Azure CDN według kraju | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak i ograniczanie dostępu według kraju do zawartości usługi Azure CDN przy użyciu funkcji filtrowania geograficznego.
+title: Ogranicz zawartość sieci Azure CDN według kraju/regionu | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak i ograniczanie dostępu według kraju/regionu do zawartości usługi Azure CDN przy użyciu funkcji filtrowania geograficznego.
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2018
 ms.author: magattus
-ms.openlocfilehash: 248a51da76cdee06e55438a706c543c70dcf141e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 083d8f66a73471548c812e27325e1ec69ad5c45c
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60324643"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869585"
 ---
-# <a name="restrict-azure-cdn-content-by-country"></a>Ogranicz zawartość sieci Azure CDN według kraju
+# <a name="restrict-azure-cdn-content-by-countryregion"></a>Ogranicz zawartość sieci Azure CDN według kraju/regionu
 
 ## <a name="overview"></a>Omówienie
-Gdy użytkownik zażąda zawartości, domyślnie, zawartość są dostarczane niezależnie od lokalizacji użytkownika zgłaszającego żądanie. Jednak w niektórych przypadkach można ograniczyć dostęp do zawartości według kraju. Za pomocą *filtrowania geograficznego* funkcji, można utworzyć reguły w określonych ścieżkach w punkcie końcowym usługi CDN do zezwalania lub blokowania zawartości w wybranych krajach.
+Gdy użytkownik zażąda zawartości, domyślnie, zawartość są dostarczane niezależnie od lokalizacji użytkownika zgłaszającego żądanie. Jednak w niektórych przypadkach można ograniczyć dostęp do zawartości według kraju/regionu. Za pomocą *filtrowania geograficznego* funkcji, można utworzyć reguły w określonych ścieżkach w punkcie końcowym usługi CDN do zezwalania lub blokowania zawartości w wybranych krajach/regionach.
 
 > [!IMPORTANT]
 > **Usługa Azure CDN Standard from Microsoft** opartego na ścieżkach filtrowania geograficznego nie obsługują profile.
@@ -54,18 +54,18 @@ Na przykład wszystkie z następujących filtrów ścieżki katalogu są prawid�
 
 Z **akcji** listy wybierz **Zezwalaj** lub **bloku**: 
 
-- **Zezwalaj na**: Tylko użytkownicy z określonych Państw mają prawa dostępu do zasobów żądane ze ścieżki cykliczne.
+- **Zezwalaj na**: Tylko użytkownicy z określonym kraje/regiony mają prawa dostępu do zasobów żądane ze ścieżki cykliczne.
 
-- **Blok**: Użytkowników z określonym kraje są odmowa dostępu z zasobami żądane ze ścieżki cykliczne. Jeśli inne opcje filtrowania kraju zostały skonfigurowane dla tej lokalizacji, następnie wszyscy inni użytkownicy będą miały dostęp.
+- **Blok**: Użytkowników z określonym kraje/regiony są odmowa dostępu z zasobami żądane ze ścieżki cykliczne. Jeśli inne opcje filtrowania kraj/region zostały skonfigurowane dla tej lokalizacji, następnie wszyscy inni użytkownicy będą miały dostęp.
 
 Na przykład filtrowania geograficznego reguły blokowania ścieżce */zdjęcia/Strasburgu/* filtry następujące pliki:     
 *http:\//\<endpoint>.azureedge.net/Photos/Strasbourg/1000.jpg*
 *http:\//\<endpoint>.azureedge.net/Photos/Strasbourg/Cathedral/1000.jpg*
 
-### <a name="define-the-countries"></a>Zdefiniuj krajów
-Z **numerów KIERUNKOWYCH krajów** Wybierz kraje, które chcesz zablokować lub zezwolić dla ścieżki. 
+### <a name="define-the-countriesregions"></a>Zdefiniuj kraje/regiony
+Z **numerów KIERUNKOWYCH krajów** Wybierz kraje/regiony, które chcesz zablokować lub zezwolić dla ścieżki. 
 
-Po wybraniu krajów wybierz **Zapisz** aktywować nową regułę filtrowania geograficznego. 
+Po wybraniu krajów/regionów, wybierz **Zapisz** aktywować nową regułę filtrowania geograficznego. 
 
 ![Reguły filtrowania geograficznego](./media/cdn-filtering/cdn-geo-filtering-rules.png)
 
@@ -89,14 +89,14 @@ Aby uzyskać **dla usługi Azure CDN Premium from Verizon** profile interfejsu u
 
     **Krok dwa:** zostanie wyświetlona strona. 
 
-5. Wybierz jeden lub więcej krajów, z listy, a następnie wybierz **Zakończ** aby aktywować regułę. 
+5. Wybierz co najmniej jeden kraje/regiony z listy, a następnie wybierz **Zakończ** aby aktywować regułę. 
     
     Nowa reguła zostanie wyświetlona w tabeli na **filtrowanie kraju** strony.
 
     ![Reguły filtrowania geograficznego](./media/cdn-filtering/cdn-geo-filtering-premium-rules.png)
 
 ### <a name="clean-up-resources"></a>Oczyszczanie zasobów
-W tabeli reguł filtrowania kraju, wybierz ikonę usuwania obok zasadę, aby ją usunąć lub ikonę edycji, aby go zmodyfikować.
+W tabeli reguł filtrowania kraj/region, wybierz ikonę usuwania obok zasadę, aby ją usunąć lub ikonę edycji, aby go zmodyfikować.
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia
 * Zmiany w konfiguracji filtrowania geograficznego nie obowiązywać natychmiast:
@@ -108,7 +108,7 @@ W tabeli reguł filtrowania kraju, wybierz ikonę usuwania obok zasadę, aby ją
 
 * Konfiguracja filtrowania geograficznego, skojarzone ze ścieżką względną jest stosowana cyklicznie do tej ścieżki.
 
-* Tylko jedna reguła może zostać zastosowana do tej samej ścieżce względnej. Oznacza to, że nie można utworzyć wiele filtrów w kraju, które wskazują na tej samej ścieżce względnej. Jednak ponieważ kraj filtry są cykliczne, folder może mieć wiele filtrów kraju. Innymi słowy podfolder folderu wcześniej skonfigurowane można przypisać filtr innym kraju.
+* Tylko jedna reguła może zostać zastosowana do tej samej ścieżce względnej. Oznacza to, że nie można utworzyć wiele filtrów kraj/region, które wskazują na tej samej ścieżce względnej. Jednak ponieważ kraj/region filtry są cykliczne, folder może mieć wiele filtrów kraj/region. Innymi słowy podfolder folderu wcześniej skonfigurowane można przypisać filtr inny kraj/region.
 
-* Funkcja filtrowania geograficznego używa numerów kierunkowych krajów do definiowania krajów, z których żądania jest dozwolony lub blokowany dla katalogu zabezpieczone. Mimo że profile firmy Akamai i Verizon obsługuje większość tych samych numerów kierunkowych, ma kilka różnic. Aby uzyskać więcej informacji, zobacz [wysokiej dostępności treści Azure numerów kierunkowych krajów](/previous-versions/azure/mt761717(v=azure.100)). 
+* Funkcja filtrowania geograficznego używa numerów kierunkowych krajów do definiowania kraje/regiony z których żądania jest dozwolony lub blokowany dla katalogu zabezpieczone. Mimo że profile firmy Akamai i Verizon obsługuje większość tych samych numerów kierunkowych, ma kilka różnic. Aby uzyskać więcej informacji, zobacz [wysokiej dostępności treści Azure numerów kierunkowych krajów](/previous-versions/azure/mt761717(v=azure.100)). 
 

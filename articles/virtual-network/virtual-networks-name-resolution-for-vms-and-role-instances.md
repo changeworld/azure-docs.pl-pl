@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: fe63b76589c841706ae335c61e56a57c3c33fb3e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 763fc2952d7a1e2eac209cc9df53713c58ad83c9
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60640461"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925251"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Rozpoznawanie nazw dla zasobów w sieciach wirtualnych platformy Azure
 
@@ -96,7 +96,7 @@ Istnieje szereg różnych buforowanie pakietów (takich jak dnsmasq) DNS. Poniż
   * Uruchom usługę dnsmasq z `systemctl start dnsmasq.service`. 
   * Edytuj **/etc/sysconfig/network/config**i zmień *NETCONFIG_DNS_FORWARDER = ""* do *dnsmasq*.
   * Aktualizuj resolv.conf z `netconfig update`, aby ustawić pamięci podręcznej jako lokalnego rozpoznawania nazw DNS.
-* **OpenLogic (używa NetworkManager)**:
+* **CentOS (zużywa NetworkManager)**:
   * Zainstaluj pakiet dnsmasq z `sudo yum install dnsmasq`.
   * Włącz usługę dnsmasq z `systemctl enable dnsmasq.service`.
   * Uruchom usługę dnsmasq z `systemctl start dnsmasq.service`.
@@ -129,7 +129,7 @@ Plik resolv.conf jest zwykle generowane automatycznie i nie można edytować. Ok
 * **SUSE** (używa netconf):
   1. Dodaj *timeout:1 prób: 5* do **NETCONFIG_DNS_RESOLVER_OPTIONS = ""** parametru w **/etc/sysconfig/network/config**.
   2. Uruchom `netconfig update` do zaktualizowania.
-* **OpenLogic** (używa NetworkManager):
+* **CentOS** (używa NetworkManager):
   1. Dodaj *echo "Opcje timeout:1 prób: 5"* do **/etc/NetworkManager/dispatcher.d/11-dhclient**.
   2. Aktualizowanie za pomocą `service network restart`.
 

@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2019
+ms.date: 04/22/2019
 ms.author: jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a354fdf8ea75d9446c2a5e5ee6a70489cf9dbfb5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: cb426eb15d20a4bbd628897ed1c3b29c37f32afd
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60412275"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64723306"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Instrukcje: Konfigurowanie oświadczenia roli wystawionych w tokenie SAML dla aplikacji dla przedsiębiorstw
 
@@ -152,7 +152,7 @@ Jeśli aplikacja oczekuje ról niestandardowych, które zostaną przekazane do o
 
 8. Aktualizacja **atrybuty** tabeli, aby zdefiniować niestandardowe Mapowanie oświadczeń roli.
 
-9. W **atrybutów użytkowników i oświadczeń** części **logowanie jednokrotne** okna dialogowego Skonfiguruj atrybut tokenu SAML, jak pokazano na ilustracji i wykonaj następujące kroki.
+9. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** wykonaj następujące czynności, aby dodać atrybut tokenu SAML, jak pokazano w poniższej tabeli:
 
     | Nazwa atrybutu | Wartość atrybutu |
     | -------------- | ----------------|
@@ -161,11 +161,11 @@ Jeśli aplikacja oczekuje ról niestandardowych, które zostaną przekazane do o
     >[!NOTE]
     >Jeśli wartość oświadczenia rola ma wartość null, następnie usługi Azure AD nie będzie wysyłać tę wartość w tokenie, a następnie jest ustawienie domyślne dla każdego projektu.
 
-    a. Kliknij przycisk **Edytuj** przycisk, aby otworzyć **atrybutów użytkownika** okna dialogowego.
+    a. Kliknij przycisk **Edytuj** ikonę, aby otworzyć **atrybutów użytkowników i oświadczeń** okna dialogowego.
 
       ![Przycisk "Dodaj atrybut"](./media/active-directory-enterprise-app-role-management/editattribute.png)
 
-    b. Wybierz **Dodaj atrybut** otworzyć **Zarządzanie oświadczenia użytkownika** okienka.
+    b. W **Zarządzanie oświadczenia użytkownika** okno dialogowe, Dodaj atrybut tokenu SAML, klikając **Dodaj nowe oświadczenie**.
 
       ![Przycisk "Dodaj atrybut"](./media/active-directory-enterprise-app-role-management/tutorial_attribute_04.png)
 

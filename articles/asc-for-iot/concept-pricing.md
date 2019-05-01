@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2019
 ms.author: mlottner
-ms.openlocfilehash: 41b2d012ef2f6dd1ca5f57e04da43eb1a06dafde
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 00666e27c9251248aa6ecff75d88908baabf71f3
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61360153"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919698"
 ---
 # <a name="pricing-and-associated-costs"></a>Cennik i powiązane koszty
 
@@ -40,7 +40,7 @@ ASC dla IoT, model cen składa się z dwóch części i jest naliczana, gdy usł
   >[!Note]
   > Zabezpieczenia komunikatów również spowoduje naliczenie opłaty za użycie przydziału w Centrum IoT Hub.
 
-Aby uzyskać więcej informacji, zobacz [cennik usługi Security Center](https://azure.microsoft.com/en-us/pricing/details/security-center/).
+Aby uzyskać więcej informacji, zobacz [cennik usługi Security Center](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="associated-costs"></a>Powiązanych z nimi kosztów
 
@@ -65,7 +65,7 @@ Poniższa tabela zawiera podsumowanie powiązanych z nimi kosztów i skutki każ
 |     | Sposób użycia | Komentarz |
 | --- | --- | --- |
 | **Użycie limitu przydziału usługi IoT Hub** |  |
-| [Eksportowanie urządzeń](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-bulk-identity-mgmt#export-devices) zadania (Eksportowanie bliźniaczej reprezentacji) | raz dziennie | Wyłącz _bliźniaczej reprezentacji w kolekcji metadanych_ |
+| [Eksportowanie urządzeń](https://docs.microsoft.com/azure/iot-hub/iot-hub-bulk-identity-mgmt#export-devices) zadania (Eksportowanie bliźniaczej reprezentacji) | raz dziennie | Wyłącz _bliźniaczej reprezentacji w kolekcji metadanych_ |
 | **Magazyn analizy dzienników** |  |
 | Urządzenia zaleceń i alertów| Zalecenie dotyczące zabezpieczeń i alerty wygenerowane przez usługę | Nie jest opcjonalny |
 | Dane pierwotne zabezpieczeń| Dane pierwotne zabezpieczeń z urządzeń IoT, zbierane przez agentów zabezpieczeń | Wyłącz _przechowywania zdarzeń zabezpieczeń urządzenia_ |

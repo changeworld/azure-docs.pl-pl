@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/21/2019
 ms.author: juliako
-ms.openlocfilehash: a4c643ecff5c33ec19c607da6ef8db41cfeb90c6
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.openlocfilehash: 9154e5d58a36bde1827d63d11d57a77b4289a781
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63762819"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64689370"
 ---
 # <a name="analyzing-video-and-audio-files"></a>Analizowanie plików audio i wideo
 
@@ -35,7 +35,7 @@ Usługa Media Services obsługuje obecnie następujące ustawienia analizatora w
 |---|---|---|
 |[AudioAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Analiza audio|Ustawienie ma zastosowanie wstępnie zdefiniowanego zestawu analiz oparte na sztucznej Inteligencji operacje, w tym transkrypcja mowy. Obecnie usługa ustawienia wstępnego obsługuje przetwarzania zawartości za pomocą pojedynczej ścieżki audio, który zawiera mowy w jednym języku. Możesz określić język dla ładunku audio w danych wejściowych w formacie BCP 47 "region tagu języka". Obsługiwane języki są angielski ("en US" i "en-GB"), hiszpański ("es-ES" i "es-MX"), włoski ("it-IT"), niemiecki ("de-DE"), japoński ("ja-JP"), chiński ("zh-CN"), francuski ("fr-FR"), portugalski ("pt-BR"), arabski ("ar — na przykład"), rosyjski ("ru-RU"), Hindi ("cześć IN" ) i koreańskiego ("ko-KR").<br/><br/> Jeśli język nie jest określony lub ustawiony na język o wartości null, automatyczne wykrywanie będzie wybierz pierwszy język wykryte i przetwarzania w czasie trwania pliku przy użyciu wybranego języka. Funkcja wykrywania automatycznego języka obsługuje obecnie angielski, chiński, francuski, niemiecki, włoski, japoński, hiszpański, rosyjski i portugalski. Go nie obsługuje obecnie dynamicznie przełączania się między językami po wykryciu pierwszy język. Funkcja wykrywania automatycznego działa najlepiej z nagrania audio, za pomocą wyraźnie zauważalny mowy. W przypadku niepowodzenia automatycznego wykrywania języka można znaleźć języka transkrypcji powróci do języka angielskiego.|
 |[VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset)|Analiza audio i wideo|Wyodrębnia informacje (obszerne metadane) z audio i wideo, a następnie generuje plik formatu JSON. Można określić, czy mają zostać wyodrębnione audio insights podczas przetwarzania pliku wideo. Aby uzyskać więcej informacji, zobacz [analiza wideo](analyze-videos-tutorial-with-api.md).|
-|[FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset)||W tym artykule opisano ustawienia, które ma być używany podczas analizowania pliku wideo w celu wykrycia wszystkich powierzchni obecne.|
+|[FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset)|Wykrywanie twarzy w filmie wideo|W tym artykule opisano ustawienia, które ma być używany podczas analizowania pliku wideo w celu wykrycia wszystkich powierzchni obecne.|
 
 ### <a name="audioanalyzerpreset"></a>AudioAnalyzerPreset
 

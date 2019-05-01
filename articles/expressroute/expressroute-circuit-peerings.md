@@ -5,15 +5,15 @@ services: expressroute
 author: mialdrid
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 11/05/2018
-ms.author: mialdridm
+ms.date: 04/24/2019
+ms.author: mialdrid
 ms.custom: seodec18
-ms.openlocfilehash: 35cee297156cf64deeef8c9c6b514ec8176f9ca5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: c4290473a7c1edce02d74a4a787c62ccf0d9c052
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60367731"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924310"
 ---
 # <a name="expressroute-circuits-and-peering"></a>Obwody usługi ExpressRoute i komunikacji równorzędnej
 
@@ -22,10 +22,11 @@ Obwody usługi ExpressRoute z infrastruktury lokalnej firmą Microsoft za pośre
 ![](./media/expressroute-circuit-peerings/expressroute-basic.png)
 
 > [!IMPORTANT]
-> Publicznej komunikacji równorzędnej Azure została wycofana, ponieważ nie jest dostępna dla obwodów usługi ExpressRoute. Obwodów pomocy technicznej firmy Microsoft i prywatną komunikację równorzędną.  
+> Publicznej komunikacji równorzędnej Azure jest przestarzała i nie jest dostępna dla obwodów usługi ExpressRoute. Obwodów pomocy technicznej firmy Microsoft i prywatną komunikację równorzędną.  
 >
 
 ## <a name="circuits"></a>Obwody usługi ExpressRoute
+
 Obwód usługi ExpressRoute reprezentuje połączenie logiczne między lokalną infrastrukturą i usługami chmurowymi firmy Microsoft za pośrednictwem dostawcy łączności. Może zamówić łączność obejmującą wiele obwodów usługi ExpressRoute. Każdy obwód może znajdować się w tej samej lub różnych regionach i mogą być połączone z lokalnym za pośrednictwem połączenia różnych dostawców.
 
 Obwody usługi ExpressRoute nie są mapowane do żadnych jednostek fizycznych. Obwód jest unikatowo identyfikowana przez standardowy identyfikator GUID wywołać jako klucz usługi (s-key). Klucz usługi jest tylko część informacji wymienianych między firmą Microsoft, dostawca połączenia, a. Klawisz s nie jest wpis tajny ze względów bezpieczeństwa. Istnieje mapowanie 1:1 między obwodu usługi ExpressRoute i klawisz s.
@@ -35,14 +36,17 @@ Obwodów usługi ExpressRoute może zawierać dwóch niezależnych komunikacji r
 Każdy obwód o stałej szerokości pasma (50 MB/s, 100 MB/s, 200 MB/s, 500 MB/s, 1 GB/s, 10 GB/s) i jest mapowany do dostawcy łączności i lokalizacji komunikacji równorzędnej. Przepustowość, którą wybierzesz jest współużytkowany przez wszystkie komunikacja równorzędna obwodu
 
 ### <a name="quotas"></a>Przydziały, limity i ograniczenia
+
 Domyślne limity przydziału i limity dotyczą każdego obwód usługi ExpressRoute. Zapoznaj się [subskrypcji platformy Azure i limity, przydziały i ograniczenia](../azure-subscription-service-limits.md) aktualne informacje dotyczące limitów przydziału.
 
 ## <a name="routingdomains"></a>Komunikacji równorzędnej usługi ExpressRoute
+
 Obwód usługi ExpressRoute ma wiele routingu domeny/komunikację równorzędną skojarzone z nią: Usługa Azure prywatne publicznych, platformy Azure i firmy Microsoft. Każdego wystąpienia komunikacji równorzędnej jest skonfigurowane tak samo w pary routerów (aktywny / aktywny lub udostępnianie obciążenia konfiguracji) wysokiej dostępności. Usługi platformy Azure są klasyfikowane jako *publicznej platformy Azure* i *Azure prywatne* do reprezentowania schematów adresowania IP.
 
 ![](./media/expressroute-circuit-peerings/expressroute-peerings.png)
 
 ### <a name="privatepeering"></a>Prywatną komunikację równorzędną Azure
+
 Usługi Azure compute usług, a mianowicie maszyn wirtualnych (IaaS) i usług w chmurze (PaaS), które są wdrażane w ramach sieci wirtualnej mogą być połączone za pośrednictwem prywatnej komunikacji równorzędnej domeny. Prywatnej komunikacji równorzędnej domeny jest uważana za zaufane rozszerzenie sieci podstawowej w Microsoft Azure. Można skonfigurować dwukierunkowej łączności między sieciami wirtualnymi platformy Azure (Vnet) i sieci podstawowej. Tę komunikację równorzędną pozwala nawiązać połączenie z maszynami wirtualnymi i usługami bezpośrednio na ich prywatnych adresów IP w chmurze.  
 
 Możesz połączyć więcej niż jednej sieci wirtualnej do prywatnej komunikacji równorzędnej domeny. Przegląd [z często Zadawanymi pytaniami](expressroute-faqs.md) informacji na temat limity i ograniczenia. Możesz odwiedzić stronę [subskrypcji platformy Azure i limity, przydziały i ograniczenia](../azure-subscription-service-limits.md) aktualne informacje dotyczące limitów.  Zapoznaj się [Routing](expressroute-routing.md) strony, aby uzyskać szczegółowe informacje na temat konfiguracji routingu.
@@ -58,7 +62,7 @@ Zobacz [z często Zadawanymi pytaniami](expressroute-faqs.md) Aby uzyskać więc
 ### <a name="publicpeering"></a>Usługa Azure publicznej komunikacji równorzędnej (przestarzałe obwodów)
 
 > [!Note]
-> Publicznej komunikacji równorzędnej Azure ma 1 adres IP translatora adresów Sieciowych powiązanych z każdej sesji protokołu BGP. Dla większych niż 2 adresy IP translatora adresów Sieciowych, Przenieś do [komunikacji równorzędnej firmy Microsoft](https://docs.microsoft.com/en-us/azure/expressroute/how-to-move-peering), gdzie możesz można skonfigurować własny alokacje translatora adresów Sieciowych, a także filtry tras na użytek anonse selektywne prefiks. 
+> Publicznej komunikacji równorzędnej Azure ma 1 adres IP translatora adresów Sieciowych powiązanych z każdej sesji protokołu BGP. Większa niż 2 adresy IP translatora adresów Sieciowych Przesuń do komunikacji równorzędnej firmy Microsoft. Komunikacji równorzędnej firmy Microsoft pozwala skonfigurować własne alokacje translatora adresów Sieciowych, a także filtry tras na użytek anonse selektywne prefiks. Aby uzyskać więcej informacji, zobacz [przenieść do komunikacji równorzędnej firmy Microsoft](https://docs.microsoft.com/azure/expressroute/how-to-move-peering).
 >
 
 Usług, takich jak Azure Storage, bazy danych SQL i witryn sieci Web są oferowane na publicznych adresów IP. Prywatnie można połączyć do usług hostowanych na publicznych adresów IP, w tym VIP usługi w chmurze za pośrednictwem publicznej komunikacji równorzędnej domeny routingu. Można publicznej komunikacji równorzędnej domeny nawiązać połączenie z sieci Obwodowej i połączyć się z wszystkich usług platformy Azure dla swoich publicznych adresów IP z poziomu sieci WAN bez konieczności nawiązywania połączenia przez internet.
@@ -70,6 +74,7 @@ W ramach sieci, aby używać tylko trasy, czego potrzebujesz, możesz zdefiniowa
 Aby uzyskać więcej informacji na temat usług obsługiwanych za pośrednictwem publicznej komunikacji równorzędnej domeny routingu, zobacz [— często zadawane pytania](expressroute-faqs.md).
 
 ## <a name="peeringcompare"></a>Porównanie komunikacji równorzędnej
+
 W poniższej tabeli porównano trzy komunikacji równorzędnej:
 
 |  | **Prywatna komunikacja równorzędna** | **Komunikacja równorzędna firmy Microsoft** |  **Publicznej komunikacji równorzędnej** (uznane za przestarzałe w obwodów) |
@@ -86,11 +91,13 @@ Możesz włączyć co najmniej jedną z domen routingu w ramach obwodu usługi E
 Każdego wystąpienia komunikacji równorzędnej wymaga oddzielnych sesji protokołu BGP (jedną parę dla każdego typu komunikacji równorzędnej). Pary sesji protokołu BGP, podaj link o wysokiej dostępności. Jeśli łączysz się za pośrednictwem dostawców łączności 2 warstwy, ponosisz odpowiedzialność za Konfigurowanie routingu oraz zarządzanie nim. Dowiedz się więcej, przeglądając [przepływy pracy](expressroute-workflows.md) dotyczące konfigurowania usługi ExpressRoute.
 
 ## <a name="health"></a>Kondycja usługi ExpressRoute
+
 Obwody usługi ExpressRoute mogą być monitorowane, aby zapewnić dostępność, łączność z sieciami wirtualnymi i przy użyciu wykorzystanie przepustowości [rozwiązania Network Performance Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) (NPM).
 
 NPM monitoruje kondycję prywatnej komunikacji równorzędnej Azure i komunikacji równorzędnej firmy Microsoft. Zapoznaj się z naszym [wpis](https://azure.microsoft.com/blog/monitoring-of-azure-expressroute-in-preview/) Aby uzyskać więcej informacji.
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 * Znajdź dostawcę usługi. Zobacz [dostawcy i lokalizacje usługi ExpressRoute](expressroute-locations.md).
 * Upewnij się, że zostały spełnione wszystkie wymagania wstępne. Zobacz artykuł [ExpressRoute prerequisites](expressroute-prerequisites.md) (Wymagania wstępne usługi ExpressRoute).
 * Skonfiguruj połączenie usługi ExpressRoute.

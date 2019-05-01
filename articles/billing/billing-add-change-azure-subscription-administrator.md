@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: 6cc965f8e775e02e9dec9f610516739a9a2c1936
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 000315a2d751a05d3e401ee1bb9f593c6e321194
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62127721"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922895"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Dodawanie lub zmienianie Administratorzy subskrypcji platformy Azure
 
 Zarządzanie dostępem do zasobów platformy Azure wymaga odpowiedniej roli administratora. Platforma Azure oferuje system autoryzacji o nazwie kontroli dostępu opartej na rolach (RBAC) z kilku wbudowanych ról, których mogą wybierać. Można przypisać te role w różnych zakresach, takich jak grupy zarządzania, subskrypcji lub grupy zasobów.
 
-Firma Microsoft zaleca zarządzanie dostępem do zasobów przy użyciu funkcji RBAC. Jednak jeśli nadal przy użyciu klasycznego modelu wdrażania i zarządzania klasycznymi zasobami przy użyciu [moduł programu PowerShell Azure usługi](https://docs.microsoft.com/en-us/powershell/module/servicemanagement/azure), będziesz musiał użyć klasycznego administratora. 
+Firma Microsoft zaleca zarządzanie dostępem do zasobów przy użyciu funkcji RBAC. Jednak jeśli nadal przy użyciu klasycznego modelu wdrażania i zarządzania klasycznymi zasobami przy użyciu [moduł programu PowerShell Azure usługi](https://docs.microsoft.com/powershell/module/servicemanagement/azure), będziesz musiał użyć klasycznego administratora. 
 
 > [!TIP]
 > Jeśli używasz tylko witryny Azure portal do zarządzania zasobami klasycznymi, nie trzeba używać klasycznego administratora.

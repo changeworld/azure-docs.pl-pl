@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 01/28/2019
+ms.date: 04/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: e7617aec2739daa4f84bcecab060ae0f8e28fabe
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 76567db7362298b5cd35b544bf7952ebc54a2b66
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361595"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64723207"
 ---
 # <a name="tutorial-train-an-image-classification-model-with-azure-machine-learning-service"></a>Samouczek: Uczenie modelu klasyfikacji obrazów za pomocą usługi Azure Machine Learning
 
@@ -315,18 +315,16 @@ joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')
 
 Zwróć uwagę, jak skrypt pobiera dane i zapisuje modele:
 
-+ Skrypt uczenia odczytuje argument, aby znaleźć katalog zawierający dane. Podczas późniejszego przesyłania zadania wskażesz magazyn danych dla tego argumentu: `parser.add_argument('--data-folder', type=str, dest='data_folder', help='data directory mounting point')`.
++ Skrypt uczenia odczytuje argument, aby znaleźć katalog zawierający dane. Podczas późniejszego przesyłania zadania wskażesz magazyn danych dla tego argumentu: ```parser.add_argument('--data-folder', type=str, dest='data_folder', help='data directory mounting point')```
 
-+ Skrypt uczenia zapisuje model w katalogu o nazwie **outputs**: <br/>
-`joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')`.<br/>
-Dowolne pliki zapisane w tym katalogu są automatycznie przekazywane do Twojego obszaru roboczego. W dalszej części samouczka z poziomu tego katalogu uzyskasz dostęp do swojego modelu.
-Plik `utils.py` jest wywoływany przez skrypt uczenia, aby prawidłowo załadować zestaw danych. Skopiuj ten skrypt do folderu skryptów, aby był dostępny wraz ze skryptem uczenia zasobu zdalnego.
++ Skrypt szkoleniowy zapisuje modelu w katalogu o nazwie **generuje**. Dowolne pliki zapisane w tym katalogu są automatycznie przekazywane do Twojego obszaru roboczego. W dalszej części samouczka z poziomu tego katalogu uzyskasz dostęp do swojego modelu. `joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')`
 
++ Skrypt szkoleniowy wymaga pliku `utils.py` można prawidłowo załadować zestawu danych. Poniższy kod kopiuje `utils.py` do `script_folder` , dzięki czemu plik można uzyskać dostęp oraz skrypt szkolenia na zasób zdalny.
 
-```python
-import shutil
-shutil.copy('utils.py', script_folder)
-```
+  ```python
+  import shutil
+  shutil.copy('utils.py', script_folder)
+  ```
 
 
 ### <a name="create-an-estimator"></a>Tworzenie narzędzia do szacowania

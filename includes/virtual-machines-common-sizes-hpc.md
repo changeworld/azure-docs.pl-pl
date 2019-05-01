@@ -5,21 +5,47 @@ services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/06/2018
+ms.date: 04/26/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: a8f0e61a953a2e2471e49d571063f6202b7ab76d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 4b7cda593bd4dd39a7220aa282529535c6a63bea
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60540499"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64914552"
 ---
-Maszyn wirtualnych serii H są najnowsze o wysokiej wydajności obliczeniowej zmierzające do obsługi obciążeń, takich jak przetwarzanie wsadowe, analizy, modelowanie molekularne i analizy dynamiki płynów maszyn wirtualnych. Te 8 i 16 procesorów wirtualnych maszyny wirtualne są zbudowane na Intel Haswell E5-2667 V3 procesora technologii są w pamięć DDR4 i oparte na dyskach SSD magazynu tymczasowego. 
+Seria H maszyn wirtualnych (VM) są przeznaczone do klasy kierownicze wydajność, skalowalność MPI i ekonomiczność dla różnych obciążeń HPC w rzeczywistych warunkach.
 
-Seria H oferuje, obok znacznej mocy procesora CPU, różnorodne opcje dla sieci obsługujących technologię RDMA i niskie opóźnienia, korzystając z sieci InfiniBand o przepustowości FDR wraz z kilkoma konfiguracjami pamięci do obsługi obliczeń wymagających znacznego wykorzystania pamięci.
+Maszyny wirtualne z serii HB są zoptymalizowane pod kątem zastosowań zależnych od przepustowości pamięci, takich jak dynamika płynów, jawna analiza elementów skończonych i modelowanie pogody. Maszyny wirtualne HB dysponują 60 rdzeniami procesorów AMD EPYC 7551, 4 GB pamięci RAM na rdzeń procesora CPU i nie korzystają z hiperwątkowości. Platforma AMD EPYC zapewnia ponad 260 GB/s przepustowości pamięci.
+
+Maszyny wirtualne z serii połączenia Hybrydowego są zoptymalizowane pod kątem aplikacje gęstą obliczeń, takich jak analizy elementów skończonych niejawne, molekularnym dynamics i związane z chemią obliczeniową. Maszyny wirtualne HC dysponują 44 rdzeniami procesorów Intel Xeon Platinum 8168, 8 GB pamięci RAM na rdzeń procesora CPU i nie korzystają z hiperwątkowości. Platforma Intel Xeon Platinum obsługuje firmy Intel bogatego ekosystemu narzędzi programistycznych, takich jak biblioteka jądra matematyczne Intel.
+
+Zarówno HB, jak i maszyny wirtualne połączenia Hybrydowego są wyposażone w 100 Gb/s InfiniBand EDR Mellanox w systemie fat nieblokującej na poziomie drzewa Konfiguracja spójną wydajność funkcji RDMA. HB i maszyny wirtualne połączenia Hybrydowego obsługuje standardowe sterowniki Mellanox/OFED w taki sposób, że wszystkie typy MPI i wersje, a także zleceń RDMA, są również obsługiwane.
+
+Maszyny wirtualne z serii H są zoptymalizowane pod kątem aplikacje o wysokiej częstotliwości procesora CPU lub pamięci na podstawowe wymagania. Seria H maszyn wirtualnych funkcji 8 lub 16 procesorów Intel Xeon E5 2667 v3 procesora rdzenie, 7 lub 14 GB pamięci RAM na rdzeń procesora CPU, a nie wielowątkowość. Seria H oferuje 56 Gb/s InfiniBand o przepustowości fdr wraz Mellanox w systemie fat nieblokującej na poziomie drzewa Konfiguracja spójną wydajność funkcji RDMA. Maszyny wirtualne z serii H obsługuje Intel MPI 5.x i MS-MPI.
+
+## <a name="hb-series"></a>HB serii
+
+Magazyn w warstwie Premium: Obsługiwane usługi Premium Storage buforowania: Obsługiwane
+
+| Rozmiar | Procesor wirtualny | Procesor | Pamięć (GB) | Przepustowość pamięci GB/s | Podstawowy częstotliwość procesora CPU (GHz) | Częstotliwość wszystkich rdzeni (GHz, szczytowa) | Częstotliwość jednordzeniowy (GHz, szczytowa) | Wydajność RDMA (GB/s) | Obsługa MPI | Magazyn tymczasowy (GB) | Maks. liczba dysków danych | Karty sieciowe Ethernet maksymalna |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Standard_HB60rs | 60 | AMD EPYC 7551 | 240 | 263 | 2.0 | 2.55 | 2.55 | 100 | Wszyscy | 700 | 4 | 1 |
+
+<br>
+
+## <a name="hc-series"></a>Seria połączenia Hybrydowego
+
+Magazyn w warstwie Premium: Obsługiwane usługi Premium Storage buforowania: Obsługiwane
 
 
+| Rozmiar | Procesor wirtualny | Procesor | Pamięć (GB) | Przepustowość pamięci GB/s | Podstawowy częstotliwość procesora CPU (GHz) | Częstotliwość wszystkich rdzeni (GHz, szczytowa) | Częstotliwość jednordzeniowy (GHz, szczytowa) | Wydajność RDMA (GB/s) | Obsługa MPI | Magazyn tymczasowy (GB) | Maks. liczba dysków danych | Karty sieciowe Ethernet maksymalna |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Standard_HC44rs | 44 | Intel Xeon Platinum 8168 | 352 | 191 | 2.7 | 3.4 | 3.7 | 100 | Wszyscy | 700 | 4 | 1 |
+
+
+<br>
 
 ## <a name="h-series"></a>Seria H
 
@@ -29,21 +55,15 @@ Magazyn w warstwie Premium:  Nieobsługiwane
 
 Buforowanie Premium Storage:  Nieobsługiwane
 
-| Rozmiar | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność dysków: Operacje wejścia/wyjścia | Maksymalna liczba kart sieciowych |
-| --- | --- | --- | --- | --- | --- | --- |
-| Standardowa_H8 |8 |56 |1000 |32 |32 x 500 |2  |
-| Standardowa_H16 |16 |112 |2000 |64 |64 x 500 |4 |
-| Standardowa_H8m |8 |112 |1000 |32 |32 x 500 |2  |
-| Standardowa_H16m |16 |224 |2000 |64 |64 x 500 |4  |
-| Maszyna wirtualna standard_h16r — <sup>1</sup> |16 |112 |2000 |64 |64 x 500 |4  |
-| Maszyna wirtualna standard_h16mr — <sup>1</sup> |16 |224 |2000 |64 |64 x 500 |4 |
+| Rozmiar | Procesor wirtualny | Procesor | Pamięć (GB) | Przepustowość pamięci GB/s | Podstawowy częstotliwość procesora CPU (GHz) | Częstotliwość wszystkich rdzeni (GHz, szczytowa) | Częstotliwość jednordzeniowy (GHz, szczytowa) | Wydajność RDMA (GB/s) | Obsługa MPI | Magazyn tymczasowy (GB) | Maks. liczba dysków danych | Karty sieciowe Ethernet maksymalna |
+| --- | --- |--- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Standardowa_H8 | 8 | Intel Xeon E5 2667 v3 | 56 | 40 | 3.2 | 3.3 | 3.6 | 56 | Intel 5.x, MS-MPI | 1000 | 32 | 2 |
+| Standardowa_H16 | 16 | Intel Xeon E5 2667 v3 | 112 | 80 | 3.2 | 3.3 | 3.6 |  56 | Intel 5.x, MS-MPI | 2000 | 64 | 4 |
+| Standardowa_H8m | 8 | Intel Xeon E5 2667 v3 | 112 | 40 | 3.2 | 3.3 | 3.6 | 56 | Intel 5.x, MS-MPI | 1000 | 32 | 2 |
+| Standardowa_H16m | 16 | Intel Xeon E5 2667 v3 | 224 | 80 | 3.2 | 3.3 | 3.6 | 56 | Intel 5.x, MS-MPI | 2000 | 64 | 4 |
+| Maszyna wirtualna standard_h16r — <sup>1</sup> | 16 | Intel Xeon E5 2667 v3 | 112 | 80 | 3.2 | 3.3 | 3.6 | 56 | 2000 | Intel 5.x, MS-MPI | 64 | 4 |
+| Maszyna wirtualna standard_h16mr — <sup>1</sup> | 16 | Intel Xeon E5 2667 v3 | 224 | 80 | 3.2 | 3.3 | 3.6 | 56 | 2000 | Intel 5.x, MS-MPI | 64 | 4 |
 
 <sup>1</sup> w przypadku aplikacji MPI dedykowana sieć zaplecza RDMA jest włączane przez sieć FDR InfiniBand, która zapewnia bardzo ultraniskie opóźnienia i wysoką przepustowość.
 
 <br>
-
-
-
-
-
-

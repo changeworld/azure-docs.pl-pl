@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 3/5/2018
 ms.author: v-jansko
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 63592a0afc7e5da0a37c25c226b92b587aa5f886
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 513fd93f148a8a133901a5dbb60722fbc4a7d9e7
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60827525"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64866250"
 ---
 # <a name="languages-supported-by-the-translator-speech-api"></a>Języki obsługiwane przez interfejs API mowy usługi Translator
 
@@ -27,13 +27,13 @@ Następujące języki są obsługiwane w przypadku tłumaczenia mowy. Jeśli oba
 | Język mowy    |
 |:----------- |
 | Arabski (nowoczesnych standardowy)      |
+| Portugalski (Brazylia)     |
 | Chiński (mandaryński)      |
 | Polski      |
 | Francuski      |
 | Niemiecki      |
 | Włoski      |
 | Japoński      |
-| Portugalski (Brazylia)     |
 | Rosyjski      |
 | Hiszpański      |
 

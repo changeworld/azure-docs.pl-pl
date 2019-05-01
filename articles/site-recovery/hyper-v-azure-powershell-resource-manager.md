@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: 75a7424f6c3bb6ef13de9e44b46489ab1ef0fbcc
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 5fbe4fd5f85026cd62f1bd10e36561b312464054
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792984"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64690574"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Konfigurowanie odzyskiwania po awarii na platformie Azure dla maszyn wirtualnych funkcji Hyper-V przy użyciu programu PowerShell i usługi Azure Resource Manager
 
@@ -107,7 +107,7 @@ Ustaw kontekst magazynu w następujący sposób:
 ## <a name="step-5-install-the-provider-and-agent"></a>Krok 5. Zainstaluj dostawcę i agenta
 
 1. Pobierz Instalatora, aby uzyskać najnowszą wersję dostawcy z [Microsoft](https://aka.ms/downloaddra).
-2. Uruchom Instalatora na hoście theHyper-V.
+2. Uruchom Instalatora na hoście funkcji Hyper-V.
 3. Po zakończeniu instalacji przejdź do kroku rejestracji.
 4. Po wyświetleniu monitu podaj pobrane klucz, a następnie Zakończ rejestrację hosta funkcji Hyper-V.
 5. Sprawdź, czy host funkcji Hyper-V jest zarejestrowana do lokacji w następujący sposób:

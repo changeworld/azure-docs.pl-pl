@@ -1,5 +1,5 @@
 ---
-title: Usługa Azure SQL Database Managed wystąpienia strefy czasowej | Dokumentacja firmy Microsoft"
+title: Usługa Azure stref czasowych w wystąpieniu zarządzanym bazy danych SQL | Dokumentacja firmy Microsoft"
 description: Dowiedz się więcej o charakterystyce strefę czasową dla wystąpienia zarządzanego Azure SQL Database
 services: sql-database
 ms.service: sql-database
@@ -10,19 +10,19 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/10/2019
-ms.openlocfilehash: 23314e97051da95ab164baeab6e9d089f486351a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 04/25/2019
+ms.openlocfilehash: 6d7d065f45bca38cedd2c276bdd9b98dfd9675df
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61487418"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64866944"
 ---
-# <a name="time-zone-in-azure-sql-database-managed-instance-preview"></a>Strefę czasową w wystąpienie zarządzane usługi Azure SQL Database (wersja zapoznawcza)
+# <a name="time-zones-in-azure-sql-database-managed-instance-preview"></a>Strefy czasowe w bazie danych wystąpienia zarządzanego Azure SQL (wersja zapoznawcza)
 
-Przy użyciu uniwersalnego czasu koordynowanego (UTC) jest zalecanym rozwiązaniem dla rozwiązań w chmurze w warstwie danych, wystąpienia zarządzanego Azure SQL Database zapewnia szeroki wybór strefy czasowej do potrzeb istniejących aplikacji, które przechowywanie wartości daty i godziny i Data rozmowy i Funkcje czasu z kontekstem niejawne określonej strefy czasowej.
+Uniwersalny czas koordynowany (UTC) jest zalecane strefę czasową dla rozwiązań w chmurze w warstwie danych. Wystąpienie usługi Azure SQL Database Managed oferuje szeroki wybór stref czasowych do potrzeb istniejących aplikacji, które przechowują wartości daty i godziny i wywołania funkcji daty i godziny przy użyciu niejawnego kontekstu określonej strefy czasowej.
 
-Funkcje języka T-SQL, takie jak [GETDATE()](https://docs.microsoft.com/sql/t-sql/functions/getdate-transact-sql) lub kodu CLR Zwróć strefy czasowej ustawiony na wystąpieniu poziomu. Zadania agenta programu SQL również postępuj zgodnie z harmonogramem, zgodnie ze strefą czasową wystąpienia.
+Funkcje języka T-SQL, takie jak [GETDATE()](https://docs.microsoft.com/sql/t-sql/functions/getdate-transact-sql) lub kodu CLR Zwróć strefy czasowej ustawiony na wystąpieniu poziomu. Zadania agenta programu SQL Server wykonaj również harmonogramów zgodnie ze strefą czasową wystąpienia.
 
   >[!NOTE]
   > Wystąpienie zarządzane to opcja tylko wdrożenia usługi Azure SQL Database, która obsługuje ustawienie strefy czasowej. Inne opcje wdrażania zawsze postępuj zgodnie z czasem UTC.
@@ -30,20 +30,20 @@ Użyj [AT TIME ZONE](https://docs.microsoft.com/sql/t-sql/queries/at-time-zone-t
 
 ## <a name="supported-time-zones"></a>Obsługiwane stref czasowych
 
-Zestaw obsługiwanych stref czasowych jest dziedziczony z system operacyjny wystąpienia zarządzanego i jest regularnie aktualizowana Pobierz nowe definicje strefy czasowej i uwzględnia zmiany w już istniejące.
+Zestaw obsługiwanych stref czasowych są dziedziczone z system operacyjny wystąpienia zarządzanego. Jest regularnie aktualizowana, Pobierz nowe definicje strefy czasowej i uwzględnia zmiany w już istniejące. 
 
 Listę z nazwami obsługiwanych stref czasowych jest dostępna za pośrednictwem [sys.time_zone_info](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) widoku systemu.
 
-## <a name="setting-time-zone"></a>Ustawienia strefy czasowej
+## <a name="set-a-time-zone"></a>Ustawienie strefy czasowej
 
-Podczas tworzenia wystąpienia tylko można skonfigurować strefę czasową dla wystąpienia zarządzanego. Domyślna strefa czasowa jest uniwersalny czas koordynowany (UTC).
+Podczas tworzenia wystąpienia tylko można skonfigurować strefę czasową dla wystąpienia zarządzanego. Domyślna strefa czasowa jest czasem UTC.
 
   >[!NOTE]
   > Nie można zmienić strefę czasową istniejącego wystąpienia zarządzanego.
 
-### <a name="setting-the-time-zone-through-azure-portal"></a>Ustawienie strefy czasowej przy użyciu witryny Azure portal
+### <a name="set-the-time-zone-through-the-azure-portal"></a>Ustaw strefę czasową w witrynie Azure portal
 
-Podczas wprowadzania parametrów nowego wystąpienia, wybierz strefę czasową na liście obsługiwanych stref czasowych:
+Po wprowadzeniu parametrów dla nowego wystąpienia, wybierz strefę czasową na liście obsługiwanych stref czasowych. 
   
 ![Ustawienie strefy czasowej podczas tworzenia wystąpienia](media/sql-database-managed-instance-timezone/01-setting_timezone-during-instance-creation.png)
 
@@ -68,9 +68,9 @@ Określa właściwości identyfikator strefy czasowej w swojej [szablonu usługi
 
 Listę obsługiwanych wartości dla właściwości identyfikator strefy czasowej znajduje się na końcu tego artykułu.
 
-Jeśli nie zostanie określony, strefa czasowa zostaną ustawione na czas UTC.
+Jeśli nie zostanie określony, strefa czasowa jest ustawiana na czas UTC.
 
-## <a name="checking-the-time-zone-of-instance"></a>Sprawdzanie strefy czasowej wystąpienia
+## <a name="check-the-time-zone-of-an-instance"></a>Sprawdź strefę czasową wystąpienia
 
 [CURRENT_TIMEZONE](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-transact-sql) funkcja zwraca nazwę wyświetlaną wystąpienia strefy czasowej.
 
@@ -78,24 +78,23 @@ Jeśli nie zostanie określony, strefa czasowa zostaną ustawione na czas UTC.
 
 ### <a name="restore-and-import"></a>Przywracanie i importowanie
 
-Można przywrócić pliku kopii zapasowej lub importowanie danych do wystąpienia zarządzanego z wystąpienia usługi lub serwera z ustawieniami w innej strefie czasowej. Jednak pamiętaj to zrobić z ostrożnością i analizować sposób działania aplikacji i wyniki kwerendy i raporty, podobnie jak podczas przesyłania danych między dwoma wystąpieniami programu SQL Server przy użyciu ustawień w innej strefie czasowej.
+Można przywrócić pliku kopii zapasowej lub importowanie danych do wystąpienia zarządzanego z wystąpienia usługi lub serwera z ustawieniami w innej strefie czasowej. Upewnij się to zrobić z ostrożnością. Sposób działania aplikacji i analizować wyniki kwerendy i raporty, podobnie jak podczas przesyłania danych między dwoma wystąpieniami programu SQL Server przy użyciu ustawień w innej strefie czasowej.
 
 ### <a name="point-in-time-restore"></a>Przywracanie do określonego momentu
 
-Podczas wykonywania w momencie przywracania, czas do przywrócenia jest interpretowany jako czas UTC, aby uniknąć niejednoznaczności z powodu zmiany czasu i potencjalne zmiany.
+Podczas wykonywania przywracania w momencie czasu, aby przywrócić jest interpretowany jako czas UTC. To ustawienie pozwala uniknąć niejednoznaczności z powodu zmiany czasu i potencjalne zmiany.
 
 ### <a name="auto-failover-groups"></a>Grupy automatycznego trybu failover
 
-Przy użyciu tej samej strefie czasowej dla podstawowego i pomocniczego wystąpienia w tryb failover grupy nie są wymuszane, ale zdecydowanie zaleca się.
-  >[!IMPORTANT]
-  > Gdy istnieje prawidłowy scenariuszy występowania innej strefie czasowej wystąpienie pomocnicza geograficzna używane na potrzeby skali odczytu tylko, należy pamiętać, że w przypadku ręcznych lub automatycznych trybu failover do pomocniczej wystąpienia go zostaną zachowane jego oryginalnej strefy czasowej.
+Przy użyciu tej samej strefie czasowej dla podstawowego i pomocniczego wystąpienie w grupie trybu failover nie są wymuszane, ale zdecydowanie zaleca się jej.
+
+  >[!WARNING]
+  > Zdecydowanie zaleca się, że używasz tej samej strefie czasowej dla wystąpienia podstawowych i pomocniczych w grupie trybu failover. Ze względu na kilka rzadkich scenariuszach zachowanie tej samej strefie czasowej w wystąpieniach podstawowego i pomocniczego nie są wymuszane. Należy zrozumieć w przypadku ręcznego lub automatycznego przejścia w tryb failover dodatkowej wystąpienia zostaną zachowane jego oryginalnej strefy czasowej.
 
 ## <a name="limitations"></a>Ograniczenia
 
 - Nie można zmienić strefę czasową istniejącego wystąpienia zarządzanego.
-- Zewnętrzne procesy uruchamiane z zadania agenta programu SQL nie obowiązują strefy czasowej wystąpienia.
-- Wystąpienie zarządzane przez macierzystego [New AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance) polecenia cmdlet programu PowerShell nie czas przekazywania obsługę strefy parametr jeszcze. Użyj otoki PowerShell za pomocą [szablonu usługi Resource Manager](https://aka.ms/sql-mi-create-arm-posh) zamiast tego.
-- Polecenia interfejsu wiersza polecenia [Tworzenie wystąpienia zarządzanego sql az](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-create) nie obsługuje jeszcze parametr strefy czasowej.
+- Zewnętrzne procesy uruchamiane z zadania agenta serwera SQL nie obowiązują strefy czasowej wystąpienia.
 
 ## <a name="list-of-supported-time-zones"></a>Listę obsługiwanych stref czasowych
 
@@ -240,7 +239,7 @@ Przy użyciu tej samej strefie czasowej dla podstawowego i pomocniczego wystąpi
 | Samoa (czas standardowy) | (UTC+13:00) Samoa |
 | Line Islands (czas standardowy) | (UTC+14:00) Wyspa Kiritimati |
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz także 
 
 - [CURRENT_TIMEZONE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-transact-sql)
 - [AT TIME ZONE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/at-time-zone-transact-sql)

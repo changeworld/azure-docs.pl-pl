@@ -8,18 +8,24 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 03/29/2019
+ms.date: 04/28/2019
 ms.author: yluiu
-ms.openlocfilehash: 8502d643986392ba846d509819c6d8f63f931c07
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 63f705061db7c89a80578e741d02ab8f8b1041c2
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60815209"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917095"
 ---
 # <a name="face-api-release-notes"></a>Informacje o wersji interfejsu API rozpoznawania twarzy
 
 Ten artykuł odnosi się do usługi interfejsu API rozpoznawania twarzy w wersji 1.0.
+
+### <a name="release-changes-in-april-2019"></a>Zmiany wersji w kwietniu 2019 r
+
+* Ulepszone dokładność ogólnej `age` i `headPose` atrybutów. `headPose` Atrybut zostanie również zaktualizowana `pitch` wartość teraz włączone. Użyj tych atrybutów, określając je w `returnFaceAttributes` parametru [twarzy — wykrywanie](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) `returnFaceAttributes` parametru. 
+
+* Zwiększona szybkość [twarzy — wykrywanie](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), [FaceList — Dodaj twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250), [LargeFaceList — Dodaj twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3), [grupie osoba — Dodaj twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) i [ Osoba LargePersonGroup — Dodaj twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adf2a3a7b9412a4d53f42).
 
 ### <a name="release-changes-in-march-2019"></a>Zmiany wersji marca 2019 r
 

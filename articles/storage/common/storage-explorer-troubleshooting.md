@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 3e26365c4273611c81682a760695522575f3875d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 385eee6223487e9d7ca5cc3b213d180bb0f1da46
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61483382"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64710867"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Przewodnik rozwiązywania problemów do usługi Azure Storage Explorer
 
@@ -96,7 +96,7 @@ Jeśli nie można odnaleźć żadnych certyfikatów z podpisem własnym za pomoc
 
 Puste logowania wyświetlanymi w oknach dialogowych są najczęściej powodowane przez usługi AD FS pytaniem Eksploratora usługi Storage do wykonania przekierowania, który jest nieobsługiwany przez elektronów. Aby obejść ten problem, można spróbować użyć przepływu kodu urządzenia podczas logowania. W tym celu wykonaj następujące kroki:
 
-1. "Przejdź do wersji zapoznawczej" -> "Użyj logowania kodu urządzenia".
+1. Menu: -> (Wersja zapoznawcza), "Użyj logowania kodu urządzenia".
 2. Otwórz okno dialogowe Łączenie (za pośrednictwem ikony plug pionowy pasek po lewej stronie, lub "Dodawanie konta" na panelu konta).
 3. Wybierz środowisko, które chcesz zalogować się do.
 4. Kliknij przycisk "Zaloguj".

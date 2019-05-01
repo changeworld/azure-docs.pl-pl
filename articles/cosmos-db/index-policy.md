@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: thweiss
-ms.openlocfilehash: 67bc3076be91ade140b39b7dd8037299902546a9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: a089d8bd4f2197c93d43e70742743db29944b910
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61046322"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64872683"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Zasady indeksowania w usłudze Azure Cosmos DB
 
@@ -68,6 +68,8 @@ Wszystkie zasady indeksowania musi zawierać ścieżkę katalogu głównego `/*`
 
 - Podaj ścieżkę katalogu głównego selektywnie wykluczyć ścieżek, które nie muszą być indeksowane. Jest to zalecane podejście, ponieważ umożliwia ona aktywnie indeksu nowej właściwości, które mogą zostać dodane do modelu usługi Azure Cosmos DB.
 - Wyklucz ścieżka katalogu głównego, aby uwzględnić ścieżki, które muszą zostać pomyślnie zindeksowane.
+
+- Dla ścieżki na zwykłe znaki, które obejmują: znaki alfanumeryczne i _ (podkreślenie), nie trzeba wprowadzić ciąg ścieżki w całym podwójnego cudzysłowu (na przykład, "/ path /?"). Ścieżek przy użyciu innych znaków specjalnych, musisz wprowadzić ciąg ścieżki w całym podwójnych cudzysłowów (na przykład, "/\"abc ścieżki\"/?"). Jeśli oczekujesz znaki specjalne w ścieżce można udosłownić każdej ścieżce dla bezpieczeństwa. Funkcjonalnie go nie wprowadzać wszelkie różnice ucieczki każdej ścieżce Vs tylko tych, które zawierają znaki specjalne.
 
 Zobacz [w tej sekcji](how-to-manage-indexing-policy.md#indexing-policy-examples) Przykłady zasad indeksowania.
 
