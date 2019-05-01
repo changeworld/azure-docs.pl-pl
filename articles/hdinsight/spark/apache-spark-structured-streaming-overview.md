@@ -1,21 +1,19 @@
 ---
 title: Platforma Spark jest przesyłanie strumieniowe ze strukturą w usłudze Azure HDInsight
 description: Jak korzystać z aplikacji przesyłanie strumieniowe ze strukturą platformy Spark w klastrach HDInsight Spark.
-services: hdinsight
 author: maxluk
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-orgin.date: 02/05/2018
-ms.date: 04/01/2019
-ms.author: v-yiso
+ms.date: 02/05/2018
+ms.author: maxluk
 ms.openlocfilehash: 0e9d87e5b344b7091a2a0cf41d6f7fa3484dfcf3
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62098579"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64711328"
 ---
 # <a name="overview-of-apache-spark-structured-streaming"></a>Przegląd platformy Apache Spark Structured Streaming
 
@@ -25,9 +23,9 @@ Aplikacje do przesyłania strumieniowego Structured działały w klastrach HDIns
 
 Przesyłanie strumieniowe ze strukturą tworzy zapytanie długotrwałych, podczas którego operacje stosowane do danych wejściowych, takich jak zaznaczenia, projekcji, agregacji, obsługi okien i dołączenie do przesyłania strumieniowego ramkę danych za pomocą odwołania elementy Dataframe. Następnie wyjściowe wyniki do file storage (Azure Storage blob lub magazynu usługi Data Lake) lub dowolnym magazynem danych za pomocą kodu niestandardowego (np. bazy danych SQL lub usługi Power BI). Przesyłanie strumieniowe ze strukturą także dane wyjściowe do konsoli debugowania lokalnie, a także do tabeli w pamięci, dzięki czemu możesz zobaczyć dane wygenerowane na potrzeby debugowania w HDInsight. 
 
-![Przesyłanie strumieniowe ze strukturą Stream przetwarzania za pomocą HDInsight i platformy Spark ](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming.png)
+![Przesyłanie strumieniowe ze strukturą Stream przetwarzania za pomocą HDInsight i platformy Spark](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming.png)
 
-> [!NOTE]
+> [!NOTE]  
 > Przesyłanie strumieniowe ze strukturą platformy Spark zastępuje Spark Streaming (DStreams). Idąc dalej, przesyłanie strumieniowe ze strukturą otrzyma ulepszeń i konserwacji, podczas gdy DStreams będą w trybie konserwacji tylko. Przesyłanie strumieniowe ze strukturą nie jest obecnie jako funkcja uzupełniania jako DStreams dla źródeł i wychwytywanie, że obsługuje ona gotowych, więc ocena wymagań, aby wybrać odpowiednie Spark opcji przetwarzania strumienia. 
 
 ## <a name="streams-as-tables"></a>Strumienie jako tabele

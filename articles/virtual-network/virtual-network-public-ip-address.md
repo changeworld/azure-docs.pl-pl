@@ -3,8 +3,8 @@ title: Tworzenie, zmienianie lub usuwanie Azure publiczny adres IP | Dokumentacj
 description: Dowiedz się, jak tworzenie, zmienianie lub usuwanie publicznego adresu IP.
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: bb71abaf-b2d9-4147-b607-38067a10caf6
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
-ms.author: jdial
-ms.openlocfilehash: 2e6f3ce0c01674913dcb1f1980264d205eb4fcd3
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.author: kumud
+ms.openlocfilehash: e1e82d7f7b6b8bf9bfef56b569db2db097b914ab
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56652785"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64728734"
 ---
 # <a name="create-change-or-delete-a-public-ip-address"></a>Tworzenie, zmienianie lub usuwanie publicznego adresu IP
 
@@ -70,7 +70,7 @@ Publiczne adresy IP mają za symboliczną cenę. Aby wyświetlić ceny, przeczyt
 
 Chociaż portal zapewnia możliwość utworzenia dwóch publicznych adresów IP adresowania zasobów (jednej dla protokołu IPv4 i jednej dla protokołu IPv6), następujące polecenia programu PowerShell i interfejsu wiersza polecenia utworzyć jeden zasób za pomocą adresu dla jednej wersji adresu IP lub innych. Jeśli chcesz, aby dwa zasoby publicznych adresów IP adresu, jeden dla każdej wersji adresu IP należy uruchomić polecenie, określając różne nazwy i wersji zasoby publicznych adresów IP.
 
-|Narzędzie|Polecenie|
+|Tool|Polecenie|
 |---|---|
 |Interfejs wiersza polecenia|[az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create)|
 |PowerShell|[New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress)|
@@ -89,7 +89,7 @@ Chociaż portal zapewnia możliwość utworzenia dwóch publicznych adresów IP 
 
 **Polecenia**
 
-|Narzędzie|Polecenie|
+|Tool|Polecenie|
 |---|---|
 |Interfejs wiersza polecenia|[Lista public-ip sieci az](/cli/azure/network/public-ip#az-network-public-ip-list) publiczne adresy IP, [az sieci public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) wyświetlanie ustawień; [az sieci public-ip update](/cli/azure/network/public-ip#az-network-public-ip-update) można zaktualizować; [usuwanie sieci az public-ip](/cli/azure/network/public-ip#az-network-public-ip-delete) do usunięcia|
 |PowerShell|[Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) pobierania obiektu publicznego adresu IP i wyświetlić jej ustawienia [AzPublicIpAddress zestaw](/powershell/module/az.network/set-azpublicipaddress) można zaktualizować ustawień; [AzPublicIpAddress Usuń](/powershell/module/az.network/remove-azpublicipaddress) do usunięcia|

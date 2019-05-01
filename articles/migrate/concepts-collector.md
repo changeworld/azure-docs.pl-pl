@@ -4,15 +4,15 @@ description: Zawiera informacje dotyczące urządzenia modułu zbierającego w u
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 03/26/2019
+ms.date: 04/26/2019
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 224511b9748c540f2cd48a3d8393a9c74f76ce32
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: d00899e0ca358b4e2970caa8c63c98e375ea970c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60679292"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64728025"
 ---
 # <a name="about-the-collector-appliance"></a>O urządzenia modułu zbierającego
 
@@ -238,7 +238,7 @@ Zalecamy następujące kroki, aby zabezpieczyć urządzenie modułu zbierająceg
 
 ## <a name="os-license-in-the-collector-vm"></a>Licencja systemu operacyjnego w maszynie Wirtualnej modułu zbierającego.
 
-Moduł zbierający jest powiązana z licencji ewaluacyjnej systemu Windows Server 2012 R2, która jest ważna przez 180 dni. Okres próbny wygaśnie dla swojej maszyny Wirtualnej modułu zbierającego, zalecane jest aby pobrać nowy OVA i utworzyć nowe urządzenie.
+Moduł zbierający jest powiązana z licencji ewaluacyjnej systemu Windows Server 2016, która jest ważna przez 180 dni. Okres próbny wygaśnie dla swojej maszyny Wirtualnej modułu zbierającego, zalecane jest aby pobrać nowy OVA i utworzyć nowe urządzenie.
 
 ## <a name="updating-the-os-of-the-collector-vm"></a>Aktualizowanie systemu operacyjnego maszyny Wirtualnej modułu zbierającego.
 

@@ -13,14 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 37c5a97d5f7a872e916f223f2cdfc98bcdec3cad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: b7962f42b4244121a67b88ef3bf789ce40f7b1e5
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61130753"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64719623"
 ---
 # <a name="get-started-with-azure-ad-authentication-by-using-the-azure-portal"></a>Rozpoczynanie pracy z usługą uwierzytelniania usługi Azure AD przy użyciu witryny Azure portal
+
+> [!NOTE]
+> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówek dotyczących migracji od v2 do v3](../latest/migrate-from-v2-to-v3.md)
 
 Dowiedz się, jak dostęp do uwierzytelniania usługi Azure Active Directory (Azure AD) do uzyskania dostępu do interfejsu API usługi Azure Media Services za pomocą witryny Azure portal.
 

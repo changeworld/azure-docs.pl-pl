@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/18/2019
-ms.openlocfilehash: 7d052ee2d3d3bdf6cca99dd6a91b88176983113f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 04/24/2019
+ms.openlocfilehash: 8bbb638190928e0478053843264fde585ae17222
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60559739"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64720593"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql"></a>Rozszerzenia PostgreSQL w usłudze Azure Database for PostgreSQL
 PostgreSQL zapewnia możliwość rozszerzania funkcji bazy danych za pomocą rozszerzeń. Rozszerzenia umożliwiają grupowanie wielu powiązanych obiektów SQL razem w jednym pakiecie, który można załadować lub usunięte z bazy danych za pomocą jednego polecenia. Po ładowany w bazie danych rozszerzenia może działać tak jak wbudowane funkcje. Aby uzyskać więcej informacji na temat rozszerzenia PostgreSQL, zobacz [pakowania powiązanych obiektów w rozszerzeniu](https://www.postgresql.org/docs/9.6/static/extend-extensions.html).
@@ -49,6 +49,7 @@ W poniższej tabeli wymieniono standardowego rozszerzenia PostgreSQL, które są
 > | [PG\_trgm](https://www.postgresql.org/docs/9.6/static/pgtrgm.html) | Udostępnia funkcje i operatory określania podobieństwa alfanumeryczne, w oparciu o dopasowanie trigram. |
 > | [tablefunc](https://www.postgresql.org/docs/9.6/static/tablefunc.html) | Oferuje funkcje, które manipulują całe tabele, w tym krzyżowym. |
 > | [uuid-ossp](https://www.postgresql.org/docs/9.6/static/uuid-ossp.html) | Generuje powszechnie unikatowe identyfikatory (UUID). |
+> | [orafce](https://github.com/orafce/orafce) | Zawiera podzbiór funkcji i pakietów emulowane z komercyjnego baz danych. |
 
 ### <a name="full-text-search-extensions"></a>Wyszukiwanie pełnotekstowe rozszerzenia
 
@@ -94,7 +95,7 @@ W poniższej tabeli wymieniono standardowego rozszerzenia PostgreSQL, które są
 > [!div class="mx-tableFixed"]
 > | **Rozszerzenie** | **Opis** |
 > |---|---|
-> | [PostGIS](http://www.postgis.net/), postgis\_topologii, postgis\_tiger\_geocoder, postgis\_sfcgal | Obiekty przestrzennych i geograficzne database for PostgreSQL. |
+> | [PostGIS](https://www.postgis.net/), postgis\_topologii, postgis\_tiger\_geocoder, postgis\_sfcgal | Obiekty przestrzennych i geograficzne database for PostgreSQL. |
 > | adres\_standardizer, adres\_standardizer\_danych\_USA | Używany, można przeanalizować adresu na elementy składowe. Używane do obsługi geokodowania adres normalizacji kroku. |
 > | [pgrouting](https://pgrouting.org/) | Rozszerza PostGIS / bazy danych geoprzestrzennych PostgreSQL zapewnienie geoprzestrzenne routingu funkcji. |
 

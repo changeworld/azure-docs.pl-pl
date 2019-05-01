@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: johnkem
 ms.subservice: alerts
-ms.openlocfilehash: 0ea34fe4862941bde882b3ea8ed5dbaa111ac742
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 9b86df3d08ec6dfcb3100cff333c4dc5653ee1c7
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731498"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64688346"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Elementy Webhook dla alertów dziennika aktywności platformy Azure
 Jako część definicji grupy akcji można skonfigurować elementu webhook punktów końcowych, aby otrzymywać powiadomienia o alertach dziennika aktywności. Przy użyciu elementów webhook można kierować te powiadomienia do innych systemów w zakresie przetwarzania końcowego lub niestandardowej akcji. Ten artykuł pokazuje, jak wygląda ładunek HTTP POST do elementu webhook.
@@ -21,6 +21,10 @@ Jako część definicji grupy akcji można skonfigurować elementu webhook punkt
 Aby uzyskać więcej informacji na temat alertów dziennika aktywności, zobacz instrukcje [Tworzenie alertów dziennika aktywności platformy Azure](activity-log-alerts.md).
 
 Aby uzyskać informacje na temat grup akcji, zobacz instrukcje [tworzenie grup akcji](../../azure-monitor/platform/action-groups.md).
+
+> [!NOTE]
+> Można również użyć [wspólny schemat alertu](https://aka.ms/commonAlertSchemaDocs), zapewniającą zaletą pojedynczej rozszerzalne i ujednolicone ładunku alertu przez ten alert usługi w usłudze Azure Monitor, usługi integracji elementu webhook. [Więcej informacji na temat wspólnej definicji schematów alertu.](https://aka.ms/commonAlertSchemaDefinitions)
+
 
 ## <a name="authenticate-the-webhook"></a>Uwierzytelnianie elementu webhook
 Element webhook opcjonalnie użyć uwierzytelniania opartego na tokenach autoryzacji. Element webhook, identyfikator URI zapisywany jest przy użyciu tokenu Identyfikatora, na przykład `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`.
@@ -175,7 +179,7 @@ Określonego schematu szczegółowe informacje na temat wszystkich innych alert�
 | id |Identyfikator zasobu alertu. |
 | description |Opis alertu, ustawić po utworzeniu alertu. |
 | subscriptionId |Identyfikator subskrypcji platformy Azure. |
-| sygnatura czasowa |Czas generowania zdarzenia według usługi platformy Azure, który przetwarzał żądanie. |
+| timestamp |Czas generowania zdarzenia według usługi platformy Azure, który przetwarzał żądanie. |
 | resourceId |Identyfikator zasobu zasób objęty wpływem. |
 | resourceGroupName |Nazwa grupy zasobów zasób objęty wpływem. |
 | properties |Zestaw `<Key, Value>` pary (czyli `Dictionary<String, String>`) zawierającą szczegółowe informacje o zdarzeniu. |

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 4/12/2019
+ms.date: 4/23/2019
 ms.author: b-juche
-ms.openlocfilehash: fc748ee993855c77f25f9b115ea472df4281acec
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.openlocfilehash: 53b2742cf92f3a3df346ba3557c718b8d7a11a4e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63764362"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64719441"
 ---
 # <a name="create-a-volume-for-azure-netapp-files"></a>Tworzenie woluminu dla usługi Azure NetApp Files
 
@@ -44,7 +44,7 @@ Podsieć musi być delegowana do usługi Azure NetApp Files.
     * **Nazwa woluminu**      
         Określ nazwę tworzonego woluminu.   
 
-        Nazwa musi być unikatowa w obrębie grupy zasobów. Musi zawierać co najmniej trzy znaki.  Można użyć znaków alfanumerycznych.
+        Nazwa woluminu musi być unikatowa w obrębie każdej pojemności puli. Musi zawierać co najmniej trzy znaki. Można użyć znaków alfanumerycznych.
 
     * **Pojemności puli**  
         Określ pulę pojemności, którego woluminu, który ma zostać utworzony.
@@ -72,7 +72,9 @@ Podsieć musi być delegowana do usługi Azure NetApp Files.
 4. Kliknij przycisk **protokołu**, a następnie wybierz **systemu plików NFS** jako typ protokołu dla woluminu.   
     * Określ **ścieżka pliku** który będzie używany do tworzenia ścieżki eksportu dla nowego woluminu. Ścieżka eksportu służy do instalowania woluminu oraz uzyskiwania do niego dostępu.
 
-        Nazwa ścieżki pliku może zawierać tylko litery, cyfry i łączniki („-”). Musi mieć długość od 16 do 40 znaków.  
+        Nazwa ścieżki pliku może zawierać tylko litery, cyfry i łączniki („-”). Musi mieć długość od 16 do 40 znaków. 
+
+        Ścieżka pliku musi być unikatowa w ramach każdej subskrypcji i każdego regionu. 
 
     * Opcjonalnie [skonfigurować eksportowanie zasad dla woluminu systemu plików NFS](azure-netapp-files-configure-export-policy.md)
 
@@ -89,6 +91,33 @@ Podsieć musi być delegowana do usługi Azure NetApp Files.
 Usługa Azure Files NetApp obsługuje SMBv3 woluminów. Należy utworzyć połączenia usługi Active Directory przed dodaniem woluminie SMB. 
 
 ### <a name="create-an-active-directory-connection"></a>Utwórz połączenie usługi Active Directory
+
+1. Upewnij się, że spełniasz następujące requiements: 
+
+    * Konto administratora, którego używasz, musi umożliwiać do utworzenia konta komputera w ścieżce jednostki organizacyjnej (OU), który zostanie określony.
+    * Odpowiednie porty muszą być otwarte na odpowiednim serwerze Windows Active Directory (AD).  
+        Wymagane porty są następujące: 
+
+        |     Usługa           |     Port     |     Protokół     |
+        |-----------------------|--------------|------------------|
+        |    Usługi sieci Web usługi AD    |    9389      |    TCP           |
+        |    DNS                |    53        |    TCP           |
+        |    DNS                |    53        |    UDP           |
+        |    ICMPv4             |    ND       |    Odpowiedzi echa    |
+        |    Kerberos           |    464       |    TCP           |
+        |    Kerberos           |    464       |    UDP           |
+        |    Kerberos           |    88        |    TCP           |
+        |    Kerberos           |    88        |    UDP           |
+        |    LDAP               |    389       |    TCP           |
+        |    LDAP               |    389       |    UDP           |
+        |    LDAP               |    3268      |    TCP           |
+        |    Nazwa NetBIOS       |    138       |    UDP           |
+        |    SAM/LSA            |    445       |    TCP           |
+        |    SAM/LSA            |    445       |    UDP           |
+        |    Secure LDAP        |    636       |    TCP           |
+        |    Secure LDAP        |    3269      |    TCP           |
+        |    usługa W32time            |    123       |    UDP           |
+
 
 1. Z Twojego konta rozwiązania NetApp kliknij **połączenia usługi Active Directory**, następnie kliknij przycisk **Dołącz**.  
 
@@ -134,12 +163,7 @@ Usługa Azure Files NetApp obsługuje SMBv3 woluminów. Należy utworzyć połą
     * **Nazwa woluminu**      
         Określ nazwę tworzonego woluminu.   
 
-        Nazwa musi być unikatowa w obrębie grupy zasobów. Musi zawierać co najmniej trzy znaki.  Można użyć znaków alfanumerycznych.
-
-    * **Ścieżka pliku**  
-        Określ ścieżkę pliku, na podstawie której zostanie utworzona ścieżka eksportu dla nowego woluminu. Ścieżka eksportu służy do instalowania woluminu oraz uzyskiwania do niego dostępu.   
-     
-        Nazwa ścieżki pliku może zawierać tylko litery, cyfry i łączniki („-”). Musi mieć długość od 16 do 40 znaków.  
+        Nazwa woluminu musi być unikatowa w obrębie każdej pojemności puli. Musi zawierać co najmniej trzy znaki. Można użyć znaków alfanumerycznych.
 
     * **Pojemności puli**  
         Określ pulę pojemności, którego woluminu, który ma zostać utworzony.

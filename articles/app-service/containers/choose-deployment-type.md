@@ -16,19 +16,19 @@ ms.topic: article
 ms.date: 05/04/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: c8a700bcd2780ef7b0c7ad1fbb513d4b4febffcb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: bba38bb69e5abaa94b01308924fe0c6bf07ca08e
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60849986"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919974"
 ---
 # <a name="custom-image-multi-container-or-built-in-platform-image"></a>Niestandardowy obraz, wielokontenerowych lub obraz wbudowany platformy?
 
 [App Service w systemie Linux](app-service-linux-intro.md) oferuje trzy różne ścieżki umieszczania aplikacji opublikowanych w sieci Web:
 
 - **Wdrażanie obrazu niestandardowego**: "Przekształcać" aplikacji do obrazu platformy Docker, który zawiera wszystkie pliki i zależności w pakiecie gotowe do uruchomienia.
-- **Wdrażanie wielu kontenerów**: "Przekształcać" aplikacji w wielu kontenerach przy użyciu narzędzia Docker Compose lub plik konfiguracji Kubernetes.
+- **Wdrażanie wielu kontenerów**: "Przekształcać" aplikacji w wielu kontenerach za pomocą pliku konfiguracji narzędzia Docker Compose.
 - **Wdrażanie aplikacji za pomocą obrazu platformy wbudowanych**: Nasze obrazy wbudowane platformy zawierają typowe środowisk uruchomieniowych aplikacji sieci web i zależności, takie jak Node i PHP. Skorzystaj z jednej z [metody wdrażania w usłudze Azure App Service](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) wdrażanie aplikacji w usłudze Magazyn aplikacji sieci web, a następnie użyć obrazu platformy wbudowanych do jej uruchomienia.
 
 ## <a name="which-method-is-right-for-your-app"></a>Która metoda jest odpowiednia dla aplikacji? 
@@ -43,3 +43,20 @@ Dostępne są następujące podstawowe czynniki do rozważenia:
 - **Wymagania dotyczące odczytu/zapisu dysku**: Wszystkie aplikacje sieci web są przydzielane na woluminie magazynu dla zawartości sieci web. Ten wolumin, wspierana przez usługi Azure Storage jest zainstalowany na `/home` w aplikacji w systemie plików. W przeciwieństwie do plików w systemie plików kontenera pliki na woluminie zawartości są dostępne we wszystkich wystąpieniach skalowania aplikacji, a modyfikacji będzie zachowywane między ponowne uruchomienie aplikacji. Jednak opóźnienie dysku ilość zawartości jest większe i zmienna więcej niż opóźnienia systemu plików kontenera lokalnego i dostępu może mieć wpływ na uaktualnienia platformy, nieplanowane przestoje i problemy z połączeniem sieciowym. Aplikacje, które wymagają mocno dostęp tylko do odczytu do plików zawartości mogą korzystać z wdrożenie obrazu niestandardowego, w którym umieszcza pliki w systemie plików obrazów zamiast na woluminie zawartości.
 - **Tworzenie użycia zasobów**: Po wdrożeniu aplikacji ze źródła wdrożenia skrypty uruchamiane przy użyciu narzędzia Kudu tego samego planu usługi App Service zasoby obliczeniowe i magazynowe jako uruchomionej aplikacji. Wdrożenia dużych aplikacji może zużywać więcej zasobów lub czas niż wymagany. W szczególności wiele przepływów pracy wdrażania dysku duże wygenerować działania umieszczane na woluminie zawartości aplikacji, która nie jest zoptymalizowany pod kątem takiego działania. Obraz niestandardowy zapewnia wszystkie pliki i zależności aplikacji na platformie Azure w jednym pakiecie nie jest potrzebne do transferu plików dodatkowych lub akcji wdrażania.
 - **Niezbędne do szybkiego iteracji**: Dockerizing aplikacji wymaga dodatkowych kroków kompilacji. Aby zmiany zaczęły obowiązywać należy wypchnąć obraz nowe repozytorium w każdej aktualizacji. Aktualizacje te są następnie ściągane do środowiska platformy Azure. Jeśli jeden z kontenerów wbudowanych spełnia wymagania aplikacji, wdrażanie ze źródła może zaoferować szybsze przepływ pracy tworzenia oprogramowania.
+
+## <a name="next-steps"></a>Kolejne kroki
+
+Kontener niestandardowy:
+* [Uruchamianie kontenera niestandardowego](quickstart-docker-go.md)
+
+Wiele kontenerów:
+* [Utwórz aplikację obsługującą wiele kontenerów](quickstart-multi-container.md)
+
+Następujące artykuły ułatwiające rozpoczęcie pracy z usługą App Service w systemie Linux przy użyciu obrazu platformy wbudowane:
+
+* [.NET Core](quickstart-dotnetcore.md)
+* [PHP](quickstart-php.md)
+* [Node.js](quickstart-nodejs.md)
+* [Java](quickstart-java.md)
+* [Python](quickstart-python.md)
+* [Ruby](quickstart-ruby.md)

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 35f1521884de3a4a0971b6e1c00f92a9094a8550
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3bad247263af09462a44e04329e7f911afa3ad5c
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60812816"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64867721"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>Wyodrębnianie danych z tekstem wypowiedź intencje i podmioty
 Usługa LUIS daje możliwość pobrać informacje z wypowiedzi języka naturalnego użytkownika. Informacje są wyodrębniane w sposób, że może służyć przez program, aplikacji lub czatbot podjąć działania. W poniższych sekcjach Dowiedz się, jakie dane są zwracane z intencje i podmioty, wraz z przykładami JSON.
@@ -441,7 +441,7 @@ Korzystając z prostego jednostki, upewnij się, zapewnienie przykłady z zastos
 
 ### <a name="names-of-places"></a>Nazwy miejsc
 
-Nazwy lokalizacji są ustawiane i znany, takich jak miast, powiaty, Stany, prowincje i krajów. Użyj wstępnie utworzone jednostki **[geographyV2](luis-reference-prebuilt-geographyv2.md)** można wyodrębnić informacji o lokalizacji.
+Nazwy lokalizacji są ustawiane i znany, takich jak miast, powiaty, Stany, prowincje i krajów/regionów. Użyj wstępnie utworzone jednostki **[geographyV2](luis-reference-prebuilt-geographyv2.md)** można wyodrębnić informacji o lokalizacji.
 
 ### <a name="new-and-emerging-names"></a>Nowe i rozwijające się nazwy
 

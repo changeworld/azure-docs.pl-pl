@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: magoedte
-ms.openlocfilehash: 328433664d22925b4e991f2f18c858c5505cade1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: b410dab40d5434a6f23950a9f151e50240ace63b
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60782017"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64916376"
 ---
 # <a name="collect-log-data-with-the-azure-log-analytics-agent"></a>Zbieranie danych dziennika przy użyciu agenta usługi Azure Log Analytics
 
@@ -38,7 +38,7 @@ Monitorowanie komputerów z System Center Operations Manager 2012 R2 lub nowszym
 
 Windows agent może raportować do czterech obszarów roboczych usługi Log Analytics, a agenta systemu Linux obsługuje tylko raporty do jednego obszaru roboczego.  
 
-Agent dla systemu Linux i Windows, który nie jest tylko w przypadku nawiązywania połączenia z usługi Azure Monitor, obsługuje również usługi Azure Automation do obsługi roli procesu roboczego hybrydowego elementu Runbook i innych usług, takich jak [Change Tracking](../../automation/automation-change-tracking.md) i [rozwiązania Update Management](../../automation/automation-update-management.md). Aby uzyskać więcej informacji na temat roli hybrydowego procesu roboczego Runbook zobacz [usługi Azure Automation hybrydowego Runbook Worker](../../automation/automation-hybrid-runbook-worker.md).  
+Agent dla systemu Linux i Windows, który nie jest tylko w przypadku nawiązywania połączenia z usługi Azure Monitor, obsługuje również usługi Azure Automation do obsługi roli procesu roboczego hybrydowego elementu Runbook i innych usług, takich jak [Change Tracking](../../automation/change-tracking.md) i [rozwiązania Update Management](../../automation/automation-update-management.md). Aby uzyskać więcej informacji na temat roli hybrydowego procesu roboczego Runbook zobacz [usługi Azure Automation hybrydowego Runbook Worker](../../automation/automation-hybrid-runbook-worker.md).  
 
 ## <a name="supported-windows-operating-systems"></a>Obsługiwane systemy operacyjne Windows
 Windows agent oficjalnie obsługuje następujące wersje systemu operacyjnego Windows:

@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: gwallace
 ms.custom: include file
-ms.openlocfilehash: b701183fa270b1aad9a622a21c5ce0795fc8057f
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 04929de241ff36e4d67f24907747d89a16a73898
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60012505"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64733789"
 ---
 #### <a name="process-automation"></a>Automatyzacja procesów
 
-| Zasób | Limit maksymalny |Uwagi|
+| Resource | Limit maksymalny |Uwagi|
 | --- | --- |---|
 | Maksymalna liczba nowych zadań, które mogą być przesyłane co 30 sekund na konto usługi Azure Automation (nonscheduled zadań) |100 |Po osiągnięciu tego limitu, kolejne żądania, aby utworzyć zadanie się nie powieść. Klient odbiera odpowiedź o błędzie.|
 | Maksymalna liczba równoczesnych zadań uruchomionych na tym samym wystąpieniu czas na konto usługi Automation (nonscheduled zadań) |200 |Po osiągnięciu tego limitu, kolejne żądania, aby utworzyć zadanie się nie powieść. Klient odbiera odpowiedź o błędzie.|
@@ -31,6 +31,7 @@ ms.locfileid: "60012505"
 | Maksymalna liczba gniazd sieciowych może istnieć piaskownicy<sup>1</sup> |1000 |Dotyczy tylko piaskownic platformy Azure.|
 | Maksymalny czas wykonywania dozwolonych dla jednego elementu runbook<sup>1</sup> |3 godziny |Dotyczy tylko piaskownic platformy Azure.|
 | Maksymalna liczba kont usługi Automation w ramach subskrypcji |Bez ograniczeń ||
+| Maksymalna liczba grupy hybrydowych procesów roboczych na konto usługi Automation|4,000||
 |Maksymalna liczba równoczesnych zadań, które mogą być uruchamiane na jednym hybrydowego procesu roboczego elementu Runbook|50 ||
 | Rozmiar parametru zadania maksymalna elementu runbook   | wynosi 512 kilobitów||
 | Parametry maksymalna elementu runbook   | 50|W przypadku osiągnięcia limitu 50 parametrów można przekazywać ciąg JSON lub XML do parametru i go przeanalizować przy użyciu elementu runbook.|

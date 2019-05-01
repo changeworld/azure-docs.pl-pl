@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: c8cb4713e38ca0da610c687325f3810f57da2b26
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 67bab857e66edd8e9fae7d45c6157f018da81ccf
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61216155"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64867031"
 ---
 # <a name="analyze-usage-statistics-with-azure-cdn-advanced-http-reports"></a>Analizowanie statystyk użycia z usługą Azure CDN, zaawansowane raporty HTTP
 ## <a name="overview"></a>Omówienie
@@ -42,30 +42,30 @@ W tym dokumencie wyjaśniono, zaawansowanych raportów HTTP w usłudze Microsoft
 ## <a name="geography-reports-map-based"></a>Raporty lokalizacji geograficznej (opartą na mapie)
 Istnieje pięć raportów, które wykorzystują mapę, aby wskazać, regionów, z których żąda zawartości. Te raporty są mapę świata, mapę Stanów Zjednoczonych, Kanadzie mapy, mapa Europa i Azja i Pacyfik mapy.
 
-Każdy raport na podstawie mapy szereguje geograficzne jednostki (czyli krajów, regionów i prowincje) na podstawie procent trafień, które pochodzą z tego regionu. Ponadto mapy znajduje się na ułatwianiu wizualizacji lokalizacji, z których żąda zawartości. Jest w stanie to zrobić za kodowanie kolorami każdego regionu, zależnie od ilości żądanie doświadczenie w danym regionie. Jaśniejsze Zacieniowane regiony wskazują niższe zapotrzebowanie na zawartości, a ciemniejsze regionów wskazują wyższe poziomy żądanie dotyczące Twojej zawartości.
+Każdy raport na podstawie mapy szereguje jednostek geograficznych (czyli kraje/regiony mapę znajduje się na ułatwianiu wizualizacji lokalizacji, z których żąda zawartości. Jest w stanie to zrobić za kodowanie kolorami każdego regionu, zależnie od ilości żądanie doświadczenie w danym regionie. Jaśniejsze Zacieniowane regiony wskazują niższe zapotrzebowanie na zawartości, a ciemniejsze regionów wskazują wyższe poziomy żądanie dotyczące Twojej zawartości.
 
-Szczegółowe informacje ruchu sieciowego i przepustowości dla każdego regionu, znajduje się bezpośrednio poniżej mapy. Dzięki temu do wyświetlania całkowita liczba trafień, procent trafień, łączna ilość danych przesyłanych (w gigabajtach) i wartość procentowa danych przesyłanych w poszczególnych regionach. Wyświetl opis każdego z tych metryk. Na koniec po najechaniu kursorem na region (czyli kraju, stanu lub prowincji), nazwę i procent trafień, które wystąpiły w regionie, pojawi się jako etykietka narzędzia.
+Szczegółowe informacje ruchu sieciowego i przepustowości dla każdego regionu, znajduje się bezpośrednio poniżej mapy. Dzięki temu do wyświetlania całkowita liczba trafień, procent trafień, łączna ilość danych przesyłanych (w gigabajtach) i wartość procentowa danych przesyłanych w poszczególnych regionach. Wyświetl opis każdego z tych metryk. Na koniec, po umieszczeniu region (czyli kraj/region, stan lub województwo), nazwę i procent trafień, które wystąpiły w tym regionie będą wyświetlane jako etykietka narzędzia.
 
 Krótki opis znajduje się poniżej dla każdego typu raportu opartą na mapie lokalizacji geograficznej.
 
 | Nazwa raportu | Opis |
 | --- | --- |
-| Mapa świata |Ten raport służy do wyświetlania na całym świecie żądanie dotyczące Twojej zawartości w sieci CDN. Każdego kraju jest oznaczone kolorami na mapę świata, aby wskazać procent trafień, które pochodzą z tego regionu. |
+| Mapa świata |Ten raport służy do wyświetlania na całym świecie żądanie dotyczące Twojej zawartości w sieci CDN. Każdego kraju/regionu jest oznaczone kolorami na mapę świata, aby wskazać procent trafień, które pochodzą z tego regionu. |
 | Mapa USA |Ten raport służy do wyświetlania żądanie dotyczące Twojej zawartości w sieci CDN w Stanach Zjednoczonych. Każdy stan jest oznaczone kolorami na tej mapie, aby wskazać procent trafień, które pochodzą z tego regionu. |
 | Kanada mapy |Ten raport służy do wyświetlania żądanie dotyczące Twojej zawartości w sieci CDN w Kanadzie. Każdy region jest oznaczone kolorami na tej mapie, aby wskazać procent trafień, które pochodzą z tego regionu. |
-| Mapa Europa |Ten raport służy do wyświetlania żądanie dotyczące Twojej zawartości w sieci CDN w Europie. Każdego kraju jest oznaczone kolorami na tej mapie, aby wskazać procent trafień, które pochodzą z tego regionu. |
-| Azja i Pacyfik, część mapy |Ten raport służy do wyświetlania żądanie dotyczące Twojej zawartości w sieci CDN w Azji. Każdego kraju jest oznaczone kolorami na tej mapie, aby wskazać procent trafień, które pochodzą z tego regionu. |
+| Mapa Europa |Ten raport służy do wyświetlania żądanie dotyczące Twojej zawartości w sieci CDN w Europie. Każdego kraju/regionu jest oznaczone kolorami na tej mapie, aby wskazać procent trafień, które pochodzą z tego regionu. |
+| Azja i Pacyfik, część mapy |Ten raport służy do wyświetlania żądanie dotyczące Twojej zawartości w sieci CDN w Azji. Każdego kraju/regionu jest oznaczone kolorami na tej mapie, aby wskazać procent trafień, które pochodzą z tego regionu. |
 
 ## <a name="geography-reports-bar-charts"></a>Lokalizacja geograficzna raportów (wykresy słupkowe)
-Istnieją dwa dodatkowe raporty zapewniające informacje statystyczne według lokalizacji geograficznej, miasta i pierwszych krajów. Te raporty priorytetyzować miast i kraje, odpowiednio, zgodnie z liczbą trafień, które pochodzą z tych regionów. Podczas generowania ten typ raportu, wykres słupkowy poinformuje 10 pierwszych miast lub krajach, które zażądał zawartości za pośrednictwem określonej platformy. Ten wykres słupkowy pozwala szybko ocenić, regionów, które generują najwyższej liczby żądań dotyczących zawartości.
+Istnieją dwa dodatkowe raporty zapewniające informacje statystyczne według lokalizacji geograficznej, miasta i pierwszych krajów. Te raporty priorytetyzować miasta i kraje/regiony, odpowiednio, zgodnie z liczbą trafień, pochodzących z tych krajów/regionów. Podczas generowania ten typ raportu, wykres słupkowy poinformuje 10 pierwszych miast lub krajów/regionów, które zażądał zawartości za pośrednictwem określonej platformy. Ten wykres słupkowy pozwala szybko ocenić, regionów, które generują najwyższej liczby żądań dotyczących zawartości.
 
 Po lewej stronie programu graph (oś y) wskazuje, ile razy wystąpił w wybranym regionie. Bezpośrednio pod wykresem (oś x) można znaleźć etykietę dla każdego najważniejsze 10 regionach.
 
 ### <a name="using-the-bar-charts"></a>Przy użyciu wykresów słupkowych
 * Po umieszczeniu wskaźnika myszy nad paskiem, nazwę i łączna liczba trafień, które wystąpiły w tym regionie będą wyświetlane jako etykietka narzędzia.
-* Etykietka narzędzia raportu miasta identyfikuje Miasto jego nazwy, województwa oraz skrót kraju.
-* Jeśli nie można określić miasto lub region (czyli stan/prowincję/województwo), z której pochodzi żądanie, następnie go będzie wskazuje, że są nieznane. Jeśli kraj jest nieznany, a następnie dwa znaki zapytania (tj.)?), zostanie wyświetlony.
-* Raport może zawierać metryki dla "Europa" lub "Azja/Region." Te elementy nie są przeznaczone do zapewnienia informacji statystycznych na wszystkie adresy IP w tych regionach. Przeciwnie dotyczą wyłącznie żądań pochodzących z adresów IP, które są rozproszone na Europa lub Azja zamiast określonym mieście lub kraju.
+* Etykietka narzędzia raportu miasta identyfikuje Miasto jego nazwy, województwa oraz skrót kraju/regionu.
+* Jeśli nie można określić miasto lub region (czyli stan/prowincję/województwo), z której pochodzi żądanie, następnie go będzie wskazuje, że są nieznane. Jeśli kraj/region jest nieznany, a następnie dwa znaki zapytania (tj.)?), zostanie wyświetlony.
+* Raport może zawierać metryki dla "Europa" lub "Azja/Region." Te elementy nie są przeznaczone do zapewnienia informacji statystycznych na wszystkie adresy IP w tych regionach. Przeciwnie dotyczą wyłącznie żądań pochodzących z adresów IP, które są rozproszone na Europa lub Azja zamiast określonym mieście lub kraju/regionu.
 
 Poniżej można wyświetlić danych, który został użyty do wygenerowania wykres słupkowy. Można znaleźć całkowita liczba trafień, procent trafień, ilość danych przesyłanych (w gigabajtach), a wartość procentowa danych zostaną przeniesione do góry 250 regionów. Wyświetl opis każdego z tych metryk.
 
@@ -74,7 +74,7 @@ Dla obu typów raportów poniżej znajduje się krótki opis.
 | Nazwa raportu | Opis |
 | --- | --- |
 | Miasta |Ten raport szereguje miast zgodnie z liczbą trafień, które pochodzą z tego regionu. |
-| Kraje |Ten raport szereguje krajów zgodnie z liczbą trafień, które pochodzą z tego regionu. |
+| Kraje |Ten raport szereguje krajów/regionów, zgodnie z liczbą trafień, które pochodzą z tego kraju/regionu. |
 
 ## <a name="daily-summary"></a>Codzienne podsumowanie
 Raport z podsumowaniem codzienne służy do wyświetlania łączną liczbą trafień i transfery danych za pośrednictwem danej platformy codziennie. Te informacje mogą służyć do szybko rozpoznać wzorców działania usługi CDN. Na przykład ten raport może pomóc wykryć dni doświadczonym nowszego lub mniejsza niż oczekiwanego natężenia ruchu.

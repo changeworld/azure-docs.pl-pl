@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: danlep
-ms.openlocfilehash: a4da7a23d6dcb50164829507130fed145abeebbd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 25f9d4e02bcb354acf1c771157622f07c5f4bcc1
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60684222"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64712808"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Wdrażanie wystąpień kontenerów w sieci wirtualnej platformy Azure
 
@@ -265,7 +265,7 @@ az container delete --resource-group myResourceGroup --name appcontaineryaml -y
 
 Początkowa wersja zapoznawcza tej funkcji wymaga kilku dodatkowych poleceń można usunąć zasobów sieciowych, że została utworzona wcześniej. Jeśli przykładowe polecenia w poprzednich sekcjach tego artykułu jest używany do tworzenia sieci wirtualnej i podsieci, można użyć poniższy skrypt do usuwania tych zasobów sieciowych.
 
-Przed wykonaniem skryptu, ustaw `RES_GROUP` zmienną nazwy grupy zasobów zawierająca sieć wirtualną i podsieć, która powinna zostać usunięta. Skrypt jest sformatowany do powłoki Bash. Jeśli wolisz inny powłoki, takich jak program PowerShell lub wierszu polecenia, należy odpowiednio zmienić przypisanie zmiennej i metod dostępu.
+Przed wykonaniem skryptu, ustaw `RES_GROUP` zmienną nazwy grupy zasobów zawierająca sieć wirtualną i podsieć, która powinna zostać usunięta. Aktualizowanie nazw sieć wirtualną i podsieć, jeśli nie używasz `aci-vnet` i `aci-subnet` podane wcześniej w nazwy. Skrypt jest sformatowany do powłoki Bash. Jeśli wolisz inny powłoki, takich jak program PowerShell lub wierszu polecenia, należy odpowiednio zmienić przypisanie zmiennej i metod dostępu.
 
 > [!WARNING]
 > Ten skrypt spowoduje usunięcie zasobów! Usuwa sieć wirtualną i wszystkie podsieci, które zawiera. Pamiętaj, że nie są już potrzebne *wszelkie* zasobów w sieci wirtualnej, w tym wszelkie podsieci, które zawiera, przed uruchomieniem tego skryptu. Po usunięciu **te zasoby są nieodwracalny**.
@@ -281,6 +281,8 @@ NETWORK_PROFILE_ID=$(az network profile list --resource-group $RES_GROUP --query
 az network profile delete --id $NETWORK_PROFILE_ID -y
 
 # Get the service association link (SAL) ID
+# Replace aci-vnet and aci-subnet with your VNet and subnet names in the following commands
+
 SAL_ID=$(az network vnet subnet show --resource-group $RES_GROUP --vnet-name aci-vnet --name aci-subnet --query id --output tsv)/providers/Microsoft.ContainerInstance/serviceAssociationLinks/default
 
 # Delete the default SAL ID for the subnet

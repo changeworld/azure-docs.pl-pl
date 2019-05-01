@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/01/2019
+ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: ec0e8ae1bf657cda59f3d133db23106436e184e3
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 262ccc311b2b7ec634183eb4f914902048ba2c3b
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62120896"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64872041"
 ---
 # <a name="azure-storage-security-overview"></a>Omówienie zabezpieczeń usługi Azure Storage
 
-Usługa Azure Storage to rozwiązanie magazynu w chmurze dla nowoczesnych aplikacji, które polegają na trwałości, dostępności i skalowalności, aby spełniać potrzeby klientów. Usługa Azure Storage udostępnia rozbudowany zestaw funkcji zabezpieczeń. Możesz:
+Ten artykuł zawiera omówienie funkcji zabezpieczeń platformy Azure, korzystających z usługi Azure Storage. Usługa Azure Storage to rozwiązanie magazynu w chmurze dla nowoczesnych aplikacji, które polegają na trwałości, dostępności i skalowalności, aby spełniać potrzeby klientów. Usługa Azure Storage udostępnia rozbudowany zestaw funkcji zabezpieczeń. Możesz:
 
 * Zabezpieczanie konta magazynu przy użyciu kontroli dostępu opartej na rolach (RBAC) i Azure Active Directory.
 * Zabezpiecz dane przesyłane między aplikacją i platformy Azure za pomocą szyfrowania po stronie klienta, HTTPS lub SMB 3.0.
@@ -33,9 +33,6 @@ Usługa Azure Storage to rozwiązanie magazynu w chmurze dla nowoczesnych aplika
 * Korzystanie z analizy, aby śledzić metodę uwierzytelniania, która korzysta z aktualnie podczas uzyskiwania dostępu do magazynu.
 
 Aby uzyskać bardziej szczegółowy widok zabezpieczeń w usłudze Azure Storage, zobacz [Przewodnik po zabezpieczeniach usługi Azure Storage](../storage/common/storage-security-guide.md). Ten przewodnik zawiera szczegółowe informacje na funkcje zabezpieczeń usługi Azure Storage. Funkcje te obejmują klucze konta magazynu, szyfrowanie danych podczas przesyłania i nieużywanych danych i usługa storage analytics.
-
-
-Ten artykuł zawiera omówienie funkcji zabezpieczeń platformy Azure, korzystających z usługi Azure Storage. Linki do artykułów podać szczegóły każdej funkcji, dzięki czemu możesz dowiedzieć się więcej.
 
 ## <a name="role-based-access-control"></a>Kontrola dostępu oparta na rolach
 

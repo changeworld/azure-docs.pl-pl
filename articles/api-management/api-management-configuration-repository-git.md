@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: adf4d8d5cfcef2dde8193ce1b7f2805a44e2d93d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: b5bf778f06ff0223fd48a1282aadf223ff032b0f
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60657926"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919849"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Zapisywanie i konfigurowanie konfiguracji usługi API Management przy użyciu narzędzia Git
 
@@ -173,9 +173,9 @@ Te pliki można utworzyć, usunięte, edytować i zarządzane w lokalnym systemi
 > [!NOTE]
 > Następujące jednostki nie znajdują się w repozytorium Git i nie można skonfigurować przy użyciu narzędzia Git.
 >
-> * [Użytkownicy](https://docs.microsoft.com/en-us/rest/api/apimanagement/user)
-> * [Subskrypcje](https://docs.microsoft.com/en-us/rest/api/apimanagement/subscription)
-> * [Nazwane wartości](https://docs.microsoft.com/en-us/rest/api/apimanagement/property)
+> * [Użytkownicy](https://docs.microsoft.com/rest/api/apimanagement/user)
+> * [Subskrypcje](https://docs.microsoft.com/rest/api/apimanagement/subscription)
+> * [Nazwane wartości](https://docs.microsoft.com/rest/api/apimanagement/property)
 > * Jednostki portalu dla deweloperów, inne niż style
 >
 

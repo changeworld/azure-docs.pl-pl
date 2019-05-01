@@ -1,6 +1,6 @@
 ---
-title: Pojęcia dotyczące usługi Azure Media Services — Azure | Dokumentacja firmy Microsoft
-description: Ten temat zawiera krótkie omówienie koncepcji usługi Azure Media Services i zawiera łącza, aby uzyskać szczegółowe informacje.
+title: Usługa Azure Media Services terminy i pojęcia — Azure | Dokumentacja firmy Microsoft
+description: Ten temat zawiera krótkie omówienie usługi Azure Media Services terminy i pojęcia i łącza, aby uzyskać więcej informacji.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,20 +12,38 @@ ms.topic: article
 ms.date: 04/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 74a4ee03562963c8a50159f085e4b76b6d461ed9
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: feba7d53f196f6675aca965218046df67bbef81d
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62103856"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64867060"
 ---
 # <a name="media-services-concepts"></a>Pojęcia dotyczące usługi Media Services
 
-Ten temat zawiera krótkie omówienie koncepcji usługi Azure Media Services i zawiera linki do artykułów o szczegółowe informacje z usługi Media Services v3 pojęć i funkcji. Przed rozpoczęciem programowania należy zapoznać się z opisami podstawowych pojęć zawartymi w tych tematach.
+Ten temat zawiera krótkie omówienie pojęcia i terminologia dotycząca usługi Azure Media Services. Artykuł zawiera również linki do artykułów zawierających szczegółowe informacje z usługi Media Services v3 pojęć i funkcji. 
+
+Przed rozpoczęciem programowania należy zapoznać się z opisami podstawowych pojęć zawartymi w tych tematach.
 
 > [!NOTE]
 > Obecnie nie można zarządzać zasobami w wersji 3 z witryny Azure Portal. Użyj [interfejsu API REST](https://aka.ms/ams-v3-rest-ref), [interfejsu wiersza polecenia](https://aka.ms/ams-v3-cli-ref) lub jednego z obsługiwanych [zestawów SDK](developers-guide.md).
 
+## <a name="terminology"></a>Terminologia
+
+W tej sekcji przedstawiono, jak niektóre typowe terminy branżowe mapują do interfejsu API usługi Media Services v3.
+
+### <a name="live-event"></a>Wydarzenie na żywo
+
+A **wydarzenie na żywo** reprezentuje potok przyjęciem, transkodowanie (opcjonalnie) i pakowania strumieni na żywo metadanych wideo, audio i w czasie rzeczywistym.
+
+Dla klientów migrację z interfejsów API usługi Media Services v2 **wydarzenie na żywo** zastępuje **kanału** jednostki w wersji 2. Aby uzyskać więcej informacji, zobacz [migracji od v2 do v3](migrate-from-v2-to-v3.md).
+
+### <a name="streaming-endpoint-packaging-and-origin"></a>Punkt końcowy przesyłania strumieniowego (Tworzenie pakietów i źródła)
+
+A **punkt końcowy przesyłania strumieniowego** reprezentuje dynamiczny (just-in-time) pakowania i pochodzenia usługę która umożliwia dostarczanie zawartości na żywo i na żądanie bezpośrednio do aplikacji odtwarzacza klienta, przy użyciu jednej z wspólnych protokołów przesyłania strumieniowego multimediów (HLS lub DASH). Ponadto **punkt końcowy przesyłania strumieniowego** zapewnia szyfrowania dynamicznego (just-in-time) do branży protokołów DRM.
+
+W przesyłania strumieniowego multimediów branży, ta usługa jest często nazywany **Packager** lub **pochodzenia**.  Inne typowe terminy w branży dla tej funkcji to JITP (Just w czas packager) lub JITE (Just w czas encryption). 
+ 
 ## <a name="cloud-upload-and-storage"></a>Przekazywanie do chmury i magazynowanie w niej
 
 Aby rozpocząć zarządzanie, szyfrowanie, kodowanie, analizowania i przesyłanie strumieniowe zawartości multimedialnej na platformie Azure, musisz utworzyć konto usługi Media Services i przekazać pliki cyfrowe do **zasoby**.
@@ -52,7 +70,7 @@ Do analizowania plików audio i wideo, należy również utworzyć **przekształ
 
 ## <a name="packaging-delivery-protection"></a>Tworzenie pakietów, dostarczanie, ochrona
 
-Gdy zawartość jest zakodowany, możesz korzystać z zalet **funkcję dynamicznego tworzenia pakietów**. **Punkt końcowy przesyłania strumieniowego** usługa funkcję dynamicznego tworzenia pakietów w usłudze Media Services umożliwia dostarczanie zawartości multimedialnej dla graczy klienta. Aby udostępnić pliki wideo w zasobach wyjściowych klientów do odtwarzania, należy utworzyć **lokalizatora przesyłania strumieniowego** i późniejszego kompilowania adresów URL przesyłania strumieniowego. 
+Gdy zawartość jest zakodowany, możesz korzystać z zalet **funkcję dynamicznego tworzenia pakietów**. W usłudze Media Services **punkt końcowy przesyłania strumieniowego**  /pochodzenia funkcję dynamicznego tworzenia pakietów usługa jest używana do dostarczania zawartości multimediów do klienta graczy. Aby udostępnić pliki wideo w zasobach wyjściowych klientów do odtwarzania, należy utworzyć **lokalizatora przesyłania strumieniowego** i późniejszego kompilowania adresów URL przesyłania strumieniowego. 
 
 Podczas tworzenia **lokalizatora przesyłania strumieniowego**, oprócz nazwy zasobu, należy określić **przesyłania strumieniowego zasad**. **Przesyłanie strumieniowe zasady** umożliwiają definiowanie protokołów przesyłania strumieniowego i szyfrowania opcje (jeśli istnieje) dla Twojego **Lokalizatory przesyłania strumieniowego**.
 

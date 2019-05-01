@@ -1,7 +1,6 @@
 ---
-title: Apache Storm przy użyciu niepoprawnego języka Python — Azure HDInsight
+title: Apache Storm ze składnikami języka Python — Azure HDInsight
 description: Dowiedz się, jak utworzyć topologii Apache Storm, który używa składników w języku Python.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 keywords: Apache storm w języku python
@@ -10,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: hrasheed
-ms.openlocfilehash: 87d13f8b0df4d9a357218b34035993663dfda8b3
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: a5cbd54dd07143688b676c063133bb1a73bed01a
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634596"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64694386"
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>Opracowywanie topologii usługi Apache Storm na HDInsight przy użyciu języka Python
 
@@ -32,7 +31,7 @@ Kod dla tego projektu znajduje się w temacie [ https://github.com/Azure-Samples
 
 * Java JDK 1.8 lub nowszej
 
-* [Narzędzia Apache Maven 3](https://maven.apache.org/download.cgi)
+* [Apache Maven 3](https://maven.apache.org/download.cgi)
 
 * (Opcjonalnie) Lokalne Środowisko deweloperskie systemu Storm. W lokalnym środowisku Storm jest wymagane tylko w przypadku, jeśli chcesz uruchamiać lokalnie topologii. Aby uzyskać więcej informacji, zobacz [Konfigurowanie środowiska deweloperskiego](https://storm.apache.org/releases/1.1.2/Setting-up-development-environment.html).
 
@@ -148,5 +147,4 @@ Aby zatrzymać topologię, użyj __klawisze Ctrl + C__.
 
 Zobacz następujące dokumenty, aby inne sposoby korzystania z języka Python za pomocą HDInsight:
 
-* [Jak używać języka Python dla zadań MapReduce przesyłania strumieniowego](../hadoop/apache-hadoop-streaming-python.md)
 * [Jak używać języka Python określone funkcje użytkownika (UDF) w Apache Pig i Apache Hive](../hadoop/python-udf-hdinsight.md)

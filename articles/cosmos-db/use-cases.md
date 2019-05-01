@@ -6,12 +6,12 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/07/2017
-ms.openlocfilehash: 935c6ff03485c2b8e4d3e2f3df51c740ec1e8371
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 7ac4b54740b03a8b3fa09486a8e09f3262f67555
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60770258"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64866878"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Typowe przypadki użycia usługi Azure Cosmos DB
 Ten artykuł zawiera omówienie kilku typowych przypadków użycia usługi Azure Cosmos DB.  Zalecenia przedstawione w tym artykule służyć jako punkt początkowy, podczas opracowywania aplikacji za pomocą usługi Cosmos DB.   
@@ -108,7 +108,7 @@ Lub, jeśli chcesz dowiedzieć się więcej o tym, klienci korzystający z usłu
 * [Citrix](https://customers.microsoft.com/story/citrix). Citrix opracowuje rozwiązanie z logowanie jednokrotne przy użyciu usługi Azure Service Fabric i usługi Azure Cosmos DB
 * [TEXA](https://customers.microsoft.com/story/texaspa) firmy TEXA Rewolucyjny rozwiązania IoT dla właścicieli pojazdu pozwala zaoszczędzić czas, pieniądze, gaz — i prawdopodobnie są przechowywane.
 * [Firmy Domino Pizza](https://www.dominos.com). Firmy Domino Pizza Inc. jest American pizza sieć restauracji.
-* [Kontroluje Johnson](https://www.johnsoncontrols.com). Formanty Johnson jest globalne różnorodnych technologii i wielu przemysłowych lidera obsługuje szeroką gamę w więcej niż 150 krajach.
+* [Kontroluje Johnson](https://www.johnsoncontrols.com). Formanty Johnson jest globalne różnorodnych technologii i wielu przemysłowych lidera obsługująca wielu klientów w więcej niż 150 krajach/regionach.
 * [Microsoft Windows Store uniwersalny, usługi Azure IoT Hub, Xbox Live i innych usług w skali Internetu](https://azure.microsoft.com/blog/how-azure-documentdb-planet-scale-nosql-helps-run-microsoft-s-own-businesses/). Jak Microsoft buduje wysoce skalowalnych usług, za pomocą usługi Azure Cosmos DB.
 * [Zespół Microsoft Data i analizy](https://customers.microsoft.com/story/microsoftdataandanalytics). Firmy Microsoft zespół Data i analizy osiąga skalowana w skali zbierania danych big data za pomocą usługi Azure Cosmos DB
 * [Sulekha.com](https://customers.microsoft.com/story/sulekha-uses-azure-documentdb-to-connect-customers-and-businesses-across-india). Sulekha używa usługi Azure Cosmos DB do łączenia klientów i firmom w Indiach.

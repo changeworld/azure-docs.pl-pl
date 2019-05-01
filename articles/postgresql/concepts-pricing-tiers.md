@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: a8dbb2c06d3622dcde19f298ee12fa49afb4cd4b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 4109679c03b13303c16cef8edd92ecddb6ca5e5f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60559852"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64712371"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Usługa Azure Database for postgresql w warstwie warstw cenowych
 
@@ -41,31 +41,25 @@ Po utworzeniu serwera, liczba rdzeni wirtualnych, generacja sprzętu i ceny wars
 
 Obliczenia, że zasoby są dostarczane jako rdzeni wirtualnych, który reprezentuje logiczny procesor CPU bazowego sprzętu. Obecnie można wybrać z obu generacji obliczeń Gen 4 i 5 ogólnego. Logiczne procesory CPU 4 generacji wykorzystują procesory Intel E5-2673 v3 (Haswell) 2,4 GHz procesorów. Logiczne procesory CPU 5 generacji wykorzystują procesory Intel E5-2673 v4 (broadwell z zegarem) 2.3 GHz procesorów. Gen 4 i 5 ogólnego są dostępne w następujących regionach ("X" oznacza dostępne). 
 
-> [!IMPORTANT]
-> Począwszy od 12 grudnia 2018 r nowi klienci nie będą mogli aprowizować serwery generacja 4 obliczeniowych w regionie Brazylia Południowa, Kanada Środkowa, Kanada Wschodnia, Azja Wschodnia, wschodnie stany USA 2, Indie środkowe, Indie Zachodnie, Japonia, część zachodnia, północno-środkowe stany USA, zachodnie stany USA. Generacja obliczeń, który 4 serwery zostaną zmigrowane do 5, od 1 lutego 2019 w tych regionach Generowanie obliczeń zostały utworzone wcześniej.
->
-> [!IMPORTANT]
-> Począwszy od 19 lutego 2019 r nowych klientów nie będą mogli aprowizować serwery 4 generacji obliczeń w środkowe stany USA, wschodnie stany USA, Japonia Wschodnia, Europa Północna, południowo-środkowe stany USA, Azja południowo-wschodnia, Europa Zachodnia. Generacja obliczeń, który 4 serwery zostaną zmigrowane do 5, od 1 kwietnia 2019 w tych regionach Generowanie obliczeń zostały utworzone wcześniej.
-
 | **Region platformy Azure** | **4. generacji** | **5. generacji** |
 |:---|:----------:|:--------------------:|
 | Środkowe stany USA |  | X |
 | Wschodnie stany USA |  | X |
 | Wschodnie stany USA 2 |  | X |
 | Środkowo-północne stany USA |  | X |
-| Środkowo-południowe stany USA | X | X |
+| Środkowo-południowe stany USA |  | X |
 | Zachodnie stany USA |  | X |
 | Zachodnie stany USA 2 |  | X |
 | Brazylia Południowa |  | X |
 | Kanada Środkowa |  | X |
 | Kanada Wschodnia |  | X |
-| Europa Północna | X | X |
+| Europa Północna |  | X |
 | Europa Zachodnia |  | X |
 | Francja Środkowa |  | X |
 | Południowe Zjednoczone Królestwo |  | X |
 | Zachodnie Zjednoczone Królestwo |  | X |
 | Azja Wschodnia |  | X |
-| Azja Południowo-Wschodnia | X | X |
+| Azja Południowo-Wschodnia |  | X |
 | Australia Wschodnia |  | X |
 | Australia Środkowa |  | X |
 | Australia Środkowa 2 |  | X |
@@ -73,7 +67,7 @@ Obliczenia, że zasoby są dostarczane jako rdzeni wirtualnych, który reprezent
 | Indie Środkowe |  | X |
 | Indie Południowe |  | X |
 | Indie Zachodnie |  | X |
-| Japonia Wschodnia | X | X |
+| Japonia Wschodnia |  | X |
 | Japonia Zachodnia |  | X |
 | Korea Środkowa |  | X |
 | Korea Południowa |  | X |

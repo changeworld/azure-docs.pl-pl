@@ -2,23 +2,19 @@
 title: Jak wygenerować i przenieść klucze chronione przez moduł HSM dla usługi Azure Key Vault — usługi Azure Key Vault | Dokumentacja firmy Microsoft
 description: Przedstawione w tym artykule ułatwiają planowanie, generowanie i następnie przenoszenie własnych kluczy chronionych modułem HSM za pomocą usługi Azure Key Vault. Także znana jako BYOK lub Użyj własnego klucza.
 services: key-vault
-documentationcenter: ''
 author: barclayn
 manager: barbkess
 tags: azure-resource-manager
-ms.assetid: 51abafa1-812b-460f-a129-d714fdc391da
 ms.service: key-vault
-ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: barclayn
-ms.openlocfilehash: 70a33b0ec55705c6fb00671cc801415cd7459558
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: a013e0091e1a955672c1f16a4ac6300281d277b3
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59522732"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64573014"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Jak Generowanie i przenoszenie chronionego przez moduł HSM kluczy dla usługi Azure Key Vault
 
@@ -45,7 +41,7 @@ Więcej informacji na temat Generowanie i przenoszenie klucza chronionego przez 
 
 ## <a name="more-information-about-thales-hsms-and-microsoft-services"></a>Więcej informacji na temat sprzętowych modułów zabezpieczeń firmy Thales i usług firmy Microsoft
 
-Firmy Thales e-Security jest wiodącym globalnym dostawcą szyfrowania danych i cybernetycznymi zabezpieczeń rozwiązania usług finansowych, nowoczesnych, produkcji, instytucji rządowych i sektorów technologii. 40 lat poświadczać ochrony firmowych i informacje dla instytucji rządowych rozwiązania firmy Thales są używane przez pięć największych firm lotnictwa i kosmonautyki i energii. Swoje rozwiązania są również używane przez 22 kraje NATO, a secure ponad 80 procent transakcji płatniczych na świecie.
+Firmy Thales e-Security jest wiodącym globalnym dostawcą szyfrowania danych i cybernetycznymi zabezpieczeń rozwiązania usług finansowych, nowoczesnych, produkcji, instytucji rządowych i sektorów technologii. 40 lat poświadczać ochrony firmowych i informacje dla instytucji rządowych rozwiązania firmy Thales są używane przez pięć największych firm lotnictwa i kosmonautyki i energii. Swoje rozwiązania są również używane przez 22 kraje/regiony NATO, a secure ponad 80 procent transakcji płatniczych na świecie.
 
 Firma Microsoft podjęła współpracę z firmą Thales, które zwiększają pogłębić sprzętowych modułów zabezpieczeń. Opracowane udoskonalenia pozwalają uzyskać typowych zalet usług hostowanych bez potrzeby rezygnacji z kontroli nad kluczami. W szczególności ulepszenia te umożliwiają firmie Microsoft Zarządzanie sprzętowe moduły zabezpieczeń, tak aby nie trzeba. Jako usługa w chmurze usługi Azure Key Vault jest skalowany w górę w krótkim terminie w celu spełnienia nagłego zwiększenia zapotrzebowania organizacji. W tym samym czasie klucz jest chroniony wewnątrz sprzętowych modułów zabezpieczeń firmy Microsoft: Zachowuje się kontrolę nad cyklem życia klucza, ponieważ Wygeneruj klucz i przeniesienie go do sprzętowych modułów zabezpieczeń firmy Microsoft.
 

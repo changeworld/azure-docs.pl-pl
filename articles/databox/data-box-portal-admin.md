@@ -1,23 +1,23 @@
 ---
-title: Podręcznik administrowania usługą Azure Data Box za pomocą portalu | Microsoft Docs
+title: Zarządzanie urządzenia Azure Data Box za pomocą witryny Azure portal | Dokumentacja firmy Microsoft
 description: W tym artykule opisano sposób administrowania usługą Azure Data Box w witrynie Azure Portal.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: overview
+ms.topic: article
 ms.date: 04/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 483e1e0f6a472132446b20a161d012e69d83c4ac
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: bf1d810733df4eaae17d092caba42888a63cc59f
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62128740"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919232"
 ---
-# <a name="use-the-azure-portal-to-administer-your-data-box"></a>Administrowanie usługą Data Box w witrynie Azure Portal
+# <a name="use-the-azure-portal-to-administer-your-azure-data-box"></a>Używanie witryny Azure portal do administrowania urządzenia Azure Data Box
 
-W artykule opisano niektóre złożone przepływy pracy i zadania związane z zarządzaniem, które można wykonywać w usłudze Data Box. Usługą Data Box można zarządzać w witrynie Azure Portal lub za pomocą lokalnego internetowego interfejsu użytkownika. 
+W tym artykule opisano niektóre złożonych przepływów pracy i zadania zarządzania, które mogą być wykonywane w usłudze Azure Data Box. Usługą Data Box można zarządzać w witrynie Azure Portal lub za pomocą lokalnego internetowego interfejsu użytkownika.
 
 Ten artykuł dotyczy zadań, które można wykonywać w witrynie Azure Portal. W witrynie Azure Portal można zarządzać zamówieniami, zarządzać usługą Data Box oraz śledzić stan zamówienia na kolejnych etapach aż do ukończenia.
 

@@ -10,18 +10,18 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: lewlu
-ms.openlocfilehash: 30ceb0e396597530071c70c4448761d914acb4ac
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 02e9b64c89eda1471d644e0116bbf8c1c061ccc3
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59548408"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64682532"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>Migruj dane rozpoznawania twarzy do innej subskrypcji twarzy
 
 Ten przewodnik pokazuje, jak przenosić dane rozpoznawania twarzy (takich jak zapisane **grupie** twarzy) na inną subskrypcję interfejsu API rozpoznawania twarzy, za pomocą funkcji migawki. Dzięki temu można uniknąć konieczności wielokrotnie tworzenie i uczenie **grupie** lub **FaceList** podczas przenoszenia lub rozszerzając operacji. Na przykład, które mogły zostać utworzone **grupie** przy użyciu bezpłatnej subskrypcji próbnej, a teraz chcesz przeprowadzić jej migrację do płatnej subskrypcji lub może być konieczne na synchronizowanie danych z twarzy w wielu regionach dla operacji dużych przedsiębiorstw.
 
-Tej samej strategii migracji ma również zastosowanie do **LargePersonGroup** i **LargeFaceList** obiektów. Jeśli nie znasz koncepcji, w tym przewodniku, zobacz ich definicje [słownik](../Glossary.md). Ten przewodnik korzysta z biblioteki klienta .NET interfejsu API rozpoznawania twarzy, za pomocą C#.
+Tej samej strategii migracji ma również zastosowanie do **LargePersonGroup** i **LargeFaceList** obiektów. Jeśli nie znasz koncepcji, w tym przewodniku, zobacz ich definicje [pojęcia rozpoznawania twarzy](../concepts/face-recognition.md) przewodnik. Ten przewodnik korzysta z biblioteki klienta .NET interfejsu API rozpoznawania twarzy, za pomocą C#.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -29,15 +29,13 @@ Tej samej strategii migracji ma również zastosowanie do **LargePersonGroup** i
 - Interfejs API rozpoznawania twarzy ciąg Identyfikatora subskrypcji, odpowiadający subskrypcja docelowa (znaleziony w **Przegląd** bloku w witrynie Azure portal). 
 - Dowolna wersja programu [Visual Studio 2015 lub 2017](https://www.visualstudio.com/downloads/).
 
-
 ## <a name="create-the-visual-studio-project"></a>Tworzenie projektu programu Visual Studio
 
 Ten przewodnik użyje aplikacja konsolowa prosty do wykonania migracji danych twarzy. Aby uzyskać pełną implementację, zobacz [przykład migawki interfejsu API rozpoznawania twarzy](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample) w witrynie GitHub.
 
-1. W programie Visual Studio Utwórz nowy **Aplikacja konsoli (.NET Framework)** projektu i nadaj mu nazwę **FaceApiSnapshotSample**. 
+1. W programie Visual Studio Utwórz nowy **Aplikacja konsoli (.NET Framework)** projektu i nadaj mu nazwę **FaceApiSnapshotSample**.
 1. Pobierz wymagane pakiety NuGet. Kliknij prawym przyciskiem myszy projekt w Eksploratorze rozwiązań, a następnie wybierz pozycję **Zarządzaj pakietami NuGet**. Kliknij kartę **Przeglądaj**, wybierz pozycję **Uwzględnij wersję wstępną**, a następnie znajdź i zainstaluj następujący pakiet:
     - [Microsoft.Azure.CognitiveServices.Vision.Face 2.3.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.2.0-preview)
-
 
 ## <a name="create-face-clients"></a>Tworzenie klientów do rozpoznawania twarzy
 
@@ -226,7 +224,9 @@ Po zakończeniu migracji danych twarzy zalecamy ręcznie usuń obiekt migawki.
 await FaceClientEastAsia.Snapshot.DeleteAsync(snapshotId);
 ```
 
-## <a name="related-topics"></a>Tematy pokrewne
+## <a name="next-steps"></a>Kolejne kroki
+
+Następnie zobacz odpowiednie dokumentacji interfejsu API, zapoznaj się z przykładową aplikację, która używa funkcji migawki lub wykonaj przewodnik, aby rozpocząć korzystanie z innych operacji interfejsu API, wymienione w tym miejscu.
 
 - [Dokumentacja referencyjna migawki (.NET SDK)](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.snapshotoperations?view=azure-dotnet)
 - [Przykładowe migawki interfejsu API rozpoznawania twarzy](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample)

@@ -12,21 +12,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: bwren
-ms.openlocfilehash: c4950d03449f2b293a87ab88f1ea3f49eee29557
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 1496bf21ed1a81eedb44ca9cc9db777632e2a5cd
+ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62102020"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64876008"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Portal pakietu OMS na platformę Azure
 
 > [!NOTE]
 > Ten artykuł ma zastosowanie do chmury publicznej platformy Azure i w chmurze dla instytucji rządowych, chyba że zaznaczono inaczej.
 
-Witryna Azure portal jest Centrum dla wszystkich usług platformy Azure i oferuje zaawansowane zarządzanie doświadczenie z możliwości, takich jak pulpity nawigacyjne dla funkcji przypinania zasobów, inteligentne wyszukiwanie, znajdowanie zasobów, tagowania i zarządzanie zasobami. Konsolidacja i usprawnić przepływ pracy zarządzania i monitorowania, czasu zaczęliśmy dodawać możliwości portalu pakietu OMS w witrynie Azure portal. Wszystkie funkcje portalu pakietu OMS są teraz częścią witryny Azure portal. W rzeczywistości niektóre z nowych funkcji, takich jak analiza ruchu są dostępne tylko w witrynie Azure portal. Będzie można wykonać wszystko, co robisz w portalu pakietu OMS przy użyciu witryny Azure portal i nie tylko. Jeśli jeszcze tego nie zrobiono, należy rozpocząć w witrynie Azure portal już dziś!
+**Portal pakietu OMS dla publicznej chmury Azure oficjalnie została wycofana. Portal pakietu OMS w chmurze Azure dla administracji USA zostanie oficjalnie wycofana 15 maja 2019 r.** Cieszymy się przenieść do witryny Azure portal i oczekują przejścia, które można łatwo. Ale wiemy, zmiany są trudne i może być szkodliwe. Wyślij wszelkie pytania opinii i zagadnień związanych z **LAUpgradeFeedback\@microsoft.com**. W pozostałej części tego artykułu przechodzi przez kluczowych scenariuszy i harmonogram działania dla tego przejścia.
 
-**Portal pakietu OMS zostanie oficjalnie wycofana 15 stycznia 2019** komercyjnej chmury Azure i w chmurze dla administracji USA, portalu pakietu OMS **zostanie oficjalnie wycofana 30 marca 2019 r.** Cieszymy się przenieść do witryny Azure portal i oczekują przejścia, które można łatwo. Ale wiemy, zmiany są trudne i może być szkodliwe. Wyślij wszelkie pytania opinii i zagadnień związanych z **LAUpgradeFeedback\@microsoft.com**. W pozostałej części tego artykułu przechodzi przez kluczowych scenariuszy i harmonogram działania dla tego przejścia.
+Witryna Azure portal jest Centrum dla wszystkich usług platformy Azure i oferuje zaawansowane zarządzanie doświadczenie z możliwości, takich jak pulpity nawigacyjne dla funkcji przypinania zasobów, inteligentne wyszukiwanie, znajdowanie zasobów, tagowania i zarządzanie zasobami. Konsolidacja i usprawnić przepływ pracy zarządzania i monitorowania, czasu zaczęliśmy dodawać możliwości portalu pakietu OMS w witrynie Azure portal. Wszystkie funkcje portalu pakietu OMS są teraz częścią witryny Azure portal. W rzeczywistości niektóre z nowych funkcji, takich jak analiza ruchu są dostępne tylko w witrynie Azure portal. Będzie można wykonać wszystko, co robisz w portalu pakietu OMS przy użyciu witryny Azure portal i nie tylko. Jeśli jeszcze tego nie zrobiono, należy rozpocząć w witrynie Azure portal już dziś!
 
 ## <a name="what-is-changing"></a>Co ulega zmianie? 
 Następujące zmiany są anonsowanych z amortyzacja portalu pakietu OMS. Każdy z tych zmian jest opisany bardziej szczegółowo w poniższych sekcjach.
@@ -76,10 +76,7 @@ Są już nie można utworzyć nowych obszarów roboczych przy użyciu portalu pa
 
 ### <a name="alert-extension"></a>Rozszerzenie alertu  
 
-> [!NOTE]
-> Alerty mają została w pełni rozszerzona do witryny Azure portal w przypadku chmury publicznej. Istniejących reguł alertów mogą być wyświetlane w portalu pakietu OMS, ale mogą być zarządzane tylko w witrynie Azure portal. Rozszerzenie alertów do witryny Azure portal zostanie uruchomione dla chmury Azure government, lutego 2019.
-
-Alerty zostały [rozszerzone do postaci witryny Azure portal](alerts-extend.md). Po zakończeniu tej operacji akcje z zakresu zarządzania alerty tylko będą dostępne w witrynie Azure portal. Istniejące alerty będą nadal wyświetlane w portalu pakietu OMS. Jeśli uzyskujesz dostęp do alertów programowo przy użyciu interfejsu API REST alertów Log Analytics lub szablon Log Analytics alertu zasobu, należy korzystanie z grup akcji zamiast akcji w wywołania interfejsu API, szablony usługi Azure Resource Manager i poleceń programu PowerShell.
+Alerty zostały [rozszerzone do postaci witryny Azure portal](alerts-extend.md) istniejące alerty będą nadal wyświetlane w portalu pakietu OMS, ale można zarządzać tylko je w witrynie Azure portal. Jeśli uzyskujesz dostęp do alertów programowo przy użyciu interfejsu API REST alertów Log Analytics lub szablon Log Analytics alertu zasobu, należy korzystanie z grup akcji zamiast akcji w wywołania interfejsu API, szablony usługi Azure Resource Manager i poleceń programu PowerShell.
 
 ### <a name="alert-management-solution"></a>Rozwiązanie do zarządzania alertami
 Jako zmiany z poprzednim anonsów [rozwiązanie usługi Alert management](alert-management-solution.md) będą nadal dostępne i w pełni obsługiwana w witrynie Azure portal. Można nadal zainstalować rozwiązanie z witryny Azure Marketplace.

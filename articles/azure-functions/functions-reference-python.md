@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: 28f2b395c7f9be1b194b500ef20456be8ff405b0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 039b0951484a6bf57703d9a91d604c9c5e5c9a66
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61021278"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64571180"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Przewodnik dla deweloperów w usłudze Azure Functions Python
 
@@ -28,7 +28,7 @@ Ten artykuł stanowi wprowadzenie do projektowania usługi Azure Functions przy 
 
 ## <a name="programming-model"></a>Model programowania
 
-Funkcja platformy Azure powinna być bezstanowe metody w skrypcie języka Python, która przetwarza dane wejściowe i generuje dane wyjściowe. Domyślnie środowisko uruchomieniowe oczekuje, że ten element, aby można zaimplementować jako metoda globalna o nazwie `main()` w `__init__.py` pliku.
+Funkcja platformy Azure powinna być bezstanowe metody w skrypcie języka Python, która przetwarza dane wejściowe i generuje dane wyjściowe. Domyślnie środowisko uruchomieniowe oczekuje, że metoda można zaimplementować jako metoda globalna o nazwie `main()` w `__init__.py` pliku.
 
 Można zmienić konfigurację domyślną, określając `scriptFile` i `entryPoint` właściwości w `function.json` pliku. Na przykład _function.json_ informuje, poniżej środowiska uruchomieniowego do użycia _customentry()_ method in Class metoda _main.py_ pliku jako punkt wejścia dla funkcji platformy Azure.
 
@@ -109,15 +109,16 @@ Udostępniony kod powinny być przechowywane w oddzielnym folderze. Aby odwoływ
 from ..SharedCode import myFirstHelperFunction
 ```
 
-Rozszerzenia powiązania, używany przez środowisko uruchomieniowe usługi Functions są definiowane w `extensions.csproj` pliku z plikami rzeczywistej biblioteki w `bin` folderu. Podczas tworzenia lokalnie, należy najpierw [zarejestrować rozszerzeń powiązania](./functions-bindings-register.md#local-development-azure-functions-core-tools) przy użyciu podstawowych narzędzi usługi Azure Functions. 
+Rozszerzenia powiązania, używany przez środowisko uruchomieniowe usługi Functions są definiowane w `extensions.csproj` pliku z plikami rzeczywistej biblioteki w `bin` folderu. Podczas tworzenia lokalnie, należy najpierw [zarejestrować rozszerzeń powiązania](./functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles) przy użyciu podstawowych narzędzi usługi Azure Functions. 
 
 Podczas wdrażania projektu funkcji do aplikacji funkcji na platformie Azure, całą zawartość folderu FunctionApp powinny być objęte pakietu, ale nie sam folder.
 
-## <a name="inputs"></a>Dane wejściowe
+## <a name="triggers-and-inputs"></a>Wyzwalacze i dane wejściowe
 
-Dane wejściowe są podzielone na dwie kategorie w usłudze Azure Functions: dane wejściowe wyzwalacza i dodatkowych danych wejściowych. Mimo że są inne w przypadku `function.json`, użycie jest identyczna w kodzie języka Python. Jako przykład Weźmy poniższy fragment kodu:
+Dane wejściowe są podzielone na dwie kategorie w usłudze Azure Functions: dane wejściowe wyzwalacza i dodatkowych danych wejściowych. Mimo że są inne w przypadku `function.json`, użycie jest identyczna w kodzie języka Python.  Parametry połączenia dla źródła danych wejściowych i wyzwalaczy powinny być mapowane do wartości w `local.settings.json` pliku lokalnie i ustawienia aplikacji, podczas uruchamiania na platformie Azure. Jako przykład Weźmy poniższy fragment kodu:
 
 ```json
+// function.json
 {
   "scriptFile": "__init__.py",
   "bindings": [
@@ -139,7 +140,19 @@ Dane wejściowe są podzielone na dwie kategorie w usłudze Azure Functions: dan
 }
 ```
 
+```json
+// local.settings.json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "FUNCTIONS_WORKER_RUNTIME": "python",
+    "AzureWebJobsStorage": "<azure-storage-connection-string>"
+  }
+}
+```
+
 ```python
+# __init__.py
 import azure.functions as func
 import logging
 
@@ -149,7 +162,8 @@ def main(req: func.HttpRequest,
     logging.info(f'Python HTTP triggered function processed: {obj.read()}')
 ```
 
-Po wywołaniu funkcji żądanie HTTP jest przekazywane do tej funkcji jako `req`. Na podstawie identyfikatora (_id_) w adresie URL trasy z usługi Azure Blob Storage jest pobierany wpis, który następnie zostaje udostępniony jako `obj` w treści funkcji.
+Po wywołaniu funkcji żądanie HTTP jest przekazywane do tej funkcji jako `req`. Wpis zostanie pobrany z usługi Azure Blob Storage, na podstawie _identyfikator_ w adresie URL trasy i udostępniane jako `obj` w treści funkcji.  W tym miejscu konta magazynu określony ciąg połączenia znajduje się w `AzureWebJobsStorage` czyli tego samego konta magazynu używany przez aplikację funkcji.
+
 
 ## <a name="outputs"></a>Dane wyjściowe
 

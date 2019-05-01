@@ -11,14 +11,14 @@ ms.service: virtual-machines-windows
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/31/2018
+ms.date: 04/25/2019
 ms.author: genli
-ms.openlocfilehash: 6b77ceb2ab9abe232cec75254b30ce37c3dbbf60
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 3c0152726aba115e1b370838308a7bf0af08cab7
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60307728"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64708128"
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>Resetowanie hasła lokalnego Windows maszyny wirtualnej platformy Azure w trybie offline
 Możesz zresetować lokalne hasło maszyny Wirtualnej na platformie Azure przy użyciu Windows [witryny Azure portal lub programu Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) pod warunkiem jest zainstalowany agent gościa platformy Azure. Ta metoda jest podstawowym sposobem, aby zresetować hasło dla maszyny Wirtualnej platformy Azure. Jeśli wystąpią problemy z powodu braku odpowiedzi agenta gościa platformy Azure lub niepowodzenia instalacji po przekazaniu obrazu niestandardowego, można ręcznie zresetować hasło Windows. W tym artykule opisano, jak zresetować hasło do konta lokalnego, dołączając dysk wirtualny źródłowego systemu operacyjnego do innej maszyny Wirtualnej. Kroki opisane w tym artykule nie dotyczą Windows kontrolerów domeny. 
@@ -106,7 +106,7 @@ Zawsze należy starać się zresetować hasło przy użyciu [witryny Azure porta
      ```
      
      ![Create gpt.ini](./media/reset-local-password-without-agent/create_gpt_ini.png)
-5. Tworzenie `scripts.ini` w `\Windows\System32\GroupPolicy\Machine\Scripts\Startup`. Upewnij się, że są wyświetlane w folderach ukrytych. W razie potrzeby utwórz `Machine` lub `Scripts` folderów.
+5. Tworzenie `scripts.ini` w `\Windows\System32\GroupPolicy\Machines\Scripts\`. Upewnij się, że są wyświetlane w folderach ukrytych. W razie potrzeby utwórz `Machine` lub `Scripts` folderów.
    
    * Dodaj następujące wiersze `scripts.ini` utworzony plik:
      
@@ -156,7 +156,7 @@ Zawsze należy starać się zresetować hasło przy użyciu [witryny Azure porta
     
     * Z %windir%\System32
       * remove FixAzureVM.cmd
-    * From %windir%\System32\GroupPolicy\Machine\
+    * Z %windir%\System32\GroupPolicy\Machine\Scripts
       * Usuń scripts.ini
     * From %windir%\System32\GroupPolicy
       * Usuń gpt.ini (jeśli gpt.ini istniał wcześniej, a nazwa została zmieniona na gpt.ini.bak, zmiana nazwy pliku bak z powrotem do gpt.ini)

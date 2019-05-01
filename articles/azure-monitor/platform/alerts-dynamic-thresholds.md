@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: yalavi
 ms.reviewer: mbullwin
-ms.openlocfilehash: 772401c286a50774d201703cefcbbc12f0fcf88f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 3773a3e121c3b0162b83ea075601b7386228e4d5
+ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60775812"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64876194"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor-public-preview"></a>Alerty metryk z dynamicznymi progami w usłudze Azure Monitor (publiczna wersja zapoznawcza)
 
@@ -42,7 +42,7 @@ Dynamicznymi progami ciągle uczy się dane serii metryki i próbuje go za pomoc
 Progi są zaznaczone w taki sposób, że odchylenie od tych progów wskazuje anomalii zachowania metryki.
 
 > [!NOTE]
-> Wykrywanie wzorcu sezonowym ustawiono interwał godziny, dnia lub tygodnia. Oznacza to, że inne wzorce like wzór bihourly lub semiweekly mogą nie zostać wykryte.
+> Wykrywanie wzorcu sezonowym wynosi godzinę, dzień lub interwał dla tygodnia. Oznacza to, że inne wzorce like wzór bihourly lub semiweekly mogą nie zostać wykryte.
 
 ## <a name="what-does-sensitivity-setting-in-dynamic-thresholds-mean"></a>Co to jest ustawienie "Ważność" oznacza dynamicznymi progami?
 
@@ -51,7 +51,7 @@ Ta opcja nie wymaga domeny wiedzę na temat metryk, takich jak statyczny próg. 
 
 - Wysoki — progów będzie obraz blisko wzorzec serii metryki. Reguła alertu zostanie wyzwolone na najmniejszą odchylenie, co większej liczby alertów.
 - Średni — mniej progi ścisłej i zrównoważonego alerty mniej niż Wysoka czułość (ustawienie domyślne).
-- Niska — progów będzie luźne za pomocą więcej odległości od wzorca serii metryki. Reguła alertu wyzwoli się tylko na duże odchylenia, co mniej alertów.
+- Niska — progów będzie luźne za pomocą więcej odległości od wzorca serii metryki. Reguła alertu tylko spowoduje wyzwolenie na duże odchylenia, co mniej alertów.
 
 ## <a name="what-are-the-operator-setting-options-in-dynamic-thresholds"></a>Jakie są opcje ustawienia 'Operator' w dynamicznymi progami?
 
@@ -83,7 +83,7 @@ Możesz eksplorować wyzwolonych alertów wystąpień w widoku alertów, klikaj�
 Wyświetla widok alertów:
 
 - Szczegóły metryki w tej chwili alertu dynamicznymi progami uruchamiane.
-- Wykres czasu, w którym alert został wyzwalacz, który zawiera dynamicznymi progami używane w danym momencie.
+- Wykres okresu, w którym alert został wyzwolony obejmuje dynamicznymi progami używane w danym momencie.
 - Możliwość się opinią na temat alertów dynamicznymi progami i alerty doświadczenia widoku, co może poprawić wykrywanie przyszłych.
 
 ## <a name="will-slow-behavior-change-in-the-metric-trigger-an-alert"></a>Powolne działanie zmieni się w wyzwalaczu metryki alert?
@@ -92,7 +92,7 @@ Prawdopodobnie nie. Dynamicznymi progami dla zastosowań dobre są wykrywanie zn
 
 ## <a name="how-much-data-is-used-to-preview-and-then-calculate-thresholds"></a>Jak dużo danych jest używane do przeglądania i następnie obliczyć progi?
 
-Progi pojawiające się na wykresie, przed utworzeniem reguły alertu na metryce, są obliczane na podstawie danych historycznych wystarczająco w celu obliczania godzinę lub codziennie wzorców sezonowych (10 dni). Po utworzeniu reguły alertu dynamicznymi progami zużyjesz wszystkie niezbędne dane historyczne, które są dostępne, a dowiesz się stale i doświadczenie, na podstawie nowych danych umożliwiają bardziej precyzyjne progów. Oznacza to, że po tym wykresie obliczenia będą również wyświetlane tygodniowe wzorców.
+Progi pojawiające się na wykresie, przed utworzeniem reguły alertu na metryce, są obliczane na podstawie wystarczającej ilości danych historycznych w celu obliczania godzinę lub codziennie wzorców sezonowych (10 dni). Po utworzeniu reguły alertu dynamicznymi progami użyje wszystkie wymagane dane historyczne, które jest dostępne i stale poznasz oraz dostosować na podstawie nowych danych, które umożliwiają bardziej precyzyjne progów. Oznacza to, że po to obliczenie wykresu będą również wyświetlane tygodniowe wzorców.
 
 ## <a name="how-much-data-is-needed-to-trigger-an-alert"></a>Jak dużo danych jest wymagana do wyzwolenia alertu?
 

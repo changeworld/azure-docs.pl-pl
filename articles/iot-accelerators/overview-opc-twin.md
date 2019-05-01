@@ -8,14 +8,14 @@ ms.topic: overview
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 9daf1a7e58af23cb78705691217bf9709359c4d5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 15deadad3b53b64c619933db76d28f012c85d6d1
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60889866"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64730273"
 ---
-# <a name="what-is-azure-iot-open-platform-communications-opc-device-management"></a>Co to jest zarządzanie urządzeniami usługi Azure IoT Otwórz platformy łączności (OPC)?
+# <a name="what-is-opc-twin"></a>Co to jest bliźniaczej reprezentacji OPC?
 
 Bliźniacza reprezentacja OPC składa się z mikrousług connect, chmury i sieci fabrycznej za pomocą usługi Azure IoT Edge i IoT Hub. Bliźniacza reprezentacja OPC udostępnia funkcje odnajdywania, rejestracji i zdalne sterowanie urządzeń przemysłowych za pośrednictwem interfejsów API REST. Bliźniacza reprezentacja OPC nie wymaga OPC Unified architektury (OPC UA) zestawu SDK jest programowania niezależny od języka i mogą być zawarte w przepływie pracy bez użycia serwera. W tym artykule opisano kilka przypadków użycia bliźniaczej reprezentacji OPC.
 

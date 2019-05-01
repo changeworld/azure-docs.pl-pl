@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
 ms.author: rajanaki
-ms.openlocfilehash: 8bb790571e1499bd45fb8bee27f4f1896046cbc2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: a7fcd4deb0446577af310ff5380ffddf05ba87be
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60749113"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64719825"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Rozwiązywanie problemów z funkcją Hyper-V do platformy Azure replikacji i trybu failover
 
@@ -129,7 +129,7 @@ Migawka spójności aplikacji jest w momencie migawkę danych aplikacji wewnątr
 
 2. Aby wygenerować migawki VSS na maszynie Wirtualnej, sprawdź, czy są zainstalowane usługi integracji funkcji Hyper-V, na maszynie Wirtualnej i czy jest włączona usługa integracji kopii zapasowych w tle (VSS).
     - Sprawdź, czy integracji usługi VSS usług/demonów uruchomionych na gościa i znajdują się w **OK** stanu.
-    - Można to sprawdzić z sesji programu PowerShell z podwyższonym poziomem uprawnień na hoście funkcji Hyper-V za pomocą polecenia **et-VMIntegrationService - VMName<VMName>— VSS nazwa** można także uzyskać te informacje, logując się do maszyny Wirtualnej gościa. [Dowiedz się więcej](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services).
+    - Wybierzesz tę opcję z sesji programu PowerShell z podwyższonym poziomem uprawnień na hoście funkcji Hyper-V za pomocą polecenia **et-VMIntegrationService - VMName\<VMName >-Nazwa usługi VSS** można także uzyskać te informacje, logując się do maszyny Wirtualnej gościa. [Dowiedz się więcej](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services).
     - Upewnij się, że usługi integracji kopii zapasowej/VSS na maszynie Wirtualnej jest uruchomiona i w dobrej kondycji. W przeciwnym razie ponownie uruchom te usługi i Usługa obiektu żądającego kopiowania woluminów w tle funkcji Hyper-V na serwerze hosta funkcji Hyper-V.
 
 ### <a name="common-errors"></a>Typowe błędy

@@ -1,5 +1,5 @@
 ---
-title: 'Przykład: dodawanie twarzy — interfejs API rozpoznawania twarzy'
+title: 'Przykład: Dodaj twarze na grupie — interfejs API rozpoznawania twarzy'
 titleSuffix: Azure Cognitive Services
 description: Dodawanie twarzy na obrazach za pomocą interfejsu API rozpoznawania twarzy.
 services: cognitive-services
@@ -8,31 +8,29 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: sample
-ms.date: 03/01/2018
+ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: 722a09b782c902642b599460835151928c16c5f4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 04fe9251ba124ed5d218daf915339c7f84efdeb6
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859032"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64704178"
 ---
-# <a name="example-how-to-add-faces"></a>Przykład: jak dodawać twarze
+# <a name="how-to-add-faces-to-a-persongroup"></a>Jak dodać twarze na grupie
 
-Ten przewodnik prezentuje najlepsze rozwiązanie w zakresie dodawania dużej liczby osób i twarzy do obiektu PersonGroup.
-Ta sama strategia dotyczy także obiektów FaceList i LargePersonGroup.
-Przykłady są zapisywane w języku C# przy użyciu biblioteki klienta interfejsu API rozpoznawania twarzy.
+Ten przewodnik przedstawia najlepsze rozwiązania dotyczące dodawania dużej liczby osoby i twarzy na obiekt w grupie. Tej samej strategii dotyczy także LargePersonGroup FaceList i LargeFaceList. W tym przykładzie są zapisywane C# przy użyciu biblioteki klienta .NET interfejsu API rozpoznawania twarzy.
 
 ## <a name="step-1-initialization"></a>Krok 1: Inicjowanie
 
-Deklaruje się kilka zmiennych i implementowana jest funkcja pomocnika w celu zaplanowania żądań.
+Poniższy kod deklaruje kilka zmiennych i implementuje dodawania funkcji pomocnika, aby zaplanować twarz żądań.
 
 - `PersonCount` jest łączną liczbą osób.
 - `CallLimitPerSecond` jest maksymalną liczbą wywołań na sekundę, zgodnie z warstwą subskrypcji.
 - `_timeStampQueue` jest kolejką do rejestrowania znaczników czasu żądań.
 - `await WaitCallLimitPerSecondAsync()` powoduje oczekiwanie na moment, kiedy można prawidłowo wysłać kolejne żądanie.
 
-```CSharp
+```csharp
 const int PersonCount = 10000;
 const int CallLimitPerSecond = 10;
 static Queue<DateTime> _timeStampQueue = new Queue<DateTime>(CallLimitPerSecond);
@@ -62,20 +60,20 @@ static async Task WaitCallLimitPerSecondAsync()
 
 ## <a name="step-2-authorize-the-api-call"></a>Krok 2: Autoryzowanie wywołania interfejsu API
 
-Jeśli korzystasz z biblioteki klienta, klucz subskrypcji jest przekazywany w konstruktorze klasy FaceServiceClient. Na przykład:
+Korzystając z biblioteki klienta, należy przekazać swój klucz subskrypcji do konstruktora klasy FaceServiceClient. Na przykład:
 
-```CSharp
+```csharp
 FaceServiceClient faceServiceClient = new FaceServiceClient("<Subscription Key>");
 ```
 
-Klucz subskrypcji można uzyskać na stronie Marketplace witryny Azure Portal. Zobacz [Subskrypcje](https://www.microsoft.com/cognitive-services/en-us/sign-up).
+Klucz subskrypcji można uzyskać na stronie Marketplace witryny Azure Portal. Zobacz [Subskrypcje](https://www.microsoft.com/cognitive-services/sign-up).
 
 ## <a name="step-3-create-the-persongroup"></a>Krok 3: Tworzenie elementu PersonGroup
 
 Tworzony jest obiekt PersonGroup o nazwie „MyPersonGroup” w celu zapisania osób.
 Czas żądania jest umieszczany w kolejce `_timeStampQueue` w celu zapewnienia ogólnej walidacji.
 
-```CSharp
+```csharp
 const string personGroupId = "mypersongroupid";
 const string personGroupName = "MyPersonGroup";
 _timeStampQueue.Enqueue(DateTime.UtcNow);
@@ -86,7 +84,7 @@ await faceServiceClient.CreatePersonGroupAsync(personGroupId, personGroupName);
 
 Osoby są tworzone jednocześnie i stosowana jest także funkcja `await WaitCallLimitPerSecondAsync()` w celu uniknięcia przekroczenia limitu wywołań.
 
-```CSharp
+```csharp
 CreatePersonResult[] persons = new CreatePersonResult[PersonCount];
 Parallel.For(0, PersonCount, async i =>
 {
@@ -102,7 +100,7 @@ Parallel.For(0, PersonCount, async i =>
 Operacje dodawania twarzy do różnych osób są przetwarzane współbieżnie, natomiast w przypadku jednej określonej osoby jest to operacja sekwencyjna.
 Ponownie wywoływana jest funkcja `await WaitCallLimitPerSecondAsync()` w celu zapewnienia, że częstotliwość żądań znajduje się w zakresie ograniczenia.
 
-```CSharp
+```csharp
 Parallel.For(0, PersonCount, async i =>
 {
     Guid personId = persons[i].PersonId;

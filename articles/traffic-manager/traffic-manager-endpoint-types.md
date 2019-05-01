@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2017
 ms.author: kumud
-ms.openlocfilehash: 3f41edef56b238d8789264d00d73998794fec7eb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b609a0ace0b428e1af81634c6a25485e3a5e89bb
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60188717"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64916660"
 ---
 # <a name="traffic-manager-endpoints"></a>Punkty końcowe usługi Traffic Manager
 Microsoft Azure Traffic Manager umożliwia kontrolowanie sposobu dystrybucji ruchu sieciowego do wdrożenia aplikacji działające w różnych centrach danych. Skonfiguruj każde wdrożenie aplikacji jako punktu końcowego w usłudze Traffic Manager. Gdy usługa Traffic Manager odbiera żądanie DNS, wybiera dostępnego punktu końcowego do zwrócenia w odpowiedzi DNS. Usługa Traffic manager Określa wybór na bieżący stan punktu końcowego i metody routingu ruchu. Aby uzyskać więcej informacji, zobacz [jak działa usługa Traffic Manager](traffic-manager-how-it-works.md).
@@ -36,7 +36,7 @@ W poniższych sekcjach opisano każdy typ punktu końcowego w dokładniej.
 Punkty końcowe platformy Azure używane w przypadku usług opartych na platformie Azure w usłudze Traffic Manager. Obsługiwane są następujące typy zasobów platformy Azure:
 
 * Usługi PaaS w chmurze.
-* Aplikacje internetowe
+* Web Apps
 * Miejsc aplikacji sieci Web
 * Zasoby publicznego adresu IP (które mogą być podłączone do maszyn wirtualnych bezpośrednio lub za pośrednictwem usługi Azure Load Balancer). Publiczny adres IP musi mieć nazwę DNS, przypisany do użycia w profilu usługi Traffic Manager.
 
@@ -63,7 +63,7 @@ Punkty końcowe zagnieżdżonych łączyć wiele profilów usługi Traffic Manag
 
 Dodatkowe zagadnienia do rozważenia podczas konfigurowania aplikacji sieci Web jako punktów końcowych w usłudze Traffic Manager:
 
-1. Tylko aplikacje sieci Web w wersji "Standard" lub nowszym są uprawnione do używania z usługą Traffic Manager. Aby dodać aplikację sieci Web z niższym poziomem jednostki SKU zakończy się niepowodzeniem. Obniżenie poziomu jednostki SKU istniejącej aplikacji sieci Web wyników w usłudze Traffic Manager nie będzie już wysyłać ruchu do tej aplikacji sieci Web. Aby uzyskać więcej informacji na temat obsługiwanych planów zobacz [planów usługi App Service](https://azure.microsoft.com/en-us/pricing/details/app-service/plans/)
+1. Tylko aplikacje sieci Web w wersji "Standard" lub nowszym są uprawnione do używania z usługą Traffic Manager. Aby dodać aplikację sieci Web z niższym poziomem jednostki SKU zakończy się niepowodzeniem. Obniżenie poziomu jednostki SKU istniejącej aplikacji sieci Web wyników w usłudze Traffic Manager nie będzie już wysyłać ruchu do tej aplikacji sieci Web. Aby uzyskać więcej informacji na temat obsługiwanych planów zobacz [planów usługi App Service](https://azure.microsoft.com/pricing/details/app-service/plans/)
 2. Gdy punkt końcowy odbierze żądanie HTTP, używa nagłówek "host" w żądaniu można określić, która aplikacja sieci Web powinien obsługiwać żądania. Nagłówek hosta zawiera nazwę DNS używane, aby zainicjować żądanie, na przykład "contosoapp.azurewebsites.net". Aby użyć innej nazwy DNS z aplikacją sieci Web, nazwę DNS musi być zarejestrowana w ramach niestandardowej nazwy domeny dla aplikacji. Podczas dodawania punktu końcowego aplikacji sieci Web jako punkt końcowy platformy Azure, nazwę DNS profilu usługi Traffic Manager jest automatycznie rejestrowane dla aplikacji. Rejestracja zostanie automatycznie usunięta po usunięciu punktu końcowego.
 3. Każdy profil usługi Traffic Manager może mieć co najwyżej jeden końcowy aplikacji sieci Web z każdego regionu platformy Azure. Aby obejść to ograniczenie, można skonfigurować aplikację sieci Web jako zewnętrzny punkt końcowy. Aby uzyskać więcej informacji, zobacz [— często zadawane pytania](traffic-manager-faqs.md#traffic-manager-endpoints).
 

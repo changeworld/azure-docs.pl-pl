@@ -16,12 +16,12 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 786ace2ef88fc4b94372041cbdd5bc16586b5193
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 064c3e5fb7a65a7495c393db893e784548075daf
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60298906"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64708219"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Szybki start: Dodawanie logowania przy użyciu konta Microsoft do aplikacji internetowej ASP.NET
 
@@ -75,6 +75,7 @@ Wybierz menu **Uwierzytelnianie**, ustaw wartość **Tokeny identyfikatorów** w
 1. Wyodrębnij plik zip do folderu lokalnego bliższego folderowi głównemu, na przykład **C:\Azure-Samples**
 1. Otwórz rozwiązanie w programie Visual Studio (AppModelv2-WebApp-OpenIDConnect-DotNet.sln)
 1. W zależności od wersji programu Visual Studio może być konieczne kliknij prawym przyciskiem myszy nad projektem `AppModelv2-WebApp-OpenIDConnect-DotNet` i **pakiety NuGet przywracania**
+1. Otwórz konsolę Menedżera pakietów (Widok -> inne Windows -> Konsola Menedżera pakietów) i uruchom `Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r`
 1. Przeprowadź edycję pliku **Web.config** i zastąp parametry `ClientId` oraz `Tenant` następującymi:
 
     ```xml

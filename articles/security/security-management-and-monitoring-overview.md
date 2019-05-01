@@ -1,10 +1,10 @@
 ---
-title: Omówienie monitorowania i zarządzania zabezpieczeniami platformy Azure | Dokumentacja firmy Microsoft
+title: Zarządzanie i monitorowanie ich funkcje zabezpieczeń — Microsoft Azure | Dokumentacja firmy Microsoft
 description: Ten artykuł zawiera omówienie funkcji zabezpieczeń i usług udostępnianych przez platformę Azure do pomocy w zakresie zarządzania i monitorowania usług Azure cloud services i maszyn wirtualnych.
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: StevenPo
+manager: barbkess
 editor: TomSh
 ms.assetid: 5cf2827b-6cd3-434d-9100-d7411f7ed424
 ms.service: security
@@ -12,18 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/30/2018
+ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: f79f94c277b02a9f377b90bf74763ac617f65c16
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 9f741f578ea44e27814ddfcde2fadc44a0e90536
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60597923"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64872067"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Omówienie monitorowania i zarządzania zabezpieczeniami platformy Azure
+Ten artykuł zawiera omówienie funkcji zabezpieczeń i usług udostępnianych przez platformę Azure do pomocy w zakresie zarządzania i monitorowania usług Azure cloud services i maszyn wirtualnych.
 
-Platforma Azure zapewnia mechanizmy zabezpieczeń ułatwiające zarządzanie i monitorowanie usług Azure cloud services i maszyn wirtualnych (VM). Ten artykuł zawiera omówienie tych podstawowych funkcji zabezpieczeń i usług. Podano linki do artykułów, które Podaj szczegóły każdego z nich, aby dowiedzieć się więcej.
+## <a name="shared-responsibility"></a>Wspólna odpowiedzialność
 
 Zabezpieczenia usług w chmurze firmy Microsoft jest nawiązanie partnerstwa i wspólna odpowiedzialność między użytkownikiem a firmą Microsoft. Firma Microsoft jest odpowiedzialna za platformę Azure i zabezpieczenia fizyczne w jej centrów danych (za pomocą zabezpieczenia, takie jak zablokowane wpis wskaźnika drzwi, ogrodzenia i osłony). Platforma Azure zapewnia silne poziomów zabezpieczeń chmury w warstwie oprogramowania, który spełnia wymagania bezpieczeństwa, prywatności i zgodności jej klientów.
 
@@ -64,7 +65,7 @@ Więcej informacji:
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
-Usługa Azure Multi-Factor Authentication to metoda uwierzytelniania, która wymaga użycia więcej niż jednej metody weryfikacji. Dodaje kluczową drugą warstwę zabezpieczeń do logowania użytkowników i transakcji. 
+Usługa Azure Multi-Factor Authentication to metoda uwierzytelniania, która wymaga użycia więcej niż jednej metody weryfikacji. Dodaje kluczową drugą warstwę zabezpieczeń do logowania użytkowników i transakcji.
 
 Multi-Factor Authentication zabezpiecza dostęp do danych i aplikacji, jednocześnie spełnia wymagania użytkowników dotyczące prostoty procesu logowania. Zapewnia ona silne uwierzytelnianie za pomocą zakresu, opcje weryfikacji (połączenie telefoniczne, wiadomość SMS lub powiadomień lub weryfikacji kodu aplikacji mobilnej) i tokenów OATH innej firmy.
 
@@ -80,7 +81,7 @@ Usługa Azure ExpressRoute umożliwia rozszerzanie sieci lokalnych na Microsoft 
 
 * Sieć dowolna dowolna (IP VPN).
 * Sieć Ethernet typu punkt-punkt.
-* Wiele połączeń wirtualnych za pośrednictwem dostawcy łączności, we wspólnej lokalizacji. 
+* Wiele połączeń wirtualnych za pośrednictwem dostawcy łączności, we wspólnej lokalizacji.
 
 Połączenia ExpressRoute omijają publiczny internet. Może zaoferować więcej niezawodność, większe szybkości, krótsze opóźnienia i lepsze zabezpieczenia niż typowe połączenia przez internet.
 
@@ -99,7 +100,7 @@ Więcej informacji:
 
 ## <a name="privileged-identity-management"></a>Privileged Identity Management
 
-Czasami użytkownicy potrzebują do wykonania uprzywilejowanych operacji korzystających z zasobów platformy Azure lub innych aplikacji SaaS. Często oznacza to, że organizacje ciągowych trwałego dostępu uprzywilejowanego w usłudze Azure Active Directory (Azure AD). 
+Czasami użytkownicy potrzebują do wykonania uprzywilejowanych operacji korzystających z zasobów platformy Azure lub innych aplikacji SaaS. Często oznacza to, że organizacje ciągowych trwałego dostępu uprzywilejowanego w usłudze Azure Active Directory (Azure AD).
 
 Jest to rosnący zagrożenie bezpieczeństwa dla zasobów hostowanych w chmurze, ponieważ organizacje wystarczająco nie można monitorować, użytkownicy ci korzystają z ich uprzywilejowanego dostępu. Ponadto w przypadku naruszenia zabezpieczeń konta użytkownika z dostępem uprzywilejowanym tego jednego naruszenie może mieć wpływ na ogólne bezpieczeństwo chmury w organizacji. Usługa Azure AD Privileged Identity Management pomaga rozwiązać to zagrożenie, zmniejszyć czas narażenia uprawnień i zwiększyć wgląd w użycie.  
 
@@ -150,4 +151,3 @@ Intelligent Security Graph zapewnia ochronę przed zagrożeniami w czasie rzeczy
 
 <!--Image references-->
 [1]: ./media/security-management-and-monitoring-overview/shared-responsibility.png
-
