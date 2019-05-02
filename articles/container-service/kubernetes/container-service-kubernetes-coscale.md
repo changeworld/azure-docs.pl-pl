@@ -10,11 +10,11 @@ ms.date: 05/22/2017
 ms.author: saudas
 ms.custom: mvc
 ms.openlocfilehash: 895346447e33926dcaa5ca09302f35c9d6636ed9
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000212"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60713081"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-kubernetes-cluster-with-coscale"></a>(PRZESTARZAŁE) Monitorowanie klastra usługi Azure Container Service Kubernetes za pomocą usługi CoScale
 
@@ -27,7 +27,7 @@ W tym artykule pokazujemy, jak wdrożyć [pomocą usługi CoScale](https://web.a
 
 Pomocą usługi coScale to platforma monitorowania, która zbiera metryki i zdarzenia z wszystkich kontenerów na wielu platformach aranżacji. Pomocą usługi coScale oferuje kompleksowym monitorowaniu środowiskami usługi Kubernetes. Zapewnia wszystkie warstwy stosu wizualizacji i analizy: OS, Kubernetes, Docker i aplikacji uruchamianych wewnątrz kontenerów. Pomocą usługi coScale oferuje kilka wbudowanych pulpitów nawigacyjnych monitorowania i ma wbudowaną funkcję wykrywania anomalii umożliwia operatorów i deweloperom szybko znaleźć problemy dotyczące infrastruktury i aplikacji.
 
-![Pomocą usługi coScale interfejsu użytkownika](./media/container-service-kubernetes-coscale/coscale.png)
+![CoScale UI](./media/container-service-kubernetes-coscale/coscale.png)
 
 Jak pokazano w tym artykule, można zainstalować agentów w klastrze Kubernetes, aby uruchomić pomocą usługi CoScale jako rozwiązanie SaaS. Jeśli chcesz zachować dane na miejscu, pomocą usługi CoScale jest również dostępna do instalacji lokalnych.
 

@@ -12,11 +12,11 @@ ms.date: 11/24/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: e27c4462e7137145917d1284bfb6f8838e8a090b
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523600"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61045411"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>Zespół danych dla celów naukowych w działaniu: Korzystanie z programu SQL Data Warehouse
 W tym samouczku, w jaki sposób Cię przez proces tworzenia i wdrażania modelu uczenia maszynowego, przy użyciu magazynu danych SQL (SQL data Warehouse) dla publicznie dostępnego zestawu danych — [rund taksówek NYC](https://www.andresmh.com/nyctaxitrips/) zestawu danych. Model klasyfikacji binarnej skonstruowany przewiduje czy Porada czy płatna komunikacji dwustronnej i modele wieloklasowej klasyfikacji i regresji zostały również omówione, które przewidzieć dystrybucja przypadku ilości Porada płatne.

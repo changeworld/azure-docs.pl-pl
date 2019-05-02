@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/01/2018
 ms.author: spelluru
 ms.openlocfilehash: db73363a05734db5d7e3375a5755a807eb7ce2a5
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57890971"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60790082"
 ---
 # <a name="expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>Udostępnianie lokalnych usług REST programu WCF do zewnętrznego klienta przy użyciu przekaźnika WCF platformy Azure
 

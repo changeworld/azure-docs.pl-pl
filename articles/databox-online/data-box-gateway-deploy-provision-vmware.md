@@ -9,15 +9,15 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 85992224edd10c0a0f233de9f6274cc77e109b22
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517782"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60757744"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>Samouczek: Aprowizowanie usługi Azure Data pole bramy w programie VMware
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 W tym samouczku opisano sposób aprowizacji usługi Data Box Gateway w systemie hosta, w którym działa program VMware ESXi 6.0, 6.5 lub 6.7. 
 
