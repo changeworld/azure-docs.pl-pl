@@ -4,15 +4,15 @@ description: Dowiedz się więcej na temat grup zarządzania, sposobu działania
 author: rthorn17
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
 ms.service: azure-resource-manager
-ms.date: 04/17/2019
+ms.date: 04/22/2019
 ms.author: rithorn
 ms.topic: overview
-ms.openlocfilehash: 157701e826d6a281a60393e1ec270cf061be8214
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ceb606f2243ef723866e485c6580a6323c1c92ec
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59699393"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64722483"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Organizowanie zasobów przy użyciu grup zarządzania platformy Azure
 
@@ -47,9 +47,8 @@ Główna grupa zarządzania jest wbudowana w hierarchię, aby wszystkie grupy za
 
 ### <a name="important-facts-about-the-root-management-group"></a>Ważne informacje dotyczące głównej grupy zarządzania
 
-- Nazwa i identyfikator głównej grupy zarządzania są nadawane domyślnie. Nazwę wyświetlaną można zaktualizować w dowolnym momencie, aby była wyświetlana inaczej w witrynie Azure Portal. Aby [zmienić nazwę](manage.md#change-the-name-of-a-management-group), Twoje konto musi mieć przypisaną rolę właściciela lub współautora w głównej grupie zarządzania.
-  - Nazwą będzie „Główna grupa dzierżawy”.
-  - Identyfikatorem będzie identyfikator usługi Azure Active Directory.
+- Domyślnie nazwa wyświetlana głównej grupy zarządzania to **Grupa główna dzierżawy**. Identyfikatorem jest identyfikator usługi Azure Active Directory.
+- Aby zmienić nazwę wyświetlaną, Twoje konto musi mieć przypisaną rolę właściciela lub współautora w głównej grupie zarządzania. Aby uzyskać instrukcje dotyczące zmiany nazwy, zobacz [Zmienianie nazwy grupy zarządzania](manage.md#change-the-name-of-a-management-group).
 - Głównej grupy zarządzania nie można przenieść ani usunąć, w odróżnieniu od innych grup zarządzania.  
 - Wszystkie subskrypcje i grupy zarządzania składają się do jednej głównej grupy zarządzania w katalogu.
   - Wszystkie zasoby w katalogu składają się do głównej grupy zarządzania dla globalnego zarządzania.

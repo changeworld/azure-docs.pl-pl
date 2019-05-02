@@ -1,70 +1,64 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: ca77662e7756d74f8f939e78af626b7f2da2a3c4
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792722"
 documentType: LandingData
 title: Dokumentacja rozwiązania Ansible na platformie Azure
 metadata:
-  title: Dokumentacja rozwiązania Ansible na platformie Azure — samouczki, przykłady, dokumentacja i zasoby
-  description: Dowiedz się, jak korzystać z rozwiązania Ansible do automatyzowania aprowizowania chmury, zarządzania konfiguracją i wdrażania aplikacji.
+  title: 'Dokumentacja rozwiązania Ansible na platformie Azure — samouczki, przykłady, dokumentacja i zasoby'
+  description: 'Dowiedz się, jak korzystać z rozwiązania Ansible do automatyzowania aprowizowania chmury, zarządzania konfiguracją i wdrażania aplikacji.'
   ms.service: azure
-  keywords: ansible, azure, devops, tutorials, samples, reference
+  keywords: 'ansible, azure, devops, tutorials, samples, reference'
   author: tomarchermsft
   manager: jeconnoc
   ms.author: tarcher
   ms.topic: landing-page
-  ms.date: 08/27/2018
+  ms.date: 04/22/2019
 abstract:
-  description: Użyj rozwiązania<a href="https://www.ansible.com">Ansible</a>, aby zautomatyzować aprowizowanie chmury, zarządzanie konfiguracją i wdrożenia aplikacji.
+  description: 'Użyj rozwiązania<a href="https://www.ansible.com">Ansible</a>, aby zautomatyzować aprowizowanie chmury, zarządzanie konfiguracją i wdrożenia aplikacji.'
 sections:
-- title: 5-minutowe przewodniki Szybki start
-  items:
-  - type: paragraph
-    text: Zainstaluj rozwiązanie Ansible i używaj go do tworzenia maszyn wirtualnych z systemem Linux i zarządzanie nimi na platformie Azure.
-  - type: list
-    style: icon48
+  - title: 5-minutowe przewodniki Szybki start
     items:
-    - image:
-        src: /azure/media/index/azure_dev-9.svg
-      text: Instalowanie rozwiązania Ansible
-      href: /azure/virtual-machines/linux/ansible-install-configure?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json
-    - image:
-        src: /azure/media/index/VirtualMachine.svg
-      text: Tworzenie maszyny wirtualnej z systemem Linux
-      href: /azure/virtual-machines/linux/ansible-create-vm?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json
-    - image:
-        src: /azure/media/index/VirtualMachine.svg
-      text: Zarządzanie maszyną wirtualną z systemem Linux
-      href: /azure/virtual-machines/linux/ansible-manage-linux-vm?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json
-- title: Samouczki krok po kroku
-  items:
-  - type: paragraph
-    text: Dowiedz się, jak za pomocą rozwiązania Ansible utworzyć infrastrukturę obliczeniową, sieciową i magazynową platformy Azure oraz zarządzać nią.
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: Zainstaluj rozwiązanie Ansible i używaj go do tworzenia maszyn wirtualnych z systemem Linux i zarządzanie nimi na platformie Azure.
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/media/index/azure_dev-9.svg
+            text: Instalowanie rozwiązania Ansible
+            href: /azure/virtual-machines/linux/ansible-install-configure?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json
+          - image:
+              src: /azure/media/index/VirtualMachine.svg
+            text: Konfigurowanie maszyny wirtualnej z systemem Linux
+            href: /azure/virtual-machines/linux/ansible-create-vm?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json
+          - image:
+              src: /azure/media/index/VirtualMachine.svg
+            text: Zarządzanie maszyną wirtualną z systemem Linux
+            href: /azure/virtual-machines/linux/ansible-manage-linux-vm?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json
+  - title: Samouczki krok po kroku
     items:
-    - html: <a href="/azure/virtual-machines/linux/ansible-create-complete-vm?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json">Utwórz maszynę wirtualną z systemem Linux, łącznie z siecią wirtualną, publiczny adres IP i wirtualną kartę sieciową.</a>
-    - html: <a href="./ansible-run-playbook-in-cloudshell">Uruchom rozwiązanie Ansible przy użyciu programu Bash w usłudze Azure Cloud Shell.</a>
-    - html: <a href="./ansible-manage-azure-dynamic-inventories">Utwórz dynamiczny spis zasobów platformy Azure i zarządzaj nim.</a>
-    - html: <a href="./ansible-create-configure-vmss">Twórz zestawy skalowania maszyn wirtualnych i zarządzaj nimi na platformie Azure.</a>
-    - html: <a href="./ansible-deploy-app-vmss">Wdrażaj aplikacje w zestawach skalowania maszyn wirtualnych na platformie Azure.</a>
-    - html: <a href="./ansible-create-configure-aks">Twórz klastry usługi Azure Kubernetes Service i zarządzaj nimi.</a>
-    - html: <a href="./ansible-create-configure-application-gateway">Zarządzaj ruchem internetowym przy użyciu bramy aplikacji platformy Azure.</a>
-    - html: <a href="./ansible-auto-scale-vmss">Automatycznie skaluj zestaw skalowania maszyn wirtualnych na platformie Azure przy użyciu rozwiązania Ansible.</a>
-    - html: <a href="./ansible-scale-azure-web-apps">Skaluj aplikacje internetowe w ramach usługi Azure App Service za pomocą rozwiązania Ansible.</a>
-    - html: <a href="./ansible-create-configure-route-table">Twórz, zmieniaj lub usuwaj tabelę tras platformy Azure za pomocą rozwiązania Ansible.</a>
-- title: Dokumentacja
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: 'Dowiedz się, jak za pomocą rozwiązania Ansible utworzyć infrastrukturę obliczeniową, sieciową i magazynową platformy Azure oraz zarządzać nią.'
+      - type: list
+        style: unordered
+        items:
+          - html: '<a href="/azure/virtual-machines/linux/ansible-create-complete-vm?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json">Utwórz maszynę wirtualną z systemem Linux, łącznie z siecią wirtualną, publiczny adres IP i wirtualną kartę sieciową.</a>'
+          - html: <a href="./ansible-run-playbook-in-cloudshell">Uruchom rozwiązanie Ansible przy użyciu programu Bash w usłudze Azure Cloud Shell.</a>
+          - html: <a href="./ansible-manage-azure-dynamic-inventories">Utwórz dynamiczny spis zasobów platformy Azure i zarządzaj nim.</a>
+          - html: <a href="./ansible-create-configure-vmss">Twórz zestawy skalowania maszyn wirtualnych i zarządzaj nimi na platformie Azure.</a>
+          - html: <a href="./ansible-deploy-app-vmss">Wdrażaj aplikacje w zestawach skalowania maszyn wirtualnych na platformie Azure.</a>
+          - html: <a href="./ansible-create-configure-aks">Twórz klastry usługi Azure Kubernetes Service i zarządzaj nimi.</a>
+          - html: <a href="./ansible-create-configure-application-gateway">Zarządzaj ruchem internetowym przy użyciu bramy aplikacji platformy Azure.</a>
+          - html: <a href="./ansible-auto-scale-vmss">Automatycznie skaluj zestawy skalowania maszyn wirtualnych na platformie Azure przy użyciu rozwiązania Ansible.</a>
+          - html: <a href="./ansible-scale-azure-web-apps">Skaluj aplikacje internetowe w ramach usługi Azure App Service za pomocą rozwiązania Ansible.</a>
+          - html: '<a href="./ansible-create-configure-route-table">Twórz, zmieniaj lub usuwaj tabelę tras platformy Azure za pomocą rozwiązania Ansible.</a>'
+  - title: Dokumentacja
     items:
-    - title: Role elementu playbook
-      html: <p><a href="https://galaxy.ansible.com/Azure/azure_preview_modules/">azure_preview_module</a></p>
-    - title: Wydania i funkcje
-      html: <p><a href="./ansible-matrix.md">Tabela funkcji dla modułów i ról</a></p>
-    - title: Narzędzia
-      html: <p><a href="https://marketplace.visualstudio.com/items?itemName=vscoss.vscode-ansible">Rozszerzenie programu Visual Studio Code dla rozwiązania Ansible</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Role elementu playbook
+            html: '<p><a href="https://galaxy.ansible.com/Azure/azure_preview_modules/">azure_preview_module</a></p>'
+          - title: Wydania i funkcje
+            html: <p><a href="./ansible-matrix.md">Tabela funkcji dla modułów i ról</a></p>
+          - title: Narzędzia
+            html: '<p><a href="https://marketplace.visualstudio.com/items?itemName=vscoss.vscode-ansible">Rozszerzenie programu Visual Studio Code dla rozwiązania Ansible</a></p>'

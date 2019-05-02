@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 4fc4175c03baa4ddb81507dd4001fcdbe7c7058b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: eebf9ef63a8622c4cc431322b786fdf30f6352fe
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61458719"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925822"
 ---
 # <a name="diagnose-dropped-notifications-in-azure-notification-hubs"></a>Diagnozowanie porzuconymi powiadomieniami w usłudze Azure Notification Hubs
 
@@ -123,7 +123,7 @@ Poniżej przedstawiono ścieżki, aby zdiagnozować jej główną przyczynę por
 
 #### <a name="push-notification-service-developer-portal"></a>Portal dla deweloperów usługi powiadomień wypychanych ####
 
-Sprawdź poświadczenia w portalu dla deweloperów programu odpowiednich wypychania powiadomień service (APNs, FCM, Windows Notification Service i tak dalej). Aby uzyskać więcej informacji, zobacz [Samouczek: wysyłanie powiadomień do aplikacji platformy uniwersalnej systemu Windows przy użyciu usługi Azure Notification Hubs](https://docs.microsoft.com/en-us/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification).
+Sprawdź poświadczenia w portalu dla deweloperów programu odpowiednich wypychania powiadomień service (APNs, FCM, Windows Notification Service i tak dalej). Aby uzyskać więcej informacji, zobacz [Samouczek: wysyłanie powiadomień do aplikacji platformy uniwersalnej systemu Windows przy użyciu usługi Azure Notification Hubs](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification).
 
 #### <a name="azure-portal"></a>Azure Portal ####
 
@@ -180,7 +180,7 @@ Można również wysłać powiadomień dotyczących testów z programu Visual St
 
 Aby uzyskać więcej informacji na temat używania usługi Notification Hubs za pomocą Eksploratora serwera w usłudze Visual Studio zobacz następujące artykuły:
 
-* [Jak wyświetlić rejestracje urządzeń do usługi notification hubs](https://docs.microsoft.com/en-us/previous-versions/windows/apps/dn792122(v=win.10))
+* [Jak wyświetlić rejestracje urządzeń do usługi notification hubs](https://docs.microsoft.com/previous-versions/windows/apps/dn792122(v=win.10))
 * [Szczegółowe informacje: Visual Studio 2013 Update 2 RC i Azure SDK 2.3]
 * [Ogłaszamy wydanie programu Visual Studio 2013 Update 3 i Azure SDK 2.4]
 
@@ -261,7 +261,7 @@ W portalu możesz uzyskać szybki przegląd wszystkich działań w Centrum powia
 
 #### <a name="programmatic-access"></a>Dostęp programowy ####
 
-Aby uzyskać więcej informacji na temat dostęp programowy zobacz [dostęp programowy](https://docs.microsoft.com/en-us/previous-versions/azure/azure-services/dn458823(v=azure.100)).
+Aby uzyskać więcej informacji na temat dostęp programowy zobacz [dostęp programowy](https://docs.microsoft.com/previous-versions/azure/azure-services/dn458823(v=azure.100)).
 
 > [!NOTE]
 > Kilka funkcji związane z telemetrią, takich jak eksportowanie i importowanie rejestracji i dane telemetryczne dostęp za pośrednictwem interfejsów API, są dostępne tylko w warstwie usług standardowa na. Próby użycia tych funkcji, bezpłatna lub podstawowa z warstwy usług, zapewnisz sobie komunikat o wyjątku używania zestawu SDK. Jeśli korzystasz z funkcji bezpośrednio za pośrednictwem interfejsów API REST, zostanie wyświetlony błąd HTTP 403 (zabronione).

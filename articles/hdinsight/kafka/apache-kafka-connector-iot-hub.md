@@ -1,7 +1,6 @@
 ---
 title: Korzystanie z platformy Apache Kafka w HDInsight z usługą Azure IoT Hub
 description: Dowiedz się, jak używać platformy Apache Kafka w HDInsight z usługą Azure IoT Hub. Projekt platformy Kafka łączenie usługi Azure IoT Hub udostępnia łącznik źródła i ujścia dla platformy Kafka. Łącznik źródła może odczytywać dane z usługi IoT Hub, a connector ujścia zapisuje do usługi IoT Hub.
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: e64490517603687684617ce915e0d3f3e35298e9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 420800e718c8f98bfd3d5d7383829d5aa5472828
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58093392"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64698163"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>Korzystanie z platformy Apache Kafka w HDInsight z usługą Azure IoT Hub
 

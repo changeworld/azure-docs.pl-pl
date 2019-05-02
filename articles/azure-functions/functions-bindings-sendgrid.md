@@ -262,7 +262,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |**Aby**|**Do**| adres e-mail adresata. |
 |**Z**|**From**| adres e-mail nadawcy. |
 |**subject**|**Temat**| temat wiadomości e-mail. |
-|**Tekst**|**Tekst**| Treść wiadomości e-mail. |
+|**text**|**Text**| Treść wiadomości e-mail. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -288,7 +288,7 @@ W tej sekcji opisano globalne ustawienia konfiguracji dostępne dla tego powiąz
 
 |Właściwość  |Domyślne | Opis |
 |---------|---------|---------| 
-|z|Nie dotyczy|Adres e-mail nadawcy dla wszystkich funkcji.| 
+|from|Nie dotyczy|Adres e-mail nadawcy dla wszystkich funkcji.| 
 
 
 ## <a name="next-steps"></a>Kolejne kroki

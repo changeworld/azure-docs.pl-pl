@@ -14,16 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: c5979fa7ff67c5acda9ab653bc4ee52d8b5129a5
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: a45e2af6f2cb9c105c084585a03a6de615fa1397
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58293808"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64573041"
 ---
 # <a name="streaming-endpoints-overview"></a>Omówienie punktów końcowych przesyłania strumieniowego  
 
-## <a name="overview"></a>Przegląd
+> [!NOTE]
+> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówek dotyczących migracji od v2 do v3](../latest/migrate-from-v2-to-v3.md)
 
 W programie Microsoft Azure Media Services (AMS), **punkt końcowy przesyłania strumieniowego** reprezentuje usługę przesyłania strumieniowego, która umożliwia dostarczanie zawartości bezpośrednio do aplikacji odtwarzacza klienta lub aby Content Delivery Network (CDN) w celu dalszego rozpowszechniania. Media Services udostępnia również bezproblemową integrację usługi Azure CDN. Strumień wychodzący, z usługi StreamingEndpoint może być strumień na żywo, wideo na żądanie lub pobierania progresywnego elementów zawartości w ramach konta usługi Media Services. Każde konto usługi Azure Media Services obejmuje domyślne StreamingEndpoint. Dodatkowe punkty mogą być tworzone w ramach konta. Istnieją dwie wersje punkty, 1.0 i 2.0. Począwszy od stycznia 2017 10, wszystkie nowo utworzone konta usługi AMS zostaną uwzględnione w wersji 2.0 **domyślne** StreamingEndpoint. Dodatkowe punkty końcowe przesyłania strumieniowego, które dodajesz do tego konta będą również w wersji 2.0. Ta zmiana nie ma wpływu na istniejące konta; istniejące punkty będą w wersji 1.0 i mogą być uaktualniane do wersji 2.0. Dzięki tej zmianie będą zmiany zachowania, rozliczeń i funkcji (Aby uzyskać więcej informacji, zobacz **przesyłania strumieniowego, typy i wersje** sekcji opisane poniżej).
 
@@ -46,14 +47,17 @@ Aby uzyskać wszystkie dodatkowe punkty końcowe: `{EndpointName}-{AccountName}.
 
 ### <a name="standardpremium-types-version-20"></a>Typy standardowa/Premium (wersja 2.0)
 
-Począwszy od stycznia 2017 wersję usługi Media Services, istnieją dwa typy przesyłania strumieniowego: **Standardowa** i **Premium**. Te typy są częścią wersji punktu końcowego przesyłania strumieniowego "2.0".
+Począwszy od stycznia 2017 wersję usługi Media Services, istnieją dwa typy przesyłania strumieniowego: **Standardowa** (wersja zapoznawcza) i **Premium**. Te typy są częścią wersji punktu końcowego przesyłania strumieniowego "2.0".
 
-Type|Opis
----|---
-**Standardowa** |Jest to opcja domyślna, która będzie działać w przypadku większości scenariuszy.<br/>Po wybraniu tej opcji Pobierz umowę SLA/limited, pierwsze 15 dni, po uruchomieniu punktu końcowego przesyłania strumieniowego jest bezpłatna.<br/>Jeśli tworzysz więcej niż jedną punkty końcowe, przesyłania strumieniowego tylko pierwszy z nich jest bezpłatna przez pierwsze 15 dni, inne są rozliczane zaraz po ich uruchomieniu. <br/>Należy pamiętać, że bezpłatnej wersji próbnej ma zastosowanie tylko do konta usługi media nowo utworzony i domyślny punkt końcowy przesyłania strumieniowego. Istniejące punkty końcowe przesyłania strumieniowego i dodatkowo utworzone punkty końcowe przesyłania strumieniowego nie zawiera bezpłatny okres próbny jeszcze są uaktualniane do wersji 2.0 lub są one tworzone w wersji 2.0.
-**Premium** |Ta opcja jest odpowiednia dla profesjonalnych scenariusze, które wymagają wyższej skali lub formantu.<br/>Zmiennej umowy SLA, który jest oparty na premium przesyłania strumieniowego (SU) jednostki nabyte miejsce w dedykowanej punkty końcowe przesyłania strumieniowego na żywo w izolowanym środowisku, a nie konkurują o zasoby.
 
-Aby uzyskać więcej informacji, zobacz **porównania przesyłania strumieniowego typy** tej sekcji.
+|Type|Opis|
+|--------|--------|  
+|**Standardowa**|Domyślny punkt końcowy przesyłania strumieniowego jest **standardowa** wpisz, można zmienić, dostosowując jednostek przesyłania strumieniowego typu Premium.|
+|**Premium** |Ta opcja jest odpowiednia dla profesjonalnych scenariusze, które wymagają wyższej skali lub formantu. Przenieś do **Premium** typu przez dostosowywanie jednostek przesyłania strumieniowego.<br/>Dedykowany punkty końcowe przesyłania strumieniowego na żywo w izolowanym środowisku, a nie konkurują o zasoby.|
+
+Klienci, którzy chcą do dostarczania zawartości do dużej liczby odbiorców w Internecie zalecamy, aby włączyć usługi CDN w punkcie końcowym przesyłania strumieniowego.
+
+Aby uzyskać więcej informacji, zobacz [porównania przesyłania strumieniowego typy](#comparing-streaming-types) tej sekcji.
 
 ### <a name="classic-type-version-10"></a>Typ klasyczny (w wersji 1.0)
 
@@ -71,29 +75,32 @@ Jeśli Twoje **wersji "1.0"** punkt końcowy przesyłania strumieniowego jest > 
 
 ### <a name="versions"></a>Wersje
 
-|Type|StreamingEndpointVersion|ScaleUnits|CDN|Rozliczenia|Umowa SLA| 
-|--------------|----------|-----------------|-----------------|-----------------|-----------------|    
-|Wdrożenie klasyczne|1.0|0|Nie dotyczy|Bezpłatna|Nie dotyczy|
-|Standardowy punkt końcowy przesyłania strumieniowego|2.0|0|Yes|Płatne|Yes|
-|Jednostki przesyłania strumieniowego Premium|1.0|>0|Yes|Płatne|Yes|
-|Jednostki przesyłania strumieniowego Premium|2.0|>0|Yes|Płatne|Yes|
+|Type|StreamingEndpointVersion|ScaleUnits|CDN|Rozliczenia|
+|--------------|----------|-----------------|-----------------|-----------------|
+|Wdrożenie klasyczne|1.0|0|Nie dotyczy|Bezpłatna|
+|Standardowy punkt końcowy przesyłania strumieniowego (wersja zapoznawcza)|2.0|0|Yes|Płatne|
+|Jednostki przesyłania strumieniowego Premium|1.0|>0|Yes|Płatne|
+|Jednostki przesyłania strumieniowego Premium|2.0|>0|Yes|Płatne|
 
 ### <a name="features"></a>Funkcje
 
 Cecha|Standardowa (Standard)|Premium
 ---|---|---
-Bezpłatne pierwsze 15 dni| Yes |Nie
-Przepływność |Do 600 MB/s, gdy nie jest używana sieć CDN systemu Azure. Skaluje się przy użyciu usługi CDN.|200 MB/s dla przesyłania strumieniowego (SU) jednostki. Skaluje się przy użyciu usługi CDN.
-Umowa SLA | 99.9|Dostępność na poziomie 99,9 (200 MB/s na SU).
+Pierwsze 15 dni wolne <sup>1</sup>| Yes |Nie
+Przepływność |Do 600 MB/s i zapewnia znacznie większą przepływność skuteczne stosowania sieci CDN.|200 MB/s dla przesyłania strumieniowego (SU) jednostki. Zapewnia znacznie większą przepływność skuteczne, stosowania sieci CDN.
 CDN|Usługa Azure CDN, innej sieci CDN lub nie sieci CDN.|Usługa Azure CDN, innej sieci CDN lub nie sieci CDN.
 Opłaty są naliczane proporcjonalnie| Codziennie|Codziennie
 Szyfrowanie dynamiczne|Yes|Yes
 Dynamiczne tworzenie pakietów|Yes|Yes
-Skalowanie|Automatyczne jest skalowany w górę docelowe przepływności.|Dodatkowe jednostki przesyłania strumieniowego
-IP filtrowanie/G20/niestandardowego hosta|Yes|Yes
+Skalowanie|Automatyczne jest skalowany w górę docelowe przepływności.|Dodatkowe jednostki przesyłania strumieniowego.
+Host filtrowanie/G20/Custom IP <sup>2</sup>|Yes|Yes
 Pobierania progresywnego|Yes|Yes
-Zalecane użycie |Zalecane w przypadku większość przesyłania strumieniowego scenariuszy.|Użycie Professional.<br/>Jeśli Twoim zdaniem mogą mieć potrzeb poza Standard. Skontaktuj się z nami (amsstreaming@microsoft.com) Jeśli oczekujesz, rozmiar współbieżnych odbiorców większych niż 50 000 osób przeglądających.
+Zalecane użycie |Zalecane w przypadku większość przesyłania strumieniowego scenariuszy.|Użycie Professional. 
 
+<sup>1</sup> bezpłatnej wersji próbnej ma zastosowanie tylko do konta usług media nowo utworzony i domyślnego punktu końcowego przesyłania strumieniowego.<br/>
+<sup>2</sup> warunkiem bezpośrednio na punkt końcowy przesyłania strumieniowego nie włączono usługę CDN w punkcie końcowym.<br/>
+
+Aby uzyskać informacje o umowie SLA, zobacz [cennik i umowy SLA](https://azure.microsoft.com/pricing/details/media-services/).
 
 ## <a name="migration-between-types"></a>Migracja między typami
 

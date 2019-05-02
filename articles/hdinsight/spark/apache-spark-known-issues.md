@@ -1,7 +1,6 @@
 ---
 title: Rozwiązywanie problemów przy użyciu klastra Apache Spark w usłudze Azure HDInsight
 description: Więcej informacji na temat problemów związanych z klastrami Apache Spark w usłudze Azure HDInsight oraz sposób obejścia tych.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
-ms.openlocfilehash: fd2e253d88d6cddddd35dc75c8b746e906407cb5
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 51a0ee6f2d928d79e60ca9976d7651c70867a41f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337268"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64717597"
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>Znane problemy dotyczące klastra Apache Spark w HDInsight
 

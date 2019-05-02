@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: ad5a4981869f992ab6823a13afc2cad0e5252d08
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: eb731dc18b1524bcf161352265af9e277f85876e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105437"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64730618"
 ---
 # <a name="configure-php-in-azure-app-service"></a>Konfigurowanie obsługi języka PHP w usłudze Azure App Service
 
@@ -35,15 +35,11 @@ PHP 5.6 jest domyślnie, jest zainstalowana i natychmiast dostępny do użycia p
 
 ### <a name="azure-portal"></a>Azure Portal
 
-1. Przejdź do aplikacji w [witryny Azure portal](https://portal.azure.com) i kliknij pozycję **ustawienia** przycisku.
+1. Przejdź do aplikacji w [witryny Azure portal](https://portal.azure.com) i przewiń do **konfiguracji** strony.
 
-    ![Ustawienia aplikacji][settings-button]
-2. Z **ustawienia** bloku wybierz **ustawienia aplikacji** i wybierz nową wersję PHP.
+2. Z **konfiguracji**, wybierz opcję **ustawienia ogólne** i wybierz nową wersję PHP.
 
-    ![Ustawienia aplikacji][application-settings]
-3. Kliknij przycisk **Zapisz** znajdujący się u góry **ustawienia aplikacji** bloku.
-
-    ![Zapisanie ustawień konfiguracji][save-button]
+3. Kliknij przycisk **Zapisz** znajdujący się u góry **ustawienia ogólne** bloku.
 
 ### <a name="azure-powershell-windows"></a>Azure PowerShell (Windows)
 
@@ -130,18 +126,12 @@ Jak wspomniano w poprzedniej sekcji, najlepszym sposobem, aby wyświetlić domy�
 ### <a name="configure-via-app-setting"></a>Konfigurowanie poprzez ustawienie aplikacji
 
 1. Dodaj `bin` katalog do katalogu głównego.
-1. Umieść `.dll` rozszerzenia plików `bin` katalog (na przykład `php_xdebug.dll`). Upewnij się, że rozszerzenia są zgodne z domyślną wersją języka PHP i czy VC9 i zgodnego z innego niż wątkowo (nts).
-2. Wdrażanie aplikacji.
-3. Przejdź do aplikacji w witrynie Azure portal, a następnie kliknij pozycję **ustawienia** przycisku.
-
-    ![Ustawienia aplikacji][settings-button]
-4. Z **ustawienia** bloku wybierz **ustawienia aplikacji** i przewiń do **ustawienia aplikacji** sekcji.
-5. W **ustawienia aplikacji** sekcji, Utwórz **PHP_EXTENSIONS** klucza. Wartość tego klucza będzie ścieżka względem katalogu głównego witryny sieci Web: **bin\your ext, rozszerzenie pliku**.
-
-    ![Włączanie rozszerzenia w ustawieniach aplikacji][php-extensions]
-6. Kliknij przycisk **Zapisz** znajdujący się u góry **ustawienia aplikacji** bloku.
-
-    ![Zapisanie ustawień konfiguracji][save-button]
+2. Umieść `.dll` rozszerzenia plików `bin` katalog (na przykład `php_xdebug.dll`). Upewnij się, że rozszerzenia są zgodne z domyślną wersją języka PHP i czy VC9 i zgodnego z innego niż wątkowo (nts).
+3. Wdrażanie aplikacji.
+4. Przejdź do aplikacji w witrynie Azure portal, a następnie kliknij pozycję **konfiguracji** znajdujący się poniżej **ustawienia** sekcji.
+5. Z **konfiguracji** bloku wybierz **ustawienia aplikacji**.
+6. W **ustawienia aplikacji** sekcji, kliknij pozycję **+ nowe ustawienie aplikacji** i utworzyć **PHP_EXTENSIONS** klucza. Wartość tego klucza będzie ścieżka względem katalogu głównego witryny sieci Web: **bin\your ext, rozszerzenie pliku**.
+7. Kliknij przycisk **aktualizacji** przycisk w dolnej części, a następnie kliknij przycisk **Zapisz** powyżej **ustawienia aplikacji** kartę.
 
 Rozwiązanie Zend rozszerzenia również są obsługiwane przy użyciu **PHP_ZENDEXTENSIONS** klucza. Aby włączyć wiele rozszerzeń, należy dołączyć rozdzielaną przecinkami listę `.dll` pliki wartość ustawienia aplikacji.
 
@@ -154,15 +144,11 @@ Zamiast domyślnego środowiska uruchomieniowego PHP usługa App Service można 
 3. Opcjonalnie dodaj rozszerzenia do Twojego środowiska uruchomieniowego języka PHP i włączyć je w `php.ini` pliku.
 4. Dodaj `bin` katalog do katalogu głównego i put katalogu, który zawiera Twoje środowiska uruchomieniowego języka PHP w nim (na przykład `bin\php`).
 5. Wdrażanie aplikacji.
-6. Przejdź do aplikacji w witrynie Azure portal, a następnie kliknij pozycję **ustawienia** przycisku.
-
-    ![Ustawienia aplikacji][settings-button]
-7. Z **ustawienia** bloku wybierz **ustawienia aplikacji** i przewiń do **mapowania obsługi** sekcji. Dodaj `*.php` z rozszerzeniem pola, a następnie dodaj ścieżkę do `php-cgi.exe` pliku wykonywalnego. Jeśli przeniesiesz swoje środowiska uruchomieniowego języka PHP `bin` katalogu w folderze głównym aplikacji, ścieżka jest `D:\home\site\wwwroot\bin\php\php-cgi.exe`.
-
-    ![Określ program obsługi mapowania obsługi][handler-mappings]
-8. Kliknij przycisk **Zapisz** znajdujący się u góry **ustawienia aplikacji** bloku.
-
-    ![Zapisanie ustawień konfiguracji][save-button]
+6. Przejdź do aplikacji w witrynie Azure portal, a następnie kliknij pozycję **konfiguracji** bloku.
+8. Z **konfiguracji** bloku wybierz **mapowania ścieżki**. 
+9. Kliknij przycisk **+ nowy program obsługi** i Dodaj `*.php` z rozszerzeniem pola, a następnie dodaj ścieżkę do `php-cgi.exe` pliku wykonywalnego w **procesora skryptów**. Jeśli przeniesiesz swoje środowiska uruchomieniowego języka PHP `bin` katalogu w folderze głównym aplikacji, ścieżka jest `D:\home\site\wwwroot\bin\php\php-cgi.exe`.
+10. Kliknij u dołu, **aktualizacji** aby zakończyć dodawanie mapowania programu obsługi.
+11. Kliknij przycisk **Zapisz**, aby zapisać zmiany.
 
 <a name="composer" />
 

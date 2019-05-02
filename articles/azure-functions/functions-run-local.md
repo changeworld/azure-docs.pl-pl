@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: 9db84ee23a2b2b19d05e458ff38854076a530e38
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 380cd84cc5ec56fe54c12201b9c1db810ac457bf
+ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61022108"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64875919"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Praca z usługą Azure Functions podstawowych narzędzi
 
@@ -41,6 +41,9 @@ Jeśli nie określono inaczej, przykłady w niniejszym artykule dotyczą wersji 
 ### <a name="v2"></a>W wersji 2.x
 
 Wersja środowiska uruchomieniowego usługi Azure Functions korzysta z 2.x narzędzia 2.x, która jest oparta na module .NET Core. Ta wersja jest obsługiwana na wszystkich platformach .NET Core 2.x obsługuje, w tym [Windows](#windows-npm), [macOS](#brew), i [Linux](#linux). Należy zainstalować program .NET Core 2.x SDK.
+
+> [!IMPORTANT]
+> Po włączeniu rozszerzenia pakietów w pliku host.json projektu jest konieczne instalowanie programu .NET Core 2.x SDK. Aby uzyskać więcej informacji, zobacz [rozwoju lokalnego przy użyciu podstawowych narzędzi usługi Azure Functions i pakiety rozszerzeń ](functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles). Pakiety rozszerzeń wymaga wersji 2.6.1071 podstawowe narzędzia lub nowszym.
 
 #### <a name="windows-npm"></a>Windows
 
@@ -310,6 +313,7 @@ func host start
 | **`--script-root --prefix`** | Można określić ścieżkę do katalogu głównego aplikacji funkcji, który ma zostać uruchomić lub wdrożyć. Służy to do skompilowanych projektach, generujących pliki projektu do podfolderu. Na przykład podczas kompilowania biblioteki klas C# plików projektu, host.json, local.settings.json i function.json są generowane w *głównego* podfolder ze ścieżką, takich jak `MyProject/bin/Debug/netstandard2.0`. W tym przypadku Ustaw prefiks jako `--script-root MyProject/bin/Debug/netstandard2.0`. Jest to katalog główny aplikacji funkcji, podczas uruchamiania na platformie Azure. |
 | **`--timeout -t`** | Limit czasu dla hosta funkcji, które można uruchomić w ciągu kilku sekund. Domyślne: 20 sekund.|
 | **`--useHttps`** | Powiąż z `https://localhost:{port}` , a nie do `http://localhost:{port}`. Domyślnie ta opcja tworzy zaufanego certyfikatu na komputerze.|
+| **`--enableAuth`** | Włącz uwierzytelnianie Pełna obsługa potoku.|
 
 Dla języka C# projekt biblioteki klas (.csproj), należy wprowadzić `--build` opcję, aby wygenerować biblioteki .dll.
 

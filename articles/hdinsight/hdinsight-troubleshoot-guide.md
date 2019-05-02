@@ -1,18 +1,17 @@
 ---
 title: Usługa Azure HDInsight, wskazówki dotyczące rozwiązywania problemów
 description: Rozwiązywanie problemów z obciążenia usługi Apache Hadoop, za pomocą usługi Azure HDInsight. Dokumentacja krok po kroku dowiesz się, jak używać HDInsight, aby rozwiązać typowe problemy z usługą Apache Hive, Apache Spark, Apache YARN, bazy danych Apache HBase, systemie plików HDFS i Apache Storm.
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/2/2017
-ms.openlocfilehash: 5ffd1cb0c71c4948e522d44231242e33889c6409
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: f7ac4b7434c56d356fa7e88de39e819a112ae234
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58442458"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64723389"
 ---
 # <a name="troubleshoot-by-using-azure-hdinsight"></a>Rozwiązywanie problemów przy użyciu usługi Azure HDInsight
 

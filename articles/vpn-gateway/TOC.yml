@@ -176,6 +176,12 @@
           href: vpn-gateway-download-vpndevicescript.md
         - name: 'Przykład: urządzenie ASA Cisco (IKEv2/bez protokołu BGP)'
           href: vpn-gateway-3rdparty-device-config-cisco-asa.md
+    - name: Monitorowanie i alerty
+      items:
+        - name: Konfigurowanie alertów na podstawie metryk
+          href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md
+        - name: Konfigurowanie alertów w oparciu o dziennik diagnostyczny
+          href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md
     - name: Rozwiązywanie problemów
       href: vpn-gateway-troubleshoot.md
       items:

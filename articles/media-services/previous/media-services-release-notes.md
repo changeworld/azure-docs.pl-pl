@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: ea5a6a70372571daf82e7639fc31c125d69fa44f
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 25da9fd787c467bdddb7c8dcd68b9df518d018b7
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621434"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64728037"
 ---
 # <a name="azure-media-services-release-notes"></a>Informacje o wersji usługi Azure Media Services
 
@@ -321,10 +321,6 @@ W tej wersji są oznaczone domyślnego konstruktora Microsoft.WindowsAzure.Media
 * Nie można obecnie pozyskiwania RTMP transmisji strumieniowej na żywo, za pośrednictwem połączenia SSL.
 * Można przesyłać strumieniowo za pośrednictwem protokołu SSL, tylko wtedy, gdy punkt końcowy przesyłania strumieniowego, z którego można dostarczać zawartość została utworzona po 10 września 2014 r. Jeśli Twoje adresy URL przesyłania strumieniowego są oparte na punkty końcowe przesyłania strumieniowego utworzonych po 10 września 2014 r. adres URL zawiera "streaming.mediaservices.windows.net" (nowy format). Adresy URL przesyłania strumieniowego, które zawierają "origin.mediaservices.windows.net" (stary format) nie obsługują protokołu SSL. Jeśli adres URL jest w starym formacie i chcesz strumieniowo przesyłać za pośrednictwem protokołu SSL, [utworzyć nowy punkt końcowy przesyłania strumieniowego](media-services-portal-manage-streaming-endpoints.md). Aby przesyłać strumieniowo zawartość, za pośrednictwem protokołu SSL, należy użyć adresów URL, w oparciu o nowy punkt końcowy przesyłania strumieniowego.
 
-## <a id="october_changes_14"></a>Wersja z października 2014 r.
-### <a id="new_encoder_release"></a>Usługa Media Services Encoder wydania
- Ogłoszono nowa wersja programu Media Services usługi Azure Media Encoder. Za pomocą najnowszych Media Encoder, opłaty są naliczane tylko dla danych wyjściowych w GB. W przeciwnym razie Nowa usługa encoder to funkcja zgodne z użyciem kodera w poprzednim. Aby uzyskać więcej informacji, zobacz [Szczegóły cennika usług Media Services].
-
 ### <a id="oct_sdk"></a>Zestaw SDK platformy .NET usługi Media Services
 Media Services SDK dla platformy .NET, rozszerzenia jest teraz w wersji 2.0.0.3.
 
@@ -396,14 +392,6 @@ Media Services .NET SDK jest teraz w wersji 3.0.0.5. Wprowadzono następujące a
   * Po otrzymaniu wyjątki w sieci web (na przykład podczas żądania tokenu Access Control Service), błędy krytyczne niepowodzenie szybciej teraz.
 
 Aby uzyskać więcej informacji, zobacz [Logika ponawiania w zestawie SDK usługi multimediów dla platformy .NET].
-
-## <a id="april_changes_14"></a>Wersja kodera kwietnia 2014 r.
-### <a name="april_14_enocer_changes"></a>Usługa Media Services Encoder aktualizacji
-* Dodano obsługę do pozyskania plików AVI, które są tworzone za pomocą edytora nieliniowych EDIUS krzemowa Piękniejsze. W ramach tego procesu wideo niezbyt często jest skompresowany za pomocą kodera-dekodera krzemowa Piękniejsze Centrali/HQX. Aby uzyskać więcej informacji, zobacz [Dolina Piękniejsze ogłasza 7 EDIUS przesyłania strumieniowego przez chmurę].
-*  Dodano obsługę do określenia konwencji nazewnictwa pliki tworzone przez Media Services Encoder. Aby uzyskać więcej informacji, zobacz [kontroli Media Services Encoder dane wyjściowe nazwy plików](https://msdn.microsoft.com/library/azure/dn303341.aspx).
-*  Dodano obsługę nakładki wideo lub audio. Aby uzyskać więcej informacji, zobacz [Tworzenie nakładek](https://msdn.microsoft.com/library/azure/dn640496.aspx).
-*  Dodano obsługę można łączyć wiele segmentów wideo. Aby uzyskać więcej informacji, zobacz [Połącz segmentów wideo](https://msdn.microsoft.com/library/azure/dn640504.aspx).
-* Usunięto usterkę, która została powiązana z transkodowanie każdego pliku MP4 z którym audio zostały zakodowane przy użyciu standardu MPEG-1 Audio warstwy 3 (znany także jako MP3).
 
 ## <a id="jan_feb_changes_14"></a>Stycznia/lutego 2014 roku
 ### <a name="jan_fab_14_donnet_changes"></a>Zestaw SDK platformy .NET 3.0.0.1, 3.0.0.2 i 3.0.0.3 usługi Media Services
@@ -556,7 +544,7 @@ Nowość w wersji listopada zestawu SDK został następujące funkcje:
 <!--- URLs. --->
 [Forum MSDN dotyczącym usługi Azure Media Services]: https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices
 [Dokumentacja usługi Azure Media Services — interfejs API REST]: https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference
-[Szczegóły cennika usług Media Services]: https://azure.microsoft.com/pricing/details/media-services/
+[Media Services pricing details]: https://azure.microsoft.com/pricing/details/media-services/
 [Metadane wejściowe]: https://msdn.microsoft.com/library/azure/dn783120.aspx
 [Metadane wyjściowe]: https://msdn.microsoft.com/library/azure/dn783217.aspx
 [Deliver content]: https://msdn.microsoft.com/library/azure/hh973618.aspx
@@ -573,7 +561,7 @@ Nowość w wersji listopada zestawu SDK został następujące funkcje:
 [Nick Drouin's blog]: http://blog-ndrouin.azurewebsites.net/hls-v3-new-old-thing/
 [Protect Smooth Streaming with PlayReady]: https://msdn.microsoft.com/library/azure/dn189154.aspx
 [Logika ponawiania w zestawie SDK usługi multimediów dla platformy .NET]: https://msdn.microsoft.com/library/azure/dn745650.aspx
-[Dolina Piękniejsze ogłasza 7 EDIUS przesyłania strumieniowego przez chmurę]: https://www.streamingmedia.com/Producer/Articles/ReadArticle.aspx?ArticleID=96351&utm_source=dlvr.it&utm_medium=twitter
+[Grass Valley announces EDIUS 7 streaming through the cloud]: https://www.streamingmedia.com/Producer/Articles/ReadArticle.aspx?ArticleID=96351&utm_source=dlvr.it&utm_medium=twitter
 [Control Media Services Encoder output file names]: https://msdn.microsoft.com/library/azure/dn303341.aspx
 [Create overlays]: https://msdn.microsoft.com/library/azure/dn640496.aspx
 [Stitch video segments]: https://msdn.microsoft.com/library/azure/dn640504.aspx

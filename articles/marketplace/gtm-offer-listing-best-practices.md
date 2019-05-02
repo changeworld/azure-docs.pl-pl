@@ -2,26 +2,19 @@
 title: Go-To-Market Services — oferuje ofercie najlepsze rozwiązania | Azure
 description: Usług go-To-Market — w tej sekcji opisano listy najlepszych rozwiązań dla oferty
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: qianw211
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 12/21/2018
 ms.author: ellacroi
-ms.openlocfilehash: e5db2f340917705ec29f7b6db4de40914c66efcd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c06a338ec041c83588c3ee5126795b8c445ef469
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57863937"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937984"
 ---
-# <a name="offer-listing-best-practices"></a>Oferuje listę najlepszych rozwiązań
+# <a name="offer-listing-best-practices"></a>Najlepsze rozwiązania dotyczące ofert
 
 Tabele, które w tej sekcji zawierają sugestie dotyczące tworzenia i atrakcyjne oferty w portalu marketplace. Aby zapisać i skonfigurować materiałów marketingowych, przejdź do [portalu Cloud Partner](https://cloudpartner.azure.com/#insights). 
 
@@ -35,7 +28,7 @@ Tabele, które w tej sekcji zawierają sugestie dotyczące tworzenia i atrakcyjn
 | Ustawienia sklepu | Najlepsze rozwiązania |
 |:--- |:--- |  
 | Branże: Aplikacje usługi AppSource i tylko w przypadku usług doradczych | Wybierz branż, jeśli oferty adresy branżowe wymagania: <ul><li> Wyróżnienia możliwości specyficznych dla branży w opisie oferty.</li> </ul> **Uwaga**: Maksymalna liczba opcji zależy od typu oferty i jest wskazywane we [portalu Cloud Partner](https://cloudpartner.azure.com/#insights). |
-| Kategorie | Wybierz kategorie, najlepiej zharmonizowanych z oferty:<br> <ul> <li> Wybierz kategorie ostrożnie, ponieważ klienci używają ich do wyszukiwania odpowiednich aplikacji. </li> <li> Pamiętaj wywołać się, jak Twoja oferta obsługuje potrzeb konkretnej kategorii w opisie oferty. </li> </ul> **Uwaga**: Maksymalna liczba opcji zależy od typu oferty i jest wskazywane we [portalu Cloud Partner](https://cloudpartner.azure.com/#insights). |
+| Categories | Wybierz kategorie, najlepiej zharmonizowanych z oferty:<br> <ul> <li> Wybierz kategorie ostrożnie, ponieważ klienci używają ich do wyszukiwania odpowiednich aplikacji. </li> <li> Pamiętaj wywołać się, jak Twoja oferta obsługuje potrzeb konkretnej kategorii w opisie oferty. </li> </ul> **Uwaga**: Maksymalna liczba opcji zależy od typu oferty i jest wskazywane we [portalu Cloud Partner](https://cloudpartner.azure.com/#insights). |
 | Produkty, których Twoja aplikacja współpracuje ze (3 max): Tylko aplikacje usługi AppSource | Lista dodatkowych produktów i technologii, które korzysta z rozwiązania, lub rozszerzenie. Na przykład usługi Azure IoT Hub lub Azure Machine Learning. |
 | Słowa kluczowe (3 max) | Słowa kluczowe wyszukiwania może pomóc użytkownicy biznesowi, Znajdź swoją ofertę podczas wyszukiwania <ul> <li> w witrynie Azure Marketplace </li> <li> on AppSource </li> <li> za pomocą aparatów wyszukiwania </li> </ul> Twoja lista pojawią się w tych wyszukiwań następujące czynności: <ul> <li> Identyfikowanie najważniejszych trzech słów kluczowych ofertą; </li> <li> zawierać słów kluczowych w oferty Podsumowanie i opis. </li> <li> Wyświetl listę słów kluczowych w tym miejscu. </li> </ul> |
 

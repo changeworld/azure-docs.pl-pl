@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 03/13/2019
 ms.author: erhopf
-ms.openlocfilehash: f7120e80d079723ed8265320ba4b38d76a825a00
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 9187863234dd62757efecf6f0817ff00da48064a
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59499822"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64685547"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-c"></a>Szybki start: tłumaczenie mowy przy użyciu zestawu SDK usługi Mowa dla języka C++
 
@@ -32,7 +32,7 @@ Ten przewodnik Szybki start wymaga następujących elementów:
 
 ## <a name="create-a-visual-studio-project"></a>Tworzenie projektu programu Visual Studio
 
-[!INCLUDE[](../../../includes/cognitive-services-speech-service-quickstart-cpp-create-proj.md)]
+[!INCLUDE [Quickstart C++ project](../../../includes/cognitive-services-speech-service-quickstart-cpp-create-proj.md)]
 
 ## <a name="add-sample-code"></a>Dodawanie przykładowego kodu
 

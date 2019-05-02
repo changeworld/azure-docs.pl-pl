@@ -292,6 +292,12 @@
           href: '/powershell/module/az.policyinsights#policy_insights'
         - name: Konfiguracja gościa
           href: 'https://www.powershellgallery.com/packages/Az.GuestConfiguration'
+    - name: Zestaw Azure SDK dla platformy .NET
+      items:
+        - name: Przypisania
+          href: /dotnet/api/microsoft.azure.management.resourcemanager.models.policyassignment
+        - name: Definicje zasad
+          href: /dotnet/api/microsoft.azure.management.resourcemanager.models.policydefinition
     - name: REST
       items:
         - name: Zdarzenia

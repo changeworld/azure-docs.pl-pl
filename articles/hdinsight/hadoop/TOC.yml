@@ -136,8 +136,6 @@
         - name: Używanie pustych węzłów brzegowych
           href: ../hdinsight-apps-use-edge-node.md
           maintainContext: true
-        - name: Opracowywanie programów do przesyłania strumieniowego w języku Python
-          href: apache-hadoop-streaming-python.md
         - name: Przetwarzanie i analizowanie dokumentów JSON
           href: using-json-in-hive.md
         - name: 'Używanie funkcji zdefiniowanych przez użytkownika języka C#'

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: raynew
-ms.openlocfilehash: 1e80b2083a2fce90259ac0634d9e7f796f459fcd
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 93be913182db56941c346ef0cad47f70c0d614c9
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57880966"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64706836"
 ---
 # <a name="about-azure-vm-backup"></a>Informacje o kopii zapasowej maszyny wirtualnej platformy Azure
 
@@ -31,10 +31,14 @@ Poniżej przedstawiono, jak usługi Azure Backup wykonuje kopię zapasową maszy
     - Domyślnie kopie zapasowe pełnych kopii zapasowych usługi VSS.
     - Jeśli kopia zapasowa nie może zastosować migawki spójności aplikacji, następnie dokonuje spójna na poziomie plików zrzutu podstawowego magazynu (ponieważ nie występują zapisy aplikacji, podczas gdy maszyna wirtualna jest zatrzymana).
 1. W przypadku maszyn wirtualnych systemu Linux kopie zapasowe spójna na poziomie plików kopia zapasowa. Migawki spójne z aplikacji musisz ręcznie dostosować wstępnie lub używanego po nim skrypty.
-1. Po kopie zapasowe migawki, przesyła dane do magazynu. 
+1. Po kopie zapasowe migawki, przesyła dane do magazynu.
     - Tworzenie kopii zapasowej jest zoptymalizowany przez utworzenie kopii zapasowej każdego dysku maszyny Wirtualnej w sposób równoległy.
     - Dla każdego dysku, która jest tworzona kopia zapasowa kopia zapasowa Azure odczytuje bloków na dysku i identyfikuje i przesyła jedynie te bloki danych, które zmianie (delta) od czasu poprzedniej kopii zapasowej.
     - Dane migawki nie może zostać natychmiast skopiowany do magazynu. Może upłynąć kilka godzin w godzinach szczytu. Łączny czas tworzenia kopii zapasowej dla maszyny Wirtualnej będzie mniej niż 24 godziny dla zasad tworzenia kopii zapasowej dzienny.
+ 1. Zmiany wprowadzone do maszyny Wirtualnej z systemem Windows, po włączeniu usługi Azure Backup na nim są następujące:
+    -   Microsoft Visual C++ 2013 Redistributable(x64) - 12.0.40660 jest zainstalowany na maszynie wirtualnej
+    -   Typ uruchomienia usługi kopiowania woluminów w tle (VSS) zmieniła się na automatyczny z ręcznego
+    -   Usługa Windows IaaSVmProvider zostanie dodany.
 
 1. Po ukończeniu przesyłania danych migawka jest usuwana, a punkt odzyskiwania jest tworzony.
 
@@ -57,7 +61,7 @@ BEKs również kopię zapasową. Dlatego w przypadku utraty BEKs autoryzowanych 
 
 ## <a name="snapshot-creation"></a>Tworzenie migawki
 
-Usługa Azure Backup tworzy migawki zgodnie z harmonogramem tworzenia kopii zapasowej. 
+Usługa Azure Backup tworzy migawki zgodnie z harmonogramem tworzenia kopii zapasowej.
 
 - **Maszyny wirtualne Windows:** W przypadku maszyn wirtualnych Windows usługa Backup służy do koordynowania z usługami VSS do spójnego na poziomie aplikacji migawki dysków maszyny Wirtualnej.
 
@@ -82,7 +86,7 @@ W poniższej tabeli opisano różne rodzaje migawki spójności:
 **Spójne na poziomie pliku systemu** | Kopie zapasowe spójne z systemu plików zapewniają spójność wykonywania migawki wszystkie pliki w tym samym czasie.<br/><br/> | W przypadku odzyskiwania maszyny Wirtualnej przy użyciu systemu plików spójnej migawki maszyny Wirtualnej jest uruchamiany. Brak nie utraty lub uszkodzenia danych. Aplikacje muszą implementować ich własny mechanizm "poprawki", aby upewnić się, że przywróconych danych są spójne. | W systemie Windows: Niektóre składniki zapisywania usługi VSS nie powiodła się <br/><br/> W systemie Linux: Domyślne (Jeśli wstępnie lub używanego po nim skrypty nie są skonfigurowane lub nie powiodło się)
 **Spójne na poziomie awarii** | Migawki spójne na poziomie awarii zazwyczaj wystąpić jeśli Maszynę wirtualną platformy Azure zostanie wyłączony w momencie tworzenia kopii zapasowej. Tylko dane, które już istnieje na dysku w czasie wykonywania kopii zapasowej jest przechwytywane i kopii zapasowej.<br/><br/> Punktu odzyskiwania spójnego na poziomie awarii nie gwarantuje spójności danych dotyczące systemu operacyjnego lub aplikacji. | Mimo że nie ma żadnej gwarancji, zwykle wykonuje rozruch maszyny Wirtualnej, a następnie rozpoczyna się sprawdzenie dysku, aby naprawić błędy uszkodzenia. Wszelkie dane w pamięci i operacji zapisu, które nie zostały przeniesione na dysku przed awarią zostaną utracone. Aplikacje implementować własne Weryfikacja danych. Na przykład aplikacji bazy danych można użyć swojego dziennika transakcji do weryfikacji. Jeśli dziennik transakcji zawiera wpisy, które nie znajdują się w bazie danych, oprogramowanie bazy danych gromadzi informacje o transakcji ponownie, dopóki dane są spójne. | Maszyna wirtualna jest w stanie zamknięcie
 
-## <a name="backup-and-restore-considerations"></a>Zagadnienia dotyczące tworzenia kopii zapasowych i przywracania 
+## <a name="backup-and-restore-considerations"></a>Zagadnienia dotyczące tworzenia kopii zapasowych i przywracania
 
 **Zagadnienia** | **Szczegóły**
 --- | ---
@@ -99,8 +103,8 @@ W poniższej tabeli opisano różne rodzaje migawki spójności:
 Następujących typowych scenariuszach mogą mieć wpływ na całkowity czas tworzenia kopii zapasowej:
 
 - **Dodawanie nowego dysku do chronionych maszyn wirtualnych platformy Azure:** Jeśli zostanie dodany nowy dysk maszyny Wirtualnej jest w trakcie tworzenia przyrostowych kopii zapasowych, zwiększy się czas wykonywania kopii zapasowych. Łączny czas tworzenia kopii zapasowej może trwać dłużej niż 24 godziny, z powodu Replikacja początkowa nowy dysk, wraz z replikacji różnicowej istniejących dysków.
-- **Pofragmentowane dyski:** Operacje tworzenia kopii zapasowej jest szybsze zmiany dysku są ciągłe. Jeśli zmiany są rozszerzane, podzielonej zawartości na dysku kopii zapasowej będzie przebiegać wolniej. 
-- **Współczynnik zmian na dysku:** Jeśli chronione dyski, które są w trakcie tworzenia przyrostowych kopii zapasowych dziennego współczynnika zmian więcej niż 200 GB miejsca, kopia zapasowa może zająć dużo czasu (więcej niż ośmiu godzin) do wykonania. 
+- **Pofragmentowane dyski:** Operacje tworzenia kopii zapasowej jest szybsze zmiany dysku są ciągłe. Jeśli zmiany są rozszerzane, podzielonej zawartości na dysku kopii zapasowej będzie przebiegać wolniej.
+- **Współczynnik zmian na dysku:** Jeśli chronione dyski, które są w trakcie tworzenia przyrostowych kopii zapasowych dziennego współczynnika zmian więcej niż 200 GB miejsca, kopia zapasowa może zająć dużo czasu (więcej niż ośmiu godzin) do wykonania.
 - **Kopii zapasowych:** Najnowszą wersję kopii zapasowej (tzn. wersja natychmiastowe przywracanie) używa procesem bardziej zoptymalizowanego porównanie sumy kontrolnej do identyfikowania zmian. Ale jeśli używasz, natychmiastowe Przywracanie i usunięto migawkę kopii zapasowej, kopii zapasowych zmienia się na porównanie sumy kontrolnej. W tym przypadku operacji tworzenia kopii zapasowej będzie niż co 24 godziny (lub niepowodzenie).
 
 ## <a name="best-practices"></a>Najlepsze praktyki
