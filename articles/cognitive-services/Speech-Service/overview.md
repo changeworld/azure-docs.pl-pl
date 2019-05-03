@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: overview
-ms.date: 04/03/2019
+ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 61f22568aa6e6cf04963b40ad7c47163e87b9800
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2e82e033e56af10bd8e676570e9409941753eb38
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61460494"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020982"
 ---
 # <a name="what-are-the-speech-services"></a>Co to są usługi mowy?
 
-Usługi mowy platformy Azure są ujednolicenie mowy na tekst, zamiany tekstu na mowę i tłumaczenie mowy do pojedynczej subskrypcji platformy Azure. Łatwo na mowę w celu włączenia aplikacji, narzędzi i urządzeń za pomocą [zestaw SDK rozpoznawania mowy](speech-sdk-reference.md), [zestawu Speech Devices SDK](speech-devices-sdk-qsg.md), lub [interfejsów API REST](rest-apis.md).
+Usługi mowy platformy Azure są ujednolicenie mowy na tekst, zamiany tekstu na mowę i tłumaczenie mowy do pojedynczej subskrypcji platformy Azure. Łatwo na mowę w celu włączenia aplikacji, narzędzi i urządzeń za pomocą [zestaw SDK rozpoznawania mowy](speech-sdk-reference.md), [zestawu Speech Devices SDK](https://aka.ms/sdsdk-quickstart), lub [interfejsów API REST](rest-apis.md).
 
 > [!IMPORTANT]
 > Zastąpiono usług przetwarzania mowy, interfejs API rozpoznawania mowy Bing, mowy usługi Translator i Custom Speech. Zobacz *prowadzi instrukcje > migracji* instrukcje migracji.
@@ -30,6 +30,7 @@ Te funkcje tworzą usługi mowy platformy Azure. Użyj linków w tej tabeli, aby
 |---------|---------|-------------|-----|------|
 | [Zamiany mowy na tekst](speech-to-text.md) | Zamiana mowy na tekst | Zamiany mowy na tekst transcribes strumieni audio na tekst w czasie rzeczywistym, które aplikacje, narzędzia lub urządzenia używają lub wyświetlić. Użyj mowy na tekst za pomocą [Language Understanding (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/) wyprowadzenia użytkownika intencji z uzyskanego mowy i ustawy o poleceń głosowych. | [Tak](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Tak](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | | [Transkrypcja usługi Batch](batch-transcription.md) | Transkrypcja Batch umożliwia asynchroniczne przekształcania mowy na tekst z dużych ilości danych. To jest usługa oparty na protokole REST, która używa tego samego punktu końcowego jako dostosowywanie i zarządzanie modelami w usłudze. | Nie | [Tak](https://westus.cris.ai/swagger/ui/index) |
+| | [Usługa transkrypcji konwersacji](conversation-transcription-service.md) | Umożliwia rozpoznawanie mowy w czasie rzeczywistym, identyfikacja osoby mówiącej i diarization. Jest to doskonała dla przepisywania spotkań w osoby z możliwością odróżnić głośników. | Yes | Nie |
 | | [Dostosowywanie](#customize-your-speech-experience) | Korzystania z funkcji rozpoznawania mowy na tekst do rozpoznawania i transkrypcji w środowisku unikatowe można tworzyć i szkolenie niestandardowe modele akustyczne, języka i Wymowa hałasu otoczenia adres lub słownictwa branżowych. | Nie | [Tak](https://westus.cris.ai/swagger/ui/index) |
 | [Zamiana tekstu na mowę](text-to-speech.md) | Zamiana tekstu na mowę | Zamiana tekstu na mowę konwertuje tekst wejściowy przypominającej ludzką syntezatora mowy. Wybierając spośród standardowa głosów i głosów neuronowych (zobacz [języki](language-support.md)). | [Tak](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Tak](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | | [Dostosowywanie](#customize-your-speech-experience) | Czcionki głosowe niestandardowego należy utworzyć unikatowe dla Twojej marki lub produktu. | Nie | [Tak](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
@@ -39,7 +40,8 @@ Te funkcje tworzą usługi mowy platformy Azure. Użyj linków w tej tabeli, aby
 
 Poznaj nowe funkcje usług mowy platformy Azure.
 
-* Kwietnia 2019 - wydane mowy SDK 1.4.0 z obsługą tekstu na mowę (Beta) dla języka C++, C#i Java w systemach Windows i Linux. Ponadto zestaw SDK obsługuje teraz formaty audio MP3 i dziele/Ogg dla języka C++ i C# w systemie Linux. Aby uzyskać pełną listę aktualizacji, ulepszeń i znanych problemów, zobacz [informacje o wersji](releasenotes.md). 
+* Maja 2019 - wydane mowy 1.5.0 zestawu SDK. Aby uzyskać pełną listę aktualizacji, ulepszeń i znanych problemów, zobacz [informacje o wersji](releasenotes.md).
+* Kwietnia 2019 - wydane mowy SDK 1.4.0 z obsługą tekstu na mowę (Beta) dla języka C++, C#i Java w systemach Windows i Linux. Ponadto zestaw SDK obsługuje teraz formaty audio MP3 i dziele/Ogg dla języka C++ i C# w systemie Linux. Aby uzyskać pełną listę aktualizacji, ulepszeń i znanych problemów, zobacz [informacje o wersji](releasenotes.md).
 * Marca 2019 - nowy punkt końcowy zamiany tekstu na mowę (TTS), która zwraca pełną listę dostępnych głosów w określonym regionie jest teraz dostępna. Ponadto nowe regiony są teraz obsługiwane dla TTS. Aby uzyskać więcej informacji, zobacz [dokumentacja interfejsu API zamiany tekstu na mowę (REST)](rest-text-to-speech.md).
 * Lutego 2019 - wydane mowy SDK 1.3.0 dzięki obsłudze [aparatu Unity (wersja beta)](quickstart-csharp-unity.md). Dodano obsługę `AudioInput` klasy, która pozwala na dokonanie wyboru przesyłania strumieniowego źródła audio. Aby uzyskać pełną listę znanych problemów i rozszerzeń, zobacz [informacje o wersji](releasenotes.md).
 * Grudnia 2018 - wydane mowy SDK 1.2.0 dzięki obsłudze [Python](quickstart-python.md) i [Node.js](quickstart-js-node.md), jak Ubuntu 18.04 LTS. Aby uzyskać więcej informacji, zobacz [informacje o wersji](releasenotes.md).

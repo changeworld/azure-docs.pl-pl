@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 03/12/2019
+ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: f3b4e6cd18a362775443bb296560a076aaa1497d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 82d49a6a82251f440c06db03edc92851fce87741
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61344163"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023624"
 ---
 # <a name="example-create-a-custom-skill-using-the-text-translate-api"></a>Przykład: Tworzenie niestandardowych umiejętności, przy użyciu interfejsu API tłumaczenia tekstu
 
@@ -243,7 +243,7 @@ Gdy jesteś zadowolony z zachowaniem funkcji, możesz opublikować go.
 
 1. Postępuj zgodnie z monitami wyświetlanymi na ekranie. Należy określić konto platformy Azure, grupę zasobów, plan hostingu i konto magazynu, którego chcesz użyć. Jeśli nie masz jeszcze te można utworzyć nową grupę zasobów, nowy plan hostingu i konta magazynu. Po zakończeniu wybierz pozycję **Create**
 
-1. Po zakończeniu wdrożenia należy pamiętać, adres URL witryny. Jest adresem aplikacji funkcji na platformie Azure. 
+1. Po zakończeniu wdrożenia należy zauważyć, adres URL witryny. Jest adresem aplikacji funkcji na platformie Azure. 
 
 1. W [witryny Azure portal](https://portal.azure.com), przejdź do grupy zasobów i poszukaj tłumaczenie funkcja, która została opublikowana. W obszarze **Zarządzaj** sekcji, powinien zostać wyświetlony klucze hosta. Wybierz **kopiowania** ikonę *domyślne* klucz hosta.  
 
@@ -282,7 +282,7 @@ Teraz, gdy masz nowych umiejętności niestandardowe, można dodać go do Twojeg
       {
         "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
         "description": "Our new translator custom skill",
-        "uri": "http://translatecogsrch.azurewebsites.net/api/Translate?code=[enter default host key here]",
+        "uri": "https://translatecogsrch.azurewebsites.net/api/Translate?code=[enter default host key here]",
         "batchSize":1,
         "context": "/document",
         "inputs": [
