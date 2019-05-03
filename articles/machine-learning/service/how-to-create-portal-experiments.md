@@ -11,18 +11,18 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/2019
-ms.openlocfilehash: 8b6d7f791300a970e71fda4f1d56354a45d07afd
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 96abef29c5290770d296fb5053007e36d1eaf537
+ms.sourcegitcommit: eea74d11a6d6ea6d187e90e368e70e46b76cd2aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65029898"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65035435"
 ---
 # <a name="create-and-explore-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>Tworzenie i eksplorowanie zautomatyzowanych usługi machine learning eksperymentów w witrynie Azure portal (wersja zapoznawcza)
 
- W tym artykule dowiesz się, jak tworzenie, uruchamianie i eksplorowanie zautomatyzowanych usługi machine learning eksperymentów w witrynie Azure portal, bez jednego wiersza kodu. Uczenie maszynowe automatycznych automatyzuje proces wybierania najlepszego algorytmu do użycia dla określonych danych, dzięki czemu można szybko wygenerować model uczenia maszynowego. [Dowiedz się więcej na temat uczenia maszynowego automatycznych](https://docs.microsoft.com/azure/machine-learning/service/concept-automated-ml).
+ W tym artykule dowiesz się, jak tworzenie, uruchamianie i eksplorowanie zautomatyzowanych usługi machine learning eksperymentów w witrynie Azure portal, bez jednego wiersza kodu. Uczenie maszynowe automatycznych automatyzuje proces wybierania najlepszego algorytmu do użycia dla określonych danych, dzięki czemu można szybko wygenerować model uczenia maszynowego. [Dowiedz się więcej na temat uczenia maszynowego automatycznych](concept-automated-ml.md).
 
- Jeśli wolisz większe doświadczenie na podstawie kodu, możesz również [skonfigurowanie automatycznych maszyny eksperymentów w języku Python uczenia](how-to-configure-auto-train.md) z [zestawu SDK usługi Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
+ Jeśli wolisz bardziej oparte na kodzie środowisko, możesz również [skonfigurowanie automatycznych maszyny eksperymentów w języku Python uczenia](how-to-configure-auto-train.md) z [zestawu SDK usługi Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -40,7 +40,7 @@ Przejdź do okienka po lewej stronie obszaru roboczego. W sekcji Tworzenie (wers
 
 ![Strona docelowa eksperymentu portalu Azure](media/how-to-create-portal-experiments/landing-page.png)
 
-W przeciwnym razie zostanie wyświetlony pulpit nawigacyjny learning maszyny automatyczne przegląd wszystkich Twoje zautomatyzowane uczenia maszynowego eksperymentów i działa, łącznie z tymi uruchamiane przy użyciu zestawu SDK. W tym miejscu można filtrować i eksplorowanie przebiegów według daty, eksperymentowanie nazwę i stan uruchomienia.
+W przeciwnym razie zostanie wyświetlony pulpit nawigacyjny learning maszyny automatyczne przegląd wszystkich zautomatyzowanych maszyny eksperymentów, łącznie z tymi Uruchom z zestawem SDK uczenia. W tym miejscu można filtrować i eksplorowanie przebiegów według daty, eksperymentowanie nazwę i stan uruchomienia.
 
 ![Pulpit nawigacyjny eksperymentu portalu Azure](media/how-to-create-portal-experiments/dashboard.png)
 
@@ -148,8 +148,6 @@ Ogromna różne statystyki podsumowujące można uzyskać w twoim zestawie danyc
 
 * **Kurtoza**: kurtoza kolumny. Puste wpisy są wyświetlane dla funkcji, korzystając z typów nie ma znaczenia.
 
-Ponadto można użyć tych statystyk zdecydować, czy ma być uwzględnienie lub wykluczenie niektórych kolumn. Po przełączeniu selektor dotyczących poszczególnych kolumn, można kontrolować zakres, w której kolumny będą używane w Twoje zautomatyzowane eksperymentu uczenia maszynowego.
-
 <a name="preprocess"></a>
 
 ### <a name="advanced-preprocessing"></a>Zaawansowane przetwarzania wstępnego
@@ -168,72 +166,24 @@ Podczas konfigurowania eksperymentów, można włączyć ustawienie Zaawansowane
 |Waga dowodów (WoE)|Oblicza WoE jako środek korelacji podzielone na kategorie kolumny, aby kolumna docelowa. Zostanie ona obliczona jako dziennik stosunek prawdopodobieństwa limit klasy programu vs w swojej klasie. W tym kroku generuje jedna kolumna liczbowych w klasie i usuwa potrzebę jawnie przypisują brakujące wartości oraz traktowanie odstające.|
 |Odległość klastra|Szkolenie modeli k średnich model klastrowania dla wszystkich kolumn liczbowych.  Dane wyjściowe k nowe funkcje, w jedną nową funkcję wartości liczbowych na klaster, zawierający odległość każda próbka środek strefy widocznego w każdym klastrze.|
 
-## <a name="run-experiment"></a>Uruchamianie eksperymentu
+## <a name="run-experiment-and-view-results"></a>Uruchom eksperyment, aby wyświetlić wyniki
 
-Aby uruchomić eksperyment, kliknij przycisk Start.
-  
-Eksperyment przygotowywanie proces trwa kilka minut.
+Aby uruchomić eksperyment, kliknij przycisk Start. Eksperyment przygotowywanie proces trwa kilka minut.
 
-## <a name="view-results"></a>Wyświetlanie wyników
+### <a name="view-experiment-details"></a>Wyświetl szczegóły eksperymentu
 
-Po zakończeniu fazy przygotowania eksperymentu, zobaczysz ekran szczegóły przebiegu. Zapewni to pełna lista modeli utworzonych. Domyślnie, na podstawie modelu, który ocenia największe parametry będzie znajdować się w górnej części listy. Ponieważ zadania szkolenia spróbuje się kolejne modele, zobaczysz je dodać do listy i wykres.
-Użyj wykresu, aby uzyskać szybki porównanie metryki dla modeli utworzone do tej pory.
-
-![Szczegóły dotyczące uruchomienia pulpitu nawigacyjnego](media/how-to-create-portal-experiments/run-details.png)
-
-Jesteś w stanie przejść do szczegółów znajdujących się modeli danych wyjściowych, które otwiera szczegółowe informacje o tym modelu, w tym wykresy wydajności i dystrybucji i metryki. [Dowiedz się więcej na temat wykresów](https://docs.microsoft.com/azure/machine-learning/service/how-to-track-experiments#understanding-automated-ml-charts).
-
-![Szczegóły iteracji](media/how-to-create-portal-experiments/dashboard.png)
+Po zakończeniu fazy przygotowania eksperymentu, zobaczysz ekran szczegółów uruchomienia. Zapewnia pełną listę modele utworzone. Domyślnie model, który ocenia największe na podstawie Twojej parametrów znajduje się na górze listy. Zadania szkolenia spróbuje się kolejne modele, są one dodawane do listy iteracji i wykres. Użyj wykresu iteracji, aby uzyskać szybki porównanie metryki modele utworzone do tej pory.
 
 Szkolenie zadań może wymagać trochę czasu dla każdego potoku na zakończenie działania.
 
-## <a name="deploy-model"></a>Wdrażanie modelu
+![Szczegóły dotyczące uruchomienia pulpitu nawigacyjnego](media/how-to-create-portal-experiments/run-details.png)
 
-Po utworzeniu najlepszy model pod ręką, nadszedł czas na go wdrożyć jako usługę sieci web w celu przewidywania na nowych danych.
+### <a name="view-training-run-details"></a>Szkolenie widok szczegółów uruchomienia
 
-Automatyczne ML ułatwiają wdrażanie modelu bez konieczności pisania kodu:
+Przechodzenie do wszystkich modeli danych wyjściowych, aby wyświetlić szczegóły przebiegu, takich jak wykresy metryk i dystrybucji wydajności szkolenia. [Dowiedz się więcej na temat wykresów](https://docs.microsoft.com/azure/machine-learning/service/how-to-track-experiments#understanding-automated-ml-charts).
 
-1. W okienku Podsumowanie uruchomienia po prawej stronie wybierz opcję "Register modelu".
-
-    ![Rejestrowanie modelu](media/how-to-create-portal-experiments/register-model.png)
-
-1. Po zarejestrowaniu modelu będzie można pobrać skrypt oceniania do użycia podczas wdrażania.
-
-    ![Pobierz skrypt oceniania](media/how-to-create-portal-experiments/download-scoring-script.png)
-
-1. Po utworzeniu skrypt oceniania, przejdź do strony "Modele" (w okienku nawigacji po lewej stronie w obszarze **zasoby**).
-
-    ![Okienko nawigacji modelu](media/how-to-create-portal-experiments/nav-pane-models.png)
-
-1. Zaznacz pole wyboru obok model który został zarejestrowany, a następnie wybierz pozycję "Utwórz obraz".
-
-    Model może zidentyfikować na podstawie jego opis, który zawiera identyfikator i iteracji numer uruchomienia, w następującym formacie: **< Run_ID > _ < Iteration_number > _modelu**.
-
-1. Wprowadź nazwę obrazu, a następnie przekaż plik oceniania, który został wcześniej pobrany. [Dowiedz się więcej o oceniania skrypty](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where.md#script).
-
-    Można użyć własnych skrypt oceniania i plików Conda. Jeśli nie masz pliku Conda [Utwórz swoje własne](tutorial-deploy-models-with-aml.md#create-environment-file) i przekaż go oraz innych dodatkowych plików chcesz użyć.
-
-    ![Tworzenie formularza obrazu](media/how-to-create-portal-experiments/create-image.png)
-
-1. Wybierz przycisk "Utwórz", aby rozpocząć tworzenie obrazu. To potrwa kilka minut, po zakończeniu, zostanie wyświetlony komunikat na górnym pasku.
-
-1. Przejdź do karty "Obrazy", zaznacz pole wyboru obok obraz, który chcesz wdrożyć, a następnie wybierz pozycję "Utwórz wdrożenia".
-
-    ![Obraz tworzenia ekranu wdrożenia](media/how-to-create-portal-experiments/images-create-deployment.png)
-
-1. Wprowadź nazwę unikatowego wdrożenia.
-
-1. (opcjonalnie) Wprowadź opis wdrożenia.
-
-1. Wybierz typ obliczenia docelowym do użycia. 
-
-    ![Tworzenie formularza wdrożenia](media/how-to-create-portal-experiments/create-deployment.png)
-
-1. Wybierz pozycję "Utwórz", aby rozpocząć proces wdrażania, potrwa kilka minut.
-
-1. Gotowe. Masz usługę sieci web operational do generowania przewidywań.
+![Szczegóły iteracji](media/how-to-create-portal-experiments/iteration-details.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Jak używać wdrożony model](how-to-consume-web-service.md).
-* [Zbieranie danych dla modeli w środowisku produkcyjnym](how-to-enable-data-collection.md).
+* [Dowiedz się więcej na temat uczenia maszynowego automatycznych](concept-automated-ml.md) i Azure Machine Learning.
