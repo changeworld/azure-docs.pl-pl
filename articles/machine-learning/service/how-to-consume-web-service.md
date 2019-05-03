@@ -11,18 +11,18 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: a862c920f1e070ab1bbb8af2546bc3d4350347b0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4aaf56a00669dbf7e312e2a6f8787ccc664d1190
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60819458"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023815"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Korzystanie z modelu usługi Azure Machine Learning, wdrożyć jako usługę sieci web
 
 Wdrażanie modelu usługi Azure Machine Learning w postaci usługi sieci web tworzy interfejs API REST. Można wysyłać dane do tego interfejsu API i odbierać prognozowania zwracane przez model. W tym dokumencie, Dowiedz się, jak utworzyć klientów usługi sieci web przy użyciu C#, Go, Java i Python.
 
-Tworzenie usługi internetowej, podczas wdrażania obrazu do usługi Azure Container Instances, Azure Kubernetes Service lub Project Brainwave (Tablice bramek programowane). Należy utworzyć obrazy z zarejestrowane modele i plik oceniania. Pobierz identyfikator URI używany do uzyskania dostępu do usługi sieci web za pomocą [zestawu SDK usługi Azure Machine Learning](https://aka.ms/aml-sdk). Jeśli włączono uwierzytelnianie umożliwia także zestaw SDK można pobrać klucze uwierzytelniania.
+Tworzenie usługi internetowej, podczas wdrażania obrazu do usługi Azure Container Instances, Azure Kubernetes Service lub tablic programowalny bramy (FPGA). Należy utworzyć obrazy z zarejestrowane modele i plik oceniania. Pobierz identyfikator URI używany do uzyskania dostępu do usługi sieci web za pomocą [zestawu SDK usługi Azure Machine Learning](https://aka.ms/aml-sdk). Jeśli włączono uwierzytelnianie umożliwia także zestaw SDK można pobrać klucze uwierzytelniania.
 
 Jest ogólny przepływ pracy tworzenia klienta, który używa usługi machine learning web service:
 

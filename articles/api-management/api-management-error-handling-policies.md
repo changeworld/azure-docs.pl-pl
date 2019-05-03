@@ -85,7 +85,7 @@ Podczas przetwarzania żądania wbudowanych kroki są wykonywane oraz wszystkie 
 | Zakres    | string | Nazwa zakresu, w którym wystąpił błąd i mogą mieć jedną z "global", "produkt", "interfejs api" lub "Operacja" | Nie       |
 | Sekcja  | string | Nazwa sekcji, w którym wystąpił błąd. Możliwe wartości: "dla ruchu przychodzącego", "wewnętrzna", "wychodzące" lub "on error".       | Nie       |
 | Ścieżka     | string | Określa zasady zagnieżdżonych, na przykład "Wybierz [3] / podczas [2]".                                                        | Nie       |
-| PolicyId | string | Wartość atrybutu `id` atrybutu, jeśli określony przez klienta w zasadach, w którym wystąpił błąd             | Nie       |
+| `PolicyId` | string | Wartość atrybutu `id` atrybutu, jeśli określony przez klienta w zasadach, w którym wystąpił błąd             | Nie       |
 
 > [!TIP]
 > Kod stanu dostęp za pomocą kontekstu. Response.StatusCode.  
