@@ -11,16 +11,33 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: db0eccb542cb4253e6e891fa9fa51e60fb7951a1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 242b7cb45e9a73e78ae9f9b62e83311e110e07ee
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60752341"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65021106"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Znane problemy i rozwiązywania problemów z usługi Azure Machine Learning
 
 Ten artykuł ułatwia znajdowanie i poprawić błędy lub błędów napotkanych podczas korzystania z usługi Azure Machine Learning.
+
+## <a name="visual-interface-issues"></a>Kwestie dotyczące interfejsu Visual
+
+Interfejs graficzny dla problemów z usługami uczenia maszynowego.
+
+### <a name="long-compute-preparation-time"></a>Długi czas przygotowywania obliczeń.
+
+Utwórz nowe obliczenie lub być wywoływany przez opuścić obliczeń wymaga czasu, może być kilka minut, a nawet dłużej. Zespół pracuje się do optymalizacji.
+
+
+### <a name="cannot-run-an-experiment-only-contains-dataset"></a>Nie można przebieg eksperymentu zawiera tylko zestaw danych 
+
+Możesz chcieć uruchomić eksperyment zawiera tylko zestaw danych w celu wizualizacji zestawu danych. Jednak nie ma powinny być uruchamiane już dziś eksperymentu zestaw danych zawiera tylko. Czy firma Microsoft aktywnie naprawienie tego problemu.
+ 
+Przed poprawki może nawiązać zestawu danych każdy moduł przekształcania danych (Select Columns in Dataset, edytować metadane itp podziału danych) i uruchomienie eksperymentu. Następnie możesz utworzyć wizualizację zestawu danych. 
+
+Poniżej ilustracji przedstawiono, jak: ![visulize danych](./media/resource-known-issues/aml-visualize-data.png)
 
 ## <a name="sdk-installation-issues"></a>Problemy z instalacją zestawu SDK
 

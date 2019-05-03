@@ -10,18 +10,21 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: jmartens
-ms.date: 12/04/2018
+ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: d2bd271557ae0deefeb12a2dc7343c46fbd35363
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8b8cba8d0a400efb720d8374cdca886a2a638938
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60817555"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023786"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>Przekształcanie danych za pomocą usługi Azure Machine Learning Prep zestawu SDK usługi Data
 
 W tym artykule dowiesz się, przekształcanie danych przy użyciu usługi Azure Machine Learning Prep zestawu SDK usługi Data różnych metod. Zestaw SDK udostępnia funkcje, które ułatwiają dodawanie kolumn odfiltrować zbędne wiersze lub kolumny i przypisują brakujące wartości. Aby wyświetlić dokumentację referencyjną dla zestawu SDK, zobacz [Przegląd](https://aka.ms/data-prep-sdk).
+
+> [!Important]
+> Jeśli tworzysz nowe rozwiązanie, spróbuj [zestawów danych Learning maszyny Azure](how-to-explore-prepare-data.md) (wersja zapoznawcza), Przekształć swoje dane, dane migawki w celu przechowywania definicji określonej wersji zestawu danych. Zestawy danych to następna wersja przygotowywanie danych zestawu SDK, oferując rozszerzone funkcje do zarządzania zestawami danych w rozwiązań sztucznej Inteligencji.
 
 Niniejszy instruktaż zawiera przykłady dla następujących zadań:
 
@@ -35,7 +38,7 @@ Niniejszy instruktaż zawiera przykłady dla następujących zadań:
 
 Zestaw SDK Azure Machine Learning danych Prep zawiera `substring` wyrażeń, można użyć do obliczenia wartości z istniejących kolumn, a następnie umieść tej wartości w nowej kolumnie. W tym przykładzie, Załaduj dane i spróbuj dodać kolumny do tych danych wejściowych.
 
-```python
+```Python
 import azureml.dataprep as dprep
 
 # loading data
@@ -52,7 +55,7 @@ dflow.head(3)
 
 Użyj `substring(start, length)` wyrażenie, aby wyodrębnić prefiks z kolumny liczba przypadków i umieścić ciąg w nowej kolumnie `Case Category`. Przekazywanie `substring_expression` zmienną `expression` parametr tworzy nową kolumnę obliczeniową, która wykonuje wyrażenia dla każdego rekordu.
 
-```python
+```Python
 substring_expression = dprep.col('Case Number').substring(0, 2)
 case_category = dflow.add_column(new_column_name='Case Category',
                                     prior_column='Case Number',
@@ -67,10 +70,9 @@ case_category.head(3)
 |2|10140270|HY329253|AZJATYCKA|2015-07-05 11:20:00 PM|Z PRZODU APISZ 121XX|0486|BATERIA|PROSTE ŚWIATOWEGO BATERII|ULICA|false|true|Przyciski ...|9|53|08B|||2015|2015-07-12 12:42:46: 00|
 
 
-
 Użyj `substring(start)` wyrażenia do wyodrębniania tylko z kolumny liczba przypadków i Utwórz nową kolumnę. Przekonwertuj go na typ danych liczbowych przy użyciu `to_number()` działać, a następnie przekaż nazwę kolumny ciągu jako parametr.
 
-```python
+```Python
 substring_expression2 = dprep.col('Case Number').substring(2)
 case_id = dflow.add_column(new_column_name='Case Id',
                               prior_column='Case Number',

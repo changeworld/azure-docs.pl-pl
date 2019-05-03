@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 04/06/2019
+ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 11b2fb5a246dfa8f5b1295a11cc57de36120898e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f366726f539a817f515a78fbc35bfeaa3b65514e
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61283429"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024498"
 ---
 # <a name="security-and-data-privacy-in-azure-search"></a>Zachowania zabezpieczeń i danych w usłudze Azure Search
 
@@ -43,11 +43,8 @@ Szyfrowanie rozszerza się w całym całego potoku indeksowania: z połączeń, 
 | Warstwa zabezpieczeń | Opis |
 |----------------|-------------|
 | Szyfrowanie podczas transferu <br>(HTTPS/SSL/TLS) | Usługa Azure Search nasłuchuje na porcie HTTPS 443. Na platformie połączenia z usługami platformy Azure są szyfrowane. <br/><br/>Wszystkie usługi klienta usługi Azure Search interakcje są protokoły SSL/TLS 1.2 stanie.  Należy użyć zabezpieczeń TLSv1.2 dla połączeń SSL z usługą.|
-| Szyfrowanie w spoczynku | Szyfrowanie jest w pełni internalized indeksowaniem z nie zauważalnego wpływu na indeksowanie czas do zakończenia lub rozmiar indeksu. Nastąpi to automatycznie na indeksowanie wszystkich tym na aktualizacje przyrostowe indeksu, który nie jest w pełni zaszyfrowane (utworzonym przed stycznia 2018 r.).<br><br>Wewnętrznie, szyfrowanie jest oparte na [szyfrowanie usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption), za pomocą 256-bitowego [szyfrowania AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard).|
-
-Szyfrowanie jest wewnętrzny do usługi Azure Search przy użyciu certyfikatów i kluczy szyfrowania zarządza wewnętrznie przez firmę Microsoft i powszechnie stosowane. Nie można włączyć szyfrowanie lub wyłączyć, zarządzanie lub Zastąp własnych kluczy lub wyświetlić ustawienia szyfrowania w portalu lub programowo. 
-
-Szyfrowanie w spoczynku ogłoszono 24 stycznia 2018 r. i ma zastosowanie do wszystkich warstwach usługi, w tym usług udostępnionych (wersja bezpłatna), we wszystkich regionach. Pełne szyfrowanie indeksów utworzonych przed tą datą należy porzucić i ponownie skompilowany w kolejności do szyfrowania. W przeciwnym razie są szyfrowane tylko nowe dane dodane po 24 stycznia.
+| Szyfrowanie w spoczynku <br>Klucze zarządzane przez firmy Microsoft | Szyfrowanie jest w pełni internalized indeksowaniem z nie zauważalnego wpływu na indeksowanie czas do zakończenia lub rozmiar indeksu. Nastąpi to automatycznie na indeksowanie wszystkich tym na aktualizacje przyrostowe indeksu, który nie jest w pełni zaszyfrowane (utworzonym przed stycznia 2018 r.).<br><br>Wewnętrznie, szyfrowanie jest oparte na [szyfrowanie usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption), za pomocą 256-bitowego [szyfrowania AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard).<br><br> Szyfrowanie jest wewnętrzny do usługi Azure Search przy użyciu certyfikatów i kluczy szyfrowania zarządza wewnętrznie przez firmę Microsoft i powszechnie stosowane. Nie można włączyć szyfrowanie lub wyłączyć, zarządzanie lub Zastąp własnych kluczy lub wyświetlić ustawienia szyfrowania w portalu lub programowo.<br><br>Szyfrowanie w spoczynku ogłoszono 24 stycznia 2018 r. i ma zastosowanie do wszystkich warstwach usługi, w tym usług udostępnionych (wersja bezpłatna), we wszystkich regionach. Pełne szyfrowanie indeksów utworzonych przed tą datą należy porzucić i ponownie skompilowany w kolejności do szyfrowania. W przeciwnym razie są szyfrowane tylko nowe dane dodane po 24 stycznia.|
+| Szyfrowanie w spoczynku <br>Klucze zarządzane przez klienta | Szyfrowanie za pomocą kluczy klienta zarządzanego jest **Podgląd** services funkcja, która nie jest dostępna bezpłatnie. Usługi płatne, jest on dostępny tylko dla usług wyszukiwania utworzonych na lub po 2019 stycznia przy użyciu najnowszej wersji zapoznawczej wersji interfejsu api (interfejs api-version = 2019-05-06-Preview).<br><br>Indeksy usługi Azure Search i mapy synonimów mogą teraz być szyfrowane, gdy za pomocą kluczy zarządzanych kluczy klienta w usłudze Azure Key Vault. Aby dowiedzieć się więcej, zobacz [zarządzać kluczami szyfrowania w usłudze Azure Search](search-security-manage-encryption-keys.md).<br>Ta funkcja nie zastępuje domyślne szyfrowanie danych magazynowanych, ale raczej zastosowane oprócz go.<br>Włączenie tej funkcji zwiększyć rozmiar indeksu i obniżyć wydajność zapytań. Na podstawie obserwacji do daty, użytkownik może pojawić się wzrost o 30 – 60% czas zapytania mimo, że rzeczywista wydajność może się różnić w zależności od definicji indeksu i typy zapytań. Ze względu na to wpływ na wydajność zaleca się tylko włączyć tę funkcję tylko dla indeksów, które rzeczywiście tego wymagają.
 
 ## <a name="azure-wide-user-access-controls"></a>Kontrolę dostępu użytkowników w całej platformy Azure
 

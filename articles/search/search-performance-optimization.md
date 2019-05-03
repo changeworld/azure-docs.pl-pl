@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/02/2019
 ms.author: liamca
 ms.custom: seodec2018
-ms.openlocfilehash: 8a07657d04cee57cb69c9f5f7862fed3e7965716
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 32352a857f0a74dc008dc1ad76b4a5951a36b956
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61283576"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024546"
 ---
 # <a name="deployment-strategies-and-best-practices-for-optimizing-performance-on-azure-search"></a>Strategie wdrażania i najlepsze rozwiązania dotyczące optymalizacji wydajności w usłudze Azure Search
 
@@ -81,7 +81,7 @@ Dostępne są dwie opcje przechowywania wyszukiwania rozproszonego usługi synch
 
 ### <a name="use-indexers-for-updating-content-on-multiple-services"></a>Korzystać z indeksatorów w celu zaktualizowania zawartości na wiele usług
 
-Jeśli już używasz indeksatora w jednej usłudze, można skonfigurować drugi indeksatora na drugi usługę do używania tego samego obiektu źródła danych, pobieranie danych z tej samej lokalizacji. Każda usługa w każdym regionie ma swój własny indeksatora i indeksu docelowego (Korpus usługi wyszukiwania nie jest udostępniony, co oznacza, że dane są powielane), ale każdego indeksatora odwołuje się do tego samego źródła danych.
+Jeśli już używasz indeksatora w jednej usłudze, można skonfigurować drugi indeksatora na drugi usługę do używania tego samego obiektu źródła danych, pobieranie danych z tej samej lokalizacji. Każda usługa w każdym regionie ma swój własny indeksatora i indeksu docelowego (indeksu wyszukiwania nie jest udostępniony, co oznacza, że dane są powielane), ale każdy indeksatora odwołuje się do tego samego źródła danych.
 
 Poniżej przedstawiono wizualizację wysokiego poziomu, jak będzie wyglądać danej architekturze.
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: ff2b843e00ffdf005d952cf62eab6b93c9434913
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 419c533aabd67637efa64777387c491dd890596e
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60193162"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024637"
 ---
 # <a name="service-limits-in-azure-search"></a>Limity usługi w usłudze Azure Search
 Maksymalne zawartości w pamięci masowej, obciążeń i ilości indeksów i dokumentów, a inne obiekty zależne od tego, czy możesz [aprowizowanie usługi Azure Search](search-create-service-portal.md) na **bezpłatna**, **podstawowe**,  **Standardowa**, lub **zoptymalizowane pod kątem magazynu** warstw cenowych.
@@ -50,7 +50,10 @@ Maksymalne zawartości w pamięci masowej, obciążeń i ilości indeksów i dok
 | Resource | Bezpłatna | Podstawowe&nbsp;<sup>1</sup>  | S1 | S2 | S3 | S3&nbsp;HD | L1 | PAMIĘCI PODRĘCZNEJ L2 |
 | -------- | ---- | ------------------- | --- | --- | --- | --- | --- | --- |
 | Maksymalna liczba indeksów |3 |5 lub 15 |50 |200 |200 |1000 na partycję lub 3000 na usługę |10 |10 |
-| Maksymalna pola indeksu |1000 |100 |1000 |1000 |1000 |1000 |1000 |1000 |
+| Maksymalna proste pola indeksu |1000 |100 |1000 |1000 |1000 |1000 |1000 |1000 |
+| Maksymalna złożonych kolekcji pól indeksu |40 |40 |40 |40 |40 |40 |40 |40 |
+| Maksymalną liczbę elementów we wszystkich zbiorach złożony dla dokumentu |3000 |3000 |3000 |3000 |3000 |3000 |3000 |3000 |
+| Maksymalna głębokość pól złożonych |10 |10 |10 |10 |10 |10 |10 |10 |
 | Maksymalna [sugestory](https://docs.microsoft.com/rest/api/searchservice/suggesters) indeksu |1 |1 |1 |1 |1 |1 |1 |1 |
 | Maksymalna [profile oceniania](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) indeksu |100 |100 |100 |100 |100 |100 |100 |100 |
 | Maksymalna funkcje każdego profilu |8 |8 |8 |8 |8 |8 |8 |8 |

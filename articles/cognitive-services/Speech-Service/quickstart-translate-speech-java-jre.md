@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 03/13/2019
+ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 36eaaeabcf888aac10bcf9b8a27e3590d21079ec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5dc1852a57970c2994d9f36cbd7242a18b580a61
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60619209"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020995"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-java"></a>Szybki start: tłumaczenie mowy przy użyciu zestawu SDK usługi Mowa dla języka Java
 
-W tym przewodniku Szybki start utworzysz prostą aplikację Java, która przechwytuje mowę użytkownika z mikrofonu komputera, tłumaczy tę mowę i transkrybuje przetłumaczony tekst do wiersza polecenia w czasie rzeczywistym. Ta aplikacja jest przeznaczona do uruchamiania w 64-bitowych systemach Windows lub 64-bitowych systemach Ubuntu Linux 16.04/18.04 oraz jest kompilowana przy użyciu pakietu Maven zestawu SDK usługi Mowa i zintegrowanego środowiska projektowego Eclipse Java.
+W tym przewodniku Szybki start utworzysz prostą aplikację Java, która przechwytuje mowę użytkownika z mikrofonu komputera, tłumaczy tę mowę i transkrybuje przetłumaczony tekst do wiersza polecenia w czasie rzeczywistym. Ta aplikacja jest przeznaczony do działania na Windows 64-bitowy lub 64-bitowych Linux (Ubuntu 16.04, 18.04 Ubuntu, Debian 9) lub w systemie macOS 10.13 lub nowszej. Jest on oparty za pomocą pakietu Maven zestaw SDK rozpoznawania mowy i środowiska Eclipse IDE Java.
 
 Aby uzyskać pełną listę języków dostępnych na potrzeby tłumaczenia mowy, zapoznaj się z [listą obsługiwanych języków](language-support.md).
 
@@ -27,17 +27,26 @@ Aby uzyskać pełną listę języków dostępnych na potrzeby tłumaczenia mowy,
 
 Ten przewodnik Szybki start wymaga następujących elementów:
 
-* System operacyjny: 64-bitowy system Windows lub 64-bitowy system Ubuntu Linux 16.04/18.04
+* System operacyjny: 64-bitowych Windows 64-bitowych systemu Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9) i macOS 10.13 lub nowszej
 * [Zintegrowane środowisko projektowe Eclipse Java](https://www.eclipse.org/downloads/)
 * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) lub [zestaw JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * Klucz subskrypcji platformy Azure dla usługi Mowa. [Uzyskaj bezpłatnie](get-started.md).
 
-Jeśli korzystasz z systemu Ubuntu 16.04/18.04, upewnij się, że następujące zależności są zainstalowane przed uruchomieniem środowiska Eclipse.
+Jeśli korzystasz z systemu Linux, upewnij się, że te zależności są zainstalowane przed uruchomieniem programu Eclipse.
 
-```console
-sudo apt-get update
-sudo apt-get install build-essential libssl1.0.0 libasound2 wget
-```
+ * W systemie Ubuntu:
+
+   ```sh
+   sudo apt-get update
+   sudo apt-get install libssl1.0.0 libasound2
+   ```
+
+ * On Debian 9:
+
+   ```sh
+   sudo apt-get update
+   sudo apt-get install libssl1.0.2 libasound2
+   ```
 
 > [!NOTE]
 > Aby uzyskać informacje dotyczące zestawu Speech Devices SDK oraz urządzenia Roobo, zobacz [Speech Devices SDK](speech-devices-sdk.md).

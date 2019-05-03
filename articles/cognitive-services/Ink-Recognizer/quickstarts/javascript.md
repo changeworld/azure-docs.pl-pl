@@ -1,0 +1,172 @@
+---
+title: 'Szybki start: Rozpoznaje cyfrowy atrament za pomocą interfejsu API REST rozpoznawania pisma odręcznego i środowiska Node.js'
+description: Użyj interfejsu API rozpoznawania pisma odręcznego, aby rozpocząć, rozpoznawaniu pociągnięć odręcznych cyfrowych.
+services: cognitive-services
+author: aahill
+manager: nitinme
+ms.service: cognitive-services
+ms.subservice: ink-recognizer
+ms.topic: article
+ms.date: 05/02/2019
+ms.author: aahi
+ms.openlocfilehash: febc6e72ed40541a230c606a3ec96a8bffef5036
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65026379"
+---
+# <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-javascript"></a>Szybki start: Rozpoznaje cyfrowy atrament za pomocą interfejsu API REST rozpoznawania pisma odręcznego i JavaScript
+
+Aby rozpocząć korzystanie z interfejsu API rozpoznawania pisma odręcznego na pociągnięć odręcznych cyfrowych, należy użyć tego przewodnika Szybki Start. Ta aplikacja JavaScript wysyła żądanie interfejsu API, zawierające dane pociągnięcia odręczne w formacie JSON i wyświetli odpowiedzi.
+
+Ta aplikacja jest napisany w języku Javascript i działa w przeglądarce sieci web, interfejs API jest zgodny z większość języków programowania usługi sieci web typu RESTful.
+
+Zwykle będzie wywołać interfejs API z aplikacją pisma odręcznego cyfrowych. Ten przewodnik Szybki Start wysyła danych pociągnięcia odręczne na potrzeby poniższego przykładu pisma odręcznego z pliku JSON.
+
+![Obraz przedstawiający tekstu odręcznego](../media/handwriting-sample.jpg)
+
+Kod źródłowy dla tego przewodnika Szybki Start można znaleźć na [GitHub](https://go.microsoft.com/fwlink/?linkid=2089502).
+
+## <a name="prerequisites"></a>Wymagania wstępne
+
+- Przeglądarki sieci web
+- Pociągnięcia odręczne przykładowych danych w tym przewodniku Szybki znajduje się na [GitHub](https://go.microsoft.com/fwlink/?linkid=2089502).
+
+
+[!INCLUDE [cognitive-services-ink-recognizer-signup-requirements](../../../../includes/cognitive-services-ink-recognizer-signup-requirements.md)]
+
+## <a name="create-a-new-application"></a>Tworzenie nowej aplikacji
+
+1. W Twoim ulubionym środowiskiem IDE lub edytora, Utwórz nową `.html` pliku. Następnie należy dodać podstawowe HTML do niego, dla kodu, który zostanie dodany później.
+    
+    ```html
+    <!DOCTYPE html>
+    <html>
+    
+        <head>
+            <script type="text/javascript">
+            </script>
+        </head>
+        
+        <body>
+        </body>
+    
+    </html>
+    ```
+
+2. W ramach `<body>` tag, Dodaj poniższy kod html:
+    1. Dwa obszary tekst do wyświetlania JSON żądania i odpowiedzi.
+    2. Przycisk do wywoływania `recognizeInk()` funkcja, która zostanie utworzona później.
+    
+    ```HTML
+    <!-- <body>-->
+        <h2>Send a request to the Ink Recognition API</h2>
+        <p>Request:</p>
+        <textarea id="request" style="width:800px;height:300px"></textarea>
+        <p>Response:</p>
+        <textarea id="response" style="width:800px;height:300px"></textarea>
+        <br>
+        <button type="button" onclick="recognizeInk()">Recognize Ink</button>
+    <!--</body>-->
+    ```
+
+## <a name="load-the-example-json-data"></a>Załadować przykładowe dane JSON
+
+1. W ramach `<script>` tag, Utwórz zmienną dla sampleJson. Następnie Utwórz funkcję języka JavaScript o nazwie `openFile()` które otwiera Eksploratora plików, dzięki czemu można wybrać pliku JSON. Gdy `Recognize ink` przycisku, wywołaj tę funkcję i rozpocząć odczytywanie pliku.
+2. Użyj `FileReader` obiektu `onload()` funkcji do asynchronicznego przetwarzania pliku. 
+    1. Zastąp dowolny `\n` lub `\r` znaki w pliku z pustym ciągiem. 
+    2. Użyj `JSON.parse()` przekonwertować tekst na prawidłowym kodem JSON
+    3. Aktualizacja `request` pole tekstowe w aplikacji. Użyj `JSON.stringify()` formatującej ciąg JSON. 
+    
+    ```javascript
+    var sampleJson = "";
+    function openFile(event) {
+        var input = event.target;
+    
+        var reader = new FileReader();
+        reader.onload = function(){
+            sampleJson = reader.result.replace(/(\\r\\n|\\n|\\r)/gm, "");
+            sampleJson = JSON.parse(sampleJson);
+            document.getElementById('request').innerHTML = JSON.stringify(sampleJson, null, 2);
+        };
+        reader.readAsText(input.files[0]);
+    };
+    ```
+
+## <a name="send-a-request-to-the-ink-recognizer-api"></a>Wyślij żądanie do interfejsu API rozpoznawania pisma odręcznego
+
+1. W ramach `<script>` tagów, należy utworzyć funkcję o nazwie `recognizeInk()`. Ta funkcja zostanie później wywołania interfejsu API i aktualizacji strony z odpowiedzią. Dodawanie kodu za pomocą poniższych kroków w tej funkcji. 
+        
+    ```javascript
+    function recognizeInk() {
+    // add the code from the below steps here 
+    }
+    ```
+
+    1. Utwórz zmienne dla adresu URL punktu końcowego, klucz subskrypcji i przykładowym danym JSON. Następnie utwórz `XMLHttpRequest` obiekt do wysyłania żądań do interfejsu API. 
+        
+        ```javascript
+        // Replace the below URL with the correct one for your subscription. 
+        // Your endpoint can be found in the Azure portal. For example: https://westus2.api.cognitive.microsoft.com
+        var SERVER_ADDRESS = "YOUR-SUBSCRIPTION-URL";
+        var ENDPOINT_URL = SERVER_ADDRESS + "/inkrecognizer/v1.0-preview/recognize";
+        // Replace the subscriptionKey string value with your valid subscription key.
+        var SUBSCRIPTION_KEY = "YOUR-SUBSCRIPTION-KEY";
+        var xhttp = new XMLHttpRequest();
+        ```
+    2. Tworzenie zwracaną funkcji dla `XMLHttpRequest` obiektu. Ta funkcja analizy odpowiedzi interfejsu API z żądania zakończonego powodzeniem i wyświetl ją w aplikacji. 
+            
+        ```javascript
+        function returnFunction(xhttp) {
+            var response = JSON.parse(xhttp.responseText);
+            console.log("Response: %s ", response);
+            document.getElementById('response').innerHTML = JSON.stringify(response, null, 2);
+        }
+        ```
+    3. Utwórz funkcję błędu dla obiektu żądania. Ta funkcja jest rejestruje błąd w konsoli. 
+            
+        ```javascript
+        function errorFunction() {
+            console.log("Error: %s, Detail: %s", xhttp.status, xhttp.responseText);
+        }
+        ```
+
+    4. Tworzenie funkcji dla obiektu żądania `onreadystatechange` właściwości. Gdy zmienia się stan gotowości żądanie obiektu, zostaną zastosowane powyższe funkcje zwracają i błąd.
+            
+        ```javascript
+        xhttp.onreadystatechange = function () {
+            if (this.readyState === 4) {
+                if (this.status === 200) {
+                    returnFunction(xhttp);
+                } else {
+                    errorFunction(xhttp);
+                }
+            }
+        };
+        ```
+    
+    5. Wyślij żądanie interfejsu API. Dodaj klucz subskrypcji, aby `Ocp-Apim-Subscription-Key` nagłówka, a następnie ustaw `content-type` do `application/json`
+    
+        ```javascript
+        xhttp.open("PUT", ENDPOINT_URL, true);
+        xhttp.setRequestHeader("Ocp-Apim-Subscription-Key", SUBSCRIPTION_KEY);
+        xhttp.setRequestHeader("content-type", "application/json");
+        xhttp.send(JSON.stringify(sampleJson));
+        };
+
+## Run the application and view the response
+
+This application can be run within your web browser. A successful response is returned in JSON format. You can also find the JSON response on [GitHub](https://go.microsoft.com/fwlink/?linkid=2089502):
+
+## Next steps
+
+> [!div class="nextstepaction"]
+> [REST API reference](https://go.microsoft.com/fwlink/?linkid=2089907)
+
+To see how the Ink Recognition API works in a digital inking app, take a look at the following sample applications on GitHub:
+* [C# and Universal Windows Platform(UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  
+* [C# and Windows Presentation Foundation(WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
+* [Javascript web-browser app](https://go.microsoft.com/fwlink/?linkid=2089908)       
+* [Java and Android mobile app](https://go.microsoft.com/fwlink/?linkid=2089906)
+* [Swift and iOS mobile app](https://go.microsoft.com/fwlink/?linkid=2089805)

@@ -10,12 +10,12 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 0d3927fbc1826f9ab4f613a7c2a310f581b7f7c5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: HT
+ms.openlocfilehash: a5d93a77652f540fde44b33963b13df04b45ecee
+ms.sourcegitcommit: 60606c5e9a20b2906f6b6e3a3ddbcb6c826962d6
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64729304"
+ms.lasthandoff: 05/01/2019
+ms.locfileid: "64987939"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Uaktualnienie magazynu danych do Gen2
 
@@ -67,7 +67,7 @@ Poniższa tabela zawiera podsumowanie według regionu, gdy warstwa wystąpień o
 
 ## <a name="automatic-upgrade-process"></a>Automatyczne uaktualnianie
 
-Oparte na powyższym wykresie dostępności, firma Microsoft będzie planować automatycznych uaktualnień dla wystąpień Gen1. Aby uniknąć przerw nieoczekiwany na dostępności w magazynie danych, automatyczne uaktualnienia zostanie zaplanowana w harmonogramie konserwacji. Aby uzyskać więcej informacji dotyczących harmonogramów, zobacz [wyświetlić harmonogram konserwacji](viewing-maintenance-schedule.md)
+Oparte na powyższym wykresie dostępności, firma Microsoft będzie planować automatycznych uaktualnień dla wystąpień Gen1. Aby uniknąć przerw nieoczekiwany na dostępności w magazynie danych, automatyczne uaktualnienia zostanie zaplanowana w harmonogramie konserwacji. Możliwość tworzenia nowego wystąpienia Gen1 zostanie wyłączona w regionach, w trakcie automatycznego uaktualnienia do Gen2. Aby uzyskać więcej informacji dotyczących harmonogramów, zobacz [wyświetlić harmonogram konserwacji](viewing-maintenance-schedule.md)
 
 Proces uaktualniania będzie obejmować krótki zrzutu w łączności (około 5 minut), jak możemy ponownie uruchomić Magazyn danych.  Po ponownym uruchomieniu usługi data warehouse będzie w pełni dostępne do użycia. Jednak mogą występować pogorszenie wydajności, podczas procesu uaktualniania w dalszym ciągu uaktualniania pliki danych w tle. Łączny czas spadek wydajności będą się różnić zależy od rozmiaru plików danych.
 

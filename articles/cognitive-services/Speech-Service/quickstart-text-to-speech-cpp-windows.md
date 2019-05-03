@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 4/03/2019
 ms.author: yinhew
-ms.openlocfilehash: d818f8a8fc813d3da5eea4d8ef9cd2f4fd18bb53
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a9613f0839735457cf172fdacb0ef6a943ca27de
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64688519"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020798"
 ---
 # <a name="quickstart-synthesize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>Szybki start: Syntetyzowania mowy, języka C++ na Windows przy użyciu zestawu SDK rozpoznawania mowy
 
 W tym artykule opisano tworzenie aplikacji konsolowej w języku C++ dla systemu Windows. Użyj usług Cognitive Services [zestaw SDK rozpoznawania mowy](speech-sdk.md) syntetyzowania mowę na podstawie tekstu w czasie rzeczywistym i odtwarzanie mowy głośnik Twojego komputera. Aplikacja będzie kompilowana przy użyciu [pakietu NuGet zestawu Speech SDK](https://aka.ms/csspeech/nuget) i programu Microsoft Visual Studio 2017 (w dowolnej wersji).
 
-Funkcja opisana w tym artykule jest dostępny z [zestaw SDK rozpoznawania mowy 1.4.0](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/1.4.0).
+Funkcja opisana w tym artykule jest dostępny z [zestaw SDK rozpoznawania mowy 1.5.0](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/1.5.0).
 
 Aby uzyskać pełną listę języków/głosy dostępne dla synteza mowy, zobacz [języki](language-support.md#text-to-speech).
 

@@ -7,15 +7,15 @@ tags: azure-portal
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: a1cf72d9e3f5c2c6e919304d4d886a607c54f359
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b30fa61cd46acd4fa9da9d97c100e3b3a0aaf067
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61289512"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024762"
 ---
 # <a name="quickstart-use-built-in-portal-tools-for-azure-search-import-indexing-and-queries"></a>Szybki start: Korzystanie z wbudowanych narzędzi portalu do importowania, indeksowania i wykonywania zapytań w usłudze Azure Search
 > [!div class="op_single_selector"]
@@ -79,7 +79,7 @@ Na razie pominiemy ten krok i przejdziemy bezpośrednio do kroku **Dostosowywani
    ![Pomijanie kroku Umiejętności poznawcze](media/search-get-started-portal/skip-cog-skill-step.png)
 
 > [!TIP]
-> Możesz wypróbować nową funkcję wyszukiwania poznawczego (wersja zapoznawcza) dla usługi Azure Search z poziomu [przewodnika Szybki start dotyczącego wyszukiwania poznawczego](cognitive-search-quickstart-blob.md) lub [samouczka](cognitive-search-tutorial-blob.md).
+> Możesz przejrzeć przykład indeksowania sztucznej Inteligencji w [Szybki Start](cognitive-search-quickstart-blob.md) lub [samouczek](cognitive-search-tutorial-blob.md).
 
 ### <a name="step-3---configure-index"></a>Krok 3 — Konfigurowanie indeksu
 
@@ -154,7 +154,7 @@ Indeks wyszukiwania powinien być teraz gotowy do wykonywania względem niego za
 
    ![Polecenie Eksploratora wyszukiwania](media/search-get-started-portal/search-explorer-cmd2.png)
 
-2. Na pasku poleceń kliknij pozycję **Zmień indeks**, aby przełączyć się na zestaw danych *realestate-us-sample*. Na pasku poleceń kliknij pozycję **Ustaw wersję interfejsu API**, aby wyświetlić dostępne interfejsy API REST. W przypadku poniższych zapytań użyj ogólnie dostępnej wersji (2017-11-11).
+2. Na pasku poleceń kliknij pozycję **Zmień indeks**, aby przełączyć się na zestaw danych *realestate-us-sample*. Na pasku poleceń kliknij pozycję **Ustaw wersję interfejsu API**, aby wyświetlić dostępne interfejsy API REST. W przypadku poniższych zapytań Użyj ogólnie dostępnej wersji (2019-05-06).
 
    ![Polecenia indeksu i interfejsu API](media/search-get-started-portal/search-explorer-changeindex-se2.png)
 

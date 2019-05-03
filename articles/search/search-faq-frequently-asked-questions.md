@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/03/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 9ea4e4ec78e5613758bd9e5ff7a4fbd3273208c6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c77f26187914b2c6e52426bb2a07303b22ccb2b0
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61290452"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023991"
 ---
 # <a name="azure-search---frequently-asked-questions-faq"></a>Usługa Azure Search — często zadawane pytania (FAQ)
 
@@ -64,7 +64,7 @@ Nie ma żadnych ograniczeń dotyczących używania repliki podstawowej lub dodat
 
 Nie, ta operacja nie jest obsługiwana. Wyszukiwanie jest zawsze ograniczony do jednego indeksu.
 
-### <a name="can-i-restrict-search-corpus-access-by-user-identity"></a>Czy mogę ograniczyć wyszukiwania korpus dostęp przez tożsamość użytkownika?
+### <a name="can-i-restrict-search-index-access-by-user-identity"></a>Czy można ograniczyć dostęp do indeksu wyszukiwania, przez tożsamość użytkownika?
 
 Możesz zaimplementować [filtrów zabezpieczeń](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search) z `search.in()` filtru. Filtr komponuje się również z [usługi zarządzania tożsamościami, takich jak Azure Active o](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search-with-aad) trim wyniki wyszukiwania oparte na zdefiniowanych członkostwa w grupie użytkowników.
 

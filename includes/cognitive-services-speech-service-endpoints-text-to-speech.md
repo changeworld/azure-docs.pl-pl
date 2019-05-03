@@ -2,74 +2,61 @@
 author: wolfma61
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 12/11/2018
+ms.date: 05/06/2019
 ms.author: wolfma
-ms.openlocfilehash: ef68d02f6aa23368962e08af7b35d2b81c0e80bb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4f48fc0ad65984df42e2a85853f39e49d7481302
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60480505"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020440"
 ---
-### <a name="neural-voices"></a>Głosy neuronowych
+### <a name="standard-and-neural-voices"></a>Standardowe i neuronowych głosów
 
-Neuronowych głosy są dostępne w tych regionach:
+Aby ustalić dostępność standardowych i neuronowych głosów według regionu/punktu końcowego, należy użyć tej tabeli:
 
-| Region | Endpoint |
-|--------|----------|
-| Wschodnie stany USA | https://eastus.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Azja Południowo-Wschodnia | https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Europa Zachodnia | https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1 |
-
-> [!IMPORTANT]
-> Microsoft Server mowy tekstu na głos mowy (zh-CN, XiaoxiaoNeural) jest tylko dostępne za pośrednictwem punktu końcowego Azja południowo-wschodnia: https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1. Pełną listę neuronowych głosów zobacz [języki](../articles/cognitive-services/speech-service/language-support.md).
-
-### <a name="standard-voices"></a>Standardowa głosów
-
-Standardowa głosy są dostępne w tych regionach:
-
-| Region | Endpoint |
-|--------|----------|
-| Australia Wschodnia | https://australiaeast.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Kanada Środkowa | https://canadacentral.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Środkowe stany USA | https://centralus.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Azja Wschodnia | https://eastasia.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Wschodnie stany USA | https://eastus.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Wschodnie stany USA 2 | https://eastus2.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Francja Środkowa | https://francecentral.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Indie Środkowe | https://centralindia.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Japonia Wschodnia | https://japaneast.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Korea Środkowa | https://koreacentral.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Środkowo-północne stany USA | https://northcentralus.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Europa Północna | https://northeurope.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Środkowo-południowe stany USA | https://southcentralus.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Azja Południowo-Wschodnia | https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Południowe Zjednoczone Królestwo | https://uksouth.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Europa Zachodnia | https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Zachodnie stany USA | https://westus.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Zachodnie stany USA 2 | https://westus2.tts.speech.microsoft.com/cognitiveservices/v1 |
+| Region | Endpoint | Standardowa głosów | Neural Voices |
+|--------|----------|-----------------|---------------|
+| Australia Wschodnia | https://australiaeast.tts.speech.microsoft.com/cognitiveservices/v1 | Yes | Yes |
+| Kanada Środkowa | https://canadacentral.tts.speech.microsoft.com/cognitiveservices/v1 | Yes | Yes |
+| Środkowe stany USA | https://centralus.tts.speech.microsoft.com/cognitiveservices/v1 | Yes | Nie |
+| Azja Wschodnia | https://eastasia.tts.speech.microsoft.com/cognitiveservices/v1 | Yes | Nie |
+| Wschodnie stany USA | https://eastus.tts.speech.microsoft.com/cognitiveservices/v1 | Yes | Yes |
+| Wschodnie stany USA 2 | https://eastus2.tts.speech.microsoft.com/cognitiveservices/v1 | Yes | Nie |
+| Francja Środkowa | https://francecentral.tts.speech.microsoft.com/cognitiveservices/v1 | Yes | Nie |
+| Indie Środkowe | https://centralindia.tts.speech.microsoft.com/cognitiveservices/v1 | Yes | Yes |
+| Japonia Wschodnia | https://japaneast.tts.speech.microsoft.com/cognitiveservices/v1 | Yes | Nie |
+| Korea Środkowa | https://koreacentral.tts.speech.microsoft.com/cognitiveservices/v1 | Yes | Nie |
+| Środkowo-północne stany USA | https://northcentralus.tts.speech.microsoft.com/cognitiveservices/v1 | Yes | Nie |
+| Europa Północna | https://northeurope.tts.speech.microsoft.com/cognitiveservices/v1 | Yes | Nie |
+| Środkowo-południowe stany USA | https://southcentralus.tts.speech.microsoft.com/cognitiveservices/v1 | Yes | Yes |
+| Azja Południowo-Wschodnia | https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1 | Yes | Yes |
+| Południowe Zjednoczone Królestwo | https://uksouth.tts.speech.microsoft.com/cognitiveservices/v1 | Yes | Yes |
+| Europa Zachodnia | https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1 | Yes | Yes |
+| Zachodnie stany USA | https://westus.tts.speech.microsoft.com/cognitiveservices/v1 | Yes | Nie |
+| Zachodnie stany USA 2 | https://westus2.tts.speech.microsoft.com/cognitiveservices/v1 | Yes | Yes |
 
 ### <a name="custom-voices"></a>Głosów niestandardowych
 
-Jeśli utworzono niestandardową czcionkę głosową, użyj punktu końcowego, który został utworzony, nie jeden z punktów końcowych w tych list.
+Jeśli utworzono niestandardową czcionkę głosową, użyj punktu końcowego, który został utworzony. Można również użyć punktów końcowych wymienione poniżej pod warunkiem zastępowania `{deploymentId}` z Identyfikatorem wdrożenia dla modelu głosu.
 
 | Region | Endpoint |
 |--------|----------|
-| Australia Wschodnia | https://australiaeast.voice.speech.microsoft.com |
-| Kanada Środkowa | https://canadacentral.voice.speech.microsoft.com |
-| Środkowe stany USA | https://centralus.voice.speech.microsoft.com |
-| Azja Wschodnia | https://eastasia.voice.speech.microsoft.com |
-| Wschodnie stany USA | https://eastus.voice.speech.microsoft.com |
-| Wschodnie stany USA 2 | https://eastus2.voice.speech.microsoft.com |
-| Francja Środkowa | https://francecentral.voice.speech.microsoft.com |
-| Indie Środkowe | https://centralindia.voice.speech.microsoft.com |
-| Japonia Wschodnia | https://japaneast.voice.speech.microsoft.com |
-| Korea Środkowa | https://koreacentral.voice.speech.microsoft.com |
-| Środkowo-północne stany USA | https://northcentralus.voice.speech.microsoft.com |
-| Europa Północna | https://northeurope.voice.speech.microsoft.com |
-| Środkowo-południowe stany USA | https://southcentralus.voice.speech.microsoft.com |
-| Azja Południowo-Wschodnia | https://southeastasia.voice.speech.microsoft.com |
-| Południowe Zjednoczone Królestwo | https://uksouth.voice.speech.microsoft.com |
-| Europa Zachodnia | https://westeurope.voice.speech.microsoft.com |
-| Zachodnie stany USA | https://westus.voice.speech.microsoft.com |
-| Zachodnie stany USA 2 | https://westus2.voice.speech.microsoft.com |
+| Australia Wschodnia | https://australiaeast.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId} |
+| Kanada Środkowa | https://canadacentral.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId} |
+| Środkowe stany USA | https://centralus.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId} |
+| Azja Wschodnia | https://eastasia.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId} |
+| Wschodnie stany USA | https://eastus.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId} |
+| Wschodnie stany USA 2 | https://eastus2.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId} |
+| Francja Środkowa | https://francecentral.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId} |
+| Indie Środkowe | https://centralindia.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId} |
+| Japonia Wschodnia | https://japaneast.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId} |
+| Korea Środkowa | https://koreacentral.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId} |
+| Środkowo-północne stany USA | https://northcentralus.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId} |
+| Europa Północna | https://northeurope.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId} |
+| Środkowo-południowe stany USA | https://southcentralus.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId} |
+| Azja Południowo-Wschodnia | https://southeastasia.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId} |
+| Południowe Zjednoczone Królestwo | https://uksouth.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId} |
+| Europa Zachodnia | https://westeurope.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId} |
+| Zachodnie stany USA | https://westus.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId} |
+| Zachodnie stany USA 2 | https://westus2.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId} |

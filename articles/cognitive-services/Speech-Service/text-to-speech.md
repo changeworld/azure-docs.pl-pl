@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 2c5c2bc2b8dd1930efef9833bd442fcad5566e2a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cbabdde2dd5df2ca40ee45fe0f7b0437f095673b
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61460273"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020378"
 ---
 # <a name="what-is-text-to-speech"></a>Co to jest zamiany tekstu na mowę?
 
@@ -32,7 +32,9 @@ Standardowa głosy są tworzone przy użyciu technik statystycznych syntezy para
 
 Głosy neuronowych Użyj głębokich sieciach neuronowych przezwyciężenie limitów tradycyjnych systemów zamiany tekstu na mowę w pasujących do wzorców obciążenia i maksimów w mowy i Syntetyzujące jednostek mowy do głosowego komputera. Standardowa zamiany tekstu na mowę dzieli prosody w oddzielnych analizy językowej i kroki akustyczny prognoz, które podlegają niezależnie od modeli. Który może spowodować syntezy muffled, buzzy głosu. Nasze możliwości neuronowych wykonuje prosody prognoz i głosu syntezy równocześnie, które powoduje płynne i bardziej brzmiącą naturalnego głosu.
 
-Neuronowych głosów można wprowadzić bardziej naturalne interakcje z czatbotów i asystentów wirtualnego i angażujące konwertować teksty cyfrowych, takich jak książki elektroniczne audiobooks i poprawić funkcjonalność z systemów nawigacji w samochodzie. Przypominającej ludzką prosody naturalnych i wyczyść ustaleniu słów głosy neuronowych znaczące zmęczenie nasłuchiwania podczas interakcji z systemami sztucznej Inteligencji. Aby uzyskać więcej informacji na temat neuronowych głosów zobacz [obsługiwane języki](language-support.md#text-to-speech).
+Neuronowych głosów można wprowadzić bardziej naturalne interakcje z czatbotów i asystentów wirtualnego i angażujące konwertować teksty cyfrowych, takich jak książki elektroniczne audiobooks i poprawić funkcjonalność z systemów nawigacji w samochodzie. Przypominającej ludzką prosody naturalnych i wyczyść ustaleniu słów głosy neuronowych znaczące zmęczenie nasłuchiwania podczas interakcji z systemami sztucznej Inteligencji. 
+
+Głosy neuronowych obsługuje różne style, takie jak neutralne i uśmiecha. Na przykład głosu Jessa (en US) można było mówić cheerfully, który jest zoptymalizowany pod kątem dostępu do ciepłych, wszystkiego konwersacji. Można dopasować dane wyjściowe głosowych, takich jak tonu, wysokość i szybkości za pomocą [język znaczników synteza mowy](speech-synthesis-markup.md). Aby uzyskać pełną listę dostępnych głosów, zobacz [obsługiwane języki](language-support.md#text-to-speech).
 
 Aby dowiedzieć się więcej o zaletach głosów neuronowej, zobacz [usługa nowe zamiany tekstu na mowę neuronowa firmy Microsoft pomaga maszyn, mowy, takich jak osoby](https://azure.microsoft.com/blog/microsoft-s-new-neural-text-to-speech-service-helps-machines-speak-like-people/).
 

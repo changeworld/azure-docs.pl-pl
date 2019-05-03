@@ -4,7 +4,7 @@ description: Odwołanie do pełnej składni Lucene, które jest używane z usłu
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/25/2019
+ms.date: 04/25/2019
 author: brjohnstmsft
 ms.author: brjohnst
 ms.manager: cgronlun
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 64a688df3b6ed8602bb440d72e7f061c5f5893d1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b37961f96aca95c0aeaec511411a309d40e990f5
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61317587"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024219"
 ---
 # <a name="lucene-query-syntax-in-azure-search"></a>Składnia zapytań Lucene w usłudze Azure Search
 Można napisać zapytań względem usługi Azure Search oparte na zaawansowanych [analizator składni zapytań Lucene](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) składnia wyspecjalizowane kwerendy forms: symbole wieloznaczne, Wyszukiwanie rozmyte, wyszukiwanie w sąsiedztwie wyrażeń regularnych przedstawiono kilka przykładów. Jest wiele składni analizatora zapytań Lucene [zaimplementowane opublikowane w usłudze Azure Search](search-lucene-query-architecture.md), z wyjątkiem produktów *zakresu wyszukiwania* zbudowanych w usłudze Azure Search przy użyciu `$filter` wyrażenia. 
@@ -42,13 +42,13 @@ Poniższy przykład znajduje dokumenty do indeksu przy użyciu składni zapytań
 `searchMode=all` Parametr ma zastosowanie w tym przykładzie. Zawsze, gdy operatory są na tym zapytaniu, zazwyczaj należy ustawić `searchMode=all` do upewnij się, że *wszystkich* kryteriów jest zgodny.
 
 ```
-GET /indexes/hotels/docs?search=category:budget AND \"recently renovated\"^3&searchMode=all&api-version=2015-02-28&querytype=full
+GET /indexes/hotels/docs?search=category:budget AND \"recently renovated\"^3&searchMode=all&api-version=2019-05-06&querytype=full
 ```
 
  Można również użyć POST:  
 
 ```
-POST /indexes/hotels/docs/search?api-version=2015-02-28
+POST /indexes/hotels/docs/search?api-version=2019-05-06
 {
   "search": "category:budget AND \"recently renovated\"^3",
   "queryType": "full",

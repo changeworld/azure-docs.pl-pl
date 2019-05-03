@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: ph-com
 ms.author: pahusban
-ms.date: 09/24/2018
+ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3f40606d5fae3b3784ac7f1fdcf4977b7fd9eb1f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3b55282adf56bedb0724eca578b8eaea00c26074
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60819431"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023973"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Eksportowanie lub usuwanie danych obszaru roboczego usługi Machine Learning 
 
@@ -231,3 +231,29 @@ Szablony można uzyskać przez:
 Źródła danych można uzyskać przez:
 
     https://{location}.aether.ms/api/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/DataSources/{id}
+
+## <a name="delete-visual-interface-assets"></a>Usuń interfejs graficzny zasobów
+
+W interfejs graficzny, w której utworzono eksperymentu usuwać poszczególne zasoby:
+
+1. Po lewej stronie wybierz typ zasobów, które chcesz usunąć.
+
+    ![Usuń zasoby](media/how-to-export-delete-data.md/delete-experiment.png)
+
+1. Na liście wybierz poszczególne zasoby można usunąć.
+
+1. Na dole, zaznacz **Usuń**.
+
+## <a name="export-visual-interface-data"></a>Eksportowanie danych interfejsu wizualnego
+
+W interfejs graficzny, w której utworzono eksperymentu należy wyeksportować dane, które zostały dodane:
+
+1. Po lewej stronie, wybierz **danych**.
+
+1. Na górze, wybierz **Moje zestawy danych** lub **przykłady** do lokalizowania danych, którą chcesz wyeksportować.
+
+    ![Pobieranie danych](media/how-to-export-delete-data.md/download-data.png)
+
+1. Na liście wybierz poszczególne zestawy danych do wyeksportowania.
+
+1. Na dole, zaznacz **Pobierz**.

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: wolfma
-ms.openlocfilehash: cdde9f0ec69bec48ae0fb747db0cc49e81920817
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3cedfaf1ae16c17026314fc24dbdc7bb11494caf
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61457123"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020953"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-unity-beta"></a>Szybki start: Rozpoznawanie mowy przy użyciu zestawu Speech SDK for Unity (Beta)
 
@@ -27,14 +27,15 @@ Jeśli nie znasz środowiska Unity, zalecamy zapoznanie się z [podręcznikiem u
 
 > [!NOTE]
 > Zestaw Speech SDK for Unity jest obecnie dostępny w wersji beta.
-> Obsługuje on platformy Windows x86 i x64 (autonomiczne aplikacje klasyczne lub platformę uniwersalną systemu Windows) oraz Android (ARM32/64, x86).
+> Obsługuje on Windows Desktop (x86 i x64) lub platformy Windows uniwersalnej (x86, x64, ARM/ARM64) i Android (x86 ARM32/64).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby ukończyć ten projekt, będą potrzebne następujące elementy:
 
-* Środowisko [Unity 2018.3 lub nowsze](https://store.unity.com/)
+* [Unity 2018.3 lub nowszej](https://store.unity.com/) z [2019.1 Unity, dodanie obsługi architektury ARM64 platformy uniwersalnej systemu Windows](https://blogs.unity3d.com/2019/04/16/introducing-unity-2019-1/#universal)
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
+     * Do obsługi architektury ARM64 zainstalować [narzędzi kompilacji opcjonalne dla architektury ARM64 i Windows 10 SDK dla architektury ARM64](https://blogs.windows.com/buildingapps/2018/11/15/official-support-for-windows-10-on-arm-development/) 
 * Klucz subskrypcji dla usługi Mowa. [Uzyskaj bezpłatnie](get-started.md).
 * Dostęp do mikrofonu komputera.
 

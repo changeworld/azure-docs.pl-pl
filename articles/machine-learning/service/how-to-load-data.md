@@ -10,22 +10,24 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: jmartens
-ms.date: 2/22/2019
+ms.date: 02/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 34dd20826928d1ab2ba1fc7980c7d47b796ea663
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7dc07ba7f1d62b49232b1cd892070804099fab8c
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60819213"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024017"
 ---
-# <a name="load-and-read-data-with-azure-machine-learning"></a>Ładowanie i odczytać dane za pomocą usługi Azure Machine Learning
-
+# <a name="load-and-read-data-with-the-azure-machine-learning-data-prep-sdk"></a>Ładowanie i odczytać dane za pomocą usługi Azure Machine Learning Prep zestawu SDK usługi Data
 W tym artykule dowiesz się różnych metod ładowania danych przy użyciu usługi Azure Machine Learning Prep zestawu SDK usługi Data. Aby wyświetlić dokumentację referencyjną dla zestawu SDK, zobacz [Przegląd](https://aka.ms/data-prep-sdk). Zestaw SDK obsługuje wiele funkcji pozyskiwania danych, takich jak:
 
 * Ładowanie z wiele typów plików za pomocą analizy parametru wnioskowania (kodowanie, separator, nagłówki)
 * Konwersja typu użycia wnioskowania podczas ładowania pliku
 * Funkcja obsługi połączeń MS SQL Server i usługi Azure Data Lake Storage
+
+> [!Important]
+> Jeśli tworzysz nowe rozwiązanie, spróbuj [zestawów danych Learning maszyny Azure](how-to-explore-prepare-data.md) (wersja zapoznawcza) do eksploracji danych i przygotowania. Zestawy danych to następna wersja przygotowywanie danych zestawu SDK, oferując rozszerzona funkcjonalność zarządzania zestawów danych w przypadku rozwiązań sztucznej Inteligencji.
 
 W poniższej tabeli przedstawiono szereg funkcji, które służą do ładowania danych z popularnych typów plików.
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: eb3697eefb5835305b2ec80ca1e77ccade19e44f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 83cea56cecf9792c829e062965fe39b63201af3e
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60480667"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020662"
 ---
 # <a name="speech-service-supported-regions"></a>Usługa rozpoznawania mowy obsługiwane regiony
 
@@ -28,9 +28,9 @@ Należy upewnić się, że punkt końcowy, który odpowiada regionie dla Twojej 
 
 W [zestaw SDK rozpoznawania mowy](speech-sdk.md), regiony są określane jako ciąg (na przykład, jako parametr do `SpeechConfig.FromSubscription` mowy zestawu SDK dla języka C#).
 
-### <a name="speech-recognition-and-translation"></a>Rozpoznawanie mowy i tłumaczenia
+### <a name="speech-to-text-text-to-speech-and-translation"></a>Zamiany mowy na tekst, zamiany tekstu na mowę i tłumaczenia
 
-Zestaw SDK rozpoznawania mowy jest dostępna w regionach w celu **rozpoznawania mowy** i **tłumaczenia**:
+Zestaw SDK rozpoznawania mowy jest dostępna w regionach w celu **rozpoznawania mowy**, **zamiany tekstu na mowę**, i **tłumaczenia**:
 
   Region | Parametr zestaw SDK rozpoznawania mowy | Portal dostosowania mowy
  ------|-------|--------

@@ -7,17 +7,21 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 04/20/2018
+ms.date: 05/02/2019
 ms.author: brjohnst
-ms.custom: seodec2018
-ms.openlocfilehash: afc60e933c9fcc154af74c47e382d8b8e7b0df8d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 25a156c4403b7a89f7a7bf7f6acf22fa34216791
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60871301"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65025125"
 ---
 # <a name="how-to-use-azure-search-from-a-net-application"></a>Jak używać usługi Azure Search z poziomu aplikacji .NET
+
+> [!Important]
+> Ta zawartość jest nadal w trakcie tworzenia. W wersji 9.0 zestawu .NET SDK usługi Azure Search jest dostępna dla narzędzia NuGet. Pracujemy nad tym przewodniku migracji, aby wyjaśnić, jak uaktualnić do nowej wersji aktualizacji. Śledź aktualności.
+>
+
 Ten artykuł stanowi wskazówki pomagające w pracy z [zestawu .NET SDK usługi Azure Search](https://aka.ms/search-sdk). Zestaw SDK platformy .NET umożliwia Implementowanie zaawansowanych funkcji wyszukiwania w aplikacji za pomocą usługi Azure Search.
 
 ## <a name="whats-in-the-azure-search-sdk"></a>Co to jest na platformie Azure wyszukiwania zestawu SDK
@@ -38,7 +42,7 @@ Różnych bibliotek klienta definiuje klasy, takie jak `Index`, `Field`, i `Docu
 
 Bieżąca wersja zestawu .NET SDK usługi Azure Search jest teraz ogólnie dostępna. Jeśli chcesz przekazać opinię firmie Microsoft, które należy uwzględnić w następnej wersji, odwiedź nasz [strona opinii o](https://feedback.azure.com/forums/263029-azure-search/).
 
-Zestaw .NET SDK obsługuje wersję `2017-11-11` z [interfejsu API REST usługi Azure Search](https://docs.microsoft.com/rest/api/searchservice/). Ta wersja obejmuje teraz obsługę synonimy, jak również przyrostowe ulepszenia indeksatorów. Funkcje, które są w wersji zapoznawczej *nie* częścią tej wersji, takich jak Obsługa indeksowania tablic JSON i pliki CSV znajdują się w [Podgląd](search-api-2016-09-01-preview.md) i dostępne za pośrednictwem [zestawu.NETSDKwwersji4.0-preview](https://aka.ms/search-sdk-preview).
+Zestaw .NET SDK obsługuje wersję `2017-11-11` z [interfejsu API REST usługi Azure Search](https://docs.microsoft.com/rest/api/searchservice/). Ta wersja obejmuje teraz obsługę synonimy, jak również przyrostowe ulepszenia indeksatorów. 
 
 Ten zestaw SDK nie obsługuje [operacji zarządzania](https://docs.microsoft.com/rest/api/searchmanagement/) takich jak tworzenie i skalowanie usługi wyszukiwania i zarządzanie kluczami interfejsu API. Jeśli musisz zarządzać zasobami wyszukiwania z poziomu aplikacji .NET, możesz użyć [zestawu SDK usługi Azure Search .NET zarządzania](https://aka.ms/search-mgmt-sdk).
 

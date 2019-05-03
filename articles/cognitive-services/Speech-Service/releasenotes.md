@@ -8,18 +8,41 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 4/24/2019
+ms.date: 05/02/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 6a9e66b1731a06d81e89b5f3fc4467a0f0344160
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 1310ecd15498c4c319febc87cbc3b18e0a7ca524
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64697879"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020337"
 ---
 # <a name="release-notes"></a>Informacje o wersji
 
+## <a name="speech-sdk-150-2019-may-release"></a>Zestaw SDK 1.5.0 mowy: Wersja maja 2019 r
+
+**Nowe funkcje**
+
+* Słowo kluczowe dotyczące funkcji (KWS) jest dostępna dla Windows i Linux. Funkcje KWS może działać z dowolnego typu mikrofon official będzie przydatna KWS obsługuje obecnie ograniczone do tablic mikrofon znajduje się w sprzęt DK Kinect platformy Azure lub zestawu Speech Devices SDK.
+* Fraza wskazówka funkcja jest dostępna za pośrednictwem zestawu SDK. Aby uzyskać więcej informacji, zobacz [tutaj](how-to-phrase-lists.md).
+* Funkcje transkrypcji konwersacji jest dostępna za pośrednictwem zestawu SDK. Zobacz [tutaj](conversation-transcription-service.md).
+* Dodano obsługę pierwszy głosu asystentów wirtualnego przy użyciu kanału Direct mowy wiersza.
+
+**Przykłady**
+
+* Dodano przykłady do nowych funkcji lub nowych usług obsługiwanych przez zestaw SDK.
+
+**Ulepszenia / zmiany**
+
+* Dodano różne właściwości rozpoznawania, aby dostosować zachowanie usługi lub wyników usługi (na przykład maskowania wulgaryzmów i inne).
+* Można teraz skonfigurować rozpoznawania za pośrednictwem właściwości standardowej konfiguracji, nawet jeśli utworzony przez aparat rozpoznawania `FromEndpoint`.
+* Cel C: `OutputFormat` właściwość została dodana do SPXSpeechConfiguration.
+* Zestaw SDK obsługuje teraz Debian 9 jako dystrybucji systemu Linux.
+
+**Poprawki błędów**
+
+* Rozwiązano problem, gdzie zasobów osoby mówiącej zostało zniszczone zbyt wcześnie w zamiany tekstu na mowę.
 ## <a name="speech-sdk-142"></a>Zestaw SDK 1.4.2 mowy
 
 Jest to wersja poprawki i na komputerach z zestawu SDK natywnego/zarządzanego. Nie ma wpływ na JavaScript wersję zestawu SDK.
@@ -28,13 +51,13 @@ Jest to wersja poprawki i na komputerach z zestawu SDK natywnego/zarządzanego. 
 
 To jest wersja tylko do języka JavaScript. Żadne funkcje nie zostały dodane. Wprowadzono następujące poprawki:
 
-* Zapobiega webpack ładowania https serwera proxy agenta.
+* Pakiet sieci web uniemożliwić ładowanie https serwera proxy agenta.
 
 ## <a name="speech-sdk-140-2019-april-release"></a>Zestaw SDK 1.4.0 mowy: Wersja 2019 kwietnia
 
 **Nowe funkcje** 
 
-* Zestaw SDK obsługuje teraz usługę zamiany tekstu na mowę w wersji beta. Jest on obsługiwany w Windows i Linux pulpitu z C++ i C#. Aby uzyskać więcej informacji o wyboru [zamiany tekstu na mowę Przegląd](text-to-speech.md#get-started-with-text-to-speech).
+* Zestaw SDK obsługuje teraz usługę zamiany tekstu na mowę w wersji beta. Jest on obsługiwany w Windows i Linux pulpitu z C++ i C#. Aby uzyskać więcej informacji, sprawdź [zamiany tekstu na mowę Przegląd](text-to-speech.md#get-started-with-text-to-speech).
 * Zestaw SDK obsługuje teraz MP3 oraz dziele/Ogg pliki audio jako pliki wejściowe strumienia. Ta funkcja jest dostępna tylko w systemie Linux z C++ i C# i jest obecnie w wersji beta (więcej szczegółów [tutaj](how-to-use-compressed-audio-input-streams.md)).
 * Zestaw SDK rozpoznawania mowy dla języka Java, .NET core, C++ i języka Objective-C weszły do obsługi systemu macOS. Obsługa języka Objective-C, dla systemu macOS jest obecnie w wersji beta.
 * iOS: Zestaw SDK rozpoznawania mowy dla systemu iOS (Objective-C) teraz zostało również opublikowane jako CocoaPod.
@@ -49,7 +72,7 @@ To jest wersja tylko do języka JavaScript. Żadne funkcje nie zostały dodane. 
 **Ulepszenia / zmiany**
 
 * Python: Dodatkowe właściwości wyniki rozpoznawania są teraz udostępniane za pośrednictwem `properties` właściwości.
-* Dodatkowe obsługę programowania i debugowania można przekierować SDK rejestrowania i informacje diagnostyczne do pliku dziennika (więcej szczegółów [tutaj](how-to-use-logging.md)).
+* Dla dodatkowego programowania i obsługi debugowania, można przekierować SDK rejestrowania i informacje diagnostyczne do pliku dziennika (więcej szczegółów [tutaj](how-to-use-logging.md)).
 * JavaScript: Zwiększ wydajność przetwarzania audio.
 
 **Poprawki błędów**
@@ -70,8 +93,8 @@ Jest to wersja poprawki i na komputerach z zestawu SDK natywnego/zarządzanego. 
 
 **Nowe funkcje**
 
-* Zestaw SDK rozpoznawania mowy obsługuje wyboru wejściowego mikrofonu za pośrednictwem klasy AudioConfig. Umożliwia przesyłanie strumieniowe audio danych do usług przetwarzania mowy z mikrofonu innych niż domyślne. Aby uzyskać więcej informacji, zobacz temat opisujący dokumentacji [wybór urządzenia wejściowe audio](how-to-select-audio-input-devices.md). To nie jest jeszcze dostępna z poziomu języka JavaScript.
-* Zestaw SDK rozpoznawania mowy obsługuje teraz Unity w wersji beta. Prześlij opinię za pośrednictwem sekcji problem [repozytorium przykładów GitHub](https://aka.ms/csspeech/samples). Ta wersja obsługuje platformy Unity na Windows x86 i x64 (pulpitu lub aplikacji Universal Windows Platform) i Android (ARM32/64 x86). Więcej informacji znajduje się w naszym [Szybki Start Unity](quickstart-csharp-unity.md).
+* Zestaw SDK rozpoznawania mowy obsługuje wyboru wejściowego mikrofonu za pośrednictwem klasy AudioConfig. Umożliwia przesyłanie strumieniowe audio danych do usług przetwarzania mowy z mikrofonu innych niż domyślne. Aby uzyskać więcej informacji, zobacz temat opisujący dokumentacji [wybór urządzenia wejściowe audio](how-to-select-audio-input-devices.md). Ta funkcja nie jest jeszcze dostępna z poziomu języka JavaScript.
+* Zestaw SDK rozpoznawania mowy obsługuje teraz Unity w wersji beta. Przekazują opinie za pośrednictwem sekcji problem [repozytorium przykładów GitHub](https://aka.ms/csspeech/samples). Ta wersja obsługuje platformy Unity na Windows x86 i x64 (pulpitu lub aplikacji Universal Windows Platform) i Android (ARM32/64 x86). Więcej informacji znajduje się w naszym [Szybki Start Unity](quickstart-csharp-unity.md).
 * Plik `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` (dostarczane w poprzednich wersjach) nie jest już potrzebny. Funkcje jest teraz zintegrowany zestaw SDK core.
 
 
@@ -134,7 +157,7 @@ To jest wersja tylko do języka JavaScript. Żadne funkcje nie zostały dodane. 
   * Została usunięta ograniczenia długości sesji audio, ponowne łączenie nastąpi automatycznie w ramach pokrycia.
 * Obiekt połączenia
   * Z aparatu rozpoznawania można uzyskać dostęp do obiektu połączenia. Ten obiekt umożliwia jawnie zainicjować połączenia z usługą i subskrypcji do nawiązywania połączeń i zdarzenia rozłączenia.
-    (To nie jest jeszcze dostępny w języku JavaScript i Python).
+    (Ta funkcja nie jest jeszcze dostępny w języku JavaScript i Python.)
 * Obsługa systemu Ubuntu 18.04.
 * Android
   * Włączone narzędzia ProGuard obsługuje podczas generowania pliku APK.
@@ -142,7 +165,7 @@ To jest wersja tylko do języka JavaScript. Żadne funkcje nie zostały dodane. 
 **Ulepszenia**
 
 * Ulepszenia użycie wewnętrznego wątku, zmniejszając liczbę wątków, blokad, muteksów.
-* Ulepszone raportowanie błędów / informacje. W kilku przypadkach aż się nie zostały rozpropagowane komunikaty o błędach.
+* Ulepszone raportowanie błędów / informacje. W kilku przypadkach komunikaty o błędach nie zostały rozpropagowane się, aż się.
 * Zaktualizowano zależności programowania w języku JavaScript, używać modułów aktualne.
 
 **Poprawki błędów**
@@ -218,7 +241,7 @@ W naszym [przykładowego repozytorium](https://aka.ms/csspeech/samples), dodano 
 **Fundamentalne zmiany**
 
 * W tej wersji wprowadzono szereg istotnych zmian.
-  Sprawdź, czy [na tej stronie](https://aka.ms/csspeech/breakingchanges_1_0_0) Aby uzyskać szczegółowe informacje.
+  Sprawdź [na tej stronie](https://aka.ms/csspeech/breakingchanges_1_0_0) Aby uzyskać szczegółowe informacje.
 
 ## <a name="cognitive-services-speech-sdk-060-2018-august-release"></a>Mowy usług cognitive Services SDK 0.6.0: Wersji z sierpnia 2018 r.
 

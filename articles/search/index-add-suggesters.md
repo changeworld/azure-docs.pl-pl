@@ -1,7 +1,7 @@
 ---
 title: Dodawanie typeahead zapytań do indeksu — usługa Azure Search
 description: Włącz operacje zapytania z podpowiedziami pojawiającymi w usłudze Azure Search, tworząc sugestory i sformułowania żądań, które wywołanie autocomplete lub autosuggested terminów zapytania.
-ms.date: 03/22/2019
+ms.date: 05/02/2019
 services: search
 ms.service: search
 ms.topic: conceptual
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: a8bc86c2d3511fa04e595b8b2988d9a98bf084b2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 400b1613a87d4de65879a512642e16884c7d03b4
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60844447"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65021879"
 ---
 # <a name="add-suggesters-to-an-index-for-typeahead-in-azure-search"></a>Dodaj sugestory do indeksu dla typeahead w usłudze Azure Search
 
@@ -39,9 +39,6 @@ Aby zaimplementować te zachowania w usłudze Azure Search, jest składnikiem in
 + Składnik indeksu jest sugestora. Portalu, interfejsu API REST lub zestawu SDK platformy .NET umożliwia tworzenie sugestora. 
 
 + Składnik kwerendy jest akcja określona w żądaniu zapytania (Akcja sugestię lub automatycznego uzupełniania). 
-
-> [!Important]
-> Autouzupełnianie jest obecnie dostępna w wersji zapoznawczej, dostępna w wersji zapoznawczej interfejsów API REST i zestawu SDK platformy .NET. Nie jest on przeznaczony dla aplikacji produkcyjnych. 
 
 Obsługa wyszukiwania jako użytkownik typ-jest włączona na poszczególnych pól. Można zaimplementować zarówno zachowania typeahead w obrębie tego samego rozwiązania wyszukiwania, chcąc środowisko podobny do wskazanej na zrzucie ekranu. Zarówno docelowego żądania *dokumenty* kolekcji określonego indeksu i odpowiedzi są zwracane po użytkownik udostępnił co najmniej trzech wejściowy ciąg znaków.
 
@@ -106,7 +103,7 @@ Właściwości, które definiują sugestora są następujące:
 
 |Właściwość      |Opis      |
 |--------------|-----------------|
-|`name`        |Nazwa sugestora. Użyj nazwy sugestora podczas wywoływania [interfejsu API REST sugestie](https://docs.microsoft.com/rest/api/searchservice/suggestions) lub [autouzupełniania REST API (wersja zapoznawcza)](https://docs.microsoft.com/rest/api/searchservice/autocomplete).|
+|`name`        |Nazwa sugestora. Użyj nazwy sugestora podczas wywoływania [interfejsu API REST sugestie](https://docs.microsoft.com/rest/api/searchservice/suggestions) lub [interfejsu API REST autouzupełniania](https://docs.microsoft.com/rest/api/searchservice/autocomplete).|
 |`searchMode`  |Strategia używana do wyszukiwania fraz kandydujących. To jedyny obecnie obsługiwany tryb `analyzingInfixMatching`, który przeprowadza elastyczne dopasowywanie fraz na początku lub w środku zdań.|
 |`sourceFields`|Lista jednego lub więcej pól, które są źródłem zawartości sugestie. Tylko pola typu `Edm.String` i `Collection(Edm.String)` może być źródeł dla sugestie. Można tylko pola, które nie mają niestandardowego analizatora języków zestawu.<p/>Te pola, które nadają się do oczekiwanego i odpowiednich odpowiedzi, należy określić, czy jest ono ukończone ciąg w pasku wyszukiwania lub na liście rozwijanej.<p/>Nazwa hotelu jest dobrym kandydatem, ponieważ ma ona dokładności. Pełne pól, takich jak opisy i komentarze są zbyt gęste. Podobnie powtarzających się pola, takie jak kategorie i tagów, są mniej skuteczne. W przykładach zawiera "category" mimo to wykazać, że może zawierać wiele pól. |
 
@@ -120,7 +117,7 @@ Jeśli dodasz sugestora do istniejącego indeksu, gdzie istniejące pola są uwz
 
 Jak wspomniano wcześniej można użyć sugestora sugerowane zapytania i/lub automatycznego uzupełniania. 
 
-Sugestora odwołuje się na żądanie, wraz z operacji. Na przykład na wywołanie GET REST, określ opcję `suggest` lub `autocomplete` w kolekcji dokumentów. REST, po utworzeniu sugestora użytku [sugestie dotyczące interfejsów API](https://docs.microsoft.com/rest/api/searchservice/suggestions) lub [autouzupełniania interfejsu API (wersja zapoznawcza)](https://docs.microsoft.com/rest/api/searchservice/autocomplete) w logice zapytania.
+Sugestora odwołuje się na żądanie, wraz z operacji. Na przykład na wywołanie GET REST, określ opcję `suggest` lub `autocomplete` w kolekcji dokumentów. REST, po utworzeniu sugestora użytku [sugestie dotyczące interfejsów API](https://docs.microsoft.com/rest/api/searchservice/suggestions) lub [interfejsu API automatycznego uzupełniania](https://docs.microsoft.com/rest/api/searchservice/autocomplete) w logice zapytania.
 
 Dla platformy .NET, należy użyć [SuggestWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet-preview) lub [AutocompleteWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet-preview&viewFallbackFrom=azure-dotnet).
 

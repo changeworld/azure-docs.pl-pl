@@ -1,7 +1,7 @@
 ---
 title: Indeks źródła danych usługi Azure Cosmos DB — usługa Azure Search
 description: Przeszukaj źródła danych usługi Azure Cosmos DB i pozyskiwania danych w indeksie wyszukiwania pełnotekstowego w usłudze Azure Search. Indeksatory zautomatyzować pozyskiwanie danych dla wybranych źródeł danych takich jak Azure Cosmos DB.
-ms.date: 02/28/2019
+ms.date: 05/02/2019
 author: mgottein
 manager: cgronlun
 ms.author: magottei
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 019945c48342238a1caa7611bdff6d06fd1e2bd9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d10a1df402fc4931c4d6cc513aa5e22cfe7ec2ba
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60871723"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024720"
 ---
 # <a name="how-to-index-cosmos-db-using-an-azure-search-indexer"></a>Jak indeksować Cosmos DB przy użyciu indeksator usługi Azure Search
 
@@ -122,9 +122,8 @@ Jeśli dokonujesz oceny bazy danych MongoDB, musi być Utwórz źródło danych 
 
 W ramach konta usługi Cosmos DB można, czy mają kolekcja do automatycznego indeksowania wszystkich dokumentów. Domyślnie wszystkie dokumenty są automatycznie indeksowane, ale możesz wyłączyć automatyczne indeksowanie. Po wyłączeniu indeksowanie dokumentów można uzyskać dostęp tylko za pośrednictwem ich linków do samego siebie lub przez zapytania za pomocą dokumentów identyfikator. Usługa Azure Search wymaga usługi Cosmos DB automatyczne indeksowanie w celu włączenia w kolekcji, które będą indeksowane przez usługę Azure Search. 
 
-> [!NOTE]
-> Usługa Azure Cosmos DB to następna generacja bazy danych documentdb. Mimo, że nazwa produktu została zmieniona, `documentdb` składni w indeksatorach usługi Azure Search nadal istnieje dla wstecznej zgodności w interfejsów API usługi Azure Search i na stronach portalu. Podczas konfigurowania indeksatorów, pamiętaj określić `documentdb` składni zgodnie z instrukcjami w tym artykule.
-
+> [!WARNING]
+> Usługa Azure Cosmos DB to następna generacja bazy danych documentdb. Wcześniej z wersją interfejsu API **2017-11-11** wystarczą `documentdb` składni. Oznacza to, że można określić typu źródła danych, co `cosmosdb` lub `documentdb`. Począwszy od wersji interfejsu API **2019-05-06** zarówno interfejsów API usługi Azure Search, jak i portalu obsługują tylko `cosmosdb` składni zgodnie z instrukcjami w tym artykule. Oznacza to, że typ źródła danych muszą `cosmosdb` Jeśli chcesz połączyć się z punktem końcowym usługi Cosmos DB.
 
 ### <a name="1---assemble-inputs-for-the-request"></a>1 — złożyć dane wejściowe dla żądania
 
@@ -150,13 +149,13 @@ A **źródła danych** Określa dane do indeksu, poświadczeń i zasad do identy
 
 Aby utworzyć źródło danych, sformułuj żądanie POST:
 
-    POST https://[service name].search.windows.net/datasources?api-version=2017-11-11
+    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
     Content-Type: application/json
     api-key: [Search service admin key]
 
     {
-        "name": "mydocdbdatasource",
-        "type": "documentdb",
+        "name": "mycosmosdbdatasource",
+        "type": "cosmosdb",
         "credentials": {
             "connectionString": "AccountEndpoint=https://myCosmosDbEndpoint.documents.azure.com;AccountKey=myCosmosDbAuthKey;Database=myCosmosDbDatabaseId"
         },
@@ -171,8 +170,8 @@ Treść żądania zawiera definicję źródła danych, który powinien zawierać
 
 | Pole   | Opis |
 |---------|-------------|
-| **Nazwa** | Wymagany. Wybierz dowolną nazwę do reprezentowania obiektu źródła danych. |
-|**type**| Wymagany. Musi być `documentdb`. |
+| **name** | Wymagany. Wybierz dowolną nazwę do reprezentowania obiektu źródła danych. |
+|**type**| Wymagany. Musi być `cosmosdb`. |
 |**Poświadczenia** | Wymagany. Musi być ciąg połączenia usługi Cosmos DB.<br/>Dla kolekcji SQL parametry połączenia są w następującym formacie: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<br/>Kolekcje bazy danych MongoDB, można dodać **rodzaju interfejsu API = MongoDb** parametry połączenia:<br/>`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<br/>Należy unikać numerów portów w programie adres url punktu końcowego. Jeśli uwzględniony numer portu usługi Azure Search można indeksować bazy danych Azure Cosmos DB.|
 | **Kontener** | zawiera następujące elementy: <br/>**name**: Wymagany. Określ identyfikator kolekcji bazy danych mają być indeksowane.<br/>**Zapytanie**: Opcjonalny. Można określić zapytanie w celu spłaszczenia dowolny dokument JSON do płaski schemat, który usługa Azure Search umożliwia indeksowanie.<br/>Dla kolekcji usługi MongoDB zapytania nie są obsługiwane. |
 | **dataChangeDetectionPolicy** | Zalecane. Zobacz [indeksowania zmienione dokumenty](#DataChangeDetectionPolicy) sekcji.|
@@ -193,7 +192,7 @@ Przykładowy dokument:
             "lastName": "hoh"
         },
         "company": "microsoft",
-        "tags": ["azure", "documentdb", "search"]
+        "tags": ["azure", "cosmosdb", "search"]
     }
 
 Zapytanie filtru:
@@ -219,7 +218,7 @@ Zapytanie spłaszczania tablicy:
 
 [Tworzenie indeksu usługi Azure Search docelowego](/rest/api/searchservice/create-index) Jeśli nie masz jeszcze takiego. Poniższy przykład tworzy indeks z polem Identyfikator i opis:
 
-    POST https://[service name].search.windows.net/indexes?api-version=2017-11-11
+    POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
     Content-Type: application/json
     api-key: [Search service admin key]
 
@@ -263,13 +262,13 @@ Upewnij się, że schemat indeksu docelowego jest zgodna z schemat źródła dok
 
 Po utworzeniu indeks i źródło danych możesz przystąpić do tworzenia indeksatora:
 
-    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
+    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
     {
-      "name" : "mydocdbindexer",
-      "dataSourceName" : "mydocdbdatasource",
+      "name" : "mycosmosdbindexer",
+      "dataSourceName" : "mycosmosdbdatasource",
       "targetIndexName" : "mysearchindex",
       "schedule" : { "interval" : "PT2H" }
     }
@@ -334,17 +333,17 @@ Jeśli używane są niestandardowe zapytanie, upewnij się, że właściwość o
 
 Poniższy przykład tworzy źródła danych za pomocą zasad usuwania nietrwałego:
 
-    POST https://[service name].search.windows.net/datasources?api-version=2017-11-11
+    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
     Content-Type: application/json
     api-key: [Search service admin key]
 
     {
-        "name": "mydocdbdatasource",
-        "type": "documentdb",
+        "name": "mycosmosdbdatasource",
+        "type": "cosmosdb",
         "credentials": {
-            "connectionString": "AccountEndpoint=https://myDocDbEndpoint.documents.azure.com;AccountKey=myDocDbAuthKey;Database=myDocDbDatabaseId"
+            "connectionString": "AccountEndpoint=https://myCosmosDbEndpoint.documents.azure.com;AccountKey=myCosmosDbAuthKey;Database=myCosmosDbDatabaseId"
         },
-        "container": { "name": "myDocDbCollectionId" },
+        "container": { "name": "myCosmosDbCollectionId" },
         "dataChangeDetectionPolicy": {
             "@odata.type": "#Microsoft.Azure.Search.HighWaterMarkChangeDetectionPolicy",
             "highWaterMarkColumnName": "_ts"

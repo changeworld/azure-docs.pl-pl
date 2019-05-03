@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: aacb4521f4c6e8699be357cf396a01b7eb54b552
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: b35a06fc4e100d71e787e183299825b61d342e69
+ms.sourcegitcommit: abeefca6cd5ca01c3e0b281832212aceff08bf3e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924372"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "64993163"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Scheduled Events maszyn wirtualnych systemu Linux
 
@@ -46,7 +46,7 @@ Przy użyciu zaplanowanych zdarzeń aplikacji może odnajdywać podczas konserwa
 
 Scheduled Events dostępne są zdarzenia w następujących przypadkach użycia:
 
-- Zainicjowano platformy obsługi (na przykład, zaktualizuj system operacyjny hosta)
+- [Platforma zainicjowane konserwacji](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/maintenance-and-updates) (na przykład maszyna wirtualna ponowny rozruch, migracji na żywo lub pamięć zachowywanie aktualizacji hosta)
 - Obniżonej wydajności sprzętu
 - Konserwacji zainicjowanej przez użytkownika (na przykład, ponownego uruchamiania lub ponownie wdraża Maszynę wirtualną)
 - [Maszyna wirtualna o niskim priorytecie eksmisji](https://azure.microsoft.com/blog/low-priority-scale-sets) w skali ustawia
@@ -58,6 +58,7 @@ Scheduled Events dostępne są zdarzenia w następujących przypadkach użycia:
 ### <a name="scope"></a>Zakres
 Zaplanowane zdarzenia są dostarczane do:
 
+- Autonomicznych maszyn wirtualnych.
 - Wszystkie maszyny wirtualne w usłudze w chmurze.
 - Wszystkie maszyny wirtualne w zestawie dostępności.
 - Wszystkie maszyny wirtualne w grupie umieszczania zestawu skalowania. 
@@ -129,7 +130,7 @@ W przypadku których zaplanowanych zdarzeń, odpowiedź zawiera szereg zdarzeń.
 |Właściwość  |  Opis |
 | - | - |
 | Identyfikator zdarzenia | Globalnie unikatowy identyfikator dla tego zdarzenia. <br><br> Przykład: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
-| EventType | Wpływ, który powoduje, że to zdarzenie. <br><br> Wartości: <br><ul><li> `Freeze`: Maszyna wirtualna jest zaplanowana do wstrzymywania w kilka sekund. Procesor jest wstrzymana, ale nie ma to wpływu na pamięci, otwartych plików lub połączeń sieciowych. <li>`Reboot`: Maszyna wirtualna jest zaplanowana do ponownego uruchomienia (— trwałej pamięci jest utracona). <li>`Redeploy`: Maszyna wirtualna jest zaplanowane na przeniesienie do innego węzła (efemeryczne dyski zostaną utracone). <li>`Preempt`: Trwa usuwanie maszyny wirtualnej o niskim priorytecie (efemeryczne dyski zostaną utracone).|
+| EventType | Wpływ, który powoduje, że to zdarzenie. <br><br> Wartości: <br><ul><li> `Freeze`: Maszyna wirtualna jest zaplanowana do wstrzymania przez kilka sekund. Może zostać zawieszone procesora CPU oraz łączności sieciowej, ale nie ma to wpływu na pamięć lub otwarte pliki.<li>`Reboot`: Maszyna wirtualna jest zaplanowana do ponownego uruchomienia (— trwałej pamięci jest utracona). <li>`Redeploy`: Maszyna wirtualna jest zaplanowane na przeniesienie do innego węzła (efemeryczne dyski zostaną utracone). <li>`Preempt`: Trwa usuwanie maszyny wirtualnej o niskim priorytecie (efemeryczne dyski zostaną utracone).|
 | ResourceType | Typ zasobu, który ma wpływ na to zdarzenie. <br><br> Wartości: <ul><li>`VirtualMachine`|
 | Zasoby| Lista zasobów, który wpływa na to zdarzenie. Listy może zawierać maszyny z co najwyżej jeden [domena aktualizacji](manage-availability.md), ale nie może nie zawierać wszystkich maszyn w UD. <br><br> Przykład: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | Obiektu EventStatus | Stan tego zdarzenia. <br><br> Wartości: <ul><li>`Scheduled`: To zdarzenie jest zaplanowane do uruchomienia po upływie czasu określonego w `NotBefore` właściwości.<li>`Started`: To zdarzenie zostało rozpoczęte.</ul> Nie `Completed` lub podobne stan nigdy nie są dostarczane. Zdarzenie nie jest zwracana, po zakończeniu zdarzenia.

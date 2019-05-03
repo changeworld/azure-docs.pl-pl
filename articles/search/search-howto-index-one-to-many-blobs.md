@@ -1,7 +1,7 @@
 ---
 title: Obiekty BLOB indeksu zawierające wiele wyszukiwania indeksować dokumenty z indeksatora obiektów Blob platformy Azure w celu wyszukiwania pełnotekstowego — usługa Azure Search
 description: Można przeszukiwać w obiektach blob platformy Azure w przypadku zawartości tekstowej za pomocą indeksatora obiektów Blob platformy Azure Search. Każdy obiekt blob może zawierać jeden lub więcej dokumentów indeksu usługi Azure Search.
-ms.date: 02/12/2019
+ms.date: 05/02/2019
 author: arv100kri
 manager: briansmi
 ms.author: arjagann
@@ -10,21 +10,18 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seofeb2018
-ms.openlocfilehash: e95eff015340659b642dff800a03f615e22c1577
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 628ced069c9d32c6e874c2e36a1e3b752c476003
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60871203"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024648"
 ---
 # <a name="indexing-blobs-producing-multiple-search-documents"></a>Indeksowanie obiektów blob, tworzyć wiele dokumentów wyszukiwania plików
 Domyślnie indeksatora obiektów blob będzie traktowany zawartość obiektu blob jako wyszukiwania pojedynczego dokumentu. Niektóre **parsingMode** wartości obsługi scenariuszy, w którym poszczególnych obiektów blob może spowodować wiele dokumentów wyszukiwania. Różne rodzaje **parsingMode** umożliwiające indeksator do wyodrębniania więcej niż jednego wyszukiwania dokumentów z obiektu blob są:
 + `delimitedText`
 + `jsonArray`
 + `jsonLines`
-
-> [!IMPORTANT]
-> `jsonLines` Tryb analizy w publicznej wersji zapoznawczej i nie powinny być używane w środowiskach produkcyjnych. Aby uzyskać więcej informacji, zobacz [REST api-version = 2017-11-11-Preview](search-api-2017-11-11-preview.md). 
 
 ## <a name="one-to-many-document-key"></a>Klucz dokumentu jeden do wielu
 Każdy dokument, który pojawia się w indeksie usługi Azure Search jest unikatowo identyfikowane za pomocą klucza dokumentu. 
@@ -106,7 +103,7 @@ Jeśli chcesz skonfigurować mapowanie pola jawne, upewnij się, że _sourceFiel
 + [Indeksatory w usłudze Azure Search](search-indexer-overview.md)
 + [Indeksowanie usługi Azure Blob Storage z usługą Azure Search](search-howto-index-json-blobs.md)
 + [Indeksowanie obiektów blob CSV za pomocą indeksatora obiektów blob usługi Azure Search](search-howto-index-csv-blobs.md)
-+ [Indeksowanie obiektów blob JSON za pomocą indeksatora obiektów blob usługi Azure Search](search-howto-index-csv-blobs.md)
++ [Indeksowanie obiektów blob JSON za pomocą indeksatora obiektów blob usługi Azure Search](search-howto-index-json-blobs.md)
 
 ## <a name="NextSteps"></a>Następne kroki
 * Aby dowiedzieć się więcej o usłudze Azure Search, zobacz [stronę usługi wyszukiwania](https://azure.microsoft.com/services/search/).

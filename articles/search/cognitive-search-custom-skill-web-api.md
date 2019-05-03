@@ -8,19 +8,19 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 01/31/2019
+ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seojan2018
-ms.openlocfilehash: 1fcb12fc2cfae98376210e1924a670cce444f4f2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e5f7ee172563a81d45e3a35da2cfc7e8731de48d
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61343345"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023854"
 ---
 # <a name="custom-web-api-skill"></a>Niestandardowy interfejs API sieci Web umiejętności
 
-**Niestandardowego interfejsu API sieci Web** umiejętności pozwala rozszerzyć usłudze wyszukiwania poznawczego przez wywołanie metody do punktu końcowego interfejsu API sieci web, zapewniając operacjach niestandardowych. Podobnie jak wbudowane umiejętności **interfejsu API sieci Web usługi Custom** umiejętności zawiera dane wejściowe i wyjściowe. W zależności od danych wejściowych, internetowy interfejs API odbiera ładunek w formacie JSON, po uruchomieniu indeksatora i zwraca ładunek JSON jako odpowiedź, wraz z kodem stanu Powodzenie. Odpowiedź jest powinny mieć określone przez Twoje umiejętności niestandardowe dane wyjściowe. Inne odpowiedzi jest uznawany za błąd i wzbogacenia nie są wykonywane.
+**Niestandardowego interfejsu API sieci Web** umiejętności pozwala rozszerzyć usłudze wyszukiwania poznawczego wywoływania interfejsu API sieci Web punktu końcowego, zapewniając operacjach niestandardowych. Podobnie jak wbudowane umiejętności **interfejsu API sieci Web usługi Custom** umiejętności zawiera dane wejściowe i wyjściowe. W zależności od danych wejściowych, internetowy interfejs API odbiera ładunek w formacie JSON, po uruchomieniu indeksatora i zwraca ładunek JSON jako odpowiedź, wraz z kodem stanu Powodzenie. Odpowiedź jest powinny mieć określone przez Twoje umiejętności niestandardowe dane wyjściowe. Inne odpowiedzi jest uznawany za błąd i wzbogacenia nie są wykonywane.
 
 Struktura ładunków JSON to dokładniejszym opisem zawartym w dół w tym dokumencie.
 
@@ -38,7 +38,7 @@ Parametrów jest rozróżniana wielkość liter.
 
 | Nazwa parametru     | Opis |
 |--------------------|-------------|
-| identyfikator URI | Identyfikator URI internetowego interfejsu api, do którego _JSON_ ładunku będą wysyłane. Tylko **https** schemat identyfikatora URI jest dozwolone. |
+| identyfikator URI | Identyfikator URI interfejsu API sieci Web, do którego _JSON_ ładunku będą wysyłane. Tylko **https** schemat identyfikatora URI jest dozwolone. |
 | HttpMethod | Metoda do użycia podczas wysyłania ładunku. Dozwolone metody to `PUT` lub `POST` |
 | httpHeaders | Kolekcja par klucz wartość, gdzie klucze reprezentują nagłówek nazwy i wartości reprezentują wartości nagłówka, które będą wysyłane do internetowego interfejsu API wraz z ładunku. Następujące nagłówki mają zakaz znajdujące się w tej kolekcji: `Accept`, `Accept-Charset`, `Accept-Encoding`, `Content-Length`, `Content-Type`, `Cookie`, `Host`, `TE`, `Upgrade`, `Via` |
 | timeout | (Opcjonalnie) Jeśli zostanie określony, wskazuje limit czasu wywołania interfejsu API klienta http. Musi być sformatowany jako wartość XSD "dayTimeDuration" (ograniczony podzestaw [czas trwania ISO 8601](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) wartości). Na przykład `PT60S` 60 sekund. Jeśli nie zostanie wybrany zestaw wartości domyślnej równej 30 sekund. Limit czasu można ustawić maksymalnie 90 sekund i co najmniej 1 sekundę. |
@@ -139,10 +139,10 @@ Zawsze będzie przestrzegany tych warunków ograniczających:
 
 ## <a name="sample-output-json-structure"></a>Przykładowe dane wyjściowe JSON struktury
 
-"Wyjście" odnosi się do odpowiedź zwrócona z internetowego interfejsu api. Internetowy interfejs api powinien zwrócić tylko _JSON_ ładunek (zweryfikowane, analizując `Content-Type` nagłówek odpowiedzi) i powinny spełniać następujące ograniczenia:
+"Wyjście" odnosi się do odpowiedź zwrócona z internetowego interfejsu API. Internetowy interfejs API powinien zwrócić tylko _JSON_ ładunek (zweryfikowane, analizując `Content-Type` nagłówek odpowiedzi) i powinny spełniać następujące ograniczenia:
 
 * Powinna istnieć jednostkę najwyższego poziomu o nazwie `values` powinien być Tablica obiektów.
-* Liczba obiektów w tablicy powinna być taka sama jak liczba obiektów wysyłanych w sieci Web interfejsu api.
+* Liczba obiektów w tablicy powinna być taka sama jak liczba obiektów wysyłanych do interfejsu API sieci Web.
 * Każdy obiekt powinien mieć:
    * A `recordId` właściwości
    * A `data` właściwość, która jest obiektem, w których pola są wzbogacenia dopasowywania "nazwy" w `output` i których wartość jest uważana za wzbogacanie.

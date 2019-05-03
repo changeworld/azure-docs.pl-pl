@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 04/14/2019
+ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 09695f764ff71b274e125e90835f5314eb25c980
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bad64f439d45581f8f4b55ea1ac849db1e27cb76
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60344550"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024580"
 ---
 # <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Dołącz zasób usług Cognitive Services za pomocą zestawu umiejętności w usłudze Azure Search 
 
@@ -28,8 +28,7 @@ Jeśli Potok składa się z umiejętności niezwiązanych ze sobą na interfejsy
 > [!NOTE]
 > Ponieważ zakres jest rozwiniesz przez zwiększenie częstotliwości przetwarzania, dodając więcej dokumentów lub dodanie więcej algorytmów sztucznej Inteligencji, należy dołączyć płatnych zasobu usług Cognitive Services. Opłaty są naliczane podczas wywoływania interfejsów API w usługach Cognitive Services i wyodrębniania obrazu jako część etap łamania dokumentów w usłudze Azure Search. Opłaty nie będą naliczane do wyodrębniania tekstu z dokumentów.
 >
-> Wykonywanie [wbudowanych umiejętności cognitive](cognitive-search-predefined-skills.md) wykonywania będzie naliczana opłata w [usług Cognitive Services, płatności — jako — można przejść cena](https://azure.microsoft.com/pricing/details/cognitive-services), w taki sam szybkości tak, jakby zadanie było wykonywane bezpośrednio. Obraz wyodrębniania jest opłata za usługę Azure Search, odzwierciedlone na [usługi Azure Search stronę z cennikiem](https://go.microsoft.com/fwlink/?linkid=2042400).
-
+> Wykonanie wbudowanego umiejętności podlega opłacie za istniejącą [usług Cognitive Services, płatności — jako — można przejść cena](https://azure.microsoft.com/pricing/details/cognitive-services/). Cennik wyodrębniania obraz został opisany na [usługi Azure Search stronę z cennikiem](https://go.microsoft.com/fwlink/?linkid=2042400).
 
 ## <a name="use-free-resources"></a>Bezpłatne zasoby
 
@@ -100,7 +99,7 @@ Podczas programowego definiowania zestawu umiejętności, Dodaj `cognitiveServic
 Ten wzorzec można znaleźć w poniższym przykładzie. Zwróć uwagę, w sekcji cognitiveServices w dolnej części definicji
 
 ```http
-PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2017-11-11-Preview
+PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2019-05-06
 api-key: [admin key]
 Content-Type: application/json
 ```
@@ -110,7 +109,7 @@ Content-Type: application/json
     "skills": 
     [
       {
-        "@odata.type": "#Microsoft.Skills.Text.NamedEntityRecognitionSkill",
+        "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
         "categories": [ "Organization" ],
         "defaultLanguageCode": "en",
         "inputs": [
@@ -142,7 +141,7 @@ Aby oszacować koszty związane z wyszukiwania kognitywnego indeksowania, rozpoc
 + Jeden obraz na strony (6000 obrazy)
 + 3000 znaków na stronie
 
-Przyjęto założenie, potok składający się z dokumentu łamania każdego pliku PDF z wyodrębniania tekstowych i obrazów, optyczne rozpoznawanie znaków (OCR) obrazów, a o nazwie rozpoznawania jednostek w organizacji. 
+Przyjęto założenie, potok składający się z łamania dokumentów każdego pliku PDF z wyodrębniania tekstowych i obrazów, optyczne rozpoznawanie znaków (OCR), obrazów i rozpoznawania jednostek w organizacji. 
 
 W tym ćwiczeniu używamy najbardziej kosztowne cenę transakcji. Faktyczne koszty może być niższa, ze względu na ceny z rabatem progresywnym. Zobacz [cennik usług Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services).
 

@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 21c75c0f377f55614e2c7fa0bb27628cf598e3e7
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 43c072cb72935a80da0e48e6b8343f38ee08876b
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924586"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023956"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Jak wdrożyć nawigację aspektową w usłudze Azure Search
 Nawigacja aspektowa jest mechanizm filtrowania, który zapewnia kierunkowane samodzielnie przez użytkowników Przechodzenie do szczegółów nawigacji w aplikacji do wyszukiwania. Termin "nawigacji aspektowej" mogą być nieznane, ale prawdopodobnie użyto go przed. Jak pokazano na poniższym przykładzie, nawigacji aspektowej ma więcej niż kategorii, używana do filtrowania wyników.
 
  ![Usługa Azure Search zadania portalu w wersji demonstracyjnej][1]
 
-Nawigacja aspektowa jest punktem wejścia alternatywne do wyszukiwania. Oferuje ona jest wygodną alternatywą dla ręcznego wpisywania wyrażeń złożonych wyszukiwań. Aspektami może pomóc Ci znaleźć, czego szukasz, przy jednoczesnym zapewnieniu, że nie otrzymasz wyników, zerowego. Jako deweloper aspektami umożliwiają udostępnianie najbardziej przydatne kryteria wyszukiwania do nawigowania między korpus usługi wyszukiwania. W aplikacjach detalicznego handlu online nawigacji aspektowej, często bazuje na marki, działów (Kącik buty), rozmiar, ceny, popularność i oceny. 
+Nawigacja aspektowa jest punktem wejścia alternatywne do wyszukiwania. Oferuje ona jest wygodną alternatywą dla ręcznego wpisywania wyrażeń złożonych wyszukiwań. Aspektami może pomóc Ci znaleźć, czego szukasz, przy jednoczesnym zapewnieniu, że nie otrzymasz wyników, zerowego. Jako deweloper aspektami umożliwiają udostępnianie najbardziej przydatne kryteria wyszukiwania do nawigowania między indeksu wyszukiwania. W aplikacjach detalicznego handlu online nawigacji aspektowej, często bazuje na marki, działów (Kącik buty), rozmiar, ceny, popularność i oceny. 
 
 Implementowanie nawigacji aspektowej różni się w technologiach wyszukiwania. W usłudze Azure Search nawigacji aspektowej bazuje na czas wykonywania zapytania przy użyciu pól, które uprzednio przypisane w schemacie.
 

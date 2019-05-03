@@ -11,25 +11,51 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 57fc7e699d88dbe777750e3acdb7f96794b66fc0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9871e0106ee6caf11c5a1e24459fbd2044f5f3d7
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61460290"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65021435"
 ---
 # <a name="speech-synthesis-markup-language-ssml"></a>Język znaczników syntezy mowy (SSML)
 
-Mowy syntezy Markup Language (SSML) to język znaczników oparty na formacie XML, który umożliwia kontrolowanie Wymowa i *prosody* z zamiany tekstu na mowę. Prosody odwołuje się do rytm wydawania i wysokość mowy — muzyka, jeśli chcesz. Możesz fonetycznie Podaj słowa, zapewniają wskazówki do interpretacji liczb, wstawianie wstrzymuje, wysokość formantu, wolumin i szybkość i więcej. Aby uzyskać więcej informacji, zobacz [mowy syntezy Markup Language (SSML) w wersji 1.0](https://www.w3.org/TR/2009/REC-speech-synthesis-20090303/).
+Mowy syntezy Markup Language (SSML) to język znaczników oparty na formacie XML, który umożliwia kontrolowanie Wymowa i *prosody* z zamiany tekstu na mowę. Prosody odwołuje się do rytm wydawania i wysokość mowy — muzyka, jeśli chcesz. Możesz fonetycznie Podaj słowa, zapewniają wskazówki do interpretacji liczb, wstawianie wstrzymuje, wysokość formantu, wolumin i szybkość i więcej. Aby uzyskać więcej informacji, zobacz [mowy syntezy Markup Language (SSML) w wersji 1.0](https://www.w3.org/TR/2009/REC-speech-synthesis-20090303/). 
 
 Aby uzyskać pełną listę obsługiwanych języków, ustawień regionalnych i głosów (neuronowych i standardowa), zobacz [języki](language-support.md#text-to-speech).
 
 Poniższe sekcje zawierają przykłady typowych rozpoznawania mowy, syntezy zadania.
 
+## <a name="adjust-speaking-style-for-neural-voices"></a>Dostosowanie stylu wypowiedzi dla neuronowych głosów
+
+SSML można użyć, aby dostosować styl wypowiedzi, gdy używany jest jeden neuronowych głosów.
+
+Domyślnie usługa zamiany tekstu na mowę syntetyzuje tekst neutralny stylu. Głosy neuronowych rozszerzyć SSML z `<mstts:express-as>` element, który przekształca tekst na syntezatora mowy w różnych wypowiedzi style. Obecnie tagi style są obsługiwane tylko w tych głosów:
+
+* `en-US-JessaNeural` 
+* `zh-CN-XiaoxiaoNeural`.
+
+Zmiany wprowadzone w stylu wypowiedzi można zastosować na poziomie pojedynczych zdań. Style zależą od głosu. Nieobsługiwany typ stylu usługa zwróci syntezatora mowy jako domyślnego stylu neutralne.
+
+| Połączenia głosowe | Styl | Opis | 
+|-----------|-----------------|----------|
+| `en-US-JessaNeural` | type=`cheerful` | Wyraża rozpoznawania emocji, pozytywny i wszystkiego |
+| | type=`empathy` | Wyraża poczucie opiekowanie i opis |
+| `zh-CN-XiaoxiaoNeural` | type=`newscast` | Określa sygnał formalne podobne do transmisji wiadomości |
+| | type=`sentiment ` | Wywołuje touching wiadomości lub wątku |
+
+```xml
+<speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="en-US">
+<voice name='en-US-JessaNeural'>
+<mstts:express-as type="cheerful"> 
+    That'd be just amazing! 
+</mstts:express-as></voice></speak>
+```
+
 ## <a name="add-a-break"></a>Dodaj podział
 ```xml
 <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'>
-<voice  name='Microsoft Server Speech Text to Speech Voice (en-US, Jessa24kRUS)'>
+<voice  name='en-US-Jessa24kRUS'>
     Welcome to Microsoft Cognitive Services <break time="100ms" /> Text-to-Speech API.
 </voice> </speak>
 ```
@@ -40,7 +66,7 @@ Wypowiedzi współczynnik można zastosować do standardowego głosów na poziom
 
 ```xml
 <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'>
-<voice  name='Microsoft Server Speech Text to Speech Voice (en-US, Guy24kRUS)'>
+<voice  name='en-US-Guy24kRUS'>
 <prosody rate="+30.00%">
     Welcome to Microsoft Cognitive Services Text-to-Speech API.
 </prosody></voice> </speak>
@@ -49,7 +75,7 @@ Wypowiedzi współczynnik można zastosować do standardowego głosów na poziom
 ## <a name="pronunciation"></a>Wymowa
 ```xml
 <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'>
-<voice  name='Microsoft Server Speech Text to Speech Voice (en-US, Jessa24kRUS)'>
+<voice  name='en-US-Jessa24kRUS'>
     <phoneme alphabet="ipa" ph="t&#x259;mei&#x325;&#x27E;ou&#x325;"> tomato </phoneme>
 </voice> </speak>
 ```
@@ -60,7 +86,7 @@ Można zastosować zmian woluminu do standardowego głosów na poziomie zdania l
 
 ```xml
 <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'>
-<voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'>
+<voice  name='en-US-Jessa24kRUS'>
 <prosody volume="+20.00%">
     Welcome to Microsoft Cognitive Services Text-to-Speech API.
 </prosody></voice> </speak>
@@ -72,7 +98,7 @@ Można zastosować zmian pomysłu do standardowego głosów na poziomie zdania l
 
 ```xml
 <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'>
-    <voice  name='Microsoft Server Speech Text to Speech Voice (en-US, Guy24kRUS)'>
+    <voice  name='en-US-Guy24kRUS'>
     Welcome to <prosody pitch="high">Microsoft Cognitive Services Text-to-Speech API.</prosody>
 </voice> </speak>
 ```
@@ -84,7 +110,7 @@ Można zastosować zmian pomysłu do standardowego głosów na poziomie zdania l
 
 ```xml
 <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'>
-<voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'>
+<voice  name='en-US-Jessa24kRUS'>
 <prosody contour="(80%,+20%) (90%,+30%)" >
     Good morning.
 </prosody></voice> </speak>
@@ -93,10 +119,10 @@ Można zastosować zmian pomysłu do standardowego głosów na poziomie zdania l
 ## <a name="use-multiple-voices"></a>Użyj wielu głosów
 ```xml
 <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'>
-<voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'>
+<voice  name='en-US-Jessa24kRUS'>
     Good morning!
 </voice>
-<voice  name='Microsoft Server Speech Text to Speech Voice (en-US, Guy24kRUS)'>
+<voice  name='en-US-Guy24kRUS'>
     Good morning to you too Jessa!
 </voice> </speak>
 ```

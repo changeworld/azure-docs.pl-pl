@@ -1,22 +1,22 @@
 ---
-title: 'Szybki start: Tworzenie indeksu bazujących na sztucznej Inteligencji w witrynie Azure portal — usługa Azure Search'
+title: 'Szybki start: Tworzenie indeksu wzbogacony sztucznej Inteligencji w witrynie Azure portal — usługa Azure Search'
 description: Wyodrębnianie danych, języka naturalnego oraz obrazu, przetwarzanie umiejętności w portalu indeksowania usługi Azure Search przy użyciu witryny Azure portal i przykładowe dane.
 manager: cgronlun
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 04/08/2019
+ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 161d3ff3e00f7e9e979527533f6b8ac365c41490
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cb029530d2c6cdac82fd0d257e10717386eebf0e
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61345473"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65022108"
 ---
-# <a name="quickstart-create-an-ai-indexing-pipeline-using-cognitive-skills-and-sample-data"></a>Szybki start: Tworzenie potoku indeksowania sztucznej Inteligencji przy użyciu umiejętności poznawcze i przykładowych danych
+# <a name="quickstart-create-an-ai-indexing-pipeline-using-cognitive-skills-in-azure-search"></a>Szybki start: Tworzenie potoku indeksowania sztucznej Inteligencji w usłudze Azure Search przy użyciu umiejętności kognitywnych
 
 Usługa Azure Search integruje się z [usług Cognitive Services](https://azure.microsoft.com/services/cognitive-services/), dodawanie wyodrębniania zawartości, przetwarzanie języka naturalnego (NLP) i umiejętności przetwarzanie obrazu do potoku indeksowania usługi Azure Search, co zawartość unsearchable lub bez struktury, więcej można wyszukiwać. 
 
@@ -30,12 +30,12 @@ W tym przewodniku Szybki start utworzysz swój pierwszy potok wzbogacania w witr
 > * Uruchom kreatora (umiejętność rozpoznawania jednostek wykrywa osoby, lokalizacje i organizacje).
 > * Użyj [**Eksploratora wyszukiwania**](search-explorer.md), aby wykonywać zapytania wyszukujące wzbogacone dane
 
-Ten przewodnik Szybki Start jest uruchamiany bezpłatnej usługi, ale liczba bezpłatnych transakcji jest ograniczona do 20 dokumentów na dzień. Jeśli chcesz uruchomić ten przewodnik Szybki Start więcej niż jeden raz w ciągu tego samego dnia, należy użyć mniejszy plik ustawione, tak więc mieści się w dodatkowych uruchomień.
+Ten przewodnik Szybki Start jest uruchamiany bezpłatnej usługi, ale liczba bezpłatnych transakcji jest ograniczona do 20 dokumentów na dzień. Jeśli chcesz uruchomić ten przewodnik Szybki Start, więcej niż raz dziennie, przy użyciu pliku mniejszy ustawione, tak więc mieści się w dodatkowych uruchomień.
 
 > [!NOTE]
-> Ponieważ zakres jest rozwiniesz przez zwiększenie częstotliwości przetwarzania, dodając więcej dokumentów lub dodanie więcej algorytmów sztucznej Inteligencji, należy dołączyć płatnych zasobu usług Cognitive Services. Opłaty są naliczane podczas wywoływania interfejsów API w usługach Cognitive Services i wyodrębniania obrazu jako część etap łamania dokumentów w usłudze Azure Search. Opłaty nie będą naliczane do wyodrębniania tekstu z dokumentów.
+> Możesz rozwiń zakres, zwiększając częstotliwości przetwarzania, dodając więcej dokumentów lub dodanie więcej algorytmów sztucznej Inteligencji, konieczne będzie [dołączyć płatnych zasobu usług Cognitive Services](cognitive-search-attach-cognitive-services.md). Opłaty są naliczane podczas wywoływania interfejsów API w usługach Cognitive Services i wyodrębniania obrazu jako część etap łamania dokumentów w usłudze Azure Search. Opłaty nie będą naliczane do wyodrębniania tekstu z dokumentów.
 >
-> Wykonanie wbudowanego umiejętności podlega opłacie za istniejącą [usług Cognitive Services, płatności — jako — można przejść cena](https://azure.microsoft.com/pricing/details/cognitive-services/) . Cennik wyodrębniania obrazu jest rozliczana według ceny za wersję zapoznawczą, zgodnie z opisem na [usługi Azure Search stronę z cennikiem](https://go.microsoft.com/fwlink/?linkid=2042400). Dowiedz się [więcej](cognitive-search-attach-cognitive-services.md).
+> Wykonanie wbudowanego umiejętności podlega opłacie za istniejącą [usług Cognitive Services, płatności — jako — można przejść cena](https://azure.microsoft.com/pricing/details/cognitive-services/). Cennik wyodrębniania obraz został opisany na [usługi Azure Search stronę z cennikiem](https://go.microsoft.com/fwlink/?linkid=2042400).
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 

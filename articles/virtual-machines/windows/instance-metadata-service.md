@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 9097fef88a2c3c667416761c341a2e320c790121
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: f892ded46f7124237fd80fbe1e3f5e866c12f0d5
+ms.sourcegitcommit: abeefca6cd5ca01c3e0b281832212aceff08bf3e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919053"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "64993067"
 ---
 # <a name="azure-instance-metadata-service"></a>Usługa Azure Instance Metadata service
 
@@ -640,6 +640,8 @@ openssl x509 -noout -issuer -in intermediate.pem
 openssl verify -verbose -CAfile /etc/ssl/certs/Baltimore_CyberTrust_Root.pem -untrusted intermediate.pem signer.pem
 ```
 
+W przypadkach, w którym pośredniego certyfikatu nie można pobrać ze względu na ograniczenia sieci podczas sprawdzania poprawności można przypinać pośredniego certyfikatu. Jednak Azure spowoduje przerzucenie za pośrednictwem certyfikatów zgodnie z standardową praktyką infrastruktury kluczy publicznych. Należy zaktualizować sytuacji najazdu musi przypiętych certyfikatów. Zawsze, gdy planowane jest wprowadzenie zmian, aby zaktualizować certyfikat pośredniego, blog platformy Azure zostanie zaktualizowana i klientów platformy Azure zostanie powiadomiony. Certyfikaty pośrednie można znaleźć [tutaj](https://www.microsoft.com/pki/mscorp/cps/default.htm). Certyfikaty pośrednie dla poszczególnych regionów może być inny.
+
 ### <a name="failover-clustering-in-windows-server"></a>Klastrze trybu failover w systemie Windows Server
 
 W przypadku niektórych scenariuszy, podczas wykonywania zapytań dotyczących Instance Metadata Service przy użyciu klastra trybu Failover jest niezbędne dodać trasę do tabeli routingu.
@@ -686,13 +688,15 @@ route add 169.254.169.254/32 10.0.1.10 metric 1 -p
 ```
 
 ### <a name="custom-data"></a>Dane niestandardowe
-Instance Metadata Service umożliwia dla maszyny Wirtualnej, aby mieć dostęp do swoich danych niestandardowych. Dane binarne muszą być mniej niż 64KB i jest dostarczany do maszyny Wirtualnej w postaci zakodowane w formacie base64. Aby uzyskać szczegółowe informacje dotyczące sposobu tworzenia maszyny Wirtualnej przy użyciu niestandardowych danych, zobacz [wdrożyć maszynę wirtualną za pomocą funkcji CustomData](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-customdata).
+Instance Metadata Service umożliwia dla maszyny Wirtualnej, aby mieć dostęp do swoich danych niestandardowych. Dane binarne muszą być mniej niż 64 KB i jest dostarczany do maszyny Wirtualnej w postaci zakodowane w formacie base64. Aby uzyskać szczegółowe informacje dotyczące sposobu tworzenia maszyny Wirtualnej przy użyciu niestandardowych danych, zobacz [wdrożyć maszynę wirtualną za pomocą funkcji CustomData](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-customdata).
+
+Niestandardowe dane są dostępne dla wszystkich procesów uruchomionych w maszynie Wirtualnej. Zaleca się, że klienci nie Wstawianie tajnych informacji danych niestandardowych.
 
 #### <a name="retrieving-custom-data-in-virtual-machine"></a>Trwa pobieranie danych niestandardowych na maszynie wirtualnej
 Instance Metadata Service udostępnia danych niestandardowych do maszyny Wirtualnej w postaci zakodowane w formacie base64. Poniższy przykład Dekoduje ciąg zakodowany w formacie base64.
 
 > [!NOTE]
-> Niestandardowe dane w tym przykładzie jest interpretowany jako ciąg znaków ASCII o treści "Dane super secret.".
+> Niestandardowe dane w tym przykładzie jest interpretowany jako ciąg ASCII, który odczytuje "Moje niestandardowe dane.".
 
 **Żądanie**
 
@@ -703,7 +707,7 @@ curl -H "Metadata:true" "http://169.254.169.254/metadata/instance/compute/custom
 **Odpowiedź**
 
 ```text
-My super secret data.
+My custom data.
 ```
 
 ### <a name="examples-of-calling-metadata-service-using-different-languages-inside-the-vm"></a>Przykłady wywoływania usługi metadanych przy użyciu różnych języków, wewnątrz maszyny Wirtualnej 

@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 02/14/2019
+ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 7a4423449931b74afa15ca238c611f54b071402f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dc208f3231882a0726733c897e70557c657cddf3
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61283845"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024524"
 ---
 # <a name="how-to-work-with-search-results-in-azure-search"></a>Jak pracować z usługą wyszukiwania wyników w usłudze Azure Search
 Ten artykuł zawiera wskazówki dotyczące implementowania standardowe elementy strony wyników wyszukiwania, takie jak całkowitej liczby, pobierania dokumentu, porządek sortowania i nawigacji. Określono opcje związanych ze stronami, które przyczyniają się do danych lub informacji do wyników wyszukiwania za pomocą [wyszukiwania dokumentów](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) żądań wysyłanych do usługi Azure Search. 

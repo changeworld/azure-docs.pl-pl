@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 147f67f40a060f3e274fe1f3fa368ebfd01711b6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4b996effbc03bd1f7c446965b0aa5fb6fa2d0175
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61282165"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024390"
 ---
 # <a name="rest-tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-search"></a>Samouczek dotyczący architektury REST: Indeksowanie i wyszukiwanie częściowo ustrukturyzowanych danych (obiektów blob JSON) w usłudze Azure Search
 
@@ -27,9 +27,6 @@ W tym samouczku [interfejsów API REST usługi Azure Search](https://docs.micros
 > * Tworzenie indeksu usługi Azure Search, aby zawierała zawartość do przeszukiwania
 > * Konfigurowanie i uruchamianie indeksatora do odczytu kontenera i Wyodrębnij zawartość do przeszukiwania z magazynu obiektów blob platformy Azure
 > * Przeszukać utworzony indeks
-
-> [!NOTE]
-> Ten samouczek opiera się na obsłudze tablic JSON, które występują obecnie w usłudze Azure Search w wersji zapoznawczej. Funkcja nie jest dostępna w portalu. Z tego powodu korzystamy z interfejsu API REST w wersji zapoznawczej, który zawiera nie tylko tę funkcję, ale również narzędzie klienta REST przeznaczone do wywoływania interfejsu API.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -81,7 +78,7 @@ Metoda żądania dla każdego wywołania w tym samouczku jest **WPIS**. Klucze n
 
 Używamy narzędzia Postman do wykonania trzech wywołań interfejsu API do usługi wyszukiwania w celu utworzenia źródła danych, indeksu i indeksatora. Źródło danych zawiera wskaźnik do konta magazynu i danych JSON. Usługa wyszukiwania nawiązuje połączenie podczas ładowania danych.
 
-Ciąg zapytania musi zawierać wersję zapoznawczą interfejsu API (takie jak **parametru api-version = 2017-11-11-Preview**) i każde wywołanie powinno zwrócić **201 utworzono**. Ogólnie dostępna wersja interfejsu API nie ma jeszcze możliwości obsługi formatu json jako jsonArray. Obecnie tylko wersja zapoznawcza interfejsu API została zaopatrzona w taką opcję.
+Zapytanie ciągów należy określić wersji interfejsu api i każde wywołanie powinno zwrócić **201 utworzono**. Jest ogólnie dostępna wersja interfejsu api dla używanie tablic JSON `2019-05-06`.
 
 Wykonaj trzy następujące wywołania interfejsu API z poziomu klienta REST.
 
@@ -89,7 +86,7 @@ Wykonaj trzy następujące wywołania interfejsu API z poziomu klienta REST.
 
 [Danych źródłowych interfejsu API tworzenia](https://docs.microsoft.com/rest/api/searchservice/create-data-source)tworzy obiekt usługi Azure Search, który określa, jakie dane mają być indeksowane.
 
-Punkt końcowy tego wywołania to `https://[service name].search.windows.net/datasources?api-version=2016-09-01-Preview`. Zastąp element `[service name]` nazwą usługi wyszukiwania. 
+Punkt końcowy tego wywołania to `https://[service name].search.windows.net/datasources?api-version=2019-05-06`. Zastąp element `[service name]` nazwą usługi wyszukiwania. 
 
 Dla tego wywołania treść żądania musi zawierać nazwę konta magazynu, klucz konta magazynu i nazwa kontenera obiektów blob. Klucz konta magazynu można znaleźć w witrynie Azure Portal w obszarze **Klucze dostępu** konta magazynu. Lokalizację pokazano na poniższej ilustracji:
 
@@ -132,7 +129,7 @@ Odpowiedź powinna wyglądać następująco:
     
 Drugie wywołanie ma [interfejsu API tworzenia indeksu](https://docs.microsoft.com/rest/api/searchservice/create-data-source), tworzenie indeksu usługi Azure Search, który przechowuje wszystkie dane z możliwością wyszukiwania. Indeks określa wszystkie parametry i ich atrybuty.
 
-Adres URL dla tego wywołania wygląda następująco: `https://[service name].search.windows.net/indexes?api-version=2016-09-01-Preview`. Zastąp element `[service name]` nazwą usługi wyszukiwania.
+Adres URL dla tego wywołania wygląda następująco: `https://[service name].search.windows.net/indexes?api-version=2019-05-06`. Zastąp element `[service name]` nazwą usługi wyszukiwania.
 
 Najpierw zastąp adres URL. Następnie skopiuj i wklej następujący kod do treści wywołania i uruchom zapytanie.
 
@@ -222,7 +219,7 @@ Odpowiedź powinna wyglądać następująco:
 
 Indeksator łączy źródło danych, importuje dane do docelowym indeksem wyszukiwania i opcjonalnie zapewnia harmonogram w celu zautomatyzowania odświeżania danych. Interfejs API REST jest [tworzenie indeksatora](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
 
-Adres URL dla tego wywołania wygląda następująco: `https://[service name].search.windows.net/indexers?api-version=2016-09-01-Preview`. Zastąp element `[service name]` nazwą usługi wyszukiwania.
+Adres URL dla tego wywołania wygląda następująco: `https://[service name].search.windows.net/indexers?api-version=2019-05-06`. Zastąp element `[service name]` nazwą usługi wyszukiwania.
 
 Najpierw zastąp adres URL. Następnie skopiuj i wklej następujący kod do treści wywołania i wysłać żądanie. Żądanie jest przetwarzane od razu. Gdy odpowiedź wróci będziesz mieć indeksu pełnotekstowego wyszukiwania.
 
@@ -267,7 +264,7 @@ Możesz rozpocząć wyszukiwanie zaraz po załadowaniu pierwszy dokument. W tym 
 
 W witrynie Azure portal Otwórz usługę wyszukiwania **Przegląd** strony, Znajdź indeks został utworzony w **indeksy** listy.
 
-Pamiętaj wybrać indeks, który został utworzony. Wersja interfejsu API może być w wersji zapoznawczej lub ogólnie dostępnej wersji. Jedynym wymaganiem (wersja zapoznawcza) był dla indeksowania tablic JSON.
+Pamiętaj wybrać indeks, który został utworzony. 
 
   ![Wyszukiwanie bez struktury](media/search-semi-structured-data/indexespane.png)
 

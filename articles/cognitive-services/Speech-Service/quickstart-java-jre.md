@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 2/20/2019
+ms.date: 05/02/2019
 ms.author: fmegen
-ms.openlocfilehash: fe565d63e72b5ec2798dde03ba4f4bd9ff4f48a7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 771168a13d7192581aae2ff4128e979b6924484a
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60622710"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020675"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-java"></a>Szybki start: rozpoznawanie mowy przy użyciu zestawu Speech SDK dla platformy Java
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-W tym artykule utworzysz aplikację konsolową w języku Java przy użyciu [zestawu Speech SDK](speech-sdk.md). Transkrypcja mowy na tekst będzie się odbywać w czasie rzeczywistym z mikrofonu komputera. Aplikacji został utworzony za pomocą pakietu Maven zestaw SDK rozpoznawania mowy i środowisko Eclipse IDE Java (v4.8) na Windows 64-bitowym, 64-bitowym systemem Ubuntu Linux 16.04 / 18.04 lub w systemie macOS 10.13 lub nowszej. Działa ona w 64-bitowym środowisku uruchomieniowym Java 8 języka Java (JRE).
+W tym artykule utworzysz aplikację konsolową w języku Java przy użyciu [zestawu Speech SDK](speech-sdk.md). Transkrypcja mowy na tekst będzie się odbywać w czasie rzeczywistym z mikrofonu komputera. Aplikacji został utworzony za pomocą pakietu Maven zestaw SDK rozpoznawania mowy i środowisko Eclipse IDE Java (v4.8) na Windows 64-bitowym, 64-bitowych Linux (Ubuntu 16.04 Ubuntu 18.04, Debian 9), lub w systemie macOS 10.13 lub nowszej. Działa ona w 64-bitowym środowisku uruchomieniowym Java 8 języka Java (JRE).
 
 > [!NOTE]
 > Aby uzyskać informacje dotyczące zestawu Speech Devices SDK oraz urządzenia Roobo, zobacz [Speech Devices SDK](speech-devices-sdk.md).
@@ -30,21 +30,29 @@ W tym artykule utworzysz aplikację konsolową w języku Java przy użyciu [zest
 
 Ten przewodnik Szybki start wymaga następujących elementów:
 
-* System operacyjny: Windows (64-bitowy), 16.04/18.04 Ubuntu Linux (64-bitowa) lub z systemem macOS 10.13 lub nowszy
+* System operacyjny: 64-bitowych Windows 64-bitowych systemu Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9) i macOS 10.13 lub nowszej
 * [Zintegrowane środowisko projektowe Eclipse Java](https://www.eclipse.org/downloads/)
 * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) lub [zestaw JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * Klucz subskrypcji platformy Azure dla usługi Mowa. [Uzyskaj bezpłatnie](get-started.md).
 
-Jeśli korzystasz z systemu Ubuntu 16.04/18.04, upewnij się, że przed uruchomieniem środowiska Eclipse zostały zainstalowane następujące zależności.
+Jeśli korzystasz z systemu Linux, upewnij się, że te zależności są zainstalowane przed uruchomieniem programu Eclipse.
 
-```console
-sudo apt-get update
-sudo apt-get install build-essential libssl1.0.0 libasound2 wget
-```
+* W systemie Ubuntu:
 
-Jeśli korzystasz z Windows (64-bitowy) upewnij się, że zainstalowano program Microsoft Visual C++ Redistributable dla danej platformy.
+  ```sh
+  sudo apt-get update
+  sudo apt-get install libssl1.0.0 libasound2
+  ```
+
+* On Debian 9:
+
+  ```sh
+  sudo apt-get update
+  sudo apt-get install libssl1.0.2 libasound2
+  ```
+
+Jeśli korzystasz z Windows (64-bitowy), upewnij się, został zainstalowany program Microsoft Visual C++ pakiet redystrybucyjny dla danej platformy.
 * [Pobierz pakiet Microsoft Visual C++ Redistributable dla programu Visual Studio 2017](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
-
 
 ## <a name="create-and-configure-project"></a>Tworzenie i konfigurowanie projektu
 

@@ -7,15 +7,14 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 06/28/2018
+ms.date: 05/02/2019
 ms.author: brjohnst
-ms.custom: seodec2018
-ms.openlocfilehash: c07a0c8f5440033455c69fe40806adf9b548c16f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f361417f25579b0ca605b33bafa4a581f68b1798
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61126963"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024404"
 ---
 # <a name="api-versions-in-azure-search"></a>Wersje interfejsu API w usłudze Azure Search
 Usługa Azure Search regularnie zbiera i wydaje aktualizacje funkcji. Czasami, ale nie zawsze te aktualizacje wymagają nowej wersji interfejsu API w celu zachowania zgodności z poprzednimi wersjami. Publikowanie nowej wersji pozwala na kontrolowanie, kiedy i jak integrować aktualizacje usługi wyszukiwania w kodzie.
@@ -30,18 +29,19 @@ Ta sama zasada dotyczy aktualizacji zestawu SDK. Zestaw SDK usługi Azure Search
 ## <a name="snapshot-of-current-versions"></a>Migawki bieżących wersji
 Poniżej to migawki bieżących wersji wszystkich interfejsów programowania do usługi Azure Search.
 
+
 | Interfejsy | Najnowszą wersją | Stan |
 | --- | --- | --- |
-| [Zestaw SDK platformy .NET](https://aka.ms/search-sdk) |5.0 |Ogólnie dostępne, wydane kwietnia 2018 r. |
-| [Zestaw SDK platformy .NET w wersji zapoznawczej](https://aka.ms/search-sdk-preview) |4.0.1-Preview |W wersji zapoznawczej, wydanie maja 2017 r. |
-| [Interfejs API REST usługi](https://docs.microsoft.com/rest/api/searchservice/) |2017-11-11 |Ogólnie dostępne |
-| [Usługa REST API 2017-11-11-Preview](search-api-2017-11-11-preview.md) |2017-11-11-Preview |Wersja zapoznawcza |
-| [.NET Management SDK](https://aka.ms/search-mgmt-sdk) |2.0 |Ogólnie dostępne |
+| [Zestaw SDK platformy .NET](https://aka.ms/search-sdk) |9.0 |Ogólnie dostępne, wydane maja 2019 r. Zawartość jest nadal w trakcie tworzenia.  |
+| [Zestaw SDK platformy .NET w wersji zapoznawczej](https://aka.ms/search-sdk-preview) |8.0.0-Preview |Podgląd wydane kwietnia 2019 r. Zawartość jest nadal w trakcie tworzenia.|
+| [Interfejs API REST usługi](https://docs.microsoft.com/rest/api/searchservice/) |2019-05-06 |Ogólnie dostępne |
+| [Usługa REST API 2019-05-06-Preview](search-api-preview.md) |2019-05-06-preview |Wersja zapoznawcza |
+| [.NET Management SDK](https://aka.ms/search-mgmt-sdk) |3.0 |Ogólnie dostępne |
 | [Interfejs API REST zarządzania](https://docs.microsoft.com/rest/api/searchmanagement/) |2015-08-19 |Ogólnie dostępne |
 
 Interfejsy API REST, w tym `api-version` jest wymagany przy każdym wywołaniu. Za pomocą `api-version` ułatwia pod kątem określonej wersji, takich jak interfejs API w wersji zapoznawczej. W poniższym przykładzie pokazano sposób, w jaki `api-version` określono parametr:
 
-    GET https://adventure-works.search.windows.net/indexes/bikes?api-version=2017-11-11
+    GET https://my-demo-app.search.windows.net/indexes/hotels?api-version=2019-05-06
 
 > [!NOTE]
 > Mimo że każde żądanie ma `api-version`, zalecane jest użycie tej samej wersji dla wszystkich żądań interfejsu API. Jest to szczególnie istotne w przypadku wprowadzenia nowych wersjach interfejsu API, atrybuty lub operacje, które nie są rozpoznawane przez poprzednie wersje. Mieszanie wersji interfejsu API może mieć niezamierzone konsekwencje i należy ich unikać.

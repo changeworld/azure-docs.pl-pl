@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 04/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 76567db7362298b5cd35b544bf7952ebc54a2b66
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 712b5a003d3542908698d7b69c636780f6cf1007
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64723207"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65021730"
 ---
 # <a name="tutorial-train-an-image-classification-model-with-azure-machine-learning-service"></a>Samouczek: Uczenie modelu klasyfikacji obrazów za pomocą usługi Azure Machine Learning
 
@@ -45,31 +45,29 @@ Przejdź do sekcji [Konfigurowanie środowiska projektowego](#start), aby zapozn
 * Serwer notesów Python 3.6 z zainstalowanym następującym oprogramowaniem:
     * Zestaw SDK usługi Azure Machine Learning dla języka Python
     * `matplotlib` i `scikit-learn`
-* Notes samouczka i plik utils.py
-* Obszar roboczy uczenia maszynowego 
-* Plik konfiguracji obszaru roboczego w tym samym katalogu co notes 
+* Samouczek Notes i plik **utils.py**
+* Obszar roboczy uczenia maszynowego
+* Plik konfiguracji obszaru roboczego w tym samym katalogu co notes
 
 Wszystkie te wymagania wstępne można spełnić, korzystając z jednej z poniższych sekcji.
  
-* Korzystanie z usługi [Azure Notebooks](#azure) 
+* Użyj [serwer chmura w obszarze roboczym](#azure) 
 * Korzystanie z [własnego serwera notesów](#server)
 
-### <a name="azure"></a>Korzystanie z usługi Azure Notebooks: bezpłatne notesy Jupyter Notebook w chmurze
+### <a name="azure"></a>Użyj serwera notesu chmura w obszarze roboczym
 
-Rozpoczęcie pracy z usługą Azure Notebooks jest bardzo proste. [Zestaw Azure Machine Learning SDK dla języka Python](https://aka.ms/aml-sdk) został już zainstalowany i skonfigurowany w usłudze [Azure Notebooks](https://notebooks.azure.com/). Instalacja i przyszłe aktualizacje są automatycznie zarządzane za pomocą usług platformy Azure.
-
-Po wykonaniu poniższych czynności uruchom notes **tutorials/img-classification-part1-training.ipynb** w projekcie **Wprowadzenie**.
+To ułatwia rozpoczęcie pracy z serwerem oparte na chmurze notesu. [Azure Machine Learning SDK dla języka Python](https://aka.ms/aml-sdk) jest już zainstalowany i skonfigurowany dla Ciebie, po utworzeniu zasobu w chmurze.
 
 [!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
+
+* Po uruchomieniu notesu strony sieci Web, otwórz **samouczki/img klasyfikacji — część 1 — training.ipynb** notesu.
 
 
 ### <a name="server"></a>Korzystanie z własnego serwera notesów Jupyter Notebook
 
-Wykonaj te kroki, aby utworzyć lokalny serwer notesów Jupyter Notebook na komputerze. 
-
 [!INCLUDE [aml-your-server](../../../includes/aml-your-server.md)]
 
- Po wykonaniu czynności uruchom notes **tutorials/img-classification-part1-training.ipynb**.
+ Po wykonaniu kroków, uruchom **samouczki/img klasyfikacji — część 1 — training.ipynb** Notes w sklonowanym katalogu.
 
 ## <a name="start"></a>Konfigurowanie środowiska projektowego
 

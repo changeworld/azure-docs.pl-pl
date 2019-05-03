@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 04/04/2019
+ms.date: 05/02/2019
 ms.author: mcarter
 ms.custom: seodec2018
-ms.openlocfilehash: ed2e0bd352823a932cfea719c18e05ae6c913621
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f5cb8d2fee706600251039d80232d9fc7f60d5fb
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61126746"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65025154"
 ---
 # <a name="example-add-suggestions-or-autocomplete-to-your-azure-search-application"></a>Przykład: Dodawanie sugestie lub automatycznego uzupełniania do aplikacji usługi Azure Search
 
@@ -23,7 +23,7 @@ Ten artykuł zawiera informacje o sposobie użycia [sugestie](https://docs.micro
 
 + *Sugestie dotyczące* są sugerowane wyniki generowane podczas wpisywania, w którym każdego sugestia jest pojedynczym wynikiem z indeksu, który pasuje do wpisanego do tej pory. 
 
-+ *Autouzupełnianie*, [funkcja w wersji zapoznawczej](search-api-preview.md), "zakończeniu", wyraz lub frazę, która obecnie wpisywany przez użytkownika. Zamiast zwracać wyniki, zostanie ukończone kwerendę, która następnie można wykonać w celu zwracania wyników. Podobnie jak w przypadku sugestii, ukończone wyraz lub frazę w zapytaniu jest uzależniona od dopasowania w indeksie. Usługa nie oferują zapytań, które zwracają wartości zerowe w indeksie.
++ *Autouzupełnianie* "zakończeniu", wyraz lub frazę, która obecnie wpisywany przez użytkownika. Zamiast zwracać wyniki, zostanie ukończone kwerendę, która następnie można wykonać w celu zwracania wyników. Podobnie jak w przypadku sugestii, ukończone wyraz lub frazę w zapytaniu jest uzależniona od dopasowania w indeksie. Usługa nie oferują zapytań, które zwracają wartości zerowe w indeksie.
 
 Możesz pobrać i uruchomić przykładowy kod w **DotNetHowToAutocomplete** do oceny tych funkcji. Przykładowy kod jest przeznaczony dla wbudowanych indeks, wypełniony [NYCJobs pokaz danych](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs). Indeks NYCJobs zawiera [konstrukcji Sugestora](index-add-suggesters.md), która jest wymagana dla przy użyciu sugestie lub automatycznego uzupełniania. Można użyć indeksu przygotowany hostowanej w usłudze piaskownicy, lub [wypełnić indeks własne](#configure-app) w przykładowym rozwiązaniu NYCJobs przy użyciu modułu ładującego dane. 
 

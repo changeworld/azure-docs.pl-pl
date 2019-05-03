@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 02/26/2019
+ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: fcb1e4f32608a1c83b653984dfa066da38e7c451
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a0eefe38fdffd04bb95826f960771bd6430ea687
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60871118"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024780"
 ---
 # <a name="import-data-wizard-for-azure-search"></a>Kreator importu danych dla usługi Azure Search
 
@@ -27,7 +27,7 @@ W witrynie Azure Portal na pulpicie nawigacyjnym usługi Azure Search znajduje s
 
 Kreator nie może nawiązać połączenie z wstępnie zdefiniowany indeks lub uruchamianie istniejącego indeksatora, ale w kreatorze, można skonfigurować nowego indeksu i indeksatora do obsługi struktury i zachowań, które są potrzebne.
 
-Dopiero zaczynasz korzystać z usługi Azure Search? Krok po kroku [Szybki Start: Importować, indeksu i wykonywać zapytania za pomocą narzędzia portalu](search-get-started-portal.md) będą mogli ją testować importowania i indeksowanie przy użyciu **importowania danych** i zestaw danych próbka realestate wbudowanych.
+Dopiero zaczynasz korzystać z usługi Azure Search? Krok po kroku [Szybki Start: Importować, indeksu i wykonywać zapytania za pomocą narzędzia portalu](search-get-started-portal.md) będą mogli ją testować importowania i indeksowanie przy użyciu **importowania danych** i zestaw danych próbka wbudowanych nieruchomości.
 
 ## <a name="start-importing-data"></a>Rozpocznij importowanie danych
 
@@ -77,14 +77,14 @@ Indeks jest gotowa do obsługi zapytań, zaraz po załadowaniu pierwszy dokument
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 * [Usługa Azure Table Storage](search-howto-indexing-azure-tables.md) (nieobsługiwane w przypadku [wyszukiwania kognitywnego](cognitive-search-concept-intro.md) potoków)
 
-Wymaganymi danymi wejściowymi jest spłaszczony zestaw danych. Importu można dokonać tylko z pojedynczej tabeli, widoku bazy danych lub równoważnej struktury danych. 
+Można importować tylko z pojedynczej tabeli, widoku bazy danych lub równoważnej struktury danych, ale struktura może zawierać podstruktury hierarchiczne lub zagnieżdżony. Aby uzyskać więcej informacji, zobacz [jak modelowanie złożonych typów](search-howto-complex-data-types.md).
 
 Ta struktura danych należy utworzyć przed uruchomieniem kreatora, i może zawierać zawartości. Nie uruchamiaj **importowania danych** kreatora w źródle danych puste.
 
 |  Wybór | Opis |
 | ---------- | ----------- |
 | **Istniejące źródło danych** |Jeśli masz już zdefiniowane indeksatory w usłudze wyszukiwania, możesz użyć istniejącej definicji źródła danych na potrzeby innego importu. W usłudze Azure Search obiekty źródła danych są używane tylko przez indeksatorów. Programistyczne tworzenie obiektu źródła danych lub za pomocą **importowania danych** kreatora.|
-| **Przykłady**| Usługa Azure Search obsługuje bezpłatne publicznej Azure SQL database, można użyć, aby dowiedzieć się więcej o żądaniach importowania i zapytania w usłudze Azure Search. Zobacz [Szybki start: Importować, indeksu i wykonywać zapytania za pomocą narzędzia portalu](search-get-started-portal.md) przewodnik. |
+| **Przykłady**| Usługa Azure Search obsługuje bezpłatne globalnego Azure SQL database, można użyć, aby dowiedzieć się więcej o żądaniach importowania i zapytania w usłudze Azure Search. Zobacz [Szybki start: Importować, indeksu i wykonywać zapytania za pomocą narzędzia portalu](search-get-started-portal.md) przewodnik. |
 | **Azure SQL Database** |Nazwę usługi, poświadczenia użytkownika z uprawnieniem do odczytu bazy danych i nazwę bazy danych można określić na stronie lub przy użyciu parametrów połączenia ADO.NET. Wybierz opcję parametrów połączenia, aby wyświetlić lub dostosować właściwości. <br/><br/>Na stronie należy określić tabelę lub widok zawierające zestaw wierszy. Ta opcja jest dostępna po udanym nawiązaniu połączenia. Pojawia się wtedy lista rozwijana, z której można dokonać wyboru. |
 | **Program SQL Server na maszynie wirtualnej platformy Azure** |Określ w pełni kwalifikowaną nazwę, identyfikator użytkownika i hasło i bazy danych jako parametry połączenia. Aby użyć tego źródła danych, należy wcześniej zainstalować w magazynie lokalnym certyfikat szyfrujący połączenie. Aby uzyskać instrukcje, zobacz [SQL VM connection to Azure Search](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md) (Połączenie maszyny wirtualnej bazy danych SQL z usługą Azure Search). <br/><br/>Na stronie należy określić tabelę lub widok zawierające zestaw wierszy. Ta opcja jest dostępna po udanym nawiązaniu połączenia. Pojawia się wtedy lista rozwijana, z której można dokonać wyboru. |
 | **Cosmos DB** |Wymagane jest konto, baza danych i kolekcja. Wszystkie dokumenty w kolekcji zostaną uwzględnione w indeksie. Można zdefiniować zapytanie w celu spłaszczenia lub filtrowania zestawu wierszy, lub pozostaw puste zapytanie. Zapytanie nie jest wymagane w tym kreatorze.|

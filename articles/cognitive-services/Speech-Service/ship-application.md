@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/18/2018
+ms.date: 05/02/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: f3522f065d22ce276174fbd165c37df3914e32b9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1232cdd156dd473850fde6e7c4f3ce0554155764
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61456176"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020405"
 ---
 # <a name="ship-an-application"></a>Dostarczanie aplikacji
 
@@ -49,19 +49,26 @@ W tym samym katalogu co aplikację można wdrożyć wymagane pliki zestawów SDK
 
 ## <a name="linux"></a>Linux
 
-Zestaw SDK rozpoznawania mowy obsługuje obecnie Ubuntu 16.04 i 18.04 dystrybucji.
+Zestaw SDK rozpoznawania mowy obsługuje obecnie dystrybucji Ubuntu 16.04 i Ubuntu 18.04, Debian 9.
 Aplikację natywną, musisz wysłać biblioteki zestawu SDK rozpoznawania mowy, `libMicrosoft.CognitiveServices.Speech.core.so`.
 Upewnij się, że wybrano wersję (x86, x64), która jest zgodna z aplikacji. W zależności od wersji systemu Linux, również może być konieczne obejmują następujące zależności:
 
 * Biblioteki udostępnione biblioteki GNU C (łącznie z biblioteki programowania wątków POSIX `libpthreads`)
-* Biblioteki OpenSSL (`libssl.so.1.0.0`)
+* Biblioteki OpenSSL (`libssl.so.1.0.0` lub `libssl.so.1.0.2`)
 * Biblioteki udostępnionej dla aplikacji ALSA (`libasound.so.2`)
 
 W systemie Ubuntu bibliotek GNU C powinno być już zainstalowane domyślnie. Trzy ostatnie można zainstalować za pomocą poniższych poleceń:
 
 ```sh
 sudo apt-get update
-sudo apt-get install libssl1.0.0 libasound2 wget
+sudo apt-get install libssl1.0.0 libasound2
+```
+
+Debian 9 zainstalować te pakiety:
+
+```sh
+sudo apt-get update
+sudo apt-get install libssl1.0.2 libasound2
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki

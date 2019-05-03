@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 04/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: ece32754ae51bde5db52d20ab44f0d748bf46533
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 50e42172af6ca6b966f9f60d3e037f9ae3dc5cbe
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64943942"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023778"
 ---
 # <a name="use-ssl-to-secure-web-services-with-azure-machine-learning-service"></a>Użyj protokołu SSL do zabezpieczania usług sieci web za pomocą usługi Azure Machine Learning
 
@@ -72,7 +72,36 @@ Podczas żądania certyfikatu, podaj w pełni kwalifikowana nazwa domeny (FQDN) 
 
 Aby wdrożyć (lub ponownego wdrażania) usługi z włączonym protokołem SSL, ustaw `ssl_enabled` parametr `True`, gdy mają zastosowanie. Ustaw `ssl_certificate` parametru na wartość __certyfikatu__ pliku i `ssl_key` wartość __klucz__ pliku.
 
-+ **Wdrażanie w usłudze Azure Kubernetes Service (AKS)**
++ **Wizualny interfejs — tworzenie bezpiecznego Azure Kubernetes Service (AKS) do wdrożenia** 
+    
+    Zapoznaj się z tym Jeśli próbujesz utworzyć bezpieczne wdrażanie zasoby obliczeniowe na potrzeby interfejsu wizualnego. Podczas aprowizowania klastra usługi AKS, podaj wartości parametrów związanych z protokołu SSL, a następnie utworzyć nowe usługi AKS.  Można znaleźć poniżej fragmentu kodu:
+    
+
+    > [!TIP]
+    >  Jeśli nie jesteś zaznajomiony z zestawu SDK języka Python, zacznij od [Przegląd zestawu SDK języka Python do programu Azure Machine Learning.](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
+
+
+    ```python
+    from azureml.core.compute import AksCompute, ComputeTarget
+
+    # Provide SSL-related parameters when provisioning the AKS cluster
+    prov_config = AksCompute.provisioning_configuration(ssl_cert_pem_file="cert.pem", ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")   
+ 
+    aks_name = 'secure-aks'
+    # Create the cluster
+    aks_target = ComputeTarget.create(workspace = ws,
+                                        name = aks_name,
+                                        provisioning_configuration = prov_config)
+    
+    # Wait for the create process to complete
+    aks_target.wait_for_completion(show_output = True)
+    print(aks_target.provisioning_state)
+    print(aks_target.provisioning_errors)
+    ```
+    
+   
+
++ **Wdrażanie w usłudze Azure Kubernetes Service (AKS) i FPGA**
 
   Podczas wdrażania usługi AKS, możesz utworzyć nowy klaster AKS lub dołączenie istniejącego. Tworzenie nowego klastra używa [AksCompute.provisionining_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#provisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none-) podczas dołączania do istniejącego klastra używa [AksCompute.attach_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none-). Oba zwracają obiekt konfiguracji, który ma `enable_ssl` metody.
 
@@ -142,6 +171,8 @@ Następnie należy zaktualizować serwer DNS, aby wskazać usługę sieci web.
   Aktualizowanie systemu DNS, na karcie "Konfiguracja" "Publiczny adres IP" dla klastra AKS, jak pokazano na ilustracji. Możesz znaleźć publiczny adres IP jako jeden z typów zasobów utworzonych w ramach grupy zasobów, która zawiera węzły agenta usługi AKS i innych zasobów sieciowych.
 
   ![Usługa Azure Machine Learning: Zabezpieczanie usług sieci web przy użyciu protokołu SSL](./media/how-to-secure-web-service/aks-public-ip-address.png)
+
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 Instrukcje:

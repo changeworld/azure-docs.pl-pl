@@ -6,16 +6,16 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.date: 04/20/2018
+ms.date: 05/02/2019
 manager: jlembicz
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: 4383cc327d8058ca44acd892f41a7a256e3b1727
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 567124f50745080da12178a458957a0f6c8266b5
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61281806"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024311"
 ---
 # <a name="synonyms-in-azure-search"></a>Synonimy w usłudze Azure Search
 
@@ -23,11 +23,13 @@ Synonimy w wyszukiwarkach kojarzą równoważne wyrażenia, które niejawnie roz
 
 W usłudze Azure Search rozszerzenia synonim odbywa się w czasie wykonywania zapytania. Można dodać mapy synonimów do usługi za pomocą nie przerw w działaniu na istniejące operacje. Możesz dodać **synonymMaps** właściwości definicji pola, bez konieczności ponownego kompilowania indeksu.
 
-## <a name="feature-availability"></a>Dostępność funkcji
+## <a name="create-synonyms"></a>Utwórz synonimy
 
-Funkcja synonimów jest obsługiwana w najnowszej wersji interfejsu api (interfejs api-version = 2017-11-11). Obecnie witryna Azure Portal nie jest obsługiwana.
+Brak obsługi portalu do tworzenia synonimy, ale można użyć interfejsu API REST lub zestawu .NET SDK. Aby rozpocząć pracę z użyciem usług REST, firma Microsoft zaleca [przy użyciu narzędzia Postman](search-fiddler.md) i sformułowania żądań za pomocą tego interfejsu API: [Tworzenie map synonimów](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map). Aby uzyskać C# deweloperów, możesz rozpocząć pracę z [dodać synonimy, wyszukiwanie platformy Azure przy użyciu C# ](search-synonyms-tutorial-sdk.md).
 
-## <a name="how-to-use-synonyms-in-azure-search"></a>Jak używać synonimów w usłudze Azure search
+Opcjonalnie Jeśli używasz [kluczy zarządzanych przez klienta](search-security-manage-encryption-keys.md) na stronie usługi szyfrowanie w spoczynku, można zastosować Ochrona zawartości mapy synonimów.
+
+## <a name="use-synonyms"></a>Używać synonimów
 
 W usłudze Azure Search Obsługa synonimów jest oparty na map synonimów, definiujących i Przekaż do usługi. Mapy te stanowią niezależnym zasobem (takich jak indeksy i źródłami danych) i może służyć w dowolnym polu możliwym do przeszukania w dowolnym indeksie w usłudze wyszukiwania.
 
@@ -49,7 +51,7 @@ Mapy synonimów musi być w formacie Apache Solr, co zostało wyjaśnione poniż
 
 Można utworzyć nowej mapy synonimów używanie żądania POST protokołu HTTP, jak w poniższym przykładzie:
 
-    POST https://[servicename].search.windows.net/synonymmaps?api-version=2017-11-11
+    POST https://[servicename].search.windows.net/synonymmaps?api-version=2019-05-06
     api-key: [admin key]
 
     {
@@ -62,7 +64,7 @@ Można utworzyć nowej mapy synonimów używanie żądania POST protokołu HTTP,
 
 Alternatywnie można użyć PUT i określ nazwę mapy synonimów w identyfikatorze URI. Mapy synonimów nie istnieje, zostanie utworzony.
 
-    PUT https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2017-11-11
+    PUT https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2019-05-06
     api-key: [admin key]
 
     {
@@ -74,7 +76,7 @@ Alternatywnie można użyć PUT i określ nazwę mapy synonimów w identyfikator
 
 ##### <a name="apache-solr-synonym-format"></a>Format synonim Apache Solr
 
-Solr format obsługuje mapowań synonimów swoimi odpowiednikami i jawne. Reguły mapowania stosować się do synonimu specyfikacja filtru "open source" Apache Solr, opisane w tym dokumencie: [SynonymFilter](https://cwiki.apache.org/confluence/display/solr/Filter+Descriptions#FilterDescriptions-SynonymFilter). Poniżej znajduje się przykładowa reguła równoważne synonimów.
+Solr format obsługuje mapowań synonimów swoimi odpowiednikami i jawne. Reguły mapowania stosować się do specyfikacji filtru synonimem typu open source Apache Solr, opisane w tym dokumencie: [SynonymFilter](https://cwiki.apache.org/confluence/display/solr/Filter+Descriptions#FilterDescriptions-SynonymFilter). Poniżej znajduje się przykładowa reguła równoważne synonimów.
 ```
 USA, United States, United States of America
 ```
@@ -88,24 +90,24 @@ Washington, Wash., WA => WA
 
 #### <a name="list-synonym-maps-under-your-service"></a>Mapy synonimów listy w ramach usługi.
 
-    GET https://[servicename].search.windows.net/synonymmaps?api-version=2017-11-11
+    GET https://[servicename].search.windows.net/synonymmaps?api-version=2019-05-06
     api-key: [admin key]
 
 #### <a name="get-a-synonym-map-under-your-service"></a>Pobierz mapę synonimów w ramach usługi.
 
-    GET https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2017-11-11
+    GET https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2019-05-06
     api-key: [admin key]
 
 #### <a name="delete-a-synonyms-map-under-your-service"></a>Usuń mapę synonimów w ramach usługi.
 
-    DELETE https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2017-11-11
+    DELETE https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2019-05-06
     api-key: [admin key]
 
 ### <a name="configure-a-searchable-field-to-use-the-synonym-map-in-the-index-definition"></a>Skonfiguruj polu możliwym do przeszukania, aby używać mapy synonimów w definicji indeksu.
 
 Nowe właściwości pola **synonymMaps** może służyć do określania mapę synonimów do użytku w polu możliwym do przeszukania. Mapy synonimów są zasoby na poziomie usługi i mogą być przywoływane przez dowolne pole indeksu w usłudze.
 
-    POST https://[servicename].search.windows.net/indexes?api-version=2017-11-11
+    POST https://[servicename].search.windows.net/indexes?api-version=2019-05-06
     api-key: [admin key]
 
     {

@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 01/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 217eecfe8f380718361c2f1b56965e4af85d54c9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 61c5d60f0c2fab3786aa6adfa194c0716e621ea3
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60753777"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023647"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Co się stało z aplikacją Azure Machine Learning Workbench?
 
@@ -87,7 +87,7 @@ run = exp.submit(source_directory = script_folder, script = 'train.py', run_conf
 
 Modele zarejestrowane w starym rejestrze modeli trzeba migrować do nowego obszaru roboczego, aby nadal z nich korzystać. Aby przeprowadzić migrację modeli, pobierz modele i ponownie zarejestruj je w nowym obszarze roboczym. 
 
-Obrazy, które zostały utworzone w starym rejestrze obrazów, należy ponownie utworzyć w nowym obszarze roboczym, aby nadal z nich korzystać. W tym celu należy wykonać instrukcje z sekcji dotyczącej [konfigurowania i tworzenia obrazu](how-to-deploy-and-where.md#configureimage). 
+Obrazy, które zostały utworzone w starym rejestru obrazów nie można bezpośrednio migrować do nowego obszaru roboczego. W większości przypadków można wdrożyć modelu bez konieczności tworzenia obrazu. Jeśli to konieczne, można utworzyć obrazu dla modelu w nowym obszarem roboczym. Aby uzyskać więcej informacji, zobacz [zarządzanie, rejestrowanie, wdrażanie i monitorowanie modeli uczenia maszynowego](concept-model-management-and-deployment.md).
 
 ## <a name="what-about-deployed-web-services"></a>Co się stanie z wdrożonymi usługami internetowymi?
 

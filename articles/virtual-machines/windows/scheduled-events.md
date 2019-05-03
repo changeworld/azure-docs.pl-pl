@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: ab0aefd5650aada9c301115813a80747ddd1f2ac
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 1a82b9256405e2cac12f4c5611ee3bdad459162b
+ms.sourcegitcommit: abeefca6cd5ca01c3e0b281832212aceff08bf3e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926316"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "64992943"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure Metadata Service: Scheduled Events dla maszyn wirtualnych Windows
 
@@ -45,7 +45,7 @@ Wiele aplikacji mogą korzystać z czasu, aby przygotować się do obsługi masz
 Przy użyciu zaplanowanych zdarzeń aplikacji może odnajdywać podczas konserwacji będą występować i wyzwalanie zadań, aby ograniczyć jej wpływ. Włączanie zaplanowanych zdarzeń zapewnia maszynie wirtualnej minimalną ilość czasu przed wykonaniem związanych z konserwacją. Zobacz sekcję planowania zdarzeń poniżej szczegółowe informacje.
 
 Scheduled Events dostępne są zdarzenia w następujących przypadkach użycia:
-- Konserwacja zainicjowana platformy (np. aktualizacji systemu operacyjnego hosta)
+- [Platforma zainicjowane konserwacji](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/maintenance-and-updates) (na przykład maszyna wirtualna ponowny rozruch, migracji na żywo lub pamięć zachowywanie aktualizacji hosta)
 - Obniżonej wydajności sprzętu
 - Użytkownik zainicjował konserwacji (np. ponownego uruchamiania lub ponownie wdraża Maszynę wirtualną)
 - [Maszyna wirtualna o niskim priorytecie eksmisji](https://azure.microsoft.com/blog/low-priority-scale-sets) w skali ustawia
@@ -119,7 +119,7 @@ DocumentIncarnation jest element ETag i zapewnia prosty sposób sprawdzić jeśl
 |Właściwość  |  Opis |
 | - | - |
 | Identyfikator zdarzenia | Globalnie unikatowy identyfikator dla tego zdarzenia. <br><br> Przykład: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
-| EventType | Wpływ, który powoduje, że to zdarzenie. <br><br> Wartości: <br><ul><li> `Freeze`: Maszyna wirtualna jest zaplanowana do wstrzymywania w kilka sekund. Procesor jest wstrzymana, ale nie ma to wpływu na pamięci, otwartych plików lub połączeń sieciowych. <li>`Reboot`: Maszyna wirtualna jest zaplanowana do ponownego uruchomienia (— trwałej pamięci jest utracona). <li>`Redeploy`: Maszyna wirtualna jest zaplanowane na przeniesienie do innego węzła (efemeryczne dyski zostaną utracone). <li>`Preempt`: Trwa usuwanie maszyny wirtualnej o niskim priorytecie (efemeryczne dyski zostaną utracone).|
+| EventType | Wpływ, który powoduje, że to zdarzenie. <br><br> Wartości: <br><ul><li> `Freeze`: Maszyna wirtualna jest zaplanowana do wstrzymania przez kilka sekund. Może zostać zawieszone procesora CPU oraz łączności sieciowej, ale nie ma to wpływu na pamięć lub otwarte pliki. <li>`Reboot`: Maszyna wirtualna jest zaplanowana do ponownego uruchomienia (— trwałej pamięci jest utracona). <li>`Redeploy`: Maszyna wirtualna jest zaplanowane na przeniesienie do innego węzła (efemeryczne dyski zostaną utracone). <li>`Preempt`: Trwa usuwanie maszyny wirtualnej o niskim priorytecie (efemeryczne dyski zostaną utracone).|
 | ResourceType | Typ zasobu, który ma wpływ na to zdarzenie. <br><br> Wartości: <ul><li>`VirtualMachine`|
 | Zasoby| Lista zasobów, które ma wpływ na to zdarzenie. Gwarantuje zawierają maszyn z co najwyżej jeden [domena aktualizacji](manage-availability.md), ale może nie zawierać wszystkich maszyn w UD. <br><br> Przykład: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | Stan zdarzenia | Stan tego zdarzenia. <br><br> Wartości: <ul><li>`Scheduled`: To zdarzenie jest zaplanowane do uruchomienia po upływie czasu określonego w `NotBefore` właściwości.<li>`Started`: To zdarzenie zostało rozpoczęte.</ul> Nie `Completed` lub podobne stan nigdy nie są dostarczane; zdarzenia nie zostaną zwrócone, po zakończeniu zdarzenia.
@@ -136,7 +136,8 @@ Każde zdarzenie jest zaplanowane minimalną ilość czasu w przyszłości na po
 | Wywłaszczenia | 30 sekund |
 
 ### <a name="event-scope"></a>Zakres zdarzeń     
-Zaplanowane zdarzenia są dostarczane do:        
+Zaplanowane zdarzenia są dostarczane do:
+ - Autonomicznych maszyn wirtualnych
  - Wszystkie maszyny wirtualne w usłudze w chmurze      
  - Wszystkie maszyny wirtualne w zestawie dostępności      
  - Wszystkie maszyny wirtualne w grupie umieszczania zestawu skalowania.         

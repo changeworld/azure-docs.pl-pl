@@ -1,7 +1,7 @@
 ---
 title: Łączenie i indeksu usługi Azure SQL Database zawartości przy użyciu indeksatorów — usługa Azure Search
 description: Dowiedz się, jak przeszukiwać dane w usłudze Azure SQL Database przy użyciu indeksatorów w celu wyszukiwania pełnotekstowego w usłudze Azure Search. Ten artykuł dotyczy połączeń, konfiguracji indeksatora i wprowadzanie danych.
-ms.date: 03/01/2019
+ms.date: 05/02/2019
 author: mgottein
 manager: cgronlun
 ms.author: magottei
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 5453bcdd371c0639cb1d3568f05a1768e6204d3d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c23933e7f379a438d436fd99c5fea7899c5891ef
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60817168"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65025353"
 ---
 # <a name="connect-to-and-index-azure-sql-database-content-using-azure-search-indexers"></a>Nawiązywanie połączenia i indeksu usługi Azure SQL Database zawartości przy użyciu indeksatorów usługi Azure Search
 
@@ -63,7 +63,7 @@ W zależności od kilku czynników związanych z danymi użytkowania indeksator 
 1. Utwórz źródło danych:
 
    ```
-    POST https://myservice.search.windows.net/datasources?api-version=2017-11-11
+    POST https://myservice.search.windows.net/datasources?api-version=2019-05-06
     Content-Type: application/json
     api-key: admin-key
 
@@ -82,7 +82,7 @@ W zależności od kilku czynników związanych z danymi użytkowania indeksator 
 3. Tworzenie indeksatora, nadając mu nazwę i odwołanie do indeksu danych w źródłowym i docelowym:
 
     ```
-    POST https://myservice.search.windows.net/indexers?api-version=2017-11-11
+    POST https://myservice.search.windows.net/indexers?api-version=2019-05-06
     Content-Type: application/json
     api-key: admin-key
 
@@ -95,7 +95,7 @@ W zależności od kilku czynników związanych z danymi użytkowania indeksator 
 
 Indeksator utworzone w ten sposób nie ma zgodnie z harmonogramem. Automatycznie uruchomiony po po jego utworzeniu. Uruchom go ponownie w każdej chwili **uruchomić indeksator** żądania:
 
-    POST https://myservice.search.windows.net/indexers/myindexer/run?api-version=2017-11-11
+    POST https://myservice.search.windows.net/indexers/myindexer/run?api-version=2019-05-06
     api-key: admin-key
 
 Możesz dostosować kilka aspektów zachowania indeksatora, takich jak rozmiar partii i liczby dokumentów można było pominąć, zanim środowisko wykonawcze indeksator zakończy się niepowodzeniem. Aby uzyskać więcej informacji, zobacz [Tworzenie interfejsu API indeksatora](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer).
@@ -104,7 +104,7 @@ Konieczne może być Zezwalaj usługom platformy Azure, nawiązać połączenia 
 
 Aby monitorować historię stanu i wykonywanie indeksatora (liczba elementów indeksowane, błędy itp.), użyj **stan indeksatora** żądania:
 
-    GET https://myservice.search.windows.net/indexers/myindexer/status?api-version=2017-11-11
+    GET https://myservice.search.windows.net/indexers/myindexer/status?api-version=2019-05-06
     api-key: admin-key
 
 Odpowiedź powinna wyglądać podobnie do poniższej:
@@ -146,7 +146,7 @@ Dodatkowe informacje na temat odpowiedzi można znaleźć w [pobierania stanu in
 ## <a name="run-indexers-on-a-schedule"></a>Uruchamianie indeksatory zgodnie z harmonogramem
 Można także porządkować indeksatora okresowe uruchamianie zgodnie z harmonogramem. Aby to zrobić, Dodaj **harmonogram** właściwości podczas tworzenia lub aktualizowania indeksatora. W poniższym przykładzie przedstawiono żądanie PUT, aby zaktualizować indeksatora:
 
-    PUT https://myservice.search.windows.net/indexers/myindexer?api-version=2017-11-11
+    PUT https://myservice.search.windows.net/indexers/myindexer?api-version=2019-05-06
     Content-Type: application/json
     api-key: admin-key
 
@@ -168,7 +168,7 @@ Rozważmy przykład się to bardziej konkretne. Załóżmy, że firma Microsoft 
 
 Oto, co się dzieje:
 
-1. Pierwsze wykonanie indeksatora rozpoczyna się o lub około 1 marca 2015 r. od 12:00 UTC.
+1. Pierwsze wykonanie indeksatora rozpoczyna się o lub około 1 marca 2015 r. od 12:00 czasu UTC.
 2. Załóżmy, że to wykonywanie trwa 20 minut (lub w dowolnej chwili mniejsza niż 1 godzina).
 3. Wykonanie drugiej rozpoczyna się o lub około 1 marca 2015 r. 1:00:00
 4. Teraz załóżmy, że ma ponad godzinę — na przykład 70 minut — w tym wykonywania, więc zostanie zakończona około 2:10:00

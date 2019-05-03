@@ -1,7 +1,7 @@
 ---
 title: Skonfiguruj środowisko programistyczne języka Python
 titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak skonfigurować środowisko programowania, podczas pracy z usługą Azure Machine Learning. W tym artykule dowiesz się, jak używać środowisk Conda, Utwórz pliki konfiguracyjne i skonfiguruj notesów programu Jupyter, notesy platformy Azure, usługi Azure Databricks, środowiska IDE, edytory kodu i maszyna wirtualna do nauki o danych.
+description: Dowiedz się, jak skonfigurować środowisko programowania, podczas pracy z usługą Azure Machine Learning. W tym artykule dowiesz się, jak używać środowisk Conda, Utwórz pliki konfiguracyjne i skonfiguruj serwer opartych na chmurze notesu, notesów programu Jupyter, usługi Azure Databricks, notesy platformy Azure, środowiska IDE, edytory kodu i maszyna wirtualna do nauki o danych.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 720f984feb5675281510962d4ebee63f638d696d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c8c0291997c1ce301083f7d5c19b5067a85cfd0f
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60819983"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024978"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurowanie środowiska deweloperskiego dla usługi Azure Machine Learning
 
@@ -26,7 +26,7 @@ Jedynymi wymogami dla swojego środowiska programowania są 3 języka Python, An
 
 Ten artykuł koncentruje się na następujących środowisk i narzędzia:
 
-* Azure Notebooks: Usługa notesów programu Jupyter, która jest hostowana w chmurze platformy Azure. Jest najprostszym sposobem na rozpoczęcie pracy, ponieważ zestaw SDK usługi Azure Machine Learning jest już zainstalowany.
+* Własne [serwer opartych na chmurze](#notebookvm): Użyj zasobów obliczeniowych w swojej stacji roboczej, aby uruchomić notesów programu Jupyter. Jest najprostszym sposobem na rozpoczęcie pracy, ponieważ zestaw SDK usługi Azure Machine Learning jest już zainstalowany.
 
 * [Maszyna wirtualna do nauki o danych (DSVM)](#dsvm): Wstępnie skonfigurowane rozwoju lub eksperymentowania środowisku w chmurze platformy Azure, który jest przeznaczony do pracy nauki o danych i którą można wdrożyć tylko wystąpienia maszyn wirtualnych procesora CPU lub wystąpienia oparte na procesorze GPU. Python 3, Conda, notesy Jupyter i zestawu SDK usługi Azure Machine Learning są już zainstalowane. Maszyna wirtualna jest powiązana z popularnych uczenia maszynowego i głębokiego uczenia struktur, narzędzi i edytory do tworzenia rozwiązania uczenia maszynowego. Prawdopodobnie jest najbardziej zaawansowane środowiska programistycznego, Machine learning na platformie Azure.
 
@@ -44,7 +44,7 @@ Jeśli już masz środowisko Python 3 lub po prostu ma podstawowe kroki dotyczą
 
 - Obszar roboczy usługi Azure Machine Learning. Aby utworzyć obszar roboczy, zobacz [Utwórz obszar roboczy usługi Azure Machine Learning](setup-create-workspace.md).
 
-Obszar roboczy to wszystko, czego potrzebujesz, aby zacząć korzystać z usługi [notesów usługi Azure](#aznotebooks), [DSVM](#dsvm), lub [usługi Azure Databricks](#aml-databricks).
+Obszar roboczy to wszystko, czego potrzebujesz, aby zacząć korzystać z własnych [serwer opartych na chmurze](#notebookvm), [DSVM](#dsvm), [usługi Azure Databricks](#aml-databricks), lub [notesów usługi Azure](#aznotebooks).
 
 Aby zainstalować zestaw SDK środowiska usługi [komputera lokalnego](#local), [serwer notesu programu Jupyter](#jupyter) lub [programu Visual Studio Code](#vscode) należy również:
 
@@ -57,16 +57,15 @@ Aby zainstalować zestaw SDK środowiska usługi [komputera lokalnego](#local), 
 
 - W Windows należy wiersz polecenia lub wiersz Anaconda (zainstalowanych w ramach pakietu Anaconda i Miniconda).
 
-## <a id="aznotebooks"></a>Notesy platformy Azure
+## <a id="notebookvm"></a>Serwer opartych na chmurze notesu
 
-[Notesy platformy Azure](https://notebooks.azure.com) (wersja zapoznawcza) to opracowywanie interakcyjne środowisko w chmurze platformy Azure. To łatwe Rozpoczynanie pracy z usługą Azure Machine Learning rozwoju.
+Tworzenie serwera Notes w obszarze roboczym usługi Azure Machine Learning dla Najprostszym sposobem rozpoczęcia pracy za pomocą usługi Azure Machine Learning.
 
 * Zestaw SDK usługi Azure Machine Learning jest już zainstalowana.
-* Po utworzeniu obszaru roboczego usługi Azure Machine Learning w witrynie Azure portal, możesz kliknąć przycisk, aby automatycznie skonfigurować środowisko notesu platformy Azure do pracy z obszarem roboczym.
+* Środowisko notesu maszyny Wirtualnej jest automatycznie konfigurowana do pracy z obszarem roboczym.
+* Zasób jest tworzony w Twoim obszarze roboczym i mogą być tam zarządzane
 
-Użyj [witryny Azure portal](https://portal.azure.com) wprowadzenie notesy platformy Azure.  Otwórz obszar roboczy z **Przegląd** zaznacz **wprowadzenie do platformy Azure, notesy**.
-
-Domyślnie notesów usługi Azure korzysta z warstwy bezpłatna usługa, która jest ograniczony do 4GB pamięci i 1GB danych. Można jednak usunąć te limity, dołączając wystąpienia maszyny wirtualnej do nauki o danych do projektu notesy platformy Azure. Aby uzyskać więcej informacji, zobacz [zarządzanie i konfigurować projekty notesy platformy Azure — warstwa wystąpień obliczeniowych](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier).    
+Aby rozpocząć tworzenie aplikacji za pomocą serwer opartych na chmurze Notes, zobacz [Szybki Start: Rozpoczynanie pracy z usługą Azure Machine Learning przy użyciu serwer opartych na chmurze notesu](quickstart-run-cloud-notebook.md).
 
 
 ## <a id="dsvm"></a>Maszyna wirtualna do nauki o danych
@@ -320,7 +319,7 @@ Gdy klaster działa, [utworzyć bibliotekę](https://docs.databricks.com/user-gu
       
    Ponadto należy wziąć pod uwagę:
    + W pliku konfiguracyjnym Automl, korzystając z usługi Azure Databricks, Dodaj następujące parametry:
-        1. ```max_concurrent_iterations``` opiera się na liczbę węzłów procesu roboczego w klastrze. 
+       1. ```max_concurrent_iterations``` opiera się na liczbę węzłów procesu roboczego w klastrze. 
         2. ```spark_context=sc``` opiera się na domyślny kontekst aparatu spark. 
    + Lub, jeśli masz starszą wersję zestawu SDK, usuń zaznaczenie opcji z zainstalowanych libs klastra i przenosić do Kosza. Instalowanie nowej wersji zestawu SDK i uruchom ponownie klaster. Jeśli występuje problem, po to, odłącz i ponownie podłącz klastra.
 
@@ -337,6 +336,17 @@ Wypróbuj to:
   Wiele notesów próbki są dostępne, **tylko [notesów te przykładowe](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks) pracy z usługą Azure Databricks.**
   
 + Dowiedz się, jak [tworzenie potoku za pomocą usługi Databricks jako obliczeniowe szkolenia](how-to-create-your-first-pipeline.md).
+
+## <a id="aznotebooks"></a>Notesy platformy Azure
+
+[Notesy platformy Azure](https://notebooks.azure.com) (wersja zapoznawcza) to opracowywanie interakcyjne środowisko w chmurze platformy Azure. To łatwe Rozpoczynanie pracy z usługą Azure Machine Learning rozwoju.
+
+* Zestaw SDK usługi Azure Machine Learning jest już zainstalowana.
+* Po utworzeniu obszaru roboczego usługi Azure Machine Learning w witrynie Azure portal, możesz kliknąć przycisk, aby automatycznie skonfigurować środowisko notesu platformy Azure do pracy z obszarem roboczym.
+
+Użyj [witryny Azure portal](https://portal.azure.com) wprowadzenie notesy platformy Azure.  Otwórz obszar roboczy z **Przegląd** zaznacz **wprowadzenie do platformy Azure, notesy**.
+
+Domyślnie notesów usługi Azure korzysta z warstwy bezpłatna usługa, która jest ograniczony do 4GB pamięci i 1GB danych. Można jednak usunąć te limity, dołączając wystąpienia maszyny wirtualnej do nauki o danych do projektu notesy platformy Azure. Aby uzyskać więcej informacji, zobacz [zarządzanie i konfigurować projekty notesy platformy Azure — warstwa wystąpień obliczeniowych](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier).
 
 ## <a id="workspace"></a>Utwórz plik konfiguracji obszaru roboczego
 
@@ -358,7 +368,7 @@ Można utworzyć pliku konfiguracji na trzy sposoby:
 
 * **Postępuj zgodnie z instrukcjami w [Utwórz obszar roboczy usługi Azure Machine Learning](setup-create-workspace.md#sdk)**: A *config.json* plik zostanie utworzony w bibliotece notesy platformy Azure. Plik zawiera informacje o konfiguracji dla obszaru roboczego. Można pobrać lub skopiuj *config.json* do innych środowisk programowania.
 
-* **Ręcznie utworzyć plik**: Przy użyciu tej metody korzystanie z edytora tekstu. Można znaleźć wartości, które przejdź do pliku konfiguracyjnego, przechodząc do obszaru roboczego w [witryny Azure portal](https://portal.azure.com). Skopiuj nazwę obszaru roboczego, grupy zasobów i wartości Identyfikatora subskrypcji i używać ich w pliku konfiguracji.
+* **Pobierz plik**: W [witryny Azure portal](https://ms.portal.azure.com), wybierz opcję **Pobierz config.json** z **Przegląd** części obszaru roboczego.
 
      ![Azure Portal](./media/how-to-configure-environment/configure.png)
 
@@ -387,3 +397,4 @@ Można utworzyć pliku konfiguracji na trzy sposoby:
 - [Uczenie modelu](tutorial-train-models-with-aml.md) w usłudze Azure Machine Learning z zestawem danych mnist ręcznie ZAPISANYCH
 - Widok [Azure Machine Learning SDK dla języka Python](https://aka.ms/aml-sdk) odwołania
 - Dowiedz się więcej o [SDK przeznaczonego do przygotowania usługi Azure Machine Learning danych](https://aka.ms/data-prep-sdk)
+- 

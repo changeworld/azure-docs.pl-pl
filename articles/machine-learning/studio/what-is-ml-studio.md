@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 04/20/2019
-ms.openlocfilehash: 7a2bd8ebf2e96cf2251d98501bbf42007d43a660
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dd1eaa95a23deed0bf2098995be43402c605defc
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60345554"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024220"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Co to jest usługa Azure Machine Learning Studio?
 Microsoft Azure Machine Learning Studio to narzędzie do współpracy, obsługiwane metodą „przeciągnij i upuść”, które służy do budowania, testowania i wdrażania rozwiązań z zakresu analizy predykcyjnej na podstawie posiadanych danych. Usługa Machine Learning Studio publikuje modele jako usługi sieci Web, które mogą być łatwo używane w niestandardowych aplikacjach albo narzędziach do analiz biznesowych, takich jak program Excel.
@@ -29,7 +29,7 @@ Usługa Machine Learning Studio to połączenie analiz danych, analiz predykcyjn
 
 
 ## <a name="the-machine-learning-studio-interactive-workspace"></a>Interaktywny obszar roboczy usługi Machine Learning Studio
-W celu opracowania modelu analizy predykcyjnej zwykle należy użyć danych z co najmniej jednego źródła, przekształcać i analizować te dane przy użyciu różnych funkcji do manipulowania danymi i funkcji statystycznych, a następnie wygenerować zestaw wyników. Tworzenie modelu w ten sposób jest procesem iteracyjnym. Podczas modyfikowania różnych funkcji i ich parametrów wyniki stają się zbieżne, aż do uzyskania wyuczonego, skutecznego modelu.
+Tworzenie modelu analizy predykcyjnej, zazwyczaj używa się dane z jednego lub więcej źródeł, przekształcania, analizować te dane przy użyciu różnych manipulowanie danymi i funkcje statystyczne i wygenerować zestaw wyników. Tworzenie modelu w ten sposób jest procesem iteracyjnym. Podczas modyfikowania różnych funkcji i ich parametrów wyniki stają się zbieżne, aż do uzyskania wyuczonego, skutecznego modelu.
 
 Usługa **Azure Machine Learning Studio** zapewnia interaktywny, wizualny obszar roboczy, który pozwala na budowanie, testowanie i wykonywanie kolejnych iteracji modelu analizy predykcyjnej. Użytkownik przeciąga i upuszcza ***zestawy danych*** oraz ***moduły*** analityczne na interaktywną ***kanwę***, łącząc je ze sobą w celu przygotowania eksperymentu, który uruchamia w usłudze Machine Learning Studio. W celu wykonania iteracji projektu modelu należy przeprowadzić edycję eksperymentu, zapisując kopię w razie potrzeby, a następnie uruchomić eksperyment ponownie. Gdy nadejdzie odpowiedni moment, można przekształcić ***eksperyment uczenia*** w ***eksperyment predykcyjny***, a następnie ***opublikować*** go jako usługę sieci Web, dzięki czemu model będzie dostępny dla innych osób.
 
@@ -44,7 +44,7 @@ Pobierz diagram **Przegląd możliwości usługi Microsoft Azure Machine Learnin
 ![Przegląd możliwości usługi Microsoft Azure Machine Learning Studio](./media/what-is-ml-studio/ml_studio_overview_v1.1.png)
 
 ## <a name="get-started-with-machine-learning-studio"></a>Wprowadzenie do usługi Machine Learning Studio
-Po przejściu do usługi [Machine Learning Studio](https://studio.azureml.net) widoczna jest strona **Home** (Strona główna). Z tego miejsca można wyświetlać dokumenty, materiały wideo i seminaria internetowe, a także znajdować wartościowe zasoby.
+Po przejściu usługi Machine Learning Studio,] (https://studio.azureml.net) zobaczysz **Home** strony. Z tego miejsca można wyświetlać dokumenty, materiały wideo i seminaria internetowe, a także znajdować wartościowe zasoby.
 
 Kliknij lewe górne menu, ![Menu](./media/what-is-ml-studio/menu.png) a zostanie wyświetlonych kilka opcji.
 ### <a name="azure-machine-learning-studio"></a>Azure Machine Learning Studio
@@ -87,7 +87,7 @@ Zestaw danych to dane przekazane do usługi Machine Learning Studio, dzięki cze
 * **Breast cancer data** (Dane dot. raka piersi) — dane z diagnoz raka piersi.
 * **Forest fires data** (Dane dot. pożarów lasów) — rozmiary pożarów lasów w północno-wschodniej Portugalii.
 
-Podczas tworzenia eksperymentu można wybierać zestawy danych z listy dostępnej po lewej stronie kanwy.
+Podczas tworzenia eksperymentu można wybrać z listy dostępnych zestawów danych, z lewej strony obszaru roboczego.
 
 Listę przykładowych zestawów danych dostępnych w usłudze Azure Machine Learning Studio zawiera temat [Use the sample data sets in Azure Machine Learning Studio](use-sample-datasets.md) (Korzystanie z przykładowych zestawów danych w usłudze Azure Machine Learning Studio).
 
@@ -111,14 +111,22 @@ Gdy model analizy predykcyjnej jest gotowy, można go wdrożyć jako usługę si
 <a name="compare"></a>
 ## <a name="how-is-machine-learning-studio-different-from-azure-machine-learning-service"></a>Czym różni się usługa Machine Learning Studio od usługi Azure Machine Learning Service?
 
-[Usługa Azure Machine Learning Service](../service/overview-what-is-azure-ml.md) udostępnia zestawy SDK i usługi, które służą do szybkiego przygotowywania danych oraz trenowania i wdrażania modeli uczenia maszynowego. Podnieś produktywność i zoptymalizuj koszty, korzystając ze środowiska obliczeniowego z automatycznym skalowaniem i potoków. Korzystaj z tych możliwości za pośrednictwem platform typu open source języka Python, takich jak PyTorch, TensorFlow i scikit-learn. 
+[Usługa Azure Machine Learning](../service/overview-what-is-azure-ml.md) udostępnia oba zestawy SDK **- i -** visual interface(preview), aby szybko przeznaczonego do przygotowania danych, uczenia i wdrażania modeli uczenia maszynowego. Ten interfejs graficzny (wersja zapoznawcza) zapewnia podobne możliwości przeciągania i upuszczania w programie Studio. W odróżnieniu od platformie obliczeniowej własności w Studio interfejs graficzny wykorzystuje zasoby obliczeniowe i jest w pełni zintegrowana usługa Azure Machine Learning.
 
-Używaj usługi Machine Learning Studio, gdy chcesz w szybki i prosty sposób poeksperymentować z modelami uczenia maszynowego, a wbudowane algorytmy uczenia maszynowego są wystarczające dla Twoich rozwiązań.
+Poniżej znajduje się porównanie szybkie.
 
-Używaj usługi uczenia maszynowego, jeśli pracujesz w środowisku języka Python, chcesz mieć większą kontrolę nad algorytmami uczenia maszynowego lub chcesz użyć bibliotek uczenia maszynowego typu „open source”.
+|| Machine Learning Studio | Usługa Azure Machine Learning:<br/>Interfejs wizualny|
+|---| --- | --- |
+|| Ogólnie dostępna (GA) | W wersji zapoznawczej|
+|Moduły interfejsu| wiele | Początkowy zestaw popularnych modułów|
+|Szkolenie obliczeniowych elementów docelowych| Zastrzeżone obliczeniowych elementów docelowych, tylko obsługę procesora CPU| Obsługuje mocy obliczeniowej usługi Azure Machine Learning, procesorem GPU lub CPU.<br/>(Inne jednostki obliczeniowe obsługiwane w zestawie SDK)|
+|Wdrożenie obliczeniowych elementów docelowych| Format usługi sieci web własności, modyfikowalnych | Opcje zabezpieczeń organizacji i usłudze Azure Kubernetes Service. <br/>([Innych oblicza](../service/how-to-deploy-and-where.md) obsługiwana w zestawie SDK) |
+|Automatyczne szkolenia i modelu strojenia hiperparametrycznego | Nie | Jeszcze niedostępne w interfejs graficzny. <br/> (Obsługiwane w portalu usługi SDK i platformy Azure). | 
+
+Wypróbuj interfejs graficzny (wersja zapoznawcza) przy użyciu [Szybki Start: Przygotowanie i wizualizowanie danych bez konieczności pisania kodu](../service/ui-quickstart-run-experiment.md)
 
 > [!NOTE]
-> Modele utworzone w usłudze Azure Machine Learning Studio nie mogą być wdrażane ani zarządzane przez usługę Azure Machine Learning.
+> Modele utworzone w programie Studio nie może być wdrożony ani zarządzane przez usługę Azure Machine Learning. Jednak modeli utworzonych i wdrożonych w interfejsie visual usługi mogą być zarządzane za pomocą obszaru roboczego usługi Azure Machine Learning.
 
 ## <a name="free-trial"></a>Bezpłatna wersja próbna
 

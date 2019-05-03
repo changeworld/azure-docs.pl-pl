@@ -8,15 +8,15 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 02/22/2019
+ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: bfb8f5ca9b4d204b7a5efdc1b54a0fdd150e5ed6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 637edc0e45daa37a753fbaa15313b076e8af4d7c
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60344210"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023874"
 ---
 # <a name="how-to-reference-annotations-in-a-cognitive-search-skillset"></a>Jak odwoływać się do adnotacji w usłudze wyszukiwania poznawczego zestawu umiejętności
 
@@ -36,13 +36,13 @@ Przed zapoznaniem się składni, Wróćmy do kilku ważnych pojęć, aby lepiej 
 <a name="example-1"></a>
 ## <a name="example-1-simple-annotation-reference"></a>Przykład 1: Odwołanie proste adnotacji
 
-W usłudze Azure Blob storage Załóżmy, że mają różne pliki zawierające odwołania do nazw osób, które mają zostać wyodrębnione przy użyciu rozpoznawanie jednostek znaku. W poniższej definicji umiejętności `"/document/content"` jest tekstową reprezentację całego dokumentu, a "ludzie" wyodrębniania pełne nazwy dla jednostek zidentyfikowane jako osoby.
+W usłudze Azure Blob storage Załóżmy, że mają różne pliki zawierające odwołania do nazw osób, które mają zostać wyodrębnione przy użyciu jednostek. W poniższej definicji umiejętności `"/document/content"` jest tekstową reprezentację całego dokumentu, a "ludzie" wyodrębniania pełne nazwy dla jednostek zidentyfikowane jako osoby.
 
 Ponieważ jest domyślny kontekst `"/document"`, listy osób, można teraz przywoływać jako `"/document/people"`. W tym konkretnym przypadku `"/document/people"` jest adnotacja, który może teraz zostać zamapowane do pola w indeksie ani wykorzystywać w ramach innego umiejętności, w tym samym zestawu umiejętności.
 
 ```json
   {
-    "@odata.type": "#Microsoft.Skills.Text.NamedEntityRecognitionSkill",
+    "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
     "categories": [ "Person"],
     "defaultLanguageCode": "en",
     "inputs": [
@@ -98,7 +98,7 @@ W przypadku tablic lub kolekcji ciągów adnotacji można pod kątem określonyc
 
 Czasami zachodzi potrzeba grupy wszystkie adnotacje konkretnego typu do przekazania ich do określonej umiejętności. Należy wziąć pod uwagę hipotetyczny umiejętności niestandardowe, która identyfikuje najbardziej typowe nazwisko ostatniej nazw wyodrębnionych w przykładzie 2. Aby zapewnić tylko nazwiska do niestandardowych umiejętności, określanie kontekstu jako `"/document"` i dane wejściowe jako `"/document/people/*/lastname"`.
 
-Należy pamiętać, że relacja `"/document/people/*/lastname"` jest większy niż w przypadku dokumentów. Może istnieć 10 węzłów lastname, gdy istnieje tylko jeden węzeł dokumentu dla tego dokumentu. W takim przypadku system automatycznie utworzy tablicę `"/document/people/*/lastname"` zawierający wszystkie elementy w dokumencie.
+Należy zauważyć, że relacja `"/document/people/*/lastname"` jest większy niż w przypadku dokumentów. Może istnieć 10 węzłów lastname, gdy istnieje tylko jeden węzeł dokumentu dla tego dokumentu. W takim przypadku system automatycznie utworzy tablicę `"/document/people/*/lastname"` zawierający wszystkie elementy w dokumencie.
 
 ```json
   {

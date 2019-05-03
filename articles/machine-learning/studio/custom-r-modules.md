@@ -1,7 +1,7 @@
 ---
 title: Definiowanie niestandardowych modułów R
 titleSuffix: Azure Machine Learning Studio
-description: W tym temacie opisano sposób tworzenia i wdrażania niestandardowego modułu R w usłudze Azure Machine Learning Studio. Wyjaśniono, czym są niestandardowych modułów R i jakie pliki są używane do definiowania ich.
+description: W tym temacie opisano, jak tworzyć i wdrażać niestandardowe programu R Studio. Wyjaśniono, czym są niestandardowych modułów R i jakie pliki są używane do definiowania ich.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,16 +10,16 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 0dec86eff9b9df70514be6f32f3aad60bfb311ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6d330340ff09ddb6c2bec04259f964f2298dbffc
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60751219"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65025062"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio"></a>Definiowanie niestandardowych modułów R dla usługi Azure Machine Learning Studio
 
-W tym temacie opisano sposób tworzenia i wdrażania niestandardowego modułu R w usłudze Azure Machine Learning Studio. Wyjaśniono, czym są niestandardowych modułów R i jakie pliki są używane do definiowania ich. Przedstawia on sposób tworzenia plików, które definiują modułu i jak można zarejestrować modułu dla wdrożenia w obszarze roboczym usługi Machine Learning. Elementy i atrybuty używane w definicji niestandardowego modułu następnie są opisane bardziej szczegółowo. Również omówiono sposób użycia funkcji pomocniczych, plików i wiele wyjść. 
+W tym temacie opisano, jak tworzyć i wdrażać niestandardowe programu R Studio. Wyjaśniono, czym są niestandardowych modułów R i jakie pliki są używane do definiowania ich. Przedstawia on sposób tworzenia plików, które definiują modułu i jak można zarejestrować modułu dla wdrożenia w obszarze roboczym usługi Machine Learning. Elementy i atrybuty używane w definicji niestandardowego modułu następnie są opisane bardziej szczegółowo. Również omówiono sposób użycia funkcji pomocniczych, plików i wiele wyjść. 
 
 
 
@@ -225,7 +225,7 @@ I zwracają listę obiektów na liście w odpowiedniej kolejności w "CustomAddR
 ### <a name="arguments"></a>Argumenty
 Dodatkowe dane mogą być przekazywane do funkcji języka R za pomocą parametrów modułów, które są zdefiniowane w **argumenty** elementu. Te parametry są wyświetlane w okienku po prawej stronie właściwości interfejsu użytkownika Machine Learning w przypadku wybrania modułu. Argumenty mogą być dowolny z obsługiwanych typów lub można utworzyć niestandardowe wyliczenia, gdy potrzebne. Podobnie jak **porty** elementów, **argumenty** elementów może mieć opcjonalną **opis** element, który określa tekst wyświetlany po umieszczeniu wskaźnika myszy Nazwa parametru.
 Opcjonalne właściwości dla modułu, takie jak właściwość defaultValue, minValue i maxValue można dodać do dowolnego argumentu jako atrybuty do **właściwości** elementu. Prawidłowe właściwości dla **właściwości** elementu zależą od typu argumentu i opisano z typami argumentów obsługiwanych w następnej sekcji. Argumenty ze **isOptional** właściwością **"true"** nie wymagają od użytkownika wprowadzenia wartości. Jeśli nie podano wartości argumentu, argument nie jest przekazywany do funkcji punktu wejścia. Argumenty funkcję punktu wejścia, które są opcjonalne muszą być jawnie obsługiwany przez funkcję, np. przypisana wartość domyślna wartość NULL w definicji funkcji punktu wejścia. Opcjonalny argument będzie tylko wymuszać innych ograniczeń argumentu, czyli min lub max, jeśli wartość jest podana przez użytkownika.
-Podobnie jak w przypadku danych wejściowych i wyjściowych, jest krytyczny, że każdego z parametrów ma unikatowy identyfikator skojarzonych z nimi. W naszym przykładzie szybki start został skojarzony identyfikator/parametr *wymiany*.
+Podobnie jak w przypadku danych wejściowych i wyjściowych, jest krytyczny, że każdego z parametrów ma unikatowy identyfikator skojarzonych z nimi. W naszym przykładzie Szybki Start został skojarzony identyfikator/parametr *wymiany*.
 
 ### <a name="arg-element"></a>ARG — element
 Parametr modułu jest definiowana za pomocą **Arg** element podrzędny elementu **argumenty** sekcja pliku definicji XML. Podobnie jak w przypadku elementów podrzędnych w **porty** sekcji kolejność parametrów w **argumenty** sekcja definiuje układ w najlepsze środowisko użytkownika. Parametry są wyświetlane od góry w dół w Interfejsie użytkownika w tej samej kolejności, w którym są zdefiniowane w pliku XML. Poniżej przedstawiono typy obsługiwanych przez usługę uczenia maszynowego dla parametrów. 
@@ -270,7 +270,7 @@ Parametr modułu jest definiowana za pomocą **Arg** element podrzędny elementu
 
 * *Opcjonalne właściwości*: **domyślne** i **isOptional**
 
-**ColumnPicker**: parametr wybór kolumny. Ten typ jest renderowany w Interfejsie jako selektor kolumn. **Właściwość** element jest tutaj używany do określenia identyfikatora portu, z której kolumny są zaznaczone, gdzie typ port docelowy musi być *DataTable*. Wynik wybór kolumn jest przekazany do funkcji języka R jako listę ciągów zawierającą nazwy zaznaczonej kolumnie. 
+**ColumnPicker**: parametr wybór kolumny. Ten typ jest renderowany w Interfejsie jako selektor kolumn. **Właściwość** element jest tutaj używany do określenia Identyfikatora portu, z której kolumny są zaznaczone, gdzie typ port docelowy musi być *DataTable*. Wynik wybór kolumn jest przekazany do funkcji języka R jako listę ciągów zawierającą nazwy zaznaczonej kolumnie. 
 
         <Arg id="colset" name="Column set" type="ColumnPicker">      
           <Properties portId="datasetIn1" allowedTypes="Numeric" default="NumericAll"/>
@@ -278,7 +278,7 @@ Parametr modułu jest definiowana za pomocą **Arg** element podrzędny elementu
         </Arg>
 
 
-* *Wymagane właściwości*: **identyfikator portu** -zgodny z identyfikatorem elementu danych wejściowych z typem *DataTable*.
+* *Wymagane właściwości*: **identyfikator portu** -zgodny z Identyfikatorem elementu danych wejściowych z typem *DataTable*.
 * *Opcjonalne właściwości*:
   
   * **allowedTypes** — filtry kolumny typów, z której można wybrać. Prawidłowe wartości to: 
@@ -327,7 +327,7 @@ Parametr modułu jest definiowana za pomocą **Arg** element podrzędny elementu
     </Arg>    
 
 * *Opcjonalne właściwości*:
-  * **domyślne** — wartość domyślną właściwość musi być zgodna z wartością identyfikatora z jednego z **elementu** elementów.
+  * **domyślne** — wartość domyślną właściwość musi być zgodna z wartością Identyfikatora z jednego z **elementu** elementów.
 
 ### <a name="auxiliary-files"></a>Pliki pomocnicze
 Dowolny plik, który znajduje się w pliku ZIP niestandardowego modułu będzie dostępna do użycia w czasie wykonywania. Wszelkich struktur katalogów obecne są zachowywane. Oznacza to, ten plik, określania źródła działa takie same lokalnie i w usłudze Azure Machine Learning Studio na wykonanie. 

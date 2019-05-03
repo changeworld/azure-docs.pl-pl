@@ -1,7 +1,7 @@
 ---
 title: Indeksowanie zawartości z usługi Azure Table storage w celu wyszukiwania pełnotekstowego — usługa Azure Search
 description: Dowiedz się, jak i indeksowanie danych przechowywanych w usłudze Azure Table storage za pomocą indeksatora usługi Azure Search.
-ms.date: 03/01/2019
+ms.date: 05/02/2019
 author: mgottein
 manager: cgronlun
 ms.author: magottei
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: e1b411ab54a5b666849893ba9d246eff85e7e54e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5f0e7feb52b34a4bd29bef01925bf9ea8f84d7db
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60871238"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024797"
 ---
 # <a name="index-azure-table-storage-with-azure-search"></a>Indeks usługi Azure Table storage z usługą Azure Search
 W tym artykule pokazano, jak używać usługi Azure Search do indeksowania danych przechowywanych w usłudze Azure Table storage.
@@ -49,7 +49,7 @@ Dla tabeli indeksowania, źródło danych musi mieć następujące właściwośc
 
 Aby utworzyć źródło danych:
 
-    POST https://[service name].search.windows.net/datasources?api-version=2017-11-11
+    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
@@ -81,7 +81,7 @@ Indeks określa pola w dokumencie, atrybuty, i innych konstrukcji, które kszta�
 
 Aby utworzyć indeks:
 
-    POST https://[service name].search.windows.net/indexes?api-version=2017-11-11
+    POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
@@ -100,7 +100,7 @@ Indeksator łączy źródło danych z docelowym indeksem wyszukiwania i zapewnia
 
 Po utworzeniu indeksu i źródła danych, możesz przystąpić do tworzenia indeksatora:
 
-    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
+    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
@@ -133,7 +133,7 @@ Po skonfigurowaniu uruchamiane zgodnie z harmonogramem indeksator table indeksuj
 
 Aby wskazać, że niektóre dokumenty muszą zostać usunięte z indeksu, można użyć strategii usuwania nietrwałego. Zamiast usuwać wiersz, Dodaj właściwość, aby wskazać, że ma usunięty i skonfigurować zasady usuwania nietrwałego wykrywania na źródle danych. Na przykład, następujące zasady uzna, że wiersz zostanie usunięta, jeśli wiersz zawiera właściwości `IsDeleted` wartością `"true"`:
 
-    PUT https://[service name].search.windows.net/datasources?api-version=2017-11-11
+    PUT https://[service name].search.windows.net/datasources?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 

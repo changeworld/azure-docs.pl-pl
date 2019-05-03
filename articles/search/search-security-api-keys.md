@@ -8,14 +8,14 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.date: 04/06/2019
+ms.date: 05/02/2019
 ms.author: heidist
-ms.openlocfilehash: 64b07d37ce9267681ccfb5de3c7201586bd85b35
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f12d7f1a7dfcaf80df9a71a0bfc598d72db63a2e
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61283698"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024411"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-search-service"></a>Tworzenie i zarządzanie nimi klucze api KEY dla usługi Azure Search
 
@@ -34,7 +34,7 @@ Dwa typy kluczy są używane do uzyskania dostępu do usługi wyszukiwania: admi
 |Klucz|Opis|Limits|  
 |---------|-----------------|------------|  
 |Jednostka administracyjna|Przyznaje pełne prawa do wszystkich operacji, w tym możliwość zarządzania usługą oraz tworzenia i usuwania indeksów, indeksatorów i źródeł danych.<br /><br /> Dwa klucze administratora, nazywane *podstawowego* i *dodatkowej* klucze w witrynie portal, są generowane, gdy usługa zostanie utworzona i może zostać indywidualnie wygenerowany ponownie na żądanie. Mając dwa klucze umożliwia przechodzą z jednego klucza podczas korzystania z drugiego klucza opinię dotyczącą przedłużenia dostępu do usługi.<br /><br /> Klucze administratora są tylko określone w nagłówkach żądań HTTP. Klucz interfejsu api administratora nie można umieścić w adresie URL.|Maksymalnie 2 na usługę|  
-|Zapytanie|Przyznanie dostępu tylko do odczytu do indeksów i dokumentów i są zazwyczaj dystrybuowane do aplikacji klienckich, które wysyłają żądania wyszukiwania.<br /><br /> Klucze zapytania są tworzone na żądanie. Możesz utworzyć je ręcznie w portalu lub programowo przy użyciu [interfejsu API REST zarządzania](https://docs.microsoft.com/rest/api/searchmanagement/).<br /><br /> Klucze zapytania można określić w nagłówku żądania HTTP do wyszukiwania, sugestię lub operacji wyszukiwania. Alternatywnie można przekazać klucz zapytania jako parametr adresu URL. W zależności od tego, jak Twoja aplikacja kliencka formulates żądania może być łatwiejsze do przekazania klucza jako parametru zapytania:<br /><br /> `GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2017-11-11&api-key=[query key]`|50 na usługę|  
+|Zapytanie|Przyznanie dostępu tylko do odczytu do indeksów i dokumentów i są zazwyczaj dystrybuowane do aplikacji klienckich, które wysyłają żądania wyszukiwania.<br /><br /> Klucze zapytania są tworzone na żądanie. Możesz utworzyć je ręcznie w portalu lub programowo przy użyciu [interfejsu API REST zarządzania](https://docs.microsoft.com/rest/api/searchmanagement/).<br /><br /> Klucze zapytania można określić w nagłówku żądania HTTP do wyszukiwania, sugestię lub operacji wyszukiwania. Alternatywnie można przekazać klucz zapytania jako parametr adresu URL. W zależności od tego, jak Twoja aplikacja kliencka formulates żądania może być łatwiejsze do przekazania klucza jako parametru zapytania:<br /><br /> `GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2019-05-06&api-key=[query key]`|50 na usługę|  
 
  Wizualnie nie ma różnicy między klucz administratora lub klucz zapytania. Oba klucze są ciągi składające się z 32 losowo generowany znaków alfanumerycznych. Jeśli zgubisz śledzenie jakiego rodzaju klucza jest określona w aplikacji, możesz to zrobić [sprawdzić wartości klucza w portalu](https://portal.azure.com) lub użyj [interfejsu API REST](https://docs.microsoft.com/rest/api/searchmanagement/) zwracać wartości i typ klucza.  
 

@@ -8,15 +8,15 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 02/25/2019
+ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: e4849487c2dd9330dbf9e6b6cf0ed4d1b6b96020
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f773cd298c8faaac90b30d88a74e8ddcb51c3afa
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60637522"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65021950"
 ---
 # <a name="deprecated-cognitive-search-skills"></a>Umiejętności przestarzałe wyszukiwania kognitywnego
 
@@ -31,7 +31,7 @@ W tym dokumencie opisano umiejętności poznawcze, które są uznawane za przest
 
 ### <a name="last-available-api-version"></a>Ostatnie dostępna wersja interfejsu api
 
-2017-11-11-preview
+2019-05-06-preview
 
 ### <a name="end-of-support"></a>Zakończenie obsługi
 
@@ -43,7 +43,8 @@ Use [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-entity
 
 Aby przeprowadzić migrację do [umiejętności rozpoznawania jednostek](cognitive-search-skill-entity-recognition.md), trzeba będzie wykonać co najmniej jedną z następujących zmian do definicji umiejętności. Można zaktualizować przy użyciu definicji umiejętności [aktualizacji interfejsu API zestawu umiejętności](https://docs.microsoft.com/rest/api/searchservice/update-skillset).
 
-_Uwaga_: Obecnie współczynnik ufności jako koncepcja jest nieobsługiwana. Jego będą obsługiwane w najbliższej przyszłości. `minimumPrecision` Parametr istnieje w `EntityRecognitionSkill` do użytku w przyszłości, jak i dla zapewnienia zgodności.
+> [!NOTE]
+> Obecnie współczynnik ufności jako koncepcja jest nieobsługiwana. `minimumPrecision` Parametr istnieje w `EntityRecognitionSkill` do użytku w przyszłości, jak i dla zapewnienia zgodności.
 
 1. *(Wymagane)*  Zmiany `@odata.type` z `"#Microsoft.Skills.Text.NamedEntityRecognitionSkill"` do `"#Microsoft.Skills.Text.EntityRecognitionSkill"`.
 

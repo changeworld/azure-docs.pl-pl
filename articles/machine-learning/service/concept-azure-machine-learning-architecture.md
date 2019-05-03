@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 83ca4d2bf767d338943c396330b36f3f8180e170
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b06e3ff50eba4763403450a807aa90ef6335f1a9
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60821283"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65025234"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Jak działa usługa Azure Machine Learning: Architektura i pojęcia
 
@@ -68,7 +68,7 @@ Gdy tworzysz nowy obszar roboczy, automatycznie tworzy kilka zasobów platformy 
 
 Taksonomia obszaru roboczego zostało zilustrowane na poniższym diagramie:
 
-[![Taksonomia obszaru roboczego](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.svg)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
+[![Taksonomia obszaru roboczego](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
 
 ## <a name="experiment"></a>Eksperyment
 
@@ -106,6 +106,16 @@ Konfigurację uruchomieniową mogą zostać utrwalone w pliku w katalogu, który
 
 Na przykład konfiguracji uruchamiania, zobacz [wybierz, a następnie użyć obliczeniowego elementu docelowego na podstawie uczyć modele](how-to-set-up-training-targets.md).
 
+## <a name="dataset"></a>Zestaw danych
+
+Zestawy Azure Machine Learning danych (wersja zapoznawcza) ułatwiają dostęp i pracować z danymi. Zestawy danych zarządzania danymi w różnych scenariuszach, takich jak szkolenia modelu i potoku tworzenia. Przy użyciu zestawu SDK usługi Azure Machine Learning, można dostęp bazowy magazyn, zapoznaj się z i przygotowywania danych, Zarządzanie cyklem życia różnych definicjach zestawów danych i porównanie między zestawów danych używanych w szkolenia i w środowisku produkcyjnym.
+
+Zestawy danych udostępnia metody do pracy z danymi w popularnych formatach, takich jak przy użyciu `from_delimited_files()` lub `to_pandas_dataframe()`.
+
+Aby uzyskać więcej informacji, zobacz [tworzenie i rejestrowanie zestawów danych Learning maszyny Azure](how-to-create-register-datasets.md).
+
+Przykład przy użyciu zestawów danych, zobacz [przykładowy notesów](https://aka.ms/dataset-tutorial).
+
 ## <a name="datastore"></a>Magazyn danych
 
 Magazyn danych to Abstrakcja magazynu za pośrednictwem konta usługi Azure storage. Magazyn danych można użyć kontenera obiektów blob platformy Azure lub udziału plików platformy Azure jako magazynu zaplecza. Każdy obszar roboczy ma domyślny magazyn danych, dlatego możesz zarejestrować dodatkowe magazynów danych.
@@ -127,7 +137,7 @@ Cel obliczenia jest zasobu obliczeniowego, używanej do uruchomienia skryptu w j
 | Azure Container Instances | &nbsp; | ✓ |
 | Azure Kubernetes Service | &nbsp; | ✓ |
 | Azure IoT Edge | &nbsp; | ✓ |
-| Project Brainwave</br>(Programowalny bramy array) | &nbsp; | ✓ |
+| Tablica programowalny bramy (FPGA) | &nbsp; | ✓ |
 
 Obliczeniowych elementów docelowych są dołączone do obszaru roboczego. Obliczeniowe elementy docelowe, innym niż komputer lokalny są udostępniane przez użytkowników obszaru roboczego.
 
@@ -189,8 +199,6 @@ Usługa Azure Machine Learning można tworzyć dwa typy obrazów:
 * **Obraz platformy docker**: Używany podczas wdrażania do celów innych niż FPGA obliczeń. Przykładami są usługi Azure Container Instances i Azure Kubernetes Service.
 
 Usługa Azure Machine Learning zapewnia obraz podstawowy, który jest używany domyślnie. Możesz również podać własne niestandardowe obrazy.
-
-Aby uzyskać więcej informacji, zobacz Konfigurowanie i rejestrowanie części obrazu [wdrażanie modeli](how-to-deploy-and-where.md#configureimage).
 
 Aby uzyskać przykład tworzenia obrazu, zobacz [wdrażanie modeli klasyfikacji obrazów w usłudze Azure Container Instances](tutorial-deploy-models-with-aml.md).
 

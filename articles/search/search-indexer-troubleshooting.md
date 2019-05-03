@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 05/02/2019
 ms.author: magottei
 ms.custom: seodec2018
-ms.openlocfilehash: b527b759eb9c76ab6289e909001c5f7820f34ef4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 81987115ba0406e704f2198061c6ee3cae8a72df
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60321846"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024692"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-search"></a>Rozwiązywanie typowych problemów indeksatora w usłudze Azure Search
 
@@ -57,7 +57,7 @@ Usługa Azure Search ma niejawne zależność indeksowania usługi Cosmos DB. Po
 Indeksowanie obiektów blob [dokumentów, które formaty dokumentów są jawnie obsługiwane.](search-howto-indexing-azure-blob-storage.md#supported-document-formats). Czasami kontenera magazynu obiektów blob zawiera nieobsługiwany dokumenty. Czasami może występować problematyczne dokumentów. Możesz uniknąć zatrzymywanie indeksator nad tymi dokumentami, [zmieniając opcje konfiguracji](search-howto-indexing-azure-blob-storage.md#dealing-with-errors):
 
 ```
-PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2017-11-11
+PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
 Content-Type: application/json
 api-key: [admin key]
 
@@ -75,7 +75,7 @@ Indeksowanie obiektów blob [wyszukuje i wyodrębnia tekst z obiektów blob w ko
 * Indeksowanie obiektów blob jest skonfigurowany do tylko metadane indeksu. Aby wyodrębnić zawartość, indeksatora obiektów blob musi być skonfigurowana do [wyodrębnić zawartość i metadane](search-howto-indexing-azure-blob-storage.md#controlling-which-parts-of-the-blob-are-indexed):
 
 ```
-PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2017-11-11
+PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
 Content-Type: application/json
 api-key: [admin key]
 

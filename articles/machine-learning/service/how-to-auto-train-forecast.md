@@ -9,13 +9,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
-ms.date: 03/19/2019
-ms.openlocfilehash: d79154a8792b9017b98f9d21a2ab0360b7304d1c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/02/2019
+ms.openlocfilehash: 4386420a56b3543ac6c5f5934f963e56bc674873
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64697860"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024993"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Auto — szkolenie modelu prognozowania szeregów czasowych
 
@@ -24,6 +24,8 @@ W tym artykule dowiesz się, jak do uczenia modelu regresji prognozowania szereg
 * Przygotowuje dane do modelowania serii czasu
 * Konfigurowanie określone parametry szeregów czasowych w [ `AutoMLConfig` ](/python/api/azureml-train-automl/azureml.train.automl.automlconfig) obiektu
 * Uruchom prognoz z danymi szeregów czasowych
+
+> [!VIDEO https://www.youtube.com/embed/mGr_c2UnOUI]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

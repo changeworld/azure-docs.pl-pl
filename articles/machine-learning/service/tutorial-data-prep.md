@@ -11,12 +11,12 @@ ms.author: MayMSFT
 ms.reviewer: trbye
 ms.date: 03/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5c1c00fec5f56fc81b2cb73404728b214b5aaf3f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a717fa4191c57c21705d24884397ebb485726492
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60764593"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65025122"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>Samouczek: Przygotowywanie danych do modelowania regresji
 
@@ -41,18 +41,16 @@ Przejdź do sekcji [Konfigurowanie środowiska projektowego](#start), aby zapozn
     * Zestaw SDK przygotowywania danych usługi Azure Machine Learning dla języka Python
 * Notes samouczka
 
-Wszystkie te wymagania wstępne można spełnić, korzystając z jednej z poniższych sekcji.
-
-* Korzystanie z usługi [Azure Notebooks](#azure)
+* Użyj [serwer chmura w obszarze roboczym](#azure) 
 * Korzystanie z [własnego serwera notesów](#server)
 
-### <a name="azure"></a>Korzystanie z usługi Azure Notebooks: bezpłatne notesy Jupyter Notebook w chmurze
+### <a name="azure"></a>Użyj serwera notesu chmura w obszarze roboczym
 
-Rozpoczęcie pracy z usługą Azure Notebooks jest bardzo proste. Zestaw SDK przygotowywania danych usługi Azure Machine Learning został już zainstalowany i skonfigurowany w usłudze [Azure Notebooks](https://notebooks.azure.com/). Instalacja i przyszłe aktualizacje są automatycznie zarządzane za pomocą usług platformy Azure.
-
-Po wykonaniu poniższych czynności uruchom notes **tutorials/regression-part1-data-prep.ipynb** w projekcie **Wprowadzenie**.
+To ułatwia rozpoczęcie pracy z serwerem oparte na chmurze notesu. [Azure Machine Learning SDK dla języka Python](https://aka.ms/aml-sdk) jest już zainstalowany i skonfigurowany dla Ciebie, po utworzeniu zasobu w chmurze.
 
 [!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
+
+* Po uruchomieniu notesu strony sieci Web, uruchom **samouczki/regresji — część 1 data-prep.ipynb** notesu.
 
 ### <a name="server"></a>Korzystanie z własnego serwera notesów Jupyter Notebook
 
