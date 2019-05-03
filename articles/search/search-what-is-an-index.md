@@ -7,14 +7,14 @@ ms.author: heidist
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 05/02/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 645f3177913b903e8262c1fec08c452130e2a671
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 462a99ffab8038f34b1ffd038ce5c8e8ec9a8565
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60308248"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024429"
 ---
 # <a name="create-a-basic-index-in-azure-search"></a>Tworzenie podstawowego indeksu w usłudze Azure Search
 
@@ -54,7 +54,7 @@ Kod, a nie podejście portalu, jest zalecane w przypadku iteracyjne projektowani
 
 Schematycznie indeksu usługi Azure Search składa się z następujących elementów. 
 
-[ *Kolekcję pól* ](#fields-collection) jest zazwyczaj największych częścią indeksu, gdzie nosi nazwę każdego pola, wpisane, a z dopuszczalny rozmiar zachowania, które określają, jak są używane. Inne elementy obejmują [sugestory](#suggesters), [profile oceniania](#scoring-profiles), [analizatory](#analyzers) z części składowe, które umożliwiają dostosowanie, a [CORS](#cors) Opcje.
+[ *Kolekcję pól* ](#fields-collection) jest zazwyczaj największych częścią indeksu, gdzie nosi nazwę każdego pola, wpisane, a z dopuszczalny rozmiar zachowania, które określają, jak są używane. Inne elementy obejmują [sugestory](#suggesters), [profile oceniania](#scoring-profiles), [analizatory](#analyzers) z części składowe, które umożliwiają dostosowanie, [CORS](#cors) i [klucza szyfrowania](#encryption-key) opcje.
 
 ```json
 {
@@ -126,6 +126,15 @@ Schematycznie indeksu usługi Azure Search składa się z następujących elemen
   "corsOptions": (optional) {
     "allowedOrigins": ["*"] | ["origin_1", "origin_2", ...],
     "maxAgeInSeconds": (optional) max_age_in_seconds (non-negative integer)
+  },
+  "encryptionKey":(optional){
+    "keyVaultUri": "azure_key_vault_uri",
+    "keyVaultKeyName": "name_of_azure_key_vault_key",
+    "keyVaultKeyVersion": "version_of_azure_key_vault_key",
+    "accessCredentials":(optional){
+      "applicationId": "azure_active_directory_application_id",
+      "applicationSecret": "azure_active_directory_application_authentication_key"
+    }
   }
 }
 ```
@@ -166,7 +175,7 @@ Dowiedz się więcej na temat [atrybutów indeksów usługi Azure Search w tym m
 
 Atrybuty, które możesz wybrać mają wpływ na magazyn. Poniższy zrzut ekranu przedstawia wzorców magazynu indeksu wynikające z różnych kombinacji atrybutów.
 
-Indeks jest oparty na [przykładowe wbudowane realestate](search-get-started-portal.md) źródła danych, co umożliwia indeksowanie i zapytania w portalu. Mimo że schematy indeksu nie są wyświetlane, można wywnioskować atrybutów, w oparciu o nazwę indeksu. Na przykład *realestate wyszukiwanie* indeks ma **wyszukiwanie** atrybut i nic, *pobieranie realestate* indeks ma  **pobieranie** atrybut i nic innego i tak dalej.
+Indeks jest oparty na [przykładowe wbudowane nieruchomości](search-get-started-portal.md) źródła danych, co umożliwia indeksowanie i zapytania w portalu. Mimo że schematy indeksu nie są wyświetlane, można wywnioskować atrybutów, w oparciu o nazwę indeksu. Na przykład *realestate wyszukiwanie* indeks ma **wyszukiwanie** atrybut i nic, *pobieranie realestate* indeks ma  **pobieranie** atrybut i nic innego i tak dalej.
 
 ![Indeks rozmiaru na podstawie wyboru atrybutu](./media/search-what-is-an-index/realestate-index-size.png "indeksu rozmiaru na podstawie wybranych atrybutów")
 
@@ -203,6 +212,10 @@ Do obsługi mechanizmu CORS można ustawić następujące opcje:
   Jeśli chcesz zezwolić na dostęp do wszystkich źródeł, Uwzględnij `*` jako pojedynczy element **allowedOrigins** tablicy. *Nie jest to zalecane praktyki dla usługi wyszukiwania w środowisku produkcyjnym* , ale często jest to przydatne w przypadku programowania i debugowania.
 
 + **Atrybut maxAgeInSeconds** (opcjonalnie): Przeglądarki używają tej wartości można określić czas trwania (w sekundach) do odpowiedzi wstępnego CORS pamięci podręcznej. To musi być nieujemną liczbą całkowitą. Im większa wartość ta jest, Lepsza wydajność, ale tym dłużej będzie trwało zmian zasad CORS zaczęły obowiązywać. Jeśli nie jest ustawiona, będzie używany domyślny czas trwania wynoszącą 5 minut.
+
+## <a name="encryption-key"></a>Klucz szyfrowania
+
+Gdy wszystkie indeksy usługi Azure search są domyślne szyfrowanie przekazywanego materiału przy użyciu kluczy zarządzanych firmy Microsoft, indeksów można skonfigurować, aby być zaszyfrowany przy użyciu **klucze zarządzane przez klienta** w usłudze Key Vault. Aby dowiedzieć się więcej, zobacz [zarządzać kluczami szyfrowania w usłudze Azure Search](search-security-manage-encryption-keys.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

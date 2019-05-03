@@ -13,29 +13,29 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 11/21/2017
+ms.date: 05/01/2019
 ms.author: szark
-ms.openlocfilehash: c0124d133fe2db9acb16251bc21ffb19f1b1268f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: db10c95c982132c41193ed1cccfdcdca6f60ba5e
+ms.sourcegitcommit: abeefca6cd5ca01c3e0b281832212aceff08bf3e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60743449"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "64993083"
 ---
-# <a name="linux-distributions-endorsed-on-azure"></a>Dystrybucje systemu Linux zalecane na platformie Azure
+# <a name="endorsed-linux-distributions-on-azure"></a>Zatwierdzone dystrybucje systemu Linux na platformie Azure
 Etap to udostępnienie obrazów systemu Linux w witrynie Azure Marketplace. Współpracujemy z wieloma społecznościami systemu Linux, aby dodać jeszcze więcej pozycji do listy dystrybucyjnej zatwierdzone. W międzyczasie dystrybucji, które nie są dostępne w portalu Marketplace, zawsze Przenoszenie własnych Linux postępując zgodnie ze wskazówkami w temacie [tworzenie i przekazywanie wirtualnego dysku twardego zawierającego system operacyjny Linux](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic).
 
 ## <a name="supported-distributions-and-versions"></a>Obsługiwane dystrybucje i wersje
 W poniższej tabeli wymieniono dystrybucje systemu Linux i wersji, które są obsługiwane na platformie Azure. Zapoznaj się [pomocy technicznej dla obrazów systemu Linux na platformie Microsoft Azure](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) Aby uzyskać szczegółowe informacje dotyczące pomocy technicznej dla systemu Linux i technologii typu open source na platformie Azure.
 
-Sterowniki usługi LIS (Linux Integration) dla funkcji Hyper-V i platformą Azure są modułów jądra, których Microsoft przyczynia się bezpośrednio do nadrzędnego jądra systemu Linux.  Niektórych sterowników LIS są wbudowane w jądra dystrybucji domyślnie. Starsze dystrybucje, które są oparte na systemie Red Hat Enterprise (RHEL) / CentOS są dostępne do pobrania osobno na [Linux integracji usług w wersji 4.2 dla funkcji Hyper-V i Azure](https://www.microsoft.com/en-us/download/details.aspx?id=55106). Zobacz [wymagania jądra systemu Linux](create-upload-generic.md#linux-kernel-requirements) Aby uzyskać więcej informacji na temat sterowników LIS.
+Sterowniki usługi LIS (Linux Integration) dla funkcji Hyper-V i platformą Azure są modułów jądra, których Microsoft przyczynia się bezpośrednio do nadrzędnego jądra systemu Linux.  Niektórych sterowników LIS są wbudowane w jądra dystrybucji domyślnie. Starsze dystrybucje, które są oparte na systemie Red Hat Enterprise (RHEL) / CentOS są dostępne do pobrania osobno na [Linux integracji usług w wersji 4.2 dla funkcji Hyper-V i Azure](https://www.microsoft.com/download/details.aspx?id=55106). Zobacz [wymagania jądra systemu Linux](create-upload-generic.md#linux-kernel-requirements) Aby uzyskać więcej informacji na temat sterowników LIS.
 
 Agent systemu Linux platformy Azure wstępnie zainstalowanym systemem obrazów portalu Azure Marketplace i są zazwyczaj dostępne z repozytorium pakietów dystrybucji. Kod źródłowy znajduje się na [GitHub](https://github.com/azure/walinuxagent).
 
   
 | Dystrybucja | Wersja | Sterowniki | Agent |
 | --- | --- | --- | --- |
-| CentOS |CentOS 6.3+, 7.0+ |CentOS 6.3: [Pobierz LIS](https://www.microsoft.com/en-us/download/details.aspx?id=55106)<p>CentOS 6.4+: Jądra |Pakiet: W [repozytorium](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) w obszarze "WALinuxAgent" <br/>Kod źródłowy: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| CentOS |CentOS 6.3+, 7.0+ |CentOS 6.3: [Pobierz LIS](https://www.microsoft.com/download/details.aspx?id=55106)<p>CentOS 6.4+: Jądra |Pakiet: W [repozytorium](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) w obszarze "WALinuxAgent" <br/>Kod źródłowy: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/) |494.4.0+ |Jądra |Kod źródłowy: [GitHub](https://github.com/coreos/coreos-overlay/tree/master/app-emulation/wa-linux-agent) |
 | Debian |Debian 7.9+, 8.2+ |Jądra |Pakiet: W repozytorium, w obszarze "waagent" <br/>Kod źródłowy: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | Oracle Linux |6.4+, 7.0+ |Jądra |Pakiet: W repozytorium, w obszarze "WALinuxAgent" <br/>Kod źródłowy: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
@@ -44,7 +44,25 @@ Agent systemu Linux platformy Azure wstępnie zainstalowanym systemem obrazów p
 | openSUSE |openSUSE Leap 42.2+ |Jądra |Pakiet: W [chmury: narzędzia](https://build.opensuse.org/project/show/Cloud:Tools) repozytorium w obszarze "python-azure-agent" <br/>Kod źródłowy: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | Ubuntu |Ubuntu 12.04+ **<sup>1</sup>** |Jądra |Pakiet: W repozytorium, w obszarze "walinuxagent" <br/>Kod źródłowy: [GitHub](https://github.com/Azure/WALinuxAgent) |
 
-  - **<sup>1</sup>**  Ubuntu 12.04 obsługi na platformie Azure można znaleźć [powiadomienie EOL](https://azure.microsoft.com/blog/ubuntu-12-04-precise-pangolin-nearing-end-of-life/).
+  - **<sup>1</sup>**  informacji o rozszerzoną obsługę Ubuntu 12.04 14.04 można znaleźć tutaj: [Ubuntu Extended Security Maintenance](https://www.ubuntu.com/esm).
+
+
+## <a name="image-update-cadence"></a>Cykl aktualizacji obrazu
+Platforma Azure wymaga, że wydawców zalecanych dystrybucjach systemu Linux regularnie aktualizować obrazów w portalu Azure Marketplace przy użyciu najnowszych poprawek i poprawki zabezpieczeń, w erze kwartalnych lub szybciej. Zaktualizowanych obrazów w portalu Azure Marketplace są dostępne automatycznie dla klientów jako nowe wersje SKU obrazu. Więcej informacji na temat wyszukiwania obrazów systemu Linux: [Znajdowanie obrazów maszyny Wirtualnej systemu Linux w witrynie Azure Marketplace](https://docs.microsoft.com/azure/virtual-machines/linux/cli-ps-findimage).
+
+### <a name="additional-links"></a>Dodatkowe linki
+ - [Cykl życia obraz chmury publicznej SUSE](https://www.suse.com/c/suse-public-cloud-image-life-cycle/)
+
+## <a name="azure-tuned-kernels"></a>Dopasowane Azure jądra
+
+Azure ściśle współpracuje z różne dystrybucje systemu Linux zalecanych optymalizacji obrazów, opublikowanych w portalu Azure Marketplace. Jednym z aspektów ta współpraca to rozwoju "dostosowane" jądra systemu Linux, które są zoptymalizowane pod kątem platformy Azure i dostarczane jako w pełni obsługiwane składniki dystrybucji systemu Linux. Jądra dopasowane do platformy Azure obejmują nowe funkcje i ulepszenia wydajności i na szybsze tempa (zazwyczaj co kwartał) w porównaniu do domyślnych lub jądra ogólnego, które są dostępne z dystrybucji.
+
+W większości przypadków można znaleźć te jądra wstępnie zainstalowanych na domyślne obrazy w witrynie Azure Marketplace, a klienci więc platformy Azure zostanie natychmiast możesz korzystać z tych zoptymalizowane jądra. Więcej informacji na temat tych jądra dostrojone Azure znajdują się w następujących łączy:
+
+ - CentOS dostrojone Azure jądra - dostępne za pośrednictwem wirtualizacji CentOS SIG - [uzyskać więcej informacji](https://wiki.centos.org/SpecialInterestGroup/Virtualization)
+ - Debian chmury — dostępne jądra z Debian 10 i obrazu systemu Debian 9 "backports" na platformie Azure — [żądania dalszych informacji](https://wiki.debian.org/Cloud/MicrosoftAzure)
+ - SLES dostrojone Azure jądra - [uzyskać więcej informacji](https://www.suse.com/c/a-different-builtin-kernel-for-azure-on-demand-images/)
+ - Ubuntu dostrojone Azure jądra - [uzyskać więcej informacji](https://blog.ubuntu.com/2017/09/21/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel)
 
 
 ## <a name="partners"></a>Partnerzy

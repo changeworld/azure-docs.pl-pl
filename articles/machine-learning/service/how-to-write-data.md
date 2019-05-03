@@ -10,18 +10,21 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: jmartens
-ms.date: 12/04/2018
+ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 92f04d80ea956f3036d7778a5d6de62e53b969ad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d8644c2c0d4ee5b6ee4dcf16e470e4f2fa478237
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60817370"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023712"
 ---
-# <a name="write-and-configure-data-using-azure-machine-learning"></a>Pisanie i konfigurowanie danych przy użyciu usługi Azure Machine Learning
+# <a name="write-and-configure-data--with-the-azure-machine-learning-data-prep-sdk"></a>Pisanie i konfigurowanie danych przy użyciu usługi Azure Machine Learning Prep zestawu SDK usługi Data
 
 W tym artykule dowiesz się, zapisywanie danych przy użyciu różnych metod [Azure Machine Learning danych Prep zestawu Python SDK](https://aka.ms/data-prep-sdk) i sposobie konfigurowania tych danych do eksperymentowania z [Azure Machine Learning SDK dla języka Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).  Dane wyjściowe mogą być napisane w dowolnym miejscu przepływu danych. Zapisy są dodawane jako kroki, aby wynikowe przepływu danych, a te kroki uruchamiane za każdym razem, gdy przebiegi przepływu danych. Dane są zapisywane do wielu plików partycji umożliwia zapisywanie równoległej.
+
+> [!Important]
+> Jeśli tworzysz nowe rozwiązanie, spróbuj [zestawów danych Learning maszyny Azure](how-to-explore-prepare-data.md) (wersja zapoznawcza), Przekształć swoje dane, dane migawki w celu przechowywania definicji określonej wersji zestawu danych. Zestawy danych to następna wersja przygotowywanie danych zestawu SDK, oferując rozszerzone funkcje do zarządzania zestawami danych w rozwiązań sztucznej Inteligencji.
 
 Ponieważ nie ma ograniczeń ile napisać czynności są w potoku, możesz łatwo dodawać zapisu dodatkowe kroki, aby uzyskać wyniki pośrednie, rozwiązywania problemów lub innych potokach.
 
