@@ -248,7 +248,7 @@ Usługa Automation tworzy dwa typy rekordów w obszarze roboczym usługi Log Ana
 
 |Właściwość | Opis|
 |----------|----------|
-|Obiekt wywołujący |  Użytkownik, który zainicjował operację. Możliwe wartości to adres e-mail lub system w przypadku zaplanowanych zadań.|
+|Caller |  Użytkownik, który zainicjował operację. Możliwe wartości to adres e-mail lub system w przypadku zaplanowanych zadań.|
 |Category | Klasyfikacja typu danych. W przypadku usługi Automation wartością jest JobLogs.|
 |CorrelationId | Identyfikator GUID, który jest Identyfikatorem korelacji zadania elementu runbook.|
 |JobId | Identyfikator GUID, który jest Identyfikatorem zadania elementu runbook.|
@@ -269,7 +269,7 @@ Usługa Automation tworzy dwa typy rekordów w obszarze roboczym usługi Log Ana
 
 |Właściwość | Opis|
 |----------|----------|
-|Obiekt wywołujący |  Użytkownik, który zainicjował operację. Możliwe wartości to adres e-mail lub system w przypadku zaplanowanych zadań.|
+|Caller |  Użytkownik, który zainicjował operację. Możliwe wartości to adres e-mail lub system w przypadku zaplanowanych zadań.|
 |Category | Klasyfikacja typu danych. W przypadku usługi Automation wartością jest JobStreams.|
 |JobId | Identyfikator GUID, który jest Identyfikatorem zadania elementu runbook.|
 |operationName | Określa typ operacji wykonywanej na platformie Azure. W przypadku usługi Automation wartością jest zadanie.|
