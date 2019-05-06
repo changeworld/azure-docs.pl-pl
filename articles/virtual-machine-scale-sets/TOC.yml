@@ -152,6 +152,8 @@
         - name: Limity przydziału procesorów wirtualnych
           href: ../virtual-machines/windows/quotas.md
           maintainContext: true
+    - name: Zestaw skalowania — często zadawane pytania
+      href: virtual-machine-scale-sets-faq.md
 - name: Instrukcje
   items:
     - name: Planowanie i projektowanie
@@ -183,6 +185,9 @@
               href: virtual-machine-scale-sets-autoscale-portal.md
             - name: Zaawansowane automatyczne skalowanie
               href: ../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md
+              maintainContext: true
+            - name: Rozwiązywanie problemów z automatycznym skalowaniem
+              href: virtual-machine-scale-sets-troubleshoot.md
         - name: Aplikacje w zestawach skalowania
           href: virtual-machine-scale-sets-deploy-app.md
         - name: Rozszerzenia w zestawach skalowania
@@ -199,6 +204,9 @@
               href: virtual-machine-scale-sets-encrypt-disks-ps.md
             - name: Używanie interfejsu wiersza polecenia platformy Azure
               href: virtual-machine-scale-sets-encrypt-disks-cli.md
+            - name: Szyfrowanie dysków za pomocą sekwencjonowania rozszerzeń
+              href: ../security/azure-security-disk-encryption-extension-sequencing.md
+              maintainContext: true
         - name: Praca z dużymi zestawami skalowania
           href: virtual-machine-scale-sets-placement-groups.md
         - name: Konwertowanie szablonu zestawu skalowania w celu używania dysku zarządzanego
@@ -247,14 +255,6 @@
         - name: Automatyczne skalowanie zestawu skalowania
           href: /azure/ansible/ansible-auto-scale-vmss
           maintainContext: true
-    - name: Rozwiązywanie problemów
-      items:
-        - name: Automatyczne skalowanie
-          href: virtual-machine-scale-sets-troubleshoot.md
-    - name: Często zadawane pytania
-      items:
-        - name: Zestaw skalowania — często zadawane pytania
-          href: virtual-machine-scale-sets-faq.md
 - name: Dokumentacja
   items:
     - name: Azure PowerShell

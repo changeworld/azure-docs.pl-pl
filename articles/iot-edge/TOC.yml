@@ -13,28 +13,44 @@
       href: quickstart.md
 - name: Samouczki
   items:
-    - name: Filtrowanie danych przy użyciu usługi Azure Functions
-      href: tutorial-deploy-function.md
-    - name: Wyszukiwanie wartości średnich przy użyciu kolekcji ASA
-      href: tutorial-deploy-stream-analytics.md
-    - name: Ocenianie danych przy użyciu usługi Azure Machine Learning
-      href: tutorial-deploy-machine-learning.md
-    - name: Klasyfikowanie obrazów za pomocą usługi Custom Vision
-      href: tutorial-deploy-custom-vision.md
-    - name: Przechowywanie danych lokalnie przy użyciu języka SQL
-      href: tutorial-store-data-sql-server.md
-    - name: Tworzenie modułów kodu niestandardowego
+    - name: 1. Konfigurowanie środowiska deweloperskiego
       items:
+        - name: Opracowywanie zawartości dla urządzeń z systemem Linux
+          href: tutorial-develop-for-linux.md
+        - name: Opracowywanie zawartości dla urządzeń z systemem Windows
+          href: tutorial-develop-for-windows.md
+    - name: 2. Tworzenie modułów kodu niestandardowego
+      items:
+        - name: C
+          items:
+            - name: Moduły języka C dla urządzeń z systemem Linux
+              href: tutorial-c-module.md
+            - name: Moduły języka C dla urządzeń z systemem Windows
+              href: tutorial-c-module-windows.md
         - name: 'C#'
-          href: tutorial-csharp-module.md
-        - name: Python
-          href: tutorial-python-module.md
-        - name: Node.js
-          href: tutorial-node-module.md
+          items:
+            - name: 'Moduły języka C# dla urządzeń z systemem Linux'
+              href: tutorial-csharp-module.md
+            - name: 'Moduły języka C# dla urządzeń z systemem Windows'
+              href: tutorial-csharp-module-windows.md
         - name: Java
           href: tutorial-java-module.md
-        - name: C
-          href: tutorial-c-module.md
+        - name: Node.js
+          href: tutorial-node-module.md
+        - name: Python
+          href: tutorial-python-module.md
+    - name: 3. Wdrażanie usług platformy Azure jako modułów
+      items:
+        - name: Filtrowanie danych przy użyciu usługi Azure Functions
+          href: tutorial-deploy-function.md
+        - name: Wyszukiwanie wartości średnich przy użyciu kolekcji ASA
+          href: tutorial-deploy-stream-analytics.md
+        - name: Ocenianie danych przy użyciu usługi Azure Machine Learning
+          href: tutorial-deploy-machine-learning.md
+        - name: Klasyfikowanie obrazów za pomocą usługi Custom Vision
+          href: tutorial-deploy-custom-vision.md
+        - name: Przechowywanie danych lokalnie przy użyciu języka SQL
+          href: tutorial-store-data-sql-server.md
 - name: Pojęcia
   items:
     - name: Środowisko uruchomieniowe usługi IoT Edge

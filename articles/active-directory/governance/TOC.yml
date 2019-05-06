@@ -1,26 +1,57 @@
-- name: Dokumentacja nadzoru nad tożsamościami w usłudze Azure AD
+- name: Dokumentacja usługi Azure AD Identity Governance
   href: index.yml
 - name: Omówienie
-  expanded: false
+  expanded: true
   items:
     - name: Co to jest nadzór nad tożsamościami?
       href: identity-governance-overview.md
+    - name: Co to jest zarządzanie upoważnieniami? (Wersja zapoznawcza)
+      href: entitlement-management-overview.md
     - name: Co to są przeglądy dostępu?
       href: access-reviews-overview.md
-- name: Pojęcia
-  expanded: false
+- name: Samouczki
+  expanded: true
   items:
-    - name: Zarządzanie dostępem gości za pomocą przeglądów
-      href: manage-guest-access-with-access-reviews.md
-    - name: Zarządzanie dostępem użytkowników i przeglądy
-      href: manage-user-access-with-access-reviews.md
-    - name: Zarządzanie programami i ich kontrolami
-      href: manage-programs-controls.md
-    - name: Zarządzanie użytkownikami wykluczonymi z dostępu warunkowego
-      href: conditional-access-exclusion.md
+    - name: Tworzenie pierwszego pakietu dostępu
+      href: entitlement-management-access-package-first.md
+- name: Pojęcia
+  expanded: true
+  items:
+    - name: Zarządzanie upoważnieniami
+      items:
+        - name: Proces żądania i wiadomości e-mail
+          href: entitlement-management-process.md
+    - name: Przeglądy dostępu
+      items:
+        - name: Zarządzanie dostępem gości za pomocą przeglądów
+          href: manage-guest-access-with-access-reviews.md
+        - name: Zarządzanie dostępem użytkowników i przeglądy
+          href: manage-user-access-with-access-reviews.md
+        - name: Zarządzanie programami i ich kontrolami
+          href: manage-programs-controls.md
+        - name: Zarządzanie użytkownikami wykluczonymi z dostępu warunkowego
+          href: conditional-access-exclusion.md
 - name: Przewodniki z instrukcjami
   expanded: true
   items:
+    - name: Zarządzanie upoważnieniami
+      items:
+        - name: Typowe scenariusze
+          href: entitlement-management-scenarios.md
+        - name: Tworzenie nowego pakietu dostępu
+          href: entitlement-management-access-package-create.md
+        - name: Edytowanie pakietu dostępu
+          href: entitlement-management-access-package-edit.md
+        - name: Tworzenie katalogu
+          href: entitlement-management-catalog-create.md
+        - name: Żądanie dostępu
+          href: entitlement-management-request-access.md
+        - name: Zatwierdzanie żądań
+          href: entitlement-management-request-approve.md
+        - name: Wyświetlanie raportów i dzienników
+          href: entitlement-management-reports.md
+        - name: Rozwiązywanie problemów
+          href: entitlement-management-troubleshoot.md
     - name: Przeglądy dostępu
       items:
         - name: Grupy i aplikacje

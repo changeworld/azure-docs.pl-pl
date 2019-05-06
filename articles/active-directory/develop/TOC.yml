@@ -14,20 +14,14 @@
         - name: Konfigurowanie aplikacji
           items:
             - name: Rejestracja aplikacji
-              href: quickstart-v1-add-azure-ad-app.md
-            - name: Aktualizowanie aplikacji
-              href: quickstart-v1-update-azure-ad-app.md
-            - name: Usuwanie aplikacji
-              href: quickstart-v1-remove-azure-ad-app.md
-            - name: Rejestrowanie aplikacji (wersja zapoznawcza)
               href: quickstart-register-app.md
-            - name: Konfigurowanie aplikacji pod kątem uzyskiwania dostępu do internetowych interfejsów API (wersja zapoznawcza)
+            - name: Konfigurowanie aplikacji pod kątem uzyskiwania dostępu do internetowych interfejsów API
               href: quickstart-configure-app-access-web-apis.md
-            - name: Konfigurowanie aplikacji pod kątem uwidaczniania internetowych interfejsów API (wersja zapoznawcza)
+            - name: Konfigurowanie aplikacji pod kątem uwidaczniania internetowych interfejsów API
               href: quickstart-configure-app-expose-web-apis.md
-            - name: Modyfikowanie kont obsługiwanych przez aplikację (wersja zapoznawcza)
+            - name: Modyfikowanie kont obsługiwanych przez aplikację
               href: quickstart-modify-supported-accounts.md
-            - name: Usuwanie aplikacji (wersja zapoznawcza)
+            - name: Usuwanie aplikacji
               href: quickstart-remove-app.md
         - name: Aplikacje jednostronicowe
           items:
@@ -243,20 +237,14 @@
         - name: Konfigurowanie aplikacji
           items:
             - name: Rejestracja aplikacji
-              href: quickstart-v2-register-an-app.md
-            - name: Aktualizowanie aplikacji
-              href: quickstart-v1-update-azure-ad-app.md
-            - name: Usuwanie aplikacji
-              href: quickstart-v1-remove-azure-ad-app.md
-            - name: Rejestrowanie aplikacji (wersja zapoznawcza)
               href: quickstart-register-app.md
-            - name: Konfigurowanie aplikacji pod kątem uzyskiwania dostępu do internetowych interfejsów API (wersja zapoznawcza)
+            - name: Konfigurowanie aplikacji pod kątem uzyskiwania dostępu do internetowych interfejsów API
               href: quickstart-configure-app-access-web-apis.md
-            - name: Konfigurowanie aplikacji pod kątem uwidaczniania internetowych interfejsów API (wersja zapoznawcza)
+            - name: Konfigurowanie aplikacji pod kątem uwidaczniania internetowych interfejsów API
               href: quickstart-configure-app-expose-web-apis.md
-            - name: Modyfikowanie kont obsługiwanych przez aplikację (wersja zapoznawcza)
+            - name: Modyfikowanie kont obsługiwanych przez aplikację
               href: quickstart-modify-supported-accounts.md
-            - name: Usuwanie aplikacji (wersja zapoznawcza)
+            - name: Usuwanie aplikacji
               href: quickstart-remove-app.md
         - name: Aplikacje jednostronicowe
           items:
@@ -350,6 +338,8 @@
               href: active-directory-certificate-credentials.md
         - name: Konfiguracja aplikacji
           items:
+            - name: Przewodnik szkoleniowy na temat rejestracji aplikacji
+              href: app-registrations-training-guide.md
             - name: Aplikacje i jednostki usługi
               href: app-objects-and-service-principals.md
             - name: Aplikacje z jedną i wieloma dzierżawami

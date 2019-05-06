@@ -61,6 +61,8 @@
           href: logic-apps-scenario-function-sb-trigger.md
         - name: 'Wywoływanie, wyzwalanie lub zagnieżdżanie aplikacji logiki'
           href: logic-apps-http-endpoint.md
+        - name: Pobieranie danych zbiorczych z podziałem na strony
+          href: logic-apps-exceed-default-page-size-with-pagination.md
         - name: Komunikaty przetwarzania wsadowego
           href: logic-apps-batch-process-send-receive-messages.md
         - name: Tworzenie definicji JSON
@@ -103,11 +105,8 @@
           href: logic-apps-enterprise-integration-b2b.md
         - name: Wymienianie komunikatów AS2
           href: logic-apps-enterprise-integration-as2.md
-          items:
-            - name: Kodowanie AS2
-              href: logic-apps-enterprise-integration-as2-encode.md
-            - name: Dekodowanie AS2
-              href: logic-apps-enterprise-integration-as2-decode.md
+        - name: Ustawienia komunikatów AS2
+          href: logic-apps-enterprise-integration-as2-message-settings.md
         - name: Wymienianie komunikatów EDIFACT
           href: logic-apps-enterprise-integration-edifact.md
           items:

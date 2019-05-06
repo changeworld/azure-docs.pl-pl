@@ -70,41 +70,10 @@
           href: analysis-services-deploy.md
         - name: Odświeżanie za pomocą interfejsu API REST
           href: analysis-services-async-refresh.md
-        - name: Modelowanie danych w programie Visual Studio — samouczek Adventure Works (1400)
-          href: tutorials/aas-adventure-works-tutorial.md
-          items:
-            - name: 1 — Tworzenie projektu modelu tabelarycznego
-              href: tutorials/aas-lesson-1-create-a-new-tabular-model-project.md
-            - name: 2 — Pobieranie danych
-              href: tutorials/aas-lesson-2-get-data.md
-            - name: 3 — Oznaczanie jako tabeli dat
-              href: tutorials/aas-lesson-3-mark-as-date-table.md
-            - name: 4 — Tworzenie relacji
-              href: tutorials/aas-lesson-4-create-relationships.md
-            - name: 5 — Tworzenie kolumn obliczeniowych
-              href: tutorials/aas-lesson-5-create-calculated-columns.md
-            - name: 6 — Tworzenie miar
-              href: tutorials/aas-lesson-6-create-measures.md
-            - name: 7 — Tworzenie kluczowych wskaźników wydajności
-              href: tutorials/aas-lesson-7-create-key-performance-indicators.md
-            - name: 8 — Tworzenie perspektyw
-              href: tutorials/aas-lesson-8-create-perspectives.md
-            - name: 9 — Tworzenie hierarchii
-              href: tutorials/aas-lesson-9-create-hierarchies.md
-            - name: 10 — Tworzenie partycji
-              href: tutorials/aas-lesson-10-create-partitions.md
-            - name: 11 — Tworzenie ról
-              href: tutorials/aas-lesson-11-create-roles.md
-            - name: 12 — Analiza w programie Excel
-              href: tutorials/aas-lesson-12-analyze-in-excel.md
-            - name: 13 — Wdrażanie
-              href: tutorials/aas-lesson-13-deploy.md
-            - name: Lekcja uzupełniająca — wiersze szczegółów
-              href: tutorials/aas-supplemental-lesson-detail-rows.md
-            - name: Lekcja uzupełniająca — zabezpieczenia dynamiczne
-              href: tutorials/aas-supplemental-lesson-dynamic-security.md
-            - name: Lekcja uzupełniająca — niewyrównane hierarchie
-              href: tutorials/aas-supplemental-lesson-ragged-hierarchies.md
+        - name: Odświeżanie za pomocą usługi Logic Apps
+          href: analysis-services-refresh-logic-app.md
+        - name: Odświeżanie za pomocą usługi Azure Automation
+          href: analysis-services-refresh-azure-automation.md
     - name: Bezpieczeństwo
       items:
         - name: Zarządzanie użytkownikami bazy danych

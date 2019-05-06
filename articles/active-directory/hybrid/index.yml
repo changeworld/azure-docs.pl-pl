@@ -4,7 +4,7 @@ title: Dokumentacja tożsamości hybrydowej
 metadata:
   document_id: 44409b3f-ab8c-053d-cdf4-5d7e823a275e
   title: Dokumentacja tożsamości hybrydowej
-  meta.description: 'Azure AD Connect will integrate your on-premises directories with Azure Active Directory. This allows you to provide a common identity for your users for Office 365, Azure, and SaaS applications integrated with Azure AD.'
+  description: 'Program Azure AD Connect umożliwia integrowanie katalogów lokalnych z usługą Azure Active Directory. Dzięki temu użytkownicy mogą posługiwać się wspólną tożsamością dla usługi Office 365, platformy Azure i aplikacji SaaS zintegrowanych z usługą Azure AD.'
   services: active-directory
   author: billmath
   manager: daveba
@@ -18,7 +18,7 @@ abstract:
   description: 'Rozwiązania firmy Microsoft do obsługi tożsamości obejmują zarówno funkcje lokalne, jak i chmurowe, tworząc jedną tożsamość użytkownika na potrzeby uwierzytelniania i autoryzacji w kontekście wszystkich zasobów, niezależnie od lokalizacji. Nazywamy to tożsamością hybrydową.</br></br></br>Program Azure AD Connect umożliwia integrowanie katalogów lokalnych z usługą Azure Active Directory. Dzięki temu użytkownicy mogą posługiwać się wspólną tożsamością dla usługi Office 365, platformy Azure i aplikacji SaaS zintegrowanych z usługą Azure AD. W tym temacie przedstawiono kroki związane z planowaniem, wdrażaniem i obsługą. Zawiera on zbiór linków do tematów związanych z tym obszarem.'
   aside:
     image:
-      alt: null
+      alt: film w witrynie channel 9
       height: 110
       src: media/index/video2.png
       width: 250
@@ -36,16 +36,19 @@ sections:
           - href: /azure/active-directory/hybrid/tutorial-password-hash-sync
             html: <p>Omówienie rozszerzania tożsamości na chmurę za pomocą synchronizacji skrótów haseł</p>
             image:
+              alt: synchronizacja skrótów haseł
               src: media/index/azuread2.png
             title: Integrowanie pojedynczego lasu usługi AD za pomocą synchronizacji skrótów haseł
           - href: /azure/active-directory/hybrid/tutorial-passthrough-authentication
             html: '<p>Dowiedz się, jak rozszerzyć tożsamość na chmurę za pomocą uwierzytelniania przekazywanego.</p>'
             image:
+              alt: uwierzytelnianie przekazywane
               src: media/index/manage2.png
             title: Integrowanie pojedynczego lasu usługi AD przy użyciu uwierzytelniania przekazywanego
           - href: /azure/active-directory/hybrid/tutorial-federation
             html: '<p>Dowiedz się, jak sfederować program Azure Active Directory (Azure AD) Connect z lokalną usługą Active Directory Federation Services (AD FS) i usługą Azure AD.</p>'
             image:
+              alt: federacja
               src: media/index/federate2.png
             title: Integrowanie pojedynczego lasu usługi AD przy użyciu federacji
   - title: Przewodniki z instrukcjami

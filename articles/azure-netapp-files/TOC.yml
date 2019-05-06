@@ -1,60 +1,57 @@
-items:
 - name: Dokumentacja usługi Azure NetApp Files
   href: index.yml
 - name: Omówienie
   items:
-  - name: Wprowadzenie do usługi Azure NetApp Files
-    href: azure-netapp-files-introduction.md
-  - name: Opis hierarchii magazynu
-    href: azure-netapp-files-understand-storage-hierarchy.md
+    - name: Co to jest usługa Azure NetApp Files
+      href: azure-netapp-files-introduction.md
+    - name: Opis hierarchii magazynu
+      href: azure-netapp-files-understand-storage-hierarchy.md
 - name: Przewodniki Szybki start
-  items:
-  - name: Konfigurowanie usługi Azure NetApp Files i tworzenie woluminu
-    href: azure-netapp-files-quickstart-set-up-account-create-volumes.md
   expanded: true
+  items:
+    - name: Konfigurowanie usługi Azure NetApp Files i tworzenie woluminu NFS
+      href: azure-netapp-files-quickstart-set-up-account-create-volumes.md
 - name: Pojęcia
   items:
-  - name: Poziomy usług dla usługi Azure NetApp Files
-    href: azure-netapp-files-service-levels.md
-  - name: Limity zasobów dla usługi Azure NetApp Files
-    href: azure-netapp-files-resource-limits.md
-  - name: Metryki dla usługi Azure NetApp Files
-    href: azure-netapp-files-metrics.md
+    - name: Poziomy usług dla usługi Azure NetApp Files
+      href: azure-netapp-files-service-levels.md
+    - name: Limity zasobów dla usługi Azure NetApp Files
+      href: azure-netapp-files-resource-limits.md
+    - name: Metryki dla usługi Azure NetApp Files
+      href: azure-netapp-files-metrics.md
+    - name: Testy porównawcze wydajności dla usługi Azure NetApp Files
+      href: azure-netapp-files-performance-benchmarks.md
 - name: Przewodniki z instrukcjami
   items:
-  - name: Rejestrowanie w usłudze Azure NetApp Files
-    href: azure-netapp-files-register.md
-  - name: Tworzenie konta usługi NetApp
-    href: azure-netapp-files-create-netapp-account.md
-  - name: Konfigurowanie puli pojemności
-    href: azure-netapp-files-set-up-capacity-pool.md
-  - name: Delegowanie podsieci do usługi Azure NetApp Files
-    href: azure-netapp-files-delegate-subnet.md
-  - name: Tworzenie woluminu dla usługi Azure NetApp Files
-    href: azure-netapp-files-create-volumes.md
-  - name: Konfigurowanie zasad eksportu dla woluminu NFS
-    href: azure-netapp-files-configure-export-policy.md
-  - name: Zarządzanie woluminami
-    href: azure-netapp-files-manage-volumes.md
-  - name: Instalowanie lub odinstalowywanie woluminu dla maszyn wirtualnych z systemem Windows lub Linux
-    href: azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md
-  - name: Zarządzanie migawkami
-    href: azure-netapp-files-manage-snapshots.md
-  - name: Zmienianie rozmiaru puli pojemności lub woluminu
-    href: azure-netapp-files-resize-capacity-pools-or-volumes.md
-  - name: Programowanie
-    items:
-    - name: REST
-      href: azure-netapp-files-develop-with-rest-api.md
+    - name: Rejestrowanie w usłudze Azure NetApp Files
+      href: azure-netapp-files-register.md
+    - name: Tworzenie konta usługi NetApp
+      href: azure-netapp-files-create-netapp-account.md
+    - name: Konfigurowanie puli pojemności
+      href: azure-netapp-files-set-up-capacity-pool.md
+    - name: Delegowanie podsieci do usługi Azure NetApp Files
+      href: azure-netapp-files-delegate-subnet.md
+    - name: Tworzenie woluminu dla usługi Azure NetApp Files
+      href: azure-netapp-files-create-volumes.md
+    - name: Konfigurowanie zasad eksportu dla woluminu NFS
+      href: azure-netapp-files-configure-export-policy.md
+    - name: Zarządzanie woluminami
+      href: azure-netapp-files-manage-volumes.md
+    - name: Instalowanie lub odinstalowywanie woluminu dla maszyn wirtualnych z systemem Windows lub Linux
+      href: azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md
+    - name: Zarządzanie migawkami
+      href: azure-netapp-files-manage-snapshots.md
+    - name: Zmienianie rozmiaru puli pojemności lub woluminu
+      href: azure-netapp-files-resize-capacity-pools-or-volumes.md
+    - name: Programowanie
+      items:
+        - name: REST
+          href: azure-netapp-files-develop-with-rest-api.md
+        - name: Rozwiązywanie problemów związanych z błędami dostawcy zasobów usługi Azure NetApp Files
+          href: azure-netapp-files-troubleshoot-resource-provider-errors.md
 - name: Dokumentacja
   items:
-  - name: REST
-    href: https://docs.microsoft.com/rest/api/netapp/
-  - name: Szablon usługi Resource Manager
-    href: /azure/templates/microsoft.netapp/allversions
-ms.openlocfilehash: 1380aa56161e7c1f0f3d72aae36c834a087e1040
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545931"
+    - name: REST
+      href: 'https://docs.microsoft.com/rest/api/netapp/'
+    - name: Szablon usługi Resource Manager
+      href: /azure/templates/microsoft.netapp/allversions

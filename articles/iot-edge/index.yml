@@ -43,15 +43,13 @@ sections:
       - type: paragraph
         text: 'Dowiedz się, jak zainstalować i skonfigurować usługę IoT Edge, wdrażać moduły oraz korzystać z usług platformy Azure, takich jak Stream Analytics i Custom Vision, na brzegu sieci.'
       - type: list
-        style: unordered
+        style: ordered
         items:
+          - html: Skonfiguruj swoją maszynę deweloperską i dowiedz się więcej o modułach usługi IoT Edge dla <a href="/azure/iot-edge/tutorial-develop-for-linux">urządzeń z systemem Linux</a> lub dla <a href="/azure/iot-edge/tutorial-develop-for-windows">urządzeń z systemem Windows</a>.
+          - html: 'Twórz niestandardowe moduły kodu dla urządzeń z systemem Linux w języku <a href="/azure/iot-edge/tutorial-c-module">C</a>, <a href="/azure/iot-edge/tutorial-csharp-module">C#</a>, <a href="/azure/iot-edge/tutorial-python-module">Python</a>, <a href="/azure/iot-edge/tutorial-node-module">Node.js</a> lub <a href="/azure/iot-edge/tutorial-java-module">Java</a>.'
+          - html: 'Twórz niestandardowe moduły kodu dla urządzeń z systemem Windows w języku <a href="/azure/iot-edge/tutorial-c-module-windows">C</a> lub <a href="/azure/iot-edge/tutorial-csharp-module-windows">C#</a>.'
           - html: <a href="/azure/iot-edge/tutorial-deploy-function">Filtrowanie komunikatów przy użyciu usługi Azure Functions</a>
           - html: <a href="/azure/iot-edge/tutorial-deploy-stream-analytics">Wyszukiwanie wartości średnich przy użyciu usługi Azure Stream Analytics jako modułu</a>
           - html: <a href="/azure/iot-edge/tutorial-deploy-machine-learning">Ocenianie danych przy użyciu usługi Azure Machine Learning jako modułu</a>
           - html: <a href="/azure/iot-edge/tutorial-deploy-custom-vision">Klasyfikowanie obrazów za pomocą usługi Custom Vision Service jako modułu</a>
-          - html: '<a href="/azure/iot-edge/tutorial-csharp-module">Filtrowanie danych przy użyciu modułu języka C#</a>'
-          - html: <a href="/azure/iot-edge/tutorial-python-module">Filtrowanie danych przy użyciu modułu języka Python</a>
-          - html: <a href="/azure/iot-edge/tutorial-node-module">Filtrowanie danych przy użyciu modułu platformy Node.js</a>
-          - html: <a href="/azure/iot-edge/tutorial-java-module">Filtrowanie danych za pomocą modułu Java</a>
-          - html: <a href="/azure/iot-edge/tutorial-c-module">Filtrowanie danych przy użyciu modułu języka C</a>
           - html: <a href="/azure/iot-edge/tutorial-store-data-sql-server">Przechowywanie danych na brzegu sieci przy użyciu programu SQL Server</a>

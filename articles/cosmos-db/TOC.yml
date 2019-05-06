@@ -143,17 +143,6 @@
             - name: Zasady indeksowania
               displayName: 'consistent, none'
               href: index-policy.md
-        - name: Źródło zmian
-          items:
-            - name: Omówienie
-              href: change-feed.md
-            - name: Odczytywanie zestawienia zmian
-              href: read-change-feed.md
-            - name: Procesor zestawienia zmian
-              href: change-feed-processor.md
-            - name: Wyzwalanie funkcji usługi Azure Functions
-              displayName: change feed
-              href: change-feed-functions.md
         - name: Czas wygaśnięcia
           displayName: 'delete, delete data, ttl'
           href: time-to-live.md
@@ -498,6 +487,9 @@
           href: data-explorer.md
         - name: Zarządzanie zasadami indeksowania
           href: how-to-manage-indexing-policy.md
+        - name: Przykłady podzapytań w języku SQL
+          displayName: 'subquery, exists'
+          href: how-to-sql-subquery.md
     - name: Zestawienie zmian
       items:
         - name: Wiele wyzwalaczy usługi Azure Cosmos DB

@@ -97,7 +97,7 @@
           href: iot-accelerators-remote-monitoring-rbac.md
         - name: Eksplorowanie danych telemetrycznych
           items:
-            - name: Wizualizowanie telemetrii za pomocą usługi Power BI
+            - name: Wizualizowanie danych telemetrycznych za pomocą usługi Power BI
               href: iot-accelerators-integrate-data-powerbi.md
             - name: Integrowanie usługi Azure Time Series Insights za pomocą zdalnego monitorowania
               href: iot-accelerators-remote-monitoring-integrate-time-series-insights.md
@@ -133,26 +133,22 @@
       items:
         - name: Co to jest przemysłowy Internet rzeczy
           href: overview-iot-industrial.md
-        - name: Bliźniacza reprezentacja OPC
-          items:
-            - name: Co to jest bliźniacza reprezentacja OPC
-              href: overview-opc-twin.md
-            - name: Architektura bliźniaczej reprezentacji OPC
-              href: overview-opc-twin-architecture.md
-        - name: Magazyn OPC
-          items:
-            - name: Co to jest magazyn OPC
-              href: overview-opc-vault.md
-        - name: Połączona fabryka
-          items:
-            - name: Omówienie połączonej fabryki
-              href: iot-accelerators-connected-factory-features.md
-            - name: Architektura połączonej fabryki
-              href: iot-accelerators-connected-factory-sample-walkthrough.md
+        - name: Co to jest bliźniacza reprezentacja OPC
+          href: overview-opc-twin.md
+        - name: Co to jest magazyn OPC
+          href: overview-opc-vault.md
+        - name: Co to jest połączona fabryka
+          href: iot-accelerators-connected-factory-features.md
     - name: Przewodniki Szybki start
       items:
         - name: Testowanie rozwiązania połączonej fabryki
           href: quickstart-connected-factory-deploy.md
+    - name: Pojęcia
+      items:
+        - name: Architektura bliźniaczej reprezentacji OPC
+          href: overview-opc-twin-architecture.md
+        - name: Architektura połączonej fabryki
+          href: iot-accelerators-connected-factory-sample-walkthrough.md
     - name: Przewodniki z instrukcjami
       items:
         - name: Połączona fabryka

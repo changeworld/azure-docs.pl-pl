@@ -7,14 +7,14 @@ author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.author: nitinme
-ms.date: 02/21/2019
+ms.date: 05/02/2019
 ms.topic: hub-page
-ms.openlocfilehash: 621cf49284ac1080bf18619f80f14c8a21c2f761
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b76f670c6d2e28ea2cb5ee1cece13cf1023af09f
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61294324"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65021498"
 ---
 <div id="main" class="v2">
 <h1>Dokumentacja usług Azure Cognitive Services</h1>
@@ -295,9 +295,10 @@ ms.locfileid: "61294324"
                     <div class="cardText">
                         <h3>Interfejs API przetwarzania obrazów</h3>
                         <p><a href="/azure/cognitive-services/computer-vision/">Przetwarzanie obrazów</a></p>
-                        <p><a href="/azure/cognitive-services/content-moderator/">Content Moderator</a></p>
                         <p><a href="/azure/cognitive-services/Custom-Vision-Service/">Custom Vision Service</a></p>
                         <p><a href="/azure/cognitive-services/face/">Interfejs API rozpoznawania twarzy</a></p>
+                        <p><a href="https://go.microsoft.com/fwlink/?linkid=2088514"><span>Rozpoznawanie formularzy&nbsp;<sup style="font-size:70%">WERSJA ZAPOZNAWCZA</sup></span></a></p>
+                        <p><a href="https://go.microsoft.com/fwlink/?linkid=2088323"><span>Rozpoznawanie pisma odręcznego&nbsp;<sup style="font-size:70%">WERSJA ZAPOZNAWCZA</sup></span></a></p>
                         <p><a href="/azure/cognitive-services/video-indexer/video-indexer-overview">Video Indexer</a></p>
                     </div>
                 </div>
@@ -310,7 +311,7 @@ ms.locfileid: "61294324"
                 <div class="card">
                     <div class="cardText">
                         <h3>Interfejs API rozpoznawania mowy</h3>
-                        <p><a href="/azure/cognitive-services/speech-service">Interfejs API usługi rozpoznawania mowy</a></p>
+                        <p><a href="/azure/cognitive-services/speech-service">Usługi mowy</a></p>
                         <p><a href="/azure/cognitive-services/speaker-recognition/home"><span>Rozpoznawanie osoby mówiącej&nbsp;<sup style="font-size:70%">WERSJA ZAPOZNAWCZA</sup></span></a></p>
                         <p><a href="/azure/cognitive-services/speech/home"><span>Interfejs API rozpoznawania mowy Bing&nbsp;<sup style="font-size:70%">W TRAKCIE WYCOFYWANIA</sup></span></a></p>
                         <p><a href="/azure/cognitive-services/translator-speech/"><span>Tłumaczenie mowy w usłudze Translator&nbsp;<sup style="font-size:70%">W TRAKCIE WYCOFYWANIA</sup></span></a></p>
@@ -325,22 +326,10 @@ ms.locfileid: "61294324"
                 <div class="card">
                     <div class="cardText">
                         <h3>Interfejs API rozpoznawania języka</h3>
-                        <p><a href="/azure/cognitive-services/bing-spell-check/">Sprawdzanie pisowni Bing</a></p>
                         <p><a href="/azure/cognitive-services/luis/">Language Understanding (LUIS)</a></p>
+                        <p><a href="/azure/cognitive-services/qnamaker/index">QnA Maker</a></p>
                         <p><a href="/azure/cognitive-services/text-analytics/">Analiza tekstu</a></p>
                         <p><a href="/azure/cognitive-services/translator/">Tłumaczenie tekstu w usłudze Translator</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Interfejs Knowledge API</h3>
-                            <p><a href="/azure/cognitive-services/qnamaker/index">QnA Maker</a></p>
                     </div>
                 </div>
             </div>
@@ -360,6 +349,7 @@ ms.locfileid: "61294324"
                         <p><a href="/azure/cognitive-services/bing-entities-search/">Wyszukiwanie jednostek Bing</a></p>
                         <p><a href="/azure/cognitive-services/bing-image-search">Wyszukiwanie obrazów Bing</a></p>
                         <p><a href="/azure/cognitive-services/bing-visual-search">Wyszukiwanie wizualne Bing</a></p>
+                        <p><a href="/azure/cognitive-services/bing-spell-check/">Sprawdzanie pisowni Bing</a></p>
                         <p><a href="/azure/cognitive-services/bing-local-business-search"><span>Wyszukiwanie firm lokalnych Bing&nbsp;<sup style="font-size:70%">WERSJA ZAPOZNAWCZA</sup></span></a></p>
                     </div>
                 </div>
@@ -371,8 +361,10 @@ ms.locfileid: "61294324"
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Wykrywanie anomalii</h3>
-                        <p><a href="/azure/cognitive-services/anomaly-detector/"><span>Narzędzie do wykrywania anomalii&nbsp;<sup style="font-size:70%">WERSJA ZAPOZNAWCZA</sup></span></a></p>               
+                        <h3>Interfejs API podejmowania decyzji</h3>
+                        <p><a href="/azure/cognitive-services/anomaly-detector/"><span>Narzędzie do wykrywania anomalii&nbsp;<sup style="font-size:70%">WERSJA ZAPOZNAWCZA</sup></span></a></p>
+                        <p><a href="/azure/cognitive-services/content-moderator/">Content Moderator</a></p>
+                        <p><a href="https://go.microsoft.com/fwlink/?linkid=2088324"><span>Personalizacja&nbsp;<sup style="font-size:70%">WERSJA ZAPOZNAWCZA</sup></span></a></p>
                     </div>
                 </div>
             </div>

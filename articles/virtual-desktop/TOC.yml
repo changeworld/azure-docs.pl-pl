@@ -44,6 +44,18 @@
       href: delegated-access-virtual-desktop.md
     - name: Metody równoważenia obciążenia puli hostów
       href: host-pool-load-balancing.md
+- name: Rozwiązywanie problemów
+  items:
+    - name: 'Rozwiązywania problemów — omówienie, opinie i obsługa techniczna'
+      href: troubleshoot-set-up-overview.md
+    - name: Tworzenie dzierżawy i puli hosta
+      href: troubleshoot-set-up-issues.md
+    - name: Konfiguracja maszyny wirtualnej hosta sesji
+      href: troubleshoot-vm-configuration.md
+    - name: Połączenia klienta pulpitu zdalnego
+      href: troubleshoot-client-connection.md
+    - name: Program PowerShell dla usługi Windows Virtual Desktop
+      href: troubleshoot-powershell.md
 - name: Dokumentacja
   items:
     - name: PowerShell

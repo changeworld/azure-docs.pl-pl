@@ -228,6 +228,8 @@
           href: custom-translator/how-to-manage-settings.md
         - name: Migrowanie z centrum
           href: custom-translator/how-to-migrate.md
+        - name: Wdrożenia w nieobsługiwanych językach
+          href: custom-translator/unsupported-language-deployments.md
     - name: Zasoby
       items:
         - name: Obsługa języków

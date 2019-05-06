@@ -1,0 +1,62 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentacja usługi Personalizacja
+metadata:
+  document_id: null
+  title: 'Personalizacja — samouczki, przewodniki Szybki start i dokumentacja interfejsu API'
+  description: 'Dowiedz się, jak za pomocą usługi Personalizacja umożliwić aplikacji wybranie najlepszego środowiska dla użytkowników na podstawie ich zachowania w czasie rzeczywistym.'
+  author: nitinme
+  manager: cgronlun
+  ms.service: cognitive-services
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 05/07/2019
+  ms.author: nitinme
+abstract:
+  description: 'Usługa Personalizacja platformy Azure to chmurowa usługa interfejsu API, która pozwala wybrać najlepsze środowiska dla użytkowników na podstawie ich zachowania w czasie rzeczywistym.'
+sections:
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/cognitive-services/personalizer/what-is-personalizer
+            html: '<p>Dowiedz się, do czego służy usługa Personalizacja i jak jej używać.</p>'
+            image:
+              src: ../media/index/i_guidelines.svg
+            title: Co to jest usługa Personalizacja?
+          - href: /azure/cognitive-services/personalizer/how-personalizer-works
+            html: '<p>Dowiedz się, jak sprzężenie zwrotne usługi Personalizacja współdziała z interfejsami API rangi i nagradzania.</p>'
+            image:
+              src: ../media/index/i_overview.svg
+            title: Jak działa usługa Personalizacja
+          - href: /azure/cognitive-services/personalizer/ethics-responsible-use
+            html: '<p>Zaimplementuj personalizację w sposób, który wzbudza zaufanie w firmie i usłudze.</p>'
+            image:
+              src: ../media/index/i_guidelines.svg
+            title: Etyka i odpowiedzialność
+  - title: 5-minutowe przewodniki Szybki start
+    items:
+      - type: paragraph
+        text: ''
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: ../media/index/logo_Csharp.svg
+            href: csharp-quickstart-commandline-feedback-loop.md
+            text: 'C#'
+  - title: Dokumentacja
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Interfejsy API REST
+            html: '<p><a href="https://aka.ms/personalizer-rest-api-docs">Interfejs API usługi Personalizacja</a></p>'
+          - title: PowerShell
+            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
+          - title: Interfejs wiersza polecenia
+            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list">Interfejs wiersza polecenia platformy Azure</a></p>'

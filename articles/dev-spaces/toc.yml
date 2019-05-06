@@ -4,6 +4,8 @@
       href: index.yml
     - name: Przewodniki Szybki start
       items:
+        - name: Programowanie zespołowe
+          href: quickstart-team-development.md
         - name: Java (VS Code i interfejs wiersza polecenia)
           href: quickstart-java.md
         - name: .NET Core (VS Code oraz interfejs wiersza polecenia)

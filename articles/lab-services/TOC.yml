@@ -107,7 +107,7 @@
               href: image-factory-save-distribute-custom-images.md
             - name: Ustawianie zasad przechowywania i uruchamianie skryptów do czyszczenia
               href: image-factory-set-retention-policy-cleanup.md
-        - name: Konfigurowanie infrastruktury usługi DevTest Labs w przedsiębiorstwie
+        - name: Laboratoria DevTest Lab w przedsiębiorstwie
           href: devtest-lab-guidance-prescriptive-adoption.md
           items:
             - name: Architektura referencyjna
