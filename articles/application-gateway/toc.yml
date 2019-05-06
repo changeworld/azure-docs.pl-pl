@@ -45,6 +45,8 @@
           href: application-gateway-components.md
         - name: Przegląd konfiguracji
           href: configuration-overview.md
+    - name: Jednostka SKU skalowania automatycznego w wersji 2
+      href: application-gateway-autoscaling-zone-redundant.md
     - name: Routing
       items:
         - name: Hosting wielu witryn
@@ -77,8 +79,6 @@
           href: application-gateway-probe-overview.md
         - name: Diagnostyka
           href: application-gateway-diagnostics.md
-    - name: Skalowanie automatyczne i nadmiarowość stref
-      href: application-gateway-autoscaling-zone-redundant.md
     - name: Aplikacja internetowa usługi App Service i obsługa wielu dzierżaw
       href: application-gateway-web-app-overview.md
     - name: Obsługa protokołu WebSocket
@@ -183,6 +183,8 @@
           href: rewrite-http-headers-portal.md
         - name: Azure PowerShell
           href: add-http-header-rewrite-rule-powershell.md
+        - name: Tworzenie i ponowne zapisywanie nagłówków HTTP
+          href: tutorial-http-header-rewrite-powershell.md
     - name: Konfigurowanie aplikacji internetowej usługi App Service i usługi z wieloma dzierżawami
       items:
         - name: Portal

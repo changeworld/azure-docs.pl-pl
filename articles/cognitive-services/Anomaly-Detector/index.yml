@@ -57,3 +57,17 @@ sections:
               src: media/logo_python.svg
             href: quickstarts/detect-data-anomalies-python
             text: Python
+  - title: Dokumentacja
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Interfejs API REST
+            html: '<p><a href="https://aka.ms/anomaly-detector-rest-api-ref">Interfejs API narzędzia do wykrywania anomalii</a></p>'
+          - title: Zestawy SDK
+            html: '<p><a href="https://aka.ms/anomaly-detector-dotnet-ref">.NET</a></p> <p><a href="https://go.microsoft.com/fwlink/?linkid=2089915">Go</a></p>'
+          - title: PowerShell
+            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
+          - title: Interfejs wiersza polecenia
+            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Interfejs wiersza polecenia platformy Azure</a></p>'

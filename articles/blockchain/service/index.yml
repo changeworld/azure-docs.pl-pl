@@ -1,0 +1,49 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentacja usługi Azure Blockchain
+metadata:
+  title: Dokumentacja usługi Azure Blockchain — samouczki i dokumentacja interfejsu API
+  description: 'Dowiedz się, jak tworzyć aplikacje łańcucha bloków. Samouczki, dokumentacja interfejsu API i inne dokumenty przedstawiają, jak za pomocą usługi Azure Blockchain tworzyć i opracowywać aplikacje łańcucha bloków na oraz zarządzać nimi na platformie Azure.'
+  services: azure-blockchain
+  author: patricka
+  manager: femila
+  ms.service: azure-blockchain
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 03/13/2019
+  ms.author: patricka
+abstract:
+  description: 'Dowiedz się, jak tworzyć aplikacje łańcucha bloków. Samouczki, dokumentacja interfejsu API i inne dokumenty przedstawiają, jak za pomocą usługi Azure Blockchain tworzyć i opracowywać aplikacje łańcucha bloków na oraz używać ich na platformie Azure.'
+sections:
+  - title: 5-minutowe przewodniki Szybki start
+    items:
+      - type: paragraph
+        text: 'Dowiedz się, jak utworzyć elementy członkowskie konsorcjum na platformie Azure i połączyć się z nimi.'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: ./media/index/deploy.svg
+            text: Tworzenie członka konsorcjum
+            href: /azure/blockchain/service/create-member
+          - image:
+              src: ./media/index/multi-connect.svg
+            text: Łączenie za pomocą rozszerzenia MetaMask
+            href: /azure/blockchain/service/connect-metamask
+          - image:
+              src: ./media/index/multi-connect.svg
+            text: Łączenie przy użyciu rozwiązania geth
+            href: /azure/blockchain/service/connect-geth
+          - image:
+              src: ./media/index/multi-connect.svg
+            text: Łączenie przy użyciu rozwiązania Truffle
+            href: /azure/blockchain/service/connect-truffle
+  - title: Samouczki krok po kroku
+    items:
+      - type: paragraph
+        text: 'Dowiedz się, jak tworzyć, konfigurować i opracowywać aplikacje łańcucha bloków na platformie Azure.'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/blockchain/service/send-transaction">Tworzenie elementu członkowskiego usługi Azure Blockchain i wysyłanie transakcji</a>

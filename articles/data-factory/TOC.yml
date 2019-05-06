@@ -120,7 +120,9 @@
   items:
     - name: Potoki i działania
       href: concepts-pipelines-activities.md
-    - name: Zestawy danych i połączone usługi
+    - name: Połączone usługi
+      href: concepts-linked-services.md
+    - name: Zestawy danych
       href: concepts-datasets-linked-services.md
     - name: Wyzwalacze i wykonywanie potoku
       href: concepts-pipeline-execution-triggers.md
@@ -130,8 +132,6 @@
       items:
         - name: Pojęcia związane z przepływem danych mapowania
           href: concepts-data-flow-overview.md
-        - name: Zestawy danych przepływu danych
-          href: concepts-data-flow-datasets.md
         - name: Tryb debugowania
           href: concepts-data-flow-debug-mode.md
         - name: Odchylenia od schematu
@@ -216,6 +216,8 @@
           href: connector-couchbase.md
         - name: DB2
           href: connector-db2.md
+        - name: Format tekstu rozdzielanego
+          href: format-delimited-text.md
         - name: Przechodzenie do szczegółów
           href: connector-drill.md
         - name: Dynamics 365
@@ -283,6 +285,8 @@
           href: connector-oracle-responsys.md
         - name: Oracle Service Cloud
           href: connector-oracle-service-cloud.md
+        - name: Format Parquet
+          href: format-parquet.md
         - name: Paypal
           href: connector-paypal.md
         - name: Phoenix
@@ -582,6 +586,8 @@
       href: 'https://feedback.azure.com/forums/270578-azure-data-factory'
     - name: Często zadawane pytania
       href: frequently-asked-questions.md
+    - name: Oficjalne dokumenty
+      href: whitepapers.md
     - name: Harmonogram działania
       href: 'https://azure.microsoft.com/roadmap/?tag=data-factory'
     - name: Cennik

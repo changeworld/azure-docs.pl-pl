@@ -45,6 +45,8 @@
       href: container-instances-region-availability.md
     - name: Relacja z koordynatorami
       href: container-instances-orchestrator-relationship.md
+    - name: Zagadnienia związane z zabezpieczeniami
+      href: container-instances-image-security.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Wdrażanie
@@ -69,6 +71,8 @@
           href: container-instances-managed-identity.md
         - name: Korzystanie z zasobów procesora GPU (wersja zapoznawcza)
           href: container-instances-gpu.md
+        - name: Włączanie punktu końcowego protokołu SSL
+          href: container-instances-container-group-ssl.md
     - name: Instalowanie woluminów danych
       items:
         - name: Udział plików platformy Azure

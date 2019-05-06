@@ -186,7 +186,7 @@
           href: how-to-connect-configure-ad-ds-connector-account.md
         - name: Zmienianie hasła konta usługi Azure ADSync
           href: how-to-connect-sync-change-serviceacct-pass.md
-        - name: Zmienianie konta łącznika usługi Azure AD
+        - name: Zmienianie hasła do konta łącznika usługi Azure AD
           href: how-to-connect-azureadaccount.md
         - name: Zmienianie hasła do konta łącznika usługi AD DS
           href: how-to-connect-sync-change-addsacct-pass.md

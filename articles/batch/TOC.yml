@@ -49,6 +49,8 @@
       href: batch-pool-vm-sizes.md
     - name: Wysoka dostępność i odzyskiwanie po awarii
       href: high-availability-disaster-recovery.md
+    - name: Zmienne środowiskowe środowiska uruchomieniowego zadania
+      href: batch-compute-node-environment-variables.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Zarządzanie kontami usługi Batch
@@ -199,8 +201,6 @@
           href: batch-task-complete-event.md
         - name: Zdarzenie niepowodzenia zadania
           href: batch-task-fail-event.md
-    - name: Zmienne środowiskowe węzła obliczeniowego usługi Batch
-      href: batch-compute-node-environment-variables.md
 - name: Zasoby
   items:
     - name: Harmonogram działania dla platformy Azure

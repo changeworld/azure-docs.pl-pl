@@ -7,10 +7,15 @@
 - name: Przewodniki Szybki start
   expanded: true
   items:
-    - name: Tworzenie klastra AKS — interfejs wiersza polecenia
-      href: kubernetes-walkthrough.md
-    - name: Tworzenie klastra AKS — portal
-      href: kubernetes-walkthrough-portal.md
+    - name: Tworzenie klastra AKS
+      expanded: true
+      items:
+        - name: Używanie interfejsu wiersza polecenia platformy Azure
+          href: kubernetes-walkthrough.md
+        - name: Korzystanie z witryny Azure Portal
+          href: kubernetes-walkthrough-portal.md
+        - name: Używanie szablonu usługi Resource Manager
+          href: kubernetes-walkthrough-rm-template.md
     - name: Tworzenie aplikacji
       expanded: true
       items:
@@ -87,7 +92,7 @@
             - name: Zabezpieczenia zasobników
               href: developer-best-practices-pod-security.md
     - name: Limity przydziału i limity regionalne
-      href: container-service-quotas.md
+      href: quotas-skus-regions.md
     - name: Migrowanie z usługi ACS do usługi AKS
       href: acs-aks-migration.md
     - name: Obsługiwana wersja platformy Kubernetes

@@ -1,0 +1,82 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentacja rozpoznawania pisma odręcznego
+metadata:
+  title: 'Dokumentacja rozpoznawania pisma odręcznego — przewodniki Szybki start, samouczki i dokumentacja interfejsu API — Azure Cognitive Services | Microsoft Docs'
+  description: 'Dowiedz się, jak tłumaczyć tekst w wielu językach za pomocą tłumaczenia tekstu w usłudze Translator.'
+  services: cognitive-services
+  author: erhopf
+  manager: nitinme
+  ms.service: cognitive-services
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 05/02/2019
+  ms.author: erhopf
+abstract:
+  description: 'Cyfrowe pismo odręczne odnosi się do technologii, które umożliwiają tworzenie cyfrowych reprezentacji danych wejściowych, takich jak pismo ręczne i rysunki. Urządzenia udostępniają zaawansowane środowiska cyfrowego pisma odręcznego, dlatego sztuczna inteligencja i systemy uczenia maszynowego umożliwiają rozpoznawanie napisanych kształtów i tekstu w dowolnym kontekście. Interfejs API rozpoznawania pisma odręcznego to usługa chmurowa, która umożliwia wysyłanie pociągnięć odręcznych i uzyskiwanie szczegółowych informacji na ich temat.'
+sections:
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/cognitive-services/ink-recognizer/overview
+            html: <p>Informacje na temat rozpoznawania pisma odręcznego i jego integracji z produktami</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: Co to jest interfejs API rozpoznawania pisma odręcznego?
+          - href: concepts/send-ink-data.md
+            html: <p>Poznaj zalecane wzorce wywoływania podczas korzystania z interfejsu API</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: Wysyłanie danych pisma odręcznego do interfejsu API rozpoznawania pisma odręcznego
+  - title: 5-minutowe przewodniki Szybki start
+    items:
+      - type: paragraph
+        text: 'Zacznij korzystać z interfejsu API rozpoznawania pisma odręcznego:'
+      - type: table
+        style: dataMatrix
+        columns:
+          - image:
+              src: media/index/logo-csharp.svg
+            title: 'C#'
+          - image:
+              src: media/index/logo-java.svg
+            title: Java
+          - image:
+              src: media/index/logo-js.svg
+            title: Javascript
+        rows:
+          - title: Rozpoznawanie pociągnięć cyfrowego pisma odręcznego
+            values:
+              - href: quickstarts/csharp.md
+              - href: quickstarts/java.md
+              - href: quickstarts/javascript.md
+  - title: Przykłady
+    items:
+      - type: paragraph
+        text: 'Te przykładowe programy pozwalają sprawdzić, jak można zintegrować interfejs API rozpoznawania pisma odręcznego z aplikacjami:'
+      - type: paragraph
+        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089502">C# i platforma uniwersalna systemu Windows (UWP)</a>'
+      - type: paragraph
+        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089804">C# i Windows Presentation Foundation (WPF)</a>'
+      - type: paragraph
+        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089908">Aplikacja języka JavaScript dla przeglądarki internetowej</a>'
+      - type: paragraph
+        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089906">Aplikacja mobilna języka Java i systemu Android</a>'
+      - type: paragraph
+        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089805">Aplikacja mobilna języka Swift i systemu iOS</a>'
+  - title: Dokumentacja
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Interfejs API REST
+            html: '<p><a href="https://go.microsoft.com/fwlink/?linkid=2089907">Dokumentacja interfejsu API REST</a></p>'
+          - title: PowerShell
+            html: '<p><a href=https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
+          - title: Interfejs wiersza polecenia
+            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices">Interfejs wiersza polecenia platformy Azure</a></p>'

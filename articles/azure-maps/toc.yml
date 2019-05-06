@@ -42,7 +42,7 @@
           href: render-coverage.md
         - name: Pokrycie routingiem
           href: routing-coverage.md
-    - name: Obsługiwane języki
+    - name: Obsługa lokalizacji
       href: supported-languages.md
     - name: Obsługiwane style mapy
       href: supported-map-styles.md
@@ -74,11 +74,11 @@
       items:
         - name: Kontrolka mapy
           items:
-            - name: Korzystanie z kontrolki mapy
+            - name: Wprowadzenie do kontrolek mapy internetowej
               href: how-to-use-map-control.md
             - name: Tworzenie mapy
               href: map-create.md
-            - name: Wybieranie stylu mapy
+            - name: Zmienianie stylu mapy
               href: choose-map-style.md
             - name: Dodawanie kontrolek do mapy
               href: map-add-controls.md
@@ -120,8 +120,14 @@
               href: map-route.md
     - name: Tworzenie aplikacji przy użyciu zestawu Android SDK
       items:
-        - name: Jak używać kontrolki map w systemie Android
+        - name: Wprowadzenie do kontrolek mapy systemu Android
           href: how-to-use-android-map-control-library.md
+        - name: Dodawanie warstwy symboli
+          href: how-to-add-symbol-to-android-map.md
+        - name: Dodawanie kształtów
+          href: how-to-add-shapes-to-android-map.md
+        - name: Zmienianie stylu mapy
+          href: set-android-map-styles.md
 - name: Dokumentacja
   items:
     - name: Rozszerzenia interfejsu API i parametrów

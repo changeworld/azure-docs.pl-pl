@@ -68,6 +68,8 @@
       href: resource-group-delete.md
     - name: Wdrażanie za pomocą usługi Resource Manager i klasyczne
       href: resource-manager-deployment-model.md
+    - name: Wspólne atrybuty zabezpieczeń platformy Azure
+      href: azure-resource-manager-security-attributes.md
 - name: Instrukcje
   items:
     - name: Tworzenie szablonów
@@ -225,6 +227,8 @@
           href: move-support-resources.md
         - name: Pomoc techniczna dla tagów
           href: tag-support.md
+    - name: Dostawcy zasobów według usługi
+      href: azure-services-resource-providers.md
     - name: REST — Resource Manager
       href: /rest/api/resources/
     - name: REST — Deployment Manager

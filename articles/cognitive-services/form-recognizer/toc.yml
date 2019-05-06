@@ -1,0 +1,43 @@
+- name: Dokumentacja rozpoznawania formularzy
+  href: index.yml
+- name: Omówienie
+  items:
+    - name: Co to jest rozpoznawanie formularzy?
+      href: overview.md
+- name: Przewodniki Szybki start
+  expaned: true
+  items:
+    - name: Trenowanie modelu i wyodrębnianie danych
+      items:
+        - name: Korzystanie z interfejsu API REST
+          items:
+            - name: cURL
+              href: quickstarts/curl-train-extract.md
+            - name: Python
+              href: quickstarts/python-train-extract.md
+- name: Przewodniki z instrukcjami
+  items:
+    - name: Korzystanie z kontenerów
+      items:
+        - name: Instalowanie i uruchamianie kontenerów
+          displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull'
+          href: form-recognizer-container-howto.md
+        - name: Konfigurowanie kontenerów
+          href: form-recognizer-container-configuration.md
+          displayName: 'docker, container, run, billing, apikey, logging'
+- name: Dokumentacja
+  items:
+    - name: Interfejs API rozpoznawania formularzy
+      href: 'https://aka.ms/form-recognizer/api'
+- name: Zasoby
+  items:
+    - name: Ceny i limity
+      href: 'https://go.microsoft.com/fwlink/?linkid=2087258'
+    - name: UserVoice
+      href: 'https://go.microsoft.com/fwlink/?linkid=2090535'
+    - name: Stack Overflow
+      href: 'https://go.microsoft.com/fwlink/?linkid=2087186'
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
+    - name: Dostępność regionalna
+      href: 'https://go.microsoft.com/fwlink/?linkid=2087185'

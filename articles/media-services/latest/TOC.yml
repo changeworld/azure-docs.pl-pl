@@ -47,7 +47,7 @@
       items:
         - name: Omówienie
           href: encoding-concept.md
-          displayName: Presets
+          displayName: 'encoding, presets, jobs, adaptive, bitrate'
         - name: Przekształcenia i zadania
           href: transforms-jobs-concept.md
         - name: Formaty usługi Media Encoder Standard
@@ -56,14 +56,19 @@
         - name: Automatyczne generowanie adaptacyjnej drabiny szybkości transmisji bitów
           href: autogen-bitrate-ladder.md
         - name: Kodowanie z rozpoznawaniem zawartości
+          displayName: 'content, aware, cae'
           href: cae-experimental.md
+        - name: Kody błędów zadań
+          href: 'https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode'
     - name: Analiza multimediów
       items:
         - name: Omówienie
           href: analyzing-video-audio-files-concept.md
-          displayName: Presets
+          displayName: 'analyzing, presets, jobs'
         - name: Przekształcenia i zadania
           href: transforms-jobs-concept.md
+        - name: Kody błędów zadań
+          href: 'https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode'
     - name: 'Tworzenie pakietów, dostarczanie, ochrona'
       items:
         - name: Tworzenie pakietów
@@ -100,6 +105,8 @@
           href: streaming-policy-concept.md
         - name: Zasady kluczy zawartości
           href: content-key-policy-concept.md
+        - name: Kody błędów punktów początkowych
+          href: origin-error-codes.md
     - name: Transmisja strumieniowa na żywo
       items:
         - name: Omówienie
@@ -138,6 +145,12 @@
           href: entities-overview.md
         - name: Kontrola dostępu oparta na rolach
           href: rbac-overview.md
+        - name: Kody błędów
+          items:
+            - name: Kody błędów punktów początkowych
+              href: origin-error-codes.md
+            - name: Kody błędów zadań
+              href: 'https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode'
     - name: Wskazówki dotyczące migracji z wersji 2 do wersji 3
       href: migrate-from-v2-to-v3.md
 - name: Przewodniki z instrukcjami
@@ -240,6 +253,12 @@
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: Szablon usługi Resource Manager
       href: /azure/templates/microsoft.media/allversions
+    - name: Kody błędów
+      items:
+        - name: Kody błędów punktów początkowych
+          href: origin-error-codes.md
+        - name: Kody błędów zadań
+          href: 'https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode'
 - name: Zasoby
   items:
     - name: Społeczność usługi Azure Media Services
