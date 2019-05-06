@@ -4,14 +4,14 @@ description: Dowiedz się, jak zarządzać konfliktami w usłudze Azure Cosmos D
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 04/16/2019
+ms.date: 05/06/2019
 ms.author: mjbrown
-ms.openlocfilehash: fb9850548f0bfb71b797830eb0d5fdfddbc32306
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a6e57dc5b4bcfa3f02e323253e24d68381c3535d
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61054802"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65068734"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Zarządzanie zasadami rozwiązywania konfliktów w usłudze Azure Cosmos DB
 
@@ -86,16 +86,16 @@ udp_collection = self.try_create_document_collection(create_client, database, ud
 
 ## <a name="create-a-custom-conflict-resolution-policy-using-a-stored-procedure"></a>Tworzenie zasad rozwiązania konfliktu niestandardowych za pomocą procedury składowanej
 
-Poniższe przykłady pokazują, jak skonfigurować kontener za pomocą niestandardowych zasad rozwiązywania konfliktów z procedurą składowaną, aby rozwiązać konflikt. Te konflikty nie są widoczne w kanale informacyjnym konfliktów, chyba że w procedurze składowanej wystąpi błąd. Po utworzeniu zasad za pomocą kontenera, należy utworzyć procedurę składowaną. Poniższy przykład zestawu .NET SDK przedstawia przykład tego. Ta zasada jest obsługiwany tylko na podstawowych (SQL) interfejsu Api.
+Poniższe przykłady pokazują, jak skonfigurować kontener za pomocą niestandardowych zasad rozwiązywania konfliktów z procedurą składowaną, aby rozwiązać konflikt. Te konflikty nie są widoczne w kanale informacyjnym konfliktów, chyba że w procedurze składowanej wystąpi błąd. Po utworzeniu zasad z kontenerem, należy utworzyć procedurę składowaną. Przykładowy zestaw SDK platformy .NET, poniżej przedstawiono przykład. Ta zasada jest obsługiwany tylko na podstawowych (SQL) interfejsu Api.
 
 ### <a name="sample-custom-conflict-resolution-stored-procedure"></a>Przykładowe niestandardowe konfliktów procedury składowanej
 
 Niestandardowe konflikt rozpoznawania przechowywane procedury musi można zaimplementować przy użyciu sygnatury funkcji, pokazano poniżej. Nazwa funkcji nie jest konieczne jest zgodna z nazwą używany podczas rejestrowania procedury składowanej z kontenerem, ale uprościć, nazewnictwa. Poniżej przedstawiono opis parametrów, które muszą zostać zaimplementowane dla tej procedury składowanej.
 
 - **incomingItem**: Element wstawiany lub aktualizowany w zatwierdzeniu, które generuje konflikty. Ma wartość null dla operacji usuwania.
-- **existingItem**: Element, który aktualnie zatwierdzone. Ta wartość jest inna niż null w aktualizacji i wartość null w przypadku insert czy delete.
+- **existingItem**: Element, który aktualnie zatwierdzone. Ta wartość jest inna niż null w aktualizacji i wartość null w przypadku wstawiania lub usuwa.
 - **isTombstone**: Wartość logiczna wskazująca, jeśli incomingItem powoduje konflikt z wcześniej usuniętego elementu. W przypadku wartości true existingItem również ma wartość null.
-- **conflictingItems**: Tablica zatwierdzonej wersji wszystkich elementów w kontenerze, które są sprzeczne z incomingItem w identyfikatorze lub innych właściwości unikatowego indeksu.
+- **conflictingItems**: Tablica zatwierdzonej wersji wszystkich elementów w kontenerze, które są w konflikcie z incomingItem w identyfikatorze lub innych właściwości unikatowego indeksu.
 
 > [!IMPORTANT]
 > Podobnie jak przy użyciu dowolnej procedury składowanej procedury rozwiązywania konfliktów niestandardowe mogą dostęp do danych za pomocą tego samego klucza partycji i mogą wykonywać żadnych insert, aktualizować lub usuwać operację, aby rozwiązać konflikty.
@@ -361,7 +361,7 @@ Poznaj następujące pojęcia dotyczące usługi Azure Cosmos DB:
 
 * [Dystrybucja globalna - kulisy](global-dist-under-the-hood.md)
 * [Jak skonfigurować Multi-Master w swoich aplikacjach](how-to-multi-master.md)
-* [Konfigurowanie klientów w ramach wieloadresowości](how-to-manage-database-account.md#configure-clients-for-multi-homing)
+* [Konfigurowanie klientów w ramach wieloadresowości](how-to-manage-database-account.md#configure-multiple-write-regions)
 * [Dodać lub usunąć regiony z Twojego konta usługi Azure Cosmos DB](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 * [How to configure multi-master in your applications (Jak skonfigurować wielowzorcowość w aplikacji)](how-to-multi-master.md).
 * [Partycjonowanie i dystrybucja danych](partition-data.md)

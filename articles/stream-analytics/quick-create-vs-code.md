@@ -7,12 +7,12 @@ ms.author: mamccrea
 ms.date: 05/06/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: dd6d527020bbf5e2fb510fa9605af408673e89dd
-ms.sourcegitcommit: e729629331ae10097a081a03029398525f4147a4
+ms.openlocfilehash: 511dab7090f6114c7769d504166f3e2c137d43ca
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/25/2019
-ms.locfileid: "64514236"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65071912"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-cloud-job-in-visual-studio-code-preview"></a>Szybki start: Tworzenie zadania usługi Azure Stream Analytics w chmurze w programie Visual Studio Code (wersja zapoznawcza)
 
@@ -26,23 +26,13 @@ Ten przewodnik Szybki Start dowiesz się, jak utworzyć i uruchomić zadanie us�
 
 * Zainstaluj narzędzie [Visual Studio Code](https://code.visualstudio.com/).
 
-* Pobierz [rozszerzenie usługi Azure Stream Analytics dla programu VS Code](https://usqldownload.blob.core.windows.net/ext/asa/vscode-asa-0.0.2.vsix).
-
 ## <a name="install-the-azure-stream-analytics-extension"></a>Instalowanie rozszerzenia usługi Azure Stream Analytics
-
-Zainstaluj rozszerzenie usługi Azure Stream Analytics z prywatnego pakietu VSIX, które zostały pobrane.
 
 1. Otwórz program Visual Studio Code.
 
-2. Z **rozszerzenia** w okienku po lewej stronie, wybierz wielokropek **(...)**  w prawym górnym rogu. Następnie wybierz pozycję **zainstalować z VSIX**.
+2. Z **rozszerzenia** w okienku po lewej stronie, wyszukaj **usługi Stream Analytics** i wybierz **zainstalować** na **usługi Azure Stream Analytics** rozszerzenia.
 
-   ![Zainstaluj z VSIX w programie Visual Studio Code](./media/quick-create-vs-code/install-vsix.png)
-
-3. Wybierz rozszerzenie, pobierane jako warunek wstępny, a następnie wybierz pozycję **zainstalować**.  Może to potrwać kilka sekund.
-
-4. Gdy instalacja została zakończona pomyślnie, wybierz pozycję **Załaduj ponownie teraz** w wyświetlonym oknie, jeśli zostanie wyświetlony monit.
-
-5. Upewnij się, że **Azure Stream Analytics Tools** jest widoczna w Twojej **włączone rozszerzenia**.
+3. Po zainstalowaniu rozszerzenia, upewnij się, że **Azure Stream Analytics Tools** jest widoczna w Twojej **włączone rozszerzenia**.
 
    ![Azure Stream Analytics Tools obszarze włączone rozszerzenia programu Visual Studio Code](./media/quick-create-vs-code/enabled-extensions.png)
 
@@ -123,7 +113,7 @@ Przed zdefiniowaniem zadania usługi Stream Analytics przygotuj dane, które nas
 
    ![Stream Analytics pliki do projektu w programie VS Code](./media/quick-create-vs-code/asa-project-files.png)
 
-4. Plik konfiguracyjny asaproj.json zawiera dane wejściowe i dane wyjściowe zadania pliku informacje o konfiguracji potrzebne do przesyłania zadania ASA na platformie Azure.
+4. **Asaproj.json** plik konfiguracji zawiera dane wejściowe, dane wyjściowe i informacje o pliku konfiguracji zadania potrzebna do przesyłania zadania usługi Stream Analytics na platformie Azure.
 
    ![Plik konfiguracji zadania Stream Analytics w programie VS Code](./media/quick-create-vs-code/job-configuration.png)
 
@@ -146,7 +136,7 @@ Przed zdefiniowaniem zadania usługi Stream Analytics przygotuj dane, które nas
 
 4. Wprowadź nazwę pliku wejściowego jako **IotHub.json**.
 
-5. Edytuj **IoTHub.json** z następującymi wartościami. Zachowaj wartości domyślne dla pól, które nie są wymienione poniżej. Użyj funkcji CodeLens ułatwiających wprowadza się ciąg lub wybierz z listy rozwijanej.
+5. Edytuj **IoTHub.json** z następującymi wartościami. Zachowaj wartości domyślne dla pól, które nie są wymienione poniżej. Korzystania z witryny CodeLens, aby ułatwić wprowadź ciąg, wybierz z listy rozwijanej lub zmienić tekst bezpośrednio w pliku.
 
    |Ustawienie|Sugerowana wartość|Opis|
    |-------|---------------|-----------|
@@ -189,9 +179,9 @@ Przed zdefiniowaniem zadania usługi Stream Analytics przygotuj dane, które nas
    HAVING Temperature > 27
    ```
 
-## <a name="compile-script"></a>Wykonanie skryptu kompilacji
+## <a name="compile-the-script"></a>Wykonanie skryptu kompilacji
 
-Skrypt kompilacji wykonuje dwie czynności: Sprawdź składnię i generowanie szablonów usługi Azure Resource Manager do automatycznego wdrożenia.
+Skrypt kompilacji wykonuje dwie czynności: Sprawdź składnię i generowanie szablonów usługi Azure Resource Manager dla wybranej.
 
 Istnieją dwa sposoby, aby wyzwolić skryptu kompilacji:
 
@@ -203,7 +193,9 @@ Istnieją dwa sposoby, aby wyzwolić skryptu kompilacji:
 
     ![Kliknij prawym przyciskiem myszy skrypt ASA, aby skompilować](./media/quick-create-vs-code/compile-script2.png)
 
-3. Po kompilacji, można znaleźć dwa szablony usługi Azure Resource Manager wygenerowanego w **Wdróż** folderze projektu. Te dwa pliki są używane do automatycznego wdrożenia.
+3. Po kompilacji, można znaleźć dwa szablony usługi Azure Resource Manager wygenerowanego w **Wdróż** folderze projektu. Te dwa pliki są używane do wybranej.
+
+    ![Stream Analytics szablony wdrażania w Eksploratorze plików](./media/quick-create-vs-code/deployment-templates.png)
 
 ## <a name="submit-a-stream-analytics-job-to-azure"></a>Przesyłanie zadania usługi Stream Analytics na platformie Azure
 
@@ -213,7 +205,7 @@ Istnieją dwa sposoby, aby wyzwolić skryptu kompilacji:
 
 2. Wybierz swoją subskrypcję z listy menu podręczne.
 
-3. Wybierz **wybierz zadanie**. Następnie wybierz polecenie Utwórz nowe zadanie.
+3. Wybierz zadanie **. Następnie wybierz polecenie Utwórz nowe zadanie.
 
 4. Wprowadź nazwę zadania **myASAjob** i postępuj zgodnie z instrukcjami, aby wybrać grupę zasobów i lokalizacji.
 
@@ -233,13 +225,15 @@ Istnieją dwa sposoby, aby wyzwolić skryptu kompilacji:
 
 ## <a name="start-the-stream-analytics-job-and-check-output"></a>Uruchamianie zadania usługi Stream Analytics i sprawdzanie danych wyjściowych
 
-1. Otwórz Stream Analytics Eksplorator programu Visual Studio Code i Znajdź zadanie,**myASAJob**.
+1. Otwórz **Stream Analytics Eksplorator** w programie Visual Studio Code i Znajdź zadanie, **myASAJob**.
 
 2. Kliknij prawym przyciskiem myszy nazwę zadania. Następnie wybierz **Start** z menu kontekstowego.
 
+![Uruchamianie zadania usługi Stream Analytics w programie VS Code](./media/quick-create-vs-code/start-asa-job-vs-code.png)
+
 3. Wybierz **teraz** w oknie podręcznym, aby uruchomić zadanie.
 
-4. Należy pamiętać, stan zadania został zmieniony na **systemem**. Kliknij prawym przyciskiem myszy nazwę zadania, a następnie wybierz **Otwórz widok zadania w portalu** aby zobaczyć dane wejściowe i wyjściowe metryki zdarzenia. Może to potrwać kilka minut.
+4. Należy pamiętać, stan zadania został zmieniony na **systemem**. Kliknij prawym przyciskiem myszy nazwę zadania, a następnie wybierz **Otwórz widok zadania w portalu** aby zobaczyć dane wejściowe i wyjściowe metryki zdarzenia. Ta akcja może potrwać kilka minut.
 
 5. Aby wyświetlić wyniki, należy otworzyć magazynu obiektów blob w rozszerzeniu Visual Studio Code lub w witrynie Azure portal.
 

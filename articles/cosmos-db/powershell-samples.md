@@ -1,37 +1,48 @@
 ---
 title: Przykłady programu Azure PowerShell dla usługi Azure Cosmos DB
 description: Przykłady dla programu Azure PowerShell — skrypty ułatwiające tworzenie kont usługi Azure Cosmos DB i zarządzanie nimi.
-author: SnehaGunda
+author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 10/16/2017
-ms.author: sngun
-ms.openlocfilehash: 3498ac6a2a4aaa1682d7b5bc5aae5383866d5bcd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/08/2019
+ms.author: mjbrown
+ms.openlocfilehash: 68e845a05f4ebe2d1f25b55c00042c8925c8109e
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60926166"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65069302"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db"></a>Przykłady sla programu Azure PowerShell dla usługi Azure Cosmos DB
 
-Poniższa tabela zawiera linki do przykładowych skryptów programu Azure PowerShell dla usługi Azure Cosmos DB. W tej chwili za pomocą programu PowerShell można zarządzać tylko kontem usługi Azure Cosmos DB. Innymi zasobami, takimi jak bazy danych i kontenery, nie można zarządzać za pomocą programu PowerShell.
+Poniższa tabela zawiera linki do przykładowych skryptów programu Azure PowerShell dla usługi Azure Cosmos DB dla podstawowej (SQL) interfejsu API.
 
 | |  |
 |---|---|
-|**Tworzenie konta usługi Azure Cosmos DB**||
-|[Tworzenie i konfigurowanie konta usługi Cosmos przy użyciu interfejsu API SQL](scripts/create-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tworzy jedno konto usługi Azure Cosmos DB do użycia z interfejsem API SQL. |
-|[Tworzenie i konfigurowanie konta usługi Cosmos przy użyciu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB](scripts/create-mongodb-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tworzy jedno konto usługi Cosmos przy użyciu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB. |
-|[Tworzenie i konfigurowanie konta usługi Cosmos przy użyciu interfejsu API języka Gremlin](scripts/create-graph-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tworzy jedno konto usługi Azure Cosmos DB do użycia z interfejsem Gremlin API. |
-|[Tworzenie i konfigurowanie konta usługi Cosmos przy użyciu interfejsu API Cassandra](scripts/create-and-configure-cassandra-database.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tworzy jedno konto usługi Azure Cosmos DB do użycia z interfejsem Cassandra API. |
-|[Tworzenie i konfigurowanie konta usługi Cosmos przy użyciu interfejsu API tabel](scripts/create-table-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tworzy jedno konto usługi Azure Cosmos DB do użycia z interfejsem API tabel. |
-|**Skalowanie usługi Azure Cosmos DB**||
-|[Replikowanie konta usługi Azure Cosmos DB w wielu regionach i konfigurowanie priorytetów trybu failover](scripts/scale-multiregion-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)|Globalnie replikuje dane konta w wielu regionach z określonym priorytetem trybu failover.|
-|**Zabezpieczanie usługi Azure Cosmos DB**||
-| [Uzyskiwanie kluczy kont](scripts/secure-get-account-key-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Uzyskuje podstawowe i pomocnicze klucze główne zapisu oraz klucze podstawowe i pomocnicze tylko do odczytu dla konta.|
-| [Uzyskiwanie parametrów połączenia bazy danych MongoDB](scripts/secure-mongo-connection-string-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Uzyskuje parametry połączenia umożliwiające połączenie aplikacji bazy danych MongoDB z Twoim kontem usługi Azure Cosmos DB.|
-|[Ponowne generowanie kluczy konta](scripts/secure-regenerate-key-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)|Ponownie generuje klucz główny lub klucz tylko do odczytu dla konta.|
-|[Tworzenie zapory](scripts/create-firewall-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tworzy zasady kontroli dostępu do adresów IP dla połączeń przychodzących w celu ograniczenia dostępu do konta z zatwierdzonego zestawu maszyn i/lub usług w chmurze.|
-|**Wysoka dostępność, odzyskiwanie po awarii, tworzenie i przywracanie kopii zapasowej**||
-|[Konfigurowanie zasad trybu failover](scripts/ha-failover-policy-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)|Ustawia priorytet trybu failover poszczególnych regionów, w których konto jest replikowane.|
+|**Konta usługi Azure Cosmos**||
+|[Create an account](scripts/powershell/sql/ps-account-create.md?toc=%2fpowershell%2fmodule%2ftoc.json) (Tworzenie konta)| Tworzy konto interfejsu API SQL usługi Azure Cosmos. |
+|[Utwórz konto](scripts/powershell/sql/ps-account-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Pobierz właściwości konta usługi Azure Cosmos. |
+|[Dodawanie regionu](scripts/powershell/sql/ps-account-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Konto usługi Azure Cosmos i dodawanie regionu do listy lokalizacji. |
+|[Zmień priorytet trybu failover](scripts/powershell/sql/ps-account-failover-priority-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Zmień priorytet trybu failover z konta usługi Azure Cosmos za pomocą wyzwalacza ręcznego przełączania trybu failover. |
+|[Aktualizacji tagów](scripts/powershell/sql/ps-account-tags-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Zaktualizuj tagi dla konta usługi Azure Cosmos. |
+|[Uzyskiwanie kluczy kont](scripts/powershell/sql/ps-account-key-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Pobierz klucze podstawowe i pomocnicze konta usługi Azure Cosmos. |
+|[Ponowne generowanie kluczy konta](scripts/powershell/sql/ps-account-key-regenerate.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Wygeneruj ponownie klucze podstawowe i pomocnicze konta usługi Azure Cosmos. |
+|[Lista parametrów połączenia](scripts/powershell/sql/ps-account-connection-string-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Pobierz parametry połączenia podstawowego i pomocniczego konta usługi Azure Cosmos. |
+|[Tworzenie zapory adresów IP](scripts/powershell/sql/ps-account-firewall-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tworzenie zapory adresów IP dla konta usługi Azure Cosmos. |
+|[Usuwanie konta usługi Azure Cosmos](scripts/powershell/sql/ps-account-delete.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Usuwanie konta usługi Azure Cosmos. |
+|**Baz danych Azure Cosmos**||
+| [Tworzenie bazy danych](scripts/powershell/sql/ps-database-create.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tworzenie bazy danych w ramach konta usługi Azure Cosmos.|
+| [Tworzenie bazy danych o przepływności udostępnione/poziomie bazy danych](scripts/powershell/sql/ps-database-create-shared.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Utwórz bazę danych Azure Cosmos przy przepływności na poziomie bazy danych, współużytkowaną z jego kontenerów.|
+| [Lista wszystkich baz danych](scripts/powershell/sql/ps-database-list.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Wyświetl listę wszystkich baz danych na koncie usługi Azure Cosmos.|
+| [Pobierz bazę danych](scripts/powershell/sql/ps-database-get.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Pobierz właściwości bazy danych Azure Cosmos.|
+|**Kontenery usługi Azure Cosmos**||
+| [Tworzenie kontenera](scripts/powershell/sql/ps-container-create.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tworzenie kontenera usługi Azure Cosmos za pomocą dedykowanej przepływności.|
+| [Utwórz kontener przy użyciu udostępnionej przepływności](scripts/powershell/sql/ps-container-create-shared.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tworzenie kontenera usługi Azure Cosmos przy przepływności udostępnione dla innych kontenerów w bazie danych.|
+| [Utwórz kontener przy użyciu zasad indeksu](scripts/powershell/sql/ps-container-create-index-custom.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tworzenie kontenera usługi Azure Cosmos za pomocą zasad niestandardowych indeksu.|
+| [Tworzenie kontenera bez zasad indeksu](scripts/powershell/sql/ps-container-create-index-none.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Utwórz kontener usługi Azure Cosmos z indeks zasadach wyłączone.|
+| [Utwórz kontener przy użyciu kluczy unikatowych i czas wygaśnięcia](scripts/powershell/sql/ps-container-create-unique-key-ttl.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tworzenie bazy danych Cosmos Azure skonfigurowany kontener za pomocą klucza unikatowego ograniczenia i czas wygaśnięcia.|
+| [Utwórz kontener przy użyciu Rozwiązywanie konfliktów](scripts/powershell/sql/ps-container-create-conflict-policy.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tworzenie kontenera usługi Azure Cosmos za pomocą ostatni składnik zapisywania usługi wins zasad rozpoznawania w konflikcie.|
+| [Listę wszystkich kontenerów](scripts/powershell/sql/ps-container-list.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Wyświetl listę wszystkich kontenerów w bazie danych Azure Cosmos.|
+| [Pobierz kontener](scripts/powershell/sql/ps-container-get.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Pobierz właściwości dla kontenera w bazie danych Azure Cosmos.|
+| [Usuwanie kontenera](scripts/powershell/sql/ps-container-delete.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Usuń kontener w bazie danych Azure Cosmos.|
 |||

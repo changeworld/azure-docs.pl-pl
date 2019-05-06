@@ -17,12 +17,12 @@ ms.author: kkrishna
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 427e293c28f634df9f66a7210d79e0df0d4d063c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: df0d0b02efe7e99253b64ba02a5d9e77bb968993
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60410352"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65138354"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Instrukcje: Dodawanie ról aplikacji w aplikacji i odbierać je w tokenie
 
@@ -51,7 +51,9 @@ Te role aplikacji są definiowane w [witryny Azure portal](https://portal.azure.
 1. Edytuj manifest aplikacji, znajdując `appRoles` ustawienie i Dodawanie ról aplikacji.
 
      > [!NOTE]
-     > Każda definicja roli, w tym manifeście musi mieć inną prawidłową **Guid** dla właściwości "Id". `"value"` Właściwości każdej roli powinny być identyczne ciągi są używane w kodzie aplikacji.
+     > Każda definicja roli aplikacji, w tym manifeście musi mieć inny prawidłowy identyfikator GUID dla `id` właściwości. 
+     > 
+     > `value` Właściwości każdego definicję roli aplikacji powinny być identyczne ciągi, które są używane w kodzie aplikacji. `value` Właściwość nie może zawierać spacji. Jeśli tak jest, otrzymasz błąd podczas zapisywania manifestu.
      
 1. Umożliwia zapisanie manifestu.
 

@@ -1,21 +1,21 @@
 ---
-title: 'Samouczek: projektowanie bazy danych usługi Azure Database for PostgreSQL za pomocą interfejsu wiersza polecenia platformy Azure'
-description: W tym samouczku przedstawiono, jak za pomocą interfejsu wiersza polecenia platformy Azure utworzyć i skonfigurować pierwszy serwer usługi Azure Database for PostgreSQL oraz wykonywać względem niego zapytania.
+title: 'Samouczek: Projektowanie usługi Azure Database for PostgreSQL — jeden serwer przy użyciu wiersza polecenia platformy Azure'
+description: W tym samouczku pokazano, jak tworzenie, konfigurowanie i zapytania pierwszej bazy danych Azure database for PostgreSQL — jeden serwer przy użyciu wiersza polecenia platformy Azure.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 04/01/2018
-ms.openlocfilehash: eba1ffcbe07c617661d902de0726f17e4fec0a00
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 5/6/2019
+ms.openlocfilehash: ed272afcfedaf6c781d2a96e5732fe2368914a67
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57992081"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073066"
 ---
-# <a name="tutorial-design-an-azure-database-for-postgresql-using-azure-cli"></a>Samouczek: projektowanie bazy danych usługi Azure Database for PostgreSQL za pomocą interfejsu wiersza polecenia platformy Azure 
+# <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-azure-cli"></a>Samouczek: Projektowanie usługi Azure Database for PostgreSQL — jeden serwer przy użyciu wiersza polecenia platformy Azure 
 W tym samouczku dowiesz się, jak wykonywać następujące czynności, używając interfejsu wiersza polecenia platformy Azure:
 > [!div class="checklist"]
 > * Tworzenie serwera usługi Azure Database for PostgreSQL

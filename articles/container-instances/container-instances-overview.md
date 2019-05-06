@@ -6,15 +6,15 @@ author: dlepow
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: overview
-ms.date: 11/30/2018
+ms.date: 04/25/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 91cf0986241a40c48430d8305849c12864d645fb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0ec0280ab2a39674a1b41120f0a8791dfb8b1922
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60582775"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073285"
 ---
 # <a name="what-is-azure-container-instances"></a>Co to jest usługa Azure Container Instances?
 
@@ -56,7 +56,10 @@ Niektóre funkcje są obecnie ograniczone do kontenerów systemu Linux:
 * [Wdrażanie sieci wirtualnej](container-instances-vnet.md) (wersja zapoznawcza)
 * [Zasoby procesora GPU](container-instances-gpu.md) (wersja zapoznawcza)
 
-Usługa Azure Container Instances obsługuje obecnie obrazów systemu Windows Server 2016 opartych na wersji Long-Term Servicing Channel (LTSC). Obrazy systemu Windows z wersjami kanału Semi-Annual Channel (SAC), takimi jak 1709 i 1803, nie są obsługiwane.
+Dla wdrożeń kontenerów Windows, użyj obrazy oparte na typowych [Windows podstawowa obrazów](container-instances-faq.md#what-windows-base-os-images-are-supported).
+
+> [!NOTE]
+> Korzystanie z obrazów w sieci systemu Windows Server w 2019 r w usłudze Azure Container Instances jest dostępna w wersji zapoznawczej.
 
 ## <a name="co-scheduled-groups"></a>Grupy planowane wspólnie
 

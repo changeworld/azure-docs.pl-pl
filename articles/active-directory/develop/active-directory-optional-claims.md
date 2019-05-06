@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc38e2096b6a761060fab09a8ce2518808b370e1
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2fd7b05a5411c03e1324871fbff3c29061ce7b3d
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64713344"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65139237"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Instrukcje: Podaj opcjonalne oświadczenia do aplikacji usługi Azure AD
 
@@ -70,7 +70,8 @@ Zestaw oświadczeń opcjonalne, domyślnie dostępne do użycia przez aplikacje 
 | `xms_pl`                   | Preferowany język  | JWT ||Użytkownik preferowanego języka, jeśli ustawiona. Źródło ich głównej dzierżawy w scenariuszach dostęp gościa. Sformatowana LL DW ("en-us"). |
 | `xms_tpl`                  | Dzierżawy preferowany język| JWT | | Dzierżawy zasobów preferowanego języka, jeśli ustawiona. LL sformatowany ("PL"). |
 | `ztdid`                    | Bezobsługowa identyfikator wdrożenia | JWT | | Tożsamość urządzenia używana dla [rozwiązania Windows AutoPilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) |
-| `email`                    | Adresy e-mail dla tego użytkownika, jeśli użytkownik ma jeden.  | JWT, SAML | MSA, AAD | Ta wartość jest domyślnie, jeśli użytkownik Gość w dzierżawie.  Dla zarządzanych użytkowników (te wewnątrz dzierżawy) jej należy wystąpić za pomocą tego opcjonalnego roszczenia, lub w wersji 2.0, z zakresu OpenID.  Dla zarządzanych użytkowników, adres e-mail musi być ustawiona w [portalu administracyjnego usługi Office](https://portal.office.com/adminportal/home#/users).|  
+| `email`                    | Adresy e-mail dla tego użytkownika, jeśli użytkownik ma jeden.  | JWT, SAML | MSA, AAD | Ta wartość jest domyślnie, jeśli użytkownik Gość w dzierżawie.  Dla zarządzanych użytkowników (te wewnątrz dzierżawy) jej należy wystąpić za pomocą tego opcjonalnego roszczenia, lub w wersji 2.0, z zakresu OpenID.  Dla zarządzanych użytkowników, adres e-mail musi być ustawiona w [portalu administracyjnego usługi Office](https://portal.office.com/adminportal/home#/users).| 
+| `groups`| Opcjonalnie, formatowanie oświadczenia grupy |JWT, SAML| |Używane w połączeniu z ustawieniem GroupMembershipClaims w [manifest aplikacji](reference-app-manifest.md), które należy określić również. Aby uzyskać szczegółowe informacje, zobacz [grupy oświadczenia](#Configuring-group-optional claims) poniżej. Aby uzyskać więcej informacji na temat oświadczenia grupy zobacz [Konfigurowanie oświadczenia grupy](../hybrid/how-to-connect-fed-group-claims.md)
 | `acct`             | Stan konta użytkowników w dzierżawie. | JWT, SAML | | Jeśli użytkownik jest członkiem dzierżawy, wartość jest `0`. Jeśli są one gościa, wartość jest `1`. |
 | `upn`                      | Oświadczenie UserPrincipalName. | JWT, SAML  |           | Mimo że to oświadczenie jest automatycznie dołączane, możesz je określić jako opcjonalnego roszczenia, aby dołączyć dodatkowe właściwości, aby zmodyfikować jego zachowanie w przypadku użytkownika gościa.  |
 
@@ -91,7 +92,6 @@ Te oświadczenia są zawsze dołączane w tokenach usługi Azure AD w wersji 1.0
 | `family_name` | Nazwisko                       | Zawiera ostatni nazwę, nazwisko lub nazwę rodziny użytkownika, zgodnie z definicją w obiekcie użytkownika. <br>"family_name":"Miller" | Obsługiwane w zarządzanych kont usług i usługi AAD   |
 | `given_name`  | Imię                      | Zawiera pierwszy lub "" Nazwa użytkownika, według stawki ustalonej obiektu user.<br>"given_name": "Piotr"                   | Obsługiwane w zarządzanych kont usług i usługi AAD  |
 | `upn`         | Nazwa główna użytkownika | Identyfikator użytkownika, który może być używany z parametrem username_hint.  Nie trwały identyfikator dla użytkownika i nie należy używać do kluczowych danych. | Zobacz [dodatkowe właściwości](#additional-properties-of-optional-claims) poniżej dla konfiguracji oświadczenia. |
-
 
 ### <a name="additional-properties-of-optional-claims"></a>Dodatkowe właściwości opcjonalnych oświadczeń
 
@@ -131,24 +131,24 @@ Można skonfigurować opcjonalny oświadczenia dla danej aplikacji, modyfikując
 ```json
 "optionalClaims":  
    {
-       "idToken": [
-             { 
-                   "name": "auth_time", 
-                   "essential": false
-              }
-        ],
- "accessToken": [ 
+      "idToken": [
+            {
+                  "name": "auth_time", 
+                  "essential": false
+             }
+      ],
+      "accessToken": [
              {
                     "name": "ipaddr", 
                     "essential": false
               }
-        ],
-"saml2Token": [ 
-              { 
+      ],
+      "saml2Token": [
+              {
                     "name": "upn", 
                     "essential": false
                },
-               { 
+               {
                     "name": "extension_ab603c56068041afb2f6832e2a17e237_skypeId",
                     "source": "user", 
                     "essential": false
@@ -187,7 +187,7 @@ Jeśli jest obsługiwany przez określonych oświadczenia, można również zmod
 Oprócz zestawu standardowych opcjonalnych oświadczeń można również skonfigurować tokenów, aby uwzględnić rozszerzenia schematu katalogu. Aby uzyskać więcej informacji, zobacz [rozszerzenia schematu katalogu](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions). Ta funkcja jest przydatna do dołączania dodatkowych informacji dotyczących użytkowników, Twoja aplikacja może używać — na przykład, dodatkowe identyfikator lub opcji konfiguracji ważne, ustawionego przez użytkownika. 
 
 > [!Note]
-> Rozszerzenia schematu katalogu są funkcją tylko do usługi AAD, więc jeśli aplikacja manifestu żądań niestandardowego rozszerzenia i użytkownika konta Microsoft loguje się do aplikacji, te rozszerzenia nie zostaną zwrócone. 
+> Rozszerzenia schematu katalogu są funkcją tylko do usługi AAD, więc jeśli aplikacja manifestu żądań niestandardowego rozszerzenia i użytkownika konta Microsoft loguje się do aplikacji, te rozszerzenia nie zostaną zwrócone.
 
 ### <a name="directory-extension-formatting"></a>Rozszerzenie katalogu, formatowanie
 
@@ -196,6 +196,98 @@ W przypadku atrybutów rozszerzenia, należy użyć pełnej nazwy rozszerzenia (
 W ramach tokenu JWT, te oświadczenia będzie emitowane w następującym formacie nazwy: `extn.<attributename>`.
 
 W tokeny SAML te oświadczenia będzie emitowane przy użyciu następującego formatu identyfikatora URI: `http://schemas.microsoft.com/identity/claims/extn.<attributename>`
+
+## <a name="configuring-group-optional-claims"></a>Konfigurowanie opcjonalnych oświadczenia grupy
+
+   > [!NOTE]
+   > Możliwość emisji nazwy grup użytkowników i grupy synchronizowane z lokalnej jest publiczna wersja zapoznawcza
+
+W tej sekcji omówiono opcje konfiguracji, w obszarze opcjonalne oświadczenia dotyczące zmieniania atrybutów grupy oświadczenia grupy z domyślny identyfikator obiektu grupy atrybutów synchronizowanych z lokalnej usługi Active Directory Windows
+> [!IMPORTANT]
+> Zobacz [Konfigurowanie oświadczenia grupy dla aplikacji przy użyciu usługi Azure Active Directory](../hybrid/how-to-connect-fed-group-claims.md) Aby uzyskać więcej informacji, łącznie z ważnymi zastrzeżeniami dla publicznej wersji zapoznawczej oświadczenia grupy z atrybutów w środowisku lokalnym.
+
+1. W portalu usługi -> Azure Active Directory -> Aplikacja rejestracje -> Wybierz aplikacji -> manifestu
+
+2. Włączyć oświadczenia członkostwo grupy, zmieniając groupMembershipClaim
+
+   Prawidłowe wartości to:
+
+   - "Wszystkie"
+   - "SecurityGroup"
+   - "DistributionList"
+   - "DirectoryRole"
+
+   Na przykład:
+
+   ```json
+   "groupMembershipClaims": "SecurityGroup"
+   ```
+
+   Domyślnie, których identyfikatory obiektów grupy będzie obliczanie w grupie wartości oświadczenia.  Aby zmodyfikować wartość oświadczenia, zawierają atrybuty grupy lokalnej lub zmienić typ oświadczenia roli, należy użyć OptionalClaims konfiguracji w następujący sposób:
+
+3. Ustaw oświadczenia opcjonalny konfiguracji nazwę grupy.
+
+   Jeśli chcesz do grup w tokenie zawierać lokalnych, w których atrybuty grupy usługi AD w sekcji opcjonalnych oświadczeń, określ, której typ tokenu opcjonalnego roszczenia powinny być stosowane do, nazwę opcjonalnego roszczenia, żądane i wszelkie dodatkowe właściwości żądanego.  Mogą być wyświetlane wiele typów tokenu:
+
+   - idToken dla tokenu Identyfikacyjnego OIDC
+   - accessToken dla tokenu dostępu OAuth/OIDC
+   - Saml2Token tokeny SAML.
+
+   > [!NOTE]
+   > Typ Saml2Token dotyczy zarówno SAML1.1 i SAML2.0 tokeny format
+
+   Dla każdego odpowiedniego typu tokenu zmodyfikuj oświadczenia grupy do użycia w sekcji OptionalClaims w manifeście. Schemat OptionalClaims jest w następujący sposób:
+
+   ```json
+   {
+   "name": "groups",
+   "source": null,
+   "essential": false,
+   "additionalProperties": []
+   }
+   ```
+
+   | Schemat opcjonalnych oświadczeń | Wartość |
+   |----------|-------------|
+   | **Nazwa:** | Musi być "groups" |
+   | **Źródło:** | Nie jest używany. Pomiń lub określ wartość null |
+   | **podstawowe:** | Nie jest używany. Pomiń lub określić wartość false |
+   | **additionalProperties:** | Lista właściwości dodatkowych.  Prawidłowe opcje to "sam_account_name", "dns_domain_and_sam_account_name", "netbios_domain_and_sam_account_name", "emit_as_roles" |
+
+   W dodatkowe właściwości, tylko jeden "sam_account_name", "dns_domain_and_sam_account_name", "netbios_domain_and_sam_account_name" są wymagane.  Jeżeli istnieje więcej niż jeden, pierwszy jest używany i ignorowane przez inne osoby.
+
+   Niektóre aplikacje wymagają grupy informacje o użytkowniku w oświadczenie roli.  Aby zmienić typ oświadczenia z oświadczenia grupy oświadczenie roli, należy dodać "emit_as_roles" do właściwości dodatkowych.  Wartości grupy będzie emitowane w oświadczenie roli.
+
+   > [!NOTE]
+   > Jeśli jest używany "emit_as_roles" wszystkie role aplikacji skonfigurowane są przypisane do użytkownika zostanie pojawia się w oświadczenie roli
+
+**Przykłady:** Emituj grup jako nazwy grup w tokenów dostępu protokołu OAuth w formacie dnsDomainName\sAMAccountName
+
+```json
+"optionalClaims": {
+    "accessToken": [{
+        "name": "groups",
+        "additionalProperties": ["dns_domain_and_sam_account_name"]
+    }]
+}
+ ```
+
+Aby emitować nazw grup, które mają zostać zwrócone w formacie netbiosDomain\sAMAccountName, zgodnie z rolami oświadczenia języka SAML i tokeny Identyfikatora OIDC:
+
+```json
+"optionalClaims": {
+    "saml2Token": [{
+        "name": "groups",
+        "additionalProperties": ["netbios_name_and_sam_account_name", "emit_as_roles"]
+    }],
+
+    "idToken": [{
+        "name": "groups",
+        "additionalProperties": ["netbios_name_and_sam_account_name", "emit_as_roles"]
+    }]
+ }
+
+ ```
 
 ## <a name="optional-claims-example"></a>Przykład opcjonalnych oświadczeń
 
@@ -213,7 +305,7 @@ Brak dostępnych wiele opcji do aktualizacji właściwości na konfigurację to�
 1. Na stronie aplikacji kliknij **manifestu** aby otworzyć Edytor manifestu w tekście. 
 1. Można bezpośrednio edytować manifest za pomocą tego edytora. Manifest jest zgodna schematu dla [Jednostka aplikacji](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)i formaty automatyczne raz zapisać manifestu. Nowe elementy zostaną dodane do `OptionalClaims` właściwości.
 
-      ```json
+    ```json
       "optionalClaims": 
       {
             "idToken": [ 
@@ -223,13 +315,13 @@ Brak dostępnych wiele opcji do aktualizacji właściwości na konfigurację to�
                         "additionalProperties": [ "include_externally_authenticated_upn"]  
                   }
             ],
-      "accessToken": [ 
+            "accessToken": [ 
                   {
                         "name": "auth_time", 
                         "essential": false
                   }
             ],
-      "saml2Token": [ 
+            "saml2Token": [ 
                   { 
                         "name": "extension_ab603c56068041afb2f6832e2a17e237_skypeId",
                         "source": "user", 
@@ -237,8 +329,10 @@ Brak dostępnych wiele opcji do aktualizacji właściwości na konfigurację to�
                   }
             ]
       }
-      ```
-      W tym przypadku różne oświadczenia opcjonalne zostały dodane do każdego rodzaju token, który aplikacja może odbierać. Tokeny Identyfikatora będą teraz zawierać nazwę UPN dla użytkowników federacyjnych w pełnej postaci (`<upn>_<homedomain>#EXT#@<resourcedomain>`). Tokeny dostępu, które inne komputery klienckie zażądają tej aplikacji będzie teraz obejmować oświadczenia auth_time. Tokeny SAML będzie teraz zawierać rozszerzenia schematu katalogu skypeId (w tym przykładzie identyfikator aplikacji dla tej aplikacji jest ab603c56068041afb2f6832e2a17e237). Tokeny SAML udostępni Identyfikator Skype jako `extension_skypeId`.
+
+    ```
+
+    W tym przypadku różne oświadczenia opcjonalne zostały dodane do każdego rodzaju token, który aplikacja może odbierać. Tokeny Identyfikatora będą teraz zawierać nazwę UPN dla użytkowników federacyjnych w pełnej postaci (`<upn>_<homedomain>#EXT#@<resourcedomain>`). Tokeny dostępu, które inne komputery klienckie zażądają tej aplikacji będzie teraz obejmować oświadczenia auth_time. Tokeny SAML będzie teraz zawierać rozszerzenia schematu katalogu skypeId (w tym przykładzie identyfikator aplikacji dla tej aplikacji jest ab603c56068041afb2f6832e2a17e237). Tokeny SAML udostępni Identyfikator Skype jako `extension_skypeId`.
 
 1. Po zakończeniu aktualizowania manifestu kliknij **Zapisz** można zapisać manifestu
 

@@ -1,21 +1,21 @@
 ---
-title: Szybki start — tworzenie bazy danych Azure Database for PostgreSQL za pomocą interfejsu wiersza polecenia platformy Azure
-description: Przewodnik Szybki start dotyczący tworzenia serwera usługi Azure Database for PostgreSQL i zarządzania nim przy użyciu interfejsu wiersza polecenia platformy Azure.
+title: Przewodnik Szybki Start — Tworzenie usługi Azure Database for PostgreSQL — jeden serwer przy użyciu wiersza polecenia platformy Azure
+description: Przewodnik Szybki start dotyczący tworzenia i zarządzania nimi — Azure Database for PostgreSQL — jeden serwer przy użyciu wiersza polecenia platformy Azure (interfejs wiersza polecenia).
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 3/12/2019
+ms.date: 05/06/2019
 ms.custom: mvc
-ms.openlocfilehash: 07e3f1f2dd672fcfd0b7a3a4d102c429ac123c08
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 5b16d87a69ecdac578da2a90be22013744c32bd7
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57902022"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65069067"
 ---
-# <a name="quickstart-create-an-azure-database-for-postgresql-using-the-azure-cli"></a>Szybki start: Tworzenie serwera usługi Azure Database for PostgreSQL za pomocą interfejsu wiersza polecania platformy Azure
+# <a name="quickstart-create-an-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Szybki start: Tworzenie usługi Azure Database for PostgreSQL — jeden serwer przy użyciu wiersza polecenia platformy Azure
 
 > [!TIP]
 > Należy wziąć pod uwagę przy użyciu prostszej [az postgres się](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) polecenia wiersza polecenia platformy Azure (obecnie w wersji zapoznawczej). Wypróbuj [Szybki Start](./quickstart-create-server-up-azure-cli.md).
@@ -28,12 +28,12 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten artykuł będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub nowszej. Aby sprawdzić zainstalowaną wersję, uruchom polecenie `az --version`. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli). 
 
-Jeśli używasz interfejsu wiersza polecenia lokalnie, musisz zalogować się na swoje konto za pomocą polecenia [az login](/cli/azure/authenticate-azure-cli?view=interactive-log-in). Zanotuj właściwość **id** z danych wyjściowych polecenia dla odpowiedniej nazwy subskrypcji.
+Jeśli używasz interfejsu wiersza polecenia lokalnie, musisz zalogować się do sieci za pomocą konta [az login](/cli/azure/authenticate-azure-cli?view=interactive-log-in) polecenia. Uwaga **identyfikator** właściwości z danych wyjściowych polecenia dla odpowiedniej nazwy subskrypcji.
 ```azurecli-interactive
 az login
 ```
 
-Jeśli masz wiele subskrypcji, wybierz odpowiednią subskrypcję, w ramach której powinny być naliczane opłaty za ten zasób. Wybierz określony identyfikator subskrypcji na Twoim koncie za pomocą polecenia [az account set](/cli/azure/account). Zastąp właściwość **id** z danych wyjściowych polecenia **az login** dla subskrypcji symbolem zastępczym identyfikatora subskrypcji.
+Jeśli masz wiele subskrypcji, wybierz odpowiednią subskrypcję, w ramach której powinny być naliczane opłaty za ten zasób. Wybierz określony identyfikator subskrypcji na Twoim koncie za pomocą polecenia [az account set](/cli/azure/account). Zastąp **identyfikator** właściwość **az login** danych wyjściowych dla Twojej subskrypcji w zastępczym Identyfikatora subskrypcji.
 ```azurecli-interactive
 az account set --subscription <subscription id>
 ```

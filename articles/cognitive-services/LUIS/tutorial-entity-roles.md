@@ -11,18 +11,18 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 03/08/2019
 ms.author: diberry
-ms.openlocfilehash: 98c2ad15d836162608affbfbc89908a15e274cee
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: MT
+ms.openlocfilehash: 2e2b2c39cf9039c78a610e9b28065b972484123e
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59528704"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65069265"
 ---
 # <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>Samouczek: wyodrębnianie danych powiązanych kontekstowo z wypowiedzi
 
 W tym samouczku znajdziesz powiązane elementy danych na podstawie kontekstu. Na przykład lokalizację początkową i docelową dla przeniesienia z jednego miasta do innego. Potrzebne mogą być oba elementy danych. Są one powiązane ze sobą.  
 
-W tym samouczku zostały wcześniej zapisane za pomocą hierarchicznych jednostek. Role jednostki wyeliminować potrzebę dla typu jednostki hierarchicznej. Rolę można używać z dowolnego typu wbudowanych lub niestandardowych instytucji rządowej USA i używać zarówno w przykładzie wypowiedzi i wzorce. 
+Rolę można używać z dowolnego typu wbudowanych lub niestandardowych instytucji rządowej USA i używać zarówno w przykładzie wypowiedzi i wzorce. 
 
 **Ten samouczek zawiera informacje na temat wykonywania następujących czynności:**
 
@@ -117,7 +117,7 @@ Wstępnie utworzone jednostki, geographyV2, wyodrębnianie informacji o lokaliza
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 
-1. Przejdź na koniec adresu URL na pasku adresu i wprowadź ciąg `Please move Carl Chamerlin from Tampa to Portland`. Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. Ta wypowiedź jest inna niż wszystkie pozostałe oznaczone wypowiedzi, dlatego jest dobra do testowania i powinna zwrócić intencję `MoveEmployee` z wyodrębnioną jednostką hierarchiczną.
+1. Przejdź na koniec adresu URL na pasku adresu i wprowadź ciąg `Please move Carl Chamerlin from Tampa to Portland`. Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. Ten wypowiedź nie jest taka sama jak dowolnego z etykietami wypowiedzi, więc to dobry test umożliwiający i powinien zwrócić `MoveEmployee` intencji z jednostką wyodrębnione.
 
     ```json
     {

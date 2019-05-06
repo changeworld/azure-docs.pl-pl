@@ -1,5 +1,5 @@
 ---
-title: Wykonywanie przeglądu dostępu z Moje role zasobów platformy Azure w usłudze PIM — usługi Azure Active Directory | Dokumentacja firmy Microsoft
+title: Przegląd dostępu wszystkich użytkowników do ról zasobów platformy Azure w usłudze PIM — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak przeprowadzić przegląd dostępu role zasobów platformy Azure w usłudze Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.date: 03/30/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc503e5c11f8e3a00fe9c258ad2a7cad5b6ade7e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4e49f0077444f86eabeed22cc7cecf5e0ac7f8b5
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60287479"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65141198"
 ---
-# <a name="perform-an-access-review-of-my-azure-resource-roles-in-pim"></a>Wykonywanie przeglądu dostępu z Moje role zasobów platformy Azure w usłudze PIM
+# <a name="review-access-to-azure-resource-roles-in-pim"></a>Przegląd dostępu wszystkich użytkowników do ról zasobów platformy Azure w usłudze PIM
 Usługa Azure Active Directory (Azure AD) Privileged Identity Management (PIM) upraszcza, jak zarządzać uprzywilejowanego dostępu do zasobów na platformie Azure w przedsiębiorstwach. 
 
 Jeśli masz przypisaną rolę administracyjną, administratorem ról uprzywilejowanych Twoja organizacja może poprosić o regularnie upewnij się, nadal potrzebujesz tej roli dla zadania. Możesz otrzymać wiadomość e-mail zawierającą łącze lub możesz przejść bezpośrednio do [witryny Azure portal](https://portal.azure.com). Wykonaj kroki opisane w tym artykule, aby wykonać własnym przeglądu przypisane role.

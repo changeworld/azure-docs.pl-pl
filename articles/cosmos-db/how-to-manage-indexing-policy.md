@@ -4,14 +4,14 @@ description: Dowiedz się, jak zarządzać zasadami indeksowania w usłudze Azur
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 04/08/2019
+ms.date: 05/06/2019
 ms.author: thweiss
-ms.openlocfilehash: 76275420e1e6ed7fdec8309da9e11a272f08fee0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 48d67c765a8a76a6058592f59eb61770e2f23df5
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61054679"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65068669"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Zarządzanie zasadami indeksowania w usłudze Azure Cosmos DB
 
@@ -162,7 +162,7 @@ response = client.ReplaceContainer(containerPath, container)
 Poniżej przedstawiono kilka przykładów zasad indeksowania wyświetlane w formacie JSON, czyli o tym, jak są one widoczne w witrynie Azure portal. Te same parametry można ustawić za pomocą wiersza polecenia platformy Azure lub dowolnego zestawu SDK.
 
 ### <a name="opt-out-policy-to-selectively-exclude-some-property-paths"></a>Zasady rezygnacji, aby selektywnie wykluczyć niektóre ścieżki właściwości
-
+```
     {
         "indexingPolicy": "consistent",
         "includedPaths": [
@@ -193,9 +193,10 @@ Poniżej przedstawiono kilka przykładów zasad indeksowania wyświetlane w form
             }
         ]
     }
+```
 
 ### <a name="opt-in-policy-to-selectively-include-some-property-paths"></a>Zasady uczestnictwo uwzględnić tylko niektóre ścieżki właściwości
-
+```
     {
         "indexingPolicy": "consistent",
         "includedPaths": [
@@ -224,11 +225,12 @@ Poniżej przedstawiono kilka przykładów zasad indeksowania wyświetlane w form
             }
         ]
     }
+```
 
 Uwaga: Ogólnie zaleca się używanie **rezygnacji** indeksowanie zasad, aby umożliwić usłudze Azure Cosmos DB aktywnie indeksowania nowej właściwości, które mogą zostać dodane do modelu.
 
 ### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a>Przy użyciu indeksu przestrzennego na tylko do określonych właściwości ścieżki
-
+```
     {
         "indexingPolicy": "consistent",
         "includedPaths": [
@@ -257,11 +259,12 @@ Uwaga: Ogólnie zaleca się używanie **rezygnacji** indeksowanie zasad, aby umo
         ],
         "excludedPaths": []
     }
+```
 
 ### <a name="excluding-all-property-paths-but-keeping-indexing-active"></a>Wykluczenie ścieżek wszystkich właściwości, ale zachowuje indeksowanie jest aktywny
 
 Tej zasady należy używać w sytuacjach, w której [funkcji czasu wygaśnięcia (TTL)](time-to-live.md) jest aktywna, ale nie pomocniczy indeks jest wymagane (do używania usługi Azure Cosmos DB jako czysty parach klucz wartość).
-
+```
     {
         "indexingMode": "consistent",
         "includedPaths": [],
@@ -269,12 +272,130 @@ Tej zasady należy używać w sytuacjach, w której [funkcji czasu wygaśnięcia
             "path": "/*"
         }]
     }
+```
 
 ### <a name="no-indexing"></a>Nie indeksowania
-
+```
     {
         "indexingPolicy": "none"
     }
+```
+
+## <a name="composite-indexing-policy-examples"></a>Złożone Przykłady zasad indeksowania
+
+Oprócz uwzględniając lub wykluczając ścieżki dla poszczególnych właściwości, można również określić indeksie złożonym. Jeśli chcesz wykonywać zapytania, które zawiera `ORDER BY` klauzula dla wielu właściwości [indeksu złożonego](index-policy.md#composite-indexes) na tych właściwości jest wymagana.
+
+### <a name="composite-index-defined-for-name-asc-age-desc"></a>Indeks złożone zdefiniowane dla (nazwa asc, wiek, desc):
+```
+    {  
+        "automatic":true,
+        "indexingMode":"Consistent",
+        "includedPaths":[  
+            {  
+                "path":"/*"
+            }
+        ],
+        "excludedPaths":[  
+
+        ],
+        "compositeIndexes":[  
+            [  
+                {  
+                    "path":"/name",
+                    "order":"ascending"
+                },
+                {  
+                    "path":"/age",
+                    "order":"descending"
+                }
+            ]
+        ]
+    }
+```
+
+Ten indeks złożony będzie mogła obsługiwać następujące dwa zapytania:
+
+Zapytanie #1:
+```sql
+    SELECT *
+    FROM c
+    ORDER BY name asc, age desc    
+```
+
+Zapytanie #2:
+```sql
+    SELECT *
+    FROM c
+    ORDER BY name desc, age asc
+```
+
+### <a name="composite-index-defined-for-name-asc-age-asc-and-name-asc-age-desc"></a>Indeks złożony zdefiniowane dla (nazwa asc, wieku asc) i (nazwa usługi asc, wiek desc):
+
+Można zdefiniować wiele różnych indeksów złożonego w ramach tych samych zasad indeksowania. 
+```
+    {  
+        "automatic":true,
+        "indexingMode":"Consistent",
+        "includedPaths":[  
+            {  
+                "path":"/*"
+            }
+        ],
+        "excludedPaths":[  
+
+        ],
+        "compositeIndexes":[  
+            [  
+                {  
+                    "path":"/name",
+                    "order":"ascending"
+                },
+                {  
+                    "path":"/age",
+                    "order":"ascending"
+                }
+            ]
+            [  
+                {  
+                    "path":"/name",
+                    "order":"ascending"
+                },
+                {  
+                    "path":"/age",
+                    "order":"descending"
+                }
+            ]
+        ]
+    }
+```
+
+### <a name="composite-index-defined-for-name-asc-age-asc"></a>Indeks złożone zdefiniowane dla (nazwa asc, wieku asc):
+
+Jest to opcjonalne określić kolejność. Jeśli nie zostanie określony, kolejność jest rosnąca.
+```
+{  
+        "automatic":true,
+        "indexingMode":"Consistent",
+        "includedPaths":[  
+            {  
+                "path":"/*"
+            }
+        ],
+        "excludedPaths":[  
+
+        ],
+        "compositeIndexes":[  
+            [  
+                {  
+                    "path":"/name",
+                },
+                {  
+                    "path":"/age",
+                }
+            ]
+        ]
+}
+```
 
 ## <a name="next-steps"></a>Kolejne kroki
 
