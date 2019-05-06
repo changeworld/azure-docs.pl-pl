@@ -273,10 +273,10 @@ Pozwala na zapis w dziennikach funkcji przesyłania strumieniowego na domyślny 
 
 | Metoda                 | Opis                                |
 | ---------------------- | ------------------------------------------ |
-| **Błąd (_komunikat_)**   | Zapisuje poziom błędów rejestrowania lub niższą.   |
-| **Ostrzeżenie (_komunikat_)**    | Zapisuje poziom ostrzeżeń rejestrowania lub niższą. |
+| **error(_message_)**   | Zapisuje poziom błędów rejestrowania lub niższą.   |
+| **warn(_message_)**    | Zapisuje poziom ostrzeżeń rejestrowania lub niższą. |
 | **info(_message_)**    | Zapisuje informacje o poziomie rejestrowania lub niższą.    |
-| **pełne (_komunikat_)** | Zapisuje pełne rejestrowanie na poziomie.           |
+| **verbose(_message_)** | Zapisuje pełne rejestrowanie na poziomie.           |
 
 Poniższy przykład zapisuje dziennik na poziom śledzenia Ostrzeżenie:
 
@@ -352,10 +352,10 @@ HTTP i wyzwalaczy elementu webhook protokołu HTTP wyjściowe i powiązania repr
 | ------------- | -------------------------------------------------------------- |
 | _body_        | Obiekt, który zawiera treść żądania.               |
 | _headers_     | Obiekt, który zawiera nagłówki żądania.                   |
-| _— Metoda_      | Metoda HTTP żądania.                                |
+| _method_      | Metoda HTTP żądania.                                |
 | _originalUrl_ | Adres URL żądania.                                        |
 | _params_      | Obiekt zawierający parametry routingu żądania. |
-| _Zapytanie_       | Obiekt zawierający parametry zapytania.                  |
+| _query_       | Obiekt zawierający parametry zapytania.                  |
 | _rawBody_     | Treść wiadomości w formie ciągu.                           |
 
 
