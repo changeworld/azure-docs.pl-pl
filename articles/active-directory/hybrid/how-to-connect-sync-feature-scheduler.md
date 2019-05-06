@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/12/2017
+ms.date: 05/01/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d5f4dec48d81b032de293bb6c68ad62ac48d475
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 309adfbebd4f4b615ac1f4061823ca01f3d3ee15
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60347927"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65139286"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Synchronizacja programu Azure AD Connect: Scheduler
-W tym temacie opisano wbudowanych harmonogramu synchronizacji Azure AD Connect (zwany również aparatem synchronizacji).
+W tym temacie opisano wbudowanych harmonogramu synchronizacji Azure AD Connect (aparatem synchronizacji).
 
 Ta funkcja została wprowadzona z kompilacją 1.1.105.0 (wydane w lutym 2016 r.).
 
@@ -92,29 +92,62 @@ Gdy zostaną wprowadzone zmiany, nie zapomnij włączyć harmonogram ponownie, u
 ## <a name="start-the-scheduler"></a>Uruchomić harmonogram
 Usługa scheduler jest domyślnie uruchamiane co 30 minut. W niektórych przypadkach możesz chcieć uruchomić cykl synchronizacji, między cykle zaplanowane lub musisz uruchomić innego typu.
 
-**Cykl synchronizacji różnicowej**  
+### <a name="delta-sync-cycle"></a>Cykl synchronizacji różnicowej
 Cykl synchronizacji różnicowej obejmuje następujące kroki:
 
-* Import zmian na wszystkich łączników
-* Synchronizacja różnicowa na wszystkich łączników
-* Eksport na wszystkich łączników
 
-Możliwe, że masz pilnych zmian, które muszą być synchronizowane od razu, dlatego należy ręcznie uruchomić cyklu. Jeśli chcesz ręcznie uruchomić cykl, następnie za pomocą programu PowerShell, uruchom `Start-ADSyncSyncCycle -PolicyType Delta`.
+- Import zmian na wszystkich łączników
+- Synchronizacja różnicowa na wszystkich łączników
+- Eksport na wszystkich łączników
 
-**Pełna synchronizacja cyklu**  
-Jeśli zostały wprowadzone, jedną z następujących zmian konfiguracji, należy uruchomić cykl pełnej synchronizacji (zwane) Początkowa):
+### <a name="full-sync-cycle"></a>Pełna synchronizacja cyklu
+Cykl Pełna synchronizacja obejmuje następujące kroki:
 
-* Dodano więcej obiektów i atrybutów, które mają zostać zaimportowane z katalogu źródłowego
-* Wprowadzono zmiany reguł synchronizacji
-* Zmienione [filtrowanie](how-to-connect-sync-configure-filtering.md) tak różną liczbę obiektów powinien być dołączony
+- Pełny Import na wszystkich łączników
+- Pełna synchronizacja w wszystkie łączniki
+- Eksport na wszystkich łączników
 
-Jeśli utworzono jedną z tych zmian należy Uruchom cyklu pełnej synchronizacji, aby aparat synchronizacji ma możliwość ponowna łącznika miejsca do magazynowania. Cykl Pełna synchronizacja obejmuje następujące kroki:
+Możliwe, że masz pilnych zmian, które muszą być synchronizowane od razu, dlatego należy ręcznie uruchomić cyklu. 
 
-* Pełny Import na wszystkich łączników
-* Pełna synchronizacja w wszystkie łączniki
-* Eksport na wszystkich łączników
+Jeśli chcesz ręcznie uruchomić cykl synchronizacji, następnie za pomocą programu PowerShell, uruchom `Start-ADSyncSyncCycle -PolicyType Delta`.
 
-Aby zainicjować cykl pełnej synchronizacji, należy uruchomić `Start-ADSyncSyncCycle -PolicyType Initial` w wierszu polecenia programu PowerShell. To polecenie uruchamia cyklu pełną synchronizację.
+Aby zainicjować cykl pełnej synchronizacji, należy uruchomić `Start-ADSyncSyncCycle -PolicyType Initial` w wierszu polecenia programu PowerShell.   
+
+Uruchamianie cyklu Pełna synchronizacja może być bardzo czasochłonne, przeczytaj następnej sekcji, aby zapoznaj się z instrukcjami zoptymalizować ten proces.
+
+### <a name="sync-steps-required-for-different-configuration-changes"></a>Synchronizuj kroków wymaganych do zmiany innej konfiguracji
+Zmiany w konfiguracji różnych wymagają synchronizacji różne kroki, aby upewnić się, że zmiany są prawidłowo stosowane do wszystkich obiektów.
+
+- Dodano więcej obiektów i atrybutów, które ma zostać zaimportowany z katalogu źródłowego (na przykład przez Dodawanie/modyfikowanie reguły synchronizacji)
+    - Pełny Import jest wymagane dla łącznika dla tego katalogu źródłowego
+- Wprowadzono zmiany reguł synchronizacji
+    - Pełna synchronizacja jest wymagana na łączniku zmienione reguły synchronizacji
+- Zmienione [filtrowanie](how-to-connect-sync-configure-filtering.md) tak różną liczbę obiektów powinien być dołączony
+    - Pełny Import jest wymagane dla łącznika dla każdego łącznika AD tylko w przypadku korzystania, że filtrowanie na podstawie atrybutu na podstawie atrybutów, które zostały już zaimportowane do aparatu synchronizacji
+
+### <a name="customizing-a-sync-cycle-run-the-right-mix-of-delta-and-full-sync-steps"></a>Dostosowywanie uruchamianie odpowiedniej kombinacji kroki synchronizacji różnicowej i pełny cykl synchronizacji
+Aby zapobiegać uruchamianiu jej cyklu pełną synchronizację można oznaczyć określonych łączników, aby uruchomić pełny kroku przy użyciu następujących poleceń cmdlet.
+
+`Set-ADSyncSchedulerConnectorOverride -Connector <ConnectorGuid> -FullImportRequired $true`
+
+`Set-ADSyncSchedulerConnectorOverride -Connector <ConnectorGuid> -FullSyncRequired $true`
+
+`Get-ADSyncSchedulerConnectorOverride -Connector <ConnectorGuid>` 
+
+Przykład:  Jeśli wprowadzono zmiany reguł synchronizacji dla łącznika "AD lesie A", które nie wymagają żadnych nowych atrybutów, które mają być importowane należy uruchomić następujące polecenia cmdlet do uruchamiania synchronizacji różnicowej cyklu, który również pełną synchronizację krok dla tego łącznika.
+
+`Set-ADSyncSchedulerConnectorOverride -ConnectorName “AD Forest A” -FullSyncRequired $true`
+
+`Start-ADSyncSyncCycle -PolicyType Delta`
+
+Przykład:  Jeśli wprowadzono zmiany reguł synchronizacji dla łącznika "AD lesie A", aby potrzebują teraz nowy atrybut do zaimportowania należy uruchomić następujące polecenia cmdlet, aby uruchomić cykl synchronizacji różnicowej, który również został pełny Import krok pełnej synchronizacji dla tego łącznika.
+
+`Set-ADSyncSchedulerConnectorOverride -ConnectorName “AD Forest A” -FullImportRequired $true`
+
+`Set-ADSyncSchedulerConnectorOverride -ConnectorName “AD Forest A” -FullSyncRequired $true`
+
+`Start-ADSyncSyncCycle -PolicyType Delta`
+
 
 ## <a name="stop-the-scheduler"></a>Zatrzymaj harmonogram
 Harmonogram jest aktualnie uruchomione cykl synchronizacji, może być konieczne jego zatrzymanie. Na przykład, jeśli pojawi się ten błąd, uruchom Kreatora instalacji:

@@ -1,21 +1,21 @@
 ---
-title: Nawiązywanie połączeń z usługą Azure Database for PostgreSQL za pomocą języka Ruby
-description: Ten przewodnik Szybki start zawiera przykładowy kod Ruby, którego można używać do nawiązywania połączeń z danymi usługi Azure Database for PostgreSQL i wykonywania zapytań względem nich.
+title: Łączenie do usługi Azure Database for PostgreSQL — pojedynczy serwer za pomocą języka Ruby
+description: Ten przewodnik Szybki Start zawiera przykładowy kod języka Ruby, którego można użyć do nawiązywania połączeń i wykonywanie zapytań o dane z usługi Azure Database for PostgreSQL — pojedynczy serwer.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
-ms.date: 03/12/2019
-ms.openlocfilehash: cdb53685e744401f9d2d229a5deaffa72502e26b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 242f5724e81f9b8ac6177e5c9d3844b3fab9a7f2
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60421487"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65067278"
 ---
-# <a name="azure-database-for-postgresql-use-ruby-to-connect-and-query-data"></a>Azure Database for PostgreSQL: używanie języka Ruby do nawiązywania połączeń i wysyłania zapytań o dane
+# <a name="azure-database-for-postgresql---single-server-use-ruby-to-connect-and-query-data"></a>Azure Database for PostgreSQL — pojedynczy serwer: używanie języka Ruby do nawiązywania połączeń i wykonywania zapytań o dane
 Ten przewodnik Szybki start przedstawia sposób nawiązywania połączeń z usługą Azure Database for PostgreSQL przy użyciu aplikacji języka [Ruby](https://www.ruby-lang.org). Pokazano w nim, jak używać instrukcji języka SQL w celu wysyłania zapytań o dane oraz wstawiania, aktualizowania i usuwania danych w bazie danych. W krokach w tym artykule założono, że wiesz już, jak programować za pomocą języka Ruby, i dopiero zaczynasz pracę z usługą Azure Database for PostgreSQL.
 
 ## <a name="prerequisites"></a>Wymagania wstępne

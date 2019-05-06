@@ -17,12 +17,12 @@ ms.date: 04/12/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9d2e9aa5e5e805b302763f5417110cdd078eb3b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c45cd1627eb1eb98b2fc19f6663d5635b001ce0c
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60298702"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65067786"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Szybki start: Wywoływanie interfejsu API programu Microsoft Graph z poziomu aplikacji platformy UWP
 
@@ -51,14 +51,15 @@ Ten przewodnik Szybki Start zawiera przykładowy kod, który demonstruje, jak ap
 > Aby zarejestrować aplikację i dodać informacje na temat rejestracji aplikacji do rozwiązania, wykonaj następujące czynności:
 > 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
 > 1. Jeśli Twoje konto umożliwia dostęp do więcej niż jednej dzierżawy, wybierz konto w prawym górnym rogu, a następnie ustaw sesję portalu na odpowiednią dzierżawę usługi Azure AD.
-> 1. Przejdź do platforma tożsamości firmy Microsoft dla deweloperów [rejestracje aplikacji](https://go.microsoft.com/fwlink/?linkid=2083908) strony.
+> 1. Przejdź do platforma tożsamości firmy Microsoft dla deweloperów [rejestracje aplikacji](https://aka.ms/MobileAppReg) strony.
 > 1. Wybierz **nowej rejestracji**.
 > 1. Po wyświetleniu strony **Rejestrowanie aplikacji** podaj informacje dotyczące rejestracji aplikacji:
 >      - W sekcji **Nazwa** podaj znaczącą nazwę aplikacji, która będzie wyświetlana użytkownikom aplikacji, na przykład `UWP-App-calling-MsGraph`.
 >      - W sekcji **Obsługiwane typy kont** wybierz pozycję **Konta w dowolnym katalogu organizacyjnym i konta osobiste Microsoft (na przykład Skype, Xbox, Outlook.com)**.
 >      - Wybierz pozycję **Zarejestruj**, aby utworzyć aplikację.
 > 1. Na liście stron dla aplikacji wybierz pozycję **Uwierzytelnianie**.
-> 1. W sekcji **Adresy URL przekierowań** znajdź sekcję **Sugerowane identyfikatory URI przekierowania dla klientów publicznych (urządzenia przenośne, komputery)**, a następnie wybierz pozycję **"urn: ietf:wg:oauth:2.0:oob**.
+> 1. Rozwiń **pulpitu i urządzenia** sekcji.  (Jeśli **pulpitu i urządzenia** nie jest widoczny, kliknij najpierw na górnym banerze, aby wyświetlić podgląd proces uwierzytelniania)
+> 1. W obszarze **identyfikator URI przekierowania** zaznacz **Dodaj identyfikator URI**.  Type **urn:ietf:wg:oauth:2.0:oob**.
 > 1. Wybierz pozycję **Zapisz**.
 
 > [!div renderon="portal" class="sxs-lookup alert alert-info"]

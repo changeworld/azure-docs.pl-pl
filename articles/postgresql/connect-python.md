@@ -1,21 +1,21 @@
 ---
-title: Nawiązywanie połączeń z usługą Azure Database for PostgreSQL za pomocą języka Python
-description: Ten przewodnik Szybki start zawiera przykładowy kod języka Python, za pomocą którego można nawiązywać połączenie z danymi usługi Azure Database for PostgreSQL i wykonywać zapytania względem nich.
+title: Łączenie do usługi Azure Database for PostgreSQL — pojedynczy serwer przy użyciu języka Python
+description: Ten przewodnik Szybki Start zawiera przykładowy kod języka Python, który służy do nawiązywania połączeń i wykonywanie zapytań o dane z usługi Azure Database for PostgreSQL — pojedynczy serwer.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.custom: mvc, devcenter
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 02/28/2018
-ms.openlocfilehash: eb6b23d8f8c476ba41bea918456fdf7fb9782920
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 4d7988ad590e6d57d9da37f46557f99fccaad294
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60422162"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65067218"
 ---
-# <a name="azure-database-for-postgresql-use-python-to-connect-and-query-data"></a>Azure Database for PostgreSQL: używanie języka Python do nawiązywania połączeń i wysyłania zapytań o dane
+# <a name="azure-database-for-postgresql---single-server-use-python-to-connect-and-query-data"></a>Azure Database for PostgreSQL — pojedynczy serwer: Nawiązywanie połączeń i wykonywanie zapytań na danych przy użyciu języka Python
 Ten przewodnik Szybki start przedstawia sposób nawiązywania połączeń z usługą Azure Database for PostgreSQL za pomocą języka [Python](https://python.org). Demonstruje on także, jak używać instrukcji języka SQL na potrzeby wysyłania zapytań o dane oraz wstawiania, aktualizowania i usuwania danych w bazie danych na platformach macOS, Ubuntu Linux i Windows. W krokach w tym artykule założono, że wiesz już, jak programować za pomocą języka Python, i dopiero zaczynasz pracę z usługą Azure Database for PostgreSQL.
 
 ## <a name="prerequisites"></a>Wymagania wstępne

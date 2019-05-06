@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7471bb82aece2b4c11f5071b6b3746f1a55a4a60
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 8d509e9f3cabcd588d539d42b8cce022e17a1222
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64917345"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65139210"
 ---
 # <a name="microsoft-identity-platform-protocols"></a>Protokoły platforma tożsamości firmy Microsoft
 
@@ -45,7 +45,7 @@ W prawie wszystkie przepływy protokołu OAuth 2.0 i OpenID Connect istnieją cz
 
 ## <a name="app-registration"></a>Rejestracja aplikacji
 
-Każda aplikacja, która chce zaakceptować zarówno osobistych i kont służbowych musi być zarejestrowana w nowej **rejestracje aplikacji (wersja zapoznawcza)** środowiska w [witryny Azure portal](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) przed jego zaakceptowaniem tych użytkowników przy użyciu protokołu OAuth 2.0 lub OpenID Connect. Proces rejestracji aplikacji będzie zbierać i przypisać kilka wartości do swojej aplikacji:
+Każda aplikacja, która chce zaakceptować zarówno osobistych i kont służbowych muszą być zarejestrowane przy użyciu **rejestracje aplikacji** środowiska w [witryny Azure portal](https://aka.ms/appregistrations) przed jego zaakceptowaniem tych użytkowników przy użyciu protokołu OAuth 2.0 lub OpenID Connect. Proces rejestracji aplikacji będzie zbierać i przypisać kilka wartości do swojej aplikacji:
 
 * **Identyfikator aplikacji** , który jednoznacznie identyfikuje aplikację
 * A **identyfikator URI przekierowania** lub **identyfikator pakietu** który może służyć do kierowania odpowiedzi z powrotem do aplikacji
