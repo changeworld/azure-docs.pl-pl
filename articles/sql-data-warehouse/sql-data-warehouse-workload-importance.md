@@ -7,22 +7,19 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload management
-ms.date: 03/13/2019
+ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 12e7d9bc22eff14bbf302aed50080412d04a40d3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9c26bca66b0f82ea58d01d0eb8358f521168a799
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61474706"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154137"
 ---
-# <a name="sql-data-warehouse-workload-importance-preview"></a>Znaczenie obciążenia usługa SQL Data Warehouse (wersja zapoznawcza)
+# <a name="sql-data-warehouse-workload-importance"></a>Znaczenie obciążenia usługa SQL Data Warehouse
 
 W tym artykule wyjaśniono, jak znaczenie obciążenia mogą mieć wpływ na kolejność wykonywania żądań usługa SQL Data Warehouse.
-
-> [!Note]
-> Klasyfikacja obciążenia jest dostępna w wersji zapoznawczej na Gen2 magazynu danych SQL. Podgląd obciążenia zarządzania klasyfikacji i znaczenie jest dla kompilacji z datą 9 kwietnia 2019 lub nowszej wersji.  Użytkownikom należy unikać kompilacje starszych niż ta data do testowania zarządzania obciążeniem.  Aby ustalić, czy zarządzanie obciążeniami zdolne do kompilacji, uruchom wybierz @@version po podłączeniu do wystąpienia usługi SQL Data Warehouse.
 
 ## <a name="importance"></a>Ważność
 
@@ -64,4 +61,4 @@ Ponieważ Q5 mediumrc, wymaga dwóch gniazd współbieżności.  Q5 musi czekać
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać więcej informacji na temat klasyfikacji obciążenia usługa SQL Data Warehouse, zobacz [klasyfikacji obciążenia magazynu danych SQL](sql-data-warehouse-workload-classification.md) i [tworzenie klasyfikatora obciążenia](quickstart-create-a-workload-classifier-tsql.md). Zobacz [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) służy do wyświetlania kwerend i ważność przypisana.
+Aby rozpocząć tworzenie klasyfikatora, zobacz [tworzenie KLASYFIKATORA obciążenia (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql).  Aby uzyskać więcej informacji na temat klasyfikacji obciążenia usługa SQL Data Warehouse, zobacz [klasyfikacji obciążenia magazynu danych SQL](sql-data-warehouse-workload-classification.md).  Zobacz samouczek Szybki Start dotyczące sposobu tworzenia klasyfikatora obciążenia [tworzenie klasyfikatora obciążenia](quickstart-create-a-workload-classifier-tsql.md). Zobacz [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) służy do wyświetlania kwerend i ważność przypisana.

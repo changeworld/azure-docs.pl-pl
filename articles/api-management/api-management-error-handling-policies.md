@@ -81,8 +81,8 @@ Podczas przetwarzania żądania wbudowanych kroki są wykonywane oraz wszystkie 
 |----------|--------|-----------------------------------------------------------------------------------------------------------|----------|
 | Element źródłowy   | string | Nazwy elementu, w którym wystąpił błąd. Może być zasad lub nazwa kroku wbudowanej potoku.     | Yes      |
 | Przyczyna   | string | Kod błędu przyjaznego dla komputera, który może być używany do obsługi błędów.                                       | Nie       |
-| Komunikat  | string | Opis błędu czytelny dla człowieka.                                                                         | Yes      |
-| Zakres    | string | Nazwa zakresu, w którym wystąpił błąd i mogą mieć jedną z "global", "produkt", "interfejs api" lub "Operacja" | Nie       |
+| Message  | string | Opis błędu czytelny dla człowieka.                                                                         | Yes      |
+| Scope    | string | Nazwa zakresu, w którym wystąpił błąd i mogą mieć jedną z "global", "produkt", "interfejs api" lub "Operacja" | Nie       |
 | `Section`  | string | Nazwa sekcji, w którym wystąpił błąd. Możliwe wartości: "dla ruchu przychodzącego", "wewnętrzna", "wychodzące" lub "on error".       | Nie       |
 | `Path`     | string | Określa zasady zagnieżdżonych, na przykład "Wybierz [3] / podczas [2]".                                                        | Nie       |
 | `PolicyId` | string | Wartość atrybutu `id` atrybutu, jeśli określony przez klienta w zasadach, w którym wystąpił błąd             | Nie       |
@@ -96,7 +96,7 @@ Podczas przetwarzania żądania wbudowanych kroki są wykonywane oraz wszystkie 
 ## <a name="predefined-errors-for-built-in-steps"></a>Wstępnie zdefiniowane błędy wbudowanych kroków  
  Następujące błędy są wstępnie zdefiniowane warunki błędów, które mogą wystąpić podczas obliczania kroków przetwarzania wbudowanych.  
   
-| Element źródłowy        | Warunek                                 | Przyczyna                  | Komunikat                                                                                                                |
+| Element źródłowy        | Warunek                                 | Przyczyna                  | Message                                                                                                                |
 |---------------|-------------------------------------------|-------------------------|------------------------------------------------------------------------------------------------------------------------|
 | konfiguracja | Identyfikator URI nie pasują do dowolnego interfejsu API lub operacji | OperationNotFound       | Nie można dopasować przychodzące żądanie operacji.                                                                      |
 | Autoryzacja | Klucz subskrypcji nie podano             | SubscriptionKeyNotFound | Odmowa z powodu braku subskrypcji klucz dostępu. Upewnij się uwzględnić klucz subskrypcji, w przypadku wysyłania żądań do tego interfejsu API. |
@@ -105,7 +105,7 @@ Podczas przetwarzania żądania wbudowanych kroki są wykonywane oraz wszystkie 
 ## <a name="predefined-errors-for-policies"></a>Błędy wstępnie zdefiniowane zasady  
  Następujące błędy są wstępnie zdefiniowane warunki błędów, które mogą wystąpić podczas oceny zasad.  
   
-| Element źródłowy       | Warunek                                                       | Przyczyna                    | Komunikat                                                                                                                              |
+| Element źródłowy       | Warunek                                                       | Przyczyna                    | Message                                                                                                                              |
 |--------------|-----------------------------------------------------------------|---------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
 | limit szybkości   | Przekroczono limit szybkości                                             | RateLimitExceeded         | Przekroczono limit szybkości                                                                                                               |
 | limit przydziału        | Przekroczono limit przydziału                                                  | QuotaExceeded             | Poza limitem woluminu wywołania. Limit przydziału zostanie uzupełniona w xx:xx:xx. - lub - limit przydziału przepustowości. Limit przydziału zostanie uzupełniona w xx:xx:xx. |

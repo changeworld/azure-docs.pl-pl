@@ -63,7 +63,7 @@ sections:
           - html: <a href="/azure/app-service/containers/tutorial-multi-container-app">Tworzenie aplikacji z wieloma kontenerami przy użyciu funkcji Web App for Containers</a>
           - html: <a href="/azure/container-registry/container-registry-tutorial-quick-task">Kompilowanie i wdrażanie obrazów kontenerów przy użyciu zadań usługi Azure Container Registry</a>
           - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">Kompilowanie i wdrażanie kontenera w usłudze Azure Container Instances</a>
-          - html: <a href="/azure/openshift/tutorial-create-cluster">Tworzenie klastra rozwiązania Red Hat OpenShift na platformie Azure</a>
+          - html: <a href="/azure/openshift/tutorial-create-cluster">Tworzenie klastra usługi Azure Red Hat OpenShift</a>
   - title: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
     items:
       - type: list
