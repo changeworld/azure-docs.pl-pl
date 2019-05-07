@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/17/2019
+ms.date: 05/06/2019
 ms.author: magoedte
-ms.openlocfilehash: 8fb1d0083796671119de2b4d7feefe738b602fe2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ed387f7038c5dee1a1685c918abcae49942cd55d
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60497378"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148846"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Zrozumienie wydajności klastra AKS przy użyciu usługi Azure Monitor dla kontenerów 
 Dzięki usłudze Azure Monitor dla kontenerów umożliwia wykresy wydajności oraz stan kondycji monitorowania obciążenia klastry usługi Azure Kubernetes Service (AKS) z dwóch perspektyw bezpośrednio z klastra usługi AKS lub we wszystkich klastrach usługi AKS w ramach subskrypcji platformy Azure Monitor. Wyświetlanie usługi Azure Container Instances (ACI) możliwe jest również w przypadku monitorowania określonych klastra AKS.
@@ -27,7 +27,19 @@ Ten artykuł pomoże zrozumieć środowisko między dwóch perspektyw, oraz jak 
 
 Aby uzyskać informacje na temat włączania usługi Azure Monitor dla kontenerów, zobacz [dołączanie usługi Azure Monitor dla kontenerów](container-insights-onboard.md).
 
-Usługa Azure Monitor udostępnia widok wielu klastrów pokazujący stan kondycji wszystkich monitorowanych klastrów AKS wdrażane w grupach zasobów w subskrypcji.  Pokazuje klastrów AKS odnalezione nie są monitorowane przez rozwiązanie. Rozumieją kondycji klastra, a w tym miejscu możesz przejść do strony wydajność węzła i kontroler lub przejdź do zobaczyć wykresy wydajności dla klastra.  W przypadku klastrów usługi AKS wykryte i identyfikowane jako niemonitorowane można włączyć monitorowania dla tego klastra w dowolnym momencie.  
+> [!IMPORTANT]
+> Usługa Azure Monitor do obsługi kontenerów do monitorowania klastra usługi AKS z systemem Windows Server 2019 jest obecnie w publicznej wersji zapoznawczej.
+> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Usługa Azure Monitor udostępnia widok wielu klastrów pokazujący stan kondycji wszystkich monitorowanych klastry AKS z systemem Linux i Windows Server 2019 wdrażane w grupach zasobów w subskrypcji.  Pokazuje klastrów AKS odnalezione nie są monitorowane przez rozwiązanie. Rozumieją kondycji klastra, a w tym miejscu możesz przejść do strony wydajność węzła i kontroler lub przejdź do zobaczyć wykresy wydajności dla klastra.  W przypadku klastrów usługi AKS wykryte i identyfikowane jako niemonitorowane można włączyć monitorowania dla tego klastra w dowolnym momencie.  
+
+Główne różnice monitorowania klastra systemu Windows Server za pomocą usługi Azure Monitor dla kontenerów w porównaniu do klastra z systemem Linux są następujące:
+
+- Metryka RSS pamięci nie jest dostępna dla węzła Windows i kontenerów 
+- Informacje dotyczące pojemności magazynu dysku nie jest dostępna dla węzłów Windows
+- Dzienniki na żywo pomoc techniczna jest dostępna z wyjątkiem dzienniki kontenerów Windows.
+- Tylko pod, które mają być monitorowane w środowiskach, nie w środowiskach platformy Docker.
+- Z wersji zapoznawczej maksymalnie 30 kontenery systemu Windows Server są obsługiwane. To ograniczenie nie ma zastosowania do kontenerów systemu Linux.  
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). 
@@ -35,7 +47,7 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 ## <a name="multi-cluster-view-from-azure-monitor"></a>Wyświetlanie wielu klastrów z usługi Azure Monitor 
 Zaznacz, aby wyświetlić stan kondycji wszystkich klastrach usługi AKS wdrożonych **Monitor** w okienku po lewej stronie w witrynie Azure portal.  W obszarze **Insights** zaznacz **kontenery**.  
 
-![Przykład pulpitu nawigacyjnego wielu klastrów w usłudze Azure Monitor](./media/container-insights-analyze/azmon-containers-multiview-1018.png)
+![Przykład pulpitu nawigacyjnego wielu klastrów w usłudze Azure Monitor](./media/container-insights-analyze/azmon-containers-multiview.png)
 
 Na **monitorowania klastrów** kartę, jesteś w stanie się następujące czynności:
 
@@ -128,11 +140,11 @@ Można zastosować [podział](../platform/metrics-charts.md#apply-splitting-to-a
 
 ## <a name="analyze-nodes-controllers-and-container-health"></a>Analizowanie węzłów, kontrolerów i kondycji kontenera
 
-Po przełączeniu do **węzłów**, **kontrolerów**, i **kontenery** karta automatycznie wyświetlane w prawej części strony to okienko właściwości.  Pokazuje właściwości elementów wybranych, tym etykiety, należy zdefiniować do organizowania obiekty usługi Kubernetes. Kliknij pozycję **>>** połączyć w okienku view\hide okienka.  
+Po przełączeniu do **węzłów**, **kontrolerów**, i **kontenery** karta automatycznie wyświetlane w prawej części strony to okienko właściwości. Pokazuje właściwości elementów wybranych, tym etykiety, należy zdefiniować do organizowania obiekty usługi Kubernetes. Po wybraniu węzła systemu Linux zawiera również w sekcji **pojemność dysku lokalnego** dostępnego miejsca na dysku i procent użycia dla każdego dysku wyświetlone w węźle. Kliknij pozycję **>>** połączyć w okienku view\hide okienka. 
 
 ![W okienku właściwości perspektyw Kubernetes przykład](./media/container-insights-analyze/perspectives-preview-pane-01.png)
 
-Podczas rozwijania obiektów w hierarchii, na podstawie aktualizacji okienka właściwości w obiekcie, który został wybrany. W okienku można wyświetlić zdarzeń Kubernetes za pomocą wstępnie zdefiniowanych wyszukiwań w dziennikach, klikając **dzienniki zdarzeń Kubernetes widoku** widocznego u góry okienka. Aby uzyskać więcej informacji o wyświetlaniu danych dzienników platformy Kubernetes, zobacz [przeszukiwanie dzienników w celu analizowania danych](container-insights-log-search.md). Podczas przeglądania kontenerów w **kontenery** widoku możesz zobaczyć dzienniki kontenera, w czasie rzeczywistym. Aby uzyskać więcej informacji na temat tej funkcji i konfiguracji wymaganej do udzielić i sterowania dostępem, zobacz [sposób wyświetlania kontenera czasie rzeczywistym dzienniki z usługą Azure Monitor dla kontenerów](container-insights-live-logs.md). 
+Podczas rozwijania obiektów w hierarchii, na podstawie aktualizacji okienka właściwości w obiekcie, który został wybrany. W okienku można wyświetlić zdarzeń Kubernetes za pomocą wstępnie zdefiniowanych wyszukiwań w dziennikach, klikając **dzienniki zdarzeń Kubernetes widoku** widocznego u góry okienka. Aby uzyskać więcej informacji o wyświetlaniu danych dzienników platformy Kubernetes, zobacz [przeszukiwanie dzienników w celu analizowania danych](container-insights-log-search.md). Podczas przeglądania zasobów klastra, zobaczysz dzienniki kontenera i zdarzeń w czasie rzeczywistym. Aby uzyskać więcej informacji na temat tej funkcji i konfiguracji wymaganej do udzielić i sterowania dostępem, zobacz [sposób wyświetlania dzienników czasu rzeczywistego z usługą Azure Monitor dla kontenerów](container-insights-live-logs.md). 
 
 Użyj **+ Dodaj filtr** opcję w górnej części strony, aby filtrować wyniki dla widoku przez **usługi**, **węzła**, **Namespace**, lub  **Pulę węzłów** i po wybraniu zakresu filtru, które następnie wybrać jedną z wartości podanych w **wybierz wartości** pola.  Po skonfigurowaniu filtru jest stosowana globalnie podczas wyświetlania dowolnego punktu widzenia klastra AKS.  Formuła obsługuje tylko znaku równości.  Możesz dodać dodatkowe filtry na podstawie pierwszy z nich w celu dalszego zawężenia wyników.  Na przykład, jeśli określono filtr według **węzła**, drugi filtr będzie tylko pozwalają na wybór **usługi** lub **Namespace**.  
 
@@ -143,6 +155,10 @@ Określenie filtru w jednej karty w dalszym ciągu stosowane, gdy można wybrać
 Przełącz się do **węzłów** kartę i hierarchii wiersz poniżej model obiektów usługi Kubernetes, począwszy od węzła w klastrze. Rozwiń węzeł i można wyświetlić co najmniej jeden zasobników, uruchomione w węźle. Jeśli więcej niż jednego kontenera jest zgrupowany do zasobnik, są wyświetlane jako ostatni wiersz w hierarchii. Można również wyświetlić, jak wiele powiązanych obciążeniach-pod są uruchomione na hoście, jeśli host ma procesor lub dużego wykorzystania pamięci.
 
 ![Przykładowa hierarchia Kubernetes węzeł w widoku wydajności](./media/container-insights-analyze/containers-nodes-view.png)
+
+Kontenery systemu Windows Server z systemem operacyjnym Windows Server 2019 r są wyświetlane po wszystkich węzłach opartych na systemie Linux, na liście. Po rozwinięciu węzła systemu Windows Server, można wyświetlić co najmniej jeden zasobników, jak i kontenery uruchomione w węźle. Po wybraniu węzła zawartość okienka właściwości wskazuje informacje o wersji, z wyjątkiem informacji o agencie, ponieważ węzły systemu Windows Server nie mają zainstalowanego agenta.  
+
+![Przykładowa hierarchia węzłów z węzłami systemu Windows Server, na liście](./media/container-insights-analyze/nodes-view-windows.png) 
 
 Kontener wystąpień wirtualnych węzły na platformie Azure z systemem operacyjnym Linux są wyświetlane po ostatnim węźle klastra AKS na liście.  Po rozwinięciu węzła wirtualnego usługi ACI, można wyświetlić co najmniej zasobników ACI, jak i kontenery uruchomione w węźle.  Metryki są nie zbieranych i zgłaszanych w przypadku węzłów tylko zasobników.
 
