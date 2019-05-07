@@ -50,7 +50,7 @@ Następujące właściwości są obsługiwane dla interfejsu API usługi Azure C
 |:--- |:--- |:--- |
 | type | **Typu** właściwość musi być równa **CosmosDbMongoDbApi**. | Yes |
 | connectionString |Określ parametry połączenia dla interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB. Można znaleźć w witrynie Azure portal -> bloku usługi Cosmos DB -> Parametry połączenia podstawowej lub dodatkowej, za pomocą wzorca `mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb`. <br/><br />Oznacz to pole jako **SecureString** typ, aby bezpiecznie przechowywać w usłudze Data Factory. Możesz również [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Yes |
-| baza danych | Nazwa bazy danych, który chcesz uzyskać dostęp. | Yes |
+| database | Nazwa bazy danych, który chcesz uzyskać dostęp. | Yes |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) nawiązywania połączenia z magazynem danych. (Jeśli Twój magazyn danych znajduje się w sieci prywatnej), można użyć środowiska Azure Integration Runtime lub własnego środowiska integration runtime. Jeśli ta właściwość nie jest określona, używana jest domyślna Azure Integration Runtime. |Nie |
 
 **Przykład**
