@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.date: 07/20/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 577a047fb88208d7e14e8ba06a1b9e7e87c5ef91
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 90c20bcd289c3bcf4a7fa3c41d245f2b7f159582
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60510798"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154100"
 ---
 # <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>Szybki start: Tworzenie pierwszego zautomatyzowanego przepływu pracy za pomocą usługi Azure Logic Apps — witryna Azure Portal
 
@@ -26,11 +26,11 @@ W tym przewodniku Szybki start wyjaśniono, jak utworzyć pierwszy zautomatyzowa
 
 Aby użyć tego przewodnika Szybki start, potrzebne jest konto e-mail od dostawcy, który jest obsługiwany przez usługę Logic Apps, na przykład Office 365 Outlook, Outlook.com lub Gmail. W przypadku innych dostawców [przejrzyj tę listę łączników](https://docs.microsoft.com/connectors/). Ta aplikacja logiki korzysta z konta Office 365 Outlook. Jeśli korzystasz z innego konta e-mail, ogólne kroki będą takie same, ale interfejs użytkownika może się trochę różnić. 
 
-Jeśli nie masz subskrypcji platformy Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zarejestruj się w celu założenia bezpłatnego konta platformy Azure</a>.
+Jeśli nie masz subskrypcji platformy Azure, [zarejestruj się w celu założenia bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się do <a href="https://portal.azure.com" target="_blank">witryny Azure Portal</a> przy użyciu poświadczeń konta Azure.
+Zaloguj się do [witryny Azure Portal](https://portal.azure.com) przy użyciu poświadczeń konta Azure.
 
 ## <a name="create-your-logic-app"></a>Tworzenie aplikacji logiki 
 
@@ -38,7 +38,7 @@ Zaloguj się do <a href="https://portal.azure.com" target="_blank">witryny Azure
 
    ![Tworzenie aplikacji logiki](./media/quickstart-create-first-logic-app-workflow/create-logic-app.png)
 
-3. W obszarze **Tworzenie aplikacji logiki** podaj szczegółowe informacje o aplikacji logiki, jak pokazano poniżej. Gdy wszystko będzie gotowe, wybierz pozycję **Utwórz**.
+1. W obszarze **Tworzenie aplikacji logiki** podaj szczegółowe informacje o aplikacji logiki, jak pokazano poniżej. Gdy wszystko będzie gotowe, wybierz pozycję **Utwórz**.
 
    ![Podawanie szczegółów aplikacji logiki](./media/quickstart-create-first-logic-app-workflow/create-logic-app-settings.png)
 
@@ -51,7 +51,7 @@ Zaloguj się do <a href="https://portal.azure.com" target="_blank">witryny Azure
    | **Log Analytics** | Wyłączone | Ustawienie **Wyłączone** umożliwia rejestrowanie w celach diagnostycznych. | 
    |||| 
 
-3. Gdy platforma Azure wdroży aplikację, zostanie otwarty Projektant aplikacji usługi Logic Apps wyświetlający stronę z wprowadzającym wideo i najczęściej używanymi wyzwalaczami. W obszarze **Szablony** wybierz pozycję **Pusta aplikacja logiki**.
+1. Gdy platforma Azure wdroży aplikację, zostanie otwarty Projektant aplikacji usługi Logic Apps wyświetlający stronę z wprowadzającym wideo i najczęściej używanymi wyzwalaczami. W obszarze **Szablony** wybierz pozycję **Pusta aplikacja logiki**.
 
    ![Wybieranie szablonu pustej aplikacji logiki](./media/quickstart-create-first-logic-app-workflow/choose-logic-app-template.png)
 
@@ -61,11 +61,13 @@ Następnie dodaj [wyzwalacz](../logic-apps/logic-apps-overview.md#logic-app-conc
 
 ## <a name="check-rss-feed-with-a-trigger"></a>Sprawdzanie kanału informacyjnego RSS za pomocą wyzwalacza
 
-1. W projektancie wprowadź ciąg „rss” w polu wyszukiwania. Wybierz ten wyzwalacz: **RSS — gdy element kanału informacyjnego jest publikowany**
+1. W Projektancie aplikacji logiki, w polu wyszukiwania, wybierz **wszystkich**.
+
+1. W polu wyszukiwania wprowadź "ciąg rss". Z listy wyzwalaczy wybierz następujący wyzwalacz: **Po opublikowaniu elementu kanału informacyjnego - RSS**
 
    ![Wybierz wyzwalacz: „RSS — gdy element kanału informacyjnego jest publikowany”](./media/quickstart-create-first-logic-app-workflow/add-trigger-rss.png)
 
-2. Podaj następujące informacje dotyczące wyzwalacza, jak pokazano i opisano: 
+1. Podaj następujące informacje dotyczące wyzwalacza, jak pokazano i opisano:
 
    ![Konfigurowanie kanału informacyjnego RSS, częstotliwości i interwału dla wyzwalacza](./media/quickstart-create-first-logic-app-workflow/add-trigger-rss-settings.png)
 
@@ -79,23 +81,25 @@ Następnie dodaj [wyzwalacz](../logic-apps/logic-apps-overview.md#logic-app-conc
    Interwał i częstotliwość określają harmonogram wyzwalacza aplikacji logiki. 
    Ta aplikacja logiki sprawdza kanał informacyjny co minutę.
 
-3. Aby na razie ukryć szczegóły wyzwalacza, kliknij wewnątrz jego paska tytułu.
+1. Aby na razie ukryć szczegóły wyzwalacza, kliknij wewnątrz jego paska tytułu.
 
    ![Zwinięty kształt w celu ukrycia szczegółów](./media/quickstart-create-first-logic-app-workflow/collapse-trigger-shape.png)
 
-4. Zapisz aplikację logiki. Na pasku narzędzi projektanta wybierz pozycję **Zapisz**. 
+1. Zapisz aplikację logiki. Na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
 
 Twoja aplikacja logiki jest już aktywna, ale nie robi niczego poza sprawdzaniem źródła danych RSS. Dodaj więc akcję reagującą na aktywowanie wyzwalacza.
 
 ## <a name="send-email-with-an-action"></a>Wysyłanie wiadomości e-mail za pomocą akcji
 
-Teraz dodaj [akcję](../logic-apps/logic-apps-overview.md#logic-app-concepts), która wysyła wiadomość e-mail, gdy pojawi się nowy element w kanale informacyjnym RSS. 
+Teraz dodaj [akcję](../logic-apps/logic-apps-overview.md#logic-app-concepts), która wysyła wiadomość e-mail, gdy pojawi się nowy element w kanale informacyjnym RSS.
 
 1. W obszarze wyzwalacza **Gdy element kanału informacyjnego jest publikowany** wybierz pozycję **Nowy krok**.
 
    ![Dodawanie akcji](./media/quickstart-create-first-logic-app-workflow/add-new-action.png)
 
-2. W obszarze **Wybierz akcję** wprowadź tekst „wyślij wiadomość e-mail”. W polu wyszukiwania wybierz pozycję **Wszystko**. Z listy akcji wybierz akcję „wyślij wiadomość e-mail” dla odpowiedniego dostawcy poczty e-mail. 
+1. W obszarze **wybierz akcję** i wyszukiwania, wybierz **wszystkich**.
+
+1. W polu wyszukiwania wprowadź "Wyślij wiadomość e-mail". Z listy akcji wybierz akcję „wyślij wiadomość e-mail” dla odpowiedniego dostawcy poczty e-mail.
 
    ![Wybierz tę akcję: „Usługa Office 365 Outlook — wyślij wiadomość e-mail”](./media/quickstart-create-first-logic-app-workflow/add-action-send-email.png)
 
@@ -104,9 +108,9 @@ Teraz dodaj [akcję](../logic-apps/logic-apps-overview.md#logic-app-concepts), k
    * Dla kont służbowych platformy Azure wybierz pozycję Office 365 Outlook. 
    * Dla osobistych kont Microsoft wybierz pozycję Outlook.com.
 
-3. Jeśli pojawi się prośba o podanie poświadczeń, zaloguj się do swojego konta e-mail, aby usługa Logic Apps utworzyła połączenie z tym kontem e-mail.
+1. Jeśli pojawi się prośba o podanie poświadczeń, zaloguj się do swojego konta e-mail, aby usługa Logic Apps utworzyła połączenie z tym kontem e-mail.
 
-4. W obszarze akcji **Wyślij wiadomość e-mail** podaj dane, które powinny znaleźć się w wiadomości e-mail. 
+1. W obszarze akcji **Wyślij wiadomość e-mail** podaj dane, które powinny znaleźć się w wiadomości e-mail.
 
    1. W polu **Do** wprowadź adres e-mail adresata. 
    Do celów testowych możesz użyć własnego adresu e-mail.
@@ -114,11 +118,11 @@ Teraz dodaj [akcję](../logic-apps/logic-apps-overview.md#logic-app-concepts), k
       Na razie zignoruj wyświetloną listę **Dodaj zawartość dynamiczną**. 
       Ta lista pojawia się po kliknięciu wewnątrz niektórych pól edycji. Znajdują się na niej wszelkie dostępne parametry z poprzedniego kroku, które można dołączyć jako dane wejściowe w przepływie pracy. 
 
-   2. W polu **Temat** wprowadź następujący tekst ze spacją na końcu: ```New RSS item:```
+   1. W polu **Temat** wprowadź następujący tekst ze spacją na końcu: ```New RSS item:```
 
       ![Wprowadzanie tematu wiadomości e-mail](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-subject.png)
- 
-   3. Z listy **Dodaj zawartość dynamiczną** wybierz pozycję **Tytuł źródła danych**, aby uwzględnić tytuł elementu kanału RSS.
+
+   1. Z listy **Dodaj zawartość dynamiczną** wybierz pozycję **Tytuł źródła danych**, aby uwzględnić tytuł elementu kanału RSS.
 
       ![Lista zawartości dynamicznej — „Tytuł źródła danych”](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-subject-dynamic-content.png)
 
@@ -131,7 +135,7 @@ Teraz dodaj [akcję](../logic-apps/logic-apps-overview.md#logic-app-concepts), k
       W ten sposób Twoja aplikacja logiki wykonuje tę samą akcję dla każdego elementu tablicy. 
       Aby usunąć pętlę, wybierz **wielokropek** (**...**) na pasku tytułu pętli, a następnie wybierz pozycję **Usuń**.
 
-   4. W polu **Treść** wprowadź następujący tekst i wybierz widoczne tokeny dla treści wiadomości e-mail. 
+   1. W polu **Treść** wprowadź następujący tekst i wybierz widoczne tokeny dla treści wiadomości e-mail. 
    Aby dodać puste wiersze w polu edycji, naciśnij klawisze Shift + Enter. 
 
       ![Dodawanie treści wiadomości e-mail](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-body.png)
@@ -141,9 +145,9 @@ Teraz dodaj [akcję](../logic-apps/logic-apps-overview.md#logic-app-concepts), k
       | **Tytuł źródła danych** | Tytuł elementu | 
       | **Data opublikowania kanału informacyjnego** | Data i godzina opublikowania elementu | 
       | **Link podstawowego źródła danych** | Adres URL elementu | 
-      ||| 
-   
-5. Zapisz aplikację logiki.
+      |||
+
+1. Zapisz aplikację logiki.
 
 Następnie przeprowadź testowanie aplikacji logiki.
 
@@ -168,7 +172,7 @@ Gdy ten przykład nie będzie już potrzebny, usuń grupę zasobów zawierając�
 
    ![„Grupy zasobów” > „Przegląd” > „Usuń grupę zasobów”](./media/quickstart-create-first-logic-app-workflow/delete-resource-group.png)
 
-2. Aby potwierdzić, wprowadź nazwę grupy zasobów, a następnie wybierz pozycję **Usuń**.
+1. Aby potwierdzić, wprowadź nazwę grupy zasobów, a następnie wybierz pozycję **Usuń**.
 
    ![Potwierdzenie usunięcia](./media/quickstart-create-first-logic-app-workflow/delete-resource-group-2.png)
 
@@ -177,8 +181,7 @@ Gdy ten przykład nie będzie już potrzebny, usuń grupę zasobów zawierając�
 
 ## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
 
-* Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](https://aka.ms/logicapps-wish).
+Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/home?forum=azurelogicapps).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

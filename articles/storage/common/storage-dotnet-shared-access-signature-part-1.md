@@ -7,13 +7,14 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: tamram
+ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: e9e78d3226f90ef780a1ed2114ba256c293463dc
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 25c562e144b635cb66c5df9b5b7bd6237ce3122c
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58001586"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154426"
 ---
 # <a name="using-shared-access-signatures-sas"></a>Używanie sygnatur dostępu współdzielonego (SAS)
 
@@ -114,7 +115,7 @@ https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2015-04-05&s
 | Wersja usługi magazynu |`sv=2015-04-05` |Dla magazynu usług w wersji 2012-02-12, a później, ten parametr wskazuje wersję do użycia. |
 | Godzina rozpoczęcia |`st=2015-04-29T22%3A18%3A26Z` |Określona w czasie UTC. Jeśli chcesz, aby sygnatury dostępu Współdzielonego mają obowiązywać natychmiast, należy pominąć czas rozpoczęcia. |
 | Czas wygaśnięcia |`se=2015-04-30T02%3A23%3A26Z` |Określona w czasie UTC. |
-| Zasób |`sr=b` |Zasób jest obiekt blob. |
+| Resource |`sr=b` |Zasób jest obiekt blob. |
 | Uprawnienia |`sp=rw` |Uprawnienia przyznane przez sygnatury dostępu Współdzielonego obejmują Read (r) i zapisu (w). |
 | Zakres adresów IP |`sip=168.1.5.60-168.1.5.70` |Zakres adresów IP, z których będą akceptowane żądania. |
 | Protokół |`spr=https` |Dozwolone są tylko żądania przy użyciu protokołu HTTPS. |

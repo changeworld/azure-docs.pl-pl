@@ -2,19 +2,20 @@
 title: Korzystanie z analizy usługi Azure Storage w celu zbierania danych dzienników i metryk | Dokumentacja firmy Microsoft
 description: Usługa Storage Analytics umożliwia śledzenie danych metryk dla wszystkich usług magazynu oraz w celu zbierania dzienników na potrzeby magazynu obiektów Blob, kolejek i tabel.
 services: storage
-author: roygara
+author: normesta
 ms.service: storage
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/03/2017
-ms.author: rogarana
+ms.author: normesta
+ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: eb85f8c756e7373a8dedabbce362cfa534e56fd8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b588ebe577e61014c6c2bbeaae751b2783dd6f80
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61483540"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153919"
 ---
 # <a name="storage-analytics"></a>Analityka magazynu
 

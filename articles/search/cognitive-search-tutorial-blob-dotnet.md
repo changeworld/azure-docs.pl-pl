@@ -9,12 +9,12 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: maheff
-ms.openlocfilehash: 4e6f0317df2f0f631d2c8d3f8e5cefba06e154fd
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 1b3353cae73bb5710dc9343f1d211266d15743a2
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026837"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153205"
 ---
 # <a name="c-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>C#Samouczek: Wywołania interfejsów API usług Cognitive Services w usłudze Azure Search indeksowanie potoku
 
@@ -94,9 +94,9 @@ Rozpocznij, otwierając program Visual Studio i tworzenia nowego projektu aplika
 
 [Zestawu .NET SDK usługi Azure Search](https://aka.ms/search-sdk) składa się z kilku bibliotek klienckich, które umożliwiają zarządzanie indeksów, źródła danych, indeksatorów i dokładniejsze, jak również przekazywanie i zarządzania dokumentami i wykonywania zapytań, wszystko to bez konieczności szczegółowe informacje o HTTP i JSON. Tych bibliotek klienckich są dystrybuowane jako pakiety NuGet.
 
-Dla tego projektu, musisz zainstalować wersję zapoznawczą 7.x.x `Microsoft.Azure.Search` NuGet pakietu i najnowsze `Microsoft.Extensions.Configuration.Json` pakietu NuGet.
+Dla tego projektu, musisz zainstalować wersję 9 `Microsoft.Azure.Search` NuGet pakietu i najnowsze `Microsoft.Extensions.Configuration.Json` pakietu NuGet.
 
-Zainstaluj `Microsoft.Azure.Search` pakietu NuGet za pomocą konsoli Menedżera pakietów w programie Visual Studio. Aby otworzyć wybierz pozycję Konsola Menedżera pakietów **narzędzia** > **Menedżera pakietów NuGet** > **Konsola Menedżera pakietów**. Aby uzyskać polecenie do uruchomienia, przejdź do [strona pakietu Microsoft.Azure.Search NuGet](https://www.nuget.org/packages/Microsoft.Azure.Search), a następnie wybierz wersję 7.x.x-preview i skopiuj polecenie Menedżera pakietów. W konsoli Menedżera pakietów Uruchom to polecenie.
+Zainstaluj `Microsoft.Azure.Search` pakietu NuGet za pomocą konsoli Menedżera pakietów w programie Visual Studio. Aby otworzyć wybierz pozycję Konsola Menedżera pakietów **narzędzia** > **Menedżera pakietów NuGet** > **Konsola Menedżera pakietów**. Aby uzyskać polecenie do uruchomienia, przejdź do [strona pakietu Microsoft.Azure.Search NuGet](https://www.nuget.org/packages/Microsoft.Azure.Search), a następnie wybierz w wersji 9 i skopiuj polecenie Menedżera pakietów. W konsoli Menedżera pakietów Uruchom to polecenie.
 
 Aby zainstalować `Microsoft.Extensions.Configuration.Json` pakietu NuGet w programie Visual Studio, wybierz **narzędzia** > **Menedżera pakietów NuGet** > **Zarządzaj pakietami NuGet dla rozwiązania...** . Wybierz pozycję Przeglądaj, a następnie wyszukaj `Microsoft.Extensions.Configuration.Json` pakietu NuGet. Po znalezieniu go, wybierz pakiet, wybierz swój projekt, upewnij się, że wersja jest najnowsza stabilna wersja, a następnie wybierz opcję instalacji.
 
@@ -137,13 +137,25 @@ using Microsoft.Extensions.Configuration;
 
 ## <a name="create-a-client"></a>Tworzenie klienta
 
-Utwórz wystąpienie obiektu `SearchServiceClient` klasy przy użyciu informacji o dodaniu do `appsettings.json`.
+Utwórz wystąpienie obiektu `SearchServiceClient` klasy.
 
 ```csharp
 IConfigurationBuilder builder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
 IConfigurationRoot configuration = builder.Build();
-
 SearchServiceClient serviceClient = CreateSearchServiceClient(configuration);
+```
+
+`CreateSearchServiceClient` Tworzy nową `SearchServiceClient` przy użyciu wartości, które są przechowywane w pliku konfiguracji aplikacji (pliku appsettings.json).
+
+```csharp
+private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot configuration)
+{
+   string searchServiceName = configuration["SearchServiceName"];
+   string adminApiKey = configuration["SearchServiceAdminApiKey"];
+
+   SearchServiceClient serviceClient = new SearchServiceClient(searchServiceName, new SearchCredentials(adminApiKey));
+   return serviceClient;
+}
 ```
 
 > [!NOTE]
@@ -197,9 +209,9 @@ W tej sekcji można zdefiniować zestaw wzbogacania kroków, które mają być s
 
 + [Wykrywanie języka](cognitive-search-skill-language-detection.md) — identyfikowanie języka zawartości.
 
-+ [Dzielenie tekstu](cognitive-search-skill-textsplit.md) przerwanie dużej ilości treści na mniejsze części przed wywołaniem umiejętności wyodrębnianie kluczowych fraz kwalifikacjami zawodowymi rozpoznawanie podmiotów. Wyodrębnianie kluczowych fraz i rozpoznawanie jednostek znaku akceptują dane wejściowe niż 50 000 znaków. Kilka przykładowych plików należy podzielić, aby zmieścić się w tym limicie.
++ [Dzielenie tekstu](cognitive-search-skill-textsplit.md) przerwanie dużej ilości treści na mniejsze części przed wywołaniem umiejętności wyodrębnianie kluczowych fraz kwalifikacjami zawodowymi rozpoznawania jednostek. Wyodrębnianie kluczowych fraz i rozpoznawanie jednostek akceptują dane wejściowe niż 50 000 znaków. Kilka przykładowych plików należy podzielić, aby zmieścić się w tym limicie.
 
-+ [Rozpoznawanie jednostek znaku](cognitive-search-skill-named-entity-recognition.md) — wyodrębnianie nazw organizacji z zawartości w kontenerze obiektów blob.
++ [Rozpoznawanie jednostek](cognitive-search-skill-entity-recognition.md) do wyodrębniania nazw organizacje z zawartości w kontenerze obiektów blob.
 
 + [Wyodrębnianie kluczowych fraz](cognitive-search-skill-keyphrases.md) — określanie najczęściej występujących fraz kluczowych.
 
@@ -225,7 +237,7 @@ outputMappings.Add(new OutputFieldMappingEntry(
     targetName: "text"));
 
 OcrSkill ocrSkill = new OcrSkill(
-    description: "Extract text (plain and structured) from image).",
+    description: "Extract text (plain and structured) from image",
     context: "/document/normalized_images/*",
     inputs: inputMappings,
     outputs: outputMappings,
@@ -279,7 +291,7 @@ outputMappings.Add(new OutputFieldMappingEntry(
     targetName: "languageCode"));
 
 LanguageDetectionSkill languageDetectionSkill = new LanguageDetectionSkill(
-    description: "Language detection skill",
+    description: "Detect the language used in the document",
     context: "/document",
     inputs: inputMappings,
     outputs: outputMappings);
@@ -312,9 +324,9 @@ SplitSkill splitSkill = new SplitSkill(
     maximumPageLength: 4000);
 ```
 
-### <a name="named-entity-recognition-skill"></a>Umiejętności rozpoznawania nazwanych jednostek
+### <a name="entity-recognition-skill"></a>Umiejętności rozpoznawania jednostek
 
-To `NamedEntityRecognitionSkill` wystąpienia jest równa rozpoznaje typ kategorii `organization`. **Rozpoznawania jednostki o nazwie** umiejętności mogą także rozpoznaje typy kategorii `person` i `location`.
+To `EntityRecognitionSkill` wystąpienia jest równa rozpoznaje typ kategorii `organization`. **Rozpoznawanie jednostek** umiejętności mogą także rozpoznaje typy kategorii `person` i `location`.
 
 Należy zauważyć, że pole "kontekst" jest ustawione na ```"/document/pages/*"``` z gwiazdką, co oznacza kroku wzbogacania jest wywoływana dla każdej strony w obszarze ```"/document/pages"```.
 
@@ -329,21 +341,21 @@ outputMappings.Add(new OutputFieldMappingEntry(
     name: "organizations",
     targetName: "organizations"));
 
-List<NamedEntityCategory> namedEntityCategory = new List<NamedEntityCategory>();
-namedEntityCategory.Add(NamedEntityCategory.Organization);
+List<EntityCategory> entityCategory = new List<EntityCategory>();
+entityCategory.Add(EntityCategory.Organization);
     
-NamedEntityRecognitionSkill namedEntityRecognition = new NamedEntityRecognitionSkill(
+EntityRecognitionSkill entityRecognitionSkill = new EntityRecognitionSkill(
     description: "Recognize organizations",
     context: "/document/pages/*",
     inputs: inputMappings,
     outputs: outputMappings,
-    categories: namedEntityCategory,
-    defaultLanguageCode: NamedEntityRecognitionSkillLanguage.En);
+    categories: entityCategory,
+    defaultLanguageCode: EntityRecognitionSkillLanguage.En);
 ```
 
 ### <a name="key-phrase-extraction-skill"></a>Umiejętności wyodrębnianie kluczowych fraz
 
-Podobnie jak `NamedEntityRecognitionSkill` wystąpienia, która właśnie została utworzona, **klucz frazy** umiejętności jest wywoływana dla każdej strony dokumentu.
+Podobnie jak `EntityRecognitionSkill` wystąpienia, która właśnie została utworzona, **klucz frazy** umiejętności jest wywoływana dla każdej strony dokumentu.
 
 ```csharp
 List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
@@ -368,7 +380,7 @@ KeyPhraseExtractionSkill keyPhraseExtractionSkill = new KeyPhraseExtractionSkill
 
 ### <a name="build-and-create-the-skillset"></a>Tworzenie i tworzenie zestawu umiejętności
 
-Tworzenie `SkillSet` z wykorzystaniem umiejętności tworzenia.
+Tworzenie `Skillset` z wykorzystaniem umiejętności tworzenia.
 
 ```csharp
 List<Skill> skills = new List<Skill>();
@@ -376,12 +388,12 @@ skills.Add(ocrSkill);
 skills.Add(mergeSkill);
 skills.Add(languageDetectionSkill);
 skills.Add(splitSkill);
-skills.Add(namedEntityRecognition);
+skills.Add(entityRecognitionSkill);
 skills.Add(keyPhraseExtractionSkill);
 
-Skillset skillSet = new Skillset(
+Skillset skillset = new Skillset(
     name: "demoskillset",
-    description: "Demo Skillset",
+    description: "Demo skillset",
     skills: skills);
 ```
 
@@ -390,7 +402,7 @@ Tworzenie zestawu umiejętności w usłudze wyszukiwania.
 ```csharp
 try
 {
-    serviceClient.Skillsets.CreateOrUpdate(skillSet);
+    serviceClient.Skillsets.CreateOrUpdate(skillset);
 }
 catch (Exception e)
 {
@@ -459,16 +471,24 @@ var index = new Index()
 };
 ```
 
-Podczas testowania może się okazać, że próbuje utworzyć indeks więcej niż jeden raz. W związku z tym Sprawdź, czy indeks, który masz zamiar utworzyć, już istnieje przed próbą utworzenia go. 
+Podczas testowania może się okazać, że próbuje utworzyć indeks więcej niż jeden raz. W związku z tym Sprawdź, czy indeks, który masz zamiar utworzyć, już istnieje przed próbą utworzenia go.
 
 ```csharp
-bool exists = serviceClient.Indexes.Exists(index.Name);
-if (exists)
+try
 {
-    serviceClient.Indexes.Delete(index.Name);
-}
+    bool exists = serviceClient.Indexes.Exists(index.Name);
 
-serviceClient.Indexes.Create(index);
+    if (exists)
+    {
+        serviceClient.Indexes.Delete(index.Name);
+    }
+
+    serviceClient.Indexes.Create(index);
+}
+catch (Exception e)
+{
+    // Handle exception
+}
 ```
 
 Aby dowiedzieć się więcej na temat definiowania indeksu, zobacz [Tworzenie indeksu (interfejs API REST usługi Azure Search)](https://docs.microsoft.com/rest/api/searchservice/create-index).
@@ -526,14 +546,15 @@ Indexer indexer = new Indexer(
     fieldMappings: fieldMappings,
     outputFieldMappings: outputMappings);
 
-bool exists = serviceClient.Indexers.Exists(indexer.Name);
-if (exists)
-{
-    serviceClient.Indexers.Delete(indexer.Name);
-}
-
 try
 {
+    bool exists = serviceClient.Indexers.Exists(indexer.Name);
+
+    if (exists)
+    {
+        serviceClient.Indexers.Delete(indexer.Name);
+    }
+
     serviceClient.Indexers.Create(indexer);
 }
 catch (Exception e)
@@ -560,21 +581,29 @@ Gdy zawartość zostanie wyodrębniona, możesz ustawić element `imageAction`, 
 Po zdefiniowaniu indeksatora jest on uruchamiany automatycznie przy przesyłaniu żądania. W zależności od tego, które umiejętności poznawcze zdefiniowano, indeksowanie może trwać dłużej, niż oczekujesz. Aby dowiedzieć się, czy indeksatora jest nadal uruchomiona, należy użyć `GetStatus` metody.
 
 ```csharp
-IndexerExecutionInfo demoIndexerExecutionInfo = serviceClient.Indexers.GetStatus(indexer.Name);
-switch (demoIndexerExecutionInfo.Status)
+try
 {
-    case IndexerStatus.Error:
-        Console.WriteLine("Indexer has error status");
-        break;
-    case IndexerStatus.Running:
-        Console.WriteLine("Indexer is running");
-        break;
-    case IndexerStatus.Unknown:
-        Console.WriteLine("Indexer status is unknown");
-        break;
-    default:
-        Console.WriteLine("No indexer status information");
-        break;
+    IndexerExecutionInfo demoIndexerExecutionInfo = serviceClient.Indexers.GetStatus(indexer.Name);
+
+    switch (demoIndexerExecutionInfo.Status)
+    {
+        case IndexerStatus.Error:
+            Console.WriteLine("Indexer has error status");
+            break;
+        case IndexerStatus.Running:
+            Console.WriteLine("Indexer is running");
+            break;
+        case IndexerStatus.Unknown:
+            Console.WriteLine("Indexer status is unknown");
+            break;
+        default:
+            Console.WriteLine("No indexer information");
+            break;
+    }
+}
+catch (Exception e)
+{
+    // Handle exception
 }
 ```
 
@@ -603,6 +632,19 @@ catch (Exception e)
 }
 ```
 
+`CreateSearchIndexClient` Tworzy nową `SearchIndexClient` przy użyciu wartości, które są przechowywane w pliku konfiguracji aplikacji (pliku appsettings.json). Należy pamiętać, że jest używany klucz zapytania interfejsu API usługi wyszukiwania i nie klucza administratora.
+
+```csharp
+private static SearchIndexClient CreateSearchIndexClient(IConfigurationRoot configuration)
+{
+   string searchServiceName = configuration["SearchServiceName"];
+   string queryApiKey = configuration["SearchServiceQueryApiKey"];
+
+   SearchIndexClient indexClient = new SearchIndexClient(searchServiceName, "demoindex", new SearchCredentials(queryApiKey));
+   return indexClient;
+}
+```
+
 Dane wyjściowe to schemat indeksu z nazwą, typem i atrybutami każdego pola.
 
 Prześlij drugie zapytanie o element `"*"`, co spowoduje zwrócenie całej zawartości pojedynczego pola, takiego jak `organizations`.
@@ -626,52 +668,11 @@ catch (Exception e)
 
 Powtórz tę procedurę dla pola dodatkowe: zawartość, languageCode, keyPhrases i organizacji, w tym ćwiczeniu. Istnieje możliwość zwrócenia wielu pól za pomocą elementu `$select` używającego listy wartości rozdzielonych przecinkami.
 
-<a name="access-enriched-document"></a>
-
-## <a name="accessing-the-enriched-document"></a>Dostęp do wzbogaconego dokumentu
-
-Funkcja wyszukiwania poznawczego umożliwia wyświetlenie struktury wzbogaconego dokumentu. Wzbogacone dokumenty to tymczasowe struktury tworzone podczas wzbogacania, a następnie usuwane po zakończeniu procesu.
-
-Aby przechwycić migawkę wzbogaconego dokumentu utworzoną podczas indeksowania, dodaj pole o nazwie ```enriched``` do indeksu. Indeksator automatycznie zrzuca do tego pola ciąg będący reprezentacją wszystkich wzbogaceń dokumentu.
-
-Pole ```enriched``` będzie zawierać ciąg, który jest logiczną reprezentacją wzbogaconego dokumentu w pamięci w formacie JSON.  Wartość pola jest jednak prawidłowym dokumentem w formacie JSON. Cudzysłowy są umieszczane w sekwencji ucieczki, więc musisz zastąpić ciąg `\"` znakiem `"`, aby wyświetlić dokument w postaci sformatowanego kodu JSON.  
-
-Pole ```enriched``` jest przeznaczone do debugowania i ma za zadanie ułatwić zrozumienie logicznego kształtu zawartości, względem której wyrażenia są oceniane. Może to być przydatne narzędzie do poznawania i debugowania zestawu umiejętności.
-
-Powtórz poprzednie ćwiczenie, dołączając pole `enriched` w celu przechwycenia zawartości wzbogaconego dokumentu:
-
-### <a name="request-body-syntax"></a>Składnia treść żądania
-```csharp
-// The SerializePropertyNamesAsCamelCase attribute is defined in the Azure Search .NET SDK.
-// It ensures that Pascal-case property names in the model class are mapped to camel-case
-// field names in the index.
-[SerializePropertyNamesAsCamelCase]
-public class DemoIndex
-{
-    [System.ComponentModel.DataAnnotations.Key]
-    [IsSearchable, IsSortable]
-    public string Id { get; set; }
-
-    [IsSearchable]
-    public string Content { get; set; }
-
-    [IsSearchable]
-    public string LanguageCode { get; set; }
-
-    [IsSearchable]
-    public string[] KeyPhrases { get; set; }
-
-    [IsSearchable]
-    public string[] Organizations { get; set; }
-
-    public string Enriched { get; set; }
-}
-```
 <a name="reset"></a>
 
 ## <a name="reset-and-rerun"></a>Resetowanie i ponowne uruchamianie
 
-We wczesnych etapach eksperymentalne rozwoju najbardziej praktyczne podejście do projektowania iteracji jest usunięcie obiektów z usługi Azure Search i kodu ponownie skompilować je. Nazwy zasobów są unikatowe. Usunięcie obiektu umożliwia jego ponowne utworzenie przy użyciu tej samej nazwy. 
+We wczesnych etapach eksperymentalne rozwoju najbardziej praktyczne podejście do projektowania iteracji jest usunięcie obiektów z usługi Azure Search i kodu ponownie skompilować je. Nazwy zasobów są unikatowe. Usunięcie obiektu umożliwia jego ponowne utworzenie przy użyciu tej samej nazwy.
 
 W tym samouczku trwało obsługuje sprawdzanie istniejących indeksatory i indeksy i ich usuwania, jeśli są one już istnieje, dzięki czemu możesz ponownie uruchomić kod.
 
@@ -681,11 +682,11 @@ W miarę rozwoju kodu można udoskonalić strategię odbudowywania. Aby uzyskać
 
 ## <a name="takeaways"></a>Wnioski
 
-W tym samouczku przedstawiono podstawowe kroki tworzenia wzbogaconego potoku indeksowania przez utworzenie elementów będących jego składnikami: źródła danych, zestawu umiejętności, indeksu i indeksatora.
+W tym samouczku przedstawiono podstawowe kroki tworzenia wzbogaconego potoku indeksowania, poprawiając części zamiennych: źródło danych, zestawu umiejętności, indeksu i indeksatora.
 
 Objaśniono [wstępnie zdefiniowane umiejętności](cognitive-search-predefined-skills.md) wraz z definicją zestawu umiejętności i mechaniką łączenia umiejętności w łańcuch za pomocą danych wejściowych i wyjściowych. Opisano także element `outputFieldMappings` w definicji indeksatora, który jest wymagany do kierowania wzbogaconych wartości z potoku do indeksu z możliwością wyszukiwania w usłudze Azure Search.
 
-Ponadto przedstawiono sposób testowania wyników i resetowania systemu na potrzeby przyszłych iteracji. Omówiono proces, w ramach którego odpytanie indeksu powoduje zwrócenie danych wyjściowych utworzonych przez wzbogacony potok indeksowania. W tej wersji jest dostępny mechanizm wyświetlania wewnętrznych konstrukcji (wzbogaconych dokumentów utworzonych przez system). Zaprezentowano procedurę sprawdzania stanu indeksatora i usuwania obiektów przed ponownym uruchomieniem potoku.
+Ponadto przedstawiono sposób testowania wyników i resetowania systemu na potrzeby przyszłych iteracji. Omówiono proces, w ramach którego odpytanie indeksu powoduje zwrócenie danych wyjściowych utworzonych przez wzbogacony potok indeksowania. Zaprezentowano procedurę sprawdzania stanu indeksatora i usuwania obiektów przed ponownym uruchomieniem potoku.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

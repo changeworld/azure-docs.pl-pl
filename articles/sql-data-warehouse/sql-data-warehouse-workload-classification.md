@@ -7,22 +7,19 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload management
-ms.date: 03/13/2019
+ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 888a64de29178834fc47199a033eb6bc62858e57
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 208308533753370575b844633c45f7e4aeda0864
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61474831"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154209"
 ---
-# <a name="sql-data-warehouse-workload-classification-preview"></a>Klasyfikacja obciążenia usługa SQL Data Warehouse (wersja zapoznawcza)
+# <a name="sql-data-warehouse-workload-classification"></a>Usługa SQL Data Warehouse obciążenia klasyfikacji
 
 W tym artykule opisano proces klasyfikacji obciążenia usługa SQL Data Warehouse przypisywania klasy zasobów i znaczenie na przychodzące żądania.
-
-> [!Note]
-> Klasyfikacja obciążenia jest dostępna w wersji zapoznawczej na Gen2 magazynu danych SQL. Podgląd obciążenia zarządzania klasyfikacji i znaczenie jest dla kompilacji z datą 9 kwietnia 2019 lub nowszej wersji.  Użytkownikom należy unikać kompilacje starszych niż ta data do testowania zarządzania obciążeniem.  Aby ustalić, czy zarządzanie obciążeniami zdolne do kompilacji, uruchom wybierz @@version po podłączeniu do wystąpienia usługi SQL Data Warehouse.
 
 ## <a name="classification"></a>Klasyfikacja
 
@@ -63,10 +60,10 @@ Klasyfikatorów system utworzone w Twoim imieniu podać ścieżkę łatwo przepr
 
 Rozważmy następujący scenariusz:
 
-Istniejący magazyn danych •konstrukcja ma DBAUser przypisany do roli klasy zasobów largerc użytkownika bazy danych. Przydział Klasa zasobu zostało wykonane z sp_addrolemember.
-Magazyn danych •zakres został zaktualizowany o zarządzanie obciążeniami.
-• Aby przetestować nową składnię klasyfikacji do roli bazy danych DBARole (czyli DBAUser członkiem), ma klasyfikatora, utworzenia dla nich mapowania mediumrc i o wysokiej ważności.
-•When DBAUser loguje się i uruchamia kwerendę, zapytanie, które zostaną przypisane do largerc. Ponieważ użytkownik ma pierwszeństwo przed członkostwo w roli.
+- Istniejący magazyn danych ma DBAUser przypisany do roli klasy zasobów largerc użytkownika bazy danych. Przydział Klasa zasobu zostało wykonane z sp_addrolemember.
+- Magazyn danych został zaktualizowany o zarządzanie obciążeniami.
+- Aby przetestować nową składnię klasyfikacji, rola bazy danych DBARole (czyli DBAUser członkiem), ma klasyfikatora, utworzenia dla nich mapowania mediumrc i o wysokiej ważności.
+- Gdy DBAUser loguje się i uruchamia kwerendę, zapytanie zostanie przypisany do largerc. Ponieważ użytkownik ma pierwszeństwo przed członkostwo w roli.
 
 Aby uprościć rozwiązywania problemów z błędną klasyfikację, zalecane jest usunięcie mapowania roli klasy zasobów, tworzenie klasyfikatorów obciążenia.  Poniższy kod zwraca istniejący zasób klasy członkostwa w roli.  Uruchom [sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql) dla każdej nazwy elementu członkowskiego zwrócony z odpowiedniej klasy zasobów.
 
@@ -84,4 +81,4 @@ sp_droprolemember ‘[Resource Class]’, membername
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać więcej informacji o klasyfikacji obciążenia usługa SQL Data Warehouse i znaczenie, zobacz [tworzenie klasyfikatora obciążenia](quickstart-create-a-workload-classifier-tsql.md) i [SQL Data Warehouse znaczenie](sql-data-warehouse-workload-importance.md). Zobacz [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) służy do wyświetlania kwerend i ważność przypisana.
+Aby rozpocząć tworzenie klasyfikatora, zobacz [tworzenie KLASYFIKATORA obciążenia (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql).  Aby uzyskać więcej informacji o klasyfikacji obciążenia usługa SQL Data Warehouse i znaczenie, zobacz [tworzenie klasyfikatora obciążenia](quickstart-create-a-workload-classifier-tsql.md) i [SQL Data Warehouse znaczenie](sql-data-warehouse-workload-importance.md). Zobacz [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) służy do wyświetlania kwerend i ważność przypisana.

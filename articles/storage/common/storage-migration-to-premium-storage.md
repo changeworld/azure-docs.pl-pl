@@ -2,18 +2,19 @@
 title: Migrowanie maszyn wirtualnych do usługi Azure Premium Storage | Dokumentacja firmy Microsoft
 description: Migrowanie istniejących maszyn wirtualnych do usługi Azure Premium Storage. Usługa Premium Storage oferuje obsługę przez dyski o wysokiej wydajności i niskich opóźnieniach dla wyjścia — dużych obciążeń wejścia/uruchomione na maszynach wirtualnych platformy Azure.
 services: storage
-author: yuemlu
+author: roygara
 ms.service: storage
 ms.topic: article
 ms.date: 06/27/2017
-ms.author: yuemlu
+ms.author: rogarana
+ms.reviewer: yuemlu
 ms.subservice: common
-ms.openlocfilehash: fdca10c54c798bd47a34eb0f8af091908bcc2711
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 5cfb96bd3115c8f3116a28926e93df89dff54351
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372322"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153759"
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Migrowanie do usługi Azure Premium Storage (dyski niezarządzane)
 
@@ -255,7 +256,7 @@ Teraz, gdy masz wirtualnego dysku twardego w katalogu lokalnym, można użyć na
 Add-AzureVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo>
 ```
 
-Przykład <Uri> może być ***"https://storagesample.blob.core.windows.net/mycontainer/blob1.vhd"***. Przykład <FileInfo> może być ***"C:\path\to\upload.vhd"***.
+Przykład \<Uri > musi być ***"https://storagesample.blob.core.windows.net/mycontainer/blob1.vhd"***. Przykład \<FileInfo > może być ***"C:\path\to\upload.vhd"***.
 
 ##### <a name="option-2-using-azcopy-to-upload-the-vhd-file"></a>Opcja 2: Przekazywanie pliku VHD za pomocą narzędzia AzCopy
 Przy użyciu narzędzia AzCopy, można łatwo przekazywać wirtualny dysk twardy za pośrednictwem Internetu. W zależności od rozmiaru wirtualnych dysków twardych to może potrwać. Pamiętaj sprawdzić ruch przychodzący i wychodzący limity konta magazynu przy użyciu tej opcji. Zobacz [usługi Azure Storage dotyczące skalowalności i cele wydajności](storage-scalability-targets.md) Aby uzyskać szczegółowe informacje.

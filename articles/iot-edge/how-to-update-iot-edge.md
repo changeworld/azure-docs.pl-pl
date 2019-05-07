@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: a3dd7f78362b5f5c99dc4a74fe0a32c4d26be5b7
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: a3b6327b9e05b039696cc1743fc2d16c5e945e26
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62125937"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65152630"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Aktualizowanie demona zabezpieczeń usługi IoT Edge i środowiska uruchomieniowego
 
@@ -50,25 +50,15 @@ apt-get install libiothsm iotedge
 
 ### <a name="windows-devices"></a>Urządzenia Windows
 
-Na urządzeniach z systemami Windows należy użyć skryptu PowerShell do odinstalowanie i ponowne zainstalowanie demona zabezpieczeń. Skrypt instalacji automatycznie pobiera najnowszą wersję demona zabezpieczeń. 
-
-Odinstaluj demona zabezpieczeń w sesji programu PowerShell administratora. 
+Na urządzeniach z systemami Windows użyj skryptu programu PowerShell, aby zaktualizować demona zabezpieczeń. Skrypt automatycznie pobiera najnowszą wersję demona zabezpieczeń. 
 
 ```powershell
-. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
-Uninstall-SecurityDaemon
+. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Update-IoTEdge -ContainerOs <Windows or Linux>
 ```
 
-Uruchamianie `Uninstall-SecurityDaemon` polecenie bez parametrów usuwa tylko demona zabezpieczeń z urządzenia, oraz dwa obrazy kontenera środowiska uruchomieniowego. Plik config.yaml jest przechowywany na urządzeniu, a także dane z aparatu kontenera Moby. Utrzymywanie oznacza informacje o konfiguracji, że nie musisz podać parametry połączenia lub informacji usługi Device Provisioning Service dla Twojego urządzenia ponownie podczas procesu instalacji. 
+Uruchomienie polecenia Update-IoTEdge usuwa demona zabezpieczeń z urządzenia, oraz dwa obrazy kontenera środowiska uruchomieniowego. Plik config.yaml jest przechowywany na urządzeniu, a także dane z aparatu kontenera Moby, (Jeśli używany jest kontenerów Windows). Utrzymywanie konfiguracji informacji oznacza, że nie musisz podać parametry połączenia lub informacji usługi Device Provisioning Service dla Twojego urządzenia ponownie podczas procesu aktualizacji. 
 
-Zainstaluj ponownie demona zabezpieczeń, w zależności od tego, czy urządzenia usługi IoT Edge korzysta z kontenerów Windows lub kontenerów systemu Linux. Zastąp wyrażenie **\<Windows lub Linux\>** z systemami operacyjnymi odpowiedniego kontenera. Użyj **- ExistingConfig** flagę, aby wskazać istniejący plik config.yaml na urządzeniu. 
-
-```powershell
-. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
-Install-SecurityDaemon -ExistingConfig -ContainerOS <Windows or Linux>
-```
-
-Jeśli chcesz zainstalować określoną wersję demona zabezpieczeń, pobierania pliku odpowiednią windows.zip iotedged [wersji usługi IoT Edge](https://github.com/Azure/azure-iotedge/releases). Następnie należy użyć `-OfflineInstallationPath` parametru, aby wskazywała lokalizację pliku. Aby uzyskać więcej informacji, zobacz [instalacji w trybie Offline](how-to-install-iot-edge-windows.md#offline-installation).
+Jeśli chcesz zainstalować określoną wersję demona zabezpieczeń, Pobierz odpowiedni plik Microsoft-Azure-IoTEdge.cab [wersji usługi IoT Edge](https://github.com/Azure/azure-iotedge/releases). Następnie należy użyć `-OfflineInstallationPath` parametru, aby wskazywała lokalizację pliku. Aby uzyskać więcej informacji, zobacz [instalacji w trybie Offline](how-to-install-iot-edge-windows.md#offline-installation).
 
 ## <a name="update-the-runtime-containers"></a>Aktualizuj kontenerów środowiska wykonawczego
 

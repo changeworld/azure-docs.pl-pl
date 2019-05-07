@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 04/15/2019
+ms.date: 05/06/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 5f488811e57ee20cb25db56b2d9e04202b17ffb2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4fffc54428b152a060594a5c107d3ac08457aaaa
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60869812"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154645"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Wdrażanie aplikacji Azure Blockchain Workbench
 
@@ -27,16 +27,16 @@ Aby uzyskać więcej informacji na temat składników aplikacji Blockchain Workb
 
 Blockchain Workbench umożliwia wdrażanie księgi łańcucha bloków, wraz z zestawem odpowiednich usług platformy Azure, o których najczęściej używany do tworzenia aplikacji łańcucha bloków. Wdrażanie aplikacji Blockchain Workbench powoduje następujących usług platformy Azure aprowizowane w grupie zasobów w subskrypcji platformy Azure.
 
-* Temat usługi 1 event Grid
-* 1 usługi Service Bus Namespace
-* 1 usługa application Insights
-* 1 bazy danych SQL Database (Standard S0)
-* 2 app Services (standardowa)
-* 2 magazyny kluczy platformy azure
-* 2 kont usługi azure Storage (Standard-LRS)
-* 2 zestawów skalowania maszyn wirtualnych (w przypadku węzłów modułu sprawdzania poprawności i proces roboczy)
-* 2 sieci wirtualnej (w tym moduł równoważenia obciążenia, sieciowej grupy zabezpieczeń i publiczny adres IP dla każdej sieci wirtualnej)
-* Opcjonalnie: Azure Monitor
+* Plan usługi App Service (standardowa)
+* Application Insights
+* Event Grid
+* W usłudze Azure Key Vault
+* Service Bus
+* Bazy danych SQL Database (Standard S0) + serwer logiczny SQL
+* Konto usługi Azure Storage (Standard-LRS)
+* Zestaw skalowania maszyn wirtualnych z pojemność wynoszącą 1
+* Grupy zasobów sieci wirtualnej (przy użyciu obciążenia równoważenia, sieciowej grupy zabezpieczeń, publiczny adres IP sieci wirtualnej)
+* Opcjonalnie: Usługa Azure Blockchain (podstawowa B0 wartość domyślna)
 
 Poniżej przedstawiono przykład wdrożenia utworzone w **myblockchain** grupy zasobów.
 
@@ -44,17 +44,12 @@ Poniżej przedstawiono przykład wdrożenia utworzone w **myblockchain** grupy z
 
 Koszt Blockchain Workbench jest agregacją koszt podstawowych usług platformy Azure. Informacje o cenach dla usług platformy Azure mogą być obliczane przy użyciu [Kalkulator cen](https://azure.microsoft.com/pricing/calculator/).
 
-> [!IMPORTANT]
-> Jeśli używasz subskrypcji za pomocą niski limity, takie jak subskrypcję platformy Azure w warstwie bezpłatna, wdrożenie może zakończyć się niepowodzeniem z powodu za mały limit przydziału rdzeni maszyn wirtualnych. Przed wdrożeniem Sprawdź przy użyciu wskazówek z limitu przydziału [limity przydziału procesorów wirtualnych maszyny wirtualnej](../../virtual-machines/windows/quotas.md) artykułu. Domyślny wybór maszyny Wirtualnej wymaga 6 rdzeni maszyn wirtualnych. Zmiana do mniejszego rozmiaru maszyny Wirtualnej, takie jak *standardowa DS1 wersja 2* zmniejsza liczbę rdzeni do 4.
-
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Azure Blockchain Workbench wymaga rejestracji konfiguracji i aplikacji usługi Azure AD. Użytkownik może zrobić w usłudze Azure AD [konfiguracje ręcznie](#azure-ad-configuration) przed przystąpieniem do wdrożenia lub uruchom skrypt po wdrożeniu. W przypadku ponownego wdrażania aplikacji Blockchain Workbench, zobacz [konfiguracji usługi Azure AD](#azure-ad-configuration) Aby sprawdzić konfigurację usługi Azure AD.
 
 > [!IMPORTANT]
 > Środowisko robocze nie ma być wdrożony w tej samej dzierżawy, który jest używane do rejestrowania aplikacji usługi Azure AD. Workbench musi zostać wdrożony w dzierżawie, w którym masz wystarczające uprawnienia do wdrażania zasobów. Aby uzyskać więcej informacji na temat dzierżaw usługi Azure AD, zobacz [jak uzyskać dzierżawę usługi Active Directory](../../active-directory/develop/quickstart-create-new-tenant.md) i [Integrowanie aplikacji z usługą Azure Active Directory](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md).
-
-
 
 ## <a name="deploy-blockchain-workbench"></a>Wdrażanie aplikacji Blockchain Workbench
 
@@ -82,7 +77,7 @@ Po ukończeniu kroków wymagań wstępnych można przystąpić do wdrażania apl
     | Typ uwierzytelniania | Wybierz, jeśli chcesz używać hasła lub klucza do łączenia się z maszynami wirtualnymi. |
     | Hasło | Hasło jest używane do łączenia się z maszynami wirtualnymi. |
     | Protokół SSH | Użyj klucz publiczny RSA w formacie jednowierszowym począwszy **ssh-rsa** lub wielowierszowym formacie PEM. Możesz wygenerować kluczy SSH przy użyciu `ssh-keygen` w systemie Linux i OS X lub przy użyciu narzędzia PuTTYGen Windows. Więcej informacji na temat kluczy SSH, zobacz [jak używać protokołu SSH kluczy przy użyciu Windows Azure](../../virtual-machines/linux/ssh-from-windows.md). |
-    | Hasła bazy danych / Potwierdź hasło bazy danych | Określ hasło używane do uzyskiwania dostępu do bazy danych utworzone w ramach wdrożenia. |
+    | Hasło bazy danych i łańcucha bloków | Określ hasło używane do uzyskiwania dostępu do bazy danych utworzone w ramach wdrożenia. Hasło musi spełniać trzy z czterech następujących wymagań: długość musi należeć do zakresu od 12 & 72 znaków, 1 mała litera, 1 Wielka litera, 1 cyfra i 1 znak specjalny inny sign(#) nie liczb, percent(%), przecinka (,), star(*), utworzyć kopię oferty (\`), podwójny quote("), pojedynczych cudzysłowów, myślnik (-) i semicolumn(;) |
     | Regionu geograficznego | Określ, gdzie wdrażanie zasobów aplikacji Blockchain Workbench. Aby uzyskać najlepsze dostępność, powinien on odpowiadać **lokalizacji** ustawienie. |
     | Subskrypcja | Określ subskrypcję platformy Azure, chcesz używać dla danego wdrożenia. |
     | Grupy zasobów | Utwórz nową grupę zasobów, wybierając **Utwórz nową** i określ unikatową nazwą grupy zasobów. |
@@ -94,15 +89,15 @@ Po ukończeniu kroków wymagań wstępnych można przystąpić do wdrażania apl
 
     Aby uzyskać **Utwórz nową**:
 
-    *Tworzenia nowych* opcja tworzy zestaw węzłów dowód z Ethereum urzędu (PoA) w ramach subskrypcji jeden element członkowski. 
+    *Tworzenia nowych* opcja wdraża rejestr Azure Blockchain usługi kworum z podstawowej jednostki sku domyślne.
 
     ![Ustawienia zaawansowane dla nową sieć łańcucha bloków](media/deploy/advanced-blockchain-settings-new.png)
 
     | Ustawienie | Opis  |
     |---------|--------------|
-    | Monitorowanie | Wybierz, czy chcesz włączyć usługi Azure Monitor do monitorowania sieci łańcucha bloków |
+    | Usługa Azure Blockchain warstwy cenowej | Wybierz **podstawowe** lub **standardowa** warstwy usług łańcucha bloków Azure, który jest używany dla aplikacji Blockchain Workbench |
     | Ustawienia usługi Azure Active Directory | Wybierz **później dodać**.</br>Uwaga: Jeśli została wybrana opcja [wstępne skonfigurowanie usługi Azure AD](#azure-ad-configuration) lub ponownego wdrażania, możliwość *Dodaj teraz*. |
-    | Wybór maszyny Wirtualnej | Wybierz preferowany rozmiar maszyny Wirtualnej dla sieci łańcucha bloków. Wybierz mniejszego rozmiaru maszyny Wirtualnej, takie jak *standardowa DS1 wersja 2* jeśli znajdują się w subskrypcji przy użyciu limity niski usług, takich jak bezpłatną warstwę platformy Azure. |
+    | Wybór maszyny Wirtualnej | Wybierz preferowany magazyn wydajności i rozmiaru maszyny Wirtualnej dla sieci łańcucha bloków. Wybierz mniejszego rozmiaru maszyny Wirtualnej, takie jak *standardowa DS1 wersja 2* jeśli znajdują się w subskrypcji przy użyciu limity niski usług, takich jak bezpłatną warstwę platformy Azure. |
 
     Aby uzyskać **Użyj istniejącej**:
 
@@ -121,7 +116,7 @@ Po ukończeniu kroków wymagań wstępnych można przystąpić do wdrażania apl
      |---------|--------------|
      | Punkt końcowy Ethereum RPC | Podaj końcowych wywołań RPC w istniejącej sieci PoA łańcucha bloków. Punkt końcowy rozpoczyna się od https:// lub http:// i kończy się za pomocą numeru portu. Na przykład: `http<s>://<network-url>:<port>` |
      | Ustawienia usługi Azure Active Directory | Wybierz **później dodać**.</br>Uwaga: Jeśli została wybrana opcja [wstępne skonfigurowanie usługi Azure AD](#azure-ad-configuration) lub ponownego wdrażania, możliwość *Dodaj teraz*. |
-     | Wybór maszyny Wirtualnej | Wybierz preferowany rozmiar maszyny Wirtualnej dla sieci łańcucha bloków. |
+     | Wybór maszyny Wirtualnej | Wybierz preferowany magazyn wydajności i rozmiaru maszyny Wirtualnej dla sieci łańcucha bloków. Wybierz mniejszego rozmiaru maszyny Wirtualnej, takie jak *standardowa DS1 wersja 2* jeśli znajdują się w subskrypcji przy użyciu limity niski usług, takich jak bezpłatną warstwę platformy Azure. |
 
 9. Wybierz **OK** zakończenie ustawienia zaawansowane.
 

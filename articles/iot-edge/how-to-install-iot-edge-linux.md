@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: 5829606f3ad226507c49f18dcc8ac4831d573b17
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: b519ed21b4d2e0e258c48bd1dc12750176281c9e
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62126317"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65152846"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-linux-x64"></a>Instalowanie środowiska uruchomieniowego usługi Azure IoT Edge w systemie Linux (x64)
 
@@ -23,7 +23,7 @@ ms.locfileid: "62126317"
 
 Aby dowiedzieć się więcej, zobacz [zrozumieć środowisko uruchomieniowe usługi Azure IoT Edge oraz jej architektury](iot-edge-runtime.md).
 
-W tym artykule wymieniono kroki, aby zainstalować środowisko uruchomieniowe usługi Azure IoT Edge w systemie Linux x64 (Intel/AMD) Ubuntu urządzenie usługi IoT Edge. Zapoznaj się [pomocy technicznej usługi Azure IoT Edge](support.md#operating-systems) Aby uzyskać listę obsługiwanych systemów operacyjnych AMD64.
+W tym artykule wymieniono kroki, aby zainstalować środowisko uruchomieniowe usługi Azure IoT Edge w systemie Linux x64 (Intel/AMD) Ubuntu urządzenie usługi IoT Edge. Zapoznaj się [usługi Azure IoT Edge obsługiwane systemy](support.md#operating-systems) Aby uzyskać listę obsługiwanych systemów operacyjnych AMD64.
 
 > [!NOTE]
 > Są pakiety w repozytoriach oprogramowania systemu Linux, z zastrzeżeniem postanowień licencyjnych, znajduje się w każdym pakiecie (/ usr/udostępnianie/docs/*nazwy pakietu*). Przeczytaj postanowienia licencyjne przed przy użyciu pakietu. Twoja instalacja i używanie pakietu stanowi zaakceptowania przez korzystającego tych warunków. Jeśli nie zgadzasz się z warunkami licencji, nie należy używać pakietu.

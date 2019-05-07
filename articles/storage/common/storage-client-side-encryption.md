@@ -7,18 +7,19 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: tamram
+ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: c8f9b17bf5b572128348b22de62566ba06d5d766
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d8ef24bfec541ec65c74f77a90aa9476a8b298b2
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57992406"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153279"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Szyfrowanie po stronie klienta i usługi Azure Key Vault dla usługi Microsoft Azure Storage
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 [Biblioteki klienta usługi Azure Storage dla pakietu Nuget programu .NET](https://www.nuget.org/packages/WindowsAzure.Storage) obsługuje szyfrowanie danych w aplikacjach klienckich przed przekazaniem do usługi Azure Storage oraz odszyfrowywanie danych pobraniem do klienta. Biblioteka obsługuje również integrację z usługą [usługi Azure Key Vault](https://azure.microsoft.com/services/key-vault/) do zarządzania kluczami konta magazynu.
 
 Aby uzyskać samouczek krok po kroku, który prowadzi przez proces szyfrowania obiektów blob za pomocą szyfrowania po stronie klienta i usługi Azure Key Vault, zobacz [szyfrowanie i odszyfrowywanie obiektów blob w Microsoft Azure Storage przy użyciu usługi Azure Key Vault](../blobs/storage-encrypt-decrypt-blobs-key-vault.md).

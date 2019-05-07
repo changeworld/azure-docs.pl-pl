@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 03/11/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 9a54cad9212bdb514f7742121909221863ba75e3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: db2b543fa8e5429cc8d50d7789b03239173f563d
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64713523"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154531"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Szybki start: Wdrażanie aplikacji w portalu usługi LUIS
 
@@ -73,11 +73,11 @@ Za każdym razem, gdy tworzysz nowy zasób dla usługi LUIS, musisz przypisać z
 
 ## <a name="train-and-publish-the-app"></a>Uczenie i publikowanie aplikacji
 
-Uczenie aplikacji, gdy wszystko będzie gotowe ją przetestować. Publikowanie aplikacji można obecnie uczonego wersji była dostępna dla aplikacji klienckich ze środowiska wykonawczego endpoint prognoz.
+Uczenie aplikacji, gdy wszystko będzie gotowe ją przetestować. Publikowanie aplikacji można obecnie uczonego wersji była dostępna dla aplikacji klienckich ze środowiska wykonawczego endpoint prognoz zapytania.
 
 1. W przypadku aplikacji nieprzeszkolonych wybierz **Train** z menu w prawym górnym rogu.
 
-1. Wybierz **Publikuj** z menu. Zaakceptuj domyślne ustawienia środowiska, a następnie wybierz pozycję **Publikuj**.
+1. Wybierz **Publikuj** z górnego menu. Zaakceptuj domyślne ustawienia środowiska, a następnie wybierz pozycję **Publikuj**.
 
 1. W przypadku powodzenia zielony pasek powiadomień zostanie wyświetlone w górnej części okna przeglądarki, zaznacz **można znaleźć na liście punktów końcowych**.
 

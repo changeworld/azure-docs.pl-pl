@@ -10,16 +10,28 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: gracez
-ms.openlocfilehash: 33a03b24de56ab1090cc8e07c9619eda17f33e27
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9147f02f6ef2e2f3f776e67aa1f103e95ef132aa
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64711889"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153035"
 ---
 # <a name="release-notes-of-cognitive-services-speech-devices-sdk"></a>Informacje o wersji programu Cognitive Services zestawu Speech Devices SDK
 
 Następujące sekcje Lista zmian w najnowszych wersjach.
+
+## <a name="cognitive-services-speech-devices-sdk-150-2019-may-release"></a>Usługi cognitive Services Speech Devices SDK 1.5.0: Wersja maja 2019 r
+
+*   Zestawu Speech Devices SDK jest teraz ogólnie i nie jest już warunkowej wersji zapoznawczej.
+*   Zaktualizowano [zestaw SDK rozpoznawania mowy](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) składnik do wersji 1.5.0. Aby uzyskać więcej informacji, zobacz jego [informacje o wersji](https://aka.ms/csspeech/whatsnew).
+*   Nową technologię word wznawiania oferuje jakości znaczne ulepszenia, zobacz fundamentalne zmiany.
+*   Nowy potok przetwarzania audio rozpoznawanie daleko pola.
+
+**Fundamentalne zmiany**
+
+*   Ze względu na nową technologię word wznawiania wszystkie wyrazy wznawiania musi być ponownie utworzone w portalu programu word ulepszone wznawiania. Aby całkowicie usunąć stare słowa kluczowe z urządzenia odinstalować stare aplikację.
+    - adb uninstall com.microsoft.coginitiveservices.speech.samples.sdsdkstarterapp
 
 ## <a name="cognitive-services-speech-devices-sdk-140-2019-apr-release"></a>Usługi cognitive Services Speech Devices SDK 1.4.0: 2019 kwi wydania 
 
