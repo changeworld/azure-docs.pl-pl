@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 8eaca83b7ea89737a63fe56a18505c8df7e93fdc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 215ae29c571e56b7e3af589149123083223023c7
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60889390"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153455"
 ---
 # <a name="work-with-databases-containers-and-items"></a>Praca z bazami danych, kontenerami i elementami
 
@@ -77,7 +77,7 @@ Kontener usługi Azure Cosmos ma zestaw właściwości zdefiniowane przez system
 
 | **Właściwości zdefiniowane przez system** | **System wygenerowany lub konfigurowanych przez użytkownika** | **Cel** | **INTERFEJS API SQL** | **Interfejs API rozwiązania Cassandra** | **Interfejs API usługi Azure Cosmos DB, bazy danych mongodb** | **Interfejs API języka gremlin** | **Interfejs API tabel** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|_rid | Generowane przez system | Unikatowy identyfikator kontenera | Yes | Nie | Nie | Nie | Nie |
+|_identyfikator | Generowane przez system | Unikatowy identyfikator kontenera | Yes | Nie | Nie | Nie | Nie |
 |_etag | Generowane przez system | Tag jednostki używane do mechanizmu kontroli optymistycznej współbieżności | Yes | Nie | Nie | Nie | Nie |
 |_ts | Generowane przez system | Znacznik czasu ostatniej aktualizacji kontenera | Yes | Nie | Nie | Nie | Nie |
 |_self | Generowane przez system | Mogą być adresowane identyfikator URI kontenera | Yes | Nie | Nie | Nie | Nie |

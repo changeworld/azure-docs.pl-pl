@@ -3,8 +3,7 @@ title: Przepływność sieci maszyny wirtualnej platformy Azure | Dokumentacja f
 description: Więcej informacji o przepływności sieci maszyny wirtualnej platformy Azure.
 services: virtual-network
 documentationcenter: na
-author: KumudD
-manager: twooley
+author: steveesp
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/13/2017
-ms.author: kumud
-ms.openlocfilehash: 182b3b7dad828e67d006391e00986406729c959d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 4/26/2019
+ms.author: kumud,steveesp, mareat
+ms.openlocfilehash: 9d74e53c754367ecfa63642514db93354fcadf25
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64689250"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153734"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>Przepustowość sieci maszyny wirtualnej
 
@@ -43,6 +42,30 @@ Limit przepływności stosuje się do maszyny wirtualnej. Przepływność jest z
 - **Przyspieszona sieć**: Chociaż ta funkcja może być pomocny w osiągnięcia limitu opublikowane, nie powoduje zmiany limitu.
 - **Miejsce docelowe ruchu**: Wszystkie miejsca docelowe są wliczane do limitu ruchu wychodzącego.
 - **Protokół**: Cały ruch wychodzący za pośrednictwem wszystkich protokołów, liczy się do limitu.
+
+## <a name="network-flow-limits"></a>Limity usługi Flow w sieci
+
+Oprócz przepustowość liczba połączeń sieciowych, które są obecne na maszynie Wirtualnej w danym momencie może wpłynąć na wydajność sieci. Usługa Azure stack sieci zachowuje stan dla każdego kierunku połączenia TCP/UDP w strukturach danych o nazwie "przepływy". Typowe połączenie TCP/UDP będzie miał 2 przepływy utworzone, jeden dla ruchu przychodzącego i inny wpis dla kierunku wychodzącego. 
+
+Transfer danych między punktami końcowymi wymaga tworzenia kilku przepływów, oprócz tych, które transferu danych. Niektóre przykłady są przepływy utworzone dla rozpoznawania nazw DNS i przepływów utworzonych dla sondy kondycji modułu równoważenia obciążenia. Należy pamiętać, że sieciowych urządzeń wirtualnych (urządzeń WUS), takich jak bram, serwery proxy i zapory, zobaczą również przepływy tworzone dla połączeń została przerwana na urządzenie i zainicjowany przez urządzenie. 
+
+![Liczba przepływów dla konwersacji TCP za pośrednictwem urządzenia przekazywania](media/virtual-machine-network-throughput/flow-count-through-network-virtual-appliance.png)
+
+## <a name="flow-limits-and-recommendations"></a>Limity przepływu i zalecenia
+
+Dziś Azure stosu sieciowego obsługuje przepływów sieci Całkowita 250 tys dobrą wydajność w przypadku maszyn wirtualnych o rozmiarze większym niż 8 rdzeni procesora CPU i 100 KB łączna liczba przepływów z dobrą wydajność w przypadku maszyn wirtualnych z mniej niż 8 rdzeni procesora CPU. Ostatnie tej sieci limit spadku wydajności bez problemu zmieniała dla przydzielenie dodatkowych przepływów maksymalnie stały limit 1 mln łączna liczba przepływów, K 500 dla ruchu przychodzącego i 500 KB ruchu wychodzącego, po których przydzielenie dodatkowych przepływów są porzucane.
+
+||Maszyny wirtualne za pomocą < 8 rdzeni procesora CPU|Maszyny wirtualne z 8 + liczba rdzeni procesora CPU|
+|---|---|---|
+|<b>Dobra wydajność</b>|Przepływy 100 KB |Przepływy 250 tys.|
+|<b>Pogorszenie wydajności</b>|Powyżej 100 tysięcy przepływów|Ponad 250 KB przepływów|
+|<b>Limit przepływu</b>|1 mln przepływów|1 mln przepływów|
+
+Metryki są dostępne w [usługi Azure Monitor](../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines) śledzić liczbę przepływów sieci i szybkość Tworzenie przepływu na wystąpień maszyny Wirtualnej lub zestawu skalowania maszyn wirtualnych.
+
+![azure-monitor-flow-metrics.png](media/virtual-machine-network-throughput/azure-monitor-flow-metrics.png)
+
+Stawki za ustanawianie połączenia może również wpływać na wydajność sieci jako połączenie ustanawianie udziałów procesora CPU za pomocą procedury przetwarzania pakietów. Firma Microsoft zaleca benchmark obciążeń pod kątem wzorców oczekiwanego natężenia ruchu i skalowania obciążeń odpowiednio do potrzeb w zakresie wydajności. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/12/2019
+ms.date: 04/29/2019
 ms.author: magoedte
-ms.openlocfilehash: c7031e54c354392379fee83dbf2a777ba726c5e7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 34f02b1d72f08ef5da6b8a5740243b6e557bfb4a
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60777381"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65138139"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Łączenie komputerów Windows z usługą Azure Monitor
 
@@ -31,16 +31,18 @@ Agenta można zainstalować przy użyciu jednej z następujących metod. Większ
 * Instalacja ręczna. Instalator jest ręcznie uruchomić na komputerze, korzystając z Kreatora instalacji z wiersza polecenia lub wdrażany za pomocą istniejącego narzędzia do dystrybucji oprogramowania.
 * Usługa Azure Automation Desired State Configuration (DSC). Korzystanie z DSC w usłudze Azure Automation za pomocą skryptu programu Windows komputerów już wdrożony w środowisku.  
 * Skrypt programu PowerShell.
-* Szablon usługi Resource Manager dla maszyn wirtualnych z systemem Windows w środowisku lokalnym w usłudze Azure Stack.  
+* Szablon usługi Resource Manager dla maszyn wirtualnych z systemem Windows w środowisku lokalnym w usłudze Azure Stack. 
 
 >[!NOTE]
 >Usługa Azure Security Center (ASC) jest zależna od programu Microsoft Monitoring Agent (nazywane również agenta Log Analytics Windows) i instalowanych i konfigurowanych go do raportu do obszaru roboczego usługi Log Analytics podczas jego wdrażania. ASC obejmuje opcji automatycznego inicjowania obsługi administracyjnej, co umożliwia automatyczną instalację agenta Log Analytics Windows na wszystkich maszynach wirtualnych w ramach subskrypcji i konfiguruje go w celu raportowania do określonego obszaru roboczego. Aby uzyskać więcej informacji na temat tej opcji, zobacz [Włączanie automatycznej aprowizacji agenta usługi Log Analytics](../../security-center/security-center-enable-data-collection.md#enable-automatic-provisioning-of-microsoft-monitoring-agent-).
 >
 
+Jeśli potrzebujesz skonfigurować agenta, aby zgłosić się do więcej niż jednego obszaru roboczego, to nie można wykonać podczas początkowej konfiguracji, tylko po tym dniu poprzez aktualizację ustawień z Panelu sterowania lub programu PowerShell, zgodnie z opisem w [Dodawanie lub usuwanie obszaru roboczego](agent-manage.md#adding-or-removing-a-workspace).  
+
 Aby poznać obsługiwaną konfigurację, przejrzyj tematy dotyczące [obsługiwanych systemów operacyjnych Windows](log-analytics-agent.md#supported-windows-operating-systems) oraz [konfiguracji zapory sieciowej](log-analytics-agent.md#network-firewall-requirements).
 
 ## <a name="obtain-workspace-id-and-key"></a>Uzyskiwanie identyfikatora i klucza obszaru roboczego
-Przed zainstalowaniem agenta usługi Log Analytics dla Windows, potrzebne są identyfikator obszaru roboczego i klucz obszaru roboczego usługi Log Analytics.  Te informacje są wymagane podczas instalacji z poszczególnych metod instalacji w celu poprawnego skonfigurowania agenta i upewnij się, że może się skutecznie komunikować z usługi Azure Monitor na platformie Azure komercyjnych i w chmurze dla instytucji rządowych USA.  
+Przed zainstalowaniem agenta usługi Log Analytics dla Windows, potrzebne są identyfikator obszaru roboczego i klucz obszaru roboczego usługi Log Analytics.  Te informacje są wymagane podczas instalacji z poszczególnych metod instalacji w celu poprawnego skonfigurowania agenta i upewnij się, że może się skutecznie komunikować z usługi Azure Monitor na platformie Azure komercyjnych i w chmurze dla instytucji rządowych USA. 
 
 1. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi**. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz pozycję **Log Analytics**.
 2. Na liście obszarów roboczych usługi Log Analytics wybierz obszar roboczy, którego zamierzasz na skonfigurowanie agenta raportowania do.

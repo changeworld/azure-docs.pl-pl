@@ -8,13 +8,13 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
-ms.date: 06/22/2018
-ms.openlocfilehash: 76783ffd91a8ad17fca912ac9c3a66a5f0f15821
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/06/2019
+ms.openlocfilehash: 503bd6cfee1c19d2342ec9f535b3945178ab3ea0
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64691927"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65136597"
 ---
 # <a name="reference-for-trigger-and-action-types-in-workflow-definition-language-for-azure-logic-apps"></a>Dokumentacja dla typów akcji i wyzwalaczy w język definicji przepływów pracy dla usługi Azure Logic Apps
 
@@ -804,6 +804,8 @@ Poniżej przedstawiono niektóre typy powszechnie używane akcji:
 
   * [**Odpowiedź** ](#response-action) reagowania na żądania
 
+  * [**Wykonywanie kodu JavaScript** ](#run-javascript-code) fragmenty kodu na uruchamianie kodu języka JavaScript
+
   * [**Funkcja** ](#function-action) wywoływania usługi Azure Functions
 
   * Dane operacji akcje, takie jak [ **Dołącz**](#join-action), [ **Compose**](#compose-action), [ **tabeli** ](#table-action), [ **Wybierz**](#select-action)i innym osobom, które tworzą lub przekształcać dane z różnych danych wejściowych
@@ -821,6 +823,7 @@ Poniżej przedstawiono niektóre typy powszechnie używane akcji:
 | Typ akcji | Opis | 
 |-------------|-------------| 
 | [**Compose**](#compose-action) | Tworzy pojedynczy dane wyjściowe na podstawie danych wejściowych, które mogą mieć różnych typów. | 
+| [**Wykonywanie kodu JavaScript**](#run-javascript-code) | Uruchom fragmenty kodu JavaScript, które mieszczą się w określonych kryteriów. Wymagania dotyczące kodu i uzyskać więcej informacji, zobacz [Dodaj i fragmenty kodu uruchamiania przy użyciu kodu wbudowanego](../logic-apps/logic-apps-add-run-inline-code.md). |
 | [**— Funkcja**](#function-action) | Wywołuje funkcję platformy Azure. | 
 | [**HTTP**](#http-action) | Wywołuje punkt końcowy HTTP. | 
 | [**Join**](#join-action) | Tworzy ciąg ze wszystkich elementów w tablicy, a następnie dzieli te elementy ze znakiem określonego ogranicznika. | 
@@ -1047,6 +1050,81 @@ Ta definicja akcji scala zmiennej ciągu, który zawiera `abcdefg` i zmienna typ
 Oto dane wyjściowe, które ta akcja tworzy:
 
 `"abcdefg1234"`
+
+<a name="run-javascript-code"></a>
+
+### <a name="execute-javascript-code-action"></a>Wykonanie akcji kodu JavaScript
+
+Ta akcja uruchamia fragment kodu języka JavaScript i zwraca wyniki za pośrednictwem `Result` token, który może odwoływać się do kolejnych akcjach.
+
+```json
+"Execute_JavaScript_Code": {
+   "type": "JavaScriptCode",
+   "inputs": {
+      "code": "<JavaScript-code-snippet>",
+      "explicitDependencies": {
+         "actions": [ <previous-actions> ],
+         "includeTrigger": true
+      }
+   },
+   "runAfter": {}
+}
+```
+
+*Wymagane*
+
+| Wartość | Type | Opis |
+|-------|------|-------------|
+| <*JavaScript-code-snippet*> | Różna | Kod JavaScript, który chcesz uruchomić. Wymagania dotyczące kodu i uzyskać więcej informacji, zobacz [Dodaj i fragmenty kodu uruchamiania przy użyciu kodu wbudowanego](../logic-apps/logic-apps-add-run-inline-code.md). <p>W `code` atrybutu, wstawki kodu można użyć tylko do odczytu `workflowContext` obiektu jako dane wejściowe. Ten obiekt zawiera właściwości podrzędnych, które zapewniają dostępu kodu do wyników z poprzednich akcji w przepływie pracy i wyzwalaczy. Aby uzyskać więcej informacji na temat `workflowContext` obiektu, zobacz [odwoływać się do wyników akcji i wyzwalaczy w kodzie](../logic-apps/logic-apps-add-run-inline-code.md#workflowcontext). |
+||||
+
+*Wymagane w niektórych przypadkach*
+
+`explicitDependencies` Atrybut określa, że chcesz jawnie dołączyć wyniki z wyzwalaczem i/lub poprzedniej akcji jako zależności dla fragmentu kodu. Aby uzyskać więcej informacji na temat dodawania tych zależności, zobacz [dodać parametry dla kodu wbudowanego](../logic-apps/logic-apps-add-run-inline-code.md#add-parameters). 
+
+Aby uzyskać `includeTrigger` atrybut, można określić `true` lub `false` wartości.
+
+| Wartość | Type | Opis |
+|-------|------|-------------|
+| <*previous-actions*> | Tablica ciągów | Tablica przy użyciu nazwy określonej akcji. Użyj nazwy akcji, które pojawiają się w swojej definicji przepływu pracy, gdzie nazwy akcji, użyj znaków podkreślenia (_), nie miejsca do magazynowania (""). |
+||||
+
+*Przykład 1*
+
+Ta akcja uruchamia kod, który pobiera nazwę aplikacji logiki i zwraca tekst "Hello world < logic-app-name >" w wyniku. W tym przykładzie kod odwołuje się nazwa przepływu pracy, uzyskując dostęp do `workflowContext.workflow.name` właściwości za pomocą tylko do odczytu `workflowContext` obiektu. Aby uzyskać więcej informacji o korzystaniu z `workflowContext` obiektu, zobacz [odwoływać się do wyników akcji i wyzwalaczy w kodzie](../logic-apps/logic-apps-add-run-inline-code.md#workflowcontext).
+
+```json
+"Execute_JavaScript_Code": {
+   "type": "JavaScriptCode",
+   "inputs": {
+      "code": "var text = \"Hello world from \" + workflowContext.workflow.name;\r\n\r\nreturn text;"
+   },
+   "runAfter": {}
+}
+```
+
+*Przykład 2*
+
+Ta akcja uruchamia kod w aplikacji logiki, która powoduje wyzwolenie, gdy nowa wiadomość e-mail pojawi się na koncie usługi Office 365 Outlook. Aplikacja logiki używa również zatwierdzenia akcji Wyślij wiadomość e-mail, który przesyła zawartość w odebranej wiadomości e-mail, wraz z żądaniem zatwierdzenia. 
+
+Kod pobiera adresy e-mail z tego wyzwalacza `Body` właściwości i zwraca te adresy e-mail, wraz z `SelectedOption` wartość właściwości z akcji zatwierdzenia. Akcja jawnie zawiera akcji Wyślij wiadomość e-mail zatwierdzenia jako zależności w `explicitDependencies`  >  `actions` atrybutu.
+
+```json
+"Execute_JavaScript_Code": {
+   "type": "JavaScriptCode",
+   "inputs": {
+      "code": "var re = /(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))/g;\r\n\r\nvar email = workflowContext.trigger.outputs.body.Body;\r\n\r\nvar reply = workflowContext.actions.Send_approval_email_.outputs.body.SelectedOption;\r\n\r\nreturn email.match(re) + \" - \" + reply;\r\n;",
+      "explicitDependencies": {
+         "actions": [
+            "Send_approval_email_"
+         ]
+      }
+   },
+   "runAfter": {}
+}
+```
+
+
 
 <a name="function-action"></a>
 
@@ -2652,7 +2730,7 @@ W tym przykładzie definicję akcji HTTP `authentication` sekcja określa `Clien
 
 Dla [uwierzytelniania OAuth usługi AD Azure](../active-directory/develop/authentication-scenarios.md), definicji wyzwalacza lub akcji mogą obejmować `authentication` obiekt JSON, który zawiera właściwości określone w poniższej tabeli. Aby uzyskać dostęp do wartości parametrów w czasie wykonywania, można użyć `@parameters('parameterName')` wyrażenie, które są dostarczane przez [język definicji przepływów pracy](https://aka.ms/logicappsdocs).
 
-| Właściwość | Wymagany | Wartość | Opis |
+| Właściwość | Wymagany | Value | Opis |
 |----------|----------|-------|-------------|
 | **type** | Yes | `ActiveDirectoryOAuth` | Typ uwierzytelniania do użycia, czyli "ActiveDirectoryOAuth" dla usługi Azure AD OAuth |
 | **Urząd** | Nie | <*URL-for-authority-token-issuer*> | Adres URL urząd certyfikacji który zawiera token uwierzytelniania |

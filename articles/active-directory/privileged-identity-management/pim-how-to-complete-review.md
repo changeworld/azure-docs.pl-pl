@@ -1,6 +1,6 @@
 ---
-title: Kończenie przeglądu dostępu dla ról usługi Azure AD w usłudze PIM — usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak kończenie przeglądu dostępu dla ról usługi Azure AD w usłudze Azure AD Privileged Identity Management (PIM) i wyświetlić wyniki
+title: Kończenie przeglądu dostępu ról usługi Azure AD PIM — usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak kończenie przeglądu dostępu ról usługi Azure AD w usłudze Azure AD Privileged Identity Management (PIM) i wyświetlić wyniki
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,14 +14,14 @@ ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed53c8bb3cb735822fc40aab86ca40bef7b9607a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: decba8f46432891a44a2b231890da4214bd5b1bb
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60288314"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65140992"
 ---
-# <a name="complete-an-access-review-for-azure-ad-roles-in-pim"></a>Kończenie przeglądu dostępu dla ról usługi Azure AD w usłudze PIM
+# <a name="complete-an-access-review-of-azure-ad-roles-in-pim"></a>Kończenie przeglądu dostępu ról usługi Azure AD w usłudze PIM
 Administratorzy ról uprzywilejowanych mogą raz Sprawdź dostęp uprzywilejowany [przeglądu dostępu została uruchomiona](pim-how-to-start-security-review.md). Usługa Azure Active Directory (Azure AD) Privileged Identity Management (PIM) automatycznie wyśle wiadomość e-mail monitowaniu użytkowników, aby zapoznać się z ich dostęp. Jeśli użytkownik nie pobrały wiadomość e-mail, możesz wysłać im instrukcje [jak przeprowadzić przegląd dostępu](pim-how-to-perform-security-review.md).
 
 Po zakończeniu okresu przeglądu dostępu lub wszystkich użytkowników została zakończona w ich własnym Przejrzyj, wykonaj kroki opisane w tym artykule, aby zarządzać przeglądu i wyświetlić wyniki.

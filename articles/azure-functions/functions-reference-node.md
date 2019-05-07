@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 02/24/2019
 ms.author: glenga
-ms.openlocfilehash: 37d00abbbf726dc1b92bdcc5f39b16301de9b93d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2eea1a1d30558765a2f8320b0b23efdbe3368807
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64697839"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65140957"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Przewodnik dla deweloperów w usłudze Azure Functions JavaScript
 
@@ -204,7 +204,9 @@ module.exports = function(ctx) {
 context.bindings
 ```
 
-Zwraca obiekt o nazwie, która zawiera wszystkie dane wejściowe i wyjściowe. Na przykład, następujące definicje powiązania w swojej function.json pozwalają uzyskać dostęp do zawartości kolejki z `context.bindings.myInput` i przypisz dane wyjściowe do kolejki za pomocą `context.bindings.myOutput`.
+Zwraca obiekt o nazwie, który jest używany do odczytu lub przypisać powiązanie danych. Dane wejściowe i wyzwalacza wiązania danych może zostać oceniony przez odczytywanie właściwości na `context.bindings`. Dane wyjściowe powiązanie danych może być przypisana przez dodawanie danych do `context.bindings`
+
+Na przykład, następujące definicje powiązania w swojej function.json pozwalają uzyskać dostęp do zawartości kolejki z `context.bindings.myInput` i przypisz dane wyjściowe do kolejki za pomocą `context.bindings.myOutput`.
 
 ```json
 {
@@ -273,10 +275,10 @@ Pozwala na zapis w dziennikach funkcji przesyłania strumieniowego na domyślny 
 
 | Metoda                 | Opis                                |
 | ---------------------- | ------------------------------------------ |
-| **error(_message_)**   | Zapisuje poziom błędów rejestrowania lub niższą.   |
-| **warn(_message_)**    | Zapisuje poziom ostrzeżeń rejestrowania lub niższą. |
+| **Błąd (_komunikat_)**   | Zapisuje poziom błędów rejestrowania lub niższą.   |
+| **Ostrzeżenie (_komunikat_)**    | Zapisuje poziom ostrzeżeń rejestrowania lub niższą. |
 | **info(_message_)**    | Zapisuje informacje o poziomie rejestrowania lub niższą.    |
-| **verbose(_message_)** | Zapisuje pełne rejestrowanie na poziomie.           |
+| **pełne (_komunikat_)** | Zapisuje pełne rejestrowanie na poziomie.           |
 
 Poniższy przykład zapisuje dziennik na poziom śledzenia Ostrzeżenie:
 
@@ -290,7 +292,7 @@ Odczyt [monitorowania usługi Azure Functions](functions-monitoring.md) Aby dowi
 
 ## <a name="writing-trace-output-to-the-console"></a>Zapisywanie danych wyjściowych śledzenia w konsoli programu 
 
-W przypadku funkcji używasz `context.log` metody można zapisywać dane wyjściowe śledzenia do konsoli. W v2.x funkcji śledzenia danych wyjściowych za pomocą `console.log` są przechwytywane na poziomie aplikacji funkcji. Oznacza to, że dane wyjściowe z `console.log` nie są związane z wywołania określonych funkcji i dlatego nie są wyświetlane w dziennikach określonych funkcji. Jednak są propagowane do usługi Application Insights. W funkcji v1.x, nie można użyć `console.log` do zapisu do konsoli.
+W przypadku funkcji używasz `context.log` metody można zapisywać dane wyjściowe śledzenia do konsoli. W v2.x funkcji śledzenia danych wyjściowych za pomocą `console.log` są przechwytywane na poziomie aplikacji funkcji. Oznacza to, że dane wyjściowe z `console.log` nie są związane z wywołania określonych funkcji i nie są wyświetlane w dziennikach określonych funkcji. Jednak są propagowane do usługi Application Insights. W funkcji v1.x, nie można użyć `console.log` do zapisu do konsoli.
 
 Gdy wywołujesz `context.log()`, wiadomości są zapisywane do konsoli na domyślny poziom śledzenia, który jest _informacje_ poziom śledzenia. Poniższy kod zapisuje do konsoli, gdy poziom śledzenia informacje:
 
@@ -352,10 +354,10 @@ HTTP i wyzwalaczy elementu webhook protokołu HTTP wyjściowe i powiązania repr
 | ------------- | -------------------------------------------------------------- |
 | _body_        | Obiekt, który zawiera treść żądania.               |
 | _headers_     | Obiekt, który zawiera nagłówki żądania.                   |
-| _method_      | Metoda HTTP żądania.                                |
+| _— Metoda_      | Metoda HTTP żądania.                                |
 | _originalUrl_ | Adres URL żądania.                                        |
 | _params_      | Obiekt zawierający parametry routingu żądania. |
-| _query_       | Obiekt zawierający parametry zapytania.                  |
+| _Zapytanie_       | Obiekt zawierający parametry zapytania.                  |
 | _rawBody_     | Treść wiadomości w formie ciągu.                           |
 
 

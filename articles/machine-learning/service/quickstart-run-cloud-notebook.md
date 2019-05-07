@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3d4127226037bf28ba677a49f6444ca987118cb9
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: ecb97860e70141a744833aa9b9a4fcea3f3688f0
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023922"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149825"
 ---
 # <a name="quickstart-use-a-cloud-based-notebook-server-to-get-started-with-azure-machine-learning"></a>Szybki start: Rozpoczynanie pracy z usługą Azure Machine Learning przy użyciu serwer opartych na chmurze notesu
 
@@ -25,11 +25,11 @@ Ten przewodnik Szybki Start przedstawiono sposób tworzenia zasobu chmury w obsz
  
 W tym przewodniku Szybki start wykonasz następujące czynności:
 
-* Utwórz nowy serwer opartych na chmurze Notes w obszarze roboczym
-* Uruchom interfejs sieci web programu Jupyter
+* Utwórz nowy serwer opartych na chmurze Notes w obszarze roboczym.
+* Uruchom interfejs sieci web programu Jupyter.
 * Otwórz notes, który zawiera kod, aby oszacować pi i rejestruje błędy w każdej iteracji.
 * Uruchamianie notesu.
-* Wyświetl wartości błędów rejestrowane w obszarze roboczym.  W tym przykładzie pokazano, jak obszar roboczy może pomóc w śledzeniu informacji wygenerowanych przez skrypt. 
+* Wyświetl wartości błędów rejestrowane w obszarze roboczym. W tym przykładzie pokazano, jak obszar roboczy może pomóc w śledzeniu informacji wygenerowanych przez skrypt. 
 
 Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](https://aka.ms/AMLFree) już dziś.
 
@@ -49,13 +49,15 @@ Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto.
 
      ![Wybierz nową maszynę Wirtualną](./media/quickstart-run-cloud-notebook/add-workstation.png)
 
-1. Podaj nazwę dla maszyny Wirtualnej. Następnie wybierz przycisk **Utwórz**. 
+1. Podaj nazwę dla maszyny Wirtualnej. Następnie wybierz przycisk **Utwórz**.
+
+    > [!NOTE]
+    > Nazwę notesu maszyny Wirtualnej musi być pomiędzy 2 do 16 znaków. Prawidłowe znaki to litery, cyfry, a znak.  Nazwa również musi być unikatowa w ramach subskrypcji platformy Azure.
 
     ![Utwórz nową maszynę Wirtualną](media/quickstart-run-cloud-notebook/create-new-workstation.png)
 
-1. Odczekaj około 4 – 5 minut, a następnie wybierz **Odśwież**.  Spróbuj odświeżyć co 30 sekund lub tak, aż stan zmieni się **systemem**.
+1. Odczekaj około 4 – 5 minut, aż stan zmieni się na **systemem**.
 
-    ![Odświeżanie](media/quickstart-run-cloud-notebook/refresh.png)
 
 ## <a name="launch-jupyter-web-interface"></a>Uruchom interfejs sieci web programu Jupyter
 
@@ -67,7 +69,11 @@ Po uruchomieniu maszyny Wirtualnej, użyj **maszyn wirtualnych z notesu** sekcji
 
     Link uruchamia serwer notesu i otwiera stronę notesu Jupyter w nowej karcie przeglądarki.  To łącze będzie działać tylko przez osobę, która tworzy maszynę Wirtualną.
 
-1. Na stronie internetowej notesu programu Jupyter, wybierz **samples/quickstart** folderze, aby zobaczyć notesu Szybki Start.
+1. Na stronie internetowej notesu programu Jupyter najważniejsze nazwa_folderu jest swoją nazwę użytkownika.  Wybierz ten folder.
+
+1. Nazwa_folderu przykładów zawiera numer wersji, na przykład **1.0.33.1 przykłady**.  Wybierz folder przykładów.
+
+1. Wybierz **Szybki Start** notesu.
 
 ## <a name="run-the-notebook"></a>Uruchamianie notesu
 
@@ -75,15 +81,7 @@ Uruchamianie notesu, szacuje pi, która rejestruje błąd w Twoim obszarze roboc
 
 1. Wybierz plik **01.run experiment.ipynb**, aby otworzyć notes.
 
-1. Może zostać wyświetlony komunikat, który nie został ustawiony jądra.  Wybierz **3.6 języka Python — Azure ml**, a następnie wybierz **Ustaw jądra**.
-
-   ![Ustaw jądra](./media/quickstart-run-cloud-notebook/set-kernel.png)
-
-1. W obszarze stanu jest widoczna informacja o tym, że musisz zaczekać na uruchomienie jądra. Komunikat zniknie, gdy jądro będzie gotowe.
-
-    ![Oczekiwanie na uruchomienie jądra](./media/quickstart-run-cloud-notebook/wait-for-kernel.png)
-
-1.  Kliknij przycisk do pierwszej komórki kodu, a następnie wybierz pozycję **Uruchom**.
+1. Kliknij przycisk do pierwszej komórki kodu, a następnie wybierz pozycję **Uruchom**.
 
     > [!NOTE]
     > Komórki kodu mają nawiasy przed nimi. Jeśli nawiasy kwadratowe są puste (__[__), kod nie został uruchomiony. Gdy kod jest uruchomiona, zobaczysz znak gwiazdki (__[*]__). Po zakończeniu kod, liczbą **[1]** pojawia się.  Liczba informuje kolejność, w którym uruchomiono komórki.
@@ -94,16 +92,15 @@ Uruchamianie notesu, szacuje pi, która rejestruje błąd w Twoim obszarze roboc
 
 1. Uruchom drugie komórkę kodu. Jeśli widzisz instrukcjami w celu uwierzytelnienia, skopiuj kod i skorzystaj z linku do logowania. Po zalogowaniu przeglądarce zapamięta tego ustawienia.  
 
-    > [!TIP]
-    > Pamiętaj, aby nie Kopiuj miejsca po kodzie.  
-
     ![Uwierzytelnianie](media/quickstart-run-cloud-notebook/authenticate.png)
 
-1. Gdy wszystko będzie gotowe, liczby komórek __[2]__ pojawia się.  Gdyby trzeba było Zaloguj się, zobaczysz komunikat o stanie pomyślnym uwierzytelnieniu.   Jeśli nie masz do logowania, nie zobaczysz żadnych danych wyjściowych dla tej komórki, tylko numer pojawi się pomyślnie uruchomiono komórki.
+1. Po zakończeniu, liczby komórek __[2]__ pojawia się.  Gdyby trzeba było Zaloguj się, zobaczysz komunikat o stanie pomyślnym uwierzytelnieniu.   Jeśli nie masz do logowania, nie zobaczysz żadnych danych wyjściowych dla tej komórki, tylko numer pojawi się pomyślnie uruchomiono komórki.
 
     ![Komunikat o powodzeniu](media/quickstart-run-cloud-notebook/success.png)
 
-1. Uruchom pozostałą część komórki kodu.  Ponieważ każda komórka na zakończenie działania zostaną wyświetlone jego numer komórki, które są wyświetlane. Ostatnią komórkę wyświetla żadnych danych wyjściowych.  W największych komórce kodu, zobacz `run.log` używany w kilku miejscach. Każdy `run.log` dodaje wartość do swojego obszaru roboczego.
+1. Uruchom pozostałą część komórki kodu.  Ponieważ każda komórka na zakończenie działania zostaną wyświetlone jego numer komórki, które są wyświetlane. Ostatnią komórkę wyświetla żadnych danych wyjściowych.  
+
+    W największych komórce kodu, zobacz `run.log` używany w kilku miejscach. Każdy `run.log` dodaje wartość do swojego obszaru roboczego.
 
 
 ## <a name="view-logged-values"></a>Wyświetlanie zarejestrowanych wartości
@@ -146,11 +143,13 @@ Możesz też zachować grupę zasobów i usunąć jeden obszar roboczy. Wyświet
 
 W tym przewodniku Szybki Start możesz wykonać te zadania:
 
-* Tworzenie notesu maszyny Wirtualnej
-* Uruchom serwer notesu Jupyter w notesie maszyny Wirtualnej
+* Utwórz notes maszyny Wirtualnej.
+* Uruchom interfejs sieci web programu Jupyter.
 * Otwórz notes, który zawiera kod, aby oszacować pi i rejestruje błędy w każdej iteracji.
 * Uruchamianie notesu.
 * Wyświetl wartości błędów rejestrowane w obszarze roboczym.  W tym przykładzie pokazano, jak obszar roboczy może pomóc w śledzeniu informacji wygenerowanych przez skrypt. 
+
+Na stronie sieci Web notesu programu Jupyter przeglądać inne notesów w folderze samples, aby dowiedzieć się więcej na temat usługi Azure Machine Learning.
 
 Aby poznać szczegółowo środowisko przepływu pracy, wykonaj czynności opisane w samouczku dotyczącym trenowania i wdrażania modelu w usłudze Machine Learning:  
 

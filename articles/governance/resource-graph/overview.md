@@ -3,35 +3,35 @@ title: Omówienie usługi Azure Resource Graph
 description: Dowiedz się, jak usługa wykres zasobów platformy Azure umożliwia złożonych zapytań zasobów na dużą skalę.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/30/2019
+ms.date: 05/06/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: d76a5b32403bd14f18181580f891925130808922
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 45d5cf7c4235d10e136cc96364d52aa4319bbf79
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60622800"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65137777"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Omówienie usługi Azure Graph zasobów
 
-Azure Resource Graph to usługa platformy Azure, której celem jest rozszerzenie usługi Azure Resource Management, zapewniając wydajną i działającą eksplorację zasobów z możliwością wysyłania zapytań na dużą skalę we wszystkich subskrypcjach i grupach zarządzania, aby można było wydajnie zarządzać swoim środowiskiem. Te zapytania zapewniają następujące funkcje:
+Wykres zasobów platformy Azure to usługa platformy Azure, której celem jest rozszerzenie usługi Azure Resource Management, zapewniając wydajne i eksploracja zasobów wydajne możliwość zapytań na dużą skalę w danym zestawie subskrypcji, dzięki czemu można efektywnie zarządzać usługi środowisko. Te zapytania zapewniają następujące funkcje:
 
 - Zdolność do wysyłania zapytań do zasobów przy użyciu złożonego filtrowania, grupowania i sortowania według właściwości zasobu.
-- Zdolność do iteracyjnej eksploracji zasobów w oparciu o wymagania ładu i konwertowania wyrażenia wynikowego na definicję zasad.
+- Możliwość iteracyjne zapoznaj się z zasobami, w oparciu o wymagania ładu.
 - Zdolność do oceny wpływu stosowania zasad na ogromne środowisko chmury.
 - Możliwość [szczegółów zmiany wprowadzone do właściwości zasobu](./how-to/get-resource-changes.md) (wersja zapoznawcza).
 
 W tej dokumentacji każda funkcja zostanie szczegółowo omówiona.
 
 > [!NOTE]
-> Wykres zasobów platformy Azure jest używany przez nowy przeglądania "Wszystkie zasoby" środowiska użytkownika witryny Azure portal i usługi Azure Policy [historię zmian](../policy/how-to/determine-non-compliance.md#change-history-preview).
-> _Visual diff_. Ustalono, aby pomóc klientom w zarządzaniu środowisk na dużą skalę.
+> Wykres zasobów platformy Azure obsługuje pasek wyszukiwania w witrynie Azure portal, Przeglądaj nowe środowisko "Wszystkie zasoby" i usługi Azure Policy [historię zmian](../policy/how-to/determine-non-compliance.md#change-history-preview)
+> _visual diff_. Ustalono, aby pomóc klientom w zarządzaniu środowisk na dużą skalę.
 
 ## <a name="how-does-resource-graph-complement-azure-resource-manager"></a>Jak usługa Resource Graph uzupełnia usługę Azure Resource Manager
 
-Usługa Azure Resource Manager aktualnie wysyła dane do ograniczonej pamięci podręcznej zasobu, który udostępnia kilka pól zasobów, a w szczególności — nazwę zasobu, identyfikator, typ, grupę zasobów, subskrypcje i lokalizację. Wcześniej praca z różnymi właściwościami zasobu wymagała wywołania poszczególnych dostawców zasobów i zażądania szczegółów dotyczących właściwości dla każdego zasobu.
+Usługa Azure Resource Manager obsługuje obecnie zapytania w polach podstawowych zasobów, w szczególności — nazwa zasobu, Identyfikatora, typu, grupa zasobów, subskrypcji i lokalizacji. Usługi Resource Manager udostępnia również funkcje służące do wywoływania dostawcy poszczególnych zasobów dla jednego zasobu szczegółowe właściwości w danym momencie.
 
 Za pomocą usługi Azure Resource Graph możesz uzyskać dostęp do tych właściwości, które zwracają dostawców zasobów, bez konieczności wykonywania poszczególnych wywołań do każdego dostawcy zasobów. Aby uzyskać listę obsługiwane typy zasobów, poszukaj **tak** w [zasobów w przypadku wdrożeń w trybie](../../azure-resource-manager/complete-mode-deletion.md) tabeli.
 
@@ -39,6 +39,11 @@ Wykres zasobów platformy Azure możesz:
 
 - Dostęp do właściwości zwracane przez dostawców zasobów bez konieczności wprowadzić poszczególne wywołania, aby każdy dostawca zasobów.
 - Wyświetlanie ostatnich 14 dni historii zmian wprowadzonych do zasobu zmianie właściwości i kiedy. (wersja zapoznawcza)
+
+## <a name="how-resource-graph-is-kept-current"></a>Jak wykres zasobów jest aktualizowany
+
+Po zaktualizowaniu zasobów platformy Azure, wykres zasobów jest powiadamiany przez usługę Resource Manager zmiany.
+Wykres zasobów następnie aktualizuje swoją bazę danych. Wykres zasobów wykonywane jest także wyrażenie _pełne skanowanie w poszukiwaniu_. To skanowanie zapewnia, że wykres zasobów danych jest bieżący, w przypadku brakujących powiadomienia lub gdy zasób jest aktualizowany poza usługi Resource Manager.
 
 ## <a name="the-query-language"></a>Język zapytań
 
@@ -58,7 +63,9 @@ Aby użyć usługi Resource Graph, musisz mieć odpowiednie prawa w [kontroli do
 
 ## <a name="throttling"></a>Ograniczanie przepływności
 
-Zapytania kierowane do usługi Resource Graph są ograniczane, aby zapewnić wszystkim klientom najlepsze środowisko i najkrótszy czas odpowiedzi. Jeśli Twoja organizacja chce używać interfejsu API usługi Resource Graph do obsługi częstych zapytań na dużą skalę, skorzystaj z pozycji „Opinia” w portalu z poziomu strony usługi Resource Graph. Koniecznie opisz swój przypadek biznesowy i zaznacz pole wyboru „Firma Microsoft może skontaktować się z Tobą pocztą e-mail w sprawie Twojej opinii”, aby zespół mógł się z Tobą skontaktować.
+Jako to bezpłatna usługa zapytania do wykresu zasobów są ograniczone, aby zapewnić najlepsze środowisko i czasu odpowiedzi dla wszystkich klientów. Jeśli Twoja organizacja chce, aby używać interfejsu API programu Graph zasobów dla dużych i często zapytań, korzystać z portalu "Opinie" ze strony wykresu zasobów. Koniecznie opisz swój przypadek biznesowy i zaznacz pole wyboru „Firma Microsoft może skontaktować się z Tobą pocztą e-mail w sprawie Twojej opinii”, aby zespół mógł się z Tobą skontaktować.
+
+Ogranicza wykres zasobów na poziomie dzierżawy. Usługa zastępuje i ustawia `x-ms-ratelimit-remaining-tenant-reads` nagłówek odpowiedzi, aby wskazać, pozostałe zapytań dostępnych przez użytkownika w ramach dzierżawy. Wykres zasobów spowoduje zresetowanie limitu przydziału co 5 sekund zamiast co godzinę. Aby uzyskać więcej informacji, zobacz [żądania ograniczania przepustowości usługi Resource Manager](../../azure-resource-manager/resource-manager-request-limits.md).
 
 ## <a name="running-your-first-query"></a>Uruchamianie pierwszego zapytania
 

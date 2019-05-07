@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/19/2019
 ms.author: alkohli
-ms.openlocfilehash: d107a9dae29f18b90ba7c23198c0cc1f97d83c70
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b46e9ee8fc3e14981a01cc2425a8ce55d06c5a9a
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60309824"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65150733"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-azure-file-sync"></a>Migrację danych z serii StorSimple 5000 – 7000 do usługi Azure File Sync
 
@@ -87,7 +87,7 @@ Wykonaj poniższe kroki, aby migrować udziału plików Windows, które są skon
     Pomiń ten krok i przejdź do następnego kroku, jeśli używasz innego hosta Windows Server. Jeśli używasz tego samego serwera plików Windows dla AFS, teraz doświadczy za kilka minut przestoju. 
     - **Przestój rozpocznie się** -Usuń punkt końcowy serwera, który został utworzony w *krok 1F*. 
     - Utwórz nowy punkt końcowy serwera przy użyciu ścieżki, gdzie mają dane znajdują się przerywaj do przodu.
-    - Gdy punkt końcowy serwera znajduje się w dobrej kondycji (może to potrwać kilka minut), zobaczysz dane w tej nowej lokalizacji. Teraz można skonfigurować hosta Windows Server do obsługi plików z tej nowej lokalizacji. - **Kończy się przestojów**.
+    - Gdy punkt końcowy serwera znajduje się w dobrej kondycji (może to potrwać kilka minut), zobaczysz dane w tej nowej lokalizacji. Teraz można skonfigurować hosta Windows Server do obsługi plików z tej nowej lokalizacji. -  **Kończy się przestojów**.
 5.  Jeśli korzystania z innego serwera plików Windows dla usługi Azure File Sync mogą nie mieć żadnych przestojów. 
     - Dodaj inny punkt końcowy serwera o ścieżce lokalnej pamięci masowej, które są przygotowywane do użycia jako pamięci podręcznej audytów urządzenia StorSimple. 
     - Można wyświetlić pliki w nowym serwerze w ciągu kilku minut. Mogą na zamianę z urządzenia StorSimple do nowej lokalizacji na hoście w dowolnym momencie.

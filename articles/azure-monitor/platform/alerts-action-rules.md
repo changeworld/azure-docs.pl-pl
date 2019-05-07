@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: anantr
 ms.component: alerts
-ms.openlocfilehash: c260273c647dd5dd6050f1fd543ebd5a5aa47b89
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: e5d04fd136848684e866fae9768b252e3b6ca77f
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64922766"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65137967"
 ---
 # <a name="action-rules-preview"></a>Akcja reguły (wersja zapoznawcza)
 
@@ -184,8 +184,8 @@ Do alertów dziennika najlepiej korzystać z regułami akcji, zaleca się tworze
 
 * PYTANIE: Co się stanie, jeśli zasób kontrolowany w dwóch reguł osobną akcję? Uzyskać co najmniej dwa powiadomienia? Na przykład "VM2" w tym scenariuszu:
 
-      action rule 'AR1' defined for 'VM1' and 'VM2' with action group 'AG1' 
-      action rule 'AR2' defined for 'VM2' and 'VM3' with action group 'AG1' 
+      action rule 'AR1' defined for 'VM1' and 'VM2' with action group 'AG1'
+      action rule 'AR2' defined for 'VM2' and 'VM3' with action group 'AG1'
 
     A. Dla każdego alertu na "VM1" i "VM3" grupy akcji "AG1" będzie wyzwalane jeden raz. Dla każdego alertu na "VM2" grupy akcji "AG1" może być wyzwalane, dwa razy (**regułami akcji usuwania nie zduplikowane akcje**). 
 
@@ -198,9 +198,10 @@ Do alertów dziennika najlepiej korzystać z regułami akcji, zaleca się tworze
 
 * PYTANIE: Co się stanie, jeśli mam regułę alertu i reguły zdefiniowane dla tego samego zasobu, grupy różnych akcji podczas wywoływania akcji? Na przykład "VM1", w tym scenariuszu:
 
-     Reguła alertu "rule1" na "VM1" przy użyciu reguły akcji "AG2" grupy akcji "AR1" nie zostały zdefiniowane dla "VM1" z grupy akcji "AG1"  
+      alert rule  'rule1' on          'VM1' with action group 'AG2'
+      action rule 'AR1'   defined for 'VM1' with action group 'AG1' 
  
-    A. Dla każdego alertu na "VM1" grupy akcji "AG1" będzie wyzwalane jeden raz. Przy każdym wyzwoleniu reguły alertu "rule1" również wyzwoli on "AG2" Dodatkowo. (**akcji grup zdefiniowanych w ramach akcji reguł i reguł alertów działać niezależnie, i za pomocą nie deduplikacja**) 
+    A. Dla każdego alertu na "VM1" grupy akcji "AG1" będzie wyzwalane jeden raz. Przy każdym wyzwoleniu reguły alertu "rule1" również wyzwoli on "AG2" Dodatkowo. **Grupy akcji zdefiniowanych w regułach akcji oraz reguł alertów współpracy niezależnie, nie deduplikacja**. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

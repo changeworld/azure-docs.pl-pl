@@ -2,18 +2,17 @@
 title: Pojęcia — skalowanie aplikacji w usłudze Azure Kubernetes usługi (AKS)
 description: Dowiedz się więcej na temat skalowania w usłudze Azure Kubernetes Service (AKS), takich jak skalowanie zasobników w poziomie, skalowanie klastra i łącznik usługi Azure Container Instances.
 services: container-service
-author: rockboyfor
+author: zr-msft
 ms.service: container-service
 ms.topic: conceptual
-origin.date: 02/28/2019
-ms.date: 04/08/2019
-ms.author: v-yeche
-ms.openlocfilehash: d7df4d2c7e824f143201e2c6af220730bcd38fb2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 02/28/2019
+ms.author: zarhoads
+ms.openlocfilehash: 2070c79a6ce0627280b1793e412002783f385cc0
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60466956"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65074035"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Opcje skalowania aplikacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -57,6 +56,8 @@ Aby reagować na zmieniające się potrzeby zasobników, Kubernetes ma skalowani
 ![Skalowanie klastra usługi Kubernetes](media/concepts-scale/cluster-autoscaler.png)
 
 Skalowanie klastra jest zwykle używana wraz z skalowania automatycznego zasobników w poziomie. W połączeniu, skalowanie zasobników w poziomie zwiększa lub zmniejsza liczbę zasobników, w zależności od potrzeb aplikacji, a skalowanie klastra dostosowuje liczbę węzłów, zgodnie z potrzebami, aby uruchomić te dodatkowe zasobniki odpowiednio.
+
+Skalowanie klastra należy badać tylko w wersji zapoznawczej w klastrach usługi AKS z pulą jeden węzeł.
 
 Aby rozpocząć skalowanie klastra w usłudze AKS, zobacz [skalowanie klastra w usłudze AKS][aks-cluster-autoscaler].
 

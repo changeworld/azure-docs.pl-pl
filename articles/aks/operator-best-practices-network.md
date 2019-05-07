@@ -2,18 +2,17 @@
 title: Operator najlepsze rozwiązania — łączność sieciową w usłudze Azure Kubernetes usługi (AKS)
 description: Poznaj klastra operator najlepsze rozwiązania dotyczące zasobów sieci wirtualnej i połączeń w usłudze Azure Kubernetes Service (AKS)
 services: container-service
-author: rockboyfor
+author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-origin.date: 12/10/2018
-ms.date: 04/08/2019
-ms.author: v-yeche
-ms.openlocfilehash: aaa16245fada7fbccdd0865d973de2fa19970989
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 12/10/2018
+ms.author: iainfou
+ms.openlocfilehash: 2bdc18ba4dc77178d5fcc5d2ba6d89aa109d923c
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60464037"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65074144"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące łączności sieciowej i zabezpieczeń w usłudze Azure Kubernetes Service (AKS)
 
@@ -48,7 +47,7 @@ Gdy używasz wtyczki Azure CNI sieć, zasób sieci wirtualnej jest w oddzielnej 
 
 Aby uzyskać więcej informacji na temat delegowania nazwy głównej usługi AKS, zobacz [delegować dostęp do innych zasobów platformy Azure][sp-delegation].
 
-Podobnie jak każdy węzeł i zasobnika otrzymują adres IP, należy zaplanować się zakresów adresów w podsieci usługi AKS. Podsieć musi być wystarczająco duży, aby przydzielać adresy IP dla każdego węzła, zasobników i zasobów sieciowych, które można wdrożyć. Każdy klaster AKS muszą być umieszczone w jej własnej podsieci. Aby umożliwić łączność z lokalnym lub w sieciach równorzędnych na platformie Azure, nie używaj zakresów adresów IP, które pokrywają się z istniejącymi zasobami sieciowymi. Istnieją domyślne limity liczby zasobników, z których każdy węzeł działa zarówno z wtyczki kubenet i wtyczki Azure CNI sieci. Do obsługi skalowania w górę zdarzeń lub Uaktualnianie klastra, należy również dodatkowe adresy IP do użycia w przypisanej podsieci.
+Podobnie jak każdy węzeł i zasobnika otrzymują adres IP, należy zaplanować się zakresów adresów w podsieci usługi AKS. Podsieć musi być wystarczająco duży, aby przydzielać adresy IP dla każdego węzła, zasobników i zasobów sieciowych, które można wdrożyć. Każdy klaster AKS muszą być umieszczone w jej własnej podsieci. Aby umożliwić łączność z lokalnym lub w sieciach równorzędnych na platformie Azure, nie używaj zakresów adresów IP, które pokrywają się z istniejącymi zasobami sieciowymi. Istnieją domyślne limity liczby zasobników, z których każdy węzeł działa zarówno z wtyczki kubenet i wtyczki Azure CNI sieci. Do obsługi skalowania w górę zdarzeń lub Uaktualnianie klastra, należy również dodatkowe adresy IP do użycia w przypisanej podsieci. Ta dodatkowa przestrzeń adresowa jest szczególnie ważne, jeśli używasz kontenery systemu Windows Server (obecnie dostępna w wersji zapoznawczej w usłudze AKS), jak te pule węzłów wymaga uaktualnienia do zastosowania najnowszych poprawek zabezpieczeń. Aby uzyskać więcej informacji w węzłach systemu Windows Server, zobacz [uaktualnienia pulę węzłów w usłudze AKS][nodepool-upgrade].
 
 Do obliczania adresu IP wymagane, zobacz [wtyczki Azure CNI konfigurowania sieci w usłudze AKS][advanced-networking].
 
@@ -102,6 +101,8 @@ spec:
 
 Kontroler danych przychodzących jest demona, który działa w węźle usługi AKS i oczekuje na przychodzące żądania. Następnie dystrybucji ruchu na podstawie reguł zdefiniowanych w zasobie danych przychodzących. Najbardziej typowe kontrolera danych przychodzących jest oparty na [NGINX]. AKS nie ogranicza możliwości do określonego kontrolera, aby można było używać innych kontrolerów takich jak [rozkład][contour], [HAProxy][haproxy], lub [ Traefik][traefik].
 
+Ruch przychodzący kontrolerów musi być zaplanowane w węźle systemu Linux. Węzły systemu Windows Server (obecnie dostępna w wersji zapoznawczej w usłudze AKS) nie należy uruchamiać kontrolera danych przychodzących. Użyj selektora węzła w manifeście YAML lub wdrożenia wykresu Helm, aby wskazać, zasób powinien być uruchomiony w węźle opartych na systemie Linux. Aby uzyskać więcej informacji, zobacz [selektorów należy używać węzła do kontroli gdzie zaplanowane zasobników w usłudze AKS][concepts-node-selectors].
+
 Istnieje wiele scenariuszy dla danych przychodzących, w tym następujące przewodniki z instrukcjami:
 
 * [Tworzenie kontrolera podstawowego transferu danych przychodzących za pomocą połączenia z siecią zewnętrzną][aks-ingress-basic]
@@ -125,9 +126,9 @@ Zasobów obciążenia równoważenia lub ruch przychodzący w dalszym ciągu uru
 
 **Najważniejsze wskazówki** — zasady sieciowe umożliwiają blokują lub zezwalają na ruch do zasobników. Domyślnie cały ruch jest dozwolony między zasobników w ramach klastra. Aby zwiększyć bezpieczeństwo należy zdefiniować reguły, które ograniczają komunikację pod.
 
-Zasady sieci (obecnie dostępna w wersji zapoznawczej w usłudze AKS) jest funkcją Kubernetes, która umożliwia sterowanie przepływem ruchu między zasobników. Istnieje możliwość blokują lub zezwalają na ruch na podstawie ustawień, takich jak przypisać etykiety, przestrzeń nazw lub ruchu sieciowego port. Użycie zasad sieciowych umożliwia natywnych dla chmury sterowanie przepływem ruchu. Zgodnie z zasobników są tworzone dynamicznie w klastrze AKS, zasady wymagane sieciowe mogą być automatycznie stosowane. Nie należy używać kontroli ruchu pod do zasobników, należy użyć zasad sieciowych grup zabezpieczeń sieci platformy Azure.
+Zasady sieci jest funkcją Kubernetes, która umożliwia sterowanie przepływem ruchu między zasobników. Istnieje możliwość blokują lub zezwalają na ruch na podstawie ustawień, takich jak przypisać etykiety, przestrzeń nazw lub ruchu sieciowego port. Użycie zasad sieciowych umożliwia natywnych dla chmury sterowanie przepływem ruchu. Zgodnie z zasobników są tworzone dynamicznie w klastrze AKS, zasady wymagane sieciowe mogą być automatycznie stosowane. Nie należy używać kontroli ruchu pod do zasobników, należy użyć zasad sieciowych grup zabezpieczeń sieci platformy Azure.
 
-Aby użyć zasad sieciowych, można włączyć tę funkcję podczas tworzenia klastra usługi AKS. Nie można włączyć zasad sieciowych w istniejącym klastrze usługi AKS. Planuj z wyprzedzeniem upewnij się, możesz włączyć zasad sieciowych w klastrach i można ich używać, zgodnie z potrzebami.
+Aby użyć zasad sieciowych, można włączyć tę funkcję podczas tworzenia klastra usługi AKS. Nie można włączyć zasad sieciowych w istniejącym klastrze usługi AKS. Planuj z wyprzedzeniem upewnij się, możesz włączyć zasad sieciowych w klastrach i można ich używać, zgodnie z potrzebami. Zasady sieci należy używać tylko dla węzłów opartych na systemie Linux i zasobników w usłudze AKS.
 
 Zasady sieci jest tworzona jako zasób usługi Kubernetes za pomocą YAML manifest. Zasady są stosowane do zasobników zdefiniowane, a następnie transferu danych przychodzących lub wychodzących reguły określają, jak ruch może przepływać. Poniższy przykład dotyczy zasobników za pomocą zasad sieciowych *aplikacji: zaplecza* etykietę stosowaną do nich. Reguła ruchu przychodzącego następnie tylko zezwala na ruch z zasobników z *aplikacji: frontonu* etykiety:
 
@@ -187,3 +188,5 @@ Ten artykuł koncentruje się na łączności sieciowej i zabezpieczeń. Aby uzy
 [use-network-policies]: use-network-policies.md
 [advanced-networking]: configure-azure-cni.md
 [aks-configure-kubenet-networking]: configure-kubenet.md
+[concepts-node-selectors]: concepts-clusters-workloads.md#node-selectors
+[nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool

@@ -2,20 +2,21 @@
 title: Zarządzanie cyklem życia usługi Azure Storage
 description: Informacje dotyczące tworzenia cyklu życia reguły zasad danych przestarzałej przejścia z gorąca na chłodna lub archiwalna.
 services: storage
-author: yzheng-msft
+author: mhopkins-msft
 ms.service: storage
 ms.topic: conceptual
 ms.date: 4/29/2019
-ms.author: yzheng
+ms.author: mhopkins
+ms.reviewer: yzheng
 ms.subservice: common
-ms.openlocfilehash: f1fdd1b239301a5340716e1d5d098487afe27f9f
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 130eb9cc8bec4681f5c0d165735c6c3b2357576c
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64938566"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148315"
 ---
-# <a name="manage-the-azure-blob-storage-lifecycle"></a>Zarządzanie usługą Azure Blob storage w cyklu życia
+# <a name="manage-the-azure-blob-storage-lifecycle"></a>Zarządzanie cyklem życia magazynu obiektów Blob platformy Azure
 
 Zestawy danych ma unikatowy cykle życia. Na wczesnym etapie cyklu życia ludzie często dostęp do niektórych danych. Ale potrzebę dostępu spada znacząco rzadziej. Niektóre dane pozostaje w stanie bezczynności w chmurze i są rzadko używane po umieszczeniu. Niektóre dane wygasa dni lub miesięcy po utworzeniu, podczas gdy inne zestawy danych są aktywnie odczytu i modyfikacji przez cały okres ich istnienia. Zarządzanie cyklem życia magazynu w usłudze Azure Blob oferuje zaawansowane, oparte na regułach zasad dla kont usługi GPv2 i Blob storage. Użyj zasad przeniesienie danych do warstw odpowiedni dostęp, lub wygaśnie z końcem cykl życia danych.
 

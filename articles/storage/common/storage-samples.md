@@ -2,18 +2,19 @@
 title: Przykłady kodu usługi Azure Storage | Dokumentacja firmy Microsoft
 description: Wyświetlanie, Pobierz i uruchom przykładowy kod i aplikacji dla usługi Azure Storage. Dowiedz się, wprowadzenie do przykładów dla obiektów blob, kolejek, tabel i plików, przy użyciu biblioteki klienta magazynu .NET, Java, Node.js i języka C++.
 services: storage
-author: tamram
+author: mhopkins-msft
 ms.service: storage
 ms.topic: article
 ms.date: 06/03/2017
-ms.author: tamram
+ms.author: mhopkins
+ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: 411b43ec631c77246da1ee55f2532486f8b55ffc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c3bf695527db19513125d9190796c9b5df312aaa
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60730110"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153502"
 ---
 # <a name="azure-storage-samples"></a>Przykłady usługi Azure Storage
 

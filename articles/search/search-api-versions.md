@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: brjohnst
-ms.openlocfilehash: f361417f25579b0ca605b33bafa4a581f68b1798
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 21374e20a2ba2c9134ed12e4b1072ff5c320c75e
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024404"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149779"
 ---
 # <a name="api-versions-in-azure-search"></a>Wersje interfejsu API w usłudze Azure Search
 Usługa Azure Search regularnie zbiera i wydaje aktualizacje funkcji. Czasami, ale nie zawsze te aktualizacje wymagają nowej wersji interfejsu API w celu zachowania zgodności z poprzednimi wersjami. Publikowanie nowej wersji pozwala na kontrolowanie, kiedy i jak integrować aktualizacje usługi wyszukiwania w kodzie.
@@ -32,8 +32,8 @@ Poniżej to migawki bieżących wersji wszystkich interfejsów programowania do 
 
 | Interfejsy | Najnowszą wersją | Stan |
 | --- | --- | --- |
-| [Zestaw SDK platformy .NET](https://aka.ms/search-sdk) |9.0 |Ogólnie dostępne, wydane maja 2019 r. Zawartość jest nadal w trakcie tworzenia.  |
-| [Zestaw SDK platformy .NET w wersji zapoznawczej](https://aka.ms/search-sdk-preview) |8.0.0-Preview |Podgląd wydane kwietnia 2019 r. Zawartość jest nadal w trakcie tworzenia.|
+| [Zestaw SDK platformy .NET](https://aka.ms/search-sdk) |9.0 |Ogólnie dostępne, wydane maja 2019 r |
+| [Zestaw SDK platformy .NET w wersji zapoznawczej](https://aka.ms/search-sdk-preview) |8.0.0-Preview |W wersji zapoznawczej, wydana w kwietniu 2019 |
 | [Interfejs API REST usługi](https://docs.microsoft.com/rest/api/searchservice/) |2019-05-06 |Ogólnie dostępne |
 | [Usługa REST API 2019-05-06-Preview](search-api-preview.md) |2019-05-06-preview |Wersja zapoznawcza |
 | [.NET Management SDK](https://aka.ms/search-mgmt-sdk) |3.0 |Ogólnie dostępne |
@@ -57,6 +57,6 @@ Funkcje w wersji zapoznawczej są dostępne do testowania i eksperymentowania, z
 
 Z tego względu zalecamy względem pisania kodu produkcyjnego, który przyjmuje zależność wersji zapoznawczych. Jeśli używasz starszej wersji (wersja zapoznawcza), zalecamy przeprowadzić migrację do ogólnie dostępnej wersji (GA).
 
-Dla zestawu SDK platformy .NET: Wskazówki dotyczące migracji kod znajduje się w temacie [uaktualnianie zestawu SDK .NET](search-dotnet-sdk-migration.md).
+Dla zestawu SDK platformy .NET: Wskazówki dotyczące migracji kod znajduje się w temacie [uaktualnianie zestawu SDK .NET](search-dotnet-sdk-migration-version-9.md).
 
 Ogólnie dostępne oznacza, że usługa Azure Search jest teraz w ramach umowy dotyczącej poziomu usług (SLA). Umowy SLA można znaleźć w [umowy dotyczące poziomu usług Azure Search](https://azure.microsoft.com/support/legal/sla/search/v1_0/).

@@ -12,38 +12,43 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: 622a3ce0f80bd09bd09fa7ff097f68155318142d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 19a8400a076825f17501fabdb3f38ea05915822e
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60351293"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65138700"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory-public-preview"></a>Konfigurowanie oświadczenia grupy dla aplikacji przy użyciu usługi Azure Active Directory (publiczna wersja zapoznawcza)
 
 Usługa Azure Active Directory może zapewnić użytkownikom informacje dotyczące członkostwa grupy w tokenach do użytku w aplikacjach.  Obsługiwane są dwa główne wzorce:
 
-- Grupy identyfikowane przez ich usługi Azure Active Directory identyfikatora obiektu (OID) (dostępne ogólnie)
-- Grupy określone przez element SAMAccountName lub identyfikatora GroupSID, Active Directory (AD) zsynchronizowane, grup i użytkowników (publiczna wersja zapoznawcza)
+- Grupy identyfikowane za pomocą ich identyfikatora obiektu w usłudze Azure Active Directory (dostępne ogólnie) atrybutu (OID)
+- Grupy określone przez element sAMAccountName lub identyfikatora GroupSID atrybuty dla Active Directory (AD) synchronizowane grupy i użytkownicy (publiczna wersja zapoznawcza)
 
-> [!Note]
-> Obsługa użycia nazwy i w środowisku lokalnym identyfikatory zabezpieczeń (SID) umożliwiających przenoszenie istniejących aplikacji z usług AD FS.    Grupy zarządzane w usłudze Azure AD nie zawierają atrybuty, które są niezbędne do emitowania te oświadczenia.
+> [!IMPORTANT]
+> Istnieje szereg ostrzeżenia, należy pamiętać, dla tej funkcji w wersji zapoznawczej:
+>
+>- Obsługa użycia sAMAccountName zabezpieczeń identyfikator (SID) dla atrybutów i synchronizowane z lokalnej umożliwiających przenoszenie istniejących aplikacji z usług AD FS i innych dostawców tożsamości. Grupy zarządzane w usłudze Azure AD nie zawierają atrybuty, które są niezbędne do emitowania te oświadczenia.
+>- W przypadku większych organizacji liczby grup, do których należy użytkownik może przekroczyć limit usługi Azure Active Directory zostanie dodany do tokenu. 150 grupy dla tokenu SAML i 200 dla token JWT. Może to prowadzić do nieoczekiwanych rezultatów. Jeśli jest to potencjalny problem Zalecamy przeprowadzenie testowania, a jeśli to konieczne, oczekiwanie, aż do dodamy udoskonalenia pozwalają ograniczyć oświadczenia do odpowiednich grup dla aplikacji.  
+>- Rozwijaniu nowych aplikacji lub w sytuacjach, w którym aplikacji można skonfigurować dla niego i której Obsługa grup zagnieżdżonych nie jest wymagane zaleca się, że autoryzacji w aplikacji zależy od ról aplikacji, a nie grupy.  Ogranicza to ilość informacji, który wymaga przejść do tokenu, zapewnia większe bezpieczeństwo i oddziela przypisanie użytkownika z konfiguracji aplikacji.
 
-## <a name="group-claims-for-applications-migrating-from-ad-fs-and-other-idps"></a>Oświadczenia grupy dla aplikacji, migrowanie z usług AD FS i innych dostawców tożsamości
+## <a name="group-claims-for-applications-migrating-from-ad-fs-and-other-identity-providers"></a>Oświadczenia grupy dla aplikacji, migrowanie z usług AD FS i innych dostawców tożsamości
 
-Wiele aplikacji, które są skonfigurowane do uwierzytelniania za pomocą usług AD FS opierają się na informacje o członkostwie w grupie w formularzu Windows AD grupy atrybutów.   Te atrybuty są grupy SAMAccountName, która może być kwalifikowana przez — nazwa domeny lub identyfikator SID grupy Windows.  Gdy aplikacja jest Sfederowane przy użyciu usług AD FS, usługi AD FS funkcja TokenGroups pobrać członkostwa w grupach użytkownika.
+Wiele aplikacji, które są skonfigurowane do uwierzytelniania za pomocą usług AD FS opierają się na informacje o członkostwie w grupie w formularzu Windows AD grupy atrybutów.   Te atrybuty są sAMAccountName grupy, która może być kwalifikowana przez — nazwa domeny lub identyfikator zabezpieczeń grupy systemu Windows (identyfikatora GroupSID).  Gdy aplikacja jest Sfederowane przy użyciu usług AD FS, usługi AD FS funkcja TokenGroups pobrać członkostwa w grupach użytkownika.
 
-Aby dopasować token, aplikacja może odbierać z usług AD FS, być emitowane oświadczenia grupy i roli zawierający domenę kwalifikowana SAMAccountName, a nie grupy usługi Azure Active Directory objectID.
+Aby dopasować token, który aplikacja może odbierać z usług AD FS, być emitowane oświadczenia grupy i roli, zawierające sam domeny kwalifikowana, a nie grupy usługi Azure Active Directory objectID.
 
 Obsługiwane formaty oświadczenia grupy są:
 
-- **Usługa Azure Active GroupObjectId katalogu** (dostępne dla wszystkich grup)
+- **Identyfikator obiektu grupy usługi Azure Active Directory** (dostępne dla wszystkich grup)
 - **Element SAMAccountName** (dostępne dla grupy synchronizowane z usługi Active Directory)
-- **NetbiosDomain\samAccountName** (dostępne dla grupy synchronizowane z usługi Active Directory)
-- **DNSDomainName\samAccountName** (dostępne dla grupy synchronizowane z usługi Active Directory)
+- **NetbiosDomain\sAMAccountName** (dostępne dla grupy synchronizowane z usługi Active Directory)
+- **DNSDomainName\sAMAccountName** (dostępne dla grupy synchronizowane z usługi Active Directory)
+- **Na identyfikator zabezpieczeń grupy lokalnej** (dostępne dla grupy synchronizowane z usługi Active Directory)
 
 > [!NOTE]
-> Atrybuty SAMAccountName i OnPremisesGroupSID są dostępne tylko w obiektach grupy synchronizowane z usługi Active Directory.   Nie są dostępne dla grup utworzonych w usłudze Azure Active Directory lub usługi Office 365.   Aplikacje, które są zależne od atrybutów grupy lokalnej pobranie tylko grupy zsynchronizowane.
+> Element sAMAccountName i atrybutów w lokalnym identyfikator SID grupy są dostępne tylko w obiektach grupy synchronizowane z usługi Active Directory.   Nie są dostępne dla grup utworzonych w usłudze Azure Active Directory lub usługi Office 365.   Aplikacji skonfigurowanych w usłudze Azure Active Directory w celu uzyskania lokalnego zsynchronizowanych atrybuty grupy pobranie tylko grupy zsynchronizowane.
 
 ## <a name="options-for-applications-to-consume-group-information"></a>Opcje dla aplikacji korzystających ze informacje o grupie
 
@@ -51,17 +56,17 @@ Jednym ze sposobów, w przypadku aplikacji uzyskać informacje o grupie jest wyw
 
 Jednak jeśli już istniejąca aplikacja oczekuje na korzystanie z informacji o grupie za pomocą oświadczenia w tokenie, które otrzymuje, usługi Azure Active Directory można skonfigurować za pomocą szereg opcji różne oświadczenia do potrzeb aplikacji.  należy wziąć pod uwagę następujące opcje:
 
-- Korzystając z członkostwa w grupie w celu autoryzacji aplikacji (czy członkostwo w grupie są uzyskiwane z tokenu lub wykres), zaleca się używać identyfikator obiektu grupy, który jest niezmienny i unikatowy w usłudze Azure Active Directory i dostępne dla wszystkich grup .
-- Jeśli jest używana grupa SAMAccountName, do autoryzacji, użyj nazwy domeny kwalifikowana;  ma mniej szansy sytuacji powstałych było konflikt nazw. SAMAccountName samodzielnie mogą być unikatowe w obrębie domeny usługi Active Directory, ale jeśli więcej niż jedną domenę usługi Active Directory jest zsynchronizowana z dzierżawą usługi Azure Active Directory istnieje możliwość mają taką samą nazwę więcej niż jednej grupy.
+- Na potrzeby autoryzacji w aplikacji za pomocą członkostwa w grupie jest lepiej jest używać identyfikator obiektu grupy, który jest niezmienny i unikatowy w usłudze Azure Active Directory i dostępne dla wszystkich grup.
+- Jeśli używasz lokalny element sAMAccountName grupy do autoryzacji, należy używać nazw domeny kwalifikowana;  ma mniej szansy sytuacji powstałych było konflikt nazw. SAMAccountName samodzielnie mogą być unikatowe w obrębie domeny usługi Active Directory, ale jeśli więcej niż jedną domenę usługi Active Directory jest zsynchronizowana z dzierżawą usługi Azure Active Directory istnieje możliwość mają taką samą nazwę więcej niż jednej grupy.
 - Należy rozważyć użycie [ról aplikacji](../../active-directory/develop/howto-add-app-roles-in-azure-ad-apps.md) zapewnić warstwę pośredni między członkostwa w grupie i aplikacji.   Następnie aplikacja sprawia, że decyzji dotyczących autoryzacji wewnętrznego, oparte na rolach piaskołaz w tokenie.
 - Jeśli aplikacja jest skonfigurowane do otrzymywania atrybuty grupy, które są synchronizowane z usługi Active Directory, a grupy nie zawierają te atrybuty nie będą uwzględniane w oświadczeniach.
-- Grupy oświadczenia w tokenach Dołącz grupy zagnieżdżone.   Jeśli użytkownik jest członkiem GroupB GroupB jest elementem członkowskim GroupA, oświadczenia grupy dla użytkownika będzie zawierać zarówno GroupA, jak i GroupB. Organizacje mające duże użycie zagnieżdżonych grup i użytkowników z dużą liczbą członkostwa w grupach liczby grup token na liście można powiększać rozmiar tokenu.   Usługa Azure Active Directory ogranicza liczbę grup, które będzie naliczana w tokenie do 150 dla asercji SAML i 200 dla tokenu JWT.
+- Grupy oświadczenia w tokenach Dołącz grupy zagnieżdżone.   Jeśli użytkownik jest członkiem GroupB GroupB jest elementem członkowskim GroupA, oświadczenia grupy dla użytkownika będzie zawierać zarówno GroupA, jak i GroupB. Organizacje mające duże użycie zagnieżdżonych grup i użytkowników z dużą liczbą członkostwa w grupach liczby grup token na liście można powiększać rozmiar tokenu.   Usługa Azure Active Directory ogranicza liczbę grup, które będzie naliczana w tokenie do 150 dla asercji SAML i 200 dla tokenów JWT zapobiec tokenów wprowadzenie zbyt duży.  Jeśli użytkownik jest członkiem większej liczby grup niż limit, są emitowane grupy i łącza do punktu końcowego wykres, aby uzyskać informacje o grupie.
 
 > Wymagania wstępne dotyczące korzystania z atrybuty grupy synchronizowane z usługą Active Directory:   Grupy musi być synchronizowane z usługi Active Directory za pomocą usługi Azure AD Connect.
 
 Istnieją dwie instrukcje konfigurowania usługi Azure Active Directory, aby emitować nazwy grupy dla grupy usługi Active Directory.
 
-1. **Synchronizuj nazwy grup z usługi Active Directory** przed usługi Azure Active Directory może emitować nazwy grup lub w lokalnej grupie oświadczenia identyfikatora SID grupy lub roli, wymaganych atrybutów, które muszą zostać zsynchronizowane z usługą Active Directory.  Wymagany jest program Azure AD Connect w wersji 1.2.70 lub nowszej.   Przed wersją 1.2.70 program Azure AD Connect będzie synchronizować th grupy obiektów z usługi Active Directory, ale nie zawiera wymaganej grupy atrybutów nazw domyślnie.  Należy uaktualnić do wersji bieżącej.
+1. **Synchronizuj nazwy grup z usługi Active Directory** przed usługi Azure Active Directory może emitować nazwy grup lub w lokalnej grupie oświadczenia identyfikatora SID grupy lub roli, wymaganych atrybutów, które muszą zostać zsynchronizowane z usługą Active Directory.  Wymagany jest program Azure AD Connect w wersji 1.2.70 lub nowszej.   Przed wersją 1.2.70 program Azure AD Connect będzie synchronizować obiekty grupy z usługi Active Directory, ale nie zawiera wymaganej grupy atrybutów nazw domyślnie.  Należy uaktualnić do wersji bieżącej.
 
 2. **Skonfiguruj rejestrowanie aplikacji w usłudze Azure Active Directory, które mają zostać objęte oświadczenia grupy tokenów** oświadczenia grupy mogą być skonfigurowane w sekcji aplikacje dla przedsiębiorstw w portalu dla aplikacji lub logowania jednokrotnego SAML spoza galerii w galerii lub w sekcji rejestracje aplikacji przy użyciu Manifest aplikacji.  Aby skonfigurować oświadczenia grupy, zobacz manifestu aplikacji "Konfigurowanie usługi Azure Active Directory aplikacji rejestracji dla grupy atrybutów" poniżej.
 
@@ -81,22 +86,22 @@ Użyj przycisków radiowych, aby wybrać grupy, które powinny być uwzględnion
 |----------|-------------|
 | **Wszystkie grupy** | Emituje grup zabezpieczeń i dystrybucji listy.   Powoduje również role katalogu, które są przypisane do użytkownika był emitowany w oświadczenie "wids" i ewentualnych ról aplikacji, przypisanego był emitowany w oświadczenia ról użytkownika. |
 | **Grupy zabezpieczeń** | Emituje grup zabezpieczeń, których użytkownik jest członkiem oświadczenia grupy |
-| **Lista dystrybucyjna** | Emituje list dystrybucyjnych, w których należy użytkownik |
-| **Rola katalogu** | Jeśli użytkownik jest przypisany ról w katalogu są emitowane jako wids oświadczenia (grupy, który nie będzie emitowane oświadczeń) |
+| **Listy dystrybucyjne** | Emituje list dystrybucyjnych, w których należy użytkownik |
+| **Role katalogu** | Jeśli użytkownik jest przypisany ról w katalogu są emitowane jako wids oświadczenia (grupy, który nie będzie emitowane oświadczeń) |
 
 Na przykład aby emitować wszystkich grup zabezpieczeń, użytkownik jest członkiem, wybierz grupy zabezpieczeń
 
 ![oświadczenia interfejsu użytkownika](media/how-to-connect-fed-group-claims/group-claims-ui-3.png)
+
+Aby emitować grup przy użyciu atrybutów usługi Active Directory synchronizowane z usługi Active Directory zamiast identyfikatory obiektów usługi Azure AD wybierz wymagany format z listy rozwijanej.  Spowoduje to zastąpienie Identyfikatora obiektu w oświadczeniach przy użyciu wartości ciągu zawierającej nazwy grupy.   Tylko grupy synchronizowane z usługą Active Directory zostaną uwzględnione w oświadczeniach.
+
+![oświadczenia interfejsu użytkownika](media/how-to-connect-fed-group-claims/group-claims-ui-4.png)
 
 ### <a name="advanced-options"></a>Opcje zaawansowane
 
 Sposób oświadczenia grupy są emitowane może być modyfikowana przez ustawienia w obszarze Opcje zaawansowane
 
 Dostosowywanie nazwy oświadczenia grupy:  Jeśli zaznaczone, można określić na inny typ oświadczenia dla oświadczenia grupy.   Wprowadź w polu nazwę i opcjonalny przestrzeni nazw typu oświadczenia oświadczenie, w polu obszar nazw.
-
-![oświadczenia interfejsu użytkownika](media/how-to-connect-fed-group-claims/group-claims-ui-4.png)
-
-Aby emitować grup przy użyciu usługi Active Directory atrybutów zamiast identyfikatory obiektów usługi Azure AD "Return grup jako nazwy zamiast identyfikatorów" pole wyboru, a wybierz format z listy rozwijanej.  Spowoduje to zastąpienie Identyfikatora obiektu w oświadczeniach przy użyciu wartości ciągu zawierającej nazwy grupy.   Tylko grupy synchronizowane z usługą Active Directory zostaną uwzględnione w oświadczeniach.
 
 ![oświadczenia interfejsu użytkownika](media/how-to-connect-fed-group-claims/group-claims-ui-5.png)
 

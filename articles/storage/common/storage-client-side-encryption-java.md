@@ -2,24 +2,25 @@
 title: Szyfrowanie po stronie klienta za pomocą języka Java dla usługi Microsoft Azure Storage | Dokumentacja firmy Microsoft
 description: Biblioteki klienta usługi Azure Storage dla języka Java obsługuje szyfrowanie po stronie klienta i integracji z usługą Azure Key Vault dla zapewnienia maksymalnego poziomu bezpieczeństwa dla aplikacji usługi Azure Storage.
 services: storage
-author: lakasa
+author: tamram
 ms.service: storage
 ms.devlang: java
 ms.topic: article
 ms.date: 05/11/2017
-ms.author: lakasa
+ms.author: tamram
+ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 0a2088e603828a7850cb250c1874008d63fe9c89
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 058dc97054aad310135ccc1f51d765f0af3f571b
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57992451"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147028"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-with-java-for-microsoft-azure-storage"></a>Szyfrowanie po stronie klienta i usługi Azure Key Vault przy użyciu języka Java dla usługi Microsoft Azure Storage
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 [Biblioteki klienta usługi Azure Storage dla języka Java](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) obsługuje szyfrowanie danych w aplikacjach klienckich przed przekazaniem do usługi Azure Storage oraz odszyfrowywanie danych pobraniem do klienta. Biblioteka obsługuje również integrację z usługą [usługi Azure Key Vault](https://azure.microsoft.com/services/key-vault/) do zarządzania kluczami konta magazynu.
 
 ## <a name="encryption-and-decryption-via-the-envelope-technique"></a>Szyfrowanie i odszyfrowywanie za pomocą techniki obwiedni
@@ -118,7 +119,7 @@ Istnieją trzy pakiety usługi Key Vault:
 1. Utwórz klucz tajny w trybie offline i przekaż go do usługi Key Vault.  
 2. Klucz tajny podstawowego identyfikatora można użyć jako parametru, aby Rozwiąż bieżącą wersję wpisu tajnego szyfrowania, a te informacje lokalnie w pamięci podręcznej. Użyj CachingKeyResolver do buforowania; Użytkownicy nie powinny implementować własnej logiki buforowania.  
 3. Użyj buforowania rozpoznawania nazw jako dane wejściowe podczas tworzenia zasady szyfrowania.
-   Więcej informacji na temat użycia usługi Key Vault można znaleźć w przykładach kodu szyfrowania. <fix URL>  
+   Więcej informacji na temat użycia usługi Key Vault można znaleźć w przykładach kodu szyfrowania.
 
 ## <a name="best-practices"></a>Najlepsze praktyki
 Obsługa szyfrowania jest dostępna tylko w bibliotece klienta usługi storage dla języka Java.
@@ -142,7 +143,7 @@ Podczas tworzenia obiektu EncryptionPolicy, użytkownicy mogą podać tylko kluc
   * Mechanizm rozpoznawania klucza jest wywoływana, jeśli określony, aby pobrać klucz. Jeśli program rozpoznawania nazw jest określony, ale nie ma mapowania dla identyfikatora klucza, zostanie zgłoszony błąd.  
   * Jeśli program rozpoznawania nazw nie jest określony, ale klucz jest określony, klucz jest używany, jeśli pasuje do identyfikatora wymaganego identyfikatora klucza. Jeśli identyfikator nie jest zgodny, zostanie zgłoszony błąd.  
     
-    [Przykłady szyfrowania](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples) <fix URL>pokazują bardziej szczegółowe scenariusz end-to-end dla obiektów blob, kolejek i tabel, wraz z integracją usługi Key Vault.
+    [Przykłady szyfrowania](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples) pokazują bardziej szczegółowe scenariusz end-to-end dla obiektów blob, kolejek i tabel, wraz z integracją usługi Key Vault.
 
 ### <a name="requireencryption-mode"></a>Tryb RequireEncryption
 Użytkownicy mogą włączyć opcjonalnie tryb działania, w której muszą być szyfrowane wszystkie przekazywanie i pobieranie. W tym trybie próby przekazania danych bez zasady szyfrowania lub pobrać dane, które nie są szyfrowane w usłudze zakończy się niepowodzeniem na komputerze klienckim. **RequireEncryption** flagi obiekt opcji żądania określa to zachowanie. Jeśli aplikacja spowoduje zaszyfrowanie wszystkich obiektów przechowywanych w usłudze Azure Storage, a następnie można ustawić **requireEncryption** właściwości domyślne opcje żądanie dotyczące obiektu klienta usługi.   

@@ -7,17 +7,17 @@ ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: ronitr
-ms.author: ronitr
+author: vainolo
+ms.author: arib
 ms.reviewer: vanto
 manager: craigg
 ms.date: 03/22/2019
-ms.openlocfilehash: 74bd3af3e1ffd126f8cb4f2347e4566cc4708e25
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e451b7837a1cff4bbeaecd1573dc860524caf4d3
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60403454"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142652"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Usługa Azure SQL Database i SQL Data Warehouse odnajdywanie i klasyfikacja danych
 
@@ -127,7 +127,7 @@ Ważnym aspektem modelu ochrona informacji jest możliwość monitorowania dost�
 
 ![Dziennik inspekcji](./media/sql-data-discovery-and-classification/11_data_classification_audit_log.png)
 
-## <a id="subheading-4"></a>Automatyczne Programmatic klasyfikacji
+## <a id="subheading-4"></a>Zarządzanie klasyfikację danych przy użyciu języka T-SQL
 
 T-SQL umożliwia dodawanie/usuwanie klasyfikacje kolumn, a także pobrać wszystkie klasyfikacje dla całej bazy danych.
 
@@ -146,7 +146,26 @@ Interfejsów API REST można również użyć do programowego zarządzania klasy
 - [Lista bieżącą przez bazę danych](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase) — pobiera bieżącej etykiety ważności określonej bazy danych
 - [Lista zalecanych przez bazę danych](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) — pobiera etykiety zalecane czułości określonej bazy danych
 
+## <a name="manage-data-discovery-and-classification-using-azure-powershell"></a>Zarządzanie danych, odnajdowanie i klasyfikację przy użyciu programu Azure PowerShell
+
+Aby uzyskać zalecane kolumny w bazie danych Azure SQL i wystąpienia zarządzanego, można użyć programu PowerShell.
+
+### <a name="powershell-cmdlets-for-azure-sql-database"></a>Polecenia cmdlet programu PowerShell dla usługi Azure SQL database
+
+- [Get-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasesensitivityclassification)
+- [Set-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasesensitivityclassification)
+- [Remove-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasesensitivityclassification)
+- [Get-AzSqlDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasesensitivityrecommendation)
+
+### <a name="powershell-cmdlets-for-managed-instance"></a>Polecenia cmdlet programu PowerShell dla wystąpienia zarządzanego
+
+- [Get-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityclassification)
+- [Set-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasesensitivityclassification)
+- [Remove-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabasesensitivityclassification)
+- [Get-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityrecommendation)
+
 ## <a name="permissions"></a>Uprawnienia
+
 Następujące role wbudowane może odczytywać klasyfikację danych Azure SQL database: `Owner`, `Reader`, `Contributor`, `SQL Security Manager` i `User Access Administrator`.
 
 Następujące role wbudowane, można zmodyfikować klasyfikacji danych Azure SQL database: `Owner`, `Contributor`, `SQL Security Manager`.

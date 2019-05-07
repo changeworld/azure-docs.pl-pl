@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: wolfma
-ms.openlocfilehash: bf0916f197ff5bf1a9531fde98fe8cefc8d7727f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fc03db268ab05c6718fb323bc30574a36d0ca092
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61460307"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65138159"
 ---
 # <a name="support-and-help-options"></a>Opcje pomocy technicznej i pomocy
 
@@ -71,6 +71,7 @@ Jeśli nie możesz znaleźć odpowiedzi na problem za pomocą wyszukiwania, Prze
 |Tłumaczenie mowy |[[microsoft-cognitive+translation]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+translation)|
 |Opcje rozpoznawania mowy |[[microsoft-luis cognitive +]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+luis)|
 |Zestaw SDK rozpoznawania mowy ogólne |[[microsoft-cognitive+microsoft-speech-api]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+microsoft-speech-api)|
+| Pierwszy głosu asystentów wirtualne (wersja zapoznawcza) | [[microsoft-cognitive+virtual-assistant+botframework]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+virtual-assistant+botframework) | 
 
 > [!TIP]
 > Następujące wpisy w witrynie Stack Overflow zawiera wskazówki dotyczące sposobu pytania formularza i dodać kod źródłowy. Następujące wskazówki mogą pomóc zwiększyć szanse, że członkowie społeczności ocenić i szybko reagować na Twoje pytanie:  

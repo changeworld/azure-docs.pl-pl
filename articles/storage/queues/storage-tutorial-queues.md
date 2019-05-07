@@ -1,21 +1,22 @@
 ---
-title: Samouczek — Praca z kolejek usługi Azure storage
+title: Samouczek — Praca z kolejek usługi Azure storage — usługi Azure Storage
 description: Samouczek dotyczący sposobu użycia usługi kolejek platformy Azure do tworzenia kolejek oraz wstawiania, pobieranie i usuwanie wiadomości.
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
+ms.reviewer: cbrooks
 ms.service: storage
 ms.subservice: queues
 ms.topic: tutorial
 ms.date: 04/24/2019
-ms.openlocfilehash: 5aa12c39b951ce65c4ef0a3f44de381c8961ed7f
-ms.sourcegitcommit: 1aab8b764d767d86fbf262bda34996189d00c7bb
+ms.openlocfilehash: 81d7572f800f191791158f2c1f99e1f072980116
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "64406168"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65151066"
 ---
-# <a name="tutorial-work-with-azure-storage-queues"></a>Samouczek: Praca z kolejek usługi Azure storage
+# <a name="tutorial-work-with-azure-storage-queues"></a>Samouczek: Praca z kolejkami magazynu platformy Azure
 
 Usługa Azure Queue storage implementuje są oparte na chmurze kolejki, aby umożliwić komunikację między składnikami aplikacji rozproszonej. Każda kolejka utrzymuje listę komunikatów, które mogą być dodawane przez składnik nadawcy lub przetworzone przez składnik odbiorcy. Z kolejki aplikację można skalować od razu do spełnienia określonych wymagań. W tym artykule przedstawiono podstawowe czynności w przypadku pracy z kolejki usługi Azure storage.
 

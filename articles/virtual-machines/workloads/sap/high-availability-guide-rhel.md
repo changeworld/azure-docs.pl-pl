@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/15/2019
+ms.date: 04/30/2019
 ms.author: sedusch
-ms.openlocfilehash: c6746dc4bd5732a13c25793ed572a85acfca82d4
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 4e224a1abf72bfa068bebaf971e34c492b15d7c0
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925787"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142989"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux"></a>Azure maszyny wirtualne wysokiej dostępności dla oprogramowania SAP NetWeaver w systemie Red Hat Enterprise Linux
 
@@ -87,6 +87,9 @@ Aby uzyskać wysoką dostępność, oprogramowanie SAP NetWeaver wymaga magazynu
 
 SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver Wywołujących i bazy danych SAP HANA, użyj nazwy hosta wirtualnego i wirtualnych adresów IP. Na platformie Azure modułu równoważenia obciążenia jest wymagany do użycia wirtualnego adresu IP. Na poniższej liście przedstawiono konfigurację (A) SCS i Wywołujących modułu równoważenia obciążenia.
 
+> [!IMPORTANT]
+> — Wiele identyfikatorów SID klastrowania SAP ASCS/Wywołujących z systemu Red Hat Linux jako system operacyjny gościa na maszynach wirtualnych Azure **nieobsługiwane**. — Wiele identyfikatorów SID klastrowania w tym artykule opisano instalację wielu wystąpień SAP ASCS/Wywołujących o różnych identyfikatorach SID w jednym klastrze program Pacemaker.
+
 ### <a name="ascs"></a>(A)SCS
 
 * Konfiguracja frontonu
@@ -95,7 +98,7 @@ SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver Wywołujących i bazy danyc
   * Podłączone do podstawowych interfejsów sieciowych wszystkich maszyn wirtualnych, które powinny być częścią (A) SCS/Wywołujących klastra
 * Port sondy
   * Port 620<strong>&lt;nr&gt;</strong>
-* Reguł równoważenia obciążenia
+* Reguły równoważenia obciążenia
   * 32<strong>&lt;nr&gt;</strong>  TCP
   * 36<strong>&lt;nr&gt;</strong>  TCP
   * 39<strong>&lt;nr&gt;</strong> TCP
@@ -112,7 +115,8 @@ SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver Wywołujących i bazy danyc
   * Podłączone do podstawowych interfejsów sieciowych wszystkich maszyn wirtualnych, które powinny być częścią (A) SCS/Wywołujących klastra
 * Port sondy
   * Port 621<strong>&lt;nr&gt;</strong>
-* Reguł równoważenia obciążenia
+* Reguły równoważenia obciążenia
+  * 32<strong>&lt;nr&gt;</strong>  TCP
   * 33<strong>&lt;nr&gt;</strong>  TCP
   * 5<strong>&lt;nr&gt;</strong>13 TCP
   * 5<strong>&lt;nr&gt;</strong>14 TCP
@@ -124,11 +128,11 @@ Oprogramowanie SAP NetWeaver wymaga magazynu udostępnionego dla katalogu transp
 
 ## <a name="setting-up-ascs"></a>Konfigurowanie () SCS
 
-Możesz użyć szablonu usługi Azure z usługi github do wdrażania wszystkich wymaganych zasobów platformy Azure, łącznie z maszynami wirtualnymi, dostępność zestawu i modułu równoważenia obciążenia lub ręcznie wdrożyć zasoby.
+Możesz użyć szablonu usługi Azure z usługi GitHub do wdrażania wszystkich wymaganych zasobów platformy Azure, łącznie z maszynami wirtualnymi, dostępność zestawu i modułu równoważenia obciążenia lub ręcznie wdrożyć zasoby.
 
 ### <a name="deploy-linux-via-azure-template"></a>Wdrażanie systemu Linux przy użyciu szablonu platformy Azure
 
-W portalu Azure Marketplace zawiera obraz Red Hat Enterprise Linux, który służy do wdrażania nowych maszyn wirtualnych. Można użyć jednego z szablonów szybkiego startu w usłudze github do wdrażania wszystkich wymaganych zasobów. Szablon umożliwia wdrożenie maszyn wirtualnych, moduł równoważenia obciążenia, dostępności, ustaw itp. Wykonaj następujące kroki, aby wdrożyć szablon:
+W portalu Azure Marketplace zawiera obraz Red Hat Enterprise Linux, który służy do wdrażania nowych maszyn wirtualnych. Można użyć jednego z szablonów szybkiego startu w usłudze GitHub do wdrażania wszystkich wymaganych zasobów. Szablon umożliwia wdrożenie maszyn wirtualnych, moduł równoważenia obciążenia, dostępności, ustaw itp. Wykonaj następujące kroki, aby wdrożyć szablon:
 
 1. Otwórz [szablonu ASCS/SCS] [ template-multisid-xscs] w witrynie Azure portal  
 1. Wprowadź następujące parametry
@@ -145,7 +149,7 @@ W portalu Azure Marketplace zawiera obraz Red Hat Enterprise Linux, który słu�
    1. Dostępność systemu  
       Wybierz opcję wysokiej dostępności
    1. Nazwa użytkownika administratora, hasło administratora lub protokołu SSH  
-      Tworzony jest nowy użytkownik, który może służyć do logowania się do komputera.
+      Tworzony jest nowy użytkownik, który może służyć do logowania się na tym komputerze.
    1. Identyfikator podsieci  
    Jeśli chcesz wdrożyć maszynę Wirtualną w istniejącej sieci wirtualnej, w którym masz zdefiniowanej podsieci maszyny Wirtualnej powinien być przypisany do nazwy identyfikator odpowiednią podsieć. Identyfikator zwykle wygląda /subscriptions/**&lt;identyfikator subskrypcji&gt;**/resourceGroups/**&lt;nazwy grupy zasobów&gt;**/providers/ Microsoft.Network/virtualNetworks/**&lt;nazwa sieci wirtualnej&gt;**/subnets/**&lt;Nazwa podsieci&gt;**
 
@@ -192,7 +196,7 @@ Najpierw należy utworzyć maszyny wirtualne, dla tego klastra. Następnie utwó
          1. Kliknij przycisk OK
       1. Port 621**02** dla ASCS Wywołujących
          * Powtórz powyższe kroki, aby utworzyć sondę kondycji dla Wywołujących (na przykład 621**02** i **nw1-aers-hp**)
-   1. Reguł równoważenia obciążenia
+   1. Reguły równoważenia obciążenia
       1. 32**00** protokołu TCP na potrzeby ASCS
          1. Otwórz moduł równoważenia obciążenia, wybierz pozycję reguły równoważenia obciążenia i kliknij przycisk Dodaj
          1. Wprowadź nazwę nowej reguły równoważenia obciążenia (na przykład **nw1-lb-3200**)
@@ -457,7 +461,7 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
 
 1. **[A]**  Skonfigurować podtrzymywaniu
 
-   Komunikacja między serwerem aplikacji SAP NetWeaver i ASCS/SCS odbywa się za pomocą programowego modułu równoważenia obciążenia. Moduł równoważenia obciążenia rozłączy nieaktywnego połączenia po upłynięciu limitu czasu można konfigurować. Aby zapobiec takiej sytuacji należy ustawić parametr w profilu SAP NetWeaver ASCS/SCS i zmienianie ustawień systemu Linux. Odczyt [1410736 Uwaga SAP] [ 1410736] Aby uzyskać więcej informacji.
+   Komunikacja między serwerem aplikacji SAP NetWeaver i ASCS/SCS odbywa się za pomocą programowego modułu równoważenia obciążenia. Moduł równoważenia obciążenia rozłączy nieaktywnego połączenia po upłynięciu limitu czasu można konfigurować. Aby tego uniknąć, należy ustawić parametr w profilu SAP NetWeaver ASCS/SCS i zmienianie ustawień systemu Linux. Odczyt [1410736 Uwaga SAP] [ 1410736] Aby uzyskać więcej informacji.
 
    ASCS/SCS profilu parametr umieścić/encni/set_so_keepalive został już dodany w ostatnim kroku.
 
@@ -527,7 +531,7 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
    sudo pcs property set maintenance-mode=false
    </code></pre>
 
-   Jeśli uaktualnienia ze starszej wersji, a przełączanie umieścić serwer 2, patrz Uwaga sap [2641322](https://launchpad.support.sap.com/#/notes/2641322). 
+   Jeśli uaktualnienia ze starszej wersji, a przełączanie umieścić serwer 2, zobacz SAP Uwaga [2641322](https://launchpad.support.sap.com/#/notes/2641322). 
 
    Upewnij się, że kondycja klastra jest ok i że wszystkie zasoby są uruchamiane. Nie jest to ważne w węźle, które zasoby są uruchomione.
 

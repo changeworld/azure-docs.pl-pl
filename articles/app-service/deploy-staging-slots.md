@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cephalin
-ms.openlocfilehash: 544ef8947f3a593071cabea018c722db96ab1475
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d62632d6c28ac137095307e95dbbdab7e8573bbc
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59266209"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65137878"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Konfigurowanie środowisk przejściowych w usłudze Azure App Service
 <a name="Overview"></a>
@@ -265,6 +265,8 @@ Aby umożliwić użytkownikom korzystania z aplikacji w wersji beta, należy ust
 ```
 <webappname>.azurewebsites.net/?x-ms-routing-name=staging
 ```
+
+Domyślnie nowe miejsc otrzymują reguły routingu `0%`, jak pokazano w kolorze szarym. Poprzez jawne ustawienie tej wartości `0%` (pokazano czarny tekst), użytkownicy mogą uzyskiwać dostęp miejsca przejściowego ręcznie przy użyciu `x-ms-routing-name` parametr zapytania, ale będzie nie być kierowane do miejsca automatycznie ponieważ procent routingu jest równa 0. Jest to zaawansowany scenariusz, w którym można "ukryć" Twojego miejsca przejściowego publicznie, pozwalając zespołom wewnętrznym przetestować zmiany w gnieździe.
 
 <a name="Delete"></a>
 

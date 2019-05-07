@@ -8,29 +8,34 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: divswa, LADocs
 ms.topic: article
-ms.date: 09/14/2018
+ms.date: 04/19/2019
 tags: connectors
-ms.openlocfilehash: 468e73c64037a76da612cba8d6c2e9507dd3ac87
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 0ee8b164aa46c4fe2f66f27d9a41d0282c676907
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62120163"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65136787"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Łączenie z systemami SAP z usługi Azure Logic Apps
 
-Ten artykuł pokazuje, jak można pobrać w lokalnych zasobach SAP z wewnątrz aplikacji logiki za pomocą łącznika SAP ERP i przeniesieniu jej centralnej składnika (ECC). Łącznik działa z ECC i S/4 HANA systemów w środowisku lokalnym. Łącznik SAP ECC obsługuje integrację wiadomości lub danych do i z systemów opartych na oprogramowanie SAP Netweaver przez pośredniego dokumentu (IDoc) lub interfejsu programowania aplikacji biznesowych (BAPI) lub zdalnego wywołania funkcji (RFC).
+Ten artykuł pokazuje, jak można pobrać w lokalnych zasobach SAP z wewnątrz aplikacji logiki za pomocą łącznika SAP. Łącznik działa z SAP klasycznego zwalnia takich R/3 ECC systemów lokalnych. Łącznik umożliwia także integrację z oprogramowaniem SAP na nowsze platformy HANA na podstawie systemów SAP S/4 HANA, np. wszędzie tam, gdzie one są hostowane — lokalnie lub w chmurze.
+Łącznik SAP obsługuje integrację wiadomości lub danych do i z systemów opartych na oprogramowanie SAP Netweaver przez pośredniego dokumentu (IDoc) lub interfejsu programowania aplikacji biznesowych (BAPI) lub zdalnego wywołania funkcji (RFC).
 
-Łącznik SAP ECC używa <a href="https://support.sap.com/en/product/connectors/msnet.html">Biblioteka łącznika systemu SAP .NET (NCo)</a> i udostępnia te operacje lub akcje:
+Łącznik SAP używa <a href="https://support.sap.com/en/product/connectors/msnet.html">Biblioteka łącznika systemu SAP .NET (NCo)</a> i udostępnia te operacje lub akcje:
 
 - **Wyślij do SAP**: Wyślij IDoc lub wywoływać funkcje BAPI za pośrednictwem tRFC z systemów SAP.
 - **Otrzymywać od firmy SAP**: Odbieranie IDoc lub BAPI wywołania funkcji za pośrednictwem tRFC z systemów SAP.
 - **Generowanie schematów**: Generowanie schematów dla artefaktów SAP IDoc ani BAPI RFC.
 
+Dla wszystkich powyższych operacji łącznika systemu SAP obsługuje uwierzytelnianie podstawowe, za pomocą nazwy użytkownika i hasła. Łącznik obsługuje dodatkowo funkcje <a href="https://help.sap.com/doc/saphelp_nw70/7.0.31/en-US/e6/56f466e99a11d1a5b00000e835363f/content.htm?no_cache=true"> zabezpieczenia sieci komunikacji (SNC)</a>, które mogą służyć do SAP Netweaver logowania jednokrotnego lub możliwości zapewnienia dodatkowych zabezpieczeń oferowane przez to produkt zewnętrzny zabezpieczeń. 
+
 Łącznik SAP integruje się z lokalnymi systemami SAP za pośrednictwem [lokalnej bramy danych](https://www.microsoft.com/download/details.aspx?id=53127). W scenariuszach wysyłania, na przykład podczas wysyłania wiadomości z aplikacji logiki do systemu SAP brama danych działa jako klient specyfikacji RFC i przekazuje żądania otrzymane od logiki aplikacji SAP.
 Podobnie w scenariuszach Receive brama danych działa jako serwer RFC, która odbiera żądania od firmy SAP i przekazuje do aplikacji logiki. 
 
 W tym artykule pokazano, jak utworzyć przykład aplikacji logiki, które integrują się z SAP podczas obejmujące scenariusze integracji opisany wcześniej.
+
+<a name="pre-reqs"></a>
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -43,6 +48,12 @@ Aby skorzystać z tego artykułu, potrzebne są następujące elementy:
 * Twoje <a href="https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server" target="_blank">serwera aplikacji SAP</a> lub <a href="https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm" target="_blank">SAP Message Server</a>
 
 * Pobierz i zainstaluj najnowszą wersję [lokalnej bramy danych](https://www.microsoft.com/download/details.aspx?id=53127) na każdym komputerze w środowisku lokalnym. Upewnij się, że możesz skonfigurować bramę w witrynie Azure portal przed kontynuowaniem. Bramy umożliwia bezpieczny dostęp do danych i zasoby są w środowisku lokalnym. Aby uzyskać więcej informacji, zobacz [instalacji lokalnej bramy danych usługi Azure Logic Apps](../logic-apps/logic-apps-gateway-install.md).
+
+* Jeśli używasz SNC za pomocą pojedynczego logowania jednokrotnego (SSO), upewnij się, że brama działa jako użytkownik, który jest mapowany użytkownika SAP. Aby zmienić konto domyślne, wybierz **zmienić konto** i wprowadzić poświadczenia użytkownika.
+
+   ![Zmień konto bramy](./media/logic-apps-using-sap-connector/gateway-account.png)
+
+* Jeśli włączasz SNC z produktem zabezpieczenia zewnętrzne, skopiuj Biblioteka SNC lub plików na tym samym komputerze, w którym zainstalowano bramę. Niektóre przykłady produktów SNC <a href="https://help.sap.com/saphelp_nw74/helpdata/en/7a/0755dc6ef84f76890a77ad6eb13b13/frameset.htm">sapseculib</a>, protokołu Kerberos, NTLM, i tak dalej.
 
 * Pobierz i zainstaluj najnowsze biblioteki klienta SAP, która jest obecnie <a href="https://softwaredownloads.sap.com/file/0020000001865512018" target="_blank">łącznika systemu SAP (NCo) 3.0.21.0 dla programu Microsoft .NET Framework 4.0 i Windows 64-bitowy (x64)</a>, w tym samym komputerze co lokalna brama danych. Zainstaluj tę wersję lub nowszym z tych powodów:
 
@@ -114,7 +125,7 @@ W usłudze Azure Logic Apps [akcji](../logic-apps/logic-apps-overview.md#logic-a
       Jeśli **typ logowania** właściwość jest ustawiona na **grupy**, te właściwości, które zwykle znajdują się opcjonalne, są wymagane: 
 
       ![Utwórz połączenie z serwerem SAP wiadomości](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png) 
-
+      
    2. Gdy wszystko będzie gotowe, wybierz pozycję **Utwórz**. 
    
       Usługa Logic Apps, konfiguruje i testuje połączenie, upewniając się, że połączenie działa poprawnie.
@@ -375,23 +386,45 @@ Opcjonalnie można pobrać lub zapisać wygenerowanego schematów w repozytorió
 
 2. Po pomyślnym przeprowadzeniu uruchomienia, przejdź na stronę konto integracji i sprawdź, czy istnieją schematy wygenerowanego wygenerowany.
 
+## <a name="enable-secure-network-communications-snc"></a>Włącz komunikację sieciową bezpieczne (SNC)
+
+Przed rozpoczęciem upewnij się, że zostały spełnione wymienione wcześniej [wymagania wstępne](#pre-reqs):
+
+* Lokalna brama danych jest zainstalowany na komputerze, na którym znajduje się w tej samej sieci w systemie SAP.
+
+* Dla rejestracji jednokrotnej, brama działa jako użytkownik, który jest zamapowana na użytkownika SAP.
+
+* Biblioteka SNC, która zapewnia funkcje zabezpieczeń został zainstalowany na tym samym komputerze co brama danych. Przykłady to między innymi <a href="https://help.sap.com/saphelp_nw74/helpdata/en/7a/0755dc6ef84f76890a77ad6eb13b13/frameset.htm">sapseculib</a>, protokołu Kerberos, NTLM, i tak dalej.
+
+Aby włączyć SNC dla żądań do lub z systemem SAP, wybierz **SNC użyj** pole wyboru, w związku z SAP i dostarczenie tych właściwości:
+
+   ![Konfigurowanie SAP SNC w ramach połączenia](media/logic-apps-using-sap-connector/configure-sapsnc.png) 
+
+   | Właściwość   | Opis |
+   |------------| ------------|
+   | **Biblioteka SNC** | Nazwa biblioteki SNC lub ścieżką względną wobec lokalizacji instalacji NCo lub ścieżkę absolutną. Jako przykład sapsnc.dll lub.\security\sapsnc.dll lub c:\security\sapsnc.dll  | 
+   | **USŁUGA REJESTRACJI JEDNOKROTNEJ SNC** | Po nawiązaniu połączenia za pośrednictwem SNC tożsamości SNC jest zazwyczaj używany do uwierzytelniania obiektu wywołującego. Innym rozwiązaniem jest zastąpienie tak, aby informacje użytkownika i hasło mogą służyć do uwierzytelniania obiektu wywołującego, ale nadal szyfrowany wiersza.|
+   | **Moja nazwa SNC** | W większości przypadków można pominąć to. Zainstalowane rozwiązanie SNC wie, zwykle własną nazwę SNC. Tylko w przypadku rozwiązań Obsługa "wiele tożsamości" konieczne może być określ tożsamość ma być używany dla tego konkretnego docelowego/serwera |
+   | **Nazwa partnera SNC** | Nazwa SNC wewnętrznej bazy danych |
+   | **Jakość SNC ochrony** | Jakość usługi do użycia w przypadku komunikacji SNC tego miejsca docelowego/serwera. Wartość domyślna jest definiowany przez systemu zaplecza. Maksymalna wartość jest definiowana przez produkt zabezpieczeń używane dla SNC |
+   |||
+
+   > [!NOTE]
+   > Zmienne środowiskowe zmienna środowiskowa SNC_LIB i SNC_LIB_64 powinna nie można ustawić na komputerze gdzie mają bramą danych i Biblioteka SNC. Jeśli ustawiona, ich pierwszeństwo miałoby na wartość Biblioteka SNC przekazywane za pośrednictwem łącznika.
+   >
+
 ## <a name="known-issues-and-limitations"></a>Znane problemy i ograniczenia
 
 W tym miejscu są obecnie znane problemy i ograniczenia dotyczące łącznika SAP:
+
+* Pojedynczy wysyłania do wywołania SAP lub komunikat w programach tRFC. Wzorzec zatwierdzenia interfejsu programowania aplikacji biznesowych (BAPI), takich jak wykonywanie wielu wywołań tRFC w tej samej sesji nie jest obsługiwane.
 
 * Wyzwalacz SAP nie obsługuje odbieranie dokumentów Idoc usługi batch z systemu SAP. Ta akcja może spowodować błąd połączenia RFC między systemem SAP i bramy danych.
 
 * Wyzwalacz SAP nie obsługuje klastry bramy danych. W niektórych przypadkach trybu failover węzła bramy danych, który komunikuje się z systemu SAP mogą się różnić od aktywnego węzła, spowodować nieoczekiwane zachowanie. W przypadku scenariuszy wysyłania klastrów bramy danych są obsługiwane.
 
-* W scenariuszach Receive zwróceniem odpowiedzi innych niż null nie jest obsługiwane. Wyniki aplikacji logiki z wyzwalaczem i akcją odpowiedzi nieoczekiwane zachowanie. 
-
-* Pojedynczy wysyłania do wywołania SAP lub komunikat w programach tRFC. Wzorzec zatwierdzenia interfejsu programowania aplikacji biznesowych (BAPI), takich jak wykonywanie wielu wywołań tRFC w tej samej sesji nie jest obsługiwane.
-
-* Specyfikacje RFC z załącznikami nie są obsługiwane dla wysyłania SAP i generowanie schematów akcji.
-
 * Łącznik SAP nie obsługuje obecnie SAP routera ciągów. Lokalna brama danych musi istnieć w tej samej sieci lokalnej, jak system SAP, którą chcesz się połączyć.
 
-* Konwersja dla braku (null), pusty, minimalne i maksymalne wartości dla pól DATS i TIMS SAP mogą się zmieniać w późniejszych aktualizacjach dla lokalnej bramy danych.
 
 ## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
 

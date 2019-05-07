@@ -2,18 +2,19 @@
 title: Wymaganie bezpiecznego transferu w usłudze Azure Storage | Dokumentacja firmy Microsoft
 description: Więcej informacji na temat funkcji "Wymagany bezpieczny transfer" dla usługi Azure Storage i jak go włączyć.
 services: storage
-author: fhryo-msft
+author: tamram
 ms.service: storage
 ms.topic: article
 ms.date: 06/20/2017
-ms.author: fryu
+ms.author: tamram
+ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: e75cd873b780f514b24ee254dd491b6aa779c420
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7239e7fbe1221acc3c302260045d6fc510db2cbe
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58101928"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148568"
 ---
 # <a name="require-secure-transfer-in-azure-storage"></a>Wymaganie bezpiecznego transferu w usłudze Azure Storage
 

@@ -12,19 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/17/2018
+ms.date: 05/03/2019
 ms.author: barclayn
-ms.openlocfilehash: f872c61ad0597d2307cd244668fdfc258f7a45cb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2a669f5b46db4d5de7d1d6863b94e6c117667aee
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60611253"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153240"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure Identity Management i kontrolę dostępu najlepsze rozwiązania dotyczące zabezpieczeń
-
-Wiele należy wziąć pod uwagę tożsamości jako nową warstwę granicy zabezpieczeń, zajmuje ponad tę rolę z tradycyjnych multimediach sieci perspektywy. Tej ewolucji przestawnej podstawowego dla uwagi bezpieczeństwa i inwestycje pochodzą z faktu, że sieci co stają się coraz bardziej porowaty i obrony ten obwód nie może być tak skuteczne, jak one raz zostały przed rozbicie [BYOD ](https://aka.ms/byodcg) urządzeń i aplikacji w chmurze.
-
 W tym artykule omawiane jest kolekcją usługi Azure identity management i najlepsze rozwiązania zabezpieczeń kontroli dostępu. Następujące najlepsze rozwiązania są uzyskiwane z naszych doświadczeniach z [usługi Azure AD](../active-directory/fundamentals/active-directory-whatis.md) i procesy, przez klientów, takich jak samodzielnie.
 
 Dla każdego najlepszym rozwiązaniem jest Wyjaśnijmy:
@@ -41,6 +38,7 @@ Tożsamość platformy Azure zarządzania i dostęp do kontroli zabezpieczeń na
 
 * Traktuj tożsamości jako głównych zabezpieczeń obwodowych
 * Scentralizowanie zarządzania tożsamościami
+* Zarządzanie dzierżawami połączonych
 * Włącz logowanie jednokrotne
 * Włączanie dostępu warunkowego
 * Włączanie zarządzania hasłami
@@ -48,10 +46,12 @@ Tożsamość platformy Azure zarządzania i dostęp do kontroli zabezpieczeń na
 * Korzystanie z kontroli dostępu opartej na rolach
 * Niższe ryzyko narażenia kont uprzywilejowanych
 * Kontrolowanie lokalizacji, gdzie znajdują się zasoby
+* Używaj usługi Azure AD do uwierzytelniania magazynu
 
 ## <a name="treat-identity-as-the-primary-security-perimeter"></a>Traktuj tożsamości jako głównych zabezpieczeń obwodowych
 
 Wiele należy wziąć pod uwagę tożsamości jako podstawowy obwodu zabezpieczeń. Jest to przesunięcia od tradycyjnych skoncentrować się na zabezpieczenia sieci. Strefy sieci stają się coraz bardziej porowaty i obrony ten obwód nie może być co najmniej sprzed rozbicie [BYOD](https://aka.ms/byodcg) urządzeń i aplikacji w chmurze.
+
 [Azure Active Directory (Azure AD)](../active-directory/active-directory-whatis.md) to Azure rozwiązanie do zarządzania tożsamościami i dostępem. Usługa Azure AD to wielodostępna, oparta na chmurze zarządzania katalogami i tożsamościami Usługa zarządzania firmy Microsoft. Łączy ona podstawowe usługi katalogowe, zarządzanie dostępem do aplikacji i ochrony tożsamości w ramach jednego rozwiązania.
 
 W poniższych sekcjach wymieniono najlepsze rozwiązania dotyczące zabezpieczeń tożsamości i dostępu za pomocą usługi Azure AD.
@@ -60,18 +60,41 @@ W poniższych sekcjach wymieniono najlepsze rozwiązania dotyczące zabezpiecze�
 
 W [tożsamości hybrydowej](https://resources.office.com/ww-landing-M365E-EMS-IDAM-Hybrid-Identity-WhitePaper.html?) scenariusz, zaleca się zintegrować lokalne i katalogi w chmurze. Integracja umożliwia zespołowi IT do zarządzania kontami z jednej lokalizacji, niezależnie od tego, gdzie zostanie utworzone konto. Integracja pomaga również użytkownikom mu bardziej wydajnej pracy, zapewniając wspólną tożsamość do uzyskiwania dostępu do zasobów lokalnych i chmurze.
 
+**Najlepsze rozwiązanie**: Ustanowić pojedynczego wystąpienia usługi Azure AD. Spójność i pojedynczego źródła autorytatywnego spowoduje zwiększenie przejrzystości i ograniczyć zagrożenie bezpieczeństwa, z błędami ludzkimi i złożoność konfiguracji.
+**Szczegóły**: Wyznacz pojedynczej usłudze Azure AD katalogu jako autorytatywne źródło dla kont firmowych, jak i organizacji.
 
 **Najlepsze rozwiązanie**: Integrowanie katalogów lokalnych z usługą Azure AD.  
 **Szczegóły**: Użyj [program Azure AD Connect](../active-directory/connect/active-directory-aadconnect.md) do synchronizacji katalogu lokalnego z katalogiem w chmurze.
 
-**Najlepsze rozwiązanie**: Włącz synchronizację skrótów haseł.  
-**Szczegóły**: Synchronizacja skrótów haseł jest funkcją, używane do synchronizowania skrótów skrótów haseł użytkowników z lokalnym wystąpieniem usługi Active Directory na platformie Azure opartych na chmurze wystąpienia usługi AD.
+> [!Note]
+> Istnieją [czynniki mające wpływ na wydajność programu Azure AD Connect](../active-directory/hybrid/plan-connect-performance-factors.md). Upewnij się, że program Azure AD Connect ma wystarczające moce przerobowe, aby zachować gorszych wynikach w przypadku systemów z referują zabezpieczenia i wydajność. Należy przestrzegać dużych lub złożonych organizacji (organizacji inicjowania obsługi więcej niż 100 000 obiektów) [zalecenia](../active-directory/hybrid/whatis-hybrid-identity.md) do optymalizacji ich implementacji usługi Azure AD Connect.
 
-Nawet jeśli użytkownik zdecyduje się za pomocą usług federacyjnych Active Directory Federation Services (AD FS) lub innych dostawców tożsamości, możesz opcjonalnie skonfigurować synchronizacji skrótów haseł do przechowywania kopii zapasowych w przypadku serwerów lokalnych się nie powieść lub stać się tymczasowo niedostępne. Umożliwia to użytkownikom na logowanie się do usługi przy użyciu tego samego hasła, używanego do logowania się w ich lokalnym wystąpieniem usługi Active Directory. Umożliwia również ochronę tożsamości do wykrywania przejęcie poświadczeń przez porównanie tych skrótów haseł z hasłami, znane złamać, jeśli użytkownik został użyty ich tego samego adresu e-mail i hasło w innych usługach, które nie są podłączone do usługi Azure AD.
+**Najlepsze rozwiązanie**: Nie Synchronizuj kont do usługi Azure AD, które mają wysokim poziomem uprawnień w ramach istniejącego wystąpienia usługi Active Directory.
+**Szczegóły**: Nie należy zmieniać domyślne [konfiguracji programu Azure AD Connect](../active-directory/hybrid/how-to-connect-sync-configure-filtering.md) który odfiltrowuje tych kont. Ta konfiguracja zmniejsza ryzyko przeciwników przestawianie z chmury do zasobów w środowisku lokalnym, (które można utworzyć zdarzenia główne).
+
+**Najlepsze rozwiązanie**: Włącz synchronizację skrótów haseł.  
+**Szczegóły**: Synchronizacja skrótów haseł jest funkcją do synchronizacji skrótów haseł użytkowników z lokalnym wystąpieniem usługi Active Directory na platformie Azure opartych na chmurze wystąpienia usługi AD. Pomaga chronić przed ujawnionymi poświadczeniami jest odtwarzany atakami poprzedniego tej synchronizacji.
+
+Nawet jeśli użytkownik zdecyduje się za pomocą usług federacyjnych Active Directory Federation Services (AD FS) lub innych dostawców tożsamości, możesz opcjonalnie skonfigurować synchronizacji skrótów haseł do przechowywania kopii zapasowych w przypadku serwerów lokalnych się nie powieść lub stać się tymczasowo niedostępne. Tej synchronizacji umożliwia użytkownikom na logowanie się do usługi przy użyciu tego samego hasła, używanego do logowania się w ich lokalnym wystąpieniem usługi Active Directory. Umożliwia również ochronę tożsamości do wykrywania przejęciem poświadczeń, porównując skrótów synchronizowanych haseł za pomocą haseł znane złamać, jeśli użytkownik został użyty w innych usługach, które nie są podłączone do usługi Azure AD tego samego adresu e-mail i hasło.
 
 Aby uzyskać więcej informacji, zobacz [Implementowanie synchronizacji skrótów haseł z usługą Azure AD Connect sync](../active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md).
 
+**Najlepsze rozwiązanie**: W przypadku nowych wdrożeń aplikacji użyj usługi Azure AD do uwierzytelniania.
+**Szczegóły**: Aby zapewnić obsługę uwierzytelniania, należy użyć poprawne możliwości:
+
+  - Usługa Azure AD dla pracowników
+  - [Usługa Azure AD B2B](https://docs.microsoft.com/azure/active-directory/b2b/) dla użytkowników-gości i partnerom zewnętrznym
+  - [Usługa Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/) do kontrolowania, jak klienci tworzą konta, zaloguj się i zarządzają swoimi profilami podczas korzystania z usługi aplikacji
+
 Organizacje, które nie integrowanie tożsamości lokalnych za pomocą tożsamości usługi w chmurze mogą mieć większe obciążenie w zarządzaniu kontami. Ten narzut zwiększa prawdopodobieństwo popełnione błędy i naruszeń zabezpieczeń.
+
+> [!Note]
+> Musisz wybrać katalogi, które konta będą znajdować się w i czy używana administracyjnej stacji roboczej jest zarządzane przez nowych usług w chmurze lub istniejące procesy. Użycie istniejącej zarządzania i tożsamości inicjowania obsługi procesów umożliwia zmniejszenie zagrożenia związane, ale można również utworzyć ryzyko osobie atakującej naruszenie konta w środowisku lokalnym i przestawianie w chmurze. Można użyć różnych strategii dla różnych ról (na przykład Administratorzy i administratorzy jednostek biznesowych). Dostępne są dwie opcje. Pierwsza opcja jest do utworzenia konta platformy Azure AD, które nie są synchronizowane z wystąpieniem usługi Active Directory w środowisku lokalnym. Dołącz do stacji roboczej administratora do usługi Azure AD, w którym możesz zarządzać i stosowanie poprawek dzięki usłudze Microsoft Intune. Drugą opcją jest synchronizowanie z wystąpieniem usługi Active Directory w środowisku lokalnym za pomocą istniejących kont administratora. Użyj istniejącego stacje robocze w domenie usługi Active Directory do zarządzania i zabezpieczeń.
+
+## <a name="manage-connected-tenants"></a>Zarządzanie dzierżawami połączonych
+Twoja organizacja zabezpieczeń wymaga widoczność w celu dokonania oceny ryzyka i określić, czy przestrzeganie zasad firmy i wszelkie wymagania prawne. Należy upewnić się, że Twoja organizacja security ma wgląd we wszystkie subskrypcje podłączone do środowiska produkcyjnego i sieci (za pośrednictwem [usługi Azure ExpressRoute](../expressroute/expressroute-introduction.md) lub [sieci VPN typu lokacja lokacja](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)). A [globalnego administratora/Administrator firmy](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator) w usłudze Azure AD podnieść poziom konta dostępu do [Administrator dostępu użytkowników](../role-based-access-control/built-in-roles.md#user-access-administrator) roli i wyświetlić wszystkie subskrypcje i grup zarządzanych przez podłączone do danego środowiska.
+
+Zobacz [podniesienie poziomu dostępu, aby zarządzać wszystkimi subskrypcjami platformy Azure i grup zarządzania](../role-based-access-control/elevate-access-global-admin.md) aby upewnić się, że możesz i swojej grupy zabezpieczeń mogą wyświetlać wszystkich subskrypcji lub grupy zarządzania podłączone do danego środowiska. Po po ocenie ryzyka, należy usunąć ten podwyższonego poziomu dostępu.
 
 ## <a name="enable-single-sign-on"></a>Włącz logowanie jednokrotne
 
@@ -88,12 +111,15 @@ Organizacje, które nie należy tworzyć wspólną tożsamość do ustalenia log
 
 ## <a name="turn-on-conditional-access"></a>Włączanie dostępu warunkowego
 
-Użytkownicy mogą uzyskiwać dostęp do zasobów organizacji przy użyciu różnych urządzeń i aplikacji z dowolnego miejsca. Jako IT administrator chcesz upewnić się, że te urządzenia spełniają Twoje standardy dotyczące bezpieczeństwa i zgodności. Po prostu koncentrujących się na kto ma dostęp do zasobu nie wystarcza już.
+Użytkownicy mogą uzyskiwać dostęp do zasobów organizacji przy użyciu różnych urządzeń i aplikacji z dowolnego miejsca. Jako administrator IT chcesz upewnić się, że te urządzenia spełniają Twoje standardy dotyczące bezpieczeństwa i zgodności. Po prostu koncentrujących się na kto ma dostęp do zasobu nie wystarcza już.
 
-Równoważyć, zabezpieczenia i wydajność, należy wziąć pod uwagę sposób dostępu do zasobu przed może podjąć decyzję kontroli dostępu. Funkcja dostępu warunkowego w usłudze Azure AD pozwala sprostać temu wymaganiu. Przy użyciu dostępu warunkowego można wprowadzić decyzji dotyczących kontroli automatyczny dostęp do uzyskiwania dostępu do Twoich aplikacji w chmurze, które są oparte na warunkach.
+Równoważyć, zabezpieczenia i wydajność, należy wziąć pod uwagę sposób dostępu do zasobu przed dokonaniem decyzji dotyczących kontroli dostępu. Funkcja dostępu warunkowego w usłudze Azure AD pozwala sprostać temu wymaganiu. Przy użyciu dostępu warunkowego można wprowadzać automatyczny dostęp decyzji dotyczących kontroli na podstawie warunków do uzyskiwania dostępu do aplikacji w chmurze.
 
 **Najlepsze rozwiązanie**: Zarządzanie i kontrola dostępu do zasobów firmy.  
 **Szczegóły**: Konfigurowanie usługi Azure AD [dostępu warunkowego](../active-directory/active-directory-conditional-access-azure-portal.md) bazujący na grupie, lokalizacji i ważności aplikacji dla aplikacji SaaS i aplikacje platformy Azure połączonej usługi AD.
+
+**Najlepsze rozwiązanie**: Zablokować starsze protokoły.
+**Szczegóły**: Osoby atakujące luki w starszych protokołów codziennie, szczególnie w przypadku złamania osłony hasła. Konfigurowanie dostępu warunkowego, aby zablokować starsze protokoły. Zobacz wideo [usługi Azure AD: Porady](https://www.youtube.com/watch?v=wGk0J4z90GI) Aby uzyskać więcej informacji.
 
 ## <a name="enable-password-management"></a>Włączanie zarządzania hasłami
 
@@ -105,6 +131,9 @@ Jeśli występuje wielu dzierżawców lub chcesz umożliwić użytkownikom [rese
 **Najlepsze rozwiązanie**: Monitor jak lub jeśli samoobsługowego resetowania HASEŁ jest rzeczywiście używane.  
 **Szczegóły**: Monitorowanie użytkowników, którzy rejestrowania przy użyciu usługi Azure AD [raport aktywności rejestracji resetowania hasła](../active-directory/active-directory-passwords-get-insights.md). Funkcji raportowania przez usługę Azure AD pomaga w uzyskaniu odpowiedzi na pytania za pomocą wbudowanych raportów. Jeśli masz odpowiednio licencję, można również utworzyć niestandardowe zapytania.
 
+**Najlepsze rozwiązanie**: Rozszerz zasady haseł oparte na chmurze do infrastruktury lokalnej.
+**Szczegóły**: Rozszerz zasady haseł w organizacji, wykonując tych samych kontroli zmian haseł w środowisku lokalnym, podobnie jak w przypadku zmiany haseł oparte na chmurze. Zainstaluj [ochrona za pomocą hasła usługi Azure AD](../active-directory/authentication/concept-password-ban-bad.md) Windows Server Active Directory agentów lokalnych można rozszerzyć listy zakazanych haseł w istniejącej infrastrukturze. Użytkownicy i Administratorzy, którzy zmienić, ustawiania lub resetowania hasła, które są wymagane do wykonania tych samych zasad haseł jako użytkowników tylko w chmurze, w środowisku lokalnym.
+
 ## <a name="enforce-multi-factor-verification-for-users"></a>Wymuszaj weryfikację Multi-Factor Authentication dla użytkowników
 
 Firma Microsoft zaleca żądania weryfikacji dwuetapowej dla wszystkich użytkowników. Obejmuje to administratorom oraz innym osobom w organizacji, którzy mogą mieć znaczący wpływ w przypadku naruszenia zabezpieczeń konta (na przykład dyrektorów finansowych).
@@ -115,6 +144,8 @@ Poniżej przedstawiono opcje oraz włączenie weryfikacji dwuetapowej korzyści:
 
 **Opcja 1**: [Włączanie uwierzytelniania wieloskładnikowego przez zmianę stanu użytkownika](../active-directory/authentication/howto-mfa-userstates.md).   
 **Korzyści z**: Jest to tradycyjne metody do wymagania weryfikacji dwuetapowej. Współdziała ona z obu [usługi Azure Multi-Factor Authentication w chmurze i serwera Azure Multi-Factor Authentication](../active-directory/authentication/concept-mfa-whichversion.md). Za pomocą tej metody wymaga od użytkowników przeprowadzenia weryfikacji dwuetapowej, za każdym razem, gdy zalogują się w i zastąpień zasad dostępu warunkowego.
+
+Aby określić, gdzie ma być włączone uwierzytelnianie wieloskładnikowe, zobacz [wersję usługi Azure MFA jest odpowiednia dla mojej organizacji?](../active-directory/authentication/concept-mfa-whichversion.md).
 
 **Opcja 2**: [Włączanie uwierzytelniania wieloskładnikowego za pomocą zasad dostępu warunkowego](../active-directory/authentication/howto-mfa-getstarted.md).
 **Korzyści z**: Ta opcja pozwala na monitowanie o weryfikacji dwuetapowej w określonych warunkach przy użyciu [dostępu warunkowego](../active-directory/active-directory-conditional-access-azure-portal.md). Określone warunki można logowania użytkowników z różnych lokalizacji, urządzeń niezaufanych lub aplikacje, które są uważane za ryzykowne. Definiowanie określone warunki, których wymagają weryfikacji dwuetapowej pozwala uniknąć, stałe monitowania dla użytkowników, które mogą być nieprzyjemnych komfortu.
@@ -135,11 +166,34 @@ Ta metoda używa usługi Azure AD Identity Protection ryzyka oceny w celu okreś
 
 Organizacje, które nie dodają dodatkowe warstwy ochrony tożsamości, takie jak weryfikacja dwuetapowa są bardziej podatne na ataki kradzieży poświadczeń. Ataku kradzieży poświadczeń może prowadzić do naruszenia zabezpieczeń danych.
 
-## <a name="use-role-based-access-control-rbac"></a>Korzystanie z kontroli dostępu opartej na rolach (RBAC)
+## <a name="use-role-based-access-control"></a>Korzystanie z kontroli dostępu opartej na rolach
+Zarządzanie dostępem do zasobów w chmurze jest krytyczny dla każdej organizacji, która korzysta z chmury. [Kontrola dostępu oparta na rolach (RBAC)](../role-based-access-control/overview.md) pomaga w zarządzaniu, kto ma dostęp do zasobów platformy Azure, co może zrobić przy użyciu tych zasobów i jakie obszary, których mają dostęp.
 
-Ograniczanie dostępu na podstawie [trzeba znać](https://en.wikipedia.org/wiki/Need_to_know) i [najniższych uprawnień](https://en.wikipedia.org/wiki/Principle_of_least_privilege) jest zasad zabezpieczeń dla organizacji, które chcesz wymuszać zasady zabezpieczeń dostępu do danych. Możesz użyć [kontroli dostępu opartej na rolach (RBAC)](../role-based-access-control/overview.md) można przypisać uprawnienia dla użytkowników, grup i aplikacji w określonym zakresie. Zakres przypisania roli może być subskrypcją, grupą zasobów lub pojedynczy zasób.
+Wyznaczanie grup lub poszczególnych ról odpowiedzialny za określonych funkcji na platformie Azure pomaga uniknąć nieporozumień, który może prowadzić do człowieka i błędów usługi automation, które tworzenie zagrożenia dla bezpieczeństwa. Ograniczanie dostępu na podstawie [trzeba znać](https://en.wikipedia.org/wiki/Need_to_know) i [najniższych uprawnień](https://en.wikipedia.org/wiki/Principle_of_least_privilege) jest zasad zabezpieczeń dla organizacji, które chcesz wymuszać zasady zabezpieczeń dostępu do danych.
 
-Możesz użyć [wbudowanej RBAC](../role-based-access-control/built-in-roles.md) ról na platformie Azure, aby przypisać uprawnienia do użytkowników. Organizacje, które nie wymusza kontrola dostępu do danych przy użyciu funkcji, takich jak RBAC może podając więcej uprawnień niż jest to konieczne do użytkowników. Może to prowadzić do naruszenia zabezpieczeń danych, umożliwiając użytkownikom dostęp do niektórych typów danych (na przykład duże znaczenie biznesowe), które nie mają.
+Zespół zabezpieczeń musi mieć wgląd w zasoby platformy Azure w celu oceny i skorygowania ryzyka. Jeśli zespół ds. zabezpieczeń ma obowiązków operacyjnych, potrzebują dodatkowych uprawnień do wykonywania ich zadań.
+
+Możesz użyć [RBAC](../role-based-access-control/overview.md) można przypisać uprawnienia dla użytkowników, grup i aplikacji w określonym zakresie. Zakres przypisania roli może być subskrypcją, grupą zasobów lub pojedynczy zasób.
+
+**Najlepsze rozwiązanie**: Segregowanie zadań w ramach zespołu i udzielać uprawnień dostępu do użytkowników, które są im niezbędne do wykonywania swoich zadań. Zamiast dzięki czemu wszyscy nieograniczonych uprawnień w ramach subskrypcji platformy Azure lub zasobów, można zezwolić tylko określone akcje w określonym zakresie.
+**Szczegóły**: Użyj [wbudowane role kontroli RBAC](../role-based-access-control/built-in-roles.md) na platformie Azure, aby przypisać uprawnienia do użytkowników.
+
+> [!Note]
+> Określone uprawnienia Tworzenie niepotrzebną złożoność i pomyłek, grupowania w konfiguracji "starszych", która jest trudne rozwiązać problem bez obawy przed czegoś nie zepsuć. Należy unikać uprawnienia specyficzne dla zasobu. Zamiast tego należy użyć grup zarządzania dla całego przedsiębiorstwa, uprawnień i grup zasobów dla uprawnień w ramach subskrypcji. Należy unikać uprawnienia specyficzne dla użytkownika. Przypisz dostęp do grup w usłudze Azure AD.
+
+**Najlepsze rozwiązanie**: Przyznaj zespoły zabezpieczeń z dostępem Azure obowiązki wyświetlić zasobów platformy Azure, dzięki czemu mogą ocenić i skorygować zagrożenia.
+**Szczegóły**: Udzielić zespołom zabezpieczeń RBAC [Czytelnik zabezpieczeń](../role-based-access-control/built-in-roles.md#security-reader) roli. W zależności od zakresu obowiązków, można użyć głównej grupy zarządzania lub grupie zarządzania segmencie:
+
+- **Grupa zarządzania głównym** dla zespołów odpowiedzialnych za wszystkie zasoby przedsiębiorstwa
+- **Grupa zarządzania segmentów** dla zespołów o ograniczonym zakresie (zwykle z powodu przepisami lub innymi granicami organizacji)
+
+**Najlepsze rozwiązanie**: Przyznaj odpowiednie uprawnienia do zespołów zabezpieczeń, które mają bezpośredni obowiązki operacyjnej.
+**Szczegóły**: Przejrzyj wbudowane role RBAC do przypisywania odpowiednią rolę. Jeśli wbudowane role nie spełnienia specyficznych potrzeb swojej organizacji, możesz utworzyć [ról niestandardowych dla zasobów platformy Azure](../role-based-access-control/custom-roles.md). Jak za pomocą wbudowanych ról, role niestandardowe można przypisać do użytkowników, grup i nazwy główne usług w subskrypcji, grupy zasobów i zakresy zasobów.
+
+**Najlepsze praktyki**: Przydział usługi Azure Security Center dostęp do ról zabezpieczeń, które go potrzebują. Usługa Security Center umożliwia zespołom zabezpieczeń szybkie identyfikowanie i korygowanie zagrożeń.
+**Szczegóły**: Dodaj zespoły zabezpieczeń za pomocą tych potrzeb opartej na ROLACH [Administrator zabezpieczeń](../role-based-access-control/built-in-roles.md#security-admin) roli, dzięki czemu mogą wyświetlić zasady zabezpieczeń, wyświetlanie stanów zabezpieczeń, edytować zasady zabezpieczeń, wyświetlanie alertów i zaleceń i zamknąć alerty i zalecenia. Można to zrobić za pomocą głównej grupy zarządzania lub z grupą zarządzania segment, w zależności od zakresu obowiązków.
+
+Organizacje, które nie wymuszają kontrola dostępu do danych przy użyciu funkcji, takich jak RBAC może podając więcej uprawnień niż jest to konieczne do użytkowników. Może to prowadzić do naruszenia zabezpieczeń danych, pozwalając użytkownikom można uzyskiwać dostęp do typów danych (na przykład duże znaczenie biznesowe), które nie mają.
 
 ## <a name="lower-exposure-of-privileged-accounts"></a>Niższe ryzyko narażenia kont uprzywilejowanych
 
@@ -153,6 +207,12 @@ Poniżej znajduje się podsumowanie najlepszych rozwiązań w [zabezpieczania up
 
 **Najlepsze rozwiązanie**: Zarządzanie, sterowanie i monitorowanie dostępu do kont uprzywilejowanych.   
 **Szczegóły**: Włącz [usługi Azure AD Privileged Identity Management](../active-directory/privileged-identity-management/active-directory-securing-privileged-access.md). Po włączeniu Privileged Identity Management otrzymasz powiadomienie e-mail wiadomości do uprzywilejowanego dostępu zmiany roli. Te powiadomienia stanowić wczesne ostrzeżenie, po dodaniu dodatkowych użytkowników do wysoce uprzywilejowanych ról w katalogu.
+
+**Najlepsze rozwiązanie**: Upewnij się, wszystkich kont administratora krytycznych są zarządzane konta usługi Azure AD.
+**Szczegóły**: Usunąć wszystkie konta klienta z rolami administratora krytyczne (na przykład kont Microsoft, takich jak hotmail.com, live.com i outlook.com).
+
+**Najlepsze rozwiązanie**: Upewnij się, że wszystkie role administratora krytyczne osobnego konta do wykonywania zadań administracyjnych w celu uniknięcia wyłudzania informacji oraz innych ataków złamanie uprawnień administracyjnych.
+**Szczegóły**: Utwórz oddzielne konto administratora, który ma przypisane uprawnienia wymagane do wykonywania zadań administracyjnych. Blokuj użycie tych kont z uprawnieniami administracyjnymi do codziennego narzędzi zwiększających produktywność, takich jak wiadomości e-mail usługi Microsoft Office 365 lub przeglądania sieci web dowolnego.
 
 **Najlepsze rozwiązanie**: Identyfikowanie i klasyfikowanie kont, które znajdują się w wysoce uprzywilejowanych ról.   
 **Szczegóły**: Po włączeniu usługi Azure AD Privileged Identity Management, należy wyświetlić użytkowników, którzy są w administratorem globalnym, administratorem ról uprzywilejowanych i inne role o wysokim poziomie uprawnień. Usuń wszelkie konta, które nie są już potrzebne w ramach tych ról, a skategoryzować pozostałe konta, które są przypisane do ról administratora:
@@ -173,10 +233,27 @@ Poniżej znajduje się podsumowanie najlepszych rozwiązań w [zabezpieczania up
 **Najlepsze rozwiązanie**: Należy zdefiniować co najmniej dwóch kont dostępu awaryjnego.   
 **Szczegóły**: Kont dostępu awaryjnego pomagają organizacjom ograniczenie dostępu uprzywilejowanego w istniejącym środowisku usługi Azure Active Directory. Te konta są wysoce uprzywilejowane i nie są przypisane do konkretnych osób. Kont dostępu awaryjnego są ograniczone do scenariuszy, w których nie można używać normalnego konta z uprawnieniami administracyjnymi. Organizacje muszą ograniczyć użycie konta dostępu awaryjnego na potrzeby ilość czasu.
 
-Ocena kont, które są przypisane lub kwalifikuje się do roli administratora globalnego. Jeśli nie widzisz żadnych kont tylko w chmurze przy użyciu `*.onmicrosoft.com` domeny (przeznaczonych do dostępu awaryjnego), utwórz je. Aby uzyskać więcej informacji zobacz Zarządzanie kontami administracyjnymi z dostępem awaryjnym w usłudze Azure AD.
+Ocena kont, które są przypisane lub kwalifikuje się do roli administratora globalnego. Jeśli nie widzisz żadnych kont tylko w chmurze przy użyciu `*.onmicrosoft.com` domeny (przeznaczonych do dostępu awaryjnego), utwórz je. Aby uzyskać więcej informacji, zobacz [Zarządzanie kontami administracyjnymi z dostępem awaryjnym w usłudze Azure AD](../active-directory/users-groups-roles/directory-emergency-access.md).
 
-**Najlepsze rozwiązanie**: Włącz uwierzytelnianie wieloskładnikowe i Zarejestruj wszystkie inne konta o wysokim poziomie uprawnień administratora inne niż federacyjne pojedynczego użytkownika.  
-**Szczegóły**: Wymaga usługi Azure Multi-Factor Authentication podczas logowania dla wszystkich poszczególnych użytkowników, którzy są trwale przypisane do przynajmniej jednej z ról administratora usługi Azure AD: administratorem globalnym, administratorem ról uprzywilejowanych, administrator usługi Exchange Online i SharePoint Online Administrator. Użyj przewodnika, aby włączyć [uwierzytelnianie wieloskładnikowe dla kont administratorów](../active-directory/authentication/howto-mfa-userstates.md) i upewnij się, że tych użytkowników [zarejestrowany](https://aka.ms/mfasetup).
+**Najlepsze rozwiązanie**: Istnieje proces "break szkła" w miejscu, w przypadku zagrożenia.
+**Szczegóły**: Postępuj zgodnie z instrukcjami w [zabezpieczania uprzywilejowanego dostępu dla wdrożeń hybrydowych i w chmurze w usłudze Azure AD](../active-directory/users-groups-roles/directory-admin-roles-secure.md).
+
+**Najlepsze rozwiązanie**: Wymagaj wszystkich kont administratora krytyczne jako hasło (preferowany) lub Wymagaj uwierzytelniania wieloskładnikowego.
+**Szczegóły**: Użyj [aplikacji Microsoft Authenticator](../active-directory/authentication/howto-authentication-phone-sign-in.md) zalogować się do dowolnego konta usługi Azure AD bez użycia hasła. Podobnie jak [Windows Hello dla firm](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification), Microsoft Authenticator używa uwierzytelniania opartego na kluczach, aby umożliwić poświadczeń użytkownika, który jest powiązany z urządzeniem i używa uwierzytelnianie biometryczne lub numer PIN.
+
+Wymaga usługi Azure Multi-Factor Authentication podczas logowania dla wszystkich poszczególnych użytkowników, którzy są trwale przypisana do co najmniej jednej z ról administratora usługi Azure AD: Administrator globalny, Administrator ról uprzywilejowanych, Online Administrator programu Exchange i SharePoint Online administratora. Włącz [uwierzytelnianie wieloskładnikowe dla kont administratorów](../active-directory/authentication/howto-mfa-userstates.md) i sprawdź, czy zarejestrowano użytkowników kont administratora.
+
+**Najlepsze rozwiązanie**: Dla kont administratora krytycznych ma administracyjnej stacji roboczej, których zadania w środowisku produkcyjnym nie są dozwolone (na przykład, przeglądanie i wiadomości e-mail). Kont administratorów to chroni przed atakami, przeglądanie i wiadomości e-mail, które znacząco obniżyć ryzyko dużego incydentu.
+**Szczegóły**: Za pomocą stacji roboczej administratora. Wybierz poziom zabezpieczeń stacji roboczej:
+
+- Wysoce bezpieczna produktywności urządzeń zapewniają zaawansowane zabezpieczenia do przeglądania i innych zadań produktywności.
+- [Privileged Access Workstations (Paw)](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations) zapewniają dedykowany system operacyjny, który jest chroniony przed atakami internetowymi i wektorami zagrożenia dla poufnych zadań.
+
+**Najlepsze rozwiązanie**: Anulowanie aprowizacji kont administratorów, gdy pracownik odejdzie z organizacji.
+**Szczegóły**: Istnieje proces w miejscu, która wyłącza lub usuwa konta administratora, gdy pracownik odejdzie z organizacji.
+
+**Najlepsze rozwiązanie**: Regularnie Testuj kont administratora przy użyciu bieżącego technik ataku.
+**Szczegóły**: Użyj symulatora ataku programu Office 365 lub innych firm, oferty do uruchomienia ataku realistycznej scenariuszy w Twojej organizacji. Może to pomóc w Znajdź użytkowników na ataki, zanim wystąpi prawdziwego ataku.
 
 **Najlepsze rozwiązanie**: Wykonaj kroki, aby można było zmniejszenie narażenia na najczęściej używane techniki zaatakowane.  
 **Szczegóły**: [Zidentyfikować konta Microsoft w rolach administracyjnych, które muszą zostać przełączone do konta służbowego.](../active-directory/users-groups-roles/directory-admin-roles-secure.md#identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts)  
@@ -232,6 +309,11 @@ Aktywną tożsamość systemu monitorowania może szybko wykrywać podejrzane za
 **Szczegóły**: Użyj [usługi Azure AD Identity Protection](../active-directory/active-directory-identityprotection.md), który oznacza bieżącą zagrożenie na swój własny pulpit nawigacyjny, a następnie wysyła codzienne podsumowanie powiadomienia pocztą e-mail. Aby lepiej chronić tożsamości w organizacji, można skonfigurować opartych na ryzykach zasady, które automatycznie reagują na wystąpienie wykryte problemy po osiągnięciu poziomu określonego ryzyka.
 
 Organizacje, które nie aktywnie monitoruje swoje systemy tożsamości są na ryzyko, że poświadczenia użytkownika naruszenia zabezpieczeń. Bez wiedzy czy podejrzane działania odbywają się za pomocą tych poświadczeń organizacje nie można rozwiązać tego typu zagrożenia.
+
+## <a name="use-azure-ad-for-storage-authentication"></a>Używaj usługi Azure AD do uwierzytelniania magazynu
+[Usługa Azure Storage](../storage/common/storage-auth-aad.md) obsługuje uwierzytelnianie i autoryzacja w usłudze Azure AD dla usługi Blob storage i Queue storage. Przy użyciu uwierzytelniania usługi Azure AD można użyć kontroli dostępu opartej na rolach na platformie Azure można udzielić określonych uprawnień użytkownikom, grupom i aplikacjom do zakresu, w kontenerze poszczególnych obiektów blob lub kolejki.
+
+Firma Microsoft zaleca użycie [usługi Azure AD do uwierzytelniania dostępu do magazynu](https://azure.microsoft.com/blog/azure-storage-support-for-azure-ad-based-access-control-now-generally-available/).
 
 ## <a name="next-step"></a>Następny krok
 

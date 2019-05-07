@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 05/06/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: e7d57b9d6a06f230835b53d5f6c8120b2a9b61ac
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 023542dbc22234fc57e4ce8b662a9760be4efe04
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924889"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65150759"
 ---
 # <a name="tutorial-return-azure-data-box-disk-and-verify-data-upload-to-azure"></a>Samouczek: wysyłka zwrotna urządzenia Azure Data Box Disk i weryfikowanie przekazania danych na platformę Azure
 
@@ -54,7 +54,12 @@ Jeśli zwraca urządzenia w Stanach Zjednoczonych lub Kanadzie, należy wykonać
     - Umieszcza etykiety na urządzeniu.
 
 2. Zamknij i zaklej opakowanie wysyłkowe. Upewnij się, że zwrotna etykieta wysyłkowa jest widoczna.
-3. Zaplanować odbioru UPS.
+3. Zaplanować odbioru UPS. Aby zaplanować odbioru:
+
+    - Wywołanie lokalne UPS (specyficzne dla kraju darmowy numer).
+    - W swojej rozmowy oferty odwrotnej wydanie numer, jak pokazano w drukowanej etykiety śledzenia.
+    - Jeśli numer śledzenia nie jest ujęty w cudzysłów, UPS będą wymagać dodatkowych opłaty są naliczane podczas odbioru.
+    - Zamiast planować odbiór, można również usunąć off dysku Data Box w najbliższej lokalizacji nadania.
 
 
 ### <a name="pick-up-in-europe"></a>Podnieś w Europie

@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: glenga
 ms.custom: ''
-ms.openlocfilehash: cc99bc4345c388f22e72957590f3917a85e214e0
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: f7fa1d58c21ea0ed457cc5987d7823fad68d554f
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62126631"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153815"
 ---
 # <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan"></a>Tworzenie aplikacji funkcji w systemie Linux w ramach planu usługi Azure App Service
 
@@ -62,9 +62,6 @@ Do obsługi wykonywania funkcji w systemie Linux potrzebna jest aplikacja funkcj
     ![Definiowanie nowych ustawień aplikacji funkcji](./media/create-function-app-linux-app-service-plan/function-app-create-notification.png)
 
 5. Wybierz pozycję **Przejdź do zasobu**, aby wyświetlić nową aplikację funkcji.
-
-> [!TIP]
-> Jeśli masz problem ze znalezieniem aplikacji funkcji w portalu, spróbuj [dodać aplikacje funkcji do ulubionych w witrynie Azure Portal](functions-how-to-use-azure-function-app-settings.md#favorite).
 
 Następnie należy utworzyć funkcję w nowej aplikacji funkcji. Mimo aplikacja funkcji jest dostępna, może upłynąć kilka minut, aby być w pełni zainicjowane.
 

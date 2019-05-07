@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: iainfou
-ms.openlocfilehash: 1c20e7796d152c9198786c491f9a61752d88ea6f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f98e38556458b8d8a675d1e3f985aacfca022082
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64726613"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65074166"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące uwierzytelniania i autoryzacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -88,7 +88,7 @@ Aby zobaczyć, jak kontrolować dostęp do zasobów usługi Kubernetes przy uży
 
 ## <a name="use-pod-identities"></a>Użyj tożsamości zasobników
 
-**Najważniejsze wskazówki** — nie należy używać stałych poświadczeń w obrębie zasobników lub obrazów kontenerów, ponieważ są one ryzyko ujawnienia lub nadużycia związane. Zamiast tego należy użyć zasobnika tożsamości do automatycznego żądania dostępu przy użyciu centralnego rozwiązania z tożsamością usługi Azure AD.
+**Najważniejsze wskazówki** — nie należy używać stałych poświadczeń w obrębie zasobników lub obrazów kontenerów, ponieważ są one ryzyko ujawnienia lub nadużycia związane. Zamiast tego należy użyć zasobnika tożsamości do automatycznego żądania dostępu przy użyciu centralnego rozwiązania z tożsamością usługi Azure AD. Zasobnik tożsamości jest przeznaczona dla systemu Linux zasobników i tylko obrazy kontenerów.
 
 Gdy zasobników muszą mieć dostęp do innych usług platformy Azure, takich jak usługi Cosmos DB, usługa Key Vault lub usługi Blob Storage zasobnik musi poświadczenia dostępu. Te poświadczenia dostępu można zdefiniować przy użyciu obrazu kontenera lub wprowadzony jako wpisu tajnego rozwiązania Kubernetes, ale musisz ręcznie utworzone i przypisane. Często poświadczenia są używane ponownie na zasobników i nie są regularnie obracać.
 

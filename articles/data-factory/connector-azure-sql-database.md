@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: 543defc622942f4a0643aca275ad4ad2fa9e1ab2
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 231f44612b5e87afdf84f31d86c80be644fb4484
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926545"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154325"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Kopiuj dane do / z usługi Azure SQL Database przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you use:"]
@@ -228,7 +228,7 @@ Aby użyć uwierzytelniania tożsamości zarządzanej, wykonaj następujące kro
 
 Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](https://docs.microsoft.com/azure/data-factory/concepts-datasets-linked-services) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych usługi Azure SQL Database.
 
-Aby skopiować dane z lub do usługi Azure SQL Database, należy ustawić **typu** właściwości zestawu danych na **AzureSqlTable**. Obsługiwane są następujące właściwości:
+Aby skopiować dane z lub do usługi Azure SQL Database, obsługiwane są następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
@@ -247,6 +247,7 @@ Aby skopiować dane z lub do usługi Azure SQL Database, należy ustawić **typu
             "referenceName": "<Azure SQL Database linked service name>",
             "type": "LinkedServiceReference"
         },
+        "schema": [ < physical schema, optional, retrievable during authoring > ],
         "typeProperties": {
             "tableName": "MyTable"
         }
@@ -368,7 +369,7 @@ Aby skopiować dane do usługi Azure SQL Database, należy ustawić **typu** wł
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | **Typu** właściwość ujścia działania kopiowania musi być równa **SqlSink**. | Yes |
-| writeBatchSize | Liczba wierszy do wstawienia do tabeli SQL **na partię**.<br/> Dozwolone wartości to **całkowitą** (liczba wierszy). | Nie. Wartość domyślna to 10000. |
+| writeBatchSize | Liczba wierszy do wstawienia do tabeli SQL **na partię**.<br/> Dozwolone wartości to **całkowitą** (liczba wierszy). Domyślnie Data Factory dynamiczne określanie rozmiar partii odpowiednie, w zależności od rozmiaru wiersza. | Nie |
 | writeBatchTimeout | Czas oczekiwania dla partii wstawić na zakończenie przed upływem limitu czasu operacji.<br/> Dozwolone wartości to **timespan**. Przykład: "00: 30:00" (30 minut). | Nie |
 | preCopyScript | Określ zapytanie SQL, działanie kopiowania do uruchomienia przed zapisanie danych w usłudze Azure SQL Database. Jego jest wywoływana tylko po jednej kopii uruchomienia. Ta właściwość służy do oczyszczania załadowanych danych. | Nie |
 | sqlWriterStoredProcedureName | Nazwa procedury składowanej, który definiuje sposób stosowania źródła danych do tabeli docelowej. Przykładem jest wykonuje operację UPSERT lub przekształcić za pomocą z własną logiką biznesową. <br/><br/>Procedura składowana jest **wywoływane na partię**. W przypadku operacji, które są tylko uruchamiane raz i mają one nic wspólnego z danymi źródłowymi, użyj `preCopyScript` właściwości. Przykład operacje są delete i obcięcia. | Nie |

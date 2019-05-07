@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: 3cc4933ae70ad1d661835749dd23e7e634ab54f0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 68ca35590aaadba431d5f1dc06e0405162ebc69f
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61474440"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154483"
 ---
 # <a name="public-ip-address-prefix"></a>Publiczny prefiks adresu IP
 
@@ -29,9 +29,6 @@ Publiczny prefiks adresu IP jest zastrzeżony zakres adresów IP dla sieci publi
 Publiczne adresy IP są przypisywane z puli adresów w każdym regionie platformy Azure. Możesz [Pobierz](https://www.microsoft.com/download/details.aspx?id=56519) listę zakresów adresów, platforma Azure używa dla każdego regionu. Na przykład 40.121.0.0/16 jest jedną z ponad 100 zakresów, używaną przez platformę Azure w regionie wschodnie stany USA. Ten zakres obejmuje można używać adresów 40.121.0.1 - 40.121.255.254.
 
 Utwórz publiczny prefiks adresu IP w regionie platformy Azure i subskrypcję, określając nazwę, a ile adresów mają prefiks do uwzględnienia. Na przykład, jeśli utworzysz publiczny prefiks adresu IP/28, platforma Azure przydziela 16 adresów z jednego z jego zakresów dla Ciebie. Nie wiesz, którym z zakresu platformy Azure zostanie przypisana do czasu utworzenia zakresu, ale adresy są ciągłe. Prefiksy publicznych adresów IP mają opłaty. Aby uzyskać więcej informacji, zobacz [cennik publicznych adresów IP](https://azure.microsoft.com/pricing/details/ip-addresses).
-
-> [!IMPORTANT]
-> Prefiks publicznego adresu IP jest w publicznej wersji zapoznawczej w niektórych regionach. Możesz [Dowiedz się, co oznacza w wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Publiczny prefiks adresu IP jest obecnie dostępna w: Zachód środkowe stany USA, zachodnie stany USA, zachodnie stany USA 2, środkowe stany USA, Europa Północna, Europa Zachodnia i Azja południowo-wschodnia. Aby uzyskać zaktualizowaną listę regionów, odwiedź [aktualizacje platformy Azure](https://azure.microsoft.com/updates/?product=virtual-network).
 
 ## <a name="why-create-a-public-ip-address-prefix"></a>Dlaczego warto utworzyć publiczny prefiks adresu IP?
 
@@ -58,6 +55,7 @@ Następujące zasoby do statyczny publiczny adres IP można skojarzyć z prefiks
 ## <a name="constraints"></a>Ograniczenia
 
 - Nie można określić adresy IP dla prefiksu. Platforma Azure przydziela adresów IP dla prefiksu, w zależności od rozmiaru, który określisz.
+- Domyślny rozmiar prefiksu to/28 lub 16 publiczne adresy IP.
 - Zakres, nie można zmienić po utworzeniu prefiks.
 - Zakres jest tylko adresy IPv4. Zakres nie zawiera adresów IPv6.
 - Można przypisać tylko statyczne publiczne adresy IP utworzone za pomocą standardowej jednostki SKU z zakresu prefiksu. Aby dowiedzieć się więcej na temat publiczny adres IP adres jednostki SKU, zobacz [publiczny adres IP](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses).

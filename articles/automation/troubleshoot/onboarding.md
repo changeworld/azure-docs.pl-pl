@@ -8,12 +8,12 @@ ms.date: 03/20/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: eaafee304f606ae4d511a6cea1824c26db838635
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 16a03840f6bbf44853cf01e50189a194672d153e
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62119133"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65145148"
 ---
 # <a name="troubleshoot-errors-when-onboarding-solutions"></a>Rozwiązywanie problemów z błędami podczas dołączania do rozwiązania
 
@@ -78,6 +78,36 @@ Aby pomyślnie wdrożyć to rozwiązanie, należy wziąć pod uwagę zmianę wsk
   * Zmiana zestawu zasobów tej zasady został skonfigurowany do odmowy.
 
 Sprawdź powiadomienia w prawym górnym rogu witryny Azure Portal lub przejdź do grupy zasobów, który zawiera Twoje konto usługi automation i wybierz **wdrożeń** w obszarze **ustawienia** wyświetlić nieudane wdrożenie. Aby dowiedzieć się więcej o zasadach usługi Azure, odwiedź stronę: [Omówienie usługi Azure Policy](../../governance/policy/overview.md?toc=%2fazure%2fautomation%2ftoc.json).
+
+### <a name="unlink"></a>Scenariusz: Błędy podczas próby odłączanie obszaru roboczego
+
+#### <a name="issue"></a>Problem
+
+Pojawi się następujący błąd podczas próby odłączanie obszaru roboczego:
+
+```error
+The link cannot be updated or deleted because it is linked to Update Management and/or ChangeTracking Solutions.
+```
+
+#### <a name="cause"></a>Przyczyna
+
+Ten błąd występuje, gdy nadal masz rozwiązania active w obszarze roboczym usługi Log Analytics, które są zależne od obszaru roboczego konto usługi Automation i analizy dzienników jest połączona.
+
+### <a name="resolution"></a>Rozwiązanie
+
+Aby rozwiązać ten problem, musisz usunąć następujące rozwiązania z obszaru roboczego, korzystając z nich:
+
+* Zarządzanie aktualizacjami
+* Śledzenie zmian
+* Uruchamianie lub zatrzymywanie maszyn wirtualnych po godzinach pracy
+
+Po usunięciu rozwiązania można odłączyć obszaru roboczego. Jest ważne oczyścić wszelkie istniejące artefakty z tych rozwiązań także z poziomu obszaru roboczego i konta usługi Automation.  
+
+* Zarządzanie aktualizacjami
+  * Usuwanie wdrożenia aktualizacji (harmonogramy) na koncie usługi Automation
+* Uruchamianie lub zatrzymywanie maszyn wirtualnych po godzinach pracy
+  * Usuń wszystkie blokady na składniki rozwiązania na koncie usługi Automation w ramach **ustawienia** > **blokad**.
+  * Aby uzyskać dodatkowe kroki w celu usunięcia uruchamianie/zatrzymywanie maszyn wirtualnych podczas szczytu rozwiązania znajduje się [Usuń uruchamianie/zatrzymywanie maszyny Wirtualnej podczas szczytu rozwiązania](../automation-solution-vm-management.md##remove-the-solution).
 
 ## <a name="mma-extension-failures"></a>Błędy rozszerzenia programu MMA
 

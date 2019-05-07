@@ -2,18 +2,19 @@
 title: Jak utworzyć obiekt blob w usłudze Azure Storage przy użyciu biblioteki klienta dla języka Java w wersji 7 | Dokumentacja firmy Microsoft
 description: Utwórz konto magazynu i kontener w magazynie obiektów (blob). Biblioteka klienta usługi Azure Storage dla języka Java w wersji 7 można następnie użyć do przekażesz obiekt blob do usługi Azure Storage, pobierzesz obiekt blob i wyświetlisz listę obiektów blob w kontenerze.
 services: storage
-author: roygara
+author: mhopkins-msft
 ms.custom: mvc
 ms.service: storage
 ms.topic: conceptual
 ms.date: 02/04/2019
-ms.author: rogarana
-ms.openlocfilehash: c9aaa22a656d1164ad4e9f9c1ed7539a93dd0457
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.author: mhopkins
+ms.reviewer: seguler
+ms.openlocfilehash: f7cae5b3c7b0a7da6420674635ff9c3420a6436a
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62128923"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154415"
 ---
 # <a name="how-to-upload-download-and-list-blobs-using-the-client-library-for-java-v7"></a>Jak przekazywanie, pobieranie i wyświetlanie listy obiektów blob przy użyciu biblioteki klienta dla języka Java w wersji 7
 

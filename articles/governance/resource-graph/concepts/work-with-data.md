@@ -7,12 +7,12 @@ ms.date: 04/01/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 729e9fe749212942c6dc18fc7d6301934e7dd184
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ff9513418857562408c162533c48f6495b1f83c4
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60775901"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65137857"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Praca z zestawami danych w dużej ilości zasobów platformy Azure
 
@@ -67,8 +67,18 @@ Gdy jest to konieczne, można przerwać zestawu do prezentowania mniejszych zest
 
 Gdy **resultTruncated** jest **true**, **$skipToken** właściwość jest ustawiona w odpowiedzi. Ta wartość jest używana przy użyciu tej samej wartości zapytania i subskrypcji do następnego zestawu rekordów pasujących do zapytania.
 
+W poniższych przykładach pokazano sposób **pominąć** pierwsze rekordy 3000 i wróć **pierwszy** 1000 rekordów, po pominięte przy użyciu wiersza polecenia platformy Azure i programu Azure PowerShell:
+
+```azurecli-interactive
+az graph query -q "project id, name | order by id asc" --first 1000 --skip 3000
+```
+
+```azurepowershell-interactive
+Search-AzGraph -Query "project id, name | order by id asc" -First 1000 -Skip 3000
+```
+
 > [!IMPORTANT]
-> Zapytanie musi **projektu** **identyfikator** pola w kolejności do dzielenia na strony do pracy. Jeśli brakuje zapytania, odpowiedź interfejsu API REST nie będzie zawierać **$skipToken**.
+> Zapytanie musi **projektu** **identyfikator** pola w kolejności do dzielenia na strony do pracy. Jeśli brakuje zapytania, odpowiedź nie będzie zawierać **$skipToken**.
 
 Aby uzyskać przykład, zobacz [następnej strony kwerendy](/rest/api/azureresourcegraph/resources/resources#next_page_query) w dokumentacji interfejsu API REST.
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 11/05/2018
 ms.author: seanmck
-ms.openlocfilehash: 29f98e334b0d2527b5159e1a5394109c5041024a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 03c5eb2e32a0a8ec51844511276d9efba5651068
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60465382"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073773"
 ---
 # <a name="checking-for-kubernetes-best-practices-in-your-cluster"></a>Sprawdzanie, czy są najlepsze rozwiązania Kubernetes w klastrze
 
@@ -21,6 +21,8 @@ Istnieje kilka najlepszych rozwiązań, które należy wykonać na swoich wdroż
 ## <a name="about-kube-advisor"></a>Informacji o usłudze advisor rozwiązania kubernetes
 
 [Klastra kubernetes w usłudze advisor narzędzie] [ kube-advisor-github] jest jeden kontener przeznaczony do uruchamiania w klastrze. On wysyła do serwera interfejsu API rozwiązania Kubernetes, uzyskać informacji na temat wdrożeń i zwraca zestaw elementów sugerowane ulepszenia.
+
+Narzędzia klastra kubernetes w usłudze advisor mogą być przedstawione na żądanie zasobów i limity Brak w aplikacji PodSpecs dla Windows, a także aplikacje dla systemu Linux, ale samo narzędzie klastra kubernetes w usłudze klasyfikatora musi być zaplanowane na zasobnik systemu Linux. Można zaplanować zasobnika do uruchamiania na pulę węzłów przy użyciu określonego systemu operacyjnego [selektor węzła] [ k8s-node-selector] w zasobniku konfiguracji.
 
 > [!NOTE]
 > Narzędzia klastra kubernetes w usłudze advisor jest obsługiwana przez firmę Microsoft na zasadzie największej staranności. Problemy i sugestie powinny być zgłaszane w witrynie GitHub.
@@ -73,3 +75,4 @@ Jeśli używasz narzędzia względem klastra, który nie jest włączone RBAC, �
 
 [kube-cpumem]: https://github.com/Azure/azure-quickstart-templates
 [kube-advisor-github]: https://github.com/azure/kube-advisor
+[k8s-node-selector]: concepts-clusters-workloads.md#node-selectors

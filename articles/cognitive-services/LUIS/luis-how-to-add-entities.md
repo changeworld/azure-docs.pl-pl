@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 0044cbc9e6142989a57e79de5fd1e78e999bb5e1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 241e89ac7fa78184e7c55f9e8065e1534cea9143
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60196136"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148724"
 ---
 # <a name="create-entities-without-utterances"></a>Tworzenie jednostek bez wypowiedzi
 
@@ -66,29 +66,6 @@ Jednostka wyrażenia regularnego umożliwia wyodrębnienie danych z wypowiedź, 
 
     To wyrażenie regularne dopasowuje znaki literału `hrf-`, następnie 6 cyfr do reprezentowania formularza numer formularza zasobów ludzkich.
 
-## <a name="add-hierarchical-entities"></a>Dodaj jednostki hierarchicznych
-
-Hierarchiczna jednostka jest kategoria kontekstowe nauczony i pod względem koncepcyjnym powiązanych jednostek. W poniższym przykładzie jednostki zawiera początkowe i docelowe lokalizacje. 
-
-W polu wypowiedź `Move John Smith from Seattle to Cairo`, Seattle, jest to lokalizacja źródła i Kair jest lokalizacja docelowa. Każda lokalizacja jest kontekstowe różnych i nauczony kolejność słów i wybór o słowo w wypowiedź.
-
-Aby dodać jednostki hierarchiczne, wykonaj następujące czynności: 
-
-1. W swojej aplikacji, wybierz **jednostek** z nawigacji po lewej stronie, a następnie wybierz **Utwórz nową jednostkę**.
-
-1. W podręcznym oknie dialogowym, wpisz `Location` w **nazwa jednostki** , a następnie wybierz **hierarchiczne** z **typu jednostki** listy.
-
-    ![Dodawanie jednostki hierarchicznej](./media/add-entities/hier-location-entity-creation.png)
-
-1. Wybierz **Dodaj element podrzędny**, a następnie wprowadź `Origin` w **podrzędnych nr 1** pole. 
-
-1. Wybierz **Dodaj element podrzędny**, a następnie wprowadź `Destination` w **podrzędnych nr 2** pole. Wybierz pozycję **Done** (Gotowe).
-
-    >[!CAUTION]
-    >Nazwy jednostek podrzędny musi być unikatowa we wszystkich jednostek w jednej aplikacji. Dwoma obiektami hierarchiczne nie może zawierać jednostki podrzędne o takiej samej nazwie. 
-
-    Po utworzeniu tej jednostki, przejdź do wszystkich intencji, mających wypowiedzi przykładu, które zawierają jednostki. Zaznacz tekst w polu wypowiedź przykład i oznaczanie tekstu jako jednostka. 
-
 <a name="add-composite-entities"></a>
 
 ## <a name="add-composite-entities-to-group-into-a-parent-child-relationship"></a>Dodaj jednostki złożonego do grupowania w relacji nadrzędny podrzędny
@@ -137,9 +114,7 @@ W polu wypowiedź `Where is Request relocation from employee new to the company 
 
 Rola jest podtypem nazwany na podstawie kontekstu. Jest dostępny w wszystkich jednostek w tym jednostki wbudowanych i przedstawiono maszyny. 
 
-Przy użyciu tego samego przykładu jako hierarchiczna jednostki pochodzenia i miasta docelowego, różnica jest, że roli nosi nazwę źródła zamiast hierarchiczne podrzędnych. 
-
-Składnia dla roli jest **{Entityname:Rolename}** gdzie nazwa jednostki następuje dwukropek, a następnie nazwę roli. Na przykład `Move {personName} from {LocationUsingRoles:Origin} to {LocationUsingRoles:Destination}`.
+Składnia dla roli jest **`{Entityname:Rolename}`** gdzie nazwa jednostki następuje dwukropek, a następnie nazwę roli. Na przykład `Move {personName} from {LocationUsingRoles:Origin} to {LocationUsingRoles:Destination}`.
 
 1. Z **kompilacji** zaznacz **jednostek** w panelu po lewej stronie.
 

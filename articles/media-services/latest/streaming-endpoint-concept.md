@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/27/2019
 ms.author: juliako
-ms.openlocfilehash: 1b29e75531c9e24d2f296442d528a28a23ffa947
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 3f939154d2b34e6dc043e505ab89897221bcfe23
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64867610"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149231"
 ---
 # <a name="streaming-endpoints-origin"></a>Punkty końcowe przesyłania strumieniowego (źródła)
 
@@ -156,7 +156,7 @@ Integracja usługi CDN jest włączona w centrach danych platformy Azure z wyją
 
 Jeśli wprowadzono zmiany w systemie DNS w punkcie końcowym przesyłania strumieniowego (ruch jest być kierowany do usługi Azure CDN) można określić za pomocą https://www.digwebinterface.com. Jeśli wyniki zawiera nazwy domeny azureedge.net, w wynikach, ruch jest teraz wskazywany sieci CDN.
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="ask-questions-give-feedback-get-updates"></a>Zadawaj pytania, Prześlij opinię i pobieranie aktualizacji
 
 Zapoznaj się z [społeczności usługi Azure Media Services](media-services-community.md) artykuł, aby wyświetlić różne sposoby zadawaj pytania, Prześlij opinię i pobrać aktualizacje o usłudze Media Services.
 

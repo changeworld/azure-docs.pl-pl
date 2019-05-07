@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 385eee6223487e9d7ca5cc3b213d180bb0f1da46
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 6ada4a25f24a6dcbb1ebd54daad15b37127f7a21
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64710867"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154190"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Przewodnik rozwiązywania problemów do usługi Azure Storage Explorer
 
@@ -235,7 +235,7 @@ Jeśli przypadkowo dołączany przy użyciu nieprawidłowego adresu URL sygnatur
 
 Ogólnie rzecz biorąc następujące pakiety są wymagane do uruchamiania Eksploratora usługi Storage w systemie Linux:
 
-* [Środowisko uruchomieniowe programu .NET core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)
+* [.NET core 2.0 środowisko uruchomieniowe](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) Uwaga: Eksplorator usługi Storage w wersji 1.7.0 i wcześniej wymaga platformy .NET Core 2.0. Jeśli masz nowszej wersji programu .NET Core zainstalowane następnie musisz stosowanie poprawek do programu Storage Explorer (patrz poniżej). Jeśli korzystasz z Eksploratora usługi Storage 1.8.0 lub większa następnie należy umożliwia platformy .NET Core 2.2. Do pracy w tej chwili nie został zweryfikowany wersji starszych niż 2.2.
 * `libgnome-keyring-common` i `libgnome-keyring-dev`
 * `libgconf-2-4`
 

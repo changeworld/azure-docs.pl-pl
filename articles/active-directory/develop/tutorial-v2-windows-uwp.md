@@ -16,12 +16,12 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7bd57b3d41ad7c670b5423f10a9c93b55e87d757
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 448858efeaae4c3e2a41d41181e9ec74b03223f6
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60252311"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65138253"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Wywołanie interfejsu API Microsoft Graph z poziomu aplikacji platformy uniwersalnej Windows (XAML)
 
@@ -333,8 +333,10 @@ Teraz musisz zarejestrować aplikację w portalu rejestracji aplikacji firmy Mic
    - W **obsługiwane typy kont** zaznacz **kont w dowolnym katalogu organizacji i osobistych kont Microsoft (np. Skype, Xbox, Outlook.com)**.
    - Wybierz pozycję **Zarejestruj**, aby utworzyć aplikację.
 1. W aplikacji **Przegląd** strony, Znajdź **identyfikator aplikacji (klienta)** wartości i zapisaniu go na później. Wróć do programu Visual Studio, otwórz **MainPage.xaml.cs**i zastąp wartość identyfikatora klienta z Identyfikatorem aplikacji, które właśnie zostało zarejestrowane:
-1. Na liście stron dla aplikacji, wybierz **uwierzytelniania**:
-   - W **identyfikatory URI przekierowań** | **sugerowane identyfikatory URI przekierowań dla publicznej klientów (urządzeń przenośnych, komputerów stacjonarnych)** sekcji wyboru **urn: ietf:wg:oauth:2.0:oob**
+1. Na liście stron dla aplikacji wybierz pozycję **Uwierzytelnianie**.
+   1. W **identyfikatory URI przekierowań** sekcji na liście identyfikatory URI przekierowań:
+   1. W **typu** wybierz kolumny **klientem publicznym (mobilnych i klasycznych)**.
+   1. Wprowadź `urn:ietf:wg:oauth:2.0:oob` w **identyfikator URI PRZEKIEROWANIA** kolumny.
 1. Wybierz pozycję **Zapisz**.
 1. Na liście stron dla aplikacji, wybierz **uprawnienia do interfejsu API**
    - Kliknij przycisk **Dodaj uprawnienia** przycisk a następnie

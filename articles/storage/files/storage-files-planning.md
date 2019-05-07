@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: fecefbbed39f4fc12db79c7466006409e3da7dd1
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 82a2330aeadb14bb421260a290a25581232293e5
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64574477"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073354"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planowanie wdrażania usługi Pliki Azure
 
@@ -111,20 +111,16 @@ Istnieje możliwość zmniejszyć rozmiar udziału elastycznie poniżej swoje u�
 
 W poniższej tabeli przedstawiono kilka przykładów tych formuł dla rozmiarów elastycznie udziału:
 
-(Rozmiary wskazywane przez * są w ograniczonej publicznej wersji zapoznawczej)
-
 |Pojemność (GiB) | Baseline IOPS | Seria operacje We/Wy | Ruch wychodzący (MiB/s) | Ruch przychodzący (MiB/s) |
 |---------|---------|---------|---------|---------|
 |100         | 100     | Maksymalnie 300     | 66   | 44   |
 |500         | 500     | Maksymalnie 1500   | 90   | 60   |
 |1,024       | 1,024   | Maksymalnie 3,072   | 122   | 81   |
 |5,120       | 5,120   | Maksymalnie 15,360  | 368   | 245   |
-|10,240 *     | 10,240  | 30 do 720  | 675 | 450   |
-|33,792 *     | 33,792  | Do 100 000 | 2,088 | 1,392   |
-|51,200 *     | 51,200  | Do 100 000 | 3,132 | 2,088   |
-|102,400 *    | 100 000 | Do 100 000 | 6,204 | 4,136   |
-
-Obecnie rozmiar udziału plików maksymalnie 5 TiB są w publicznej wersji zapoznawczej, a w ograniczonej publicznej wersji zapoznawczej, aby poprosić o dostęp do ograniczonej publicznej wersji zapoznawczej pełną rozmiarze do 100 TiB [w ramach tej ankiety.](https://aka.ms/azurefilesatscalesurvey)
+|10,240      | 10,240  | 30 do 720  | 675 | 450   |
+|33,792      | 33,792  | Do 100 000 | 2,088 | 1,392   |
+|51,200      | 51,200  | Do 100 000 | 3,132 | 2,088   |
+|102,400     | 100 000 | Do 100 000 | 6,204 | 4,136   |
 
 ### <a name="bursting"></a>Przenoszenie obsługi dużego ruchu
 
@@ -184,7 +180,7 @@ Podczas wybierania opcji replikacji, należy pamiętać o następujących punkt�
 
 ## <a name="data-growth-pattern"></a>Wzorzec wzrostu ilości danych
 
-Obecnie maksymalny rozmiar udziału plików platformy Azure jest wynosi 5 TiB (100 TiB dla pliku premium udział w ograniczonej publicznej wersji zapoznawczej). Ze względu na to bieżące ograniczenie podczas wdrażania udziału plików platformy Azure należy wziąć pod uwagę przewidywanego wzrostu ilości danych.
+Obecnie maksymalny rozmiar udziału plików platformy Azure jest wynosi 5 TiB (100 TiB dla udziałów plików — wersja premium, które są dostępne w publicznej wersji zapoznawczej). Ze względu na to bieżące ograniczenie podczas wdrażania udziału plików platformy Azure należy wziąć pod uwagę przewidywanego wzrostu ilości danych.
 
 Istnieje możliwość synchronizowania wielu plików platformy Azure udostępnia do jednego serwera plików Windows za pomocą usługi Azure File Sync. Dzięki temu można zapewnić, że udziały plików starsze, duże, że może mieć w środowisku lokalnym, może być wprowadzana do usługi Azure File Sync. Aby uzyskać więcej informacji, zobacz [Planowanie wdrażania usługi Azure pliku synchronizacji](storage-files-planning.md).
 

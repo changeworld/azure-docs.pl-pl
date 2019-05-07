@@ -1,5 +1,5 @@
 ---
-title: Federowanie wielu wystąpień usługi Azure AD przy użyciu jednego wystąpienia usługi AD FS | Microsoft Docs
+title: Federowanie wielu usługi Azure AD przy użyciu jednej usługi AD FS — Azure
 description: Z tego dokumentu dowiesz się, jak federować wiele wystąpień usługi Azure AD przy użyciu jednego wystąpienia usługi AD FS.
 keywords: federate, ADFS, AD FS, multiple tenants, single AD FS, one ADFS, multi-tenant federation, multi-forest adfs, aad connect, federation, cross-tenant federation
 services: active-directory
@@ -17,12 +17,12 @@ ms.date: 07/17/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 620255896e02319675928396c3d6e5e0d9865c0c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9122e3a7af2230dc0f68e72b28891d488b01a80a
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60244399"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65137829"
 ---
 # <a name="federate-multiple-instances-of-azure-ad-with-single-instance-of-ad-fs"></a>Federowanie wielu wystąpień usługi Azure AD przy użyciu jednego wystąpienia usługi AD FS
 

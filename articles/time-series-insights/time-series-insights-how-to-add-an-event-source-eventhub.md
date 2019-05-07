@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 05/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: f2b307f662c0c9b94edc6bb8eb3ca299f5ad4620
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 41d3e72d978a210c2d68365ade5d8cb42c24aad5
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64702633"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147603"
 ---
 # <a name="add-an-event-hub-event-source-to-your-time-series-insights-environment"></a>Dodawanie źródła zdarzeń Centrum zdarzeń do środowiska usługi Time Series Insights
 
@@ -27,9 +27,9 @@ W tym artykule opisano sposób dodawania źródła zdarzeń, która odczytuje da
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Tworzenie środowiska usługi Time Series Insights. Aby uzyskać więcej informacji, zobacz [tworzenie środowiska usługi Azure Time Series Insights](./time-series-insights-update-create-environment.md).
-- Utwórz centrum zdarzeń. Aby uzyskać więcej informacji na temat usługi Event Hubs, zobacz [tworzenie przestrzeni nazw usługi Event Hubs i Centrum zdarzeń przy użyciu witryny Azure portal](../event-hubs/event-hubs-create.md).
-- Centrum zdarzeń musi mieć zdarzenia aktywne wiadomości wysyłane do niej. Aby uzyskać więcej informacji, zobacz [wysyłanie zdarzeń do usługi Azure Event Hubs przy użyciu programu .NET Framework](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md).
+- Tworzenie środowiska usługi Time Series Insights, zgodnie z opisem w [tworzenie środowiska usługi Azure Time Series Insights](./time-series-insights-update-create-environment.md).
+- Utwórz centrum zdarzeń. Zobacz [tworzenie przestrzeni nazw usługi Event Hubs i Centrum zdarzeń przy użyciu witryny Azure portal](../event-hubs/event-hubs-create.md).
+- Centrum zdarzeń musi mieć zdarzenia aktywne wiadomości wysyłane do niej. Dowiedz się, jak [wysyłanie zdarzeń do usługi Azure Event Hubs przy użyciu programu .NET Framework](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md).
 - Utwórz grupę odbiorców dedykowanych w Centrum zdarzeń, które korzystają ze środowiska usługi Time Series Insights. Każdego źródła zdarzeń usługi Time Series Insights musi mieć swój własny dedykowanej grupy klientów, które nie zostały udostępnione innych odbiorców. Jeśli wielu elementów odczytujących korzystanie ze zdarzeń z tej samej grupy konsumentów, wszystkich czytelników prawdopodobnie błędy. Obowiązuje limit 20 grup odbiorców dla Centrum zdarzeń. Aby uzyskać więcej informacji, zobacz [Podręcznik programowania usługi Event Hubs](../event-hubs/event-hubs-programming-guide.md).
 
 ### <a name="add-a-consumer-group-to-your-event-hub"></a>Dodaj grupę odbiorców do Centrum zdarzeń
@@ -42,7 +42,7 @@ Aby dodać nową grupę konsumentów Centrum zdarzeń:
 
 1. W obszarze **jednostek**, wybierz opcję **grupy konsumentów**, a następnie wybierz pozycję **grupy odbiorców**.
 
-   ![Centrum zdarzeń — dodać grupy konsumentów](media/time-series-insights-how-to-add-an-event-source-eventhub/5-event-hub-consumer-group.png)
+   [![Centrum zdarzeń — dodać grupy konsumentów](media/time-series-insights-how-to-add-an-event-source-eventhub/5-event-hub-consumer-group.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/5-event-hub-consumer-group.png#lightbox)
 
 1. Na **grupy konsumentów** wpisz nową unikatową wartość dla **nazwa**.  Podczas tworzenia nowego źródła zdarzeń w środowisku usługi Time Series Insights, należy użyć tej samej nazwy.
 
@@ -56,7 +56,7 @@ Aby dodać nową grupę konsumentów Centrum zdarzeń:
 
 1. W obszarze **topologii środowiska**, wybierz opcję **źródła zdarzeń**, a następnie wybierz pozycję **Dodaj**.
 
-   ![W obszarze źródła zdarzeń wybierz przycisk Dodaj](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-sources.png)
+   [![W obszarze źródła zdarzeń wybierz przycisk Dodaj](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-sources.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-sources.png#lightbox)
 
 1. Wprowadź wartość w **nazwy źródła zdarzeń** który jest unikatowy dla tego środowiska usługi Time Series Insights, takich jak **strumienia zdarzeń**.
 
@@ -66,11 +66,11 @@ Aby dodać nową grupę konsumentów Centrum zdarzeń:
    - Jeśli masz już Centrum zdarzeń w jednej z Twoich subskrypcji wybierz **Użyj Centrum zdarzeń z dostępnych subskrypcji**. Ta opcja jest to najłatwiejsza metoda.
    - Jeśli Centrum zdarzeń jest zewnętrzne w stosunku do subskrypcji, lub jeśli chcesz wybrać opcje zaawansowane, wybierz **ustawienia Centrum zdarzeń zapewnia ręcznie**.
 
-   ![W okienku nowe źródło zdarzenia wprowadź wartości dla pierwszych trzech parametrów](media/time-series-insights-how-to-add-an-event-source-eventhub/2-import-option.png)
+   [![W okienku nowe źródło zdarzenia wprowadź wartości dla pierwszych trzech parametrów](media/time-series-insights-how-to-add-an-event-source-eventhub/2-import-option.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/2-import-option.png#lightbox)
 
 1. W poniższej tabeli opisano wymaganych właściwości dla **Użyj Centrum zdarzeń z dostępnych subskrypcji** opcji:
 
-   ![Szczegółowe informacje dotyczące subskrypcji i zdarzeń Centrum](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png)
+   [![Szczegółowe informacje dotyczące subskrypcji i zdarzeń Centrum](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png#lightbox)
 
    | Właściwość | Opis |
    | --- | --- |
@@ -101,7 +101,7 @@ Aby dodać nową grupę konsumentów Centrum zdarzeń:
 
 1. Wybierz pozycję **Utwórz**.
 
-   ![Wybierz pozycję Utwórz](media/time-series-insights-how-to-add-an-event-source-eventhub/4-create-button.png)
+   [![Wybierz pozycję Utwórz](media/time-series-insights-how-to-add-an-event-source-eventhub/4-create-button.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/4-create-button.png#lightbox)
 
    Po utworzeniu źródła zdarzeń usługi Time Series Insights automatycznie uruchamia, przesyłanie strumieniowe danych do danego środowiska.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: be2f5fdebc5ae4f779fe6e3da74ad7ea583226ef
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: d9583f232a7afd6ab64421d57bbf14a45299e374
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995663"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65138240"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Monitorowanie aktywności subskrypcji z dziennika aktywności platformy Azure
 
@@ -63,6 +63,7 @@ Oto kilka rzeczy, które można zrobić z dziennika aktywności:
 * Analizować je w usłudze Power BI przy użyciu [ **pakiet zawartości usługi Power BI**](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/).
 * [Zapisać go w celu **konta magazynu** inspekcji archiwizacji lub ręcznie](../../azure-monitor/platform/archive-activity-log.md). Można określić przy użyciu czasu (w dniach) przechowywania **profilu dziennika**.
 * Wykonuje zapytania za pomocą polecenia Cmdlet programu PowerShell, interfejsu wiersza polecenia lub interfejsu API REST.
+* Widok [historię zmian](#view-change-history) dla niektórych zdarzeń
 
 ## <a name="query-the-activity-log-in-the-azure-portal"></a>Zapytanie dziennika aktywności w witrynie Azure portal
 
@@ -183,6 +184,20 @@ Aby uzyskać pełną dokumentację dotyczącą tworzenia profilu monitorowanie z
 ```azurecli
 az monitor log-profiles delete --name <profile name>
 ```
+
+## <a name="view-change-history"></a>Wyświetl historię zmian
+
+Podczas przeglądania dziennika aktywności, może pomóc aby zobaczyć, jakie zmiany, które zaszły w tym czasie zdarzenia. Możesz wyświetlić te informacje o historii zmian.
+
+Przejdź do dziennika aktywności przy użyciu menu po lewej stronie portalu. Wybierz zdarzenia z dziennika aktywności, który chcesz przejrzeć większe zagłębienie w. Wybierz **(wersja zapoznawcza) historię zmian** kartę, aby wyświetlić dowolny skojarzone zmiany ze zdarzeniem.
+
+![Lista historii zmian, zdarzenia](./media/activity-logs-overview/change-history-event.png)
+
+W przypadku zmiany skojarzone ze zdarzeniem, zobaczysz listę zmian, które można wybrać. Spowoduje to otwarcie **(wersja zapoznawcza) historię zmian** strony. Na tej stronie możesz zobaczyć zmiany do tego zasobu. Jak widać w poniższym przykładzie, możemy zobaczyć nie tylko, że maszyna wirtualna zmienione rozmiary, ale poprzedni rozmiar maszyny Wirtualnej została przed zmianą i co zostało zmienione na.
+
+![Strona historii zmian, wyświetlanie różnic](./media/activity-logs-overview/change-history-event-details.png)
+
+Aby dowiedzieć się więcej na temat historii zmian, zobacz [pobieranie zmian zasobów](../../governance/resource-graph/how-to/get-resource-changes.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -4,16 +4,16 @@ ms.author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: 1bdf73dc6a4edf0c170b51e70fca2128d22e0eb8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 104849557a8580e16fa1860b7919d1c0252debe9
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59804811"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65150336"
 ---
 W poniższej tabeli wymieniono limity skojarzone z różnymi warstwami usług S1, S2, S3 i F1. Aby uzyskać informacje o koszcie każdej *jednostki* w poszczególnych warstwach, zobacz [cennika usługi Azure IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/).
 
-| Zasób | Standardowa S1 | Standardowa S2 | Standardowa S3 | Bezpłatna F1 |
+| Resource | Standardowa S1 | Standardowa S2 | Standardowa S3 | Bezpłatna F1 |
 | --- | --- | --- | --- | --- |
 | Komunikaty/dzień |400 000 |6 000 000 |300 000 000 |8000 |
 | Maksymalna liczba jednostek |200 |200 |10 |1 |
@@ -25,7 +25,7 @@ W poniższej tabeli wymieniono limity skojarzone z różnymi warstwami usług S1
 
 W poniższej tabeli wymieniono ograniczenia, które są stosowane do zasobów usługi IoT Hub.
 
-| Zasób | Limit |
+| Resource | Limit |
 | --- | --- |
 | Maksymalna liczba płatnych centrów IoT na subskrypcję platformy Azure |50 |
 | Maksymalna liczba bezpłatnych centrów IoT na subskrypcję platformy Azure |1 |
@@ -40,9 +40,9 @@ W poniższej tabeli wymieniono ograniczenia, które są stosowane do zasobów us
 | Maksymalna liczba dostarczonych komunikatów przesyłanych <br/> z chmury do urządzenia |100 |
 | Maksymalna liczba dostarczonych komunikatów zwrotnych <br/> w odpowiedzi na komunikaty przesłane z chmury do urządzenia |100 |
 | Maksymalny czas wygaśnięcia komunikatów zwrotnych <br/> w odpowiedzi na komunikaty przesłane z chmury do urządzenia |2 dni |
-| Maksymalny rozmiar bliźniaczej reprezentacji urządzenia <br/> (tagi, zgłoszone właściwości i żądane właściwości) | 8 KB |
+| [Maksymalny rozmiar bliźniaczej reprezentacji urządzenia](../articles/iot-hub/iot-hub-devguide-device-twins.md#device-twin-size) <br/> (tagi, zgłoszone właściwości i żądane właściwości) | 8 KB |
 | Maksymalny rozmiar wartości ciągu bliźniaczej reprezentacji urządzenia | 4 KB |
-| Maksymalna głębokość obiektu w bliźniaczej reprezentacji urządzenia | 5 |
+| [Maksymalna głębokość obiektu w bliźniaczej reprezentacji urządzenia](../articles/iot-hub/iot-hub-devguide-device-twins.md#tags-and-properties-format) | 5 |
 | Maksymalny rozmiar ładunku metody bezpośredniej | 128 KB |
 | Maksymalny okres przechowywania historii zadań | 30 dni |
 | Maksymalna liczba równoczesnych zadań | 10 (warstwa S3), 5 (warstwa S2), 1 (warstwa S1) |
@@ -51,10 +51,8 @@ W poniższej tabeli wymieniono ograniczenia, które są stosowane do zasobów us
 | Maksymalna liczba równocześnie połączonych urządzeń, strumieni | 50 (dla S1, S2, S3 i tylko F1) |
 | Transfer danych strumienia maksymalna urządzenia | 300 MB dziennie (S1, S2, S3 i tylko F1) |
 
-
 > [!NOTE]
 > Jeśli potrzebujesz więcej niż 50 płatnych centrów IoT w subskrypcji platformy Azure, skontaktuj się z Microsoft Support.
-
 
 > [!NOTE]
 > Obecnie maksymalna liczba urządzeń, którymi można nawiązać połączenie w jednym centrum IoT jest 1 000 000. Jeśli chcesz zwiększyć ten limit, skontaktuj się z [Microsoft Support](https://azure.microsoft.com/support/options/).

@@ -1,6 +1,6 @@
 ---
 title: Zarządzanie agenta usługi Azure Log Analytics | Dokumentacja firmy Microsoft
-description: W tym artykule opisano zadania zarządzania różnych, które zazwyczaj należy wykonać podczas cyklu życia programu Microsoft Monitoring Agent (MMA) wdrożone na maszynie.
+description: W tym artykule opisano zadania zarządzania różnych, które zazwyczaj należy wykonać podczas cyklu życia Windows Analytics dziennika lub agenta systemu Linux wdrożonych na komputerze.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: magoedte
-ms.openlocfilehash: 19530aa676e681f9a6ec50d2cacf77711dcb0110
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 1809cc50f3ad3c285e0b69bc6e383a2c7c398238
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64730276"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65139264"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Zarządzania i konserwacji agenta usługi Log Analytics dla Windows i Linux
 
-Po początkowym wdrożeniu programu Windows Analytics dziennika lub agenta systemu Linux w usłudze Azure Monitor konieczne może być ponownie skonfigurować agenta, ją uaktualnić lub usunąć go z komputera, jeśli został osiągnięty na etapie wycofanie etapie jej cyklu życia. Te zadania rutynowej konserwacji umożliwia łatwe zarządzanie, ręcznie lub za pomocą automatyzacji, co zmniejsza zarówno błędu operacyjnego, jak i koszty.
+Po początkowym wdrożeniu programu Windows Analytics dziennika lub agenta systemu Linux w usłudze Azure Monitor konieczne może być ponownie skonfigurować agenta, ją uaktualnić lub usunąć z komputera, jeżeli zostanie osiągnięta etapu wycofanie etapie jej cyklu życia. Te zadania rutynowej konserwacji umożliwia łatwe zarządzanie, ręcznie lub za pomocą automatyzacji, co zmniejsza zarówno błędu operacyjnego, jak i koszty.
 
 ## <a name="upgrading-agent"></a>Uaktualnianie agenta
 
@@ -40,7 +40,7 @@ Aby zaktualizować agenta na maszynie Wirtualnej Windows do najnowszej wersji, n
 
 Możesz pobrać najnowszą wersję agenta Windows z obszaru roboczego usługi Log Analytics, wykonując następujące kroki.
 
-1. Zaloguj się do Portalu Azure.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 2. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi**. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz **obszarów roboczych usługi Log Analytics**.
 
@@ -91,6 +91,7 @@ Uruchom następujące polecenie, aby uaktualnić agenta.
 ## <a name="adding-or-removing-a-workspace"></a>Dodawanie lub usuwanie obszaru roboczego
 
 ### <a name="windows-agent"></a>Windows agent
+Kroki opisane w tej sekcji są niezbędne w przypadku, gdy zachodzi potrzeba nie tylko ponownie skonfigurować agenta Windows raportować do innego obszaru roboczego lub usunąć obszar roboczy z jego konfiguracji, ale także gdy zachodzi potrzeba skonfigurować agenta Aby zgłosić się do więcej niż jednego obszaru roboczego (często nazywane multihosting). Konfigurowanie agenta Windows w celu raportowania do wielu obszarów roboczych można wykonać tylko po wstępnej instalacji agenta i za pomocą metod opisanych poniżej.    
 
 #### <a name="update-settings-from-control-panel"></a>Aktualizowanie ustawień w Panelu sterowania
 
@@ -140,7 +141,7 @@ $mma.ReloadConfiguration()
 >
 
 ### <a name="linux-agent"></a>Agent systemu Linux
-Poniższe kroki pokazują, jak można ponownie skonfigurować agenta systemu Linux, jeśli użytkownik zdecyduje się zarejestrowanie go za pomocą innego obszaru roboczego, czy chcesz usunąć obszar roboczy z jego konfiguracji.
+Poniższe kroki pokazują, jak można ponownie skonfigurować agenta systemu Linux, jeśli użytkownik zdecyduje, zarejestruj je przy użyciu innego obszaru roboczego lub usunąć obszar roboczy z jego konfiguracji.
 
 1. Aby sprawdzić, czy jest zarejestrowany do obszaru roboczego, uruchom następujące polecenie:
 
@@ -160,7 +161,7 @@ Poniższe kroki pokazują, jak można ponownie skonfigurować agenta systemu Lin
 
     `/opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <shared key> [-d <top level domain>]`
     
-4. Aby sprawdzić, czy zmiany miały wpływ, uruchom następujące polecenie:
+4. Aby sprawdzić, czy zmiany weszło w życie, uruchom następujące polecenie:
 
     `/opt/microsoft/omsagent/bin/omsadmin.sh -l`
 
@@ -231,7 +232,7 @@ Wykonaj następujące czynności w przypadku komputerów z systemem Linux muszą
     ```
 
 ## <a name="uninstall-agent"></a>Odinstaluj agenta
-Użyj jednej z poniższych procedur można odinstalować agenta Windows lub Linux, za pomocą Kreatora wiersza polecenia lub instalacji.
+Użyj jednej z poniższych procedur można odinstalować agenta Windows lub Linux, przy użyciu wiersza polecenia lub Kreatora instalacji.
 
 ### <a name="windows-agent"></a>Windows agent
 

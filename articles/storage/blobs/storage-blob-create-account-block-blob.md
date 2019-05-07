@@ -1,20 +1,21 @@
 ---
 title: Tworzenie konta usługi block blob storage — usługi Azure Storage | Dokumentacja firmy Microsoft
 description: Pokazuje, jak utworzyć konto usługi Azure block blob storage za pomocą charakterystyki wydajności premium.
+author: tamram
+services: storage
 ms.service: storage
 ms.topic: conceptual
 ms.date: 03/23/2019
-author: twooley
-ms.author: twooley
+ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: f4d3e3ad923b6a603902bc007107cb41dae8cf6c
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 9d8fb8f5f470dc47088efb30b7f823a0b8c624c8
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400461"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65141013"
 ---
-# <a name="create-a-block-blob-storage-account"></a>Utwórz konto magazynu blokowych obiektów blob
+# <a name="create-a-block-blob-storage-account"></a>Tworzenie konta magazynu blokowych obiektów blob
 
 Typ konta magazynu blokowych obiektów blob umożliwia tworzenie blokowych obiektów blob za pomocą charakterystyki wydajności premium. Ten typ konta magazynu jest zoptymalizowany dla obciążeń przy użyciu stawki za transakcje o wysokiej lub które wymagają bardzo szybkie godziny dostępu. W tym artykule przedstawiono sposób tworzenia konta usługi block blob storage za pomocą witryny Azure portal, interfejsu wiersza polecenia platformy Azure lub programu Azure PowerShell.
 

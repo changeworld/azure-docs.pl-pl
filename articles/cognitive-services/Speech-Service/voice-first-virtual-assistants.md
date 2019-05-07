@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: travisw
 ms.custom: ''
-ms.openlocfilehash: f40e53c67f099fea739e45f6bdc6963ee1e235cb
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: c9ed6f898f4bcf8a5d4b2548cc1f3cf51f71bb2a
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026106"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65138161"
 ---
 # <a name="about-custom-voice-first-virtual-assistants-preview"></a>O niestandardowych asystentów wirtualnego głosu pierwszy (wersja zapoznawcza)
 
-Niestandardowe asystentów wirtualnego przy użyciu usług przetwarzania mowy platformy Azure zwiększenie możliwości dostępnych dla deweloperów do tworzenia naturalnych, przypominającej ludzką interfejsy konwersacyjne na potrzeby swoich aplikacji i środowisk. Kanał bezpośredniego wiersza mowy platformy Bot Framework rozszerza te możliwości, zapewniając punktem wejścia skoordynowane, zorganizowane do zgodnych bot, który umożliwia głosu w głosu się interakcji z małymi opóźnieniami i wysoką niezawodnością. Te Boty służy firmy Microsoft Language Understanding (LUIS) do interakcji z języka naturalnego. Bezpośrednie mowy wiersza jest dostęp do urządzenia za pomocą mowy usług Software Development Kit (SDK).
+Niestandardowe asystentów wirtualnego przy użyciu usług przetwarzania mowy platformy Azure zwiększenie możliwości dostępnych dla deweloperów do tworzenia naturalnych, przypominającej ludzką interfejsy konwersacyjne na potrzeby swoich aplikacji i środowisk. Kanał bezpośredniego wiersza mowy platformy Bot Framework rozszerza te możliwości, zapewniając punktem wejścia skoordynowane, zorganizowane do zgodnych bot, który umożliwia głosu w głosu się interakcji z małymi opóźnieniami i wysoką niezawodnością. Te Boty służy firmy Microsoft Language Understanding (LUIS) do interakcji z języka naturalnego. Bezpośrednie mowy wiersza jest dostęp do urządzenia za pomocą mowy Software Development Kit (SDK).
 
    ![Diagram pojęciowy przepływu usługa aranżacji mowy linii bezpośredniej](media/voice-first-virtual-assistants/overview.png "przepływ kanału mowy")
 
@@ -32,8 +32,8 @@ Bezpośrednie mowy wiersza i jej funkcjami dla niestandardowych asystentów wirt
 |----------|----------|
 |[Niestandardowe słowo aktywujące](speech-devices-sdk-create-kws.md) | Można umożliwić użytkownikom rozpoczynać rozmowy Boty przy użyciu niestandardowych słów kluczowych, takich jak "Hey Contoso." To zadanie jest realizowane za pomocą niestandardowego aparatu programu word, w zestawie SDK rozpoznawania mowy, które można skonfigurować niestandardowe słowo aktywujące [mogący generować, w tym miejscu](speech-devices-sdk-create-kws.md). Kanał bezpośredniego mowy wiersz zawiera weryfikacji word wznawiania po stronie usługi, która zwiększa dokładność aktywacji word wznawiania, a samo urządzenie.
 |[Zamiana mowy na tekst](speech-to-text.md) | Kanał bezpośredniego mowy wiersz zawiera w czasie rzeczywistym transkrypcji audio do rozpoznany tekst przy użyciu [mowy na tekst](speech-to-text.md) z usług przetwarzania mowy platformy Azure. Ten tekst jest dostępna zarówno w przypadku bota, jak i aplikację kliencką, ponieważ jest on transkrybowanego.
-|[Zamiana tekstu na mowę](text-to-speech.md) | Tekstowe odpowiedzi z botem zostanie przekształcony, za pomocą [zamiany tekstu na mowę](text-to-speech.md) z usług przetwarzania mowy platformy Azure. Syntezy następnie będą dostępne do aplikacji klienta w postaci strumienia audio. Firma Microsoft oferuje możliwość tworzenia własnych [niestandardowych, wysokiej jakości głos TTS neuronowych](https://aka.ms/customneuraltts) daje głosu na marki.
-|[Direct Line mowy](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech.md) | Jako kanał w ramach platformy Bot Framework bezpośrednie mowy wiersza umożliwia płynne i bezproblemowe połączenie między usługą aplikacji klienckiej, bot zgodne i możliwości usług przetwarzania mowy platformy Azure. Aby uzyskać więcej informacji na temat konfigurowania bota przy użyciu kanału Direct mowy wiersza, zobacz [jej stronę w dokumentacji platformy Bot Framework](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech.md).
+|[Zamiana tekstu na mowę](text-to-speech.md) | Tekstowe odpowiedzi z botem zostanie przekształcony, za pomocą [zamiany tekstu na mowę](text-to-speech.md) z usług przetwarzania mowy platformy Azure. Syntezy następnie będą dostępne do aplikacji klienta w postaci strumienia audio. Firma Microsoft oferuje możliwość tworzenia własnych niestandardowych, wysokiej jakości głos TTS Neuronowej, zapewniająca głosu na marki, aby dowiedzieć się więcej [skontaktuj się z nami](mailto:mstts@microsoft.com).
+|[Direct Line mowy](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) | Jako kanał w ramach platformy Bot Framework bezpośrednie mowy wiersza umożliwia płynne i bezproblemowe połączenie między usługą aplikacji klienckiej, bot zgodne i możliwości usług przetwarzania mowy platformy Azure. Aby uzyskać więcej informacji na temat konfigurowania bota przy użyciu kanału Direct mowy wiersza, zobacz [jej stronę w dokumentacji platformy Bot Framework](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech).
 
 ## <a name="sample-code"></a>Przykładowy kod
 

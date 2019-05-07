@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 59a05e7a20f6b229b37977a75d22611c0d5c31d9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7fd9ae3ab1f50dc91118ba11bc357a0f6dc0e771
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60813210"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65141040"
 ---
 # <a name="entity-types-and-their-purposes-in-luis"></a>Typy jednostek i ich celów w usługi LUIS
 
@@ -97,7 +97,6 @@ Gdy jednostki są wyodrębniane, dane jednostki można reprezentowane jako pojed
 |Przedstawiono maszyny|Można oznaczyć|Samouczek|Przykład<br>Odpowiedź|Typ jednostki|Przeznaczenie|
 |--|--|--|--|--|--|
 |✔|✔|[✔](luis-tutorial-composite-entity.md)|[✔](luis-concept-data-extraction.md#composite-entity-data)|[**Composite**](#composite-entity)|Grupowanie jednostki, niezależnie od tego typu jednostki.|
-|✔|✔|-|[✔](luis-concept-data-extraction.md#hierarchical-entity-data)|[**Hierarchiczna**](#hierarchical-entity)|Grupowanie proste jednostki.|
 |||[✔](luis-quickstart-intent-and-list-entity.md)|[✔](luis-concept-data-extraction.md#list-entity-data)|[**Lista**](#list-entity)|Lista elementów i ich synonimy wyodrębnione z tekstem dokładnie zgodne.|
 |Mieszany||[✔](luis-tutorial-pattern.md)|[✔](luis-concept-data-extraction.md#patternany-entity-data)|[**Pattern.any**](#patternany-entity)|Jednostka, w których koniec jednostki trudno jest określić.|
 |||[✔](luis-tutorial-prebuilt-intents-entities.md)|[✔](luis-concept-data-extraction.md#prebuilt-entity-data)|[**Prebuilt**](#prebuilt-entity)|Przeprowadzono już uczenie do wyodrębniania różnych rodzajów danych.|
@@ -112,7 +111,7 @@ Mieszane jednostki używają kombinacji metod wykrywania jednostki.
 
 ## <a name="composite-entity"></a>Złożone jednostki
 
-Jednostki złożonego składa się z innych jednostek, takich jak wstępnie utworzonych jednostek prosty, wyrażeń regularnych, listy i hierarchiczne jednostek. Osobne jednostki tworzą całej jednostki. 
+Jednostka złożonego składa się z innych jednostek, takich jak wstępnie utworzonych jednostek prosty, wyrażeń regularnych i jednostek listy. Osobne jednostki tworzą całej jednostki. 
 
 Ta jednostka jest bardzo dopasowania, gdy dane:
 
@@ -126,18 +125,6 @@ Ta jednostka jest bardzo dopasowania, gdy dane:
 
 [Samouczek](luis-tutorial-composite-entity.md)<br>
 [Przykładowa odpowiedź JSON dla jednostki](luis-concept-data-extraction.md#composite-entity-data)<br>
-
-## <a name="hierarchical-entity"></a>Jednostka hierarchiczna
-
-**Hierarchiczna jednostki po pewnym czasie zostaną wycofane. Użyj [ról jednostki](luis-concept-roles.md) Aby określić podtypy jednostki, zamiast hierarchiczne jednostek.**
-
-Hierarchiczna jednostka jest kategoria kontekstowe nauczony jednostek proste, nazywane elementami podrzędnymi.
-
-![Hierarchiczna jednostki](./media/luis-concept-entities/hierarchical-entity.png)
-
-### <a name="roles-versus-hierarchical-entities"></a>Role i hierarchiczne jednostek
-
-[Role](luis-concept-roles.md) rozwiązanie tego problemu, ponieważ hierarchiczne jednostki, ale odnosi się do wszystkich typów jednostek.  
 
 ## <a name="list-entity"></a>Jednostka listy
 
@@ -171,10 +158,10 @@ W poniższej tabeli każdy wiersz zawiera dwie wersje wypowiedź. Najważniejsze
 
 |Wypowiedź|
 |--|
-|Ataki typu Man kto Mistook His żoną Hat i innych kontrolne Clinical napisał American tego roku?<br>Został **Man kto Mistook His żoną Hat i innych kontrolne Clinical** napisane przez amerykański tego roku?|
-|Była połowa uśpione w Pajamas żab napisane przez amerykański tego roku?<br>Został **połowa uśpione w Pajamas żab** napisane przez amerykański tego roku?|
-|Został określonego smutek z Tort Tarta: Nowe, napisane przez amerykański tego roku?<br>Został **określonego smutek z Tort Tarta: Powieść** napisane przez amerykański tego roku?|
-|To, że Wocket w mojej Pocket! napisane przez amerykański tego roku?<br>Został **w mojej Pocket jest Wocket!** napisane przez amerykański tego roku?|
+|"Dotyczyło Man kto Mistook His żoną Hat i innych kontrolne Clinical napisane przez amerykański tego roku?<br>Został **Man kto Mistook His żoną Hat i innych kontrolne Clinical** napisane przez amerykański tego roku?|
+|`Was Half Asleep in Frog Pajamas written by an American this year?`<br>`Was **Half Asleep in Frog Pajamas** written by an American this year?`|
+|`Was The Particular Sadness of Lemon Cake: A Novel written by an American this year?`<br>`Was **The Particular Sadness of Lemon Cake: A Novel** written by an American this year?`|
+|`Was There's A Wocket In My Pocket! written by an American this year?`<br>`Was **There's A Wocket In My Pocket!** written by an American this year?`|
 
 ## <a name="prebuilt-entity"></a>Wstępnie utworzone jednostki
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: e000c034d10efc652f328fa8d1db8d1902fac693
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 2adcbad55236917685ddcdbabe4809f36ab5a730
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026119"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153047"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Instalowanie i uruchamianie kontenerów usługi mowy
 
@@ -178,7 +178,7 @@ Gdy kontener będzie na [komputerze-hoście](#the-host-computer), użyj następu
 
 Użyj [platformy docker, uruchom](https://docs.docker.com/engine/reference/commandline/run/) polecenie, aby uruchomić dowolne trzy kontenery. Polecenie używa następujących parametrów:
 
-**Podczas prywatnej wersji zapoznawczej**, ustawienia rozliczeń musi być ważny do uruchamianie kontenera, ale nie są rozliczane za użycie.
+**W trakcie okresu zapoznawczego**, ustawienia rozliczeń musi być ważny do uruchamianie kontenera, ale nie są naliczane za użycie.
 
 | Symbol zastępczy | Wartość |
 |-------------|-------|
@@ -226,7 +226,7 @@ To polecenie:
 
 ### <a name="speech-to-text"></a>Zamiana mowy na tekst
 
-Kontener udostępnia punkt końcowy zapytań w oparciu o websocket, interfejsów API, które są dostępne za pośrednictwem [Speech services zawiera dokumentacja zestawu SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/).
+Kontener udostępnia punkt końcowy zapytań w oparciu o websocket, interfejsów API, które są dostępne za pośrednictwem [zestaw SDK rozpoznawania mowy](index.yml).
 
 Domyślnie zestaw SDK rozpoznawania mowy używa usług rozpoznawania mowy w trybie online. Aby korzystać z kontenera, musisz zmienić metodę inicjowania. Zobacz przykłady poniżej.
 

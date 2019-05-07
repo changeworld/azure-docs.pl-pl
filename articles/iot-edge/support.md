@@ -4,17 +4,17 @@ description: Dowiedz się, które systemy operacyjne można uruchomić demona us
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 03/18/2019
+ms.date: 05/06/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 5bc133e81f9917aafb406a6bfb27922cdba48ef5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1db999f5d3172734311ecc7dbec72214a1e07e91
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60612243"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65137806"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Usługa Azure IoT Edge obsługiwanych systemów
 
@@ -60,14 +60,15 @@ Ogólnie dostępna
 | Raspbian stretch | Nie | Yes|
 | Ubuntu Server 16.04 | Yes | Nie |
 | Serwer Ubuntu 18.04 | Yes | Nie |
+| Windows 10 IoT Enterprise, build 17763 | Yes | Nie |
 
 Publiczna wersja zapoznawcza
 
 | System operacyjny | AMD64 | ARM32v7 |
 | ---------------- | ----- | ----- |
 | Windows 10 IoT Core, build 17763 | Yes | Nie |
-| Windows 10 IoT Enterprise, build 17763 | Yes | Nie |
-| Windows Server 2019 | Yes | Nie |
+| Windows Server 2019, build 17763 | Yes | Nie |
+| Windows Server IoT 2019, build 17763 | Yes | Nie |
 
 Systemów operacyjnych Windows wymienionych powyżej przedstawiono wymagania dotyczące urządzeń z systemem Windows kontenery na Windows. Ta konfiguracja jest tylko obsługiwana konfiguracja dla środowiska produkcyjnego. Pakiety instalacyjne usługi Azure IoT Edge dla Windows umożliwia korzystanie z kontenerów systemu Linux na Windows; Jednak ta konfiguracja jest do tworzenia i testowania tylko. Korzystanie z kontenerów systemu Linux na Windows nie jest obsługiwaną konfiguracją w środowisku produkcyjnym. Dowolna wersja systemu Windows 10 kompilacji 14393 lub nowszym i Windows Server 2016 lub nowszym może służyć w tym scenariuszu rozwoju.
 
