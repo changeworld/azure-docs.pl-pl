@@ -47,8 +47,8 @@ Wymagane są następujące nagłówki:
 
 |Nagłówek żądania|Opis|
 |--------------------|-----------------|
-|*Typ zawartości:*|Wymagany. Ustaw `application/json`.|
-|*Autoryzacja:*|Wymagany. Ustawić prawidłową `Bearer` [token dostępu](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
+|*Content-Type:*|Wymagany. Ustaw `application/json`.|
+|*Authorization:*|Wymagany. Ustawić prawidłową `Bearer` [token dostępu](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
 
 ## <a name="response"></a>Odpowiedź
 
