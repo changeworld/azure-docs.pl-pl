@@ -54,10 +54,10 @@ Następujące właściwości są obsługiwane przez usługi Amazon Redshift, po�
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość type musi być równa: **AmazonRedshift** | Yes |
-| serwer |Adres IP lub hosta nazwę serwera usługi Amazon Redshift. |Yes |
+| server |Adres IP lub hosta nazwę serwera usługi Amazon Redshift. |Yes |
 | port |Numer portu TCP używanego przez serwer usługi Amazon Redshift do nasłuchiwania połączeń klientów. |Nie, wartość domyślna to 5439 |
-| baza danych |Nazwa bazy danych usługi Amazon Redshift. |Yes |
-| nazwa użytkownika |Nazwa użytkownika, który ma dostęp do bazy danych. |Yes |
+| database |Nazwa bazy danych usługi Amazon Redshift. |Yes |
+| username |Nazwa użytkownika, który ma dostęp do bazy danych. |Yes |
 | password |Hasło dla konta użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Yes |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. (Jeśli Twój magazyn danych znajduje się w sieci prywatnej), można użyć środowiska Azure Integration Runtime lub środowiskiem Integration Runtime. Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
 
@@ -210,16 +210,16 @@ Podczas kopiowania danych z usługi Amazon Redshift, następujące mapowania są
 | Typ danych Amazon Redshift | Typ danych tymczasowych fabryki danych |
 |:--- |:--- |
 | BIGINT |Int64 |
-| ATRYBUT TYPU WARTOŚĆ LOGICZNA |String |
+| BOOLEAN |String |
 | CHAR |String |
 | DATE |DateTime |
 | DECIMAL |Decimal |
-| PODWÓJNEJ PRECYZJI |Double |
+| DOUBLE PRECISION |Double |
 | INTEGER |Int32 |
-| RZECZYWISTE |Single |
+| REAL |Single |
 | SMALLINT |Int16 |
-| TEKST |String |
-| SYGNATURA CZASOWA |DateTime |
+| TEXT |String |
+| TIMESTAMP |DateTime |
 | VARCHAR |String |
 
 ## <a name="next-steps"></a>Kolejne kroki
