@@ -18,9 +18,9 @@
   items:
     - name: Łączenie się z zasobami usługi Windows Virtual Desktop
       items:
-        - name: Łączenie się z systemami Windows 7 i Windows 10
+        - name: Łączenie z systemu Windows 10 lub Windows 7
           href: connect-windows-7-and-10.md
-        - name: Łączenie się z klientem internetowym
+        - name: Łączenie z przeglądarki internetowej
           href: connect-web.md
     - name: Tworzenie puli hostów za pomocą szablonu usługi Azure Resource Manager
       href: create-host-pools-arm-template.md
@@ -34,6 +34,8 @@
       href: diagnostics-role-service.md
     - name: Przygotowywanie i dostosowywanie głównego obrazu wirtualnego dysku twardego
       href: set-up-customize-master-image.md
+    - name: Konfigurowanie procesora GPU dla usługi Windows Virtual Desktop
+      href: configure-vm-gpu.md
     - name: Automatyczne skalowanie hostów sesji
       href: set-up-scaling-script.md
 - name: Pojęcia

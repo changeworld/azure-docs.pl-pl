@@ -109,8 +109,14 @@
           href: how-to-install-iot-edge-linux-arm.md
         - name: Windows x64
           href: how-to-install-iot-edge-windows.md
+        - name: Kontenery systemu Linux w systemie Windows X64
+          href: how-to-install-iot-edge-windows-with-linux.md
+        - name: Maszyna wirtualna z systemem Windows Server
+          href: how-to-install-iot-edge-windows-server-vm.md
         - name: Maszyna wirtualna z systemem Ubuntu
           href: how-to-install-iot-edge-ubuntuvm.md
+        - name: Kubernetes
+          href: how-to-install-iot-edge-kubernetes.md
         - name: Aktualizacja wersji środowiska uruchomieniowego
           href: how-to-update-iot-edge.md
     - name: Automatyczne aprowizowanie za pomocą usługi DPS

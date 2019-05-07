@@ -555,6 +555,8 @@
                   href: app/usage-workbooks.md
             - name: Rozwiązania analizy aplikacji internetowych
               href: insights/azure-web-apps-analytics.md
+            - name: Aplikacje hostowane w usłudze Kubernetes
+              href: app/kubernetes.md
         - name: Monitorowanie kontenerów
           items:
             - name: Usługa Azure Monitor dla kontenerów
@@ -563,13 +565,19 @@
                   href: insights/container-insights-overview.md
                 - name: Często zadawane pytania
                   href: insights/container-insights-faq.md
-                - name: Dodawanie
-                  href: insights/container-insights-onboard.md
+                - name: Włączanie monitorowania
+                  items:
+                    - name: Omówienie włączania monitorowania
+                      href: insights/container-insights-onboard.md
+                    - name: Włączanie dla nowego klastra
+                      href: insights/container-insights-enable-new-cluster.md
+                    - name: Włączanie dla istniejącego klastra
+                      href: insights/container-insights-enable-existing-clusters.md
                 - name: Analiza
                   href: insights/container-insights-analyze.md
                 - name: Wyłączanie monitorowania
                   href: insights/container-insights-optout.md
-                - name: Wyświetlanie dzienników kontenerów na żywo
+                - name: Wyświetlanie dzienników na żywo
                   href: insights/container-insights-live-logs.md
                 - name: Analizowanie danych przy użyciu zapytań dzienników
                   href: insights/container-insights-log-search.md
@@ -585,8 +593,6 @@
               href: insights/containers.md
             - name: Monitorowanie aplikacji Docker
               href: app/docker.md
-            - name: Application Insights dla platformy Kubernetes
-              href: app/kubernetes.md
         - name: Monitorowanie grup zasobów
           href: insights/resource-group-insights.md
         - name: Monitorowanie baz danych

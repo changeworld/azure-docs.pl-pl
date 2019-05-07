@@ -79,37 +79,40 @@
       displayName: 'metadata, pair, sharepoint, authentication, permissions, faq, pdf, excel, xls, rtf, html, txt, tsv, url, end of line, new line, carriage return, markdown, commonmark, format, standard'
 - name: Przewodniki z instrukcjami
   items:
+    - name: Edytowanie bazy wiedzy
+      items:
+        - name: Edytowanie bazy wiedzy
+          href: How-To/edit-knowledge-base.md
+        - name: Tworzenie konwersacji wieloetapowych za pomocą dodatkowych monitów
+          href: How-To/multiturn-conversation.md
+          displayName: 'multi-turn dialogs, parent question, child question, filtering, metadata, state, context, prompt, follow-up, followup, flow, conversation, previous question'
+        - name: Dodawanie konwersacji
+          href: How-to/chit-chat-knowledge-base.md
+        - name: Dodawanie zabezpieczonego pliku programu Sharepoint
+          href: How-To/add-sharepoint-datasources.md
+          displayName: 'Sharepoint, secure, AAD, azure directory, admin, permission, authorization, file, authentication'
     - name: Zarządzanie bazą wiedzy
       items:
         - name: Tworzenie i publikowanie bazy wiedzy
           href: Quickstarts/create-publish-knowledge-base.md
           displayName: 'create bot, bot, publish to bot, test, edit'
-        - name: Dodawanie funkcji konwersacji do bazy wiedzy
-          href: How-to/chit-chat-knowledge-base.md
-        - name: Migrowanie bazy wiedzy
-          href: Tutorials/migrate-knowledge-base.md
-        - name: Edytowanie bazy wiedzy
-          href: How-To/edit-knowledge-base.md
-          displayName: 'metadata, pair'
-        - name: Dodawanie zabezpieczonego pliku programu Sharepoint
-          href: How-To/add-sharepoint-datasources.md
-          displayName: 'Sharepoint, secure, AAD, azure directory, admin, permission, authorization, file, authentication'
-        - name: Współpraca nad bazą wiedzy
-          href: How-To/collaborate-knowledge-base.md
+        - name: Uzyskiwanie odpowiedzi
+          href: How-To/metadata-generateanswer-usage.md
+          displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer'
+        - name: Tworzenie bota z obsługą bazy wiedzy
+          href: Tutorials/integrate-qnamaker-luis.md
         - name: Tworzenie bazy wiedzy w innym języku
           href: How-To/language-knowledge-base.md
+        - name: Migrowanie bazy wiedzy
+          href: Tutorials/migrate-knowledge-base.md
+          displayName: 'metadata, pair'
+        - name: Współpraca nad bazą wiedzy
+          href: How-To/collaborate-knowledge-base.md
         - name: Testowanie bazy wiedzy
           href: How-To/test-knowledge-base.md
         - name: Ulepszanie bazy wiedzy za pomocą uczenia aktywnego
           href: How-to/improve-knowledge-base.md
           displayName: 'active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting, accept, reject, filter by suggestion, filter active learning'
-    - name: Używanie bazy wiedzy
-      items:
-        - name: Korzystanie z metadanych za pomocą interfejsu API GenerateAnswer
-          href: How-To/metadata-generateanswer-usage.md
-          displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters'
-        - name: Za pomocą bota
-          href: Tutorials/integrate-qnamaker-luis.md
     - name: Zarządzanie usługą
       items:
         - name: Konfigurowanie usługi QnA Maker
@@ -154,7 +157,7 @@
     - name: Przykłady
       items:
         - name: Bot pomocy funkcji QnA Maker
-          href: 'https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-support-bot'
+          href: 'https://aka.ms/qnamakerhelpbotsample'
     - name: Zestawy SDK
       items:
         - name: 'C#'

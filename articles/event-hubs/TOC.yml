@@ -51,6 +51,8 @@
           href: event-hubs-capture-python.md
     - name: Przesyłanie strumieniowe do usługi Event Hubs dla platformy Apache Kafka
       href: event-hubs-quickstart-kafka-enabled-event-hubs.md
+    - name: Tworzenie dedykowanego klastra usługi Event Hubs
+      href: event-hubs-dedicated-cluster-create-portal.md
 - name: Samouczki
   items:
     - name: Wizualizowanie danych dotyczących anomalii w strumieniach danych usługi Event Hubs

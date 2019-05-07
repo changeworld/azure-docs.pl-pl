@@ -120,6 +120,8 @@
           href: sql-database-service-tiers-vcore.md
         - name: Warstwy usług z jednostkami DTU
           href: sql-database-service-tiers-dtu.md
+        - name: Warstwa bezserwerowych usług obliczeniowych
+          href: sql-database-serverless.md
         - name: Opłacanie wydajności rezerwowej z góry
           href: sql-database-reserved-capacity.md
         - name: Migracja z warstwy usługi Premium RS

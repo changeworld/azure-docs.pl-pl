@@ -66,6 +66,10 @@
       items:
         - name: Pozyskiwanie przykładowych danych
           href: ingest-sample-data.md
+    - name: Wdrażanie
+      items:
+        - name: Zadanie metodyki DevOps
+          href: devops.md
     - name: Zapytania o dane
       items:
         - name: Pisanie zapytań

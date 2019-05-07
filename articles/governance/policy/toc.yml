@@ -118,7 +118,7 @@
           href: samples/enforce-data-lake-store-encryption.md
     - name: Konfiguracja gościa
       items:
-        - name: Inspekcja aplikacji zainstalowanych w systemie Linux
+        - name: Aplikacje inspekcji nie są zainstalowane w systemie Linux
           displayName: 'audit, vm'
           href: samples/guest-configuration-applications-installed-linux.md
     - name: Magazyny kluczy

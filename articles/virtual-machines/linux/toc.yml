@@ -112,6 +112,8 @@
           href: disk-scalability-targets.md
         - name: Kopia zapasowa i odzyskiwanie po awarii dla dysków
           href: backup-and-disaster-recovery-for-azure-iaas-disks.md
+        - name: Efemeryczne dyski systemu operacyjnego
+          href: ephemeral-os-disks.md
     - name: Networking
       href: network-overview.md
     - name: Automatyczne skalowanie aplikacji
@@ -253,16 +255,32 @@
           href: reserved-vm-instance-size-flexibility.md
     - name: Korzystanie z obrazów
       items:
-        - name: Galerie obrazów udostępnionych (wersja zapoznawcza)
+        - name: Udostępnione galerie obrazów
           items:
             - name: Omówienie
               href: shared-image-galleries.md
-            - name: Tworzenie obrazów udostępnionych przy użyciu interfejsu wiersza polecenia
+            - name: Interfejs wiersza polecenia
               href: shared-images.md
             - name: Portal
               href: shared-images-portal.md
+            - name: Udostępnianie obrazów między dzierżawami
+              href: share-images-across-tenants.md
             - name: Rozwiązywanie problemów z obrazami udostępnionymi
               href: troubleshooting-shared-images.md
+        - name: Konstruktor obrazów (wersja zapoznawcza)
+          items:
+            - name: Omówienie
+              href: image-builder-overview.md
+            - name: Korzystanie z interfejsu wiersza polecenia
+              href: image-builder.md
+            - name: Dokumentacja dotycząca szablonów
+              href: image-builder-json.md
+            - name: Używanie z galeriami
+              href: image-builder-gallery.md
+            - name: Aktualizowanie wersji obrazu
+              href: image-builder-gallery-update-image-version.md
+            - name: Rozwiązywanie problemów
+              href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
         - name: Znajdowanie obrazów i korzystanie z nich
           href: cli-ps-findimage.md
         - name: Tworzenie obrazu niestandardowego

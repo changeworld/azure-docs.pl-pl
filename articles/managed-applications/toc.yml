@@ -17,6 +17,8 @@
       href: publish-service-catalog-app.md
     - name: Publikowanie aplikacji na platformie handlowej
       href: publish-marketplace-app.md
+    - name: Tworzenie niestandardowego dostawcy zasobów
+      href: create-custom-provider.md
 - name: Przykłady
   items:
     - name: Interfejs wiersza polecenia platformy Azure
@@ -25,6 +27,10 @@
       href: powershell-samples.md
     - name: Rozwiązania aplikacji zarządzanych
       href: sample-projects.md
+- name: Pojęcia
+  items:
+    - name: Dostawcy niestandardowi
+      href: custom-providers-overview.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Wydawcy

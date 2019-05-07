@@ -1,0 +1,41 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Usługa Azure Red Hat OpenShift
+metadata:
+  document_id: null
+  title: Dokumentacja usługi Azure Red Hat OpenShift — samouczki i dokumentacja interfejsu API | Microsoft Docs
+  meta.description: Microsoft Azure Red Hat OpenShift allows you to quickly deploy a production ready Red Hat OpenShift cluster in Azure. Learn how to use Azure Red Hat OpenShift with these tutorials and how-to guides.
+  services: container-service
+  author: tylermsft
+  manager: jeconnoc
+  ms.service: container-service
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 05-06-2019
+  ms.author: twhitney
+abstract:
+  description: 'Usługa Azure Red Hat OpenShift udostępnia na platformie Azure klastry Kubernetes z jedną dzierżawą i o wysokiej dostępności, które są obsługiwane przez firmy Red Hat i Microsoft.'
+sections:
+  - title: Samouczki krok po kroku
+    items:
+      - type: paragraph
+        text: 'Dowiedz się, jak utworzyć klaster usługi Azure Red Hat OpenShift i zarządzać nim.'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/openshift/tutorial-create-cluster">Tworzenie klastra usługi Azure Red Hat OpenShift</a>
+          - html: <a href="/azure/openshift/tutorial-scale-cluster">Skalowanie klastra usługi Azure Red Hat OpenShift</a>
+          - html: <a href="/azure/openshift/tutorial-delete-cluster">Usuwanie klastra usługi Azure Red Hat OpenShift</a>
+  - title: Dokumentacja
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Wiersz polecenia
+            html: <p><a href="/cli/azure/openshift">Interfejs wiersza polecenia platformy Azure</a></p>
+          - title: REST
+            html: <p><a href="/rest/api/openshift">Interfejs API REST</a></p>
+          - title: Dokumentacja firmy Red Hat
+            html: '<p><a href="https://access.redhat.com/documentation/openshift_dedicated/3/">Dokumentacja usługi Red Hat OpenShift</a></p>'

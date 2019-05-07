@@ -26,8 +26,10 @@
     - name: Analizowanie wideo — .NET
       displayName: 'job, transform'
       href: analyze-videos-tutorial-with-api.md
-    - name: Szyfrowanie dynamiczne AES-128 — .NET
+    - name: Dynamiczne szyfrowanie algorytmem AES-128 — .NET
       href: protect-with-aes128.md
+    - name: Dynamiczne szyfrowanie algorytmem DRM — .NET
+      href: protect-with-drm.md
 - name: Przykłady
   items:
     - name: Przykłady kodu platformy Azure
@@ -56,10 +58,9 @@
         - name: Automatyczne generowanie adaptacyjnej drabiny szybkości transmisji bitów
           href: autogen-bitrate-ladder.md
         - name: Kodowanie z rozpoznawaniem zawartości
-          displayName: 'content, aware, cae'
           href: cae-experimental.md
         - name: Kody błędów zadań
-          href: 'https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode'
+          href: job-error-codes.md
     - name: Analiza multimediów
       items:
         - name: Omówienie
@@ -68,7 +69,7 @@
         - name: Przekształcenia i zadania
           href: transforms-jobs-concept.md
         - name: Kody błędów zadań
-          href: 'https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode'
+          href: job-error-codes.md
     - name: 'Tworzenie pakietów, dostarczanie, ochrona'
       items:
         - name: Tworzenie pakietów
@@ -150,7 +151,7 @@
             - name: Kody błędów punktów początkowych
               href: origin-error-codes.md
             - name: Kody błędów zadań
-              href: 'https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode'
+              href: job-error-codes.md
     - name: Wskazówki dotyczące migracji z wersji 2 do wersji 3
       href: migrate-from-v2-to-v3.md
 - name: Przewodniki z instrukcjami
@@ -215,8 +216,6 @@
       items:
         - name: Pobieranie zasad dotyczących klucza zawartości — .NET
           href: get-content-key-policy-dotnet-howto.md
-        - name: Szyfrowanie dynamiczne DRM — .NET
-          href: protect-with-drm.md
         - name: Technologia FairPlay w trybie offline dla systemu iOS
           href: offline-fairplay-for-ios.md
         - name: Technologia Widevine w trybie offline dla systemu Android
@@ -258,7 +257,7 @@
         - name: Kody błędów punktów początkowych
           href: origin-error-codes.md
         - name: Kody błędów zadań
-          href: 'https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode'
+          href: job-error-codes.md
 - name: Zasoby
   items:
     - name: Społeczność usługi Azure Media Services

@@ -174,8 +174,12 @@
               href: how-to-custom-speech-human-labeled-transcriptions.md
         - name: Zamiana tekstu na mowę
           items:
-            - name: Tworzenie czcionek głosowych (głos bota powiązany z marką)
-              href: how-to-customize-voice-font.md
+            - name: Wprowadzenie do usługi Custom Voice
+              href: how-to-custom-voice.md
+            - name: Przygotowywanie danych
+              href: how-to-custom-voice-prepare-data.md
+            - name: Tworzenie i używanie modeli usługi Custom Voice
+              href: how-to-custom-voice-create-voice.md
             - name: Nagrywanie próbek głosu
               href: record-custom-voice-samples.md
             - name: Dostosowywanie danych wyjściowych zamiany tekstu na mowę

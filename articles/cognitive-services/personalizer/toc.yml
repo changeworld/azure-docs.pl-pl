@@ -37,13 +37,21 @@
           displayName: 'learning policy, Counterfactual, features'
 - name: Przewodniki z instrukcjami
   items:
-    - name: Konfigurowanie usługi Personalizacja
+    - name: Tworzenie i konfigurowanie usługi Personalizacja
       href: how-to-settings.md
       displayName: 'azure, portal, settings, evaluation, offline, policy'
     - name: Analiza
       items:
         - name: Ocena w trybie offline
           href: how-to-offline-evaluation.md
+    - name: Korzystanie z kontenerów
+      items:
+        - name: Instalowanie i uruchamianie kontenerów
+          displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, run, apikey'
+          href: personalizer-container-howto.md
+        - name: Konfigurowanie kontenerów
+          href: personalizer-container-configuration.md
+          displayName: 'docker, run, apikey'
 - name: Dokumentacja
   items:
     - name: Przykłady

@@ -148,6 +148,8 @@
             - name: Korzystanie z interfejsu API REST systemu Apache Ambari
               href: ../hdinsight-hadoop-manage-ambari-rest-api.md
               maintainContext: true
+        - name: Przyspieszone zapisy
+          href: ../hbase/apache-hbase-accelerated-writes.md
         - name: Skalowanie klastra usługi HDInsight
           href: ../hdinsight-scaling-best-practices.md
           maintainContext: true
