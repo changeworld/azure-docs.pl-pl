@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: 380cd84cc5ec56fe54c12201b9c1db810ac457bf
-ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.openlocfilehash: 14990cd4a066c126b5e4d498c5a109dac1b8820a
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64875919"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65140938"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Praca z usługą Azure Functions podstawowych narzędzi
 
@@ -186,7 +186,7 @@ Local.settings.json pliku przechowuje ustawienia aplikacji, parametry połączen
 
 | Ustawienie      | Opis                            |
 | ------------ | -------------------------------------- |
-| **`IsEncrypted`** | Po ustawieniu `true`, wszystkie wartości są szyfrowane za pomocą klucza komputera lokalnego. Używane z `func settings` poleceń. Wartość domyślna to `false`. |
+| **`IsEncrypted`** | Po ustawieniu `true`, wszystkie wartości są szyfrowane za pomocą klucza komputera lokalnego. Używane z `func settings` poleceń. Wartość domyślna to `true`. Gdy `true`, wszystkie ustawienia dodane przy użyciu `func settings add` są szyfrowane za pomocą klucza komputera lokalnego. Odzwierciedla to, jak ustawienia aplikacji funkcji są przechowywane w ustawieniach aplikacji na platformie Azure. Szyfrowania wartości ustawienia lokalne zapewnia dodatkową ochronę dla cennych danych powinien local.settings.json być publicznie udostępniany.  |
 | **`Values`** | Kolekcja ustawień aplikacji i parametry połączenia używane podczas uruchamiania lokalnego. Te wartości odpowiadają ustawienia aplikacji w aplikacji funkcji na platformie Azure, takich jak [ `AzureWebJobsStorage` ]. Wiele wyzwalaczy i powiązań ma właściwość, która odwołuje się do aplikacji ustawienie parametrów połączenia, takich jak `Connection` dla [wyzwalacz usługi Blob storage](functions-bindings-storage-blob.md#trigger---configuration). W przypadku takich właściwości potrzebne ustawienie aplikacji zdefiniowane w `Values` tablicy. <br/>[`AzureWebJobsStorage`] Wymagana aplikacja jest ustawienie wyzwalaczy innych niż HTTP. <br/>W wersji 2.x środowisko uruchomieniowe funkcji wymaga [ `FUNCTIONS_WORKER_RUNTIME` ] ustawienie, które jest generowany dla projektu, podstawowe narzędzia. <br/> Jeśli masz [emulatora usługi Azure storage](../storage/common/storage-use-emulator.md) zainstalowane lokalnie, możesz ustawić [ `AzureWebJobsStorage` ] do `UseDevelopmentStorage=true` i podstawowe narzędzia używa emulatora. Jest to przydatne podczas tworzenia aplikacji, ale należy przetestować za pomocą połączenia rzeczywisty magazyn, przed przystąpieniem do wdrożenia. |
 | **`Host`** | Ustawienia w tej sekcji dostosować proces hosta funkcji podczas uruchamiania lokalnego. |
 | **`LocalHttpPort`** | Ustawia domyślny port używany podczas uruchamiania lokalnego hosta funkcji (`func host start` i `func run`). `--port` Opcji wiersza polecenia mają pierwszeństwo przed tę wartość. |

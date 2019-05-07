@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 12/04/2018
+ms.date: 4/26/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: dc78fbc93d625b39379e07f240eef7fbad10d194
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 02591185914f3b04a70af3b7c5d607f4a2865806
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61474848"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154264"
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>Rozwiązywanie problemów z usługi Azure SQL Data Warehouse
 W tym artykule wymieniono typowe pytania dotyczące rozwiązywania problemów.
@@ -57,8 +57,9 @@ W tym artykule wymieniono typowe pytania dotyczące rozwiązywania problemów.
 ## <a name="polybase"></a>Program Polybase
 | Problem                                           | Rozwiązanie                                                   |
 | :---------------------------------------------- | :----------------------------------------------------------- |
-| Obciążenia kończy się niepowodzeniem z powodu dużych wierszy                | Obsługa duży wiersz nie jest obecnie dostępny dla programu Polybase.  Oznacza to, że jeśli tabela zawiera, VARCHAR(MAX), NVARCHAR(MAX) lub VARBINARY(MAX), tabele zewnętrzne nie można załadować danych.  Trwa ładowanie dużych wierszy jest obecnie obsługiwane tylko za pośrednictwem usługi Azure Data Factory (przy użyciu narzędzia BCP), Azure Stream Analytics, SSIS, BCP lub klasa .NET SQLBulkCopy. Program PolyBase obsługę dużych wierszy zostanie dodana w przyszłej wersji. |
-| kończy się niepowodzeniem obciążenia BCP tabeli z typem danych maksymalna | Istnieje znany problem, który wymaga, że umieszczone na końcu tabeli w niektórych scenariuszach VARCHAR(MAX), NVARCHAR(MAX) lub VARBINARY(MAX).  Spróbuj przenieść maksymalna liczba kolumn na koniec tabeli. |
+| Eksporty kończy się niepowodzeniem z TINYINT i DATOWE typy             | Dla formatów plików Parquet i ORC, wartości typu DATE musi należeć do zakresu od 01-01-1970 r. 00:00:01 czasu UTC i 2038-01-19 03:14:07. Wartości typu TINYINT musi wynosić od 0 do 127.    |
+| Problem z typu DZIESIĘTNEGO Parquet: zapisywanie z platformy Spark wpisz DecimalType(18,4) i importowanie kolumny typu double lub rzeczywistego zapewnia "Błąd: nie można rzutować java.base/java.lang.Long java.base/java.lang.Float". | Należy zaimportować do bigint i dzielenia na 10000 lub użyj [Usługi Databricks] łącznik SQL data Warehouse. |
+| Problem z Parquet typ daty: zapisu z typu Spark, Data i importowanie do kolumny wpisz datę lub daty/godziny zapewnia "Błąd: nie można rzutować java.base/java.lang.Integer parquet.io.api.Binary". | Musisz użyć innej platformy Spark (int) i obliczeń daty lub użyć [Usługi Databricks] łącznik SQL data Warehouse. |
 
 ## <a name="differences-from-sql-database"></a>Różnice z bazy danych SQL
 | Problem                                 | Rozwiązanie                                                   |
@@ -132,3 +133,4 @@ Aby uzyskać pomoc w znalezieniu rozwiązania problemu poniżej przedstawiono ni
 [Forum Stack Overflow]: https://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [Filmy wideo]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
+[Usługi Databricks]: https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse#load-data-into-azure-sql-data-warehouse

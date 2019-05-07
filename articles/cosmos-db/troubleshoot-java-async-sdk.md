@@ -4,17 +4,17 @@ description: Używanie funkcji, takich jak rejestrowania po stronie klienta i in
 author: moderakh
 ms.service: cosmos-db
 ms.topic: troubleshooting
-ms.date: 10/28/2018
+ms.date: 04/30/2019
 ms.author: moderakh
 ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 0a2bbb33182fcdef3cc6ed7ff213557f90be4544
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f0dc45f104e05fde083489604865aaae8282d6a2
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60404675"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65146205"
 ---
 # <a name="troubleshoot-issues-when-you-use-the-java-async-sdk-with-azure-cosmos-db-sql-api-accounts"></a>Rozwiązywanie problemów, gdy używasz zestawu SDK Java Async z kontami interfejsu API SQL usługi Azure Cosmos DB
 W tym artykule omówiono typowe problemy, rozwiązania, czynności diagnostycznych i narzędzia, gdy używasz [zestawu SDK Java Async](sql-api-sdk-async-java.md) z kontami interfejsu API SQL usługi Azure Cosmos DB.
@@ -57,6 +57,16 @@ Jeśli Twoja aplikacja jest wdrożona w usłudze Azure Virtual Machines bez publ
 
     Po włączeniu punktu końcowego usługi żądania są już wysyłane z publicznego adresu IP do usługi Azure Cosmos DB. Zamiast tego wysyłane sieć wirtualną i podsieć tożsamości. Ta zmiana może spowodować spadnie zapory, jeśli tylko publiczne adresy IP są dozwolone. Jeśli używana jest zapora, po włączeniu punktu końcowego usługi, dodać podsieć do zapory przy użyciu [wirtualnego ACL sieci](https://docs.microsoft.com/azure/virtual-network/virtual-networks-acl).
 * Przypisz publiczny adres IP do maszyny Wirtualnej platformy Azure.
+
+##### <a name="cant-connect"></a>Nie można uzyskać dostęp do usługi — zapory
+``ConnectTimeoutException`` Wskazuje, że zestaw SDK nie może uzyskać dostęp do usługi.
+Podczas korzystania z trybu bezpośredniego awaria może nastąpić podobny do następującego:
+```
+GoneException{error=null, resourceAddress='https://cdb-ms-prod-westus-fd4.documents.azure.com:14940/apps/e41242a5-2d71-5acb-2e00-5e5f744b12de/services/d8aa21a5-340b-21d4-b1a2-4a5333e7ed8a/partitions/ed028254-b613-4c2a-bf3c-14bd5eb64500/replicas/131298754052060051p//', statusCode=410, message=Message: The requested resource is no longer available at the server., getCauseInfo=[class: class io.netty.channel.ConnectTimeoutException, message: connection timed out: cdb-ms-prod-westus-fd4.documents.azure.com/101.13.12.5:14940]
+```
+
+Jeśli zapora na komputerze aplikacji, otwórz zakres portów 10 000 do 20 000, które są używane w trybie bezpośredniego.
+To samo wykonać również [limitu połączeń na komputerze hosta](#connection-limit-on-host).
 
 #### <a name="http-proxy"></a>Serwer proxy HTTP
 

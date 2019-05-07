@@ -2,10 +2,8 @@
   href: index.yml
 - name: Omówienie
   items:
-    - name: Co to jest Azure Search
+    - name: Co to jest usługa Azure Search?
       href: search-what-is-azure-search.md
-    - name: Co to jest wyszukiwanie poznawcze
-      href: cognitive-search-concept-intro.md
 - name: Przewodniki Szybki start
   expanded: true
   items:
@@ -35,8 +33,12 @@
       href: search-indexer-tutorial.md
     - name: Indeksowanie obiektów blob JSON platformy Azure
       href: search-semi-structured-data.md
-    - name: Indeksowanie z użyciem sztucznej inteligencji (Cognitive Services)
-      href: cognitive-search-tutorial-blob.md
+    - name: Wzbogacanie o sztuczną inteligencję (wyszukiwanie poznawcze)
+      items:
+        - name: REST
+          href: cognitive-search-tutorial-blob.md
+        - name: 'C#'
+          href: cognitive-search-tutorial-blob-dotnet.md
 - name: Przykłady
   items:
     - name: Przykłady kodu platformy Azure
@@ -53,11 +55,15 @@
   items:
     - name: Wyszukiwanie pełnotekstowe
       href: search-lucene-query-architecture.md
-    - name: Wzorce projektowe wielodostępnych aplikacji
-      href: search-modeling-multitenant-saas-applications.md
+    - name: Wyszukiwanie poznawcze
+      href: cognitive-search-concept-intro.md
+    - name: Magazyn wiedzy
+      href: knowledge-store-concept-intro.md
+    - name: Projekcje
+      href: knowledge-store-projection-overview.md
 - name: Przewodniki z instrukcjami
   items:
-    - name: Planowanie pojemności
+    - name: Planowanie
       items:
         - name: Wybieranie warstwy
           href: search-sku-tier.md
@@ -67,6 +73,8 @@
           href: search-capacity-planning.md
         - name: Strategie wdrażania i najlepsze rozwiązania
           href: search-performance-optimization.md
+        - name: Architektura wielodostępności
+          href: search-modeling-multitenant-saas-applications.md
     - name: Bezpieczeństwo
       items:
         - name: Omówienie zabezpieczeń
@@ -79,6 +87,8 @@
           href: search-security-trimming-for-azure-search.md
         - name: Filtrowanie według tożsamości usługi AAD
           href: search-security-trimming-for-azure-search-with-aad.md
+        - name: Zarządzanie kluczami szyfrowania (wersja zapoznawcza)
+          href: search-security-manage-encryption-keys.md
     - name: Opracowywanie zawartości
       items:
         - name: Wersje interfejsu API
@@ -169,26 +179,36 @@
           href: search-indexer-field-mappings.md
         - name: Rozwiązywanie typowych problemów
           href: search-indexer-troubleshooting.md
-    - name: Indeksowanie sztucznej inteligencji (wyszukiwanie poznawcze)
+    - name: Wzbogacanie o sztuczną inteligencję
       items:
         - name: Dołączanie zasobu usługi Cognitive Services
           href: cognitive-search-attach-cognitive-services.md
-        - name: Definiowanie zestawu umiejętności
-          href: cognitive-search-defining-skillset.md
-        - name: Tworzenie odwołania do adnotacji
-          href: cognitive-search-concept-annotations-syntax.md
-        - name: Tworzenie mapowania na pola indeksu
-          href: cognitive-search-output-field-mapping.md
-        - name: Przetwarzanie i wyodrębnianie informacji z obrazów
-          href: cognitive-search-concept-image-scenarios.md
-        - name: Integrowanie umiejętności niestandardowych
-          href: cognitive-search-custom-skill-interface.md
-        - name: Przykład — umiejętności niestandardowe
-          href: cognitive-search-create-custom-skill-example.md
+        - name: Zestawy umiejętności
+          items:
+            - name: Definiowanie zestawu umiejętności
+              href: cognitive-search-defining-skillset.md
+            - name: Tworzenie odwołania do adnotacji
+              href: cognitive-search-concept-annotations-syntax.md
+            - name: Tworzenie mapowania na pola indeksu
+              href: cognitive-search-output-field-mapping.md
+            - name: Przetwarzanie i wyodrębnianie informacji z obrazów
+              href: cognitive-search-concept-image-scenarios.md
+        - name: Umiejętności niestandardowe
+          items:
+            - name: Integrowanie umiejętności niestandardowych
+              href: cognitive-search-custom-skill-interface.md
+            - name: Przykład — Azure Functions
+              href: cognitive-search-create-custom-skill-example.md
+            - name: Przykład — Containers
+              href: 'https://go.microsoft.com/fwlink/?linkid=2089500'
         - name: Wskazówki dotyczące rozwiązywania problemów
           href: cognitive-search-concept-troubleshooting.md
         - name: Linki do dokumentacji
           href: cognitive-search-resources-documentation.md
+    - name: Magazyn wiedzy (wersja zapoznawcza)
+      items:
+        - name: Jak zacząć
+          href: knowledge-store-howto.md
     - name: Zapytania o dane
       items:
         - name: Tworzenie podstawowego zapytania
@@ -203,6 +223,8 @@
           href: search-query-simple-examples.md
         - name: Przykłady (pełna składnia Lucene)
           href: search-query-lucene-examples.md
+        - name: moreLikeThis (wersja zapoznawcza)
+          href: search-more-like-this.md
     - name: Filtrowanie i sortowanie danych
       items:
         - name: Omówienie filtrów
@@ -276,9 +298,11 @@
           href: cognitive-search-skill-ocr.md
         - name: Narzędzie do tworzenia kształtów
           href: cognitive-search-skill-shaper.md
+        - name: Warunkowe
+          href: cognitive-search-skill-conditional.md
         - name: Przestarzałe umiejętności
           href: cognitive-search-skill-deprecated.md
-    - name: Umiejętności niestandardowe (wersja zapoznawcza)
+    - name: Umiejętności niestandardowe
       items:
         - name: Niestandardowy internetowy interfejs API
           href: cognitive-search-custom-skill-web-api.md

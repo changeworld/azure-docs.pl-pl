@@ -11,10 +11,10 @@ metadata:
   ms.service: search
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 01/18/2019
+  ms.date: 05/02/2019
   ms.author: heidist
 abstract:
-  description: 'Dowiedz się, jak przy użyciu usługi Azure Search utworzyć rozwiązanie wyszukiwania dla przedsiębiorstw obsługujące prywatną, heterogeniczną zawartość. Samouczki, dokumentacja interfejsu API i inne dokumenty przedstawiają sposób konsolidowania zawartości, którą można przeszukiwać, w jeden, szybki indeks umożliwiający wykonywanie zapytań za pomocą składni o różnej złożoności (od podstawowej po zaawansowaną) w szerokim zakresie scenariuszy. <p/><a href="/azure/search/cognitive-search-concept-intro"><b>Wersja zapoznawcza nowego wyszukiwania kognitywnego.</b></a> Użyj interfejsu API REST w wersji wstępnej do powiązania algorytmów opartych na sztucznej inteligencji z potokiem indeksowania. Wyodrębniaj dane i wywołuj przetwarzanie języka naturalnego oraz obrazu w celu przekształcania nieprzetworzonej zawartości bez struktury w zawartość możliwą do wyszukiwania w ramach indeksu usługi Azure Search. <p/>Zapoznaj się z wyszukiwaniem poznawczym dzięki <a href="/azure/search/cognitive-search-quickstart-blob">zasobom i przykładowym danym</a> lub uzyskaj więcej informacji w obszarze <a href="/azure/search/cognitive-search-concept-intro">Pojęcia</a>.'
+  description: 'Dowiedz się, jak przy użyciu usługi Azure Search utworzyć rozwiązanie wyszukiwania dla przedsiębiorstw obsługujące prywatną, heterogeniczną zawartość. Samouczki, dokumentacja interfejsu API i inne dokumenty przedstawiają sposób konsolidowania zawartości, którą można przeszukiwać, w jeden, szybki indeks umożliwiający wykonywanie zapytań za pomocą składni o różnej złożoności (od podstawowej po zaawansowaną) w szerokim zakresie scenariuszy. <p/><a href="/azure/search/cognitive-search-concept-intro"><b>Wyszukiwanie poznawcze</b></a> jest teraz ogólnie dostępne, z obsługą wzbogacania o sztuczną inteligencję dla scenariuszy produkcyjnych.<p/>Funkcja <a href="/azure/search/knowledge-store-concept-intro"><b>Magazyn wiedzy (wersja zapoznawcza)</b></a> rozszerza wyszukiwanie poznawcze. Umożliwia zapisanie wzbogaceń o sztuczną inteligencję w magazynie, w którym możesz wyświetlać i przekształcać wzbogacenia oraz korzystać z nich w innych aplikacjach poza usługą Azure Search. <a href="/azure/search/knowledge-store-howto"><b>Zacznij z niej korzystać</b></a> już dziś.'
   aside:
     image:
       alt: null
@@ -51,11 +51,11 @@ sections:
       - type: list
         style: ordered
         items:
-          - html: <a href="/azure/search/cognitive-search-tutorial-blob">Indeksowanie z użyciem sztucznej inteligencji (Cognitive Services)</a>
-          - html: <a href="/azure/search/search-howto-dotnet-sdk">Jak korzystać z usługi Azure Search za pomocą platformy .NET</a>
+          - html: <a href="/azure/search/search-get-started-portal">Korzystanie z portalu w celu indeksowania i testowania zapytań</a>
+          - html: <a href="/azure/search/search-howto-dotnet-sdk">Pisanie pierwszego rozwiązania wyszukiwania za pomocą platformy .NET</a>
+          - html: <a href="/azure/search/cognitive-search-tutorial-blob">Wzbogacanie o sztuczną inteligencję (Cognitive Services)</a>
           - html: <a href="/azure/search/search-indexer-tutorial">Indeksowanie zawartości usługi Azure SQL Database za pomocą platformy .NET</a>
           - html: <a href="/azure/search/search-semi-structured-data">Indeksowanie częściowo ustrukturyzowanych danych w usłudze Azure Blob Storage za pomocą architektury REST</a>
-          - html: <a href="/azure/search/search-get-started-portal">Korzystanie z portalu w celu indeksowania i testowania zapytań</a>
   - title: Dokumentacja
     items:
       - type: list
