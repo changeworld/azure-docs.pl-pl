@@ -70,8 +70,8 @@ Następujące właściwości są obsługiwane w przypadku Eksploratora danych pl
 |:--- |:--- |:--- |
 | type | **Typu** właściwość musi być równa **AzureDataExplorer** | Yes |
 | endpoint | Adres URL punktu końcowego klastra Eksploratora danych usługi Azure, w tym formacie co `https://<clusterName>.<regionName>.kusto.windows.net`. | Yes |
-| baza danych | Nazwa bazy danych. | Yes |
-| dzierżawa | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Jest to, co zwykle wiedzieć jako "**identyfikator urzędu**" w [parametry połączenia Kusto](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). Pobierz ją, umieszczając kursor myszy za pomocą myszy w prawym górnym rogu witryny Azure portal. | Yes |
+| database | Nazwa bazy danych. | Yes |
+| tenant | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Jest to, co zwykle wiedzieć jako "**identyfikator urzędu**" w [parametry połączenia Kusto](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). Pobierz ją, umieszczając kursor myszy za pomocą myszy w prawym górnym rogu witryny Azure portal. | Yes |
 | servicePrincipalId | Określ identyfikator klienta aplikacji. Jest to, co zwykle wiedzieć jako "**Identyfikatora klienta aplikacji AAD**" w [parametry połączenia Kusto](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). | Yes |
 | servicePrincipalKey | Określ klucz aplikacji. Jest to, co zwykle wiedzieć jako "**klucz aplikacji usługi AAD**" w [parametry połączenia Kusto](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). Oznacz to pole jako **SecureString** można bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 
@@ -107,7 +107,7 @@ Obsługiwane są następujące właściwości:
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | **Typu** właściwość musi być równa **AzureDataExplorerTable** | Yes |
-| tabela | Nazwa tabeli, która jest połączona usługa przywołuje. | Tak w przypadku ujścia; Brak źródła |
+| table | Nazwa tabeli, która jest połączona usługa przywołuje. | Tak w przypadku ujścia; Brak źródła |
 
 **Przykład właściwości zestawu danych**
 
