@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: d04bb965ddf9616aaa01f4c8822ac42aea6dab2d
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 8f5a7d3f6300be100feffd23b98bd7dcd8f48148
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64869560"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65150872"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Działanie kopiowania w usłudze Azure Data Factory
 
@@ -176,12 +176,14 @@ Szczegóły wykonania działania kopiowania i charakterystyk wydajności są tak
 | DataRead | Rozmiar danych odczytu ze źródła | Wartość Int64 **bajtów** |
 | DataWritten | Rozmiar danych zapisany do ujścia | Wartość Int64 **bajtów** |
 | filesRead | Liczba plików kopiowanych podczas kopiowania danych z usługi file storage. | Wartość Int64 (Brak jednostki) |
-| fileScanned | Liczba plików skanowanych od magazynu pliku źródłowego. | Wartość Int64 (Brak jednostki) |
 | filesWritten | Liczba plików kopiowanych podczas kopiowania danych do usługi file storage. | Wartość Int64 (Brak jednostki) |
-| rowsCopied | Liczba wierszy, kopiowane (nie dotyczy kopia binarna). | Wartość Int64 (Brak jednostki) |
+| rowsRead | Liczba wierszy odczytu ze źródła (nie dotyczy kopia binarna). | Wartość Int64 (Brak jednostki) |
+| rowsCopied | Liczba wierszy, które są kopiowane do ujścia (nie dotyczy kopia binarna). | Wartość Int64 (Brak jednostki) |
 | rowsSkipped | Liczba niezgodnych wierszy jest pomijane. Tę funkcję można włączyć przez zestaw "enableSkipIncompatibleRow" na wartość true. | Wartość Int64 (Brak jednostki) |
-| Przepływność | Współczynnik szybkości transferu danych | W liczbę zmiennoprzecinkową **KB/s** |
-| copyDuration | Czas trwania kopiowania | Wartość Int32 w ciągu kilku sekund |
+| Przepływność | Stosunek szybkości transferu danych. | W liczbę zmiennoprzecinkową **KB/s** |
+| copyDuration | Czas trwania kopiowania. | Wartość Int32 w ciągu kilku sekund |
+| sourcePeakConnections | Szczytową liczbę jednoczesnych połączeń ustanowionych z magazynem danych źródłowych podczas kopiowania. | Wartość Int32 |
+| sinkPeakConnections| Szczytową liczbę jednoczesnych połączeń ustanowionych z magazynem danych ujścia podczas kopiowania.| Wartość Int32 |
 | sqlDwPolyBase | Jeśli program PolyBase jest używany podczas kopiowania danych do usługi SQL Data Warehouse. | Wartość logiczna |
 | redshiftUnload | Jeśli zwolnienie jest używany podczas kopiowania danych z usługi Redshift. | Wartość logiczna |
 | hdfsDistcp | Jeśli narzędzia DistCp jest używany podczas kopiowania danych z systemu plików HDFS. | Wartość logiczna |

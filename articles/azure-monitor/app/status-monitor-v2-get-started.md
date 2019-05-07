@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 8633dbf6cdfc48b240a84bf876aaa63f2a579a64
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: c20cbf50129247fa01f10f12a99c558bc86492b8
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64870420"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65145177"
 ---
 # <a name="getting-started-with-status-monitor-v2"></a>Wprowadzenie do Monitora stanu w wersji 2
 
@@ -74,3 +74,25 @@ Expand-Archive -LiteralPath $pathToZip -DestinationPath $pathInstalledModule
 ```powershell
 Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
+
+
+
+## <a name="next-steps"></a>Kolejne kroki
+
+ Wyświetlanie telemetrii:
+
+- [Eksplorowanie metryk](../../azure-monitor/app/metrics-explorer.md) w celu monitorowania wydajności i użycia
+- [Wyszukiwanie zdarzeń i dzienników](../../azure-monitor/app/diagnostic-search.md) do diagnozowania problemów
+- [Analiza](../../azure-monitor/app/analytics.md) dla bardziej zaawansowanych zapytań
+- [Tworzenie pulpitów nawigacyjnych](../../azure-monitor/app/app-insights-dashboards.md)
+
+ Dodawanie kolejnych funkcji telemetrii:
+
+- [Tworzenie testów sieci web](monitor-web-app-availability.md) aby upewnić się, że witryna pozostaje aktywna.
+- [Dodawanie telemetrii klienta sieci web](../../azure-monitor/app/javascript.md) aby zobaczyć wyjątki pochodzące z kodu strony sieci web i umożliwić wstawianie wywołań śladu.
+- [Dodawanie zestawu SDK usługi Application Insights do kodu](../../azure-monitor/app/asp-net.md) tak, aby wstawić ślad i rejestrować wywołania
+
+Wykonuj więcej zadań dzięki v2 Monitora stanu:
+
+- Przegląd [szczegółowe instrukcje](status-monitor-v2-detailed-instructions.md) objaśnienia dotyczące poleceń, w tym przewodniku.
+- Użyj zapoznaj się z przewodnikiem [rozwiązywanie](status-monitor-v2-troubleshoot.md) Monitora stanu w wersji 2.

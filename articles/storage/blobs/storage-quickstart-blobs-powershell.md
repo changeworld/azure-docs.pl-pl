@@ -2,18 +2,18 @@
 title: Przewodnik Szybki start platformy Azure — tworzenie obiektu blob w magazynie obiektów przy użyciu programu Azure PowerShell | Microsoft Docs
 description: W tym przewodniku Szybki start program Azure PowerShell jest używany w ramach magazynu obiektów (blob). Następnie przy użyciu programu PowerShell przekażesz obiekt blob do usługi Azure Storage, pobierzesz obiekt blob i wyświetlisz obiekty blob w kontenerze.
 services: storage
-author: roygara
+author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
 ms.date: 02/14/2019
-ms.author: rogarana
-ms.openlocfilehash: 464f3db86c2b6dc4cfe51c74b224a8da4d512103
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: tamram
+ms.openlocfilehash: c0a5f7271628e11dbc8fa8b18b21358923f567cc
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60392033"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149405"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-by-using-azure-powershell"></a>Szybki start: przekazywanie, pobieranie i wyświetlanie obiektów blob za pomocą programu Azure PowerShell
 

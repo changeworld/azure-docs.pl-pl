@@ -2,18 +2,19 @@
 title: Przewodnik Szybki start platformy Azure — tworzenie obiektu blob w magazynie obiektów przy użyciu języka Go | Microsoft Docs
 description: Ten przewodnik Szybki start przedstawia tworzenie konta magazynu i kontenera w magazynie obiektów (blob). Następnie przy użyciu biblioteki klienta języka Go przekażesz obiekt blob do usługi Azure Storage, pobierzesz obiekt blob i wyświetlisz listę obiektów blob w kontenerze.
 services: storage
-author: seguler
+author: mhopkins-msft
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
 ms.date: 11/14/2018
-ms.author: seguler
-ms.openlocfilehash: 69895fff5e1daaf02caec54a6d38052e36ad8d49
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: mhopkins
+ms.reviewer: seguler
+ms.openlocfilehash: 5b5d0663166c6889d25c0fdd578aadbac3436931
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60392419"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65152777"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>Szybki start: przekazywanie i pobieranie obiektów blob oraz wyświetlanie ich listy za pomocą języka Go
 

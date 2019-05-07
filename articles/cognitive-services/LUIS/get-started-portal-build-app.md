@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 03/11/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 5ec38c510fedee7f489b3b100285eeb7c75f4561
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2e4ff7dc97e3ee72336bd4c081caf1aa1a62bc56
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64690970"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65146557"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Szybki start: Utwórz nową aplikację w portalu usługi LUIS
 
@@ -72,6 +72,8 @@ Możesz dodać wypowiedzi przykład po utworzeniu intencji. Przykład wypowiedzi
 
 Dla tej przykładowej aplikacji `FindForm` intencji, przykład wypowiedzi będzie zawierać numer formularza. Aplikacja kliencka musi numer formularza do spełnienia żądania użytkownika, więc jest ważne, które mają zostać objęte wypowiedź.
 
+[![Podaj przykład wypowiedzi dla intencji FindForm](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
+
 Dodaj następujące wypowiedzi przykład 15 do `FindForm` intencji.
 
 |#|Przykładowe wypowiedzi|
@@ -100,11 +102,11 @@ Zgodnie z projektem te wypowiedzi przykładu różnią się w następujący spos
 * czasu teraźniejszego zlecenie (jest, został, będzie)
 * kolejność słów
 
-[![Podaj przykład wypowiedzi dla intencji FindForm](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
+
 
 ## <a name="create-a-regular-expression-entity"></a>Tworzenie jednostki wyrażeń regularnych
 
-Aby uzyskać numer formularza zwracany jako część odpowiedzi prognozowania środowiska uruchomieniowego, formularz musi być oznaczona jako jednostka. Ponieważ mają zaawansowaną strukturę tekst w postaci liczb, może być oznaczony za pomocą jednostek wyrażenia regularnego. Tworzenie jednostki wykonując następujące kroki:
+Aby przywrócić numer formularza w odpowiedzi prognozowania środowiska uruchomieniowego, formularz musi być oznaczona jako jednostka. Ponieważ mają zaawansowaną strukturę tekst w postaci liczb, możesz oznaczyć go za pomocą jednostek wyrażenia regularnego. Tworzenie jednostki wykonując następujące kroki:
 
 1. Wybierz **jednostek** z menu po lewej stronie.
 

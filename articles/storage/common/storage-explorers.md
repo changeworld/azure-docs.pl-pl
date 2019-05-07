@@ -2,18 +2,19 @@
 title: Narzędzia do pracy z usługą Azure Storage | Dokumentacja firmy Microsoft
 description: Lista narzędzi, które pozwalają na danych/interakcji z danymi usługi Azure Storage.
 services: storage
-author: dineshmurthy
+author: tamram
 ms.service: storage
 ms.topic: article
 ms.date: 09/06/2017
-ms.author: dineshmurthy
+ms.author: tamram
+ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: ae6ceee33aa6d96c360782c33232e0c7561cf209
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d7debbc760e103046ce9bb1a8bdf25a954d9891c
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61483115"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65138554"
 ---
 # <a name="azure-storage-client-tools"></a>Azure Storage Client Tools
 Użytkownicy usługi Azure Storage często chcą mieć możliwość danych/interakcji z danymi za pomocą narzędzia klienta usługi Azure Storage. W poniższych tabelach listę szereg narzędzi, które pozwalają w tym celu. Umieściliśmy "X" w każdym bloku zapewnia możliwość zarówno wyliczanie i/lub dostęp do pozyskiwania danych. W tabeli przedstawiono również, czy jest bezpłatne narzędzia, czy nie. "Próbne" wskazuje, czy istnieje bezpłatna wersja próbna, ale pełnego produktu nie jest bezpłatne. "T/N" wskazuje, że wersja jest dostępna bezpłatnie, podczas gdy inna wersja jest dostępna do zakupu.

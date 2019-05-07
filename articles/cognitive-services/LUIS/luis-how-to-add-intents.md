@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: ed180563ea6138b3b4bab6092b39eeacf9dbf840
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 0c42ab44ba317888b982ba7c72f78be4ca73d93c
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62097056"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148165"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>Dodawanie intencji, aby określić użytkownika zamiar wypowiedzi
 
@@ -42,16 +42,25 @@ Przykład wypowiedzi są przykładami tekst pytania użytkownika lub poleceń. A
 
     Usługa LUIS konwertuje wszystkie wypowiedzi na małe litery i dodaje odstępy dookoła tokenów, takich jak łączniki.
 
-## <a name="intent-prediction-discrepancy-errors"></a>Błędy niezgodności prognozowania intencji 
+<a name="#intent-prediction-discrepancy-errors"></a>
 
-Wypowiedź w intencji może być rozbieżności intencji prognozowania metodę konwersji i ocenianie prognozy. Usługa LUIS wskazuje tę rozbieżność z czerwoną otoczkę wokół pozycji **etykietą intencji** w wierszu wypowiedź przykładu. 
+## <a name="intent-prediction-errors"></a>Błędy konwersji prognoz 
 
-![Strona Szczegóły zrzut ekranu z opcjami, z błędami rozbieżność prognozowania wypowiedź](./media/luis-how-to-add-intents/prediction-discrepancy-intent.png) 
+Wypowiedź przykładu w intencji może być błąd prognozowania konwersji między intencji, które wypowiedź przykład jest obecnie dostępna w i przeznaczenie prognozowania, określane podczas szkolenia. 
 
-W górnym menu nawigacyjnym wybierz **Train**. Niezgodność Prognozowanie jest teraz usunięte.
+Aby znaleźć wypowiedź błędy prognoz i je rozwiązać, użyj **filtru** opcji **oceny** opcje niepoprawne i Unclear w połączeniu z **widoku** opcji **Widok szczegółowy**. 
 
-> [!Note]
-> Gdy czerwoną linią podlega wyraz lub frazę w polu wypowiedź przykładu, [Błąd prognozowania jednostki](luis-how-to-add-example-utterances.md#entity-status-predictions) wystąpił. Należy go poprawić. 
+![Znaleziono wypowiedź błędów prognoz i je rozwiązać, użyj opcji filtrowania.](./media/luis-how-to-add-intents/find-intent-prediction-errors.png)
+
+Filtry i widoku są stosowane, gdy istnieją wypowiedzi przykład z błędami, lista wypowiedź pokazuje wypowiedzi i problemów.
+
+![! [Filtry i widoku są stosowane, gdy istnieją wypowiedzi przykład z błędami, przykład wypowiedź lista zawiera wypowiedzi i problemów.] (. / media/luis-how-to-add-intents/find-errors-in-utterances.png)](./media/luis-how-to-add-intents/find-errors-in-utterances.png#lightbox)
+
+Każdy wiersz zawiera wynik prognozowania bieżącego szkolenia wypowiedź przykładzie, wynik najbliższej rywal, który różni się w tych dwóch wyniki. 
+
+### <a name="fixing-intents"></a>Naprawianie intencji
+
+Aby dowiedzieć się, jak naprawić błędy konwersji prognozowania, należy użyć [pulpit nawigacyjny podsumowania](luis-how-to-use-dashboard.md). Pulpit nawigacyjny podsumowania zawiera analizę dla aktywnej wersji ostatniego szkolenia i oferuje najbardziej oczekiwanych ustalenie modelu.  
 
 ## <a name="add-a-custom-entity"></a>Dodaj jednostki niestandardowej
 

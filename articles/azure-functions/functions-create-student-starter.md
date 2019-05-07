@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 02/22/2019
 ms.author: alkarche
-ms.openlocfilehash: 5fd9f51185b8461269d498b254d9e9d9f4118270
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 860fedb13e84054e8ba264116be4e452445b7e9b
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62107146"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143102"
 ---
 # <a name="create-a-function-using-azure-for-students-starter"></a>Tworzenie funkcji przy użyciu platformy Azure dla studentów
 
@@ -76,8 +76,6 @@ Do obsługi wykonywania funkcji potrzebna jest aplikacja funkcji. Aplikacja funk
 
 8. Wybierz pozycję **Przejdź do zasobu**, aby wyświetlić nową aplikację funkcji.
 
-> [!TIP]
-> Jeśli masz problem ze znalezieniem aplikacji funkcji w portalu, spróbuj [dodać aplikacje funkcji do ulubionych w witrynie Azure Portal](./functions-how-to-use-azure-function-app-settings.md#favorite).
 Następnie należy utworzyć funkcję w nowej aplikacji funkcji.
 
 ## <a name="create-function"></a>Tworzenie funkcji wyzwalanej przez protokół HTTP

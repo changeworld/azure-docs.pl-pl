@@ -4,14 +4,14 @@ description: Dowiedz się więcej o składni języka SQL, pojęciach związanych
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/04/2019
+ms.date: 05/06/2019
 ms.author: mjbrown
-ms.openlocfilehash: 04a88558e3aea33c6d99bd0e4f1354c4316f5529
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a5cc6bfca67f3d90467fa2339bc991c1f0bbeadf
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61054124"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148949"
 ---
 # <a name="sql-query-examples-for-azure-cosmos-db"></a>Przykłady zapytania SQL dla usługi Azure Cosmos DB
 
@@ -139,14 +139,14 @@ Wyniki zapytania są:
     }]
 ```
 
-Następujące zapytanie zwraca imiona wszystkich dzieci w rodzinie którego `id` odpowiada `WakefieldFamily`, uporządkowanych według klasy.
+Następujące zapytanie zwraca imiona wszystkich dzieci w rodzinie którego `id` odpowiada `WakefieldFamily`, uporządkowanych według miejscowości zamieszkania.
 
 ```sql
     SELECT c.givenName
     FROM Families f
     JOIN c IN f.children
     WHERE f.id = 'WakefieldFamily'
-    ORDER BY f.grade ASC
+    ORDER BY f.address.city ASC
 ```
 
 Wyniki są:
@@ -314,6 +314,70 @@ Wyniki są:
     ]
 ```
 
+## <a id="DistinctKeyword"></a>DISTINCT Keyword
+
+Słowo kluczowe DISTINCT pozwala wyeliminować duplikaty w projekcji zapytań.
+
+```sql
+SELECT DISTINCT VALUE f.lastName
+FROM Families f
+```
+
+W tym przykładzie zapytanie projektów wartości dla każdego nazwisko.
+
+Wyniki są:
+
+```json
+[
+    "Andersen"
+]
+```
+
+Można również projektu następującą liczbę unikatowych obiektów. W tym przypadku pola Nazwisko nie istnieje w jednej z dwóch dokumentów, aby zapytanie zwraca pustego obiektu.
+
+```sql
+SELECT DISTINCT f.lastName
+FROM Families f
+```
+
+Wyniki są:
+
+```json
+[
+    {
+        "lastName": "Andersen"
+    },
+    {}
+]
+```
+
+Można także DISTINCT w projekcji w podzapytaniu:
+
+```sql
+SELECT f.id, ARRAY(SELECT DISTINCT VALUE c.givenName FROM c IN f.children) as ChildNames
+FROM f
+```
+
+To zapytanie projektów tablicę, która zawiera givenName każdego elementu podrzędnego, z której zostały usunięte duplikaty. Ta tablica ma alias ChildNames i pokazane zapytanie zewnętrzne.
+
+Wyniki są:
+
+```json
+[
+    {
+        "id": "AndersenFamily",
+        "ChildNames": []
+    },
+    {
+        "id": "WakefieldFamily",
+        "ChildNames": [
+            "Jesse",
+            "Lisa"
+        ]
+    }
+]
+```
+
 ## <a name="aliasing"></a>Tworzenie aliasów
 
 Można jawnie alias wartości w zapytaniach. Jeśli zapytanie ma dwie właściwości o takiej samej nazwie, należy użyć aliasów, można zmienić nazwy jedną lub obie właściwości, dzięki czemu są one rozróżniane w przewidywany wynik.
@@ -380,7 +444,7 @@ Wyniki są:
         }
       ],
       [
-        {
+       {
             "familyName": "Merriam",
             "givenName": "Jesse",
             "gender": "female",
@@ -599,7 +663,7 @@ Użyj? operator, który ma być efektywnie Sprawdź właściwości w elemencie p
 
 ## <a id="TopKeyword"></a>TOP operator
 
-GÓRNY — słowo kluczowe zwraca pierwszy `N` liczba wyników zapytania w kolejności niezdefiniowane. Najlepszym rozwiązaniem, jak za pomocą GÓRNEJ klauzuli ORDER BY ograniczyć wyniki do pierwszego `N` liczba uporządkowane wartości. Połączenie tych dwóch klauzul jest jedynym sposobem, aby przewidywalnie wskazują wiersze, które wpływa na GÓRNYM. 
+GÓRNY — słowo kluczowe zwraca pierwszy `N` liczba wyników zapytania w kolejności niezdefiniowane. Najlepszym rozwiązaniem, jak za pomocą GÓRNEJ klauzuli ORDER BY ograniczyć wyniki do pierwszego `N` liczba uporządkowane wartości. Połączenie tych dwóch klauzul jest jedynym sposobem, aby przewidywalnie wskazują wiersze, które wpływa na GÓRNYM.
 
 Korzystać z GÓRNEGO, z wartością stałą, jak w poniższym przykładzie, lub z wartością zmiennej za pomocą sparametryzowanych zapytań. Aby uzyskać więcej informacji, zobacz [sparametryzowanych zapytań](#parameterized-queries) sekcji.
 
@@ -679,6 +743,65 @@ Wyniki są:
       }
     ]
 ```
+
+Ponadto może zamówić łączność obejmującą wiele właściwości. Zapytanie, które porządkuje przez wiele właściwości wymaga [indeksu złożonego](index-policy.md#composite-indexes). Należy wziąć pod uwagę następujące zapytanie:
+
+```sql
+    SELECT f.id, f.creationDate
+    FROM Families f
+    ORDER BY f.address.city ASC, f.creationDate DESC
+```
+
+To zapytanie pobiera rodziny `id` rosnąco nazwę miejscowości. Jeśli wiele elementów ma taką samą nazwę miasta, zapytanie będzie kolejność według `creationDate` w kolejności malejącej.
+
+## <a id="OffsetLimitClause"></a>Klauzula ograniczenia PRZESUNIĘCIA
+
+Przesunięcie LIMIT to opcjonalna klauzula do pominięcia, a następnie wykonać pewnej liczby wartości z zapytania. Liczba przesunięcie i licznik limitu są wymagane w klauzuli ograniczenia PRZESUNIĘCIA.
+
+Stosowania limitu przesunięcie w połączeniu z klauzulą ORDER BY zestaw wyników jest generowany, wykonując Pomiń i podejmij uporządkowane wartości. Jeśli jest używany nie klauzuli ORDER BY, spowodują deterministyczne kolejność wartości.
+
+Na przykład w tym miejscu jest zapytanie, które zawierają pierwszej wartości i zwraca wartość drugiego (według nazwy miasta rezydentnego):
+
+```sql
+    SELECT f.id, f.address.city
+    FROM Families f
+    ORDER BY f.address.city
+    OFFSET 1 LIMIT 1
+```
+
+Wyniki są:
+
+```json
+    [
+      {
+        "id": "AndersenFamily",
+        "city": "Seattle"
+      }
+    ]
+```
+
+Oto zapytanie, które zawierają pierwszej wartości i zwraca wartość drugiego (bez kolejności):
+
+```sql
+   SELECT f.id, f.address.city
+    FROM Families f
+    OFFSET 1 LIMIT 1
+```
+
+Wyniki są:
+
+```json
+    [
+      {
+        "id": "WakefieldFamily",
+        "city": "Seattle"
+      }
+    ]
+```
+
+
+
+
 ## <a name="scalar-expressions"></a>Wyrażenia skalarne
 
 Klauzula SELECT obsługuje wyrażenia skalarne, takie jak wyrażenia arytmetyczne, stałe i wyrażeń logicznych. Wyrażenie skalarne, które korzysta z następującego zapytania:
@@ -1018,7 +1141,7 @@ Poniższy przykład rejestruje funkcji zdefiniowanej przez użytkownika w ramach
        {
            Id = "REGEX_MATCH",
            Body = @"function (input, pattern) {
-                       return input.match(pattern) !== null;
+                      return input.match(pattern) !== null;
                    };",
        };
 

@@ -12,31 +12,36 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/18/2018
+ms.date: 05/05/2019
 ms.author: barclayn
-ms.openlocfilehash: da165634f5323183b633ee3c8a59e0d2607e8ef1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f4b2506781df5572ddaff8dda34bf3edab8987be
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60586532"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65145204"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Najlepsze rozwiązania dotyczące obciążeń IaaS na platformie Azure
+W tym artykule opisano najlepsze rozwiązania dotyczące zabezpieczeń dla maszyn wirtualnych i systemów operacyjnych.
+
+Najlepsze rozwiązania są oparte na konsensus opinii i pracować z aktualnymi możliwościami platformy Azure, a zestawy funkcji. Ponieważ opinie i technologie mogą się zmieniać wraz z upływem czasu, w tym artykule zostaną zaktualizowane w celu odzwierciedlenia tych zmian.
 
 W większości infrastruktury jako scenariuszy usługi (IaaS) [maszyn wirtualnych (VM)](https://docs.microsoft.com/azure/virtual-machines/) są głównym obciążenia dla organizacji, które korzystają z chmury obliczeniowej. Ten fakt jest widoczna w [scenariuszy hybrydowych](https://social.technet.microsoft.com/wiki/contents/articles/18120.hybrid-cloud-infrastructure-design-considerations.aspx) gdzie organizacji chce powoli migrację obciążeń do chmury. W takich sytuacjach należy wykonać [zabezpieczenia Ogólne zagadnienia dotyczące modelu IaaS](https://social.technet.microsoft.com/wiki/contents/articles/3808.security-considerations-for-infrastructure-as-a-service-iaas.aspx)i Zastosuj najlepsze rozwiązania dotyczące zabezpieczeń na wszystkich maszynach wirtualnych.
 
+## <a name="shared-responsibility"></a>Wspólna odpowiedzialność
 Twoja odpowiedzialność za zabezpieczeń zależy od rodzaju usłudze w chmurze. Poniższej tabeli podsumowano saldo odpowiedzialność firmy Microsoft i możesz:
 
 ![Zakres odpowiedzialności](./media/azure-security-iaas/sec-cloudstack-new.png)
 
 Wymagania dotyczące zabezpieczeń różnią się w zależności od szeregu czynników, takich jak różne typy obciążeń. Nie w jednym z tych najlepszych rozwiązań przez siebie zabezpieczyć swoje systemy. Podobnie jak niczego więcej w zabezpieczeń musisz wybierz odpowiednie opcje, a następnie zobacz, jak te rozwiązania mogą uzupełniają się wzajemnie, wypełniając luki.
 
-W tym artykule opisano najlepsze rozwiązania dotyczące zabezpieczeń dla maszyn wirtualnych i systemów operacyjnych.
-
-Najlepsze rozwiązania są oparte na konsensus opinii i pracować z aktualnymi możliwościami platformy Azure, a zestawy funkcji. Ponieważ opinie i technologie mogą się zmieniać wraz z upływem czasu, w tym artykule zostaną zaktualizowane w celu odzwierciedlenia tych zmian.
-
 ## <a name="protect-vms-by-using-authentication-and-access-control"></a>Ochrona maszyn wirtualnych przy użyciu uwierzytelniania i kontroli dostępu
 Pierwszym środkiem ochrony maszyn wirtualnych jest, aby upewnić się, że tylko autoryzowani użytkownicy mogą skonfigurować nowych maszyn wirtualnych i dostęp do maszyn wirtualnych.
+
+> [!NOTE]
+> Aby zwiększyć bezpieczeństwo maszyn wirtualnych systemu Linux na platformie Azure, możesz zintegrować przy użyciu uwierzytelniania usługi Azure AD. Kiedy używasz [uwierzytelniania usługi Azure AD dla maszyn wirtualnych z systemem Linux](../virtual-machines/linux/login-using-aad.md), centralnie kontrolować i egzekwowanie zasad, które blokują lub zezwalają na dostęp do maszyn wirtualnych.
+>
+>
 
 **Najlepsze rozwiązanie**: Kontrolowanie dostępu do maszyny Wirtualnej.   
 **Szczegóły**: Użyj [zasady usługi Azure](../azure-policy/azure-policy-introduction.md) konwencje dla zasobów w Twojej organizacji i tworzenie zasad niestandardowych. Stosowanie tych zasad do zasobów, takich jak [grup zasobów](../azure-resource-manager/resource-group-overview.md). Maszyny wirtualne, które należą do grupy zasobów dziedziczy jej zasady.
@@ -102,6 +107,9 @@ Korzystając z witryny Windows Update, pozostaw ustawienie automatyczne Windows 
 **Najlepsze rozwiązanie**: Okresowe ponowne wdrażanie maszyn wirtualnych, aby wymusić świeży wersję systemu operacyjnego.   
 **Szczegóły**: Definiowanie przy użyciu [szablonu usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) , dzięki czemu można łatwo wdrożyć ponownie go. Przy użyciu szablonu zapewnia poprawionego i bezpieczna maszyna wirtualna gdy ich potrzebujesz.
 
+**Najlepsze rozwiązanie**: Szybkie zastosowanie aktualizacji zabezpieczeń na maszynach wirtualnych.   
+**Szczegóły**: Usługa Azure Security Center (warstwy bezpłatna lub w warstwie standardowa) do [Identyfikuj brakujące aktualizacje zabezpieczeń, a następnie zastosuj je](../security-center/security-center-apply-system-updates.md).
+
 **Najlepsze rozwiązanie**: Zainstaluj najnowsze aktualizacje zabezpieczeń.   
 **Szczegóły**: Niektóre z pierwszych obciążeń, które klientom przenoszenie na platformę Azure są laboratoria i systemy dołączonej do Internetu. Jeśli na maszynach wirtualnych platformy Azure hostowanie aplikacji lub usług, które mają być dostępne w Internecie, być czujność dotyczących poprawiania. Poprawki poza działanie systemu operacyjnego. Bez luk w zabezpieczeniach w aplikacjach partnerów również może prowadzić do problemów, które można uniknąć, jeśli zarządzanie poprawkami dobre znajduje się w miejscu.
 
@@ -165,6 +173,18 @@ Po zastosowaniu Azure Disk Encryption może spełnić następujące wymagania bi
 
 - Maszyny wirtualne IaaS są chronione za pomocą standardowych w branży technologii umożliwiającą organizacyjnych wymagań dotyczących zabezpieczeń i zgodności.
 - Maszyny wirtualne IaaS Rozpocznij w obszarze kontrolowane przez klienta kluczy i zasad, a można przeprowadzać ich inspekcje użycia ich w magazynie kluczy.
+
+## <a name="restrict-direct-internet-connectivity"></a>Ogranicz bezpośrednie połączenie z Internetem
+Monitorowanie i ograniczanie maszyny Wirtualnej bezpośrednie połączenie z Internetem. Osoby atakujące stale skanowania zakresów adresów IP chmury publicznej otwarte porty zarządzania i spróbuj "proste" atakami, takimi jak wspólnego hasła i bez znanych luk w zabezpieczeniach. W poniższej tabeli przedstawiono najlepsze rozwiązania w celu ochrony przed atakami te:
+
+**Najlepsze rozwiązanie**: Zapobieganie przypadkowym ujawnieniem do sieci, routingu i zabezpieczeń.   
+**Szczegóły**: Upewnij się, że tylko centralna grupa sieci ma uprawnienia do zasobów sieciowych przy użyciu kontroli RBAC.
+
+**Najlepsze rozwiązanie**: Identyfikowanie i korygowanie narażonych maszyn wirtualnych, które umożliwiają dostęp z "Dowolna" źródłowy adres IP.   
+**Szczegóły**: Usługa Azure Security Center. Usługa Security Center zaleci, ograniczanie dostępu przez punkty końcowe dostępnego z Internetu, jeśli którakolwiek z grup zabezpieczeń sieci z nich ma co najmniej jedną regułę ruchu przychodzącego zezwalające na dostęp z "Dowolna" źródłowy adres IP. Usługa Security Center oferuje rekomendacje dotyczące edytowania tych reguł ruchu przychodzącego do [ograniczać](../security-center/security-center-restrict-access-through-internet-facing-endpoints.md) do źródłowych adresów IP, które faktycznie muszą mieć dostęp.
+
+**Najlepsze rozwiązanie**: Ograniczenia portów zarządzania (protokół RDP, SSH).   
+**Szczegóły**: [Dostęp do maszyny Wirtualnej just-in-time (JIT)](../security-center/security-center-just-in-time.md) może służyć do blokowania ruchu przychodzącego do maszyn wirtualnych platformy Azure, zmniejszenia narażenia na ataki przy zapewnianiu łatwego dostępu, aby nawiązać połączenie z maszynami wirtualnymi w razie. Gdy JIT jest włączona, usługa Security Center zablokuje ruch przychodzący na maszynach wirtualnych platformy Azure przez utworzenie reguły sieciowej grupy zabezpieczeń. Należy wybrać porty na maszynie Wirtualnej, do którego zostanie zablokowany ruch przychodzący. Te porty są kontrolowane przez to rozwiązanie JIT.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Zobacz [zabezpieczeń platformy Azure najlepsze rozwiązania i wzorce](security-best-practices-and-patterns.md) dla więcej najważniejsze wskazówki dotyczące zabezpieczeń do użycia podczas one projektowanie, wdrażanie i zarządzanie rozwiązań w chmurze, korzystając z platformy Azure.

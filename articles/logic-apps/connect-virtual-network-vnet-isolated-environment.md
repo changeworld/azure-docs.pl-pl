@@ -8,18 +8,15 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 03/12/2019
-ms.openlocfilehash: 8cbc02f80244b02b397162309fa5ae047f3f460a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/06/2019
+ms.openlocfilehash: 8809a2fed5a44910e3a353d9dc5bc41ea964a1ce
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60511312"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65150544"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Łączenie z sieciami wirtualnymi platformy Azure z usługi Azure Logic Apps, za pomocą środowiska usługi integracji (ISE)
-
-> [!NOTE]
-> Ta funkcja jest w [ *publicznej wersji zapoznawczej*](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 W scenariuszach, w której muszą mieć dostęp do usługi logic apps i kont integracji [sieci wirtualnej platformy Azure](../virtual-network/virtual-networks-overview.md), Utwórz [ *środowisko usługi integracji* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). ISE to prywatne i izolowanym środowisku, korzystającą z dedykowanych dla magazynu i innych zasobów, które są oddzielone od usługi Logic Apps publicznego lub "global". Ta separacja zmniejsza żadnego wpływu, której innych dzierżaw usługi Azure może występować na wydajność Twojej aplikacji. Twoje ISE jest *wprowadzony* w sieci wirtualnej platformy Azure, który następnie wdraża usługę Logic Apps do sieci wirtualnej. Podczas tworzenia konta aplikacji lub Integracja z usługą Logic Apps, wybierz ten ISE ich lokalizacji. Twoje konto aplikacji lub Integracja z usługą Logic Apps mogą uzyskiwać bezpośrednio dostęp do zasobów, takich jak maszyny wirtualne (VM), serwery, systemów i usług w Twojej sieci wirtualnej.
 
@@ -101,13 +98,11 @@ Do sterowania ruchem między podsieciami sieci wirtualnej, w którym wdrożyć s
 Aby utworzyć środowiska integration service environment (ISE), wykonaj następujące kroki:
 
 1. W [witryny Azure portal](https://portal.azure.com), w menu głównym platformy Azure wybierz **Utwórz zasób**.
+W polu wyszukiwania wprowadź "środowisko usługi integracji" jako filtr.
 
    ![Tworzenie nowego zasobu](./media/connect-virtual-network-vnet-isolated-environment/find-integration-service-environment.png)
 
-1. W polu wyszukiwania wprowadź "środowisko usługi integracji" jako filtr.
-Wybierz z listy wyników **środowisko usługi integracji (wersja zapoznawcza)**, a następnie wybierz **Utwórz**.
-
-   ![Wybierz pozycję "Środowisko integracji usługi"](./media/connect-virtual-network-vnet-isolated-environment/select-integration-service-environment.png)
+1. Na panelu Tworzenie środowiska usługi integracji, wybierz **Utwórz**.
 
    ![Wybierz pozycję "Utwórz"](./media/connect-virtual-network-vnet-isolated-environment/create-integration-service-environment.png)
 
@@ -121,8 +116,8 @@ Wybierz z listy wyników **środowisko usługi integracji (wersja zapoznawcza)**
    | **Grupa zasobów** | Yes | <*Azure-resource-group-name*> | Grupa zasobów platformy Azure, w którym chcesz utworzyć swoje środowisko |
    | **Nazwa środowiska usługi integracji** | Yes | <*Nazwa środowiska*> | Nazwa do nadania środowiska |
    | **Lokalizacja** | Yes | <*Azure-datacenter-region*> | Region centrum danych platformy Azure miejsca wdrożenia środowiska |
-   | **Dodatkowe możliwości obliczeniowe** | Yes | 0, 1, 2, 3 | Liczba jednostek przetwarzania do użycia dla tego zasobu platformy ISE. Aby dodać pojemności po jej utworzeniu, zobacz [dodanie pojemności](#add-capacity). |
-   | **Sieć wirtualna** | Yes | <*Azure-virtual-network-name*> | Azure sieci wirtualnej, której chcesz wstawić środowiska, dzięki czemu aplikacje logiki w tym środowisku mają dostęp do sieci wirtualnej. Jeśli nie masz sieci, można utworzyć jeden tutaj. <p>**Ważne**: Możesz *tylko* wykonywać takie działanie, podczas tworzenia usługi ISE. Jednakże przed utworzeniem tej relacji. Upewnij się, że masz już skonfigurowane kontroli dostępu opartej na rolach w Twojej sieci wirtualnej dla usługi Azure Logic Apps. |
+   | **Dodatkowe możliwości obliczeniowe** | Yes | 0 do 10 | Liczba jednostek dodatkowego przetwarzania do użycia dla tego zasobu platformy ISE. Aby dodać pojemności po jej utworzeniu, zobacz [pojemności Dodaj ISE](#add-capacity). |
+   | **Sieć wirtualna** | Yes | <*Azure-virtual-network-name*> | Azure sieci wirtualnej, której chcesz wstawić środowiska, dzięki czemu aplikacje logiki w tym środowisku mają dostęp do sieci wirtualnej. Jeśli nie masz sieci, [najpierw Utwórz sieć wirtualną platformy Azure](../virtual-network/quick-create-portal.md). <p>**Ważne**: Możesz *tylko* wykonywać takie działanie, podczas tworzenia usługi ISE. |
    | **Podsieci** | Yes | <*subnet-resource-list*> | ISE wymaga czterech *pusty* podsieci w celu tworzenia zasobów w danym środowisku. Do tworzenia każdej podsieci [wykonaj czynności opisane w tej tabeli](#create-subnet).  |
    |||||
 
@@ -172,6 +167,9 @@ Wybierz z listy wyników **środowisko usługi integracji (wersja zapoznawcza)**
 
    1. Powtórz te czynności dla trzech więcej podsieci.
 
+      > [!NOTE]
+      > Podsieci, którą próbujesz utworzyć nie są prawidłowe, witryny Azure portal wyświetla komunikat, ale nie blokuje postęp.
+
 1. Po Azure weryfikuje pomyślnie informacji ISE, wybierz **Utwórz**, na przykład:
 
    ![Po pomyślnej weryfikacji wybierz polecenie "Utwórz"](./media/connect-virtual-network-vnet-isolated-environment/ise-validation-success.png)
@@ -185,34 +183,17 @@ Wybierz z listy wyników **środowisko usługi integracji (wersja zapoznawcza)**
 
    ![Wdrażanie zakończyło się pomyślnie](./media/connect-virtual-network-vnet-isolated-environment/deployment-success.png)
 
+   W przeciwnym wypadku postępuj zgodnie z instrukcjami portalu platformy Azure dla Rozwiązywanie problemów z wdrażaniem.
+
    > [!NOTE]
-   > Jeśli wdrożenie zakończy się niepowodzeniem lub usunąć platformy ISE, Azure *może* potrwać do godziny przed zwolnieniem podsieci. Dlatego trzeba odczekać przez ponowne użycie tych podsieci w innym środowisku ISE.
+   > Jeśli wdrożenie zakończy się niepowodzeniem lub usunąć swoje ISE Azure może potrwać do godziny przed zwolnieniem podsieci. To opóźnienie oznacza oznacza, że posiadane oczekiwania przed ponownym użyciem tych podsieci w innym środowisku ISE. 
+   >
+   > Usunięcie sieci wirtualnej platformy Azure, zwykle trwa do dwóch godzin przed zwolnieniem się podsieci, ale ta operacja może trwać dłużej. 
+   > Podczas usuwania sieci wirtualnych, upewnij się, że żadne zasoby nadal są połączone. Zobacz [usuwania sieci wirtualnej](../virtual-network/manage-virtual-network.md#delete-a-virtual-network).
 
 1. Aby wyświetlić swoje środowisko, wybierz opcję **przejdź do zasobu** Jeśli Azure nie automatyczne przejście do środowiska, po zakończeniu wdrożenia.  
 
-<a name="add-capacity"></a>
-
-### <a name="add-capacity"></a>Dodawaj możliwości obliczeniowe
-
-Jednostkę podstawową ISE ma ustaloną pojemność, więc jeśli potrzebujesz więcej przepływności, można dodać kolejne jednostki skalowania. Możesz to zrobić skalowania automatycznego w oparciu o metryki wydajności lub na podstawie liczby jednostek. Jeśli wybierzesz opcję skalowania automatycznego na podstawie metryk, należy wybrać różnych kryteriów i określić warunki progowe spełniających kryteria tego.
-
-1. W witrynie Azure portal Znajdź swoje ISE.
-
-1. Aby wyświetlić metryki wydajności dla Twojego środowiska ISE w menu głównym usługi ISE, wybierz **Przegląd**.
-
-1. Aby skonfigurować automatyczne skalowanie, w obszarze **ustawienia**, wybierz opcję **skalowanie w poziomie**. Na **Konfiguruj** kartę, wybrać **włączyć Skalowanie automatyczne**.
-
-1. W **domyślne** sekcji, wybierają **skalowania na podstawie metryki** lub **Skaluj do określonej liczby wystąpień**.
-
-1. Jeśli zdecydujesz się na podstawie wystąpienia, wprowadź liczbę jednostek przetwarzania zakresu od 0 do 3 (włącznie). W przeciwnym razie dla opartą na metryce, wykonaj następujące kroki:
-
-   1. W **domyślne** wybierz pozycję **Dodaj regułę**.
-
-   1. Na **reguły skalowania** okienku skonfigurować Twoje kryteria i akcję do wykonania po wyzwoleniu reguły.
-
-   1. Gdy wszystko będzie gotowe, wybierz pozycję **Dodaj**.
-
-1. Gdy skończysz, pamiętaj, aby zapisać zmiany.
+Aby uzyskać więcej informacji na temat tworzenia podsieci, zobacz [Dodaj podsieć sieci wirtualnej](../virtual-network/virtual-network-manage-subnet.md).
 
 <a name="create-logic-apps-environment"></a>
 
@@ -248,10 +229,37 @@ Aby utworzyć konto integracji, która używa środowiska ISE, wykonaj kroki opi
 
 ![Wybierz środowisko usługi integracji](./media/connect-virtual-network-vnet-isolated-environment/create-integration-account-with-integration-service-environment.png)
 
-## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
+<a name="add-capacity"></a>
 
-* Jeśli masz pytania, odwiedź <a href="https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps" target="_blank">forum usługi Azure Logic Apps</a>.
-* Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź <a href="https://aka.ms/logicapps-wish" target="_blank">witrynę opinii użytkowników usługi Logic Apps</a>.
+## <a name="add-ise-capacity"></a>Dodaj pojemność, środowiska ISE
+
+Jednostkę podstawową ISE ma ustaloną pojemność, więc jeśli potrzebujesz więcej przepływności, można dodać kolejne jednostki skalowania. Możesz to zrobić skalowania automatycznego w oparciu o metryki wydajności lub na podstawie liczby jednostek dodatkowego przetwarzania. Jeśli wybierzesz opcję skalowania automatycznego na podstawie metryk, należy wybrać różnych kryteriów i określić warunki progowe spełniających kryteria tego.
+
+1. W witrynie Azure portal Znajdź swoje ISE.
+
+1. Aby przejrzeć metryki użycia i wydajności dla Twojego środowiska ISE w menu głównym usługi ISE, wybierz pozycję **Przegląd**.
+
+   ![Wyświetl informacje o użyciu dla środowiska ISE](./media/connect-virtual-network-vnet-isolated-environment/integration-service-environment-usage.png)
+
+1. Aby skonfigurować automatyczne skalowanie, w obszarze **ustawienia**, wybierz opcję **skalowanie w poziomie**. Na **Konfiguruj** kartę, wybrać **włączyć Skalowanie automatyczne**.
+
+   ![Włącz automatyczne skalowanie](./media/connect-virtual-network-vnet-isolated-environment/scale-out.png)
+
+1. Aby uzyskać **Nazwa ustawienia skalowania automatycznego**, podaj nazwę dla ustawienia.
+
+1. W **domyślne** sekcji, wybierają **skalowania na podstawie metryki** lub **Skaluj do określonej liczby wystąpień**.
+
+   * Jeśli zdecydujesz się na podstawie wystąpienia, wprowadź liczbę jednostek przetwarzania od 0 do 10 włącznie.
+
+   * Jeśli zdecydujesz się na podstawie metryk, wykonaj następujące kroki:
+
+     1. W **reguły** wybierz pozycję **Dodaj regułę**.
+
+     1. Na **reguły skalowania** okienku skonfigurować Twoje kryteria i akcję do wykonania po wyzwoleniu reguły.
+
+     1. Gdy wszystko będzie gotowe, wybierz pozycję **Dodaj**.
+
+1. Po zakończeniu Ustawienia skalowania automatycznego należy zapisać zmiany.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

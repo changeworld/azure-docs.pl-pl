@@ -2,17 +2,18 @@
 title: Jak zainstalować usługi Azure Blob storage jako systemu plików w systemie Linux | Dokumentacja firmy Microsoft
 description: Instalowanie kontenera magazynu obiektów Blob platformy Azure przy użyciu FUSE w systemie Linux
 services: storage
-author: seguler
+author: normesta
 ms.service: storage
 ms.topic: article
 ms.date: 2/1/2019
-ms.author: seguler
-ms.openlocfilehash: eadf52afd115eb1cb642082cea4b9f338bd44914
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: normesta
+ms.reviewer: seguler
+ms.openlocfilehash: 261fd9f820f3e5421d9d0f4f7c9220ec31003283
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60392487"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148434"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>Jak zainstalować magazyn obiektów Blob jako systemu plików przy użyciu blobfuse
 

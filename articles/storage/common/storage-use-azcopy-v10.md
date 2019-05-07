@@ -2,18 +2,19 @@
 title: Kopiowanie lub przenoszenie danych do usługi Azure Storage za pomocą narzędzia AzCopy v10 | Dokumentacja firmy Microsoft
 description: Użyj narzędzia wiersza polecenia AzCopy do przeniesienia lub skopiowania danych do lub z obiektów blob, usługa data lake i zawartość pliku. Kopiowanie danych do usługi Azure Storage z lokalnych plików lub kopiowania danych w ramach lub między kontami magazynu. Łatwo Migruj dane do usługi Azure Storage.
 services: storage
-author: seguler
+author: normesta
 ms.service: storage
 ms.topic: article
 ms.date: 04/23/2019
-ms.author: seguler
+ms.author: normesta
+ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: c1de40b6bf3bb4dc6854a11eca92902203d492c3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d05cbd30565ced73352736508fc4bcc376985554
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64723185"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149038"
 ---
 # <a name="transfer-data-with-azcopy-v10"></a>Transferowanie danych za pomocą narzędzia AzCopy w wersji 10
 

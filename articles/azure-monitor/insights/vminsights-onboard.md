@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/13/2019
+ms.date: 04/30/2019
 ms.author: magoedte
-ms.openlocfilehash: 1a4bfae22477e345176971bd40b0afa91c8867fb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bdabef4001b5f43095e4f127d6203c6ec2c48e40
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60401549"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65137896"
 ---
 # <a name="deploy-azure-monitor-for-vms-preview"></a>Wdrażanie usługi Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)
 
@@ -158,8 +158,8 @@ Agent zależności można pobrać z następujących lokalizacji:
 
 | Plik | System operacyjny | Wersja | SHA-256 |
 |:--|:--|:--|:--|
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.7.4 | A111B92AB6CF28EB68B696C60FE51F980BFDFF78C36A900575E17083972989E0 |
-| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.7.4 | AB58F3DB8B1C3DEE7512690E5A65F1DFC41B43831543B5C040FCCE8390F2282C |
+| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.8.1 | 622C99924385CBF539988D759BCFDC9146BB157E7D577C997CDD2674E27E08DD |
+| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.8.1 | 3037934A5D3FB7911D5840A9744AE9F980F87F620A7F7B407F05E276FE7AE4A8 |
 
 ## <a name="role-based-access-control"></a>Kontrola dostępu oparta na rolach
 Aby włączyć i funkcje w usłudze Azure Monitor są dostępne dla maszyn wirtualnych, musisz mieć przypisane następujące role dostępu:
@@ -712,12 +712,12 @@ Jeśli zdecydujesz się użyć wiersza polecenia platformy Azure, należy najpie
 
 1. Zapisz ten plik jako *installsolutionsforvminsights.json* do folderu lokalnego.
 
-1. Edytuj wartości *WorkspaceName*, *ResourceGroupName*, i *WorkspaceLocation*. Wartość *WorkspaceName* jest pełny identyfikator zasobu obszaru roboczego usługi Log Analytics, która zawiera nazwę obszaru roboczego. Wartość *WorkspaceLocation* jest region, w obszarze roboczym jest zdefiniowany w.
+1. Przechwytywanie wartości *WorkspaceName*, *ResourceGroupName*, i *WorkspaceLocation*. Wartość *WorkspaceName* to nazwa obszaru roboczego usługi Log Analytics. Wartość *WorkspaceLocation* jest region, w obszarze roboczym jest zdefiniowany w.
 
 1. Możesz wdrożyć ten szablon przy użyciu następującego polecenia programu PowerShell:
 
     ```powershell
-    New-AzResourceGroupDeployment -Name DeploySolutions -TemplateFile InstallSolutionsForVMInsights.json -ResourceGroupName ResourceGroupName> -WorkspaceName <WorkspaceName> -WorkspaceLocation <WorkspaceLocation - example: eastus>
+    New-AzResourceGroupDeployment -Name DeploySolutions -TemplateFile InstallSolutionsForVMInsights.json -ResourceGroupName <ResourceGroupName> -WorkspaceName <WorkspaceName> -WorkspaceLocation <WorkspaceLocation - example: eastus>
     ```
 
     Zmiana konfiguracji może potrwać kilka minut. Po jej zakończeniu zostanie wyświetlony komunikat podobny do poniższego, która zawiera wynik:

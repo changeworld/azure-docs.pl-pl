@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/16/2019
 ms.author: yoafr
-ms.openlocfilehash: 392782310d8bc3b38a3dd1349cb1760ca287acd1
-ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.openlocfilehash: ac677a7f9586dbe893cbcbc480564aceac0149a0
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64875585"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147928"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>Wycofanie funkcje usługi Security Center (lipiec 2019 r.)
 
@@ -155,7 +155,7 @@ Ta funkcja jest w wersji zapoznawczej i zostaną wycofane.
 
 ### <a name="edit-security-configurations---new-experience"></a>Edytowanie konfiguracji zabezpieczeń — nowe środowisko
 
-Usługa Security Center będzie obsługiwać [agenta gościa](https://docs.microsoft.com/azure/governance/policy/concepts/guest-configuration) w najbliższej przyszłości, co znacznie bogatszy zestaw funkcji — łącznie z obsługą dodatkowych systemów operacyjnych i integracji z konfiguracją gościa za pomocą zasad platformy Azure (gościa zasady). Zapewni to także możliwość kontrolowania na dużą skalę i automatycznie stosować na nowych zasobów.
+Usługa Security Center będzie obsługiwać [agenta konfiguracji gościa](https://docs.microsoft.com/azure/governance/policy/concepts/guest-configuration) w najbliższej przyszłości, co znacznie bogatszy zestaw funkcji — Obsługa dodatkowych systemów operacyjnych i integracja z usługą konfiguracji gościa za pomocą zasad platformy Azure (w tym zasady gościa). Zapewni to także możliwość kontrolowania na dużą skalę i automatycznie stosować na nowych zasobów.
 
 ## Zabezpieczenia i inspekcja pulpitu nawigacyjnego (pierwotnie używany w portalu pakietu OMS) w przypadku obszarów roboczych usługi Log Analytics<a name="menu_securityomsdashboard"></a>
 

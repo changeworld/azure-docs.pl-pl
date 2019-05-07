@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 02/28/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 6b4c3f7445d18ab1548fd63b1f4d12c5901cf949
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e7577dcf4859b1192121fe0406d0efb63a9f5990
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60712835"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148636"
 ---
 # <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>DatetimeV2 wstępnie utworzone jednostki dla aplikacji usługi LUIS
 
@@ -31,16 +31,16 @@ Poniższy przykład odpowiedź w formacie JSON zawiera `datetimeV2` jednostki o 
 ```json
 "entities": [
   {
-    "entity": "8am on may 2nd 2017",
+    "entity": "8am on may 2nd 2019",
     "type": "builtin.datetimeV2.datetime",
     "startIndex": 0,
     "endIndex": 18,
     "resolution": {
       "values": [
         {
-          "timex": "2017-05-02T08",
+          "timex": "2019-05-02T08",
           "type": "datetime",
-          "value": "2017-05-02 08:00:00"
+          "value": "2019-05-02 08:00:00"
         }
       ]
     }
@@ -82,8 +82,8 @@ Każdy element obiektu `values` macierzy może zawierać następujące pola:
 |Nazwa właściwości|Opis właściwości|
 |--|--|
 |Timex|Godzina, data lub zakresu dat wyrażonych w formacie TIMEX, który następuje po [standardem ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) i atrybuty TIMEX3 przy użyciu języka TimeML adnotacji. Ta adnotacja jest opisana w [wytycznych TIMEX](http://www.timeml.org/tempeval2/tempeval2-trial/guidelines/timex3guidelines-072009.pdf).|
-|type|Podtyp, który może być jednym z następujących elementów: daty/godziny, daty, godziny, daterange, timerange, datetimerange, czas trwania, zestaw.|
-|wartość|**Opcjonalnie.** Obiekt daty/godziny w formacie yyyy:MM:dd (Data): mm: ss (czas) yyyy:MM:dd: mm: ss (Data/godzina). Jeśli `type` jest `duration`, wartość jest to liczba sekund (czas trwania) <br/> Używany tylko, jeśli `type` jest `datetime` lub `date`, `time`, lub "czas trwania.|
+|type|Podtyp, który może być jednym z następujących elementów: `datetime`, `date`, `time`, `daterange`, `timerange`, `datetimerange`, `duration`, `set`.|
+|value|**Opcjonalnie.** Obiekt daty/godziny w formacie yyyy:MM:dd (Data): mm: ss (czas) yyyy:MM:dd: mm: ss (Data/godzina). Jeśli `type` jest `duration`, wartość jest to liczba sekund (czas trwania) <br/> Używany tylko, jeśli `type` jest `datetime` lub `date`, `time`, lub "czas trwania.|
 
 ## <a name="valid-date-values"></a>Wartości prawidłowej daty
 
@@ -116,12 +116,12 @@ Pola z `X` w `timex` pola są części daty, które nie są jawnie określone w 
           {
             "timex": "XXXX-05-02",
             "type": "date",
-            "value": "2017-05-02"
+            "value": "2019-05-02"
           },
           {
             "timex": "XXXX-05-02",
             "type": "date",
-            "value": "2018-05-02"
+            "value": "2020-05-02"
           }
         ]
       }
@@ -145,14 +145,8 @@ Pola z `X` w `timex` pola są części daty, które nie są jawnie określone w 
           {
             "timex": "(XXXX-05-02,XXXX-05-05,P3D)",
             "type": "daterange",
-            "start": "2017-05-02",
-            "end": "2017-05-05"
-          },
-          {
-            "timex": "(XXXX-05-02,XXXX-05-05,P3D)",
-            "type": "daterange",
-            "start": "2018-05-02",
-            "end": "2018-05-05"
+            "start": "2019-05-02",
+            "end": "2019-05-05"
           }
         ]
       }
@@ -176,14 +170,8 @@ W poniższym przykładzie pokazano, jak korzysta z usługi LUIS **datetimeV2** r
           {
             "timex": "(XXXX-WXX-2,XXXX-WXX-4,P2D)",
             "type": "daterange",
-            "start": "2017-06-13",
-            "end": "2017-06-15"
-          },
-          {
-            "timex": "(XXXX-WXX-2,XXXX-WXX-4,P2D)",
-            "type": "daterange",
-            "start": "2017-06-20",
-            "end": "2017-06-22"
+            "start": "2019-04-30",
+            "end": "2019-05-02"
           }
         ]
       }
@@ -216,6 +204,89 @@ W poniższym przykładzie pokazano, jak korzysta z usługi LUIS **datetimeV2** r
       }
     }
   ]
+```
+
+## <a name="preview-api-version-3x"></a>Wersja zapoznawcza interfejsu API 3.x
+
+Odpowiedź DatetimeV2 JSON została zmieniona w wersji 3 interfejsu API. 
+
+Zmiany z interfejsu API w wersji 2:
+* `datetimeV2.timex.type` Właściwość nie jest już jest zwracany, ponieważ jest on zwracany na poziomie nadrzędnym `datetimev2.type`. 
+* `datetimeV2.timex` Właściwości została zmieniona na `datetimeV2.value`.
+
+Aby uzyskać wypowiedź `8am on may 2nd 2017`, wersja V3 DatetimeV2 to:
+
+```JSON
+{
+    "query": "8am on may 2nd 2017",
+    "prediction": {
+        "normalizedQuery": "8am on may 2nd 2017",
+        "topIntent": "None",
+        "intents": {
+            "None": {
+                "score": 0.6826963
+            }
+        },
+        "entities": {
+            "datetimeV2": [
+                {
+                    "type": "datetime",
+                    "values": [
+                        {
+                            "timex": "2017-05-02T08",
+                            "value": "2017-05-02 08:00:00"
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
+```
+
+Następujący kod JSON jest `verbose` parametr `false`:
+
+```json
+{
+    "query": "8am on may 2nd 2017",
+    "prediction": {
+        "normalizedQuery": "8am on may 2nd 2017",
+        "topIntent": "None",
+        "intents": {
+            "None": {
+                "score": 0.6826963
+            }
+        },
+        "entities": {
+            "datetimeV2": [
+                {
+                    "type": "datetime",
+                    "values": [
+                        {
+                            "timex": "2017-05-02T08",
+                            "value": "2017-05-02 08:00:00"
+                        }
+                    ]
+                }
+            ],
+            "$instance": {
+                "datetimeV2": [
+                    {
+                        "type": "builtin.datetimeV2.datetime",
+                        "text": "8am on may 2nd 2017",
+                        "startIndex": 0,
+                        "length": 19,
+                        "modelTypeId": 2,
+                        "modelType": "Prebuilt Entity Extractor",
+                        "recognitionSources": [
+                            "model"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}
 ```
 
 ## <a name="deprecated-prebuilt-datetime"></a>Przestarzałe wbudowanych daty/godziny

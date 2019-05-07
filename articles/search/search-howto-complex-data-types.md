@@ -10,12 +10,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 397b3ea7fee67e25cd160f6b529a660e18c44046
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 00606ed5cbcd8681748241e9404c6e6e5aa95021
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024736"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147314"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-search"></a>Jak modelowanie złożonych typów danych w usłudze Azure Search
 
@@ -28,7 +28,7 @@ Aby rozpocząć pracę, firma Microsoft zaleca [zestawu danych hotele](https://g
 > [!Note]
 > Obsługa złożonych typów jest ogólnie dostępna w `api-version=2019-05-06`. 
 >
-> Jeśli rozwiązanie wyszukiwania jest oparta na wcześniej obejścia spłaszczonych zestawów danych w kolekcji, należy zmienić indeksu obejmuje dodatkowe typy złożone jako obsługiwane w najnowszej wersji interfejsu API. Aby uzyskać więcej informacji na temat uaktualniania wersji interfejsu API, zobacz [uaktualnienia do najnowszej wersji interfejsu API REST](search-api-migration.md) lub [uaktualnienia do najnowszej wersji zestawu SDK platformy .NET](search-dotnet-sdk-migration.md).
+> Jeśli rozwiązanie wyszukiwania jest oparta na wcześniej obejścia spłaszczonych zestawów danych w kolekcji, należy zmienić indeksu obejmuje dodatkowe typy złożone jako obsługiwane w najnowszej wersji interfejsu API. Aby uzyskać więcej informacji na temat uaktualniania wersji interfejsu API, zobacz [uaktualnienia do najnowszej wersji interfejsu API REST](search-api-migration.md) lub [uaktualnienia do najnowszej wersji zestawu SDK platformy .NET](search-dotnet-sdk-migration-version-9.md).
 
 ## <a name="example-of-a-complex-structure"></a>Przykład strukturę złożoną
 

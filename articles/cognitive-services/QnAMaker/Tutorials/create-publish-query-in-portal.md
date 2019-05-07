@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 299dd61055503f0b5a11cbe97e137e4760edadda
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 85f8643a0936209c8f280498df92555a7b40c533
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60463764"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149947"
 ---
 # <a name="tutorial-from-qna-maker-portal-create-a-knowledge-base"></a>Samouczek: Tworzenie bazy wiedzy w portalu narzędzia QnA Maker
 
@@ -68,7 +68,7 @@ Ten samouczek wymaga istniejącej [usługi QnA Maker](../How-To/set-up-qnamaker-
     |--|--|--|
     |Adres URL|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs` |Zawartość często zadawanych pytań pod tym adresem URL jest formatowana za pomocą pytania, po którym następuje odpowiedź. Ten format może być interpretowany przez usługę QnA Maker w celu wyodrębnienia pytań i skojarzonych odpowiedzi.|
     |Plik |_nieużywane w tym samouczku_|Służy do przekazywania plików dla pytań i odpowiedzi. |
-    |Osobowość dla konwersacji|Przyjaciel|Nadaje przyjazny i swobodny ton typowym pytaniom i odpowiedziom. Później można edytować te pytania i odpowiedzi. |
+    |Osobowość dla konwersacji|Przyjazne|Nadaje przyjazny i swobodny ton typowym pytaniom i odpowiedziom. Później można edytować te pytania i odpowiedzi. |
 
     ![Krok 4 procesu tworzenia bazy wiedzy](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-4.png)
 
@@ -84,9 +84,9 @@ Ten samouczek wymaga istniejącej [usługi QnA Maker](../How-To/set-up-qnamaker-
 
 1. Wybierz ostatnią stronę pytań i odpowiedzi u dołu tabeli. Na tej stronie wyświetlane są pytania i odpowiedzi od osobowości dla konwersacji. 
 
-1. Na pasku narzędzi powyżej listy pytań i odpowiedzi wybierz ikonę metadanych. Spowoduje to wyświetlenie tagów metadanych dla każdego pytania i odpowiedzi. Pytania dla konwersacji mają już ustawione metadane **redakcyjny: konwersacja**. Te metadane są zwracane do aplikacji klienckiej wraz z wybraną odpowiedzią. Aplikacja kliencka, na przykład czatbot, może używać tych filtrowanych metadanych w celu określenia dodatkowego przetwarzania lub interakcji z użytkownikiem.
+1. Na pasku narzędzi powyżej listy pytań i odpowiedzi, wybierz **wyświetlić opcje** ikony, następnie wybierz pozycję **Pokaż metadanych**. Spowoduje to wyświetlenie tagów metadanych dla każdego pytania i odpowiedzi. Pytania dla konwersacji mają już ustawione metadane **redakcyjny: konwersacja**. Te metadane są zwracane do aplikacji klienckiej wraz z wybraną odpowiedzią. Aplikacja kliencka, na przykład czatbot, może używać tych filtrowanych metadanych w celu określenia dodatkowego przetwarzania lub interakcji z użytkownikiem.
 
-    ![Wyświetlanie tagów metadanych](../media/qnamaker-tutorial-create-publish-query-in-portal/save-and-train-kb-chit-chat.png)
+    ![! [Wyświetl znaczniki — metadane] (.. / media/qnamaker-tutorial-create-publish-query-in-portal/save-and-train-kb-chit-chat.png)](../media/qnamaker-tutorial-create-publish-query-in-portal/save-and-train-kb-chit-chat.png#lightbox)
 
 1. Wybierz pozycję **Zapisywanie i szkolenie** na górnym pasku menu.
 

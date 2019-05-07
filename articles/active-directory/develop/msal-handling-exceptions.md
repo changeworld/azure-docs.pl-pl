@@ -16,12 +16,12 @@ ms.date: 04/10/2019
 ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 7c9a578cb3c3a59ae6bba13e585188020f35f03a
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
-ms.translationtype: HT
+ms.openlocfilehash: 43c98181c926410bea2acf64bf1ed4d588c12616
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65080940"
+ms.locfileid: "65138971"
 ---
 # <a name="handling-exceptions-and-errors-using-msal"></a>Obsługa wyjątków i błędów z zastosowaniem biblioteki MSAL
 Wyjątki w Microsoft Authentication Library (MSAL) są przeznaczone dla deweloperów aplikacji rozwiązać, a nie w celu wyświetlania użytkownikom końcowym. Nie są lokalizowane komunikaty o wyjątkach.
@@ -82,21 +82,18 @@ Dostępne są następujące typy błędów:
 
 * *InteractionRequiredAuthError:* Klasa błąd rozszerzanie błąd ServerError reprezentującego błędy serwera, które wymagają wywołań interakcyjnego. To jest generowany przez `acquireTokenSilent` Jeśli wymagane jest wprowadzenie przez użytkownika do interakcji z serwerem o podanie poświadczeń lub wyrazić zgodę dla uwierzytelniania/autoryzacji. Kody błędów należą "interaction_required", "login_required", "consent_required".
 
-W przypadku obsługi błędów w przepływów uwierzytelniania za pomocą przekierowania metody (`loginRedirect`, `acquireTokenRedirect`), musisz zarejestrować sukcesów i niepowodzeń wywołań zwrotnych do wywołania po użyciu przekierowania `handleRedirectCallbacks()` metody w następujący sposób:
+W przypadku obsługi błędów w przepływów uwierzytelniania za pomocą przekierowania metody (`loginRedirect`, `acquireTokenRedirect`), konieczne będzie zarejestrowanie wywołania zwrotnego, która jest wywoływana powodzenie lub Niepowodzenie po użyciu przekierowania `handleRedirectCallback()` metody w następujący sposób:
 
 ```javascript
-function acquireTokenRedirectCallBack(response) {
-    // success response
+function authCallback(error, response) {
+    //handle redirect response
 }
 
-function  acquireTokenErrorRedirectCallBack(error) {
-    console.log(error);
-}
 
 var myMSALObj = new Msal.UserAgentApplication(msalConfig);
 
 // Register Callbacks for redirect flow
-myMSALObj.handleRedirectCallbacks(acquireTokenRedirectCallBack, acquireTokenErrorRedirectCallBack);
+myMSALObj.handleRedirectCallback(authCallback);
 
 myMSALObj.acquireTokenRedirect(request);
 ```
@@ -143,7 +140,7 @@ myMSALObj.acquireTokenSilent(request).then(function (response) {
 ```
 
 ## <a name="conditional-access-and-claims-challenges"></a>Warunkowego dostępu i oświadczenia wyzwania
-Podczas uzyskiwania tokenów w trybie dyskretnym, aplikacja może otrzymywać komunikaty o błędach podczas [dostępu warunkowego oświadczeń wyzwanie](conditional-access-dev-guide.md#scenario-single-page-app-spa-using-adaljs) takie jak zasady MFA jest wymagana przez interfejs API próbujesz uzyskać dostęp.
+Podczas uzyskiwania tokenów w trybie dyskretnym, aplikacja może otrzymywać komunikaty o błędach podczas [dostępu warunkowego oświadczeń wyzwanie](conditional-access-dev-guide.md) takie jak zasady MFA jest wymagana przez interfejs API próbujesz uzyskać dostęp.
 
 Wzorzec do obsługi tego błędu jest interaktywnie uzyskać token z zastosowaniem biblioteki MSAL. Interaktywnie pobierania tokenu monituje użytkownika i daje im możliwość spełnić wymagania zasad dostępu warunkowego wymagany.
 
@@ -155,7 +152,7 @@ Podczas wywoływania interfejsu API wymaga dostępu warunkowego z platformy MSAL
 Aby obsłużyć żądania oświadczeń, musisz użyć `.WithClaim()` metody `PublicClientApplicationBuilder` klasy.
 
 ### <a name="javascript"></a>JavaScript
-Podczas uzyskiwania tokenów w trybie dyskretnym (przy użyciu `acquireTokenSilent`) przy użyciu MSAL.js, aplikacja może otrzymywać komunikaty o błędach podczas [dostępu warunkowego oświadczeń wyzwanie](conditional-access-dev-guide.md#scenario-single-page-app-spa-using-adaljs) takie jak zasady MFA jest wymagana przez interfejs API próbujesz uzyskać dostęp.
+Podczas uzyskiwania tokenów w trybie dyskretnym (przy użyciu `acquireTokenSilent`) przy użyciu MSAL.js, aplikacja może otrzymywać komunikaty o błędach podczas [dostępu warunkowego oświadczeń wyzwanie](conditional-access-dev-guide.md) takie jak zasady MFA jest wymagana przez interfejs API próbujesz uzyskać dostęp.
 
 Wzorzec do obsługi tego błędu jest wykonywanie wywołania interfejsu interaktywnych, takich jak uzyskanie tokenu w MSAL.js `acquireTokenPopup` lub `acquireTokenRedirect` jak w poniższym przykładzie:
 

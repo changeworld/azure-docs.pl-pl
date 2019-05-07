@@ -9,14 +9,14 @@ ms.reviewer: mldocs
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 03/29/2019
+ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: 242b7cb45e9a73e78ae9f9b62e83311e110e07ee
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 80bb7af0f7ed20336ab08d4f3ca9639057b9c67f
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65021106"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149754"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Znane problemy i rozwiązywania problemów z usługi Azure Machine Learning
 
@@ -69,6 +69,9 @@ Nie można wdrażać modele na układów FPGA dopiero po przeprowadzeniu mają w
 
 Uczenie maszynowe zautomatyzowany przepływ tensor aktualnie nie obsługuje wersji przepływu tensor 1.13. Zainstalowanie tej wersji spowoduje, że zależności pakietów przestanie działać. Pracujemy nad rozwiązaniem tego problemu w przyszłej wersji. 
 
+### <a name="experiment-charts"></a>Wykresy eksperymentu
+
+Wykresy klasyfikacji binarnej (precision-recall, ROC, Uzyskaj krzywej itp.) objętego automatycznych iteracjami eksperymentów uczenia Maszynowego są nie corectly renderowania w interfejsie użytkownika od 4/12. Powierzchni wykresu są obecnie dostępne wyniki odwrotność przedstawiający, gdzie lepiej zachowującego modeli są wyświetlane z niższym wyników. To rozwiązanie wymaga zbadania.
 
 ## <a name="databricks"></a>Databricks
 

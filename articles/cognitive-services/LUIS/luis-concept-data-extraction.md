@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 3bad247263af09462a44e04329e7f911afa3ad5c
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 15d6b0d28f926bdb39b35b763b89422cddcccc84
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64867721"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65150697"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>Wyodrębnianie danych z tekstem wypowiedź intencje i podmioty
 Usługa LUIS daje możliwość pobrać informacje z wypowiedzi języka naturalnego użytkownika. Informacje są wyodrębniane w sposób, że może służyć przez program, aplikacji lub czatbot podjąć działania. W poniższych sekcjach Dowiedz się, jakie dane są zwracane z intencje i podmioty, wraz z przykładami JSON.
@@ -172,34 +172,6 @@ Dane zwrócone z punktu końcowego obejmuje nazwa jednostki, odnalezione tekst z
 |--|--|--|
 |Proste jednostki|`Customer`|`bob jones`|
 
-## <a name="hierarchical-entity-data"></a>Dane hierarchiczne jednostki
-
-**Hierarchiczna jednostki po pewnym czasie zostaną wycofane. Użyj [ról jednostki](luis-concept-roles.md) Aby określić podtypy jednostki, zamiast hierarchiczne jednostek.**
-
-[Hierarchiczna](luis-concept-entity-types.md) jednostki są rozpoznane przez maszynę i może zawierać słowo lub frazę. Elementy podrzędne są identyfikowane przez kontekst. Jeśli szukasz relacji nadrzędny podrzędny z dopasowaniem tekstu do dokładnego dopasowania użyj [listy](#list-entity-data) jednostki.
-
-`book 2 tickets to paris`
-
-W poprzednim wypowiedź `paris` jest oznaczona etykietą `Location::ToLocation` podrzędnym `Location` hierarchiczne jednostki.
-
-Dane zwrócone z punktu końcowego obejmuje nazwa jednostki i nazwa elementu podrzędnego, odnalezionych tekst z wypowiedź, lokalizacja odnalezionych tekstu i oceny:
-
-```JSON
-"entities": [
-  {
-    "entity": "paris",
-    "type": "Location::ToLocation",
-    "startIndex": 18,
-    "endIndex": 22,
-    "score": 0.6866132
-  }
-]
-```
-
-|Obiekt danych|Nadrzędny|Podrzędne|Wartość|
-|--|--|--|--|
-|Hierarchiczna jednostki|Lokalizacja|ToLocation|"Paryż"|
-
 ## <a name="composite-entity-data"></a>Dane złożone jednostki
 [Złożone](luis-concept-entity-types.md) jednostki są rozpoznane przez maszynę i może zawierać słowo lub frazę. Na przykład, należy wziąć pod uwagę złożonego jednostki wstępnie `number` i `Location::ToLocation` za pomocą następujących wypowiedź:
 
@@ -212,53 +184,54 @@ Należy zauważyć, że `2`, liczba i `paris`, ToLocation mają słowa między n
 Złożone jednostki są zwracane w `compositeEntities` tablicy i wszystkich jednostek w ramach złożonego jest także zwracany w `entities` tablicy:
 
 ```JSON
-  "entities": [
+
+"entities": [
     {
-      "entity": "paris",
-      "type": "Location::ToLocation",
-      "startIndex": 18,
-      "endIndex": 22,
-      "score": 0.956998169
+    "entity": "2 tickets to cairo",
+    "type": "ticketInfo",
+    "startIndex": 0,
+    "endIndex": 17,
+    "score": 0.67200166
     },
     {
-      "entity": "2",
-      "type": "builtin.number",
-      "startIndex": 5,
-      "endIndex": 5,
-      "resolution": {
+    "entity": "2",
+    "type": "builtin.number",
+    "startIndex": 0,
+    "endIndex": 0,
+    "resolution": {
+        "subtype": "integer",
         "value": "2"
-      }
+    }
     },
     {
-      "entity": "2 tickets to paris",
-      "type": "Order",
-      "startIndex": 5,
-      "endIndex": 22,
-      "score": 0.7714499
+    "entity": "cairo",
+    "type": "builtin.geographyV2",
+    "startIndex": 13,
+    "endIndex": 17
     }
-  ],
-  "compositeEntities": [
+],
+"compositeEntities": [
     {
-      "parentType": "Order",
-      "value": "2 tickets to paris",
-      "children": [
+    "parentType": "ticketInfo",
+    "value": "2 tickets to cairo",
+    "children": [
         {
-          "type": "builtin.number",
-          "value": "2"
+        "type": "builtin.geographyV2",
+        "value": "cairo"
         },
         {
-          "type": "Location::ToLocation",
-          "value": "paris"
+        "type": "builtin.number",
+        "value": "2"
         }
-      ]
+    ]
     }
-  ]
+]
 ```    
 
 |Obiekt danych|Nazwa jednostki|Wartość|
 |--|--|--|
 |Wstępnie utworzone jednostki — liczba|"builtin.number"|"2"|
-|Hierarchiczna jednostce — lokalizacji|"Location::ToLocation"|"Paryż"|
+|Wstępnie utworzone jednostki - GeographyV2|"Location::ToLocation"|"Paryż"|
 
 ## <a name="list-entity-data"></a>Lista danych jednostki
 
@@ -268,8 +241,8 @@ Załóżmy, że aplikacja ma listę o nazwie `Cities`, dzięki czemu dla zmian n
 
 |Element listy|Synonimy — element|
 |---|---|
-|Seattle|Odp morza, Morza, 98101, 206 + 1 |
-|Paryż|cdg, roissy historii, 75001, 1, +33|
+|`Seattle`|`sea-tac`, `sea`, `98101`, `206`, `+1` |
+|`Paris`|`cdg`, `roissy`, `ory`, `75001`, `1`, `+33`|
 
 `book 2 tickets to paris`
 

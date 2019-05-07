@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/05/2019
+ms.date: 05/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b03dfa5a33850dfedf23375536278c4e08bed68
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8de2f7cb90e004673c59282a8023d55df364220a
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64687164"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65140856"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-alibaba-cloud-service-role-based-sso"></a>Samouczek: Integracja usługi Azure Active Directory z usługą w chmurze firmę Alibaba (logowanie Jednokrotne oparte na rolach)
 
@@ -70,6 +70,10 @@ Aby skonfigurować integrację firmę Alibaba usługi w chmurze (Role-based SSO)
 
     ![Usługa w chmurze firmę Alibaba (logowanie Jednokrotne oparte na rolach) na liście wyników](common/search-new-app.png)
 
+5. Na **firmę Alibaba usługi w chmurze (Role-based SSO)** kliknij **właściwości** w okienku nawigacji po lewej stronie, a następnie skopiuj **obiekt o identyfikatorze** i zapisz go na komputerze późniejszego użytku.
+
+    ![Właściwości konfiguracji](./media/alibaba-cloud-service-role-based-sso-tutorial/Properties.png)
+    
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji możesz skonfigurować i przetestować usługi Azure AD logowanie jednokrotne z usługą w chmurze firmę Alibaba (oparta na rolach SSO) w oparciu o nazwie użytkownika testowego **Britta Simon**.
@@ -78,6 +82,7 @@ Dla logowania jednokrotnego do pracy relację łącza między użytkownika usłu
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne z usługą w chmurze firmę Alibaba (logowanie Jednokrotne oparte na rolach), należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Konfigurowanie opartej na rolach logowanie jednokrotne w usłudze w chmurze firmę Alibaba](#configure-role-based-single-sign-on-in-alibaba-cloud-service)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
 2. **[Konfigurowanie usługi w chmurze firmę Alibaba (logowanie Jednokrotne oparte na rolach) logowanie jednokrotne](#configure-alibaba-cloud-service-role-based-sso-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
 3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
 4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
@@ -102,23 +107,25 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z usługą w chmurze 
 
     ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-4. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** wykonaj następujące kroki:
+4. W sekcji **Podstawowa konfiguracja protokołu SAML**, jeśli masz **plik metadanych dostawcy usługi**, wykonaj następujące kroki:
 
-    ![Domena usługi w chmurze firmę Alibaba (logowanie Jednokrotne oparte na rolach) i adresy URL pojedynczego logowania jednokrotnego informacji](common/idp-intiated.png)
+    >[!NOTE]
+    >Otrzymasz metadanych dostawcy usług z tym [adresu URL](https://signin.alibabacloud.com/saml-role/sp-metadata.xml)
 
-    a. W **identyfikator** tekstu wpisz dowolny adres URL:
-    
-    | |
-    |--|
-    | `urn:alibaba:cloudcomputing` |
-    | `urn:alibaba:cloudcomputing:international` |
+    a. Kliknij pozycję **Przekaż plik metadanych**.
 
-    b. W **adres URL odpowiedzi** tekstu wpisz dowolny adres URL:
+    ![image](common/upload-metadata.png)
 
-    | |
-    |--|
-    | `https://signin.aliyun.com/saml-role/SSO` |
-    | `https://signin.alibabacloud.com/saml-role/SSO` |
+    b. Kliknij **logo folderu**, aby wybrać plik metadanych, a następnie kliknij pozycję **Przekaż**.
+
+    ![image](common/browse-upload-metadata.png)
+
+    c. Po pomyślnym przekazaniu pliku metadanych **identyfikator** i **adres URL odpowiedzi** wartości Uzyskaj automatycznie wypełnione w sekcji firmę Alibaba usługi w chmurze (Role-based SSO) w polu tekstowym:
+
+    ![image](common/idp-intiated.png)
+
+    > [!Note]
+    > Jeśli **identyfikator** i **adres URL odpowiedzi** wartości nie uzyskać wypełniona automatycznie, a następnie wprowadź wartości ręcznie zgodnie z wymaganiami.
 
 5. Aplikacja usługi w chmurze firmę Alibaba (logowanie Jednokrotne oparte na rolach) oczekuje twierdzenia SAML w określonym formacie, który wymaga dodania mapowania atrybutów niestandardowych konfiguracji atrybuty tokenu języka SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych. Kliknij przycisk **Edytuj** ikonę, aby otworzyć **atrybutów użytkownika** okna dialogowego.
 
@@ -126,10 +133,10 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z usługą w chmurze 
 
 6. Ponadto powyżej firmę Alibaba usługi w chmurze (Role-based SSO) aplikacja oczekuje kilka więcej atrybutów, które mają być przekazywane w odpowiedzi SAML. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** wykonaj następujące czynności, aby dodać atrybut tokenu SAML, jak pokazano w poniższej tabeli:
 
-    | Name (Nazwa) | Atrybut źródłowy|
-    | ---------------| --------------- |
-    | Rola | user.assignedroles |
-    | RoleSessionName | user.mail |
+    | Name (Nazwa) | Przestrzeń nazw | Atrybut źródłowy|
+    | ---------------| ------------| --------------- |
+    | Rola | https://www.aliyun.com/SAML-Role/Attribute | user.assignedroles |
+    | RoleSessionName | https://www.aliyun.com/SAML-Role/Attribute | user.userprincipalname |
 
     > [!NOTE]
     > Kliknij [tutaj](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management), aby dowiedzieć się, jak skonfigurować **rolę** w usłudze Azure AD
@@ -164,6 +171,85 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z usługą w chmurze 
 
     c. Adres URL wylogowywania
 
+### <a name="configure-role-based-single-sign-on-in-alibaba-cloud-service"></a>Konfigurowanie opartej na rolach logowanie jednokrotne w usłudze w chmurze firmę Alibaba
+
+1. Zaloguj się w chmurze firmę Alibaba [konsoli pamięci RAM](https://account.alibabacloud.com/login/login.htm?oauth_callback=https%3A%2F%2Fram.console.aliyun.com%2F%3Fspm%3Da2c63.p38356.879954.8.7d904e167h6Yg9) przy użyciu Account1.
+
+2. W okienku nawigacji po lewej stronie wybierz **logowania jednokrotnego**.
+
+3. Na **rejestracji Jednokrotnej opartej na rolach** kliknij pozycję **utworzyć dostawcy tożsamości**.
+
+4. Na wyświetlonej stronie wprowadź `AAD` w polu Nazwa dostawcy tożsamości, podaj opis w **Uwaga** kliknij **przekazywanie** Przekaż plik metadanych Federacji, które są pobierane przed, a następnie kliknij przycisk  **OK**.
+
+5. Po pomyślnym utworzeniu przez dostawcę tożsamości, kliknij przycisk **Utwórz rolę RAM**.
+
+6. W **nazwy roli RAM** pole, wprowadź `AADrole`, wybierz opcję `AAD` z **wybierz dostawcę tożsamości** listy rozwijanej listy i kliknij przycisk OK.
+
+    >[!NOTE]
+    >Można udzielić uprawnienia do roli, zgodnie z potrzebami. Po utworzeniu dostawcy tożsamości i odpowiednich ról, zaleca się zapisywania ARNs tożsamości i roli do późniejszego użytku. Możesz uzyskać ARNs na stronie informacje o tożsamości, a strona informacji o roli.
+
+7. Skojarz roli firmę Alibaba chmury w pamięci RAM (AADrole) za pomocą użytkownika usługi Azure AD (u2): Aby skojarzyć roli pamięci RAM, za pomocą użytkownika usługi Azure AD, musi utworzyć rolę w usłudze Azure AD, wykonaj następujące czynności:
+
+    a. Zaloguj się na [funkcji Azure AD Graph Explorer](https://developer.microsoft.com/graph/graph-explorer?spm=a2c63.p38356.879954.9.7d904e167h6Yg9).
+
+    b. Kliknij przycisk **modyfikowania uprawnień** uzyskać wymaganych uprawnień do tworzenia roli.
+
+    ![Konfiguracja wykresu](./media/alibaba-cloud-service-role-based-sso-tutorial/graph01.png)
+
+    c. Wybierz następujące uprawnienia z listy, a następnie kliknij przycisk **zmodyfikować uprawnienia**, jak pokazano na poniższej ilustracji.
+
+    ![Konfiguracja wykresu](./media/alibaba-cloud-service-role-based-sso-tutorial/graph02.png)
+
+    >[!NOTE]
+    >Po uprawnienia są przyznawane, zaloguj się do programu Graph Explorer ponownie.
+
+    d. Na stronie Graph Explorer wybierz **UZYSKAĆ** z pierwszej listy rozwijanej i **beta** z drugiej listy rozwijanej. Następnie wprowadź `https://graph.microsoft.com/beta/servicePrincipals` w polu obok listy rozwijanej, a następnie kliknij przycisk **Uruchom kwerendę**.
+
+    ![Konfiguracja wykresu](./media/alibaba-cloud-service-role-based-sso-tutorial/graph03.png)
+
+    >[!NOTE]
+    >Jeśli używasz wielu katalogów, możesz wprowadzić `https://graph.microsoft.com/beta/contoso.com/servicePrincipals` w polu zapytania.
+
+    e. W **odpowiedzi w wersji zapoznawczej** sekcji, wyodrębnić właściwość appRoles z "jednostka usługi" do późniejszego użytku.
+
+    ![Konfiguracja wykresu](./media/alibaba-cloud-service-role-based-sso-tutorial/graph05.png)
+
+    >[!NOTE]
+    >Możesz znaleźć właściwość appRoles, wprowadzając `https://graph.microsoft.com/beta/servicePrincipals/<objectID>` w polu zapytania. Należy pamiętać, że `objectID` jest identyfikator obiektu, zostały skopiowane z usługi Azure AD **właściwości** strony.
+
+    f. Wróć do Eksploratora programu Graph, zmień metodę z **UZYSKAĆ** do **PATCH**, wklej następującą zawartość do **treść żądania** sekcji, a następnie kliknij przycisk **Uruchom kwerendę** :
+    ```
+    { 
+    "appRoles": [
+        { 
+        "allowedMemberTypes":[
+            "User"
+        ],
+        "description": "msiam_access",
+        "displayName": "msiam_access",
+        "id": "41be2db8-48d9-4277-8e86-f6d22d35****",
+        "isEnabled": true,
+        "origin": "Application",
+        "value": null
+        },
+        { "allowedMemberTypes": [
+            "User"
+        ],
+        "description": "Admin,AzureADProd",
+        "displayName": "Admin,AzureADProd",
+        "id": "68adae10-8b6b-47e6-9142-6476078cdbce",
+        "isEnabled": true,
+        "origin": "ServicePrincipal",
+        "value": "acs:ram::187125022722****:role/aadrole,acs:ram::187125022722****:saml-provider/AAD"
+        }
+    ]
+    }
+    ```
+    > [!NOTE]
+    > `value` Jest ARNs tożsamości i roli utworzonej w konsoli pamięci RAM. W tym miejscu możesz dodać wiele ról, zgodnie z potrzebami. Usługa Azure AD będzie wysyłać wartości z tych ról jako wartość oświadczenia w odpowiedzi SAML. Jednak możesz tylko dodawać nowe role po `msiam_access` część na potrzeby operacji patch. Do wygładzania proces tworzenia, zaleca się użyć generator identyfikator, takich jak GUID Generator do generowania identyfikatorów w czasie rzeczywistym.
+
+    g. Po jednostki usługi są zainstalowane odpowiednie poprawki z rolą wymagane, Przypisz rolę za pomocą użytkownika usługi Azure AD (u2), wykonując kroki **przypisać użytkownika testowego usługi Azure AD** części samouczka.
+
 ### <a name="configure-alibaba-cloud-service-role-based-sso-single-sign-on"></a>Konfigurowanie chmury firmę Alibaba (oparta na rolach SSO) usługi logowania jednokrotnego
 
 Aby skonfigurować logowanie jednokrotne na **firmę Alibaba usługi w chmurze (Role-based SSO)** stronie, musisz wysłać pobrany **XML metadanych Federacji** i skopiować adresy URL z witryny Azure portal do [ Zespołu pomocy technicznej usługi w chmurze firmę Alibaba (logowanie Jednokrotne oparte na rolach)](https://www.aliyun.com/service/). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
@@ -186,7 +272,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola `brittasimon@yourcompanydomain.extension`. Na przykład: BrittaSimon@contoso.com
+    b. W **nazwa_użytkownika** wpisz `brittasimon@yourcompanydomain.extension`. Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
@@ -212,11 +298,16 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
     ![Okienko Dodawanie przypisania](common/add-assign-user.png)
 
-5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+5. Na **użytkowników i grup** kartę, zaznacz u2 z listy użytkowników, a następnie kliknij przycisk **wybierz**. Następnie kliknij przycisk **przypisać**.
 
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+    ![Konfiguracja testu](./media/alibaba-cloud-service-role-based-sso-tutorial/test01.png)
 
-7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+6. Wyświetl przypisaną rolę i przetestować firmę Alibaba usługi w chmurze (Role-based SSO).
+
+    ![Konfiguracja testu](./media/alibaba-cloud-service-role-based-sso-tutorial/test02.png)
+
+    >[!NOTE]
+    >Po przypisaniu użytkowników (u2) utworzona rola jest automatycznie dołączany do użytkownika. Jeśli utworzono wiele ról, należy dołączyć odpowiednią rolę dla użytkownika, zgodnie z potrzebami. Jeśli chcesz zaimplementować opartej na rolach logowania jednokrotnego z usługi Azure AD do wielu kont w chmurze firmę Alibaba, powtórz te czynności.
 
 ### <a name="create-alibaba-cloud-service-role-based-sso-test-user"></a>Tworzenie użytkownika testowego firmę Alibaba usługi w chmurze (Role-based logowanie Jednokrotne)
 
@@ -224,9 +315,23 @@ W tej sekcji utworzysz użytkownika o nazwie Britta Simon firmę Alibaba w usłu
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+Po ukończeniu poprzedniego konfiguracje testu firmę Alibaba usługi w chmurze (Role-based SSO), wykonując następujące czynności:
 
-Po kliknięciu kafelka firmę Alibaba usługi w chmurze (Role-based SSO) w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze firmę Alibaba usługę w chmurze (Role-based SSO) dla której skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+1. W witrynie Azure portal przejdź do **firmę Alibaba usługi w chmurze (Role-based SSO)** wybierz opcję **logowanie jednokrotne**i kliknij przycisk **testu**.
+
+    ![Konfiguracja testu](./media/alibaba-cloud-service-role-based-sso-tutorial/test03.png)
+
+2. Kliknij pozycję **Zaloguj się jako bieżący użytkownik**.
+
+    ![Konfiguracja testu](./media/alibaba-cloud-service-role-based-sso-tutorial/test04.png)
+
+3. Na stronie wyboru konta wybierz u2.
+
+    ![Konfiguracja testu](./media/alibaba-cloud-service-role-based-sso-tutorial/test05.png)
+
+4. Zostanie wyświetlona następująca strona, wskazujący, że usługa rejestracji Jednokrotnej w opartej na rolach jest pomyślne.
+
+    ![Konfiguracja testu](./media/alibaba-cloud-service-role-based-sso-tutorial/test06.png)
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 

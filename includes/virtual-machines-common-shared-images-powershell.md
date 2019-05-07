@@ -5,15 +5,15 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 12/10/2018
+ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 91889971e1ab8a9ea8341f6bc57735d973ea0e89
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5d4be0bf52fd925e22e40e98258082304a25a111
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60188342"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148740"
 ---
 ## <a name="launch-azure-cloud-shell"></a>Uruchamianie usługi Azure Cloud Shell
 
@@ -21,17 +21,6 @@ Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz u
 
 Aby otworzyć usługę Cloud Shell, wybierz pozycję **Wypróbuj** w prawym górnym rogu bloku kodu. Możesz również uruchomić usługę Cloud Shell w oddzielnej karcie przeglądarki, przechodząc do strony [https://shell.azure.com/powershell](https://shell.azure.com/powershell). Wybierz przycisk **Kopiuj**, aby skopiować bloki kodu, wklej je do usługi Cloud Shell, a następnie naciśnij klawisz Enter, aby je uruchomić.
 
-
-## <a name="preview-register-the-feature"></a>Wersja zapoznawcza: Zarejestruj funkcję
-
-Udostępnione galerie obrazów jest w wersji zapoznawczej, ale trzeba zarejestrować tę funkcję, przed jego użyciem. Aby zarejestrować funkcji udostępnione, galerie obrazów:
-
-```azurepowershell-interactive
-Register-AzProviderFeature `
-   -FeatureName GalleryPreview `
-   -ProviderNamespace Microsoft.Compute
-Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
-```
 
 ## <a name="get-the-managed-image"></a>Pobieranie obrazu zarządzanego
 
@@ -45,7 +34,9 @@ $managedImage = Get-AzImage `
 
 ## <a name="create-an-image-gallery"></a>Tworzenie galerii obrazów 
 
-Galeria obrazów jest podstawowy zasób umożliwiający włączenie udostępniania obrazów. Galeria nazwy muszą być unikatowe w ramach Twojej subskrypcji. Tworzenie galerii obrazów przy użyciu [New AzGallery](https://docs.microsoft.com/powershell/module/az.compute/new-azgallery). Poniższy przykład tworzy Galeria o nazwie *myGallery* w *myGalleryRG* grupy zasobów.
+Galeria obrazów jest podstawowy zasób umożliwiający włączenie udostępniania obrazów. Dozwolone znaki dla nazwy galerii są wielkie i małe litery, cyfry, kropki i okresów. Nazwa galerii nie może zawierać łączników. Galeria nazwy muszą być unikatowe w ramach Twojej subskrypcji. 
+
+Tworzenie galerii obrazów przy użyciu [New AzGallery](https://docs.microsoft.com/powershell/module/az.compute/new-azgallery). Poniższy przykład tworzy Galeria o nazwie *myGallery* w *myGalleryRG* grupy zasobów.
 
 ```azurepowershell-interactive
 $resourceGroup = New-AzResourceGroup `
@@ -60,7 +51,9 @@ $gallery = New-AzGallery `
    
 ## <a name="create-an-image-definition"></a>Utwórz definicję obrazu 
 
-Tworzenie galerii obrazów definicji przy użyciu [New AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion). W tym przykładzie nosi nazwę obrazu z galerii *myGalleryImage*.
+Definicje obraz Utwórz logiczne grupowanie obrazów. Są one używane do zarządzania informacjami o wersji obrazu, które są tworzone w ramach ich. Obraz nazwy definicji może składać się z małe i wielkie litery, cyfry, kropki, łączniki i kropki. Aby uzyskać więcej informacji na temat wartości można określić definicję obrazu, zobacz [obrazu definicje](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions).
+
+Utworzyć definicję obrazu przy użyciu [New AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion). W tym przykładzie nosi nazwę obrazu z galerii *myGalleryImage*.
 
 ```azurepowershell-interactive
 $galleryImage = New-AzGalleryImageDefinition `
@@ -74,30 +67,15 @@ $galleryImage = New-AzGalleryImageDefinition `
    -Offer 'myOffer' `
    -Sku 'mySKU'
 ```
-### <a name="using-publisher-offer-and-sku"></a>Za pomocą wydawcy, oferty i jednostki SKU 
-Dla klientów, planowania na implementowanie udostępnianych obrazów **w nadchodzącej wersji**, będzie można użyć osobiście zdefiniowanych **-wydawcy**, **-oferują** i **- Sku** wartości, aby znaleźć i określić definicję obrazu, a następnie utwórz Maszynę wirtualną przy użyciu najnowszej wersji obrazu z odpowiedniego obrazu definicji. Na przykład poniżej przedstawiono trzy definicje, które obrazu i ich wartości:
 
-|Definicja obrazu|Wydawca|Oferta|Sku|
-|---|---|---|---|
-|myImage1|myPublisher|myOffer|mySku|
-|myImage2|myPublisher|standardOffer|mySku|
-|myImage3|Testowanie|standardOffer|testSku|
-
-Wszystkie trzy z nich ma unikatowe zbiory wartości. Może mieć wersji obrazu, które współużytkują jeden lub dwa, ale nie wszystkie trzy wartości. **W nadchodzącym wydaniu**, będzie można połączyć te wartości w celu żądania najnowszą wersję określonego obrazu. **To nie pomoże w bieżącej wersji**, ale są dostępne w przyszłości. Po zwolnieniu, przy użyciu następującej składni powinien być używany do ustawiania obrazu źródłowego jako *myImage1* z powyższej tabeli.
-
-```powershell
-$vmConfig = Set-AzVMSourceImage `
-   -VM $vmConfig `
-   -PublisherName myPublisher `
-   -Offer myOffer `
-   -Skus mySku 
-```
-
-Jest to podobne do jak możesz obecnie określić Użyj wydawcy, oferta i jednostka SKU dla [obrazów portalu Azure Marketplace](../articles/virtual-machines/windows/cli-ps-findimage.md) można pobrać najnowszej wersji obrazu z witryny Marketplace. Pamiętając o tym każda definicja obrazu musi mieć unikatowy zestaw tych wartości.  
 
 ## <a name="create-an-image-version"></a>Utwórz wersję obrazu
 
-Utwórz wersję obrazu na podstawie obrazu zarządzanego przy użyciu [New AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) . W tym przykładzie jest wersja obrazu *1.0.0* i są replikowane do obu *zachodnio-środkowe stany USA* i *południowo-środkowe stany USA* centrów danych.
+Utwórz wersję obrazu na podstawie obrazu zarządzanego przy użyciu [New AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion). 
+
+Dozwolone znaki wersję obrazu są liczby i kropki. Numery muszą należeć do zakresu 32-bitową liczbę całkowitą. Format: *Brak elementu MajorVersion*. *MinorVersion*. *Poprawka*.
+
+W tym przykładzie jest wersja obrazu *1.0.0* i są replikowane do obu *zachodnio-środkowe stany USA* i *południowo-środkowe stany USA* centrów danych. Wybierając regiony docelowe dla replikacji, należy pamiętać, że również należy dołączyć *źródła* regionie co miejsce docelowe dla replikacji.
 
 
 ```azurepowershell-interactive
@@ -122,3 +100,5 @@ Replikować obraz do wszystkich regionów docelowych, dlatego utworzyliśmy zada
 $job.State
 ```
 
+> [!NOTE]
+> Musisz czekać na wersję obrazu do całkowitego zakończenia są zbudowane i replikowane korzystać z tego samego obrazu zarządzanego, aby utworzyć inną wersję obrazu.

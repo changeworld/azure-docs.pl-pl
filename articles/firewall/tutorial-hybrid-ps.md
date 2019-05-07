@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 3/18/2019
+ms.date: 5/3/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 7beb3d986b016688c4ee0a512b9406dbf3dfbb40
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 608674d6e049c71d22c7bf91f37fcb16ffccc581
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60194264"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65144918"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Samouczek: Wdrażanie i konfigurowanie usługi Azure Firewall w sieci hybrydowej za pomocą programu Azure PowerShell
 
@@ -61,9 +61,9 @@ Aby ten scenariusz przebiegał prawidłowo, muszą zostać spełnione trzy podst
 Zapoznaj się z sekcją [Tworzenie tras](#create-the-routes) w tym samouczku, aby poznać sposób tworzenia tych tras.
 
 >[!NOTE]
->Usługa Azure Firewall musi mieć bezpośrednie połączenie z Internetem. Domyślnie AzureFirewallSubnet Zezwalaj tylko na 0.0.0.0/0 trasy zdefiniowanej przez użytkownika, za pomocą **Typ następnego przeskoku** wartość ustawiona jako **Internet**.
+>Zaporę platformy Azure musi mieć bezpośrednie połączenie z Internetem. Jeśli Twoje AzureFirewallSubnet uczy się trasę domyślną elementom sieci lokalnej za pośrednictwem protokołu BGP, konieczne jest przesłonięcie to za pomocą 0.0.0.0/0 trasy zdefiniowanej przez użytkownika za pomocą **Typ następnego przeskoku** wartość ustawiona jako **Internet** utrzymanie bezpośredniej Łączność z Internetem. Domyślnie Zapora usługi Azure nie obsługuje wymuszonego tunelowania do sieci lokalnej.
 >
->Włączenie tunelowania do sieci lokalnej za pośrednictwem usługi ExpressRoute lub usługi Application Gateway, konieczne może być jawnie skonfigurujesz 0.0.0.0/0 trasy zdefiniowanej przez użytkownika Typ następnego przeskoku ma wartość jako **Internet** i skojarzyć go z Twojego AzureFirewallSubnet. Jeśli Twoja organizacja potrzebuje, wymuszonego tunelowania ruchu zapory usługi Azure, skontaktuj się z obsługą można umieścić na liście dozwolonych subskrypcji i upewnij się, że połączenie z Internetem wymagany zapory są obsługiwane.
+>Jednak jeśli konfiguracja wymaga wymuszonego tunelowania do sieci lokalnej, Microsoft będzie obsługiwać go na podstawie przypadku. Się z pomocą techniczną, dzięki czemu możesz przejrzeć tej sprawy. Jeśli zaakceptowane, utworzymy dozwolonych subskrypcji i upewnij się, że połączenie z Internetem wymagany zapory są obsługiwane.
 
 >[!NOTE]
 >Ruch między wirtualnymi sieciami równorzędnymi połączonymi bezpośrednio jest kierowany bezpośrednio nawet wtedy, gdy trasa zdefiniowana przez użytkownika wskazuje usługę Azure Firewall jako bramę domyślną. Aby w tym scenariuszu wysyłać ruch między podsieciami do zapory, trasa zdefiniowana przez użytkownika musi jawnie zawierać prefiks podsieci docelowej w obu podsieciach.
@@ -138,7 +138,7 @@ $VNetHub = New-AzVirtualNetwork -Name $VNetnameHub -ResourceGroupName $RG1 `
 -Location $Location1 -AddressPrefix $VNetHubPrefix -Subnet $FWsub,$GWsub
 ```
 
-Zażądaj przydzielenia publicznego adresu IP do bramy sieci VPN, która zostanie utworzona dla sieci wirtualnej. Należy zauważyć, że metoda *AllocationMethod* jest **dynamiczna**. Nie możesz określić adresu IP, którego chcesz użyć. Jest on przydzielany dynamicznie do bramy sieci VPN. 
+Żądanie publicznego adresu IP do przydzielenia do bramy sieci VPN, które zostaną utworzone dla sieci wirtualnej. Należy zauważyć, że metoda *AllocationMethod* jest **dynamiczna**. Nie można określić adresu IP, którego chcesz użyć. Jest on przydzielany dynamicznie do bramy sieci VPN.
 
   ```azurepowershell
   $gwpip1 = New-AzPublicIpAddress -Name $GWHubpipName -ResourceGroupName $RG1 `
@@ -177,7 +177,7 @@ $VNetOnprem = New-AzVirtualNetwork -Name $VNetnameOnprem -ResourceGroupName $RG1
 -Location $Location1 -AddressPrefix $VNetOnpremPrefix -Subnet $Onpremsub,$GWOnpremsub
 ```
 
-Zażądaj przydzielenia publicznego adresu IP do bramy, która zostanie utworzona dla sieci wirtualnej. Należy zauważyć, że metoda *AllocationMethod* jest **dynamiczna**. Nie możesz określić adresu IP, którego chcesz użyć. Jest on przydzielany dynamicznie do bramy. 
+Żądanie publicznego adresu IP do przydzielenia do bramy która zostanie utworzona dla sieci wirtualnej. Należy zauważyć, że metoda *AllocationMethod* jest **dynamiczna**. Nie można określić adresu IP, którego chcesz użyć. Jest on przydzielany dynamicznie do bramy.
 
   ```azurepowershell
   $gwOnprempip = New-AzPublicIpAddress -Name $GWOnprempipName -ResourceGroupName $RG1 `
@@ -471,7 +471,7 @@ Z poziomu maszyny **VM-Onprem**, otwórz pulpit zdalny na maszynie **VM-spoke-01
 
 Połączenie powinno zostać nawiązane pomyślnie, a użytkownik powinien móc zalogować się za pomocą wybranej nazwy użytkownika i hasła.
 
-Teraz upewnij się, czy reguły zapory działają:
+Teraz gdy masz pewność, czy działają reguły zapory:
 
 <!---- You can ping the server on the spoke VNet.--->
 - Możesz przeglądać serwer internetowy w sieci wirtualnej będącej szprychą.

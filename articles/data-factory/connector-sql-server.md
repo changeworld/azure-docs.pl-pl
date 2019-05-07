@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: cb1b8171dc45c286d3f87a3c33e366d818cfaad9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d28f6ed1957f8f6ae7ff7eb49f8ce4cbdec62266
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61456822"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147422"
 ---
 # <a name="copy-data-to-and-from-sql-server-using-azure-data-factory"></a>Kopiowanie danych do i z programu SQL Server przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -144,7 +144,7 @@ Następujące właściwości są obsługiwane w przypadku połączonej usługi S
 
 Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych zobacz artykuł zestawów danych. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych programu SQL Server.
 
-Aby skopiować dane z/do bazy danych programu SQL Server, należy ustawić właściwość typu zestawu danych na **SqlServerTable**. Obsługiwane są następujące właściwości:
+Aby skopiować dane z i do bazy danych programu SQL Server, są obsługiwane następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
@@ -163,6 +163,7 @@ Aby skopiować dane z/do bazy danych programu SQL Server, należy ustawić wła�
             "referenceName": "<SQL Server linked service name>",
             "type": "LinkedServiceReference"
         },
+        "schema": [ < physical schema, optional, retrievable during authoring > ],
         "typeProperties": {
             "tableName": "MyTable"
         }
@@ -284,7 +285,7 @@ Aby skopiować dane do programu SQL Server, należy ustawić typ ujścia w dzia�
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Musi być równa wartości właściwości type ujścia działania kopiowania: **SqlSink** | Yes |
-| writeBatchSize |Liczba wierszy do wstawienia do tabeli SQL **na partię**.<br/>Dozwolone wartości to: liczba całkowita (liczba wierszy). |Nie (domyślne: 10000) |
+| writeBatchSize |Liczba wierszy do wstawienia do tabeli SQL **na partię**.<br/>Dozwolone wartości to: liczba całkowita (liczba wierszy). Domyślnie Data Factory dynamiczne określanie rozmiar partii odpowiednie, w zależności od rozmiaru wiersza. |Nie |
 | writeBatchTimeout |Czas na ukończenie przed upływem limitu czasu operacji wstawiania wsadowego oczekiwania.<br/>Dozwolone wartości to: przedziału czasu. Przykład: "00: 30:00" (30 minut). |Nie |
 | preCopyScript |Określ zapytanie SQL, działanie kopiowania do wykonania przed zapisaniem danych do programu SQL Server. Jej będzie można wywołać tylko raz na kopiowania Uruchom. Ta właściwość umożliwia czyszczenie wstępnie załadowanych danych. |Nie |
 | sqlWriterStoredProcedureName |Nazwa procedury składowanej, który definiuje sposób dotyczą źródła danych do tabeli docelowej, np. czy wykonuje operację UPSERT lub przekształcenie za pomocą z własną logiką biznesową. <br/><br/>Należy pamiętać, tę procedurę składowaną będzie **wywoływane na partię**. Jeśli chcesz wykonać operację, która tylko jest uruchamiane jeden raz i nie ma nic wspólnego z źródła danych, np. Usuń/truncate, użyj `preCopyScript` właściwości. |Nie |

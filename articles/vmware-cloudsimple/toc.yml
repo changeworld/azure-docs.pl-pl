@@ -41,15 +41,15 @@
         - name: Zarządzanie kontami
           href: cloudsimple-account.md
         - name: Zarządzanie działaniami
-          href: 'https://docs.azure.cloudsimple.com/cloudsimple-activity/'
+          href: cloudsimple-activity.md
         - name: Oprogramowanie VMware w chmurze prywatnej
-          href: 'https://docs.azure.cloudsimple.com/vmware-components/'
+          href: vmware-components.md
         - name: Omówienie zabezpieczeń
           href: 'https://docs.azure.cloudsimple.com/cloudsimple-security/'
         - name: Limit przydziału węzłów
-          href: 'https://docs.azure.cloudsimple.com/node-quota/'
+          href: node-quota.md
         - name: Konserwacja i aktualizacje
-          href: 'https://docs.azure.cloudsimple.com/cloudsimple-maintenance-updates/'
+          href: cloudsimple-maintenance-updates.md
         - name: Często zadawane pytania
           href: 'https://docs.azure.cloudsimple.com/cloudsimple-faq/'
     - name: Samouczki

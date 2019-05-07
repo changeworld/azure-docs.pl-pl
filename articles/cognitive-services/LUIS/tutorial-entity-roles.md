@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 03/08/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 2e2b2c39cf9039c78a610e9b28065b972484123e
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
-ms.translationtype: HT
+ms.openlocfilehash: a0ab928ef3b8551e3e20ff3c4b16533c80ee4b7d
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65069265"
+ms.locfileid: "65149299"
 ---
 # <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>Samouczek: wyodrębnianie danych powiązanych kontekstowo z wypowiedzi
 
@@ -93,12 +93,8 @@ Wstępnie utworzone jednostki, geographyV2, wyodrębnianie informacji o lokaliza
     ![Dodawanie ról do wstępnie utworzone jednostki](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
 1. Wybierz **intencji** z okienka nawigacji po lewej stronie, następnie wybierz pozycję **MoveEmployeeToCity** intencji. Zwróć uwagę, nazwy miast są oznaczone etykietami od wstępnie utworzone jednostki **geogrpahyV2**.
 1. W pierwszym wypowiedź listy wybierz lokalizację pochodzenia. Zostanie wyświetlone menu rozwijane. Wybierz **geographyV2** na liście, a następnie wykonaj menu na, aby wybrać **pochodzenia**.
-
-    [![Zrzut ekranu przedstawiający oznaczanie Miasto jako lokalizację pochodzenia](media/tutorial-entity-roles/tag-origin-city-with-role.png "zrzut ekranu przedstawiający oznaczanie Miasto jako lokalizację pochodzenia")](media/tutorial-entity-roles/tag-origin-city-with-role.png#lightbox)
-
 1. Aby oznaczyć wszystkie role lokalizacji w wszystkich wypowiedzi, należy użyć metody z poprzedniego kroku. 
 
-    [![Zrzut ekranu jednostki lokalizacji oznaczonej etykietą w wypowiedziach](media/tutorial-entity-roles/all-locations-marked-with-roles.png "Zrzut ekranu jednostki lokalizacji oznaczonej etykietą w wypowiedziach")](media/tutorial-entity-roles/all-locations-marked-with-roles.png#lightbox)
 
 ## <a name="add-example-utterances-to-the-none-intent"></a>Dodawanie przykładowych wypowiedzi do intencji None 
 

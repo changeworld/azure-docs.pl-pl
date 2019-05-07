@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 04/30/2019
-ms.openlocfilehash: 3f5a69454356d16fd6f3c5dddb063fcf8e450014
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.date: 05/01/2019
+ms.openlocfilehash: 9aadfd1f3685466c8c0beb6dff3bb8d063f4bfd8
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64943648"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65137404"
 ---
 # <a name="tutorial-migrate-rds-mysql-to-azure-database-for-mysql-online-using-dms"></a>Samouczek: Migrowanie RDS MySQL do usługi Azure Database for MySQL online przy użyciu usługi DMS
 
@@ -170,9 +170,7 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 6. Wybierz warstwę cenową; dla tej migracji online należy wybrać Premium: Warstwa cenowa 4vCores.
 
-    Aby uzyskać więcej informacji na temat kosztów i warstw cenowych, zobacz [stronę z cennikiem](https://aka.ms/dms-pricing). Jeśli potrzebujesz pomocy dotyczącej wybierając odpowiednie usługi Azure Database Migration Service warstwy cenowej, zapoznaj się zalecenia przedstawione w publikowanie [tutaj](https://go.microsoft.com/fwlink/?linkid=861067).
-
-     ![Konfigurowanie ustawień wystąpienia usługi Azure Database Migration Service](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/dms-settings3.png)
+    ![Konfigurowanie ustawień wystąpienia usługi Azure Database Migration Service](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/dms-settings3.png)
 
 7. Wybierz pozycję **Utwórz**, aby utworzyć usługę.
 

@@ -1,45 +1,47 @@
 ---
 title: Znajdź (RU) Opłata za jednostki żądań w usłudze Azure Cosmos DB
-description: Dowiedz się, jak znaleźć opłat za jednostkę żądania dla każdej operacji na kontenerze usługi Azure Cosmos
+description: Dowiedz się, jak można znaleźć jednostki żądań (RU) opłaty dla wszelkie operacje wykonane na kontenerze usługi Azure Cosmos.
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 04/15/2019
 ms.author: thweiss
-ms.openlocfilehash: 7afa815f81e2a61db8ac83623baafb97cb986b2c
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 73eaef1c9c8a9359ab931dbbe50496dc41a6f337
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925366"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148957"
 ---
-# <a name="find-the-request-unit-ru-charge-in-azure-cosmos-db"></a>Znajdź (RU) Opłata za jednostki żądań w usłudze Azure Cosmos DB
+# <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>Znajdź opłata za jednostki żądań w usłudze Azure Cosmos DB
 
-W tym artykule przedstawiono różne sposoby, aby znaleźć [jednostki żądań](request-units.md) zużycie wszelkie operacje wykonane na kontenerze usługi Azure Cosmos. Jest to obecnie możliwe do mierzenia użycia tego za pomocą witryny Azure portal lub sprawdzając odpowiedzi wysyłane z usługi Azure Cosmos DB za pomocą jednego z zestawów SDK.
+W tym artykule przedstawiono różne sposoby, można znaleźć [jednostki żądań](request-units.md) zużycie (RU) dla każdej operacji wykonywane względem kontenera w usłudze Azure Cosmos DB. Obecnie można zmierzyć to użycie tylko przy użyciu witryny Azure portal lub sprawdzając odpowiedzi wysyłane z usługi Azure Cosmos DB za pomocą jednego z zestawów SDK.
 
 ## <a name="sql-core-api"></a>(Rdzenie) interfejsu API SQL
 
+Jeśli używasz interfejsu API SQL masz wiele opcji do znajdowania zużycia jednostek RU dla operacji na kontenerze usługi Azure Cosmos.
+
 ### <a name="use-the-azure-portal"></a>Korzystanie z witryny Azure Portal
 
-Witryna Azure portal umożliwia obecnie znaleźć opłata za żądanie wyrażana dla zapytania SQL.
+Obecnie można znaleźć opłata za żądanie wyrażana w witrynie Azure portal, tylko w przypadku zapytania SQL.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 1. [Utwórz nowe konto usługi Azure Cosmos](create-sql-api-dotnet.md#create-account) i przekazywać je z danymi lub wybierz istniejące konto usługi Azure Cosmos, która już zawiera dane.
 
-1. Otwórz **Eksplorator danych** okienka i wybierz kontener, w którym chcesz pracować.
+1. Przejdź do **Eksplorator danych** okienka, a następnie wybierz kontener, aby pracować nad.
 
-1. Kliknij pozycję **nowe zapytanie SQL**.
+1. Wybierz **nowe zapytanie SQL**.
 
-1. Wprowadź prawidłową kwerendę, a następnie kliknij pozycję **wykonaj zapytanie**.
+1. Wprowadź prawidłową kwerendę, a następnie wybierz **wykonaj zapytanie**.
 
-1. Kliknij pozycję **statystyki zapytań** do wyświetlenia opłaty rzeczywistego żądania dla żądania, po prostu został wykonany.
+1. Wybierz **statystyki zapytań** do wyświetlenia rzeczywiste żądanie opłata żądania, które zostało wykonane.
 
-![Zrzut ekranu SQL zapytania żądania opłaty w witrynie Azure portal](./media/find-request-unit-charge/portal-sql-query.png)
+![Zrzut ekranu przedstawiający opłaty żądania zapytania SQL w witrynie Azure portal](./media/find-request-unit-charge/portal-sql-query.png)
 
 ### <a name="use-the-net-sdk-v2"></a>Użyj zestawu SDK platformy .NET w wersji 2
 
-Obiekty zwrócone przez [zestawu SDK platformy .NET w wersji 2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) (zobacz [ten przewodnik Szybki Start](create-sql-api-dotnet.md) dotyczące jego użycia) udostępnianie `RequestCharge` właściwości.
+Obiekty, które są zwracane z [zestawu SDK platformy .NET w wersji 2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) ujawnić `RequestCharge` właściwości:
 
 ```csharp
 ResourceResponse<Document> fetchDocumentResponse = await client.ReadDocumentAsync(
@@ -72,9 +74,11 @@ while (query.HasMoreResults)
 }
 ```
 
+Aby uzyskać więcej informacji, zobacz temat [Szybki start: Tworzenie aplikacji internetowej platformy .NET przy użyciu konta interfejsu API SQL w usłudze Azure Cosmos DB](create-sql-api-dotnet.md).
+
 ### <a name="use-the-java-sdk"></a>Korzystanie z języka Java SDK
 
-Obiekty zwrócone przez [zestawu Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) (zobacz [ten przewodnik Szybki Start](create-sql-api-java.md) dotyczące jego użycia) udostępnianie `getRequestCharge()` metody.
+Obiekty, które są zwracane z [zestawu Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) ujawnić `getRequestCharge()` metody:
 
 ```java
 RequestOptions requestOptions = new RequestOptions();
@@ -100,9 +104,11 @@ feedResponse.forEach(result -> {
 });
 ```
 
+Aby uzyskać więcej informacji, zobacz temat [Szybki start: Tworzenie aplikacji Java przy użyciu konta z interfejsem API SQL usługi Azure Cosmos DB](create-sql-api-java.md).
+
 ### <a name="use-the-nodejs-sdk"></a>Korzystanie z zestawu SDK środowiska Node.js
 
-Obiekty zwrócone przez [zestawu SDK środowiska Node.js](https://www.npmjs.com/package/@azure/cosmos) (zobacz [ten przewodnik Szybki Start](create-sql-api-nodejs.md) dotyczące jego użycia) udostępnianie `headers` obiektu podrzędnego, który mapuje wszystkie nagłówki, które są zwracane przez podstawowego interfejsu API protokołu HTTP. Opłata za żądanie wyrażana jest dostępna w ramach `x-ms-request-charge` klucza.
+Obiekty, które są zwracane z [zestawu SDK środowiska Node.js](https://www.npmjs.com/package/@azure/cosmos) ujawnić `headers` podobiektów, która mapuje wszystkie nagłówki, które są zwracane przez podstawowego interfejsu API protokołu HTTP. Opłata za żądanie wyrażana jest dostępna w ramach `x-ms-request-charge` klucza:
 
 ```javascript
 const item = await client
@@ -133,9 +139,11 @@ while (query.hasMoreResults()) {
 }
 ```
 
+Aby uzyskać więcej informacji, zobacz temat [Szybki start: Tworzenie aplikacji Node.js przy użyciu konta z interfejsem API SQL usługi Azure Cosmos DB](create-sql-api-nodejs.md). 
+
 ### <a name="use-the-python-sdk"></a>Korzystanie z języka Python SDK
 
-`CosmosClient` Obiektu z [zestawu SDK języka Python](https://pypi.org/project/azure-cosmos/) (zobacz [ten przewodnik Szybki Start](create-sql-api-python.md) dotyczące jego użycia) udostępnia `last_response_headers` słownik, który mapuje wszystkie nagłówki, które są zwracane przez podstawowego interfejsu API protokołu HTTP dla Ostatnia operacja wykonana. Opłata za żądanie wyrażana jest dostępna w ramach `x-ms-request-charge` klucza.
+`CosmosClient` Obiektu z [zestawu SDK języka Python](https://pypi.org/project/azure-cosmos/) udostępnia `last_response_headers` słownik, który mapuje wszystkie nagłówki, które są zwracane przez podstawowego interfejsu API protokołu HTTP dla ostatniej operacji, które są wykonywane. Opłata za żądanie wyrażana jest dostępna w ramach `x-ms-request-charge` klucza:
 
 ```python
 response = client.ReadItem('dbs/database/colls/container/docs/itemId', { 'partitionKey': 'partitionKey' })
@@ -145,31 +153,33 @@ response = client.ExecuteStoredProcedure('dbs/database/colls/container/sprocs/st
 request_charge = client.last_response_headers['x-ms-request-charge']
 ```
 
-## <a name="azure-cosmos-dbs-api-for-mongodb"></a>Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB
+Aby uzyskać więcej informacji, zobacz temat [Szybki start: Tworzenie aplikacji w języku Python przy użyciu konta z interfejsem API SQL usługi Azure Cosmos DB](create-sql-api-python.md). 
 
-Opłata za jednostkę żądania jest uwidaczniany przez niestandardowy [bazy danych polecenie](https://docs.mongodb.com/manual/reference/command/) o nazwie `getLastRequestStatistics.` to polecenie zwraca dokument zawierający nazwę Ostatnia operacja wykonana, jego opłata za żądanie wyrażana i jego czas trwania.
+## <a name="azure-cosmos-db-api-for-mongodb"></a>Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB
+
+Opłata za RU jest uwidaczniany przez niestandardowy [bazy danych polecenie](https://docs.mongodb.com/manual/reference/command/) o nazwie `getLastRequestStatistics`. Polecenie zwraca dokument, który zawiera nazwę Ostatnia operacja wykonana, jego opłata za żądanie wyrażana i jego czas trwania. Jeśli używasz interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB, masz wiele opcji pobieranie opłat jednostek RU.
 
 ### <a name="use-the-azure-portal"></a>Korzystanie z witryny Azure Portal
 
-Witryna Azure portal umożliwia obecnie znaleźć opłata za żądanie wyrażana tylko zapytania.
+Obecnie można znaleźć opłata za żądanie wyrażana w witrynie Azure portal, tylko dla zapytania.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 1. [Utwórz nowe konto usługi Azure Cosmos](create-mongodb-dotnet.md#create-a-database-account) i przekazywać je z danymi lub wybierz istniejące konto, które zawiera już dane.
 
-1. Otwórz **Eksplorator danych** okienka, a następnie wybierz kolekcję, którą chcesz pracować.
+1. Przejdź do **Eksplorator danych** okienka, a następnie wybierz kolekcję, aby pracować nad.
 
-1. Kliknij pozycję **nowe zapytanie**.
+1. Wybierz pozycję **Nowe zapytanie**.
 
-1. Wprowadź prawidłową kwerendę, a następnie kliknij pozycję **wykonaj zapytanie**.
+1. Wprowadź prawidłową kwerendę, a następnie wybierz **wykonaj zapytanie**.
 
-1. Kliknij pozycję **statystyki zapytań** do wyświetlenia opłaty rzeczywistego żądania dla żądania, po prostu został wykonany.
+1. Wybierz **statystyki zapytań** do wyświetlenia rzeczywiste żądanie opłata żądania, które zostało wykonane.
 
-![Zrzut ekranu z bazy danych MongoDB zapytania żądania opłaty w witrynie Azure portal](./media/find-request-unit-charge/portal-mongodb-query.png)
+![Zrzut ekranu przedstawiający bazy danych MongoDB zapytania opłata za żądanie wyrażana w witrynie Azure portal](./media/find-request-unit-charge/portal-mongodb-query.png)
 
 ### <a name="use-the-mongodb-net-driver"></a>Użyj sterownik MongoDB .NET
 
-Korzystając z [oficjalne sterownik MongoDB .NET](https://docs.mongodb.com/ecosystem/drivers/csharp/) (zobacz [ten przewodnik Szybki Start](create-mongodb-dotnet.md) dotyczące jego użycia), polecenia mogą być wykonywane przez wywołanie metody `RunCommand` metody `IMongoDatabase` obiektu. Ta metoda wymaga implementacji `Command<>` klasy abstrakcyjnej.
+Kiedy używać [oficjalne sterownik MongoDB .NET](https://docs.mongodb.com/ecosystem/drivers/csharp/), mogą wykonywać polecenia przez wywołanie metody `RunCommand` metody w `IMongoDatabase` obiektu. Ta metoda wymaga implementacji `Command<>` abstrakcyjnej klasy:
 
 ```csharp
 class GetLastRequestStatisticsCommand : Command<Dictionary<string, object>>
@@ -184,18 +194,23 @@ Dictionary<string, object> stats = database.RunCommand(new GetLastRequestStatist
 double requestCharge = (double)stats["RequestCharge"];
 ```
 
+Aby uzyskać więcej informacji, zobacz temat [Szybki start: Tworzenie aplikacji internetowej platformy .NET przy użyciu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB](create-mongodb-dotnet.md).
+
 ### <a name="use-the-mongodb-java-driver"></a>Użyj sterownik MongoDB Java
 
-Korzystając z [oficjalne sterownik MongoDB Java](https://mongodb.github.io/mongo-java-driver/) (zobacz [ten przewodnik Szybki Start](create-mongodb-java.md) dotyczące jego użycia), polecenia mogą być wykonywane przez wywołanie metody `runCommand` metody `MongoDatabase` obiektu.
+
+Kiedy używać [oficjalne sterownik MongoDB Java](http://mongodb.github.io/mongo-java-driver/), mogą wykonywać polecenia przez wywołanie metody `runCommand` metody w `MongoDatabase` obiektu:
 
 ```java
 Document stats = database.runCommand(new Document("getLastRequestStatistics", 1));
 Double requestCharge = stats.getDouble("RequestCharge");
 ```
 
+Aby uzyskać więcej informacji, zobacz temat [Szybki start: Tworzenie aplikacji internetowej przy użyciu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB i zestawu SDK Java](create-mongodb-java.md).
+
 ### <a name="use-the-mongodb-nodejs-driver"></a>Użyj sterownika bazy danych MongoDB Node.js
 
-Korzystając z [oficjalne sterownik bazy danych MongoDB Node.js](https://mongodb.github.io/node-mongodb-native/) (zobacz [ten przewodnik Szybki Start](create-mongodb-nodejs.md) dotyczące jego użycia), polecenia mogą być wykonywane przez wywołanie metody `command` metody `db` obiektu.
+Kiedy używać [oficjalne sterownik bazy danych MongoDB Node.js](https://mongodb.github.io/node-mongodb-native/), mogą wykonywać polecenia przez wywołanie metody `command` metody w `db` obiektu:
 
 ```javascript
 db.command({ getLastRequestStatistics: 1 }, function(err, result) {
@@ -204,29 +219,37 @@ db.command({ getLastRequestStatistics: 1 }, function(err, result) {
 });
 ```
 
+Aby uzyskać więcej informacji, zobacz temat [Szybki start: Migrowanie istniejącej bazy danych MongoDB Node.js aplikacji sieci web do usługi Azure Cosmos DB](create-mongodb-nodejs.md).
+
 ## <a name="cassandra-api"></a>Interfejs API rozwiązania Cassandra
 
-Podczas wykonywania operacji dotyczących interfejsu API rozwiązania Cassandra usługi Azure Cosmos DB, opłat za jednostkę żądania jest zwracany w ładunku przychodzących jako pole o nazwie `RequestCharge`.
+Podczas wykonywania operacji dotyczących interfejsu API rozwiązania Cassandra usługi Azure Cosmos DB opłaty RU jest zwracany w ładunku przychodzących jako pole o nazwie `RequestCharge`. Istnieje wiele opcji pobierania opłaty jednostek RU.
 
 ### <a name="use-the-net-sdk"></a>Korzystanie z zestawu SDK dla platformy .NET
 
-Podczas korzystania [zestawu .NET SDK](https://www.nuget.org/packages/CassandraCSharpDriver/) (zobacz [ten przewodnik Szybki Start](create-cassandra-dotnet.md) dotyczące jego użycia), ładunek przychodzące mogą być pobierane w ramach `Info` właściwość `RowSet` obiektu.
+Zastosowania [zestawu SDK platformy .NET](https://www.nuget.org/packages/CassandraCSharpDriver/), możesz pobrać przychodzące obciążenie w ramach `Info` właściwość `RowSet` obiektu:
 
 ```csharp
 RowSet rowSet = session.Execute("SELECT table_name FROM system_schema.tables;");
 double requestCharge = BitConverter.ToDouble(rowSet.Info.IncomingPayload["RequestCharge"], 0);
 ```
 
+Aby uzyskać więcej informacji, zobacz temat [Szybki start: Tworzenie aplikacji bazy danych Cassandra przy użyciu zestawu SDK platformy .NET i usługi Azure Cosmos DB](create-cassandra-dotnet.md).
+
 ### <a name="use-the-java-sdk"></a>Korzystanie z języka Java SDK
 
-Korzystając z [zestawu Java SDK](https://mvnrepository.com/artifact/com.datastax.cassandra/cassandra-driver-core) (zobacz [ten przewodnik Szybki Start](create-cassandra-java.md) dotyczące jego użycia), przychodzące ładunku może być pobierany przez wywołanie `getExecutionInfo()` metody w `ResultSet` obiektu.
+Podczas korzystania [zestawu Java SDK](https://mvnrepository.com/artifact/com.datastax.cassandra/cassandra-driver-core), możesz pobrać ładunku przychodzących przez wywołanie metody `getExecutionInfo()` metody `ResultSet` obiektu:
 
 ```java
 ResultSet resultSet = session.execute("SELECT table_name FROM system_schema.tables;");
 Double requestCharge = resultSet.getExecutionInfo().getIncomingPayload().get("RequestCharge").getDouble();
 ```
 
+Aby uzyskać więcej informacji, zobacz temat [Szybki start: Tworzenie aplikacji bazy danych Cassandra przy użyciu zestawu SDK języka Java i usługi Azure Cosmos DB](create-cassandra-java.md).
+
 ## <a name="gremlin-api"></a>Interfejs API języka Gremlin
+
+Korzystając z interfejsu API języka Gremlin, masz wiele opcji do znajdowania zużycia jednostek RU dla operacji na kontenerze usługi Azure Cosmos. 
 
 ### <a name="use-drivers-and-sdk"></a>Użyj sterowników i zestawu SDK
 
@@ -234,25 +257,29 @@ Zwrócone przez interfejs API języka Gremlin nagłówki są mapowane na stan ni
 
 ### <a name="use-the-net-sdk"></a>Korzystanie z zestawu SDK dla platformy .NET
 
-Korzystając z [Gremlin.NET SDK](https://www.nuget.org/packages/Gremlin.Net/) (zobacz [ten przewodnik Szybki Start](create-graph-dotnet.md) dotyczące jego użycia), stan atrybuty są dostępne w obszarze `StatusAttributes` właściwość `ResultSet<>` obiektu.
+Kiedy używać [Gremlin.NET zestawu SDK](https://www.nuget.org/packages/Gremlin.Net/), stan atrybuty są dostępne w obszarze `StatusAttributes` właściwość `ResultSet<>` obiektu:
 
 ```csharp
 ResultSet<dynamic> results = client.SubmitAsync<dynamic>("g.V().count()").Result;
 double requestCharge = (double)results.StatusAttributes["x-ms-request-charge"];
 ```
 
+Aby uzyskać więcej informacji, zobacz temat [Szybki start: Tworzenie aplikacji .NET Framework lub Core przy użyciu konta usługi Azure Cosmos DB — interfejs API Gremlin](create-graph-dotnet.md).
+
 ### <a name="use-the-java-sdk"></a>Korzystanie z języka Java SDK
 
-Korzystając z [zestawu SDK Java Gremlin](https://mvnrepository.com/artifact/org.apache.tinkerpop/gremlin-driver) (zobacz [ten przewodnik Szybki Start](create-graph-java.md) dotyczące jego użycia), atrybuty stanu może być pobierany przez wywołanie `statusAttributes()` metody `ResultSet` obiektu.
+Kiedy używać [zestawu SDK Java Gremlin](https://mvnrepository.com/artifact/org.apache.tinkerpop/gremlin-driver), można pobrać atrybutów stanu przez wywołanie metody `statusAttributes()` metody `ResultSet` obiektu:
 
 ```java
 ResultSet results = client.submit("g.V().count()");
 Double requestCharge = (Double)results.statusAttributes().get().get("x-ms-request-charge");
 ```
 
+Aby uzyskać więcej informacji, zobacz temat [Szybki start: Tworzenie bazy danych programu graph w usłudze Azure Cosmos DB przy użyciu zestawu SDK Java](create-graph-java.md).
+
 ## <a name="table-api"></a>Interfejs API tabel
 
-Tylko zestaw SDK obecnie zwracanie opłat za jednostkę żądania dla operacji tabeli [zestaw .NET Standard SDK](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) (zobacz [ten przewodnik Szybki Start](create-table-dotnet.md) dotyczące jego użycia). `TableResult` Obiektu ujawnia `RequestCharge` właściwość, która jest wypełniana przez zestaw SDK, gdy jest używana dla interfejsu API tabel usługi Azure Cosmos DB.
+Obecnie tylko zestaw SDK, który zwraca RU opłata za operacje tabeli jest [zestaw .NET Standard SDK](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table). `TableResult` Obiektu ujawnia `RequestCharge` właściwość, która jest wypełniana przez zestaw SDK, korzystając z interfejsu API tabeli usługi Azure Cosmos DB:
 
 ```csharp
 CloudTable tableReference = client.GetTableReference("table");
@@ -263,13 +290,15 @@ if (tableResult.RequestCharge.HasValue) // would be false when using Azure Stora
 }
 ```
 
+Aby uzyskać więcej informacji, zobacz temat [Szybki start: Tworzenie aplikacji interfejsu API tabel przy użyciu zestawu SDK platformy .NET i usługi Azure Cosmos DB](create-table-dotnet.md).
+
 ## <a name="next-steps"></a>Kolejne kroki
 
-Zobacz następujące artykuły, aby dowiedzieć się więcej na temat optymalizowania zużycia Twojego żądania:
+Aby dowiedzieć się więcej o optymalizacji sieci zużycia jednostek RU, zobacz następujące artykuły:
 
 * [Jednostki żądania i przepływności w usłudze Azure Cosmos DB](request-units.md)
 * [Optymalizuj koszt aprowizowanej przepływności w usłudze Azure Cosmos DB](optimize-cost-throughput.md)
 * [Optymalizuj koszt zapytania w usłudze Azure Cosmos DB](optimize-cost-queries.md)
 * [Skaluj globalnie aprowizowana przepływność](scaling-throughput.md)
 * [Aprowizowanie przepływności na kontenerach i baz danych](set-throughput.md)
-* [How to provision throughput for a container (Jak aprowizować przepływność dla kontenera)](how-to-provision-container-throughput.md)
+* [Aprowizowanie przepływności dla kontenera](how-to-provision-container-throughput.md)

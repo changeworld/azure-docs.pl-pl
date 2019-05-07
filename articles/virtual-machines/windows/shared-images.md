@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 12/11/2018
+ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: 6ea98792e6a1b7fef32e3be1ddfbb29743f50c6a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a3c035715de736b816027b08a1e242e6a65d1f13
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60250756"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148776"
 ---
-# <a name="preview-create-a-shared-image-gallery-with-azure-powershell"></a>Wersja zapoznawcza: Utwórz galerię udostępnionego obrazu przy użyciu programu Azure PowerShell 
+# <a name="create-a-shared-image-gallery-with-azure-powershell"></a>Utwórz galerię udostępnionego obrazu przy użyciu programu Azure PowerShell 
 
 A [galerii obrazów współdzielona](shared-image-galleries.md) upraszcza obraz niestandardowy do udostępniania całej organizacji. Obrazy niestandardowe są podobne do obrazów z platformy handlowej, ale tworzy się je samodzielnie. Obrazy niestandardowe może służyć do uruchamiania wdrożenia zadania, takie jak wstępnego ładowania aplikacji, konfiguracje aplikacji i innych konfiguracji systemu operacyjnego. 
 
@@ -46,7 +46,7 @@ Funkcja galerii obrazów współdzielona ma wiele typów zasobów. Firma Microso
 
 Aby ukończyć przykład, w tym artykule, konieczne jest posiadanie istniejącego obrazu zarządzanego. Możesz wykonać [samouczka: Tworzenie niestandardowego obrazu maszyny wirtualnej portalu Azure przy użyciu programu Azure PowerShell](tutorial-custom-images.md) aby je utworzyć, jeśli to konieczne. Podczas pracy nad tym artykule, Zamień grupę zasobów i maszynę Wirtualną przypadkach nazwy.
 
-[!INCLUDE [virtual-machines-common-shared-images-ps](../../../includes/virtual-machines-common-shared-images-powershell.md)]
+[!INCLUDE [virtual-machines-common-shared-images-powershell](../../../includes/virtual-machines-common-shared-images-powershell.md)]
  
 ## <a name="create-vms-from-an-image"></a>Tworzenie maszyn wirtualnych z obrazu
 
@@ -69,13 +69,7 @@ New-AzVm `
 
 [!INCLUDE [virtual-machines-common-gallery-list-ps](../../../includes/virtual-machines-common-gallery-list-ps.md)]
 
-## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-
-Gdy grupa zasobów, maszyna wirtualna i wszystkie pokrewne zasoby nie będą już potrzebne, można je usunąć za pomocą polecenia cmdlet [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup):
-
-```azurepowershell-interactive
-Remove-AzResourceGroup -Name myGalleryRG
-```
+[!INCLUDE [virtual-machines-common-shared-images-update-delete-ps](../../../includes/virtual-machines-common-shared-images-update-delete-ps.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/21/2019
 ms.author: juliako
-ms.openlocfilehash: 74be798106ef5d028f3ad497a6e726439e86ad51
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e4f32e14e8c1035055bd8a37bb453764984fbe4d
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64714740"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149136"
 ---
 # <a name="tutorial-stream-live-with-media-services-v3-using-net"></a>Samouczek: Transmisja strumieniowa na żywo z usługi Media Services w wersji 3 przy użyciu platformy .NET
 
@@ -183,7 +183,7 @@ az group delete --name amsResourceGroup
 > [!IMPORTANT]
 > Pozostawienie uruchomionego wydarzenia na żywo wiąże się z naliczaniem opłat. Należy pamiętać, że jeśli projekt/program ulegnie awarii lub zostanie zamknięty z jakiegokolwiek powodu, wydarzenie na żywo może pozostać uruchomione w stanie naliczania opłat.
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="ask-questions-give-feedback-get-updates"></a>Zadawaj pytania, Prześlij opinię i pobieranie aktualizacji
 
 Zapoznaj się z [społeczności usługi Azure Media Services](media-services-community.md) artykuł, aby wyświetlić różne sposoby zadawaj pytania, Prześlij opinię i pobrać aktualizacje o usłudze Media Services.
 

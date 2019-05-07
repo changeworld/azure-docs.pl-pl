@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: c64db6b35aa2f1daa4484f137c8505b1415c5a0b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 80bf4718b63496c0b220aa79dcdd27f2711b70ce
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60998459"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148099"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Przygotowanie do wdrożenia rozwiązania usługi IoT Edge w środowisku produkcyjnym
 
@@ -186,7 +186,11 @@ Urządzenia mają zostać wdrożone w sieci, która korzysta z serwera proxy, mu
 
 ### <a name="set-up-logs-and-diagnostics"></a>Konfigurowanie dzienników i Diagnostyka
 
-W systemie Linux demon usługi IoT Edge korzysta z arkuszy jako domyślne rejestrowanie sterownika. Można użyć narzędzia wiersza polecenia `journalctl` kwerendy demona dzienniki. Demon usługi IoT Edge na Windows, korzysta z diagnostyki programu PowerShell. Użyj `Get-WinEvent` dzienniki zapytania z demona. Moduły usługi IoT Edge na użytek sterownik JSON rejestrowania, co jest ustawieniem domyślnym.  
+W systemie Linux demon usługi IoT Edge korzysta z arkuszy jako domyślne rejestrowanie sterownika. Można użyć narzędzia wiersza polecenia `journalctl` kwerendy demona dzienniki. Demon usługi IoT Edge na Windows, korzysta z diagnostyki programu PowerShell. Użyj `Get-IoTEdgeLog` dzienniki zapytania z demona. Moduły usługi IoT Edge na użytek sterownik JSON rejestrowania, co jest ustawieniem domyślnym.  
+
+```powershell
+. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
+```
 
 Podczas testowania wdrożenia usługi IoT Edge, zwykle dostęp urządzenia do pobierania dzienników i rozwiązywanie problemów. W scenariuszu wdrażania możesz nie mieć tej opcji. Należy wziąć pod uwagę, jak możesz zacząć zbierać informacje dotyczące urządzeń w środowisku produkcyjnym. Jedną z opcji jest używać moduł rejestrowania, który zbiera informacje z innymi modułami i wysyła je do chmury. Jednym z przykładów moduł rejestrowania jest [logspout loganalytics](https://github.com/veyalla/logspout-loganalytics), lub projektować własne. 
 

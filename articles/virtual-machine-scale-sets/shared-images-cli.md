@@ -13,15 +13,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/20/2018
+ms.date: 04/25/2019
 ms.author: akjosh; cynthn
 ms.custom: ''
-ms.openlocfilehash: 2aa1f71d0e8e73ae793fc5396b8b654b9ca875bc
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 294a4afc138e25ddc70cd4fdec59310664671ae3
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733556"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149707"
 ---
 # <a name="create-and-use-shared-images-for-virtual-machine-scale-sets-with-the-azure-cli-20"></a>Tworzenie i używanie udostępnianych obrazów dla zestawów skalowania maszyn wirtualnych przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0
 
@@ -47,7 +47,7 @@ Jeśli zdecydujesz się zainstalować i korzystać z interfejsu wiersza poleceni
 [!INCLUDE [virtual-machines-common-shared-images-cli](../../includes/virtual-machines-common-shared-images-cli.md)]
 
 ## <a name="create-a-scale-set-from-the-custom-vm-image"></a>Tworzenie zestawu skalowania z niestandardowego obrazu maszyny wirtualnej
-Utwórz zestaw skalowania za pomocą polecenia [az vmss create](/cli/azure/vmss#az-vmss-create). Zamiast obrazu platformy, takiego jak *UbuntuLTS* lub *CentOS*, podaj nazwę niestandardowego obrazu maszyny wirtualnej. W poniższym przykładzie pokazano tworzenie zestawu skalowania o nazwie *myScaleSet*, używającego niestandardowego obrazu o nazwie *myImage* utworzonego w poprzednim kroku:
+Tworzenie zestawu skalowania z [ `az vmss create` ](/cli/azure/vmss#az-vmss-create). Zamiast obrazu platformy, takiego jak *UbuntuLTS* lub *CentOS*, podaj nazwę niestandardowego obrazu maszyny wirtualnej. W poniższym przykładzie pokazano tworzenie zestawu skalowania o nazwie *myScaleSet*, używającego niestandardowego obrazu o nazwie *myImage* utworzonego w poprzednim kroku:
 
 ```azurecli-interactive
 az vmss create \

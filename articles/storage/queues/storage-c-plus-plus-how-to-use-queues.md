@@ -1,21 +1,21 @@
 ---
-title: Jak używać usługi queue storage (C++) | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać usługi queue storage na platformie Azure. Przykłady są napisane w języku C++.
+title: Jak używać usługi Queue storage (C++) — usługi Azure Storage
+description: Dowiedz się, jak używać usługi Queue storage na platformie Azure. Przykłady są napisane w języku C++.
 services: storage
-author: cbrooksmsft
+author: mhopkins-msft
 ms.service: storage
-ms.tgt_pltfrm: na
 ms.devlang: cpp
 ms.topic: article
 ms.date: 05/11/2017
-ms.author: cbrooksmsft
+ms.author: mhopkins
+ms.reviewer: cbrooks
 ms.subservice: queues
-ms.openlocfilehash: 08c865e5383e4095a22aa6c10c8b181f916d1d30
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 440033233bbd60421cc3245a04544cd04caec6f4
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62109002"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153121"
 ---
 # <a name="how-to-use-queue-storage-from-c"></a>Jak używać magazynu kolejek w języku C++
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]

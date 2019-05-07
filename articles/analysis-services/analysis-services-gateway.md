@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 12/19/2018
+ms.date: 04/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f13dd1282a6384a0acca4c6936fe7900a051795f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b35977061b7e5806d15f4b7b0087fcafa4f291ef
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60497409"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65141154"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Nawiązywanie połączenia z lokalnymi źródłami danych za pomocą lokalnej bramy danych
 Lokalna brama danych zapewnia bezpieczny transfer danych między lokalnymi źródłami danych i serwerami usług Azure Analysis Services w chmurze. Oprócz Praca z wieloma serwerami usług Azure Analysis Services, w tym samym regionie, najnowszą wersję bramy współpracuje również z usługi Azure Logic Apps, usługa Power BI, Power Apps i Microsoft Flow. Można skojarzyć wiele usług w tej samej subskrypcji i tym samym regionie za pośrednictwem jednej bramy. 
@@ -176,30 +176,9 @@ Pliki dziennika są ważnym podczas rozwiązywania problemów.
 
 `C:\Users\<username>\AppData\Local\Microsoft\On-premises data gateway\GatewayConfigurator.log`
 
-
 #### <a name="event-logs"></a>Dzienniki zdarzeń
 
 Można znaleźć w dziennikach bramy zarządzania danymi i PowerBIGateway w obszarze **Dzienniki aplikacji i usług**.
-
-
-## <a name="telemetry"></a>Dane telemetryczne
-Dane telemetryczne może służyć do monitorowania i rozwiązywania problemów. Domyślnie
-
-**Aby włączyć telemetrię**
-
-1.  Sprawdź katalog klienta bramy danych On-premises na komputerze. Zazwyczaj jest **%systemdrive%\Program Files\On-premises data gateway**. Alternatywnie możesz otworzyć konsolę usług i Sprawdź ścieżkę do pliku wykonywalnego: Właściwości usługi lokalnej bramy danych.
-2.  W pliku Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config z katalogu klienta. Zmień ustawienie SendTelemetry na wartość true.
-        
-    ```
-        <setting name="SendTelemetry" serializeAs="String">
-                    <value>true</value>
-        </setting>
-    ```
-
-3.  Zapisz zmiany i ponownie uruchom usługę Windows: Usługa bramy danych lokalnych.
-
-
-
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Instalowanie i konfigurowanie bramy danych lokalnych](analysis-services-gateway-install.md).   

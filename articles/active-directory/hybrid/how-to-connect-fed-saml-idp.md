@@ -1,5 +1,5 @@
 ---
-title: 'Program Azure AD Connect: Użyj dostawcy tożsamości SAML 2.0 dla logowania jednokrotnego na | Dokumentacja firmy Microsoft'
+title: 'Program Azure AD Connect: Dostawcy tożsamości SAML 2.0 na użytek logowania jednokrotnego — platformy Azure'
 description: W tym dokumencie opisano przy użyciu zgodnych dostawcy tożsamości SAML 2.0 do rejestracji jednokrotnej w.
 services: active-directory
 author: billmath
@@ -14,12 +14,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1870137505b3d00ee6ed31595050908c970c444
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e25060152577e7947a78aa0e8d78c85cc7fd2fad
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60350936"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65138336"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>W systemie dostawcy tożsamości SAML 2.0 (IdP) do rejestracji jednokrotnej
 
@@ -41,7 +41,7 @@ Firma Microsoft obsługuje to środowisko logowania jednokrotnego jako Integracj
 >     - Klient poczty systemu Windows 8 i Windows 8.1 klienta poczty E-mail
 >     - Klient poczty systemu Windows 10
 
-Inni klienci nie są dostępne w tym scenariuszu logowania jednokrotnego przy użyciu dostawcy tożsamości SAML 2.0. Na przykład na pulpicie klienta Lync 2010 nie będzie mógł zalogować się do usługi za pomocą dostawcy tożsamości SAML 2.0 skonfigurowane na potrzeby logowania jednokrotnego.
+Inni klienci nie są dostępne w tym scenariuszu logowania jednokrotnego przy użyciu dostawcy tożsamości SAML 2.0. Na przykład na pulpicie klienta Lync 2010 nie jest w stanie zalogować się do usługi za pomocą dostawcy tożsamości SAML 2.0 skonfigurowane na potrzeby logowania jednokrotnego.
 
 ## <a name="azure-ad-saml-20-protocol-requirements"></a>Wymagania protokołu SAML AD w wersji 2.0 platformy Azure
 Ten dokument zawiera szczegółowe wymagania dotyczące protokołu i komunikat formatowania, że musi implementować dostawcy tożsamości SAML 2.0, aby utworzyć Federację z usługą Azure AD, aby włączyć logowanie jednokrotne jeden lub więcej usług chmurowych firmy Microsoft (takich jak Office 365). SAML 2.0 jednostki uzależnionej ze stron (SP STS) dla usługi w chmurze firmy Microsoft używane w tym scenariuszu jest usługi Azure AD.
@@ -71,8 +71,8 @@ W komunikacie odpowiedzi SAML węzła podpis zawiera informacje o podpisu cyfrow
 Powiązania są parametry informacji dotyczących transportu, które są wymagane. Poniższe wymagania dotyczą powiązania
 
 1. Protokół HTTPS jest wymagana transportu.
-2.  Usługa Azure AD będzie wymagać żądania HTTP POST do przesłania tokenu podczas logowania
-3.  Usługi Azure AD będzie używać żądania HTTP POST dla żądania uwierzytelniania do dostawcy tożsamości i Przekierowanie wiadomości wylogowywania dostawcy tożsamości.
+2.  Usługa Azure AD będzie wymagać żądania HTTP POST do przesłania tokenu podczas logowania.
+3.  Żądanie uwierzytelnienia do dostawcy tożsamości i przekierowanie dla logowania komunikat do dostawcy tożsamości z usługi Azure AD będzie używać POST protokołu HTTP.
 
 ## <a name="required-attributes"></a>Wymaganych atrybutów
 W poniższej tabeli przedstawiono wymagania dotyczące określonych atrybutów w komunikacie SAML 2.0.
@@ -258,7 +258,7 @@ Firma Microsoft udostępnia narzędzia, którego można używać do testowania d
 2.  Kliknij przycisk Zainstaluj teraz, aby rozpocząć pobieranie i instalowanie narzędzia.
 3.  Wybierz opcję "Nie można skonfigurować Federacja z usługą Office 365, Azure lub innych usług używających usługi Azure Active Directory".
 4.  Po pobraniu narzędzia i uruchomiona, zostanie wyświetlony w oknie diagnostyki łączności. Narzędzie będzie przejrzeć Trwa testowanie połączenia usługi federacyjnej.
-5.  Analizator połączeń zostanie otwarty dostawcy tożsamości SAML 2.0 można się zalogować, wprowadź poświadczenia dla głównej nazwy użytkownika, które testujesz: ![SAML](./media/how-to-connect-fed-saml-idp/saml1.png)
+5.  Analizator połączeń zostanie otwarty dostawcy tożsamości SAML 2.0 można zalogować, wprowadź poświadczenia dla podmiotu zabezpieczeń, które testujesz użytkownika: ![SAML](./media/how-to-connect-fed-saml-idp/saml1.png)
 6.  Test logowania federacyjnego okna należy wprowadzić nazwę konta i hasło dla dzierżawy usługi Azure AD, który jest skonfigurowany do sfederowania u dostawcy tożsamości SAML 2.0. Narzędzie spróbuje Zaloguj się przy użyciu tych poświadczeń, a szczegółowe wyniki testów wykonywanych podczas próby logowania, zostanie podana jako dane wyjściowe.
 ![SAML](./media/how-to-connect-fed-saml-idp/saml2.png)
 7. To okno zawiera zakończonych niepowodzeniem wyników testów. Kliknięcie na przeglądanie szczegółowe wyniki są wyświetlane informacje o wyniki dla każdego testu, który zostało wykonane. Można także zapisać wyniki na dysku w celu ich udostępnienia.
@@ -271,7 +271,7 @@ Weryfikacja ręczna udostępnia dodatkowe kroki, które można podjąć w celu z
 Aby sprawdzić, czy ten logowanie jednokrotne zostało skonfigurowane prawidłowo, wykonaj następujące czynności:
 
 
-1. Na komputerze przyłączonym do domeny Zaloguj się do usługi w chmurze przy użyciu tej samej nazwie logowania, której użyjesz dla poświadczeń firmowych.
+1. Na komputerze przyłączonym do domeny Zaloguj się do usługi w chmurze przy użyciu tego samego logowania nazwę używaną dla poświadczeń firmowych.
 2.  Kliknij wewnątrz pola hasła. Jeśli logowanie jednokrotne jest skonfigurowana, pole hasło będzie przyciemnione i zostanie wyświetlony następujący komunikat: "Teraz należy zalogować się na &lt;firmie&gt;."
 3.  Kliknij przycisk Zaloguj się na &lt;firmie&gt; łącza. Jeśli jest to możliwe do logowania, następnie pojedynczego logowania jednokrotnego została prawidłowo skonfigurowana.
 

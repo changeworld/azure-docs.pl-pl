@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 2d56aba6d62d70c482ed1489a09276eeaa11f956
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 6d602491c66669007ae220c3b8143ce3e805246f
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025846"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147989"
 ---
-# <a name="fine-tune-text-to-speech-output"></a>Dostosuj tekst na mowę danych wyjściowych
+# <a name="fine-tune-text-to-speech-output"></a>Dostosowywanie danych wyjściowych zamiany tekstu na mowę
 
 Usługi mowy platformy Azure umożliwiają dostosowanie szybkości, wymowa, woluminu, pomysłu i rozkład zamiany tekstu na mowę, dane wyjściowe [mowy syntezy Markup Language (SSML)](speech-synthesis-markup.md). SSML to język znaczników oparty na formacie XML, który używa tagów, aby poinformować usługi, o jakich funkcji wymaga dostrajania. Komunikat SSML jest następnie wysyłana w treści poszczególnych żądań w usłudze zamiany tekstu na mowę. Aby uprościć proces dostosowywania, teraz oferty usług przetwarzania mowy [dostosowywania głosu](https://aka.ms/voicetuning) w czasie rzeczywistym dane wyjściowe, dzięki któremu można wzrokowo sprawdzić i dostosować zamiany tekstu na mowę.
 
@@ -43,7 +43,7 @@ Przed rozpoczęciem można dostrajanie zamiany tekstu na mowę danych wyjściowy
    * Znajdź i zaznacz **wszystkie subskrypcje**.  
    * Wybierz **połączyć z istniejącą subskrypcją**.  
      ![Połącz istniejącą subskrypcję](./media/custom-voice/custom-voice-connect-subscription.png).
-   * Wprowadź klucz subskrypcji usług przetwarzania mowy platformy Azure w witrynie Azure portal, a następnie wybierz **Dodaj**. Klucze subskrypcji są dostępne w witrynie Azure portal w okienku zarządzanie zasobami.  Można również pobrać kluczy z listy subskrypcji w portalu dostosowywania głosu.
+   * Wprowadź klucz subskrypcji usług przetwarzania mowy platformy Azure, a następnie wybierz **Dodaj**. Klucze subskrypcji są dostępne w portalu dostosowania mowy [stronę subskrypcji](https://go.microsoft.com/fwlink/?linkid=2090458). Można również pobrać kluczy, w okienku zarządzanie zasobami w [witryny Azure portal](https://portal.azure.com/). 
    * Jeśli masz więcej niż jedną subskrypcję usług przetwarzania mowy, którego chcesz użyć, powtórz te czynności dla każdej subskrypcji.
 
 ## <a name="customize-the-text-to-speech-output"></a>Dostosuj tekst na mowę danych wyjściowych

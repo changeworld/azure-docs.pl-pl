@@ -8,12 +8,12 @@ ms.date: 04/20/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 0ae85b45dfcd80056316ed5f2099aab4057d24c8
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 81cb5e62c8abc93aa5defb690628c7178fd2a869
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64720340"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142535"
 ---
 # <a name="get-resource-changes"></a>Uzyskiwanie zmian zasobów
 
@@ -29,7 +29,7 @@ Wykrywanie zmian i szczegóły są cenne dla następujących przykładowe scenar
 - Utrzymywanie bazą zarządzania konfiguracją, znane jako CMDB aktualne. Zamiast odświeżanie wszystkich zasobów i ich zestawy pełną właściwość z częstotliwością, zaplanowane, pobierać tylko co się zmieniło.
 - Zrozumienie, jakie inne właściwości mogły zostać zmienione podczas zasobem zmieniono stan zgodności. Ocena te dodatkowe właściwości może zapewnić wgląd w innych właściwości, które może być konieczne, można zarządzać za pomocą usługi Azure Policy definition.
 
-W tym artykule pokazano, jak do zebrania tych informacji za pośrednictwem zestawu SDK wykres zasobów. Aby wyświetlić te informacje w witrynie Azure portal, zobacz usługi Azure Policy [historię zmian](../../policy/how-to/determine-non-compliance.md#change-history-preview).
+W tym artykule pokazano, jak do zebrania tych informacji za pośrednictwem zestawu SDK wykres zasobów. Aby wyświetlić te informacje w witrynie Azure portal, zobacz usługi Azure Policy [historię zmian](../../policy/how-to/determine-non-compliance.md#change-history-preview) lub dziennik aktywności platformy Azure [historię zmian](../../../azure-monitor/platform/activity-logs-overview.md#view-change-history).
 
 > [!NOTE]
 > Szczegóły zmiany w wykresie zasobów są przeznaczone dla właściwości Resource Manager. Śledzenie zmian na maszynie wirtualnej, dla usługi Azure Automation [śledzenie zmian](../../../automation/automation-change-tracking.md) lub usługi Azure Policy [Konfiguracja gościa dla maszyn wirtualnych](../../policy/concepts/guest-configuration.md).

@@ -2,18 +2,19 @@
 title: Lista zasobów usługi Azure Storage przy użyciu biblioteki klienta usługi Storage dla języka C++ | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak używać listy interfejsów API w bibliotece klienta usługi Microsoft Azure Storage dla języka C++ można wyliczyć kontenerów, obiektów blob, kolejek, tabel i jednostek.
 services: storage
-author: dineshmurthy
+author: mhopkins-msft
 ms.service: storage
 ms.topic: article
 ms.date: 01/23/2017
-ms.author: dineshm
+ms.author: mhopkins
+ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 13ddb4d64908421e999174623003acd2fb24024d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: edf50b97ff25a67b41bad266df9236145f288409
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61483455"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65146878"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>Wyświetla listę zasobów usługi Azure Storage w języku C++
 Lista operacji są kluczem do wielu scenariuszy programowania za pomocą usługi Azure Storage. W tym artykule opisano, jak najbardziej wydajny sposób wyliczenie obiektów w usłudze Azure Storage przy użyciu listy interfejsów API dostarczonych w bibliotece klienta usługi Microsoft Azure Storage dla języka C++.

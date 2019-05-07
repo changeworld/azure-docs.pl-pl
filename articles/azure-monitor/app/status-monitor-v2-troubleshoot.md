@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 26d677df81df6e10fae8d63362d49deee2cd0aca
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: f8e057bf2e71d5a00c1e2a8ef72a5c9415a5a207
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64870750"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65145121"
 ---
 # <a name="troubleshooting-status-monitor-v2"></a>Rozwiązywanie problemów dotyczących stan monitorowania v2
 
@@ -200,3 +200,9 @@ Jeśli działa monitorowania, co najmniej 12 biblioteki DLL powinny być załado
 4. Spróbuj przejść do swojej aplikacji.
 5. Po zakończeniu ładowania aplikacji wrócić do narzędzia PerfView i kliknij pozycję "Stop Collection"
 
+
+
+## <a name="next-steps"></a>Kolejne kroki
+
+- Przejrzyj nasze [dokumentacja interfejsu API](status-monitor-v2-overview.md#powershell-api-reference) można znaleźć parametru mogły zostać pominięte.
+- Jeśli przejście między problemu niewymienione w tym przypadku może skontaktuj się z nami [tutaj](https://github.com/Microsoft/ApplicationInsights-Home/issues).

@@ -2,18 +2,19 @@
 title: Przewodnik Szybki start platformy Azure — tworzenie obiektu blob w magazynie obiektów przy użyciu języka Ruby | Microsoft Docs
 description: Ten przewodnik Szybki start przedstawia tworzenie konta magazynu i kontenera w magazynie obiektów (blob). Następnie przy użyciu biblioteki klienta języka Ruby przekażesz obiekt blob do usługi Azure Storage, pobierzesz obiekt blob i wyświetlisz listę obiektów blob w kontenerze.
 services: storage
-author: tamram
+author: mhopkins-msft
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
 ms.date: 11/14/2018
-ms.author: seguler
-ms.openlocfilehash: 47143a76c2b57bc889b74f29d709785d0c19451a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: mhopkins
+ms.reviewer: seguler
+ms.openlocfilehash: 77e8e3dd8c32545b24230512ded00e335108d802
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60391720"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65150427"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-ruby"></a>Szybki start: przekazywanie i pobieranie obiektów blob oraz wyświetlanie ich listy za pomocą języka Ruby
 

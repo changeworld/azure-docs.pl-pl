@@ -5,29 +5,37 @@ services: virtual-machines
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 01/09/2018
+ms.date: 04/25/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 8c7da8d04b456642b158dda77d9c745891aa18e6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fd1dd1f8af8fee9b1fecb05405381dba879facde
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60620399"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149803"
 ---
-Galeria obrazów udostępnionych to usługa, która pomaga w tworzeniu struktury i organizacji wokół niestandardowych obrazów maszyn wirtualnych zarządzanych. Przy użyciu galerii obrazów współdzielona możesz udostępnić swoje obrazy do różnych użytkowników, nazw głównych usług lub grup usługi Active Directory w Twojej organizacji. Udostępnianych obrazów mogą być replikowane w wielu regionach, szybsze skalowanie wdrożeń.
+Galeria obrazów udostępnionych to usługa, która pomaga w tworzeniu struktury i organizacji wokół niestandardowych obrazów maszyn wirtualnych zarządzanych. Podaj udostępnionego galerie obrazów:
+
+- Zarządzane globalnej replikacji obrazów.
+- Przechowywanie wersji i grupowania obrazów w celu ułatwienia zarządzania.
+- Nowszy ograniczonym zakresie. Obrazy niestandardowe Zezwalaj na 600 współbieżnych w przypadku maszyn wirtualnych, gdy galerie obrazów współdzielona umożliwiają 1000 równoczesnych maszyn wirtualnych.
+- Obrazy o wysokiej dostępności przy użyciu magazyn Strefowo nadmiarowy. Nawet wtedy, gdy centrum danych ulegnie awarii, będziesz mieć dostęp do obrazów, w tym regionie.
+- Udostępnianie w subskrypcjach, a nawet między dzierżawami, korzystając z modelu RBAC.
+
+Przy użyciu galerii obrazów współdzielona możesz udostępnić swoje obrazy do różnych użytkowników, nazw głównych usług lub grup usługi Active Directory w Twojej organizacji. Udostępnianych obrazów mogą być replikowane w wielu regionach, szybsze skalowanie wdrożeń.
 
 Zarządzany obraz jest kopią albo pełnej maszyny wirtualnej (w tym wszelkich dołączonych dysków danych) lub po prostu dysku systemu operacyjnego, w zależności od tego, jak utworzyć obraz. Po utworzeniu maszyny Wirtualnej z obrazu kopiowania dysków VHD na ilustracji są używane do tworzenia dysków dla nowej maszyny Wirtualnej. Zarządzany obraz pozostaje w magazynie i można wielokrotnie tworzenie nowych maszyn wirtualnych.
 
-Jeśli masz dużą liczbę zarządzanych obrazów, które trzeba utrzymywać i chcesz udostępnić je w całej firmie, można użyć galerii obrazów udostępnione jako repozytorium, które można łatwo zaktualizować i udostępniać swoje obrazy. Opłaty za korzystanie z galerii obrazów współużytkowane są tylko kosztów miejsca używanego przez obrazów oraz wszelkich kosztów sieciowego ruchu wychodzącego do replikowania obrazów z regionu źródłowego do określonych regionów opublikowane.
+Jeśli masz dużą liczbę zarządzanych obrazów, które trzeba utrzymywać i chcesz udostępnić je w całej firmie, można użyć galerii obrazów udostępnione jako repozytorium, które można łatwo udostępniać swoje obrazy. 
 
 Funkcja galerii obrazów współdzielona ma wiele typów zasobów:
 
 | Resource | Opis|
 |----------|------------|
-| **Zarządzany obraz** | Jest to podstawowy obraz, które mogą być używane autonomicznie lub użyty do utworzenia **wersję obrazu** w galerii obrazów. Obrazy zarządzane są tworzone na podstawie uogólnionego maszyn wirtualnych. Zarządzany obraz to specjalny typ wirtualnego dysku twardego, który można utworzyć wiele maszyn wirtualnych i może teraz służyć do tworzenia wersji udostępnionego obrazu. |
+| **Zarządzany obraz** | Obraz podstawowy, który mogą być używane autonomicznie lub użyty do utworzenia **wersję obrazu** w galerii obrazów. Obrazy zarządzane są tworzone na podstawie uogólnionego maszyn wirtualnych. Zarządzany obraz to specjalny typ wirtualnego dysku twardego, który można utworzyć wiele maszyn wirtualnych i może teraz służyć do tworzenia wersji udostępnionego obrazu. |
 | **Galeria obrazów** | W portalu Azure Marketplace, takich jak **galerii obrazów** to repozytorium do zarządzania i udostępniania obrazów, ale możesz kontrolować, kto ma dostęp. |
-| **Definicję obrazu** | Obrazy w galerii są zdefiniowane i zawierają informacje dotyczące obrazu i wymagania dotyczące korzystania z niego wewnętrznie. Dotyczy to również, czy obraz jest Windows lub Linux, informacje o wersji i wymagań dotyczących minimalnej i maksymalnej pamięci. Jest definicja typu obrazu. |
+| **Definicję obrazu** | Obrazy w galerii są zdefiniowane i zawierają informacje dotyczące obrazu i wymagania dotyczące korzystania z niego w Twojej organizacji. Możesz uwzględnić informacje, takie jak tego, czy obraz jest Windows lub Linux, wymagania dotyczące minimalnej i maksymalnej pamięci i informacje o wersji. Jest definicja typu obrazu. |
 | **Wersja obrazu** | **Wersję obrazu** , które jest używane do utworzenia maszyny Wirtualnej, podczas korzystania z galerii. Może mieć wiele wersji obrazu, zgodnie z potrzebami w danym środowisku. Gdy używasz, takie jak zarządzany obraz **wersję obrazu** tworzenie maszyny Wirtualnej, wersja obrazu jest używany do tworzenia nowych dysków dla maszyny Wirtualnej. Wersje obrazów można wielokrotnie. |
 
 <br>
@@ -35,25 +43,64 @@ Funkcja galerii obrazów współdzielona ma wiele typów zasobów:
 
 ![Grafika przedstawiająca sposób może mieć wiele wersji obraz w galerii](./media/shared-image-galleries/shared-image-gallery.png)
 
-### <a name="regional-support"></a>Wsparcie regionalne
+## <a name="image-definitions"></a>Definicje obrazów
 
-Wsparcie regionalne dla galerii udostępnionego obrazu jest w ograniczonej wersji zapoznawczej, ale zostanie rozwinięte wraz z upływem czasu. Dla ograniczonej wersji zapoznawczej poniżej przedstawiono listę regionów, w której utworzono galerie i listę regionów, w którym można replikować obrazu z galerii: 
-
-| Utwórz galerię w  | Replikowanie wersji |
-|--------------------|----------------------|
-| Środkowo-zachodnie stany USA    |We wszystkich regionach publicznych&#42;|
-| Wschodnie stany USA 2          ||
-| Środkowo-południowe stany USA   ||
-| Azja Południowo-Wschodnia     ||
-| Europa Zachodnia        ||
-| Zachodnie stany USA            ||
-| Wschodnie stany USA            ||
-| Kanada Środkowa     ||
-|                    ||
+Definicje obrazu to logiczne grupowanie wersji obrazu. Definicję obrazu przechowuje dowiedzieć się, dlaczego obraz został utworzony, jakie jest on przeznaczony dla systemu operacyjnego i informacji o korzystaniu z obrazu. Definicję obrazu przypomina plan wszystkie szczegółowe informacje dotyczące tworzenia określonego obrazu. Nie możesz wdrożyć Maszynę wirtualną z definicji interfejsu obrazu, ale z wersję obrazu utworzonego na podstawie definicji.
 
 
+Istnieją trzy parametry definicję każdego obrazu, które są używane w połączeniu - **wydawcy**, **oferują** i **jednostki SKU**. Są one używane, aby znaleźć definicję określonego obrazu. Może mieć wersji obrazu, które współużytkują jeden lub dwa, ale nie wszystkie trzy wartości.  Na przykład poniżej przedstawiono trzy definicje, które obrazu i ich wartości:
 
-&#42;Można replikować do Australia Środkowa i Australia Środkowa 2, musisz mieć Twojej subskrypcji, na liście dozwolonych. Aby zażądać umieszczania na białej liście, przejdź do: https://www.microsoft.com/en-au/central-regions-eligibility/
+|Definicja obrazu|Wydawca|Oferta|SKU|
+|---|---|---|---|
+|myImage1|Contoso|Finanse|Zaplecze|
+|myImage2|Contoso|Finanse|Fronton|
+|myImage3|Testowanie|Finanse|Fronton|
+
+Wszystkie trzy z nich ma unikatowe zbiory wartości. Format jest podobny do sposobu możesz obecnie określić wydawcy, oferta i jednostka SKU dla [obrazów portalu Azure Marketplace](../articles/virtual-machines/windows/cli-ps-findimage.md) w programie Azure PowerShell, aby uzyskać najnowszą wersję obrazu z witryny Marketplace. Każda definicja obrazu musi mieć unikatowe zbiory tych wartości.
+
+Poniżej przedstawiono inne parametry, które mogą być ustawione na danej definicji obrazu, dzięki czemu można łatwiej śledzić zasobów:
+
+* Stan systemu operacyjnego — mogą ustawić stan systemu operacyjnego na, uogólnione lub wyspecjalizowany, ale tylko uogólniony jest obecnie obsługiwane. Obrazy muszą być tworzone z maszyn wirtualnych, które została uogólniona za pomocą programu Sysprep dla Windows lub `waagent -deprovision` dla systemu Linux.
+* System operacyjny — może być Windows lub Linux.
+* Opis — opisu użycia, aby zapewnić bardziej szczegółowych informacji na temat Dlaczego istnieje definicję obrazu. Na przykład Niewykluczone, że definicję obrazu na serwerze frontonu, na którym wcześniej zainstalowano aplikację.
+* Umowa licencyjna EULA — może służyć do wskaż Umowa licencyjna użytkownika oprogramowania określonych w definicji obrazu.
+* Zasady zachowania poufności informacji i wersji uwagi — przechowywanie wersji i zasady zachowania poufności informacji w usłudze Azure storage i podaj identyfikator URI do uzyskiwania dostępu do ich jako część definicji obrazu.
+* Wycofanych z eksploatacji daty — dołączyć datę zakończenia eksploatacji definicję obrazu, aby można było usunąć stare definicje obrazu przy użyciu usługi automation.
+* Tag — można dodać tagów podczas tworzenia definicji obrazu. Aby uzyskać więcej informacji na temat tagów, zobacz [organizowanie zasobów za pomocą tagów](../articles/azure-resource-manager/resource-group-using-tags.md)
+* Minimalna i maksymalna procesorów vCPU i zalecenia pamięci — Jeśli obraz zawiera zalecenia dotyczące pamięci i procesorów wirtualnych, można dołączyć te informacje do swojej definicji obrazu.
+* Niedozwolone typy dysków — może dostarczyć informacji na temat na potrzeby magazynu dla maszyny Wirtualnej. Na przykład jeśli obraz nie jest odpowiednie dla standardowych dysków HDD, dodasz je do listy nie Zezwalaj.
+
+
+## <a name="regional-support"></a>Wsparcie regionalne
+
+W poniższej tabeli wymieniono regionów źródłowych. We wszystkich regionach publicznych może być regiony docelowe, ale można replikować do Australia Środkowa i Australia Środkowa 2 musisz mieć Twojej subskrypcji, na liście dozwolonych. Aby zażądać umieszczania na białej liście, przejdź do: https://www.microsoft.com/en-au/central-regions-eligibility/
+
+
+| Regionów źródłowych |
+|---------------------|-----------------|------------------|-----------------|
+| Australia Środkowa   | Central US EUAP | Korea Środkowa    | Południowe Zjednoczone Królestwo 2      |
+| Australia Środkowa 2 | Azja Wschodnia       | Korea Południowa      | Zachodnie Zjednoczone Królestwo         |
+| Australia Wschodnia      | Wschodnie stany USA         | Środkowo-północne stany USA | Środkowo-zachodnie stany USA |
+| Australia Południowo-Wschodnia | Wschodnie stany USA 2       | Europa Północna     | Europa Zachodnia     |
+| Brazylia Południowa        | East US 2 EUAP  | Środkowo-południowe stany USA | Indie Zachodnie      |
+| Kanada Środkowa      | Francja Środkowa  | Indie Południowe      | Zachodnie stany USA         |
+| Kanada Wschodnia         | Francja Południowa    | Azja Południowo-Wschodnia   | Zachodnie stany USA         |
+| Indie Środkowe       | Japonia Wschodnia      | Północne Zjednoczone Królestwo         | Zachodnie stany USA 2       |
+| Środkowe stany USA          | Japonia Zachodnia      | Południowe Zjednoczone Królestwo         |                 |
+
+
+
+## <a name="limits"></a>Limits 
+
+Przy użyciu obrazów z zarządzanych może mieć tylko 600 współbieżnych maszyn wirtualnych na obrazu, galerie obrazów udostępnione, to zostaje zwiększona do 1000 równoczesnych maszyn wirtualnych na wersję obrazu.
+
+Istnieją limity subskrypcji, przez wdrażanie zasobów przy użyciu współdzielonego, galerie obrazów:
+- 10 galerie udostępnionego obrazu na subskrypcję na region
+- 200 definicje obrazu, na subskrypcję na region
+- wersje obrazów 2000, na subskrypcję na region
+
+Aby uzyskać więcej informacji, zobacz [Sprawdź użycie zasobów limitów](https://docs.microsoft.com/azure/networking/check-usage-against-limits) przykładów na temat sprawdzić bieżące użycie.
+ 
 
 ## <a name="scaling"></a>Skalowanie
 Galeria obrazów udostępnionych pozwala określić liczbę replik mają platformy Azure, aby przechowywać obrazy. Dzięki temu w scenariuszach wdrażania wielu maszyn wirtualnych, zgodnie z wdrożenia maszyn wirtualnych może zostać rozłożona do różnych replik, zmniejszając prawdopodobieństwo utworzenie wystąpienia przetwarzania jest ograniczona z powodu przeciążenia dla pojedynczej repliki.
@@ -64,13 +111,14 @@ Galeria obrazów udostępnionych pozwala określić liczbę replik mają platfor
 ## <a name="replication"></a>Replikacja
 Galeria obrazów udostępnionych umożliwia również obrazów do innych regionów platformy Azure są automatycznie replikowane. Każda wersja obrazu udostępnione mogą być replikowane do innych regionów, w zależności od tego, co ma sens dla swojej organizacji. Przykładem jest zawsze replikowanie najnowszego obrazu w wielu regionach, gdy wszystkie starsze wersje są dostępne tylko w regionie 1. Pozwoli to zapisać kosztów magazynowania wersje udostępnionych obrazów. 
 
-Regiony, które wersji udostępnionych obraz jest replikowany do może zostać zaktualizowana po godzinie utworzenia. Czas potrzebny do replikowania do różnych regionów zależy od tego, ilości danych, w której są kopiowane i liczbie regionów, wersja jest replikowana do. W niektórych przypadkach może to potrwać kilka godzin. Podczas replikacji jest wykonywane, możesz wyświetlić stan replikacji na region. Po zakończeniu replikacji obrazu w regionie, następnie można wdrożyć maszyny Wirtualnej lub zestawu skalowania maszyn wirtualnych, korzystając z wersji obrazu w regionie.
+Regiony, które wersji udostępnionych obraz jest replikowany do może zostać zaktualizowana po godzinie utworzenia. Czas potrzebny do replikowania do różnych regionów zależy od tego, ilości danych, w której są kopiowane i liczbie regionów, wersja jest replikowana do. W niektórych przypadkach może to potrwać kilka godzin. Podczas replikacji jest wykonywane, możesz wyświetlić stan replikacji na region. Po zakończeniu replikacji obrazu w regionie, następnie można wdrożyć maszyny Wirtualnej lub w zestawie skalowania, korzystając z wersji obrazu w regionie.
 
 ![Grafika pokazująca, jak można replikować obrazów](./media/shared-image-galleries/replication.png)
 
 
 ## <a name="access"></a>Dostęp
-Galeria obrazów udostępnione, udostępnionego obrazu i wersję udostępnionego obrazu są wszystkie zasoby, mogą być współużytkowane przy użyciu wbudowanych, które kontroluje macierzystych RBAC platformy Azure. Przy użyciu funkcji RBAC można udostępniać te zasoby do innych użytkowników, nazw głównych usług i grup w Twojej organizacji. Zakres do udostępniania tych zasobów jest w tej samej dzierżawie usługi Azure AD. Po użytkownik ma dostęp do wersji obrazu udostępnione, można wdrożyć na maszynie Wirtualnej lub zestawu skalowania maszyn wirtualnych w dowolnej subskrypcji, do których mają dostęp w tej samej usłudze Azure AD dzierżawy jako wersję udostępnionego obrazu.  Oto macierzy do udostępniania, która pomaga zrozumieć, jakie użytkownik uzyskuje dostęp do:
+
+Galeria obrazów udostępnione, udostępnionego obrazu i wersję udostępnionego obrazu są wszystkie zasoby, mogą być współużytkowane przy użyciu wbudowanych, które kontroluje macierzystych RBAC platformy Azure. Przy użyciu funkcji RBAC można udostępniać te zasoby do innych użytkowników, nazw głównych usług i grup. Możesz nawet udostępniać dostęp osobom spoza dzierżawy, którym zostały utworzone w ciągu. Po użytkownik ma dostęp do wersji obrazu udostępnione, można wdrożyć na maszynie Wirtualnej lub zestawu skalowania maszyn wirtualnych.  Oto macierzy do udostępniania, która pomaga zrozumieć, jakie użytkownik uzyskuje dostęp do:
 
 | Udostępnione użytkownikowi     | Galeria obrazów udostępnionych | Udostępnionego obrazu | Udostępniona wersja obrazu |
 |----------------------|----------------------|--------------|----------------------|
@@ -78,12 +126,34 @@ Galeria obrazów udostępnione, udostępnionego obrazu i wersję udostępnionego
 | Udostępnionego obrazu         | Nie                   | Yes          | Yes                  |
 | Udostępniona wersja obrazu | Nie                   | Nie           | Yes                  |
 
+Zaleca się udostępniania na poziomie galerii, aby uzyskać najlepsze wyniki. Aby uzyskać więcej informacji o ROLACH, zobacz [zarządzanie dostępem do zasobów platformy Azure przy użyciu funkcji RBAC](../articles/role-based-access-control/role-assignments-portal.md).
 
+Obrazy mogą również być współużytkowane, na dużą skalę, przez dzierżaw przy użyciu rejestracji aplikacji wielodostępnej. Aby uzyskać więcej informacji na temat udostępniania obrazów dla dzierżaw, zobacz [udostępnianie galerii obrazów maszyn wirtualnych w dzierżawach usługi Azure](../articles/virtual-machines/linux/share-images-across-tenants.md).
 
 ## <a name="billing"></a>Rozliczenia
 Brak bez dodatkowych opłat za korzystanie z usługi Shared galerii obrazów. Opłata wyniesie dla następujących zasobów:
-- Koszty magazynowania, przechowywania wersji udostępnionego obrazu. To zależy od liczby replik wersji i liczbie regionów, wersja są replikowane do.
-- Opłaty za ruch wychodzący sieci replikacji w regionie źródłowym wersji do replikowanych regionach.
+- Koszty magazynowania, przechowywania wersji udostępnionego obrazu. Koszt zależy od liczby replik wersję obrazu i liczbie regionów, wersja jest replikowana do. Na przykład jeśli oba są replikowane do 3 regiony mają 2 obrazów, następnie użytkownik zmieni się za 6 dyski zarządzane na podstawie jego rozmiaru. Aby uzyskać więcej informacji, zobacz [cennika usługi Managed Disks](https://azure.microsoft.com/pricing/details/managed-disks/).
+- Opłaty za ruch wychodzący sieci dla replikacji pierwszej wersji obrazu z regionu źródłowego w replikowanych regionach. Kolejne repliki są obsługiwane w regionie, dzięki czemu nie będą naliczane dodatkowe opłaty. 
+
+## <a name="updating-resources"></a>Aktualizowanie zasobów
+
+Po utworzeniu możesz wprowadzić pewne zmiany, aby zasoby galerii obrazów. Są one ograniczone do:
+ 
+Galeria obrazów udostępnionych:
+- Opis
+
+definicję obrazu:
+- Zalecane procesorów wirtualnych Vcpu
+- Zalecana ilość pamięci
+- Opis
+- Data
+
+Wersja obrazu:
+- Liczba replik regionalne
+- Regiony docelowe
+- Wykluczenie z najnowsze
+- Data
+
 
 ## <a name="sdk-support"></a>Obsługa zestawu SDK
 
@@ -106,24 +176,6 @@ Można utworzyć zasobu galerii obrazów udostępnione za pomocą szablonów. Do
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania 
 
-**PYTANIE** Jak utworzyć konto usługi udostępnione obraz galerii publicznej wersji zapoznawczej?
- 
- A. Aby zarejestrować się w galerii obrazów współdzielona publicznej wersji zapoznawczej, należy zarejestrować dla funkcji, uruchamiając następujące polecenia z każdej subskrypcji, w których mają zostać utworzone w galerii obrazów udostępnione, definicję obrazu lub zasobów wersji obrazu, a również gdy zamierzasz wdrożyć maszyn wirtualnych przy użyciu wersji obrazu.
-
-**INTERFEJS WIERSZA POLECENIA**: 
-
-```bash 
-az feature register --namespace Microsoft.Compute --name GalleryPreview
-az provider register --name Microsoft.Compute
-```
-
-**PowerShell**: 
-
-```powershell
-Register-AzProviderFeature -FeatureName GalleryPreview -ProviderNamespace Microsoft.Compute
-Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
-```
-
 **PYTANIE** Jak listy wszystkie zasoby udostępnione Galeria obrazów w subskrypcjach 
  
  A. Aby wyświetlić listę wszystkich zasobów galerii obrazów współużytkowane między subskrypcjami, że masz dostęp do witryny Azure portal, wykonaj następujące czynności:
@@ -140,11 +192,6 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
    ```bash
    az account list -otsv --query "[].id" | xargs -n 1 az sig list --subscription
    ```
-
-
-**PYTANIE** Jak udostępnić Moje obrazy między subskrypcjami?
- 
- A. Obrazy można udostępniać między subskrypcjami przy użyciu kontroli dostępu na podstawie ról (RBAC). Każdy użytkownik, który ma uprawnienia odczytu do wersji obrazu, nawet w różnych subskrypcjach, będzie można wdrożyć maszynę wirtualną przy użyciu wersji obrazu.
 
 
 **PYTANIE** Czy mogę przenieść Mój istniejący obraz do galerii obrazów udostępnionych?
@@ -164,32 +211,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
 
  A. Nie, obecnie obsługujemy specjalnych dysków jako obrazy. Jeśli masz wyspecjalizowanego dysku, musisz [Utwórz Maszynę wirtualną z wirtualnego dysku twardego](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal#create-a-vm-from-a-disk) , dołączając wyspecjalizowanego dysku do nowej maszyny Wirtualnej. Po utworzeniu uruchomionej maszyny Wirtualnej, należy wykonać instrukcje dotyczące tworzenia obrazu zarządzanego z [Windows VM](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-custom-images) lub [maszyny Wirtualnej systemu Linux](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images). Po utworzeniu obrazu zarządzanego uogólnionej, można uruchomić procesu tworzenia udostępnionego obrazu, opis i wersję obrazu.
 
-
-**PYTANIE** Można utworzyć galerii obrazów udostępnionych, definicję obrazu i wersję obrazu za pomocą witryny Azure portal?
-
- A. Nie, obecnie nie obsługujemy tworzenie żadne zasoby z galerii obrazów udostępnione za pośrednictwem witryny Azure portal. Jednak firma Microsoft obsługuje tworzenie zasobów galerii obrazów udostępnione za pośrednictwem interfejsu wiersza polecenia, szablonów i zestawy SDK. Również programu PowerShell zostanie wkrótce wydana.
-
  
-**PYTANIE** Po utworzeniu można aktualizować definicję obrazu lub wersję obrazu? Jakiego rodzaju szczegółowe informacje można zmodyfikować?
-
- A. Szczegółowe informacje, które mogą być aktualizowane na każdym z zasobów są wymienione poniżej:
- 
-Galeria obrazów udostępnionych:
-- Opis
-
-definicję obrazu:
-- Zalecane procesorów wirtualnych Vcpu
-- Memory (Pamięć)
-- Opis
-- Data
-
-Wersja obrazu:
-- Liczba replik regionalne
-- Regiony docelowe
-- Wykluczenie z najnowsze
-- Data
-
-
 **PYTANIE** Po utworzeniu można przenieść zasobu galerii obrazów udostępnione do innej subskrypcji?
 
  A. Nie, nie można przenieść zasobu galerii udostępnionego obrazu do innej subskrypcji. Jednak można replikować wersje obrazów w galerii do innych regionów, zgodnie z potrzebami.
@@ -204,20 +226,12 @@ Wersja obrazu:
 
 **PYTANIE** Czy mogę udostępniać wersje obrazów dla dzierżaw usługi Azure AD? 
 
- A. Nie, Galeria obrazów obecnie udostępnionego nie obsługuje udostępniania wersji obrazu dzierżaw usługi Azure AD. Jednak mogą użyć funkcji oferty prywatne w portalu Azure Marketplace, aby to osiągnąć.
+ A. Tak, można użyć funkcji RBAC udostępnianie osobom w dzierżawach. Ale udostępnianie na dużą skalę, zobacz "udział w galerii obrazów dla dzierżaw usługi Azure" przy użyciu [PowerShell](../articles/virtual-machines/windows/share-images-across-tenants.md) lub [interfejsu wiersza polecenia](../articles/virtual-machines/linux/share-images-across-tenants.md).
 
 
 **PYTANIE** Jak długo trwa replikowanie wersje obrazów na regiony docelowe?
 
  A. Czas replikacji wersji obrazu jest całkowicie zależna od rozmiaru obrazu i liczbie regionów, które są replikowane do. Jednak najlepszym rozwiązaniem jest zalecane obraz zachowywanie małych, i zamknij regiony źródłowe i docelowe, aby uzyskać najlepsze wyniki. Można sprawdzić stan replikacji za pomocą flagi ma — wartość.
-
-
-**PYTANIE** Ile galerie obrazów udostępnionych można utworzyć w ramach subskrypcji?
-
- A. Domyślny limit przydziału jest: 
-- 10 galerie udostępnionego obrazu na subskrypcję na region
-- 200 definicje obrazu, na subskrypcję na region
-- wersje obrazów 2000, na subskrypcję na region
 
 
 **PYTANIE** Jaka jest różnica między regionu źródłowego i docelowego regionu?
@@ -237,7 +251,7 @@ Wersja obrazu:
 1. Liczba replik regionalnych, który określa liczbę replik ma zostać utworzony na region. 
 2. Typowe liczba replik, co jest ustawieniem domyślnym, na liczba regionów, w przypadku, gdy nie jest określona liczba replik regionalne. 
 
-Aby określić liczbę replik regionalnej, należy przekazać lokalizacji wraz z liczbą repliki, który chcesz utworzyć w danym regionie, w następujący sposób: "Południowo-środkowe stany USA = 2". 
+Aby określić liczbę replik regionalnych, należy przekazać lokalizacji wraz z liczbą repliki, który chcesz utworzyć w tym regionie: "Południowo-środkowe stany USA = 2". 
 
 Jeśli liczba replik regionalnych nie zostanie określony z każdej lokalizacji, domyślna liczba replik będzie wspólnej liczba replik, który określiłeś. 
 

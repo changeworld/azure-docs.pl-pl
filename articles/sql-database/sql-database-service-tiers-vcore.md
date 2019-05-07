@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 manager: craigg
-ms.date: 04/26/2019
-ms.openlocfilehash: 0f7765e5b13f2d9c1e1213064d778ce6db5ef115
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/06/2019
+ms.openlocfilehash: 981198063b8e0951d4a4a4c4627d4b7966f34154
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64572682"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148980"
 ---
 # <a name="choose-among-the-vcore-service-tiers-and-migrate-from-dtu-service-tiers"></a>Można wybrać jedną z warstwy usługi (rdzeń wirtualny), a następnie przeprowadzenie migracji z warstwy usługi jednostki DTU
 
@@ -38,14 +38,16 @@ Model rdzenia wirtualnego oferuje trzy warstwy usług ogólnego przeznaczenia, w
 
 Poniższa tabela pomoże Ci zrozumieć różnice między trzy warstwy:
 
-||**Ogólnego przeznaczenia**|**Krytyczne dla działania**|**Na dużą skalę (wersja zapoznawcza)**|
+||**Ogólnego przeznaczenia**|**Krytyczne dla działania**|**Na dużą skalę**|
 |---|---|---|---|
 |Najlepsze dla|Większości obciążeń biznesowych. Oferty budżetu, aby poznać podstawy zrównoważonych oraz skalowalnych opcji obliczeniowych i magazynu.|Aplikacje biznesowe z wysokimi wymaganiami w zakresie operacji wejścia/wyjścia. Oferuje najwyższą odporność na awarie, korzystając z kilku izolowanych replik.|Większości obciążeń biznesowych za pomocą wysoce skalowalny magazyn i wymagań skali odczytu|
-|Procesor CPU|**Zainicjowano obsługę administracyjną obliczeń**:<br/>Gen4: 1-24 (rdzeń wirtualny)<br/>5. generacji: 1 do 80 (rdzeń wirtualny)<br/>**Bezserwerowe środowisko obliczeniowe**<br/>5. generacji: 0.5 — rdzeń wirtualny 4|**Zainicjowano obsługę administracyjną obliczeń**:<br/>Gen4: 1-24 (rdzeń wirtualny)<br/>5. generacji: 1 do 80 (rdzeń wirtualny)|**Zainicjowano obsługę administracyjną obliczeń**:<br/>Gen4: 1-24 (rdzeń wirtualny)<br/>5. generacji: 1 do 80 (rdzeń wirtualny)|
-|Memory (Pamięć)|**Zainicjowano obsługę administracyjną obliczeń**:<br/>Gen4: 7 GB na rdzeń<br/>5. generacji: 5.1 GB na rdzeń<br/>**Bezserwerowe środowisko obliczeniowe**<br/>5. generacji: 3 GB na rdzeń|**Zainicjowano obsługę administracyjną obliczeń**:<br/>Gen4: 7 GB na rdzeń<br/>5. generacji: 5.1 GB na rdzeń |**Zainicjowano obsługę administracyjną obliczeń**:<br/>Gen4: 7 GB na rdzeń<br/>5. generacji: 5.1 GB na rdzeń|
+|Wystąpienia obliczeniowe|**Zainicjowano obsługę administracyjną obliczeń**:<br/>Gen4: 1-24 (rdzeń wirtualny)<br/>5. generacji: 2-80 (rdzeń wirtualny)<br/>**Bezserwerowe środowisko obliczeniowe**<br/>5. generacji: 0.5 — rdzeń wirtualny 4|**Zainicjowano obsługę administracyjną obliczeń**:<br/>Gen4: 1-24 (rdzeń wirtualny)<br/>5. generacji: 2-80 (rdzeń wirtualny)|**Zainicjowano obsługę administracyjną obliczeń**:<br/>Gen4: 1-24 (rdzeń wirtualny)<br/>5. generacji: 2-80 (rdzeń wirtualny)|
+|Memory (Pamięć)|**Zainicjowano obsługę administracyjną obliczeń**:<br/>Gen4: 7 GB na rdzeń wirtualny<br/>5. generacji: 5.1 GB na rdzeń wirtualny<br/>**Bezserwerowe środowisko obliczeniowe**<br/>5. generacji: 3 GB na rdzeń wirtualny|**Zainicjowano obsługę administracyjną obliczeń**:<br/>Gen4: 7 GB na rdzeń wirtualny<br/>5. generacji: 5.1 GB na rdzeń wirtualny |**Zainicjowano obsługę administracyjną obliczeń**:<br/>Gen4: 7 GB na rdzeń wirtualny<br/>5. generacji: 5.1 GB na rdzeń wirtualny|
 |Magazyn|Używa magazynu zdalnego:<br/>**Pojedynczą bazę danych aprowizowane obliczeń**:<br/>5 GB – 4 TB<br/>**Pojedynczą bazę danych bezserwerowe środowisko obliczeniowe**:<br/>5 GB - 1 TB<br/>**Wystąpienie zarządzane**: 32 GB - 8 TB |Używa lokalnego magazynu SSD:<br/>**Pojedynczą bazę danych aprowizowane obliczeń**:<br/>5 GB – 4 TB<br/>**Wystąpienie zarządzane**:<br/>32 GB - 4 TB |Elastyczne, automatyczne zwiększanie magazynu zgodnie z potrzebami. Obsługuje maksymalnie 100 TB pamięci masowej i nie tylko. Lokalny magazyn SSD w pamięci podręcznej puli bufora lokalnych i lokalne przechowywanie danych. Usługa Azure storage zdalnego końcowego długoterminowego przechowywania danych. |
+|Memory (Pamięć)|Gen4: 7 GB na rdzeń<br>5. generacji: 5.1 GB na rdzeń | Gen4: 7 GB na rdzeń<br>5. generacji: 5.1 GB na rdzeń |5. generacji: 5.1 GB na rdzeń|
+|Magazyn|Używa magazynu zdalnego:<br/>Pojedyncza baza danych: 5 GB – 4 TB<br/>Wystąpienie zarządzane: 32 GB - 8 TB |Używa lokalnego magazynu SSD:<br/>Pojedyncza baza danych: 5 GB – 4 TB<br/>Wystąpienie zarządzane: 32 GB - 4 TB |Elastyczne, automatyczne zwiększanie magazynu zgodnie z potrzebami. Obsługuje maksymalnie 100 TB pamięci masowej i nie tylko. Lokalny magazyn SSD w pamięci podręcznej puli bufora lokalnych i lokalne przechowywanie danych. Usługa Azure storage zdalnego końcowego długoterminowego przechowywania danych. |
 |Przepustowość operacji We/Wy (w przybliżeniu)|Pojedyncza baza danych: 500 operacji We/Wy na rdzeniach wirtualnych za pomocą 7000 maksymalna liczba IOPS</br>Wystąpienie zarządzane: Zależy od [rozmiar pliku](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)|5000 operacji We/Wy na rdzeń z 200 000 maksymalna liczba IOPS|TBD|
-|Dostępność|1 repliki, bez skalowania odczytu|3 repliki, 1 [skali odczytu replik](sql-database-read-scale-out.md),<br/>Strefa nadmiarowe wysokiej dostępności|?|
+|Dostępność|1 repliki, bez skalowania odczytu|3 repliki, 1 [skali odczytu replik](sql-database-read-scale-out.md),<br/>Strefa nadmiarowe wysokiej dostępności|1 odczytu/zapisu repliki oraz 0 – 4 [skali odczytu replik](sql-database-read-scale-out.md)|
 |Tworzenie kopii zapasowych|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7 – 35 dni (domyślnie co 7 dni)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7 – 35 dni (domyślnie co 7 dni)|na podstawie migawki kopii zapasowej w magazynie zdalnym platformy Azure i przywracanie na użytek migawek Szybkie odzyskiwanie. Kopie zapasowe są natychmiastowe i nie wpływać na wydajność operacji We/Wy, mocy obliczeniowej. Operacje przywracania są bardzo szybkie i nie rozmiar operacji danych (trwa minuty, a nie godziny lub dni).|
 |W pamięci|Nieobsługiwane|Obsługiwane|Nieobsługiwane|
 |||
@@ -56,8 +58,6 @@ Poniższa tabela pomoże Ci zrozumieć różnice między trzy warstwy:
 - Aby uzyskać więcej informacji, zobacz [limity zasobów — rdzeń wirtualny w pojedynczej bazy danych](sql-database-vcore-resource-limits-single-databases.md) i [limity zasobów — rdzeń wirtualny w wystąpieniu zarządzanym](sql-database-managed-instance.md#vcore-based-purchasing-model).
 - Aby uzyskać więcej informacji na temat warstw usługi ogólnego przeznaczenia i krytyczne dla działania firmy, zobacz [warstwy usług ogólnego przeznaczenia i krytyczne dla działania firmy](sql-database-service-tiers-general-purpose-business-critical.md).
 - Szczegółowe informacje na temat warstwy usług na dużą skalę w modelu zakupu opartego na rdzeniach wirtualnych, [warstwy usługi w Hiperskali](sql-database-service-tier-hyperscale.md).  
-
-
 
 ## <a name="azure-hybrid-benefit"></a>Korzyść użycia hybrydowego platformy Azure
 

@@ -2,19 +2,19 @@
 title: Autoryzowanie dostępu do usługi Azure Storage | Dokumentacja firmy Microsoft
 description: Poznaj różne sposoby autoryzowania dostępu do usługi Azure Storage, w tym usługi Azure Active Directory, uwierzytelnianie klucza współużytkowanego lub sygnatury dostępu współdzielonego.
 services: storage
-author: WenJason
+author: tamram
 ms.service: storage
 ms.topic: article
-origin.date: 03/21/2019
-ms.date: 04/08/2019
-ms.author: v-jay
+ms.date: 03/21/2019
+ms.author: tamram
+ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: ba4d83d620a597c9a59f1a3c7f2f9d6722ba42d8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9e8c9755c444ca7b81891f5f83164bc51aa694eb
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61483710"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147063"
 ---
 # <a name="authorizing-access-to-azure-storage"></a>Autoryzowanie dostępu do usługi Azure Storage
 

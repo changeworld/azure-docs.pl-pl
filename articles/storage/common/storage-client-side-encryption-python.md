@@ -2,24 +2,25 @@
 title: Szyfrowanie po stronie klienta za pomocą języka Python dla usługi Microsoft Azure Storage | Dokumentacja firmy Microsoft
 description: Biblioteki klienta usługi Azure Storage dla języka Python obsługuje szyfrowanie po stronie klienta dla zapewnienia maksymalnego poziomu bezpieczeństwa dla aplikacji usługi Azure Storage.
 services: storage
-author: lakasa
+author: tamram
 ms.service: storage
 ms.devlang: python
 ms.topic: article
 ms.date: 05/11/2017
-ms.author: lakasa
+ms.author: tamram
+ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: ecfd86a7e4a8ef97663cc930906fd909b6f0fae8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d04c1e137a190b01554106c041853aa2fd6786d7
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58011118"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65146912"
 ---
 # <a name="client-side-encryption-with-python-for-microsoft-azure-storage"></a>Szyfrowanie po stronie klienta za pomocą języka Python dla usługi Microsoft Azure Storage
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 [Biblioteki klienta usługi Azure Storage dla języka Python](https://pypi.python.org/pypi/azure-storage) obsługuje szyfrowanie danych w aplikacjach klienckich przed przekazaniem do usługi Azure Storage oraz odszyfrowywanie danych pobraniem do klienta.
 
 > [!NOTE]
@@ -138,7 +139,7 @@ Program rozpoznawania nazw kluczy co najmniej musi implementować metodę zwraca
   * Mechanizm rozpoznawania klucza jest wywoływana, jeśli określony, aby pobrać klucz. Jeśli program rozpoznawania nazw jest określony, ale nie ma mapowania dla identyfikatora klucza, zostanie zgłoszony błąd.
   * Jeśli program rozpoznawania nazw nie jest określony, ale klucz jest określony, klucz jest używany, jeśli pasuje do identyfikatora wymaganego identyfikatora klucza. Jeśli identyfikator nie jest zgodny, zostanie zgłoszony błąd.
 
-    Przykłady szyfrowania w azure.storage.samples <fix URL>pokazują bardziej szczegółowe scenariusz end-to-end dla obiektów blob, kolejek i tabel.
+    Przykłady szyfrowania w azure.storage.samples pokazują bardziej szczegółowe scenariusz end-to-end dla obiektów blob, kolejek i tabel.
       Przykładowe implementacje KEK i rozpoznawania nazw kluczy są udostępniane w przykładowych plików oraz KeyWrapper KeyResolver odpowiednio.
 
 ### <a name="requireencryption-mode"></a>Tryb RequireEncryption

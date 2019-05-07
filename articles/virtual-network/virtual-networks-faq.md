@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: 131d62fd2cea3ed76342f0fd179b7a9e0fd673e5
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 25c71019227c52bf0c1530dcdf655fc7575d8032
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925266"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148518"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Sieć wirtualna platformy Azure — często zadawane pytania (FAQ)
 
@@ -170,7 +170,7 @@ Tak. Więcej informacji można znaleźć [sposób przenoszenia maszyny Wirtualne
 Nie. Adres MAC nie można skonfigurować statycznie.
 
 ### <a name="will-the-mac-address-remain-the-same-for-my-vm-once-its-created"></a>Adres MAC pozostaną takie same dla mojej maszyny Wirtualnej po jej utworzeniu?
-Tak, adres MAC, pozostaje taka sama dla maszyny Wirtualnej wdrożone za pośrednictwem usługi Resource Manager i klasycznych modeli wdrażania, dopóki zostanie usunięty. Adres MAC zostało wydane wcześniej, jeśli maszyna wirtualna została zatrzymana (przydział zostanie cofnięty), ale teraz adres MAC jest zachowywane nawet wtedy, gdy maszyna wirtualna jest w stanie cofnięcia przydziału.
+Tak, adres MAC, pozostaje taka sama dla maszyny Wirtualnej wdrożone za pośrednictwem usługi Resource Manager i klasycznych modeli wdrażania, dopóki zostanie usunięty. Adres MAC zostało wydane wcześniej, jeśli maszyna wirtualna została zatrzymana (przydział zostanie cofnięty), ale teraz adres MAC jest zachowywane nawet wtedy, gdy maszyna wirtualna jest w stanie cofnięcia przydziału. Adres MAC jest przypisana do interfejsu sieciowego, do momentu usunięcia interfejsu sieciowego lub prywatny adres IP przypisany do podstawowa konfiguracja adresów IP podstawowy interfejs sieciowy zostanie zmieniony. 
 
 ### <a name="can-i-connect-to-the-internet-from-a-vm-in-a-vnet"></a>Czy można połączyć się z Internetem z maszyny Wirtualnej w sieci wirtualnej?
 Tak. Wszystkie maszyny wirtualne i usługi w chmurze wystąpień roli, wdrożonego w ramach sieci wirtualnej można połączyć się z Internetem.

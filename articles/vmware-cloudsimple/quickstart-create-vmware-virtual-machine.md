@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 58edadb553730b646f23f4981d6cbf1bdbfe76d5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 3940adfaa42de8ac9c3f32a9eadc8f6d643ce3ce
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64577723"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149523"
 ---
 # <a name="quickstart---consume-vmware-vms-on-azure"></a>Przewodnik Szybki Start — używanie maszyn wirtualnych VMware na platformie Azure
 
@@ -25,57 +25,62 @@ Utwórz maszynę wirtualną w chmurze prywatnej z interfejsu użytkownika progra
 
 ## <a name="create-a-virtual-machine-in-the-azure-portal"></a>Utwórz maszynę wirtualną w witrynie Azure portal
 
-1. W menu po lewej stronie, kliknij polecenie **+** lub **Utwórz zasób**.
+1. Wybierz pozycję **Wszystkie usługi**.
 
-2. W menu po lewej stronie, kliknij polecenie **obliczenia**, a następnie kliknij przycisk **maszyny wirtualnej CloudSimple**.
+2. Wyszukaj **maszyn wirtualnych CloudSimple**.
 
-3. Kliknij przycisk **Potwierdź** Aby sprawdzić, czy chcesz utworzyć nową maszynę Wirtualną.
+3. Kliknij pozycję **Add** (Dodaj).
 
-4. Ustaw konfigurację podstawowe, zgodnie z opisem w poniższej tabeli, a następnie kliknij przycisk **dalej: Rozmiar**.
+    ![Tworzenie maszyny wirtualnej CloudSimple](media/create-cloudsimple-virtual-machine.png)
+
+4. Wprowadzanie podstawowych informacji, kliknij **dalej: rozmiar**.
+
+    ![Tworzenie maszyny wirtualnej CloudSimple — podstawy](media/create-cloudsimple-virtual-machine-basic-info.png)
 
     | Pole | Opis |
     | ------------ | ------------- |
-    | Subskrypcja | Subskrypcja platformy Azure skojarzone z wdrożeniem chmury prywatnej.  |
-    | Grupa zasobów | Grupa wdrożenia, do którego zostanie przypisany maszyny Wirtualnej. Można wybrać istniejącą grupę lub Utwórz nową. |
+    | Subskrypcja | Subskrypcja platformy Azure skojarzone z chmury prywatnej.  |
+    | Grupa zasobów | Grupa zasobów, do którego zostanie przypisany maszyny Wirtualnej. Można wybrać istniejącą grupę lub Utwórz nową. |
     | Name (Nazwa) | Nazwa identyfikująca maszyny Wirtualnej.  |
     | Lokalizacja | Region platformy Azure, w którym znajduje się ta maszyna wirtualna.  |
-    | Pula zasobów | Zasoby fizyczne dla maszyny Wirtualnej. Wybierz pule dostępnych zasobów. |
-    | vSphere szablonu | Typ szablonu systemu operacyjnego dla maszyny Wirtualnej.  |
-    | Nazwa użytkownika | Nazwa użytkownika administratora maszyny Wirtualnej. |
-    | Hasło Potwierdź hasło | Hasło administratora maszyny Wirtualnej.  |
+    | Chmura prywatna | Chmura prywatna CloudSimple, w którym chcesz utworzyć maszynę wirtualną. |
+    | Pula zasobów | Mapowany puli zasobów dla maszyny Wirtualnej. Wybierz pule dostępnych zasobów. |
+    | vSphere szablonu | Szablon vSphere dla maszyny Wirtualnej.  |
+    | Nazwa użytkownika | Nazwa użytkownika administratora maszyny Wirtualnej (w przypadku szablonów Windows)|
+    | Hasło |  Hasło administratora maszyny Wirtualnej (w przypadku szablonów Windows). |
+    | Potwierdź hasło | Potwierdź hasło |
 
-5. Wybierz liczbę rdzeni oraz pojemność pamięci dla maszyny Wirtualnej.
+5. Wybierz liczbę rdzeni oraz pojemność pamięci maszyny Wirtualnej, a następnie kliknij przycisk **dalej: konfiguracje**. Zaznacz pole wyboru, jeśli chcesz udostępnić pełną wirtualizacji Procesora systemu operacyjnego gościa. Aplikacje, które wymagają wirtualizację sprzętu można uruchamiać na maszynach wirtualnych bez tłumaczenie binarne lub parawirtualizacji. Aby uzyskać więcej informacji, zobacz artykuł VMware <a href="https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-2A98801C-68E8-47AF-99ED-00C63E4857F6.html" target="_blank">ujawnić wirtualizacji sprzętowej sprzętu VMware</a>.
 
-6. (Opcjonalnie) Do udostępnienia pełną wirtualizacji Procesora systemu operacyjnego gościa, należy zaznaczyć **udostępnienia systemu operacyjnego gościa** pola wyboru.
-Zaznacz to pole wyboru umożliwia aplikacji, które wymagają wirtualizację sprzętu można uruchamiać na maszynach wirtualnych bez tłumaczenie binarne lub parawirtualizacji. Aby uzyskać więcej informacji, zobacz artykuł VMware [ujawnić wirtualizacji sprzętowej sprzętu VMware](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-2A98801C-68E8-47AF-99ED-00C63E4857F6.html).
+    ![Tworzenie maszyny wirtualnej CloudSimple — rozmiar](media/create-cloudsimple-virtual-machine-size.png)
 
-7. Kliknij pozycję **Next: Konfiguracja**.
+6. Skonfiguruj interfejsy sieciowe i dyski, zgodnie z opisem w poniższych tabelach, a następnie kliknij przycisk **przeglądu + Utwórz**.
 
-8. Skonfiguruj interfejsy sieciowe i dyski, zgodnie z opisem w poniższych tabelach.
+    ![Tworzenie maszyny wirtualnej CloudSimple - konfiguracje](media/create-cloudsimple-virtual-machine-configurations.png)
 
     Dla interfejsów sieciowych, kliknij przycisk **Dodaj interfejs sieciowy** i skonfiguruj następujące ustawienia.
-
+    
     | Kontrola | Opis |
     | ------------ | ------------- |
     | Name (Nazwa) | Wprowadź nazwę identyfikującą interfejsu.  |
-    | Sieć | Wybierz z listy skonfigurowanych sieci w swojej vSphere chmurze prywatnej.  |
-    | Karta | Wybierz łącznik vSphere z listy dostępnych typów skonfigurowane dla maszyny Wirtualnej. Aby uzyskać więcej informacji, zobacz artykuł bazy wiedzy knowledge base VMware [wybierania karty sieciowej dla maszyny wirtualnej](https://kb.vmware.com/s/article/1001805). |
+    | Sieć | Wybierz z listy skonfigurowanego portu rozproszonej grupy w Twojej vSphere chmurze prywatnej.  |
+    | Karta | Wybierz łącznik vSphere z listy dostępnych typów skonfigurowane dla maszyny Wirtualnej. Aby uzyskać więcej informacji, zobacz artykuł bazy wiedzy knowledge base VMware <a href="https://kb.vmware.com/s/article/1001805" target="_blank">wybierania karty sieciowej dla maszyny wirtualnej</a>. |
     | Włącz przy rozruchu | Wybierz, czy włączyć sprzętowej karcie interfejsu Sieciowego podczas rozruchu maszyny Wirtualnej. Wartość domyślna to **Włącz**. |
 
     W przypadku dysków, kliknij przycisk **Dodaj dysk** i skonfiguruj następujące ustawienia.
 
-    | Element | Opis |
-    | ------------ | ------------- |
-    | Name (Nazwa) | Wprowadź nazwę identyfikującą dysku.  |
-    | Rozmiar | Wybierz jeden z dostępnych rozmiarów.  |
-    | Kontroler SCSI | Wybierz kontroler SCSI. Dostępnych kontrolerów różnią się dla różnych obsługiwanych systemów operacyjnych.  |
-    | Tryb | Określa, jak dysk uczestniczy w migawki. Wybierz jedną z następujących opcji: <br> — Niezależnie od stałe: Wszystkie dane zapisane na dysku są zapisywane jako trwałe.<br> — Niezależnie od nietrwałe: Zmiany zapisywane na dysku są odrzucane, wyłączyć lub Resetuj maszynę wirtualną.  Niezależnie od trybu nietrwałe można zawsze ponownie maszynę Wirtualną, w tym samym stanie. Aby uzyskać więcej informacji, zobacz [dokumentacją VMware.](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html)
+    | Element | Opis | 
+    | ------------ | ------------- | 
+    | Name (Nazwa) | Wprowadź nazwę identyfikującą dysku.  | 
+    | Rozmiar | Wybierz jeden z dostępnych rozmiarów.  | 
+    | Kontroler SCSI | Wybierz kontroler SCSI dysku.  |
+    | Tryb | Określa, jak dysk uczestniczy w migawki. Wybierz jedną z następujących opcji: <br> — Niezależnie od stałe: Wszystkie dane zapisane na dysku są zapisywane jako trwałe.<br> — Niezależnie od nietrwałe: Zmiany zapisywane na dysku są odrzucane, wyłączyć lub Resetuj maszynę wirtualną.  Niezależnie od trybu nietrwałe można zawsze ponownie maszynę Wirtualną, w tym samym stanie. Aby uzyskać więcej informacji, zobacz <a href="https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html" target="_blank">dokumentacją VMware</a>.
 
-9. Przejrzyj ustawienia. Aby wprowadzić zmiany, kliknij odpowiednią kartę u góry.
+7. Po zakończeniu weryfikacji Przejrzyj ustawienia i kliknij **Utwórz**. Aby wprowadzić zmiany, kliknij odpowiednią kartę w górnej lub kliknij przycisk.
 
-10. Kliknij przycisk **Utwórz** Aby zapisać ustawienia i utworzyć maszynę Wirtualną.
+    ![Tworzenie maszyny wirtualnej CloudSimple — Przegląd](media/create-cloudsimple-virtual-machine-review.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Widok listy maszyn wirtualnych CloudSimple](https://docs.azure.cloudsimple.com/azurelistvms/)
-* [Zarządzanie maszyną wirtualną CloudSimple z platformy Azure](https://docs.azure.cloudsimple.com/azureoverviewpage/)
+* [Widok listy maszyn wirtualnych CloudSimple](https://docs.azure.cloudsimple.com/azure-manage-vm/)
+* [Zarządzanie maszyną wirtualną CloudSimple z platformy Azure](https://docs.azure.cloudsimple.com/azure-create-vm/#view-list-of-cloudsimple-virtual-machines)

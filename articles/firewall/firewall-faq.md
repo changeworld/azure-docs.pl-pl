@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 4/17/2019
+ms.date: 5/3/2019
 ms.author: victorh
-ms.openlocfilehash: 5e009d5659a503fe8168f21a26939acff9944f2f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 4c4a6776e3bb56026a48963ec83fe582380c68d0
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64718811"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65145960"
 ---
 # <a name="azure-firewall-faq"></a>Zaporę platformy Azure — często zadawane pytania
 
@@ -123,11 +123,9 @@ Tak. Konfigurowanie tras zdefiniowanych przez użytkownika, aby przekierować ru
 
 Wymuszone tunelowanie nie jest obsługiwany przez domyślną, ale można ją włączyć za pomocą pomocy od działu pomocy technicznej.
 
-Zaporę platformy Azure musi mieć bezpośrednie połączenie z Internetem. Domyślnie AzureFirewallSubnet ma trasę 0.0.0.0/0, typ następnego przeskoku wartość **Internet**.
+Zaporę platformy Azure musi mieć bezpośrednie połączenie z Internetem. Jeśli Twoje AzureFirewallSubnet uczy się trasę domyślną elementom sieci lokalnej za pośrednictwem protokołu BGP, konieczne jest przesłonięcie to za pomocą 0.0.0.0/0 trasy zdefiniowanej przez użytkownika za pomocą **Typ następnego przeskoku** wartość ustawiona jako **Internet** utrzymanie bezpośredniej Łączność z Internetem. Domyślnie Zapora usługi Azure nie obsługuje wymuszonego tunelowania do sieci lokalnej.
 
-Włączenie tunelowania do sieci lokalnej za pośrednictwem usługi ExpressRoute i VPN Gateway, konieczne może być jawnie skonfigurować 0.0.0.0/0 trasy zdefiniowanej przez użytkownika (UDR) z zestawem wartości Typ następnego przeskoku jako Internet i skojarzyć go z Twojego AzureFirewallSubnet. Zastępuje to potencjalne bramy domyślnej anonsowania BGP do sieci lokalnej.
-
-Jeśli Twoja organizacja potrzebuje, wymuszonego tunelowania dla zapory usługi Azure w celu kierowania ruchu bramy domyślne wstecz za pośrednictwem sieci lokalnej, skontaktuj się z pomocą techniczną. Możemy umieścić na liście dozwolonych jest utrzymywany w subskrypcji, aby upewnić się, zapory wymagane połączenie z Internetem.
+Jednak jeśli konfiguracja wymaga wymuszonego tunelowania do sieci lokalnej, Microsoft będzie obsługiwać go na podstawie przypadku. Się z pomocą techniczną, dzięki czemu możesz przejrzeć tej sprawy. Jeśli zaakceptowane, utworzymy dozwolonych subskrypcji i upewnij się, że połączenie z Internetem wymagany zapory są obsługiwane.
 
 ## <a name="are-there-any-firewall-resource-group-restrictions"></a>Czy istnieją wszystkie zapory ograniczenia grup zasobów?
 

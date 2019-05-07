@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/19/2018
+ms.date: 05/06/2019
 ms.author: akjosh; cynthn
 ms.custom: ''
-ms.openlocfilehash: 08c7e84a27a4c8e9527083360dbd08296bd86775
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 40ac8badfac3c004d3451c598d7cd2a17982a585
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60542484"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65138912"
 ---
-# <a name="preview-create-a-shared-image-gallery-with-the-azure-cli"></a>Wersja zapoznawcza: Utwórz galerię udostępnionego obrazu przy użyciu wiersza polecenia platformy Azure
+# <a name="create-a-shared-image-gallery-with-the-azure-cli"></a>Utwórz galerię udostępnionego obrazu przy użyciu wiersza polecenia platformy Azure
 
 A [galerii obrazów współdzielona](shared-image-galleries.md) upraszcza obraz niestandardowy do udostępniania całej organizacji. Obrazy niestandardowe są podobne do obrazów z platformy handlowej, ale tworzy się je samodzielnie. Obrazy niestandardowe mogą służyć do ładowania początkowego konfiguracji, na przykład do wstępnego ładowania aplikacji, konfiguracji aplikacji i innych konfiguracji systemu operacyjnego. 
 
@@ -58,7 +58,7 @@ az vm create\
 
 [!INCLUDE [virtual-machines-common-gallery-list-cli](../../../includes/virtual-machines-common-gallery-list-cli.md)]
 
-
+[!INCLUDE [virtual-machines-common-shared-images-update-delete-cli](../../../includes/virtual-machines-common-shared-images-update-delete-cli.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
 Można również utworzyć zasób galerii obrazów udostępnione za pomocą szablonów. Dostępnych jest kilka szablonów szybkiego startu platformy Azure: 

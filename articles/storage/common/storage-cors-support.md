@@ -2,19 +2,20 @@
 title: Cross-Origin Resource Sharing (CORS) w pomocy technicznej | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak włączyć obsługę mechanizmu CORS dla usług Microsoft Azure Storage.
 services: storage
-author: cbrooksmsft
+author: tamram
 ms.service: storage
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 2/22/2017
-ms.author: cbrooks
+ms.author: tamram
+ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 5e65965678ed042081e4a406d3a207fb7ede299f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bb296db0d97382deac984369704777de5d5cb362
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61483489"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147686"
 ---
 # <a name="cross-origin-resource-sharing-cors-support-for-the-azure-storage-services"></a>Cross-Origin Resource Sharing (CORS) obsługę usług Azure Storage
 Począwszy od wersji 2013-08-15, usług Azure storage obsługuje udostępniania zasobów między źródłami (CORS) dla usług obiektów Blob, tabela, kolejka i pliku. CORS to funkcja protokołu HTTP, który umożliwia aplikacji sieci web uruchomionej w jednej domenie dostęp do zasobów w innej domenie. Przeglądarki sieci Web wdrażają ograniczenie bezpieczeństwa nazywane [zasadami tego samego źródła](https://www.w3.org/Security/wiki/Same_Origin_Policy) która zapobiega wywoływaniu interfejsów API w innej domenie; strony sieci web Mechanizm CORS zapewnia bezpieczną metodę umożliwiania jednej domenie (domenie źródłowej) wywoływania interfejsów API z innej domeny. Zobacz [specyfikacji CORS](https://www.w3.org/TR/cors/) szczegółowe informacje na mechanizmu CORS.

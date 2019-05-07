@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 09/19/2018
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: 1a5b6d435dcc82b59c30302f9cd711975864594c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3957fefb44bd8e4732f74f69d5522bd499100d0b
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60901914"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149864"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Konfigurowanie zestawu SDK usługi Application Insights za pomocą pliku ApplicationInsights.config lub xml
 Zestaw SDK .NET usługi Application Insights składa się kilka pakietów NuGet. [Pakiet podstawowego](https://www.nuget.org/packages/Microsoft.ApplicationInsights) zapewnia interfejs API do wysyłania danych telemetrycznych do usługi Application Insights. [Dodatkowe pakiety](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) Podaj dane telemetryczne *modułów* i *inicjatory* dla automatycznego śledzenia danych telemetrycznych z aplikacji i jej kontekstu. Dostosowując plik konfiguracji, można włączyć lub wyłączyć inicjatory i moduły danych telemetrycznych i ustawić parametry dla niektórych z nich.
@@ -79,13 +79,13 @@ Raporty [kod odpowiedzi czasu i wynik](../../azure-monitor/app/asp-net.md) żąd
 * [Application Insights w systemie Windows Server](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) pakietu NuGet.
 
 ### <a name="eventsource-tracking"></a>Źródła zdarzeń śledzenia
-`EventSourceTelemetryModule` Umożliwia skonfigurowanie źródła zdarzeń zdarzenia do wysłania do usługi Application Insights jako ślady. Aby uzyskać informacji na temat śledzenia zdarzeń EventSource, zobacz [przy użyciu zdarzeń EventSource](../../azure-monitor/app/asp-net-trace-logs.md#using-eventsource-events).
+`EventSourceTelemetryModule` Umożliwia skonfigurowanie źródła zdarzeń zdarzenia do wysłania do usługi Application Insights jako ślady. Aby uzyskać informacji na temat śledzenia zdarzeń EventSource, zobacz [przy użyciu zdarzeń EventSource](../../azure-monitor/app/asp-net-trace-logs.md#use-eventsource-events).
 
 * `Microsoft.ApplicationInsights.EventSourceListener.EventSourceTelemetryModule`
 * [Microsoft.ApplicationInsights.EventSourceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener) 
 
 ### <a name="etw-event-tracking"></a>Śledzenie zdarzeń ETW.
-`EtwCollectorTelemetryModule` Umożliwia skonfigurowanie zdarzenia z dostawców ETW do wysłania do usługi Application Insights jako ślady. Aby uzyskać informacji na temat śledzenia zdarzeń ETW, zobacz [zdarzenia ETW za pomocą](../../azure-monitor/app/asp-net-trace-logs.md#using-etw-events).
+`EtwCollectorTelemetryModule` Umożliwia skonfigurowanie zdarzenia z dostawców ETW do wysłania do usługi Application Insights jako ślady. Aby uzyskać informacji na temat śledzenia zdarzeń ETW, zobacz [zdarzenia ETW za pomocą](../../azure-monitor/app/asp-net-trace-logs.md#use-etw-events).
 
 * `Microsoft.ApplicationInsights.EtwCollector.EtwCollectorTelemetryModule`
 * [Microsoft.ApplicationInsights.EtwCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector) 

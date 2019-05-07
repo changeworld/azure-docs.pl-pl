@@ -1,19 +1,20 @@
 ---
-title: Wykonywanie operacji na platformie Azure Queue storage przy użyciu programu PowerShell | Dokumentacja firmy Microsoft
+title: Wykonywanie operacji na Azure Queue storage przy użyciu programu PowerShell — usługi Azure Storage
 description: Jak wykonywać operacje na Azure Queue storage przy użyciu programu PowerShell
 services: storage
-author: roygara
+author: mhopkins-msft
 ms.service: storage
 ms.topic: conceptual
 ms.date: 09/14/2017
-ms.author: rogarana
+ms.author: mhopkins
+ms.reviewer: cbrooks
 ms.subservice: queues
-ms.openlocfilehash: 9992673ab36d5b4b2cc1ca18a5108107c14a1eb1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: db366fea96967559c65559864ff8e367fa12ad65
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59488955"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142589"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Wykonaj operacjami usługi Azure Queue storage przy użyciu programu Azure PowerShell
 
@@ -102,22 +103,22 @@ Get-AzStorageQueue -Context $ctx | select Name
 
 ## <a name="add-a-message-to-a-queue"></a>Dodawanie komunikatu do kolejki
 
-Operacje, które mają wpływ na rzeczywistych wiadomości w kolejce za pomocą biblioteki klienta .NET magazynu jako dostępne w programie PowerShell. Aby dodać komunikat do kolejki, Utwórz nowe wystąpienie obiektu komunikat [Microsoft.WindowsAzure.Storage.Queue.CloudQueueMessage](https://msdn.microsoft.com/library/azure/jj732474.aspx) klasy. Następnie wywołaj metodę [AddMessage](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.queue.cloudqueue.addmessage.aspx). CloudQueueMessage mogą być tworzone z ciągu (w formacie UTF-8) lub tablicą bajtów.
+Operacje, które mają wpływ na rzeczywistych wiadomości w kolejce za pomocą biblioteki klienta .NET magazynu jako dostępne w programie PowerShell. Aby dodać komunikat do kolejki, Utwórz nowe wystąpienie obiektu komunikat [Microsoft.Azure.Storage.Queue.CloudQueueMessage](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage.-ctor?redirectedfrom=MSDN&view=azure-dotnet#Microsoft_WindowsAzure_Storage_Queue_CloudQueueMessage__ctor_System_Byte___) klasy. Następnie wywołaj metodę [AddMessage](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.queue.cloudqueue.addmessage.aspx). CloudQueueMessage mogą być tworzone z ciągu (w formacie UTF-8) lub tablicą bajtów.
 
 Poniższy przykład pokazuje, jak dodać komunikat do kolejki.
 
 ```powershell
 # Create a new message using a constructor of the CloudQueueMessage class
-$queueMessage = New-Object -TypeName "Microsoft.WindowsAzure.Storage.Queue.CloudQueueMessage,$($queue.CloudQueue.GetType().Assembly.FullName)" `
+$queueMessage = New-Object -TypeName "Microsoft.Azure.Storage.Queue.CloudQueueMessage,$($queue.CloudQueue.GetType().Assembly.FullName)" `
   -ArgumentList "This is message 1"
 # Add a new message to the queue
 $queue.CloudQueue.AddMessageAsync($QueueMessage)
 
 # Add two more messages to the queue 
-$queueMessage = New-Object -TypeName "Microsoft.WindowsAzure.Storage.Queue.CloudQueueMessage,$($queue.CloudQueue.GetType().Assembly.FullName)" `
+$queueMessage = New-Object -TypeName "Microsoft.Azure.Storage.Queue.CloudQueueMessage,$($queue.CloudQueue.GetType().Assembly.FullName)" `
   -ArgumentList "This is message 2"
 $queue.CloudQueue.AddMessageAsync($QueueMessage)
-$queueMessage = New-Object -TypeName "Microsoft.WindowsAzure.Storage.Queue.CloudQueueMessage,$($queue.CloudQueue.GetType().Assembly.FullName)" `
+$queueMessage = New-Object -TypeName "Microsoft.Azure.Storage.Queue.CloudQueueMessage,$($queue.CloudQueue.GetType().Assembly.FullName)" `
   -ArgumentList "This is message 3"
 $queue.CloudQueue.AddMessageAsync($QueueMessage)
 ```
@@ -130,7 +131,7 @@ Komunikaty są odczytywane w kolejności pierwszy wejściu — pierwszy na wyjś
 
 To **limitu czasu niewidoczności** definiuje, jak długo komunikat pozostaje niewidoczna, zanim stanie się znów dostępne do przetwarzania. Wartość domyślna to 30 sekund. 
 
-Kod odczytuje komunikat z kolejki w dwóch etapach. Gdy wywołujesz [Microsoft.WindowsAzure.Storage.Queue.CloudQueue.GetMessage](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.queue.cloudqueue.getmessage.aspx) metody, uzyskasz następny komunikat w kolejce. Komunikat zwrócony z funkcji **GetMessage** staje się niewidoczny dla innego kodu odczytującego komunikaty z tej kolejki. Aby zakończyć usuwanie komunikatu z kolejki, należy wywołać [Microsoft.WindowsAzure.Storage.Queue.CloudQueue.DeleteMessage](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.queue.cloudqueue.deletemessage.aspx) metody. 
+Kod odczytuje komunikat z kolejki w dwóch etapach. Gdy wywołujesz [Microsoft.Azure.Storage.Queue.CloudQueue.GetMessage](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessage?redirectedfrom=MSDN&view=azure-dotnet#Microsoft_WindowsAzure_Storage_Queue_CloudQueue_GetMessage_System_Nullable_System_TimeSpan__Microsoft_WindowsAzure_Storage_Queue_QueueRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) metody, uzyskasz następny komunikat w kolejce. Komunikat zwrócony z funkcji **GetMessage** staje się niewidoczny dla innego kodu odczytującego komunikaty z tej kolejki. Aby zakończyć usuwanie komunikatu z kolejki, należy wywołać [Microsoft.Azure.Storage.Queue.CloudQueue.DeleteMessage](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessage?redirectedfrom=MSDN&view=azure-dotnet#overloads) metody. 
 
 W poniższym przykładzie możesz zapoznaj się z trzech kolejka komunikatów, a następnie poczekaj 10 sekund (limit czasu niewidoczności). A następnie przeczytaj ponownie trzy komunikaty usuwanie komunikatów po ich przeczytaniu przez wywołanie metody **DeleteMessage**. Jeśli zostanie podjęta próba odczytu kolejki po usunięciu komunikaty, $queueMessage zostaną zwrócone jako wartości NULL.
 

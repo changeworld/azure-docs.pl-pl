@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/26/2019
+ms.date: 05/02/2019
 ms.author: monhaber
-ms.openlocfilehash: c4b2ed1269ef669def2b6f2036d34a40fb181c5d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 581db3ebe3ce1cad5c8db3702af179e141f334b4
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60910468"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143456"
 ---
 # <a name="adaptive-application-controls-in-azure-security-center"></a>Funkcje adaptacyjnego sterowania aplikacjami w usłudze Azure Security Center
 Z tego przewodnika dowiesz się, jak skonfigurować funkcje sterowania aplikacjami w usłudze Azure Security Center.
@@ -154,6 +154,22 @@ Lista zawiera:
 
 Usługa Azure Security Center umożliwia zdefiniowanie zasad umieszczania na białej liście aplikacji na innych niż zalecane grupy maszyn wirtualnych, jak również. Postępuj zgodnie z tymi samymi zasadami, opisane zostały wcześniej, aby skonfigurować zasady umieszczania na białej liście aplikacji na tych grup, jak również.
 
+## <a name="move-a-vm-from-one-group-to-another"></a>Przenoszenie maszyny Wirtualnej z jednej grupy do innego
+
+ Po przeniesieniu do innej maszyny Wirtualnej z jednej grupy zasad kontroli aplikacji, które są stosowane do niego zmian w ustawieniach grupy, przenieść go do. To również przenieść Maszynę wirtualną z skonfigurowanej grupy, do grupy inne niż skonfigurowane, co powoduje usunięcie do zasad kontroli aplikacji, która wcześniej została zastosowana do maszyny Wirtualnej.
+
+ 1. Z **funkcje adaptacyjnego sterowania aplikacjami** strony, od **SKONFIGUROWANE** kartę, kliknij grupę, do której należy maszyna wirtualna ma zostać przeniesiona obecnie.
+1. Kliknij przycisk **skonfigurowane maszyny wirtualne i komputery**.
+1. Kliknij trzy kropki znajdujące się w wierszu maszynę Wirtualną, aby przenieść, a następnie kliknij przycisk **przenieść**. **Przenieś komputer do innej grupy** zostanie otwarte okno.
+
+    ![Ochrona](./media/security-center-adaptive-application/adaptive-application-move-group.png)
+
+ 1. Wybierz grupę, aby przenieść maszynę Wirtualną, a następnie kliknij przycisk **Przenieś komputer**i kliknij przycisk **Zapisz**.
+
+    ![Ochrona](./media/security-center-adaptive-application/adaptive-application-move-group2.png)
+
+ > [!NOTE]
+> Należy kliknąć przycisk **Zapisz** po kliknięciu przycisku **Przenieś komputer**. Jeśli nie klikniesz **Zapisz**, a następnie komputera nie zostaną przeniesione.
 
 ## <a name="next-steps"></a>Kolejne kroki
 W tym dokumencie przedstawiono sposób użycia funkcji adaptacyjnego sterowania aplikacjami w usłudze Azure Security Center do listy dozwolonych działających na platformie Azure i - Azure VMs. Aby dowiedzieć się więcej na temat Centrum zabezpieczeń Azure, zobacz następujące artykuły:
