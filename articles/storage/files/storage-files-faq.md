@@ -8,12 +8,12 @@ ms.date: 01/02/2019
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 4186af31e17acea09e6b3c1a0121d2fcbe63f800
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: cdffbfd11a0f1c7d99818fa00f550965774b9b31
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64917608"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190063"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Często zadawane pytania (FAQ) dotyczące usługi Azure Files
 [Usługa Azure Files](storage-files-introduction.md) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem będące standardami branżowymi [protokołu bloku komunikatów serwera (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Udziały plików platformy Azure można zainstalować równolegle na chmurowych lub lokalnych wdrożeń systemu Windows, Linux i macOS. Udziały plików platformy Azure na komputerach z systemem Windows Server, również buforujesz przy użyciu usługi Azure File Sync w celu zapewnienia szybkiego dostępu blisko użycia danych.
@@ -145,7 +145,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi A
 
 * <a id="afs-os-support"></a>
   **Z systemu Windows Server 2008 R2, Linux lub urządzenie magazynu dołączone do sieci (NAS) można używać usługi Azure File Sync?**  
-    Obecnie usługa Azure File Sync obsługuje tylko w systemie Windows Server 2016 i Windows Server 2012 R2. W tej chwili nie mamy inne plany, które firma Microsoft może udostępniać, ale jest otwarty w celu obsługi dodatkowych platform, na podstawie oczekiwań klienta. Daj nam znać o [UserVoice plików Azure](https://feedback.azure.com/forums/217298-storage/category/180670-files) platformach mamy do obsługi.
+    Obecnie usługa Azure File Sync obsługuje 2019 r Server systemu Windows, Windows Server 2016 i Windows Server 2012 R2. W tej chwili nie mamy inne plany, które firma Microsoft może udostępniać, ale jest otwarty w celu obsługi dodatkowych platform, na podstawie oczekiwań klienta. Daj nam znać o [UserVoice plików Azure](https://feedback.azure.com/forums/217298-storage/category/180670-files) platformach mamy do obsługi.
 
 * <a id="afs-tiered-files-out-of-endpoint"></a>
   **Dlaczego pliki warstwowe są dostępne poza przestrzeni nazw punktu końcowego serwera**  
@@ -222,7 +222,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi A
 * <a id="encryption-at-rest"></a>
 **Jak zapewnić, że moje udziału plików platformy Azure są szyfrowane, gdy?**  
 
-    Szyfrowanie usługi Azure Storage jest w trakcie jest domyślnie włączona, we wszystkich regionach. W tych regionach nie trzeba podjąć działania, aby włączyć szyfrowanie. Inne regiony, zobacz [szyfrowanie po stronie serwera](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+    Tak. Aby uzyskać więcej informacji, zobacz [szyfrowanie usługi Azure Storage](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 * <a id="access-via-browser"></a>
 **Jak uzyskiwanie dostępu do określonego pliku przy użyciu przeglądarki sieci web?**  

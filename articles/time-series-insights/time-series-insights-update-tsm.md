@@ -8,48 +8,48 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 04/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: eeab01146c938ec118deae08a30af85af4186a2e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a9de28c96c2833033a3811835f57cffcccdf4619
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64714065"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190332"
 ---
 # <a name="time-series-model"></a>Model szeregów czasowych
 
 W tym artykule opisano Model szeregów czasowych część Azure czas Series Insights w wersji zapoznawczej. Omówiono w nim samym modelu, jego możliwości i jak rozpocząć tworzenie i aktualizowanie własnego modelu.
 
-Tradycyjnie dane, które są zbierane z urządzeń IoT brakuje informacji kontekstowych, który sprawia, że trudno znaleźć i szybkie analizowanie czujników. Głównym celem dla modelu szeregów czasowych to uprościć Znajdowanie i analizowanie danych IoT. Powoduje to osiągnięcie tego celu, włączając nadzorowaną, konserwacja i Wzbogacanie danych szeregów czasowych, ułatwiających przygotowanie przygotowane zestawów danych. 
+Tradycyjnie dane, które są zbierane z urządzeń IoT brakuje informacji kontekstowych, który sprawia, że trudno znaleźć i szybkie analizowanie czujników. Głównym celem dla modelu szeregów czasowych to uprościć Znajdowanie i analizowanie danych IoT. Powoduje to osiągnięcie tego celu, włączając nadzorowaną, konserwacja i Wzbogacanie danych szeregów czasowych, ułatwiających przygotowanie przygotowane zestawów danych.
 
 Modeli szeregów czasowych odgrywają kluczową rolę w zapytaniach i nawigacji, ponieważ ich nakreślić kontekst dla urządzeń i innych urządzeń jednostek. Dane, które zawiera utrwalone w modelu szeregów czasowych obsługuje zapytania dla szeregów czasowych obliczeń, wykorzystując formuły są w nich przechowywane.
 
-![TSM][1]
+[![Omówienie modelu serii czasu](media/v2-update-tsm/tsm.png)](media/v2-update-tsm/tsm.png#lightbox)
 
 ## <a name="key-capabilities"></a>Najważniejsze możliwości
 
 W celu się to proste i łatwe do zarządzania contextualization serii czasu modelu szeregów czasowych włącza następujące możliwości w czasie Series Insights w wersji zapoznawczej. Ułatwia:
 
 * Tworzenie i zarządzanie obliczeń lub formuł, przekształcać dane, wykorzystując funkcje skalarne, agregacji operacje i tak dalej.
-
 * Definiowanie relacji nadrzędny podrzędny, Włącz nawigacji i odwołania do zapewniania kontekstu danych telemetrycznych serii czasu.
-
 * Definiowanie właściwości, które są skojarzone z wystąpień część *wystąpienia pól* i używać ich do tworzenia hierarchii.
 
-## <a name="times-series-model-key-components"></a>Czas najważniejsze składniki modelu szeregów
+## <a name="entity-components"></a>Składniki jednostki
 
-Model szeregów czasowych obejmuje trzy główne składniki:
+Modeli szeregów czasowych są trzy podstawowe składniki:
 
-* Czas modelu szeregów *typów*
-* Czas modelu szeregów *hierarchii*
-* Czas modelu szeregów *wystąpień*
+* <a href="#time-series-model-types">Typy modelu serii czasu</a>
+* <a href="#time-series-model-hierarchies">Hierarchie Model serii czasu</a>
+* <a href="#time-series-model-instances">Wystąpienia serii modelu godziny</a>
+
+Te składniki są połączone, aby określić Model szeregów czasowych i organizowania danych usługi Azure Time Series Insights.
 
 ## <a name="time-series-model-types"></a>Typy modelu serii czasu
 
 Czas modelu szeregów *typy* pomagającym w zdefiniowaniu zmiennych lub formuł do wykonywania obliczeń. Typy nie są skojarzone z określonym wystąpieniem usługi Time Series Insights. Typ może mieć co najmniej jednej zmiennej. Na przykład wystąpienie usługi Time Series Insights może być typu *czujnik temperatury*, która składa się ze zmiennych *średnia temperatura*, *minimalna temperatura*i *maksymalna temperatura*. Możemy utworzyć domyślny typ, gdy dane zacznie przepływać do usługi Time Series Insights. Domyślny typ, można je pobrać i aktualizowane na podstawie ustawienia modelu. Domyślne typy mają zmienną, który zlicza liczbę zdarzeń.
 
-## <a name="time-series-model-type-json-example"></a>Przykład kodu JSON typ modelu serii czasu
+### <a name="time-series-model-type-json-example"></a>Przykład kodu JSON typ modelu serii czasu
 
 Przykład:
 
@@ -76,32 +76,20 @@ Przykład:
 
 Aby uzyskać więcej informacji na temat typów modelu szeregów czasowych, zobacz [dokumentację referencyjną](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api).
 
-## <a name="variables"></a>Zmienne
+### <a name="variables"></a>Zmienne
 
 Czas Series Insights typy mają zmiennych, które są nazwane obliczenia przez wartości z tych zdarzeń. Definicje zmiennych w czasie Series Insights zawiera formułę i obliczanie reguły. Definicje zmiennych obejmują *rodzaj*, *wartość*, *filtru*, *redukcji*, i *granice*. Zmienne są przechowywane w definicji typu w modelu szeregów czasowych i można podać wbudowane za pośrednictwem interfejsów API zapytań, aby zastąpić przechowywaną definicję.
 
 Następujące macierz działa jako legendę definicje zmiennych:
 
-![tabela][2]
+[![Typ definicji zmiennej tabeli](media/v2-update-tsm/table.png)](media/v2-update-tsm/table.png#lightbox)
 
-### <a name="variable-kind"></a>Rodzaj zmiennej
-
-Obsługiwane są następujące typy zmiennych:
-
-* *Numeryczne*
-* *Aggregate*
-
-### <a name="variable-filter"></a>Filtr zmiennej
-
-Filtry zmiennej Określ klauzulę opcjonalny filtr, aby ograniczyć liczbę wierszy, są traktowane jako obliczeń w oparciu o kryteria.
-
-### <a name="variable-value"></a>Wartość zmiennej
-
-Wartości zmiennych i powinny być używane w obliczeń. Jest to kolumna w zdarzeń, które firma Microsoft powinni zapoznać się z.
-
-### <a name="variable-aggregation"></a>Agregacja zmiennej
-
-Funkcji agregującej zmiennej umożliwia część obliczeń. Time Series Insights obsługuje agregacje regularne (to znaczy, *min*, *max*, *avg*, *suma*, i *liczba*).
+| Definicja | Opis |
+| --- | ---|
+| Rodzaj zmiennej |  *Liczbowe* i *agregacji* rodzaju są obsługiwane. |
+| Filtr zmiennej | Filtry zmiennej Określ klauzulę opcjonalny filtr, aby ograniczyć liczbę wierszy, są traktowane jako obliczeń w oparciu o kryteria. |
+| Wartość zmiennej | Wartości zmiennych i powinny być używane w obliczeń. Odpowiednie pole do odwoływania się do dla danego punktu danych. |
+| Agregacja zmiennej | Funkcji agregującej zmiennej umożliwia część obliczeń. Time Series Insights obsługuje agregacje regularne (to znaczy, *min*, *max*, *avg*, *suma*, i *liczba*). |
 
 ## <a name="time-series-model-hierarchies"></a>Hierarchie Model serii czasu
 
@@ -146,7 +134,7 @@ W zależności od *wystąpienia pól*, hierarchii atrybutów i wartości są wy�
 | ID4 | "Tworzenie" = "1000", "floor" = "10"  |
 | ID5 | "Tworzenie", "floor" ani "pomieszczenie" jest ustawiona |
 
-W powyższym przykładzie ID1 i ID4 pokazuje jako część hierarchii H1 w Eksploratorze usługi Azure Time Series Insights, a pozostałe są klasyfikowane jako *wystąpień bez elementów nadrzędnych* , ponieważ nie jest zgodna z hierarchii określone dane.
+W powyższym przykładzie **ID1** i **ID4** Pokaż jako część hierarchii H1 w Eksploratorze usługi Azure Time Series Insights, a pozostałe są klasyfikowane jako *wystąpień bez elementów nadrzędnych* ponieważ nie są one zgodne z hierarchii określone dane.
 
 ## <a name="time-series-model-instances"></a>Wystąpienia serii modelu godziny
 
@@ -156,9 +144,9 @@ Wystąpienia są definiowane przez *typeId*, *timeSeriesId*, *nazwa*, *opis*, *h
 
 *instanceFields* są właściwości wystąpienia i danych statycznych, który definiuje wystąpienie. Wartości właściwości hierarchia lub hierarchia nie mogą określać jednocześnie obsługując indeksowanie w celu wykonywania operacji wyszukiwania.
 
-*Nazwa* właściwość jest opcjonalna i z uwzględnieniem wielkości liter. Jeśli *nazwa* jest niedostępne, zostaną domyślnie nazwę serii czasu. Jeśli *nazwa* zostanie podana, identyfikator serii czasu będą nadal dostępne w źródle (siatka poniżej wykresów w Eksploratorze). 
+*Nazwa* właściwość jest opcjonalna i wielkość liter. Jeśli *nazwa* jest niedostępne, zostaną domyślnie nazwę serii czasu. Jeśli *nazwa* zostanie podana, identyfikator serii czasu będą nadal dostępne w źródle (siatka poniżej wykresów w Eksploratorze).
 
-## <a name="time-series-model-instance-json-example"></a>Przykład kodu JSON wystąpienia modelu serii czasu
+### <a name="time-series-model-instance-json-example"></a>Przykład kodu JSON wystąpienia modelu serii czasu
 
 Przykład:
 
@@ -180,7 +168,7 @@ Przykład:
 
 Aby uzyskać więcej informacji na temat wystąpienia modelu szeregów czasowych, zobacz [dokumentację referencyjną](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api).
 
-## <a name="time-series-model-settings-example"></a>Przykład ustawień modelu serii czasu
+### <a name="time-series-model-settings-example"></a>Przykład ustawień modelu serii czasu
 
 Przykład:
 
@@ -206,7 +194,3 @@ Aby uzyskać więcej informacji na temat ustawień modelu szeregów czasowych, z
 - Zobacz [magazynu Azure czas Series Insights w wersji zapoznawczej i ruch przychodzący](./time-series-insights-update-storage-ingress.md).
 
 - Zobacz Omówienie nowej [modelu szeregów czasowych](https://docs.microsoft.com/rest/api/time-series-insights/preview-model).
-
-<!-- Images -->
-[1]: media/v2-update-tsm/tsm.png
-[2]: media/v2-update-tsm/table.png

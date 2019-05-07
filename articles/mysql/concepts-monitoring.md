@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/05/2018
 ms.openlocfilehash: 9dcb79e7f4ebd43da3f6c6fd35fa0707898d7ec8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 05/06/2019
 ms.locfileid: "60525568"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>Monitorowanie usługi Azure Database for MySQL
@@ -33,9 +33,9 @@ Te metryki są dostępne dla usługi Azure Database for MySQL:
 |serverlog_storage_usage|Używany Magazyn dzienników serwera|Bajty|Ilość miejsca w magazynie dziennika na serwerze.|
 |serverlog_storage_limit|Limit magazynu dziennika serwera|Bajty|Przechowywanie dziennika serwera maksymalną dla tego serwera.|
 |storage_limit|Limit magazynu|Bajty|Maksymalny rozmiar magazynu dla tego serwera.|
-|active_connections|Aktywne połączenia|Licznik|Liczba aktywnych połączeń z serwerem.|
-|connections_failed|Połączenia zakończone niepowodzeniem|Licznik|Liczba połączeń z serwerem nie powiodło się.|
-|seconds_behind_master|Opóźnienie replikacji w ciągu kilku sekund|Licznik|Liczba sekund, przez serwer repliki jest opóźnione względem serwera głównego.|
+|active_connections|Aktywne połączenia|Count|Liczba aktywnych połączeń z serwerem.|
+|connections_failed|Połączenia zakończone niepowodzeniem|Count|Liczba połączeń z serwerem nie powiodło się.|
+|seconds_behind_master|Opóźnienie replikacji w ciągu kilku sekund|Count|Liczba sekund, przez serwer repliki jest opóźnione względem serwera głównego.|
 |network_bytes_egress|Sieć — wyjście|Bajty|Sieć się między aktywnych połączeń.|
 |network_bytes_ingress|Sieć — wejście|Bajty|Sieć w różnych aktywnych połączeń.|
 |backup_storage_used|Używany magazyn kopii zapasowych|Bajty|Wielkość wykorzystanego magazynu kopii zapasowych.|

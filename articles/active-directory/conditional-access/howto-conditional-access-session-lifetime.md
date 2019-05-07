@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 884b3c2d3f4414427df87ee5f04138416f363b1c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 0ff9ad850b111cf080447b699d35b4ef8205e006
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64577228"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190220"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Konfigurowanie zarządzania sesji uwierzytelniania przy użyciu dostępu warunkowego
 
@@ -53,7 +53,7 @@ Wartość domyślna usługi Azure AD dla trwałości sesji przeglądarki umożli
 Dostęp warunkowy jest możliwość usługi Azure AD Premium i wymaga licencji premium. Jeśli chcesz dowiedzieć się więcej na temat dostępu warunkowego, zobacz [co to jest dostęp warunkowy w usłudze Azure Active Directory?](overview.md#license-requirements-for-using-conditional-access)
 
 > [!WARNING]
-> Jeśli używasz [można skonfigurować okres istnienia tokenu](../develop/active-directory-configurable-token-lifetimes.md) są wyposażone w obecnie w publicznej wersji zapoznawczej, należy pamiętać, że firma Microsoft nie obsługuje tworzenia dwóch różnych zasad dla tej samej kombinacji aplikacji lub użytkownika: jeden z tej funkcji i inną z żądanymi funkcję można skonfigurować okres istnienia tokenu. Firma Microsoft planuje wycofanie funkcji można skonfigurować okres istnienia tokenu 1 listopada i zastąp go za pomocą funkcji zarządzania sesji uwierzytelniania dostępu warunkowego.  
+> Jeśli używasz [można skonfigurować okres istnienia tokenu](../develop/active-directory-configurable-token-lifetimes.md) są wyposażone w obecnie w publicznej wersji zapoznawczej, należy pamiętać, że firma Microsoft nie obsługuje tworzenia dwóch różnych zasad dla tej samej kombinacji aplikacji lub użytkownika: jeden z tej funkcji i inną z żądanymi funkcję można skonfigurować okres istnienia tokenu. Firma Microsoft planuje wycofanie funkcji można skonfigurować okres istnienia tokenu od 15 października i zastąp go za pomocą funkcji zarządzania sesji uwierzytelniania dostępu warunkowego.  
 
 ### <a name="policy-1-sign-in-frequency-control"></a>Zasady 1: Kontrolka logowania częstotliwości
 

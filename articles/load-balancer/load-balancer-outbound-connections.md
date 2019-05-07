@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/05/2019
+ms.date: 05/02/2019
 ms.author: kumud
-ms.openlocfilehash: a42a56b8a4a54c33297461a427a2b64b72357020
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d5f52829f5895b30afd160cc8ded755332aca5c5
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60591456"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190167"
 ---
 # <a name="outbound-connections-in-azure"></a>Połączenia wychodzące na platformie Azure
 
@@ -176,13 +176,13 @@ SNAT porty są określonego protokołu transportowego IP (TCP i UDP są obsługi
 
 ### <a name="tcp-snat-port-release"></a>Wersja port TCP SNAT
 
-- Jeśli oba serwerze/kliencie wysyła FIN/potwierdzenia, SNAT port zostaną wydane po 240 sekundach.
+- Jeśli albo serwerze/kliencie wysyła FINACK, SNAT port zostaną wydane po 240 sekundach.
 - Jeśli występuje RST, SNAT port zostaną wydane po 15 sekundach.
-- Osiągnięto limit czasu bezczynności
+- Jeśli zostanie osiągnięty limit czasu bezczynności portu jest zwalniana.
 
 ### <a name="udp-snat-port-release"></a>Wersja port UDP SNAT
 
-- Osiągnięto limit czasu bezczynności
+- Jeśli zostanie osiągnięty limit czasu bezczynności portu jest zwalniana.
 
 ## <a name="problemsolving"></a> Rozwiązywanie problemów 
 

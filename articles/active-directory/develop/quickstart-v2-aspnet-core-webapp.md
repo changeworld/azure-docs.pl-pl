@@ -17,12 +17,12 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1150e68167ad4e932acce744cdd5eba88e49a8c4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e51437a99217316ead50d4075be52f089225e618
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60302373"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190868"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Szybki start: dodawanie logowania przy użyciu konta Microsoft do aplikacji internetowej ASP.NET Core
 
@@ -73,13 +73,13 @@ W tym przewodniku Szybki start dowiesz się, w jaki sposób aplikacja internetow
 
 #### <a name="step-2-download-your-aspnet-core-project"></a>Krok 2: Pobieranie projektu ASP.NET Core
 
-- [Pobierz rozwiązanie programu Visual Studio 2017.](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
+- [Pobierz rozwiązanie Visual Studio 2019 r.](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>Krok 3: Konfigurowanie projektu programu Visual Studio
 
 1. Wyodrębnij plik zip do folderu lokalnego w ramach folderu głównego, na przykład **C:\Azure-Samples**.
-1. Jeśli używasz programu Visual Studio 2017, otwórz rozwiązanie w programie Visual Studio (opcjonalne).
-1. Edytuj plik **appsettings.json**. Znajdź `ClientId` i zaktualizuj wartość `ClientId` z **identyfikator aplikacji (klienta)** wartość aplikacji, które właśnie zostało zarejestrowane. 
+1. Jeśli używasz programu Visual Studio 2019 r, otwórz rozwiązanie w programie Visual Studio (opcjonalne).
+1. Edytuj plik **appsettings.json**. Znajdź `ClientId` i zaktualizuj wartość `ClientId` z **identyfikator aplikacji (klienta)** wartość aplikacja została zarejestrowana. 
 
     ```json
     "ClientId": "Enter_the_Application_Id_here"
@@ -99,7 +99,7 @@ W tym przewodniku Szybki start dowiesz się, w jaki sposób aplikacja internetow
 
 ## <a name="more-information"></a>Więcej informacji
 
-Ta sekcja zawiera omówienie kodu wymaganego do logowania użytkowników. Przydatne może być zrozumienie działania kodu i głównych argumentów oraz poznanie kwestii dotyczących tego, czy warto dodawać funkcję logowania do istniejącej aplikacji ASP.NET Core.
+Ta sekcja zawiera przegląd kodu jest wymagane do logowania użytkowników. W tym omówieniu może być grupowaniu można sprawdzić, jak działa kod, głównym argumentów, a także jeśli chcesz dodać logowanie do istniejącej aplikacji platformy ASP.NET Core.
 
 ### <a name="startup-class"></a>Klasa początkowa
 
@@ -136,9 +136,9 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-Metoda `AddAuthentication` służy do konfigurowania usługi pod kątem dodawania uwierzytelniania na podstawie plików cookie, które jest używane w scenariuszach przeglądarki, oraz do wysyłania wezwania względem protokołu OpenID Connect. 
+Metoda `AddAuthentication` służy do konfigurowania usługi do dodania na podstawie plików cookie uwierzytelniania, który jest używany w scenariuszach przeglądarki i ustawić żądania uwierzytelniania OpenID Connect. 
 
-Wiersz zawierający `.AddAzureAd` dodaje uwierzytelnianie platformy Microsoft tożsamości do aplikacji. Następnie jest on skonfigurowany do logowania przy użyciu Microsoft platformy tożsamości z punktu końcowego.
+Wiersz zawierający `.AddAzureAd` dodaje uwierzytelnianie platformy Microsoft tożsamości do aplikacji. Następnie jest on skonfigurowany do logowania za pomocą programu Microsoft platformy tożsamości z punktu końcowego.
 
 > |Lokalizacja  |  |
 > |---------|---------|
@@ -153,13 +153,13 @@ Wiersz zawierający `.AddAzureAd` dodaje uwierzytelnianie platformy Microsoft to
 
 ### <a name="protect-a-controller-or-a-controllers-method"></a>Ochrona kontrolera lub metody kontrolera
 
-Kontroler lub jego metody można chronić za pomocą atrybutu `[Authorize]`. Ten atrybut ogranicza dostęp do kontrolera lub jego metod, zezwalając tylko na uwierzytelnionych użytkowników, co oznacza, że wezwanie do uwierzytelnienia może zostać uruchomione w celu uzyskania dostępu do kontrolera, jeśli użytkownik nie został uwierzytelniony.
+Kontroler lub jego metody można chronić za pomocą atrybutu `[Authorize]`. Ten atrybut ogranicza dostęp do kontrolera lub metody, zezwalając tylko uwierzytelnionych użytkowników, co oznacza, można uruchomić dostępu kontrolera, jeśli użytkownik nie jest uwierzytelniony do uwierzytelnienia.
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Zapoznaj się z repozytorium GitHub na potrzeby tego samouczka platformy ASP.NET Core, aby uzyskać więcej informacji, w tym instrukcje dotyczące sposobu dodawania uwierzytelniania do zupełnie nowej aplikacji sieci Web platformy ASP.NET Core, jak wywołać program Microsoft Graph i inne APIs Microsoft sposób wywołania z własnymi interfejsami API, jak dodać autoryzacja, jak logowania użytkowników w innych chmurach krajowej lub przy użyciu tożsamości społecznościowych i nie tylko:
+Zapoznaj się z repozytorium GitHub na potrzeby tego samouczka platformy ASP.NET Core, aby uzyskać więcej informacji, w tym instrukcje dotyczące sposobu dodawania uwierzytelniania do zupełnie nowej aplikacji sieci Web platformy ASP.NET Core, jak wywołać program Microsoft Graph i inne APIs Microsoft sposób wywołania z własnymi interfejsami API, jak dodać autoryzacja, jak mają logować użytkowników w innych chmurach krajowej lub przy użyciu tożsamości społecznościowych i nie tylko:
 
 > [!div class="nextstepaction"]
 > [Samouczek dotyczący aplikacji sieci Web Core ASP.NET](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/)

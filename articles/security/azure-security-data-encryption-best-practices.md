@@ -1,10 +1,10 @@
 ---
-title: Bezpieczeństwo i szyfrowanie danych najlepsze rozwiązania | Dokumentacja firmy Microsoft
+title: Bezpieczeństwo i szyfrowanie danych najlepsze praktyki — Microsoft Azure
 description: Ten artykuł zawiera zestaw najlepsze rozwiązania dotyczące bezpieczeństwa danych i szyfrowanie za pomocą wbudowanych funkcji platformy Azure.
 services: security
 documentationcenter: na
-author: barclayn
-manager: mbalwin
+author: TerryLanfear
+manager: barbkess
 editor: TomSh
 ms.assetid: 17ba67ad-e5cd-4a8f-b435-5218df753ca4
 ms.service: security
@@ -12,33 +12,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/19/2018
-ms.author: barclayn
-ms.openlocfilehash: 686d4a8ac5239af12206b57072cc00aa10114d79
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.date: 05/06/2019
+ms.author: terrylan
+ms.openlocfilehash: 9955450b468ef38ba456d7ee73d9681de677494d
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62125123"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190704"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Bezpieczeństwo i szyfrowanie danych platformy Azure, najlepsze rozwiązania
+W tym artykule opisano najlepsze rozwiązania dotyczące zabezpieczeń i szyfrowania danych.
 
+Najlepsze rozwiązania są oparte na konsensus opinii i pracować z aktualnymi możliwościami platformy Azure, a zestawy funkcji. Opinie i technologii zmieniają się wraz z upływem czasu, a w tym artykule jest aktualizowana w regularnych odstępach czasu, aby odzwierciedlać wprowadzone zmiany.
+
+## <a name="protect-data"></a>Ochrona danych
 Aby ułatwić ochronę danych w chmurze, musisz uwzględnić możliwe stany, w którym dane mogą wystąpić i kontrolki są dostępne dla tego stanu. Najlepsze rozwiązania dotyczące zabezpieczeń i szyfrowania danych platformy Azure odnoszą się do następujących stanów danych:
 
 - Magazynowane: Obejmuje to wszystkie informacje obiektów magazynu, kontenerów i typy, statycznie występujących na nośniku fizycznym, czy magnetyczne lub dysków optycznych.
 - Podczas przesyłania: Dane są przesyłane między składnikami, lokalizacji lub programów, jest w drodze. Przykłady to transfer za pośrednictwem sieci, między usługi Service bus (ze środowiska lokalnego do chmury i na odwrót, w tym połączenia hybrydowe, takie jak usługi ExpressRoute), lub w trakcie procesu wejścia/wyjścia.
-
-W tym artykule omówimy zbiór danych na platformie Azure bezpieczeństwo i szyfrowanie najlepszych rozwiązań. Następujące najlepsze rozwiązania są uzyskiwane z naszego środowiska z zabezpieczenia danych systemu Azure, szyfrowania i procesy, przez klientów, takich jak samodzielnie.
-
-Dla każdego najlepszym rozwiązaniem jest wyjaśnimy:
-
-* Co to jest najlepsze rozwiązanie
-* Dlaczego chcesz włączyć na tym najlepszym rozwiązaniem jest
-* W przypadku awarii umożliwiające najlepszym rozwiązaniem, co może być skutkiem
-* Możliwe alternatywy najlepsze rozwiązanie polegające na
-* Jak można dowiesz się umożliwić najlepszym rozwiązaniem jest
-
-W tym artykule bezpieczeństwo danych platformy Azure i najlepszych rozwiązań szyfrowania opiera się na opinii consensus i funkcji platformy Azure i zestawy funkcji występujących w czasie, który został zapisany w tym artykule. Opinie i technologii zmieniają się wraz z upływem czasu, a w tym artykule zostanie zaktualizowana w regularnych odstępach czasu, aby odzwierciedlać wprowadzone zmiany.
 
 ## <a name="choose-a-key-management-solution"></a>Wybieranie rozwiązania do zarządzania kluczami
 
@@ -95,7 +87,7 @@ Ponieważ większość ataków skierować użytkownika końcowego, staje się pu
 
 Usługi Azure Storage i Azure SQL Database jako opcja szyfrowania przechowywanych danych domyślnie i wiele szyfrowania oferty usługi. Aby zachować kontrolę nad kluczami, które dostępu i szyfrowanie danych, można użyć usługi Azure Key Vault. Zobacz [obsługi modelu szyfrowania dostawcy zasobów platformy Azure, aby dowiedzieć się więcej](azure-security-encryption-atrest.md#azure-resource-providers-encryption-model-support).
 
-**Najlepsze praktyki**: Aby zmniejszyć ryzyko związane z nieautoryzowany dostęp do danych, należy używać szyfrowania.
+**Najlepsze praktyki**: Aby zmniejszyć ryzyko związane z nieautoryzowany dostęp do danych, należy używać szyfrowania.   
 **Szczegóły**: Szyfrowanie dysków, przed przystąpieniem do napisania danych poufnych do nich.
 
 Organizacje, które nie wymuszają szyfrowanie danych są bardziej widoczne kwestii poufności danych. Na przykład nieautoryzowani lub nieautoryzowane elementy użytkownicy mogą kradzieży danych na kontach których bezpieczeństwo zostało naruszone lub uzyskania nieautoryzowanego dostępu do danych zakodowane w formacie zwykłego. Firm również Musisz udowodnić, że są one skrupulatne poprawianie listy i korzystać z funkcji poprawne zabezpieczenia, aby zwiększyć ich bezpieczeństwo danych w celu zachowania zgodności z przepisami w branży.
@@ -118,7 +110,7 @@ Poniżej przedstawiono najlepsze rozwiązania dotyczące korzystania z bramy Azu
 **Szczegóły**: Użyj [ExpressRoute](../expressroute/expressroute-introduction.md). Jeśli zdecydujesz się używać usługi ExpressRoute, można również zaszyfrować dane na poziomie aplikacji, za pomocą [SSL/TLS](https://support.microsoft.com/kb/257591) lub innych protokołów w celu zapewnienia dodatkowej ochrony.
 
 **Najlepsze rozwiązanie**: Korzystaj z usługi Azure Storage w witrynie Azure portal.   
-**Szczegóły**: Wszystkie wykonywane transakcje za pośrednictwem protokołu HTTPS. Można również użyć [interfejsu API REST magazynu](https://msdn.microsoft.com/library/azure/dd179355.aspx) za pośrednictwem protokołu HTTPS do interakcji z [usługi Azure Storage](https://azure.microsoft.com/services/storage/) i [usługi Azure SQL Database](https://azure.microsoft.com/services/sql-database/).
+**Szczegóły**: Wszystkie wykonywane transakcje za pośrednictwem protokołu HTTPS. Można również użyć [interfejsu API REST magazynu](https://msdn.microsoft.com/library/azure/dd179355.aspx) za pośrednictwem protokołu HTTPS do interakcji z [usługi Azure Storage](https://azure.microsoft.com/services/storage/).
 
 Organizacje, które się nie powieść, aby chronić przesyłane dane są bardziej podatne na [ataków typu man-in--middle](https://technet.microsoft.com/library/gg195821.aspx), [podsłuchiwaniu](https://technet.microsoft.com/library/gg195641.aspx)i przejęcie kontroli sesji. Te ataki może być pierwszym działaniem wykonywanym w uzyskiwaniu dostępu do poufnych danych.
 

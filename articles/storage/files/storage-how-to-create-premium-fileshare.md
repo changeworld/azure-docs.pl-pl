@@ -1,29 +1,28 @@
 ---
-title: Tworzenie konta usługi storage Azure filestorage
-description: W tym artykule dowiesz się, jak utworzyć filestorage (wersja zapoznawcza) i udział plików w warstwie premium.
+title: Utwórz udział plików platformy Azure — wersja premium
+description: W tym artykule dowiesz się, jak utworzyć udział plików platformy Azure — wersja premium.
 services: storage
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/25/2019
+ms.date: 05/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0eca706c9082b1fa60e13a0878fbb3061425c9bf
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 265a1cf0a8a5e1e099a4ec7a9f0d674e0c474dd4
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64574415"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190095"
 ---
-# <a name="how-to-create-an-azure-premium-file-share"></a>Jak utworzyć udział plików platformy Azure — wersja premium
-
-Typ konta magazynu filestorage (wersja zapoznawcza) stanowi nową warstwę dla usługi Azure Files, co pozwala na tworzenie udziałów plików za pomocą charakterystyki wydajności premium. Te udziały plików są przeznaczone do wysokiej wydajności i aplikacji w skali przedsiębiorstwa, zapewniając niskie opóźnienia, wysoka operacje We/Wy i wysoką przepływność akcji.
+# <a name="how-to-create-an-premium-azure-file-share"></a>Jak utworzyć udział plików platformy Azure — wersja premium
+Udziały plików w warstwie Premium (wersja zapoznawcza) są oferowane na nośnikach magazynowania dysków półprzewodnikowych (SSD) i są przydatne w przypadku obciążeń intensywnie korzystających z operacji We/Wy, m.in. hostowania baz danych i obliczeń o wysokiej wydajności (HPC). Premium udziały plików znajdują się w celu specjalnego rodzaju konta magazynu, zwanego kontem FileStorage. Udziały plików w warstwie Premium są przeznaczone do wysokiej wydajności i aplikacji w skali przedsiębiorstwa, zapewniając niskie opóźnienia, wysoka operacje We/Wy i wysoką przepływność akcji.
 
 W tym artykule dowiesz się, jak utworzyć tego nowego konta typu przy użyciu [witryny Azure portal](https://portal.azure.com/), programu Azure PowerShell i wiersza polecenia platformy Azure.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby uzyskać dostęp do usługi Azure Storage, potrzebujesz subskrypcji platformy Azure. Jeśli nie masz jeszcze subskrypcji, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Aby uzyskać dostęp do zasobów platformy Azure, łącznie z udziałami plików platformy Azure — wersja premium, należy subskrypcji platformy Azure. Jeśli nie masz jeszcze subskrypcji, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="create-a-premium-file-share-using-the-azure-portal"></a>Tworzenie udziału plików — wersja premium za pomocą witryny Azure portal
 
@@ -51,7 +50,7 @@ Każde konto magazynu musi należeć do grupy zasobów platformy Azure. Grupa za
 1. Wybierz **rodzaj konta** i wybierz polecenie **FileStorage (wersja zapoznawcza)**.
 1. Pozostaw **replikacji** ustawiona na wartość domyślną **magazyn lokalnie nadmiarowy (LRS)**.
 
-    ![Jak utworzyć konto magazynu premium storage plików](media/storage-how-to-create-premium-fileshare/premium-files-storage-account.png)
+    ![Jak utworzyć konto magazynu dla udziału plików — wersja premium](media/storage-how-to-create-premium-fileshare/premium-files-storage-account.png)
 
 1. Wybierz pozycję **Przejrzyj i utwórz**, aby przejrzeć ustawienia konta magazynu i utworzyć konto.
 1. Wybierz pozycję **Utwórz**.
@@ -81,9 +80,9 @@ Najpierw zainstaluj najnowszą wersję modułu [PowerShellGet](https://docs.micr
 
 Następnie uaktualniania modułu programu powershell, zaloguj się do subskrypcji platformy Azure, Utwórz grupę zasobów i następnie utworzyć konto magazynu.
 
-### <a name="upgrade-your-powershell-module"></a>Uaktualnianie modułu PowerShell
+### <a name="upgrade-your-powershell-module"></a>Uaktualnij modułu programu PowerShell
 
-Do interakcji z files w warstwie premium przy użyciu programu PowerShell, musisz zainstalować najnowszy moduł Az.Storage.
+Do interakcji z udziałem plików — wersja premium z przy użyciu programu PowerShell, musisz zainstalować najnowszy moduł Az.Storage.
 
 Rozpocznij od otwarcia sesji programu PowerShell z podwyższonym poziomem uprawnień.
 
@@ -95,10 +94,10 @@ Install-Module Az.Storage -Repository PSGallery -AllowPrerelease -AllowClobber -
 
 ### <a name="sign-in-to-your-azure-subscription"></a>Zaloguj się do subskrypcji platformy Azure
 
-Użyj polecenia `Login-AzAccount`, a następnie postępuj zgodnie z instrukcjami wyświetlanymi na ekranie w celu uwierzytelnienia.
+Użyj polecenia `Connect-AzAccount`, a następnie postępuj zgodnie z instrukcjami wyświetlanymi na ekranie w celu uwierzytelnienia.
 
 ```powershell
-Login-AzAccount
+Connect-AzAccount
 ```
 
 ### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
@@ -113,7 +112,7 @@ $location = "westus2"
 New-AzResourceGroup -Name $resourceGroup -Location $location
 ```
 
-### <a name="create-a-filestorage-preview-storage-account"></a>Utwórz konto magazynu filestorage (wersja zapoznawcza)
+### <a name="create-a-filestorage-preview-storage-account"></a>Utwórz konto magazynu FileStorage (wersja zapoznawcza)
 
 Aby utworzyć konto magazynu filestorage (wersja zapoznawcza) za pomocą programu PowerShell, użyj [New AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) polecenia:
 
@@ -123,7 +122,7 @@ $storageAcct = New-AzStorageAccount -ResourceGroupName $resourceGroup -Name "fil
 
 ### <a name="create-a-premium-file-share"></a>Tworzenie udziału plików w warstwie Premium
 
-Teraz, gdy masz konto filestorage, można utworzyć udziału plików — wersja premium. Użyj [New AzStorageShare](/powershell/module/az.storage/New-AzStorageShare) polecenia cmdlet, aby go utworzyć.
+Teraz, gdy masz konto FileStorage, można utworzyć udziału plików — wersja premium. Użyj [New AzStorageShare](/powershell/module/az.storage/New-AzStorageShare) polecenia cmdlet, aby go utworzyć.
 
 > [!NOTE]
 > Rozmiary elastycznie udziału jest określona przez przydziału udziału udziały plików są rozliczane w systemie zarezerwowany rozmiar, zapoznaj się [stronę z cennikiem](https://azure.microsoft.com/pricing/details/storage/files/) Aby uzyskać więcej informacji.
@@ -152,11 +151,9 @@ Aby zalogować się do lokalnej instalacji interfejsu wiersza polecenia, uruchom
 az login
 ```
 
-### <a name="add-the-cli-extension-for-azure-premium-files"></a>Dodaj rozszerzenie interfejsu wiersza polecenia dla plików Azure w warstwie premium
+### <a name="add-the-preview-storage-cli-extension"></a>Dodaj magazyn w wersji zapoznawczej rozszerzenie interfejsu wiersza polecenia
 
-Do interakcji z files w warstwie premium przy użyciu interfejsu wiersza polecenia, musisz dodać rozszerzenia powłoki.
-
-W tym celu wprowadź następujące polecenie przy użyciu usługi Cloud Shell lub powłoki lokalnej: `az extension add --name storage-preview`
+Ponieważ udziałów plików w warstwie premium są w wersji zapoznawczej, musisz dodać rozszerzenie (wersja zapoznawcza) do powłoki. W tym celu wprowadź następujące polecenie przy użyciu usługi Cloud Shell lub powłoki lokalnej: `az extension add --name storage-preview`
 
 ### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
@@ -168,9 +165,9 @@ az group create `
     --location westus2
 ```
 
-### <a name="create-a-filestorage-preview-storage-account"></a>Utwórz konto magazynu filestorage (wersja zapoznawcza)
+### <a name="create-a-filestorage-storage-account"></a>Utwórz konto magazynu FileStorage
 
-Aby utworzyć konto magazynu filestorage (wersja zapoznawcza) z wiersza polecenia platformy Azure, użyj [Tworzenie konta magazynu az](/cli/azure/storage/account) polecenia.
+Aby utworzyć konto magazynu FileStorage z wiersza polecenia platformy Azure, użyj [Tworzenie konta magazynu az](/cli/azure/storage/account) polecenia.
 
 ```azurecli-interactive
 az storage account create `
@@ -216,7 +213,7 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym artykule utworzono konto magazynu premium storage plików. Informacje na temat wydajności oferowanych przez to konto, przejdź do sekcji warstwy wydajności przewodnika planowania.
+W tym artykule utworzono udział plików w warstwie premium. Informacje na temat wydajności oferowanych przez to konto, przejdź do sekcji warstwy wydajności przewodnika planowania.
 
 > [!div class="nextstepaction"]
 > [Warstwy wydajności udziału plików](storage-files-planning.md#file-share-performance-tiers)

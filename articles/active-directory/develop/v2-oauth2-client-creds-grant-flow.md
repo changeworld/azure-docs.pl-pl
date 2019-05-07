@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6aed38c8c670c751ee51de95e6622685caea1ce
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 3073d34a6ffeadd1c1c0022b5c1636f06cc6210a
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62112202"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190837"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Platforma tożsamości firmy Microsoft i przepływ poświadczeń klienta OAuth 2.0
 
@@ -249,6 +249,10 @@ Odpowiedź na błąd wygląda następująco:
 | `timestamp` | Czas, kiedy wystąpił błąd. |
 | `trace_id` | Unikatowy identyfikator żądanie pomocy przy użyciu diagnostyki. |
 | `correlation_id` | Unikatowy identyfikator żądanie pomocy przy użyciu diagnostyki składnikami. |
+
+> [!NOTE]
+> W kolejności dla swojej aplikacji móc odbierać token w wersji 2 możesz zaktualizować plik manifestu w aplikacji z poziomu witryny azure portal. Możesz dodać atrybut `accessTokenAcceptedVersion` i ustaw wartość 2 jako `"accessTokenAcceptedVersion": 2`. Sprawdź, czy artykuł [manifest aplikacji](https://docs.microsoft.com/en-us/azure/active-directory/develop/reference-app-manifest#manifest-reference) Aby dowiedzieć się więcej na temat takie same. Domyślnie aplikacja obecnie recieves v1 token. Jeśli to nie jest zdefiniowany w manifeście aplikacji/interfejs API sieci Web, jej dla tego atrybutu w manifeście ma domyślnie wartość 1, i dlatego aplikacja otrzyma v1 token.  
+
 
 ## <a name="use-a-token"></a>Użyj tokenu
 

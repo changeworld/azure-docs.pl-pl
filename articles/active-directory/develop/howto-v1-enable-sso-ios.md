@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d90af62c8d6267001ede567c71b7e1204f6ce74
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 73d3c2846ed97b725d745cc76714738ac34ed1a0
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64917216"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190206"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Instrukcje: Włączanie logowania jednokrotnego dla wielu aplikacji, w systemie iOS za pomocą biblioteki ADAL
 
@@ -165,7 +165,7 @@ Bez brokera asystowanej logowania jednokrotnego w aplikacjach zestawy SDK Zarzą
 
 Aby włączyć logowanie Jednokrotne w aplikacjach jesteś właścicielem, że należy wykonać następujące czynności:
 
-1. Upewnij się, użytkownik aplikacji tego samego Identyfikatora klienta lub identyfikator aplikacji.
+1. Upewnij się, że wszystkie Twoje aplikacje używają tego samego Identyfikatora klienta lub identyfikator aplikacji.
 2. Upewnij się, wszystkie aplikacje udostępnianie tego samego certyfikatu podpisywania firmy Apple, dzięki czemu możesz udostępniać pęki kluczy.
 3. Żądanie tego samego uprawnienia pęku kluczy dla poszczególnych aplikacji.
 4. Poinformuj o wspólnym łańcuchu kluczy zestawy SDK, że chcesz użyć.

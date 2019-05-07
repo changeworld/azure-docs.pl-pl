@@ -1,6 +1,6 @@
 ---
 title: Dodawanie logowania przy użyciu konta Microsoft do aplikacji internetowej ASP.NET | Microsoft Docs
-description: Dowiedz się, jak dodać logowanie przy użyciu konta Microsoft w rozwiązaniu platformy ASP.NET z tradycyjną aplikacją opartą na przeglądarce internetowej z wykorzystaniem protokołu OpenID Connect.
+description: Dowiedz się, jak dodać logowanie firmy Microsoft na rozwiązanie platformy ASP.NET przy użyciu tradycyjnych aplikacji sieci web opartej na przeglądarce przy użyciu standardowego protokołu OpenID Connect.
 services: active-directory
 documentationcenter: dev-center-name
 author: andretms
@@ -16,18 +16,18 @@ ms.workload: identity
 ms.date: 09/24/2018
 ms.author: andret
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6119baf79b9323a5c1ad06d75e1410f632015f0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7aca42aa13ef78647b591eb0be7083f932ce0c35
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60299371"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65191043"
 ---
-# <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Szybki start: dodawanie logowania przy użyciu konta Microsoft do aplikacji internetowej ASP.NET
+# <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Szybki start: Dodawanie logowania przy użyciu konta Microsoft do aplikacji internetowej ASP.NET
 
 [!INCLUDE [active-directory-develop-applies-v1](../../../includes/active-directory-develop-applies-v1.md)]
 
-W tym przewodniku Szybki start dowiesz się, jak zaimplementować logowanie przy użyciu konta Microsoft, korzystając z rozwiązania ASP.NET MVC z tradycyjną aplikacją internetową opartą na przeglądarce internetowej z wykorzystaniem protokołu OpenID Connect. Dowiesz się, jak włączyć logowanie z poziomu kont służbowych w aplikacji ASP.NET.
+W tym przewodniku Szybki Start dowiesz się, jak zaimplementować logowania z firmą Microsoft przy użyciu rozwiązania ASP.NET kontrolera MVC (Model View) przy użyciu tradycyjnych aplikacji sieci web opartej na przeglądarce przy użyciu protokołu OpenID Connect. Dowiesz się, jak włączyć logowanie z poziomu kont służbowych w aplikacji ASP.NET.
 
 Na zakończenie tego przewodnika Szybki start aplikacja będzie akceptować logowania kont służbowych organizacji, które zostały zintegrowane z usługą Azure Active Directory (Azure AD).
 
@@ -38,15 +38,15 @@ Na zakończenie tego przewodnika Szybki start aplikacja będzie akceptować logo
 
 Przed rozpoczęciem pracy upewnij się, że są spełnione następujące wymagania wstępne:
 
-* Masz zainstalowany program Visual Studio 2015 Update 3 lub Visual Studio 2017. Nie masz tego programu? [Pobierz bezpłatnie program Visual Studio 2017](https://www.visualstudio.com/downloads/)
+* Masz program Visual Studio 2015 Update 3 lub zainstalowany program Visual Studio 2019 r. Nie masz tego programu? [Pobierz bezpłatnie program Visual Studio 2019 r.](https://www.visualstudio.com/downloads/)
 
 ## <a name="scenario-sign-in-users-from-work-and-school-accounts-in-your-aspnet-app"></a>Scenariusz: logowanie użytkowników z poziomu kont służbowych w aplikacji ASP.NET
 
 ![Jak działa ten przewodnik](./media/quickstart-v1-aspnet-webapp/aspnet-intro.png)
 
-W tym scenariuszu przeglądarka uzyskuje dostęp do witryny internetowej ASP.NET i wysyła do użytkownika żądanie uwierzytelnienia za pomocą przycisku logowania. W tym scenariuszu większość działań związanych z renderowaniem strony internetowej odbywa się po stronie serwera.
+Przeglądarka uzyskuje dostęp do witryny sieci web ASP.NET i żądań użytkownika do uwierzytelniania za pomocą znaku przycisku w tym scenariuszu. W tym scenariuszu większość działań związanych z renderowaniem strony internetowej odbywa się po stronie serwera.
 
-Przewodnik Szybki start pokazuje, jak logować użytkowników w aplikacji internetowej ASP.NET, zaczynając od pustego szablonu, i obejmuje kroki takie jak dodawanie przycisku logowania oraz każdego kontrolera i metody, a także omawia pojęcia dotyczące tych zadań. Alternatywnie można również utworzyć projekt służący do logowania użytkowników usługi Azure AD (kont służbowych), używając [szablonu internetowego programu Visual Studio](https://docs.microsoft.com/aspnet/visual-studio/overview/2013/creating-web-projects-in-visual-studio#organizational-account-authentication-options) i wybierając pozycję **Konta organizacyjne**, a następnie jedną z opcji w chmurze — ta opcja korzysta z bardziej rozbudowanego szablonu, za dodatkowymi kontrolerami, metodami i widokami.
+Samouczek Szybki Start przedstawia sposób logowania użytkowników w aplikacji sieci web ASP.NET, zaczynając od pustego szablonu. Również obejmuje czynności, takie jak dodanie przycisku logowania i każdego kontrolera i metody oraz omówienie pojęć dotyczących tych zadań. Można również utworzyć projekt do logowania użytkowników usługi Azure AD (kont służbowych) przy użyciu [szablonu sieci web programu Visual Studio](https://docs.microsoft.com/aspnet/visual-studio/overview/2013/creating-web-projects-in-visual-studio#organizational-account-authentication-options) i wybierając polecenie **kont organizacyjnych** i następnie jedną z opcji cloud - to Opcja przy użyciu bardziej rozbudowane szablonu, za pomocą metod, widoków i kontrolerów dodatkowe.
 
 ## <a name="libraries"></a>Biblioteki
 
@@ -158,7 +158,7 @@ Ten kontroler pokazuje wykorzystanie atrybutu `[Authorize]` do ochrony kontroler
 1. Wybierz pozycję **Kontroler MVC {version} — Pusty**.
 1. Wybierz pozycję **Dodaj**.
 1. Nadaj mu nazwę **ClaimsController**.
-1. Zastąp kod klasy kontrolera następującym kodem — spowoduje to dodanie atrybutu `[Authorize]` do klasy:
+1. Zastąp kod klasy kontrolera następującym kodem — ten przykład dodaje `[Authorize]` do klasy atrybutu:
 
     [!code-csharp[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet/Controllers/ClaimsController.cs?name=ClaimsController "ClaimsController.cs")]
 
@@ -196,29 +196,29 @@ W programie Visual Studio utwórz nowy widok w celu wyświetlenia oświadczeń u
 4. Skopiuj adres SSL URL projektu do schowka:<br/><br/>![Właściwości projektu](./media/quickstart-v1-aspnet-webapp/visual-studio-project-properties.png)<br />
 5. W pliku <code>web.config</code> zastąp ciąg <code>Enter_the_Redirect_URL_here</code> adresem SSL URL swojego projektu.
 
-### <a name="register-your-application-in-the-azure-portal-then-add-its-information-to-webconfig"></a>Rejestrowanie aplikacji w witrynie Azure Portal, a następnie dodanie informacji z witryny do *pliku web.config*
+### <a name="register-your-application-in-the-azure-portal-then-add-its-information-to-webconfig"></a>Zarejestruj swoją aplikację w witrynie Azure portal, a następnie dodaj informacje do *pliku web.config*
 
 1. Przejdź do witryny [Microsoft Azure Portal — rejestracje aplikacji](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps), aby zarejestrować aplikację.
 2. Wybierz pozycję **Rejestrowanie nowej aplikacji**.
 3. Wprowadź nazwę aplikacji.
-4. Wklej *adresu SSL URL* projektu programu Visual Studio w pozycji**Adres URL logowania**. Ten adres URL jest również automatycznie dodawany do listy adresów URL odpowiedzi dla aplikacji, którą rejestrujesz.
+4. Wklej *adresu SSL URL* projektu programu Visual Studio w pozycji**Adres URL logowania**. Ten adres URL również jest automatycznie dodawany do listy adresów URL odpowiedzi dla aplikacji, którą teraz rejestrowanie.
 5. Wybierz pozycję **Utwórz**, aby zarejestrować aplikację. Ta akcja spowoduje powrót do listy aplikacji.
 6. Następnie wyszukaj i/lub wybierz utworzoną aplikację, aby otworzyć jej właściwości.
 7. Skopiuj identyfikator GUID w obszarze **Identyfikator aplikacji** do schowka.
-8. Wróć do programu Visual Studio i w pliku `web.config` zastąp ciąg `Enter_the_Application_Id_here` identyfikatorem aplikacji skopiowanym z zarejestrowanej właśnie aplikacji.
+8. Wróć do programu Visual Studio, a w `web.config`, Zastąp `Enter_the_Application_Id_here` identyfikatorem aplikacji z poziomu aplikacji została zarejestrowana.
 
 > [!TIP]
 > Jeśli Twoje konto jest skonfigurowane, aby uzyskiwać dostęp do wielu katalogów, upewnij się, że wybrano odpowiedni katalog dla organizacji, w której aplikacja ma być zarejestrowana, klikając prawym przyciskiem myszy nazwę konta w prawym górnym rogu witryny Azure Portal, a następnie sprawdzając wybrany katalog jak wskazano:<br/>![Wybór prawidłowego katalogu](./media/quickstart-v1-aspnet-webapp/tenantselector.png)
 
 ## <a name="step-10-configure-sign-in-options"></a>Krok 10: konfigurowanie opcji logowania
 
-Można skonfigurować aplikację tak, aby zezwalała tylko na logowanie użytkowników należących do wystąpienia usługi Azure AD jednej organizacji lub akceptowała logowania użytkowników należących do dowolnej organizacji. Wykonaj instrukcje dla jednej z poniższych opcji:
+Można skonfigurować aplikację tak, aby zezwolić tylko użytkownicy, którzy należą do jednej z organizacji wystąpienia usługi Azure AD, aby zalogować się, lub zaakceptować logowania użytkowników, które należą do każdej organizacji. Postępuj zgodnie z instrukcjami w jednej z następujących opcji:
 
 ### <a name="configure-your-application-to-allow-sign-ins-of-work-and-school-accounts-from-any-company-or-organization-multi-tenant"></a>Konfigurowanie aplikacji tak, aby zezwalała na logowanie kont służbowych z dowolnej firmy lub organizacji (wiele dzierżaw)
 
-Wykonaj następujące kroki, jeśli chcesz zezwalać na logowanie kont służbowych z dowolnej firmy lub organizacji, która została zintegrowana z usługą Azure AD. Jest to typowy scenariusz dla *aplikacji SaaS*:
+Wykonaj następujące kroki, jeśli chcesz zezwalać na logowanie kont służbowych z dowolnej firmy lub organizacji, która została zintegrowana z usługą Azure AD. Ten scenariusz jest typowy dla *aplikacji SaaS*:
 
-1. Wróć do witryny [Microsoft Azure Portal — rejestracje aplikacji](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) i zlokalizuj zarejestrowaną właśnie aplikację.
+1. Wróć do [portalu Microsoft Azure — rejestracje aplikacji](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) i Znajdź aplikację, został zarejestrowany.
 2. W obszarze **Wszystkie ustawienia** wybierz pozycję **Właściwości**.
 3. Zmień wartość właściwości **Z wieloma dzierżawami** na **Tak**, a następnie wybierz pozycję **Zapisz**.
 
@@ -238,7 +238,7 @@ Aby zezwalać tylko na dostęp użytkowników z listy określonych organizacji, 
 1. Ustaw wartość argumentu `ValidateIssuer` na true.
 1. Użyj parametru `ValidIssuers`, aby określić listę organizacji.
 
-Innym rozwiązaniem jest zaimplementowanie niestandardowej metody do sprawdzania wystawcy przy użyciu parametru *IssuerValidator*. Aby uzyskać więcej informacji na temat parametrów `TokenValidationParameters`, zobacz [ten artykuł MSDN](https://msdn.microsoft.com/library/system.identitymodel.tokens.tokenvalidationparameters.aspx "artykuł witryny MSDN dotyczący parametrów TokenValidationParameters").
+Innym rozwiązaniem jest zaimplementowanie niestandardowej metody do sprawdzania wystawcy przy użyciu parametru *IssuerValidator*. Aby uzyskać więcej informacji na temat `TokenValidationParameters`, zobacz [w tym artykule MSDN](https://msdn.microsoft.com/library/system.identitymodel.tokens.tokenvalidationparameters.aspx "artykuł w witrynie MSDN TokenValidationParameters").
 
 <!--end-configure-->
 
@@ -278,7 +278,7 @@ Gdy wszystko będzie gotowe do testowania, użyj konta służbowego (Azure AD), 
 
 #### <a name="expected-results"></a>Oczekiwane wyniki
 
-Po zalogowaniu użytkownik zostaje przekierowany do strony głównej Twojej witryny internetowej, czyli do adresu URL HTTPS określonego w ramach informacji rejestracyjnych Twojej aplikacji w portalu rejestracji aplikacji firmy Microsoft. Ta strona wyświetla obecnie komunikat *Witaj, {User}*, link do wylogowania oraz link pozwalający wyświetlić oświadczenia użytkownika — czyli link do utworzonego wcześniej kontrolera Authorize.
+Gdy użytkownik się zaloguje, użytkownik jest przekierowywany na stronę główną witryny sieci web, czyli adres URL HTTPS, określone w aplikacji informacje rejestracyjne w portalu rejestracji aplikacji firmy Microsoft. Ta strona wyświetla obecnie komunikat *Witaj, {User}*, link do wylogowania oraz link pozwalający wyświetlić oświadczenia użytkownika — czyli link do utworzonego wcześniej kontrolera Authorize.
 
 ### <a name="see-users-claims"></a>Wyświetlenie oświadczeń użytkownika
 
@@ -292,7 +292,7 @@ Wybierz hiperlink, aby wyświetlić oświadczenia użytkownika. Ta akcja prowadz
 |---|---|---|
 | Name (Nazwa) | {User Full Name} | Imię i nazwisko użytkownika |
 | Nazwa użytkownika | <span>user@domain.com</span> | Nazwa użytkownika używana do identyfikacji zalogowanego użytkownika |
-| Podmiot| {Subject} |Ciąg używany do unikatowego identyfikowania logowania użytkownika w sieci |
+| Podmiot| {Subject} |Ciąg do unikatowego identyfikowania użytkownika, zaloguj się w sieci web |
 | Identyfikator dzierżawy | {Guid} | Identyfikator *guid* jednoznacznie reprezentujący organizację usługi Azure AD użytkownika |
 
 Ponadto zobaczysz tabelę zawierającą wszystkie oświadczenia użytkownika dołączone do żądania uwierzytelnienia. Aby uzyskać listę wszystkich oświadczeń w tokenie identyfikacyjnym oraz ich wyjaśnienie, zobacz [Lista oświadczeń w tokenie identyfikacyjnym](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims).

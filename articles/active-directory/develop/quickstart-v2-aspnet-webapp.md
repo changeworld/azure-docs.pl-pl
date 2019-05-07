@@ -16,12 +16,12 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 064c3e5fb7a65a7495c393db893e784548075daf
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d63ff648f89a231f0077363c88709a17d157ae8c
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64708219"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190895"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Szybki start: Dodawanie logowania przy użyciu konta Microsoft do aplikacji internetowej ASP.NET
 
@@ -68,13 +68,13 @@ Wybierz menu **Uwierzytelnianie**, ustaw wartość **Tokeny identyfikatorów** w
 
 #### <a name="step-2-download-your-project"></a>Krok 2: pobieranie projektu
 
-[Pobierz rozwiązanie programu Visual Studio 2017.](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
+[Pobierz rozwiązanie Visual Studio 2019 r.](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>Krok 3: konfigurowanie projektu programu Visual Studio
 
 1. Wyodrębnij plik zip do folderu lokalnego bliższego folderowi głównemu, na przykład **C:\Azure-Samples**
 1. Otwórz rozwiązanie w programie Visual Studio (AppModelv2-WebApp-OpenIDConnect-DotNet.sln)
-1. W zależności od wersji programu Visual Studio może być konieczne kliknij prawym przyciskiem myszy nad projektem `AppModelv2-WebApp-OpenIDConnect-DotNet` i **pakiety NuGet przywracania**
+1. W zależności od wersji programu Visual Studio, konieczne może być kliknij prawym przyciskiem myszy nad projektem `AppModelv2-WebApp-OpenIDConnect-DotNet` i **pakiety NuGet przywracania**
 1. Otwórz konsolę Menedżera pakietów (Widok -> inne Windows -> Konsola Menedżera pakietów) i uruchom `Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r`
 1. Przeprowadź edycję pliku **Web.config** i zastąp parametry `ClientId` oraz `Tenant` następującymi:
 
@@ -96,7 +96,7 @@ Wybierz menu **Uwierzytelnianie**, ustaw wartość **Tokeny identyfikatorów** w
 
 ## <a name="more-information"></a>Więcej informacji
 
-Ta sekcja zawiera omówienie kodu wymaganego do logowania użytkowników. Przydatne może być zrozumienie działania kodu i głównych argumentów oraz poznanie kwestii dotyczących tego, czy warto dodawać funkcję logowania do istniejącej aplikacji ASP.NET.
+Ta sekcja zawiera omówienie kodu wymaganego do logowania użytkowników. W tym omówieniu może być grupowaniu można sprawdzić, jak działa kod, głównym argumentów, a także jeśli chcesz dodać Zaloguj się do istniejącej aplikacji ASP.NET.
 
 ### <a name="owin-middleware-nuget-packages"></a>Pakiety NuGet oprogramowania pośredniczącego OWIN
 
@@ -110,7 +110,7 @@ Install-Package Microsoft.Owin.Host.SystemWeb
 
 ### <a name="owin-startup-class"></a>Klasa początkowa OWIN
 
-Oprogramowanie pośredniczące OWIN używa *klasy początkowej* wykonywanej, gdy inicjowany jest proces hostingu (w przypadku tego przewodnika Szybki start jest to plik *startup.cs* znajdujący się w folderze głównym). W poniższym kodzie przedstawiono parametr użyty w tym przewodniku Szybki start:
+Oprogramowanie pośredniczące OWIN używa *Klasa początkowa* , które jest uruchamiane podczas procesu hostingu jest inicjowana. W tym przewodniku Szybki Start *startup.cs* plik znajdujący się w folderze głównym. W poniższym kodzie przedstawiono parametr użyty w tym przewodniku Szybki start:
 
 ```csharp
 public void Configuration(IAppBuilder app)

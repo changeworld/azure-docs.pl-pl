@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: spelluru
-ms.openlocfilehash: 87599b05a3569bf6f28880352185a131f48a7f52
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9f284fea701220906a994cf108ed58cb6998aef9
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61436175"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65187653"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Omówienie zdarzeń filtrowania dla subskrypcji usługi Event Grid
 
@@ -43,7 +43,7 @@ Proste filtrowanie według tematu, należy określić wartość początkową lub
 
 Podczas publikowania zdarzeń w tematy niestandardowe, należy utworzyć tematy dla zdarzeń, które ułatwiają subskrybentów dowiedzieć się, czy są one zainteresowani zdarzenia. Subskrybenci należy użyć właściwości podmiotu do filtrowania i trasy zdarzeń. Rozważ dodanie ścieżki, dla której zaszło zdarzenie, dzięki czemu subskrybenci można filtrować według segmentami tej ścieżki. Ścieżka pozwala subskrybentom wąskiego lub szeroko filtrowanie zdarzeń. Jeśli podano ścieżkę trzy segmentu, taką jak `/A/B/C` w tym temacie, subskrybenci można filtrować według pierwszy segment `/A` uzyskać szeroką gamę zdarzenia. Te zdarzenia jest subskrybenci z tematów, takich jak `/A/B/C` lub `/A/D/E`. Innymi subskrybentami, można filtrować według `/A/B` Aby uzyskać bardziej szczegółowy zestaw zdarzeń.
 
-Jest ze składnią pliku JSON w celu filtrowania według typu zdarzenia:
+Jest ze składnią pliku JSON w celu filtrowania według tematu:
 
 ```json
 "filter": {

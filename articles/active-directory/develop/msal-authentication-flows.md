@@ -1,6 +1,6 @@
 ---
-title: Aplikacje klienckie (Microsoft Authentication Library) | Azure
-description: Dowiedz się więcej o publicznych klienta i poufne klienta aplikacji w programie Microsoft Authentication Library (MSAL).
+title: Przepływy uwierzytelniania (Microsoft Authentication Library) | Azure
+description: Więcej informacji na temat przepływów uwierzytelniania/przyznaje używane przez Microsoft Authentication Library (MSAL).
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 096aa5e5ce2f33467457cef22220f338ae49b708
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: b7db73ff8bef553b36408cfae90e32014f875bd3
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65139096"
+ms.locfileid: "65190998"
 ---
 # <a name="authentication-flows"></a>Przepływy uwierzytelniania
 
@@ -30,6 +30,7 @@ W tym artykule opisano przepływy uwierzytelniania inny, pod warunkiem Microsoft
 
 | Ruch | Opis | Używane w|  
 | ---- | ----------- | ------- | 
+| [Interaktywne](#interactive) | Pobiera token interakcyjny proces, który monituje użytkownika o poświadczenia, za pomocą przeglądarki lub okna pop. | [Aplikacje komputerowe](scenario-desktop-overview.md), [aplikacji mobilnych](scenario-mobile-overview.md) |
 | [Przyznawanie niejawne](#implicit-grant) | Umożliwia aplikacji uzyskiwanie tokenów bez przeprowadzania wymianę poświadczeń serwera wewnętrznej bazy danych. Umożliwia to aplikacji, loguje użytkownika, zachować sesję i uzyskiwanie tokenów do innych interfejsów API sieci web w klienta kodu JavaScript.| [Aplikacji jednostronicowej (SPA)](scenario-spa-overview.md) |
 | [Kod autoryzacji](#authorization-code) | Używane w aplikacjach, które są zainstalowane na urządzeniu w celu uzyskania dostępu do chronionych zasobów, takich jak interfejsy API sieci web. Pozwala na dodawanie, zaloguj się i interfejs API dostępu do aplikacji mobilnych i klasycznych. | [Aplikacje komputerowe](scenario-desktop-overview.md), [aplikacje mobilne](scenario-mobile-overview.md), [aplikacje sieci Web](scenario-web-app-call-api-overview.md) | 
 | [W imieniu z](#on-behalf-of) | Aplikacja wywołuje usługę/internetowego interfejsu API, które z kolei są potrzebne do wywoływania innej usługi/interfejsu API sieci web. Chodzi o to propagację delegowany użytkownik tożsamości i uprawnień w łańcuchu żądanie. | [Interfejsy API sieci Web](scenario-web-api-call-api-overview.md) |
@@ -38,6 +39,17 @@ W tym artykule opisano przepływy uwierzytelniania inny, pod warunkiem Microsoft
 | [Uwierzytelnianie zintegrowane Windows](scenario-desktop-acquire-token.md#integrated-windows-authentication) | Zezwala aplikacji na domeny lub usługi Azure AD przyłączona do komputerów, które można uzyskać tokenu w trybie dyskretnym (bez żadnej interfejsu użytkownika interakcji ze strony użytkownika).| [Desktop/Mobile apps](scenario-desktop-acquire-token.md#integrated-windows-authentication) |
 | [Nazwa użytkownika/hasło](scenario-desktop-acquire-token.md#username--password) | Umożliwia aplikacji do logowania użytkownika dzięki obsłudze bezpośrednio swoje hasło. Ten przepływ nie jest zalecane. | [Desktop/mobile apps](scenario-desktop-acquire-token.md#username--password) | 
 
+## <a name="interactive"></a>Interaktywne
+Biblioteka MSAL obsługuje możliwość interaktywnie monitować użytkownika o podanie poświadczeń, logować się i uzyskania tokenu przy użyciu tych poświadczeń.
+
+![Interaktywne przepływu](media/msal-authentication-flows/interactive.png)
+
+Aby uzyskać więcej informacji na temat przy użyciu platformy MSAL.NET interaktywnie uzyskania tokenów na określonych platformach przeczytaj następujące:
+- [Xamarin dla systemu Android](msal-net-xamarin-android-considerations.md)
+- [Xamarin dla systemu iOS](msal-net-xamarin-ios-considerations.md)
+- [Platforma uniwersalna systemu Windows](msal-net-uwp-considerations.md)
+
+Aby uzyskać więcej informacji na temat wywołań interakcyjnego w MSAL.js, przeczytaj [monit o zachowanie w MSAL.js interaktywnych żądań](msal-js-prompt-behavior.md)
 
 ## <a name="implicit-grant"></a>Niejawne przyznanie
 
@@ -55,6 +67,9 @@ Biblioteka MSAL obsługuje [przyznawania kodu autoryzacji protokołu OAuth 2](v2
 Gdy użytkownicy logują się do aplikacji sieci web (witryny sieci web), aplikacji sieci web otrzyma kod autoryzacji.  Kod autoryzacji jest skorzystać w celu uzyskania tokenu służącego do wywoływania interfejsów API sieci web. W programie ASP.NET: / ASP.NET core z aplikacji sieci web, jedynym celem `AcquireTokenByAuthorizationCode` jest aby dodać token do pamięci podręcznej tokenu, aby następnie może być używane przez aplikację (zwykle w kontrolerach), która po prostu uzyskać token dla interfejsu API przy użyciu `AcquireTokenSilent`.
 
 ![Przepływ kodu autoryzacji](media/msal-authentication-flows/authorization-code.png)
+
+1. Żąda kod autoryzacji, który jest zrealizowany dla tokenu dostępu.
+2. Używa tokenu dostępu do wywołania interfejsu API sieci web.
 
 ### <a name="considerations"></a>Zagadnienia do rozważenia
 - Kod autoryzacji jest można używać tylko raz zrealizować token. Nie należy próbować uzyskać token wiele razy przy użyciu tego samego kodu autoryzacji (jest jawnie zabronione przez specyfikację standardowy protokół). Jeśli możesz zrealizować kod kilka razy celowo lub nie masz pewności, że platforma również zrobi to za Ciebie, wystąpi błąd: `AADSTS70002: Error validating credentials. AADSTS54005: OAuth2 Authorization code was already redeemed, please retry with a new valid code or use an existing refresh token.`
@@ -83,14 +98,23 @@ Poświadczenia klienta udzielić zezwolenia przepływ usługi sieci web (poufne 
 > [!NOTE]
 > Przepływ poufne klienta nie jest dostępny na platformach mobilnych (platformy UWP, Xamarin.iOS i Xamarin.Android), ponieważ te obsługują tylko aplikacje klienckie publicznych.  Aplikacje klienckie publiczny nie wie, jak potwierdzenia tożsamości aplikacji do dostawcy tożsamości. Bezpieczne połączenie może odbyć się na aplikację sieci web lub internetowy interfejs API zaplecza poprzez wdrożenie certyfikatu.
 
-Platformy MSAL.NET obsługuje trzy typy poświadczeń klienta:
+Platformy MSAL.NET obsługuje dwa typy poświadczeń klienta. Te poświadczenia klienta muszą być zarejestrowane przy użyciu usługi Azure AD. Poświadczenia są przekazywane w konstruktorów aplikacji zawierających poufne dane klienta w kodzie.
 
-- Wpisy tajne aplikacji <BR>![Poufne klienta przy użyciu hasła](media/msal-authentication-flows/confidential-client-password.png)
-- Certyfikaty <BR>![Poufne klienta przy użyciu certyfikatu](media/msal-authentication-flows/confidential-client-certificate.png)
-- Potwierdzenia zoptymalizowane klienta<BR>![Poufne klienta z potwierdzeniami](media/msal-authentication-flows/confidential-client-assertions.png)
+### <a name="application-secrets"></a>Wpisy tajne aplikacji 
+
+![Poufne klienta przy użyciu hasła](media/msal-authentication-flows/confidential-client-password.png)
+
+1. Uzyskuje token przy użyciu poświadczeń hasło/klucz tajny aplikacji.
+2. Używa tokenu do wysyłania żądań zasobu.
+
+### <a name="certificates"></a>Certyfikaty 
+
+![Poufne klienta przy użyciu certyfikatu](media/msal-authentication-flows/confidential-client-certificate.png)
+
+1. Uzyskuje token przy użyciu poświadczeń certyfikatu.
+2. Używa tokenu do wysyłania żądań zasobu.
 
 Te poświadczenia klienta muszą być:
-
 - Zarejestrowane w usłudze Azure AD.
 - Przekazana w konstrukcji aplikacji zawierających poufne dane klienta w kodzie.
 
@@ -118,6 +142,9 @@ Za pomocą przepływu kodu urządzenia, aplikacji uzyskuje tokenów przejdziesz 
 Biblioteka MSAL obsługuje zintegrowane Windows Authentication (Zintegrowane) dla pulpitu lub aplikacji uruchamianych na przyłączonych do domeny lub usługi Azure AD dla urządzeń przenośnych przyłączony komputer Windows. Za pomocą IWA, te aplikacje mogą uzyskiwać token w trybie dyskretnym (bez żadnej interfejsu użytkownika interakcji ze strony użytkownika). 
 
 ![Zintegrowane uwierzytelnianie systemu Windows](media/msal-authentication-flows/integrated-windows-authentication.png)
+
+1. Uzyskuje token przy użyciu zintegrowanego uwierzytelniania Windows.
+2. Używa tokenu do wysyłania żądań zasobu.
 
 ### <a name="constraints"></a>Ograniczenia
 
@@ -148,6 +175,9 @@ Aby uzyskać więcej informacji na temat zgody, zobacz [v2.0 uprawnienia i zgody
 Biblioteka MSAL obsługuje [przyznanie poświadczeń hasła właściciela zasobów OAuth 2](v2-oauth-ropc.md), co umożliwia aplikacji do logowania użytkownika dzięki obsłudze bezpośrednio swoje hasło. W aplikacji pulpitu można użyć przepływu nazwy użytkownika i hasła można uzyskać tokenu w trybie dyskretnym. Brak interfejsu użytkownika jest wymagana w przypadku korzystania z aplikacji.
 
 ![Nazwy użytkownika/hasła usługi flow](media/msal-authentication-flows/username-password.png)
+
+1. Uzyskuje token, wysyłając nazwę użytkownika i hasło do dostawcy tożsamości.
+2. Wywołuje internetowy interfejs API przy użyciu tokenu.
 
 > [!WARNING]
 > Ten przepływ jest **niezalecane** ponieważ wymaga wysokiego stopnia narażenia zaufania i użytkownika.  Ten przepływ należy używać tylko w przypadku, gdy nie można użyć innych, bardziej bezpiecznymi przepływów. Aby uzyskać więcej informacji na temat tego problemu, zobacz [w tym artykule](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/). 

@@ -16,12 +16,12 @@ ms.date: 12/28/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2746775c72976159cdcdb6bdd86e39a5dbe3a4fc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b4bf8df2374d373ad36eada8a7de08be76396a76
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60348828"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190807"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Wymagania wstępne dotyczące usługi Azure AD Connect
 W tym temacie opisano wymagania wstępne i wymagania sprzętowe programu Azure AD Connect.
@@ -76,8 +76,8 @@ Aby dowiedzieć się więcej, zobacz:
 * [Zmniejszenie podatności usługi Active Directory](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)
 
 ### <a name="sql-server-used-by-azure-ad-connect"></a>Program SQL Server używane przez program Azure AD Connect
-* Program Azure AD Connect wymaga bazy danych programu SQL Server do przechowywania danych tożsamości. Domyślnie jest instalowany program SQL Server 2012 Express LocalDB (uproszczonej wersji programu SQL Server Express). SQL Server Express ma ograniczenie rozmiaru 10GB, który pozwala na zarządzanie około 100 000 obiektów. Jeśli trzeba zarządzać większą liczbą obiektów katalogu, należy wskazać kreatorowi instalacji na inną instalację programu SQL Server.
-* Użycie oddzielnych programu SQL Server, mają zastosowanie następujące wymagania:
+* Program Azure AD Connect wymaga bazy danych programu SQL Server do przechowywania danych tożsamości. Domyślnie jest instalowany program SQL Server 2012 Express LocalDB (uproszczonej wersji programu SQL Server Express). SQL Server Express ma ograniczenie rozmiaru 10GB, który pozwala na zarządzanie około 100 000 obiektów. Jeśli trzeba zarządzać większą liczbą obiektów katalogu, należy wskazać kreatorowi instalacji na inną instalację programu SQL Server. Typ instalacji programu SQL Server mogą mieć wpływ na [wydajności programu Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-performance-factors#sql-database-factors).
+* Jeśli używasz innej instalacji programu SQL Server, mają zastosowanie następujące wymagania:
   * Azure AD Connect obsługuje wszystkich wersji programu Microsoft SQL Server 2008 R2 (za pomocą najnowszego dodatku Service Pack) do 2019 r programu SQL Server. Microsoft Azure SQL Database to **nieobsługiwane** jako bazy danych.
   * Należy użyć bez uwzględniania wielkości liter sortowania bazy danych SQL. Te sortowania są oznaczone symbolem \_CI_ w ich imieniu. Jest **nieobsługiwane** do liter identyfikowane przez \_cs_ — element w ich imieniu.
   * Może mieć tylko jeden aparat synchronizacji dla każdego wystąpienia programu SQL. Jest **nieobsługiwane** udostępniania wystąpienia programu SQL za pomocą synchronizacji programu FIM/programu MIM, narzędzie DirSync lub Azure AD Sync.

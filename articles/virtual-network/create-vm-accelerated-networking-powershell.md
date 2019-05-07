@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/04/2018
 ms.author: gsilva
-ms.openlocfilehash: c4567919490c8bc9094dea3dddbe22550d9eebb2
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: ef6086afa17f1ab864d70678a6da6df2a78e0c16
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57192909"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190294"
 ---
 # <a name="create-a-windows-virtual-machine-with-accelerated-networking"></a>Utwórz maszynę wirtualną Windows dzięki przyspieszonej sieci
 
@@ -77,7 +77,7 @@ Zainstaluj [programu Azure PowerShell](/powershell/azure/install-az-ps) wersji 1
 
 W poniższych przykładach należy zastąpić własnymi wartościami przykładowe nazwy parametru. Przykładowe nazwy parametru uwzględnione *myResourceGroup*, *myNic*, i *myVM*.
 
-Utwórz grupę zasobów za pomocą [New AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup). Poniższy przykład tworzy grupę zasobów o nazwie *myResourceGroup* w *centralus* lokalizacji:
+Utwórz grupę zasobów za pomocą polecenia [New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup). Poniższy przykład tworzy grupę zasobów o nazwie *myResourceGroup* w *centralus* lokalizacji:
 
 ```powershell
 New-AzResourceGroup -Name "myResourceGroup" -Location "centralus"
@@ -230,7 +230,7 @@ Jeśli utworzono maszynę Wirtualną bez przyspieszonej sieci jest możliwe wł�
 Najpierw Zatrzymaj/Cofnij Przydział maszyny Wirtualnej lub, jeśli w zestawie dostępności, wszystkie maszyny wirtualne w zestawie:
 
 ```azurepowershell
-Stop-AzVM -ResourceGroup "myResourceGroup" `
+Stop-AzureRmVM -ResourceGroup "myResourceGroup" `
     -Name "myVM"
 ```
 
@@ -239,18 +239,18 @@ Ważne,. Uwaga: Jeśli Twoja maszyna wirtualna została utworzona pojedynczo, be
 Po zatrzymaniu Włącz przyspieszonej sieci na karcie interfejsu Sieciowego maszyny wirtualnej:
 
 ```azurepowershell
-$nic = Get-AzNetworkInterface -ResourceGroupName "myResourceGroup" `
+$nic = Get-AzureRMNetworkInterface -ResourceGroupName "myResourceGroup" `
     -Name "myNic"
 
 $nic.EnableAcceleratedNetworking = $true
 
-$nic | Set-AzNetworkInterface
+$nic | Set-AzureRMNetworkInterface
 ```
 
 Ponowne uruchomienie Twojej maszyny Wirtualnej lub, jeśli w zestawie dostępności, wszystkie maszyny wirtualne w zestawie i upewnij się, że włączono przyspieszonej sieci:
 
 ```azurepowershell
-Start-AzVM -ResourceGroup "myResourceGroup" `
+Start-AzureRmVM -ResourceGroup "myResourceGroup" `
     -Name "myVM"
 ```
 

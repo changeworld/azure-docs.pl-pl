@@ -17,12 +17,12 @@ ms.date: 04/10/2019
 ms.author: joflore
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8827a51a23b2ea274d8096a154e630c9cecbba7c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 0d8f1024ba660bc0e879940f20db70d547eea40e
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60352012"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190490"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Instrukcje: Planowanie implementacji hybrydowej usługi Azure Active Directory join
 
@@ -41,7 +41,7 @@ Jeśli masz lokalne środowisko usługi Active Directory i chcesz dołączyć do
 W tym artykule założono, że czytelnik zna [wprowadzenie do zarządzania urządzeniami w usłudze Azure Active Directory](../device-management-introduction.md).
 
 > [!NOTE]
-> Minimalna wymagana funkcjonalności domeny i lasu poziomów funkcjonalności, dołączenie do hybrydowej usługi Azure AD w systemie Windows 10 jest system Windows Server 2008 R2. W niższych wersjach użytkownik może nie otrzymać podstawowego tokenu odświeżania podczas logowania Windows z powodu problemów z urzędu LSA.
+> Minimalna wymagana funkcjonalności domeny i lasu poziomów funkcjonalności, dołączenie do hybrydowej usługi Azure AD w systemie Windows 10 jest system Windows Server 2008 R2.
 
 ## <a name="plan-your-implementation"></a>Planowanie implementacji
 
@@ -121,6 +121,9 @@ Jeśli środowisko zawiera zarządzane domeny, dołączenie do hybrydowej usług
 
 - Przekazuj uwierzytelniania (PTA)
 - Synchronizacja skrótów haseł (wersji)
+
+> [!NOTE]
+> Usługa Azure AD nie obsługuje w domenach zarządzanych kart inteligentnych lub certyfikatów.
 
 Począwszy od wersji 1.1.819.0, program Azure AD Connect zapewnia kreator umożliwiający konfigurowanie dołączania hybrydowego do usługi Azure AD. Kreator pozwala znacznie uprościć proces konfiguracji. Aby uzyskać więcej informacji, zobacz:
 

@@ -15,12 +15,12 @@ ms.date: 04/02/2019
 ms.author: celested
 ms.reviewer: asmalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 516faed0f41ae36079d0f26f0311b35d5582d57a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 67956b3369394f68d067fc4753a859c066428aea
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64708301"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65191493"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatyzowanie użytkownika aprowizacji i cofania aprowizacji do aplikacji SaaS w usłudze Azure Active Directory
 
@@ -274,6 +274,10 @@ Nie. Po skonfigurowaniu "Synchronizuj tylko przypisanych użytkowników i grup" 
 Jest to ograniczenie "oparte na grupach przypisania do aplikacji", która także ma wpływ na logowanie jednokrotne i jest opisany w [przy użyciu grupy, aby zarządzać dostępem do aplikacji SaaS](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-saasapps ).
 
 Jako obejście tego problemu, należy jawnie przypisać (lub w inny sposób [zakresu z](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)) grupy zawierające użytkowników, którzy potrzebują do zainicjowania obsługi administracyjnej.
+
+### <a name="is-provisioning-between-azure-ad-and-a-target-application-using-an-encrypted-channel"></a>Trwa inicjowanie obsługi między usługą Azure AD i aplikacja docelowa, przy użyciu szyfrowanego kanału?
+
+Tak. Używamy szyfrowania SSL protokołu HTTPS dla serwera docelowego. 
 
 ## <a name="related-articles"></a>Pokrewne artykuły:
 

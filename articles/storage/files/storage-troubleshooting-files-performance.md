@@ -2,22 +2,22 @@
 title: Usługa Azure wydajności pliki przewodnik rozwiązywania problemów
 description: Znane problemy z wydajnością za pomocą udziałów plików platformy Azure — wersja premium (wersja zapoznawcza) i skojarzone obejścia.
 services: storage
-author: jeffpatt24
+author: gunjanj
 ms.service: storage
 ms.topic: article
 ms.date: 04/25/2019
-ms.author: jeffpatt
+ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 767473a037bf890756df68719698c3872fed6a9c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 5ae0bb736a7cc0bbc38df5905abc5d8a71f60eb9
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64577918"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190057"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Rozwiązywanie problemów z wydajnością usługi Azure Files
 
-W tym artykule wymieniono niektóre typowe problemy związane z udziałów plików programu Microsoft Azure — wersja premium (wersja zapoznawcza). Zapewnia możliwe przyczyny i potencjalne rozwiązania po napotkaniu te problemy.
+W tym artykule wymieniono niektóre typowe problemy związane z udziałami plików platformy Azure — wersja premium (wersja zapoznawcza). Zapewnia możliwe przyczyny i potencjalne rozwiązania po napotkaniu te problemy.
 
 ## <a name="high-latency-low-throughput-and-general-performance-issues"></a>Ogólne problemy z wydajnością, duże opóźnienie i niska przepływność
 
@@ -27,7 +27,7 @@ Domyślny limit przydziału w udziale jest GiB 100, która zapewnia plan bazowy 
 
 Aby upewnić się, jeśli jest ograniczane swój udział w portalu można wykorzystać metryk usługi Azure.
 
-1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 1. Wybierz **wszystkich usług** a następnie wyszukaj **metryki**.
 
@@ -80,7 +80,7 @@ Maszyny Wirtualnej klienta może znajdować się w regionie innym niż premium u
 
 ## <a name="client-unable-to-achieve-maximum-throughput-supported-by-the-network"></a>Nie można osiągnąć maksymalną przepływność obsługiwane przez sieć klienta
 
-Brak jest jednej potencjalną przyczyną tego fo SMB Obsługa wielu kanałów pomocy technicznej. Obecnie files w warstwie premium obsługują tylko pojedynczy kanał, więc ma tylko jedno połączenie z maszyny Wirtualnej klienta do serwera. To pojedyncze połączenie jest ustalana na podstawie pojedynczego rdzenia na kliencie maszyny Wirtualnej, więc maksymalna przepływność osiągalna z maszyny Wirtualnej jest ograniczone przez pojedynczego rdzenia.
+Brak jest jednej potencjalną przyczyną tego fo SMB Obsługa wielu kanałów pomocy technicznej. Obecnie udziałów plików platformy Azure obsługują tylko pojedynczy kanał, więc ma tylko jedno połączenie z maszyny Wirtualnej klienta do serwera. To pojedyncze połączenie jest ustalana na podstawie pojedynczego rdzenia na kliencie maszyny Wirtualnej, więc maksymalna przepływność osiągalna z maszyny Wirtualnej jest ograniczone przez pojedynczego rdzenia.
 
 ### <a name="workaround"></a>Obejście
 
@@ -137,7 +137,7 @@ Aplikacja kliencka systematycznie przekracza linii bazowej operacje We/Wy. Obecn
 
 ### <a name="cause"></a>Przyczyna
 
-Jeśli liczba wywołań DirectoryOpen/DirectoryClose należy najważniejszych wywołań interfejsów API, a nie będziesz już klienta znaczenie, że wiele wywołań, być może wystąpił problem z oprogramowanie antywirusowe zainstalowane na komputerze klienckim instytucje maszyny Wirtualnej.
+Jeśli liczba wywołań DirectoryOpen/DirectoryClose należy najważniejszych wywołań interfejsów API, a nie będziesz już klienta znaczenie, że wiele wywołań, być może wystąpił problem z oprogramowanie antywirusowe zainstalowane na kliencie maszyny Wirtualnej platformy Azure.
 
 ### <a name="workaround"></a>Obejście
 

@@ -1,9 +1,9 @@
 ---
-title: Najlepsze rozwiązania dotyczące zabezpieczeń bazy danych platformy Azure | Dokumentacja firmy Microsoft
+title: Baza danych najlepsze rozwiązania dotyczące zabezpieczeń — Microsoft Azure
 description: Ten artykuł zawiera zestaw najlepsze rozwiązania dotyczące zabezpieczeń bazy danych platformy Azure.
 services: security
 documentationcenter: na
-author: unifycloud
+author: TerryLanfear
 manager: barbkess
 editor: tomsh
 ms.assetid: ''
@@ -13,27 +13,21 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
-ms.author: tomsh
-ms.openlocfilehash: 3e244f89904ce9aca161ed1ea435f4137e42bc5d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: terrylan
+ms.openlocfilehash: f59d349da023f9a1b21477a05750d4f8e9aef500
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60587535"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65187763"
 ---
 # <a name="azure-database-security-best-practices"></a>Najlepsze rozwiązania dotyczące zabezpieczeń bazy danych platformy Azure
+W tym artykule opisano najlepsze rozwiązania dotyczące zabezpieczeń bazy danych.
+
+Najlepsze rozwiązania są oparte na konsensus opinii i pracować z aktualnymi możliwościami platformy Azure, a zestawy funkcji. Opinie i technologii zmieniają się wraz z upływem czasu, a w tym artykule jest aktualizowana w regularnych odstępach czasu, aby odzwierciedlać wprowadzone zmiany.
+
+## <a name="secure-databases"></a>Zabezpieczanie bazy danych
 Zabezpieczenia są szczególnie ważne dla zarządzania bazami danych i zawsze było priorytet [usługi Azure SQL Database](https://docs.microsoft.com/azure/sql-database/). Bazy danych, które mogą być ściśle chronione ułatwiające spełniają najbardziej prawnych lub wymagań dotyczących zabezpieczeń, takich jak HIPAA, ISO 27001/27002 i PCI DSS poziom 1. Bieżącą listę certyfikatów zgodności zabezpieczeń znajduje się w temacie [witryny Microsoft Trust Center](https://azure.microsoft.com/support/trust-center/services/). Można także umieścić baz danych w określonych centrów danych platformy Azure, na podstawie wymagań prawnych.
-
-W tym artykule omawiane jest kolekcją najlepsze rozwiązania dotyczące zabezpieczeń bazy danych Azure. Następujące najlepsze rozwiązania są uzyskiwane z naszych doświadczeń z usługą Azure database security i procesy, przez klientów, takie jak samodzielnie.
-
-Dla każdego najlepszym rozwiązaniem jest Wyjaśnijmy:
-
--   Co to jest najlepsze rozwiązanie
--   Dlaczego chcesz włączyć na tym najlepszym rozwiązaniem jest
--   W przypadku awarii umożliwiające najlepszym rozwiązaniem, co może być skutkiem
--   Jak można dowiesz się umożliwić najlepszym rozwiązaniem jest
-
-W tym artykule najlepszych rozwiązań zabezpieczeń bazy danych Azure opiera się na opinię konsensu i funkcji platformy Azure i zestawy funkcji występujących w czasie, który został zapisany w tym artykule. Opinie i technologii zmieniają się wraz z upływem czasu, a w tym artykule zostanie zaktualizowana w regularnych odstępach czasu, aby odzwierciedlać wprowadzone zmiany.
 
 ## <a name="use-firewall-rules-to-restrict-database-access"></a>Użyj reguł zapory, aby ograniczyć dostęp do bazy danych
 Microsoft Azure SQL Database udostępnia usługę relacyjnej bazy danych dla platformy Azure i innych aplikacji internetowych. Aby zapewnić ochronę dostępu, usługa SQL Database kontroluje dostęp za pomocą:

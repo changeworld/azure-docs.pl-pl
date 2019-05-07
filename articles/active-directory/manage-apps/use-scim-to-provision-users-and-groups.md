@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 4/03/2019
+ms.date: 5/06/2019
 ms.author: celested
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0bb7032c2741cc8c407c8d7d0285e58647f0bfd5
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: fba0a9bc0886b9487b0c61b6091bd122fe6e370d
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64918536"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65191541"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Przy użyciu systemu dla Standard międzydomenowe zarządzania tożsamościami (SCIM), aby automatycznie aprowizować użytkowników i grup z usługi Azure Active Directory do aplikacji
 
@@ -31,7 +31,7 @@ Standard SCIM to standardowy protokół i schemat, który ma na celu dysku więk
 
 Wiele aplikacji, dla których usługa Azure AD obsługuje [wstępnie zintegrowane automatyczna aprowizacja użytkowników](../saas-apps/tutorial-list.md) zaimplementować Standard SCIM, ponieważ oznacza, że użytkownik otrzymywać powiadomienia o zmianie.  Oprócz wspomnianych, klienci mogą się łączyć aplikacje, które obsługują określonego profilu [specyfikacji protokołu 2.0 Standard SCIM](https://tools.ietf.org/html/rfc7644) przy użyciu opcji ogólnych integration "spoza galerii" w witrynie Azure portal. 
 
-Głównym celem tego artykułu znajduje się na profil Standard SCIM 2.0, który implementuje usługi Azure AD, jako część jej ogólnego łącznika Standard SCIM dla aplikacji spoza galerii. Jednak pomyślne testowania aplikacji, która obsługuje standard SCIM z ogólnego usługi Azure AD connector jest krokiem do aplikacji w galerii usługi Azure AD jako obsługi aprowizacji użytkowników. Aby uzyskać więcej informacji na temat pobierania aplikacji w galerii aplikacji usługi Azure AD, zobacz [Microsoft Application Network](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx).
+Głównym celem tego artykułu znajduje się na profil Standard SCIM 2.0, który implementuje usługi Azure AD, jako część jej ogólnego łącznika Standard SCIM dla aplikacji spoza galerii. Jednak pomyślne testowania aplikacji, która obsługuje standard SCIM z ogólnego usługi Azure AD connector jest krokiem do aplikacji w galerii usługi Azure AD jako obsługi aprowizacji użytkowników. Aby uzyskać więcej informacji na temat pobierania aplikacji w galerii aplikacji usługi Azure AD, zobacz [jak: Umieść swoją aplikację w galerii aplikacji usługi Azure AD](../develop/howto-app-gallery-listing.md).
  
 
 >[!IMPORTANT]

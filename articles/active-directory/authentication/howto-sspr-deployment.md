@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/17/2018
+ms.date: 05/06/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb9333845a78204ea1c6e56e17b3b6f9e5513c9c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9c254ef3a71e95b33df2a779c728d47fff3c3759
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60358013"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190371"
 ---
 # <a name="how-to-successfully-roll-out-self-service-password-reset"></a>Jak pomyślnie wdrożyć funkcję samoobsługowego resetowania haseł
 
@@ -32,6 +32,10 @@ Aby zapewnić bezproblemowe wdrożenie funkcji samoobsługowego resetowania hase
    * Masz usiłować adresy URL do rejestracji i resetowania?
       * Rejestracja:  https://aka.ms/ssprsetup
       * Resetuj: https://aka.ms/sspr
+
+   > [!WARNING]
+   > Użyj pola wyboru "użytkownik musi zmienić hasło przy następnym logowaniu" w narzędziach administracyjnych lokalnej usługi Active Directory użytkownicy usługi Active Directory i komputerów lub Centrum administracyjne usługi Active Directory nie jest obsługiwana. Podczas zmiany hasła w środowisku lokalnym nie należy zaznaczać tej opcji. 
+
 1. Poinformuj użytkowników.
    * Poniższe sekcje tego dokumentu omijają przykładowej komunikacji, portali hasła, wymuszanie rejestracji i wypełnianie danych uwierzytelniania.
    * Grupa ds. produktów usługi Azure Active Directory utworzyła [plan wdrożenia krok po kroku](https://aka.ms/SSPRDeploymentPlan), którego organizacje mogą używać równolegle z dokumentacją z tej witryny, aby analizować własną działalność i planować wdrożenie samoobsługowego resetowania hasła.

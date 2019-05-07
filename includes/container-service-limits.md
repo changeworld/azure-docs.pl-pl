@@ -8,21 +8,21 @@ ms.topic: include
 ms.date: 10/11/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 62eb75ef18d3ac81be65783e57c21c0aefd7a429
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: a2729af6a689daa551fc01f585324d53a8770a9b
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57554565"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65072881"
 ---
-| Zasób | Limit domyślny |
+| Resource | Limit domyślny |
 | --- | :--- |
 | Maksymalna klastrów na subskrypcję | 100 |
 | Maksymalna liczba węzłów w klastrze | 100 |
 | Maksymalna zasobników na każdym węźle: [sieć podstawowa][basic-networking] z rozwiązaniem Kubenet | 110 |
 | Maksymalna zasobników na każdym węźle: [Zaawansowany siecią] [ advanced-networking] przy użyciu interfejsu sieciowego kontenera platformy Azure | Wdrożenie za pomocą interfejsu wiersza polecenia platformy Azure: 30<sup>1</sup><br />Szablon usługi Azure Resource Manager: 30<sup>1</sup><br />Wdrożenie za pomocą portalu: 30 |
 
-<sup>1</sup>podczas wdrażania klastra usługi Azure Kubernetes Service (AKS), przy użyciu wiersza polecenia platformy Azure lub w szablonie usługi Resource Manager, ta wartość jest można skonfigurować maksymalnie 110 zasobniki w każdym węźle. Nie można skonfigurować maksymalną zasobników w każdym węźle, po został już wdrożony klaster AKS, czy wdrożyć klaster przy użyciu witryny Azure portal.<br />
+<sup>1</sup>podczas wdrażania klastra usługi Azure Kubernetes Service (AKS), przy użyciu wiersza polecenia platformy Azure lub w szablonie usługi Resource Manager, ta wartość jest można skonfigurować maksymalnie 250 zasobniki w każdym węźle. Nie można skonfigurować maksymalną zasobników w każdym węźle, po został już wdrożony klaster AKS, czy wdrożyć klaster przy użyciu witryny Azure portal.<br />
 
 <!-- LINKS - Internal -->
 [basic-networking]: ../articles/aks/concepts-network.md#kubenet-basic-networking

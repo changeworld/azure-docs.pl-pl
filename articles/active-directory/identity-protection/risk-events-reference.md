@@ -16,12 +16,12 @@ ms.date: 01/25/2018
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e988d03b60469940d8750cc07188a61fc7ab8b3a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 3973a35acb4cb95d3392a8daa59e7fd9a8c56eb1
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64709615"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65191521"
 ---
 # <a name="azure-active-directory-identity-protection-risk-events-reference"></a>Dokumentacja zdarzeń o podwyższonym ryzyku w usłudze Azure Active Directory Identity Protection
 
@@ -80,7 +80,9 @@ Ten typ zdarzenia o podwyższonym ryzyku wskazuje logowania z adresów IP zainfe
 
 ## <a name="unfamiliar-sign-in-properties"></a>Nieznane właściwości logowania
 
-**Typ wykrywania:** W czasie rzeczywistym **stara nazwa:** Logowania z nieznanych lokalizacji
+**Typ wykrywania:** Czas rzeczywisty  
+**Stara nazwa:** Logowania z nieznanych lokalizacji
+
 
 Tego typu zdarzenia o podwyższonym ryzyku uwzględnia ostatnie historię logowania (IP, szerokości / długości geograficznej i jego numer ASN) do wyszukania nietypowe logowania. System przechowuje informacje o powyższych lokalizacjach, używane przez użytkownika i uwzględnia te lokalizacje "znanych". Zdarzenia o podwyższonym ryzyku jest wyzwalany, gdy logowania wystąpi z lokalizacji, która nie jest już na liście zaznajomiony lokalizacji. Nowo utworzony użytkownicy będą w "trybie uczenia" w okresie czasu w nieznanym logowania właściwości, które zdarzenia o podwyższonym ryzyku są wyłączone podczas nasze algorytmy Dowiedz się, zachowanie użytkowników. Szkoleniowe tryb czasu trwania jest dynamiczny, a także od tego, na ile czasu zajmuje algorytmu do zebrania wystarczającej ilości informacji na temat wzorców logowania użytkownika. Minimalny czas trwania wynosi pięć dni. Użytkownika można wrócić do trybu nauki po dłuższym okresie nieaktywności. System ignoruje także logowania z dobrze znanych urządzeń i lokalizacji, które geograficznie znajdują się blisko znanej lokalizacji. 
 
