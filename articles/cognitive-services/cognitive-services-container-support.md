@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 61d958ae4e53b5f2b123f3fa3660ef62a6cdcabe
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 241bda5c684197a43cc5564e950e924fed668b89
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65021508"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147565"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Obsługa kontenerów w usługach Azure Cognitive Services
 
@@ -26,6 +26,7 @@ Obsługa kontenerów w usługach Azure Cognitive Services umożliwia deweloperom
 * [Twarzy](Face/Overview.md)
 * [Aparat rozpoznawania formularza](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409)
 * [Language Understanding](LUIS/luis-container-howto.md) (LUIS)
+* [personalizer](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409)
 * [Interfejs API usługi rozpoznawania mowy](https://go.microsoft.com/fwlink/?linkid=2083926&clcid=0x409)
 * [Analiza tekstu](text-analytics/overview.md)
 
@@ -56,6 +57,7 @@ Kontenery usługi Azure Cognitive Services zapewniają następujący zestaw kont
 |[Twarzy](Face/face-how-to-install-containers.md) |F0, S0|**Twarzy** |Wykrywa twarze osób na obrazach i identyfikuje atrybutów, w tym to punktów charakterystycznych (takie jak elementy ruchome i oczy), płeć, wiek i inne funkcje twarzy przewidzieć maszyny. Oprócz wykrywania twarzy można sprawdzić, czy dwie twarze w ten sam obraz lub różne obrazy są takie same, za pomocą współczynnik ufności lub porównywania twarzy względem bazy danych, aby sprawdzić, czy podobnie wyglądających twarzy identyczne już istnieje. Można również zorganizować podobnych twarzy w grupach, przy użyciu udostępnionego visual traits.<br>[Poproś o dostęp](Face/face-how-to-install-containers.md#request-access-to-the-private-container-registry) |
 |[Aparat rozpoznawania formularza](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409) |F0, S0|**Aparat rozpoznawania formularza** |Opis formularza ma zastosowanie technologii uczenia maszynowego, aby zidentyfikować i prowadzenie formularzy pary klucz wartość i tabel.<br>[Poproś o dostęp](https://aka.ms/FormRecognizerContainerRequestAccess)|
 |[LUIS](LUIS/luis-container-howto.md) |F0, S0|**Usługa LUIS** ([obraz](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409))|Ładuje uczonego lub opublikowane Language Understanding modelu, nazywane również aplikacją usługi LUIS, do kontenera platformy docker i zapewnia dostęp do przewidywania zapytania z punktów końcowych interfejsu API kontenera. Możesz zbierać dzienniki zapytań z kontenera i przekazać te Wstecz, aby [portal usługi LUIS](https://www.luis.ai) w celu zwiększenia dokładności prognozy aplikacji.|
+|[personalizer](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409) |F0, S0|**Personalizer** ([obraz](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409))|Usługa Personalizacja platformy Azure to chmurowa usługa interfejsu API, która pozwala wybrać najlepsze środowiska dla użytkowników na podstawie ich zachowania w czasie rzeczywistym.|
 |[Interfejs API usługi rozpoznawania mowy](https://go.microsoft.com/fwlink/?linkid=2083926&clcid=0x409) |F0, S0|**Zamiana mowy na tekst** |Przekształca w czasie rzeczywistym ciągłą mowę na tekst.<br>[Poproś o dostęp](https://aka.ms/speechcontainerspreview/)|
 |[Interfejs API usługi rozpoznawania mowy](https://go.microsoft.com/fwlink/?linkid=2083926&clcid=0x409) |F0, S0|**Zamiana tekstu na mowę** |Konwertuje tekst na naturalnie brzmiącą mowę.<br>[Poproś o dostęp](https://aka.ms/speechcontainerspreview/)|
 |[Analiza tekstu](text-analytics/how-tos/text-analytics-how-to-install-containers.md) |F0, S|**Klucz frazy** ([obraz](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) |Wyodrębnianie kluczowych fraz można identyfikować jego główne punkty. Na przykład dla tekstu wejściowego „Jedzenie było pyszne, a serwowała je doskonała obsługa” interfejs API zwraca główne tematy wypowiedzi: „jedzenie” i „doskonała obsługa”. |
@@ -103,5 +105,6 @@ Zainstaluj i Poznaj funkcje udostępniane przez kontenery w usługach Azure Cogn
 * [Kontenery twarzy](Face/face-how-to-install-containers.md)
 * [Kontenery aparatu rozpoznawania formularza](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409)
 * [Language Understanding (LUIS) kontenerów](LUIS/luis-container-howto.md)
+* [Kontenery personalizer](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409)
 * [Kontenery usługi interfejsu API rozpoznawania mowy](https://go.microsoft.com/fwlink/?linkid=2083926&clcid=0x409)
 * [Kontenery analizy tekstu](text-analytics/how-tos/text-analytics-how-to-install-containers.md)

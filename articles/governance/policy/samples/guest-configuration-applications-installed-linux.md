@@ -5,18 +5,18 @@ author: DCtheGeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
-ms.date: 03/18/2019
+ms.date: 05/02/2019
 ms.author: dacoulte
-ms.openlocfilehash: b432d8557c4244d58c23e7b068874dd747f6249f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c8ee73da16f4f3de2378e38d273051355c5c624c
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60545099"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142842"
 ---
-# <a name="sample---audit-if-specified-applications-are-not-installed-inside-linux-vms"></a>Przykład — inspekcja określonych aplikacji nie są zainstalowane wewnątrz maszyn wirtualnych systemu Linux
+# <a name="sample---audit-if-specified-applications-arent-installed-inside-linux-vms"></a>Przykład — inspekcji, jeśli określonych aplikacji nie są zainstalowane wewnątrz maszyn wirtualnych systemu Linux
 
-Tej inicjatywy konfiguracji gościa zasad inspekcji, zainstalowanie określonej aplikacji wewnątrz maszyny wirtualnej z systemem Linux. Identyfikator tej inicjatywy wbudowanych `/providers/Microsoft.Authorization/policySetDefinitions/c937dcb4-4398-4b39-8d63-4a6be432252e`.
+Tej inicjatywy konfiguracji gościa zasad tworzy zdarzenia inspekcji po określonych aplikacji nie są zainstalowane wewnątrz maszyn wirtualnych systemu Linux. Identyfikator tej inicjatywy wbudowanych `/providers/Microsoft.Authorization/policySetDefinitions/c937dcb4-4398-4b39-8d63-4a6be432252e`.
 
 > [!IMPORTANT]
 > Wszystkich konfiguracji gościa inicjatywy składają się z **inspekcji** i **deployIfNotExists** definicji zasad. Przypisywanie tylko do jednej z definicji zasad spowodować, że konfiguracja gościa nie będą działać poprawnie.
@@ -32,9 +32,9 @@ Można przypisać za pomocą tej przykładowej:
 
 To [konfiguracji gościa](../concepts/guest-configuration.md) inicjatywy składają się następujące zasady:
 
-- [Inspekcja](#audit-definition) -inspekcji, że aplikacja jest zainstalowana wewnątrz maszyn wirtualnych systemu Linux
+- [Inspekcja](#audit-definition) -inspekcji, gdy aplikacje nie są zainstalowane wewnątrz maszyn wirtualnych systemu Linux
   - ID: `/providers/Microsoft.Authorization/policyDefinitions/fee5cb2b-9d9b-410e-afe3-2902d90d0004`
-- [deployIfNotExists](#deployIfNotExists-definition) — wdrażanie rozszerzenia maszyny Wirtualnej do inspekcji, że aplikacja jest zainstalowana wewnątrz maszyn wirtualnych systemu Linux
+- [deployIfNotExists](#deployIfNotExists-definition) — wdrażanie rozszerzenia maszyny Wirtualnej do inspekcji, gdy aplikacje nie są zainstalowane wewnątrz maszyn wirtualnych systemu Linux
   - ID: `/providers/Microsoft.Authorization/policyDefinitions/4d1c04de-2172-403f-901b-90608c35c721`
 
 ### <a name="initiative-definition"></a>Definicja inicjatywy
@@ -45,7 +45,9 @@ Inicjatywy jest tworzony przez dołączenie **inspekcji** i **deployIfNotExists*
 
 ### <a name="initiative-parameters"></a>Parametry inicjatywy
 
-|Name |Type ||Description | |---|---||---| |applicationName |String |Application names. Przykład: "python", "powershell" lub rozdzielaną przecinkami listę takich jak "python, programu powershell". Użyj \* dla dopasowanie z symbolami wieloznacznymi, takie jak "power\*". |
+|Name (Nazwa) |Typ |Opis |
+|---|---|---|
+|applicationName |String |Nazwy aplikacji. Przykład: "python", "powershell" lub rozdzielaną przecinkami listę takich jak "python, programu powershell". Użyj \* dla dopasowanie z symbolami wieloznacznymi, takie jak "power\*". |
 
 Podczas tworzenia przypisania za pomocą programu PowerShell lub interfejsu wiersza polecenia platformy Azure wartości parametrów można przekazać jako kod JSON w ramach ciągu lub pliku przy użyciu opcji `-PolicyParameter` (program PowerShell) lub opcji `--params` (interfejs wiersza polecenia platformy Azure).
 Program PowerShell obsługuje także opcję `-PolicyParameterObject`, która wymaga przekazania do polecenia cmdlet tabeli skrótów Name/Value (Nazwa/Wartość), gdzie parametr **Name** oznacza nazwę parametru, a parametr **Value** oznacza pojedynczą wartość lub tablicę wartości przekazywaną podczas przypisywania.

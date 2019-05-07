@@ -1,20 +1,20 @@
 ---
-title: Rozwiązywać problemy z połączeniem do usługi Azure Database for PostgreSQL
-description: Dowiedz się, jak rozwiązywać problemy z połączeniem do usługi Azure Database for PostgreSQL.
+title: Rozwiązywać problemy z połączeniem do usługi Azure Database for PostgreSQL — pojedynczy serwer
+description: Dowiedz się, jak rozwiązywać problemy z połączeniem do usługi Azure Database for PostgreSQL — pojedynczy serwer.
 keywords: połączenie postgresql, parametry połączenia, problemy z łącznością, błąd przejściowy, błąd połączenia
 author: jan-eng
 ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/09/2018
-ms.openlocfilehash: a78167e9b143a4c8d424947b489043dd45dfe2db
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 9026b561f52b2d43fff2d3e36ba569d7b62a4684
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60420917"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65069022"
 ---
-# <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql"></a>Rozwiązywać problemy z połączeniem do usługi Azure Database for PostgreSQL
+# <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---single-server"></a>Rozwiązywać problemy z połączeniem do usługi Azure Database for PostgreSQL — pojedynczy serwer
 
 Problemy z połączeniem, może być spowodowane przez różne rzeczy, w tym:
 

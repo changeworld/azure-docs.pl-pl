@@ -1,7 +1,7 @@
 ---
 title: Konfigurowanie kontenera — aparat rozpoznawania formularza
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak analizować dane formularza i tabeli za pomocą kontenera aparatu rozpoznawania formularza.
+description: Dowiedz się, jak skonfigurować kontener rozpoznawania formularza, aby przeanalizować dane formularza i tabeli.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: overview
 ms.date: 05/07/2019
 ms.author: pafarley
-ms.openlocfilehash: 6066e7856ddf8ef757afc2072218c87420a37c10
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 3f6cc32f6fb2a9fb11220ac1a3134fb3ae4d2f84
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027180"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147465"
 ---
 # <a name="configure-form-recognizer-containers"></a>Konfigurowanie aparatu rozpoznającego w postaci kontenerów
 
@@ -70,7 +70,7 @@ To ustawienie można znaleźć w tym miejscu następujące:
 
 Użyj powiązania instaluje do odczytu i zapisu danych do i z kontenera. Można określić instalacji danych wejściowych lub wyjściowych instalacji, określając `--mount` opcji [platformy docker, uruchom](https://docs.docker.com/engine/reference/commandline/run/) polecenia.
 
-Kontenery aparatu rozpoznawania formularza wymaga instalacji wejściowych i wyjściowych. Wejściowy instalacji może być tylko do odczytu i jest wymagany dostęp do danych, która będzie służyć do szkolenia i oceniania. Dane wyjściowe instalacji musi być zapisywalny i będzie służyć do przechowywania danych tymczasowych i modeli.
+Kontener formularz rozpoznawania wymaga instalacji wejściowych i wyjściowych. Wejściowy instalacji może być tylko do odczytu i jest wymagany dostęp do danych, która będzie służyć do szkolenia i oceniania. Dane wyjściowe instalacji musi być zapisywalny i będzie służyć do przechowywania danych tymczasowych i modeli.
 
 Dokładna składnia lokalizację instalacji hosta różni się zależnie od systemu operacyjnego hosta. Ponadto [komputerze-hoście](form-recognizer-container-howto.md#the-host-computer)w lokalizacji instalacji może być niedostępna z powodu konfliktu między uprawnienia użyte dla konta usługi Docker i hosta instalacji uprawnienia do lokalizacji.
 

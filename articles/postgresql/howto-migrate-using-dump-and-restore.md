@@ -1,17 +1,17 @@
 ---
-title: Jak zrzucanie i przywracanie bazy danych Azure database for PostgreSQL
-description: W tym artykule opisano sposób wyodrębniania bazę danych PostgreSQL w pliku zrzutu i przywracania z pliku, który został utworzony przez pg_dump w usłudze Azure Database for PostgreSQL.
+title: Jak zrzucanie i przywracanie w usłudze Azure Database for PostgreSQL — pojedynczy serwer
+description: W tym artykule opisano sposób wyodrębniania bazę danych PostgreSQL w pliku zrzutu i przywracania z pliku, który został utworzony przez pg_dump w usłudze Azure Database for PostgreSQL — pojedynczy serwer.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2018
-ms.openlocfilehash: d406132c4e359c78567ae47a3acba5b73aa39820
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: aa9485ec8fcabdc0276e0598bd3e19f04d70dfa1
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60420346"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65066986"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>Migrowanie przy użyciu zrzutu i przywracania bazy danych PostgreSQL
 Możesz użyć [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) można wyodrębnić bazy danych PostgreSQL w pliku zrzutu i [pg_restore](https://www.postgresql.org/docs/9.3/static/app-pgrestore.html) przywrócenie bazy danych PostgreSQL z pliku archiwum, utworzone przez pg_dump.

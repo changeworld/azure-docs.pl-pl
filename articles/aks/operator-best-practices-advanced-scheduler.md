@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 9aa394a405e5b4392f900d1e7520d93e6d152e49
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 78f54e9e86de7a8b1b80300e0ed79a5e54f29282
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64690464"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65074196"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące harmonogramu zaawansowanych funkcji w usłudze Azure Kubernetes Service (AKS)
 
@@ -30,6 +30,8 @@ Najlepsze rozwiązania dotyczące tej koncentruje się na Kubernetes zaawansowan
 **Najważniejsze wskazówki** -ograniczania dostępu dla aplikacji intensywnie korzystających z zasobów, takich jak kontrolery ruch przychodzący do określonych węzłów. Aktualizowanie węzła zasoby dostępne dla obciążeń wymagających ich i nie zezwala na planowanie innych obciążeń w węzłach.
 
 Podczas tworzenia klastra usługi AKS możesz wdrożyć węzły z obsługą procesorów GPU lub dużej liczby wydajne procesory CPU. Węzły te są często używane do przetwarzania danych dużych obciążeń, takich jak usługi machine learning (ML) lub sztucznej inteligencji (AI). Ten typ sprzętu jest zwykle zasobem kosztowne węzła do wdrożenia, należy ograniczyć obciążeń, które mogą być planowane na tych węzłach. Zamiast tego możesz przeznaczyć niektóre węzły w klastrze, aby uruchomić usługami transferem danych przychodzących i zapobiec innych obciążeń.
+
+Ta obsługa dla różnych węzłów znajduje się za pomocą wielu pul węzłów. Klaster AKS zawiera co najmniej jedną pulę węzłów. Obsługa wielu pul węzłów w usłudze AKS jest obecnie w wersji zapoznawczej.
 
 Harmonogram Kubernetes nasłonecznieniem i umożliwia tolerations ograniczyć, jakie obciążenia mogą być uruchamiane w węzłach.
 
@@ -53,13 +55,13 @@ spec:
   containers:
   - name: tf-mnist
     image: microsoft/samples-tf-mnist-demo:gpu
-  resources:
-    requests:
-      cpu: 0.5
-      memory: 2Gi
-    limits:
-      cpu: 4.0
-      memory: 16Gi
+    resources:
+      requests:
+        cpu: 0.5
+        memory: 2Gi
+      limits:
+        cpu: 4.0
+        memory: 16Gi
   tolerations:
   - key: "sku"
     operator: "Equal"
@@ -72,6 +74,8 @@ Podczas wdrażania tego zasobnika, takiej jak `kubectl apply -f gpu-toleration.y
 Po zastosowaniu nasłonecznieniem współpracować z Twojej aplikacji deweloperzy i właściciele umożliwia im do definiowania tolerations wymagane w bieżących wdrożeń.
 
 Aby uzyskać więcej informacji na temat nasłonecznieniem i tolerations zobacz [stosowanie nasłonecznieniem i tolerations][k8s-taints-tolerations].
+
+Aby uzyskać więcej informacji na temat używania wielu pul węzłów w usłudze AKS, zobacz [tworzenie wielu pul węzłów klastra w usłudze AKS i zarządzanie nimi][use-multiple-node-pools].
 
 ### <a name="behavior-of-taints-and-tolerations-in-aks"></a>Zachowanie nasłonecznieniem i tolerations w usłudze AKS
 
@@ -195,3 +199,4 @@ Ten artykuł koncentruje się na zaawansowane funkcje usługi scheduler Kubernet
 [aks-best-practices-scheduler]: operator-best-practices-scheduler.md
 [aks-best-practices-cluster-isolation]: operator-best-practices-cluster-isolation.md
 [aks-best-practices-identity]: operator-best-practices-identity.md
+[use-multiple-node-pools]: use-multiple-node-pools.md

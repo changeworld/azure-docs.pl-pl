@@ -1,37 +1,35 @@
 ---
-title: Dodawanie i uruchamianie kodu niestandardowego w usłudze Azure Logic Apps z usługą Azure Functions | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak dodawanie i uruchamianie niestandardowych fragmentach kodu w usłudze Azure Logic Apps z usługą Azure Functions
+title: Dodawanie i uruchamianie kodu w usłudze Azure Logic Apps z usługą Azure Functions
+description: Dodawanie i uruchamianie kodu w usłudze Azure Logic Apps z usługą Azure Functions
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
 ms.topic: article
 ms.date: 08/20/2018
 ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: 2bec33a4a8540f9599cf1d479f1f59c4cde39bd2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e371a6abe32a1a41d3babeaa27aaec3e30bd3323
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60687691"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142320"
 ---
-# <a name="add-and-run-custom-code-snippets-in-azure-logic-apps-with-azure-functions"></a>Dodawanie i uruchamianie niestandardowych fragmentach kodu w usłudze Azure Logic Apps z usługą Azure Functions
+# <a name="add-and-run-code-by-using-azure-functions-in-azure-logic-apps"></a>Dodawanie i uruchamianie kodu za pomocą usługi Azure Functions w usłudze Azure Logic Apps
 
-Jeśli chcesz uruchomić tylko za mało kod, który wykonuje określone zlecenie w aplikacjach logiki, można utworzyć funkcji za pomocą [usługi Azure Functions](../azure-functions/functions-overview.md). Usługa ta pomaga w tworzeniu platformy Node.js i C#, i F# fragmenty kodu, dzięki czemu nie trzeba utworzyć pełną aplikację lub infrastrukturę do uruchamiania kodu. Usługa Azure Functions zapewnia bezserwerowych obliczeń w chmurze i jest przydatne w przypadku wykonywania zadania, takie jak te przykłady:
+Gdy użytkownik chce uruchomić kod, który wykonuje określone zlecenie w aplikacjach logiki, można utworzyć funkcji za pomocą [usługi Azure Functions](../azure-functions/functions-overview.md). Usługa ta pomaga w tworzeniu platformy Node.js i C#, i F# kodu, dzięki czemu nie trzeba utworzyć pełną aplikację lub infrastrukturę do uruchamiania kodu. Możesz również [wywoływanie aplikacji logiki z wewnątrz usługi Azure functions](#call-logic-app).
+Usługa Azure Functions zapewnia bezserwerowych obliczeń w chmurze i jest przydatne w przypadku wykonywania zadania, takie jak te przykłady:
 
 * Rozszerz zachowanie aplikacji logiki z usługą functions w środowisku Node.js lub C#.
 * Wykonywanie obliczeń w przepływie pracy aplikacji logiki.
 * Zastosuj zaawansowane formatowanie lub obliczeniowych pól w aplikacjach logiki.
 
-Możesz również [wywoływanie aplikacji logiki z wewnątrz usługi Azure functions](#call-logic-app).
+Aby uruchomić fragmenty kodu, bez tworzenia usługi Azure functions, Dowiedz się, jak [Dodawanie i uruchamianie kodu wbudowanego](../logic-apps/logic-apps-add-run-inline-code.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby wykonać instrukcje opisane w tym artykule, będą potrzebne następujące elementy:
-
-* Jeśli nie masz jeszcze subskrypcji platformy Azure <a href="https://azure.microsoft.com/free/" target="_blank">Załóż bezpłatne konto platformy Azure</a>. 
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, [zarejestruj się w celu założenia bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/).
 
 * Aplikacja funkcji platformy Azure, który jest kontenerem dla funkcji platformy Azure i funkcji platformy Azure. Jeśli masz aplikację funkcji [najpierw utworzyć aplikację funkcji](../azure-functions/functions-create-first-azure-function.md). Następnie można utworzyć funkcję albo [oddzielnie poza aplikację logiki](#create-function-external), lub [z wewnątrz aplikacji logiki](#create-function-designer) w Projektancie aplikacji logiki.
 
@@ -58,7 +56,7 @@ Aby wykonać instrukcje opisane w tym artykule, będą potrzebne następujące e
 
 ## <a name="create-functions-outside-logic-apps"></a>Tworzenie funkcji aplikacji logiki poza
 
-W <a href="https://portal.azure.com" target="_blank">witryny Azure portal</a>, Utwórz aplikację funkcji platformy Azure, która musi mieć tej samej subskrypcji platformy Azure jako swoją aplikację logiki, a następnie utwórz funkcji platformy Azure.
+W [witryny Azure portal](https://portal.azure.com), Utwórz aplikację funkcji platformy Azure, która musi mieć tej samej subskrypcji platformy Azure jako swoją aplikację logiki, a następnie utwórz funkcji platformy Azure.
 Jeśli dopiero zaczynasz Tworzenie funkcji platformy Azure, Dowiedz się, jak [tworzenie pierwszej funkcji w witrynie Azure portal](../azure-functions/functions-create-first-azure-function.md), ale należy pamiętać, następujące wymagania w celu tworzenia funkcji, które można wywoływać z aplikacji logiki:
 
 * Upewnij się, możesz wybrać **wyzwalacza HTTP** szablonu funkcji dla dowolnego **JavaScript** lub **C#**.
@@ -116,7 +114,7 @@ Teraz, po utworzeniu funkcji platformy Azure, postępuj zgodnie z instrukcjami, 
 
 Zanim będzie można utworzyć funkcję platformy Azure, począwszy od wewnątrz aplikacji logiki w Projektancie aplikacji logiki, musisz najpierw mieć aplikację funkcji platformy Azure, który jest kontenerem dla funkcji. Jeśli masz aplikację funkcji, należy najpierw utworzyć aplikację funkcji. Zobacz [tworzenie pierwszej funkcji w witrynie Azure portal](../azure-functions/functions-create-first-azure-function.md). 
 
-1. W <a href="https://portal.azure.com" target="_blank">witryny Azure portal</a>, Otwórz aplikację logiki w Projektancie aplikacji logiki. 
+1. W [witryny Azure portal](https://portal.azure.com), Otwórz aplikację logiki w Projektancie aplikacji logiki. 
 
 2. Aby utworzyć i dodać funkcję, wykonaj krok, który ma zastosowanie do danego scenariusza:
 
@@ -176,7 +174,7 @@ Z listy akcji wybierz następującą akcję: **Wybierz funkcję platformy Azure 
 
 Wywołać istniejących funkcji platformy Azure z poziomu aplikacji usługi logic apps, można dodać usługi Azure functions, takich jak każdą inną czynność w Projektancie aplikacji logiki. 
 
-1. W <a href="https://portal.azure.com" target="_blank">witryny Azure portal</a>, Otwórz aplikację logiki w Projektancie aplikacji logiki. 
+1. W [witryny Azure portal](https://portal.azure.com), Otwórz aplikację logiki w Projektancie aplikacji logiki. 
 
 2. W obszarze danego kroku, w której chcesz dodać funkcję, wybierz opcję **nowy krok** > **Dodaj akcję**. 
 

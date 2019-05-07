@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 3eb53fa88a0757d22fc4575e9d9f402d6eebee13
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 01410fb59135e9b1f54e4a3c75b206c7d30abeed
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64719292"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65145015"
 ---
 # <a name="service-connectivity-monitor"></a>Monitorowanie łączności usług
 
@@ -64,6 +64,7 @@ Zacznij tworzyć testy do monitorowania łączności sieciowej do punktów końc
 
     * Wybierz **Web** do monitorowania łączności z usługą, który odpowiada na żądania HTTP/Https, np. Exchange.office365.com lub bing.com.<br>
     * Wybierz **sieci** do monitorowania łączności z usługą, która odpowiada na żądania protokołu TCP, ale nie odpowiada na żądania HTTP/Https, takie jak SQL server, serwer FTP lub SSH port. 
+    * Na przykład: Aby utworzyć test sieci web, do konta usługi blob storage, wybierz **Web** i wprowadź element docelowy jako <your storageaccount>. blob.core.windows.net. Podobnie można utworzyć testy dla innych usługi table storage, usługi queue storage i Azure Files przy użyciu [tego łącza.](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview#storage-account-endpoints)
 4. Jeśli nie chcesz do wykonywania pomiarów sieci, takich jak opóźnienie sieci i utraty pakietów, Odnajdywanie topologii wyczyść **wykonaj pomiary sieci** pole wyboru. Zachowaj ono zaznaczone, aby uzyskać maksymalne korzyści z możliwości. 
 5. W **docelowej**, wprowadź adres IP/nazwę FQDN/adres URL, do którego chcesz monitorować łączność sieciową.
 6. W **numer portu**, wprowadź numer portu z usług docelowych. 

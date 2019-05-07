@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: aa9563266f6b43e3bc2f21fbc0b340c86c5895ae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 95ec6a863f951a8c26abd865041c68df333a4e38
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60862089"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65071341"
 ---
 # <a name="durable-functions-patterns-and-technical-concepts-azure-functions"></a>Trwałe wzorce funkcji i zagadnienia techniczne (usługi Azure Functions)
 
@@ -219,9 +219,6 @@ module.exports = async function (context, req) {
 };
 ```
 
-> [!WARNING]
-> Podczas opracowywania lokalnie w języku JavaScript na korzystanie z metod `DurableOrchestrationClient`, należy ustawić zmienną środowiskową `WEBSITE_HOSTNAME` do `localhost:<port>` (na przykład `localhost:7071`). Aby uzyskać więcej informacji na temat tego wymagania, zobacz [problem w usłudze GitHub 28](https://github.com/Azure/azure-functions-durable-js/issues/28).
-
 Na platformie .NET [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) `starter` parametr ma wartość z zakresu od `orchestrationClient` danych wyjściowych powiązania, który jest częścią rozszerzenia funkcji trwałych. W języku JavaScript, ten obiekt jest zwracany przez wywołanie metody `df.getClient(context)`. Te obiekty zawierają metody, które służy do uruchamiania, wysyłanie zdarzeń do, zakończenia i zapytania dla wystąpień funkcji nowego lub istniejącego programu orchestrator.
 
 W powyższych przykładach, przyjmuje funkcji wyzwalanej przez HTTP `functionName` wartość z adresu URL przychodzące i przekazuje wartość [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_). [CreateCheckStatusResponse](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_CreateCheckStatusResponse_System_Net_Http_HttpRequestMessage_System_String_) powiązanie interfejsu API, następnie zwraca odpowiedź zawierającą `Location` nagłówek i dodatkowe informacje na temat wystąpienia. Informacje można użyć później, sprawdzić stan uruchomiono wystąpienie lub zakończyć wystąpienia.
@@ -377,6 +374,63 @@ module.exports = async function (context) {
 };
 ```
 
+## <a name="pattern-6-aggregator-preview"></a>Wzorzec #6: Agregatora (wersja zapoznawcza)
+
+Szósty wzorzec dotyczy agregowanie danych zdarzeń przez okres czasu w jednym, mogą być adresowane *jednostki*. W tym wzorcu danych agregowana mogą pochodzić z wielu źródeł, mogą być dostarczane w plikach wsadowych lub mogą być rozproszone w długich okresach czasu. Agregator może być konieczne podejmowanie akcji na dane zdarzeń, zgodnie z jego nadejścia i może być konieczne wykonywanie zapytań o dane zagregowane klientów zewnętrznych.
+
+![Diagram agregatora](./media/durable-functions-concepts/aggregator.png)
+
+Skomplikowanych czynności o podjęcie próby implementacja tego wzorca przy użyciu normalnego bezstanowe funkcje jest, czy kontroli współbieżności staje się ogromnym wyzwaniom. Nie tylko muszą zajmować wiele wątków, zmodyfikowanie tych samych danych, w tym samym czasie, również muszą się martwić o zapewnienie, że agregator działa tylko w jednej maszyny Wirtualnej w danym momencie.
+
+Za pomocą [funkcji jednostki trwałe](durable-functions-preview.md#entity-functions), jeden można zaimplementować ten wzorzec łatwo jako pojedynczą funkcję.
+
+```csharp
+public static async Task Counter(
+    [EntityTrigger(EntityClassName = "Counter")] IDurableEntityContext ctx)
+{
+    int currentValue = ctx.GetState<int>();
+    int operand = ctx.GetInput<int>();
+
+    switch (ctx.OperationName)
+    {
+        case "add":
+            currentValue += operand;
+            break;
+        case "subtract":
+            currentValue -= operand;
+            break;
+        case "reset":
+            await SendResetNotificationAsync();
+            currentValue = 0;
+            break;
+    }
+
+    ctx.SetState(currentValue);
+}
+```
+
+Klientów można umieścić w kolejce *operacji* do (znany także jako "sygnalizacji") funkcji jednostki przy użyciu `orchestrationClient` powiązania.
+
+```csharp
+[FunctionName("EventHubTriggerCSharp")]
+public static async Task Run(
+    [EventHubTrigger("device-sensor-events")] EventData eventData,
+    [OrchestrationClient] IDurableOrchestrationClient entityClient)
+{
+    var metricType = (string)eventData.Properties["metric"];
+    var delta = BitConverter.ToInt32(eventData.Body, eventData.Body.Offset);
+
+    // The "Counter/{metricType}" entity is created on-demand.
+    var entityId = new EntityId("Counter", metricType);
+    await entityClient.SignalEntityAsync(entityId, "add", delta);
+}
+```
+
+Podobnie klienci mogą wysyłać zapytania dla stanu funkcji jednostki przy użyciu metod na `orchestrationClient` powiązania.
+
+> [!NOTE]
+> Funkcje jednostki są obecnie dostępne wyłącznie w [niezawodne funkcje 2.0 w wersji zapoznawczej](durable-functions-preview.md).
+
 ## <a name="the-technology"></a>Technologia
 
 W tle, rozszerzenia funkcji trwałych jest wbudowana w górnej części [trwałe Framework zadań](https://github.com/Azure/durabletask), biblioteka typu open source w serwisie GitHub, który jest używany do tworzenia aranżacji trwałe zadania. Jak usługa Azure Functions jest ewolucji bez użycia serwera usługi Azure WebJobs, funkcje trwałe to bezserwerowe ewolucji trwałe Framework zadania. Firma Microsoft i innych organizacji umożliwia trwałe Framework zadanie często automatyzować procesy o kluczowym znaczeniu. Jest to naturalny wybór dla środowiska bez użycia serwera usługi Azure Functions.
@@ -423,7 +477,7 @@ Magazyn obiektów blob przede wszystkim są używane jako mechanizm dzierżawien
 
 ![Zrzut ekranu przedstawiający Eksploratora usługi Azure Storage](./media/durable-functions-concepts/storage-explorer.png)
 
-> [!WARNING]
+> [!NOTE]
 > Chociaż można łatwo i wygodnie wyświetlać historię wykonania w usłudze table storage, nie należy wszelkie zależności w tej tabeli. Tabela mogą ulec zmianie w miarę rozwoju rozszerzenia funkcji trwałych.
 
 ## <a name="known-issues"></a>Znane problemy

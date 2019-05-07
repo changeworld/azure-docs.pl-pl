@@ -1,42 +1,50 @@
 ---
-title: Agent usługi Azure Backup — często zadawane pytania
-description: Odpowiedzi na często zadawane pytania dotyczące sposobu działania agenta usługi Azure Backup oraz limitów wykonywania kopii zapasowych i przechowywania.
-services: backup
-author: trinadhk
-manager: shreeshd
-keywords: tworzenie kopii zapasowej i odzyskiwanie po awarii; usługa kopii zapasowej
+title: Często zadawane pytania podczas wykonywania kopii zapasowej plików i folderów za pomocą usługi Azure Backup
+description: Dotyczy często zadawane pytania dotyczące tworzenia kopii zapasowych plików i folderów za pomocą usługi Azure Backup.
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 8/6/2018
-ms.author: trinadhk
-ms.openlocfilehash: c1690fe6d0ce24bd319b042a3850bbfe487ffcfc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 04/30/2019
+ms.author: dacurwin
+ms.openlocfilehash: 5dbd4fefd5c5e1acd7e12ace547ddb8866b7f081
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60641232"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148591"
 ---
-# <a name="questions-about-the-azure-backup-agent"></a>Pytania dotyczące agenta usługi Azure Backup
-W tym artykule znajdują się odpowiedzi na często zadawane pytania pomagające w szybkim poznaniu składników agenta usługi Azure Backup. W niektórych odpowiedziach znajdują się linki do artykułów zawierających szczegółowe informacje. Pytania dotyczące usługi Azure Backup można również zadawać na [forum dyskusyjnym](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
+# <a name="common-questions-about-backing-up-files-and-folders"></a>Często zadawane pytania dotyczące tworzenia kopii zapasowych plików i folderów 
 
-## <a name="configure-backup"></a>Konfigurowanie kopii zapasowych
-### <a name="where-can-i-download-the-latest-azure-backup-agent-br"></a>Gdzie można pobrać najnowszą wersję agenta usługi Azure Backup? <br/>
-Najnowszą wersję agenta tworzenia kopii zapasowej systemu Windows Server, System Center DPM lub klienta systemu Windows można pobrać [tutaj](https://aka.ms/azurebackup_agent). Aby utworzyć kopię zapasową maszyny wirtualnej, należy skorzystać z agenta maszyny wirtualnej (który automatycznie instaluje właściwe rozszerzenie). Agent maszyny wirtualnej znajduje się już na maszynie wirtualnej, która została utworzona z poziomu galerii Azure.
+Ten artykuł zawiera odpowiedzi na często zadawane pytania abound kopie zapasowe plików i folderów przy użyciu agenta usługi Microsoft Azure Recovery Services (MARS) w [kopia zapasowa Azure](backup-overview.md) usługi.
 
-### <a name="when-configuring-the-azure-backup-agent-i-am-prompted-to-enter-the-vault-credentials-do-vault-credentials-expire"></a>Podczas konfigurowania agenta usługi Azure Backup pojawia się monit o wprowadzenie poświadczeń magazynu. Czy poświadczenia magazynu wygasają?
-Tak, poświadczenia magazynu wygasają po upływie 48 godzin. Jeśli plik wygaśnie, należy zalogować się do witryny Azure portal i pobrać pliki poświadczeń magazynu z magazynu.
+## <a name="general"></a>Ogólne
 
-### <a name="what-types-of-drives-can-i-back-up-files-and-folders-from-br"></a>Z jakich typów dysków można tworzyć kopie zapasowe plików i folderów? <br/>
-Nie można utworzyć kopii zapasowych następujących dysków/woluminów:
+### <a name="why-does-the-mars-agent-need-net-framework-452-or-higher"></a>Dlaczego agenta usług MARS wymaga platformy .NET framework 4.5.2 lub nowszej?
+
+Nowe funkcje dostępne w [natychmiastowe Przywracanie](backup-azure-restore-windows-server.md#use-instant-restore-to-recover-data-to-the-same-machine) wymaga platformy .NET Framework 4.5.2 lub nowszej.
+
+## <a name="configure-backups"></a>Konfigurowanie kopii zapasowych
+
+### <a name="where-can-i-download-the-latest-version-of-the-mars-agent"></a>Gdzie można pobrać najnowszą wersję agenta usług MARS? 
+Najnowszą wersję agenta usług MARS używane podczas tworzenia kopii zapasowych maszyn z systemem Windows Server, programu System Center DPM i usługa Microsoft Azure Backup server jest dostępna dla [Pobierz](https://aka.ms/azurebackup_agent). 
+
+### <a name="how-long-are-vault-credentials-valid"></a>Jak długo są prawidłowe poświadczenia magazynu?
+Poświadczenia magazynu wygasają po upływie 48 godzin. Jeśli plik poświadczeń wygaśnie, należy ponownie pobrać plik z witryny Azure portal.
+
+### <a name="from-what-drives-can-i-back-up-files-and-folders"></a>Z stacje, które można wykonywać kopie zapasowe plików i folderów? 
+
+Nie można utworzyć kopii zapasowej następujące typy dysków i woluminów:
 
 * Nośniki wymienne: Wszystkie źródła elementów kopii zapasowych należy zgłaszać jako stały.
 * Woluminy tylko do odczytu: Wolumin musi być zapisywalny dla usługi kopiowania woluminów w tle (VSS) do funkcji.
 * Woluminy offline: Wolumin musi być w trybie online dla usługi VSS funkcji.
-* Udział sieciowy: Wolumin musi być lokalny dla serwera do wykonania kopii zapasowej przy użyciu kopii zapasowej online.
+* Udziały sieciowe: Wolumin musi być lokalny dla serwera do wykonania kopii zapasowej przy użyciu kopii zapasowej online.
 * Woluminy chronione przez funkcję BitLocker: Wolumin musi być odblokowany przed próbą kopii zapasowej.
 * Identyfikacja systemu plików: Jedyny obsługiwany system plików to system NTFS.
 
-### <a name="what-file-and-folder-types-can-i-back-up-from-my-serverbr"></a>Jakie typy plików i folderów z serwera można umieszczać w kopiach zapasowych?<br/>
+### <a name="what-file-and-folder-types-are-supported"></a>Jakie typy plików i folderów są obsługiwane?
+
 Obsługiwane są następujące typy:
 
 * Zaszyfrowane
@@ -47,57 +55,83 @@ Obsługiwane są następujące typy:
 * Punkt ponownej analizy: Nieobsługiwane, pomijane
 * Zaszyfrowane i rozrzedzone: Nieobsługiwane, pomijane
 * Skompresowany Stream: Nieobsługiwane, pomijane
-* Rozrzedzony Stream: Nieobsługiwane, pomijane
+* Punkty ponownej analizy, w tym linki systemu plików DFS i punkty połączenia
 
-### <a name="can-i-install-the-azure-backup-agent-on-an-azure-vm-already-backed-by-the-azure-backup-service-using-the-vm-extension-br"></a>Czy można zainstalować agenta usługi Azure Backup na maszynie wirtualnej, której kopia zapasowa została już utworzona przez usługę Azure Backup przy użyciu rozszerzenia maszyny wirtualnej? <br/>
-Naturalnie. Usługa Azure Backup udostępnia funkcję tworzenia kopii zapasowych na poziomie maszyny wirtualnej dla maszyn wirtualnych platformy Azure przy użyciu rozszerzenia maszyny wirtualnej. Aby chronić pliki i foldery znajdujące się w systemie operacyjnym Windows gościa, zainstaluj w tym systemie agenta usługi Azure Backup.
 
-### <a name="can-i-install-the-azure-backup-agent-on-an-azure-vm-to-back-up-files-and-folders-present-on-temporary-storage-provided-by-the-azure-vm-br"></a>Czy można zainstalować agenta usługi Azure Backup na maszynie wirtualnej Azure, aby wykonywać kopie zapasowe plików i folderów znajdujących się w magazynie tymczasowym dostarczanym przez maszynę wirtualną platformy Azure? <br/>
-Tak. Zainstaluj agenta usługi Azure Backup w systemie operacyjnym Windows gościa i wykonuj kopie zapasowe plików i folderów do magazynu tymczasowego. Zadania tworzenia kopii zapasowych zakończą się niepowodzeniem, gdy dane magazynu tymczasowego zostaną wyczyszczone. Ponadto usunięcie danych magazynu tymczasowego powoduje, że można je przywracać tylko do trwałego magazynu.
+### <a name="can-i-use-the-mars-agent-to-back-up-files-and-folders-on-an-azure-vm"></a>Aby utworzyć kopię zapasową plików i folderów na Maszynie wirtualnej platformy Azure można używać agenta usług MARS?  
+Tak. Usługa Azure Backup udostępnia kopii zapasowych na poziomie maszyny Wirtualnej dla maszyn wirtualnych platformy Azure przy użyciu rozszerzenia maszyny Wirtualnej dla agenta maszyny Wirtualnej platformy Azure. Jeśli chcesz utworzyć kopię zapasową plików i folderów w systemie operacyjnym Windows gościa na maszynie Wirtualnej, można zainstalować agenta usług MARS, aby to zrobić. 
 
-### <a name="whats-the-minimum-size-requirement-for-the-cache-folder-br"></a>Jaki jest minimalny wymagany rozmiar folderu pamięci podręcznej? <br/>
-Rozmiar folderu pamięci podręcznej określa ilość danych, które można umieścić w kopii zapasowej. Wolumin folder pamięci podręcznej powinien być co najmniej 5 – 10% wolnego miejsca, w porównaniu do całkowitego rozmiaru danych kopii zapasowej. Jeśli wolumin ma mniej niż 5% wolnego miejsca, albo zwiększ rozmiar woluminu lub [Przenieś folder pamięci podręcznej do woluminu z wystarczającą ilością miejsca](backup-azure-file-folder-backup-faq.md#backup).
+### <a name="can-i-use-the-mars-agent-to-back-up-files-and-folders-on-temporary-storage-for-the-azure-vm"></a>Aby utworzyć kopię zapasową plików i folderów w magazynie tymczasowym maszyny wirtualnej platformy Azure można używać agenta usług MARS? 
+Tak. Zainstaluj agenta usług MARS i tworzenia kopii zapasowych plików i folderów w systemie operacyjnym Windows gościa do magazynu tymczasowego. -Zadania tworzenia kopii zapasowej się nie powieść dotyczących tymczasowego magazynu, które dane zostaną wyczyszczone.
+- Jeśli dane magazynu tymczasowego zostanie usunięty, można przywracać tylko do trwałego magazynu.
 
-### <a name="how-do-i-register-my-server-to-another-datacenterbr"></a>Jak można zarejestrować serwer w innym centrum danych?<br/>
-Dane kopii zapasowej są wysyłane do centrum danych magazynu, w którym jest ona zarejestrowana. Najprostszym sposobem zmiany centrum danych jest odinstalowanie agenta oraz ponowne zainstalowanie i zarejestrowanie go w nowym magazynie należącym do odpowiedniego centrum danych.
+### <a name="how-do-i-register-a-server-to-another-region"></a>Jak zarejestrować serwer w innym regionie?
 
-### <a name="does-the-azure-backup-agent-work-on-a-server-that-uses-windows-server-2012-deduplication-br"></a>Czy agent usługi Azure Backup działa na serwerze, który korzysta z deduplikacji systemu Windows Server 2012? <br/>
-Tak. Podczas przygotowywania do wykonania kopii zapasowej usługa agenta konwertuje deduplikowane dane do zwykłej postaci. Następnie optymalizuje dane pod kątem utworzenia kopii zapasowej, szyfruje je, po czym wysyła zaszyfrowane dane do usługi kopii zapasowej online.
+Dane kopii zapasowej są wysyłane do centrum danych, magazynu, w której serwer jest zarejestrowany. Najprostszym sposobem zmiany centrum danych jest odinstalowanie i ponowne zainstalowanie agenta, a następnie zarejestrować komputera do nowego magazynu w regionie, których potrzebujesz
 
-## <a name="prerequisites-and-dependencies"></a>Wymagania wstępne i zależności
-### <a name="what-features-of-microsoft-azure-recovery-services-mars-agent-require-net-framework-452-and-higher"></a>Jakie funkcje agenta usługi Microsoft Azure Recovery Services (MARS) wymaga platformy .NET framework 4.5.2 lub nowszej?
-[Natychmiastowe Przywracanie](backup-azure-restore-windows-server.md#use-instant-restore-to-recover-data-to-the-same-machine) funkcja, która umożliwia przywracanie pojedynczych plików i folderów z *Odzyskaj dane* kreatora wymaga programu .NET Framework 4.5.2 lub nowszej.
+### <a name="does-the-mars-agent-support-windows-server-2012-deduplication"></a>Agenta usług MARS pomocy technicznej systemu Windows Server 2012 deduplikacji?
+Tak. Agenta usług MARS konwertuje deduplikowane dane do zwykłej podczas przygotowywania operacji tworzenia kopii zapasowej. Go, a następnie optymalizuje dane kopii zapasowej, dane są szyfrowane, a następnie wysyła zaszyfrowane dane w magazynie.
 
-## <a name="backup"></a>Backup
-### <a name="how-do-i-change-the-cache-location-specified-for-the-azure-backup-agentbr"></a>W jaki sposób można zmienić lokalizację pamięci podręcznej określoną dla agenta usługi Azure Backup?<br/>
-Użyj następującej listy, aby zmienić lokalizację pamięci podręcznej.
+## <a name="manage-backups"></a>Zarządzanie kopiami zapasowymi
 
-1. Należy zatrzymać aparat kopii zapasowej za pomocą następującego polecenia w wierszu polecenia z podwyższonym poziomem uprawnień:
+### <a name="what-happens-if-i-rename-a-windows-machine-configured-for-backup"></a>Co się stanie, jeśli zostanie zmieniona nazwa maszynę Windows skonfigurowane dla kopii zapasowej?
+
+Po zmianie nazwy maszyny Windows wszystkie aktualnie skonfigurowane kopie zapasowe są zatrzymywane.
+
+- Należy zarejestrować nową nazwę komputera w magazynie usługi Backup.
+- Po zarejestrowaniu nowej nazwy w magazynie pierwszą operacją jest *pełne* kopii zapasowej.
+- Jeśli potrzebujesz odzyskać dane z kopii zapasowej do magazynu przy użyciu starej nazwy serwera, użyj opcji, aby przywrócić do innej lokalizacji w Kreatorze odzyskiwania danych. [Dowiedz się więcej](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine). 
+
+### <a name="what-is-the-maximum-file-path-length-for-backup"></a>Co to jest maksymalna długość ścieżki pliku do utworzenia kopii zapasowej?
+Agenta usług MARS opiera się na systemie plików NTFS i używa Specyfikacja długości ścieżki pliku, które są ograniczone przez [interfejsu Windows API](/windows/desktop/FileIO/naming-a-file#fully_qualified_vs._relative_paths). Jeśli pliki, które mają być chronione są dłuższe niż dozwolona wartość, należy utworzyć kopię zapasową folderu nadrzędnego lub napędu dyskowego.  
+
+### <a name="what-characters-are-allowed-in-file-paths"></a>Jakie znaki są dozwolone w ścieżkach plików?
+
+Agenta usług MARS opiera się na systemie plików NTFS i umożliwia [obsługiwane znaki](/windows/desktop/FileIO/naming-a-file#naming_conventions) w ścieżkach nazw plików.
+
+### <a name="the-warning-azure-backups-have-not-been-configured-for-this-server-appears"></a>Zostanie wyświetlone ostrzeżenie "Kopii zapasowych Azure nie został skonfigurowany dla tego serwera".
+To ostrzeżenie może się pojawić, nawet jeśli skonfigurowano zasady kopii zapasowych, gdy ustawienia harmonogramu tworzenia kopii zapasowych przechowywane na serwerze lokalnym nie są takie same jak ustawienia przechowywane w magazynie kopii zapasowych.
+- Gdy serwer lub ustawienia zostały odzyskane do znanego, dobrego stanu, harmonogramy tworzenia kopii zapasowych może stać się niezsynchronizowane.
+- Jeśli to ostrzeżenie zostanie wyświetlone [skonfigurować](backup-azure-manage-windows-server.md) zasad tworzenia kopii zapasowej ponownie, a następnie uruchom na żądanie kopii zapasowej, aby ponownie zsynchronizować lokalny serwer z platformą Azure.
+
+
+## <a name="manage-the-backup-cache-folder"></a>Zarządzaj folderem pamięć podręczna kopii zapasowej
+
+### <a name="whats-the-minimum-size-requirement-for-the-cache-folder"></a>Jaki jest minimalny wymagany rozmiar folderu pamięci podręcznej?
+Rozmiar folderu pamięci podręcznej określa ilość danych, które można umieścić w kopii zapasowej.
+- Woluminy folderu pamięci podręcznej powinien mieć wolnego miejsca, która jest równa co najmniej 5 – 10% całkowitego rozmiaru danych kopii zapasowej.
+- Jeśli wolumin ma mniej niż 5% wolnego miejsca, Zwiększ rozmiar woluminu lub Przenieś folder pamięci podręcznej do woluminu z wystarczającą ilością miejsca.
+- 
+### <a name="how-do-i-change-the-cache-location-for-the-mars-agent"></a>Jak zmienić lokalizację pamięci podręcznej agenta usług MARS?
+
+
+1. Uruchom następujące polecenie w wierszu polecenia z podwyższonym zatrzymać Aparat kopii zapasowej:
 
     ```PS C:\> Net stop obengine```
 
-2. Nie należy przenosić plików. Zamiast tego należy skopiować folder z obszarem pamięci podręcznej na inny dysk z wystarczającą ilością miejsca. Pierwotny obszar pamięci podręcznej można usunąć po potwierdzeniu, że kopie zapasowe działają z nowym obszarem pamięci podręcznej.
-3. Należy zaktualizować następujące wpisy rejestru ścieżką do nowego folderu obszaru pamięci podręcznej.<br/>
+2. Nie przenoś plików. Zamiast tego należy skopiować folder z obszarem pamięci podręcznej na inny dysk, który ma wystarczająco dużo miejsca.
+3. Należy zaktualizować następujące wpisy rejestru ze ścieżką do nowego folderu pamięci podręcznej.<br/>
 
     | Ścieżka rejestru | Klucz rejestru | Wartość |
     | --- | --- | --- |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*Nowa lokalizacja folderu pamięci podręcznej* |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*Nowa lokalizacja folderu pamięci podręcznej* |
 
-4. Należy ponownie uruchomić aparat usługi Backup, wykonując następujące polecenie w wierszu polecenia z podwyższonym poziomem uprawnień:
+4. Uruchom ponownie Aparat kopii zapasowej w wierszu polecenia z podwyższonym poziomem uprawnień:
 
     ```PS C:\> Net start obengine```
 
-Po pomyślnym zakończeniu tworzenia kopii zapasowej w nowej lokalizacji pamięci podręcznej można usunąć pierwotny folder pamięci podręcznej.
+5. Po kopii zapasowej zakończy się pomyślnie przy użyciu nowej lokalizacji, można usunąć pierwotny folder pamięci podręcznej.
 
 
-### <a name="where-can-i-put-the-cache-folder-for-the-azure-backup-agent-to-work-as-expectedbr"></a>Gdzie można umieścić folder pamięci podręcznej, aby agent usługi Azure Backup działał zgodnie z oczekiwaniami?<br/>
+### <a name="where-should-the-cache-folder-be-located"></a>Gdzie należy zlokalizować folderu pamięci podręcznej?
+
 Nie zaleca się używać następujących lokalizacji dla folderu pamięci podręcznej:
 
-* Udział sieciowy lub nośnikach wymiennych: Folder pamięci podręcznej musi być lokalny dla serwera, który wymaga wykonywania kopii zapasowych przy użyciu kopii zapasowej online. Lokalizacje sieciowe lub nośników wymiennych, takich jak dyski USB nie są obsługiwane.
+* Sieciowy udział/wymiennego nośnika: Folder pamięci podręcznej musi być lokalny dla serwera, który wymaga wykonywania kopii zapasowych przy użyciu kopii zapasowej online. Lokalizacje sieciowe lub nośników wymiennych, takich jak dyski USB nie są obsługiwane.
 * Woluminy offline: Folder pamięci podręcznej musi być w trybie online dla oczekiwanej kopii zapasowej przy użyciu agenta usługi Azure Backup
 
-### <a name="are-there-any-attributes-of-the-cache-folder-that-are-not-supportedbr"></a>Czy jakiekolwiek atrybuty folderu pamięci podręcznej nie są obsługiwane?<br/>
+### <a name="are-there-any-attributes-of-the-cache-folder-that-arent-supported"></a>Czy istnieją atrybuty folderu pamięci podręcznej, które nie są obsługiwane?
 Następujące atrybuty folderu pamięci podręcznej ani ich kombinacje nie są obsługiwane:
 
 * Zaszyfrowane
@@ -108,25 +142,17 @@ Następujące atrybuty folderu pamięci podręcznej ani ich kombinacje nie są o
 
 Folder pamięci podręcznej i dysk VHD metadanych nie mają wymaganych atrybutów dla agenta usługi Azure Backup.
 
-### <a name="is-there-a-way-to-adjust-the-amount-of-bandwidth-used-by-the-backup-servicebr"></a>Czy istnieje sposób dostosowania wielkości przepustowości, która będzie używana przez usługę Backup?<br/>
-  Tak, aby ustawić przepustowość, należy skorzystać z opcji **Zmień właściwości** agenta kopii zapasowej. Możesz dostosować wielkość przepustowości oraz czas, w którym będzie ona używana. Aby uzyskać instrukcje krok po kroku, zobacz **[Enable network throttling](backup-configure-vault.md#enable-network-throttling)** (Włączanie ograniczania użycia sieci).
+### <a name="is-there-a-way-to-adjust-the-amount-of-bandwidth-used-for-backup"></a>Czy istnieje sposób, aby dostosować wielkość przepustowości używanej do tworzenia kopii zapasowych?
+ 
+Tak, możesz użyć **Zmień właściwości** opcji w agenta usług MARS dostosowanie przepustowości i chronometrażu. [Dowiedz się więcej](backup-configure-vault.md#enable-network-throttling)**.
 
 ## <a name="restore"></a>Przywracanie
 
 ### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>Co się stanie, czy w przypadku anulowania zadania przywracania ciągły?
-Jeśli bieżące przywracania zostanie anulowane, zatrzymuje proces przywracania i przywrócić przed anulowaniem, wszystkie pliki pozostają w skonfigurowanym miejscu docelowym (lokalizacji oryginalnej lub alternatywnej) bez żadnych funkcji wycofywania.
+
+Jeśli bieżące przywracania zostanie anulowane, nie będzie możliwy proces przywracania. Wszystkie pliki, które przywrócono przed anulowaniem Zachowuj skonfigurowane miejsce docelowe (lokalizacji oryginalnej lub alternatywnej) bez żadnych funkcji wycofywania.
 
 
-## <a name="manage-backups"></a>Zarządzanie kopiami zapasowymi
+## <a name="next-steps"></a>Kolejne kroki
 
-### <a name="what-happens-if-i-rename-a-windows-server-that-is-backing-up-data-to-azurebr"></a>Co się stanie, jeśli zostanie zmieniona nazwa serwera Windows, który wykonuje kopie zapasowe danych na platformie Azure?<br/>
-Po zmianie nazwy serwera wszystkie aktualnie skonfigurowane kopie zapasowe są zatrzymywane. Zarejestruj nową nazwę serwera w magazynie usługi Backup. Po zarejestrowaniu nowej nazwy w magazynie pierwszą operacją kopii zapasowej będzie *pełna* kopia zapasowa. Dane, których kopia zapasowa wykonana przy użyciu starej nazwy serwera znajduje się w magazynie, można odzyskać przy użyciu opcji [**Inny serwer**](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine) w kreatorze **Odtwarzanie danych**.
-
-### <a name="what-is-the-maximum-file-path-length-that-can-be-specified-in-backup-policy-using-azure-backup-agent-br"></a>Jaka jest maksymalna długość ścieżki pliku, którą można określić w ramach zasad usługi Backup przy użyciu agenta usługi Azure Backup? <br/>
-Agent usługi Azure Backup bazuje na systemie plików NTFS. [Specyfikacja długości ścieżki pliku jest ograniczona przez interfejs API systemu Windows](/windows/desktop/FileIO/naming-a-file#fully_qualified_vs._relative_paths). Jeśli długość ścieżki pliku plików, które chcesz chronić, jest większa niż dozwolona przez interfejs API systemu Windows, utwórz kopię zapasową folderu nadrzędnego lub napędu dyskowego.  
-
-### <a name="what-characters-are-allowed-in-file-path-of-azure-backup-policy-using-azure-backup-agent-br"></a>Jakie znaki są dozwolone w ścieżce pliku zasad usługi Azure Backup przy użyciu agenta usługi Azure Backup? <br>
- Agent usługi Azure Backup bazuje na systemie plików NTFS. Dopuszcza [znaki obsługiwane w systemie NTFS](/windows/desktop/FileIO/naming-a-file#naming_conventions) w ramach specyfikacji pliku.
-
-### <a name="i-receive-the-warning-azure-backups-have-not-been-configured-for-this-server-even-though-i-configured-a-backup-policy-br"></a>Nawet po skonfigurowaniu zasad kopii zapasowych wyświetlany jest komunikat ostrzegawczy „Proces tworzenia kopii zapasowych Azure nie został skonfigurowany dla tego serwera” <br/>
-Ostrzeżenie to występuje, gdy ustawienia harmonogramu tworzenia kopii zapasowych przechowywane na serwerze lokalnym nie są takie same jak ustawienia przechowywane w magazynie kopii zapasowych. Gdy serwer lub ustawienia zostały odzyskane do znanego, dobrego stanu, harmonogramy tworzenia kopii zapasowych mogą utracić synchronizację. W przypadku wystąpienia tego ostrzeżenia należy [zmienić konfigurację zasad tworzenia kopii zapasowej](backup-azure-manage-windows-server.md), a następnie wybrać opcję **Wykonaj kopię zapasową**, aby ponownie zsynchronizować lokalny serwer z platformą Azure.
+[Dowiedz się,](tutorial-backup-windows-server-to-azure.md) sposób wykonywania kopii zapasowej maszyny z systemem Windows.

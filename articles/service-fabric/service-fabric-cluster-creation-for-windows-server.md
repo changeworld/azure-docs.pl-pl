@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/21/2019
 ms.author: dekapur
-ms.openlocfilehash: 3e9e3afd5172783c6b5ed8e6342ce9927353d006
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ed775bfca2db02b9bfddebb85bbd3f1f668cf3e0
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60386865"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142690"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Tworzenie klastra autonomicznego w systemie Windows Server
 Azure Service Fabric umożliwia tworzenie klastrów usługi Service Fabric na wszystkich maszynach wirtualnych lub komputerach z systemem Windows Server. Oznacza to, można wdrożyć i uruchamianie aplikacji usługi Service Fabric w dowolnym środowisku, które zawiera zestaw wzajemnie połączonych komputery serwera Windows, lokalnie lub za pomocą dowolnego dostawcy chmury. Usługa Service Fabric udostępnia pakiet instalacyjny służący do tworzenia klastrów usługi Service Fabric o nazwie pakietu autonomicznego w systemie Windows Server.
@@ -27,7 +27,7 @@ Azure Service Fabric umożliwia tworzenie klastrów usługi Service Fabric na ws
 W tym artykule przedstawiono procedurę tworzenia klastra autonomicznego usługi Service Fabric.
 
 > [!NOTE]
-> Pakiet systemu Windows Server to autonomiczne jest dostępne na rynku i mogą być używane we wdrożeniach produkcyjnych. Ten pakiet może zawierać nowe funkcje usługi Service Fabric, które znajdują się w "Preview". Przewiń w dół do "[funkcje dołączone do tego pakietu w wersji zapoznawczej](#previewfeatures_anchor)." sekcja na liście funkcji w wersji zapoznawczej. Możesz [pobrać kopię tej umowy licencyjnej](https://go.microsoft.com/fwlink/?LinkID=733084) teraz.
+> Pakiet systemu Windows Server to autonomiczne jest dostępny bezpłatnie i mogą być używane w przypadku wdrożeń produkcyjnych. Ten pakiet może zawierać nowe funkcje usługi Service Fabric, które znajdują się w "Preview". Przewiń w dół do "[funkcje dołączone do tego pakietu w wersji zapoznawczej](#previewfeatures_anchor)." sekcja na liście funkcji w wersji zapoznawczej. Możesz [pobrać kopię tej umowy licencyjnej](https://go.microsoft.com/fwlink/?LinkID=733084) teraz.
 > 
 > 
 

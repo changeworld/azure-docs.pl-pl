@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/11/2018
 ms.author: iainfou
-ms.openlocfilehash: 4bd934c710d6300e95c60742d5873f5b71bdae59
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: f2477a26bd9df9bcbde8ac184c3667f7dd32dba9
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60466562"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073997"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Konfigurowanie wtyczki Azure CNI sieci w usłudze Azure Kubernetes Service (AKS)
 
@@ -41,6 +41,7 @@ Adresy IP dla zasobników i węzły klastra są przypisywane z określonej podsi
 > Liczba adresów IP wymagana powinien zawierać uwagi dotyczące uaktualniania i operacji skalowania. Jeśli ustawiono zakres adresów IP obsługują tylko stała liczba węzłów, nie można uaktualnić lub skalowania klastra.
 >
 > - Po użytkownik **uaktualnienia** klastra usługi AKS, nowy węzeł jest wdrażana w klastrze. Usługi i obciążenia rozpoczyna się w nowym węźle, a starsze węzeł zostanie usunięty z klastra. Ten proces uaktualnienia stopniowego wymaga co najmniej jeden blok dodatkowych adresów IP, które mają być dostępne. Liczba węzłów jest następnie `n + 1`.
+>   - Tej reguły jest szczególnie ważne w przypadku, gdy używasz pule węzłów systemu Windows Server (obecnie dostępna w wersji zapoznawczej w usłudze AKS). Węzły systemu Windows Server w usłudze AKS nie są automatycznie stosowane aktualizacje Windows, zamiast tego należy wykonać uaktualnienie w puli węzłów. To uaktualnienie wdraża nowe węzły za pomocą najnowszych 2019 r Server okna węzeł podstawowy obraz i zabezpieczeń poprawek. Aby uzyskać więcej informacji na temat uaktualniania pulę węzłów systemu Windows Server, zobacz [uaktualnienia pulę węzłów w usłudze AKS][nodepool-upgrade].
 >
 > - Po użytkownik **skalowania** wdrożono klaster AKS nowego węzła do klastra. Usługi i obciążenia rozpoczyna się w nowym węźle. Zakres adresów IP należy brać pod zagadnienia, jak możesz skalować liczbę węzłów i zasobników, które klaster może obsługiwać. Jeden dodatkowy węzeł dla operacji uaktualniania również powinny być włączone. Liczba węzłów jest następnie `n + number-of-additional-scaled-nodes-you-anticipate + 1`.
 
@@ -62,13 +63,13 @@ Maksymalna liczba zasobników w każdym węźle w klastrze AKS wynosi 110. *Domy
 
 | Metoda wdrażania | Wtyczki Kubenet domyślne | Usługa Azure CNI domyślne | Możliwość konfiguracji podczas wdrażania |
 | -- | :--: | :--: | -- |
-| Interfejs wiersza polecenia platformy Azure | 110 | 30 | Tak (maksymalnie 110) |
-| Szablon usługi Resource Manager | 110 | 30 | Tak (maksymalnie 110) |
+| Interfejs wiersza polecenia platformy Azure | 110 | 30 | Tak (do 250) |
+| Szablon usługi Resource Manager | 110 | 30 | Tak (do 250) |
 | Portal | 110 | 30 | Nie |
 
 ### <a name="configure-maximum---new-clusters"></a>Konfigurowanie maksimum – nowych klastrów
 
-Możesz skonfigurować maksymalną liczbę zasobników w każdym węźle *tylko w czasie wdrażania klastra*. W przypadku wdrożenia przy użyciu wiersza polecenia platformy Azure lub przy użyciu szablonu usługi Resource Manager, można ustawić maksymalny zasobników na możliwie jak 110 wartość węzła.
+Możesz skonfigurować maksymalną liczbę zasobników w każdym węźle *tylko w czasie wdrażania klastra*. W przypadku wdrożenia przy użyciu wiersza polecenia platformy Azure lub przy użyciu szablonu usługi Resource Manager, można ustawić maksymalny zasobników na możliwie jak 250 wartość węzła.
 
 * **Interfejs wiersza polecenia platformy Azure**: Określ `--max-pods` argumentu, w przypadku wdrażania klastra za pomocą [tworzenie az aks] [ az-aks-create] polecenia. Maksymalna wartość wynosi 110.
 * **Szablon usługi Resource Manager**: Określ `maxPods` właściwość [ManagedClusterAgentPoolProfile] obiektu w przypadku wdrażania klastra za pomocą szablonu usługi Resource Manager. Maksymalna wartość wynosi 110.
@@ -105,7 +106,7 @@ Podczas tworzenia klastra usługi AKS przy użyciu wiersza polecenia platformy A
 
 Najpierw Pobierz identyfikator zasobu podsieci dla podsieci istniejących, do której zostaną dołączone klaster AKS:
 
-```console
+```azurecli-interactive
 $ az network vnet subnet list \
     --resource-group myVnet \
     --vnet-name myVnet \
@@ -116,7 +117,7 @@ $ az network vnet subnet list \
 
 Użyj [tworzenie az aks] [ az-aks-create] polecenia `--network-plugin azure` argumentu, aby utworzyć klaster z zaawansowany siecią. Aktualizacja `--vnet-subnet-id` wartość Identyfikatora podsieci zebranych w poprzednim kroku:
 
-```azurecli
+```azurecli-interactive
 az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
@@ -143,7 +144,7 @@ Zestaw poniższych pytań i odpowiedzi dotyczą **wtyczki Azure CNI** konfigurac
 
 * *Można skonfigurować zasad sieciowych na zasobnik?*
 
-  Zasady sieci Kubernetes jest obecnie dostępna jako funkcja w wersji zapoznawczej w usłudze AKS. Aby rozpocząć pracę, zobacz [bezpieczny ruch między zasobników za pomocą zasad sieciowych w usłudze AKS][network-policy].
+  Tak, zasad sieciowych Kubernetes jest dostępna w usłudze AKS. Aby rozpocząć pracę, zobacz [bezpieczny ruch między zasobników za pomocą zasad sieciowych w usłudze AKS][network-policy].
 
 * *Maksymalna liczba zasobników jest możliwy do wdrożenia na węzeł można skonfigurować?*
 
@@ -202,3 +203,4 @@ Klastry Kubernetes utworzonych za pomocą aparatu AKS obsługiwać zarówno [wty
 [aks-http-app-routing]: http-application-routing.md
 [aks-ingress-internal]: ingress-internal-ip.md
 [network-policy]: use-network-policies.md
+[nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool

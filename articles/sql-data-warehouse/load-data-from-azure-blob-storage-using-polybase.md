@@ -2,20 +2,20 @@
 title: 'Samouczek: Załaduj dane dotyczące taksówek w Nowym Jorku do usługi Azure SQL Data Warehouse | Dokumentacja firmy Microsoft'
 description: Samouczek korzysta z platformy Azure portal i programu SQL Server Management Studio, aby załadować dane taksówek w Nowym Jorku z publicznej platformy Azure obiektu blob do usługi Azure SQL Data Warehouse.
 services: sql-data-warehouse
-author: mlee3gsd
+author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: implement
-ms.date: 03/27/2019
-ms.author: mlee3gsd
+ms.date: 04/26/2019
+ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 57ca749aec2a72379e92c46764eb9b6558653e29
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ca4084fb271320eb4cdfdeb6cb9026367761be0a
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61078997"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143664"
 ---
 # <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>Samouczek: Załaduj dane dotyczące taksówek w Nowym Jorku do usługi Azure SQL Data Warehouse
 
@@ -561,6 +561,49 @@ W skrypcie użyto instrukcji języka T-SQL [CREATE TABLE AS SELECT (CTAS)](/sql/
 
     ![Wyświetlanie załadowanych tabel](media/load-data-from-azure-blob-storage-using-polybase/view-loaded-tables.png)
 
+## <a name="authenticate-using-managed-identities-to-load-optional"></a>Uwierzytelnianie za pomocą tożsamości zarządzanych do załadowania (opcjonalnie)
+Ładowanie przy użyciu technologii PolyBase i uwierzytelnianie za pomocą tożsamości zarządzanej to najbezpieczniejsza opcja mechanizm i pozwala na wykorzystanie punkty końcowe usługi sieci wirtualnej z usługą Azure storage. 
+
+### <a name="prerequisites"></a>Wymagania wstępne
+1.  Zainstaluj program Azure PowerShell za pomocą tego [przewodnik](https://docs.microsoft.com/powershell/azure/install-az-ps).
+2.  Jeśli masz konto ogólnego przeznaczenia w wersji 1 lub usługi blob storage, należy najpierw uaktualnić do ogólnego przeznaczenia w wersji 2 za pomocą tego [przewodnik](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
+3.  Konieczne jest posiadanie **dozwolonych zaufanych usług firmy Microsoft dostęp do tego konta magazynu** włączone w ramach konta usługi Azure Storage **zapory i sieci wirtualne** menu Ustawienia. Zapoznaj się z tym [przewodnik](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) Aby uzyskać więcej informacji.
+
+#### <a name="steps"></a>Kroki
+1. W programie PowerShell **zarejestrować serwer bazy danych SQL** za pomocą usługi Azure Active Directory (AAD):
+
+   ```powershell
+   Connect-AzAccount
+   Select-AzSubscription -SubscriptionId your-subscriptionId
+   Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
+   ```
+    
+   1. Tworzenie **ogólnego przeznaczenia w wersji 2, konto magazynu** za pomocą tego [przewodnik](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
+
+   > [!NOTE]
+   > - Jeśli masz konto ogólnego przeznaczenia w wersji 1 lub usługi blob storage, musisz najpierw **najpierw przeprowadzić uaktualnienie do wersji 2** za pomocą tego [przewodnik](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
+    
+1. W ramach konta magazynu, przejdź do **kontrola dostępu (IAM)** i kliknij przycisk **Dodaj przypisanie roli**. Przypisz **Współautor danych obiektu Blob magazynu** rolę RBAC do serwera usługi SQL Database.
+
+   > [!NOTE] 
+   > Tylko elementy członkowskie z uprawnieniami właściciela można wykonać ten krok. Dla różnych ról wbudowanych dla zasobów platformy Azure, zapoznaj się z tym [przewodnik](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
+  
+1. **Program Polybase łączności z kontem usługi Azure Storage:**
+    
+   1. Utwórz swoje poświadczenia bazy danych za pomocą **tożsamość = "Tożsamości usługi zarządzanej"**:
+
+       ```SQL
+       CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Service Identity';
+       ```
+       > [!NOTE] 
+       > - Nie trzeba określać klucz TAJNY kluczem dostępu do usługi Azure Storage, ponieważ korzysta z tego mechanizmu [tożsamości zarządzanej](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) dzieje się w tle.
+       > - Nazwa tożsamości, powinna być **"Tożsamości usługi zarządzanej"** łączności programu PolyBase do pracy z konta usługi Azure Storage.
+    
+   1. Tworzenie zewnętrznego źródła danych, określając Database Scoped Credential przy użyciu tożsamości usługi zarządzanej.
+        
+   1. Zapytania, ponieważ przy użyciu normalnych [tabel zewnętrznych](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql).
+
+Odnosić się do [dokumentację] (https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview ) Jeśli chcesz skonfigurować punkty końcowe usługi sieci wirtualnej dla usługi SQL Data Warehouse. 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

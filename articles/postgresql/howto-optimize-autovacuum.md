@@ -1,20 +1,19 @@
 ---
-title: Optymalizowanie autovacuum na usługi Azure Database for postgresql w warstwie serwera
-description: W tym artykule opisano, jak można optymalizować autovacuum na usługi Azure Database for postgresql w warstwie serwera.
-author: WenJason
-ms.author: v-jay
+title: Optymalizowanie autovacuum w usłudze Azure Database for PostgreSQL — pojedynczy serwer
+description: W tym artykule opisano, jak można optymalizować autovacuum w usłudze Azure Database for PostgreSQL — pojedynczy serwer
+author: dianaputnam
+ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
-origin.date: 10/22/2018
-ms.date: 04/29/2019
-ms.openlocfilehash: e1b4bf1f9fa956da7a7b0ca1521439002d1ce76b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: fb1ab9525974601a8b8c22ccc44e2cf37baf21a1
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60420274"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65069116"
 ---
-# <a name="optimize-autovacuum-on-an-azure-database-for-postgresql-server"></a>Optymalizowanie autovacuum na usługi Azure Database for postgresql w warstwie serwera 
+# <a name="optimize-autovacuum-on-an-azure-database-for-postgresql---single-server"></a>Optymalizowanie autovacuum w usłudze Azure Database for PostgreSQL — pojedynczy serwer
 W tym artykule opisano, jak skutecznie zoptymalizować autovacuum na usługi Azure Database for postgresql w warstwie serwera.
 
 ## <a name="overview-of-autovacuum"></a>Omówienie autovacuum

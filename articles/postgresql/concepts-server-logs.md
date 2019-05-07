@@ -1,19 +1,19 @@
 ---
-title: Dzienniki serwera w bazie danych Azure database for PostgreSQL
-description: W tym artykule opisano, jak usługi Azure Database dla PostgreSQL generuje dzienników zapytań i błąd i jak rejestrować przechowywania jest skonfigurowany.
+title: Dzienniki serwera w usłudze Azure Database for PostgreSQL — pojedynczy serwer
+description: W tym artykule opisano jak usługa Azure Database for PostgreSQL — pojedynczy serwer generuje zapytania i dzienniki błędów i konfiguracji przechowywania dziennika.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/28/2019
-ms.openlocfilehash: 99deef907818ffdb1ce858c8e988e26cbd53a1a1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 4d1cf2c59e324cedd9b747b1ac65d6edcb9deb45
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60871537"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65067378"
 ---
-# <a name="server-logs-in-azure-database-for-postgresql"></a>Dzienników serwera w usłudze Azure Database for PostgreSQL 
+# <a name="server-logs-in-azure-database-for-postgresql---single-server"></a>Dzienniki serwera w usłudze Azure Database for PostgreSQL — pojedynczy serwer
 Usługa Azure Database for postgresql w warstwie generuje zapytania i błąd dzienników. Dziennikami zapytań, błędów i może służyć do identyfikowania, rozwiązywanie problemów i naprawić błędy konfiguracji i nieoptymalne wydajności. (Dostęp do dzienników transakcji nie jest dołączony). 
 
 ## <a name="configure-logging"></a>Konfigurowanie rejestrowania 

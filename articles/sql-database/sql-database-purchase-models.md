@@ -12,22 +12,27 @@ ms.author: sstein
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/26/2019
-ms.openlocfilehash: 89ff11246c7cd36732df1332da94ec5318d7f1d7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f17df53c1ea77bf99ab86329fe914d058eb00f64
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64574092"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65072703"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-model"></a>Wybieranie między rdzeni wirtualnych i model zakupu jednostek DTU
 
 Usługa Azure SQL Database umożliwia łatwy zakup w pełni zarządzany aparat bazy danych PaaS, który spełnia Twoje potrzeby wydajności i kosztów. W zależności od modelu wdrażania usługi Azure SQL Database można wybrać model zakupu, która spełnia Twoje potrzeby:
+
+- [model zakupu w oparciu o rdzeń wirtualny](sql-database-service-tiers-vcore.md) (zalecane). Ten model zakupu zapewnia wybór między warstwami zainicjowanych zasobów obliczeniowych i warstwa wystąpień obliczeniowych bez użycia serwera (wersja zapoznawcza). Z warstwą zainicjowanych zasobów obliczeniowych możesz wybrać dokładnie ilości zasobów obliczeniowych, który jest zawsze aprowizowany dla obciążenia. Z warstwą bezserwerowe środowisko obliczeniowe możesz skonfigurować automatyczne skalowanie mocy obliczeniowej przy użyciu różnych obliczeniowych można konfigurować. W tej warstwie obliczeniowej również ma możliwość automatycznego wstrzymywania i wznawiania bazy danych, w oparciu o obciążenie działanie. Cena jednostkowa (rdzeń wirtualny) na jednostkę czasu jest niższa w warstwie zainicjowanych zasobów obliczeniowych, niż w bezserwerowe warstwa wystąpień obliczeniowych.
+- [Model zakupu w oparciu o jednostki DTU](sql-database-service-tiers-dtu.md). Ten model zakupu zawiera powiązane zasoby obliczeniowe i Magazyn pakiety ze zrównoważonym dla typowych obciążeń.
 
 Różne modele zakupu są dostępne w modelach wdrażania usługi Azure SQL Database:
 
 - [Pojedynczej bazy danych](sql-database-single-databases-manage.md) i [puli elastycznej](sql-database-elastic-pool.md) opcje wdrażania w [usługi Azure SQL Database](sql-database-technical-overview.md) oferują zarówno [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) i [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md).
 - [Wystąpienia zarządzanego](sql-database-managed-instance.md) opcja wdrożenia w usłudze Azure SQL Database tylko oferuje [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md).
 
+
+- [Warstwy usługi w hiperskali](sql-database-service-tier-hyperscale.md) jest obecnie dostępna dla pojedynczych baz danych przy użyciu[modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md).
 
 Następujących tabel i wykresów porównania i porównać rdzeni wirtualnych i jednostek DTU, zakup modeli.
 
@@ -45,6 +50,9 @@ Następujących tabel i wykresów porównania i porównać rdzeni wirtualnych i 
 
 W warstwie zainicjowanych zasobów obliczeniowych koszt obliczeń odzwierciedla moc obliczeniową całkowita, które jest obsługiwane dla aplikacji.  W warstwie krytyczne usługi biznesowej firma Microsoft automatycznie Przydziel co najmniej 3 replik. Aby uwzględnić ten dodatkowy przydział zasobów obliczeniowych, cena w modelu zakupu opartego na rdzeniach wirtualnych jest większa w warstwie krytyczne usługi biznesowe, niż w warstwie ogólnego przeznaczenia około 2.7 x. Z tego samego powodu wyższe cena magazynu za GB w warstwie krytyczne biznesowych odzwierciedla wysokiej We/Wy i małe opóźnienia magazyn SSD. W tym samym czasie koszt magazynu kopii zapasowych nie jest różnica między tymi warstwami dwóch usług, ponieważ w obu przypadkach używamy klasę magazynu w warstwie standardowa.
 
+### <a name="serverless-compute-costs"></a>Koszty operacji obliczeniowych bez użycia serwera
+
+W przypadku warstwy bezserwerowe środowisko obliczeniowe, zobacz [bez użycia serwera bazy danych SQL Database (wersja zapoznawcza)](sql-database-serverless.md) do opisu sposobu zdefiniowania moc obliczeniową i koszty są obliczane.
 
 ## <a name="storage-costs"></a>Koszty magazynowania
 
@@ -56,7 +64,7 @@ Aby uzyskać więcej informacji na temat cen magazynu, zobacz [ceny](https://azu
 
 ## <a name="vcore-based-purchasing-model"></a>Model zakupów oparty na rdzeniach wirtualnych
 
-Rdzeń wirtualny reprezentuje logiczny Procesor CPU z opcją wyboru generacji sprzętu i cechy fizyczne sprzętu (na przykład liczba rdzeni, pamięć, rozmiar magazynu). Model zakupu opartego na rdzeniach wirtualnych zapewnia elastyczności, kontroli, przejrzystości użycia poszczególnych zasobów i prostą metodę tłumaczenia wymagań dotyczących obciążenia lokalne do chmury. Ten model umożliwia wybierz obliczeniowych, pamięci i magazynu, w zależności od ich potrzeb obciążenia. W opartych na rdzeniach wirtualnych model zakupu, można wybrać między [ogólnego przeznaczenia](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) i [krytyczne dla działania](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) warstwy dla usługi [pojedyncze bazy danych](sql-database-single-database-scale.md), [ pule elastyczne](sql-database-elastic-pool.md), i [wystąpienia zarządzane](sql-database-managed-instance.md). Dla pojedynczych baz danych, można także [warstwę usługi na dużą skalę (wersja zapoznawcza)](sql-database-service-tier-hyperscale.md).
+Rdzeń wirtualny reprezentuje logiczny Procesor CPU z opcją wyboru generacji sprzętu i cechy fizyczne sprzętu (na przykład liczba rdzeni, pamięć, rozmiar magazynu). Model zakupu opartego na rdzeniach wirtualnych zapewnia elastyczności, kontroli, przejrzystości użycia poszczególnych zasobów i prostą metodę tłumaczenia wymagań dotyczących obciążenia lokalne do chmury. Ten model umożliwia wybierz obliczeniowych, pamięci i magazynu, w zależności od ich potrzeb obciążenia. W opartych na rdzeniach wirtualnych model zakupu, można wybrać między [ogólnego przeznaczenia](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) i [krytyczne dla działania](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) warstwy dla usługi [pojedyncze bazy danych](sql-database-single-database-scale.md), [ pule elastyczne](sql-database-elastic-pool.md), i [wystąpienia zarządzane](sql-database-managed-instance.md). Dla pojedynczych baz danych, można także [warstwy usługi w hiperskali](sql-database-service-tier-hyperscale.md).
 
 Model zakupu opartego na rdzeniach wirtualnych umożliwia niezależnie wybrać zasoby obliczeniowe i magazynowe, Dopasuj wydajność środowiska lokalnego i optymalizacja ceny. Oparty na rdzeniach wirtualnych model zakupu klienci płacą za zasoby:
 

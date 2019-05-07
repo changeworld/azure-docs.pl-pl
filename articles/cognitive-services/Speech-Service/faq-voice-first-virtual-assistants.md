@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: travisw
-ms.openlocfilehash: 16e4bcbb1514cfd5bbddc22b663d636292095231
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 8427417c9b579c7dfa21f834ce1ca77099159eb2
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025898"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65072621"
 ---
 # <a name="voice-first-virtual-assistants-preview-frequently-asked-questions"></a>Wirtualnych asystentów głosowych pierwszy (wersja zapoznawcza): Często zadawane pytania
 
@@ -29,7 +29,7 @@ Jeśli nie możesz znaleźć odpowiedzi na pytania w tym dokumencie, zapoznaj si
 
 **Pyt.: Jak rozpocząć pracę?**
 
-**Odp.:** Najlepszy sposób rozpoczynać się tworzenie Asystenta ustawień wirtualnego pierwszy głos jest rozpoczęcie od [tworzenia podstawowy bot platformy Bot Framework](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0). Następnie połącz botowi [kanału Direct mowy wiersza](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech.md).
+**Odp.:** Najlepszy sposób rozpoczynać się tworzenie Asystenta ustawień wirtualnego pierwszy głos jest rozpoczęcie od [tworzenia podstawowy bot platformy Bot Framework](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0). Następnie połącz botowi [kanału Direct mowy wiersza](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech).
 
 ## <a name="debugging"></a>Debugowanie
 
@@ -41,7 +41,7 @@ Jeśli nie możesz znaleźć odpowiedzi na pytania w tym dokumencie, zapoznaj si
 
 **Pyt.: Mogę wrócić rozpoznawanie tekstu z bezpośredniego wypowiedzi wiersza, ale widzę błąd "1011" i nic z moich botów. Dlaczego?**
 
-**Odp.:** Ten błąd wskazuje problem z komunikacją między bot i bezpośredniego mowy wiersza. Upewnij się, że masz [połączone kanału Direct mowy wiersza](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech.md), [dodano obsługę protokołu przesyłania strumieniowego](https://aka.ms/botframework/addstreamingprotocolsupport) do botów (z powiązanych obsługi gniazda sieci Web), a następnie sprawdź, czy Twój bot odpowiada na żądania przychodzące żądania z kanału.
+**Odp.:** Ten błąd wskazuje problem z komunikacją między bot i bezpośredniego mowy wiersza. Upewnij się, że masz [połączone kanału Direct mowy wiersza](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech), [dodano obsługę protokołu przesyłania strumieniowego](https://aka.ms/botframework/addstreamingprotocolsupport) do botów (z powiązanych obsługi gniazda sieci Web), a następnie sprawdź, czy Twój bot odpowiada na żądania przychodzące żądania z kanału.
 
 **Pyt.: To nie zadziała i/lub otrzymuję błąd różnych, korzystając z SpeechBotConnector i nie jest jasne, co należy zrobić. Co *powinien* zrobić?**
 

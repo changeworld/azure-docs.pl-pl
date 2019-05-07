@@ -9,19 +9,17 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: e82c842ec8fce703c48c98eaf09ea5c8d91be9be
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 74d2601c2319ccad9cc980b83894a3242705aa46
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60998531"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148115"
 ---
-# <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices-preview"></a>Zrozumienie rozszerzone możliwości w trybie offline dla urządzeń usługi IoT Edge, moduły i podrzędny urządzenia (wersja zapoznawcza)
+# <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>Zrozumienie rozszerzone możliwości w trybie offline dla urządzeń, moduły i podrzędny urządzenia usługi IoT Edge
 
 Usługa Azure IoT Edge obsługuje rozszerzonych operacji w trybie offline na urządzeniach brzegowych IoT i zbyt umożliwia operacje trybu offline na urządzeniach z podrzędnych-Edge. Tak długo, jak urządzenia usługi IoT Edge miał jedną szansę nawiązać połączenie z Centrum IoT Hub, go i wszystkie podrzędne urządzenia można nadal funkcji z tymczasowymi lub brak połączenia internetowego. 
 
->[!NOTE]
->Trwa obsługi trybu offline do usługi IoT Edge [publicznej wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="how-it-works"></a>Jak to działa
 
@@ -61,24 +59,49 @@ Urządzenia usługi IoT Edge rozszerzyć jej rozszerzone możliwości w trybie o
 
 ### <a name="assign-child-devices"></a>Przypisz urządzenia podrzędne
 
-Podrzędne urządzenia mogą być dowolnego urządzenia bez krawędzi zarejestrowany w tym samym Centrum IoT Hub. Możesz zarządzać relacji nadrzędny podrzędny o tworzeniu nowego urządzenia lub ze strony szczegółów urządzenia albo nadrzędnej urządzenie usługi IoT Edge lub urządzenia IoT podrzędnego. 
+Podrzędne urządzenia mogą być dowolnego urządzenia bez krawędzi zarejestrowany w tym samym Centrum IoT Hub. Nadrzędny urządzenia mogą mieć wiele urządzeń podrzędnych, ale urządzenie podrzędny może mieć tylko jedną jednostkę nadrzędną. Istnieją trzy opcje, aby ustawić podrzędnych urządzenia na urządzeniu usługi edge:
+
+#### <a name="option-1-iot-hub-portal"></a>Opcja 1: Portal usługi IoT Hub
+
+ Możesz zarządzać relacji nadrzędny podrzędny o tworzeniu nowego urządzenia lub ze strony szczegółów urządzenia albo nadrzędnej urządzenie usługi IoT Edge lub urządzenia IoT podrzędnego. 
 
    ![Zarządzanie urządzeniami podrzędnych z poziomu strony szczegółów urządzenia usługi IoT Edge](./media/offline-capabilities/manage-child-devices.png)
 
-Nadrzędny urządzenia mogą mieć wiele urządzeń podrzędnych, ale urządzenie podrzędny może mieć tylko jedną jednostkę nadrzędną.
+
+#### <a name="option-2-use-the-az-command-line-tool"></a>Opcja 2: Użyj `az` narzędzie wiersza polecenia
+
+Za pomocą [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) z [rozszerzenia IoT](https://github.com/azure/azure-iot-cli-extension) (v0.7.0 lub nowszej), można zarządzać nadrzędny podrzędny relacji z [tożsamości urządzenia](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) polecenia podrzędne. W poniższym przykładzie mamy wykonaj zapytanie, aby przypisać urządzenia w Centrum wszystkich innych usługi IoT Edge jako urządzenia podrzędnych urządzenia usługi IoT Edge. 
+
+```shell
+# Set IoT Edge parent device
+egde_device="edge-device1"
+
+# Get All IoT Devices
+device_list=$(az iot hub query \
+        --hub-name replace-with-hub-name \
+        --subscription replace-with-sub-name \
+        --resource-group replace-with-rg-name \
+        -q "SELECT * FROM devices WHERE capabilities.iotEdge = false" \
+        --query 'join(`, `, [].deviceId)' -o tsv)
+
+# Add all IoT devices to IoT Edge (as child)
+az iot hub device-identity add-children \
+  --device-id $egde_device \
+  --child-list $device_list \
+  --hub-name replace-with-hub-name \
+  --resource-group replace-with-rg-name \
+  --subscription replace-with-sub-name 
+```
+
+Możesz zmodyfikować [zapytania](../iot-hub/iot-hub-devguide-query-language.md) można wybrać podzestaw różnych urządzeń. Wykonanie polecenia może potrwać kilka sekund, jeśli określisz duży zbiór urządzeń.
+
+#### <a name="option-3-use-iot-hub-service-sdk"></a>Opcja 3: Użyj zestawu SDK usługi IoT Hub 
+
+Na koniec można zarządzać relacji nadrzędny podrzędny, programowo przy użyciu C#, Java lub Node.js zestawu SDK usługi IoT Hub. Oto [przykład przypisywania urządzenia podrzędnego](https://aka.ms/set-child-iot-device-c-sharp) przy użyciu C# zestawu SDK.
 
 ### <a name="specifying-dns-servers"></a>Określenie serwerów DNS 
 
-W celu poprawy niezawodności, zalecane jest określenie adresów serwerów DNS, które są używane w danym środowisku. Na przykład w systemie Linux, należy zaktualizować **/etc/docker/daemon.json** (może być konieczne do utworzenia pliku) do uwzględnienia:
-
-```json
-{
-    "dns": ["1.1.1.1"]
-}
-```
-
-Jeśli używasz lokalnego serwera DNS, należy zastąpić 1.1.1.1 adres IP serwera DNS. Uruchom ponownie usługę docker, aby zmiany zaczęły obowiązywać.
-
+W celu poprawy niezawodności, zdecydowanie zaleca się określić adresy serwera DNS, które są używane w danym środowisku. Zobacz [to zrobić z artykuł dotyczący rozwiązywania problemów na dwa sposoby](troubleshoot.md#resolution-7).
 
 ## <a name="optional-offline-settings"></a>Opcjonalne ustawienia w trybie offline
 
@@ -86,7 +109,7 @@ Jeśli oczekujesz zbierać wszystkie komunikaty, które generują urządzeń w o
 
 ### <a name="time-to-live"></a>Czas wygaśnięcia
 
-Czas wygaśnięcia ustawienie to ilość czasu (w sekundach) oczekiwania przez komunikat do dostarczenia przed jego wygaśnięciem. Wartość domyślna to 7200 sekund (2 godziny). 
+Czas wygaśnięcia ustawienie to ilość czasu (w sekundach) oczekiwania przez komunikat do dostarczenia przed jego wygaśnięciem. Wartość domyślna to 7200 sekund (2 godziny). Wartość maksymalna jest ograniczona tylko przez wartość maksymalna zmienną całkowitoliczbową, czyli około 2 mld. 
 
 To ustawienie jest żądaną właściwość Centrum IoT Edge, który jest przechowywany w bliźniaczej reprezentacji modułu. Można skonfigurować w witrynie Azure portal w **skonfiguruj zaawansowane ustawienia środowiska uruchomieniowego Edge** sekcji lub bezpośrednio w ramach wdrożenia manifestu. 
 

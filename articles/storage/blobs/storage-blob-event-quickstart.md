@@ -2,19 +2,20 @@
 title: Wysyłanie zdarzeń usługi Azure Blob Storage do niestandardowego internetowego punktu końcowego — Azure CLI | Microsoft Docs
 description: Zasubskrybuj zdarzenia usługi Blob Storage przy użyciu usługi Azure Event Grid. Wyślij zdarzenia do elementu webhook. Określ obsługę zdarzeń w aplikacji internetowej.
 services: storage,event-grid
-author: cbrooksmsft
-ms.author: cbrooks
+author: normesta
+ms.author: normesta
+ms.reviewer: cbrooks
 ms.date: 12/06/2018
 ms.topic: quickstart
 ms.service: storage
 ms.subservice: blobs
 ms.custom: seodec18
-ms.openlocfilehash: f38c6fec7ff98e7d5c46661741ff036edb791673
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: HT
+ms.openlocfilehash: 7d92614556fdc6822f749002d2e5a8fc92946d0a
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756380"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65141124"
 ---
 # <a name="quickstart-route-storage-events-to-web-endpoint-with-azure-cli"></a>Szybki start: Kierowanie zdarzeń usługi magazynu do internetowego punktu końcowego za pomocą interfejsu Azure CLI
 
@@ -157,7 +158,7 @@ Zamień `<resource_group_name>` na utworzoną powyżej grupę zasobów.
 az group delete --name <resource_group_name>
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Wiesz już, jak tworzyć tematy i subskrypcje zdarzeń. Dowiedz się więcej na temat tego, co mogą Ci ułatwić zdarzenia usługi Blob Storage i usługa Event Grid:
 

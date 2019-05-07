@@ -6,19 +6,19 @@ author: dlepow
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 02/15/2019
+ms.date: 04/25/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: bf783c988c0163fe562669a8331c332dbf8d535e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9dc3e19f9429a6055a799f3f013c732538fa370d
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61067336"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65070864"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Rozwiązywanie typowych problemów w usłudze Azure Container Instances
 
-W tym artykule pokazano, jak rozwiązywać typowe problemy dotyczące zarządzania lub wdrażanie kontenerów w usłudze Azure Container Instances.
+W tym artykule pokazano, jak rozwiązywać typowe problemy dotyczące zarządzania lub wdrażanie kontenerów w usłudze Azure Container Instances. Zobacz też [— często zadawane pytania](container-instances-faq.md).
 
 ## <a name="naming-conventions"></a>Konwencje nazewnictwa
 
@@ -46,11 +46,7 @@ Jeśli określisz obraz, który nie obsługuje usługi Azure Container Instances
 }
 ```
 
-Ten błąd występuje najczęściej w przypadku wdrażania obrazów Windows, które są oparte na półroczny kanał (Konsola SAC) wersji. Na przykład Windows w wersji 1709 i 1803 są wersje SAC i wygenerować ten błąd, po wdrożeniu.
-
-Usługa Azure Container Instances obsługuje obecnie obrazów Windows tylko na podstawie **systemu Windows Server 2016 Long-Term Servicing kanału (LTSC)** wydania. Aby rozwiązać ten problem, gdy wdrażanie kontenerów Windows, należy zawsze wdrażać obrazy oparte na systemie Windows Server 2016 LTSC. Obrazy oparte na systemie Windows Server 2019 r (LTSC) nie są obsługiwane.
-
-Aby uzyskać szczegółowe informacje dotyczące LTSC i konsola SAC wersji systemu Windows, zobacz [Omówienie systemu Windows Server z kanału semi-Annual Channel][windows-sac-overview].
+Ten błąd występuje najczęściej w przypadku wdrażania obrazów Windows, które są oparte na półroczny kanał wersji 1709 lub 1803, które nie są obsługiwane. Dla obsługiwanych obrazów Windows w usłudze Azure Container Instances, zobacz [— często zadawane pytania](container-instances-faq.md#what-windows-base-os-images-are-supported).
 
 ## <a name="unable-to-pull-image"></a>Nie można do ściągania obrazu
 
@@ -102,7 +98,7 @@ az container create -g MyResourceGroup --name myapp --image ubuntu --command-lin
 
 ```azurecli-interactive 
 ## Deploying a Windows container
-az container create -g myResourceGroup --name mywindowsapp --os-type Windows --image mcr.microsoft.com/windows/servercore:ltsc2016
+az container create -g myResourceGroup --name mywindowsapp --os-type Windows --image mcr.microsoft.com/windows/servercore:ltsc2019
  --command-line "ping -t localhost"
 ```
 
@@ -156,7 +152,7 @@ Są dwa podstawowe czynniki, które przyczyniają się do czasu uruchamiania kon
 * [Rozmiar obrazu](#image-size)
 * [Lokalizacja obrazu](#image-location)
 
-Windows obrazy mają [dodatkowych kwestii dotyczących](#cached-windows-images).
+Windows obrazy mają [dodatkowych kwestii dotyczących](#cached-images).
 
 ### <a name="image-size"></a>Rozmiar obrazu
 
@@ -176,14 +172,12 @@ Klucz zachowanie małe rozmiary obrazów jest zapewnienie, że końcowy obraz ni
 
 Innym sposobem, aby zmniejszyć wpływ ściągania obrazów na czas uruchamiania przez kontener jest hostowanie obrazu kontenera w [usługi Azure Container Registry](/azure/container-registry/) w tym samym regionie, w którym mają zostać wdrożone wystąpienia kontenera. Skraca ścieżkę sieciową wymagającym podróż, obraz kontenera, znacznie skrócić czas pobierania.
 
-### <a name="cached-windows-images"></a>Pamięci podręcznej obrazów Windows
+### <a name="cached-images"></a>Obrazy w pamięci podręcznej
 
-Usługa Azure Container Instances używa mechanizm buforowania, aby pomóc czas uruchamiania kontenera szybkość obrazy oparte na typowych obrazy systemu Windows i Linux. Szczegółową listę pamięci podręcznej obrazów i tagów, należy użyć [listy pamięci podręcznej obrazów] [ list-cached-images] interfejsu API.
+Usługa Azure Container Instances używa mechanizm buforowania, aby ułatwić szybkość czas uruchamiania kontenera obrazów utworzonych na wspólnym [Windows podstawowa obrazów](container-instances-faq.md#what-windows-base-os-images-are-supported), w tym `nanoserver:1809`, `servercore:ltsc2019`, i `servercore:1809`. Najczęściej używane obrazów systemu Linux, takie jak `ubuntu:1604` i `alpine:3.6` są także buforowane. Aktualną listę pamięci podręcznej obrazów i tagów, można użyć [listy pamięci podręcznej obrazów] [ list-cached-images] interfejsu API.
 
-Aby zapewnić najlepszy czas uruchamiania kontenera Windows, użyj jednej z **trzy najbardziej aktualne** wersje następujących **dwa obrazy** jako obraz podstawowy:
-
-* [Windows Server Core 2016] [ docker-hub-windows-core] (tylko LTSC)
-* [Windows Server 2016 Nano Server][docker-hub-windows-nano]
+> [!NOTE]
+> Korzystanie z obrazów w sieci systemu Windows Server w 2019 r w usłudze Azure Container Instances jest dostępna w wersji zapoznawczej.
 
 ### <a name="windows-containers-slow-network-readiness"></a>Gotowość wolną sieć kontenery Windows
 

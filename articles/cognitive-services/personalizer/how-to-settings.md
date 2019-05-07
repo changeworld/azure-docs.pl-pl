@@ -10,28 +10,34 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: 0cd08e1191c68c57975d3e68648134925155e7f2
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: bce260d2a6b897d3e45b231df4eecd7ecb31ba31
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027222"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143255"
 ---
 # <a name="personalizer-settings"></a>Ustawienia personalizer
 
 Konfiguracja usługi zawiera, jak usługa traktuje korzyści, jak często usługa analizuje, jak często model jest retrained i jak dużo danych jest przechowywany.
 
+## <a name="create-personalizer-resource"></a>Utwórz zasób Personalizer
+
 Utwórz zasób Personalizer dla każdej pętli opinii. 
+
+1. Zaloguj się w [portalu Azure](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer). Poprzedni link spowoduje przejście do **Utwórz** stronę usługi Personlizer. 
+1. Wprowadź nazwę usługi, wybierz subskrypcję, lokalizacji, warstwa cenowa i grupy zasobów.
+1. Wybierz potwierdzenie i wybierz **Utwórz**.
 
 ## <a name="configure-service-settings-in-the-azure-portal"></a>Konfigurowanie ustawień usługi w witrynie Azure portal
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer).
 1. Znajdź zasób Personalizer. 
 1. W **zarządzania zasobami** zaznacz **ustawienia**.
 
-    ![Zaloguj się do Portalu Azure. Znajdź zasób Personalizer. W sekcji Zarządzanie zasobów wybierz ustawienia.](media/settings/how-to-configure.png)
+    Przed opuszczeniem witryny Azure portal, skopiuj jeden z kluczy zasobu z **klucze** strony. Będzie on potrzebny do użycia [Personalizer SDK](https://aka.ms/personalizer-dotnet-sdk-docs).
 
-### <a name="reward-settings-for-the-feedback-loop"></a>Ustawienia nagradzania dla sprzężenia zwrotnego
+### <a name="configure-reward-settings-for-the-feedback-loop-based-on-use-case"></a>Konfigurowanie ustawień za wynagrodzeniem dla sprzężenia zwrotnego na podstawie przypadku użycia
 
 Skonfiguruj ustawienia usługi dla swojej sprzężenia zwrotnego użytkowania nagrody. Zmiany w następujących ustawieniach spowoduje to zresetowanie bieżący model Personalizer i ponowne jej szkolenie przy użyciu ostatnie 2 dni danych:
 
@@ -81,4 +87,4 @@ W sekcji Zarządzanie zasobami dla **modelu i zasady**, zaimportować nowe zasad
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Uczenia przez wzmacnianie](concepts-reinforcement-learning.md) 
+[Jak używać kontenerów Personalizer](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409)

@@ -6,91 +6,69 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/28/2019
+ms.date: 04/26/2019
 ms.author: normesta
-ms.openlocfilehash: 51230fe050c67253dd5b2bb3f23d03512df64ef6
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 61d168a5f501923812db5945fa6df439ae7e70f9
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939246"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65145102"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Znane problemy związane z usługi Azure Data Lake Storage Gen2
 
-Ten artykuł zawiera znane problemy i ograniczenia tymczasowe Data Lake Storage Gen2.
+W tym artykule wymieniono funkcje i narzędzia, które nie zostały jeszcze obsługiwany lub tylko częściowo obsługiwane z kontami magazynu, które mają hierarchicznej przestrzeni nazw (Azure Data Lake Storage Gen2).
 
-## <a name="sdk-support-for-data-lake-storage-gen2-accounts"></a>Obsługa zestawu SDK dla kont usługi Data Lake Storage Gen2
-
-Nie ma dostępne są zestawy SDK, które będą współdziałać z konta Data Lake Storage Gen2.
+<a id="blob-apis-disabled" />
 
 ## <a name="blob-storage-apis"></a>Magazyn obiektów blob interfejsów API
 
-Magazyn obiektów blob interfejsy API nie są jeszcze dostępne dla konta Data Lake Storage Gen2.
+Magazyn obiektów blob interfejsy API są wyłączone, aby zapobiec problemy dotyczące dostępu do przypadkowego danych, które mogą wystąpić, ponieważ interfejsy API usługi Blob Storage nie są jeszcze współpracujący z interfejsów API usługi Azure Data Lake Gen2.
 
-Te interfejsy API są wyłączone, aby zapobiec nieumyślnemu danych problemów dotyczących dostępu, które mogą wystąpić, ponieważ interfejsy API usługi Blob Storage nie są jeszcze współpracujący z interfejsów API usługi Azure Data Lake Gen2.
+### <a name="what-to-do-with-existing-tools-applications-and-services"></a>Co należy zrobić z istniejącymi narzędziami, aplikacjami i usługami
+
+Jeśli dowolny z tych użycia interfejsów API usługi Blob, a chcesz ich używać do pracy z całej zawartości, który przekaże do swojego konta, nie włączysz hierarchicznej przestrzeni nazw na konta usługi Blob storage do momentu interfejsów API usługi Blob stają się współpracujący z interfejsów API usługi Azure Data Lake Gen2.
+
+Przy użyciu konta magazynu bez hierarchicznej przestrzeni nazw oznacza, że nie masz dostępu do Data Lake Storage Gen2 określone funkcje, takie jak listy kontroli dostępu systemu plików i katalogów następnie.
+
+### <a name="what-to-do-with-unmanaged-virtual-machine-vm-disks"></a>Co należy zrobić z dyskami niezarządzanymi maszyn wirtualnych (VM)
+
+Te zależą od wyłączone interfejsów API Blob Storage, dlatego jeśli chcesz włączyć hierarchicznej przestrzeni nazw na koncie magazynu, należy rozważyć umieszczenie ich na konto magazynu, który nie ma włączoną funkcję hierarchicznej przestrzeni nazw.
+
+### <a name="what-to-do-if-you-used-blob-apis-to-load-data-before-blob-apis-were-disabled"></a>Co zrobić, jeśli użyto interfejsów API usługi Blob do ładowania danych, zanim interfejsów API usługi Blob zostały wyłączone.
 
 Jeśli te interfejsy API są używane do ładowania danych, zanim zostały wyłączone, a nie produkcyjne do nich dostęp, następnie skontaktuj się z Microsoft Support z następującymi informacjami:
 
-* Identyfikator subskrypcji (identyfikator GUID, a nie nazwę)
-
-* Nazwy kont magazynu
-
-* Czy aktywnie dotyczy Cię w środowisku produkcyjnym, a jeśli tak, dla których kont magazynu?
-
-* Nawet wtedy, gdy użytkownik nie aktywnie dotyczą w środowisku produkcyjnym, powiedz nam, czy potrzebujesz tych danych do skopiowania do innego konta magazynu z jakiegoś powodu i dlaczego?
+> [!div class="checklist"]
+> * Identyfikator subskrypcji (identyfikator GUID, a nie nazwę).
+> * Nazwy konta magazynu.
+> * Czy aktywnie dotyczy Cię w środowisku produkcyjnym, a jeśli tak, dla których kont magazynu?
+> * Nawet wtedy, gdy użytkownik nie aktywnie dotyczą w środowisku produkcyjnym, powiedz nam, czy potrzebujesz tych danych do skopiowania do innego konta magazynu z jakiegoś powodu i dlaczego?
 
 W tych okolicznościach firma Microsoft może przywrócenia dostępu do interfejsu API obiektu Blob na pewien czas tak, aby można było skopiować te dane do konta magazynu, który nie ma włączoną funkcję hierarchicznej przestrzeni nazw.
 
-Niezarządzane dyski maszyny wirtualnej (VM) zależą od wyłączone interfejsów API Blob Storage, dlatego jeśli chcesz włączyć hierarchicznej przestrzeni nazw na koncie magazynu, należy rozważyć umieszczenie niezarządzanych dysków maszyn wirtualnych na konto magazynu, który nie ma funkcji hierarchicznej przestrzeni nazw włączone.
+## <a name="all-other-features-and-tools"></a>Wszystkie inne funkcje i narzędzia
 
-## <a name="api-interoperability"></a>Współdziałanie interfejsu API
+W poniższej tabeli wymieniono wszystkie inne funkcje i narzędzia, które nie zostały jeszcze obsługiwany lub tylko częściowo obsługiwane z kontami magazynu, które mają hierarchicznej przestrzeni nazw (Azure Data Lake Storage Gen2).
 
-Interfejsy API usługi blob Storage i interfejsów API usługi Azure Data Lake Gen2 — nie są współpracujący ze sobą.
+| Funkcja / narzędzia    | Więcej informacji    |
+|--------|-----------|
+| **Interfejsy API dla kont magazynu usługi Data Lake Storage Gen2** | Częściowo obsługiwane <br><br>Możesz użyć Data Lake Storage Gen2 **REST** interfejsów API, ale interfejsów API w innych zestawów SDK obiektów Blob, takich jak zestawy .NET, Java, Python SDK nie są jeszcze dostępne.|
+| **Narzędzie AzCopy** | Obsługa określonej wersji <br><br>Użyj tylko najnowszą wersję programu AzCopy ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). Wcześniejszych wersjach narzędzia AzCopy takich jak narzędzia AzCopy w wersji 8.1 nie są obsługiwane.|
+| **Zasady zarządzania cyklem życia magazynu Azure Blob** | Nie jest jeszcze obsługiwany |
+| **Usługa Azure Content Delivery Network (CDN)** | Nie jest jeszcze obsługiwany|
+| **Usługa Azure search** |Nie jest jeszcze obsługiwany|
+| **Azure Storage Explorer** | Obsługa określonej wersji <br><br>Użyj tylko wersji `1.6.0` lub nowszej. <br>Wersja `1.6.0` jest dostępna jako [bezpłatne materiały do pobrania](https://azure.microsoft.com/features/storage-explorer/).|
+| **Kontener obiektów blob list ACL** |Nie jest jeszcze obsługiwany|
+| **Blobfuse** |Nie jest jeszcze obsługiwany|
+| **Niestandardowe domeny** |Nie jest jeszcze obsługiwany|
+| **Dzienniki diagnostyczne** |Nie jest jeszcze obsługiwany|
+| **File System Explorer** | Ograniczona obsługa |
+| **Niezmienny Magazyn** |Nie jest jeszcze obsługiwany <br><br>Niezmienne storage oferuje możliwość przechowywania danych w [ROBAK (jednokrotny zapis, przeczytaj wiele)](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) stanu.|
+| **Warstw na poziomie obiektu** |Nie jest jeszcze obsługiwany <br><br>Na przykład: — Wersja Premium, warstwy gorąca, zimnego i archiwum.|
+| **Obsługa programu PowerShell i interfejsu wiersza polecenia** | Ograniczona funkcjonalność <br><br>Aby utworzyć konto, należy za pomocą programu Powershell lub interfejsu wiersza polecenia. Nie można wykonywać operacje lub Ustaw listy kontroli dostępu dla systemów plików, katalogów i plików.|
+| **Statycznych witryn internetowych** |Nie jest jeszcze obsługiwany <br><br>W szczególności możliwość obsługi plików [statycznych witryn internetowych](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website).|
+| **Aplikacje innych firm** | Ograniczona obsługa <br><br>Aplikacje innych firm, które używają interfejsów API REST do pracy, będą w dalszym ciągu działać, jeśli można ich użyć z Data Lake Storage Gen2. <br>W przypadku aplikacji, która używa interfejsów API usługi Blob ta aplikacja najprawdopodobniej mieć problemy, korzystając z tej aplikacji przy użyciu Data Lake Storage Gen2. Aby dowiedzieć się więcej, zobacz [Blob storage, interfejsy API są wyłączone dla kont magazynu usługi Data Lake Storage Gen2](#blob-apis-disabled) dalszej części tego artykułu.|
+| **Funkcji przechowywania wersji** |Nie jest jeszcze obsługiwany <br><br>Obejmuje to [migawek](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob) i [usuwania nietrwałego](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete).|
+|
 
-Jeśli dysponujesz narzędziami, aplikacji, usług lub skryptów, które korzystają z interfejsów API usługi Blob, a chcesz ich używać do pracy z całej zawartości, który przekaże do swojego konta, następnie nie włączaj hierarchicznej przestrzeni nazw w ramach konta magazynu obiektów Blob, aż staną się interfejsów API usługi Blob współdziała z interfejsów API usługi Azure Data Lake Gen2. Przy użyciu konta magazynu bez hierarchicznej przestrzeni nazw oznacza, że nie masz dostępu do Data Lake Storage Gen2 określone funkcje, takie jak listy kontroli dostępu systemu plików i katalogów następnie.
-
-## <a name="azure-storage-explorer"></a>Eksplorator usługi Azure Storage
-
-Aby wyświetlić lub zarządzać konta Data Lake Storage Gen2 za pomocą Eksploratora usługi Azure Storage, użytkownik musi mieć co najmniej wersji `1.6.0` narzędzia, który jest dostępny jako [bezpłatne materiały do pobrania](https://azure.microsoft.com/features/storage-explorer/).
-
-Należy zauważyć, że wersja programu Storage Explorer, które jest wbudowane w witrynie Azure portal jest aktualnie nie obsługuje wyświetlanie i zarządzanie kontami Data Lake Storage Gen2 z włączoną funkcją hierarchicznej przestrzeni nazw.
-
-## <a name="blob-viewing-tool"></a>Narzędzie do przeglądania obiektu blob
-
-Narzędzia do przeglądania w witrynie Azure portal obiektu blob tylko ma ograniczoną obsługę Data Lake Storage Gen2.
-
-## <a name="third-party-applications"></a>Aplikacje innych producentów
-
-Aplikacje innych firm mogą nie obsługiwać Data Lake Storage Gen2.
-
-Pomoc techniczna jest według uznania każdego dostawcy aplikacji innych firm. Obecnie usługa Blob storage interfejsów API i interfejsy API usługi Data Lake Storage Gen2 — nie można użyć do zarządzania tą samą zawartością. Gdy będziemy pracować w celu umożliwienia współdziałania tego jest to możliwe, że wiele narzędzi innych firm będzie automatycznie obsługiwać Data Lake Storage Gen2.
-
-## <a name="azcopy-support"></a>Obsługa narzędzia AzCopy
-
-Narzędzie AzCopy w wersji 8 nie obsługuje Data Lake Storage Gen2.
-
-Zamiast tego należy użyć najnowszej wersji wstępnej narzędzia AzCopy ( [AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json) ), ponieważ obsługuje on Data Lake Storage Gen2 punktów końcowych.
-
-## <a name="azure-event-grid"></a>Azure Event Grid
-
-[Usługa Azure Event Grid](https://azure.microsoft.com/services/event-grid/) nie odbieranie zdarzeń z konta usługi Azure Data Lake Gen2, ponieważ te konta nie generują jeszcze je.  
-
-## <a name="soft-delete-and-snapshots"></a>Usuwanie nietrwałe i migawki
-
-Usuwanie nietrwałe i migawek nie są dostępne dla kont usługi Data Lake Storage Gen2.
-
-Wszystkie funkcje wersji, w tym [migawek](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob) i [usuwania nietrwałego](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) nie są jeszcze dostępne dla kont magazynu, które mają włączoną funkcję hierarchicznej przestrzeni nazw.
-
-## <a name="object-level-storage-tiers"></a>Warstwy magazynowania poziomu obiektu
-
-Obiekt magazynu poziomu warstwy (gorąca, zimnego i archiwalna) nie są jeszcze dostępne dla kont usługi Azure Data Lake Storage Gen 2, ale są one dostępne dla kont magazynu, które nie mają włączoną funkcję hierarchicznej przestrzeni nazw.
-
-## <a name="azure-blob-storage-lifecycle-management-policies"></a>Zasady zarządzania cyklem życia w usłudze Azure Blob Storage
-
-Zasady zarządzania cyklem życia w usłudze Azure Blob Storage nie są jeszcze dostępne dla kont usługi Data Lake Storage Gen2.
-
-Te zasady są dostępne dla kont magazynu, które nie mają włączoną funkcję hierarchicznej przestrzeni nazw.
-
-## <a name="diagnostic-logs"></a>Dzienniki diagnostyczne
-
-Dzienniki diagnostyczne nie są dostępne dla kont usługi Data Lake Storage Gen2.

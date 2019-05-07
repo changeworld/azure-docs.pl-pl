@@ -1,21 +1,21 @@
 ---
-title: Konfigurowanie i dostęp do dzienników serwera database for PostgreSQL w witrynie Azure Portal
-description: W tym artykule opisano sposób konfigurowania i dostęp do dzienników serwera w usłudze Azure Database for PostgreSQL w witrynie Azure Portal.
+title: Konfigurowanie i dostęp do dzienników serwera usługi Azure Database for PostgreSQL — pojedynczy serwer w witrynie Azure Portal
+description: W tym artykule opisano sposób konfigurowania i dostęp do dzienników serwera w usłudze Azure Database for PostgreSQL — jeden serwer w witrynie Azure Portal.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 509c3af66e8228f142126dae6938ad74daf1d7ad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 13a8c1ee4b7ca114211f93245d74866e5aa5d52c
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60421916"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65067445"
 ---
-# <a name="configure-and-access-server-logs-in-the-azure-portal"></a>Konfigurowanie i dzienników serwera dostępu w witrynie Azure portal
+# <a name="configure-and-access-azure-database-for-postgresql---single-server-logs-in-the-azure-portal"></a>Konfigurowanie i dostęp do usługi Azure Database for PostgreSQL — dzienniki jednego serwera w witrynie Azure portal
 
-Można skonfigurować, listy i pobrać [— Azure Database for postgresql w warstwie dzienniki serwera](concepts-server-logs.md) w witrynie Azure portal.
+Można skonfigurować, listy i pobrać [— Azure Database for postgresql w warstwie dzienniki](concepts-server-logs.md) w witrynie Azure portal.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Do wykonania kroków w tym przewodniku, potrzebne są:

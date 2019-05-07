@@ -5,15 +5,15 @@ services: virtual-machines
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 09/20/2018
+ms.date: 04/25/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 0eb47c8ec470ef05f3c6ae37bdc75e5bb1043eb0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1476830313296615591a69a2cadd04bcc56b22bc
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60418658"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149621"
 ---
 Jeśli napotkasz problemy podczas wykonywania jakichkolwiek operacji na galeriach obrazów udostępnionych, definicjach obrazów i wersjach obrazów, uruchom ponownie w trybie debugowania polecenie powodujące niepowodzenie. Tryb debugowania jest aktywowana przez przekazanie **— debugowania** przełączyć się z interfejsem wiersza polecenia i **-Debug** Przełącz przy użyciu programu PowerShell. Po zlokalizowaniu błąd, postępuj zgodnie z tym dokumentem, aby rozwiązać problemy z błędami.
 
@@ -24,7 +24,7 @@ Możliwe przyczyny:
 
 *Nazwa galerii jest nieprawidłowa.*
 
-Dozwolone znaki dla nazwy galerii są wielkie i małe litery, cyfry, kropki i okresów. Nazwa galerii nie może mieć kresek w nim. Zmień nazwę galerii i spróbuj ponownie. 
+Dozwolone znaki dla nazwy galerii są wielkie i małe litery, cyfry, kropki i okresów. Nazwa galerii nie może zawierać łączników. Zmień nazwę galerii i spróbuj ponownie. 
 
 *Nazwa galerii nie jest unikatowa w ramach Twojej subskrypcji.*
 
@@ -37,7 +37,7 @@ Możliwe przyczyny:
 
 *Nazwa definicji obrazu jest nieprawidłowa.*
 
-Dozwolone znaki definicję obrazu są małe i wielkie litery, cyfry, kropki, łączniki i kropki. Zmień nazwę definicji obraz i spróbuj ponownie.
+Dozwolone znaki definicję obrazu są wielkie i małe litery, cyfry, kropki, łączniki i kropki. Zmień nazwę definicji obraz i spróbuj ponownie.
 
 *Właściwości wymagane do utworzenia definicję obrazu nie zostały wypełnione.*
 
@@ -62,20 +62,7 @@ Sprawdź, czy obraz źródłowy istnieje i znajduje się w tym samym regionie, c
 
 Upewnij się, stan inicjowania obsługi administracyjnej zarządzanych obrazu źródłowego jest **Powodzenie**.
 
-*Region źródłowy nie jest jeszcze obsługiwany.*
-
-Aby zobaczyć, jeśli jest obsługiwany region źródła zamierzony, należy użyć poniższej tabeli:
-<br>
-
-| Tworzenie galerii w lub "region źródła"   | Replikacja wersji lub "region docelowy" |
-|----------------------------------------|-------------------------------------------|
-| Środkowo-zachodnie stany USA                        | Wszystkie regiony w chmurze publicznej platformy Azure            |
-| Środkowo-południowe stany USA                       |                                           |
-| Wschodnie stany USA 2                              |                                           |
-| Azja Południowo-Wschodnia                         |                                           |
-| Europa Zachodnia                            |                                           |
-
-<br>
+*Na liście region docelowy nie ma w regionie źródłowym.*
 
 Na liście region docelowy musi zawierać region źródła wersję obrazu. Upewnij się, że w regionie źródłowym zostały uwzględnione na liście regiony docelowe, w której chcesz platformy Azure, aby replikować używana wersja obrazu do.
 

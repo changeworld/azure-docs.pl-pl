@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: iainfou
-ms.openlocfilehash: 8fd5b726c01b056d38e7e187cec8270ee4e127a9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2e655627267546d88f76a2487817bca3153ee91d
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60466740"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65074017"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Pojęcia dotyczące zabezpieczeń dla aplikacji i klastrów w usłudze Azure Kubernetes Service (AKS)
 
@@ -34,9 +34,11 @@ Domyślnie serwer interfejsu API rozwiązania Kubernetes używa publicznego adre
 
 ## <a name="node-security"></a>Węzeł zabezpieczeń
 
-Węzłów AKS są maszyn wirtualnych platformy Azure, które umożliwia zarządzanie i obsługa. Na węzłach jest uruchamiana zoptymalizowane dystrybucji Ubuntu Linux przy użyciu kontener środowiska uruchomieniowego Moby. Gdy klaster AKS zostanie utworzony lub skalowany w górę, węzły zostają automatycznie wdrożone najnowsze aktualizacje zabezpieczeń systemu operacyjnego i konfiguracjach.
+Węzłów AKS są maszyn wirtualnych platformy Azure, które umożliwia zarządzanie i obsługa. Uruchom zoptymalizowane dystrybucji Ubuntu przy użyciu kontener środowiska uruchomieniowego Moby węzłów systemu Linux. Węzłów systemu Windows Server (obecnie dostępna w wersji zapoznawczej w usłudze AKS) uruchamiany zoptymalizowanej 2019 r Server systemu Windows Zwolnij, a także korzystania ze środowiska uruchomieniowego Moby kontenera. Gdy klaster AKS zostanie utworzony lub skalowany w górę, węzły zostają automatycznie wdrożone najnowsze aktualizacje zabezpieczeń systemu operacyjnego i konfiguracjach.
 
-Platforma Azure automatycznie stosuje poprawki zabezpieczeń systemu operacyjnego węzłów w nocy. Jeśli aktualizacja zabezpieczeń systemu operacyjnego wymaga ponownego uruchomienia komputera hosta, że ponowne uruchomienie komputera nie jest wykonywana automatycznie. Ręcznie uruchom ponownie węzły lub typowym podejściem jest użycie [Kured][kured], demon ponowny rozruch typu open source dla platformy Kubernetes. Kured działa jako [DaemonSet] [ aks-daemonsets] i monitoruje każdy węzeł na obecność pliku wskazujący, że wymagane jest ponowne uruchomienie komputera. Ponowne uruchamianie odbywa się w klastrze, korzystając z tych samych [odizolowywanie i opróżnianie procesu](#cordon-and-drain) jako uaktualniania klastra.
+Platforma Azure automatycznie stosuje poprawki zabezpieczeń systemu operacyjnego do węzłów systemu Linux w nocy. Jeśli aktualizacja zabezpieczeń systemu operacyjnego Linux wymaga ponownego uruchomienia komputera hosta, że ponowne uruchomienie komputera nie jest wykonywana automatycznie. Użytkownik może ręcznie uruchomić węzłów systemu Linux lub typowym podejściem jest użycie [Kured][kured], demon ponowny rozruch typu open source dla platformy Kubernetes. Kured działa jako [DaemonSet] [ aks-daemonsets] i monitoruje każdy węzeł na obecność pliku wskazujący, że wymagane jest ponowne uruchomienie komputera. Ponowne uruchamianie odbywa się w klastrze, korzystając z tych samych [odizolowywanie i opróżnianie procesu](#cordon-and-drain) jako uaktualniania klastra.
+
+W przypadku węzłów systemu Windows Server (obecnie dostępna w wersji zapoznawczej w usłudze AKS) aktualizacja Windows automatycznie uruchamiania i Zastosuj najnowsze aktualizacje. Zgodnie z ustalonym harmonogramem w całym cyklu tworzenia wydań Windows Update i procesu sprawdzania poprawności należy wykonać uaktualnienie na pule węzłów systemu Windows Server, w klastrze AKS. Ten proces uaktualnienia tworzy węzły, które Uruchom najnowszego obrazu systemu Windows Server i poprawkami, a następnie usuwa starszą węzły. Aby uzyskać więcej informacji na temat tego procesu, zobacz [uaktualnienia pulę węzłów w usłudze AKS][nodepool-upgrade].
 
 Węzły są wdrażane w podsieci prywatnej sieci wirtualnej przy użyciu nie publiczne adresy IP, które są przypisane. Do celów zarządzania i rozwiązywania problemów protokół SSH jest domyślnie włączona. Ten dostęp SSH jest dostępna tylko przy użyciu wewnętrznego adresu IP.
 
@@ -50,12 +52,12 @@ Zabezpieczenia i zgodność z przepisami lub korzystać z najnowszych funkcji pl
 
 ### <a name="cordon-and-drain"></a>Cordon i opróżniania
 
-Podczas procesu uaktualniania węzłów AKS są indywidualnie odizolowywane z klastra, dzięki czemu nowych zasobników nie jest zaplanowane na nich. Węzły są następnie opróżniane i uaktualnione w następujący sposób:
+Podczas procesu uaktualniania węzłów AKS są indywidualnie odizolowywane z klastra, dzięki czemu nowych zasobników nie są zaplanowane na nich. Węzły są następnie opróżniane i uaktualnione w następujący sposób:
 
-- Istniejące zasobników są bezpiecznie zakończone i zaplanowane na pozostałych węzłach.
-- Węzeł został ponownie uruchomiony, proces uaktualniania został zakończony, a następnie sprzężeń z powrotem do klastra usługi AKS.
-- Zasobniki są planowane do uruchomienia na je ponownie.
-- Kolejnego węzła w klastrze jest odizolowywane i opróżniane przy użyciu tego samego procesu, aż wszystkie węzły są pomyślnie uaktualniony.
+- Nowy węzeł jest wdrażana w puli węzłów. Ten węzeł jest uruchamiany najnowszego obrazu systemu operacyjnego i poprawki.
+- Jeden z istniejących węzłów, który jest identyfikowany do uaktualnienia. Zasobników, w tym węźle są bezpiecznie zakończone i zaplanowane na innych węzłach w puli węzłów.
+- Ten istniejący węzeł jest usuwany z klastra AKS.
+- Kolejnego węzła w klastrze jest odizolowywane i opróżniane przy użyciu tego samego procesu, aż wszystkie węzły są pomyślnie zastąpił jako część procesu uaktualniania.
 
 Aby uzyskać więcej informacji, zobacz [Uaktualnianie klastra usługi AKS][aks-upgrade-cluster].
 
@@ -102,3 +104,4 @@ Dodatkowe informacje na temat podstawowej platformy Kubernetes oraz pojęcia zos
 [aks-concepts-network]: concepts-network.md
 [cluster-isolation]: operator-best-practices-cluster-isolation.md
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
+[nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool

@@ -1,20 +1,20 @@
 ---
-title: Nawiązać połączenie z Windows wirtualnego pulpitu (wersja zapoznawcza) przy użyciu Windows 7 i Windows 10 — platformy Azure
-description: Jak połączyć się z usługą Windows wirtualnego pulpitu (wersja zapoznawcza), Windows 7 lub Windows 10.
+title: Nawiązać połączenie z systemem Windows 10 lub Windows 7 — Azure Windows wirtualnego pulpitu (wersja zapoznawcza)
+description: Jak połączyć się z Windows wirtualnego pulpitu (wersja zapoznawcza) z systemem Windows 10 lub Windows 7.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 03/27/2019
+ms.date: 04/24/2019
 ms.author: helohr
-ms.openlocfilehash: 8b5a649d767dae9ae9c0fb077f550451a7f83601
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b7d7b25d0355f2379b90313f17e2b595234df827
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60328854"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65145985"
 ---
-# <a name="connect-with-windows-7-and-windows-10"></a>Łączenie się z systemami Windows 7 i Windows 10
+# <a name="connect-from-windows-10-or-windows-7"></a>Łączenie z systemem Windows 10 lub Windows 7
 
 > Dotyczy Windows 7 i Windows 10.
 
@@ -25,11 +25,11 @@ Dostępny jest dostępny do pobrania klient, który zapewnia dostęp do zasobów
 
 ## <a name="install-the-client"></a>Instalowanie klienta
 
-[Pobierz](https://go.microsoft.com/fwlink/?linkid=2068602) i instalowanie klienta na komputerze lokalnym. Wymaga to uprawnień administratora.
+[Pobierz](https://go.microsoft.com/fwlink/?linkid=2068602) i instalowanie klienta na komputerze lokalnym. Instalacja wymaga uprawnień administratora.
 
 ## <a name="subscribe-to-a-feed"></a>Subskrybować źródła danych
 
-Pobierz listę zasobów dostępnych dla Ciebie z komputera lokalnego, Subskrybuj źródło danych podane przez administratora.
+Pobierz listę zarządzane zasoby dostępne dla Ciebie, Subskrybuj źródło danych podane przez administratora. Subskrybowanie udostępnia zasoby na komputerze lokalnym.
 
 Aby subskrybować źródła danych:
 
@@ -44,6 +44,33 @@ Zasoby można uruchomić za pomocą jednej z dwóch metod.
 - Strona główna klienta kliknij dwukrotnie zasób, aby go uruchomić.
 - Uruchom zasobu, tak jak zwykle innych aplikacji w Start Menu.
   - Możesz również wyszukać aplikacje na pasku wyszukiwania.
+
+Gdy subskrybować źródła danych, zawartość kanału informacyjnego jest aktualizowane automatycznie w regularnych odstępach czasu. Zasoby mogą można dodać, zmienić ani usunąć zależności od zmian wprowadzonych przez administratora.
+
+## <a name="view-the-details-of-a-feed"></a>Wyświetl szczegóły źródła danych
+
+Po subskrypcji, możesz wyświetlić dodatkowe informacje o źródle danych, uzyskując dostęp do panelu szczegółów.
+
+1. Ze strony głównego klienta, wybierz przycisk wielokropka (**...** ) po prawej stronie nazwy źródła danych.
+1. Z menu rozwijanego wybierz **szczegóły**.
+1. Panel szczegółów pojawia się po prawej stronie klienta.
+
+Panel szczegółów zawierają użyteczne informacje o źródle danych:
+
+- Adres URL i nazwa użytkownika służąca do subskrybowania
+- Liczba aplikacji i komputerów stacjonarnych
+- Data/godzina ostatniej aktualizacji
+- Stan ostatniej aktualizacji
+
+Jeśli to konieczne, można uruchomić ręcznej aktualizacji, wybierając na **teraz zaktualizować**.
+
+## <a name="unsubscribe-from-a-feed"></a>Anuluj subskrypcję kanału informacyjnego
+
+W tej sekcji nauczą Cię, jak zrezygnować z kanału informacyjnego. Subskrypcję można anulować ponownej subskrypcji za pomocą innego konta lub usunąć swoje zasoby z systemu.
+
+1. Ze strony głównego klienta, wybierz przycisk wielokropka (**...** ) po prawej stronie nazwy źródła danych.
+1. Z menu rozwijanego wybierz **Unsubscribe**.
+1. Przejrzyj i wybierz **Kontynuuj** z poziomu okna dialogowego.
 
 ## <a name="update-the-client"></a>Aktualizacja klienta programu
 

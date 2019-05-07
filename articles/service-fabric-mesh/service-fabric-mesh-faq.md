@@ -9,12 +9,12 @@ ms.date: 4/23/2019
 ms.topic: troubleshooting
 ms.service: service-fabric-mesh
 manager: jeanpaul.connock
-ms.openlocfilehash: 7f3bed454bce90d797ca5829043c7e5f8ce5b051
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 950f9ac89b9d3224db29b32fe2d1e403ccc98116
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64728576"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143288"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Często zadawane pytania usługi Service Fabric siatki
 
@@ -28,7 +28,7 @@ Zadawaj pytania, uzyskuj odpowiedzi od inżynierów firmy Microsoft i zgłaszani
 
 ### <a name="what-is-the-cost-of-participating-in-the-preview"></a>Jaki jest koszt uczestniczenia w wersji zapoznawczej?
 
-Obecnie nie są żadne opłaty za wdrażanie aplikacji lub kontenerów do siatki w wersji zapoznawczej. Jednak firma Microsoft zachęca do usuwania zasobów, wdrażania i nie pozostawić je systemem aktywnie podczas testów.
+Obecnie nie będą naliczane opłaty, w przypadku wdrożenia aplikacji lub kontenerów w wersji zapoznawczej siatki. Obserwuj aktualizacji w maju do włączenia na potrzeby rozliczeń. Jednak firma Microsoft zachęca do usuwania zasobów, wdrażania i nie pozostawić je systemem aktywnie podczas testów.
 
 ### <a name="is-there-a-quota-limit-of-the-number-of-cores-and-ram"></a>Czy istnieje limit przydziału liczby rdzeni i pamięci RAM?
 
@@ -88,10 +88,15 @@ Jeśli tworzysz w systemie Windows 10 kwietnia 2018 r. Zaktualizuj maszynę (w w
 Następujące obrazy systemu operacyjnego kontener może służyć do wdrożenia usług:
 
 - Windows — windowsservercore i nanoserver
-    - Windows Server w wersji 1709
-    - Windows Server w wersji 1803
+    - Windows Server 1709
+    - System Windows Server w wersji 1803
+    - Windows Server 1809
+    - Windows Server 2019 LTSC
 - Linux
     - Nie znane ograniczenia
+
+> [!NOTE]
+> Narzędzia dla siatki programu Visual Studio nie obsługuje jeszcze wdrażania systemu Windows Server 2019 i kontenery 1809.
 
 ### <a name="what-types-of-applications-can-i-deploy"></a>Jakie typy aplikacji można wdrożyć? 
 
@@ -138,6 +143,10 @@ Może wystąpić dostępności procesora CPU i limity zostanie naprawiony we wsz
 Nie można wdrożyć wiele aplikacji do klastra z jednym węzłem. Aby uniknąć:
 - W przypadku wdrażania wielu aplikacji w lokalnym klastrze, należy użyć klastra z pięcioma węzłami.
 - Usuń aplikacje, które nie są obecnie testy.
+
+### <a name="vs-tooling-has-limited-support-for-windows-containers"></a>Narzędzi programu VS ma ograniczoną obsługę kontenerów Windows
+
+Narzędzia programu Visual Studio obsługuje tylko wdrażanie kontenerów Windows przy użyciu podstawowej wersji systemu operacyjnego Windows Server w wersji 1709 i 1803 już dziś. 
 
 ## <a name="feature-gaps-and-other-known-issues"></a>Funkcja luki i innych znanych problemach
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 00c8d7cefd7539cd53de8081f44fe861bd063bee
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 63b9cc26b927f78598422575646c876d90954bed
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60489771"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143298"
 ---
 # <a name="data-management-gateway"></a>Brama zarządzania danymi
 > [!NOTE]
@@ -205,8 +205,8 @@ Można wyświetlić i zaktualizować serwer proxy HTTP za pomocą narzędzia Con
 ### <a name="configure-proxy-server-settings"></a>Skonfiguruj ustawienia serwera proxy
 Jeśli wybierzesz **Użyj systemowego serwera proxy** ustawienia serwera proxy HTTP, brama używa ustawienia diahost.exe.config i diawp.exe.config serwera proxy. Jeśli żaden serwer proxy jest określona w diahost.exe.config i diawp.exe.config, brama łączy się z usługą w chmurze bezpośrednio bez konieczności zwracania się za pośrednictwem serwera proxy. Poniższa procedura zawiera instrukcje dotyczące aktualizowania pliku diahost.exe.config.
 
-1. W Eksploratorze plików należy utworzyć kopię bezpieczne C:\Program Files\Microsoft danych zarządzania Gateway\2.0\Shared\diahost.exe.config do tworzenia kopii zapasowej oryginalnego pliku.
-2. Uruchom Notepad.exe uruchomione jako administrator, a następnie otwórz plik tekstowy "C:\Program Files\Microsoft danych zarządzania Gateway\2.0\Shared\diahost.exe.config. Możesz znaleźć tag domyślny dla przestrzeni nazw system.net, jak pokazano w poniższym kodzie:
+1. W Eksploratorze plików kliknij kopię bezpieczne *C:\\\\Program Files\\brama zarządzania danymi firmy Microsoft\\2.0\\Shared\\diahost.exe.config* do Utwórz kopię zapasową oryginalnego pliku.
+2. Uruchom Notepad.exe uruchomione jako administrator, a następnie otwórz plik tekstowy *C:\\\\Program Files\\brama zarządzania danymi firmy Microsoft\\2.0\\Shared\\ diahost.exe.config*. Możesz znaleźć tag domyślny dla przestrzeni nazw system.net, jak pokazano w poniższym kodzie:
 
     ```
     <system.net>
@@ -280,7 +280,7 @@ Można wyłączanie/włączanie funkcji Aktualizacje automatyczne, wykonując na
 
 [Na potrzeby jednego węzła bramy]
 1. Uruchom program Windows PowerShell na maszynie bramy.
-2. Przejdź do folderu C:\Program Files\Microsoft integracji Runtime\3.0\PowerShellScript\.
+2. Przełącz się do *C:\\\\Program Files\\produktu Microsoft Integration Runtime\\3.0\\PowerShellScript\\*  folderu.
 3. Uruchom następujące polecenie, aby włączyć Aktualizacje automatyczne są wyposażone w OFF (wyłączone).
 
     ```powershell
@@ -293,7 +293,7 @@ Można wyłączanie/włączanie funkcji Aktualizacje automatyczne, wykonując na
     ```
    [Bramy o wysokiej dostępności i skalowalności wielowęzłowego](data-factory-data-management-gateway-high-availability-scalability.md)
 1. Uruchom program Windows PowerShell na maszynie bramy.
-2. Przejdź do folderu C:\Program Files\Microsoft integracji Runtime\3.0\PowerShellScript\.
+2. Przełącz się do *C:\\\\Program Files\\produktu Microsoft Integration Runtime\\3.0\\PowerShellScript\\*  folderu.
 3. Uruchom następujące polecenie, aby włączyć Aktualizacje automatyczne są wyposażone w OFF (wyłączone).
 
     Dla bramy przy użyciu funkcji wysokiej dostępności wymagany jest dodatkowy param AuthKey.
@@ -310,7 +310,7 @@ Można wyłączanie/włączanie funkcji Aktualizacje automatyczne, wykonując na
 Po zainstalowaniu bramy, można uruchomić Menedżera konfiguracji bramy zarządzania danych w jednym z następujących sposobów:
 
 1. W **wyszukiwania** okna, typ **bramy zarządzania danymi** na dostęp do tego narzędzia.
-2. Uruchom plik wykonywalny **ConfigManager.exe** w folderze: **C:\Program Files\Microsoft danych zarządzania Gateway\2.0\Shared**
+2. Uruchom plik wykonywalny *ConfigManager.exe* w folderze: *C:\\\\plików programu\\bramy zarządzania danymi firmy Microsoft\\2.0\\udostępnione*.
 
 ### <a name="home-page"></a>Strona główna
 Strona główna umożliwia wykonywanie następujących czynności:
@@ -511,7 +511,7 @@ W tej sekcji opisano, jak utworzyć i zarejestrować bramę przy użyciu polece�
     Key               : ADF#00000000-0000-4fb8-a867-947877aef6cb@fda06d87-f446-43b1-9485-78af26b8bab0@4707262b-dc25-4fe5-881c-c8a7c3c569fe@wu#nfU4aBlq/heRyYFZ2Xt/CD+7i73PEO521Sj2AFOCmiI
     ```
 
-1. W programie Azure PowerShell przejdź do folderu: **C:\\Program Files\Microsoft danych zarządzania Gateway\2.0\PowerShellScript\\**. Uruchom **RegisterGateway.ps1** skojarzone ze zmienną lokalnej **$Key** jak pokazano w poniższym poleceniu. Ten skrypt rejestruje agenta klienta, zainstalowane na komputerze z bramą logiczne, utworzonej wcześniej.
+1. W programie Azure PowerShell przejdź do folderu: *C:\\\\plików programu\\produktu Microsoft Integration Runtime\\3.0\\PowerShellScript\\*. Uruchom *RegisterGateway.ps1* skojarzone ze zmienną lokalnej **$Key** jak pokazano w poniższym poleceniu. Ten skrypt rejestruje agenta klienta, zainstalowane na komputerze z bramą logiczne, utworzonej wcześniej.
 
     ```powershell
     PS C:\> .\RegisterGateway.ps1 $MyDMG.Key

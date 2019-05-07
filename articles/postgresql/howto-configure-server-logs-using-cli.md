@@ -1,18 +1,18 @@
 ---
-title: Konfigurowanie i dostęp do dzienników serwera PostgreSQL za pomocą wiersza polecenia platformy Azure
-description: W tym artykule opisano sposób konfigurowania i dostęp do dzienników serwera w usłudze Azure Database for PostgreSQL przy użyciu wiersza polecenia wiersza polecenia platformy Azure.
+title: Konfigurowanie i dostęp do dzienników serwera for PostgreSQL — pojedynczy serwer przy użyciu wiersza polecenia platformy Azure
+description: W tym artykule opisano sposób konfigurowania i dostęp do dzienników serwera w usłudze Azure Database for PostgreSQL — pojedynczy serwer przy użyciu wiersza polecenia wiersza polecenia platformy Azure.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 3ca77c1ffa5f5a3f384009299701f4aa674baf59
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 4702db31ffeb15481584b9638f5be1aa640ff39e
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60421196"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65067209"
 ---
 # <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Konfigurowanie i dostęp do dzienników serwera przy użyciu wiersza polecenia platformy Azure
 Możesz pobrać dzienniki błędów serwera PostgreSQL za pomocą interfejsu wiersza polecenia (CLI platformy Azure). Jednak dostęp do dzienników transakcji nie jest obsługiwane. 
@@ -22,7 +22,7 @@ Do wykonania kroków w tym przewodniku, potrzebne są:
 - [Usługa Azure Database for postgresql w warstwie serwera](quickstart-create-server-database-azure-cli.md)
 - [Wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) narzędzie wiersza polecenia lub programu Azure Cloud Shell w przeglądarce
 
-## <a name="configure-logging-for-azure-database-for-postgresql"></a>Konfigurowanie rejestrowania dla usługi Azure Database for PostgreSQL
+## <a name="configure-logging"></a>Konfigurowanie rejestrowania
 Można skonfigurować serwera dostępu do dzienników zapytań i dzienniki błędów. Dzienniki błędów może zawierać informacje odkurzający auto, połączenia i punktu kontrolnego.
 1. Włącz rejestrowanie.
 2. Aby włączyć rejestrowanie zapytań, zaktualizuj **dziennika\_instrukcji** i **dziennika\_min\_czas trwania\_instrukcji**.
@@ -30,7 +30,7 @@ Można skonfigurować serwera dostępu do dzienników zapytań i dzienniki błę
 
 Aby uzyskać więcej informacji, zobacz [Dostosowywanie parametrów konfiguracji serwera](howto-configure-server-parameters-using-cli.md).
 
-## <a name="list-logs-for-azure-database-for-postgresql-server"></a>Dzienniki listy dla usługi Azure Database dla serwera PostgreSQL
+## <a name="list-logs"></a>Lista dzienników
 Aby wyświetlić listę plików dziennika dostępne na serwerze, uruchom [az postgres server-logs list](/cli/azure/postgres/server-logs) polecenia.
 
 Możesz wyświetlić listę plików dziennika dla serwera **mydemoserver.postgres.database.azure.com** w grupie zasobów **myresourcegroup**. Następnie przekierowanie do listy plików dziennika do pliku tekstowego o nazwie **dziennika\_pliki\_lista.txt**.

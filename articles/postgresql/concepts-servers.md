@@ -1,23 +1,23 @@
 ---
-title: Pojęcia serwera w usłudze Azure Database for PostgreSQL
-description: Ten artykuł zawiera zagadnienia i wytyczne dotyczące konfigurowania i zarządzanie usługą Azure Database for postgresql w warstwie serwerów.
+title: Pojęcia serwera w usłudze Azure Database for PostgreSQL — pojedynczy serwer
+description: Ten artykuł zawiera zagadnienia i wytyczne dotyczące konfigurowania i zarządzanie usługą Azure Database for PostgreSQL — pojedynczy serwer.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/07/2018
-ms.openlocfilehash: a5b6db9f4bfbe9a11119270e9236580b41fae8c7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: bc135e58d0fbabc809f3718915e9f4e35b8ed875
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60422103"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65067154"
 ---
-# <a name="azure-database-for-postgresql-servers"></a>Serwery usługi Azure Database for PostgreSQL
-Ten artykuł zawiera zagadnienia i wytyczne dotyczące pracy z usługą Azure Database dla serwerów MySQL.
+# <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL — pojedynczy serwer
+Ten artykuł zawiera zagadnienia i wytyczne do pracy z usługą Azure Database for PostgreSQL — pojedynczy serwer.
 
 ## <a name="what-is-an-azure-database-for-postgresql-server"></a>Co to jest usługi Azure Database for postgresql w warstwie serwera?
-Azure Database for postgresql w warstwie serwera to centralny punkt administracyjny dla wielu baz danych. Jest tego samego serwera PostgreSQL konstrukcja można zapoznać się z w środowisku lokalnym. W szczególności usługa PostgreSQL jest zarządzany, zapewnia gwarancje wydajności, uwidacznia dostępu i funkcje na poziomie serwera.
+Serwer w usłudze Azure Database for PostgreSQL — opcji wdrożenia pojedynczego serwera to centralny punkt administracyjny dla wielu baz danych. Jest tego samego serwera PostgreSQL konstrukcja można zapoznać się z w środowisku lokalnym. W szczególności usługa PostgreSQL jest zarządzany, zapewnia gwarancje wydajności, uwidacznia dostępu i funkcje na poziomie serwera.
 
 Azure Database for postgresql w warstwie serwera:
 

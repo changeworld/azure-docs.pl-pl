@@ -5,23 +5,20 @@ services: container-service
 author: iainfoulds
 ms.topic: conceptual
 ms.service: container-service
-ms.date: 12/03/2018
+ms.date: 05/06/2019
 ms.author: iainfou
-ms.openlocfilehash: 38b2654c8f3e8d302a66cac335913583bd4426ef
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fe837c4d89a59325040355e35f12c3499aee7d98
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61024558"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65072822"
 ---
-# <a name="preview---create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>W wersji zapoznawczej — tworzenie i konfigurowanie klastra usługi Azure Kubernetes usługi (AKS) do użycia wirtualnych węzłów przy użyciu wiersza polecenia platformy Azure
+# <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Tworzenie i konfigurowanie klastra usługi Azure Kubernetes usługi (AKS) do użycia wirtualnych węzłów przy użyciu wiersza polecenia platformy Azure
 
-Szybkie skalowanie obciążeń aplikacji w klastrze usługi Azure Kubernetes Service (AKS), można użyć wirtualnych węzłów. Wirtualne węzły, możesz mieć szybkiej aprowizacji zasobników i płacić tylko na sekundę na czas wykonywania uległ. Nie należy czekać do wdrożenia węzłów obliczeniowych maszyn wirtualnych, aby uruchomić dodatkowe zasobniki skalowanie klastra usługi Kubernetes. W tym artykule pokazano, jak utworzyć i skonfigurować zasoby sieci wirtualnej i klastra AKS, a następnie włącz wirtualnych węzłów.
+Szybkie skalowanie obciążeń aplikacji w klastrze usługi Azure Kubernetes Service (AKS), można użyć wirtualnych węzłów. Wirtualne węzły, możesz mieć szybkiej aprowizacji zasobników i płacić tylko na sekundę na czas wykonywania uległ. Nie należy czekać do wdrożenia węzłów obliczeniowych maszyn wirtualnych, aby uruchomić dodatkowe zasobniki skalowanie klastra usługi Kubernetes. Wirtualne węzły są obsługiwane tylko z zasobników systemu Linux i węzłów.
 
-> [!IMPORTANT]
-> Funkcje w wersji zapoznawczej usługi AKS są samoobsługi i opcjonalnych. Wersje zapoznawcze są udostępniane do zbierania opinii i błędy z naszej społeczności. Nie są one jednak obsługiwane przez pomoc techniczną systemu Azure. Jeśli tworzenie klastra lub Dodaj następujące funkcje do istniejących klastrów tego klastra jest obsługiwany, dopóki ta funkcja nie jest już dostępna w wersji zapoznawczej i absolwentów, które są ogólnie dostępne (GA).
->
-> Jeśli wystąpią problemy związane z wersji zapoznawczej, [Otwórz problem w repozytorium GitHub usługi AKS] [ aks-github] o nazwie funkcja w wersji zapoznawczej w tytuł usterki.
+W tym artykule pokazano, jak utworzyć i skonfigurować zasoby sieci wirtualnej i klastra AKS, a następnie włącz wirtualnych węzłów.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
@@ -52,10 +49,16 @@ az provider register --namespace Microsoft.ContainerInstance
 Następujące regiony są obsługiwane dla wdrożeń wirtualnego węzła:
 
 * Australia Wschodnia (australiaeast)
+* Środkowe stany USA (centralus)
 * Wschodnie stany USA (eastus)
+* Wschodnie stany USA 2 (eastus2)
+* Japonia, część wschodnia (japaneast)
+* Europa Północna (northeurope)
+* Azja południowo-wschodnia (southeastasia)
 * Zachodnio-środkowe stany USA (westcentralus)
 * Europa Zachodnia (westeurope)
 * Zachodnie stany USA (westus)
+* Zachodnie stany USA 2 (westus2)
 
 ## <a name="known-limitations"></a>Znane ograniczenia
 Działanie węzłów wirtualnej jest stopniu zależą od zestawu funkcji usługi ACI firmy. Następujące scenariusze nie są jeszcze obsługiwane za pomocą wirtualnych węzłów
@@ -183,11 +186,6 @@ az aks enable-addons \
     --addons virtual-node \
     --subnet-name myVirtualNodeSubnet
 ```
-> [!NOTE]
-> Jeśli zostanie wyświetlony błąd dotyczący wirtualnego węzła nie znaleziono, może być konieczne zainstalowanie jej rozszerzenie interfejsu wiersza polecenia 
-> ```azurecli-interactive
-> az extension add --source https://aksvnodeextension.blob.core.windows.net/aks-virtual-node/aks_virtual_node-0.2.0-py2.py3-none-any.whl
-> ```
 
 ## <a name="connect-to-the-cluster"></a>Łączenie z klastrem
 
@@ -266,7 +264,7 @@ aci-helloworld-9b55975f-bnmfl   1/1       Running   0          4m        10.241.
 Zasobnik jest przypisany wewnętrznego adresu IP z podsieci sieci wirtualnej platformy Azure, delegowane do użytku z wirtualnych węzłów.
 
 > [!NOTE]
-> Jeśli używasz obrazów przechowywanych w usłudze Azure Container Registry, [Konfigurowanie i używanie wpisie tajnym rozwiązania Kubernetes][acr-aks-secrets]. To aktualne ograniczenie wirtualnym węzłami (wersja zapoznawcza) to, że nie używasz zintegrowane uwierzytelnianie jednostki usługi Azure AD. Jeśli nie używasz klucza tajnego, zasobników zaplanowane na wirtualnych węzłów nie można uruchomić i zgłoś błąd `HTTP response status code 400 error code "InaccessibleImage"`.
+> Jeśli używasz obrazów przechowywanych w usłudze Azure Container Registry, [Konfigurowanie i używanie wpisie tajnym rozwiązania Kubernetes][acr-aks-secrets]. To aktualne ograniczenie wirtualnych węzłów jest nie Azure zintegrowane uwierzytelnianie jednostki usługi AD. Jeśli nie używasz klucza tajnego, zasobników zaplanowane na wirtualnych węzłów nie można uruchomić i zgłoś błąd `HTTP response status code 400 error code "InaccessibleImage"`.
 
 ## <a name="test-the-virtual-node-pod"></a>Testowanie pod węzłem wirtualnym
 

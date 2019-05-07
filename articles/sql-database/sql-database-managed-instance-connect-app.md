@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 11/09/2018
-ms.openlocfilehash: ed9fbdd3e999cfd262ecbcf05a843c19cc969ed1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 52a9cfa52cd63715addadcbfb367510ded56fd76
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60701306"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142724"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Połącz aplikację z wystąpieniem zarządzanym usługi Azure SQL Database
 
@@ -146,7 +146,8 @@ Jeśli chcesz nawiązać połączenie z wystąpieniem zarządzanym, zaleca się 
 |Sterownik JDBC| 6.4.0 |
 |Sterownik node.js| 2.1.1 |
 |Sterownik OLEDB| 18.0.2.0 |
-|SSMS| 17.8.1 lub [wyższy](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) |
+|SSMS| wersjach 18.0 lub [wyższy](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) |
+|[SMO](https://docs.microsoft.com/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) lub nowszej |
 
 ## <a name="next-steps"></a>Kolejne kroki
 

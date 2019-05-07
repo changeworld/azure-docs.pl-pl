@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/11/2019
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: f4f54273262f60dc01f78f4bb5828c8fdd2b97a9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 79ba86fd32248da240706fda2d8b5fcf8323263d
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64707265"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143200"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Szybki start: Tworzenie usługi Load Balancer w warstwie Standardowa przy użyciu witryny Azure Portal w celu równoważenia obciążenia maszyn wirtualnych
 
@@ -44,7 +44,7 @@ W tej sekcji opisano tworzenie standardowego modułu równoważenia obciążenia
     | Subskrypcja               | Wybierz subskrypcję.    |    
     | Grupa zasobów         | Wybierz **Utwórz nową** i typ *myResourceGroupSLB* w polu tekstowym.|
     | Name (Nazwa)                   | *myLoadBalancer*                                   |
-    | Region         | Wybierz pozycję **Wschodnie stany USA**.                                        |
+    | Region         | Wybierz pozycję **Europa Zachodnia**.                                        |
     | Type          | Wybierz pozycję **Publiczna**.                                        |
     | SKU           | Wybierz opcję **Standardowa**.                          |
     | Publiczny adres IP | Wybierz pozycję**Utwórz nowy**. |
@@ -154,10 +154,10 @@ Load Balancer w warstwie standardowa obsługuje tylko maszyny wirtualne z adresa
 
     | Ustawienie | VM 2| VM 3|
     | ------- | ----- |---|
-    | Name (Nazwa) |  *myVM1* |*myVM3*|
+    | Name (Nazwa) |  *myVM2* |*myVM3*|
     | Strefa dostępności | 2 |3|
     |Publiczny adres IP| **Standardowa** jednostki SKU|**Standardowa** jednostki SKU|
-    | Publiczny adres IP — strefa dostępności| Strefowo nadmiarowe |
+    | Publiczny adres IP — strefa dostępności| **Strefowo nadmiarowe** |**Strefowo nadmiarowe**|
     | Sieciowa grupa zabezpieczeń | Wybierz istniejący *myNetworkSecurity grupy*| Wybierz istniejący *myNetworkSecurity grupy*|
 
  ### <a name="create-nsg-rule"></a>Tworzenie reguły sieciowej grupy zabezpieczeń

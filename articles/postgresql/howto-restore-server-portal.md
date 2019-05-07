@@ -1,19 +1,19 @@
 ---
-title: Sposób przywracania serwera w bazie danych Azure database for PostgreSQL
-description: W tym artykule opisano sposób przywracania serwera w usłudze Azure Database for PostgreSQL za pomocą witryny Azure portal.
+title: Jak przywrócić serwer w usłudze Azure Database for PostgreSQL — pojedynczy serwer
+description: W tym artykule opisano sposób przywracania serwera w usłudze Azure Database for PostgreSQL — jeden serwer przy użyciu witryny Azure portal.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 04/01/2018
-ms.openlocfilehash: 60489e3fc7fc6482a14a241e777066b3805a4d5e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 1950b43e0922eebe34463c06db9a5d67dce76f56
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60420544"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65068877"
 ---
-# <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-portal"></a>Jak utworzyć kopię zapasową i przywrócić serwer w usłudze Azure Database for PostgreSQL za pomocą witryny Azure portal
+# <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Jak utworzyć kopię zapasową i przywrócić serwer w usłudze Azure Database for PostgreSQL — jeden serwer przy użyciu witryny Azure portal
 
 ## <a name="backup-happens-automatically"></a>Kopia zapasowa odbywa się automatycznie
 Usługa Azure Database for postgresql w warstwie są kopie zapasowe serwerów okresowo do włączania funkcji przywracania. Za pomocą tej funkcji można przywrócić serwera i jego baz danych do wcześniejszych punktu w czasie na nowym serwerze.

@@ -14,14 +14,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/15/2019
+ms.date: 04/30/2019
 ms.author: sedusch
-ms.openlocfilehash: 328aa4c80c830014de8ee8b573d13ae56af73efc
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 44f99ed1af65eb1e487295c11077fd558ce4285c
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925799"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142966"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>Wysoka dostępność środowiska SAP NetWeaver na maszynach wirtualnych platformy Azure w systemie SUSE Linux Enterprise Server dla aplikacji SAP
 
@@ -87,6 +87,9 @@ Aby osiągnąć wysoką dostępność, oprogramowanie SAP NetWeaver wymaga serwe
 
 Serwer systemu plików NFS, SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver Wywołujących i bazy danych SAP HANA, użyj nazwy hosta wirtualnego i wirtualnych adresów IP. Na platformie Azure modułu równoważenia obciążenia jest wymagany do użycia wirtualnego adresu IP. Na poniższej liście przedstawiono konfigurację (A) SCS i Wywołujących modułu równoważenia obciążenia.
 
+> [!IMPORTANT]
+> — Wiele identyfikatorów SID klastrowania SAP ASCS/Wywołujących z systemem SUSE Linux jako system operacyjny gościa na maszynach wirtualnych Azure **nieobsługiwane**. — Wiele identyfikatorów SID klastrowania w tym artykule opisano instalację wielu wystąpień SAP ASCS/Wywołujących o różnych identyfikatorach SID w jednym klastrze program Pacemaker
+
 ### <a name="ascs"></a>(A)SCS
 
 * Konfiguracja frontonu
@@ -114,6 +117,7 @@ Serwer systemu plików NFS, SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver
 * Port sondy
   * Port 621<strong>&lt;nr&gt;</strong>
 * Reguły równoważenia obciążenia
+  * 32<strong>&lt;nr&gt;</strong>  TCP
   * 33<strong>&lt;nr&gt;</strong>  TCP
   * 5<strong>&lt;nr&gt;</strong>13 TCP
   * 5<strong>&lt;nr&gt;</strong>14 TCP
@@ -587,7 +591,7 @@ Jeśli przy użyciu architektury serwera 2 umieścić w kolejce ([ENSA2](https:/
    sudo crm configure property maintenance-mode="false"
    </code></pre>
 
-  Jeśli uaktualnienia ze starszej wersji, a przełączanie umieścić serwer 2, patrz Uwaga sap [2641019](https://launchpad.support.sap.com/#/notes/2641019). 
+  Jeśli uaktualnienia ze starszej wersji, a przełączanie umieścić serwer 2, zobacz SAP Uwaga [2641019](https://launchpad.support.sap.com/#/notes/2641019). 
 
    Upewnij się, że kondycja klastra jest ok i że wszystkie zasoby są uruchamiane. Nie jest to ważne w węźle, które zasoby są uruchomione.
 

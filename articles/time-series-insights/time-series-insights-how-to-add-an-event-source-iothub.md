@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 05/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: ee52cde6feeb69f9140df497a9abee300c93fd71
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 258b603b8cd2e0cdfcc72ca17cd3cb0d034caf5b
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64692107"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143352"
 ---
 # <a name="add-an-iot-hub-event-source-to-your-time-series-insights-environment"></a>Dodawanie źródła zdarzeń Centrum IoT do środowiska usługi Time Series Insights
 
@@ -42,7 +42,7 @@ Aby dodać nową grupę odbiorców do Centrum IoT:
 
 1. W menu w obszarze **ustawienia**, wybierz opcję **wbudowanych punktach końcowych**, a następnie wybierz pozycję **zdarzenia** punktu końcowego.
 
-   ![Na stronie punkty końcowe w kompilacji wybierz przycisk zdarzenia][1]
+   [![Na stronie punkty końcowe w kompilacji wybierz przycisk zdarzenia](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_one.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_one.png#lightbox)
 
 1. W obszarze **grupy konsumentów**, wprowadź unikatową nazwę dla grupy odbiorców. Użyj tej samej nazwie w danym środowisku usługi Time Series Insights, tworząc nowe źródło zdarzeń.
 
@@ -56,7 +56,7 @@ Aby dodać nową grupę odbiorców do Centrum IoT:
 
 1. W obszarze **topologii środowiska**, wybierz opcję **źródła zdarzeń**, a następnie wybierz pozycję **Dodaj**.
 
-   ![Wybierz źródła zdarzeń, a następnie wybierz przycisk Dodaj][2]
+   [![Wybierz źródła zdarzeń, a następnie wybierz przycisk Dodaj](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_two.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_two.png#lightbox)
 
 1. W **nowe źródło zdarzeń** okienku dla **nazwy źródła zdarzeń**, wprowadź nazwę, która jest unikatowa dla tego środowiska usługi Time Series Insights. Na przykład, wprowadź **strumienia zdarzeń**.
 
@@ -67,11 +67,11 @@ Aby dodać nową grupę odbiorców do Centrum IoT:
    * Jeśli masz już Centrum IoT hub w jednej z Twoich subskrypcji, wybierz opcję **korzystanie z usługi IoT Hub z dostępnych subskrypcji**. Ta opcja jest to najłatwiejsza metoda.
    * Jeśli usługi IoT hub jest zewnętrzne w stosunku do subskrypcji, lub jeśli chcesz wybrać opcje zaawansowane, wybierz **ustawienia Centrum IoT Hub zapewniają ręcznie**.
 
-   ![Wybierz opcje w okienku źródło zdarzeń][3]
+   [![Wybierz opcje w okienku źródło zdarzeń](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_three.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_three.png#lightbox)
 
 1. W poniższej tabeli opisano właściwości, które są wymagane dla **korzystanie z usługi IoT Hub z dostępnych subskrypcji** opcji:
 
-   ![Nowe okienko źródłowej zdarzenia - właściwości, aby ustawić w usłudze IoT Hub w korzystanie z opcji subskrypcje dostępne][4]
+   [![Nowe okienko źródłowej zdarzenia - właściwości, aby ustawić w usłudze IoT Hub w korzystanie z opcji subskrypcje dostępne](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_four.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_four.png#lightbox)
 
    | Właściwość | Opis |
    | --- | --- |
@@ -100,7 +100,7 @@ Aby dodać nową grupę odbiorców do Centrum IoT:
 
 1. Wybierz pozycję **Utwórz**.
 
-   ![Przycisk Utwórz][5]
+   [![Przycisk Utwórz](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_five.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_five.png#lightbox)
 
 1. Po utworzeniu źródła zdarzeń usługi Time Series Insights automatycznie rozpoczyna się przesyłanie strumieniowe danych do danego środowiska.
 
@@ -111,10 +111,3 @@ Aby dodać nową grupę odbiorców do Centrum IoT:
 * [Wysyłanie zdarzeń](time-series-insights-send-events.md) do źródła zdarzenia.
 
 * Dostęp do środowiska w [Eksploratora usługi Time Series Insights](https://insights.timeseries.azure.com).
-
-<!-- Images -->
-[1]: media/time-series-insights-how-to-add-an-event-source-iothub/iothub_one.png
-[2]: media/time-series-insights-how-to-add-an-event-source-iothub/iothub_two.png
-[3]: media/time-series-insights-how-to-add-an-event-source-iothub/iothub_three.png
-[4]: media/time-series-insights-how-to-add-an-event-source-iothub/iothub_four.png
-[5]: media/time-series-insights-how-to-add-an-event-source-iothub/iothub_five.png

@@ -4,14 +4,14 @@ description: Dowiedz się, jak działa indeksowanie w usłudze Azure Cosmos DB.
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 05/06/2019
 ms.author: thweiss
-ms.openlocfilehash: 3bb8913725acf04f71aba8b4c4350235f2c44dfb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 44706e5ebe2442dcb45dfc45e2c322938cf7dca9
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61051889"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65068662"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indeksowanie w usłudze Azure Cosmos DB — omówienie
 
@@ -66,19 +66,41 @@ Usługa Azure Cosmos DB obsługuje dwa rodzaje indeksów:
 
 **Zakres** rodzaj indeks służy do:
 
-- równość zapytania: `SELECT * FROM container c WHERE c.property = 'value'`
-- zakres zapytania: `SELECT * FROM container c WHERE c.property > 'value'` (działa w przypadku `>`, `<`, `>=`, `<=`, `!=`)
-- `ORDER BY` zapytania: `SELECT * FROM container c ORDER BY c.property`
-- `JOIN` zapytania: `SELECT child FROM container c JOIN child IN c.properties WHERE child = 'value'`
+- równość zapytania: 
+
+   ```sql SELECT * FROM container c WHERE c.property = 'value'```
+
+- Zakres kwerendy: 
+
+   ```sql SELECT * FROM container c WHERE c.property > 'value'``` (działa w przypadku `>`, `<`, `>=`, `<=`, `!=`)
+
+- `ORDER BY` zapytania:
+
+   ```sql SELECT * FROM container c ORDER BY c.property```
+
+- `JOIN` zapytania: 
+
+   ```sql SELECT child FROM container c JOIN child IN c.properties WHERE child = 'value'```
 
 Zakres indeksów może służyć w wartości skalarnych (ciąg lub liczba).
 
 **Przestrzenne** rodzaj indeks służy do:
 
-- dane geograficzne odległość zapytania: `SELECT * FROM container c WHERE ST_DISTANCE(c.property, { "type": "Point", "coordinates": [0.0, 10.0] }) < 40`
-- dane geograficzne w ramach zapytania: `SELECT * FROM container c WHERE ST_WITHIN(c.property, {"type": "Point", "coordinates": [0.0, 10.0] } })`
+- dane geograficzne odległość zapytania: 
+
+   ```sql SELECT * FROM container c WHERE ST_DISTANCE(c.property, { "type": "Point", "coordinates": [0.0, 10.0] }) < 40```
+
+- dane geograficzne w ramach zapytania: 
+
+   ```sql SELECT * FROM container c WHERE ST_WITHIN(c.property, {"type": "Point", "coordinates": [0.0, 10.0] } })```
 
 Indeksy przestrzenne mogą być używane na format [GeoJSON](geospatial.md) obiektów. LineStrings punktów i wielokątów są obecnie obsługiwane.
+
+**Złożonego** rodzaj indeks służy do:
+
+- `ORDER BY` zapytania na wiele właściwości atrybutu: 
+
+   ```sql SELECT * FROM container c ORDER BY c.firstName, c.lastName```
 
 ## <a name="querying-with-indexes"></a>Wykonywanie zapytania dla indeksów
 
@@ -89,7 +111,7 @@ Na przykład, należy wziąć pod uwagę następujące zapytanie: `SELECT locati
 ![Dopasowania określonej ścieżki w obrębie drzewa](./media/index-overview/matching-path.png)
 
 > [!NOTE]
-> `ORDER BY` Klauzuli *zawsze* musi zakres indeksu i zakończy się niepowodzeniem, jeśli nie ma ścieżki odwołuje się.
+> `ORDER BY` Klauzula, która porządkuje według jedną właściwość *zawsze* musi zakres indeksu i zakończy się niepowodzeniem, jeśli nie ma ścieżki odwołuje się. Podobnie wielu `ORDER BY` zapytania *zawsze* musi indeksie złożonym.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

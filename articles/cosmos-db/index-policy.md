@@ -4,14 +4,14 @@ description: Dowiedz się, jak skonfigurować i zmienić ustawienie domyślne za
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 05/06/2019
 ms.author: thweiss
-ms.openlocfilehash: a089d8bd4f2197c93d43e70742743db29944b910
-ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.openlocfilehash: c7f2ccd2c074f2488c86b45a09859b308655df8d
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64872683"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65068603"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Zasady indeksowania w usłudze Azure Cosmos DB
 
@@ -72,6 +72,36 @@ Wszystkie zasady indeksowania musi zawierać ścieżkę katalogu głównego `/*`
 - Dla ścieżki na zwykłe znaki, które obejmują: znaki alfanumeryczne i _ (podkreślenie), nie trzeba wprowadzić ciąg ścieżki w całym podwójnego cudzysłowu (na przykład, "/ path /?"). Ścieżek przy użyciu innych znaków specjalnych, musisz wprowadzić ciąg ścieżki w całym podwójnych cudzysłowów (na przykład, "/\"abc ścieżki\"/?"). Jeśli oczekujesz znaki specjalne w ścieżce można udosłownić każdej ścieżce dla bezpieczeństwa. Funkcjonalnie go nie wprowadzać wszelkie różnice ucieczki każdej ścieżce Vs tylko tych, które zawierają znaki specjalne.
 
 Zobacz [w tej sekcji](how-to-manage-indexing-policy.md#indexing-policy-examples) Przykłady zasad indeksowania.
+
+## <a name="composite-indexes"></a>Indeksy złożone
+
+Wysyła kwerendę, która `ORDER BY` dwóch lub więcej właściwości wymagają indeksie złożonym. Obecnie indeksy złożone są wykorzystywane tylko przez wielu `ORDER BY` zapytania. Domyślnie żadne indeksy złożone są zdefiniowane, zaleca się [dodawać indeksy złożone](how-to-manage-indexing-policy.md#composite-indexing-policy-examples) zgodnie z potrzebami.
+
+Podczas definiowania indeksu złożonego, należy określić:
+
+- Co najmniej dwóch ścieżki właściwości. Kolejność, w którym właściwość ścieżki są definiowane jest ważna.
+- Kolejność (rosnąco lub malejąco).
+
+Następujące kwestie są używane, gdy przy użyciu indeksów złożonych:
+
+- Jeśli ścieżki indeksu złożonego pasuje do sekwencji właściwości w klauzuli ORDER BY, następnie indeksie złożonym nie może obsługiwać zapytania
+
+- Kolejność ścieżek indeksu złożonego (rosnący lub malejący) również powinna odpowiadać kolejność w klauzuli ORDER BY.
+
+- Indeks złożony obsługuje również klauzuli ORDER BY w kolejności przeciwnej we wszystkich ścieżkach.
+
+Rozważmy następujący przykład, w którym jeden indeks jest zdefiniowany we właściwościach, b i c:
+
+| **Indeks złożony**     | **Przykładowe `ORDER BY` zapytania**      | **Obsługiwane przez indeks?** |
+| ----------------------- | -------------------------------- | -------------- |
+| ```(a asc, b asc)```         | ```ORDER BY  a asc, bcasc```        | ```Yes```            |
+| ```(a asc, b asc)```          | ```ORDER BY  b asc, a asc```        | ```No```             |
+| ```(a asc, b asc)```          | ```ORDER BY  a desc, b desc```      | ```Yes```            |
+| ```(a asc, b asc)```          | ```ORDER BY  a asc, b desc```       | ```No```             |
+| ```(a asc, b asc, c asc)``` | ```ORDER BY  a asc, b asc, c asc``` | ```Yes```            |
+| ```(a asc, b asc, c asc)``` | ```ORDER BY  a asc, b asc```        | ```No```            |
+
+Należy dostosować zasady indeksowania, więc może obsługiwać wszystkie niezbędne `ORDER BY` zapytania.
 
 ## <a name="modifying-the-indexing-policy"></a>Modyfikowanie zasad indeksowania
 

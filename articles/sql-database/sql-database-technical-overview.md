@@ -13,12 +13,12 @@ ms.author: sstein
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/08/2019
-ms.openlocfilehash: ecfd0cbc3eaaae64a956568a506252fdbeddcac2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ed94677eea91e3543dced9825a1372f60550a524
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60580683"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073612"
 ---
 # <a name="what-is-azure-sql-database-service"></a>Co to jest usługa Azure SQL Database
 
@@ -54,7 +54,7 @@ SQL Database oferuje przewidywalną wydajność z wielu typów zasobów, warstwy
 
 ## <a name="scalable-performance-and-pools"></a>Skalowalna wydajność i pule
 
-- Pojedyncze bazy danych każda baza danych jest odizolowana od innych i przenośna, z własną gwarantowaną ilość zasobów obliczeniowych, pamięci i magazynu. Usługa SQL Database udostępnia różnych zasobów obliczeniowych, pamięci i magazynu dla różnych potrzeb — i możliwość dynamicznego [skalowanie pojedynczej bazy danych zasobów](sql-database-single-database-scale.md) górę i w dół. [Warstwy usługi w hiperskali](sql-database-service-tier-hyperscale.md) (wersja zapoznawcza) dla pojedynczej bazy danych można skalować do 100 TB, przy użyciu szybkich kopii zapasowej i przywracanie możliwości.
+- Pojedyncze bazy danych każda baza danych jest odizolowana od innych i przenośna, z własną gwarantowaną ilość zasobów obliczeniowych, pamięci i magazynu. Usługa SQL Database udostępnia różnych zasobów obliczeniowych, pamięci i magazynu dla różnych potrzeb — i możliwość dynamicznego [skalowanie pojedynczej bazy danych zasobów](sql-database-single-database-scale.md) górę i w dół. [Warstwy usługi w hiperskali](sql-database-service-tier-hyperscale.md) dla pojedynczej bazy danych można skalować do 100 TB, przy użyciu szybkich kopii zapasowej i przywracanie możliwości.
 - Dzięki pulom elastycznym, można tworzyć nowe bazy danych lub Przenieś pojedynczych baz danych do puli zasobów do optymalnego wykorzystania zasobów i Zapisz pieniędzy — i możliwość dynamicznego [skalowanie elastycznej puli zasobów](sql-database-elastic-pool-scale.md) górę i w dół.
 - Za pomocą wystąpienia zarządzanego każdego wystąpienia zarządzanego jest odizolowana od innych wystąpień z gwarantowanymi zasobami. W ramach wystąpienia zarządzanego wystąpienia bazy danych mają zestaw zasoby — i możliwość dynamicznie [skalowanie wystąpienia zarządzanego zasobów](sql-database-managed-instance-resource-limits.md) górę i w dół.
 
@@ -69,8 +69,7 @@ Usługa SQL Database oferuje dwa modele zakupu:
 - [Modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) oferuje blend obliczeniowych, pamięci, we/wy pozwalający w trzech warstwach usług do obsługi niewielkich obciążeń bazy danych. Obliczenia rozmiarów w każdej warstwie udostępniają różne kombinacje tych zasobów, do których można dodawać kolejne zasoby magazynu.
 - [Modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md) pozwala wybrać liczbę rdzeni wirtualnych, ilość lub pamięć i wielkość i szybkość magazynu. Model zakupu opartego na rdzeniach wirtualnych pozwala również na używanie [korzyść użycia hybrydowego platformy Azure dla programu SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) uzyskanie oszczędności kosztów. Aby uzyskać więcej informacji na temat korzyści użycia hybrydowego platformy Azure, zobacz [— często zadawane pytania](#sql-database-frequently-asked-questions-faq).
 
-  > [!IMPORTANT]
-  > [Warstwy usługi w hiperskali](sql-database-service-tier-hyperscale.md) dla pojedynczych baz danych jest obecnie dostępna w publicznej wersji zapoznawczej. Nie zaleca się jeszcze uruchamianie dowolnego obciążenia produkcyjnego w bazach danych na dużą skalę. Nie można zaktualizować bazy danych na dużą skalę do innych warstw usług. W celu badania firma Microsoft zaleca, Utwórz kopię bieżącej bazy danych i zaktualizowania kopii do warstwy usług na dużą skalę.
+  
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>Pule elastyczne umożliwiające zmaksymalizowanie wykorzystania zasobów
 

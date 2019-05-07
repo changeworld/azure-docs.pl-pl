@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: aa80419faaf84580ff48afb12bfea748dcf13eb5
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 6f2bde824c2a9815dc9fd4791ab43e03558da835
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64870720"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65144929"
 ---
 # <a name="status-monitor-v2-api-disable-applicationinsightsmonitoring-v021-alpha"></a>Interfejs API w wersji 2 Monitora stanu: Disable-ApplicationInsightsMonitoring (v0.2.1 alfa)
 
@@ -72,3 +72,9 @@ Registry: skipping non-existent 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Ser
 Configuring registry for instrumentation engine...
 Successfully disabled Application Insights Status Monitor
 ```
+
+
+## <a name="next-steps"></a>Kolejne kroki
+
+ Wykonuj więcej zadań dzięki v2 Monitora stanu:
+ - Użyj zapoznaj się z przewodnikiem [rozwiązywanie](status-monitor-v2-troubleshoot.md) Monitora stanu w wersji 2.

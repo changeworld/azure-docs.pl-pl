@@ -2,22 +2,23 @@
 title: Konfigurowanie niestandardowej nazwy domeny dla konta usługi Azure storage | Dokumentacja firmy Microsoft
 description: Użyj witryny Azure portal, aby zamapować swoją własną nazwę kanoniczną (CNAME) do obiektu Blob magazynu lub sieci web punktu końcowego na koncie usługi Azure storage.
 services: storage
-author: tamram
+author: normesta
 ms.service: storage
 ms.topic: article
 ms.date: 06/26/2018
-ms.author: tamram
+ms.author: normesta
+ms.reviewer: seguler
 ms.subservice: blobs
-ms.openlocfilehash: e40b6fe115d6b6dea38ead9f0b2550d96bd04c7a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 4f6776a5f15cf391f3a65aceb6e9e783d87a2078
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58112640"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148927"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-storage-account"></a>Konfigurowanie niestandardowej nazwy domeny dla konta usługi Azure storage
 
-Można skonfigurować niestandardową domenę umożliwiającą uzyskiwanie dostępu do danych obiektów blob na koncie usługi Azure storage. Domyślny punkt końcowy usługi Azure Blob storage jest  *\<nazwa konta magazynu >. blob.core.windows.net*. Można również użyć internetowego punktu końcowego, który jest generowany jako część [funkcji statycznych witryn sieci Web (wersja zapoznawcza)](storage-blob-static-website.md). Jeśli takie jak mapować domenę niestandardową i poddomeny, *www\.contoso.com*, do punktu końcowego sieci web lub obiektu blob dla konta usługi storage użytkownicy mogą korzystania z tej domeny do dostępu do danych obiektów blob na koncie magazynu.
+Można skonfigurować niestandardową domenę umożliwiającą uzyskiwanie dostępu do danych obiektów blob na koncie usługi Azure storage. Domyślny punkt końcowy usługi Azure Blob storage jest  *\<nazwa konta magazynu >. blob.core.windows.net*. Można również użyć internetowego punktu końcowego, który jest generowany jako część [funkcji statycznych witryn internetowych](storage-blob-static-website.md). Jeśli takie jak mapować domenę niestandardową i poddomeny, *www\.contoso.com*, do punktu końcowego sieci web lub obiektu blob dla konta usługi storage użytkownicy mogą korzystania z tej domeny do dostępu do danych obiektów blob na koncie magazynu.
 
 > [!IMPORTANT]
 > Usługa Azure Storage jeszcze natywnie nie obsługują protokołu HTTPS z zastosowaniem domen niestandardowych. Obecnie można [użycia usługi Azure CDN, dostęp do obiektów blob za pomocą domen niestandardowych przy użyciu protokołu HTTPS](storage-https-custom-domain-cdn.md).

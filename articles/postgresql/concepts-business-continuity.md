@@ -1,19 +1,19 @@
 ---
-title: Omówienie ciągłości biznesowej z usługą Azure Database for PostgreSQL
+title: Omówienie ciągłości biznesowej z usługą Azure Database for PostgreSQL — pojedynczy serwer
 description: Omówienie ciągłości biznesowej z usługą Azure Database for PostgreSQL.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/01/2019
-ms.openlocfilehash: b1d566ac571ddd2b2be3aff160f669e277887209
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: a31112f3b6f7bd79785f89822e2881b152708254
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61456278"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65068933"
 ---
-# <a name="overview-of-business-continuity-with-azure-database-for-postgresql"></a>Omówienie ciągłości biznesowej z usługą Azure Database for PostgreSQL
+# <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Omówienie ciągłości biznesowej z usługą Azure Database for PostgreSQL — pojedynczy serwer
 
 W tym omówieniu opisano możliwości usługi Azure Database for PostgreSQL zapewnia ciągłość biznesową i odzyskiwanie po awarii. Poznaj opcje odzyskiwania zdarzeń powodujących zakłócenia, które mogą spowodować utratę danych lub spowodować, że bazy danych i aplikacja staną się niedostępne. Dowiedz się, co należy zrobić po błędzie użytkownika lub aplikacji wpływa na integralność danych, region platformy Azure wystąpiła awaria lub aplikacja wymaga konserwacji.
 

@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: danlep
-ms.openlocfilehash: 50f3ecf69561313a5bda67827cfb02d2f61d461f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8e62d106a42dfbec897e5e14cf68fd3d7fd823c4
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60653665"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65070812"
 ---
 # <a name="manually-stop-or-start-containers-in-azure-container-instances"></a>Ręcznie zatrzymywać ani uruchamiać kontenery w usłudze Azure Container Instances
 
@@ -24,7 +24,7 @@ Ręcznie zatrzymaj uruchomionej grupy kontenerów — na przykład za pomocą [a
 
 *Gdy grupa kontenerów przechodzi do stanu zatrzymania, kończy działanie i jest odtwarzana wszystkich kontenerów w grupie. Nie pozwala zachować stan kontenera.*
 
-Chociaż recyklingowi, kontenerów w grupie kontenerów zatrzymane [zasobów](container-instances-container-groups.md#resource-allocation) pozostają przydzielone do użycia. W związku z tym rozliczenia nadal dla grupy kontenerów zatrzymany.
+W przypadku kontenerów recyklingowi, [zasobów](container-instances-container-groups.md#resource-allocation) cofnięcia alokacji i rozliczeń zatrzymuje dla grupy kontenerów.
 
 Akcja zatrzymania nie obowiązuje, jeśli grupa kontenerów już zakończone. (jest w stanie powodzenie lub niepowodzenie). Na przykład grupę kontenerów przy użyciu zadania uruchom raz kontenera, które został uruchomiony pomyślnie kończy się w stanie Powodzenie. Podejmuje próby zatrzymania grupy, w tym stanie nie zmieniaj stanu. 
 

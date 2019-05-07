@@ -1,21 +1,21 @@
 ---
-title: Query Store w usłudze Azure Database for PostgreSQL
-description: W tym artykule opisano funkcję Store zapytania w usłudze Azure Database for PostgreSQL.
+title: Query Store w usłudze Azure Database for PostgreSQL — pojedynczy serwer
+description: W tym artykule opisano funkcję Store zapytania w usłudze Azure Database for PostgreSQL — pojedynczy serwer.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/26/2019
-ms.openlocfilehash: c904b6e6cd7a4dc0f9d5a442e20738e43595b369
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: b622de3e21d26676bb11d81a6facf8fea18cabc1
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60564008"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65067198"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Monitorowanie wydajności za pomocą Store zapytania
 
-**Dotyczy:** Azure Database for postgresql w warstwie 9.6 i 10
+**Dotyczy:** Azure Database for PostgreSQL — pojedynczy serwer 9.6 i 10
 
 Funkcja Query Store, w usłudze Azure Database for PostgreSQL zapewnia sposób śledzenia wydajności zapytań, wraz z upływem czasu. Zapytanie Store upraszcza wydajności rozwiązywania problemów, ułatwiając szybkie znajdowanie zapytań najdłużej działających i najbardziej dużej ilości zasobów. Query Store automatycznie przechwytuje historię zapytań i statystyki środowiska uruchomieniowego i przechowuje je do przejrzenia. Tak, aby zobaczyć wzorców użycia baz danych, dzieli dane według czasu systemu windows. Dane dla wszystkich użytkowników, bazy danych i zapytania są przechowywane w bazie danych o nazwie **azure_sys** w usłudze Azure Database for postgresql w warstwie wystąpienia.
 

@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: 9bfe3cf78c7b8ac30088ffe6a5baa0d460d37607
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 7e2b3424c3d8edc931054dea062280ea7789dc44
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64867319"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143071"
 ---
 # <a name="create-an-http-triggered-function-in-azure"></a>Tworzenie funkcji wyzwalanej przez protokół HTTP w systemie Azure
 
@@ -120,7 +120,7 @@ Następujące polecenie uruchamia aplikację funkcji, który jest uruchamiany lo
 func host start
 ```
 
-Podczas uruchamiania hosta funkcji zwróci on dane wyjściowe podobne do następujących (zostały one skrócone, aby zwiększyć czytelność):
+Po uruchomieniu hosta funkcji zapisuje podobną do następujących danych wyjściowych, który został skrócony tak, aby zwiększyć czytelność:
 
 ```output
 

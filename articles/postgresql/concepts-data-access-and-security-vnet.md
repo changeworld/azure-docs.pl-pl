@@ -1,20 +1,19 @@
 ---
-title: Azure Database dla serwera postgresql w warstwie sieci wirtualnej usługi punktu końcowego — omówienie
-description: Dowiedz się, jak działają punkty końcowe usługi sieci Wirtualnej dla usługi Azure Database for postgresql w warstwie serwera.
-author: WenJason
-ms.author: v-jay
+title: Sieć wirtualna (VNet) usług Przegląd punktów końcowych w usłudze Azure Database for PostgreSQL — pojedynczy serwer
+description: Dowiedz się, jak działają punkty końcowe usługi Virtual Network (VNet) dla usługi Azure Database for PostgreSQL — pojedynczy serwer.
+author: bolzmj
+ms.author: mbolz
 ms.service: postgresql
 ms.topic: conceptual
-origin.date: 08/20/2018
-ms.date: 04/22/2019
-ms.openlocfilehash: c6549ad170a0fc3b4387d5bc5163ca0548b92119
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: c873abcdf3c64f8357c584c8e24809270946bf74
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60560135"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073477"
 ---
-# <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql"></a>Użyj reguł i punktów końcowych usługi sieci wirtualnej dla usługi Azure Database for PostgreSQL
+# <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql---single-server"></a>Użyj reguł i punktów końcowych usługi sieci wirtualnej dla usługi Azure Database for PostgreSQL — pojedynczy serwer
 
 *Reguły sieci wirtualnej* są jedną funkcję zabezpieczeń zapory, która kontroluje, czy usługi Azure Database for postgresql w warstwie serwera akceptuje łączności, które są wysyłane z określonej podsieci w sieciach wirtualnych. W tym artykule opisano, dlaczego funkcja reguły sieci wirtualnej jest czasami najlepszym rozwiązaniem dla bezpiecznego zezwolenie na komunikację z usługi Azure Database for postgresql w warstwie serwera.
 

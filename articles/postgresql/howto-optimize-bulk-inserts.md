@@ -1,20 +1,19 @@
 ---
-title: Optymalizowanie zbiorcze operacje wstawiania na usługi Azure Database for postgresql w warstwie serwera
-description: W tym artykule opisano, jak można optymalizować operacji wstawiania zbiorczego w usłudze Azure Database dla serwera PostgreSQL.
-author: WenJason
-ms.author: v-jay
+title: Optymalizowanie zbiorcze operacje wstawiania w usłudze Azure Database for PostgreSQL — pojedynczy serwer
+description: W tym artykule opisano, jak można optymalizować operacji wstawiania zbiorczego w usłudze Azure Database for PostgreSQL — pojedynczy serwer.
+author: dianaputnam
+ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
-origin.date: 10/22/2018
-ms.date: 03/04/2019
-ms.openlocfilehash: a82984ce4c2a2e44306abaa63265e0c25cc6ace4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: c1ae29f7c498a79af09aaaf6d7aeae29561aa500
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60422121"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65067043"
 ---
-# <a name="optimize-bulk-inserts-and-use-transient-data-on-an-azure-database-for-postgresql-server"></a>Optymalizuj zbiorcze operacje wstawiania i używać danych przejściowych w usłudze Azure Database dla serwera PostgreSQL 
+# <a name="optimize-bulk-inserts-and-use-transient-data-on-an-azure-database-for-postgresql---single-server"></a>Optymalizuj zbiorcze operacje wstawiania i używać danych przejściowych w usłudze Azure Database for PostgreSQL — pojedynczy serwer 
 W tym artykule opisano, jak zoptymalizować operacji wstawiania zbiorczego i używać danych przejściowych w usłudze Azure Database dla serwera PostgreSQL.
 
 ## <a name="use-unlogged-tables"></a>Korzystanie z tabel niezarejestrowanych

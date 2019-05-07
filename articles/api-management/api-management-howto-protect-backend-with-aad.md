@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2018
 ms.author: apimpm
-ms.openlocfilehash: cfe2620801f743831f77fb76f344c156676966d3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b5467711f06380ca61b4a9d5150b66c3f945c08c
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60657564"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65141075"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Ochrona interfejsu API przy użyciu protokołu OAuth 2.0 przy użyciu usługi Azure Active Directory i usługi API Management
 
@@ -44,7 +44,7 @@ Poniżej przedstawiono krótkie omówienie kroków:
 
 Aby chronić interfejs API z usługą Azure AD, pierwszym krokiem jest zarejestrowanie aplikacji w usłudze Azure AD, który reprezentuje interfejs API. 
 
-1. Przejdź do dzierżawy usługi Azure AD, a następnie przejdź do **rejestracje aplikacji**.
+1. Przejdź do dzierżawy usługi Azure AD, a następnie przejdź do **rejestracje aplikacji (starsza wersja)**.
 
 2. Wybierz pozycję **Rejestrowanie nowej aplikacji**. 
 
@@ -62,7 +62,7 @@ Po utworzeniu aplikacji Zanotuj **identyfikator aplikacji**, do użycia w kolejn
 
 Każda aplikacja kliencka, która wywołuje interfejs API musi zostać zarejestrowana jako aplikację w usłudze Azure AD oraz. W tym przykładzie Przykładowa aplikacja kliencka jest konsoli dla deweloperów w portalu dla deweloperów usługi API Management. Oto jak można zarejestrować inną aplikację w usłudze Azure AD do reprezentowania konsoli dla deweloperów.
 
-1. Wybierz pozycję **Rejestrowanie nowej aplikacji**. 
+1. W **rejestracje aplikacji (starsza wersja)**, wybierz opcję **rejestrowanie nowej aplikacji**. 
 
 2. Podaj nazwę aplikacji. (W tym przykładzie nazwa to `client-app`.)
 
@@ -86,7 +86,7 @@ Zanotuj wartość klucza.
 
 Po zarejestrowaniu dwie aplikacje do reprezentowania konsoli dla deweloperów i interfejsu API, należy udzielić uprawnień, aby umożliwić aplikacji klienckiej do wywoływania aplikacji zaplecza.  
 
-1. Przejdź do **rejestracje aplikacji**. 
+1. Przejdź do **rejestracje aplikacji (starsza wersja)**. 
 
 2. Wybierz `client-app`, a następnie przejdź do **ustawienia**.
 

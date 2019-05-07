@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 04/16/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 93803a7d885bb68c1d5d6637eaf90fb090dabeb2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7c3b93db18cb8e2660118927da47ffe95abb900f
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60598933"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073004"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Zainstaluj i uruchom usługi LUIS kontenerów platformy docker
  
@@ -337,19 +337,28 @@ Wysyła kontenera usługi LUIS rozliczeń informacje na platformie Azure, przy u
 
 Aby uzyskać więcej informacji o tych opcjach, zobacz [skonfigurować kontenery](luis-container-configuration.md).
 
-## <a name="unsupported-dependencies"></a>Nieobsługiwana zależności
+## <a name="supported-dependencies-for-latest-container"></a>Obsługiwane zależności dla `latest` kontenera
+
+Najnowszy kontener, wydana w 2019 r / / kompilacji, będzie obsługiwać:
+
+* Sprawdzanie pisowni Bing: żądania do punktu końcowego prognozowania zapytania przy użyciu `&spellCheck=true&bing-spell-check-subscription-key={bingKey}` parametry ciągu zapytania. Użyj [sprawdzania pisowni Bing w wersji 7 samouczek](luis-tutorial-bing-spellcheck.md) Aby dowiedzieć się więcej. Jeśli ta funkcja jest używana, kontener wysyła wypowiedź do zasobu sprawdzanie pisowni Bing w wersji 7.
+* [Nowe ze wstępnie utworzonych domen](luis-reference-prebuilt-domains.md): te skoncentrowane na enterprise domeny obejmują jednostek, przykład wypowiedzi i wzorce. Rozszerzenie tych domen na własny użytek. 
+
+<a name="unsupported-dependencies"></a>
+
+## <a name="unsupported-dependencies-for-latest-container"></a>Nieobsługiwane zależności dla `latest` kontenera
+
+Jeśli aplikacją usługi LUIS ma nieobsługiwany zależności, nie będzie mógł [eksportu dla kontenera](#export-packaged-app-from-luis) dopóki nie usuniesz nieobsługiwanych funkcji. Przy próbie eksportu dla kontenera, w portalu usługi LUIS zgłasza nieobsługiwane funkcje, które należy usunąć.
 
 Możesz użyć aplikacji usługi LUIS, jeśli jego **nie obejmuje** żadnego z następujących zależności:
 
 Konfiguracje nieobsługiwanych aplikacji|Szczegóły|
 |--|--|
-|Nieobsługiwana kontenera kultur| Niemiecki (de-DE)<br>Holenderski (nl-NL)<br>Japoński (ja-JP)<br>|
-|Nieobsługiwana domen|Ze wstępnie utworzonych domen, łącznie ze wstępnie utworzonych domen intencje i podmioty|
+|Nieobsługiwana kontenera kultur| Holenderski (nl-NL)<br>Japoński (ja-JP)<br>Niemiecki jest obsługiwany tylko z [1.0.1 tokenizatora lub nowszym](luis-language-support.md#custom-tokenizer-versions).|
 |Nieobsługiwane jednostki dla wszystkich języków|[KeyPhrase](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-keyphrase) wstępnie utworzone jednostki dla wszystkich języków|
 |Nieobsługiwane jednostki dla kultury angielski (en US)|[GeographyV2](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-geographyv2) ze wstępnie utworzonych jednostek|
 |Zalewanie mowy|Zależności zewnętrzne nie są obsługiwane w kontenerze.|
 |Analiza tonacji|Zależności zewnętrzne nie są obsługiwane w kontenerze.|
-|Sprawdzanie pisowni Bing|Zależności zewnętrzne nie są obsługiwane w kontenerze.|
 
 ## <a name="summary"></a>Podsumowanie
 

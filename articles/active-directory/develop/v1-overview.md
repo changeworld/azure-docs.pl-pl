@@ -1,5 +1,5 @@
 ---
-title: W wersji 1.0 — informacje | Azure
+title: Usługa Azure Active Directory dla deweloperów (1.0) — omówienie
 description: Ten artykuł zawiera omówienie logowania firmy Microsoft roboczych i kont służbowych za pomocą usługi Azure Active Directory w wersji 1.0 w punkcie końcowym i platformy.
 services: active-directory
 author: CelesteDG
@@ -17,14 +17,14 @@ ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd39ee1dc22fb6143a8d098276172c453388170b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2af95d979e90f25c013f5112322d830232199a4b
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60297177"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65067647"
 ---
-# <a name="about-v10"></a>Informacje w wersji 1.0
+# <a name="azure-active-directory-for-developers-v10-overview"></a>Usługa Azure Active Directory dla deweloperów (1.0) — omówienie
 
 Azure Active Directory (Azure AD) to usługa zarządzania tożsamościami w chmurze, która umożliwia deweloperom tworzenie aplikacji zapewniających bezpieczne logowanie użytkowników mających konta służbowe Microsoft. Usługa Azure AD obsługuje zarówno deweloperów tworzących aplikacje biznesowe dla pojedynczej dzierżawy, jak i deweloperów chcących tworzyć aplikacje wielodostępne. Oprócz podstawowego logowania usługa Azure AD umożliwia również aplikacjom wywoływanie interfejsów API firmy Microsoft, takich jak [Microsoft Graph](https://docs.microsoft.com/graph/overview), a także niestandardowych interfejsów API opartych na platformie Azure AD. W tej dokumentacji pokazano, jak dodać obsługę usługi Azure AD do własnej aplikacji, używając standardowych w branży protokołów, takich jak OAuth 2.0 i OpenID Connect.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: fac14281365ccf3c191684af8cfdebda69e734e0
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 77c2cd9e0eac6717d91a73a6fc033dcaa2390444
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64870450"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65145044"
 ---
 # <a name="status-monitor-v2"></a>Monitor stanu w wersji 2
 
@@ -61,3 +61,19 @@ https://www.powershellgallery.com/packages/Az.ApplicationMonitor
 - Sprawdzanie włączenia zakończyło się pomyślnie?
 
    Aby sprawdzić poprawność tej możliwości nie ma polecenia cmdlet. Firma Microsoft zaleca używanie [metryki na żywo](https://docs.microsoft.com/azure/azure-monitor/app/live-stream) szybko obserwować, jeśli aplikacja wysyła nam dane telemetryczne.
+
+## <a name="next-steps"></a>Kolejne kroki
+
+Wyświetlanie telemetrii:
+
+* [Eksplorowanie metryk](../../azure-monitor/app/metrics-explorer.md) w celu monitorowania wydajności i użycia
+* [Wyszukiwanie zdarzeń i dzienników](../../azure-monitor/app/diagnostic-search.md) do diagnozowania problemów
+* [Analiza](../../azure-monitor/app/analytics.md) dla bardziej zaawansowanych zapytań
+* [Tworzenie pulpitów nawigacyjnych](../../azure-monitor/app/app-insights-dashboards.md)
+
+Dodawanie kolejnych funkcji telemetrii:
+
+* [Tworzenie testów sieci web](monitor-web-app-availability.md) aby upewnić się, że witryna pozostaje aktywna.
+* [Dodawanie telemetrii klienta sieci web](../../azure-monitor/app/javascript.md) aby zobaczyć wyjątki pochodzące z kodu strony sieci web i umożliwić wstawianie wywołań śladu.
+* [Dodawanie zestawu SDK usługi Application Insights do kodu](../../azure-monitor/app/asp-net.md) tak, aby wstawić ślad i rejestrować wywołania
+

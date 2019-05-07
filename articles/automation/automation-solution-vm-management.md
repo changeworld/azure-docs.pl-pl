@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/31/2019
+ms.date: 04/24/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6d7b99da3e8e81973c51bbd68a15517828c9736d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: eaff996f5d0ad9c2eac00c9306ef8808b43e25c2
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61306873"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65146038"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu rozwiązania w usłudze Azure Automation
 
@@ -46,6 +46,50 @@ Ograniczenia związane z bieżącego rozwiązania są następujące:
 Elementy runbook dla tego rozwiązania, pracować [konta Uruchom jako platformy](automation-create-runas-account.md). Konto Uruchom jako jest preferowaną metodą uwierzytelniania, ponieważ używa ona uwierzytelniania certyfikatu zamiast hasła, które może być wygaśnięcie lub ulegać częstym zmianom.
 
 Zaleca się użyć oddzielnego konta usługi Automation dla rozwiązania uruchamianie/zatrzymywanie maszyn wirtualnych. Jest to spowodowane często uaktualniane są wersje modułu platformy Azure i ich parametrach może ulec zmianie. Rozwiązanie uruchamianie/zatrzymywanie maszyny Wirtualnej nie zostanie uaktualniona na ten sam cykl, dzięki czemu mogą nie działać z nowszymi wersjami poleceń cmdlet, które używa. Zalecane do testowania aktualizacji modułu w teście konta usługi Automation, przed zaimportowaniem ich w środowisku produkcyjnym, konto usługi Automation.
+
+### <a name="permissions-needed-to-deploy"></a>Uprawnienia wymagane do wdrożenia
+
+Istnieją pewne uprawnienia, które użytkownik musi mieć wdrażania uruchamianie/zatrzymywanie maszyn wirtualnych poza godziny rozwiązania. Te uprawnienia są różne, jeśli przy użyciu wstępnie utworzonego obszaru roboczego konto usługi Automation i Log Analytics lub tworzenie nowych plików podczas wdrażania.
+
+#### <a name="pre-existing-automation-account-and-log-analytics-account"></a>Konto istniejące konto usługi Automation i Log Analytics
+
+Aby wdrożyć uruchamianie/zatrzymywanie maszyn wirtualnych poza godziny rozwiązania do konta usługi Automation i Log Analytics użytkownika wdrażania rozwiązania wymagane są następujące uprawnienia na **grupy zasobów**. Aby dowiedzieć się więcej o rolach, zobacz [niestandardowych ról dla zasobów platformy Azure](../role-based-access-control/custom-roles.md).
+
+| Uprawnienie | Zakres|
+| --- | --- |
+| Microsoft.Automation/automationAccounts/read | Grupa zasobów |
+| Microsoft.Automation/automationAccounts/variables/write | Grupa zasobów |
+| Microsoft.Automation/automationAccounts/schedules/write | Grupa zasobów |
+| Microsoft.Automation/automationAccounts/runbooks/write | Grupa zasobów |
+| Microsoft.Automation/automationAccounts/connections/write | Grupa zasobów |
+| Microsoft.Automation/automationAccounts/certificates/write | Grupa zasobów |
+| Microsoft.Automation/automationAccounts/modules/write | Grupa zasobów |
+| Microsoft.Automation/automationAccounts/modules/read | Grupa zasobów |
+| Microsoft.automation/automationAccounts/jobSchedules/write | Grupa zasobów |
+| Microsoft.Automation/automationAccounts/jobs/write | Grupa zasobów |
+| Microsoft.Automation/automationAccounts/jobs/read | Grupa zasobów |
+| Microsoft.OperationsManagement/solutions/write | Grupa zasobów |
+| Microsoft.OperationalInsights/workspaces/* | Grupa zasobów |
+| Microsoft.Insights/diagnosticSettings/write | Grupa zasobów |
+| Microsoft.Insights/ActionGroups/WriteMicrosoft.Insights/ActionGroups/read | Grupa zasobów |
+| Microsoft.Resources/subscriptions/resourceGroups/read | Grupa zasobów |
+| Microsoft.Resources/deployments/* | Grupa zasobów |
+
+### <a name="new-automation-account-and-a-new-log-analytics-workspace"></a>Nowe konto usługi Automation i nowy obszar roboczy usługi Log Analytics
+
+Uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami poza godzinami pracy wdrażania rozwiązania do nowego konta usługi Automation i Log Analytics obszaru roboczego użytkownika wdrażania rozwiązania wymaga uprawnienia określone w poprzedniej sekcji, a także następujące uprawnienia:
+
+- Administrator współpracujący dla subskrypcji — jest to niezbędne do tworzenia klasycznego konta Uruchom jako
+- Być częścią **Deweloper aplikacji** roli. Aby uzyskać więcej informacji na temat konfigurowania konta Uruchom jako, zobacz [uprawnienia do konfigurowania kont Uruchom jako](manage-runas-account.md#permissions).
+
+| Uprawnienie |Zakres|
+| --- | --- |
+| Microsoft.Authorization/roleAssignments/read | Subskrypcja |
+| Microsoft.Authorization/roleAssignments/write | Subskrypcja |
+| Microsoft.Automation/automationAccounts/connections/read | Grupa zasobów |
+| Microsoft.Automation/automationAccounts/certificates/read | Grupa zasobów |
+| Microsoft.Automation/automationAccounts/write | Grupa zasobów |
+| Microsoft.OperationalInsights/workspaces/write | Grupa zasobów |
 
 ## <a name="deploy-the-solution"></a>Wdrażanie rozwiązania
 
@@ -292,8 +336,8 @@ Poniższa tabela zawiera przykładowe wyszukiwania dzienników dla rekordów dzi
 
 |Zapytanie | Opis|
 |----------|----------|
-|Znajdź zadania dla elementu runbook ScheduledStartStop_Parent, która została zakończona pomyślnie | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" )  <br>&#124;  summarize <br>&#124; AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
-|Znajdź zadania dla elementu runbook SequencedStartStop_Parent, która została zakończona pomyślnie | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "SequencedStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" ) <br>&#124;  summarize <br>&#124; AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc```|
+|Znajdź zadania dla elementu runbook ScheduledStartStop_Parent, która została zakończona pomyślnie | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" )  <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
+|Znajdź zadania dla elementu runbook SequencedStartStop_Parent, która została zakończona pomyślnie | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "SequencedStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" ) <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
 
 ## <a name="viewing-the-solution"></a>Wyświetlanie rozwiązania
 

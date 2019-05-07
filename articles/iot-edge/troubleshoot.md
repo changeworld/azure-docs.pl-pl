@@ -4,27 +4,53 @@ description: Skorzystaj z tego artykułu się standardowa umiejętności diagnos
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 02/26/2019
+ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 83595bf045de412954c176028babc4f94fcb21e1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 02d50b81cb91a74e2cdb039c56195e2a15858ca1
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60612269"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142860"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Typowe problemy z usługą Azure IoT Edge i ich rozwiązania
 
-Jeśli wystąpią problemy z uruchamianiem usługi Azure IoT Edge w danym środowisku, użyj tego artykułu jako przewodnika ułatwiającego rozwiązywanie problemów. 
+Jeśli wystąpią problemy z uruchamianiem usługi Azure IoT Edge w danym środowisku, użyj tego artykułu jako przewodnika ułatwiającego rozwiązywanie problemów.
 
-## <a name="standard-diagnostic-steps"></a>Standardowe kroki diagnostyki 
+## <a name="run-the-iotedge-check-command"></a>Uruchom iotedge, sprawdź, polecenie
 
-W przypadku wystąpienia problemu Dowiedz się więcej o stanie urządzenia usługi IoT Edge, przeglądając dzienniki kontenera i komunikaty, które przekazują do i z urządzenia. Użyj poleceń i narzędzi w tej sekcji, aby zebrać informacje. 
+Pierwszym krokiem podczas rozwiązywania problemów z usługi IoT Edge należy używać `check` polecenia, które wykonuje zbiór testów konfiguracją i łącznością typowych problemów. `check` Polecenie jest dostępne w [wersji 1.0.7](https://github.com/Azure/azure-iotedge/releases/tag/1.0.7) i nowszych.
 
-### <a name="check-the-status-of-the-iot-edge-security-manager-and-its-logs"></a>Sprawdź stan IoT Edge Security Manager i jej dzienników:
+Możesz uruchomić `check` polecenia w następujący sposób, lub Uwzględnij `--help` flagi, aby zobaczyć pełną listę opcji:
+
+* W systemie Linux:
+
+  ```bash
+  sudo iotedge check
+  ```
+
+* W systemie Windows:
+
+  ```powershell
+  iotedge check
+  ```
+
+Jakiego typu testy uruchamiane przez narzędzie mogą być klasyfikowane jako:
+
+* Sprawdzenie konfiguracji: Sprawdza, czy szczegółowe informacje, które może uniemożliwić łączenie z chmurą, w tym problemów z urządzeń brzegowych *config.yaml* i aparatu do kontenera.
+* Kontrole połączeń: Sprawdza środowisko uruchomieniowe usługi IoT Edge mogą uzyskiwać dostęp do portów na urządzeniu hosta, a wszystkie składniki usługi IoT Edge można nawiązać połączenia usługi IoT Hub.
+* Sprawdza gotowość do pracy: Wyszukuje produkcyjnych zalecane najlepszych rozwiązań, takich jak stan certyfikaty urzędu certyfikacji certyfikatu urządzenia i konfiguracji pliku dziennika w module.
+
+Aby uzyskać pełną listę kontrolę diagnostyczną, zobacz [wbudowanych, rozwiązywanie problemów z funkcji](https://github.com/Azure/iotedge/blob/master/doc/troubleshoot-checks.md).
+
+## <a name="standard-diagnostic-steps"></a>Standardowe kroki diagnostyki
+
+Jeśli wystąpi problem, użytkownik może dowiedzieć się więcej o stanie urządzenia usługi IoT Edge, przeglądając dzienniki kontenera i komunikaty, które przekazują do i z urządzenia. Użyj poleceń i narzędzi w tej sekcji, aby zebrać informacje.
+
+### <a name="check-the-status-of-the-iot-edge-security-manager-and-its-logs"></a>Sprawdź stan IoT Edge Security Manager i jej dzienników
 
 W systemie Linux:
 - Aby wyświetlić stan Menedżera zabezpieczeń przeglądarki Microsoft Edge IoT:
@@ -72,20 +98,13 @@ W systemie Windows:
 - Aby wyświetlić dzienniki Menedżera zabezpieczeń przeglądarki Microsoft Edge IoT:
 
    ```powershell
-   # Displays logs from today, newest at the bottom.
- 
-   Get-WinEvent -ea SilentlyContinue `
-   -FilterHashtable @{ProviderName= "iotedged";
-     LogName = "application"; StartTime = [datetime]::Today} |
-   select TimeCreated, Message |
-   sort-object @{Expression="TimeCreated";Descending=$false} |
-   format-table -autosize -wrap
+   . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
    ```
 
 ### <a name="if-the-iot-edge-security-manager-is-not-running-verify-your-yaml-configuration-file"></a>Jeśli Menedżer zabezpieczeń IoT Edge nie jest uruchomiona, sprawdź plik konfiguracji yaml
 
 > [!WARNING]
-> Pliki kodu YAML nie może zawierać karty jako identation. Zamiast tego użyj 2 spacje.
+> Pliki kodu YAML nie może zawierać karty jako wcięcia. Zamiast tego użyj 2 spacje.
 
 W systemie Linux:
 

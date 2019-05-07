@@ -12,18 +12,20 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/26/2019
-ms.openlocfilehash: cae806953721f3cedead023f013c7d1d585efeb6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: fb628358c91d80a3117b065cadb284fd1665daa3
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64573389"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073682"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>Usługa Azure SQL Database słownik pojęć
 
 |Kontekst|Termin|Więcej informacji|
 |:---|:---|:---|
 |Nazwa usługi platformy Azure|Usługa Azure SQL Database lub SQL Database|[Usługa Azure SQL Database](sql-database-technical-overview.md)|
+|Warstwa wystąpień obliczeniowych|Aplikacje niewymagające użycia serwera (wersja zapoznawcza)|[Warstwa wystąpień obliczeniowych bez użycia serwera](sql-database-serverless.md)
+||Zaaprowizowane|[Warstwa wystąpień obliczeniowych bez użycia serwera](sql-database-serverless.md)
 |Opcje wdrożenia |Pojedyncza baza danych|[Pojedyncze bazy danych](sql-database-single-database.md)|
 ||Pula elastyczna|[Elastyczna pula](sql-database-elastic-pool.md)|
 ||Wystąpienie zarządzane|[Wystąpienie zarządzane](sql-database-managed-instance.md)|

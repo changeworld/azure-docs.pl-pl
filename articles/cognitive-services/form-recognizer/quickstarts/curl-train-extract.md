@@ -9,16 +9,16 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/15/2019
 ms.author: pafarley
-ms.openlocfilehash: cc6e8cdb7cd1719a8cd14cbfe6e576e07c34b32c
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 1afe9239dcc3f5a24d2e950ec7b563bf53d1f04c
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027264"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143238"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-using-rest-api-with-curl"></a>Szybki start: Wytrenuj model rozpoznawania formularza i wyodrębnianie danych formularza przy użyciu interfejsu API REST za pomocą programu cURL
 
-W tym przewodniku Szybki Start użyjesz przy użyciu interfejsu API REST rozpoznawania formularza za pomocą programu cURL, szkolenie i ocenianie formularzy można wyodrębnić pary klucz wartość i tabel.
+W tym przewodniku Szybki Start użyjesz interfejsu API REST rozpoznawania formularza za pomocą programu cURL szkolenie i ocenianie formularzy w celu wyodrębnienia pary klucz wartość i tabel.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -90,7 +90,7 @@ Zwróć uwagę na `"modelId"` wartość; będzie on potrzebny dla następującyc
 
 Następnie będzie analizowanie dokumentu i wyodrębnić z niego pary klucz wartość i tabel. Wywołaj **modelu — analizowanie** interfejsu API, wykonując poniższe polecenie programu cURL. Przed uruchomieniem polecenia, należy wprowadzić następujące zmiany:
 
-* Zastąp `<Endpoint>` z punktem końcowym uzyskany klucz subskrypcji rozpoznawania formularza. Mogą ją odnaleźć kart Przegląd zasobów rozpoznawania formularza.
+* Zastąp `<Endpoint>` z punktem końcowym uzyskany od swój klucz subskrypcji rozpoznawania formularza. Znajdziesz w zasobie usługi rozpoznawania formularza **Przegląd** kartę.
 * Zastąp `<modelID>` o identyfikatorze modelu otrzymany w poprzednim kroku uczenia modelu.
 * Zastąp `<path to your form>` ze ścieżką pliku do formularza.
 * Zastąp element `<subscription key>` kluczem subskrypcji.

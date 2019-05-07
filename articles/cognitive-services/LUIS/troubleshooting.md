@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 672c9d43007f954d870f8195bcad63d9cee69523
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ea3bb551a32fdfb7e4a378c36858860808e27419
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58894461"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65072775"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding — często zadawane pytania (FAQ)
 
@@ -282,27 +282,19 @@ Użyj usługi LUIS próby [Znajdź region](https://github.com/Azure-Samples/cogn
 
 Tak, można użyć usługa LUIS [kontenera](luis-container-howto.md) dla tych scenariuszy, jeśli masz niezbędne łączności do mierzenia użycia. 
 
-### <a name="at-the-build-2018-conference-i-heard-about-a-language-understanding-feature-or-demo-but-i-dont-remember-what-it-was-called"></a>Na konferencji Build 2018 słyszałem o funkcji rozpoznawania języka lub pokaz, ale nie pamiętam, co zostało wywołane?
+## <a name="migrating-to-the-next-version"></a>Migrowanie do następnej wersji
 
-Następujące funkcje zostały wydane na konferencji Build 2018 r.:
+### <a name="how-do-i-migrate-to-preview-v3-api"></a>Jak migrację do wersji 3 interfejsu API w wersji zapoznawczej? 
 
-|Name (Nazwa)|Zawartość|
-|--|--|
-|Ulepszenia|[Wyrażenie regularne](luis-concept-data-extraction.md##regular-expression-entity-data) jednostki i [frazy klucz](luis-concept-data-extraction.md#key-phrase-extraction-entity-data) jednostki
-|Wzorce|Wzorce [koncepcji](luis-concept-patterns.md), [samouczek](luis-tutorial-pattern.md), [porad](luis-how-to-model-intent-pattern.md)<br>[Patterns.Any](luis-concept-entity-types.md) jednostki w tym koncepcji [jawną listę](luis-concept-patterns.md#explicit-lists) dla wyjątków<br>[Role](luis-concept-roles.md) pojęcia|
-|Integracje|[Analiza tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) integracji [analizy tonacji](luis-how-to-publish-app.md#enable-sentiment-analysis)<br>[Mowy](https://docs.microsoft.com/azure/cognitive-services/speech) integracji zalewanie mowy w połączeniu z [zestaw SDK rozpoznawania mowy](https://aka.ms/SpeechSDK)|
-|Narzędzia wysyłki|Część [narzędzia BotBuilder](https://github.com/Microsoft/botbuilder-tools), wiersza polecenia wysyłania [narzędzie](luis-concept-enterprise.md#when-you-need-to-combine-several-luis-and-qna-maker-apps) Aby połączyć aplikacje dla wielu LUIS i usługi QnA Maker w pojedynczą aplikacją usługi LUIS do lepszego rozpoznawanie intencji na robota
+Zobacz [przewodnik dotyczący interfejsu API v2 do v3 migracji aplikacji usługi LUIS](luis-migration-api-v3.md)
 
-Tworzenie dodatkowych [trasy interfejsu API](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/authoring-routes.md) zostały uwzględnione.
+## <a name="build-2019-conference-announcements"></a>Anonse konferencji 2019 kompilacji
 
-Filmy wideo:
-* [Azure Friday konferencji Build 2018: Cognitive Services — języka (LUIS)](https://channel9.msdn.com/Shows/Azure-Friday/At-Build-2018-Cognitive-Services-Language-LUIS/player)
-* [Pokaż sztucznej Inteligencji 2018 kompilacji — nowości pojawiły się z usługą interpretacji języka](https://channel9.msdn.com/Shows/AI-Show/Whats-New-with-Language-Understanding-Service-LUIS/player)
-* [Sesja konferencji Build 2018 — inteligencja botów, możliwości rozpoznawania mowy i najlepsze rozwiązania dotyczące NLU](https://channel9.msdn.com/events/Build/2018/BRK3208)
-* [Build 2018 - aktualizacje usługi LUIS](https://channel9.msdn.com/events/Build/2018/THR3118/player)
+Następujące funkcje zostały wydane na konferencji 2019 kompilacji:
 
-Projekty:
-* [Bot contoso Cafe](https://github.com/botbuilderbuild2018/build2018demo) demo - kod źródłowy w serwisie GitHub
+* [Przewodnik migracji w wersji 3 interfejsu API w wersji zapoznawczej](luis-migration-api-v3.md)
+* [Ulepszone analitycznego pulpitu nawigacyjnego](luis-how-to-use-dashboard.md)
+* [Ulepszone ze wstępnie utworzonych domen](luis-reference-prebuilt-domains.md) działają z V2 i V3 interfejsów API
 
 ## <a name="next-steps"></a>Kolejne kroki
 

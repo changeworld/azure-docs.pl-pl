@@ -2,18 +2,17 @@
 title: Używać przepływów pracy programu Oozie usługi Hadoop w HDInsight Azure opartych na systemie Linux
 description: Użyj programu Oozie usługi Hadoop w HDInsight opartych na systemie Linux. Dowiedz się, jak zdefiniować przepływ pracy programu Oozie i przesłać zadanie usługi Oozie.
 ms.service: hdinsight
-ms.custom: hdinsightactive
 author: omidm1
 ms.author: omidm
 ms.reviewer: jasonh
 ms.topic: conceptual
-ms.date: 02/28/2019
-ms.openlocfilehash: 97e1836952020723c1043617d74a96471ae07aad
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/06/2019
+ms.openlocfilehash: 55db43bf3037fcba59e7ad783c6d8c06f1886bdb
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64724167"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142824"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Za pomocą programu Apache Oozie Apache Hadoop do definiowania i uruchomić przepływ pracy na opartą na systemie Linux usługi Azure HDInsight
 
@@ -38,13 +37,8 @@ Można również użyć programu Oozie do planowania zadań, które są specyfic
 
 * **Usługi Azure SQL Database**.  Zobacz [utworzyć bazę danych Azure SQL database w witrynie Azure portal](../sql-database/sql-database-get-started.md).  W tym artykule używa bazy danych o nazwie `oozietest`.
 
-* **Możliwe zmiany w konfiguracji magazynu.**  Zobacz [konfiguracji magazynu](#storage-configuration) korzystania z rodzaju konta magazynu `BlobStorage`.
+* [Schemat identyfikatora URI](./hdinsight-hadoop-linux-information.md#URI-and-scheme) do obsługi klastrów magazynu podstawowego. Takie rozwiązanie byłoby `wasb://` dla usługi Azure Storage `abfs://` dla usługi Azure Data Lake Storage Gen2 lub `adl://` dla usługi Azure Data Lake Storage Gen1. Bezpieczny transfer jest włączona dla usługi Azure Storage lub Data Lake Storage Gen2, identyfikator URI będzie mieć `wasbs://` lub `abfss://`odpowiednio Zobacz też [bezpieczny transfer](../storage/common/storage-require-secure-transfer.md).
 
-## <a name="storage-configuration"></a>Konfiguracja usługi Storage
-Jeśli konto magazynu używane na tego rodzaju, jest wymagana żadna akcja `Storage (general purpose v1)` lub `StorageV2 (general purpose v2)`.  Ten proces w artykule generuje dane wyjściowe do co najmniej `/mapreducestaging`.  Domyślna konfiguracja hadoop będzie zawierać `/mapreducestaging` w `fs.azure.page.blob.dir` konfiguracyjną w `core-site.xml` usługi `HDFS`.  Ta konfiguracja spowoduje, że dane wyjściowe do katalogu jako stronicowe obiekty BLOB, który nie jest obsługiwany dla rodzaju konta magazynu `BlobStorage`.  Aby użyć `BlobStorage` w tym artykule, należy usunąć `/mapreducestaging` z `fs.azure.page.blob.dir` zmiennej konfiguracyjnej.  Konfiguracja jest możliwy z [interfejsu użytkownika Ambari](hdinsight-hadoop-manage-ambari.md).  W przeciwnym razie zostanie wyświetlony komunikat o błędzie: `Page blob is not supported for this account type.`
-
-> [!NOTE]  
-> To konto magazynu używane w tym artykule zawiera [bezpieczny transfer](../storage/common/storage-require-secure-transfer.md) włączone i w związku z tym `wasbs` zamiast `wasb` jest używana w całej tego artykułu.
 
 ## <a name="example-workflow"></a>Przykładowy przepływ pracy
 
@@ -451,7 +445,7 @@ Następujące polecenie Oozie do przesyłania i zarządzanie przepływami pracy 
 5. Edytuj kod poniżej, aby zastąpić `<JOBID>` o identyfikatorze zwracane wcześniej.  Aby uruchomić zadanie, użyj następującego polecenia:
 
     ```bash
-    oozie job -start JOBID
+    oozie job -start <JOBID>
     ```
 
     Jeśli po wykonaniu tego polecenia można sprawdzić stan, jest w stanie uruchomienia, a informacje są zwracane do akcji w ramach zadania.  Zadania potrwa kilka minut.

@@ -1,19 +1,19 @@
 ---
-title: Warstwy cenowe dla usługi Azure Database for PostgreSQL
-description: W tym artykule opisano warstw cenowych dla usługi Azure Database for PostgreSQL.
+title: Warstwy cenowe dla usługi Azure Database for PostgreSQL — pojedynczy serwer
+description: W tym artykule opisano warstw cenowych dla usługi Azure Database for PostgreSQL — pojedynczy serwer.
 author: jan-eng
 ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/01/2019
-ms.openlocfilehash: 4109679c03b13303c16cef8edd92ecddb6ca5e5f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 5/6/2019
+ms.openlocfilehash: e2580a57f943ad8da16cfbaeda2ee35d0f4bb691
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64712371"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073195"
 ---
-# <a name="azure-database-for-postgresql-pricing-tiers"></a>Usługa Azure Database for postgresql w warstwie warstw cenowych
+# <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Warstwy cenowe w usłudze Azure Database for PostgreSQL — pojedynczy serwer
 
 W jednym z trzech różnych warstw cenowych, można utworzyć usługi Azure Database for postgresql w warstwie serwera: Podstawowa, Ogólnego przeznaczenia i Zoptymalizowane pod kątem pamięci. Warstwy cenowe są zróżnicowane według ilości zasobów obliczeniowych w rdzeni wirtualnych, które mogą być udostępniane, ilość pamięci na rdzeń wirtualny i technologia magazynu używany do przechowywania danych. Wszystkie zasoby są aprowizowane na poziomie serwera PostgreSQL. Serwer może zawierać jeden lub wiele baz danych.
 

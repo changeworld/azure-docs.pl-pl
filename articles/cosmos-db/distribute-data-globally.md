@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.openlocfilehash: 70ead36e20861026e08e864f438071948c526844
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b90e495e0901c0caa14d9451f365e17f6c075e2b
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60889054"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65070804"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---overview"></a>Dane globalne dystrybucji za pomocą usługi Azure Cosmos DB — omówienie
 
@@ -51,6 +51,6 @@ Dowiedz się więcej o globalnej dystrybucji w następujących artykułach:
 
 * [Dystrybucja globalna - kulisy](global-dist-under-the-hood.md)
 * [Jak skonfigurować Multi-Master w swoich aplikacjach](how-to-multi-master.md)
-* [Konfigurowanie klientów w ramach wieloadresowości](how-to-manage-database-account.md#configure-clients-for-multi-homing)
+* [Konfigurowanie klientów w ramach wieloadresowości](how-to-manage-database-account.md#configure-multiple-write-regions)
 * [Dodać lub usunąć regiony z Twojego konta usługi Azure Cosmos DB](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 * [Tworzenie zasad rozwiązania konfliktu niestandardowe dla konta interfejsu API SQL](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)
