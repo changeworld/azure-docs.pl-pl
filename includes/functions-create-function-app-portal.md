@@ -5,15 +5,15 @@ services: functions
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 09/25/2018
+ms.date: 05/05/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 5070b6ced29599660afa28308239e1ba07c2cbd0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1cecafb013b5d22557961e98935fc9a2fee2a79b
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60710891"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65199344"
 ---
 1. Wybierz **Utwórz zasób** znajdujący się w lewym górnym rogu witryny Azure portal, następnie wybierz opcję **obliczenia** > **aplikacji funkcji**.
 
@@ -42,6 +42,3 @@ ms.locfileid: "60710891"
     ![Definiowanie nowych ustawień aplikacji funkcji](./media/functions-create-function-app-portal/function-app-create-notification.png)
 
 5. Wybierz pozycję **Przejdź do zasobu**, aby wyświetlić nową aplikację funkcji.
-
-> [!TIP]
-> Jeśli masz problem ze znalezieniem aplikacji funkcji w portalu, spróbuj [dodać aplikacje funkcji do ulubionych w witrynie Azure Portal](../articles/azure-functions/functions-how-to-use-azure-function-app-settings.md#favorite).

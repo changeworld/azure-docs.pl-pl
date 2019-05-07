@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2017
 ms.author: alkohli
-ms.openlocfilehash: be5719d2c383c838ef70c6862c1055c3374e05e5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 956cf45eb9e246f2e1f917f2bf487ac14deba90e
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60362496"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65204246"
 ---
 # <a name="configure-web-proxy-for-your-storsimple-device"></a>Konfigurowanie serwera proxy sieci web dla urządzenia StorSimple
 
@@ -68,7 +68,7 @@ Wykonaj kroki konfiguracji serwera proxy sieci web za pomocą Kreatora instalacj
     `http://<IP address or FQDN of the web proxy server>:<TCP port number>`
    
     Domyślnie jest określony numer portu TCP 8080.
-4. Wybierz typ uwierzytelniania jako **NTLM**, **podstawowe**, lub **Brak**. W warstwie podstawowa jest najniższy poziom zabezpieczeń uwierzytelniania w konfiguracji serwera proxy. NT LAN Manager (NTLM) jest protokołem uwierzytelniania bardzo bezpieczny i złożonych, korzystającym z systemu obsługi komunikatów trzystopniowo, (czasami cztery Jeśli wymagane jest dodatkowe integralności) do uwierzytelnienia użytkownika. Domyślne uwierzytelnianie to NTLM. Aby uzyskać więcej informacji, zobacz [podstawowe](http://hc.apache.org/httpclient-3.x/authentication.html) i [uwierzytelniania NTLM](http://hc.apache.org/httpclient-3.x/authentication.html). 
+4. Wybierz typ uwierzytelniania jako **NTLM**, **podstawowe**, lub **Brak**. W warstwie podstawowa jest najniższy poziom zabezpieczeń uwierzytelniania w konfiguracji serwera proxy. NT LAN Manager (NTLM) jest protokołem uwierzytelniania bardzo bezpieczny i złożonych, korzystającym z systemu obsługi komunikatów trzystopniowo, (czasami cztery Jeśli wymagane jest dodatkowe integralności) do uwierzytelnienia użytkownika. Domyślne uwierzytelnianie to NTLM. Aby uzyskać więcej informacji, zobacz [podstawowe](https://hc.apache.org/httpclient-3.x/authentication.html) i [uwierzytelniania NTLM](https://hc.apache.org/httpclient-3.x/authentication.html). 
    
    > [!IMPORTANT]
    > **W usłudze Menedżer urządzeń StorSimple wykresy monitorowania urządzenia nie będą działać podstawowe lub uwierzytelnianie NTLM jest włączone w konfiguracji serwera proxy dla tego urządzenia. Wykresy monitorowania do pracy należy upewnić się, że uwierzytelnianie jest ustawione na wartość NONE.**

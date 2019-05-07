@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: f78275af5faaf19a4993a5ae4414b0163f9a4d9d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e95f167cf6dcfe90fff1c2be174ca197cb2aa004
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60487814"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65204036"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Przetwarzania dużych ilości danych przy użyciu usługi Data Factory i Batch
 > [!NOTE]
@@ -409,7 +409,7 @@ Metoda ma kilka kluczowych składników, które należy zrozumieć:
 #### <a name="execute-method"></a>Execute — Metoda
 Ta sekcja zawiera szczegółowe informacje o kodzie w metodzie Execute.
 
-1. Elementy członkowskie dla iteracji w kolekcji danych wejściowych znajdują się w [Microsoft.WindowsAzure.Storage.Blob](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.blob.aspx) przestrzeni nazw. Do iterowania po kolekcji obiektów blob, musisz użyć **BlobContinuationToken** klasy. W zasadzie, należy użyć wykonuj-pętli za pomocą tokenu w mechanizmie wyjścia z pętli while. Aby uzyskać więcej informacji, zobacz [Użyj usługi Blob storage z .NET](../../storage/blobs/storage-dotnet-how-to-use-blobs.md). Podstawowe pętli jest następujący:
+1. Elementy członkowskie dla iteracji w kolekcji danych wejściowych znajdują się w [Microsoft.WindowsAzure.Storage.Blob](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob) przestrzeni nazw. Do iterowania po kolekcji obiektów blob, musisz użyć **BlobContinuationToken** klasy. W zasadzie, należy użyć wykonuj-pętli za pomocą tokenu w mechanizmie wyjścia z pętli while. Aby uzyskać więcej informacji, zobacz [Użyj usługi Blob storage z .NET](../../storage/blobs/storage-dotnet-how-to-use-blobs.md). Podstawowe pętli jest następujący:
 
     ```csharp
     // Initialize the continuation token.
@@ -432,7 +432,7 @@ Ta sekcja zawiera szczegółowe informacje o kodzie w metodzie Execute.
     } while (continuationToken != null);
 
     ```
-   Aby uzyskać więcej informacji, zobacz dokumentację dla [ListBlobsSegmented](https://msdn.microsoft.com/library/jj717596.aspx) metody.
+   Aby uzyskać więcej informacji, zobacz dokumentację dla [ListBlobsSegmented](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.listblobssegmented) metody.
 
 1. Kod do pracy za pośrednictwem zestaw obiektów blob logicznie przechodzi w ramach nie-pętli while. W **Execute** metody, nie-a pętla przekazuje listę obiektów blob do metody o nazwie **Calculate**. Metoda zwraca wartość zmiennej ciągu o nazwie **dane wyjściowe** oznacza to wynik o postanowiliśmy za pośrednictwem wszystkich obiektów blob w segmencie.
 

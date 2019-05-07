@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: mjbrown
-ms.openlocfilehash: ee1568274792621b8ed9f25d211c40440a82208c
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 46df484303237722f4eb66099748f2fcef8240b4
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65160038"
+ms.locfileid: "65205832"
 ---
 # <a name="create-containers-with-large-partition-key"></a>Tworzenie kontenerów przy użyciu klucza partycji duże
 
@@ -43,6 +43,17 @@ database,
 Aby utworzyć klucz duża partycja, podczas tworzenia nowego kontenera w witrynie Azure portal, zapoznaj się z **mój klucz partycji jest większy niż 100 bajtów** opcji. Domyślnie nowe kontenery zgłoszono do przy użyciu kluczy dużych partycji. Usuń zaznaczenie pola wyboru, jeśli nie potrzebujesz kluczy dużych partycji, lub jeśli masz aplikacje uruchomione na starsze niż 1.18 wersji zestawów SDK.
 
 ![Tworzenie kluczy dużych partycji przy użyciu witryny Azure portal](./media/large-partition-keys/large-partition-key-with-portal.png)
+
+
+## <a name="supported-sdk-versions"></a>Obsługiwane wersje zestawu SDK
+
+Kluczy dużych partycji są obsługiwane przez następujące minimalne wersje zestawów SDK:
+
+|Typ zestawu SDK  | Minimalna wersja   |
+|---------|---------|
+|.Net     |    1.18     |
+|Synchronizacja języka Java     |   2.4.0      |
+|Asynchroniczne języka Java   |  2.5.0        |
  
 ## <a name="next-steps"></a>Kolejne kroki
 

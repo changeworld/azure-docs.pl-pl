@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 93f47529e3be44ff1db4e089bdcdca3eb1b4dea3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 76f4061af816c59e644db99913193ed6fcf24d18
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61363409"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205752"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Windows i Linux źródła danych dotyczących wydajności w usłudze Azure Monitor
 Liczniki wydajności, Windows i Linux zapewniają wgląd w wydajność składniki sprzętowe, systemów operacyjnych i aplikacji.  Usługa Azure Monitor można zebrać liczników wydajności w krótkich odstępach czasu do analizy prawie czasie rzeczywistym (nRT, NEAR) oprócz agregowania danych wydajności dla dłuższy okres analizy i raportowania.
@@ -211,10 +211,10 @@ Poniższa tabela zawiera przykłady różnych zapytań dziennika, które pobiera
 | Perf |Wszystkie dane dotyczące wydajności |
 | Perf &#124; where Computer == "MyComputer" |Wszystkie dane dotyczące wydajności z określonego komputera |
 | Perf &#124; w przypadku, gdy CounterName == "Bieżąca długość kolejki dysku" |Wszystkie dane dotyczące wydajności dla określonego licznika |
-| Perf &#124; gdzie ObjectName == "Procesor" i CounterName == "% czasu procesora" i InstanceName == "_łącznie" &#124; Podsumuj AVGCPU = avg(Average) według komputera |Średnie wykorzystanie procesora CPU na wszystkich komputerach |
-| Perf &#124; where CounterName == "% Processor Time" &#124; summarize AggregatedValue = max(Max) by Computer |Maksymalne wykorzystanie procesora CPU na wszystkich komputerach |
-| Perf &#124; gdzie ObjectName == "DyskLogiczny" i CounterName == "Bieżąca długość kolejki dysku" i komputer == "MyComputerName" &#124; summarize AggregatedValue = avg(Average) przez InstanceName |Średnia długość kolejki na bieżącym dysku we wszystkich wystąpieniach danego komputera |
-| Perf &#124; w przypadku, gdy CounterName == "Na sekundę DiskTransfers" &#124; summarize AggregatedValue = percentyl (95 średni,) według komputera |95. percentyl z transfery dyskowe/s na wszystkich komputerach |
+| Perf &#124; gdzie ObjectName == "Procesor" i CounterName == "% czasu procesora" i InstanceName == "_łącznie" &#124; Podsumuj AVGCPU = avg(CounterValue) według komputera |Średnie wykorzystanie procesora CPU na wszystkich komputerach |
+| Perf &#124; w przypadku, gdy CounterName == "% czasu procesora" &#124; summarize AggregatedValue = max(CounterValue) według komputera |Maksymalne wykorzystanie procesora CPU na wszystkich komputerach |
+| Perf &#124; gdzie ObjectName == "DyskLogiczny" i CounterName == "Bieżąca długość kolejki dysku" i komputer == "MyComputerName" &#124; summarize AggregatedValue = avg(CounterValue) przez InstanceName |Średnia długość kolejki na bieżącym dysku we wszystkich wystąpieniach danego komputera |
+| Perf &#124; w przypadku, gdy CounterName == "Transfery dyskowe/s" &#124; summarize AggregatedValue = percentyl (CounterValue 95) według komputera |95. percentyl z transfery dyskowe/s na wszystkich komputerach |
 | Perf &#124; w przypadku, gdy CounterName == "% czasu procesora" i InstanceName == "_łącznie" &#124; summarize AggregatedValue = avg(CounterValue) przez bin (TimeGenerated, 1 godz.), komputer |Średnia co godzinę użycia procesora CPU na wszystkich komputerach |
 | Perf &#124; gdzie komputer == "Mój komputer" i CounterName startswith_cs "%" i InstanceName == "_łącznie" &#124; summarize AggregatedValue = bin (TimeGenerated, 1 godz.), CounterName percentyl (CounterValue 70) | Co godzinę 70 percentyl licznika procent co % dla określonego komputera |
 | Perf &#124; w przypadku, gdy CounterName == "% czasu procesora" i InstanceName == "_łącznie" i komputer == "Mój komputer" &#124; podsumowanie ["min(CounterValue)"] = min(CounterValue), ["avg(CounterValue)"] = avg(CounterValue), ["percentile75(CounterValue)"] = (CounterValue, 75.), percentyl ["max(CounterValue)"] = max(CounterValue) przez bin (TimeGenerated, 1 godz.), komputer |Co godzinę średnią, minimalną, maksymalną i percentyl 75 użycie procesora CPU dla określonego komputera |

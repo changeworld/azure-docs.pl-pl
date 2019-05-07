@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: mbullwin
-ms.openlocfilehash: 0f8f1c5585eb13506baea1e5ddbe611cc931758e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c6a5ec8685de53d7a611328025d5da8e5ce698a3
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60899252"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65204888"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Zbieranie, przechowywanie i magazynowanie danych w usłudze Application Insights
 
@@ -87,7 +87,7 @@ Punkty danych pierwotnych (czyli elementów, które można wykonywać zapytania 
 
 Zagregowane dane (oznacza to, liczby, średnie i innych danych statystycznych, który zostanie wyświetlony w Eksploratorze metryk) są zachowane w ziarna wynoszącym 1 minutę przez 90 dni.
 
-[Debugowanie migawek](../../azure-monitor/app/snapshot-debugger.md) są przechowywane przez 7 dni. Te zasady przechowywania jest ustawiona na podstawie poszczególnych aplikacji. Jeśli potrzebujesz zwiększyć tę wartość, możesz poprosić o zwiększenie przez otwarcie zgłoszenia do pomocy technicznej w witrynie Azure portal.
+[Debugowanie migawek](../../azure-monitor/app/snapshot-debugger.md) są przechowywane przez piętnaście dni. Te zasady przechowywania jest ustawiona na podstawie poszczególnych aplikacji. Jeśli potrzebujesz zwiększyć tę wartość, możesz poprosić o zwiększenie przez otwarcie zgłoszenia do pomocy technicznej w witrynie Azure portal.
 
 ## <a name="who-can-access-the-data"></a>Kto ma dostęp do danych?
 Dane są widoczne dla użytkownika oraz, jeśli masz konto organizacji, członków zespołu. 

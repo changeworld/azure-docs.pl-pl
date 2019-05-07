@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: brahmnes
 ms.date: 03/07/2019
 ms.author: mbullwin
-ms.openlocfilehash: 669b4d65798a553188a2b99080b72ffc7cd9e898
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 074b701422f32f4cd18fd2eb05e3453e139e17ae
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60783669"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205601"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Debugowanie migawek wyjątków w aplikacjach .NET
 Gdy wystąpi wyjątek, może automatycznie zbierać migawek debugowania z działającej aplikacji internetowej. Migawka przedstawia stan zmiennych i kod źródłowy w momencie utworzenia zgłoszenia wyjątku. Rozszerzenie Snapshot Debugger (wersja zapoznawcza) w [usługi Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) monitoruje dane telemetryczne dotyczące wyjątków z aplikacji sieci web. Zbiera migawki na listy wyjątków zgłaszanie górnej dzięki temu uzyskasz informacje potrzebne do diagnozowania problemów w środowisku produkcyjnym. Obejmują [pakiet NuGet modułu zbierającego migawki](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) w aplikacji i opcjonalnie skonfigurować kolekcję parametrów w [plik ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md). Migawki są wyświetlane na [wyjątki](../../azure-monitor/app/asp-net-exceptions.md) w portalu Application Insights.
@@ -112,7 +112,7 @@ Główny proces jest kontynuowany do uruchamiania i obsługiwać ruch do użytko
 
 ## <a name="limitations"></a>Ograniczenia
 
-Domyślny okres przechowywania danych wynosi 7 dni. Dla każdego wystąpienia usługi Application Insights maksymalna liczba migawek 50 jest dozwolony na dzień.
+Domyślny okres przechowywania danych wynosi 15 dni. Dla każdego wystąpienia usługi Application Insights maksymalna liczba migawek 50 jest dozwolony na dzień.
 
 ### <a name="publish-symbols"></a>Publikuj symbole
 Rozszerzenie Snapshot Debugger wymaga plików symboli na serwerze produkcyjnym do zdekodowania zmienne i aby zapewnić środowisko debugowania w programie Visual Studio.

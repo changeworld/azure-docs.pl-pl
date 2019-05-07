@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 05/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0b1c43cb82d6dc2b7f0708dee8471f077befe349
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d28cb35b1e8e4eaa86418da632c6fcabb636e643
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722162"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205012"
 ---
 # <a name="data-querying"></a>Wykonywanie zapytań dotyczących danych
 
@@ -35,9 +35,9 @@ Trzy podstawowe kategorie interfejsu API są dostępne w usłudze Time Series In
 
 Następujące podstawowe interfejsy API są obsługiwane.
 
-![tsq][1]
+[![Omówienie zapytań w serii czasu](media/v2-update-tsq/tsq.png)](media/v2-update-tsq/tsq.png#lightbox)
 
-### <a name="environment-apis"></a>Interfejsy API w środowisku
+## <a name="environment-apis"></a>Interfejsy API w środowisku
 
 Dostępne są następujące funkcje interfejsu API środowiska:
 
@@ -45,7 +45,7 @@ Dostępne są następujące funkcje interfejsu API środowiska:
 * [Uzyskaj dostępność środowiska interfejsu API](https://docs.microsoft.com/rest/api/time-series-insights/preview-env#get-environment-availability-api): Zwraca rozkład liczby zdarzeń za pośrednictwem sygnatura czasowa zdarzenia `$ts`. Ten interfejs API pomaga ustalić, czy istnieją jakiekolwiek zdarzenia w sygnaturę czasową, zwracając liczbę zdarzeń, jeśli takie istnieją.
 * [Pobieranie schematu zdarzeń API](https://docs.microsoft.com/rest/api/time-series-insights/preview-env#get-event-schema-api): Zwraca metadane schematu zdarzeń dla podanego zakresu. Ten interfejs API pomaga pobrać wszystkie metadane i właściwości dostępne w schemacie dla podanego zakresu.
 
-### <a name="time-series-model-query-tsm-q-apis"></a>Interfejsy API (TSM-Q) dla zapytania w modelu serii czasu
+## <a name="time-series-model-query-tsm-q-apis"></a>Interfejsy API (TSM-Q) dla zapytania w modelu serii czasu
 
 Dostępne są następujące interfejsy API modelu zapytania serii czasu:
 
@@ -54,7 +54,7 @@ Dostępne są następujące interfejsy API modelu zapytania serii czasu:
 * [Interfejs API hierarchie](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api): Włącza CRUD na hierarchii szeregów czasowych i ich skojarzone pole ścieżki.
 * [Wystąpienia interfejsu API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api): Włącza CRUD na wystąpieniach szeregów czasowych i ich pól skojarzonego wystąpienia.
 
-### <a name="time-series-query-tsq-apis"></a>Interfejsów API zapytań (TSQ) serii czasu
+## <a name="time-series-query-tsq-apis"></a>Interfejsów API zapytań (TSQ) serii czasu
 
 Dostępne są następujące interfejsy API zapytań serii czasu:
 
@@ -80,6 +80,3 @@ Dostępne są następujące interfejsy API zapytań serii czasu:
 - Przeczytaj serii czasu Insights (wersja zapoznawcza) [modelowania danych](./time-series-insights-update-tsm.md) artykułu.
 
 - Odkryj [najważniejsze wskazówki podczas wybierania Identyfikatora serii czasu](./time-series-insights-update-how-to-id.md).
-
-<!-- Images -->
-[1]: media/v2-update-tsq/tsq.png

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/15/2018
 ms.author: cshoe
-ms.openlocfilehash: 0294c7eefb6cad17ef83c24a59c37a42e68861b9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e4ec13453c204885f38b10272e76245e641fbef9
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64728549"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65203590"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Usługa Azure powiązania magazynu obiektów Blob dla usługi Azure Functions
 
@@ -318,7 +318,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |---------|---------|----------------------|
 |**type** | Nie dotyczy | Musi być równa `blobTrigger`. Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal.|
 |**direction** | Nie dotyczy | Musi być równa `in`. Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal. Wyjątki są zaznaczone w [użycia](#trigger---usage) sekcji. |
-|**Nazwa** | Nie dotyczy | Nazwa zmiennej, która reprezentuje obiekt blob w kodzie funkcji. |
+|**name** | Nie dotyczy | Nazwa zmiennej, która reprezentuje obiekt blob w kodzie funkcji. |
 |**path** | **BlobPath** |[Kontenera](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources) do monitorowania.  Może być [wzorzec nazwy obiektu blob](#trigger---blob-name-patterns). |
 |**połączenia** | **Połączenie** | Nazwa ustawienia aplikacji zawierającego parametry połączenia magazynu do użycia dla tego powiązania. Jeśli nazwa ustawienia aplikacji rozpoczyna się od "AzureWebJobs", można określić tylko pozostałą część nazwy w tym miejscu. Na przykład jeśli ustawisz `connection` do "Mój_magazyn", środowisko uruchomieniowe usługi Functions wyszukuje ustawienie aplikacji o nazwie "AzureWebJobsMyStorage." Jeśli pozostawisz `connection` pusta, środowisko uruchomieniowe usługi Functions korzysta z domyślne parametry połączenia magazynu w ustawieniach aplikacji, który nosi nazwę `AzureWebJobsStorage`.<br><br>Parametry połączenia nie może być dla konta magazynu ogólnego przeznaczenia, [konta magazynu obiektów Blob](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
 
@@ -389,13 +389,13 @@ Jeśli obiekt blob ma nazwę  *{20140101}-soundfile.mp3*, `name` jest wartość 
 
 ## <a name="trigger---metadata"></a>Wyzwalacz - metadanych
 
-Wyzwalacz obiektu blob zawiera kilka właściwości metadanych. Te właściwości może służyć jako część wyrażenia wiązania w pozostałych powiązaniach lub jako parametry w kodzie. Te wartości mogą być tą samą semantyką jako [CloudBlob](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob?view=azure-dotnet) typu.
+Wyzwalacz obiektu blob zawiera kilka właściwości metadanych. Te właściwości może służyć jako część wyrażenia wiązania w pozostałych powiązaniach lub jako parametry w kodzie. Te wartości mogą być tą samą semantyką jako [CloudBlob](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblob?view=azure-dotnet) typu.
 
 |Właściwość  |Typ  |Opis  |
 |---------|---------|---------|
 |`BlobTrigger`|`string`|Ścieżka do wyzwalania obiektu blob.|
 |`Uri`|`System.Uri`|Identyfikator URI obiektu blob dla lokalizacji głównej.|
-|`Properties` |[BlobProperties](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.blobproperties)|Właściwości systemu obiektu blob. |
+|`Properties` |[BlobProperties](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobproperties)|Właściwości systemu obiektu blob. |
 |`Metadata` |`IDictionary<string,string>`|Metadane zdefiniowane przez użytkownika dla obiektu blob.|
 
 Na przykład poniższy skrypt języka C# i przykładów kodu JavaScript dziennika ścieżki do wyzwalania obiektu blob, w tym kontenerze:
@@ -426,7 +426,7 @@ Usługa Azure Functions magazynów obiektów blob potwierdzenia w kontenerze o n
 * Nazwa obiektu blob
 * Element ETag (identyfikator wersji obiektów blob, na przykład: "0x8D1DC6E70A277EF")
 
-Aby wymusić ponowne przetworzenie obiektu blob, należy usunąć potwierdzenia obiektów blob, dla tego obiektu blob z *azure webjobs hostów* kontenera ręcznie. Podczas ponownego przetwarzania może nastąpić z opóźnieniem, jest gwarantowane występuje w dowolnym momencie w czasie.
+Aby wymusić ponowne przetworzenie obiektu blob, należy usunąć potwierdzenia obiektów blob, dla tego obiektu blob z *azure webjobs hostów* kontenera ręcznie. Podczas ponownego przetwarzania może nastąpić z opóźnieniem, ma gwarancję występować w dowolnym momencie w czasie.
 
 ## <a name="trigger---poison-blobs"></a>Wyzwalacz - skażone obiektów blob
 
@@ -733,7 +733,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |---------|---------|----------------------|
 |**type** | Nie dotyczy | Musi być równa `blob`. |
 |**direction** | Nie dotyczy | Musi być równa `in`. Wyjątki są zaznaczone w [użycia](#input---usage) sekcji. |
-|**Nazwa** | Nie dotyczy | Nazwa zmiennej, która reprezentuje obiekt blob w kodzie funkcji.|
+|**name** | Nie dotyczy | Nazwa zmiennej, która reprezentuje obiekt blob w kodzie funkcji.|
 |**path** |**BlobPath** | Ścieżka do obiektu blob. |
 |**połączenia** |**Połączenie**| Nazwa ustawienia aplikacji, która zawiera [parametry połączenia magazynu](../storage/common/storage-configure-connection-string.md#create-a-connection-string-for-an-azure-storage-account) do użycia dla tego powiązania. Jeśli nazwa ustawienia aplikacji rozpoczyna się od "AzureWebJobs", można określić tylko pozostałą część nazwy w tym miejscu. Na przykład jeśli ustawisz `connection` do "Mój_magazyn", środowisko uruchomieniowe usługi Functions wyszukuje ustawienie aplikacji o nazwie "AzureWebJobsMyStorage." Jeśli pozostawisz `connection` pusta, środowisko uruchomieniowe usługi Functions korzysta z domyślne parametry połączenia magazynu w ustawieniach aplikacji, który nosi nazwę `AzureWebJobsStorage`.<br><br>Parametry połączenia nie może być dla konta magazynu ogólnego przeznaczenia, [konta magazynu tylko dla obiektów blob](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
 |Nie dotyczy | **Dostęp** | Wskazuje, czy będzie można Odczyt lub zapis. |
@@ -1067,8 +1067,8 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |---------|---------|----------------------|
 |**type** | Nie dotyczy | Musi być równa `blob`. |
 |**direction** | Nie dotyczy | Musi być równa `out` dla powiązania danych wyjściowych. Wyjątki są zaznaczone w [użycia](#output---usage) sekcji. |
-|**Nazwa** | Nie dotyczy | Nazwa zmiennej, która reprezentuje obiekt blob w kodzie funkcji.  Ustaw `$return` odwoływać się do wartości zwracanej funkcji.|
-|**path** |**BlobPath** | Ścieżka do blobco. |
+|**name** | Nie dotyczy | Nazwa zmiennej, która reprezentuje obiekt blob w kodzie funkcji.  Ustaw `$return` odwoływać się do wartości zwracanej funkcji.|
+|**path** |**BlobPath** | Ścieżka do kontenera obiektów blob. |
 |**połączenia** |**Połączenie**| Nazwa ustawienia aplikacji zawierającego parametry połączenia magazynu do użycia dla tego powiązania. Jeśli nazwa ustawienia aplikacji rozpoczyna się od "AzureWebJobs", można określić tylko pozostałą część nazwy w tym miejscu. Na przykład jeśli ustawisz `connection` do "Mój_magazyn", środowisko uruchomieniowe usługi Functions wyszukuje ustawienie aplikacji o nazwie "AzureWebJobsMyStorage." Jeśli pozostawisz `connection` pusta, środowisko uruchomieniowe usługi Functions korzysta z domyślne parametry połączenia magazynu w ustawieniach aplikacji, który nosi nazwę `AzureWebJobsStorage`.<br><br>Parametry połączenia nie może być dla konta magazynu ogólnego przeznaczenia, [konta magazynu tylko dla obiektów blob](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
 |Nie dotyczy | **Dostęp** | Wskazuje, czy będzie można Odczyt lub zapis. |
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/23/2018
 ms.author: victorh
-ms.openlocfilehash: 0ea54ac17bb969c7545d775f9dbdf489a57ee051
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 60603bb4d2d29a9e2f0c4fe10130f56db93bfb92
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57307024"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65202809"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-azure-powershell"></a>Tworzenie bramy aplikacji za pośrednictwem protokołu HTTP do przekierowania protokołu HTTPS przy użyciu programu Azure PowerShell
 
@@ -123,7 +123,7 @@ $frontendPort = New-AzApplicationGatewayFrontendPort `
 
 ### <a name="create-the-backend-pool-and-settings"></a>Tworzenie puli zaplecza i ustawień
 
-Utwórz pulę zaplecza o nazwie *appGatewayBackendPool* dla bramy aplikacji przy użyciu [New AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool). Skonfiguruj ustawienia dla puli zaplecza za pomocą [New AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsettings).
+Utwórz pulę zaplecza o nazwie *appGatewayBackendPool* dla bramy aplikacji przy użyciu [New AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool). Skonfiguruj ustawienia dla puli zaplecza za pomocą [New AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting).
 
 ```powershell
 $defaultPool = New-AzApplicationGatewayBackendAddressPool `

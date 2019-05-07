@@ -1,19 +1,19 @@
 ---
-title: Tworzenie i zarządzanie nimi reguły zapory w usłudze Azure Database for PostgreSQL
-description: Tworzenie i zarządzanie nimi — Azure Database for postgresql w warstwie reguł zapory przy użyciu witryny Azure portal
+title: Tworzenie i zarządzanie regułami zapory w usłudze Azure Database for PostgreSQL — pojedynczy serwer
+description: Tworzenie i zarządzanie regułami zapory na potrzeby usługi Azure Database for PostgreSQL — jeden serwer przy użyciu witryny Azure portal
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 04/09/2019
-ms.openlocfilehash: cb142e01009efbeaabd5d4e56dbedfe6384c5fc6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 7eed2e81c6781ca660cffa909f27962a7c5112cb
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60421043"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65069005"
 ---
-# <a name="create-and-manage-azure-database-for-postgresql-firewall-rules-using-the-azure-portal"></a>Tworzenie i zarządzanie nimi — Azure Database for postgresql w warstwie reguł zapory przy użyciu witryny Azure portal
+# <a name="create-and-manage-firewall-rules-for-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Tworzenie i zarządzanie regułami zapory na potrzeby usługi Azure Database for PostgreSQL — jeden serwer przy użyciu witryny Azure portal
 Reguły zapory na poziomie serwera mogą służyć do zarządzania dostępem do usługi Azure Database dla serwera PostgreSQL z określonego adresu IP lub zakres adresów IP.
 
 Wirtualne reguł sieci wirtualnej można również bezpieczny dostęp do serwera. Dowiedz się więcej o [creating and managing Virtual Network i punktów końcowych i reguł za pomocą witryny Azure portal usługi](howto-manage-vnet-using-portal.md).

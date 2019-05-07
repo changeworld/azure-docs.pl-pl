@@ -1,6 +1,6 @@
 ---
-title: Migrowanie indywidualnie licencjonowanych użytkowników do Licencjonowanie oparte na grupach — usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Jak przełączyć się z licencji użytkownika do licencjonowania opartego na grupach, przy użyciu usługi Azure Active Directory
+title: Dodaj indywidualnie licencjonowanych użytkowników do Licencjonowanie oparte na grupach — usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Jak przeprowadzić migrację z licencji użytkownika do licencjonowania opartego na grupach, przy użyciu usługi Azure Active Directory
 services: active-directory
 keywords: Zarządzanie licencjonowaniem w usłudze Azure AD
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: seohack1;it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6fd2eb51c7178421b0656e3b1d0e0ea36176c16
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 333f0ae0153073b57740446ecf47e36a1f9ce590
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60471028"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65192454"
 ---
-# <a name="how-to-add-migrate-users-with-individual-licenses-to-groups-for-licensing"></a>Jak dodać migrowanie użytkowników z licencjami poszczególnych grup licencjonowania
+# <a name="how-to-migrate-users-with-individual-licenses-to-groups-for-licensing"></a>Jak przeprowadzić migrację użytkowników z licencjami poszczególnych grup licencjonowania
 
 Masz istniejące licencje wdrożone dla użytkowników w organizacji za pośrednictwem "bezpośredniego przypisania"; oznacza to za pomocą skryptów programu PowerShell lub innych narzędzi, aby przypisać licencje do poszczególnych użytkowników. Przed rozpoczęciem korzystania Licencjonowanie na podstawie grupy, aby zarządzać licencjami w organizacji, można użyć ten plan migracji można bezproblemowo zastąpić istniejące rozwiązania z licencjonowaniem opartym na grupie.
 

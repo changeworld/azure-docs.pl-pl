@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 05/02/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 1da232c2a81c9989cc78eccf1be97b5d75a48666
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 113c894122fe2b0673dfb47f8a9c0cbecf4c6290
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024485"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205078"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Wdrażaj modele za pomocą usługi Azure Machine Learning
 
@@ -193,7 +193,7 @@ inference_config = InferenceConfig(source_directory="C:/abc",
 
 W tym przykładzie konfiguracji zawiera następujące elementy:
 
-* Katalog, który zawiera zasoby potrzebne do wykonania wnioskowania
+* Katalog, który zawiera zasoby potrzebne do wnioskowania
 * Czy ten model wymaga języka Python
 * [Skrypt wejścia](#script), które jest używane do obsługi żądań sieci web wysyłanych do wdrożonej usługi
 * Plik conda, opisujący potrzebnych do uruchomienia wnioskowania pakiety języka Python

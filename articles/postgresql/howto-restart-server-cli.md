@@ -1,19 +1,19 @@
 ---
-title: Uruchom ponownie usługi Azure Database for PostgreSQL przy użyciu wiersza polecenia platformy Azure
-description: W tym artykule opisano, jak można uruchomić ponownie usługi Azure Database for PostgreSQL przy użyciu wiersza polecenia platformy Azure
+title: Uruchom ponownie usługi Azure Database for PostgreSQL — jeden serwer przy użyciu wiersza polecenia platformy Azure
+description: W tym artykule opisano, jak można uruchomić ponownie usługi Azure Database for PostgreSQL — jeden serwer przy użyciu wiersza polecenia platformy Azure
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 3/28/2019
-ms.openlocfilehash: 51b3011c040db8576c13868f9fac26cb1e431515
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 0a7cd815724fcebd6311860576e620eb9273523b
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60420329"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65068976"
 ---
-# <a name="restart-azure-database-for-postgresql-server-using-the-azure-cli"></a>Uruchom ponownie usługi Azure Database for PostgreSQL przy użyciu wiersza polecenia platformy Azure
+# <a name="restart-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Uruchom ponownie usługi Azure Database for PostgreSQL — jeden serwer przy użyciu wiersza polecenia platformy Azure
 W tym temacie opisano, jak można uruchomić ponownie usługi Azure Database for postgresql w warstwie serwera. Może być konieczne ponowne uruchomienie serwera ze względu na konserwację powoduje krótki przestój serwera wykonuje operację.
 
 Ponowne uruchomienie serwera zostanie zablokowane, jeśli usługa jest zajęta. Na przykład usługa może przetwarzania wcześniej żądanej operacji, takich jak skalowanie rdzeni wirtualnych.

@@ -7,12 +7,12 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: bwren
-ms.openlocfilehash: dcac701f3c1b6d64a7017c31679c019b91103ba2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 1cb3946a93cbeff6a9b95e0a21edbf0523b53d5e
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58904733"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65203612"
 ---
 # <a name="analyze-log-data-in-azure-monitor"></a>Analizuj dane dzienników w usłudze Azure Monitor
 
@@ -36,7 +36,7 @@ Różne sposoby, że używany jest program zapytań w usłudze Azure Monitor są
 - **Widoki.**  Możesz utworzyć wizualizacje danych, które mają zostać uwzględnione w pulpitami nawigacyjnymi użytkownika za pomocą [Projektant widoków](../platform/view-designer.md).  Dziennik zapytań zawierają dane używane przez [Kafelki](../platform/view-designer-tiles.md) i [części wizualizacji](../platform/view-designer-parts.md) w każdym widoku.  
 
 - **Eksportowanie.**  Podczas importowania danych dziennika z usługi Azure Monitor do programu Excel lub [usługi Power BI](../platform/powerbi.md), Utwórz zapytanie dziennika do definiowania danych do wyeksportowania.
-- **PowerShell.** Skrypt programu PowerShell można uruchomić z wiersza polecenia lub element runbook usługi Automation, która używa [Get AzOperationalInsightsSearchResults](/powershell/module/az.operationalinsights/get-azoperationalinsightssearchresults) można pobrać danych dziennika z usługi Azure Monitor.  To polecenie cmdlet wymaga zapytanie w celu określenia danych do pobrania.
+- **PowerShell.** Skrypt programu PowerShell można uruchomić z wiersza polecenia lub element runbook usługi Automation, która używa [Get AzOperationalInsightsSearchResults](/powershell/module/az.operationalinsights/get-azoperationalinsightssearchresult) można pobrać danych dziennika z usługi Azure Monitor.  To polecenie cmdlet wymaga zapytanie w celu określenia danych do pobrania.
 - **Interfejs API dzienniki usługi Azure Monitor.**  [Interfejsu API usługi Azure Monitor dzienniki](../platform/alerts-overview.md) umożliwia dowolnego klienta interfejsu API REST do pobierania danych dziennika z obszaru roboczego.  Żądanie interfejsu API zawiera zapytanie, które jest uruchamiane w usłudze Azure Monitor do ustalenia danych, które można pobrać.
 
 ![Wyszukiwanie w Dzienniku](media/log-query-overview/queries-overview.png)

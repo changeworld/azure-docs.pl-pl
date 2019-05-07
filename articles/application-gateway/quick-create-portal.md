@@ -1,19 +1,19 @@
 ---
 title: 'Szybki start: bezpośredni ruch internetowy w usłudze Azure Application Gateway — Azure Portal | Microsoft Docs'
-description: Dowiedz się, jak za pomocą witryny Azure Portal utworzyć bramę Azure Application Gateway, która kieruje ruch internetowy do maszyn wirtualnych w puli zaplecza.
+description: Dowiedz się, jak utworzyć bramę aplikacji platformy Azure, który kieruje ruch internetowy do maszyn wirtualnych w puli zaplecza za pomocą witryny Azure portal.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 1/8/2019
+ms.date: 5/7/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 6f91b424398df7839c251d994fd3d484422d5e2c
-ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.openlocfilehash: bcbbb63206a443d87afa656ace6f141c6567d17d
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64947306"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65192681"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>Szybki start: bezpośredni ruch internetowy w usłudze Azure Application Gateway — Azure Portal
 
@@ -30,7 +30,7 @@ Zaloguj się do [witryny Azure Portal](https://portal.azure.com) przy użyciu da
 
 ## <a name="create-an-application-gateway"></a>Tworzenie bramy aplikacji
 
-Do komunikacji między tworzonymi zasobami platforma Azure potrzebuje sieci wirtualnej. Możesz utworzyć nową sieć wirtualną lub użyć istniejącego. W tym przykładzie zostanie utworzona nowa sieć wirtualna. Sieć wirtualną można utworzyć podczas tworzenia bramy aplikacji. Wystąpienia bramy aplikacji są tworzone w różnych podsieciach. W tym przykładzie tworzysz dwie podsieci: jedną dla bramy aplikacji i drugą dla serwerów zaplecza.
+Do komunikacji między tworzonymi zasobami platforma Azure potrzebuje sieci wirtualnej. Możesz utworzyć nową sieć wirtualną lub użyć istniejącego. W tym przykładzie utworzysz nową sieć wirtualną. W tym samym czasie, że tworzenie bramy aplikacji jest utworzenie sieci wirtualnej. Wystąpienia bramy aplikacji są tworzone w różnych podsieciach. W tym przykładzie tworzysz dwie podsieci: jedną dla bramy aplikacji i drugą dla serwerów zaplecza.
 
 1. Wybierz pozycję **Utwórz zasób** w menu po lewej stronie w witrynie Azure Portal. Zostanie wyświetlone okno **Nowe**.
 
@@ -65,13 +65,13 @@ Do komunikacji między tworzonymi zasobami platforma Azure potrzebuje sieci wirt
 
 3. Wybierz przycisk **OK**, aby wrócić do strony **Ustawienia**.
 
-4. Wybierz **konfiguracja adresu IP frontonu**. W obszarze **Konfiguracja adresu IP frontonu** sprawdź, czy **Typ adresu IP** ustawiono na **Publiczny**. W obszarze **Publiczny adres IP** sprawdź, czy wybrano pozycję **Utwórz nową**. <br>Można skonfigurować adresu IP frontonu za publicznych lub prywatnych zgodnie z danego przypadku użycia. W tym przykładzie Wybierzmy publicznego adresu IP frontonu.
+4. Wybierz **konfiguracja adresu IP frontonu**. W obszarze **Konfiguracja adresu IP frontonu** sprawdź, czy **Typ adresu IP** ustawiono na **Publiczny**. W obszarze **Publiczny adres IP** sprawdź, czy wybrano pozycję **Utwórz nową**. <br>Można skonfigurować adresu IP frontonu za publicznych lub prywatnych zgodnie z danego przypadku użycia. W tym przykładzie możesz wybrać publicznego adresu IP frontonu.
    > [!NOTE]
-   > W ramach jednostki SKU bramy Application Gateway w wersji 2, można wybrać tylko **publicznych** konfigurację adresu IP. Konfiguracja prywatny adres IP nie jest obecnie włączona dla jednostek SKU v2.
+   > W ramach jednostki SKU bramy Application Gateway w wersji 2, można wybrać tylko **publicznych** konfiguracji adresu IP frontonu. Konfiguracja adresu IP frontonu prywatne obecnie nie jest włączona dla jednostek SKU v2.
 
 5. Wprowadź ciąg *myAGPublicIPAddress* jako nazwę publicznego adresu IP. 
 
-6. Zaakceptuj wartości domyślne innych ustawień, a następnie kliknij przycisk **OK**.<br>Wybierzmy wartości domyślne w tym artykule dla uproszczenia, ale można skonfigurować niestandardowe wartości dla innych ustawień, w zależności od danego przypadku użycia 
+6. Zaakceptuj wartości domyślne innych ustawień, a następnie kliknij przycisk **OK**.<br>Wybierzesz wartości domyślne, w tym artykule dla uproszczenia, ale można skonfigurować niestandardowe wartości dla innych ustawień, w zależności od danego przypadku użycia 
 
 ### <a name="summary-page"></a>Strona podsumowania
 
@@ -79,12 +79,14 @@ Przejrzyj ustawienia na stronie **Podsumowanie**, a następnie wybierz przycisk 
 
 ## <a name="add-backend-pool"></a>Dodaj pulę zaplecza
 
-Pula zaplecza jest używany do kierowania żądań do serwerów wewnętrznej bazy danych, które będą obsługująca żądanie. Pule zaplecza może składać się z kartami sieciowymi, zestawy skalowania maszyn wirtualnych, publiczne adresy IP, wewnętrzne adresy IP, w pełni kwalifikowaną nazwę (FQDN), a wielodostępne zaplecza takich jak usługa Azure App Service. Musisz dodać swoje cele wewnętrznej bazy danych do puli zaplecza.
+Pula zaplecza jest używany do kierowania żądań do serwerów wewnętrznej bazy danych, które obsługują żądania. Pule zaplecza może składać się z kartami sieciowymi, zestawy skalowania maszyn wirtualnych, publiczne adresy IP, wewnętrzne adresy IP, w pełni kwalifikowaną nazwę (FQDN), a wielodostępne zaplecza takich jak usługa Azure App Service. Elementy docelowe wewnętrznej bazy danych należy dodać do puli zaplecza.
 
-W tym przykładzie użyjemy maszyny wirtualne jako docelowego w wewnętrznej bazie danych. Możemy użyć istniejących maszyn wirtualnych lub utworzyć nowe. W tym przykładzie utworzymy dwie maszyny wirtualne, które platforma Azure używa jako serwery zaplecza w usłudze application gateway. Aby to zrobić, obejmuje następujące czynności:
+W tym przykładzie użyjemy maszyny wirtualne jako docelowego w wewnętrznej bazie danych. Możesz użyć istniejących maszyn wirtualnych lub utworzyć nowe. Utworzysz dwie maszyny wirtualne, które platforma Azure używa jako serwery zaplecza w usłudze application gateway.
 
-1. Utwórz nową podsieć *myBackendSubnet*, w której zostanie utworzone nowe maszyny wirtualne. 
-2. Tworzenie nowych maszyn wirtualnych 2, *myVM* i *myVM2*, który zostanie użyty jako serwery zaplecza.
+Aby to zrobić, należy:
+
+1. Utwórz nową podsieć *myBackendSubnet*, w której zostanie utworzone nowe maszyny wirtualne.
+2. Utwórz dwie nowe maszyny wirtualne *myVM* i *myVM2*, który zostanie użyty jako serwery zaplecza.
 3. Zainstaluj usługi IIS na maszynach wirtualnych, aby sprawdzić, czy brama aplikacji została pomyślnie utworzona.
 4. Dodawanie serwerów wewnętrznej bazy danych do puli zaplecza.
 
@@ -112,14 +114,14 @@ Aby dodać podsieć do utworzonej sieci wirtualnej, wykonaj następujące kroki:
     - **Hasło**: wprowadź *Azure123456!* jako hasło administratora.
 4. Zaakceptuj pozostałe wartości domyślne, a następnie wybierz pozycję **Dalej: Dyski**.  
 5. Zaakceptuj wartości domyślne na karcie **Dyski**, a następnie wybierz pozycję **Dalej: Sieć**.
-6. Na karcie **Sieć** sprawdź, czy wybrano pozycję **myVNet** w obszarze **Sieć wirtualna** oraz czy pozycja **Podsieć** została ustawiona na wartość **myBackendSubnet**. Zaakceptuj pozostałe wartości domyślne, a następnie wybierz pozycję **Dalej: Zarządzanie**.<br>Usługa Application Gateway może komunikować się z wystąpieniami poza siecią wirtualną, która znajduje się w, ale należy upewnić się, że istnieje łączność adresów IP. 
+6. Na karcie **Sieć** sprawdź, czy wybrano pozycję **myVNet** w obszarze **Sieć wirtualna** oraz czy pozycja **Podsieć** została ustawiona na wartość **myBackendSubnet**. Zaakceptuj pozostałe wartości domyślne, a następnie wybierz pozycję **Dalej: Zarządzanie**.<br>Usługa Application Gateway może komunikować się z wystąpieniami poza siecią wirtualną, która znajduje się w, ale należy upewnić się, brak IP łączności.
 7. Na karcie **Zarządzanie** ustaw pozycję **Diagnostyka rozruchu** na **Wył.** Zaakceptuj pozostałe wartości domyślne, a następnie wybierz pozycję **Przeglądanie + tworzenie**.
 8. Na karcie **Przeglądanie + tworzenie** przejrzyj ustawienia, usuń wszystkie błędy walidacji, a następnie wybierz pozycję **Utwórz**.
 9. Poczekaj na ukończenie tworzenia maszyny wirtualnej, zanim przejdziesz dalej.
 
 ### <a name="install-iis-for-testing"></a>Instalowanie usług IIS na potrzeby testowania
 
-W tym przykładzie firma Microsoft IIS jest instalowany na maszynach wirtualnych tylko w celu sprawdzenia, że pomyślnie utworzono Azure application gateway. 
+W tym przykładzie należy zainstalować usługi IIS na maszynach wirtualnych tylko po to, aby sprawdzić, czy pomyślnie utworzono Azure application gateway.
 
 1. Otwórz program [Azure PowerShell](https://docs.microsoft.com/azure/cloud-shell/quickstart-powershell). W tym celu wybierz pozycję **Cloud Shell** na górnym pasku nawigacyjnym w witrynie Azure Portal, a następnie wybierz pozycję **PowerShell** z listy rozwijanej. 
 
@@ -161,10 +163,9 @@ W tym przykładzie firma Microsoft IIS jest instalowany na maszynach wirtualnych
 
 Mimo że zainstalowanie usług IIS nie jest wymagane do utworzenia bramy aplikacji, zainstalowano je w ramach tego przewodnika Szybki start, aby sprawdzić, czy platforma Azure pomyślnie utworzyła bramę aplikacji. Użyj usług do przetestowania bramy aplikacji:
 
-1. Znajdź publiczny adres IP dla bramy aplikacji na jego **Przegląd** strony.![ Zapisz publiczny adres IP bramy aplikacji](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png)Alternatywnie, można wybrać **wszystkie zasoby**, wprowadź *myAGPublicIPAddress* do wyszukiwania, a następnie wybierz w wyszukiwaniu wyniki. Platforma Azure wyświetla publiczny adres IP na stronie **Omówienie**.
+1. Znajdź publiczny adres IP dla bramy aplikacji na jego **Przegląd** strony.![ Zapisz publiczny adres IP bramy aplikacji](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png) lub wybrać **wszystkie zasoby**, wprowadź *myAGPublicIPAddress* do wyszukiwania, a następnie wybierz w wynikach wyszukiwania. Platforma Azure wyświetla publiczny adres IP na stronie **Omówienie**.
 2. Skopiuj publiczny adres IP, a następnie wklej go na pasku adresu przeglądarki.
-3. Sprawdź odpowiedzi. Prawidłowe odpowiedzi sprawdza, czy brama aplikacji został pomyślnie utworzony, i jest w stanie pomyślnym nawiązaniu połączenia z zapleczem.![Testowanie bramy aplikacji](./media/application-gateway-create-gateway-portal/application-gateway-iistest.png)
-
+3. Sprawdź odpowiedzi. Prawidłowe odpowiedzi sprawdza, czy bramy aplikacji został pomyślnie utworzony i może nawiązywać połączeń za pomocą wewnętrznej bazy danych.![Testowanie bramy aplikacji](./media/application-gateway-create-gateway-portal/application-gateway-iistest.png)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

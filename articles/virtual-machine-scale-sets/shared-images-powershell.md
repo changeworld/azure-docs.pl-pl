@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: akjosh; cynthn
 ms.custom: ''
-ms.openlocfilehash: 44cb068f1aa40169e728fc28787990b161e148ae
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
-ms.translationtype: HT
+ms.openlocfilehash: ff8d94213e4e07b6597f6195126116a607c18bf7
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150076"
+ms.locfileid: "65191712"
 ---
 # <a name="create-and-use-shared-images-for-virtual-machine-scale-sets-with-the-azure-powershell"></a>Tworzenie i używanie udostępnianych obrazów dla zestawów skalowania maszyn wirtualnych z programem Azure PowerShell
 
@@ -48,7 +48,9 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 W poniższych krokach wyjaśniono szczegółowo, jak na podstawie istniejącej maszyny wirtualnej utworzyć obraz niestandardowy do ponownego użycia, za pomocą którego można tworzyć nowe wystąpienia maszyn wirtualnych.
 
-Aby ukończyć przykład, w tym artykule, konieczne jest posiadanie istniejącego obrazu zarządzanego. Możesz wykonać [samouczka: Tworzenie i używanie niestandardowego obrazu dla zestawów skalowania maszyn wirtualnych przy użyciu programu Azure PowerShell](tutorial-use-custom-image-powershell.md) aby je utworzyć, jeśli to konieczne. Podczas pracy nad artykułu, Zamień grupę zasobów i maszynę Wirtualną przypadkach nazwy.
+Aby ukończyć przykład, w tym artykule, konieczne jest posiadanie istniejącego obrazu zarządzanego. Możesz wykonać [samouczka: Tworzenie i używanie niestandardowego obrazu dla zestawów skalowania maszyn wirtualnych przy użyciu programu Azure PowerShell](tutorial-use-custom-image-powershell.md) aby je utworzyć, jeśli to konieczne. Jeśli zarządzany obraz zawiera dysk z danymi, rozmiar dysku danych nie może być więcej niż 1 TB.
+
+Podczas pracy nad artykułu, Zamień grupę zasobów i maszynę Wirtualną przypadkach nazwy.
 
 
 [!INCLUDE [virtual-machines-common-shared-images-ps](../../includes/virtual-machines-common-shared-images-powershell.md)]

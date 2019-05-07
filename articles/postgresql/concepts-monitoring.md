@@ -1,19 +1,19 @@
 ---
-title: Monitorowanie i dostrajanie w usłudze Azure Database for PostgreSQL
-description: W tym artykule opisano, monitorowania i dostrajania funkcji w usłudze Azure Database for PostgreSQL.
+title: Monitorowanie i dostrajanie w usłudze Azure Database for PostgreSQL — pojedynczy serwer
+description: W tym artykule opisano funkcje monitorowania i dostrajania w usłudze Azure Database for PostgreSQL — pojedynczy serwer.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/05/2018
-ms.openlocfilehash: 0d5508fe6b07bd5664bd0708960559537d8f6be1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 5e03a3e33d618c393241a649be50fe78632caafe
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61456227"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65068996"
 ---
-# <a name="monitor-and-tune"></a>Monitorowanie i dostrajanie
+# <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>Monitorowania i dostrajania bazy danych Azure Database for PostgreSQL — pojedynczy serwer
 Dane dotyczące serwerów monitorowania ułatwia rozwiązywanie problemów i zoptymalizować dla obciążenia. Usługa Azure Database for PostgreSQL udostępnia różne opcje monitorowania zapewniają wgląd w zachowanie serwera.
 
 ## <a name="metrics"></a>Metryki
@@ -33,8 +33,8 @@ Te metryki są dostępne dla usługi Azure Database for PostgreSQL:
 |serverlog_storage_percent|Procent magazynu dziennika serwera|Procent|Wartość procentowa używane poza magazyn dzienników serwera maksymalna serwera magazynu dziennika serwera.|
 |serverlog_storage_usage|Używany Magazyn dzienników serwera|Bajty|Ilość miejsca w magazynie dziennika na serwerze.|
 |serverlog_storage_limit|Limit magazynu dziennika serwera|Bajty|Przechowywanie dziennika serwera maksymalną dla tego serwera.|
-|active_connections|Aktywne połączenia|Licznik|Liczba aktywnych połączeń z serwerem.|
-|connections_failed|Połączenia zakończone niepowodzeniem|Licznik|Liczba połączeń z serwerem nie powiodło się.|
+|active_connections|Aktywne połączenia|Count|Liczba aktywnych połączeń z serwerem.|
+|connections_failed|Połączenia zakończone niepowodzeniem|Count|Liczba połączeń z serwerem nie powiodło się.|
 |network_bytes_egress|Sieć — wyjście|Bajty|Sieć się między aktywnych połączeń.|
 |network_bytes_ingress|Sieć — wejście|Bajty|Sieć w różnych aktywnych połączeń.|
 |backup_storage_used|Używany magazyn kopii zapasowych|Bajty|Wielkość wykorzystanego magazynu kopii zapasowych.|

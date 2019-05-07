@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/29/2019
+ms.date: 05/06/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 42cdf230379665c596761f9846e52454a3d99680
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 5524645153db0468076cc9b567965bff79d915cb
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939668"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65192306"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Usługa Azure Analysis Services skalowalnego w poziomie
 
@@ -51,7 +51,7 @@ Podczas wykonywania kolejnych operacji skalowania w poziomie, na przykład liczb
 
 ### <a name="separate-processing-from-query-pool"></a>Oddziel przetwarzania od puli zapytania
 
-Aby uzyskać maksymalną wydajność przetwarzania i operacje zapytań można oddzielić serwer przetwarzania od puli zapytania. Gdy oddzielone, istniejących i nowych połączeń klientów przypisanych do repliki zapytania w puli zapytania tylko. Operacje przetwarzania zajmował jedynie krótkim czasie, można oddzielić serwer przetwarzania od puli zapytania tylko ilości czasu potrzebnego do wykonywania operacji przetwarzania i synchronizacji, a następnie dołącz ją z powrotem do puli zapytania. 
+Aby uzyskać maksymalną wydajność przetwarzania i operacje zapytań można oddzielić serwer przetwarzania od puli zapytania. Gdy oddzielone, nowe połączenia klientów przypisanych do repliki zapytania w puli zapytania tylko. Operacje przetwarzania zajmował jedynie krótkim czasie, można oddzielić serwer przetwarzania od puli zapytania tylko ilości czasu potrzebnego do wykonywania operacji przetwarzania i synchronizacji, a następnie dołącz ją z powrotem do puli zapytania. Gdy oddziel serwer przetwarzania od puli zapytania lub dodając je z powrotem do puli zapytania może potrwać do pięciu minut na zakończenie operacji.
 
 ## <a name="monitor-qpu-usage"></a>Użycie jednostek QPU monitora
 

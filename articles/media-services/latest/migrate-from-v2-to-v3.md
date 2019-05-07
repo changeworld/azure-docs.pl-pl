@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 03/27/2019
+ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: 921d154226862d822802562442f59bf1c37c4745
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: e64b18cef44a5fa6d63137f57fcada27adcd0299
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148904"
+ms.locfileid: "65205485"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Wskazówki dotyczące migracji do przenoszenia z usługi Media Services v2 do v3
 
@@ -71,7 +71,7 @@ Jeśli masz już dziś opracowanych w górnej części usługi wideo [starszej w
     * Lokator przesyłania strumieniowego zastępuje lokalizatora.
     * Zastępuje zdarzenie na żywo kanału.<br/>Rozliczenie jest oparte na liczniki kanału na żywo wydarzeń na żywo. Aby uzyskać więcej informacji, zobacz [rozliczeń](live-event-states-billing.md) i [ceny](https://azure.microsoft.com/pricing/details/media-services/).
     * Dane wyjściowe na żywo zastępuje Program.
-* Na żywo dane wyjściowe nie musiały zostać uruchomione w sposób jawny, start przy tworzeniu i Zatrzymaj po usunięciu. Programy działały inaczej w interfejsach API w wersji 2, mieli oni ma zostać uruchomiony po utworzeniu.
+* Dane wyjściowe na żywo są uruchamiane w momencie utworzenia i zatrzymywane podczas usuwania. Programy działały inaczej w interfejsach API w wersji 2, mieli oni ma zostać uruchomiony po utworzeniu.
 *  Aby uzyskać informacje o zadaniu, należy znać nazwę transformacji, w którym utworzono zadanie. 
 
 ## <a name="feature-gaps-with-respect-to-v2-apis"></a>Funkcja luki w odniesieniu do interfejsów API w wersji 2

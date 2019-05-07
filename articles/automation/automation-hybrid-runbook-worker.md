@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 55dff6cf073612e3e5473da3a5f1bf722b2ccdbd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 785cf5159615b4a81740e853f2b513f0e6d74aec
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60739358"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65198470"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatyzuj zasobów w centrum danych lub w chmurze przy użyciu hybrydowego procesu roboczego Runbook
 
@@ -27,9 +27,6 @@ Na poniższym obrazie przedstawiono tę funkcję:
 Każdy hybrydowy proces roboczy elementu Runbook jest członkiem grupy hybrydowego procesu roboczego Runbook, który jest określany podczas instalacji agenta. Grupa może obejmować jednego agenta, ale można zainstalować wielu agentów w grupie w celu zapewnienia wysokiej dostępności.
 
 Podczas uruchamiania elementu runbook w hybrydowym procesie roboczym elementu Runbook należy określić grupę, która działa na. Każdemu procesowi roboczemu w tej grupie sonduje usługę Azure Automation, aby sprawdzić, czy wszystkie zadania są dostępne. Jeśli zadanie jest dostępna, to pierwszy proces roboczy, aby zakończyć dane zadanie przełączy go. Czas przetwarzania kolejki zadań zależy od tego, profil sprzętu procesu roboczego hybrydowego i obciążenia. Nie można określić określonego procesu roboczego. Hybrydowych procesów roboczych Runbook nie udostępniaj wiele ograniczeń, które mają piaskownic platformy Azure. Nie mają takie same ograniczenia miejsca na dysku, pamięci lub gniazd sieciowych. Jedynym ograniczeniem jest hybrydowych procesów roboczych Runbook przez zasoby hybrydowego procesu roboczego Runbook sam. Ponadto hybrydowych procesów roboczych Runbook nie należy udostępniać 180 minut [udział](automation-runbook-execution.md#fair-share) limitu czasu, który do piaskownic usługi Azure. Aby dowiedzieć się więcej o limitach usługi do piaskownic usługi Azure i hybrydowych procesów roboczych Runbook, zobacz zadania [limity](../azure-subscription-service-limits.md#automation-limits) strony.
-
-> [!NOTE]
-> Hybrydowych procesów roboczych Runbook nie są obsługiwane w chińskiej wersji platformy Azure.
 
 ## <a name="install-a-hybrid-runbook-worker"></a>Instalowanie hybrydowego procesu roboczego elementu Runbook
 

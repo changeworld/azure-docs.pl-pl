@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 56d91d7801c576064b941ac6089a52e74b4a3b7b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d1c1ed7388ff55e4f17559742054cea973f65ba7
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61031409"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65192287"
 ---
 # <a name="aks-troubleshooting"></a>Rozwiązywanie problemów z usługi AKS
 
@@ -94,3 +94,27 @@ Operacje klastra są ograniczone, podczas aktywnego uaktualniania operacje są w
 ## <a name="can-i-move-my-cluster-to-a-different-subscription-or-my-subscription-with-my-cluster-to-a-new-tenant"></a>Czy mogę przenieść mój klaster na inną subskrypcję lub subskrypcję z klastra do nowego dzierżawcy
 
 Klaster AKS zostały przeniesione do innej subskrypcji lub klastra będącego właścicielem subskrypcji do nowego dzierżawcy, klastra spowoduje utratę funkcji z powodu utraty przypisań ról i uprawnień podmiotów zabezpieczeń usługi. **AKS nie obsługuje przenoszenia klastrów w subskrypcji i dzierżaw** ze względu na to ograniczenie.
+
+## <a name="im-receiving-errors-trying-to-use-features-that-require-virtual-machine-scale-sets"></a>Otrzymuję błędy podczas próby użycia funkcji, które wymagają zestawów skalowania maszyn wirtualnych
+
+*Tej pomocy dotyczące rozwiązywania problemów jest przekierowywany z aka.ms/aks-vmss aktywacji*
+
+Może pojawić się błędy, które wskazują, że klaster AKS nie znajduje się na zestaw skalowania maszyn wirtualnych, takich jak na poniższym przykładzie:
+
+**Obiektu AgentPool "obiektu agentpool" została ustawiona na automatyczne skalowanie, ponieważ włączone, ale nie znajduje się w zestawach skalowania maszyn wirtualnych**
+
+Korzystanie z funkcji, takich jak skalowanie klastra lub węzła wielu pul, klastry usługi AKS musi zostać utworzona używające zestawów skalowania maszyn wirtualnych. Błędy są zwracane, jeśli użytkownik próbuje użyć funkcji, które są zależne od zestawów skalowania maszyn wirtualnych, a docelowy klaster AKS z zestawem skalowania regularnych, maszyna wirtualna. Obsługa zestawu skalowania maszyn wirtualnych jest obecnie w wersji zapoznawczej w usłudze AKS.
+
+Postępuj zgodnie z *przed rozpoczęciem* kroki podane w odpowiedniej dokumentacji poprawnie zarejestrowanie funkcji zestawu skalowania maszyn wirtualnych do wersji zapoznawczej i tworzenie klastra AKS:
+
+* [Użyj skalowania automatycznego klastra](cluster-autoscaler.md)
+* [Tworzenie i używanie wielu pul węzłów](use-multiple-node-pools.md)
+ 
+## <a name="what-naming-restrictions-are-enforced-for-aks-resources-and-parameters"></a>Jakie ograniczenia nazewnictwa odnosi się do zasobów usługi AKS i parametrów?
+
+*Tej pomocy dotyczące rozwiązywania problemów jest przekierowywany z aka.ms/aks — — reguły nazewnictwa*
+
+Ograniczenia nazewnictwa są implementowane przez platformę Azure i usługi AKS. Jeśli nazwa zasobu lub parametr przerywa jeden z tych ograniczeń, zwracany jest błąd, że pyta, czy zapewniają różne dane wejściowe. Typowe nazewnictwa należy przestrzegać następujących:
+
+* AKS *MC_* łączy nazwy grupy zasobów, nazwę grupy zasobów i nazwę zasobu. Składnia generowanych automatycznie `MC_resourceGroupName_resourceName_AzureRegion` musi być większa niż 80 znaków. Jeśli to konieczne, należy zmniejszyć długość nazwy grupy zasobów lub nazwę klastra AKS.
+* *DnsPrefix* musi się zaczynać i kończyć się znakiem alfanumerycznym wartości. Prawidłowe znaki to wartości alfanumeryczne i łączniki (-). *DnsPrefix* nie może zawierać znaków specjalnych, takich jak znak kropki (.).

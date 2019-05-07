@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/19
-ms.openlocfilehash: 4b3fa69156146037ff59a41eab8c8373f6e01dc4
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 65a861c647c2dc92e416fa356075821aa5060042
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65029118"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205039"
 ---
 # <a name="create-and-register-azure-machine-learning-datasets-preview"></a>Tworzenie i rejestrowanie usługi Azure Machine Learning z zestawami danych (wersja zapoznawcza)
 
@@ -44,7 +44,7 @@ Aby utworzyć i zarejestrować zestawy danych potrzebne są:
 * Wnioskowanie i konwertowanie typów danych kolumny.
 
 ```Python
-from azureml.core import Dataset
+from azureml.core.dataset import Dataset
 
 dataset = Dataset.auto_read_files('./data/crime.csv')
 ```
@@ -60,7 +60,9 @@ Aby utworzyć zestawy danych z magazynu danych platformy Azure, należy konieczn
 * Importuj [ `Workspace` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) i [ `Datastore` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#definition) i `Dataset` pakiety z zestawu SDK.
 
 ```Python
-from azureml.core import Workspace, Datastore, Dataset
+from azureml.core.workspace import Workspace
+from azureml.core.datastore import Datastore
+from azureml.core.dataset import Dataset
 
 datastore_name = 'your datastore name'
 
@@ -74,7 +76,7 @@ workspace = Workspace.from_config()
 dstore = Datastore.get(workspace, datastore_name)
 ```
 
-Użyj `from_delimited_files()` metodę, aby przeczytać pliki rozdzielane i tworzenie zestawów danych w pamięci.
+Użyj `from_delimited_files()` metodę, aby przeczytać pliki rozdzielane i tworzenie wyrejestrować zestawu danych.
 
 ```Python
 # create an in-memory Dataset on your local machine
@@ -98,23 +100,22 @@ dataset.head(5)
 Użyj [ `register()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--visible-true--exist-ok-false--update-if-exist-false-) metody do rejestrowania zestawów danych do obszaru roboczego na potrzeby udostępniania i ponowne użycie w danej organizacji oraz w różnych doświadczeń.
 
 ```Python
-dataset = dataset.register(workspace = 'workspace_name',
-                           name = "dataset_crime",
+dataset = dataset.register(workspace = workspace,
+                           name = 'dataset_crime',
+
                            description = 'Training data',
                            exist_ok = False
                            )
 ```
 
 >[!NOTE]
-> Domyślne ustawienie parametru dla `register()` jest "exist_ok = False". Jeśli spróbujesz zarejestrować zestaw danych o takiej samej nazwie, nie zmieniając to ustawienie powoduje błąd.
+> Domyślne ustawienie parametru dla `register()` jest `exist_ok = False`. Jeśli spróbujesz zarejestrować zestaw danych o takiej samej nazwie, nie zmieniając to ustawienie powoduje błąd.
 
-`register()` Metody aktualizacji definicji jest już zarejestrowany zestaw danych z ustawieniem parametru `exist_ok = True`.
+`register()` Metoda zwraca już zarejestrowanego zestawu danych z ustawieniem parametru `exist_ok = True`.
 
 ```Python
-dataset = dataset.register(workspace = workspace_name,
-                           name = "dataset_crime",
-                           description = 'Training data',
-                           exist_ok = True)
+dataset = dataset.register(workspace = workspace,
+                           name = 'dataset_crime',
 ```
 
 Użyj `list()` do wyświetlenia wszystkich zarejestrowanych zestawów danych w obszarze roboczym.
@@ -137,7 +138,7 @@ Zarejestrowane zestawy danych są dostępne i użyciu lokalnie, zdalnie i w klas
 ```Python
 workspace = Workspace.from_config()
 
-dataset = workspace.Datasets['dataset_crime']
+dataset = workspace.datasets['dataset_crime']
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki

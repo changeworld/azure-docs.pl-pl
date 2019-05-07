@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 4/8/2019
 ms.author: victorh
-ms.openlocfilehash: 258113f5201ad3d09df6119dec738d528e640c40
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a4ce1ad347742886e7d89a32bbeb60c2e0281409
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59269354"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65198559"
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>Konfigurowanie kompleksowej usługi SSL przy użyciu bramy aplikacji przy użyciu programu PowerShell
 
@@ -174,7 +174,7 @@ Wszystkie elementy konfiguracji są ustawiane przed utworzeniem bramy aplikacji.
    ```
 
    > [!NOTE]
-   > Certyfikat, opisane w tym kroku należy klucz publiczny certyfikatu pfx na zapleczu. Wyeksportuj certyfikat (nie certyfikat główny) zainstalowane na serwerze zaplecza w formacie oświadczeń, dowód i wnioskowania (CER) i używać go w tym kroku. Ten krok umieszczenie zaplecza za pomocą bramy application gateway.
+   > Podany w poprzednim kroku certyfikat powinien być klucz publiczny certyfikatu pfx na zapleczu. Wyeksportuj certyfikat (nie certyfikat główny) zainstalowane na serwerze zaplecza w formacie oświadczeń, dowód i wnioskowania (CER) i używać go w tym kroku. Ten krok umieszczenie zaplecza za pomocą bramy application gateway.
 
    Jeśli używasz bramy Application Gateway jednostkę SKU v2 następnie utworzyć z zaufanym certyfikatem głównym zamiast certyfikatu uwierzytelniania. Aby uzyskać więcej informacji, zobacz [omówienie kompleksowej usługi SSL z usługą Application Gateway](ssl-overview.md#end-to-end-ssl-with-the-v2-sku):
 

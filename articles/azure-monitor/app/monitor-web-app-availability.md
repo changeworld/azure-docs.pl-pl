@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.reviewer: sdash
 ms.author: lagayhar
-ms.openlocfilehash: fe8549027bb7fcf9fcfc2db26816c0b6646c9da6
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 6cd5413d64be2117cc5f64202ecdaaf40f35db4b
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64916382"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205377"
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Monitorowanie dostępności i czasu odpowiedzi dowolnej witryny sieci Web
 Po wdrożeniu aplikacji internetowej lub witryny internetowej na dowolnym serwerze możesz skonfigurować testy, aby monitorować jej dostępność i czas odpowiedzi. Usługa [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) wysyła żądania sieci Web do aplikacji w regularnych odstępach czasu z punktów na całym świecie. Jeśli aplikacja będzie odpowiadać powoli lub wcale, usługa powiadomi Cię o tym za pomocą alertu.
@@ -274,7 +274,7 @@ Jeśli w ramach testu należy zalogować się przy użyciu protokołu OAuth, og�
 
 ## <a name="performance-tests"></a>Testy wydajności
 > [!NOTE]  
-> Usługi testowania obciążenia opartej na chmurze jest przestarzały. Więcej informacji na temat amortyzacja, dostępność usług i alternatywne usług można znaleźć [tutaj](https://docs.microsoft.com/en-us/azure/devops/test/load-test/overview?view=azure-devops).
+> Usługi testowania obciążenia opartej na chmurze jest przestarzały. Więcej informacji na temat amortyzacja, dostępność usług i alternatywne usług można znaleźć [tutaj](https://docs.microsoft.com/azure/devops/test/load-test/overview?view=azure-devops).
 
 Witrynę internetową możesz poddać testowi obciążeniowemu. Podobnie jak w przypadku testu dostępności można wysłać proste żądania lub żądania wieloetapowe z naszych punktów na całym świecie. W przeciwieństwie do testu dostępności wysyłanych jest wiele żądań symulujących wielu równoczesnych użytkowników.
 

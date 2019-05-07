@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: b824c99a015cfa2c1d1c75e2a1257eff482e8dd6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a9e902a13071abefff71dc4db089380979c8d459
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60833312"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65198616"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Rozpoczynanie pracy z usługą Azure WebJobs SDK, przetwarzanie w tle oparte na zdarzeniach
 
@@ -195,7 +195,7 @@ Począwszy od wersji 3.x, należy jawnie zainstalować rozszerzenie powiązania 
 
    `QueueTrigger` Atrybut informuje środowiska uruchomieniowego, aby wywołać tę funkcję, gdy nowa wiadomość jest zapisywany w kolejce usługi Azure Storage, o nazwie `queue`. Zawartość komunikatu w kolejce znajdują się na kod metody w `message` parametru. Treść metody jest to, gdzie przetwarzania danych wyzwalacza. W tym przykładzie kod rejestruje tylko wiadomości.
 
-   `message` Parametru nie musi być ciągiem. Możesz również powiązać obiekt JSON z tablicą bajtów lub [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueuemessage) obiektu. [Zobacz użycie wyzwalacz kolejki](../azure-functions/functions-bindings-storage-queue.md#trigger---usage). Każdy typ powiązania (na przykład kolejek, obiektów blob lub tabel) ma inny zestaw typów parametrów, które można powiązać.
+   `message` Parametru nie musi być ciągiem. Możesz również powiązać obiekt JSON z tablicą bajtów lub [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) obiektu. [Zobacz użycie wyzwalacz kolejki](../azure-functions/functions-bindings-storage-queue.md#trigger---usage). Każdy typ powiązania (na przykład kolejek, obiektów blob lub tabel) ma inny zestaw typów parametrów, które można powiązać.
 
 ## <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 

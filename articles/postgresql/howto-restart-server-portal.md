@@ -1,19 +1,19 @@
 ---
-title: Uruchom ponownie usługi Azure Database for PostgreSQL przy użyciu witryny Azure portal
-description: W tym artykule opisano, jak można uruchomić ponownie usługi Azure Database for PostgreSQL przy użyciu witryny Azure portal.
+title: Uruchom ponownie usługi Azure Database for PostgreSQL — jeden serwer przy użyciu witryny Azure portal
+description: W tym artykule opisano, jak można uruchomić ponownie usługi Azure Database for PostgreSQL — jeden serwer przy użyciu witryny Azure portal.
 author: ajlam
 ms.author: andrela
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 3/18/2019
-ms.openlocfilehash: bf73120e462b740de5d2245f8a647896ac61f2c8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: fd92e27f53f52de3e9a7fd65d577c9dfea44991b
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60420497"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65066833"
 ---
-# <a name="restart-azure-database-for-postgresql-server-using-the-azure-portal"></a>Uruchom ponownie usługi Azure Database for PostgreSQL przy użyciu witryny Azure portal
+# <a name="restart-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Uruchom ponownie usługi Azure Database for PostgreSQL — jeden serwer przy użyciu witryny Azure portal
 W tym temacie opisano, jak można uruchomić ponownie usługi Azure Database for postgresql w warstwie serwera. Może być konieczne ponowne uruchomienie serwera ze względu na konserwację powoduje krótki przestój serwera wykonuje operację.
 
 Ponowne uruchomienie serwera zostanie zablokowane, jeśli usługa jest zajęta. Na przykład usługa może przetwarzania wcześniej żądanej operacji, takich jak skalowanie rdzeni wirtualnych.

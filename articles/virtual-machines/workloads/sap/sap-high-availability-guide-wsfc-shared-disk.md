@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 608965160f4abb57ccdfe8b8256fef971754b4d6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 987cd1e5860b0fe340ba8a5163d844bec29b541c
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60637690"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205101"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -264,7 +264,7 @@ Aby utworzyć zasób udostępnionego dysku dla klastra:
 2. Uruchom oprogramowanie SIOS DataKeeper Cluster Edition na obu węzłach maszyny wirtualnej.
 3. Oprogramowanie SIOS DataKeeper Cluster Edition należy skonfigurować tak, aby go odzwierciedla zawartość woluminu dodatkowy dysk dołączony ze źródłowej maszyny wirtualnej do ilości dodatkowy dysk dołączony docelowej maszyny wirtualnej. Oprogramowanie SIOS DataKeeper przenosi źródłowe i docelowe woluminy lokalne, a następnie wyświetla je do systemu Windows Server klaster pracy awaryjnej jako jeden dysk udostępniony.
 
-Uzyskaj więcej informacji o [oprogramowanie SIOS DataKeeper](http://us.sios.com/products/datakeeper-cluster/).
+Uzyskaj więcej informacji o [oprogramowanie SIOS DataKeeper](https://us.sios.com/products/datakeeper-cluster/).
 
 ![Rysunek 5: Konfiguracja na platformie Azure przy użyciu oprogramowanie SIOS DataKeeper awaryjnej w systemie Windows Server][sap-ha-guide-figure-1002]
 

@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 7e4364a06a3d20edc7aafd54a4dcd86dfd039043
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8508dbecceb9984f53a133d9634882603549cdd1
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64573576"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65199640"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Tworzenie i używanie wewnętrznego modułu równoważenia obciążenia ze środowiskiem App Service Environment #
 
@@ -133,8 +133,8 @@ Po utworzeniu środowiska ASE jako nazwa domeny wskazywana jest podana nazwa dom
 
 Środowisko ASE z wewnętrznym modułem równoważenia obciążenia wymaga prawidłowego certyfikatu SSL. Użyj wewnętrznych urzędów certyfikacji, kup certyfikat od wystawcy zewnętrznego lub użyj certyfikatu z podpisem własnym. Niezależnie od źródła certyfikatu SSL należy poprawnie skonfigurować następujące atrybuty certyfikatu:
 
-* **Podmiot**: Ten atrybut musi mieć ustawioną wartość *.domena-główna.
-* **Alternatywna nazwa podmiotu**: ten atrybut musi zawierać zarówno pozycję **.domena-główna*, jak i **.scm.domena-główna*. W połączeniach SSL z witryną SCM/Kudu skojarzonych z poszczególnymi aplikacjami używane są adresy w postaci *nazwa-aplikacji.scm.domena-główna*.
+* **Podmiot**: Ten atrybut musi być równa *\.your głównego domeny — tutaj.
+* **Alternatywna nazwa podmiotu**: Ten atrybut musi zawierać zarówno *lokalizacji głównego domeny — tutaj* i *.SCM.domena-głównego-domeny — w tym miejscu*. W połączeniach SSL z witryną SCM/Kudu skojarzonych z poszczególnymi aplikacjami używane są adresy w postaci *nazwa-aplikacji.scm.domena-główna*.
 
 Przekonwertuj lub zapisz certyfikat SSL jako plik pfx. Plik pfx musi zawierać wszystkie certyfikaty pośrednie i główne. Zabezpiecz go przy użyciu hasła.
 

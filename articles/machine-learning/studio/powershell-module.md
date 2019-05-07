@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 04/25/2019
-ms.openlocfilehash: e3c2587fceed265c9768b6ea6f2ecf3b9a8b7b1a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bee42f8a9582908963c0eef95a2fd04742cd425e
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61094359"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205658"
 ---
 # <a name="powershell-modules-for-azure-machine-learning-studio"></a>Moduły programu PowerShell dla usługi Azure Machine Learning Studio
 
@@ -57,7 +57,7 @@ PowerShell — Model Klasyczny można zainstalować obok Az albo AzureRM opisane
 | Zarządzaj planami zobowiązania obszaru roboczego | [New-AzMlCommitmentPlan](https://docs.microsoft.com/powershell/module/az.machinelearning/new-azmlcommitmentplan) | |
 | Zarządzanie użytkownikami obszaru roboczego |  | [Add-AmlWorkspaceUsers](https://github.com/hning86/azuremlps#add-amlworkspaceusers)|
 | Zarządzanie usługami sieci Web | [New-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/new-azmlwebservice) <br>("nowe" usługi internetowe)|| [Nowe AmlWebService](https://github.com/hning86/azuremlps#manage-classic-web-service) <br>("klasycznych" usług sieci web) |
-| Zarządzanie klucze punkty końcowe usługi sieci web |  [Get-AzMlWebServiceKeys](https://docs.microsoft.com/powershell/module/az.machinelearning/get-azmlwebservicekeys)|  [Add-AmlWebServiceEndpoint](https://github.com/hning86/azuremlps#manage-classic-web-servcie-endpoint)|
+| Zarządzanie klucze punkty końcowe usługi sieci web |  [Get-AzMlWebServiceKey](https://docs.microsoft.com/powershell/module/az.machinelearning/get-azmlwebservicekey)|  [Add-AmlWebServiceEndpoint](https://github.com/hning86/azuremlps#manage-classic-web-servcie-endpoint)|
 | Zarządzanie modelami zestawy danych/uczony użytkownika| | [Get-AmlDataset](https://github.com/hning86/azuremlps#manage-user-assets-dataset-trained-model-transform) |
 | Zarządzanie doświadczenia użytkownika |  | [Start-AmlExperiment](https://github.com/hning86/azuremlps#manage-experiment) |
 | Zarządzanie moduły niestandardowe | | [Nowe AmlCustomModule](https://github.com/hning86/azuremlps#manage-custom-module) |

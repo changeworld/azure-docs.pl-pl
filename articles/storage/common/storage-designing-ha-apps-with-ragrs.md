@@ -1,5 +1,5 @@
 ---
-title: Projektowanie Aaplications o wysokiej dostępności przy użyciu magazynu geograficznie nadmiarowego dostęp do odczytu (RA-GRS) | Dokumentacja firmy Microsoft
+title: Projektowanie wysoko dostępnych aplikacji przy użyciu magazynu geograficznie nadmiarowego dostęp do odczytu (RA-GRS) | Dokumentacja firmy Microsoft
 description: Jak używać magazynu Azure RA-GRS architektury wystarczająco elastyczny, aby obsłużyć awarie aplikacji o wysokiej dostępności.
 services: storage
 author: tamram
@@ -10,12 +10,12 @@ ms.date: 01/17/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 6dc497ac2afd54965485ff553bb25f47d7cf0491
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: c4d213a7c08162ef0b107572cfb79b6e96e271d6
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65139343"
+ms.locfileid: "65205504"
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>Projektowanie wysoko dostępnych aplikacji przy użyciu RA-GRS
 
@@ -148,7 +148,7 @@ Inną ważną kwestią jest sposób obsługi wielu wystąpień aplikacji, co mo�
 
 Dostępne są trzy główne opcje monitorowania częstotliwość ponownych prób w regionie podstawowym w celu ustalenia, kiedy należy przełączyć się do regionu pomocniczego i zmienić aplikację do uruchamiania w trybie tylko do odczytu.
 
-*   Dodaj program obsługi [ **ponawianie próby** ](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.operationcontext.retrying.aspx) zdarzenie na [ **OperationContext** ](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.operationcontext.aspx) żądania są przekazywane do magazynu obiektów — jest to metoda wyświetlane w tym artykule i używane w towarzyszącej próbki. Te zdarzenia są uruchamiane zawsze, gdy klient będzie ponawiać próbę żądania, które pozwalają śledzić, jak często klient napotka błędy powtarzający operację na podstawowego punktu końcowego.
+*   Dodaj program obsługi [ **ponawianie próby** ](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.operationcontext.retrying) zdarzenie na [ **OperationContext** ](https://docs.microsoft.com/java/api/com.microsoft.applicationinsights.extensibility.context.operationcontext) żądania są przekazywane do magazynu obiektów — jest to metoda wyświetlane w tym artykule i używane w towarzyszącej próbki. Te zdarzenia są uruchamiane zawsze, gdy klient będzie ponawiać próbę żądania, które pozwalają śledzić, jak często klient napotka błędy powtarzający operację na podstawowego punktu końcowego.
 
     ```csharp 
     operationContext.Retrying += (sender, arguments) =>
@@ -159,7 +159,7 @@ Dostępne są trzy główne opcje monitorowania częstotliwość ponownych prób
     };
     ```
 
-*   W [ **Evaluate** ](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.retrypolicies.iextendedretrypolicy.evaluate.aspx) metody w niestandardowe zasady ponawiania, można uruchomić kod niestandardowy w każdym przypadku, gdy odbywa się ponowienie próby. Oprócz rejestrowania po ponowieniu próby miejsce, ta oferuje również możliwość modyfikacji swoje zachowanie ponawiania prób.
+*   W [ **Evaluate** ](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.iextendedretrypolicy.evaluate) metody w niestandardowe zasady ponawiania, można uruchomić kod niestandardowy w każdym przypadku, gdy odbywa się ponowienie próby. Oprócz rejestrowania po ponowieniu próby miejsce, ta oferuje również możliwość modyfikacji swoje zachowanie ponawiania prób.
 
     ```csharp 
     public RetryInfo Evaluate(RetryContext retryContext,

@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 11/14/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: b37f16ab914fe4062bc9720ae9cc0139c573fb93
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: a8512e128d757e2faf4c3f63c5ad113b1d67b4ee
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154277"
+ms.locfileid: "65204893"
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>Usługa SQL Data Warehouse limity pojemności
 Maksymalna dozwolona dla różnych składników usługi Azure SQL Data Warehouse.
@@ -25,7 +25,7 @@ Maksymalna dozwolona dla różnych składników usługi Azure SQL Data Warehouse
 |:--- |:--- |:--- |
 | [Jednostki magazynu danych (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Maksymalna liczba jednostek DWU w pojedynczej SQL Data Warehouse | Gen1: DW6000<br></br>Gen2: DW30000c |
 | [Jednostki magazynu danych (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Domyślna wartość DTU na serwer |54,000<br></br>Domyślnie każdy serwer SQL (na przykład myserver.database.windows.net) ma limit przydziału jednostek DTU równa 54 000, co pozwala maksymalnie DW6000c. Ten limit przydziału jest po prostu limitem bezpieczeństwa. Możesz zwiększyć limit przydziału przez [utworzeniem biletu pomocy technicznej](sql-data-warehouse-get-started-create-support-ticket.md) i wybierając polecenie *przydziału* jako typ żądania.  Do obliczania usługi jednostki DTU potrzebuje, należy pomnożyć 7,5 przez łączną DWU potrzebne lub mnożenia 9.0 cDWU całkowity, potrzebne. Na przykład:<br></br>DW6000 x w wersji 7.5 = 45 000 jednostek Dtu<br></br>DW6000c x 9.0 = równa 54 000 jednostek Dtu.<br></br>Aktualne użycie jednostek DTU, z opcji programu SQL server można wyświetlić w portalu. Limit przydziału jednostek DTU obejmuje zarówno wstrzymane, jak i niewstrzymane bazy danych. |
-| Połączenie z bazą danych |Maksymalna współbieżnych Otwieranie sesji |1024<br/><br/>Liczba równoczesnych sesji Otwórz będzie zależeć od wybranych jednostek DWU. DWU500c otwarta powyżej obsługuje maksymalnie 1024 sesji. DWU400c i starszej obsługują limit maksymalny równoczesnych sesji Otwórz wynoszącej 512. Należy pamiętać, że istnieją ograniczenia dotyczące liczby zapytań, które mogą być wykonywane jednocześnie. Po przekroczeniu limitu współbieżności, żądanie przechodzi w stan kolejki wewnętrznej, gdzie oczekuje na przetworzenie. |
+| Połączenie z bazą danych |Maksymalna współbieżnych Otwieranie sesji |1024<br/><br/>Liczba równoczesnych sesji Otwórz będzie zależeć od wybranych jednostek DWU. DWU600c otwarta powyżej obsługuje maksymalnie 1024 sesji. DWU500c i starszej obsługują limit maksymalny równoczesnych sesji Otwórz wynoszącej 512. Należy pamiętać, że istnieją ograniczenia dotyczące liczby zapytań, które mogą być wykonywane jednocześnie. Po przekroczeniu limitu współbieżności, żądanie przechodzi w stan kolejki wewnętrznej, gdzie oczekuje na przetworzenie. |
 | Połączenie z bazą danych |Maksymalna ilość pamięci dla przygotowanej instrukcji |20 MB |
 | [Zarządzanie obciążeniami](resource-classes-for-workload-management.md) |Maksymalna liczba jednoczesnych kwerend |128<br/><br/> Usługa SQL Data Warehouse można wykonywać maksymalnie 128 zapytań jednoczesnych lub kolejek, pozostałe zapytania.<br/><br/>Liczba równoczesnych zapytań można zmniejszyć, gdy użytkownicy są przypisane do wyższe klasy zasobów lub jeśli usługa SQL Data Warehouse ma mniejszy [data warehouse Unit, jednostka](memory-and-concurrency-limits.md) ustawienie. Niektórych kwerend, takich jak zapytania DMV, są zawsze może działać i czy nie wpływa na limit współbieżnych zapytania. Aby uzyskać szczegółowe informacje na temat wykonywania zapytań jednoczesnych, zobacz [maksymalne wartości współbieżności](memory-and-concurrency-limits.md#concurrency-maximums) artykułu. |
 | [tempdb](sql-data-warehouse-tables-temporary.md) |Maksymalna GB |399 GB per DW100. W związku z tym w DWU1000, bazy danych tempdb jest o rozmiarze do 3,99 TB. |

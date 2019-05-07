@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 3/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: f9663fb502d9eda4810c54a89a94481b7d00cd43
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 3fab76613bb992b29ceeef12cf5f410c5c3b208d
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926064"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205528"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Zrozumieć dane wyjściowe z usługi Azure Stream Analytics
 W tym artykule opisano typy danych wyjściowych jest dostępny dla zadania usługi Azure Stream Analytics. Dane wyjściowe pozwalają na przechowywanie i zapisać wyniki zadania usługi Stream Analytics. Korzystając z danych wyjściowych, możesz zrobić dalszych analiz biznesowych i danych magazynu danych.
@@ -228,7 +228,7 @@ W poniższej tabeli wymieniono nazwy właściwości i ich opisów tworzenia tabe
 | Nazwa tabeli |Nazwa tabeli. Jeśli nie istnieje, zostanie utworzona tabela. |
 | Klucz partycji |Nazwa kolumny wyjściowej zawierającej klucz partycji. Klucz partycji to unikatowy identyfikator dla partycji w tabeli, który wchodzi w skład pierwszej części klucza podstawowego jednostki. Jest to wartość ciągu, która może być 1 KB rozmiaru. |
 | Klucz wiersza |Nazwa kolumny wyjściowej zawierającej klucz wiersza. Klucz wiersza to unikatowy identyfikator dla jednostki w partycji. Wchodzi w skład drugiej części klucza podstawowego jednostki. Klucz wiersza jest wartość ciągu, która może być 1 KB rozmiaru. |
-| Rozmiar partii |Liczba rekordów do operacji przetwarzania wsadowego. Wartość domyślna (100) jest wystarczające dla większości zadań. Zobacz [Specyfikacja operacji zbiorczej tabeli](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.table.tablebatchoperation.aspx) Aby uzyskać więcej informacji na temat modyfikowania tego ustawienia. |
+| Rozmiar partii |Liczba rekordów do operacji przetwarzania wsadowego. Wartość domyślna (100) jest wystarczające dla większości zadań. Zobacz [Specyfikacja operacji zbiorczej tabeli](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table._table_batch_operation) Aby uzyskać więcej informacji na temat modyfikowania tego ustawienia. |
 
 ## <a name="service-bus-queues"></a>Kolejki usługi Service Bus
 [Kolejki usługi Service Bus](https://msdn.microsoft.com/library/azure/hh367516.aspx) oferty do co najmniej jeden konkurujący odbiorcy dostarczania komunikatów FIFO. Zazwyczaj komunikaty są odbierane i przetwarzane przez odbiorców w kolejności, w jakiej zostały dodane do kolejki. Każdy komunikat jest odbierany i przetwarzany przez tylko jednego odbiorcę komunikatów.

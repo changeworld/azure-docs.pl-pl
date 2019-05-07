@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 30d18e1e23767ce3a179221714e001574f8e9778
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 6c7fcb1429438ee024cb226b63cfcdcab05ed9f8
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65075493"
+ms.locfileid: "65205800"
 ---
 # <a name="introduction-to-the-azure-cosmos-db-etcd-api-preview"></a>Wprowadzenie do usługi Azure Cosmos DB etcd interfejsu API (wersja zapoznawcza)
 
@@ -23,7 +23,7 @@ Usługa Azure Cosmos DB to usługa globalnie dystrybuowanej, wielomodelowej bazy
 Etcd interfejsu API w usłudze Azure Cosmos DB pozwala na używanie usługi Azure Cosmos DB jako magazynu zaplecza dla [Azure Kubernetes](../aks/index.yml). etcd interfejsu API w usłudze Azure Cosmos DB jest obecnie dostępna w wersji zapoznawczej. Usługa Azure Cosmos DB implementuje protokół przewodowy etcd. Za pomocą etcd interfejsu API w usłudze Azure Cosmos DB, deweloperzy automatycznie pobiorą i wysoce niezawodne [dostępne](high-availability.md), [globalnie dystrybuowane](distribute-data-globally.md) Kubernetes. Ten interfejs API umożliwia deweloperom skalowanie zarządzania stanem rozwiązania Kubernetes w usłudze PaaS natywne w pełni zarządzana usługa w chmurze. 
 
 > [!NOTE]
-> W przeciwieństwie do innych interfejsów API w usłudze Azure Cosmos DB nie można zainicjować obsługi konta interfejsu API usługi etcd za pośrednictwem witryny Azure portal, zestawów SDK lub interfejsu wiersza polecenia. Możesz aprowizować konta interfejsu API usługi etcd przez wdrożenie szablonu usługi Resource Manager. Aby uzyskać szczegółowe instrukcje, zobacz [instrukcjami aprowizacji usługi Azure Kubernetes przy użyciu usługi Azure Cosmos DB](bootstrap-kubernetes-cluster.md) artykułu.  
+> W przeciwieństwie do innych interfejsów API w usłudze Azure Cosmos DB nie można zainicjować obsługi konta interfejsu API usługi etcd za pośrednictwem witryny Azure portal, zestawów SDK lub interfejsu wiersza polecenia. Możesz aprowizować konta interfejsu API usługi etcd przez wdrożenie szablonu usługi Resource Manager. Aby uzyskać szczegółowe instrukcje, zobacz [instrukcjami aprowizacji usługi Azure Kubernetes przy użyciu usługi Azure Cosmos DB](bootstrap-kubernetes-cluster.md) artykułu. Interfejs API etcd usługi Azure Cosmos DB jest obecnie dostępna w ograniczonej wersji zapoznawczej. Możesz [skorzystania z wersji zapoznawczej](https://aka.ms/cosmosetcdapi-signup), wypełniając formularz rejestracji.
 
 ## <a name="wire-level-compatibility"></a>Poziom zgodności o komunikacji sieciowej
 

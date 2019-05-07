@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 768179f8569eac14166bcbb0a888e1cdbe41d497
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: b97fe5d638b5967f533e489a67d4235bbc5a3db1
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62128419"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65198574"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrowanie aplikacji z siecią wirtualną platformy Azure
 Ten dokument zawiera opis funkcji integracji sieci wirtualnej usługi Azure App Service i pokazuje, jak je skonfigurować za pomocą aplikacji w [usługi Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). [Sieci wirtualne platformy Azure] [ VNETOverview] (Vnet) pozwala na umieszczenie wielu zasobów platformy Azure w sieci, lecz-internet. Te sieci mogą być następnie połączone do sieci w środowisku lokalnym przy użyciu technologii sieci VPN. 
@@ -271,9 +271,9 @@ Nowa wersja jest dostępna w wersji zapoznawczej i ma następujące cechy.
 * Bez żadnych dodatkowych konfiguracji oprócz integracji z usługą ExpressRoute połączona sieć wirtualna może dostęp do zasobów połączeń usługi ExpressRoute.
 * Aplikacja i sieć wirtualna musi być w tym samym regionie
 * Nowa funkcja wymaga nieużywanej podsieci w sieci wirtualnej usługi Resource Manager.
+* Aplikacja musi być we wdrożeniu usługi Azure App Service, która jest w stanie skalowanie w górę do wersji Premium v2.
 * Plan usługi App Service musi być planu Standard, Premium lub PremiumV2
 * Obciążenia produkcyjne nie są obsługiwane w nowej funkcji, gdy znajduje się w wersji zapoznawczej
-* Aplikacja musi być we wdrożeniu usługi Azure App Service, która jest w stanie skalowanie w górę do wersji Premium v2.
 * Nowej funkcji integracji sieci wirtualnej nie działa dla aplikacji w środowisku usługi App Service.
 * Nie można usunąć sieci wirtualnej za pomocą zintegrowanych aplikacji.  
 * Tabele tras i globalnej komunikacji równorzędnej nie są jeszcze dostępne w nowej integracji sieci wirtualnej.  

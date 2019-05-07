@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 07d5aa752d6613f6733a44c9b34e48f537eb67ae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 49fe9c0921579802b726e02a074bb0a911d88231
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60889586"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65204210"
 ---
 # <a name="data-encryption-in-azure-cosmos-db"></a>Szyfrowanie danych w usłudze Azure Cosmos DB 
 
 Szyfrowanie w spoczynku jest frazę, która często odnosi się do szyfrowania danych na urządzeniach nieulotnej pamięci masowej, takich jak dyski półprzewodnikowe (SSD) i dysków twardych (HDD). Usługa cosmos DB przechowuje jego podstawowych baz danych na dyskach SSD. Jego załączniki nośników i kopii zapasowych są przechowywane w usłudze Azure Blob storage, zazwyczaj kopia zapasowa jest tworzona dysków twardych. Wraz z wydaniem szyfrowanie danych magazynowanych na potrzeby usługi Cosmos DB wszystkie bazy danych, załączniki nośników i kopii zapasowych są szyfrowane. Dane są teraz szyfrowane podczas przesyłania (za pośrednictwem sieci) i magazynowanych (składnik pamięci nieulotnej), umożliwiając end-to-end szyfrowania.
 
-Ponieważ usługa PaaS, usługa Cosmos DB jest bardzo łatwa w użyciu. Ponieważ wszystkie dane użytkownika przechowywane w usłudze Cosmos DB są szyfrowane podczas przechowywania i podczas transportu, nie trzeba podejmować żadnych działań. Należy umieścić następujące polecenia w inny sposób jest to, że szyfrowanie danych magazynowanych jest "włączone" domyślnie. Nie istnieją żadne formantów, aby go włączyć lub wyłączyć. Firma Microsoft zapewnia tę funkcję, podczas gdy my będziemy w celu spełnienia naszych [dostępność i wydajność umowy SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db).
+Ponieważ usługa PaaS, usługa Cosmos DB jest bardzo łatwa w użyciu. Ponieważ wszystkie dane użytkownika przechowywane w usłudze Cosmos DB są szyfrowane podczas przechowywania i podczas transportu, nie trzeba podejmować żadnych działań. Należy umieścić następujące polecenia w inny sposób jest to, że szyfrowanie danych magazynowanych jest "włączone" domyślnie. Nie istnieją żadne formantów, aby go włączyć lub wyłączyć. Usługa Azure Cosmos DB używa szyfrowania AES-256, na wszystkich regionów, w którym to konto jest uruchomiona. Firma Microsoft zapewnia tę funkcję, podczas gdy my będziemy w celu spełnienia naszych [dostępność i wydajność umowy SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db).
 
 ## <a name="implementation-of-encryption-at-rest-for-azure-cosmos-db"></a>Implementacja szyfrowania danych magazynowanych na potrzeby usługi Azure Cosmos DB
 

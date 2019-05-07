@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 8b9cc112f51840a6bf2cf659863f61ab5962f6e6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 72e51deb31ad2894ccfc0fc71884c99863184f5b
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60306853"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65203659"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Powiązania magazynu dla usługi Azure Functions dla kolejki platformy Azure
 
@@ -273,7 +273,7 @@ W języku JavaScript, należy użyć `context.bindings.<name>` dostępu ładunek
 
 ## <a name="trigger---message-metadata"></a>Wyzwalacz — komunikat metadanych
 
-Wyzwalacz kolejki udostępnia wiele [właściwości metadanych](./functions-bindings-expressions-patterns.md#trigger-metadata). Te właściwości może służyć jako część wyrażenia wiązania w pozostałych powiązaniach lub jako parametry w kodzie. Są to właściwości [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueuemessage) klasy.
+Wyzwalacz kolejki udostępnia wiele [właściwości metadanych](./functions-bindings-expressions-patterns.md#trigger-metadata). Te właściwości może służyć jako część wyrażenia wiązania w pozostałych powiązaniach lub jako parametry w kodzie. Są to właściwości [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) klasy.
 
 |Właściwość|Typ|Opis|
 |--------|----|-----------|
@@ -526,7 +526,7 @@ Jeśli próbujesz powiązać `CloudQueueMessage` i komunikat o błędzie, upewni
 W języku C# i skrypt języka C# należy napisać wielu komunikatów w kolejce przy użyciu jednej z następujących typów: 
 
 * `ICollector<T>` lub `IAsyncCollector<T>`
-* [CloudQueue](/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueue)
+* [CloudQueue](/dotnet/api/microsoft.azure.storage.queue.cloudqueue)
 
 W funkcji języka JavaScript za pomocą `context.bindings.<name>` dostępu do danych wyjściowych kolejki wiadomości. Ciąg lub obiekt serializacji JSON służy do ładunku elementu kolejki.
 
@@ -586,4 +586,4 @@ W tej sekcji opisano globalne ustawienia konfiguracji dostępne dla tego powiąz
 
 <!-- LINKS -->
 
-[CloudQueueMessage]: /dotnet/api/microsoft.windowsazure.storage.queue.cloudqueuemessage
+[CloudQueueMessage]: /dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage

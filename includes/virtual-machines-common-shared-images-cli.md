@@ -8,23 +8,22 @@ ms.topic: include
 ms.date: 04/30/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 7e4ca54d8f97646192d19d5923bee24a906e8df7
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
-ms.translationtype: MT
+ms.openlocfilehash: 9647cdd584b53f581f46f728ca2d08f9a113ce92
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149714"
+ms.locfileid: "65199356"
 ---
+## <a name="before-you-begin"></a>Przed rozpoczęciem
+
+Aby ukończyć przykład, w tym artykule, konieczne jest posiadanie istniejącego obrazu zarządzanego uogólnionej maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [Samouczek: Tworzenie niestandardowego obrazu maszyny wirtualnej portalu Azure za pomocą interfejsu wiersza polecenia platformy Azure w wersji 2.0](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images). Jeśli zarządzany obraz zawiera dysk z danymi, rozmiar dysku danych nie może być więcej niż 1 TB.
+
 ## <a name="launch-azure-cloud-shell"></a>Uruchamianie usługi Azure Cloud Shell
 
 Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. 
 
 Aby otworzyć usługę Cloud Shell, wybierz pozycję **Wypróbuj** w prawym górnym rogu bloku kodu. Możesz również uruchomić usługę Cloud Shell w oddzielnej karcie przeglądarki, przechodząc do strony [https://shell.azure.com/bash](https://shell.azure.com/bash). Wybierz przycisk **Kopiuj**, aby skopiować bloki kodu, wklej je do usługi Cloud Shell, a następnie naciśnij klawisz Enter, aby je uruchomić.
-
-## <a name="before-you-begin"></a>Przed rozpoczęciem
-
-Aby ukończyć przykład, w tym artykule, konieczne jest posiadanie istniejącego obrazu zarządzanego uogólnionej maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [Samouczek: Tworzenie niestandardowego obrazu maszyny wirtualnej portalu Azure za pomocą interfejsu wiersza polecenia platformy Azure w wersji 2.0](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images). 
-
 
 ## <a name="create-an-image-gallery"></a>Tworzenie galerii obrazów 
 
@@ -77,3 +76,6 @@ az sig image-version create \
 
 > [!NOTE]
 > Musisz czekać na wersję obrazu do całkowitego zakończenia są zbudowane i replikowane korzystać z tego samego obrazu zarządzanego, aby utworzyć inną wersję obrazu.
+>
+> Można również przechowywać swoje wersję obrazu w [magazyn Strefowo nadmiarowy](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) , dodając `--storage-account-type standard_zrs` po utworzeniu wersję obrazu.
+>

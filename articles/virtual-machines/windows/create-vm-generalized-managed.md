@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 9157765afaa610d207a47e19b73f80ae3898fd68
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 57fbab4194f6cd232e1462ecea9a07d104c6cb51
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977562"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205734"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>Tworzenie maszyny Wirtualnej na podstawie obrazu zarządzanego
 
 Można utworzyć wiele maszyn wirtualnych (VM) z maszyny Wirtualnej platformy Azure zarządzanego obrazu przy użyciu witryny Azure portal lub programu PowerShell. Zarządzany obraz maszyny Wirtualnej zawiera informacje niezbędne do utworzenia maszyny Wirtualnej, w tym dyski systemu operacyjnego i danych. Wirtualne dyski twarde (VHD), które tworzą obrazu, w tym dyski systemu operacyjnego i wszelkich dysków z danymi, są przechowywane jako dysków zarządzanych. 
 
-Przed utworzeniem nowej maszyny Wirtualnej, konieczne będzie [tworzenie zarządzanego obrazu maszyny Wirtualnej](capture-image-resource.md) do użycia jako obraz źródłowy. 
+Przed utworzeniem nowej maszyny Wirtualnej, konieczne będzie [tworzenie zarządzanego obrazu maszyny Wirtualnej](capture-image-resource.md) do użycia jako obraz źródłowy i przyznać dostęp do odczytu do obrazu dla każdego użytkownika, które powinny mieć dostępu do obrazu. 
 
 
 ## <a name="use-the-portal"></a>Używanie portalu
@@ -44,7 +44,7 @@ Przed utworzeniem nowej maszyny Wirtualnej, konieczne będzie [tworzenie zarząd
 
 Można użyć programu PowerShell, aby utworzyć Maszynę wirtualną z obrazu za pomocą uproszczony zestaw parametrów dla [New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) polecenia cmdlet. Obraz musi znajdować się w tej samej grupie zasobów, w których zostaną utworzone maszyny Wirtualnej.
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 Uproszczony zestaw parametrów dla [New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) tylko wymaga podania nazwy grupy zasobów i nazwy obrazu utworzyć maszynę Wirtualną z obrazu. Nowe AzVm użyje wartości **— nazwa** jako nazwy wszystkich zasobów, które automatycznie tworzy parametr. W tym przykładzie firma Microsoft zapewnia bardziej szczegółowe nazwy poszczególnych zasobów, ale pozwól polecenia cmdlet, utwórz je automatycznie. Możesz również tworzyć zasoby wcześniej, takich jak sieci wirtualnej i przekazać nazwę zasobu do polecenia cmdlet. Nowe AzVm będzie korzystać z istniejących zasobów, jeśli można je znaleźć według nazwy.
 

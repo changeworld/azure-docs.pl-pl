@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 5/7/2019
 ms.author: victorh
-ms.openlocfilehash: 0506ef82a00b46bf9be14757f15195bcbf8ab432
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: b1cdcfc9e81938f3f562046b971407b31a593525
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148900"
+ms.locfileid: "65202912"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway"></a>Skalowanie automatyczne i strefowo nadmiarowe Application Gateway 
 
@@ -22,6 +22,8 @@ Nowe jednostki SKU w wersji 2 obejmuje następujące ulepszenia:
 
 - **Skalowanie automatyczne**: Usługa Application Gateway i zapory aplikacji sieci Web wdrożenia w ramach jednostki SKU skalowania automatycznego można skalować w górę lub dół zależności od zmieniających się wzorców obciążenia ruchu. Dzięki skalowaniu automatycznemu nie trzeba również wybierać rozmiaru wdrożenia ani liczby wystąpień podczas aprowizowania usługi. Ta jednostka SKU oferuje elastyczność wartość true. Standard_v2 i jednostki SKU WAF_v2 usługa Application Gateway mogą działać zarówno w stałym pojemności (skalowanie automatyczne wyłączone), jak i w trybie z włączonym skalowaniem automatycznym. Tryb stałych pojemności jest przydatne w scenariuszach ze spójnego i przewidywalnego obciążenia. Tryb skalowania automatycznego jest korzystne w aplikacjach, które Zobacz wariancja w ruchu aplikacji.
 - **Strefa nadmiarowości**: Usługa Application Gateway lub wdrażania zapory aplikacji sieci Web może obejmować wielu strefach dostępności konieczność aprowizowanie osobnych wystąpień bramy Application Gateway w każdej strefie przy użyciu usługi Traffic Manager. Możesz wybrać jedną strefę lub wieloma strefami wdrożonym wystąpień bramy Application Gateway, co czyni ją na bardziej odporne na awarie strefy. Pula zaplecza dla aplikacji można rozpowszechniać podobnie w różnych strefach dostępności.
+
+  Nadmiarowości strefy jest dostępna tylko, której strefy platformy Azure są dostępne. W innych regionach wszystkie inne funkcje są obsługiwane. Aby uzyskać więcej informacji, zobacz [co to są strefy dostępności na platformie Azure?](../availability-zones/az-overview.md#services-support-by-region)
 - **Statyczny adres VIP**: Application gateway w wersji 2 jednostki SKU obsługuje statycznego adresu VIP wpisz wyłącznie. Daje to gwarancję, że adres VIP skojarzony z usługą application gateway nie zmienia się do zarządzania cyklem życia wdrożenia, nawet po ponownym uruchomieniu.
 - **Napisz ponownie nagłówek**: Usługa Application Gateway umożliwia dodać, usunąć lub zaktualizować nagłówki żądania i odpowiedzi HTTP z jednostką SKU v2. Aby uzyskać więcej informacji, zobacz [ponownie zapisuje nagłówki protokołu HTTP z usługą Application Gateway](rewrite-http-headers.md)
 - **Integracji magazynu kluczy (wersja zapoznawcza)**: Brama aplikacji w wersji 2 obsługuje integrację z usługą Key Vault (w publicznej wersji zapoznawczej) dla serwera certyfikatów, które są dołączone do odbiorników obsługujące protokół HTTPS. Aby uzyskać więcej informacji, zobacz [kończenia żądań SSL z certyfikatami usługi Key Vault](key-vault-certs.md).

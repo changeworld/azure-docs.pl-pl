@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/25/2018
 ms.author: victorh
-ms.openlocfilehash: 1d832e999e429dbdd3a0fc730a7ec2227a1dee7e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: e49706c529ca7d2c99f2c50f8de27063dbcd4da9
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57311342"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65202898"
 ---
 # <a name="create-an-application-gateway-with-ssl-termination-using-azure-powershell"></a>Tworzenie bramy aplikacji z terminacją SSL przy użyciu programu Azure PowerShell
 
@@ -122,7 +122,7 @@ $frontendport = New-AzApplicationGatewayFrontendPort `
 
 ### <a name="create-the-backend-pool-and-settings"></a>Tworzenie puli zaplecza i ustawień
 
-Utwórz pulę zaplecza o nazwie *appGatewayBackendPool* dla bramy aplikacji przy użyciu [New AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool). Skonfiguruj ustawienia dla puli zaplecza za pomocą [New AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsettings).
+Utwórz pulę zaplecza o nazwie *appGatewayBackendPool* dla bramy aplikacji przy użyciu [New AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool). Skonfiguruj ustawienia dla puli zaplecza za pomocą [New AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting).
 
 ```powershell
 $defaultPool = New-AzApplicationGatewayBackendAddressPool `

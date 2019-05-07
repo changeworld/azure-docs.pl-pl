@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/19
-ms.openlocfilehash: 683f916596b4c77ec1dbc2acf1f91876c0752c08
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: f9087d1fda7574043879983e31d7b608dbe58798
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65028833"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65204966"
 ---
 # <a name="explore-and-prepare-data-with-the-dataset-class-preview"></a>Eksploruj i przygotować dane za pomocą klasy zestawu danych (wersja zapoznawcza)
 
@@ -44,7 +44,7 @@ Aby eksplorować i przygotuj dane, będą potrzebne:
 Pobrać próbkę danych zawierają opis początkowego architektury danych i zawartości. W tej chwili [ `sample()` ](https://docs.microsoft.com//python/api/azureml-core/azureml.core.dataset(class)?view=azure-ml-py#sample-sample-strategy--arguments-) metody z klasy zestawu danych obsługuje górne N proste losowych i Stratified strategie.
 
 ```Python
-from azureml.core import Dataset
+from azureml.core.dataset import Dataset
 import random
 
 # create an in-memory Dataset from a local file
@@ -109,7 +109,6 @@ sample_dataset.to_pandas_dataframe()
 1|10534446|HZ277630|4/15/2016 10:00|055XX N KEDZIE AVE|890|PRZED KRADZIEŻĄ|Przyciski ...
 2|10535059|HZ278872|4/15/2016 4:30|004XX APISZ KILBOURN|810|PRZED KRADZIEŻĄ|Przyciski ...
 
-
 ## <a name="explore-with-summary-statistics"></a>Zapoznaj się ze statystykami podsumowania
 
  Wykrywaj anomalie, brakujące wartości, lub błąd liczniki z [ `get_profile()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-profile-arguments-none--generate-if-not-exist-true--workspace-none--compute-target-none-) metody. Ta funkcja pobiera profil i statystyki podsumowujące dane, co z kolei pomaga ustalić operacji przygotowania danych niezbędnych do wykonania.
@@ -152,7 +151,7 @@ Z profilu zestawu danych, wygenerowane w poprzedniej sekcji, widzimy, że `Latit
 Najpierw pobierz najnowsze definicje zestawu danych za pomocą [ `get_definition()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-definition-version-id-none-) i okrojenia danych za pomocą [ `keep_columns()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#keep-columns-columns--multicolumnselection-----azureml-dataprep-api-dataflow-dataflow), dzięki czemu możemy jedynie wyświetlać kolumn chcemy adresu.
 
 ```Python
-from azureml.core import Dataset
+from azureml.core.dataset import Dataset
 import azureml.dataprep as dprep
 
 # get the latest definition of Dataset
@@ -222,7 +221,6 @@ Jak pokazano w poniższej tabeli danych wyjściowych, brak szerokość była kal
 1|10516598|False|41.744107|-87.664494
 2|10519196|False|41.780049|-87.000000
 
-
 Aktualizowanie definicji zestawu danych, [ `update_definition()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset(class)?view=azure-ml-py#update-definition-definition--definition-update-message-) zapewnienie kroków wykonywanych transformacji.
 
 ```Python
@@ -240,12 +238,13 @@ dataset.head(3)
 
 Często dane będziemy pracować z podczas czyszczenia i przygotowywania danych jest tylko podzbiór łączna ilość danych, których potrzebujemy w środowisku produkcyjnym. W rezultacie niektóre założenia, którą udostępnimy w ramach naszych czyszczenia może stają się wartość false. Na przykład w zestawie danych, która stale aktualizuje, kolumny, która początkowo zawierała tylko cyfry, w pewnym zakresie może zawierać szerszy zakres wartości nowszego wykonania. Te błędy często skutkuje potoki uszkodzone lub nieprawidłowe dane.
 
-Zestawy danych obsługuje tworzenie potwierdzenia na dane, które są oceniane, jak potok wykonuje. Te potwierdzenia Pozwól nam zweryfikować, że nasze założeń dotyczących danych w dalszym ciągu być dokładne i, jeśli ta wartość nie, aby odpowiednio obsługiwać błędy.
+Obsługa zestawów danych, tworzenie potwierdzenia na danych, które są oceniane, jak potok wykonuje. Te potwierdzenia Pozwól nam zweryfikować, że nasze założeń dotyczących danych w dalszym ciągu być dokładne i, jeśli ta wartość nie, aby odpowiednio obsługiwać błędy.
 
 Na przykład, jeśli chcesz ograniczyć `Latitude` i `Longitude` wartości w zestawie danych do określonych zakresów liczbowych, [ `assert_value()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#assert-value-columns--multicolumnselection--expression--azureml-dataprep-api-expressions-expression--policy--azureml-dataprep-api-engineapi-typedefinitions-assertpolicy----assertpolicy-errorvalue--1---error-code--str----assertionfailed------azureml-dataprep-api-dataflow-dataflow) metoda gwarantuje zawsze jest to wymagane.
 
 ```Python
 from azureml.dataprep import value
+from azureml.core.dataset import Dataset
 
 # get the latest definition of the Dataset
 ds_def = dataset.get_definition()
@@ -282,7 +281,7 @@ print(error.originalValue)
 Jednym z bardziej zaawansowanych narzędzi dla zestawów danych jest możliwość uzyskiwania kolumn przy użyciu przykładów zakładanych wyników. Dzięki temu można podać przykład, zestawu SDK, więc może generować kod w celu osiągnięcia zamierzonego przekształcenia.
 
 ```Python
-from azureml.dataset import Dataset
+from azureml.core.dataset import Dataset
 
 # create an in-memory Dataset from a local file
 dataset = Dataset.auto_read_files('./data/crime.csv')
@@ -302,8 +301,8 @@ Poniższy kod zawiera dwa przykłady żądanego wyniku, ("2016--04 04 23:56:00",
 ```Python
 ds_def = dataset.get_definition()
 ds_def = ds_def.derive_column_by_example(
-        source_columns = "Date", 
-        new_column_name = "Date_Time_Range", 
+        source_columns = "Date",
+        new_column_name = "Date_Time_Range",
         example_data = [("2016-04-04 23:56:00", "2016-04-04 10PM-12AM"), ("2016-04-15 17:00:00", "2016-04-15 4PM-6PM")]
     )
 ds_def.keep_columns(['ID','Date','Date_Time_Range']).head(3)
@@ -329,7 +328,7 @@ Podczas zbierania danych z różnych źródeł, mogą wystąpić różnice w pis
 Na przykład kolumna `inspections.business.city` zawiera kilka postaci nazw city "San Francisco".
 
 ```Python
-from azureml.Dataset import Dataset
+from azureml.core.dataset import Dataset
 
 # create an in-memory Dataset from a local json file
 dataset = Dataset.auto_read_files('./data/city.json')

@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.openlocfilehash: babe2ac55953940370daa0731463ed6ed8988502
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 05/06/2019
 ms.locfileid: "64925923"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>Monitorowanie usługi Azure Database dla serwera MariaDB
@@ -35,8 +35,8 @@ Te metryki są dostępne dla usługi Azure Database dla serwera MariaDB:
 |serverlog_storage_usage|Używany Magazyn dzienników serwera|Bajty|Ilość miejsca w magazynie dziennika na serwerze.|
 |serverlog_storage_limit|Limit magazynu dziennika serwera|Bajty|Przechowywanie dziennika serwera maksymalną dla tego serwera.|
 |storage_limit|Limit magazynu|Bajty|Maksymalny rozmiar magazynu dla tego serwera.|
-|active_connections|Aktywne połączenia|Licznik|Liczba aktywnych połączeń z serwerem.|
-|connections_failed|Połączenia zakończone niepowodzeniem|Licznik|Liczba połączeń z serwerem nie powiodło się.|
+|active_connections|Aktywne połączenia|Count|Liczba aktywnych połączeń z serwerem.|
+|connections_failed|Połączenia zakończone niepowodzeniem|Count|Liczba połączeń z serwerem nie powiodło się.|
 |network_bytes_egress|Sieć — wyjście|Bajty|Sieć się między aktywnych połączeń.|
 |network_bytes_ingress|Sieć — wejście|Bajty|Sieć w różnych aktywnych połączeń.|
 

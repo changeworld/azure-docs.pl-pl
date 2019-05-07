@@ -1,5 +1,5 @@
 ---
-title: Rozwiązywanie problemów z powolnego działania lub awarii klastra HDInsight — usługi Azure HDInsight
+title: Rozwiązywanie problemów z zadaniem powolne lub awarie w klastrze HDInsight — usługi Azure HDInsight
 description: Diagnozowanie i rozwiązywanie problemów z klastrem HDInsight powolne lub awarie.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/19/2019
-ms.openlocfilehash: 785eac065e10c64b99839ab8667e9b613f62aeb9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 0f405f542a8408c290704f1707ca10a24b08f861
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64708919"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65203624"
 ---
-# <a name="troubleshoot-a-slow-or-failing-hdinsight-cluster"></a>Rozwiązywanie problemów dotyczących powolnego działania lub awarii klastra usługi HDInsight
+# <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>Rozwiązywanie problemów z zadaniem powolne lub awarie w klastrze HDInsight
 
-Jeśli klaster usługi HDInsight jest działa wolno lub kończy się niepowodzeniem z kodem błędu, masz kilka opcji rozwiązywania problemów. Jeśli Twoje zadania trwa dłużej niż oczekiwano lub widzisz wydłużają czas odpowiedzi ogólnie rzecz biorąc, może być błędy nadrzędne z klastra, takiej jak usługi, na których są uruchamiane w klastrze. Najczęstszą przyczyną tych spowolnień jest jednak skalowanie niewystarczające. Podczas tworzenia nowego klastra HDInsight, wybierz odpowiedni [rozmiarów maszyn wirtualnych](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters).
+Jeśli przetwarzanie aplikacji działa wolno lub kończy się niepowodzeniem z kodem błędu danych w klastrze HDInsight, masz kilka opcji rozwiązywania problemów. Jeśli Twoje zadania trwa dłużej niż oczekiwano lub widzisz wydłużają czas odpowiedzi ogólnie rzecz biorąc, może być błędy nadrzędne z klastra, takiej jak usługi, na których są uruchamiane w klastrze. Najczęstszą przyczyną tych spowolnień jest jednak skalowanie niewystarczające. Podczas tworzenia nowego klastra HDInsight, wybierz odpowiedni [rozmiarów maszyn wirtualnych](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters).
 
 Aby zdiagnozować powolnego działania lub awarii klastra, Zbierz informacje dotyczące wszystkich aspektów środowiska, takie jak powiązane usługi platformy Azure, konfiguracji klastra i informacje o wykonaniu zadania. Diagnostyka pomocne jest spróbuj odtworzyć stan błędu w innym klastrze.
 

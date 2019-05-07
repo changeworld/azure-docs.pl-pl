@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: kumud
-ms.openlocfilehash: 6b1d62f4cedb7add843a5ddae24125019130d58f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a053beb121e1b3c0db020094c29a9a1e0117da87
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64728346"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65203525"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Zarządzanie Standard platformy Azure przed atakami DDoS Protection w witrynie Azure portal
 
@@ -33,7 +33,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="create-a-ddos-protection-plan"></a>Tworzenie planu ochrony przed atakami DDoS
 
-Plan ochrony przed atakami DDoS definiuje zbiór sieci wirtualnych, które mają włączone w subskrypcjach standardu ochrony przed atakami DDoS. Można skonfigurować jeden plan ochrony przed atakami DDoS w organizacji, a łącze sieci wirtualne z wieloma subskrypcjami ten sam plan. Samego planu ochrony przed atakami DDoS jest również skojarzony z subskrypcją, który wybierzesz podczas tworzenia planu. Subskrypcja planu jest skojarzona z ponosi miesięczny rachunek cyklicznych dla planu, a także naliczeniem dodatkowych opłat w przypadku, gdy liczba chronionych publicznych adresów IP przekracza 100. Aby uzyskać więcej informacji na temat cen przed atakami DDoS, zobacz [cennik](https://azure.microsoft.com/pricing/details/ddos-protection/).
+Plan ochrony przed atakami DDoS definiuje zbiór sieci wirtualnych, które mają włączone w subskrypcjach standardu ochrony przed atakami DDoS. Można skonfigurować jeden plan ochrony przed atakami DDoS w organizacji, a łącze sieci wirtualne z wieloma subskrypcjami ten sam plan. Samego planu ochrony przed atakami DDoS jest również skojarzony z subskrypcją, który wybierzesz podczas tworzenia planu. Planem usługi DDoS Protection działa w różnych regionach i subskrypcji. Przykład — możesz utworzyć plan w regionie East-US i link do subskrypcji #1 w dzierżawie. Ten sam plan, może być połączony z siecią wirtualną z innych subskrypcji w różnych regionach, w dzierżawie. Subskrypcja planu jest skojarzona z ponosi miesięczny rachunek cyklicznych dla planu, a także naliczeniem dodatkowych opłat w przypadku, gdy liczba chronionych publicznych adresów IP przekracza 100. Aby uzyskać więcej informacji na temat cen przed atakami DDoS, zobacz [cennik](https://azure.microsoft.com/pricing/details/ddos-protection/).
 
 Tworzenie więcej niż jeden plan nie jest wymagana w przypadku większości organizacji. Plan nie można przenosić między subskrypcjami. Jeśli chcesz zmienić subskrypcję planu jest konieczne [Usuń istniejący plan](#work-with-ddos-protection-plans) i Utwórz nowe.
 
@@ -127,6 +127,7 @@ Usługi Azure Monitor udostępnia dane telemetryczne dotyczące ataku w czasie r
 4. Wybierz **subskrypcji** i **grupy zasobów** zawierające publiczny adres IP, który chcesz, aby dane telemetryczne dotyczące.
 5. Wybierz **publiczny adres IP** dla **typ zasobu**, następnie wybierz określony publiczny adres IP ma dane telemetryczne dotyczące.
 6. Szereg **dostępne metryki** pojawiają się po lewej stronie ekranu. Te metryki, po wybraniu wykresie przedstawia możliwościom w **wykres metryk usługi Azure Monitor** na ekran Przegląd.
+7. Wybierz **agregacji** wpisać jako **maksymalna**
 
 Nazwy metryk pokażesz różnych typów pakietów i bajtów i pakietów, podstawowe konstrukcji nazw tagów na wszystkie metryki w następujący sposób:
 
@@ -138,7 +139,7 @@ Aby zasymulować ataków DDoS, aby sprawdzić poprawność danych telemetrycznyc
 
 ## <a name="view-ddos-mitigation-policies"></a>Wyświetl zasady ograniczania ryzyka ataków DDoS
 
-Standard ochrony przed atakami DDoS zasadom trzy automatycznie dopasowane środki zaradcze (TCP SYN, TCP i UDP) za każdy publiczny adres IP z chronionych zasobów, w sieci wirtualnej, która została włączona przed atakami DDoS. Progi zasad można wyświetlić, wybierając **pakiety przychodzące TCP do wyzwolenia ataki DDOS** i **pakietów UDP dla ruchu przychodzącego, aby wyzwolić ataki DDOS** metryki, jak pokazano na poniższej ilustracji:
+Standard ochrony przed atakami DDoS zasadom trzy automatycznie dopasowane środki zaradcze (TCP SYN, TCP i UDP) za każdy publiczny adres IP z chronionych zasobów, w sieci wirtualnej, która została włączona przed atakami DDoS. Progi zasad można wyświetlić, wybierając **pakiety przychodzące TCP do wyzwolenia ataki DDOS** i **pakietów UDP dla ruchu przychodzącego, aby wyzwolić ataki DDOS** metryki za pomocą polecenia **agregacji** wpisać "Max", jak pokazano na poniższej ilustracji:
 
 ![Wyświetl zasady ograniczania ryzyka](./media/manage-ddos-protection/view-mitigation-policies.png)
 

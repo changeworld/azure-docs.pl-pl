@@ -5,23 +5,23 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2019
+ms.date: 06/06/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: ormaoz
 ms.custom: ''
-ms.openlocfilehash: 688bcc02b14d101008afc76662fd6548446cb329
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: a7a020284f44eda0da62f307866c74b0a8df493d
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64870285"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205696"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>Instalowanie i konfigurowanie usługi AWS kosztów i użycia integracji raportu
 
 Dzięki integracji raportu Amazon Web Services kosztów i użycia można monitorować i kontrolować AWS wydatki w usłudze Azure Cost Management. Integracja umożliwia jednej lokalizacji w witrynie Azure portal, gdzie można monitorować i kontroli wydatki na usługi AWS i Azure. W tym artykule opisano sposób konfigurowania integracji i skonfiguruj ją tak, przy użyciu funkcji Cost Management analizując koszty i przejrzyj budżetów.
 
-Usługa Cost Management odczytuje raportu AWS kosztów i użycia, przechowywane w przedział S3 przy użyciu poświadczeń dostępu AWS, aby uzyskać definicje raportów i Pobierz raport, który pliki GZIP CSV.
+Koszt procesów zarządzania raportu AWS kosztów i użycia, przechowywane w przedział S3 przy użyciu poświadczeń dostępu AWS, aby uzyskać definicje raportów i Pobierz raport, który pliki GZIP CSV.
 
 ## <a name="create-a-cost-and-usage-report-in-aws"></a>Tworzenie raportu kosztów i użycia w usłudze AWS
 
@@ -45,13 +45,15 @@ Użyj **raporty** strony do rozliczeń i zarządzania kosztami konsoli w usłudz
 14. Po przejrzeniu ustawienia dla raportu, kliknij przycisk **Przejrzyj i Zakończ**.
     Uwaga **Nazwa raportu**. Zostanie użyty w kolejnych krokach.
 
-Może upłynąć do 24 godzin usługi AWS rozpocząć dostarczanie raportów do zasobnika usługi Amazon S3. Po rozpoczęciu dostarczania usług AWS aktualizuje pliki raportu usługi AWS kosztów i użycia co najmniej raz dziennie.
+Może upłynąć do 24 godzin usługi AWS rozpocząć dostarczanie raportów do zasobnika usługi Amazon S3. Po rozpoczęciu dostarczania usług AWS aktualizuje pliki raportu usługi AWS kosztów i użycia co najmniej raz dziennie. Możesz kontynuować konfigurowanie środowiska usługi AWS bez oczekiwania na dostarczanie rozpocząć.
 
 ## <a name="create-a-role-and-policy-in-aws"></a>Tworzenie ról i zasad w usłudze AWS
 
 Usługa Azure Cost Management uzyskuje dostęp do przedział S3, w którym raport kosztów i użycia znajduje się kilka razy dziennie. Usługa Cost Management wymaga dostępu do poświadczeń w celu wyszukiwania nowych danych. Rola i zasady są tworzone w usłudze AWS, aby zezwolić na dostęp przez usługę Cost Management.
 
 Aby włączyć opartej na rolach dostęp do konta usługi AWS w usłudze Azure Cost Management, rola zostanie utworzona w konsoli usług AWS. Musisz mieć _ARN roli_ i _Identyfikatora zewnętrznego_ za pomocą konsoli usług AWS. Później będziesz ich używać w tworzenie strony łącznika usługi AWS w usłudze Azure Cost Management.
+
+Użyj nowego kreatora roli tworzenia:
 
 1. Zaloguj się do konsoli usług AWS i wybierz **usług**.
 2. Na liście usług wybierz **IAM**.
@@ -64,30 +66,42 @@ Aby włączyć opartej na rolach dostęp do konta usługi AWS w usłudze Azure C
 8. Kliknij pozycję **Next: Permissions** (Dalej: uprawnienia).
 9. Kliknij przycisk **Tworzenie zasad**. Nowa karta przeglądarki zostanie otwarty, gdzie możesz utworzyć nowe zasady.
 10. Kliknij przycisk **wybierz usługę**.
-11. Typ **kosztów i raport użycia**.
-12. Wybierz **poziom dostępu**, **odczytu** > **DescribeReportDefinitions**. Dzięki temu Cost Management przeczytaj, co WALUTA raporty są definiowane i określić, jeśli spełniają warunek wstępny definicji raportu.
-13. Kliknij przycisk **Dodaj dodatkowe uprawnienia**.
-14. Kliknij przycisk **wybierz usługę**.
-15. Typ _S3_.
-16. Wybierz **poziom dostępu**, **listy** > **ListBucket**. Ta akcja pobiera listę obiektów w przedział S3.
-17. Wybierz **poziom dostępu**, **odczytu** > **GetObject**. Ta akcja umożliwia rozliczeń pobierania plików.
-18. Wybierz **zasobów**.
-19. Wybierz **zasobnika — Dodaj ARN**.
-20. W **Nazwa zasobnika**, wprowadź przedział używane do przechowywania plików WALUTA.
-21. Wybierz **obiekt — Dodaj ARN**.
-22. W **Nazwa zasobnika**, wprowadź przedział używane do przechowywania plików WALUTA.
-23. W **nazwa obiektu**, wybierz opcję **wszelkie**.
-24. Kliknij przycisk **Dodaj dodatkowe uprawnienia**.
-25. Kliknij przycisk **wybierz usługę**.
-26. Typ _koszt Explorer z_.
-27. Wybierz **akcji w przypadku wszystkich koszt Eksploratora usługi (ce:\*)**. Ta akcja sprawdza, czy kolekcja jest poprawna.
-28. Kliknij przycisk **Dodaj dodatkowe uprawnienia**.
-29. Typ **organizacje**.
-30. Wybierz **poziom dostępu, na liście** > **wyświetlanie kont**. Ta akcja pobiera nazwy kont.
-31. W **zasady przeglądu**, wprowadź nazwę nowych zasad. Zaznacz, aby upewnić się, czy wprowadzono poprawne informacje, a następnie kliknij przycisk **Utwórz zasady**.
-32. Wróć do poprzedniej karty, a następnie odśwież stronę sieci web w przeglądarce. W pasku wyszukiwania Wyszukaj nowe zasady.
-33. Wybierz **dalej: Przejrzyj**.
-34. Wprowadź nazwę dla nowej roli. Zaznacz, aby upewnić się, czy wprowadzono poprawne informacje, a następnie kliknij przycisk **Utwórz rolę**.
+
+Skonfiguruj uprawnienia kosztów i użycia raportu:
+
+1. Typ **kosztów i raport użycia**.
+2. Wybierz **poziom dostępu**, **odczytu** > **DescribeReportDefinitions**. Dzięki temu Cost Management przeczytaj, co WALUTA raporty są definiowane i określić, jeśli spełniają warunek wstępny definicji raportu.
+3. Kliknij przycisk **Dodaj dodatkowe uprawnienia**.
+
+Konfigurowanie uprawnień obiektów i przedział S3:
+
+1. Kliknij przycisk **wybierz usługę**.
+2. Typ _S3_.
+3. Wybierz **poziom dostępu**, **listy** > **ListBucket**. Ta akcja pobiera listę obiektów w przedział S3.
+4. Wybierz **poziom dostępu**, **odczytu** > **GetObject**. Ta akcja umożliwia rozliczeń pobierania plików.
+5. Wybierz **zasobów**.
+6. Wybierz **zasobnika — Dodaj ARN**.
+7. W **Nazwa zasobnika**, wprowadź przedział używane do przechowywania plików WALUTA.
+8. Wybierz **obiekt — Dodaj ARN**.
+9. W **Nazwa zasobnika**, wprowadź przedział używane do przechowywania plików WALUTA.
+10. W **nazwa obiektu**, wybierz opcję **wszelkie**.
+11. Kliknij przycisk **Dodaj dodatkowe uprawnienia**.
+
+Skonfiguruj uprawnienia Explorer kosztów:
+
+1. Kliknij przycisk **wybierz usługę**.
+2. Typ _koszt Explorer z_.
+3. Wybierz **akcji w przypadku wszystkich koszt Eksploratora usługi (ce:\*)**. Ta akcja sprawdza, czy kolekcja jest poprawna.
+4. Kliknij przycisk **Dodaj dodatkowe uprawnienia**.
+
+Dodaj uprawnienie organizacji:
+
+1. Typ **organizacje**.
+2. Wybierz **poziom dostępu, na liście** > **wyświetlanie kont**. Ta akcja pobiera nazwy kont.
+3. W **zasady przeglądu**, wprowadź nazwę nowych zasad. Zaznacz, aby upewnić się, czy wprowadzono poprawne informacje, a następnie kliknij przycisk **Utwórz zasady**.
+4. Wróć do poprzedniej karty, a następnie odśwież stronę sieci web w przeglądarce. W pasku wyszukiwania Wyszukaj nowe zasady.
+5. Wybierz **dalej: Przejrzyj**.
+6. Wprowadź nazwę dla nowej roli. Zaznacz, aby upewnić się, czy wprowadzono poprawne informacje, a następnie kliknij przycisk **Utwórz rolę**.
     Uwaga **ARN roli** i **Identyfikatora zewnętrznego** używane w poprzednich krokach, podczas tworzenia roli. Użyjesz ich później podczas konfigurowania łącznika usługi Azure Cost Management.
 
 Zasady JSON powinien wyglądać następująco. Zastąp _bucketname_ nazwą Twojego przedział S3.

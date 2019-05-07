@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: 25c71019227c52bf0c1530dcdf655fc7575d8032
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: bf36de1965a8c819af0ef5af98a2393d4cefa1b3
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148518"
+ms.locfileid: "65205717"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Sieć wirtualna platformy Azure — często zadawane pytania (FAQ)
 
@@ -67,7 +67,7 @@ Tak. Aby uzyskać więcej informacji na temat zakresy publicznych adresów IP, z
 Tak. Zobacz [limitów platformy Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) Aby uzyskać szczegółowe informacje. Przestrzeni adresowej podsieci nie może nakładać się na siebie nawzajem.
 
 ### <a name="are-there-any-restrictions-on-using-ip-addresses-within-these-subnets"></a>Czy istnieją jakiekolwiek ograniczenia dotyczące używania adresów IP w ramach tych podsieci?
-Tak. Platforma Azure rezerwuje pewnych adresów IP w każdej podsieci. Pierwsze i ostatnie adresy IP każdej podsieci są zarezerwowane dla zgodności protokołów, a adresy x.x.x.1 x.x.x.3 każdej podsieci, które są używane dla usług platformy Azure.
+Tak. Platforma Azure rezerwuje 5 adresów IP dla każdej podsieci. Pierwsze i ostatnie adresy IP każdej podsieci są zarezerwowane dla zgodności protokołów, a adresy x.x.x.1 x.x.x.3 każdej podsieci, które są używane dla usług platformy Azure.
 
 ### <a name="how-small-and-how-large-can-vnets-and-subnets-be"></a>Jak małe i jak duży może być sieci wirtualnych i podsieci?
 Najmniejsza obsługiwana podsieci jest rozmiarze/29, a największa /8 (przy użyciu definicje podsieci CIDR).
@@ -231,7 +231,7 @@ Tak. Dowiedz się więcej o korzystaniu z:
 Komunikacji równorzędnej sieci wirtualnej (lub komunikacji równorzędnej sieci wirtualnych) umożliwia łączenie sieci wirtualnych. Połączenia komunikacji równorzędnej sieci wirtualnej między sieciami wirtualnymi umożliwia kierowanie ruchu między nimi prywatnie przy użyciu adresów IPv4. Tak, jakby leżą one w tej samej sieci maszyn wirtualnych w wirtualnych sieciach równorzędnych mogą komunikować się ze sobą. Te sieci wirtualne można w tym samym regionie lub w różnych regionach (znany także jako globalnych wirtualnych sieci równorzędnych). Można również tworzyć połączenia komunikacji równorzędnej sieci wirtualnej między subskrypcjami platformy Azure.
 
 ### <a name="can-i-create-a-peering-connection-to-a-vnet-in-a-different-region"></a>W innym regionie można utworzyć połączenie komunikacji równorzędnej z siecią wirtualną?
-Tak. Globalne wirtualne sieci równorzędne pozwala nawiązać komunikację równorzędną między sieciami wirtualnymi w różnych regionach. Globalne wirtualne sieci równorzędne jest dostępna we wszystkich publicznych regionach platformy Azure i regionów chmury w Chinach. Nie można globalnie komunikacji równorzędnej z publicznych regionach platformy Azure w regionach chmury krajowe. Globalnej komunikacji równorzędnej nie ma obecnie w chmurze dla instytucji rządowych.
+Tak. Globalne wirtualne sieci równorzędne pozwala nawiązać komunikację równorzędną między sieciami wirtualnymi w różnych regionach. Globalne wirtualne sieci równorzędne jest dostępna we wszystkich publicznych regionach platformy Azure, regionów chmury w Chinach i regionów chmury dla instytucji rządowych. Nie można globalnie komunikacji równorzędnej z publicznych regionach platformy Azure w regionach chmury krajowe.
 
 ### <a name="what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers"></a>Jakie są ograniczenia związane z globalnych wirtualnych sieci równorzędnych i moduły równoważenia obciążenia?
 Jeśli dwie sieci wirtualne znajdują się w innym regionie (globalnych wirtualnych sieci równorzędnych), nie można połączyć się z zasobami, które używają podstawowego modułu równoważenia obciążenia. Możesz połączyć do zasobów, które używają standardowego modułu równoważenia obciążenia.
@@ -241,7 +241,6 @@ Podstawowe usługi równoważenia obciążenia, co oznacza, że nie może komuni
 - Pamięć podręczna Redis 
 - Usługa Application Gateway (wersja 1) jednostek SKU
 - Service Fabric
-- Zawsze włączone programu SQL Server
 - SQL MI
 - API Managemenet
 - Active Directory Domain Service (ADDS)

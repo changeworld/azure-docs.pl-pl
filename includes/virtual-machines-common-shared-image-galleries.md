@@ -5,22 +5,21 @@ services: virtual-machines
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/25/2019
+ms.date: 05/06/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: fd1dd1f8af8fee9b1fecb05405381dba879facde
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 0fe1de9bb674c66d1b665de25ee579bc86e42c75
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149803"
+ms.locfileid: "65192387"
 ---
 Galeria obrazów udostępnionych to usługa, która pomaga w tworzeniu struktury i organizacji wokół niestandardowych obrazów maszyn wirtualnych zarządzanych. Podaj udostępnionego galerie obrazów:
 
 - Zarządzane globalnej replikacji obrazów.
 - Przechowywanie wersji i grupowania obrazów w celu ułatwienia zarządzania.
-- Nowszy ograniczonym zakresie. Obrazy niestandardowe Zezwalaj na 600 współbieżnych w przypadku maszyn wirtualnych, gdy galerie obrazów współdzielona umożliwiają 1000 równoczesnych maszyn wirtualnych.
-- Obrazy o wysokiej dostępności przy użyciu magazyn Strefowo nadmiarowy. Nawet wtedy, gdy centrum danych ulegnie awarii, będziesz mieć dostęp do obrazów, w tym regionie.
+- Obrazy usługi wysokiej dostępności przy użyciu kont magazyn Strefowo nadmiarowy (ZRS) w regionach, które obsługują strefy dostępności. Magazyn ZRS zapewnia lepszą odporność na awarie strefowych.
 - Udostępnianie w subskrypcjach, a nawet między dzierżawami, korzystając z modelu RBAC.
 
 Przy użyciu galerii obrazów współdzielona możesz udostępnić swoje obrazy do różnych użytkowników, nazw głównych usług lub grup usługi Active Directory w Twojej organizacji. Udostępnianych obrazów mogą być replikowane w wielu regionach, szybsze skalowanie wdrożeń.
@@ -92,12 +91,10 @@ W poniższej tabeli wymieniono regionów źródłowych. We wszystkich regionach 
 
 ## <a name="limits"></a>Limits 
 
-Przy użyciu obrazów z zarządzanych może mieć tylko 600 współbieżnych maszyn wirtualnych na obrazu, galerie obrazów udostępnione, to zostaje zwiększona do 1000 równoczesnych maszyn wirtualnych na wersję obrazu.
-
 Istnieją limity subskrypcji, przez wdrażanie zasobów przy użyciu współdzielonego, galerie obrazów:
-- 10 galerie udostępnionego obrazu na subskrypcję na region
-- 200 definicje obrazu, na subskrypcję na region
-- wersje obrazów 2000, na subskrypcję na region
+- 100 galerie udostępnionego obrazu na subskrypcję na region
+- 1000 obrazów definicje na subskrypcję na region
+- 10 000 wersje obrazów na subskrypcję na region
 
 Aby uzyskać więcej informacji, zobacz [Sprawdź użycie zasobów limitów](https://docs.microsoft.com/azure/networking/check-usage-against-limits) przykładów na temat sprawdzić bieżące użycie.
  

@@ -14,23 +14,25 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: rkarlin
-ms.openlocfilehash: 2573ad64830247d232bbd6d156fac7f50d65f410
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: a5deee4209001d8c2212033c2d547d7c4199bd25
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925088"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65192618"
 ---
 # <a name="custom-alert-rules-in-azure-security-center-preview"></a>Niestandardowe reguły alertów w usłudze Azure Security Center (wersja zapoznawcza)
 Ten dokument zawiera informacje pomocne podczas konfigurowania niestandardowych reguł alertów w usłudze Azure Security Center.
 
 > [!NOTE]
-> Niestandardowe alerty zostaną wkrótce wycofane Przeczytaj więcej na alternatywne usługach poniżej.
+> Niestandardowe alerty zostanie wycofana 30 czerwca 2019 r.
 
 ## <a name="retirement-of-custom-alert-rules-in-azure-security-center"></a>Wycofanie alertu na niestandardowe reguły w usłudze Azure Security Center
 
 Środowisko niestandardowe alerty zostanie wycofana 30 czerwca 2019 r ze względu na wycofanie podstawowej infrastruktury, opiera się na. W przedziale czasu, aż do zakończenia obsługi użytkownicy będą mogli edytować istniejące niestandardowych reguł alertów, ale nie będzie można dodawać nowe.
-Użytkownicy doradza się włączanie [Azure przez wartownika](https://azure.microsoft.com/services/azure-sentinel/) alerty dzienników, uruchamiane jednym kliknięciem dołączania automatycznie migrować istniejące alerty i tworzenie nowych lub też ponownie utworzyć alerty z usługą Azure Monitor.
+Użytkownicy zalecana jest albo:
+- Włącz [Azure przez wartownika](https://azure.microsoft.com/services/azure-sentinel/) dołączanie jednym kliknięciem do automatycznie migrować istniejące alerty i tworzenie nowych
+- Ponownie Utwórz alerty za pomocą alertów dzienników usługi Azure Monitor
                                      
 Aby zachować istniejące alerty i przeprowadzić ich migrację do platformy Azure przez wartownika, [uruchamianie platformy Azure przez wartownika](https://portal.azure.com/#create/Microsoft.ASI/preview). Jako pierwszy krok wybierz obszar roboczy, w którym przechowywane są Twoje niestandardowe alerty, a następnie wybierz element menu "Analytics", aby automatycznie migrować alerty.
 

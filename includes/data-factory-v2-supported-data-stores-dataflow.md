@@ -2,14 +2,14 @@
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 04/25/2019
+ms.date: 05/06/2019
 ms.author: jingwang
-ms.openlocfilehash: 9f9dc0bac4347a64feb4c50fd8f123c1debe3981
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 7b54b6b369e15ca0a712efefec5c7817e88d9065
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64866454"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65199342"
 ---
 | Category | Magazyn danych | Obsługiwany jako źródło | Obsługiwany jako ujście | Obsługiwane przez środowisko [Azure IR](../articles/data-factory/concepts-integration-runtime.md#azure-integration-runtime) | Obsługiwane przez [własne środowisko IR](../articles/data-factory/concepts-integration-runtime.md#self-hosted-integration-runtime) | Obsługiwane przez [przepływu danych](../articles/data-factory/concepts-data-flow-overview.md)
 |:--- |:--- |:--- |:--- |:--- |:--- |
@@ -77,7 +77,7 @@ ms.locfileid: "64866454"
 | &nbsp; |[Jira (wersja zapoznawcza)](../articles/data-factory/connector-jira.md) |✓ | |✓ |✓  ||
 | &nbsp; |[Magento (wersja zapoznawcza)](../articles/data-factory/connector-magento.md) |✓ | |✓ |✓  ||
 | &nbsp; |[Marketo (wersja zapoznawcza)](../articles/data-factory/connector-marketo.md) |✓ | |✓ |✓  ||
-| &nbsp; |[Usługi Office 365 (wersja zapoznawcza)](../articles/data-factory/connector-office-365.md) |✓ | |✓ |✓  ||
+| &nbsp; |[Office 365](../articles/data-factory/connector-office-365.md) |✓ | |✓ |✓  ||
 | &nbsp; |[Oracle Eloqua (wersja zapoznawcza)](../articles/data-factory/connector-oracle-eloqua.md) |✓ | |✓ |✓  ||
 | &nbsp; |[Oracle Responsys (wersja zapoznawcza)](../articles/data-factory/connector-oracle-responsys.md) |✓ | |✓ |✓  ||
 | &nbsp; |[Usługa w chmurze firmy Oracle (wersja zapoznawcza)](../articles/data-factory/connector-oracle-service-cloud.md) |✓ | |✓ |✓  ||

@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 3e113639dbe4220b943d49dc610ee22b6416e12a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b561091eedb43e1c77f3c97951beeb92bfcf4751
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60832887"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65202927"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Kup i skonfiguruj certyfikat SSL dla usługi Azure App Service
 
 W tym samouczku dowiesz się, jak zabezpieczyć swoje [aplikację usługi app Service](https://docs.microsoft.com/azure/app-service/) lub [aplikacji funkcji](https://docs.microsoft.com/azure/azure-functions/) , tworząc (zakup) certyfikatu usługi App Service w [usługi Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) , a następnie wiążą się Aplikacja usługi App Service.
 
 > [!TIP]
-> Certyfikaty usługi App Service może służyć do dowolnej platformy Azure lub usługi platformy Azure i nie jest ograniczona do usług aplikacji. Aby to zrobić, należy utworzyć lokalną kopię PFX certyfikatu usługi App Service, w której można go wszędzie tam, gdzie chcesz. Aby uzyskać więcej informacji, zobacz [tworzenia lokalną kopię PFX certyfikatu usługi App Service](https://blogs.msdn.microsoft.com/appserviceteam/2017/02/24/creating-a-local-pfx-copy-of-app-service-certificate/).
+> Certyfikaty usługi App Service może służyć do dowolnej platformy Azure lub usługi platformy Azure i nie jest ograniczona do usług aplikacji. Aby to zrobić, należy utworzyć lokalną kopię PFX certyfikatu usługi App Service, w której można go wszędzie tam, gdzie chcesz. Aby uzyskać więcej informacji, zobacz [tworzenia lokalną kopię PFX certyfikatu usługi App Service](https://blogs.msdn.microsoft.com/benjaminperkins/2017/04/12/export-an-azure-app-service-certificate-pfx-powershell/).
 >
 
 ## <a name="prerequisites"></a>Wymagania wstępne

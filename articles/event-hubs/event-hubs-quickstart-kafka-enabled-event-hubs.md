@@ -1,5 +1,5 @@
 ---
-title: Przesyłanie strumieniowe do centrum zdarzeń z obsługą platformy Kafka — Azure Event Hubs | Microsoft Docs
+title: Danych przesyłanych strumieniowo z usługi Azure Event Hubs przy użyciu protokołu Kafka | Dokumentacja firmy Microsoft
 description: Ten artykuł zawiera informacje na temat przesyłania strumieniowego danych do usługi Azure Event Hubs przy użyciu protokołu Kafka i interfejsów API.
 services: event-hubs
 author: basilhariri
@@ -7,15 +7,15 @@ ms.author: bahariri
 ms.service: event-hubs
 ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 12/06/2018
-ms.openlocfilehash: 4fec60cdf3fcf24378567ea97dd7922c805cde18
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/06/2019
+ms.openlocfilehash: a4e050fdef20cdc62ee92e6383c455ffcb9abc90
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60821616"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65203921"
 ---
-# <a name="stream-into-event-hubs-for-the-apache-kafka"></a>Przesyłanie strumieniowe do usługi Event Hubs dla platformy Apache Kafka
+# <a name="data-streaming-with-event-hubs-using-the-kafka-protocol"></a>Danych przesyłanych strumieniowo z usługi Event Hubs przy użyciu protokołu platformy Kafka
 W tym przewodniku Szybki start przedstawiono sposób przesyłania strumieniowego usługi Event Hubs z obsługą platformy Kafka bez konieczności zmiany klientów protokołu lub uruchamiania własnych klastrów. Dowiesz się, jak producenci i użytkownicy mogą komunikować się z usługą Event Hubs z obsługą platformy Kafka tylko dzięki zmianie konfiguracji aplikacji. Usługa Azure Event Hubs obsługuje [platformę Apache Kafka w wersji 1.0.](https://kafka.apache.org/10/documentation.html)
 
 > [!NOTE]

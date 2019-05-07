@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/24/2019
-ms.openlocfilehash: a887d6c69b9fa80f3144434e72a097e80d123a1b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 5b8ed75863087e077d483c792ac4134a0c3e1eb0
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722301"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65203636"
 ---
 # <a name="os-patching-for-hdinsight"></a>Stosowanie poprawek dla HDInsight systemu operacyjnego 
 
@@ -23,29 +23,25 @@ ms.locfileid: "64722301"
 Maszyny wirtualne w klastrze usługi HDInsight, należy wykonać ponowny rozruch od czasu do czasu, dzięki czemu można zainstalować poprawki zabezpieczeń ważne. 
 
 Za pomocą akcji skryptu, opisane w tym artykule, można zmodyfikować systemu operacyjnego, harmonogram stosowania poprawek w następujący sposób:
-1. Włączanie lub wyłączanie automatycznego ponownego uruchamiania
-2. Ustaw częstotliwość (w dniach między ponownymi uruchomieniami) wykonuje ponowny rozruch
-3. Ustawiony dzień tygodnia, gdy odbywa się ponowne uruchomienie komputera
+1. Zainstalować pełne aktualizacje systemu operacyjnego lub aktualizacji zabezpieczeń
+2. Uruchom ponownie maszynę Wirtualną
 
 > [!NOTE]  
-> Ta akcja skryptu będzie działać tylko z klastrami HDInsight opartych na systemie Linux, utworzonych po 1 sierpnia 2016 r. Poprawki będą obowiązywać tylko wtedy, gdy wykonywany jest ponowny rozruch maszyn wirtualnych. 
+> Ta akcja skryptu będzie działać tylko z klastrami HDInsight opartych na systemie Linux, utworzonych po 1 sierpnia 2016 r. Poprawki będą obowiązywać tylko wtedy, gdy wykonywany jest ponowny rozruch maszyn wirtualnych. Ten skrypt nie będą automatycznie stosowane aktualizacje dla wszystkich cykli przyszłej aktualizacji. Uruchom skrypt, który każdego czasu nowe aktualizacje, które należy zastosować w celu zainstalowania aktualizacji, a następnie uruchom ponownie maszynę Wirtualną.
 
 ## <a name="how-to-use-the-script"></a>Jak użyć skryptu 
 
 Gdy za pomocą ten skrypt wymaga następujących informacji:
-1. Lokalizacja skryptu: https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv01/os-patching-reboot-config.sh.  HDInsight używa tego identyfikatora URI do znajdowania i uruchamiania skryptu na wszystkich maszynach wirtualnych w klastrze.
+1. Lokalizacja skryptu: https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/os-patching-reboot-config.sh.  HDInsight używa tego identyfikatora URI do znajdowania i uruchamiania skryptu na wszystkich maszynach wirtualnych w klastrze.
   
-2. Typy węzłów klastra, które skryptu są stosowane do: węzeł główny, workernode, zookeeper. Ten skrypt należy zastosować do wszystkich typów węzłów w klastrze. Jeśli nie ma zastosowania do typu węzła, maszyn wirtualnych, dla tego typu węzła będą nadal używać poprzedniej harmonogram stosowania poprawek.
+2. Typy węzłów klastra, które skryptu są stosowane do: węzeł główny, workernode, zookeeper. Ten skrypt należy zastosować do wszystkich typów węzłów w klastrze. Jeśli nie ma zastosowania do typu węzła, maszyny wirtualne, dla tego typu węzła nie można zaktualizować.
 
 
-3.  Parametr: Ten skrypt akceptuje trzech parametrów liczbowych:
+3.  Parametr: Ten skrypt akceptuje jednego parametru liczbowego:
 
     | Parametr | Definicja |
     | --- | --- |
-    | Włączanie/wyłączanie automatycznego ponownego uruchamiania |0 lub 1. Wartość 0 powoduje wyłączenie automatycznego ponownego uruchamiania, a 1 umożliwia automatycznego ponownego uruchamiania. |
-    | Częstotliwość |7 – 90 (włącznie). Liczba dni oczekiwania przed ponownym rozruchem maszyny wirtualne pod kątem poprawek, które wymagają ponownego uruchomienia. |
-    | Dzień tygodnia |1 do 7 (włącznie). Wartość 1 oznacza ponowne uruchomienie powinno nastąpić w poniedziałek i 7 wskazuje Sunday.For przykład za pomocą parametrów od 2 do 60 1 powoduje automatyczne ponowne uruchomienie co 60 dni (maksymalnie) na wtorek. |
-    | Trwałość |Podczas stosowania akcji skryptu do istniejącego klastra, możesz oznaczyć skrypt jako utrwalone. Utrwalonych skryptów są stosowane, gdy nowy workernodes zostaną dodane do klastra za pośrednictwem operacji skalowania. |
+    | Instalacji pełnej wersji systemu operacyjnego/instalacja aktualizacji tylko aktualizacje zabezpieczeń |0 lub 1. Wartość 0 instaluje aktualizacje zabezpieczeń, tylko wtedy, gdy 1 instaluje aktualizacje pełnego systemu operacyjnego. Jeśli parametr nie zostanie podany, wartość domyślna to 0. |
 
 > [!NOTE]  
 > Ten skrypt należy oznaczyć jako utrwalone po zastosowaniu wbudowanej w istniejącym klastrze. W przeciwnym razie wszelkie nowe węzły utworzone za pośrednictwem operacji skalowania użyje domyślnej harmonogram stosowania poprawek.  Jeśli zastosujesz skrypt jako część procesu tworzenia klastra są utrwalane automatycznie.
