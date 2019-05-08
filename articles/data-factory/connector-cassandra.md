@@ -57,8 +57,8 @@ Następujące właściwości są obsługiwane dla bazy danych Cassandra połącz
 | type |Właściwość type musi być równa: **Cassandra** |Yes |
 | host |Jeden lub więcej adresów IP lub nazw hostów serwerów bazy danych Cassandra.<br/>Określ rozdzielaną przecinkami listę adresów IP lub nazw hostów, połączyć się z wszystkich serwerów jednocześnie. |Yes |
 | port |Port TCP, którego serwer Cassandra korzysta do nasłuchiwania połączeń klientów. |Nie (wartość domyślna to 9042) |
-| Element authenticationType | Typ uwierzytelniania używany do łączenia z bazą danych Cassandra.<br/>Dozwolone wartości to: **Podstawowe**, i **anonimowe**. |Yes |
-| nazwa użytkownika |Określ nazwę użytkownika dla konta użytkownika. |Tak, jeśli element authenticationType ustawiany jest podstawowy. |
+| authenticationType | Typ uwierzytelniania używany do łączenia z bazą danych Cassandra.<br/>Dozwolone wartości to: **Podstawowe**, i **anonimowe**. |Yes |
+| username |Określ nazwę użytkownika dla konta użytkownika. |Tak, jeśli element authenticationType ustawiany jest podstawowy. |
 | password |Określ hasło dla konta użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Tak, jeśli element authenticationType ustawiany jest podstawowy. |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Używając środowiskiem Integration Runtime lub Azure Integration Runtime (Jeśli magazyn danych jest publicznie dostępny). Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
 
@@ -176,16 +176,16 @@ Podczas kopiowania danych z bazy danych Cassandra, następujące mapowania są u
 | ASCII |String |
 | BIGINT |Int64 |
 | BLOB |Byte[] |
-| ATRYBUT TYPU WARTOŚĆ LOGICZNA |Boolean |
+| BOOLEAN |Boolean |
 | DECIMAL |Decimal |
 | DOUBLE |Double |
 | FLOAT |Single |
 | INET |String |
 | INT |Int32 |
-| TEKST |String |
-| SYGNATURA CZASOWA |DateTime |
+| TEXT |String |
+| TIMESTAMP |DateTime |
 | TIMEUUID |Guid |
-| IDENTYFIKATOR UUID |Guid |
+| UUID |Guid |
 | VARCHAR |String |
 | VARINT |Decimal |
 
