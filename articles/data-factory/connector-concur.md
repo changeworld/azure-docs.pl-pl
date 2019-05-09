@@ -49,8 +49,8 @@ Następujące właściwości są obsługiwane w przypadku Concur połączone us�
 |:--- |:--- |:--- |
 | type | Właściwość type musi być równa: **Concur** | Yes |
 | clientId | Dostarczony przez Zarządzanie aplikacjami Concur client_id aplikacji.  | Yes |
-| nazwa użytkownika | Nazwa użytkownika, który umożliwia dostęp do usługi Concur.  | Yes |
-| hasło | Hasło odpowiadający nazwie użytkownika, podanym w polu Nazwa użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| username | Nazwa użytkownika, który umożliwia dostęp do usługi Concur.  | Yes |
+| password | Hasło odpowiadający nazwie użytkownika, podanym w polu Nazwa użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 | useEncryptedEndpoints | Określa, czy punkty końcowe źródła danych są szyfrowane przy użyciu protokołu HTTPS. Wartość domyślna to true.  | Nie |
 | useHostVerification | Określa, czy wymagają zgodności nazwy hosta w certyfikacie serwera, aby dopasować nazwę hosta serwera podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to true.  | Nie |
 | usePeerVerification | Określa, czy do zweryfikowania tożsamości serwera, podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to true.  | Nie |
