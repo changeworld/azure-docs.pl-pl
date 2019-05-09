@@ -62,10 +62,10 @@ Następujące właściwości są obsługiwane dla bazy danych DB2 połączone us
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość type musi być równa: **Db2** | Yes |
-| serwer |Nazwa serwera bazy danych DB2. Możesz określić numer portu, zgodnie z nazwą serwera, rozdzielone średnikami, np. `server:port`. |Yes |
-| baza danych |Nazwa bazy danych DB2. |Yes |
-| Element authenticationType |Typ uwierzytelniania używany do łączenia z bazą danych DB2.<br/>Dozwolone wartości to: **Podstawowe**. |Yes |
-| nazwa użytkownika |Określ nazwę użytkownika do łączenia z bazą danych DB2. |Yes |
+| server |Nazwa serwera bazy danych DB2. Możesz określić numer portu, zgodnie z nazwą serwera, rozdzielone średnikami, np. `server:port`. |Yes |
+| database |Nazwa bazy danych DB2. |Yes |
+| authenticationType |Typ uwierzytelniania używany do łączenia z bazą danych DB2.<br/>Dozwolone wartości to: **Podstawowe**. |Yes |
+| username |Określ nazwę użytkownika do łączenia z bazą danych DB2. |Yes |
 | password |Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Yes |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Używając środowiskiem Integration Runtime lub Azure Integration Runtime (Jeśli magazyn danych jest publicznie dostępny). Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
 
@@ -174,19 +174,19 @@ Podczas kopiowania danych z bazy danych DB2, następujące mapowania są używan
 | Typ bazy danych DB2 | Typ danych tymczasowych fabryki danych |
 |:--- |:--- |
 | BigInt |Int64 |
-| Binarny |Byte[] |
-| Obiekt blob |Byte[] |
-| char |String |
-| CLOB |String |
-| Date |DateTime |
+| Binary |Byte[] |
+| Blob |Byte[] |
+| Char |String |
+| Clob |String |
+| Date |Datetime |
 | DB2DynArray |String |
 | DbClob |String |
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
 | Double |Double |
 | Float |Double |
-| Grafika |String |
-| Liczba całkowita |Int32 |
+| Graphic |String |
+| Integer |Int32 |
 | LongVarBinary |Byte[] |
 | LongVarChar |String |
 | LongVarGraphic |String |
@@ -194,7 +194,7 @@ Podczas kopiowania danych z bazy danych DB2, następujące mapowania są używan
 | Real |Single |
 | SmallInt |Int16 |
 | Time |TimeSpan |
-| Znacznik czasu |DateTime |
+| Timestamp |DateTime |
 | VarBinary |Byte[] |
 | VarChar |String |
 | VarGraphic |String |
