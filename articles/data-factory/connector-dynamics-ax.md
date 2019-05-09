@@ -60,7 +60,7 @@ Następujące właściwości są obsługiwane dla systemu Dynamics AX połączon
 | url | Dynamics AX (lub Dynamics 365 Finance oraz Operations) wystąpienia punktu końcowego OData. |Yes |
 | servicePrincipalId | Określ identyfikator klienta aplikacji. | Yes |
 | servicePrincipalKey | Określ klucz aplikacji. Oznacz to pole jako **SecureString** można bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
-| dzierżawa | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Pobierz go przez umieszczenie nad nim kursora myszy w prawym górnym rogu witryny Azure Portal. | Yes |
+| tenant | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Pobierz go przez umieszczenie nad nim kursora myszy w prawym górnym rogu witryny Azure Portal. | Yes |
 | aadResourceId | Określ zasób usługi AAD, który żąda autoryzacji. Na przykład, jeśli jest adres URL usługi Dynamics `https://sampledynamics.sandbox.operations.dynamics.com/data/`, odpowiadający jej zasób usługi AAD jest zazwyczaj `https://sampledynamics.sandbox.operations.dynamics.com`. | Yes |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) nawiązywania połączenia z magazynem danych. (Jeśli Twój magazyn danych znajduje się w sieci prywatnej) możesz wybrać środowisko IR Azure lub własnego środowiska Integration Runtime. Jeśli nie zostanie określona, używana jest domyślna Azure Integration Runtime. |Nie |
 
@@ -101,7 +101,7 @@ Aby skopiować dane z systemu Dynamics AX, należy ustawić **typu** właściwo�
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | **Typu** właściwości zestawu danych musi być równa **DynamicsAXResource**. | Yes |
-| ścieżka | Ścieżka do jednostki Dynamics AX OData. | Yes |
+| path | Ścieżka do jednostki Dynamics AX OData. | Yes |
 
 **Przykład**
 
