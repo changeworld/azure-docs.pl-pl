@@ -64,8 +64,8 @@ Następujące właściwości są obsługiwane w przypadku połączonej usługi D
 | type | Właściwość type musi być równa **Dynamics**. | Yes |
 | deploymentType | Typ wdrażania wystąpienia programu Dynamics. Musi to być **"Online"** systemu Microsoft Dynamics online. | Yes |
 | serviceUri | Np. adres URL usługi Dynamics, Twoje wystąpienie `https://adfdynamics.crm.dynamics.com`. | Yes |
-| Element authenticationType | Typ uwierzytelniania, aby połączyć się z serwerem Dynamics. Określ **"Usługi Office 365"** systemu Microsoft Dynamics online. | Yes |
-| nazwa użytkownika | Określ nazwę użytkownika, aby nawiązać połączenie Dynamics. | Yes |
+| authenticationType | Typ uwierzytelniania, aby połączyć się z serwerem Dynamics. Określ **"Usługi Office 365"** systemu Microsoft Dynamics online. | Yes |
+| username | Określ nazwę użytkownika, aby nawiązać połączenie Dynamics. | Yes |
 | password | Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 | connectVia | [Środowiska integration runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. | Nie dla źródła, tak ujścia Jeśli źródłem jest połączona usługa nie ma środowiska integration runtime |
 
@@ -109,8 +109,8 @@ Następujące właściwości są obsługiwane w przypadku połączonej usługi D
 | hostName | Nazwa hosta na lokalnym serwerze Dynamics. | Yes |
 | port | Port lokalny serwer Dynamics. | Nie, port domyślny to 443 |
 | organizationName | Nazwa organizacji wystąpienia programu Dynamics. | Yes |
-| Element authenticationType | Typ uwierzytelniania, aby nawiązać połączenie z serwerem Dynamics. Określ **"Ifd"** Dynamics i lokalnych przy użyciu IFD. | Yes |
-| nazwa użytkownika | Określ nazwę użytkownika, aby nawiązać połączenie Dynamics. | Yes |
+| authenticationType | Typ uwierzytelniania, aby nawiązać połączenie z serwerem Dynamics. Określ **"Ifd"** Dynamics i lokalnych przy użyciu IFD. | Yes |
+| username | Określ nazwę użytkownika, aby nawiązać połączenie Dynamics. | Yes |
 | password | Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. Można wybrać opcję Oznacz to pole jako SecureString bezpiecznie przechowywać w usłudze ADF lub przechowywać haseł w usłudze Azure Key Vault i umożliwić działanie kopiowania pobierania w tym miejscu podczas kopiowania danych — Dowiedz się więcej z [Store poświadczeń w usłudze Key Vault](store-credentials-in-key-vault.md). | Yes |
 | connectVia | [Środowiska integration runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. | Brak źródła tak dla ujścia |
 
