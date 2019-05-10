@@ -124,6 +124,8 @@
         - name: Ciągła integracja za pomocą usługi Azure DevOps
           href: ../vs-azure-tools-resource-groups-ci-in-vsts.md
           maintainContext: true
+    - name: Eksportowanie szablonu
+      href: export-template-portal.md
     - name: Zarządzanie
       items:
         - name: Zarządzanie grupami zasobów

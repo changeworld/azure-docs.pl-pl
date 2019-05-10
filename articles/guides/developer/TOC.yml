@@ -67,7 +67,7 @@
     - name: Rozliczenia i subskrypcje
       href: 'https://docs.microsoft.com/azure/billing/billing-getting-started'
     - name: Porównania hostingu
-      href: 'https://docs.microsoft.com/azure/app-service/overview-compare'
+      href: /azure/architecture/guide/technology-choices/compute-decision-tree
     - name: Co to jest usługa App Service?
       href: 'https://docs.microsoft.com/azure/app-service/overview'
     - name: Maszyny wirtualne

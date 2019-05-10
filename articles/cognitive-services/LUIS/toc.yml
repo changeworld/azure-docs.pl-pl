@@ -318,15 +318,15 @@
       href: luis-reference-prebuilt-domains.md
       displayName: 'Calendar, Communication,Email,HomeAutomation,Note,Places, RestaurantReservation,ToDo,Utilities,Weather,Web'
     - name: Interfejs wiersza polecenia platformy Azure
-      href: 'https://aka.ms/az-cli-cognitiveservices'
+      href: 'https://go.microsoft.com/fwlink/?linkid=2092156'
     - name: Azure RM PowerShell
-      href: 'https://aka.ms/azure-powershell-cognitiveservices'
+      href: 'https://go.microsoft.com/fwlink/?linkid=2092157'
     - name: Interfejsy API REST
       items:
         - name: Tworzenie interfejsów API REST w wersji 2
-          href: 'https://aka.ms/luis-authoring-apis'
+          href: 'https://go.microsoft.com/fwlink/?linkid=2092087'
         - name: Interfejs API REST punktu końcowego w wersji 2
-          href: 'https://aka.ms/luis-endpoint-apis'
+          href: 'https://go.microsoft.com/fwlink/?linkid=2092356'
         - name: Kody HTTP
           displayName: '400, 401, 403, 409, 410, 414, 429'
           href: luis-reference-response-codes.md
@@ -399,12 +399,12 @@
 - name: Zasoby
   items:
     - name: Dostępność regionalna
-      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Obsługa języków i regionów
       href: luis-language-support.md
       displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, Dutch, French, Germain, Italian, Japanese, Korean, Portuguese, Spanish, Turkish, Keigo, informal Japanese, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
     - name: Harmonogram działania dla platformy Azure
-      href: 'https://aka.ms/luis-roadmap'
+      href: 'https://go.microsoft.com/fwlink/?linkid=2092089'
     - name: Słownik
       href: luis-glossary.md
     - name: Rozwiązywanie problemów
@@ -415,7 +415,7 @@
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/LUIS'
     - name: UserVoice
-      href: 'https://aka.ms/luis-uservoice-forum'
+      href: 'https://go.microsoft.com/fwlink/?linkid=2092090'
     - name: Wyszukiwanie
       href: 'https://docs.microsoft.com/search/index?search=LUIS'
     - name: Blog

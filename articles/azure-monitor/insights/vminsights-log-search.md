@@ -15,7 +15,7 @@ ms.date: 04/10/2019
 ms.author: magoedte
 ms.openlocfilehash: bca1b96e7dc5673cabef26fe6b2cfb8daa41fbf5
 ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/28/2019
 ms.locfileid: "64702524"
@@ -58,7 +58,7 @@ Aby zarządzać, koszt i złożoność, rekordy połączeń nie przedstawiają p
 |SourceIp |Adres IP źródła |
 |DestinationIp |Adres IP miejsca docelowego |
 |DestinationPort |Numer portu docelowego |
-|Protokół |Protokół używany dla połączenia.  Wartości *tcp*. |
+|Protocol |Protokół używany dla połączenia.  Wartości *tcp*. |
 
 Aby uwzględnić wpływ grupowania, informacje o liczbie pogrupowanych połączeń fizycznych znajduje się w następujących właściwości rekordu:
 
@@ -139,7 +139,7 @@ Każdy rekord w VMBoundPort jest identyfikowane za pomocą następujących pól:
 |Przetwórz | Tożsamość procesu (lub grupy procesów), z którymi jest skojarzony z portu.|
 |Adres IP | Port adresu IP (mogą być symbolami wieloznacznymi adres IP, *0.0.0.0*) |
 |Port |Numer portu |
-|Protokół | Protokół.  Przykład *tcp* lub *udp* (tylko *tcp* jest obecnie obsługiwane).|
+|Protocol | Protokół.  Przykład *tcp* lub *udp* (tylko *tcp* jest obecnie obsługiwane).|
  
 Tożsamość portu jest tworzony na podstawie powyższych pięć pól i jest przechowywany we właściwości identyfikator portu. Ta właściwość umożliwia szybkie znajdowanie rekordy na określonym porcie w czasie. 
 

@@ -40,7 +40,17 @@
           href: time-series-insights-explorer.md
         - name: Omówienie przechowywania danych
           href: time-series-insights-concepts-retention.md
-    - name: Wersja zapoznawcza usługi Azure Time Series Insights
+        - name: Programowanie
+          items:
+            - name: Uwierzytelnianie i autoryzacja
+              href: time-series-insights-authentication-and-authorization.md
+            - name: 'Wykonywanie zapytań o dane za pomocą języka C#'
+              href: time-series-insights-query-data-csharp.md
+            - name: 'Zarządzanie danymi referencyjnymi w języku C#'
+              href: time-series-insights-manage-reference-data-csharp.md
+            - name: Udostępnianie widoku niestandardowego
+              href: time-series-insights-parameterized-urls.md
+    - name: Azure Time Series Insights (wersja zapoznawcza)
       items:
         - name: Planowanie środowiska
           href: time-series-insights-update-plan.md
@@ -54,16 +64,12 @@
           href: time-series-insights-update-tsq.md
         - name: Wizualizowanie danych w Eksploratorze (wersja zapoznawcza)
           href: time-series-insights-update-explorer.md
-    - name: Programowanie
-      items:
-        - name: Uwierzytelnianie i autoryzacja
-          href: time-series-insights-authentication-and-authorization.md
-        - name: 'Wykonywanie zapytań o dane za pomocą języka C#'
-          href: time-series-insights-query-data-csharp.md
-        - name: 'Zarządzanie danymi referencyjnymi w języku C#'
-          href: time-series-insights-manage-reference-data-csharp.md
-        - name: Udostępnianie widoku niestandardowego
-          href: time-series-insights-parameterized-urls.md
+        - name: Programowanie
+          items:
+            - name: Uwierzytelnianie i autoryzacja
+              href: time-series-insights-authentication-and-authorization.md
+            - name: 'Wykonywanie zapytań o dane za pomocą języka C#'
+              href: time-series-insights-update-query-data-csharp.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Przyznawanie dostępu do danych
