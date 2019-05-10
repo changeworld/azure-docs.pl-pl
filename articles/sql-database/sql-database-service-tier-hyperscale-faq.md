@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/17/2018
-ms.openlocfilehash: 55b18051f2376a59fa79b11cccc9e71cad5debbc
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.date: 05/06/2019
+ms.openlocfilehash: 4f0691dcc8a0c4b0ebbfe26a49b75b86fa50f597
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65067807"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236014"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Często zadawane pytania dotyczące bazy danych SQL Azure na dużą skalę
 
@@ -73,11 +73,7 @@ Warstwy usług na dużą skalę jest przeznaczone głównie dla klientów, któr
 
 ### <a name="what-regions-currently-support-hyperscale"></a>Jakie regiony obsługują obecnie na dużą skalę
 
-Warstwa Azure SQL Database na dużą skalę jest obecnie dostępna w następujących regionach:
-
-Australia Wschodnia, Australia Południowo-Wschodnia, Brazylia Południowa, Kanada Środkowa, środkowe stany USA, Azja Wschodnia, wschodnie stany USA, wschodnie stany USA 2, Francja środkowa, Japonia Wschodnia, Japonia Zachodnia, środkowe stany USA, Europa Północna, Republika Południowej Afryki Północna, południowo-środkowe stany USA, Azja południowo-wschodnia, Zjednoczone Królestwo Południowe Zjednoczone Królestwo (Zachód), Zachodnia Europa Północna , Zachodnie stany USA, zachodnie stany USA 2
-
-Zobacz [Omówienie usługi Azure SQL Database na dużą skalę](sql-database-service-tier-hyperscale-faq.md) procedury, jeśli potrzebujesz dostępu w innym regionie.
+Warstwy usługi Azure SQL Database na dużą skalę jest obecnie dostępna w regionach wymienionych w obszarze [Omówienie usługi Azure SQL Database na dużą skalę](sql-database-service-tier-hyperscale.md#regions).
 
 ### <a name="can-i-create-multiple-hyperscale-databases-per-logical-server"></a>Można tworzyć wiele Hiperskali baz danych na każdym serwerze logicznym
 

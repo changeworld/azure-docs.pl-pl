@@ -12,19 +12,19 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8b8cba8d0a400efb720d8374cdca886a2a638938
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: db23c8af7eaa4a86691ccb0bb831ce2cc28d635c
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023786"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471831"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>Przekształcanie danych za pomocą usługi Azure Machine Learning Prep zestawu SDK usługi Data
 
-W tym artykule dowiesz się, przekształcanie danych przy użyciu usługi Azure Machine Learning Prep zestawu SDK usługi Data różnych metod. Zestaw SDK udostępnia funkcje, które ułatwiają dodawanie kolumn odfiltrować zbędne wiersze lub kolumny i przypisują brakujące wartości. Aby wyświetlić dokumentację referencyjną dla zestawu SDK, zobacz [Przegląd](https://aka.ms/data-prep-sdk).
+W tym artykule dowiesz się, przekształcanie danych przy użyciu różnych metod `azureml-dataprep` pakietu. Pakiet oferuje funkcje, które ułatwiają dodawanie kolumn odfiltrować zbędne wiersze lub kolumny i przypisują brakujące wartości. Zobacz pełna dokumentacja dotycząca [pakiet przygotowania danych usługi Azure ml](https://aka.ms/data-prep-sdk).
 
 > [!Important]
-> Jeśli tworzysz nowe rozwiązanie, spróbuj [zestawów danych Learning maszyny Azure](how-to-explore-prepare-data.md) (wersja zapoznawcza), Przekształć swoje dane, dane migawki w celu przechowywania definicji określonej wersji zestawu danych. Zestawy danych to następna wersja przygotowywanie danych zestawu SDK, oferując rozszerzone funkcje do zarządzania zestawami danych w rozwiązań sztucznej Inteligencji.
+> Jeśli tworzysz nowe rozwiązanie, spróbuj [zestawów danych Learning maszyny Azure](how-to-explore-prepare-data.md) (wersja zapoznawcza), Przekształć swoje dane, dane migawki w celu przechowywania definicji określonej wersji zestawu danych. Zestawy danych to następna wersja przygotowywanie danych zestawu SDK, oferując rozszerzone funkcje do zarządzania zestawami danych w rozwiązań sztucznej Inteligencji. Jeśli używasz `azureml-dataprep` pakietu do utworzenia przepływu danych przy użyciu przekształceń zamiast `azureml-datasets` pakietu, aby utworzyć zestaw danych, nie będzie można później użyć migawki lub numerów wersji zestawów danych.
 
 Niniejszy instruktaż zawiera przykłady dla następujących zadań:
 
@@ -286,10 +286,10 @@ dflow.head(5)
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Store_and_fwd_flag|RateCodeID|Pickup_longitude|Pickup_latitude|Dropoff_longitude|Dropoff_latitude|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 |0|Brak|Brak|Brak|Brak|Brak|Brak|Brak|Brak|Brak|Brak|Brak|Brak|Brak|
-|1|2013-08-01-08:14:37|2013-08-01 09:09:06|Nie|1|0|0|0|0|1|.00|0|0|21,25|
-|2|2013-08-01 09:13:00|2013-08-01 11:38:00|Nie|1|0|0|0|0|2|.00|0|0|75|
-|3|2013-08-01-09:48:00|2013-08-01 09:49:00|Nie|5|0|0|0|0|1|.00|0|1|2.1|
-|4|2013-08-01-10:38:35|2013-08-01 10:38:51|Nie|1|0|0|0|0|1|.00|0|0|3.25|
+|1|2013-08-01-08:14:37|2013-08-01-09:09:06|Nie|1|0|0|0|0|1|.00|0|0|21,25|
+|2|2013-08-01-09:13:00|2013-08-01 11:38:00|Nie|1|0|0|0|0|2|.00|0|0|75|
+|3|2013-08-01-09:48:00|2013-08-01-09:49:00|Nie|5|0|0|0|0|1|.00|0|1|2.1|
+|4|2013-08-01-10:38:35|2013-08-01-10:38:51|Nie|1|0|0|0|0|1|.00|0|0|3.25|
 
 ### <a name="filtering-columns"></a>Filtrowanie kolumn
 
@@ -307,7 +307,7 @@ dflow.head(2)
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Pickup_longitude|Pickup_latitude|Dropoff_longitude|Dropoff_latitude|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 |0|Brak|Brak|Brak|Brak|Brak|Brak|Brak|Brak|Brak|Brak|Brak|
-|1|2013-08-01-08:14:37|2013-08-01-09:09:06|0|0|0|0|1|.00|0|0|21.25|
+|1|2013-08-01-08:14:37|2013-08-01-09:09:06|0|0|0|0|1|.00|0|0|21,25|
 
 #### <a name="filtering-columns-with-regex"></a>Filtrowanie kolumn z wyrażeniem regularnym
 
@@ -321,7 +321,7 @@ dflow.head(2)
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
 |-----|-----|-----|-----|-----|-----|-----|-----|
 |0|Brak|Brak|Brak|Brak|Brak|Brak|Brak|
-|1|2013-08-01-08:14:37|2013-08-01-09:09:06|1|.00|0|0|21.25|
+|1|2013-08-01-08:14:37|2013-08-01-09:09:06|1|.00|0|0|21,25|
 
 ## <a name="filtering-rows"></a>Filtrowanie wierszy
 
@@ -500,5 +500,4 @@ dflow.head(2)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Zobacz zestaw SDK [Przegląd](https://aka.ms/data-prep-sdk) wzorców projektowych i przykłady użycia
 * Zobacz zestaw SDK Azure Machine Learning danych Prep [samouczek](tutorial-data-prep.md) przykładem rozwiązania konkretnego scenariusza

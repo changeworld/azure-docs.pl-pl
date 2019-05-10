@@ -7,18 +7,18 @@ ms.date: 05/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: jeconnoc
-ms.openlocfilehash: d10ee8c1af85de5eb79cd4a4af6882c7a8f084f1
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: b0a6c016b2be12ac6686b3748b4b16281899323e
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65159558"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65511057"
 ---
 # <a name="create-an-image-and-use-a-user-assigned-managed-identity-to-access-files-in-azure-storage"></a>Tworzenie obrazu i korzystania z tożsamości zarządzanej użytkownik przypisany na dostęp do plików w usłudze Azure Storage 
 
 Kreator obrazów obsługiwane przez platformę Azure za pomocą skryptów lub kopiowania plików z wielu lokalizacji, takich jak GitHub i Azure storage itp. Można ich używać, muszą być dostępne z zewnątrz do kreatora obrazów platformy Azure, ale można chronić przy użyciu tokenów sygnatur dostępu Współdzielonego obiektów blob usługi Storage platformy Azure.
 
-W tym artykule przedstawiono sposób tworzenia dostosowanego obrazu za pomocą Kreatora obrazów maszyn wirtualnych platformy Azure, w której będzie używać usługa programu [przypisanych przez użytkownika z tożsamości zarządzanej](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview) dostępu do plików w usłudze Azure storage do dostosowywania obrazu, bez konieczności wprowadzania pliki dostępne publicznie lub konfigurowania tokeny sygnatur dostępu Współdzielonego.
+W tym artykule przedstawiono sposób tworzenia dostosowanego obrazu za pomocą Kreatora obrazów maszyn wirtualnych platformy Azure, w której będzie używać usługa programu [przypisanych przez użytkownika z tożsamości zarządzanej](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) dostępu do plików w usłudze Azure storage do dostosowywania obrazu, bez konieczności wprowadzania pliki dostępne publicznie lub konfigurowania tokeny sygnatur dostępu Współdzielonego.
 
 W poniższym przykładzie utworzysz dwie grupy zasobów, będzie używana dla niestandardowego obrazu, a drugi będzie obsługiwać konto usługi Azure Storage, który zawiera plik skryptu. Symuluje to realnym scenariusz, gdzie może mieć artefaktów kompilacji lub plików obrazów w różnych kontach magazynu, poza kreatora obrazów. Spowoduje utworzenie tożsamości przypisanych przez użytkownika, a następnie udziel, że uprawnienia do odczytu z pliku skryptu, ale nie ustawi wszelkie publicznego dostępu do tego pliku. Następnie użyje konfiguratora powłoki do pobierania i uruchamiania tego skryptu z konta magazynu.
 
@@ -130,7 +130,7 @@ az role assignment create \
 
 ## <a name="create-user-assigned-managed-identity"></a>Utwórz tożsamość zarządzaną przypisanych przez użytkownika
 
-Utwórz tożsamość i przypisać uprawnienia dla konta magazynu skryptu. Aby uzyskać więcej informacji, zobacz [tożsamości zarządzanej User-Assigned](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity).
+Utwórz tożsamość i przypisać uprawnienia dla konta magazynu skryptu. Aby uzyskać więcej informacji, zobacz [tożsamości zarządzanej User-Assigned](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity).
 
 ```azurecli-interactive
 # Create the user assigned identity 

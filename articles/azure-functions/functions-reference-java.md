@@ -11,12 +11,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: routlaw
-ms.openlocfilehash: cc598afbbdf7f3a1b12089b50ba747c5220ba1fa
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: ce7eb546c342ffd20557a95d5293d83b39ec3afb
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64922928"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507193"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Przewodnik dla deweloperów w usłudze Azure Functions Java
 
@@ -113,6 +113,37 @@ Pobieranie i używanie [Azul Zulu Enterprise na platformie Azure](https://assets
 
 [Pomoc techniczna platformy Azure](https://azure.microsoft.com/support/) w przypadku problemów z JDK i funkcja jest dostępna z aplikacji [plan pomocy technicznej kwalifikowaną](https://azure.microsoft.com/support/plans/).
 
+## <a name="customize-jvm"></a>Dostosowywanie maszyny JVM
+
+Functions umożliwia dostosowywanie maszyny wirtualnej Java (JVM) służących do wykonywania funkcji języka Java. [Następujące opcje maszyny JVM](https://github.com/Azure/azure-functions-java-worker/blob/master/worker.config.json#L7) są używane przez domyślny:
+
+* `-XX:+TieredCompilation`
+* `-XX:TieredStopAtLevel=1`
+* `-noverify` 
+* `-Djava.net.preferIPv4Stack=true`
+* `-jar`
+
+Możesz podać dodatkowe argumenty w aplikacji, ustawienie o nazwie `JAVA_OPTS`. Ustawienia aplikacji można dodać do aplikacji funkcji wdrożonych na platformie Azure w jeden z następujących sposobów:
+
+### <a name="azure-portal"></a>Azure Portal
+
+W [witryny Azure portal](https://portal.azure.com), użyj [kartę ustawień aplikacji](functions-how-to-use-azure-function-app-settings.md#settings) dodać `JAVA_OPTS` ustawienie.
+
+### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
+
+[Az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings) polecenia można ustawić `JAVA_OPTS`, jak w poniższym przykładzie:
+
+    ```azurecli-interactive
+    az functionapp config appsettings set --name <APP_NAME> \
+    --resource-group <RESOURCE_GROUP> \
+    --settings "JAVA_OPTS=-Djava.awt.headless=true"
+    ```
+Ten przykład włącza tryb nienadzorowanej. Zastąp `<APP_NAME>` nazwę aplikacji funkcji i `<RESOURCE_GROUP> ` z grupą zasobów.
+
+> [!WARNING]  
+> Podczas pracy w [planu zużycie](functions-scale.md#consumption-plan), należy dodać `WEBSITE_USE_PLACEHOLDER` ustawienie z wartością `0`.  
+To ustawienie powoduje zwiększenie razy zimnego dla funkcji języka Java.
+
 ## <a name="third-party-libraries"></a>Bibliotek innych firm 
 
 Usługa Azure Functions obsługuje korzystanie z bibliotek innych firm. Domyślnie wszystkie zależności są określone w projekcie `pom.xml` pliku zostaną automatycznie dołączone podczas [ `mvn package` ](https://github.com/Microsoft/azure-maven-plugins/blob/master/azure-functions-maven-plugin/README.md#azure-functionspackage) cel. W przypadku bibliotek, które nie jest określony jako zależności w `pom.xml` pliku, umieść je w `lib` katalogu w katalogu głównym funkcji. Zależności są umieszczane w `lib` katalog zostanie dodany do modułu ładującego klasę systemu w czasie wykonywania.
@@ -189,7 +220,7 @@ Ta funkcja jest wywoływana z żądania HTTP.
 - Ładunek żądania HTTP jest przekazywany jako `String` dla argumentu `inputReq`
 - Jeden wpis jest pobierany z usługi Azure Table Storage i jest przekazywany jako `TestInputData` do argumentu `inputData`.
 
-Aby móc odbierać partii danych wejściowych, można powiązać `String[]`, `POJO[]`, `List<String>` lub `List<POJO>`.
+Aby móc odbierać partii danych wejściowych, można powiązać `String[]`, `POJO[]`, `List<String>`, lub `List<POJO>`.
 
 ```java
 @FunctionName("ProcessIotMessages")
@@ -263,13 +294,13 @@ Aby wysłać wiele wartości danych wyjściowych, należy użyć `OutputBinding<
     }
 ```
 
-Powyżej funkcja jest wywoływana HttpRequest i zapisuje wielu wartości w kolejce platformy Azure
+Ta funkcja jest wywoływana HttpRequest i zapisuje wielu wartości do kolejki usługi Azure.
 
 ## <a name="httprequestmessage-and-httpresponsemessage"></a>Obiekt HttpRequestMessage i obiektu HttpResponseMessage
 
  Obiekt HttpRequestMessage i obiektu HttpResponseMessage typy są definiowane w `azure-functions-java-library` typów pomocnika do pracy z funkcjami HttpTrigger
 
-| Specjalistyczną odmianą      |       Środowisko docelowe        | Typowy                  |
+| Specjalistyczną odmianą      |       Obiekt docelowy        | Typowy                  |
 | --------------------- | :-----------------: | ------------------------------ |
 | `HttpRequestMessage<T>`  |    Wyzwalacz HTTP     | Metoda, nagłówków lub zapytania |
 | `HttpResponseMessage` | Powiązanie danych wyjściowych HTTP | Status powrotu niż 200   |
@@ -363,7 +394,7 @@ Aby pobrać pliki dziennika jako pojedynczy plik ZIP, przy użyciu wiersza polec
 az webapp log download --resource-group resourcegroupname --name functionappname
 ```
 
-Musisz włączyć systemu plików, logowania w witrynie Azure Portal lub interfejsu wiersza polecenia platformy Azure, przed uruchomieniem tego polecenia.
+Musisz włączyć systemu plików, logowania w witrynie Azure portal lub interfejsu wiersza polecenia platformy Azure, przed uruchomieniem tego polecenia.
 
 ## <a name="environment-variables"></a>Zmienne środowiskowe
 

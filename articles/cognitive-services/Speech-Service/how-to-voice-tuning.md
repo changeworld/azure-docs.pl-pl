@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 6d602491c66669007ae220c3b8143ce3e805246f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 2352594b168f5d37ddb6a46064f9ac5801fb035f
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65147989"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508408"
 ---
 # <a name="fine-tune-text-to-speech-output"></a>Dostosowywanie danych wyjściowych zamiany tekstu na mowę
 
@@ -28,9 +28,9 @@ Narzędzia dostosowywania głosu obsługuje firmy Microsoft [standardowa](langua
 Przed rozpoczęciem można dostrajanie zamiany tekstu na mowę danych wyjściowych za pomocą narzędzia dostosowywania głosu, należy wykonać następujące czynności:
 
 1. Tworzenie [bezpłatne konto Microsoft](https://account.microsoft.com/account) Jeśli nie masz jeszcze jeden.
-2. Tworzenie [bezpłatne konto platformy Azure](https://azure.microsoft.com/en-us/free/) Jeśli nie masz jeszcze jeden. Kliknij przycisk **Rozpocznij za darmo**i Utwórz nowe konto platformy Azure przy użyciu konta Microsoft.
+2. Tworzenie [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/) Jeśli nie masz jeszcze jeden. Kliknij przycisk **Rozpocznij za darmo**i Utwórz nowe konto platformy Azure przy użyciu konta Microsoft.
 
-3. Utwórz subskrypcję usługi mowy w witrynie Azure portal. Instrukcje krok po kroku dotyczące [sposobu tworzenia zasobu mowy](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure) są dostępne.
+3. Utwórz subskrypcję usługi mowy w witrynie Azure portal. Instrukcje krok po kroku dotyczące [sposobu tworzenia zasobu mowy](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure) są dostępne.
    >[!NOTE]
    >Po utworzeniu zasobu mowy w witrynie Azure portal, informacje o lokalizacji platformy Azure jest musi być zgodna z regionem głosu TTS. Głos TTS neuronowych obsługuje zestaw sub lokalizacji platformy Azure. Aby uzyskać pełną listę pomocy technicznej, zobacz [regionów](regions.md#text-to-speech).
 
@@ -70,6 +70,6 @@ Dostrajanie neuronowych głosowych są nieco inne niż automatycznego dostrajani
 > Narzędzia dostosowywania głosu zapewnia informacje kontekstowe o funkcjach i dostrajania.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Utwórz zasób mowy na platformie Azure](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure)
+* [Utwórz zasób mowy na platformie Azure](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure)
 * [Rozpoczęcia strojenia głosu](https://speech.microsoft.com/app.html#/VoiceTuning)
 * [Język znaczników synteza mowy (SSML)](speech-synthesis-markup.md)

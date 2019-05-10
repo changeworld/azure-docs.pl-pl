@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: c8444fd57fe939dfb212d88c22a071c13dac691e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a20662c2fc9b416fefce89a6ebe706307ee71bb7
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60519220"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236468"
 ---
 # <a name="prepare-and-upload-images-to-your-azure-iot-central-application"></a>Przygotuj i przekazywać obrazy do aplikacji usługi Azure IoT Central
 
@@ -74,7 +74,7 @@ Do przekazania obrazu do użycia na **aplikacje** stronie, przejść do **ustawi
 
 ![Przekaż obraz aplikacji](media/howto-prepare-images/uploadapplicationmanager.png)
 
-Wybierz Kafelek obrazu aplikacji, aby przekazać przygotowany obraz (268 x 160 pikseli) z komputera lokalnego.
+Wybierz **obrazu aplikacji** Kafelek, aby przekazać obraz (268 x 160 pikseli) z komputera lokalnego.
 
 ### <a name="application-dashboard"></a>Pulpit nawigacyjny aplikacji
 
@@ -82,7 +82,7 @@ Aby przekazać obraz na pulpicie nawigacyjnym aplikacji, przejdź do **pulpit na
 
 ![Przekaż obraz pulpitu nawigacyjnego](media/howto-prepare-images/uploadhomepage.png)
 
-W obszarze skonfigurować obrazu wybierz Kafelek obrazu, aby przekazać przygotowany obraz z komputera lokalnego. Najmniejszy rozmiar kafelka jest 200 x 200 pikseli, większy kafelków może być kwadratowe lub prostokątny wielokrotności małych fragmentów. Na przykład 200 x 400 pikseli, 400 x 200 pikseli lub 400 x 400 piks.
+W obszarze **skonfigurować obraz**, wybierz opcję **obraz** Kafelek, aby przekazać obraz z komputera lokalnego. Najmniejszy rozmiar kafelka jest 200 x 200 pikseli, większy kafelków może być kwadratowe lub prostokątny wielokrotności małych fragmentów. Na przykład 200 x 400 pikseli, 400 x 200 pikseli lub 400 x 400 piks.
 
 **Zapisz** przekazanego obrazu. Możesz zmienić jego rozmiar w trybie edycji. Wybierz **gotowe** po zakończeniu.
 
@@ -92,7 +92,7 @@ Aby przekazać obraz na podstawie szablonu urządzenia, przejdź do **szablonów
 
 ![Przekazywanie obrazu szablonu urządzenia](media/howto-prepare-images/uploaddevicetemplate.png)
 
-Wybierz Kafelek obrazu, aby przekazać przygotowany obraz (64 x 64 pikseli) z komputera lokalnego.
+Wybierz Kafelek obrazu, aby przekazać obraz (64 x 64 pikseli) z komputera lokalnego.
 
 ### <a name="device-dashboard"></a>Pulpit nawigacyjny urządzenia
 
@@ -100,7 +100,7 @@ Aby przekazać obraz na pulpicie nawigacyjnym urządzenia, przejdź do **szablon
 
 ![Przekazywanie obrazu do pulpitu nawigacyjnego urządzeń](media/howto-prepare-images/uploaddevicedashboard.png)
 
-W ramach konfigurowania obrazu wybierz Kafelek obrazu, a następnie wybierz plik do przekazania z komputera lokalnego. Najmniejszy rozmiar kafelka jest 200 x 200 pikseli, większy kafelków może być kwadratowe lub prostokątny wielokrotności małych fragmentów. Na przykład 200 x 400 pikseli, 400 x 200 pikseli lub 400 x 400 piks.
+W obszarze **skonfigurować obraz**, wybierz opcję **obraz** kafelka, a następnie wybierz plik do przekazania z komputera lokalnego. Najmniejszy rozmiar kafelka jest 200 x 200 pikseli, większy kafelków może być kwadratowe lub prostokątny wielokrotności małych fragmentów. Na przykład 200 x 400 pikseli, 400 x 200 pikseli lub 400 x 400 piks.
 
 **Zapisz** przekazanego obrazu. Można zmienić rozmiar i zmienić położenie go w trybie edycji. Wybierz **gotowe** po zakończeniu.
 
@@ -110,13 +110,14 @@ Aby przekazać obraz na pulpicie nawigacyjnym zestawu urządzeń, przejdź do **
 
 ![Przekaż obraz pulpitu nawigacyjnego zestawu urządzeń](media/howto-prepare-images/uploaddevicesetdashboard.png)
 
-W obszarze skonfigurować obrazu wybierz Kafelek obrazu, aby przekazać przygotowany obraz z komputera lokalnego. Najmniejszy rozmiar kafelka jest 200 x 200 pikseli, większy kafelków może być kwadratowe lub prostokątny wielokrotności małych fragmentów. Na przykład 200 x 400 pikseli, 400 x 200 pikseli lub 400 x 400 piks.
+W obszarze **skonfigurować obraz**, wybierz opcję **obraz** Kafelek, aby przekazać obraz z komputera lokalnego. Najmniejszy rozmiar kafelka jest 200 x 200 pikseli, większy kafelków może być kwadratowe lub prostokątny wielokrotności małych fragmentów. Na przykład 200 x 400 pikseli, 400 x 200 pikseli lub 400 x 400 piks.
 
 **Zapisz** przekazanego obrazu. Można zmienić rozmiar i zmienić położenie go w trybie edycji. Wybierz **gotowe** po zakończeniu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Teraz, gdy wiesz jak przygotować i przekazywać obrazy do aplikacji usługi Azure IoT Central, poniżej przedstawiono sugerowany następnego kroku:
+Teraz, gdy wiesz jak przygotować i przekazywać obrazy do aplikacji usługi Azure IoT Central, Oto zalecane kolejne kroki:
 
-> [!div class="nextstepaction"]
-> [Zarządzanie urządzeniami w usłudze Azure IoT Central aplikacji](howto-manage-devices.md)
+* [Dostosowywanie usługi Azure IoT Central interfejsu użytkownika](./howto-customize-ui.md)
+* [Konfigurowanie pulpit nawigacyjny aplikacji](./howto-configure-homepage.md)
+* [Zarządzanie urządzeniami w usłudze Azure IoT Central aplikacji](howto-manage-devices.md)

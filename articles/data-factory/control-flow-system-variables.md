@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: shlo
-ms.openlocfilehash: 183c6aea5aaf84c9d0ed635cac55074a5256851e
-ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.openlocfilehash: 93a83545699e3536eb0045d538225d01cd1a96a2
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64872537"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65235643"
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Zmienne systemowe, obsługiwany przez usługę Azure Data Factory
 W tym artykule opisano zmienne systemowe, obsługiwany przez usługę Azure Data Factory. Podczas definiowania jednostek usługi Data Factory, można użyć tych zmiennych w wyrażeniach.
@@ -45,6 +45,7 @@ Te zmienne systemowe mogą być przywoływane gdziekolwiek w wyzwalaczu JSON wyz
 
 ## <a name="tumbling-window-trigger-scope"></a>Zakres zarówno wyzwalacz okna wirowania
 Te zmienne systemowe mogą być przywoływane gdziekolwiek w wyzwalaczu JSON wyzwalacza jest typu: "TumblingWindowTrigger."
+(Uwaga: Sygnatura czasowa jest domyślnie w formacie ISO 8601)
 
 | Nazwa zmiennej | Opis |
 | --- | --- |

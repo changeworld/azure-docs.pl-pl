@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/03/2019
 ms.author: wolfma
-ms.openlocfilehash: b602a26c83be1ffd4bd55a8eff9ff8d83aac5919
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 86ad938cd3d248ad907b3143342b0acf9ff15631
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65020811"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236858"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-macos-by-using-the-speech-sdk"></a>Szybki start: Rozpoznawanie mowy, języka C++ w systemie macOS przy użyciu zestawu SDK rozpoznawania mowy
 
@@ -64,7 +64,7 @@ Pobierz i zainstaluj zestaw SDK w następujący sposób:
 
    Listing katalogu powinien zawierać uwagi dotyczące innych firm — oraz plików licencji, a także `MicrosoftCognitiveServicesSpeech.framework` katalogu.
 
-## <a name="add-sample-code"></a>Dodawanie przykładowego kodu
+## <a name="add-sample-code"></a>Dodaj kod przykładowy
 
 1. Utwórz plik źródłowy języka C++ o nazwie `helloworld.cpp` i wklej w nim poniższy kod.
 
@@ -74,7 +74,7 @@ Pobierz i zainstaluj zestaw SDK w następujący sposób:
 
 1. Zastąp ciąg `YourServiceRegion` [regionem](regions.md) skojarzonym z subskrypcją (na przykład `westus` w przypadku subskrypcji bezpłatnej wersji próbnej).
 
-## <a name="build-the-app"></a>Kompilacja aplikacji
+## <a name="build-the-app"></a>Tworzenie aplikacji
 
 > [!NOTE]
 > Pamiętaj o wprowadzeniu poniższych poleceń jako _pojedynczego wiersza polecenia_. Najprostszym sposobem wykonania tej czynności jest skopiowanie polecenia przy użyciu przycisku **Kopiuj** obok danego polecenia, a następnie wklejenie go w oknie powłoki.
@@ -82,7 +82,7 @@ Pobierz i zainstaluj zestaw SDK w następujący sposób:
 * Uruchom następujące polecenie, aby skompilować aplikację.
 
   ```sh
-  g++ helloworld.cpp -o helloworld --std=c++11 -F${SPEECHSDK_ROOT} -framework MicrosoftCognitiveServicesSpeech
+  g++ helloworld.cpp -o helloworld --std=c++14 -F${SPEECHSDK_ROOT} -framework MicrosoftCognitiveServicesSpeech
   ```
 
 ## <a name="run-the-app"></a>Uruchamianie aplikacji

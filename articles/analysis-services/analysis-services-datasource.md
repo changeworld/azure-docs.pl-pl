@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ed18fd985173a4d978edccedc8b6e5cf527f16dd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2505ab5a9445256bd592dfa7f58a6dea79d25043
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60327143"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65506817"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Źródła danych obsługiwane w usługach Azure Analysis Services
 
@@ -23,14 +23,14 @@ ms.locfileid: "60327143"
 
 |Źródło danych  |W pamięci  |Tryb DirectQuery  |
 |---------|---------|---------|
-|Azure SQL Database<sup>[2](#azsqlmanaged)</sup>     |   Yes      |    Yes      |
-|Azure SQL Data Warehouse     |   Yes      |   Yes       |
-|Azure Blob Storage<sup>[1](#tab1400a)</sup>     |   Yes       |    Nie      |
-|Azure Table Storage<sup>[1](#tab1400a)</sup>    |   Yes       |    Nie      |
-|Azure Cosmos DB<sup>[1](#tab1400a)</sup>     |  Yes        |  Nie        |
-|Azure Data Lake Store (Gen1)<sup>[1](#tab1400a)</sup>, <sup>[4](#gen2)</sup>      |   Yes       |    Nie      |
-|Usługa Azure HDInsight HDFS<sup>[1](#tab1400a)</sup>     |     Yes     |   Nie       |
-|Usługi Azure HDInsight Spark<sup>[1](#tab1400a)</sup>, <sup> [3](#databricks)</sup>     |   Yes       |   Nie       |
+|Azure SQL Database<sup>[2](#azsqlmanaged)</sup>     |   Tak      |    Tak      |
+|Azure SQL Data Warehouse     |   Tak      |   Tak       |
+|Azure Blob Storage<sup>[1](#tab1400a)</sup>     |   Tak       |    Nie      |
+|Azure Table Storage<sup>[1](#tab1400a)</sup>    |   Tak       |    Nie      |
+|Azure Cosmos DB<sup>[1](#tab1400a)</sup>     |  Tak        |  Nie        |
+|Azure Data Lake Store (Gen1)<sup>[1](#tab1400a)</sup>, <sup>[4](#gen2)</sup>      |   Tak       |    Nie      |
+|Usługa Azure HDInsight HDFS<sup>[1](#tab1400a)</sup>     |     Tak     |   Nie       |
+|Usługi Azure HDInsight Spark<sup>[1](#tab1400a)</sup>, <sup> [3](#databricks)</sup>     |   Tak       |   Nie       |
 ||||
 
 <a name="tab1400a">1</a> — tabelaryczny 1400 i wyższych modeli tylko.   
@@ -52,7 +52,7 @@ Nawiązywanie połączenia z lokalnych źródeł danych z i serwera usług Azure
 |  --- | --- | --- |
 | Oprogramowanie SQL Server |SQL Server Native Client 11.0, dostawca OLE DB firmy Microsoft dla programu SQL Server, .NET Framework Data Provider for SQL Server | .NET framework Data Provider for SQL Server |
 | SQL Server Data Warehouse |SQL Server Native Client 11.0, dostawca OLE DB firmy Microsoft dla programu SQL Server, .NET Framework Data Provider for SQL Server | .NET framework Data Provider for SQL Server |
-| Oracle |Dostawca Microsoft OLE DB dla Oracle, dostawca danych programu Oracle dla platformy .NET |Dostawca danych programu Oracle dla platformy .NET |
+| Oracle | Dostawca OLE DB dla Oracle, dostawca danych programu Oracle dla platformy .NET |Dostawca danych programu Oracle dla platformy .NET |
 | Teradata |Dostawca OLE DB dla programu Teradata, dostawca danych programu Teradata dla platformy .NET |Dostawca danych programu Teradata dla platformy .NET |
 | | | |
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 0e5dc73c1f24ccbc2032cecbb857587eb20c6806
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 7c1a13a44d9db8ed029ce798f0bb34944a1a65a7
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026210"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409039"
 ---
 # <a name="device-roobo-smart-audio-dev-kit"></a>Urządzenie: Zestaw deweloperski inteligentnych Roobo Audio
 
@@ -67,9 +67,9 @@ Ten artykuł zawiera urządzenia określonych informacji dotyczących inteligent
 
 Aby uzyskać więcej informacji rozwoju, zobacz [Podręcznik programowania Roobo](http://dwn.roo.bo/server_upload/ddk/ROOBO%20Dev%20Kit-User%20Guide.pdf).
 
-## <a name="audio"></a>Audio
+## <a name="audio"></a>Dźwięk
 
-Roobo udostępnia narzędzia, która przechwytuje wszystkie audio w pamięci flash. Mogą pomóc rozwiązać problemy. Wersja narzędzia towarzyszy konfiguracjami development kit. Na [witryny Roobo](http://ddk.roobo.com/), wybierz urządzenie, a następnie wybierz **narzędzia Roobo** widocznego u dołu strony.
+Roobo udostępnia narzędzia, która przechwytuje wszystkie audio w pamięci flash. Mogą pomóc rozwiązać problemy. Wersja narzędzia towarzyszy konfiguracjami development kit. Na [witryny Roobo](https://ddk.roobo.com/), wybierz urządzenie, a następnie wybierz **narzędzia Roobo** widocznego u dołu strony.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

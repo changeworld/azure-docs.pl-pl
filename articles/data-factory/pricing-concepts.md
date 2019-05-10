@@ -9,16 +9,19 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: shlo
-ms.openlocfilehash: 454899cd7cc592b87f96233d73ca8c4ed6ac333f
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: a825982532047f6e311c5508394df243310f02ab
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64935765"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233931"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Informacje o przykładach ceny usługi Data Factory
 
 W tym artykule opisano i przedstawiono usługi Azure Data Factory, model o szczegółowe przykłady cen.
+
+> [!NOTE]
+> Ceny użyte w tych przykładach poniżej są hipotetyczny i nie powinny oznaczać rzeczywiste ceny.
 
 ## <a name="copy-data-from-aws-s3-to-azure-blob-storage-hourly"></a>Kopiowanie danych z usługi AWS S3 do magazynu obiektów Blob platformy Azure co godzinę
 
@@ -122,13 +125,13 @@ Do wykonywania scenariusz, należy utworzyć potok z następującymi elementami:
   - Potok działania = $0.00003 (Prorated 1 minuty w czasie wykonywania. 0,002 USD za godzinę na platformie Azure Integration Runtime)
   - Działania potoku zewnętrznego = $0.000041 (Prorated przez 10 minut czasu wykonywania. $0.00025/godz. na platformie Azure Integration Runtime)
 
-## <a name="using-mapping-data-flow-debug-for-a-normal-workday"></a>Za pomocą debugowania przepływu danych mapowania dla normalnych workday
+## <a name="using-mapping-data-flow-debug-for-a-normal-workday-preview-pricing"></a>Za pomocą debugowania przepływu danych mapowania dla normalnej pracy (ceny dla wersji zapoznawczej)
 
 Jako inżynier danych możesz odpowiadają za projektowanie, tworzenie i testowanie mapowanie przepływu danych każdego dnia. Zaloguj się do interfejsu użytkownika usługi ADF rano i włączyć tryb debugowania dla przepływu danych. Domyślny czas wygaśnięcia sesji debugowania jest 60 minut. Możesz pracować w ciągu dnia, przez 10 godzin, więc nigdy nie wygasa sesję debugowania. W związku z tym, Twoja opłata na ten dzień wyniesie:
 
 **10 (godziny) x 8 (rdzenie) x $0.112 = 8.96 $**
 
-## <a name="transform-data-in-blob-store-with-mapping-data-flows"></a>Przekształcanie danych w magazynie obiektów blob za pomocą mapowania przepływu danych
+## <a name="transform-data-in-blob-store-with-mapping-data-flows-preview-pricing"></a>Przekształcanie danych w magazynie obiektów blob za pomocą mapowania przepływów danych (ceny dla wersji zapoznawczej)
 
 W tym scenariuszu chcesz przekształcić dane obiektów Blob Store wizualne w usłudze ADF mapowanie przepływu danych w przypadku harmonogramu co godzinę.
 

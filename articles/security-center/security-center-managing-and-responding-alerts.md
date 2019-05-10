@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2018
 ms.author: rkarlin
-ms.openlocfilehash: 28a9b90e23d0d182197450e6449b8d3296fe99d6
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 582912160c8ed514401be3522e52dcc6eb45d263
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62111393"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65235768"
 ---
 # <a name="managing-and-responding-to-security-alerts-in-azure-security-center"></a>Reagowanie na alerty zabezpieczeń i zarządzanie nimi w Centrum zabezpieczeń Azure
 Ten dokument ułatwia zarządzanie alertami zabezpieczeń i reagowanie na nie przy użyciu usługi Azure Security Center.
@@ -67,16 +67,16 @@ W dolnej części tej strony znajdują się szczegółowe informacje o każdym a
 
 ### <a name="alert-severity"></a>Ważność alertu
 
-> [!NOTE]
-> Ważność alertu są wyświetlane inaczej w portalu i interfejsu API REST, różnice zostały wymienione na poniższej liście.
-
 -   **Wysoka**: Istnieje wysokie prawdopodobieństwo, że zasób zostanie naruszone. Następnie od razu należy zwrócić uwagę do niego. Usługa Security Center ma o dużej pewności w obu złośliwego działania i ustalenia używany do wysyłania alertu. Na przykład alert, który wykrywa wykonywania znane złośliwe narzędzia, takiego jak program Mimikatz, popularnego narzędzia używane do kradzieży poświadczeń. 
--   **Średni (niska w interfejsie API REST)**: Jest to prawdopodobnie podejrzanych działań, które mogą wskazywać, że zasób zostanie naruszone.
+-   **Średnia**: Jest to prawdopodobnie podejrzanych działań, które mogą wskazywać, że zasób zostanie naruszone.
 Security Center w analitycznych lub wyszukiwaniu UFNOŚĆ średni i UFNOŚĆ złośliwego działania średniej lub dużej. Są to zazwyczaj będzie uczenia maszynowego ani rozwiązaniami do wykrywania anomalii na podstawie. Na przykład logowanie próba z nietypowej lokalizacji.
--   **Niski (informacje o interfejsie API REST)**: Może to być nieszkodliwe dodatni lub blokowania ataków. 
+-   **Niska**: Może to być nieszkodliwe dodatni lub blokowania ataków. 
     - Usługa Security Center nie jest wystarczająco pewność, że celem jest złośliwego i działanie może być nieszkodliwe. Na przykład Wyczyść dziennik jest akcję, która może się zdarzyć, gdy osoba atakująca próbuje użyć w celu ukrycia śladów ich działania, ale w wielu przypadkach jest operacją procedury wykonywane przez administratorów.
     - Usługa Security Center nie zwykle zorientować się, gdy ataków zostały zablokowane, chyba że jest to interesujące takim Sugerujemy, że masz możliwość przejrzenia. 
--   **Informacyjny (tryb cichy w interfejsie API REST)**: Widoczne są tylko alerty informacyjne podczas przechodzenia do szczegółów w przypadku wystąpienia zdarzenia zabezpieczeń, czy przy użyciu interfejsu API REST z określonym identyfikatorem alertu. Zdarzenia zwykle składa się z liczby alertów, niektóre z nich mogą być wyświetlane w ich własnych tylko do informacyjna, ale w kontekście innych alertów może być Alberta bliżej. 
+-   **Informacyjny**: Widoczne są tylko alerty informacyjne podczas przechodzenia do szczegółów w przypadku wystąpienia zdarzenia zabezpieczeń, czy przy użyciu interfejsu API REST z określonym identyfikatorem alertu. Zdarzenia zwykle składa się z liczby alertów, niektóre z nich mogą być wyświetlane w ich własnych tylko do informacyjna, ale w kontekście innych alertów może być Alberta bliżej.  
+
+> [!NOTE]
+> Jeśli używasz **2015-06-01-preview** wersji interfejsu API, a następnie istnieją różnice w alarmu, które typy ważności są stosowane do scenariuszy, do których, niż wymienione powyżej.  
 
 ### <a name="filtering-alerts"></a>Filtrowanie alertów
 Alerty można filtrować na podstawie daty, stanu i ważności. Filtrowanie alertów może być przydatne w przypadku scenariuszy, w których należy zawęzić zakres wyświetlanych alertów zabezpieczeń. Możesz na przykład sprawdzić alerty zabezpieczeń, które wystąpiły w ciągu ostatnich 24 godzin, ponieważ badasz potencjalne naruszenie zabezpieczeń systemu.

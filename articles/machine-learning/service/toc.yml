@@ -224,6 +224,9 @@
       items:
         - name: Tworzenie potoku uczenia maszynowego
           href: how-to-create-your-first-pipeline.md
+        - name: Trenowanie i wdrażanie modeli uczenia maszynowego za pomocą usługi Azure Pipelines
+          href: /azure/devops/pipelines/targets/azure-machine-learning?view=azure-devop
+          mainContext: true
     - name: Zarządzanie przydziałami zasobów
       displayName: limits
       href: how-to-manage-quotas.md

@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2019
+ms.date: 05/07/2019
 ms.author: zchia
-ms.openlocfilehash: fec6a7e3433eb5d657deac8c1b2ceb327f8d32e4
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: f79bc083105f997b08f7cfa6f8e08a8f4f455455
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65159408"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65470536"
 ---
 # <a name="tutorial-configure-dynamic-signal-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie dynamicznego sygnał dla automatycznej aprowizacji użytkowników
 
@@ -47,15 +47,15 @@ Przed skonfigurowaniem sygnałów dynamicznych dla użytkownika automatyczne Ini
 
 1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie wybierz **usługi Azure Active Directory**.
 
-    ![Przycisk Azure Active Directory](common/select-azuread.png)
+    ![Przycisk usługi Azure Active Directory](common/select-azuread.png)
 
 2. Przejdź do **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+    ![W bloku aplikacji przedsiębiorstwa](common/enterprise-applications.png)
 
 3. Aby dodać nową aplikację, wybierz **nową aplikację** znajdujący się u góry okienka.
 
-    ![Przycisk Nowa aplikacja](common/add-new-app.png)
+    ![Nowy przycisk aplikacji](common/add-new-app.png)
 
 4. W polu wyszukiwania wprowadź **sygnałów dynamicznych**, wybierz opcję **sygnałów dynamicznych** panel wyników, a następnie kliknij **Dodaj** przycisk, aby dodać aplikację.
 
@@ -84,7 +84,7 @@ Ta sekcja przeprowadzi Cię przez kroki, aby skonfigurować usługi Azure AD ini
 
 ### <a name="to-configure-automatic-user-provisioning-for-dynamic-signal-in-azure-ad"></a>Aby skonfigurować automatyczna aprowizacja użytkowników dla dynamicznych sygnału w usłudze Azure AD:
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) i wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **sygnałów dynamicznych**.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). Wybierz **aplikacje dla przedsiębiorstw**, a następnie wybierz **wszystkie aplikacje**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
@@ -104,11 +104,11 @@ Ta sekcja przeprowadzi Cię przez kroki, aby skonfigurować usługi Azure AD ini
 
 6. W konsoli administracyjnej sygnałów dynamicznych, przejdź do **Administrator > Zaawansowane > Interfejs API**.
 
-    ![Sygnał dynamicznego inicjowania obsługi administracyjnej.](./media/dynamicsignal-provisioning-tutorial/secret-token-1.png)
+    ![Sygnał dynamicznego inicjowania obsługi administracyjnej.](./media/dynamic-signal-provisioning-tutorial/secret-token-1.png)
 
     Kopiuj **adresu URL interfejsu API Standard SCIM** do **dzierżawy adresu URL**. Kliknij pozycję **wygenerować nowy Token** do generowania **tokenu elementu nośnego** i skopiuj wartość do **klucz tajny tokenu**.
 
-    ![Sygnał dynamicznego inicjowania obsługi administracyjnej.](./media/dynamicsignal-provisioning-tutorial/secret-token-2.png)
+    ![Sygnał dynamicznego inicjowania obsługi administracyjnej.](./media/dynamic-signal-provisioning-tutorial/secret-token-2.png)
 
 7. Podczas wypełniania pola wyświetlane w kroku 5, kliknij przycisk **Testuj połączenie** aby upewnij się, Azure AD można połączyć się z sygnałów dynamicznych. Jeśli połączenie nie powiedzie się, upewnij się, że Twoje konto sygnałów dynamicznych ma uprawnienia administratora i spróbuj ponownie.
 
@@ -122,11 +122,11 @@ Ta sekcja przeprowadzi Cię przez kroki, aby skonfigurować usługi Azure AD ini
 
 10. W obszarze **mapowania** zaznacz **synchronizacji Azure użytkownicy usługi Active Directory do dynamicznego sygnału**.
 
-    ![Mapowania użytkownika sygnałów dynamicznych](media/dynamicsignal-provisioning-tutorial/user-mappings.png)
+    ![Mapowania użytkownika sygnałów dynamicznych](media/dynamic-signal-provisioning-tutorial/user-mappings.png)
 
 11. Przejrzyj atrybuty użytkownika, które są synchronizowane z usługi Azure AD do dynamicznego sygnału w **mapowanie atrybutu** sekcji. Atrybuty wybrany jako **zgodne** właściwości są używane do dopasowania kont użytkowników w dynamicznych sygnał dla operacji aktualizowania. Wybierz **Zapisz** przycisk, aby zatwierdzić zmiany.
 
-    ![Hodowca atrybutów użytkownika](media/dynamicsignal-provisioning-tutorial/user-mapping-attributes.png)
+    ![Atrybuty użytkownika sygnałów dynamicznych](media/dynamic-signal-provisioning-tutorial/user-mapping-attributes.png)
 
 12. Aby skonfigurować filtrów określania zakresu, można znaleźć w następujących instrukcjach podanych w [samouczek filtru Scoping](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
@@ -160,7 +160,3 @@ Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienn
 
 * [Dowiedz się, jak przeglądać dzienniki i Uzyskaj raporty dotyczące inicjowania obsługi administracyjnej działania](../manage-apps/check-status-user-account-provisioning.md)
 
-<!--Image references-->
-[1]: ./media/atlassian-cloud-provisioning-tutorial/tutorial-general-01.png
-[2]: ./media/atlassian-cloud-provisioning-tutorial/tutorial-general-02.png
-[3]: ./media/atlassian-cloud-provisioning-tutorial/tutorial-general-03.png

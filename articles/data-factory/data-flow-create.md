@@ -1,19 +1,17 @@
 ---
 title: Utwórz mapowanie przepływu danych w usłudze Azure Data Factory
-description: Utwórz mapowanie przepływu danych w usłudze Azure Data Factory
-author: WenJason
-ms.author: v-jay
-ms.reviewer: douglasl
+description: Tworzenie usługi Azure Data Factory mapowanie przepływ danych
+author: kromerm
+ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
-origin.date: 02/12/2019
-ms.date: 04/22/2019
-ms.openlocfilehash: bb6ae9f97d681625218118b8adca116de1c0fb21
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 02/12/2019
+ms.openlocfilehash: 366ed60534544ebbf889e2f72fe703f9b821f871
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60883741"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65235652"
 ---
 # <a name="create-azure-data-factory-data-flow"></a>Utworzenie przepływu danych fabryki danych platformy Azure
 
@@ -21,9 +19,9 @@ ms.locfileid: "60883741"
 
 Mapowanie przepływu danych w usłudze ADF umożliwiają do przekształcania danych na dużą skalę bez pisania wymagane. Można zaprojektować zadanie przekształcania danych w Projektancie przepływu danych, tworząc szereg przekształcenia. Uruchom z dowolnej liczby przekształceń źródła, następuje kroki przekształcania danych. Następnie należy wykonać przepływu danych z obiektu sink z zawarciem wyniki w lokalizacji docelowej.
 
-Rozpocznij pracę od utworzenia nowej fabryki danych V2 z witryny Azure Portal. Po utworzeniu Twojej nowej fabryki, kliknij Kafelek "Tworzenie i monitorowanie", aby uruchomić interfejs użytkownika usługi Data Factory.
+Rozpocznij pracę od utworzenia nowej fabryki danych V2 w witrynie Azure portal. Po utworzeniu Twojej nowej fabryki, kliknij Kafelek "Tworzenie i monitorowanie", aby uruchomić interfejs użytkownika usługi Data Factory.
 
-![Opcje przepływu danych](media/data-flow/v2dataflowportal.png "utworzyć przepływ danych")
+![Opcje przepływu danych](media/data-flow/v2portal.png "utworzyć przepływ danych")
 
 Gdy interfejs użytkownika usługi Data Factory, można użyć, przykładowe dane przepływają. Przykłady są dostępne w galerii szablonów usługi ADF. W usłudze ADF utworzyć "Potok za pomocą szablonu" i wybierz kategorię, przepływ danych w galerii szablonów.
 
@@ -37,7 +35,7 @@ Zostanie wyświetlony monit wpisz informacje o Twoim koncie usługi Azure Blob S
 
 ## <a name="create-new-data-flow"></a>Tworzenie nowego przepływu danych
 
-Utwórz zasób "znak plus" znajdujący się w Interfejsie ADF do utworzenia przepływu danych użycia
+Utwórz zasób "znak plus" znajdujący się w Interfejsie ADF do utworzenia przepływu danych użycia.
 
 ![Opcje przepływu danych](media/data-flow/newresource.png "nowy zasób")
 

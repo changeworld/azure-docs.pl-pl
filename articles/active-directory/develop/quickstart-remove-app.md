@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/30/2019
+ms.date: 05/08/2019
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86c90f05734f793842cf506721db9c4fd5b2b1a3
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 271fe45082749afc310e8f217e8119d3931c3cac
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64918563"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65413732"
 ---
 # <a name="quickstart-remove-an-application-registered-with-the-microsoft-identity-platform"></a>Szybki start: Usunąć aplikację, który został zarejestrowany z platformą Microsoft identity
 
@@ -35,10 +35,7 @@ W tym przewodniku Szybki start zawarto informacje na temat wykonywania następuj
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem pracy upewnij się, że są spełnione następujące wymagania wstępne:
-
-* Masz dzierżawę z zarejestrowanymi w niej aplikacjami. Aby dowiedzieć się, jak dodawać i rejestrować aplikacje, zobacz [Rejestrowanie aplikacji za pomocą platformy tożsamości firmy Microsoft](quickstart-register-app.md).
-* Wyrażono zgodę na użycie środowiska w wersji zapoznawczej dla rejestracji aplikacji w witrynie Azure Portal. Kroki opisane w tym przewodniku Szybki start odpowiadają nowemu interfejsowi użytkownika i zadziałają tylko wtedy, gdy wyrażono zgodę na środowisko w wersji zapoznawczej.
+Konieczne jest posiadanie dzierżawy, który został zarejestrowany do niej aplikacje. Aby dowiedzieć się, jak dodawać i rejestrować aplikacje, zobacz [Rejestrowanie aplikacji za pomocą platformy tożsamości firmy Microsoft](quickstart-register-app.md).
 
 ## <a name="remove-an-application-authored-by-you-or-your-organization"></a>Usuwanie aplikacji utworzonej przez Ciebie lub Twoją organizację
 
@@ -48,7 +45,7 @@ Aplikacje zarejestrowane przez Ciebie lub Twoją aplikację są reprezentowane p
 
 1. Zaloguj się do [witryny Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
 2. Jeśli Twoje konto umożliwia dostęp do więcej niż jednej dzierżawy, wybierz konto w prawym górnym rogu, a następnie ustaw sesję portalu na odpowiednią dzierżawę usługi Azure AD.
-3. W okienku nawigacji po lewej stronie wybierz pozycję **Azure Active Directory**, a następnie pozycję **Rejestracje aplikacji (wersja zapoznawcza)**. Znajdź i wybierz aplikację, którą chcesz skonfigurować. Po wybraniu aplikacji zobaczysz stronę **Przegląd** aplikacji.
+3. W okienku nawigacji po lewej stronie wybierz **usługi Azure Active Directory** usługi, a następnie wybierz **rejestracje aplikacji**. Znajdź i wybierz aplikację, którą chcesz skonfigurować. Po wybraniu aplikacji zobaczysz stronę **Przegląd** aplikacji.
 4. Na stronie **Przegląd** wybierz pozycję **Usuń**.
 5. Wybierz pozycję **Tak**, aby potwierdzić, że chcesz usunąć aplikację.
 

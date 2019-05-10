@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 04/05/2019
+ms.date: 05/06/2019
 ms.author: helohr
-ms.openlocfilehash: e550111e04ea77e35a4554bcc6e3bffaf4d543d2
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 165980da2b78e7514ea1938bdbeb6fda82dd123d
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924958"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236664"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>Tworzenie puli hostów przy użyciu programu PowerShell
 
@@ -100,17 +100,6 @@ Aby zarejestrować agentów pulpitu wirtualnego Windows, wykonaj następujące c
    - Pobierz [programu inicjującego agenta pulpitów wirtualnych Windows](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrxrH).
    - Kliknij prawym przyciskiem myszy pobrany plik Instalatora, wybierz **właściwości**, wybierz opcję **odblokowanie**, a następnie wybierz **OK**. Dzięki temu system ufać Instalatora.
    - Uruchom Instalatora.
-4. Zainstaluj lub aktywowania Windows pulpitu wirtualnego stosu side-by-side. Kroki będzie się różnił w zależności od wersji systemu operacyjnego korzysta z maszyny wirtualnej.
-   - Jeśli system operacyjny maszyny wirtualnej systemu Windows Server 2016:
-     - Pobierz [stosu side-by-side pulpitu wirtualnego Windows](https://go.microsoft.com/fwlink/?linkid=2084270).
-     - Kliknij prawym przyciskiem myszy pobrany plik Instalatora, wybierz **właściwości**, wybierz opcję **odblokowanie**, a następnie wybierz **OK**. Dzięki temu system ufać Instalatora.
-     - Uruchom Instalatora.
-   - W przypadku systemu operacyjnego na maszynie wirtualnej systemu Windows 10 1809 lub nowszym lub Windows Server 2019 lub nowszy:
-     - Pobierz [skryptu](https://go.microsoft.com/fwlink/?linkid=2084268) aktywować stosu side-by-side.
-     - Kliknij prawym przyciskiem myszy pobranego skryptu, wybierz **właściwości**, wybierz opcję **odblokowanie**, a następnie wybierz **OK**. Dzięki temu system ufać skryptu.
-     - Z **Start** menu wyszukiwania dla środowiska Windows PowerShell ISE, kliknij go prawym przyciskiem myszy, a następnie wybierz **Uruchom jako administrator**.
-     - Wybierz **pliku**, następnie **Otwórz...** , a następnie znajdź skrypt programu PowerShell z pobranymi plikami i otwórz go.
-     - Wybierz przycisk zielony Odtwórz, aby uruchomić skrypt.
 
 >[!IMPORTANT]
 >Aby zabezpieczyć środowisku pulpitu wirtualnego Windows na platformie Azure, zalecamy nie otwieraj portu wejściowego 3389 na maszynach wirtualnych. Pulpit wirtualny Windows nie wymaga otwartego portu dla ruchu przychodzącego 3389 dla użytkowników puli hosta maszyn wirtualnych. Jeśli musisz otworzyć port 3389 na potrzeby rozwiązywania problemów, zalecamy użycie [dostęp do maszyny Wirtualnej just-in-time](https://docs.microsoft.com/azure/security-center/security-center-just-in-time).

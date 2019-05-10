@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 03/15/2019
-ms.openlocfilehash: c11f52d2bbc55187a16227cf9553cc7ba6013e1e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 04/22/2019
+ms.openlocfilehash: 7f3afec0425033fba174e000195fa26b295aaef1
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60331098"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507938"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-based-purchasing-model-limits"></a>Limity zasobów dla pul elastycznych za pomocą ograniczeń oparty na rdzeniach wirtualnych model zakupu
 
@@ -44,7 +44,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i magazynu przy użyciu kwot
 |Generowanie H: odczytu i zapisu|4|4|4|4|4|4|
 |Rdzenie wirtualne|1|2|3|4|5|6|
 |Pamięć (GB)|7|14|21|28|35|42|
-|Obsługa magazynu kolumn|Yes|Yes|Yes|Yes|Yes|Yes|
+|Obsługa magazynu kolumn|Tak|Yes|Yes|Yes|Yes|Tak|
 |Pojemność magazynu OLTP w pamięci (GB)|ND|ND|ND|ND|ND|ND|
 |Maksymalny rozmiar danych (GB)|512|756|756|1536|1536|1536|
 |Maksymalny rozmiar dziennika|154|227|227|461|461|461|
@@ -52,7 +52,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i magazynu przy użyciu kwot
 |Typ magazynu|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|
 |We/Wy, czas oczekiwania (w przybliżeniu)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|
 |Docelowy operacji We/Wy (64 KB)|500|1000|1500|2000|2500|3000|
-|Limity szybkości dziennika (MB/s)|2.5|5|7.5|10|12.5|15|
+|Limity szybkości dziennika (MB/s)|4.6875|9.375|14.0625|18.75|23.4375|28.125|
 |Maksymalna liczba współbieżnych procesów roboczych na pulę (żądań) * |210|420|630|840|1050|1260|
 |Maksymalna liczba współbieżnych logowań na pulę * |210|420|630|840|1050|1260|
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|
@@ -72,7 +72,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i magazynu przy użyciu kwot
 |Generowanie H: odczytu i zapisu|4|4|4|4|4|4|
 |Rdzenie wirtualne|7|8|9|10|16|24|
 |Pamięć (GB)|49|56|63|70|112|168|
-|Obsługa magazynu kolumn|Yes|Yes|Yes|Yes|Yes|Yes|
+|Obsługa magazynu kolumn|Tak|Yes|Yes|Yes|Yes|Tak|
 |Pojemność magazynu OLTP w pamięci (GB)|ND|ND|ND|ND|ND|ND|
 |Maksymalny rozmiar danych (GB)|1536|2048|2048|2048|3584|4096|
 |Maksymalny rozmiar dziennika (GB)|461|614|614|614|1075|1229|
@@ -80,7 +80,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i magazynu przy użyciu kwot
 |Typ magazynu|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|
 |We/Wy, czas oczekiwania (w przybliżeniu)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|
 |Docelowy operacji We/Wy (64 KB)|3500|4000|4500|5000|7000|7000|
-|Limity szybkości dziennika (MB/s)|17.5|20|20|20|20|20|
+|Limity szybkości dziennika (MB/s)|32.8125|37.5|37.5|37.5|37.5|37.5|
 |Maksymalna liczba współbieżnych procesów roboczych na pulę (żądań) *|1470|1680|1890|2100|3360|5040|
 |Maksymalna liczba współbieżnych logowań puli (żądań) *|1470|1680|1890|2100|3360|5040|
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|
@@ -100,15 +100,15 @@ Można ustawić warstwę usługi, rozmiar obliczeń i magazynu przy użyciu kwot
 |Generowanie H: odczytu i zapisu|5|5|5|5|5|5|5|
 |Rdzenie wirtualne|2|4|6|8|10|12|14|
 |Pamięć (GB)|10.2|20.4|30.6|40.8|51|61.2|71.4|
-|Obsługa magazynu kolumn|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Obsługa magazynu kolumn|Tak|Yes|Yes|Yes|Yes|Yes|Tak|
 |Pojemność magazynu OLTP w pamięci (GB)|ND|ND|ND|ND|ND|ND|ND|
 |Maksymalny rozmiar danych (GB)|512|756|756|1536|1536|1536|
 |Maksymalny rozmiar dziennika (GB)|154|227|227|461|461|461|461|
 |Rozmiar bazy danych TempDB (GB)|64|128|192|256|320|384|384|
 |Typ magazynu|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|
 |We/Wy, czas oczekiwania (w przybliżeniu)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|
-|Docelowy operacji We/Wy (64 KB)|500|1000|1500|2000|2500|3000|3500|
-|Limity szybkości dziennika (MB/s)|2.5|5.6|7.5|10|12.5|15|17.5|
+|Docelowy operacji We/Wy (64 KB)|1000|2000|3000|4000|5000|6000|7000|
+|Limity szybkości dziennika (MB/s)|4.6875|9.375|14.0625|18.75|23.4375|28.125|32.8125|
 |Maksymalna liczba współbieżnych procesów roboczych na pulę (żądań) *|210|420|630|840|1050|1260|1470|
 |Maksymalna liczba współbieżnych logowań na pulę (żądań) *|210|420|630|840|1050|1260|1470|
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|30000|
@@ -128,15 +128,15 @@ Można ustawić warstwę usługi, rozmiar obliczeń i magazynu przy użyciu kwot
 |Generowanie H: odczytu i zapisu|5|5|5|5|5|5|5|
 |Rdzenie wirtualne|16|18|20|24|32|40|80|
 |Pamięć (GB)|81.6|91.8|102|122.4|163.2|204|408|
-|Obsługa magazynu kolumn|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Obsługa magazynu kolumn|Tak|Yes|Yes|Yes|Yes|Yes|Tak|
 |Pojemność magazynu OLTP w pamięci (GB)|ND|ND|ND|ND|ND|ND|ND|
 |Maksymalny rozmiar danych (GB)|2048|2048|3072|3072|4096|4096|4096|
 |Maksymalny rozmiar dziennika (GB)|614|614|922|922|1229|1229|1229|
 |Rozmiar bazy danych TempDB (GB)|384|384|384|384|384|384|384|
 |Typ magazynu|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|Usługa Premium Storage (zdalne)|
 |We/Wy, czas oczekiwania (w przybliżeniu)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|
-|Docelowy operacji We/Wy (64 KB)|4000|4500|5000|6000|7000|7000|7000|
-|Limity szybkości dziennika (MB/s)|20|20|20|20|20|20|20|
+|Docelowy operacji We/Wy (64 KB)|7000|7000|7000|7000|7000|7000|7000|
+|Limity szybkości dziennika (MB/s)|37.5|37.5|37.5|37.5|37.5|37.5|37.5|
 |Maksymalna liczba współbieżnych procesów roboczych na pulę (żądań) *|1680|1890|2100|2520|33600|4200|8400|
 |Maksymalna liczba współbieżnych logowań na pulę (żądań) *|1680|1890|2100|2520|33600|4200|8400|
 |Maksymalna liczba baz danych na pulę|500|500|500|500|500|500|500|
@@ -157,7 +157,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i magazynu przy użyciu kwot
 |Generowanie H: odczytu i zapisu|4|4|4|4|4|4|
 |Rdzenie wirtualne|1|2|3|4|5|6|
 |Pamięć (GB)|7|14|21|28|35|42|
-|Obsługa magazynu kolumn|Yes|Yes|Yes|Yes|Yes|Yes|
+|Obsługa magazynu kolumn|Tak|Yes|Yes|Yes|Yes|Tak|
 |Pojemność magazynu OLTP w pamięci (GB)|1|2|3|4|5|6|
 |Typ magazynu|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|
 |Maksymalny rozmiar danych (GB)|650|650|650|650|650|650|
@@ -165,15 +165,15 @@ Można ustawić warstwę usługi, rozmiar obliczeń i magazynu przy użyciu kwot
 |Rozmiar bazy danych TempDB (GB)|32|64|96|128|160|192|
 |We/Wy, czas oczekiwania (w przybliżeniu)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|
 |Docelowy operacji We/Wy (64 KB)|5000|10 000|15000|20000|25000|30000|
-|Limity szybkości dziennika (MB/s)|7.5|15|22.5|30|37.5|45|
+|Limity szybkości dziennika (MB/s)|10|20|30|40|50|60|
 |Maksymalna liczba współbieżnych procesów roboczych na pulę (żądań) *|210|420|630|840|1050|1260|
 |Maksymalna liczba współbieżnych logowań na pulę (żądań) *|210|420|630|840|1050|1260|
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|
 |Maksymalna liczba baz danych na pulę|Tylko jednej bazy danych są obsługiwane w przypadku tego rozmiaru obliczeń|50|100|100|100|100|
 |Min/max warianty pul elastycznych (rdzeń wirtualny) pozwalają na bazę danych|ND|0, 0.25, 0.5, 1, 2|0, 0.25, 0.5, 1...3|0, 0.25, 0.5, 1...4|0, 0.25, 0.5, 1...5|0, 0.25, 0.5, 1...6|
 |Liczba replik|4|4|4|4|4|4|
-|Multi-AZ|Yes|Yes|Yes|Yes|Yes|Yes|
-|Przeczytaj skalowalnego w poziomie|Yes|Yes|Yes|Yes|Yes|Yes|
+|Multi-AZ|Tak|Yes|Yes|Yes|Yes|Tak|
+|Przeczytaj skalowalnego w poziomie|Tak|Yes|Yes|Yes|Yes|Tak|
 |Uwzględniony magazyn kopii zapasowych|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|
 
 \* Aby uzyskać maksymalną współbieżnych procesów roboczych (żądań) dla dowolnej poszczególne bazy danych, zobacz [pojedynczy limity zasobów bazy danych](sql-database-vcore-resource-limits-single-databases.md). Na przykład jeśli 5. generacji i jego max (rdzeń wirtualny) na bazę danych korzysta z puli elastycznej jest 2, maksymalna współbieżnych procesów roboczych to 200.  Jeśli maksymalny (rdzeń wirtualny) na bazę danych wynosi 0,5, następnie max współbieżnych procesów roboczych jest 50, ponieważ na 5. generacji są maksymalnie 100 współbieżnych procesów roboczych na rdzeniach wirtualnych.  Inne ustawienia max (rdzeń wirtualny) na bazę danych, które są mniej 1 rdzeń wirtualny lub mniejszą liczbę maksymalną współbieżnych procesów roboczych jest podobnie przeskalowywany w ten sposób.
@@ -193,15 +193,15 @@ Można ustawić warstwę usługi, rozmiar obliczeń i magazynu przy użyciu kwot
 |Rozmiar bazy danych TempDB (GB)|224|256|288|320|384|384|
 |We/Wy, czas oczekiwania (w przybliżeniu)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|
 |Docelowy operacji We/Wy (64 KB)|35000|40000|45000|50000|80000|120000|
-|Limity szybkości dziennika (MB/s)|52.5|60|67.5|75|80|80|
+|Limity szybkości dziennika (MB/s)|70|80|80|80|80|80|
 |Maksymalna liczba współbieżnych procesów roboczych na pulę (żądań) *|1470|1680|1890|2100|3360|5040|
 |Maksymalna liczba współbieżnych logowań na pulę (żądań) *|1470|1680|1890|2100|3360|5040|
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|
 |Maksymalna liczba baz danych na pulę|100|100|100|100|100|100|
 |Min/max warianty pul elastycznych (rdzeń wirtualny) pozwalają na bazę danych|0, 0.25, 0.5, 1...7|0, 0.25, 0.5, 1...8|0, 0.25, 0.5, 1...9|0, 0.25, 0.5, 1...10|0, 0.25, 0.5, 1...10, 16|0, 0.25, 0.5, 1...10, 16, 24|
 |Liczba replik|4|4|4|4|4|4|
-|Multi-AZ|Yes|Yes|Yes|Yes|Yes|Yes|
-|Przeczytaj skalowalnego w poziomie|Yes|Yes|Yes|Yes|Yes|Yes|
+|Multi-AZ|Tak|Yes|Yes|Yes|Yes|Tak|
+|Przeczytaj skalowalnego w poziomie|Tak|Yes|Yes|Yes|Yes|Tak|
 |Uwzględniony magazyn kopii zapasowych|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|
 
 \* Aby uzyskać maksymalną współbieżnych procesów roboczych (żądań) dla dowolnej poszczególne bazy danych, zobacz [pojedynczy limity zasobów bazy danych](sql-database-vcore-resource-limits-single-databases.md). Na przykład jeśli 5. generacji i jego max (rdzeń wirtualny) na bazę danych korzysta z puli elastycznej jest 2, maksymalna współbieżnych procesów roboczych to 200.  Jeśli maksymalny (rdzeń wirtualny) na bazę danych wynosi 0,5, następnie max współbieżnych procesów roboczych jest 50, ponieważ na 5. generacji są maksymalnie 100 współbieżnych procesów roboczych na rdzeniach wirtualnych.  Inne ustawienia max (rdzeń wirtualny) na bazę danych, które są mniej 1 rdzeń wirtualny lub mniejszą liczbę maksymalną współbieżnych procesów roboczych jest podobnie przeskalowywany w ten sposób.
@@ -213,7 +213,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i magazynu przy użyciu kwot
 |Generowanie H: odczytu i zapisu|5|5|5|5|5|5|5|
 |Rdzenie wirtualne|2|4|6|8|10|12|14|
 |Pamięć (GB)|10.2|20.4|30.6|40.8|51|61.2|71.4|
-|Obsługa magazynu kolumn|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Obsługa magazynu kolumn|Tak|Yes|Yes|Yes|Yes|Yes|Tak|
 |Pojemność magazynu OLTP w pamięci (GB)|1.571|3.142|4.713|6.284|8.655|11.026|13.397|
 |Maksymalny rozmiar danych (GB)|1024|1024|1536|1536|1536|3072|3072|
 |Maksymalny rozmiar dziennika (GB)|307|307|307|461|461|922|922|
@@ -221,15 +221,15 @@ Można ustawić warstwę usługi, rozmiar obliczeń i magazynu przy użyciu kwot
 |Typ magazynu|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|
 |We/Wy, czas oczekiwania (w przybliżeniu)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|
 |Docelowy operacji We/Wy (64 KB)|5000|10 000|15000|20000|25000|30000|35000|
-|Limity szybkości dziennika (MB/s)|7.5|15|22.5|30|37.5|45|52.5|
+|Limity szybkości dziennika (MB/s)|15|30|45|60|75|90|105|
 |Maksymalna liczba współbieżnych procesów roboczych na pulę (żądań) *|210|420|630|840|1050|1260|1470|
 |Maksymalna liczba współbieżnych logowań na pulę (żądań) *|210|420|630|840|1050|1260|1470|
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|30000|
 |Maksymalna liczba baz danych na pulę|Tylko jednej bazy danych są obsługiwane w przypadku tego rozmiaru obliczeń|50|100|100|100|100|100|
 |Min/max warianty pul elastycznych (rdzeń wirtualny) pozwalają na bazę danych|ND|0, 0.25, 0.5, 1...4|0, 0.25, 0.5, 1...6|0, 0.25, 0.5, 1...8|0, 0.25, 0.5, 1...10|0, 0.25, 0.5, 1...12|0, 0.25, 0.5, 1...14|
 |Liczba replik|4|4|4|4|4|4|4|
-|Multi-AZ|Yes|Yes|Yes|Yes|Yes|Yes|
-|Przeczytaj skalowalnego w poziomie|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Multi-AZ|Tak|Yes|Yes|Yes|Yes|Tak|
+|Przeczytaj skalowalnego w poziomie|Tak|Yes|Yes|Yes|Yes|Yes|Tak|
 |Uwzględniony magazyn kopii zapasowych|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|
 
 \* Aby uzyskać maksymalną współbieżnych procesów roboczych (żądań) dla dowolnej poszczególne bazy danych, zobacz [pojedynczy limity zasobów bazy danych](sql-database-vcore-resource-limits-single-databases.md). Na przykład jeśli 5. generacji i jego max (rdzeń wirtualny) na bazę danych korzysta z puli elastycznej jest 2, maksymalna współbieżnych procesów roboczych to 200.  Jeśli maksymalny (rdzeń wirtualny) na bazę danych wynosi 0,5, następnie max współbieżnych procesów roboczych jest 50, ponieważ na 5. generacji są maksymalnie 100 współbieżnych procesów roboczych na rdzeniach wirtualnych.  Inne ustawienia max (rdzeń wirtualny) na bazę danych, które są mniej 1 rdzeń wirtualny lub mniejszą liczbę maksymalną współbieżnych procesów roboczych jest podobnie przeskalowywany w ten sposób.
@@ -241,7 +241,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i magazynu przy użyciu kwot
 |Generowanie H: odczytu i zapisu|5|5|5|5|5|5|5|
 |Rdzenie wirtualne|16|18|20|24|32|40|80|
 |Pamięć (GB)|81.6|91.8|102|122.4|163.2|204|408|
-|Obsługa magazynu kolumn|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Obsługa magazynu kolumn|Tak|Yes|Yes|Yes|Yes|Yes|Tak|
 |Pojemność magazynu OLTP w pamięci (GB)|15.768|18.139|20.51|25.252|37.936|52.22|131.64|
 |Maksymalny rozmiar danych (GB)|3072|3072|3072|4096|4096|4096|4096|
 |Maksymalny rozmiar dziennika (GB)|922|922|922|1229|1229|1229|1229|
@@ -249,15 +249,15 @@ Można ustawić warstwę usługi, rozmiar obliczeń i magazynu przy użyciu kwot
 |Typ magazynu|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|
 |We/Wy, czas oczekiwania (w przybliżeniu)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|
 |Docelowy operacji We/Wy (64 KB)|40000|45000|50000|60000|80000|100000|200000|
-|Limity szybkości dziennika (MB/s)|60|67.5|75|90|120|120|120|
+|Limity szybkości dziennika (MB/s)|120|120|120|120|120|120|120|
 |Maksymalna liczba współbieżnych procesów roboczych na pulę (żądań) *|1680|1890|2100|2520|3360|4200|8400|
 |Maksymalna liczba współbieżnych logowań na pulę (żądań) *|1680|1890|2100|2520|3360|4200|8400|
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|30000|
 |Maksymalna liczba baz danych na pulę|100|100|100|100|100|100|100|
 |Min/max warianty pul elastycznych (rdzeń wirtualny) pozwalają na bazę danych|0, 0.25, 0.5, 1...16|0, 0.25, 0.5, 1...18|0, 0.25, 0.5, 1...20|0, 0.25, 0.5, 1...20, 24|0, 0.25, 0.5, 1...20, 24, 32|0, 0.25, 0.5, 1...20, 24, 32, 40|0, 0.25, 0.5, 1...20, 24, 32, 40, 80|
 |Liczba replik|4|4|4|4|4|4|4|
-|Multi-AZ|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
-|Przeczytaj skalowalnego w poziomie|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Multi-AZ|Tak|Yes|Yes|Yes|Yes|Yes|Tak|
+|Przeczytaj skalowalnego w poziomie|Tak|Yes|Yes|Yes|Yes|Yes|Tak|
 |Uwzględniony magazyn kopii zapasowych|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|
 
 \* Aby uzyskać maksymalną współbieżnych procesów roboczych (żądań) dla dowolnej poszczególne bazy danych, zobacz [pojedynczy limity zasobów bazy danych](sql-database-vcore-resource-limits-single-databases.md). Na przykład jeśli 5. generacji i jego max (rdzeń wirtualny) na bazę danych korzysta z puli elastycznej jest 2, maksymalna współbieżnych procesów roboczych to 200.  Jeśli maksymalny (rdzeń wirtualny) na bazę danych wynosi 0,5, następnie max współbieżnych procesów roboczych jest 50, ponieważ na 5. generacji są maksymalnie 100 współbieżnych procesów roboczych na rdzeniach wirtualnych.  Inne ustawienia max (rdzeń wirtualny) na bazę danych, które są mniej 1 rdzeń wirtualny lub mniejszą liczbę maksymalną współbieżnych procesów roboczych jest podobnie przeskalowywany w ten sposób.

@@ -81,24 +81,28 @@
           href: data-box-edge-technical-specifications-compliance.md
     - name: Instrukcje
       items:
-        - name: Zarządzanie obliczeniami
-          href: data-box-edge-manage-compute.md
         - name: 'Tworzenie modułu języka C#'
           href: data-box-edge-create-iot-edge-module.md
-        - name: Zarządzanie udziałami
-          href: data-box-edge-manage-shares.md
-        - name: Zarządzanie użytkownikami
-          href: data-box-edge-manage-users.md
-        - name: Zarządzanie harmonogramami przepustowości
-          href: data-box-edge-manage-bandwidth-schedules.md
-        - name: 'Zarządzanie zasilaniem, dostępem i połączeniem'
-          href: data-box-edge-manage-access-power-connectivity-mode.md
-        - name: Zarządzanie za pomocą programu PowerShell
-          href: data-box-edge-connect-powershell-interface.md
+        - name: Zarządzanie
+          items:
+            - name: Funkcja obliczeniowa Edge
+              href: data-box-edge-manage-compute.md
+            - name: Udziały
+              href: data-box-edge-manage-shares.md
+            - name: Użytkownicy
+              href: data-box-edge-manage-users.md
+            - name: Harmonogramy przepustowości
+              href: data-box-edge-manage-bandwidth-schedules.md
+            - name: 'Zasilanie, dostęp, łączność'
+              href: data-box-edge-manage-access-power-connectivity-mode.md
+            - name: Za pośrednictwem programu PowerShell
+              href: data-box-edge-connect-powershell-interface.md
         - name: Rozwiązywanie problemów
           href: data-box-edge-troubleshoot.md
         - name: Monitorowanie
           href: data-box-edge-monitor.md
+        - name: Zwrot urządzenia
+          href: data-box-edge-return-device.md
     - name: Informacje o wersji
       items:
         - name: Ogólna dostępność

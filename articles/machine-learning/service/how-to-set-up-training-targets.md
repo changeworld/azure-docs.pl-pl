@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9c97f23c2dfc2b1c0ff794aa20ffb58cd8b8741a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c49b9d5fdc0c17f16f1c80471a00dd53625dc6e8
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60819373"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236955"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Konfigurowanie celów obliczeń do trenowania modelu
 
@@ -430,6 +430,7 @@ Zobacz te notesy przykłady szkolenie przy użyciu różnych celów obliczeń:
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Samouczek: Uczenie modelu](tutorial-train-models-with-aml.md) używa zarządzanych obliczeniowego elementu docelowego w celu nauczenia modelu.
+* Dowiedz się, jak [efektywnie Dostosowywanie hiperparametrów](how-to-tune-hyperparameters.md) na budowanie sprawniejszych modeli.
 * Dowiedz się, gdy masz trenowanego modelu, [jak i gdzie można wdrażać modele](how-to-deploy-and-where.md).
 * Widok [klasy RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) odwołanie do zestawu SDK.
 * [Usługa Azure Machine Learning za pomocą usługi Azure Virtual Networks](how-to-enable-virtual-network.md)

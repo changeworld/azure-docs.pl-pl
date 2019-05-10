@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 87f86f861ffc036077b25a2514fbd2d0c57da735
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 0783251eaeef188c49c5b3aa61b5ecaec48127b7
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64716765"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65506706"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definicji zasad platformy Azure
 
@@ -46,7 +46,7 @@ Na przykład następujący kod JSON przedstawiono zasady, które ogranicza, gdzi
                     "strongType": "location",
                     "displayName": "Allowed locations"
                 },
-                "defaultValue": "westus2"
+                "defaultValue": [ "westus2" ]
             }
         },
         "displayName": "Allowed locations",
@@ -114,7 +114,7 @@ Na przykład można zdefiniować definicję zasad, aby ograniczyć lokalizacje, 
             "displayName": "Allowed locations",
             "strongType": "location"
         },
-        "defaultValue": "westus2",
+        "defaultValue": [ "westus2" ],
         "allowedValues": [
             "eastus2",
             "westus2",
@@ -229,6 +229,10 @@ Wynikiem warunku jest czy **pola** lub **wartość** akcesor spełnia określone
 - `"notIn": ["value1","value2"]`
 - `"containsKey": "keyName"`
 - `"notContainsKey": "keyName"`
+- `"less": "value"`
+- `"lessOrEquals": "value"`
+- `"greater": "value"`
+- `"greaterOrEquals": "value"`
 - `"exists": "bool"`
 
 Korzystając z **takich jak** i **notLike** warunki, należy podać symbol wieloznaczny `*` wartości.
@@ -416,15 +420,25 @@ Aby uzyskać szczegółowe informacje dotyczące każdego skutku, kolejność oc
 
 ### <a name="policy-functions"></a>Funkcje zasad
 
-Wszystkie [funkcje szablonu usługi Resource Manager](../../../azure-resource-manager/resource-group-template-functions.md) są dostępne do użycia w ramach reguły zasad, z wyjątkiem następujących funkcji:
+Wszystkie [funkcje szablonu usługi Resource Manager](../../../azure-resource-manager/resource-group-template-functions.md) są dostępne do użycia w ramach reguły zasad, z wyjątkiem następujących funkcji i funkcji zdefiniowanych przez użytkownika:
 
 - copyIndex()
 - Deployment()
 - Lista *
+- newGuid()
+- pickZones()
 - Providers()
 - Reference()
 - resourceId()
 - variables()
+
+Następujące funkcje są dostępne do użycia w regule zasad, ale różnią się od użycia w szablonie usługi Azure Resource Manager:
+
+- addDays (daty/godziny, numberOfDaysToAdd)
+  - **Data i godzina**: [wymagane] ciąg - ciąg w formacie uniwersalnej daty/godziny ISO 8601 "RRRR-MM-ddTHH:mm:ss.fffffffZ"
+  - **numberOfDaysToAdd**: liczba całkowita [wymagane] - liczba dni do dodania
+- utcNow() — w przeciwieństwie do szablonu usługi Resource Manager, może być używany poza defaultValue.
+  - Zwraca ciąg, który jest ustawiona na bieżącą datę i godzinę w formacie uniwersalnej daty/godziny ISO 8601 "RRRR-MM-ddTHH:mm:ss.fffffffZ"
 
 Ponadto `field` funkcja jest dostępna z regułami zasad. `field` jest używany głównie z **AuditIfNotExists** i **DeployIfNotExists** do pola odniesienia dla zasobu, które są oceniane. Przykładem użycia tego można zobaczyć w [przykład DeployIfNotExists](effects.md#deployifnotexists-example).
 

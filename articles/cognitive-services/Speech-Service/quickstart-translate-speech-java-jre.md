@@ -10,14 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 5dc1852a57970c2994d9f36cbd7242a18b580a61
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 69cb48df4e765250247605fb5c4e1f421554fd20
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65020995"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65467013"
 ---
-# <a name="quickstart-translate-speech-with-the-speech-sdk-for-java"></a>Szybki start: tłumaczenie mowy przy użyciu zestawu SDK usługi Mowa dla języka Java
+# <a name="quickstart-translate-speech-with-the-speech-sdk-for-java"></a>Szybki start: Tłumaczenie mowy z zestawem SDK rozpoznawania mowy, języka Java
+
+Przewodniki Szybki Start są również dostępne dla [mowy na tekst](quickstart-java-jre.md) i [głosu pierwszego wirtualnego Asystenta](quickstart-virtual-assistant-java-jre.md).
 
 W tym przewodniku Szybki start utworzysz prostą aplikację Java, która przechwytuje mowę użytkownika z mikrofonu komputera, tłumaczy tę mowę i transkrybuje przetłumaczony tekst do wiersza polecenia w czasie rzeczywistym. Ta aplikacja jest przeznaczony do działania na Windows 64-bitowy lub 64-bitowych Linux (Ubuntu 16.04, 18.04 Ubuntu, Debian 9) lub w systemie macOS 10.13 lub nowszej. Jest on oparty za pomocą pakietu Maven zestaw SDK rozpoznawania mowy i środowiska Eclipse IDE Java.
 
@@ -55,7 +57,7 @@ Jeśli korzystasz z systemu Linux, upewnij się, że te zależności są zainsta
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-java-create-proj.md)]
 
-## <a name="add-sample-code"></a>Dodawanie przykładowego kodu
+## <a name="add-sample-code"></a>Dodaj kod przykładowy
 
 1. Aby dodać nową pustą klasę do projektu języka Java, wybierz kolejno pozycje **Plik** > **Nowy** > **Klasa**.
 

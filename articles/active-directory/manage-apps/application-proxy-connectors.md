@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: celested
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a787e896016b3230d389b2ec140ae6c03477d875
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cb2a2aa8204ef442bbe3a0e6ff9018cd3f153910
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60293051"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406493"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Omówienie łączników serwera Proxy aplikacji usługi Azure AD
 
@@ -29,9 +29,9 @@ ms.locfileid: "60293051"
 
 ## <a name="requirements-and-deployment"></a>Wymagania i wdrożenia
 
-Aby pomyślnie wdrożyć serwer Proxy aplikacji, co najmniej jeden łącznik jest wymagany, ale zaleca się co najmniej dwóch pod kątem większej odporności. Łącznik można zainstalować na maszynie 2016 lub Windows Server 2012 R2. Łącznik musi komunikować się z usługą serwera Proxy aplikacji usługi i aplikacji lokalnych, które można opublikować. 
+Aby pomyślnie wdrożyć serwer Proxy aplikacji, co najmniej jeden łącznik jest wymagany, ale zaleca się co najmniej dwóch pod kątem większej odporności. Łącznik można zainstalować na komputerze z systemem Windows Server 2012 R2 lub nowszym. Łącznik musi komunikować się z usługą serwera Proxy aplikacji usługi i aplikacji lokalnych, które można opublikować. 
 
-### <a name="windows-server"></a>Server systemu Windows
+### <a name="windows-server"></a>Windows server
 Wymagany serwer z systemem Windows Server 2012 R2 lub nowszym na której można zainstalować łącznik serwera Proxy aplikacji. Serwer musi łączyć się z usługi serwera Proxy aplikacji na platformie Azure i aplikacji lokalnych, które publikujesz.
 
 Systemu windows server musi mieć protokół TLS 1.2, włączone, przed zainstalowaniem łącznika serwera Proxy aplikacji. Istniejące łączniki z wersjami starszymi niż 1.5.612.0 będą w dalszym ciągu działać we wcześniejszych wersjach TLS do odwołania. Aby włączyć protokół TLS 1.2:
@@ -85,7 +85,7 @@ Grupy łączników ułatwiają zarządzanie dużych wdrożeń. Mogą również z
 
 Aby dowiedzieć się więcej na temat grupy łączników, zobacz [Publikuj aplikacje w oddzielnych sieciach i miejsc za pomocą grupy łączników](application-proxy-connector-groups.md).
 
-## <a name="capacity-planning"></a>Planowanie pojemności 
+## <a name="capacity-planning"></a>Planowanie wydajnośći 
 
 Należy się upewnić, że zaplanowano wystarczająca ilość miejsca między łączników, aby obsłużyć oczekiwanego natężenia ruchu. W ogólne, większej liczby użytkowników, do których masz większe maszynie należy. Poniżej znajduje się że tabeli, dając konspektu woluminu różnych komputerów może obsłużyć. Należy pamiętać, wszystkie opiera się na oczekiwanych transakcji na drugim (TPS), a nie przez użytkownika, ponieważ użycie wzorce różnią się i nie można używać do prognozowania obciążenia. Będzie również istnieć pewne różnice w oparciu o rozmiar odpowiedzi i czas odpowiedzi aplikacji wewnętrznej bazy danych — niższy TPS Max spowoduje większe rozmiary odpowiedzi i mniejsza czasów odpowiedzi. Zaleca się o dodatkowych maszyn, tak aby rozłożonego obciążenia między maszynami jest o 50%. Dodatkowa pojemność zapewni, że wysokiej dostępności i odporności.
 
@@ -103,7 +103,7 @@ Należy się upewnić, że zaplanowano wystarczająca ilość miejsca między ł
 
 ## <a name="security-and-networking"></a>Zabezpieczenia i sieci
 
-Łączników można zainstalować w dowolnym miejscu w sieci, która pozwala im wysyłać żądania do usługi serwera Proxy aplikacji. Co to jest ważne jest, czy komputer z uruchomioną łącznik również ma dostęp do aplikacji. Wewnątrz sieci firmowej lub na maszynie wirtualnej, która działa w chmurze, można zainstalować łączniki. Łączniki mogą być uruchamiane w sieci obwodowej, ale nie jest konieczne, ponieważ cały ruch jest wychodzący, dlatego sieci pozostają bezpieczne.
+Łączników można zainstalować w dowolnym miejscu w sieci, która pozwala im wysyłać żądania do usługi serwera Proxy aplikacji. Co to jest ważne jest, czy komputer z uruchomioną łącznik również ma dostęp do aplikacji. Wewnątrz sieci firmowej lub na maszynie wirtualnej, która działa w chmurze, można zainstalować łączniki. Łączników można uruchamiać w sieci obwodowej, znanej także jako strefa zdemilitaryzowana (DMZ), ale nie jest konieczne, ponieważ cały ruch jest wychodzący, więc sieci pozostanie bezpieczne.
 
 Łączniki tylko wysyłać żądania wychodzącego. Ruch wychodzący są wysyłane do usługi serwera Proxy aplikacji i do opublikowanych aplikacji. Nie trzeba otworzyć porty dla ruchu przychodzącego, ponieważ ruch odbywa się dwukierunkowo po ustanowieniu sesji. Ponadto nie należy skonfigurować dla ruchu przychodzącego dostęp za pośrednictwem zapory. 
 

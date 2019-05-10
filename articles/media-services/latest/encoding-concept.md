@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/21/2019
+ms.date: 05/08/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 216eae383c704125cd32d9ed4cb1309299af7336
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 937a032bffbad4e8a7d737360aa140e59760f8e2
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153399"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472452"
 ---
 # <a name="encoding-with-media-services"></a>Kodowanie za pomocą usługi Media Services
 
@@ -86,6 +86,10 @@ Usługa Media Services w pełni obsługuje dostosowywania wszystkie wartości w 
 - [Dostosowywanie ustawień wstępnych przy użyciu platformy .NET](customize-encoder-presets-how-to.md)
 - [Dostosowywanie ustawień wstępnych przy użyciu interfejsu wiersza polecenia](custom-preset-cli-howto.md)
 - [Dostosowywanie ustawień wstępnych z użyciem usług REST](custom-preset-rest-howto.md)
+
+## <a name="preset-schema"></a>Ustawienie wstępne schematu
+
+W Media Services v3 ustawień wstępnych są silnie typizowanych jednostek w interfejsie API, sam. Można znaleźć definicji "schema" dla tych obiektów w [specyfikacji interfejsu Open API (struktury Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01). Można również wyświetlić ustawienia wstępnego definicje (takie jak **StandardEncoderPreset**) w [interfejsu API REST](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset), [zestawu .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet) (lub inne dokumentacja usługi Media Services v3 zestawu SDK).
 
 ## <a name="scaling-encoding-in-v3"></a>Skalowanie kodowania w wersji 3
 

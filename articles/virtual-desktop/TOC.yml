@@ -8,12 +8,12 @@
   items:
     - name: 1. Tworzenie dzierżawy w usłudze Windows Virtual Desktop
       href: tenant-setup-azure-active-directory.md
-    - name: 2. Tworzenie puli hostów za pomocą witryny Azure Marketplace
-      href: create-host-pools-azure-marketplace.md
-    - name: 3. Zarządzanie grupami aplikacji
-      href: manage-app-groups.md
-    - name: 4. Tworzenie jednostek usługi i przypisań ról za pomocą programu PowerShell
+    - name: 2. Tworzenie jednostek usługi i przypisań ról za pomocą programu PowerShell
       href: create-service-principal-role-powershell.md
+    - name: 3. Tworzenie puli hostów za pomocą witryny Azure Marketplace
+      href: create-host-pools-azure-marketplace.md
+    - name: 4. Zarządzanie grupami aplikacji
+      href: manage-app-groups.md
 - name: Porady
   items:
     - name: Łączenie się z zasobami usługi Windows Virtual Desktop

@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: d7865d394dfc955a7b24115e747dd77352d89e3d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7fc945a00360e4eea4a5cf1e3962da2390d3bfeb
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60331902"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65506846"
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>Transakcje rozproszone w bazach danych w chmurze
 
@@ -99,7 +99,7 @@ Transakcji elastycznych baz danych dla bazy danych SQL obsługują także koordy
 
 ## <a name="net-installation-for-azure-cloud-services"></a>Instalacja platformy .NET dla usług Azure Cloud Services
 
-Platforma Azure udostępnia kilka oferty do hostowania aplikacji .NET. Porównanie różnych ofert jest dostępna w [porównanie usługi Azure App Service, Cloud Services i Virtual Machines](../app-service/overview-compare.md). Jeśli system operacyjny gościa oferty jest mniejszy niż .NET 4.6.1 wymaganych dla elastycznej transakcji, należy uaktualnić system operacyjny gościa do 4.6.1. 
+Platforma Azure udostępnia kilka oferty do hostowania aplikacji .NET. Porównanie różnych ofert jest dostępna w [porównanie usługi Azure App Service, Cloud Services i Virtual Machines](/azure/architecture/guide/technology-choices/compute-decision-tree). Jeśli system operacyjny gościa oferty jest mniejszy niż .NET 4.6.1 wymaganych dla elastycznej transakcji, należy uaktualnić system operacyjny gościa do 4.6.1. 
 
 Dla usług Azure App Services uaktualnienia do systemu operacyjnego gościa nie są obecnie obsługiwane. Usługi Azure Virtual Machines po prostu Zaloguj się do maszyny Wirtualnej i uruchom Instalatora programu najnowszy program .NET framework. Usług Azure Cloud Services muszą obejmować instalację nowszej wersji platformy .NET do zadania uruchamiania wdrożenia. Koncepcje i kroki są udokumentowane w artykule [Instalowanie programu .NET w roli usługi w chmurze](../cloud-services/cloud-services-dotnet-install-dotnet.md).  
 

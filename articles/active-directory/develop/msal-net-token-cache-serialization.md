@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f259d8438b7500d5d007bbb972f859e187ccd08a
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 9f1e9a48b114d328e0405a2f03764df4ce29b166
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65081031"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65407055"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>Serializacja pamięci podręcznej tokenu w platformy MSAL.NET
 Po [token jest uzyskiwana](msal-acquire-cache-tokens.md), jest ona buforowana przez Microsoft Authentication Library (MSAL).  Kod aplikacji, należy spróbować pobrać tokenu z pamięci podręcznej przed pobierania tokenu przy użyciu innej metody.  W tym artykule omówiono domyślnej i niestandardowej serializacji pamięci podręcznej tokenu w platformy MSAL.NET.
@@ -290,5 +290,5 @@ Poniższe przykłady ilustrują serializacji pamięci podręcznej tokenu.
 
 | Sample | Platforma | Opis|
 | ------ | -------- | ----------- |
-|[active-directory-dotnet-desktop-msgraph-v2](http://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | Pulpitu (WPF) | Aplikacja Windows .NET klasycznych (WPF), wywołanie interfejsu API programu Microsoft Graph. ![Topologia](media/msal-net-token-cache-serialization/topology.png)|
+|[active-directory-dotnet-desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | Pulpitu (WPF) | Aplikacja Windows .NET klasycznych (WPF), wywołanie interfejsu API programu Microsoft Graph. ![Topologia](media/msal-net-token-cache-serialization/topology.png)|
 |[active-directory-dotnet-v1-to-v2](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2) | Pulpitu (Konsola) | Zestaw rozwiązań programu Visual Studio, pokazujący migracji aplikacji w wersji 1.0 usługi Azure AD (przy użyciu ADAL.NET) do aplikacji usługi Azure AD w wersji 2.0, o nazwie zbieżne aplikacje (przy użyciu platformy MSAL.NET), w szczególności [tokenu migracji pamięci podręcznej](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2/blob/master/TokenCacheMigration/README.md)|

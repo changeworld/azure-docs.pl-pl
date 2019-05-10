@@ -16,8 +16,8 @@
   items:
     - name: Lokalizacje i partnerzy
       href: virtual-wan-locations-partners.md
-    - name: Architektura przesyłania w sieci globalnej
-      href: virtual-wan-global-transit-architecture.md
+    - name: Architektura globalnej sieci tranzytowej
+      href: virtual-wan-global-transit-network-architecture.md
     - name: Płaszczyzna kontroli usługi Office 365 w wirtualnej sieci WAN
       href: virtual-wan-office365-overview.md
 - name: Przewodniki z instrukcjami

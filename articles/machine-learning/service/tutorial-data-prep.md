@@ -11,16 +11,16 @@ ms.author: MayMSFT
 ms.reviewer: trbye
 ms.date: 03/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: a717fa4191c57c21705d24884397ebb485726492
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 6e7aa231cabea9fbd76cd028f9fdc698a4dac5d6
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025122"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65470266"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>Samouczek: Przygotowywanie danych do modelowania regresji
 
-Z tego samouczka dowiesz się, jak przygotować dane do modelowania regresji z użyciem zestawu [Azure Machine Learning Data Prep SDK dla języka Python](https://aka.ms/data-prep-sdk). Wykonasz różne przekształcenia, aby przefiltrować i połączyć dwa różne zestawy danych dotyczących nowojorskich taksówek.
+W tym samouczku dowiesz się, jak przygotować dane do modelowania przy użyciu regresji [pakiecie przygotowania danych do usługi Azure Machine Learning](https://aka.ms/data-prep-sdk). Wykonasz różne przekształcenia, aby przefiltrować i połączyć dwa różne zestawy danych dotyczących nowojorskich taksówek.
 
 Ten samouczek jest **pierwszą częścią dwuczęściowej serii**. Po ukończeniu tej serii samouczków będziesz w stanie przewidzieć koszt przejazdu taksówką przez wytrenowanie modelu z użyciem funkcji związanych z danymi. Te funkcje obejmują dzień i godzinę rozpoczęcia podróży, liczbę pasażerów i lokalizację rozpoczęcia podróży.
 
@@ -179,7 +179,7 @@ green_df.head(5)
       <th>dropoff_latitude</th>
       <th>passengers</th>
       <th>odległość</th>
-      <th>cost</th>
+      <th>koszt</th>
     </tr>
   </thead>
   <tbody>
@@ -187,7 +187,7 @@ green_df.head(5)
       <th>0</th>
       <td>2</td>
       <td>2013-08-01 08:14:37</td>
-      <td>2013-08-01 09:09:06</td>
+      <td>2013-08-01-09:09:06</td>
       <td>Nie</td>
       <td>0</td>
       <td>0</td>
@@ -195,12 +195,12 @@ green_df.head(5)
       <td>0</td>
       <td>1</td>
       <td>,00</td>
-      <td>21.25</td>
+      <td>21,25</td>
     </tr>
     <tr>
       <th>1</th>
       <td>2</td>
-      <td>2013-08-01 09:13:00</td>
+      <td>2013-08-01-09:13:00</td>
       <td>2013-08-01 11:38:00</td>
       <td>Nie</td>
       <td>0</td>
@@ -215,7 +215,7 @@ green_df.head(5)
       <th>2</th>
       <td>2</td>
       <td>2013-08-01 09:48:00</td>
-      <td>2013-08-01 09:49:00</td>
+      <td>2013-08-01-09:49:00</td>
       <td>Nie</td>
       <td>0</td>
       <td>0</td>
@@ -229,7 +229,7 @@ green_df.head(5)
       <th>3</th>
       <td>2</td>
       <td>2013-08-01 10:38:35</td>
-      <td>2013-08-01 10:38:51</td>
+      <td>2013-08-01-10:38:51</td>
       <td>Nie</td>
       <td>0</td>
       <td>0</td>
@@ -711,7 +711,7 @@ time_split_df.head(5)
       <th>dropoff_latitude</th>
       <th>passengers</th>
       <th>odległość</th>
-      <th>cost</th>
+      <th>koszt</th>
     </tr>
   </thead>
   <tbody>
@@ -909,7 +909,7 @@ transformed_features_df.head(5)
       <th>dropoff_latitude</th>
       <th>passengers</th>
       <th>odległość</th>
-      <th>cost</th>
+      <th>koszt</th>
     </tr>
   </thead>
   <tbody>

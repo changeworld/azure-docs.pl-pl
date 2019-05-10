@@ -4,7 +4,7 @@ description: Dowiedz się, jak nawiązać połączenie z danych zdarzeń zabezpi
 services: sentinel
 documentationcenter: na
 author: rkarlin
-manager: barbkess
+manager: rkarlin
 editor: ''
 ms.assetid: d51d2e09-a073-41c8-b396-91d60b057e6a
 ms.service: sentinel
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: d131d39a9d9770046fa3f9368250204e4d0b0162
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 88b066818d53fd92e8238e270b9bc785d4275186
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60596699"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233965"
 ---
 # <a name="connect-windows-security-events"></a>Łączenie ze zdarzeniami zabezpieczeń systemu Windows 
 
@@ -44,7 +44,7 @@ Pełną integrację zdarzeń związanych z zabezpieczeniami Windows z platformy 
 
 1. W portalu Azure przez wartownika wybierz **łączników danych** a następnie kliknij polecenie **zdarzenia zabezpieczeń Windows** kafelka. 
 1. Wybierz typy danych, które ma być przesyłana strumieniowo.
-1. Kliknij przycisk **Update** (Aktualizuj).
+1. Kliknij przycisk **Aktualizuj**.
 6. Aby użyć odpowiednich schematu w usłudze Log Analytics dla zdarzeń zabezpieczeń Windows, wyszukaj **SecurityEvent**.
 
 ## <a name="validate-connectivity"></a>Zweryfikuj łączność

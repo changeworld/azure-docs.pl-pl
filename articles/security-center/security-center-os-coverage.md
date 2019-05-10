@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 4/17/2019
+ms.date: 5/02/2019
 ms.author: monhaber
-ms.openlocfilehash: b5eafd15344156965d0a191688f602ffe1b5a498
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4e334af353e1d9556641914056ab0a3071ca361e
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60703578"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233597"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Platformy i funkcji obsługiwanych przez usługę Azure Security Center
 
@@ -78,13 +78,13 @@ Obsługiwane są również maszyny wirtualne, które są uruchamiane w usłudze 
 |Integracja usługi Windows Defender ATP|✔ (w obsługiwanych wersjach)|✔|X|X|
 |Brakujące poprawki|✔|✔|✔|✔|
 |Konfiguracje zabezpieczeń|✔|✔|✔|✔|
-|Ochrona punktów końcowych|✔|✔|X|X|
+|Ochrona punktu końcowego|✔|✔|X|X|
 |Dostęp JIT do maszyny wirtualnej|✔|X|✔|X|
-|Funkcje adaptacyjnego sterowania aplikacjami|✔|X|X|X|
+|Adaptacyjne kontrole aplikacji|✔|✔|✔|✔|
 |USŁUGI FIM|✔|✔|✔|✔|
 |Szyfrowanie dysków|✔|X|✔|X|
 |Wdrożenie innych firm|✔|X|✔|X|
-|Sieciowe grupy zabezpieczeń|✔|X|✔|X|
+|sieciowych grup zabezpieczeń|✔|X|✔|X|
 |Wykrywanie zagrożeń fileless|✔|✔|X|X|
 |Mapa sieci|✔|X|✔|X|
 |Kontrolki adaptacyjne sieci|✔|X|✔|X|
@@ -96,13 +96,13 @@ Poniższa tabela zawiera macierz:
  - Czy można użyć usługi Azure Security Center na instalowanie poszczególnych rozwiązań.
  - Można wykryć, które Centrum zabezpieczeń rozwiązania ochrony punktu końcowego. Jeśli jeden z tych rozwiązań do ochrony punktu końcowego zostanie wykryta, usługa Security Center będzie nie zaleca się zainstalowanie jednego.
 
-| Ochrona punktów końcowych| Platformy | Instalacja usługi Security Center | Odnajdywanie usługi Security Center |
+| Endpoint Protection| Platformy | Instalacja usługi Security Center | Odnajdywanie usługi Security Center |
 |------|------|-----|-----|
-| Windows Defender (oprogramowanie firmy Microsoft chroniące przed złośliwym kodem)| Windows Server 2016| Nie, wbudowana w system operacyjny| Yes |
-| System Center Endpoint Protection (oprogramowanie firmy Microsoft chroniące przed złośliwym kodem) | Windows Server 2012 R2, 2012, 2008 R2 (zobacz uwaga poniżej) | Za pomocą rozszerzenia | Yes |
-| Trend Micro — wszystkie wersje | Rodzina systemów Windows Server  | Nie | Yes |
-| Symantec — w wersji co najmniej 12.1.1100| Rodzina systemów Windows Server  | Nie | Yes |
-| McAfee — w wersji co najmniej 10 | Rodzina systemów Windows Server  | Nie | Yes |
+| Windows Defender (oprogramowanie firmy Microsoft chroniące przed złośliwym kodem)| Windows Server 2016| Nie, wbudowana w system operacyjny| Tak |
+| System Center Endpoint Protection (oprogramowanie firmy Microsoft chroniące przed złośliwym kodem) | Windows Server 2012 R2, 2012, 2008 R2 (zobacz uwaga poniżej) | Za pomocą rozszerzenia | Tak |
+| Trend Micro — wszystkie wersje | Rodzina systemów Windows Server  | Nie | Tak |
+| Symantec — w wersji co najmniej 12.1.1100| Rodzina systemów Windows Server  | Nie | Tak |
+| McAfee — w wersji co najmniej 10 | Rodzina systemów Windows Server  | Nie | Tak |
 | Kaspersky| Rodzina systemów Windows Server  | Nie | Nie  |
 | Sophos| Rodzina systemów Windows Server  | Nie | Nie  |
 
@@ -114,18 +114,18 @@ Poniższa tabela zawiera macierz:
 ## <a name="supported-paas-features"></a>Obsługiwane funkcje PaaS 
 
 
-|Usługa|Zalecenia|Wykrywanie zagrożeń|
+|Usługa|Rekomendacje|Wykrywanie zagrożeń|
 |----|----|----|
 |SQL|✔| ✔|
 |PostGreSQL*|✔| ✔|
 |MySQL*|✔| ✔|
 |Usługa Azure Blob storage konta *|✔| ✔|
-|Usługi aplikacji|✔| ✔|
-|Cloud Services|✔| X|
+|App services|✔| ✔|
+|Usługi w chmurze|✔| X|
 |Sieci wirtualne|✔| Nie dotyczy|
 |Podsieci|✔| Nie dotyczy|
 |Karty interfejsów sieciowych|✔| ✔|
-|Sieciowe grupy zabezpieczeń|✔| Nie dotyczy|
+|sieciowych grup zabezpieczeń|✔| Nie dotyczy|
 |Subskrypcja|✔| ✔|
 
 \* Te funkcje są obecnie obsługiwane w publicznej wersji zapoznawczej. 

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 3/26/2019
+ms.date: 5/8/2019
 ms.author: raiye
-ms.openlocfilehash: 955ba0aae41d7e555c1248cf04073b1b6e3f2d4f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 71f66129aeec4f4c8b470a421caade22960d2d64
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60622970"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65473213"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Wersje systemów operacyjnych gościa platformy Azure i zgodności zestawów SDK
 Zapewnia zwalnia z aktualne informacje o najnowszych systemu operacyjnego gościa platformy Azure dla usług w chmurze. Te informacje pomagają planowanie ścieżki uaktualnienia przed wyłączeniem systemie operacyjnym gościa. Jeśli konfigurujesz role do użycia *automatyczne* aktualizacji systemu operacyjnego gościa, zgodnie z opisem w [ustawienia aktualizacji systemu operacyjnego gościa Azure][Azure Guest OS Update Settings], nie jest istotne, przeczytanie na tej stronie.
@@ -42,6 +42,9 @@ Zapewnia zwalnia z aktualne informacje o najnowszych systemu operacyjnego gości
 Nie wiesz o tym, jak zaktualizować system operacyjny gościa? Sprawdź [to] [ cloud updates] się.
 
 ## <a name="news-updates"></a>Aktualizacje wiadomości
+
+###### <a name="may-7-2019"></a>**7 maja 2019 r.**
+Kwietnia system operacyjny gościa został wydany.
 
 ###### <a name="march-26-2019"></a>**26 marca 2019 r.**
 System operacyjny gościa marca został wydany.
@@ -67,7 +70,7 @@ System operacyjny gościa października został wydany.
 ###### <a name="october-12-2018"></a>**12 października 2018 r.**
 System operacyjny gościa września został wydany.
 
-## <a name="releases"></a>Wydania
+## <a name="releases"></a>Wersje
 
 ## <a name="family-6-releases"></a>Zwalnia rodziny 6
 **Windows Server 2019**
@@ -89,8 +92,9 @@ Zainstalowane środowisko .NET framework: 3.5, 4.7.2
 
 | Ciąg konfiguracji | Data wydania | Wyłącz daty |
 | --- | --- | --- |
+| WA-GUEST-OS-6.6_201904-01 |7 maja 2019 r. |Wpis 6.8 |
 | WA-GUEST-OS-6.5_201903-01 |26 marca 2019 r. |Wpis 6.7 |
-| WA-GUEST-OS-6.4_201902-01 |12 marca 2019 r. |Wpis 6.6 |
+|~~WA-GUEST-OS-6.4_201902-01~~ |12 marca 2019 r. |7 maja 2019 r. |
 |~~WA-GUEST-OS-6.3_201901-01~~ |5 lutego 2019 r. |26 marca 2019 r. |
 |~~WA-GUEST-OS-6.2_201812-01~~ |24 stycznia 2019 r. |12 marca 2019 r. |
 |~~WA-GUEST-OS-6.1_201811-01~~ |24 stycznia 2019 r. |5 lutego 2019 r. |
@@ -107,8 +111,9 @@ Zainstalowane środowisko .NET framework: 3.5, 4.6.2
 
 | Ciąg konfiguracji | Data wydania | Wyłącz daty |
 | --- | --- | --- |
+| WA-GUEST-OS-5.30_201904-01 |7 maja 2019 r. |Wpis 5.32 |
 | WA-GUEST-OS-5.29_201903-01 |26 marca 2019 r. |Wpis 5.31 |
-| WA-GUEST-OS-5.28_201902-01 |12 marca 2019 r. |Wpis 5.30 |
+|~~WA-GUEST-OS-5.28_201902-01~~ |12 marca 2019 r. |7 maja 2019 r. |
 |~~WA-GUEST-OS-5.27_201901-01~~ |5 lutego 2019 r. |26 marca 2019 r. |
 |~~WA-GUEST-OS-5.26_201812-01~~ |7 stycznia 2019 r. |12 marca 2019 r. |
 |~~WA-GUEST-OS-5.25_201811-01~~ |14 grudnia 2018 r. |5 lutego 2019 r. |
@@ -122,8 +127,9 @@ Zainstalowane środowisko .NET framework: 3.5, 4.5.1
 
 | Ciąg konfiguracji | Data wydania | Wyłącz daty |
 | --- | --- | --- |
+| WA-GUEST-OS-4.65_201904-01 |7 maja 2019 r. |Wpis 4.67 |
 | WA-GUEST-OS-4.64_201903-01 |26 marca 2019 r. |Wpis 4.66 |
-| WA-GUEST-OS-4.63_201902-01 |12 marca 2019 r. |Wpis 4.65 |
+|~~WA-GUEST-OS-4.63_201902-01~~ |12 marca 2019 r. |7 maja 2019 r. |
 |~~WA-GUEST-OS-4.62_201901-01~~ |5 lutego 2019 r. |26 marca 2019 r. |
 |~~WA-GUEST-OS-4.61_201812-01~~ |7 stycznia 2019 r. |12 marca 2019 r. |
 |~~WA-GUEST-OS-4.60_201811-01~~ |14 grudnia 2018 r. |5 lutego 2019 r. |
@@ -137,8 +143,9 @@ Zainstalowane środowisko .NET framework: 3.5, 4.5
 
 | Ciąg konfiguracji | Data wydania | Wyłącz daty |
 | --- | --- | --- |
+| WA-GUEST-OS-3.72_201904-01 |7 maja 2019 r. |Wpis 3.74 |
 | WA-GUEST-OS-3.71_201903-01 |26 marca 2019 r. |Wpis 3,73 |
-| WA-GUEST-OS-3.70_201902-01 |12 marca 2019 r. |Wpis 3.72 |
+|~~WA-GUEST-OS-3.70_201902-01~~ |12 marca 2019 r. |7 maja 2019 r. |
 |~~WA-GUEST-OS-3.69_201901-01~~ |5 lutego 2019 r. |26 marca 2019 r. |
 |~~WA-GUEST-OS-3.68_201812-01~~ |7 stycznia 2019 r. |12 marca 2019 r. |
 |~~WA-GUEST-OS-3.67_201811-01~~ |14 grudnia 2018 r. |5 lutego 2019 r. |
@@ -152,8 +159,9 @@ Zainstalowane środowisko .NET framework: 3.5 (w tym w wersji 2.0 i 3.0)
 
 | Ciąg konfiguracji | Data wydania | Wyłącz daty |
 | --- | --- | --- |
+| WA-GUEST-OS-2.85_201904-01 |7 maja 2019 r. |Wpis 2,87 |
 | WA-GUEST-OS-2.84_201903-01 |26 marca 2019 r. |Wpis 2.86 |
-| WA-GUEST-OS-2.83_201902-01 |12 marca 2019 r. |Wpis 2,85 |
+|~~WA-GUEST-OS-2.83_201902-01~~ |12 marca 2019 r. |7 maja 2019 r. |
 |~~WA-GUEST-OS-2.82_201901-01~~ |5 lutego 2019 r. |26 marca 2019 r. |
 |~~WA-GUEST-OS-2.81_201812-01~~ |7 stycznia 2019 r. |12 marca 2019 r. |
 |~~WA-GUEST-OS-2.80_201811-01~~ |14 grudnia 2018 r. |5 lutego 2019 r. |

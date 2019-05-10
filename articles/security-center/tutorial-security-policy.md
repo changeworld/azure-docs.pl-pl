@@ -3,7 +3,7 @@ title: Praca z zasadami zabezpieczeń | Dokumentacja firmy Microsoft
 description: W tym artykule opisano sposób pracy z zasadami zabezpieczeń w usłudze Azure Security Center.
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
 editor: ''
 ms.assetid: 2d248817-ae97-4c10-8f5d-5c207a8019ea
@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/28/2019
+ms.date: 5/05/2019
 ms.author: monhaber
-ms.openlocfilehash: 1931026869e930caef2ff2f92fb85dade15a9c8c
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 0465f12e3da6acc2ec8f7259ee9f040ccd3ce88e
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62111514"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236304"
 ---
 # <a name="working-with-security-policies"></a>Praca z zasadami zabezpieczeń
 
@@ -110,6 +110,9 @@ Aby uzyskać więcej informacji na temat zalecenia, zobacz [Zarządzanie zalecen
    ![Zarządzanie zasadami](./media/tutorial-security-policy/policy-management.png)
 
 2. Kliknij grupę subskrypcję lub zarządzania, dla której chcesz wyłączyć zalecenia.
+
+   > [!Note]
+   > Należy pamiętać, że grupa zarządzania swoimi zasadami do swojej subskrypcji. W związku z tym Jeśli zasada subskrypcja jest wyłączona, a subskrypcji należy do grupy zarządzania, które nadal używa tych samych zasad, następnie będziesz otrzymywać zalecenia dotyczące zasad. Zasady zostaną zastosowane na poziomie zarządzania i zalecenia będzie nadal generowane.
 
 1. Kliknij przycisk przypisanych zasad.
 
@@ -225,15 +228,15 @@ W tym przykładzie pokazano, jak usunąć przypisanie:
 
 |Nazwa zasad w usłudze Security Center|Nazwa zasad wyświetlana w usługi Azure Policy |Nazwa parametru efekt zasad|
 |----|----|----|
-|Szyfrowanie SQL |Monitoruj nieszyfrowaną bazę danych SQL w usłudze Azure Security Center |sqlEncryptionMonitoringEffect| 
+|Szyfrowanie danych SQL |Monitoruj nieszyfrowaną bazę danych SQL w usłudze Azure Security Center |sqlEncryptionMonitoringEffect| 
 |Inspekcja SQL |Monitorowanie bazy danych SQL bez inspekcji w usłudze Azure Security Center |sqlAuditingMonitoringEffect|
 |Aktualizacje systemu |Monitoruj brakujące aktualizacje systemu w usłudze Azure Security Center |systemUpdatesMonitoringEffect|
 |Szyfrowanie w usłudze Storage |Inspekcja braku szyfrowania obiektów blob dla kont magazynu |storageEncryptionMonitoringEffect|
 |Dostęp do sieci JIT |Monitoruj ewentualny dostęp just in time w usłudze Azure Security Center |jitNetworkAccessMonitoringEffect |
-|Funkcje adaptacyjnego sterowania aplikacjami |Monitoruj ewentualną listę dozwolonych aplikacji w usłudze Azure Security Center |adaptiveApplicationControlsMonitoringEffect|
-|Grupy zabezpieczeń sieci |Monitoruj liberalny dostęp do sieci w usłudze Azure Security Center |networkSecurityGroupsMonitoringEffect| 
+|Adaptacyjne kontrole aplikacji |Monitoruj ewentualną listę dozwolonych aplikacji w usłudze Azure Security Center |adaptiveApplicationControlsMonitoringEffect|
+|Sieciowe grupy zabezpieczeń |Monitoruj liberalny dostęp do sieci w usłudze Azure Security Center |networkSecurityGroupsMonitoringEffect| 
 |Konfiguracje zabezpieczeń |Monitoruj luki w zabezpieczeniach systemu operacyjnego w usłudze Azure Security Center |systemConfigurationsMonitoringEffect| 
-|Ochrona punktów końcowych |Monitoruj brakujący program Endpoint Protection w usłudze Azure Security Center |endpointProtectionMonitoringEffect |
+|Ochrona punktu końcowego |Monitoruj brakujący program Endpoint Protection w usłudze Azure Security Center |endpointProtectionMonitoringEffect |
 |Szyfrowanie dysków |Monitoruj niezaszyfrowane dyski maszyn wirtualnych w usłudze Azure Security Center |diskEncryptionMonitoringEffect|
 |Ocena luk w zabezpieczeniach |Monitoruj luki w zabezpieczeniach maszyn wirtualnych w usłudze Azure Security Center |vulnerabilityAssessmentMonitoringEffect|
 |Zapora aplikacji internetowej |Monitoruj niechronione aplikacje internetowe w usłudze Azure Security Center |webApplicationFirewallMonitoringEffect |

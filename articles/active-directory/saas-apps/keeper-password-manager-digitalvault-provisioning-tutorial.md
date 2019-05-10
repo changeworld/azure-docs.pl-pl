@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/25/2019
+ms.date: 05/07/2019
 ms.author: zchia
-ms.openlocfilehash: b7b096bd1ecf0a4df37ed4de0cf618216dccc2bc
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 445579eb780b49f536ef1a9e13e5ca43db6f98f6
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65159468"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508533"
 ---
 # <a name="tutorial-configure-keeper-password-manager--digital-vault-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie Menedżera haseł hodowca & cyfrowego magazynu dla automatycznej aprowizacji użytkowników
 
@@ -47,15 +47,15 @@ Przed skonfigurowaniem Menedżera haseł hodowca & cyfrowego magazynu dla automa
 
 1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie wybierz **usługi Azure Active Directory**.
 
-    ![Przycisk Azure Active Directory](common/select-azuread.png)
+    ![Przycisk usługi Azure Active Directory](common/select-azuread.png)
 
 2. Przejdź do **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+    ![W bloku aplikacji przedsiębiorstwa](common/enterprise-applications.png)
 
 3. Aby dodać nową aplikację, wybierz **nową aplikację** znajdujący się u góry okienka.
 
-    ![Przycisk Nowa aplikacja](common/add-new-app.png)
+    ![Nowy przycisk aplikacji](common/add-new-app.png)
 
 4. W polu wyszukiwania wprowadź **Menedżera haseł hodowca & cyfrowego magazynu**, wybierz opcję **Menedżera haseł hodowca & cyfrowego magazynu** panel wyników, a następnie kliknij **Dodaj**przycisk, aby dodać aplikację.
 
@@ -84,7 +84,7 @@ Ta sekcja przeprowadzi Cię przez kroki, aby skonfigurować usługi Azure AD ini
 
 ### <a name="to-configure-automatic-user-provisioning-for-keeper-password-manager--digital-vault-in-azure-ad"></a>Aby skonfigurować automatyczna aprowizacja użytkowników dla Menedżera haseł hodowca & cyfrowego magazynu w usłudze Azure AD:
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) i wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **Menedżera haseł hodowca & cyfrowy Vault**.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). Wybierz **aplikacje dla przedsiębiorstw**, a następnie wybierz **wszystkie aplikacje**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
@@ -104,19 +104,19 @@ Ta sekcja przeprowadzi Cię przez kroki, aby skonfigurować usługi Azure AD ini
 
 6. Zaloguj się do Twojej [konsoli administracyjnej hodowca](https://keepersecurity.com/console/#login). Kliknij pozycję **administratora** i wybierz istniejący węzeł lub Utwórz nową. Przejdź do **aprowizacji** kartę, a następnie wybierz pozycję **Dodaj metodę**.
 
-    ![Konsola administracyjna hodowca](media/keeperpasswordmanagerdigitalvault-provisioning-tutorial/keeper-admin-console.png)
+    ![Konsola administracyjna hodowca](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-admin-console.png)
 
     Wybierz **Standard SCIM (System do zarządzania tożsamościami międzydomenowe**.
 
-    ![Hodowca Dodaj Standard SCIM](media/keeperpasswordmanagerdigitalvault-provisioning-tutorial/keeper-add-scim.png)
+    ![Hodowca Dodaj Standard SCIM](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-add-scim.png)
 
     Kliknij przycisk **tworzenie, inicjowanie obsługi administracyjnej Token**.
 
-    ![Hodowca Tworzenie punktu końcowego](media/keeperpasswordmanagerdigitalvault-provisioning-tutorial/keeper-create-endpoint.png)
+    ![Hodowca Tworzenie punktu końcowego](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-create-endpoint.png)
 
     Skopiuj wartości pól **adresu URL** i **tokenu** i wklej je do **adres URL dzierżawy** i **klucz tajny tokenu** w usłudze Azure AD. Kliknij przycisk **Zapisz** do zakończenia inicjowania obsługi administracyjnej instalacji na hodowca.
 
-    ![Hodowca Utwórz Token](media/keeperpasswordmanagerdigitalvault-provisioning-tutorial/keeper-create-token.png)
+    ![Hodowca Utwórz Token](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-create-token.png)
 
 7. Podczas wypełniania pola wyświetlane w kroku 5, kliknij przycisk **Testuj połączenie** zapewniające usługi Azure AD connect można na Menedżera haseł hodowca & cyfrowego magazynu. Jeśli połączenie nie powiedzie się, upewnij się, że Twoje konto menedżera haseł hodowca & cyfrowego magazynu ma uprawnienia administratora i spróbuj ponownie.
 
@@ -130,19 +130,19 @@ Ta sekcja przeprowadzi Cię przez kroki, aby skonfigurować usługi Azure AD ini
 
 10. W obszarze **mapowania** zaznacz **synchronizacji Azure użytkownicy usługi Active Directory na Menedżera haseł hodowca & cyfrowego magazynu**.
 
-    ![Hodowca mapowania użytkownika](media/keeperpasswordmanagerdigitalvault-provisioning-tutorial/keeper-user-mappings.png)
+    ![Hodowca mapowania użytkownika](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-user-mappings.png)
 
 11. Przejrzyj atrybuty użytkownika, które są synchronizowane z usługi Azure AD na Menedżera haseł hodowca & cyfrowego magazynu w **mapowanie atrybutu** sekcji. Atrybuty wybrany jako **zgodne** właściwości są używane do dopasowania kont użytkowników w Menedżera haseł hodowca & cyfrowego magazynu dla operacji aktualizacji. Wybierz **Zapisz** przycisk, aby zatwierdzić zmiany.
 
-    ![Hodowca atrybutów użytkownika](media/keeperpasswordmanagerdigitalvault-provisioning-tutorial/keeper-user-attributes.png)
+    ![Hodowca atrybutów użytkownika](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-user-attributes.png)
 
 12. W obszarze **mapowania** zaznacz **synchronizacji Azure grup usługi Active Directory na Menedżera haseł hodowca & cyfrowego magazynu**.
 
-    ![Mapowania posiadacza grup](media/keeperpasswordmanagerdigitalvault-provisioning-tutorial/keeper-group-mappings.png)
+    ![Mapowania posiadacza grup](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-group-mappings.png)
 
 13. Przejrzyj atrybuty grupy, które są synchronizowane z usługi Azure AD na Menedżera haseł hodowca & cyfrowego magazynu w **mapowanie atrybutu** sekcji. Atrybuty wybrany jako **zgodne** właściwości są używane do dopasowania grup w Menedżera haseł hodowca & cyfrowego magazynu dla operacji aktualizacji. Wybierz **Zapisz** przycisk, aby zatwierdzić zmiany.
 
-    ![Hodowca grupy atrybutów](media/keeperpasswordmanagerdigitalvault-provisioning-tutorial/keeper-group-attributes.png)
+    ![Hodowca grupy atrybutów](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-group-attributes.png)
 
 14. Aby skonfigurować filtrów określania zakresu, można znaleźć w następujących instrukcjach podanych w [samouczek filtru Scoping](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
@@ -176,7 +176,3 @@ Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienn
 
 * [Dowiedz się, jak przeglądać dzienniki i Uzyskaj raporty dotyczące inicjowania obsługi administracyjnej działania](../manage-apps/check-status-user-account-provisioning.md)
 
-<!--Image references-->
-[1]: ./media/atlassian-cloud-provisioning-tutorial/tutorial-general-01.png
-[2]: ./media/atlassian-cloud-provisioning-tutorial/tutorial-general-02.png
-[3]: ./media/atlassian-cloud-provisioning-tutorial/tutorial-general-03.png

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/29/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 67fba7a921868d0e5720216208cff7c298c926f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cbf6a44f1a3210906ec7ab0d04eecb997bc2c470
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60838715"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65412815"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Rozwiązywanie problemów z aplikacją w usłudze Azure App Service przy użyciu programu Visual Studio
 ## <a name="overview"></a>Omówienie
@@ -42,7 +42,7 @@ W tym samouczku działa środowisko programistyczne, projekt sieci web i aplikac
 
 Przykłady kodu pokazano, w tym samouczku są dla aplikacji sieci web MVC C#, ale procedur rozwiązywania problemów są takie same dla aplikacji Visual Basic i formularzy sieci Web.
 
-W samouczku przyjęto założenie, że używasz programu Visual Studio 2017. 
+W samouczku przyjęto założenie, że używasz programu Visual Studio 2019 r. 
 
 Dzienniki przesyłania strumieniowego funkcja działa tylko dla aplikacji przeznaczonych dla środowiska .NET Framework 4 lub nowszej.
 
@@ -144,7 +144,7 @@ public ActionResult About()
 
     ![Publikowanie w trybie debugowania](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-publishdebug.png)
 
-1. Kliknij przycisk **Opublikuj**. Po wdrożeniu zostanie zakończone i przeglądarki otwiera Azure adres URL aplikacji, zamknij przeglądarkę.
+1. Kliknij przycisk **publikowania**. Po wdrożeniu zostanie zakończone i przeglądarki otwiera Azure adres URL aplikacji, zamknij przeglądarkę.
 
 1. W **Eksploratora serwera**, kliknij prawym przyciskiem myszy aplikację, a następnie kliknij przycisk **dołączyć debuger**.
 

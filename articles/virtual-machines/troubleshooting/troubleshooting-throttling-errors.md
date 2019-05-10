@@ -13,12 +13,12 @@ ms.topic: troubleshooting
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: vashan, rajraj, changov
-ms.openlocfilehash: fa65b108f3aea79d4417e65d706d42f0bd819f54
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: efa10f5beae64105857b00b186683d491edb00f5
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60445387"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233769"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>Rozwiązywanie problemów z błędami ograniczania przepływności interfejsu API 
 
@@ -80,7 +80,7 @@ Jak pokazano powyżej, każdy błąd ograniczania obejmuje `Retry-After` nagłó
 ## <a name="api-call-rate-and-throttling-error-analyzer"></a>Wywołanie interfejsu API szybkości i ograniczania przepustowości Błąd analizatora
 Wersja zapoznawcza funkcji rozwiązywania problemów jest dostępna dla interfejsu API dostawcy zasobów obliczeniowych. Te polecenia cmdlet programu PowerShell, podaj statystyki dotyczące liczby żądań interfejsu API na przedział czasu dla operacji i ograniczania przepustowości naruszeń na grupy operacji (zasady):
 -   [Export-AzLogAnalyticRequestRateByInterval](https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticrequestratebyinterval)
--   [Export-AzLogAnalyticThrottledRequests](https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticthrottledrequests)
+-   [Export-AzLogAnalyticThrottledRequest](https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticthrottledrequest)
 
 Statystyki wywołania interfejsu API można zapewniają doskonałą wgląd w zachowania klientów w ramach subskrypcji i włączyć łatwą identyfikację wzorców wywołania, które powodują ograniczenia przepustowości.
 
@@ -89,7 +89,7 @@ To ograniczenie analizator przez pewien czas jest, czy nie powoduje liczenia ż�
 Polecenia cmdlet programu PowerShell używasz usługi interfejsu API REST, który można łatwo wywołać bezpośrednio przez klientów (chociaż posiadanie obsługi jeszcze). Aby wyświetlić format żądania HTTP, Uruchom polecenia cmdlet z - debugowania lub rozpoznanie, na ich wykonanie, przy użyciu programu Fiddler.
 
 
-## <a name="best-practices"></a>Najlepsze praktyki 
+## <a name="best-practices"></a>Najlepsze rozwiązania 
 
 - Nie należy wykonywać ponowień błędów interfejsu API usługi platformy Azure, bezwarunkowo i/lub od razu. Jest wystąpieniem typowe dla klienta kodu w pętli ponawiania szybkie po wystąpieniu błędu, który nie jest w stanie ponownych prób. Ponownych prób po pewnym czasie będzie wyczerpać limit dozwolony wywołania dla operacji docelowej grupy i mieć wpływ na innych klientów subskrypcji. 
 - W przypadkach, mocno obciążające interfejsu API usługi automation należy wziąć pod uwagę Implementowanie aktywnego klienta własnym ograniczania, gdy liczba dostępnych wywołań dla grupy operacji docelowej nie spadnie poniżej niektóre progu dolnego. 

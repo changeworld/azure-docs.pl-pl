@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 02/19/2019
+ms.date: 05/08/2019
 ms.author: mbullwin
-ms.openlocfilehash: 74cb1b3ec4e0570aa4316e6f45e99719f36815d1
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: d366f363b7bd1d5306d598c9b38258eb78076b7c
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150714"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472047"
 ---
 # <a name="explore-netnet-core-trace-logs-in-application-insights"></a>Poznaj podstawowe.NET/.NET dzienniki śledzenia w usłudze Application Insights
 
@@ -177,8 +177,8 @@ Możliwe, na przykład:
 Użyj [kart dziennika Java](../../azure-monitor/app/java-trace-logs.md).
 
 ### <a name="theres-no-application-insights-option-on-the-project-context-menu"></a>Nie ma żadnej opcji usługi Application Insights z menu kontekstowego projektu
-* Upewnij się, że narzędzia usługi Application Insights jest zainstalowany na komputerze deweloperskim. W programie Visual Studio **narzędzia** > **rozszerzenia i aktualizacje**, poszukaj **Application Insights Tools**. Jeśli nie jest na **zainstalowane** otwartą kartą **Online** kartę i zainstaluj go.
-* Może to być typ projektu, który nie obsługuje narzędzia usługi Application Insights. Użyj [Instalacja ręczna](#manual-installation).
+* Upewnij się, że Developer Analytics Tools jest zainstalowany na komputerze deweloperskim. W programie Visual Studio **narzędzia** > **rozszerzenia i aktualizacje**, poszukaj **Developer Analytics Tools**. Jeśli nie jest na **zainstalowane** otwartą kartą **Online** kartę i zainstaluj go.
+* Może to być typ projektu, który nie obsługuje Devloper analitycznymi. Użyj [Instalacja ręczna](#manual-installation).
 
 ### <a name="theres-no-log-adapter-option-in-the-configuration-tool"></a>Nie ma żadnej opcji karty dziennika w narzędziu konfiguracji
 * Najpierw zainstaluj struktury rejestrowania.

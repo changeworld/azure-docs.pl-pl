@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/08/2019
+ms.date: 05/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5e9558eae43b351aa198b64bb2a7903c756064c2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 63b64df457af5b7d3d2bd5901f73d89ccd3c913a
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61025317"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65506973"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Odświeżanie asynchroniczne za pomocą interfejsu API REST
 
@@ -187,9 +187,9 @@ Aby sprawdzić stan operacji synchronizacji, należy użyć zlecenia GET, przeka
 Wartości `syncstate`:
 
 - 0: Replikacja. Pliki bazy danych są replikowane do folderu docelowego.
-- 1. Ponownego wypełniania. Baza danych jest wypełnienia w wystąpieniach serwera tylko do odczytu.
-- 2. Ukończono. Pomyślnie ukończono operację synchronizacji.
-- 3. Niepowodzenie. Operacja synchronizacji nie powiodło się.
+- 1: Ponownego wypełniania. Baza danych jest wypełnienia w wystąpieniach serwera tylko do odczytu.
+- 2: Ukończono. Pomyślnie ukończono operację synchronizacji.
+- 3: Niepowodzenie. Operacja synchronizacji nie powiodło się.
 - 4. Finalizowanie. Operacja synchronizacji została ukończona, ale wykonuje czynności czyszczenia.
 
 ## <a name="code-sample"></a>Przykład kodu
@@ -201,42 +201,9 @@ Poniżej przedstawiono przykładowy kod języka C#, w które ułatwią rozpoczę
 1.  Klonuj lub Pobierz repozytorium. Otwórz rozwiązanie RestApiSample.
 2.  Znajdź wiersz **klienta. BaseAddress =...** i podaj swoje [bazowy adres URL](#base-url).
 
-Można użyć przykładowego kodu logowania interakcyjnego, nazwę użytkownika/hasło lub [nazwy głównej usługi](#service-principal).
+Przykładowy kod używa [nazwy głównej usługi](#service-principal) uwierzytelniania.
 
-#### <a name="interactive-login-or-usernamepassword"></a>Logowania interakcyjnego lub nazwy użytkownika i hasła
-
-Ta forma uwierzytelniania wymaga aplikacji platformy Azure można utworzyć przy użyciu niezbędnych uprawnień interfejsu API przypisane. 
-
-1.  W witrynie Azure portal kliknij **Utwórz zasób** > **usługi Azure Active Directory** > **rejestracje aplikacji**  >   **Rejestrowanie nowej aplikacji**.
-
-    ![Rejestrowanie nowej aplikacji](./media/analysis-services-async-refresh/aas-async-app-reg.png)
-
-
-2.  W **Utwórz**, wpisz nazwę, wybierz **natywnych** typu aplikacji. Aby uzyskać **identyfikator URI przekierowania**, wprowadź **urn: ietf:wg:oauth:2.0:oob**, a następnie kliknij przycisk **Utwórz**.
-
-    ![Ustawienia](./media/analysis-services-async-refresh/aas-async-app-reg-name.png)
-
-3.  Wybierz aplikację, a następnie skopiuj i Zapisz **identyfikator aplikacji**.
-
-    ![Skopiuj identyfikator aplikacji](./media/analysis-services-async-refresh/aas-async-app-id.png)
-
-4.  W **ustawienia**, kliknij przycisk **wymagane uprawnienia** > **Dodaj**.
-
-    ![Dodaj dostęp do interfejsu API](./media/analysis-services-async-refresh/aas-async-add.png)
-
-5.  W **wybierz interfejs API**, typ **usług Azure Analysis Services** do wyszukiwania, a następnie wybierz ją.
-
-    ![Wybieranie interfejsu API](./media/analysis-services-async-refresh/aas-async-select-api.png)
-
-6.  Wybierz **odczytywanie i zapisywanie wszystkich modeli**, a następnie kliknij przycisk **wybierz**. Gdy oba są zaznaczone, kliknij przycisk **gotowe** Aby dodać uprawnienia. Może upłynąć kilka minut na propagację.
-
-    ![Wybierz pozycję odczytu i zapisu wszystkich modeli](./media/analysis-services-async-refresh/aas-async-select-read.png)
-
-7.  Przykładowy kod zawiera **UpdateToken()** metody. Sprawdź zawartość tej metody.
-8.  Znajdź **ciągu clientID =...** , a następnie wprowadź **identyfikator aplikacji** skopiowany w kroku 3.
-9.  Uruchom przykład.
-
-#### <a name="service-principal"></a>Jednostka usługi
+### <a name="service-principal"></a>Jednostka usługi
 
 Zobacz [Tworzenie jednostki usługi — witryna Azure portal](../active-directory/develop/howto-create-service-principal-portal.md) i [Dodawanie jednostki usługi do roli administratora serwera](analysis-services-addservprinc-admins.md) Aby uzyskać więcej informacji na temat konfigurowania jednostki usługi i przypisanie niezbędnych uprawnień w jako platformy Azure . Po wykonaniu czynności należy wykonać następujące dodatkowe czynności:
 

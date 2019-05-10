@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 6b79a26d63c02dd06b62ea6ad09941f947704dc0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 747e177b0fbbfb9049959c3194ee39c3234bba50
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60870493"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65234035"
 ---
 # <a name="identify-issues-with-the-diagnostics-feature"></a>Identyfikowanie problemów za pomocą funkcji diagnostyki
 
@@ -118,7 +118,7 @@ Get-RdsDiagnosticActivities -TenantName <tenantName> -Outcome Failure
 
 Błąd scenariusze są podzielone na wewnętrznych z usługą i zewnętrzne w stosunku do wirtualnego pulpitu Windows.
 
-* Problem wewnętrzny: Określa scenariuszy, których nie da się ograniczyć przez administratora dzierżawy i muszą zostać rozpoznane jako problemu wymagającego pomocy technicznej. Gdy tworząc bilet wprowadź identyfikator działania, nazwa dzierżawy oraz przybliżony przedział czasu problem wystąpił.
+* Problem wewnętrzny: Określa scenariusze, które nie może być ograniczona przez administratora dzierżawy i muszą zostać rozpoznane jako problemu wymagającego pomocy technicznej. Podczas przekazywania opinii za pośrednictwem [społeczności technicznej pulpitu wirtualnego Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)zawierają identyfikator działania oraz przybliżony przedział czasu wystąpienia problemu.
 * Zewnętrzny problem: odnoszą się do scenariuszy, które może być ograniczona przez administratora systemu. Są to zewnętrzne w stosunku do wirtualnego pulpitu Windows.
 
 W poniższej tabeli wymieniono typowe błędy napotkać administratorów.

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 895fb0d83e383618818325263ac80c5919a0ee7b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5f2a3bb666e40f1aafd921d70d93133ca9139b38
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60429243"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406948"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Integracja usługi Azure Active Directory z Remix kierownikiem ds. sprzedaży E
 
@@ -47,7 +47,7 @@ Aby skonfigurować integrację usługi Azure AD za pomocą E Sales Manager Remix
 
 Aby przetestować kroki w tym samouczku, musisz mieć dostęp do następujących elementów:
 
-- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
+- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
 - Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
@@ -63,7 +63,7 @@ Aby skonfigurować integrację usługi Azure AD z E Sales Manager Remix, Dodaj E
 
 1. W [witrynie Azure Portal](https://portal.azure.com) w okienku po lewej stronie wybierz pozycję **Azure Active Directory**. 
 
-    ![Przycisk Azure Active Directory][1]
+    ![Przycisk usługi Azure Active Directory][1]
 
 1. Wybierz pozycję **Aplikacje dla przedsiębiorstw** > **Wszystkie aplikacje**.
 
@@ -71,13 +71,13 @@ Aby skonfigurować integrację usługi Azure AD z E Sales Manager Remix, Dodaj E
     
 1. Aby dodać nową aplikację, wybierz **nową aplikację** w górnej części okna.
 
-    ![Przycisk Nowa aplikacja][3]
+    ![Nowy przycisk aplikacji][3]
 
 1. W polu wyszukiwania wpisz **E Sales Manager Remix**, wybierz opcję **E Sales Manager Remix** w na liście wyników, a następnie wybierz **Dodaj**.
 
     ![E Sales Manager Remix na liście wyników](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
 W tej sekcji możesz skonfigurować i przetestować usługi Azure AD logowanie jednokrotne za pomocą E Sales Manager Remix, oparte na użytkownika testu o nazwie "Britta Simon."
 
@@ -85,7 +85,7 @@ Dla logowania jednokrotnego do pracy usługa Azure AD wymaga do identyfikowania 
 
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą E Sales Manager Remix, wykonaj bloki konstrukcyjne w pięć następnych sekcjach:
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
 Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji E Sales Manager Remix, wykonując następujące czynności:
 
@@ -158,7 +158,7 @@ Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azure portal i k
     
     b. W **elementu współpracy** sekcji z listy rozwijanej wybierz **e-mail**.
 
-    c. W **elementu współpracy** pole, Wklej wartość oświadczenia, które wcześniej zostały skopiowane z witryny Azure portal (czyli **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**).
+    c. W **elementu współpracy** pole, Wklej wartość oświadczenia, które wcześniej zostały skopiowane z witryny Azure portal (czyli **https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**).
 
     d. W **wystawcy (identyfikator jednostki)** pole, Wklej wartość identyfikatora, który został wcześniej skopiowany z **E Sales Manager Remix domena i adresy URL** części witryny Azure portal.
 
@@ -186,7 +186,7 @@ W tej sekcji utworzysz użytkownika testowego Britta Simon w witrynie Azure port
 
 1. Aby wyświetlić listę bieżących użytkowników, wybierz **użytkowników i grup** > **wszyscy użytkownicy**.
 
-    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](./media/paloaltoadmin-tutorial/create_aaduser_02.png)
+    !["Użytkownicy i grupy" i "All users" linki](./media/paloaltoadmin-tutorial/create_aaduser_02.png)
 
 1. W górnej części **wszyscy użytkownicy** wybierz **Dodaj**.
 
@@ -250,7 +250,7 @@ W tej sekcji można włączyć użytkownika Britta Simon do używania usługi Az
 
 1. W okienku po lewej stronie wybierz **użytkowników i grup**.
 
-    ![Link „Użytkownicy i grupy”][202]
+    ![Link "Użytkownicy i grupy"][202]
 
 1. Wybierz **Dodaj** a następnie w **Dodaj przydziału** okienku wybierz **użytkowników i grup**.
 

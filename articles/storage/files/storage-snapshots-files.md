@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/17/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7305c6a5047bd09f6c9bda018748643ff81fe893
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d83cf20c856d37d337f4eb22c30ee9b6823d096b
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64708099"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65235818"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Omówienie migawek udziału plików platformy Azure 
 Usługa Azure Files oferuje możliwość robienia migawek udziału udziałów plików. Udostępnianie migawki przechwytywania stanu udziału w danym momencie. W tym artykule opisano możliwości, jakie zapewniają migawek udziałów i jak można było korzystać z nich w Twoim przypadku użycia niestandardowego.
@@ -40,7 +40,7 @@ Funkcja migawki udziału znajduje się na poziomie udziału plików. Pobieranie 
 
 Migawkę udziału, udziału plików jest taka sama jak jego udziału pliku podstawowego. Jedyną różnicą jest to, że **daty/godziny** wartość jest dołączany do udziału identyfikatora URI, aby wskazać czas, w którym została wykonana migawki udziału. Na przykład, jeśli identyfikator URI udziału plików jest http://storagesample.core.file.windows.net/myshare, identyfikator URI jest podobne do migawki udziału:
 ```
-http://storagesample.file.core.windows.net/myshare?snapshot=2011-03-09T01:42:34.9360000Z
+http://storagesample.core.file.windows.net/myshare?snapshot=2011-03-09T01:42:34.9360000Z
 ```
 
 Migawki udziałów są zachowywane aż jawnie są usuwane. Migawkę udziału nie może on nakreślał swój udział pliku podstawowego. Można wyliczyć migawki skojarzone z udziałem pliku podstawowego do śledzenia Twojej bieżącej migawki. 

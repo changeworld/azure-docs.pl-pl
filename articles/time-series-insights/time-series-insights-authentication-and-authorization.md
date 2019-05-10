@@ -10,76 +10,88 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 11/27/2017
+ms.date: 05/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 66a3c40bf1e1e1dc6253520a555e19ebf011297c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 5fb2802bfe9cc0a4d3297e6fa749e5b94008c616
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64698570"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472551"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Uwierzytelnianie i autoryzacja dla interfejsu API usługi Azure czas serii szczegółowych informacji
 
 W tym artykule opisano sposób konfigurowania uwierzytelniania i autoryzacji używany w niestandardowych aplikacji, która wywołuje interfejs API Azure czas serii szczegółowych informacji.
 
+> [!TIP]
+> Przeczytaj o [udzielanie dostępu do danych](./time-series-insights-data-access.md) do środowiska usługi Time Series Insights w usłudze Azure Active Directory.
+
 ## <a name="service-principal"></a>Jednostka usługi
 
-W tej sekcji opisano sposób konfigurowania aplikacji na dostęp do interfejsu API usługi Insights serii czasu imieniu aplikacji. Aplikację można następnie wykonywanie zapytań dotyczących danych lub publikować dane referencyjne w środowisku usługi Time Series Insights przy użyciu poświadczeń aplikacji, a nie poświadczeń użytkownika.
+To oraz następujące sekcje zawierają instrukcje dotyczące konfigurowania aplikacji na dostęp do interfejsu API usługi Insights serii czasu imieniu aplikacji. Aplikację można następnie zapytania lub publikować dane referencyjne w środowisku usługi Time Series Insights przy użyciu poświadczeń aplikacji, a nie poświadczeń użytkownika.
 
-Jeśli masz aplikację, która musi czas dostępu Series Insights, należy skonfigurować aplikację w usłudze Azure Active Directory i przypisać zasady dostępu do danych w środowisku usługi Time Series Insights. To podejście jest preferowane uruchamianie aplikacji z poświadczeniami użytkownika, ponieważ:
+## <a name="best-practices"></a>Najlepsze rozwiązania
 
-* Można przypisać uprawnienia do tożsamości aplikacji, która różni się od własnych uprawnień. Zazwyczaj te uprawnienia są ograniczone do tylko co wymaga aplikacja. Na przykład można zezwolić aplikacji na odczytywanie tylko dane w konkretnym środowisku usługi Time Series Insights.
+Jeśli masz aplikację, która musi czas dostępu Series Insights:
+
+1. Konfigurowanie aplikacji usługi Azure Active Directory.
+1. [Przypisz zasady dostępu do danych](./time-series-insights-data-access.md) w środowisku usługi Time Series Insights.
+
+Korzystanie z aplikacji, a nie poświadczeń użytkownika jest pożądane, ponieważ:
+
+* Możesz przypisywać uprawnienia do tożsamości aplikacji, które różnią się od własnych uprawnień. Zazwyczaj te uprawnienia są ograniczone do tylko co wymaga aplikacja. Na przykład można zezwolić aplikacji na odczytywanie tylko dane w konkretnym środowisku usługi Time Series Insights.
 * Nie trzeba zmienić poświadczenia aplikacji, w przypadku zmiany Twoje obowiązki.
 * Aby zautomatyzować uwierzytelniania, po uruchomieniu skryptu instalacji nienadzorowanej, można użyć certyfikatu lub klucza aplikacji.
 
-W tym artykule przedstawiono sposób wykonywania tych kroków w witrynie Azure portal. Uwzględniono w szczególności aplikacji pojedynczej dzierżawy, w którym aplikacja jest przeznaczona do uruchamiania w tylko jednej z organizacji. Aplikacje z jedną dzierżawą jest zazwyczaj używana dla aplikacji line-of-business, które działają w Twojej organizacji.
+Poniższe sekcje pokazują, jak wykonać te kroki w witrynie Azure portal. Artykuł koncentruje się na aplikacji pojedynczej dzierżawy, w którym aplikacja jest przeznaczona do uruchamiania w tylko jednej z organizacji. Zazwyczaj użyjesz aplikacji pojedynczej dzierżawy aplikacji line-of-business, które działają w Twojej organizacji.
 
-Przepływ konfiguracji obejmuje trzy kroki wysokiego poziomu:
+## <a name="set-up-summary"></a>Konfigurowanie podsumowanie
+
+Przepływ konfiguracji składa się z trzech kroków:
 
 1. Tworzenie aplikacji w usłudze Azure Active Directory.
-2. Autoryzuj tę aplikację, aby uzyskiwać dostęp do środowiska usługi Time Series Insights.
-3. Umożliwia uzyskanie tokenu do Identyfikatora aplikacji i klucz `"https://api.timeseries.azure.com/"` odbiorców lub zasobu. Tokenu można następnie wywołać interfejs API usługi Insights serii czasu.
+1. Autoryzuj tę aplikację, aby uzyskiwać dostęp do środowiska usługi Time Series Insights.
+1. Użyj klucza i identyfikator aplikacji w celu pobrania tokenu z `https://api.timeseries.azure.com/`. Tokenu można następnie wywołać interfejs API usługi Insights serii czasu.
 
-Poniżej przedstawiono szczegółowy opis kroków:
+## <a name="detailed-setup"></a>Szczegółowe ustawienia
 
 1. W witrynie Azure portal wybierz **usługi Azure Active Directory** > **rejestracje aplikacji** > **rejestrowanie nowej aplikacji**.
 
-   ![Rejestrowanie nowej aplikacji w usłudze Azure Active Directory](media/authentication-and-authorization/active-directory-new-application-registration.png)  
+   [![Rejestrowanie nowej aplikacji w usłudze Azure Active Directory](media/authentication-and-authorization/active-directory-new-application-registration.png)](media/authentication-and-authorization/active-directory-new-application-registration.png#lightbox)
 
-2. Nadaj aplikacji nazwę, wybierz typ jako **aplikacji sieci Web / interfejs API**, wybierz dowolny prawidłowy identyfikator URI dla **adres URL logowania**i kliknij przycisk **Utwórz**.
+1. Nadaj aplikacji nazwę, wybierz typ jako **aplikacji sieci Web / interfejs API**, wybierz dowolny prawidłowy identyfikator URI dla **adres URL logowania**i kliknij przycisk **Utwórz**.
 
-   ![Tworzenie aplikacji w usłudze Azure Active Directory](media/authentication-and-authorization/active-directory-create-web-api-application.png)
+   [![Tworzenie aplikacji w usłudze Azure Active Directory](media/authentication-and-authorization/active-directory-create-web-api-application.png)](media/authentication-and-authorization/active-directory-create-web-api-application.png#lightbox)
 
-3. Wybierz nowo utworzoną aplikację i skopiuj jej identyfikator aplikacji na swoim ulubionym edytorze tekstów.
+1. Wybierz nowo utworzoną aplikację i skopiuj jej identyfikator aplikacji na swoim ulubionym edytorze tekstów.
 
-   ![Skopiuj identyfikator aplikacji](media/authentication-and-authorization/active-directory-copy-application-id.png)
+   [![Skopiuj identyfikator aplikacji](media/authentication-and-authorization/active-directory-copy-application-id.png)](media/authentication-and-authorization/active-directory-copy-application-id.png#lightbox)
 
-4. Wybierz **klucze**, wprowadź nazwę klucza, wybierz czas wygaśnięcia, a następnie kliknij przycisk **Zapisz**.
+1. Wybierz **klucze**, wprowadź nazwę klucza, wybierz czas wygaśnięcia, a następnie kliknij przycisk **Zapisz**.
 
-   ![Wybierz klucze aplikacji](media/authentication-and-authorization/active-directory-application-keys.png)
+   [![Wybierz klucze aplikacji](media/authentication-and-authorization/active-directory-application-keys.png)](media/authentication-and-authorization/active-directory-application-keys.png#lightbox)
 
-   ![Wprowadź nazwę klucza i wygaśnięcia, a następnie kliknij przycisk Zapisz](media/authentication-and-authorization/active-directory-application-keys-save.png)
+   [![Wprowadź nazwę klucza i wygaśnięcia, a następnie kliknij przycisk Zapisz](media/authentication-and-authorization/active-directory-application-keys-save.png)](media/authentication-and-authorization/active-directory-application-keys-save.png#lightbox)
 
-5. Skopiuj klucz z ulubionego edytora tekstu.
+1. Skopiuj klucz z ulubionego edytora tekstu.
 
-   ![Skopiuj klucz aplikacji](media/authentication-and-authorization/active-directory-copy-application-key.png)
+   [![Skopiuj klucz aplikacji](media/authentication-and-authorization/active-directory-copy-application-key.png)](media/authentication-and-authorization/active-directory-copy-application-key.png#lightbox)
 
-6. Środowiska usługi Time Series Insights wybierz **zasady dostępu do danych** i kliknij przycisk **Dodaj**.
+1. Środowiska usługi Time Series Insights wybierz **zasady dostępu do danych** i kliknij przycisk **Dodaj**.
 
-   ![Dodaj nowe zasady dostępu do danych do środowiska usługi Time Series Insights](media/authentication-and-authorization/time-series-insights-data-access-policies-add.png)
+   [![Dodaj nowe zasady dostępu do danych do środowiska usługi Time Series Insights](media/authentication-and-authorization/time-series-insights-data-access-policies-add.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-add.png#lightbox)
 
-7. W **Wybieranie: Użytkownicy** okno dialogowe, Wklej nazwę aplikacji (z kroku 2) lub identyfikator aplikacji (z kroku 3).
+1. W **Wybieranie: Użytkownicy** okna dialogowego pole, Wklej nazwę aplikacji (z **kroku 2**) lub identyfikator aplikacji (z **kroku 3**).
 
-   ![Znajdowanie aplikacji w oknie dialogowym Wybierz użytkownika](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png)
+   [![Znajdowanie aplikacji w oknie dialogowym Wybierz użytkownika](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png#lightbox)
 
-8. Wybierz rolę (**czytnika** na wykonywanie zapytań o dane, **Współautor** wykonywanie zapytań o dane i modyfikowania danych referencyjnych) i kliknij przycisk **Ok**.
+1. Wybierz rolę (**czytnika** na wykonywanie zapytań o dane, **Współautor** wykonywanie zapytań o dane i modyfikowania danych referencyjnych) i kliknij przycisk **OK**.
 
-   ![Wybierz w oknie dialogowym Wybierz rolę czytelnika lub współautora](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png)
+   [![Wybierz w oknie dialogowym Wybierz rolę czytelnika lub współautora](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png#lightbox)
 
-9. Zapisz zasady, klikając **Ok**.
+1. Zapisz zasady, klikając **OK**.
 
-10. Użyj Identyfikatora aplikacji (z kroku 3) i klucz aplikacji (z kroku 5), można uzyskać tokenu w imieniu aplikacji. Następnie można przekazać token `Authorization` nagłówka, gdy aplikacja wywołuje interfejs API Insights serii czasu.
+1. Identyfikator aplikacji (z **kroku 3**) i klucz aplikacji (z **kroku 5**) można uzyskać tokenu w imieniu aplikacji. Następnie można przekazać token `Authorization` nagłówka, gdy aplikacja wywołuje interfejs API Insights serii czasu.
 
     Jeśli używasz języka C#, można użyć następującego kodu, można uzyskać tokenu w imieniu aplikacji. Aby uzyskać pełny przykład, zobacz [wykonywanie zapytań o dane przy użyciu języka C#](time-series-insights-query-data-csharp.md).
 
@@ -92,17 +104,17 @@ Poniżej przedstawiono szczegółowy opis kroków:
 
     AuthenticationResult token = await authenticationContext.AcquireTokenAsync(
         // Set the resource URI to the Azure Time Series Insights API
-        resource: "https://api.timeseries.azure.com/", 
+        resource: "https://api.timeseries.azure.com/",
         clientCredential: new ClientCredential(
             // Application ID of application registered in Azure Active Directory
-            clientId: "1bc3af48-7e2f-4845-880a-c7649a6470b8", 
+            clientId: "YOUR_APPLICATION_ID",
             // Application key of the application that's registered in Azure Active Directory
-            clientSecret: "aBcdEffs4XYxoAXzLB1n3R2meNCYdGpIGBc2YC5D6L2="));
+            clientSecret: "YOUR_CLIENT_APPLICATION_KEY"));
 
     string accessToken = token.AccessToken;
     ```
 
-Użyj klucza i identyfikator aplikacji w aplikacji, do uwierzytelniania za pomocą usługi Azure Time Series Insights. 
+Użyj **identyfikator aplikacji** i **klucza** w aplikacji do uwierzytelniania za pomocą usługi Azure Time Series Insights.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

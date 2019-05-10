@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: helohr
-ms.openlocfilehash: c4ab209d63a01d9e1089eec351eff64fc116f403
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 21979f1dee50fa846fb7888cfc95908b9d833392
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924973"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236789"
 ---
 # <a name="tutorial-create-a-host-pool-with-azure-marketplace"></a>Samouczek: Tworzenie puli hostów za pomocą witryny Azure Marketplace
 
@@ -36,7 +36,7 @@ Aby uruchomić w portalu Azure Marketplace, oferty zainicjować obsługę nowej 
 
 Postępuj zgodnie ze wskazówkami, aby wprowadzić informacje dotyczące odpowiednich bloków.
 
-### <a name="basics"></a>Podstawy
+### <a name="basics"></a>Ustawienia podstawowe
 
 Oto, co możesz zrobić bloku podstawy:
 
@@ -70,7 +70,7 @@ Bloku informacji o dzierżawie pulpitu wirtualnego Windows:
 
 1. Wprowadź **Nazwa grupy dzierżawy pulpitu wirtualnego Windows** grupy dzierżawy, który zawiera Twojej dzierżawy. Jeśli nie masz nazwy grupy określonej dzierżawy planowane, pozostaw domyślne.
 2. Wprowadź **nazwa dzierżawy pulpitu wirtualnego Windows** dla dzierżawy zostanie utworzona ta pula hosta w.
-3. Określ typ poświadczeń, których chcesz użyć do uwierzytelnienia się jako dzierżawy pulpitu wirtualnego Windows właściciela pulpitu zdalnego. Jeśli wybierzesz **nazwy głównej usługi**, należy również podać **Identyfikatora dzierżawy usługi Azure AD** skojarzony z jednostką usługi.
+3. Określ typ poświadczeń, których chcesz użyć do uwierzytelnienia się jako dzierżawy pulpitu wirtualnego Windows właściciela pulpitu zdalnego. Jeśli ukończono [tworzenie jednostek usługi i przypisań ról za pomocą programu PowerShell samouczka](./create-service-principal-role-powershell.md), wybierz opcję **nazwy głównej usługi**. Teraz musisz wprowadzić **Identyfikatora dzierżawy usługi Azure AD** usługi Azure Active Directory, która zawiera nazwy głównej usługi.
 4. Wprowadź albo poświadczenia dla konta administratora dzierżawy. Obsługiwane są tylko jednostki usługi przy użyciu poświadczeń hasła.
 5. Kliknij przycisk **OK**.
 

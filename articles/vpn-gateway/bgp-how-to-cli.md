@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: yushwang
-ms.openlocfilehash: f0367a360de97d3935c7fa8de9f3dafa6555811e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 51402196c8429797b644357822a1e3c08982b384
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60390690"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65209504"
 ---
 # <a name="how-to-configure-bgp-on-an-azure-vpn-gateway-by-using-cli"></a>Jak skonfigurować protokół BGP w bramie sieci VPN platformy Azure przy użyciu interfejsu wiersza polecenia
 
@@ -131,7 +131,7 @@ Nawiązanie połączenia między środowiskami lokalnymi, musisz utworzyć bram�
 To ćwiczenie w dalszym ciągu kompilacji konfiguracji przedstawionej na diagramie. Należy pamiętać o zastąpieniu przykładowych wartości tymi, które mają zostać użyte w danej konfiguracji. Podczas pracy z bramami sieci lokalnej, należy przestrzegać następujących czynności:
 
 * Brama sieci lokalnej może być w tej samej lokalizacji i grupie zasobów co bramy sieci VPN lub może być w innej lokalizacji i grupie zasobów. Ten przykład przedstawia bramy w różnych grupach zasobów w różnych lokalizacjach.
-* To minimalny prefiks, który trzeba zadeklarować dla bramy sieci lokalnej jest adres hosta użytkownika adres IP elementu równorzędnego protokołu BGP na twoim urządzeniu sieci VPN. W tym przypadku jest/32 prefiks 10.52.255.254/32.
+* To minimalny prefiks, który trzeba zadeklarować dla bramy sieci lokalnej jest adres hosta użytkownika adres IP elementu równorzędnego protokołu BGP na twoim urządzeniu sieci VPN. W tym przypadku jest/32 prefiks 10.51.255.254/32.
 * Przypominamy należy użyć różne numery ASN protokołu BGP między sieciami w środowisku lokalnym i sieci wirtualnej platformy Azure. Jeśli są takie same, należy zmienić numer ASN Twojej sieci wirtualnej, jeśli Twoje lokalne urządzenia sieci VPN już umożliwia numer ASN komunikacji równorzędnej z innych sąsiadów protokołu BGP.
 
 Przed kontynuowaniem upewnij się, że Ukończono [Włącz protokół BGP dla bramy sieci VPN](#enablebgp) części tego ćwiczenia i że nadal masz połączenia z subskrypcją 1. Należy zauważyć, że w tym przykładzie utworzysz nową grupę zasobów. Zauważ również, dwa dodatkowe parametry dla bramy sieci lokalnej: `Asn` i `BgpPeerAddress`.
@@ -225,7 +225,7 @@ Należy się upewnić, że przestrzeń adresów IP nowej sieci wirtualnej TestVN
 
 W tym przykładzie sieci wirtualne należą do tej samej subskrypcji. Można skonfigurować połączenia sieć wirtualna-sieć wirtualna między różnymi subskrypcjami. Aby dowiedzieć się więcej, zobacz [Konfigurowanie połączenia sieć wirtualna-sieć wirtualna](vpn-gateway-howto-vnet-vnet-cli.md). Upewnij się, że dodano `-EnableBgp $True` podczas tworzenia połączeń, aby włączyć protokół BGP.
 
-#### <a name="1-create-a-new-resource-group"></a>1. Utworzenie nowej grupy zasobów
+#### <a name="1-create-a-new-resource-group"></a>1. Utwórz nową grupę zasobów
 
 ```azurecli
 az group create -n TestBGPRG2 -l westus

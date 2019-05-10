@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: 1a82b9256405e2cac12f4c5611ee3bdad459162b
-ms.sourcegitcommit: abeefca6cd5ca01c3e0b281832212aceff08bf3e
+ms.openlocfilehash: e6a376803d8617e01ee279e40a33f6c1c3b748fd
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "64992943"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508196"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure Metadata Service: Scheduled Events dla maszyn wirtualnych Windows
 
@@ -36,7 +36,7 @@ Aby uzyskać informacje na temat usługi Scheduled Events w systemie Linux, zoba
 Wiele aplikacji mogą korzystać z czasu, aby przygotować się do obsługi maszyn wirtualnych. Czas może służyć do wykonywania określonych zadań aplikacji, które zwiększenia dostępności, niezawodności i użytkowanie w tym: 
 
 - Punkt kontrolny i przywracania
-- Opróżnianie połączeń
+- Opróżnianie połączenia
 - Tryb failover repliki podstawowej 
 - Usuwanie z puli modułu równoważenia obciążenia
 - Rejestrowanie zdarzeń
@@ -45,7 +45,7 @@ Wiele aplikacji mogą korzystać z czasu, aby przygotować się do obsługi masz
 Przy użyciu zaplanowanych zdarzeń aplikacji może odnajdywać podczas konserwacji będą występować i wyzwalanie zadań, aby ograniczyć jej wpływ. Włączanie zaplanowanych zdarzeń zapewnia maszynie wirtualnej minimalną ilość czasu przed wykonaniem związanych z konserwacją. Zobacz sekcję planowania zdarzeń poniżej szczegółowe informacje.
 
 Scheduled Events dostępne są zdarzenia w następujących przypadkach użycia:
-- [Platforma zainicjowane konserwacji](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/maintenance-and-updates) (na przykład maszyna wirtualna ponowny rozruch, migracji na żywo lub pamięć zachowywanie aktualizacji hosta)
+- [Platforma zainicjowane konserwacji](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates) (na przykład maszyna wirtualna ponowny rozruch, migracji na żywo lub pamięć zachowywanie aktualizacji hosta)
 - Obniżonej wydajności sprzętu
 - Użytkownik zainicjował konserwacji (np. ponownego uruchamiania lub ponownie wdraża Maszynę wirtualną)
 - [Maszyna wirtualna o niskim priorytecie eksmisji](https://azure.microsoft.com/blog/low-priority-scale-sets) w skali ustawia
@@ -68,7 +68,7 @@ Usługa zdarzeń według harmonogramu jest wersjonowany. Wersje są obowiązkowe
 | - | - | - | - |
 | 2017-11-01 | Ogólna dostępność | Wszyscy | <li> Dodano obsługę maszyn wirtualnych o niskim priorytecie eksmisji typ zdarzenia "Preempt"<br> | 
 | 2017-08-01 | Ogólna dostępność | Wszyscy | <li> Usunięte poprzedzona znakiem podkreślenia z nazwy zasobów dla maszyn wirtualnych IaaS<br><li>Nagłówek metadanych wymaganie wymuszone dla wszystkich żądań | 
-| 2017-03-01 | Wersja zapoznawcza | Wszyscy |<li>Wersja początkowa
+| 2017-03-01 | Preview | Wszyscy |<li>Wersja początkowa
 
 > [!NOTE] 
 > Poprzednich wersjach zapoznawczych zaplanowanych zdarzeń {najnowsza wersja} są obsługiwane jako parametru api-version. Ten format nie jest już obsługiwane i zostaną wycofane w przyszłości.
@@ -131,8 +131,8 @@ Każde zdarzenie jest zaplanowane minimalną ilość czasu w przyszłości na po
 |EventType  | Minimalna powiadomienia |
 | - | - |
 | Freeze| 15 minut |
-| Ponowne uruchamianie | 15 minut |
-| Ponowne wdrożenie | 10 minut |
+| Uruchom ponownie | 15 minut |
+| Ponownie wdróż | 10 minut |
 | Wywłaszczenia | 30 sekund |
 
 ### <a name="event-scope"></a>Zakres zdarzeń     

@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2019
+ms.date: 05/07/2019
 ms.author: zchia
-ms.openlocfilehash: 0f1b5f424a71aeccd4b1e57129c0f5b22ff158af
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: e8414b9737e0ee7f847827a432dd9887931a2532
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65159393"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65470377"
 ---
 # <a name="tutorial-configure-comeet-recruiting-software-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie oprogramowania rekrutacji Comeet dla automatycznej aprowizacji użytkowników
 
@@ -47,15 +47,15 @@ Przed rozpoczęciem konfigurowania oprogramowania rekrutacji Comeet dla automaty
 
 1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie wybierz **usługi Azure Active Directory**.
 
-    ![Przycisk Azure Active Directory](common/select-azuread.png)
+    ![Przycisk usługi Azure Active Directory](common/select-azuread.png)
 
 2. Przejdź do **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+    ![W bloku aplikacji przedsiębiorstwa](common/enterprise-applications.png)
 
 3. Aby dodać nową aplikację, wybierz **nową aplikację** znajdujący się u góry okienka.
 
-    ![Przycisk Nowa aplikacja](common/add-new-app.png)
+    ![Nowy przycisk aplikacji](common/add-new-app.png)
 
 4. W polu wyszukiwania wprowadź **oprogramowania rekrutacji Comeet**, wybierz opcję **oprogramowania rekrutacji Comeet** panel wyników, a następnie kliknij **Dodaj** przycisk, aby dodać aplikację.
 
@@ -84,7 +84,7 @@ Przewodniki dotyczące tej sekcji Cię przez kroki, aby skonfigurować usługi A
 
 ### <a name="to-configure-automatic-user-provisioning-for-comeet-recruiting-software-in-azure-ad"></a>Aby skonfigurować automatyczna aprowizacja użytkowników dla Comeet rekrutacji oprogramowania w usłudze Azure AD:
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) i wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **Comeet rekrutacji oprogramowania**.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). Wybierz **aplikacje dla przedsiębiorstw**, a następnie wybierz **wszystkie aplikacje**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
@@ -104,8 +104,7 @@ Przewodniki dotyczące tej sekcji Cię przez kroki, aby skonfigurować usługi A
 
 6. W [konsoli administracyjnej oprogramowania rekrutacji Comeet](https://app.comeet.co/), przejdź do **Comeet > Ustawienia > Uwierzytelnianie > Microsoft Azure**, a następnie skopiuj **klucz tajny tokenu dla swojej firmy**wartość **klucz tajny tokenu** pola w usłudze Azure AD.
 
-    ![Comeet rekrutacji dostarczanie oprogramowania](./media/comeetrecruitingsoftware-provisioning-tutorial/secret-token-1.png)
-    
+    ![Comeet rekrutacji dostarczanie oprogramowania](./media/comeet-recruiting-software-provisioning-tutorial/secret-token-1.png)
 
 7. Podczas wypełniania pola wyświetlane w kroku 5, kliknij przycisk **Testuj połączenie** zapewniające usługi Azure AD connect można Comeet rekrutacji oprogramowania. Jeśli połączenie nie powiedzie się, upewnij się, że Twoje konto Comeet rekrutacji oprogramowania ma uprawnienia administratora i spróbuj ponownie.
 
@@ -119,11 +118,11 @@ Przewodniki dotyczące tej sekcji Cię przez kroki, aby skonfigurować usługi A
 
 10. W obszarze **mapowania** zaznacz **synchronizacji Azure użytkownicy usługi Active Directory do Comeet**.
 
-    ![Comeet rekrutacji dostarczanie oprogramowania](./media/comeetrecruitingsoftware-provisioning-tutorial/user-mappings.png)
+    ![Comeet rekrutacji mapowania użytkownika oprogramowania](media/comeet-recruiting-software-provisioning-tutorial/user-mappings.png)
 
 11. Przejrzyj atrybuty użytkownika, które są synchronizowane z usługi Azure AD Comeet oprogramowaniem rekrutacji w **mapowanie atrybutu** sekcji. Atrybuty wybrany jako **zgodne** właściwości są używane do dopasowania kont użytkowników w oprogramowaniu rekrutacji Comeet operacji aktualizacji. Wybierz **Zapisz** przycisk, aby zatwierdzić zmiany.
 
-    ![Comeet rekrutacji dostarczanie oprogramowania](./media/comeetrecruitingsoftware-provisioning-tutorial/user-mapping-attributes.png)
+    ![Comeet rekrutacji atrybuty grupy oprogramowania](media/comeet-recruiting-software-provisioning-tutorial/user-mapping-attributes.png)
 
 12. Aby skonfigurować filtrów określania zakresu, można znaleźć w następujących instrukcjach podanych w [samouczek filtru Scoping](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
@@ -156,7 +155,3 @@ Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienn
 
 * [Dowiedz się, jak przeglądać dzienniki i Uzyskaj raporty dotyczące inicjowania obsługi administracyjnej działania](../manage-apps/check-status-user-account-provisioning.md)
 
-<!--Image references-->
-[1]: ./media/atlassian-cloud-provisioning-tutorial/tutorial-general-01.png
-[2]: ./media/atlassian-cloud-provisioning-tutorial/tutorial-general-02.png
-[3]: ./media/atlassian-cloud-provisioning-tutorial/tutorial-general-03.png

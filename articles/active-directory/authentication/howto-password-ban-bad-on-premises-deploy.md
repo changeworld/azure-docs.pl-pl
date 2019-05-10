@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1c24ec49652cfe9105aa66fd1d5e26c81afcd14
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 256215b1976598b961ada7210e5ee92c9f72d440
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60414833"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65506872"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Wdrażanie ochrony haseł w usłudze Azure AD
 
@@ -39,6 +39,9 @@ Po ta funkcja działa w trybie inspekcji odpowiednim czasie, można przełącza�
 * Wszystkie kontrolery domeny, które Agent kontrolera domeny usługi, aby zainstalować ochrona za pomocą hasła usługi Azure AD musi działać system Windows Server 2012 lub nowszym. To wymaganie nie oznacza, że domeny usługi Active Directory lub lasu również musi występować w systemie Windows Server 2012 domeny lub lasu poziom funkcjonalności. Jak wspomniano w [zasady projektowania](concept-password-ban-bad-on-premises.md#design-principles), nie ma żadnych minimalna DFL ani FFL wymagane dla dowolnego kontrolera domeny agenta lub serwera proxy oprogramowania do uruchomienia.
 * Wszystkie maszyny, które zainstalowana Usługa agenta kontrolera domeny musi mieć zainstalowane w .NET 4.5.
 * Wszystkie maszyny, które serwer proxy usługi, aby zainstalować ochrona za pomocą hasła usługi Azure AD musi działać system Windows Server 2012 R2 lub nowszym.
+   > [!NOTE]
+   > Wdrożenie usługi serwera proxy jest wymagane do wdrażania ochrona za pomocą hasła usługi Azure AD, nawet jeśli kontroler domeny może mieć wychodzących bezpośrednie połączenie z Internetem. 
+   >
 * Wszystkie komputery z zainstalowaną usługę serwera Proxy ochrony haseł usługi Azure AD musi mieć zainstalowane programu .NET 4.7.
   .NET 4.7 powinno być już zainstalowane na serwerze systemu Windows w pełni zaktualizowany. Jeśli nie jest tak, Pobierz i uruchom Instalator znalazł w [Instalator w trybie offline programu .NET Framework 4.7 dla Windows](https://support.microsoft.com/en-us/help/3186497/the-net-framework-4-7-offline-installer-for-windows).
 * Wszystkie maszyny, tym przez kontrolery domen, które zawierają zainstalowania składników ochrony haseł usługi Azure AD musi mieć zainstalowane uniwersalnego środowiska uruchomieniowego C. Środowisko uruchomieniowe można uzyskać, upewniając się, że masz wszystkie aktualizacje z witryny Windows Update. Lub możesz pobrać go w pakiecie aktualizacji specyficznych dla systemu operacyjnego. Aby uzyskać więcej informacji, zobacz [aktualizacji dla uniwersalnego środowiska uruchomieniowego c. w Windows](https://support.microsoft.com/help/2999226/update-for-uniersal-c-runtime-in-windows).
@@ -279,7 +282,7 @@ Nie ma żadnych dodatkowych wymagań, aby wdrożyć ochrona za pomocą hasła us
 
 Hasło zmiany/zestawy są przetwarzane i nie utrwalony na kontrolerach domeny tylko do odczytu (RODC). Są one przekazywane do kontrolerów domeny z możliwością zapisu. Dlatego nie trzeba zainstalować oprogramowanie agenta kontrolera domeny na kontrolery RODC.
 
-## <a name="high-availability"></a>Wysoka dostępność
+## <a name="high-availability"></a>Duża dostępność
 
 Kwestią dostępność głównego ochrony hasłem jest dostępność serwerów proxy, gdy kontrolery domeny w lesie próbuje pobrać nowe zasady lub inne dane z platformy Azure. Każdy Agent kontrolera domeny używa prosty algorytm działanie okrężne stylu przy podejmowaniu decyzji, którego serwera proxy do wywołania. Agent pomija serwerów proxy, które nie odpowiadają. Dla najbardziej pełni połączone wdrożeniach usługi Active Directory, które mają dobrej kondycji replikacji katalogu i folderu sysvol stanu folderu dwa serwery proxy jest wystarczający, aby zapewnić dostępność. Powoduje to szybkie pobieranie nowych zasad oraz inne dane. Jednak można wdrożyć serwery proxy dodatkowe.
 

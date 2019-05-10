@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 04/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: dd7044276a806c23785df4d15f86b8e03f32a767
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8c7a24c4c4e071271d16de036ef6896e9d172913
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64575382"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406329"
 ---
 # <a name="what-is-azure-time-series-insights"></a>Co to jest usługa Azure Time Series Insights?
 
@@ -38,11 +38,11 @@ Dane szeregów czasowych przedstawiają, jak zasób lub proces zmienia się wraz
 W przypadku dużych woluminów przechowywanie, indeksowanie, odpytywanie, analizowanie i wizualizowanie danych szeregów czasowych może być trudne.
 Jednak usługa Azure Time Series Insights powoduje przechwycenie i każdego nowego zdarzenia są przechowywane jako wiersz i zmiany efektywnie mierzy się wraz z upływem czasu, dzięki czemu można sprawdzić wstecz prowadzenie analiz z przeszłości i przewidzieć przyszłe zmiany.
 
-## <a name="video"></a>Połączenia wideo
+## <a name="video"></a>Wideo
 
 ### <a name="learn-more-about-azure-time-series-insights-the-cloud-based-iot-analytics-platformbr"></a>Dowiedz się więcej na temat usługi Azure Time Series Insights, platforma analiz IoT opartych na chmurze.</br>
 
-> [!VIDEO https://youtube.com/embed/GaARrFfjoss]
+[![FILM WIDEO](https://img.youtube.com/vi/GaARrFfjoss/0.jpg)](https://www.youtube.com/watch?v=GaARrFfjoss)
 
 ## <a name="primary-scenarios"></a>Podstawowe scenariusze
 

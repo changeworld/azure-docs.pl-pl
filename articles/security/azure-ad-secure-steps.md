@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: martincoetzer
-ms.openlocfilehash: 92546e6aabdf43c2f9cb0339fb21dd2dfc641d44
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8e9101a1e23d361e66c5c30969069cbd4b971590
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60587875"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236768"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Pięć kroków do zabezpieczania infrastruktury tożsamości
 
@@ -59,12 +59,12 @@ Biorąc pod uwagę częstotliwość hasła odgadnąć, phished, kradzieży ze z�
 
 Wiele organizacji korzysta z tradycyjnych złożoności (wymaganie znaków specjalnych, liczby, wielkie i małe litery) i zasady wygasania haseł. [Badania firmy Microsoft](https://aka.ms/passwordguidance) wykazuje te zasady, że użytkownicy wybiorą hasła, które są łatwiejsze do odgadnięcia.
 
-Usługa Azure AD [dynamiczne zakazanych haseł](https://docs.microsoft.com/azure/active-directory/active-directory-secure-passwords) funkcja używa bieżącego zachowania osoba atakująca, aby uniemożliwić użytkownikom ustawianie haseł, które można łatwo złamać. Ta funkcja jest zawsze włączona podczas tworzenia użytkowników w chmurze, ale są teraz dostępne dla organizacji hybrydowych wdrażanych [ochrona za pomocą hasła usługi Azure AD dla usługi Active Directory systemu Windows Server](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad-on-premises). Ochrony hasłem w usłudze Azure AD blokuje użytkownikom wybór te wspólnego hasła i można rozszerzyć, aby zablokować hasło zawierające słowa kluczowe, które określisz. Na przykład możesz może uniemożliwić użytkownikom wybranie hasła zawierającej nazwy produktów w firmie lub zespołu sport lokalnego.
+Usługa Azure AD [dynamiczne zakazanych haseł](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad) funkcja używa bieżącego zachowania osoba atakująca, aby uniemożliwić użytkownikom ustawianie haseł, które można łatwo złamać. Ta funkcja jest zawsze włączona podczas tworzenia użytkowników w chmurze, ale są teraz dostępne dla organizacji hybrydowych wdrażanych [ochrona za pomocą hasła usługi Azure AD dla usługi Active Directory systemu Windows Server](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad-on-premises). Ochrony hasłem w usłudze Azure AD blokuje użytkownikom wybór te wspólnego hasła i można rozszerzyć, aby zablokować hasło zawierające słowa kluczowe, które określisz. Na przykład możesz może uniemożliwić użytkownikom wybranie hasła zawierającej nazwy produktów w firmie lub zespołu sport lokalnego.
 
 Firma Microsoft zaleca przyjęcie następujące zasady nowoczesnych hasła, na podstawie [wskazówki NIST](https://pages.nist.gov/800-63-3/sp800-63b.html):
 
 1. Wymaga hasła mają co najmniej 8 znaków. Już nie jest koniecznie lepsze, ponieważ mogą spowodować, że użytkownicy wybiorą hasła przewidywalne, zapisywać hasła w plikach lub zapisywania ich w dół.
-2. Wyłącz zasady wygasania, które zachęcić użytkowników do łatwe do odgadnięcia haseł, takich jak **Summer2018!**
+2. Wyłącz zasady wygasania, które zachęcić użytkowników do łatwe do odgadnięcia haseł, takich jak **Spring2019!**
 3. Wyłącz wymagania dotyczące znaków kompozycji i uniemożliwić użytkownikom wybór często zaatakowane hasła, ponieważ powodują użytkownikom na wybór podstawienia przewidywalne znaków w haśle.
 
 Możesz użyć [programu PowerShell, aby zapobiec wygaśnięciu hasła](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-policy) dla użytkowników po utworzeniu tożsamości w usłudze Azure AD bezpośrednio. Hybrydowe organizacje powinny wdrożyć te zasady przy użyciu [ustawienia zasad grupy domeny](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/hh994572(v%3dws.10)) lub [programu Windows PowerShell](https://docs.microsoft.com/powershell/module/addsadministration/set-addefaultdomainpasswordpolicy).
@@ -166,7 +166,7 @@ Usługa Azure AD Identity Protection udostępnia dwie ważne raportów, które n
 
 ### <a name="audit-apps-and-consented-permissions"></a>Aplikacje inspekcji i które wyrażono zgodę uprawnienia
 
-Użytkownicy mogą być zwiódł już do nawigowania do witryny sieci web ze złamanymi zabezpieczeniami lub aplikacje, które uzyskają dostęp do ich profil informacji i danych użytkowników, takich jak wiadomości e-mail. Złośliwego aktora służy zatwierdzonej uprawnienia otrzymał szyfrowanie ich zawartość skrzynki pocztowej i popytu ransom w celu odzyskania danych skrzynki pocztowej. [Administratorzy, należy przejrzeć i inspekcji](https://blogs.technet.microsoft.com/office365security/defending-against-illicit-consent-grants/) uprawnienia udzielone przez użytkowników.
+Użytkownicy mogą być zwiódł już do nawigowania do witryny sieci web ze złamanymi zabezpieczeniami lub aplikacje, które uzyskają dostęp do ich profil informacji i danych użytkowników, takich jak wiadomości e-mail. Złośliwego aktora służy zatwierdzonej uprawnienia otrzymał szyfrowanie ich zawartość skrzynki pocztowej i popytu ransom w celu odzyskania danych skrzynki pocztowej. [Administratorzy, należy przejrzeć i inspekcji](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) uprawnienia udzielone przez użytkowników.
 
 ## <a name="step-5---enable-end-user-self-help"></a>Krok 5 — Włączanie użytkowników końcowych w samodzielnej pomocy
 

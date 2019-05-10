@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7db73ff8bef553b36408cfae90e32014f875bd3
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 39f323c2ac86e8d42319b3d99221f6c20beff3e4
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190998"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406691"
 ---
 # <a name="authentication-flows"></a>Przepływy uwierzytelniania
 
@@ -126,7 +126,7 @@ Za pomocą przepływu kodu urządzenia, aplikacji uzyskuje tokenów przejdziesz 
 
 ![Przepływ kodu urządzenia](media/msal-authentication-flows/device-code.png)
 
-1. Zawsze wtedy, gdy wymagane jest uwierzytelnianie użytkownika, aplikacja zawiera kod i prosi użytkownika o za pomocą innego urządzenia (np. smartfony podłączonej do Internetu) przejdź do adresu URL (na przykład http://microsoft.com/devicelogin), gdzie użytkownicy będą monitowani o podanie kodu. Czy to zrobione, strony sieci web przeprowadzi użytkownika przez środowisko normalnego uwierzytelniania, w tym monitów o wyrażenie zgody i uwierzytelniania wieloskładnikowego, jeśli to konieczne.
+1. Zawsze wtedy, gdy wymagane jest uwierzytelnianie użytkownika, aplikacja zawiera kod i prosi użytkownika o za pomocą innego urządzenia (np. smartfony podłączonej do Internetu) przejdź do adresu URL (na przykład https://microsoft.com/devicelogin), gdzie użytkownicy będą monitowani o podanie kodu. Czy to zrobione, strony sieci web przeprowadzi użytkownika przez środowisko normalnego uwierzytelniania, w tym monitów o wyrażenie zgody i uwierzytelniania wieloskładnikowego, jeśli to konieczne.
 
 2. Po pomyślnym uwierzytelnieniu czyli aplikację wiersza polecenia otrzyma wymagane tokenów za pośrednictwem kanału zwrotnego i użyje do wykonywania wywołań interfejsu API sieci web, których potrzebuje.
 

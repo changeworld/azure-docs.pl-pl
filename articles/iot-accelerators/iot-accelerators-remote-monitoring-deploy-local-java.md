@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: 209a91453875531e81ddbcead8c1ed2fb309a0a0
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 996111fbe23000182dab774ba3bbad0cc6435824
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65147446"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65412729"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>Wdrażanie zdalne monitorowanie akceleratora rozwiązań lokalnie — IntelliJ
 
@@ -27,7 +27,7 @@ Jeśli chcesz uruchomić akcelerator rozwiązania monitorowania zdalnego na plat
 
 Aby wdrożyć usługi platformy Azure używane przez akcelerator rozwiązania monitorowania zdalnego, należy aktywną subskrypcją platformy Azure.
 
-Jeśli jej nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać szczegółowe informacje, zobacz artykuł [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
+Jeśli jej nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać więcej informacji, zobacz [bezpłatnej wersji próbnej Azure](https://azure.microsoft.com/pricing/free-trial/).
 
 ### <a name="machine-setup"></a>Ustawienia komputera
 
@@ -100,9 +100,9 @@ Poniższe kroki pokazują, jak uruchomić mikrousług zdalnego monitorowania w p
     * Usługa sieci Web (services\iothub manager)
     * Usługa sieci Web (services\storage karta)
 
-Na przykład poniższa ilustracja przedstawia Dodawanie konfiguracji dla usługi:
+Na przykład na poniższej ilustracji przedstawiono Dodawanie konfiguracji dla usługi:
 
-[![Dodawanie konfiguracji](./media/deploy-locally-intelliJ/run-configurations.png)](./media/deploy-locally-intelliJ/run-configurations.png#lightbox)
+[![Dodawanie konfiguracji](./media/deploy-locally-intellij/run-configurations.png)](./media/deploy-locally-intellij/run-configurations.png#lightbox)
 
 
 #### <a name="create-compound-configuration"></a>Tworzenie złożonych konfiguracji
@@ -111,14 +111,11 @@ Na przykład poniższa ilustracja przedstawia Dodawanie konfiguracji dla usługi
 1. Wprowadź **nazwa** i **Dodaj sbt zadania**
 1. Kliknij przycisk **Zastosuj > Ok** Aby zapisać wybrane opcje.
 
-Na przykład poniższa ilustracja przedstawia dodanie wszystkich zadań sbt do jednej konfiguracji:
+Na przykład na poniższej ilustracji przedstawiono, dodając wszystkie zadania sbt do jednej konfiguracji:
 
+[![Add-All-Services](./media/deploy-locally-intellij/all-services.png)](./media/deploy-locally-intellij/all-services.png#lightbox)
 
-[![Add-All-Services](./media/deploy-locally-intelliJ/all-services.png)](./media/deploy-locally-intelliJ/all-services.png#lightbox)
-
-
-
-1. Kliknij przycisk **Uruchom** Aby skompilować i uruchomić usługi sieci web na komputerze lokalnym.
+Kliknij przycisk **Uruchom** Aby skompilować i uruchomić usługi sieci web na komputerze lokalnym.
 
 Każdą usługę sieci web zostanie otwarte okno przeglądarki sieci web i wiersza polecenia. W wierszu polecenia zostaną wyświetlone dane wyjściowe z uruchomioną usługę i okna przeglądarki umożliwia monitorowanie stanu. Nie zamykaj wiersz polecenia lub strony sieci web, ta akcja zatrzymuje usługę sieci web.
 

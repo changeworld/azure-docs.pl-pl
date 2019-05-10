@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: spelluru
-ms.openlocfilehash: 6985bd0bbae858ad258e723ef4d6d6d687b2c86e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9ad6f82d7b9bd7c4957df1dd37d0f2ddf7462e9e
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60695470"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65410948"
 ---
 # <a name="enable-and-use-remote-desktop-for-linux-virtual-machines-in-a-lab-in-azure-lab-services"></a>Włączanie i używanie usług pulpitu zdalnego dla maszyn wirtualnych systemu Linux w laboratorium w usłudze Azure Lab Services
 W tym artykule przedstawiono sposób wykonywania następujących zadań:
@@ -64,7 +64,7 @@ Właściciel laboratorium (nauczyciel/Profesor) mogą łączyć się student mas
 ## <a name="students-connecting-to-the-student-vm"></a>Studenci nawiązywania połączenia z maszyny Wirtualnej dla uczniów
 Student może protokołu RDP w systemie do ich maszyn wirtualnych systemu Linux po właściciel laboratorium (nauczyciel/Profesor) **publikuje** szablonu maszyny Wirtualnej przy użyciu protokołu RDP i graficzny interfejs użytkownika pakiety zainstalowane na komputerze. Oto konkretne kroki: 
 
-1. Gdy Uczeń loguje się do portalu Labs bezpośrednio (`http://labs.azure.com`) lub za pomocą łącza rejestracji (`http://labs.azure.com/register/<registrationCode>`), dla każdego ucznia laboratorium ma dostęp do jest wyświetlany Kafelek. 
+1. Gdy Uczeń loguje się do portalu Labs bezpośrednio (`https://labs.azure.com`) lub za pomocą łącza rejestracji (`https://labs.azure.com/register/<registrationCode>`), dla każdego ucznia laboratorium ma dostęp do jest wyświetlany Kafelek. 
 2. Na kafelku, wybierz **Start** Jeśli maszyna wirtualna jest zatrzymana. 
 3. Wybierz przycisk **Połącz**. Ta akcja spowoduje pobranie pliku RDP na swojej maszynie. Zapisz go i Otwórz, aby nawiązać połączenie z maszyny z systemem Linux za pośrednictwem protokołu RDP. 
 

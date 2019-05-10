@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 11/26/2018
+ms.date: 05/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: dd4c5e1652eb4dbff66591aa4bbe74e51be3e6c0
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: adb30cc3af50b71cdc03e41d847bd4d824cffea6
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64716716"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236396"
 ---
 # <a name="grant-data-access-to-an-environment"></a>Przyznawanie dostępu do danych w środowisku
 
@@ -34,11 +34,11 @@ Wykonaj następujące kroki, aby zezwolić na dostęp do nazwy głównej użytko
 
 1. Wybierz **zasady dostępu do danych**, a następnie wybierz pozycję **+ Dodaj**.
 
-    ![Data access jednego][1]
+    [![Data access jednego](media/data-access/data-access-one.png)](media/data-access/data-access-one.png#lightbox)
 
 1. Wybierz **wybierz użytkownika**. Wyszukaj adres nazwy lub adresu e-mail użytkownika zlokalizować użytkownika, którego chcesz dodać. Kliknij przycisk **wybierz** aby potwierdzić wybór.
 
-    ![dane dostępu 2][2]
+    [![dane dostępu 2](media/data-access/data-access-two.png)](media/data-access/data-access-two.png#lightbox)
 
 1. Wybierz **wybierz rolę**. Wybierz rolę odpowiedni dostęp dla użytkownika:
 
@@ -48,15 +48,15 @@ Wykonaj następujące kroki, aby zezwolić na dostęp do nazwy głównej użytko
 
    Wybierz **OK** aby potwierdzić wybór roli.
 
-    ![dane dostępu 3][3]
+    [![dane dostępu 3](media/data-access/data-access-three.png)](media/data-access/data-access-three.png#lightbox)
 
 1. Wybierz **OK** na **wybierz rolę użytkownika** strony.
 
-    ![cztery w przypadku dostępu do danych][4]
+    [![cztery w przypadku dostępu do danych](media/data-access/data-access-four.png)](media/data-access/data-access-four.png#lightbox)
 
 1. Upewnij się, że **zasady dostępu do danych** strona zawiera listę użytkowników i rolami dla każdego użytkownika.
 
-    ![Pięć w przypadku dostępu do danych][5]
+    [![Data-access-five](media/data-access/data-access-five.png)](media/data-access/data-access-five.png#lightbox)
 
 ## <a name="provide-guest-access-from-another-aad-tenant"></a>Dostęp gościa z innej dzierżawy usługi AAD
 
@@ -66,19 +66,19 @@ Wykonaj następujące kroki, aby udzielić dostępu gościa do środowiska usłu
 
 1. Wybierz **zasady dostępu do danych**, a następnie wybierz pozycję **+ zaprosić**.
 
-    ![Data-access-six][6]
+    [![Data-access-six](media/data-access/data-access-six.png)](media/data-access/data-access-six.png#lightbox)
 
 1. Wprowadź adres e-mail użytkownika, które chcesz zaprosić. Ten adres e-mail musi być skojarzony z usługą Azure AD. Możesz opcjonalnie dołączyć osobistą wiadomość z zaproszeniem.
 
-    ![Data access siódmego][7]
+    [![Data access siódmego](media/data-access/data-access-seven.png)](media/data-access/data-access-seven.png#lightbox)
 
 1. Zwróć uwagę na bąbelek potwierdzenie, który pojawia się na ekranie.
 
-    ![Data access osiem][8]
+    [![Data access osiem](media/data-access/data-access-eight.png)](media/data-access/data-access-eight.png#lightbox)
 
 1. Wybierz **wybierz użytkownika**. Wyszukaj adres e-mail użytkownika gościa, zaprosić do zlokalizowania użytkownika, którego chcesz dodać. Kliknij przycisk **wybierz** aby potwierdzić wybór.
 
-    ![Data access dziewiątego][9]
+    [![Data access dziewiątego](media/data-access/data-access-nine.png)](media/data-access/data-access-nine.png#lightbox)
 
 1. Wybierz **wybierz rolę**. Wybierz rolę odpowiedni dostęp dla użytkownika gościa:
 
@@ -88,29 +88,29 @@ Wykonaj następujące kroki, aby udzielić dostępu gościa do środowiska usłu
 
    Wybierz **OK** aby potwierdzić wybór roli.
 
-    ![Data access dziesięciu][10]
+    [![Data access dziesięciu](media/data-access/data-access-ten.png)](media/data-access/data-access-ten.png#lightbox)
 
 1. Wybierz **OK** na **wybierz rolę użytkownika** strony.
 
 1. Upewnij się, że **zasady dostępu do danych** strona zawiera listę użytkownik-Gość i role dla każdego użytkownika-gościa.
 
-    ![Data-access-eleven][11]
+    [![Data-access-eleven](media/data-access/data-access-eleven.png)](media/data-access/data-access-eleven.png#lightbox)
 
 1. Teraz użytkownik-Gość musi wykonać kroki, aby uzyskiwać dostęp do środowiska, znajduje się w dzierżawie platformy Azure, do którego zaproszenie. Po pierwsze mogą zaakceptować zaproszenie, wysłane. To zaproszenie jest wysyłane za pośrednictwem poczty e-mail na adres e-mail, którego użyto w kroku 5. Wybierają **wprowadzenie** zaakceptować.
 
-    ![Data-access-twelve][12]
+    [![Data-access-twelve](media/data-access/data-access-twelve.png)](media/data-access/data-access-twelve.png#lightbox)
 
 1. Następnie użytkownik-Gość akceptuje uprawnienia związane z organizacji przez administratora.
 
-    ![Data-access trzynaście][13]
+    [![Data-access trzynaście](media/data-access/data-access-thirteen.png)](media/data-access/data-access-thirteen.png#lightbox)
 
 1. Po użytkownik-Gość jest zalogowany na adres e-mail używany Aby zaprosić go i ich zaakceptowanie zaproszenia, komputery przechodzą do insights.azure.com. Jeden raz, wybierają awatara obok swojego adresu e-mail w prawym górnym rogu ekranu.
 
-    ![Data-access-fourteen][14]
+    [![Data-access-fourteen](media/data-access/data-access-fourteen.png)](media/data-access/data-access-fourteen.png#lightbox)
 
 1. Następnie wybiera użytkownika gościa dzierżawy platformy Azure, z menu rozwijanego katalogu. Ta dzierżawa jest jeden, do którego zaproszenie.
 
-    ![Data-access-fifteen][15]
+    [![Data-access 15](media/data-access/data-access-fifteen.png)](media/data-access/data-access-fifteen.png#lightbox)
 
 Po użytkownik-Gość wybierze dzierżawy, użytkownik zobaczy środowiska usługi Time Series Insights, do którego zostanie udostępniony im dostęp. Klienci mają teraz wszystkie funkcje, które są skojarzone z rolą podanym je w **kroku 5**.
 
@@ -121,20 +121,3 @@ Po użytkownik-Gość wybierze dzierżawy, użytkownik zobaczy środowiska usłu
 * Wyślij [zdarzenia do źródła zdarzeń](./time-series-insights-send-events.md).
 
 * Widok [środowiska w Eksploratorze czasu Series Insights w wersji zapoznawczej](./time-series-insights-update-explorer.md).
-
-<!-- Images -->
-[1]: media/data-access/data-access-one.png
-[2]: media/data-access/data-access-two.png
-[3]: media/data-access/data-access-three.png
-[4]: media/data-access/data-access-four.png
-[5]: media/data-access/data-access-five.png
-[6]: media/data-access/data-access-six.png
-[7]: media/data-access/data-access-seven.png
-[8]: media/data-access/data-access-eight.png
-[9]: media/data-access/data-access-nine.png
-[10]: media/data-access/data-access-ten.png
-[11]: media/data-access/data-access-eleven.png
-[12]: media/data-access/data-access-twelve.png
-[13]: media/data-access/data-access-thirteen.png
-[14]: media/data-access/data-access-fourteen.png
-[15]: media/data-access/data-access-fifteen.png

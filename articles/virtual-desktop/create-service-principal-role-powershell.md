@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/12/2019
 ms.author: helohr
-ms.openlocfilehash: 93725fc9d77552d779378d0c14294a5bbb11c926
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: d3357cec426585ba8550301dfa703f583a930ad0
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65146143"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236931"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-with-powershell"></a>Samouczek: Tworzenie jednostek usługi i przypisań ról za pomocą programu PowerShell
 
@@ -21,7 +21,7 @@ Jednostki usługi stanowią tożsamości, utworzone w usłudze Azure Active Dire
 - Automatyzowanie zadań zarządzania w usłudze określonych Windows pulpitu wirtualnego
 - Użyj jako poświadczeń zamiast użytkowników wymagane uwierzytelnianie wieloskładnikowe, podczas uruchamiania dowolnego szablonu Windows wirtualnego pulpitu usługi Azure Resource Manager
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+W tym samouczku pokazano, jak:
 
 > [!div class="checklist"]
 > * Tworzenie nazwy głównej usługi w usłudze Azure Active Directory
@@ -38,7 +38,7 @@ Zanim będzie można utworzyć jednostki usługi i przypisań ról, należy wyko
     Install-Module AzureAD
     ```
 
-2. Uruchom następujące polecenia cmdlet przy użyciu wartości w cudzysłowie zastąpione wartościami odpowiednich do sesji.
+2. Uruchom następujące polecenia cmdlet przy użyciu wartości w cudzysłowie zastąpione wartościami odpowiednich do sesji. Jeśli właśnie utworzony, w dzierżawie pulpitu wirtualnego Windows z [utworzyć dzierżawę w samouczku pulpitu wirtualnego Windows](./tenant-setup-azure-active-directory.md), użycie "Domyślna dzierżawa grupy" jako nazwa grupy dzierżawy.
 
     ```powershell
     $myTenantGroupName = "<my-tenant-group-name>"
@@ -109,7 +109,7 @@ Poniżej przedstawiono trzy poświadczeń, których należy zanotować i polece�
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym samouczku przedstawiono sposób utworzyć jednostkę usługi i zaloguj się do wirtualnego pulpitu Windows z nim. Aby dowiedzieć się więcej o tym, jak zalogować się do wirtualnego pulpitu Windows, przejdź do nawiązywania połączenia z wirtualnego How-tos pulpitu Windows.
+Po utworzeniu nazwy głównej usługi i przypisana rola w Twojej dzierżawie Windows pulpitu wirtualnego, można użyć go do utworzenia puli hosta. Aby dowiedzieć się więcej o pulach hosta, przejdź do samouczka związane z tworzeniem puli hosta w Windows pulpitu wirtualnego.
 
-- [Łączenie z systemem Windows 10 lub Windows 7](connect-windows-7-and-10.md)
-- [Łączenie z przeglądarki sieci web](connect-web.md)
+ > [!div class="nextstepaction"]
+ > [Samouczek puli hosta Windows pulpitu wirtualnego](./create-host-pools-azure-marketplace.md)

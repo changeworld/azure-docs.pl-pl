@@ -1,25 +1,25 @@
 ---
-title: Samouczek — Automatyzowanie przetwarzania wiadomości e-mail i załączników — Azure Logic Apps | Microsoft Docs
+title: Samouczek — Automatyzowanie przetwarzania wiadomości e-mail i załączników — Azure Logic Apps
 description: Samouczek — Tworzenie zautomatyzowanych przepływów pracy na potrzeby obsługi wiadomości e-mail i załączników przy użyciu usług Azure Logic Apps, Azure Storage i Azure Functions
 services: logic-apps
 ms.service: logic-apps
 author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
-manager: jeconnoc
+manager: carmonm
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 07/20/2018
-ms.openlocfilehash: 57d7fecfa9bf2b27a54387072b080ed95f4e87e5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/07/2019
+ms.openlocfilehash: 4287efedfc35da762825c5562cf88e64987192f1
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60514341"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65414560"
 ---
 # <a name="tutorial-automate-handling-emails-and-attachments-with-azure-logic-apps"></a>Samouczek: Automatyzowanie obsługi wiadomości e-mail i załączników za pomocą usługi Azure Logic Apps
 
-Usługa Azure Logic Apps pomaga automatyzować przepływy pracy i integrować dane w usługach platformy Azure, usługach firmy Microsoft, innych aplikacjach typu oprogramowanie jako usługa (SaaS) oraz systemach lokalnych. Ten samouczek pokazuje sposób tworzenia [aplikacji logiki](../logic-apps/logic-apps-overview.md), która obsługuje przychodzące wiadomości e-mail i wszelkie załączniki. Ta aplikacja logiki analizuje zawartość wiadomości e-mail, zapisuje ją w usłudze Azure Storage oraz wysyła powiadomienia dotyczące przeglądania zawartości. 
+Usługa Azure Logic Apps pomaga automatyzować przepływy pracy i integrować dane w usługach platformy Azure, usługach firmy Microsoft, innych aplikacjach typu oprogramowanie jako usługa (SaaS) oraz systemach lokalnych. Ten samouczek pokazuje sposób tworzenia [aplikacji logiki](../logic-apps/logic-apps-overview.md), która obsługuje przychodzące wiadomości e-mail i wszelkie załączniki. Ta aplikacja logiki analizuje zawartość wiadomości e-mail, zapisuje ją w usłudze Azure Storage oraz wysyła powiadomienia dotyczące przeglądania zawartości.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -37,61 +37,67 @@ Po ukończeniu aplikacja logiki będzie ogólnie wyglądać jak ten przepływ pr
 
 ![Ukończona aplikacja logiki wysokiego poziomu](./media/tutorial-process-email-attachments-workflow/overview.png)
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem <a href="https://azure.microsoft.com/free/" target="_blank">zarejestruj się w celu założenia bezpłatnego konta platformy Azure</a>. 
-
 ## <a name="prerequisites"></a>Wymagania wstępne
+
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, [zarejestruj się w celu założenia bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/).
 
 * Konto e-mail od dostawcy obsługiwanego przez usługę Logic Apps, na przykład Office 365 Outlook, Outlook.com lub Gmail. W przypadku innych dostawców [przejrzyj tę listę łączników](https://docs.microsoft.com/connectors/).
 
   Ta aplikacja logiki korzysta z konta Office 365 Outlook. 
   Jeśli korzystasz z innego konta e-mail, ogólne kroki pozostają takie same, ale Twój interfejs użytkownika może wyglądać trochę inaczej.
 
-* Pobierz i zainstaluj <a href="https://storageexplorer.com/" target="_blank">bezpłatny Eksplorator usługi Microsoft Azure Storage</a>. To narzędzie ułatwia sprawdzanie, czy kontener magazynu został skonfigurowany prawidłowo.
+* Pobierz i zainstaluj [bezpłatny Eksplorator usługi Microsoft Azure Storage](https://storageexplorer.com/). To narzędzie ułatwia sprawdzanie, czy kontener magazynu został skonfigurowany prawidłowo.
 
 ## <a name="sign-in-to-azure-portal"></a>Logowanie do witryny Azure Portal
 
-Zaloguj się do <a href="https://portal.azure.com" target="_blank">witryny Azure Portal</a> przy użyciu poświadczeń konta Azure.
+Zaloguj się do [witryny Azure Portal](https://portal.azure.com) przy użyciu poświadczeń konta Azure.
 
 ## <a name="set-up-storage-to-save-attachments"></a>Konfigurowanie magazynu na potrzeby zapisywania załączników
 
 Możesz zapisywać przychodzące wiadomości e-mail i załączniki jako obiekty blob w [kontenerze magazynu platformy Azure](../storage/common/storage-introduction.md). 
 
-1. Przed utworzeniem kontenera magazynu [utwórz konto magazynu](../storage/common/storage-quickstart-create-account.md) przy użyciu tych ustawień:
+1. Zanim będzie można utworzyć kontenera magazynu [Tworzenie konta magazynu](../storage/common/storage-quickstart-create-account.md) przy użyciu tych ustawień na **podstawy** kartę w witrynie Azure portal:
 
-   | Ustawienie | Wartość | Opis | 
-   |---------|-------|-------------| 
-   | **Nazwa** | attachmentstorageacct | Nazwa konta magazynu | 
-   | **Model wdrażania** | Resource Manager | [Model wdrażania](../azure-resource-manager/resource-manager-deployment-model.md) na potrzeby zarządzania wdrażaniem zasobów | 
-   | **Rodzaj konta** | Zastosowania ogólne | [Typ konta magazynu](../storage/common/storage-introduction.md#types-of-storage-accounts) | 
-   | **Lokalizacja** | Zachodnie stany USA | Region, w którym będą przechowywane informacje na temat konta magazynu | 
-   | **Replikacja** | Magazyn lokalnie nadmiarowy (LRS) | To ustawienie określa sposób kopiowania, przechowywania i synchronizowania danych oraz zarządzania nimi. Zobacz [Locally redundant storage (LRS): Low-cost data redundancy for Azure Storage](../storage/common/storage-redundancy-lrs.md) (Magazyn lokalnie nadmiarowy: nadmiarowość danych o niskich kosztach dla usługi Azure Storage). | 
-   | **Wydajność** | Standardowa (Standard) | To ustawienie określa obsługiwane typy danych oraz nośniki do przechowywania danych. Zobacz [Typy kont magazynu](../storage/common/storage-introduction.md#types-of-storage-accounts). | 
-   | **Wymagany bezpieczny transfer** | Disabled (Wyłączony) | To ustawienie określa wymagane zabezpieczenia dla żądań z połączeń. Zobacz [Require secure transfer (Wymaganie bezpiecznego transferu)](../storage/common/storage-require-secure-transfer.md). | 
-   | **Subskrypcja** | <*your-Azure-subscription-name*> | Nazwa subskrypcji platformy Azure | 
-   | **Grupa zasobów** | LA-Tutorial-RG | Nazwa [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) używana do organizowania powiązanych zasobów i zarządzania nimi. <p>**Uwaga:** Grupa zasobów istnieje w konkretnym regionie. Chociaż elementy w tym samouczku mogą nie być dostępne we wszystkich regionach, spróbuj używać tego samego regionu, jeśli jest to możliwe. | 
-   | **Konfigurowanie sieci wirtualnych** | Disabled (Wyłączony) | Na potrzeby tego samouczka zachowaj ustawienie **Wyłączony**. | 
-   |||| 
+   | Ustawienie | Wartość | Opis |
+   |---------|-------|-------------|
+   | **Subskrypcja** | <*Azure-subscription-name*> | Nazwa subskrypcji platformy Azure |  
+   | **Grupa zasobów** | LA-Tutorial-RG | Nazwa [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) używana do organizowania powiązanych zasobów i zarządzania nimi. <p>**Uwaga:** Grupa zasobów istnieje w konkretnym regionie. Chociaż elementy w tym samouczku mogą nie być dostępne we wszystkich regionach, spróbuj używać tego samego regionu, jeśli jest to możliwe. |
+   | **Nazwa konta magazynu** | attachmentstorageacct | Nazwa konta magazynu |
+   | **Lokalizacja** | Zachodnie stany USA | Region, w którym będą przechowywane informacje na temat konta magazynu |
+   | **Wydajność** | Standardowa (Standard) | To ustawienie określa obsługiwane typy danych oraz nośniki do przechowywania danych. Zobacz [Typy kont magazynu](../storage/common/storage-introduction.md#types-of-storage-accounts). |
+   | **Rodzaj konta** | Zastosowania ogólne | [Typ konta magazynu](../storage/common/storage-introduction.md#types-of-storage-accounts) |
+   | **Replikacja** | Magazyn lokalnie nadmiarowy (LRS) | To ustawienie określa sposób kopiowania, przechowywania i synchronizowania danych oraz zarządzania nimi. Zobacz [Locally redundant storage (LRS): Low-cost data redundancy for Azure Storage](../storage/common/storage-redundancy-lrs.md) (Magazyn lokalnie nadmiarowy: nadmiarowość danych o niskich kosztach dla usługi Azure Storage). |
+   ||||
+
+   Na **zaawansowane** karty, to ustawienie należy wybrać:
+
+   | Ustawienie | Wartość | Opis |
+   |---------|-------|-------------|
+   | **Wymagany bezpieczny transfer** | Wyłączono | To ustawienie określa wymagane zabezpieczenia dla żądań z połączeń. Zobacz [Require secure transfer (Wymaganie bezpiecznego transferu)](../storage/common/storage-require-secure-transfer.md). |
+   ||||
 
    Aby utworzyć konto magazynu, możesz również użyć [programu Azure PowerShell](../storage/common/storage-quickstart-create-storage-account-powershell.md) lub [wiersza polecenia platformy Azure](../storage/common/storage-quickstart-create-storage-account-cli.md).
 
-2. Po wdrożeniu konta magazynu przez platformę Azure pobierz klucz dostępu konta magazynu:
+1. Gdy wszystko będzie gotowe, wybierz pozycję **przeglądu + Utwórz**.
 
-   1. W menu konta magazynu w obszarze **Ustawienia** wybierz pozycję **Klucze dostępu**. 
+1. Po wdrożeniu konta magazynu przez platformę Azure pobierz klucz dostępu konta magazynu:
+
+   1. W menu konta magazynu w obszarze **Ustawienia** wybierz pozycję **Klucze dostępu**.
 
    2. Skopiuj nazwę konta magazynu i klucz **key1**, a następnie zapisz te wartości w bezpiecznym miejscu.
 
       ![Kopiowanie i zapisywanie nazwy i klucza konta magazynu](./media/tutorial-process-email-attachments-workflow/copy-save-storage-name-key.png)
 
-   Aby uzyskać klucz dostępu do konta magazynu, możesz również użyć [programu Azure PowerShell](https://docs.microsoft.com/powershell/module/az.storage/get-azstorageaccountkey) lub [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/storage/account/keys?view=azure-cli-latest.md#az-storage-account-keys-list). 
+   Aby uzyskać klucz dostępu do konta magazynu, możesz również użyć [programu Azure PowerShell](https://docs.microsoft.com/powershell/module/az.storage/get-azstorageaccountkey) lub [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/storage/account/keys?view=azure-cli-latest.md#az-storage-account-keys-list).
 
-3. Utwórz kontener magazynu obiektów blob na potrzeby załączników do wiadomości e-mail.
-   
+1. Utwórz kontener magazynu obiektów blob na potrzeby załączników do wiadomości e-mail.
+
    1. W menu konta magazynu wybierz pozycję **Omówienie**. 
-   W obszarze **Usługi** wybierz pozycję **Obiekty blob**.
+   W obszarze **usług**, wybierz **obiektów blob**.
 
       ![Dodawanie kontenera magazynu obiektów blob](./media/tutorial-process-email-attachments-workflow/create-storage-container.png)
 
-   2. Po otwarciu strony **Kontenery** na pasku narzędzi wybierz pozycję **Kontener**. 
+   2. Po otwarciu strony **Kontenery** na pasku narzędzi wybierz pozycję **Kontener**.
 
    3. W obszarze **Nowy kontener** wprowadź ciąg „attachments” jako nazwę kontenera. 
    W obszarze **Poziom dostępu publicznego** wybierz pozycję **Kontener (anonimowy dostęp do odczytu dla kontenerów i obiektów blob)**, a następnie wybierz przycisk **OK**.
@@ -100,7 +106,7 @@ Możesz zapisywać przychodzące wiadomości e-mail i załączniki jako obiekty 
 
       ![Ukończony kontener magazynu](./media/tutorial-process-email-attachments-workflow/created-storage-container.png)
 
-   Aby utworzyć kontener magazynu, możesz również użyć [programu Azure PowerShell](https://docs.microsoft.com/powershell/module/az.storage/new-azstoragecontainer) lub [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create). 
+   Aby utworzyć kontener magazynu, możesz również użyć [programu Azure PowerShell](https://docs.microsoft.com/powershell/module/az.storage/new-azstoragecontainer) lub [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create).
 
 Następnie połącz Eksplorator usługi Storage z kontem magazynu.
 
@@ -108,24 +114,24 @@ Następnie połącz Eksplorator usługi Storage z kontem magazynu.
 
 Teraz połącz Eksplorator usługi Storage z kontem magazynu, aby potwierdzić, że aplikacja logiki może prawidłowo zapisywać załączniki jako obiekty blob w kontenerze magazynu.
 
-1. Otwórz Eksplorator usługi Microsoft Azure Storage. 
+1. Otwórz Eksplorator usługi Microsoft Azure Storage.
 
    Eksplorator usługi Storage wyświetli monit o połączenie z kontem magazynu. 
 
-2. W okienku **łączenia z usługą Azure Storage** wybierz pozycję **Użyj nazwy i klucza konta magazynu**, a następnie wybierz pozycję **Dalej**. 
+2. W okienku **łączenia z usługą Azure Storage** wybierz pozycję **Użyj nazwy i klucza konta magazynu**, a następnie wybierz pozycję **Dalej**.
 
    ![Eksplorator usługi Storage — łączenie z kontem magazynu](./media/tutorial-process-email-attachments-workflow/storage-explorer-choose-storage-account.png)
 
    > [!TIP]
    > Jeśli nie zostanie wyświetlony monit, na pasku narzędzi Eksploratora usługi Storage wybierz pozycję **Dodaj konto**.
 
-3. W obszarze **Nazwa konta** podaj nazwę konta magazynu. W obszarze **Klucz konta** podaj wcześniej zapisany klucz dostępu. Wybierz pozycję **Dalej**.
+3. W obszarze **Nazwa konta** podaj nazwę konta magazynu. W obszarze **Klucz konta** podaj wcześniej zapisany klucz dostępu. Wybierz **dalej**.
 
-4. Potwierdź informacje o połączeniu, a następnie wybierz pozycję **Połącz**. 
+4. Potwierdź informacje o połączeniu, a następnie wybierz pozycję **Połącz**.
 
-   Eksplorator usługi Storage tworzy połączenie i wyświetla konto magazynu w oknie Eksploratora w obszarze **(Lokalne i dołączone)** > **Konta magazynu**. 
+   Eksplorator usługi Storage tworzy połączenie i wyświetla konto magazynu w oknie Eksploratora w obszarze **(Lokalne i dołączone)** > **Konta magazynu**.
 
-5. Aby znaleźć kontener magazynu obiektów blob, w obszarze **Konta magazynu** rozwiń swoje konto magazynu (tutaj **attachmentstorageacct**), a następnie rozwiń węzeł **Kontenery obiektów blob**, w którym znajdziesz kontener **attachments**, na przykład: 
+5. Aby znaleźć kontener magazynu obiektów blob, w obszarze **Konta magazynu** rozwiń swoje konto magazynu (tutaj **attachmentstorageacct**), a następnie rozwiń węzeł **Kontenery obiektów blob**, w którym znajdziesz kontener **attachments**, na przykład:
 
    ![Eksplorator usługi Storage — wyszukiwanie kontenera magazynu](./media/tutorial-process-email-attachments-workflow/storage-explorer-check-contianer.png)
 
@@ -137,19 +143,20 @@ Teraz użyj fragmentu kodu zapewnionego przez te kroki, aby utworzyć funkcję p
 
 1. Aby można było utworzyć funkcję, [utwórz aplikację funkcji](../azure-functions/functions-create-function-app-portal.md) przy użyciu następujących ustawień:
 
-   | Ustawienie | Wartość | Opis | 
-   | ------- | ----- | ----------- | 
-   | **Nazwa aplikacji** | CleanTextFunctionApp | Globalnie unikatowa i opisowa nazwa aplikacji funkcji | 
+   | Ustawienie | Wartość | Opis |
+   | ------- | ----- | ----------- |
+   | **Nazwa aplikacji** | CleanTextFunctionApp | Globalnie unikatowa i opisowa nazwa aplikacji funkcji |
    | **Subskrypcja** | <*your-Azure-subscription-name*> | Ta sama subskrypcja platformy Azure, której użyto wcześniej | 
-   | **Grupa zasobów** | LA-Tutorial-RG | Ta sama grupa zasobów platformy Azure, której użyto wcześniej | 
+   | **Grupa zasobów** | LA-Tutorial-RG | Ta sama grupa zasobów platformy Azure, której użyto wcześniej |
    | **Plan hostingu** | Plan zużycia | To ustawienie określa sposób przydzielania i skalowania zasobów, takich jak moc obliczeniowa, na potrzeby uruchamiania aplikacji funkcji. Zobacz [Hosting plan comparison (Porównanie planów hostingu)](../azure-functions/functions-scale.md). | 
-   | **Lokalizacja** | Zachodnie stany USA | Ten sam region, którego użyto wcześniej | 
-   | **Stos środowiska uruchomieniowego** | Preferowany język | Wybierz środowisko uruchomieniowe, które obsługuje ulubiony język programowania funkcji. Wybierz platformy .NET dla C# i F# funkcji. |
-   | **Storage** | cleantextfunctionstorageacct | Utwórz konto magazynu dla aplikacji funkcji. Użyj tylko małych liter i cyfr. <p>**Uwaga:** To konto magazynu zawiera aplikacje funkcji i różni się od poprzednio utworzonego konta magazynu do przechowywania załączników wiadomości e-mail. | 
-   | **Application Insights** | Wyłączone | Włącza monitorowanie aplikacji za pomocą usługi [Application Insights](../azure-monitor/app/app-insights-overview.md), ale na potrzeby tego samouczka wybierz ustawienie **Wyłączone**. | 
-   |||| 
+   | **Lokalizacja** | Zachodnie stany USA | Ten sam region, którego użyto wcześniej |
+   | **Stos środowiska uruchomieniowego** | Preferowany język | Wybierz środowisko uruchomieniowe, które obsługuje funkcję ulubionym języku programowania. Wybierz **.NET** dla C# i F# funkcji. |
+   | **Storage** | cleantextfunctionstorageacct | Utwórz konto magazynu dla aplikacji funkcji. Użyj tylko małych liter i cyfr. <p>**Uwaga:** To konto magazynu zawiera aplikacje funkcji i różni się od poprzednio utworzonego konta magazynu do przechowywania załączników wiadomości e-mail. |
+   | **Application Insights** | Wyłączone | Włącza monitorowanie aplikacji za pomocą usługi [Application Insights](../azure-monitor/app/app-insights-overview.md), ale na potrzeby tego samouczka wybierz ustawienie **Wyłączone**. |
+   ||||
 
-   Jeśli aplikacja funkcji nie otworzy się automatycznie po wdrożeniu, znajdź ją w witrynie <a href="https://portal.azure.com" target="_blank">Azure Portal</a>. W głównym menu platformy Azure wybierz pozycję **Aplikacje funkcji**, a następnie wybierz aplikację funkcji. 
+   Jeśli aplikacja funkcji nie otworzy się automatycznie po wdrożeniu, znajdź ją w witrynie [Azure Portal](https://portal.azure.com). 
+   W głównym menu platformy Azure wybierz pozycję **Aplikacje funkcji**, a następnie wybierz aplikację funkcji.
 
    ![Wybieranie aplikacji funkcji](./media/tutorial-process-email-attachments-workflow/select-function-app.png)
 
@@ -165,46 +172,45 @@ Teraz użyj fragmentu kodu zapewnionego przez te kroki, aby utworzyć funkcję p
 
    ![Tworzenie nowej funkcji](./media/tutorial-process-email-attachments-workflow/function-app-new-function.png)
 
-3. W obszarze **Wybierz szablon poniżej lub przejdź do przewodnika Szybki start** otwórz listę **Scenariusz** i wybierz pozycję **Funkcje podstawowe**. W szablonie **Wyzwalacz HTTP** wybierz pozycję **C#**.
+3. W obszarze **wybierz szablon poniżej lub przejdź do przewodnika Szybki Start**, wybierz opcję **wyzwalacza HTTP** szablonu.
 
-   ![Wybieranie szablonu funkcji](./media/tutorial-process-email-attachments-workflow/function-select-httptrigger-csharp-function-template.png)
+   ![Wybierz szablon wyzwalacza HTTP](./media/tutorial-process-email-attachments-workflow/function-select-httptrigger-csharp-function-template.png)
 
-   > [!NOTE]
-   > W tym przykładzie przedstawiono przykładowy kod języka C#, dzięki czemu możesz wykonać kroki przykładu bez znajomości języka C#.
+   Platforma Azure tworzy funkcję przy użyciu szablonu charakterystyczny dla funkcji wyzwalanej przez protokół HTTP.
 
-4. W okienku **Nowa funkcja** w obszarze **Nazwa** wprowadź ```RemoveHTMLFunction```. Zachowaj pozycję **Poziom autoryzacji** ustawioną na wartość **Funkcja** i wybierz pozycję **Utwórz**.
+4. W okienku **Nowa funkcja** w obszarze **Nazwa** wprowadź `RemoveHTMLFunction`. Zachowaj pozycję **Poziom autoryzacji** ustawioną na wartość **Funkcja** i wybierz pozycję **Utwórz**.
 
-   ![Nadawanie nazwy funkcji](./media/tutorial-process-email-attachments-workflow/function-provide-name.png)
+   ![Nadaj nazwę funkcji](./media/tutorial-process-email-attachments-workflow/function-provide-name.png)
 
 5. Po otwarciu edytora zastąp kod szablonu poniższym kodem przykładowym, który usuwa kod HTML i zwraca wyniki do obiektu wywołującego:
 
    ``` CSharp
-    #r "Newtonsoft.Json"
+   #r "Newtonsoft.Json"
 
-    using System.Net;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.Extensions.Primitives;
-    using Newtonsoft.Json;
-    using System.Text.RegularExpressions;
+   using System.Net;
+   using Microsoft.AspNetCore.Mvc;
+   using Microsoft.Extensions.Primitives;
+   using Newtonsoft.Json;
+   using System.Text.RegularExpressions;
 
-    public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
-    {
-        log.LogInformation("HttpWebhook triggered");
+   public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
+   {
+      log.LogInformation("HttpWebhook triggered");
 
-        // Parse query parameter
-        string emailBodyContent = await new StreamReader(req.Body).ReadToEndAsync();
+      // Parse query parameter
+      string emailBodyContent = await new StreamReader(req.Body).ReadToEndAsync();
 
-         // Replace HTML with other characters
-        string updatedBody = Regex.Replace(emailBodyContent, "<.*?>", string.Empty);
-        updatedBody = updatedBody.Replace("\\r\\n", " ");
-        updatedBody = updatedBody.Replace(@"&nbsp;", " ");
+      // Replace HTML with other characters
+      string updatedBody = Regex.Replace(emailBodyContent, "<.*?>", string.Empty);
+      updatedBody = updatedBody.Replace("\\r\\n", " ");
+      updatedBody = updatedBody.Replace(@"&nbsp;", " ");
 
-        // Return cleaned text
-        return (ActionResult) new OkObjectResult(new { updatedBody });
-    }
+      // Return cleaned text
+      return (ActionResult)new OkObjectResult(new { updatedBody });
+   }
    ```
 
-6. Gdy wszystko będzie gotowe, wybierz pozycję **Zapisz**. Aby przetestować funkcję, przy prawej krawędzi edytora pod ikoną strzałki (**<**) wybierz pozycję **Test**. 
+6. Gdy wszystko będzie gotowe, wybierz pozycję **Zapisz**. Aby przetestować funkcję, przy prawej krawędzi edytora pod ikoną strzałki (**<**) wybierz pozycję **Test**.
 
    ![Otwieranie okienka „Test”](./media/tutorial-process-email-attachments-workflow/function-choose-test.png)
 
@@ -214,7 +220,7 @@ Teraz użyj fragmentu kodu zapewnionego przez te kroki, aby utworzyć funkcję p
    {"name": "<p><p>Testing my function</br></p></p>"}
    ```
 
-   ![Testowanie funkcji](./media/tutorial-process-email-attachments-workflow/function-run-test.png)
+   ![Testuj funkcję](./media/tutorial-process-email-attachments-workflow/function-run-test.png)
 
    W oknie **Dane wyjściowe** jest wyświetlany wynik funkcji:
 
@@ -235,14 +241,14 @@ Po sprawdzeniu, czy funkcja działa, utwórz aplikację logiki. Chociaż ten sam
 
    ![Podawanie informacji na temat aplikacji logiki](./media/tutorial-process-email-attachments-workflow/create-logic-app-settings.png)
 
-   | Ustawienie | Wartość | Opis | 
-   | ------- | ----- | ----------- | 
-   | **Nazwa** | LA-ProcessAttachment | Nazwa aplikacji logiki | 
-   | **Subskrypcja** | <*your-Azure-subscription-name*> | Ta sama subskrypcja platformy Azure, której użyto wcześniej | 
+   | Ustawienie | Wartość | Opis |
+   | ------- | ----- | ----------- |
+   | **Nazwa** | LA-ProcessAttachment | Nazwa aplikacji logiki |
+   | **Subskrypcja** | <*your-Azure-subscription-name*> | Ta sama subskrypcja platformy Azure, której użyto wcześniej |
    | **Grupa zasobów** | LA-Tutorial-RG | Ta sama grupa zasobów platformy Azure, której użyto wcześniej |
-   | **Lokalizacja** | Zachodnie stany USA | Ten sam region, którego użyto wcześniej | 
-   | **Log Analytics** | Wyłączone | Na potrzeby tego samouczka wybierz ustawienie **Wyłączone**. | 
-   |||| 
+   | **Lokalizacja** | Zachodnie stany USA | Ten sam region, którego użyto wcześniej |
+   | **Log Analytics** | Wyłączone | Na potrzeby tego samouczka wybierz ustawienie **Wyłączone**. |
+   ||||
 
 3. Po wdrożeniu aplikacji na platformie Azure zostanie otwarty Projektant aplikacji usługi Logic Apps ze stroną zawierającą wprowadzający film wideo i szablony typowych wzorców aplikacji logiki. W obszarze **Szablony** wybierz pozycję **Pusta aplikacja logiki**.
 
@@ -258,32 +264,35 @@ Następnie dodaj [wyzwalacz](../logic-apps/logic-apps-overview.md#logic-app-conc
 
    ![Wybierz ten wyzwalacz dla dostawcy poczty e-mail: „Po nadejściu nowej wiadomości e-mail”](./media/tutorial-process-email-attachments-workflow/add-trigger-when-email-arrives.png)
 
-   * Dla kont służbowych platformy Azure wybierz pozycję Office 365 Outlook. 
-   * Dla osobistych kont Microsoft wybierz pozycję Outlook.com. 
+   * Dla kont służbowych platformy Azure wybierz pozycję Office 365 Outlook.
+
+   * Dla osobistych kont Microsoft wybierz pozycję Outlook.com.
 
 2. Jeśli pojawi się prośba o podanie poświadczeń, zaloguj się do swojego konta e-mail, aby usługa Logic Apps mogła utworzyć połączenie z tym kontem e-mail.
 
 3. Teraz podaj kryteria, których wyzwalacz będzie używać do filtrowania nowych wiadomości e-mail.
 
-   1. Określ folder, interwał i częstotliwość sprawdzania wiadomości e-mail.
+   1. Określ następujące ustawienia sprawdzania wiadomości e-mail.
 
       ![Określanie folderu, interwału i częstotliwości sprawdzania wiadomości e-mail](./media/tutorial-process-email-attachments-workflow/set-up-email-trigger.png)
 
-      | Ustawienie | Wartość | Opis | 
-      | ------- | ----- | ----------- | 
-      | **Folder** | Skrzynka odbiorcza | Folder poczty e-mail do sprawdzania | 
-      | **Interwał** | 1 | Liczba interwałów do odczekania między sprawdzaniami | 
-      | **Częstotliwość** | Minuta | Jednostka czasu dla każdego interwału między sprawdzaniami | 
-      |  |  |  | 
+      | Ustawienie | Wartość | Opis |
+      | ------- | ----- | ----------- |
+      | **Folder** | Skrzynka odbiorcza | Folder poczty e-mail do sprawdzania |
+      | **Zawiera załącznik** | Tak | Pobieraj tylko wiadomości e-mail z załącznikami. <p>**Uwaga:** Wyzwalacz nie usuwa żadnych wiadomości e-mail z konta; sprawdza tylko nowe wiadomości i przetwarza tylko te wiadomości, które pasują do filtru tematu. |
+      | **Uwzględnij załączniki** | Tak | Pobieraj załączniki jako dane wejściowe dla przepływu pracy, zamiast tylko sprawdzać wiadomości pod kątem istnienia załączników. |
+      | **Interval** | 1 | Liczba interwałów do odczekania między sprawdzaniami |
+      | **Częstotliwość** | Minuta | Jednostka czasu dla każdego interwału między sprawdzaniami |
+      ||||
   
-   2. Wybierz pozycję **Pokaż opcje zaawansowane** i określ następujące ustawienia:
+   1. Z **dodano nowy parametr** listy wybierz **filtr tematu**.
 
-      | Ustawienie | Wartość | Opis | 
-      | ------- | ----- | ----------- | 
-      | **Zawiera załącznik** | Yes | Pobieraj tylko wiadomości e-mail z załącznikami. <p>**Uwaga:** Wyzwalacz nie usuwa żadnych wiadomości e-mail z konta; sprawdza tylko nowe wiadomości i przetwarza tylko te wiadomości, które pasują do filtru tematu. | 
-      | **Uwzględnij załączniki** | Yes | Pobieraj załączniki jako dane wejściowe dla przepływu pracy, zamiast tylko sprawdzać wiadomości pod kątem istnienia załączników. | 
-      | **Filtr tematu** | ```Business Analyst 2 #423501``` | Tekst do wyszukania w temacie wiadomości e-mail | 
-      |  |  |  | 
+   1. Po **filtr tematu** pojawi się okno w działaniu, określ temat wymienionych poniżej:
+
+      | Ustawienie | Wartość | Opis |
+      | ------- | ----- | ----------- |
+      | **Filtr tematu** | ```Business Analyst 2 #423501``` | Tekst do wyszukania w temacie wiadomości e-mail |
+      ||||
 
 4. Aby na razie ukryć szczegóły wyzwalacza, kliknij wewnątrz jego paska tytułu.
 
@@ -298,17 +307,20 @@ Następnie dodaj [wyzwalacz](../logic-apps/logic-apps-overview.md#logic-app-conc
 
 Teraz dodaj warunek, który powoduje wybranie tylko wiadomości e-mail z załącznikami.
 
-1. W obszarze wyzwalacza wybierz pozycję **Nowy krok** > **Dodaj warunek**.
+1. W obszarze wyzwalacza wybierz **nowy krok**.
 
-   ![„Nowy krok”, „Dodaj warunek”](./media/tutorial-process-email-attachments-workflow/add-condition-under-trigger.png)
+   !["Nowy krok"](./media/tutorial-process-email-attachments-workflow/add-condition-under-trigger.png)
 
-2. Zmień nazwę warunku na lepszy opis.
+2. W obszarze **wybierz akcję**, w polu wyszukiwania wpisz "warunek". Wybierz tę akcję: **Warunek — formant**
 
-   1. Na pasku tytułu warunku wybierz przycisk z **wielokropkiem** (**...**) > **Zmień nazwę**.
+   ![Wybierz pozycję "Warunek"](./media/tutorial-process-email-attachments-workflow/select-condition.png)
+
+   1. Zmień nazwę warunku na lepszy opis. 
+   Na pasku tytułu warunku wybierz **wielokropek** (**...** ) przycisk > **Zmień nazwę**.
 
       ![Zmienianie nazwy warunku](./media/tutorial-process-email-attachments-workflow/condition-rename.png)
 
-   2. Zmień nazwę warunku na następujący opis: ```If email has attachments and key subject phrase```
+   1. Zmień nazwę warunku na następujący opis: ```If email has attachments and key subject phrase```
 
 3. Utwórz warunek, który wyszukuje wiadomości e-mail z załącznikami. 
 
@@ -362,7 +374,7 @@ Teraz należy sprawdzić, czy warunek działa prawidłowo:
    Teraz po prostu utwórz pusty plik tekstowy i załącz go do wiadomości e-mail.
 
    Po odebraniu wiadomości e-mail aplikacja logiki sprawdzi ją pod kątem załączników oraz określonego tekstu tematu.
-   Jeśli warunek zostanie spełniony, wyzwalacz spowoduje utworzenie wystąpienia aplikacji logiki przez aparat usługi Logic Apps oraz uruchomienie przepływu pracy. 
+   Jeśli warunek zostanie spełniony, wyzwalacz spowoduje utworzenie wystąpienia aplikacji logiki przez aparat usługi Logic Apps oraz uruchomienie przepływu pracy.
 
 3. Aby sprawdzić, czy wyzwalacz zadziałał i aplikacja logiki została uruchomiona pomyślnie, w menu aplikacji logiki wybierz pozycję **Omówienie**.
 
@@ -397,18 +409,18 @@ Ten krok powoduje dodanie wcześniej utworzonej funkcji platformy Azure do aplik
 
 5. Zmień nazwę kształtu funkcji na ten opis: ```Call RemoveHTMLFunction to clean email body```
 
-6. Teraz określ dane wejściowe funkcji do przetworzenia. 
+6. Teraz określ dane wejściowe funkcji do przetworzenia.
 
    1. W obszarze **Treść żądania** wprowadź poniższy tekst ze spacją końcową: 
-   
-      ```{ "emailBody":``` 
+
+      ```{ "emailBody":```
 
       Gdy będziesz pracować z tymi danymi wyjściowymi w następnych krokach, do momentu wprowadzenia tych danych w poprawnym formacie JSON będzie wyświetlany komunikat o błędzie nieprawidłowego kodu JSON.
       Podczas wcześniejszego testowania tej funkcji dane wejściowe określone dla funkcji używały formatu JavaScript Object Notation (JSON). 
       Dlatego treść żądania musi również używać tego samego formatu.
 
-      Ponadto, gdy kursor znajduje się wewnątrz pola **Treść żądania**, pojawi się dynamiczna lista zawartości, z której będzie można wybrać dostępne wartości właściwości z poprzednich akcji. 
-      
+      Ponadto, gdy kursor znajduje się wewnątrz pola **Treść żądania**, pojawi się dynamiczna lista zawartości, z której będzie można wybrać dostępne wartości właściwości z poprzednich akcji.
+
    2. Z listy zawartości dynamicznej w obszarze **Po nadejściu nowej wiadomości e-mail** wybierz właściwość **Treść**. Pamiętaj, aby po tej właściwości dodać zamykający nawias klamrowy: ```}```
 
       ![Określanie treści żądania do przekazania do funkcji](./media/tutorial-process-email-attachments-workflow/add-email-body-for-function-processing.png)
@@ -423,7 +435,7 @@ Następnie dodaj akcję, która utworzy obiekt blob w kontenerze magazynu, co um
 
 ## <a name="create-blob-for-email-body"></a>Tworzenie obiektu blob na potrzeby treści wiadomości e-mail
 
-1. W bloku **W przypadku wartości true** i w obszarze funkcji platformy Azure wybierz pozycję **Dodaj akcję**. 
+1. W bloku **W przypadku wartości true** i w obszarze funkcji platformy Azure wybierz pozycję **Dodaj akcję**.
 
 2. W polu wyszukiwania wprowadź frazę „utwórz obiekt blob” jako filtr i wybierz następującą akcję: **Utwórz obiekt blob — Azure Blob Storage**
 
@@ -433,11 +445,11 @@ Następnie dodaj akcję, która utworzy obiekt blob w kontenerze magazynu, co um
 
    ![Tworzenie połączenia z kontem magazynu](./media/tutorial-process-email-attachments-workflow/create-storage-account-connection-first.png)
 
-   | Ustawienie | Wartość | Opis | 
-   | ------- | ----- | ----------- | 
-   | **Nazwa połączenia** | AttachmentStorageConnection | Nazwa opisowa połączenia | 
-   | **Konto magazynu** | attachmentstorageacct | Nazwa konta magazynu, który został utworzony wcześniej do zapisywania załączników | 
-   |||| 
+   | Ustawienie | Wartość | Opis |
+   | ------- | ----- | ----------- |
+   | **Nazwa połączenia** | AttachmentStorageConnection | Nazwa opisowa połączenia |
+   | **Konto magazynu** | attachmentstorageacct | Nazwa konta magazynu, który został utworzony wcześniej do zapisywania załączników |
+   ||||
 
 4. Zmień nazwę akcji **Utwórz obiekt blob** na następujący opis: ```Create blob for email body```
 
@@ -445,18 +457,18 @@ Następnie dodaj akcję, która utworzy obiekt blob w kontenerze magazynu, co um
 
    ![Podawanie informacji o obiekcie blob na potrzeby treści wiadomości e-mail](./media/tutorial-process-email-attachments-workflow/create-blob-for-email-body.png)
 
-   | Ustawienie | Wartość | Opis | 
-   | ------- | ----- | ----------- | 
-   | **Ścieżka folderu** | /attachments | Ścieżka i nazwa wcześniej utworzonego kontenera. W tym przykładzie kliknij ikonę folderu, a następnie wybierz kontener „/attachments”. | 
-   | **Nazwa obiektu blob** | Pole **Od** | W tym przykładzie użyj nazwy nadawcy jako nazwy obiektu blob. Kliknij wewnątrz pola, aby wyświetlić dynamiczną listę zawartości, a następnie wybierz pole **Od** w obszarze akcji **Po nadejściu nowej wiadomości e-mail**. | 
+   | Ustawienie | Wartość | Opis |
+   | ------- | ----- | ----------- |
+   | **Ścieżka folderu** | /attachments | Ścieżka i nazwa wcześniej utworzonego kontenera. W tym przykładzie kliknij ikonę folderu, a następnie wybierz kontener „/attachments”. |
+   | **Nazwa obiektu blob** | Pole **Od** | W tym przykładzie użyj nazwy nadawcy jako nazwy obiektu blob. Kliknij wewnątrz pola, aby wyświetlić dynamiczną listę zawartości, a następnie wybierz pole **Od** w obszarze akcji **Po nadejściu nowej wiadomości e-mail**. |
    | **Zawartość obiektu blob** | Pole **Zawartość** | W tym przykładzie użyj treści wiadomości e-mail bez kodu HTML jako zawartości obiektu blob. Kliknij wewnątrz pola, aby wyświetlić dynamiczną listę zawartości, a następnie wybierz pozycję **Treść** w obszarze akcji **Wywołaj funkcję RemoveHTMLFunction, aby wyczyścić treść wiadomości e-mail**. |
-   |||| 
+   ||||
 
    Gdy wszystko będzie gotowe, akcja będzie wyglądać jak następujący przykład:
 
    ![Zakończona akcja „Utwórz obiekt blob”](./media/tutorial-process-email-attachments-workflow/create-blob-for-email-body-done.png)
 
-6. Zapisz aplikację logiki. 
+6. Zapisz aplikację logiki.
 
 ### <a name="check-attachment-handling"></a>Sprawdzanie obsługi załączników
 
@@ -473,19 +485,19 @@ Teraz przetestuj aplikację logiki pod kątem określonego sposobu obsługi wiad
 
    * Wiadomość e-mail ma testową zawartość w treści, na przykład: 
 
-     ```
+     ```text
      Testing my logic app
      ```
 
    Jeśli aplikacja logiki nie została wyzwolona lub nie została uruchomiona mimo pomyślnego uruchomienia wyzwalacza, zobacz [Troubleshoot your logic app (Rozwiązywanie problemów z aplikacją logiki)](../logic-apps/logic-apps-diagnosing-failures.md).
 
-3. Sprawdź, czy aplikacja logiki zapisała wiadomość e-mail do prawidłowego kontenera magazynu. 
+3. Sprawdź, czy aplikacja logiki zapisała wiadomość e-mail do prawidłowego kontenera magazynu.
 
    1. W Eksploratorze usługi Storage rozwiń pozycję **(Lokalne i dołączone)** > 
    **Konta magazynu** > **attachmentstorageacct (zewnętrzne)** > 
    **Kontenery obiektów blob** > **attachments**.
 
-   2. Sprawdź kontener **attachments** pod kątem wiadomości e-mail. 
+   2. Sprawdź kontener **attachments** pod kątem wiadomości e-mail.
 
       W tym momencie w kontenerze jest wyświetlana tylko wiadomość e-mail, ponieważ aplikacja logiki nie przetwarza jeszcze załączników.
 
@@ -501,20 +513,24 @@ Następnie dodaj pętlę, aby przetwarzać wszystkie załączniki poczty e-mail.
 
 Aby przetwarzać wszystkie załączniki do wiadomości e-mail, dodaj pętlę **For each** do przepływu pracy aplikacji logiki.
 
-1. W obszarze kształtu **Tworzenie obiektu blob na potrzeby treści wiadomości e-mail** wybierz kolejno pozycję **Więcej** > **Dodaj pętlę „for each”**.
+1. W obszarze **Tworzenie obiektu blob na potrzeby treści wiadomości e-mail** kształtu, wybierz opcję **Dodaj akcję**.
 
    ![Dodawanie pętli „for each”](./media/tutorial-process-email-attachments-workflow/add-for-each-loop.png)
 
-2. Zmień nazwę pętli na następujący opis: ```For each email attachment```
+1. W obszarze **wybierz akcję**, w polu wyszukiwania wpisz "for each" jako filtr. Wybierz tę akcję: **Dla każdego — formant**
 
-3. Teraz określ dane dla pętli do przetworzenia. Kliknij wewnątrz pola **Wybierz dane wyjściowe z poprzednich kroków**, aby otworzyć dynamiczną listę zawartości, a następnie wybierz pozycję **Załączniki**. 
+   ![Wybierz pozycję "For each"](./media/tutorial-process-email-attachments-workflow/select-for-each.png)
+
+1. Zmień nazwę pętli na następujący opis: ```For each email attachment```
+
+1. Teraz określ dane dla pętli do przetworzenia. Kliknij wewnątrz pola **Wybierz dane wyjściowe z poprzednich kroków**, aby otworzyć dynamiczną listę zawartości, a następnie wybierz pozycję **Załączniki**.
 
    ![Wybieranie pozycji „Załączniki”](./media/tutorial-process-email-attachments-workflow/select-attachments.png)
 
    Pole **Załączniki** przekazuje tablicę zawierającą wszystkie załączniki dołączone do wiadomości e-mail. 
    Pętla **For each** powtarza akcje wobec każdego elementu przekazanego w tablicy.
 
-4. Zapisz aplikację logiki.
+1. Zapisz aplikację logiki.
 
 Następnie dodaj akcję, która zapisuje każdy załącznik jako obiekt blob w kontenerze magazynu **attachments**.
 
@@ -534,12 +550,12 @@ Następnie dodaj akcję, która zapisuje każdy załącznik jako obiekt blob w k
 
    ![Podawanie informacji o obiekcie blob](./media/tutorial-process-email-attachments-workflow/create-blob-per-attachment.png)
 
-   | Ustawienie | Wartość | Opis | 
-   | ------- | ----- | ----------- | 
-   | **Ścieżka folderu** | /attachments | Ścieżka i nazwa wcześniej utworzonego kontenera. W tym przykładzie kliknij ikonę folderu, a następnie wybierz kontener „/attachments”. | 
-   | **Nazwa obiektu blob** | Pole **Nazwa** | W tym przykładzie użyj nazwy załącznika jako nazwy obiektu blob. Kliknij wewnątrz pola, aby wyświetlić dynamiczną listę zawartości, a następnie wybierz pole **Nazwa** w obszarze akcji **Po nadejściu nowej wiadomości e-mail**. | 
+   | Ustawienie | Wartość | Opis |
+   | ------- | ----- | ----------- |
+   | **Ścieżka folderu** | /attachments | Ścieżka i nazwa wcześniej utworzonego kontenera. W tym przykładzie kliknij ikonę folderu, a następnie wybierz kontener „/attachments”. |
+   | **Nazwa obiektu blob** | Pole **Nazwa** | W tym przykładzie użyj nazwy załącznika jako nazwy obiektu blob. Kliknij wewnątrz pola, aby wyświetlić dynamiczną listę zawartości, a następnie wybierz pole **Nazwa** w obszarze akcji **Po nadejściu nowej wiadomości e-mail**. |
    | **Zawartość obiektu blob** | Pole **Zawartość** | W tym przykładzie użyj pola **Zawartość** jako zawartości obiektu blob. Kliknij wewnątrz tego pola, aby wyświetlić dynamiczną listę zawartości, a następnie wybierz pole **Zawartość** w obszarze akcji **Po nadejściu nowej wiadomości e-mail**. |
-   |||| 
+   ||||
 
    Gdy wszystko będzie gotowe, akcja będzie wyglądać jak następujący przykład:
 
@@ -578,18 +594,19 @@ Następnie dodaj akcję, dzięki której aplikacja logiki będzie wysyłać wiad
 
 ## <a name="send-email-notifications"></a>Wysyłanie powiadomień w wiadomościach e-mail
 
-1. W gałęzi **W przypadku wartości true** w obszarze pętli **For each dla załączników wiadomości e-mail** wybierz opcję **Dodaj akcję**. 
+1. W gałęzi **W przypadku wartości true** w obszarze pętli **For each dla załączników wiadomości e-mail** wybierz opcję **Dodaj akcję**.
 
    ![Dodaj akcję w obszarze pętli „for each”](./media/tutorial-process-email-attachments-workflow/add-action-send-email.png)
 
-2. W polu wyszukiwania wprowadź frazę „wyślij wiadomość e-mail” jako filtr, a następnie wybierz akcję „Wyślij wiadomość e-mail” dla dostawcy poczty e-mail. 
+2. W polu wyszukiwania wprowadź frazę „wyślij wiadomość e-mail” jako filtr, a następnie wybierz akcję „Wyślij wiadomość e-mail” dla dostawcy poczty e-mail.
 
    Aby na liście akcji wyświetlić tylko konkretną usługę, można najpierw wybrać łącznik.
 
    ![Wybieranie akcji „wyślij wiadomość e-mail” dla dostawcy poczty e-mail](./media/tutorial-process-email-attachments-workflow/add-action-select-send-email.png)
 
-   * Dla kont służbowych platformy Azure wybierz pozycję Office 365 Outlook. 
-   * Dla osobistych kont Microsoft wybierz pozycję Outlook.com. 
+   * Dla kont służbowych platformy Azure wybierz pozycję Office 365 Outlook.
+
+   * Dla osobistych kont Microsoft wybierz pozycję Outlook.com.
 
 3. Jeśli pojawi się prośba o podanie poświadczeń, zaloguj się do swojego konta e-mail, aby usługa Logic Apps utworzyła połączenie z tym kontem e-mail.
 
@@ -599,19 +616,19 @@ Następnie dodaj akcję, dzięki której aplikacja logiki będzie wysyłać wiad
 
    ![Wysyłanie powiadomienia w wiadomości e-mail](./media/tutorial-process-email-attachments-workflow/send-email-notification.png)
 
-   Jeśli nie możesz znaleźć oczekiwanego pola na dynamicznej liście zawartości, wybierz pozycję **Zobacz więcej** obok pozycji **Po nadejściu nowej wiadomości e-mail**. 
+   Jeśli nie możesz znaleźć oczekiwanego pola na dynamicznej liście zawartości, wybierz pozycję **Zobacz więcej** obok pozycji **Po nadejściu nowej wiadomości e-mail**.
 
    | Ustawienie | Wartość | Uwagi | 
    | ------- | ----- | ----- | 
-   | **Treść** | ```Please review new applicant:``` <p>```Applicant name:``` **Od** <p>```Application file location:``` **Ścieżka** <p>```Application email content:``` **Treść** | Treść wiadomości e-mail. Kliknij wewnątrz tego pola, wprowadź przykładowy tekst i z dynamicznej listy zawartości wybierz następujące pola: <p>– Pole **Od** w obszarze **Po nadejściu nowej wiadomości e-mail** </br>– Pole **Ścieżka** w obszarze **Utwórz obiekt blob na potrzeby treści wiadomości e-mail** </br>– Pole **Treść** w obszarze **Wywołaj funkcję RemoveHTMLFunction, aby wyczyścić treść wiadomości e-mail** | 
-   | **Temat**  | ```ASAP - Review applicant for position:``` **Temat** | Temat wiadomości e-mail, który chcesz uwzględnić. Kliknij wewnątrz tego pola, wprowadź przykładowy tekst i z dynamicznej listy zawartości wybierz pole **Temat** w obszarze **Po nadejściu nowej wiadomości e-mail**. | 
-   | **Do** | <*recipient-email-address*> | Do celów testowych możesz użyć własnego adresu e-mail. | 
-   |||| 
+   | **Body** | ```Please review new applicant:``` <p>```Applicant name:``` **Od** <p>```Application file location:``` **Ścieżka** <p>```Application email content:``` **Treść** | Treść wiadomości e-mail. Kliknij wewnątrz tego pola, wprowadź przykładowy tekst i z dynamicznej listy zawartości wybierz następujące pola: <p>– Pole **Od** w obszarze **Po nadejściu nowej wiadomości e-mail** </br>– Pole **Ścieżka** w obszarze **Utwórz obiekt blob na potrzeby treści wiadomości e-mail** </br>– Pole **Treść** w obszarze **Wywołaj funkcję RemoveHTMLFunction, aby wyczyścić treść wiadomości e-mail** |
+   | **Temat**  | ```ASAP - Review applicant for position:``` **Temat** | Temat wiadomości e-mail, który chcesz uwzględnić. Kliknij wewnątrz tego pola, wprowadź przykładowy tekst i z dynamicznej listy zawartości wybierz pole **Temat** w obszarze **Po nadejściu nowej wiadomości e-mail**. |
+   | **Do** | <*recipient-email-address*> | Do celów testowych możesz użyć własnego adresu e-mail. |
+   ||||
 
-   > [!NOTE] 
+   > [!NOTE]
    > Jeśli wybierzesz pole zawierające tablicę, takie jak **Zawartość**, które jest tablicą zawierającą załączniki, projektant automatycznie doda pętlę „For each” wokół akcji, która odwołuje się do tego pola. Dzięki temu Twoja aplikacja logiki może wykonać tę akcję dla każdego elementu tablicy. Aby usunąć pętlę, usuń pole dla tablicy, przenieś akcję odwołującą poza pętlę, wybierz wielokropek (**...**) na pasku tytułowym pętli, a następnie wybierz pozycję **Usuń**.
-     
-6. Zapisz aplikację logiki. 
+
+6. Zapisz aplikację logiki.
 
 Teraz przetestuj aplikację logiki, która powinna wyglądać następująco:
 
@@ -623,38 +640,39 @@ Teraz przetestuj aplikację logiki, która powinna wyglądać następująco:
 
    * Temat wiadomości ma tekst określony w pozycji **Filtr tematu** wyzwalacza: ```Business Analyst 2 #423501```
 
-   * Wiadomość e-mail zawiera co najmniej jeden załącznik. 
+   * Wiadomość e-mail zawiera jeden lub więcej załączników. 
    Możesz ponownie użyć pustego pliku tekstowego z poprzedniego testu. 
    Aby zrealizować bardziej realistyczny scenariusz, dołącz plik z życiorysem.
 
    * Treść wiadomości e-mail zawiera tekst, który możesz skopiować i wkleić:
 
-     ```
-     Name: Jamal Hartnett   
-     
-     Street address: 12345 Anywhere Road   
-     
-     City: Any Town   
-     
-     State or Country: Any State   
-     
-     Postal code: 00000   
-     
-     Email address: jamhartnett@outlook.com   
-     
-     Phone number: 000-000-0000   
-     
-     Position: Business Analyst 2 #423501   
+     ```text
 
-     Technical skills: Dynamics CRM, MySQL, Microsoft SQL Server, JavaScript, Perl, Power BI, Tableau, Microsoft Office: Excel, Visio, Word, PowerPoint, SharePoint, and Outlook   
+     Name: Jamal Hartnett
+
+     Street address: 12345 Anywhere Road
+
+     City: Any Town
+
+     State or Country: Any State
+
+     Postal code: 00000
+
+     Email address: jamhartnett@outlook.com
+
+     Phone number: 000-000-0000
+
+     Position: Business Analyst 2 #423501
+
+     Technical skills: Dynamics CRM, MySQL, Microsoft SQL Server, JavaScript, Perl, Power BI, Tableau, Microsoft Office: Excel, Visio, Word, PowerPoint, SharePoint, and Outlook
 
      Professional skills: Data, process, workflow, statistics, risk analysis, modeling; technical writing, expert communicator and presenter, logical and analytical thinker, team builder, mediator, negotiator, self-starter, self-managing  
-     
-     Certifications: Six Sigma Green Belt, Lean Project Management   
-     
-     Language skills: English, Mandarin, Spanish   
-     
-     Education: Master of Business Administration   
+
+     Certifications: Six Sigma Green Belt, Lean Project Management
+
+     Language skills: English, Mandarin, Spanish
+
+     Education: Master of Business Administration
      ```
 
 2. Uruchom aplikację logiki. W przypadku powodzenia aplikacja logiki wyśle wiadomość e-mail, która będzie wyglądać następująco:
@@ -672,11 +690,6 @@ Gratulacje. Udało Ci się utworzyć i uruchomić aplikację logiki, która auto
 Gdy grupa zasobów zawierająca aplikację logiki i powiązane zasoby nie będzie już potrzebna, usuń ją. W menu głównym platformy Azure przejdź do pozycji **Grupy zasobów** i wybierz grupę zasobów aplikacji logiki. Wybierz pozycję **Usuń grupę zasobów**. Aby potwierdzić, wprowadź nazwę grupy zasobów, a następnie wybierz pozycję **Usuń**.
 
 ![Usuwanie grupy zasobów aplikacji logiki](./media/tutorial-process-email-attachments-workflow/delete-resource-group.png)
-
-## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
-
-* Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -9,12 +9,12 @@ ms.date: 04/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: daa3bd49fcb9970a4a4a026f764cc195423e83d1
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 4245c44ceaf907512187d7db4a9d6f087a855f70
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154363"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507892"
 ---
 # <a name="authenticate-access-to-blobs-and-queues-with-azure-active-directory-and-managed-identities-for-azure-resources"></a>Uwierzytelnianie dostępu do obiektów blob i kolejek usługi Azure Active Directory i zarządzanych tożsamości dla zasobów platformy Azure
 
@@ -48,7 +48,7 @@ Aby autoryzować żądania kierowane do magazynu obiektów Blob i kolejek przy u
 
 Biblioteka klienta uwierzytelniania aplikacji, które automatycznie zarządza uwierzytelnianiem. Biblioteki do uwierzytelniania podczas tworzenia lokalnego przy użyciu poświadczeń dla deweloperów. Podczas tworzenia lokalnego przy użyciu poświadczeń dewelopera jest bezpieczniejsza, ponieważ nie trzeba utworzyć poświadczenia usługi Azure AD lub udostępnić poświadczeń między deweloperów. Gdy rozwiązanie jest później wdrożone na platformie Azure, biblioteka przełącza się do przy użyciu poświadczeń aplikacji.
 
-Za pomocą biblioteki uwierzytelniania aplikacji w aplikacji usługi Azure Storage, należy zainstalować najnowszy pakiet (wersja zapoznawcza) z [Nuget]((https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication)), a także najnowszą wersję [biblioteki klienta usługi Azure Storage dla platformy .NET](https://www.nuget.org/packages/WindowsAzure.Storage/). Dodaj następujący kod **przy użyciu** instrukcji w kodzie:
+Za pomocą biblioteki uwierzytelniania aplikacji w aplikacji usługi Azure Storage, należy zainstalować najnowszy pakiet (wersja zapoznawcza) z [Nuget](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication), a także najnowszą wersję [biblioteki klienta usługi Azure Storage dla platformy .NET](https://www.nuget.org/packages/WindowsAzure.Storage/). Dodaj następujący kod **przy użyciu** instrukcji w kodzie:
 
 ```csharp
 using Microsoft.Azure.Services.AppAuthentication;

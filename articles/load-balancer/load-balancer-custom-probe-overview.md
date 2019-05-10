@@ -12,14 +12,14 @@ ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/14/2018
+ms.date: 05/07/2019
 ms.author: kumud
-ms.openlocfilehash: 913693e684ba8640a93f50d21dd3df6a6295e1c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e488a4a6438279270f3d86dafa16c45eda184059
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60884762"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65415702"
 ---
 # <a name="load-balancer-health-probes"></a>Sondy kondycji modułu równoważenia obciążenia
 
@@ -30,7 +30,7 @@ Sondy kondycji obsługują wiele protokołów. Dostępność dla określonego ty
 | | Standardowy SKU | Podstawowy SKU |
 | --- | --- | --- |
 | [Typy sondy](#types) | TCP I HTTP, HTTPS | TCP I HTTP |
-| [Badanie zachowania w dół](#probedown) | Wszystkie sondy, wszystkie przepływy TCP nadal. | Wszystkie sondy w dół, Zakończ wszystkie przepływy TCP. | 
+| [Badanie zachowania w dół](#probedown) | Wszystkie sondy, wszystkie przepływy TCP nadal. | Wszystkie sondy w dół, wszystkie przepływy TCP wygasają. | 
 
 > [!IMPORTANT]
 > Sondy kondycji modułu równoważenia obciążenia pochodzą z adresu IP 168.63.129.16 i nie musi zostać zablokowany dla sondy do oznaczania wystąpienia usługi.  Przegląd [źródłowego adresu IP sondy](#probesource) Aby uzyskać szczegółowe informacje.
@@ -178,7 +178,7 @@ Moduł równoważenia obciążenia używa usługami rozproszonymi badania swój 
 
 Numer seryjny AzureLoadBalancer identyfikuje ten źródłowy adres IP w sieci [sieciowe grupy zabezpieczeń](../virtual-network/security-overview.md) i zezwala na ruch sondy kondycji, domyślnie.
 
-Oprócz sondy kondycji modułu równoważenia obciążenia ten adres IP użyty następujące operacje:
+Oprócz sondy kondycji modułu równoważenia obciążenia [następujące operacje używają tego adresu IP](../virtual-network/what-is-ip-address-168-63-129-16.md):
 
 - Włącza agenta maszyny wirtualnej do komunikowania się z platformą do sygnalizowania, że jest on w stanie "Gotowe"
 - Umożliwia komunikację z serwerem wirtualnym DNS, aby zapewnić rozpoznawanie nazw filtrowane do klientów, którzy nie zdefiniujesz niestandardowe serwery DNS.  Filtrowanie gwarantuje, że klienci tylko może rozpoznać nazwy hostów ich wdrożenia.

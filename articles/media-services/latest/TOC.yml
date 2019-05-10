@@ -24,18 +24,13 @@
     - name: Przesyłanie strumieniowe na żywo — .NET
       href: stream-live-tutorial-with-api.md
     - name: Analizowanie wideo — .NET
-      displayName: 'job, transform'
+      displayName: 'job, transform, VideoAnalyzerPreset, AudioAnalyzerPreset'
       href: analyze-videos-tutorial-with-api.md
     - name: Dynamiczne szyfrowanie algorytmem AES-128 — .NET
       href: protect-with-aes128.md
     - name: Dynamiczne szyfrowanie algorytmem DRM — .NET
+      displayName: 'PlayReady, Widevine'
       href: protect-with-drm.md
-- name: Przykłady
-  items:
-    - name: Przykłady kodu platformy Azure
-      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=media-services&term=v3'
-    - name: Interfejs wiersza polecenia platformy Azure
-      href: cli-samples.md
 - name: Pojęcia
   href: concepts-overview.md
   items:
@@ -52,6 +47,7 @@
           displayName: 'encoding, presets, jobs, adaptive, bitrate'
         - name: Przekształcenia i zadania
           href: transforms-jobs-concept.md
+          displayName: 'preset, schema'
         - name: Formaty usługi Media Encoder Standard
           displayName: 'containers, codecs'
           href: media-encoder-standard-formats.md
@@ -75,7 +71,7 @@
         - name: Tworzenie pakietów
           items:
             - name: Dynamiczne tworzenie pakietów
-              displayName: packager
+              displayName: 'origin, packager'
               href: dynamic-packaging-overview.md
             - name: Manifesty dynamiczne
               href: filters-dynamic-manifest-overview.md
@@ -84,7 +80,7 @@
         - name: Ochrona zawartości
           items:
             - name: Protokoły przesyłania strumieniowego i typy szyfrowania
-              displayName: Dynamic encryption
+              displayName: 'dynamic, encryption'
               href: content-protection-overview.md
             - name: System z wieloma mechanizmami DRM i kontrolą dostępu
               href: design-multi-drm-system-with-access-control.md
@@ -97,7 +93,7 @@
                 - name: Wymagania licencyjne technologii FairPlay
                   href: fairplay-license-overview.md
         - name: Punkty końcowe/początkowe przesyłania strumieniowego
-          displayName: 'origins, cdn'
+          displayName: 'origin, packager, cdn'
           href: streaming-endpoint-concept.md
         - name: Lokalizatory przesyłania strumieniowego
           displayName: URLs
@@ -106,8 +102,8 @@
           href: streaming-policy-concept.md
         - name: Zasady kluczy zawartości
           href: content-key-policy-concept.md
-        - name: Kody błędów punktów początkowych
-          href: origin-error-codes.md
+        - name: Kody błędów punktu końcowego przesyłania strumieniowego
+          href: streaming-endpoint-error-codes.md
     - name: Transmisja strumieniowa na żywo
       items:
         - name: Omówienie
@@ -141,6 +137,7 @@
           href: use-azure-media-player.md
     - name: Programowanie z użyciem interfejsów API w wersji 3
       href: media-services-apis-overview.md
+      displayName: 'access, naming, long-running'
       items:
         - name: 'Stronicowanie, filtrowanie i określanie kolejności jednostek'
           href: entities-overview.md
@@ -148,8 +145,8 @@
           href: rbac-overview.md
         - name: Kody błędów
           items:
-            - name: Kody błędów punktów początkowych
-              href: origin-error-codes.md
+            - name: Kody błędów punktu końcowego przesyłania strumieniowego
+              href: streaming-endpoint-error-codes.md
             - name: Kody błędów zadań
               href: job-error-codes.md
     - name: Wskazówki dotyczące migracji z wersji 2 do wersji 3
@@ -160,10 +157,14 @@
       items:
         - name: Tworzenie konta — interfejs wiersza polecenia
           href: create-account-cli-how-to.md
+        - name: Resetowanie poświadczeń konta — interfejs wiersza polecenia
+          href: cli-reset-account-credentials.md
         - name: Dostęp do interfejsów API — interfejs wiersza polecenia
           href: access-api-cli-how-to.md
         - name: Skalowanie jednostek zarezerwowanych multimediów — interfejs wiersza polecenia
           href: media-reserved-units-cli-how-to.md
+        - name: Tworzenie zasobu — interfejs wiersza polecenia
+          href: cli-create-asset.md
         - name: Programowanie z użyciem architektury REST
           items:
             - name: Łączenie z narzędziem Postman
@@ -190,6 +191,14 @@
         - name: Z pliku lokalnego — REST
           displayName: upload
           href: upload-files-rest-how-to.md
+        - name: Z pliku lokalnego — interfejs wiersza polecenia
+          href: cli-upload-file-asset.md
+    - name: Tworzenie przekształceń i zadań
+      items:
+        - name: Tworzenie przekształceń — interfejs wiersza polecenia
+          href: cli-create-transform.md
+        - name: Tworzenie zadań — interfejs wiersza polecenia
+          href: cli-create-jobs.md
     - name: Kodowanie zawartości
       items:
         - name: Adres HTTPS jako dane wejściowe zadania — .NET
@@ -230,10 +239,15 @@
           href: filters-dynamic-manifest-rest-howto.md
         - name: Przy użyciu interfejsu wiersza polecenia
           href: filters-dynamic-manifest-cli-howto.md
+    - name: Dostarczanie zawartości
+      items:
+        - name: Publikowanie zasobu — interfejs wiersza polecenia
+          href: cli-publish-asset.md
 - name: Dokumentacja
   items:
     - name: Specyfikacja interfejsu OpenAPI (Swagger)
       href: 'https://aka.ms/ams-v3-rest-sdk'
+      displayName: schema
     - name: REST
       href: 'https://aka.ms/ams-v3-rest-ref'
     - name: Interfejs wiersza polecenia platformy Azure
@@ -254,8 +268,8 @@
       href: /azure/templates/microsoft.media/allversions
     - name: Kody błędów
       items:
-        - name: Kody błędów punktów początkowych
-          href: origin-error-codes.md
+        - name: Kody błędów punktu końcowego przesyłania strumieniowego
+          href: streaming-endpoint-error-codes.md
         - name: Kody błędów zadań
           href: job-error-codes.md
 - name: Zasoby
@@ -285,7 +299,7 @@
           href: 'https://aka.ms/ams-v3-nodejs-sdk'
         - name: Ruby
           href: 'https://aka.ms/ams-v3-ruby-sdk'
-    - name: AMSE
+    - name: Azure Media Services Explorer
       href: 'https://github.com/Azure/Azure-Media-Services-Explorer'
     - name: Informacje o wersji
       href: release-notes.md

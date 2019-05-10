@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 05/08/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: bad64f439d45581f8f4b55ea1ac849db1e27cb76
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: b979609374afbd11bde0e15ce540e8930315482f
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024580"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472482"
 ---
 # <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Dołącz zasób usług Cognitive Services za pomocą zestawu umiejętności w usłudze Azure Search 
 
@@ -60,7 +60,7 @@ Opłaty są naliczane tylko za umiejętności, które wywołują interfejsy API 
 
    ![Tworzenie zasobu usług Cognitive Services](./media/cognitive-search-attach-cognitive-services/cog-services-create.png "tworzenie zasobu usług Cognitive Services")
 
-1. W lokalizacji wybierz tego samego regionu co usługa Azure Search, aby uniknąć naliczania opłat przepustowość ruchu wychodzącego między regionami.
+1. W polu Lokalizacja wybierz tego samego regionu co usługa Azure Search. Jest to wymagane ze względu na wydajność, ale również unieważnia opłatami za przepustowość ruchu wychodzącego między regionami.
 
 1. W warstwa cenowa wybierz **S0** uzyskać w jednym zbiór funkcji usług Cognitive Services, takich jak funkcje przetwarzania i język, obsługujące wstępnie zdefiniowane umiejętności używane przez usługę Azure Search. 
 

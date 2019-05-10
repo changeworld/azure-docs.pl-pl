@@ -5,12 +5,12 @@ ms.date: 04/30/2019
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: jeconnoc
-ms.openlocfilehash: b9b2461d888f37b7ae72a3e097d77856255d7e2e
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: e1b3b5fe603072069cb3a19c7597fcc1872fefd7
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65160008"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65416337"
 ---
 Obrazy standardowych maszyn wirtualnych (VM) umożliwiają organizacjom migrację do chmury i zapewnia spójność we wdrożeniach. Obrazy obejmują zazwyczaj wstępnie zdefiniowanych ustawień zabezpieczeń i konfiguracji oraz niezbędne oprogramowanie. Konfigurowanie potoku przetwarzania obrazów wymaga czasu, infrastruktury i konfiguracji, ale za pomocą Kreatora obrazów maszyn wirtualnych platformy Azure, po prostu podać prostej konfiguracji opisujące obrazu, Prześlij go do usługi i wbudowany obraz i rozproszone.
  
@@ -20,7 +20,7 @@ Kreator obrazów maszyn wirtualnych platformy Azure (Kreatora obrazów platformy
 > Kreator obrazów platformy Azure jest obecnie w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="preview-features"></a>Funkcje do testowania
+## <a name="preview-features"></a>Funkcje wersji zapoznawczej
 
 Dla wersji zapoznawczej te funkcje są obsługiwane:
 
@@ -37,7 +37,7 @@ Dla wersji zapoznawczej te funkcje są obsługiwane:
 Usługa Konstruktora obrazów platformy Azure będzie dostępna w wersji zapoznawczej w tych regionach. Obrazy mogą być dystrybuowane spoza tych regionów.
 - Wschodnie stany USA
 - Wschodnie stany USA 2
-- Środkowo-zachodnie stany USA
+- Zachodnio-środkowe stany USA
 - Zachodnie stany USA
 - Zachodnie stany USA 2
 
@@ -95,7 +95,7 @@ W trakcie procesu tworzenia obrazu pliki są pobierane i przechowywane w `IT_<De
  
 Kreator obrazów maszyna wirtualna jest tworzona przy użyciu rozmiaru D1v2 maszyny Wirtualnej i magazynu i sieci wymagane dla maszyny Wirtualnej. Te zasoby będą trwać przez czas trwania procesu kompilacji, a także zostaną usunięte po zakończeniu Kreatora obrazów podczas tworzenia obrazu. 
  
-Kreator obrazów systemu Azure będziesz dystrybuować obraz do Twojej wybranych regionów, w którym mogą zostać naliczone opłaty za ruch wychodzący w sieci.
+Kreator obrazów platformy Azure będzie dystrybuować obraz wybrany regiony, które mogą zostać naliczone opłaty za ruch wychodzący w sieci.
  
 ## <a name="next-steps"></a>Kolejne kroki 
  
