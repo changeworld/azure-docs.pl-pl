@@ -224,7 +224,8 @@
       items:
         - name: Tworzenie potoku uczenia maszynowego
           href: how-to-create-your-first-pipeline.md
-        - name: Trenowanie i wdrażanie modeli uczenia maszynowego za pomocą usługi Azure Pipelines
+        - name: Ciągła integracja/ciągłe wdrażanie przepływów pracy uczenia maszynowego za pomocą usługi Azure Pipelines
+          displayName: 'continuous, integration, delivery'
           href: /azure/devops/pipelines/targets/azure-machine-learning?view=azure-devop
           mainContext: true
     - name: Zarządzanie przydziałami zasobów
@@ -238,9 +239,6 @@
     - name: Zestaw SDK uczenia maszynowego
       displayName: api core package python data prep
       href: 'https://aka.ms/aml-sdk'
-    - name: Zestaw SDK do przygotowywania danych
-      displayName: api core package python data prep
-      href: 'https://aka.ms/data-prep-sdk'
     - name: Zestaw SDK do monitorowania
       displayName: api package python monitor
       href: 'https://aka.ms/aml-monitoring-sdk'

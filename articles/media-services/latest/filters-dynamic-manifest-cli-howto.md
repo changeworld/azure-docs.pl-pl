@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 05/07/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 2ba3de32f4ec3b9f6faf1d5a51da9c1c91e4a2e4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8e1c031643fc3ce75d99ad619ce46b38c9cba82c
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60732437"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472698"
 ---
 # <a name="creating-filters-with-cli"></a>Tworzenie filtrów za pomocą interfejsu wiersza polecenia 
 
@@ -38,7 +38,8 @@ W tym temacie pokazano, jak skonfigurować filtr dla elementu zawartości wideo 
 
 W poniższym przykładzie zdefiniowano warunki wybór ścieżki, które są dodawane do końcowego manifestu. Ten filtr zawiera ścieżki audio, znajdujących się we 3 i wideo ścieżek, które mają szybkości transmisji bitów w 0-1000000 zakresu.
 
-Filtrami zdefiniowanymi w spoczynku, zawierać obiekt JSON otoki "Properties".  
+> [!TIP]
+> Jeśli zamierzasz zdefiniować **filtry** w spoczynku, zwróć uwagę, muszą zawierać obiekt JSON otoki "Properties".  
 
 ```json
 [
@@ -94,6 +95,33 @@ az ams asset-filter create -a amsAccount -g resourceGroup -n filterName --asset-
 ```
 
 Zobacz też [JSON Przykłady filtrów](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate#create_an_asset_filter).
+
+
+## <a name="associate-filters-with-streaming-locator"></a>Kojarzenie filtrów z lokalizatora przesyłania strumieniowego
+
+Można określić listę filtrów zasobów lub konta, które będzie dotyczyć Twojego lokalizatora przesyłania strumieniowego. [Funkcji dynamicznego pakowania (punkt końcowy przesyłania strumieniowego)](dynamic-packaging-overview.md) ma zastosowanie ta lista filtrów wraz z tymi klienta określa się w adresie URL. Ta kombinacja generuje [dynamiczne manifest](filters-dynamic-manifest-overview.md), która jest oparta na filtry w adresie URL i filtry, możesz określić na lokalizatora przesyłania strumieniowego. Zaleca się korzystania z tej funkcji, jeśli chcesz zastosować filtry, ale nie należy udostępniać nazwy filtru w adresie URL.
+
+Poniższy kod interfejsu wiersza polecenia pokazuje, jak utworzyć Lokalizator przesyłania strumieniowego i określ `filters`. Jest to opcjonalna właściwość, która przyjmuje rozdzielonych spacjami listę nazw filtrów zasobów i/lub nazwy filtru kont.
+
+```azurecli
+az ams streaming-locator create -a amsAccount -g resourceGroup -n streamingLocatorName \
+                                --asset-name assetName \                               
+                                --streaming-policy-name policyName \
+                                --filters filterName1 filterName2
+                                
+```
+
+## <a name="stream-using-filters"></a>Stream przy użyciu filtrów
+
+Po zdefiniowaniu filtrów, klienci mogą ich używać w adresu URL przesyłania strumieniowego. Filtry można zastosować do adaptacyjną szybkością transmisji bitów, protokołów przesyłania strumieniowego: Apple HTTP Live przesyłania strumieniowego (HLS), między innymi MPEG-DASH i Smooth Streaming.
+
+W poniższej tabeli przedstawiono przykładowe adresy URL przy użyciu filtrów:
+
+|Protokół|Przykład|
+|---|---|
+|HLS|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=m3u8-aapl,filter=myAccountFilter)`|
+|MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|
+|Smooth Streaming|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(filter=myAssetFilter)`|
 
 ## <a name="next-step"></a>Następny krok
 

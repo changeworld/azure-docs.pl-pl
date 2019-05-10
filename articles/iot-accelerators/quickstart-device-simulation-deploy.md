@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: troyhop
-ms.openlocfilehash: 0fcd688c9e5164522a482a4375c524a97a48d400
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 68e0c3c89698bafbab65ca786231e0364900213a
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62105688"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65467877"
 ---
 # <a name="quickstart-deploy-and-run-an-iot-device-simulation-in-azure"></a>Szybki start: wdrażanie i uruchamianie symulacji urządzenia IoT na platformie Azure
 
@@ -36,7 +36,7 @@ Kliknij kafelek **Symulacja urządzenia**:
 
 Kliknij pozycję **Wypróbuj teraz** na stronie opisu symulacji urządzenia:
 
-![Klikanie pozycji Wypróbuj teraz](./media/quickstart-device-simulation-deploy/devicesimulationPDP.png)
+![Klikanie pozycji Wypróbuj teraz](./media/quickstart-device-simulation-deploy/devicesimulationpdp1.png)
 
 Na stronie **Tworzenie rozwiązania Symulacja urządzenia** wpisz unikatową **nazwę rozwiązania**.
 
@@ -58,7 +58,7 @@ Kliknij pozycję **Zaakceptuj**, aby zaakceptować żądanie uprawnień. W przeg
 
 Po pierwszym otwarciu zostanie wyświetlony pulpit nawigacyjny symulacji urządzenia z przewodnikiem **Wprowadzenie**. Kliknij pierwszy kafelek, aby otworzyć przykładową symulację. Jeśli zamkniesz przewodnik **Wprowadzenie**, możesz otworzyć **prostą przykładową symulację** na pulpicie nawigacyjnym, klikając jej kafelek:
 
-![Pulpit nawigacyjny rozwiązania](./media/quickstart-device-simulation-deploy/GettingStarted.png)
+![Pulpit nawigacyjny rozwiązania](./media/quickstart-device-simulation-deploy/gettingstarted1.png)
 
 ## <a name="sample-simulation"></a>Przykładowa symulacja
 
@@ -72,7 +72,7 @@ Ponieważ jest to symulacja przykładowa, nie można jej edytować. Symulacja je
 | Częstotliwość telemetrii | 10 sekund                  |
 | Czas trwania symulacji | Uruchamianie bez ograniczeń            |
 
-![Konfiguracja symulacji](./media/quickstart-device-simulation-deploy/SampleSimulation.png)
+![Konfiguracja symulacji](./media/quickstart-device-simulation-deploy/samplesimulation1.png)
 
 ## <a name="run-the-simulation"></a>Uruchamianie symulacji
 

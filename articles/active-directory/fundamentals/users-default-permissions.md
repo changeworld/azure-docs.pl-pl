@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1736b120b60ab6583a3c38bb13c985d312c021b
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: fb05ee4d6e05cb8b56756a761a519e5903b78bbd
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190954"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507093"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Jakie są domyślne uprawnienia użytkowników usługi Azure Active Directory?
 W usłudze Azure Active Directory (Azure AD) wszystkim użytkownikom jest udzielany zestaw uprawnień domyślnych. Dostęp użytkownika, który składa się z typ użytkownika, ich [przypisań ról](active-directory-users-assign-role-azure-portal.md)i ich własność poszczególnych obiektów. W tym artykule opisano te uprawnienia domyślne oraz zawarto porównanie uprawnień domyślnych członka i użytkownika gościa. Domyślne uprawnienia użytkowników można zmienić tylko w ustawieniach użytkownika w usłudze Azure AD.
@@ -50,7 +50,7 @@ Poniżej opisano sposoby ograniczania domyślnych uprawnień użytkowników będ
 Uprawnienie | Wyjaśnienie ustawienia
 ---------- | ------------
 Użytkownicy mogą rejestrować aplikacji | Ustawienie tej opcji nie uniemożliwia użytkownikom tworzenie rejestracje aplikacji. Następnie można udzielić zdolność do konkretnych osób przez dodanie ich do roli dewelopera aplikacji.
-Zezwalaj użytkownikom na łączenie konta służbowego z usługą LinkedIn | Ustawienie tej opcji nie uniemożliwia użytkownikom łączenie ich konta firmowego lub szkolnego za pomocą konta LinkedIn.  Zobacz [konta LinkedIn, udostępnianie danych połączeń i zgody](https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/linkedin-user-consent) Aby uzyskać więcej informacji.
+Zezwalaj użytkownikom na łączenie konta służbowego z usługą LinkedIn | Ustawienie tej opcji nie uniemożliwia użytkownikom łączenie ich konta firmowego lub szkolnego za pomocą konta LinkedIn.  Zobacz [konta LinkedIn, udostępnianie danych połączeń i zgody](https://docs.microsoft.com/azure/active-directory/users-groups-roles/linkedin-user-consent) Aby uzyskać więcej informacji.
 Możliwość tworzenia grup zabezpieczeń | Ustawienie tej opcji na wartość Nie uniemożliwia użytkownikom tworzenie grup zabezpieczeń. Administratorzy globalni i Administratorzy użytkowników nadal mogą tworzyć grupy zabezpieczeń. Aby uzyskać więcej informacji, zobacz [Polecenia cmdlet usługi Azure Active Directory służące do konfigurowania ustawień grupy](../users-groups-roles/groups-settings-cmdlets.md).
 Możliwość tworzenia grup usługi Office 365 | Ustawienie tej opcji na wartość Nie uniemożliwia użytkownikom tworzenie grup usługi Office 365. Ustawienie tej opcji na wartość Niektóre umożliwia wybranemu zestawowi użytkowników tworzenie grup usługi Office 365. Administratorzy globalni i Administratorzy użytkownik nadal będzie można utworzyć grupy usługi Office 365. Aby uzyskać więcej informacji, zobacz [Polecenia cmdlet usługi Azure Active Directory służące do konfigurowania ustawień grupy](../users-groups-roles/groups-settings-cmdlets.md).
 Ogranicz dostęp do portalu administracyjnego usługi Azure AD | Ustawienie tej opcji nie uniemożliwia użytkownikom uzyskiwanie dostępu do usługi Azure Active Directory.

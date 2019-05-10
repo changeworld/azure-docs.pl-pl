@@ -139,8 +139,8 @@
       displayName: 'recognize speech, speech recognition, speech-to-text, stt'
     - name: Korzystanie ze strumieni wejściowych audio (SDK)
       href: how-to-use-audio-input-streams.md
-    - name: Korzystanie ze strumieni wejściowych skompresowanego audio (SDK)
-      href: how-to-use-compressed-audio-input-streams.md
+    - name: Korzystanie ze strumieni wejściowych skompresowanego audio kodera-dekodera (SDK)
+      href: how-to-use-codec-compressed-audio-input-streams.md
       displayName: 'mp3, opus, ogg, flac'
     - name: Wybieranie wejściowego urządzenia audio (SDK)
       href: how-to-select-audio-input-devices.md
@@ -184,7 +184,7 @@
               href: record-custom-voice-samples.md
             - name: Dostosowywanie danych wyjściowych zamiany tekstu na mowę
               href: how-to-voice-tuning.md
-        - name: Tworzenie niestandardowego słowa aktywującego urządzenie (zestaw SDK urządzeń)
+        - name: Tworzenie niestandardowego słowa aktywującego urządzenie (wykrywanie słów kluczowych)
           href: speech-devices-sdk-create-kws.md
           displayName: 'roobo, speech devices sdk, wake word, keyword spotting, kws'
     - name: Migracja
@@ -195,9 +195,9 @@
           href: how-to-migrate-from-custom-speech-service.md
         - name: Z interfejsu API tłumaczenia mowy w usłudze Translator
           href: how-to-migrate-from-translator-speech-api.md
-    - name: Korzystanie z kontenerów
+    - name: Korzystanie z kontenerów lokalnych
       items:
-        - name: Instalowanie i uruchamianie kontenerów
+        - name: Instalowanie i uruchamianie kontenerów lokalnych
           displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull'
           href: speech-container-howto.md
         - name: Konfigurowanie kontenerów
@@ -220,6 +220,8 @@
         - name: Omówienie
           href: speech-sdk.md
           displayName: 'C#, C++, Java, .NET, .NET Core, UWP, Android, Linux, Windows'
+        - name: Dostępność scenariusza
+          href: scenario-availability.md
         - name: Informacje o wersji
           href: releasenotes.md
         - name: C++
@@ -255,6 +257,9 @@
         - name: Transkrypcja i dostosowywanie wsadowe
           href: 'https://westus.cris.ai/swagger/ui/index'
           displayName: 'Batch transcription, transcription, custom models, customization, model management'
+        - name: Transkrypcja konwersacji
+          href: 'https://signature.centralus.cts.speech.microsoft.com/UI/index.html'
+          displayName: 'Conversation transcription, signature generation'
         - name: Elementy webhook
           href: webhooks.md
           displayName: Webhooks

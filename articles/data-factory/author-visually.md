@@ -12,12 +12,12 @@ author: sharonlo101
 ms.author: shlo
 ms.reviewer: ''
 manager: craigg
-ms.openlocfilehash: d2e51551643e154714b9d2368e63d7af9ebfa204
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b32e4abebdfb93312c60a25ca8b483f071e5e73c
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60593095"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507824"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Wizualne Tworzenie usługi Azure Data Factory
 Usługi Azure Data Factory użytkownika interfejsu środowiska pozwala wizualnie tworzyć i wdrażać zasoby fabryki danych bez konieczności pisania kodu. Można przeciągnąć działania na kanwę potoku, wykonywać przebiegi testowe, interakcyjnie debugować i wdrożyć i monitorować uruchomienia potoków. Dostępne są dwie opcje używania środowiska użytkownika do wykonania wizualnego tworzenia:
@@ -60,7 +60,7 @@ W okienku wyświetlana następujący kod repozytoriów Azure ustawień repozytor
 
 | Ustawienie | Opis | Wartość |
 |:--- |:--- |:--- |
-| **Typ repozytorium** | Typ repozytorium kodu repozytoriów platformy Azure.<br/>**Uwaga**: GitHub nie jest obecnie obsługiwane. | Azure repozytoriów Git |
+| **Typ repozytorium** | Typ repozytorium kodu repozytoriów platformy Azure.<br/> | Azure repozytoriów Git |
 | **Azure Active Directory** | Nazwa dzierżawy usługi Azure AD. | `<your tenant name>` |
 | **Organizacja repozytoriów platformy Azure** | Nazwa organizacji repozytoriów platformy Azure. Możesz znaleźć, jeśli nazwa organizacji repozytoriów platformy Azure w `https://{organization name}.visualstudio.com`. Możesz [Zaloguj się do Twojej organizacji repozytoriów Azure](https://www.visualstudio.com/team-services/git/) dostęp do Twojego profilu programu Visual Studio i zobacz projektów i repozytoriów. | `<your organization name>` |
 | **ProjectName** | Nazwa projektu repozytoriów platformy Azure. Możesz znaleźć, jeśli nazwa projektu repozytoriów platformy Azure w `https://{organization name}.visualstudio.com/{project name}`. | `<your Azure Repos project name>` |
@@ -266,10 +266,10 @@ Aby uzyskać informacji na temat obsługiwanych wyrażeń, zobacz [wyrażeń i f
 
 ![Dodaj zawartość dynamiczną](media/author-visually/dynamic-content-2.png)
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Przesyłanie opinii
 Wybierz **opinii** komentarz na temat funkcji lub powiadomić firmę Microsoft o problemach, za pomocą narzędzia:
 
-![Opinia](media/author-visually/provide-feedback.png)
+![Opinie](media/author-visually/provide-feedback.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby dowiedzieć się więcej na temat monitorowania i zarządzania potoków, zobacz [monitorowanie potoków i zarządzanie nimi programistycznie](monitor-programmatically.md).

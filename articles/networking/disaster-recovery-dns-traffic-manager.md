@@ -4,7 +4,7 @@ description: Omówienie rozwiązania odzyskiwania po awarii przy użyciu usługi
 services: dns
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/08/2018
 ms.author: kumud
-ms.openlocfilehash: ec252c1f45e5c27f17b725f6ab68cc94f67897c4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a560cc526e73f3ce7e851f2a545f9b16fa53b423
+ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60507747"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65501687"
 ---
 # <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>Odzyskiwanie po awarii przy użyciu usług Azure DNS i Traffic Manager
 
@@ -141,7 +141,8 @@ Kroki podjęte w celu konfigurowania trybu failover za pomocą usługi Azure Tra
 Tworzenie nowego profilu usługi Azure Traffic manager za pomocą contoso123 nazwę i wybierz metodę routingu priorytet. Jeśli masz już istniejącą grupę zasobów, którą chcesz skojarzyć z, a następnie wybrać istniejącą grupę zasobów, w przeciwnym razie utwórz nową grupę zasobów.
 
 ![Tworzenie profilu usługi Traffic Manager](./media/disaster-recovery-dns-traffic-manager/create-traffic-manager-profile.png)
-*rysunek — Tworzenie profilu usługi Traffic Manager*
+
+*Rysunek — Tworzenie profilu usługi Traffic Manager*
 
 ### <a name="step-2-create-endpoints-within-the-traffic-manager-profile"></a>Krok 2: Tworzenie punktów końcowych w profilu usługi Traffic Manager
 

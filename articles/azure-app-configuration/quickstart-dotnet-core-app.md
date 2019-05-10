@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: b8937b22054e55c8bfe7bc4c7726dc5bae5de6d8
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 0bf4aff8e0bae3e84e6383ec560dbfe67e30b994
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64730445"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408725"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Szybki start: Utwórz .NET Core aplikacji za pomocą konfiguracji aplikacji
 
@@ -39,7 +39,7 @@ Ten przewodnik Szybki Start, instaluje [zestawu .NET Core SDK](https://dotnet.mi
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Wybierz **Explorer klucz/wartość** > **+ Utwórz** można dodać następujące pary klucz wartość:
+6. Wybierz **Eksplorator konfiguracji** > **+ Utwórz** można dodać następujące pary klucz wartość:
 
     | Klucz | Wartość |
     |---|---|
@@ -61,7 +61,7 @@ Możesz użyć [platformy .NET Core interfejsu wiersza polecenia (CLI)](https://
 
 1. Dodaj odwołanie do `Microsoft.Extensions.Configuration.AzureAppConfiguration` pakietu NuGet, uruchamiając następujące polecenie:
 
-        dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration --version 1.0.0-preview-007830001
+        dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration --version 1.0.0-preview-008520001
 
 2. Uruchom następujące polecenie, aby przywrócić pakiety dla projektu:
 

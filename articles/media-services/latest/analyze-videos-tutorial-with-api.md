@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 04/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: cf1ea32e9b023db2e1a066c2baa6adf46ab51066
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: ead6fdc0ade4a24d162603b9dc3749726c0d8002
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65152746"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65415650"
 ---
 # <a name="tutorial-analyze-videos-with-media-services-v3-using-net"></a>Samouczek: Analizowanie wideo za pomocą usługi Media Services w wersji 3 przy użyciu platformy .NET
 
@@ -98,9 +98,9 @@ Poniższa funkcja wykonuje następujące akcje:
 
 W przypadku kodowania lub przetwarzania zawartości w usłudze Media Services typowym wzorcem postępowania jest skonfigurowanie ustawień kodowania jako przepisu. Następnie przesyła się **zadanie** w celu zastosowania tego przepisu do wideo. Przesłanie nowego zadania dla każdego nowego wideo powoduje zastosowanie przepisu do wszystkich wideo w bibliotece. Przepis w usłudze Media Services nazywa się **przekształceniem**. Aby uzyskać więcej informacji, zobacz [Przekształcenia i zadania](transform-concept.md). Przykład opisany w tym samouczku umożliwia zdefiniowanie przepisu, który analizuje określone wideo. 
 
-#### <a name="transform"></a>Przekształcanie
+#### <a name="transform"></a>Transformacja
 
-Podczas tworzenia nowego wystąpienia obiektu [Transform](https://docs.microsoft.com/rest/api/media/transforms) należy określić, jakie dane wyjściowe ma ono tworzyć. Wymagany parametr to obiekt **TransformOutput**, jak pokazano w powyższym kodzie. Każdy obiekt **TransformOutput** zawiera element **Preset**. Element **Preset** zawiera szczegółowe instrukcje operacji przetwarzania wideo i/lub dźwięku używanych do wygenerowania docelowego obiektu **TransformOutput**. W tym przykładzie jest używane ustawienie wstępne **VideoAnalyzerPreset**, a do jego konstruktora jest przekazywany język („en-US”). To ustawienie wstępne umożliwia przeprowadzenie wielu analiz dźwięku i wideo tworzących plik wideo. Istnieje możliwość użycia ustawienia wstępnego **AudioAnalyzerPreset**, jeśli jest potrzebne przeprowadzenie wielu analiz dźwięku w pliku wideo. 
+Podczas tworzenia nowego [Przekształcanie](https://docs.microsoft.com/rest/api/media/transforms) wystąpienia, należy określić, co chcesz, aby wygenerować jako dane wyjściowe, **TransformOutput** jest wymaganym parametrem. Każdy obiekt **TransformOutput** zawiera element **Preset**. Element **Preset** zawiera szczegółowe instrukcje operacji przetwarzania wideo i/lub dźwięku używanych do wygenerowania docelowego obiektu **TransformOutput**. W tym przykładzie **VideoAnalyzerPreset** wstępne jest używane, a język ("en US") jest przekazywana do jej konstruktora (`new VideoAnalyzerPreset("en-US")`). To ustawienie wstępne umożliwia przeprowadzenie wielu analiz dźwięku i wideo tworzących plik wideo. Istnieje możliwość użycia ustawienia wstępnego **AudioAnalyzerPreset**, jeśli jest potrzebne przeprowadzenie wielu analiz dźwięku w pliku wideo. 
 
 Podczas tworzenia obiektu **Transform** należy najpierw sprawdzić, czy taki obiekt już istnieje, używając metody **Get**, tak jak przedstawiono w poniższym kodzie.  W przypadku usługi Media Services 3 metody **Get** wywołane dla obiektów zwracają **wartość null**, jeśli obiekt nie istnieje (sprawdzana jest nazwa bez uwzględniania wielkości liter).
 

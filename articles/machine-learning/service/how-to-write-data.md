@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: d8644c2c0d4ee5b6ee4dcf16e470e4f2fa478237
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 0275d27a0a27d0279886f6f7fd15b14d312a44ea
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023712"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472002"
 ---
 # <a name="write-and-configure-data--with-the-azure-machine-learning-data-prep-sdk"></a>Pisanie i konfigurowanie danych przy użyciu usługi Azure Machine Learning Prep zestawu SDK usługi Data
 
@@ -25,6 +25,7 @@ W tym artykule dowiesz się, zapisywanie danych przy użyciu różnych metod [Az
 
 > [!Important]
 > Jeśli tworzysz nowe rozwiązanie, spróbuj [zestawów danych Learning maszyny Azure](how-to-explore-prepare-data.md) (wersja zapoznawcza), Przekształć swoje dane, dane migawki w celu przechowywania definicji określonej wersji zestawu danych. Zestawy danych to następna wersja przygotowywanie danych zestawu SDK, oferując rozszerzone funkcje do zarządzania zestawami danych w rozwiązań sztucznej Inteligencji.
+> Jeśli używasz `azureml-dataprep` pakietu do utworzenia przepływu danych przy użyciu przekształceń zamiast `azureml-datasets` pakietu, aby utworzyć zestaw danych, nie będzie można później użyć migawki lub numerów wersji zestawów danych.
 
 Ponieważ nie ma ograniczeń ile napisać czynności są w potoku, możesz łatwo dodawać zapisu dodatkowe kroki, aby uzyskać wyniki pośrednie, rozwiązywania problemów lub innych potokach.
 

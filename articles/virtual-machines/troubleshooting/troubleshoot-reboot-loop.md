@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/15/2018
 ms.author: genli
-ms.openlocfilehash: 032bc1b9c4b1b0e3bf8040ed52bf4db65ba7b6c7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1c97b1da094b759ccf85f310ceec4c7abfd91b9b
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60318995"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472292"
 ---
 # <a name="windows-reboot-loop-on-an-azure-vm"></a>Pętli ponownego uruchamiania Windows na Maszynie wirtualnej platformy Azure
 W tym artykule opisano pętli ponownego uruchamiania, które mogą występować na Windows maszyn wirtualnych (VM) w systemie Microsoft Azure.
@@ -102,6 +102,8 @@ Aby rozwiązać ten problem, [Utwórz kopię zapasową dysku systemu operacyjneg
 Przywróć maszynę Wirtualną do ostatniej znanej dobrej konfiguracji, wykonaj kroki opisane w [sposobu uruchamiania maszyn wirtualnych Windows Azure przy użyciu Ostatnia znana dobra konfiguracja](https://support.microsoft.com/help/4016731/).
 
 ### <a name="solution-for-cause-3"></a>Rozwiązanie, aby ustalić przyczynę 3
+>[!NOTE]
+>Poniższa procedura stosuje się tylko jako ostatni zasób. Podczas przywracania z regback przywrócić dostęp do maszyny, systemu operacyjnego nie jest uważany za stabilny, ponieważ ma danych utraconych w rejestrze między sygnatury czasowej gałęzi i bieżący dzień. Potrzebujesz do tworzenia nowej maszyny Wirtualnej i opracowuje plany w celu migracji danych.
 
 1. Gdy dysk jest dołączony do maszyny wirtualnej rozwiązywania problemów, upewnij się, że dysk jest oznaczone jako **Online** w konsoli Zarządzanie dyskami.
 
@@ -113,5 +115,4 @@ Przywróć maszynę Wirtualną do ostatniej znanej dobrej konfiguracji, wykonaj 
 
 5. [Utwórz nową maszynę Wirtualną z dyskiem systemu operacyjnego](../windows/create-vm-specialized.md).
 
->[!NOTE]
->Poniższa procedura stosuje się tylko jako ostatni zasób. Podczas przywracania z regback przywrócić dostęp do maszyny, systemu operacyjnego nie jest uważany za stabilny, ponieważ ma danych utraconych w rejestrze między sygnatury czasowej gałęzi i bieżący dzień. Potrzebujesz do tworzenia nowej maszyny Wirtualnej i opracowuje plany w celu migracji danych.
+

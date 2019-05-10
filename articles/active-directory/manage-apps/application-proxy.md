@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 05/09/2019
 ms.author: celested
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac94574ac297da7b3555be8d92ba3c5b62a990c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e490ed9d104fc039a79083a94ddaebdeba766d2a
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60292604"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65506653"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-active-directorys-application-proxy"></a>Dostęp zdalny do aplikacji lokalnych za pośrednictwem serwera Proxy aplikacji usługi Azure Active Directory 
 
@@ -43,6 +43,8 @@ Serwer Proxy aplikacji w programach:
 * Rozbudowane aplikacje klienckie, które są zintegrowane z Active Directory Authentication Library (ADAL)
 
 Serwer Proxy aplikacji obsługuje logowanie jednokrotne. Aby uzyskać więcej informacji na temat obsługiwanych metod, zobacz [wybranie jednej metody logowania jednokrotnego](what-is-single-sign-on.md#choosing-a-single-sign-on-method).
+
+Serwer Proxy aplikacji jest zalecana dla użytkowników zewnętrznych zdalnego zapewniające dostęp do zasobów wewnętrznych. Serwer Proxy aplikacji zastępuje potrzebę sieci VPN lub zwrotnego serwera proxy. Nie jest on przeznaczony dla użytkowników wewnętrznych w sieci firmowej.  Użytkownicy wewnętrzni, którzy niepotrzebnie Użyj serwera Proxy aplikacji mogą powodować problemy nieoczekiwany i niepożądanych wydajność.
 
 ## <a name="how-application-proxy-works"></a>Jak działa serwer Proxy aplikacji
 

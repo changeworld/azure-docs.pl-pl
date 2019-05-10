@@ -7,13 +7,13 @@ ms.author: twhitney
 manager: jeconnoc
 ms.topic: tutorial
 ms.service: openshift
-ms.date: 05/06/2019
-ms.openlocfilehash: 5bc71a2d0f29fed163fb5c93ebd27df7f66a1325
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.date: 05/08/2019
+ms.openlocfilehash: baada8a5238725456ca4a2ec7e8257c229066115
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65080758"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466178"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>Samouczek: Tworzenie klastra usługi Azure Red Hat OpenShift
 
@@ -35,7 +35,7 @@ Ta seria samouczków zawiera informacje na temat wykonywania następujących czy
 Przed rozpoczęciem tego samouczka:
 
 Upewnij się, że masz [Konfigurowanie środowiska projektowego](howto-setup-environment.md), która obejmuje:
-- Instalowanie najnowszego interfejsu wiersza polecenia
+- Instalowanie najnowszego interfejsu wiersza polecenia (wersję 2.0.64 lub nowszy)
 - Tworzenie dzierżawy
 - Tworzenie obiektu aplikacji na platformie Azure
 - Tworzenie użytkownika usługi Active Directory użyte do zalogowania się do aplikacji działających w klastrze.
@@ -101,7 +101,7 @@ az group create --name $CLUSTER_NAME --location $LOCATION
 
 ### <a name="optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network"></a>Opcjonalnie: Łączenie sieci wirtualnej klastra z istniejącej sieci wirtualnej
 
-Jeśli nie potrzebujesz połączyć sieć wirtualną (VNET) utworzonego klastra do istniejącej sieci Wirtualnej, Pomiń ten krok.
+Jeśli nie potrzebujesz połączyć sieć wirtualną (VNET) klastra utworzone do istniejącej sieci Wirtualnej za pomocą komunikacji równorzędnej, Pomiń ten krok.
 
 Najpierw Pobierz identyfikator istniejącej sieci Wirtualnej. Identyfikator będzie mieć postać: `/subscriptions/{subscription id}/resourceGroups/{resource group of VNET}/providers/Microsoft.Network/virtualNetworks/{VNET name}`.
 
@@ -132,7 +132,7 @@ Po kilku minutach `az openshift create` zostanie ukończone pomyślnie i zwraca�
 
 ## <a name="step-3-sign-in-to-the-openshift-console"></a>Krok 3: Zaloguj się do konsoli platformy OpenShift
 
-Możesz teraz zalogować się do konsoli OpenShift nowego klastra. [Konsoli sieci Web platformy OpenShift](https://docs.openshift.com/dedicated/architecture/infrastructure_components/web_console.html) pozwala na wizualizowanie, przeglądania i zarządzania zawartością swoje projekty platformy OpenShift.
+Teraz możesz zalogować się do konsoli OpenShift nowego klastra. [Konsoli sieci Web platformy OpenShift](https://docs.openshift.com/aro/architecture/infrastructure_components/web_console.html) pozwala na wizualizowanie, przeglądania i zarządzania zawartością swoje projekty platformy OpenShift.
 
 Firma Microsoft będzie Zaloguj się jako [nowego użytkownika usługi Azure AD](howto-aad-app-configuration.md#create-a-new-active-directory-user) utworzone na potrzeby testowania. Aby to zrobić, należy wystąpienie nowej przeglądarki, które nie pamięci podręcznej tożsamości, zwykle używane do logowania w witrynie Azure Portal.
 
@@ -147,13 +147,13 @@ Zaloguj się przy użyciu użytkownika i hasła, który został utworzony w [Two
 
 Teraz użytkownik jest zalogowany do konsoli usługi klastra.
 
-[Zrzut ekranu konsoli klastra platformy OpenShift](./media/aro-console.png)
+![Zrzut ekranu konsoli klastra platformy OpenShift](./media/aro-console.png)
 
- Możesz dowiedzieć się więcej [przy użyciu konsoli OpenShift](https://docs.openshift.com/dedicated/getting_started/developers_console.html) do tworzenia i wbudowane obrazy [Red Hat OpenShift](https://docs.openshift.com/dedicated/welcome/index.html) dokumentacji.
+ Dowiedz się więcej o [przy użyciu konsoli OpenShift](https://docs.openshift.com/aro/getting_started/developers_console.html) do tworzenia i wbudowane obrazy [Red Hat OpenShift](https://docs.openshift.com/aro/welcome/index.html) dokumentacji.
 
 ## <a name="step-4-install-the-openshift-cli"></a>Krok 4: Zainstaluj interfejs wiersza polecenia platformy OpenShift
 
-[Interfejsu wiersza polecenia platformy OpenShift](https://docs.openshift.com/dedicated/cli_reference/get_started_cli.html) (lub *narzędzia oC.*) zapewnia polecenia do zarządzania aplikacjami i niższego poziomu narzędzi do interakcji z różnych składników klastra platformy OpenShift.
+[Interfejsu wiersza polecenia platformy OpenShift](https://docs.openshift.com/aro/cli_reference/get_started_cli.html) (lub *narzędzia oC.*) zapewnia polecenia do zarządzania aplikacjami i niższego poziomu narzędzi do interakcji z różnych składników klastra platformy OpenShift.
 
 W konsoli platformy OpenShift, kliknij znak zapytania w prawym górnym rogu według nazwy logowania i wybierz **narzędzi wiersza polecenia**.  Postępuj zgodnie z **najnowszej wersji** link, aby pobrać i zainstalować obsługiwanych oC. interfejsu wiersza polecenia dla systemów Linux, MacOS lub Windows.
 

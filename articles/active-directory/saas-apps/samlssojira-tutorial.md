@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: integracja usługi Azure Active Directory z usługą logowania jednokrotnego SAML dla aplikacji Jira firmy resolution GmbH | Microsoft Docs'
+title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą logowania jednokrotnego SAML dla programu Jira przez GmbH rozpoznawania | Dokumentacja firmy Microsoft'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory a usługą logowania jednokrotnego SAML dla aplikacji Jira firmy resolution GmbH.
 services: active-directory
 documentationCenter: na
@@ -15,28 +15,28 @@ ms.topic: tutorial
 ms.date: 01/03/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0875e271a34577ed694caae4281df99b6b63411
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 36f14c8b1a462c7cf8c5ef336a5279bf0f99b2f6
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57901869"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472901"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-jira-by-resolution-gmbh"></a>Samouczek: integracja usługi Azure Active Directory z usługą logowania jednokrotnego SAML dla aplikacji Jira firmy resolution GmbH
 
-Z tego samouczka dowiesz się, jak zintegrować usługę logowania jednokrotnego SAML dla aplikacji Jira firmy resolution GmbH z usługą Azure Active Directory (Azure AD).
+W tym samouczku dowiesz się, jak skonfigurować logowania jednokrotnego SAML dla programu Jira przez rozwiązania GmbH w usłudze Azure Active Directory (Azure AD).
 Zintegrowanie usługi logowania jednokrotnego SAML dla aplikacji Jira firmy resolution GmbH z usługą Azure AD zapewnia następujące korzyści:
 
-* Możesz kontrolować w usłudze Azure AD, kto ma dostęp do usługi logowania jednokrotnego SAML dla aplikacji Jira firmy resolution GmbH.
-* Możesz zezwolić swoim użytkownikom na automatyczne logowanie do usługi logowania jednokrotnego SAML dla usługi Jira firmy resolution GmbH (logowanie jednokrotne) przy użyciu kont usługi Azure AD.
-* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
+* Możesz kontrolować, czy w usłudze Azure AD, który zalogować się do programu Jira za pomocą wtyczki SAML logowania jednokrotnego przez rozwiązania GmbH.
+* Aby umożliwić użytkownikom można automatycznie zalogowany do programu Jira za pomocą kont usługi Azure AD przy użyciu logowania jednokrotnego SAML dla programu Jira przez rozwiązania GmbH (logowanie jednokrotne).
+* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do skonfigurowania integracji z usługą Azure AD w usłudze logowania jednokrotnego SAML dla programu Jira firmy resolution GmbH potrzebne są następujące elementy:
+Aby skonfigurować integracji z usługą Azure AD i logowania jednokrotnego SAML dla programu Jira przy rozdzielczości GmbH, potrzebne są następujące elementy:
 
 * Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
 * Subskrypcja usługi logowania jednokrotnego SAML dla aplikacji Jira firmy resolution GmbH z włączonym logowaniem jednokrotnym
@@ -45,59 +45,59 @@ Do skonfigurowania integracji z usługą Azure AD w usłudze logowania jednokrot
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Usługa logowania jednokrotnego SAML dla aplikacji Jira firmy resolution GmbH obsługuje logowanie jednokrotne inicjowane przez **dostawcę usług** i **dostawcę tożsamości**
+* Logowania jednokrotnego SAML dla programu Jira przez rozwiązania obsługuje GmbH **SP** i **tożsamości** jednokrotne logowanie inicjowane przez
 
-## <a name="adding-saml-sso-for-jira-by-resolution-gmbh-from-the-gallery"></a>Dodawanie usługi logowania jednokrotnego SAML dla aplikacji Jira firmy resolution GmbH z galerii
+## <a name="adding-an-enterprise-application-for-single-sign-on"></a>Dodawanie aplikacji dla przedsiębiorstw dla logowania jednokrotnego
 
-Aby skonfigurować integrację usługi logowania jednokrotnego SAML dla aplikacji Jira firmy resolution GmbH z usługą Azure AD, musisz dodać usługę logowania jednokrotnego SAML dla aplikacji Jira firmy resolution GmbH z galerii do listy zarządzanych aplikacji SaaS.
+Aby skonfigurować logowanie jednokrotne w usłudze Azure AD, należy dodać nową aplikację przedsiębiorstwa. W galerii, jest wstępnie skonfigurowanych aplikacji, ustawienie wstępne w tym celu **logowania jednokrotnego SAML dla programu Jira przez rozwiązania GmbH**.
 
 **Aby dodać usługę logowania jednokrotnego SAML dla aplikacji Jira firmy resolution GmbH z galerii, wykonaj następujące kroki:**
 
 1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
-    ![Przycisk Azure Active Directory](common/select-azuread.png)
+    ![Przycisk usługi Azure Active Directory](common/select-azuread.png)
 
-2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
+2. Przejdź do **aplikacje dla przedsiębiorstw** a następnie kliknij przycisk **wszystkie aplikacje**.
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+    ![W bloku aplikacji przedsiębiorstwa](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
-    ![Przycisk Nowa aplikacja](common/add-new-app.png)
+    ![Nowy przycisk aplikacji](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **Usługa logowania jednokrotnego SAML dla aplikacji Jira firmy resolution GmbH**, wybierz pozycję **Usługa logowania jednokrotnego SAML dla aplikacji Jira firmy resolution GmbH** z panelu wyników, a następnie kliknij przycisk **Dodaj**, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **Usługa logowania jednokrotnego SAML dla aplikacji Jira firmy resolution GmbH**, wybierz pozycję **Usługa logowania jednokrotnego SAML dla aplikacji Jira firmy resolution GmbH** z panelu wyników, a następnie kliknij przycisk **Dodaj**, aby dodać aplikację. Można również zmienić nazwę aplikacji przedsiębiorstwa.
 
      ![Usługa logowania jednokrotnego SAML dla aplikacji Jira firmy resolution GmbH na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
+## <a name="configure-and-test-single-sign-on-with-the-saml-sso-plugin-and-azure-ad"></a>Konfiguracja i testowanie logowania jednokrotnego przy użyciu wtyczkę logowania jednokrotnego SAML i usługa Azure AD
 
-W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w usłudze logowania jednokrotnego SAML dla aplikacji Jira firmy resolution GmbH, korzystając z danych użytkownika testowego o nazwie **Britta Simon**.
+W tej sekcji możesz przetestować i konfigurowanie logowania jednokrotnego do programu Jira dla użytkownika usługi Azure AD. Ta czynność zostanie wykonana dla użytkownika testu o nazwie **Britta Simon**.
 Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD a powiązanym użytkownikiem usługi logowania jednokrotnego SAML dla aplikacji Jira firmy resolution GmbH.
 
-Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD w usłudze logowania jednokrotnego SAML dla aplikacji Jira firmy resolution GmbH, musisz utworzyć następujące bloki konstrukcyjne:
+Aby skonfigurować i przetestować logowanie jednokrotne, należy wykonać następujące czynności:
 
-1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
-2. **[Konfigurowanie logowania jednokrotnego w usłudze logowania jednokrotnego SAML dla aplikacji Jira firmy resolution GmbH](#configure-saml-sso-for-jira-by-resolution-gmbh-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
-5. **[Tworzenie użytkownika testowego usługi logowania jednokrotnego SAML dla aplikacji Jira firmy resolution GmbH](#create-saml-sso-for-jira-by-resolution-gmbh-test-user)** — aby mieć w usłudze logowania jednokrotnego SAML dla aplikacji Jira firmy resolution GmbH odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie usługi Azure AD aplikacji enterprise dla logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — Konfigurowanie usługi Azure AD aplikacji enterprise dla rejestracji jednokrotnej
+2. **[Skonfiguruj wtyczkę logowania jednokrotnego SAML wystąpienia swojej Jira](#configure-saml-sso-for-jira-by-resolution-gmbh-single-sign-on)**  — Konfigurowanie ustawień logowania jednokrotnego na stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — Tworzenie użytkownika testowego w usłudze Azure AD.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Włączanie użytkownika testowego użyć pojedynczego logowania jednokrotnego stronie platformy Azure.
+1. **[Tworzenie użytkownika testowego w usłudze Jira](#create-saml-sso-for-jira-by-resolution-gmbh-test-user)**  — Tworzenie użytkownika testowego odpowiednika w usłudze Jira dla użytkownika testowego usługi Azure AD.
+1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Sprawdź, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
+### <a name="configure-the-azure-ad-enterprise-application-for-single-sign-on"></a>Konfigurowanie usługi Azure AD aplikacji enterprise dla logowania jednokrotnego
 
-W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
+W tej sekcji możesz skonfigurować logowanie jednokrotne w witrynie Azure portal.
 
-Aby skonfigurować logowanie jednokrotne usługi Azure AD w usłudze logowania jednokrotnego SAML dla programu Jira firmy resolution GmbH, wykonaj następujące kroki:
+Aby skonfigurować logowanie jednokrotne za pomocą logowania jednokrotnego SAML dla programu Jira przez rozwiązania GmbH, wykonaj następujące czynności:
 
-1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **usługi logowania jednokrotnego SAML dla aplikacji Jira firmy resolution GmbH** wybierz pozycję **Logowanie jednokrotne**.
+1. W [witryny Azure portal](https://portal.azure.com/), w właśnie utworzyłeś **logowania jednokrotnego SAML dla programu Jira przez rozwiązania GmbH** aplikacja dla przedsiębiorstw, wybierz opcję **logowanie jednokrotne** w panelu po lewej stronie.
 
-    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
+    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
 
-2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
+2. Dla **wybierz jedną metodę logowania jednokrotnego**, wybierz opcję **SAML** trybu, aby włączyć logowanie jednokrotne.
 
     ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
 
-3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
+3. Później, kliknij przycisk **Edytuj** ikonę, aby otworzyć **podstawową konfigurację protokołu SAML** okna dialogowego.
 
     ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
@@ -116,55 +116,45 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w usłudze logowania j
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<server-base-url>/plugins/servlet/samlsso`
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Należy je zastąpić rzeczywistymi wartościami identyfikatora, adresu URL odpowiedzi i adresu URL logowania. W celu uzyskania tych wartości skontaktuj się z [zespołem pomocy technicznej dla klientów usługi logowania jednokrotnego SAML dla aplikacji Jira firmy resolution GmbH](https://www.resolution.de/go/support). Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Identyfikator, adres URL odpowiedzi i adres URL logowania, należy zastąpić  **\<serwera podstawowego adresu url >** przy użyciu podstawowego adresu URL wystąpienia programu Jira. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal. Jeśli masz problemy, samochodzie i skontaktuj się z nami pod adresem [zespołu pomocy technicznej logowania jednokrotnego SAML dla programu Jira przez rozwiązania klienta GmbH](https://www.resolution.de/go/support).
 
-4. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
+4. Na **Ustaw się logowania jednokrotnego przy użyciu protokołu SAML** stronie **certyfikat podpisywania SAML** sekcji, Pobierz **XML metadanych Federacji** i zapisz go na komputerze.
 
-    ![Link do pobierania certyfikatu](common/metadataxml.png)
+    ![Link pobierania certyfikatu](common/metadataxml.png)
 
-6. W sekcji **Skonfiguruj usługę logowania jednokrotnego SAML dla aplikacji Jira firmy resolution GmbH** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
+### <a name="configure-the-saml-sso-plugin-of-your-jira-instance"></a>Konfigurowanie wtyczki SAML logowania jednokrotnego wystąpienia swojej Jira] 
 
-    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
+1. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator z wystąpieniem programu Jira.
 
-    a. Adres URL logowania
-
-    b. Identyfikator usługi Azure AD
-
-    d. Adres URL wylogowywania
-
-### <a name="configure-saml-sso-for-jira-by-resolution-gmbh-single-sign-on"></a>Konfigurowanie logowania jednokrotnego w usłudze logowania jednokrotnego SAML dla aplikacji Jira firmy resolution GmbH
-
-1. W innym oknie przeglądarki internetowej zaloguj się do swojego **portalu administracyjnego usługi logowania jednokrotnego SAML dla aplikacji Jira firmy resolution GmbH** jako administrator.
-
-2. Zatrzymaj wskaźnik myszy nad ikoną koła zębatego i kliknij pozycję **Dodatki**.
+2. Umieść kursor nad koło zębate po prawej stronie, a następnie kliknij przycisk **Zarządzanie aplikacjami**.
     
     ![Konfigurowanie logowania jednokrotnego](./media/samlssojira-tutorial/addon1.png)
 
-3. Nastąpi przekierowanie na stronę dostępu administratora. Wprowadź **hasło** i kliknij przycisk **Confirm** (Potwierdź).
+3. Jeśli nastąpi przekierowanie do strony dostępu administratora, wprowadź **hasło** i kliknij przycisk **Potwierdź** przycisku.
 
     ![Konfigurowanie logowania jednokrotnego](./media/samlssojira-tutorial/addon2.png)
 
-4. W sekcji karty Dodatki kliknij pozycję **Znajdź nowe dodatki**. Wyszukaj pozycję **Usługa logowania jednokrotnego (SSO) SAML dla aplikacji JIRA** i kliknij przycisk **Zainstaluj**, aby zainstalować nową wtyczkę SAML.
+4. Jira zwykle przekieruje Cię do witryny marketplace Atlassian. Jeśli nie, kliknij polecenie **Znajdź nowe aplikacje** w panelu po lewej stronie. Wyszukaj **SAML logowanie jednokrotne (SSO) dla programu JIRA** i kliknij przycisk **zainstalować** przycisk, aby zainstalować wtyczkę SAML.
 
-    ![Konfigurowanie logowania jednokrotnego](./media/samlssojira-tutorial/addon7.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/samlssojira-tutorial/store.png)
 
-5. Rozpocznie się instalacja wtyczki. Kliknij przycisk **Zamknij**.
+5. Rozpocznie się instalacja wtyczki. Gdy wszystko będzie gotowe, kliknij przycisk **Zamknij** przycisku.
 
-    ![Konfigurowanie logowania jednokrotnego](./media/samlssojira-tutorial/addon8.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/samlssojira-tutorial/store-2.png)
 
-    ![Konfigurowanie logowania jednokrotnego](./media/samlssojira-tutorial/addon9.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/samlssojira-tutorial/store-3.png)
 
-6.  Kliknij pozycję **Zarządzaj**.
+6.  Następnie kliknij przycisk **Zarządzaj**.
 
-    ![Konfigurowanie logowania jednokrotnego](./media/samlssojira-tutorial/addon10.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/samlssojira-tutorial/store-4.png)
     
-8. Kliknij pozycję **Configure** (Konfiguruj), aby skonfigurować nową wtyczkę.
+8. Później, kliknij pozycję **Konfiguruj** do skonfigurowania tylko zainstalowanych wtyczek.
 
-    ![Konfigurowanie logowania jednokrotnego](./media/samlssojira-tutorial/addon11.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/samlssojira-tutorial/store-5.png)
 
-9. Na stronie **SAML SingleSignOn Plugin Configuration** (Konfiguracja wtyczki logowania jednokrotnego protokołu SAML) kliknij przycisk **Add new IdP** (Dodaj nowego dostawcę tożsamości), aby skonfigurować ustawienia dostawcy tożsamości.
+9. W **plik konfiguracji wtyczki SAML SingleSignOn** kreatora, kliknij przycisk **Dodaj nowy dostawca tożsamości** Konfigurowanie usługi Azure AD jako nowy dostawca tożsamości.
 
-    ![Konfigurowanie logowania jednokrotnego](./media/samlssojira-tutorial/addon4.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/samlssojira-tutorial/addon4.png) 
 
 10. Na stronie **Choose your SAML Identity Provider** (Wybieranie dostawcy tożsamości protokołu SAML) wykonaj następujące kroki:
 
@@ -172,137 +162,158 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w usłudze logowania j
  
     a. W polu IdP type (Typ dostawcy tożsamości) wybierz pozycję **Azure AD**.
     
-    b. W polu **Name** (Nazwa) wprowadź nazwę dostawcy tożsamości, np. Azure AD.
+    b. Dodaj **nazwa** dostawcy tożsamości (np. usługi Azure AD).
     
-    c. W polu **Description** (Opis) wprowadź opis dostawcy tożsamości, np. Azure AD.
+    c. Dodaj (opcjonalnie) **opis** dostawcy tożsamości (np. usługi Azure AD).
     
     d. Kliknij przycisk **Dalej**.
     
-11. Na stronie **Identity provider configuration** (Konfiguracja dostawcy tożsamości) kliknij przycisk **Next** (Dalej).
-
+11. Na **konfiguracji dostawcy tożsamości** kliknij **dalej**.
+ 
     ![Konfigurowanie logowania jednokrotnego](./media/samlssojira-tutorial/addon5b.png)
 
 12. Na stronie **Import SAML IdP Metadata** (Importuj metadane dostawcy tożsamości protokołu SAML) wykonaj następujące kroki:
 
     ![Konfigurowanie logowania jednokrotnego](./media/samlssojira-tutorial/addon5c.png)
 
-    a. Kliknij przycisk **Load File** (Załaduj plik), a następnie wybierz plik XML metadanych pobrany w kroku 5.
+    a. Kliknij przycisk **wybierz plik XML metadanych** przycisk, a następnie wybierz **XML metadanych Federacji** plik został pobrany przed.
 
-    b. Kliknij przycisk **Import** (Importuj).
-    
-    c. Zaczekaj chwilę na pomyślne zakończenie importowania.
-    
+    b. Kliknij przycisk **importu** przycisku.
+     
+    c. Zaczekaj chwilę na pomyślne zakończenie importowania.  
+     
     d. Kliknij przycisk **Next** (Dalej).
     
 13. Na stronie **User ID attribute and transformation** (Atrybut identyfikatora użytkownika i transformacja) kliknij przycisk **Next** (Dalej).
 
     ![Konfigurowanie logowania jednokrotnego](./media/samlssojira-tutorial/addon5d.png)
     
-14. Na stronie **User creation and update** (Tworzenie i aktualizowanie użytkownika) kliknij pozycję **Save & Next** (Zapisz i przejdź dalej), aby zapisać ustawienia.   
+14. Na stronie **User creation and update** (Tworzenie i aktualizowanie użytkownika) kliknij pozycję **Save & Next** (Zapisz i przejdź dalej), aby zapisać ustawienia.
     
     ![Konfigurowanie logowania jednokrotnego](./media/samlssojira-tutorial/addon6a.png)
     
-15. Na stronie **Test your settings** (Przetestuj ustawienia) kliknij pozycję **Skip test & configure manually** (Pomiń test i skonfiguruj ręcznie), aby pominąć na razie test użytkownika. Zostanie on wykonany w następnej sekcji i będzie wymagał wprowadzenia pewnych ustawień w witrynie Azure Portal. 
+15. Na stronie **Test your settings** (Przetestuj ustawienia) kliknij pozycję **Skip test & configure manually** (Pomiń test i skonfiguruj ręcznie), aby pominąć na razie test użytkownika. Zostanie on wykonany w następnej sekcji i będzie wymagał wprowadzenia pewnych ustawień w witrynie Azure Portal.
     
     ![Konfigurowanie logowania jednokrotnego](./media/samlssojira-tutorial/addon6b.png)
     
-16. Umieszczone odczytu okna dialogowego **pomijanie testów oznacza, że...** , kliknij przycisk **OK**.
+16. Kliknij przycisk **OK** Aby pominąć to ostrzeżenie.
     
     ![Konfigurowanie logowania jednokrotnego](./media/samlssojira-tutorial/addon6c.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
+Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon. Z użytkownikiem przetestujesz logowania jednokrotnego.
 
-1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
+1. W witrynie Azure portal w okienku po lewej stronie wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**, a następnie wybierz pozycję **wszyscy użytkownicy**.
 
-    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
+    !["Użytkownicy i grupy" i "All users" linki](common/users.png)
 
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+2. Wybierz **nowego użytkownika** w górnej części ekranu.
 
     ![Przycisk Nowy użytkownik](common/new-user.png)
 
-3. We właściwościach użytkownika wykonaj następujące kroki.
+3. W **właściwości użytkownika**, wykonaj następujące czynności:
 
-    ![Okno dialogowe Użytkownik](common/user-properties.png)
+    ![Okno dialogowe użytkownika](common/user-properties.png)
 
-    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+    a. W **nazwa** wprowadź **Britta Simon**.
   
-    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
-    Na przykład: BrittaSimon@contoso.com
+    b. W **nazwa_użytkownika** wprowadź <b> BrittaSimon@contoso.com </b>.
 
-    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
+    c. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
     d. Kliknij pozycję **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji udostępnisz użytkownikowi Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do usługi logowania jednokrotnego SAML dla aplikacji Jira firmy resolution GmbH.
+W tej sekcji dodasz Britta Simon do aplikacji przedsiębiorstwa, który umożliwia jej używać logowania jednokrotnego.
 
-1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw** i **Wszystkie aplikacje**, a następnie **Usługa logowania jednokrotnego SAML dla aplikacji Jira firmy resolution GmbH**.
+1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**. 
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście aplikacji wpisz i wybierz pozycję **Usługa logowania jednokrotnego SAML dla aplikacji Jira firmy resolution GmbH**.
+2. Na liście aplikacji Wyszukaj utworzony na początku tego samouczka aplikacja dla przedsiębiorstw. Jeśli wykonujesz kroki tego samouczka jest nazywany **logowania jednokrotnego SAML dla programu Jira przez rozwiązania GmbH**. Jeśli zostanie podany jej innej nazwy, wyszukiwania dla tej nazwy.
 
     ![Usługa logowania jednokrotnego SAML dla aplikacji Jira firmy resolution GmbH na liście aplikacji](common/all-applications.png)
 
-3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
+3. W lewym panelu kliknij **użytkowników i grup**.
 
-    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
+    ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
 
-4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
+4. Wybierz **Dodaj użytkownika**, następnie **użytkowników i grup** w **Dodaj przydziału** okna dialogowego.
 
     ![Okienko Dodawanie przypisania](common/add-assign-user.png)
 
-5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+5. W **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** z listy użytkowników, następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
 
 6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="create-saml-sso-for-jira-by-resolution-gmbh-test-user"></a>Tworzenie użytkownika testowego usługi logowania jednokrotnego SAML dla aplikacji Jira firmy resolution GmbH
+### <a name="create-the-test-user-also-in-jira"></a>Tworzenie użytkownika testowego również w usłudze Jira
 
-Aby umożliwić użytkownikom usługi Azure AD logowanie się do usługi logowania jednokrotnego SAML dla aplikacji Jira firmy resolution GmbH, należy aprowizować ich w tej usłudze.  
-W przypadku usługi logowania jednokrotnego SAML dla aplikacji Jira firmy resolution GmbH aprowizację wykonuje się ręcznie.
+Aby umożliwić użytkownikom usługi Azure AD logowanie się do usługi logowania jednokrotnego SAML dla aplikacji Jira firmy resolution GmbH, należy aprowizować ich w tej usłudze. W przypadku tego samouczka trzeba ręcznie aprowizacji. Jednak istnieją również inne modele inicjowania obsługi administracyjnej wtyczka logowania jednokrotnego SAML według rozdzielczości, na przykład **Just In Time** inicjowania obsługi administracyjnej. Zajrzyj do dokumentacji, ich w [logowania jednokrotnego SAML, rozpoznawanie GmbH](https://wiki.resolution.de/doc/saml-sso/latest/all). Jeśli masz pytania, na jego temat, samochodzie i pomocy technicznej pod [obsługę rozwiązywania](https://www.resolution.de/go/support).
 
-**Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
+**Aby ręcznie zainicjować obsługę konto użytkownika, wykonaj następujące czynności:**
 
-1. Zaloguj się do firmowej witryny usługi logowania jednokrotnego SAML dla aplikacji Jira firmy resolution GmbH jako administrator.
+1. Zaloguj się do wystąpienia programu Jira jako administrator.
 
-2. Zatrzymaj wskaźnik myszy nad ikoną koła zębatego i kliknij pozycję **User management** (Zarządzanie użytkownikami).
+2. Umieść kursor koła zębatego i wybierz **Zarządzanie użytkownikami**.
 
-    ![Dodawanie pracownika](./media/samlssojira-tutorial/user1.png) 
+   ![Dodawanie pracownika](./media/samlssojira-tutorial/user1.png)
 
-3. Nastąpi przekierowanie do strony dostępu administratora. Podaj wartość w polu **Password** (Hasło) i kliknij przycisk **Confirm** (Potwierdź).
+3. Jeśli nastąpi przekierowanie do strony dostępu administratora, wprowadź **hasło** i kliknij przycisk **Potwierdź** przycisku.
 
     ![Dodawanie pracownika](./media/samlssojira-tutorial/user2.png) 
 
 4. W sekcji karty **User management** (Zarządzanie użytkownikami) kliknij pozycję **create user** (utwórz użytkownika).
 
-    ![Dodawanie pracownika](./media/samlssojira-tutorial/user3.png) 
+    ![Dodawanie pracownika](./media/samlssojira-tutorial/user3-new.png) 
 
-5. Na stronie okna dialogowego **„Create new user”** (Tworzenie nowego użytkownika) wykonaj następujące kroki:
+5. Na **"Utwórz nowego użytkownika"** okna dialogowego strony, wykonaj następujące kroki. Należy dokładnie utworzyć użytkownika w usłudze Azure AD, takie jak:
 
-    ![Dodawanie pracownika](./media/samlssojira-tutorial/user4.png) 
+    ![Dodawanie pracownika](./media/samlssojira-tutorial/user4-new.png) 
 
-    a. W polu tekstowym **Email address** (Adres e-mail) wpisz adres e-mail użytkownika, na przykład Brittasimon@contoso.com.
+    a. W **adres E-mail** polu tekstowym wpisz adres e-mail użytkownika: <b> BrittaSimon@contoso.com </b>.
 
-    b. W polu tekstowym **Full Name** (Imię i nazwisko) wpisz imię i nazwisko użytkownika, np. Britta Simon.
+    b. W **imię i nazwisko** pole tekstowe, wpisz pełną nazwę użytkownika: **Britta Simon**.
 
-    c. W polu tekstowym **Username** (Nazwa użytkownika) wpisz adres e-mail użytkownika, na przykład Brittasimon@contoso.com.
+    c. W **Username** polu tekstowym wpisz adres e-mail użytkownika: <b> BrittaSimon@contoso.com </b>. 
 
-    d. W polu tekstowym **Password** (Hasło) wpisz hasło użytkownika.
+    d. W **hasło** polu tekstowym Wprowadź hasło użytkownika.
 
-    e. Kliknij pozycję **Create user** (Utwórz użytkownika).
+    e. Kliknij przycisk **Utwórz użytkownika** na zakończenie tworzenia użytkownika.
 
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka usługi logowania jednokrotnego SAML dla aplikacji Jira firmy resolution GmbH w panelu dostępu powinno nastąpić automatyczne zalogowanie się do usługi logowania jednokrotnego SAML dla aplikacji Jira firmy resolution GmbH, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+Możesz również przetestować logowanie jednokrotne, jeśli przejdziesz do [https://\<serwera podstawowego adresu url >/wtyczek/serwletu/samlsso](https://\<server-base-url>/plugins/servlet/samlsso). Zastąp  **\<serwera podstawowego adresu url >** przy użyciu podstawowego adresu URL wystąpienia programu Jira.
+
+
+## <a name="enable-single-sign-on-redirection-for-jira"></a>Włącz przekierowanie pojedynczego logowania dla programu Jira
+
+Jak wspomniano w sekcji przed, istnieją obecnie dwie metody wyzwalanie rejestracji jednokrotnej. Za pomocą **witryny Azure portal** lub za pomocą **specjalne łącze do Twojego wystąpienia programu Jira**. Wtyczka logowania jednokrotnego SAML, rozpoznawanie GmbH umożliwia także wyzwolić logowanie jednokrotne, po prostu **uzyskiwania dostępu do dowolnego adresu URL, wskazując wystąpienia swojej Jira**.
+
+W zasadzie wszystkim użytkownikom uzyskiwanie dostępu do programu Jira nastąpi przekierowanie do logowania jednokrotnego po aktywowaniu opcję we wtyczce.
+
+Aby aktywować przekierowania logowania jednokrotnego, wykonaj następujące czynności **wystąpienia swojej Jira**:
+
+1. Dostęp do strony konfiguracji wtyczki SAML logowania jednokrotnego w usłudze Jira.
+1. Kliknij pozycję **przekierowania** w panelu po lewej stronie.
+![](./media/samlssojira-tutorial/ssore1.png)
+
+1. Znaczników **włączyć logowanie Jednokrotne przekierowania**.
+![](./media/samlssojira-tutorial/ssore2.png) 
+
+1. Naciśnij klawisz **Zapisz ustawienia** przycisk w prawym górnym rogu.
+
+Po aktywowaniu opcji, nadal możesz połączyć if monitu nazwy użytkownika/hasła **Włącz nosso** zaznaczono opcję, przechodząc do [https://\<serwera podstawowego adresu url > /login.jsp?nosso](https://\<server-base-url>/login.jsp?nosso). Jak zawsze zastępuje  **\<serwera podstawowego adresu url >** z Twojego podstawowego adresu URL.
+
+
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 03/14/2019
+ms.date: 05/08/2019
 ms.author: mbullwin
-ms.openlocfilehash: 719cbe1ec8962b320aa2850053d44cdef7f56a8c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 925ae2dd7b564eece4842cf25cc32b68d9e5c0b6
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60691686"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472036"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Konfigurowanie usługi Application Insights dla witryny sieci Web ASP.NET.
 
@@ -29,8 +29,8 @@ Konfiguracja wymaga tylko kilku kliknięć w programie Visual Studio. Masz możl
 Aby dodać usługę Application Insights do witryny internetowej:
 
 - Zainstaluj [program Visual Studio 2017 dla systemu Windows](https://www.visualstudio.com/downloads/) z następującymi pakietami roboczymi:
-    - Tworzenie aplikacji na platformie ASP.NET i aplikacji internetowych
-    - Tworzenie aplikacji na platformie Azure
+    - ASP.NET i tworzenie aplikacji internetowych (nie Usuń zaznaczenie pola wyboru składniki opcjonalne)
+    - Programowanie na platformie Azure
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
 
@@ -125,7 +125,7 @@ Aby przeprowadzić uaktualnienie do [nowej wersji zestawu SDK](https://github.co
 
 Jeśli plik ApplicationInsights.config został dostosowany, zapisz jego kopię przed uaktualnieniem. Następnie scal zmiany w nowej wersji.
 
-## <a name="video"></a>Połączenia wideo
+## <a name="video"></a>Wideo
 
 * Zewnętrzne wideo krok po kroku dotyczące [Konfigurowanie usługi Application Insights za pomocą aplikacji platformy .NET od podstaw](https://www.youtube.com/watch?v=blnGAVgMAfA).
 

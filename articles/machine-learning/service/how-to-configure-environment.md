@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: c8c0291997c1ce301083f7d5c19b5067a85cfd0f
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 4d588374c0195e7da373766f93f6829ac2160269
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024978"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471608"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurowanie środowiska deweloperskiego dla usługi Azure Machine Learning
 
@@ -299,7 +299,7 @@ Gdy klaster działa, [utworzyć bibliotekę](https://docs.databricks.com/user-gu
 
 1. Wybierz **tylko jeden** opcji (nie instalacji zestawu SDK są obsługiwane)
 
-   |SDK&nbsp;package&nbsp;extras|Element źródłowy|PyPi&nbsp;Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+   |SDK&nbsp;package&nbsp;extras|Source|PyPi&nbsp;Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
    |----|---|---|
    |Dla usługi Databricks| Przekaż Python Egg lub PyPI | azureml-sdk[databricks]|
    |Dla usługi Databricks - with-<br> automatyczne możliwości usług ML| Przekaż Python Egg lub PyPI | azureml-sdk[automl_databricks]|
@@ -396,5 +396,5 @@ Można utworzyć pliku konfiguracji na trzy sposoby:
 
 - [Uczenie modelu](tutorial-train-models-with-aml.md) w usłudze Azure Machine Learning z zestawem danych mnist ręcznie ZAPISANYCH
 - Widok [Azure Machine Learning SDK dla języka Python](https://aka.ms/aml-sdk) odwołania
-- Dowiedz się więcej o [SDK przeznaczonego do przygotowania usługi Azure Machine Learning danych](https://aka.ms/data-prep-sdk)
+- Dowiedz się więcej o [pakiecie przygotowania danych do usługi Azure Machine Learning](https://aka.ms/data-prep-sdk)
 - 

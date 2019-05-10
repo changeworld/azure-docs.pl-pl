@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: ce6fc0a90ad093a6bba5a4720777e409202c73ea
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 43dd8be998e0f8f3b5a2b783c6a01d5b5ef3da12
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61479370"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65506920"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Omówienie monitorowania zadań usługi Stream Analytics oraz monitorowanie zapytań
 
@@ -38,8 +38,8 @@ Zostanie wyświetlone okno, jak pokazano:
 | Żądania funkcji      | Liczba wywołań funkcji usługi Azure Machine Learning (jeśli istnieje). |
 | Błędy deserializacji danych wejściowych       | Liczba zdarzeń wejściowych, których nie można wykonać deserializacji.  |
 | Zdarzenia wejściowe (bajty)      | Ilość danych otrzymywanych przez zadanie usługi Stream Analytics, w bajtach. Może to służyć do sprawdzania, czy zdarzenia są wysyłane do źródła danych wejściowych. |
-| Zdarzenia wejściowe           | Liczba rekordów deserializacji zdarzeń wejściowych. |
-| Odebrane źródła wejściowe       | Liczba zdarzeń otrzymanych przez zadanie. Może to służyć do sprawdzania, czy zdarzenia są wysyłane do źródła danych wejściowych. |
+| Zdarzenia wejściowe           | Liczba rekordów deserializacji zdarzeń wejściowych. Ta liczba nie obejmuje zdarzeń przychodzących, które powodują błędy deserializacji. |
+| Odebrane źródła wejściowe       | Liczba komunikatów odebranych przez zadanie. Dla Centrum zdarzeń komunikat jest pojedynczy EventData. Dla obiektu Blob komunikat jest pojedynczym obiektem blob. Należy pamiętać, że źródła danych wejściowych są liczone przed deserializacji. Jeśli występują błędy deserializacji, źródeł danych wejściowych może być większa niż zdarzenia wejściowe. W przeciwnym razie może być mniejsza lub równa dane wejściowe zdarzenia, ponieważ każdy komunikat może zawierać wiele zdarzeń. |
 | Opóźnione zdarzenia wejściowe      | Zdarzenia, które już korzystać z nowszej niż skonfigurowane okno tolerancji spóźnionego przybycia. Dowiedz się więcej o [zagadnienia dotyczące kolejności zdarzeń usługi Azure Stream Analytics](stream-analytics-out-of-order-and-late-events.md) . |
 | Zdarzenia poza kolejnością    | Liczba zdarzeń otrzymanych poza kolejnością, które zostały porzucone lub podane skorygowany sygnatury czasowej, na podstawie zasad kolejność zdarzeń. Może to mieć wpływ konfigurację ustawienia okno tolerancji Out of zamówienia. |
 | Zdarzenia wyjściowe          | Ilość danych wysłanych przez zadanie usługi Stream Analytics do obiektu docelowego dane wyjściowe w liczbie zdarzeń. |

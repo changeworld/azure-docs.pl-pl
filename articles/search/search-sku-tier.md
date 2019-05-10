@@ -7,15 +7,15 @@ manager: cgronlun
 tags: azure-portal
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 05/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 3e813b8a1709675d0d870d64df83428ab82e25b3
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 5b9e0dfb88c979618ce4cc5ed56e372cb0f65608
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024293"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472719"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Wybierz warstwę cenową dla usługi Azure Search
 
@@ -45,8 +45,8 @@ Poniższa tabela zawiera listę dostępnych warstw. Inne źródła informacji wa
 
 |Warstwa | Pojemność |
 |-----|-------------|
-|Bezpłatna | Współużytkowana z innymi subskrybentami. Nieskalowalne, maksymalnie 3 indeksy i 50 MB miejsca. |
-|Podstawowa | Dedykowane zasoby obliczeniowe dla obciążeń produkcyjnych na mniejszą skalę. Jedna partycja 2 GB i maksymalnie trzech replik. |
+|Wolny | Współużytkowana z innymi subskrybentami. Nieskalowalne, maksymalnie 3 indeksy i 50 MB miejsca. |
+|Podstawowy | Dedykowane zasoby obliczeniowe dla obciążeń produkcyjnych na mniejszą skalę. Jedna partycja 2 GB i maksymalnie trzech replik. |
 |1 standardowa (S1) | Z S1 na górę dedykowanych maszynach o większej pojemności magazynowania i przetwarzania na każdym poziomie. Rozmiar partycji wynosi 25 GB na partycję (max 300 GB na usługę) dla S1. |
 |Standardowy 2 (warstwa S2) | Podobny do S1, ale z 100 GB/partycji (max 1,2 TB na usługę) |
 |Standardowa 3 (S3) | 200 GB na partycję (max 2,4 TB na usługę) |
@@ -89,7 +89,7 @@ Opłaty za dane wychodzące w przypadku usług w różnych regionach. Takie opł
 
 ### <a name="3-ai-enriched-indexing-using-cognitive-services"></a>3. AI-wzbogacone indeksowanie przy użyciu usług Cognitive Services
 
-Dla [indeksowania sztucznej Inteligencji dzięki usługom Cognitive Services](cognitive-search-concept-intro.md), należy zaplanować na dołączanie płatnych usług Cognitive Services na S0 warstwa cenowa zasobu do przetwarzania zgodnie z rzeczywistym użyciem. Nie ma skojarzonych z dołączania usług Cognitive Services żadnych "kosztów stałej". Płacisz tylko za przetwarzanie, których potrzebujesz.
+Dla [indeksowania sztucznej Inteligencji dzięki usługom Cognitive Services](cognitive-search-concept-intro.md), należy zaplanować na dołączanie płatnych zasobu usług Cognitive Services, w tym samym regionie, co usługi Azure Search w warstwie cenowej S0 przetwarzania zgodnie z rzeczywistym użyciem. Nie ma skojarzonych z dołączania usług Cognitive Services żadnych "kosztów stałej". Płacisz tylko za przetwarzanie, których potrzebujesz.
 
 Wyodrębnianie obrazu podczas łamania dokumentów jest opłata za usługę Azure Search, rozliczane na podstawie liczby obrazów wyodrębnione ze swoich dokumentów. Wyodrębnianie tekstu jest aktualnie wolne. 
 

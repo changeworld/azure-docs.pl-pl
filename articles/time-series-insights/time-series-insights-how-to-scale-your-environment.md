@@ -10,23 +10,22 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 11/15/2017
+ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: fcdfc78a62d901bdaf50c18e9286e6f2d30c5b13
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f7d9827b11136370bcb401073a4d9cc4871c1cc9
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64714133"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472787"
 ---
 # <a name="how-to-scale-your-time-series-insights-environment"></a>Jak skalować środowiska usługi Time Series Insights
 
-W tym artykule opisano, jak w celu zmiany pojemności środowiska środowiska usługi Time Series Insights przy użyciu witryny Azure portal. Pojemność jest mnożnik stosowane do szybkości transferu danych przychodzących, pojemność i koszt związany z wybranej jednostki SKU. 
+W tym artykule opisano, jak w celu zmiany pojemności środowiska środowiska usługi Time Series Insights przy użyciu witryny Azure portal. Pojemność jest mnożnik stosowane do szybkości transferu danych przychodzących, pojemność i koszt związany z wybranej jednostki SKU.
 
-Aby zwiększyć lub zmniejszyć pojemność w ramach danej jednostki SKU cen, można użyć witryny Azure portal. 
+Aby zwiększyć lub zmniejszyć pojemność w ramach danej jednostki SKU cen, można użyć witryny Azure portal.
 
-Jednak zmiana warstwy cenowej jednostki SKU jest niedozwolona. Na przykład w środowisku zawierającym S1, w jednostce SKU wyceny nie można przekonwertować w wersji S2 lub na odwrót. 
-
+Jednak zmiana warstwy cenowej jednostki SKU jest niedozwolona. Na przykład w środowisku zawierającym S1, w jednostce SKU wyceny nie można przekonwertować w wersji S2 lub na odwrót.
 
 ## <a name="s1-sku-ingress-rates-and-capacities"></a>Stawki transferu danych przychodzących S1 SKU usługi i pojemności
 
@@ -45,19 +44,20 @@ Jednak zmiana warstwy cenowej jednostki SKU jest niedozwolona. Na przykład w ś
 Możliwości jest skalowane liniowo, więc S1 SKU usługi o pojemności 2 obsługuje 2 GB (2 mln) zdarzeń na szybkość transferu danych przychodzących dnia i 60 GB (60 milionów zdarzeń) na miesiąc.
 
 ## <a name="change-the-capacity-of-your-environment"></a>Zmienianie pojemności środowiska
-1. W witrynie Azure portal zlokalizuj i wybierz środowisko usługi Time Series Insights. 
 
-2. Wybierz z menu dla danego środowiska usługi Time Series Insights **Konfiguruj**.
+1. W witrynie Azure portal zlokalizuj i wybierz środowisko usługi Time Series Insights.
 
-   ![configure.png](media/scale-your-environment/configure.png)
+1. Wybierz z menu dla danego środowiska usługi Time Series Insights **Konfiguruj**.
 
-3. Dostosuj **pojemności** suwak, aby wybrać pojemność, który spełnia wymagania ceny transferu danych przychodzących i pojemność magazynu. Zwróć uwagę **szybkość transferu danych przychodzących**, **pojemność magazynu**, i **szacowany koszt** aktualizacji dynamicznej, aby pokazać wpływ zmiany. 
+   [![configure.png](media/scale-your-environment/configure.png)](media/scale-your-environment/configure.png#lightbox)
 
-   ![Suwak](media/scale-your-environment/slider.png)
+1. Dostosuj **pojemności** suwak, aby wybrać pojemność, który spełnia wymagania ceny transferu danych przychodzących i pojemność magazynu. Zwróć uwagę **szybkość transferu danych przychodzących**, **pojemność magazynu**, i **szacowany koszt** aktualizacji dynamicznej, aby pokazać wpływ zmiany.
 
-   Alternatywnie możesz wpisać numer mnożnik pojemności w polu tekstowym z prawej strony suwaka. 
+   [![Suwak](media/scale-your-environment/slider.png)](media/scale-your-environment/slider.png#lightbox)
 
-4. Wybierz **Zapisz** Skalowanie środowiska. Wskaźnik postępu jest wyświetlany, dopóki zmiana zostaje zatwierdzona, chwilowo. 
+   Alternatywnie możesz wpisać numer mnożnik pojemności w polu tekstowym z prawej strony suwaka.
+
+1. Wybierz **Zapisz** Skalowanie środowiska. Wskaźnik postępu jest wyświetlany, dopóki zmiana zostaje zatwierdzona, chwilowo.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

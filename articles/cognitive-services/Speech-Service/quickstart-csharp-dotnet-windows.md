@@ -10,15 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 12/13/2018
 ms.author: wolfma
-ms.openlocfilehash: 2f190ccbead9e6349543d04e2419f458888fba2c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d297addbeffcc530ba676e4132f9f0ebdceac3c9
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61461519"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466993"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-net-framework-windows"></a>Szybki start: Rozpoznawanie mowy przy użyciu zestawu SDK usługi Mowa dla platformy .NET Framework (Windows)
 
+Przewodniki Szybki Start są również dostępne dla [zamiany tekstu na mowę](quickstart-text-to-speech-dotnet-windows.md) i [tłumaczenia mowy](quickstart-translate-speech-dotnetframework-windows.md).
+
+Jeśli to konieczne, należy wybrać inny język programowania i/lub środowiska:<br/>
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 Korzystając z tego przewodnika, możesz utworzyć aplikację konsolową zamieniającą mowę na tekst przy użyciu programu .NET Framework dla systemu Windows oraz zestawu SDK usługi Mowa. Następnie za pomocą mikrofonu komputera będzie możliwa transkrypcja mowy na tekst w czasie rzeczywistym.
@@ -39,7 +42,7 @@ Aby ukończyć ten projekt, będą potrzebne następujące elementy:
 
 [!INCLUDE [Create project](../../../includes/cognitive-services-speech-service-create-speech-project-vs-csharp.md)]
 
-## <a name="add-sample-code"></a>Dodawanie przykładowego kodu
+## <a name="add-sample-code"></a>Dodaj kod przykładowy
 
 1. Otwórz plik `Program.cs` i zastąp automatycznie wygenerowany kod następującym przykładem:
 

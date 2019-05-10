@@ -14,25 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: brkhande
-ms.openlocfilehash: 6c0aa42cc22d22431d7d0270aca52e089046cb01
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ef2b1bd9cfe9aed1e82335d62bb09b5ffcbe1016
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60773370"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471758"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Stosowanie poprawek systemu operacyjnego Windows w klastrze usługi Service Fabric
-
-> [!div class="op_single_selector"]
-> * [Windows](service-fabric-patch-orchestration-application.md)
-> * [Linux](service-fabric-patch-orchestration-application-linux.md)
->
->
-
 
 > 
 > [!IMPORTANT]
 > Aplikacja w wersji 1.2. * jest przesyłane z pomocy technicznej na 30 kwietnia 2019 r. Przeprowadź uaktualnienie do najnowszej wersji.
+
+> 
+> [!IMPORTANT]
+> Aplikacja Orkiestracji poprawek w systemie linux jest przestarzała. Odwiedź stronę [automatyczne uaktualnienia obrazu systemu operacyjnego zestawu skalowania maszyn wirtualnych platformy Azure](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) do organizowania aktualizacji w systemie linux.
 
 
 [Automatyczne uaktualnienia obrazu systemu operacyjnego zestawu skalowania maszyn wirtualnych platformy Azure](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) jest najlepszym rozwiązaniem dla przechowywania przez systemy operacyjne poprawek na platformie Azure, a aplikacja Orchestration Patch (POA) otokę usługa usługi sieci szkieletowe RepairManager systemów który umożliwia konfiguracji na podstawie systemu operacyjnego poprawki planowania dla klastrów hostowanej spoza platformy Azure. POA nie jest wymagana w przypadku klastrów hostowanej spoza platformy Azure, ale planowanie instalacji poprawki uaktualnienia domen, jest wymagany do poprawiania hostów klastrów Service Fabric bez przestojów.
@@ -158,9 +155,9 @@ Zachowanie aplikacji orkiestracji poprawek można skonfigurować do własnych po
 
 |**Parametr**        |**Typ**                          | **Szczegóły**|
 |:-|-|-|
-|MaxResultsToCache    |Długie                              | Maksymalna liczba wyników aktualizacji Windows, które mają być buforowane. <br>Wartość domyślna to 3000 zakładając, że: <br> -Liczba węzłów to 20. <br> -Liczba aktualizacje wykonywane w węźle na miesiąc wynosi pięć. <br> -Liczba wyników na operację może być 10. <br> — Powinny być przechowywane wyniki ostatnie trzy miesiące. |
+|MaxResultsToCache    |Liczba długa                              | Maksymalna liczba wyników aktualizacji Windows, które mają być buforowane. <br>Wartość domyślna to 3000 zakładając, że: <br> -Liczba węzłów to 20. <br> -Liczba aktualizacje wykonywane w węźle na miesiąc wynosi pięć. <br> -Liczba wyników na operację może być 10. <br> — Powinny być przechowywane wyniki ostatnie trzy miesiące. |
 |TaskApprovalPolicy   |Wyliczenia <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy wskazuje zasady, które ma być używany przez usługę koordynatora do instalowania aktualizacji Windows w węzłach klastra usługi Service Fabric.<br>                         Dozwolone wartości to: <br>                                                           <b>NodeWise</b>. Windows Update jest zainstalowane na jednym węźle naraz. <br>                                                           <b>UpgradeDomainWise</b>. Aktualizacja Windows jest zainstalowane jedną domenę uaktualnienia w danym momencie. (Maksymalnie, wszystkie węzły należące do domeny uaktualnienia można szukać Windows Update.)<br> Zapoznaj się [— często zadawane pytania](#frequently-asked-questions) sekcję dotyczącą sposobu określenia, który jest najbardziej odpowiednie zasady dla klastra.
-|LogsDiskQuotaInMB   |Długie  <br> (Domyślnie: 1024)               |Maksymalny rozmiar patch orchestration aplikacja rejestruje się w MB, co może być utrwalony lokalnie w węzłach.
+|LogsDiskQuotaInMB   |Liczba długa  <br> (Domyślnie: 1024)               |Maksymalny rozmiar patch orchestration aplikacja rejestruje się w MB, co może być utrwalony lokalnie w węzłach.
 | WUQuery               | string<br>(Domyślnie: "IsInstalled = 0")                | Zapytanie w celu pobrania aktualizacji i Windows. Aby uzyskać więcej informacji, zobacz [WuQuery.](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)
 | InstallWindowsOSOnlyUpdates | Boolean <br> (domyślna: false)                 | Użyj tej flagi do kontroli, które aktualizacje powinny zostać pobrana i zainstalowana. Następujące wartości są dozwolone. <br>wartość true — instaluje tylko aktualizacje systemu operacyjnego Windows.<br>FALSE — instaluje wszystkie dostępne aktualizacje na komputerze.          |
 | WUOperationTimeOutInMinutes | Int <br>(Domyślnie: 90)                   | Określa limit czasu dla wszelkich operacji Windows Update (wyszukiwania lub pobierania lub instalacji). Jeśli operacja nie jest ukończone przed upływem określonego limitu czasu, zostało przerwane.       |

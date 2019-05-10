@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: 08ea808240e97dbf1c7995531178db3cb88f2424
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
-ms.translationtype: HT
+ms.openlocfilehash: c528f37c8970380678a318ec2d63babd37f89501
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153308"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65228034"
 ---
 # <a name="copy-data-from-hdfs-using-azure-data-factory"></a>Kopiowanie danych z systemu plików HDFS przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -58,9 +58,9 @@ Następujące właściwości są obsługiwane w przypadku systemu plików HDFS p
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi być równa: **System plików Hdfs**. | Yes |
-| url |Adres URL do systemu plików HDFS |Yes |
-| Element authenticationType | Dozwolone wartości to: **Anonimowe**, lub **Windows**. <br><br> Aby użyć **uwierzytelnianie Kerberos** łącznika systemu plików HDFS można znaleźć w [w tej sekcji](#use-kerberos-authentication-for-hdfs-connector) odpowiednio skonfigurować swoje środowisko lokalne. |Yes |
+| type | Właściwość type musi być równa: **System plików Hdfs**. | Tak |
+| url |Adres URL do systemu plików HDFS |Tak |
+| authenticationType | Dozwolone wartości to: **Anonimowe**, lub **Windows**. <br><br> Aby użyć **uwierzytelnianie Kerberos** łącznika systemu plików HDFS można znaleźć w [w tej sekcji](#use-kerberos-authentication-for-hdfs-connector) odpowiednio skonfigurować swoje środowisko lokalne. |Tak |
 | userName |Uwierzytelnianie nazwy użytkownika dla Windows. Dla uwierzytelniania Kerberos, określ `<username>@<domain>.com`. |Tak (dla uwierzytelniania Windows) |
 | password |Hasło do uwierzytelniania Windows. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Tak (dla uwierzytelniania Windows) |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Używając środowiskiem Integration Runtime lub Azure Integration Runtime (Jeśli magazyn danych jest publicznie dostępny). Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
@@ -122,7 +122,7 @@ Aby skopiować dane z systemu plików HDFS w **Parquet lub format tekstu rozdzie
 
 | Właściwość   | Opis                                                  | Wymagane |
 | ---------- | ------------------------------------------------------------ | -------- |
-| type       | Właściwość type w obszarze `location` w zestawie danych musi być równa **HdfsLocation**. | Yes      |
+| type       | Właściwość type w obszarze `location` w zestawie danych musi być równa **HdfsLocation**. | Tak      |
 | folderPath | Ścieżka do folderu. Jeśli chcesz używać symboli wieloznacznych, do folderu filtru, pomiń to ustawienie i określ ustawienia źródła działania. | Nie       |
 | fileName   | Nazwa pliku w ramach danego folderu folderPath. Jeśli chcesz użyć symboli wieloznacznych, aby odfiltrować pliki, pomiń to ustawienie i określ ustawienia źródła działania. | Nie       |
 
@@ -167,7 +167,7 @@ Aby skopiować dane z systemu plików HDFS w **format ORC/Avro/JSON/dane binarne
 | modifiedDatetimeStart | Filtr plików, na podstawie atrybutu: Data ostatniej modyfikacji. Pliki zostanie wybrana, w przypadku ich godzina ostatniej modyfikacji w okresie między `modifiedDatetimeStart` i `modifiedDatetimeEnd`. Czas jest stosowany do strefy czasowej UTC w formacie "2018-12-01T05:00:00Z". <br/><br/> Należy pamiętać, że ogólnej wydajności przenoszenia danych będzie mieć wpływ na włączenie tego ustawienia, gdy użytkownik chce pliku filtru z ogromne ilości plików. <br/><br/> Właściwości może mieć wartość NULL, która oznacza, że żaden filtr atrybutu pliku zostaną zastosowane do zestawu danych.  Gdy `modifiedDatetimeStart` ma wartość daty/godziny, ale `modifiedDatetimeEnd` ma wartość NULL, oznacza pliki, których ostatniej modyfikacji atrybut jest większa niż lub równe wartością daty/godziny, zostanie wybrany.  Gdy `modifiedDatetimeEnd` ma wartość daty/godziny, ale `modifiedDatetimeStart` ma wartość NULL, oznacza to, pliki, których ostatniej modyfikacji atrybut jest mniejsza niż wartość daty i godziny zostanie wybrany.| Nie |
 | modifiedDatetimeEnd | Filtr plików, na podstawie atrybutu: Data ostatniej modyfikacji. Pliki zostanie wybrana, w przypadku ich godzina ostatniej modyfikacji w okresie między `modifiedDatetimeStart` i `modifiedDatetimeEnd`. Czas jest stosowany do strefy czasowej UTC w formacie "2018-12-01T05:00:00Z". <br/><br/> Należy pamiętać, że ogólnej wydajności przenoszenia danych będzie mieć wpływ na włączenie tego ustawienia, gdy użytkownik chce pliku filtru z ogromne ilości plików. <br/><br/> Właściwości może mieć wartość NULL, która oznacza, że żaden filtr atrybutu pliku zostaną zastosowane do zestawu danych.  Gdy `modifiedDatetimeStart` ma wartość daty/godziny, ale `modifiedDatetimeEnd` ma wartość NULL, oznacza pliki, których ostatniej modyfikacji atrybut jest większa niż lub równe wartością daty/godziny, zostanie wybrany.  Gdy `modifiedDatetimeEnd` ma wartość daty/godziny, ale `modifiedDatetimeStart` ma wartość NULL, oznacza to, pliki, których ostatniej modyfikacji atrybut jest mniejsza niż wartość daty i godziny zostanie wybrany.| Nie |
 | format | Jeśli chcesz **skopiuj pliki — jest** między opartych na plikach magazynów (kopia binarna), Pomiń sekcji format w obu definicji zestawu danych wejściowych i wyjściowych.<br/><br/>Jeśli chcesz analizować pliki w określonym formacie, obsługiwane są następujące typy formatów plików: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Ustaw **typu** właściwości w obszarze format ma jedną z następujących wartości. Aby uzyskać więcej informacji, zobacz [Format tekstu](supported-file-formats-and-compression-codecs.md#text-format), [formatu Json](supported-file-formats-and-compression-codecs.md#json-format), [Avro Format](supported-file-formats-and-compression-codecs.md#avro-format), [Orc Format](supported-file-formats-and-compression-codecs.md#orc-format), i [formatu Parquet](supported-file-formats-and-compression-codecs.md#parquet-format) sekcje. |Brak (tylko w przypadku scenariusza kopia binarna) |
-| Kompresja | Określ typ i poziom kompresji danych. Aby uzyskać więcej informacji, zobacz [obsługiwane formaty plików i kodery-dekodery kompresji](supported-file-formats-and-compression-codecs.md#compression-support).<br/>Obsługiwane typy to: **GZip**, **Deflate**, **BZip2**, i **ZipDeflate**.<br/>Są obsługiwane poziomy: **Optymalne** i **najszybszy**. |Nie |
+| compression | Określ typ i poziom kompresji danych. Aby uzyskać więcej informacji, zobacz [obsługiwane formaty plików i kodery-dekodery kompresji](supported-file-formats-and-compression-codecs.md#compression-support).<br/>Obsługiwane typy to: **GZip**, **Deflate**, **BZip2**, i **ZipDeflate**.<br/>Są obsługiwane poziomy: **Optymalne** i **najszybszy**. |Nie |
 
 >[!TIP]
 >Aby skopiować wszystkie pliki w folderze, określ **folderPath** tylko.<br>Aby skopiować pojedynczy plik o określonej nazwie, należy określić **folderPath** z część z folderem i **fileName** z nazwą pliku.<br>Aby skopiować podzestaw plików w folderze, podaj **folderPath** z część z folderem i **fileName** z filtr z symbolami wieloznacznymi.
@@ -217,16 +217,16 @@ Aby skopiować dane z systemu plików HDFS w **Parquet lub format tekstu rozdzie
 
 | Właściwość                 | Opis                                                  | Wymagane                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
-| type                     | Właściwość type w obszarze `storeSettings` musi być równa **HdfsReadSetting**. | Yes                                           |
-| cykliczne                | Wskazuje, czy dane są odczytywane cyklicznie z podfolderów lub tylko z określonego folderu. Zwróć uwagę, że gdy cyklicznego jest ustawiona na wartość PRAWDA, a obiekt sink magazynem opartych na plikach, pusty folder lub podfolder nie jest kopiowany lub utworzono obiekt sink. Dozwolone wartości to **true** (ustawienie domyślne) i **false**. | Nie                                            |
+| type                     | Właściwość type w obszarze `storeSettings` musi być równa **HdfsReadSetting**. | Tak                                           |
+| recursive                | Wskazuje, czy dane są odczytywane cyklicznie z podfolderów lub tylko z określonego folderu. Zwróć uwagę, że gdy cyklicznego jest ustawiona na wartość PRAWDA, a obiekt sink magazynem opartych na plikach, pusty folder lub podfolder nie jest kopiowany lub utworzono obiekt sink. Dozwolone wartości to **true** (ustawienie domyślne) i **false**. | Nie                                            |
 | wildcardFolderPath       | Ścieżka folderu przy użyciu symboli wieloznacznych, aby filtrować foldery źródłowe. <br>Dozwolone symbole wieloznaczne to: `*` (dopasowuje zero lub więcej znaków) i `?` (dopasowuje zero lub jeden znak); użyj `^` jako znak ucieczki, jeśli nazwą rzeczywistego folderu ma symboli wieloznacznych lub ten znak ucieczki wewnątrz. <br>Zobacz więcej przykładów w [folderowi i plikowi Przykłady filtrów](#folder-and-file-filter-examples). | Nie                                            |
 | wildcardFileName         | Nazwa pliku przy użyciu symboli wieloznacznych w ramach danego folderPath/wildcardFolderPath do filtrowania plików źródłowych. <br>Dozwolone symbole wieloznaczne to: `*` (dopasowuje zero lub więcej znaków) i `?` (dopasowuje zero lub jeden znak); użyj `^` jako znak ucieczki, jeśli nazwą rzeczywistego folderu ma symboli wieloznacznych lub ten znak ucieczki wewnątrz.  Zobacz więcej przykładów w [folderowi i plikowi Przykłady filtrów](#folder-and-file-filter-examples). | Tak, jeśli `fileName` nie została określona w zestawie danych |
 | modifiedDatetimeStart    | Filtr plików, na podstawie atrybutu: Data ostatniej modyfikacji. Pliki zostanie wybrana, w przypadku ich godzina ostatniej modyfikacji w okresie między `modifiedDatetimeStart` i `modifiedDatetimeEnd`. Czas jest stosowany do strefy czasowej UTC w formacie "2018-12-01T05:00:00Z". <br> Właściwości może mieć wartość NULL, która oznacza, że żaden filtr atrybutu pliku zostaną zastosowane do zestawu danych.  Gdy `modifiedDatetimeStart` ma wartość daty/godziny, ale `modifiedDatetimeEnd` ma wartość NULL, oznacza pliki, których ostatniej modyfikacji atrybut jest większa niż lub równe wartością daty/godziny, zostanie wybrany.  Gdy `modifiedDatetimeEnd` ma wartość daty/godziny, ale `modifiedDatetimeStart` ma wartość NULL, oznacza to, pliki, których ostatniej modyfikacji atrybut jest mniejsza niż wartość daty i godziny zostanie wybrany. | Nie                                            |
 | modifiedDatetimeEnd      | Wartość taka sama jak powyżej.                                               | Nie                                            |
-| MaxConcurrentConnections | Liczba połączeń połączyć się z magazynu magazynu jednocześnie. Należy określić tylko wtedy, gdy chcesz ograniczyć liczby jednoczesnych połączeń z magazynem danych. | Nie                                            |
+| maxConcurrentConnections | Liczba połączeń połączyć się z magazynu magazynu jednocześnie. Należy określić tylko wtedy, gdy chcesz ograniczyć liczby jednoczesnych połączeń z magazynem danych. | Nie                                            |
 
 > [!NOTE]
-> Dla formatu Parquet/rozdzielany tekst **FileSystemSource** źródło działania kopiowania typu opisane w następnej sekcji nadal jest obsługiwany jako — dotyczy zgodności z poprzednimi wersjami. Zaleca się użyć tego nowego modelu idąc dalej, a ADF tworzenia interfejsu użytkownika zostało przełączone do generowania te nowe typy.
+> Dla formatu Parquet/rozdzielany tekst **FileSystemSource** źródło działania kopiowania typu opisane w następnej sekcji nadal jest obsługiwany jako — jest zgodności z poprzednimi wersjami. Zaleca się użyć tego nowego modelu idąc dalej, a ADF tworzenia interfejsu użytkownika zostało przełączone do generowania te nowe typy.
 
 **Przykład:**
 
@@ -273,13 +273,13 @@ Aby skopiować dane z systemu plików HDFS w **format ORC/Avro/JSON/dane binarne
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Musi być równa wartości właściwości type źródło działania kopiowania: **HdfsSource** |Yes |
-| cykliczne | Wskazuje, czy dane są odczytywane cyklicznie z folderów podrzędnych lub tylko z określonego folderu. Należy pamiętać podczas cyklicznego jest ustawiona na wartość PRAWDA, a obiekt sink jest magazynu opartego na pliku, pusty folder/podrzędnych — folder nie będą kopiowane utworzone w ujścia.<br/>Dozwolone wartości to: **true** (ustawienie domyślne), **false** | Nie |
+| type | Musi być równa wartości właściwości type źródło działania kopiowania: **HdfsSource** |Tak |
+| recursive | Wskazuje, czy dane są odczytywane cyklicznie z folderów podrzędnych lub tylko z określonego folderu. Należy pamiętać podczas cyklicznego jest ustawiona na wartość PRAWDA, a obiekt sink jest magazynu opartego na pliku, pusty folder/podrzędnych — folder nie będą kopiowane utworzone w ujścia.<br/>Dozwolone wartości to: **true** (ustawienie domyślne), **false** | Nie |
 | distcpSettings | Grupa właściwości, korzystając z narzędzia DistCp systemu plików HDFS. | Nie |
 | resourceManagerEndpoint | Punkt końcowy Menedżera zasobów Yarn | Tak, jeśli korzystanie z narzędzia DistCp |
 | tempScriptPath | Ścieżka folderu, używany do przechowywania temp skryptu polecenia DistCp. Plik skryptu jest generowany przez usługę Data Factory i zostaną usunięte po zakończeniu zadania kopiowania. | Tak, jeśli korzystanie z narzędzia DistCp |
 | distcpOptions | Dodatkowe opcje przekazane polecenia DistCp. | Nie |
-| MaxConcurrentConnections | Liczba połączeń połączyć się z magazynu magazynu jednocześnie. Należy określić tylko wtedy, gdy chcesz ograniczyć liczby jednoczesnych połączeń z magazynem danych. | Nie |
+| maxConcurrentConnections | Liczba połączeń połączyć się z magazynu magazynu jednocześnie. Należy określić tylko wtedy, gdy chcesz ograniczyć liczby jednoczesnych połączeń z magazynem danych. | Nie |
 
 **Przykład: Źródłowy system plików HDFS w działaniu kopiowania za pomocą narzędzia DistCp**
 
@@ -300,7 +300,7 @@ Dowiedz się więcej na temat korzystania z narzędzia DistCp do skopiowania dan
 
 W tej sekcji opisano wynikowe zachowania ścieżkę i nazwę folderu z filtrami symboli wieloznacznych.
 
-| folderPath | fileName             | cykliczne | Źródło folder struktury i filtrowanie wyników (pliki **bold** są pobierane) |
+| folderPath | fileName             | recursive | Źródło folder struktury i filtrowanie wyników (pliki **bold** są pobierane) |
 | :--------- | :------------------- | :-------- | :----------------------------------------------------------- |
 | `Folder*`  | (puste, użyta domyślna) | false     | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
 | `Folder*`  | (puste, użyta domyślna) | true      | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File4.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |

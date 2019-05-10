@@ -12,15 +12,15 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 02/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7dc07ba7f1d62b49232b1cd892070804099fab8c
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: e7c330846cd907f35bb23ae5e453383d7c35222e
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024017"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471875"
 ---
 # <a name="load-and-read-data-with-the-azure-machine-learning-data-prep-sdk"></a>Ładowanie i odczytać dane za pomocą usługi Azure Machine Learning Prep zestawu SDK usługi Data
-W tym artykule dowiesz się różnych metod ładowania danych przy użyciu usługi Azure Machine Learning Prep zestawu SDK usługi Data. Aby wyświetlić dokumentację referencyjną dla zestawu SDK, zobacz [Przegląd](https://aka.ms/data-prep-sdk). Zestaw SDK obsługuje wiele funkcji pozyskiwania danych, takich jak:
+W tym artykule dowiesz się różnych metod ładowania danych przy użyciu usługi Azure Machine Learning Prep zestawu SDK usługi Data.  Zestaw SDK obsługuje wiele funkcji pozyskiwania danych, takich jak:
 
 * Ładowanie z wiele typów plików za pomocą analizy parametru wnioskowania (kodowanie, separator, nagłówki)
 * Konwersja typu użycia wnioskowania podczas ładowania pliku
@@ -28,6 +28,7 @@ W tym artykule dowiesz się różnych metod ładowania danych przy użyciu usłu
 
 > [!Important]
 > Jeśli tworzysz nowe rozwiązanie, spróbuj [zestawów danych Learning maszyny Azure](how-to-explore-prepare-data.md) (wersja zapoznawcza) do eksploracji danych i przygotowania. Zestawy danych to następna wersja przygotowywanie danych zestawu SDK, oferując rozszerzona funkcjonalność zarządzania zestawów danych w przypadku rozwiązań sztucznej Inteligencji.
+> Jeśli używasz `azureml-dataprep` pakietu do utworzenia przepływu danych przy użyciu przekształceń zamiast `azureml-datasets` pakietu, aby utworzyć zestaw danych, nie będzie można później użyć migawki lub numerów wersji zestawów danych.
 
 W poniższej tabeli przedstawiono szereg funkcji, które służą do ładowania danych z popularnych typów plików.
 
@@ -315,5 +316,4 @@ dflow.to_pandas_dataframe().head()
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Zobacz zestaw SDK [Przegląd](https://aka.ms/data-prep-sdk) wzorców projektowych i przykłady użycia
 * Zobacz zestaw SDK Azure Machine Learning danych Prep [samouczek](tutorial-data-prep.md) przykładem rozwiązania konkretnego scenariusza

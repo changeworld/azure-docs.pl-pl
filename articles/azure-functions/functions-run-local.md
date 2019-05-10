@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: 14990cd4a066c126b5e4d498c5a109dac1b8820a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 55c5a61be8dadd538b73bd6378c030b98d837341
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65140938"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508224"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Praca z usługą Azure Functions podstawowych narzędzi
 
@@ -193,13 +193,7 @@ Local.settings.json pliku przechowuje ustawienia aplikacji, parametry połączen
 | **`CORS`** | Określa pochodzenia, które mogą uzyskać [współużytkowanie zasobów między źródłami (cors)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing). Źródła są dostarczane jako listę rozdzielaną przecinkami, bez spacji. Wartość symbolu wieloznacznego (\*) jest obsługiwany, co pozwala żądań z dowolnego źródła. |
 | **`ConnectionStrings`** | Nie używaj tej kolekcji parametry połączenia używane przez usługi powiązania funkcji. Ta kolekcja jest używana tylko przez struktur, które zazwyczaj pobierają parametry połączenia z `ConnectionStrings` pliku sekcji konfiguracji, takich jak [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx). Parametry połączenia, w tym obiekcie są dodawane do środowiska z typem dostawcy [System.Data.SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx). Elementy w tej kolekcji nie są publikowane na platformie Azure z innymi ustawieniami aplikacji. Należy jawnie dodać tych wartości, aby `Connection strings` zbiór ustawień aplikacji funkcji. Jeśli tworzysz [ `SqlConnection` ](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) w kodzie funkcji należy przechowywać wartość parametrów połączenia w **ustawienia aplikacji** w portalu przy użyciu innych połączeń. |
 
-Wartości ustawień aplikacji funkcji mogą być odczytywane w kodzie jako zmienne środowiskowe. Aby uzyskać więcej informacji zobacz sekcję zmiennych środowiska te tematy referencyjne języka:
-
-* [C# precompiled](functions-dotnet-class-library.md#environment-variables)
-* [Skryptu C# (csx)](functions-reference-csharp.md#environment-variables)
-* [F#Skrypt (.fsx)](functions-reference-fsharp.md#environment-variables)
-* [Java](functions-reference-java.md#environment-variables)
-* [JavaScript](functions-reference-node.md#environment-variables)
+[!INCLUDE [functions-environment-variables](../../includes/functions-environment-variables.md)]
 
 Jeśli ustawiono nie prawidłowych parametrów połączenia magazynu dla [ `AzureWebJobsStorage` ] i emulatora nie jest używana, jest wyświetlany następujący komunikat o błędzie:
 

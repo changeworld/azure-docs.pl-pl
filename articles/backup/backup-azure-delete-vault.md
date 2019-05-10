@@ -6,21 +6,21 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/28/2019
+ms.date: 05/07/2019
 ms.author: raynew
-ms.openlocfilehash: 23e98fd7ea3decc478fc359cec457c70b8fc99dc
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: e7cea725a25d48ac9f1ffad6acc434e21145890e
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652225"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65473244"
 ---
 # <a name="delete-a-recovery-services-vault"></a>Usuwanie magazynu usługi Recovery Services
 
 W tym artykule opisano sposób usuwania [kopia zapasowa Azure](backup-overview.md) magazyn usługi Recovery Services. Zawiera instrukcje dotyczące usuwania zależności, a następnie usuwanie magazynu i usuwanie magazynu przy wymuszonego.
 
 
-## <a name="before-you-start"></a>Przed rozpoczęciem
+## <a name="before-you-start"></a>Zanim rozpoczniesz
 
 Przed rozpoczęciem, ważne jest zrozumienie, że nie można usunąć magazynu usługi Recovery Services, w którym znajdują się serwery zarejestrowane w nim lub przechowuje dane kopii zapasowej.
 
@@ -45,49 +45,35 @@ Jeśli otrzymasz komunikat o błędzie, Usuń [kopii zapasowych elementów](#rem
 ![Usuń błąd magazynu](./media/backup-azure-delete-vault/error.png)
 
 
-## <a name="delete-the-recovery-services-vault-by-force"></a>Usuwanie magazynu usługi Recovery Services przy wymuszonego
-
-Możesz usunąć magazyn przy wymuszonego przy użyciu programu PowerShell. Wymuszenie usunięcia oznacza, że magazyn i wszystkie skojarzone dane kopii zapasowej zostaną trwale usunięte.
+## <a name="delete-the-recovery-services-vault-using-azure-resource-manager-client"></a>Usuwanie magazynu usługi Recovery Services za pomocą klienta usługi Azure Resource Manager
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
+1. Instalowanie narzędzia chocolatey z [tutaj](https://chocolatey.org/) i zainstalować ARMClient, uruchom poniższe polecenie:
 
-Aby usunąć magazyn przy wymuszonego:
+   ` choco install armclient --source=https://chocolatey.org/api/v2/ `
+2. Zaloguj się do konta platformy Azure, uruchamiania poniższego polecenia
 
-1. Zaloguj się do subskrypcji platformy Azure za pomocą `Connect-AzAccount` polecenia i postępuj zgodnie z wyświetlanymi na ekranie instrukcjami.
+    ` ARMClient.exe login [environment name] `
 
-   ```powershell
-    Connect-AzAccount
+3. W witrynie Azure portal Zbierz identyfikator i zasobów grupy nazwę subskrypcji dla magazynu, które chcesz usunąć.
+
+Aby uzyskać więcej informacji na temat polecenia ARMClient, użyj tego [dokumentu](https://github.com/projectkudu/ARMClient/blob/master/README.md).
+
+### <a name="use-azure-resource-manager-client-to-delete-recovery-services-vault"></a>Usuwanie magazynu usługi Recovery Services za pomocą klienta usługi Azure Resource Manager
+
+1. Uruchom następujące polecenie, korzystając z Identyfikatora subskrypcji, nazwę grupy zasobów i nazwę magazynu. W\hen Uruchom polecenie usuwa magazynu, jeśli nie masz żadnych zależności.
+
    ```
-2. Przy pierwszym użyciu usługi Azure Backup, należy zarejestrować dostawcę usługi Azure Recovery Service w subskrypcji przy użyciu [AzResourceProvider rejestru](/powershell/module/az.Resources/Register-azResourceProvider).
-
-   ```powershell
-    Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
-   ```
-
-3. Otwórz okno programu PowerShell z uprawnieniami administratora.
-4. Użyj `Set-ExecutionPolicy Unrestricted` do usunięcia wszelkich ograniczeń.
-5. Uruchom następujące polecenie, aby pobrać pakiet klienta usługi Resource Manager platformy Azure z chocolately.org.
-
-    `iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))`
-
-6. Użyj następującego polecenia, aby zainstalować klienta interfejsu API usługi Azure Resource Manager.
-
-   `choco.exe install armclient`
-
-7. W witrynie Azure portal Zbierz identyfikator i zasobów grupy nazwę subskrypcji dla magazynu, które chcesz usunąć.
-8. W programie PowerShell uruchom następujące polecenie, korzystając z Identyfikatora subskrypcji, nazwę grupy zasobów i nazwę magazynu. Po uruchomieniu polecenia, usunięcie magazynu i wszystkich zależności.
-
-   ```powershell
    ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>?api-version=2015-03-15
    ```
-9. Jeśli magazyn nie puste, zostanie wyświetlony błąd "Nie można usunąć magazynu, ponieważ istnieją zasoby w tym magazynie". Aby usunąć zawartych w magazynie, wykonaj następujące czynności:
+2. Jeśli magazyn nie puste, zostanie wyświetlony błąd "Nie można usunąć magazynu, ponieważ istnieją zasoby w tym magazynie". Aby usunąć elementy chronione / kontenera w magazynie, wykonaj następujące czynności:
 
-   ```powershell
+   ```
    ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>/registeredIdentities/<container name>?api-version=2016-06-01
    ```
 
-10. W witrynie Azure portal Sprawdź, czy magazyn zostanie usunięty.
+3. W witrynie Azure portal Sprawdź, czy magazyn zostanie usunięty.
 
 
 ## <a name="remove-vault-items-and-delete-the-vault"></a>Usuń elementy magazynu, a następnie usuń Magazyn
@@ -130,22 +116,10 @@ Niniejsza procedura zawiera przykład pokazujący, jak usunąć dane kopii zapas
 
     ![Wybierz swój magazyn, aby otworzyć jego pulpit nawigacyjny](./media/backup-azure-delete-vault/delete-backup-management-servers.png)
 
-2. Kliknij prawym przyciskiem myszy element > **Usuń**.
-
-    ![Wybierz typ kopii zapasowej](./media/backup-azure-delete-vault/azure-storage-selected-list.png)
-
-3. . W **Zatrzymaj tworzenie kopii zapasowej** > **wybierz jedną z opcji**, wybierz opcję **Usuń dane kopii zapasowej**.
-4. Wpisz nazwę elementu, a następnie kliknij przycisk **Zatrzymaj kopię zapasową**.
-   - Sprawdza, czy chcesz usunąć element.
-   - **Zatrzymaj tworzenie kopii zapasowej** przycisk aktywuje się po zweryfikowaniu.
-   - Jeśli zachowania i nie należy usuwać dane, nie można usunąć magazyn.
-
-     ![Usuń dane kopii zapasowej](./media/backup-azure-delete-vault/stop-backup-blade-delete-backup-data.png)
-
-5. Opcjonalnie Podaj powód, dlaczego one usuwania danych, a następnie dodaj komentarze.
-6. Aby sprawdzić, czy zadanie usuwania zakończone, sprawdź komunikaty platformy Azure ![Usuń dane kopii zapasowej](./media/backup-azure-delete-vault/messages.png).
-7. Po ukończeniu zadania, usługa wysyła komunikat: **procesu tworzenia kopii zapasowej została zatrzymana, a dane kopii zapasowej zostały usunięte**.
-8. Po usunięciu elementu na liście na **elementy kopii zapasowej** menu, kliknij przycisk **Odśwież** elementów w magazynie.
+3. Kliknij prawym przyciskiem myszy element > **Usuń**.
+4. Aby sprawdzić, czy zadanie usuwania zakończone, sprawdź komunikaty platformy Azure ![Usuń dane kopii zapasowej](./media/backup-azure-delete-vault/messages.png).
+5. Po ukończeniu zadania, usługa wysyła komunikat: **procesu tworzenia kopii zapasowej została zatrzymana, a dane kopii zapasowej zostały usunięte**.
+6. Po usunięciu elementu na liście na **infrastruktura zapasowa** menu, kliknij przycisk **Odśwież** elementów w magazynie.
 
 
 ### <a name="remove-azure-backup-agent-recovery-points"></a>Usuwanie punktów odzyskiwania agenta usługi Kopia zapasowa Azure
@@ -168,32 +142,23 @@ Niniejsza procedura zawiera przykład pokazujący, jak usunąć dane kopii zapas
     ![Usuń wybrany serwer](./media/backup-azure-delete-vault/selected-protected-server-click-delete.png)
 
 6. Na **Usuń** menu, wpisz nazwę elementu, a następnie kliknij przycisk **Usuń**.
-   - Sprawdza, czy chcesz usunąć element.
-   - **Zatrzymaj tworzenie kopii zapasowej** przycisk aktywuje się po zweryfikowaniu.
-   - Jeśli zachowania i nie należy usuwać dane, nie można usunąć magazyn.
 
      ![Usuń dane kopii zapasowej](./media/backup-azure-delete-vault/delete-protected-server-dialog.png)
 
 7. Opcjonalnie Podaj powód, dlaczego one usuwania danych, a następnie dodaj komentarze.
 8. Aby sprawdzić, czy zadanie usuwania zakończone, sprawdź komunikaty platformy Azure ![Usuń dane kopii zapasowej](./media/backup-azure-delete-vault/messages.png).
-7. Po ukończeniu zadania, usługa wysyła komunikat: **procesu tworzenia kopii zapasowej została zatrzymana, a dane kopii zapasowej zostały usunięte**.
-8. Po usunięciu elementu na liście na **elementy kopii zapasowej** menu, kliknij przycisk **Odśwież** elementów w magazynie.
-
-
-
-
-
+9. Po usunięciu elementu na liście na **infrastruktura zapasowa** menu, kliknij przycisk **Odśwież** elementów w magazynie.
 
 ### <a name="delete-the-vault-after-removing-dependencies"></a>Usuń magazyn po usunięciu zależności
 
 1. Po usunięciu wszystkich zależności, przewiń do **Essentials** okienko w menu magazynu.
 2. Sprawdź, czy nie ma **kopii zapasowych elementów**, **kopii zapasowych serwerów zarządzania**, lub **zreplikowane elementy** na liście. Jeśli elementy nadal pojawia się w magazynie, można je usunąć.
 
-2. W przypadku Brak elementów w magazynie, na pulpicie nawigacyjnym magazynu kliknij **Usuń**.
+3. W przypadku Brak elementów w magazynie, na pulpicie nawigacyjnym magazynu kliknij **Usuń**.
 
     ![Usuń dane kopii zapasowej](./media/backup-azure-delete-vault/vault-ready-to-delete.png)
 
-1. Aby sprawdzić, czy chcesz usunąć magazynu, kliknij przycisk **tak**. Magazyn zostanie usunięty, a portal powróci do **New** menu usługi.
+4. Aby sprawdzić, czy chcesz usunąć magazynu, kliknij przycisk **tak**. Magazyn zostanie usunięty, a portal powróci do **New** menu usługi.
 
 ## <a name="what-if-i-stop-the-backup-process-but-retain-the-data"></a>Co zrobić, jeśli Zatrzymaj proces tworzenia kopii zapasowej, ale pozostawisz dane?
 

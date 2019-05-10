@@ -61,7 +61,7 @@
             - name: Node.js na urządzeniu Raspberry Pi
               href: iot-accelerators-connecting-pi-node.md
             - name: MXChip IoT DevKit
-              href: iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2.md
+              href: iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoring-v2.md
         - name: Symulowanie urządzenia
           items:
             - name: Tworzenie symulowanego urządzenia

@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 4/15/2019
+ms.date: 5/8/2019
 ms.author: barclayn
-ms.openlocfilehash: d432dc25a1995a2f0348c7626a051f46ffbf418b
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: b73b6bdc0158591565281ca2e86a9a474c4196d9
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62118982"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65467737"
 ---
 # <a name="frequently-asked-questions-faq"></a>Często zadawane pytania
 
@@ -69,13 +69,13 @@ Począwszy od późno marca 2019 r dedykowany przez moduł HSM jest dostępna w 
 * Wschodnie stany USA
 * Wschodnie stany USA 2
 * Zachodnie stany USA
-* Środkowo-południowe stany USA
+* Południowo-środkowe stany USA
 * Azja Południowo-Wschodnia
 * Azja Wschodnia
 * Europa Północna
 * Europa Zachodnia
-* Południowe Zjednoczone Królestwo
-* Zachodnie Zjednoczone Królestwo
+* Zjednoczone Królestwo (południe)
+* Zjednoczone Królestwo (zachód)
 * Kanada Środkowa
 * Kanada Wschodnia
 * Australia Wschodnia
@@ -183,7 +183,7 @@ Klient ma pełny dostęp do dzienników aktywności przez moduł HSM za pośredn
 
 Tak. Możesz wysłać dzienniki z urządzenia przez moduł HSM do serwera syslog
 
-## <a name="high-availability"></a>Wysoka dostępność
+## <a name="high-availability"></a>Duża dostępność
 
 ### <a name="q-is-it-possible-to-configure-high-availability-in-the-same-region-or-across-multiple-regions"></a>Pyt.: Czy jest możliwe skonfigurować wysoką dostępność, w tym samym regionie lub w wielu regionach?
 
@@ -233,7 +233,7 @@ Microsoft nie ma możliwości podłączenia do sprzętowych modułów zabezpiecz
 
 ### <a name="q-what-if-i-need-to-reboot-my-hsm"></a>Pyt.: Co zrobić, jeśli trzeba ponowne uruchomienie mojej przez moduł HSM?
 
- Moduł HSM ma opcję ponownego uruchamiania wiersza polecenia, a następnie należy zauważyć, że opcji "ponowny rozruch sprzętowy" należy używać. Jeśli to nie powiedzie się z jakiegokolwiek powodu, Prześlij żądanie pomocy technicznej firmy Microsoft i mamy urządzenia fizycznego ponowny rozruch. 
+Moduł HSM ma opcję ponownego uruchamiania wiersza polecenia, jednak firma Microsoft sporadycznie występują problemy zawieszanie się ponowne uruchomienie komputera i z tego powodu zaleca najbezpieczniejsze ponowny rozruch podniesieniu żądanie obsługi z firmą Microsoft, aby urządzenie fizyczne ponowny rozruch. 
 
 ## <a name="cryptography-and-standards"></a>Standardy i kryptografii
 

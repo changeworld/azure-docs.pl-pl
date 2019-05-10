@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 49d06c05af085624a0d495a65e139d3857a13fc4
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a063461d9da66d57a7bdc3311ae80dec7f2c98f1
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64712624"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65470241"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Przygotowywanie środowiska projektowego w systemie Linux
 > [!div class="op_single_selector"]
@@ -179,8 +179,8 @@ sudo yum install servicefabricsdkcommon
 
  | | DotNetCore | Java | Python | NodeJS | 
 --- | --- | --- | --- |---
-Ubuntu | 2.0.0 | AzulJDK 1.8 | Niejawne z rozwiązania npm | najnowsza |
-RHEL | - | OpenJDK 1.8 | Niejawne z rozwiązania npm | najnowsza |
+Ubuntu | 2.0.0 | AzulJDK 1.8 | Niejawne z rozwiązania npm | najnowsze |
+RHEL | - | OpenJDK 1.8 | Niejawne z rozwiązania npm | najnowsze |
 
 ## <a name="set-up-a-local-cluster"></a>Tworzenie klastra lokalnego
 Uruchom klaster lokalny po zakończeniu instalacji.
@@ -334,7 +334,6 @@ Aby usunąć zestawy Service Fabric SDK, uruchom poniższe polecenia.
 * [Przygotowywanie środowiska projektowego systemu Linux w systemie Windows](service-fabric-local-linux-cluster-windows.md)
 * [Manage your applications by using the Service Fabric CLI (Zarządzanie aplikacjami przy użyciu interfejsu wiersza polecenia usługi Service Fabric)](service-fabric-application-lifecycle-sfctl.md)
 * [Service Fabric Windows and Linux differences (Różnice w usłudze Service Fabric w systemie Windows i Linux)](service-fabric-linux-windows-differences.md)
-* [Automate operating system patching on your Linux cluster (Automatyzowanie stosowania poprawek do systemu operacyjnego w klastrze z systemem Linux)](service-fabric-patch-orchestration-application-linux.md)
 * [Get started with Service Fabric CLI](service-fabric-cli.md) (Wprowadzenie do interfejsu wiersza polecenia usługi Service Fabric)
 
 <!-- Links -->

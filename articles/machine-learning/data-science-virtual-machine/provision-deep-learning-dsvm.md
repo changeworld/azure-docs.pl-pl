@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 1fc4a4024893c29c35b4369d13227830cfbbca84
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 318df03c7c4447d051dfa396098462c0f8bbf423
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64943921"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65410434"
 ---
 # <a name="provision-a-deep-learning-virtual-machine-on-azure"></a>Aprowizowanie maszyny wirtualnej na platformie Azure do uczenia głębokiego 
 
@@ -68,7 +68,7 @@ Po utworzeniu maszyny Wirtualnej możesz pulpitu zdalnego do niej przy użyciu p
 
 ### <a name="linux-edition"></a>Wersja systemu Linux
 
-Po utworzeniu maszyny Wirtualnej możesz można Zaloguj się do niej przy użyciu protokołu SSH. Użyj poświadczeń konta, które zostały utworzone w [ **podstawy** ](#basics) sekcji Krok 3 dla interfejsu powłoki tekstu. Aby uzyskać więcej informacji na temat połączeń SSH do maszyn wirtualnych platformy Azure, zobacz [Instalowanie i konfigurowanie pulpitu zdalnego, aby nawiązać połączenie z maszyny Wirtualnej z systemem Linux na platformie Azure](/azure/virtual-machines/linux/use-remote-desktop). Na komputerze klienckim Windows można pobrać narzędzia klienta SSH, takiego jak [Putty](http://www.putty.org). Jeśli wolisz graficzny desktop (X w systemie Windows), możesz użyć X11 przekazywania w programie Putty lub zainstalować klienta X2Go. 
+Po utworzeniu maszyny Wirtualnej możesz można Zaloguj się do niej przy użyciu protokołu SSH. Użyj poświadczeń konta, które zostały utworzone w [ **podstawy** ](#basics) sekcji Krok 3 dla interfejsu powłoki tekstu. Aby uzyskać więcej informacji na temat połączeń SSH do maszyn wirtualnych platformy Azure, zobacz [Instalowanie i konfigurowanie pulpitu zdalnego, aby nawiązać połączenie z maszyny Wirtualnej z systemem Linux na platformie Azure](/azure/virtual-machines/linux/use-remote-desktop). Na komputerze klienckim Windows można pobrać narzędzia klienta SSH, takiego jak [Putty](https://www.putty.org). Jeśli wolisz graficzny desktop (X w systemie Windows), możesz użyć X11 przekazywania w programie Putty lub zainstalować klienta X2Go. 
 
 > [!NOTE]
 > Klient X2Go spisywała się lepiej niż X11 przekazywania podczas testów. Zaleca się przy użyciu klienta X2Go dla interfejsu graficznego pulpitu.

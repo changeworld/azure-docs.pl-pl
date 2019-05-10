@@ -11,13 +11,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: 8cb044397cf439e97f3630b5c1c3f53fbf3f356d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/08/2019
+ms.openlocfilehash: 783a8f0bc25717f1c2bf78a9c0d40b209a07939b
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61468401"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65473340"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-access-control"></a>Kontrola dostępu do usługi Azure SQL Database i SQL Data Warehouse
 
@@ -43,7 +43,7 @@ Usługa SQL Database obsługuje dwa typy uwierzytelniania:
   Ta metoda uwierzytelniania używa nazwy użytkownika i hasła. Po utworzeniu serwera bazy danych SQL dla bazy danych określono identyfikator logowania "server admin" przy użyciu nazwy użytkownika i hasła. Przy użyciu tych poświadczeń można wybrać metodę uwierzytelniania w każdej innej bazie danych na tym serwerze jako jej właściciel, czyli „dbo”. 
 - **Usługa Azure Active Directory Authentication**:
 
-  Ta metoda uwierzytelniania korzysta z tożsamości zarządzanej przez usługę Azure Active Directory i jest obsługiwany w przypadku zarządzanych i zintegrowanych domen. Używaj uwierzytelniania usługi Active Directory (zabezpieczeń zintegrowanych), [gdy tylko jest to możliwe](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode). Aby skorzystać z uwierzytelniania przy użyciu usługi Azure Active Directory, należy utworzyć innego administratora serwera o nazwie „Azure AD admin”, co umożliwi administrowanie użytkownikami i grupami usługi Azure AD. Ten administrator może również wykonywać wszystkie operacje, które może wykonać zwykły administrator serwera. Zobacz artykuł [Connecting to SQL Database By Using Azure Active Directory Authentication](sql-database-aad-authentication.md) (Łączenie z usługą SQL Database przy użyciu uwierzytelniania usługi Azure Active Directory), aby poznać krok po kroku sposób tworzenia administratora usługi Azure AD w celu włączenia uwierzytelniania usługi Azure Active Directory.
+  Ta metoda uwierzytelniania korzysta z tożsamości zarządzanej przez usługę Azure Active Directory i jest obsługiwany w przypadku zarządzanych i zintegrowanych domen. Aby skorzystać z uwierzytelniania przy użyciu usługi Azure Active Directory, należy utworzyć innego administratora serwera o nazwie „Azure AD admin”, co umożliwi administrowanie użytkownikami i grupami usługi Azure AD. Ten administrator może również wykonywać wszystkie operacje, które może wykonać zwykły administrator serwera. Zobacz artykuł [Connecting to SQL Database By Using Azure Active Directory Authentication](sql-database-aad-authentication.md) (Łączenie z usługą SQL Database przy użyciu uwierzytelniania usługi Azure Active Directory), aby poznać krok po kroku sposób tworzenia administratora usługi Azure AD w celu włączenia uwierzytelniania usługi Azure Active Directory.
 
 Aparat bazy danych zamyka połączenia, które pozostawały bezczynne dłużej niż przez 30 minut. Połączenie musi wykonać ponowne logowanie, zanim będzie można z niego skorzystać. Stale aktywne połączenia z usługą SQL Database wymagają ponownej autoryzacji (wykonywanej przez aparat bazy danych) co najmniej raz na 10 godzin. Aparat bazy danych próbuje ponownej autoryzacji przy użyciu podanego pierwotnie hasła, dzięki czemu nie jest wymagane wprowadzanie danych przez użytkownika. Ze względu na wydajność po zresetowaniu hasła w usłudze SQL Database, połączenie jest nie ponownie uwierzytelniane — nawet w przypadku zresetowania połączenia z powodu buforowania połączeń. Jest to zachowania inne niż w przypadku lokalnej usługi SQL Server. Jeśli po początkowej autoryzacji połączenia zmieniono hasło, należy zakończyć to połączenie i utworzyć nowe przy użyciu nowego hasła. Użytkownik z uprawnieniem `KILL DATABASE CONNECTION` może w sposób jawny zakończyć połączenie z usługą SQL Database za pomocą polecenia [KILL](https://docs.microsoft.com/sql/t-sql/language-elements/kill-transact-sql).
 

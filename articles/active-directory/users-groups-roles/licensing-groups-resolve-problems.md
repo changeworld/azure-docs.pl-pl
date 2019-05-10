@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c92969015910cc5bd72e2d9339d5c15c1f7af48b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3dbfbd76d235cedd297a5ad54b51bc4ebb550bb1
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60470281"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466283"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Identyfikowanie i rozwiązywanie problemów z przypisania licencji dla grupy w usłudze Azure Active Directory
 
@@ -107,9 +107,15 @@ Jeśli używasz usługi Exchange Online, niektórzy użytkownicy w Twojej dzier�
 > ```
 > Run Get-Recipient | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
 > ```
-> Aby uzyskać więcej informacji na temat tego problemu, zobacz [w usłudze Exchange Online komunikat o błędzie "adres serwera Proxy jest już używana"](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online). Artykuł zawiera również informacje na [sposób nawiązywania połączeń do usługi Exchange Online przy użyciu zdalnego programu PowerShell](https://technet.microsoft.com/library/jj984289.aspx). W tym artykule, aby uzyskać więcej informacji zobacz [na jak atrybut proxyAddresses jest wypełniany w usłudze Azure AD](https://support.microsoft.com/help/3190357/how-the-proxyaddresses-attribute-is-populated-in-azure-ad).
+> Aby uzyskać więcej informacji na temat tego problemu, zobacz [w usłudze Exchange Online komunikat o błędzie "adres serwera Proxy jest już używana"](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online). Artykuł zawiera również informacje na [sposób nawiązywania połączeń do usługi Exchange Online przy użyciu zdalnego programu PowerShell](https://technet.microsoft.com/library/jj984289.aspx).
 
 Po rozwiązaniu problemów adres serwera proxy dla użytkowników, których dotyczy problem, upewnij się wymusić przetwarzania licencji w grupie, aby upewnić się, że można teraz stosować licencji.
+
+## <a name="azure-ad-mail-and-proxyaddresses-attribute-change"></a>Zmiana atrybutu ProxyAddresses i wiadomości E-mail z usługi AD Azure
+
+**Problem:** Podczas aktualizowania przypisań licencji na użytkownika lub grupy, możesz zobaczyć, że atrybut poczty E-mail programu Azure AD i ProxyAddresses niektórzy użytkownicy są zmieniane.
+
+Aktualizacja przypisanie licencji na użytkownika powoduje, że obliczania wyzwolenie adres serwera proxy, który zmienia atrybuty użytkownika. Aby zrozumieć uchwycenie zmiany i rozwiązania problemu, znajduje się w artykule na [jak atrybut proxyAddresses jest wypełniany w usłudze Azure AD](https://support.microsoft.com/help/3190357/how-the-proxyaddresses-attribute-is-populated-in-azure-ad).
 
 ## <a name="what-happens-when-theres-more-than-one-product-license-on-a-group"></a>Co się stanie, jeśli istnieje więcej niż jedna licencja na produkt w grupie?
 

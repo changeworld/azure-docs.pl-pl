@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 968bb5317e06b5cf9ac1f939eaf56288122a1ae0
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 00d40b9910f9b549443373c84b079c543037ce62
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64724404"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236321"
 ---
 # <a name="manage-your-application-preferences"></a>Zarządzać swoimi preferencjami dotyczącymi aplikacji
 
@@ -23,13 +23,16 @@ IoT Central zapewnia elastyczność dostosowywanie aplikacji do swoich potrzeb. 
 
 ## <a name="changing-language"></a>Zmiana języka
 
-IoT Central jest obsługiwana w wielu językach. Można przełączyć preferowanego języka, używając **selektor języka** ikonę ustawień na górnym pasku nawigacyjnym. Po zmianie języka, IoT Central pamięta wybór i stosuje go we wszystkich aplikacjach. Należy pamiętać, że dostosowywania aplikacji, które nie są zlokalizowane takich obrazów pulpitu nawigacyjnego.
+IoT Central jest obsługiwana w wielu językach. Można przełączyć preferowanego języka, używając **selektor języka** ikonę ustawień na górnym pasku nawigacyjnym. Po zmianie języka, IoT Central pamięta wybór i stosuje go we wszystkich aplikacjach. Możliwość dostosowania w aplikacji, które nie są zlokalizowane takich obrazów pulpitu nawigacyjnego.
 
 ## <a name="changing-theme"></a>Trwa zmienianie motywu
 
-Oferujemy obsługę motyw jasny i ciemny motyw. Motyw jasny jest wartość domyślna, możesz to zmienić, wybierając ikonę ustawienia, na górnym pasku nawigacyjnym.
+Oferujemy obsługę motyw jasny i ciemny motyw. Motyw jasny jest wartość domyślna, motyw można zmienić, wybierając ikonę ustawienia, na górnym pasku nawigacyjnym.
 
 ![Selektor motywu IoT Central](media/howto-manage-preferences/settings.png)
+
+> [!NOTE]
+> Możliwość wyboru między motywy jasny i ciemny jest niedostępna, jeśli administrator skonfigurował motywu niestandardowego dla aplikacji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

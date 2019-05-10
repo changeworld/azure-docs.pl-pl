@@ -67,27 +67,29 @@
                 - name: Szyfrowanie dysków za pomocą sekwencjonowania rozszerzeń usługi VMSS
                   href: azure-security-disk-encryption-extension-sequencing.md
                 - name: Dodatek dotyczący szyfrowania dysków
-              href: azure-security-disk-encryption-appendix.md
-            - name: Często zadawane pytania o szyfrowanie dysków
-              href: azure-security-disk-encryption-faq.md
-            - name: Rozwiązywanie problemów
-              href: azure-security-disk-encryption-tsg.md
-            - name: Usługa Azure Disk Encryption z aplikacją usługi Azure AD (wcześniejsza wersja)
-              displayName: active directory
-              items:
-                - name: Szyfrowanie dysków za pomocą aplikacji usługi Azure AD — wymagania wstępne
+                  href: azure-security-disk-encryption-appendix.md
+                - name: Często zadawane pytania o szyfrowanie dysków
+                  href: azure-security-disk-encryption-faq.md
+                - name: Rozwiązywanie problemów
+                  href: azure-security-disk-encryption-tsg.md
+                - name: Usługa Azure Disk Encryption z aplikacją usługi Azure AD (wcześniejsza wersja)
                   displayName: active directory
-                  href: azure-security-disk-encryption-prerequisites-aad.md
-                - name: Szyfrowanie dysków za pomocą aplikacji usługi Azure AD dla maszyn wirtualnych z systemem Windows
-                  displayName: active directory
-                  href: azure-security-disk-encryption-windows-aad.md
-                - name: Szyfrowanie dysków za pomocą aplikacji usługi Azure AD dla maszyn wirtualnych z systemem Linux
-                  displayName: active directory
-                  href: azure-security-disk-encryption-linux-aad.md
+                  items:
+                    - name: Szyfrowanie dysków za pomocą aplikacji usługi Azure AD — wymagania wstępne
+                      displayName: active directory
+                      href: azure-security-disk-encryption-prerequisites-aad.md
+                    - name: Szyfrowanie dysków za pomocą aplikacji usługi Azure AD dla maszyn wirtualnych z systemem Windows
+                      displayName: active directory
+                      href: azure-security-disk-encryption-windows-aad.md
+                    - name: Szyfrowanie dysków za pomocą aplikacji usługi Azure AD dla maszyn wirtualnych z systemem Linux
+                      displayName: active directory
+                      href: azure-security-disk-encryption-linux-aad.md
     - name: Zabezpieczenia usługi Azure Storage
       href: security-storage-overview.md
     - name: Przewodnik po zabezpieczeniach magazynu
       href: ../storage/common/storage-security-guide.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - name: Skrytka klienta
+      href: azure-customer-lockbox-overview.md
 - name: Platforma i infrastruktura
   items:
     - name: Zabezpieczenia infrastruktury

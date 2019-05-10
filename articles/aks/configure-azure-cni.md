@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/11/2018
 ms.author: iainfou
-ms.openlocfilehash: 39e0547421c446c1ee48b93b30487ccb9358de02
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 61968265670c53ebc4187c983996caa8c94a4cde
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192073"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508004"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Konfigurowanie wtyczki Azure CNI sieci w usłudze Azure Kubernetes Service (AKS)
 
@@ -68,7 +68,16 @@ Maksymalna liczba zasobników w każdym węźle w klastrze AKS wynosi 110. *Domy
 
 ### <a name="configure-maximum---new-clusters"></a>Konfigurowanie maksimum – nowych klastrów
 
-Możesz skonfigurować maksymalną liczbę zasobników w każdym węźle *tylko w czasie wdrażania klastra*. W przypadku wdrożenia przy użyciu wiersza polecenia platformy Azure lub przy użyciu szablonu usługi Resource Manager, można ustawić maksymalny zasobników na możliwie jak 250 wartość węzła.
+Możesz skonfigurować maksymalną liczbę zasobników w każdym węźle *tylko w czasie wdrażania klastra*. W przypadku wdrożenia przy użyciu wiersza polecenia platformy Azure lub przy użyciu szablonu usługi Resource Manager, można ustawić maksymalny zasobników na wartość węzła, zgodnie z potrzebami w ramach następujących `maxPods` wytycznych:
+
+| Networking | Minimum | Maksimum |
+| -- | :--: | :--: |
+| Azure CNI | 30 | 250 |
+| Kubenet | 30 | 110 |
+
+> [!NOTE]
+> Minimalna wartość w powyższej tabeli ściśle jest wymuszana przez usługę AKS.
+Nie można ustawić wartość maxPods niższa niż minimalna pokazano, jak wykonanie tej tak może uniemożliwić klastra uruchomienie.
 
 * **Interfejs wiersza polecenia platformy Azure**: Określ `--max-pods` argumentu, w przypadku wdrażania klastra za pomocą [tworzenie az aks] [ az-aks-create] polecenia. Wartość maksymalna to 250.
 * **Szablon usługi Resource Manager**: Określ `maxPods` właściwość [ManagedClusterAgentPoolProfile] obiektu w przypadku wdrażania klastra za pomocą szablonu usługi Resource Manager. Wartość maksymalna to 250.

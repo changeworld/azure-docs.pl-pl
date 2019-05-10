@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 01/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: eaaaa5c2fe87b419bf38d6e6522ef745476ac1ad
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 226986fb7c41c19b58f0163414628ad08ddeda15
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204957"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409967"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Wysoka dostępność dla oprogramowania SAP NetWeaver na maszynach wirtualnych platformy Azure
 
@@ -470,7 +470,7 @@ Artykuły te obejmują wdrożenia SAP na platformie Azure:
 
 Te informacje SAP są związane z tym tematem SAP na platformie Azure:
 
-| Numer | Tytuł |
+| Numer | Stanowisko |
 | --- | --- |
 | [1928533] |Aplikacje środowiska SAP na platformie Azure: Obsługiwane produkty i zmianę rozmiaru |
 | [2015553] |SAP na platformie Microsoft Azure: Wymagania wstępne dotyczące obsługi |
@@ -923,7 +923,7 @@ W tym przykładzie mamy tych maszyn wirtualnych i statyczne adresy IP:
 | --- | --- | --- | --- |
 | Pierwsze wystąpienie serwera aplikacji SAP |PR1-di-0 |PR1-karta sieciowa di-0 |10.0.0.50 |
 | Drugie wystąpienie serwera aplikacji SAP |pr1-di-1 |PR1-karta sieciowa di-1 |10.0.0.51 |
-| Przyciski ... |Przyciski ... |Przyciski ... |Przyciski ... |
+| ... |... |... |... |
 | Ostatnie wystąpienie serwera aplikacji SAP |PR1-di-5 |PR1-karta sieciowa di-5 |10.0.0.55 |
 | Pierwszym węźle klastra na potrzeby wystąpienia ASCS/SCS |pr1-ascs-0 |pr1-nic-ascs-0 |10.0.0.40 |
 | Drugim węźle klastra na potrzeby wystąpienia ASCS/SCS |pr1-ascs-1 |pr1-nic-ascs-1 |10.0.0.41 |
@@ -1229,9 +1229,10 @@ Konfigurowanie monitora udostępniania plików klastra obejmuje następujące za
 
    _**Ilustracja 38** Potwierdzenie, że został ponownie skonfigurowany klaster_
 
-Po zainstalowaniu klastra pracy awaryjnej Windows pomyślnie, zmiany trzeba dokonać niektóre wartości progowe w celu dostosowania trybu failover wykrywania warunków na platformie Azure. Parametry, które mają być zmienione są opisane w tym blogu: https://blogs.msdn.microsoft.com/clustering/2012/11/21/tuning-failover-cluster-network-thresholds/ . Przy założeniu, że usługi dwie maszyny wirtualne, które są kompilowane w konfiguracji klastra Windows for ASCS/SCS znajdują się w tej samej podsieci, należy można zmienić tych wartości następujących parametrów:
-- SameSubNetDelay = 2
-- SameSubNetThreshold = 15
+Po zainstalowaniu klastra pracy awaryjnej Windows pomyślnie, zmiany trzeba dokonać niektóre wartości progowe w celu dostosowania trybu failover wykrywania warunków na platformie Azure. Parametry, które mają być zmienione są opisane w tym blogu: [ https://techcommunity.microsoft.com/t5/Failover-Clustering/Tuning-Failover-Cluster-Network-Thresholds/ba-p/371834 ](https://techcommunity.microsoft.com/t5/Failover-Clustering/Tuning-Failover-Cluster-Network-Thresholds/ba-p/371834). Przy założeniu, że usługi dwie maszyny wirtualne, które są kompilowane w konfiguracji klastra Windows for ASCS/SCS znajdują się w tej samej podsieci, należy można zmienić tych wartości następujących parametrów:  
+- SameSubNetDelay = 2000  
+- SameSubNetThreshold = 15  
+- RoutingHistoryLength = 30  
 
 Te ustawienia zostały przetestowane z klientami i podano dobre naruszenia zabezpieczeń, aby była odporna na jednej stronie. Z drugiej strony te ustawienia zostały materiały szybkiego wystarczająco dużo pracy awaryjnej w warunkach rzeczywistych błędu w przypadku awarii oprogramowania lub węzeł/maszyna wirtualna SAP. 
 

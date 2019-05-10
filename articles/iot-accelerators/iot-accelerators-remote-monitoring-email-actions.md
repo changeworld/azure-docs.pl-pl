@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/12/2018
 ms.topic: conceptual
-ms.openlocfilehash: 693da06ce14a4854d5db49f588fa29d791060166
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fbb5f92258ff31dd7077bb1ade7fa7e5644c8bac
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61445669"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466955"
 ---
 # <a name="add-an-email-action"></a>Dodawanie akcji poczty e-mail
 
@@ -102,11 +102,11 @@ Poniższe kroki pokazują sposób konfigurowania i weryfikowania ręcznie akcji 
 
 1. Kliknij przycisk **łącznik usługi Office 365**:
 
-    ![Połączenie interfejsu API](./media/iot-accelerators-remote-monitoring-email-actions/apiconnector.png)
+    ![Połączenie interfejsu API](./media/iot-accelerators-remote-monitoring-email-actions/apiconnector1.png)
 
 1. Kliknij transparent, aby rozpocząć proces autoryzacji:
 
-    ![Autoryzuj](./media/iot-accelerators-remote-monitoring-email-actions/connector.png)
+    ![Autoryzuj](./media/iot-accelerators-remote-monitoring-email-actions/connector1.png)
 
 1. Kliknij przycisk **autoryzować**. Zostanie wyświetlony monit Zaloguj się. Konto, którego używasz do logowania powinien być adres e-mail aplikacja używa do wysyłania powiadomień e-mail:
 
@@ -116,7 +116,7 @@ Poniższe kroki pokazują sposób konfigurowania i weryfikowania ręcznie akcji 
 
 1. Aby zmienić adres e-mail, z którego wysyłane są powiadomienia z, kliknij przycisk **połączenia Edytuj interfejsu API**.
 
-    ![Zmień adres e-mail](./media/iot-accelerators-remote-monitoring-email-actions/editemail.png)
+    ![Zmień adres e-mail](./media/iot-accelerators-remote-monitoring-email-actions/editemail1.png)
 
 ### <a name="owner-role-outlook-setup"></a>Instalator programu Outlook roli właściciela
 
@@ -142,7 +142,7 @@ Poniższe kroki ułatwiają Zaloguj się i Ustawianie akcji poczty e-mail:
 
 Out-of--box, zdalne monitorowanie akcelerator rozwiązań udostępnia podstawowy szablon HTML dla akcji w wiadomości e-mail. Szablon wiadomości e-mail są używane wartości z ustawień akcji poczty e-mail. Poniżej przedstawiono przykładową wiadomość e-mail:
 
-![przykład wiadomości e-mail](./media/iot-accelerators-remote-monitoring-email-actions/emailtemplate.png)
+![przykład wiadomości e-mail](./media/iot-accelerators-remote-monitoring-email-actions/emailtemplate1.png)
 
 Poniższe kroki pokazują, jak edytować szablon wiadomości e-mail w formacie HTML. Na przykład można dołączyć więcej informacji, lub dodać niestandardowych obrazów:
 

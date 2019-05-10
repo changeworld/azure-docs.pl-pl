@@ -643,8 +643,6 @@
                   href: service-fabric-cluster-config-upgrade-azure.md
                 - name: Stosowanie poprawek do węzłów klastra (Windows)
                   href: service-fabric-patch-orchestration-application.md
-                - name: Stosowanie poprawek do węzłów klastra (Linux)
-                  href: service-fabric-patch-orchestration-application-linux.md
                 - name: Włączanie szyfrowania dysku (Windows)
                   href: service-fabric-enable-azure-disk-encryption-windows.md
                 - name: Włączanie szyfrowania dysku (Linux)

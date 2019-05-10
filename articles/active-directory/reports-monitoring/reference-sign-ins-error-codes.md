@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/25/2019
+ms.date: 05/08/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fdf28418e7e1335dcb1f664964fa6ef03174aa1f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 0986610007f5c470589eb94d6761b8d31dd79e72
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64709196"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65463490"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Kody błędów raport aktywności logowania 
 
@@ -177,6 +177,7 @@ Można także programowo uzyskiwać dostęp za pomocą danych logowania [interfe
 |90051| Delegowanie nieprawidłowy Token. Określono nieprawidłowy identyfikator chmury krajowe ({cloudId}).|
 |90072| Konto musi najpierw należy dodać jako użytkownik zewnętrzny w dzierżawie. Wylogować i zalogować ponownie, używając innej usługi Azure AD konta.|
 |90094| Przydziel musi mieć uprawnienia administratora. Skontaktuj się z administratorem dzierżawy, zapewnienie wyrażania zgody dla tej aplikacji.|
+|500021|Dzierżawa jest ograniczony przez serwer proxy przedsiębiorstwa. Odmawianie dostępu do zasobów.|
 |500121| Uwierzytelnianie nie powiodło się podczas wykonywania żądania silnego uwierzytelniania.|
 |500133| Potwierdzenie nie jest w zasięgu prawidłową godzinę. Upewnij się, nie wygasł token dostępu przed jego użyciem na potwierdzenie użytkownika lub uzyskać nowy token.|
 |530021|Aplikacja nie spełnia wymagań dotyczących dostępu warunkowego zatwierdzonych aplikacji.|

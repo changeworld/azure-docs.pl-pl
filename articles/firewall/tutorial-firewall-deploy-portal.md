@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 4/9/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: cd7797ae3b79fb874bafc89437943b084020d800
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9d7b9673101ed3b6ff85a9981ba061bc870762b1
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60194230"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65405681"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Samouczek: Wdrażanie i konfigurowanie usługi Azure Firewall przy użyciu witryny Azure Portal
 
@@ -106,7 +106,7 @@ Teraz utwórz maszyny wirtualne przesiadkową i obciążeń, a następnie umieś
    |---------|---------|
    |Grupa zasobów     |**Test PD RG**|
    |Nazwa maszyny wirtualnej     |**Szybkie SRV**|
-   |Region     |Takie same jak poprzednie|
+   |Obszar     |Takie same jak poprzednie|
    |Nazwa użytkownika administratora     |**azureuser**|
    |Hasło     |**Azure123456!**|
 
@@ -144,7 +144,7 @@ Wdróż zaporę w sieci wirtualnej.
    |Grupa zasobów     |**Test PD RG** |
    |Name (Nazwa)     |**Test-FW01**|
    |Lokalizacja     |Wybierz tę samą lokalizację, której użyto poprzednio|
-   |Wybieranie sieci wirtualnej     |**Użyj istniejącej**: **Test-FW-VN**|
+   |Wybierz sieć wirtualną     |**Użyj istniejącej**: **Test-FW-VN**|
    |Publiczny adres IP     |**Utwórz nową**. Publiczny adres IP musi mieć typ Standardowa jednostka SKU.|
 
 5. Wybierz pozycję **Przegląd + utwórz**.
@@ -236,12 +236,12 @@ Teraz należy sprawdzić, zapory, aby upewnić się, że działa zgodnie z oczek
 1. W witrynie Azure Portal sprawdź ustawienia sieci dla maszyny wirtualnej **Srv-Work** i zanotuj prywatny adres IP.
 2. Pulpit zdalny, aby połączyć **szybkie Srv** maszynę wirtualną i zaloguj się. Z tego miejsca Otwórz Podłączanie pulpitu zdalnego z **pracy Srv** prywatny adres IP.
 
-3. Otwórz program Internet Explorer i przejdź do http://www.google.com.
+3. Otwórz program Internet Explorer i przejdź do https://www.google.com.
 4. Wybierz **OK** > **Zamknij** na alerty zabezpieczeń programu Internet Explorer.
 
    Powinna zostać wyświetlona strona główna firmy Google.
 
-5. Przejdź do http://www.microsoft.com.
+5. Przejdź do https://www.microsoft.com.
 
    Dostęp powinien zostać zablokowany przez zaporę.
 

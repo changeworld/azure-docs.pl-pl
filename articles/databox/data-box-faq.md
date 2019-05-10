@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 01/25/2019
+ms.date: 05/08/2019
 ms.author: alkohli
-ms.openlocfilehash: c9cef479c1d4af55ae58c61a07ff1d5348ed7183
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 3fca94a56f80ec520ac6777610a90bdddf1b8988
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64868257"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65473262"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Często zadawane pytania
 
@@ -24,8 +24,8 @@ Pytania i odpowiedzi są podzielone na następujące kategorie:
 - Informacje o usłudze
 - Zamawianie urządzenia
 - Konfigurowanie i łączenie 
-- Śledzenie stanu
-- Kopiowanie danych 
+- Śledź stan
+- Kopiuj dane 
 - Dostawa urządzenia
 - Weryfikowanie i przekazywanie danych 
 - Pomoc techniczna dotycząca łańcucha nadzoru
@@ -36,12 +36,12 @@ Pytania i odpowiedzi są podzielone na następujące kategorie:
 A.  Usługa Azure Data Box jest przeznaczona do pozyskiwania danych w trybie offline. Ta usługa zarządza szeregiem produktów dla różnych pojemności magazynu, dostosowanych do transportu danych. 
 
 ### <a name="q-what-is-azure-data-box"></a>PYTANIE: Co to jest usługa Azure Data Box?
-A. Usługa Azure Data Box umożliwia szybki, niedrogi i bezpieczny transfer terabajtów danych do i z platformy Azure. Urządzenie Data Box można zamówić w witrynie Azure Portal. Firma Microsoft dostarcza urządzenie magazynujące o pojemności 80 TB za pośrednictwem regionalnego przewoźnika. 
+A. Azure Data Box pozwala na szybkie i tanie i bezpieczny transfer terabajtów danych na platformę Azure. Urządzenie Data Box można zamówić w witrynie Azure Portal. Firma Microsoft dostarcza urządzenie magazynujące o pojemności 80 TB za pośrednictwem regionalnego przewoźnika. 
 
 Po otrzymaniu urządzenia możesz szybko je skonfigurować przy użyciu lokalnego internetowego interfejsu użytkownika. Skopiuj dane z serwerów na urządzenie, a następnie wyślij urządzenie z powrotem do centrum danych platformy Azure. W centrum danych platformy Azure Twoje dane są automatycznie przekazywane z urządzenia na platformę Azure. Cały proces można śledzić przez usługę Data Box w witrynie Azure Portal.
 
 ### <a name="q-when-should-i-use-data-box"></a>PYTANIE: Kiedy używać usługi Data Box?
-A. Jeśli masz od 40 do 500 TB danych, które chcesz przetransferować na platformę Azure, korzystne będzie zastosowanie usługi Data Box. Dla danych mniejszych niż 40 TB skorzystaj z usługi Data Box Disk, a dla danych przekraczających 500 TB zarejestruj się w usłudze Data Box Heavy.
+A. Jeśli masz od 40 do 500 TB danych, które chcesz przetransferować na platformę Azure, korzystne będzie zastosowanie usługi Data Box. Dla danych rozmiary < 40 TB danych, należy użyć dysku Data Box i dla danych o rozmiarach > 500 TB, należy zasubskrybować [duże pole danych](data-box-heavy-overview.md).
 
 ### <a name="q-what-is-the-price-of-data-box"></a>PYTANIE: Jaki jest koszt usługi Data Box?
 A. Usługa Data Box jest dostępna za symboliczną opłatą przez 10 dni. Po wybraniu modelu produktu podczas tworzenia zamówienia w witrynie Azure Portal zostaną wyświetlone opłaty za urządzenie. Bezpłatna jest także przesyłka, natomiast zostaną naliczone opłaty za usługę Azure Storage. Aby uzyskać więcej informacji, zobacz [cennik usługi Azure Data Box](https://azure.microsoft.com/pricing/details/storage/databox/). 
@@ -124,7 +124,7 @@ A. Jeśli nie możesz uzyskać dostępu do hasła odblokowania w witrynie Azure 
 ### <a name="q-is-port-channel-configuration-supported-on-data-box-how-about-mpio"></a>PYTANIE: Czy na urządzeniu Data Box jest obsługiwana konfiguracja kanału portu? Jak wygląda sytuacja w przypadku wielościeżkowego we/wy (MPIO)?
 A. Nie obsługujemy konfiguracji kanału portu, konfiguracji wielościeżkowego we/wy (MPIO) ani konfiguracji sieci vLAN na urządzeniu Data Box.
 
-## <a name="track-status"></a>Śledzenie stanu
+## <a name="track-status"></a>Śledź stan
 
 ### <a name="q-how-do-i-track-the-data-box-from-when-i-placed-the-order-to-shipping-the-device-back"></a>PYTANIE: Jak mogę śledzić stan urządzenia Data Box od momentu złożenia zamówienia do jego odesłania? 
 A.  Stan zamówienia urządzenia Data Box możesz śledzić w witrynie Azure Portal. Podczas tworzenia zamówienia jest również wyświetlany monit o podanie adresu e-mail do powiadomień. Jeśli go podasz, będziesz otrzymywać powiadomienia e-mail o każdej zmianie stanu zamówienia. Więcej informacji na temat [konfigurowania wiadomości e-mail z powiadomieniami](data-box-portal-ui-admin.md#edit-notification-details).

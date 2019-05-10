@@ -8,12 +8,12 @@ ms.date: 04/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: hegate
-ms.openlocfilehash: 5d1e9941244defbf84b20f95e9f2e0402bbe19f2
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c0a03b70c6e5e4742e03d4892b2b5f97c908ab9c
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64693594"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65467991"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-microsoft-flow"></a>Tworzenie przepływów pracy z łącznikiem usługi IoT Central w Microsoft Flow
 
@@ -43,7 +43,7 @@ W tej sekcji dowiesz się, jak wyzwalać powiadomienie na urządzenie przenośne
 
 1. Zobaczysz listę tha przepływy pracy mają dostęp do a są dołączone do tej reguły IoT Central. Kliknij przycisk **Eksploruj szablony** lub **nowy > Utwórz z szablonu** i można wybrać jedną z dostępnych szablonów. 
 
-    ![Dostępne szablony Microsoft Flow](media/howto-add-microsoft-flow/flowtemplates.png)
+    ![Dostępne szablony Microsoft Flow](media/howto-add-microsoft-flow/flowtemplates1.png)
 
 1. Zostanie wyświetlony monit logować się do łączników w wybranym szablonie. Po zalogowaniu łączniki nastąpi przejście do projektanta w celu utworzenia przepływu pracy. Przepływ pracy ma wyzwalacz IoT Central, który zawiera aplikację i reguła już wypełnione.
 
@@ -52,7 +52,7 @@ W tej sekcji dowiesz się, jak wyzwalać powiadomienie na urządzenie przenośne
     > [!NOTE]
     > Wybierz **Zobacz więcej** tekst w oknie zawartości dynamicznej można pobrać miary i wartości właściwości, które wyzwolona reguła.
 
-    ![Przepływ edycji akcji z otwartym okienkiem dynamiczne](./media/howto-add-microsoft-flow/flowdynamicpane.png)
+    ![Przepływ edycji akcji z otwartym okienkiem dynamiczne](./media/howto-add-microsoft-flow/flowdynamicpane1.png)
 
 1. Po zakończeniu edycji akcję, wybierz **Zapisz**. Nastąpi przekierowanie do strony Przegląd Twój przepływ pracy. Tutaj można zobaczyć historię uruchamiania i udostępniać go współpracownikom.
 
@@ -79,7 +79,7 @@ W tej sekcji dowiesz się, jak utworzyć nowe urządzenie w IoT Central o naciś
 
 1. Wybierz pole nazwy urządzenia. W okienku zawartości dynamicznej wybierz **nazwy urządzenia**. Ta wartość jest przekazywany z danych wejściowych użytkownika przechodzi przez aplikację mobilną, a to nazwa nowe urządzenie IoT Central. W tym przykładzie jedyne wymagane pole jest nazwa urządzenia, wskazywanym przez czerwona gwiazdka. Inny szablon urządzenie może mieć wiele wymagane pola, które należy wypełnić, aby utworzyć nowe urządzenie.
 
-    ![Przepływ utworzenie okienka dynamicznej akcji urządzenia](./media/howto-add-microsoft-flow/flowcreatedevice.png)
+    ![Przepływ utworzenie okienka dynamicznej akcji urządzenia](./media/howto-add-microsoft-flow/flowcreatedevice1.png)
 
 1. (Opcjonalnie) Wypełnić inne pola, zgodnie z potrzebami dla tworzenia nowych urządzeń.
 
@@ -110,7 +110,7 @@ W tej sekcji dowiesz się, jak zaktualizować ustawień i właściwości w IoT C
 
 1. Można zaktualizować nazwy urządzenia. Do aktualizacji właściwości urządzenia i ustawienia, należy wybrać szablon urządzenia urządzenia, które chcesz zaktualizować w **szablon urządzenia** listy rozwijanej. Kafelek akcji rozwijany, aby wyświetlić wszystkie właściwości i ustawienia mogą być aktualizowane.
 
-    ![Przepływ pracy usługi Flow aktualizacji urządzenia](./media/howto-add-microsoft-flow/flowupdatedevice.png)
+    ![Przepływ pracy usługi Flow aktualizacji urządzenia](./media/howto-add-microsoft-flow/flowupdatedevice1.png)
 
 1. Zaznacz wszystkie właściwości i ustawienia, które chcesz zaktualizować. W okienku zawartości dynamicznej wybierz odpowiednie dane wejściowe z wyzwalacza. W tym przykładzie wartość lokalizacji są propagowane w dół do aktualizacji właściwości lokalizacji urządzenia.
 
@@ -126,7 +126,7 @@ Możesz uzyskać informacje o urządzeniu za pomocą jego Identyfikatora **Azure
 
 Aby uzyskać informacje, takie jak nazwa urządzenia, nazwę szablonu w urządzeniu, wartości właściwości i wartości ustawień do przekazania do kolejnych akcjach w przepływie pracy. Oto przykładowy przepływ pracy, który przekazuje wartość właściwości nazwy klienta z urządzenia do Microsoft Teams.
 
-   ![Przepływ pracy usługi Flow get urządzenia](./media/howto-add-microsoft-flow/flowgetdevice.png)
+   ![Przepływ pracy usługi Flow get urządzenia](./media/howto-add-microsoft-flow/flowgetdevice1.png)
 
 
 ## <a name="run-a-command-on-a-device-in-a-workflow"></a>Uruchom polecenie na urządzeniu w przepływie pracy
@@ -137,7 +137,7 @@ Można uruchomić polecenie na urządzeniu, określony przez jego identyfikator 
     
 Możesz wybrać polecenie Uruchom i przekaż parametry polecenia za pomocą tej akcji. Oto przykładowy przepływ pracy, który uruchamia polecenie ponownego uruchomienia urządzenia przy użyciu przycisku w aplikacji mobilnej Microsoft Flow.
 
-   ![Przepływ pracy usługi Flow get urządzenia](./media/howto-add-microsoft-flow/flowrunacommand.png)
+   ![Przepływ pracy usługi Flow get urządzenia](./media/howto-add-microsoft-flow/flowrunacommand1.png)
 
 ## <a name="delete-a-device-in-a-workflow"></a>Usuwanie urządzenia w przepływie pracy
 

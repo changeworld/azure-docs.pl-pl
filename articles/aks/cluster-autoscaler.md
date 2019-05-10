@@ -7,18 +7,18 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: iainfou
-ms.openlocfilehash: d8e095303161002d10914ca7c3213ac0c6894e5d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d5a287a8da884290e94e9ac1c864abe28e47d53d
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60467142"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508142"
 ---
 # <a name="preview---automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>W wersji zapoznawczej — automatyczne skalowanie klastra, aby spełniać wymagania aplikacji w usłudze Azure Kubernetes Service (AKS)
 
 Na bieżąco z zapotrzebowaniem na zasoby aplikacji w usłudze Azure Kubernetes Service (AKS), może być konieczne dostosowanie liczby węzłów, działających obciążeń. Składnik skalowanie klastra można śledzić zasobników w klastrze, do której nie można zaplanować z powodu ograniczeń zasobów. Gdy zostaną wykryte problemy, aby sprostać potrzebom aplikacji zwiększa się liczba węzłów. Węzły są regularnie sprawdzane pod kątem braku uruchomionych zasobników, z liczbą węzłów zmniejszy zgodnie z potrzebami. Ta możliwość automatycznego skalowania w górę lub w dół liczbę węzłów w klastrze AKS umożliwia uruchomienie klastra wydajne, ekonomiczne.
 
-W tym artykule pokazano, jak włączyć i zarządzać nimi skalowanie klastra w klastrze AKS.
+W tym artykule pokazano, jak włączyć i zarządzać nimi skalowanie klastra w klastrze AKS. Skalowanie klastra należy badać tylko w wersji zapoznawczej w klastrach usługi AKS z pulą jeden węzeł.
 
 > [!IMPORTANT]
 > Funkcje w wersji zapoznawczej usługi AKS są samoobsługi i opcjonalnych. Wersje zapoznawcze są udostępniane do zbierania opinii i błędy z naszej społeczności. Nie są one jednak obsługiwane przez pomoc techniczną systemu Azure. Jeśli tworzenie klastra lub Dodaj następujące funkcje do istniejących klastrów tego klastra jest obsługiwany, dopóki ta funkcja nie jest już dostępna w wersji zapoznawczej i absolwentów, które są ogólnie dostępne (GA).
@@ -59,6 +59,12 @@ Gdy wszystko będzie gotowe, Odśwież rejestracji *Microsoft.ContainerService* 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
 ```
+
+## <a name="limitations"></a>Ograniczenia
+
+Poniższe ograniczenia mają zastosowanie, gdy tworzenie i zarządzanie klastrami usługi AKS, które używają zestawów skalowania maszyn wirtualnych:
+
+* Nie można używać dodatku routing aplikacji protokołu HTTP.
 
 ## <a name="about-the-cluster-autoscaler"></a>Skalowanie klastra — informacje
 
@@ -101,7 +107,6 @@ az group create --name myResourceGroup --location canadaeast
 az aks create \
   --resource-group myResourceGroup \
   --name myAKSCluster \
-  --kubernetes-version 1.12.6 \
   --node-count 1 \
   --enable-vmss \
   --enable-cluster-autoscaler \

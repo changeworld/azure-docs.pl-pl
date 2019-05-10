@@ -149,6 +149,8 @@
           href: iot-hub-devguide-sdks.md
         - name: Obsługa protokołu MQTT
           href: iot-hub-mqtt-support.md
+        - name: Obsługa protokołu AMQP
+          href: iot-hub-amqp-support.md
         - name: Słownik
           href: iot-hub-devguide-glossary.md
     - name: Bezpieczeństwo

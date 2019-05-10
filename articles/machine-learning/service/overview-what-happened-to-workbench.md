@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 01/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 61c5d60f0c2fab3786aa6adfa194c0716e621ea3
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 8081be7f411b38d2418d893654a5691bd1ad7cc1
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023647"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65470630"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Co się stało z aplikacją Azure Machine Learning Workbench?
 
@@ -62,13 +62,13 @@ Pulpit nawigacyjny obszaru roboczego w portalu jest obsługiwany tylko w przegl�
 
 [![Online portal](./media/overview-what-happened-to-workbench/image001.png)](./media/overview-what-happened-to-workbench/image001.png#lightbox)
 
-Rozpocznij uczenie modeli i śledzenie historii uruchamiania przy użyciu nowego interfejsu wiersza polecenia i zestawu SDK. Informacje na temat sposobu wykonywania tych czynności można znaleźć w temacie [Samouczek: uczenie modeli za pomocą usługi Azure Machine Learning](tutorial-train-models-with-aml.md).
+Rozpocznij szkolenie modeli i śledzenie uruchomień przy użyciu nowego interfejsu wiersza polecenia i zestawu SDK. Informacje na temat sposobu wykonywania tych czynności można znaleźć w temacie [Samouczek: uczenie modeli za pomocą usługi Azure Machine Learning](tutorial-train-models-with-aml.md).
 
 ## <a name="can-i-still-prep-data"></a>Czy nadal można przygotowywać dane?
 
 Istniejących plików przygotowywania danych nie można przenosić do najnowszej wersji, ponieważ nie ma już aplikacji Machine Learning Workbench. Można jednak nadal przygotowywać zestaw danych dowolnego rozmiaru do modelowania.   
 
-W przypadku zestawów danych o dowolnym rozmiarze można używać [zestawu Data Prep SDK usługi Azure Machine Learning](https://aka.ms/data-prep-sdk), aby szybko przygotować dane przed rozpoczęciem modelowania, pisząc kod języka Python. 
+W przypadku zestawów danych o dowolnym rozmiarze, można używać [pakiecie przygotowania danych do usługi Azure Machine Learning](https://aka.ms/data-prep-sdk) szybko przygotować dane przed modelowania przez napisanie kodu języka Python. 
 
 W [tym samouczku](tutorial-data-prep.md) dowiesz się więcej na temat używania zestawu Data Prep SDK usługi Azure Machine Learning.
 

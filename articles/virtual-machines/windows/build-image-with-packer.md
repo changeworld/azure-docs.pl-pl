@@ -14,24 +14,25 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/22/2019
 ms.author: cynthn
-ms.openlocfilehash: f768582e8ef32bc654a2f797c5c7a481a26fb643
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 012f4e479a5b8ea2e3ddea1bfde70ab10ee4e834
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56734187"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65467041"
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Jak utworzyć obrazy maszyn wirtualnych Windows na platformie Azure za pomocą usługi Packer
 Każda maszyna wirtualna (VM) na platformie Azure jest tworzony z obrazu, który definiuje Windows dystrybucji i wersji systemu operacyjnego. Obrazy mogą obejmować wstępnie zainstalowane aplikacje i konfiguracje. W portalu Azure Marketplace zawiera wiele obrazów pierwszy i innych firm dla typowych systemu operacyjnego i środowiska aplikacji albo można utworzyć własne niestandardowe obrazy dopasowany do Twoich potrzeb. Ten artykuł szczegółowo opisuje sposób użycia narzędzia typu open-source [Packer](https://www.packer.io/) do definiowania i tworzenie niestandardowych obrazów na platformie Azure.
 
 Ostatniego testowania w tym artykule na temat korzystania z 21/2/2019 [modułu Az PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) wersji 1.3.0 i [Packer](https://www.packer.io/docs/install/index.html) wersji 1.3.4.
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+> [!NOTE]
+> Platforma Azure zapewnia teraz usługę, Kreator obrazów platformy Azure (wersja zapoznawcza), definiowanie i tworzenie własnych niestandardowych obrazów. Kreator obrazów platformy Azure w oparciu Packer, więc nawet za pomocą istniejących skryptów administracyjnej powłoki usługi Packer go. Aby rozpocząć korzystanie z Kreatora obrazów platformy Azure, zobacz [tworzenie maszyny Wirtualnej z systemem Windows przy użyciu Kreatora obrazów platformy Azure](image-builder.md).
 
 ## <a name="create-azure-resource-group"></a>Utwórz grupę zasobów platformy Azure
 Podczas procesu kompilacji narzędzia Packer tworzy tymczasowy zasobów platformy Azure opiera się źródłowa maszyna wirtualna. Aby przechwycić tego źródła do użycia jako obraz maszyny Wirtualnej, należy zdefiniować grupy zasobów. Dane wyjściowe z procesu kompilacji narzędzia Packer znajduje się w tej grupie zasobów.
 
-Utwórz grupę zasobów za pomocą [New AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). W poniższym przykładzie pokazano tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*:
+Utwórz grupę zasobów za pomocą polecenia [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). W poniższym przykładzie pokazano tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*:
 
 ```azurepowershell
 $rgName = "mypackerGroup"
@@ -248,6 +249,4 @@ Do maszyny Wirtualnej, która obejmuje instalację usług IIS z administracyjnej
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym przykładzie użyto narzędzia Packer do tworzenia obrazu maszyny Wirtualnej już po zainstalowaniu usług IIS. Ten obraz maszyny Wirtualnej wraz z istniejących przepływów pracy wdrażania, takie jak umożliwia wdrażanie aplikacji w usłudze maszyny wirtualne tworzone za pomocą obrazu dzięki usługom DevOps platformy Azure, Ansible, Chef lub Puppet.
-
-Aby uzyskać dodatkowe przykładowe szablony usługi Packer dla innych dystrybucje Windows, zobacz [tego repozytorium GitHub](https://github.com/hashicorp/packer/tree/master/examples/azure).
+Można również użyć istniejących skryptów administracyjnej narzędzia Packer za pomocą [kreatora obrazów platformy Azure](image-builder.md).

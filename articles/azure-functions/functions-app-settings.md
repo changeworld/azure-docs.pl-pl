@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.author: glenga
-ms.openlocfilehash: 573e6ea857ef17a6160f7e03f52f9c64f903530a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d78fb546e954c4ae12e5836d9a7bef7ed5003090
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60347524"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65511074"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Dokumentacja ustawień aplikacji dla usługi Azure Functions
 
@@ -217,7 +217,7 @@ Oto przykładowy plik proxies.json w aplikacji funkcji w myfunction.com adresu U
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Dowiedz się, jak można zaktualizować ustawień aplikacji](functions-how-to-use-azure-function-app-settings.md#manage-app-service-settings)
+[Dowiedz się, jak można zaktualizować ustawień aplikacji](functions-how-to-use-azure-function-app-settings.md#settings)
 
 [Zobacz globalne ustawienia w pliku host.json](functions-host-json.md)
 

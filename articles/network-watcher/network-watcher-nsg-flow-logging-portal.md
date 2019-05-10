@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 550755b1215dd25045845d78ab3d6248ef840062
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 3c62ad66a29943e26d1cb2f15ca71631d2feabe3
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64705955"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65467418"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Samouczek: rejestrowanie przepływu ruchu sieciowego do i z maszyny wirtualnej przy użyciu witryny Azure Portal
 
@@ -93,10 +93,13 @@ Rejestrowanie przepływu sieciowej grupy zabezpieczeń wymaga dostawcy **Microso
     | Grupa zasobów | Wybierz pozycję **Użyj istniejącej** i wybierz grupę **myResourceGroup**. |
 
     Tworzenie konta usługi Storage może potrwać około minuty. Nie wykonuj pozostałych kroków, dopóki konto usługi Storage nie zostanie utworzone. Jeśli zamiast tworzyć nowe konto usługi Storage używasz istniejącego konta, upewnij się, że wybierasz konto usługi Storage, które ma pozycję **Wszystkie sieci** (ustawienie domyślne) wybraną dla pozycji **Zapory i sieci wirtualne** w obszarze **USTAWIENIA** na koncie usługi Storage.
+    
+    > [!NOTE]
+    > Dostawcy Microsoft.Insight i Microsoft.Network są obecnie obsługiwane dla usługi Azure Storage, dzienniki przepływów sieciowych grup zabezpieczeń jest nadal nie są w pełni dołączone. Aby włączyć rejestrowanie przepływów sieciowych grup zabezpieczeń, **wszystkie sieci** nadal należy wybrać, dopóki ta funkcja jest w pełni dołączone. 
 4. W lewym górnym rogu portalu wybierz pozycję **Wszystkie usługi**. W polu **Filtr** wpisz ciąg *Network Watcher*. Gdy w wynikach wyszukiwania pojawi się nazwa **Network Watcher**, wybierz ją.
 5. W obszarze **DZIENNIKI** wybierz pozycję **Dzienniki przepływu sieciowej grupy zabezpieczeń**, jak pokazano na poniższej ilustracji:
 
-    ![Sieciowe grupy zabezpieczeń](./media/network-watcher-nsg-flow-logging-portal/nsgs.png)
+    ![sieciowych grup zabezpieczeń](./media/network-watcher-nsg-flow-logging-portal/nsgs.png)
 
 6. Z listy sieciowych grup zabezpieczeń wybierz grupę o nazwie **myVm-nsg**.
 7. W obszarze **Ustawienia dzienników przepływu** wybierz pozycję **Wł.**
@@ -204,9 +207,9 @@ Wartość elementu **mac** w poprzednich danych wyjściowych to adres MAC interf
 | 13.67.143.118     | Docelowy adres IP | Docelowy adres IP, do którego był skierowany przepływ.                                                                                  |
 | 44931        | Port źródłowy            | Port źródłowy, z którego pochodził przepływ.                                           |
 | 443         | Port docelowy       | Port docelowy, do którego był skierowany przepływ. Ponieważ ruch był przeznaczony do portu 443, reguła o nazwie **UserRule_default-allow-rdp** w pliku dziennika przetworzyła przepływ.                                                |
-| T            | Protokół               | Określa rodzaj protokołu przepływu: TCP (T) lub UDP (U).                                  |
+| W            | Protokół               | Określa rodzaj protokołu przepływu: TCP (T) lub UDP (U).                                  |
 | O            | Direction              | Określa, czy ruch był przychodzący (I), czy wychodzący (O).                                     |
-| A            | Akcja                 | Określa, czy ruch był dozwolony (A), czy odrzucony (D).  
+| A            | action                 | Określa, czy ruch był dozwolony (A), czy odrzucony (D).  
 | C            | Stan przepływu **tylko w wersji 2** | Rejestruje stan przepływu. Możliwe stany to **B**: początek — gdy zostanie utworzony przepływ. Statystyki nie są podawane. **C**: kontynuacja — dotyczy trwającego przepływu. Statystyki są podawane w 5-minutowych odstępach. **E**: koniec — gdy przepływ zostanie zakończony. Statystyki są podawane. |
 | 30 | Wysłane pakiety — ze źródła do miejsca docelowego **tylko w wersji 2** | Całkowita liczba pakietów TCP lub UDP przesłanych ze źródła do miejsca docelowego od czasu ostatniej aktualizacji. |
 | 16978 | Wysłane bajty — ze źródła do miejsca docelowego **tylko w wersji 2** | Całkowita liczba bajtów pakietów TCP lub UDP przesłanych ze źródła do miejsca docelowego od czasu ostatniej aktualizacji. Liczba bajtów pakietu obejmuje nagłówek i ładunek pakietu. | 

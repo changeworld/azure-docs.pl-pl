@@ -5,19 +5,18 @@ services: functions
 keywords: interfejs OpenAPI, Swagger, aplikacje w chmurze, usługi w chmurze,
 author: ggailey777
 manager: jeconnoc
-ms.assetid: ''
 ms.service: azure-functions
 ms.topic: tutorial
-ms.date: 11/26/2018
+ms.date: 05/08/2019
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 3ad304bc8f038d4009352dae72d70079828c26ba
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
-ms.translationtype: MT
+ms.openlocfilehash: 255a7c9d0b9da15176fca90c6934a84fa0f863ed
+ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65141591"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65501868"
 ---
 # <a name="create-an-openapi-definition-for-a-function-with-azure-api-management"></a>Tworzenie definicji interfejsu OpenAPI dla funkcji usługi Azure API Management
 
@@ -133,13 +132,9 @@ Funkcja określająca opłacalność naprawy awaryjnej jest już gotowa. Następ
 
 Teraz możesz przystąpić do generowania definicji interfejsu OpenAPI.
 
-1. Wybierz aplikację funkcji, a następnie wybierz pozycję **funkcje platformy**, **wszystkie ustawienia**
+1. Wybierz aplikację funkcji, a następnie w **funkcje platformy**, wybierz **usługi API Management** i wybierz **Utwórz nową** w obszarze **usługi API Management**.
 
-    ![Testowanie funkcji w witrynie Azure Portal](media/functions-openapi-definition/select-all-settings-openapi.png)
-
-1. Przewiń w dół, a następnie wybierz **usługi API Management** > **Utwórz nową** do utworzenia nowego wystąpienia usługi API Management.
-
-    ![Link — funkcja](media/functions-openapi-definition/link-apim-openapi.png)
+    ![Wybierz usługi API Management w funkcje platformy](media/functions-openapi-definition/select-all-settings-openapi.png)
 
 1. Użyj ustawień usługi API Management określonych w tabeli znajdującej się poniżej obrazu.
 
@@ -150,11 +145,10 @@ Teraz możesz przystąpić do generowania definicji interfejsu OpenAPI.
     | **Nazwa** | Nazwa unikatowa w skali globalnej | Nazwa jest generowana w oparciu o nazwę aplikacji funkcji. |
     | **Subskrypcja** | Twoja subskrypcja | Subskrypcja, w którym tworzony jest nowy zasób. |  
     | **[Grupa zasobów](../azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | Ten sam zasób aplikacji funkcji, które należy uzyskać dla Ciebie. |
-    | **Lokalizacja** | Zachodnie stany USA | Wybierz lokalizację, w regionie zachodnie stany USA |
+    | **Lokalizacja** | Zachodnie stany USA | Wybierz lokalizację, w regionie zachodnie stany USA. |
     | **Nazwa organizacji** | Contoso | Nazwa organizacji używane w portalu dla deweloperów i powiadomień e-mail. |
     | **Adres e-mail administratora** | adres e-mail | Wiadomość e-mail, który otrzymał powiadomienia systemowe z usługi API Management. |
-    | **Warstwa cenowa** | Użycie (wersja zapoznawcza) | Pełne szczegóły cen można znaleźć [usługi API Management, cennik](https://azure.microsoft.com/pricing/details/api-management/) |
-    | **Application Insights** | Wystąpienie usługi | Użyj tej samej usługi Application Insights, który jest używany przez aplikację funkcji. |
+    | **Warstwa cenowa** | Użycie (wersja zapoznawcza) | Warstwa użycia jest w wersji zapoznawczej i nie jest dostępna we wszystkich regionach. Pełne szczegóły cen można znaleźć [usługi API Management, cennik](https://azure.microsoft.com/pricing/details/api-management/) |
 
 1. Wybierz **Utwórz** do utworzenia wystąpienia usługi API Management, co może potrwać kilka minut.
 
@@ -178,27 +172,20 @@ Zanim użyjesz definicji interfejsu API, należy sprawdzić, czy działa.
 
 1. Wprowadź wartości w polach **godzin** i **pojemności**
 
-```json
-{
-"hours": "6",
-"capacity": "2500"
-}
-```
+    ```json
+    {
+    "hours": "6",
+    "capacity": "2500"
+    }
+    ```
 
 1. Kliknij przycisk **wysyłania**, następnie zobacz odpowiedź HTTP.
 
     ![Interfejsu API test function](media/functions-openapi-definition/test-function-api-openapi.png)
 
+[!INCLUDE [clean-up-section-portal](../../includes/clean-up-section-portal.md)]
+
 ## <a name="next-steps"></a>Kolejne kroki
 
-W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
-
-> [!div class="checklist"]
-> * Tworzenie funkcji na platformie Azure
-> * Generowanie definicji interfejsu OpenAPI za pomocą usługi Azure API Management
-> * Testowanie definicji przez wywołanie funkcji
-
-Przejdź do następnego tematu, aby dowiedzieć się więcej o usłudze API Management.
-
 > [!div class="nextstepaction"]
-> [API Management](../api-management/api-management-key-concepts.md)
+> [Dowiedz się więcej o usłudze API Management](../api-management/api-management-key-concepts.md)

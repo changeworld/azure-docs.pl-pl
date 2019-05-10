@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: b35a06fc4e100d71e787e183299825b61d342e69
-ms.sourcegitcommit: abeefca6cd5ca01c3e0b281832212aceff08bf3e
+ms.openlocfilehash: 0831f08eaa3e8e6f6a0d3f68bc50cd927167b7ba
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "64993163"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507927"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Scheduled Events maszyn wirtualnych systemu Linux
 
@@ -46,7 +46,7 @@ Przy użyciu zaplanowanych zdarzeń aplikacji może odnajdywać podczas konserwa
 
 Scheduled Events dostępne są zdarzenia w następujących przypadkach użycia:
 
-- [Platforma zainicjowane konserwacji](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/maintenance-and-updates) (na przykład maszyna wirtualna ponowny rozruch, migracji na żywo lub pamięć zachowywanie aktualizacji hosta)
+- [Platforma zainicjowane konserwacji](https://docs.microsoft.com/azure/virtual-machines/linux/maintenance-and-updates) (na przykład maszyna wirtualna ponowny rozruch, migracji na żywo lub pamięć zachowywanie aktualizacji hosta)
 - Obniżonej wydajności sprzętu
 - Konserwacji zainicjowanej przez użytkownika (na przykład, ponownego uruchamiania lub ponownie wdraża Maszynę wirtualną)
 - [Maszyna wirtualna o niskim priorytecie eksmisji](https://azure.microsoft.com/blog/low-priority-scale-sets) w skali ustawia
@@ -55,7 +55,7 @@ Scheduled Events dostępne są zdarzenia w następujących przypadkach użycia:
 
   METADATA Service udostępnia informacje o uruchamianiu maszyn wirtualnych przy użyciu punktu końcowego REST, który jest dostępny z poziomu maszyny Wirtualnej. Informacje są dostępne za pośrednictwem nonroutable IP, tak aby nie jest uwidaczniana poza maszyny Wirtualnej.
 
-### <a name="scope"></a>Zakres
+### <a name="scope"></a>Scope
 Zaplanowane zdarzenia są dostarczane do:
 
 - Autonomicznych maszyn wirtualnych.
@@ -79,7 +79,7 @@ Usługa Scheduled Events to numerów wersji. Wersje są obowiązkowe; Bieżąca 
 | - | - | - | - | 
 | 2017-11-01 | Ogólna dostępność | Wszyscy | <li> Dodano obsługę maszyn wirtualnych o niskim priorytecie eksmisji typ zdarzenia "Preempt"<br> | 
 | 2017-08-01 | Ogólna dostępność | Wszyscy | <li> Usunięte poprzedzona znakiem podkreślenia z nazwy zasobów dla maszyn wirtualnych IaaS<br><li>Wymaganie nagłówka metadanych wymuszone dla wszystkich żądań | 
-| 2017-03-01 | Wersja zapoznawcza | Wszyscy | <li>Wersja początkowa
+| 2017-03-01 | Preview | Wszyscy | <li>Wersja początkowa
 
 
 > [!NOTE] 
@@ -142,8 +142,8 @@ Każde zdarzenie jest zaplanowane minimalną ilość czasu w przyszłości na po
 |EventType  | Minimalna powiadomienia |
 | - | - |
 | Freeze| 15 minut |
-| Ponowne uruchamianie | 15 minut |
-| Ponowne wdrożenie | 10 minut |
+| Uruchom ponownie | 15 minut |
+| Ponownie wdróż | 10 minut |
 | Wywłaszczenia | 30 sekund |
 
 ### <a name="start-an-event"></a>Zdarzenie początkowe 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: sandeep.pujar
-ms.openlocfilehash: 580a8baa19e8ed4fc3f4449ead9d8aedbc4c039a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 8c1b4a4ab834b2203a7e0b6e4e9e366c3fc38774
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65160908"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472170"
 ---
 # <a name="connect-sensortilebox-device-to-your-azure-iot-central-application"></a>Podłącz urządzenie SensorTile.box do aplikacji usługi Azure IoT Central
 
@@ -23,14 +23,14 @@ W tym artykule opisano jak Deweloper urządzenia podłączenia urządzenia Senso
 
 Aby wykonać kroki opisane w tym artykule, potrzebne są następujące zasoby:
 
-* Urządzenie SensorTile.box zobacz [SensorTile.box](https://www.st.com/content/st_com/en/products/evaluation-tools/SensorTile.box) Aby uzyskać więcej informacji.
-* Aplikacja czujnik cz ST zainstalowane na urządzeniu z systemem Android możesz [ją pobrać stąd] (https://play.google.com/store/apps/details?id=com.st.bluems). Aby uzyskać więcej informacji, odwiedź stronę: () [ST cz czujnik]http://www.st.com/stblesensor)
+* Urządzenie SensorTile.box. Aby uzyskać więcej informacji, zobacz [SensorTile.box](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mems-motion-sensor-eval-boards/steval-mksbox1v1.html).
+* Czujnik cz ST aplikacji zainstalowane na urządzeniu z systemem Android, możesz [Pobierz go stąd](https://play.google.com/store/apps/details?id=com.st.bluems). Więcej informacji można znaleźć pod adresem: [Czujnik cz ST](https://www.st.com/stblesensor)
 * Aplikacja usługi Azure IoT Central, utworzone na podstawie **DevKits** szablon aplikacji. Aby uzyskać więcej informacji, zapoznaj się z [przewodnikiem Szybki start dotyczącym tworzenia aplikacji](quick-deploy-iot-central.md).
-* Dodaj **SensorTile.box** szablon urządzenia w aplikacji IoT Central, odwiedzając **szablonów urządzeń** strony, klikając **+ nowy**i wybierając polecenie **SensorTile** szablonu.
+* Dodaj **SensorTile.box** szablon urządzenia w aplikacji IoT Central, odwiedzając **szablonów urządzeń** strony, klikając **+ nowy**i wybierając polecenie **SensorTile.box** szablonu.
 
 ### <a name="get-your-device-connection-details"></a>Uczyń swoje urządzenie szczegóły połączenia
 
-W aplikacji usługi Azure IoT Central, Dodaj prawdziwe urządzenie z **SensorTile.box** szablon urządzenia i zanotować szczegóły połączenia urządzenia: **Zakres Identyfikatora, identyfikator urządzenia i klucz podstawowy**:
+W aplikacji usługi Azure IoT Central, Dodaj prawdziwe urządzenie z **SensorTile.box** szablon urządzenia i zanotować szczegóły połączenia urządzenia: **Identyfikator zakresu**, **identyfikator urządzenia**, i **klucz podstawowy**:
 
 1. Dodaj urządzenia z Device Explorer. Wybierz **+ nowy > rzeczywistych** dodać rzeczywistego urządzenia.
 
@@ -47,10 +47,11 @@ W aplikacji usługi Azure IoT Central, Dodaj prawdziwe urządzenie z **SensorTil
 
 ## <a name="set-up-the-sensortilebox-with-the-mobile-application"></a>Konfigurowanie SensorTile.box z aplikacją mobilną
 
-W tej sekcji dowiesz się, jak wysyłać dane urządzenia IoT Central za pośrednictwem aplikacji mobilnej ST cz czujników przy użyciu połączenia Bluetooth niski energii (Włącz) i wypychania oprogramowania układowego aplikacji na urządzeniu.
+W tej sekcji dowiesz się, jak wypychać oprogramowanie układowe aplikacji na urządzeniu. Możesz następnie jak wysyłać dane urządzenia IoT Central za pośrednictwem aplikacji mobilnej ST cz czujników przy użyciu połączenia Bluetooth niski energii (Włącz).
+
 1. Otwórz aplikację czujnik cz ST i naciśnij klawisz **Utwórz nową aplikację** przycisku.
 
-    ![Tworzenie aplikacji](media/howto-connect-sensortile/create-app.png)
+    ![Utwórz aplikację](media/howto-connect-sensortile/create-app.png)
 
 1. Wybierz **Barometer** aplikacji.
 1. Naciśnij przycisk Prześlij.
@@ -58,11 +59,12 @@ W tej sekcji dowiesz się, jak wysyłać dane urządzenia IoT Central za pośred
     ![Przekazywanie barometer](media/howto-connect-sensortile/barometer-upload.png)
 
 1. Naciśnij przycisk Odtwórz, skojarzone z Twojej SensorTile.box.
-1. Po zakończeniu procesu SensorTile.box będą przesyłane strumieniowo temperatury, wykorzystanie i wilgotności za pośrednictwem cz.
+1. Po zakończeniu procesu SensorTile.box strumieni za pośrednictwem cz temperatury, wykorzystanie i wilgotności.
 
 ## <a name="connect-the-sensortilebox-to-the-cloud"></a>Łączenie SensorTile.box z chmurą
 
 W tej sekcji dowiesz się, jak połączyć SensorTile.box dla aplikacji mobilnej i połączyć z aplikacjami mobilnymi do chmury.
+
 1. Korzystając z menu po lewej stronie wybierz **rejestrowanie chmury** przycisku.
 
     ![Rejestrowanie chmury](media/howto-connect-sensortile/cloud-logging.png)
@@ -74,7 +76,7 @@ W tej sekcji dowiesz się, jak połączyć SensorTile.box dla aplikacji mobilnej
 
 1. Wybierz **klucz aplikacji** przycisku radiowego.
 1. Kliknij przycisk **Connect** i wybierz dane telemetryczne, który chcesz przekazać.
-1. Po kilku sekundach dane będą wyświetlane na pulpit nawigacyjny aplikacji IoT Central.
+1. Po kilku sekundach dane są wyświetlane na pulpicie nawigacyjnym aplikacji IoT Central.
 
 ## <a name="sensortilebox-device-template-details"></a>Szczegóły szablonu urządzenia SensorTile.box
 
@@ -82,7 +84,7 @@ Aplikacja utworzone na podstawie szablonu urządzenia SensorTile.box o następuj
 
 ### <a name="telemetry"></a>Telemetria
 
-| Nazwa pola     | Jednostki  | Minimalne | Maksimum | Miejsca dziesiętne |
+| Nazwa pola     | Jednostki  | Minimum | Maksimum | Miejsca dziesiętne |
 | -------------- | ------ | ------- | ------- | -------------- |
 | humidity       | %      | 30       | 90     | 1              |
 | Temp           | °C     | 0     | 40     | 1              |
@@ -100,7 +102,6 @@ Aplikacja utworzone na podstawie szablonu urządzenia SensorTile.box o następuj
 | FFT_Y     |    |    |     |               |
 | FFT_Z     |    |    |     |               |
 
-
 ## <a name="next-steps"></a>Kolejne kroki
 
-Teraz, wyjaśniono, jak połączyć SensorTile.box do aplikacji usługi Azure IoT Central, sugerowane następnym krokiem jest Dowiedz się, jak [Konfigurowanie szablonu niestandardowego urządzenia](howto-set-up-template.md) dla urządzenia IoT.
+Teraz, wyjaśniono, jak połączyć SensorTile.box do aplikacji usługi Azure IoT Central, sugerowane następnym krokiem jest Dowiedz się, [sposób konfigurowania szablonu niestandardowego urządzenia](howto-set-up-template.md) dla urządzenia IoT.

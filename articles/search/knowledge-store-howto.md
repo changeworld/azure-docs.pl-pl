@@ -6,20 +6,20 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 05/02/2019
+ms.date: 05/08/2019
 ms.author: heidist
-ms.openlocfilehash: 2a904cfb049af413887798c8aab449561bc2b73f
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: d9006e3fcfc9691b9f3eec4b86c545fd3fea9f8a
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026970"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471755"
 ---
 # <a name="how-to-get-started-with-knowledge-store"></a>Jak rozpocząć pracę z wiedzy Store
 
 [Store wiedzy](knowledge-store-concept-intro.md) to nowa funkcja w wersji zapoznawczej w usłudze Azure Search, która zapisuje wzbogacenia sztucznej Inteligencji, utworzone w potoku indeksowania dla wyszukiwania wiedzy w innych aplikacjach. Umożliwia także zapisane wzbogacenia do zrozumienia i uściślić potoku indeksowania usługi Azure Search.
 
-Magazyn wiedzy jest definiowany przez zestawu umiejętności. W przypadku regularnego scenariuszy usługi Azure Search wyszukiwanie pełnotekstowe celem zestawu umiejętności jest zapewnienie wzbogacenia sztucznej Inteligencji, aby wprowadzić więcej wyszukiwanie zawartości. W przypadku scenariuszy magazynu wiedzy roli zestawu umiejętności jest tworzenie i wypełnianie wiele struktur danych wyszukiwania wiedzy.
+Magazyn wiedzy jest definiowany przez zestawu umiejętności. W przypadku regularnego scenariuszy usługi Azure Search wyszukiwanie pełnotekstowe celem zestawu umiejętności jest zapewnienie wzbogacenia sztucznej Inteligencji, aby wprowadzić więcej wyszukiwanie zawartości. W przypadku scenariuszy wyszukiwania wiedzy roli zestawu umiejętności jest tworzenie, wypełnianie i przechowywanie wielu struktur danych do analizy lub modelowania w innych aplikacjach i procesach.
 
 W tym ćwiczeniu Uruchom z przykładowych danych, usługami i narzędziami, aby dowiedzieć się, podstawowy przepływ pracy dotyczące tworzenia i używania pierwszy sklepu wiedzy, z naciskiem na definicję zestawu umiejętności.
 
@@ -29,13 +29,13 @@ Następujących usług, narzędzi i danych są używane w tym przewodniku Szybki
 
 + [Tworzenie usługi Azure Search](search-create-service-portal.md) lub [znaleźć istniejącej usługi](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) w ramach Twojej bieżącej subskrypcji. Umożliwia to bezpłatna usługa, w tym samouczku. 
 
-+ [Tworzenie konta usługi Azure storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) do przechowywania przykładowych danych. Sklepu wiedzy będzie istnieć w usłudze Azure storage.
++ [Tworzenie konta usługi Azure storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) do przechowywania przykładowych danych. Sklepu wiedzy będzie istnieć w usłudze Azure storage. 
 
-+ [Tworzenie zasobu usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) w warstwie zgodnie z rzeczywistym użyciem S0 broad-spectrum dostęp do pełnego zakresu umiejętności używane w wzbogacenia sztucznej Inteligencji.
++ [Tworzenie zasobu usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) w warstwie zgodnie z rzeczywistym użyciem S0 broad-spectrum dostęp do pełnego zakresu umiejętności używane w wzbogacenia sztucznej Inteligencji. Ten zasób i usługi Azure Search są wymagane w tym samym regionie.
 
 + [Aplikacja klasyczna narzędzia postman](https://www.getpostman.com/) wysyłania żądań do usługi Azure Search.
 
-+ [Kolekcja postman Collection](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/caselaw) z żądaniami przygotowany do tworzenia źródła danych, indeksu, zestawu umiejętności i indeksatora. Kilka definicji obiektu jest zbyt długa, aby uwzględnić w tym artykule. Należy uzyskać tej kolekcji, aby zobaczyć definicji indeksu i zestawu umiejętności w całości.
++ [Kolekcja postman Collection](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Caselaw) z żądaniami przygotowany do tworzenia źródła danych, indeksu, zestawu umiejętności i indeksatora. Kilka definicji obiektu jest zbyt długa, aby uwzględnić w tym artykule. Należy uzyskać tej kolekcji, aby zobaczyć definicji indeksu i zestawu umiejętności w całości.
 
 + [Orzecznictwa przykładowych danych](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/caselaw) pochodzące z [projektu programu Access orzecznictwa](https://case.law/bulk/download/) stronę pobierania danych zbiorczego publicznej. W szczególności wykonywania używa 10 pierwszych dokumenty pierwszego pobieranego (Arkansas). Przykładowy dokument 10 przekazany do usługi GitHub na potrzeby tego ćwiczenia.
 
@@ -55,7 +55,7 @@ Wszystkie żądania wymagają klucza interfejsu api na każde żądanie wysłane
 
 1. [Zaloguj się do witryny Azure portal](https://portal.azure.com), przejdź do swojego konta usługi Azure storage, kliknij przycisk **obiektów blob**, a następnie kliknij przycisk **+ kontener**.
 
-1. [Utwórz kontener obiektów Blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) zawiera przykładowe dane. Można ustawić poziom dostępu publicznego do dowolnego z jego prawidłowe wartości.
+1. [Utwórz kontener obiektów Blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) zawiera przykładowe dane. Użyj kontenera nazwy "orzecznictwa test". Można ustawić poziom dostępu publicznego do dowolnego z jego prawidłowe wartości.
 
 1. Po utworzeniu kontenera otwórz go i wybierz **przekazywanie** na pasku poleceń.
 
@@ -66,19 +66,19 @@ Wszystkie żądania wymagają klucza interfejsu api na każde żądanie wysłane
 
 ## <a name="set-up-postman"></a>Konfigurowanie narzędzia Postman
 
-Uruchom narzędzie Postman i skonfiguruj żądanie HTTP. Jeśli nie jesteś zaznajomiony z tego narzędzia, zobacz [Eksplorowanie usługi Azure Search interfejsów API REST przy użyciu narzędzia Postman](search-fiddler.md).
+Uruchom narzędzie Postman i importowanie kolekcji Postman orzecznictwa. Alternatywnie skonfiguruj serii żądań HTTP. Jeśli nie jesteś zaznajomiony z tego narzędzia, zobacz [Eksplorowanie usługi Azure Search interfejsów API REST przy użyciu narzędzia Postman](search-fiddler.md).
 
-+ Metoda żądania dla każdego wywołania w tym instruktażu jest **WPIS**.
++ Metoda żądania dla każdego wywołania w tym instruktażu jest **umieścić** lub **WPIS**.
 + Następujące nagłówki żądania (2): "Content-type" wartość "application/json", "api-key" wartość "admin key" (klucz administratora to symbol zastępczy podstawowego klucza wyszukiwania) odpowiednio. 
 + Treść żądania jest, w którym umieszcza się właściwą zawartość wywołania. 
 
   ![Wyszukiwanie częściowo ustrukturyzowane](media/search-semi-structured-data/postmanoverview.png)
 
-Używamy narzędzia Postman się cztery wywołań interfejsu API usługi search, tworzenie źródła danych, indeksu, zestawu umiejętności i indeksatora. Źródło danych zawiera wskaźnik do konta magazynu i danych JSON. Usługa wyszukiwania nawiązuje połączenie podczas importowania danych.
+Używamy narzędzia Postman się cztery wywołań interfejsu API usługi search, tworzenie źródła danych, indeksu, zestawu umiejętności i indeksatora — w tej kolejności. Źródło danych zawiera wskaźnik do swojego konta usługi Azure storage i danych JSON. Usługa wyszukiwania nawiązuje połączenie podczas importowania danych.
 
 [Tworzenie zestawu umiejętności](#create-skillset) skupia się w tym przewodniku: Określa on kroki wzbogacanie i jak dane są utrwalane w magazynie wiedzy.
 
-Końcowy adres URL należy określić wersji interfejsu api oraz dla każdego wywołania powinna zwrócić **201 utworzono**. Wersja interfejsu api (wersja zapoznawcza) do tworzenia zestawu umiejętności dzięki obsłudze magazynu knowledge to `2019-05-06-Preview`.
+Końcowy adres URL należy określić wersji interfejsu api oraz dla każdego wywołania powinna zwrócić **201 utworzono**. Wersja interfejsu api (wersja zapoznawcza) do tworzenia zestawu umiejętności dzięki obsłudze magazynu knowledge to `2019-05-06-Preview` (z uwzględnieniem wielkości liter).
 
 Wykonaj następujące wywołania interfejsu API z klienta REST.
 
@@ -101,10 +101,10 @@ Punkt końcowy tego wywołania jest `https://[service name].search.windows.net/d
         "type": "azureblob",
         "subtype": null,
         "credentials": {
-            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your storage key>;EndpointSuffix=core.windows.net"
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<YOUR-STORAGE-ACCOUNT>;AccountKey=<YOUR-STORAGE-KEY>;EndpointSuffix=core.windows.net"
         },
         "container": {
-            "name": "<your blob container name>",
+            "name": "<YOUR-BLOB-CONTAINER-NAME>",
             "query": null
         },
         "dataChangeDetectionPolicy": null,
@@ -318,24 +318,23 @@ Punkt końcowy tego wywołania jest `https://[service name].search.windows.net/s
    }
    ```
 
-3. Najpierw ustaw `cognitiveServices` i `knowledgeStore` klucza i parametry połączenia. W tym przykładzie te ciągi znajdują się po definicji zestawu umiejętności, pod koniec treści żądania.
+3. Najpierw ustaw `cognitiveServices` i `knowledgeStore` klucza i parametry połączenia. W tym przykładzie te ciągi znajdują się po definicji zestawu umiejętności, pod koniec treści żądania. Użyj zasobu usług Cognitive Services, aprowizowane w warstwie S0 znajduje się w tym samym regionie co usługa Azure Search.
 
     ```json
     "cognitiveServices": {
         "@odata.type": "#Microsoft.Azure.Search.CognitiveServicesByKey",
-        "description": "<your cognitive services resource name>",
-        "key": "<your cognitive services key>"
+        "description": "YOUR-SAME-REGION-S0-COGNITIVE-SERVICES-RESOURCE",
+        "key": "YOUR-COGNITIVE-SERVICES-KEY"
     },
     "knowledgeStore": {
-        "storageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<your storage account name>;AccountKey=<your storage account key>;EndpointSuffix=core.windows.net",
+        "storageConnectionString": "YOUR-STORAGE-ACCOUNT-CONNECTION-STRING",
     ```
 
 3. Przejrzyj umiejętności kolekcję, w szczególności umiejętności Shaper w wierszach 85 i 170, odpowiednio. Umiejętności Shaper jest ważne, ponieważ jego składa struktur danych, dla wyszukiwania wiedzy. Podczas wykonywania zestawu umiejętności struktury te są tylko w pamięci, ale w przypadku przejścia do następnego kroku, zobaczysz, jak te dane wyjściowe można zapisywać magazynu wiedzy w zakresie dalszych badań.
 
-   Poniższy fragment jest z wiersza 207. 
+   Poniższy fragment jest z wiersza 217. 
 
     ```json
-    {
     "name": "Opinions",
     "source": null,
     "sourceContext": "/document/casebody/data/opinions/*",
@@ -361,44 +360,46 @@ Punkt końcowy tego wywołania jest `https://[service name].search.windows.net/s
                     "name": "EntityType",
                     "source": "/document/casebody/data/opinions/*/text/pages/*/entities/*/category"
                 }
-             ]
-          }
-     ]
-   }
+            ]
+        }
+    ]
    . . .
    ```
 
-3. Przegląd `projections` element `knowledgeStore`rozpoczynają się od wiersza 253. Projekcje Określ kompozycji magazynu wiedzy. Prognozy są określone w pary obiektów tabel, ale obecnie tylko jeden w czasie. Jak widać w pierwszym projekcji `tables` jest określony, ale `objects` nie jest. W drugim jest przeciwieństwem.
+3. Przegląd `projections` element `knowledgeStore`rozpoczynają się od wiersza 262. Projekcje Określ kompozycji magazynu wiedzy. Prognozy są określone w pary obiektów tabel, ale obecnie tylko jeden w czasie. Jak widać w pierwszym projekcji `tables` jest określony, ale `objects` nie jest. W drugim jest przeciwieństwem.
 
    W usłudze Azure storage zostaną utworzone tabele w usłudze Table storage dla każdej tabeli, którą tworzysz, a każdy obiekt pobiera kontener w usłudze Blob storage.
 
-   Obiekty zawierają zwykle pełnego wyrażenia wzbogacenia. Tabele zawierają zwykle wzbogacenia częściowe, w przypadku kombinacji, które zostały rozmieszczone do określonych celów. Tabela przypadków w tym przykładzie, ale nie wyświetlane są inne tabele, takich jak jednostki, jury i opinie.
+   Obiekty BLOB są zwykle zawierają pełnego wyrażenia wzbogacenia. Tabele zawierają zwykle wzbogacenia częściowe, w przypadku kombinacji, które zostały rozmieszczone do określonych celów. W tym przykładzie tabele przypadków i opinie, ale nie wyświetlane są inne tabele, takich jak jednostki, pracownicy, jury i stron.
 
     ```json
     "projections": [
-    {
-        "tables": [
-            {
-              "tableName": "Opinions",
-              "generatedKeyName": "OpinionId",
-              "source": "/document/Case/OpinionsSnippets/*"
-            },
-          . . . 
-        ],
-        "objects": []
-    },
-    {
-        "tables": [],
-        "objects": [
-            {
-                "storageContainer": "enrichedcases",
-                "key": "/document/CaseFull/Id",
-                "source": "/document/CaseFull"
-            }
-          ]
+        {
+            "tables": [
+                {
+                    "tableName": "Cases",
+                    "generatedKeyName": "CaseId",
+                    "source": "/document/Case"
+                },
+                {
+                    "tableName": "Opinions",
+                    "generatedKeyName": "OpinionId",
+                    "source": "/document/Case/OpinionsSnippets/*"
+                }
+            ],
+            "objects": []
+        },
+        {
+            "tables": [],
+            "objects": [
+                {
+                    "storageContainer": "enrichedcases",
+                    
+                    "source": "/document/CaseFull"
+                }
+            ]
         }
-      ]
-    }
+    ]
     ```
 
 5. Wyślij żądanie. Odpowiedź powinna wyglądać **201** i wyglądać podobnie do poniższego przykładu, przedstawiający pierwszą część odpowiedzi.

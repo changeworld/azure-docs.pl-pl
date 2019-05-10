@@ -9,12 +9,12 @@ ms.date: 05/06/2019
 ms.topic: conceptual
 ms.service: openshift
 manager: jeconnoc
-ms.openlocfilehash: 7c5fbf135c02abf04e90865e20e902a95174598c
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 3c265d6695af7ba1bc5833db59966a626cb29cb9
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65078118"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65416065"
 ---
 # <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>Konfigurowanie środowiska deweloperskiego Azure Red Hat OpenShift
 
@@ -80,7 +80,13 @@ Aby ręcznie zarejestrować tych dostawców i funkcje, użyj poniższych instruk
     az provider register -n Microsoft.Network --wait
     ```
 
-5. Odśwież rejestracji dostawcy zasobów Microsoft.ContainerService:
+5. Zarejestruj dostawcę Microsoft.KeyVault:
+
+    ```bash
+    az provider register -n Microsoft.KeyVault --wait
+    ```
+
+6. Odśwież rejestracji dostawcy zasobów Microsoft.ContainerService:
 
     ```bash
     az provider register -n Microsoft.ContainerService --wait

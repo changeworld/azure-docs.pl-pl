@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 04/29/2019
+ms.date: 05/06/2019
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: 50714f3fe6d30b4b93a0b42383b6f4634c86eafa
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: d46c545db9e1950988b49cdb577d074b6d04380c
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148044"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236599"
 ---
 # <a name="create-a-shared-image-gallery-using-the-azure-portal"></a>Utwórz galerię udostępnionego obrazu przy użyciu witryny Azure portal
 
@@ -43,7 +43,9 @@ Funkcja galerii obrazów współdzielona ma wiele typów zasobów. Firma Microso
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Aby ukończyć przykład, w tym artykule, konieczne jest posiadanie istniejącego obrazu zarządzanego. Możesz wykonać [samouczka: Tworzenie niestandardowego obrazu maszyny wirtualnej portalu Azure przy użyciu programu Azure PowerShell](tutorial-custom-images.md) aby je utworzyć, jeśli to konieczne. Podczas pracy nad tym artykule, Zamień grupę zasobów i maszynę Wirtualną przypadkach nazwy.
+Aby ukończyć przykład, w tym artykule, konieczne jest posiadanie istniejącego obrazu zarządzanego. Możesz wykonać [samouczka: Tworzenie niestandardowego obrazu maszyny wirtualnej portalu Azure przy użyciu programu Azure PowerShell](tutorial-custom-images.md) aby je utworzyć, jeśli to konieczne. Jeśli zarządzany obraz zawiera dysk z danymi, rozmiar dysku danych nie może być więcej niż 1 TB.
+
+Podczas pracy nad tym artykule, Zamień grupę zasobów i maszynę Wirtualną przypadkach nazwy.
 
 
 [!INCLUDE [virtual-machines-common-shared-images-portal](../../../includes/virtual-machines-common-shared-images-portal.md)]

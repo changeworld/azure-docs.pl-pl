@@ -10,18 +10,18 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 12/03/2018
+ms.date: 05/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 55b19a6cf71730858fcf42880f71a2c9c07a3b31
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2842a365cdf25a6b19f655f6397d62ecb9a723b0
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64683978"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406880"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>Wysyłanie zdarzeń do środowiska usługi Time Series Insights za pomocą Centrum zdarzeń
 
-W tym artykule wyjaśniono, jak utworzyć i skonfigurować Centrum zdarzeń w usłudze Azure Event Hubs, a następnie uruchom przykładową aplikację do wypychania zdarzeń. Jeśli masz już Centrum zdarzeń, które zawiera zdarzenia w formacie JSON, pominąć ten samouczek i wyświetlić swoje środowisko w [Azure Time Series Insights](./time-series-insights-update-create-environment.md).
+W tym artykule wyjaśniono, jak utworzyć i skonfigurować Centrum zdarzeń w usłudze Azure Event Hubs. Zawiera również opis jak uruchomić przykładową aplikację do wypychania zdarzeń do usługi Azure Time Series Insights z usługi Event Hubs. Jeśli masz już Centrum zdarzeń, które ze zdarzeniami w formacie JSON, pominąć ten samouczek i wyświetlić swoje środowisko w [Azure Time Series Insights](./time-series-insights-update-create-environment.md).
 
 ## <a name="configure-an-event-hub"></a>Konfigurowanie centrum zdarzeń
 
@@ -30,14 +30,14 @@ W tym artykule wyjaśniono, jak utworzyć i skonfigurować Centrum zdarzeń w us
 1. Wybierz Centrum zdarzeń.
 1. Podczas tworzenia Centrum zdarzeń są naprawdę tworzenie przestrzeni nazw Centrum zdarzeń. Jeśli nie został jeszcze utworzony Centrum zdarzeń w przestrzeni nazw, w menu, w obszarze **jednostek**, utworzyć Centrum zdarzeń.  
 
-    ![Lista usługi event hubs][1]
+    [![Lista usługi event hubs](media/send-events/updated.png)](media/send-events/updated.png#lightbox)
 
 1. Po utworzeniu Centrum zdarzeń, wybierz go na liście usługi event hubs.
 1. W menu w obszarze **jednostek**, wybierz opcję **usługi Event Hubs**.
 1. Wybierz nazwę Centrum zdarzeń, aby go skonfigurować.
 1. W obszarze **jednostek**, wybierz opcję **grupy konsumentów**, a następnie wybierz pozycję **grupy odbiorców**.
 
-    ![Utwórz grupę odbiorców][2]
+    [![Utwórz grupę odbiorców](media/send-events/consumer-group.png)](media/send-events/consumer-group.png#lightbox)
 
 1. Upewnij się, że utworzona grupa odbiorców jest używana wyłącznie przez źródło zdarzeń usługi Time Series Insights.
 
@@ -46,17 +46,17 @@ W tym artykule wyjaśniono, jak utworzyć i skonfigurować Centrum zdarzeń w us
 
 1. W menu w obszarze **ustawienia**, wybierz opcję **zasady dostępu współdzielonego**, a następnie wybierz pozycję **Dodaj**.
 
-    ![Wybierz zasady dostępu współdzielonego, a następnie wybierz przycisk Dodaj][3]
+    [![Wybierz zasady dostępu współdzielonego, a następnie wybierz przycisk Dodaj](media/send-events/shared-access-policy.png)](media/send-events/shared-access-policy.png#lightbox)
 
 1. W **Dodaj nowe zasady dostępu współdzielonego** okienku tworzenie dostępu współdzielonego, o nazwie **Moje_zasady_wysyłania**. Te zasady dostępu współdzielonego będzie używać do wysyłania zdarzeń w C# przykłady w dalszej części tego artykułu.
 
-    ![W polu Nazwa zasad wprowadź Moje_zasady_wysyłania][4]
+    [![W polu Nazwa zasad wprowadź Moje_zasady_wysyłania](media/send-events/shared-access-policy-2.png)](media/send-events/shared-access-policy-2.png#lightbox)
 
 1. W obszarze **oświadczenia**, wybierz opcję **wysyłania** pola wyboru.
 
 ## <a name="add-a-time-series-insights-instance"></a>Dodaj wystąpienie usługi Time Series Insights
 
-Aktualizacja usługi Time Series Insights używa wystąpienia, aby dodać kontekstowego dane do przychodzących danych telemetrycznych. Dane sprzężony w czasie wykonywania zapytań przy użyciu **identyfikator serii czasu**. **Identyfikator serii czasu** windmills przykładowy projekt, której używamy w dalszej części tego artykułu jest **identyfikator**. Aby dowiedzieć się więcej o usłudze Time Series Insights instances i **identyfikator serii czasu**, zobacz [modeli szeregów czasowych](./time-series-insights-update-tsm.md).
+Aktualizacja usługi Time Series Insights używa wystąpienia, aby dodać kontekstowego dane do przychodzących danych telemetrycznych. Dane sprzężony w czasie wykonywania zapytań przy użyciu **identyfikator serii czasu**. **Identyfikator serii czasu** windmills przykładowy projekt, której używamy w dalszej części tego artykułu jest `id`. Aby dowiedzieć się więcej o usłudze Time Series Insights instances i **identyfikator serii czasu**, zobacz [modeli szeregów czasowych](./time-series-insights-update-tsm.md).
 
 ### <a name="create-a-time-series-insights-event-source"></a>Tworzenie źródła zdarzeń usługi Time Series Insights
 
@@ -72,78 +72,44 @@ Aktualizacja usługi Time Series Insights używa wystąpienia, aby dodać kontek
 
 1. Przejdź do **współużytkowane zasady dostępu** > **RootManageSharedAccessKey**. Skopiuj wartość dla **połączenia klucz podstawowy stingu**.
 
-    ![Skopiuj wartość dla parametry połączenia klucza podstawowego][5]
+    [![Skopiuj wartość dla parametry połączenia klucza podstawowego](media/send-events/sample-code-connection-string.png)](media/send-events/sample-code-connection-string.png#lightbox)
 
 1. Przejdź do pozycji https://tsiclientsample.azurewebsites.net/windFarmGen.html (Plik > Nowy > Inny). Adres URL jest uruchamiany Wiatrak symulowanych urządzeń.
 1. W **parametry połączenia Centrum zdarzeń** pole na stronie internetowej, Wklej parametry połączenia, który został skopiowany w [wypychania zdarzeń](#push-events).
   
-    ![Wklej parametry połączenia klucza podstawowego w polu Parametry połączenia Centrum zdarzeń][6]
+    [![Wklej parametry połączenia klucza podstawowego w polu Parametry połączenia Centrum zdarzeń](media/send-events/updated_two.png)](media/send-events/updated_two.png#lightbox)
 
 1. Wybierz **kliknij, aby rozpocząć**. Symulator generuje wystąpienia JSON, który może bezpośrednio korzystać.
 
-1. Wróć do Centrum zdarzeń w witrynie Azure portal. Na **Przegląd** strony, powinny zostać wyświetlone nowe zdarzenia, które są odbierane przez Centrum zdarzeń:
+1. Wróć do Centrum zdarzeń w witrynie Azure portal. Na **Przegląd** strony, powinny zostać wyświetlone nowe zdarzenia, które są odbierane przez Centrum zdarzeń.
 
-    ![Strony Przegląd Centrum zdarzeń, który zawiera metryki dla Centrum zdarzeń][7]
+    [![Strony Przegląd Centrum zdarzeń, który zawiera metryki dla Centrum zdarzeń](media/send-events/telemetry.png)](media/send-events/telemetry.png#lightbox)
 
-<a id="json"></a>
+## <a name="json"></a>Obsługiwane kształty JSON
 
-## <a name="supported-json-shapes"></a>Obsługiwane kształty JSON
+### <a name="example-one"></a>Przykład jednego
 
-### <a name="sample-1"></a>Przykład 1
+* **Dane wejściowe**: Prosty obiekt JSON.
 
-#### <a name="input"></a>Dane wejściowe
-
-Prosty obiekt JSON:
-
-```json
-{
-    "id":"device1",
-    "timestamp":"2016-01-08T01:08:00Z"
-}
-```
-
-#### <a name="output-one-event"></a>Dane wyjściowe: Jedno zdarzenie
-
-|id|sygnatura czasowa|
-|--------|---------------|
-|device1|2016-01-08T01:08:00Z|
-
-### <a name="sample-2"></a>Przykład 2
-
-#### <a name="input"></a>Dane wejściowe
-
-Tablica JSON z dwoma obiektami JSON. Każdy obiekt JSON jest konwertowana na zdarzenie.
-
-```json
-[
+    ```JSON
     {
         "id":"device1",
         "timestamp":"2016-01-08T01:08:00Z"
-    },
-    {
-        "id":"device2",
-        "timestamp":"2016-01-17T01:17:00Z"
     }
-]
-```
+    ```
 
-#### <a name="output-two-events"></a>Dane wyjściowe: Dwa zdarzenia
+* **Dane wyjściowe**: Jedno zdarzenie.
 
-|id|sygnatura czasowa|
-|--------|---------------|
-|device1|2016-01-08T01:08:00Z|
-|device2|2016-01-08T01:17:00Z|
+    |identyfikator|sygnatura czasowa|
+    |--------|---------------|
+    |device1|2016-01-08T01:08:00Z|
 
-### <a name="sample-3"></a>Przykład 3
+### <a name="example-two"></a>Przykład 2
 
-#### <a name="input"></a>Dane wejściowe
+* **Dane wejściowe**: Tablica JSON z dwoma obiektami JSON. Każdy obiekt JSON jest konwertowana na zdarzenie.
 
-Obiekt JSON z zagnieżdżonych tablic JSON, który zawiera dwa obiekty JSON:
-
-```json
-{
-    "location":"WestUs",
-    "events":[
+    ```JSON
+    [
         {
             "id":"device1",
             "timestamp":"2016-01-08T01:08:00Z"
@@ -153,70 +119,83 @@ Obiekt JSON z zagnieżdżonych tablic JSON, który zawiera dwa obiekty JSON:
             "timestamp":"2016-01-17T01:17:00Z"
         }
     ]
-}
-```
+    ```
 
-#### <a name="output-two-events"></a>Dane wyjściowe: Dwa zdarzenia
+* **Dane wyjściowe**: Dwa zdarzenia.
 
-Właściwość **lokalizacji** jest kopiowana do każdego zdarzenia.
+    |identyfikator|sygnatura czasowa|
+    |--------|---------------|
+    |device1|2016-01-08T01:08:00Z|
+    |device2|2016-01-08T01:17:00Z|
 
-|location|events.id|events.timestamp|
-|--------|---------------|----------------------|
-|WestUs|device1|2016-01-08T01:08:00Z|
-|WestUs|device2|2016-01-08T01:17:00Z|
+### <a name="example-three"></a>Przykład 3
 
-### <a name="sample-4"></a>Przykład 4
+* **Dane wejściowe**: Obiekt JSON z zagnieżdżonych tablic JSON, który zawiera dwa obiekty JSON.
 
-#### <a name="input"></a>Dane wejściowe
-
-Obiekt JSON z zagnieżdżonych tablic JSON, który zawiera dwa obiekty JSON. Te dane wejściowe pokazują, że globalne właściwości mogą być reprezentowane przez złożony obiekt JSON.
-
-```json
-{
-    "location":"WestUs",
-    "manufacturer":{
-        "name":"manufacturer1",
-        "location":"EastUs"
-    },
-    "events":[
-        {
-            "id":"device1",
-            "timestamp":"2016-01-08T01:08:00Z",
-            "data":{
-                "type":"pressure",
-                "units":"psi",
-                "value":108.09
+    ```JSON
+    {
+        "location":"WestUs",
+        "events":[
+            {
+                "id":"device1",
+                "timestamp":"2016-01-08T01:08:00Z"
+            },
+            {
+                "id":"device2",
+                "timestamp":"2016-01-17T01:17:00Z"
             }
+        ]
+    }
+    ```
+
+* **Dane wyjściowe**: Dwa zdarzenia. Właściwość **lokalizacji** jest kopiowana do każdego zdarzenia.
+
+    |location|events.id|events.timestamp|
+    |--------|---------------|----------------------|
+    |WestUs|device1|2016-01-08T01:08:00Z|
+    |WestUs|device2|2016-01-08T01:17:00Z|
+
+### <a name="example-four"></a>Przykład 4
+
+* **Dane wejściowe**: Obiekt JSON z zagnieżdżonych tablic JSON, który zawiera dwa obiekty JSON. Te dane wejściowe pokazują, że globalne właściwości mogą być reprezentowane przez złożony obiekt JSON.
+
+    ```JSON
+    {
+        "location":"WestUs",
+        "manufacturer":{
+            "name":"manufacturer1",
+            "location":"EastUs"
         },
-        {
-            "id":"device2",
-            "timestamp":"2016-01-17T01:17:00Z",
-            "data":{
-                "type":"vibration",
-                "units":"abs G",
-                "value":217.09
+        "events":[
+            {
+                "id":"device1",
+                "timestamp":"2016-01-08T01:08:00Z",
+                "data":{
+                    "type":"pressure",
+                    "units":"psi",
+                    "value":108.09
+                }
+            },
+            {
+                "id":"device2",
+                "timestamp":"2016-01-17T01:17:00Z",
+                "data":{
+                    "type":"vibration",
+                    "units":"abs G",
+                    "value":217.09
+                }
             }
-        }
-    ]
-}
-```
+        ]
+    }
+    ```
 
-#### <a name="output-two-events"></a>Dane wyjściowe: Dwa zdarzenia
+* **Dane wyjściowe**: Dwa zdarzenia.
 
-|location|manufacturer.name|manufacturer.location|events.id|events.timestamp|events.data.type|events.data.units|events.data.value|
-|---|---|---|---|---|---|---|---|
-|WestUs|manufacturer1|EastUs|device1|2016-01-08T01:08:00Z|pressure|psi|108.09|
-|WestUs|manufacturer1|EastUs|device2|2016-01-08T01:17:00Z|vibration|abs G|217.09|
+    |lokalizacja|manufacturer.name|manufacturer.location|events.id|events.timestamp|events.data.type|events.data.units|events.data.value|
+    |---|---|---|---|---|---|---|---|
+    |WestUs|manufacturer1|EastUs|device1|2016-01-08T01:08:00Z|pressure|psi|108.09|
+    |WestUs|manufacturer1|EastUs|device2|2016-01-08T01:17:00Z|vibration|abs G|217.09|
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Wyświetlić swoje środowisko](https://insights.timeseries.azure.com) w Eksploratorze usługi Time Series Insights.
-
-<!-- Images -->
-[1]: media/send-events/updated.png
-[2]: media/send-events/consumer-group.png
-[3]: media/send-events/shared-access-policy.png
-[4]: media/send-events/shared-access-policy-2.png
-[5]: media/send-events/sample-code-connection-string.png
-[6]: media/send-events/updated_two.png
-[7]: media/send-events/telemetry.png

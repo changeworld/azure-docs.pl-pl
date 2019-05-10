@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: bf36de1965a8c819af0ef5af98a2393d4cefa1b3
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: b072314bdbec1d5a6184e6f20e98c35a9135a5b7
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205717"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508424"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Sieć wirtualna platformy Azure — często zadawane pytania (FAQ)
 
@@ -67,7 +67,9 @@ Tak. Aby uzyskać więcej informacji na temat zakresy publicznych adresów IP, z
 Tak. Zobacz [limitów platformy Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) Aby uzyskać szczegółowe informacje. Przestrzeni adresowej podsieci nie może nakładać się na siebie nawzajem.
 
 ### <a name="are-there-any-restrictions-on-using-ip-addresses-within-these-subnets"></a>Czy istnieją jakiekolwiek ograniczenia dotyczące używania adresów IP w ramach tych podsieci?
-Tak. Platforma Azure rezerwuje 5 adresów IP dla każdej podsieci. Pierwsze i ostatnie adresy IP każdej podsieci są zarezerwowane dla zgodności protokołów, a adresy x.x.x.1 x.x.x.3 każdej podsieci, które są używane dla usług platformy Azure.
+Tak. Platforma Azure rezerwuje 5 adresów IP dla każdej podsieci. Są to x.x.x.0 x.x.x.3 i ostatni adres podsieci.    
+- x.x.x.0 i ostatni adres podsieci jest zarezerwowany dla zgodności protokołów.
+- x.x.x.1 x.x.x.3 jest zarezerwowana w każdej podsieci dla usług platformy Azure.
 
 ### <a name="how-small-and-how-large-can-vnets-and-subnets-be"></a>Jak małe i jak duży może być sieci wirtualnych i podsieci?
 Najmniejsza obsługiwana podsieci jest rozmiarze/29, a największa /8 (przy użyciu definicje podsieci CIDR).
@@ -242,7 +244,7 @@ Podstawowe usługi równoważenia obciążenia, co oznacza, że nie może komuni
 - Usługa Application Gateway (wersja 1) jednostek SKU
 - Service Fabric
 - SQL MI
-- API Managemenet
+- API Management
 - Active Directory Domain Service (ADDS)
 - Logic Apps
 - HD Insight
@@ -281,6 +283,9 @@ Nie. Przechodnie komunikacja równorzędna nie jest obsługiwana. Należy równo
 
 ### <a name="are-there-any-bandwidth-limitations-for-peering-connections"></a>Czy istnieją jakiekolwiek ograniczenia przepustowości, dla połączenia komunikacji równorzędnej?
 Nie. Wirtualne sieci równorzędne, lokalnych lub globalnych, nie nakłada żadnych ograniczeń przepustowości. Przepustowość jest ograniczona tylko maszyna wirtualna lub zasób obliczeniowy.
+
+### <a name="how-can-i-troubleshoot-vnet-peering-issues"></a>Jak rozwiązywać problemy komunikacja równorzędna sieci wirtualnych
+Oto [przewodnik rozwiązywania problemów z] (https://support.microsoft.com/en-us/help/4486956/troubleshooter-for-virtual-network-peering-issues) możesz wypróbować.
 
 ## <a name="virtual-network-tap"></a>Virtual Network TAP
 

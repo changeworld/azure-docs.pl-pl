@@ -1,6 +1,6 @@
 ---
 title: Omówienie informacji zabezpieczających (wersja zapoznawcza) — Azure Active Directory | Microsoft Docs
-description: Ogólny przegląd informacji na temat obszaru informacji zabezpieczających, w tym linki do innych artykułów dotyczących tej funkcji.
+description: Lista linków do artykułów na temat funkcji i stronę informacji zabezpieczających.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -9,34 +9,36 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
-ms.date: 02/11/2019
+ms.date: 05/08/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 234c7244f438926f43ddf31234a38c9034a6ca52
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1e471f447b0c50c9c65923d7135b2b48789728df
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60473245"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65470699"
 ---
 # <a name="security-info-preview-overview"></a>Omówienie informacji zabezpieczających (wersja zapoznawcza)
-Na stronie **Informacje zabezpieczające** możesz skonfigurować swoje informacje zabezpieczające na potrzeby weryfikacji dwuetapowej i resetowania haseł. Na tej stronie możesz również edytować swoje informacje zabezpieczające i zmienić metodę domyślną.
+
+**Zabezpieczające** strona pomaga skonfigurować swoje metody weryfikacji dwuetapowej i informacje dotyczące resetowania hasła. W tym obszarze pomaga także zaktualizować informacji o zabezpieczeniach osobistych i domyślną metodę weryfikacji.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 >[!Important]
 >Ta zawartość jest przeznaczona dla użytkowników. Jeśli jesteś administratorem, więcej informacji na temat konfigurowania i zarządzania środowiskiem usługi Azure Active Directory (Azure AD) możesz znaleźć w [dokumentacji usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory).
 
-## <a name="in-this-section"></a>W tej sekcji
-Więcej informacji na temat dodawania, aktualizowania i usuwania informacji zabezpieczających, zależnie od metody, której chcesz użyć, znajdziesz w następujących artykułach.
+## <a name="security-info-articles"></a>Informacje o artykuły dotyczące zabezpieczeń
+
+Aby uzyskać szczegółowe informacje i instrukcje dotyczące dodawania aktualizowania i usuwania swoje informacje zabezpieczające, zobacz następujące artykuły, które są (oparte na metodzie, którego chcesz użyć):
 
 |Artykuł |Opis |
 |------|------------|
-|[Konfigurowanie informacji zabezpieczających podczas logowania](security-info-setup-signin.md)|W tym artykule opisano sposób konfigurowania informacji zabezpieczających w przypadku wyświetlenia monitu na stronie logowania.|
-|[Konfigurowanie informacji zabezpieczających dla aplikacji Authenticator](security-info-setup-auth-app.md)|W tym artykule opisano sposób konfigurowania informacji zabezpieczających w celu używania metody aplikacji Microsoft Authenticator.|
-|[Konfigurowanie informacji zabezpieczających pod kątem wiadomości SMS](security-info-setup-text-msg.md)|W tym artykule opisano sposób konfigurowania informacji zabezpieczających w celu używania metody SMS-ów.|
-|[Set up security info to use phone calls](security-info-setup-phone-number.md) (Konfigurowanie informacji zabezpieczających w celu korzystania z połączeń telefonicznych)| Opisuje sposób konfigurowania numeru telefonu jako metody.|
-|[Set up security info to use email](security-info-setup-email.md) (Konfigurowanie informacji zabezpieczających w celu korzystania z poczty e-mail)|Opisuje sposób konfigurowania adresu e-mail, aby pomóc Ci resetować hasło.|
-|[Set up security info to use pre-defined security questions](security-info-setup-questions.md) (Konfigurowanie informacji zabezpieczających w celu korzystania ze wstępnie zdefiniowanych pytań zabezpieczających)|Opisuje sposób użycia pytań zabezpieczających w celu uproszczenia procesu resetowania hasła.|
-|[Zarządzanie hasłami aplikacji](security-info-app-passwords.md)|Opisuje sposób konfigurowania haseł aplikacji przy użyciu informacji zabezpieczających.|
-|[Jak się zalogować](user-help-sign-in.md)|Opisuje sposób logowania przy użyciu wybranej metody.|
+|[Dodaj metodę zabezpieczeń z wiersza na stronie logowania](security-info-setup-signin.md)| Instrukcje dotyczące sposobu konfigurowania swoje informacje zabezpieczające po wyświetleniu monitu na stronie logowania. Ten monit będą widoczne tylko, jeśli nie zostały już skonfigurowane jako informacje zabezpieczające wymagane przez Twoją organizację. Jeśli nie widzisz, w wierszu polecenia, nadal można zmienić i Dodaj metody weryfikacji za pomocą innych artykułów w tej tabeli.|
+|[Dodaj aplikację Microsoft Authenticator jako metodę weryfikacji](security-info-setup-auth-app.md)| Instrukcje dotyczące sposobu konfigurowania aplikacji Microsoft Authenticator jako metodę weryfikacji.|
+|[Dodaj tekst wiadomości jako metodę weryfikacji](security-info-setup-text-msg.md)| Instrukcje dotyczące sposobu konfigurowania tekst wiadomości jako metodę weryfikacji.|
+|[Dodawanie połączeń telefonicznych jako metodę weryfikacji](security-info-setup-phone-number.md)| Instrukcje dotyczące sposobu konfigurowania Twój numer telefonu, jako metodę weryfikacji.|
+|[Dodaj adres e-mail, aby zresetować własne hasło](security-info-setup-email.md)| Instrukcje dotyczące sposobu dodawania swój adres e-mail, dzięki czemu można zresetować własnego hasła.|
+|[Dodaj pytanie zabezpieczające, aby zresetować własne hasło](security-info-setup-questions.md)| Instrukcje dotyczące sposobu dodawania pytań zabezpieczających wstępnie zdefiniowane, dzięki czemu można zresetować własnego hasła.|
+|[Zarządzanie hasłami aplikacji dla aplikacji, które nie obsługują weryfikację dwuetapową](security-info-app-passwords.md)| Instrukcje dotyczące sposobu tworzenia haseł aplikacji dla aplikacji, które nie obsługują weryfikacji dwuetapowej w organizacji korzystającej z weryfikacji dwuetapowej.|
+|[Jak się zalogować](user-help-sign-in.md)|Opisuje sposób logowania przy użyciu wybranej metody weryfikacji.|

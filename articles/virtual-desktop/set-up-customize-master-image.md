@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 04/03/2019
 ms.author: helohr
-ms.openlocfilehash: aff96931f95442c67d08521e72952dd79dad44e2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 58471dc539f72c49b041638e928dda751f4bf5a2
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60870281"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65410591"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Przygotowywanie i dostosowywanie głównego obrazu wirtualnego dysku twardego
 
@@ -101,7 +101,7 @@ Poniższy przykładowy plik XML zainstaluje wydania dla niejawnych testerów, zn
 
 ```xml
 <Configuration>
-    <Add OfficeClientEdition="64" SourcePath="http://officecdn.microsoft.com/pr/5440fd1f-7ecb-4221-8110-145efaa6372f">
+    <Add OfficeClientEdition="64" SourcePath="https://officecdn.microsoft.com/pr/5440fd1f-7ecb-4221-8110-145efaa6372f">
         <Product ID="O365ProPlusRetail">
             <Language ID="en-US" />
             <Language ID="MatchOS" Fallback = "en-US"/>
@@ -125,7 +125,7 @@ Poniższy przykładowy plik XML zainstaluje wydania dla niejawnych testerów, zn
         </Product>
     </Add>
     <RemoveMSI All="True" />
-    <Updates Enabled="FALSE" UpdatePath="http://officecdn.microsoft.com/pr/5440fd1f-7ecb-4221-8110-145efaa6372f" />
+    <Updates Enabled="FALSE" UpdatePath="https://officecdn.microsoft.com/pr/5440fd1f-7ecb-4221-8110-145efaa6372f" />
     <Display Level="None" AcceptEULA="TRUE" />
     <Logging Level="Verbose" Path="%temp%\WVDOfficeInstall" />
     <Property Value="TRUE" Name="FORCEAPPSHUTDOWN"/>
@@ -210,7 +210,7 @@ Poniżej przedstawiono sposób instalowania usługi OneDrive w trybie poszczegó
 6. Uruchom następujące polecenie, aby skonfigurować usługi OneDrive do uruchomienia podczas logowania dla wszystkich użytkowników:
 
     ```batch
-    REG ADD "HKLM\Software\Microsoft\Windows\CurrentVersion\Run" /v OneDrive /t REG_SZ /d "C:\\Program Files (x86)\Microsoft OneDrive\OneDrive.exe /background" /f
+    REG ADD "HKLM\Software\Microsoft\Windows\CurrentVersion\Run" /v OneDrive /t REG_SZ /d "C:\Program Files (x86)\Microsoft OneDrive\OneDrive.exe /background" /f
     ```
 
 7. Włącz **dyskretnie skonfigurować konto użytkownika** , uruchamiając następujące polecenie.

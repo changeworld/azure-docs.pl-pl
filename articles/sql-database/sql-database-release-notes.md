@@ -8,14 +8,14 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/23/2019
+ms.date: 05/07/2019
 ms.author: carlrab
-ms.openlocfilehash: e6d702c7a3194f07f9d04139acbc9b6101b296ea
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 923e475cd690902c61c2f89578c2c62effe4cd86
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64717431"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406581"
 ---
 # <a name="sql-database-release-notes"></a>Informacje o wersji bazy danych SQL
 
@@ -25,7 +25,8 @@ Ten artykuł zawiera listę nowych funkcji i ulepszeń, w ramach usługi SQL Dat
 
 | Cecha | Szczegóły |
 | ---| --- |
-| Zadania elastycznych baz danych | Aby uzyskać informacje, zobacz [tworzenie, konfigurowanie i zarządzanie nimi zadań elastycznych](elastic-jobs-overview.md) |
+| Warstwa bezserwerowych usług obliczeniowych | Aby uzyskać informacje, zobacz [bez użycia serwera bazy danych SQL Database (wersja zapoznawcza)](sql-database-serverless.md).|
+| Zadania Elastic Database | Aby uzyskać informacje, zobacz [tworzenie, konfigurowanie i zarządzanie nimi zadań elastycznych](elastic-jobs-overview.md) |
 | Transakcje elastyczne | [Transakcje rozproszone w bazach danych w chmurze](sql-database-elastic-transactions-overview.md) |
 | Zapytania elastyczne | Aby uzyskać informacje, zobacz [elastyczne zapytanie — omówienie](sql-database-elastic-query-overview.md) |
 | Replikacja za pomocą wystąpienia zarządzanego |Aby uzyskać informacje, zobacz [Konfigurowanie replikacji w bazie danych wystąpienia zarządzanego usługi Azure SQL Database](replication-with-sql-database-managed-instance.md)|
@@ -45,6 +46,16 @@ Ten artykuł zawiera listę nowych funkcji i ulepszeń, w ramach usługi SQL Dat
 |SQL Analytics|Aby uzyskać informacje, zobacz [usługi Azure SQL Analytics](../azure-monitor/insights/azure-sql.md)|
 | Obsługa strefy czasowej dla wystąpienia zarządzanego|Aby uzyskać więcej informacji, zobacz [strefę czasową w wystąpieniu zarządzanym usługi Azure SQL Database](sql-database-managed-instance-timezone.md)|
 |||
+
+## <a name="may-2019"></a>Maja 2019 r
+
+### <a name="service-improvements"></a>Udoskonalenia usługi
+
+| Udoskonalenia usługi | Szczegóły |
+| --- | --- |
+|Warstwa usługi Hiperskala| Aby uzyskać więcej informacji, zobacz [warstwy usług w Hiperskali dla maksymalnie 100 TB](sql-database-service-tier-hyperscale.md).|
+|Warstwa bezserwerowych usług obliczeniowych| Aby uzyskać więcej informacji, zobacz [bez użycia serwera bazy danych SQL Database (wersja zapoznawcza)](sql-database-serverless.md).|
+
 
 ## <a name="april-2019"></a>2019 kwietnia
 

@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 11/27/2017
+ms.date: 05/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6b5cdf8aebdf584216afef9f1d1421eea8c4ba4e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 4b2f73013b399dd2ca3d549e2ac2ec4ffba65b81
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64685147"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471740"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Monitorowanie i minimalizowanie ograniczania w celu zmniejszenia opóźnienia w usłudze Azure Time Series Insights
 
@@ -32,23 +32,23 @@ Możesz z największym prawdopodobieństwem mogą wystąpić opóźnienia i ogra
 - Wypchnij dużych ilości zdarzeń historycznych do źródła zdarzenia skutkuje to opóźnienie (usługi Time Series Insights będzie trzeba zapoznać się z nimi).
 - Dołącz do danymi referencyjnymi przy użyciu telemetrii, co skutkuje większym rozmiarze zdarzenia.  Z punktu widzenia ograniczania pakiet ingressed danych o rozmiarze pakietów wynosi 32 KB jest traktowane jako 32 zdarzenia, każdy o rozmiarze 1 KB. Maksymalny dozwolony rozmiar zdarzenia wynosi 32 KB; pakiety danych większe niż 32 KB są obcinane.
 
-## <a name="video"></a>Połączenia wideo
+## <a name="video"></a>Wideo
 
-### <a name="in-this-video-we-cover-time-series-insights-data-ingress-behavior-and-how-to-plan-for-itbr"></a>W tym filmie omówione zachowania w zakresie transferu danych przychodzących usługi Time Series Insights danych oraz sposobu planowania dla niego.</br>
+### <a name="learn-about-time-series-insights-data-ingress-behavior-and-how-to-plan-for-itbr"></a>Więcej informacji na temat zachowania w zakresie transferu danych przychodzących usługi Time Series Insights danych oraz sposobu planowania dla niego.</br>
 
 > [!VIDEO https://www.youtube.com/embed/npeZLAd9lxo]
 
 ## <a name="monitor-latency-and-throttling-with-alerts"></a>Monitorowanie opóźnienia i ograniczania przepustowości z alertami
 
-Alerty mogą ułatwić zdiagnozować i rozwiązać problemy z opóźnienia spowodowane przez środowiska. 
+Alerty mogą ułatwić zdiagnozować i rozwiązać problemy z opóźnienia spowodowane przez środowiska.
 
-1. W witrynie Azure portal kliknij pozycję **metryki**. 
+1. W witrynie Azure portal kliknij pozycję **metryki**.
 
-   ![Metryki](media/environment-mitigate-latency/add-metrics.png)
+   [![Metryki](media/environment-mitigate-latency/add-metrics.png)](media/environment-mitigate-latency/add-metrics.png#lightbox)
 
-2. Kliknij pozycję **Dodaj alert metryki**.  
+1. Kliknij pozycję **Dodaj alert metryki**.  
 
-    ![Dodawanie alertu dotyczącego metryki](media/environment-mitigate-latency/add-metric-alert.png)
+   [![Dodaj alert metryki](media/environment-mitigate-latency/add-metric-alert.png)](media/environment-mitigate-latency/add-metric-alert.png#lightbox)
 
 Z tego miejsca można skonfigurować alertów za pomocą następujących metryk:
 
@@ -64,19 +64,19 @@ Z tego miejsca można skonfigurować alertów za pomocą następujących metryk:
 
 ![Opóźnienie](media/environment-mitigate-latency/latency.png)
 
-Jeśli użytkownik są ograniczane, zobaczysz wartość *ruch przychodzący Odebrano komunikat zwłokę czasową obowiązującą*, informujące o liczbę sekund za TSI pochodzi z rzeczywisty czas komunikat trafienia źródło zdarzenia (z wyjątkiem indeksowania czas appx. 30 – 60 sekund).  *Opóźnienie liczby komunikatów odebranych ruch przychodzący* również powinien mieć wartość, co pozwala określić, ile komunikatów za Tobą są.  Najprostszym sposobem aktualizować jest zwiększenie pojemności Twojego środowiska do rozmiar, który umożliwi przezwyciężyć różnica.  
+* Jeśli użytkownik są ograniczane, zobaczysz wartość *ruch przychodzący Odebrano komunikat zwłokę czasową obowiązującą*, informujące o liczbę sekund za usługi TSI pochodzi z rzeczywisty czas komunikat trafienia źródło zdarzenia (z wyjątkiem indeksowania czas appx. 30 – 60 sekund).  *Opóźnienie liczby komunikatów odebranych ruch przychodzący* również powinien mieć wartość, co pozwala określić, ile komunikatów za Tobą są.  Najprostszym sposobem aktualizować jest zwiększenie pojemności Twojego środowiska do rozmiar, który umożliwi przezwyciężyć różnica.  
 
-Na przykład jeśli w środowisku jednej jednostki S1, a jest aktualizowany z opóźnieniem pięć milionów komunikatów może zwiększyć rozmiar środowiska do 6 jednostek wokół jeden dzień można aktualizować.  Użytkownik może zwiększyć nawet bardziej efektywnej się szybciej.  Okres zapoznać się ze zmianami często dochodzi podczas początkowego inicjowania obsługi administracyjnej środowiska, szczególnie w przypadku, gdy połączysz ze źródłem zdarzeń, które zawiera zdarzenia w nim lub zbiorcze przekazywanie dużej ilości danych historycznych.
+  Na przykład w środowisku jednej jednostki S1 i jest to opóźnienie 5 000 000 wiadomości, można zwiększyć rozmiar środowiska do 6 jednostek wokół jeden dzień można aktualizować.  Użytkownik może zwiększyć nawet bardziej efektywnej się szybciej. Okres zapoznać się ze zmianami często dochodzi podczas początkowego inicjowania obsługi administracyjnej środowiska, szczególnie w przypadku, gdy połączysz ze źródłem zdarzeń, które zawiera zdarzenia w nim lub zbiorcze przekazywanie dużej ilości danych historycznych.
 
-Inna technika polega na ustawieniu **przyjętych zdarzeń przechowywanych** alert > = Próg nieco poniżej środowiska całkowitej pojemności dla okresu 2 godzin.  Ten alert może ułatwić zrozumienie, jeśli stale się w pojemności, co oznacza wysokie prawdopodobieństwo opóźnienia.  
+* Inna technika polega na ustawieniu **przyjętych zdarzeń przechowywanych** alert > = Próg nieco poniżej środowiska całkowitej pojemności dla okresu 2 godzin.  Ten alert może ułatwić zrozumienie, jeśli stale się w pojemności, co oznacza wysokie prawdopodobieństwo opóźnienia. 
 
-Na przykład, jeśli masz trzech jednostek S1 wykorzystanych (lub 2100 zdarzeń na pojemność zdarzeń przychodzących minuty), można ustawić **przyjętych zdarzeń przechowywanych** alert dotyczący > = 1900 zdarzeń przez 2 godziny. Jeśli są stale powyżej wartości progowej, a w związku z tym, wyzwalania alertu, są prawdopodobnie w obszarze aprowizowano.  
+  Na przykład, jeśli masz trzech jednostek S1 wykorzystanych (lub 2100 zdarzeń na pojemność zdarzeń przychodzących minuty), można ustawić **przyjętych zdarzeń przechowywanych** alert dotyczący > = 1900 zdarzeń przez 2 godziny. Jeśli są stale powyżej wartości progowej, a w związku z tym, wyzwalania alertu, są prawdopodobnie w obszarze aprowizowano.  
 
-Ponadto, jeśli podejrzewasz, możesz ograniczanie przepustowości, możesz porównać z **transferu danych przychodzących komunikatów odebranych** za pomocą zdarzenia źródło użytkownika egressed wiadomości.  Jeśli ruch przychodzący do Centrum zdarzeń jest większa niż Twoje **transferu danych przychodzących komunikatów odebranych**, prawdopodobnie są ograniczane usługi Time Series Insights.
+* Jeśli podejrzewasz, możesz są ograniczane, można porównać z **transferu danych przychodzących komunikatów odebranych** za pomocą zdarzenia źródło użytkownika egressed wiadomości.  Jeśli ruch przychodzący do Centrum zdarzeń jest większa niż Twoje **transferu danych przychodzących komunikatów odebranych**, prawdopodobnie są ograniczane usługi Time Series Insights.
 
 ## <a name="improving-performance"></a>Poprawianie wydajności
 
-Aby zmniejszyć ograniczania przepływności lub występują opóźnienia, najlepszym sposobem, aby go poprawić, jest zwiększenie pojemności w danym środowisku. 
+Aby zmniejszyć ograniczania przepływności lub występują opóźnienia, najlepszym sposobem, aby go poprawić, jest zwiększenie pojemności w danym środowisku.
 
 Możesz uniknąć opóźnienia i ograniczania przepustowości odpowiednio konfigurując środowiska ilości danych, które mają być analizowane. Aby uzyskać więcej informacji o sposobie dodawania pojemności dla danego środowiska, zobacz [Skalowanie środowiska](time-series-insights-how-to-scale-your-environment.md).
 

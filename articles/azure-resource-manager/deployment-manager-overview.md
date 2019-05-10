@@ -12,14 +12,14 @@ ms.workload: na
 ms.date: 12/09/2018
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: a615ab26e4ea046ced70ce2c154a0c304b741986
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dd7e29f8f37572565e505aade97b964254b6d72c
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60550906"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466557"
 ---
-# <a name="enable-safe-deployment-practices-with-azure-deployment-manager-private-preview"></a>Włącz praktyki bezpiecznego wdrażania w usłudze Azure Deployment Manager (prywatna wersja zapoznawcza)
+# <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Włącz praktyki bezpiecznego wdrażania w usłudze Azure Deployment Manager (publiczna wersja zapoznawcza)
 
 Aby wdrożyć usługę w wielu regionach i upewnij się, że działa on zgodnie z oczekiwaniami w każdym regionie, Azure Deployment Manager służy do koordynowania etapowe wdrażanie usługi. Tak jak w przypadku wszystkich wdrożeń platformy Azure dla usługi w określają zasoby [szablonów usługi Resource Manager](resource-group-authoring-templates.md). Po utworzeniu szablonów umożliwia Deployment Manager opisano topologii dla Twojej usługi i jak ona powinny być udostępniona.
 
@@ -200,7 +200,9 @@ W szablonie wdrożenia tworzenia źródła artefaktu dla danych binarnych, czego
 
 ### <a name="steps"></a>Kroki
 
-Można zdefiniować krok do wykonania przed lub po operacji wdrożenia. Obecnie tylko `wait` kroku jest dostępna. Krok oczekiwania wstrzymuje wdrożenia przed kontynuowaniem. Umożliwia zweryfikowanie, że usługa jest uruchomiona, zgodnie z oczekiwaniami przed wdrożeniem następnej jednostki usługi. Poniższy kod przedstawia ogólny format kroku oczekiwania.
+Można zdefiniować krok do wykonania przed lub po operacji wdrożenia. Obecnie tylko `wait` kroku i krok "test kondycji" są dostępne. 
+
+Krok oczekiwania wstrzymuje wdrożenia przed kontynuowaniem. Umożliwia zweryfikowanie, że usługa jest uruchomiona, zgodnie z oczekiwaniami przed wdrożeniem następnej jednostki usługi. Poniższy kod przedstawia ogólny format kroku oczekiwania.
 
 ```json
 {
@@ -219,7 +221,7 @@ Można zdefiniować krok do wykonania przed lub po operacji wdrożenia. Obecnie 
 
 Właściwość czasu trwania używa [standardem ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations). Poprzedni przykład określa oczekiwania jednej minuty.
 
-Aby uzyskać więcej informacji, zobacz [kroki odwołanie do szablonu](/azure/templates/Microsoft.DeploymentManager/steps).
+Aby uzyskać więcej informacji o kroku sprawdzenia kondycji, zobacz [ ]() i [ ]() Aby uzyskać więcej informacji, zobacz [kroki odwołanie do szablonu](/azure/templates/Microsoft.DeploymentManager/steps).
 
 ### <a name="rollouts"></a>Wprowadzanie
 

@@ -6,15 +6,15 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 04/05/2019
+ms.date: 05/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: c48acf7e9074ac3c5a7d19765a9524a411fa26c8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9de8fa297c2b3f89f74b17e0dac3eab007367b9b
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60817462"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471588"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>Tworzenie usługi Azure Search w portalu
 
@@ -54,11 +54,11 @@ Wymagania dotyczące nazwy usługi:
 * Nie może zawierać łączników („-”) na pierwszych dwóch miejscach ani na ostatnim miejscu
 * Nie może zawierać następujących po sobie łączników („--”)
 
-## <a name="select-a-subscription"></a>Wybieranie subskrypcji
+## <a name="select-a-subscription"></a>Wybierz subskrypcję
 
 Jeśli masz więcej niż jedną subskrypcję, wybierz tę, która obejmuje usługi magazynu danych lub plików. Usługa Azure Search może automatycznie wykrywać magazyn tabel i obiektów blob platformy Azure, usługę SQL Database i usługę Azure Cosmos DB na potrzeby indeksowania za pośrednictwem [*indeksatorów*](search-indexer-overview.md), ale wyłącznie w ramach usług w tej samej subskrypcji.
 
-## <a name="select-a-resource-group"></a>Wybieranie grupy zasobów
+## <a name="select-a-resource-group"></a>Wybierz grupę zasobów
 
 Grupa zasobów jest kolekcją używanych razem usług i zasobów platformy Azure. Jeśli na przykład używasz usługi Azure Search do indeksowania bazy danych SQL, obie usługi powinny należeć do tej samej grupy zasobów.
 
@@ -67,11 +67,13 @@ Jeśli nie łączysz zasobów w pojedynczą grupę lub jeśli istniejące grupy 
 > [!TIP]
 > Usunięcie grupy zasobów powoduje usunięcie zawartych w niej usług. Umieszczenie w tej samej grupie zasobów wszystkich projektów będących prototypami korzystającymi z wielu usług ułatwia proces czyszczenia po zakończeniu projektu.
 
-## <a name="select-a-hosting-location"></a>Wybieranie lokalizacji hostowania
+## <a name="select-a-location"></a>Wybierz lokalizację
 
 W związku z tym, że usługa Azure Search należy do usług platformy Azure, może być hostowana w centrach danych na całym świecie. [Ceny mogą się różnić](https://azure.microsoft.com/pricing/details/search/) w zależności od lokalizacji geograficznej.
 
-Jeśli indeksujesz zawartości znajdującej się na platformie Azure service (usługa Azure storage, Azure Cosmos DB, Azure SQL Database), tworzenie usługi Azure Search w tym samym regionie, co dane, aby uniknąć naliczania opłat za przepustowość. Istnieją nie opłaty za dane wychodzące, gdy usługi są w tym samym regionie.
+Jeśli indeksujesz danych udostępnionych przez inną usługę Azure service (usługa Azure storage, Azure Cosmos DB, Azure SQL Database), tworzenie usługi Azure Search w tym samym regionie, aby uniknąć naliczania opłat przepustowości. Istnieją nie opłaty za dane wychodzące, gdy usługi są w tym samym regionie.
+
+Jeśli używasz wzbogacenia sztucznej Inteligencji w usłudze wyszukiwania poznawczego Tworzenie usługi w tym samym regionie, co zasób usług Cognitive Services. Wspólnej lokalizacji usług jest wymagana dla wzbogacania sztucznej Inteligencji.
 
 ## <a name="select-a-pricing-tier-sku"></a>Wybieranie warstwy cenowej (jednostek SKU)
 

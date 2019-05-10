@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 05/08/2019
 ms.author: juliako
-ms.openlocfilehash: 51aa33e4ff387a1030dac42bce8d12cf72343b35
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 24ee700e326ef61aa6a93aae725e85e7b4780edf
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61466735"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65465037"
 ---
 # <a name="streaming-locators"></a>Lokalizatory przesyłania strumieniowego
 
@@ -34,7 +34,7 @@ Jeśli chcesz określić opcje szyfrowania na strumień, należy utworzyć [zasa
 
 ## <a name="associate-filters-with-streaming-locators"></a>Kojarzenie filtrów z Lokalizatory przesyłania strumieniowego
 
-Można określić listę [aktywów lub filtry](filters-concept.md), która będzie stosowana dla Twojego [lokalizatora przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body). [Funkcji dynamicznego pakowania](dynamic-packaging-overview.md) ma zastosowanie ta lista filtrów wraz z tymi klienta określa się w adresie URL. Ta kombinacja generuje [dyanamic manifest](filters-dynamic-manifest-overview.md), która jest oparta na filtry w adresie URL i filtry, możesz określić na lokalizatora przesyłania strumieniowego. Zaleca się korzystania z tej funkcji, jeśli chcesz zastosować filtry, ale nie należy udostępniać nazwy filtru w adresie URL.
+Można określić listę [aktywów lub filtry](filters-concept.md), która będzie stosowana dla Twojego [lokalizatora przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body). [Funkcji dynamicznego pakowania](dynamic-packaging-overview.md) ma zastosowanie ta lista filtrów wraz z tymi klienta określa się w adresie URL. Ta kombinacja generuje [dynamiczne manifest](filters-dynamic-manifest-overview.md), która jest oparta na filtry w adresie URL i filtry, możesz określić na lokalizatora przesyłania strumieniowego. Zaleca się korzystania z tej funkcji, jeśli chcesz zastosować filtry, ale nie należy udostępniać nazwy filtru w adresie URL.
 
 ## <a name="filter-order-page-streaming-locator-entities"></a>Filtr, zamówienia, strona lokalizatora przesyłania strumieniowego jednostek
 
@@ -43,4 +43,4 @@ Zobacz [filtrowanie, porządkowanie, stronicowanie jednostek usługi Media Servi
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Samouczek: Przekazywanie, kodowanie i przesyłanie strumieniowe wideo za pomocą platformy .NET](stream-files-tutorial-with-api.md)
-* [Używanie usługi dostarczania licencji i szyfrowania dynamicznego w technologii DRM](protect-with-drm.md)
+* [Użyj DRM dynamiczne szyfrowanie i licencji usługi dostarczania](protect-with-drm.md)

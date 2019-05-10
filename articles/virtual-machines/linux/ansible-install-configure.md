@@ -7,13 +7,13 @@ ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.date: 04/22/2019
-ms.openlocfilehash: e7a664be48d1e26e09faf4f330fd1267ec003315
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 04/30/2019
+ms.openlocfilehash: 60cefe24feab9de4262e81eb1bc313aeadc7eb05
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64685602"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409253"
 ---
 # <a name="quickstart-install-ansible-on-linux-virtual-machines-in-azure"></a>Szybki start: Instalowanie rozwiązania Ansible na maszynach wirtualnych systemu Linux na platformie Azure
 
@@ -21,8 +21,8 @@ Rozwiązanie Ansible umożliwia zautomatyzowanie wdrażania i konfigurowania zas
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- [!INCLUDE [open-source-devops-prereqs-azure-sub.md](../../../includes/open-source-devops-prereqs-azure-subscription.md)]
-- [!INCLUDE [open-source-devops-prereqs-create-sp.md](../../../includes/open-source-devops-prereqs-create-service-principal.md)]
+[!INCLUDE [open-source-devops-prereqs-azure-sub.md](../../../includes/open-source-devops-prereqs-azure-subscription.md)]
+[!INCLUDE [open-source-devops-prereqs-create-sp.md](../../../includes/open-source-devops-prereqs-create-service-principal.md)]
 - **Dostęp do systemu Linux lub maszyny wirtualnej z systemem Linux** — jeśli nie masz maszyny wirtualnej z systemem Linux, [utwórz ją](/azure/virtual-network/quick-create-cli).
 
 ## <a name="install-ansible-on-an-azure-linux-virtual-machine"></a>Instalowanie rozwiązania Ansible na maszynie wirtualnej z systemem Linux na platformie Azure
@@ -155,7 +155,7 @@ W tej sekcji możesz wyeksportować wartości nazwy głównej usługi w celu sko
     export AZURE_TENANT=<security-principal-tenant>
     ```
 
-## <a name="verify-the-configuration"></a>Sprawdzanie konfiguracji
+## <a name="verify-the-configuration"></a>Sprawdź, czy konfiguracja
 
 Aby sprawdzić, Konfiguracja zakończyła się pomyślnie, za pomocą rozwiązania Ansible, aby utworzyć grupę zasobów platformy Azure.
 

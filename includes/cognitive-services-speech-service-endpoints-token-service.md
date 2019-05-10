@@ -2,22 +2,32 @@
 author: wolfma61
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/08/2018
+ms.date: 05/08/2019
 ms.author: wolfma
-ms.openlocfilehash: 26a6fd1da13c8b346e016615e7843ee6722e2c99
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0d0ebe57c26f5cc5b42fb449ffb10b444a03f734
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60480502"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65237090"
 ---
-Region| Punktu końcowego usługi tokenu
+Obszar| Punktu końcowego usługi tokenu
 -|-
-Zachodnie stany USA| https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken
-Zachodnie stany USA 2| https://westus2.api.cognitive.microsoft.com/sts/v1.0/issueToken
-Wschodnie stany USA| https://eastus.api.cognitive.microsoft.com/sts/v1.0/issueToken
-Wschodnie stany USA 2| https://eastus2.api.cognitive.microsoft.com/sts/v1.0/issueToken
-Azja Wschodnia| https://eastasia.api.cognitive.microsoft.com/sts/v1.0/issueToken
-Azja Południowo-Wschodnia| https://southeastasia.api.cognitive.microsoft.com/sts/v1.0/issueToken
-Europa Północna| https://northeurope.api.cognitive.microsoft.com/sts/v1.0/issueToken
-Europa Zachodnia| https://westeurope.api.cognitive.microsoft.com/sts/v1.0/issueToken
+Australia Wschodnia | `https://australiaeast.api.cognitive.microsoft.com/sts/v1.0/issueToken`
+Kanada Środkowa | `https://canadacentral.api.cognitive.microsoft.com/sts/v1.0/issueToken`
+Środkowe stany USA | `https://centralus.api.cognitive.microsoft.com/sts/v1.0/issueToken`
+Azja Wschodnia | `https://eastasia.api.cognitive.microsoft.com/sts/v1.0/issueToken`
+Wschodnie stany USA | `https://eastus.api.cognitive.microsoft.com/sts/v1.0/issueToken`
+Wschodnie stany USA 2 | `https://eastus2.api.cognitive.microsoft.com/sts/v1.0/issueToken`
+Francja Środkowa | `https://francecentral.api.cognitive.microsoft.com/sts/v1.0/issueToken`
+Indie Środkowe | `https://centralindia.api.cognitive.microsoft.com/sts/v1.0/issueToken`
+Japonia Wschodnia | `https://japaneast.api.cognitive.microsoft.com/sts/v1.0/issueToken`
+Korea Środkowa | `https://koreacentral.api.cognitive.microsoft.com/sts/v1.0/issueToken`
+Północno-środkowe stany USA | `https://northcentralus.api.cognitive.microsoft.com/sts/v1.0/issueToken`
+Europa Północna | `https://northeurope.api.cognitive.microsoft.com/sts/v1.0/issueToken`
+Południowo-środkowe stany USA | `https://southcentralus.api.cognitive.microsoft.com/sts/v1.0/issueToken`
+Azja Południowo-Wschodnia | `https://southeastasia.api.cognitive.microsoft.com/sts/v1.0/issueToken`
+Zjednoczone Królestwo (południe) | `https://uksouth.api.cognitive.microsoft.com/sts/v1.0/issueToken`
+Europa Zachodnia | `https://westeurope.api.cognitive.microsoft.com/sts/v1.0/issueToken`
+Zachodnie stany USA | `https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken`
+Zachodnie stany USA 2 | `https://westus2.api.cognitive.microsoft.com/sts/v1.0/issueToken`

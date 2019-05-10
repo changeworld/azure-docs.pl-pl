@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/24/2019
+ms.date: 05/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: eaff996f5d0ad9c2eac00c9306ef8808b43e25c2
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 017c2fd934f35a64f26687f4a58634dda9a821a3
+ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65146038"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65501960"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu rozwiązania w usłudze Azure Automation
 
@@ -55,7 +55,7 @@ Istnieją pewne uprawnienia, które użytkownik musi mieć wdrażania uruchamian
 
 Aby wdrożyć uruchamianie/zatrzymywanie maszyn wirtualnych poza godziny rozwiązania do konta usługi Automation i Log Analytics użytkownika wdrażania rozwiązania wymagane są następujące uprawnienia na **grupy zasobów**. Aby dowiedzieć się więcej o rolach, zobacz [niestandardowych ról dla zasobów platformy Azure](../role-based-access-control/custom-roles.md).
 
-| Uprawnienie | Zakres|
+| Uprawnienie | Scope|
 | --- | --- |
 | Microsoft.Automation/automationAccounts/read | Grupa zasobów |
 | Microsoft.Automation/automationAccounts/variables/write | Grupa zasobów |
@@ -75,14 +75,14 @@ Aby wdrożyć uruchamianie/zatrzymywanie maszyn wirtualnych poza godziny rozwią
 | Microsoft.Resources/subscriptions/resourceGroups/read | Grupa zasobów |
 | Microsoft.Resources/deployments/* | Grupa zasobów |
 
-### <a name="new-automation-account-and-a-new-log-analytics-workspace"></a>Nowe konto usługi Automation i nowy obszar roboczy usługi Log Analytics
+#### <a name="new-automation-account-and-a-new-log-analytics-workspace"></a>Nowe konto usługi Automation i nowy obszar roboczy usługi Log Analytics
 
 Uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami poza godzinami pracy wdrażania rozwiązania do nowego konta usługi Automation i Log Analytics obszaru roboczego użytkownika wdrażania rozwiązania wymaga uprawnienia określone w poprzedniej sekcji, a także następujące uprawnienia:
 
 - Administrator współpracujący dla subskrypcji — jest to niezbędne do tworzenia klasycznego konta Uruchom jako
 - Być częścią **Deweloper aplikacji** roli. Aby uzyskać więcej informacji na temat konfigurowania konta Uruchom jako, zobacz [uprawnienia do konfigurowania kont Uruchom jako](manage-runas-account.md#permissions).
 
-| Uprawnienie |Zakres|
+| Uprawnienie |Scope|
 | --- | --- |
 | Microsoft.Authorization/roleAssignments/read | Subskrypcja |
 | Microsoft.Authorization/roleAssignments/write | Subskrypcja |
@@ -90,6 +90,30 @@ Uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami poza godzinami prac
 | Microsoft.Automation/automationAccounts/certificates/read | Grupa zasobów |
 | Microsoft.Automation/automationAccounts/write | Grupa zasobów |
 | Microsoft.OperationalInsights/workspaces/write | Grupa zasobów |
+
+### <a name="region-mappings"></a>Mapowanie regionów
+
+Podczas włączania uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu, tylko w określonych regionach są obsługiwane w przypadku łączenia z obszarem roboczym usługi Log Analytics i konto usługi Automation.
+
+W poniższej tabeli przedstawiono obsługiwane mapowania:
+
+|**Regionu obszaru roboczego usługi log Analytics**|**Region usługi Azure Automation**|
+|---|---|
+|AustraliaSoutheast|AustraliaSoutheast|
+|CanadaCentral|CanadaCentral|
+|CentralIndia|CentralIndia|
+|EastUS<sup>1</sup>|EastUS2|
+|JapanEast|JapanEast|
+|SoutheastAsia|SoutheastAsia|
+|WestCentralUS<sup>2</sup>|WestCentralUS<sup>2</sup>|
+|WestEurope|WestEurope|
+|UKSouth|UKSouth|
+|USGovVirginia|USGovVirginia|
+|EastUS2EUAP<sup>1</sup>|CentralUSEUAP|
+
+<sup>1</sup> EastUS2EUAP i EastUS mapowania obszarów roboczych usługi Log Analytics do kont usługi Automation nie są dokładnie mapowania regionu, ale poprawna mapowania.
+
+<sup>2</sup> ze względu na ograniczenia wydajności region nie jest dostępna podczas tworzenia nowych zasobów. Obejmuje to obszary robocze kont usługi Automation i Log Analytics. Jednak istniejących połączonych zasobów w regionie powinny nadal działać.
 
 ## <a name="deploy-the-solution"></a>Wdrażanie rozwiązania
 
@@ -101,6 +125,7 @@ Wykonaj poniższe kroki, aby dodać uruchamianie/zatrzymywanie maszyn wirtualnyc
 
    > [!NOTE]
    > Można również utworzyć go z dowolnego miejsca w witrynie Azure portal, klikając **Utwórz zasób**. Na stronie portalu Marketplace, wpisz słowo kluczowe, taką jak **Start** lub **uruchomień/zatrzymań**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Alternatywnie możesz wpisać jeden lub więcej słów kluczowych z pełną nazwę rozwiązania i naciśnij klawisz Enter. Wybierz **uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu** w wynikach wyszukiwania.
+
 2. W **uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu** dla wybranego rozwiązania strony, przejrzyj dane podsumowania, a następnie kliknij przycisk **Utwórz**.
 
    ![Azure Portal](media/automation-solution-vm-management/azure-portal-01.png)
@@ -236,7 +261,7 @@ Poniższa tabela zawiera listę elementów runbook, wdrożone do konta usługi A
 
 Obejmują wszystkie nadrzędne elementy runbook _WhatIf_ parametru. Po ustawieniu **True**, _WhatIf_ obsługuje ze szczegółami dotyczącymi dokładne zachowanie wykonuje element runbook po uruchomieniu bez _WhatIf_ parametru i sprawdza poprawność poprawny są maszyny wirtualne celem. Element runbook wykonuje tylko działania zdefiniowane podczas _WhatIf_ parametr ma wartość **False**.
 
-|Element Runbook | Parametry | Opis|
+|Runbook | Parametry | Opis|
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | Wywoływana z nadrzędnego elementu runbook. Ten element runbook tworzy alerty na podstawie poszczególnych zasobów w ramach scenariusza opisywanego AutoStop.|
 |AutoStop_CreateAlert_Parent | VMList<br> WhatIf: Wartość PRAWDA lub FAŁSZ  | Tworzy lub aktualizuje Azure reguł alertów na maszynach wirtualnych w grupach docelowych, subskrypcji lub zasobu. <br> VMList: Rozdzielana przecinkami lista maszyn wirtualnych. Na przykład _maszyny vm1, vm2, vm3_.<br> *WhatIf* weryfikuje logiką wykonywania elementu runbook bez wykonywania.|
@@ -294,18 +319,18 @@ Usługa Automation tworzy dwa typy rekordów w obszarze roboczym usługi Log Ana
 |----------|----------|
 |Caller |  Użytkownik, który zainicjował operację. Możliwe wartości to adres e-mail lub system w przypadku zaplanowanych zadań.|
 |Category | Klasyfikacja typu danych. W przypadku usługi Automation wartością jest JobLogs.|
-|CorrelationId | Identyfikator GUID, który jest Identyfikatorem korelacji zadania elementu runbook.|
-|JobId | Identyfikator GUID, który jest Identyfikatorem zadania elementu runbook.|
+|Identyfikator korelacji | Identyfikator GUID, który jest Identyfikatorem korelacji zadania elementu runbook.|
+|Identyfikator zadania | Identyfikator GUID, który jest Identyfikatorem zadania elementu runbook.|
 |operationName | Określa typ operacji wykonywanej na platformie Azure. W przypadku usługi Automation wartością jest zadanie.|
 |resourceId | Określa typ zasobu na platformie Azure. W przypadku usługi Automation wartością jest konto usługi Automation skojarzone z elementem Runbook.|
 |ResourceGroup | Określa nazwę grupy zasobów zadania elementu Runbook.|
 |ResourceProvider | Określa nazwę usługi platformy Azure, która zapewnia zasoby do wdrożenia i zarządzania. W przypadku usługi Automation wartością jest Azure Automation.|
 |ResourceType | Określa typ zasobu na platformie Azure. W przypadku usługi Automation wartością jest konto usługi Automation skojarzone z elementem Runbook.|
-|resultType | Stan zadania elementu Runbook. Możliwe wartości:<br>— Uruchomione<br>— Zatrzymane<br>— Wstrzymane<br>— Nie powiodło się<br>— Powiodło się|
-|resultDescription | Opisuje stan wyniku zadania elementu Runbook. Możliwe wartości:<br>— Zadanie jest uruchomione<br>— Zadanie nie powiodło się<br>— Zadanie zostało ukończone|
+|resultType | Stan zadania elementu Runbook. Możliwe wartości to:<br>— Uruchomione<br>— Zatrzymane<br>— Wstrzymane<br>— Nie powiodło się<br>— Powiodło się|
+|resultDescription | Opisuje stan wyniku zadania elementu Runbook. Możliwe wartości to:<br>— Zadanie jest uruchomione<br>— Zadanie nie powiodło się<br>— Zadanie zostało ukończone|
 |RunbookName | Określa nazwę elementu Runbook.|
 |SourceSystem | Określa system źródłowy dla przesłanych danych. W przypadku usługi Automation wartością jest OpsManager|
-|StreamType | Określa typ zdarzenia. Możliwe wartości:<br>— Pełne<br>— Dane wyjściowe<br>— Błąd<br>— Ostrzeżenie|
+|StreamType | Określa typ zdarzenia. Możliwe wartości to:<br>— Pełne<br>— Dane wyjściowe<br>— Błąd<br>— Ostrzeżenie|
 |SubscriptionId | Określa identyfikator subskrypcji zadania.
 |Time | Data i godzina dla wykonania zadania elementu Runbook.|
 
@@ -315,9 +340,9 @@ Usługa Automation tworzy dwa typy rekordów w obszarze roboczym usługi Log Ana
 |----------|----------|
 |Caller |  Użytkownik, który zainicjował operację. Możliwe wartości to adres e-mail lub system w przypadku zaplanowanych zadań.|
 |Category | Klasyfikacja typu danych. W przypadku usługi Automation wartością jest JobStreams.|
-|JobId | Identyfikator GUID, który jest Identyfikatorem zadania elementu runbook.|
+|Identyfikator zadania | Identyfikator GUID, który jest Identyfikatorem zadania elementu runbook.|
 |operationName | Określa typ operacji wykonywanej na platformie Azure. W przypadku usługi Automation wartością jest zadanie.|
-|ResourceGroup | Określa nazwę grupy zasobów zadania elementu Runbook.|
+|Grupa zasobów | Określa nazwę grupy zasobów zadania elementu Runbook.|
 |resourceId | Określa identyfikator zasobu na platformie Azure. W przypadku usługi Automation wartością jest konto usługi Automation skojarzone z elementem Runbook.|
 |ResourceProvider | Określa nazwę usługi platformy Azure, która zapewnia zasoby do wdrożenia i zarządzania. W przypadku usługi Automation wartością jest Azure Automation.|
 |ResourceType | Określa typ zasobu na platformie Azure. W przypadku usługi Automation wartością jest konto usługi Automation skojarzone z elementem Runbook.|
@@ -325,7 +350,7 @@ Usługa Automation tworzy dwa typy rekordów w obszarze roboczym usługi Log Ana
 |resultDescription | Obejmuje strumień wyjściowy z elementu Runbook.|
 |RunbookName | Nazwa elementu Runbook.|
 |SourceSystem | Określa system źródłowy dla przesłanych danych. W przypadku usługi Automation wartością jest OpsManager.|
-|StreamType | Typ strumienia zadania. Możliwe wartości:<br>-Postęp<br>— Dane wyjściowe<br>— Ostrzeżenie<br>— Błąd<br>— Debugowanie<br>— Pełne|
+|StreamType | Typ strumienia zadania. Możliwe wartości to:<br>-Postęp<br>— Dane wyjściowe<br>— Ostrzeżenie<br>— Błąd<br>— Debugowanie<br>— Pełne|
 |Time | Data i godzina dla wykonania zadania elementu Runbook.|
 
 Jeśli wykonujesz dowolne wyszukiwanie dzienników, które zwraca rekordy kategorii **JobLogs** lub **JobStreams**, możesz wybrać **JobLogs** lub **JobStreams**widoku, który wyświetla zestaw kafelków z podsumowaniem aktualizacji zwracanych przez wyszukiwanie.

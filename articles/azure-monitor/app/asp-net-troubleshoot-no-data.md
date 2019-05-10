@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 11d63889555d6899df07e83168813994907476af
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 467586fd23332469338dabd2feb6a42ce4b17af5
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60691213"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471848"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Rozwiązywanie problemów z brakiem danych — usługa Application Insights dla platformy .NET
 ## <a name="some-of-my-telemetry-is-missing"></a>Brakuje części moich danych telemetrycznych
@@ -42,7 +42,7 @@ ms.locfileid: "60691213"
 * Nie wszystkie typy projektu .NET są obsługiwane przez narzędzia. Projekty sieci Web i usługi WCF są obsługiwane. Dla innych typów projektów, takich jak aplikacje klasycznych lub usługi, nadal możesz [ręcznie dodać zestaw SDK usługi Application Insights do projektu](../../azure-monitor/app/windows-desktop.md).
 * Upewnij się, że masz [Visual Studio 2013 Update 3 lub nowszym](https://docs.microsoft.com/visualstudio/releasenotes/vs2013-update3-rtm-vs). Jest on wstępnie zainstalowany, za pomocą narzędzi Developer Analytics, które zawierają zestaw SDK usługi Application Insights.
 * Wybierz **narzędzia**, **rozszerzenia i aktualizacje** i sprawdź, czy **Developer Analytics Tools** jest zainstalowane i włączone. Jeśli tak, kliknij przycisk **aktualizacje** można sprawdzić, czy jest aktualizacja.
-* Otwórz okno dialogowe Nowy projekt i wybierz aplikację sieci Web ASP.NET. Jeśli widzisz ma opcji Application Insights, są zainstalowane narzędzia. Jeśli nie, spróbuj odinstalować, a następnie ponowne zainstalowanie narzędzi usługi Application Insights.
+* Otwórz okno dialogowe Nowy projekt i wybierz aplikację sieci Web ASP.NET. Jeśli widzisz ma opcji Application Insights, są zainstalowane narzędzia. Jeśli nie, spróbuj odinstalować, a następnie zainstalować ponownie Developer Analytics Tools.
 
 ## <a name="q02"></a>Dodawanie usługi Application Insights nie powiodło się
 *Podczas próby dodania usługi Application Insights do istniejącego projektu, widzę komunikat o błędzie.*
@@ -85,7 +85,7 @@ Poprawka:
 * Wybierz **narzędzia**, **rozszerzenia i aktualizacje** i sprawdź, czy **narzędzia Developer Analytics** jest zainstalowane i włączone. Jeśli tak, kliknij przycisk **aktualizacje** można sprawdzić, czy jest aktualizacja.
 * Kliknij prawym przyciskiem myszy projekt w Eksploratorze rozwiązań. Jeśli widzisz polecenia **usługi Application Insights > Konfiguruj usługę Application Insights**, za jego pomocą łączyć projektu do zasobu usługi Application Insights.
 
-W przeciwnym razie typu projektu bezpośrednio nie jest obsługiwane przez narzędzia Application Insights. Aby wyświetlić dane telemetryczne, zaloguj się do [witryny Azure portal](https://portal.azure.com), a następnie wybierz pozycję Application Insights na pasku nawigacyjnym po lewej stronie i wybierz swoją aplikację.
+W przeciwnym razie typu projektu nie są bezpośrednio obsługiwane przez narzędzia Developer Analytics. Aby wyświetlić dane telemetryczne, zaloguj się do [witryny Azure portal](https://portal.azure.com), a następnie wybierz pozycję Application Insights na pasku nawigacyjnym po lewej stronie i wybierz swoją aplikację.
 
 ## <a name="access-denied-on-opening-application-insights-from-visual-studio"></a>"Odmowa dostępu" Otwieranie usługi Application Insights w programie Visual Studio
 *Polecenia menu "Otwórz usługę Application Insights" powoduje przejście do witryny Azure portal, ale pojawia się błąd "odmowa dostępu".*

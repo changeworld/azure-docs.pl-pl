@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/29/2019
+ms.date: 05/08/2019
 ms.author: juliako
-ms.openlocfilehash: 3c3687ceff10baec028435d1e6c513e72ca5da86
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: e64e980d42086603c9eb8ce39a96a9766a78afcb
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149081"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472462"
 ---
 # <a name="transforms-and-jobs"></a>Przekształcenia i zadania
 
@@ -53,19 +53,21 @@ A **Przekształcanie** ułatwia tworzenie przepisu raz (krok 1) i przesyłanie z
 
 ## <a name="transforms"></a>Przekształcenia
 
+Użyj **przekształca** skonfigurować typowych zadań związanych z kodowaniem lub analizowanie filmów wideo. Każdy **Przekształcanie** opisuje młyna lub przepływu pracy zadań przetwarzania plików wideo lub audio. Pojedynczy przekształcenia można zastosować więcej niż jedną regułę. Przekształcenie można na przykład określić, że każdy plik wideo można zakodowany w postaci pliku MP4 o danej szybkości transmisji bitów i wygenerowania obraz miniatury z pierwszej ramki filmu wideo. Należy dodać jeden wpis TransformOutput dla każdej reguły, które chcesz uwzględnić w swojej transformacji. Ustawienia wstępne umożliwia Poinformuj przekształcenia przetwarzaniu multimedialnych plików wejściowych.
+
+W Media Services v3 ustawień wstępnych są silnie typizowanych jednostek w interfejsie API, sam. Można znaleźć definicji "schema" dla tych obiektów w [specyfikacji interfejsu Open API (struktury Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01). Można również wyświetlić ustawienia wstępnego definicje (takie jak **StandardEncoderPreset**) w [interfejsu API REST](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset), [zestawu .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet) (lub inne dokumentacja usługi Media Services v3 zestawu SDK).
+
+Można utworzyć przekształcenia przy użyciu usługi REST, interfejsu wiersza polecenia, lub użyć dowolnej z opublikowanych zestawów SDK. Przekształca Media Services v3, które interfejs API jest wymuszany przez usługę Azure Resource Manager, dzięki czemu można również użyć szablonów usługi Resource Manager do tworzenia i wdrażania w ramach konta usługi Media Services. Kontrola dostępu oparta na rolach może służyć do blokowania dostępu do przekształcenia.
+
+Jeśli musisz zaktualizować swoje [Przekształcanie](https://docs.microsoft.com/rest/api/media/transforms), użyj **aktualizacji** operacji. Jest ona przeznaczona do wprowadzania zmian lub priorytety TransformOutputs podstawowy opis. Zaleca się, że takie aktualizacje można wykonać po zakończeniu wszystkich zadań w toku. Jeśli planujesz ponowne zapisywanie adresów przepisu, musisz utworzyć nowe przekształcenie.
+
+### <a name="transform-object-diagram"></a>Przekształcanie obiektu diagramu
+
 Na poniższym diagramie przedstawiono **Przekształcanie** obiektu i obiektów, odwołuje się do, w tym relacje pochodnym. Szara strzałki oznaczają typ, czy odwołania zadania i zielone strzałki pokazują relacje tworzenie wartości pochodnych klas.<br/>Kliknij obraz, aby go wyświetlić w pełnym rozmiarze.  
 
 <a href="./media/api-diagrams/transform-large.png" target="_blank"><img src="./media/api-diagrams/transform-small.png"></a> 
 
-Użyj **przekształca** skonfigurować typowych zadań związanych z kodowaniem lub analizowanie filmów wideo. Każdy **Przekształcanie** opisuje młyna lub przepływu pracy zadań przetwarzania plików wideo lub audio. Pojedynczy przekształcenia można zastosować więcej niż jedną regułę. Przekształcenie można na przykład określić, że każdy plik wideo można zakodowany w postaci pliku MP4 o danej szybkości transmisji bitów i wygenerowania obraz miniatury z pierwszej ramki filmu wideo. Należy dodać jeden wpis TransformOutput dla każdej reguły, które chcesz uwzględnić w swojej transformacji. Przekształcenia można tworzyć w ramach konta usługi Media Services przy użyciu interfejsu API usługi Media Services v3 lub przy użyciu dowolnej z opublikowanych zestawów SDK. Przekształca Media Services v3, które interfejs API jest wymuszany przez usługę Azure Resource Manager, dzięki czemu można również użyć szablonów usługi Resource Manager do tworzenia i wdrażania w ramach konta usługi Media Services. Kontrola dostępu oparta na rolach może służyć do blokowania dostępu do przekształcenia.
-
-Operacja aktualizacji na [Przekształcanie](https://docs.microsoft.com/rest/api/media/transforms) jednostki jest przeznaczony do wprowadzania zmian w lub priorytety TransformOutputs podstawowy opis. Zaleca się, że takie aktualizacje można wykonać po zakończeniu wszystkich zadań w toku. Jeśli planujesz ponowne zapisywanie adresów przepisu, musisz utworzyć nowe przekształcenie.
-
-## <a name="jobs"></a>Stanowiska
-
-Na poniższym diagramie przedstawiono **zadania** obiektu i obiektów, odwołuje się do, w tym relacje pochodnym.<br/>Kliknij obraz, aby go wyświetlić w pełnym rozmiarze.  
-
-<a href="./media/api-diagrams/job-large.png" target="_blank"><img src="./media/api-diagrams/job-small.png"></a> 
+## <a name="jobs"></a>Zadania (job)
 
 A **zadania** jest rzeczywistego żądania do usługi Azure Media Services, aby zastosować **Przekształcanie** do danego wejściowego zawartości wideo lub audio. Po utworzeniu przekształcenia można przesłać zadania przy użyciu interfejsów API usług Media Services lub dowolny z opublikowanych zestawów SDK. **Zadania** określa informacje, takie jak lokalizacja wejściowych plików wideo i lokalizację danych wyjściowych. Można określić lokalizację je wideo przy użyciu: Adresy URL HTTPS, adresów URL sygnatury dostępu Współdzielonego, lub [zasoby](https://docs.microsoft.com/rest/api/media/assets).  
 
@@ -76,6 +78,12 @@ Użyj [zasobów jako dane wejściowe zadania](job-input-from-local-file-how-to.m
 Postęp i stan zadania można uzyskać poprzez monitorowanie zdarzeń za pomocą usługi Event Grid. Aby uzyskać więcej informacji, zobacz [monitorowania zdarzeń za pomocą EventGrid](job-state-events-cli-how-to.md).
 
 Operacja aktualizacji na [zadania](https://docs.microsoft.com/rest/api/media/jobs) jednostki może służyć do modyfikowania *opis*i *priorytet* właściwości po przesłaniu zadania. Zmiana *priorytet* właściwość jest efektywne tylko wtedy, gdy zadanie jest nadal w stanie umieszczenia w kolejce. Jeśli zadanie rozpoczął przetwarzanie lub zostało zakończone, zmiana priorytetu nie ma wpływu.
+
+### <a name="job-object-diagram"></a>Diagram obiektu zadania
+
+Na poniższym diagramie przedstawiono **zadania** obiektu i obiektów, odwołuje się do, w tym relacje pochodnym.<br/>Kliknij obraz, aby go wyświetlić w pełnym rozmiarze.  
+
+<a href="./media/api-diagrams/job-large.png" target="_blank"><img src="./media/api-diagrams/job-small.png"></a> 
 
 ## <a name="configure-media-reserved-units"></a>Konfigurowanie jednostki zarezerwowane multimediów
 
@@ -94,5 +102,8 @@ Zapoznaj się z [społeczności usługi Azure Media Services](media-services-com
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Samouczek: Przekazywanie, kodowanie i przesyłanie strumieniowe wideo za pomocą platformy .NET](stream-files-tutorial-with-api.md)
-- [Samouczek: Analizowanie klipów wideo za pomocą usługi Media Services v3 przy użyciu platformy .NET](analyze-videos-tutorial-with-api.md)
+- Przed rozpoczęciem tworzenia, przejrzyj [opracowywanie zawartości przy użyciu usługi Media Services v3 API](media-services-apis-overview.md) (w tym informacji na temat uzyskiwania dostępu do interfejsów API, konwencje nazewnictwa, itp.)
+- Zapoznaj się z tych samouczków:
+
+    - [Samouczek: Przekazywanie, kodowanie i przesyłanie strumieniowe wideo za pomocą platformy .NET](stream-files-tutorial-with-api.md)
+    - [Samouczek: Analizowanie klipów wideo za pomocą usługi Media Services v3 przy użyciu platformy .NET](analyze-videos-tutorial-with-api.md)

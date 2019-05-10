@@ -13,17 +13,20 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/03/2018
+ms.date: 05/07/2019
 ms.author: cynthn
-ms.openlocfilehash: 3a7ac2e7a86a135f20f46b03be2c38af330a5367
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c0ec2616d8bdcf3cfd6d649f12e9bfceea33690a
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60543110"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65467745"
 ---
 # <a name="how-to-use-packer-to-create-linux-virtual-machine-images-in-azure"></a>Jak utworzyć obrazy maszyn wirtualnych z systemem Linux na platformie Azure za pomocą usługi Packer
 Każda maszyna wirtualna (VM) na platformie Azure jest tworzony z obrazu, który definiuje dystrybucji systemu Linux i wersji systemu operacyjnego. Obrazy mogą obejmować wstępnie zainstalowane aplikacje i konfiguracje. W portalu Azure Marketplace udostępnia wiele obrazów pierwszy i innych firm dla dystrybucje najbardziej typowe i środowiska aplikacji, lub możesz utworzyć własne niestandardowe obrazy dopasowany do Twoich potrzeb. Ten artykuł szczegółowo opisuje sposób użycia narzędzia typu open source [Packer](https://www.packer.io/) do definiowania i tworzenie niestandardowych obrazów na platformie Azure.
+
+> [!NOTE]
+> Platforma Azure zapewnia teraz usługę, Kreator obrazów platformy Azure (wersja zapoznawcza), definiowanie i tworzenie własnych niestandardowych obrazów. Kreator obrazów platformy Azure w oparciu Packer, więc nawet za pomocą istniejących skryptów administracyjnej powłoki usługi Packer go. Aby rozpocząć korzystanie z Kreatora obrazów platformy Azure, zobacz [tworzenie maszyny Wirtualnej z systemem Linux przy użyciu Kreatora obrazów platformy Azure](image-builder.md).
 
 
 ## <a name="create-azure-resource-group"></a>Utwórz grupę zasobów platformy Azure
@@ -232,6 +235,4 @@ Teraz możesz otworzyć przeglądarkę internetową i wprowadzić ciąg `http://
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym przykładzie użyto narzędzia Packer do tworzenia obrazu maszyny Wirtualnej już po zainstalowaniu serwera NGINX. Ten obraz maszyny Wirtualnej wraz z istniejących przepływów pracy wdrażania, takie jak umożliwia wdrażanie aplikacji w usłudze maszyny wirtualne utworzone na podstawie obrazu za pomocą rozwiązania Ansible, Chef lub Puppet.
-
-Aby uzyskać dodatkowe przykładowe szablony usługi Packer dla innych dystrybucje systemu Linux, zobacz [tego repozytorium GitHub](https://github.com/hashicorp/packer/tree/master/examples/azure).
+Można również użyć istniejących skryptów administracyjnej narzędzia Packer za pomocą [kreatora obrazów platformy Azure](image-builder.md).

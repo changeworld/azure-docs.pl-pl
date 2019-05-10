@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: bd65b1479ace1a51087836eb8032f16fd10dc119
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: eabb7d194a3ef65282befab1ae59e85ba56f2f5b
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60791261"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472160"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Ponowne włączanie ochrony nie powiodło się na maszynach wirtualnych platformy Azure, do regionu podstawowego
 
@@ -42,7 +42,7 @@ Gdy możesz [w trybie Failover](site-recovery-failover.md) maszyn wirtualnych pl
 
 Można dostosować następujące właściwości obiektu docelowego VMe podczas ponownego włączania ochrony.
 
-![Dostosowywanie](./media/site-recovery-how-to-reprotect-azure-to-azure/customizeblade.png)
+![Dostosuj](./media/site-recovery-how-to-reprotect-azure-to-azure/customizeblade.png)
 
 |Właściwość |Uwagi  |
 |---------|---------|
@@ -68,7 +68,7 @@ Gdy użytkownik zainicjuje Zadanie włączania ponownej ochrony i docelowa maszy
 1. Stronie docelowej, do których maszyna wirtualna jest wyłączona w przypadku działa.
 2. Jeśli maszyna wirtualna używa dysków zarządzanych, kopię oryginalnych dysków są tworzone za pomocą "-ASRReplica" sufiks. Oryginalnych dysków są usuwane. "-ASRReplica" kopie są używane do replikacji.
 3. Jeśli maszyna wirtualna używa dysków niezarządzanych, docelowej maszyny Wirtualnej dyski danych są odłączone i używane na potrzeby replikacji. Kopię dysku systemu operacyjnego jest utworzone i dołączone na maszynie Wirtualnej. Oryginalny dysk systemu operacyjnego jest odłączona i używane na potrzeby replikacji.
-4. Od dysku źródłowego i docelowego dysku synchronizowane będą tylko zmiany. Różnice są obliczane przez porównanie obu dyskach tak i następnie przeniesiona. To potrwa kilka godzin.
+4. Od dysku źródłowego i docelowego dysku synchronizowane będą tylko zmiany. Różnice są obliczane przez porównanie obu dyskach tak i następnie przeniesiona. Aby znaleźć wyboru szacowany czas poniżej.
 5. Po ukończeniu synchronizacji replikacja różnicowa rozpoczyna się i tworzy punkt odzyskiwania zgodnie z zasadami replikacji.
 
 Możesz wyzwolić Zadanie włączania ponownej ochrony, gdy nie istnieją docelową maszynę Wirtualną i dyski, są następujące operacje:
@@ -76,6 +76,21 @@ Możesz wyzwolić Zadanie włączania ponownej ochrony, gdy nie istnieją docelo
 2. Jeśli maszyna wirtualna używa dysków niezarządzanych, dyski repliki są tworzone w docelowym koncie magazynu.
 3. Cały dyski są kopiowane z nieudane przez region, aby nowy region docelowy.
 4. Po ukończeniu synchronizacji replikacja różnicowa rozpoczyna się i tworzy punkt odzyskiwania zgodnie z zasadami replikacji.
+
+#### <a name="estimated-time--to-do-the-reprotection"></a>Szacowany czas do ponownego wykonać 
+
+W większości przypadków usługi Azure Site Recovery nie replikuje kompletne dane do regionu źródłowego. Poniżej przedstawiono warunki, które określa, ile danych będą replikowane:
+
+1.  Jeśli źródło danych maszyny Wirtualnej jest usunięte, uszkodzony lub niedostępny z jakiegoś powodu, takie jak grupy zasobów zmieniać/usuwać, następnie podczas ponownego włączania ochrony pełne środowisko IR nastąpi, ponieważ dane nie są dostępne w regionie źródłowym do użycia.
+2.  Jeśli źródło danych maszyny Wirtualnej jest dostępny tylko różnice są obliczane przez porównanie obu dyskach tak i następnie przeniesiona. Sprawdź pod tabelą, aby uzyskać szacowany czas 
+
+|** Przykład sytuacji ** | ** Czas potrzebny na ponowne objęcie ochroną ** |
+|--- | --- |
+|Region źródłowy ma 1 maszyny Wirtualnej przy użyciu dysku 1 TB w warstwie standardowa<br/>-Tylko 127 GB danych jest używana, a resztę dysku jest pusty<br/>— Typ dysku jest standardem w 60 MiB/S przepływności<br/>-Brak zmian danych, po włączeniu trybu failover| Przybliżony czas 45 minut — 1,5 godziny<br/> — Podczas ponownego włączania ochrony Usługa Site Recovery zostanie wypełniony sumy kontrolnej całego danych, co spowoduje przejście do 127 GB / 45 MB ~ 45 minut<br/>— Niektórzy obciążenie czas jest wymagany dla usługi Site Recovery, automatycznego skalowania, który jest 20 – 30 minutach<br/>— Brak opłat za ruch wychodzący |
+|Region źródłowy ma 1 maszyny Wirtualnej przy użyciu dysku 1 TB w warstwie standardowa<br/>-Tylko 127 GB danych jest używana, a resztę dysku jest pusty<br/>— Typ dysku jest standardem w 60 MiB/S przepływności<br/>-Zmiany danych 45 GB po włączeniu trybu failover| Przybliżony czas 1 – 2 godzin<br/>— Podczas ponownego włączania ochrony Usługa Site Recovery zostanie wypełniony sumy kontrolnej całego danych, co spowoduje przejście do 127 GB / 45 MB ~ 45 minut<br/>-Transferu czasu w celu zastosowania zmian 45 GB, który wynosi 45 GB / 45 MB/s ~ 17 w ciągu kilku minut<br/>— Opłaty za ruch wychodzący będzie tylko dla danych 45 GB dla sumy kontrolnej|
+ 
+
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 

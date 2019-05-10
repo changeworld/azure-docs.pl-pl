@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 04/23/2019
+ms.date: 05/08/2019
 ms.author: raynew
-ms.openlocfilehash: eaad582dc6484cb62d0bebf1af447ff61301a3bb
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2267a4e836fe1aff214f40e34afa830de50fa2d5
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64685931"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471643"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Macierz obsługi kopii zapasowej maszyny Wirtualnej platformy Azure
 Możesz użyć [usługi Azure Backup](backup-overview.md) do tworzenia kopii zapasowych maszyn lokalnych i obciążeń i Azure virtual machines (VMs). Ten artykuł zawiera podsumowanie ustawień obsługi i ograniczenia, podczas wykonywania kopii zapasowych maszyn wirtualnych platformy Azure z usługą Azure Backup.
@@ -41,7 +41,7 @@ Dowiedz się więcej o usłudze backup [przy użyciu kopii zapasowej serwera](ba
 **Akcja** | **Pomoc techniczna**
 --- | ---
 Włącz wykonywanie kopii zapasowej po utworzeniu maszyny Wirtualnej platformy Azure z systemem Windows | Obsługiwane w przypadku:  System Windows Server 2019 r (rdzenie Datacenter/Datacenter), Windows Server 2016 (Datacenter/Datacenter-rdzeniowe); Windows Server 2012 R2 Datacenter; Windows Server 2008 R2 (RTM i z dodatkiem SP1)
-Włącz wykonywanie kopii zapasowej po utworzeniu maszyny Wirtualnej z systemem Linux | Obsługiwane w przypadku:<br/><br/> — Ubuntu Server: 1710, 1704, 1604 (LTS), 1404 (LTS)<br/><br/> - Red Hat: RHEL 6.7, 6.8 6,9, 7.2, 7.3, WERSJI 7.4<br/><br/> - SUSE Linux Enterprise Server: 11 SP4, 12 SP2, 12 SP3, 15 <br/><br/> -Debian: 8, 9<br/><br/> - CentOS: 6.9, 7.3<br/><br/> -Oracle Linux: 6.7, 6.8, 6.9, 7.2, 7.3
+Włącz wykonywanie kopii zapasowej po utworzeniu maszyny Wirtualnej z systemem Linux | Obsługiwane w przypadku:<br/><br/> — Ubuntu Server: 18.04, 17.10, 17.04, 16.04 (LTS), 14.04 (LTS)<br/><br/> - Red Hat: RHEL 6.7, 6.8 6,9, 7.2, 7.3, WERSJI 7.4<br/><br/> - SUSE Linux Enterprise Server: 11 SP4, 12 SP2, 12 SP3, 15 <br/><br/> -Debian: 8, 9<br/><br/> - CentOS: 6.9, 7.3<br/><br/> -Oracle Linux: 6.7, 6.8, 6.9, 7.2, 7.3
 Tworzenie kopii zapasowej maszyny Wirtualnej, która jest shutdown/offline maszyny Wirtualnej | Obsługiwane.<br/><br/> Migawka jest spójna w razie awarii tylko, nie spójny na poziomie aplikacji.
 Wykonywanie kopii zapasowych dysków, po migracji do usługi managed disks | Obsługiwane.<br/><br/> Kopia zapasowa, będą nadal działać. Nie jest wymagana żadna akcja.
 Tworzenie kopii zapasowych dysków zarządzanych, po włączeniu blokady grupy zasobów | Nieobsługiwane.<br/><br/> Usługa Azure Backup nie można usunąć starsze punkty zasobów i kopie zapasowe będą kończyć się niepowodzeniem, jeśli osiągnięto maksymalny limit punktów przywracania.
@@ -150,6 +150,7 @@ Tworzenie kopii zapasowych maszyn wirtualnych, które są wdrażane z [portalu A
 Tworzenie kopii zapasowych maszyn wirtualnych, które są wdrażane na podstawie niestandardowego obrazu (innej firmy) |   Obsługiwane.<br/><br/> Maszyna wirtualna musi działać obsługiwany system operacyjny.<br/><br/> W przypadku odzyskiwania plików na maszynie Wirtualnej, można przywrócić tylko do zgodnych systemów operacyjnych (nie poprzedni system operacyjny).
 Tworzenie kopii zapasowych maszyn wirtualnych, które są migrowane na platformie Azure  | Obsługiwane.<br/><br/> Aby utworzyć kopię zapasową maszyny Wirtualnej, musi być zainstalowany agent maszyny Wirtualnej, na zmigrowanej maszynie.
 Tworzenie kopii zapasowych wielu maszyn wirtualnych | Usługa Azure Backup nie zapewnia spójności danych i aplikacji na wielu maszynach wirtualnych.
+Kopia zapasowa w systemie [ustawień diagnostycznych](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview)  | Nieobsługiwane. <br/><br/> W przypadku przywracania maszyny Wirtualnej platformy Azure za pomocą ustawień diagnostycznych jest wywołany za pomocą [Utwórz nowy](backup-azure-arm-restore-vms.md#create-a-vm) opcji, a następnie przywracania kończy się niepowodzeniem.
 
 
 ## <a name="vm-storage-support"></a>Obsługa magazynu maszyny Wirtualnej

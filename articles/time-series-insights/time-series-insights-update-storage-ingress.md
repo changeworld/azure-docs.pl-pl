@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/05/2018
+ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: fe6848caad7cdac98d6717b7cea4860e7ce2db8f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 35d9e953ade337672fd57149e325b507f6ce115f
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64725734"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65405717"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Magazyn danych i transferu danych przychodzących w wersji zapoznawczej Azure czas serii szczegółowych informacji
 
@@ -51,7 +51,7 @@ Usługi Time Series Insights wybrała Parquet, ponieważ zawiera ono kompresji d
 
 Aby lepiej zrozumieć formatu pliku Parquet, zobacz [Parquet dokumentacji](https://parquet.apache.org/documentation/latest/).
 
-## <a name="event-structure-in-parquet"></a>Struktura zdarzeń w Parquet
+### <a name="event-structure-in-parquet"></a>Struktura zdarzeń w Parquet
 
 Usługa Time Series Insights tworzy i przechowuje kopie obiektów blob w dwóch następujących formatów:
 
@@ -79,18 +79,18 @@ Zdarzenia usługi Insights serie czasu są mapowane do zawartości pliku Parquet
 
 ## <a name="partitions"></a>Partycje
 
-Każde środowisko czasu Series Insights w wersji zapoznawczej musi mieć właściwość Identyfikatora serii czasu i właściwości sygnatury czasowej, która jej jednoznaczną identyfikację. Twój identyfikator serii czasu działa jako partycji logicznej dla swoich danych i zapewnia środowisko czasu Series Insights w wersji zapoznawczej naturalnych granic rozproszenie danych na partycje fizyczne. Zarządzanie fizyczną partycję jest zarządzana przez czas Series Insights w wersji zapoznawczej w koncie magazynu platformy Azure.
+Każde środowisko czasu Series Insights w wersji zapoznawczej musi mieć **identyfikator serii czasu** właściwości i **sygnatura czasowa** właściwość, która jej jednoznaczną identyfikację. Twój identyfikator serii czasu działa jako partycji logicznej dla swoich danych i zapewnia środowisko czasu Series Insights w wersji zapoznawczej naturalnych granic rozproszenie danych na partycje fizyczne. Zarządzanie fizyczną partycję jest zarządzana przez czas Series Insights w wersji zapoznawczej w koncie magazynu platformy Azure.
 
 Usługi Time Series Insights używa dynamiczne partycjonowanie, aby zoptymalizować magazyn i zwiększa wydajność zapytań przez porzucenie i ponowne utworzenie partycji. Czas Series Insights w wersji zapoznawczej algorytm dynamiczny partycjonowania próbuje uniknąć sytuacji, w jednej partycji fizycznych będzie miał danych dla wielu partycji odrębne i logicznych. Innymi słowy partycjonowania algorytm przechowuje wszystkie dane określone do jednej godziny Identyfikatora serii wyłącznie obecne w plikach Parquet bez trwa przeplatać z innych identyfikatorów w serii czasu. Algorytm dynamiczny dla partycjonowania również próbuje zachować pierwotną kolejność zdarzeń w ramach jednej serii czasu, identyfikator.
 
 Początkowo podczas transferu danych przychodzących, dane są partycjonowane przez sygnaturę czasową, aby pojedynczy, logicznej partycji w danym okresie, mogły być rozkładane na wiele partycji fizycznych. Jedna partycja fizycznych mogą również zawierać wiele lub wszystkie logiczne partycji. Ze względu na ograniczenia rozmiaru obiektów blob, nawet w przypadku partycjonowania optymalne jednej partycji logicznej mogą zajmować wiele partycji fizycznych.
 
 > [!NOTE]
-> Domyślnie wartość znacznika czasu jest komunikat *czasu umieszczonych w kolejce* w źródle skonfigurowanego zdarzenia. 
+> Domyślnie wartość znacznika czasu jest komunikat *czasu umieszczonych w kolejce* w źródle skonfigurowanego zdarzenia.
 
 W przypadku przekazywania danych historycznych lub komunikaty przetwarzania wsadowego, należy przypisać wartości, które mają być przechowywane z danymi w celu właściwość sygnatury czasowej, który jest mapowany do odpowiedniego sygnatury czasowej. Właściwość sygnatury czasowej jest uwzględniana wielkość liter. Aby uzyskać więcej informacji, zobacz [modelu szeregów czasowych](./time-series-insights-update-tsm.md).
 
-## <a name="physical-partitions"></a>Partycje fizyczne
+### <a name="physical-partitions"></a>Partycje fizyczne
 
 Fizyczną partycję jest blokowy obiekt blob, który jest przechowywany na koncie magazynu. Rzeczywisty rozmiar obiektów blob może się różnić, ponieważ rozmiar zależy od szybkości wypychania. Jednak oczekujemy, że obiekty BLOB to około 20 MB do 50 MB rozmiar. Ta oczekiwania prowadzone od zespołu usługi Time Series Insights wybierz rozmiar Aby zoptymalizować wydajność zapytań o rozmiarze 20 MB. Ten rozmiar można zmieniać wraz z upływem czasu, w zależności od rozmiaru pliku oraz szybkość transferu danych przychodzących.
 
@@ -99,7 +99,7 @@ Fizyczną partycję jest blokowy obiekt blob, który jest przechowywany na konci
 > * Obiekty BLOB platformy Azure są od czasu do czasu ponownie Partycjonować uzyskać lepszą wydajność dzięki porzucona i utworzona ponownie.
 > * Ponadto te same dane usługi Time Series Insights mogą być obecne w dwóch lub więcej obiektów blob.
 
-## <a name="logical-partitions"></a>Partycje logiczne
+### <a name="logical-partitions"></a>Partycje logiczne
 
 Partycja logiczna jest partycji w obrębie fizyczną partycję, która przechowuje wszystkie dane, które są skojarzone z jedną wartością klucza partycji. Czas Series Insights w wersji zapoznawczej logicznie dzieli każdy obiekt blob, w oparciu o dwie właściwości:
 
@@ -110,9 +110,9 @@ Czas Series Insights w wersji zapoznawczej oferuje zapytania wydajna, które opi
 
 Należy wybrać odpowiedni identyfikator serii czasu, ponieważ jest właściwością niezmienne. Aby uzyskać więcej informacji, zobacz [wybierz identyfikatory serii czasu](./time-series-insights-update-how-to-id.md).
 
-## <a name="your-azure-storage-account"></a>Konta usługi Azure storage
+## <a name="azure-storage"></a>Magazyn Azure
 
-### <a name="storage"></a>Magazyn
+### <a name="your-storage-account"></a>Konta magazynu
 
 Kiedy należy utworzyć środowisko zgodnie z rzeczywistym użyciem usługi Time Series Insights, tworzysz dwa zasoby: środowisko usługi Time Series Insights i Azure Storage ogólnego przeznaczenia w wersji 1 konto przechowywania danych. Wybraliśmy uczynić usługi Azure Storage ogólnego przeznaczenia w wersji 1 zasobu domyślnego z powodu jej współdziałanie, cen i wydajności. 
 
@@ -132,37 +132,25 @@ Możesz chcieć uzyskać dostęp do danych przechowywanych w Eksploratorze czasu
 
 Może uzyskiwać dostęp do danych na trzy sposoby ogólne:
 
-* Z poziomu Eksploratora czasu Series Insights w wersji zapoznawczej.
-* Za pomocą interfejsów API w wersji zapoznawczej programu czas serii szczegółowych informacji.
-* Bezpośrednio z konta usługi Azure storage.
-
-#### <a name="from-the-time-series-insights-preview-explorer"></a>Z poziomu Eksploratora czasu Series Insights w wersji zapoznawczej
-
-Możesz wyeksportować dane do pliku CSV z poziomu Eksploratora czasu Series Insights w wersji zapoznawczej. Aby uzyskać więcej informacji, zobacz [czasu Series Insights w wersji zapoznawczej Eksplorator](./time-series-insights-update-explorer.md).
-
-#### <a name="from-the-time-series-insights-preview-apis"></a>Za pomocą interfejsów API w wersji zapoznawczej programu czas serii szczegółowych informacji
-
-Punkt końcowy interfejsu API można skontaktować, `/getRecorded`. Aby dowiedzieć się więcej na temat tego interfejsu API, zobacz [zapytania serii czasu](./time-series-insights-update-tsq.md).
+* Z poziomu Eksploratora czasu Series Insights w wersji zapoznawczej: dane można wyeksportować jako plik CSV z poziomu Eksploratora czasu Series Insights w wersji zapoznawczej. Aby uzyskać więcej informacji, zobacz [czasu Series Insights w wersji zapoznawczej Eksplorator](./time-series-insights-update-explorer.md).
+* Z szeregu czasowego interfejsów API w wersji zapoznawczej szczegółowych informacji: punkt końcowy interfejsu API można skontaktować, `/getRecorded`. Aby dowiedzieć się więcej na temat tego interfejsu API, zobacz [zapytania serii czasu](./time-series-insights-update-tsq.md).
+* Bezpośrednio z konta usługi Azure storage (poniżej).
 
 #### <a name="from-an-azure-storage-account"></a>Z konta usługi Azure storage
 
 * Konieczne jest dostęp do odczytu do dowolnego konta, za pomocą uzyskiwać dostęp do danych usługi Time Series Insights. Aby uzyskać więcej informacji, zobacz [zarządzanie dostępem do zasobów kont magazynu](https://docs.microsoft.com/azure/storage/blobs/storage-manage-access-to-resources).
-
 * Aby uzyskać więcej informacji na temat sposobów bezpośredniego można odczytać danych z usługi Azure Blob storage, zobacz [przenoszenie danych do i z konta magazynu](https://docs.microsoft.com/azure/storage/common/storage-moving-data?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
-
 * Aby wyeksportować dane z konta usługi Azure storage:
-
     * Najpierw upewnij się, że Twoje konto spełnia wymagania niezbędne do eksportowania danych. Aby uzyskać więcej informacji, zobacz [magazynu importowanie i eksportowanie wymagania](https://docs.microsoft.com/azure/storage/common/storage-import-export-requirements).
-
     * Aby poznać inne sposoby eksportowania danych z konta usługi Azure storage, zobacz temat [importowanie i eksportowanie danych z obiektów blob](https://docs.microsoft.com/azure/storage/common/storage-import-export-data-from-blobs).
 
 ### <a name="data-deletion"></a>Usuwanie danych
 
 Nie należy usuwać obiektów blob, ponieważ czas Series Insights w wersji zapoznawczej przechowuje metadane dotyczące obiektów blob w nim.
 
-## <a name="ingress"></a>Ruch przychodzący
+## <a name="time-series-insights-data-ingress"></a>Czas Series Insights dane przychodzące
 
-### <a name="time-series-insights-ingress-policies"></a>Zasady transferu danych przychodzących Series Insights czasu
+### <a name="ingress-policies"></a>Zasady transferu danych przychodzących
 
 Czas Series Insights w wersji zapoznawczej obsługuje te same źródła zdarzeń i typów plików, które obsługuje obecnie usługa Time Series Insights.
 
@@ -184,10 +172,10 @@ Czas Series Insights w wersji zapoznawczej indeksuje dane za pomocą strategii o
 
 > [!IMPORTANT]
 > * Wydania ogólnodostępnej (GA) usługa Time Series Insights będzie udostępniać dane w ciągu 60 sekund od osiągnięcia źródła zdarzenia. 
-> * W trakcie okresu zapoznawczego należy się spodziewać dłuższy czas, przed udostępnieniem danych. 
+> * W trakcie okresu zapoznawczego należy się spodziewać dłuższy czas, przed udostępnieniem danych.
 > * Jeśli wystąpią wszystkie istotne opóźnienia, pamiętaj, że skontaktuj się z nami.
 
-### <a name="scale"></a>Skalowanie
+### <a name="scale"></a>Skaluj
 
 Czas Series Insights w wersji zapoznawczej obsługuje skali początkowy ruch przychodzący do 6 megabajty na sekundę (MB/s) na środowisko. Trwa rozszerzoną obsługę skalowania. Firma Microsoft planuje aktualizację naszej dokumentacji w celu odzwierciedlenia tych ulepszeń
 

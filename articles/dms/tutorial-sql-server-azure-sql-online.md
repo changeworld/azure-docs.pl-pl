@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 05/01/2019
-ms.openlocfilehash: 131b86fec5fb51c6ff6f29a8e0beed86145a24b7
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 05/08/2019
+ms.openlocfilehash: 266e4a16a69d7200fbe8b58bc20339b6979db877
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65136636"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65415921"
 ---
 # <a name="tutorial-migrate-sql-server-to-a-single-database-or-pooled-database-in-azure-sql-database-online-using-dms"></a>Samouczek: Migrowanie programu SQL Server do pojedynczej bazy danych lub bazy danych w puli usługi Azure SQL Database w trybie online przy użyciu usługi DMS
 
@@ -54,22 +54,22 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
     > Jeśli używasz usług SQL Server Integration Services (SSIS) i chcesz przeprowadzić migrację bazy danych katalogu dla projektów/pakietów SSIS (SSISDB) z programu SQL Server do usługi Azure SQL Database, docelowa baza danych SSISDB zostanie utworzona i będzie zarządzana automatycznie w Twoim imieniu po aprowizacji usług SSIS w usłudze Azure Data Factory (ADF). Aby uzyskać więcej informacji na temat migracji pakietów SSIS, zobacz artykuł [Migrowanie pakietów usług SQL Server Integration Services na platformę Azure](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages).
 
 - Pobrany i zainstalowany program [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) w wersji 3.3 lub nowszej.
-- Utworzenie usługi Azure Virtual Network (VNET) dla usługi Azure Database Migration Service przy użyciu modelu wdrożenia usługi Azure Resource Manager, która zapewnia łączność między lokacjami dla lokalnych serwerów źródłowych, z użyciem usługi [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) lub sieci [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
+- Tworzenie usługi Azure Virtual Network (VNet) dla usługi Azure Database Migration Service przy użyciu modelu wdrażania usługi Azure Resource Manager, co zapewnia łączność lokacja lokacja z serwerów źródłowych w środowisku lokalnym przy użyciu [usługiExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) lub [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Aby uzyskać więcej informacji na temat tworzenia sieci wirtualnej, zobacz [dokumentacja usługi Virtual Network](https://docs.microsoft.com/azure/virtual-network/), a szczególnie artykułów Szybki Start krok po kroku szczegółowe informacje.
 
     > [!NOTE]
-    > Podczas konfigurowania sieci Wirtualnej, jeśli korzystasz z usługi ExpressRoute za pomocą komunikacji równorzędnej sieci do firmy Microsoft, Dodaj następujące usługi [punktów końcowych](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) do podsieci, w której będą udostępniane usługi:
+    > Podczas konfigurowania sieci wirtualnej, jeśli korzystasz z usługi ExpressRoute za pomocą komunikacji równorzędnej sieci do firmy Microsoft, Dodaj następujące usługi [punktów końcowych](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) do podsieci, w której będą udostępniane usługi:
     > - Docelowy punkt końcowy z bazy danych (na przykład SQL punktu końcowego, punktu końcowego usługi Cosmos DB i tak dalej)
     > - Punkt końcowy magazynu
     > - Punkt końcowy usługi Service bus
     >
     > Ta konfiguracja jest konieczne, ponieważ usługi Azure Database Migration Service nie ma łączności z Internetem.
 
-- Upewnij się, że reguły sieci Wirtualnej, sieciowej grupy zabezpieczeń nie blokują następujących portów komunikacji przychodzącej do usługi Azure Database Migration Service: 443, 53, 9354, 445, 12000. Aby uzyskać więcej informacji na temat filtrowania ruchu sieciowej grupy zabezpieczeń usługi Azure VNET, zapoznaj się z artykułem [Filter network traffic with network security groups (Filtrowanie ruchu sieciowego przy użyciu sieciowych grup zabezpieczeń)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
+- Upewnij się, że reguły sieci wirtualnej, sieciowej grupy zabezpieczeń nie blokują następujących portów komunikacji przychodzącej do usługi Azure Database Migration Service: 443, 53, 9354, 445, 12000. Aby uzyskać więcej szczegółowych informacji dotyczących filtrowania ruchu sieciowej grupy zabezpieczeń w sieci wirtualnej platformy Azure, zobacz artykuł [filtrowanie ruchu sieciowego przy użyciu sieciowych grup zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
 - [Zapora sytemu Windows skonfigurowana pod kątem dostępu do aparatu bazy danych](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 - Otwórz zaporę systemu Windows, aby zezwolić usłudze Azure Database Migration Service na dostęp do źródłowego wystąpienia programu SQL Server, czyli domyślnie portu TCP 1433.
 - Jeśli uruchomiono wiele nazwanych wystąpień programu SQL Server przy użyciu portów dynamicznych, konieczne może być włączenie usługi SQL Browser i zezwolenie na dostęp do portu UDP 1434 przez zapory, tak aby usługa Azure Database Migration Service mogła połączyć się z nazwanym wystąpieniem na serwerze źródłowym.
 - W przypadku korzystania z urządzenia zapory przed źródłową bazą danych konieczne może być dodanie reguł zapory, aby zezwolić usłudze Azure Database Migration Service na dostęp do źródłowej bazy danych podczas migracji.
-- Utwórz [regułę zapory](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) na poziomie serwera dla serwera usługi Azure SQL Database, aby umożliwić usłudze Azure Database Migration Service dostęp do docelowych baz danych. Podaj zakres podsieci sieci wirtualnej używanej dla usługi Azure Database Migration Service.
+- Utwórz [regułę zapory](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) na poziomie serwera dla serwera usługi Azure SQL Database, aby umożliwić usłudze Azure Database Migration Service dostęp do docelowych baz danych. Podaj zakres podsieci sieci wirtualnej używane dla usługi Azure Database Migration Service.
 - Sprawdź, czy poświadczenia użyte do nawiązania połączenia ze źródłowym wystąpieniem programu SQL Server mają uprawnienia [CONTROL SERVER](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql).
 - Sprawdź, czy poświadczenia użyte do nawiązania połączenia z docelowym wystąpieniem usługi Azure SQL Database mają uprawnienie CONTROL DATABASE do docelowych baz danych Azure SQL Database.
 - Źródłowy program SQL Server musi być w wersji SQL Server 2005 lub nowszej. Aby określić wersję uruchomionego wystąpienia programu SQL Server, zobacz artykuł [Jak określić wersję, wydanie i poziom aktualizacji programu SQL Server i jego składników](https://support.microsoft.com/help/321185/how-to-determine-the-version-edition-and-update-level-of-sql-server-an).
@@ -86,6 +86,7 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
     FROM sys.tables WHERE type = 'U' and is_ms_shipped = 0 AND
     OBJECTPROPERTY(OBJECT_ID, 'TableHasPrimaryKey') = 0;
      ```
+
     >Jeśli wyniki wskażą, że co najmniej jedna tabela ma parametr „is_tracked_by_cdc” o wartości „0”, włącz przechwytywanie zmian dla bazy danych oraz określonych tabel, korzystając z procesu opisanego w artykule [Włączanie i wyłączanie funkcji przechwytywania zmian danych (SQL Server)](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server?view=sql-server-2017).
 
 - Skonfiguruj rolę dystrybutora dla źródłowego programu SQL Server.
@@ -99,6 +100,7 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
     EXEC @installed = sys.sp_MS_replication_installed;
     SELECT @installed as installed;
     ```
+
     Jeśli w wyniku zwracany jest komunikat o błędzie z sugestią, aby zainstalować składniki replikacji, zainstaluj składniki replikacji programu SQL Server zgodnie z procedurą opisaną w artykule [Instalowanie replikacji programu SQL Server](https://docs.microsoft.com/sql/database-engine/install-windows/install-sql-server-replication?view=sql-server-2017).
 
     Jeśli replikacja została już zainstalowana, sprawdź, czy rola dystrybucji jest skonfigurowana w źródłowym programie SQL Server, uruchamiając poniższe polecenie T-SQL.
@@ -118,6 +120,7 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
     select * from sys.triggers
     DISABLE TRIGGER (Transact-SQL)
     ```
+
     Aby uzyskać więcej informacji, zobacz artykuł [DISABLE TRIGGER (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/disable-trigger-transact-sql?view=sql-server-2017). 
 
 ## <a name="assess-your-on-premises-database"></a>Ocena lokalnej bazy danych
@@ -160,6 +163,7 @@ Jeśli ocena wypadła dobrze i wiesz, że wybrana baza danych nadaje się do mig
 
 > [!NOTE]
 > Przed utworzeniem projektu migracji w programie DMA upewnij się, że masz już aprowizowaną bazę danych Azure SQL Database, zgodnie z wymaganiami wstępnymi. Do celów tego samouczka nazwa bazy danych usługi Azure SQL Database to **AdventureWorksAzure**, ale możesz podać dowolną inną nazwę.
+
 > [!IMPORTANT]
 > Jeśli korzystasz z usług SSIS, program DMA nie obsługuje obecnie migracji źródłowej bazy danych SSISDB, ale możesz ponownie wdrożyć swoje projekty/pakiety SSIS do docelowej bazy danych SSISDB hostowanej przez usługę Azure SQL Database. Aby uzyskać więcej informacji na temat migracji pakietów SSIS, zobacz artykuł [Migrowanie pakietów usług SQL Server Integration Services na platformę Azure](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages).
 
@@ -208,7 +212,7 @@ Aby przeprowadzić migrację **AdventureWorks2012** schematu do pojedynczej bazy
 
 3. Wyszukaj „migration”, a następnie po prawej stronie pozycji **Microsoft.DataMigration** wybierz pozycję **Zarejestruj**.
 
-    ![Rejestrowanie dostawcy zasobów](media/tutorial-sql-server-to-azure-sql-online/portal-register-resource-provider.png)    
+    ![Rejestrowanie dostawcy zasobów](media/tutorial-sql-server-to-azure-sql-online/portal-register-resource-provider.png)
 
 ## <a name="create-an-instance"></a>Tworzenie wystąpienia
 
@@ -224,11 +228,11 @@ Aby przeprowadzić migrację **AdventureWorks2012** schematu do pojedynczej bazy
 
 4. Wybierz lokalizację, w której chcesz utworzyć wystąpienie usługi Azure Database Migration Service. 
 
-5. Wybierz istniejącą sieć wirtualną lub utwórz nową.
+5. Wybierz istniejącej sieci wirtualnej lub utworzyć nową.
 
-    Sieć wirtualna zapewnia usłudze Azure Database Migration Service dostęp do źródłowego wystąpienia programu SQL Server i docelowego wystąpienia usługi Azure SQL Database.
+    Sieć wirtualna udostępnia usługi Azure Database Migration Service dostęp do źródła programu SQL Server i wystąpieniem docelowym usługi Azure SQL Database.
 
-    Aby uzyskać więcej informacji na temat tworzenia sieci wirtualnej w witrynie Azure Portal, zobacz artykuł [Tworzenie sieci wirtualnej przy użyciu witryny Azure Portal](https://aka.ms/DMSVnet).
+    Aby uzyskać więcej informacji na temat tworzenia sieci wirtualnej w witrynie Azure portal, zobacz artykuł [Utwórz sieć wirtualną przy użyciu witryny Azure portal](https://aka.ms/DMSVnet).
 
 6. Wybierz warstwę cenową.
 

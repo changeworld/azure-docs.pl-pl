@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 11/06/2018
-ms.openlocfilehash: 067bdcfc496fc986ae87620b7d57d7cad3a0f734
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/09/2019
+ms.openlocfilehash: 22015d1e838e940cbf5a79323f4046c4a7e1719e
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64694175"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65506807"
 ---
 # <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>Za pomocą usług Data Lake Storage Gen1 klastrów Azure HDInsight
 
@@ -43,9 +43,9 @@ Aktualnie tylko niektóre HDInsight klastra typy/wersje pomocy technicznej za po
 | Typ klastra usługi HDInsight | Data Lake Storage Gen1 jako magazynem domyślnym | Data Lake Storage Gen1 jako magazyn dodatkowy| Uwagi |
 |------------------------|------------------------------------|---------------------------------------|------|
 | HDInsight w wersji 4.0 | Nie | Nie |Gen1 Azure Data Lake Store nie jest obsługiwana przy użyciu HDInsight w wersji 4.0 |
-| HDInsight w wersji 3.6 | Yes | Yes | Z wyjątkiem bazy danych HBase|
-| HDInsight w wersji 3.5 | Yes | Yes | Z wyjątkiem bazy danych HBase|
-| HDInsight w wersji 3.4 | Nie | Yes | |
+| HDInsight w wersji 3.6 | Tak | Tak | Z wyjątkiem bazy danych HBase|
+| HDInsight w wersji 3.5 | Tak | Tak | Z wyjątkiem bazy danych HBase|
+| HDInsight w wersji 3.4 | Nie | Tak | |
 | HDInsight w wersji 3.3 | Nie | Nie | |
 | HDInsight w wersji 3.2 | Nie | Yes | |
 | Storm | | |Data Lake Storage Gen1 służy do zapisywania danych pochodzących z topologii Storm. Można również użyć usługi Data Lake Storage dla danych referencyjnych, które następnie mogą być odczytywane przez topologię Storm.|
@@ -220,8 +220,8 @@ if($addNewCertKeyCredential)
     Write-Host "Creating new KeyCredential for the app"
     $keyValue = [System.Convert]::ToBase64String($cert.GetRawCertData())
     New-AzADAppCredential -ApplicationId $appId -CertValue $keyValue -EndDate $cert.NotAfter -StartDate $cert.NotBefore
-    Write-Host "Waiting for 30 seconds for the permissions to get propagated"
-    Start-Sleep -s 30
+    Write-Host "Waiting for 7 minutes for the permissions to get propagated"
+    Start-Sleep -s 420 #7 minutes
 }
 
 Write-Host "Updating the certificate on HDInsight cluster..."

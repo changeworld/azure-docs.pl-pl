@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: be3cedc4b496f4f64a52217099f64092dfb49228
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 35e57dfcc7b1fd6f8de265ab75de29dedd8fdfc2
+ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149843"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65501661"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning-service"></a>Na użytek rozszerzenie interfejsu wiersza polecenia usługi Azure Machine Learning
 
@@ -36,7 +36,11 @@ Interfejs wiersza polecenia nie jest zamiennikiem dla zestawu SDK usługi Azure 
 
 * [Wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
 
-## <a name="install-the-extension"></a>Instalowanie rozszerzenia
+## <a name="full-reference-docs"></a>Pełna dokumentacja
+
+Znajdź [pełne dokumenty referencyjne dotyczące rozszerzenia interfejsu wiersza polecenia platformy azure-cli-ml](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/?view=azure-cli-latest).
+
+## <a name="install-the-extension"></a>Zainstaluj rozszerzenie
 
 Aby zainstalować rozszerzenie interfejsu wiersza polecenia Machine Learning, użyj następującego polecenia:
 
@@ -45,7 +49,7 @@ az extension add -n azure-cli-ml
 ```
 
 > [!TIP]
-> Przykładowe pliki za pomocą poniższych poleceń można znaleźć [tutaj](http://aka.ms/azml-deploy-cloud).
+> Przykładowe pliki za pomocą poniższych poleceń można znaleźć [tutaj](https://aka.ms/azml-deploy-cloud).
 
 Po wyświetleniu monitu wybierz `y` można zainstalować rozszerzenia.
 
@@ -55,7 +59,7 @@ Aby sprawdzić, czy rozszerzenie zostało zainstalowane, użyj następującego p
 az ml -h
 ```
 
-## <a name="remove-the-extension"></a>Usuwanie rozszerzenia
+## <a name="remove-the-extension"></a>Usuń rozszerzenie
 
 Aby usunąć rozszerzenie interfejsu wiersza polecenia, użyj następującego polecenia:
 
@@ -82,9 +86,12 @@ Poniższe polecenia pokazują, jak zarządzać zasoby używane przez usługi Azu
     Aby uzyskać więcej informacji, zobacz [Tworzenie obszaru roboczego uczenia maszynowego az](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-create).
 
 + Dołącz Konfiguracja obszaru roboczego do folderu, aby włączyć rozpoznawanie kontekstowe interfejsu wiersza polecenia.
+
     ```azurecli-interactive
     az ml folder attach -w myworkspace -g myresourcegroup
     ```
+
+    To polecenie umożliwia utworzenie `.azureml` podkatalogu zawierającego pliki przykładowe runconfig i conda środowiska. Zawiera ona także `config.json` pliku, który jest używany do komunikowania się z obszarem roboczym usługi Azure Machine Learning.
 
     Aby uzyskać więcej informacji, zobacz [dołączyć az ml folderu](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/folder?view=azure-cli-latest#ext-azure-cli-ml-az-ml-folder-attach).
 
@@ -121,6 +128,13 @@ Poniższe polecenia pokazują, jak zarządzać zasoby używane przez usługi Azu
     az ml run submit-script -c sklearn -e testexperiment train.py
     ```
 
+    > [!TIP]
+    > `az ml folder attach` Polecenie tworzy `.azureml` podkatalogu, która zawiera dwa pliki runconfig przykład. 
+    >
+    > Jeśli masz skrypt w języku Python, która tworzy obiekt konfiguracji uruchamiania programowo, możesz użyć [RunConfig.save()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py#save-path-none--name-none--separate-environment-yaml-false-) go zapisać jako plik runconfig.
+    >
+    > Aby uzyskać więcej plików runconfig przykładu, zobacz [ https://github.com/MicrosoftDocs/pipelines-azureml/tree/master/.azureml ](https://github.com/MicrosoftDocs/pipelines-azureml/tree/master/.azureml).
+
     Aby uzyskać więcej informacji, zobacz [az ml Uruchom Prześlij skrypt](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script).
 
 * Wyświetlanie listy eksperymenty:
@@ -156,9 +170,26 @@ Poniższe polecenia pokazują, jak rejestrowanie uczonego modelu, a następnie w
     az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.json
     ```
 
+    Poniżej przedstawiono przykład `inferenceconfig.json` dokumentu:
+
+    ```json
+    {
+    "entryScript": "score.py",
+    "runtime": "python",
+    "condaFile": "myenv.yml",
+    "extraDockerfileSteps": null,
+    "sourceDirectory": null,
+    "enableGpu": false,
+    "baseImage": null,
+    "baseImageRegistry": null
+    }
+    ```
+
     Aby uzyskać więcej informacji, zobacz [wdrożyć model uczenia maszynowego az](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy).
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Polecenie Odwołanie rozszerzenia interfejsu wiersza polecenia Machine Learning](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest).
+
+* [Nauczanie i wdrażania modeli uczenia maszynowego przy użyciu potoków usługi Azure](/azure/devops/pipelines/targets/azure-machine-learning?view=azure-devops)

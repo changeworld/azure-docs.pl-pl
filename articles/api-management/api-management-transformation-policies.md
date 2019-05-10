@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: bf5126360140580282ebc1cb2bf73e1afa4d8829
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 565bcfa6c2f8a3da2ac16df0016b5adc54e27380
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920525"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65407605"
 ---
 # <a name="api-management-transformation-policies"></a>Zasady transformacji usługi API Management
 Ten temat zawiera odwołania do następujących zasad usługi API Management. Aby uzyskać informacje na temat dodawania i konfigurowania zasad, zobacz [zasad w usłudze API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -72,13 +72,13 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
 
 |Name (Nazwa)|Opis|Wymagane|
 |----------|-----------------|--------------|
-|JSON do pliku xml|Element główny.|Yes|
+|JSON do pliku xml|Element główny.|Tak|
 
 ### <a name="attributes"></a>Atrybuty
 
 |Name (Nazwa)|Opis|Wymagane|Domyślne|
 |----------|-----------------|--------------|-------------|
-|zastosuj|Ten atrybut musi być równa jeden z następujących wartości.<br /><br /> — zawsze — Zawsze stosuj konwersji.<br />Konwersja zawartości — typ json — tylko wtedy, gdy nagłówka odpowiedzi Content-Type wskazuje obecność JSON.|Yes|ND|
+|zastosuj|Ten atrybut musi być równa jeden z następujących wartości.<br /><br /> — zawsze — Zawsze stosuj konwersji.<br />Konwersja zawartości — typ json — tylko wtedy, gdy nagłówka odpowiedzi Content-Type wskazuje obecność JSON.|Tak|ND|
 |consider-accept-header|Ten atrybut musi być równa jeden z następujących wartości.<br /><br /> — wartość true — zastosowania konwersji, jeśli w żądaniu nagłówka Accept żądania JSON.<br />— wartość false — Zawsze stosuj konwersji.|Nie|true|
 |Data analizy|Po ustawieniu `false` wartości dat, po prostu są kopiowane podczas przekształcania|Nie|true|
 
@@ -116,14 +116,14 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
 
 |Name (Nazwa)|Opis|Wymagane|
 |----------|-----------------|--------------|
-|xml-to-json|Element główny.|Yes|
+|xml-to-json|Element główny.|Tak|
 
 ### <a name="attributes"></a>Atrybuty
 
 |Name (Nazwa)|Opis|Wymagane|Domyślne|
 |----------|-----------------|--------------|-------------|
-|rodzaj|Ten atrybut musi być równa jeden z następujących wartości.<br /><br /> javascript — przyjaznego - przekonwertowany za pomocą pliku JSON ma postać przyjazne dla deweloperów języka JavaScript.<br />-direct - przekonwertowanego JSON odzwierciedla strukturę oryginalnego dokumentu XML.|Yes|ND|
-|zastosuj|Ten atrybut musi być równa jeden z następujących wartości.<br /><br /> — zawsze — Konwertuj zawsze.<br />Konwersja zawartości — typ xml — tylko wtedy, gdy nagłówka odpowiedzi Content-Type wskazuje obecność kodu XML.|Yes|ND|
+|rodzaj|Ten atrybut musi być równa jeden z następujących wartości.<br /><br /> javascript — przyjaznego - przekonwertowany za pomocą pliku JSON ma postać przyjazne dla deweloperów języka JavaScript.<br />-direct - przekonwertowanego JSON odzwierciedla strukturę oryginalnego dokumentu XML.|Tak|ND|
+|zastosuj|Ten atrybut musi być równa jeden z następujących wartości.<br /><br /> — zawsze — Konwertuj zawsze.<br />Konwersja zawartości — typ xml — tylko wtedy, gdy nagłówka odpowiedzi Content-Type wskazuje obecność kodu XML.|Tak|ND|
 |consider-accept-header|Ten atrybut musi być równa jeden z następujących wartości.<br /><br /> — wartość true — zastosowania konwersji, jeśli w żądaniu nagłówka Accept żądania XML.<br />— wartość false — Zawsze stosuj konwersji.|Nie|true|
 
 ### <a name="usage"></a>Sposób użycia
@@ -152,14 +152,14 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
 
 |Name (Nazwa)|Opis|Wymagane|
 |----------|-----------------|--------------|
-|find-and-replace|Element główny.|Yes|
+|find-and-replace|Element główny.|Tak|
 
 ### <a name="attributes"></a>Atrybuty
 
 |Name (Nazwa)|Opis|Wymagane|Domyślne|
 |----------|-----------------|--------------|-------------|
-|z|Ciąg do wyszukania.|Yes|ND|
-|na|Ciąg zastępujący. Określ zero długość ciąg zastępujący usunąć ciąg wyszukiwania.|Yes|ND|
+|from|Ciąg do wyszukania.|Tak|ND|
+|do|Ciąg zastępujący. Określ zero długość ciąg zastępujący usunąć ciąg wyszukiwania.|Tak|ND|
 
 ### <a name="usage"></a>Sposób użycia
  Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
@@ -190,7 +190,7 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
 
 |Name (Nazwa)|Opis|Wymagane|
 |----------|-----------------|--------------|
-|redirect-content-urls|Element główny.|Yes|
+|redirect-content-urls|Element główny.|Tak|
 
 ### <a name="usage"></a>Sposób użycia
  Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
@@ -263,7 +263,7 @@ W tym przykładzie zasady kieruje żądanie do usługi zaplecza Service fabric, 
 
 |Name (Nazwa)|Opis|Wymagane|
 |----------|-----------------|--------------|
-|set-backend-service|Element główny.|Yes|
+|set-backend-service|Element główny.|Tak|
 
 ### <a name="attributes"></a>Atrybuty
 
@@ -375,7 +375,7 @@ W tym przykładzie zasady kieruje żądanie do usługi zaplecza Service fabric, 
 #### <a name="convert-json-to-soap-using-a-liquid-template"></a>Konwertuj JSON przy użyciu szablonu Liquid protokołu SOAP
 ```xml
 <set-body template="liquid">
-    <soap:Envelope xmlns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Envelope xmlns="http://tempuri.org/" xmlns:soap="https://schemas.xmlsoap.org/soap/envelope/">
         <soap:Body>
             <GetOpenOrders>
                 <cust>{{body.getOpenOrders.cust}}</cust>
@@ -399,7 +399,7 @@ W tym przykładzie zasady kieruje żądanie do usługi zaplecza Service fabric, 
 
 |Name (Nazwa)|Opis|Wymagane|
 |----------|-----------------|--------------|
-|Ustaw treść|Element główny. Zawiera tekst podstawowy lub wyrażeń, które zwraca treść.|Yes|
+|Ustaw treść|Element główny. Zawiera tekst podstawowy lub wyrażeń, które zwraca treść.|Tak|
 
 ### <a name="properties"></a>Właściwości
 
@@ -506,15 +506,15 @@ OriginalUrl.
 
 |Name (Nazwa)|Opis|Wymagane|
 |----------|-----------------|--------------|
-|set-header|Element główny.|Yes|
-|value|Określa wartość nagłówka do ustawienia. Dla wiele nagłówków o takiej samej nazwie, Dodaj dodatkowe `value` elementów.|Yes|
+|set-header|Element główny.|Tak|
+|value|Określa wartość nagłówka do ustawienia. Dla wiele nagłówków o takiej samej nazwie, Dodaj dodatkowe `value` elementów.|Tak|
 
 ### <a name="properties"></a>Właściwości
 
 |Name (Nazwa)|Opis|Wymagane|Domyślne|
 |----------|-----------------|--------------|-------------|
 |istnieje akcja|Określa, jakie działania podejmowane w momencie nagłówek jest już określony. Ten atrybut musi mieć jedną z następujących wartości.<br /><br /> -override - zastępuje wartość istniejący nagłówek.<br />-skip — nie zastępuje istniejącą wartość nagłówka.<br />-dołączania - dołącza wartość do istniejącej wartości nagłówka.<br />-delete - Usuwa nagłówek z żądania.<br /><br /> Po ustawieniu `override` rejestrowanie wiele wpisów z tej samej nazwie wyników w nagłówku ustawiania zgodnie ze wszystkich wpisów, (które zostaną wyświetlone wiele razy); tylko wymienioną wartość zostanie ustawiona w wyniku.|Nie|zastąpienie|
-|name|Określa nazwę nagłówka do ustawienia.|Yes|ND|
+|name|Określa nazwę nagłówka do ustawienia.|Tak|ND|
 
 ### <a name="usage"></a>Sposób użycia
  Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
@@ -566,15 +566,15 @@ OriginalUrl.
 
 |Name (Nazwa)|Opis|Wymagane|
 |----------|-----------------|--------------|
-|set-query-parameter|Element główny.|Yes|
-|value|Określa wartość parametru zapytania do ustawienia. Dla wielu parametrów zapytania o takiej samej nazwie, Dodaj dodatkowe `value` elementów.|Yes|
+|set-query-parameter|Element główny.|Tak|
+|value|Określa wartość parametru zapytania do ustawienia. Dla wielu parametrów zapytania o takiej samej nazwie, Dodaj dodatkowe `value` elementów.|Tak|
 
 ### <a name="properties"></a>Właściwości
 
 |Name (Nazwa)|Opis|Wymagane|Domyślne|
 |----------|-----------------|--------------|-------------|
 |istnieje akcja|Określa, jaką akcję należy podjąć, gdy parametr zapytania jest już określony. Ten atrybut musi mieć jedną z następujących wartości.<br /><br /> -override - zastępuje wartość parametru istniejących.<br />-skip — nie zastępuje istniejącą wartość parametru zapytania.<br />-dołączania - dołącza wartość do istniejącej wartości parametrów zapytania.<br />-delete - Usuwa parametr zapytania z żądania.<br /><br /> Po ustawieniu `override` rejestrowanie wiele wpisów z taką samą nazwę wyniki w parametrze zapytania zostanie ustawiony zgodnie ze wszystkich wpisów, (które zostaną wyświetlone wiele razy); tylko wymienioną wartość zostanie ustawiona w wyniku.|Nie|zastąpienie|
-|name|Określa nazwę parametru zapytania do ustawienia.|Yes|ND|
+|name|Określa nazwę parametru zapytania do ustawienia.|Tak|ND|
 
 ### <a name="usage"></a>Sposób użycia
  Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
@@ -645,13 +645,13 @@ OriginalUrl.
 
 |Name (Nazwa)|Opis|Wymagane|
 |----------|-----------------|--------------|
-|rewrite-uri|Element główny.|Yes|
+|rewrite-uri|Element główny.|Tak|
 
 ### <a name="attributes"></a>Atrybuty
 
 |Atrybut|Opis|Wymagane|Domyślne|
 |---------------|-----------------|--------------|-------------|
-|szablon|Rzeczywisty adres URL usługi internetowej za pomocą parametrów ciągu zapytania. Korzystając z wyrażeń, wartości całkowitej musi być wyrażeniem.|Yes|ND|
+|szablon|Rzeczywisty adres URL usługi internetowej za pomocą parametrów ciągu zapytania. Korzystając z wyrażeń, wartości całkowitej musi być wyrażeniem.|Tak|ND|
 |copy-unmatched-params|Określa, czy parametry zapytania w żądaniu przychodzącym nie znajduje się w oryginalnym szablonie adres URL są dodawane do adresu URL zdefiniowane w szablonie ponownego napisania|Nie|true|
 
 ### <a name="usage"></a>Sposób użycia
@@ -714,9 +714,9 @@ OriginalUrl.
 
 |Name (Nazwa)|Opis|Wymagane|
 |----------|-----------------|--------------|
-|xsl-transform|Element główny.|Yes|
+|xsl-transform|Element główny.|Tak|
 |parametr|Używane do definiowania zmiennych używanych w transformacji|Nie|
-|xsl:stylesheet|Elemencie głównym arkusza stylów. Wszystkie elementy i atrybuty zdefiniowane w ramach zgodne ze standardem [specyfikację XSLT](https://www.w3.org/TR/xslt)|Yes|
+|xsl:stylesheet|Elemencie głównym arkusza stylów. Wszystkie elementy i atrybuty zdefiniowane w ramach zgodne ze standardem [specyfikację XSLT](https://www.w3.org/TR/xslt)|Tak|
 
 ### <a name="usage"></a>Sposób użycia
  Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
@@ -727,7 +727,7 @@ OriginalUrl.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać więcej informacji, zobacz następujące tematy:
+Więcej informacji znajduje się w następujących tematach:
 
 + [Zasady usługi API Management](api-management-howto-policies.md)
 + [Informacje o zasadach](api-management-policy-reference.md) pełną listę zasad i ich ustawienia

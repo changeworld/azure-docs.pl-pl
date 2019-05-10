@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 11/14/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: a8512e128d757e2faf4c3f63c5ad113b1d67b4ee
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: ad285d71c2bb90f4b5a59eba25c6cc6a6d8588d6
+ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204893"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65501846"
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>Usługa SQL Data Warehouse limity pojemności
 Maksymalna dozwolona dla różnych składników usługi Azure SQL Data Warehouse.
@@ -35,26 +35,26 @@ Maksymalna dozwolona dla różnych składników usługi Azure SQL Data Warehouse
 |:--- |:--- |:--- |
 | Database (Baza danych) |Maks. rozmiar | Gen1: 240 TB skompresowane na dysku. Ta przestrzeń jest niezależna od miejsca na bazę danych tempdb lub dziennika, a w związku z tym ta przestrzeń jest dedykowany do tablic stałych.  Kompresja klastrowanego magazynu kolumn szacuje się na 5 X.  Kompresja ta umożliwia bazy danych do około 1 PB, w przypadku wszystkich tabel klastrowanego magazynu kolumn (domyślny typ tabeli). <br/><br/> Gen2: 240TB magazynu wierszy i nieograniczony magazyn tabel magazynu kolumn |
 | Tabela |Maks. rozmiar |60 TB skompresowane na dysku |
-| Tabela |Tabele dla bazy danych | 100 000 |
+| Tabela |Tabele dla bazy danych | 100,000 |
 | Tabela |Kolumn w tabeli |1024 kolumn |
 | Tabela |Liczba bajtów na kolumnę |Zależne od kolumny [— typ danych](sql-data-warehouse-tables-data-types.md). Limit wynosi 8000 dla typów danych char, 4000 nvarchar, czy za 2 GB dla typów danych MAX. |
 | Tabela |Bajtów na wiersz, zdefiniowanego rozmiaru |8060 bajtów<br/><br/>Liczba bajtów na wiersz jest obliczana w taki sam sposób, podobnie jak w przypadku programu SQL Server przy użyciu kompresji strony. Podobnie jak SQL Server, SQL Data Warehouse obsługuje magazynu przepełnienie wierszy, które umożliwia **kolumn o zmiennej długości** ma zostać wypchnięty pozawierszową. Gdy o zmiennej długości wierszy są przekazywane pozawierszową, tylko 24-bajtowy główny znajduje się w głównym rekordzie. Aby uzyskać więcej informacji, zobacz [przepełnienie wiersza danych przekraczających rozmiarze 8 KB](https://msdn.microsoft.com/library/ms186981.aspx). |
-| Tabela |Partycje na tabelę |15 000<br/><br/>Wydajna, firma Microsoft zaleca, minimalizując liczbę partycji potrzebne podczas przerywania obsługi wymagań biznesowych. Wraz z rozwojem liczby partycji koszty operacji języka definicji danych (DDL) i manipulowania języka DML (Data) zwiększa się i powoduje, że niższej wydajności. |
+| Tabela |Partycje na tabelę |15,000<br/><br/>Wydajna, firma Microsoft zaleca, minimalizując liczbę partycji potrzebne podczas przerywania obsługi wymagań biznesowych. Wraz z rozwojem liczby partycji koszty operacji języka definicji danych (DDL) i manipulowania języka DML (Data) zwiększa się i powoduje, że niższej wydajności. |
 | Tabela |Liczba znaków na wartość graniczna partycji. |4000 |
 | Indeks |Indeksy klastrowane inne niż na tabelę. |50<br/><br/>Dotyczy tylko tabele magazynu wierszy. |
 | Indeks |Indeksy klastrowane na tabelę. |1<br><br/>Ma zastosowanie do tabel zarówno magazynu wierszy, jak i magazynu kolumn. |
 | Indeks |Rozmiar klucza indeksu. |900 bajtów.<br/><br/>Dotyczy tylko indeksów magazynu wierszy.<br/><br/>Indeksy w kolumnach varchar o maksymalnym rozmiarze więcej niż 900 bajtów mogą być tworzone, jeśli podczas tworzenia indeksu, istniejące dane w kolumnach nie przekraczać 900 bajtów. Jednak później WSTAWIĆ lub akcji aktualizacji dla kolumn, które powodują całkowity rozmiar przekracza 900 bajtów zakończy się niepowodzeniem. |
 | Indeks |Kolumny klucza indeksu. |16<br/><br/>Dotyczy tylko indeksów magazynu wierszy. Klastrowane indeksy magazynu kolumn, Uwzględnij wszystkie kolumny. |
-| Statystyki |Rozmiar wartości w kolumnach połączone. |900 bajtów. |
-| Statystyki |Kolumny dla każdego obiektu statystyk. |32 |
-| Statystyki |Statystyka utworzone dla kolumn w tabeli. |30,000 |
+| Statystyka |Rozmiar wartości w kolumnach połączone. |900 bajtów. |
+| Statystyka |Kolumny dla każdego obiektu statystyk. |32 |
+| Statystyka |Statystyka utworzone dla kolumn w tabeli. |30,000 |
 | Procedury składowane |Maksymalnej liczby poziomów zagnieżdżenia. |8 |
 | Widok |Kolumn w widoku |1,024 |
 
 ## <a name="loads"></a>Obciążenia
 | Category | Opis | Maksimum |
 |:--- |:--- |:--- |
-| Obciążenia funkcji Polybase |MB na wiersz |1<br/><br/>Program Polybase ładuje wierszy, które są mniejsze niż 1 MB.<br/><br/> |
+| Obciążenia funkcji Polybase |MB na wiersz |1<br/><br/>Program Polybase ładuje wierszy, które są mniejsze niż 1 MB. Ładowanie typów danych biznesowych w tabelach z klastrowanego magazynu kolumn indeksu (CCI) nie jest obsługiwane.<br/><br/> |
 
 ## <a name="queries"></a>Zapytania
 | Category | Opis | Maksimum |
@@ -63,7 +63,7 @@ Maksymalna dozwolona dla różnych składników usługi Azure SQL Data Warehouse
 | Zapytanie |Zapytania jednoczesne w widokach systemu. |100 |
 | Zapytanie |Umieszczonych w kolejce zapytań na widoki systemu |1000 |
 | Zapytanie |Maksymalna parametrów |2098 |
-| Batch |Maksymalny rozmiar |65,536*4096 |
+| Wsadowe |Maksymalny rozmiar |65,536*4096 |
 | Wybierz wyniki |Kolumn w wierszach |4096<br/><br/>Nigdy nie może mieć więcej niż 4096 kolumn w wierszach, w wynikach wybierz. Nie ma żadnej gwarancji, że zawsze masz 4096. Jeśli w planie zapytania wymaga tabeli tymczasowej, 1024 kolumn dla tabeli maksymalna mogą być stosowane. |
 | SELECT |Zagnieżdżonych podzapytań |32<br/><br/>Nigdy nie mogą istnieć więcej niż 32 zagnieżdżonych podzapytań w instrukcji SELECT. Nie ma żadnej gwarancji, że zawsze może mieć 32. Na przykład sprzężenia można wprowadzać podzapytania do planu zapytania. Liczbę podzapytania może być ona ograniczona przez ilość dostępnej pamięci. |
 | SELECT |Kolumn na sprzężenia |1024 kolumn<br/><br/>Program może nigdy nie więcej niż 1024 kolumn sprzężenia. Nie ma żadnej gwarancji, że zawsze masz 1024. Jeśli plan sprzężenia wymaga tabelę tymczasową przy użyciu więcej kolumn niż wynik sprzężenia, limitu 1024 stosuje się do tabeli tymczasowej. |
