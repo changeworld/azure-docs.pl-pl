@@ -46,10 +46,10 @@ Następujące właściwości są obsługiwane dla usługi Google BigQuery połą
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość type musi być równa **GoogleBigQuery**. | Yes |
-| Projekt | Identyfikator projektu domyślny projekt BigQuery dla zapytania.  | Yes |
+| project | Identyfikator projektu domyślny projekt BigQuery dla zapytania.  | Yes |
 | additionalProjects | Rozdzielana przecinkami lista identyfikatorów projektu publicznych BigQuery projekty do dostępu.  | Nie |
 | requestGoogleDriveScope | Określa, czy żądanie dostępu do usługi dysk Google. Zezwolenie na dostęp do usługi dysk Google umożliwia obsługę tabel federacyjnych, które łączą dane BigQuery przy użyciu danych z usługi dysk Google. Wartość domyślna to **false**.  | Nie |
-| Element authenticationType | Mechanizm uwierzytelniania OAuth 2.0 używany do uwierzytelniania. ServiceAuthentication może być używany tylko dla środowiskiem Integration Runtime. <br/>Dozwolone wartości to **UserAuthentication** i **ServiceAuthentication**. Zapoznaj się sekcje poniżej tej tabeli na więcej właściwości i przykłady kodu JSON dla tych typów uwierzytelniania, odpowiednio. | Yes |
+| authenticationType | Mechanizm uwierzytelniania OAuth 2.0 używany do uwierzytelniania. ServiceAuthentication może być używany tylko dla środowiskiem Integration Runtime. <br/>Dozwolone wartości to **UserAuthentication** i **ServiceAuthentication**. Zapoznaj się sekcje poniżej tej tabeli na więcej właściwości i przykłady kodu JSON dla tych typów uwierzytelniania, odpowiednio. | Yes |
 
 ### <a name="using-user-authentication"></a>Przy użyciu uwierzytelniania użytkownika
 
@@ -93,7 +93,7 @@ Ustaw właściwość "authenticationType" **ServiceAuthentication**, a następni
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| e-mail | Identyfikator konta usługi poczty e-mail, służąca do ServiceAuthentication. Może służyć tylko na środowiskiem Integration Runtime.  | Nie |
+| email | Identyfikator konta usługi poczty e-mail, służąca do ServiceAuthentication. Może służyć tylko na środowiskiem Integration Runtime.  | Nie |
 | keyFilePath | Pełna ścieżka do pliku klucza p12, który jest używany do uwierzytelniania adres e-mail konta usługi. | Nie |
 | trustedCertPath | Pełna ścieżka pliku PEM, który zawiera certyfikatów zaufanego urzędu certyfikacji służącego do weryfikowania serwera, po nawiązaniu połączenia za pośrednictwem protokołu SSL. Tę właściwość można ustawić tylko wtedy, gdy używasz protokołu SSL na środowiskiem Integration Runtime. Wartość domyślna to plik cacerts.pem zainstalowane za pomocą środowiska integration runtime.  | Nie |
 | useSystemTrustStore | Określa, czy ma być używany certyfikat urzędu certyfikacji z magazynu zaufania systemu lub z pliku określonego PEM. Wartość domyślna to **false**.  | Nie |
