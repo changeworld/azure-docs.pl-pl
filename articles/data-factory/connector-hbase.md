@@ -45,9 +45,9 @@ Następujące właściwości są obsługiwane dla bazy danych HBase, połączone
 | host | Adres IP lub hosta nazwę serwera bazy danych HBase. (tj.)  `[clustername].azurehdinsight.net`, `192.168.222.160`)  | Yes |
 | port | Port TCP używany przez wystąpienie bazy danych HBase do nasłuchiwania połączeń klientów. Wartość domyślna to 9090. Jeśli łączysz się Azure HDInsights, należy określić port ustawiony na 443. | Nie |
 | httpPath | Częściowe adres URL serwera bazy danych HBase, np. `/hbaserest0` przy użyciu klaster HDInsights. | Nie |
-| Element authenticationType | Mechanizm uwierzytelniania na potrzeby łączenia się z serwerem bazy danych HBase. <br/>Dozwolone wartości to: **Anonimowe**, **podstawowe** | Yes |
-| nazwa użytkownika | Nazwa użytkownika, używany do łączenia się z wystąpieniem bazy danych HBase.  | Nie |
-| hasło | Hasło odpowiadający nazwie użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
+| authenticationType | Mechanizm uwierzytelniania na potrzeby łączenia się z serwerem bazy danych HBase. <br/>Dozwolone wartości to: **Anonimowe**, **podstawowe** | Yes |
+| username | Nazwa użytkownika, używany do łączenia się z wystąpieniem bazy danych HBase.  | Nie |
+| password | Hasło odpowiadający nazwie użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
 | enableSsl | Określa, czy połączenia z serwerem są szyfrowane przy użyciu protokołu SSL. Wartość domyślna to false.  | Nie |
 | trustedCertPath | Pełna ścieżka pliku PEM, zawierająca zaufane certyfikaty urzędu certyfikacji w celu sprawdzenia serwer podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Tę właściwość można ustawić tylko w przypadku korzystania z protokołu SSL na Self-Hosted IR Wartością domyślną jest instalowany z wewnątrz pliku cacerts.pem  | Nie |
 | allowHostNameCNMismatch | Określa, czy wymagają nazwy certyfikatów wystawionych przez urząd certyfikacji SSL Period z nazwą hosta serwera podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to false.  | Nie |
