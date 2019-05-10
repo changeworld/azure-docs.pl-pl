@@ -12,22 +12,22 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/02/2017
+ms.date: 04/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: 1e02e4fdf0dbe04d8756fc6355c6a9e414b27d2b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: feb82d2abb756d636aeb77042cc817b7b05f6b0c
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60719156"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233664"
 ---
 # <a name="why-a-microservices-approach-to-building-applications"></a>Dlaczego mikrousługi podejście do tworzenia aplikacji?
 
-Jako programiści nie ma nic nowego: w jaki sposób firma Microsoft rozważać wyprowadzenie aplikacji do części składowych. Zazwyczaj warstwowego rozwiązania jest pobierana z magazynu zaplecza, logika biznesowa warstwy środkowej i interfejsem frontonu użytkownika (UI). Co *ma* zmienione w ciągu ostatnich kilku lat jest, że, jako programiści, tworzymy aplikacji rozproszonych w chmurze.
+Jako programiści myśleć o wyprowadzenie aplikacji do części składowych to nic nowego. Zazwyczaj warstwowego rozwiązania jest pobierana z magazynu zaplecza, logika biznesowa warstwy środkowej i interfejsem frontonu użytkownika (UI). Co *ma* zmienione w ciągu ostatnich kilku lat jest, że, jako programiści, tworzymy aplikacji rozproszonych w chmurze.
 
 Zmieniających się potrzeb biznesowych są:
 
-* Usługa, która jest wbudowana i działa na dużą skalę, aby dotrzeć do klientów w nowych regionach geograficznych.
+* Usługa, która jest wbudowana i obsługiwane w dużej skali, aby dotrzeć do klientów w nowych regionach geograficznych.
 * Szybsze dostarczanie funkcji i możliwości, aby móc reagować na żądania klientów elastyczne.
 * Wykorzystanie zasobów ulepszony, aby ograniczyć koszty.
 
@@ -37,15 +37,15 @@ Aby uzyskać więcej informacji na temat podejścia platformy Azure do mikrousł
 
 ## <a name="monolithic-vs-microservice-design-approach"></a>Monolityczne, a na etapie projektowania mikrousług
 
-Rozwój aplikacji wraz z upływem czasu. Udane aplikacje rozwój dzięki przydatne dla osób. Aplikacje nie powiedzie nie ewolucji i po pewnym czasie są przestarzałe. Pytanie jest: Ile informacje dotyczące wymagań już dziś i co one będzie w przyszłości? Na przykład załóżmy, że możesz tworzyć aplikacji do raportowania dla działu. Masz pewność, że aplikacja ma zastosowanie tylko w zakresie swojej firmy i że raporty są krótkotrwałe. Wybór podejście różni się od, powiedz, kompilowanie to usługa, która dostarcza zawartość wideo dziesiątki milionów klientów.
+Rozwój aplikacji wraz z upływem czasu. Udane aplikacje rozwój dzięki przydatne dla osób. Aplikacje nie powiedzie nie ewolucji i po pewnym czasie są przestarzałe. Pytanie jest: Ile informacje dotyczące wymagań już dziś i jakie będą w przyszłości? Na przykład załóżmy, że możesz tworzyć aplikacji do raportowania dla działu. Masz pewność, że aplikacja ma zastosowanie tylko w zakresie swojej firmy i że raporty są krótkotrwałe. Wybór podejście różni się od, powiedz, kompilowanie to usługa, która dostarcza zawartość wideo dziesiątki milionów klientów.
 
-Czasami pobraniem czegoś spory jako Weryfikacja koncepcji jest współczynnik opracowuje, gdy wiesz, że później przeprojektowany aplikacji. Istnieje mały punkt w nadmiernie inżynierii coś, który nigdy nie zostanie wykorzystany. Jest zwykle kompromis inżynierów. Z drugiej strony mówiąc firmy dotyczące tworzenia aplikacji dla chmury, oczekiwania jest wskaźnik wzrostu i użycia. Problem polega na rozwój i skalowanie są nieprzewidywalne. Chcielibyśmy można było prototypu szybko codzienne również jesteśmy na ścieżce do czynienia z sukcesem w przyszłości. Jest to metoda startupu: kompilowanie, mierzenie, Dowiedz się i iteracji.
+Czasami pobraniem czegoś spory jako Weryfikacja koncepcji jest współczynnik opracowuje, wiedząc, później przeprojektowany aplikacji. Istnieje mały punkt w nadmiernie inżynierii coś, który nigdy nie zostanie wykorzystany. Z drugiej strony mówiąc firmy dotyczące tworzenia aplikacji dla chmury, oczekiwania jest wskaźnik wzrostu i użycia. Problem polega na rozwój i skalowanie są nieprzewidywalne. Chcielibyśmy można było prototypu szybko codzienne również jesteśmy na ścieżce, która może obsłużyć przyszłych sukcesów. Jest to metoda startupu: kompilowanie, mierzenie, Dowiedz się i iteracji.
 
-Podczas era klient serwer firma Microsoft pielęgnowane skoncentrowanie się na tworzeniu aplikacji warstwowych przy użyciu określonych technologii w przypadku każdej warstwy. Termin *monolityczne* aplikacji pojawiło się w przypadku tych metod. Interfejsy rozszerzenia się między warstwami i bardziej ściśle sprzężonych projektu zostało użyte między składnikami w każdej warstwie. Deweloperzy zaprojektowane i uwzględniona klas, które zostały skompilowane w bibliotekach i powiązane w kilku plików wykonywalnych i bibliotek DLL. 
+Podczas era klient serwer firma Microsoft pielęgnowane skoncentrowanie się na tworzeniu aplikacji warstwowych przy użyciu określonych technologii w przypadku każdej warstwy. Termin *monolityczne* aplikacji pojawiło się w przypadku tych metod. Interfejsy rozszerzenia się między warstwami i bardziej ściśle sprzężonych projektu zostało użyte między składnikami w każdej warstwie. Deweloperzy zaprojektowane i uwzględniona klas, które zostały skompilowane w bibliotekach i powiązane w kilku plików wykonywalnych i bibliotek DLL.
 
 Istnieją korzyści z takiego podejścia monolityczny projekt. Jest często łatwiejsze do projektowania, a ma szybszy wywołań między składnikami, ponieważ te wywołania są często za pośrednictwem komunikacji międzyprocesowej (IPC). Ponadto wszyscy testy jednego produktu jest zwykle więcej osób zasobów wydajne. Minusem jest, że istnieje ścisłego sprzężenia między warstwami warstwowe, i nie można skalować poszczególne składniki. Jeśli zachodzi potrzeba wykonania uaktualnienia i poprawki, trzeba czekać na zakończenie testów przez inne osoby. Trudno bardziej efektywnie.
 
-Mikrousługi rozwiązać te wad i więcej ściśle dopasować wymagań biznesowych, ale mają również korzyści i zobowiązań. Korzyści wynikające z mikrousług to, że każdy z nich zazwyczaj hermetyzuje prostsze funkcji biznesowych, które można skalować w górę lub w dół, testowanie, wdrażanie i niezależnie zarządzać. Co ważne korzyści wynikające z podejścia z zastosowaniem mikrousług jest to, czy zespoły są oparte na więcej scenariuszy biznesowych niż przez technologię — co sprzyja warstwowego rozwiązania. W praktyce mniejszych zespołach opracowywanie mikrousług, oparta na scenariuszu klienta i używać dowolnej technologii, które postanowili.
+Mikrousługi rozwiązać te wad i więcej ściśle dopasować wymagań biznesowych, ale mają również korzyści i zobowiązań. Korzyści wynikające z mikrousług to, że każdy z nich zazwyczaj hermetyzuje prostsze funkcji biznesowych, które można skalować w górę lub w dół, testowanie, wdrażanie i niezależnie zarządzać. Co ważne korzyści wynikające z podejścia z zastosowaniem mikrousług jest to, czy zespoły są oparte na więcej różnych scenariuszy biznesowych niż przez technologię. W praktyce mniejszych zespołach opracowywanie mikrousług, oparta na scenariuszu klienta i używać dowolnej technologii, które postanowili.
 
 Innymi słowy organizacja nie musi standaryzacji tech do obsługi aplikacji mikrousług. Poszczególne zespoły, własnych usług można zrobić, co ma sens dla nich oparty na wiedzy zespołu lub co to jest najbardziej odpowiednie do rozwiązania problemu. W praktyce zbiór zalecanych technologii, takich jak określonego NoSQL przechowywania lub platforma aplikacji sieci web, jest preferowane.
 
@@ -71,11 +71,11 @@ Jak są produkowane więcej aplikacji w chmurze, osoby odkryli, to lepiej długo
 
 Projektowanie za pomocą mikrousługi podejście nie jest panaceum na wszystkie projekty, ale jej dostosowanie z celów biznesowych, opisanych wcześniej. Począwszy od podejścia monolitycznego może być akceptowalne, jeśli wiesz, że użytkownik będzie miał możliwość przerabiać kod później na mikrousługach. Zazwyczaj zaczynają się od aplikacji monolitycznej i powoli Podziel je w etapach, począwszy od obszarów funkcjonalnych, które muszą być bardziej skalowalna lub agile.
 
-Podejścia z zastosowaniem mikrousług oznacza to, czy tworzysz aplikację wiele małych usług. Usługi są uruchomione w kontenerach, które są wdrażane w klastrze maszyn. Mniejszych zespołów projektowania usługi, która koncentruje się na scenariuszu niezależnie przetestować, wersji, wdrażanie i skalowanie poszczególnych usług, dzięki czemu można rozwijać całej aplikacji.
+Podejścia z zastosowaniem mikrousług oznacza to, czy tworzysz aplikację wiele małych usług. Usługi te działają w kontenerach, które są wdrażane w klastrze maszyn. Mniejszych zespołów projektowania usługi, która koncentruje się na scenariuszu niezależnie przetestować, wersji, wdrażanie i skalowanie poszczególnych usług, dzięki czemu można rozwijać całej aplikacji.
 
 ## <a name="what-is-a-microservice"></a>Co to jest mikrousługi?
 
-Istnieją różne definicje mikrousług. Jednak większość następujące właściwości mikrousługi są powszechnie uzgodnionych:
+Istnieją różne definicje mikrousług. Jednak większość następujące właściwości mikrousługi są powszechnie akceptowane:
 
 * Hermetyzuj scenariuszy biznesowych lub klienta. Co to jest problem, który rozwiązywanych?
 * Opracowane przez niewielkiemu zespołowi inżynierów.
@@ -97,7 +97,7 @@ Po użytkownik wybrał technologii, możesz się zarządzanie operacyjne lub cyk
 
 ### <a name="allows-code-and-state-to-be-independently-versioned-deployed-and-scaled"></a>Umożliwia kodu i stanie się oddzielnie wersjonowanych, wdrażanie i skalowanie
 
-Jednak istnieje możliwość zapisu mikrousługi, kod i, opcjonalnie stanu, należy niezależnie wdrożenia, uaktualnienie i skalowanie. Jest to jeden z problemów trudniejsze do rozwiązania, ponieważ jego sprowadza się do wybranych przez siebie technologii. Aby uzyskać opis skalowanie, jak partycja (lub fragmentu) kod i stan staje się wyzwaniem. Korzystając z kodem i stanem oddzielne technologii, co jest typowe już dziś, skrypty wdrażania usługi mikrousług muszą mieć możliwość skalowania oba te. Dotyczy to również sprawności i elastyczności, dlatego można przeprowadzić uaktualnienie niektórych mikrousługi bez konieczności aktualizacji wszystkich z nich jednocześnie.
+Niezależnie od tego, jak chcesz napisać, mikrousługi, kodu i, opcjonalnie, stan powinien niezależnie wdrażanie, uaktualnianie i skalowanie. Jest to jeden z problemów trudniejsze do rozwiązania, ponieważ jego sprowadza się do wybranych przez siebie technologii. Aby uzyskać opis skalowanie, jak partycja (lub fragmentu) kod i stan staje się wyzwaniem. Korzystając z kodem i stanem oddzielne technologii, co jest typowe już dziś, skrypty wdrażania usługi mikrousług muszą mieć możliwość skalowania oba te. Dotyczy to również sprawności i elastyczności, dlatego można przeprowadzić uaktualnienie niektórych mikrousługi bez konieczności aktualizacji wszystkich z nich jednocześnie.
 
 Zwracanie do monolityczne i podejścia z zastosowaniem mikrousług, przez chwilę, na poniższym diagramie przedstawiono różnice w przypadku zastosowania podejścia do przechowywania stanu.
 
@@ -121,7 +121,7 @@ Rozbudowane materiały dotyczące architektury zorientowanej na usługi został 
 
 ### <a name="has-a-unique-name-url-used-to-resolve-its-location"></a>Ma unikatową nazwę (adres URL) używany do rozpoznawania lokalizacji
 
-Twoje mikrousług należy adresowalnych wszędzie tam, gdzie jest uruchomiony. Jeśli myślisz o maszynach, który z nich działa określonego mikrousług rzeczy niedługo szybko. 
+Twoje mikrousług należy adresowalnych wszędzie tam, gdzie jest uruchomiony. Jeśli myślisz o maszynach, który z nich działa określonego mikrousług rzeczy niedługo szybko.
 
 W taki sam sposób, że DNS jest rozpoznawana jako określonego adresu URL określonego komputera z mikrousług musi unikatową nazwę, aby odnaleźć jego bieżącej lokalizacji. Mikrousługi muszą adresowalnych nazw, które są niezależne od infrastruktury, które są uruchomione. Oznacza to, że istnieje interakcji między jak usługa zostanie wdrożona, i jak okaże się, ponieważ musi istnieć rejestr usług. W przypadku awarii komputera Usługa rejestru musisz poinformować, gdy usługa została przeniesiona do.
 
@@ -138,6 +138,9 @@ Odporność jest trudny do osiągnięcia w przypadku niepowodzenia podczas uaktu
 Może wydawać się oczywiste, jest często pomijane, ale mikrousługi należy zgłosić, jego kondycja i Diagnostyka. W przeciwnym razie jest mały wgląd w jego kondycji z perspektywy operacji. Korelowanie zdarzeń diagnostycznych na zestaw niezależnych usług i rozwiązywania problemów związanych z niesymetryczności zegara komputera rozsądnie kolejności zdarzeń, może być trudne. W ten sam sposób, że możesz korzystać z mikrousług za pośrednictwem protokołów uzgodnionego i formatów danych musisz standaryzacji jak kondycji i zdarzenia diagnostyczne, które będzie ostatecznie znajdą się w magazynie zdarzeń do wykonywania zapytań i wyświetlania dziennika. W podejściu z mikrousług go ma klucza różne zespoły dojdą do Porozumienia w postaci pojedynczego logowania. Musi istnieć spójnego podejścia do wyświetlania zdarzeń diagnostycznych w aplikacji jako całości.
 
 Kondycja różni się od diagnostyki. Kondycja jest o mikrousługach raportowania swojego bieżącego stanu, aby podjąć odpowiednie działania. Dobrym przykładem jest praca z mechanizmów uaktualnieniu i wdrożeniu w celu zapewnienia dostępności. Mimo że usługa może być aktualnie niepoprawny stan z powodu awarii procesu lub ponowne uruchomienie komputera, usługi może nadal działać. Ostatnią czynnością, jaką potrzebne jest zapewnienie to niższa, wykonując uaktualnienie. Najlepszym rozwiązaniem jest w celu badania lub poczekaj na mikrousługach odzyskać. Zdarzenia dotyczące kondycji z mikrousługi pomagają nam podejmowanie świadomych decyzji, a w efekcie pomagają stworzyć samonaprawiania usług.
+
+## <a name="microservices-design-guidance-on-azure"></a>Wskazówki dotyczące projektowania Mikrousług na platformie Azure
+Odwiedź Centrum architektury platformy Azure, aby uzyskać wskazówki dotyczące projektowania w [tworzenia mikrousług na platformie Azure](https://docs.microsoft.com/azure/architecture/microservices/)
 
 ## <a name="service-fabric-as-a-microservices-platform"></a>Usługa Service Fabric, jest to platforma mikrousług
 
@@ -170,8 +173,8 @@ Ważne jest, aby ponownie podkreślić, że możesz **uruchomić i zatrzymać w 
 **Lift- and -Shift**  
 Duża liczba przedsiębiorstw są podnoszenia i przesunięcie istniejących aplikacji monolitycznych w kontenerach dwóch powodów:
 
-- Zmniejszenie kosztów z powodu konsolidacji i usunięcie istniejącego sprzętu lub uruchamianie aplikacji na zwiększenie gęstości.
-- Spójne wdrażanie kontrakt między środowiskami deweloperskim i operacji.
+* Zmniejszenie kosztów z powodu konsolidacji i usunięcie istniejącego sprzętu lub uruchamianie aplikacji na zwiększenie gęstości.
+* Spójne wdrażanie kontrakt między środowiskami deweloperskim i operacji.
 
 Obniżenie kosztów są zrozumiałe, a w ramach firmy Microsoft, dużej liczby istniejących aplikacji są trwa kontenerowych nimi po prostu, można zaoszczędzić miliony dolarów. Spójne wdrażanie jest trudniejsze do oceny, ale równie ważne. Oznacza to, że deweloperzy nadal może być swobodę wyboru technologii, która odpowiada, ale operacje będzie akceptować tylko jeden sposób, aby wdrażać te aplikacje i zarządzać. Eliminuje ona operacje z konieczności złożoność wielu różnych technologii lub wymuszenie deweloperzy mogą wybrać tylko niektóre z nich. Zasadniczo każda aplikacja jest konteneryzowana w obrazach niezależna wdrożenia.
 
@@ -181,23 +184,24 @@ W wielu organizacjach zatrzymać w tym miejscu. Mają zalety kontenery i Usługa
 Dodanie nowych usług wraz z istniejącą kontenerowych nimi kodu. Jeśli zamierzasz pisanie nowego kodu, najlepiej chce wykonać proces na niewielkie etapy do ścieżki mikrousług. Może to dodawania nowego punktu końcowego interfejsu API REST lub nowej logiki biznesowej. W ten sposób, możesz rozpocząć tworzenie nowych mikrousług i praktyki opracowywania i wdrażania ich podróży.
 
 **Wprowadzanie innowacji**  
-To podejście mikrousług jest przystosowana do zmieniających się potrzeb biznesowych. Na tym etapie decyzja jest, czy należy uruchomić, dzieląc monolityczną aplikację na usługi lub innowacje. W tym przykładzie jest, gdy bazę danych jako kolejkę przepływu pracy staje się wąskim gardłem przetwarzania. Jak liczba przepływów pracy żądań rośnie, pracy musi być dystrybuowane do skalowania. Dla tego określonego elementu aplikacji, która nie jest skalowany lub wymagający będą aktualizowane częściej podzielić tę możliwość mikrousługi i wprowadzania innowacji.
+To podejście mikrousług jest przystosowana do zmieniających się potrzeb biznesowych. Na tym etapie decyzja jest, czy należy uruchomić, dzieląc monolityczną aplikację na usługi lub innowacje. Klasycznym przykładem jest, gdy bazę danych jako kolejkę przepływu pracy staje się wąskim gardłem przetwarzania. Jak liczba przepływów pracy żądań rośnie, pracy musi być dystrybuowane do skalowania. Dla tego określonego elementu aplikacji, która nie jest skalowany lub wymagający będą aktualizowane częściej podzielić tę możliwość mikrousługi i wprowadzania innowacji.
 
 **Przekształcone w mikrousługach**  
-Jest to, gdzie aplikacja jest w pełni składa się z (lub rozłożona na) mikrousług. Aby uzyskać dostęp w tym miejscu, wprowadzono podróż mikrousług. Można uruchomić w tym miejscu, ale aby to zrobić bez mikrousług platformy, aby ułatwić jest znaczących inwestycji. 
+Jest to, gdzie aplikacja jest w pełni składa się z (lub Podziel na) mikrousług. Aby uzyskać dostęp w tym miejscu, wprowadzono podróż mikrousług. Można uruchomić w tym miejscu, ale aby to zrobić bez mikrousług platformy, aby ułatwić jest znaczących inwestycji.
 
 ### <a name="are-microservices-right-for-my-application"></a>Mikrousługi — jest odpowiednią dla mojej aplikacji?
 
 Może. Firma Microsoft napotkał była, ponieważ coraz więcej zespołów w programie Microsoft rozpoczęła się do tworzenia w chmurze, ze względów biznesowych, wiele z nich rzędu milionów dolarów zalety biorąc podejście podobne do mikrousług. Bing, na przykład opracowuje przy użyciu mikrousług lata. Dla innych zespołów podejście mikrousług był nowy. Zespoły Ustaliliśmy, że zostały trudnych problemów rozwiązać poza ich podstawowych obszarów sile. Jest to, dlaczego usługi Service Fabric zdobyte rozwinięty jako technologia pozwala na tworzenie usług.
 
 Celem usługi Service Fabric jest zmniejszenie złożoności tworzenia aplikacji mikrousług, tak aby nie trzeba przejść przez operacje przeprojektowania kosztownych tyle. Na początku są małe, skalowania w razie, wycofaniu usługi, dodać nowe i ewoluują wraz z użycia przez klientów. Zdajemy sobie sprawę, że istnieją wiele problemów do można rozwiązać się mikrousług bardziej przystępne dla większości deweloperów. Kontenery i model programowania aktora są przykłady małe kroki opisane w tym kierunku, a firma Microsoft pewności, że więcej innowacje pojawią się ułatwić.
- 
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Przegląd terminologii usługi Service Fabric](service-fabric-technical-overview.md)
 * [Mikrousługi: Rewolucja w aplikacjach obsługiwana przez chmurę](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)
+* [Centrum architektury platformy Azure: Tworzenie mikrousług na platformie Azure](https://docs.microsoft.com/azure/architecture/microservices/)
+* [Najważniejsze wskazówki dotyczące platformy Azure aplikacji usługi Service Fabric i klastra](service-fabric-best-practices-overview.md)
+* [Przegląd terminologii usługi Service Fabric](service-fabric-technical-overview.md)
 
 [Image1]: media/service-fabric-overview-microservices/monolithic-vs-micro.png
 [Image2]: media/service-fabric-overview-microservices/statemonolithic-vs-micro.png

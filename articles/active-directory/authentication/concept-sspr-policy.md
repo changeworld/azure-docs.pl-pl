@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d9055ef11bc5c117efc6d4de87d4ca8ec73a661
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d99169fc38f3976b35a0ebbdd6605450fbd3e2e9
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60359028"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65412877"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Zasady dotyczące haseł i ograniczenia dotyczące usługi Azure Active Directory
 
@@ -110,24 +110,51 @@ Aby rozpocząć pracę, musisz [Pobierz i zainstaluj moduł programu Azure AD Po
 1. Łączenie z programu Windows PowerShell, za pomocą użytkownika administratora sieci lub poświadczenia administratora przedsiębiorstwa.
 1. Wykonaj jedną z następujących poleceń:
 
-   * Aby zobaczyć, jeśli ustawiono pojedynczego użytkownika, hasło nigdy nie wygasa, uruchom następujące polecenie cmdlet przy użyciu nazwy UPN (na przykład *aprilr\@contoso.onmicrosoft.com*) lub identyfikator użytkownika ma być sprawdzana: `Get-AzureADUser -ObjectId <user ID> | Select-Object @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}`
-   * Aby wyświetlić **hasło nigdy nie wygasa** ustawienia dla wszystkich użytkowników, uruchom następujące polecenie cmdlet: `Get-AzureADUser -All $true | Select-Object UserPrincipalName, @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}`
+   * Aby zobaczyć, jeśli ustawiono pojedynczego użytkownika, hasło nigdy nie wygasa, uruchom następujące polecenie cmdlet przy użyciu nazwy UPN (na przykład *aprilr\@contoso.onmicrosoft.com*) lub identyfikator użytkownika ma być sprawdzana:
+
+   ```powershell
+   Get-AzureADUser -ObjectId <user ID> | Select-Object @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}
+   ```
+
+   * Aby wyświetlić **hasło nigdy nie wygasa** ustawienia dla wszystkich użytkowników, uruchom następujące polecenie cmdlet:
+
+   ```powershell
+   Get-AzureADUser -All $true | Select-Object UserPrincipalName, @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}
+   ```
 
 ### <a name="set-a-password-to-expire"></a>Ustaw hasło wygaśnie
 
 1. Łączenie z programu Windows PowerShell, za pomocą użytkownika administratora sieci lub poświadczenia administratora przedsiębiorstwa.
 1. Wykonaj jedną z następujących poleceń:
 
-   * Konfigurowanie hasła jednego użytkownika i hasło wygaśnie, należy uruchomić następujące polecenie cmdlet przy użyciu nazwy UPN lub identyfikator użytkownika, użytkownik: `Set-AzureADUser -ObjectId <user ID> -PasswordPolicies None`
-   * Aby ustawić hasła wszystkich użytkowników w organizacji tak, aby wygasną, należy użyć następującego polecenia cmdlet: `Get-AzureADUser -All $true | Set-AzureADUser -PasswordPolicies None`
+   * Konfigurowanie hasła jednego użytkownika i hasło wygaśnie, należy uruchomić następujące polecenie cmdlet przy użyciu nazwy UPN lub identyfikator użytkownika, użytkownik:
+
+   ```powershell
+   Set-AzureADUser -ObjectId <user ID> -PasswordPolicies None
+   ```
+
+   * Aby ustawić hasła wszystkich użytkowników w organizacji tak, aby wygasną, należy użyć następującego polecenia cmdlet:
+
+   ```powershell
+   Get-AzureADUser -All $true | Set-AzureADUser -PasswordPolicies None
+   ```
 
 ### <a name="set-a-password-to-never-expire"></a>Ustaw hasło nigdy nie wygasa
 
 1. Łączenie z programu Windows PowerShell, za pomocą użytkownika administratora sieci lub poświadczenia administratora przedsiębiorstwa.
 1. Wykonaj jedną z następujących poleceń:
 
-   * Aby ustawić hasło jeden użytkownik nigdy nie wygasa, uruchom następujące polecenie cmdlet przy użyciu nazwy UPN lub identyfikator użytkownika, użytkownik: `Set-AzureADUser -ObjectId <user ID> -PasswordPolicies DisablePasswordExpiration`
-   * Aby ustawić hasła wszystkich użytkowników w organizacji nigdy nie wygasa, uruchom następujące polecenie cmdlet: `Get-AzureADUser -All $true | Set-AzureADUser -PasswordPolicies DisablePasswordExpiration`
+   * Aby ustawić hasło jeden użytkownik nigdy nie wygasa, uruchom następujące polecenie cmdlet przy użyciu nazwy UPN lub identyfikator użytkownika, użytkownik:
+
+   ```powershell
+   Set-AzureADUser -ObjectId <user ID> -PasswordPolicies DisablePasswordExpiration
+   ```
+
+   * Aby ustawić hasła wszystkich użytkowników w organizacji nigdy nie wygasa, uruchom następujące polecenie cmdlet:
+
+   ```powershell
+   Get-AzureADUser -All $true | Set-AzureADUser -PasswordPolicies DisablePasswordExpiration
+   ```
 
    > [!WARNING]
    > Wartość hasła `-PasswordPolicies DisablePasswordExpiration` nadal wieku na podstawie `pwdLastSet` atrybutu. Jeśli zostały ustawione haseł użytkowników, nigdy nie wygasa, a następnie Przejdź ponad 90 dni, wygaśnięcia hasła. Na podstawie `pwdLastSet` atrybutu, jeśli zmienisz wygaśnięcia do `-PasswordPolicies None`, wszystkie hasła, które mają `pwdLastSet` starsze niż 90 dni, aby użytkownik musiał je zmienić przy następnym zalogowaniu. Ta zmiana może wpływać na dużą liczbę użytkowników. 

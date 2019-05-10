@@ -16,12 +16,12 @@ ms.date: 05/08/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7ed6fd0a4a1de3fb02b3d8583c0e5c0cecac211
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 64e3e7928d9f39b9ed2a681eb8ec9a63f73ea54a
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60351842"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507987"
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Program Azure AD Connect: Włączanie zapisywania zwrotnego urządzeń
 > [!NOTE]
@@ -31,6 +31,7 @@ ms.locfileid: "60351842"
 
 Poniższa dokumentacja zawiera informacje o sposobie włączania funkcji zapisywania zwrotnego urządzeń w usłudze Azure AD Connect. Zapisywanie zwrotne urządzeń jest używany w następujących scenariuszach:
 
+* Włącz [Windows Hello dla firm przy użyciu wdrożenia zaufania certyfikatu hybrydowego](https://docs.microsoft.com/en-us/windows/security/identity-protection/hello-for-business/hello-hybrid-cert-trust-prereqs#device-registration)
 * Włączanie dostępu warunkowego opartego na urządzeniach do usług AD FS (2012 R2 lub nowszy) chronione aplikacje (jednostek uzależnionych).
 
 Dzięki temu zwiększa bezpieczeństwo i poziom gwarancji, że udzielono dostępu do aplikacji tylko do zaufanych urządzeń. Aby uzyskać więcej informacji na temat dostępu warunkowego, zobacz [zarządzanie ryzykiem przy użyciu dostępu warunkowego](../active-directory-conditional-access-azure-portal.md) i [Konfigurowanie lokalnego dostępu warunkowego przy użyciu usługi Azure Active Directory rejestracji urządzenia](../../active-directory/active-directory-device-registration-on-premises-setup.md).

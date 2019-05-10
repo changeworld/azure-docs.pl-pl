@@ -12,14 +12,22 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: a8b77cea34344062c981d8f452094cffabe1e568
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 26bd49af7245d6e6dde3162a2e1d95c54f13e35b
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64572494"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65415947"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>Integracja z potokiem ciągłej integracji/ciągłego wdrażania
+
+W tym artykule opisano różne sposoby przy użyciu danych z konfiguracji aplikacji platformy Azure w ciągłej integracji i ciągłego wdrażania systemu.
+
+## <a name="use-app-configuration-in-your-azure-devops-pipeline"></a>Używać konfiguracji aplikacji w potoku metodyki DevOps platformy Azure
+
+Jeśli masz potokiem DevOps platformy Azure, można pobrać wartości kluczy z konfiguracji aplikacji i ustaw je jako zmienne zadań. [Rozszerzenia DevOps konfiguracji aplikacji platformy Azure](https://go.microsoft.com/fwlink/?linkid=2091063) jest modułem dodatkowym, które zapewnia tę funkcjonalność. Po prostu wykonaj jego instrukcje, aby użyć rozszerzenia w kompilacji lub wydania sekwencji zadań.
+
+## <a name="deploy-app-configuration-data-with-your-application"></a>Wdróż dane konfiguracji aplikacji z aplikacją
 
 Aplikacja może przestać działać do uruchomienia, jeśli zależy od konfiguracji aplikacji platformy Azure i nie można przejść do niego. Możesz zwiększyć odporność aplikacji radzenia sobie z takich przypadkach jednak prawdopodobnie nie jest w stanie. Aby to zrobić, Utwórz pakiet bieżące dane konfiguracji do pliku, który jest wdrożony z aplikacją i ładowanie lokalnie podczas jego uruchamiania. Ta metoda gwarantuje, że Twoja aplikacja ma domyślne ustawienie wartości co najmniej. Te wartości są zastępowane przez wszystkie nowsze zmiany wprowadzone w konfiguracji sklepu z aplikacjami, gdy będzie ona dostępna.
 
@@ -29,13 +37,13 @@ Poniższy przykład pokazuje, jak konfiguracja aplikacji obejmują dane jako kom
 
 Wykonaj kroki w tym samouczku, można użyć dowolnego edytora kodu. [Visual Studio Code](https://code.visualstudio.com/) jest doskonałą opcją dostępne w Windows, macOS i platformy Linux.
 
-## <a name="prerequisites"></a>Wymagania wstępne
+### <a name="prerequisites"></a>Wymagania wstępne
 
 Jeśli tworzysz lokalnie, Pobierz i zainstaluj [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) Jeśli jeszcze go.
 
 Aby wykonać kompilację w chmurze, za pomocą usługi Azure DevOps na przykład, upewnij się, [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) jest zainstalowany w systemie kompilacji.
 
-## <a name="export-an-app-configuration-store"></a>Eksportowanie konfiguracji sklepu z aplikacjami
+### <a name="export-an-app-configuration-store"></a>Eksportowanie konfiguracji sklepu z aplikacjami
 
 1. Otwórz swoje *.csproj* pliku i Dodaj następujący skrypt:
 
@@ -64,7 +72,7 @@ Aby wykonać kompilację w chmurze, za pomocą usługi Azure DevOps na przykład
             .UseStartup<Startup>();
     ```
 
-## <a name="build-and-run-the-app-locally"></a>Lokalne kompilowanie i uruchamianie aplikacji
+### <a name="build-and-run-the-app-locally"></a>Lokalne kompilowanie i uruchamianie aplikacji
 
 1. Ustaw zmienną środowiskową o nazwie **ConnectionString**i ustaw ją na klucz dostępu do magazynu konfiguracji aplikacji. Korzystając z wiersza polecenia Windows, uruchom następujące polecenie i ponownie uruchom wiersz polecenia, aby umożliwić zmiana zaczęła obowiązywać:
 

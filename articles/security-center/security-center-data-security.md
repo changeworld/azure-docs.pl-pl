@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 7a327c963f32d6bf5b0cf7751557c61327fd26e9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cd91b83bc808d811fc50293fbf1726d609ad5b46
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60911548"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65234071"
 ---
 # <a name="azure-security-center-data-security"></a>Azure Security Center — bezpieczeństwo danych
 Aby ułatwić klientom zapobieganie zagrożeniom, wykrywanie ich i reagowanie na nie, usługa Azure Security Center zbiera i przetwarza dane dotyczące zabezpieczeń, w tym informacje o konfiguracji, metadane, dzienniki zdarzeń, pliki zrzutu awaryjnego i inne. Firma Microsoft przestrzega surowych wymogów z zakresu zabezpieczeń i zgodności — od kodu po działanie usługi.
@@ -46,12 +46,18 @@ Usługa Azure Security Center analizuje dane z następujących źródeł, aby za
 
 **Obszarów roboczych**: Obszar roboczy jest określona dla następujących obszarach geograficznych, a dane zbierane z maszyn wirtualnych platformy Azure, w tym zrzuty awaryjne oraz niektóre typy danych alertów są przechowywane w najbliższym obszarze roboczym.
 
-| Lokalizacja geograficzna maszyny wirtualnej                        | Lokalizacja geograficzna obszaru roboczego |
-|-------------------------------|---------------|
-| Stany Zjednoczone, Brazylia, Kanada | Stany Zjednoczone |
-| Europa, Wielka Brytania        | Europa        |
-| Azja i Pacyfik, Japonia, Indie    | Azja i Pacyfik  |
-| Australia                     | Australia     |
+| Lokalizacja geograficzna maszyny wirtualnej                              | Lokalizacja geograficzna obszaru roboczego |
+|-------------------------------------|---------------|
+| Stany Zjednoczone, Brazylia, Południowej Afryki | Stany Zjednoczone Ameryki |
+| Kanada                              | Kanada        |
+| Europa (z wyjątkiem Wielka Brytania)   | Europa        |
+| Zjednoczone Królestwo                      | Zjednoczone Królestwo |
+| Azja Wschodnia (z wyjątkiem Indii, Japonia, Korea, Chiny)   | Azja i Pacyfik  |
+| Korea Południowa                              | Azja i Pacyfik  |
+| Indie                               | Indie         |
+| Japonia                               | Japonia         |
+| Chiny                               | Chiny         |
+| Australia                           | Australia     |
 
 
 Migawki dysków maszyny wirtualnej są przechowywane na tym samym koncie magazynu jako dysk maszyny wirtualnej.

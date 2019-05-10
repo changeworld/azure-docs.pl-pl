@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 01/18/2019
 ms.author: pafarley
-ms.openlocfilehash: 662eca2a727f3112f169ab8d669bf18c81700275
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5d31285ca305ba7fefdf31b4a97e3183f58b3e3b
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60699572"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233819"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>Samouczek: Moderuj wpisów w usłudze Facebook i poleceń przy użyciu usługi Azure Content Moderator
 
@@ -33,6 +33,9 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 Ten diagram przedstawia każdego składnika w tym scenariuszu:
 
 ![Diagram przedstawiający Content Moderator odbieranie informacji z usługi Facebook za pośrednictwem "FBListener" i wysyłanie informacji przez "CMListener"](images/tutorial-facebook-moderation.png)
+
+> [!IMPORTANT]
+> W 2018 r. Facebook implementowany, bardziej rygorystyczne konsultacji aplikacji Facebook. Nie można ukończyć kroki tego samouczka, jeśli aplikacja nie zostały przejrzane i zatwierdzone przez zespół przeglądu usługi Facebook.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -59,68 +62,71 @@ Testowanie przy użyciu przepływu pracy **wykonania przepływu pracy** przycisk
 
 ## <a name="create-azure-functions"></a>Tworzenie usługi Azure Functions
 
-Zaloguj się do [witryny Azure Portal](https://portal.azure.com/) i wykonaj następujące czynności:
+Zaloguj się do [witryny Azure portal](https://portal.azure.com/) i wykonaj następujące czynności:
 
 1. Utwórz aplikację usługi Azure Functions, jak pokazano na stronie usługi [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal).
-2. Przejdź do nowo utworzonej aplikacji funkcji.
-3. W aplikacji, przejdź do **funkcje platformy** kartę, a następnie wybierz pozycję **ustawienia aplikacji**. W **ustawienia aplikacji** części następnej strony, przewiń w dół listy, a następnie kliknij przycisk **Dodaj nowe ustawienie**. Dodaj następujące pary klucz/wartość
+1. Przejdź do nowo utworzonej aplikacji funkcji.
+1. W aplikacji, przejdź do **funkcje platformy** kartę, a następnie wybierz pozycję **konfiguracji**. W **ustawienia aplikacji** części następnej strony wybierz **nowe ustawienie aplikacji** można dodać następujące pary klucz/wartość:
     
     | Nazwa ustawienia aplikacji | value   | 
     | -------------------- |-------------|
     | cm:TeamId   | Identyfikator zespołu usługi Content Moderator  | 
-    | cm:SubscriptionKey | Klucz subskrypcji usługi Content Moderator — zobacz [Poświadczenia](review-tool-user-guide/credentials.md) | 
-    | cm:region | Nazwa regionu usługi Content Moderator, bez spacji. Zobacz wcześniejszą uwagę. |
+    | cm:SubscriptionKey | Klucz subskrypcji usługi Content Moderator — zobacz [Poświadczenia](review-tool-user-guide/credentials.md) |
+    | cm:region | Nazwa regionu usługi Content Moderator, bez spacji. |
     | cm:ImageWorkflow | Nazwa przepływu pracy do uruchomienia na obrazach |
     | cm:TextWorkflow | Nazwa przepływu pracy do uruchomienia na tekście |
-    | cm:CallbackEndpoint | Adres URL dla aplikacji funkcji CMListener, którą utworzysz w dalszej części tego przewodnika |
-    | fb:VerificationToken | Token wpisu tajnego, używany również do subskrybowania zdarzeń kanału informacyjnego serwisu Facebook |
-    | fb:PageAccessToken | Token dostępu do interfejsu API Graph serwisu Facebook nie wygasa i umożliwia funkcji ukrywanie i usuwanie wpisów w Twoim imieniu. |
+    | cm:CallbackEndpoint | Adres URL dla aplikacji funkcji CMListener, która zostanie utworzona w dalszej części tego przewodnika |
+    | fb:VerificationToken | Token wpisu tajnego, który tworzysz, używana do subskrybowania usługi Facebook, źródła danych zdarzeń |
+    | fb:PageAccessToken | Token dostępu do interfejsu API Graph serwisu Facebook nie wygasa i umożliwia funkcji ukrywanie i usuwanie wpisów w Twoim imieniu. Otrzymasz to na późniejszym etapie. |
 
     Kliknij przycisk **Zapisz** znajdujący się u góry strony.
 
-1. Za pomocą **+** przycisku w okienku po lewej stronie, aby wyświetlić nowe okienko funkcji.
+1. Wróć do **funkcje platformy** kartę. Użyj **+** przycisku w okienku po lewej stronie, aby wyświetlić **nową funkcję** okienka. Funkcja, którą zamierzasz utworzyć zostaną odebrane zdarzenia z usługi Facebook.
 
     ![Okienko funkcje platformy Azure z wyróżnionym przyciskiem Dodaj funkcję.](images/new-function.png)
-
-    Następnie kliknij przycisk **+ nowa funkcja** w górnej części strony. Ta funkcja odbiera zdarzenia z serwisu Facebook. Utwórz tę funkcję, wykonując następujące czynności:
 
     1. Kliknij Kafelek, który jest wyświetlany komunikat **wyzwalacza Http**.
     1. Wprowadź nazwę **FBListener**. W polu **Authorization Level** (Poziom autoryzacji) powinna być ustawiona wartość **Function** (Funkcja).
     1. Kliknij pozycję **Utwórz**.
     1. Zastąp zawartość **run.csx** na podstawie zawartości **FbListener/run.csx**
 
-    [!code-csharp[FBListener: csx file](~/samples-fbPageModeration/FbListener/run.csx?range=1-160)]
+    [!code-csharp[FBListener: csx file](~/samples-fbPageModeration/FbListener/run.csx?range=1-154)]
 
 1. Utwórz nową **wyzwalacza Http** funkcji o nazwie **CMListener**. Ta funkcja odbiera zdarzenia z usługi Content Moderator. Zastąp zawartość **run.csx** na podstawie zawartości **CMListener/run.csx**
 
-    [!code-csharp[FBListener: csx file](~/samples-fbPageModeration/CmListener/run.csx?range=1-106)]
+    [!code-csharp[FBListener: csx file](~/samples-fbPageModeration/CmListener/run.csx?range=1-110)]
 
 ---
 
 ## <a name="configure-the-facebook-page-and-app"></a>Konfigurowanie aplikacji i strony w serwisie Facebook
+
 1. Utwórz aplikację serwisu Facebook.
 
     ![Strona w serwisie Facebook dla deweloperów](images/facebook-developer-app.png)
 
     1. Przejdź do [witryny dewelopera serwisu Facebook](https://developers.facebook.com/)
-    2. Kliknij pozycję **Moje aplikacje**.
-    3. Dodaj nową aplikację.
+    1. Kliknij pozycję **Moje aplikacje**.
+    1. Dodaj nową aplikację.
     1. Nazwa elementu
     1. Wybierz **elementów Webhook -> zestaw w górę**
     1. Wybierz **strony** w menu rozwijane i wybierz pozycję **subskrybować ten obiekt**
     1. Podaj **adres URL funkcji FBListener** jako adres URL wywołania zwrotnego i **zweryfikuj token** skonfigurowany w obszarze **ustawień aplikacji funkcji**
     1. Po zasubskrybowaniu przewiń w dół do kanału informacyjnego, a następnie wybierz pozycję **subskrybuj**.
+    1. Kliknij pozycję **Test** przycisku **kanału informacyjnego** wiersz, aby wysłać wiadomość testową do FBListener funkcji platformy Azure, a następnie nacisnąć przycisk **wysyłać My Server** przycisku. Żądania w swojej FBListener powinny być widoczne.
 
-2. Utwórz stronę serwisu Facebook.
+1. Utwórz stronę serwisu Facebook.
+
+    > [!IMPORTANT]
+    > W 2018 r. Facebook implementowany, bardziej rygorystyczne konsultacji aplikacji Facebook. Nie można wykonać sekcjach 2, 3 i 4, jeśli aplikacja nie zostały przejrzane i zatwierdzone przez zespół przeglądu usługi Facebook.
 
     1. Przejdź do serwisu [Facebook](https://www.facebook.com/bookmarks/pages) i utwórz **nową stronę w serwisie Facebook**.
-    2. Zezwól aplikacji serwisu Facebook na dostęp do tej strony, wykonując następujące czynności:
+    1. Zezwól aplikacji serwisu Facebook na dostęp do tej strony, wykonując następujące czynności:
         1. Przejdź do [eksploratora interfejsu API Graph](https://developers.facebook.com/tools/explorer/).
-        2. Wybierz pozycję **Aplikacja**.
-        3. Wybierz pozycję **Token dostępu do strony** i wyślij żądanie **Get**.
-        4. Kliknij pozycję **identyfikatora strony** w odpowiedzi.
-        5. Teraz dołącz ciąg **/subscribed_apps** w adresie URL i wyślij żądanie **Get** (pusta odpowiedź).
-        6. Prześlij żądanie **Post**. Uzyskasz odpowiedź w formie **success: true**.
+        1. Wybierz pozycję **Aplikacja**.
+        1. Wybierz pozycję **Token dostępu do strony** i wyślij żądanie **Get**.
+        1. Kliknij pozycję **identyfikatora strony** w odpowiedzi.
+        1. Teraz dołącz ciąg **/subscribed_apps** w adresie URL i wyślij żądanie **Get** (pusta odpowiedź).
+        1. Prześlij żądanie **Post**. Uzyskasz odpowiedź w formie **success: true**.
 
 3. Utwórz niewygasający token dostępu do interfejsu API Graph.
 

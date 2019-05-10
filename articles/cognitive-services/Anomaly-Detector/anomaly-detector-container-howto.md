@@ -9,12 +9,12 @@ ms.subservice: anomaly-detection
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: aahi
-ms.openlocfilehash: 5dcec0d5f313b1c746c0674d0f9bf4d30ed19e5c
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: cc82e091ae4c033bda7f1d91c9aed36bb081de88
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026314"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233619"
 ---
 # <a name="install-and-run-anomaly-detector-containers"></a>Instalowanie i uruchamianie kontenerów wykrywanie anomalii
 
@@ -49,18 +49,15 @@ Najpierw należy wypełnić oraz przesłać [formularz wniosku kontenera wykrywa
 
 ## <a name="the-host-computer"></a>Komputer-host
 
-**Hosta** komputer, który uruchamia kontener platformy docker. Może być komputer w środowisku lokalnym lub docker obsługującego usługę z platformy Azure, w tym:
+[!INCLUDE [Host Computer requirements](../../../includes/cognitive-services-containers-host-computer.md)]
 
-* [Azure Kubernetes Service](https://docs.microsoft.com/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)
-* [Azure Container Instances](https://docs.microsoft.com/container-instances/index.yml)
-* [Kubernetes](https://kubernetes.io/) wdrażany klaster do [usługi Azure Stack](https://docs.microsoft.com/azure-stack/index.yml). Aby uzyskać więcej informacji, zobacz [wdrażanie platformy Kubernetes w usłudze Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-solution-template-kubernetes-deploy.md).
 <!--* [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/). For instructions of deploying Anomaly Detector module in IoT Edge, see [How to deploy Anomaly Detector module in IoT Edge](how-to-deploy-anomaly-detector-module-in-iot-edge.md).-->
 
 ### <a name="container-requirements-and-recommendations"></a>Kontener wymagania i zalecenia
 
 W poniższej tabeli opisano minimalne i zalecane rdzeni procesora CPU i pamięci do przydzielenia dla kontenera wykrywanie anomalii.
 
-| Liczby zapytań na Sekundę (zapytań na sekundę) | Minimalne | Zalecane |
+| Liczby zapytań na Sekundę (zapytań na sekundę) | Minimum | Zalecane |
 |-----------|---------|-------------|
 | 10 QPS | 4 podstawowe, 1GB pamięci | 8 rdzeni 2GB pamięci |
 | 20 QPS | 8 rdzeni, 2GB pamięci | 16 rdzeni 4GB pamięci RAM |
@@ -172,7 +169,7 @@ Użyj hosta, https://localhost:5000, dla kontenera interfejsów API.
 
 Jeśli uruchamiasz kontener z danymi wyjściowymi [instalacji](anomaly-detector-container-configuration.md#mount-settings) i Rejestrowanie włączone, kontener generuje pliki dziennika, które są przydatne do rozwiązywania problemów, które wystąpiło podczas uruchamianie kontenera. 
 
-## <a name="billing"></a>Rozliczenia
+## <a name="billing"></a>Informacje billingowe
 
 Wyślij kontenery wykrywanie anomalii w usłudze rozliczeń informacje na platformie Azure, przy użyciu _wykrywanie anomalii_ zasobów dla konta systemu Azure. 
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 1e35513d5a5a799b1f5e45cf9a5aa97c083e2087
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 08cae51da20b6093b284618de92c61aab4bf5b55
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60201837"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508379"
 ---
 # <a name="devtest-labs-concepts"></a>DevTest Labs — pojęcia
 ## <a name="overview"></a>Omówienie
@@ -29,7 +29,7 @@ Poniższa lista zawiera kluczowe DevTest Labs — pojęcia i definicje:
 Laboratorium jest infrastrukturę, która obejmuje grupę zasobów, takich jak maszyny wirtualne (VM), które umożliwia lepsze zarządzanie tymi zasobami przez określenie ograniczeń i przydziałów.
 
 ## <a name="virtual-machine"></a>Maszyna wirtualna
-Maszynę wirtualną platformy Azure jest jednym z kilku typów [na żądanie, skalowalnych zasobów obliczeniowych](https://docs.microsoft.com/azure/app-service/overview-compare) pozwalającą na platformie Azure. Maszyny wirtualne platformy Azure zapewniają elastyczność wirtualizacji bez konieczności kupowania i utrzymywania fizycznego sprzętu potrzebnego do działa, mimo że nadal trzeba utrzymywać w maszynie Wirtualnej, wykonując pewnych zadań, takich jak konfigurowania, poprawiania i instalowanie oprogramowania, które jest uruchamiane na go.
+Maszynę wirtualną platformy Azure jest jednym z kilku typów [na żądanie, skalowalnych zasobów obliczeniowych](/azure/architecture/guide/technology-choices/compute-decision-tree) pozwalającą na platformie Azure. Maszyny wirtualne platformy Azure zapewniają elastyczność wirtualizacji bez konieczności kupowania i utrzymywania fizycznego sprzętu potrzebnego do działa, mimo że nadal trzeba utrzymywać w maszynie Wirtualnej, wykonując pewnych zadań, takich jak konfigurowania, poprawiania i instalowanie oprogramowania, które jest uruchamiane na go.
 
 [Omówienie maszyn wirtualnych Windows na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-overview) zapewnia możesz dowiedzieć się, jakie należy rozważyć przed Utwórz Maszynę wirtualną, jak utworzyć i jak można zarządzać.
 

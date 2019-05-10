@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: a82004fdd6bbb4eda0842670f210f846f9446384
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e4ada412547360f97e869d3312b65d869fa3df48
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60310880"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65413735"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>Przywracanie kopii zapasowej w usłudze Azure Service Fabric
 
@@ -37,6 +37,20 @@ Na przykład można skonfigurować usługi do tworzenia kopii zapasowych swoje d
 - Wyzwalanie przywracania _błędów usługi analizy_ musi być włączona dla klastra.
 - _Kopii zapasowej przywracania usługi (BRS)_ utworzona kopia zapasowa.
 - Przywracanie mogą być wywoływane tylko w partycji.
+- Zainstaluj moduł Microsoft.ServiceFabric.Powershell.Http [w wersja zapoznawcza] dla konfiguracji połączeń.
+
+```powershell
+    Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
+```
+
+- Upewnij się, że klaster jest podłączony za pomocą `Connect-SFCluster` polecenia przed dokonaniem wszelkie żądania konfiguracji, za pomocą modułu Microsoft.ServiceFabric.Powershell.Http.
+
+```powershell
+
+    Connect-SFCluster -ConnectionEndpoint 'https://mysfcluster.southcentralus.cloudapp.azure.com:19080'   -X509Credential -FindType FindByThumbprint -FindValue '1b7ebe2174649c45474a4819dafae956712c31d3' -StoreLocation 'CurrentUser' -StoreName 'My' -ServerCertThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'  
+
+```
+
 
 ## <a name="triggered-restore"></a>Wyzwolono Przywracanie
 
@@ -50,6 +64,15 @@ Przywracanie mogą być wywoływane dla każdego z następujących scenariuszy:
 W przypadku utraty całego klastra usługi Service Fabric można odzyskać danych dla partycji usługa stanowa niezawodne i Reliable Actors. Żądany kopii zapasowych można wybrać z listy gdy używasz [GetBackupAPI przy użyciu magazynu kopii zapasowych szczegółów](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getbackupsfrombackuplocation). Wyliczenie kopii zapasowej może być dla aplikacji, usług lub partycji.
 
 W poniższym przykładzie przyjęto założenie, że utracone klaster jest w tym samym klastrze, który jest określany w [włączenie okresowe kopie zapasowe usługi Reliable Stateful i Reliable Actors](service-fabric-backuprestoreservice-quickstart-azurecluster.md#enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors). W tym przypadku `SampleApp` jest wdrażany za pomocą zasad tworzenia kopii zapasowej są włączone, i kopie zapasowe są skonfigurowane do usługi Azure Storage.
+
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Za pomocą Microsoft.ServiceFabric.Powershell.Http modułu programu PowerShell
+
+```powershell
+Get-SFBackupsFromBackupLocation -Application -ApplicationName 'fabric:/SampleApp' -AzureBlobStore -ConnectionString 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net' -ContainerName 'backup-container'
+
+```
+
+#### <a name="rest-call-using-powershell"></a>Wywołania REST przy użyciu programu Powershell
 
 Uruchom skrypt programu PowerShell, aby powrócić do listy kopie zapasowe utworzone dla wszystkich partycji wewnątrz za pomocą interfejsu API REST `SampleApp` aplikacji. Interfejs API wymaga informacji magazynu kopii zapasowych, aby wyświetlić listę dostępnych kopii zapasowych.
 
@@ -142,12 +165,30 @@ Jeśli identyfikator partycji w klastrze alternatywne `1c42c47f-439e-4e09-98b9-8
 
 Dla _o nazwie partycjonowanie_, nazwa wartość jest porównywana do identyfikowania partycji docelowej w klastrze alternatywne.
 
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Za pomocą Microsoft.ServiceFabric.Powershell.Http modułu programu PowerShell
+
+```powershell
+
+Restore-SFPartition  -PartitionId '1c42c47f-439e-4e09-98b9-88b8f60800c6' -BackupId 'b0035075-b327-41a5-a58f-3ea94b68faa4' -BackupLocation 'SampleApp\MyStatefulService\974bd92a-b395-4631-8a7f-53bd4ae9cf22\2018-04-06 21.10.27.zip' -AzureBlobStore -ConnectionString 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net' -ContainerName 'backup-container'
+
+```
+
+#### <a name="rest-call-using-powershell"></a>Wywołania REST przy użyciu programu Powershell
+
 Żądania przywracania względem partycji kopii zapasowej klastra przy użyciu następujących [API przywracania](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-restorepartition):
 
 ```powershell
+
+$StorageInfo = @{
+    ConnectionString = 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net'
+    ContainerName = 'backup-container'
+    StorageKind = 'AzureBlobStore'
+}
+
 $RestorePartitionReference = @{
     BackupId = 'b0035075-b327-41a5-a58f-3ea94b68faa4'
     BackupLocation = 'SampleApp\MyStatefulService\974bd92a-b395-4631-8a7f-53bd4ae9cf22\2018-04-06 21.10.27.zip'
+    BackupStorage  = $StorageInfo
 }
 
 $body = (ConvertTo-Json $RestorePartitionReference) 
@@ -184,6 +225,16 @@ FailureError            :
 
 W przypadku interfejsu API przywracania, podaj _BackupId_ i _BackupLocation_ szczegółowe informacje. Klaster ma włączoną kopią zapasową więc usługi Service Fabric _kopii zapasowej przywracania usługi (BRS)_ Określa lokalizację magazynu poprawną ze skojarzonych zasad kopii zapasowych.
 
+
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Za pomocą Microsoft.ServiceFabric.Powershell.Http modułu programu PowerShell
+
+```powershell
+Restore-SFPartition  -PartitionId '974bd92a-b395-4631-8a7f-53bd4ae9cf22' -BackupId 'b0035075-b327-41a5-a58f-3ea94b68faa4' -BackupLocation 'SampleApp\MyStatefulService\974bd92a-b395-4631-8a7f-53bd4ae9cf22\2018-04-06 21.10.27.zip'
+
+```
+
+#### <a name="rest-call-using-powershell"></a>Wywołania REST przy użyciu programu Powershell
+
 ```powershell
 $RestorePartitionReference = @{
     BackupId = 'b0035075-b327-41a5-a58f-3ea94b68faa4',
@@ -201,6 +252,14 @@ Możesz śledzić postępy przywracania przy użyciu TrackRestoreProgress.
 ## <a name="track-restore-progress"></a>Śledzenie postępu przywracania
 
 Partycji usługi Reliable Stateful lub Reliable Actor akceptuje tylko jedno żądanie przywracania w danym momencie. Partycja akceptuje tylko kolejnego żądania po zakończeniu bieżącego żądania przywracania. Wiele żądań przywracania mogą być wywoływane na różne partycje w tym samym czasie.
+
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Za pomocą Microsoft.ServiceFabric.Powershell.Http modułu programu PowerShell
+
+```powershell
+    Get-SFPartitionRestoreProgress -PartitionId '974bd92a-b395-4631-8a7f-53bd4ae9cf22'
+```
+
+#### <a name="rest-call-using-powershell"></a>Wywołania REST przy użyciu programu Powershell
 
 ```powershell
 $url = "https://mysfcluster-backup.southcentralus.cloudapp.azure.com:19080/Partitions/974bd92a-b395-4631-8a7f-53bd4ae9cf22/$/GetRestoreProgress?api-version=6.4"
@@ -229,7 +288,7 @@ $restoreResponse | Format-List
     ```
     
 3. **Powodzenie**, **błąd**, lub **limitu czasu**: Żądana przywracania można wykonać w dowolnej z następujących stanów. Każdy stan zawiera następujące informacje dotyczące znaczenia i odpowiedzi:
-    - **Success**: A _Powodzenie_ Przywróć stan wskazuje na stan odzyskała partycji. Raporty partycji _RestoredEpoch_ i _RestoredLSN_ stany, wraz z czasu w formacie UTC.
+    - **Powodzenie**: A _Powodzenie_ Przywróć stan wskazuje na stan odzyskała partycji. Raporty partycji _RestoredEpoch_ i _RestoredLSN_ stany, wraz z czasu w formacie UTC.
 
         ```
         RestoreState  : Success

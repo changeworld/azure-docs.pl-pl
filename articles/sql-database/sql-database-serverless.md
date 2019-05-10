@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: sstein, carlrab
 manager: craigg
 ms.date: 05/07/2019
-ms.openlocfilehash: 2ab8f272fc264f153144803be772d381c1780512
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 7f850f309034d128efef89ea842db41d35b8491e
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65143266"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65235742"
 ---
 # <a name="sql-database-serverless-preview"></a>Bazy danych SQL Database bez użycia serwera (wersja zapoznawcza)
 
@@ -52,7 +52,7 @@ W poniższej tabeli porównano warstwy bezserwerowe środowisko obliczeniowe z w
 |---|---|---|
 |**Typowy scenariusz**|Oraz baz danych z użyciem intensywnego, nieprzewidywalne okresy nieaktywne|Bazy danych lub elastycznymi pulami za pomocą bardziej normalne użycie|
 |**Wysiłek związany z zarządzaniem wydajnością**|Niższy|Wyższa|
-|**Obliczenia, skalowanie**|Automatyczny|Ręcznie|
+|**Obliczenia, skalowanie**|Automatyczny|Ręczne|
 |**Obliczenia czasu odpowiedzi**|Niższe po okresach nieaktywne|Natychmiast|
 |**Poziom szczegółowości rozliczeń**|Na sekundę|Za godzinę|
 |
@@ -260,7 +260,7 @@ Get-AzSqlDatabase `
 
 Limity zasobów, zobacz [warstwa wystąpień obliczeniowych bez użycia serwera](sql-database-vCore-resource-limits-single-databases.md#serverless-compute-tier)
 
-## <a name="billing"></a>Rozliczenia
+## <a name="billing"></a>Informacje billingowe
 
 Ilość zasobów obliczeniowych, naliczane co sekundę jest maksymalnie użycie Procesora i pamięci używanej co sekundę. Jeśli używany moc procesora CPU i używanej pamięci jest mniejsza niż minimalna ilość aprowizowaną dla każdego, elastycznie kwoty jest naliczana. Aby można było porównać procesora CPU z pamięci na potrzeby rozliczeń, pamięć jest znormalizować na jednostki rdzeni wirtualnych przez ponowne skalowanie ilość pamięci w GB, 3 GB na rdzeń wirtualny.
 

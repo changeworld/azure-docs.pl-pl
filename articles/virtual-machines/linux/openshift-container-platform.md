@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/18/2019
 ms.author: haroldw
-ms.openlocfilehash: 296bc42313ef80425004d3c9b43c6792cbaf97f4
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 664099322bef3ac85d980fbe5e43dcc49cba862b
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64718245"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65411562"
 ---
 # <a name="deploy-openshift-container-platform-in-azure"></a>Wdrażanie rozwiązania OpenShift Container Platform na platformie Azure
 
@@ -66,7 +66,7 @@ Poniższy przykład pokazuje plik parametrów o nazwie azuredeploy.parameters.js
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "_artifactsLocation": {
@@ -257,7 +257,7 @@ Różne wersje mogą mieć różnych parametrów, dlatego Sprawdź niezbędne pa
 | `infraVmSize` | Rozmiar Infra maszyny Wirtualnej. Wybierz jedną z dozwolonych rozmiarów maszyn wirtualnych wymienionych w pliku azuredeploy.json |  | Standardowa_D4s_v3 |
 | `nodeVmSize` | Rozmiar węzła aplikacji maszyny Wirtualnej. Wybierz jedną z dozwolonych rozmiarów maszyn wirtualnych wymienionych w pliku azuredeploy.json |  | Standardowa_D4s_v3 |
 | `cnsVmSize` | Rozmiar węzła magazynu natywnego (CNS) kontenera maszyny Wirtualnej. Wybierz jedną z dozwolonych rozmiarów maszyn wirtualnych wymienionych w pliku azuredeploy.json |  | Standardowa_E4s_v3 |
-| `osImageType` | RHEL obrazu do użycia. defaultgallery: Na żądanie; Portal Marketplace: obraz innych firm | defaultgallery <br> Marketplace | defaultgallery |
+| `osImageType` | RHEL obrazu do użycia. defaultgallery: Na żądanie; Portal Marketplace: obraz innych firm | defaultgallery <br> marketplace | defaultgallery |
 | `marketplaceOsImage` | Jeśli `osImageType` jest witryna marketplace, a następnie wprowadź odpowiednie wartości dla "publisher", "oferują", "sku", wersja i oferty w portalu marketplace. Ten parametr jest typu obiektu |  |  |
 | `storageKind` | Typ magazynu do użycia  | Zarządzane<br> niezarządzane | Zarządzane |
 | `openshiftClusterPrefix` | Klaster prefiks używany do konfigurowania nazw hostów dla wszystkich węzłów.  Od 1 do 20 znaków |  | mycluster |
@@ -283,11 +283,11 @@ Różne wersje mogą mieć różnych parametrów, dlatego Sprawdź niezbędne pa
 | `enableAzure` | Włącz dostawca usług w chmurze platformy Azure | true <br> false | true |
 | `aadClientId` | Usługa Azure identyfikator klienta Active Directory tzw. Identyfikator aplikacji dla jednostki usługi |  |  |
 | `domainName` | Nazwa niestandardowej nazwy domeny do użycia (jeśli dotyczy). Wartość "none" w przeciwnym razie wdrażanie klastra pełnej prywatne |  | brak |
-| `masterClusterDnsType` | Typ domeny dla konsoli sieci web platformy OpenShift. "default" użyje Etykieta DNS serwera głównego infra publicznego adresu IP. "custom" pozwala na zdefiniowanie swoją własną nazwę | default <br> niestandardowe | default |
+| `masterClusterDnsType` | Typ domeny dla konsoli sieci web platformy OpenShift. "default" użyje Etykieta DNS serwera głównego infra publicznego adresu IP. "custom" pozwala na zdefiniowanie swoją własną nazwę | domyślny <br> niestandardowe | domyślny |
 | `masterClusterDns` | Niestandardową nazwę DNS na potrzeby dostępu do konsoli sieci web platformy OpenShift, w przypadku wybrania "custom" dla `masterClusterDnsType` |  | console.contoso.com |
 | `routingSubDomainType` | Jeśli ustawiona na "nipio" `routingSubDomain` użyje nip.io.  Użyj "custom", jeśli masz własną domenę, którego chcesz użyć do routingu | nipio <br> niestandardowe | nipio |
 | `routingSubDomain` | Wieloznaczną nazwę DNS, którego chcesz użyć do routingu w przypadku wybrania "custom" dla `routingSubDomainType` |  | apps.contoso.com |
-| `virtualNetworkNewOrExisting` | Wybierz, czy chcesz użyć istniejącej sieci wirtualnej lub utworzyć nową sieć wirtualną | istniejące <br> nowe | nowe |
+| `virtualNetworkNewOrExisting` | Wybierz, czy chcesz użyć istniejącej sieci wirtualnej lub utworzyć nową sieć wirtualną | istniejące <br> nowy | nowy |
 | `virtualNetworkResourceGroupName` | Nazwa grupy zasobów dla nowej sieci wirtualnej w przypadku wybrania przycisku "new" dla `virtualNetworkNewOrExisting` |  | resourceGroup().name |
 | `virtualNetworkName` | Nazwa nowej sieci wirtualnej, aby utworzyć w przypadku wybrania przycisku "new" dla `virtualNetworkNewOrExisting` |  | openshiftvnet |
 | `addressPrefixes` | Prefiks adresu nową sieć wirtualną |  | 10.0.0.0/14 |

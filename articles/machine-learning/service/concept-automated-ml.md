@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: cba01b5ad5c2cfea32f1faa6cb67c5ce7ee98fcd
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 136141f5b598fd080edf3254fd01200f2742c763
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024917"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65235837"
 ---
 # <a name="what-is-automated-machine-learning"></a>Co to jest automatyczna usługi machine learning?
 
@@ -90,7 +90,7 @@ Za pomocą usługi Azure Machine Learning zautomatyzowane ML służy do tworzeni
 ## <a name="automated-ml-across-microsoft"></a>Automatyczne uczenia Maszynowego firmy Microsoft
 
 Automatyczne ML jest również dostępna w innych rozwiązaniach firmy Microsoft w takich jak:
-+ W aplikacjach .NET przy użyciu programu Visual Studio i Visual Studio Code za pomocą [strukturze ML.NET](https://docs.microsoft.com/dotnet/machine-learning/what-is-mldotnet)
++ W aplikacjach .NET przy użyciu programu Visual Studio i Visual Studio Code za pomocą [strukturze ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)
 + [Na HDInsight](../../hdinsight/spark/apache-spark-run-machine-learning-automl.md), gdzie możesz skalować w poziomie ML szkolenia zadaniami automatycznymi na platformie Spark w klastrach HDInsight równolegle. 
 + [W usłudze Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)
 

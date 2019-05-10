@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 6/13/2018
 ms.author: erikre
-ms.openlocfilehash: 0d2b0f2d3fad318ac0152d92fe92614d8dadda1e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cb7a13d9abcf7c677d51f03df002ea06b543014e
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60615878"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65232480"
 ---
 # <a name="automation-scenarios-for-billing-and-cost-management"></a>Scenariuszach automatyzacji do rozliczeń i kosztów zarządzania
 
@@ -63,7 +63,7 @@ Można użyć rozliczenia i kosztów w kilku scenariuszach odpowiedzi na pytania
 
 ## <a name="api-summaries"></a>Interfejs API podsumowania
 
-### <a name="consumption"></a>Zużycie
+### <a name="consumption"></a>Użycie
 Bezpośrednio w sieci Web i Enterprise klienci mogą używać wszystkich następujące interfejsy API, z wyjątkiem wskazanych wyjątków:
 
 -   [Budżetów API](https://docs.microsoft.com/rest/api/consumption/budgets) (*tylko klienci korporacyjni*): Tworzenie budżetów kosztów lub użycia zasobów, grup zasobów lub liczników rozliczeń. Po utworzeniu budżetów można skonfigurować alerty powiadamiające o po po przekroczeniu zdefiniowanych progów budżetu. Można również skonfigurować akcje występują, gdy został osiągnięty kwoty budżetu.
@@ -84,10 +84,10 @@ Bezpośrednio w sieci Web i Enterprise klienci mogą używać wszystkich następ
 
 -   [Niesklasyfikowaną zawartość interfejs API użycia](/previous-versions/azure/reference/mt219003(v=azure.100)): Uzyskać informacje o użyciu raw, aby platforma Azure zrobi, wszelkie pomiaru/ładowania.
 
-### <a name="billing"></a>Rozliczenia
--   [Okresy fakturowania API](https://docs.microsoft.com/rest/api/billing/billingperiods): Określ okresu rozliczeniowego do przeanalizowania wraz z faktury identyfikatory dla tego okresu. Za pomocą faktury identyfikatory interfejsu API faktur.
+### <a name="billing"></a>Informacje billingowe
+-   [Okresy fakturowania API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods): Określ okresu rozliczeniowego do przeanalizowania wraz z faktury identyfikatory dla tego okresu. Za pomocą faktury identyfikatory interfejsu API faktur.
 
--   [Faktury API](https://docs.microsoft.com/rest/api/billing/invoices): Pobierz adres URL pobierania faktur dla okresu rozliczeniowego w postaci pliku PDF.
+-   [Faktury API](https://docs.microsoft.com/rest/api/billing/2018-11-01-preview/invoices): Pobierz adres URL pobierania faktur dla okresu rozliczeniowego w postaci pliku PDF.
 
 ### <a name="enterprise-consumption"></a>Użycie przedsiębiorstwa
 Następujące interfejsy API są tylko dla przedsiębiorstw:
@@ -126,7 +126,7 @@ Interfejsy API stanowią danych różni się:
 ### <a name="whats-the-difference-between-the-invoice-api-and-the-usage-details-api"></a>Jaka jest różnica między faktury interfejsu API i interfejs API szczegółów użycia?
 Interfejsy API stanowią inny widok tych samych danych:
 
-- [API faktury](https://docs.microsoft.com/rest/api/billing/invoices) jest bezpośredni klienci sieci Web tylko dla klientów. Zapewnia miesięczny pakiet zbiorczy na rachunku na podstawie łącznej opłat dla każdego typu miernika. 
+- [API faktury](https://docs.microsoft.com/rest/api/billing/2018-11-01-preview/invoices) jest bezpośredni klienci sieci Web tylko dla klientów. Zapewnia miesięczny pakiet zbiorczy na rachunku na podstawie łącznej opłat dla każdego typu miernika. 
 
 - [Interfejs API użycia szczegóły](https://docs.microsoft.com/rest/api/consumption/usagedetails) zawiera szczegółowy widok rekordów użycia i kosztów dla każdego dnia. Przedsiębiorstwa i bezpośredni klienci sieci Web klientów, można go użyć.
 

@@ -11,12 +11,12 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 05/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: c8865c851f394d73b5446ac159b5a7799c0c9ed2
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 0d5751ab96dc6b44229e2b18b832a570930058ca
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192351"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65442354"
 ---
 # <a name="train-tensorflow-and-keras-models-with-azure-machine-learning-service"></a>Szkolenia TensorFlow i Keras modeli za pomocą usługi Azure Machine Learning
 
@@ -24,11 +24,11 @@ Można łatwo uruchamiać zadania szkolenia TensorFlow, mocy obliczeniowej platf
 
 `TensorFlow` Narzędzie do szacowania zapewnia także warstwy abstrakcji przez wykonanie, co oznacza, że można łatwo konfigurować sparametryzowane uruchomień w różnych obliczeniowych elementów docelowych, bez zmiany skryptów szkolenia.
 
-## <a name="getting-started"></a>Wprowadzenie
+## <a name="get-started"></a>Rozpoczęcie pracy
 
-Przesyłanie zadań z `TensorFlow` narzędzie do szacowania jest podobne do korzystania z base [ `Estimator` ](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py). Dlatego zaleca się, przeczytaj najpierw [podstawowy artykule narzędzie do szacowania](how-to-train-ml-models.md) najpierw zrozumienie pojęcia nadrzędna.
+Ponieważ `TensorFlow` narzędzie do szacowania klasa jest podobna do podstawy [ `Estimator` ](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py), firma Microsoft zaleca pierwszy odczytu [podstawowy artykule narzędzie do szacowania](how-to-train-ml-models.md) można zapoznać się z pojęciami nadrzędna.
 
-Jeśli chcesz rozpocząć pracę z usługą Azure Machine Learning [ukończenie tego przewodnika Szybki Start](quickstart-run-cloud-notebook.md). Będziesz mieć środowiska pracy, załadowane wszystkie nasze [przykładowy notesów](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml).
+Aby rozpocząć pracę z usługą Azure Machine Learning [ukończenie tego przewodnika Szybki Start](quickstart-run-cloud-notebook.md). Po zakończeniu będziesz mieć [obszaru roboczego usługi Azure Machine Learning](concept-azure-machine-learning-architecture.md#workspace) i wszystkie nasze [przykładowy notesów](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml) tym w zakresie sieci szkolenia TensorFlow i biblioteki Keras.
 
 ## <a name="single-node-training"></a>Szkolenie z jednym węzłem
 

@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 67016582149824c8deb83b54102190a57bd19383
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: d372adf75d46fdedb7a6f2b17e47822475d1f155
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65028803"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65442360"
 ---
 # <a name="decision-forest-regression-module"></a>Las decyzyjny z regresji modułu
 
@@ -39,7 +39,7 @@ Drzewa decyzyjne ma następujące zalety:
 
 Ten model regresji składa się z zespołu drzewa decyzyjne. Każdy drzewa w las decyzyjny regresji generuje dystrybucji gaussowskie jako prognozę. Agregacja odbywa się za pośrednictwem zespołu drzew odnaleźć dystrybucji gaussowskie najbliżej rozkład połączony dla wszystkich drzew w modelu.
 
-Aby uzyskać więcej informacji na temat teoretycznych struktury do tego algorytmu i jego wdrożenie znajduje się w artykule: [Lasy decyzji: Ujednolicona struktura klasyfikacji, regresji, Szacowanie gęstość kolektora uczenia i uczenia nadzorowanego częściową ](https://www.microsoft.com/en-us/research/publication/decision-forests-a-unified-framework-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D158806#)
+Aby uzyskać więcej informacji na temat teoretycznych struktury do tego algorytmu i jego wdrożenie znajduje się w artykule: [Lasy decyzji: Ujednolicona struktura klasyfikacji, regresji, Szacowanie gęstość kolektora uczenia i uczenia nadzorowanego częściową](https://www.microsoft.com/en-us/research/publication/decision-forests-a-unified-framework-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D158806#)
 
 ## <a name="how-to-configure-decision-forest-regression-model"></a>Jak skonfigurować Model regresji lasu decyzji
 
@@ -53,7 +53,7 @@ Aby uzyskać więcej informacji na temat teoretycznych struktury do tego algoryt
 
     - **Replikowanie**: W przypadku replikacji każdego drzewa jest uczony w dokładnie tymi samymi danymi wejściowymi. Określenie, które podziału predykatem, po którym jest używane dla każdego węzła drzewa pozostaje losowe drzew. zostanie ona zróżnicowany.
 
-         Aby uzyskać więcej informacji na temat procesu uczenia z **replikować** opcji, zobacz [lasy decyzji dla przetwarzania obrazów i analizy medycznej obrazu. Criminisi i J. Shotton. Springer 2013. ](http://research.microsoft.com/projects/decisionforests/).
+         Aby uzyskać więcej informacji na temat procesu uczenia z **replikować** opcji, zobacz [lasy decyzji dla przetwarzania obrazów i analizy medycznej obrazu. Criminisi i J. Shotton. Springer 2013. ](https://research.microsoft.com/projects/decisionforests/).
 
 3. Określ, jak model, który ma być uczony, ustawiając **trybie trainer tworzenia** opcji.
 

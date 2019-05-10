@@ -131,7 +131,7 @@
           items:
             - name: Tworzenie sugestora
               href: index-add-suggesters.md
-            - name: 'Przykłady (sugestie, automatyczne uzupełnianie)'
+            - name: Dodawanie sugestii lub autouzupełniania
               href: search-autocomplete-tutorial.md
         - name: Synonimy
           items:

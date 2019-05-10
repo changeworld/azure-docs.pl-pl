@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 04/24/2019
+ms.date: 05/06/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 9875047ad74dd13d94ce9c498c3cad6153d24ca5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 28cfbc7183628b00c463f1c3a8a954ba4074409b
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64725369"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65415958"
 ---
 # <a name="expressroute-global-reach"></a>Globalny zasięg usługi ExpressRoute
 Usługa ExpressRoute jest prywatny i odporne na błędy sposób łączenia sieci lokalnej Microsoft Cloud. Wiele usług w chmurze firmy Microsoft, takich jak Azure, Office 365 i Dynamics 365 dostęp z Twojego Centrum danych prywatnych lub sieci firmowej. Na przykład masz oddziału w San Francisco z obwodem usługi ExpressRoute w Dolinie Krzemowej i innego oddziału firmy w Londynie z obwodem usługi ExpressRoute, w tym samym mieście. Obu biur oddziałów mogą mieć łączność o dużej szybkości do zasobów platformy Azure w zachodnich stanach USA i Południowe Zjednoczone Królestwo. Jednak oddziałów nie wymiany danych bezpośrednio ze sobą. Innymi słowy 10.0.1.0/24 może wysyłać dane do 10.0.3.0/24 i 10.0.4.0/24, ale nie do 10.0.2.0/24.
@@ -35,13 +35,16 @@ Zasięgu globalnym usługi ExpressRoute jest obecnie obsługiwane w następując
 * Australia
 * Kanada
 * Francja
+* Niemcy
 * SRA Hongkong
 * Irlandia
 * Japonia
-* Korea
+* Korea Południowa
 * Holandia
+* Singapur
+* Szwajcaria
 * Zjednoczone Królestwo
-* Stany Zjednoczone
+* Stany Zjednoczone Ameryki
 
 Utworzono obwodów usługi ExpressRoute [lokalizacje komunikacji równorzędnej usługi ExpressRoute](expressroute-locations.md) powyżej krajów lub regionów. Aby włączyć usługi ExpressRoute zasięgu globalnym między [różnych regionów geopolitycznych](expressroute-locations.md), obwodów usługi musi być jednostki SKU Premium.
 

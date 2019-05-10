@@ -16,12 +16,12 @@ ms.date: 04/24/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d32564808151c4895d2b3802fb48d2bd2d8f753
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e6120637bdf52db4b6863fb87feb1d52c78ca088
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64729531"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508109"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Synchronizacja programu Azure AD Connect: Atrybuty synchronizowane z usługą Azure Active Directory
 Ten temat zawiera listę atrybutów, które są synchronizowane przez program Azure AD Connect sync.  
@@ -48,7 +48,7 @@ W tym przypadku rozpoczynać lista atrybutów, w tym temacie i zidentyfikować t
 | pwdLastSet |X |tych właściwości. Używane do ustalenia, kiedy unieważnienie już wystawionych tokenów. Używane przez synchronizacji skrótów haseł, uwierzytelniania przekazywanego i federacji. |
 |samAccountName|X| |
 | sourceAnchor |X |tych właściwości. Niemodyfikowalny identyfikator do utrzymania relacji między usług AD DS i Azure AD. |
-| usageLocation |X |tych właściwości. Kraj użytkownika. Używane w celu przypisania licencji. |
+| usageLocation |X |tych właściwości. Użytkownika kraj/region. Używane w celu przypisania licencji. |
 | userPrincipalName |X |Nazwa UPN jest identyfikator logowania dla użytkownika. W większości przypadków wartość taka sama jak [pocztą]. |
 
 ## <a name="exchange-online"></a>Exchange Online
@@ -61,9 +61,9 @@ W tym przypadku rozpoczynać lista atrybutów, w tym temacie i zidentyfikować t
 | c |X |X | | |
 | cn |X | |X | |
 | co |X |X | | |
-| company |X |X | | |
+| Firmy |X |X | | |
 | countryCode |X |X | | |
-| department |X |X | | |
+| Dział |X |X | | |
 | description |X |X |X | |
 | displayName |X |X |X | |
 | dLMemRejectPerms |X |X |X | |
@@ -91,7 +91,7 @@ W tym przypadku rozpoczynać lista atrybutów, w tym temacie i zidentyfikować t
 | l |X |X | | |
 | legacyExchangeDN |X |X |X | |
 | mailNickname |X |X |X | |
-| managedBy | | |X | |
+| Zarządzane | | |X | |
 | menedżer |X |X | | |
 | składowa | | |X | |
 | Telefon komórkowy |X |X | | |
@@ -166,9 +166,9 @@ W tym przypadku rozpoczynać lista atrybutów, w tym temacie i zidentyfikować t
 | telephoneAssistant |X |X | | |
 | telephoneNumber |X |X | | |
 | thumbnailphoto |X |X | | |
-| title |X |X | | |
+| tytuł |X |X | | |
 | unauthOrig |X |X |X | |
-| usageLocation |X | | |tych właściwości. Kraj użytkownika. Używane w celu przypisania licencji. |
+| usageLocation |X | | |tych właściwości. Użytkownika kraj/region. Używane w celu przypisania licencji. |
 | userCertificate |X |X | | |
 | userPrincipalName |X | | |Nazwa UPN jest identyfikator logowania dla użytkownika. W większości przypadków wartość taka sama jak [pocztą]. |
 | userSMIMECertificates |X |X | | |
@@ -182,9 +182,9 @@ W tym przypadku rozpoczynać lista atrybutów, w tym temacie i zidentyfikować t
 | c |X |X | | |
 | cn |X | |X | |
 | co |X |X | | |
-| company |X |X | | |
+| Firmy |X |X | | |
 | countryCode |X |X | | |
-| department |X |X | | |
+| Dział |X |X | | |
 | description |X |X |X | |
 | displayName |X |X |X | |
 | dLMemRejectPerms |X |X |X | |
@@ -212,9 +212,9 @@ W tym przypadku rozpoczynać lista atrybutów, w tym temacie i zidentyfikować t
 | Inicjały |X |X | | |
 | ipPhone |X |X | | |
 | l |X |X | | |
-| mail (poczta) |X |X |X | |
+| poczta |X |X |X | |
 | mailnickname |X |X |X | |
-| managedBy | | |X | |
+| Zarządzane | | |X | |
 | menedżer |X |X | | |
 | składowa | | |X | |
 | middleName |X |X | | |
@@ -248,10 +248,11 @@ W tym przypadku rozpoczynać lista atrybutów, w tym temacie i zidentyfikować t
 | telephoneAssistant |X |X | | |
 | telephoneNumber |X |X | | |
 | thumbnailphoto |X |X | | |
-| title |X |X | | |
+| tytuł |X |X | | |
 | unauthOrig |X |X |X | |
 | url |X |X | | |
-| usageLocation |X | | |tych właściwości. Kraj użytkownika. Używane w celu przypisania licencji. |
+| usageLocation |X | | |tych właściwości. Użytkownika kraj/region
+. Używane w celu przypisania licencji. |
 | userPrincipalName |X | | |Nazwa UPN jest identyfikator logowania dla użytkownika. W większości przypadków wartość taka sama jak [pocztą]. |
 | wWWHomePage |X |X | | |
 
@@ -262,8 +263,8 @@ W tym przypadku rozpoczynać lista atrybutów, w tym temacie i zidentyfikować t
 | c |X |X | | |
 | cn |X | |X | |
 | co |X |X | | |
-| company |X |X | | |
-| department |X |X | | |
+| Firmy |X |X | | |
+| Dział |X |X | | |
 | description |X |X |X | |
 | displayName |X |X |X | |
 | facsimiletelephonenumber |X |X |X | |
@@ -271,9 +272,9 @@ W tym przypadku rozpoczynać lista atrybutów, w tym temacie i zidentyfikować t
 | homephone |X |X | | |
 | ipPhone |X |X | | |
 | l |X |X | | |
-| mail (poczta) |X |X |X | |
+| poczta |X |X |X | |
 | mailNickname |X |X |X | |
-| managedBy | | |X | |
+| Zarządzane | | |X | |
 | menedżer |X |X | | |
 | składowa | | |X | |
 | Telefon komórkowy |X |X | | |
@@ -298,8 +299,8 @@ W tym przypadku rozpoczynać lista atrybutów, w tym temacie i zidentyfikować t
 | Adres |X |X | | |
 | telephoneNumber |X |X | | |
 | thumbnailphoto |X |X | | |
-| title |X |X | | |
-| usageLocation |X | | |tych właściwości. Kraj użytkownika. Używane w celu przypisania licencji. |
+| tytuł |X |X | | |
+| usageLocation |X | | |tych właściwości. Użytkownika kraj/region. Używane w celu przypisania licencji. |
 | userPrincipalName |X | | |Nazwa UPN jest identyfikator logowania dla użytkownika. W większości przypadków wartość taka sama jak [pocztą]. |
 | wWWHomePage |X |X | | |
 
@@ -309,16 +310,16 @@ W tym przypadku rozpoczynać lista atrybutów, w tym temacie i zidentyfikować t
 | accountEnabled |X | | |Określa, czy konto jest włączone. |
 | cn |X | |X |Typowe nazwy lub aliasu. W większości przypadków prefiks wartości [pocztą]. |
 | displayName |X |X |X |Ciąg, który reprezentuje nazwę często wyświetlany jako przyjazna nazwa (imię nazwisko). |
-| mail (poczta) |X |X |X |pełny adres e-mail. |
+| poczta |X |X |X |pełny adres e-mail. |
 | składowa | | |X | |
 | atrybuty objectSID |X | |X |tych właściwości. Usługi AD identyfikator użytkownika, używany w celu zachowania synchronizacji między platformą Azure AD i AD. |
 | proxyAddresses |X |X |X |tych właściwości. Używane przez usługę Azure AD. Zawiera wszystkie adresy pomocniczego adresu e-mail użytkownika. |
 | pwdLastSet |X | | |tych właściwości. Używane do ustalenia, kiedy unieważnienie już wystawionych tokenów. |
 | sourceAnchor |X |X |X |tych właściwości. Niemodyfikowalny identyfikator do utrzymania relacji między usług AD DS i Azure AD. |
-| usageLocation |X | | |tych właściwości. Kraj użytkownika. Używane w celu przypisania licencji. |
+| usageLocation |X | | |tych właściwości. Użytkownika kraj/region. Używane w celu przypisania licencji. |
 | userPrincipalName |X | | |Ta nazwa UPN jest identyfikator logowania dla użytkownika. W większości przypadków wartość taka sama jak [pocztą]. |
 
-## <a name="intune"></a>Usługa Intune
+## <a name="intune"></a>Intune
 | Nazwa atrybutu | Użytkownik | Kontakt | Grupa | Komentarz |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Określa, czy konto jest włączone. |
@@ -326,14 +327,14 @@ W tym przypadku rozpoczynać lista atrybutów, w tym temacie i zidentyfikować t
 | cn |X | |X | |
 | description |X |X |X | |
 | displayName |X |X |X | |
-| mail (poczta) |X |X |X | |
+| poczta |X |X |X | |
 | mailnickname |X |X |X | |
 | składowa | | |X | |
 | atrybuty objectSID |X | |X |tych właściwości. Usługi AD identyfikator użytkownika, używany w celu zachowania synchronizacji między platformą Azure AD i AD. |
 | proxyAddresses |X |X |X | |
 | pwdLastSet |X | | |tych właściwości. Używane do ustalenia, kiedy unieważnienie już wystawionych tokenów. Używane przez synchronizacji skrótów haseł, uwierzytelniania przekazywanego i federacji. |
 | sourceAnchor |X |X |X |tych właściwości. Niemodyfikowalny identyfikator do utrzymania relacji między usług AD DS i Azure AD. |
-| usageLocation |X | | |tych właściwości. Kraj użytkownika. Używane w celu przypisania licencji. |
+| usageLocation |X | | |tych właściwości. Użytkownika kraj/region. Używane w celu przypisania licencji. |
 | userPrincipalName |X | | |Nazwa UPN jest identyfikator logowania dla użytkownika. W większości przypadków wartość taka sama jak [pocztą]. |
 
 ## <a name="dynamics-crm"></a>Dynamics CRM
@@ -343,14 +344,14 @@ W tym przypadku rozpoczynać lista atrybutów, w tym temacie i zidentyfikować t
 | c |X |X | | |
 | cn |X | |X | |
 | co |X |X | | |
-| company |X |X | | |
+| Firmy |X |X | | |
 | countryCode |X |X | | |
 | description |X |X |X | |
 | displayName |X |X |X | |
 | facsimiletelephonenumber |X |X | | |
 | givenName |X |X | | |
 | l |X |X | | |
-| managedBy | | |X | |
+| Zarządzane | | |X | |
 | menedżer |X |X | | |
 | składowa | | |X | |
 | Telefon komórkowy |X |X | | |
@@ -364,8 +365,8 @@ W tym przypadku rozpoczynać lista atrybutów, w tym temacie i zidentyfikować t
 | St |X |X | | |
 | Adres |X |X | | |
 | telephoneNumber |X |X | | |
-| title |X |X | | |
-| usageLocation |X | | |tych właściwości. Kraj użytkownika. Używane w celu przypisania licencji. |
+| tytuł |X |X | | |
+| usageLocation |X | | |tych właściwości. Użytkownika kraj/region. Używane w celu przypisania licencji. |
 | userPrincipalName |X | | |Nazwa UPN jest identyfikator logowania dla użytkownika. W większości przypadków wartość taka sama jak [pocztą]. |
 
 ## <a name="3rd-party-applications"></a>3 aplikacje innych firm
@@ -381,9 +382,10 @@ Ta grupa jest zestaw atrybutów, których można użyć, jeśli katalog usługi 
 | accountEnabled |X | | |Określa, czy konto jest włączone. |
 | cn |X | |X | |
 | displayName |X |X |X | |
+| employeeID |X |  |  | |
 | givenName |X |X | | |
-| mail (poczta) |X | |X | |
-| managedBy | | |X | |
+| poczta |X | |X | |
+| Zarządzane | | |X | |
 | mailNickName |X |X |X | |
 | składowa | | |X | |
 | atrybuty objectSID |X | | |tych właściwości. Usługi AD identyfikator użytkownika, używany w celu zachowania synchronizacji między platformą Azure AD i AD. |
@@ -391,7 +393,7 @@ Ta grupa jest zestaw atrybutów, których można użyć, jeśli katalog usługi 
 | pwdLastSet |X | | |tych właściwości. Używane do ustalenia, kiedy unieważnienie już wystawionych tokenów. Używane przez synchronizacji skrótów haseł, uwierzytelniania przekazywanego i federacji. |
 | numery seryjne |X |X | | |
 | sourceAnchor |X |X |X |tych właściwości. Niemodyfikowalny identyfikator do utrzymania relacji między usług AD DS i Azure AD. |
-| usageLocation |X | | |tych właściwości. Kraj użytkownika. Używane w celu przypisania licencji. |
+| usageLocation |X | | |tych właściwości. Użytkownika kraj/region. Używane w celu przypisania licencji. |
 | userPrincipalName |X | | |Nazwa UPN jest identyfikator logowania dla użytkownika. W większości przypadków wartość taka sama jak [pocztą]. |
 
 ## <a name="windows-10"></a>Windows 10
@@ -420,7 +422,7 @@ Te atrybuty **użytkownika** czy oprócz innych aplikacji, które zostały wybra
 ## <a name="exchange-hybrid-writeback"></a>Zapisywanie zwrotne hybrydowego programu Exchange
 Te atrybuty będą zwrotnie zapisywane z usługi Azure AD w usłudze Active Directory w środowisku lokalnym po wybraniu umożliwiające **wdrożenie hybrydowe programu Exchange**. W zależności od używanej wersji programu Exchange mniej atrybutów może być synchronizowane.
 
-| Atrybut nazwy (Connect interfejsu użytkownika) |Atrybut nazwy (lokalnej usługi AD) | Użytkownik | Kontakt | Grupa | Komentarz |
+| Atrybut nazwy (lokalnej usługi AD) | Atrybut nazwy (Connect interfejsu użytkownika) | Użytkownik | Kontakt | Grupa | Komentarz |
 | --- |:---:|:---:|:---:| --- |---|
 | msDS-ExternalDirectoryObjectID| ms-DS-External-Directory-Object-Id |X | | |Tworzony na podstawie atrybutu cloudAnchor w usłudze Azure AD. Ten atrybut jest nowa w programie Exchange 2016 i Windows Server 2016 AD. |
 | msExchArchiveStatus| ms-Exch-ArchiveStatus |X | | |Archiwum online: Umożliwia klientom archiwum wiadomości e-mail. |
@@ -438,7 +440,7 @@ Te atrybuty są synchronizowane z usługi Active Directory środowiska lokalnego
 | Nazwa atrybutu | PublicFolder | Komentarz |
 | --- | :---:| --- |
 | displayName | X |  |
-| mail (poczta) | X |  |
+| poczta | X |  |
 | msExchRecipientTypeDetails | X |  |
 | objectGUID | X |  |
 | proxyAddresses | X |  |

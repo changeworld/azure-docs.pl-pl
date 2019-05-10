@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: b06e3ff50eba4763403450a807aa90ef6335f1a9
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: cb716e0d9f97d3ea2e9584a9fc3d7a6f57da9179
+ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025234"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65502100"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Jak działa usługa Azure Machine Learning: Architektura i pojęcia
 
@@ -32,9 +32,7 @@ Ogólnie maszyny uczenie się przepływu pracy przebiega w następującej kolejn
 1. **Przesyłanie skryptów usługi** docelową obliczeń skonfigurowany do uruchamiania w środowisku. Podczas szkolenia, skrypty można odczytać lub zapisać do **datastore**. I rekordy wykonywania są zapisywane jako **uruchamia** w **obszaru roboczego** i zgrupowane w obszarze **eksperymentów**.
 1. **Zapytanie eksperymentu** dla zarejestrowanych metryk z bieżącej i wcześniejszych przebiegów. Jeśli metryki nie wskazują żądanego wyniku, pętli, wróć do kroku 1 i powtarzanie czynności w skryptach.
 1. Po znalezieniu zadowalające Uruchom rejestrowanie utrwalonej modelu w **rejestru modelu**.
-1. Twórz skrypt oceniania.
-1. **Tworzenie obrazu** i zarejestrować ją w **rejestru obrazów**.
-1. **Wdrażanie obrazu** jako **usługi sieci web** na platformie Azure.
+1. Twórz oceniania skrypt, który używa modelu i **wdrożyć model** jako **usługi sieci web** na platformie Azure lub do **urządzenie usługi IoT Edge**.
 
 
 > [!NOTE]
@@ -46,7 +44,7 @@ Obszar roboczy jest zasobem najwyższego poziomu dla usługi Azure Machine Learn
 
 Obszar roboczy przechowuje listę obliczeniowych elementów docelowych, używanych do uczenia modelu. Zapewnia również historię przebiegów szkoleniowych, w tym dzienniki, metryki, dane wyjściowe i migawkę skryptów. Użyjesz tych informacji do określenia, które Uruchom szkolenia tworzy najlepszy model.
 
-Zarejestruj się modeli z obszarem roboczym. Użyjesz zarejestrowanego modelu i oceniania skryptów do utworzenia obrazu. Następnie można wdrożyć obraz do usługi Azure Container Instances, Azure Kubernetes Service lub tablicą programowalny bramy (FPGA) jako punkt końcowy oparty na protokole REST protokołu HTTP. Można także wdrożyć obraz do urządzenia z usługi Azure IoT Edge jako moduł.
+Zarejestruj się modeli z obszarem roboczym. Używasz zarejestrowanego modelu i oceniania skryptów do wdrażania modelu w usłudze Azure Container Instances, Azure Kubernetes Service lub tablicą programowalny bramy (FPGA) jako punkt końcowy oparty na protokole REST protokołu HTTP. Można także wdrożyć obraz do urządzenia z usługi Azure IoT Edge jako moduł. Wewnętrznie obraz platformy docker jest tworzony do hostowania wdrożonym obrazie. Jeśli to konieczne, można określić własnego obrazu.
 
 Możesz utworzyć wiele obszarów roboczych, a każdy obszar roboczy może być współużytkowany przez wiele osób. Po udostępnieniu obszaru roboczego można kontrolować dostęp do niego przez przypisywanie użytkowników do następujących ról:
 
@@ -76,7 +74,7 @@ Eksperyment to zbiór wielu uruchomień z określonego skryptu. Zawsze należy d
 
 Na przykład z użyciem eksperymentu zobacz [Szybki Start: Wprowadzenie do usługi Azure Machine Learning](quickstart-run-cloud-notebook.md).
 
-## <a name="model"></a>Modelowanie
+## <a name="model"></a>Model
 
 W najprostszym modelem jest fragmentem kodu, który przyjmuje dane wejściowe i generuje dane wyjściowe. Tworzenie modelu uczenia maszynowego obejmuje algorytmu, wybierając dostarczanie danych i dostosowywanie hiperparametrów. Szkolenie jest procesem iteracyjnym, tworzącego trenowanego modelu, który hermetyzuje, jakie zakorzenione podczas procesu uczenia modelu.
 
@@ -94,7 +92,7 @@ Modele są identyfikowane przez nazwę i wersję. Każdorazowo, należy zarejest
 
 Po zarejestrowaniu modelu, można zapewnić dodatkowe metadane tagów, a następnie użyć tagów, podczas wyszukiwania dla modeli.
 
-Nie można usunąć modeli, które są używane przez obraz.
+Nie można usunąć modeli, które są używane przez aktywne wdrożenie.
 
 Na przykład zarejestrować model, zobacz [Wytrenuj model klasyfikacji obrazów za pomocą usługi Azure Machine Learning](tutorial-train-models-with-aml.md).
 
@@ -159,7 +157,7 @@ Do nauczenia modelu, można określić katalog, który zawiera skrypt szkolenia 
 
 Przykład — patrz [Tutorial: uczenie modelu klasyfikacji obrazów za pomocą usługi Azure Machine Learning](tutorial-train-models-with-aml.md).
 
-## <a name="run"></a>Uruchom polecenie
+## <a name="run"></a>Uruchom
 
 Przebieg jest rekord, który zawiera następujące informacje:
 
@@ -172,7 +170,7 @@ Uruchom zostanie wyświetlony po przesłaniu skryptu w celu nauczenia modelu. Ur
 
 Na przykład wyświetlanie uruchomień, które są produkowane przez uczenia modelu, zobacz [Szybki Start: Wprowadzenie do usługi Azure Machine Learning](quickstart-run-cloud-notebook.md).
 
-## <a name="snapshot"></a>Snapshot
+## <a name="snapshot"></a>Migawka
 
 Po przesłaniu uruchomienie usługi Azure Machine Learning kompresuje katalogu, który zawiera skrypt jako plik zip i wysyła je do obliczeniowego elementu docelowego. Następnie został wyodrębniony plik zip, a skrypt jest uruchamiany istnieje. Usługa Azure Machine Learning są także przechowywane w pliku zip jako migawka jako część rekordu uruchomienia. Każda osoba mająca dostęp do obszaru roboczego można przeglądać rekordu uruchomienia i pobrać migawki.
 
@@ -208,11 +206,11 @@ Obrazy, które są tworzone na podstawie modeli śledzi informacje o rejestru ob
 
 ## <a name="deployment"></a>Wdrożenie
 
-Wdrożenie jest egzemplarzem obraz na obu usługę internetową, która może być hostowana w chmurze lub moduł usługi IoT dla wdrożeń IDE.
+Wdrożenie jest egzemplarzem modelu do obu usługę internetową, która może być hostowana w chmurze lub moduł usługi IoT dla wdrożeń IDE.
 
 ### <a name="web-service"></a>Usługa sieci Web
 
-Wdrożonej usługi sieci web można użyć usługi Azure Container Instances, Azure Kubernetes Service lub układów FPGA. Możesz utworzyć usługę z obrazu, który hermetyzuje z modelu, skrypt i skojarzone pliki. Obraz ma ze zrównoważonym obciążeniem końcowego HTTP, który odbiera oceniania żądań, które są wysyłane do usługi sieci web.
+Wdrożonej usługi sieci web można użyć usługi Azure Container Instances, Azure Kubernetes Service lub układów FPGA. Możesz utworzyć usługę z modelu, skrypt i skojarzone pliki. Te są hermetyzowane w obraz, który zapewnia środowisko czasu uruchamiania usługi sieci web. Obraz ma ze zrównoważonym obciążeniem końcowego HTTP, który odbiera oceniania żądań, które są wysyłane do usługi sieci web.
 
 Platforma Azure ułatwia monitorowanie wdrożenia swojej usługi sieci web przez zbieranie danych telemetrycznych usługi Application Insights lub model danych telemetrycznych, jeśli wybrano włączyć tę funkcję. Dane telemetryczne są dostępne tylko dla Ciebie i jest przechowywany w usłudze Application Insights i wystąpień konta magazynu.
 

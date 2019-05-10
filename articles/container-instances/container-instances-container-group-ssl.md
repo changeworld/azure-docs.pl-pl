@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 10c015a9aee4ed8be54805f7adaae5bb4b5c422f
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 12de4ef31084d8ac8586c79ffe3d0a8e891727bf
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64870390"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65411396"
 ---
 # <a name="enable-an-ssl-endpoint-in-a-container-group"></a>Włączanie punktu końcowego protokołu SSL w grupie kontenerów
 
@@ -66,7 +66,7 @@ W `location`, należy ustawić `proxy_pass` za pomocą poprawnego portu dla apli
 
 ```console
 # nginx Configuration File
-# http://wiki.nginx.org/Configuration
+# https://wiki.nginx.org/Configuration
 
 # Run as a less privileged user for security reasons.
 user nginx;
@@ -128,7 +128,7 @@ http {
 
 ### <a name="base64-encode-secrets-and-configuration-file"></a>Kodowanie Base64 wpisów tajnych i pliku konfiguracji
 
-Base64 — kodowanie plik konfiguracji Nginx, certyfikat SSL i klucza protokołu SSL. Zawartość zakodowanego umożliwia konfigurowanie kontenera Nginx.
+Base64 — kodowanie plik konfiguracji Nginx, certyfikat SSL i klucza protokołu SSL. W następnej sekcji możesz wprowadzić zakodowanej treści w pliku YAML, używane do wdrażania grupy kontenerów.
 
 ```console
 cat nginx.conf | base64 -w 0 > base64-nginx.conf
@@ -148,7 +148,7 @@ Skopiuj poniższego kodu YAML do nowego pliku o nazwie `deploy-aci.yaml`. W usł
 code deploy-aci.yaml
 ```
 
-Wprowadź zawartość algorytmem base64 plików w przypadku, gdy wskazane w `secret`. Podczas wdrażania, te pliki zostaną dodane do [wolumin tajny](container-instances-volume-secret.md) w grupie kontenerów. W tym przykładzie wolumin tajny jest zainstalowany do kontenera Nginx.
+Wprowadź zawartość algorytmem base64 plików w przypadku, gdy wskazane w `secret`. Na przykład `cat` każdego z plików algorytmem Base64, aby wyświetlić jego zawartość. Podczas wdrażania, te pliki zostaną dodane do [wolumin tajny](container-instances-volume-secret.md) w grupie kontenerów. W tym przykładzie wolumin tajny jest zainstalowany do kontenera Nginx.
 
 ```YAML
 api-version: 2018-10-01
@@ -181,9 +181,9 @@ properties:
           memoryInGB: 1.5
   volumes:
   - secret:
-      ssl.crt: <base64-ssl.crt>
-      ssl.key: <base64-ssl.key>
-      nginx.conf: <base64-nginx.conf>
+      ssl.crt: <Enter contents of base64-ssl.crt here>
+      ssl.key: <Enter contents of base64-ssl.key here>
+      nginx.conf: <Enter contents of base64-nginx.conf here>
     name: nginx-config
   ipAddress:
     ports:
@@ -232,7 +232,7 @@ Aby wyświetlić uruchomioną aplikację, przejdź do adresu IP w przeglądarce.
 ![Zrzut ekranu przedstawiający aplikację uruchomioną w wystąpieniu kontenera platformy Azure](./media/container-instances-container-group-ssl/aci-app-ssl-browser.png)
 
 > [!NOTE]
-> Ponieważ w tym przykładzie użyto certyfikatu z podpisem własnym, a nie jeden z urzędu certyfikacji, w przeglądarce pojawi się ostrzeżenie o zabezpieczeniach podczas nawiązywania połączenia z lokacją przy użyciu protokołu HTTPS. Takie zachowanie jest oczekiwane.
+> Ponieważ w tym przykładzie użyto certyfikatu z podpisem własnym, a nie jeden z urzędu certyfikacji, w przeglądarce pojawi się ostrzeżenie o zabezpieczeniach podczas nawiązywania połączenia z lokacją przy użyciu protokołu HTTPS. To zachowanie jest oczekiwane.
 >
 
 ## <a name="next-steps"></a>Kolejne kroki

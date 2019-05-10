@@ -2,18 +2,18 @@
 title: Aby utworzyć i skonfigurować obszar roboczy usługi Log Analytics przy użyciu programu PowerShell | Dokumentacja firmy Microsoft
 description: Obszary robocze usługi log Analytics w usłudze Azure Monitor przechowywania danych z serwerów w sieci lokalnej lub infrastruktury chmury. Można zbierać dane maszyn z usługi Azure storage wygenerowanym przez narzędzie diagnostyczne systemu Azure.
 services: log-analytics
-author: richrundmsft
+author: bwren
 ms.service: log-analytics
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.author: richrund
-ms.openlocfilehash: 5c348adea0847929b37d1b61f024859b1d634fe7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: bwren
+ms.openlocfilehash: 2d3f1ab6704a0f5ecd15190fd08b10485cdf1ee9
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60452742"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510113"
 ---
 # <a name="manage-log-analytics-workspace-in-azure-monitor-using-powershell"></a>Zarządzanie roboczym usługi Log Analytics w usłudze Azure Monitor przy użyciu programu PowerShell
 

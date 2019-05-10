@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
-ms.openlocfilehash: cb1eb5ac27c53f4c0d48fe3644febc62f848486d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 559c1874c119eabef2c35a954961c1e669df3c06
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60551284"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507225"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Zarządzanie grupami zasobów usługi Azure Resource Manager przy użyciu witryny Azure portal
 
@@ -31,7 +31,7 @@ Inne artykuły o zarządzaniu grupami zasobów:
 
 ## <a name="what-is-a-resource-group"></a>Co to jest grupa zasobów
 
-Grupa zasobów to kontener, który zawiera powiązane zasoby dla rozwiązania platformy Azure. Grupa zasobów może zawierać wszystkie zasoby dla rozwiązania lub tylko te zasoby, które mają być zarządzane jako grupa. Użytkownik decyduje o sposobie przydziału zasobów do grup zasobów pod kątem tego, co jest najbardziej odpowiednie dla danej organizacji. Ogólnie rzecz biorąc Dodaj zasoby, które współużytkują ten sam cykl życia w tej samej grupie zasobów, więc łatwe wdrażanie, aktualizowanie i usuwanie ich jako grupa.
+Grupa zasobów to kontener zawierający powiązane zasoby dla rozwiązania platformy Azure. Grupa zasobów może zawierać wszystkie zasoby dla rozwiązania lub tylko te zasoby, które mają być zarządzane jako grupa. Użytkownik decyduje o sposobie przydziału zasobów do grup zasobów pod kątem tego, co jest najbardziej odpowiednie dla danej organizacji. Ogólnie rzecz biorąc Dodaj zasoby, które współużytkują ten sam cykl życia w tej samej grupie zasobów, więc łatwe wdrażanie, aktualizowanie i usuwanie ich jako grupa.
 
 Grupa zasobów przechowuje metadane dotyczące zasobów. Z tego powodu określając lokalizację dla grupy zasobów, określasz miejsce, w którym przechowywane są metadane. Dla zachowania zgodności może być konieczne upewnienie się, że dane są przechowywane w odpowiednim regionie.
 
@@ -108,64 +108,7 @@ Znaczniki można dodawać do grup zasobów i zasobów w celu logicznego uporząd
 
 ## <a name="export-resource-groups-to-templates"></a>Eksportowanie grupy zasobów do szablonów
 
-Po pomyślnym skonfigurowaniu grupy zasobów można wyświetlić szablon usługi Resource Manager dla grupy zasobów. Eksportowanie szablonu oferuje dwie korzyści:
-
-- Zautomatyzuj przyszłych wdrożeń rozwiązania, ponieważ szablon zawiera całej infrastruktury.
-- Dowiedz się składni szablonu, spoglądając na JavaScript Object Notation (JSON) reprezentujący rozwiązania.
-
-Istnieją dwa sposoby eksportowania szablonu:
-
-- Możesz wyeksportować prawdziwy Szablon użyty do wdrożenia. W wyeksportowanym szablonie wszystkie parametry i zmienne występują dokładnie tak, jak w oryginalnym szablonie. Takie podejście jest przydatne, jeśli zasoby zostały wdrożone za pośrednictwem portalu i chcesz zobaczyć szablon, na podstawie którego utworzono te zasoby. Ten szablon jest gotowy do użycia. 
-- Możesz wyeksportować wygenerowany szablon, który reprezentuje bieżący stan grupy zasobów. Wyeksportowany szablon nie jest oparty na żadnym szablonie użytym do wdrożenia. Zamiast tego tworzy szablon, który jest "snapshot" lub "Kopia zapasowa" grupy zasobów. W wyeksportowanym szablonie zawartych jest wiele zakodowanych wartości i prawdopodobnie mniej parametrów, niż się zwykle definiuje. Użyj tej opcji, aby przeprowadzić ponowne wdrożenie zasobów w tej samej grupie zasobów. Aby użyć tego szablonu do innej grupy zasobów, może być znacznie go zmodyfikować.
-
-### <a name="export-templates-from-deployment-history"></a>Eksportowanie szablonów z historii wdrożenia
-
-Ta metoda umożliwia wyeksportowanie szablonów w przypadku niektórych wdrożeń. Jeśli zasoby zostały zmienione z portalu lub są dodawani lub usuwani zasobów w wielu wdrożeniach, zobacz [eksportowanie szablonów z grup zasobów](#export-templates-from-resource-groups).
-
-1. Otwórz grupę zasobów, które chcesz wyeksportować.  Zobacz [Otwórz grup zasobów](#open-resource-groups).
-2. W okienku po lewej stronie wybierz **wdrożeń**, lub wybierz link w obszarze **wdrożeń**.  Na poniższym zrzucie ekranu przedstawiono **4 Powodzenie** ponieważ wystąpiły cztery rozdzielonych wdrożeń w cztery nazwą innego wdrożenia. Może zostać wyświetlony **1 Powodzenie**.
-
-    ![Szablony eksportowanie grupy zasobów platformy Azure](./media/manage-resource-groups-portal/manage-resource-groups-export-templates-deployment-history.png)
-
-3. Wybierz jedno z wdrożeń z listy.
-4. W okienku po lewej stronie wybierz **szablonu**. Usługa Resource Manager pobiera następujące sześć plików:
-
-   - **Szablon** — szablon, który definiuje infrastrukturę Twojego rozwiązania. Po utworzeniu konta magazynu za pośrednictwem portalu usługa Resource Manager użyła szablonu w celu jego wdrożenia i zapisała ten szablon do użytku w przyszłości.
-   - **Parametry** — plik parametrów, który służy do przekazywania wartości podczas wdrażania. Zawiera on wartości, które podano podczas pierwszego wdrażania. Podczas ponownego wdrażania szablonu można zmienić dowolne z tych wartości.
-   - **Interfejs wiersza polecenia** — plik skryptu interfejsu wiersza polecenia platformy Azure, którego można użyć do wdrożenia szablonu.
-   - **PowerShell** — plik skryptu programu Azure PowerShell, którego możesz użyć do wdrożenia szablonu.
-   - **.NET** — klasa platformy .NET, której możesz użyć do wdrożenia szablonu.
-   - **Ruby** — klasa języka Ruby, której możesz użyć do wdrożenia szablonu.
-
-     Domyślnie portal zawiera szablon.
-
-5. Wybierz **Pobierz** dotyczące eksportowania szablonu na komputerze lokalnym.
-
-    ![Szablony eksportowanie grupy zasobów platformy Azure](./media/manage-resource-groups-portal/manage-resource-groups-export-templates-deployment-history-download.png)
-
-<a name="export-templates-from-resource-groups"></a>
-### <a name="export-templates-from-resource-groups"></a>Eksportowanie szablonów z grup zasobów
-
-Jeśli zmieniono zasobów z poziomu portalu lub dodane/Usuń zasoby w wielu wdrożeniach, szablon pobrany z historii wdrożenia nie odzwierciedla bieżący stan grupy zasobów. W tej sekcji pokazano, jak wyeksportować szablon, który reprezentuje bieżący stan grupy zasobów. Jest on przeznaczony jako migawkę grupy zasobów, które służy do ponownego wdrożenia w tej samej grupie zasobów. Aby użyć wyeksportowanego szablonu do innych rozwiązań, należy go znacznie zmodyfikować.
-
-1. Otwórz grupę zasobów, które chcesz wyeksportować.  Zobacz [Otwórz grup zasobów](#open-resource-groups).
-2. W okienku po lewej stronie wybierz **Eksportuj szablon**. Usługa Resource Manager pobiera następujące sześć plików:
-
-   - **Szablon** — szablon, który definiuje infrastrukturę Twojego rozwiązania. Po utworzeniu konta magazynu za pośrednictwem portalu usługa Resource Manager użyła szablonu w celu jego wdrożenia i zapisała ten szablon do użytku w przyszłości.
-   - **Parametry** — plik parametrów, który służy do przekazywania wartości podczas wdrażania. Zawiera on wartości, które podano podczas pierwszego wdrażania. Podczas ponownego wdrażania szablonu można zmienić dowolne z tych wartości.
-   - **Interfejs wiersza polecenia** — plik skryptu interfejsu wiersza polecenia platformy Azure, którego można użyć do wdrożenia szablonu.
-   - **PowerShell** — plik skryptu programu Azure PowerShell, którego możesz użyć do wdrożenia szablonu.
-   - **.NET** — klasa platformy .NET, której możesz użyć do wdrożenia szablonu.
-   - **Ruby** — klasa języka Ruby, której możesz użyć do wdrożenia szablonu.
-
-     Domyślnie portal zawiera szablon.
-3. Wybierz **Pobierz** dotyczące eksportowania szablonu na komputerze lokalnym.
-
-Niektóre wyeksportowanymi szablonami konieczne niektóre zmiany, zanim będzie można ich użyć. Aby dowiedzieć się, jak opracowywać szablony, zobacz [samouczki krok po kroku](/azure/azure-resource-manager/).
-
-### <a name="export-template-before-deploying"></a>Eksportowanie szablonu przed wdrożeniem
-
-Aby zdefiniować zasób, można użyć portalu.  Przed wdrożeniem zasobu, można wyświetlać i eksportowania szablonu. Aby uzyskać instrukcje, zobacz [Szybki start: Tworzenie i wdrażanie szablonów usługi Azure Resource Manager przy użyciu witryny Azure Portal](./resource-manager-quickstart-create-templates-use-the-portal.md).
+Aby uzyskać informacji na temat eksportowania szablonów, zobacz [eksportowania pojedynczych i wielu zasobów do szablonu — Portal](export-template-portal.md).
 
 ### <a name="fix-export-issues"></a>Rozwiązywanie problemów z eksportowaniem
 

@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0cfc31705909710e6a60e0d2fd3963e74e9397ee
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f7aee10780512e284faccadface0dc928ef8270e
+ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60472270"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65501896"
 ---
 # <a name="what-is-self-service-signup-for-azure-active-directory"></a>Co to jest Samoobsługowe tworzenie konta usługi Azure Active Directory?
 
@@ -52,7 +52,7 @@ Administrator może skonfigurować te funkcje, korzystając z następujących pa
 AllowEmailVerifiedUsers i AllowAdHocSubscriptions są ustawienia obejmujące cały katalog, które mogą być stosowane do zarządzanego lub niezarządzanego katalogu. Oto przykład, gdzie:
 
 * Administrowanie katalogiem, za pomocą zweryfikowanej domeny, np. contoso.com
-* Użyj współpracy B2B z innego katalogu można zaprosić użytkownika, który już nie istnieje (userdoesnotexist@contoso.com) w katalogu macierzystego constoso.com
+* Użyj współpracy B2B z innego katalogu można zaprosić użytkownika, który już nie istnieje (userdoesnotexist@contoso.com) w katalogu głównym domeny contoso.com
 * Katalog macierzysty ma AllowEmailVerifiedUsers włączona
 
 Jeśli powyższe warunki są spełnione, następnie użytkownika elementu członkowskiego jest tworzony w katalogu macierzystego, a użytkownik-Gość B2B jest tworzony w katalogu zapraszania.

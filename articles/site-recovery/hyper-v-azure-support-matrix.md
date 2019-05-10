@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 05/07/2019
 ms.author: raynew
-ms.openlocfilehash: ea9f6a65ae804d4d2e5004ff4e2c61a2a85b976d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e311a328c1c3d78fa8e5ba7065dcc6484006eaaf
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60748989"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65235876"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Macierz obsługi dla odzyskiwania po awarii lokalnych maszyn wirtualnych z funkcją Hyper-V do platformy Azure
 
@@ -33,8 +33,8 @@ Funkcji Hyper-V bez programu Virtual Machine Manager | Dla maszyn wirtualnych ur
 
 **Serwer** | **Wymagania** | **Szczegóły**
 --- | --- | ---
-Funkcji Hyper-V (z systemem bez programu Virtual Machine Manager) | System Windows Server 2016 (takie jak instalacja server core), Windows Server 2012 R2 z najnowszymi aktualizacjami | Jeśli skonfigurowano już program Windows Server 2012 R2 z / lub programu SCVMM 2012 R2 przy użyciu usługi Azure Site Recovery i planujesz uaktualnić system operacyjny, postępuj zgodnie ze wskazówkami [dokumentacji.](upgrade-2012R2-to-2016.md) 
-Funkcji Hyper-V (uruchomionego za pomocą programu Virtual Machine Manager) | Virtual Machine Manager 2016, Virtual Machine Manager 2012 R2 | Jeśli jest używany program Virtual Machine Manager, hosty systemu Windows Server 2016 powinny być zarządzane w programie Virtual Machine Manager 2016.<br/><br/>
+Funkcji Hyper-V (z systemem bez programu Virtual Machine Manager) |  2019 serwera systemu Windows, Windows Server 2016 (takie jak instalacja server core), Windows Server 2012 R2 z najnowszymi aktualizacjami | Jeśli skonfigurowano już program Windows Server 2012 R2 z / lub programu SCVMM 2012 R2 przy użyciu usługi Azure Site Recovery i planujesz uaktualnić system operacyjny, postępuj zgodnie ze wskazówkami [dokumentacji.](upgrade-2012R2-to-2016.md) 
+Funkcji Hyper-V (uruchomionego za pomocą programu Virtual Machine Manager) | Virtual Machine Manager 2019, Virtual Machine Manager 2016, Virtual Machine Manager 2012 R2 | Jeśli jest używany program Virtual Machine Manager, hosty systemu Windows Server 2019 powinny być zarządzane w 2019 programu Virtual Machine Manager. Podobnie hosty systemu Windows Server 2016 powinny być zarządzane w programie Virtual Machine Manager 2016.<br/><br/>
 
 
 ## <a name="replicated-vms"></a>Replikowane maszyny wirtualne
@@ -59,16 +59,16 @@ Dodaj dysk na replikowanej maszynie Wirtualnej funkcji Hyper-V | Nieobsługiwane
 
 **Składnik** | **Funkcji Hyper-V za pomocą programu Virtual Machine Manager** | **Funkcji Hyper-V bez programu Virtual Machine Manager**
 --- | --- | ---
-Sieć hosta: Tworzenie zespołu kart interfejsu Sieciowego | Yes | Yes
-Sieć hosta: Sieć VLAN | Yes | Yes
-Sieć hosta: Protokół IPv4 | Yes | Yes
+Sieć hosta: Tworzenie zespołu kart interfejsu Sieciowego | Tak | Tak
+Sieć hosta: Sieć VLAN | Tak | Tak
+Sieć hosta: Protokół IPv4 | Tak | Tak
 Sieć hosta: Protokół IPv6 | Nie | Nie
 Sieć maszyny Wirtualnej gościa: Tworzenie zespołu kart interfejsu Sieciowego | Nie | Nie
-Sieć maszyny Wirtualnej gościa: Protokół IPv4 | Yes | Yes
-Sieć maszyny Wirtualnej gościa: Protokół IPv6 | Nie | Yes
-Sieć maszyny Wirtualnej gościa: Statyczny adres IP (Windows) | Yes | Yes
+Sieć maszyny Wirtualnej gościa: Protokół IPv4 | Tak | Tak
+Sieć maszyny Wirtualnej gościa: Protokół IPv6 | Nie | Tak
+Sieć maszyny Wirtualnej gościa: Statyczny adres IP (Windows) | Tak | Tak
 Sieć maszyny Wirtualnej gościa: Statyczny adres IP (Linux) | Nie | Nie
-Sieć maszyny Wirtualnej gościa: Multi-NIC | Yes | Yes
+Sieć maszyny Wirtualnej gościa: Multi-NIC | Tak | Tak
 
 
 
@@ -76,15 +76,15 @@ Sieć maszyny Wirtualnej gościa: Multi-NIC | Yes | Yes
 
 **Składnik** | **Funkcji Hyper-V za pomocą programu Virtual Machine Manager** | **Funkcji Hyper-V bez programu Virtual Machine Manager**
 --- | --- | ---
-Usługa ExpressRoute systemu Azure | Yes | Yes
-Wewnętrzny moduł równoważenia obciążenia | Yes | Yes
-ELB | Yes | Yes
-Azure Traffic Manager | Yes | Yes
-Multi-NIC | Yes | Yes
-Zastrzeżony adres IP | Yes | Yes
-Protokół IPv4 | Yes | Yes
-Zachowaj źródłowy adres IP | Yes | Yes
-Punkty końcowe usługi sieci wirtualnej platformy Azure<br/> (bez zapór usługi Azure Storage) | Yes | Yes
+Azure ExpressRoute | Tak | Tak
+Wewnętrzny moduł równoważenia obciążenia | Tak | Tak
+ELB | Tak | Tak
+Azure Traffic Manager | Tak | Tak
+Multi-NIC | Tak | Tak
+Zastrzeżony adres IP | Tak | Tak
+Protokół IPv4 | Tak | Tak
+Zachowaj źródłowy adres IP | Tak | Tak
+Punkty końcowe usługi sieci wirtualnej platformy Azure<br/> (bez zapór usługi Azure Storage) | Tak | Tak
 Accelerated Networking | Nie | Nie
 
 
@@ -93,18 +93,18 @@ Accelerated Networking | Nie | Nie
 **Storage** | **Funkcji Hyper-V za pomocą programu Virtual Machine Manager** | **Funkcji Hyper-V bez programu Virtual Machine Manager**
 --- | --- | --- 
 NFS | Nie dotyczy | Nie dotyczy
-SMB 3.0 | Yes | Yes
-SAN (ISCSI) | Yes | Yes
-Wiele ścieżek (MPIO). Przetestowane za pomocą:<br></br> Microsoft DSM, EMC PowerPath 5.7 SP4<br/><br/> Program EMC PowerPath DSM dla CLARiiON | Yes | Yes
+SMB 3.0 | Tak | Tak
+SAN (ISCSI) | Tak | Tak
+Wiele ścieżek (MPIO). Przetestowane za pomocą:<br></br> Microsoft DSM, EMC PowerPath 5.7 SP4<br/><br/> Program EMC PowerPath DSM dla CLARiiON | Tak | Tak
 
 ## <a name="hyper-v-vm-guest-storage"></a>Magazyn gościa maszyny Wirtualnej funkcji Hyper-V
 
 **Storage** | **Funkcji Hyper-V za pomocą programu Virtual Machine Manager** | **Funkcji Hyper-V bez programu Virtual Machine Manager**
 --- | --- | ---
 VMDK | Nie dotyczy | Nie dotyczy
-VHD/VHDX | Yes | Yes
-2. generacji maszyn wirtualnych | Yes | Yes
-EFI/UEFI| Yes | Yes
+VHD/VHDX | Tak | Tak
+2. generacji maszyn wirtualnych | Tak | Tak
+EFI/UEFI| Tak | Tak
 Udostępniony dysk klastra | Nie | Nie
 Zaszyfrowanego dysku | Nie | Nie
 NFS | Nie dotyczy | Nie dotyczy
@@ -112,26 +112,26 @@ SMB 3.0 | Nie | Nie
 RDM | Nie dotyczy | Nie dotyczy
 Dysk > 1 TB | Tak, maksymalnie 4095 GB. | Tak, maksymalnie 4095 GB.
 Dysk: Logiczne i fizyczne z sektorami 4K | Nieobsługiwane: Velikost haldy 1/Gen 2 | Nieobsługiwane: Velikost haldy 1/Gen 2
-Dysk: 4K logiczne i fizyczne sektora 512 bajtów | Yes |  Yes
-Zarządzanie woluminami logicznych (LVM). LVM jest obsługiwana na tylko dyski z danymi. Platforma Azure udostępnia tylko jeden dysk systemu operacyjnego. | Yes | Yes
-Wolumin o użycie dysku rozłożonego > 1 TB | Yes | Yes
-Miejsca do magazynowania | Yes | Yes
+Dysk: 4K logiczne i fizyczne sektora 512 bajtów | Tak |  Tak
+Zarządzanie woluminami logicznych (LVM). LVM jest obsługiwana na tylko dyski z danymi. Platforma Azure udostępnia tylko jeden dysk systemu operacyjnego. | Tak | Tak
+Wolumin o użycie dysku rozłożonego > 1 TB | Tak | Tak
+Miejsca do magazynowania | Tak | Tak
 Dodaj lub usuń gorąco dysku | Nie | Nie
-Wykluczanie dysku | Yes | Yes
-Wiele ścieżek (MPIO) | Yes | Yes
+Wykluczanie dysku | Tak | Tak
+Wiele ścieżek (MPIO) | Tak | Tak
 
 ## <a name="azure-storage"></a>Azure Storage
 
 **Składnik** | **Funkcji Hyper-V za pomocą programu Virtual Machine Manager** | **Funkcji Hyper-V bez programu Virtual Machine Manager**
 --- | --- | ---
-Magazyn lokalnie nadmiarowy | Yes | Yes
-Magazyn geograficznie nadmiarowy | Yes | Yes
-Magazyn geograficznie nadmiarowy z dostępem do odczytu | Yes | Yes
+Magazyn lokalnie nadmiarowy | Tak | Tak
+Magazyn geograficznie nadmiarowy | Tak | Tak
+Magazyn geograficznie nadmiarowy z dostępem do odczytu | Tak | Tak
 Chłodny Magazyn | Nie | Nie
 Magazynu gorącego| Nie | Nie
-Blokowe obiekty blob | Nie | Nie
-Szyfrowanie danych magazynowanych (SSE)| Yes | Yes
-Premium Storage | Yes | Yes
+Obiekty BLOB typu Block | Nie | Nie
+Szyfrowanie danych magazynowanych (SSE)| Tak | Tak
+Premium Storage | Tak | Tak
 Usługa import/export | Nie | Nie
 Usługa Azure Storage zapory dla sieci wirtualnych skonfigurowanych na docelowe konto magazynu dla magazynu/pamięci podręcznej (używane do przechowywania danych replikacji) | Nie | Nie
 
@@ -140,8 +140,8 @@ Usługa Azure Storage zapory dla sieci wirtualnych skonfigurowanych na docelowe 
 
 **Funkcja** | **Funkcji Hyper-V za pomocą programu Virtual Machine Manager** | **Funkcji Hyper-V bez programu Virtual Machine Manager**
 --- | --- | ---
-Zestawy dostępności | Yes | Yes
-HUB | Yes | Yes  
+Zestawy dostępności | Tak | Tak
+HUB | Tak | Tak  
 Dyski zarządzane | Tak, pracy w trybie Failover.<br/><br/> Powrót po awarii z dyskami zarządzanymi nie jest obsługiwane. | Tak, pracy w trybie Failover.<br/><br/> Powrót po awarii z dyskami zarządzanymi nie jest obsługiwane.
 
 ## <a name="azure-vm-requirements"></a>Wymagania dotyczące maszyny Wirtualnej platformy Azure

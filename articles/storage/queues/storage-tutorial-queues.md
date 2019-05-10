@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: tutorial
 ms.date: 04/24/2019
-ms.openlocfilehash: 81d7572f800f191791158f2c1f99e1f072980116
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 6b833ef56b890eb4ea0db6b48fe8c2622e211498
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65151066"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233877"
 ---
 # <a name="tutorial-work-with-azure-storage-queues"></a>Samouczek: Praca z kolejkami magazynu platformy Azure
 
@@ -206,7 +206,7 @@ Dodaj parametry połączenia do aplikacji, aby mogli uzyskiwać dostęp na konci
 
 ## <a name="insert-messages-into-the-queue"></a>Wstawianie komunikatów do kolejki
 
-Utworzenie nowej metody, aby wysłać komunikat do kolejki. Dodaj następującą metodę do swojej **Program** klasy. Ta metoda pobiera odwołanie do kolejki, a następnie tworzy nową kolejkę, jeśli jeszcze nie istnieje, wywołując [CreateIfNotExistsAsync](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueue.createifnotexistsasync?view=azure-dotnet). Następnie dodaje komunikat do kolejki, wywołując [AddMessageAsync](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueue.addmessageasync?view=azure-dotnet).
+Utworzenie nowej metody, aby wysłać komunikat do kolejki. Dodaj następującą metodę do swojej **Program** klasy. Ta metoda pobiera odwołanie do kolejki, a następnie tworzy nową kolejkę, jeśli jeszcze nie istnieje, wywołując [CreateIfNotExistsAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.createifnotexistsasync?view=azure-dotnet). Następnie dodaje komunikat do kolejki, wywołując [AddMessageAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync?view=azure-dotnet).
 
 1. Dodaj następujący kod **SendMessageAsync** metodę do swojej **Program** klasy.
 
@@ -229,7 +229,7 @@ Utworzenie nowej metody, aby wysłać komunikat do kolejki. Dodaj następującą
 
 ## <a name="dequeue-messages"></a>Usuń z kolejki komunikatów
 
-Utwórz nową metodę o nazwie **ReceiveMessageAsync**. Ta metoda otrzymuje komunikat z kolejki, wywołując [GetMessageAsync](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueue.getmessageasync?view=azure-dotnet). Gdy wiadomość została odebrana pomyślnie, należy usunąć ją z kolejki, więc nie jest przetwarzane więcej niż jeden raz. Po otrzymaniu komunikatu usunąć ją z kolejki, wywołując [DeleteMessageAsync](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueue.deletemessageasync?view=azure-dotnet).
+Utwórz nową metodę o nazwie **ReceiveMessageAsync**. Ta metoda otrzymuje komunikat z kolejki, wywołując [GetMessageAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessageasync?view=azure-dotnet). Gdy wiadomość została odebrana pomyślnie, należy usunąć ją z kolejki, więc nie jest przetwarzane więcej niż jeden raz. Po otrzymaniu komunikatu usunąć ją z kolejki, wywołując [DeleteMessageAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessageasync?view=azure-dotnet).
 
 1. Dodaj następujący kod **ReceiveMessageAsync** metodę do swojej **Program** klasy.
 

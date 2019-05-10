@@ -99,6 +99,10 @@
           href: howto-administer.md
         - name: Przygotowywanie i przekazywanie obrazu
           href: howto-prepare-images.md
+        - name: Konfigurowanie pulpitu nawigacyjnego aplikacji
+          href: howto-configure-homepage.md
+        - name: Dostosowywanie interfejsu użytkownika aplikacji
+          href: howto-customize-ui.md
         - name: Zarządzanie z poziomu witryny Azure Portal
           href: howto-manage-iot-central-from-portal.md
         - name: Zarządzanie z poziomu interfejsu wiersza polecenia platformy Azure
@@ -106,9 +110,7 @@
         - name: Zarządzanie z poziomu programu Azure PowerShell
           href: howto-manage-iot-central-from-powershell.md
         - name: Tworzenie aplikacji i zarządzanie nią jako dostawca CSP
-          href: howto-create-and-manage-applications-as-CSP.md
-        - name: Konfigurowanie pulpitu nawigacyjnego aplikacji
-          href: howto-configure-homepage.md
+          href: howto-create-and-manage-applications-csp.md
     - name: Personalizacja
       items:
         - name: Tworzenie osobistych pulpitów nawigacyjnych

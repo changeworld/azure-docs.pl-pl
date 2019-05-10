@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: f3e7cab6e33fa9373095441685f6ecb04f1d91a5
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 73b7822c56e2b07eeefdedce1bce6d410d110ebc
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65029373"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65411458"
 ---
 # <a name="two-class-decision-forest-module"></a>Las decyzyjny Two-Class modułu
 
@@ -46,7 +46,7 @@ Drzewa decyzyjne ogólnie rzecz biorąc mają wiele zalet dla zadań klasyfikacj
 
 Jednak proste decyzyjne można overfit danych i są mniej generalizacji niż drzewa decyzyjne.
 
-Aby uzyskać więcej informacji, zobacz [lasów decyzji](http://go.microsoft.com/fwlink/?LinkId=403677).  
+Aby uzyskać więcej informacji, zobacz [lasów decyzji](https://go.microsoft.com/fwlink/?LinkId=403677).  
 
 ## <a name="how-to-configure"></a>Jak skonfigurować
   

@@ -9,16 +9,16 @@ ms.topic: quickstart
 author: sdgilley
 ms.author: sgilley
 ms.date: 05/02/2019
-ms.openlocfilehash: 985ad59a1ffa5bd68f97824f7f50af604174b543
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: d14ef4a59e65ba432b5d04d9f531e4ba639deb8a
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026977"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65440934"
 ---
-# <a name="quickstart-prepare-and-visualize-data-without-writing-code"></a>Szybki start: Przygotowanie i wizualizowanie danych bez konieczności pisania kodu
+# <a name="quickstart-prepare-and-visualize-data-without-writing-code-in-azure-machine-learning"></a>Szybki start: Przygotowanie i wizualizowanie danych bez konieczności pisania kodu w usłudze Azure Machine Learning
 
-Przygotowanie i wizualizowanie danych za pomocą interfejsu użytkownika przeciągnij i upuść. Dane, które będą używane zawiera wpisy dla różnych samochodów, na przykład informacji takich jak marka, model, przedstawiono dane techniczne i ceny.  
+Przygotowanie i wizualizowanie danych w interfejsie visual przeciąganie i upuszczanie (wersja zapoznawcza) dla usługi Azure Machine Learning. Dane, które będą używane zawiera wpisy dla różnych samochodów, na przykład informacji takich jak marka, model, przedstawiono dane techniczne i ceny.  
 
 W tym przewodniku Szybki Start możesz eksplorować i przygotowywania danych:
 

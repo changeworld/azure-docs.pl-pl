@@ -9,12 +9,12 @@ ms.service: service-health
 ms.topic: article
 ms.workload: Supportability
 ms.date: 03/27/2018
-ms.openlocfilehash: 465e8751d02692648234a7a90b84b68f41522cb2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d5385777134b911aa08b751978c44597f79acbc7
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60620808"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65442404"
 ---
 # <a name="service-health"></a>Service Health
 Service Health zapewnia można dostosować pulpit nawigacyjny, który śledzi kondycji usług platformy Azure w regionach, gdzie można ich użyć. Na tym pulpicie nawigacyjnym możesz śledzić aktywne wydarzenia, takich jak problemy z usługą bieżące, zbliżającej się planowanej konserwacji lub porady dotyczące kondycji odpowiednimi. Zdarzenia stają się nieaktywne, są umieszczone w historii kondycji przez 90 dni. Na koniec można użyć pulpitu nawigacyjnego kondycji usługi do tworzenia i obsługi alertów dotyczących kondycji usługi, których aktywnie informujące o problemach z usługą mają wpływ na możesz.
@@ -60,5 +60,7 @@ Filtruj Service Health, aby wyświetlić swoje subskrypcje krytyczne dla prowadz
 ## <a name="configure-service-health-alerts"></a>Konfigurowanie alertów dotyczących kondycji usługi
 Kondycja usługi integruje się z usługą Azure Monitor w celu powiadamiania o za pośrednictwem wiadomości e-mail, wiadomości SMS i powiadomień webhook o krytyczne dla prowadzonej działalności zasobów ma wpływ. Konfigurowanie alertu dziennika aktywności dla zdarzeń kondycji odpowiednią usługę. Alert ten należy kierować do odpowiednich osób w organizacji za pomocą grup akcji. Aby uzyskać więcej informacji, zobacz [skonfigurować alerty dotyczące kondycji usługi](../azure-monitor/platform/alerts-activity-log-service-notifications.md)
 
-# <a name="next-steps"></a>Następne kroki
-Konfigurowanie alertów, dzięki czemu użytkownik jest powiadamiany o problemów z kondycją. Aby uzyskać więcej informacji, zobacz [skonfigurować alerty dotyczące kondycji usługi](../azure-monitor/platform/alerts-activity-log-service-notifications.md). 
+>[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2OaXt]
+
+## <a name="next-steps"></a>Kolejne kroki
+Konfigurowanie alertów, dzięki czemu użytkownik jest powiadamiany o problemów z kondycją. Aby uzyskać więcej informacji, zobacz [najlepsze rozwiązania dotyczące konfigurowania alertów dotyczących kondycji usługi platformy Azure](https://www.youtube.com/watch?v=k5d5ca8K6tc&list=PLLasX02E8BPBBSqygdRvlTnHfp1POwE8K&index=6&t=0s). 

@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 414200462d3575aa576b5ef2268a3ac0b01063ba
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 73d97b45217da4bbf4b8c0e857b817911484f29c
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190758"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231078"
 ---
 # <a name="microsoft-identity-platform-v20-overview"></a>Przegląd usługi Microsoft identity platformy (w wersji 2.0)
 
@@ -43,7 +43,7 @@ Dzięki platformie tożsamości firmy Microsoft można napisać kod raz i dotrze
 
 ## <a name="getting-started"></a>Wprowadzenie
 
-Praca z tożsamościami nie musi być trudne. Wybierz scenariusz, który ma zastosowanie do Ciebie — każda ścieżka scenariusz ma Szybki Start i strona przeglądu, aby rozpocząć pracę w ciągu kilku minut:
+Praca z tożsamościami nie musi być trudna. Wybierz scenariusz, który ma zastosowanie do Ciebie — każda ścieżka scenariusz ma Szybki Start i strona przeglądu, aby rozpocząć pracę w ciągu kilku minut:
 
 - [Tworzenie aplikacji jednostronicowej](scenario-spa-overview.md)
 - [Tworzenie aplikacji internetowej logujący się użytkownicy](scenario-web-app-sign-user-overview.md)
@@ -56,7 +56,7 @@ Praca z tożsamościami nie musi być trudne. Wybierz scenariusz, który ma zast
 
 Poniższej tabeli przedstawiono typowe scenariusze uwierzytelniania — użycie jako odniesienia podczas integrowania platforma tożsamości firmy Microsoft z aplikacją.
 
-[![Scenariusze aplikacji na platformie tożsamości firmy Microsoft](./media/v2-overview/application-scenarios-identity-platform.png)](./media/v2-overview/application-scenarios-identity-platform.png#lightbox)
+[![Scenariusze aplikacji na platformie tożsamości firmy Microsoft](./media/v2-overview/application-scenarios-identity-platform.png)](./media/v2-overview/application-scenarios-identity-platform.svg#lightbox)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

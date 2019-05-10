@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: c22acb1ae82e5c1e781598e8545c7f1625cc1c09
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1b4cd5bb020e73dc9045eb164ce49931f818f72d
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61277165"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65415478"
 ---
 # <a name="remove-servers-and-disable-protection"></a>Usuwanie serwerów i wyłączanie ochrony
 
@@ -150,6 +150,12 @@ Hosty funkcji Hyper-V, które nie są zarządzane przez program VMM są zbierane
 
 > [!NOTE]
 > W obie opcje, które usługi mobilności nie zostanie odinstalowane z chronionych serwerów należy najpierw odinstalować go ręcznie. Jeśli planujesz chronić serwer ponownie, używając tego samego serwera konfiguracji, można pominąć, odinstalowanie usługi mobilności.
+
+## <a name="disable-protection-for-a-azure-vm-azure-to-azure"></a>Wyłącz ochronę maszyny wirtualnej platformy Azure (Azure – Azure)
+
+-  W **chronione elementy** > **zreplikowane elementy**, kliknij prawym przyciskiem myszy maszyny > **Wyłącz replikację**.
+> [!NOTE]
+> Usługa mobilności nie zostanie odinstalowane z chronionych serwerów, należy najpierw odinstalować go ręcznie. Jeśli planujesz ponownie chronić serwer, można pominąć, odinstalowanie usługi mobilności.
 
 ## <a name="disable-protection-for-a-hyper-v-virtual-machine-hyper-v-to-azure"></a>Wyłącz ochronę dla maszyny wirtualnej funkcji Hyper-V (funkcji Hyper-V do platformy Azure)
 

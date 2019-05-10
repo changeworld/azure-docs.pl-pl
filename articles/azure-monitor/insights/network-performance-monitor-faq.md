@@ -1,6 +1,6 @@
 ---
 title: Często zadawane pytania — rozwiązanie Network Performance Monitor na platformie Azure | Dokumentacja firmy Microsoft
-description: W tym artykule przechwytuje często zadawane pytania dotyczące Menedżera NPM na platformie Azure. Sieć Performance Monitor (NPM) pomaga monitorować wydajność sieci, niemal w czasie rzeczywistym, aby wykrywać i Znajdź sieci wąskich gardeł wydajności.
+description: Ten artykuł zawiera często zadawane pytania dotyczące rozwiązania Network Performance Monitor na platformie Azure. Sieć Performance Monitor (NPM) pomaga monitorować wydajność sieci, niemal w czasie rzeczywistym oraz wykrywanie i Znajdź sieci wąskich gardeł wydajności.
 services: log-analytics
 documentationcenter: ''
 author: vinynigam
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: vinynigam
-ms.openlocfilehash: d216a26dc01ae3a6946c57138bb124b41f50a151
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d573b7ad9edac6b1502744b61e85cba3402a6f68
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60401468"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65232658"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor rozwiązania — często zadawane pytania
 
@@ -36,24 +36,24 @@ Więcej informacji na temat różnych funkcji obsługiwanych przez [rozwiązania
 ### <a name="what-are-the-platform-requirements-for-the-nodes-to-be-used-for-monitoring-by-npm"></a>Jakie są wymagania dotyczące platformy dla węzłów, które ma być używany do monitorowania Menedżera NPM?
 Poniżej wymieniono wymagania dotyczące platformy programu NPM dla różnych funkcji:
 
-- Monitor wydajności i możliwości Monitor łączności usługi NPM obsługuje zarówno Windows server (2008 z dodatkiem SP1 lub nowszym) i systemy operacyjne komputerów stacjonarnych/klienta Windows (Windows 10, Windows 8.1, Windows 8 i Windows 7). 
+- Monitor wydajności i możliwości Monitor łączności usługi NPM obsługuje zarówno Windows server i Windows, komputerów stacjonarnych/klienckie systemy operacyjne. Obsługiwane wersje systemu operacyjnego serwera Windows są 2008 z dodatkiem SP1 lub nowszym. Obsługiwane wersje pulpitów/klienta Windows to Windows 10, Windows 8.1, Windows 8 i Windows 7. 
 - Możliwość monitorowania usługi ExpressRoute NPM obsługuje tylko Windows server (2008 z dodatkiem SP1 lub nowszym) systemu operacyjnego.
 
 ### <a name="can-i-use-linux-machines-as-monitoring-nodes-in-npm"></a>Czy można używać maszyny z systemem Linux, jak monitorowanie węzłów w NPM?
-Możliwość monitorowania sieci przy użyciu węzłów opartych na systemie Linux jest obecnie w wersji zapoznawczej. Dotrzyj do Menedżera konta, aby dowiedzieć się więcej. Po podaniu Identyfikatora obszaru roboczego, możemy Przejdź dalej i włączyć możliwości. Agenci dla systemu Linux zapewniają możliwość monitorowania tylko w przypadku funkcji Monitora wydajności Menedżera NPM, a nie są dostępne dla możliwości usługi Monitor łączności i Monitor usługi ExpressRoute
+Możliwość monitorowania sieci przy użyciu węzłów opartych na systemie Linux jest obecnie w wersji zapoznawczej. Dotrzyj do Menedżera konta, aby dowiedzieć się więcej. Agenci dla systemu Linux zapewniają możliwość monitorowania tylko w przypadku funkcji Monitora wydajności Menedżera NPM, a nie są dostępne dla możliwości usługi Monitor łączności i Monitor usługi ExpressRoute
 
 ### <a name="what-are-the-size-requirements-of-the-nodes-to-be-used-for-monitoring-by-npm"></a>Jakie są wymagania rozmiar węzłów, ma być używany do monitorowania Menedżera NPM?
-Uruchamianie rozwiązania NPM w węźle Monitorowanie sieci maszyn wirtualnych, węzły powinny mieć co najmniej 500 MB pamięci i jednego rdzenia. Nie trzeba używać oddzielnych węzłów do uruchamiania Menedżera NPM. Rozwiązanie można uruchomić na węzły, które mają innych obciążeń uruchomionych na nim. Rozwiązanie ma możliwości, aby zatrzymać proces monitorowania, w przypadku, gdy jej korzysta ponad 5% zasobów Procesora.
+Uruchamianie rozwiązania NPM w węźle Monitorowanie sieci maszyn wirtualnych, węzły powinny mieć co najmniej 500 MB pamięci i jednego rdzenia. Nie należy używać oddzielnych węzłów do uruchamiania Menedżera NPM. Rozwiązanie można uruchomić na węzły, które mają innych obciążeń uruchomionych na nim. Rozwiązanie ma możliwości, aby zatrzymać proces monitorowania za pomocą ponad 5% zasobów Procesora.
 
 ### <a name="to-use-npm-should-i-connect-my-nodes-as-direct-agent-or-through-system-center-operations-manager"></a>Aby użyć Menedżera NPM, należy się połączyć mojego węzłów jako funkcja agentów bezpośrednich lub za pomocą programu System Center Operations Manager?
-Monitor wydajności i możliwości usługi Monitor łączności obsługują węzłów [podłączony jako agentów bezpośrednich](../../azure-monitor/platform/agent-windows.md) także [połączone za pośrednictwem programu Operations Manager](../../azure-monitor/platform/om-agents.md).
+Monitor wydajności i możliwości usługi Monitor łączności obsługują węzłów [podłączony jako agentów bezpośrednich](../../azure-monitor/platform/agent-windows.md) i [połączone za pośrednictwem programu Operations Manager](../../azure-monitor/platform/om-agents.md).
 
-Aby uzyskać możliwość monitorowania usługi ExpressRoute węzły na platformie Azure powinny być połączone jako agentów bezpośrednich tylko. Węzły platformy Azure, które są połączone za pomocą programu Operations Manager nie są obsługiwane. Dla węzłów w środowisku lokalnym węzły połączone jako bezpośredni agenci, a także za pośrednictwem programu Operations Manager są obsługiwane w przypadku monitorowania obwodu usługi ExpressRoute.
+Aby uzyskać możliwość monitorowania usługi ExpressRoute węzły na platformie Azure powinny być połączone jako agentów bezpośrednich tylko. Węzły platformy Azure, które są połączone za pomocą programu Operations Manager nie są obsługiwane. Dla węzłów w środowisku lokalnym węzły połączone jako agentów bezpośrednich i za pomocą programu Operations Manager są obsługiwane w przypadku monitorowania obwodu usługi ExpressRoute.
 
 ### <a name="which-protocol-among-tcp-and-icmp-should-be-chosen-for-monitoring"></a>Należy wybrać protokół TCP i ICMP do monitorowania?
 Jeśli monitorujesz sieci przy użyciu węzłów na serwerze Windows zalecamy użyć TCP jako protokół monitorowania, ponieważ zapewnia większą dokładność. 
 
-Protokół ICMP jest zalecana dla Windows pulpitów/kliencie systemu Windows w oparciu o system operacyjny węzłów. Ta platforma nie zezwala na dane wysłane za pośrednictwem gniazd sieciowych, które używa NPM, aby odnaleźć topologię sieci TCP.
+Protokół ICMP jest zalecana dla Windows pulpitów/kliencie systemu Windows w oparciu o system operacyjny węzłów. Ta does'nt platformy umożliwiają danych TCP do przesyłania za pośrednictwem gniazd sieciowych, które używa NPM, aby odnaleźć topologię sieci.
 
 Więcej informacji można uzyskać na względne zalety każdego protokołu [tutaj](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md#choose-the-protocol).
 
@@ -71,8 +71,8 @@ Skrypt konfiguruje tylko Windows zapory lokalnie. Jeśli masz Zapora sieciowa lu
 ### <a name="how-many-agents-should-i-use"></a>Ile agentów należy używać?
 Dla każdej podsieci, które mają być monitorowane, należy użyć co najmniej jednego agenta.
 
-### <a name="what-is-the-maximum-number-of-agents-i-can-use-or-i-see-error--you-have-reached-your-configuration-limit"></a>Co to jest maksymalna liczba agentów można używać, lub czy mogę zobaczyć błąd "... osiągnięto limit konfiguracji"?
-NPM ogranicza liczbę adresów IP adresy IP 5000 danego obszaru roboczego. Jeśli węzeł ma adresy IPv4 i IPv6, to będzie liczone jako 2 adresy IP, dla tego węzła. W związku z tym ten limit 5000 adresy IP zdecyduje, górny limit liczby agentów. Nieaktywnych agentów można usunąć z węzłów karcie NPM >> Konfiguruj. NPM udostępnia również historię wszystkie adresy IP, który nigdy nie zostały przypisane do maszyny Wirtualnej hostującym agenta oraz one również są liczone jako osobne adresy IP współtworzenie tego górny limit 5000 adresów IP. Do Zwolnij adresy IP dla Twojego obszaru roboczego służy strona węzły można usunąć adresy IP, które nie są używane.
+### <a name="what-is-the-maximum-number-of-agents-i-can-use-or-i-see-error--youve-reached-your-configuration-limit"></a>Co to jest maksymalna liczba agentów, których można używać lub widzę błąd w "menu... Osiągnięto limit konfiguracji"?
+NPM ogranicza liczbę adresów IP adresy IP 5000 danego obszaru roboczego. Jeśli węzeł ma adresy IPv4 i IPv6, to będzie liczone jako 2 adresy IP, dla tego węzła. W związku z tym ten limit 5000 adresy IP zdecyduje, górny limit liczby agentów. Nieaktywnych agentów można usunąć z węzłów karcie NPM >> Konfiguruj. NPM udostępnia również historię wszystkich adresów IP, który nigdy nie zostały przypisane do maszyny Wirtualnej hostującym agenta oraz każdy jest traktowana jako oddzielne adresów IP, przyczyniając się do tego górny limit 5000 adresów IP. Do Zwolnij adresy IP dla Twojego obszaru roboczego służy strona węzły można usunąć adresy IP, które nie są używane.
 
 ## <a name="monitoring"></a>Monitorowanie
 
@@ -139,13 +139,23 @@ NPM można monitorować obwodów usługi ExpressRoute znajduje się w dowolnym r
 ## <a name="troubleshoot"></a>Rozwiązywanie problemów
 
 ### <a name="why-are-some-of-the-hops-marked-as-unidentified-in-the-network-topology-view"></a>Dlaczego są przeskoków oznaczone jako niezidentyfikowanych w widoku topologii sieci?
-NPM używa zmodyfikowanej wersji traceroute umożliwia odnalezienie topologii z agenta źródła do miejsca docelowego. Niezidentyfikowany przeskok reprezentuje to, że przeskok sieci nie odpowiedziała na żądanie traceroute agenta źródłowego. Jeśli 3 przeskoków sieciowych kolejnych nie odpowiada na polecenie traceroute agenta, rozwiązanie oznacza odpowiadać przeskoków jako niezidentyfikowane i nie podejmuje próby odkryć więcej przeskoków.
+NPM używa zmodyfikowanej wersji traceroute umożliwia odnalezienie topologii z agenta źródła do miejsca docelowego. Niezidentyfikowany przeskok reprezentuje to, że przeskok sieci nie odpowiedziała na żądanie traceroute agenta źródłowego. Jeśli trzy przeskoków sieciowych kolejnych odpowiada na polecenie traceroute agenta, rozwiązanie oznacza odpowiadać przeskoków jako niezidentyfikowane i nie podejmuje próby odkryć więcej przeskoków.
 
 Przeskok nie mogą odpowiadać na traceroute w co najmniej jeden z poniższych scenariuszy:
 
 * Routery skonfigurowano nie ujawnił swojej tożsamości.
 * Urządzenia sieciowe nie zezwalają na ruch ICMP_TTL_EXCEEDED.
 * Zapora nie blokuje odpowiedzi ICMP_TTL_EXCEEDED z urządzenia sieciowego.
+
+### <a name="why-does-my-link-show-unhealthy-but-the-topology-does-not"></a>Dlaczego zła pokazu łącza, ale topologii nie 
+NPM monitoruje utraty end-to-end, opóźnienia i topologii w różnych interwałach. Strat i opóźnień są mierzone co 5 sekund i agregowane co trzy minuty (dla monitora wydajności i monitora Express Route) podczas gdy topologia jest obliczana przy użyciu traceroute raz na 10 minut. Na przykład między 3:44 i 4:04 topologia może zostać zaktualizowany trzy razy (3:44, 3:54 4:04), ale strat i opóźnień zostaną zaktualizowane o siedem razy (3:44, 3:47 3:50, 3:53 3:56 3:59, 4:02). Topologia generowane w 3:54 będzie renderowana dla strat i opóźnień, która pobiera obliczona na 3:56 3:59 i 4:02. Załóżmy, że otrzymasz alert obwodu ER była zła 3:59. Zaloguj się do usługi NPM i próbuje ustawić czas topologii do 3:59. NPM spowoduje, że topologia generowane w 3:54. Aby poznać ostatnie znane topologii sieci, porównanie pola TimeProcessed (czas, w których strat i opóźnień obliczono) i TracerouteCompletedTime (czas w topologii, która została obliczona). 
+
+### <a name="what-is-the-difference-between-the-fields-e2emedianlatency-and-avghoplatencylist-in-the-networkmonitoring-table"></a>Jaka jest różnica między polami E2EMedianLatency i AvgHopLatencyList w tabeli NetworkMonitoring
+E2EMedianLatency to opóźnienie aktualizowane co trzy minuty po uaktualnieniu do większej agregacji wyników testów ping protokołu tcp, jest AvgHopLatencyList co 10 minut, w oparciu o traceroute. Aby poznać dokładny czas, w którym została obliczona E2EMedianLatency, należy użyć pola TimeProcessed. Aby poznać dokładny czas, w których traceroute zostało ukończone i zaktualizowano AvgHopLatencyList, należy użyć pola TracerouteCompletedTime
+
+### <a name="why-does-hop-by-hop-latency-numbers-differ-from-hoplatencyvalues"></a>Dlaczego liczby przeskoków przeskoku opóźnienia jest różnica między HopLatencyValues 
+HopLatencyValues są źródłem do punktu końcowego.
+Na przykład: Przeskoki — A, B, c AvgHopLatency - 10,15,20. Oznacza to, że źródło do opóźnieniem = 10, źródło do opóźnienia B = 15 oraz źródła do C opóźnienia wynosi 20. Interfejs użytkownika będzie obliczać opóźnienie przeskoku A i B, jak 5 w topologii
 
 ### <a name="the-solution-shows-100-loss-but-there-is-connectivity-between-the-source-and-destination"></a>To rozwiązanie przedstawia utraty 100%, ale istnieje łączność między miejscem źródłowym i docelowym
 Może się to zdarzyć, jeśli Zapora hosta lub pośredniego zapory (Zapora sieciowa lub sieciowej grupy zabezpieczeń platformy Azure) blokuje komunikację między agentem źródło i miejsce docelowe za pośrednictwem portów używanych do monitorowania przez narzędzie NPM (domyślnie port jest port 8084, chyba że Klient został zmieniony to).
@@ -199,7 +209,7 @@ Może się to zdarzyć, jeśli co najmniej jeden:
 ### <a name="in-the-service-connectivity-monitor-capability-the-service-response-time-is-na-but-network-loss-as-well-as-latency-are-valid"></a>W możliwości Monitor łączności usługi Czas odpowiedzi usługi to nazwa, ale utrata połączenia sieciowego, a także opóźnienia są prawidłowe
 Może się to zdarzyć, jeśli Usługa docelowa nie jest aplikacją sieci web, ale test został skonfigurowany jako test sieci Web. Edytuj konfigurację testu, a następnie wybierz typ testu jako sieci zamiast sieci Web.
 
-## <a name="miscellaneous"></a>Różne postanowienia
+## <a name="miscellaneous"></a>Różne
 
 ### <a name="is-there-a-performance-impact-on-the-node-being-used-for-monitoring"></a>W węźle, używanych do monitorowania jest negatywny wpływ na wydajność?
 Proces NPM jest skonfigurowany tak, aby zatrzymać, jeśli jego korzysta z więcej niż 5% zasobów Procesora hosta. To, aby upewnić się, że możesz nadal korzystać z węzły dla swoich obciążeń zwykle bez wpływu na wydajność.

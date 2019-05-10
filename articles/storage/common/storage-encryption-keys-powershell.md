@@ -9,12 +9,12 @@ ms.date: 04/16/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 0eeae1451e77d9000c87b1aff7ad73323e74f7ee
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: be876b370cd476bee2af7d90a9f0433fd80de3b4
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154120"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233681"
 ---
 # <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-powershell"></a>Konfigurowanie kluczy zarządzanych przez klienta do szyfrowania usługi Azure Storage za pomocą programu PowerShell
 
@@ -75,7 +75,7 @@ $key = Add-AzKeyVaultKey -VaultName $keyVault.VaultName -Name <key> -Destination
 
 Domyślnie szyfrowanie usługi Azure Storage korzysta z kluczy zarządzanych przez firmę Microsoft. W tym kroku należy skonfigurować konto usługi Azure Storage w taki sposób, aby używać kluczy zarządzanych przez klienta i określ klucz do skojarzenia z kontem magazynu.
 
-Wywołaj [AzStorageAccount zestaw](/powershell/module/az.keyvault/set-azstorageaccount) można zaktualizować ustawień szyfrowania konta magazynu. Pamiętaj, aby zastąpić symbole zastępcze w nawiasach przy użyciu własnych wartości i korzystanie ze zmiennych zdefiniowanych w poprzednich przykładach.
+Wywołaj [AzStorageAccount zestaw](/powershell/module/az.storage/set-azstorageaccount) można zaktualizować ustawień szyfrowania konta magazynu. Pamiętaj, aby zastąpić symbole zastępcze w nawiasach przy użyciu własnych wartości i korzystanie ze zmiennych zdefiniowanych w poprzednich przykładach.
 
 ```powershell
 Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
@@ -88,7 +88,7 @@ Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
 
 ## <a name="update-the-key-version"></a>Aktualizacja wersji klucza
 
-Kiedy tworzysz nową wersję klucza, należy zaktualizować konta magazynu do nowej wersji. Po pierwsze wywołanie [Get AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey) można pobrać najnowszą wersję klucza. Następnie wywołaj [AzStorageAccount zestaw](/powershell/module/az.keyvault/set-azstorageaccount) można zaktualizować ustawień szyfrowania konta magazynu do nowej wersji klucza, jak pokazano w poprzedniej sekcji.
+Kiedy tworzysz nową wersję klucza, należy zaktualizować konta magazynu do nowej wersji. Po pierwsze wywołanie [Get AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey) można pobrać najnowszą wersję klucza. Następnie wywołaj [AzStorageAccount zestaw](/powershell/module/az.storage/set-azstorageaccount) można zaktualizować ustawień szyfrowania konta magazynu do nowej wersji klucza, jak pokazano w poprzedniej sekcji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

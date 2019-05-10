@@ -12,20 +12,20 @@ ms.date: 09/11/2018
 ms.author: lizross
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2541a1d76b56f92b250fb422951769db7877213e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cd684e1bd48f877a74280b33b4df65d7baaa0fe7
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60249897"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507168"
 ---
 # <a name="add-or-remove-group-owners-in-azure-active-directory"></a>Dodawanie lub usuwanie właściciele grupy w usłudze Azure Active Directory
-Grupy usługi Azure Active Directory (Azure AD), są własnością i zarządzane przez właścicieli grupy. Właściciele grupy są przypisywane do zarządzania grupą i jej elementów członkowskich według właściciela zasobu (administrator). Właściciele grupy nie muszą być członkami grupy. Po przypisaniu właściciela grupy właściciela zasobu, można dodać lub usunąć właścicieli.
+Grupy usługi Azure Active Directory (Azure AD), są własnością i zarządzane przez właścicieli grupy. Właściciele grupy mogą być użytkownicy lub jednostki usługi i są w stanie zarządzać grupą, w tym członkostwa. Tylko do istniejących właścicieli grupy lub zarządzania w grupie administratorów można przypisać onwers grupy. Właściciele grupy nie muszą być członkami grupy.
 
-W niektórych przypadkach jako administrator może nie chcesz przypisać właściciela grupy. W tym przypadku staje się właścicielem grupy. Ponadto właścicieli można przypisać właścicieli do ich grupy, o ile nie zostało to ograniczona w ustawieniach grupy.
+Gdy grupa nie ma właściciela, zarządzanie grupy Administratorzy mogą nadal do grupy zarządzania.
 
 ## <a name="add-an-owner-to-a-group"></a>Dodawanie właściciela do grupy
-Dodaj grupę dodatkowych właścicieli do grupy przy użyciu usługi Azure AD.
+Poniżej są instrukcje dotyczące dodawania użytkownika jako właściciela do grupy przy użyciu portalu usługi Azure AD. Aby dodać nazwy głównej usługi jako właściciela grupy, postępuj zgodnie z instrukcjami, aby to zrobić przy użyciu [PowerShell](https://docs.microsoft.com/powershell/module/Azuread/Add-AzureADGroupOwner?view=azureadps-2.0).
 
 ### <a name="to-add-a-group-owner"></a>Aby dodać właściciela grupy
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com) przy użyciu konta administratora globalnego dla katalogu.
