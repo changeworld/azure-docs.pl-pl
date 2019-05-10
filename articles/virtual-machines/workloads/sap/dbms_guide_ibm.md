@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 04/10/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5cbecdb39a35339bd0b3f4d3d29d7893cdab0ac6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7d1de50e6b1b673a2613a893c19633bbd4bd43fd
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60835366"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409263"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Wdrażanie systemu DBMS usługi Azure Virtual Machines programu IBM Db2 dla obciążenia SAP
 
@@ -158,7 +158,7 @@ ms.locfileid: "60835366"
 [deploy-template-portal]:../../../resource-group-template-deploy-portal.md
 [deploy-template-powershell]:../../../resource-group-template-deploy.md
 
-[dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
+[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
 
 [getting-started]:get-started.md
 [getting-started-dbms]:get-started.md#1343ffe1-8021-4ce6-a08d-3a1553a4db82
@@ -172,7 +172,7 @@ ms.locfileid: "60835366"
 [getting-started-windows-classic-ha-sios]:../../virtual-machines-windows-classic-sap-get-started.md#4bb7512c-0fa0-4227-9853-4004281b1037
 [getting-started-windows-classic-planning]:../../virtual-machines-windows-classic-sap-get-started.md#f2a5e9d8-49e4-419e-9900-af783173481c
 
-[ha-guide-classic]:http://go.microsoft.com/fwlink/?LinkId=613056
+[ha-guide-classic]:https://go.microsoft.com/fwlink/?LinkId=613056
 
 [install-extension-cli]:virtual-machines-linux-enable-aem.md
 
@@ -319,7 +319,7 @@ Są wydawane różne artykuły dotyczące obciążeń SAP na platformie Azure.  
 
 Poniższe uwagi SAP odnoszą się do SAP na platformie Azure dotyczące obszaru omówione w tym dokumencie:
 
-| Numer | Tytuł |
+| Numer | Stanowisko |
 | --- | --- |
 | [1928533] |Aplikacje środowiska SAP na platformie Azure: Obsługiwane produkty i typy maszyn wirtualnych platformy Azure |
 | [2015553] |SAP na platformie Microsoft Azure: Wymagania wstępne dotyczące obsługi |
@@ -364,7 +364,7 @@ Dyski zawierające ścieżki magazynu bazy danych Db2 katalogów sapdata i saptm
 
 Dla maszyn wirtualnych serii M na platformie Azure można zmniejszyć opóźnienia zapisu w dziennikach transakcji przez czynników, w porównaniu do wydajności usługi Azure Premium Storage, korzystając z akceleratorem zapisu platformy Azure. Dlatego należy wdrożyć akcelerator zapisu platformy Azure dla wirtualnymi dyskami twardymi, które tworzą woluminie na potrzeby dzienników transakcji bazy danych Db2. Szczegółowe informacje mogą być odczytywane w dokumencie [akceleratorem zapisu](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator).
 
-### <a name="backuprestore"></a>Tworzenie i przywracanie kopii zapasowych
+### <a name="backuprestore"></a>Tworzenie/przywracanie kopii zapasowych
 Funkcja wykonywania kopii zapasowej i przywracania programu IBM Db2 for LUW jest obsługiwana w taki sam sposób, jak standardowy systemów operacyjnych Windows Server i funkcji Hyper-V.
 
 Upewnij się, że strategii tworzenia kopii zapasowej prawidłową bazę danych w miejscu. 
@@ -403,5 +403,5 @@ Dyski zawierające ścieżki magazynu bazy danych Db2 katalogów sapdata i saptm
 <!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
 
 
-### <a name="other"></a>Inne
+### <a name="other"></a>Inny
 Zastosuj wszystkie inne ogólnych zagadnień, takich jak zestawy dostępności platformy Azure lub SAP monitorowanie, zgodnie z opisem w dokumencie [zagadnienia dotyczące wdrażania systemu DBMS na maszynach wirtualnych platformy Azure w przypadku obciążeń SAP](dbms_guide_general.md) wdrożeń maszyn wirtualnych przy użyciu IBM bazy danych .

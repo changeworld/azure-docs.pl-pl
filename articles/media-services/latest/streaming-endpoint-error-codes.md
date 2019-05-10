@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services pakowania i pochodzenia błędy | Dokumentacja firmy Microsoft
-description: W tym temacie opisano błędy, które użytkownik może otrzymywać z usługi tworzenia pakietów usługi Azure Media Services.
+description: W tym temacie opisano błędy, które użytkownik może otrzymywać z usługi Azure Media Services punkt końcowy przesyłania strumieniowego (Orgin).
 author: Juliako
 manager: femila
 editor: ''
@@ -11,18 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/28/2019
+ms.date: 05/07/2019
 ms.author: juliako
-ms.openlocfilehash: e30c51ff3526bb5ed193b65b3f36a64c552024ff
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: ebcda6026f79bc88df91471d8be88316ba57bfc6
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204141"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65411366"
 ---
-# <a name="media-services-packaging-errors"></a>Błędy pakowania usługi Media Services 
+# <a name="streaming-endpoint-origin-errors"></a>Błędy usługi przesyłania strumieniowego punktu końcowego (źródła) 
 
-W tym temacie opisano błędy, które użytkownik może otrzymywać z usługi Azure Media Services [tworzenia pakietów usługi](streaming-endpoint-concept.md).
+W tym temacie opisano błędy, które użytkownik może otrzymywać z usługi Azure Media Services [punkt końcowy przesyłania strumieniowego usługi](streaming-endpoint-concept.md).
 
 ## <a name="400-bad-request"></a>400 Niewłaściwe żądanie
 
@@ -48,7 +48,7 @@ W tym temacie opisano błędy, które użytkownik może otrzymywać z usługi Az
 |MPE_ENC_ENCRYPTION_REQUIRED |0x8088021E |Szyfrowanie jest wymagane dla zawartości, zasady dostarczania jest wymagany do formatu wyjściowego. |
 |MPE_ENC_ENCRYPTION_NOT_SET_IN_DELIVERY_POLICY |0x8088024D |Szyfrowanie nie jest ustawiony w ustawieniach zasad dostarczania. |
 
-## <a name="404-not-found"></a>404 — Nie odnaleziono
+## <a name="404-not-found"></a>404 Nie znaleziono
 
 Operacja próbuje zajmującym się z zasobem, który już nie istnieje. Na przykład zasób mógł już zostać usunięty.
 
@@ -169,7 +169,7 @@ Aby uzyskać artykuły na żywo i przykłady zobacz:
 |---|---|---|
 |MPE_STORAGE_INVALID_RANGE|0x808900F1|Błąd operacji magazynu, a zwrócił błąd http 416, nieprawidłowy zakres.|
 
-## <a name="500-internal-server-error"></a>500 — wewnętrzny błąd serwera
+## <a name="500-internal-server-error"></a>500 Wewnętrzny błąd serwera
 
 Podczas przetwarzania żądania usługi Media Services napotka błąd uniemożliwiający przetwarzania za kontynuację.  
 

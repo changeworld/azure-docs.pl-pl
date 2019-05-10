@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 09/19/2018
 ms.author: rogarana
-ms.openlocfilehash: 7010425ba8acff4ed223e2a402d7a927a91c06b6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: af903ce3ce7cfa165c278e415827dda36630e7b4
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64687140"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65209727"
 ---
 # <a name="overview-of-azure-active-directory-authentication-over-smb-for-azure-files-preview"></a>Omówienie uwierzytelniania usługi Azure Active Directory za pośrednictwem protokołu SMB dla usługi Azure Files (wersja zapoznawcza)
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -51,7 +51,7 @@ Usługa Azure AD przy użyciu protokołu SMB dla usługi Azure Files oferuje wie
     Aby utworzyć kopię zapasową istniejących udziałów plików w środowisku lokalnym, można użyć usługi Azure Files. Usługa Azure Files zachowuje Twojej listy kontroli dostępu oraz dane udostępnienie Utwórz kopię zapasową pliku do usługi Azure Files za pośrednictwem protokołu SMB.
 
 ## <a name="how-it-works"></a>Jak to działa
-Usługa Azure Files korzysta z usług domenowych Azure AD do obsługi uwierzytelniania Kerberos, przy użyciu poświadczeń usługi Azure AD z przyłączonym do domeny maszynami wirtualnymi. Zanim użyjesz usługi Azure AD za pomocą usługi Azure Files można włączyć usługi domenowe Azure AD i przyłączania do domeny na maszynach wirtualnych, z których mają dostęp do danych plików. Przyłączone do domeny maszyny Wirtualnej muszą znajdować się w tej samej sieci wirtualnej (VNET) usługi Azure AD Domain Services. 
+Usługa Azure Files korzysta z usług domenowych Azure AD do obsługi uwierzytelniania Kerberos, przy użyciu poświadczeń usługi Azure AD z przyłączonym do domeny maszynami wirtualnymi. Zanim użyjesz usługi Azure AD za pomocą usługi Azure Files można włączyć usługi domenowe Azure AD i przyłączania do domeny na maszynach wirtualnych, z których mają dostęp do danych plików. Przyłączone do domeny maszyny Wirtualnej muszą znajdować się w tej samej sieci wirtualnej (VNET), jak usługi domenowe Azure AD. 
 
 Tożsamość skojarzoną z aplikacji uruchomionej na maszynie Wirtualnej próbuje uzyskać dostęp do danych w usłudze Azure Files, żądanie jest wysyłane do usług domenowych Azure AD do uwierzytelniania tożsamości. Jeśli uwierzytelnianie się powiedzie, Azure AD Domain Services zwraca token protokołu Kerberos. Aplikacja wysyła żądanie, które zawiera token protokołu Kerberos i usługi Azure Files używa tego tokenu, aby autoryzować żądania. Usługa pliki systemu Azure odbiera tylko token i nie utrwala poświadczeń usługi Azure AD.
 

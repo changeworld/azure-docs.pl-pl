@@ -17,12 +17,12 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c9600c20349627c1da2bdf4f1bbc2f3d7a55549
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 2d263014638329c454149af8ca922c1c5c6393a5
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65067774"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65413834"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Szybki start: Uzyskiwanie tokenu i wywoływanie interfejsu API programu Microsoft Graph z poziomu aplikacji klasycznej w systemie Windows
 
@@ -46,7 +46,7 @@ W tym przewodniku Szybki start dowiesz się, jak napisać aplikację klasyczną 
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Opcja 2: zarejestrowanie i ręczne skonfigurowanie aplikacji oraz przykładowego kodu
 >
-> #### <a name="step-1-register-your-application"></a>Krok 1: Rejestrowanie aplikacji
+> #### <a name="step-1-register-your-application"></a>Krok 1: Zarejestruj swoją aplikację
 > Aby ręcznie zarejestrować aplikację i dodać informacje na temat rejestracji aplikacji do rozwiązania, wykonaj następujące czynności:
 >
 > 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
@@ -72,7 +72,7 @@ W tym przewodniku Szybki start dowiesz się, jak napisać aplikację klasyczną 
 
 #### <a name="step-2-download-your-visual-studio-project"></a>Krok 2: pobieranie projektu programu Visual Studio
 
-[Pobierz projekt programu Visual Studio 2017](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/msal3x.zip)
+[Pobierz projekt programu Visual Studio](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/msal3x.zip)
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>Krok 3: konfigurowanie projektu programu Visual Studio
 

@@ -10,12 +10,12 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: da746d80e3ae1fa5cc02683a8bb0ff0402722b8e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 926629660c9593c59362bd1bc49c5115ac5e3187
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61071478"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65441055"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Omówienie konfiguracji stanu usługi Azure Automation
 
@@ -82,14 +82,24 @@ Jeśli węzły znajdują się w sieci prywatnej, są wymagane dla stanu Configur
 * Globalny adres URL Administracja USA — Wirginia: *.azure-automation.us
 * Usługa agenta: https://\<workspaceId\>.agentsvc.azure-automation.net
 
+#### <a name="proxy-support"></a>Obsługa serwera proxy
+
+Obsługa serwera proxy dla agenta DSC jest dostępna w Windows w wersji 1809 i nowszych.
+Aby skonfigurować tę opcję, należy ustawić wartość **ProxyURL** i **ProxyCredential** w [skryptu metaconfiguration](automation-dsc-onboarding.md#generating-dsc-metaconfigurations) używane do rejestrowania węzłów.
+Serwer proxy nie jest dostępna w DSC dla starszych wersji systemu Windows.
+
+W przypadku węzłów systemu Linux DSC agent obsługuje serwera proxy i będzie korzystał ze zmienną że, aby określić adres url.
+
+#### <a name="azure-state-configuration-network-ranges-and-namespace"></a>Zakresy sieci konfiguracji stanu platformy Azure i przestrzeni nazw
+
 Zaleca się używania adresów wymienionych podczas definiowania wyjątków. Adresy IP, możesz pobrać [zakresów IP centrum danych Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653). Ten plik jest aktualizowana co tydzień i ma aktualnie wdrożone zakresy i wszystkie nadchodzące zmiany w zakresach adresów IP.
 
 Jeśli masz konto usługi Automation, która jest zdefiniowana dla konkretnego regionu, można ograniczyć komunikację z tym regionalnym centrum danych. Poniższa tabela zawiera rekord DNS dla każdego regionu:
 
 | **Region** | **Rekord DNS** |
 | --- | --- |
-| Środkowo-zachodnie stany USA | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
-| Środkowo-południowe stany USA |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
+| Zachodnio-środkowe stany USA | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
+| Południowo-środkowe stany USA |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
 | Wschodnie stany USA 2 |eus2-jobruntimedata-prod-su1.azure-automation.net</br>eus2-agentservice-prod-1.azure-automation.net |
 | Kanada Środkowa |cc-jobruntimedata-prod-su1.azure-automation.net</br>cc-agentservice-prod-1.azure-automation.net |
 | Europa Zachodnia |we-jobruntimedata-prod-su1.azure-automation.net</br>we-agentservice-prod-1.azure-automation.net |
@@ -98,8 +108,8 @@ Jeśli masz konto usługi Automation, która jest zdefiniowana dla konkretnego r
 | Indie Środkowe |cid-jobruntimedata-prod-su1.azure-automation.net</br>cid-agentservice-prod-1.azure-automation.net |
 | Japonia Wschodnia |jpe-jobruntimedata-prod-su1.azure-automation.net</br>jpe-agentservice-prod-1.azure-automation.net |
 | Australia Południowo-Wschodnia |ase-jobruntimedata-prod-su1.azure-automation.net</br>ase-agentservice-prod-1.azure-automation.net |
-| Południowe Zjednoczone Królestwo | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
-| Administracja USA — Wirginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
+| Zjednoczone Królestwo (południe) | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
+| US Gov Wirginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
 
 Aby uzyskać listę adresów IP regionu zamiast nazwy regionów, Pobierz [adres IP centrum danych Azure](https://www.microsoft.com/download/details.aspx?id=41653) plik XML z Microsoft Download Center.
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 59b390776a5e23c08d8793125747742cee4e473e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f010e7564f097f28269070d85e2895e73f454054
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60854213"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65415573"
 ---
 # <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>Samouczek: Tworzenie aplikacji ASP.NET na platformie Azure przy użyciu usługi SQL Database
 
@@ -44,7 +44,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 W celu ukończenia tego samouczka:
 
-Zainstaluj program <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a> z pakietem roboczym **Tworzenie aplikacji na platformie ASP.NET i aplikacji internetowych**.
+Zainstaluj <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> z **ASP.NET i tworzenie aplikacji internetowych** obciążenia.
 
 Jeśli program Visual Studio został już zainstalowany, dodaj obciążenia w programie Visual Studio, klikając kolejno pozycje **Narzędzia** > **Pobierz narzędzia i funkcje**.
 
@@ -63,7 +63,7 @@ Naciśnij klawisze `Ctrl+F5`, aby uruchomić aplikację bez debugowania. Aplikac
 
 ![Okno dialogowe Nowy projekt ASP.NET](media/app-service-web-tutorial-dotnet-sqldatabase/local-app-in-browser.png)
 
-Przetestuj linki **Edytuj**, **Szczegóły** i **Usuń**.
+Test **Edytuj**, **szczegóły**, i **Usuń** łącza.
 
 Na potrzeby połączenia z bazą danych aplikacja używa kontekstu bazy danych. W tym przykładzie kontekst bazy danych używa parametrów połączenia o nazwie `MyDbConnection`. Parametry połączenia są ustawiane w pliku *Web.config*, a przywoływane w pliku *Models/MyDatabaseContext.cs*. Ta nazwa parametrów połączenia jest używana w dalszej części tego samouczka w celu połączenia aplikacji platformy Azure z usługą Azure SQL Database. 
 
@@ -116,11 +116,11 @@ W oknie dialogowym **Konfiguruj plan usługi App Service** skonfiguruj nowy plan
 
 ![Tworzenie planu usługi App Service](./media/app-service-web-tutorial-dotnet-sqldatabase/configure-app-service-plan.png)
 
-| Ustawienie  | Sugerowana wartość | Więcej informacji |
+| Ustawienie  | Sugerowana wartość | Aby uzyskać więcej informacji |
 | ----------------- | ------------ | ----|
 |**Plan usługi App Service**| myAppServicePlan | [Plany usługi App Service](../app-service/overview-hosting-plans.md) |
 |**Lokalizacja**| Europa Zachodnia | [Regiony platformy Azure](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) |
-|**Rozmiar**| Bezpłatna | [Warstwy cenowe](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)|
+|**Rozmiar**| Wolny | [Warstwy cenowe](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)|
 
 ### <a name="create-a-sql-server-instance"></a>Tworzenie wystąpienia programu SQL Server
 

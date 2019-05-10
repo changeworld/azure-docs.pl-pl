@@ -9,12 +9,12 @@ ms.service: application-insights
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: c447a14f72c56e3e1e244011aa215a33b3f222a6
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: ec5b3572cbf74bad9b82eb93a45d7a4664023b95
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64922460"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408236"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Monitorowanie wydajności w usłudze Azure App Service
 
@@ -23,7 +23,7 @@ Włączanie monitorowania w .NET i .NET Core na podstawie aplikacji sieci web dz
 > [!NOTE]
 > Ręczne dodanie rozszerzenia witryny usługi Application Insights za pośrednictwem **narzędzia programistyczne** > **rozszerzenia** jest przestarzała. Ta metoda instalacji rozszerzenia był zależny od ręcznej aktualizacji dla każdej nowej wersji. Najnowsza wersja stabilna rozszerzenia jest teraz [wstępnie](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) jako część obrazu usługi App Service. Pliki znajdują się w `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` i są automatycznie aktualizowane wraz z każdą wersją stabilne. Jeśli postępuj zgodnie z instrukcjami agenta na podstawie, aby włączyć monitorowanie poniżej go automatycznie usunie przestarzałe rozszerzenia dla Ciebie.
 
-## <a name="enable-application-insights"></a>Włączanie usługi Application Insights
+## <a name="enable-application-insights"></a>Włącz usługę Application Insights
 
 Istnieją dwa sposoby, aby włączyć monitorowanie aplikacji dla aplikacji hostowanych usług aplikacji platformy Azure:
 
@@ -274,7 +274,7 @@ Poniżej przedstawiono przykład, zastąpić wszystkie wystąpienia `AppMonitore
             "type": "string"
         }
     },
-    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0"
 }
 ```

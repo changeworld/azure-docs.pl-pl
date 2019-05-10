@@ -12,19 +12,19 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: bwren
-ms.openlocfilehash: 1496bf21ed1a81eedb44ca9cc9db777632e2a5cd
-ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.openlocfilehash: b4d67b64d8fc7c5063e96ed2a2502e9cbecd6065
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64876008"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65229869"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Portal pakietu OMS na platformę Azure
 
 > [!NOTE]
 > Ten artykuł ma zastosowanie do chmury publicznej platformy Azure i w chmurze dla instytucji rządowych, chyba że zaznaczono inaczej.
 
-**Portal pakietu OMS dla publicznej chmury Azure oficjalnie została wycofana. Portal pakietu OMS w chmurze Azure dla administracji USA zostanie oficjalnie wycofana 15 maja 2019 r.** Cieszymy się przenieść do witryny Azure portal i oczekują przejścia, które można łatwo. Ale wiemy, zmiany są trudne i może być szkodliwe. Wyślij wszelkie pytania opinii i zagadnień związanych z **LAUpgradeFeedback\@microsoft.com**. W pozostałej części tego artykułu przechodzi przez kluczowych scenariuszy i harmonogram działania dla tego przejścia.
+**Portal pakietu OMS dla publicznej chmury Azure oficjalnie została wycofana. Portal pakietu OMS w chmurze dla administracji USA zostanie oficjalnie wycofana 15 maja 2019 r.** Cieszymy się przenieść do witryny Azure portal i oczekują przejścia, które można łatwo. Ale wiemy, zmiany są trudne i może być szkodliwe. Wyślij wszelkie pytania opinii i zagadnień związanych z **LAUpgradeFeedback\@microsoft.com**. W pozostałej części tego artykułu przechodzi przez kluczowych scenariuszy i harmonogram działania dla tego przejścia.
 
 Witryna Azure portal jest Centrum dla wszystkich usług platformy Azure i oferuje zaawansowane zarządzanie doświadczenie z możliwości, takich jak pulpity nawigacyjne dla funkcji przypinania zasobów, inteligentne wyszukiwanie, znajdowanie zasobów, tagowania i zarządzanie zasobami. Konsolidacja i usprawnić przepływ pracy zarządzania i monitorowania, czasu zaczęliśmy dodawać możliwości portalu pakietu OMS w witrynie Azure portal. Wszystkie funkcje portalu pakietu OMS są teraz częścią witryny Azure portal. W rzeczywistości niektóre z nowych funkcji, takich jak analiza ruchu są dostępne tylko w witrynie Azure portal. Będzie można wykonać wszystko, co robisz w portalu pakietu OMS przy użyciu witryny Azure portal i nie tylko. Jeśli jeszcze tego nie zrobiono, należy rozpocząć w witrynie Azure portal już dziś!
 
@@ -64,8 +64,8 @@ W obu przypadkach administrator musi ręcznie przypisać możesz odpowiednią ro
 
 | Uprawnienia w portalu pakietu OMS | Azure Role |
 |:---|:---|
-| ReadOnly | Czytelnik usługi Log Analytics |
-| Współautor | Współautor usługi Log Analytics |
+| Tylko do odczytu | Czytelnik usługi Log Analytics |
+| Współautor | Współpracownik usługi Log Analytics |
 | Administrator | Właściciel | 
  
 

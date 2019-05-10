@@ -13,14 +13,14 @@ ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 03/28/2019
+ms.date: 05/01/2019
 ms.author: jowargo
-ms.openlocfilehash: 79913fc300f2ca66a84cf47c0e5b650b9ea2cc59
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 00e62226ee7e2b912a909cfa32a25e4562b99e83
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60423336"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65203743"
 ---
 # <a name="tutorial-push-notifications-to-xamarinandroid-apps-using-azure-notification-hubs"></a>Samouczek: wysyłanie powiadomień push do aplikacji platformy Xamarin.Android przy użyciu usługi Azure Notification Hubs
 
@@ -73,10 +73,10 @@ Centrum powiadomień jest skonfigurowane do pracy z usługą FCM i uzyskano para
     4. Wybierz **lokalizacji** dla projektu. 
     5. Kliknij przycisk **OK** 
 
-        ![Okno dialogowe Nowy projekt](./media/partner-xamarin-notification-hubs-android-get-started/new-project-dialog-new.png)        
+        ![Okno dialogowe nowego projektu](./media/partner-xamarin-notification-hubs-android-get-started/new-project-dialog-new.png)        
 2. Na **nową aplikację systemu Android** okno dialogowe, wybierz opcję **pusta aplikacja**i wybierz **OK**. 
 
-    ![Okno dialogowe Nowy projekt](./media/partner-xamarin-notification-hubs-android-get-started/new-android-app-dialog.png)
+    ![Okno dialogowe nowego projektu](./media/partner-xamarin-notification-hubs-android-get-started/new-android-app-dialog.png)
 1. W oknie **Eksploratora rozwiązań** rozwiń węzeł **Właściwości** i kliknij pozycję **AndroidManifest.xml**. Zaktualizuj nazwę pakietu tak, aby pasowała do nazwy pakietu wprowadzonej podczas dodawania usługi Firebase Cloud Messaging do projektu w konsoli Google Firebase Console.
 
     ![Nazwa pakietu w usłudze GCM](./media/partner-xamarin-notification-hubs-android-get-started/package-name-gcm.png)
@@ -214,7 +214,6 @@ Centrum powiadomień jest skonfigurowane do pracy z usługą FCM i uzyskano para
 9. Dodaj następujące instrukcje using w pliku `MyFirebaseIIDService.cs`:
 
     ```csharp
-    using Android.App;
     using Android.Util;
     using WindowsAzure.Messaging;
     using Firebase.Iid;
@@ -256,10 +255,8 @@ Centrum powiadomień jest skonfigurowane do pracy z usługą FCM i uzyskano para
 13. Dodaj następujące instrukcje using w pliku `MyFirebaseMessagingService.cs`.
 
     ```csharp
-    using Android.App;
     using Android.Util;
     using Firebase.Messaging;
-    using Android.OS;
     using Android.Support.V4.App;
     using Build = Android.OS.Build;
     ```

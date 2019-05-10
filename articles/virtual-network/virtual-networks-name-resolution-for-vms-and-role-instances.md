@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: 763fc2952d7a1e2eac209cc9df53713c58ad83c9
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: e0f3de95cfd4a18294e5e8e2adcf3b52a7487dbb
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925251"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65411356"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Rozpoznawanie nazw dla zasobów w sieciach wirtualnych platformy Azure
 
@@ -169,7 +169,7 @@ Jeśli przekazywanie zapytań na platformie Azure nie spełnia Twoich potrzeb, n
 * Zabezpieczone przed dostępem z Internetu, aby uniknąć zagrożenia powodowane przez zewnętrzne agentów.
 
 > [!NOTE]
-> Aby uzyskać najlepszą wydajność podczas korzystania z maszyn wirtualnych platformy Azure jako serwery DNS IPv6 powinna być wyłączona. A [publiczny adres IP](virtual-network-public-ip-address.md) powinien zostać przypisany do każdego serwera DNS, który znajduje się maszyna wirtualna. Analiza wydajności i optymalizacje podczas korzystania z systemu Windows Server jako serwer DNS, zobacz [nazwę wydajność rozpoznawania cyklicznego Windows DNS Server 2012 R2](http://blogs.technet.com/b/networking/archive/2015/08/19/name-resolution-performance-of-a-recursive-windows-dns-server-2012-r2.aspx).
+> Aby uzyskać najlepszą wydajność podczas korzystania z maszyn wirtualnych platformy Azure jako serwery DNS IPv6 powinna być wyłączona. A [publiczny adres IP](virtual-network-public-ip-address.md) powinien zostać przypisany do każdego serwera DNS, który znajduje się maszyna wirtualna. Analiza wydajności i optymalizacje podczas korzystania z systemu Windows Server jako serwer DNS, zobacz [nazwę wydajność rozpoznawania cyklicznego Windows DNS Server 2012 R2](https://blogs.technet.com/b/networking/archive/2015/08/19/name-resolution-performance-of-a-recursive-windows-dns-server-2012-r2.aspx).
 > 
 > 
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: c500a744cd2c001d3d9d65363319d396f04e4626
-ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.openlocfilehash: 0e1127d90aeb4c59687ac4df7fb7ebae1901cee8
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64876147"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65228427"
 ---
 # <a name="copy-data-from-ftp-server-by-using-azure-data-factory"></a>Kopiowanie danych z serwera FTP za pomocą usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -52,12 +52,12 @@ Następujące właściwości są obsługiwane przez usługę FTP połączone:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi być równa: **FtpServer**. | Yes |
-| host | Określ nazwę lub adres IP serwera FTP. | Yes |
+| type | Właściwość type musi być równa: **FtpServer**. | Tak |
+| host | Określ nazwę lub adres IP serwera FTP. | Tak |
 | port | Określ port, na którym nasłuchuje serwer FTP.<br/>Dozwolone wartości to: liczba całkowita, wartość domyślna to **21**. | Nie |
 | enableSsl | Określ, czy należy użyć serwera FTP za pośrednictwem kanału SSL/TLS.<br/>Dozwolone wartości to: **true** (ustawienie domyślne), **false**. | Nie |
 | enableServerCertificateValidation | Określ, czy włączyć weryfikacji certyfikatu SSL serwera w przypadku korzystania z protokołu FTP za pośrednictwem kanału SSL/TLS.<br/>Dozwolone wartości to: **true** (ustawienie domyślne), **false**. | Nie |
-| authenticationType | Określ typ uwierzytelniania.<br/>Dozwolone wartości to: **Podstawowe**, **anonimowe** | Yes |
+| authenticationType | Określ typ uwierzytelniania.<br/>Dozwolone wartości to: **Podstawowe**, **anonimowe** | Tak |
 | userName | Określ użytkownika, który ma dostęp do serwera FTP. | Nie |
 | password | Określ hasło dla użytkownika (nazwa użytkownika). Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. (Jeśli Twój magazyn danych znajduje się w sieci prywatnej), można użyć środowiska Azure Integration Runtime lub środowiskiem Integration Runtime. Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
@@ -127,7 +127,7 @@ Aby skopiować dane z serwera FTP w **Parquet lub format tekstu rozdzielanego**,
 
 | Właściwość   | Opis                                                  | Wymagane |
 | ---------- | ------------------------------------------------------------ | -------- |
-| type       | Właściwość type w obszarze `location` w zestawie danych musi być równa **FtpServerLocation**. | Yes      |
+| type       | Właściwość type w obszarze `location` w zestawie danych musi być równa **FtpServerLocation**. | Tak      |
 | folderPath | Ścieżka do folderu. Jeśli chcesz używać symboli wieloznacznych, do folderu filtru, pomiń to ustawienie i określ ustawienia źródła działania. | Nie       |
 | fileName   | Nazwa pliku w ramach danego folderu folderPath. Jeśli chcesz użyć symboli wieloznacznych, aby odfiltrować pliki, pomiń to ustawienie i określ ustawienia źródła działania. | Nie       |
 
@@ -222,7 +222,7 @@ Aby skopiować dane z serwera FTP w **Parquet lub format tekstu rozdzielanego**,
 
 | Właściwość                 | Opis                                                  | Wymagane                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
-| type                     | Właściwość type w obszarze `storeSettings` musi być równa **FtpReadSetting**. | Yes                                           |
+| type                     | Właściwość type w obszarze `storeSettings` musi być równa **FtpReadSetting**. | Tak                                           |
 | recursive                | Wskazuje, czy dane są odczytywane cyklicznie z podfolderów lub tylko z określonego folderu. Zwróć uwagę, że gdy cyklicznego jest ustawiona na wartość PRAWDA, a obiekt sink magazynem opartych na plikach, pusty folder lub podfolder nie jest kopiowany lub utworzono obiekt sink. Dozwolone wartości to **true** (ustawienie domyślne) i **false**. | Nie                                            |
 | wildcardFolderPath       | Ścieżka folderu przy użyciu symboli wieloznacznych, aby filtrować foldery źródłowe. <br>Dozwolone symbole wieloznaczne to: `*` (dopasowuje zero lub więcej znaków) i `?` (dopasowuje zero lub jeden znak); użyj `^` jako znak ucieczki, jeśli nazwą rzeczywistego folderu ma symboli wieloznacznych lub ten znak ucieczki wewnątrz. <br>Zobacz więcej przykładów w [folderowi i plikowi Przykłady filtrów](#folder-and-file-filter-examples). | Nie                                            |
 | wildcardFileName         | Nazwa pliku przy użyciu symboli wieloznacznych w ramach danego folderPath/wildcardFolderPath do filtrowania plików źródłowych. <br>Dozwolone symbole wieloznaczne to: `*` (dopasowuje zero lub więcej znaków) i `?` (dopasowuje zero lub jeden znak); użyj `^` jako znak ucieczki, jeśli nazwą rzeczywistego folderu ma symboli wieloznacznych lub ten znak ucieczki wewnątrz.  Zobacz więcej przykładów w [folderowi i plikowi Przykłady filtrów](#folder-and-file-filter-examples). | Tak, jeśli `fileName` nie została określona w zestawie danych |
@@ -232,7 +232,7 @@ Aby skopiować dane z serwera FTP w **Parquet lub format tekstu rozdzielanego**,
 | maxConcurrentConnections | Liczba połączeń połączyć się z magazynu magazynu jednocześnie. Należy określić tylko wtedy, gdy chcesz ograniczyć liczby jednoczesnych połączeń z magazynem danych. | Nie                                            |
 
 > [!NOTE]
-> Dla formatu Parquet/rozdzielany tekst **FileSystemSource** źródło działania kopiowania typu opisane w następnej sekcji nadal jest obsługiwany jako — dotyczy zgodności z poprzednimi wersjami. Zaleca się użyć tego nowego modelu idąc dalej, a ADF tworzenia interfejsu użytkownika zostało przełączone do generowania te nowe typy.
+> Dla formatu Parquet/rozdzielany tekst **FileSystemSource** źródło działania kopiowania typu opisane w następnej sekcji nadal jest obsługiwany jako — jest zgodności z poprzednimi wersjami. Zaleca się użyć tego nowego modelu idąc dalej, a ADF tworzenia interfejsu użytkownika zostało przełączone do generowania te nowe typy.
 
 **Przykład:**
 
@@ -321,7 +321,7 @@ Aby skopiować dane z serwera FTP w **format ORC/Avro/JSON/dane binarne**, nast�
 
 W tej sekcji opisano wynikowe zachowania ścieżkę i nazwę folderu z filtrami symboli wieloznacznych.
 
-| folderPath | fileName | cykliczne | Źródło folder struktury i filtrowanie wyników (pliki **bold** są pobierane)|
+| folderPath | fileName | recursive | Źródło folder struktury i filtrowanie wyników (pliki **bold** są pobierane)|
 |:--- |:--- |:--- |:--- |
 | `Folder*` | (puste, użyta domyślna) | false | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
 | `Folder*` | (puste, użyta domyślna) | true | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File4.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |

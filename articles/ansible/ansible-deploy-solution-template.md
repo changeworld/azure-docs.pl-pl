@@ -7,13 +7,13 @@ ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.date: 04/22/2019
-ms.openlocfilehash: 2d2ab769c2d4c5a594cb57f2fa9dfed599578506
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 04/30/2019
+ms.openlocfilehash: 58f28d5cf7d31a3fbddc8e1ca18be4dbcf617f61
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64692831"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231004"
 ---
 # <a name="quickstart-deploy-the-ansible-solution-template-for-azure-to-centos"></a>Szybki start: Wdrażanie szablonu rozwiązania Ansible platformy Azure w systemie CentOS
 
@@ -25,7 +25,7 @@ Szablon rozwiązania Ansible platformy Azure jest zaprojektowany tak, aby umożl
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
+[!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 
 ## <a name="deploy-the-ansible-solution-template"></a>Wdrażanie szablonu rozwiązania Ansible
 
@@ -33,7 +33,7 @@ Szablon rozwiązania Ansible platformy Azure jest zaprojektowany tak, aby umożl
 
 1. Wybierz pozycję **POBIERZ TERAZ**.
 
-1. Zostanie wyświetlone okno, w którym są wyszczególnione warunki użytkowania, zasady ochrony prywatności oraz zasady korzystania z witryny Azure Marketplace. Wybierz przycisk **Kontynuuj**.
+1. Zostanie wyświetlone okno, w którym są wyszczególnione warunki użytkowania, zasady ochrony prywatności oraz zasady korzystania z witryny Azure Marketplace. Wybierz **nadal**.
 
 1. Zostanie wyświetlona witryna Azure Portal oraz strona rozwiązania Ansible, na której opisano szablon rozwiązania. Wybierz pozycję **Utwórz**.
 

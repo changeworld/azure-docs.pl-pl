@@ -10,14 +10,14 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: b24e3d7fd71ef60cf8ebe5ba2c33889ff518580c
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: e51ef9afd0e49b690a4f9cab09fdfbd3e86eee66
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027110"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65441041"
 ---
-# <a name="where-can-you-use-personalizer"></a>Gdzie można używać Personalizer?
+# <a name="where-can-you-use-personalizer"></a>Gdzie można używać usługi Personalizacja?
 
 Użyj Personalizer w sytuacji, gdy Twoja aplikacja potrzebuje do wybierz element w prawo, akcji lub produktu do wyświetlenia — Aby ulepszyć środowisko pracy, osiągać lepsze wyniki biznesowe lub zwiększyć wydajność. 
 
@@ -58,7 +58,7 @@ Można monitorować skuteczność Personalizer okresowo wykonując [ocen w trybi
 
 Wiele firm używa aparaty rekomendacji, Narzędzia marketingowe i działających na, segmentacji odbiorców i klastrowania, filtrowania z wykorzystaniem współpracy i innych środków do polecaj produkty z katalogu dużych klientów.
 
-[Repozytorium usługi GitHub firmy Microsoft Recommenders ](https://github.com/Microsoft/Recommenders) zawiera przykłady i najlepsze rozwiązania dotyczące tworzenia systemy rekomendacji, podana jako notesów programu Jupyter. Prezentuje przykłady pracy przygotowywania danych, budowanie modeli, oceny, dostosowywania i operacjonalizacji aparaty rekomendacji, w przypadku wielu typowych metod xDeepFM, w tym SAR, ALS, KMS, DKN.
+[Repozytorium usługi GitHub firmy Microsoft Recommenders](https://github.com/Microsoft/Recommenders) zawiera przykłady i najlepsze rozwiązania dotyczące tworzenia systemy rekomendacji, podana jako notesów programu Jupyter. Prezentuje przykłady pracy przygotowywania danych, budowanie modeli, oceny, dostosowywania i operacjonalizacji aparaty rekomendacji, w przypadku wielu typowych metod xDeepFM, w tym SAR, ALS, KMS, DKN.
 
 Personalizer może współpracować z aparat rekomendacji, gdy nie jest obecny.
 

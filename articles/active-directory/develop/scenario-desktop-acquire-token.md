@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d4389af86e27ddb04f5a3e5f53c5509eeede005
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: e1fe9594471c6e8f723afff2def940bb675e04fb
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65075343"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65407004"
 ---
 # <a name="desktop-app-that-calls-web-apis---acquire-a-token"></a>Aplikacja klasyczna, która wywołuje interfejsy API — w sieci web uzyskać token
 
@@ -502,7 +502,7 @@ static async Task GetATokenForGraph()
   catch (MsalClientException ex) when (ex.ErrorCode == "unknown_user")
   {
    // the username was probably empty
-   // ex.Message = "Could not identify the user logged into the OS. See http://aka.ms/msal-net-iwa for details."
+   // ex.Message = "Could not identify the user logged into the OS. See https://aka.ms/msal-net-iwa for details."
    throw new ArgumentException("U/P: Wrong username", ex);
   }
   catch (MsalClientException ex) when (ex.ErrorCode == "parsing_wstrust_response_failed")
@@ -529,7 +529,7 @@ Jeśli piszesz narzędzie wiersza polecenia (nie ma formantów sieci Web), a nie
 
 Uwierzytelnianie interakcyjne z usługą Azure AD wymaga przeglądarki sieci web (szczegółowe informacje można znaleźć [użycia przeglądarki sieci web](https://aka.ms/msal-net-uses-web-browser)). Jednak do uwierzytelniania użytkowników na urządzeniach lub systemy operacyjne, które nie udostępniają przeglądarki sieci Web, przepływ kodu urządzenia umożliwia użytkownikowi używanie innego urządzenia (na przykład innego komputera lub telefon komórkowy) do podpisywania interaktywnie. Za pomocą przepływu kodu urządzenia, aplikacji uzyskuje tokenów przejdziesz do dwuetapowego procesu, szczególnie zaprojektowana z myślą o tych urządzeń/OS. Przykładami takich aplikacji są aplikacje uruchomione na iOT lub narzędzia wiersza polecenia (CLI). Chodzi o to, że:
 
-1. Zawsze wtedy, gdy wymagane jest uwierzytelnianie użytkownika, aplikacja zawiera kod i prosi użytkownika o za pomocą innego urządzenia (np. smartfony podłączonej do Internetu) przejdź do adresu URL (na przykład `http://microsoft.com/devicelogin`), gdzie użytkownicy będą monitowani o podanie kodu. Czy to zrobione, strony sieci web przeprowadzi użytkownika przez środowisko normalnego uwierzytelniania, w tym monitów o wyrażenie zgody i uwierzytelniania wieloskładnikowego, jeśli to konieczne.
+1. Zawsze wtedy, gdy wymagane jest uwierzytelnianie użytkownika, aplikacja zawiera kod i prosi użytkownika o za pomocą innego urządzenia (np. smartfony podłączonej do Internetu) przejdź do adresu URL (na przykład `https://microsoft.com/devicelogin`), gdzie użytkownicy będą monitowani o podanie kodu. Czy to zrobione, strony sieci web przeprowadzi użytkownika przez środowisko normalnego uwierzytelniania, w tym monitów o wyrażenie zgody i uwierzytelniania wieloskładnikowego, jeśli to konieczne.
 
 2. Po pomyślnym uwierzytelnieniu czyli aplikację wiersza polecenia otrzyma wymagane tokenów za pośrednictwem kanału zwrotnego i użyje do wykonywania wywołań interfejsu API sieci web, których potrzebuje.
 

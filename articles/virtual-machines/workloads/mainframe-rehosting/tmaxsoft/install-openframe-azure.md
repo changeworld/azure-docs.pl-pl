@@ -8,12 +8,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
-ms.openlocfilehash: c7e6e7e2023c333207a3a17c3b6711d92de7d044
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: b69ded2591478a477cd142decb39218841c9ac62
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65187786"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65410123"
 ---
 # <a name="install-tmaxsoft-openframe-on-azure"></a>Instalowanie TmaxSoft OpenFrame na platformie Azure
 
@@ -116,7 +116,7 @@ Możesz skonfigurować środowisko OpenFrame przy użyciu różnych wzorców wdr
 
 **Tworzenie maszyny Wirtualnej**
 
-1. Przejdź do witryny Azure portal pod <http://portal.azure.com> i zaloguj się do swojego konta.
+1. Przejdź do witryny Azure portal pod <https://portal.azure.com> i zaloguj się do swojego konta.
 
 2. Kliknij przycisk **maszyn wirtualnych**.
 
@@ -565,7 +565,7 @@ Serwer podstawowy aplikacji została zainstalowana przed poszczególnych usług,
      [oframe7@ofdemo ~]$ ps -ef|grep tbsvr
      ```
 
-    ![Podstawowa](media/base-01.png)
+    ![Baza](media/base-01.png)
 
      > [!IMPORTANT]
      > Upewnij się, że uruchomieniu Tibero przed rozpoczęciem instalacji.

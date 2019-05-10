@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/19/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d34bd9d7f80f72b3c6c0821ad48e6be1fd260be9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 267b6afd7cd3131dcd138dfb631335f58cec833a
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60386083"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65407923"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie produktu Workday do automatycznej aprowizacji użytkowników
 
@@ -310,9 +310,9 @@ W tym kroku będziesz udzielić "zabezpieczenia domeny" uprawnienia zasad dla da
    | ---------- | ---------- |
    | Operacje GET i Put | Dane procesu roboczego: Raporty publicznych procesu roboczego |
    | Operacje GET i Put | Danych osobowych: Informacje kontaktowe pracy |
-   | Get | Dane procesu roboczego: Wszystkie stanowiska |
-   | Get | Dane procesu roboczego: Bieżące informacje kadrowe |
-   | Get | Dane procesu roboczego: Tytuł biznesowych na profil pracownika |
+   | Pobierz | Dane procesu roboczego: Wszystkie stanowiska |
+   | Pobierz | Dane procesu roboczego: Bieżące informacje kadrowe |
+   | Pobierz | Dane procesu roboczego: Tytuł biznesowych na profil pracownika |
 
 ### <a name="configuring-business-process-security-policy-permissions"></a>Konfigurowanie uprawnień zasad zabezpieczeń procesów biznesowych
 
@@ -530,10 +530,10 @@ W tej sekcji skonfigurujesz przepływ danych użytkownika z produktu Workday do 
 | **Imię**   | givenName       |     |    Tworzenie i aktualizowanie |
 | **Nazwisko**   |   numery seryjne   |     |  Tworzenie i aktualizowanie |
 | **PreferredNameData**  |  displayName |     |   Tworzenie i aktualizowanie |
-| **Firmy**         | company   |     |  Tworzenie i aktualizowanie |
-| **SupervisoryOrganization**  | department  |     |  Tworzenie i aktualizowanie |
+| **Firmy**         | Firmy   |     |  Tworzenie i aktualizowanie |
+| **SupervisoryOrganization**  | Dział  |     |  Tworzenie i aktualizowanie |
 | **ManagerReference**   | menedżer  |     |  Tworzenie i aktualizowanie |
-| **BusinessTitle**   |  title     |     |  Tworzenie i aktualizowanie | 
+| **BusinessTitle**   |  tytuł     |     |  Tworzenie i aktualizowanie | 
 | **AddressLineData**    |  Adres  |     |   Tworzenie i aktualizowanie |
 | **Jednostki administracyjnej**   |   l   |     | Tworzenie i aktualizowanie |
 | **CountryReferenceTwoLetter**      |   co |     |   Tworzenie i aktualizowanie |
@@ -868,7 +868,7 @@ Tak, można skonfigurować do obsługi wielu domen AD tak długo, jak agent ma l
 
 * W witrynie Azure portal, Pobierz *identyfikator dzierżawy* dzierżawy usługi Azure AD.
 * Zaloguj się do serwera Windows z agentem Aprowizowania.
-* Otwórz program powershell jako Administrator Windows.
+* Otwórz program PowerShell jako Administrator Windows.
 * Przejdź do katalogu zawierającego skryptów rejestracji i uruchom następujące polecenia, zastępując \[identyfikator dzierżawy\] parametru z wartością identyfikatora dzierżawy.
 
   ```powershell
@@ -878,7 +878,7 @@ Tak, można skonfigurować do obsługi wielu domen AD tak długo, jak agent ma l
   ```
 
 * Na liście agentów, które pojawiają się — kopiowania wartości "ID" pole tego zasobu którego *resourceName* równa się do swojej nazwy domeny usługi AD.
-* Wklej identyfikator do tego polecenia, a następnie uruchomić go w programie Powershell.
+* Wklej wartość Identyfikatora tego polecenia, a następnie wykonaj polecenie w programie PowerShell.
 
   ```powershell
   Remove-PublishedResource -ResourceId "[resource ID]" -TenantId "[tenant ID]"
@@ -946,9 +946,9 @@ Rozwiązanie nie jest obecnie obsługiwane ustawienie atrybutów binarnych, taki
 
 #### <a name="how-do-i-format-display-names-in-ad-based-on-the-users-departmentcountrycity-attributes-and-handle-regional-variances"></a>Jak sformatować nazw wyświetlanych w AD zgodnie z atrybutów Dział/kraj/miasta i odchylenia regionalnych dojście?
 
-Jest typowym wymogiem do skonfigurowania *displayName* atrybutu w AD, tak aby zawiera także informacje o kraju i działu użytkownika. Dla np. Jeśli Jan Kowalski pracuje w dziale marketingu, w Stanach Zjednoczonych, możesz zechcieć jego *displayName* pojawienie się jako *Smith, John (Marketing-pl)*.
+Jest typowym wymogiem do skonfigurowania *displayName* atrybutu w AD tak, że zawiera on również informacje dotyczące działu i kraju/regionu użytkownika. Dla np. Jeśli Jan Kowalski pracuje w dziale marketingu, w Stanach Zjednoczonych, możesz zechcieć jego *displayName* pojawienie się jako *Smith, John (Marketing-pl)*.
 
-Oto jak można obsługiwać takie wymagania do konstruowania *CN* lub *displayName* obejmujący atrybuty, takie jak firmy, jednostki biznesowe, miasta lub kraju.
+Oto jak można obsługiwać takie wymagania do konstruowania *CN* lub *displayName* obejmujący atrybuty, takie jak firmy, jednostki biznesowe, miasta lub kraju/regionu.
 
 * Każdy atrybut produktu Workday są pobierane przy użyciu podstawowego wyrażenia XPATH interfejsu API, które można skonfigurować w **mapowanie atrybutu -> Zaawansowane sekcji -> Edytuj listę atrybutów dla produktu Workday**. Oto domyślne wyrażenie XPATH interfejsu API dla produktu Workday *PreferredFirstName*, *PreferredLastName*, *firmy* i *SupervisoryOrganization* atrybutów.
 
@@ -976,7 +976,7 @@ Oto jak można obsługiwać takie wymagania do konstruowania *CN* lub *displayNa
 
   Upewnij się z zespołem produktu Workday, że powyższe wyrażeń interfejsu API są prawidłowe dla danej konfiguracji dzierżawy produktu Workday. Jeśli to konieczne, można je edytować zgodnie z opisem w sekcji [Dostosowywanie listy atrybutów użytkownika w produkcie Workday](#customizing-the-list-of-workday-user-attributes).
 
-* Aby skompilować wyrażenia mapowanie atrybutu prawo, zidentyfikuj atrybut, którego produktu Workday "autorytatywnie" reprezentuje użytkownika imię, ostatnia nazwa, kraju i działu. Załóżmy, że atrybuty są *PreferredFirstName*, *PreferredLastName*, *CountryReferenceTwoLetter* i *SupervisoryOrganization* odpowiednio. Umożliwia to tworzenie wyrażenia dla usług AD *displayName* atrybutu w następujący sposób, aby ustalić nazwę wyświetlaną, takich jak *Smith, John (Marketing-pl)*.
+* Aby skompilować wyrażenia mapowanie atrybutu prawo, zidentyfikuj atrybut, którego produktu Workday "autorytatywnie" reprezentuje użytkownika imię, ostatnia nazwa, kraj/region i działu. Załóżmy, że atrybuty są *PreferredFirstName*, *PreferredLastName*, *CountryReferenceTwoLetter* i *SupervisoryOrganization* odpowiednio. Umożliwia to tworzenie wyrażenia dla usług AD *displayName* atrybutu w następujący sposób, aby ustalić nazwę wyświetlaną, takich jak *Smith, John (Marketing-pl)*.
 
     ```
      Append(Join(", ",[PreferredLastName],[PreferredFirstName]), Join(""," (",[SupervisoryOrganization],"-",[CountryReferenceTwoLetter],")"))
@@ -1087,7 +1087,7 @@ Po kliknięciu poszczególnych rekordów dziennika inspekcji, **Szczeg** otwarci
 
   Aby znaleźć rekordy dziennika agenta inicjowania obsługi administracyjnej odpowiadający tej operacji importowania AD, otwórz dzienniki Podglądu zdarzeń Windows i użyj **Znajdź...** opcję menu, aby znaleźć wpisy dziennika, zawierający wartość atrybutu dopasowania właściwości Identyfikatora/przyłączanie (w tym przypadku *21023*).
 
-  ![Znajdowanie](media/workday-inbound-tutorial/wd_event_viewer_02.png)
+  ![Znajdź](media/workday-inbound-tutorial/wd_event_viewer_02.png)
 
   Wyszukaj wpis o *zdarzenie o identyfikatorze = 9*, który zapewni LDAP wyszukiwania filtra używanego przez agenta można pobrać konta usługi AD. Aby sprawdzić, czy filtr wyszukiwania prawo do pobierania wpisów unikatowych użytkowników.
 
@@ -1236,7 +1236,7 @@ Aby wykonać tę zmianę, należy użyć [Workday Studio](https://community.work
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
-    <env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="https://www.w3.org/2001/XMLSchema">
+    <env:Envelope xmlns:env="https://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="https://www.w3.org/2001/XMLSchema">
       <env:Body>
         <wd:Get_Workers_Request xmlns:wd="urn:com.workday/bsvc" wd:version="v21.1">
           <wd:Request_References wd:Skip_Non_Existing_Instances="true">

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: hrushib
-ms.openlocfilehash: 1a1c1bafd0a575b01e9774e79a98515d34646f7c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 28378b4b769e0d0e70a82a45baac0872d1476036
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61471817"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65413639"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Okresowe kopii zapasowej i przywracania w usłudze Azure Service Fabric
 > [!div class="op_single_selector"]
@@ -56,7 +56,21 @@ Usługa Service Fabric udostępnia zestaw interfejsów API, aby osiągnąć nast
 ## <a name="prerequisites"></a>Wymagania wstępne
 * Klaster usługi Service Fabric za pomocą Service Fabric w wersji 6.2 i nowszych. Należy skonfigurować klaster w systemie Windows Server. Zapoznaj się z tym [artykułu](service-fabric-cluster-creation-for-windows-server.md) kroki pobrać wymagany pakiet.
 * Certyfikat X.509 do szyfrowania wymagane do połączenia z magazynem kluczy tajnych do przechowywania kopii zapasowych. Zapoznaj się [artykułu](service-fabric-windows-cluster-x509-security.md) wiedzieć, jak można uzyskać lub utworzyć certyfikat z podpisem własnym X.509.
-* Aplikacja usługi Service Fabric Reliable Stateful utworzone przy użyciu zestawu SDK usługi Service Fabric w wersji 3.0 lub nowszej. Dla aplikacji przeznaczonych dla platformy .NET Core 2.0, aplikacja powinna utworzona przy użyciu zestawu SDK usługi Service Fabric w wersji 3.1 lub nowszej.
+
+* Aplikacja usługi Service Fabric Reliable Stateful utworzone przy użyciu zestawu SDK usługi Service Fabric w wersji 3.0 lub nowszej. Dla aplikacji przeznaczonych na.Net Core 2.0, aplikacji powinny zostać skompilowane przy użyciu zestawu SDK usługi Service Fabric w wersji 3.1 lub nowszej.
+* Zainstaluj moduł Microsoft.ServiceFabric.Powershell.Http [w wersja zapoznawcza] dla konfiguracji połączeń.
+
+```powershell
+    Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
+```
+
+* Upewnij się, że klaster jest podłączony za pomocą `Connect-SFCluster` polecenia przed dokonaniem wszelkie żądania konfiguracji, za pomocą modułu Microsoft.ServiceFabric.Powershell.Http.
+
+```powershell
+
+    Connect-SFCluster -ConnectionEndpoint 'https://mysfcluster.southcentralus.cloudapp.azure.com:19080'   -X509Credential -FindType FindByThumbprint -FindValue '1b7ebe2174649c45474a4819dafae956712c31d3' -StoreLocation 'CurrentUser' -StoreName 'My' -ServerCertThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'  
+
+```
 
 ## <a name="enabling-backup-and-restore-service"></a>Włączanie usługi Kopia zapasowa i przywracanie
 Najpierw należy włączyć _kopia zapasowa i przywracanie usługi_ w klastrze. Pobierz szablon dla klastra, który chcesz wdrożyć. Możesz użyć [przykładowe szablony](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples). Włącz _kopia zapasowa i przywracanie usługi_ następujące czynności:
@@ -114,6 +128,16 @@ Pierwszym krokiem jest tworzenie zasad kopii zapasowych, opisujący harmonogram 
 
 W magazynie kopii zapasowej tworzenia udziału plików i zapewniają dostęp do odczytu i zapisu do tego udziału plików dla wszystkich maszyn węzła sieci szkieletowej usługi. W tym przykładzie przyjęto założenie, udział o nazwie `BackupStore` znajduje się na `StorageServer`.
 
+
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Za pomocą Microsoft.ServiceFabric.Powershell.Http modułu programu PowerShell
+
+```powershell
+
+New-SFBackupPolicy -Name 'BackupPolicy1' -AutoRestoreOnDataLoss $true -MaxIncrementalBackups 20 -FrequencyBased -Interval 00:15:00 -FileShare -Path '\\StorageServer\BackupStore' -Basic -RetentionDuration '10.00:00:00'
+
+```
+#### <a name="rest-call-using-powershell"></a>Wywołania REST przy użyciu programu Powershell
+
 Wykonaj następujący skrypt programu PowerShell do wywoływania wymaganego interfejsu API REST do tworzenia nowych zasad.
 
 ```powershell
@@ -152,6 +176,14 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 ### <a name="enable-periodic-backup"></a>Włącz okresowe wykonywanie kopii zapasowej
 Po zdefiniowaniu zasad, aby spełnić wymagania dotyczące ochrony danych aplikacji, zasady tworzenia kopii zapasowej należy skojarzone z aplikacją. W zależności od wymagań zasad tworzenia kopii zapasowej może być skojarzony z aplikacją, usługi lub partycji.
 
+
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Za pomocą Microsoft.ServiceFabric.Powershell.Http modułu programu PowerShell
+
+```powershell
+Enable-SFApplicationBackup -ApplicationId 'SampleApp' -BackupPolicyName 'BackupPolicy1'
+```
+
+#### <a name="rest-call-using-powershell"></a>Wywołania REST przy użyciu programu Powershell
 Wykonaj następujący skrypt programu PowerShell do wywoływania wymaganego interfejsu API REST, aby skojarzyć zasady tworzenia kopii zapasowych o nazwie `BackupPolicy1` utworzoną w kroku przy użyciu aplikacji `SampleApp`.
 
 ```powershell
@@ -167,13 +199,21 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
 ### <a name="verify-that-periodic-backups-are-working"></a>Sprawdź, czy działają okresowe kopie zapasowe
 
-Po włączeniu kopii zapasowej dla aplikacji, wszystkie partycje należących do Reliable Stateful services i Reliable Actors w ramach aplikacji rozpocznie się pobieranie kopii zapasowej okresowo zgodnie z skojarzonych zasad kopii zapasowych. 
+Po włączeniu kopii zapasowej dla aplikacji, wszystkie partycje należących do Reliable Stateful services i Reliable Actors w ramach aplikacji rozpocznie się pobieranie kopii zapasowej okresowo zgodnie z skojarzonych zasad kopii zapasowych.
 
 ![Zdarzenie kondycji kopii zapasowej partycji][0]
 
 ### <a name="list-backups"></a>Wykaz kopii zapasowych
 
 Kopie zapasowe skojarzone z wszystkie partycje należących do Reliable Stateful services i Reliable Actors aplikacji mogą być wyliczane przy użyciu _GetBackups_ interfejsu API. W zależności od wymagań kopie zapasowe mogą być wyliczane dla aplikacji, usług lub partycji.
+
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Za pomocą Microsoft.ServiceFabric.Powershell.Http modułu programu PowerShell
+
+```powershell
+    Get-SFApplicationBackupList -ApplicationId WordCount     
+```
+
+#### <a name="rest-call-using-powershell"></a>Wywołania REST przy użyciu programu Powershell
 
 Wykonaj następujący skrypt programu PowerShell do wywołania interfejsu API protokołu HTTP, można wyliczyć kopie zapasowe utworzone dla wszystkich partycji wewnątrz `SampleApp` aplikacji.
 
@@ -185,6 +225,7 @@ $response = Invoke-WebRequest -Uri $url -Method Get
 $BackupPoints = (ConvertFrom-Json $response.Content)
 $BackupPoints.Items
 ```
+
 Przykładowe dane wyjściowe dla powyższych Uruchom:
 
 ```
@@ -231,7 +272,7 @@ FailureError            :
 - Usługi przywracania kopii zapasowej nie powiodło się pojawiają się w klastrze zabezpieczony za pomocą zabezpieczeń na podstawie gMSA.
 
 ## <a name="limitation-caveats"></a>Ograniczenie / zastrzeżenia
-- Nie usługi Service Fabric wbudowanych poleceń cmdlet programu PowerShell.
+- Polecenia cmdlet programu PowerShell usługi Service Fabric są w wersji zapoznawczej.
 - Klastry usługi Service Fabric nie są obsługiwane w systemie Linux.
 
 ## <a name="next-steps"></a>Kolejne kroki

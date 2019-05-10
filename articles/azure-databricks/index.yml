@@ -8,7 +8,7 @@ metadata:
   author: mamccrea
   ms.service: azure-databricks
   ms.topic: landing-page
-  ms.date: 03/19/2018
+  ms.date: 05/07/2019
   ms.author: mamccrea
 abstract:
   description: 'Dowiedz się, jak używać usługi Azure Databricks (platformy analiz opartej na usłudze Apache Spark) z konfiguracją jednym kliknięciem, usprawnionymi przepływami pracy i interakcyjnym obszarem roboczym, który umożliwia współpracę między analitykami danych, inżynierami danych i analitykami biznesowymi. W przewodnikach Szybki start i samouczkach pokazano, jak rozpocząć pracę z usługą Azure Databricks i przeprowadzić integrację z innymi usługami platformy Azure.'
@@ -37,6 +37,10 @@ sections:
               src: /azure/azure-databricks/media/index/logo_azure_resource_manager.svg
             text: Szablon usługi Resource Manager
             href: /azure/azure-databricks/quickstart-create-databricks-workspace-resource-manager-template
+          - image:
+              src: /azure/azure-databricks/media/index/virtualnetwork.svg
+            text: Sieć wirtualna
+            href: /azure/azure-databricks/quickstart-create-databricks-workspace-vnet-injection
   - title: Samouczki krok po kroku
     items:
       - type: paragraph
@@ -44,6 +48,8 @@ sections:
       - type: list
         style: ordered
         items:
+          - html: <a href="/azure/azure-databricks/vnet-injection-sql-server">Wykonywanie zapytań kierowanych do serwera SQL Server działającego w kontenerze platformy Docker</a>
+          - html: <a href="/azure/azure-databricks/service-endpoint-cosmosdb">Używanie punktu końcowego usługi Cosmos DB</a>
           - html: '<a href="/azure/azure-databricks/databricks-extract-load-sql-data-warehouse">Wyodrębnianie, przekształcanie i ładowanie danych</a>'
           - html: <a href="/azure/azure-databricks/databricks-stream-from-eventhubs">Przesyłanie strumieniowe danych z usługi Event Hubs</a>
           - html: <a href="/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services">Analiza tonacji za pomocą usługi Cognitive Services</a>
@@ -56,3 +62,5 @@ sections:
         items:
           - title: REST
             html: <p><a href="/rest/api/databricks">Interfejs API REST</a></p>
+          - title: Resource Manager
+            html: <p><a href="/azure/templates/microsoft.databricks/workspaces">Szablon</a></p>

@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/22/2019
 ms.author: jehollan
-ms.openlocfilehash: 1ef688dff65dc11f875f76e2f9127bf89af2f2b9
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 2044718d2ec7a7acc58e1e7ba9ba04ec5caf16b3
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65074593"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408447"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Użyj wstrzykiwanie zależności w .NET usługi Azure Functions
 
@@ -65,7 +65,7 @@ W aplikacji funkcji okres istnienia usługi o określonym zakresie dopasowuje ok
 
 Pojedyncze okres istnienia usługi są zalecane w przypadku połączeń i klientów, na przykład `SqlConnection`, `CloudBlobClient`, lub `HttpClient`.
 
-Wyświetlanie lub pobieranie [próbki okresy istnienia innej usługi](http://aka.ms/functions/di-sample).
+Wyświetlanie lub pobieranie [próbki okresy istnienia innej usługi](https://aka.ms/functions/di-sample).
 
 ## <a name="logging-services"></a>Rejestrowanie usługi
 

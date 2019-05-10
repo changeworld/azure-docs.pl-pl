@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/16/2019
 ms.author: yoafr
-ms.openlocfilehash: ac677a7f9586dbe893cbcbc480564aceac0149a0
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 614dabe842c7fe99da3ddb486c27003c79382ea1
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65147928"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231394"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>Wycofanie funkcje usługi Security Center (lipiec 2019 r.)
 
@@ -81,6 +81,7 @@ Kliknięcie w obszarze roboczym otworzy "Tożsamościami i dostępem" log analyt
 ![Strona tożsamości — pulpit nawigacyjny][8]
 
 Idąc dalej trzy ekrany powyżej zostanie wycofana. Dane pozostaną dostępne w rozwiązania w zakresie zabezpieczeń analizy dzienników i zostaną nie zmodyfikowane lub usunięte.
+Oryginalne zapytania usługi Log Analytics, używanych do wypełniania pulpit nawigacyjny tożsamości i dostępu są dostępne w usłudze Security Center [repozytorium GitHub](https://github.com/Azure/Azure-Security-Center/tree/master/Legacy%20Log%20Analytics%20dashboards).
 
 ### <a name="classic-identity--access-preview---new-experience"></a>Klasyczny obszar tożsamość i dostęp (wersja zapoznawcza) — nowe środowisko
 Oferują wgląd we wszystkie subskrypcje i wszystkich obszarów roboczych skojarzonych z nimi, w łatwy, gdy pulpit nawigacyjny analizy dziennika dostarcza szczegółowe informacje w danym obszarze roboczym tylko natywne możliwości usługi Security Center — w celu użycia widoku, który pozwala skupić się na co firmy ważne, zgodnie z bezpiecznego wynik Twojej tożsamości i dostępu — liczba zaleceń.
@@ -96,13 +97,14 @@ Po kliknięciu przycisku wraz z pulpitu nawigacyjnego na obszar roboczy, zostan�
 
 Już dziś, kliknij pozycję "Idź do mapy zdarzeń zabezpieczeń" pulpitu nawigacyjnego analizy zagrożeń jest otwierany. Pulpit nawigacyjny analizy zagrożeń zostaną wycofane.  
 
-![Pulpit nawigacyjny analizy zagrożeń][11]
+![Pulpit nawigacyjny Analiza zagrożeń][11]
 
 Wybierając obszar roboczy, aby wyświetlić jego pulpit nawigacyjny analizy zagrożeń bezpieczeństwa alerty ekranu map(Preview) *w usłudze Log Analytics* jest otwarty. Ten ekran zostanie wycofana.
 
 ![Mapa alertów zabezpieczeń w usłudze Log Analytics][12]
 
 Istniejące dane pozostaną dostępne w rozwiązania w zakresie zabezpieczeń analizy dzienników i będzie nie można modyfikować ani usuwać.
+Oryginalne zapytania usługi Log Analytics, używanych do wypełniania pulpit nawigacyjny analizy zagrożeń są dostępne w usłudze Security Center [repozytorium GitHub](https://github.com/Azure/Azure-Security-Center/tree/master/Legacy%20Log%20Analytics%20dashboards).
 
 ### <a name="security-events-map---new-experience"></a>Mapy zdarzeń zabezpieczeń — nowe środowisko
 Firma Microsoft zachęca klienci mogą korzystać z funkcji mapy alerty, które są wbudowane w usłudze Security Center — "alertów zabezpieczeń mapy (wersja zapoznawcza)". To zapewnia zoptymalizowane środowisko i działa we wszystkich subskrypcji i obszarów roboczych skojarzone, dzięki czemu makro wyświetlać w całym środowisku i koncentruje się na jeden obszar roboczy.
@@ -112,7 +114,7 @@ Firma Microsoft zachęca klienci mogą korzystać z funkcji mapy alerty, które 
 
 Aby zachować istniejące alerty i przeprowadzić ich migrację do platformy Azure przez wartownika, uruchom przez wartownika platformy Azure. Jako pierwszy krok wybierz obszar roboczy, w którym przechowywane są Twoje niestandardowe alerty, a następnie wybierz element menu "Analytics", aby automatycznie migrować alerty.
 
-![Alerty niestandardowe][13]
+![Niestandardowe alerty][13]
 
 Zachęcamy klientów nie interesuje Cię dołączanie do usługi Azure przez wartownika Aby ponownie utworzyć alerty za pomocą alertów dzienników usługi Azure Monitor. Aby uzyskać instrukcje, zobacz: [tworzenie, wyświetlanie i zarządzanie nimi za pomocą usługi Azure Monitor alertów usługi log](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log). Aby uzyskać instrukcje dotyczące sposobu tworzenia alertów dzienników Zobacz: [Alerty dzienników w usłudze Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log).
 
@@ -165,6 +167,8 @@ Pulpit nawigacyjny zabezpieczeń w usłudze Log analytics zawiera omówienie-wor
 
 ### <a name="security--audit-dashboard---new-experience"></a>Pulpit nawigacyjny zabezpieczenia i inspekcja — nowe środowisko
 Naszym klientom są zalecane jest użycie usługi Azure Security Center, która zawiera przegląd zabezpieczeń w tym samym w wielu subskrypcji i obszarów roboczych skojarzonych z nimi, wraz z bogatszego zestawu funkcji.
+
+Oryginalne zapytania usługi Log Analytics, używany do wypełniania zabezpieczeń i inspekcji pulpitu nawigacyjnego są dostępne w usłudze Security Center [repozytorium GitHub](https://github.com/Azure/Azure-Security-Center/tree/master/Legacy%20Log%20Analytics%20dashboards).
 
 ## <a name="next-steps"></a>Kolejne kroki
 - Dowiedz się więcej o [usługi Azure Security Center](https://docs.microsoft.com/azure/security-center/)

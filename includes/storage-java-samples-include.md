@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: 578c1eda476dccf798cd80b933fdc521450f29b2
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 41ec1940409953c7e12ffa9e919397a800591fed
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50164185"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65209790"
 ---
 ## <a name="java-sample-code-repositories"></a>Repozytoria kodu przykładowej języka Java
 
@@ -20,4 +20,3 @@ Oto lista nasze repozytoria próbki dla biblioteki klienta Java usługi Azure St
 * [Wprowadzenie do usługi plików platformy Azure w języku Java](https://azure.microsoft.com/resources/samples/storage-file-java-getting-started/)
 * [Wprowadzenie do usługi Azure Queue Service w języku Java](https://azure.microsoft.com/resources/samples/storage-queue-java-getting-started/)
 * [Wprowadzenie do usługi Azure Table Service w języku Java](https://azure.microsoft.com/resources/samples/storage-table-java-getting-started/)
-* [Przykłady biblioteki klienta Java magazynu](https://github.com/Azure/azure-storage-java/tree/master/microsoft-azure-storage-samples/src/com/microsoft/azure/storage)

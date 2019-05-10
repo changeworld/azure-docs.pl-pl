@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: ca3f537ed52da547f64aa1fb98eb82c4ea73d81d
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 5f3b0094834b1ca547ba5ddf9726068c9ea36079
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65021421"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409100"
 ---
 # <a name="about-the-speech-devices-sdk"></a>Zestaw Speech Devices SDK — informacje
 
@@ -32,7 +32,7 @@ Korzysta z zestawu Speech Devices SDK [zestaw SDK rozpoznawania mowy](speech-sdk
 
 Umożliwia także zestawu Speech Devices SDK do tworzenia otoczenia urządzeń, które mają własne [dostosowane słowo aktywujące](speech-devices-sdk-create-kws.md) tak wskaźnika, który inicjuje interakcji z użytkownikiem jest unikatowy dla Twojej marki.
 
-Zestawu Speech Devices SDK ułatwia różnych scenariuszy z obsługą głosu, takich jak [niestandardowe głosu pierwszego wirtualnego asystentów](https://aka.ms/sdsdk-assistant), dysk — do porządkowania systemów, [transkrypcji konwersacji](conversation-transcription-service.md)i inteligentnych Prelegenci. Pozwalające reagować na użytkowników z tekstu, mowy posiadającej w domyślnej lub [niestandardowych voice](how-to-customize-voice-font.md), podaj wyniki wyszukiwania [tłumaczenie](speech-translation.md) na inne języki itd. Chętnie oglądanie, jakie zapewnia!
+Zestawu Speech Devices SDK ułatwia różnych scenariuszy z obsługą głosu, takich jak [niestandardowe głosu pierwszego wirtualnego asystentów](https://aka.ms/bots/speech/va), dysk — do porządkowania systemów, [transkrypcji konwersacji](conversation-transcription-service.md)i inteligentnych Prelegenci. Pozwalające reagować na użytkowników z tekstu, mowy posiadającej w domyślnej lub [niestandardowych voice](how-to-customize-voice-font.md), podaj wyniki wyszukiwania [tłumaczenie](speech-translation.md) na inne języki itd. Chętnie oglądanie, jakie zapewnia!
 
 ## <a name="next-steps"></a>Kolejne kroki
 

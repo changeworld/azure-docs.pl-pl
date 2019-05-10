@@ -28,12 +28,12 @@ ms.author:
 - minale
 - btalb
 - prachank
-ms.openlocfilehash: 31ca0ee666ff37afa37fb9636860c557d92a52c7
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: d0124d6656167af3942e0d054b4e1fa7a2b48e8b
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924788"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65410043"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Wydajność protokołu TCP/IP automatycznego dostrajania dla maszyn wirtualnych platformy Azure
 
@@ -237,10 +237,10 @@ Są to efektywne ustawienia protokołu TCP dla `AutoTuningLevel`:
 | | | | |
 |-|-|-|-|
 |**AutoTuningLevel**|**Współczynnik skalowania**|**Mnożnik skalowania**|**Formułę<br/>Oblicz maksymalny rozmiar okna**|
-|Disabled (Wyłączony)|Brak|Brak|Rozmiar okna|
+|Wyłączono|Brak|Brak|Rozmiar okna|
 |Ograniczenia|4|2^4|Rozmiar okna * (2 ^ 4)|
 |Bardzo ograniczona|2|2^2|Rozmiar okna * (2 ^ 2)|
-|Normalna|8|2^8|Rozmiar okna * (2 ^ 8)|
+|Normalny|8|2^8|Rozmiar okna * (2 ^ 8)|
 |Eksperymentalne|14|2^14|Rozmiar okna * (2 ^ 14)|
 
 Te ustawienia są najprawdopodobniej mają wpływ na wydajność protokołu TCP, ale należy pamiętać, że wiele czynników w Internecie, niezależnych od platformy Azure, może również wpływać na wydajność protokołu TCP.
@@ -256,7 +256,7 @@ Ponieważ większy rozmiar jednostki MTU oznacza większe MSS, być może zastan
 
 ### <a name="accelerated-networking-and-receive-side-scaling"></a>Przyspieszoną sieć i skalowanie po stronie odbierania
 
-#### <a name="accelerated-networking"></a>Wydajniejsze sieci
+#### <a name="accelerated-networking"></a>Przyspieszona sieć
 
 Funkcje sieci maszyny wirtualnej w przeszłości były intensywnie z zarówno na maszynie Wirtualnej gościa i funkcji hypervisor/hosta Procesora. Każdy pakiet tranzytu za pośrednictwem hosta są przetwarzane w oprogramowaniu przez hosta procesora CPU, łącznie z wszystkich sieci wirtualnej hermetyzacji i dehermetyzacji. Dlatego więcej ruchu, który przechodzi przez hosta, załaduj większe zużycie Procesora. I Procesora hosta jest zajęty z innymi operacjami, który będzie również mieć wpływ na przepustowość sieci i czas oczekiwania. Azure rozwiązuje ten problem z przyspieszoną siecią.
 
@@ -276,7 +276,7 @@ Aby korzystać z przyspieszonej łączności sieciowej, musisz jawnie włączyć
 
 Odbieranie po stronie odbierającej (RSS) to technologia sterownika sieci bardziej efektywnie dystrybuuje odbieranie ruchu w sieci przez dystrybucję odbierać przetwarzania między wiele procesorów w systemie wieloprocesorowym. W prostych słowach RSS umożliwia systemowi przetwarzanie więcej odebrany ruch, ponieważ używa ona wszystkie dostępne procesory CPU zamiast jednego. Techniczne omówienie funkcji RSS, zobacz [wprowadzenie do skalowania po stronie odbierania](https://docs.microsoft.com/windows-hardware/drivers/network/introduction-to-receive-side-scaling).
 
-Aby uzyskać najlepszą wydajność, gdy przyspieszona sieć jest włączona na maszynie Wirtualnej, należy włączyć funkcję RSS. Funkcja RSS oferuje również, że korzyści na maszynach wirtualnych, które nie używają przyspieszoną sieć. Aby uzyskać omówienie sposobu ustalenia, czy jest włączona funkcja RSS i jak go włączyć, zobacz [optymalizacji przepływności sieci dla maszyn wirtualnych platformy Azure](http://aka.ms/FastVM).
+Aby uzyskać najlepszą wydajność, gdy przyspieszona sieć jest włączona na maszynie Wirtualnej, należy włączyć funkcję RSS. Funkcja RSS oferuje również, że korzyści na maszynach wirtualnych, które nie używają przyspieszoną sieć. Aby uzyskać omówienie sposobu ustalenia, czy jest włączona funkcja RSS i jak go włączyć, zobacz [optymalizacji przepływności sieci dla maszyn wirtualnych platformy Azure](https://aka.ms/FastVM).
 
 ### <a name="tcp-timewait-and-timewait-assassination"></a>Assassination TCP TIME_WAIT i TIME_WAIT
 
@@ -316,7 +316,7 @@ Limit przepływności stosuje się do maszyny wirtualnej. Przepływność nie ma
 
 - **Protokół**: Cały ruch wychodzący za pośrednictwem wszystkich protokołów, liczy się do limitu.
 
-Aby uzyskać więcej informacji, zobacz [przepustowość sieci maszyny wirtualnej](http://aka.ms/AzureBandwidth).
+Aby uzyskać więcej informacji, zobacz [przepustowość sieci maszyny wirtualnej](https://aka.ms/AzureBandwidth).
 
 ### <a name="internet-performance-considerations"></a>Zagadnienia dotyczące wydajności w Internecie
 

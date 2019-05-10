@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/29/2019
 ms.author: msangapu
-ms.openlocfilehash: 4b3dc019b8d5a31986f4145d9dd2f7bd86bbb467
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: d4a93bbd823db59d688f77a626b1225519fb7b44
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920054"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65407611"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>Samouczek: Tworzenie aplikacji wielokontenerowej (w wersji zapoznawczej) przy użyciu funkcji Web App for Containers
 
@@ -268,7 +268,7 @@ Wprowadzono następujące zmiany na potrzeby usługi Redis (potrzebne w kolejnej
 * [Dodano wtyczkę Redis Object Cache 1.3.8 dla rozwiązania WordPress.](https://github.com/Azure-Samples/multicontainerwordpress/blob/5669a89e0ee8599285f0e2e6f7e935c16e539b92/docker-entrypoint.sh#L74)
 * [Użyto ustawienia aplikacji dotyczącego nazwy hosta usługi Redis w pliku wp-config.php rozwiązania WordPress.](https://github.com/Azure-Samples/multicontainerwordpress/blob/5669a89e0ee8599285f0e2e6f7e935c16e539b92/docker-entrypoint.sh#L162)
 
-Aby użyć obrazu niestandardowego, należy zaktualizować plik docker-compose-wordpress.yml. W usłudze Cloud Shell wpisz `nano docker-compose-wordpress.yml`, aby otworzyć edytor tekstów nano. Zmień wartość `image: wordpress` na `image: mcr.microsoft.com/azuredocs/multicontainerwordpress`. Kontener bazy danych nie będzie już potrzebny. Usuń sekcje `db`, `environment`, `depends_on` i `volumes` z pliku konfiguracji. Zawartość pliku powinna wyglądać podobnie do następującego kodu:
+Aby użyć obrazu niestandardowego, należy zaktualizować plik docker-compose-wordpress.yml. W usłudze Cloud Shell wpisz `nano docker-compose-wordpress.yml`, aby otworzyć edytor tekstów nano. Zmień wartość `image: wordpress` na `image: microsoft/multicontainerwordpress`. Kontener bazy danych nie będzie już potrzebny. Usuń sekcje `db`, `environment`, `depends_on` i `volumes` z pliku konfiguracji. Zawartość pliku powinna wyglądać podobnie do następującego kodu:
 
 ```yaml
 version: '3.3'

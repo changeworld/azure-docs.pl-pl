@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: harijay
-ms.openlocfilehash: 7019d80c05a1953f4e57f0f42d46588310911791
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 9577a81af3da98c6e8802c586ec468a6e44e46cf
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65141112"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65442048"
 ---
 # <a name="azure-serial-console-for-linux"></a>Serial konsoli platformy Azure dla systemu Linux
 
-Konsoli szeregowej w witrynie Azure portal zapewnia dostęp do konsoli usługi oparte na tekście dla maszyn wirtualnych systemu Linux (VM) i (zestaw skalowania maszyn wirtualnych) wystąpienia zestawu skalowania maszyn wirtualnych. To połączenie szeregowe łączy do portu szeregowego COM1 maszyny Wirtualnej lub maszyny wirtualnej wystąpienia w zestawie skalowania, zapewniając dostęp do niego niezależnie od stanu sieci lub systemu operacyjnego. Konsoli szeregowej może zostać oceniony jedynie przy użyciu witryny Azure portal i jest dozwolone tylko dla tych użytkowników, którzy mają dostęp do roli współautora lub nowszej, aby zestaw skalowania maszyny Wirtualnej lub maszyny wirtualnej.
+Konsoli szeregowej w witrynie Azure portal zapewnia dostęp do konsoli usługi oparte na tekście dla maszyn wirtualnych systemu Linux (VM) i wystąpienia zestawu skalowania maszyn wirtualnych. To połączenie szeregowe łączy do portu szeregowego COM1 maszyny Wirtualnej lub maszyny wirtualnej wystąpienia w zestawie skalowania, zapewniając dostęp do niego niezależnie od stanu sieci lub systemu operacyjnego. Konsoli szeregowej może zostać oceniony jedynie przy użyciu witryny Azure portal i jest dozwolone tylko dla tych użytkowników, którzy mają dostęp do roli współautora lub nowszej, aby zestaw skalowania maszyny Wirtualnej lub maszyny wirtualnej.
 
 Konsola szeregowa działa w taki sam sposób w przypadku maszyn wirtualnych i wystąpień zestawu skalowania maszyn wirtualnych. W tym dokumencie wszystkie wystąpienia maszyn wirtualnych niejawnie obejmie wystąpień zestawu skalowania maszyny wirtualnej, chyba że określono inaczej.
 

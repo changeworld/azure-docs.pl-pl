@@ -6,16 +6,15 @@ author: mhopkins-msft
 ms.service: storage
 ms.devlang: java
 ms.topic: article
-ms.date: 01/12/2017
+ms.date: 05/03/2019
 ms.author: mhopkins
-ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: ae734215a7a8efe10f33cfbc338d09071d603232
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 3d241f1905244d3a8039372262f84ba0fd25220d
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150001"
+ms.locfileid: "65209773"
 ---
 # <a name="azure-storage-samples-using-java"></a>Przykłady usługi Azure Storage przy użyciu języka Java
 
@@ -23,172 +22,172 @@ ms.locfileid: "65150001"
 
 Poniższa tabela zawiera omówienie naszego repozytorium przykładów i scenariuszy omówione w każdym przykładzie. Kliknij łącza, aby wyświetlić odpowiedni kod przykładowy w usłudze GitHub.
 
-<table style="font-size:90%"><thead><tr><th style="font-size:110%">Endpoint</th><th style="font-size:110%">Scenariusz</th><th style="font-size:110%">Przykładowy kod</th></tr></thead><tbody> 
-<tr> 
+<table style="font-size:90%"><thead><tr><th style="font-size:110%">Endpoint</th><th style="font-size:110%">Scenariusz</th><th style="font-size:110%">Przykładowy kod</th></tr></thead><tbody>
+<tr>
 <td rowspan="16"><b>Obiekt blob</b></td>
-<td>Dołącz obiekt blob</td> 
-<td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Wprowadzenie do usługi obiektów Blob platformy Azure w języku Java</a></td> 
-</tr> 
-<tr> 
+<td>Dołącz obiekt blob</td>
+<td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Wprowadzenie do usługi obiektów Blob platformy Azure w języku Java</a></td>
+</tr>
+<tr>
 <td>Blokowy obiekt blob</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Wprowadzenie do usługi obiektów Blob platformy Azure w języku Java</a></td>
-</tr> 
-<tr> 
+</tr>
+<tr>
 <td>Szyfrowania po stronie klienta</td>
 <td><a href="https://github.com/Azure-Samples/storage-java-client-side-encryption">Rozpoczęcie korzystania z szyfrowania po stronie klienta platformy Azure w języku Java</a></td>
-</tr> 
-<tr> 
+</tr>
+<tr>
 <td>Copy Blob</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Wprowadzenie do usługi obiektów Blob platformy Azure w języku Java</a></td>
-</tr> 
-<tr> 
+</tr>
+<tr>
 <td>Tworzenie kontenera</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Wprowadzenie do usługi obiektów Blob platformy Azure w języku Java</a></td>
-</tr> 
-<tr> 
+</tr>
+<tr>
 <td>Usuwanie obiektu Blob</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Wprowadzenie do usługi obiektów Blob platformy Azure w języku Java</a></td>
-</tr> 
-<tr> 
+</tr>
+<tr>
 <td>Usuwanie kontenera</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Wprowadzenie do usługi obiektów Blob platformy Azure w języku Java</a></td>
-</tr> 
-<tr> 
+</tr>
+<tr>
 <td>Obiekt blob metadane/właściwości/Stats</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobAdvanced.java">Wprowadzenie do usługi obiektów Blob platformy Azure w języku Java</a></td>
-</tr> 
-<tr> 
+</tr>
+<tr>
 <td>Kontener właściwości listy ACL/metadanych</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobAdvanced.java">Wprowadzenie do usługi obiektów Blob platformy Azure w języku Java</a></td>
-</tr> 
-<tr> 
+</tr>
+<tr>
 <td>Pobieranie zakresów stron</td>
-<td><a href="https://github.com/Azure/azure-storage-java/blob/master/microsoft-azure-storage-test/src/com/microsoft/azure/storage/blob/CloudPageBlobTests.java">Obiekt blob typu Page testy próbki</a></td>
-</tr> 
-<tr> 
+<td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java#L399">Wprowadzenie do usługi obiektów Blob platformy Azure w języku Java</a></td>
+</tr>
+<tr>
 <td>Kontener obiektów Blob dzierżawy</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Wprowadzenie do usługi obiektów Blob platformy Azure w języku Java</a></td>
-</tr> 
-<tr> 
+</tr>
+<tr>
 <td>Kontener obiektów Blob list</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Wprowadzenie do usługi obiektów Blob platformy Azure w języku Java</a></td>
-</tr> 
-<tr> 
+</tr>
+<tr>
 <td>Stronicowy obiekt blob</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Wprowadzenie do usługi obiektów Blob platformy Azure w języku Java</a></td>
 </tr>
-<tr> 
+<tr>
 <td>SAS</td>
 <td><a href="https://github.com/Azure/azure-storage-java/blob/89540f018f1160ce55619c6fe7b5f5ff57d0ce10/src/test/java/com/microsoft/azure/storage/Samples.java#L513">Przykładowe testy sygnatury dostępu Współdzielonego</a></td>
 </tr>   
-<tr> 
+<tr>
 <td>Właściwości usługi</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobAdvanced.java">Wprowadzenie do usługi obiektów Blob platformy Azure w języku Java</a></td>
-</tr>           
-<tr> 
+</tr>
+<tr>
 <td>Wykonywanie migawki obiektu Blob</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Wprowadzenie do usługi obiektów Blob platformy Azure w języku Java</a></td>
-</tr> 
-<tr> 
+</tr>
+<tr>
 <td rowspan="9"><b>Plik</b></td>
-<td>Tworzenie udziałów/katalogów/plików</td> 
-<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java">Wprowadzenie do usługi plików platformy Azure w języku Java</a></td> 
+<td>Tworzenie udziałów/katalogów/plików</td>
+<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java">Wprowadzenie do usługi plików platformy Azure w języku Java</a></td>
 </tr>
-<tr> 
-<td>Usuwanie udziałów/katalogów/plików</td> 
-<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java">Wprowadzenie do usługi plików platformy Azure w języku Java</a></td> 
-</tr> 
-<tr> 
-<td>Metadane właściwości katalogu</td> 
-<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java">Wprowadzenie do usługi plików platformy Azure w języku Java</a></td> 
-</tr> 
-<tr> 
-<td>Pobieranie plików</td> 
-<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java">Wprowadzenie do usługi plików platformy Azure w języku Java</a></td> 
-</tr> 
-<tr> 
-<td>Plik właściwości/metadanych/metryki</td> 
-<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java">Wprowadzenie do usługi plików platformy Azure w języku Java</a></td> 
-</tr> 
-<tr> 
-<td>Właściwości usługi plików</td> 
-<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java">Wprowadzenie do usługi plików platformy Azure w języku Java</a></td> 
-</tr> 
-<tr> 
-<td>Lista katalogów i plików</td> 
-<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java">Wprowadzenie do usługi plików platformy Azure w języku Java</a></td> 
+<tr>
+<td>Usuwanie udziałów/katalogów/plików</td>
+<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java">Wprowadzenie do usługi plików platformy Azure w języku Java</a></td>
 </tr>
-<tr> 
-<td>Listy udziałów</td> 
-<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java">Wprowadzenie do usługi plików platformy Azure w języku Java</a></td> 
+<tr>
+<td>Metadane właściwości katalogu</td>
+<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java">Wprowadzenie do usługi plików platformy Azure w języku Java</a></td>
 </tr>
-<tr> 
-<td>Udostępnianie właściwości/metadanych/Stats</td> 
-<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java">Wprowadzenie do usługi plików platformy Azure w języku Java</a></td> 
+<tr>
+<td>Pobieranie plików</td>
+<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java">Wprowadzenie do usługi plików platformy Azure w języku Java</a></td>
 </tr>
-<tr> 
+<tr>
+<td>Plik właściwości/metadanych/metryki</td>
+<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java">Wprowadzenie do usługi plików platformy Azure w języku Java</a></td>
+</tr>
+<tr>
+<td>Właściwości usługi plików</td>
+<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java">Wprowadzenie do usługi plików platformy Azure w języku Java</a></td>
+</tr>
+<tr>
+<td>Lista katalogów i plików</td>
+<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java">Wprowadzenie do usługi plików platformy Azure w języku Java</a></td>
+</tr>
+<tr>
+<td>Listy udziałów</td>
+<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java">Wprowadzenie do usługi plików platformy Azure w języku Java</a></td>
+</tr>
+<tr>
+<td>Udostępnianie właściwości/metadanych/Stats</td>
+<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java">Wprowadzenie do usługi plików platformy Azure w języku Java</a></td>
+</tr>
+<tr>
 <td rowspan="8"><b>kolejki</b></td>
-<td>Dodaj komunikat</td> 
-<td><a href="https://github.com/Azure/azure-storage-java/blob/master/microsoft-azure-storage-samples/src/com/microsoft/azure/storage/queue/gettingstarted/QueueBasics.java">Przykłady biblioteki klienta Java magazynu</a></td> 
-</tr> 
-<tr> 
-<td>Szyfrowania po stronie klienta</td> 
-<td><a href="https://github.com/Azure/azure-storage-java/blob/master/microsoft-azure-storage-samples/src/com/microsoft/azure/storage/encryption/queue/gettingstarted/QueueGettingStarted.java">Przykłady biblioteki klienta Java magazynu</a></td> 
-</tr> 
-<tr> 
-<td>Tworzenie kolejki</td> 
-<td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java">Wprowadzenie do usługi Azure Queue Service w języku Java</a></td> 
-</tr> 
-<tr> 
-<td>Usuń komunikat/kolejki</td> 
-<td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java">Wprowadzenie do usługi Azure Queue Service w języku Java</a></td> 
-</tr> 
-<tr> 
-<td>Wgląd do wiadomości</td> 
-<td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java">Wprowadzenie do usługi Azure Queue Service w języku Java</a></td> 
-</tr> 
-<tr> 
-<td>Kolejka listy ACL/metadanych/Stats</td> 
-<td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueAdvanced.java">Wprowadzenie do usługi Azure Queue Service w języku Java</a></td> 
-</tr> 
-<tr> 
-<td>Właściwości usługi kolejki</td> 
-<td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueAdvanced.java">Wprowadzenie do usługi Azure Queue Service w języku Java</a></td> 
-</tr> 
-<tr> 
-<td>Aktualizacja wiadomości</td> 
-<td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java">Wprowadzenie do usługi Azure Queue Service w języku Java</a></td> 
-</tr> 
-<tr> 
+<td>Dodaj komunikat</td>
+<td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java#L63">Wprowadzenie do usługi Azure Queue Service w języku Java</a></td>
+</tr>
+<tr>
+<td>Szyfrowania po stronie klienta</td>
+<td><a href="https://github.com/Azure-Samples/storage-java-client-side-encryption/blob/master/src/gettingstarted/KeyVaultGettingStarted.java">Rozpoczęcie korzystania z szyfrowania po stronie klienta platformy Azure w języku Java</a></td>
+</tr>
+<tr>
+<td>Tworzenie kolejki</td>
+<td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java">Wprowadzenie do usługi Azure Queue Service w języku Java</a></td>
+</tr>
+<tr>
+<td>Usuń komunikat/kolejki</td>
+<td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java">Wprowadzenie do usługi Azure Queue Service w języku Java</a></td>
+</tr>
+<tr>
+<td>Wgląd do wiadomości</td>
+<td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java">Wprowadzenie do usługi Azure Queue Service w języku Java</a></td>
+</tr>
+<tr>
+<td>Kolejka listy ACL/metadanych/Stats</td>
+<td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueAdvanced.java">Wprowadzenie do usługi Azure Queue Service w języku Java</a></td>
+</tr>
+<tr>
+<td>Właściwości usługi kolejki</td>
+<td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueAdvanced.java">Wprowadzenie do usługi Azure Queue Service w języku Java</a></td>
+</tr>
+<tr>
+<td>Aktualizacja wiadomości</td>
+<td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java">Wprowadzenie do usługi Azure Queue Service w języku Java</a></td>
+</tr>
+<tr>
 <td rowspan="7"><b>Tabela</b></td>
-<td>Utwórz tabelę</td> 
-<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java">Wprowadzenie do usługi Azure Table Service w języku Java</a></td> 
-</tr> 
-<tr> 
-<td>Usuń jednostkę lub tabelę</td> 
-<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java">Wprowadzenie do usługi Azure Table Service w języku Java</a></td> 
-</tr> 
-<tr> 
-<td>Wstaw/scalania/zastępowania jednostki</td> 
-<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java">Wprowadzenie do usługi Azure Table Service w języku Java</a></td> 
-</tr> 
-<tr> 
-<td>Wykonywanie zapytań dotyczących jednostek</td> 
-<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java">Wprowadzenie do usługi Azure Table Service w języku Java</a></td> 
-</tr> 
-<tr> 
-<td>Tabele kwerendy</td> 
-<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java">Wprowadzenie do usługi Azure Table Service w języku Java</a></td> 
-</tr> 
-<tr> 
-<td>Listy ACL/właściwości tabeli</td> 
-<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableAdvanced.java">Wprowadzenie do usługi Azure Table Service w języku Java</a></td> 
-</tr> 
-<tr> 
-<td>Aktualizuj jednostki</td> 
-<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java">Wprowadzenie do usługi Azure Table Service w języku Java</a></td> 
-</tr> 
-</tbody> 
+<td>Utwórz tabelę</td>
+<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java">Wprowadzenie do usługi Azure Table Service w języku Java</a></td>
+</tr>
+<tr>
+<td>Usuń jednostkę lub tabelę</td>
+<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java">Wprowadzenie do usługi Azure Table Service w języku Java</a></td>
+</tr>
+<tr>
+<td>Wstaw/scalania/zastępowania jednostki</td>
+<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java">Wprowadzenie do usługi Azure Table Service w języku Java</a></td>
+</tr>
+<tr>
+<td>Wykonywanie zapytań dotyczących jednostek</td>
+<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java">Wprowadzenie do usługi Azure Table Service w języku Java</a></td>
+</tr>
+<tr>
+<td>Tabele kwerendy</td>
+<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java">Wprowadzenie do usługi Azure Table Service w języku Java</a></td>
+</tr>
+<tr>
+<td>Listy ACL/właściwości tabeli</td>
+<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableAdvanced.java">Wprowadzenie do usługi Azure Table Service w języku Java</a></td>
+</tr>
+<tr>
+<td>Aktualizuj jednostki</td>
+<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java">Wprowadzenie do usługi Azure Table Service w języku Java</a></td>
+</tr>
+</tbody>
 </table>
 <br/>
 

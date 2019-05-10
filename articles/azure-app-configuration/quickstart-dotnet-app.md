@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 33deea0805ffa89bcc6a64f34a97a4e080690da9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: acf1608257bc5416ff52ed9fbd4209008712f2d7
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60203676"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408707"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Szybki start: tworzenie aplikacji .NET Framework przy użyciu usługi Azure App Configuration
 
@@ -37,7 +37,7 @@ Ten przewodnik Szybki Start, instaluje [programu Visual Studio 2017](https://vis
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Wybierz **Explorer klucz/wartość** > **+ Utwórz** można dodać następujące pary klucz wartość:
+6. Wybierz **Eksplorator konfiguracji** > **+ Utwórz** można dodać następujące pary klucz wartość:
 
     | Klucz | Wartość |
     |---|---|

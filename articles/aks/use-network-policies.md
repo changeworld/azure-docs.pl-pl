@@ -5,47 +5,33 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 04/08/2019
+ms.date: 05/06/2019
 ms.author: iainfou
-ms.openlocfilehash: 29180d6c1bb5f0991a4f33c3b7c9418f84d8260c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a0512806ec797f43fc54d8a28a7cbadf86faf1d9
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61027976"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230016"
 ---
-# <a name="preview---secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>(Wersja zapoznawcza) — bezpieczny ruch między zasobników za pomocą zasad sieciowych w usłudze Azure Kubernetes Service (AKS)
+# <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Zabezpieczanie ruchu sieciowego między zasobników za pomocą zasad sieciowych w usłudze Azure Kubernetes Service (AKS)
 
 Po uruchomieniu aplikacji nowoczesnych, opartych na mikrousługach w usłudze Kubernetes, często zachodzi potrzeba kontroli, które składniki mogą komunikować się ze sobą. Zasadę najmniejszych uprawnień powinny być stosowane do jak ruch może przepływać między zasobników w klastrze usługi Azure Kubernetes Service (AKS). Załóżmy, że prawdopodobnie chcesz blokować ruch bezpośrednio do aplikacji zaplecza. *Zasad sieciowych* funkcji w usłudze Kubernetes pozwala zdefiniować reguły dla ruchu przychodzącego i wychodzącego między zasobników w klastrze.
 
-W tym artykule pokazano, jak zainstalować aparatu zasad sieciowych i Kubernetes sieci utworzone zasady służące do sterowania przepływem ruchu między zasobników w usłudze AKS. Ta funkcja jest obecnie dostępna w wersji zapoznawczej.
-
-> [!IMPORTANT]
-> Funkcje w wersji zapoznawczej usługi AKS są samoobsługi i opcjonalnych. Wersje zapoznawcze są udostępniane do zbierania opinii i błędy z naszej społeczności. Nie są one jednak obsługiwane przez pomoc techniczną systemu Azure. Jeśli tworzenie klastra lub Dodaj następujące funkcje do istniejących klastrów tego klastra jest obsługiwany, dopóki ta funkcja nie jest już dostępna w wersji zapoznawczej i absolwentów, które są ogólnie dostępne (GA).
->
-> Jeśli wystąpią problemy związane z wersji zapoznawczej, [Otwórz problem w repozytorium GitHub usługi AKS] [ aks-github] o nazwie funkcja w wersji zapoznawczej w tytuł usterki.
+W tym artykule pokazano, jak zainstalować aparatu zasad sieciowych i Kubernetes sieci utworzone zasady służące do sterowania przepływem ruchu między zasobników w usłudze AKS. Zasady sieci należy używać tylko dla węzłów opartych na systemie Linux i zasobników w usłudze AKS.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
 Potrzebujesz wiersza polecenia platformy Azure w wersji 2.0.61 lub później zainstalowane i skonfigurowane. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie przeprowadzenie instalacji lub uaktualnienia, zobacz  [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
 
-Aby utworzyć klaster usługi AKS, można użyć zasad sieciowych, należy najpierw włączyć flagi funkcji w ramach Twojej subskrypcji. Aby zarejestrować *EnableNetworkPolicy* flagę funkcji, należy użyć [az feature register] [ az-feature-register] polecenia, jak pokazano w poniższym przykładzie:
-
-```azurecli-interactive
-az feature register --name EnableNetworkPolicy --namespace Microsoft.ContainerService
-```
-
-Zajmuje kilka minut, zanim stan wyświetlany *zarejestrowanej*. Można sprawdzić stanu rejestracji za pomocą [lista funkcji az] [ az-feature-list] polecenia:
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableNetworkPolicy')].{Name:name,State:properties.state}"
-```
-
-Gdy wszystko będzie gotowe, Odśwież rejestracji *Microsoft.ContainerService* dostawcy zasobów za pomocą [az provider register] [ az-provider-register] polecenia:
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
+> [!TIP]
+> Jeśli funkcja zasad sieciowych jest używany w trakcie okresu zapoznawczego, zalecamy możesz [Utwórz nowy klaster](#create-an-aks-cluster-and-enable-network-policy).
+> 
+> Jeśli chcesz nadal korzystać z istniejących klastrów testowych, które używane zasad sieciowych w trakcie okresu zapoznawczego uaktualnienia klastra do nowych wersji rozwiązania Kubernetes dla najnowszej wersji ogólnie dostępnej, a następnie wdrożyć następujące manifest YAML Aby rozwiązać problem, którym wystąpiła awaria serwera metryki i Kubernetes pulpit nawigacyjny. Ta poprawka jest tylko wymagane dla klastrów, które używały Calico aparatu zasad sieci.
+>
+> Ze względów bezpieczeństwa [Przejrzyj zawartość tego manifestu YAML] [ calico-aks-cleanup] Aby zrozumieć, co to jest wdrażana w klastrze AKS.
+>
+> `kubectl delete -f https://raw.githubusercontent.com/Azure/aks-engine/master/docs/topics/calico-3.3.1-cleanup-after-upgrade.yaml`
 
 ## <a name="overview-of-network-policy"></a>Omówienie zasad sieciowych
 
@@ -78,6 +64,7 @@ Zasady sieci działa tylko z opcją wtyczki Azure CNI (zaawansowane). Implementa
 | Zgodność ze specyfikacją rozwiązania Kubernetes | Wszystkie typy zasad obsługiwanych |  Wszystkie typy zasad obsługiwanych |
 | Dodatkowe funkcje                      | Brak                       | Rozszerzony model zasad, składające się z globalnych zasad sieciowych, ustawienie globalne sieci i hosta punktu końcowego. Aby uzyskać więcej informacji na temat korzystania z `calicoctl` interfejsu wiersza polecenia do zarządzania są rozszerzone funkcje, zobacz [odwołań do użytkownika calicoctl][calicoctl]. |
 | Pomoc techniczna                                  | Obsługiwane, a zespół inżynierów pomocy technicznej platformy Azure | Pomoc techniczna w społeczności calico. Aby uzyskać więcej informacji na temat dodatkowych płatnej pomocy technicznej, zobacz [opcje pomocy technicznej Calico projektu][calico-support]. |
+| Rejestrowanie                                  | Zasady dodane / usunięte w IPTables są rejestrowane na każdym hoście, w obszarze */var/log/azure-npm.log* | Aby uzyskać więcej informacji, zobacz [Calico składnika dzienników][calico-logs] |
 
 ## <a name="create-an-aks-cluster-and-enable-network-policy"></a>Tworzenie klastra AKS i włączyć zasad sieciowych
 
@@ -140,7 +127,6 @@ az aks create \
     --resource-group $RESOURCE_GROUP_NAME \
     --name $CLUSTER_NAME \
     --node-count 1 \
-    --kubernetes-version 1.12.6 \
     --generate-ssh-keys \
     --network-plugin azure \
     --service-cidr 10.0.0.0/16 \
@@ -478,12 +464,13 @@ Aby dowiedzieć się więcej na temat zasad, zobacz [zasad sieciowych Kubernetes
 [kubectl-delete]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#delete
 [kubernetes-network-policies]: https://kubernetes.io/docs/concepts/services-networking/network-policies/
 [azure-cni]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
-[terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 [policy-rules]: https://kubernetes.io/docs/concepts/services-networking/network-policies/#behavior-of-to-and-from-selectors
-[aks-github]: https://github.com/azure/aks/issues]
+[aks-github]: https://github.com/azure/aks/issues
 [tigera]: https://www.tigera.io/
-[calicoctl]: https://docs.projectcalico.org/v3.5/reference/calicoctl/
+[calicoctl]: https://docs.projectcalico.org/v3.6/reference/calicoctl/
 [calico-support]: https://www.projectcalico.org/support
+[calico-logs]: https://docs.projectcalico.org/v3.6/maintenance/component-logs
+[calico-aks-cleanup]: https://github.com/Azure/aks-engine/blob/master/docs/topics/calico-3.3.1-cleanup-after-upgrade.yaml
 
 <!-- LINKS - internal -->
 [install-azure-cli]: /cli/azure/install-azure-cli
