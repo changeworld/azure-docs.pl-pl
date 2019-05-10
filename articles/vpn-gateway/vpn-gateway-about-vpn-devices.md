@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: yushwang
-ms.openlocfilehash: 188412130b059cd25952ce9bf570c4e95ebbc43a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 30558300036974a765765fe0eb0181e2a8dc73ca
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60761631"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508361"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>Informacje na temat urządzeń sieci VPN i parametrów protokołu IPsec/IKE dla połączeń bramy VPN typu lokacja-lokacja
 
@@ -42,10 +42,9 @@ Aby łatwiej skonfigurować urządzenie sieci VPN, zapoznaj się z linkami odpow
 |**Dostawca**          |**Rodzina urządzeń**     |**Minimalna wersja systemu operacyjnego** |**Instrukcje dotyczące konfiguracji typu PolicyBased** |**Instrukcje dotyczące konfiguracji typu RouteBased** |
 | ---                | ---                  | ---                   | ---            | ---           |
 | A10 Networks, Inc. |Thunder CFW           |ACOS 4.1.1             |Niezgodne  |[Przewodnik po konfiguracji](https://www.a10networks.com/resources/deployment-guides/a10-thunder-cfw-ipsec-vpn-interoperability-azure-vpn-gateways)|
-| Allied Telesis     |Routery sieci VPN z serii AR |AR-Series 5.4.7+               |Wkrótce     |[Przewodnik po konfiguracji](https://www.alliedtelesis.com/documents/how-to/configure/site-to-site-vpn-between-azure-and-ar-series-router)|
+| Allied Telesis     |Routery sieci VPN z serii AR |AR-Series 5.4.7+               |Dostępne wkrótce     |[Przewodnik po konfiguracji](https://www.alliedtelesis.com/documents/how-to/configure/site-to-site-vpn-between-azure-and-ar-series-router)|
 | Barracuda Networks, Inc. |Barracuda NextGen Firewall z serii F |PolicyBased: 5.4.3<br>RouteBased: 6.2.0 |[Przewodnik po konfiguracji](https://techlib.barracuda.com/NGF/AzurePolicyBasedVPNGW) |[Przewodnik po konfiguracji](https://techlib.barracuda.com/NGF/AzureRouteBasedVPNGW) |
 | Barracuda Networks, Inc. |Barracuda NextGen Firewall z serii X |Barracuda Firewall 6.5 |[Przewodnik po konfiguracji](https://techlib.barracuda.com/BFW/ConfigAzureVPNGateway) |Niezgodne |
-| Brocade            |Vyatta 5400 vRouter   |Virtual Router 6.6R3 GA|[Przewodnik po konfiguracji](http://www1.brocade.com/downloads/documents/html_product_manuals/vyatta/vyatta_5400_manual/wwhelp/wwhimpl/js/html/wwhelp.htm#href=VPN_Site-to-Site%20IPsec%20VPN/Preface.1.1.html) |Niezgodne |
 | Check Point |Security Gateway |R80.10 |[Przewodnik po konfiguracji](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |[Przewodnik po konfiguracji](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |
 | Cisco              |ASA       |8.3<br>8.4+ (IKEv2*) |Obsługiwane |[Przewodnik po konfiguracji*](https://www.cisco.com/c/en/us/support/docs/security/adaptive-security-appliance-asa-software/214109-configure-asa-ipsec-vti-connection-to-az.html) |
 | Cisco |ASR |PolicyBased: IOS 15.1<br>RouteBased: IOS 15.2 |Obsługiwane |Obsługiwane |
@@ -126,7 +125,7 @@ W poniższych tabelach:
 
 ### <a name="ike-phase-1-main-mode-parameters"></a>Parametry protokołu IKE — faza 1 (tryb główny)
 
-| **Właściwość**          |**PolicyBased**    | **RouteBased**    |
+| **Property**          |**PolicyBased**    | **RouteBased**    |
 | ---                   | ---               | ---               |
 | Wersja IKE           |IKEv1              |IKEv2              |
 | Grupa Diffie’ego-Hellmana  |Grupa 2 (1024 bity) |Grupa 2 (1024 bity) |
@@ -136,7 +135,7 @@ W poniższych tabelach:
 
 ### <a name="ike-phase-2-quick-mode-parameters"></a>Parametry protokołu IKE — faza 2 (tryb szybki)
 
-| **Właściwość**                  |**PolicyBased**| **RouteBased**                              |
+| **Property**                  |**PolicyBased**| **RouteBased**                              |
 | ---                           | ---           | ---                                         |
 | Wersja IKE                   |IKEv1          |IKEv2                                        |
 | Szyfrowanie i algorytmy wyznaczania wartości skrótu |1. AES256, SHA256<br>2. AES256, SHA1<br>3. AES128, SHA1<br>4. 3DES, SHA1 |[Oferty skojarzeń zabezpieczeń trybu szybkiego RouteBased](#RouteBasedOffers) |

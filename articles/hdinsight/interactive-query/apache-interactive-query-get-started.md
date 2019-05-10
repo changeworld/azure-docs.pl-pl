@@ -7,13 +7,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/22/2018
-ms.openlocfilehash: c7cee3dfd3b091d75f4dadcaa62513fddf0c0e68
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/07/2019
+ms.openlocfilehash: 9636157182e8b40914bde2515c5b295d0480255a
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64692150"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510997"
 ---
 # <a name="use-interactive-query-with-hdinsight"></a>Używanie zapytania interakcyjnego z HDInsight
 Zapytania interakcyjnego (nazywane również LLAP programu Hive Apache lub [Niskie opóźnienie analitycznego przetwarzania](https://cwiki.apache.org/confluence/display/Hive/LLAP)) jest usługi Azure HDInsight [typ klastra](../hdinsight-hadoop-provision-linux-clusters.md#cluster-types). Zapytanie interakcyjne obsługuje buforowanie w pamięci, co sprawia, że zapytania usługi Apache Hive szybsze i bardziej interaktywny.
@@ -34,10 +34,6 @@ Aby wykonać zapytania programu Hive, dostępne są następujące opcje:
 * Użyj usługi Microsoft Power BI
 
     Zobacz [danych wizualizacji interaktywnych zapytań technologii Hive z usługą Power BI w usłudze Azure HDInsight](./apache-hadoop-connect-hive-power-bi-directquery.md) zobacz [wizualizowanie danych big data dzięki usłudze Power BI w usłudze Azure HDInsight](../hadoop/apache-hadoop-connect-hive-power-bi.md).
- 
-* Korzystanie z rozwiązania Apache Zeppelin
-
-    Zobacz [Użyj Apache Zeppelin, aby uruchomić zapytania usługi Apache Hive w usłudze Azure HDInsight](../hdinsight-connect-hive-zeppelin.md).
 
 * Korzystanie z programu Visual Studio
 
@@ -61,7 +57,7 @@ Aby wykonać zapytania programu Hive, dostępne są następujące opcje:
 
 Aby znaleźć parametry połączenia łączność bazy danych języka Java (JDBC):
 
-1. Zaloguj się do systemu Apache Ambari, korzystając z następującego adresu URL: https://\<nazwy klastra\>. AzureHDInsight.net.
+1. Zaloguj się do systemu Apache Ambari, korzystając z następującego adresu URL: `https://<cluster name>.AzureHDInsight.net`.
 2. W menu po lewej stronie wybierz **Hive**.
 3. Aby skopiować adres URL, wybierz ikonę Schowka:
    

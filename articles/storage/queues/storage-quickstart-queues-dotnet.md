@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 02/06/2018
 ms.author: mhopkins
 ms.reviewer: cbrooks
-ms.openlocfilehash: c7edc64e6bacfc1ea9c2184e57a384152e02190a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: b80ff38e2afb5e9da6227537ea9c483566d03e4d
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142485"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65232598"
 ---
 # <a name="quickstart-use-net-to-create-a-queue-in-azure-storage"></a>Szybki start: Tworzenie kolejki w usłudze Azure Storage przy użyciu platformy .NET
 
@@ -145,7 +145,7 @@ Następnie omówimy przykładowy kod, aby wyjaśnić, w jaki sposób działa.
 
 ### <a name="try-parsing-the-connection-string"></a>Próba analizowania parametrów połączenia
 
-Przykładowy kod najpierw sprawdza, czy zmienna środowiskowa zawiera parametry połączenia, które można przeanalizować w celu utworzenia obiektu [CloudStorageAccount](/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount) wskazującego na konto magazynu. Aby sprawdzić, czy parametry połączenia są prawidłowe, przykład używa metody [TryParse](/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount.tryparse). Jeśli użycie metody **TryParse** zakończy się powodzeniem, zostanie zainicjowana zmienna *storageAccount* i zwrócony wynik **true**.
+Przykładowy kod najpierw sprawdza, czy zmienna środowiskowa zawiera parametry połączenia, które można przeanalizować w celu utworzenia obiektu [CloudStorageAccount](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount) wskazującego na konto magazynu. Aby sprawdzić, czy parametry połączenia są prawidłowe, przykład używa metody [TryParse](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount.tryparse). Jeśli użycie metody **TryParse** zakończy się powodzeniem, zostanie zainicjowana zmienna *storageAccount* i zwrócony wynik **true**.
 
 ```csharp
 // Retrieve the connection string for use with the application. The storage connection string is stored

@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: normesta
-ms.openlocfilehash: 61d168a5f501923812db5945fa6df439ae7e70f9
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 27adc0eeeabed2b1f2e86f301a60604a3d358b82
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65145102"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65464719"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Znane problemy związane z usługi Azure Data Lake Storage Gen2
 
@@ -57,6 +57,7 @@ W poniższej tabeli wymieniono wszystkie inne funkcje i narzędzia, które nie z
 | **Narzędzie AzCopy** | Obsługa określonej wersji <br><br>Użyj tylko najnowszą wersję programu AzCopy ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). Wcześniejszych wersjach narzędzia AzCopy takich jak narzędzia AzCopy w wersji 8.1 nie są obsługiwane.|
 | **Zasady zarządzania cyklem życia magazynu Azure Blob** | Nie jest jeszcze obsługiwany |
 | **Usługa Azure Content Delivery Network (CDN)** | Nie jest jeszcze obsługiwany|
+| **Azure Event Grid** | Nie jest jeszcze obsługiwany |
 | **Usługa Azure search** |Nie jest jeszcze obsługiwany|
 | **Azure Storage Explorer** | Obsługa określonej wersji <br><br>Użyj tylko wersji `1.6.0` lub nowszej. <br>Wersja `1.6.0` jest dostępna jako [bezpłatne materiały do pobrania](https://azure.microsoft.com/features/storage-explorer/).|
 | **Kontener obiektów blob list ACL** |Nie jest jeszcze obsługiwany|

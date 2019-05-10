@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: sample
 ms.date: 03/11/2019
-ms.openlocfilehash: f2f207b62522ceef9fe72d47026f4c2f8ed02e3b
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 0a329722b65e407f011016a1f55e86ef17b47d70
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62130433"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65192399"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>Wprowadzenie do interfejsu API tabeli usługi Azure Cosmos DB i Azure Table storage przy użyciu zestawu .NET SDK
 
@@ -135,7 +135,7 @@ Aby uzyskać pakiet NuGet, wykonaj następujące kroki:
 
 ## <a name="create-a-table"></a>Tworzenie tabeli 
 
-Klasa [CloudTableClient](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.table.cloudtableclient?redirectedfrom=MSDN&view=azure-dotnet) umożliwia pobieranie tabel i jednostek przechowywanych w usłudze Table Storage. Ponieważ firma Microsoft nie ma żadnych tabel w ramach konta interfejsu API tabeli usługi Cosmos DB, możemy dodać `CreateTableAsync` metody **Common.cs** klasy w celu utworzenia tabeli:
+Klasa [CloudTableClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.cloudtableclient) umożliwia pobieranie tabel i jednostek przechowywanych w usłudze Table Storage. Ponieważ firma Microsoft nie ma żadnych tabel w ramach konta interfejsu API tabeli usługi Cosmos DB, możemy dodać `CreateTableAsync` metody **Common.cs** klasy w celu utworzenia tabeli:
 
 ```csharp
 public static async Task<CloudTable> CreateTableAsync(string tableName)
@@ -168,7 +168,7 @@ public static async Task<CloudTable> CreateTableAsync(string tableName)
 
 ## <a name="define-the-entity"></a>Zdefiniuj jednostki 
 
-Jednostki są mapowane na C# obiektów przy użyciu niestandardowej klasy pochodne [TableEntity](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.table.tableentity.aspx). Aby dodać jednostkę do tabeli, należy utworzyć klasę, która definiuje właściwości jednostki.
+Jednostki są mapowane na C# obiektów przy użyciu niestandardowej klasy pochodne [TableEntity](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableentity). Aby dodać jednostkę do tabeli, należy utworzyć klasę, która definiuje właściwości jednostki.
 
 Kliknij prawym przyciskiem myszy nad projektem **CosmosTableSamples**. Wybierz **Dodaj**, **nowy Folder** i nadaj mu jako **modelu**. W folderze modelu należy dodać klasę o nazwie **CustomerEntity.cs** i Dodaj następujący kod do niego.
 
@@ -194,11 +194,11 @@ namespace CosmosTableSamples.Model
 }
 ```
 
-Ten kod definiuje klasę jednostki, która używa imienia klienta jako klucz wiersza i nazwiska jako klucza partycji. Razem klucz partycji i klucz wiersza jednostki jednoznacznie identyfikują jednostkę w tabeli. Jednostki z tym samym kluczem partycji mogą być przeszukiwane szybciej niż jednostki o różnych kluczach partycji, ale użycie różnych kluczy partycji umożliwia zwiększenie skalowalności operacji równoległych. Jednostki, które mają być przechowywane w tabelach muszą być obsługiwanego typu, na przykład pochodną [TableEntity](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.table.tableentity?redirectedfrom=MSDN&view=azure-dotnet) klasy. Właściwości jednostki, które zamierzasz przechowywać w tabeli, muszą być publicznymi właściwościami typu i obsługiwać zarówno pobieranie, jak i ustawianie wartości. Ponadto typ jednostki musi ujawniać konstruktor bez parametrów.
+Ten kod definiuje klasę jednostki, która używa imienia klienta jako klucz wiersza i nazwiska jako klucza partycji. Razem klucz partycji i klucz wiersza jednostki jednoznacznie identyfikują jednostkę w tabeli. Jednostki z tym samym kluczem partycji mogą być przeszukiwane szybciej niż jednostki o różnych kluczach partycji, ale użycie różnych kluczy partycji umożliwia zwiększenie skalowalności operacji równoległych. Jednostki, które mają być przechowywane w tabelach muszą być obsługiwanego typu, na przykład pochodną [TableEntity](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableentity) klasy. Właściwości jednostki, które zamierzasz przechowywać w tabeli, muszą być publicznymi właściwościami typu i obsługiwać zarówno pobieranie, jak i ustawianie wartości. Ponadto typ jednostki musi ujawniać konstruktor bez parametrów.
 
 ## <a name="insert-or-merge-an-entity"></a>Wstawianie lub scalić jednostki
 
-Poniższy przykład kodu tworzy obiekt jednostki i dodaje go do tabeli. Metoda InsertOrMerge w ramach [TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.table.tableoperation?redirectedfrom=MSDN&view=azure-dotnet) klasa służy do wstawiania lub scalić jednostki. [CloudTable.ExecuteAsync](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.table.cloudtable.executeasync?view=azure-dotnet) metoda jest wywoływana, aby wykonać operację. 
+Poniższy przykład kodu tworzy obiekt jednostki i dodaje go do tabeli. Metoda InsertOrMerge w ramach [TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableoperation) klasa służy do wstawiania lub scalić jednostki. [CloudTable.ExecuteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.cloudtable.executeasync?view=azure-dotnet) metoda jest wywoływana, aby wykonać operację. 
 
 Kliknij prawym przyciskiem myszy nad projektem **CosmosTableSamples**. Wybierz **Dodaj**, **nowy element** i Dodaj klasę o nazwie **SamplesUtils.cs**. Ta klasa przechowuje całego kodu, które są wymagane do wykonywania operacji CRUD na jednostkach. 
 
@@ -237,7 +237,7 @@ public static async Task<CustomerEntity> InsertOrMergeEntityAsync(CloudTable tab
 
 ### <a name="get-an-entity-from-a-partition"></a>Pobieranie jednostki z partycji
 
-Jednostki można uzyskać z partycji, przy użyciu metody pobierania w obszarze [TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.table.tableoperation?redirectedfrom=MSDN&view=azure-dotnet) klasy. Poniższy przykładowy kod pobiera klucz wiersz klucza partycji, poczty e-mail i numer telefonu jednostki klient. W tym przykładzie drukuje również limit jednostek żądania, używane do wykonywania zapytań dla tej jednostki. Aby wysłać zapytanie do jednostki, Dołącz następujący kod, aby **SamplesUtils.cs** pliku: 
+Jednostki można uzyskać z partycji, przy użyciu metody pobierania w obszarze [TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableoperation) klasy. Poniższy przykładowy kod pobiera klucz wiersz klucza partycji, poczty e-mail i numer telefonu jednostki klient. W tym przykładzie drukuje również limit jednostek żądania, używane do wykonywania zapytań dla tej jednostki. Aby wysłać zapytanie do jednostki, Dołącz następujący kod, aby **SamplesUtils.cs** pliku: 
 
 ```csharp
 public static async Task<CustomerEntity> RetrieveEntityUsingPointQueryAsync(CloudTable table, string partitionKey, string rowKey)

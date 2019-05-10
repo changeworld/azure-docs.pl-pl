@@ -11,14 +11,16 @@ ms.topic: quickstart
 ms.date: 05/02/2019
 ms.author: travisw
 ms.custom: ''
-ms.openlocfilehash: ee7649dccf1ca50933e29cec9d40e4f5e16bd721
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: e2b25875a0dff12bba32b033bca0c35394d407aa
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65074105"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65465644"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-uwp"></a>Szybki start: Utwórz Asystenta ustawień wirtualnego pierwszy głosu przy użyciu zestawu SDK mowy platformy uniwersalnej systemu Windows
+
+Przewodniki Szybki Start są również dostępne dla [mowy na tekst](quickstart-csharp-uwp.md) i [tłumaczenia mowy](quickstart-translate-speech-uwp.md).
 
 W tym artykule polega na opracowywaniu C# Windows platformy Uniwersalnej aplikacji za pomocą [zestaw SDK rozpoznawania mowy](speech-sdk.md). Program połączy się z wcześniej utworzone i skonfigurowane robota, aby włączyć środowisko głosu pierwszego wirtualnego Asystenta ustawień, od aplikacji klienckiej. Aplikacja będzie kompilowana przy użyciu [pakietu NuGet zestawu Speech SDK](https://aka.ms/csspeech/nuget) i programu Microsoft Visual Studio 2017 (w dowolnej wersji).
 
@@ -47,7 +49,7 @@ Ten przewodnik Szybki Start opisano krok po kroku, jak aplikacja kliencka proste
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-uwp-create-proj.md)]
 
-## <a name="add-sample-code"></a>Dodawanie przykładowego kodu
+## <a name="add-sample-code"></a>Dodaj kod przykładowy
 
 1. Interfejs użytkownika aplikacji jest definiowany przy użyciu języka XAML. Otwórz `MainPage.xaml` w Eksploratorze rozwiązań. W widoku XAML w projektancie, Zastąp całą zawartość przy użyciu poniżej.
 
@@ -80,16 +82,16 @@ Ten przewodnik Szybki Start opisano krok po kroku, jak aplikacja kliencka proste
             <MediaElement x:Name="mediaElement"/>
         </Grid>
     </Page>
-        ```
+    ```
 
-1. Open the code-behind source file `MainPage.xaml.cs`. You'll find it grouped under `MainPage.xaml`. Replace the contents with the code below. Here's what this sample covers: 
+1. Otwórz plik źródłowy związanym z kodem `MainPage.xaml.cs`. Znajdziesz go zgrupowane w obszarze `MainPage.xaml`. Zastąp zawartość z poniższym kodem. Oto, co opisano w tym przykładzie: 
 
-    * Using statements for the Speech and Speech.Dialog namespaces
-    * A simple implementation to ensure microphone access, wired to a button handler
-    * Basic UI helpers to present messages and errors in the application
-    * A landing point for the initialization code path that will be populated later
-    * A helper to play back text-to-speech (without streaming support)
-    * An empty button handler to start listening that will be populated later
+    * Za pomocą instrukcji mowy i Speech.Dialog przestrzeni nazw
+    * Proste wdrażanie, aby zapewnić dostęp do mikrofonu, podłączone do obsługi przycisku
+    * Podstawowe wątków interfejsu użytkownika do przedstawienia wiadomości i błędy w aplikacji
+    * Punkt docelowa dla inicjowania ścieżka kodu, który zostanie wypełniony później
+    * Obiekt pomocnika, aby odtworzyć ponownie zamiany tekstu na mowę (bez przesyłania strumieniowego pomocy technicznej)
+    * Program obsługi pusty przycisk rozpocząć nasłuchiwania, który zostanie wypełniony później
 
     ```csharp
     using Microsoft.CognitiveServices.Speech;
@@ -239,7 +241,7 @@ Ten przewodnik Szybki Start opisano krok po kroku, jak aplikacja kliencka proste
             }
         }
     }
-     ```
+    ```
 
 1. Następnie utworzysz `SpeechBotConnector` informacje o subskrypcji. Dodaj następujący kod do treści metody `InitializeBotConnector`, zastępując ciągi `YourChannelSecret`, `YourSpeechSubscriptionKey`, i `YourServiceRegion` własnymi wartościami dla bota subskrypcji mowy i [region](regions.md).
 

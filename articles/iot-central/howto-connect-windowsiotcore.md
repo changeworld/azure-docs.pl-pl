@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: af6d66d2e3eae80477a151323578b930dcd7727a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e8d4ab46c598580a3a87f4344202f2700926bf5c
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60886639"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510321"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Podłącz urządzenie Windows IoT Core z aplikacją usługi Azure IoT Central
 
@@ -88,7 +88,7 @@ Aplikacja utworzone na podstawie **Devkits przykładowe** szablon aplikacji zawi
 
 ### <a name="telemetry-measurements"></a>Pomiary dotyczące prawdziwych danych telemetrycznych
 
-| Nazwa pola     | Jednostki  | Minimalne | Maksimum | Miejsca dziesiętne |
+| Nazwa pola     | Jednostki  | Minimum | Maksimum | Miejsca dziesiętne |
 | -------------- | ------ | ------- | ------- | -------------- |
 | humidity       | %      | 0       | 100     | 0              |
 | Temp           | °C     | -40     | 120     | 0              |
@@ -98,17 +98,17 @@ Aplikacja utworzone na podstawie **Devkits przykładowe** szablon aplikacji zawi
 
 Ustawienia liczbowe
 
-| Nazwa wyświetlana | Nazwa pola | Jednostki | Miejsca dziesiętne | Minimalne | Maksimum | Początkowa |
+| `Display name` | Nazwa pola | Jednostki | Miejsca dziesiętne | Minimum | Maksimum | Początkowa |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | Wentylator szybkości    | fanSpeed   | OBR. / MIN   | 0              | 0       | 1000    | 0       |
 
 ### <a name="properties"></a>Właściwości
 
-| Type            | Nazwa wyświetlana | Nazwa pola | Typ danych |
+| Type            | `Display name` | Nazwa pola | Typ danych |
 | --------------- | ------------ | ---------- | --------- |
 | Właściwości urządzenia | Zdechną liczb   | dieNumber  | numer    |
-| Text            | Lokalizacja     | location   | ND       |
+| Text            | Lokalizacja     | lokalizacja   | ND       |
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Skoro już wiesz, jak połączyć z urządzeniem Raspberry Pi z aplikacją usługi Azure IoT Central, sugerowane następnym krokiem jest Dowiedz się, jak [Konfigurowanie szablonu niestandardowego urządzenia](howto-set-up-template.md) dla urządzenia IoT.
+Teraz, wyjaśniono, jak połączyć urządzenie Windows IoT Core z aplikacją usługi Azure IoT Central, sugerowane następnym krokiem jest Dowiedz się, jak [Konfigurowanie szablonu niestandardowego urządzenia](howto-set-up-template.md) dla urządzenia IoT.

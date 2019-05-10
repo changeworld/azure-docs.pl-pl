@@ -6,14 +6,14 @@ author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 04/25/2019
 ms.author: iainfou
-ms.openlocfilehash: f365fcd61944fbae131ab79a1c3660aaf02fa8d7
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 17bc1d2b7a08314f19f1bf8f87d0c774afc37500
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073930"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508179"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Często zadawane pytania dotyczące usługi Azure Kubernetes Service (AKS)
 
@@ -25,9 +25,7 @@ Aby uzyskać pełną listę dostępnych regionów, zobacz [AKS regiony i dostęp
 
 ## <a name="does-aks-support-node-autoscaling"></a>Usługa AKS obsługuje automatyczne skalowanie węzłów?
 
-Tak, automatycznego skalowania jest dostępna za pośrednictwem [skalowania automatycznego platformy Kubernetes] [ auto-scaler] od Kubernetes 1.10. Aby uzyskać więcej informacji na temat ręcznego konfigurowania i używania skalowanie klastra, zobacz [klastra funkcja automatycznego skalowania w usłudze AKS][aks-cluster-autoscale].
-
-Umożliwia także skalowanie klastra wbudowane (obecnie dostępna w wersji zapoznawczej w usłudze AKS) można zarządzać skalowaniem węzłów. Aby uzyskać więcej informacji, zobacz [automatyczne skalowanie klastra, aby spełniać wymagania aplikacji w usłudze AKS][aks-cluster-autoscaler].
+Tak, automatycznego skalowania jest dostępna za pośrednictwem [skalowania automatycznego platformy Kubernetes] [ auto-scaler] od Kubernetes 1.10. Aby uzyskać więcej informacji na temat sposobu konfigurowania i używania skalowanie klastra, zobacz [klastra funkcja automatycznego skalowania w usłudze AKS][aks-cluster-autoscale].
 
 ## <a name="does-aks-support-kubernetes-role-based-access-control-rbac"></a>Usługa AKS obsługuje kontroli dostępu opartej na rolach Kubernetes (RBAC)?
 
@@ -43,17 +41,13 @@ Nie w tej chwili. Serwera interfejsu API rozwiązania Kubernetes jest udostępni
 
 ## <a name="are-security-updates-applied-to-aks-agent-nodes"></a>Aktualizacje zabezpieczeń są stosowane do węzłów agentów AKS?
 
-Azure automatycznie stosuje poprawki zabezpieczeń do węzłów systemu Linux w klastrze nocne zgodnie z harmonogramem. Jesteś odpowiedzialny za zapewnienie, że Linux, te węzły są ponownie uruchamiane jako wymagane. Masz kilka opcji umożliwiających wykonywanie ponownego uruchamiania węzła:
+Tak, Azure automatycznie stosuje poprawki zabezpieczeń do węzłów w klastrze nocne zgodnie z harmonogramem. Jednak odpowiedzialność za zapewnienie, że węzły są ponownie uruchamiane zgodnie z wymaganiami. Masz kilka opcji umożliwiających wykonywanie ponownego uruchamiania węzła:
 
 - Ręcznie za pośrednictwem witryny Azure portal lub interfejsu wiersza polecenia platformy Azure.
 - Po uaktualnieniu klastra usługi AKS. Klaster automatycznie uaktualnienia [odizolowywanie i opróżnianie węzłów][cordon-drain], następnie przełączyć każdy węzeł kopii zapasowej przy użyciu najnowszego obrazu systemu Ubuntu i nowa wersja poprawki lub pomocniczej wersji platformy Kubernetes. Aby uzyskać więcej informacji, zobacz [Uaktualnianie klastra usługi AKS][aks-upgrade].
 - Za pomocą [Kured](https://github.com/weaveworks/kured), demon ponowny rozruch typu open source dla platformy Kubernetes. Kured działa jako [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) i monitoruje każdy węzeł na obecność pliku wskazujący, że wymagane jest ponowne uruchomienie komputera. Ponowne uruchamianie systemu operacyjnego są zarządzane w klastrze, korzystając z tych samych [odizolowywanie i opróżnianie procesu] [ cordon-drain] jako uaktualniania klastra.
 
 Aby uzyskać więcej informacji na temat używania kured zobacz [stosowania aktualizacji zabezpieczeń i jądra dla węzłów w usłudze AKS][node-updates-kured].
-
-### <a name="windows-server-nodes"></a>Węzły systemu Windows Server
-
-W przypadku węzłów systemu Windows Server (obecnie dostępna w wersji zapoznawczej w usłudze AKS) aktualizacja Windows automatycznie uruchamiania i Zastosuj najnowsze aktualizacje. Zgodnie z ustalonym harmonogramem w całym cyklu tworzenia wydań Windows Update i procesu sprawdzania poprawności należy wykonać uaktualnienie na pule węzłów systemu Windows Server, w klastrze AKS. Ten proces uaktualnienia tworzy węzły, które Uruchom najnowszego obrazu systemu Windows Server i poprawkami, a następnie usuwa starszą węzły. Aby uzyskać więcej informacji na temat tego procesu, zobacz [uaktualnienia pulę węzłów w usłudze AKS][nodepool-upgrade].
 
 ## <a name="why-are-two-resource-groups-created-with-aks"></a>Dlaczego dwie grupy zasobów są tworzone za pomocą usługi AKS
 
@@ -108,13 +102,24 @@ Obecnie natywnie AKS nie jest zintegrowany z usługą Azure Key Vault. Jednak [A
 
 ## <a name="can-i-run-windows-server-containers-on-aks"></a>Czy można uruchamiać kontenery systemu Windows Server w usłudze AKS
 
-Tak, kontenery systemu Windows Server są dostępne w wersji zapoznawczej. Do uruchamiania kontenerów systemu Windows Server w usłudze AKS, możesz utworzyć pulę węzłów z systemem Windows Server jako system operacyjny gościa. Kontenery systemu Windows Server można używać tylko systemu Windows Server w 2019 r. Aby rozpocząć pracę, [Tworzenie klastra AKS z pulą węzłów systemu Windows Server][aks-windows-cli].
-
-Obsługa puli węzeł serwera okna obejmuje pewne ograniczenia, które są częścią nadrzędnego serwera systemu Windows w projekcie platformy Kubernetes. Aby uzyskać więcej informacji na temat tych ograniczeń, zobacz [kontenery systemu Windows Server w usłudze AKS ograniczenia][aks-windows-limitations].
+Do uruchamiania kontenerów systemu Windows Server, musisz uruchomić węzłów z systemem Windows Server. Węzły na serwerze z systemem Windows nie są dostępne w usłudze AKS w tej chwili. Jednak umożliwia rozwiązania Virtual Kubelet planowanie kontenerów Windows w usłudze Azure Container Instances i zarządzać nimi w ramach klastra usługi AKS. Aby uzyskać więcej informacji, zobacz [rozwiązania Virtual Kubelet użycia za pomocą usługi AKS][virtual-kubelet].
 
 ## <a name="does-aks-offer-a-service-level-agreement"></a>AKS oferuje Umowa dotycząca poziomu usług?
 
 Umowa dotycząca poziomu usług (SLA) dostawca zgadza się, zwrócić klienta kosztu usługi, jeśli poziom opublikowanej usługi nie jest spełniony. Ponieważ AKS, sama jest bezpłatna, ma żadnych dostępnych do zwrotu kosztów i dlatego formalne umowa SLA nie. Jednak AKS dąży do zapewnienia dostępności co najmniej 99,5% do serwera interfejsu API rozwiązania Kubernetes.
+
+## <a name="why-can-i-not-set-maxpods-below-30"></a>Dlaczego I nie można ustawić `maxPods` poniżej 30?
+
+AKS obsługuje ustawienie `maxPods` wartości w czasie tworzenia klastra za pomocą szablonów interfejsu wiersza polecenia platformy Azure i usługi Azure Resource Manager. Istnieje jednak *minimalną wartość* (zweryfikowany w czasie tworzenia) dla wtyczki Kubenet i wtyczki Azure CNI pokazano poniżej:
+
+| Networking | Minimum | Maksimum |
+| -- | :--: | :--: |
+| Azure CNI | 30 | 250 |
+| Kubenet | 30 | 110 |
+
+Jak AKS to zarządzana usługa, firma Microsoft udostępnia dodatków i zasobników, możemy wdrożyć i zarządzania nimi jako część klastra. W przeszłości, użytkownicy mogą definiować `maxPods` wartości mniejszej niż wartość wymaganą dla zarządzanych zasobników uruchomić (przykład: 30) AKS teraz oblicza minimalną liczbę zasobników za pośrednictwem: ((maxPods lub (maxPods * vm_count)) > minimum zasobników zarządzanych dodatku.
+
+Użytkownicy nie mogą zastępować minimum `maxPods` sprawdzania poprawności.
 
 <!-- LINKS - internal -->
 
@@ -128,10 +133,6 @@ Umowa dotycząca poziomu usług (SLA) dostawca zgadza się, zwrócić klienta ko
 [aks-preview-cli]: /cli/azure/ext/aks-preview/aks
 [az-aks-create]: /cli/azure/aks#az-aks-create
 [aks-rm-template]: /rest/api/aks/managedclusters/createorupdate#managedcluster
-[aks-cluster-autoscaler]: cluster-autoscaler.md
-[nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
-[aks-windows-cli]: windows-container-cli.md
-[aks-windows-limitations]: windows-node-limitations.md
 
 <!-- LINKS - external -->
 

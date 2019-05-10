@@ -10,12 +10,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: ''
 manager: craigg
-ms.openlocfilehash: 271da0a6ff443fcee28bc870821f4222b3018c91
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 42c69653a002446552da998320a43730dfdaadf5
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61262240"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65232527"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Konfigurowanie środowiska Azure-SSIS Integration Runtime, dla wysoko wydajnych
 
@@ -29,31 +29,40 @@ W tym artykule opisano sposób konfigurowania środowiska Azure-SSIS Integration
 Następujące części skryptu konfiguracji zawiera właściwości, które można skonfigurować podczas tworzenia środowiska Azure-SSIS Integration Runtime. Aby uzyskać kompletny skrypt programu PowerShell i opis, zobacz [pakiety wdrażania programu SQL Server Integration Services na platformę Azure](tutorial-deploy-ssis-packages-azure-powershell.md).
 
 ```powershell
-$SubscriptionName = "<Azure subscription name>"
-$ResourceGroupName = "<Azure resource group name>"
-# Data factory name. Must be globally unique
-$DataFactoryName = "<Data factory name>" 
-$DataFactoryLocation = "EastUS" 
+# If your input contains a PSH special character, e.g. "$", precede it with the escape character "`" like "`$"
+$SubscriptionName = "[your Azure subscription name]"
+$ResourceGroupName = "[your Azure resource group name]"
+$DataFactoryName = "[your data factory name]"
+# For supported regions, see https://azure.microsoft.com/global-infrastructure/services/?products=data-factory&regions=all
+$DataFactoryLocation = "EastUS"
 
-# Azure-SSIS integration runtime information. This is a Data Factory compute resource for running SSIS packages
-$AzureSSISName = "<Specify a name for your Azure-SSIS IR>"
-$AzureSSISDescription = "<Specify description for your Azure-SSIS IR"
-# Only EastUS, NorthEurope, and WestEurope are supported.
-$AzureSSISLocation = "EastUS" 
-# Only Standard_A4_v2, Standard_A8_v2, Standard_D1_v2, Standard_D2_v2, Standard_D3_v2, Standard_D4_v2 are supported
-$AzureSSISNodeSize = "Standard_D3_v2"
-# Only 1-10 nodes are supported.
-$AzureSSISNodeNumber = 2 
-# For a Standard_D1_v2 node, 1-4 parallel executions per node are supported. For other nodes, it's 1-8.
-$AzureSSISMaxParallelExecutionsPerNode = 2 
+### Azure-SSIS integration runtime information - This is a Data Factory compute resource for running SSIS packages
+$AzureSSISName = "[specify a name for your Azure-SSIS IR]"
+$AzureSSISDescription = "[specify a description for your Azure-SSIS IR]"
+# For supported regions, see https://azure.microsoft.com/global-infrastructure/services/?products=data-factory&regions=all
+$AzureSSISLocation = "EastUS"
+# For supported node sizes, see https://azure.microsoft.com/pricing/details/data-factory/ssis/
+$AzureSSISNodeSize = "Standard_D8_v3"
+# 1-10 nodes are currently supported
+$AzureSSISNodeNumber = 2
+# Azure-SSIS IR edition/license info: Standard or Enterprise
+$AzureSSISEdition = "Standard" # Standard by default, while Enterprise lets you use advanced/premium features on your Azure-SSIS IR
+# Azure-SSIS IR hybrid usage info: LicenseIncluded or BasePrice
+$AzureSSISLicenseType = "LicenseIncluded" # LicenseIncluded by default, while BasePrice lets you bring your own on-premises SQL Server license with Software Assurance to earn cost savings from Azure Hybrid Benefit (AHB) option
+# For a Standard_D1_v2 node, up to 4 parallel executions per node are supported, but for other nodes, up to max(2 x number of cores, 8) are currently supported
+$AzureSSISMaxParallelExecutionsPerNode = 8
+# Custom setup info
+$SetupScriptContainerSasUri = "" # OPTIONAL to provide SAS URI of blob container where your custom setup script and its associated files are stored
+# Virtual network info: Classic or Azure Resource Manager
+$VnetId = "[your virtual network resource ID or leave it empty]" # REQUIRED if you use Azure SQL Database with virtual network service endpoints/Managed Instance/on-premises data, Azure Resource Manager virtual network is recommended, Classic virtual network will be deprecated soon
+$SubnetName = "[your subnet name or leave it empty]" # WARNING: Please use the same subnet as the one used with your Azure SQL Database with virtual network service endpoints or a different subnet than the one used for your Managed Instance
 
-# SSISDB info
-$SSISDBServerEndpoint = "<Azure SQL server name>.database.windows.net"
-$SSISDBServerAdminUserName = "<Azure SQL server - user name>"
-$SSISDBServerAdminPassword = "<Azure SQL server - user password>"
-# Remove the SSISDBPricingTier variable if you are using Azure SQL Database Managed Instance
-# This parameter applies only to Azure SQL Database. For the basic pricing tier, specify "Basic", not "B". For standard tiers, specify "S0", "S1", "S2", 'S3", etc.
-$SSISDBPricingTier = "<pricing tier of your Azure SQL server. Examples: Basic, S0, S1, S2, S3, etc.>"
+### SSISDB info
+$SSISDBServerEndpoint = "[your Azure SQL Database server name or Managed Instance name.DNS prefix].database.windows.net" # WARNING: Please ensure that there is no existing SSISDB, so we can prepare and manage one on your behalf
+# Authentication info: SQL or Azure Active Directory (AAD)
+$SSISDBServerAdminUserName = "[your server admin username for SQL authentication or leave it empty for AAD authentication]"
+$SSISDBServerAdminPassword = "[your server admin password for SQL authentication or leave it empty for AAD authentication]"
+$SSISDBPricingTier = "[Basic|S0|S1|S2|S3|S4|S6|S7|S9|S12|P1|P2|P4|P6|P11|P15|…|ELASTIC_POOL(name = <elastic_pool_name>) for Azure SQL Database or leave it empty for Managed Instance]"
 ```
 
 ## <a name="azuressislocation"></a>AzureSSISLocation
@@ -66,25 +75,39 @@ Usługa Data Factory, Azure-SSIS IR, w tym obsługuje następujące opcje:
 -   Standardowa\_D1\_v2
 -   Standardowa\_D2\_v2
 -   Standardowa\_D3\_v2
--   Standardowa\_D4\_v2.
+-   Standardowa\_D4\_v2
+-   Standardowa\_D2\_v3
+-   Standardowa\_D4\_v3
+-   Standardowa\_D8\_v3
+-   Standardowa\_D16\_v3
+-   Standardowa\_D32\_v3
+-   Standardowa\_D64\_v3
+-   Standardowa\_E2\_v3
+-   Standardowa\_E4\_v3
+-   Standardowa\_E8\_v3
+-   Standardowa\_E16\_v3
+-   Standardowa\_E32\_v3
+-   Standardowa\_E64\_v3
 
 W nieoficjalny wewnętrznych testowania przez zespół inżynierów SSIS, seria D wydaje się być bardziej odpowiednie dla wykonanie pakietu SSIS niż seria A.
 
--   Współczynnik wydajności/cena serii D jest wyższa niż seria A.
--   Przepływność dla serii D jest wyższa niż seria A w tej samej cenie.
+-   Współczynnik wydajności/cena serii D jest wyższa niż seria A i współczynnik wydajności/cena serii v3 jest wyższa niż seria v2.
+-   Przepływność dla serii D jest wyższa niż seria A w tej samej cenie i Przepływność dla serii v3 jest wyższy niż seria v2 w tej samej cenie.
+-   Węzły serii v2 Azure-SSIS IR nie są odpowiednie dla ustawień niestandardowych, aby zamiast tego użyj wersji 3 węzły serii. Jeśli już używasz wersji 2 węzły serii, Przełącz do użycia w wersji 3 węzły serii tak szybko, jak to możliwe.
+-   Seria E jest zoptymalizowane pod kątem pamięci rozmiary maszyn wirtualnych, które zapewnia wyższy stosunek pamięci do procesorów niż w przypadku innych maszyn. Jeśli pakiet wymaga dużej ilości pamięci, należy rozważyć, wybierając maszyny Wirtualnej serii E.
 
 ### <a name="configure-for-execution-speed"></a>Konfigurowanie dla szybkości wykonywania
 Jeśli masz wiele pakietów do uruchomienia i chcesz, aby pakiety do szybkiego uruchamiania, skorzystaj z informacji w poniższej tabeli, aby wybrać odpowiednie dla danego scenariusza typ maszyny wirtualnej.
 
-Wykonanie pojedynczy pakiet, w węźle pojedynczego procesu roboczego reprezentują te dane. Ten pakiet ładuje 10 milionów rekordów o nazwie pierwszej i ostatniej kolumny z magazynu obiektów Blob platformy Azure, generuje kolumny Imię i nazwisko i zapisuje rekordy, które mają pełną nazwę w więcej niż 20 znaków w usłudze Azure Blob Storage.
+Wykonanie pojedynczy pakiet, w węźle pojedynczego procesu roboczego reprezentują te dane. Ten pakiet ładuje 3 miliony rekordów o nazwie pierwszej i ostatniej kolumny z magazynu obiektów Blob platformy Azure, generuje kolumny Imię i nazwisko i zapisuje rekordy, które mają pełną nazwę w więcej niż 20 znaków w usłudze Azure Blob Storage.
 
-![Szybkość wykonywania pakietów SSIS Integration Runtime](media/configure-azure-ssis-integration-runtime-performance/ssisir-execution-speed.png)
+![Szybkość wykonywania pakietów SSIS Integration Runtime](media/configure-azure-ssis-integration-runtime-performance/ssisir-execution-speedV2.png)
 
 ### <a name="configure-for-overall-throughput"></a>Konfigurowanie dla ogólną przepływność
 
 Jeśli masz wiele pakietów do uruchomienia, a najbardziej interesujących Cię ogólną przepływność, skorzystaj z informacji w poniższej tabeli, aby wybrać odpowiednie dla danego scenariusza typ maszyny wirtualnej.
 
-![Środowiska SSIS Integration Runtime, ogólną przepustowość](media/configure-azure-ssis-integration-runtime-performance/ssisir-overall-throughput.png)
+![Środowiska SSIS Integration Runtime, ogólną przepustowość](media/configure-azure-ssis-integration-runtime-performance/ssisir-overall-throughputV2.png)
 
 ## <a name="azuressisnodenumber"></a>AzureSSISNodeNumber
 
@@ -92,7 +115,7 @@ Jeśli masz wiele pakietów do uruchomienia, a najbardziej interesujących Cię 
 
 ## <a name="azuressismaxparallelexecutionspernode"></a>AzureSSISMaxParallelExecutionsPerNode
 
-Jeśli już korzystasz z węzłem procesu roboczego wydajne uruchamianie pakietów, zwiększając **AzureSSISMaxParallelExecutionsPerNode** może zwiększyć ogólną przepływność środowiska integration Runtime. Maszyna wirtualna Standard_D1_v2 węzłów 1 – 4 równoległych wykonań na węzeł są obsługiwane. Dla wszystkich innych typów węzłów 1-8 równoległych wykonań na węzeł są obsługiwane.
+Jeśli już korzystasz z węzłem procesu roboczego wydajne uruchamianie pakietów, zwiększając **AzureSSISMaxParallelExecutionsPerNode** może zwiększyć ogólną przepływność środowiska integration Runtime. Maszyna wirtualna Standard_D1_v2 węzłów 1 – 4 równoległych wykonań na węzeł są obsługiwane. Dla wszystkich innych typów węzłów 1 max(2 x number of cores, 8) równoległych wykonań na węzeł są obsługiwane. Jeśli chcesz **AzureSSISMaxParallelExecutionsPerNode** przekracza maksymalną wartość obsługiwane, możesz otworzyć bilet pomocy technicznej i firma Microsoft może zwiększyć maksymalną wartość dla Ciebie i po nim, należy zaktualizować przy użyciu programu Azure Powershell  **AzureSSISMaxParallelExecutionsPerNode**.
 Można oszacować odpowiednią wartość na podstawie jej kosztu pakietu i konfiguracje dla węzłów procesu roboczego. Aby uzyskać więcej informacji, zobacz [rozmiarów maszyn wirtualnych ogólnego przeznaczenia](../virtual-machines/windows/sizes-general.md).
 
 | Rozmiar             | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maksymalna przepływność magazynu tymczasowego: Operacje We/Wy / odczyt MB/s / Zapis MB/s | Maksymalna liczba dysków danych / przepływność: Operacje wejścia/wyjścia | Maksymalna liczba kart sieciowych/oczekiwana wydajność sieci (Mb/s) |
@@ -103,6 +126,18 @@ Można oszacować odpowiednią wartość na podstawie jej kosztu pakietu i konfi
 | Standardowa\_D4\_v2 | 8    | 28          | 400                    | 24000 / 375 / 187                                          | 16 / 16 x 500                       | 8 / 6000                                       |
 | Standardowa\_A4\_v2 | 4    | 8           | 40                     | 4000 / 80 / 40                                             | 8 / 8 x 500                         | 4 / 1000                                       |
 | Standardowa\_A8\_v2 | 8    | 16          | 80                     | 8000 / 160 / 80                                            | 16 / 16 x 500                       | 8 / 2000                                       |
+| Standardowa\_D2\_v3 | 2    | 8           | 50                     | 3000 / 46 / 23                                             | 4 / 6 x 500                         | 2 / 1000                                       |
+| Standardowa\_D4\_v3 | 4    | 16          | 100                    | 6000 / 93 / 46                                             | 8 / 12 x 500                        | 2 / 2000                                       |
+| Standardowa\_D8\_v3 | 8    | 32          | 200                    | 12000 / 187 / 93                                           | 16 / 24 x 500                       | 4 / 4000                                       |
+| Standardowa\_D16\_v3| 16   | 64          | 400                    | 24000 / 375 / 187                                          | 32 / 48 x 500                        | 8 / 8000                                       |
+| Standardowa\_D32\_v3| 32   | 128         | 800                    | 48000 / 750 / 375                                          | 32 / 96 x 500                       | 8 / 16 000                                      |
+| Standardowa\_D64\_v3| 64   | 256         | 1600                   | 96000 / 1000 / 500                                         | 32 / 192 x 500                      | 8 / 30000                                      |
+| Standardowa\_E2\_v3 | 2    | 16          | 50                     | 3000 / 46 / 23                                             | 4 / 6 x 500                         | 2 / 1000                                       |
+| Standardowa\_E4\_v3 | 4    | 32          | 100                    | 6000 / 93 / 46                                             | 8 / 12 x 500                        | 2 / 2000                                       |
+| Standardowa\_E8\_v3 | 8    | 64          | 200                    | 12000 / 187 / 93                                           | 16 / 24 x 500                       | 4 / 4000                                       |
+| Standardowa\_E16\_v3| 16   | 128         | 400                    | 24000 / 375 / 187                                          | 32 / 48 x 500                       | 8 / 8000                                       |
+| Standardowa\_E32\_v3| 32   | 256         | 800                    | 48000 / 750 / 375                                          | 32 / 96 x 500                       | 8 / 16 000                                      |
+| Standardowa\_E64\_v3| 64   | 432         | 1600                   | 96000 / 1000 / 500                                         | 32 / 192 x 500                      | 8 / 30000                                      |
 
 Poniżej przedstawiono wskazówki dotyczące ustawiania odpowiednie wartości dla **AzureSSISMaxParallelExecutionsPerNode** właściwości: 
 
@@ -117,6 +152,8 @@ Poniżej przedstawiono wskazówki dotyczące ustawiania odpowiednie wartości dl
 -   Jeśli nie dba o szybkość wykonywania pakietów kolejki i załaduj dziennik wykonywania, można wybierać najniższej warstwy cenowej bazy danych. Usługa Azure SQL Database dzięki cenom podstawowych obsługuje 8 procesów roboczych w wystąpienie infrastruktury integration runtime.
 
 -   Wybierz bazę danych bardziej wydajne niż wersja podstawowa, czy liczba procesów roboczych jest więcej niż 8, liczba rdzeni wynosi więcej niż 50. W przeciwnym razie bazy danych staje się wąskim gardłem wystąpienia środowiska uruchomieniowego integracji i ogólną wydajność jest obniżona.
+
+-   Wybierz bardziej wydajne bazy danych, np. s3, jeśli poziom rejestrowania jest ustawiony na pełne. Zgodnie z naszym nieoficjalny testów wewnętrznych, warstwy cenowej s3 może obsługiwać wykonanie pakietu SSIS przy użyciu 2 węzłów, 128 liczby równolegle i na poziomie pełne rejestrowanie.
 
 Można również dostosować bazy danych na podstawie warstwy cenowej [jednostek transakcji bazy danych](../sql-database/sql-database-what-is-a-dtu.md) (DTU) informacje o użyciu w witrynie Azure portal.
 

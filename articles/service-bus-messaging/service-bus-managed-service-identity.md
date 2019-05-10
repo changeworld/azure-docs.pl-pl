@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/01/2018
 ms.author: aschhab
-ms.openlocfilehash: 5edeebd9698384785082e5a441c24e136ed22481
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: abba0e15314387aed09e39f05d9127f346f9c799
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61317079"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65228393"
 ---
 # <a name="managed-identities-for-azure-resources-with-service-bus"></a>Zarządzanych tożsamości dla zasobów platformy Azure z usługą Service Bus 
 
@@ -29,7 +29,7 @@ Za pomocą tożsamości zarządzanych platformy Azure zarządza tą tożsamości
 
 ## <a name="service-bus-roles-and-permissions"></a>Uprawnienia i role usługi Service Bus
 
-Tożsamość zarządzana można dodać tylko do ról "Właściciel" lub "Współautor" w przestrzeni nazw usługi Service Bus. Przyzna tożsamości pełnej kontroli, który dla wszystkich jednostek w przestrzeni nazw. Jednak zarządzania, które operacje, aby zmienić topologii przestrzeni nazw są początkowo tylko jednak obsługiwane usługi Azure Resource Manager. Nie jest za pomocą natywnego interfejsu zarządzania interfejsu REST usługi Service Bus. Ta obsługa oznacza, że nie można użyć klienta programu .NET Framework [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) obiektu w tożsamość zarządzaną.
+Tożsamość zarządzana można dodać tylko do ról "Właściciel" lub "Współautor" w przestrzeni nazw usługi Service Bus. Przyzna tożsamości pełnej kontroli, który dla wszystkich jednostek w przestrzeni nazw. Jednak zarządzania, które operacje, aby zmienić topologii przestrzeni nazw są początkowo tylko jednak obsługiwane usługi Azure Resource Manager. Nie jest za pomocą natywnego interfejsu zarządzania interfejsu REST usługi Service Bus. Ta obsługa oznacza, że nie można użyć klienta programu .NET Framework [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) lub .NET Standard client [ManagementClient](/dotnet/api/microsoft.azure.servicebus.management.managementclient) obiektów w ramach tożsamości zarządzanej.
 
 ## <a name="use-service-bus-with-managed-identities-for-azure-resources"></a>Za pomocą usługi Service Bus zarządzanych tożsamości dla zasobów platformy Azure
 

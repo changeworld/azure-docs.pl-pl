@@ -7,13 +7,13 @@ ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.date: 04/22/2019
-ms.openlocfilehash: bdf3d719627673bfb2c6b25957abb849c46d4e9e
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.date: 04/30/2019
+ms.openlocfilehash: dbef7c2cb8de5a1b4bbb3073f694b8f77c9f441b
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63767264"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231287"
 ---
 # <a name="tutorial-configure-role-based-access-control-rbac-roles-in-azure-kubernetes-service-aks-using-ansible"></a>Samouczek: Konfigurowania ról kontroli dostępu opartej na rolach w usłudze Azure Kubernetes Service (AKS) za pomocą rozwiązania Ansible
 
@@ -32,9 +32,9 @@ AKS, może być skonfigurowana do używania [usługi Azure Active Directory (AD)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
-- [!INCLUDE [open-source-devops-prereqs-create-service-principal.md](../../includes/open-source-devops-prereqs-create-service-principal.md)]
-- [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
+[!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
+[!INCLUDE [open-source-devops-prereqs-create-service-principal.md](../../includes/open-source-devops-prereqs-create-service-principal.md)]
+[!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 - **Zainstaluj bibliotekę firmę Red Hat OpenShift** - `pip install openshift`
 
 ## <a name="configure-azure-ad-for-aks-authentication"></a>Konfigurowanie usługi Azure AD do uwierzytelniania w usłudze AKS

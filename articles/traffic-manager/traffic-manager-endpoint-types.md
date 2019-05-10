@@ -12,19 +12,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2017
 ms.author: kumud
-ms.openlocfilehash: b609a0ace0b428e1af81634c6a25485e3a5e89bb
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: dc76f56b6c05f22a380ff33715fe22e8c72e4891
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64916660"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508436"
 ---
 # <a name="traffic-manager-endpoints"></a>Punkty końcowe usługi Traffic Manager
 Microsoft Azure Traffic Manager umożliwia kontrolowanie sposobu dystrybucji ruchu sieciowego do wdrożenia aplikacji działające w różnych centrach danych. Skonfiguruj każde wdrożenie aplikacji jako punktu końcowego w usłudze Traffic Manager. Gdy usługa Traffic Manager odbiera żądanie DNS, wybiera dostępnego punktu końcowego do zwrócenia w odpowiedzi DNS. Usługa Traffic manager Określa wybór na bieżący stan punktu końcowego i metody routingu ruchu. Aby uzyskać więcej informacji, zobacz [jak działa usługa Traffic Manager](traffic-manager-how-it-works.md).
 
 Istnieją trzy typy obsługiwanych przez usługę Traffic Manager punktu końcowego:
 * **Punkty końcowe platformy Azure** używane w przypadku usług hostowanych na platformie Azure.
-* **Zewnętrzne punkty końcowe** są używane dla adresów IPv4 i IPv6 lub, w przypadku usług hostowanych poza systemem Azure, która może być lokalne lub u innego dostawcy usług hostingowych.
+* **Zewnętrzne punkty końcowe** są używane dla adresów IPv4 i IPv6, nazwy FQDN, lub dla usług hostowanych poza systemem Azure, która może być lokalne lub u innego dostawcy usług hostingowych.
 * **Zagnieżdżone punktów końcowych** są używane do łączenia profilów usługi Traffic Manager, aby utworzyć bardziej elastyczne systemy kierowania ruchu do obsługi wymagań większych i bardziej złożonych wdrożeń.
 
 Nie ma żadnych ograniczeń, w jaki sposób punktów końcowych o różnych typach są łączone w jeden profil usługi Traffic Manager. Każdy profil może zawierać żadnych różne typy punktów końcowych.
@@ -36,7 +36,7 @@ W poniższych sekcjach opisano każdy typ punktu końcowego w dokładniej.
 Punkty końcowe platformy Azure używane w przypadku usług opartych na platformie Azure w usłudze Traffic Manager. Obsługiwane są następujące typy zasobów platformy Azure:
 
 * Usługi PaaS w chmurze.
-* Web Apps
+* Aplikacje internetowe
 * Miejsc aplikacji sieci Web
 * Zasoby publicznego adresu IP (które mogą być podłączone do maszyn wirtualnych bezpośrednio lub za pośrednictwem usługi Azure Load Balancer). Publiczny adres IP musi mieć nazwę DNS, przypisany do użycia w profilu usługi Traffic Manager.
 
@@ -46,7 +46,7 @@ Korzystając z punkty końcowe platformy Azure, usługa Traffic Manager wykrywa 
 
 ## <a name="external-endpoints"></a>Zewnętrzne punkty końcowe
 
-Zewnętrzne punkty końcowe są używane dla obu adresów IPv4 i IPv6 lub usługi spoza platformy Azure. Korzystanie z punktami końcowymi adresów IPv4 i IPv6 zezwala na ruch Menedżera do sprawdzenia kondycji punktów końcowych bez nazwy DNS dla nich. Co w efekcie usługi Traffic Manager może odpowiadać na zapytania o rekordy A i AAAA, gdy zwracany jest ten punkt końcowy w odpowiedzi. Usługi spoza platformy Azure mogą obejmować usługi hostowanej lokalnie lub u innego dostawcy. Zewnętrzne punkty końcowe można użyć pojedynczo lub w połączeniu z punktami końcowymi usługi Azure w tym samym profilu usługi Traffic Manager, z wyjątkiem punktów końcowych, określony jako adresów IPv4 lub IPv6, które mogą być tylko zewnętrzne punkty końcowe. Łącząc punkty końcowe platformy Azure przy użyciu zewnętrzne punkty końcowe umożliwia różne scenariusze:
+Zewnętrzne punkty końcowe są używane dla obu adresów IPv4 i IPv6, nazwy FQDN, lub usługi spoza platformy Azure. Korzystanie z punktami końcowymi adresów IPv4 i IPv6 zezwala na ruch Menedżera do sprawdzenia kondycji punktów końcowych bez nazwy DNS dla nich. Co w efekcie usługi Traffic Manager może odpowiadać na zapytania o rekordy A i AAAA, gdy zwracany jest ten punkt końcowy w odpowiedzi. Usługi spoza platformy Azure mogą obejmować usługi hostowanej lokalnie lub u innego dostawcy. Zewnętrzne punkty końcowe można użyć pojedynczo lub w połączeniu z punktami końcowymi usługi Azure w tym samym profilu usługi Traffic Manager, z wyjątkiem punktów końcowych, określony jako adresów IPv4 lub IPv6, które mogą być tylko zewnętrzne punkty końcowe. Łącząc punkty końcowe platformy Azure przy użyciu zewnętrzne punkty końcowe umożliwia różne scenariusze:
 
 * Obejmij zwiększenia nadmiarowości istniejącej aplikacji w środowisku lokalnym albo model trybu failover active-active lub active-passive przy użyciu platformy Azure. 
 * Kierowanie ruchu do punktów końcowych, które nie mają skojarzonych z nimi nazwy DNS. Ponadto Zmniejsz ogólny czas oczekiwania wyszukiwania DNS, usuwając potrzeba wykonania drugiej zapytanie DNS w celu uzyskania adresu IP, nazwy DNS, zwracane. 

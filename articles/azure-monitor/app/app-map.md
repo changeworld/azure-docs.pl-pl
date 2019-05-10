@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 89aa5006882680205816e7e5d1e7e55b9c4b2ab0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 618453ec9857254fe14608df8091bb79bd3815b7
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60693191"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65509964"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Mapa aplikacji: Klasyfikacja aplikacji rozproszonych
 
@@ -68,7 +68,7 @@ Rozwiązywanie problemów z wydajnością, wybierz **Zbadaj wydajność**.
 
 ### <a name="go-to-details"></a>Przejdź do szczegółów
 
-Wybierz **przejdź do szczegółów** Eksplorowanie środowiska transakcji end-to-end, które może zaoferować widoków gotowe, aby poziom stosu wywołań.
+Wybierz **przejdź do szczegółów** Eksplorowanie środowiska transakcji end-to-end, które może zaoferować widoków do poziomu stosu wywołań.
 
 ![Zrzut ekranu przedstawiający przycisk Przejdź do szczegółów](media/app-map/go-to-details.png)
 

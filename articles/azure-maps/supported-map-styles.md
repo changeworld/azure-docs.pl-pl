@@ -3,17 +3,17 @@ title: Obsługiwane style mapy w usługi Azure Maps | Dokumentacja firmy Microso
 description: Obsługiwane przez usługi Azure Maps style mapy
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/12/2019
+ms.date: 05/06/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 76ab49c7f28260249483bf3bc4387e8cbaca13b2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: db396ad06bf46cbbaf486696b68393a6a4214c2f
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60767216"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230830"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Usługi Azure Maps obsługiwane style mapy
 Usługi Azure Maps obsługuje kilka różnych mapy wbudowane style, zgodnie z poniższym opisem.
@@ -56,6 +56,17 @@ Ten styl mapy jest hybrydą, dróg i nałożony na podstawie satelitarne i zdję
 **Odpowiednie interfejsy API:**
 * Kontrolki mapy Javascript 
 * Kontrolki mapy dla systemu android
+
+
+## <a name="grayscalelight"></a>grayscale_light
+**Skala szarości światła** jest uproszczonej wersji style mapy drogowej.
+
+![jasny skali szarości](./media/supported-map-styles/grayscale_light.png)
+
+**Odpowiednie interfejsy API:**
+* Kontrolki mapy Javascript
+* Kontrolki mapy dla systemu android
+
 
 ## <a name="night"></a>nocne
 **nocne** ciemny wersja style mapy drogowej z kolorowym drogach i symbole.

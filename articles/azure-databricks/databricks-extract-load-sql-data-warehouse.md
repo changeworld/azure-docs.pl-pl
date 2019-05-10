@@ -7,18 +7,17 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
-ms.workload: Active
-ms.date: 02/15/2019
-ms.openlocfilehash: e306245da2c76560ad447358fa1a57e491c370ee
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/07/2019
+ms.openlocfilehash: e2110378d16ff5826b8ded4620276b784ef1d68e
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60239349"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65203350"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Samouczek: Wyodrębnianie, przekształcanie i ładowanie danych przy użyciu usługi Azure Databricks
 
-W ramach tego samouczka wykonasz operację ETL (wyodrębnianie, przekształcanie i ładowanie danych) przy użyciu usługi Azure Databricks. Wyodrębnisz dane z usługi Azure Data Lake Storage Gen2 do usługi Azure Databricks, uruchomisz przekształcenia danych w usłudze Azure Databricks, a następnie załadujesz przekształcone dane do usługi Azure SQL Data Warehouse.
+W ramach tego samouczka wykonasz operację ETL (wyodrębnianie, przekształcanie i ładowanie danych) przy użyciu usługi Azure Databricks. Wyodrębnianie danych z usługi Azure Data Lake Storage Gen2 do usługi Azure Databricks, uruchom przekształcenia na danych w usłudze Azure Databricks i ładowania przekształconych danych Azure SQL Data Warehouse.
 
 W procedurach opisanych w tym samouczku do przesyłania danych do usługi Azure Databricks służy łącznik SQL Data Warehouse dla usługi Azure Databricks. Ten łącznik z kolei używa usługi Azure Blob Storage jako magazynu tymczasowego dla danych przesyłanych między klastrem usługi Azure Databricks a usługą Azure SQL Data Warehouse.
 
@@ -48,13 +47,13 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Przed rozpoczęciem tego samouczka wykonaj następujące zadania:
 
-* Utwórz magazyn danych Azure SQL Data Warehouse, utwórz regułę zapory na poziomie serwera i nawiąż połączenie z serwerem jako administrator serwera. Zobacz [Szybki start: tworzenie bazy danych w usłudze Azure SQL Data Warehouse](../sql-data-warehouse/create-data-warehouse-portal.md).
+* Utwórz magazyn danych Azure SQL Data Warehouse, utwórz regułę zapory na poziomie serwera i nawiąż połączenie z serwerem jako administrator serwera. Zobacz [Szybki start: Tworzenie i wysyłanie zapytań usługi Azure SQL data warehouse w witrynie Azure portal](../sql-data-warehouse/create-data-warehouse-portal.md).
 
 * Utwórz klucz główny bazy danych dla magazynu danych Azure SQL Data Warehouse. Zobacz [Tworzenie klucza głównego bazy danych](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key).
 
-* Utwórz konto usługi Azure Blob Storage i zawarty w nim kontener. Ponadto pobierz klucz dostępu, aby uzyskać dostęp do konta magazynu. Zobacz [Szybki start: tworzenie konta usługi Azure Blob Storage](../storage/blobs/storage-quickstart-blobs-portal.md).
+* Utwórz konto usługi Azure Blob Storage i zawarty w nim kontener. Ponadto pobierz klucz dostępu, aby uzyskać dostęp do konta magazynu. Zobacz [Szybki start: Przekazywanie, pobieranie i wyświetlanie listy obiektów blob w witrynie Azure portal](../storage/blobs/storage-quickstart-blobs-portal.md).
 
-* Utwórz konto usługi Azure Data Lake Storage Gen2. Zobacz [Tworzenie konta usługi Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-quickstart-create-account.md).
+* Utwórz konto usługi Azure Data Lake Storage Gen2. Zobacz [Szybki start: Tworzenie konta magazynu Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-quickstart-create-account.md).
 
 *  Tworzenie jednostki usługi. Zobacz [Instrukcje: używanie portalu do tworzenia aplikacji usługi Azure AD i jednostki usługi w celu uzyskiwania dostępu do zasobów](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
@@ -355,6 +354,11 @@ Jak wspomniano wcześniej, łącznik magazynu danych SQL korzysta z usługi Azur
        .mode("overwrite")
        .save()
    ```
+
+   > [!NOTE]
+   > W tym przykładzie użyto `forward_spark_azure_storage_credentials` flagi, co powoduje, że usługa SQL Data Warehouse na dostęp do danych z magazynu obiektów blob przy użyciu klucza dostępu. Jest to jedyna obsługiwana metoda uwierzytelniania.
+   >
+   > Jeśli usługi Azure Blob Storage jest ograniczone do wybrania sieci wirtualne, usługa SQL Data Warehouse wymaga [tożsamości usługi zarządzanej zamiast kluczy dostępu](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Spowoduje to błąd "to żądanie nie ma uprawnień do wykonania tej operacji."
 
 6. Połącz się z usługą SQL Database i sprawdź, czy jest widoczna baza danych o nazwie **SampleTable**.
 

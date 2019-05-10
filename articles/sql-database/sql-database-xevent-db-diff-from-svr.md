@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: jrasnik
 manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: 2dd3b9f0d1d8d61b2311977774c8b0f7267caa9e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7f742b094575b78f453fb735b23cc5319a27fa7e
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60331018"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65206653"
 ---
 # <a name="extended-events-in-sql-database"></a>Rozszerzone zdarzenia w bazie danych SQL
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
@@ -170,8 +170,8 @@ Konieczne jest posiadanie **kontroli** uprawnień w bazie danych do wysyłania *
 
 Token sygnatury dostępu Współdzielonego, możesz wygenerować dla kontenera usługi Azure Storage, należy określić **rwl** uprawnienia. **Rwl** wartość zawiera następujące uprawnienia:
 
-- Odczyt
-- Zapisywanie
+- Odczytaj
+- Zapis
 - List
 
 ## <a name="performance-considerations"></a>Zagadnienia dotyczące wydajności
@@ -197,7 +197,7 @@ Jeśli zostanie wyświetlony komunikat o błędzie stwierdzający, że zostało 
 - [Jak używać magazynu obiektów Blob w języku .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
 - [CREATE CREDENTIAL (Transact-SQL)](https://msdn.microsoft.com/library/ms189522.aspx)
 - [CREATE EVENT SESSION (Transact-SQL)](https://msdn.microsoft.com/library/bb677289.aspx)
-- [Wpisy na blogu Jonathana Kehayias o rozszerzonych zdarzeniach w programie Microsoft SQL Server](http://www.sqlskills.com/blogs/jonathan/category/extended-events/)
+- [Wpisy na blogu Jonathana Kehayias o rozszerzonych zdarzeniach w programie Microsoft SQL Server](https://www.sqlskills.com/blogs/jonathan/category/extended-events/)
 
 
 - Azure *aktualizacji usługi* strony sieci Web, zawężony za pomocą parametru do usługi Azure SQL Database:

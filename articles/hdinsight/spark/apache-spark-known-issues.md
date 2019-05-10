@@ -67,7 +67,7 @@ Klastry HDInsight Spark nie obsługują łącznik Spark Phoenix.
 
 **Środki zaradcze:**
 
-Zamiast tego należy użyć łącznika Spark HBase. Aby uzyskać instrukcje, zobacz [sposób korzystania z łącznika Spark HBase](https://web.archive.org/web/20190112153146/ https://blogs.msdn.microsoft.com/azuredatalake/2016/07/25/hdinsight-how-to-use-spark-hbase-connector/).
+Zamiast tego należy użyć łącznika Spark HBase. Aby uzyskać instrukcje, zobacz [sposób korzystania z łącznika Spark HBase](https://web.archive.org/web/20190112153146/https://blogs.msdn.microsoft.com/azuredatalake/2016/07/25/hdinsight-how-to-use-spark-hbase-connector/).
 
 ## <a name="issues-related-to-jupyter-notebooks"></a>Problemy związane z notesów programu Jupyter
 Poniżej przedstawiono niektóre znane problemy związane z notesów programu Jupyter.

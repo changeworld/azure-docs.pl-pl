@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: c8504c6bf25b186a4bc87c4e7565444dd3e57209
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2c1497589153f1dc5a79cc1d3414966deaf11f21
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64570485"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65228106"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>Użyj interfejsu API REST programu Apache Spark, aby przesłać zdalnej obsługi zadań do klastra usługi HDInsight Spark
 
@@ -153,13 +153,7 @@ Wykonaj poniższe czynności:
 
 ## <a name="updates-to-livy-configuration-starting-with-hdinsight-35-version"></a>Aktualizacje konfiguracji usługi Livy, począwszy od wersji HDInsight 3.5
 
-HDInsight 3.5 klastrów i powyżej, domyślnie wyłączyć użycie lokalne ścieżki do plików do dostępu do przykładowych plików danych lub plikach JAR. Firma Microsoft zachęca do użycia `wasb://` ścieżkę zamiast tego dostępu plikach JAR i przykładowe dane plików z klastra. Jeśli chcesz użyć ścieżki lokalnej, należy odpowiednio Zaktualizuj konfigurację systemu Ambari. W tym celu:
-
-1. Przejdź do portalu Ambari klastra. Interfejs użytkownika sieci Web Ambari jest dostępna w klastrze usługi HDInsight w https://**CLUSTERNAME**. azurehdidnsight.net, gdzie CLUSTERNAME jest nazwą klastra.
-
-2. Na lewym pasku nawigacyjnym kliknij **Livy**, a następnie kliknij przycisk **Configs**.
-
-3. W obszarze **domyślnej usługi livy** Dodaj nazwę właściwości `livy.file.local-dir-whitelist` i ustaw jej wartość na **"/"** aby zezwolenia na pełny dostęp do systemu plików. Jeśli chcesz zezwolić na dostęp tylko do określonego katalogu, należy podać ścieżkę do tego katalogu jako wartość.
+HDInsight 3.5 klastrów i powyżej, domyślnie wyłączyć użycie lokalne ścieżki do plików do dostępu do przykładowych plików danych lub plikach JAR. Firma Microsoft zachęca do użycia `wasb://` ścieżkę zamiast tego dostępu plikach JAR i przykładowe dane plików z klastra. 
 
 ## <a name="submitting-livy-jobs-for-a-cluster-within-an-azure-virtual-network"></a>Przesyłanie zadań usługi Livy klastra w ramach sieci wirtualnej platformy Azure
 

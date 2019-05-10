@@ -1,21 +1,21 @@
 ---
 title: Transkrypcja wielu uczestników rozmowy z zestawem SDK mowy — usługi mowy
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak używać usługi transkrypcji konwersacji z zestawem SDK rozpoznawania mowy. Dostępne dla C++, C#i Java.
+description: Dowiedz się, jak używać transkrypcji konwersacji z zestawem SDK rozpoznawania mowy. Dostępne dla C++, C#i Java.
 services: cognitive-services
 author: jhakulin
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 05/06/2019
 ms.author: jhakulin
-ms.openlocfilehash: 73ab4cfa92a1efc49dea16ba2941cf16b7a1cf3e
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: e9de4faf18c54f7c7582ef5a8ab0648629d4f48e
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025794"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190150"
 ---
 # <a name="transcribe-multi-participant-conversations-with-the-speech-sdk"></a>Transkrypcja wielu uczestników rozmowy z zestawem SDK rozpoznawania mowy
 
@@ -24,7 +24,7 @@ Zestaw SDK rozpoznawania mowy **ConversationTranscriber** interfejs API umożliw
 ## <a name="limitations"></a>Ograniczenia
 
 * Konwersacja programu transcriber jest obsługiwana w przypadku C++, C#i języka Java na Windows, Linux i Android.
-* Mxchip ROOBO to środowisko obsługiwanego sprzętu, do tworzenia konwersacji, ponieważ zapewniający cykliczne tablica wielu mikrofonu, która może być wykorzystana efektywnie przez usługę transkrypcji konwersacji identyfikacji osoby mówiącej. [Aby uzyskać więcej informacji, zobacz zestawu Speech Devices SDK](speech-devices-sdk.md). 
+* Mxchip ROOBO to środowisko obsługiwanego sprzętu, do tworzenia konwersacji, ponieważ zapewniający cykliczne tablica wielu mikrofonu, która może być wykorzystana efektywnie przez usługę transkrypcji konwersacji identyfikacji osoby mówiącej. [Aby uzyskać więcej informacji, zobacz zestawu Speech Devices SDK](speech-devices-sdk.md).
 * Obsługa zestawu SDK rozpoznawania mowy jest ograniczona do użytkowania audio ściągania i wypychania strumienie trybu z ośmiu kanałach audio PCM.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -78,7 +78,7 @@ class Program
 
 Transkrypcja rozmów z wielu uczestników, należy utworzyć `ConversationTranscriber` obiekt, który jest skojarzony z `AudioConfig` obiekt utworzony dla sesji konwersacji i strumień audio przy użyciu `PullAudioInputStream` lub `PushAudioInputStream`.
 
-Załóżmy, że masz ConversationTranscriber klasę o nazwie `MyConversationTranscriber`. Twój kod może wyglądać następująco: 
+Załóżmy, że masz ConversationTranscriber klasę o nazwie `MyConversationTranscriber`. Twój kod może wyglądać następująco:
 
 ```csharp
 using Microsoft.CognitiveServices.Speech;
@@ -97,7 +97,7 @@ public class MyConversationTranscriber
         var stopTranscription = new TaskCompletionSource<int>();
 
         // Create an audio stream from a wav file.
-        // Replace with your own audio file name and Helper class which implements AudioConfig using PullAudioInputStreamCallback 
+        // Replace with your own audio file name and Helper class which implements AudioConfig using PullAudioInputStreamCallback
         using (var audioInput = Helper.OpenWavFile(@"8channelsOfRecordedPCMAudio.wav"))
         {
             // Creates a conversation transcriber using audio stream input.

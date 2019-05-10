@@ -6,16 +6,15 @@ author: mhopkins-msft
 ms.service: storage
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/12/2017
+ms.date: 05/03/2019
 ms.author: mhopkins
-ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: 3874bf4e4b51354f14c9aa6357ee1c0d9033e545
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: df7c14f1ee83015303657f9a0babde3d60c92292
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142553"
+ms.locfileid: "65209685"
 ---
 # <a name="azure-storage-samples-using-net"></a>Przykłady usługi Azure Storage przy użyciu platformy .NET
 
@@ -27,7 +26,7 @@ Poniższa tabela zawiera omówienie naszego repozytorium przykładów i scenariu
 <tr> 
 <td rowspan="16"><b>Obiekt blob</b></td>
 <td>Dołącz obiekt blob</td> 
-<td><a href="https://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.cloudblobcontainer.getappendblobreference.aspx">Przykład CloudBlobContainer.GetAppendBlobReference — metoda</a></td> 
+<td><a href="https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs#L1144">Wprowadzenie do obiektów blob</a></td> 
 </tr> 
 <tr> 
 <td>Blokowy obiekt blob</td>

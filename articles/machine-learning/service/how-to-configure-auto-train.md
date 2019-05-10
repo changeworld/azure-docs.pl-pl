@@ -11,16 +11,16 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 72e43ac295fcb007dd58b2b7792a16c639ee9c08
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 64ba7096f181371a378708e024f46bce17449e98
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023742"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510582"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurowanie automatycznych eksperymentów uczenia Maszynowego w języku Python
 
-W tym przewodniku, Dowiedz się, jak zdefiniować różne ustawienia konfiguracji komputera automatycznych eksperymentów przy użyciu uczenia [zestawu SDK usługi Azure Machine Learning](https://docs.microsoft.com/en-us/python/api/overview/azure/ml/intro?view=azure-ml-py). Uczenie maszynowe automatycznych wybiera algorytm i hiperparametrów dla Ciebie i generuje gotowe do wdrożenia modelu. Istnieje kilka opcji, które umożliwiają skonfigurowanie automatycznych eksperymentów uczenia maszynowego.
+W tym przewodniku, Dowiedz się, jak zdefiniować różne ustawienia konfiguracji komputera automatycznych eksperymentów przy użyciu uczenia [zestawu SDK usługi Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py). Uczenie maszynowe automatycznych wybiera algorytm i hiperparametrów dla Ciebie i generuje gotowe do wdrożenia modelu. Istnieje kilka opcji, które umożliwiają skonfigurowanie automatycznych eksperymentów uczenia maszynowego.
 
 Aby wyświetlić przykłady automatycznych eksperymentów uczenia maszynowego, zobacz [samouczka: Wytrenuj model klasyfikacji przy użyciu uczenia maszynowego automatycznych](tutorial-auto-train-models.md) lub [uczenia modeli za pomocą automatycznych machine learning w chmurze](how-to-auto-train-remote.md).
 
@@ -368,7 +368,7 @@ Użyj tych 2 interfejsy API w pierwszym kroku dopasowanego modelu, aby dowiedzie
 
 + Interfejs API 1: `get_engineered_feature_names()` zwraca listę nazw funkcji zaprojektowanych.
 
-  Użycie: 
+  Sposób użycia: 
   ```python
   fitted_model.named_steps['timeseriestransformer']. get_engineered_feature_names ()
   ```
@@ -384,7 +384,7 @@ Użyj tych 2 interfejsy API w pierwszym kroku dopasowanego modelu, aby dowiedzie
 
 + Interfejs API 2: `get_featurization_summary()` zwraca cechowania podsumowania dla wszystkich danych wejściowych funkcji.
 
-  Użycie: 
+  Sposób użycia: 
   ```python
   fitted_model.named_steps['timeseriestransformer'].get_featurization_summary()
   ```

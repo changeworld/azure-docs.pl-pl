@@ -14,16 +14,18 @@ ms.topic: overview
 ms.date: 11/15/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 2ed29f50278afe5bf7cd3daabe088cee55caae06
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3934dbb01c3b9f3219c5e649d97371850b8daadc
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60656612"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230627"
 ---
-# <a name="what-is-api-management"></a>Co to jest API Management?
+# <a name="about-api-management"></a>Informacje o usłudze API Management
 
-Usługa API Management (APIM) pomaga organizacjom publikować interfejsy API dla deweloperów zewnętrznych, partnerskich i wewnętrznych, aby w pełni wykorzystać potencjał danych i usług. Firmy na całym świecie dążą do rozszerzenia operacji w postaci platformy cyfrowej, tworząc nowe kanały, znajdując nowych klientów i nakłaniając obecnych do głębszego zaangażowania. Usługa API Management udostępnia podstawowe funkcje wymagane do tworzenia skutecznych interfejsów API przez zaangażowanych deweloperów, a także zapewnia informacje biznesowe, analizy, zabezpieczenia i ochronę. Usługa Azure API Management umożliwia użycie dowolnego oprogramowania zaplecza i uruchomienie opartego na nim, w pełni funkcjonalnego programu interfejsu API.
+API Management (APIM) jest sposobem tworzenia spójne i nowoczesne bramy interfejsu API dla istniejących usług zaplecza.
+
+Usługa API Management pomaga organizacjom publikować interfejsy API dla zewnętrznych, partnerskich i wewnętrzni programiści Odblokuj niewykorzystany potencjał swoich danych i usług. Firmy na całym świecie dążą do rozszerzenia operacji w postaci platformy cyfrowej, tworząc nowe kanały, znajdując nowych klientów i nakłaniając obecnych do głębszego zaangażowania. Usługa API Management udostępnia podstawowe funkcje wymagane do tworzenia skutecznych interfejsów API przez zaangażowanych deweloperów, a także zapewnia informacje biznesowe, analizy, zabezpieczenia i ochronę. Usługa Azure API Management umożliwia użycie dowolnego oprogramowania zaplecza i uruchomienie opartego na nim, w pełni funkcjonalnego programu interfejsu API.
 
 Ten artykuł zawiera omówienie typowych scenariuszy dotyczących usługi APIM.  Omówiono w nim też krótko główne składniki systemu usługi APIM. W dalszej części artykułu bardziej szczegółowo omówiono poszczególne składniki.
 

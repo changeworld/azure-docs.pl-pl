@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 2a2df8b47b60f29d8ecd3c040e8ef979ee23afa8
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b8caa5cd7476489a92ce97570794a1d397f32630
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64575407"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230892"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Pokrycie geokodowaniem usługi Azure Maps
 
 Podczas wyszukiwania lokalizacji za pomocą usługi Azure Maps, Usługa wyszukiwania przyjmuje wyszukiwane terminy i zwraca współrzędne długości i szerokości geograficznej w procesie zwanym geokodowania. Jednakże mapy nie ma takiego samego poziomu informacji i dokładność dla wszystkich regionów i krajów. Użyj w tym artykule, aby określić, jakiego rodzaju lokalizacji można wiarygodnie wyszukiwać w każdym regionie. 
 
-Możliwość geokodowania w kraju, zależy od zakresu danych podróży i dokładności geokodowania usługi geokodowania. Używane są następujące kategoryzacje Określ poziom obsługi geokodowania w każdym kraju.
+Możliwość geokodowania w kraju/regionu jest zależny od zakresu danych podróży i dokładności geokodowania usługi geokodowania. Używane są następujące kategoryzacje Określ poziom obsługi geokodowania w każdym kraju/regionu.
 * **Adres punktów** — adresy danych może być rozpoznany Współrzędna szerokości/długości geograficznej w ramach działka adresu (właściwość granic). Czasami określane jako "Antenowej" dokładne. Jest to najwyższy poziom dokładności dostępnych adresów. 
 * **Lokalne numery** — adresy są interpolowane do domu Współrzędna szerokości/długości geograficznej.
 * **Poziom ulicy** — adresy są rozwiązywane do Współrzędna szerokości/długości geograficznej ulicy, która zawiera adres. Numer domu nie mogą być przetwarzane.
@@ -30,7 +30,7 @@ Możliwość geokodowania w kraju, zależy od zakresu danych podróży i dokład
 | Kraj/region                                       | Adres punktów | Numery lokalne | Poziom ulicy | Poziom Miasto | Punktów orientacyjnych |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|
 | Anguilla                                            |                 |                |              |      ✓     |          ✓         |
-| Antarktyda                                          |                 |                |              |      ✓     |          ✓         |
+| Antarktyka                                          |                 |                |              |      ✓     |          ✓         |
 | Antigua i Barbuda                                 |                 |                |       ✓      |      ✓     |          ✓         |
 | Argentyna                                           |       ✓         |        ✓       |       ✓      |      ✓     |          ✓         |
 | Aruba                                               |                 |                |              |      ✓     |          ✓         |
@@ -76,9 +76,9 @@ Możliwość geokodowania w kraju, zależy od zakresu danych podróży i dokład
 | Saint Pierre i Miquelon                           |                 |                |       ✓      |      ✓     |          ✓         |
 | Saint Vincent i Grenadyny                    |                 |                |              |      ✓     |          ✓         |
 | Sint Maarten                                        |                 |                |       ✓      |      ✓     |          ✓         |
-| Georgia Południowa i Sandwich Południowy        |                 |                |              |      ✓     |          ✓         |
+| Wyspy Georgia Południowa i Sandwich Południowy        |                 |                |              |      ✓     |          ✓         |
 | Surinam                                            |                 |                |              |      ✓     |          ✓         |
-| Trynidad i Tobago                                 |                 |                |       ✓      |      ✓     |          ✓         |
+| Trinidad i Tobago                                 |                 |                |       ✓      |      ✓     |          ✓         |
 | Odległe Mniejsze Wyspy Stanów Zjednoczonych                |                 |                |              |      ✓     |          ✓         |
 | Stany Zjednoczone Ameryki                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Urugwaj                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -110,7 +110,7 @@ Możliwość geokodowania w kraju, zależy od zakresu danych podróży i dokład
 | Indie                                               |        ✓        |        ✓       |       ✓      |      ✓     |                   |
 | Japonia                                               |                 |                |              |      ✓     |          ✓         |
 | Kiribati                                            |                 |                |              |      ✓     |          ✓         |
-| Korea                                         |                 |                |              |      ✓     |          ✓         |
+| Korea Południowa                                         |                 |                |              |      ✓     |          ✓         |
 | Laos                                                |                 |                |              |      ✓     |          ✓         |
 | SRA Makau                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Malezja                                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -190,7 +190,7 @@ Możliwość geokodowania w kraju, zależy od zakresu danych podróży i dokład
 | Luksemburg                                          |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Macedonia Północna                                     |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Malta                                               |                 |        ✓       |       ✓      |      ✓     |          ✓         |
-| Mołdawia                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Republika Mołdowy                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Monako                                              |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Czarnogóra                                          |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Holandia                                         |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -235,7 +235,7 @@ Możliwość geokodowania w kraju, zależy od zakresu danych podróży i dokład
 | Republika Środkowoafrykańska                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Czad                                                |                 |                |       ✓      |      ✓     |          ✓         |
 | Kongo                                               |                 |                |       ✓      |      ✓     |          ✓         |
-| Côte d’Ivoire                                       |                 |                |       ✓      |      ✓     |          ✓         |
+| Côte d'Ivoire                                       |                 |                |       ✓      |      ✓     |          ✓         |
 | Demokratyczna Republika Konga                    |                 |                |       ✓      |      ✓     |          ✓         |
 | Dżibuti                                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Egipt                                               |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -255,7 +255,7 @@ Możliwość geokodowania w kraju, zależy od zakresu danych podróży i dokład
 | Kenia                                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Kuwejt                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Liban                                             |        ✓        |                |       ✓      |      ✓     |          ✓         |
-| Lesotho                                             |                 |                |       ✓      |      ✓     |          ✓         |
+| Lesoto                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Liberia                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Libia                                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Madagaskar                                          |                 |                |       ✓      |      ✓     |          ✓         |
@@ -268,21 +268,21 @@ Możliwość geokodowania w kraju, zależy od zakresu danych podróży i dokład
 | Wyspa Majotta                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Maroko                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Mozambik                                          |                 |                |       ✓      |      ✓     |          ✓         |
-| Myanmar                                             |                 |                |              |      ✓     |          ✓         |
+| Mjanma                                             |                 |                |              |      ✓     |          ✓         |
 | Namibia                                             |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Niger                                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Nigeria                                             |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Oman                                                |                 |                |       ✓      |      ✓     |          ✓         |
 | Katar                                               |        ✓        |                |       ✓      |      ✓     |          ✓         |
 | Réunion                                             |                 |        ✓       |       ✓      |      ✓     |          ✓         |
-| Rwanda                                              |                 |                |       ✓      |      ✓     |          ✓         |
+| Ruanda                                              |                 |                |       ✓      |      ✓     |          ✓         |
 | Święta Helena                                        |                 |                |              |      ✓     |          ✓         |
 | Arabia Saudyjska                                        |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Senegal                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Seszele                                          |                 |                |       ✓      |      ✓     |          ✓         |
 | Sierra Leone                                        |                 |                |       ✓      |      ✓     |          ✓         |
 | Somalia                                             |                 |                |              |      ✓     |          ✓         |
-| Republika Południowej Afryki                                        |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| RPA                                        |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Sudan Południowy                                         |                 |                |       ✓      |      ✓     |          ✓         |
 | Sudan                                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Suazi                                           |                 |                |       ✓      |      ✓     |          ✓         |

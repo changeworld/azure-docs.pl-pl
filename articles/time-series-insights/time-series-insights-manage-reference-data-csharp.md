@@ -10,35 +10,40 @@ ms.reviewer: jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 03/23/2018
+ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: a9d0743e30c4ae32c052a9f27c9fa22b1036aead
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a8bd4e02b03a20e348feb2d6c9424f5eb6cf5f9e
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64681729"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510045"
 ---
-# <a name="manage-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>Zarządzanie danymi referencyjnymi w środowisku usługi Azure Time Series Insights przy użyciu języka C#
+# <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>Zarządzanie danymi referencyjnymi GA dla środowiska usługi Azure Time Series Insights przy użyciuC#
 
 W tym artykule opisano przykładowy projekt języka C# można skompilować do zarządzania danymi referencyjnymi w środowisku usługi Azure Time Series Insights.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
 Wykonaj następujące kroki, aby skompilować i uruchomić przykładowy kod:
+
 1. [Tworzenie zestawu danych referencyjnych](time-series-insights-add-reference-data-set.md).
 
-2. Skonfigurowanie tokenu dostępu autoryzacji dla aplikacji. Upewnij się, że token jest uzyskiwany za pośrednictwem interfejsu API usługi Azure Active Directory. Należy przekazać ten token w `Authorization` nagłówku każdego żądania interfejsu API zapytań. 
- 
+1. Skonfigurowanie tokenu dostępu autoryzacji dla aplikacji. Upewnij się, że token jest uzyskiwany za pośrednictwem interfejsu API usługi Azure Active Directory. Należy przekazać ten token w `Authorization` nagłówku każdego żądania interfejsu API zapytań.
+
    Aby dowiedzieć się, jak skonfigurować nieinterakcyjnych aplikacji, zobacz [uwierzytelnianie i autoryzacja](time-series-insights-authentication-and-authorization.md).
 
-3. Edytuj kod przykładowy umożliwiający Zastąp stałe przykład, po tym **DUMMY #**, w pobliżu początku kodu. 
+1. Edytuj kod przykładowy umożliwiający Zastąp stałe przykład, po tym **DUMMY #**, w pobliżu początku kodu.
 
-Ten przykładowy kod jest również dostępna w [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights)
+> [!NOTE]
+> Wyświetl GA przykładowego kodu w [ https://github.com/Azure-Samples/Azure-Time-Series-Insights ](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-ga-preview-sample).
 
-## <a name="project-references"></a>Odwołania do projektu
-Dodawanie pakietów NuGet `Microsoft.IdentityModel.Clients.ActiveDirectory` i `Newtonsoft.Json` w tym przykładzie. 
+## <a name="project-dependencies"></a>Zależności projektu
 
-## <a name="c-sample-code"></a>Przykładowy kod języka C# 
+Dodawanie pakietów NuGet `Microsoft.IdentityModel.Clients.ActiveDirectory` i `Newtonsoft.Json` w tym przykładzie.
+
+## <a name="c-sample-code"></a>Przykładowy kod języka C#
+
 ```csharp
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 
@@ -134,7 +139,7 @@ namespace TimeSeriesInsightsReferenceDataSampleApp
     ""deleteproperties"": [{
         ""key"": {
             ""DeviceId"": ""Fan1""
-        },
+    },
         ""properties"": [""BladeCount""]
     }]
 }";

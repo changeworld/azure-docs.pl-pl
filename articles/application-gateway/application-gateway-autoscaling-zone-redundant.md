@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 5/7/2019
 ms.author: victorh
-ms.openlocfilehash: b1cdcfc9e81938f3f562046b971407b31a593525
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: dfb5b8b69b2ca9bea118603406f4747036d2641c
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65202912"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510818"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway"></a>Skalowanie automatyczne i strefowo nadmiarowe Application Gateway 
 
@@ -62,7 +62,7 @@ Obliczenia wskazówki jednostki:
 | Standard_v2                                       |    0.20             | 0.0080                          |
 | WAF_v2                                            |    0.36             | 0.0144                          |
 
-[Stronę z cennikiem](https://azure.microsoft.com/en-us/pricing/details/application-gateway/) zostanie zaktualizowana w celu odzwierciedlenia cen regionalnych na 14 maja 2019 r. Rozliczanie jest zaplanowane do uruchomienia w dniu 1 czerwca 2019 r.
+[Stronę z cennikiem](https://azure.microsoft.com/pricing/details/application-gateway/) zostanie zaktualizowana w celu odzwierciedlenia cen regionalnych na 14 maja 2019 r. Rozliczanie jest zaplanowane do uruchomienia w dniu 1 czerwca 2019 r.
 
 **Przykład 1**
 
@@ -93,7 +93,7 @@ Cena jednostki pojemności = 744(hours) * Max (Max(25/50 for connections/sec, 80
 
 Łączna cena = 267.84 $ + $85.71 = 353.55 $
 
-[Stronę z cennikiem](https://azure.microsoft.com/en-us/pricing/details/application-gateway/) zostanie zaktualizowana w celu odzwierciedlenia cen regionalnych na 14 maja 2019 r. Rozliczanie jest zaplanowane do uruchomienia w dniu 1 czerwca 2019 r.
+[Stronę z cennikiem](https://azure.microsoft.com/pricing/details/application-gateway/) zostanie zaktualizowana w celu odzwierciedlenia cen regionalnych na 14 maja 2019 r. Rozliczanie jest zaplanowane do uruchomienia w dniu 1 czerwca 2019 r.
 
 ## <a name="scaling-application-gateway-and-waf-v2"></a>Skalowanie usługa Application Gateway i zapory aplikacji sieci Web w wersji 2
 
@@ -124,7 +124,7 @@ W poniższej tabeli porównano funkcje dostępne w każdej jednostki SKU.
 | Niestandardowe strony błędów                                | &#x2713; | &#x2713; |
 | Obsługa protokołu WebSocket                                 | &#x2713; | &#x2713; |
 | Obsługa protokołu HTTP/2                                    | &#x2713; | &#x2713; |
-| Opróżnianie połączeń                               | &#x2713; | &#x2713; |
+| Opróżnianie połączenia                               | &#x2713; | &#x2713; |
 
 > [!NOTE]
 > Skalowanie automatyczne w wersji 2, obsługuje teraz jednostki SKU [sondy kondycji domyślne](application-gateway-probe-overview.md#default-health-probe) automatyczne monitorowanie kondycji wszystkich zasobów w puli zaplecza i wyróżnianie tych członków wewnętrznej bazy danych, które jest uznawana za złą. Domyślna sonda kondycji jest automatycznie konfigurowany dla zaplecza, które nie mają żadnej konfiguracji niestandardowej sondy. Aby dowiedzieć się więcej, zobacz [sondy kondycji w usłudze application gateway](application-gateway-probe-overview.md).
@@ -138,7 +138,7 @@ W poniższej tabeli porównano funkcje dostępne w każdej jednostki SKU.
 |Zdefiniowaną przez użytkownika (UDR) w podsieci bramy aplikacji|Nieobsługiwane|
 |Sieciowa grupa zabezpieczeń dla zakresu portów dla ruchu przychodzącego| -65200 do 65535, aby uzyskać Standard_v2 jednostki SKU<br>-65503 do 65534 dla standardowej jednostki SKU.<br>Aby uzyskać więcej informacji, zobacz [— często zadawane pytania](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet).|
 |Dzienniki wydajności w usłudze Diagnostyka Azure|Nieobsługiwane.<br>Metryki platformy Azure powinna być używana.|
-|Rozliczenia|Rozliczenia zaplanowane do uruchomienia w dniu 1 czerwca 2019 r.|
+|Informacje billingowe|Rozliczenia zaplanowane do uruchomienia w dniu 1 czerwca 2019 r.|
 |Tryb FIPS|Te nie są obecnie obsługiwane.|
 |Trybie tylko do wewnętrznego modułu równoważenia obciążenia|To nie jest obecnie obsługiwane. Publiczne i tryb wewnętrznego modułu równoważenia obciążenia ze sobą jest obsługiwany.|
 |Sieć, obserwator integracji|Nieobsługiwane.|
