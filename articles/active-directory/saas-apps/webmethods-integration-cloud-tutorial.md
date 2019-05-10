@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z aplikacją webMethods Integration Cloud | Microsoft Docs'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją webMethods Integration Cloud.
+title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą elementów WebMethod pakietu integracyjnego | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i elementów WebMethod pakietu integracyjnego.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,45 +14,45 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 11021562cd34f31564e6b4c22fcd64aac25d3469
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 8dead16c60a26e2fc53953ed65337195c3b2aa67
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57862067"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65470803"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-webmethods-integration-cloud"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją webMethods Integration Cloud
+# <a name="tutorial-azure-active-directory-integration-with-webmethods-integration-suite"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą elementów WebMethod pakietu integracyjnego
 
-Z tego samouczka dowiesz się, jak zintegrować aplikację webMethods Integration Cloud z usługą Azure Active Directory (Azure AD).
-Integracja aplikacji webMethods Integration Cloud z usługą Azure AD zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować elementów WebMethod pakietu integracyjnego za pomocą usługi Azure Active Directory (Azure AD).
+Integracja elementów WebMethod pakietu integracyjnego z usługą Azure AD zapewnia następujące korzyści:
 
-* W usłudze Azure AD możesz kontrolować, kto ma dostęp do aplikacji webMethods Integration Cloud.
-* Swoim użytkownikom możesz zezwolić na automatyczne logowanie do aplikacji webMethods Integration Cloud (logowanie jednokrotne) przy użyciu kont usługi Azure AD.
-* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
+* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do elementów WebMethod pakietu integracyjnego.
+* Użytkownikom można automatycznie zalogowany do elementów WebMethod pakietu integracyjnego (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD.
+* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do skonfigurowania integracji usługi Azure AD z aplikacją webMethods Integration Cloud potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD za pomocą elementów WebMethod pakietu integracyjnego, potrzebne są następujące elementy:
 
 * Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
-* Subskrypcja aplikacji webMethods Integration Cloud z obsługą logowania jednokrotnego
+* elementów WebMethod pakietu integracyjnego pojedynczego logowania jednokrotnego włączonych subskrypcji
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Aplikacja webMethods Integration Cloud obsługuje logowanie jednokrotne inicjowane przez **dostawcę usług** i **dostawcę tożsamości**
+* obsługuje pakietu integracyjnego elementów WebMethod **SP** i **tożsamości** jednokrotne logowanie inicjowane przez
 
-* Aplikacja webMethods Integration Cloud obsługuje aprowizację użytkowników **just in time**, która jest domyślnie włączona
+* obsługuje pakietu integracyjnego elementów WebMethod **just-in-time** aprowizacji użytkowników
 
-## <a name="adding-webmethods-integration-cloud-from-the-gallery"></a>Dodawanie aplikacji webMethods Integration Cloud z galerii
+## <a name="adding-webmethods-integration-suite-from-the-gallery"></a>Dodawanie elementów WebMethod pakietu integracyjnego z galerii
 
-Aby skonfigurować integrację aplikacji webMethods Integration Cloud z usługą Azure AD, należy dodać tę aplikację z galerii do swojej listy zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację elementów WebMethod pakietu integracyjnego w usłudze Azure AD, należy dodać elementów WebMethod pakietu integracyjnego z galerii z listą zarządzanych aplikacji SaaS.
 
-**Aby dodać aplikację webMethods Integration Cloud z galerii, wykonaj następujące kroki:**
+**Aby dodać elementów WebMethod pakietu integracyjnego z galerii, wykonaj następujące czynności:**
 
 1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
@@ -62,37 +62,37 @@ Aby skonfigurować integrację aplikacji webMethods Integration Cloud z usługą
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
-    ![Przycisk Nowa aplikacja](common/add-new-app.png)
+    ![Nowy przycisk aplikacji](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz wartość **webMethods Integration Cloud**, wybierz pozycję **webMethods Integration Cloud** z panelu wyników, a następnie kliknij przycisk **Dodaj**, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **elementów WebMethod pakietu integracyjnego**, wybierz opcję **elementów WebMethod pakietu integracyjnego** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
-     ![Aplikacja webMethods Integration Cloud na liście wyników](common/search-new-app.png)
+     ![elementów WebMethod pakietu integracyjnego na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w aplikacji webMethods Integration Cloud, korzystając z danych użytkownika testowego **Britta Simon**.
-Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem aplikacji webMethods Integration Cloud.
+W tej sekcji możesz skonfigurować i przetestować usługi Azure AD logowanie jednokrotne za pomocą elementów WebMethod pakietu integracyjnego użytkownika testowego w oparciu o nazwie **Britta Simon**.
+Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w elementów WebMethod pakietu integracyjnego musi zostać ustanowione.
 
-Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD w aplikacji webMethods Integration Cloud, należy wykonać czynności opisane w poniższych blokach konstrukcyjnych:
+Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą elementów WebMethod pakietu integracyjnego, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
-2. **[Konfigurowanie logowania jednokrotnego w aplikacji webMethods Integration Cloud](#configure-webmethods-integration-cloud-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
-5. **[Tworzenie użytkownika testowego aplikacji webMethods Integration Cloud](#create-webmethods-integration-cloud-test-user)** — aby mieć w aplikacji webMethods Integration Cloud odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
+2. **[Konfigurowanie elementów WebMethod integracji pakietu rejestracji jednokrotnej](#configure-webmethods-integration-suite-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+5. **[Tworzenie użytkownika testowego pakietu integracyjnego elementów WebMethod](#create-webmethods-integration-suite-test-user)**  — aby mają odpowiednika w pozycji Britta simon w elementów WebMethod pakietu integracyjnego, połączonego z usługi Azure AD reprezentacja użytkownika.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji webMethods Integration Cloud, wykonaj następujące kroki:
+Aby skonfigurować usługę Azure AD logowanie jednokrotne za pomocą elementów WebMethod pakietu integracyjnego, wykonaj następujące czynności:
 
-1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **webMethods Integration Cloud** wybierz pozycję **Logowanie jednokrotne**.
+1. W [witryny Azure portal](https://portal.azure.com/)na **elementów WebMethod pakietu integracyjnego** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
 
-    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
+    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -102,9 +102,9 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji webMethods
 
     ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-4. Jeśli chcesz skonfigurować aplikację w trybie inicjowanym przez **dostawcę tożsamości**, w sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące kroki:
+4. Aby skonfigurować **elementów WebMethod integracji chmury**na **podstawową konfigurację protokołu SAML** sekcji, jeśli chcesz skonfigurować aplikację w **dostawcy tożsamości** zainicjowane w trybie wykonywania następujące kroki:
 
-    ![Informacje o domenie i adresach URL logowania jednokrotnego aplikacji webMethods Integration Cloud](common/idp-intiated.png)
+    ![informacje o elementów WebMethod integracji pakietu domena i adresy URL logowania jednokrotnego](common/idp-intiated.png)
 
     a. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca:
 
@@ -122,12 +122,12 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji webMethods
     | `https://<SUBDOMAIN>.webmethodscloud.eu/integration/live/saml/ssoResponse` |
     | `https://<SUBDOMAIN>.webmethodscloud.de/integration/live/saml/ssoResponse` |
 
-5. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
+    c. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
 
-    ![Informacje o domenie i adresach URL logowania jednokrotnego aplikacji webMethods Integration Cloud](common/metadata-upload-additional-signon.png)
+    ![informacje o elementów WebMethod integracji pakietu domena i adresy URL logowania jednokrotnego](common/metadata-upload-additional-signon.png)
 
-    W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca:
-    
+    d. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca:
+
     | |
     |--|
     | `https://<SUBDOMAIN>.webmethodscloud.com/integration/live/saml/ssoRequest` |
@@ -135,13 +135,48 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji webMethods
     | `https://<SUBDOMAIN>.webmethodscloud.de/integration/live/saml/ssoRequest` |
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Należy je zastąpić rzeczywistymi wartościami identyfikatora, adresu URL odpowiedzi i adresu URL logowania. Aby uzyskać te wartości, skontaktuj się z [zespołem pomocy technicznej klienta aplikacji webMethods Integration Cloud](https://empower.softwareag.com/). Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Te wartości nie są prawdziwe. Należy je zastąpić rzeczywistymi wartościami identyfikatora, adresu URL odpowiedzi i adresu URL logowania. Skontaktuj się z pomocą [zespołu pomocy technicznej elementów WebMethod integracji pakietu klienta](https://empower.softwareag.com/) do uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+
+5. Aby skonfigurować **elementów WebMethod API chmury**na **podstawową konfigurację protokołu SAML** sekcji, jeśli chcesz skonfigurować aplikację w **dostawcy tożsamości** zainicjowano tryb, wykonania następujące kroki:
+
+    ![informacje o elementów WebMethod integracji pakietu domena i adresy URL logowania jednokrotnego](common/idp-intiated.png)
+
+    a. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca:
+
+    | |
+    |--|
+    | `<SUBDOMAIN>.webmethodscloud.com` |
+    | `<SUBDOMAIN>.webmethodscloud.eu` |
+    | `<SUBDOMAIN>.webmethodscloud.de` |
+
+    b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca:
+
+    | |
+    |--|
+    | `https://<SUBDOMAIN>.webmethodscloud.com/umc/rest/saml/initsso` |
+    | `https://<SUBDOMAIN>.webmethodscloud.eu/umc/rest/saml/initsso` |
+    | `https://<SUBDOMAIN>.webmethodscloud.de/umc/rest/saml/initsso` |
+
+    c. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
+
+    ![informacje o elementów WebMethod integracji pakietu domena i adresy URL logowania jednokrotnego](common/metadata-upload-additional-signon.png)
+
+    d. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca:
+
+    | |
+    |--|
+    | `https://api.webmethodscloud.com/umc/rest/saml/initsso/?tenant=<TENANTID>` |
+    | `https://api.webmethodscloud.eu/umc/rest/saml/initsso/?tenant=<TENANTID>` |
+    | `https://api.webmethodscloud.de/umc/rest/saml/initsso/?tenant=<TENANTID>` |
+
+    > [!NOTE]
+    > Te wartości nie są prawdziwe. Należy je zastąpić rzeczywistymi wartościami identyfikatora, adresu URL odpowiedzi i adresu URL logowania. Skontaktuj się z pomocą [zespołu pomocy technicznej elementów WebMethod integracji pakietu klienta](https://empower.softwareag.com/) do uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 6. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link do pobierania certyfikatu](common/metadataxml.png)
+    ![Link pobierania certyfikatu](common/metadataxml.png)
 
-7. W sekcji **Konfigurowanie aplikacji webMethods Integration Cloud** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
+7. Na **konfigurowania elementów WebMethod pakietu integracyjnego** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -151,11 +186,11 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji webMethods
 
     d. Adres URL wylogowywania
 
-### <a name="configure-webmethods-integration-cloud-single-sign-on"></a>Konfigurowanie logowania jednokrotnego w aplikacji webMethods Integration Cloud
+### <a name="configure-webmethods-integration-suite-single-sign-on"></a>Konfigurowanie elementów WebMethod integracji pakietu rejestracji jednokrotnej
 
-Aby skonfigurować logowanie jednokrotne po stronie aplikacji **webMethods Integration Cloud**, należy wysłać pobrany **plik XML metadanych federacyjnych** i odpowiednie adresy URL skopiowane z witryny Azure Portal do [zespołu pomocy technicznej aplikacji webMethods Integration Cloud](https://empower.softwareag.com/). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
+Aby skonfigurować logowanie jednokrotne na **elementów WebMethod pakietu integracyjnego** stronie, musisz wysłać pobrany **XML metadanych Federacji** i odpowiednie skopiowany adresy URL z portalu Azure w celu [elementów WebMethod Zespół pomocy technicznej pakietu integracji](https://empower.softwareag.com/). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
 
-### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
 W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
@@ -171,9 +206,9 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     ![Okno dialogowe Użytkownik](common/user-properties.png)
 
-    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+    a. W **nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** wpisz **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -182,15 +217,15 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do aplikacji webMethods Integration Cloud.
+W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do elementów WebMethod pakietu integracyjnego.
 
-1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, wybierz pozycję **Wszystkie aplikacje**, a następnie wybierz pozycję **webMethods Integration Cloud**.
+1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **elementów WebMethod pakietu integracyjnego**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście aplikacji wybierz pozycję **webMethods Integration Cloud**.
+2. Na liście aplikacji wybierz **elementów WebMethod pakietu integracyjnego**.
 
-    ![Link do aplikacji webMethods Integration Cloud na liście aplikacji](common/all-applications.png)
+    ![Elementów WebMethod link pakietu integracyjnego na liście aplikacji](common/all-applications.png)
 
 3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
@@ -206,17 +241,17 @@ W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="create-webmethods-integration-cloud-test-user"></a>Tworzenie użytkownika testowego aplikacji webMethods Integration Cloud
+### <a name="create-webmethods-integration-suite-test-user"></a>Tworzenie użytkownika testowego pakietu integracyjnego elementów WebMethod
 
-W tej sekcji w aplikacji webMethods Integration Cloud jest tworzony użytkownik o nazwie Britta Simon. Aplikacja webMethods Integration Cloud obsługuje aprowizację użytkowników just in time, która jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik jeszcze nie istnieje w aplikacji webMethods Integration Cloud, zostanie utworzony po uwierzytelnieniu.
+W tej sekcji użytkownika o nazwie Britta Simon jest tworzony w elementów WebMethod pakietu integracyjnego. elementów WebMethod pakietu integracyjnego obsługuje aprowizacji użytkowników w czasie, który jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik jeszcze nie istnieje w elementów WebMethod pakietu integracyjnego, nowy katalog jest tworzony po uwierzytelnieniu.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
 W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka webMethods Integration Cloud w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji webMethods Integration Cloud, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu elementów WebMethod kafelka pakietu integracyjnego w panelu dostępu, możesz powinny być automatycznie zalogowany do pakietu integracyjnego elementów WebMethod, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

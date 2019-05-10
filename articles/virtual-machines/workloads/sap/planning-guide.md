@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/05/2019
+ms.date: 05/07/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 097b5e8ee69d945e0a9e24ba1c62b0ae82dd896b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2ddcf1f38d3d92f9d9bdd12203ebf99f20600478
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64689395"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409785"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines, planowania i implementacji środowiska SAP NetWeaver
 
@@ -370,7 +370,7 @@ Punkt wejścia w przypadku obciążeń SAP w dokumentacji platformy Azure zostan
 
 Poniższe uwagi SAP są związane z tym tematem SAP na platformie Azure:
 
-| Numer | Tytuł |
+| Numer | Stanowisko |
 | --- | --- |
 | [1928533] |Aplikacje środowiska SAP na platformie Azure: Obsługiwane produkty i zmianę rozmiaru |
 | [2015553] |SAP na platformie Microsoft Azure: Wymagania wstępne dotyczące obsługi |
@@ -391,17 +391,10 @@ Ograniczenia ogólne domyślną i maksymalną ograniczenia subskrypcji platformy
 ## <a name="possible-scenarios"></a>Możliwe scenariusze
 SAP często jest postrzegana jako jedną z kluczowych aplikacji w obrębie przedsiębiorstwa. Architektura i operacje te aplikacje przede wszystkim jest złożona i ważne jest zapewnienie, że są spełnione wymagania dotyczące dostępności i wydajności.
 
-Dlatego w przedsiębiorstwach mają myśleć dokładnie o tym, które aplikacje mogą być uruchamiane w środowisku chmury publicznej, niezależnie od dostawcy w wybranej chmurze.
+Dlatego w przedsiębiorstwach mają myśleć dokładnie o których dostawcy chmury, aby wybrać do uruchamiania takich firm biznesowych przetwarza na. Platforma Azure to idealne rozwiązanie publicznej platformy w chmurze dla firm krytyczne aplikacje SAP i procesów biznesowych. Mając szeroką gamę infrastruktury platformy Azure, niemal we wszystkich istniejących systemów SAP NetWeaver i S/4HANA, może być hostowana na platformie Azure już dziś. System Azure oferuje maszyn wirtualnych przy użyciu wielu terabajtów pamięci i procesorów ponad 200. Poza nim, że platforma Azure oferuje [dużych wystąpień HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture), które umożliwiają wdrażanie HANA skalowalnego w poziomie do 24 TB i skalowalnego w poziomie ANA wdrożeń do 120 TB. 
 
-Typy możliwe system do wdrażania oprogramowania SAP NetWeaver na podstawie aplikacji w chmurze publicznej, które środowiska są wymienione poniżej:
 
-1. Systemy produkcyjne o średniej wielkości
-2. Programowanie systemów
-3. Testowanie systemów
-4. Systemy prototypu
-5. Nauka / demonstracyjne systemów
-
-W celu wdrażania systemów SAP w modelu IaaS platformy Azure lub IaaS ogólnie rzecz biorąc, ważne jest zrozumienie znaczne różnice między ofert tradycyjnych uzyskanie programu lub dostawcy usług hostingowych i oferty IaaS. Tradycyjne dostawcę usług hostingowych lub dostawców dostosowuje infrastruktury (typ sieci, magazynu i serwer) na obciążenie, które odbiorca chce hosta, jest zamiast tego klienta odpowiedzialność, aby wybrać odpowiednie obciążenie wdrożeń rozwiązań IaaS.
+W celu wdrażania systemów SAP w modelu IaaS platformy Azure lub IaaS ogólnie rzecz biorąc, ważne jest zrozumienie znaczne różnice między ofert tradycyjnych uzyskanie programu lub dostawcy usług hostingowych i oferty IaaS. Natomiast tradycyjnych dostawcę usług hostingowych lub dostawców dostosowuje infrastruktury (typ sieci, magazynu i serwer) na obciążenie, które klient chce hostować, odpowiada za zamiast tego klienta lub partnera charakteryzuje obciążenia, a następnie wybierz poprawny platformy Azure składniki maszyn wirtualnych, magazynu i sieci w przypadku wdrożeń rozwiązań IaaS.
 
 Pierwszym krokiem klienci muszą sprawdź następujące elementy:
 
@@ -422,11 +415,13 @@ Większość tych danych można znaleźć [(Linux) w tym miejscu] [ virtual-mach
 
 Należy pamiętać o tym, które ograniczenia wymienione w powyższy link są górne limity. Nie oznacza to, że limity dla zasobów, na przykład operacje We/Wy może być udostępniane we wszystkich okolicznościach. Wyjątki są jednak zasobów Procesora i pamięci wybranego typu maszyny Wirtualnej. Typy maszyn wirtualnych obsługiwanych przez oprogramowanie SAP zasobów Procesora i pamięci są zarezerwowane i w związku z tym dostępna w dowolnym momencie w czasie do użycia na maszynie wirtualnej.
 
-Platforma Microsoft Azure, takich jak innych platform IaaS to platforma wielodostępnych. W rezultacie magazynu, sieci i inne zasoby są udostępniane między dzierżawami. Inteligentne logika przydziału i ograniczanie jest stosowana do uniemożliwić wpływ na wydajność innej dzierżawy (hałaśliwego sąsiada) w sposób drastycznym jednej dzierżawy. Chociaż logiki na platformie Azure próbuje zachować wariancji w przepustowości wystąpił mały, wysoce udostępnionych platformy zwykle wprowadzenie większych odchyleń dostępności zasobów/przepustowości niż wielu klientów są używane do w swoich lokalnych wdrożeń. W rezultacie mogą wystąpić różne poziomy przepustowości dotyczące sieci lub magazynu operacji We/Wy (woluminu także czas oczekiwania) minutę minutę. Prawdopodobieństwo, że system SAP na platformie Azure mogą wystąpić wariancji większych niż w lokalnych system musi być brane pod uwagę.
+Platforma Microsoft Azure to platforma wielodostępnych. W rezultacie magazynu, sieci i inne zasoby są udostępniane między dzierżawami. Inteligentne logika przydziału i ograniczanie jest stosowana do uniemożliwić wpływ na wydajność innej dzierżawy (hałaśliwego sąsiada) w sposób drastycznym jednej dzierżawy. Szczególnie w przypadku certyfikowania platformy Azure dla oprogramowania SAP HANA, firma Microsoft musi potwierdzić izolację zasobów w przypadkach, gdzie wiele maszyn wirtualnych można uruchomić na tym samym hoście regularnie SAP. Chociaż logiki na platformie Azure próbuje zachować wariancji w przepustowości wystąpił mały, wysoce udostępnionych platformy zwykle wprowadzenie większych odchyleń dostępności zasobów/przepustowości niż klienci mogą wystąpić w swoich lokalnych wdrożeń. Prawdopodobieństwo, że system SAP na platformie Azure mogą wystąpić wariancji większych niż w lokalnych system musi być brane pod uwagę.
 
-Ostatnim krokiem jest do oceny wymagań dotyczących dostępności. Może się zdarzyć, że podstawową infrastrukturą platformy Azure musi zostać zaktualizowana i wymaga hosty działających maszyn wirtualnych, należy ponownie uruchomić. W takich przypadkach maszyn wirtualnych uruchomionych na tych hostach będzie Zamknij i ponownie uruchomić także. Chronometraż dla obsługi takich odbywa się w godzinach innych niż podstawowe dla konkretnego regionu, ale okno potencjalnego kilka godzin, podczas którego nastąpi ponowne uruchomienie jest stosunkowo szeroki. Istnieją różne technologie w obrębie platformy Azure, które można skonfigurować tak, aby uniknąć niektórych lub wszystkich wpływ tych aktualizacji. Przyszłe rozszerzenia będą miały platformy Azure, system DBMS i SAP aplikacji zaprojektowano w celu zminimalizowania wpływu tych ponownego uruchomienia.
+Ostatnim krokiem jest do oceny wymagań dotyczących dostępności. Może się zdarzyć, że podstawową infrastrukturą platformy Azure musi zostać zaktualizowana i wymaga hosty działających maszyn wirtualnych, należy ponownie uruchomić. Microsoft dokumenty różne przypadki [Konserwacja maszyn wirtualnych na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates). Aby uniknąć rzadkich przypadkach gdzie maszyny wirtualne są wymuszone ponowne uruchomienie, ale jeszcze bardziej ważne w przypadkach, która należy do systemu operacyjnego gościa poprawki lub składniki systemu DBMS należy opracowywanie pojęcia prawidłowe wysoką dostępność systemów produkcyjnych SAP. To wymaganie nie jest inaczej niż wymagania, że twarzy w środowisku lokalnym. Microsoft jest stale przesuwania platformy Azure, aby zredukować przestoje spowodowane zmianami platformy. 
 
 W celu pomyślnego wdrożenia systemu SAP na platformie Azure, lokalnych SAP systemy systemu operacyjnego, bazy danych i aplikacji SAP musi znajdować się na macierz obsługi usługi Azure SAP, mieści się w ramach zasobów platformy Azure może zapewnić infrastruktury i które mogą działać w przypadku ofert dostępność umowy SLA firmy Microsoft Azure. Jak te systemy są identyfikowane, musisz zdecydować się na jednym z następujących scenariuszy wdrażania dwóch.
+
+
 
 
 
@@ -587,7 +582,7 @@ Jeśli są wyewidencjonowywanie część maszyny wirtualne serii DS, w [w tym ar
 
 Więcej informacji na temat usługi Premium Storage można znaleźć tutaj: <https://azure.microsoft.com/blog/2015/04/16/azure-premium-storage-now-generally-available-2>
 
-#### <a name="azure-storage-accounts"></a>Konta usługi Azure Storage
+#### <a name="azure-storage-accounts"></a>Konta magazynu platformy Azure
 
 Podczas wdrażania usług lub maszynami wirtualnymi na platformie Azure, można organizować wdrożenia wirtualne dyski twarde i obrazy maszyn wirtualnych w jednostce o nazwie kont usługi Azure Storage. Podczas planowania wdrożenia usługi Azure, należy dokładnie rozważyć ograniczenia platformy Azure. Po jednej stronie istnieje ograniczona liczba kont magazynu na subskrypcję platformy Azure. Mimo że każde konto magazynu platformy Azure może zawierać dużą liczbę plików wirtualnego dysku twardego, na łączna liczba operacji We/Wy na konto magazynu jest stały limit. W przypadku wdrażania setek SAP maszyn wirtualnych z systemami DBMS tworzenia znaczące wywołań operacji We/Wy, zalecane jest rozpraszanie wysokiej maszyn wirtualnych systemu DBMS na operacje We/Wy między wieloma kontami magazynu Azure. Należy uważać, aby nie przekroczyć bieżący limit kont usługi Azure Storage na subskrypcję. Ponieważ magazynu jest to ważna część wdrożenia bazy danych z systemem SAP, to pojęcie omówiono bardziej szczegółowo w już występujących w odwołaniu [przewodnik wdrażania systemu DBMS][dbms-guide].
 
@@ -1358,7 +1353,7 @@ Może być konieczne skonfigurowanie zapory na maszynach wirtualnych, aby zezwol
 >
 
 - - -
-#### <a name="security-recommendations"></a>Zalecenia dotyczące zabezpieczeń
+#### <a name="security-recommendations"></a>Zalecenia dotyczące bezpieczeństwa
 
 Graficzny interfejs użytkownika SAP nie natychmiast połączyć się z dowolnego z wystąpień SAP (port 32xx), które są uruchomione, ale najpierw łączy się za pośrednictwem portu otwarty do procesu serwera SAP komunikat (port 36xx). W przeszłości tego samego portu został użyty przez serwer wiadomości do komunikacji wewnętrznej w wystąpieniach aplikacji. Aby zapobiec przypadkowo podczas komunikowania się z serwerem wiadomości na platformie Azure serwerów aplikacji w środowisku lokalnym, można zmienić portów komunikacji wewnętrznej. Zdecydowanie zaleca się zmienić wewnętrznej komunikacji między serwerem komunikat SAP i jego wystąpienia aplikacji na inny numer portu w systemach, które zostały sklonowane z systemów lokalnych, takich jak klon opracowywania rozwiązań dla projektów testowych itp. Można to zrobić przy użyciu domyślnego parametru profilu:
 
@@ -1506,7 +1501,7 @@ rgNameLower=saperpdemo1
 az group create --name $rgName --location "North Europe"
 ```
 
-* Tworzenie nowego konta magazynu
+* Utwórz nowe konto magazynu
 
 ```
 az storage account create --resource-group $rgName --location "North Europe" --kind Storage --sku Standard_LRS --name $rgNameLower

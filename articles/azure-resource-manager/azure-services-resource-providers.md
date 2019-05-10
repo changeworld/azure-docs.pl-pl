@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 04/25/2019
 ms.author: tomfitz
-ms.openlocfilehash: 057e8d78b531abc4ee6d1b16c25a1a6f3b382977
-ms.sourcegitcommit: 9ad75f83bbf0fc4623b7995794f33bbf823b31c0
+ms.openlocfilehash: 54493efdc0bffcbb4654b65676554f6707716968
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64537465"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65235574"
 ---
 # <a name="resource-providers-for-azure-services"></a>Dostawcy zasobów usługi platformy Azure
 
@@ -56,7 +56,7 @@ W tym artykule przedstawiono sposób mapowania przestrzeni nazw dostawcy zasobó
 | Microsoft.Consumption | [Usługa Cost Management](/azure/cost-management/) |
 | Microsoft.ContainerInstance | [Wystąpienia kontenerów](/azure/container-instances/) |
 | Microsoft.ContainerRegistry | [Rejestr kontenerów](/azure/container-registry/) |
-| Microsoft.ContainerService | [Azure Kubernetes Service (AKS)](/azure/aks/) |
+| Microsoft.ContainerService | [Usługa Azure Kubernetes Service (AKS)](/azure/aks/) |
 | Microsoft.ContentModerator | [Azure Content Moderator](../cognitive-services/content-moderator/index.yml) |
 | Microsoft.CostManagement | [Usługa Cost Management](/azure/cost-management/) |
 | Microsoft.CustomerInsights | Customer Insights |
@@ -115,7 +115,7 @@ W tym artykule przedstawiono sposób mapowania przestrzeni nazw dostawcy zasobó
 | Microsoft.Migrate | [Azure Migrate](../migrate/migrate-overview.md) |
 | Microsoft.MixedReality | [Azure Spatial Anchors](/azure/spatial-anchors/) |
 | Microsoft.NetApp | [Azure NetApp Files](../azure-netapp-files/index.yml) |
-| Microsoft.Network | [Virtual Network](../virtual-network/index.yml)<br />[Load Balancer](../load-balancer/index.yml)<br />[Application Gateway](/application-gateway/index.yml)<br />[Azure DNS](../dns/index.yml)<br />[ExpressRoute](../expressroute/index.yml)<br />[VPN Gateway](../vpn-gateway/index.yml)<br />[Traffic Manager](../traffic-manager/index.yml)<br />[Network Watcher](../network-watcher/index.yml)<br />[Zaporę platformy Azure](../firewall/index.yml)<br />[Usługa Azure drzwi](../frontdoor/index.yml) |
+| Microsoft.Network | [Virtual Network](../virtual-network/index.yml)<br />[Load Balancer](../load-balancer/index.yml)<br />[Application Gateway](../application-gateway/index.yml)<br />[Azure DNS](../dns/index.yml)<br />[ExpressRoute](../expressroute/index.yml)<br />[VPN Gateway](../vpn-gateway/index.yml)<br />[Traffic Manager](../traffic-manager/index.yml)<br />[Network Watcher](../network-watcher/index.yml)<br />[Zaporę platformy Azure](../firewall/index.yml)<br />[Usługa Azure drzwi](../frontdoor/index.yml) |
 | Microsoft.NotificationHubs | [Notification Hubs](../notification-hubs/index.yml) |
 | Microsoft.OffAzure | [Azure Migrate](../migrate/migrate-overview.md) |
 | Microsoft.OperationalInsights | [Azure Monitor](../azure-monitor/index.yml) |

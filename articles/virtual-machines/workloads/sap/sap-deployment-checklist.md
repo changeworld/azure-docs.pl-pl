@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 04/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fef2d42282291bb0ea6afeea03e60234d3d47a4d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 93fae0babdee5eac87d50679fdd5b2b938c4df2e
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60648792"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236892"
 ---
 # <a name="sap-workload-on-azure-planning-and-deployment-checklist"></a>Obciążeń SAP na Azure Lista kontrolna dotycząca planowania i wdrażania 
 
@@ -140,9 +140,10 @@ Przed lub w sposób równoległy do projektu, planowania i przygotowania, można
       2. W celu uniknięcia przekroczenia limitów czasu graficznego interfejsu użytkownika między jednym lokalnym wdrożeniu SAP graficznego interfejsu użytkownika i warstwy aplikacji SAP wdrożonych na platformie Azure, należy sprawdzić, czy następujące parametry są ustawiane w default.pfl lub profil wystąpienie:
          1.   rdisp/keepalive_timeout = 3600
          2.   rdisp/keepalive = 20
-      3. W przypadku konfiguracji klastra pracy awaryjnej Windows, upewnij się, że czas reakcji na węzłach przestanie odpowiadać jest ustawione prawidłowo dla platformy Azure. W artykule firmy Microsoft [dostrajania progów sieci klastra trybu Failover](https://blogs.msdn.microsoft.com/clustering/2012/11/21/tuning-failover-cluster-network-thresholds/) zawiera listę parametrów i wpływ tych wrażliwość trybu failover. Z parametrami wymienionymi należy ustawić te dwa parametry z wartościami:
-         1.   SameSubNetDelay = 2
+      3. W przypadku konfiguracji klastra pracy awaryjnej Windows, upewnij się, że czas reakcji na węzłach przestanie odpowiadać jest ustawione prawidłowo dla platformy Azure. W artykule firmy Microsoft [dostrajania progów sieci klastra trybu Failover](https://techcommunity.microsoft.com/t5/Failover-Clustering/Tuning-Failover-Cluster-Network-Thresholds/ba-p/371834) zawiera listę parametrów i wpływ tych wrażliwość trybu failover. Przy założeniu, że węzły klastra znajdują się w tej samej podsieci, można zmienić następujące parametry:
+         1.   SameSubNetDelay = 2000
          2.   SameSubNetThreshold = 15
+         3.   RoutingHistorylength = 30
 4. Testowanie usługi wysokiej procedury odzyskiwania dostępność i odzyskiwanie po awarii
    1. Aby symulować sytuacje awaryjne zamykania maszyn wirtualnych (system operacyjny gościa Windows) lub umieszczając systemów operacyjnych w trybie alarm (systemu operacyjnego gościa Linux), aby ustalić, czy konfiguracje trybu failover działa zgodnie z założeniami. 
    2. Zmierz swoje czasu potrzebnego do wykonania pracy w trybie failover. Jeśli czas, w którym trwa zbyt długo, należy wziąć pod uwagę:

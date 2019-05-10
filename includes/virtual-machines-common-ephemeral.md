@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/02/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: d7737f73ee4eb9ae9dc8c4845020b7543a5b3495
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 47407df90a83501b8739a428789e20cddc59e83d
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65159168"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65468406"
 ---
 Efemeryczne dyski systemu operacyjnego do tworzenia lokalnego magazynu maszyny wirtualnej (VM) i nie są zachowywane do zdalnej usługi Azure Storage. Efemeryczne dyski systemu operacyjnego działają dobrze w przypadku obciążeń bezstanowych, gdzie aplikacje są odporne na awariami pojedynczych maszyn wirtualnych, ale są bardziej zajmującym się ochroną czas, jaki zajmuje wdrożeń na dużą skalę lub czasu, aby odtworzyć poszczególnych wystąpień maszyn wirtualnych. Jest również odpowiedni w przypadku aplikacji wdrożonych za pomocą klasycznego modelu wdrażania, aby przejść do modelu wdrażania usługi Resource Manager. W przypadku dysków tymczasowych systemu operacyjnego będzie obserwować mniejsze opóźnienie odczytu/zapisu na dysku systemu operacyjnego i szybsze reimage maszyny Wirtualnej. Ponadto dysk systemu operacyjnego tymczasowych jest bezpłatny, pociągnąć za sobą żadnych kosztów magazynu dla dysku systemu operacyjnego. 
  
@@ -30,12 +30,12 @@ Podstawowe różnice między trwałe i efemeryczne dyski systemu operacyjnego:
 |                             | Trwałe dysku systemu operacyjnego                          | Efemeryczny dysk systemu operacyjnego                              |    |
 |-----------------------------|---------------------------------------------|------------------------------------------------|
 | Limit rozmiaru dysku systemu operacyjnego      | 2 TiB                                                                                        | Rozmiar dla rozmiaru maszyny Wirtualnej lub 2TiB, pamięci podręcznej obowiązuje mniejsza - [DS](../articles/virtual-machines/linux/sizes-general.md), [ES](../articles/virtual-machines/linux/sizes-memory.md), [M](../articles/virtual-machines/linux/sizes-memory.md), [FS](../articles/virtual-machines/linux/sizes-compute.md), i [GS](../articles/virtual-machines/linux/sizes-memory.md)              |
-| Obsługiwane rozmiary maszyn wirtualnych          | Wszyscy                                                                                          | DSv1, DSv2, DSv3, Esv2, Fs, FsV2, GS, M                                               |
+| Obsługiwane rozmiary maszyn wirtualnych          | Wszyscy                                                                                          | DSv1, DSv2, DSv3, Esv3, Fs, FsV2, GS, M                                               |
 | Obsługa typu dysku           | Zarządzane i niezarządzane dysku systemu operacyjnego                                                                | Zarządzanego dysku systemu operacyjnego                                                               |
 | Obsługa regionu              | Wszystkie regiony                                                                                  | Wszystkie regiony                              |
 | Trwałość danych            | System operacyjny dysku danych zapisanych na dysku systemu operacyjnego są przechowywane w usłudze Azure Storage                                  | Dane zapisane na dysku systemu operacyjnego są przechowywane w lokalnym magazynie maszyny Wirtualnej i nie jest trwały do usługi Azure Storage. |
 | Zatrzymana z cofniętą alokacją stanu      | Zatrzymana z cofniętą alokacją i ponownego uruchomienia ze stanu zatrzymana z cofniętą alokacją maszyn wirtualnych i wystąpień zestawu skalowania | Maszyn wirtualnych i wystąpień zestawu skalowania nie może być zatrzymana z cofniętą alokacją                                  |
-| Wyspecjalizowane obsługę dysku systemu operacyjnego | Yes                                                                                          | Nie                                                                                 |
+| Wyspecjalizowane obsługę dysku systemu operacyjnego | Tak                                                                                          | Nie                                                                                 |
 | Zmiany rozmiaru dysku systemu operacyjnego              | Obsługiwana podczas tworzenia maszyny Wirtualnej i maszyna wirtualna jest zatrzymana z cofniętą alokacją                                | Obsługiwana podczas tworzenia maszyny Wirtualnej tylko                                                  |
 | Zmiana rozmiaru do nowego rozmiaru maszyny Wirtualnej   | Dane z dysku systemu operacyjnego są zachowywane.                                                                    | Usunięcie danych na dysku systemu operacyjnego, system operacyjny jest ponownie zainicjowana                                      |
 
@@ -48,13 +48,13 @@ Zarejestrować się samodzielnie Efemeryczne dyski systemu operacyjnego przy uż
 
 ```azurepowershell-interactive
 Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
-Register-AzRmProviderFeature –FeatureName LocalDiffDiskPreview
+Register-AzProviderFeature –FeatureName LocalDiffDiskPreview -ProviderNamespace Microsoft.Compute
 ```
 
 Aby sprawdzić, jeśli są rejestrowane w wersji zapoznawczej:
 
 ```azurepowershell-interactive
-Get-AzRmProviderFeature –FeatureName LocalDiffDiskPreview
+Get-AzProviderFeature –FeatureName LocalDiffDiskPreview -ProviderNamespace Microsoft.Compute
 ```
 
 ### <a name="cli"></a>Interfejs wiersza polecenia
@@ -67,7 +67,7 @@ az feature register --namespace Microsoft.Compute --name LocalDiffDiskPreview
 Aby sprawdzić, jeśli są rejestrowane w wersji zapoznawczej:
  
 ```azurecli-interactive
-az provider show –namespace ‘Microsoft.Compute’
+az provider show --namespace Microsoft.Compute
 ```
 
 
@@ -196,7 +196,7 @@ Odp.: Tak, można utworzyć maszyny wirtualne z Efemerycznego dysku systemu oper
 Odp.: Efemeryczne dyski nie obsługują:
 - Przechwytywanie obrazów maszyn wirtualnych
 - Migawki dysków 
-- Usługa Azure Disk Encryption 
+- Azure Disk Encryption 
 - Azure Backup
 - Azure Site Recovery  
 - Wymiana dysku systemu operacyjnego 

@@ -8,12 +8,12 @@ ms.date: 03/20/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: b0a34cd8eebdd816cb780b34de936a6cc56d0994
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 78edeb0c418f5c426771d241464d389f8a632e96
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64730236"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65463981"
 ---
 # <a name="export-your-data-in-azure-iot-central"></a>Eksportowanie danych w usłudze Azure IoT Central
 
@@ -36,7 +36,7 @@ Jeśli nie masz istniejących zdarzeń koncentratory/usługi Service Bus można 
 ## <a name="create-event-hubs-namespace"></a>Tworzenie przestrzeni nazw usługi Event Hubs
 
 1. Tworzenie [nowych nazw usługi Event Hubs w witrynie Azure portal](https://ms.portal.azure.com/#create/Microsoft.EventHub). Dowiedz się więcej w [dokumentacja usługi Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).
-2. wybierz subskrypcję. 
+2. Wybierz subskrypcję. 
 
     > [!Note] 
     > Teraz możesz wyeksportować dane do innych subskrypcji, które są **nie sam** co dla twojej aplikacji płatność za rzeczywiste użycie IoT Central. Połączysz się przy użyciu parametrów połączenia, w tym przypadku.
@@ -45,7 +45,7 @@ Jeśli nie masz istniejących zdarzeń koncentratory/usługi Service Bus można 
 ## <a name="create-service-bus-namespace"></a>Tworzenie przestrzeni nazw usługi Service Bus
 
 1. Tworzenie [nowej przestrzeni nazw magistrali usług w witrynie Azure portal](https://ms.portal.azure.com/#create/Microsoft.ServiceBus.1.0.5) . Dowiedz się więcej w [dokumentacja usługi Azure Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-create-namespace-portal).
-2. wybierz subskrypcję. 
+2. Wybierz subskrypcję. 
 
     > [!Note] 
     > Teraz możesz wyeksportować dane do innych subskrypcji, które są **nie sam** co dla twojej aplikacji płatność za rzeczywiste użycie IoT Central. Połączysz się przy użyciu parametrów połączenia, w tym przypadku.
@@ -64,14 +64,14 @@ Teraz, gdy docelowy usługi Event Hubs/Service Bus, aby wyeksportować dane, wyk
     > [!Note]
     > Jeśli nie widzisz ciągły Eksport danych w menu po lewej stronie, nie jesteś administratorem w swojej aplikacji. Porozmawiaj z administratorem, aby skonfigurować Eksport danych.
 
-    ![Utwórz nowy CRP Centrum zdarzeń](media/howto-export-data/export_menu.PNG)
+    ![Utwórz nowy CRP Centrum zdarzeń](media/howto-export-data/export_menu1.png)
 
 3. Wybierz **+ nowy** przycisk w prawym górnym rogu. Wybierz jedną z **usługi Azure Event Hubs** lub **usługi Azure Service Bus** jako miejsce docelowe eksportu. 
 
     > [!NOTE] 
     > Maksymalna liczba eksportów aplikacji wynosi pięć. 
 
-    ![Utwórz nowy ciągły Eksport danych](media/howto-export-data/export_new.PNG)
+    ![Utwórz nowy ciągły Eksport danych](media/howto-export-data/export_new1.png)
 
 4. W polu listy rozwijanej wybierz swoje **przestrzeni nazw magistrali przestrzeń nazw/usługi Event Hubs**. Można również wybrać na liście, która jest ostatnia opcja **wprowadź parametry połączenia**. 
 
@@ -81,7 +81,7 @@ Teraz, gdy docelowy usługi Event Hubs/Service Bus, aby wyeksportować dane, wyk
     > [!NOTE] 
     > 7-dniowy, który eksportowania aplikacji w wersji próbnej, jedynym sposobem, aby skonfigurować ciągłe danych jest za pomocą parametrów połączenia. Jest to spowodowane 7-dniowy aplikacji w wersji próbnej nie mają skojarzonej subskrypcji platformy Azure.
 
-    ![Utwórz nowy CRP Centrum zdarzeń](media/howto-export-data/export_create.PNG)
+    ![Utwórz nowy CRP Centrum zdarzeń](media/howto-export-data/export_create1.png)
 
 5. (Opcjonalnie) Jeśli została wybrana opcja **wprowadź parametry połączenia**, nowe pole pojawia się należy wkleić parametry połączenia. Aby uzyskać parametry połączenia dla usługi:
     - Usługa Event Hubs lub usługi Service Bus, przejdź do przestrzeni nazw w witrynie Azure portal.
@@ -95,7 +95,7 @@ Teraz, gdy docelowy usługi Event Hubs/Service Bus, aby wyeksportować dane, wyk
 
 6. Aby włączyć ciągły Eksport danych, upewnij się, **eksportu danych** jest **na**. Wybierz pozycję **Zapisz**.
 
-  ![Konfigurowanie ciągły Eksport danych](media/howto-export-data/export_list.PNG)
+    ![Konfigurowanie ciągły Eksport danych](media/howto-export-data/export_list1.png)
 
 7. Po kilku minutach danych pojawi się w wybranej lokalizacji docelowej.
 

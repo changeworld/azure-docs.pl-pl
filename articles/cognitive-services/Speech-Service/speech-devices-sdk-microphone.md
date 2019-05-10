@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: c8bc11b8f81fe034ceaa93c7bd8a49771d9407f9
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 63dd64e900cf68e708032569ca75ac2e8b221491
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025781"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65237010"
 ---
 # <a name="speech-devices-sdk-microphone-array-recommendations"></a>Zalecenia dotyczące macierzy mikrofon zestawu SDK urządzenia mowy
 
@@ -29,9 +29,11 @@ Następujące geometrii tablicy są zalecane do użytku z programem Microsoft Au
 
 |          | Tablica cykliczne    |       |  Liniowy tablicy              |                |
 |----------|-------------------|-------------------|----------------|----------------|
-|          |![7 tablicy cykliczne mic](media/speech-devices-sdk/7-mic-c.png)|![4 tablicy cykliczne mic](media/speech-devices-sdk/4-mic-c.png)|![4 tablicy liniowe kontroli integralności uprawnień](media/speech-devices-sdk/4-mic-l.png)|![2 tablicy liniowe kontroli integralności uprawnień](media/speech-devices-sdk/2-mic-l.png)|
+|          |<img src="media/speech-devices-sdk/7-mic-c.png" alt="7 mic circular array" width="150"/>|<img src="media/speech-devices-sdk/4-mic-c.png" alt="4 mic circular array" width="150"/>|<img src="media/speech-devices-sdk/4-mic-l.png" alt="4 mic linear array" width="150"/>|<img src="media/speech-devices-sdk/2-mic-l.png" alt="2 mic linear array" width="150"/>|
 | \# Mikrofonu  | 7                 | 4                 | 4              | 2              |
 | Geometrii | 6 1 zewnętrzne Centrum, promień = 42,5 mm, mają równe odstępy| 3 zewnętrzne 1 Centrum, promień = 42,5 mm, mają równe odstępy | Długość = 120 mm, odstępy = 40 mm | Odstępy = 40 mm |
+
+Mikrofon kanałów powinny być uporządkowane według numerowanie przedstawiony dla każdego powyżej tablicy, zwiększenie od 0.  Stos Audio firmy Microsoft będzie wymagać strumień odwołanie dodatkowe odtwarzanie przeprowadzić echa.
 
 ## <a name="component-selection"></a>Wybór składników
 
@@ -110,4 +112,4 @@ Szybkie 2.0 klasy Audio USB powinna być obsługiwana w ramach dowolnej audio Un
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> Dowiedz się więcej o [zestawu Speech Devices SDK](speech-devices-sdk.md)
+> [Dowiedz się więcej na temat zestawu Speech Devices SDK](speech-devices-sdk.md)

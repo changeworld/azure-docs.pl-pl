@@ -8,12 +8,12 @@ ms.service: batch
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: lahugh
-ms.openlocfilehash: 679a1c60e44694bde86cafba21d7f1d2c6fb94d9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 113faffb0ebac50a67c96ce21e0ee2c1564bb4fc
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60616555"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65405639"
 ---
 # <a name="creating-and-using-resource-files"></a>Tworzenie i używanie plików zasobów
 
@@ -38,7 +38,7 @@ Opcje tworzenia pliku zasobu:
 
 ### <a name="storage-container-url"></a>Adres URL kontenera magazynu
 
-Przy użyciu adresu URL kontenera magazynu oznacza, że masz dostęp plików w dowolnym kontenerze magazynu na platformie Azure. Z odpowiednimi uprawnieniami
+Przy użyciu adresu URL kontenera magazynu oznacza, że masz dostęp plików w dowolnym kontenerze magazynu na platformie Azure z odpowiednimi uprawnieniami.
 
 W tym C# przykład już zostały przekazane pliki do kontenera usługi Azure storage jako magazynu obiektów blob. Aby uzyskać dostęp do danych, potrzebne do utworzenia pliku zasobów, najpierw należy uzyskać dostęp do kontenera magazynu.
 

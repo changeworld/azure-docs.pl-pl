@@ -59,7 +59,7 @@ sections:
       - type: paragraph
         text: 'Te przykładowe programy pozwalają sprawdzić, jak można zintegrować interfejs API rozpoznawania pisma odręcznego z aplikacjami:'
       - type: paragraph
-        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089502">C# i platforma uniwersalna systemu Windows (UWP)</a>'
+        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089503">C# i platforma uniwersalna systemu Windows (UWP)</a>'
       - type: paragraph
         text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089804">C# i Windows Presentation Foundation (WPF)</a>'
       - type: paragraph

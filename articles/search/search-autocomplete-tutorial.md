@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: mcarter
 ms.custom: seodec2018
-ms.openlocfilehash: f5cb8d2fee706600251039d80232d9fc7f60d5fb
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: f3e7cc2ed71dda0eb34328432b26a4016b62be1c
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025154"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466415"
 ---
-# <a name="example-add-suggestions-or-autocomplete-to-your-azure-search-application"></a>Przykład: Dodawanie sugestie lub automatycznego uzupełniania do aplikacji usługi Azure Search
+# <a name="add-suggestions-or-autocomplete-to-your-azure-search-application"></a>Dodawanie sugestie lub automatycznego uzupełniania do aplikacji usługi Azure Search
 
 Ten artykuł zawiera informacje o sposobie użycia [sugestie](https://docs.microsoft.com/rest/api/searchservice/suggestions) i [autouzupełniania](https://docs.microsoft.com/rest/api/searchservice/autocomplete) tworzyć pola zaawansowane wyszukiwanie, które obsługuje wyszukiwania jako użytkownik typ-zachowania.
 
@@ -123,7 +123,7 @@ Do tej pory wyszukiwania kod UX ma wyśrodkowane na sugestie. Następny blok kod
 
 ```javascript
 $(function () {
-    // using modified jQuery Autocomplete plugin v1.2.6 http://xdsoft.net/jqplugins/autocomplete/
+    // using modified jQuery Autocomplete plugin v1.2.6 https://xdsoft.net/jqplugins/autocomplete/
     // $.autocomplete -> $.autocompleteInline
     $("#example2").autocompleteInline({
         appendMethod: "replace",

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: ormaoz
 ms.custom: ''
-ms.openlocfilehash: a7a020284f44eda0da62f307866c74b0a8df493d
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: e87e95ec9e4e20ee4785c2b1f448a7ca5f442b8a
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205696"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409194"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>Instalowanie i konfigurowanie usługi AWS kosztów i użycia integracji raportu
 
@@ -38,7 +38,7 @@ Użyj **raporty** strony do rozliczeń i zarządzania kosztami konsoli w usłudz
 7. Aby uzyskać **włączyć obsługę**, zaznaczenie nie jest konieczne.
 8. Dla **ustawienia odświeżania danych**, wybierz opcję **automatyczne odświeżanie koszt &amp; raport użycia po wykryciu opłaty ostatnich miesięcy z zamknięty rachunki**.
 9. Kliknij przycisk **Dalej**.
-10. Aby uzyskać **przedział Amazon S3**, wpisz nazwę zasobnika Amazon S3, której chcesz raporty dostarczane do i kliknij przycisk **Sprawdź, czy**. Pakietu musi mieć odpowiednie uprawnienia, była ważna. Aby uzyskać więcej informacji na temat dodawania uprawnień do zasobnika zobacz [zasobnika ustawienia i uprawnienia dostępu do obiektu](http://docs.aws.amazon.com/AmazonS3/latest/user-guide/set-permissions.html).
+10. Aby uzyskać **przedział Amazon S3**, wpisz nazwę zasobnika Amazon S3, której chcesz raporty dostarczane do i kliknij przycisk **Sprawdź, czy**. Pakietu musi mieć odpowiednie uprawnienia, była ważna. Aby uzyskać więcej informacji na temat dodawania uprawnień do zasobnika zobacz [zasobnika ustawienia i uprawnienia dostępu do obiektu](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/set-permissions.html).
 11. Aby uzyskać **prefiks ścieżki raportu**, wpisz prefiks Ścieżka raportu, który ma zostać dodane do nazwy raportu.
 12. Aby uzyskać **kompresji**, wybierz opcję **GZIP**.
 13. Kliknij przycisk **Dalej**.

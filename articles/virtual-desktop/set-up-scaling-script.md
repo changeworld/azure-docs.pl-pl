@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 379e73c33aa4570c3e56f902b011d75944c94a8d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7687abf5fc4af0eea9fa6aa210cfd6734cec2b36
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60870727"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65410569"
 ---
 # <a name="automatically-scale-session-hosts"></a>Automatyczne skalowanie hostów sesji
 
@@ -26,9 +26,9 @@ W tym artykule używa prosty skrypt skalowania automatycznego skalowania maszyn 
 
 - Dzierżawy pulpitu wirtualnego Windows i konta lub jednostki usługi przy użyciu uprawnień do wykonywania zapytań w tej dzierżawie (np. Współautor usług pulpitu zdalnego).
 - Sesja hosta puli maszyn wirtualnych skonfigurowane i zarejestrowane w usłudze Windows pulpitu wirtualnego.
-- Dodatkowe programu scaler maszynę Wirtualną, która uruchamia zaplanowane zadanie za pomocą harmonogramu zadań i który ma dostęp do sieci na hostach sesji.
-- Moduł programu PowerShell programu Microsoft Azure Resource Manager zainstalowana na maszynie Wirtualnej, uruchamiając zaplanowane zadanie.
-- Moduł programu PowerShell pulpitu wirtualnego Windows zainstalowana na maszynie Wirtualnej, uruchamiając zaplanowane zadanie.
+- Dodatkowe maszyny wirtualnej, która uruchamia zaplanowane zadanie za pomocą harmonogramu zadań i ma dostęp do sieci na hostach sesji. Są to omawianych w dalszej części dokumentu jako maszyny Wirtualnej programu scaler.
+- [Modułu programu PowerShell usługi Microsoft Azure Resource Manager](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) zainstalowane na maszynie Wirtualnej, uruchamiając zaplanowane zadanie.
+- [Modułu programu PowerShell pulpitu wirtualnego Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) zainstalowane na maszynie Wirtualnej, uruchamiając zaplanowane zadanie.
 
 ## <a name="recommendations-and-limitations"></a>Zalecenia i ograniczenia
 
@@ -37,7 +37,7 @@ Po uruchomieniu skryptu skalowania pamiętać o następujących czynności na uw
 - Ten skrypt skalowania może obsługiwać tylko jedną pulę hosta dla każdego wystąpienia zaplanowane zadanie, które jest uruchomienie skryptu skalowania.
 - Zaplanowane zadania, które są uruchamiane skrypty skalowania musi być na maszynie Wirtualnej, który jest zawsze włączona.
 - Utworzenie osobnego folderu dla każdego wystąpienia elementu skalowania skryptu i jego konfiguracji.
-- Ten skrypt nie obsługuje kont przy użyciu uwierzytelniania wieloskładnikowego. Zalecane jest użycie jednostki usługi dostęp do usług pulpitu wirtualnego Windows i platformy Azure.
+- Ten skrypt nie obsługuje logowania się jako administrator do Windows pulpitu wirtualnego przy użyciu konta użytkownika usługi Azure AD, które wymagają uwierzytelniania wieloskładnikowego. Zalecane jest użycie jednostki usługi dostęp do usług pulpitu wirtualnego Windows i platformy Azure. Postępuj zgodnie z [w tym samouczku](create-service-principal-role-powershell.md) do tworzenia nazwy głównej usługi i przypisanie roli przy użyciu programu PowerShell.
 - Żadnej gwarancji umowy SLA platformy Azure dotyczą tylko maszyn wirtualnych w zestawie dostępności. Bieżącą wersję dokumentu opisano środowisko z jedną maszynę Wirtualną podczas skalowania, która może nie spełniać wymagań dotyczących dostępności.
 
 ## <a name="deploy-the-scaling-script"></a>Wdróż skrypt skalowania
@@ -48,26 +48,34 @@ Poniższych procedur temu wiadomo, jak wdrożyć skrypt skalowania.
 
 Najpierw należy przygotować środowisko na potrzeby skalowania skryptu:
 
-1. Zaloguj się do maszyny Wirtualnej (**skalowania maszyn wirtualnych**) który będzie uruchamiany zaplanowanego zadania przy użyciu konta administracyjnego domeny.
-2. Utwórz folder na skalowania maszyn wirtualnych do przechowywania skryptu skalowania i jego konfiguracji (na przykład **C:\\skalowanie HostPool1**).
-3. Pobierz **basicScaler.ps1**, **pliku Config.xml**, i **PSStoredCredentials.ps1 funkcje** plików, a **PowershellModules** folder z [skalowanie repozytorium skryptów](https://github.com/Azure/RDS-Templates/tree/master/wvd-sh/WVD%20scaling%20script) i skopiować je do folderu utworzonego w kroku 2.
+1. Zaloguj się do maszyny Wirtualnej (maszyny Wirtualnej programu scaler) uruchamianego zaplanowanego zadania przy użyciu konta administracyjnego domeny.
+2. Utwórz folder na scaler maszyny Wirtualnej do przechowywania skryptu skalowania i jego konfiguracji (na przykład **C:\\skalowanie HostPool1**).
+3. Pobierz **basicScale.ps1**, **pliku Config.xml**, i **PSStoredCredentials.ps1 funkcje** plików, a **PowershellModules** folder z [skalowanie repozytorium skryptów](https://github.com/Azure/RDS-Templates/tree/master/wvd-sh/WVD%20scaling%20script) i skopiować je do folderu utworzonego w kroku 2. Istnieją dwa podstawowe sposoby uzyskania plików przed skopiowaniem ich do programu scaler maszyny Wirtualnej:
+    - Sklonuj repozytorium git na komputerze lokalnym.
+    - Widok **Raw** wersja każdego pliku skopiuj i Wklej zawartość każdego pliku do edytora tekstów, a następnie zapisz pliki z nazwą pliku i typu pliku. 
 
 ### <a name="create-securely-stored-credentials"></a>Utwórz bezpieczne przechowywanych poświadczeń
 
 Następnie należy utworzyć bezpiecznie przechowywane poświadczenia:
 
 1. Otwórz program PowerShell ISE z uprawnieniami administratora.
-2. Otwieranie okienka edycji i obciążenia **PSStoredCredentials.ps1 funkcja** pliku.
-3. Uruchom następujące polecenie cmdlet:
+2. Zaimportuj moduł programu PowerShell usług pulpitu zdalnego, uruchamiając następujące polecenie cmdlet:
+
+    ```powershell
+    Install-Module Microsoft.RdInfra.RdPowershell
+    ```
+    
+3. Otwieranie okienka edycji i obciążenia **PSStoredCredentials.ps1 funkcja** pliku.
+4. Uruchom następujące polecenie cmdlet:
     
     ```powershell
     Set-Variable -Name KeyPath -Scope Global -Value <LocalScalingScriptFolder>
     ```
     
     Na przykład **Set-Variable - KeyPath nazwa-zakresu globalnego — wartość "c:\\skalowanie HostPool1"**
-4. Uruchom **New StoredCredential - KeyPath \$KeyPath** polecenia cmdlet. Po wyświetleniu monitu wprowadź swoje poświadczenia pulpitu wirtualnego Windows z uprawnieniami do wykonywania zapytań w puli hosta (puli hosta jest określona w **pliku config.xml**).
+5. Uruchom **New StoredCredential - KeyPath \$KeyPath** polecenia cmdlet. Po wyświetleniu monitu wprowadź swoje poświadczenia pulpitu wirtualnego Windows z uprawnieniami do wykonywania zapytań w puli hosta (puli hosta jest określona w **pliku config.xml**).
     - Jeśli używasz standardowego konta lub jednostek innej usługi, uruchom **New StoredCredential - KeyPath \$KeyPath** polecenia cmdlet, gdy dla każdego konta utworzyć lokalne przechowywane poświadczenia.
-5. Uruchom **Get StoredCredentials-lista** aby upewnić się, poświadczenia zostały pomyślnie utworzone.
+6. Uruchom **Get StoredCredentials-lista** aby upewnić się, poświadczenia zostały pomyślnie utworzone.
 
 ### <a name="configure-the-configxml-file"></a>Konfigurowanie pliku config.xml
 
@@ -87,7 +95,7 @@ Wprowadź odpowiednie wartości do następujących pól, aby zaktualizować usta
 | BeginPeakTime                 | Kiedy rozpoczyna się godziny użycia szczytu                                                            |
 | EndPeakTime                   | Kiedy kończy się godziny użycia szczytu                                                              |
 | TimeDifferenceInHours         | Różnica czasu między czasem lokalnym i UTC, w godzinach                                   |
-| SessionThresholdPerCPU        | Maksymalna liczba sesji na progu procesora CPU, używany do określenia, kiedy serwer RDSH musi być uruchomiona w godzinach szczytu.  |
+| SessionThresholdPerCPU        | Maksymalna liczba sesji na progu procesora CPU, używany do określenia, kiedy nowa sesja hosta maszyny Wirtualnej musi być uruchomiona w godzinach szczytu.  |
 | MinimumNumberOfRDSH           | Minimalna liczba hostów puli maszyn wirtualnych, aby działały w czasie poza godzinami użycia             |
 | LimitSecondsToForceLogOffUser | Liczba sekund oczekiwania przed wymuszeniem użytkowników, aby się wylogować. Jeśli ustawiona na 0, użytkownicy nie są wymuszone się wylogować.  |
 | LogOffMessageTitle            | Tytuł wiadomości wysyłane do użytkownika przed ich musieli Wyloguj                  |
@@ -111,11 +119,11 @@ Po skonfigurowaniu pliku XML konfiguracji, należy skonfigurować harmonogram za
 
 Ten skrypt skalowania odczytuje ustawienia z pliku config.xml, w tym początek i koniec okresu szczytowe użycie w ciągu dnia.
 
-W czasie szczytowego użycia skrypt sprawdza bieżącą liczbę sesji i bieżącą pojemność RDSH uruchomione dla każdej kolekcji. Jeśli uruchamianie serwerów RDSH mieć możliwości wystarczające do obsługi istniejących sesji na podstawie parametru SessionThresholdPerCPU zdefiniowane w pliku config.xml jest obliczana. W przeciwnym razie skrypt uruchamia dodatkowe serwery RDSH w kolekcji.
+W czasie szczytowego użycia skrypt sprawdza bieżącą liczbę sesji i bieżącą pojemność RDSH uruchomione dla każdej puli hosta. Jeśli uruchomione maszyny wirtualne hosta sesji mieć możliwości wystarczające do obsługi istniejących sesji na podstawie parametru SessionThresholdPerCPU zdefiniowane w pliku config.xml jest obliczana. Jeśli nie, skrypt jest uruchamiany host sesji dodatkowe maszyny wirtualne w puli hosta.
 
-W czasie poza godzinami użycia skryptu określa serwerów, które RDSH powinno wyłączyć się na podstawie MinimumNumberOfRDSH parametru w pliku config.xml. Skrypt ustawi serwerów RDSH opróżnić trybie, aby uniemożliwić nowych sesji nawiązywania połączenia z hostów. Jeśli ustawisz **LimitSecondsToForceLogOffUser** parametru w pliku config.xml, aby wartość dodatnią różna od zera, skrypt powiadomi żadnego obecnie zalogowany użytkowników, aby zapisać pracę, poczekaj na skonfigurowanym czasie, a następnie wymusić Użytkownicy, aby się wylogować. Gdy wszystkie sesje użytkowników zostały podpisane na serwer RDSH, skrypt spowoduje wyłączenie serwera.
+W czasie poza godzinami użycia skryptu określa, które hostów sesji maszyn wirtualnych należy wyłączyć na podstawie parametru MinimumNumberOfRDSH w pliku config.xml. Skrypt ustawi sesji hosta maszyn wirtualnych, aby opróżnić trybie, aby uniemożliwić nowych sesji nawiązywania połączenia z hostów. Jeśli ustawisz **LimitSecondsToForceLogOffUser** parametru w pliku config.xml, aby wartość dodatnią różna od zera, skrypt powiadomi żadnego obecnie zalogowany użytkowników, aby zapisać pracę, poczekaj na skonfigurowanym czasie, a następnie wymusić Użytkownicy, aby się wylogować. Gdy wszystkie sesje użytkowników zostały podpisane na hoście sesji maszyny Wirtualnej, skrypt spowoduje wyłączenie serwera.
 
-Jeśli ustawisz **LimitSecondsToForceLogOffUser** parametru w pliku config.xml zero, skrypt ten umożliwia ustawienie konfiguracji sesji we właściwościach kolekcji do obsługi podpisywania off sesji użytkownika. W przypadku innych sesji na serwer RDSH, pozostawi serwer RDSH uruchomione. Jeśli nie ma żadnych sesji, skrypt zostanie zamknięty serwer RDSH.
+Jeśli ustawisz **LimitSecondsToForceLogOffUser** parametru w pliku config.xml zero, skrypt ten umożliwia ustawienie konfiguracji sesji na hoście właściwości puli do obsługi podpisywania off sesji użytkownika. W przypadku innych sesji na hoście sesji maszyny Wirtualnej, spowoduje to zamknięcie maszyny Wirtualnej hosta sesji uruchomione. Jeśli nie ma żadnych sesji, skrypt spowoduje wyłączenie maszyny Wirtualnej hosta sesji.
 
 Skrypt jest przeznaczony do działania okresowo, na serwerze maszyny Wirtualnej programu scaler przy użyciu harmonogramu zadań. Wybierz przedział czasu odpowiednie, w oparciu o rozmiar środowiska usług pulpitu zdalnego i należy pamiętać, że uruchamianie i zamykanie maszyn wirtualnych może zająć trochę czasu. Zaleca się uruchomienie skryptu skalowania co 15 minut.
 
@@ -125,6 +133,6 @@ Skalowanie skrypt tworzy dwa pliki dziennika **WVDTenantScale.log** i **WVDTenan
 
 **WVDTenantUsage.log** rejestrowania active liczby rdzeni i liczbę aktywnych maszyn wirtualnych każdym wykonaniu skryptu skalowania. Można użyć tych informacji do oszacowania rzeczywistego użycia maszyn wirtualnych platformy Azure firmy Microsoft i koszt. Plik jest w formacie wartości rozdzielanych przecinkami, z każdym elementem zawierający następujące informacje:
 
->czas, kolekcji i liczbę rdzeni maszyn wirtualnych
+>czas, puli hosta, liczbę rdzeni maszyn wirtualnych
 
 Nazwa pliku można zmodyfikować w taki sposób, aby mieć rozszerzenie CSV załadowane do programu Microsoft Excel i analizowane.

@@ -9,12 +9,12 @@ ms.date: 4/29/2019
 ms.author: mhopkins
 ms.reviewer: yzheng
 ms.subservice: common
-ms.openlocfilehash: 130eb9cc8bec4681f5c0d165735c6c3b2357576c
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
-ms.translationtype: MT
+ms.openlocfilehash: 560f7eb8a8809cdd6ef410a610be9806f9709754
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148315"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409975"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Zarządzanie cyklem życia magazynu obiektów Blob platformy Azure
 
@@ -87,7 +87,7 @@ Można zdefiniować i wdrażania zarządzania cyklem życia jako część wdroż
 
 ```json
 {
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {},
   "variables": {
@@ -150,14 +150,14 @@ Zasady to zbiór reguł:
 
 | Nazwa parametru | Typ parametru | Uwagi |
 |----------------|----------------|-------|
-| rules          | Tablica obiektów reguły | Co najmniej jedna reguła jest wymagana w zasadach. W zasadach, można zdefiniować reguły do 100.|
+| reguły          | Tablica obiektów reguły | Co najmniej jedna reguła jest wymagana w zasadach. W zasadach, można zdefiniować reguły do 100.|
 
 Każda reguła w ramach zasad ma kilka parametrów:
 
 | Nazwa parametru | Typ parametru | Uwagi | Wymagane |
 |----------------|----------------|-------|----------|
 | name           | String |Nazwa reguły może zawierać maksymalnie 256 znaków alfanumerycznych. Nazwa reguły jest rozróżniana wielkość liter.  Musi być unikatowa w ramach zasad. | True |
-| enabled | Boolean | Opcjonalna wartość logiczna, aby umożliwić reguły do zastosowania tymczasowego wyłączone. Wartość domyślna to true, jeśli nie jest ustawiona. | False | 
+| enabled | Boolean | Opcjonalna wartość logiczna, aby umożliwić reguły do zastosowania tymczasowego wyłączone. Wartość domyślna to true, jeśli nie jest ustawiona. | Fałsz | 
 | type           | Wartość wyliczenia | Bieżącym typem prawidłowe jest `Lifecycle`. | True |
 | definicja     | Obiekt, który definiuje reguły cyklu życia | Każda definicja składa się z zestawem filtru i zestawem akcji. | True |
 
@@ -210,7 +210,7 @@ Prawidłowymi filtrami obejmują:
 
 | Nazwa filtru | Typ filtru | Uwagi | Wymagany |
 |-------------|-------------|-------|-------------|
-| blobTypes   | Tablica wartości wyliczenia wstępnie zdefiniowane. | Bieżąca wersja obsługuje `blockBlob`. | Yes |
+| blobTypes   | Tablica wartości wyliczenia wstępnie zdefiniowane. | Bieżąca wersja obsługuje `blockBlob`. | Tak |
 | prefixMatch | Tablica ciągów dla prefiksów dopasować się. Każda reguła można zdefiniować maksymalnie 10 prefiksy. Ciąg prefiksu musi rozpoczynać się od nazwy kontenera. Na przykład, jeśli chcesz dopasować wszystkich obiektów blob w obszarze "https://myaccount.blob.core.windows.net/container1/foo/..." dla reguły jest prefixMatch `container1/foo`. | Jeśli nie zdefiniowano prefixMatch, reguła ma zastosowanie do wszystkich obiektów blob na koncie magazynu.  | Nie |
 
 ### <a name="rule-actions"></a>Akcje reguły
@@ -219,11 +219,11 @@ Akcje są stosowane do filtrowanych obiektów blob, po spełnieniu warunku wykon
 
 Zarządzanie cyklem życia obsługuje warstw i usuwanie obiektów blob i usuwanie migawek obiektów blob. Dla obiektów blob lub migawki obiektów blob, należy zdefiniować co najmniej jedną akcję dla każdej reguły.
 
-| Akcja        | Podstawowy obiekt Blob                                   | Snapshot      |
+| action        | Podstawowy obiekt Blob                                   | Migawka      |
 |---------------|---------------------------------------------|---------------|
 | tierToCool    | Obsługuje obiekty BLOB, obecnie w warstwie gorąca         | Nieobsługiwane |
 | tierToArchive | Obsługuje obiekty BLOB, obecnie w warstwie gorącej lub chłodnej | Nieobsługiwane |
-| delete        | Obsługiwane                                   | Obsługiwane     |
+| usuwanie        | Obsługiwane                                   | Obsługiwane     |
 
 >[!NOTE] 
 >Jeśli więcej niż jedna akcja jest zdefiniowana w tym samym obiekcie blob, Zarządzanie cyklem życia dotyczy najniższy akcję obiektu blob. Na przykład akcja `delete` jest tańsze niż akcja `tierToArchive`. Akcja `tierToArchive` jest tańsze niż akcja `tierToCool`.

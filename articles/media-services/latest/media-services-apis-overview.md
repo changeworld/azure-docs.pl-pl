@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/21/2019
+ms.date: 05/02/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: b80f11ef97a10728f07cebe1fe80b954e506da52
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 4c5b30ab075bbca22b6a58ccf65e55d332820937
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65147896"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406543"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Tworzenie aplikacji za pomocą usługi Media Services v3 interfejsów API
 
@@ -25,7 +25,11 @@ W tym artykule omówiono reguły mające zastosowanie do interfejsów API oraz j
 
 ## <a name="accessing-the-azure-media-services-api"></a>Uzyskiwanie dostępu do interfejsu API usługi Azure Media Services
 
-Aby uzyskać dostęp do zasobów usługi Azure Media Services, można użyć uwierzytelniania jednostki usługi Azure Active Directory (AD).
+Autoryzowanie dostępu do zasobów usługi Media Services i interfejsu API usług Media Services, użytkownik musi najpierw zostać uwierzytelnione. Usługa Media Services obsługuje [usługi Azure Active Directory (Azure AD) — na podstawie](../../active-directory/fundamentals/active-directory-whatis.md) uwierzytelniania. Są dwa typowe opcje uwierzytelniania:
+ 
+* **Uwierzytelnianie jednostki usługi** — używany do uwierzytelniania usługi (na przykład: aplikacji, aplikacje funkcji, logic apps, API i mikrousług w sieci web). Aplikacje, które często używają tej metody uwierzytelniania są aplikacje, które działają usługi demona, usługi warstwy środkowej lub zaplanowanych zadań. Na przykład dla sieci Web aplikacji należy zawsze warstwie pośredniej, który nawiązuje połączenie z usługi Media Services za pomocą jednostki usługi.
+* **Uwierzytelnianie użytkownika** — używany do uwierzytelniania osoby, która jest za pomocą aplikacji do interakcji z zasobami usługi Media Services. Interaktywna aplikacja najpierw powinien zostać wyświetlony monit użytkownika o poświadczenia użytkownika. Przykładem jest aplikacja do konsoli zarządzania używany przez użytkowników autoryzowanych do monitorowania zadań kodowania lub transmisja strumieniowa na żywo.
+
 Interfejsu API usług Media Services wymaga, czy użytkownik lub aplikacja, dzięki czemu interfejs API REST żądań mają dostęp do zasobów konta usługi Media Services i użyj **Współautor** lub **właściciela** roli. Interfejs API jest możliwy za pomocą **czytnika** roli, ale tylko **uzyskać** lub **listy**   operacje będą dostępne. Aby uzyskać więcej informacji, zobacz [kontroli dostępu opartej na rolach do konta usługi Media Services](rbac-overview.md).
 
 Zamiast tworzenia nazwy głównej usługi, należy wziąć pod uwagę przy użyciu zarządzanych tożsamości dla zasobów platformy Azure na dostęp do interfejsu API usług Media Services za pomocą usługi Azure Resource Manager. Aby dowiedzieć się więcej na temat zarządzanych tożsamości dla zasobów platformy Azure, zobacz [co to jest zarządzanych tożsamości dla zasobów platformy Azure](../../active-directory/managed-identities-azure-resources/overview.md).
@@ -52,6 +56,16 @@ Na poniższej ilustracji liczby reprezentują przepływ żądań w kolejności c
 2. Token dostępu usługi Azure AD jest wysyłany do warstwy środkowej.
 4. Warstwa środkowa wysyła żądanie do interfejsu API REST usługi Azure Media z tokenem usługi Azure AD.
 5. Warstwa środkowa otrzymuje dane z usługi Media Services.
+
+### <a name="samples"></a>Przykłady
+
+Zobacz poniższe przykłady pokazujące, jak połączyć się z nazwy głównej usługi Azure AD:
+
+* [Łączenie z użyciem usług REST](media-rest-apis-with-postman.md)  
+* [Nawiązywanie połączeń przy użyciu języka Java](configure-connect-java-howto.md)
+* [Nawiązywanie połączeń przy użyciu platformy .NET](configure-connect-dotnet-howto.md)
+* [Nawiązywanie połączeń przy użyciu platformy Node.js](configure-connect-nodejs-howto.md)
+* [Nawiązywanie połączeń przy użyciu języka Python](configure-connect-python-howto.md)
 
 ## <a name="naming-conventions"></a>Konwencje nazewnictwa
 

@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: c4cb93e39a67e13646a339af6ac999a8fd96b383
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 83ae5f923130ecb46b7b94cd8112ee45ae13e3f4
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62129644"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236258"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>Konfigurowanie środowiska wyszukiwania niestandardowego Bing
 
@@ -27,7 +27,7 @@ Podczas definiowania wycinków, sieci Web, należy użyć następującego:
 
 | Nazwa fragmentu | Opis                                                                                                                                                                                                                                                                                                |
 |------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Domain     | Wycinek domeny obejmuje wszystkie zawartości znajdującej się w obrębie domeny internetowej. Na przykład `www.microsoft.com`. Pominięcie `www.` powoduje, że Bing można także przeszukać poddomeny w domenie. Na przykład, jeśli określisz `microsoft.com`, Wyszukiwarka Bing zwraca także wyniki z `support.microsoft.com` lub `technet.microsoft.com`. |
+| Domena     | Wycinek domeny obejmuje wszystkie zawartości znajdującej się w obrębie domeny internetowej. Na przykład `www.microsoft.com`. Pominięcie `www.` powoduje, że Bing można także przeszukać poddomeny w domenie. Na przykład, jeśli określisz `microsoft.com`, Wyszukiwarka Bing zwraca także wyniki z `support.microsoft.com` lub `technet.microsoft.com`. |
 | Podstrony    | Wycinek podstrony zawiera całą zawartość w podstrony i ścieżki poniżej. W ścieżce można określić maksymalnie dwóch podstrony. Na przykład: `www.microsoft.com/en-us/windows/`                                                                                                                       |
 | Strona sieci Web    | Wycinek strony sieci Web mogą zawierać tylko tej strony sieci Web w polu wyszukiwania niestandardowego. Opcjonalnie możesz określić, czy dołączać podstrony.                                                                                                                                                                                  |
 
@@ -44,7 +44,7 @@ Jeśli nie masz pewności, wycinki, aby uwzględnić, możesz wysłać zapytania
 
 1. Wybierz pozycję "Bing" z listy rozwijanej w okienku podglądu, a następnie wprowadź zapytanie wyszukiwania
 
-2. Kliknij przycisk **Dodaj witrynę** obok wyników, które chcesz dołączyć. Następnie kliknij przycisk OK.
+2. Kliknij przycisk **Dodaj witrynę** obok wyników, które chcesz dołączyć. Kliknij przycisk OK.
 
 >[!NOTE]
 > [!INCLUDE[publish or revert](./includes/publish-revert.md)]
@@ -118,9 +118,9 @@ Portal umożliwia także przypiąć adresy URL na początku wyników wyszukiwani
 
 Możesz przypiąć stronę do góry na dwa sposoby:
 
-* W **Pinned** wprowadź adres URL strony sieci Web, aby przypiąć do góry, a jego odnośnego zapytania.
+* W **Pinned** wprowadź adres URL strony sieci Web, aby przypiąć do góry, a jego odnośnego zapytania.
 
-* W **Podgląd** okienku, wprowadź zapytanie wyszukiwania i kliknij przycisk wyszukiwania. Znajdź stronę sieci Web, aby przypiąć dla zapytania, a następnie kliknij przycisk **numeru Pin do góry**. strony sieci Web i zapytania zostaną dodane do **Pinned** listy.
+* W **Podgląd** okienku, wprowadź zapytanie wyszukiwania i kliknij przycisk wyszukiwania. Znajdź stronę sieci Web, aby przypiąć dla zapytania, a następnie kliknij przycisk **numeru Pin do góry**. strony sieci Web i zapytania zostaną dodane do **Pinned** listy.
 
 ### <a name="specify-the-pins-match-condition"></a>Określ warunek dopasowania numeru pin
 
@@ -133,7 +133,7 @@ Domyślnie strony sieci Web są tylko przypięte do początku wyników wyszukiwa
 |---------------|----------------------------------------------------------------------------------|
 | Rozpoczyna się od | Numer pin jest zgodny, jeśli ciąg zapytania użytkownika, który rozpoczyna się od ciągu zapytania numeru pin |
 | Kończy się na   | Numer pin jest zgodny, jeśli ciąg zapytania użytkownika kończy się ciągiem zapytania numeru pin.  |
-| Contains    | Numer pin jest zgodny, jeśli ciąg zapytania użytkownika zawiera ciąg zapytania numeru pin.   |
+| Zawiera    | Numer pin jest zgodny, jeśli ciąg zapytania użytkownika zawiera ciąg zapytania numeru pin.   |
 
 
 Aby zmienić warunek dopasowania numeru pin, kliknij ikonę edycji kodu pin. W **warunek dopasowania zapytania** kolumny, kliknij listę rozwijaną i wybierz nowy warunek, którego chcesz użyć. Następnie kliknij przycisk Zapisz ikonę, aby zapisać zmiany.

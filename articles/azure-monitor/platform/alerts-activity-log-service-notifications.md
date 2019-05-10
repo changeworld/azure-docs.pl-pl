@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 06/09/2018
 ms.author: shtabriz
-ms.openlocfilehash: 6b617ff99b9183c6b5008292dd3e5d11f2e69da9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3b3c967cd43745a4ae87fefc578282f5427a5f79
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60776906"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65405696"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>Tworzenie alertów dziennika aktywności dla powiadomień dotyczących usług
 ## <a name="overview"></a>Omówienie
@@ -36,6 +36,10 @@ Można także skonfigurować kogo wysyłane alertu:
 Aby dowiedzieć się więcej o grupach akcji, zobacz [Create and manage action groups (Tworzenie grup akcji i zarządzanie nimi)](../../azure-monitor/platform/action-groups.md).
 
 Aby uzyskać informacje na temat konfigurowania usługi kondycji powiadomień alertów przy użyciu szablonów usługi Azure Resource Manager, zobacz [szablonów usługi Resource Manager](alerts-activity-log.md).
+
+### <a name="watch-a-video-on-setting-up-your-first-azure-service-health-alert"></a>Obejrzyj film wideo na temat konfigurowania pierwszy alert usługi Azure Service Health
+
+>[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2OaXt]
 
 ## <a name="alert-and-new-action-group-using-azure-portal"></a>Akcja alertu i nowe grupy przy użyciu witryny Azure portal
 1. W [portal](https://portal.azure.com), wybierz opcję **Service Health**.
@@ -195,6 +199,8 @@ Po utworzeniu alertu, jest ona widoczna na **alerty** części **Monitor**. Wybi
 * Wyłączyć lub włączyć, jeśli chcesz tymczasowo zatrzymać lub wznowić odbieranie powiadomień o alercie.
 
 ## <a name="next-steps"></a>Kolejne kroki
+- Dowiedz się więcej o [najlepsze rozwiązania dotyczące konfigurowania alertów usługi Azure Service Health](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUa).
+- Dowiedz się, jak [Instalatora mobilnych powiadomień wypychanych dla usługi Azure Service Health](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUw).
 - Dowiedz się, jak [Konfigurowanie powiadomień elementu webhook dla istniejących systemów zarządzania problem](../../service-health/service-health-alert-webhook-guide.md).
 - Dowiedz się więcej o [usługi powiadomień dotyczących kondycji](../../azure-monitor/platform/service-notifications.md).
 - Dowiedz się więcej o [powiadomień szybkości](../../azure-monitor/platform/alerts-rate-limiting.md).

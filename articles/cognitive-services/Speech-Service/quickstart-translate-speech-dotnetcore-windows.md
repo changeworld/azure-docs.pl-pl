@@ -10,14 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 03/13/2019
 ms.author: erhopf
-ms.openlocfilehash: b0b0c256db3cc93e515b38bf7daad72b082d2d3d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fa516c5050bfd53add761bea56c74a58057263c7
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60621154"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65465683"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-net-core"></a>Szybki start: tłumaczenie mowy przy użyciu zestawu SDK usługi Mowa dla platformy .NET Core
+
+Przewodniki Szybki Start są również dostępne dla [mowy na tekst](quickstart-csharp-dotnet-windows.md) i [zamiany tekstu na mowę](quickstart-text-to-speech-dotnet-windows.md).
 
 W tym przewodniku Szybki start utworzysz prostą aplikację .NET Core, która przechwytuje mowę użytkownika z mikrofonu komputera, tłumaczy tę mowę i transkrybuje przetłumaczony tekst do wiersza polecenia w czasie rzeczywistym. Ta aplikacja jest przeznaczona do uruchamiania w 64-bitowych systemach Windows i jest kompilowana przy użyciu [pakietu NuGet zestawu SDK usługi Mowa](https://aka.ms/csspeech/nuget) i programu Microsoft Visual Studio 2017.
 
@@ -35,7 +37,7 @@ Ten przewodnik Szybki start wymaga następujących elementów:
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-dotnetcore-create-proj.md)]
 
-## <a name="add-sample-code"></a>Dodawanie przykładowego kodu
+## <a name="add-sample-code"></a>Dodaj kod przykładowy
 
 1. Otwórz plik `Program.cs` i zastąp cały jego kod poniższym kodem.
 

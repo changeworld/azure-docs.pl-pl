@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 8fd73b1e0fcde6bcd69c7ce76b888d1adda37de4
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 0b8139f11f937ddae30e25f4153e35287289a4d1
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939545"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233961"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Kontrola dostępu w usłudze Azure Data Lake magazynu Gen2
 
@@ -22,7 +22,7 @@ Azure Data Lake magazynu Gen2 implementuje model kontroli dostępu, który obsł
 
 <a id="azure-role-based-access-control-rbac" />
 
-## <a name="role-based-access-control"></a>Kontrola dostępu oparta na rolach
+## <a name="role-based-access-control"></a>Kontrola dostępu na podstawie ról
 
 RBAC używają przypisań ról w celu efektywnego zastosowania zestawy uprawnień, aby *podmiotów zabezpieczeń*. A *podmiotu zabezpieczeń* jest obiektem, który reprezentuje użytkownika, grupy, jednostkę usługi lub tożsamość zarządzana, która jest zdefiniowana w usłudze Azure Active Directory (AD), który żąda dostępu do zasobów platformy Azure.
 
@@ -37,7 +37,7 @@ Za pomocą przypisań ról RBAC jest zaawansowanym mechanizmem służącym do ko
 Gdy podmiot zabezpieczeń jest uprawnień RBAC danych za pośrednictwem [wbudowana rola](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues), lub za pośrednictwem rolę niestandardową, te uprawnienia są obliczane najpierw od autoryzacji żądania. Jeśli żądana operacja jest autoryzowany przez przypisania RBAC podmiotu zabezpieczeń, autoryzacji jest natychmiast rozwiązanych i Brak dodatkowych listy ACL są sprawdzane. Alternatywnie Jeśli podmiot zabezpieczeń nie ma przypisania RBAC lub żądania operacji jest niezgodna z przypisane uprawnienie, listy ACL testy są wykonywane w celu określenia, czy podmiot zabezpieczeń jest autoryzowany do wykonania żądanej operacji.
 
 > [!NOTE]
-> Jeśli podmiot zabezpieczeń został przypisany [dane z magazynu obiektów Blob]() przypisanie wbudowanej roli właściciela, a następnie podmiot zabezpieczeń jest uważany za *administrator* i ma pełne uprawnienia do wszystkich mutacja operacje, w tym ustawianie właściciela katalogu lub pliku, a także list ACL katalogów i plików, dla których nie są one właściciela. Administrator dostępu jest tylko autoryzowane sposób można zmienić właściciela zasobu.
+> Jeśli podmiot zabezpieczeń został przypisany przypisanie wbudowanej roli właściciela danych obiektu Blob magazynu, a następnie podmiot zabezpieczeń jest uważany za *administrator* i jest przyznawany pełny dostęp do wszystkich operacji mutujące, włączając ustawienie właściciel katalogu lub pliku, a także listy ACL dla katalogów i plików, dla których nie są one właściciela. Administrator dostępu jest tylko autoryzowane sposób można zmienić właściciela zasobu.
 
 ## <a name="shared-key-and-shared-access-signature-sas-authentication"></a>Uwierzytelnianie klucza współużytkowanego i sygnatury dostępu współdzielonego (SAS)
 

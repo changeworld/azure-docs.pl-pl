@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: db8c8de7a8047f7aa6a81f6a3b372d161408f1be
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: d1704220a13b6d6b5a48b7167d7912a38057127d
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62097143"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466512"
 ---
 # <a name="set-up-a-device-template"></a>Konfigurowanie szablonu urządzenia
 
@@ -68,10 +68,9 @@ Aby dodać nowe miary telemetrii, wybierz **+ nowej miary**, wybierz **Telemetri
 
 > [!NOTE]
 > Nazwy pól w szablonie urządzenia muszą być zgodne nazwy właściwości w odpowiednim kodzie urządzenia w kolejności do pomiaru dane telemetryczne, mają być wyświetlane w aplikacji, jeśli rzeczywiste urządzenie jest połączone. Tak samo, podczas konfigurowania ustawień i właściwości urządzenia, poleceń, w miarę postępu definiowania szablonu urządzenia w poniższych sekcjach.
+.PNG na przykład można dodać nowej miary telemetrii temperatury:
 
-Na przykład można dodać nowej miary telemetrii temperatury:
-
-| Nazwa wyświetlana        | Nazwa pola    |  Jednostki    | Min.   |Maks.|
+| Nazwa wyświetlana        | Nazwa pola    |  Jednostki    | Min.   |Maksimum|
 | --------------------| ------------- |-----------|-------|---|
 | Temperatura         | Temp          |  degC     |  0    |100|
 
@@ -214,7 +213,7 @@ Właściwość lokalizacji można utworzyć jako właściwość urządzenia zgł
 
     | Nazwa wyświetlana  | Nazwa pola | Typ danych |
     | --------------| -----------|-----------|
-    | Lokalizacja urządzenia | deviceLocation | location  |
+    | Lokalizacja urządzenia | deviceLocation | lokalizacja  |
 
    > [!NOTE]
    > Nazwy pól muszą być zgodne nazwy właściwości w odpowiednim kodzie urządzenia
@@ -239,7 +238,7 @@ Na przykład można dodać nowego **Echo** polecenia, wybierając **polecenia** 
 | --------------| -----------|---------------- | --------- |
 | Polecenie echo  | echo       |  30             | tekst      |
 
-!["Configure polecenia" formularza przy użyciu szczegółów echo](./media/howto-set-up-template/commandsecho.png)
+!["Configure polecenia" formularza przy użyciu szczegółów echo](./media/howto-set-up-template/commandsecho1.png)
 
 Po wybraniu **Zapisz**, **Echo** polecenia pojawi się jako Kafelek i jest gotowa do użycia w **Device Explorer** gdy z rzeczywistego urządzenia. Nazwy pól polecenia muszą być zgodne nazwy właściwości w odpowiednim kodzie urządzenia w kolejności poleceń pomyślne uruchomienie.
 
@@ -255,7 +254,7 @@ Pulpit nawigacyjny jest, gdy operator można przejść do informacji o urządzen
 
 Na przykład można dodać **ustawień i właściwości** Kafelek, aby wyświetlić wybór bieżące wartości ustawień i właściwości, wybierając **pulpit nawigacyjny** kartę i Kafelek z biblioteki:
 
-!["Configure szczegóły urządzenia" formularz Szczegóły ustawień i właściwości](./media/howto-set-up-template/dashboardsettingsandpropertiesform.png)
+!["Configure szczegóły urządzenia" formularz Szczegóły ustawień i właściwości](./media/howto-set-up-template/dashboardsettingsandpropertiesform1.png)
 
 Teraz, gdy operator widoków pulpitu nawigacyjnego w **Device Explorer**, zobaczą Kafelek.
 

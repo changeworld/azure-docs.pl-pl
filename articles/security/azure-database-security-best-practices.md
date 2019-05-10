@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2018
+ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: f59d349da023f9a1b21477a05750d4f8e9aef500
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: b4744201f506730303e190783acc60bfaa383720
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65187763"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409806"
 ---
 # <a name="azure-database-security-best-practices"></a>Najlepsze rozwiązania dotyczące zabezpieczeń bazy danych platformy Azure
 W tym artykule opisano najlepsze rozwiązania dotyczące zabezpieczeń bazy danych.
@@ -71,7 +71,7 @@ Jeśli używasz uwierzytelniania programu SQL Server, musisz mieć:
 
 - Zarządzaj silnych poświadczeń użytkownika.
 - Ochrona poświadczeń w parametrach połączenia.
-- (Potencjalnie) chronić poświadczenia przekazywane za pośrednictwem sieci z serwera sieci web z bazą danych. Aby uzyskać więcej informacji, zobacz [Instrukcje: Połączenia z serwerem SQL przy użyciu uwierzytelniania SQL na platformie ASP.NET 2.0](/previous-versions/msp-n-p/ff648340(v=pandp.10)).
+- (Potencjalnie) chronić poświadczenia przekazywane za pośrednictwem sieci z serwera sieci web z bazą danych. Aby uzyskać więcej informacji, zobacz [jak: Połączenia z serwerem SQL przy użyciu uwierzytelniania SQL na platformie ASP.NET 2.0](/previous-versions/msp-n-p/ff648340(v=pandp.10)).
 
 ### <a name="azure-active-directory-ad-authentication"></a>*Uwierzytelnianie usługi Azure Active Directory (AD)*
 Uwierzytelnianie usługi Azure AD jest mechanizmem nawiązywania połączenia z usługą Azure SQL Database i [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) przy użyciu tożsamości w usłudze Azure AD. Przy użyciu uwierzytelniania usługi Azure AD możesz zarządzać tożsamościami użytkowników bazy danych i innych usług firmy Microsoft w jednej centralnej lokalizacji. Centralne zarządzanie identyfikator udostępnia jedno miejsce do zarządzania użytkownikami bazy danych i upraszcza zarządzanie uprawnieniami.

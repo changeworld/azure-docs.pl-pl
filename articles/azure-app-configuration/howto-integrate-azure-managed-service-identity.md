@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 84dddf5ed9c31e8585480319af189d31e39163e5
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: ff098ebd23d2ce5a8c9c39f154375be1dae6a262
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59998995"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408903"
 ---
-# <a name="tutorial-integrate-with-azure-managed-identities"></a>Samouczek: Integracja z usługą Azure managed tożsamości
+# <a name="integrate-with-azure-managed-identities"></a>Integracja z usługą Azure managed tożsamości
 
 Usługa Azure Active Directory [zarządzanych tożsamości](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) uproszczenia zarządzania wpisami tajnymi dla aplikacji w chmurze. Za pomocą tożsamości zarządzanej możesz skonfigurować kodu, aby użyć jednostki usługi, który został utworzony dla usługi obliczeniowe platformy Azure, których ono działa. Tożsamość zarządzana jest użyć zamiast oddzielnych poświadczeń przechowywanych w usłudze Azure Key Vault lub parametrów połączenia lokalnego. 
 
@@ -61,7 +61,7 @@ Aby skonfigurować tożsamość zarządzaną w portalu, możesz najpierw utworzy
 
 1. W [witryny Azure portal](https://aka.ms/azconfig/portal), wybierz opcję **wszystkie zasoby** i wybierz magazyn konfiguracji aplikacji, który został utworzony w przewodniku Szybki Start.
 
-2. Wybierz pozycję **Kontrola dostępu (IAM)**.
+2. Wybierz **kontrola dostępu (IAM)**.
 
 3. Na **Sprawdź dostęp** zaznacz **Dodaj** w **Dodaj przypisanie roli** karty interfejsu użytkownika.
 

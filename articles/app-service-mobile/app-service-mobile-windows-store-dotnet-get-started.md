@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: crdun
-ms.openlocfilehash: 289d50fc9d71ee5ea8960fd077e91ef6f68027cb
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 959c1ff8b199320105f650a7eb62a04bedb03b3b
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62127985"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65412784"
 ---
 # <a name="create-a-windows-app-with-an-azure-backend"></a>Tworzenie aplikacji systemu Windows z zapleczem na platformie Azure
 
@@ -37,9 +37,9 @@ Wykonanie czynności opisanych w tym samouczku jest wymaganiem wstępnym dla wsz
 
 Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
-* Aktywne konto platformy Azure. Jeśli nie masz konta, możesz utworzyć konto wersji próbnej platformy Azure i uzyskać maksymalnie 10 bezpłatnych aplikacji mobilnych, z których możesz korzystać nawet po zakończeniu okresu ważności wersji próbnej. Aby uzyskać szczegółowe informacje, zobacz artykuł [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
+* Aktywne konto platformy Azure. Jeśli nie masz konta, możesz utworzyć konto wersji próbnej platformy Azure i uzyskać maksymalnie 10 bezpłatnych aplikacji mobilnych, z których możesz korzystać nawet po zakończeniu okresu ważności wersji próbnej. Aby uzyskać więcej informacji, zobacz [bezpłatnej wersji próbnej Azure](https://azure.microsoft.com/pricing/free-trial/).
 * Windows 10.
-* [Visual Studio Community 2017].
+* [Visual Studio Community].
 * Wiedza dotycząca opracowywania aplikacji platformy UWP. Odwiedź stronę [dokumentacji platformy UWP](https://docs.microsoft.com/windows/uwp/), aby dowiedzieć się, jak [skonfigurować środowisko](https://docs.microsoft.com/windows/uwp/get-started/get-set-up) tworzenia aplikacji platformy UWP.
 
 ## <a name="create-a-new-azure-mobile-app-backend"></a>Tworzenie zaplecza nowej Aplikacji mobilnej Azure
@@ -70,7 +70,7 @@ Po skonfigurowaniu zaplecza Aplikacji mobilnej można utworzyć nową aplikację
     Spowoduje to wysłanie żądania POST do zaplecza nowej aplikacji mobilnej, która jest obsługiwana na platformie Azure.
 
 > [!TIP]
-> Możesz dodać projekt aplikacji platformy uniwersalnej systemu Windows do tego samego rozwiązania co projekt serwera, jeśli używasz zaplecza .NET. Ułatwi to debugowanie oraz testowanie zaplecza i aplikacji w tym samym rozwiązaniu programu Visual Studio. Aby dodać projekt aplikacji platformy uniwersalnej systemu Windows do rozwiązania zaplecza, należy korzystać z programu Visual Studio 2017.
+> Możesz dodać projekt aplikacji platformy uniwersalnej systemu Windows do tego samego rozwiązania co projekt serwera, jeśli używasz zaplecza .NET. Ułatwi to debugowanie oraz testowanie zaplecza i aplikacji w tym samym rozwiązaniu programu Visual Studio. Aby dodać projekt aplikacji platformy uniwersalnej systemu Windows do rozwiązania wewnętrznej bazy danych, należy używać programu Visual Studio 2017 r. lub nowszej.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
@@ -86,4 +86,4 @@ Po skonfigurowaniu zaplecza Aplikacji mobilnej można utworzyć nową aplikację
 <!-- URLs. -->
 [Mobile App SDK]: https://go.microsoft.com/fwlink/?LinkId=257545
 [Azure portal]: https://portal.azure.com/
-[Visual Studio Community 2017]: https://go.microsoft.com/fwLink/p/?LinkID=534203
+[Visual Studio Community]: https://go.microsoft.com/fwLink/p/?LinkID=534203

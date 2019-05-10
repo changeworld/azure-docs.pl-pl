@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: crdun
-ms.openlocfilehash: 2e0a4b51e9140b9b3c0032980b7c6cd5a4d55638
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: b99513cad34bba1b050a24795ecb21d0357d19c1
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62128944"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65416075"
 ---
 # <a name="create-a-xamarinforms-app-with-azure"></a>Tworzenie aplikacji platformy Xamarin.Forms na platformie Azure
 
@@ -34,9 +34,9 @@ Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
 * Aktywne konto platformy Azure. Jeśli nie masz konta, możesz utworzyć konto wersji próbnej platformy Azure i uzyskać maksymalnie 10 bezpłatnych aplikacji mobilnych, z których możesz korzystać nawet po zakończeniu okresu ważności wersji próbnej. Aby uzyskać więcej informacji, zobacz [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-* Narzędzia Visual Studio Tools for Xamarin w programie Visual Studio 2017 lub Visual Studio dla komputerów Mac. Instrukcje znajdują się na [stronie z opisem instalacji platformy Xamarin][Install Xamarin].
+* Visual Studio Tools dla platformy Xamarin w programie Visual Studio 2017 lub nowszego, lub Visual Studio dla komputerów Mac. Instrukcje znajdują się na [stronie z opisem instalacji platformy Xamarin][Install Xamarin].
 
-* (opcjonalnie) Aby móc tworzyć aplikacje dla systemu iOS, wymagany jest komputer Mac z programem Xcode 9.0 lub nowszym. Do opracowywania aplikacji dla systemu iOS można używać programu Visual Studio dla komputerów Mac lub programu Visual Studio 2017, jeśli komputer Mac jest dostępny w sieci.
+* (opcjonalnie) Aby móc tworzyć aplikacje dla systemu iOS, wymagany jest komputer Mac z programem Xcode 9.0 lub nowszym. Program Visual Studio for Mac może służyć do tworzenia aplikacji dla systemu iOS lub Visual Studio 2017 lub później mogą być używane (tak długo, jak Mac jest dostępny w sieci).
 
 ## <a name="create-a-new-mobile-apps-back-end"></a>Tworzenie nowego zaplecza funkcji Mobile Apps
 
@@ -64,7 +64,7 @@ Do otwierania rozwiązania wymagane są narzędzia Visual Studio Tools for Xamar
 
    Ta akcja spowoduje pobranie projektu zawierającego aplikację klienta połączoną z aplikacją mobilną. Zapisz skompresowany plik projektu na komputerze lokalnym i zapamiętaj, gdzie został on zapisany.
 
-3. Wyodrębnij pobrany projekt, a następnie otwórz go w programie Visual Studio 2017.
+3. Wyodrębnij pobrany projekt, a następnie otwórz go w programie Visual Studio.
 
    ![Projekt wyodrębniony w programie Visual Studio][8]
 

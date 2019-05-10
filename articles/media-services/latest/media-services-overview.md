@@ -13,15 +13,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 04/18/2019
+ms.date: 05/07/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 91297a02966000899ab79dfb86446890e9c4439a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 4fb42014e2c5389cf2a849ddf5114ab1f59c9e28
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148716"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65414028"
 ---
 # <a name="azure-media-services-v3-overview"></a>Omówienie usługi Azure Media Services v3
 
@@ -48,7 +48,8 @@ Usługa Media Services umożliwia tworzenie różnych przepływów pracy multime
 
 Dowiedz się, jak kodować zawartość i tworzyć jej pakiety, przesyłać strumieniowo wideo na żądanie, prowadzić emisję na żywo i analizować wideo za pomocą usługi Media Services w wersji 3. Samouczki, dokumentacja interfejsu API i inne dokumenty przedstawiające sposób zapewnienia bezpiecznej transmisji strumieniowej materiałów wideo lub audio na żywo lub na żądanie, którą można skalować na potrzeby milionów użytkowników.
 
-Przed rozpoczęciem tworzenia, przejrzyj [podstawowe pojęcia](concepts-overview.md)<br/>
+> [!TIP]
+> Sprawdź przed rozpoczęciem tworzenia:<br/>* [Podstawowe pojęcia](concepts-overview.md) (incudes ważnych pojęć: pakowanie, kodowania, ochrona, itp.)<br/>* [Tworzenie aplikacji za pomocą usługi Media Services v3 API](media-services-apis-overview.md) (w tym informacji na temat uzyskiwania dostępu do interfejsów API, konwencje nazewnictwa, itp.)
 
 ### <a name="quickstarts"></a>Przewodniki Szybki start  
 
@@ -86,9 +87,5 @@ Zapoznaj się z [społeczności usługi Azure Media Services](media-services-com
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Jak można zacząć korzystać z wersji 3? 
-
-> [!div class="nextstepaction"]
-> [Dowiedz się więcej o podstawowych pojęciach](concepts-overview.md)<br/>
-> [Programowanie za pomocą usługi Media Services v3 interfejsu API przy użyciu zestawów SDK](developers-guide.md) 
+[Dowiedz się więcej o podstawowych pojęciach](concepts-overview.md)
 

@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 02/14/2019
+ms.date: 05/07/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 4850dd82ca52a060c921569433035256f5b74cce
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5bb68f3f0139a98f10e28957209f8530a762b76c
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61478802"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65413903"
 ---
 # <a name="what-is-azure-importexport-service"></a>Co to jest usługa Azure Import/Export?
 
@@ -112,7 +112,7 @@ Na wysokim poziomie zadania eksportu obejmuje następujące czynności:
 
 Aby uzyskać instrukcje krok po kroku na eksport danych, przejdź do [eksportowanie danych z obiektów blob platformy Azure](storage-import-export-data-from-blobs.md).
 
-## <a name="region-availability"></a>Dostępność w danym regionie 
+## <a name="region-availability"></a>Dostępność regionalna 
 
 Usługa Azure Import/Export obsługuje kopiowanie danych do i z wszystkich kont usługi Azure storage. Możesz przesłać dysków do jednego z wymienionych lokalizacjach. W przypadku konta magazynu w lokalizacji platformy Azure, która nie jest określona w tym miejscu, lokalizacji wysyłki alternatywne znajduje się po utworzeniu zadania.
 
@@ -122,16 +122,16 @@ Usługa Azure Import/Export obsługuje kopiowanie danych do i z wszystkich kont 
 |Kraj  |Kraj  |Kraj  |Kraj  |
 |---------|---------|---------|---------|
 |Wschodnie stany USA    | Europa Północna        | Indie Środkowe        |US Gov Iowa         |
-|Zachodnie stany USA     |Europa Zachodnia         | Indie Południowe        | US DoD — wschodnie stany        |
-|Wschodnie stany USA 2    | Azja Wschodnia        |  Indie Zachodnie        | US DoD — środkowe stany        |
+|Zachodnie stany USA     |Europa Zachodnia         | Indie Południowe        | Wschodnie stany USA — DoD        |
+|Wschodnie stany USA 2    | Azja Wschodnia        |  Indie Zachodnie        | Środkowe stany USA — DoD        |
 |Zachodnie stany USA 2     | Azja Południowo-Wschodnia        | Kanada Środkowa        | Chiny Wschodnie         |
 |Środkowe stany USA     | Australia Wschodnia        | Kanada Wschodnia        | Chiny Północne        |
-|Środkowo-północne stany USA     |  Australia Południowo-Wschodnia       | Brazylia Południowa        | Południowe Zjednoczone Królestwo        |
-|Środkowo-południowe stany USA     | Japonia Zachodnia        |Korea Środkowa         | Niemcy Środkowe        |
-|Środkowo-zachodnie stany USA     |  Japonia Wschodnia       | Administracja USA — Wirginia        | Niemcy Północno-Wschodnie        |
+|Północno-środkowe stany USA     |  Australia Południowo-Wschodnia       | Brazylia Południowa        | Zjednoczone Królestwo (południe)        |
+|Południowo-środkowe stany USA     | Japonia Zachodnia        |Korea Środkowa         | Niemcy Środkowe        |
+|Zachodnio-środkowe stany USA     |  Japonia Wschodnia       | US Gov Wirginia        | Niemcy Północno-Wschodnie        |
 
 
-## <a name="security-considerations"></a>Zagadnienia związane z zabezpieczeniami
+## <a name="security-considerations"></a>Zagadnienia dotyczące bezpieczeństwa
 
 Dane na dysku są szyfrowane za pomocą szyfrowania dysków funkcją BitLocker. To Szyfrowanie chroni dane, gdy są one przesyłane.
 
@@ -160,7 +160,7 @@ Podczas wydawania dysków na platformie Azure, naliczana jest opłata za wysyłk
 
 **Koszty transakcji**
 
-Podczas importowania danych do usługi Azure Storage są bez kosztów transakcji, oprócz kosztów transakcji magazynu w warstwie standardowa. Opłaty za wyjście standardowe mają zastosowanie w przypadku, gdy dane są eksportowane z usługi Blob storage. Aby uzyskać więcej informacji na temat tego względu koszt transakcji, zobacz [cennikiem transferu danych.](https://azure.microsoft.com/pricing/details/data-transfers/)
+[Opłata za transakcję magazynu w warstwie standardowa](https://azure.microsoft.com/pricing/details/storage/) stosowane podczas importowania, jak również Eksport danych. Opłaty za ruch wychodzący standardowe mają również zastosowanie, wraz z opłaty dotyczące transakcji magazynu, gdy dane są eksportowane z usługi Azure Storage. Aby uzyskać więcej informacji na koszty ruchu wychodzącego, zobacz [cennikiem transferu danych.](https://azure.microsoft.com/pricing/details/data-transfers/).
 
 
 

@@ -13,12 +13,12 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd57eadc2c42c17343eee6d813072866e8ea09e3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1e40a1fd72adf353d5c4d856544482cb7bd68f43
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60249813"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65413988"
 ---
 # <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>Co się stało z moim projektem MVC (usługa połączona programu Visual Studio usługi Azure Active Directory)?
 
@@ -34,7 +34,7 @@ Aby uzyskać informacje na temat pracy z podłączoną usługę, zobacz [wprowad
 
 Ma wpływ na odwołania *.NET pliku projektu) i `packages.config` (odwołań NuGet).
 
-| Type | Informacje ogólne |
+| Type | Odwołanie |
 | --- | --- |
 | .NET; NuGet | Microsoft.IdentityModel.Protocol.Extensions |
 | .NET; NuGet | Microsoft.Owin |
@@ -49,7 +49,7 @@ Ma wpływ na odwołania *.NET pliku projektu) i `packages.config` (odwołań NuG
 
 Dodatkowe informacje, w przypadku wybrania **Odczyt danych katalogu** opcji:
 
-| Type | Informacje ogólne |
+| Type | Odwołanie |
 | --- | --- |
 | .NET; NuGet | EntityFramework |
 | .NET        | EntityFramework.SqlServer (Visual Studio 2015 tylko) |
@@ -63,7 +63,7 @@ Dodatkowe informacje, w przypadku wybrania **Odczyt danych katalogu** opcji:
 
 Zostaną usunięte następujące odwołania (ASP.NET 4 wyłącznie dla projektów, tak jak w programie Visual Studio 2015):
 
-| Type | Informacje ogólne |
+| Type | Odwołanie |
 | --- | --- |
 | .NET; NuGet | Microsoft.AspNet.Identity.Core |
 | .NET; NuGet | Microsoft.AspNet.Identity.EntityFramework |
@@ -145,7 +145,7 @@ Dodatkowe zmiany w przypadku wybrania **Odczyt danych katalogu** opcji:
 
 ### <a name="file-backup-visual-studio-2015"></a>Tworzenie kopii zapasowej plików (Visual Studio 2015)
 
-Podczas dodawania usługi połączonej, Visual Studio 2015 tworzy kopie zapasowe zmienionych i wykasowane pliki. Wszystkie pliki objęte są zapisywane w folderze `Backup/AzureAD`. Program Visual Studio 2017 nie tworzy kopii zapasowych.
+Podczas dodawania usługi połączonej, Visual Studio 2015 tworzy kopie zapasowe zmienionych i wykasowane pliki. Wszystkie pliki objęte są zapisywane w folderze `Backup/AzureAD`. Visual Studio 2017 i nowszym nie tworzy kopii zapasowych.
 
 - `Startup.cs`
 - `App_Start\IdentityConfig.cs`

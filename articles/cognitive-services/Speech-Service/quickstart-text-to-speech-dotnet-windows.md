@@ -10,14 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 4/03/2019
 ms.author: yinhew
-ms.openlocfilehash: a013189e45b1c1c8eeb88d62a718d495c0c415a2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3b7addd369d5e26554dd4300e65bee66b8a62768
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60620489"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65465577"
 ---
 # <a name="quickstart-synthesize-speech-with-the-speech-sdk-for-net-framework-windows"></a>Szybki start: Syntetyzowania mowy z zestawem SDK mowy dla programu .NET Framework (Windows)
+
+Przewodniki Szybki Start są również dostępne dla [rozpoznawania mowy](quickstart-csharp-dotnet-windows.md) i [tłumaczenia mowy](quickstart-translate-speech-dotnetframework-windows.md).
 
 Użyj tego przewodnika, aby utworzyć aplikację konsoli zamiany tekstu na mowę przy użyciu programu .NET framework dla Windows i zestaw SDK rozpoznawania mowy. Po zakończeniu możesz syntetyzowania mowę na podstawie tekstu i posłuchaj mowy na głośników w czasie rzeczywistym.
 
@@ -37,7 +39,7 @@ Aby ukończyć ten projekt, będą potrzebne następujące elementy:
 
 [!INCLUDE [Create project](../../../includes/cognitive-services-speech-service-create-speech-project-vs-csharp.md)]
 
-## <a name="add-sample-code"></a>Dodawanie przykładowego kodu
+## <a name="add-sample-code"></a>Dodaj kod przykładowy
 
 1. Otwórz plik `Program.cs` i zastąp automatycznie wygenerowany kod następującym przykładem:
 

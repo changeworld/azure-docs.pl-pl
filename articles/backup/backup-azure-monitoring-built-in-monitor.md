@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/05/2019
 ms.author: pullabhk
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 8d3e3257f16fe4e0f846c2268bfefc2771387de6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ab7d2c0af4bc71733a7995b7e781f0facbfbb29f
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60809071"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236435"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Monitorowanie obciążeń usługi Azure Backup
 
@@ -49,7 +49,7 @@ Alerty są głównie scenariusze, w której użytkownicy są powiadamiani, tak, 
 Poniższe scenariusze są definiowane przez usługę jako dla scenariuszy.
 
   - Niepowodzenia wykonywania kopii zapasowej/przywracania
-  - Kopii zapasowej zakończyło się pomyślnie z ostrzeżeniami
+  - Kopii zapasowej zakończyło się pomyślnie z ostrzeżeniami dla usługi Azure Backup Agent (MAB)
   - Zatrzymaj ochronę za pomocą zachowanych danych/Zatrzymaj ochronę za pomocą usuwania danych
 
 ### <a name="exceptions-when-an-alert-is-not-raised"></a>Wyjątki, gdy nie zostanie zgłoszony alert
@@ -92,7 +92,7 @@ W przypadku skonfigurowania powiadomień, otrzymasz-Zapraszamy lub wprowadzając
 Jeśli ustawiono częstotliwość podsumowanie godzinowe oraz alert był wyświetlany i rozwiązywany w ciągu godziny, nie będzie częścią nadchodzących podsumowanie godzinowe.
 
 > [!NOTE]
-> 
+>
 > * Jeśli operacją destrukcyjną, takie jak **Zatrzymaj ochronę za pomocą usuwania danych** jest wykonywane, zostanie zgłoszony alert oraz zostanie wysłana wiadomość e-mail do właścicieli subskrypcji, Administratorzy i współadministratorzy, nawet jeśli nie skonfigurowano powiadomienia usługi odzyskiwania Magazyn.
 > * Aby skonfigurować powiadomienia dla zadań zakończonych pomyślnie użyć [usługi Log Analytics](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-workspace).
 

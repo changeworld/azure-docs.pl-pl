@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2019
 ms.author: shants
-ms.openlocfilehash: 76e0f496acf37d4220f57a599f0ce449ca130bba
-ms.sourcegitcommit: abeefca6cd5ca01c3e0b281832212aceff08bf3e
+ms.openlocfilehash: fccc99f78d038a5f96b9dfe01b575dedcdcb4cdc
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "64992900"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65405607"
 ---
 # <a name="handling-planned-maintenance-notifications-for-windows-virtual-machines"></a>Obsługa Planned maintenance notifications zaplanowanej dla maszyn wirtualnych Windows
 
@@ -27,13 +27,13 @@ Platforma Azure jest co pewien czas aktualizowana w celu poprawy niezawodności,
 
 - Jeśli konserwacja nie wymaga ponownego uruchomienia systemu, platforma Azure używa migracji w miejscu wstrzymać maszyny Wirtualnej, gdy host jest aktualizowana. Te operacje konserwacji bez rebootful są domena błędów zastosowane przez domenę błędów, a postęp zostanie zatrzymany, jeśli wszystkie sygnały kondycji ostrzeżenia są odbierane. 
 
-- Jeśli przeprowadzenia konserwacji wymagane jest ponowne uruchomienie komputera, otrzymasz powiadomienie o podczas planowanej konserwacji. W takich przypadkach są podane przedział czasu, w którym możesz uruchomić konserwację samodzielnie, kiedy pracuje dla Ciebie.
+- Jeśli przeprowadzenia konserwacji wymagane jest ponowne uruchomienie komputera, otrzymasz powiadomienie o podczas planowanej konserwacji. W takich przypadkach są podane przedział czasu, który typowo znajduje się 30 dni otwierana konserwację samodzielnie, gdy działa dla Ciebie.
 
 
 Planowana konserwacja, która wymaga ponownego uruchomienia, zaplanowano etapami. Każdy etap ma inny zakres (regiony).
 
 - Falą rozpoczyna się od powiadomienie dla klientów. Domyślnie powiadomienia są wysyłane do właściciela subskrypcji i współwłaścicieli. Możesz dodać więcej adresatów i opcje obsługi komunikatów, takie jak wiadomości e-mail, wiadomości SMS i elementy Webhook, do powiadomienia za pomocą platformy Azure [alertów dziennika aktywności](../../azure-monitor/platform/activity-logs-overview.md).  
-- W momencie zgłoszenia *samoobsługi okna* ma zostać udostępnione. Podczas tego okna, które jest zwykle cztery tygodnie można znaleźć, której maszyny wirtualne znajdują się w tej fazie badania i aktywnie Uruchom konserwację według własnych potrzeb planowania.
+- W momencie zgłoszenia *samoobsługi okna* ma zostać udostępnione. Podczas tego okna, które jest zwykle 30 dni można znaleźć, której maszyny wirtualne znajdują się w tej fazie badania i aktywnie Uruchom konserwację według własnych potrzeb planowania.
 - Po oknie samoobsługi *zaplanowanego okna obsługi* rozpoczyna się. W pewnym momencie podczas tego okna platforma Azure planuje i dotyczy wymagane konserwacji maszyny wirtualnej. 
 
 Cel, że dwa okna jest zapewnienie wystarczająco dużo czasu, aby uruchomić konserwacji i ponowne uruchomienie maszyny wirtualnej codzienne, gdy Azure nastąpi automatyczne uruchomienie konserwacji.

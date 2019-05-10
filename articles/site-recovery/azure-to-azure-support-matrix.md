@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/29/2019
 ms.author: raynew
-ms.openlocfilehash: 9b905d532dfe71fea7c4ec0377eb53b9e3073907
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 1118d1de72ca7cd44844a0b526efd85eb419bc67
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926588"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65412771"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Macierz obsługi na potrzeby replikacji maszyn wirtualnych platformy Azure z jednego regionu do innego
 
@@ -47,7 +47,7 @@ Można replikować i odzyskiwanie maszyn wirtualnych między wszystkie dwóch re
 **Geograficzne klastra** | **Regiony platformy Azure**
 -- | --
 Ameryka | Kanada Wschodnia, środkowe stany USA Kanada środkowe, południowo-, Zachodnia środkowe stany USA, wschodnie stany USA, wschodnie stany USA 2, zachodnie stany USA, zachodnie stany USA 2, środkowe stany USA, Północnośrodkowa
-Europa | Zachodnie Zjednoczone Królestwo, południowe Zjednoczone Królestwo, Europa Północna, Europa Zachodnia, Francja środkowa, Francja Południowa
+Europa | Zachodnie Zjednoczone Królestwo, południowe Zjednoczone Królestwo, Europa Północna, Europa Zachodnia, Francja środkowa, Francja Południowa, Zachodnia RPA, Północna RPA
 Azja | Indie Południowe, Indie środkowe, Azja południowo-wschodnia, Azja Wschodnia, Japonia Wschodnia, Japonia Zachodnia, Korea środkowa, Korea Południowa
 Australia   | Australia Wschodnia, Australia Południowo-Wschodnia, Australia Środkowa, Australia Środkowa 2
 Azure Government    | Administracja USA — Wirginia, administracja USA — Iowa, administracja USA — Arizona, administracja USA — Teksas, US DOD wschodnie stany, US dod — środkowe
@@ -156,6 +156,7 @@ Obrazy galerii platformy Azure — innych firm opublikowane | Obsługiwane | Obs
 Obrazy niestandardowe - innych firm opublikowane | Obsługiwane | Obsługiwane, jeśli maszyna wirtualna uruchamia się w obsługiwanym systemie operacyjnym.
 Maszyny wirtualne migrowane przy użyciu Site Recovery | Obsługiwane | Jeśli maszyna wirtualna VMware lub komputera fizycznego został zmigrowany na platformie Azure przy użyciu Site Recovery, musisz odinstalować starszej wersji usługi mobilności uruchomioną na maszynie i uruchom ponownie maszynę przed zreplikowaniem go do innego regionu platformy Azure.
 Zasady RBAC | Nieobsługiwane | Oparta na rolach dostęp do zasad kontroli (RBAC) na maszynach wirtualnych nie są replikowane do trybu failover maszyny Wirtualnej w regionie docelowym.
+Rozszerzenia | Nieobsługiwane | Rozszerzenia nie są replikowane do trybu failover maszyny Wirtualnej w regionie docelowym. Musi zostać zainstalowany ręcznie po włączeniu trybu failover.
 
 ## <a name="replicated-machines---disk-actions"></a>Replikowane maszyny - działań dysku
 
@@ -183,7 +184,7 @@ Dysk danych — konto magazynu w warstwie standardowa | Obsługiwane |
 Dysk danych — konto magazynu premium storage | Obsługiwane | Maszyna wirtualna ma dyski rozkładają się na konta magazynu w warstwie standardowa i premium, po wybraniu innego docelowego konta magazynu dla każdego dysku, aby upewnić się, że mają taką samą konfigurację magazynu w regionie docelowym.
 Dysk zarządzany — standardowa | Obsługiwane regiony systemu Azure, w których usługa Azure Site Recovery jest obsługiwany. |
 Dysk zarządzany — premium | Obsługiwane regiony systemu Azure, w których usługa Azure Site Recovery jest obsługiwany. |
-Standardowa, SSD | Obsługiwane |
+SSD w warstwie Standardowa | Obsługiwane |
 Nadmiarowość | Usługi LRS i GRS są obsługiwane.<br/><br/> Magazyn ZRS nie jest obsługiwane.
 Chłodnej i gorącej magazynu. | Nieobsługiwane | Dyski maszyny Wirtualnej nie są obsługiwane w chłodnej i gorącej magazynu.
 Miejsca do magazynowania | Obsługiwane |
@@ -236,7 +237,7 @@ Sieciowa grupa zabezpieczeń w podsieci | Obsługiwane | Kojarzenie sieciowej gr
 Zastrzeżony adres IP (statyczne) | Obsługiwane | Jeśli karta sieciowa źródłowej maszyny Wirtualnej ma statyczny adres IP, a podsieć docelowa ma ten sam adres IP dostępne, jest przypisany do w trybie Failover maszyny Wirtualnej.<br/><br/> Jeśli podsieć docelowa nie ma ten sam adres IP dostępny, jeden z dostępnych adresów IP w podsieci jest zarezerwowany dla maszyny Wirtualnej.<br/><br/> Można również określić stały adres IP i podsieci w **zreplikowane elementy** > **ustawienia** > **obliczenia i sieć**  >  **Interfejsy sieciowe**.
 Dynamiczny adres IP | Obsługiwane | Karta sieciowa w źródle ma dynamicznych adresów IP kart Sieciowych w trybie Failover maszyny Wirtualnej jest również dynamiczne domyślnie.<br/><br/> Możesz zmodyfikować to stały adres IP w razie potrzeby.
 Wiele adresów IP | Nieobsługiwane | Po przełączeniu w tryb failover maszyny Wirtualnej, która ma kartę Sieciową z wieloma adresami IP jest przechowywana tylko podstawowy adres IP karty Sieciowej w regionie źródłowym. Aby przypisać wiele adresów IP, można dodać maszyny wirtualne do [planu odzyskiwania](recovery-plan-overview.md) i dołączyć skrypt do przypisywania dodatkowych adresów IP do planu, lub można wprowadzić zmiany ręcznie lub za pomocą skryptu po włączeniu trybu failover. 
-Traffic Manager     | Obsługiwane | Tak, aby ruch jest kierowany do punktu końcowego w regionie źródłowym w regularnych odstępach czasu, a do punktu końcowego w regionie docelowym w przypadku trybu failover, można wstępnie skonfigurować usługi Traffic Manager.
+Menedżer ruchu     | Obsługiwane | Tak, aby ruch jest kierowany do punktu końcowego w regionie źródłowym w regularnych odstępach czasu, a do punktu końcowego w regionie docelowym w przypadku trybu failover, można wstępnie skonfigurować usługi Traffic Manager.
 System DNS platformy Azure | Obsługiwane |
 Niestandardowe DNS  | Obsługiwane |
 Nieuwierzytelnione serwera proxy | Obsługiwane | [Dowiedz się więcej]. (site-recovery-azure-to-azure-networking-guidance.md)   
@@ -244,7 +245,7 @@ Uwierzytelnionego serwera Proxy | Nieobsługiwane | Jeśli maszyna wirtualna kor
 Połączenie lokacja lokacja sieci VPN do sieci lokalnej<br/><br/>(z lub bez usługi ExpressRoute)| Obsługiwane | Upewnij się, że tras zdefiniowanych przez użytkownika i sieciowymi grupami zabezpieczeń są skonfigurowane w taki sposób, ruch Site Recovery nie jest kierowany do sieci lokalnej. [Dowiedz się więcej](site-recovery-azure-to-azure-networking-guidance.md)    
 Połączenie między sieciami Wirtualnymi | Obsługiwane | [Dowiedz się więcej](site-recovery-azure-to-azure-networking-guidance.md)  
 Punkty końcowe usługi dla sieci wirtualnej | Obsługiwane | Jeśli jest ograniczenie dostępu sieci wirtualnej, dla kont magazynu, upewnij się, że zaufanych usług firmy Microsoft będą miały dostęp do konta magazynu.
-Wydajniejsze sieci | Obsługiwane | Przyspieszona sieć musi być włączona na źródłowej maszynie Wirtualnej. [Dowiedz się więcej](azure-vm-disaster-recovery-with-accelerated-networking.md).
+Przyspieszona sieć | Obsługiwane | Przyspieszona sieć musi być włączona na źródłowej maszynie Wirtualnej. [Dowiedz się więcej](azure-vm-disaster-recovery-with-accelerated-networking.md).
 
 
 

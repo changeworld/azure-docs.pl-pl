@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 90a39693778e01da76baf19765be8801f55813b7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e53f0bd1af3940b4d2f653b5ef43170212c09a43
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64683052"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408686"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Szybki start: Tworzenie aplikacji platformy ASP.NET Core używającej usługi Azure App Configuration
 
@@ -41,7 +41,7 @@ Ten przewodnik Szybki Start, instaluje [zestawu .NET Core SDK](https://dotnet.mi
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Wybierz **Explorer klucz/wartość** > **+ Utwórz** można dodać następujące pary klucz wartość:
+6. Wybierz **Eksplorator konfiguracji** > **+ Utwórz** można dodać następujące pary klucz wartość:
 
     | Klucz | Wartość |
     |---|---|
@@ -66,7 +66,7 @@ Możesz użyć [platformy .NET Core interfejsu wiersza polecenia (CLI)](https://
 
 Dodaj [narzędzie Menedżer klucz tajny](https://docs.microsoft.com/aspnet/core/security/app-secrets) do projektu. Narzędzie Secret manager przechowuje poufne dane potrzebne w pracy deweloperskiej poza Twoim drzewem projektu. Takie podejście zapobiega przypadkowemu ujawnieniu wpisów tajnych aplikacji w kodzie źródłowym.
 
-- Otwórz plik *csproj*. Dodaj `UserSecretsId` elementu, jak pokazano poniżej i zastąp jego wartość swoją własną, który zazwyczaj jest identyfikatorem GUID. Zapisz plik.
+- Otwórz *.csproj* pliku. Dodaj `UserSecretsId` elementu, jak pokazano poniżej i zastąp jego wartość swoją własną, który zazwyczaj jest identyfikatorem GUID. Zapisz plik.
 
     ```xml
     <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -88,7 +88,7 @@ Dodaj [narzędzie Menedżer klucz tajny](https://docs.microsoft.com/aspnet/core/
 
 1. Dodaj odwołanie do `Microsoft.Extensions.Configuration.AzureAppConfiguration` pakietu NuGet, uruchamiając następujące polecenie:
 
-        dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration --version 1.0.0-preview-007830001
+        dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration --version 1.0.0-preview-008520001
 
 2. Uruchom następujące polecenie, aby przywrócić pakiety dla projektu:
 
@@ -102,7 +102,7 @@ Dodaj [narzędzie Menedżer klucz tajny](https://docs.microsoft.com/aspnet/core/
 
         dotnet user-secrets set ConnectionStrings:AppConfig <your_connection_string>
 
-    Menedżer klucz tajny jest używana tylko w celu testowania aplikacji sieci web w środowisku lokalnym. Gdy aplikacja jest wdrożona, na przykład do [usługi Azure App Service](https://azure.microsoft.com/services/app-service/web), za pomocą aplikacji ustawienia, na przykład **parametry połączenia** w usłudze App Service. Użyj tego ustawienia, zamiast przechowywać parametry połączenia z menedżerem klucz tajny.
+    Menedżer klucz tajny jest używana tylko w celu testowania aplikacji sieci web w środowisku lokalnym. Gdy aplikacja jest wdrażana na [usługi Azure App Service](https://azure.microsoft.com/services/app-service/web), na przykład użyć ustawienie aplikacji **parametry połączenia** w usłudze App Service zamiast przy użyciu Menedżera wpisu tajnego do przechowywania parametrów połączenia.
 
     Ten klucz tajny jest dostępny za pomocą konfiguracji interfejsu API. Dwukropek (:) działanie jest nazwa konfiguracji za pomocą interfejsu API konfiguracji na wszystkich obsługiwanych platformach. Zobacz [konfiguracji przez środowisko](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0).
 

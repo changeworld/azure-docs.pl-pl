@@ -11,15 +11,18 @@ ms.topic: quickstart
 ms.date: 12/06/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 26d6e5e53968a88eaccff863b4affee6057f5952
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 674bb3f22f7b8c7c7ea3b52c2f27d862a9961fcb
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57903304"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466248"
 ---
 # <a name="quickstart-recognize-speech-in-a-uwp-app-by-using-the-speech-sdk"></a>Szybki start: Rozpoznawanie mowy w aplikacji platformy UWP przy użyciu zestawu Speech SDK
 
+Przewodniki Szybki Start są również dostępne dla [tłumaczenia mowy](quickstart-translate-speech-uwp.md) i [głosu pierwszego wirtualnego Asystenta](quickstart-virtual-assistant-csharp-uwp.md).
+
+Jeśli to konieczne, należy wybrać inny język programowania i/lub środowiska:<br/>
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 W tym artykule napiszesz aplikację w języku C# dla platformy uniwersalnej systemu Windows (UWP; system Windows w wersji 1709 lub nowszej) przy użyciu zestawu [Speech SDK](speech-sdk.md) usługi Cognitive Services. Program będzie dokonywał transkrypcji mowy na tekst w czasie rzeczywistym podczas korzystania z mikrofonu urządzenia. Aplikacja będzie kompilowana przy użyciu [pakietu NuGet zestawu Speech SDK](https://aka.ms/csspeech/nuget) i programu Microsoft Visual Studio 2017 (w dowolnej wersji).
@@ -38,7 +41,7 @@ Ten przewodnik Szybki start wymaga następujących elementów:
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-uwp-create-proj.md)]
 
-## <a name="add-sample-code"></a>Dodawanie przykładowego kodu
+## <a name="add-sample-code"></a>Dodaj kod przykładowy
 
 1. Interfejs użytkownika aplikacji jest definiowany przy użyciu języka XAML. Otwórz `MainPage.xaml` w Eksploratorze rozwiązań. W widoku języka XAML dla projektanta wstaw poniższy fragment kodu XAML do tagu siatki (między `<Grid>` i `</Grid>`).
 

@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/19/2018
+ms.date: 05/01/219
 ms.author: bwren
-ms.openlocfilehash: 53e24a6874a1e43b0de07893a6ace3a44b81d373
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2db6ddf57802f6fcf38cfc3ad7094ed94eaca3d8
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60454057"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65234201"
 ---
 # <a name="import-azure-monitor-log-data-into-power-bi"></a>Importuj dane dziennika usługi Azure Monitor do usługi Power BI
 
@@ -60,7 +60,9 @@ Usługa Power BI Desktop to aplikacja komputerowa, która pozwala na tworzenie z
 ## <a name="publish-to-power-bi"></a>Publikowanie w usłudze Power BI
 Podczas publikowania do usługi Power BI, zostanie utworzony zestaw danych i raport.  Jeśli utworzysz raport programu Power BI Desktop, następnie ta jest publikowana z danymi.  W przeciwnym razie zostanie utworzony pusty raport.  Można zmodyfikować raport w usłudze Power BI lub utworzyć nowy katalog, w oparciu o zestaw danych.
 
-1. Tworzenie raportu na podstawie danych.  Użyj [dokumentacji usługi Power BI Desktop](https://docs.microsoft.com/power-bi/desktop-report-view) Jeśli nie jesteś zaznajomiony z nim.  Gdy wszystko będzie gotowe do wysłania do usługi Power BI, kliknij przycisk **Publikuj**.  Po wyświetleniu monitu wybierz lokalizację docelową na Twoim koncie usługi Power BI.  Jeśli nie masz określonego miejsca docelowego, pamiętając, użyj **Mój obszar roboczy**.
+1. Tworzenie raportu na podstawie danych.  Użyj [dokumentacji usługi Power BI Desktop](https://docs.microsoft.com/power-bi/desktop-report-view) Jeśli nie jesteś zaznajomiony z nim.  
+1. Gdy wszystko będzie gotowe do wysłania do usługi Power BI, kliknij przycisk **Publikuj**.  
+1. Po wyświetleniu monitu wybierz lokalizację docelową na Twoim koncie usługi Power BI.  Jeśli nie masz określonego miejsca docelowego, pamiętając, użyj **Mój obszar roboczy**.
 
     ![Publikowanie w usłudze Power BI Desktop](media/powerbi/desktop-publish.png)
 
@@ -70,7 +72,10 @@ Podczas publikowania do usługi Power BI, zostanie utworzony zestaw danych i rap
 ### <a name="configure-scheduled-refresh"></a>Konfigurowanie zaplanowanego odświeżania
 Zestaw danych utworzony w usłudze Power BI mają te same dane, który wcześniej był wyświetlany w programie Power BI Desktop.  Należy odświeżyć zestaw danych, które okresowo, aby ponownie uruchomić zapytanie i wypełnić ją przy użyciu najnowszych danych z usługi Azure Monitor.  
 
-1. Kliknij obszar roboczy, do którego został przekazany, raport i wybierz **zestawów danych** menu. Wybierz menu kontekstowe obok nowego zestawu danych, a następnie wybierz pozycję **ustawienia**. W obszarze **poświadczenia źródła danych** powinny mieć komunikat, że poświadczenia są nieprawidłowe.  Jest to spowodowane nie zostały podane poświadczenia jeszcze dla zestawu danych do użycia podczas odświeżania danych.  Kliknij przycisk **Edytuj poświadczenia** i określić poświadczenia z uprawnieniami do obszaru roboczego usługi Log Analytics w usłudze Azure Monitor.
+1. Kliknij obszar roboczy, do którego został przekazany, raport i wybierz **zestawów danych** menu. 
+1. Wybierz menu kontekstowe obok nowego zestawu danych, a następnie wybierz pozycję **ustawienia**. 
+1. W obszarze **poświadczenia źródła danych** powinny mieć komunikat, że poświadczenia są nieprawidłowe.  Jest to spowodowane nie zostały podane poświadczenia jeszcze dla zestawu danych do użycia podczas odświeżania danych.  
+1. Kliknij przycisk **Edytuj poświadczenia** i określić poświadczenia z uprawnieniami do obszaru roboczego usługi Log Analytics w usłudze Azure Monitor. Jeśli wymagasz uwierzytelniania dwuskładnikowego, wybierz **OAuth2** dla **metodę uwierzytelniania** monit, aby zalogować się przy użyciu swoich poświadczeń.
 
     ![Usługa Power BI harmonogramu](media/powerbi/powerbi-schedule.png)
 

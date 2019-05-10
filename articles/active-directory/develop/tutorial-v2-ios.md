@@ -16,12 +16,12 @@ ms.date: 04/26/2019
 ms.author: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e84d97a4ef389981fa30aa08433fef1662367ae
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 06b4ecc151f8402bfb8f05968475b0305737ecd9
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64935945"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406475"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-app"></a>Logowania użytkowników i wywoływania usługi Microsoft Graph w aplikacji systemu iOS
 
@@ -61,7 +61,7 @@ W tym samouczku spowoduje utworzenie nowego projektu. Jeśli chcesz zamiast tego
 3. Nadaj nazwę produktu, a następnie wybierz pozycję **dalej**.
 4. Wybierz folder, aby utworzyć aplikację, a następnie kliknij przycisk *Utwórz*.
 
-## <a name="register-your-application"></a>Rejestrowanie aplikacji 
+## <a name="register-your-application"></a>Zarejestruj swoją aplikację 
 
 Aplikację można zarejestrować na dwa sposoby, zgodnie z opisem w dwóch następnych sekcjach.
 
@@ -79,7 +79,7 @@ Aplikację można zarejestrować na dwa sposoby, zgodnie z opisem w dwóch nast�
 
 #### <a name="cocoapods"></a>CocoaPods
 
-Możesz użyć [CocoaPods](http://cocoapods.org/) zainstalował `MSAL` przez dodanie jej do swojej `Podfile` poniżej wartości docelowej:
+Możesz użyć [CocoaPods](https://cocoapods.org/) zainstalował `MSAL` przez dodanie jej do swojej `Podfile` poniżej wartości docelowej:
 
 ```
 use_frameworks!
@@ -97,7 +97,7 @@ Możesz użyć [Carthage](https://github.com/Carthage/Carthage) zainstalował `M
 github "AzureAD/microsoft-authentication-library-for-objc" "master"
 ```
 
-#### <a name="manually"></a>Ręczne
+#### <a name="manually"></a>Ręcznie
 
 Możesz również użyć narzędzia Git w module podrzędnym lub zapoznaj się z najnowszą wersją i używać jako platformę w aplikacji.
 

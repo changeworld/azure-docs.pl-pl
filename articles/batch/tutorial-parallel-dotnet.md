@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: a6fe5b0452771cd2e618d1a08cb2f4af52e3cc0d
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: c55839f7ec4e4c28086912c476a193e31561c3f4
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62127764"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65234129"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Samouczek: Uruchamianie równoległego obciążenia w usłudze Azure Batch przy użyciu interfejsu API środowiska .NET
 
@@ -140,7 +140,7 @@ W poniższych sekcjach przykładowa aplikacja została podzielona na kroki wykon
 
 ### <a name="authenticate-blob-and-batch-clients"></a>Uwierzytelnianie klientów obiektów blob i usługi Batch
 
-Podczas interakcji z połączonym kontem magazynu aplikacja używa biblioteki klienta usługi Azure Storage dla środowiska .NET. Tworzy odwołanie do konta przy użyciu obiektu [CloudStorageAccount](/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount), korzystając z uwierzytelniania za pomocą klucza współużytkowanego. Następnie tworzy obiekt [CloudBlobClient](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobclient).
+Podczas interakcji z połączonym kontem magazynu aplikacja używa biblioteki klienta usługi Azure Storage dla środowiska .NET. Tworzy odwołanie do konta przy użyciu obiektu [CloudStorageAccount](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount), korzystając z uwierzytelniania za pomocą klucza współużytkowanego. Następnie tworzy obiekt [CloudBlobClient](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient).
 
 ```csharp
 // Construct the Storage account connection string
@@ -230,7 +230,7 @@ pool.ApplicationPackageReferences = new List<ApplicationPackageReference>
 await pool.CommitAsync();  
 ```
 
-### <a name="create-a-job"></a>Tworzenie zadania
+### <a name="create-a-job"></a>Utwórz zadanie
 
 Zadanie usługi Batch określa pulę, w której będą uruchamiane zadania podrzędne, wraz z ustawieniami opcjonalnymi, takimi jak priorytet i harmonogram pracy. Przykładowa aplikacja tworzy zadanie z wywołaniem `CreateJobAsync`. W tej zdefiniowanej metodzie zadanie jest tworzone w puli za pomocą metody [BatchClient.JobOperations.CreateJob](/dotnet/api/microsoft.azure.batch.joboperations.createjob).
 

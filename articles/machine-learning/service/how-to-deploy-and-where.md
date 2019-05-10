@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 05/02/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 113c894122fe2b0673dfb47f8a9c0cbecf4c6290
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 45421a249642abf37c89aa33e2e8a1b4a9e5e497
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205078"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507004"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Wdrażaj modele za pomocą usługi Azure Machine Learning
 
@@ -25,7 +25,7 @@ Dowiedz się, jak wdrożyć usługi uczenia maszynowego model jako usługę siec
 | Obliczeniowego elementu docelowego | Typ wdrożenia | Opis |
 | ----- | ----- | ----- |
 | [Usługa sieci web w lokalnych](#local) | Test/debug | Dobre dla ograniczonej testowania i rozwiązywania problemów.
-| [Azure Kubernetes Service (AKS)](#aks) | Wnioskowanie w czasie rzeczywistym | Dobre dla wdrożeń produkcyjnych w dużej skali. Oferuje automatyczne skalowanie i krótszych czasów reakcji. |
+| [Usługa Azure Kubernetes Service (AKS)](#aks) | Wnioskowanie w czasie rzeczywistym | Dobre dla wdrożeń produkcyjnych w dużej skali. Oferuje automatyczne skalowanie i krótszych czasów reakcji. |
 | [Usługa Azure Container Instances (ACI)](#aci) | Testowanie | Dobre dla niskiej skalowalności obciążeń opartych na CPU. |
 | [Usługi Azure Machine Learning obliczeń](how-to-run-batch-predictions.md) | (Wersja zapoznawcza) Wnioskowanie usługi Batch | Uruchom wsadowego oceniania na bezserwerowe środowisko obliczeniowe. Obsługuje maszyny wirtualne normalnych i o niskim priorytecie. |
 | [Azure IoT Edge](#iotedge) | (Wersja zapoznawcza) Moduł IoT | Wdrażanie i obsługiwać modele uczenia Maszynowego na urządzeniach IoT. |
@@ -42,7 +42,7 @@ Aby uzyskać więcej informacji na temat pojęć, które są zaangażowane w prz
 
 ## <a name="prerequisites-for-deployment"></a>Wymagania wstępne dotyczące wdrażania
 
-- Model. Jeśli nie masz trenowanego modelu, można użyć danego modelu i zależności pliki udostępniane w [w tym samouczku](http://aka.ms/azml-deploy-cloud).
+- Model. Jeśli nie masz trenowanego modelu, można użyć danego modelu i zależności pliki udostępniane w [w tym samouczku](https://aka.ms/azml-deploy-cloud).
 
 - [Rozszerzenie interfejsu wiersza polecenia platformy Azure dla usługi Machine Learning](reference-azure-machine-learning-cli.md), lub [zestawu SDK usługi Azure Machine Learning Python](https://aka.ms/aml-sdk).
 
@@ -210,7 +210,7 @@ Poniższa tabela zawiera przykład tworzenia konfiguracji wdrażania dla każdeg
 
 | Obliczeniowego elementu docelowego | Przykład konfiguracji wdrożenia |
 | ----- | ----- |
-| Lokalna | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
+| Lokalny | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
 | Wystąpienie kontenera platformy Azure | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 | Azure Kubernetes Service | `deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 
@@ -458,7 +458,7 @@ Cele obliczeniowego usługi Machine Learning platformy Azure są tworzone i zarz
 Aby zapoznać się z przewodnikiem wnioskowania usługi batch przy użyciu obliczeniowego usługi Azure Machine Learning, przeczytaj [sposobu uruchamiania prognoz usługi Batch](how-to-run-batch-predictions.md) artykułu.
 
 ## <a id="iotedge"></a> Wnioskowanie o usłudze IoT Edge
-Obsługa wdrażania na urządzeniach brzegowych jest w wersji zapoznawczej. Aby uzyskać więcej informacji, zobacz [wdrożenia usługi Azure Machine Learning jako moduł usługi IoT Edge](https://docs.microsoft.com/en-us/azure/iot-edge/tutorial-deploy-machine-learning) artykułu.
+Obsługa wdrażania na urządzeniach brzegowych jest w wersji zapoznawczej. Aby uzyskać więcej informacji, zobacz [wdrożenia usługi Azure Machine Learning jako moduł usługi IoT Edge](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-machine-learning) artykułu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Rozwiązywanie problemów z wdrożenia](how-to-troubleshoot-deployment.md)

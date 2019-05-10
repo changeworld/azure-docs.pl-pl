@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 25da9fd787c467bdddb7c8dcd68b9df518d018b7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 427ba2b386810749810397afed8ef3f62dcf9217
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64728037"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65506630"
 ---
 # <a name="azure-media-services-release-notes"></a>Informacje o wersji usługi Azure Media Services
 
@@ -36,7 +36,7 @@ Chcemy poznać od naszych klientów, dzięki czemu możemy skupić się na rozwi
 | --- | --- |
 | Kilka typowych nagłówków HTTP nie są udostępniane w interfejsie API REST. |W przypadku tworzenia aplikacji usługi Media Services przy użyciu interfejsu API REST, zauważysz, że niektóre typowe pola nagłówka HTTP (w tym CLIENT-REQUEST-ID REQUEST-ID i ZWRÓCENIA-CLIENT-REQUEST-ID) nie są obsługiwane. Nagłówki zostanie dodana w przyszłej aktualizacji. |
 | Kodowanie procent nie jest dozwolone. |Usługa Media Services używa wartości właściwości IAssetFile.Name podczas tworzenia adresów URL przesyłania strumieniowego zawartości (na przykład `http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters`). Z tego powodu kodowania procent nie jest dozwolone. Wartość właściwości Name nie może zawierać żadnych z następujących [procent kodowanie — zastrzeżone znaki](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $, /? [] % # ". Ponadto może istnieć tylko jeden "." dla rozszerzenia nazwy pliku. |
-| Metoda ListBlobs, która jest częścią zestawu SDK usługi Azure Storage w wersji 3.x kończy się niepowodzeniem. |Usługa Media Services generuje adresów URL sygnatury dostępu Współdzielonego na podstawie [2012-02-12](https://docs.microsoft.com/rest/api/storageservices/Version-2012-02-12) wersji. Jeśli chcesz używać zestawu SDK usługi Storage na wyświetlanie listy obiektów blob w kontenerze obiektów blob, użyj [CloudBlobContainer.ListBlobs](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.cloudblobcontainer.listblobs.aspx) metodę, która jest częścią zestawu SDK usługi Storage w wersji 2.x. |
+| Metoda ListBlobs, która jest częścią zestawu SDK usługi Azure Storage w wersji 3.x kończy się niepowodzeniem. |Usługa Media Services generuje adresów URL sygnatury dostępu Współdzielonego na podstawie [2012-02-12](https://docs.microsoft.com/rest/api/storageservices/Version-2012-02-12) wersji. Jeśli chcesz używać zestawu SDK usługi Storage na wyświetlanie listy obiektów blob w kontenerze obiektów blob, użyj [CloudBlobContainer.ListBlobs](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobs) metodę, która jest częścią zestawu SDK usługi Storage w wersji 2.x. |
 | Usługi Media Services, mechanizm ograniczania ogranicza użycie zasobów dla aplikacji, które wysyłać nadmierne żądań do usługi. Usługa może zwrócić kod stanu HTTP "Usługa niedostępna" 503. |Aby uzyskać więcej informacji, zobacz opis kod stanu HTTP 503 w [kody błędów usługi Media Services](media-services-encoding-error-codes.md). |
 | Gdy zapytanie jednostki limit 1000 jednostek jest zwracany w tym samym czasie, ponieważ publiczny REST w wersji 2 ogranicza wyniki zapytania do 1000 wyników. |Pomiń i podjąć (.NET) / top (REST), zgodnie z opisem w [w tym przykładzie .NET](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities) i [w tym przykładzie interfejs API REST](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities). |
 | Niektórzy klienci mogą pochodzić między problemem powtórzeń tag w manifeście Smooth Streaming. |Aby uzyskać więcej informacji, zobacz [w tej sekcji](media-services-deliver-content-overview.md#known-issues). |
@@ -72,7 +72,7 @@ Od 12 maja 2018 r. Usługa kanały na żywo będzie już obsługę strumienia tr
 > Usługa Media Services jest wycofanie obsługi klucze uwierzytelniania usługi Azure Access Control Service. 22 czerwca 2018 r. nie będzie można uwierzytelniać z zapleczem usługi Media Services za pomocą kodu za pomocą kluczy usługi kontroli dostępu. Należy zaktualizować swój kod, aby usługa Azure Active Directory (Azure AD) na [uwierzytelnianie na podstawie usługi AD systemu Azure](media-services-use-aad-auth-to-access-ams-api.md). Obserwuj ostrzeżenia dotyczące tej zmiany w witrynie Azure portal.
 
 ### <a name="updates-for-october-2017"></a>Aktualizacje dla października 2017 r.
-#### <a name="sdks"></a>Zestawy SDK
+#### <a name="sdks"></a>SDK
 * Zestaw .NET SDK został zaktualizowany do obsługi uwierzytelniania usługi Azure AD. Obsługa uwierzytelniania usługa Access Control Service została usunięta z najnowszy zestaw SDK platformy .NET w witrynie Nuget.org, aby zachęcić szybsza migracja do usługi Azure AD. 
 * Zestaw JAVA SDK został zaktualizowany do obsługi uwierzytelniania usługi Azure AD. Obsługa uwierzytelniania usługi Azure AD została dodana do zestawu SDK języka Java. Aby uzyskać informacje na temat korzystania z zestawu SDK Java za pomocą usługi Media Services, zobacz [Rozpoczynanie pracy z zestawem SDK klienta Java dla usługi Azure Media Services](media-services-java-how-to-use.md)
 
@@ -500,7 +500,7 @@ Poprawki dotyczące problemów znalezionych w listopad 2012 SDK:
 ## <a id="november_changes_12"></a>Listopad 2012 release
 Zmiany opisane w tej sekcji zostały aktualizacjach listopad 2012 (w wersji 2.0.0.0 lub nowszej) zestawu SDK. Te zmiany mogą wymagać każdy kod napisany dla czerwca 2012 r. (wersja zapoznawcza) wersji zestawu SDK modyfikację lub przepisany.
 
-* Elementy zawartości
+* Zasoby
   
     * Jest IAsset.Create(assetName) *tylko* funkcję tworzenia zasobów. IAsset.Create już przekazuje pliki jako część wywołania metody. Na użytek IAssetFile przekazywania.
     * Metoda IAsset.Publish i wartość wyliczenia AssetState.Publish zostały usunięte z zestawu SDK usługi. Muszą zostać przepisane wszelki kod, który opiera się na tę wartość.
@@ -534,7 +534,7 @@ Nowość w wersji listopada zestawu SDK został następujące funkcje:
   
     * Dodano obsługę asynchroniczną wszystkich metod.
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Przesyłanie opinii
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 <!-- Anchors. -->

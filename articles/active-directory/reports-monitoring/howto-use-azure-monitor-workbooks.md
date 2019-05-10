@@ -1,6 +1,6 @@
 ---
 title: Użyj usługi Azure Monitor skoroszyty dla raportów usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak użyć skoroszytów, usługi Azure Monitor dla raportów usługi Azure Active Directory
+description: Dowiedz się, jak używać usługi Azure Monitor skoroszytów w przypadku raportów usługi Azure Active Directory.
 services: active-directory
 author: MarkusVi
 manager: daveba
@@ -14,145 +14,142 @@ ms.subservice: report-monitor
 ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 2c9b3d0ef110fea0629af345a71d0d7b7cce7313
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6ae14ec152975717af5d55780bcc39aa87c4b01a
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60287322"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406593"
 ---
-# <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Instrukcje: Użyj usługi Azure Monitor skoroszyty dla raportów usługi Azure Active Directory
+# <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Jak używać usługi Azure Monitor skoroszyty dla raportów usługi Azure Active Directory
 
 Czy chcesz:
 
-- Zrozumienie wpływu usługi [zasady dostępu warunkowego](../conditional-access/overview.md) na środowisko logowania użytkowników?
+- Opis wpływu usługi [zasady dostępu warunkowego](../conditional-access/overview.md) na środowisko logowania użytkowników?
 
-- Rozwiązywanie problemów z błędami w rejestrowania, uzyskanie lepszego widoku kondycji logowania Twojej organizacji, a także szybkie rozwiązywanie problemów?
+- Rozwiązywanie problemów z logowań uzyskanie lepszego widoku kondycji logowania w Twojej organizacji i szybkie rozwiązywanie problemów?
 
-- Tym, kto używa starszej wersji uwierzytelnienia do logowania się na Twoje środowisko? Przez [blokowanie uwierzytelniania starszych](../conditional-access/block-legacy-authentication.md), może poprawić ochrony Twojej dzierżawy.
+- Tym, kto używa starszej wersji uwierzytelnień zalogować się do środowiska? (Przez [blokowanie uwierzytelniania starszych](../conditional-access/block-legacy-authentication.md), może poprawić ochrony Twojej dzierżawy.)
 
-
-[Usługa Azure Monitor skoroszyty](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks) łączenie tekstu, zapytania usługi Analytics, metryk usługi Azure i parametrów w zaawansowanych interaktywnych raportów. Usługa Azure Active Directory zapewnia skoroszytów do monitorowania, które ułatwiają znajdowanie odpowiedzi na pytania powyżej.
+Aby pomóc rozwiązać te pytania, usługi Active Directory zawiera skoroszytów do monitorowania. [Usługa Azure Monitor skoroszyty](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks) połączyć tekst, zapytania analityczne, metryki i parametrów w zaawansowanych interaktywnych raportów. 
 
 W tym artykule:
 
-- Przyjęto założenie, że czytelnik zna sposób [tworzenie interaktywnych raportów, skoroszytów w usłudze Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks).
+- Zakłada się, kiedy znasz już sposób [twórz interaktywne raporty za pomocą skoroszytów Monitor](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks).
 
-- Wyjaśnia, jak można używać usługi Azure Monitor skoroszyty informacji na temat monitorowania odpowiedzi na pytania powyżej.
+- Wyjaśnia, jak za pomocą skoroszytów Monitor wpływu zasad dostępu warunkowego do rozwiązywania problemów z błędami logowania, a także identyfikowania uwierzytelnień starszej wersji.
  
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby używać tej funkcji, potrzebujesz następujących elementów:
+Aby użyć skoroszytów monitora, potrzebne są:
 
-- Dzierżawę usługi Azure Active Directory z licencją premium (P1/P2). Dowiedz się, jak [Uzyskaj licencję premium](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-get-started-premium).
+- Dzierżawy usługi Active Directory z licencją premium (P1 lub P2). Dowiedz się, jak [Uzyskaj licencję premium](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-get-started-premium).
 
 - A [obszaru roboczego usługi Log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
 
-## <a name="access-workbooks"></a>Dostęp do skoroszytów 
+## <a name="workbook-access"></a>Dostęp do skoroszytu 
 
 Dostęp do skoroszytów:
 
-1. Zaloguj się do Twojej [witryny Azure portal](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
-2. Na lewym pasku nawigacyjnym kliknij **usługi Azure Active Directory**.
+2. W okienku nawigacji po lewej stronie wybierz **usługi Azure Active Directory**.
 
-3. W **monitorowanie** kliknij **Insights**. 
+3. W **monitorowanie** zaznacz **Insights**. 
 
-    ![Insights](./media/howto-use-azure-monitor-workbooks/41.png)
+    ![Wybierz usługę Insights](./media/howto-use-azure-monitor-workbooks/41.png)
 
-4. Kliknij raport lub szablonu, lub kliknij **Otwórz** na pasku narzędzi. 
+4. Wybierz raport lub szablon lub na pasku narzędzi wybierz **Otwórz**. 
 
-    ![Galeria](./media/howto-use-azure-monitor-workbooks/42.png)
+    ![Wybierz przycisk Otwórz](./media/howto-use-azure-monitor-workbooks/42.png)
 
 
 ## <a name="sign-in-analysis"></a>Analiza logowania
 
-Aby uzyskać dostęp do skoroszytu analizy logowania, kliknij przycisk **logowania** w **użycia** sekcji. 
+Uzyskiwanie dostępu do skoroszytu logowania analizy w **użycia** zaznacz **logowania**. 
 
 Ten skoroszyt przedstawiono trendy dotyczące następujących logowania:
 
 - Wszystkie logowania
 
-- Powodzenie
+- Sukces
 
 - Oczekuje akcja użytkownika
 
 - Niepowodzenie
 
-Można filtrować każdego tendencja według:
+Każdy trendu można filtrować według następujących kategorii:
 
-- Przedział czasu
+- Zakres czasu
 
 - Aplikacje
 
 - Użytkownicy
 
-![Galeria](./media/howto-use-azure-monitor-workbooks/43.png)
+![Analiza logowania](./media/howto-use-azure-monitor-workbooks/43.png)
 
 
-Dla każdego trendu można pobrać informacji o podziale:
+Dla każdego trendu zapewnia następujące korzyści podział według następujących kategorii:
 
 - Lokalizacja
 
-    ![Galeria](./media/howto-use-azure-monitor-workbooks/45.png)
+    ![Logowania według lokalizacji](./media/howto-use-azure-monitor-workbooks/45.png)
 
 - Urządzenie
 
-    ![Galeria](./media/howto-use-azure-monitor-workbooks/46.png)
+    ![Logowania przez urządzenie](./media/howto-use-azure-monitor-workbooks/46.png)
 
 
 ## <a name="sign-ins-using-legacy-authentication"></a>Logowania przy użyciu starszej wersji uwierzytelniania 
 
 
-Dostęp do operacji logowania za pomocą [starsze uwierzytelnianie](../conditional-access/block-legacy-authentication.md) skoroszytu, kliknij przycisk **logowania przy użyciu starszej wersji uwierzytelniania** w **użycia** sekcji. 
+Można uzyskać dostępu do skoroszytu do logowania, które używają [starsze uwierzytelnianie](../conditional-access/block-legacy-authentication.md)w **użycia** zaznacz **logowania przy użyciu starszej wersji uwierzytelniania**. 
 
 Ten skoroszyt przedstawiono trendy dotyczące następujących logowania:
 
 - Wszystkie logowania
 
-- Powodzenie
+- Sukces
 
 
-Można filtrować każdego tendencja według:
+Każdy trendu można filtrować według następujących kategorii:
 
-- Przedział czasu
+- Zakres czasu
 
 - Aplikacje
 
 - Użytkownicy
 
-- Protokoły 
+- Protokoły
 
-![Galeria](./media/howto-use-azure-monitor-workbooks/47.png)
+![Logowania przez starsze uwierzytelnianie](./media/howto-use-azure-monitor-workbooks/47.png)
 
 
 Dla każdego trendu uzyskasz podział przez aplikację i protokołu.
 
-![Galeria](./media/howto-use-azure-monitor-workbooks/48.png)
+![Starsza wersja uwierzytelniania logowania przez aplikację i protokół](./media/howto-use-azure-monitor-workbooks/48.png)
 
 
 
 ## <a name="sign-ins-by-conditional-access"></a>Logowania przez dostęp warunkowy 
 
 
-Logowania, dostępu do [zasady dostępu warunkowego](../conditional-access/overview.md) skoroszytu, kliknij przycisk **logowania przez dostęp warunkowy** w **dostępu warunkowego** sekcji. 
+Można uzyskać dostępu do skoroszytu do logowania przez [zasady dostępu warunkowego](../conditional-access/overview.md)w **dostępu warunkowego** zaznacz **logowania przez dostęp warunkowy**. 
 
-Ten skoroszyt zawiera trend dla wyłączonego logowania.
+Ten skoroszyt zawiera trendy dotyczące wyłączonego logowania. Każdy trendu można filtrować według następujących kategorii:
 
-Można filtrować każdego tendencja według:
-
-- Przedział czasu
+- Zakres czasu
 
 - Aplikacje
 
 - Użytkownicy
 
-![Galeria](./media/howto-use-azure-monitor-workbooks/49.png)
+![Logowania przy użyciu dostępu warunkowego](./media/howto-use-azure-monitor-workbooks/49.png)
 
 
-Do logowania wyłączone uzyskasz podział według stanu dostępu warunkowego.
+Do wyłączenia logowania otrzymasz podział według stanu dostępu warunkowego.
 
 ![Stan dostępu warunkowego](./media/howto-use-azure-monitor-workbooks/conditional-access-status.png)
 
@@ -165,7 +162,7 @@ Do logowania wyłączone uzyskasz podział według stanu dostępu warunkowego.
 
 ## <a name="sign-ins-by-grant-controls"></a>Logowania przez Udziel kontroli
 
-Logowania, dostępu do [Udziel kontroli](../conditional-access/controls.md) skoroszytu, kliknij przycisk **logowania przez Udziel kontroli** w **dostępu warunkowego** sekcji. 
+Można uzyskać dostępu do skoroszytu do logowania przez [Udziel kontroli](../conditional-access/controls.md)w **dostępu warunkowego** zaznacz **logowania przez Udziel kontroli**. 
 
 Ten skoroszyt pokazuje następujących wyłączonych logowania trendów:
 
@@ -175,69 +172,69 @@ Ten skoroszyt pokazuje następujących wyłączonych logowania trendów:
 
 - Wymagane zasady zachowania poufności informacji
 
-- Inne
+- Inny
 
 
-Można filtrować każdego tendencja według:
+Każdy trendu można filtrować według następujących kategorii:
 
-- Przedział czasu
+- Zakres czasu
 
 - Aplikacje
 
 - Użytkownicy
 
-![Galeria](./media/howto-use-azure-monitor-workbooks/50.png)
+![Logowania przez Udziel kontroli](./media/howto-use-azure-monitor-workbooks/50.png)
 
 
 Dla każdego trendu uzyskasz podział przez aplikację i protokołu.
 
-![Galeria](./media/howto-use-azure-monitor-workbooks/51.png)
+![Podział ostatnich operacji logowania](./media/howto-use-azure-monitor-workbooks/51.png)
 
 
 
 
 ## <a name="sign-ins-failure-analysis"></a>Analiza niepowodzenia logowania
 
-Użyj **analizy błędów logowania** skoroszytu w celu rozwiązywania problemów za pomocą:
+Użyj **analizy błędów logowania** skoroszytu w celu rozwiązywanie problemów z błędami następującym kodem:
 
 - Logowania
 - Zasady dostępu warunkowego
-- Uwierzytelnianie w starszej wersji. 
+- Starsze uwierzytelnianie 
 
 
-Dostęp warunkowy dostęp do danych operacji logowania, kliknij przycisk **logowania przy użyciu starszej wersji uwierzytelniania** w **rozwiązywanie** sekcji. 
+Uzyskiwanie dostępu do operacji logowania przez dane dostępu warunkowego w **rozwiązywanie** zaznacz **logowania przy użyciu starszej wersji uwierzytelniania**. 
 
 Ten skoroszyt przedstawiono trendy dotyczące następujących logowania:
 
 - Wszystkie logowania
 
-- Powodzenie
+- Sukces
 
 - Oczekująca akcja
 
 - Niepowodzenie
 
 
-Można filtrować każdego tendencja według:
+Każdy trendu można filtrować według następujących kategorii:
 
-- Przedział czasu
+- Zakres czasu
 
 - Aplikacje
 
 - Użytkownicy
 
-![Galeria](./media/howto-use-azure-monitor-workbooks/52.png)
+![Rozwiązywanie problemów z operacji logowania](./media/howto-use-azure-monitor-workbooks/52.png)
 
 
-Aby rozwiązać problemy logowania, można pobrać informacji o podziale:
+Aby ułatwić rozwiązywanie problemów z operacji logowania, usługi Azure Monitor zapewnia podział według następujących kategorii:
 
 - Najważniejsze błędy
 
-    ![Galeria](./media/howto-use-azure-monitor-workbooks/53.png)
+    ![Podsumowanie najważniejsze błędy](./media/howto-use-azure-monitor-workbooks/53.png)
 
 - Czeka na akcję użytkownika logowania
 
-    ![Galeria](./media/howto-use-azure-monitor-workbooks/54.png)
+    ![Podsumowanie logowań czeka na akcję użytkownika](./media/howto-use-azure-monitor-workbooks/54.png)
 
 
 
@@ -246,4 +243,4 @@ Aby rozwiązać problemy logowania, można pobrać informacji o podziale:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Tworzenie interaktywnych raportów, skoroszytów w usłudze Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks)
+[Twórz interaktywne raporty za pomocą skoroszytów Monitor](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks).
