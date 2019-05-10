@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 8d421adfae335a976485ed463a69484a74be5b44
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0623a7aff15184822ee8abde0b3c751f8a105b5b
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60729532"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65463586"
 ---
 # <a name="frequently-asked-question-about-linux-virtual-machines"></a>Często zadawane pytania dotyczące maszyn wirtualnych systemu Linux
 W tym artykule opisano często zadawane pytania dotyczące maszyn wirtualnych systemu Linux utworzone na platformie Azure przy użyciu modelu wdrażania usługi Resource Manager. Wersja Windows części tego tematu – zobacz [— często zadawane pytania dotyczące maszyn wirtualnych Windows](../windows/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -36,7 +36,7 @@ Usługa Azure Managed Disks są zalecane oferta magazynu na dysku do użycia z u
 Konta usługi Azure storage oferuje również magazynu dla dysku systemu operacyjnego i dysków z danymi. Każdy dysk jest plikiem VHD przechowywanym jako stronicowy obiekt blob. Aby uzyskać szczegółowe informacje o cenach, zobacz [Szczegóły cennika magazynu](https://azure.microsoft.com/pricing/details/storage/).
 
 ## <a name="how-can-i-access-my-virtual-machine"></a>Jak można uzyskać dostęp Moja maszyna wirtualna?
-Nawiąż połączenie zdalne logowanie się do maszyny wirtualnej przy użyciu protokołu Secure Shell (SSH). Zobacz instrukcje dotyczące łączenia [z Windows](ssh-from-windows.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) lub [z systemami Linux i Mac](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Domyślnie protokół SSH umożliwia maksymalnie 10 równoczesnych połączeń. Możesz zwiększyć tę liczbę, edytując plik konfiguracji.
+Ustanowić połączenia zdalnego w celu logowania się do maszyny wirtualnej przy użyciu protokołu Secure Shell (SSH). Zobacz instrukcje dotyczące łączenia [z Windows](ssh-from-windows.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) lub [z systemami Linux i Mac](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Domyślnie protokół SSH umożliwia maksymalnie 10 równoczesnych połączeń. Możesz zwiększyć tę liczbę, edytując plik konfiguracji.
 
 Jeśli występują problemy, zapoznaj się z [Rozwiązywanie problemów z Secure Shell (SSH) połączenia](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
@@ -64,36 +64,26 @@ Nazwy użytkowników powinien być 1 do 32 znaków.
 
 Następujące nazwy użytkowników nie są dozwolone:
 
-<table>
-    <tr>
-        <td style="text-align:center">administrator </td><td style="text-align:center"> admin </td><td style="text-align:center"> Użytkownik </td><td style="text-align:center"> user1</td>
-    </tr>
-    <tr>
-        <td style="text-align:center">test </td><td style="text-align:center"> user2 </td><td style="text-align:center"> test1 </td><td style="text-align:center"> UŻYTKOWNIK3</td>
-    </tr>
-    <tr>
-        <td style="text-align:center">admin1 </td><td style="text-align:center"> 1 </td><td style="text-align:center"> 123 </td><td style="text-align:center"> a</td>
-    </tr>
-    <tr>
-        <td style="text-align:center">actuser  </td><td style="text-align:center"> adm </td><td style="text-align:center"> admin2 </td><td style="text-align:center"> aspnet</td>
-    </tr>
-    <tr>
-        <td style="text-align:center">kopia zapasowa </td><td style="text-align:center"> console </td><td style="text-align:center"> David </td><td style="text-align:center"> Gość</td>
-    </tr>
-    <tr>
-        <td style="text-align:center">Jan </td><td style="text-align:center"> właściciel </td><td style="text-align:center"> root </td><td style="text-align:center"> serwer</td>
-    </tr>
-    <tr>
-        <td style="text-align:center">sql </td><td style="text-align:center"> pomoc techniczna </td><td style="text-align:center"> support_388945a0 </td><td style="text-align:center"> sys</td>
-    </tr>
-    <tr>
-        <td style="text-align:center">test2 </td><td style="text-align:center"> test3 </td><td style="text-align:center"> user4 </td><td style="text-align:center"> user5</td>
-    </tr>
-</table>
-
+| | | | |
+|-----------------|-----------|--------------------|----------|
+| `administrator` | `admin`   | `user`             | `user1`  |
+| `test`          | `user2`   | `test1`            | `user3`  |
+| `admin1`        | `1`       | `123`              | `a`      |
+| `actuser`       | `adm`     | `admin2`           | `aspnet` |
+| `backup`        | `console` | `david`            | `guest`  |
+| `john`          | `owner`   | `root`             | `server` |
+| `sql`           | `support` | `support_388945a0` | `sys`    |
+| `test2`         | `test3`   | `user4`            | `user5`  |
 
 ## <a name="what-are-the-password-requirements-when-creating-a-vm"></a>Jakie są wymagania dotyczące hasła, podczas tworzenia maszyny Wirtualnej?
-Hasło musi mieć 6 do 72 znaków i spełniać 3 z następujących wymagań dotyczących złożoności 4:
+
+Istnieją różne hasła wymagania dotyczące długości, która znajduje się w zależności od narzędzie, którego używasz:
+ - Portal — od 12 do 72 znaków
+ - PowerShell — od 8 do 123 znaków
+ - Interfejs wiersza polecenia — od 12 do 123
+ 
+
+Hasła muszą również spełniać 3 z następujących wymagań dotyczących złożoności 4:
 
 * Niższe znaków
 * Górny znaków

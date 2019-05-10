@@ -8,19 +8,20 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: ad891f99-179e-4487-834d-35f3bc01c1ec
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/17/2019
+ms.date: 05/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fffaa266a29a500f27759adb7526d1aa6d61ccd0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 211e11b5bfd6a8bb7b1d61fec120566d60b9c5c0
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58915241"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65191212"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cherwell"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją Cherwell
 
@@ -29,7 +30,7 @@ Integracja aplikacji Cherwell z usługą Azure AD zapewnia następujące korzyś
 
 * W usłudze Azure AD możesz kontrolować, kto ma dostęp do aplikacji Cherwell.
 * Możesz zezwolić swoim użytkownikom na automatyczne logowanie do aplikacji Cherwell (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD.
-* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
+* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
@@ -38,7 +39,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 Aby skonfigurować integrację usługi Azure AD z aplikacją Cherwell, potrzebujesz następujących elementów:
 
-* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
+* Subskrypcja usługi Azure AD. Jeśli nie ma środowiska usługi Azure AD, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/)
 * Subskrypcja aplikacji Cherwell z obsługą logowania jednokrotnego
 
 ## <a name="scenario-description"></a>Opis scenariusza
@@ -61,27 +62,27 @@ Aby skonfigurować integrację aplikacji Cherwell z usługą Azure AD, musisz do
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
-    ![Przycisk Nowa aplikacja](common/add-new-app.png)
+    ![Nowy przycisk aplikacji](common/add-new-app.png)
 
 4. W polu wyszukiwania wpisz **Cherwell**, wybierz pozycję **Cherwell** z panelu wyników i kliknij przycisk **Dodaj**, aby dodać aplikację.
 
-     ![Aplikacja Cherwell na liście wyników](common/search-new-app.png)
+    ![Aplikacja Cherwell na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
 W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z aplikacją Cherwell, korzystając z danych testowego użytkownika o nazwie **Britta Simon**.
 Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem aplikacji Cherwell.
 
 Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z aplikacją Cherwell, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
 2. **[Konfigurowanie logowania jednokrotnego w aplikacji Cherwell](#configure-cherwell-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
 5. **[Tworzenie użytkownika testowego aplikacji Cherwell](#create-cherwell-test-user)** — aby mieć w aplikacji Cherwell odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
@@ -91,7 +92,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją Cherwell,
 
 1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Cherwell** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
+    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -112,7 +113,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją Cherwell,
 
 5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link do pobierania certyfikatu](common/certificatebase64.png)
+    ![Link pobierania certyfikatu](common/certificatebase64.png)
 
 6. W sekcji **Konfigurowanie aplikacji Cherwell** skopiuj odpowiednie adresy URL zgodnie ze swoimi wymaganiami.
 
@@ -122,11 +123,11 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją Cherwell,
 
     b. Identyfikator usługi Azure AD
 
-    d. Adres URL wylogowywania
+    c. Adres URL wylogowywania
 
 ### <a name="configure-cherwell-single-sign-on"></a>Konfigurowanie logowania jednokrotnego aplikacji Cherwell
 
-Aby skonfigurować logowanie jednokrotne po stronie aplikacji **Cherwell**, musisz wysłać pobrany **certyfikat (Base64)** i odpowiednie adresy URL skopiowane z witryny Azure Portal [zespołowi pomocy technicznej aplikacji Cherwell](https://csm.cherwell.com/contact). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
+Aby skonfigurować logowanie jednokrotne po stronie aplikacji **Cherwell**, musisz wysłać pobrany **certyfikat (Base64)** i odpowiednie adresy URL skopiowane z witryny Azure Portal [zespołowi pomocy technicznej aplikacji Cherwell](https://cherwellsupport.com/CherwellPortal). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
 
 > [!NOTE]
 > Twój zespół pomocy technicznej aplikacji Cherwell musi przeprowadzić rzeczywistą konfigurację logowania jednokrotnego. Gdy logowanie jednokrotne zostanie włączone dla Twojej subskrypcji, otrzymasz o tym powiadomienie.
@@ -147,12 +148,11 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     ![Okno dialogowe Użytkownik](common/user-properties.png)
 
-    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+    a. W **nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
-    Na przykład: BrittaSimon@contoso.com
+    b. W **nazwa_użytkownika** wpisz `brittasimon\@yourcompanydomain.extension`. Na przykład BrittaSimon@contoso.com.
 
-    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
+    c. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
     d. Kliknij pozycję **Utwórz**.
 
@@ -184,7 +184,7 @@ W tej sekcji włączysz użytkownikowi Britta Simon możliwość korzystania z l
 
 ### <a name="create-cherwell-test-user"></a>Tworzenie użytkownika testowego aplikacji Cherwell
 
-Aby umożliwić użytkownikom usługi Azure AD logowanie w aplikacji Cherwell, muszą oni być aprowizowani w aplikacji Cherwell. W przypadku aplikacji Cherwell konta użytkowników muszą zostać utworzone przez Twój [zespół pomocy technicznej aplikacji Cherwell](https://csm.cherwell.com/contact).
+Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do Cherwell, musi być obsługiwana w Cherwell. W przypadku aplikacji Cherwell konta użytkowników muszą zostać utworzone przez Twój [zespół pomocy technicznej aplikacji Cherwell](https://cherwellsupport.com/CherwellPortal).
 
 > [!NOTE]
 > Do aprowizowania kont użytkowników usługi Azure Active Directory możesz użyć dowolnych innych narzędzi do tworzenia kont użytkowników lub interfejsów API udostępnianych przez aplikację Cherwell.
@@ -195,7 +195,7 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
 Po kliknięciu kafelka Cherwell w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Cherwell, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

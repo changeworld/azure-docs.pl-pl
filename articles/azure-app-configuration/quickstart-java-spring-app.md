@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Spring
 ms.workload: tbd
 ms.date: 01/08/2019
 ms.author: yidon
-ms.openlocfilehash: d023c6ec9c3d24400fd2b7b9fcce9568aa851214
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9137262ffc7c172e6a99920a7abb31459a8703fe
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60202267"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408574"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-app-configuration"></a>Szybki start: Tworzenie aplikacji Java Spring korzystającej z usługi App Configuration
 
@@ -37,11 +37,11 @@ Ten przewodnik Szybki Start, instaluje obsługiwanej [Java Development Kit (JDK)
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Wybierz **Explorer klucz/wartość** > **+ Utwórz** można dodać następujące pary klucz wartość:
+6. Wybierz **Eksplorator konfiguracji** > **+ Utwórz** można dodać następujące pary klucz wartość:
 
     | Klucz | Wartość |
     |---|---|
-    | /application/config.message | Hello |
+    | /application/config.message | Witaj |
 
     Pozostaw **etykiety** i **typu zawartości** puste, aby teraz.
 

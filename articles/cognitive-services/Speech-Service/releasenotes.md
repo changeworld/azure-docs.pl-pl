@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 1310ecd15498c4c319febc87cbc3b18e0a7ca524
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: fa722d749ec27a72a8be3bf8fcfd8097a1404458
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65020337"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65465597"
 ---
 # <a name="release-notes"></a>Informacje o wersji
 
@@ -24,7 +24,7 @@ ms.locfileid: "65020337"
 
 **Nowe funkcje**
 
-* Słowo kluczowe dotyczące funkcji (KWS) jest dostępna dla Windows i Linux. Funkcje KWS może działać z dowolnego typu mikrofon official będzie przydatna KWS obsługuje obecnie ograniczone do tablic mikrofon znajduje się w sprzęt DK Kinect platformy Azure lub zestawu Speech Devices SDK.
+* Funkcja wznawiania w programie word (słowo kluczowe dotyczące/KWS) jest teraz dostępny dla Windows i Linux. Funkcje KWS może działać z dowolnego typu mikrofon official będzie przydatna KWS obsługuje obecnie ograniczone do tablic mikrofon znajduje się w sprzęt DK Kinect platformy Azure lub zestawu Speech Devices SDK.
 * Fraza wskazówka funkcja jest dostępna za pośrednictwem zestawu SDK. Aby uzyskać więcej informacji, zobacz [tutaj](how-to-phrase-lists.md).
 * Funkcje transkrypcji konwersacji jest dostępna za pośrednictwem zestawu SDK. Zobacz [tutaj](conversation-transcription-service.md).
 * Dodano obsługę pierwszy głosu asystentów wirtualnego przy użyciu kanału Direct mowy wiersza.
@@ -58,7 +58,7 @@ To jest wersja tylko do języka JavaScript. Żadne funkcje nie zostały dodane. 
 **Nowe funkcje** 
 
 * Zestaw SDK obsługuje teraz usługę zamiany tekstu na mowę w wersji beta. Jest on obsługiwany w Windows i Linux pulpitu z C++ i C#. Aby uzyskać więcej informacji, sprawdź [zamiany tekstu na mowę Przegląd](text-to-speech.md#get-started-with-text-to-speech).
-* Zestaw SDK obsługuje teraz MP3 oraz dziele/Ogg pliki audio jako pliki wejściowe strumienia. Ta funkcja jest dostępna tylko w systemie Linux z C++ i C# i jest obecnie w wersji beta (więcej szczegółów [tutaj](how-to-use-compressed-audio-input-streams.md)).
+* Zestaw SDK obsługuje teraz MP3 oraz dziele/OGG pliki audio jako pliki wejściowe strumienia. Ta funkcja jest dostępna tylko w systemie Linux z C++ i C# i jest obecnie w wersji beta (więcej szczegółów [tutaj](how-to-use-codec-compressed-audio-input-streams.md)).
 * Zestaw SDK rozpoznawania mowy dla języka Java, .NET core, C++ i języka Objective-C weszły do obsługi systemu macOS. Obsługa języka Objective-C, dla systemu macOS jest obecnie w wersji beta.
 * iOS: Zestaw SDK rozpoznawania mowy dla systemu iOS (Objective-C) teraz zostało również opublikowane jako CocoaPod.
 * JavaScript: Pomoc techniczna dla innych niż domyślne mikrofon jako urządzenia wejściowego.

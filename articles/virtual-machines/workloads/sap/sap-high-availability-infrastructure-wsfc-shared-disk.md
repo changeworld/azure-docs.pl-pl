@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b729327187a52f36d50f8a754f5521527bb07ac6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ae3d1b36b89bb1bce1ff384bfa12a1bf643614fd
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60717716"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408776"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>Przygotowanie infrastruktury platformy Azure do SAP wysokiej dostępności przy użyciu klastra pracy awaryjnej Windows i udostępnionego dysku dla SAP ASCS/SCS.
 
@@ -33,7 +33,7 @@ ms.locfileid: "60717716"
 [2243692]:https://launchpad.support.sap.com/#/notes/2243692
 
 [sap-installation-guides]:http://service.sap.com/instguides
-[tuning-failover-cluster-network-thresholds]:https://blogs.msdn.microsoft.com/clustering/2012/11/21/tuning-failover-cluster-network-thresholds/
+[tuning-failover-cluster-network-thresholds]:https://techcommunity.microsoft.com/t5/Failover-Clustering/Tuning-Failover-Cluster-Network-Thresholds/ba-p/371834
 
 [azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
 [azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
@@ -431,7 +431,7 @@ W tym przykładzie mamy tych maszyn wirtualnych i statyczne adresy IP:
 | --- | --- | --- | --- |
 | Pierwsze wystąpienie serwera aplikacji SAP |PR1-di-0 |PR1-karta sieciowa di-0 |10.0.0.50 |
 | Drugie wystąpienie serwera aplikacji SAP |pr1-di-1 |PR1-karta sieciowa di-1 |10.0.0.51 |
-| Przyciski ... |Przyciski ... |Przyciski ... |Przyciski ... |
+| ... |... |... |... |
 | Ostatnie wystąpienie serwera aplikacji SAP |PR1-di-5 |PR1-karta sieciowa di-5 |10.0.0.55 |
 | Pierwszym węźle klastra na potrzeby wystąpienia ASCS/SCS |pr1-ascs-0 |pr1-nic-ascs-0 |10.0.0.40 |
 | Drugim węźle klastra na potrzeby wystąpienia ASCS/SCS |pr1-ascs-1 |pr1-nic-ascs-1 |10.0.0.41 |
@@ -551,7 +551,7 @@ Usługa Azure Load Balancer ma wewnętrznego modułu równoważenia obciążenia
 
 Aby dodać wpisy rejestru na obu węzłach klastra wystąpienia SAP ASCS/SCS, najpierw dodaj te wpisy rejestru Windows na obu węzłach klastra Windows SAP ASCS/SCS programu:
 
-| Ścieżka | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
+| `Path` | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
 | --- | --- |
 | Nazwa zmiennej |`KeepAliveTime` |
 | Typ zmiennej |REG_DWORD (Decimal) |
@@ -562,7 +562,7 @@ Aby dodać wpisy rejestru na obu węzłach klastra wystąpienia SAP ASCS/SCS, na
 
 Następnie dodaj ten wpis rejestru Windows na obu węzłach klastra Windows SAP ASCS/SCS programu:
 
-| Ścieżka | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
+| `Path` | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
 | --- | --- |
 | Nazwa zmiennej |`KeepAliveInterval` |
 | Typ zmiennej |REG_DWORD (Decimal) |
@@ -739,8 +739,9 @@ Konfigurowanie monitora udostępniania plików klastra obejmuje następujące za
 
 Po zainstalowaniu klastra pracy awaryjnej Windows, należy zmienić niektóre wartości progowe, więc ich dostosowania trybu failover wykrywania warunków na platformie Azure. Parametry, które mają być zmienione są udokumentowane w artykule [dostrajania progów sieci klastra trybu failover][tuning-failover-cluster-network-thresholds]. Przy założeniu, że dwie maszyny wirtualne, które tworzą Windows konfigurację klastra ASCS/SCS znajdują się w tej samej podsieci, Zmień te wartości następujących parametrów:
 
-- SameSubNetDelay = 2
+- SameSubNetDelay = 2000
 - SameSubNetThreshold = 15
+- RoutingHistoryLength = 30
 
 Te ustawienia zostały przetestowane z klientami i oferuje dobry kompromis. Są odporne na błędy wystarczająco, ale również zapewniają trybu failover, który jest wystarczająco szybko, w warunkach rzeczywistych błędu, od oprogramowania SAP lub w węźle lub awarii maszyny Wirtualnej.
 

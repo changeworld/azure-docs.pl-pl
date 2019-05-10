@@ -7,12 +7,12 @@ ms.service: service-health
 ms.topic: landing-page
 ms.date: 03/4/2019
 ms.author: stbaron
-ms.openlocfilehash: cf7084b569e2c90337e475beb9f49563214941d2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: aa00d4b08725eaf4b667fc7b53b225198db95a02
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60506936"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65441661"
 ---
 # <a name="azure-service-health-documentation"></a>Dokumentacja usługi Azure Service Health
 
@@ -25,6 +25,11 @@ Usługa **[Azure Service Health](service-health-overview.md)** zapewnia spersona
 Usługa **[Azure Resource Health](resource-health-overview.md)** udostępnia informacje o kondycji poszczególnych zasobów w chmurze, takich jak określone wystąpienie maszyny wirtualnej. Za pomocą usługi Azure Monitor można również skonfigurować alerty informujące o zmianach dostępności zasobów w chmurze. Usługa Azure Resource Health wraz z powiadomieniami w usłudze Azure Monitor pomogą Ci w uzyskiwaniu aktualnych informacji na temat dostępności zasobów minuta po minucie i szybko ocenić, czy problem jest spowodowany problemem po Twojej stronie czy jest związany ze zdarzeniem platformy Azure.
 
 Razem te środowiska umożliwiają kompleksowy wgląd w kondycję platformy Azure, na poziomie szczegółowości najbardziej odpowiednim dla Ciebie.
+
+### <a name="watch-an-overview-of-the-azure-status-page-azure-service-health-and-azure-resource-health"></a>Zobacz omówienie strony stanu platformy Azure, usługi Azure Service Health i usługi Azure Resource Health
+
+>[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2OgX6]
+
 
 <ul class="panelContent cardsFTitle">
     <li>

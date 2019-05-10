@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: lizross
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f602b5f9809e5bbe0b1efb52cfa66877a31a2170
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f29ab7b908184533885929040ca8eccf56cda92d
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60249552"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65464411"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>Często zadawane pytania dotyczące usługi Azure Active Directory
 Azure Active Directory (Azure AD) jest kompleksowym rozwiązaniem typu tożsamość jako usługa (IDaaS, Identity as a Service), które obejmuje wszystkie aspekty tożsamości, zarządzania dostępem i bezpieczeństwa.
@@ -210,4 +210,4 @@ Aby uzyskać więcej informacji, zobacz [Automate User Provisioning and Deprovis
 - - -
 **Pyt.:  Czy mogę skonfigurować bezpieczne połączenie LDAP z usługą Azure AD?**
 
-**Odp.:**  Nie. Usługa Azure AD nie obsługuje protokołu LDAP. Jednak za pomocą usług domenowych Azure AD można skonfigurować protokołu secure LDAP.
+**Odp.:**  Nie. Usługa Azure AD nie obsługuje protokołu Lightweight Directory Access protokołu (LDAP). Jednak jest możliwe za pomocą usług domenowych Azure AD (Azure AD DS) prawidłowo skonfigurowane sieciowe grupy zabezpieczeń za pośrednictwem sieci platformy Azure do osiągnięcia połączenia LDAP. Aby uzyskać więcej informacji, zobacz https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.
