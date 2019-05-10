@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/18/2019
+ms.date: 05/7/2019
 ms.author: haroldw
-ms.openlocfilehash: 1228c770799de37c85b8a48b1dc923ac8294eeca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9b981924dcaf715dd1d05d452b756a40b63f8dac
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60773556"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233086"
 ---
 # <a name="configure-prerequisites"></a>Konfigurowanie wymagań wstępnych
 
@@ -39,8 +39,8 @@ Ta opcja jest najprostszym, ale również ma ona ograniczone możliwości dostos
 - **Typ dysku**: Dyski zarządzane są używane.
 - **Sieć**: Obsługa nowych lub istniejących sieci i niestandardowy zakres CIDR.
 - **CNS**: Można włączyć CNS.
-- **Metryki**: Można włączyć metryki.
-- **Rejestrowanie**: Można włączyć rejestrowanie.
+- **Metryki**: Można włączyć hawkular metryki.
+- **Rejestrowanie**: Można włączyć rejestrowanie EFK.
 - **Dostawca usług w chmurze Azure**: Domyślnie włączone, można wyłączyć.
 
 W lewym górnym rogu witryny Azure portal, kliknij przycisk **Utwórz zasób**wprowadź openshift container platform, w polu wyszukiwania i naciśnij klawisz Enter.
@@ -81,7 +81,7 @@ Wprowadź wartości dla parametrów wejściowych, a następnie kliknij przycisk 
 
 | Parametr wejściowy | Opis parametru |
 |-----------------------|-----------------|
-| Prefiks nazwy klastra OCP | Użytkownika administracyjnego, który ma zostać utworzony na wszystkich wystąpieniach maszyn wirtualnych |
+| Prefiks nazwy klastra OCP | Klaster prefiks używany do konfigurowania nazw hostów dla wszystkich węzłów. Od 1 do 20 znaków |
 | Rozmiar węzła głównego | Zaakceptuj domyślny rozmiar maszyny Wirtualnej lub kliknij przycisk **Zmień rozmiar** do wybrania innego rozmiaru maszyny Wirtualnej.  Wybierz odpowiedni rozmiar maszyny Wirtualnej dla obciążenia robocze |
 | Rozmiar węzła infrastruktury | Zaakceptuj domyślny rozmiar maszyny Wirtualnej lub kliknij przycisk **Zmień rozmiar** do wybrania innego rozmiaru maszyny Wirtualnej.  Wybierz odpowiedni rozmiar maszyny Wirtualnej dla obciążenia robocze |
 | Liczba węzłów aplikacji | Zaakceptuj domyślny rozmiar maszyny Wirtualnej lub kliknij przycisk **Zmień rozmiar** do wybrania innego rozmiaru maszyny Wirtualnej.  Wybierz odpowiedni rozmiar maszyny Wirtualnej dla obciążenia robocze |
@@ -180,7 +180,7 @@ Sprawdzanie poprawności jest wykonywane na tym etapie w celu sprawdzenia, czy l
    ![Blok podsumowania oferty](media/openshift-marketplace-self-managed/ocp-summary.png)  
 <br>
 
-**Kup**
+**Buy**
 
 Upewnij się, na stronie kupić dane kontaktowe, a następnie kliknij przycisk **zakupu** aby zaakceptować warunki użytkowania i rozpocząć wdrażanie klastra OpenShift Container Platform.
 

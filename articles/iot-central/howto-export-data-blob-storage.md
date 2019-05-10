@@ -8,12 +8,12 @@ ms.date: 03/20/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: f81ca34931e2ee4bce35fa06195fb64c47ef9a7b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9ae57b8ab26780ea975ad74f3348a0deaf8c9cc8
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64682027"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65464643"
 ---
 # <a name="export-your-data-to-azure-blob-storage"></a>Eksportuj dane do usługi Azure Blob Storage
 
@@ -38,7 +38,7 @@ Jeśli nie masz istniejącego magazynu, aby wyeksportować do, wykonaj następuj
 
 1. Tworzenie [nowe konto magazynu w witrynie Azure portal](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Dowiedz się więcej w [dokumentacja usługi Azure Storage](https://aka.ms/blobdocscreatestorageaccount).
 2. Dla typu konta, wybierz **ogólnego przeznaczenia** lub **magazynu obiektów Blob**.
-3. wybierz subskrypcję. 
+3. Wybierz subskrypcję. 
 
     > [!Note] 
     > Teraz możesz wyeksportować dane do innych subskrypcji, które są **nie sam** co dla twojej aplikacji płatność za rzeczywiste użycie IoT Central. Połączysz się przy użyciu parametrów połączenia, w tym przypadku.
@@ -57,14 +57,14 @@ Teraz, gdy masz magazynu lokalizację docelową, aby wyeksportować dane, wykona
     > [!Note]
     > Jeśli nie widzisz ciągły Eksport danych w menu po lewej stronie, nie jesteś administratorem w swojej aplikacji. Porozmawiaj z administratorem, aby skonfigurować Eksport danych.
 
-    ![Utwórz nowy CRP Centrum zdarzeń](media/howto-export-data/export_menu.PNG)
+    ![Utwórz nowy CRP Centrum zdarzeń](media/howto-export-data/export_menu1.png)
 
 3. Wybierz **+ nowy** przycisk w prawym górnym rogu. Wybierz **usługi Azure Blob Storage** jako miejsce docelowe eksportu. 
 
     > [!NOTE] 
     > Maksymalna liczba eksportów aplikacji wynosi pięć. 
 
-    ![Utwórz nowy ciągły Eksport danych](media/howto-export-data/export_new.PNG)
+    ![Utwórz nowy ciągły Eksport danych](media/howto-export-data/export_new1.png)
 
 4. W polu listy rozwijanej wybierz swoje **konta magazynu, obszaru nazw**. Można również wybrać na liście, która jest ostatnia opcja **wprowadź parametry połączenia**. 
 
@@ -87,7 +87,7 @@ Teraz, gdy masz magazynu lokalizację docelową, aby wyeksportować dane, wykona
 
 6. Aby włączyć ciągły Eksport danych, upewnij się, **eksportu danych** jest **na**. Wybierz pozycję **Zapisz**.
 
-  ![Konfigurowanie ciągły Eksport danych](media/howto-export-data/export-list-blob.png)
+   ![Konfigurowanie ciągły Eksport danych](media/howto-export-data/export-list-blob.png)
 
 7. Po kilku minutach danych pojawi się w wybranej lokalizacji docelowej.
 

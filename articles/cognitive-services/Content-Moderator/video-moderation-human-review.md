@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 01/20/2018
+ms.date: 04/30/2019
 ms.author: sajagtap
-ms.openlocfilehash: 43a43ddcbfc656a3eb5a274e1bb63a473b7c89a2
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: a6c467d3153400815e37a5d461766140abd1fa32
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62098205"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65228131"
 ---
 # <a name="video-moderation-with-human-review"></a>Moderowanie filmów wideo z przeglądu przez ludzi
 
@@ -28,52 +28,53 @@ Wspomagane maszynowo klasyfikacji wideo albo odbywa się przy użyciu modeli sko
 ## <a name="shot-detection"></a>Wykrywanie ujęć
 
 Podczas wyprowadzania szczegóły klasyfikacji, dodatkowe analizy wideo pomaga większą elastyczność w analizę filmów wideo. Zamiast podawania tylko ramki, usługa moderowania klipów wideo firmy Microsoft zapewnia informacje na poziomie zrzut zbyt. Masz teraz możliwość analizować filmy wideo na poziomie strzał i ramki.
- 
+
 ## <a name="key-frame-detection"></a>Wykrywanie ramki kluczowe
 
 Zamiast podawania ramki w regularnych odstępach czasu, usługa moderowania klipów wideo identyfikuje i wyświetla tylko potencjalnie zakończone ramek (dobra). Ta funkcja umożliwia generowanie wydajne ramki dla ramki poziom analizy dla dorosłych.
 
 Następujące wyodrębniania pokazuje to częściowa odpowiedź z potencjalnymi zrzuty, klatek kluczowych i wyniki dla dorosłych:
 
-    "fragments": [
-    {
-      "start": 0,
-      "duration": 18000
-    },
-    {
-      "start": 18000,
-      "duration": 3600,
-      "interval": 3600,
-      "events": [
-        [
-          {
-            "reviewRecommended": false,
-            "adultScore": 0.00001,
-            "racyScore": 0.03077,
-            "index": 5,
-            "timestamp": 18000,
-            "shotIndex": 0
-          }
-        ]
+```json
+"fragments":[  
+  {  
+    "start":0,
+    "duration":18000
+  },
+  {  
+    "start":18000,
+    "duration":3600,
+    "interval":3600,
+    "events":[  
+      [  
+        {  
+          "reviewRecommended":false,
+          "adultScore":0.00001,
+          "racyScore":0.03077,
+          "index":5,
+          "timestamp":18000,
+          "shotIndex":0
+        }
       ]
-    },
-    {
-      "start": 18386372,
-      "duration": 119149,
-      "interval": 119149,
-      "events": [
-        [
-          {
-            "reviewRecommended": true,
-            "adultScore": 0.00000,
-            "racyScore": 0.91902,
-            "index": 5085,
-            "timestamp": 18386372,
-            "shotIndex": 62
-          }
-        ]
+    ]
+  },
+  {  
+    "start":18386372,
+    "duration":119149,
+    "interval":119149,
+    "events":[  
+      [  
+        {  
+          "reviewRecommended":true,
+          "adultScore":0.00000,
+          "racyScore":0.91902,
+          "index":5085,
+          "timestamp":18386372,
+          "shotIndex":62
+        }
       ]
-
+    ]
+```
 
 ## <a name="visualization-for-human-reviews"></a>Wizualizacja umożliwiającymi ludziom dokonywanie
 
@@ -101,10 +102,7 @@ Filmy wideo, zwykle dokonują głosowych za pośrednictwem, których potrzebuje 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Rozpoczynanie pracy z usługą [Moderowanie filmów wideo przewodnika Szybki Start](video-moderation-api.md). 
-
-Dowiedz się, jak wygenerować [przeglądy wideo](video-reviews-quickstart-dotnet.md) dla człowieka recenzentów z moderowanych danych wyjściowych.
-
-Dodaj [przeglądy transkrypcji wideo](video-transcript-reviews-quickstart-dotnet.md) do Twojego wideo przeglądów.
-
-Zapoznaj się z szczegółowy samouczek dotyczący sposobu tworzenia [kompletne rozwiązanie Moderowanie filmów wideo](video-transcript-moderation-review-tutorial-dotnet.md). 
+- Rozpoczynanie pracy z usługą [Moderowanie filmów wideo przewodnika Szybki Start](video-moderation-api.md).
+- Dowiedz się, jak wygenerować [przeglądy wideo](video-reviews-quickstart-dotnet.md) dla człowieka recenzentów z moderowanych danych wyjściowych.
+- Dodaj [przeglądy transkrypcji wideo](video-transcript-reviews-quickstart-dotnet.md) do Twojego wideo przeglądów.
+- Zapoznaj się z szczegółowy samouczek dotyczący sposobu tworzenia [kompletne rozwiązanie Moderowanie filmów wideo](video-transcript-moderation-review-tutorial-dotnet.md).

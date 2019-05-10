@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 4/30/2019
 ms.author: shants
 ms.custom: include file
-ms.openlocfilehash: 747fb9a38cc0c27d162192f4f3ed928e8a968f27
-ms.sourcegitcommit: abeefca6cd5ca01c3e0b281832212aceff08bf3e
+ms.openlocfilehash: adf99b941a775f105d8c65da3ac6c11dc7257120
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "64993111"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65416338"
 ---
 Azure okresowo aktualizuje platformy w celu poprawy niezawodności, wydajności i bezpieczeństwa infrastruktury hosta dla maszyn wirtualnych. Aktualizacje rozwiązania z zakresu od stosowania poprawek składnikami oprogramowania w środowisku hostingu uaktualniania składników sieciowych do likwidacji sprzętu. Większość tych aktualizacji nie mają wpływu na obsługiwanych maszynach wirtualnych. Jednak istnieją przypadki, w których aktualizacje mają wpływ i Azure wybiera najmniej udane metody aktualizacji:
 
 - Jeśli aktualizacja rebootful nie jest możliwe, maszyna wirtualna jest wstrzymana, gdy host jest aktualizowany lub znajduje się na żywo zmigrowana do już zaktualizowanego hosta.
 
-- Jeśli przeprowadzenia konserwacji wymagane jest ponowne uruchomienie komputera, otrzymasz powiadomienie o podczas planowanej konserwacji. Platforma Azure umożliwi także przedział czasu, w którym można uruchomić konserwację samodzielnie, w czasie, który Ci odpowiada. Przedział czasu samodzielna konserwacja jest zazwyczaj czterech tygodni, chyba że jest to pilne w celu przeprowadzenia konserwacji. Azure to także inwestuje w technologie, aby zmniejszyć przypadków, gdy maszyny wirtualne mają zostać uruchomiony ponownie w celu przeprowadzenia konserwacji planowanej platformy. 
+- Jeśli przeprowadzenia konserwacji wymagane jest ponowne uruchomienie komputera, otrzymasz powiadomienie o podczas planowanej konserwacji. Platforma Azure umożliwi także przedział czasu, w którym można uruchomić konserwację samodzielnie, w czasie, który Ci odpowiada. Przedział czasu samodzielna konserwacja zwykle wynosi 30 dni, chyba że jest to pilne w celu przeprowadzenia konserwacji. Azure to także inwestuje w technologie, aby zmniejszyć przypadków, gdy maszyny wirtualne mają zostać uruchomiony ponownie w celu przeprowadzenia konserwacji planowanej platformy. 
 
 Na tej stronie opisano, jak platforma Azure przeprowadza oba rodzaje konserwacji. Aby dowiedzieć się więcej o nieplanowanych zdarzeń (awarii), zobacz Zarządzanie dostępnością maszyn wirtualnych w celu [Windows](../articles/virtual-machines/windows/manage-availability.md) lub [Linux](../articles/virtual-machines/linux/manage-availability.md).
 
@@ -29,13 +29,13 @@ Aby uzyskać "porad" informacji o zarządzaniu planowanej konserwacji, zobacz "O
 
 ## <a name="maintenance-not-requiring-a-reboot"></a>Konserwacji nie wymaga ponownego uruchomienia
 
-Celem konserwacji wpływ najbardziej różna od zera, która nie wymaga ponownego uruchomienia jest krótszy niż 10 sekund wstrzymać maszyny wirtualnej. Azure wybiera mechanizm aktualizacji, który jest najmniej największy wpływ na działalność maszynami wirtualnymi klienta. W niektórych przypadkach przy zachowaniu mechanizmy obsługi pamięci są używane, który wstrzymuje maszynę Wirtualną do 30 sekund i zachowuje pamięci RAM. Następnie wznawiać jej działanie maszyny Wirtualnej i jego zegara jest automatycznie synchronizowany. Platforma Azure jest coraz większym stopniu przy użyciu technologii migracji na żywo i poprawianie pamięci zachowywanie mechanizm obsługi, aby zmniejszyć czas trwania pauzy.  
+Jak już wspomniano, większość aktualizacji platformy są wykonywane z zerowym maszyny wirtualne klientów. Gdy aktualizacja zero wpływ nie jest możliwe Azure wybiera mechanizm aktualizacji, który jest co najmniej impactful na maszynach wirtualnych klientów. Większość tych konserwacji wpływ niezerową powoduje, że mniej niż 10 sekund wstrzymać maszyny wirtualnej. W niektórych przypadkach przy zachowaniu mechanizmy obsługi pamięci są używane, który wstrzymuje maszynę Wirtualną do 30 sekund i zachowuje pamięci RAM. Następnie wznawiać jej działanie maszyny Wirtualnej i jego zegara jest automatycznie synchronizowany. Zachowywanie konserwacji pamięci działa w przypadku ponad 90% maszyn wirtualnych platformy Azure, z wyjątkiem serii G, M, N i H. Platforma Azure jest coraz większym stopniu przy użyciu technologii migracji na żywo i poprawianie pamięci zachowywanie mechanizm obsługi, aby zmniejszyć czas trwania pauzy.  
 
 Te operacje konserwacji bez rebootful są domena błędów zastosowane przez domenę błędów, a postęp zostanie zatrzymany, jeśli wszystkie sygnały kondycji ostrzeżenia są odbierane. 
 
 Niektóre aplikacje może mieć wpływ na tego rodzaju aktualizacji. W przypadku, gdy maszyna wirtualna znajduje się na żywo zmigrowana do innego hosta, niektórych poufnych obciążeń zauważyć spadek wydajności nieznaczne w ciągu kilku minut prowadzących do wstrzymanie maszyny Wirtualnej. Takie aplikacje mogą korzystać z przy użyciu zaplanowanych zdarzeń dla [Windows](../articles/virtual-machines/windows/scheduled-events.md) lub [Linux](../articles/virtual-machines/linux/scheduled-events.md) dotyczące przygotowania do obsługi maszyn wirtualnych i nie mają wpływu podczas konserwacji platformy Azure. Azure pracuje również funkcje kontroli konserwacji na potrzeby takich aplikacji niezwykle ważne. 
 
-## <a name="live-migration"></a>Migracja na żywo
+### <a name="live-migration"></a>Migracja na żywo
 
 Migracja na żywo to operacja bez rebootful, która zachowuje pamięci dla maszyny Wirtualnej, a wyniki w ograniczonym okresie wstrzymania lub zablokować, trwające zwykle nie więcej niż 5 sekund. Już dziś cała infrastruktura jako usługa (IaaS) maszyn wirtualnych, oprócz serii G, M, N i H, kwalifikują się do migracji na żywo. To jest równa ponad 90% maszyn wirtualnych IaaS wdrożone floty platformy Azure. 
 

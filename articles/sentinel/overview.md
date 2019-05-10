@@ -4,7 +4,7 @@ description: Więcej informacji na temat platformy Azure przez wartownika, jego 
 services: sentinel
 documentationcenter: na
 author: rkarlin
-manager: barbkess
+manager: rkarlin
 editor: ''
 ms.assetid: 10cce91a-421b-4959-acdf-7177d261f6f2
 ms.service: sentinel
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 2859df94b1418cfa9fbfaa341e6bf08b257875bf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7d64f02c7bebb6d4326281ba87d118eab075eba9
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60715081"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65228603"
 ---
 # <a name="what-is-azure-sentinel-preview"></a>Co to jest Azure przez wartownika w wersji zapoznawczej?
 
@@ -79,7 +79,7 @@ Automatyzuj typowe i [uprościć aranżacji zabezpieczeń z elementów playbook]
 
 Na przykład jeśli używasz systemu obsługi biletów usługi ServiceNow, można użyć narzędzi dostarczanych za pomocą usługi Azure Logic Apps Automatyzowanie przepływów pracy i otwórz bilet w każdym wykryciu konkretnego zdarzenia usługi ServiceNow.
 
-![Elementy playbook](./media/tutorial-respond-threats-playbook/logic-app.png)
+![Podręczniki](./media/tutorial-respond-threats-playbook/logic-app.png)
 
 
 

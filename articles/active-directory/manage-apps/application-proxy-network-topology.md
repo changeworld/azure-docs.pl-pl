@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d80f58215b1a8f1b93db158cd2f47186ba6354a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f5b87e452b0c79ae9cdc1d7f9f391a611dceda2f
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60443416"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231516"
 ---
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>Zagadnienia dotyczące topologii sieci przy użyciu serwera Proxy usługi Azure Active Directory Application
 
@@ -39,7 +39,7 @@ Po opublikowaniu aplikacji za pośrednictwem serwera Proxy aplikacji usługi Azu
 
 ## <a name="tenant-location-and-application-proxy-service"></a>Lokalizacja dzierżawy i usługę serwera Proxy aplikacji
 
-Po zarejestrowaniu się dla dzierżawy usługi Azure AD z regionem danej dzierżawy zależy od kraju, w którym można określić. Po włączeniu serwera Proxy aplikacji, wystąpień usługi Serwer Proxy aplikacji dla Twojej dzierżawy są wybrane lub utworzone w tym samym regionie, co dzierżawy usługi Azure AD lub najbliższego regionu do niego.
+Po zarejestrowaniu się dla dzierżawy usługi Azure AD z regionem danej dzierżawy zależy od kraju/regionu, które określisz. Po włączeniu serwera Proxy aplikacji, wystąpień usługi Serwer Proxy aplikacji dla Twojej dzierżawy są wybrane lub utworzone w tym samym regionie, co dzierżawy usługi Azure AD lub najbliższego regionu do niego.
 
 Na przykład w przypadku dzierżawy usługi Azure AD kraj lub region Zjednoczone Królestwo, wszystkich łączników serwera Proxy aplikacji użyj wystąpień usług w centrach danych Europa. Podczas publikowania aplikacji dostępu użytkownikom ich ruch jest przesyłany za pośrednictwem wystąpień usługi Serwer Proxy aplikacji w tej lokalizacji.
 
@@ -78,7 +78,7 @@ Jeśli masz dedykowanych VPN lub usługi ExpressRoute łącza między platformą
 
 ## <a name="focus-your-optimization-strategy"></a>Skoncentruj się strategii optymalizacji
 
-Jest niewiele, które można zrobić, aby kontrolować połączenia między użytkownikami a usługa serwera Proxy aplikacji. Użytkownicy mogą uzyskiwać dostęp do aplikacji z siecią domową, kawiarni lub innym kraju. Zamiast tego można zoptymalizować połączeń z serwera Proxy aplikacji usługi do łączników serwera Proxy aplikacji do aplikacji. Należy rozważyć włączenie następujących wzorów w danym środowisku.
+Jest niewiele, które można zrobić, aby kontrolować połączenia między użytkownikami a usługa serwera Proxy aplikacji. Użytkownicy mogą uzyskiwać dostęp do aplikacji z siecią domową, kawiarni lub innego kraju/regionu. Zamiast tego można zoptymalizować połączeń z serwera Proxy aplikacji usługi do łączników serwera Proxy aplikacji do aplikacji. Należy rozważyć włączenie następujących wzorów w danym środowisku.
 
 ### <a name="pattern-1-put-the-connector-close-to-the-application"></a>Wzorzec 1: Umieszczanie łącznika blisko aplikacji
 

@@ -13,12 +13,12 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: 069a2a5b3b26bf517b57034f05ab7080ab392319
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 01d3af14963e92393d34a952bddc8097b7b08f18
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60702524"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65232613"
 ---
 # <a name="work-with-r-and-sql-data-in-azure-sql-database-machine-learning-services-preview"></a>Praca z danymi SQL i języka R w SQL bazy danych usług Azure Machine Learning (wersja zapoznawcza)
 
@@ -300,4 +300,4 @@ W tych krótkie przykłady znajdują się trzeba sprawdzić skutków Konwersja d
 - Wykonaj jawnych rzutowań, zgodnie z potrzebami, przygotowując swoje dane wejściowe, aby uniknąć niespodzianek.
 - Unikaj kolumn przekazywanie danych (np. identyfikatory GUID lub identyfikatorami ROWGUID), które powodują błędy i nie są przydatne w przypadku modelowania.
 
-Aby uzyskać więcej informacji na temat obsługiwanych i nieobsługiwanych typów danych języka R, zobacz [R bibliotek i typy danych](/sql/advanced-analytics/r/r-libraries-and-data-types.md).
+Aby uzyskać więcej informacji na temat obsługiwanych i nieobsługiwanych typów danych języka R, zobacz [R bibliotek i typy danych](/sql/advanced-analytics/r/r-libraries-and-data-types).

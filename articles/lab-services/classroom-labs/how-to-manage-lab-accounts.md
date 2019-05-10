@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 05/07/2019
 ms.author: spelluru
-ms.openlocfilehash: f1194d8385d1e7ddcb906d0c8c3a2b56648e2547
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6f283ce007e96547e01a01a3753ddcb60574bfc3
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60696388"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65412799"
 ---
 # <a name="manage-lab-accounts-in-azure-lab-services"></a>Zarządzanie kontami laboratorium w usłudze Azure Lab Services 
 W usługach Azure Lab Services konta laboratorium jest kontenerem dla typów laboratorium zarządzanych, takich jak laboratorium na potrzeby zajęć. Administrator konfiguruje konta laboratorium przy użyciu usługi Azure Lab Services i zapewnia dostęp do laboratorium właścicieli, którzy mogą tworzyć laboratoriów w ramach konta. W tym artykule opisano sposób tworzenia konta laboratorium, są wyświetlane wszystkie konta laboratorium lub usuwanie konta laboratorium.
@@ -38,9 +38,11 @@ Następujące kroki ilustrują tworzenie konta laboratorium w usłudze Azure Lab
     2. Wybierz **subskrypcję platformy Azure**, w której chcesz utworzyć konto laboratorium.
     3. W obszarze **Grupa zasobów** wybierz pozycję **Utwórz nową** i wprowadź nazwę grupy zasobów.
     4. W obszarze **Lokalizacja** wybierz lokalizację/region, w których chcesz utworzyć konto laboratorium. 
-    5. Aby uzyskać **równorzędna sieć wirtualna**, wybierz równorzędna sieć wirtualna (VNet) sieci laboratorium. Laboratoria utworzony na tym koncie są połączone z wybraną sieć wirtualną i mają dostęp do zasobów w wybranej sieci wirtualnej. 
-    7. W polu **Zezwalaj twórcy laboratorium na wybieranie lokalizacji laboratorium** określ, czy twórcy laboratoriów powinni mieć możliwość wybierania lokalizacji laboratorium. Domyślnie opcja ta jest wyłączona. W przypadku jej włączenia twórcy laboratoriów nie mogą określać lokalizacji dla tworzonych przez siebie laboratoriów. Laboratoria są tworzone w najbliższej lokalizacji geograficznej względem konta laboratorium. W przypadku włączenia tej opcji twórca laboratorium może wybrać lokalizację podczas tworzenia laboratorium.      
-    8. Wybierz pozycję **Utwórz**. 
+    5. Wybierz istniejącą **galerii obrazów udostępnionych** lub utworzyć nowe. Szablon maszyny Wirtualnej można zapisać w galerii obrazów udostępnionych, aby mogła zostać ponownie użyte przez inne osoby. Aby uzyskać szczegółowe informacje, galerie obrazów udostępnionych, zobacz [użycia galerii udostępnionego obrazu w usłudze Azure Lab Services](how-to-use-shared-image-gallery.md).
+    6. Aby uzyskać **równorzędna sieć wirtualna**, wybierz równorzędna sieć wirtualna (VNet) sieci laboratorium. Laboratoria utworzony na tym koncie są połączone z wybraną sieć wirtualną i mają dostęp do zasobów w wybranej sieci wirtualnej. 
+    7. Określ **zakres adresów** dla maszyn wirtualnych w środowisku laboratoryjnym. Zakres adresów musi należeć do notacji bezklasowego routingu międzydomenowego (CIDR) (przykład: 10.20.0.0/23). Maszyny wirtualne w laboratorium, zostaną utworzone w tym zakresie adresów. Aby uzyskać więcej informacji, zobacz [Określ zakres adresów dla maszyn wirtualnych w środowisku laboratoryjnym](how-to-configure-lab-accounts.md#specify-an-address-range-for-vms-in-the-lab).    
+    8. W polu **Zezwalaj twórcy laboratorium na wybieranie lokalizacji laboratorium** określ, czy twórcy laboratoriów powinni mieć możliwość wybierania lokalizacji laboratorium. Domyślnie opcja ta jest wyłączona. W przypadku jej włączenia twórcy laboratoriów nie mogą określać lokalizacji dla tworzonych przez siebie laboratoriów. Laboratoria są tworzone w najbliższej lokalizacji geograficznej względem konta laboratorium. W przypadku włączenia tej opcji twórca laboratorium może wybrać lokalizację podczas tworzenia laboratorium.      
+    9. Wybierz pozycję **Utwórz**. 
 
         ![Okno Tworzenie konta laboratorium](../media/tutorial-setup-lab-account/lab-account-settings.png)
 5. Wybierz **ikonę dzwonka** na pasku narzędzi (**Powiadomienia**), upewnij się, że wdrożenie zakończyło się pomyślnie, a następnie wybierz pozycję **Przejdź do zasobu**. 
@@ -51,54 +53,6 @@ Następujące kroki ilustrują tworzenie konta laboratorium w usłudze Azure Lab
 6. Zobaczysz następującą stronę **konta laboratorium**:
 
     ![Strona konta laboratorium](../media/tutorial-setup-lab-account/lab-account-page.png)
-
-## <a name="add-a-user-to-the-lab-creator-role"></a>Dodawanie użytkownika do roli twórcy laboratorium
-Aby skonfigurować laboratorium na potrzeby zajęć w ramach konta laboratorium, użytkownik musi być członkiem roli **Twórca laboratorium** na koncie laboratorium. Konto, którego użyto do utworzenia konta laboratorium, jest automatycznie dodawane do tej roli. Jeśli planujesz użyć tego samego konta użytkownika w celu utworzenia laboratorium na potrzeby zajęć, możesz pominąć ten krok. Aby użyć innego konta użytkownika do utworzenia laboratorium na potrzeby zajęć, wykonaj następujące czynności: 
-
-Aby przyznać nauczycielom uprawnienie do tworzenia laboratoriów na potrzeby zajęć, dodaj ich do roli **Twórca laboratorium**:
-
-1. Na stronie **Konto laboratorium** wybierz pozycję **Kontrola dostępu (Zarządzanie dostępem i tożsamościami)** i kliknij pozycję **+ Dodaj przypisanie roli** na pasku narzędzi. 
-
-    ![Kontrola dostępu -> przycisk Dodaj przypisanie roli](../media/tutorial-setup-lab-account/add-role-assignment-button.png)
-1. Na stronie **Dodawanie przypisania roli** wybierz pozycję **Twórca laboratorium** w obszarze **Rola**, wybierz użytkownika do dodania do roli Twórcy laboratorium, a następnie wybierz pozycję **Zapisz**. 
-
-    ![Dodawanie twórcy laboratorium](../media/tutorial-setup-lab-account/add-lab-creator.png)
-
-
-## <a name="specify-marketplace-images-available-to-lab-creators"></a>Określanie obrazów w portalu Marketplace dostępnych dla twórców laboratorium
-Jako właściciel konta laboratorium możesz określić obrazy witryny Marketplace, których twórcy laboratorium mogą używać do tworzenia laboratoriów na koncie laboratorium. 
-
-1. W menu po lewej stronie wybierz pozycję **Obrazy w portalu Marketplace**. Domyślnie zobaczysz pełną listę obrazów (włączonych i wyłączonych). Tę listę można filtrować, aby wyświetlić tylko obrazy włączone/wyłączone, wybierając z listy rozwijanej u góry opcję **Tylko włączone**/**Tylko wyłączone**. 
-    
-    ![Strona Obrazy w portalu Marketplace](../media/tutorial-setup-lab-account/marketplace-images-page.png)
-
-    Obrazy witryny Marketplace wyświetlane na liście to tylko obrazy spełniające następujące warunki:
-        
-    - Tworzą jedną maszynę wirtualną
-    - Używają usługi Azure Resource Manager do aprowizowania maszyn wirtualnych
-    - Nie wymagają zakupu dodatkowego planu licencjonowania
-2. Aby w portalu Marketplace **wyłączyć** obraz, który zostały włączony, wykonaj jedną z następujących czynności: 
-    1. Wybierz pozycję **... (wielokropek)** w ostatniej kolumnie, a następnie polecenie **Wyłącz obraz**. 
-
-        ![Wyłączanie jednego obrazu](../media/tutorial-setup-lab-account/disable-one-image.png) 
-    2. Wybierz jeden lub większą liczbę obrazów z listy przez zaznaczenie pól wyboru przed nazwami obrazów, a następnie wybierz pozycję **Wyłącz wybrane obrazy**. 
-
-        ![Wyłączanie wielu obrazów](../media/tutorial-setup-lab-account/disable-multiple-images.png) 
-1. Podobnie, aby w portalu Marketplace **włączyć** obraz, wykonaj jedną z następujących czynności: 
-    1. Wybierz pozycję **... (wielokropek)** w ostatniej kolumnie, a następnie polecenie **Włącz obraz**. 
-    2. Wybierz jeden lub większą liczbę obrazów z listy przez zaznaczenie pól wyboru przed nazwami obrazów, a następnie wybierz pozycję **Włącz wybrane obrazy**. 
-
-## <a name="configure-the-lab-account"></a>Konfigurowanie konta laboratorium
-1. Na **konta laboratorium** wybierz opcję **konfiguracji Labs** w menu po lewej stronie.
-
-    ![Strona konfiguracji Labs](../media/how-to-manage-lab-accounts/labs-configuration-page.png) 
-1. Dla **równorzędna sieć wirtualna**, wybierz opcję **włączone** lub **wyłączone**. Wartość domyślna to **wyłączone**. Aby włączyć równorzędnej sieci wirtualnej, wykonaj następujące czynności: 
-    1. Wybierz **włączone**.
-    2. Wybierz **sieci wirtualnej** z listy rozwijanej. 
-    3. Wybierz pozycję **Zapisz** na pasku narzędzi. 
-    
-        Laboratoria utworzony na tym koncie są podłączone do wybranej sieci wirtualnej. Mogą oni dostęp do zasobów w wybranej sieci wirtualnej. 
-3. Dla **twórca laboratorium Zezwalaj, aby wybrać lokalizację lab**, wybierz opcję **włączone** chcącym twórca laboratorium, aby można było wybrać lokalizację dla laboratorium. Jeśli jest ono wyłączone, laboratoria są tworzone automatycznie w tej samej lokalizacji, w której istnieje konto laboratorium. 
 
 ## <a name="view-lab-accounts"></a>Wyświetl konta laboratorium
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
@@ -119,8 +73,6 @@ Jako właściciel konta laboratorium możesz określić obrazy witryny Marketpla
     3. Adres e-mail użytkownika, który utworzył laboratorium. 
     4. Maksymalna liczba użytkowników uprawnionych do laboratorium. 
     5. Stan laboratorium. 
-
-
 
 ## <a name="delete-a-lab-in-the-lab-account"></a>Usuń laboratorium w ramach konta laboratorium
 Postępuj zgodnie z instrukcjami w poprzedniej sekcji, aby wyświetlić listę laboratoriów w ramach konta laboratorium.
@@ -145,11 +97,5 @@ Wykonaj instrukcje z poprzedniej sekcji, która wyświetla kontami laboratorium 
     ![Usuń konto laboratorium — potwierdzenie](../media/how-to-manage-lab-accounts/delete-lab-account-confirmation.png)
 
 
-
 ## <a name="next-steps"></a>Kolejne kroki
-Zobacz następujące artykuły:
-
-- [As a lab owner, create and manage labs (Tworzenie laboratoriów i zarządzanie nimi jako właściciel laboratorium)](how-to-manage-classroom-labs.md)
-- [As a lab owner, set up and publish templates (Konfigurowanie i tworzenie szablonów jako właściciel laboratorium)](how-to-create-manage-template.md)
-- [As a lab owner, configure and control usage of a lab (Konfigurowanie i kontrolowanie użycia laboratorium jako właściciel laboratorium)](how-to-configure-student-usage.md)
-- [Jako użytkownik laboratorium dostęp do laboratoriów na potrzeby zajęć](how-to-use-classroom-lab.md)
+Zobacz następujący artykuł: [Konfigurowanie konta laboratorium](how-to-configure-lab-accounts.md).

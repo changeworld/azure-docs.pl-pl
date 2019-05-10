@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 09/24/2018
 ms.author: andret
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7aca42aa13ef78647b591eb0be7083f932ce0c35
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: f88643000b85965b2f275cc6e7494f427d0fe43e
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65191043"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231157"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Szybki start: Dodawanie logowania przy użyciu konta Microsoft do aplikacji internetowej ASP.NET
 
@@ -38,7 +38,7 @@ Na zakończenie tego przewodnika Szybki start aplikacja będzie akceptować logo
 
 Przed rozpoczęciem pracy upewnij się, że są spełnione następujące wymagania wstępne:
 
-* Masz program Visual Studio 2015 Update 3 lub zainstalowany program Visual Studio 2019 r. Nie masz tego programu? [Pobierz bezpłatnie program Visual Studio 2019 r.](https://www.visualstudio.com/downloads/)
+* Zainstalować program Visual Studio 2015 Update 3 lub nowszy. Nie masz tego programu? [Pobierz bezpłatnie program Visual Studio 2019 r.](https://www.visualstudio.com/downloads/)
 
 ## <a name="scenario-sign-in-users-from-work-and-school-accounts-in-your-aspnet-app"></a>Scenariusz: logowanie użytkowników z poziomu kont służbowych w aplikacji ASP.NET
 
@@ -70,9 +70,10 @@ Aby zamiast tego pobrać ten przykładowy projekt programu Visual Studio, wykona
 ## <a name="step-2-create-your-aspnet-project"></a>Krok 2: tworzenie projektu ASP.NET
 
 1. W programie Visual Studio przejdź do polecenia **Plik > Nowy > Projekt**.
-2. W pozycji **Visual C#\Internet** wybierz opcję **Aplikacja internetowa ASP.NET (.NET Framework)**.
-3. Nadaj nazwę aplikacji, a następnie wybierz przycisk **OK**.
-4. Wybierz pozycję **Pusty**, a następnie zaznacz pole wyboru, aby dodać odwołania **MVC**.
+2. Aby uzyskać **typ projektu**, wybierz opcję **sieci Web**, a następnie wybierz **aplikacji sieci Web platformy ASP.NET (.NET Framework)**.
+3. Nadaj nazwę aplikacji, a następnie wybierz pozycję **Utwórz**.
+4. Wybierz **pusty** , a następnie wybierz **MVC** w obszarze **. Dodaj foldery i podstawowe odwołania** można dodać odwołań MVC.
+5. Wybierz pozycję **Utwórz**.
 
 ## <a name="step-3-add-authentication-components"></a>Krok 3: dodawanie składników uwierzytelniania
 
@@ -125,7 +126,7 @@ W celu utworzenia *klasy początkowej* oprogramowania pośredniczącego OWIN:
 Utwórz nowy kontroler do udostępnienia metod logowania i wylogowywania.
 
 1.  Kliknij prawym przyciskiem myszy folder **Kontrolery** i wybierz polecenie **Dodaj > Kontroler**
-2.  Wybierz pozycję **Kontroler MVC (wersja platformy .NET) — Pusty**.
+2.  Wybierz pozycję **Kontroler MVC {version} — Pusty**.
 3.  Wybierz pozycję **Dodaj**.
 4.  Nadaj mu nazwę `HomeController` i wybierz pozycję **Dodaj**.
 5.  Dodaj przestrzenie nazw **OWIN** do klasy:
@@ -307,7 +308,7 @@ Następnie wpisz w przeglądarce adres `http://localhost:{port}/claims`, aby uzy
 
 Powinien zostać wyświetlony monit wymagający od użytkownika uwierzytelnienia, aby wyświetlić widok.
 
-## <a name="additional-information"></a>Dodatkowe informacje
+## <a name="additional-information"></a>Informacje dodatkowe
 
 <!--start-collapse-->
 ### <a name="protect-your-entire-web-site"></a>Ochrona całej witryny internetowej

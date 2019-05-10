@@ -1,23 +1,23 @@
 ---
 title: 'Samouczek dotyczący klasyfikacji obrazów: Szkolenie modeli'
 titleSuffix: Azure Machine Learning service
-description: W tym samouczku pokazano, jak za pomocą usługi Azure Machine Learning przeprowadzić uczenie modelu klasyfikacji obrazów, używając biblioteki scikit-learn w notesie Jupyter języka Python. Ten samouczek jest pierwszą częścią dwuczęściowej serii.
+description: Dowiedz się, jak to w opracowywaniu model klasyfikacji obrazów za pomocą scikit-Dowiedz się, w notesie Jupyter języka Python za pomocą usługi Azure Machine Learning. Ten samouczek jest pierwszą częścią dwuczęściowej serii.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 04/25/2019
+ms.date: 05/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 712b5a003d3542908698d7b69c636780f6cf1007
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 097fb3422ce3868d9ef499ad6c92c8b7fa12e852
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65021730"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65442062"
 ---
-# <a name="tutorial-train-an-image-classification-model-with-azure-machine-learning-service"></a>Samouczek: Uczenie modelu klasyfikacji obrazów za pomocą usługi Azure Machine Learning
+# <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>Samouczek: Szkolenie modeli klasyfikacji obrazów przy użyciu danych mnist ręcznie ZAPISANYCH i scikit-Dowiedz się, za pomocą usługi Azure Machine Learning
 
 W tym samouczku przeprowadzisz szkolenie modelu uczenia maszynowego na zdalnych zasobach obliczeniowych. Zastosujesz przepływ pracy uczenia i wdrażania dla usługi Azure Machine Learning (wersja zapoznawcza) w notesie Jupyter języka Python.  Następnie możesz użyć notesu jako szablonu do uczenia własnego modelu uczenia maszynowego z użyciem własnych danych. Ten samouczek jest **pierwszą częścią dwuczęściowej serii**.  
 

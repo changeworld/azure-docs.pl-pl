@@ -52,7 +52,7 @@
           href: time-series-insights-update-tsm.md
         - name: Wykonywanie zapytań dotyczących danych
           href: time-series-insights-update-tsq.md
-        - name: Wizualizowanie danych w Eksploratorze (aktualizacja)
+        - name: Wizualizowanie danych w Eksploratorze (wersja zapoznawcza)
           href: time-series-insights-update-explorer.md
     - name: Programowanie
       items:

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: johnkem
 ms.subservice: alerts
-ms.openlocfilehash: 9b86df3d08ec6dfcb3100cff333c4dc5653ee1c7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8605e614574b7ebd45e9f18c4e5685a9c5450e64
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64688346"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409918"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Elementy Webhook dla alertów dziennika aktywności platformy Azure
 Jako część definicji grupy akcji można skonfigurować elementu webhook punktów końcowych, aby otrzymywać powiadomienia o alertach dziennika aktywności. Przy użyciu elementów webhook można kierować te powiadomienia do innych systemów w zakresie przetwarzania końcowego lub niestandardowej akcji. Ten artykuł pokazuje, jak wygląda ładunek HTTP POST do elementu webhook.
@@ -32,7 +32,7 @@ Element webhook opcjonalnie użyć uwierzytelniania opartego na tokenach autoryz
 ## <a name="payload-schema"></a>Ładunek schematu
 Ładunek JSON zawarte w operacji POST różnią się w zależności w polu data.context.activityLog.eventSource ładunku.
 
-### <a name="common"></a>Wspólne
+### <a name="common"></a>Wspólny
 ```json
 {
     "schemaId": "Microsoft.Insights/activityLogs",
@@ -156,7 +156,7 @@ Element webhook opcjonalnie użyć uwierzytelniania opartego na tokenach autoryz
                 "resourceGroupName": "<resource group>",
                 "resourceProviderName": "Microsoft.Resourcehealth/healthevent/action",
                 "status": "Active",
-                "subscriptionId": "<subscription Id",
+                "subscriptionId": "<subscription Id>",
                 "submissionTimestamp": "2018-09-04T23:11:06.1607287+00:00",
                 "resourceType": "Microsoft.Compute/virtualMachines"
             }
@@ -171,12 +171,12 @@ Określonego schematu szczegółowe informacje na temat wszystkich innych alert�
 
 | Nazwa elementu | Opis |
 | --- | --- |
-| status |Używane dla alertów dotyczących metryk. Zawsze wartość "aktywowano" w przypadku alertów dzienników aktywności. |
+| stan |Używane dla alertów dotyczących metryk. Zawsze wartość "aktywowano" w przypadku alertów dzienników aktywności. |
 | Kontekst |Kontekst zdarzenia. |
 | resourceProviderName |Dostawca zasobów zasób objęty wpływem. |
 | conditionType |Zawsze "zdarzenie". |
 | name |Nazwa reguły alertu. |
-| id |Identyfikator zasobu alertu. |
+| identyfikator |Identyfikator zasobu alertu. |
 | description |Opis alertu, ustawić po utworzeniu alertu. |
 | subscriptionId |Identyfikator subskrypcji platformy Azure. |
 | timestamp |Czas generowania zdarzenia według usługi platformy Azure, który przetwarzał żądanie. |
@@ -196,7 +196,7 @@ Określonego schematu szczegółowe informacje na temat wszystkich innych alert�
 | operationId |Zazwyczaj identyfikator GUID współużytkowane przez zdarzenia odpowiadający jednej operacji. |
 | operationName |Nazwa operacji. |
 | properties |Właściwości zdarzenia. |
-| status |ciąg. Stan operacji. Typowe wartości to uruchomiona, w toku, zakończone powodzeniem, nie powiodło się, aktywny i rozwiązany. |
+| stan |ciąg. Stan operacji. Typowe wartości to uruchomiona, w toku, zakończone powodzeniem, nie powiodło się, aktywny i rozwiązany. |
 | subStatus |Zazwyczaj zawiera kod stanu HTTP odpowiedniego wywołania REST. Może to również obejmować inne ciągi, które opisują podstanu. Typowe wartości podstanu to OK (kod stanu HTTP: 200), utworzone (kod stanu HTTP: 201) zaakceptowane (kod stanu HTTP: 202), żadnej zawartości (kod stanu HTTP: 204), nieprawidłowe żądanie (kod stanu HTTP: 400), nie znaleziono (kod stanu HTTP: 404) konflikt (kod stanu HTTP: 409), wewnętrzny błąd serwera (kod stanu HTTP: 500), Usługa niedostępna (kod stanu HTTP: 503) i limit czasu bramy (kod stanu HTTP: 504). |
 
 ## <a name="next-steps"></a>Kolejne kroki

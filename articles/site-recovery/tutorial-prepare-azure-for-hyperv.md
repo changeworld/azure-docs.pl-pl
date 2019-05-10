@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 4eadbd119c69a018d65739f55933e91a37f1f3ab
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 29189a5919a01fcb897758fb64ca9e84b9381fb6
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64572361"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65410899"
 ---
 # <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>Przygotowywanie zasobów platformy Azure na potrzeby odzyskiwania po awarii maszyn lokalnych
 
@@ -36,7 +36,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="sign-in"></a>Logowanie
 
-Zaloguj się w witrynie [Azure Portal](http://portal.azure.com).
+Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 ## <a name="verify-account-permissions"></a>Sprawdzanie uprawnień konta
 
@@ -95,7 +95,7 @@ Gdy maszyny wirtualne platformy Azure są tworzone na podstawie magazynu po prze
 
 Utworzenie sieci wirtualnej zajmuje kilka sekund. Po jego utworzeniu, zobaczysz go w pulpicie nawigacyjnym witryny Azure portal.
 
-## <a name="useful-links"></a>Przydatne łącza
+## <a name="useful-links"></a>Przydatne linki
 
 Dowiedz się więcej:
 - [Sieci platformy Azure](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)

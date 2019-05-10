@@ -2,19 +2,19 @@
 title: Samouczek — korzystanie z usługi Azure Key Vault za pomocą aplikacji internetowej platformy Azure na platformie .NET | Microsoft Docs
 description: W tym samouczku skonfigurujesz aplikacji platformy ASP.NET core w celu odczytu wpisu tajnego z magazynu kluczy.
 services: key-vault
-author: mbaldwin
+author: msmbaldwin
 manager: rajvijan
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: 42c8d863a58c5f5d8f47f6686aa9a5b8f80277d2
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9a59255097c6cb2a6728a14c3dbe19dbcbb0932a
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64710503"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236761"
 ---
 # <a name="tutorial-use-azure-key-vault-with-an-azure-web-app-in-net"></a>Samouczek: Korzystanie z usługi Azure Key Vault w aplikacji internetowej platformy Azure na platformie .NET
 
@@ -40,7 +40,7 @@ Jeśli nie masz subskrypcji platformy Azure, Utwórz [bezpłatne konto](https://
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Aby uzyskać Windows: [zestawu SDK programu .NET Core 2.1 lub nowszej](https://www.microsoft.com/net/download/windows)
-* Dla komputerów Mac: [program Visual Studio dla komputerów Mac](https://visualstudio.microsoft.com/vs/mac/)
+* Dla komputerów Mac: [Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/)
 * Dla Windows, Mac i Linux:
   * [Usługa Git](https://git-scm.com/downloads)
   * Ten samouczek wymaga uruchomienia interfejsu wiersza polecenia platformy Azure lokalnie. Musi mieć wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja wiersza polecenia lub jego uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](https://review.docs.microsoft.com/cli/azure/install-azure-cli).
@@ -189,7 +189,7 @@ Możesz również obejrzeć to wideo:
     }
     ```
 
-## <a name="run-the-web-app"></a>Uruchamianie aplikacji internetowej
+## <a name="run-the-web-app"></a>Uruchamianie aplikacji sieci web
 
 1. W menu głównym programu Visual Studio 2017, wybierz **debugowania** > **Start**, z lub bez debugowania. 
 1. W przeglądarce przejdź do **o** strony.  

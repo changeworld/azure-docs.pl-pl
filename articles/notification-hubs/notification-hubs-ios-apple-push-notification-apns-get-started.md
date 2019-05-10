@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 520d01327b5809d453bb777165899770ea4c130b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2793f64528baa2b9a84c671fc73bbe399e2387ea
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60884669"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65411615"
 ---
 # <a name="tutorial-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Samouczek: wysyłanie powiadomień push do aplikacji dla systemu iOS przy użyciu usługi Azure Notification Hubs
 
@@ -40,7 +40,7 @@ W tym samouczku wykonasz następujące kroki:
 > * Wysyłanie testowych powiadomień wypychanych
 > * Sprawdzanie, czy aplikacja odbiera powiadomienia
 
-Kompletny kod dla tego samouczka można znaleźć [w witrynie GitHub](https://github.com/Azure/azure-notificationhubs-samples/tree/master/iOS/GetStartedNH/GetStarted). 
+Kompletny kod dla tego samouczka można znaleźć [w witrynie GitHub](https://github.com/Azure/azure-notificationhubs-ios/tree/master/Samples). 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

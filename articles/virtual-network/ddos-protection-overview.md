@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/13/2018
 ms.author: kumud
-ms.openlocfilehash: c639bc1edceba9c9da08ee6bcc54c860f857cd33
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 41e9d88df49d153089e6dc7a12c5873ccc167279
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64696016"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65209458"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Omówienie usługi Azure DDoS Protection standardowe
 
@@ -29,7 +29,7 @@ Ataki typu „rozproszona odmowa usługi” (Distributed Denial of Service, DDoS
 Usługa Azure DDoS protection, w połączeniu z najlepszych rozwiązań projektowania aplikacji zapewniają ochronę przed atakami DDoS. Usługa Azure DDoS protection zapewnia następujących warstwach usługi:
 
 - **Podstawowe**: Automatycznie włączone w ramach platformy Azure. Zawsze włączone monitorowanie ruchu, a także w czasie rzeczywistym ograniczenie typowych ataków na poziomie sieci, należy podać tych samych mechanizmów obronnych wartościowa usług online firmy Microsoft. Cały skali globalnej sieci platformy Azure może służyć do dystrybucji, a także zmniejszyć ruch ataku w regionach. Ochrony praw dla protokołów IPv4 i IPv6 Azure [publiczne adresy IP](virtual-network-public-ip-address.md).
-- **Standardowa**: Udostępnia dodatkowe ograniczenia możliwości w porównaniu z warstwa podstawowa usług, które są specjalnie przeznaczone specjalnie do zasobów usługi Azure Virtual Network. Standard ochrony przed atakami DDoS jest proste włączyć i nie wymaga żadnych zmian w aplikacji. Za pomocą dedykowanego monitorowania i ruchu algorytmów uczenia maszynowego dostosowanych zasad ochrony. Zasady są stosowane do publicznych adresów IP skojarzonych z zasobami wdrożonymi w sieciach wirtualnych, takich jak usługa Azure Load Balancer, Azure Application Gateway i wystąpień usługi Azure Service Fabric, ale ta ochrona nie ma zastosowania do środowiska usługi App Service. W czasie rzeczywistym danych telemetrycznych jest dostępna za pośrednictwem usługi Azure Monitor widoków, podczas ataku i historii. Analizy ograniczania ryzyka ataków zaawansowane są dostępne za pomocą ustawień diagnostycznych. Ochrona warstwy aplikacji można dodać za pomocą [zapory aplikacji sieci Web usługi Azure Application Gateway](../application-gateway//application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lub dzięki zainstalowaniu 3rd zapory innych firm w witrynie Azure Marketplace. Ochrony praw IPv4 Azure [publiczne adresy IP](virtual-network-public-ip-address.md).
+- **Standardowa**: Udostępnia dodatkowe ograniczenia możliwości w porównaniu z warstwa podstawowa usług, które są specjalnie przeznaczone specjalnie do zasobów usługi Azure Virtual Network. Standard ochrony przed atakami DDoS jest proste włączyć i nie wymaga żadnych zmian w aplikacji. Za pomocą dedykowanego monitorowania i ruchu algorytmów uczenia maszynowego dostosowanych zasad ochrony. Zasady są stosowane do publicznych adresów IP skojarzonych z zasobami wdrożonymi w sieciach wirtualnych, takich jak usługa Azure Load Balancer, Azure Application Gateway i wystąpień usługi Azure Service Fabric, ale ta ochrona nie ma zastosowania do środowiska usługi App Service. W czasie rzeczywistym danych telemetrycznych jest dostępna za pośrednictwem usługi Azure Monitor widoków, podczas ataku i historii. Analizy ograniczania ryzyka ataków zaawansowane są dostępne za pomocą ustawień diagnostycznych. Ochrona warstwy aplikacji można dodać za pomocą [zapory aplikacji sieci Web usługi Azure Application Gateway](../application-gateway//application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lub dzięki zainstalowaniu 3rd zapory innych firm w witrynie Azure Marketplace. Ochrony praw dla protokołów IPv4 i IPv6 Azure [publiczne adresy IP](virtual-network-public-ip-address.md).
 
 ![Platforma Azure a Podstawowa ochrona przed atakami DDoS Standardowa (Standard)](./media/ddos-protection-overview/ddoscomparison.png)
 
@@ -64,7 +64,7 @@ Usługa DDoS Protection standardowe funkcje obejmują:
 
 Standard ochrony przed atakami DDoS monitoruje wykorzystanie rzeczywisty ruch i stale porównuje ją z progów zdefiniowane w zasadach przed atakami DDoS. Po przekroczeniu progu ruchu ataki DDOS jest inicjowany automatycznie. Gdy ruch zwraca niższy od wartości progowej, środki zaradcze zostaną usunięte.
 
-![Środki zaradcze](./media/ddos-protection-overview/mitigation.png)
+![Ograniczanie ryzyka](./media/ddos-protection-overview/mitigation.png)
 
 Podczas środki zaradcze ruch wysyłany do chronionego zasobu jest przekierowywane przez usługi DDoS protection i kilka są sprawdzane, takie jak następujące testy:
 

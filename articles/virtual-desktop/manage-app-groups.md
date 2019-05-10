@@ -7,18 +7,18 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: da653842b09c15a5fd42bae0ed45e7b31452b972
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f0cdd28be8c6e7390aa26fdc2dfbf32ec5542c2d
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60870153"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233905"
 ---
 # <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-preview"></a>Samouczek: Zarządzanie grupami aplikacji dla Windows wirtualnego pulpitu (wersja zapoznawcza)
 
 Domyślna grupa aplikacji utworzonych dla nowej puli hosta Windows wirtualnego pulpitu (wersja zapoznawcza) są również publikowane pełnego pulpitu. Ponadto można utworzyć co najmniej jedną grupę aplikacji programów RemoteApp puli hosta. Postępuj zgodnie z tym samouczkiem, aby utworzyć grupę aplikacji programów RemoteApp i publikowanie poszczególnych aplikacji w menu Start.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+W tym samouczku pokazano, jak:
 
 > [!div class="checklist"]
 > * Utwórz grupę programów RemoteApp.
@@ -73,7 +73,7 @@ Przed przystąpieniem do wykonywania [Pobierz i zaimportuj moduł programu Power
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Po utworzeniu grup aplikacji tworzenie jednostek usługi i przypisać role do użytkowników. Aby dowiedzieć się, jak to zrobić, zobacz samouczek dotyczący sposobu tworzenia jednostki usługi i przypisań ról za pomocą programu PowerShell.
+W tym samouczku przedstawiono sposób tworzenia grupy aplikacji, wypełniona RemoteApps i przypisywanie użytkowników do grupy aplikacji. Aby dowiedzieć się więcej o tym, jak zalogować się do wirtualnego pulpitu Windows, przejdź do nawiązywania połączenia z wirtualnego How-tos pulpitu Windows.
 
-> [!div class="nextstepaction"]
-> [Tworzenie jednostek usługi i przypisań ról za pomocą programu PowerShell](create-service-principal-role-powershell.md)
+- [Nawiązać połączenie z klienta pulpitu zdalnego na Windows 7 i Windows 10](connect-windows-7-and-10.md)
+- [Nawiązywać połączenia z klientem w sieci web Windows wirtualnego pulpitu (wersja zapoznawcza)](connect-web.md)

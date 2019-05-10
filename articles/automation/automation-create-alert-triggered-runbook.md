@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 892906089ae3538b3427d97165173fd82621f58a
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 5d8e7bba6d43ba1daa3173ce5d7e043e2310a482
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919989"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65229984"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Użyj alertów do wyzwalania elementu runbook usługi Azure Automation
 
@@ -25,7 +25,7 @@ Możesz użyć [usługi Azure Monitor](../azure-monitor/overview.md?toc=%2fazure
 Za pomocą elementów runbook usługi automation cztery typy alertów:
 
 * Najczęstsze alerty
-* Alerty dotyczące dziennika aktywności
+* Alerty dziennika aktywności
 * Niemal w czasie rzeczywistym alertów dotyczących metryk
 
 > [!NOTE]
@@ -33,7 +33,7 @@ Za pomocą elementów runbook usługi automation cztery typy alertów:
 
 Jeśli alert wywołuje element runbook, to rzeczywiste wywołanie jest wysłanie żądania HTTP POST do elementu webhook. Treść żądania POST zawiera sformatowane JSON obiekt, który ma użytecznych właściwości, które są powiązane z alertem. Poniższa lista zawiera łącza do schematu ładunku dla każdego typu alertu:
 
-|Alerty  |Opis|Ładunek schematu  |
+|Alert  |Opis|Ładunek schematu  |
 |---------|---------|---------|
 |[Typowe alertu](../azure-monitor/platform/alerts-common-schema.md?toc=%2fazure%2fautomation%2ftoc.json)|Wspólny schemat alertu, który standaryzuje środowisko wykorzystania powiadomień o alertach na platformie Azure już dziś.|[Wspólny schemat ładunku alertu](../azure-monitor/platform/alerts-common-schema-definitions.md?toc=%2fazure%2fautomation%2ftoc.json#sample-alert-payload)|
 |[Alert dziennika aktywności](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |Wysyła powiadomienie, gdy wszystkie nowe zdarzenie w dzienniku aktywności platformy Azure jest zgodna z określonych warunków. Na przykład, gdy `Delete VM` operacja odbywa się w **myProductionResourceGroup** lub gdy nowe zdarzenie kondycji usługi platformy Azure za pomocą **Active** zostanie wyświetlony stan.| [Schemat ładunku alertu dziennika aktywności](../azure-monitor/platform/activity-log-alerts-webhook.md)        |
@@ -60,6 +60,14 @@ Użyj tego przykładu, aby utworzyć element runbook o nazwie **Stop AzureVmInRe
 5. Skopiuj poniższy przykład programu PowerShell do **Edytuj** strony.
 
     ```powershell-interactive
+    [OutputType("PSAzureOperationResponse")]
+    param
+    (
+        [Parameter (Mandatory=$false)]
+        [object] $WebhookData
+    )
+    $ErrorActionPreference = "stop"
+
     if ($WebhookData)
     {
         # Get the data object from WebhookData

@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: d5ff1809886198f7f1e4f4b9c36f877ce61d512e
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 10364d014431a500e7c38a02d47f432cd464feb6
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65029433"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65411479"
 ---
 # <a name="multiclass-decision-forest-module"></a>Las decyzyjny kontra modułu
 
@@ -36,7 +36,7 @@ Drzewa decyzyjne mają wiele zalet:
 + Wykonują zintegrowaną funkcją wyboru i klasyfikacji.
 + Są one odporność obecności funkcje generujące dużo alertów.
 
-Klasyfikator lasu decyzji w usłudze Azure Machine Learning składa się z zespołu drzewa decyzyjne. Ogólnie rzecz biorąc zespołu zapewnia lepsze pokrycie i dokładność niż pojedynczy decyzyjne. Aby uzyskać więcej informacji, zobacz [decyzji drzew](http://go.microsoft.com/fwlink/?LinkId=403677).
+Klasyfikator lasu decyzji w usłudze Azure Machine Learning składa się z zespołu drzewa decyzyjne. Ogólnie rzecz biorąc zespołu zapewnia lepsze pokrycie i dokładność niż pojedynczy decyzyjne. Aby uzyskać więcej informacji, zobacz [decyzji drzew](https://go.microsoft.com/fwlink/?LinkId=403677).
 
 ## <a name="how-to-configure-multiclass-decision-forest"></a>Jak skonfigurować las decyzyjny kontra
 

@@ -15,14 +15,17 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: fc248292e2323d44a353473be87c2b0f1be8ea12
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d125e0c0818efbc6ec8f317122859411a37a0d20
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60880166"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65232752"
 ---
-# <a name="tutorial-push-notification-to-specific-android-application-users-by-using-azure-notification-hubs"></a>Samouczek: wysyłanie powiadomień push do konkretnych użytkowników aplikacji systemu Android przy użyciu usługi Azure Notification Hubs
+# <a name="tutorial-push-notification-to-specific-android-application-users-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Samouczek: Wypychanie powiadomień do użytkowników określonych aplikacji systemu Android przy użyciu usługi Azure Notification Hubs i Google Cloud Messaging (przestarzałe)
+
+> [!WARNING]
+> Od 10 kwietnia 2018 r. Google jest przestarzała Google Cloud Messaging (GCM). Serwer usługi GCM i interfejsów API klienta są przestarzałe i zostaną usunięte natychmiast po 29 maja 2019 r. Aby uzyskać więcej informacji, zobacz [usługi GCM i FCM — często zadawane pytania](https://developers.google.com/cloud-messaging/faq).
 
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
@@ -141,7 +144,7 @@ Kolejnym krokiem jest zaktualizowanie aplikacji systemu Android utworzonej w ram
     ```xml
     <string name="usernameHint">Username</string>
     <string name="passwordHint">Password</string>
-    <string name="loginButton">1. Log in</string>
+    <string name="loginButton">1. Sign in</string>
     <string name="send_button">2. Send Notification</string>
     <string name="notification_message_hint">Notification message</string>
     <string name="notification_message_tag_hint">Recipient username</string>
@@ -257,7 +260,7 @@ Kolejnym krokiem jest zaktualizowanie aplikacji systemu Android utworzonej w ram
     }
     ```
 
-    Ten składnik implementuje wywołania REST wymagane do kontaktowania się z zapleczem aplikacji, aby przeprowadzać rejestrację na potrzeby powiadomień push. Ponadto zapisuje lokalnie identyfikatory *registrationId* utworzone przez centrum powiadomień zgodnie z opisem w sekcji [Rejestrowanie z poziomu zaplecza aplikacji](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend). Składnik używa tokenu autoryzacji przechowywanego w magazynie lokalnym po kliknięciu przycisku **Log in** (Zaloguj się).
+    Ten składnik implementuje wywołania REST wymagane do kontaktowania się z zapleczem aplikacji, aby przeprowadzać rejestrację na potrzeby powiadomień push. Ponadto zapisuje lokalnie identyfikatory *registrationId* utworzone przez centrum powiadomień zgodnie z opisem w sekcji [Rejestrowanie z poziomu zaplecza aplikacji](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend). Używa ona token autoryzacji przechowywanych w magazynie lokalnym, po kliknięciu **Zaloguj** przycisku.
 4. W klasie usuń lub oznacz jako komentarz pole prywatne dla elementu `NotificationHub`, a także dodaj pole dla klasy `RegisterClient` i ciąg dla punktu końcowego zaplecza ASP.NET. Pamiętaj, aby zastąpić ciąg `<Enter Your Backend Endpoint>` wcześniej pozyskanym, faktycznym punktem końcowym zaplecza. Na przykład `http://mybackend.azurewebsites.net`.
 
     ```java
@@ -319,7 +322,7 @@ Kolejnym krokiem jest zaktualizowanie aplikacji systemu Android utworzonej w ram
     Button sendPush = (Button) findViewById(R.id.sendbutton);
     sendPush.setEnabled(false);
     ```
-9. Następnie dodaj poniższe metody, aby zapewnić obsługę zdarzenia kliknięcia przycisku **Log in** (Zaloguj się) i wysyłania powiadomień push.
+9. Następnie należy dodać następujące metody umożliwiające obsługę **Zaloguj** kliknięcia przycisku zdarzeń i wysyłania powiadomień wypychanych.
 
     ```java
     public void login(View view) throws UnsupportedEncodingException {
@@ -401,7 +404,7 @@ Kolejnym krokiem jest zaktualizowanie aplikacji systemu Android utworzonej w ram
     }
     ```
 
-    Procedura obsługi `login` dla przycisku **Log in** (Zaloguj się) generuje podstawowy token uwierzytelniania używany w przypadku wprowadzania nazwy użytkownika i hasła (reprezentuje dowolny token używany przez schemat uwierzytelniania), a następnie używa metody `RegisterClient` do wywołania zaplecza na potrzeby rejestracji.
+    `login` Obsługa **Zaloguj** przycisk generuje uwierzytelnienie podstawowe tokenu przy użyciu na wprowadzania nazwy użytkownika i hasło (reprezentuje dowolny token wykorzystuje schemat uwierzytelniania), a następnie używa `RegisterClient` do wywołania zaplecze dla rejestracji.
 
     Metoda `sendPush` wywołuje zaplecze, aby wyzwolić bezpieczne powiadomienie do użytkownika w oparciu o tag użytkownika. Docelowa usługa powiadomień platformy dla metody `sendPush` zależy od przekazanego ciągu `pns`.
 
@@ -467,7 +470,7 @@ Kolejnym krokiem jest zaktualizowanie aplikacji systemu Android utworzonej w ram
 
 1. Uruchom aplikację na urządzeniu lub emulatorze przy użyciu programu Android Studio.
 2. W aplikacji systemu Android wprowadź nazwę użytkownika i hasło. Oba muszą być taką samą wartością ciągu i nie mogą zawierać spacji ani znaków specjalnych.
-3. W aplikacji systemu Android kliknij przycisk **Log in** (Zaloguj się). Poczekaj na komunikat wyskakujący z informacją **Logged in and registered** (Zalogowano i zarejestrowano). Spowoduje to włączenie przycisku **Send Notification** (Wyślij powiadomienie).
+3. W aplikacji dla systemu Android, kliknij przycisk **Zaloguj**. Poczekaj na komunikat wyskakujący z informacją **Logged in and registered** (Zalogowano i zarejestrowano). Spowoduje to włączenie przycisku **Send Notification** (Wyślij powiadomienie).
 
     ![][A2]
 4. Kliknij przyciski przełączania, aby włączyć wszystkie platformy, na których uruchomiono aplikację i zarejestrowano użytkownika.

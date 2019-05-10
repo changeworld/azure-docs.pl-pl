@@ -7,13 +7,13 @@ ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.date: 04/22/2019
-ms.openlocfilehash: 471b10a83d8da3b520f4a9dd00a5db4420fc504f
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.date: 04/30/2019
+ms.openlocfilehash: 06d416358c1886f09b0b2336cc1ea53ce89947ae
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63767215"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230803"
 ---
 # <a name="tutorial-configure-azure-cosmos-db-accounts-using-ansible"></a>Samouczek: Konfiguruj konta usługi Azure Cosmos DB za pomocą rozwiązania Ansible
 
@@ -31,9 +31,9 @@ ms.locfileid: "63767215"
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
-- [!INCLUDE [open-source-devops-prereqs-create-service-principal.md](../../includes/open-source-devops-prereqs-create-service-principal.md)]
-- [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
+[!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
+[!INCLUDE [open-source-devops-prereqs-create-service-principal.md](../../includes/open-source-devops-prereqs-create-service-principal.md)]
+[!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
 ## <a name="create-a-random-postfix"></a>Tworzenie losowego przyrostka
 
@@ -83,7 +83,7 @@ Poniższy kod tworzy sieć wirtualną i podsieć dla usługi Azure Cosmos DB:
       address_prefix_cidr: "10.1.0.0/24"
 ```
 
-## <a name="create-an-azure-cosmos-db-account"></a>Tworzenie konta usługi Azure Cosmos DB
+## <a name="create-an-azure-cosmos-db-account"></a>Utwórz konto usługi Azure Cosmos DB
 
 Poniższy kod tworzy konto usługi Cosmos DB:
 

@@ -10,23 +10,24 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/14/2018
+ms.date: 05/07/2019
 ms.author: abnarain
-ms.openlocfilehash: d63ede800f7e60db44072234f5ec74910e4c70f2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6a7daae90254bb4192dbaf13e1c2f9202e2d2baa
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61262100"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65232432"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Infrastruktura Integration Runtime w usłudze Azure Data Factory
 Integration Runtime (IR) to infrastruktura obliczeniowa używana przez usługę Azure Data Factory do zapewnienia następujących możliwości integracji danych w różnych środowiskach sieciowych:
 
+- **Przepływ danych**: Wykonaj [przepływ danych](concepts-data-flow-overview.md) w środowisku zarządzanym obliczeniowym platformy Azure.  
 - **Przenoszenie danych**: Kopiowanie danych między magazynami danych w publicznej sieci i magazynów danych w sieci prywatnej (lokalnej lub wirtualnej sieci prywatnej). Zapewnia obsługę wbudowanych łączników, konwersji formatów i mapowania kolumn oraz wydajne i skalowalne przenoszenie danych.
-- **Wysyłanie działania**:  Wysyłanie i monitorowanie działań przekształcania uruchamianych w różnych usługach obliczeniowych, takich jak Azure HDInsight, Azure Machine Learning, Azure SQL Database i programu SQL Server.
+- **Wysyłanie działania**:  Wysyłanie i monitorowanie działań przekształcania uruchamianych w różnych usługach obliczeniowych, takich jak usługi Azure Databricks, Azure HDInsight, Azure Machine Learning, Azure SQL Database, SQL Server i więcej.
 - **Wykonanie pakietów SSIS**: Natywne wykonywanie pakietów usług SQL Server Integration Services (SSIS) w środowisku zarządzanym obliczeniowych platformy Azure.
 
-W usłudze Data Factory działanie definiuje akcję do wykonania. Połączona usługa definiuje docelowy magazyn danych lub usługę obliczeniową. Infrastruktura Integration Runtime zapewnia połączenie między działaniem i połączonymi usługami.  Odwołuje się do niej połączona usługa i zapewnia środowisko obliczeniowe, w którym działanie jest uruchamiane lub z którego jest wysyłane.  Dzięki temu działanie można wykonać w regionie najbliższym docelowemu magazynowi danych lub usłudze obliczeniowej, w sposób najbardziej wydajny, jednocześnie spełniając wymagania dotyczące zabezpieczeń i zgodności.
+W usłudze Data Factory działanie definiuje akcję do wykonania. Połączona usługa definiuje docelowy magazyn danych lub usługę obliczeniową. Infrastruktura Integration Runtime zapewnia połączenie między działaniem i połączonymi usługami.  Odwołuje się połączona usługa lub działania i zapewnia środowisko obliczeniowe, których działanie działa na lub wysyłane. Dzięki temu działanie można wykonać w regionie najbliższym docelowemu magazynowi danych lub usłudze obliczeniowej, w sposób najbardziej wydajny, jednocześnie spełniając wymagania dotyczące zabezpieczeń i zgodności.
 
 ## <a name="integration-runtime-types"></a>Typy infrastruktury Integration Runtime
 Usługa Data Factory oferuje trzy typy infrastruktury Integration Runtime. Należy wybrać typ najlepiej odpowiadający poszukiwanym możliwościom integracji danych i potrzebom środowiska sieciowego.  Te trzy typy to:
@@ -39,7 +40,7 @@ W poniższej tabeli opisano możliwości i obsługę sieci dla każdego typu inf
 
 Typ IR | Sieć publiczna | Sieć prywatna
 ------- | -------------- | ---------------
-Azure | Przenoszenie danych<br/>Wysyłanie działania | &nbsp;
+Azure | Przepływ danych<br/>Przenoszenie danych<br/>Wysyłanie działania | &nbsp;
 Samodzielny hosting | Przenoszenie danych<br/>Wysyłanie działania | Przenoszenie danych<br/>Wysyłanie działania
 Azure-SSIS | Wykonanie pakietu SSIS | Wykonanie pakietu SSIS
 
@@ -50,20 +51,24 @@ Na poniższym diagramie przedstawiono, jak różnych infrastruktur Integration R
 ## <a name="azure-integration-runtime"></a>Środowisko uruchomieniowe integracji Azure
 Infrastruktura Azure Integration Runtime zapewnia następujące funkcje:
 
+- Uruchamianie przepływów danych na platformie Azure 
 - Uruchamianie działania kopiowania między magazynami danych w chmurze
-- Wysyłanie następujących działań przekształcania w sieci publicznej: Działanie HDInsight Hive, działanie HDInsight Pig, działanie HDInsight MapReduce, działanie HDInsight Spark, działanie HDInsight Streaming, Machine Learning Batch Execution, działanie, działania Machine Learning Update Resource, działanie Stored Procedure Działania usługi Data Lake Analytics U-SQL, działanie niestandardowe platformy .NET, działanie internetowe, działanie Lookup i działanie Get Metadata.
+- Wysyłanie następujących działań przekształcania w sieci publicznej: Notesu usługi Databricks / Jar / Python aktywności, działanie HDInsight Hive, działanie HDInsight Pig, działanie HDInsight MapReduce, działanie HDInsight Spark, działanie HDInsight Streaming, działanie Machine Learning Batch Execution, Machine Learning Update Resource działania, działanie Stored Procedure, działanie U-SQL usługi Data Lake Analytics, niestandardowe działanie platformy .NET, działanie internetowe, działanie Lookup i działanie Get Metadata.
 
 ### <a name="azure-ir-network-environment"></a>Środowisko sieciowe IR Azure
-Infrastruktura Azure Integration Runtime obsługuje łączenie z magazynami danych i usługami obliczeniowymi w sieci publicznej przy użyciu dostępnych publicznie punktów końcowych. Zastosowanie infrastruktury Integration Runtime (Self-hosted) w środowisku sieci wirtualnej Azure.
+Azure Integration Runtime obsługuje łączenie z magazynami danych i usług obliczeniowych, przy użyciu dostępnych publicznie punktów końcowych. Zastosowanie infrastruktury Integration Runtime (Self-hosted) w środowisku sieci wirtualnej Azure.
 
 ### <a name="azure-ir-compute-resource-and-scaling"></a>Zasoby obliczeniowe i skalowanie środowiska IR Azure
 Infrastruktura Integration Runtime zapewnia w pełni zarządzane obliczenia bez serwera na platformie Azure.  Nie musisz przejmować się udostępnianiem infrastruktury, instalacją oprogramowania, poprawkami i skalowaniem możliwości.  Dodatkowo płacisz tylko za czas rzeczywistego wykorzystania.
 
-Produkt Azure Integration Runtime zapewnia natywne możliwości obliczeniowe przenoszenia danych między magazynami danych w chmurze w sposób bezpieczny, niezawodny i wydajny.  Możesz określić liczbę jednostek integracji danych używanych w działaniu kopiowania, a rozmiar obliczeniowy infrastruktury Azure IR jest skalowany elastycznie bez konieczności jawnego regulowania rozmiaru infrastruktury Azure Integration Runtime.
+Produkt Azure Integration Runtime zapewnia natywne możliwości obliczeniowe przenoszenia danych między magazynami danych w chmurze w sposób bezpieczny, niezawodny i wydajny.  Możesz określić liczbę jednostek integracji danych używanych w działaniu kopiowania, a rozmiar obliczeniowy infrastruktury Azure IR jest skalowany elastycznie bez konieczności jawnego regulowania rozmiaru infrastruktury Azure Integration Runtime. 
 
 Wysyłanie działania to lekka operacja, kierująca działanie do docelowej usługi obliczeniowej, dzięki czemu nie występuje konieczności skalowania rozmiaru obliczeniowego dla tego scenariusza.
 
 Informacje na temat tworzenia i konfigurowania infrastruktury Azure IR można znaleźć w przewodniku How to create and configure Azure IR (Jak utworzyć i skonfigurować infrastrukturę Azure IR). 
+
+> [!NOTE] 
+> Środowisko IR platformy Azure ma właściwości powiązanych z runtime przepływ danych, który definiuje podstawowej infrastrukturę obliczeniową, która będzie używana do uruchamiania przepływów danych na. 
 
 ## <a name="self-hosted-integration-runtime"></a>Infrastruktura Integration Runtime (Self-hosted)
 Infrastruktura IR (Self-hosted) oferuje następujące możliwości:
@@ -112,7 +117,13 @@ Dla środowiska IR Azure można ustawić konkretną lokalizację. W takim przypa
 Jeśli użyjesz automatycznego określania dla środowiska IR Azure, co jest ustawieniem domyślnym, wystąpią następujące sytuacje: 
 
 - W przypadku działania kopiowania usługa ADF automatycznie spróbuje jak najlepiej wykryć magazyn danych ujścia i źródła w celu wybrania najlepszej lokalizacji w tym samym regionie (jeśli jest dostępna) lub w najbliższym regionie w obrębie tego samego obszaru geograficznego. Jeśli tych obiektów nie da się wykryć, zostanie użyty region fabryki danych.
+
 - W przypadku wykonywania działania wyszukiwania/uzyskiwania metadanych i wysyłania działania przekształcania usługa ADF użyje środowiska IR w regionie fabryki danych.
+
+- Dla przepływu danych usługi ADF użyje środowiska IR w regionie fabryki danych. 
+
+  > [!TIP] 
+  > Dobrym rozwiązaniem byłoby upewnij się, że przepływ danych działa w tym samym regionie, co Twoja odpowiednie magazyny danych (jeśli jest to możliwe). Można to osiągnąć przez automatyczne rozwiązanie Azure IR (Jeśli lokalizacja magazynu danych jest taka sama jak lokalizacja usługi Data Factory) lub tworząc nowe wystąpienie środowiska Azure IR w tym samym regionie, co swoich magazynów danych i następnie wykonywania przepływu danych w nim. 
 
 Istnieje możliwość monitorowania, która lokalizacja IR jest używana podczas wykonywania działania w widoku monitorowania działania potoku w interfejsie użytkownika lub w ładunku monitorowania działania.
 
@@ -153,8 +164,13 @@ Działanie wyszukiwania i uzyskiwania metadanych jest wykonywane w środowisku I
 
 Każde działanie przekształcania zawiera docelową obliczeniową usługę połączoną, która wskazuje infrastrukturę Integration Runtime. To wystąpienie infrastruktury Integration Runtime jest miejscem, z którego wysyłane jest działanie przekształcania.
 
-## <a name="next-steps"></a>Następne kroki
+### <a name="data-flow-activity"></a>Działanie przepływu danych
+
+Działanie przepływu danych jest wykonywana na powiązany środowiska integration runtime. 
+
+## <a name="next-steps"></a>Kolejne kroki
 Zobacz następujące artykuły:
 
+- [Tworzenie środowiska Azure integration runtime](create-azure-integration-runtime.md)
 - [Create self-hosted integration runtime (Tworzenie środowiska Integration Runtime (Self-hosted)](create-self-hosted-integration-runtime.md)
 - [Create an Azure-SSIS integration runtime (Tworzenie środowiska Azure-SSIS Integration Runtime)](create-azure-ssis-integration-runtime.md) Ten artykuł stanowi rozszerzenie samouczka i zawiera instrukcje na temat używania wystąpienia zarządzanego Azure SQL Database i dołączania środowiska IR do sieci wirtualnej. 

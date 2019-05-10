@@ -342,6 +342,8 @@
               items:
                 - name: Uzyskiwanie tokenu z pamięci podręcznej
                   href: msal-net-acquire-token-silently.md
+                - name: Czyszczenie pamięci podręcznej tokenu
+                  href: msal-net-clear-token-cache.md
                 - name: Tworzenie wystąpienia klienta publicznego z opcjami
                   href: msal-net-instantiate-public-client-config-options.md
                 - name: Tworzenie wystąpienia klienta poufnego z opcjami

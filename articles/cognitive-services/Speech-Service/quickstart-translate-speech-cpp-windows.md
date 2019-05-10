@@ -10,14 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 03/13/2019
 ms.author: erhopf
-ms.openlocfilehash: 9187863234dd62757efecf6f0817ff00da48064a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: bf07e6a2daac7889e11df2cb5d689daef44266f9
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64685547"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65465654"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-c"></a>Szybki start: tłumaczenie mowy przy użyciu zestawu SDK usługi Mowa dla języka C++
+
+Przewodniki Szybki Start są również dostępne dla [rozpoznawania mowy](quickstart-cpp-windows.md) i [zamiany tekstu na mowę](quickstart-text-to-speech-cpp-windows.md).
 
 W tym przewodniku Szybki start utworzysz prostą aplikację w języku C++, która przechwytuje mowę użytkownika z mikrofonu komputera, tłumaczy tę mowę i transkrybuje przetłumaczony tekst do wiersza polecenia w czasie rzeczywistym. Ta aplikacja jest przeznaczona do uruchamiania w 64-bitowych systemach Windows i jest kompilowana przy użyciu [pakietu NuGet zestawu SDK usługi Mowa](https://aka.ms/csspeech/nuget) i programu Microsoft Visual Studio 2017.
 
@@ -34,7 +36,7 @@ Ten przewodnik Szybki start wymaga następujących elementów:
 
 [!INCLUDE [Quickstart C++ project](../../../includes/cognitive-services-speech-service-quickstart-cpp-create-proj.md)]
 
-## <a name="add-sample-code"></a>Dodawanie przykładowego kodu
+## <a name="add-sample-code"></a>Dodaj kod przykładowy
 
 1. Otwórz plik źródłowy *helloworld.cpp*. Zastąp cały kod poniżej początkowej instrukcji include (`#include "stdafx.h"` lub `#include "pch.h"`) następującymi instrukcjami:
 

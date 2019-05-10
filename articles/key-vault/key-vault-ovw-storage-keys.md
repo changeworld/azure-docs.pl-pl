@@ -4,21 +4,21 @@ description: Klucze konta magazynu zapewniają bezproblemową integrację usług
 ms.topic: conceptual
 services: key-vault
 ms.service: key-vault
-author: mbaldwin
+author: msmbaldwin
 ms.author: mbaldwin
 manager: barbkess
 ms.date: 03/01/2019
-ms.openlocfilehash: eefdb4d644c97bb55342e21c9a2fcf0a122a6ec5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 190375700f65cf2d3ea47335a646562eb46b2d49
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64724778"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65232564"
 ---
 # <a name="azure-key-vault-managed-storage-account---cli"></a>Usługa Azure Key Vault zarządzanego konta magazynu — interfejs wiersza polecenia
 
 > [!NOTE]
-> [Integracja usługi Azure storage z usługą Azure Active Directory (Azure AD) jest teraz dostępna w wersji zapoznawczej](https://docs.microsoft.com/azure/storage/common/storage-auth-aad). Firma Microsoft zaleca używanie programu Azure AD do uwierzytelniania i autoryzacji, co zapewnia OAuth2 opartego na tokenach dostępu do usługi Azure storage, podobnie jak usługi Azure Key Vault. Dzięki temu można:
+> [Integracja usługi azure storage z usługą Azure Active Directory (Azure AD)] to usługa firmy Microsoft oparte na chmurze tożsamości i dostępu do zarządzania. Integracja z usługą Azure AD jest dostępna dla usług obiektów Blob i kolejek. (https://docs.microsoft.com/azure/storage/common/storage-auth-aad). Firma Microsoft zaleca używanie programu Azure AD do uwierzytelniania i autoryzacji, co zapewnia OAuth2 opartego na tokenach dostępu do usługi Azure storage, podobnie jak usługi Azure Key Vault. Dzięki temu można:
 > - Uwierzytelniania aplikacji klienckiej przy użyciu tożsamości aplikacji lub użytkownika, a nie poświadczenia konta magazynu. 
 > - Użyj [tożsamości zarządzanej usługi Azure AD](/azure/active-directory/managed-identities-azure-resources/) podczas uruchamiania na platformie Azure. Zarządzane, Usuń tożsamości potrzeby uwierzytelniania klienta, które razem i zapisywanie poświadczeń na lub z aplikacją.
 > - Użyj kontroli dostępu na podstawie ról (RBAC) do zarządzania autoryzacji, co jest również obsługiwana przez usługi Key Vault.

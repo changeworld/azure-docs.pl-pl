@@ -7,12 +7,12 @@ ms.topic: sample
 author: cjgronlund
 ms.author: cgronlun
 ms.date: 05/02/2019
-ms.openlocfilehash: c1b86199f13454f4785a6737b25e489d45dd53f8
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: b62a2690e5879e45a14d0b06a38e8c5171dda14e
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026844"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65442332"
 ---
 # <a name="example-jupyter-notebooks-show-how-to-enrich-data-with-open-datasets"></a>Notesy Jupyter w przykładzie pokazano, jak Wzbogacanie danych przy użyciu otwartych zestawów danych 
 Przykład aplikacji Jupyter notebooks w przypadku zestawów danych z usługami Azure Otwórz pokazują, jak załadować otwartych zestawów danych i używaj ich do Wzbogacanie danych demonstracyjnych. Techniki to m.in. Korzystanie z platformy Apache Spark i Pandas do przetwarzania danych.
@@ -29,7 +29,7 @@ Przykład aplikacji Jupyter notebooks w przypadku zestawów danych z usługami A
 ## <a name="join-demo-data-with-noaa-isd-data"></a>Dołącz do pokazu dane za pomocą danych agencji NOAA ISD 
 |Notes        | Opis                                    |
 |----------------|------------------------------------------------|
-|[Dołącz do pokazu danych przy użyciu danych o pogodzie - Pandas ](https://github.com/Azure/OpenDatasetsNotebooks/blob/master/tutorials/data-join/02-weather-join-in-pandas.ipynb) | Dołącz do pokazu 1-miesięcznej zestawu danych czujnika lokalizacji za pomocą odczyty pogody w Pandas dataframe.  |
+|[Dołącz do pokazu danych przy użyciu danych o pogodzie - Pandas](https://github.com/Azure/OpenDatasetsNotebooks/blob/master/tutorials/data-join/02-weather-join-in-pandas.ipynb) | Dołącz do pokazu 1-miesięcznej zestawu danych czujnika lokalizacji za pomocą odczyty pogody w Pandas dataframe.  |
 |[Dołącz do pokazu danych przy użyciu danych o pogodzie — platformy Spark](https://github.com/Azure/OpenDatasetsNotebooks/blob/master/tutorials/data-join/01-weather-join-in-spark.ipynb) | Dołącz do pokazu zestawu danych czujnika lokalizacji za pomocą odczyty pogody w dataframe platformy Spark. |
 
 ## <a name="join-nyc-taxi-data-with-noaa-isd-data"></a>Dołącz dane taksówek NYC danych agencji NOAA ISD 

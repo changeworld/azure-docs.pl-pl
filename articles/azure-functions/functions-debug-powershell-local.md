@@ -10,12 +10,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha, glenga
-ms.openlocfilehash: 554b7b7f401ec7cdb1ae08839550b81d797764f2
-ms.sourcegitcommit: 111a7b3e19d5515ce7036287cea00a7204ca8b56
+ms.openlocfilehash: b699379448863c8df84fda0e059fc10846c09931
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64530334"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230080"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>Debugowanie programu PowerShell usługi Azure Functions lokalnie
 
@@ -97,7 +97,7 @@ Za pomocą `Wait-Debugger` w miejscu, można teraz debugować funkcje przy użyc
 
 Aby debugować funkcje programu PowerShell w programie Visual Studio Code, konieczne jest posiadanie następujących rozszerzeń programu Visual Studio Code:
 
-* [Program PowerShell](/powershell/scripting/components/Visual Studio Code/using-Visual Studio Code)
+* [Program PowerShell](/powershell/scripting/components/vscode/using-vscode)
 * [Azure Functions](functions-create-first-function-vs-code.md)
 
 Po zainstalowaniu rozszerzenia programu PowerShell i usługi Azure Functions, Załaduj istniejący projekt aplikacji funkcji. Możesz również [Tworzenie projektu funkcji](functions-create-first-function-vs-code.md).
@@ -189,7 +189,7 @@ Zanotuj `ProcessId` dla elementu w tabeli z `ProcessName` jako `dotnet`. Ten pro
 Następnie uruchom poniższy fragment kodu:
 
 ```powershell
-# This enters into the the Azure Functions PowerShell process.
+# This enters into the Azure Functions PowerShell process.
 # Put your value of `ProcessId` here.
 Enter-PSHostProcess -Id $ProcessId
 

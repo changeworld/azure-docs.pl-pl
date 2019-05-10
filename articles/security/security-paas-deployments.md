@@ -1,6 +1,6 @@
 ---
-title: Zabezpieczanie wdrożeń typu PaaS | Dokumentacja firmy Microsoft
-description: " Omówienie zabezpieczeń zalety rozwiązania PaaS i inne modele usług w chmurze i Dowiedz się, zalecane rozwiązania dotyczące zabezpieczania wdrożenia modelu PaaS platformy Azure. "
+title: Najlepsze rozwiązania dotyczące bezpiecznego wdrożeń typu PaaS — Microsoft Azure
+description: Poznaj najlepsze rozwiązania dotyczące projektowania, tworzenia, a zarządzanie bezpiecznych aplikacji na platformie Azure w chmurze i zrozumieć korzyści związane z bezpieczeństwem rozwiązania paas, a inne modele usług w chmurze.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/05/2019
+ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: e833317fa16576fa0006a774226d12974fd93ed8
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 9da7a3b91223b8a6fd25814a10a0cbafd645d132
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62107450"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231121"
 ---
 # <a name="securing-paas-deployments"></a>Zabezpieczanie wdrożeń PaaS
 
@@ -29,6 +29,8 @@ Ten artykuł zawiera informacje ułatwiające:
 - Ocena korzyści związane z bezpieczeństwem, platforma jako usługa (PaaS) w porównaniu z innymi modelami usługi chmury
 - Zmienić nastawienie zabezpieczeń sieci skoncentrowane na podejście obwodowej skoncentrowane na tożsamość zabezpieczeń
 - Ogólne PaaS najlepszych praktyk zalecenia dotyczące implementowania zabezpieczeń
+
+[Tworzenie bezpiecznych aplikacji na platformie Azure](abstract-develop-secure-apps.md) przewodniku ogólne pytania zabezpieczeń i kontroli podczas tworzenia aplikacji w chmurze należy rozważyć w poszczególnych fazach cyklu życia tworzenia oprogramowania.
 
 ## <a name="cloud-security-advantages"></a>Korzyści związane z bezpieczeństwem chmury
 Istnieją korzyści związane z bezpieczeństwem do bycia w chmurze. W środowisku lokalnym, prawdopodobnie organizacjach niewypełnienia obowiązków i ograniczone zasoby dostępne dla wartości inwestycji w zabezpieczeń, która tworzy środowisko, gdzie osoby atakujące mogą wykorzystać luki w zabezpieczeniach we wszystkich warstwach.
@@ -155,17 +157,23 @@ Użyj [usługi Azure Application Insights](https://azure.microsoft.com/documenta
 
 Usługa Application Insights ma szeroką gamę narzędzi do interakcji z danymi, które zbiera. Usługa Application Insights przechowuje dane we wspólnym repozytorium. Może korzystać z udostępnionego funkcje, takie jak alerty, pulpitów nawigacyjnych i szczegółowa analiza za pomocą języka zapytania Kusto.
 
+## <a name="perform-security-penetration-testing"></a>Przeprowadzanie testów penetracyjnych zabezpieczeń
+Sprawdzanie poprawności zabezpieczenia jest tak ważna jak testowania innych funkcji. Wprowadź [testów penetracyjnych](azure-security-pen-testing.md) standardowa część procesu kompilacji i wdrażania. Zaplanuj testy regularne zabezpieczeń i wyszukiwaniu luk w zabezpieczeniach na wdrożonych aplikacji i Monitoruj otwartych portów, punktów końcowych i atakami.
+
+Testowanie argumentu rozmycie jest metody służące do znajdowania błędów programu (kod błędów) poprzez dostarczenie źle sformułowane dane wejściowe, aby program interfejsów (punkty wejścia), które przeanalizować i wykorzystują te dane. [Wykrywanie zagrożenie dla bezpieczeństwa Microsoft](https://www.microsoft.com/en-us/security-risk-detection/) to narzędzie oparte na chmurze, używanej do wyszukiwania usterek i inne luki w zabezpieczeniach w oprogramowaniu przed wdrożeniem na platformie Azure. To narzędzie jest przeznaczony do przechwytywania luk w zabezpieczeniach, przed wdrożeniem oprogramowania, aby nie musieli Poprawka usterki, obsługi awarii lub odpowiadać na ataki, po udostępnieniu oprogramowania.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 W tym artykule skupiliśmy się na korzyści związane z bezpieczeństwem wdrożenia usługi PaaS platformy Azure i najlepsze rozwiązania dotyczące aplikacji w chmurze. Dowiedz się, zalecane praktyki zabezpieczanie aplikacji PaaS w sieci web i rozwiązań mobilnych przy użyciu określonych usług platformy Azure. Rozpoczniemy od usługi Azure App Service, Azure SQL Database i Azure SQL Data Warehouse i Azure Storage. W miarę udostępniania artykuły dotyczące zalecanych rozwiązań dotyczących innych usług platformy Azure będzie świadczona łącza na poniższej liście:
 
-- [Azure App Service](security-paas-applications-using-app-services.md)
+- [Usługa Azure App Service](security-paas-applications-using-app-services.md)
 - [Azure SQL Database i Azure SQL Data Warehouse](security-paas-applications-using-sql.md)
 - [Azure Storage](security-paas-applications-using-storage.md)
-- Azure Cache for Redis
+- Usługa Azure Cache for Redis
 - Azure Service Bus
 - Zapory aplikacji sieci Web
+
+Zobacz [projektowania bezpiecznych aplikacji na platformie Azure](abstract-develop-secure-apps.md) pytania zabezpieczające i kontrolek, należy rozważyć w poszczególnych fazach cyklu życia tworzenia oprogramowania, podczas tworzenia aplikacji dla chmury.
 
 Zobacz [zabezpieczeń platformy Azure najlepsze rozwiązania i wzorce](security-best-practices-and-patterns.md) dla więcej najważniejsze wskazówki dotyczące zabezpieczeń do użycia podczas one projektowanie, wdrażanie i zarządzanie rozwiązań w chmurze, korzystając z platformy Azure.
 

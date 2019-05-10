@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.openlocfilehash: 934dfd3334b6f433c7acdf9816a3fb5e24f0430f
-ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.openlocfilehash: f40350129a12c7865051bcae80b74b6f9c069179
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64872006"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233527"
 ---
 # <a name="anomaly-detection-and-forecasting-in-azure-data-explorer"></a>Wykrywanie anomalii i przygotowywać trafniejsze prognozy w Eksploratorze danych platformy Azure
 
@@ -119,7 +119,7 @@ demo_make_series2
 
 ## <a name="summary"></a>Podsumowanie
 
-W tym dokumencie szczegóły funkcji natywnych Eksplorator danych platformy Azure do wykrywania anomalii serii czasu i prognozowania, co znacznie zwiększa modelu dekompozycji podstawowe, na którym bazuje. Każdy oryginalnego szereg czasowy zostanie podzielona, wykrycia anomalii i prognozowanie wykonywane. Czas serii anomalii wykrywania i przygotowywać trafniejsze prognozy funkcje są używane na potrzeby prawie w czasie rzeczywistym scenariuszy monitorowania, takich jak wykrywanie błędów, Konserwacja zapobiegawcza i żądanie i obciążenia, funkcja prognozowania.
+W tym dokumencie przedstawiono funkcje natywne Eksplorator danych platformy Azure do wykrywania anomalii serii czasu i prognozowania. Każdy oryginalnego szereg czasowy zostanie podzielona na sezonowe, składniki trend i pozostały w celu wykrywania anomalii i/lub prognozowania. Te funkcje mogą służyć do niemal w czasie rzeczywistym scenariuszy monitorowania, takich jak wykrywanie błędów, Konserwacja zapobiegawcza i żądanie i obciążenia, funkcja prognozowania.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

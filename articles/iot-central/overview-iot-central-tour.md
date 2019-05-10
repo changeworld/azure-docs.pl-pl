@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 654528ed6137ee62ea22d552d36fda5ac5331adc
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8a0621d0261bfbc7ab396abf837ee7b1123352d1
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64688648"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233444"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>Przewodnik po interfejsie użytkownika usługi Azure IoT Central
 
@@ -32,7 +32,6 @@ _Operator_ używa interfejsu użytkownika usługi Azure IoT Central, aby zarząd
 - Konfigurowanie urządzeń
 - Rozwiązywanie i korygowanie problemów z urządzeniami
 - Aprowizacja nowych urządzeń.
-
 
 ## <a name="use-the-left-navigation-menu"></a>Używanie lewego menu nawigacji
 
@@ -56,6 +55,9 @@ Górne menu jest wyświetlane na każdej stronie:
 Możesz wybrać jasny lub ciemny motyw interfejsu użytkownika:
 
 ![Wybieranie motywu interfejsu użytkownika](media/overview-iot-central-tour/themes.png)
+
+> [!NOTE]
+> Możliwość wyboru między motywy jasny i ciemny jest niedostępna, jeśli administrator skonfigurował motywu niestandardowego dla aplikacji.
 
 ## <a name="dashboard"></a>Pulpit nawigacyjny
 
@@ -84,7 +86,7 @@ Na stronie _Zestawy urządzeń_ są wyświetlane zestawy urządzeń utworzone pr
 
 Strona analizy przedstawia wykresy, które ułatwiają zrozumienie zachowania urządzeń połączonych z aplikacją. Operator używa tej strony do monitorowania i badania problemów z połączonymi urządzeniami. Konstruktor może zdefiniować wykresy wyświetlane na tej stronie. Aby dowiedzieć się więcej, zobacz artykuł [Create custom analytics for your Azure IoT Central application (Tworzenie niestandardowej analizy dla aplikacji usługi Azure IoT Central)](howto-use-device-sets.md).
 
-## <a name="jobs"></a>Stanowiska
+## <a name="jobs"></a>Zadania (job)
 
 ![Strona zadań](media/overview-iot-central-tour/jobs.png)
 

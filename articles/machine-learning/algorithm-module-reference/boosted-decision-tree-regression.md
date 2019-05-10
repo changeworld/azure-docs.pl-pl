@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: b4ebf1740ec2b0288d8052cb075a61b720b031a2
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 67e54f10074ee566ce974dbd27485904bfe0a653
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65028338"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65411546"
 ---
 # <a name="boosted-decision-tree-regression-module"></a>Zwiększona modułu regresji drzewa decyzyjnego
 
@@ -45,7 +45,7 @@ Aby uzyskać dodatkowe informacje zobacz następujące artykuły:
 
     Tego artykułu w Wikipedii na ulepszanie gradientu zawiera podstawowe informacje dotyczące wzmocnionego drzewa. 
   
--  [http://research.microsoft.com/apps/pubs/default.aspx?id=132652](http://research.microsoft.com/apps/pubs/default.aspx?id=132652)  
+-  [https://research.microsoft.com/apps/pubs/default.aspx?id=132652](https://research.microsoft.com/apps/pubs/default.aspx?id=132652)  
 
     Badań firmy Microsoft: Z RankNet do LambdaRank do LambdaMART: Przegląd. By J.C. Burges.
 

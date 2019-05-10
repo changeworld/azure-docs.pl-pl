@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: a723ca6d69d45613636c7659e6566cec19b31d65
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e4746620f083996bf64e77617ec472c3d3894d91
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60364182"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65464300"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Zarządzanie urządzeniami w usłudze Azure IoT Central aplikacji
 
@@ -66,7 +66,7 @@ Aby zbiorczo — rejestracja urządzeń w Twojej aplikacji:
 
 1. Wybierz **importu**.
 
-    ![Akcja importu](./media/howto-manage-devices/BulkImport1.png)
+    ![Akcja importu](./media/howto-manage-devices/bulkimport1a.png)
 
 1. Wybierz plik CSV, który zawiera listę identyfikatorów urządzeń do zaimportowania.
 
@@ -74,7 +74,7 @@ Aby zbiorczo — rejestracja urządzeń w Twojej aplikacji:
 
 1. Po zakończeniu importowania w siatce urządzeń wyświetlany jest komunikat o powodzeniu.
 
-    ![Powodzenie importu](./media/howto-manage-devices/BulkImport3.png)
+    ![Powodzenie importu](./media/howto-manage-devices/bulkimport3a.png)
 
 Jeśli urządzenie zaimportować operacja kończy się niepowodzeniem, zobaczysz komunikat o błędzie na siatce urządzenia. Generowany jest plik dziennika przechwytywania wszystkich błędów do pobrania.
 
@@ -86,13 +86,13 @@ Po zarejestrowaniu urządzenia przez uruchamianie importu w obszarze **Brak skoj
 
 1. W panelu po lewej stronie wybierz **Brak skojarzenia urządzenia**:
 
-    ![Urządzenia nieskojarzone](./media/howto-manage-devices/UnassociatedDevices1.png)
+    ![Urządzenia nieskojarzone](./media/howto-manage-devices/unassociateddevices1a.png)
 
 1. Wybierz urządzenia, które chcesz skojarzyć z szablonem:
 
 1. Wybierz **skojarzyć**:
 
-    ![Skojarz urządzenia](./media/howto-manage-devices/UnassociatedDevices2.png)
+    ![Skojarz urządzenia](./media/howto-manage-devices/unassociateddevices2a.png)
 
 1. Wybierz szablon z listy dostępnych szablonów, a następnie wybierz **skojarzyć**.
 
@@ -113,7 +113,7 @@ Aby zbiorczo eksportu urządzenia z poziomu aplikacji:
 
 1. Wybierz urządzenia, które chcesz wyeksportować, a następnie wybierz pozycję **wyeksportować** akcji.
 
-    ![Eksportowanie](./media/howto-manage-devices/Export1.png)
+    ![Eksportowanie](./media/howto-manage-devices/export1a.png)
 
 1. Rozpoczyna się proces eksportowania. Można śledzić stan u góry strony siatki.
 
@@ -121,7 +121,7 @@ Aby zbiorczo eksportu urządzenia z poziomu aplikacji:
 
 1. Wybierz **komunikat o powodzeniu** można pobrać pliku do lokalnego folderu na dysku.
 
-    ![Powodzenie eksportu](./media/howto-manage-devices/Export2.png)
+    ![Powodzenie eksportu](./media/howto-manage-devices/export2a.png)
 
 1. Wyeksportowany plik CSV zawiera następujące kolumny: identyfikator urządzenia, nazwę urządzenia, klucze urządzeń i X509 odcisk palca certyfikatu:
 

@@ -140,6 +140,8 @@
           href: azure-files-dynamic-pv.md
         - name: Azure Files — wersja statyczna
           href: azure-files-volume.md
+        - name: Serwer NFS — wersja statyczna
+          href: azure-nfs-volume.md
     - name: Konfigurowanie sieci
       items:
         - name: Tworzenie lub używanie istniejącej sieci wirtualnej

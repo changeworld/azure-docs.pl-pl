@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: c419ee1eec9e451cad835d8b4a56818101dc853a
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: d9f814a49924ca95078f3b3decca4f3922c74c2b
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62120861"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65413658"
 ---
 # <a name="duplicate-detection"></a>Wykrywanie duplikatów
 
@@ -35,6 +35,9 @@ Sterowanie aplikacjami identyfikatora istotne jest, ponieważ pozwala jedynie na
 W procesie biznesowym, w której wiele komunikatów są wysyłane w trakcie obsługi niektórych kontekst aplikacji *MessageId* mogą być złożone identyfikator kontekstu na poziomie aplikacji, takich jak numerów zamówień zakupu, a temat wiadomości, na przykład **12345.2017/płatności**.
 
 *MessageId* zawsze może być kilka identyfikatora GUID, ale Zakotwiczanie identyfikator, aby proces biznesowy daje powtarzalność przewidywalne, którego pożądany jest skutecznie za pomocą funkcji wykrywania duplikatów.
+
+> [!NOTE]
+> Jeśli nie ustawiono klucza sesji identyfikator lub partycji jest włączone wykrywanie duplikatów, identyfikator wiadomości jest używany jako klucz partycji. Jeśli identyfikator komunikatu nie jest również ustawiona, biblioteki .NET i protokołu AMQP automatycznie wygenerować identyfikator wiadomości dla wiadomości. Aby uzyskać więcej informacji, zobacz [użycie partycję kluczy](service-bus-partitioning.md#use-of-partition-keys).
 
 ## <a name="enable-duplicate-detection"></a>Włącz wykrywanie duplikatów
 

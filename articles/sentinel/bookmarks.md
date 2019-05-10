@@ -4,7 +4,7 @@ description: W tym artykule opisano, jak używać zakładek myślistwo przez war
 services: sentinel
 documentationcenter: na
 author: rkarlin
-manager: barbkess
+manager: rkarlin
 editor: ''
 ms.assetid: 320ccdad-8767-41f3-b083-0bc48f1eeb37
 ms.service: sentinel
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 9a7ceeab6d2ad761752f778038692256bd87624b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b1a438b9645dbb37d852eb0092355850d816872d
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60596909"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65207474"
 ---
 # <a name="keep-track-of-data-during-hunting"></a>Zachowaj informacje o danych podczas myślistwo
 
@@ -74,7 +74,7 @@ Można również wizualizować dane z zakładką, klikając **zbadaj**. Spowoduj
 
 Istnieje wiele sposobów nawiązania wyświetlanie zakładką danych w usłudze Log Analytics. 
 
-Najprostszym sposobem wyświetlenia zapytań zakładką, wyniki lub historii polega na wybraniu żądaną zakładki w **zakładki** tabeli i użyć linków dostępnych w okienku szczegółów. Dostępne są następujące opcje: 
+Najprostszym sposobem wyświetlenia zapytań zakładką, wyniki lub historii polega na wybraniu żądaną zakładki w **zakładki** tabeli i użyć linków dostępnych w okienku szczegółów. Opcje obejmują: 
 - Kliknij pozycję **Wyświetl zapytanie** Aby wyświetlić zapytania źródłowego w usłudze Log Analytics.  
 - Kliknij pozycję **wyświetlić historię zakładki** aby zobaczyć wszystkie zakładki metadanych, w tym: kto wprowadził aktualizacji, zaktualizowanymi wartościami i czas wystąpiła aktualizacja. 
 

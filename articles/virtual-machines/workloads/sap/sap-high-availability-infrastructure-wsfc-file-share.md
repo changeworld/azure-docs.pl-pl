@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 58cd76e93b9d0888211e8339ae17170685e71e74
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e1c6b1d55a4fbc673980908a981a9a96c869bee9
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60637758"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409610"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>Przygotowywanie infrastruktury platformy Azure SAP wysokiej dostępności przy użyciu Windows trybu failover klastra i udział plików dla wystąpień SAP ASCS/SCS
 
@@ -36,6 +36,7 @@ ms.locfileid: "60637758"
 [arm-sofs-s2d-managed-disks]:https://github.com/robotechredmond/301-storage-spaces-direct-md
 [arm-sofs-s2d-non-managed-disks]:https://github.com/Azure/azure-quickstart-templates/tree/master/301-storage-spaces-direct
 [deploy-cloud-witness]:https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness
+[tuning-failover-cluster-network-thresholds]:https://techcommunity.microsoft.com/t5/Failover-Clustering/Tuning-Failover-Cluster-Network-Thresholds/ba-p/371834
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
@@ -209,7 +210,7 @@ ms.locfileid: "60637758"
 
 W tym artykule opisano kroki przygotowania infrastruktury platformy Azure, które są potrzebne, aby zainstalować i skonfigurować wysoką dostępność systemów SAP w klastrze systemu Windows Server Failover Clustering (WSFC), przy użyciu udziału plików skalowalnego w poziomie jako opcja do klastrowania SAP ASCS/SCS wystąpienia.
 
-## <a name="prerequisite"></a>Wymagania wstępne
+## <a name="prerequisite"></a>Wymaganie wstępne
 
 Przed rozpoczęciem instalacji, przejrzyj następujący artykuł:
 
@@ -341,6 +342,16 @@ Szablon usługi Azure Resource Manager do wdrażania serwera plików skalowalneg
 _**Rysunek 2**: Ekran interfejsu użytkownika dla szablonu Menedżera zasobów platformy Azure z serwera plików skalowalnego w poziomie, bez użycia dysków zarządzanych_
 
 W **typ konta magazynu** wybierz opcję **usługi Premium Storage**. Wszystkie inne ustawienia są takie same jak ustawienia dla dysków zarządzanych.
+
+## <a name="adjust-cluster-timeout-settings"></a>Dostosuj ustawienia limitu czasu klastra
+
+Po zainstalowaniu klastra serwera plików skalowalnego w poziomie Windows, należy dostosować progi limitu czasu dla trybu failover wykrywania warunków na platformie Azure. Parametry, które mają być zmienione są udokumentowane w artykule [dostrajania progów sieci klastra trybu failover][tuning-failover-cluster-network-thresholds]. Przy założeniu, że klastrowane maszyny wirtualne znajdują się w tej samej podsieci, Zmień te wartości następujących parametrów:
+
+- SameSubNetDelay = 2000
+- SameSubNetThreshold = 15
+- RoutingHistoryLength = 30
+
+Te ustawienia zostały przetestowane z klientami i oferuje dobry kompromis. Są one wystarczająco odporne, ale również zapewniają szybkie wystarczająco dużo pracy awaryjnej w warunków prawdziwy błąd lub awaria maszyny Wirtualnej.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

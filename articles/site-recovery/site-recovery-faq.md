@@ -8,16 +8,21 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/08/2019
 ms.author: raynew
-ms.openlocfilehash: 824782e54f2cd989f9ab13857d9b894b215fc550
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 74ccc76ff139cae21e3583b0fea11596f5fd6b62
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61278919"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65413925"
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Usługa Azure Site Recovery: często zadawane pytania (FAQ)
-Ten artykuł zawiera podsumowanie często zadawane pytania dotyczące usługi Azure Site Recovery. 
+Ten artykuł zawiera podsumowanie często zadawane pytania dotyczące usługi Azure Site Recovery.</br>
+Określone zapytań na różne usługi ASR scenariuszy można znaleźć w scenariuszu określonych — często zadawane pytania.<br>
 
+- [Odzyskiwanie po awarii maszyn wirtualnych platformy Azure do platformy Azure](azure-to-azure-common-questions.md)
+- [Odzyskiwanie po awarii maszyn wirtualnych programu VMware do platformy Azure](vmware-azure-common-questions.md)
+- [Odzyskiwanie po awarii maszyn wirtualnych funkcji Hyper-V do platformy Azure](hyper-v-azure-common-questions.md)
+ 
 ## <a name="general"></a>Ogólne
 
 ### <a name="what-does-site-recovery-do"></a>Do czego służy usługa Site Recovery?

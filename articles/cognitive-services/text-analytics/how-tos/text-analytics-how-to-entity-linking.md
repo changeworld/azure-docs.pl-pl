@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: aahi
-ms.openlocfilehash: c179620d6858658dface5f706f7994d51f1a199b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c8319dbcb8cebe51dae2a4d7e8d9749c3ab7674f
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60829722"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231424"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Jak używać o nazwie rozpoznawania jednostek w analizy tekstu
 
@@ -33,7 +33,7 @@ O nazwie rozpoznawanie jednostek (NER) to zdolność do identyfikacji różnych 
 
 W analizy tekstu [w wersji 2.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634), łączenie podmiotów i rozpoznawanie jednostek znaku (NER) są dostępne.
 
-### <a name="language-support"></a>Obsługa języków
+### <a name="language-support"></a>Obsługa języka
 
 Korzystanie z usługi entity linking w różnych językach wymaga, przy użyciu odpowiedniej wiedzy w każdym języku. W przypadku usługi entity linking w analizy tekstu, oznacza to każdy język, który jest obsługiwany przez `entities` punktu końcowego połączy się z odpowiedniego korpus Wikipedia, w tym języku. Ponieważ rozmiar korpusy różni się między językami oczekuje się, czy usługi entity linking odwołań w funkcji również będą się różnić.
 
@@ -41,7 +41,7 @@ Korzystanie z usługi entity linking w różnych językach wymaga, przy użyciu 
 
 | Type  | SubType | Przykład |
 |:-----------   |:------------- |:---------|
-| Person (Osoba)        | N/D\*         | "Jan", "Billa Gatesa"     |
+| Osoba        | N/D\*         | "Jan", "Billa Gatesa"     |
 | Lokalizacja      | N/D\*         | "Redmond w stanie Waszyngton", "Paryż"  |
 | Organizacja  | N/D\*         | "Microsoft"   |
 | Ilość      | Liczba        | "6", "6"     | 
@@ -58,12 +58,12 @@ Korzystanie z usługi entity linking w różnych językach wymaga, przy użyciu 
 | DateTime      | DateRange     | "Maja 2 do 5 maja."    | 
 | DateTime      | TimeRange     | "18: 00 – 19: 00"     | 
 | DateTime      | Czas trwania      | "1 minutę i 45 sekund"   | 
-| DateTime      | Set           | "każdy wtorek"     | 
+| DateTime      | Zestaw           | "każdy wtorek"     | 
 | DateTime      | Strefa czasowa      |    | 
 | Adres URL           | N/D\*         | "https:\//www.bing.com"    |
-| Email         | N/D\*         | „support@contoso.com” |
+| Poczta e-mail         | N/D\*         | "support@contoso.com" |
 
-\* W zależności od jednostki danych wejściowych i wyodrębnione może pominąć niektóre jednostki `SubType`.
+\* W zależności od jednostki danych wejściowych i wyodrębnione może pominąć niektóre jednostki `SubType`.  Wszystkie wymienione typy obsługiwane jednostki są dostępne tylko w przypadku angielski, chiński uproszczony, francuskim, niemieckim i hiszpańskim językach.
 
 
 
@@ -109,7 +109,7 @@ Analiza jest wykonywana po odebraniu żądania. Usługa akceptuje maksymalnie 10
 
 Pamiętaj, że usługa jest bezstanowa. Żadne dane nie są przechowywane na koncie. Wyniki są zwracane natychmiast w odpowiedzi.
 
-## <a name="step-3-view-results"></a>Krok 3. Wyświetlanie wyników
+## <a name="step-3-view-results"></a>Krok 3. Wyświetl wyniki
 
 Wszystkie żądania POST zwracają odpowiedź w formacie JSON z identyfikatorami i wykrytymi właściwościami.
 

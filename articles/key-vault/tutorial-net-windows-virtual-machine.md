@@ -2,19 +2,19 @@
 title: Samouczek — Użyj usługi Azure Key Vault z maszyną wirtualną Windows na platformie .NET | Dokumentacja firmy Microsoft
 description: W tym samouczku skonfigurujesz aplikacji platformy ASP.NET core w celu odczytu wpisu tajnego z magazynu kluczy.
 services: key-vault
-author: mbaldwin
+author: msmbaldwin
 manager: rajvijan
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: 7fdd2f1832995d279f58af52f96270f7aa3bb5a6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c88977f465de6d9b89bd2d9c4cf67402fe6f563f
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64686155"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65228154"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-net"></a>Samouczek: Użyj usługi Azure Key Vault z maszyną wirtualną Windows na platformie .NET
 
@@ -101,7 +101,7 @@ az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --va
 
 Ten wpis tajny zawiera wartość **MySecret**.
 
-## <a name="create-a-virtual-machine"></a>Tworzenie maszyny wirtualnej
+## <a name="create-a-virtual-machine"></a>Utwórz maszynę wirtualną
 Można utworzyć maszynę wirtualną przy użyciu jednej z następujących metod:
 
 * [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-cli)

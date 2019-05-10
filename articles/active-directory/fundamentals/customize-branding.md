@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fb657d2c2cd4eeae0eb96dd37505a1c47278725
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 277e7663c978e64ee1440e14583e884b768b3139
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60247889"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65441641"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Dodawanie znakowania na stronie logowania w usłudze Azure Active Directory w organizacji
 Zapewnienie spójnego wyglądu i działania na stronach logowania w usłudze Azure Active Directory (Azure AD), należy użyć logo organizacji i niestandardowych schematów kolorów. Strony logowania są wyświetlane, gdy użytkownicy logują się do Twojej organizacji opartej na sieci web aplikacji, takich jak Office 365, która używa usługi Azure AD jako dostawcy tożsamości.
@@ -70,7 +70,7 @@ Niestandardowe znakowanie natychmiast pojawiać się w przypadku użytkowników,
 
         - **Kolor tła strony logowania.** Określanie koloru w formacie szesnastkowym (na przykład białe jest #FFFFFF) wyświetlanego zamiast obrazu tła w sytuacjach połączenia o niskiej przepustowości. Zalecamy używanie podstawowego koloru baneru logo lub koloru organizacji.
 
-        - **Obraz kwadratowego logo.** Wybierz PNG (preferowany) lub jpg obraz logo organizacji, aby były widoczne dla użytkowników podczas procesu instalacji dla nowych urządzeń systemu Windows 10 Enterprise. Ten obraz jest używana tylko na potrzeby uwierzytelniania Windows i pojawia się tylko w przypadku dzierżaw korzystających z [rozwiązania Windows Autopilot]( https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) wdrażania lub podczas wprowadzania hasła napotyka stron w innym systemie Windows 10.
+        - **Obraz kwadratowego logo.** Wybierz PNG (preferowany) lub jpg obraz logo organizacji, aby były widoczne dla użytkowników podczas procesu instalacji dla nowych urządzeń systemu Windows 10 Enterprise. Ten obraz jest używana tylko na potrzeby uwierzytelniania Windows i pojawia się tylko w przypadku dzierżaw korzystających z [rozwiązania Windows Autopilot]( https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) wdrażania lub podczas wprowadzania hasła napotyka stron w innym systemie Windows 10. W niektórych przypadkach go może również zostać wyświetlony w oknie dialogowym wyrażania zgody.
         
             Obraz nie może być większa niż 240 x 240 pikseli i musi mieć plik o rozmiarze poniżej 10 KB. Zalecamy używanie przezroczystego obrazu, ponieważ w tle mogą być niezgodne z tła logo. Zalecamy również rezygnację z dodawania wypełnienia wokół obrazu lub może być Szukaj małe logo.
     

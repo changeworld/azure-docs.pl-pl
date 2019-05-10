@@ -6,15 +6,15 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 04/23/2019
+ms.date: 05/06/2019
 ms.author: anshan
 ms.custom: seodec18
-ms.openlocfilehash: a91afdbeaa2ced37b237b4f2b80a8dbbe2c4a05c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8cb1d06872f7eae04bac934220da9d58982d0f4b
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64717225"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233741"
 ---
 # <a name="tutorial-explore-the-azure-time-series-insights-javascript-client-library"></a>Samouczek: Poznawanie biblioteki klienta języka JavaScript dla usługi Azure Time Series Insights
 
@@ -32,8 +32,9 @@ W szczególności poznasz:
 > [!NOTE]
 > * W tym samouczku użyto bezpłatnej, hostowaną [pokaz sieci web usługi Time Series Insights](https://insights.timeseries.azure.com/clientsample).
 > * Pliki źródłowe aplikacji przykładowej usługi Time Series Insights znajdują się w [repozytorium przykładów GitHub](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial).
+> * Odczyt [TSI klienta dokumentacja](https://github.com/microsoft/tsiclient/blob/master/docs/API.md).
 
-## <a name="video"></a>Połączenia wideo
+## <a name="video"></a>Wideo
 
 ### <a name="in-this-video-we-introduce-the-open-source-time-series-insights-javascript-sdkbr"></a>W tym filmie przedstawiamy zestaw SDK JavaScript typu „open source” dla usługi Time Series Insights.</br>
 
@@ -60,8 +61,6 @@ W tym samouczku bezpłatnej, hostowaną aplikację przykładową usługi Time Se
    [![Strona główna przykładowej usługi TSI klienta po zalogowaniu](media/tutorial-explore-js-client-lib/tcs-main-after-signin.png)](media/tutorial-explore-js-client-lib/tcs-main-after-signin.png#lightbox)
 
 ### <a name="page-source-and-structure"></a>Źródło i struktura strony
-
-<div id="page-source-and-structure"></div>
 
 Po pierwsze, teraz wyświetlić [kod źródłowy w kodzie HTML i JavaScript](https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/index.html) sieci Web renderowanych stronicowanej:
 
@@ -119,6 +118,9 @@ Za pomocą tych definiowaniu deweloperzy mogą tworzyć składniki programu grap
 
    [!code-javascript[head-sample](~/samples-javascript/pages/tutorial/index.html?range=147-204&highlight=3-7,34-37)]
 
+> [!TIP]
+> Aby dowiedzieć się więcej na temat obsługiwanych przez Microsoft biblioteki ADAL, zobacz [ADAL dokumentacja](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries#microsoft-supported-client-libraries).
+
 ### <a name="control-identification"></a>Identyfikacja kontrolki
 
 W podanym przykładzie `<div>` elementy są uporządkowane w obiekcie nadrzędnym `<body>` elementu, aby zapewnić rozsądne układu dla wszystkich kontrolek wykresu renderowane na stronie.
@@ -163,7 +165,7 @@ Podczas wypełniania i renderowanie kontrolek wykresu jest zgodna ze wzorcem og�
    | `splitByObject`   | Właściwość określająca ciąg znaków, którego chcesz użyć do podziału (opcjonalna — może mieć wartość null). | `{property: 'Station', type: 'String'}` |
    | `color`         | Kolor obiektów, który chcesz zastosować podczas renderowania. | `'pink'` |
    | `alias`           | Przyjazna nazwa wyrażenia agregującego. | `'Factory3Temperature'` |
-   | `contextMenuActions` | Tablica akcji, która ma być powiązana z obiektami szeregów czasowych w wizualizacji (opcjonalnie). | Aby uzyskać więcej informacji, zobacz sekcję [menu kontekstowe wyskakujących](#contextMenu) |
+   | `contextMenuActions` | Tablica akcji, która ma być powiązana z obiektami szeregów czasowych w wizualizacji (opcjonalnie). | Aby uzyskać więcej informacji, zobacz sekcję [menu kontekstowe wyskakujących](#pop-up-context-menus) |
 
 1. Wywołaj zapytanie usługi TSI przy użyciu interfejsów API `TsiClient.Server`, aby zażądać dostępu do zagregowanych danych:
 
@@ -255,8 +257,6 @@ Do wskazywania incydentów używane są znaczniki w postaci rombu lub wyskakują
 
 ### <a name="pop-up-context-menus"></a>Wyskakujące menu kontekstowe
 
-<div id="contextMenu"></div>
-
 Inny zaawansowanych funkcji jest możliwość tworzenia niestandardowego menu kontekstowego (menu podręcznym kliknij prawym przyciskiem myszy). Niestandardowe menu kontekstowe są przydatne w przypadku włączania akcji i kolejnych logicznych kroków, znajdujących się w zakresie aplikacji.
 
 Poszukaj kodu `// Example 13/14/15` komentarz. Ten kod renderuje początkowo wykres liniowy pod tytułem `"Line Chart with Context Menu to Create Pie/Bar Chart"` a wykresu jest powiązany z `<div>` element z kodem HTML `id` wartość `chart13`.
@@ -321,3 +321,8 @@ Lub Wyświetl pliki źródłowe TSI przykładowej aplikacji:
 
 > [!div class="nextstepaction"]
 > [Usługa TSI Przesyła przykładowe repozytorium aplikacji](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial)
+
+Przeczytaj dokumentację referencyjną interfejsu API klienta usługi TSI:
+
+> [!div class="nextstepaction"]
+> [Dokumentacja interfejsu API usługi TSI](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)
