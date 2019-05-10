@@ -12,18 +12,18 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/23/2019
+ms.date: 04/24/2019
 ms.author: pepogors
-ms.openlocfilehash: a0174a5442de7a10e45e9dc2a2f43f5f401d1a69
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 051d6b1129724ce4e8a67bde4e56ebe61cd832f3
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60803174"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231372"
 ---
 # <a name="azure-service-fabric-application-and-cluster-best-practices"></a>Najważniejsze wskazówki dotyczące platformy Azure aplikacji usługi Service Fabric i klastra
 
-Aby zarządzać aplikacjami usługi Azure Service Fabric i klastrami pomyślnie, pewne operacje, zdecydowanie zalecamy wykonać, aby zoptymalizować niezawodności w środowisku produkcyjnym; można wykonywać operacje zdefiniowane w tym dokumencie i wybierz jedną z naszych [klastra Azure przykłady usługi Service Fabric szablony](https://github.com/Azure-Samples/service-fabric-cluster-templates) rozpocząć projektowanie rozwiązania do produkcji lub zmodyfikować istniejący szablon, aby zawierały te praktyki.
+Aby zarządzać aplikacjami usługi Azure Service Fabric i klastrami pomyślnie, pewne operacje, zdecydowanie zalecamy należy wykonać, aby zoptymalizować niezawodności w środowisku produkcyjnym; można wykonywać operacje zdefiniowane w tym dokumencie i wybierz jedną z naszych [klastra Azure przykłady usługi Service Fabric szablony](https://github.com/Azure-Samples/service-fabric-cluster-templates) rozpocząć projektowanie rozwiązania do produkcji lub zmodyfikować istniejący szablon, aby zawierały te praktyki.
 
 ## <a name="security"></a>Bezpieczeństwo 
 
@@ -45,6 +45,10 @@ Aby zarządzać aplikacjami usługi Azure Service Fabric i klastrami pomyślnie,
 ## <a name="monitoring-and-diagnostics"></a>Monitorowanie i diagnostyka
 
 * [Najlepsze rozwiązania dotyczące klastra, monitorowania i diagnostyki](service-fabric-best-practices-monitoring.md)
+
+## <a name="application-design"></a>Projekt aplikacji
+
+* [Najlepsze rozwiązania dotyczące projektowania aplikacji](service-fabric-best-practices-applications.md)
 
 ## <a name="checklist"></a>Lista kontrolna
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 03/04/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 4fe859b1343e2aea71bd41a3b7742a29bbff389f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: aea6f58c74d6e50e7936b949620912f3f587f004
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60464223"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205865"
 ---
 # <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>Szybki start: tworzenie i wdrażanie szablonów usługi Azure Resource Manager przy użyciu witryny Azure Portal
 
@@ -32,7 +32,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 ## <a name="generate-a-template-using-the-portal"></a>Generowanie szablonu przy użyciu witryny Azure Portal
 
-Tworzenie szablonu usługi Resource Manager od podstaw nie jest łatwym zadaniem, zwłaszcza gdy dopiero zaczynasz korzystać z wdrażania na platformie Azure i nie znasz dobrze formatu JSON. W witrynie Azure Portal możesz skonfigurować zasób, na przykład konto usługi Azure Storage. Przed przystąpieniem do wdrażania zasobu możesz wyeksportować konfigurację do szablonu usługi Resource Manager. Szablon możesz zapisać i użyć go ponownie w przyszłości.
+Tworzenie szablonu usługi Resource Manager od podstaw nie jest łatwym zadaniem, szczególnie, jeśli dopiero zaczynasz korzystać z wdrażania na platformie Azure, a użytkownik nie jest zaznajomiony z formatu JSON. W witrynie Azure Portal możesz skonfigurować zasób, na przykład konto usługi Azure Storage. Przed przystąpieniem do wdrażania zasobu możesz wyeksportować konfigurację do szablonu usługi Resource Manager. Szablon możesz zapisać i użyć go ponownie w przyszłości.
 
 Wielu programistów doświadczonym szablonu umożliwia generowanie szablonów, gdy użytkownik próbuje Wdrażaj zasoby platformy Azure, które nie są zaznajomieni z tej metody. Aby uzyskać więcej informacji na temat eksportowania szablonów przy użyciu portalu, zobacz [eksportowanie grupy zasobów do szablonów](./manage-resource-groups-portal.md#export-resource-groups-to-templates). Inny sposób, aby znaleźć szablonu pracy pochodzi z [szablony szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/).
 

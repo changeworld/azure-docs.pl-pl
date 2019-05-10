@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 083ed7209efd88d3d221b55cfb53fe3998dd2987
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b594dc6eadce5093c58d693492f8e86eb92ae4e3
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64703284"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65228006"
 ---
 # <a name="enable-age-gating-in-azure-active-directory-b2c"></a>Włącz wieku w usłudze Azure Active Directory B2C
 
@@ -25,14 +25,14 @@ ms.locfileid: "64703284"
 
 Wieku w usłudze Azure Active Directory (Azure AD) B2C umożliwia identyfikację osoby nieletnie, które chcą korzystać z aplikacji. Można zablokować drobnych zalogowanie się do aplikacji. Użytkownikom można wrócić do aplikacji i zidentyfikować ich grupa wiekowa i ich stan uzyskuje zgodę rodzica. Usługa Azure AD B2C można zablokować nieletnim bez zgody rodzica. Usługa Azure AD B2C można też skonfigurować aby umożliwić aplikacji zdecyduj, co należy zrobić nieletnim.
 
-Po włączeniu wieku w swojej [przepływ użytkownika](active-directory-b2c-reference-policies.md), użytkownicy zostaną poproszeni o, kiedy zostały stworzone i jakie kraju zamieszkania. Jeśli użytkownik loguje się, że nie zostało podane wcześniej informacje, muszą wprowadzić ją przy następnym logowaniu. Reguły są stosowane za każdym razem, gdy użytkownik loguje się.
+Po włączeniu wieku w swojej [przepływ użytkownika](active-directory-b2c-reference-policies.md), użytkownicy zostaną poproszeni o po ich urodzenia i kraju/regionu znajdować się w. Jeśli użytkownik loguje się, że nie zostało podane wcześniej informacje, muszą wprowadzić ją przy następnym logowaniu. Reguły są stosowane za każdym razem, gdy użytkownik loguje się.
 
 Usługa Azure AD B2C używa tych informacji, wprowadzonych przez użytkownika, aby ustalić, czy są one pomocnicze. **Grupy wiekowej** pola jest następnie aktualizowany na jego koncie. Wartość może być `null`, `Undefined`, `Minor`, `Adult`, i `NotAdult`.  **Grupy wiekowej** i **consentProvidedForMinor** pola są następnie używane do obliczania wartości **legalAgeGroupClassification**.
 
 Wieku obejmuje dwie wartości wieku: wiek, że ktoś nie jest już uznawany za WERSJA_POMOCNICZA i wiek, jaką pomocnicza musi mieć uzyskuje zgodę rodzica. Poniższa lista zawiera reguły wiek, które służą do definiowania WERSJA_POMOCNICZA i pomocnicza, wymagające zgody.
 
-| Kraj | Nazwa kraju | Wiek pomocnicza zgody | Wiek pomocnicza |
-| ------- | ------------ | ----------------- | --------- |
+| Kraj/region | Nazwa kraju/regionu | Wiek pomocnicza zgody | Wiek pomocnicza |
+| -------------- | ------------------- | ----------------- | --------- |
 | Domyślne | Brak | Brak | 18 |
 | AE | Zjednoczone Emiraty Arabskie | Brak | 21 |
 | AT | Austria | 14 | 18 |
@@ -53,7 +53,7 @@ Wieku obejmuje dwie wartości wieku: wiek, że ktoś nie jest już uznawany za W
 | HR | Chorwacja | 16 | 18 |
 | HU | Węgry | 16 | 18 |
 | IE | Irlandia | 13 | 18 |
-| IT | Włochy | 16 | 18 |
+| it | Włochy | 16 | 18 |
 | KR | Korea Południowa | 14 | 18 |
 | LT | Litwa | 16 | 18 |
 | LU | Luksemburg | 16 | 18 |
@@ -71,7 +71,7 @@ Wieku obejmuje dwie wartości wieku: wiek, że ktoś nie jest już uznawany za W
 | TD | Czad | Brak | 21 |
 | TH | Tajlandia | Brak | 20 |
 | TW | Tajwan | Brak | 20 | 
-| USA | Stany Zjednoczone | 13 | 18 |
+| USA | Stany Zjednoczone Ameryki | 13 | 18 |
 
 ## <a name="age-gating-options"></a>Opcje kontroli wieku
  

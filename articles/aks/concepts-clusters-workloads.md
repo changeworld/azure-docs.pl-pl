@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: bababa723e70cdc5268fb04f1104cca9e254984d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: faac0f02d1a1b8927fa0c651f44f8b120a583d9a
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60467463"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230147"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Kubernetes podstawowe pojęcia dotyczące usługi Azure Kubernetes Service (AKS)
 
@@ -20,7 +20,7 @@ Przemieszcza się tworzenia aplikacji na podejście oparte na kontenerach, ważn
 
 W tym artykule przedstawiono podstawowe składniki infrastruktury usługi Kubernetes *klastra głównego*, *węzłów*, i *pule węzłów*. Obciążenie zasobów, takich jak *zasobników*, *wdrożeń*, i *ustawia* również zostaną wprowadzone wraz z jak grupy zasobów do *przestrzenie nazw*.
 
-## <a name="what-is-kubernetes"></a>Co to jest rozwiązanie Kubernetes?
+## <a name="what-is-kubernetes"></a>Co to jest Kubernetes?
 
 Kubernetes to szybko zmieniających sie platforma, która zarządza aplikacjami opartymi na kontenerach i ich skojarzone składniki sieci i magazynu. Koncentruje się na obciążeń aplikacji, a nie podstawowych składników infrastruktury. Usługa Kubernetes zapewnia deklaratywne podejście do wdrożenia, wspierane przez niezawodny zestaw interfejsów API dla operacji zarządzania.
 
@@ -99,9 +99,11 @@ Najlepsze rozwiązania dotyczące skojarzone, zobacz [najlepsze rozwiązania dot
 
 ### <a name="node-pools"></a>Pule węzłów
 
-Węzły o tej samej konfiguracji są grupowane w *pule węzłów*. Klaster usługi Kubernetes zawiera co najmniej jedną pulę węzłów. Początkowa liczba węzłów i rozmiar zdefiniowanych podczas tworzenia klastra usługi AKS, która tworzy *domyślnej puli węzeł*. Ta pula węzłów domyślną w usłudze AKS zawiera podstawowych maszyn wirtualnych, systemem węzły agenta.
+Węzły o tej samej konfiguracji są grupowane w *pule węzłów*. Klaster usługi Kubernetes zawiera co najmniej jedną pulę węzłów. Początkowa liczba węzłów i rozmiar zdefiniowanych podczas tworzenia klastra usługi AKS, która tworzy *domyślnej puli węzeł*. Ta pula węzłów domyślną w usłudze AKS zawiera podstawowych maszyn wirtualnych, systemem węzły agenta. Obsługa wielu puli węzeł jest obecnie w wersji zapoznawczej w usłudze AKS.
 
-Podczas uaktualniania klastra usługi AKS lub skalować wykonywania akcji względem domyślnej puli węzeł. Dla operacji uaktualniania uruchomione kontenery są planowane w innych węzłach w puli węzeł, do momentu uaktualnienia wszystkich węzłów pomyślnie.
+Podczas uaktualniania klastra usługi AKS lub skalować wykonywania akcji względem domyślnej puli węzeł. Istnieje również możliwość skalowania lub Uaktualnij puli określonego węzła. Dla operacji uaktualniania uruchomione kontenery są planowane w innych węzłach w puli węzeł, do momentu uaktualnienia wszystkich węzłów pomyślnie.
+
+Aby uzyskać więcej informacji na temat używania wielu pul węzłów w usłudze AKS, zobacz [tworzenie wielu pul węzłów klastra w usłudze AKS i zarządzanie nimi][use-multiple-node-pools].
 
 ## <a name="pods"></a>Zasobników
 
@@ -245,3 +247,4 @@ W tym artykule omówiono niektóre z podstawowych składników platformy Kuberne
 [aks-helm]: kubernetes-helm.md
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
 [operator-best-practices-scheduler]: operator-best-practices-scheduler.md
+[use-multiple-node-pools]: use-multiple-node-pools.md

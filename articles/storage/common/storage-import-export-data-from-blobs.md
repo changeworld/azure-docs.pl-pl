@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: fc02e830953f8612a077fb219c7fef4e86bc3827
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e542ad59f6fd64b52aef9438ed0f646e9e36fc4a
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61479292"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65209623"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Usługa Azure Import/Export umożliwia eksportowanie danych z usługi Azure Blob storage
 Ten artykuł zawiera instrukcje krok po kroku dotyczące sposobu używania usługi Azure Import/Export bezpiecznie eksportowania dużych ilości danych z usługi Azure Blob storage. Usługa wymaga dostarczaj puste dyski w centrach danych platformy Azure. Usługa eksportuje dane z konta magazynu na dyski i następnie jest dostarczany z stacje ponownie.
@@ -55,7 +55,7 @@ Wykonaj poniższe kroki, aby utworzyć zadanie eksportu w witrynie Azure portal.
     - Wybierz subskrypcję.
     - Wprowadź lub wybierz grupę zasobów.
 
-        ![Podstawy](./media/storage-import-export-data-from-blobs/export-from-blob3.png) 
+        ![Ustawienia podstawowe](./media/storage-import-export-data-from-blobs/export-from-blob3.png) 
     
 3. W **szczegóły zadania**:
 
@@ -83,7 +83,7 @@ Wykonaj poniższe kroki, aby utworzyć zadanie eksportu w witrynie Azure portal.
 4. W **zwracają informacje o wysyłce**:
 
     - Wybierz nośnik, z listy rozwijanej. Jeśli chcesz użyć operatora innego niż FedEx/DHL w sprawie, wybierz opcję istniejący, z listy rozwijanej. Skontaktuj się z pomocą operacje pole danych platformy Azure zespołu w `adbops@microsoft.com` informacji na temat operatora planujesz używać.
-    - Wprowadź numer konta operatora prawidłowe, utworzony za pomocą tego operatora. Firma Microsoft używa tego konta do wysłania dysków do Ciebie, po zakończeniu zadania importu. 
+    - Wprowadź numer konta operatora prawidłowe, utworzony za pomocą tego operatora. Firma Microsoft używa tego konta do wysłania dysków do Ciebie, po zakończeniu zadania eksportu. 
     - Podaj kompletne i prawidłowe nazwisko osoby kontaktowej, telefonicznej, wiadomości e-mail, adres, Miasto, zip, stan/prowincję/Województwo i kraj/region.
 
         > [!TIP] 

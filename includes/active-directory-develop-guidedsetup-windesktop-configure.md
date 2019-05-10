@@ -14,14 +14,14 @@ ms.workload: identity
 ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 5eaee4f932c4e42f6fed3d839314346b3a93f360
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c4dc3d422e18d9ee41bf16ac3e6f22c3d7e466d7
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60297693"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65199336"
 ---
-## <a name="register-your-application"></a>Rejestrowanie aplikacji
+## <a name="register-your-application"></a>Zarejestruj swoją aplikację
 
 Aplikację można zarejestrować na dwa sposoby.
 
@@ -43,7 +43,9 @@ Aby zarejestrować aplikację i dodać informacje na temat rejestracji aplikacji
    - W sekcji **Obsługiwane typy kont** wybierz pozycję **Konta w dowolnym katalogu organizacyjnym i konta osobiste Microsoft (na przykład Skype, Xbox, Outlook.com)**.
    - Wybierz pozycję **Zarejestruj**, aby utworzyć aplikację.
 1. Na liście stron dla aplikacji wybierz pozycję **Uwierzytelnianie**.
-1. W sekcji **Identyfikatory URI przekierowania** znajdź sekcję **Sugerowane identyfikatory URI przekierowania dla klientów publicznych (urządzenia przenośne, komputery)**, a następnie wybierz pozycję **"urn: ietf:wg:oauth:2.0:oob**.
+   1. W **identyfikatory URI przekierowań** sekcji na liście identyfikatory URI przekierowań:
+   1. W **typu** wybierz kolumny **klientem publicznym (mobilnych i klasycznych)**.
+   1. Wprowadź `urn:ietf:wg:oauth:2.0:oob` w **identyfikator URI PRZEKIEROWANIA** kolumny.
 1. Wybierz pozycję **Zapisz**.
 1. Przejdź do programu Visual Studio, otwórz *App.xaml.cs* pliku, a następnie zastąp `Enter_the_Application_Id_here` identyfikatorem aplikacji, który właśnie zarejestrowany i skopiować.
 

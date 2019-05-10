@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7287616dbad1aa77a6e4aaa110ade39dcea4f195
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cb48d37e1cf552f9ad375906d8cd05301ac2dd0c
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60470059"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65407863"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Usługi Active Directory w wersji 2 poleceń cmdlet platformy Azure do zarządzania grupami
 
@@ -233,13 +233,13 @@ Aby dodać właścicieli do grupy, użyj polecenia cmdlet Add-AzureADGroupOwner:
 
     PS C:\Windows\system32> Add-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -RefObjectId 72cd4bbd-2594-40a2-935c-016f3cfeeeea
 
-Parametr — identyfikator obiektu jest identyfikator obiektu grupy, do której chcemy dodać właściciela, a RefObjectId — jest identyfikator obiektu użytkownika, którego chcesz dodać jako właściciela grupy.
+Parametr — identyfikator obiektu jest identyfikator obiektu grupy, do której chcemy dodać właściciela, a RefObjectId — jest identyfikator obiektu użytkownika lub jednostki, chcemy dodać jako właściciela grupy usługi.
 
 Aby pobrać właścicieli grupy, użyj polecenia cmdlet Get-AzureADGroupOwner:
 
     PS C:\Windows\system32> Get-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df
 
-Polecenie cmdlet zwraca listę wszystkich właścicieli dla określonej grupy:
+Polecenie cmdlet zwraca listę wszystkich właścicieli (użytkowników i jednostki usługi) dla określonej grupy:
 
     DeletionTimeStamp ObjectId                             ObjectType
     ----------------- --------                             ----------
@@ -260,7 +260,7 @@ Po utworzeniu grupy pewność, że punkty końcowe umożliwiają użytkownikom k
 * Postmaster 
 * root 
 * Zabezpieczanie 
-* security 
+* zabezpieczenia 
 * ssl-admin 
 * webmastera 
 

@@ -1,41 +1,41 @@
 ---
-title: Usługa transkrypcji konwersacji — usługi mowy
+title: Transkrypcja konwersacji — usługi mowy
 titleSuffix: Azure Cognitive Services
-description: Usługa transkrypcji konwersacji jest zaawansowaną funkcją usług przetwarzania mowy, łączącą rozpoznawanie mowy w czasie rzeczywistym, identyfikacja osoby mówiącej i diarization. Usługa transkrypcji konwersacji to idealne rozwiązanie dla przepisywania spotkań w osoby z możliwością odróżnić prelegentów, usługa powiadomi Cię o tym, kto powiedział, co i kiedy, umożliwiając uczestników, aby skoncentrować się na spotkanie i szybko wykonać kolejne czynności dotyczącymi kolejnych kroków. Ta funkcja także usprawnia ułatwień dostępu. Przy użyciu transkrypcji mogą aktywnie angażować uczestników z wadą słuchu.
+description: Transkrypcja konwersacji jest zaawansowaną funkcją usług przetwarzania mowy, łączącą rozpoznawanie mowy w czasie rzeczywistym, identyfikacja osoby mówiącej i diarization. Transkrypcja konwersacji to idealne rozwiązanie dla przepisywania spotkań w osoby z możliwością odróżnić prelegentów, usługa powiadomi Cię o tym, kto powiedział, co i kiedy, umożliwiając uczestników, aby skoncentrować się na spotkanie i szybko wykonać kolejne czynności dotyczącymi kolejnych kroków. Ta funkcja także usprawnia ułatwień dostępu. Przy użyciu transkrypcji mogą aktywnie angażować uczestników z wadą słuchu.
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 05/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 2c3269a9e57c0392e152fedfb640b9fae91a4989
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: eebe3ed15d21b08b208667a571bd59eac98a674d
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025937"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190277"
 ---
-# <a name="what-is-the-conversation-transcription-service"></a>Co to jest usługa transkrypcji konwersacji?
+# <a name="what-is-conversation-transcription"></a>Co to jest transkrypcji konwersacji?
 
-Usługa transkrypcji konwersacji jest zaawansowaną funkcją usług przetwarzania mowy, łączącą rozpoznawanie mowy w czasie rzeczywistym, identyfikacja osoby mówiącej i diarization. Usługa transkrypcji konwersacji to idealne rozwiązanie dla przepisywania spotkań w osoby z możliwością odróżnić prelegentów, usługa powiadomi Cię o tym, kto powiedział, co i kiedy, umożliwiając uczestników, aby skoncentrować się na spotkanie i szybko wykonać kolejne czynności dotyczącymi kolejnych kroków. Ta funkcja także usprawnia ułatwień dostępu. Przy użyciu transkrypcji mogą aktywnie angażować uczestników z wadą słuchu.   
+Transkrypcja konwersacji jest zaawansowaną funkcją usług przetwarzania mowy, łączącą rozpoznawanie mowy w czasie rzeczywistym, identyfikacja osoby mówiącej i diarization. Transkrypcja konwersacji to idealne rozwiązanie dla przepisywania spotkań w osoby z możliwością odróżnić prelegentów, usługa powiadomi Cię o tym, kto powiedział, co i kiedy, umożliwiając uczestników, aby skoncentrować się na spotkanie i szybko wykonać kolejne czynności dotyczącymi kolejnych kroków. Ta funkcja także usprawnia ułatwień dostępu. Przy użyciu transkrypcji mogą aktywnie angażować uczestników z wadą słuchu.   
 
-Usługa transkrypcji konwersacji dostarcza dokładne uznanie z modelami mowy z możliwością, które można dostosować, aby zrozumieć branży i słownictwa specyficzny dla firmy. Ponadto może być sparowane usługi transkrypcji konwersacji z zestawu Speech Devices SDK, aby poprawić komfort mikrofon wielu urządzeń.
+Transkrypcja konwersacji zapewnia dokładny uznanie z modelami mowy z możliwością, które można dostosować, aby zrozumieć branży i słownictwa specyficzny dla firmy. Ponadto może być sparowane transkrypcji konwersacji za pomocą zestawu Speech Devices SDK, aby poprawić komfort mikrofon wielu urządzeń.
 
 >[!NOTE]
-> Obecnie w przypadku małych spotkań zalecana jest usługa transkrypcji konwersacji. Jeśli chcesz rozszerzyć usługę transkrypcji konwersacji dla dużych spotkań na dużą skalę, skontaktuj się z nami.
+> Obecnie transkrypcji konwersacji jest zalecane w przypadku małych spotkań. Jeśli chcesz rozszerzyć transkrypcji konwersacji dla dużych spotkań na dużą skalę, skontaktuj się z nami.
 
-Ten diagram przedstawia sprzętu, oprogramowania i usług, które działają w połączeniu z usługą transkrypcji konwersacji.
+Ten diagram przedstawia sprzętu, oprogramowania i usług, które współpracuje z konwersacji transkrypcji.
 
-![Diagram usługi transkrypcji konwersacji importu](media/scenarios/conversation-transcription-service.png)
+![Diagram transkrypcji konwersacji importu](media/scenarios/conversation-transcription-service.png)
 
 >[!IMPORTANT]
 > Cykliczne tablicę siedmiu mikrofon przy użyciu geometrii określonej konfiguracji jest wymagana. Specyfikacja i projektowania szczegółowe informacje, zobacz [mikrofon zestawu SDK urządzenia mowy Microsoft](https://aka.ms/cts/microphone). Aby dowiedzieć się więcej, lub kupić zestaw deweloperski, zobacz [Pobierz Microsoft Speech zestawu SDK urządzenia](https://aka.ms/cts/getsdk).
 
 ## <a name="get-started-with-conversation-transcription"></a>Rozpoczynanie pracy z usługą transkrypcji konwersacji
 
-Istnieją trzy kroki, które należy wykonać, aby rozpocząć pracę z usługą transkrypcji konwersacji.
+Istnieją trzy kroki, które należy wykonać, aby rozpocząć pracę z konwersacji transkrypcji.
 
 1. Zbierz próbki głosu użytkowników.
 2. Generowanie profilów użytkowników przy użyciu próbki głosu użytkownika
@@ -54,19 +54,19 @@ Następnie konieczne będzie wysyłać nagrania audio zostały zebrane w usłudz
 Aby utworzyć profil użytkownika, musisz użyć `GenerateVoiceSignature` interfejsu API. Dostępne są szczegóły specyfikacji i przykładowy kod:
 
 > [!NOTE]
-> Usługa transkrypcji konwersacji jest obecnie dostępna w następujących regionach: `centralus` i `eastasia`.
+> Konwersacja transkrypcja jest obecnie dostępna w "en US" i "zh-CN" w następujących regionach: `centralus` i `eastasia`.
 
 * [Specyfikacja REST](https://aka.ms/cts/signaturegenservice)
-* [Jak używać usługi transkrypcji konwersacji](https://aka.ms/cts/howto)
+* [Jak używać transkrypcji konwersacji](https://aka.ms/cts/howto)
 
 ## <a name="transcribe-and-identify-speakers"></a>Transkrypcja i zidentyfikować prelegentów
 
-Usługa transkrypcji konwersacji oczekuje wielokanałowy strumieni audio i profilów użytkowników jako dane wejściowe do generowania transkrypcji i zidentyfikować głośników. Dźwięk i użytkownika dane profilu są wysyłane do usługi transkrypcji konwersacji, przy użyciu zestawu Speech Devices SDK. Jak wspomniano wcześniej cykliczne tablicę siedmiu mikrofon i zestawu Speech Devices SDK są wymagane do korzystania z usługi transkrypcji konwersacji.
+Transkrypcja konwersacji oczekuje wielokanałowy strumieni audio i profilów użytkowników jako dane wejściowe do generowania transkrypcji i zidentyfikować głośników. Dźwięk i użytkownika dane profilu są wysyłane do usługi rozmowy transkrypcji przy użyciu zestawu Speech Devices SDK. Jak wspomniano wcześniej cykliczne tablicę siedmiu mikrofon i zestawu Speech Devices SDK są wymagane do użycia transkrypcji konwersacji.
 
 >[!NOTE]
 > Specyfikacja i projektowania szczegółowe informacje, zobacz [mikrofon zestawu SDK urządzenia mowy Microsoft](https://aka.ms/cts/microphone). Aby dowiedzieć się więcej, lub kupić zestaw deweloperski, zobacz [Pobierz Microsoft Speech zestawu SDK urządzenia](https://aka.ms/cts/getsdk).
 
-Aby dowiedzieć się, jak używać usługi transkrypcji konwersacji z zestawu Speech Devices SDK, zobacz [jak używać usługi transkrypcji konwersacji](https://aka.ms/cts/howto).
+Aby dowiedzieć się, jak transkrypcji konwersacji za pomocą zestawu Speech Devices SDK, zobacz [sposób używania transkrypcji konwersacji](https://aka.ms/cts/howto).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

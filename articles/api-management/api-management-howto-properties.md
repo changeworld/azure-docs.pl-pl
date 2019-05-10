@@ -30,13 +30,13 @@ Każde wystąpienie usługi API Management ma kolekcji właściwości pary klucz
 | Nazwa wyświetlana |string |Ciąg alfanumeryczny używany jako odwołanie do właściwości w zasadach. |
 | Wartość |string |Wartość właściwości. Nie może być pusta ani składać się wyłącznie z białych znaków. |
 |Wpis tajny|wartość logiczna|Określa, czy wartość jest wpis tajny i powinien być zaszyfrowany, czy nie.|
-| Tagi |tablica ciągów |Opcjonalne — tagi, gdy zostanie podane, może służyć do filtrowania listy właściwości. |
+| `Tags` |tablica ciągów |Opcjonalne — tagi, gdy zostanie podane, może służyć do filtrowania listy właściwości. |
 
 ![Nazwane wartości](./media/api-management-howto-properties/named-values.png)
 
 Wartości właściwości mogą zawierać ciągi literałów i [wyrażenia zasad](/azure/api-management/api-management-policy-expressions). Na przykład, wartość `ExpressionProperty` to wyrażenie zasad, które zwraca ciąg zawierający bieżącej daty i godziny. Właściwość `ContosoHeaderValue` jest oznaczony jako klucz tajny, dzięki czemu jego wartość nie jest wyświetlana.
 
-| Name (Nazwa) | Wartość | Wpis tajny | Tagi |
+| Name (Nazwa) | Wartość | Wpis tajny | `Tags` |
 | --- | --- | --- | --- |
 | ContosoHeader |TrackingId |False |Contoso |
 | ContosoHeaderValue |•••••••••••••••••••••• |True |Contoso |

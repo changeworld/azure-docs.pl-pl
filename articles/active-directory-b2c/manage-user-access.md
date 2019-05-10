@@ -1,6 +1,6 @@
 ---
 title: Zarządzanie dostępem użytkowników w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak identyfikować osoby nieletnie, zbieraj daty urodzenia i kraju danych i uzyskać Akceptacja warunków użytkowania w aplikacji za pomocą usługi Azure AD B2C.
+description: Dowiedz się, jak identyfikować osoby nieletnie, zbieraj daty urodzenia i kraju/regionu danych i uzyskać Akceptacja warunków użytkowania w aplikacji za pomocą usługi Azure AD B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: celestedg
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: cddaf59a1202c9c19018427c06639686e905bb64
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 88123cc24359daaf1c6fc7e3ceeed8f77f717c9a
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64691102"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65228025"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Zarządzanie dostępem użytkowników w usłudze Azure Active Directory B2C
 
@@ -23,7 +23,7 @@ W tym artykule omówiono sposób zarządzanie dostępem użytkowników do aplika
 
 - Identyfikowanie osoby nieletnie i kontrola dostępu użytkownika do aplikacji.
 - Wymagające zgody rodziców nieletnim do użycia aplikacji.
-- Zbieranie danych urodzenia i kraju od użytkowników.
+- Zbieranie danych urodzenia i kraju/regionu od użytkowników.
 - Przechwytywanie Umowy warunki użytkowania i uzyskania dostępu bramowego.
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -58,11 +58,11 @@ Oto przykładowy przepływ użytkownika w celu zbierania zgody rodziców:
 
 Aby uzyskać więcej informacji na temat **legalAgeGroupClassification**, **consentProvidedForMinor**, i **grupy wiekowej**, zobacz [typ zasobu użytkownika](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user). Aby uzyskać więcej informacji na temat atrybutów niestandardowych, zobacz [Wykorzystaj niestandardowe atrybuty do zbierania informacji o użytkownikach](active-directory-b2c-reference-custom-attr.md). Po wykonaniu atrybuty rozszerzone przy użyciu interfejsu API programu Graph usługi Azure AD możesz korzystać tylko długiej atrybutu, takich jak *extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*: *2011-01-01T00:00:00Z*.
 
-## <a name="gather-date-of-birth-and-country-data"></a>Zbierz daty urodzenia i kraju danych
+## <a name="gather-date-of-birth-and-countryregion-data"></a>Zbierz daty urodzenia i kraju/regionu danych
 
-Aplikacje mogą polegać na usłudze Azure AD B2C na potrzeby zbierania daty urodzenia (podana data urodzenia) i informacje o kraju z wszystkich użytkowników podczas rejestracji. Jeśli te informacje nie istnieje, aplikacja mogą go żądać od użytkownika podczas następnego podróż uwierzytelnienia (logowania). Użytkownicy nie może kontynuować działania bez podawania ich podana data urodzenia i informacje o kraju. Usługa Azure AD B2C używa informacji w celu ustalenia, czy poszczególne jest uważany za zgodnie z normami tego kraju. 
+Aplikacje mogą polegać na usłudze Azure AD B2C na potrzeby zbierania daty urodzenia (podana data urodzenia) i kraj/region informacji z wszystkich użytkowników podczas rejestracji. Jeśli te informacje nie istnieje, aplikacja mogą go żądać od użytkownika podczas następnego podróż uwierzytelnienia (logowania). Użytkownicy nie można kontynuować bez podawania ich informacji podana data urodzenia i kraju/regionu. Usługa Azure AD B2C używa informacji w celu ustalenia, czy poszczególne jest uważany za zgodnie z przepisami standardy tego kraju/regionu. 
 
-Przepływ użytkownika można zbierać podana data urodzenia i informacje o kraju i używanie usługi Azure AD B2C oświadczeń przekształcenia, aby określić **grupy wiekowej** tak długo, jak wynik (lub podana data urodzenia i kraju informacje bezpośrednio) w katalogu.
+Przepływ użytkownika można zbierać podana data urodzenia i kraju/regionu informacji i użycie usługi Azure AD B2C oświadczeń przekształcenia, aby określić **grupy wiekowej** i utrzymują się wynik (lub bezpośrednio utrwalania informacji podana data urodzenia i kraju/regionu) w katalog.
 
 Poniższe kroki pokazują logikę, która jest używana do obliczania **grupy wiekowej** od daty urodzenia użytkownika:
 
@@ -78,7 +78,7 @@ Poniższe kroki pokazują logikę, która jest używana do obliczania **grupy wi
 
 4. Jeśli żadna obliczeń zwróci wartość true, zwraca obliczenia **treści dla dorosłych**.
 
-Jeśli aplikacja ma niezawodne zebrane podana data urodzenia lub kraj danych przy użyciu innych metod, aplikacja może używać interfejsu API programu Graph do zaktualizowania rekordu użytkownika z tymi informacjami. Na przykład:
+Jeśli aplikacja niezawodnie zebrał podana data urodzenia lub kraj/region danych przy użyciu innych metod, aplikacji może używać interfejsu API programu Graph do zaktualizowania rekordu użytkownika z tymi informacjami. Na przykład:
 
 - Jeśli użytkownik jest znany jako osoba dorosła, należy zaktualizować atrybutu katalogu **grupy wiekowej** o wartości **treści dla dorosłych**.
 - Jeśli użytkownik jest znany jako pomocnicza, należy zaktualizować atrybutu katalogu **grupy wiekowej** o wartości **pomocnicza** i ustaw **consentProvidedForMinor**, odpowiednio.

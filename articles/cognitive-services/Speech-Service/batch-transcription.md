@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 2/20/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 1a2d24be00b0e1224b5f8d52105e2969d64e5f64
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 2148d1bd79a858bec37e6c574c2a6b6e2009fe46
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64922476"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190410"
 ---
 # <a name="why-use-batch-transcription"></a>Dlaczego warto używać usługi Batch transkrypcji?
 
@@ -65,7 +65,7 @@ Parametry konfiguracji są dostarczane jako dane JSON:
 ```json
 {
   "recordingsUrl": "<URL to the Azure blob to transcribe>",
-  "models": ["<optional acoustic model ID>, <optional language model ID>"],
+  "models": [{"Id":"<optional acoustic model ID>"},{"Id":"<optional language model ID>"}],
   "locale": "<local to us, for example en-US>",
   "name": "<user define name of the transcription batch>",
   "description": "<optional description of the transcription>",
@@ -86,9 +86,9 @@ Parametry konfiguracji są dostarczane jako dane JSON:
 | Parametr | Opis | Wymagane / opcjonalne |
 |-----------|-------------|---------------------|
 | `ProfanityFilterMode` | Określa sposób obsługi wulgaryzmów w wyniki rozpoznawania. Akceptowane wartości to `none` która wyłącza filtrowanie wulgaryzmów `masked` gwiazdek, która zastępuje wulgaryzmów `removed` z wyników, które powoduje usunięcie wszystkich wulgaryzmów lub `tags` dodaje tagi "wulgaryzmów". Ustawieniem domyślnym jest `masked`. | Optional (Opcjonalność) |
-| `PunctuationMode` | Określa sposób obsługi znaków interpunkcyjnych w wyniki rozpoznawania. Akceptowane wartości to `none` która wyłącza znak interpunkcyjny, `dictated` co oznacza jawne znak interpunkcyjny, `automatic` umożliwiającą dekodera przeciwdziałania znak interpunkcyjny, lub `dictatedandautomatic` co oznacza definiowane znaków interpunkcyjnych lub automatyczny. | Optional (Opcjonalność) |
- | `AddWordLevelTimestamps` | Określa, jeśli sygnatury czasowe z poziomu programu word powinna być dodana do danych wyjściowych. Akceptowane wartości to `true` umożliwiająca sygnatury czasowe z poziomu programu word i `false` (wartość domyślna) można ją wyłączyć. | Optional (Opcjonalność) |
- | `AddSentiment` | Określa, że wskaźniki nastrojów klientów powinny zostać dodane do wypowiedź. Akceptowane wartości to `true` umożliwiająca tonacji na wypowiedź i `false` (wartość domyślna) można ją wyłączyć. | Optional (Opcjonalność) |
+| `PunctuationMode` | Określa sposób obsługi znaków interpunkcyjnych w wyniki rozpoznawania. Akceptowane wartości to `none` która wyłącza znak interpunkcyjny, `dictated` co oznacza jawne znak interpunkcyjny, `automatic` umożliwiającą dekodera przeciwdziałania znak interpunkcyjny, lub `dictatedandautomatic` co oznacza definiowane znaków interpunkcyjnych lub automatyczny. | Opcjonalne |
+ | `AddWordLevelTimestamps` | Określa, jeśli sygnatury czasowe z poziomu programu word powinna być dodana do danych wyjściowych. Akceptowane wartości to `true` umożliwiająca sygnatury czasowe z poziomu programu word i `false` (wartość domyślna) można ją wyłączyć. | Opcjonalne |
+ | `AddSentiment` | Określa, że wskaźniki nastrojów klientów powinny zostać dodane do wypowiedź. Akceptowane wartości to `true` umożliwiająca tonacji na wypowiedź i `false` (wartość domyślna) można ją wyłączyć. | Opcjonalne |
 
 ### <a name="storage"></a>Magazyn
 

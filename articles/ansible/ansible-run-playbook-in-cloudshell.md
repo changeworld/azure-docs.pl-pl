@@ -7,13 +7,13 @@ ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.date: 04/22/2019
-ms.openlocfilehash: a0d0544601bfc6ce0c7ef642f576ed780c8642ba
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 04/30/2019
+ms.openlocfilehash: 083d10de94c39ab134b8e475b66ebf2df30088bc
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64720221"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65407653"
 ---
 # <a name="quickstart-run-ansible-playbooks-via-bash-in-azure-cloud-shell"></a>Szybki start: Uruchom elementy playbook rozwiązania Ansible za pośrednictwem funkcji Bash w usłudze Azure Cloud Shell
 
@@ -21,7 +21,7 @@ Usługa Azure Cloud Shell jest powłoką interaktywne, dostępny w przeglądarce
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
+[!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 - **Konfigurowanie usługi Azure Cloud Shell** — Jeśli jesteś nowym użytkownikiem usługi Azure Cloud Shell, zobacz [Szybki Start dla programu Bash w usłudze Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart).
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -43,7 +43,7 @@ Przy użyciu swojego Identyfikatora subskrypcji platformy Azure, ustaw `AZURE_SU
 export AZURE_SUBSCRIPTION_ID=<your-subscription-id>
 ```
 
-## <a name="verify-the-configuration"></a>Sprawdzanie konfiguracji
+## <a name="verify-the-configuration"></a>Sprawdź, czy konfiguracja
 Aby sprawdzić, Konfiguracja zakończyła się pomyślnie, za pomocą rozwiązania Ansible, aby utworzyć grupę zasobów platformy Azure.
 
 [!INCLUDE [create-resource-group-with-ansible.md](../../includes/ansible-snippet-create-resource-group.md)]

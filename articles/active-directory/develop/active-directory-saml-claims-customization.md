@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6fe74852824c10d24729f785e5e33a17b793161
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b137b8cd4e3a2b7a308170904e9b3d09b11137f9
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60411334"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231349"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Instrukcje: Dostosowywanie oświadczeń wystawionych w tokenie SAML dla aplikacji dla przedsiębiorstw
 
@@ -75,11 +75,11 @@ Wybierz żądane źródło `NameIdentifier` (lub NameID) oświadczenia. Możesz 
 
 | Name (Nazwa) | Opis |
 |------|-------------|
-| Email | Adres e-mail użytkownika |
+| Poczta e-mail | Adres e-mail użytkownika |
 | userprincipalName | Główna nazwa użytkownika (UPN) użytkownika |
 | onpremisessamaccount | Nazwa konta SAM, który jest synchronizowany ze środowiska lokalnego usługi Azure AD |
 | Identyfikator obiektu | Identyfikator obiektu użytkownika w usłudze Azure AD |
-| employeeid | EmployeeID użytkownika |
+| EmployeeID | EmployeeID użytkownika |
 | Rozszerzenia katalogów | Rozszerzenia katalogów [synchronizowanych z lokalnej przy użyciu usługi Azure AD Connect Sync Active Directory.](../hybrid/how-to-connect-sync-feature-directory-extensions.md) |
 | Atrybuty rozszerzenia 1 – 15 | W środowisku lokalnym atrybutów rozszerzenia, używanej do rozszerzania schematu usługi Azure AD |
 
@@ -116,7 +116,7 @@ Można również użyć funkcji przekształcenia oświadczeń.
 | **ToUpper()** | Konwertuje znaki wybranego atrybutu na wielkie litery. |
 | **Contains()** | Generuje atrybut lub stała, jeśli dane wejściowe odpowiada określonej wartości. W przeciwnym razie można określić innego dane wyjściowe, jeśli nie zostanie odnaleziony odpowiednik.<br/>Na przykład, aby emitować oświadczeń, których wartość jest adres e-mail użytkownika, jeśli zawiera on domeny "@contoso.com", w przeciwnym razie ma zostać wyprowadzony główną nazwę użytkownika. Aby to zrobić, czy skonfiguruj następujące wartości:<br/>*Parametr 1(input)*: user.email<br/>*Wartość*: "@contoso.com"<br/>Parametr 2 (dane wyjściowe): user.email<br/>Parametr 3 (dane wyjściowe, jeśli nie zostanie odnaleziony odpowiednik): user.userprincipalname |
 | **EndWith()** | Generuje atrybut lub stała, gdy dane wejściowe kończy się określoną wartością. W przeciwnym razie można określić innego dane wyjściowe, jeśli nie zostanie odnaleziony odpowiednik.<br/>Na przykład chcąc do wysyłania oświadczeń, których wartość jest employeeid użytkownika, jeśli identyfikatorem employeeid kończy się ciągiem "000", w przeciwnym razie ma służący do wypełniania wyjściowego atrybutu rozszerzenia. Aby to zrobić, czy skonfiguruj następujące wartości:<br/>*Parametr 1(input)*: user.employeeid<br/>*Wartość*: "000"<br/>Parametr 2 (dane wyjściowe): user.employeeid<br/>Parametr 3 (dane wyjściowe, jeśli nie zostanie odnaleziony odpowiednik): user.extensionattribute1 |
-| **StartWith()** | Generuje atrybut lub stała, jeśli dane wejściowe rozpoczyna się od określonej wartości. W przeciwnym razie można określić innego dane wyjściowe, jeśli nie zostanie odnaleziony odpowiednik.<br/>Na przykład chcąc do wysyłania oświadczeń, których wartość jest employeeid użytkownika, jeśli kraj rozpoczyna się od "PL", w przeciwnym razie ma służący do wypełniania wyjściowego atrybutu rozszerzenia. Aby to zrobić, czy skonfiguruj następujące wartości:<br/>*Parametr 1(input)*: user.country<br/>*Wartość*: "US"<br/>Parametr 2 (dane wyjściowe): user.employeeid<br/>Parametr 3 (dane wyjściowe, jeśli nie zostanie odnaleziony odpowiednik): user.extensionattribute1 |
+| **StartWith()** | Generuje atrybut lub stała, jeśli dane wejściowe rozpoczyna się od określonej wartości. W przeciwnym razie można określić innego dane wyjściowe, jeśli nie zostanie odnaleziony odpowiednik.<br/>Na przykład chcąc do wysyłania oświadczeń, których wartość jest employeeid użytkownika, jeśli kraj/region, który rozpoczyna się od "PL", w przeciwnym razie ma służący do wypełniania wyjściowego atrybutu rozszerzenia. Aby to zrobić, czy skonfiguruj następujące wartości:<br/>*Parametr 1(input)*: user.country<br/>*Wartość*: "US"<br/>Parametr 2 (dane wyjściowe): user.employeeid<br/>Parametr 3 (dane wyjściowe, jeśli nie zostanie odnaleziony odpowiednik): user.extensionattribute1 |
 | **Extract() — po dopasowania** | Zwraca podciąg po odpowiada określonej wartości.<br/>Na przykład, jeśli wartość wejściowa jest "Finance_BSimon", wartość jest "Finance_", a następnie oświadczeń danych wyjściowych jest "BSimon". |
 | **Extract() — przed dopasowania** | Zwraca podciąg, dopóki nie odpowiada określonej wartości.<br/>Na przykład, jeśli wartość wejściowa jest "BSimon_US", wartość jest "_US", a następnie oświadczeń danych wyjściowych jest "BSimon". |
 | **Extract() - między dopasowania** | Zwraca podciąg, dopóki nie odpowiada określonej wartości.<br/>Na przykład jeśli wartość wejściowa jest "Finance_BSimon_US", pierwsza wartość dopasowania jest "Finance_", druga wartość dopasowania jest "_US", a następnie oświadczeń danych wyjściowych jest "BSimon". |

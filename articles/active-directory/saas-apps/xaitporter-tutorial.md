@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/28/2019
+ms.date: 05/03/2019
 ms.author: jeedes
-ms.openlocfilehash: b9e1b98be55030c9936222aa66d204ab3abe3374
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: ada93903113cedd68e23ec66a36dceef99ec1233
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920228"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65192091"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xaitporter"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą XaitPorter
 
@@ -29,7 +29,7 @@ Integrowanie XaitPorter z usługą Azure AD zapewnia następujące korzyści:
 
 * Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do XaitPorter.
 * Aby umożliwić użytkownikom można automatycznie zalogowany do XaitPorter (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
+* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
@@ -61,27 +61,27 @@ Aby skonfigurować integrację XaitPorter w usłudze Azure AD, należy dodać Xa
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
-    ![Przycisk Nowa aplikacja](common/add-new-app.png)
+    ![Nowy przycisk aplikacji](common/add-new-app.png)
 
 4. W polu wyszukiwania wpisz **XaitPorter**, wybierz opcję **XaitPorter** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
      ![XaitPorter na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
 W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą XaitPorter w oparciu o użytkownika testu o nazwie **Britta Simon**.
 Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w XaitPorter musi zostać ustanowione.
 
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą XaitPorter, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
 2. **[Konfigurowanie XaitPorter logowania jednokrotnego](#configure-xaitporter-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
 5. **[Tworzenie użytkownika testowego XaitPorter](#create-xaitporter-test-user)**  — aby odpowiednikiem Britta Simon w XaitPorter połączonego z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
@@ -91,7 +91,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z XaitPorter, wykonaj
 
 1. W [witryny Azure portal](https://portal.azure.com/)na **XaitPorter** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
 
-    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
+    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -114,23 +114,31 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z XaitPorter, wykonaj
 
 5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij przycisk kopiowania, aby skopiować **adres URL metadanych federacji aplikacji** i zapisać go na komputerze.
 
-    ![Link do pobierania certyfikatu](common/copy-metadataurl.png)
+    ![Link pobierania certyfikatu](common/copy-metadataurl.png)
 
 6. Podaj **adresu IP** lub **adres Url metadanych Federacji aplikacji** do [SmartRecruiters zespołu pomocy technicznej](https://www.smartrecruiters.com/about-us/contact-us/), dzięki czemu XaitPorter można upewnić się, że adres IP jest dostępny z poziomu usługi Wystąpienie XaitPorter skonfigurowanie listy dozwolonych po ich stronie. 
 
 ### <a name="configure-xaitporter-single-sign-on"></a>Konfigurowanie XaitPorter logowanie jednokrotne
 
-1. W oknie przeglądarki internetowej innej Zaloguj się w witrynie firmy XaitPorter jako administrator.
+1. Aby zautomatyzować konfigurację w ramach XaitPorter, musisz zainstalować **rozszerzenia przeglądarki do bezpiecznego Moje aplikacje logowania** , klikając **zainstalować rozszerzenie**.
 
-2. Kliknij pozycję **administratora**.
+    ![Moje rozszerzenie aplikacji](common/install-myappssecure-extension.png)
+
+2. Po dodaniu rozszerzenia do przeglądarki, kliknij pozycję **XaitPorter Instalatora** nastąpi bezpośrednie przekierowanie do aplikacji XaitPorter. W tym miejscu należy podać poświadczenia administratora do logowania się do XaitPorter. Rozszerzenie przeglądarki automatycznie skonfiguruje aplikację i zautomatyzować kroki od 3 do 6.
+
+    ![Konfiguracja instalacji](common/setup-sso.png)
+
+3. Jeśli chcesz ręcznie skonfigurować XaitPorter, Otwórz nowe okno przeglądarki sieci web i logowania do witryny firmy XaitPorter z uprawnieniami administratora i wykonaj następujące czynności:
+
+4. Kliknij pozycję **administratora**.
 
     ![Konfigurowanie logowania jednokrotnego](./media/xaitporter-tutorial/user1.png)
 
-3. Wybierz **Zarządzanie logowania jednokrotnego** z **konfiguracji systemu** listy rozwijanej.
+5. Wybierz **Zarządzanie logowania jednokrotnego** z **konfiguracji systemu** listy rozwijanej.
 
     ![Konfigurowanie logowania jednokrotnego](./media/xaitporter-tutorial/user2.png)
 
-4. W **Zarządzanie logowanie Jednokrotne** sekcji, wykonaj następujące czynności:
+6. W **Zarządzanie logowanie Jednokrotne** sekcji, wykonaj następujące czynności:
 
     ![Konfigurowanie logowania jednokrotnego](./media/xaitporter-tutorial/user3.png)
 
@@ -194,7 +202,7 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 
 ### <a name="create-xaitporter-test-user"></a>Tworzenie użytkownika testowego XaitPorter
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w XaitPorter. Praca z [zespołem pomocy technicznej klienta XaitPorter](https://www.xait.com/support/) Aby dodać użytkowników na platformie XaitPorter. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w XaitPorter. Praca z [zespołem pomocy technicznej klienta XaitPorter](https://www.xait.com/support/) Aby dodać użytkowników na platformie XaitPorter. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
@@ -202,7 +210,7 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
 Po kliknięciu kafelka XaitPorter w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze XaitPorter, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

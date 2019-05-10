@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: anantr
 ms.component: alerts
-ms.openlocfilehash: e5d04fd136848684e866fae9768b252e3b6ca77f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: d27adadc9720dd2ad6a0dd133524bfaf32e63045
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65137967"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65227963"
 ---
 # <a name="action-rules-preview"></a>Akcja reguły (wersja zapoznawcza)
 
@@ -46,7 +46,7 @@ Powinien zostać wyświetlony przepływ tworzenia reguły działania Otwórz. Sk
 
 ![Nowy przepływ tworzenia reguły akcji](media/alerts-action-rules/action-rules-new-rule-creation-flow.png)
 
-### <a name="scope"></a>Zakres
+### <a name="scope"></a>Scope
 
 Należy najpierw wybrać zakres, czyli zasób docelowy, grupy zasobów lub subskrypcji. Istnieje również możliwość wielokrotnego wyboru kombinacji dowolne z powyższych (w ramach jednej subskrypcji). 
 
@@ -140,13 +140,13 @@ Można wyświetlać i zarządzać regułami akcji z widoku listy, jak pokazano p
 
 W tym miejscu możesz regułami akcji Włącz/Wyłącz/usuwania na dużą skalę, wybierając pole wyboru obok nich. Kliknięcie dowolnej reguły akcji otwiera jego strony konfiguracji, dzięki czemu możesz aktualizować definicję i Włącz/Wyłącz ją.
 
-## <a name="best-practices"></a>Najlepsze praktyki
+## <a name="best-practices"></a>Najlepsze rozwiązania
 
-Alerty utworzone za pomocą dzienników ["Liczba wyników"](https://docs.microsoft.com/azure-monitor/platform/alerts-unified-log) opcja Wygeneruj **pojedyncze wystąpienie alertu** przy użyciu wynik wyszukiwania całego, (która może być na przykład na wielu komputerach). W tym scenariuszu jeśli reguły akcji używa filtru "Kontekst alertu (ładunku)", będzie ona działać w wystąpieniu alertu tak długo, jak są zgodne. W scenariuszu 2 zgodnie z opisem w poprzedniej sekcji, jeśli wyniki wyszukiwania dla alertu dziennika wygenerowany zawierają "Komputer-01" i "Komputer-02" cały powiadomień jest pominięte (to znaczy, jest bez powiadomienia generowane dla "Komputer-02" na wszystkich).
+Alerty utworzone za pomocą dzienników ["Liczba wyników"](alerts-unified-log.md) opcja Wygeneruj **pojedyncze wystąpienie alertu** przy użyciu wynik wyszukiwania całego, (która może być na przykład na wielu komputerach). W tym scenariuszu jeśli reguły akcji używa filtru "Kontekst alertu (ładunku)", będzie ona działać w wystąpieniu alertu tak długo, jak są zgodne. W scenariuszu 2 zgodnie z opisem w poprzedniej sekcji, jeśli wyniki wyszukiwania dla alertu dziennika wygenerowany zawierają "Komputer-01" i "Komputer-02" cały powiadomień jest pominięte (to znaczy, jest bez powiadomienia generowane dla "Komputer-02" na wszystkich).
 
 ![Akcja reguły i alerty dziennika (liczba wyników)](media/alerts-action-rules/action-rules-log-alert-number-of-results.png)
 
-Do alertów dziennika najlepiej korzystać z regułami akcji, zaleca się tworzenie alertów dziennika z ["pomiar metryki"](https://docs.microsoft.com/azure-monitor/platform/alerts-unified-log) opcji. Korzystając z tej opcji osobnych wystąpień alertu są generowane, na podstawie pola grupy zdefiniowane. Następnie w scenariuszu 2 osobnych wystąpień alertu są generowane dla "Komputer-01" i "Komputer-02". Z regułą działania opisane w scenariuszu tylko powiadomienia "Komputer-01" będą pomijane podczas powiadomienie dotyczące "Komputer-02" będzie w dalszym ciągu pożaru w zwykły sposób.
+Do alertów dziennika najlepiej korzystać z regułami akcji, zaleca się tworzenie alertów dziennika z ["pomiar metryki"](alerts-unified-log.md) opcji. Korzystając z tej opcji osobnych wystąpień alertu są generowane, na podstawie pola grupy zdefiniowane. Następnie w scenariuszu 2 osobnych wystąpień alertu są generowane dla "Komputer-01" i "Komputer-02". Z regułą działania opisane w scenariuszu tylko powiadomienia "Komputer-01" będą pomijane podczas powiadomienie dotyczące "Komputer-02" będzie w dalszym ciągu pożaru w zwykły sposób.
 
 ![Akcja reguły i alerty dziennika (liczba wyników)](media/alerts-action-rules/action-rules-log-alert-metric-measurement.png)
 

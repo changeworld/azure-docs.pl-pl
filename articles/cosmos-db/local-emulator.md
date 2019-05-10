@@ -3,15 +3,15 @@ title: Programowanie lokalnie za pomocą emulatora usługi Azure Cosmos
 description: Przy użyciu emulatora usługi Azure Cosmos, można tworzyć i testować aplikację lokalnie bezpłatnie, bez tworzenia subskrypcji platformy Azure.
 ms.service: cosmos-db
 ms.topic: tutorial
-ms.date: 04/20/2018
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: ac2510b97e083cbbcd6529feb6f02fa17455fcb8
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.date: 03/14/2019
+ms.openlocfilehash: c83cc8dce5978798d86d2fc2e314161765a2fb2d
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925502"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205786"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Na użytek emulatora usługi Azure Cosmos lokalne programowanie i testowanie
 
@@ -241,7 +241,7 @@ Aby wyświetlić listę opcji, wpisz ciąg `CosmosDB.Emulator.exe /?` w wierszu 
 |[Bez argumentów] | Uruchamiania emulatora usługi Azure Cosmos przy użyciu ustawień domyślnych. |CosmosDB.Emulator.exe| |
 |[Help] |Wyświetla listę obsługiwanych argumentów wiersza polecenia.|CosmosDB.Emulator.exe /? | |
 | GetStatus |Pobiera stan emulatora usługi Azure Cosmos. Stan jest wskazywany przez kod zakończenia: 1 = uruchamiany, 2 = uruchomiony, 3 = zatrzymany. Kod zakończenia o wartości ujemnej informuje o wystąpieniu błędu. Inne dane wyjściowe nie są generowane. | CosmosDB.Emulator.exe /GetStatus| |
-| Shutdown| Zamyka emulatora usługi Azure Cosmos.| CosmosDB.Emulator.exe /Shutdown | |
+| Zamknij| Zamyka emulatora usługi Azure Cosmos.| CosmosDB.Emulator.exe /Shutdown | |
 |DataPath | Określa ścieżkę przechowywania plików danych. Wartość domyślna to % LocalAppdata%\CosmosDBEmulator. | CosmosDB.Emulator.exe /DataPath=\<ścieżka_do_danych\> | \<ścieżka_do_danych\>: dostępna ścieżka |
 |Port | Określa numer portu używanego przez emulatora. Wartość domyślna to 8081. |CosmosDB.Emulator.exe /Port=\<port\> | \<port\>: numer pojedynczego portu |
 | MongoPort | Określa numer portu używanego w celu zapewnienia zgodności z interfejsem API usługi MongoDB. Wartość domyślna to 10255. |CosmosDB.Emulator.exe /MongoPort= \<mongoport\>|\<port_mongo\>: numer pojedynczego portu|

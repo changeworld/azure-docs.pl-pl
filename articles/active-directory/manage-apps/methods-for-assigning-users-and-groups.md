@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/01/2018
+ms.date: 04/26/2019
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cbd40f2ab91f854f46dc3e62bccbc8a3264f97f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bdf19d2001f84fab6978bfc34ef14a361b89edea
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60291283"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65441423"
 ---
 # <a name="assign-users-and-groups-to-an-application-in-azure-active-directory"></a>Przypisywanie użytkowników i grup do aplikacji w usłudze Azure Active Directory
 W tym artykule pokazano, jak przypisać użytkowników lub grup do aplikacji w usłudze Azure Active Directory (Azure AD). Użytkownicy najpierw muszą być przypisani do aplikacji, zanim administrator może nadać im dostęp do następujących:
@@ -31,6 +31,8 @@ W tym artykule pokazano, jak przypisać użytkowników lub grup do aplikacji w u
 -   Zobacz aplikacji pojawiają się na ich [panelu dostępu do aplikacji](https://myapps.microsoft.com/) lub aplikacji mobilnej.
 
 -   Zobacz aplikacji pojawiają się na ich [uruchamianie aplikacji usługi Office 365](https://support.office.com/article/Meet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a).
+
+Dostępność przypisywania na podstawie grupy jest określana przez umowy licencyjnej. Przypisanie oparte na grupach jest obsługiwana tylko grupy zabezpieczeń i członkostwo w grupach zagnieżdżonych nie są obecnie obsługiwane.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Zanim będzie można przypisać użytkowników i grup do aplikacji, możesz wymagać od użytkownika przypisania. Wymaganie przypisania użytkownika:

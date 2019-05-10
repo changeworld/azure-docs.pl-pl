@@ -16,16 +16,24 @@
   items:
     - name: Android
       items:
-        - name: Wypychanie powiadomień przy użyciu usługi Firebase Cloud Messaging
-          href: notification-hubs-android-push-notification-google-fcm-get-started.md
-        - name: Wypychanie powiadomień przy użyciu usługi Google Cloud Messaging
-          href: notification-hubs-android-push-notification-google-gcm-get-started.md
-        - name: Wypychanie powiadomień do konkretnych urządzeń
-          href: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
-        - name: Wypychanie powiadomień do konkretnych użytkowników
-          href: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
-        - name: Wypychanie powiadomień do aplikacji Xamarin systemu Android
-          href: xamarin-notification-hubs-push-notifications-android-gcm.md
+        - name: Firebase Cloud Messaging
+          items:
+            - name: Wypychanie powiadomień do wszystkich rejestracji
+              href: notification-hubs-android-push-notification-google-fcm-get-started.md
+            - name: Wypychanie powiadomień do konkretnych urządzeń
+              href: push-notifications-android-specific-devices-firebase-cloud-messaging.md
+            - name: Wypychanie powiadomień do konkretnych użytkowników
+              href: push-notifications-android-specific-users-firebase-cloud-messaging.md
+            - name: Wypychanie powiadomień do aplikacji Xamarin systemu Android
+              href: xamarin-notification-hubs-push-notifications-android-gcm.md
+        - name: Google Cloud Message (przestarzałe)
+          items:
+            - name: Wypychanie powiadomień do wszystkich rejestracji
+              href: notification-hubs-android-push-notification-google-gcm-get-started.md
+            - name: Wypychanie powiadomień do konkretnych urządzeń
+              href: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
+            - name: Wypychanie powiadomień do konkretnych użytkowników
+              href: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
     - name: Baidu
       items:
         - name: Wypychanie powiadomień przy użyciu powiadomień push w chmurze Baidu

@@ -16,12 +16,12 @@ ms.workload: web
 ms.date: 03/20/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: becec6881ccc5c061a0f0e93e697852645f9388f
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: ac503c4408432da4e2c0c9281ee5cdd6e5d9e984
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115967"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65198603"
 ---
 # <a name="monitor-a-web-appwith-web-server-logs"></a>Monitorowanie aplikacji internetowej za pomocą dzienników serwera internetowego
 
@@ -53,9 +53,9 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 | [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Tworzy plan usługi App Service. |
 | [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Tworzy aplikację internetową. |
 | [Set-AzWebApp](/powershell/module/az.websites/set-azwebapp) | Modyfikuje konfigurację aplikacji internetowej. |
-| [Get-AzWebAppMetrics](/powershell/module/az.websites/get-azwebappmetrics) | Pobiera metryki aplikacji internetowej. |
+| [Get-AzWebAppMetric](/powershell/module/az.websites/get-azwebappmetric) | Pobiera metryki aplikacji internetowej. |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat modułu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](/powershell/azure/overview).
 

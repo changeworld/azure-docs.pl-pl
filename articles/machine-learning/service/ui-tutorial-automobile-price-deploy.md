@@ -2,19 +2,19 @@
 title: 'Samouczek: Wdrażanie modelu za pomocą interfejsu wizualnego uczenia maszynowego'
 titleSuffix: Azure Machine Learning service
 description: Dowiedz się, jak tworzyć rozwiązania do analizy predykcyjnej w interfejsie visual usługi Azure Machine Learning. Szkolenie, wynik, wdrożyć model uczenia maszynowego przy użyciu przeciągania i upuszczania modułów. Niniejszy samouczek jest drugą częścią serii legalną dwuczęściową na Prognozowanie cen samochodów przy użyciu regresji liniowej.
-author: peterlu
-ms.author: peterlu
+author: peterclu
+ms.author: peterclu
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/06/2019
-ms.openlocfilehash: e9ece81b1f663910fb3c051bd94c13c54ffa8470
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 5f29e3820416686b42167fa278c4b7d0f9a58f1f
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026865"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190915"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>Samouczek: Wdrażanie modelu za pomocą interfejsu wizualnego uczenia maszynowego
 
@@ -40,16 +40,16 @@ Do tej pory były zmieniane za pomocą szkolenia modelu. Teraz nadszedł czas, a
 Przygotowanie do wdrożenia jest procesem dwuetapowym:  
 
 1. Konwertuj *eksperymentu szkolenia* utworzonego w *eksperyment predykcyjny*
-1. Wdrożenie eksperymentu predykcyjnego jako usługi internetowej
+1. Wdrożyć eksperyment predykcyjny jako usługę sieci web
 
 Warto najpierw utworzyć kopię eksperymentu, wybierając **Zapisz jako** w dolnej części obszaru roboczego eksperymentu.
 
-### <a name="convert-the-training-experiment-to-a-predictive-experiment"></a>Konwertowanie eksperymentu trenowania w eksperyment predykcyjny
+### <a name="convert-the-training-experiment-to-a-predictive-experiment"></a>Konwertowanie eksperymentu szkolenia na eksperyment predykcyjny
 
 Aby uzyskać ten model jest gotowe do wdrożenia, należy przekonwertować tego eksperymentu szkolenia na eksperyment predykcyjny. Obejmuje to zwykle trzy kroki:
 
 1. Zapisywanie modelu już uczony i Zastąp moduły szkoleniowe
-1. Dostosowanie eksperymentu do usunięcia modułów, które były potrzebne tylko do szkolenia
+1. TRIM eksperymentu do usunięcia modułów, które były potrzebne tylko w przypadku szkolenia
 1. Zdefiniuj, którym usługa sieci web będzie akceptować dane wejściowe i gdzie generuje dane wyjściowe
 
 Te kroki można wykonać ręcznie lub można wybrać opcję **ustawić usługę sieci Web** w dolnej części obszaru roboczego eksperymentu do nich wykonywane automatycznie.
@@ -59,14 +59,14 @@ Te kroki można wykonać ręcznie lub można wybrać opcję **ustawić usługę 
 Po wybraniu **ustawić usługę sieci Web**, ma miejsce kilka rzeczy:
 
 * Uczony model jest konwertowany na pojedynczej **Uczonego modelu** modułu. Jest on przechowywany w palety modułów, z lewej strony obszaru roboczego eksperymentu. Znajdziesz go w folderze **przeszkolone modele**.
-* Moduły, które zostały użyte do szkolenia, zostaną usunięte, a w szczególności:
+* Moduły, które zostały użyte do trenowania zostaną usunięte; w szczególności:
   * Trenowanie modelu
-  * Podział danych
+  * Dzielenie danych
   * Ocena modelu
-* Zapisany wytrenowany model jest ponownie dodawany do eksperymentu
+* Zapisane uczony model jest ponownie dodane do eksperymentu
 * **Dane wejściowe usługi w sieci Web** i **sieci Web usługi danych wyjściowych** moduły są dodawane. Te moduły zidentyfikować, gdzie przejdzie modelu danych użytkownika i gdzie dane są zwracane.
 
-Widać, że eksperyment został zapisany w dwóch częściach na nowych kartach w górnej części obszaru roboczego eksperymentu. Oryginalny eksperyment trenowania znajduje się na karcie **Training experiment (Eksperyment trenowania)**, a nowo utworzony eksperyment predykcyjny znajduje się w obszarze **Predictive experiment (Eksperyment predykcyjny)**. Eksperyment predykcyjny jest tym, który wdrożysz jako usługę internetową.
+Widać, że eksperyment został zapisany w dwóch częściach na nowych kartach w górnej części obszaru roboczego eksperymentu. Oryginalny eksperymentu szkolenia znajduje się w karcie **eksperymentu szkolenia**, a nowo utworzony eksperyment predykcyjny podlega **eksperyment predykcyjny**. Eksperyment predykcyjny jest tym, który wdrożysz jako usługę internetową.
 
 Eksperyment powinien teraz wyglądać następująco:  
 
@@ -89,7 +89,7 @@ Aby wdrożyć nową usługę sieci web pochodzące z eksperymentu:
 
     ![Zrzut ekranu przedstawiający komunikat potwierdzający pomyślne wdrożenie.](./media/ui-tutorial-automobile-price-deploy/deploy-succeed.png)
 
-## <a name="test-the-web-service"></a>Testowanie usługi internetowej
+## <a name="test-the-web-service"></a>Test usługi sieci web
 
 Dane wejściowe użytkownika wprowadza wdrożonym modelu za pomocą **sieci Web dane wejściowe usługi** modułu. Dane wejściowe są następnie oceniane w **Score Model** modułu. Sposobu po skonfigurowaniu eksperyment predykcyjny model oczekuje danych w tym samym formacie co oryginalnego zestawu danych dotyczących samochodów ceny. Na koniec wyniki są zwracane użytkownikowi za pośrednictwem **sieci Web usługi danych wyjściowych** modułu.
 
@@ -109,7 +109,7 @@ Usługi sieci web można sprawdzić na karcie usług sieci web w interfejs grafi
 
 1. Dane wejściowe testowanie danych lub użyj autofilled przykładowych danych i wybierz polecenie **testu** u dołu. Żądanie testu jest przesyłany do usługi sieci web, a wyniki są wyświetlane na stronie.
 
-## <a name="manage-the-web-service"></a>Zarządzanie usługą internetową
+## <a name="manage-the-web-service"></a>Zarządzanie usługą sieci web
 
 Po wdrożeniu usługi sieci web, można zarządzać nim z **usług sieci Web** karcie interfejsu wizualnego.
 

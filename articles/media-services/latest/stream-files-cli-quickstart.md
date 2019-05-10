@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.custom: ''
 ms.date: 02/19/2019
 ms.author: juliako
-ms.openlocfilehash: a323cbe4188207fa77525648297b366c9c57121b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bd818135f289c430416909d16c8568208936a9f8
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61466908"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205416"
 ---
 # <a name="quickstart-stream-video-files---cli"></a>Szybki start: Przesyłanie strumieniowe plików wideo — interfejs wiersza polecenia
 
@@ -83,7 +83,7 @@ Pojawi się odpowiedź podobna:
 
 ## <a name="start-the-streaming-endpoint"></a>Uruchamianie punktu końcowego przesyłania strumieniowego
 
-Następujące polecenie z wiersza polecenia platformy Azure rozpoczyna się domyślnie **punktu końcowego Sstreaming**.
+Następujące polecenie z wiersza polecenia platformy Azure rozpoczyna się domyślnie **punkt końcowy przesyłania strumieniowego**.
 
 ```azurecli
 az ams streaming-endpoint start  -n default -a amsaccount -g amsResourceGroup
@@ -356,4 +356,4 @@ Zobacz [kody błędów zadania](https://docs.microsoft.com/rest/api/media/jobs/g
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-> [Przykłady interfejsu wiersza polecenia](cli-samples.md)
+[Przegląd usługi Media Services](media-services-overview.md)

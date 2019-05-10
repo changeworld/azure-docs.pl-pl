@@ -12,12 +12,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7b12f5c7736307f0b62b6f6c2b526eb0108569c
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 27309c08fe4419197faa17dcceb3645b00387e93
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190177"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65227927"
 ---
 # <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Co to jest warunek lokalizacji w funkcji dostępu warunkowego usługi Azure Active Directory? 
 
@@ -32,7 +32,7 @@ Usługa Azure AD umożliwia logowanie jednokrotne do urządzeń, aplikacji i us�
 - Wymaganie uwierzytelniania wieloskładnikowego dla użytkowników uzyskujących dostęp do usługi, gdy znajdują się poza siecią firmową.
 - Blokuje dostęp dla użytkowników uzyskujących dostęp do usługi z określonych krajów lub regionów.
 
-Lokalizacja jest etykietę dla lokalizacji sieciowej albo reprezentuje nazwanych lokalizacji czy uwierzytelnianie wieloskładnikowe zaufane adresy IP.
+Lokalizacja jest etykietę dla lokalizacji sieciowej albo reprezentuje lokalizację o nazwie lub uwierzytelnianie wieloskładnikowe zaufanych adresów IP.
 
 ## <a name="named-locations"></a>Lokalizacje nazwane
 
@@ -54,7 +54,7 @@ Lokalizacja o nazwie zawiera następujące składniki:
 
 - **Oznacz jako zaufaną lokalizację** -flagę można ustawić dla nazwanych lokalizacji do wskazania zaufanej lokalizacji. Zazwyczaj zaufanych lokalizacji są obszarów sieci, które są kontrolowane przez dział IT. Oprócz dostępu warunkowego, Zaufane lokalizacje nazwane są również używane przez raporty dotyczące zabezpieczeń usługi Azure Identity Protection i usługą Azure AD do zmniejszenia [wyników fałszywie dodatnich](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations-1).
 - **Kraje/regiony** — ta opcja umożliwia wybranie co najmniej jeden kraj lub region, aby zdefiniować nazwanych lokalizacji.
-- **Uwzględnij nieznane obszary** — adresy IP niektóre nie są zamapowane na konkretnym kraju. Ta opcja pozwala wybrać, czy te adresy IP powinien być uwzględniony w lokalizacji o nazwie. Użyj tego ustawienia podczas stosowania zasad za pomocą nazwanych lokalizacji dla nieznanych lokalizacjach.
+- **Uwzględnij nieznane obszary** — adresy IP niektóre nie są zamapowane na konkretnym kraju lub regionu. Ta opcja pozwala wybrać, czy te adresy IP powinien być uwzględniony w lokalizacji o nazwie. Użyj tego ustawienia podczas stosowania zasad za pomocą nazwanych lokalizacji dla nieznanych lokalizacjach.
 
 Rozmiar obiektu pokrewnego ograniczają liczbę nazwane lokalizacje, które można skonfigurować w usłudze Azure AD. Organizacje można skonfigurować maksymalnie 90 nazwane lokalizacje, każdy skonfigurowaną do 12000 zakresów adresów IP.
 

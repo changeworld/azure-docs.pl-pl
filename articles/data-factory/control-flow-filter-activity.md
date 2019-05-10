@@ -41,8 +41,8 @@ Właściwość | Opis | Dozwolone wartości | Wymagane
 -------- | ----------- | -------------- | --------
 name | Nazwa `Filter` działania. | String | Yes
 type | Musi być równa **filtru**. | String | Yes
-warunek | Warunek, służący do filtrowania danych wejściowych. | Wyrażenie | Yes
-pozycje | Tablica wejściowa, na którym można zastosować filtr. | Wyrażenie | Yes
+condition | Warunek, służący do filtrowania danych wejściowych. | Wyrażenie | Yes
+items | Tablica wejściowa, na którym można zastosować filtr. | Wyrażenie | Yes
 
 ## <a name="example"></a>Przykład
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 3940adfaa42de8ac9c3f32a9eadc8f6d643ce3ce
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: c0bb8d7a5a1ea30b704b44c9337cd28043597ff7
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149523"
+ms.locfileid: "65209531"
 ---
 # <a name="quickstart---consume-vmware-vms-on-azure"></a>Przewodnik Szybki Start — używanie maszyn wirtualnych VMware na platformie Azure
 
@@ -82,5 +82,5 @@ Utwórz maszynę wirtualną w chmurze prywatnej z interfejsu użytkownika progra
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Widok listy maszyn wirtualnych CloudSimple](https://docs.azure.cloudsimple.com/azure-manage-vm/)
-* [Zarządzanie maszyną wirtualną CloudSimple z platformy Azure](https://docs.azure.cloudsimple.com/azure-create-vm/#view-list-of-cloudsimple-virtual-machines)
+* [Widok listy maszyn wirtualnych CloudSimple](https://docs.azure.cloudsimple.com/azure-create-vm/#view-list-of-cloudsimple-virtual-machines)
+* [Zarządzanie maszyną wirtualną CloudSimple z platformy Azure](https://docs.azure.cloudsimple.com/azure-manage-vm/)

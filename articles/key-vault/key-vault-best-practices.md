@@ -2,19 +2,19 @@
 title: Najlepsze rozwiązania dotyczące używania usługi Key Vault — usługi Azure Key Vault | Dokumentacja firmy Microsoft
 description: W tym dokumencie opisano niektóre z najlepszych rozwiązań za pomocą usługi Key Vault
 services: key-vault
-author: mbaldwin
+author: msmbaldwin
 manager: barbkess
 tags: azure-key-vault
 ms.service: key-vault
 ms.topic: conceptual
 ms.date: 03/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 27881758175ab698e4b713c0215383878272382f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: eb7150d0b1c3a4a312b0c05ba7612960aaf640f6
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64700765"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65227936"
 ---
 # <a name="best-practices-to-use-key-vault"></a>Najlepsze rozwiązania za pomocą usługi Key Vault
 
@@ -32,7 +32,7 @@ Sugestie podczas kontroli dostępu do magazynu są następujące:
 
 Nasze zaleca się użycie magazynu dla aplikacji dla środowiska (rozwój, przedprodukcyjnych i produkcyjnych). To pomoże Ci udostępniaj wpisów tajnych w środowiskach i zmniejsza zagrożenie w razie naruszenia zabezpieczeń.
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>Tworzenie kopii zapasowej
 
 Upewnij się, zapoznasz się z regularne tworzenie kopii zapasowych Twojej [magazynu](https://blogs.technet.microsoft.com/kv/2018/07/20/announcing-backup-and-restore-of-keys-secrets-and-certificates/) na update/delete/tworzenia obiektów w magazynie.
 

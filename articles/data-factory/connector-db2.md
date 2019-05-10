@@ -194,7 +194,7 @@ Podczas kopiowania danych z bazy danych DB2, następujące mapowania są używan
 | Real |Single |
 | SmallInt |Int16 |
 | Time |TimeSpan |
-| Timestamp |DateTime |
+| Timestamp |Datetime |
 | VarBinary |Byte[] |
 | VarChar |String |
 | VarGraphic |String |

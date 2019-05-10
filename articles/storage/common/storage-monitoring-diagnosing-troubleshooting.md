@@ -2,18 +2,19 @@
 title: Monitorowanie, diagnozowanie i rozwiązywanie problemów z usługi Azure Storage | Dokumentacja firmy Microsoft
 description: Korzystać z funkcji, takich jak usługa storage analytics, rejestrowania po stronie klienta i innych narzędzi innych firm do identyfikacji, diagnozowanie i rozwiązywanie problemów związanych z usługi Azure Storage.
 services: storage
-author: fhryo-msft
+author: normesta
 ms.service: storage
 ms.topic: article
 ms.date: 05/11/2017
-ms.author: fhryo-msft
+ms.author: normesta
+ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 6edb1abae91a675a3fe47b417a112f0951886aaf
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: b929d9d1acc217c291c5aa645ee2d8952f401cd1
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62103863"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65192163"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Monitorowanie, diagnozowanie i rozwiązywanie problemów z usługą Microsoft Azure Storage
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -425,7 +426,7 @@ Jeśli **wartości PercentThrottlingError** metryki spowodować wzrost Procent �
 Wzrost **wartości PercentThrottlingError** często występuje w tym samym czasie jako wzrost liczby żądań magazynu lub gdy początkowo testowanie obciążenia aplikacji. To może również objawiać w kliencie jako "503 Serwer zajęty" lub komunikaty o stanie "500 limit czasu operacji" HTTP z operacji magazynu.
 
 #### <a name="transient-increase-in-PercentThrottlingError"></a>Przejściowy wzrost wartości PercentThrottlingError
-Jeśli widzisz skokami wartości **wartości PercentThrottlingError** pokrywają się z okresy intensywnego działania aplikacji, następuje zaimplementowanie (nie liniowych) wycofań strategii wykładniczego ponownych prób w swoim kliencie. Wycofań ponownych prób odciążyć natychmiastowego partycji i pomóc aplikacji do wygładzania nagłych skoków ruchu. Aby uzyskać więcej informacji o tym, jak wdrożyć zasady ponawiania prób przy użyciu biblioteki klienta usługi Storage, zobacz [Namespace Microsoft.windowsazure.Storage.retrypolicies, gdy spełniają](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.retrypolicies.aspx).
+Jeśli widzisz skokami wartości **wartości PercentThrottlingError** pokrywają się z okresy intensywnego działania aplikacji, następuje zaimplementowanie (nie liniowych) wycofań strategii wykładniczego ponownych prób w swoim kliencie. Wycofań ponownych prób odciążyć natychmiastowego partycji i pomóc aplikacji do wygładzania nagłych skoków ruchu. Aby uzyskać więcej informacji o tym, jak wdrożyć zasady ponawiania prób przy użyciu biblioteki klienta usługi Storage, zobacz [Namespace Microsoft.windowsazure.Storage.retrypolicies, gdy spełniają](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.retrypolicy).
 
 > [!NOTE]
 > Ponadto mogą pojawić się skokami wartości **wartości PercentThrottlingError** , nie pokrywają się z okresy intensywnego działania aplikacji: najbardziej prawdopodobna przyczyna to usługa magazynu, przenosząc partycji w celu lepszego równoważenia obciążenia.
@@ -567,7 +568,7 @@ W poniższej tabeli przedstawiono przykładowy komunikat dziennika po stronie se
 | Stan żądania     | SASAuthorizationError        |
 | Kod stanu HTTP   | 404                          |
 | Typ uwierzytelniania| Sygnatury dostępu współdzielonego                          |
-| Typ usługi       | Obiekt blob                         |
+| Typ usługi       | Blob                         |
 | Adres URL żądania        | https://domemaildist.blob.core.windows.net/azureimblobcontainer/blobCreatedViaSAS.txt |
 | &nbsp;                 |   ?sv=2014-02-14&sr=c&si=mypolicy&sig=XXXXX&;api-version=2014-02-14 |
 | Nagłówka Identyfikatora żądania  | a1f348d5-8032-4912-93ef-b393e5252a3b |
@@ -625,7 +626,7 @@ Jeśli ten problem występuje często, powinieneś zbadać, dlaczego klient jest
 ### <a name="the-client-is-receiving-409-messages"></a>Klient odbiera komunikaty HTTP 409 (konflikt)
 W poniższej tabeli przedstawiono wyciąg z dwóch operacji klienta w dzienniku po stronie serwera: **DeleteIfExists** a następnie natychmiast przez **CreateIfNotExists** przy użyciu tej samej nazwy kontenera obiektów blob. Każda operacja klienta powoduje dwa żądania wysyłane do serwera, najpierw **GetContainerProperties** żądania, aby sprawdzić, czy kontener istnieje, następuje **DeleteContainer** lub  **CreateContainer** żądania.
 
-| Znacznik czasu | Operacja | Wynik | Nazwa kontenera | Identyfikator żądania klienta |
+| Sygnatura czasowa | Operacja | Wynik | Nazwa kontenera | Identyfikator żądania klienta |
 | --- | --- | --- | --- | --- |
 | 05:10:13.7167225 |GetContainerProperties |200 |mmcont |c9f52c89-… |
 | 05:10:13.8167325 |DeleteContainer |202 |mmcont |c9f52c89-… |

@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/24/2018
+ms.date: 04/23/2019
 ms.author: celested
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b83b08c442a7f10d6b29122fe7959bedf8f3cff0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8413c75a683ff135b3442da6c6a94787ed0866ca
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60441244"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65441445"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Rozwiązywanie problemów z konfiguracjami delegowanie ograniczone protokołu Kerberos dla serwera Proxy aplikacji
 
@@ -177,7 +177,7 @@ Jeśli nadal nie możesz postępu, pomocy technicznej firmy Microsoft mogą pom�
 
 ## <a name="other-scenarios"></a>Inne scenariusze
 
-- Serwer Proxy aplikacji usługi Azure żąda biletu protokołu Kerberos przed wysłaniem jej żądania do aplikacji. Niektóre aplikacje innych firm, takich jak Tableau Server nie podoba w tej metody uwierzytelniania. Te aplikacje oczekiwać bardziej konwencjonalne negocjacji została wykonana. Pierwsze żądanie jest anonimowe, co pozwala aplikacji na odpowiedź z typami uwierzytelniania, obsługuje on za pośrednictwem 401.
+- Serwer Proxy aplikacji usługi Azure żąda biletu protokołu Kerberos przed wysłaniem jej żądania do aplikacji. Ta metoda uwierzytelniania nie, takich jak aplikacje innych firm. Te aplikacje oczekiwać bardziej konwencjonalne negocjacji została wykonana. Pierwsze żądanie jest anonimowe, co pozwala aplikacji na odpowiedź z typami uwierzytelniania, obsługuje on za pośrednictwem 401.
 
 - Uwierzytelniania z wieloma przeskokami są często używane w scenariuszach gdzie warstwy aplikacji, za pomocą zaplecza i frontonu, gdy oba wymagają uwierzytelniania, takiego jak SQL Server Reporting Services. Aby skonfigurować wieloskokowych scenariusza, zobacz artykuł pomocy technicznej [Kerberos ograniczone delegowanie może wymagać przejścia protokołu w scenariuszach z wieloma przeskokami](https://support.microsoft.com/help/2005838/kerberos-constrained-delegation-may-require-protocol-transition-in-mul).
 

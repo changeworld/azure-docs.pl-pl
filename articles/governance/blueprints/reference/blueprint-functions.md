@@ -7,12 +7,12 @@ ms.date: 04/15/2019
 ms.topic: reference
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 0de3e0add804290cdfe27e2e97d8b1a0f240e0a6
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.openlocfilehash: dc72113a8f5ed978d64d35c43e94dc9e19e4cdb1
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63769304"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65209401"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Funkcje do użycia z usługą Azure plany
 
@@ -37,15 +37,15 @@ Zwraca obiekt właściwości wypełniane przy użyciu tego artefakty planu danyc
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| artifactName |Yes |string |Nazwa artefaktu planu. |
+| artifactName |Tak |string |Nazwa artefaktu planu. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
-Obiekt właściwości danych wyjściowych. Właściwości danych wyjściowych są zależne od typu artefaktu planu, do którego nastąpiło odwołanie. Wszystkie typy wykonaj format:
+Obiekt właściwości danych wyjściowych. **Generuje** właściwości są zależne od typu artefaktu planu, do którego nastąpiło odwołanie. Wszystkie typy wykonaj format:
 
 ```json
 {
-  "output": {collectionOfOutputProperties}
+  "outputs": {collectionOfOutputProperties}
 }
 ```
 
@@ -53,7 +53,7 @@ Obiekt właściwości danych wyjściowych. Właściwości danych wyjściowych s�
 
 ```json
 {
-    "output": {
+    "outputs": {
         "policyAssignmentId": "{resourceId-of-policy-assignment}",
         "policyAssignmentName": "{name-of-policy-assignment}",
         "policyDefinitionId": "{resourceId-of-policy-definition}",
@@ -63,13 +63,13 @@ Obiekt właściwości danych wyjściowych. Właściwości danych wyjściowych s�
 
 #### <a name="resource-manager-template-artifact"></a>Artefakt szablonu usługi Resource Manager
 
-**Dane wyjściowe** właściwości zwracanego obiektu są zdefiniowane w szablonie usługi Resource Manager i zwrócony przez wdrożenie.
+**Generuje** właściwości zwracanego obiektu są zdefiniowane w szablonie usługi Resource Manager i zwrócony przez wdrożenie.
 
 #### <a name="role-assignment-artifact"></a>Artefaktu przypisania roli
 
 ```json
 {
-    "output": {
+    "outputs": {
         "roleAssignmentId": "{resourceId-of-role-assignment}",
         "roleDefinitionId": "{resourceId-of-role-definition}",
         "principalId": "{principalId-role-is-being-assigned-to}",
@@ -109,12 +109,12 @@ Niektóre przykłady pobierania danych z _myTemplateArtifact_ próbki są:
 
 | Wyrażenie | Type | Wartość |
 |:---|:---|:---|
-|`[artifacts("myTemplateArtifact").output.myArray]` | Tablica | \["first", "sekundę"\] |
-|`[artifacts("myTemplateArtifact").output.myArray[0]]` | String | "first" |
-|`[artifacts("myTemplateArtifact").output.myString]` | String | "Mój wartość ciągu" |
-|`[artifacts("myTemplateArtifact").output.myObject]` | Object | {"myproperty": "Moja value", "anotherProperty": true} |
-|`[artifacts("myTemplateArtifact").output.myObject.myProperty]` | String | "Mój wartość" |
-|`[artifacts("myTemplateArtifact").output.myObject.anotherProperty]` | Bool | True |
+|`[artifacts("myTemplateArtifact").outputs.myArray]` | Tablica | \["first", "sekundę"\] |
+|`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | String | "first" |
+|`[artifacts("myTemplateArtifact").outputs.myString]` | String | "Mój wartość ciągu" |
+|`[artifacts("myTemplateArtifact").outputs.myObject]` | Object | {"myproperty": "Moja value", "anotherProperty": true} |
+|`[artifacts("myTemplateArtifact").outputs.myObject.myProperty]` | String | "Mój wartość" |
+|`[artifacts("myTemplateArtifact").outputs.myObject.anotherProperty]` | Bool | True |
 
 ## <a name="concat"></a>concat
 
@@ -126,7 +126,7 @@ Niektóre przykłady pobierania danych z _myTemplateArtifact_ próbki są:
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| ciąg1 |Yes |string |Pierwsza wartość łączenia. |
+| ciąg1 |Tak |string |Pierwsza wartość łączenia. |
 | dodatkowe argumenty |Nie |string |Dodatkowe wartości w kolejności sekwencyjnej dla łączenia |
 
 ### <a name="return-value"></a>Wartość zwracana
@@ -151,7 +151,7 @@ Zwraca wartość parametru planu. Określona nazwa parametru musi być zdefiniow
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| parameterName |Yes |string |Nazwa parametru do zwrócenia. |
+| parameterName |Tak |string |Nazwa parametru do zwrócenia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -272,7 +272,7 @@ Zwraca obiekt, który reprezentuje artefaktu grupę określonego zasobu. W odró
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| placeholderName |Yes |string |Nazwa symbolu zastępczego artefaktu grupy zasobów do zwrócenia. |
+| placeholderName |Tak |string |Nazwa symbolu zastępczego artefaktu grupy zasobów do zwrócenia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -324,7 +324,7 @@ Następnie użyj `resourceGroups()` funkcji w kontekście dowolnego artefaktu pl
 }
 ```
 
-## <a name="subscription"></a>subskrypcja
+## <a name="subscription"></a>subskrypcji
 
 `subscription()`
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.reviewer: vitalyg
 ms.author: cithomas
-ms.openlocfilehash: b35b0c66c29805d9cd7ecd00ffaad4fc1cfe253b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d88de2bf660165022b39aaa0321ff5c62ea81cd3
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60653813"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231850"
 ---
 # <a name="sampling-in-application-insights"></a>Próbkowanie w usłudze Application Insights
 
@@ -61,7 +61,7 @@ Zlicza metryki, takie jak liczba żądań i częstotliwość występowania wyją
 
 ## <a name="configuring-adaptive-sampling-for-aspnet-applications"></a>Konfigurowanie próbkowanie adaptacyjne dla aplikacji ASP.NET
 
-[Dowiedz się,](../../azure-monitor/app/sampling.md#configuring-adaptive-sampling-for-aspnet-core-applications) o konfigurowaniu próbkowanie adaptacyjne dla platformy ASP.NET Core aplikacji. 
+[Dowiedz się,](../../azure-monitor/app/sampling.md#configuring-adaptive-sampling-for-aspnet-core-applications) o konfigurowaniu próbkowanie adaptacyjne dla aplikacji programu ASP.NET Core. 
 
 W [plik ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md), możesz dostosować kilka parametrów w `AdaptiveSamplingTelemetryProcessor` węzła. Dane liczbowe, wyświetlane są wartości domyślne:
 

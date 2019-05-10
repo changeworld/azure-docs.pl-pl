@@ -12,14 +12,14 @@ ms.topic: overview
 ms.workload: tbd
 ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: 39367cbe6c001fc782fd899ee3a99b37ece70a77
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 4c741bb86242abfb03d01c902dbaa84d83491dd9
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64699917"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408739"
 ---
-# <a name="key-value-store"></a>Magazyn wartości klucza
+# <a name="keys-and-values"></a>Klucze i wartości
 
 Konfiguracja aplikacji Azure przechowuje dane konfiguracji jako pary klucz wartość. Pary klucz wartość to proste, ale elastyczny sposób reprezentują różne rodzaje ustawień aplikacji, które deweloperzy, którzy znają.
 
@@ -86,7 +86,7 @@ Każda wartość klucza jest unikatowo identyfikowana przez jego klucza oraz ety
 
 Może zawierać również następujące wzorce etykiety:
 
-| Label | |
+| Etykieta | |
 |---|---|
 | Element `label` jest pomijany lub `label=*` | Dopasowuje wszelkie etykiety, która zawiera `null` |
 | `label=%00` | Dopasowuje `null` etykiety |
@@ -104,5 +104,5 @@ Dane konfiguracji przechowywane w magazynie konfiguracji aplikacji, która zawie
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-> [!div class="nextstepaction"]
-> [Migawkę punktu w czasie](./concept-point-time-snapshot.md)  
+* [Migawkę punktu w czasie](./concept-point-time-snapshot.md)  
+* [Funkcja zarządzania](./concept-feature-management.md)  

@@ -7,13 +7,13 @@ ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.date: 04/22/2019
-ms.openlocfilehash: a73519e2a51e0f8847e262e315f3c13057eb2ac9
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.date: 04/30/2019
+ms.openlocfilehash: 6efc11106fae18beac43ab1896733ab6bfc64dad
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63767173"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230773"
 ---
 # <a name="tutorial-configure-queues-in-azure-service-bus-using-ansible"></a>Samouczek: Konfigurowanie kolejki w usłudze Azure Service Bus za pomocą rozwiązania Ansible
 
@@ -33,8 +33,8 @@ ms.locfileid: "63767173"
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
-- [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
+[!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
+[!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
 ## <a name="create-the-service-bus-queue"></a>Tworzenie kolejki usługi Service Bus
 
@@ -252,4 +252,4 @@ ansible-playbook cleanup.yml
 
 ## <a name="next-steps"></a>Kolejne kroki
 > [!div class="nextstepaction"] 
-> [Samouczek: Konfigurowanie tematu w usłudze Azure Service Bus za pomocą rozwiązania Ansible](/azure/ansible/ansible-service-bus-create-topics)
+> [Samouczek: Konfigurowanie tematu w usłudze Azure Service Bus za pomocą rozwiązania Ansible](ansible-service-bus-topic-configure.md)

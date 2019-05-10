@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d87a60ef196ee319b630d5713c593cfaa9cf8158
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 2ea2ead29ba1945213871ab76a65e33a4d7b27cc
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65158168"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65441512"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-templafy"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Templafy
 
@@ -30,7 +30,7 @@ Integrowanie Templafy z usługą Azure AD zapewnia następujące korzyści:
 
 * Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do Templafy.
 * Aby umożliwić użytkownikom można automatycznie zalogowany do Templafy (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
+* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
@@ -63,27 +63,27 @@ Aby skonfigurować integrację Templafy w usłudze Azure AD, należy dodać Temp
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
-    ![Przycisk Nowa aplikacja](common/add-new-app.png)
+    ![Nowy przycisk aplikacji](common/add-new-app.png)
 
 4. W polu wyszukiwania wpisz **Templafy**, wybierz opcję **Templafy** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
     ![Templafy na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
 W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą Templafy w oparciu o użytkownika testu o nazwie **Britta Simon**.
 Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w Templafy musi zostać ustanowione.
 
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Templafy, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
 2. **[Konfigurowanie Templafy logowania jednokrotnego](#configure-templafy-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
 5. **[Tworzenie użytkownika testowego Templafy](#create-templafy-test-user)**  — aby odpowiednikiem Britta Simon w Templafy połączonego z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
@@ -93,7 +93,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Templafy, wykonaj n
 
 1. W [witryny Azure portal](https://portal.azure.com/)na **Templafy** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
 
-    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
+    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -120,20 +120,20 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Templafy, wykonaj n
 
     | Name (Nazwa) | Atrybut źródłowy| Przestrzeń nazw  |
     | ---------------| --------------- | --------- |
-    | givenname | user.givenname | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
-    | surname | user.surname | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
-    | emailaddress | user.mail | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`
-    | streetaddress | user.streetaddress | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
-    | city | user.city | `http://schemas.templafy.com/2016/06/identity/claims`|
-    | KodPocztowy | user.postalcode | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
-    | StanLubProwincja | User.state | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
-    | Kraj | user.country | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
-    | stanowisko | user.jobtitle | `http://schemas.templafy.com/2016/06/identity/claims`|
-    | department | user.department | `http://schemas.templafy.com/2016/06/identity/claims`|
-    | Numer telefonu | user.telephonenumber | `http://schemas.templafy.com/2016/06/identity/claims` |
-    | facsimilenumber | User.facsimiletelephonenumber | `http://schemas.templafy.com/2016/06/identity/claims`|
-    | upn | user.userprincipalname | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
-    | nameidentifier | user.mail | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
+    | Imię | user.givenname | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
+    | surname | user.surname | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
+    | emailaddress | user.mail | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims`
+    | streetaddress | user.streetaddress | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
+    | city | user.city | `https://schemas.templafy.com/2016/06/identity/claims`|
+    | KodPocztowy | user.postalcode | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
+    | StanLubProwincja | User.state | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
+    | Kraj | user.country | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
+    | stanowisko | user.jobtitle | `https://schemas.templafy.com/2016/06/identity/claims`|
+    | Dział | user.department | `https://schemas.templafy.com/2016/06/identity/claims`|
+    | Numer telefonu | user.telephonenumber | `https://schemas.templafy.com/2016/06/identity/claims` |
+    | facsimilenumber | User.facsimiletelephonenumber | `https://schemas.templafy.com/2016/06/identity/claims`|
+    | upn | user.userprincipalname | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
+    | nameidentifier | user.mail | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
     | | |
 
     a. Kliknij przycisk **Dodaj nowe oświadczenie**, aby otworzyć okno dialogowe **Zarządzanie oświadczeniami użytkownika**.
@@ -156,11 +156,11 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Templafy, wykonaj n
 
 7. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij przycisk kopiowania, aby skopiować **adres URL metadanych federacji aplikacji** i zapisać go na komputerze.
 
-    ![Link do pobierania certyfikatu](common/copy-metadataurl.png)
+    ![Link pobierania certyfikatu](common/copy-metadataurl.png)
 
 ### <a name="configure-templafy-single-sign-on"></a>Konfigurowanie Templafy logowanie jednokrotne
 
-Aby skonfigurować logowanie jednokrotne na **Templafy** stronie, musisz wysłać **adres Url metadanych Federacji aplikacji** do [zespołem pomocy technicznej Templafy](mailto:support@templafy.com). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
+Aby skonfigurować logowanie jednokrotne na **Templafy** stronie, musisz wysłać **adres Url metadanych Federacji aplikacji** do [zespołem pomocy technicznej Templafy](mailto:support@templafy.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -178,7 +178,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     ![Okno dialogowe Użytkownik](common/user-properties.png)
 
-    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+    a. W **nazwa** wprowadź **BrittaSimon**.
   
     b. W **nazwa_użytkownika** wpisz `brittasimon@yourcompanydomain.extension`. Na przykład: BrittaSimon@contoso.com
 
@@ -222,10 +222,10 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
 Po kliknięciu kafelka Templafy w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze Templafy, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

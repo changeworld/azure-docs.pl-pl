@@ -113,7 +113,7 @@
         - name: Usuwanie klastra AKS
           href: '/cli/azure/aks#az-aks-delete'
           maintainContext: true
-        - name: Tworzenie węzłów wirtualnych (wersja zapoznawcza)
+        - name: Tworzenie węzłów wirtualnych
           items:
             - name: Interfejs wiersza polecenia platformy Azure
               href: virtual-nodes-cli.md
@@ -123,9 +123,13 @@
           href: virtual-kubelet.md
         - name: Korzystanie ze skalowania automatycznego klastrów (wersja zapoznawcza)
           href: cluster-autoscaler.md
+        - name: Używanie pul z wieloma węzłami (wersja zapoznawcza)
+          href: use-multiple-node-pools.md
         - name: Wdrażanie usługi AKS przy użyciu programu Terraform
           href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
           maintainContext: true
+        - name: Korzystanie z pulpitu nawigacyjnego rozwiązania Kubernetes
+          href: kubernetes-dashboard.md
     - name: Konfigurowanie woluminów danych
       items:
         - name: Dysk platformy Azure — dynamiczny
@@ -173,12 +177,16 @@
           href: kubernetes-service-principal.md
         - name: Ograniczanie dostępu do pliku konfiguracji klastra
           href: control-kubeconfig-access.md
-        - name: Zabezpieczanie ruchu związanego z zasobnikiem za pomocą zasad sieciowych (wersja zapoznawcza)
+        - name: Zabezpieczanie ruchu związanego z zasobnikiem za pomocą zasad sieciowych
           href: use-network-policies.md
         - name: Używanie zasad zabezpieczeń zasobnika (wersja zapoznawcza)
           href: use-pod-security-policies.md
+        - name: Definiowanie zakresów autoryzowanych adresów IP dla serwera interfejsu API (wersja zapoznawcza)
+          href: api-server-authorized-ip-ranges.md
         - name: Aktualizowanie poświadczeń jednostki usługi klastra
           href: update-credentials.md
+        - name: Ograniczanie i kontrolowanie ruchu wychodzącego z klastra
+          href: limit-egress-traffic.md
         - name: Włączanie integracji z usługą Azure Active Directory
           items:
             - name: Używanie interfejsu wiersza polecenia platformy Azure
@@ -285,10 +293,6 @@
         - name: Projekt DevOps platformy Azure
           href: ../devops-project/azure-devops-project-aks.md
           maintainContext: true
-    - name: Podstawy platformy Kubernetes
-      items:
-        - name: Używanie pulpitu nawigacyjnego rozwiązania Kubernetes
-          href: kubernetes-dashboard.md
     - name: Rozwiązywanie problemów
       items:
         - name: Typowe problemy

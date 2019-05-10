@@ -17,12 +17,12 @@ ms.date: 03/20/2019
 ms.author: joflore
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81a9726b73226cd940a55e316ae434aeaad6ff4d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5f080e315430cba986642e4a24af776cc82062c0
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60354034"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190791"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Samouczek: Konfigurowanie hybrydowego dołączania do usługi Azure Active Directory dla domen zarządzanych
 
@@ -52,7 +52,10 @@ W tym samouczku założono, że znasz następujące informacje:
 -  [Jak planować implementację z hybrydowym dołączaniem do usługi Azure Active Directory](hybrid-azuread-join-plan.md)
 
 -  [Jak kontrolować hybrydowe dołączanie Twoich urządzeń do usługi Azure AD](hybrid-azuread-join-control.md)
-  
+
+> [!NOTE]
+> Usługa Azure AD nie obsługuje w domenach zarządzanych kart inteligentnych lub certyfikatów.
+
 
 Aby skonfigurować scenariusz zaprezentowany w tym artykule, potrzebujesz następujących elementów:
 
