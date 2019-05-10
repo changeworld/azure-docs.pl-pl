@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: cae29fe045d1bdc17f414ff016642635b74320df
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
-ms.translationtype: HT
+ms.openlocfilehash: ee539b87c08dd00545060cb30d28ac7fcd01e61b
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408828"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65518993"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Samouczek: Używanie dynamicznej konfiguracji w aplikacji platformy ASP.NET Core
 
@@ -63,6 +63,9 @@ Aby skorzystać z tego samouczka, należy zainstalować [zestawu .NET Core SDK](
     ```
 
     Drugi parametr w `.Watch` metodą jest interwał sondowania, jaką Biblioteka klienta ASP.NET zapytania konfiguracji sklepu z aplikacjami. Biblioteka klienta sprawdza, czy ustawienie określonej konfiguracji, aby zobaczyć, czy każda zmiana wystąpił.
+    
+    > [!NOTE]
+    > Interwał sondowania domyślne `Watch` — metoda rozszerzenia jest 30 sekund, jeśli nie zostanie określony.
 
 2. Dodaj plik *Settings.cs*, który definiuje i implementuje nową klasę `Settings`.
 

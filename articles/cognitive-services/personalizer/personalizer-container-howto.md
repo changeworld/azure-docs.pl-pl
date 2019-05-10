@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
-ms.date: 05/07/2019
+ms.date: 05/09/2019
 ms.author: edjez
-ms.openlocfilehash: 2a62fd288f9118882e5cd9899ab572d4b247fc5a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: a197531a7c78823271c0a5fa5413b76746f63a9a
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65158539"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507028"
 ---
 # <a name="install-and-run-personalizer-containers"></a>Instalowanie i uruchamianie kontenerów Personalizer
 
@@ -178,11 +178,11 @@ Kontener zawiera pełny zestaw dokumentacji dla punktów końcowych, a także `T
 >  http://localhost:5000/swagger
 >  ```
 
-## <a name="billing"></a>Rozliczenia
+## <a name="billing"></a>Informacje billingowe
 
 Wyślij kontenerów usługi Personalizer rozliczeń informacje na platformie Azure, przy użyciu _usługi Personalizer_ zasobów dla konta systemu Azure. 
 
-Kontenery usługi cognitive Services nie są licencjonowane do uruchomienia bez połączenia z platformy Azure do zbierania danych. Klienci muszą włączyć kontener, aby komunikować informacje rozliczeniowe usłudze zliczania przez cały czas. Kontenery usługi cognitive Services nie wysyłaj danych klienta do firmy Microsoft. 
+Kontenery usługi cognitive Services nie są licencjonowane do uruchomienia bez połączenia z platformy Azure do zbierania danych. Klienci muszą włączyć kontener, aby komunikować informacje rozliczeniowe usłudze zliczania przez cały czas.  
 
 `docker run` Polecenie używa następujących argumentów na potrzeby rozliczeń:
 

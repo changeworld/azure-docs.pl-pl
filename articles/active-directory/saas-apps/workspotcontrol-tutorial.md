@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą kontrolki Workspot | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Workspot Control.
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne usługi Azure Active Directory i Workspot kontroli.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,234 +15,237 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 676a0da5f677bacc7451bf25584180d6e9e10a72
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 92173e760cf8207a15c643ca75913145ed343b55
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920312"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65517748"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą kontrolki Workspot
 
-W tym samouczku dowiesz się, jak zintegrować Workspot kontroli przy użyciu usługi Azure Active Directory (Azure AD).
-Integrowanie kontroli Workspot z usługą Azure AD zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować Workspot kontroli przy użyciu usługi Azure Active Directory (Azure AD). Po zintegrowaniu Workspot kontrolki z usługą Azure AD możesz wykonywać następujące czynności:
 
-* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do sterowania Workspot.
-* Użytkownikom można automatycznie zalogowany do kontroli Workspot (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD.
-* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
+* Używaj usługi Azure AD w celu kontrolowania, kto ma dostęp do kontroli Workspot.
+* Umożliwić użytkownikom automatyczne logowanie do sterowania Workspot (logowanie jednokrotne [logowanie Jednokrotne]) za pomocą ich kont usługi Azure AD.
+* Zarządzanie Twoimi kontami w jednej centralnej lokalizacji: witryna Azure portal.
 
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Aby uzyskać więcej informacji na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [logowanie jednokrotne do aplikacji w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby skonfigurować integrację usługi Azure AD za pomocą kontrolki Workspot, potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie ma środowiska usługi Azure AD, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/)
-* Kontrolka Workspot logowanie jednokrotne włączone subskrypcji
+* Subskrypcja usługi Azure AD. Jeśli nie ma środowiska usługi Azure AD, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/).
+
+* Formant Workspot pojedynczy znak na włączona subskrypcji.
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Obsługuje formant Workspot **SP** i **tożsamości** jednokrotne logowanie inicjowane przez
+> [!Note]
+> Sterowanie Workspot obsługuje logowanie Jednokrotne zainicjowane przez Dostawcę i inicjowane przez dostawcę tożsamości.
+
 
 ## <a name="adding-workspot-control-from-the-gallery"></a>Dodawanie kontrolki Workspot z galerii
 
 Aby skonfigurować integrację Workspot kontrolki w usłudze Azure AD, należy dodać formant Workspot z galerii z listą zarządzanych aplikacji SaaS.
 
-**Aby dodać kontrolkę Workspot z galerii, wykonaj następujące czynności:**
+**Aby dodać kontrolkę Workspot z galerii, wykonaj następujące kroki:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W okienku po lewej stronie [witryny Azure portal](https://portal.azure.com), wybierz opcję **usługi Azure Active Directory**.
 
-    ![Przycisk Azure Active Directory](common/select-azuread.png)
+    ![Przycisk usługi Azure Active Directory](common/select-azuread.png)
 
-2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
+2. Przejdź do **aplikacje dla przedsiębiorstw** i wybierz **wszystkie aplikacje**.
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+    ![Okienko Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+3. Wybierz **nową aplikację** w górnej części okna.
 
-    ![Przycisk Nowa aplikacja](common/add-new-app.png)
+    ![Nowy przycisk aplikacji](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **Workspot kontroli**, wybierz opcję **Workspot kontroli** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wprowadź **kontroli Workspot**, wybierz opcję **kontroli Workspot** z panel wyników, a następnie wybierz **Dodaj**.
 
-     ![Kontrolka Workspot na liście wyników](common/search-new-app.png)
+     !["Dodaj z galerii" okna](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji skonfigurujesz i test usługi Azure AD logowanie jednokrotne za pomocą kontrolki Workspot w oparciu o nazwie użytkownika testowego **Britta Simon**.
-Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w kontrolce Workspot musi zostać ustanowione.
+W tej sekcji służy do konfigurowania i testowania usługi Azure AD logowanie jednokrotne za pomocą kontrolki Workspot dla użytkownika testowego, Britta Simon.
+Dla logowania jednokrotnego do pracy należy nawiązania połączenia między użytkownika usługi Azure AD i powiązanych użytkownika w kontrolce Workspot.
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą kontrolki Workspot, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą kontrolki Workspot, należy wykonać następujące zadania:
 
-1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
-2. **[Konfigurowanie Workspot kontrolki logowania jednokrotnego](#configure-workspot-control-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
-5. **[Tworzenie użytkownika testowego kontroli Workspot](#create-workspot-control-test-user)**  — aby odpowiednikiem Britta Simon w formant Workspot, który jest połączony z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
+1. [Skonfiguruj logowanie jednokrotne w usłudze Azure AD](#configure-azure-ad-single-sign-on), aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. [Konfigurowanie kontroli Workspot logowania jednokrotnego](#configure-workspot-control-single-sign-on) do konfigurowania pojedynczego ustawień logowania jednokrotnego na stronie aplikacji.
+3. [Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user) do testowania usługi Azure AD logowanie jednokrotne dla Britta Simon.
+4. [Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user) — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. [Tworzenie użytkownika testowego kontroli Workspot](#create-a-workspot-control-test-user) nawiązać odpowiednikiem Britta Simon w formancie Workspot, połączonego z usługi Azure AD reprezentacja użytkownika.
+6. [Przetestuj logowanie jednokrotne](#test-single-sign-on), aby sprawdzić działanie konfiguracji.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-Aby skonfigurować usługę Azure AD logowanie jednokrotne za pomocą kontrolki Workspot, wykonaj następujące czynności:
+Aby skonfigurować usługę Azure AD logowanie jednokrotne za pomocą kontrolki Workspot, wykonaj następujące kroki:
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **kontroli Workspot** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. Na **kontroli Workspot** strony integracji aplikacji w [witryny Azure portal](https://portal.azure.com/), wybierz opcję **logowanie jednokrotne**.
 
-    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
+    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
 
-2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
+2. W **wybierz jedną metodę logowania jednokrotnego** oknie Wybierz **SAML** trybu, aby włączyć logowanie jednokrotne.
 
-    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
+    ![Wybierz okno pojedynczego wybierz metodę logowania](common/select-saml-option.png)
 
-3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
+3. Na **Ustaw się logowanie jednokrotne z SAML** wybierz opcję **Edytuj** (ołówka) Aby uzyskać dostęp do **podstawową konfigurację protokołu SAML**.
 
-    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
+    ![Edytuj ikonę wyróżnione "Podstawowa konfiguracja SAML"](common/edit-urls.png)
 
-4. Jeśli chcesz skonfigurować aplikację w trybie inicjowanym przez **dostawcę tożsamości**, w sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące kroki:
+4. W **podstawową konfigurację protokołu SAML** sekcji, aby skonfigurować aplikację w trybie inicjowane przez dostawcę tożsamości, wykonaj następujące kroki:
 
-    ![Workspot kontroli domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/idp-intiated.png)
+    ![Kontrolka Workspot domena i adresy URL pojedynczy informacje logowania jednokrotnego](common/idp-intiated.png)
 
-    a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://<INSTANCENAME>-saml.workspot.com/saml/metadata`
+    1. W **identyfikator** tekstu wprowadź adres URL w następującym wzorcem:<br/>
+    ***https://<<i></i>NAZWA_WYSTĄPIENIA >-saml.workspot.com/saml/metadata***
 
-    b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<INSTANCENAME>-saml.workspot.com/saml/assertion`
+    1. W **adres URL odpowiedzi** tekstu wprowadź adres URL w następującym wzorcem:<br/>
+    ***https://<<i></i>NAZWA_WYSTĄPIENIA >-saml.workspot.com/saml/assertion***
 
-5. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
+5. Aby skonfigurować aplikację w trybie zainicjowanego przez dostawcę usług, zaznacz **Ustaw dodatkowe adresy URL**.
 
-    ![Workspot kontroli domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/metadata-upload-additional-signon.png)
+    ![Kontrolka Workspot domena i adresy URL pojedynczy informacje logowania jednokrotnego](common/metadata-upload-additional-signon.png)
 
-    W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<INSTANCENAME>-saml.workspot.com/`
+    W **adres URL logowania** tekstu wprowadź adres URL w następującym wzorcem:<br/>
+    ***https://<<i></i>NAZWA_WYSTĄPIENIA >-saml.workspot.com/***
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Należy je zastąpić rzeczywistymi wartościami identyfikatora, adresu URL odpowiedzi i adresu URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta sterowania Workspot](mailto:support@workspot.com) do uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Te wartości nie są prawdziwe. Zastąp te wartości z identyfikatorem rzeczywisty adres URL odpowiedzi i adres URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta sterowania Workspot](mailto:support@workspot.com) do uzyskania tych wartości. Lub też mogą odwoływać się do wzorców w **podstawową konfigurację protokołu SAML** części witryny Azure portal.
 
-6. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
+6. Na **Ustaw się logowanie jednokrotne z SAML** strony w **certyfikat podpisywania SAML** zaznacz **Pobierz** można pobrać **certyfikat (Base64)** z listy dostępnych opcji, zgodnie z wymaganiami. Zapisz go na komputerze.
 
-    ![Link do pobierania certyfikatu](common/certificatebase64.png)
+    ![Link pobierania certyfikat (Base64)](common/certificatebase64.png)
 
-7. Na **skonfigurować kontrolę Workspot** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+7. W **skonfigurować kontrolę Workspot** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami:
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-    a. Adres URL logowania
+    - **Adres URL logowania**
 
-    b. Identyfikator usługi Azure AD
+    - **Identyfikator usługi Azure AD**
 
-    c. Adres URL wylogowywania
+    - **Adres URL wylogowania**
 
 ### <a name="configure-workspot-control-single-sign-on"></a>Konfigurowanie kontroli Workspot logowania jednokrotnego
 
 1. W oknie przeglądarki internetowej innej Zaloguj się do sterowania Workspot jako Administrator zabezpieczeń.
 
-2. Na pasku narzędzi w górnej części strony kliknij **instalacji**, a następnie przejdź do **SAML**.
+2. Na pasku narzędzi w górnej części strony wybierz **instalacji** i następnie **SAML**.
 
-    ![image](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_setup.png)
+    ![Opcje konfiguracji](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_setup.png)
 
-3. Na **konfigurację języka znaczników asercji zabezpieczeń** strony, wykonaj następujące czynności:
+3. W **konfigurację języka znaczników asercji zabezpieczeń** okna, wykonaj następujące kroki:
  
-    ![image](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_saml.png)
+    ![Okno konfigurację języka znaczników asercji zabezpieczeń](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_saml.png)
 
-    a. W **identyfikator jednostki** pola tekstowego, Wklej wartość **usługi Azure Ad identyfikator** skopiowanej w witrynie Azure portal.   
+    1. W **identyfikator jednostki** pole, Wklej **usługi Azure Ad identyfikator** skopiowaną z witryny Azure portal.
 
-    b.In **adres URL usługi logować** pola tekstowego, Wklej wartość **adres URL logowania** skopiowanej w witrynie Azure portal.
+    1. W **adres URL usługi logować** pole, Wklej **adres URL logowania** skopiowaną z witryny Azure portal.
 
-    c. W **adres URL usługi wylogowania** pola tekstowego, Wklej wartość **adres URL wylogowania** skopiowanej w witrynie Azure portal. 
+    1. W **adres URL usługi wylogowania** pole, Wklej **adres URL wylogowania** skopiowaną z witryny Azure portal.
 
-    d. Kliknij pozycję **plik aktualizacji** certyfikat, pobrany z witryny Azure portal do certyfikat X.509 szyfrowany algorytmem przycisk, aby przekazać base-64.
+    1. Wybierz **plik aktualizacji** do przekazania do certyfikatów X.509 base-64 zakodowany certyfikat, który został pobrany z witryny Azure portal.
 
-    e. Kliknij pozycję **Zapisz**.
+    1. Wybierz pozycję **Zapisz**.
 
-### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
+W tej sekcji utworzysz użytkownika testowego w witrynie Azure portal.
 
-1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
+1. W okienku po lewej stronie w witrynie Azure Portal wybierz **usługi Azure Active Directory**, **użytkowników**, a następnie **wszyscy użytkownicy**.
 
-    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
+    !["Użytkownicy i grupy" i "All users" linki](common/users.png)
 
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+2. Wybierz **nowego użytkownika** w górnej części okna.
 
-    ![Przycisk Nowy użytkownik](common/new-user.png)
+    !["Nowy użytkownik" przycisk](common/new-user.png)
 
-3. We właściwościach użytkownika wykonaj następujące kroki.
+3. W oknie właściwości dla użytkownika, wykonaj następujące kroki:
 
-    ![Okno dialogowe Użytkownik](common/user-properties.png)
+    ![W oknie właściwości użytkownika](common/user-properties.png)
 
-    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+    1. W **nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola brittasimon@yourcompanydomain.extension. Na przykład: BrittaSimon@contoso.com
+    1. W **nazwa_użytkownika** wprowadź **brittasimon @* yourcompanydomain.extension***. Na przykład, wprowadź  **BrittaSimon@contoso.<i> </i>com**.
 
-    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
+    1. Wybierz **hasło Show** pole wyboru. Zapisz wartość, która jest wyświetlana w **hasło** pole.
 
-    d. Kliknij pozycję **Utwórz**.
+    1. Wybierz pozycję **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do sterowania Workspot.
+W tej sekcji możesz udzielać dostępu Britta Simon Workspot kontrolki umożliwiające jej do użycia platformy Azure logowania jednokrotnego.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **kontroli Workspot**.
+1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, **wszystkie aplikacje**, a następnie **kontroli Workspot**.
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+    ![Okienko Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście aplikacji wybierz **kontroli Workspot**.
+2. Na liście aplikacji zaznacz **kontroli Workspot**.
 
     ![Link Workspot formant na liście aplikacji](common/all-applications.png)
 
-3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
+3. W menu po lewej stronie wybierz **użytkowników i grup**.
 
-    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
+    ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
 
-4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
+4. Wybierz **Dodaj użytkownika** przycisku. Następnie wybierz pozycję **użytkowników i grup** w **Dodaj przypisanie** okna.
 
-    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
+    ![W oknie "Dodawanie przypisania"](common/add-assign-user.png)
 
-5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+5. W **użytkowników i grup** wybierz **Britta Simon** z **użytkowników** listy. Następnie kliknij pozycję **Wybierz**.
 
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+6. Jeśli oczekujesz od dowolnej wartości roli dla asercji SAML, wybierz odpowiednią rolę dla użytkownika z listy w **wybierz rolę** okna. Następnie kliknij przycisk **wybierz** u dołu.
 
-7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+7. W **Dodaj przydziału** wybierz **przypisać**.
 
-### <a name="create-workspot-control-test-user"></a>Tworzenie użytkownika testowego Workspot kontroli
+### <a name="create-a-workspot-control-test-user"></a>Tworzenie użytkownika testowego Workspot kontroli
 
-Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do sterowania Workspot, musi być obsługiwana w systemie kontroli Workspot. W kontrolce Workspot aprowizacji to zadanie ręczne.
+Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do sterowania Workspot, musi być obsługiwana w systemie kontroli Workspot. Inicjowanie obsługi to zadanie ręczne.
 
-**Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
+**Aby udostępnić konto użytkownika, wykonaj następujące kroki:**
 
 1. Zaloguj się do sterowania Workspot jako Administrator zabezpieczeń.
 
-2. Na pasku narzędzi w górnej części strony kliknij **użytkowników**, a następnie przejdź do **Dodaj użytkownika**.
+2. Na pasku narzędzi w górnej części strony wybierz **użytkowników** i następnie **Dodaj użytkownika**.
 
-    ![image](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_adduser.png)
+    ![Opcji "Użytkownicy"](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_adduser.png)
 
-3. Na **dodać nowego użytkownika** strony, wykonaj następujące czynności:
+3. W **dodać nowego użytkownika** okna, wykonaj następujące kroki:
 
-    ![image](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_addnewuser.png)
+    ![Okno "Dodaj nowego użytkownika"](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_addnewuser.png)
 
-    a. W polu tekstowym **First Name** (Imię) wprowadź imię użytkownika, na przykład **Britta**.
+    1. W **imię** Wprowadź imię użytkownika, takie jak **Britta**.
 
-    b. W polu tekstowym **Last Name** (Nazwisko) wprowadź nazwisko użytkownika, na przykład **Simon**.
+    1. W **nazwisko** tekstu wprowadź nazwisko użytkownika, takie jak **Simon**.
 
-    c. W **E-mail** tekstu wprowadź adres e-mail użytkownika, takich jak Brittasimon@contoso.com.
+    1. W **E-mail** wprowadź adres e-mail użytkownika, takie jak  **Brittasimon@contoso.<i> </i>com**.
 
-    d. Wybieranie odpowiedniej roli użytkownika z **roli** listy rozwijanej.
+    1. Wybieranie odpowiedniej roli użytkownika z **roli** listy rozwijanej.
 
-    e. Wybierz do odpowiedniej grupy użytkowników z **grupy** listy rozwijanej.
+    1. Wybierz do odpowiedniej grupy użytkowników z **grupy** listy rozwijanej.
 
-    f. Kliknij pozycję **Add User** (Dodaj użytkownika).
+    1. Wybierz pozycję **Add User** (Dodaj użytkownika).
 
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji testujemy naszej usługi Azure AD jednej konfiguracji logowania jednokrotnego za pośrednictwem *panelu dostępu*.
 
-Po kliknięciu kafelka Workspot kontrolki w panelu dostępu, możesz powinny być automatycznie zalogowany do kontroli Workspot, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu **kontroli Workspot** kafelka w panelu dostępu, powinny być automatycznie zarejestrowaniu w usłudze kontroli Workspot, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji, zobacz [Wprowadzenie do panelu dostępu](https://docs.microsoft.com/en-us/azure/active-directory/user-help/my-apps-portal-end-user-access).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Samouczków dotyczących integrowania aplikacji SaaS przy użyciu usługi Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/tutorial-list)
 
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Single sign-on to applications in Azure Active Directory (Logowanie jednokrotne do aplikacji w usłudze Azure Active Directory)](https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

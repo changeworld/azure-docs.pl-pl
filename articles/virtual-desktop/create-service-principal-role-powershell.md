@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/12/2019
 ms.author: helohr
-ms.openlocfilehash: d3357cec426585ba8550301dfa703f583a930ad0
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 1e53f76f564c0970ac1f291d2125807441500de6
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236931"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523315"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-with-powershell"></a>Samouczek: Tworzenie jednostek usługi i przypisań ról za pomocą programu PowerShell
 
@@ -38,10 +38,9 @@ Zanim będzie można utworzyć jednostki usługi i przypisań ról, należy wyko
     Install-Module AzureAD
     ```
 
-2. Uruchom następujące polecenia cmdlet przy użyciu wartości w cudzysłowie zastąpione wartościami odpowiednich do sesji. Jeśli właśnie utworzony, w dzierżawie pulpitu wirtualnego Windows z [utworzyć dzierżawę w samouczku pulpitu wirtualnego Windows](./tenant-setup-azure-active-directory.md), użycie "Domyślna dzierżawa grupy" jako nazwa grupy dzierżawy.
+2. Uruchom następujące polecenia cmdlet przy użyciu wartości w cudzysłowie zastąpione wartościami odpowiednich do sesji.
 
     ```powershell
-    $myTenantGroupName = "<my-tenant-group-name>"
     $myTenantName = "<my-tenant-name>"
     ```
 
@@ -68,8 +67,7 @@ Uruchom następujące polecenia cmdlet programu PowerShell, aby połączyć się
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-Set-RdsContext -TenantGroupName $myTenantGroupName
-New-RdsRoleAssignment -RoleDefinitionName "RDS Owner" -ApplicationId $svcPrincipal.AppId -TenantGroupName $myTenantGroupName -TenantName $myTenantName
+New-RdsRoleAssignment -RoleDefinitionName "RDS Owner" -ApplicationId $svcPrincipal.AppId -TenantName $myTenantName
 ```
 
 ## <a name="sign-in-with-the-service-principal"></a>Zaloguj się przy użyciu jednostki usługi

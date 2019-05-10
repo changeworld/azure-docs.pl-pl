@@ -9,12 +9,12 @@ ms.subservice: language-understanding
 ms.topic: overview
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: c26f3d6c3b34ed90a5455bb94ea71d7556b47751
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2bb50f985b99a3fb62e7b8a61bb0f9ce2dd402e1
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60309466"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522005"
 ---
 # <a name="what-is-language-understanding-luis"></a>Co to jest usługa Language Understanding (LUIS)?
 
@@ -33,7 +33,7 @@ Po opublikowaniu aplikacji usługi LUIS aplikacja kliencka wysyła wypowiedzi (t
 
 ![Ilustracje przedstawiające współdziałanie usługi LUIS z czatbotem w celu przewidywania tekstu użytkownika z użyciem przetwarzania języka naturalnego](./media/luis-overview/luis-overview-process-2.png "Ilustracje przedstawiające współdziałanie usługi LUIS z czatbotem w celu przewidywania tekstu użytkownika z użyciem przetwarzania języka naturalnego")
 
-|Krok|Akcja|
+|Krok|action|
 |:--|:--|
 |1|Aplikacja kliencka wysyła _wypowiedź_ użytkownika (tekst wypowiadany własnymi słowami): „I want to call my HR rep” („Chcę zadzwonić do mojego przedstawiciela działu kadr”) do punktu końcowego usługi LUIS jako żądanie HTTP.|
 |2|Usługa LUIS stosuje model wyuczony do tekstu w języku naturalnym, aby umożliwić inteligentne zrozumienie danych wejściowych użytkownika. Usługa LUIS zwraca odpowiedź w formacie JSON z najwyżej ocenioną intencją: „HRContact”. Minimalna odpowiedź punktu końcowego w formacie JSON zawiera wypowiedź zapytania oraz najwyżej ocenioną intencję. Może również zawierać wyodrębnione dane, takie jak jednostka Typ kontaktu.|
@@ -53,7 +53,7 @@ Aplikacja usługi LUIS zawiera model języka naturalnego specyficzny dla domeny.
 * **Jednostki niestandardowe** usługi LUIS oferują kilka sposobów określania własnych niestandardowych intencji i jednostek, w tym jednostek uczenia maszynowego, jednostek specyficznych lub literałów oraz kombinacji uczenia maszynowego i literałów.
 
 ## <a name="build-the-luis-model"></a>Tworzenie modelu w usłudze LUIS
-Utwórz model za pomocą interfejsów API [tworzenia](https://aka.ms/luis-authoring-apis) lub portalu LUIS.
+Utwórz model za pomocą interfejsów API [tworzenia](https://go.microsoft.com/fwlink/?linkid=2092087) lub portalu LUIS.
 
 Tworzenie modelu w usłudze LUIS rozpoczyna się od kategorii intencji użytkownika o nazwie **[Intencje](luis-concept-intent.md)**. Każda intencja musi zawierać przykłady **[wypowiedzi](luis-concept-utterance.md)** użytkownika. Każda wypowiedź może zawierać szereg danych do wyodrębnienia, określonych za pomocą **[jednostek](luis-concept-entity-types.md)**. 
 
@@ -65,7 +65,7 @@ Tworzenie modelu w usłudze LUIS rozpoczyna się od kategorii intencji użytkown
 
 ## <a name="query-prediction-endpoint"></a>Punkt końcowy przewidywania zapytania
 
-Gdy model zostanie utworzony i opublikowany w punkcie końcowym, aplikacja kliencka wysyła wypowiedzi do interfejsu API opublikowanego [punktu końcowego](https://aka.ms/luis-endpoint-apis) przewidywania. Interfejs API wykorzystuje ten model do analizy tekstu. Interfejs API przesyła odpowiedzi zawierające wyniki przewidywania w formacie JSON.  
+Gdy model zostanie utworzony i opublikowany w punkcie końcowym, aplikacja kliencka wysyła wypowiedzi do interfejsu API opublikowanego [punktu końcowego](https://go.microsoft.com/fwlink/?linkid=2092356) przewidywania. Interfejs API wykorzystuje ten model do analizy tekstu. Interfejs API przesyła odpowiedzi zawierające wyniki przewidywania w formacie JSON.  
 
 Minimalna odpowiedź punktu końcowego w formacie JSON zawiera wypowiedź zapytania oraz najwyżej ocenioną intencję. Może również zawierać wyodrębnione dane, takie jak jednostka **Typ kontaktu**. 
 
@@ -126,6 +126,6 @@ Utwórz nową aplikację usługi LUIS za pomocą domeny [wstępnie utworzonej](l
 
 [bot-framework]: https://docs.microsoft.com/bot-framework/
 [flow]: https://docs.microsoft.com/connectors/luis/
-[authoring-apis]: https://aka.ms/luis-authoring-api
-[endpoint-apis]: https://aka.ms/luis-endpoint-apis
+[authoring-apis]: https://go.microsoft.com/fwlink/?linkid=2092087
+[endpoint-apis]: https://go.microsoft.com/fwlink/?linkid=2092356
 [qnamaker]: https://qnamaker.ai/

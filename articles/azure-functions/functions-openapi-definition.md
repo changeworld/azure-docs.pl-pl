@@ -11,12 +11,12 @@ ms.date: 05/08/2019
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 255a7c9d0b9da15176fca90c6934a84fa0f863ed
-ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
-ms.translationtype: HT
+ms.openlocfilehash: fc724e241849f4519a0e353cb6789d3f83eaf4b9
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/09/2019
-ms.locfileid: "65501868"
+ms.locfileid: "65510486"
 ---
 # <a name="create-an-openapi-definition-for-a-function-with-azure-api-management"></a>Tworzenie definicji interfejsu OpenAPI dla funkcji usługi Azure API Management
 
@@ -30,6 +30,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Tworzenie funkcji na platformie Azure
 > * Generowanie definicji interfejsu OpenAPI za pomocą usługi Azure API Management
 > * Testowanie definicji przez wywołanie funkcji
+> * Pobieranie definicji interfejsu OpenAPI
 
 ## <a name="create-a-function-app"></a>Tworzenie aplikacji funkcji
 
@@ -164,11 +165,11 @@ Teraz możesz przystąpić do generowania definicji interfejsu OpenAPI.
 
 Interfejs API został utworzony dla tej funkcji.
 
-## <a name="test-the-openapi-definition"></a>Testowanie definicji interfejsu OpenAPI
+## <a name="test-the-api"></a>Testowanie interfejsu API
 
-Zanim użyjesz definicji interfejsu API, należy sprawdzić, czy działa.
+Zanim użyjesz definicji interfejsu OpenAPI, należy sprawdzić, czy działa interfejs API.
 
-1. Na **testu** kartę funkcji, wybierz opcję **WPIS** operacji
+1. Na **testu** kartę funkcji, wybierz opcję **WPIS** operacji.
 
 1. Wprowadź wartości w polach **godzin** i **pojemności**
 
@@ -183,9 +184,21 @@ Zanim użyjesz definicji interfejsu API, należy sprawdzić, czy działa.
 
     ![Interfejsu API test function](media/functions-openapi-definition/test-function-api-openapi.png)
 
+## <a name="download-the-openapi-definition"></a>Pobieranie definicji interfejsu OpenAPI
+
+Jeśli Twój interfejs API działa zgodnie z oczekiwaniami, możesz pobrać definicji interfejsu OpenAPI.
+
+1. Wybierz **definicji OpenAPI Pobierz** w górnej części strony.
+   
+   ![Pobieranie definicji interfejsu OpenAPI](media/functions-openapi-definition/download-definition.png)
+
+2. Otwórz pobrany plik JSON i przejrzyj definicji.
+
 [!INCLUDE [clean-up-section-portal](../../includes/clean-up-section-portal.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
 
+Integracja interfejsu API zarządzania używanych do generowania definicji interfejsu OpenAPI funkcji. Teraz możesz edytować definicję w usłudze API Management w portalu. Możesz również [Dowiedz się więcej o usłudze API Management](../api-management/api-management-key-concepts.md).
+
 > [!div class="nextstepaction"]
-> [Dowiedz się więcej o usłudze API Management](../api-management/api-management-key-concepts.md)
+> [Edytuj definicję interfejsu OpenAPI w usłudze API Management](../api-management/edit-api.md)

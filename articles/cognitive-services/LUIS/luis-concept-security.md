@@ -11,18 +11,18 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: diberry
-ms.openlocfilehash: 5abc2026362e19b406b34a4321e766c3229cc0b4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 499854bcf6774c3e4eee350c1dd4a2204885f3b1
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60813647"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522474"
 ---
 # <a name="authoring-and-endpoint-user-access"></a>Dostęp użytkownika do tworzenia i punktu końcowego
 Tworzenie dostępu jest dostępna dla właścicieli i współpracowników. Dla aplikacji sieci prywatnej dostępu do punktu końcowego jest dostępna dla właścicieli i współpracowników. W przypadku publicznych aplikacji dostęp do punktu końcowego jest dostępny dla wszystkich, ma swoje własne konto usługi LUIS, która zawiera identyfikator aplikacji publicznych. 
 
 ## <a name="access-to-authoring"></a>Dostęp do tworzenia
-Dostęp do aplikacji z [LUIS](luis-reference-regions.md#luis-website) witryny sieci Web lub [Tworzenie interfejsów API](https://aka.ms/luis-authoring-apis) jest kontrolowana przez właściciela aplikacji. 
+Dostęp do aplikacji z [LUIS](luis-reference-regions.md#luis-website) witryny sieci Web lub [Tworzenie interfejsów API](https://go.microsoft.com/fwlink/?linkid=2092087) jest kontrolowana przez właściciela aplikacji. 
 
 Właściciela i współpracowników wszystkie mają dostęp do tworzenia aplikacji. 
 

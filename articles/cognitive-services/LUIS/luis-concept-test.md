@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: c9f1cf80cd3a781e878daca2048f7c5dc9095a7c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 02c079e9cda88c969e5382b2c70c551cf9a88e14
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60710632"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522495"
 ---
 # <a name="testing-example-utterances-in-luis"></a>Testowanie przykład wypowiedzi w usługi LUIS
 
@@ -46,7 +46,7 @@ Wszystkie punkt końcowy testowania liczby kierunku limitu przydziału użycia.
 Jeśli testujemy współpracę z punktu końcowego, a nie chcesz wypowiedź rejestrowane, pamiętaj, aby używać `logging=false` Konfiguracja ciągu zapytania.
 
 ## <a name="where-to-find-utterances"></a>Gdzie można znaleźć wypowiedzi
-Usługa LUIS przechowuje wypowiedzi wszystkich zarejestrowanych w dzienniku zapytań dostępnych do pobrania na [LUIS](luis-reference-regions.md) witryny sieci Web **aplikacje** strony listy, a także usługi LUIS [Tworzenie interfejsów API](https://aka.ms/luis-authoring-apis). 
+Usługa LUIS przechowuje wypowiedzi wszystkich zarejestrowanych w dzienniku zapytań dostępnych do pobrania na [LUIS](luis-reference-regions.md) witryny sieci Web **aplikacje** strony listy, a także usługi LUIS [Tworzenie interfejsów API](https://go.microsoft.com/fwlink/?linkid=2092087). 
 
 Wypowiedzi usługa LUIS jest pewności, jakie są wymienione w **[Przejrzyj wypowiedzi punktu końcowego](luis-how-to-review-endpoint-utterances.md)** strony [LUIS](luis-reference-regions.md) witryny sieci Web. 
 

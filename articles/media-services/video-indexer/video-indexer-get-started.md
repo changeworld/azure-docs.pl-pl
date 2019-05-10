@@ -6,15 +6,16 @@ services: media-services
 author: Juliako
 manager: femila
 ms.service: media-services
+ms.subservice: video-indexer
 ms.topic: tutorial
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: c0c1f9e4b8ed854c562ad7af16222e726b3b4293
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fe15773d2f49e7ac1378122aa19ae28f7cdd09c9
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60560302"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65519809"
 ---
 # <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>Szybki start: jak utworzyć konto i przekazać pierwszy plik wideo
 
@@ -31,7 +32,7 @@ Aby rozpocząć tworzenie rozwiązań za pomocą usługi Video Indexer, przejdź
 1. Zaloguj się w witrynie internetowej usługi [Video Indexer](https://www.videoindexer.ai/).
 2. Aby przekazać plik wideo, naciśnij przycisk lub link **Upload** (Przekaż).
 
-    ![Upload](./media/video-indexer-get-started/video-indexer-upload.png)
+    ![Przekazanie](./media/video-indexer-get-started/video-indexer-upload.png)
 
     Po przekazaniu pliku wideo usługa Video Indexer rozpocznie jego indeksowanie i analizowanie.
 

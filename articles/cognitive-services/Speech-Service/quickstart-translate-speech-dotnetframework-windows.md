@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 03/13/2019
 ms.author: erhopf
-ms.openlocfilehash: ba3529db07fcc3d92a8ca220dafbed9760a2b63a
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
-ms.translationtype: HT
+ms.openlocfilehash: 0bb5fa25301fa86564c7f7aadb3285bdd5898a08
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/09/2019
-ms.locfileid: "65465520"
+ms.locfileid: "65511159"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-net-framework"></a>Szybki start: tłumaczenie mowy przy użyciu zestawu SDK usługi Mowa dla platformy .NET Framework
 
-Przewodniki Szybki Start są również dostępne dla [mowy na tekst](quickstart-csharp-dotnet-windows.md) i i [zamiany tekstu na mowę](quickstart-text-to-speech-dotnet-windows.md).
+Przewodniki Szybki Start są również dostępne dla [mowy na tekst](quickstart-csharp-dotnet-windows.md) i [zamiany tekstu na mowę](quickstart-text-to-speech-dotnet-windows.md).
 
 W tym przewodniku Szybki start utworzysz prostą aplikację .NET Framework, która przechwytuje mowę użytkownika z mikrofonu komputera, tłumaczy tę mowę i transkrybuje przetłumaczony tekst do wiersza polecenia w czasie rzeczywistym. Ta aplikacja jest przeznaczona do uruchamiania w 64-bitowych systemach Windows i jest kompilowana przy użyciu [pakietu NuGet zestawu SDK usługi Mowa](https://aka.ms/csspeech/nuget) i programu Microsoft Visual Studio 2017.
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: kumud;tyao
-ms.openlocfilehash: c59731b7121b18d6a8b257d6b7b7c05c421318c8
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: af1846f66996ded553a95188df958e9592ec68a2
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64572338"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523788"
 ---
 # <a name="how-to-set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>Jak skonfigurować zasady filtrowania geograficznego zapory aplikacji sieci Web dla usługi drzwi
 W tym samouczku pokazano, jak utworzyć przykładowe zasady filtrowania geograficznego za pomocą programu Azure PowerShell i skojarzyć je z istniejącym hostem frontonu usługi Front Door. Te zasady filtrowania geograficznego próbka będzie blokować żądania od wszystkich innych krajach/regionach z wyjątkiem Stanów Zjednoczonych.
@@ -53,10 +53,10 @@ Utwórz profil drzwiami frontowymi, wykonując instrukcje opisane w [Szybki Star
 
 ## <a name="define-geo-filtering-match-condition"></a>Zdefiniuj filtrowania geograficznego warunek dopasowania
 
-Utwórz warunek dopasowania przykładowe wybierające żądań, które nie pochodzą z "PL" przy użyciu [AzFrontDoorMatchConditionObject nowy](/powershell/module/az.frontdoor/new-azfrontdoormatchconditionobject) na parametry podczas tworzenia warunków dopasowania. Znajdują się dwie litery numerów kierunkowych krajów do mapowania kraju [tutaj](front-door-geo-filtering.md).
+Utwórz warunek dopasowania przykładowe wybierające żądań, które nie pochodzą z "PL" przy użyciu [AzFrontDoorWafMatchConditionObject nowy](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject) na parametry podczas tworzenia warunków dopasowania. Znajdują się dwie litery numerów kierunkowych krajów do mapowania kraju [tutaj](front-door-geo-filtering.md).
 
 ```azurepowershell-interactive
-$nonUSGeoMatchCondition = New-AzFrontDoorMatchConditionObject `
+$nonUSGeoMatchCondition = New-AzFrontDoorWafMatchConditionObject `
 -MatchVariable RemoteAddr `
 -OperatorProperty GeoMatch `
 -NegateCondition $true `
@@ -65,7 +65,7 @@ $nonUSGeoMatchCondition = New-AzFrontDoorMatchConditionObject `
  
 ## <a name="add-geo-filtering-match-condition-to-a-rule-with-action-and-priority"></a>Dodawanie warunku dopasowania filtrowania geograficznego do reguły za pomocą akcji i priorytetu
 
-Utwórz obiekt elementu CustomRule `nonUSBlockRule` na podstawie warunków dopasowania, akcję i priorytetu przy użyciu [New AzFrontDoorCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorcustomruleobject).  Element CustomRule może mieć wiele elementów MatchCondition.  W tym przykładzie ustawiono akcję blokowania i najwyższy priorytet 1.
+Utwórz obiekt elementu CustomRule `nonUSBlockRule` na podstawie warunków dopasowania, akcję i priorytetu przy użyciu [New AzFrontDoorCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject).  Element CustomRule może mieć wiele elementów MatchCondition.  W tym przykładzie ustawiono akcję blokowania i najwyższy priorytet 1.
 
 ```
 $nonUSBlockRule = New-AzFrontDoorCustomRuleObject `
@@ -77,12 +77,12 @@ $nonUSBlockRule = New-AzFrontDoorCustomRuleObject `
 ```
 
 ## <a name="add-rules-to-a-policy"></a>Dodawanie reguł do zasad
-Znajdowanie nazwy grupy zasobów, która zawiera, przy użyciu profilu drzwiami frontowymi `Get-AzResourceGroup`. Następnie należy utworzyć `geoPolicy` zasad obiekt zawierający `nonUSBlockRule` przy użyciu [New AzFrontDoorFireWallPolicy](/powershell/module/az.frontdoor/new-azfrontdoorfirewallPolicy) w grupie określonego zasobu, który zawiera profil drzwi wejściowe. Należy podać unikatową nazwę zasad geograficznej. 
+Znajdowanie nazwy grupy zasobów, która zawiera, przy użyciu profilu drzwiami frontowymi `Get-AzResourceGroup`. Następnie należy utworzyć `geoPolicy` zasad obiekt zawierający `nonUSBlockRule` przy użyciu [New AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) w grupie określonego zasobu, który zawiera profil drzwi wejściowe. Należy podać unikatową nazwę zasad geograficznej. 
 
 Poniższym przykładzie używa nazwy grupy zasobów *myResourceGroupFD1* przy założeniu, że utworzono drzwiami frontowymi profilu przy użyciu instrukcji podanych w [Szybki Start: Utwórz drzwiami frontowymi](quickstart-create-front-door.md) artykułu. W poniższym przykładzie Zastąp nazwę zasady *geoPolicyAllowUSOnly* z unikatowa nazwa zasad.
 
 ```
-$geoPolicy = New-AzFrontDoorFireWallPolicy `
+$geoPolicy = New-AzFrontDoorWafPolicy `
 -Name "geoPolicyAllowUSOnly" `
 -resourceGroupName myResourceGroupFD1 `
 -Customrule $nonUSBlockRule  `

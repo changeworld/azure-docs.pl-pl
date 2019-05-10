@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 04/19/2019
+ms.date: 05/09/2019
 ms.author: alkohli
-ms.openlocfilehash: a33734af34814772fdd8c391d0ee19a79b47d856
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: b3d53b7d5fceb303259823198731b5198cfce82c
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925038"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508261"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Samouczek: kopiowanie danych do magazynu obiektów blob usługi Azure Data Box za pośrednictwem interfejsów API REST  
 
@@ -46,7 +46,7 @@ Możesz nawiązać połączenie z magazynem obiektów blob usługi Data Box za p
 - *Protokół HTTPS* jest bezpieczna i zalecana sposób połączyć się z magazynu obiektów Blob pola danych.
 - Protokół *HTTP* jest używany, gdy połączenie jest nawiązywane za pośrednictwem zaufanych sieci.
 
-Czynności, aby połączyć różnią się podczas łączenia z magazynu obiektów Blob pola danych za pośrednictwem *http* lub *https*,.
+Czynności, aby połączyć różnią się podczas łączenia z magazynu obiektów Blob pola danych za pośrednictwem *http* lub *https*.
 
 ## <a name="connect-via-http"></a>Nawiązywanie połączenia za pośrednictwem protokołu HTTP
 
@@ -84,7 +84,7 @@ Pobierz certyfikat z witryny Azure Portal.
 
 1. Zaloguj się do witryny Azure Portal.
 2. Przejdź do zamówienia na urządzenie Data Box, a następnie wybierz pozycję **Ogólne > Szczegóły urządzenia**.
-3. W obszarze **Poświadczenia urządzenia** przejdź do sekcji **Dostęp za pomocą interfejsu API**. Kliknij pozycję **Pobierz**. Ta akcja spowoduje pobranie  **\<swoją nazwę zamówienia > cer** plik certyfikatu. **Zapisz** ten plik. Ten certyfikat zainstalujesz na komputerze klienta lub hosta, którego będziesz używać do nawiązania połączenia z urządzeniem.
+3. W obszarze **Poświadczenia urządzenia** przejdź do sekcji **Dostęp za pomocą interfejsu API**. Kliknij przycisk **Pobierz**. Ta akcja spowoduje pobranie  **\<swoją nazwę zamówienia > cer** plik certyfikatu. **Zapisz** ten plik. Ten certyfikat zainstalujesz na komputerze klienta lub hosta, którego będziesz używać do nawiązania połączenia z urządzeniem.
 
     ![Pobieranie certyfikatu z witryny Azure Portal](media/data-box-deploy-copy-data-via-rest/download-cert-1.png)
  

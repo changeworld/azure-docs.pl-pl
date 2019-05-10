@@ -1,16 +1,15 @@
 ---
-author: WenJason
+author: alkohli
 ms.service: databox
 ms.topic: include
-origin.date: 12/07/2018
-ms.date: 02/25/2019
-ms.author: v-jay
-ms.openlocfilehash: 0a9aaa86d44e71e429f2bfff13a56ddcb1ee2071
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 12/07/2018
+ms.author: alkohli
+ms.openlocfilehash: e4b366075cb16f62a0e16b5b06da6fb19ffefdb9
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60728411"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508298"
 ---
 1. Zaloguj się do urządzenia Data Box. Upewnij się, że jest odblokowane.
 
@@ -20,7 +19,7 @@ ms.locfileid: "60728411"
 
     ![Pulpit nawigacyjny urządzenia Data Box](media/data-box-add-device-ip/data-box-connect-via-rest-2.png)
 
-3. Przejdź do pozycji **Połącz i skopiuj** i kliknij przycisk **REST (wersja zapoznawcza)**.
+3. Przejdź do **Połącz i skopiuj** i kliknij przycisk **Rest**.
 
     ![Pulpit nawigacyjny urządzenia Data Box](media/data-box-add-device-ip/data-box-connect-via-rest-3.png)
 

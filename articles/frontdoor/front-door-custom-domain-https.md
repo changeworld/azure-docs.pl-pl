@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: b99132cceb8981a93a8f1c10ccc488d5806f7254
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: fc4db12f722d1330f0642e155c02a1936373e256
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59050981"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65520489"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Samouczek: konfigurowanie protokołu HTTPS w niestandardowej domenie usługi Front Door
 
@@ -82,7 +82,6 @@ Możesz włączyć funkcję HTTPS przy użyciu własnego certyfikatu. Ten proces
 
 > [!WARNING]
 > </br> — Usługa Azure Front Door Service obecnie obsługuje tylko konta usługi Key Vault w tej samej subskrypcji co konfiguracja usługi Front Door. Wybranie usługi Key Vault z innej subskrypcji niż usługa Front Door spowoduje błąd.
-> </br> — Usługa Azure Front Door Service obecnie obsługuje tylko certyfikaty usługi Key Vault przechowywane w sekcji wpisów tajnych. Importowanie certyfikatu nie powiedzie się, jeśli przechowujesz go w sekcji certyfikatów zamiast w sekcji wpisów tajnych.
 > </br> — Usługa Azure Front Door Service obecnie obsługuje tylko certyfikaty przekazywane z plikiem PFX **bez** hasła.
 
 #### <a name="register-azure-front-door-service"></a>Rejestrowanie usługi Azure Front Door Service
@@ -166,9 +165,9 @@ Po włączeniu protokołu HTTPS w domenie niestandardowej urząd certyfikacji Di
 Firma DigiCert wysyła również weryfikacyjną wiadomość e-mail na dodatkowe adresy e-mail. Jeśli informacje o rejestratorze WHOIS są prywatne, sprawdź, czy możesz zatwierdzić bezpośrednio z jednego z następujących adresów:
 
 admin@&lt;nazwa-domeny.com&gt;  
-administrator@&lt;nazwa-domeny.com&gt;  
-webmaster@&lt;nazwa-domeny.com&gt;  
-hostmaster@&lt;nazwa-domeny.com&gt;  
+administrator@&lt;your-domain-name.com&gt;  
+webmaster@&lt;your-domain-name.com&gt;  
+hostmaster@&lt;your-domain-name.com&gt;  
 postmaster@&lt;nazwa-domeny.com&gt;  
 
 W ciągu kilku minut otrzymasz wiadomość e-mail (podobną do poniższego przykładu) z prośbą o zatwierdzenie żądania. Jeśli używasz filtru spamu, dodaj admin@digicert.com do jego listy dozwolonych. Jeśli w ciągu 24 godzin nie otrzymasz wiadomości e-mail, skontaktuj się z działem pomocy technicznej firmy Microsoft.

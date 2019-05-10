@@ -8,12 +8,12 @@ ms.date: 01/31/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: ac9a748742bda6b1e7a321a427090662542f1032
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f20cc1107476f8d65323d277a53086b8bd035a1b
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60643360"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65518908"
 ---
 # <a name="back-up-azure-file-shares"></a>Tworzenie kopii zapasowej udziałów plików platformy Azure
 W tym artykule opisano sposób tworzenia kopii zapasowej i przywracania [udziałów plików platformy Azure](../storage/files/storage-files-introduction.md) przy użyciu witryny Azure Portal.
@@ -56,7 +56,7 @@ W tym samouczku przyjęto założenie, że ustanowiono już udział plików plat
 
     ![Wybieranie udział plików platformy Azure jako celu kopii zapasowej](./media/backup-file-shares/choose-azure-fileshare-from-backup-goal.png)
 
-3. Kliknij pozycję **Utwórz kopię zapasową**, aby skonfigurować udział plików platformy Azure na potrzeby magazynu usługi Recovery Services. 
+3. Kliknij pozycję **Utwórz kopię zapasową**, aby skonfigurować udział plików platformy Azure na potrzeby magazynu usługi Recovery Services.
 
    ![Klikanie pozycji Utwórz kopię zapasową, aby skojarzyć udział plików platformy Azure z magazynem](./media/backup-file-shares/set-backup-goal.png)
 
@@ -77,7 +77,7 @@ W tym samouczku przyjęto założenie, że ustanowiono już udział plików plat
     Po ustanowieniu zasad tworzenia kopii zapasowych w zaplanowanym czasie zostanie utworzona migawka udziałów plików, a punkt odzyskiwania zostanie zachowany przez wybrany okres.
 
 ## <a name="create-an-on-demand-backup"></a>Tworzenie kopii zapasowej na żądanie
-W pewnych okolicznościach może zaistnieć potrzeba wygenerowania migawki kopii zapasowych lub punktu odzyskiwania w godzinach innych niż zaplanowane w ramach zasad tworzenia kopii zapasowych. Typowy moment generowania kopii zapasowej na żądanie przypada zaraz po skonfigurowaniu zasad tworzenia kopii zapasowych. Na podstawie harmonogramu w ramach zasad tworzenia kopii zapasowych może upłynąć wiele godzin lub dni zanim migawka zostanie utworzona. Aby chronić dane przed rozpoczęciem obowiązywania zasad tworzenia kopii zapasowych, zainicjuj tworzenie kopii zapasowej na żądanie. Tworzenie kopii zapasowej na żądanie jest często wymagane przed wprowadzaniem zaplanowanych zmian udziałów plików.
+W pewnych okolicznościach może zaistnieć potrzeba wygenerowania migawki kopii zapasowych lub punktu odzyskiwania w godzinach innych niż zaplanowane w ramach zasad tworzenia kopii zapasowych. Typowy moment generowania kopii zapasowej na żądanie przypada zaraz po skonfigurowaniu zasad tworzenia kopii zapasowych. Na podstawie harmonogramu w ramach zasad tworzenia kopii zapasowych może upłynąć wiele godzin lub dni zanim migawka zostanie utworzona. Aby chronić dane przed rozpoczęciem obowiązywania zasad tworzenia kopii zapasowych, zainicjuj tworzenie kopii zapasowej na żądanie. Tworzenie kopii zapasowej na żądanie jest często wymagana, przed wprowadzeniem zaplanowanych zmian udziałów plików.
 
 ### <a name="to-create-an-on-demand-backup"></a>Tworzenie kopii zapasowej na żądanie
 
@@ -123,10 +123,12 @@ Postęp wszystkich zadań możesz monitorować na stronie **Zadania tworzenia ko
 Aby otworzyć stronę **Zadania tworzenia kopii zapasowej**:
 
 - Otwórz magazyn usługi Recovery Services, który chcesz monitorować, w menu magazynu usługi Recovery Services kliknij pozycję **Zadania**, a następnie kliknij pozycję **Zadania tworzenia kopii zapasowej**.
-   ![Wybierz zadanie do monitorowania](./media/backup-file-shares/open-backup-jobs.png)
+
+   ![Wybieranie zadania do monitorowania](./media/backup-file-shares/open-backup-jobs.png)
 
     Zostanie wyświetlona lista zadań tworzenia kopii zapasowej i ich stan.
-   ![Wybierz zadanie do monitorowania](./media/backup-file-shares/backup-jobs-progress-list.png)
+
+    ![Wybieranie zadania do monitorowania](./media/backup-file-shares/backup-jobs-progress-list.png)
 
 ### <a name="create-a-new-policy"></a>Tworzenie nowych zasad
 

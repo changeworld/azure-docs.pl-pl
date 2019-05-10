@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: helohr
-ms.openlocfilehash: 21979f1dee50fa846fb7888cfc95908b9d833392
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 8e6991201b3cda5699849ac00cc92217c6b7bf72
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236789"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65524010"
 ---
 # <a name="tutorial-create-a-host-pool-with-azure-marketplace"></a>Samouczek: Tworzenie puli hostów za pomocą witryny Azure Marketplace
 
@@ -68,7 +68,7 @@ Do bloku ustawienia maszyny wirtualnej:
 
 Bloku informacji o dzierżawie pulpitu wirtualnego Windows:
 
-1. Wprowadź **Nazwa grupy dzierżawy pulpitu wirtualnego Windows** grupy dzierżawy, który zawiera Twojej dzierżawy. Jeśli nie masz nazwy grupy określonej dzierżawy planowane, pozostaw domyślne.
+1. Wprowadź **Nazwa grupy dzierżawy pulpitu wirtualnego Windows** grupy dzierżawy, który zawiera Twojej dzierżawy. Pozostaw jako domyślny, chyba że podano określonej nazwy grupy dzierżawy.
 2. Wprowadź **nazwa dzierżawy pulpitu wirtualnego Windows** dla dzierżawy zostanie utworzona ta pula hosta w.
 3. Określ typ poświadczeń, których chcesz użyć do uwierzytelnienia się jako dzierżawy pulpitu wirtualnego Windows właściciela pulpitu zdalnego. Jeśli ukończono [tworzenie jednostek usługi i przypisań ról za pomocą programu PowerShell samouczka](./create-service-principal-role-powershell.md), wybierz opcję **nazwy głównej usługi**. Teraz musisz wprowadzić **Identyfikatora dzierżawy usługi Azure AD** usługi Azure Active Directory, która zawiera nazwy głównej usługi.
 4. Wprowadź albo poświadczenia dla konta administratora dzierżawy. Obsługiwane są tylko jednostki usługi przy użyciu poświadczeń hasła.
@@ -94,12 +94,6 @@ Uruchom następujące polecenie cmdlet, aby zalogować się do środowiska wirtu
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-```
-
-Ustaw kontekst do grupy dzierżawy pulpitu wirtualnego Windows, które określiłeś w portalu Azure Marketplace oferuje przy użyciu następującego polecenia cmdlet. Jeśli dzierżawa pulpitu wirtualnego Windows wartość grupy jako wartość domyślna w witrynie Azure Marketplace oferty, możesz pominąć ten krok.
-
-```powershell
-Set-RdsContext -TenantGroupName <tenantgroupname>
 ```
 
 Po wykonaniu tych dwóch elementów, można dodać użytkowników do grupy aplikacji klasycznej przy użyciu tego polecenia cmdlet:

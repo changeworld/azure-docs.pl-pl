@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: ced83b83c2d64ba5c4816f378c66dae9f4210391
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3fc14b821064719f39eb877aa2253f8084496a66
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60193632"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523496"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Słownik interpretacji języka wspólnego słownika i pojęcia
 Language Understanding (LUIS) słownik wyjaśnia, warunki, które można napotkać podczas pracy z usługą interfejsu API usługi LUIS.
@@ -26,7 +26,7 @@ Wersja usługi LUIS aktywna jest wersji, który odbiera wszystkie zmiany w model
 
 ## <a name="authoring"></a>Tworzenie
 
-Tworzenie jest możliwość tworzenia, zarządzania i wdrażania [aplikacją usługi LUIS](#luis-app), albo za pomocą [LUIS](luis-reference-regions.md) witryny sieci Web lub [Tworzenie interfejsów API](https://aka.ms/luis-authoring-api).
+Tworzenie jest możliwość tworzenia, zarządzania i wdrażania [aplikacją usługi LUIS](#luis-app), albo za pomocą [LUIS](luis-reference-regions.md) witryny sieci Web lub [Tworzenie interfejsów API](https://go.microsoft.com/fwlink/?linkid=2092087).
 
 ## <a name="authoring-key"></a>Tworzenie klucza
 
@@ -74,7 +74,7 @@ W kontekście usługi LUIS **domeny** jest obszarem wiedzy. Twoja domena to spec
 
 ## <a name="endpoint"></a>Punkt końcowy
 
-[Punktu końcowego usługi LUIS](https://aka.ms/luis-endpoint-apis) adres URL jest, dokąd wysyłać zapytania usługi LUIS po [aplikacją usługi LUIS](#luis-app) jest utworzonych i opublikowanych. Adres URL punktu końcowego zawiera region opublikowanej aplikacji, a także identyfikator aplikacji. Można znaleźć punktu końcowego na **[kluczy i punktów końcowych](luis-how-to-azure-subscription.md)** strony aplikacji, lub można uzyskać adresu URL punktu końcowego z [uzyskać informacje o aplikacji](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37) interfejsu API.
+[Punktu końcowego usługi LUIS](https://go.microsoft.com/fwlink/?linkid=2092356) adres URL jest, dokąd wysyłać zapytania usługi LUIS po [aplikacją usługi LUIS](#luis-app) jest utworzonych i opublikowanych. Adres URL punktu końcowego zawiera region opublikowanej aplikacji, a także identyfikator aplikacji. Można znaleźć punktu końcowego na **[kluczy i punktów końcowych](luis-how-to-azure-subscription.md)** strony aplikacji, lub można uzyskać adresu URL punktu końcowego z [uzyskać informacje o aplikacji](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37) interfejsu API.
 
 Przykładowy punkt końcowy wygląda następująco:
 

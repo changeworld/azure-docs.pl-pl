@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 17acd4eebe53704699d3ec9a3f4f121eed79794d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b2ff67e207f8a3a2b79635b080c78021162f0ac6
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60195987"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65519229"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Migrowanie maszyn wirtualnych usług Amazon Web Services (AWS) na platformę Azure
 
@@ -115,7 +115,11 @@ Na stronie **Cel ochrony** wybierz następujące wartości:
 
 Gdy wszystko będzie gotowe, wybierz przycisk **OK**, aby przejść do następnej sekcji.
 
-### <a name="2-prepare-source"></a>2. Przygotowywanie źródła
+### <a name="2-select-deployment-planning"></a>2: Wybieranie planowania wdrożenia
+
+W obszarze **Czy ukończono planowanie wdrożenia** wybierz pozycję **Zrobię to później**, a następnie wybierz opcję **OK**.
+
+### <a name="3-prepare-source"></a>3: Przygotowywanie źródła
 
 Na stronie **Przygotowywanie źródła** wybierz pozycję **+ Serwer konfiguracji**.
 
@@ -140,7 +144,7 @@ Na stronie **Przygotowywanie źródła** wybierz pozycję **+ Serwer konfiguracj
 
 Po zakończeniu konfigurowania serwera konfiguracji wróć do portalu i wybierz utworzony przez siebie serwer jako **Serwer konfiguracji**. Wybierz pozycję **OK**, aby przejść do kroku 3. Przygotowywanie celu.
 
-### <a name="3-prepare-target"></a>3. Przygotowywanie celu
+### <a name="4-prepare-target"></a>4. Przygotowywanie celu
 
 W tej sekcji wprowadzisz informacje dotyczące zasobów utworzonych w sekcji [Przygotowywanie zasobów platformy Azure](#prepare-azure-resources) we wcześniejszej części tego samouczka.
 
@@ -149,8 +153,7 @@ W tej sekcji wprowadzisz informacje dotyczące zasobów utworzonych w sekcji [Pr
 3. Usługa Site Recovery sprawdza, czy masz co najmniej jedno zgodne konto magazynu Azure i co najmniej jedną sieć platformy Azure. Powinny to być zasoby utworzone w sekcji [Przygotowywanie zasobów platformy Azure](#prepare-azure-resources) we wcześniejszej części tego samouczka.
 4. Gdy skończysz, wybierz opcję **OK**.
 
-
-### <a name="4-prepare-replication-settings"></a>4. Przygotowywanie ustawień replikacji
+### <a name="5-prepare-replication-settings"></a>5. Przygotowywanie ustawień replikacji
 
 Aby móc włączyć replikację, musisz najpierw utworzyć zasady replikacji.
 
@@ -158,12 +161,7 @@ Aby móc włączyć replikację, musisz najpierw utworzyć zasady replikacji.
 2. W obszarze **Nazwa** wprowadź wartość **myReplicationPolicy**.
 3. Pozostaw resztę ustawień domyślnych bez zmian i kliknij przycisk **OK**, aby utworzyć zasady. Nowe zasady zostaną automatycznie skojarzone z serwerem konfiguracji.
 
-### <a name="5-select-deployment-planning"></a>5. Wybieranie planowania wdrożenia
-
-W obszarze **Czy ukończono planowanie wdrożenia** wybierz pozycję **Zrobię to później**, a następnie wybierz opcję **OK**.
-
 Po zakończeniu wszystkich pięciu sekcji w obszarze **Przygotowanie infrastruktury**, wybierz opcję **OK**.
-
 
 ## <a name="enable-replication"></a>Włączanie replikacji
 
@@ -185,7 +183,7 @@ Włącz replikację dla każdej maszyny wirtualnej, która ma zostać zmigrowana
 
      |  |  |
      |-----|-----|
-     | Cel: | Pozostaw wartość domyślną.|
+     | Obiekt docelowy: | Pozostaw wartość domyślną.|
      | Subskrypcja: | Wybierz subskrypcję, której używasz.|
      | Grupa zasobów po przełączeniu w tryb failover:| Użyj grupy zasobów utworzonej w sekcji [Przygotowywanie zasobów platformy Azure](#prepare-azure-resources).|
      | Model wdrażania po przełączeniu w tryb failover: | Wybierz opcję **Menedżer zasobów**.|
@@ -202,7 +200,7 @@ Włącz replikację dla każdej maszyny wirtualnej, która ma zostać zmigrowana
 
      Wybierz konto utworzone na serwerze konfiguracji, a następnie wybierz opcję **OK**.
 
-   - 5. Konfigurowanie ustawień replikacji
+   - 5. Konfiguruj ustawienia replikacji
 
      Upewnij się, że wybrane z listy rozwijanej zasady replikacji to zasady **myReplicationPolicy**, a następnie wybierz opcję **OK**.
 
@@ -248,7 +246,7 @@ Uruchom rzeczywisty tryb failover dla wystąpień usługi EC2, aby zmigrować je
    - Spowoduje to zakończenie procesu migracji, zatrzymanie replikacji maszyny wirtualnej usług AWS oraz zatrzymanie naliczania opłat za usługę Site Recovery dla maszyny wirtualnej.
    - W tym kroku oczyszczane są dane replikacji. Nie są jednak usuwane migrowane maszyny wirtualne. 
 
-     ![Kończenie migracji](./media/migrate-tutorial-aws-azure/complete-migration.png)
+     ![Zakończ migrację](./media/migrate-tutorial-aws-azure/complete-migration.png)
 
 > [!WARNING]
 > *Nie anuluj trybu failover, który jest w toku*. Przed rozpoczęciem pracy w trybie failover zatrzymywana jest replikacja maszyny wirtualnej. Jeśli anulujesz tryb failover po rozpoczęciu przełączania, zostanie on zatrzymany, ale maszyna wirtualna nie zostanie ponownie zreplikowana.  

@@ -11,15 +11,15 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 04/02/2019
 ms.author: diberry
-ms.openlocfilehash: 9eb73db6f641d3a5f5bb82901bd12ea291eada58
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a4e176552fcbab9d54da696439c7e46750be3944
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60196035"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522361"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>Interfejsu API v1 na v2 Przewodnik migracji dla aplikacji usługi LUIS
-Wersja 1 [punktu końcowego](https://aka.ms/v1-endpoint-api-docs) i [tworzenia](https://aka.ms/v1-authoring-api-docs) interfejsy API są przestarzałe. Użyj tego przewodnika, aby zrozumieć, jak przeprowadzić migrację do wersji 2 [punktu końcowego](https://aka.ms/luis-endpoint-apis) i [tworzenia](https://aka.ms/luis-authoring-apis) interfejsów API. 
+Wersja 1 [punktu końcowego](https://aka.ms/v1-endpoint-api-docs) i [tworzenia](https://aka.ms/v1-authoring-api-docs) interfejsy API są przestarzałe. Użyj tego przewodnika, aby zrozumieć, jak przeprowadzić migrację do wersji 2 [punktu końcowego](https://go.microsoft.com/fwlink/?linkid=2092356) i [tworzenia](https://go.microsoft.com/fwlink/?linkid=2092087) interfejsów API. 
 
 ## <a name="new-azure-regions"></a>Nowe regiony platformy Azure
 Usługa LUIS ma nowy [regionów](https://aka.ms/LUIS-regions) podany dla interfejsów API usługi LUIS. Usługa LUIS zapewnia innego portalu dla regionu grup. Aplikacja musi zostać utworzona w tym samym regionie, które chcesz zbadać. Aplikacje nie są automatycznie migrowane regionów. Możesz wyeksportować aplikację z jednego regionu, a następnie importowania do innej, aby była dostępna w nowym regionie.
@@ -169,6 +169,6 @@ Zobacz [kodów odpowiedzi interfejsu API usługi LUIS](luis-reference-response-c
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Korzystanie z dokumentacji interfejsu API w wersji 2, aby zaktualizować istniejące REST wywołania usługi LUIS [punktu końcowego](https://aka.ms/luis-endpoint-apis) i [tworzenia](https://aka.ms/luis-authoring-apis) interfejsów API. 
+Korzystanie z dokumentacji interfejsu API w wersji 2, aby zaktualizować istniejące REST wywołania usługi LUIS [punktu końcowego](https://go.microsoft.com/fwlink/?linkid=2092356) i [tworzenia](https://go.microsoft.com/fwlink/?linkid=2092087) interfejsów API. 
 
 [LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
