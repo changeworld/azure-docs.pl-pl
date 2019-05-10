@@ -5,17 +5,20 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/26/2019
-ms.openlocfilehash: 52f192a179c02e63c394401cce82b51fbe96e92d
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
-ms.translationtype: HT
+ms.date: 04/29/2019
+ms.openlocfilehash: b422718a1eaec483acdc2c8ab37442b9aea78aaa
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "61425012"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510769"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-portal"></a>Jak utworzyć i zarządzać nimi odczytu replik w usłudze Azure Database for MySQL za pomocą witryny Azure portal
 
-W tym artykule dowiesz się, jak tworzyć i zarządzać nimi odczytu replik w tym samym regionie platformy Azure jako główną w usłudze Azure Database dla MySQL za pomocą witryny Azure portal. Ta funkcja jest obecnie w publicznej wersji zapoznawczej.
+W tym artykule dowiesz się, jak tworzyć i zarządzać nimi odczytu replik w usługa Azure Database for MySQL za pomocą witryny Azure portal.
+
+> [!IMPORTANT]
+> Można utworzyć odczytu repliki, w tym samym regionie co serwer główny lub w innym regionie platformy Azure wybranym. Replikacja w wielu regionach jest obecnie w publicznej wersji zapoznawczej.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -38,9 +41,15 @@ Serwer odczytu repliki można utworzyć wykonując następujące czynności:
 
    ![Azure Database for MySQL — replikacji](./media/howto-read-replica-portal/add-replica.png)
 
-5. Wprowadź nazwę dla serwera repliki, a następnie kliknij przycisk **OK** o potwierdzenie utworzenia repliki.
+5. Wprowadź nazwę dla serwera repliki.
 
-   ![Azure Database for MySQL — Tworzenie repliki](./media/howto-read-replica-portal/create-replica.png)
+    ![Azure Database for MySQL — nazwa repliki](./media/howto-read-replica-portal/replica-name.png)
+
+6. Wybierz lokalizację dla serwera repliki. W dowolnym regionie systemu Azure, można utworzyć repliki. Domyślna lokalizacja jest taka sama jak serwer główny
+
+    ![Azure Database for MySQL — lokalizacji repliki](./media/howto-read-replica-portal/replica-location.png)
+
+7. Wybierz **OK** o potwierdzenie utworzenia repliki.
 
 > [!NOTE]
 > Repliki do odczytu są tworzone przy użyciu tej samej konfiguracji serwera jako wzorzec. Konfiguracja serwera repliki można zmienić po jego utworzeniu. Zaleca się, że konfiguracja serwera repliki należy przechowywać w większa lub równa wartości niż główny, aby upewnić się, że replika jest w stanie na bieżąco ze wzorcem.
@@ -115,7 +124,7 @@ Aby usunąć serwer główny w witrynie Azure portal, wykonaj następujące krok
 
 2. W obszarze **monitorowanie** części paska bocznego wybierz **metryki**:
 
-3. Wybierz **opóźnienie replikacji w ciągu kilku sekund** z listy rozwijanej dostępnych metryk. 
+3. Wybierz **opóźnienie replikacji w ciągu kilku sekund** z listy rozwijanej dostępnych metryk.
 
    ![Wybierz opóźnienie replikacji](./media/howto-read-replica-portal/monitor-select-replication-lag.png)
 

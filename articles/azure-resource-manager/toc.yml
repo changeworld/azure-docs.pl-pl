@@ -40,6 +40,9 @@
     - name: Korzystanie z praktyk bezpiecznego wdrażania
       displayName: adm
       href: deployment-manager-tutorial.md
+    - name: Używanie kontroli kondycji w usłudze Deployment Manager
+      displayName: adm
+      href: deployment-manager-tutorial-health-check.md
     - name: Rozwiązywanie problemów z wdrażaniem szablonu
       href: resource-manager-tutorial-troubleshoot.md
 - name: Przykłady
@@ -62,6 +65,9 @@
     - name: Deployment Manager
       displayName: adm
       href: deployment-manager-overview.md
+    - name: Kontrola kondycji w usłudze Deployment Manager
+      displayName: adm
+      href: deployment-manager-health-check.md
     - name: Tryby wdrażania
       href: deployment-modes.md
     - name: Usuwanie zasobów

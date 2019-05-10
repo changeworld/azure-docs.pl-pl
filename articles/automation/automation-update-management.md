@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b39d9788372fb0f682bc1e5b737542b400dd4035
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 43ca5bbfd789c1c41826c9a13a0030b80c72d4bc
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919708"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510655"
 ---
 # <a name="update-management-solution-in-azure"></a>Rozwiązania Update Management na platformie Azure
 
@@ -187,9 +187,9 @@ W poniższej tabeli opisano połączone źródła, które są obsługiwane przez
 
 | Połączone źródło | Obsługiwane | Opis |
 | --- | --- | --- |
-| Agenci dla systemu Windows |Yes |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów dla Windows i inicjuje instalowanie wymaganych aktualizacji. |
-| Agenci dla systemu Linux |Yes |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów dla systemu Linux i inicjuje instalowanie wymaganych aktualizacji w obsługiwanych dystrybucjach. |
-| Grupa zarządzania programu Operations Manager |Yes |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów w połączonej grupie zarządzania.<br/>Bezpośrednie połączenie agenta programu Operations Manager do dzienników usługi Azure Monitor nie jest wymagana. Dane są przekazywane z grupy zarządzania do obszaru roboczego usługi Log Analytics. |
+| Agenci dla systemu Windows |Tak |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów dla Windows i inicjuje instalowanie wymaganych aktualizacji. |
+| Agenci dla systemu Linux |Tak |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów dla systemu Linux i inicjuje instalowanie wymaganych aktualizacji w obsługiwanych dystrybucjach. |
+| Grupa zarządzania programu Operations Manager |Tak |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów w połączonej grupie zarządzania.<br/>Bezpośrednie połączenie agenta programu Operations Manager do dzienników usługi Azure Monitor nie jest wymagana. Dane są przekazywane z grupy zarządzania do obszaru roboczego usługi Log Analytics. |
 
 ### <a name="collection-frequency"></a>Częstotliwość zbierania
 
@@ -584,7 +584,7 @@ Te grupy są definiowane przez kwerendę, gdy rozpocznie się wdrożenie aktuali
 * Subskrypcja
 * Grupy zasobów
 * Lokalizacje
-* Tagi
+* `Tags`
 
 ![Wybieranie grup](./media/automation-update-management/select-groups.png)
 
@@ -634,7 +634,7 @@ Jednak zarządzania aktualizacjami, nadal może raportować tej maszyny, co jest
 
 Wdrażanie aktualizacji według klasyfikacji aktualizacji nie działa w przypadku CentOS gotowe. Aby prawidłowo wdrożyć aktualizacje, centos, wybierz wszystkie klasyfikacje, aby upewnić się, że aktualizacje są stosowane. Dla SUSE wybierając *tylko* inne aktualizacje klasyfikacji może spowodować pewne zabezpieczenia aktualizuje również zainstalowania aktualizacji zabezpieczeń związane z zypper (Menedżera pakietów) oraz jego zależności wymagane najpierw. To zachowanie jest ograniczenie zypper. W niektórych przypadkach może wymagać ponownego uruchomienia wdrożenia aktualizacji. Aby sprawdzić, przejrzyj dziennik aktualizacji.
 
-## <a name="remove-a-vm-for-update-management"></a>Usuwanie maszyny Wirtualnej do zarządzania aktualizacjami
+## <a name="remove-a-vm-from-update-management"></a>Usuń Maszynę wirtualną z rozwiązania Update Management
 
 Aby usunąć Maszynę wirtualną z rozwiązania Update Management:
 

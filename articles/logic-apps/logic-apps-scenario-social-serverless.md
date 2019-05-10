@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.topic: article
 ms.date: 03/15/2018
-ms.openlocfilehash: 638b29dd2a15d0467c41e20ecfed9f333b34c04d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5dd9d8eac7d65815d7c98a28b0d5af55f19cec47
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60508029"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65464431"
 ---
 # <a name="create-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Utwórz pulpit nawigacyjny szczegółowych informacji z klientów przesyłania strumieniowego za pomocą usługi Azure Logic Apps i Azure Functions
 
@@ -98,6 +98,9 @@ Aby łatwo przetestować aplikację logiki w Projektancie aplikacji logiki, wybi
 Do wyświetlania poprzednich historie uruchamiania w programie Visual Studio lub witryny Azure portal: 
 
 * Otwórz Eksploratora chmury programu Visual Studio. Znajdź swoją aplikację logiki, otwórz menu skrótów w aplikacji. Wybierz **historii uruchamiania Open**.
+
+  > [!NOTE]
+  > Dla programu Visual Studio 2019 r Eksploratora chmury można otworzyć projektanta aplikacji logiki w witrynie Azure portal, ale nie można jeszcze Otwórz osadzonego projektanta aplikacji logiki lub historii uruchamiania.
 
 * W witrynie Azure portal Znajdź swoją aplikację logiki. W menu aplikacji logiki wybierz **Przegląd**. 
 

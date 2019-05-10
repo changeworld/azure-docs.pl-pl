@@ -8,14 +8,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/15/2019
+ms.date: 05/02/2019
 ms.author: gwallace
-ms.openlocfilehash: e2b36633996f961d100f0a98abb09135fd4393e4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b71ba69bcf4965ea607e097c392573e77aab6865
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60869864"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408289"
 ---
 # <a name="custom-script-extension-for-windows"></a>Rozszerzenie niestandardowego skryptu dla Windows
 
@@ -133,7 +133,7 @@ Za pomocą ustawień publicznego, może być przydatne do debugowania, ale zalec
 
 Ustawienia publicznego są wysyłane w postaci zwykłego tekstu do maszyny Wirtualnej, gdy skrypt zostanie wykonany.  Chronione ustawienia są szyfrowane przy użyciu klucza znanego tylko platformy Azure i maszyny Wirtualnej. Ustawienia są zapisywane do maszyny Wirtualnej, ponieważ zostały wysłane, oznacza to, jeśli zostały zaszyfrowane ustawienia są zapisywane zaszyfrowane na maszynie Wirtualnej. Certyfikat używany do odszyfrowania zaszyfrowanych wartości przechowywane na maszynie Wirtualnej i jest używany do odszyfrowywania ustawienia (w razie potrzeby) w czasie wykonywania.
 
-## <a name="template-deployment"></a>Wdrażanie na podstawie szablonu
+## <a name="template-deployment"></a>Wdrożenie szablonu
 
 Rozszerzenia maszyn wirtualnych platformy Azure można wdrażać przy użyciu szablonów usługi Azure Resource Manager. Schemat JSON, który jest szczegółowo opisane w poprzedniej sekcji może służyć w szablonie usługi Azure Resource Manager do rozszerzenia niestandardowego skryptu są uruchamiane podczas wdrażania. Poniższe przykłady pokazują, jak za pomocą rozszerzenia niestandardowego skryptu:
 
@@ -206,6 +206,16 @@ Jeśli chcesz więcej niż jeden raz uruchomić rozszerzenia niestandardowego sk
 
 * Rozszerzenie **nazwa** parametru jest taka sama jak poprzedniego wdrożenia rozszerzenia.
 * Zaktualizuj konfigurację, w przeciwnym razie nie będzie ponownie wykonać tego polecenia. W poleceniu, takich jak sygnaturę czasową, można dodać właściwości dynamicznych.
+
+Alternatywnie, można ustawić [ForceUpdateTag](/dotnet/api/microsoft.azure.management.compute.models.virtualmachineextension.forceupdatetag) właściwości **true**.
+
+### <a name="using-invoke-webrequest"></a>Za pomocą Invoke-WebRequest
+
+Jeśli używasz [Invoke-WebRequest](/powershell/module/microsoft.powershell.utility/invoke-webrequest) w skrypcie, należy określić parametr `-UseBasicParsing` lub w przeciwnym razie zostanie wyświetlony następujący błąd podczas sprawdzania szczegółowy stan:
+
+```error
+The response content cannot be parsed because the Internet Explorer engine is not available, or Internet Explorer's first-launch configuration is not complete. Specify the UseBasicParsing parameter and try again.
+```
 
 ## <a name="classic-vms"></a>Klasyczne maszyny wirtualne
 

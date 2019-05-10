@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
-ms.openlocfilehash: 668862714b416bd89d3b5f82caf8b0305fccae54
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0a7927868a9a4bebc80ec995baefbae4c45d747f
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60363176"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65410473"
 ---
 # <a name="example-3-build-a-perimeter-network-to-protect-networks-with-a-firewall-udr-and-nsgs"></a>Przykład 3: Tworzenie sieci obwodowej, do ochrony sieci z zaporą, routingiem zdefiniowanym przez użytkownika i sieciowymi grupami zabezpieczeń
 
@@ -166,7 +166,7 @@ Get-AzureVM -Name $VMName[0] -ServiceName $ServiceName[0] | `
     Set-AzureIPForwarding -Enable
 ```
 
-## <a name="network-security-groups"></a>Grupy zabezpieczeń sieci
+## <a name="network-security-groups"></a>Sieciowe grupy zabezpieczeń
 
 W tym przykładzie tworzenie sieciowej grupy zabezpieczeń (NSG), a następnie ładuje go z jednej reguły. Przykład następnie powiąże sieciowej grupy zabezpieczeń, tylko do podsieci frontonu i zaplecza (nie SecNet). Regułę, którą należy załadować do sieciowej grupy zabezpieczeń jest następująca:
 
@@ -621,7 +621,7 @@ Odwołaj również, czy sieciowe grupy zabezpieczeń (NSG) w miejscu, aby ruch p
    1. Reguła zapory 10 (Intra-podsieć), nie ma zastosowania. Przenieś na następną regułę.
    1. Zastosuj reguły zapory 11 (Odmów wszystkiego). Ruch jest blokowany. Zatrzymaj przetwarzanie reguł.
 
-## <a name="references"></a>Dokumentacja
+## <a name="references"></a>Odwołania
 
 Ta sekcja zawiera następujące elementy:
 
@@ -635,7 +635,7 @@ Zmodyfikuj zmienne zdefiniowane przez użytkownika w plikach zgodnie z potrzebam
 Po ustawieniu zmiennych zdefiniowanych przez użytkownika, uruchom ten skrypt, aby:
 
 1. Łączenie się z subskrypcją platformy Azure
-1. Tworzenie nowego konta magazynu
+1. Utwórz nowe konto magazynu
 1. Utwórz nową sieć wirtualną oraz trzy podsieci, zgodnie z definicją w pliku konfiguracji sieci
 1. Tworzenie pięć maszyn wirtualnych: zapory i cztery maszyny wirtualne bramy Windows Server
 1. Skonfiguruj trasy zdefiniowanej przez użytkownika:
@@ -645,7 +645,7 @@ Po ustawieniu zmiennych zdefiniowanych przez użytkownika, uruchom ten skrypt, a
 1. Włączanie przekazywania adresów IP na urządzeniu WUS
 1. Konfigurowanie sieciowej grupy zabezpieczeń:
    1. Tworzenie sieciowej grupy zabezpieczeń
-   1. Dodawanie reguły
+   1. Dodaj regułę
    1. Sieciowa grupa zabezpieczeń należy powiązać odpowiednie podsieci
 
 Uruchom program PowerShell to skrypt lokalnie w Internecie połączone komputera lub serwera.
@@ -989,7 +989,7 @@ Uruchom program PowerShell to skrypt lokalnie w Internecie połączone komputera
 Zapisz ten plik XML z zaktualizowaną lokalizację. Zmiana `$NetworkConfigFile` zmienną pełen skrypt powyższe łącze do pliku konfiguracji sieci zapisane.
 
 ```xml
-    <NetworkConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
+    <NetworkConfiguration xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
       <VirtualNetworkConfiguration>
         <Dns>
           <DnsServers>

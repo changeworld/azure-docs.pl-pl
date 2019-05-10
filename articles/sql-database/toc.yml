@@ -462,6 +462,8 @@
           href: sql-database-managed-instance-create-vnet-subnet.md
         - name: Konfigurowanie istniejącej sieci wirtualnej i podsieci dla wystąpienia zarządzanego
           href: sql-database-managed-instance-configure-vnet-subnet.md
+        - name: Usuwanie podsieci po usunięciu wystąpienia zarządzanego
+          href: sql-database-managed-instance-delete-virtual-cluster.md
         - name: Konfigurowanie niestandardowego systemu DNS
           href: sql-database-managed-instance-custom-dns.md
         - name: Synchronizacja konfiguracji sieci

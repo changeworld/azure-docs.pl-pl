@@ -18,7 +18,19 @@ metadata:
   ms.author: erhopf
   ms.custom: seodec18
 abstract:
-  description: 'Dowiedz się, jak korzystać z usługi Speech Services i zestawu SDK usługi Mowa w celu dodawania funkcji rozpoznawania mowy do aplikacji. Zestaw SDK usługi Mowa umożliwia dodawanie do aplikacji funkcji <i>zamiany mowy na tekst</i> (rozpoznawanie mowy/SR) <i>intencji</i>, <i>tłumaczenia</i>, i <i>zamiany tekstu na mowę</i> (TTS). Usługi Speech Services mają również interfejsy API REST współpracujące z dowolnym językiem programowania, który może wysyłać żądania HTTP.'
+  description: |
+    Dowiedz się, jak użyć usługi Speech Services z interfejsami API REST lub z naszego zestawu SDK mowy, aby dodać do aplikacji funkcje z obsługą mowy. Zestaw SDK mowy umożliwia dodawanie do aplikacji następujących funkcji (i nie tylko)&colon; 
+    <div class="row" style="font-size:16px"><div class="column"><ul>
+    <li><b><a href="speech-to-text.md">Zamiana mowy na tekst</a></b> (rozpoznawanie mowy/SR)</li>
+    <li><b><a href="speech-devices-sdk-create-kws.md">Niestandardowe słowo aktywujące</a></b> (wykrywanie słów kluczowych/KWS)</li>
+    <li><b><a href="how-to-recognize-intents-from-speech-csharp.md">Intencja</a></b></li>
+    <li><b><a href="speech-translation.md">Tłumaczenie</a></b></li>
+    <li><b><a href="speech-container-howto.md">Kontener lokalny</a></b></li></ul></div><div class="column"><ul>
+    <li><b><a href="text-to-speech.md">Zamiana tekstu na mowę</a></b> (TTS)</li>
+    <li><b><a href="conversation-transcription-service.md">Transkrypcja konwersacji</a> </b> (CTS)</li>
+    <li><b><a href="how-to-phrase-lists.md">Personalizacja listy fraz</a>/<a href="how-to-custom-speech.md">Dostosowanie mowy niestandardowej</a></b></li>
+    <li><b><a href="voice-first-virtual-assistants.md">Asystent wirtualny opracowany przede wszystkim z myślą o obsłudze głosowej</a></b></li>
+    <li><b><a href="call-center-transcription.md">Przekształcanie nagrań w centrach telefonicznej obsługi klienta</a></b></li></ul></div></div>
 sections:
   - items:
       - type: list
@@ -44,7 +56,7 @@ sections:
   - title: 5-minutowe przewodniki Szybki start
     items:
       - type: paragraph
-        text: 'Dowiedz się, jak pobrać i zainstalować zestaw SDK oraz używać go, wybierając link ze strzałką <img src="media/index/link.jpg" height="15" width="15"></img>.'
+        text: 'Dowiedz się, jak pobrać i zainstalować zestaw SDK oraz używać go, wybierając link ze strzałką <img src="media/index/link.jpg" height="15" width="15"></img>.<br/><br/>Wszystkie linki ze strzałkami <img src="media/index/link.jpg" height="15" width="15"></img> domyślnie prowadzą do przewodnika Szybki start dotyczącego zamiany mowy na tekst. Można w nim wybrać inne przewodniki Szybki start (<a href="scenario-availability.md">jeśli są dostępne</a>), takie jak dotyczący zamiany tekstu na mowę lub asystenta wirtualnego opracowanego przede wszystkim z myślą o obsłudze głosowej.'
       - type: table
         style: dataMatrix
         columns:

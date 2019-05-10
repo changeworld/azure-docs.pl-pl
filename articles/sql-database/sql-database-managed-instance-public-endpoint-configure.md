@@ -10,13 +10,13 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 04/26/2019
-ms.openlocfilehash: ea16efbb846f21ec7c3fa39b2efeac741d8f8ce0
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.date: 05/07/2019
+ms.openlocfilehash: d3e68a5287e59c576f85491e6e5eba33fac080ca
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64928365"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65465162"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-database-managed-instance"></a>Konfigurowanie publicznego punktu końcowego w usłudze Azure SQL Database, wystąpienia zarządzanego
 
@@ -100,7 +100,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
     |**miejsce docelowe**     |Dowolne         |Pozostawienie docelowy jako zezwalająca na ruch do podsieci wystąpienia zarządzanego |
     |**Docelowe zakresy portów**     |3342         |Zakres docelowy port 3342, który jest wystąpienie zarządzane publicznego punktu końcowego strumienia TDS |
     |**Protokół**     |TCP         |Zarządzany protokół TCP używa wystąpienia TDS |
-    |**Akcja**     |Zezwalaj         |Zezwalaj na ruch przychodzący do wystąpienia zarządzanego za pośrednictwem publicznego punktu końcowego |
+    |**Akcja**     |Zezwól         |Zezwalaj na ruch przychodzący do wystąpienia zarządzanego za pośrednictwem publicznego punktu końcowego |
     |**Priorytet**     |1300         |Upewnij się, że ta reguła ma wyższy priorytet niż **deny_all_inbound** reguły |
 
     ![mi-nsg-rules.png](media/sql-database-managed-instance-public-endpoint-configure/mi-nsg-rules.png)

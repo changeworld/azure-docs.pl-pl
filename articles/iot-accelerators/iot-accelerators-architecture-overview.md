@@ -1,6 +1,6 @@
 ---
 title: Akceleratory rozwiązań IoT odwołania architektura — Azure | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat architektury dokumentacja akceleratorów rozwiązań Azure IoT. Ta architektura referencyjna korzystać z istniejących akceleratorów rozwiązań. Umożliwia także architekturę referencyjną podczas tworzenia własnych niestandardowych rozwiązań IoT.
+description: Więcej informacji na temat architektury referencyjnej akceleratorów rozwiązań Azure IoT. Ta architektura referencyjna korzystać z istniejących akceleratorów rozwiązań. Umożliwia także architekturę referencyjną podczas tworzenia własnych niestandardowych rozwiązań IoT.
 author: dominicbetts
 ms.author: dobett
 ms.date: 12/04/2018
@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: philmea
-ms.openlocfilehash: ba5eb50dcf800c186124db348ac584ff6f55cebb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1e3ec677f2c3ce2a7f942c47269fe1f70885ac02
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61450321"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466469"
 ---
 # <a name="introduction-to-the-azure-iot-reference-architecture"></a>Wprowadzenie do architektura referencyjna IoT platformy Azure
 
@@ -38,7 +38,7 @@ Na najwyższym poziomie można wyświetlić jako stanowią rozwiązania IoT:
 
 Architektura referencyjna identyfikuje podsystemów core pokazano na poniższym diagramie:
 
-![Podsystemy Core](media/iot-accelerators-architecture-overview/CoreSubsystems.png)
+![Podsystemy Core](media/iot-accelerators-architecture-overview/coresubsystems1.png)
 
 W poniższych sekcjach opisano, jak składniki akceleratora rozwiązania monitorowania zdalnego mapowania podstawowych podsystemów.
 

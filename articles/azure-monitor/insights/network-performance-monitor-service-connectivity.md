@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 01410fb59135e9b1f54e4a3c75b206c7d30abeed
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 85a35207293f5afda40c78d105fc58732f06b626
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65145015"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65509796"
 ---
 # <a name="service-connectivity-monitor"></a>Monitorowanie łączności usług
 
@@ -64,7 +64,7 @@ Zacznij tworzyć testy do monitorowania łączności sieciowej do punktów końc
 
     * Wybierz **Web** do monitorowania łączności z usługą, który odpowiada na żądania HTTP/Https, np. Exchange.office365.com lub bing.com.<br>
     * Wybierz **sieci** do monitorowania łączności z usługą, która odpowiada na żądania protokołu TCP, ale nie odpowiada na żądania HTTP/Https, takie jak SQL server, serwer FTP lub SSH port. 
-    * Na przykład: Aby utworzyć test sieci web, do konta usługi blob storage, wybierz **Web** i wprowadź element docelowy jako <your storageaccount>. blob.core.windows.net. Podobnie można utworzyć testy dla innych usługi table storage, usługi queue storage i Azure Files przy użyciu [tego łącza.](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview#storage-account-endpoints)
+    * Na przykład: Aby utworzyć test sieci web, do konta usługi blob storage, wybierz **Web** i wprowadź element docelowy jako *yourstorageaccount*. blob.core.windows.net. Podobnie można utworzyć testy dla innych usługi table storage, usługi queue storage i Azure Files przy użyciu [tego łącza.](https://docs.microsoft.com/azure/storage/common/storage-account-overview#storage-account-endpoints)
 4. Jeśli nie chcesz do wykonywania pomiarów sieci, takich jak opóźnienie sieci i utraty pakietów, Odnajdywanie topologii wyczyść **wykonaj pomiary sieci** pole wyboru. Zachowaj ono zaznaczone, aby uzyskać maksymalne korzyści z możliwości. 
 5. W **docelowej**, wprowadź adres IP/nazwę FQDN/adres URL, do którego chcesz monitorować łączność sieciową.
 6. W **numer portu**, wprowadź numer portu z usług docelowych. 
@@ -128,6 +128,16 @@ Jeśli zauważysz nieprawidłowości, wykonaj następujące kroki:
 
 * Jeśli aplikacja działa wolno, należy określić, czy niską wydajność aplikacji jest ze względu na problem, po stronie dostawcy aplikacji lub sieci.
 
+## <a name="gcc-office-urls-for-us-government-customers"></a>Adresy URL z pakietu Office GCC dla klientów rządowych USA
+Dla regionu US Government Wirginia wyłącznie adresy URL DOD są wbudowane NPM. Klienci korzystający z adresów URL GCC konieczne tworzenie niestandardowych testów i Dodaj każdy inidividually adresu URL.
+
+| Pole | GCC |
+|:---   |:--- |
+| Portal usługi Office 365 i udostępnianie | portal.apps.mil |
+| Uwierzytelnianie usługi Office 365 i tożsamości | * login.microsoftonline.us <br> * api.login.microsoftonline.com <br> * clientconfig.microsoftonline-p.net <br> * login.microsoftonline.com <br> * login.microsoftonline p.com <br> * login.windows.net <br> * loginex.microsoftonline.com <br> * logowania us.microsoftonline.com <br> * nexus.microsoftonline-p.com <br> * mscrl.microsoft.com <br> * secure.aadcdn.microsoftonline p.com |
+| Office Online | * adminwebservice.gov.us.microsoftonline.com <br>  * adminwebservice — s1-bn1a.microsoftonline.com <br> * adminwebservice — s1-dm2a.microsoftonline.com <br> * becws.gov.us.microsoftonline.com <br> * provisioningapi.gov.us.microsoftonline.com <br> * officehome.msocdn.us <br> * prod.msocdn.us <br> * portal.office365.us <br> * webshell.suite.office365.us <br> * www. office365.us <br> * activation.sls.microsoft.com <br> * crl.microsoft.com <br> * go.microsoft.com <br> * insertmedia.bing.office.net <br> * ocsa.officeapps.live.com <br> * ocsredir.officeapps.live.com <br> * ocws.officeapps.live.com <br> * office15client.microsoft.com <br>* officecdn.microsoft.com <br> * officecdn.microsoft.com.edgesuite.net <br> * officepreviewredir.microsoft.com <br> * officeredir.microsoft.com <br> * ols.officeapps.live.com  <br> * r.office.microsoft.com <br> * cdn.odc.officeapps.live.com <br> * odc.officeapps.live.com <br> * officeclient.microsoft.com |
+| Exchange Online | * outlook.office365.us <br> * attachments.office365 net.us <br> * autodiscover-s.office365.us <br> * manage.office365.us <br> * scc.office365.us |
+| MS Teams | gov.teams.microsoft.us | 
 
 ## <a name="next-steps"></a>Kolejne kroki
 [Przeszukiwanie dzienników](../../azure-monitor/log-query/log-query-overview.md) do wyświetlania rekordów danych wydajności szczegółowe sieci.

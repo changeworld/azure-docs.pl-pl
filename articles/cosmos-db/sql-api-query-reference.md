@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 1d874b9c8f14b1489ab5e5b8bbdddaff0669165e
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 186e0365ae8aee3b7f92fcc06142e4d0496ffd08
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65145190"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65415453"
 ---
 # <a name="sql-language-reference-for-azure-cosmos-db"></a>Dokumentacja języka SQL dla usługi Azure Cosmos DB 
 
@@ -1307,7 +1307,7 @@ RADIANS (<numeric_expression>)
 SELECT RADIANS(-45.01) AS r1, RADIANS(-181.01) AS r2, RADIANS(0) AS r3, RADIANS(0.1472738) AS r4, RADIANS(197.1099392) AS r5  
 ```  
   
- W tym miejscu znajduje się zestaw wyników.  
+  W tym miejscu znajduje się zestaw wyników.  
   
 ```  
 [{  
@@ -1338,6 +1338,17 @@ ROUND(<numeric_expression>)
   
   Zwraca wartość wyrażenia liczbowego.  
   
+  **Uwagi**
+  
+  Operację zaokrąglania, wykonywana jest zgodna punkt środkowy zaokrąglanie od zera. Jeśli dane wejściowe są wyrażenia liczbowego, który mieści się między dwoma liczbami całkowitymi wynik będzie najbliższej wartości liczby całkowitej w kierunku od zera.  
+  
+  |<numeric_expression>|Zaokrąglone|
+  |-|-|
+  |-6.5000|-7|
+  |-0.5|-1|
+  |0,5|1|
+  |6.5000|7||
+  
   **Przykłady**  
   
   Poniższy przykład zaokrągla liczby dodatnie i ujemne następujące do najbliższej liczby całkowitej.  
@@ -1346,7 +1357,7 @@ ROUND(<numeric_expression>)
 SELECT ROUND(2.4) AS r1, ROUND(2.6) AS r2, ROUND(2.5) AS r3, ROUND(-2.4) AS r4, ROUND(-2.6) AS r5  
 ```  
   
- W tym miejscu znajduje się zestaw wyników.  
+  W tym miejscu znajduje się zestaw wyników.  
   
 ```  
 [{r1: 2, r2: 3, r3: 3, r4: -2, r5: -3}]  
@@ -3148,7 +3159,7 @@ GetCurrentDateTime ()
   |RRRR|Czterocyfrowy rok|
   |MM|dwucyfrowy miesiąc (01 = stycznia, itp.)|
   |DD|dwucyfrowy dzień miesiąca (01 do 31)|
-  |T|signifier z początkiem elementów czasu|
+  |W|signifier z początkiem elementów czasu|
   |hh|Godzina dwóch cyfr (od 00 do 23)|
   |mm|dwie minuty cyfry (od 00 do 59)|
   |ss|dwie cyfry sekund (od 00 do 59)|

@@ -1,21 +1,24 @@
 ---
-title: Zarządzanie odczytu replik dla usługi Azure Database for PostgreSQL z wiersza polecenia platformy Azure
-description: Dowiedz się, jak zarządzać — Azure Database for PostgreSQL odczytu replik z wiersza polecenia platformy Azure.
+title: Zarządzanie odczytu replik dla usługi Azure Database for PostgreSQL — jeden serwer z wiersza polecenia platformy Azure
+description: Dowiedz się, jak zarządzać odczytu replik w usłudze Azure Database for PostgreSQL — jeden serwer z wiersza polecenia platformy Azure.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 04/05/2019
-ms.openlocfilehash: b5e0336a290090ed6bd7f5af508e691677780a80
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 9730faf3191ef2e2bd0b6c3caddefa0492b33fc5
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60420244"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510240"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli"></a>Tworzenie i zarządzanie odczytu replik z wiersza polecenia platformy Azure
 
 W tym artykule dowiesz się, jak tworzyć i zarządzać odczytu replik w usłudze Azure Database for PostgreSQL z wiersza polecenia platformy Azure. Aby dowiedzieć się więcej na temat odczytu repliki, zobacz [Przegląd](concepts-read-replicas.md).
+
+> [!NOTE]
+> Wiersza polecenia platformy Azure nie obsługuje jeszcze tworzenia replik w różnych regionach, z serwera głównego. Aby utworzyć replikę między regionami, należy użyć [witryny Azure portal](howto-read-replicas-portal.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 - [— Azure Database for postgresql w warstwie serwera](quickstart-create-server-up-azure-cli.md) jako serwer główny.

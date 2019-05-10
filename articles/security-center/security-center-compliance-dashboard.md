@@ -3,7 +3,7 @@ title: Zwiększanie zgodności z przepisami przy użyciu usługi Azure Security 
 description: 'Samouczek: Informacje na temat zwiększania zgodności z przepisami przy użyciu usługi Azure Security Center.'
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
 editor: ''
 ms.assetid: 5f50c4dc-ea42-418d-9ea8-158ffeb93706
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/15/2019
-ms.author: rkarlin
-ms.openlocfilehash: 2e73cbd1de4336a08e26a609dfe704da0a068860
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 4/30/2019
+ms.author: monhaber
+ms.openlocfilehash: 111a32983472d18c1435feaf2456e5b9416b5112
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60706015"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65442306"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>Samouczek: Zwiększanie zgodności z przepisami
 ---
@@ -47,8 +47,7 @@ Widok pulpitu nawigacyjnego Zgodność z przepisami ułatwia skoncentrowanie uwa
 
 >[!NOTE]
 > Obecnie obsługiwane standardy prawne to: Azure CIS, PCI DSS 3.2, ISO 27001 i SOC TSP. Dodatkowe standardy będą odzwierciedlane na pulpicie nawigacyjnym w miarę ich rozwijania.
-
-1.  W menu głównym usługi Security Center w obszarze **ZASADY I ZGODNOŚĆ** wybierz pozycję **Pulpit nawigacyjny Zgodność z przepisami**. <br>
+1.  W usłudze Security Center menu głównego w obszarze **zasady i zgodność** wybierz **zgodność z przepisami**. <br>
 W górnej części ekranu zostanie wyświetlony pulpit nawigacyjny zawierający przegląd stanu zgodności z zestawem obsługiwanych przepisów dotyczących zgodności. Widoczna jest ogólna ocena zgodności oraz liczba ocen zakończonych powodzeniem i niepowodzeniem skojarzonych z każdym standardem.
 
     ![Opis komputera — godny zaufania](./media/security-center-compliance-dashboard/compliance-dashboard.png)
@@ -58,12 +57,17 @@ W górnej części ekranu zostanie wyświetlony pulpit nawigacyjny zawierający 
 
     ![Karta zgodności](./media/security-center-compliance-dashboard/compliance-pci.png)
 
-3.  Wybierz kartę **Wszystkie**, aby wyświetlić widok wszystkich odpowiednich rekomendacji usługi Security Center i skojarzonych z nimi standardów. Ten widok może ułatwić zidentyfikowanie wszystkich standardów, których dotyczy określona rekomendacja. <br> Korzystając z tego widoku, możesz również nadawać priorytety rekomendacjom, które trzeba wprowadzić w życie. Na przykład jeśli widzisz, że zalecenie **Włącz uwierzytelnianie wieloskładnikowe dla kont z uprawnieniami właściciela w Twojej subskrypcji** kończy się niepowodzeniem na wielu zasobach i jest skojarzone z wieloma standardami, wprowadzenie tej rekomendacji będzie mieć bardzo duży wpływ na ogólną ocenę zgodności.
+3. Wybierz kartę **Wszystkie**, aby wyświetlić widok wszystkich odpowiednich rekomendacji usługi Security Center i skojarzonych z nimi standardów. Ten widok może ułatwić zidentyfikowanie wszystkich standardów, których dotyczy określona rekomendacja. <br> Korzystając z tego widoku, możesz również nadawać priorytety rekomendacjom, które trzeba wprowadzić w życie. Na przykład jeśli widzisz, że zalecenie **Włącz uwierzytelnianie wieloskładnikowe dla kont z uprawnieniami właściciela w Twojej subskrypcji** kończy się niepowodzeniem na wielu zasobach i jest skojarzone z wieloma standardami, wprowadzenie tej rekomendacji będzie mieć bardzo duży wpływ na ogólną ocenę zgodności.
 
     ![Wpływ na ocenę zgodności](./media/security-center-compliance-dashboard/compliance-all-tabs.png)
 
-## <a name="improve-your-compliance-posture"></a>Zwiększanie poziomu zgodności
+1. Kliknij, aby wygenerować i pobrać raportu w formacie PDF podsumowywanie bieżący stan zgodności dla określonej warstwy standardowa **Pobierz raport**.
 
+    Raport zawiera podsumowanie wysokiego poziomu usługi stanu zgodności dla wybranej warstwy standardowa, na podstawie danych ocen w usłudze Security Center i są zorganizowane według kontrolki tego konkretnego standard. Raport, mogą być współużytkowane z właściwym uczestnikom projektu i może obsługiwać dostarczanie dowodu do wewnętrznych i zewnętrznych audytorów.
+
+    ![pobierz](./media/security-center-compliance-dashboard/download-report.png)
+
+## <a name="improve-your-compliance-posture"></a>Zwiększanie poziomu zgodności
 
 Dzięki informacjom wyświetlanym na pulpicie nawigacyjnym Zgodność z przepisami możesz zwiększyć poziom zgodności, wprowadzając w życie te rekomendacje bezpośrednio z poziomu pulpitu nawigacyjnego.
 

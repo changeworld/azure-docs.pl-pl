@@ -9,12 +9,12 @@ ms.subservice: ink-recognizer
 ms.topic: article
 ms.date: 05/02/2019
 ms.author: aahi
-ms.openlocfilehash: 43dc388c9f24e3975d6efddbeec6e096bf062548
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 6237253922544dc47bb11aec4dd58139f99eb0da
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026275"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65518629"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-java"></a>Szybki start: Rozpoznaje cyfrowy atrament za pomocą interfejsu API REST rozpoznawania pisma odręcznego i Java
 
@@ -30,13 +30,13 @@ Kod źródłowy dla tego przewodnika Szybki Start można znaleźć na [GitHub](h
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- [Java&trade; 7 Kit(JDK) rozwoju](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) lub nowszej.
+- [Java&trade; 7 Kit(JDK) rozwoju](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) lub nowszej.
 
 - Importowanie tych bibliotek z repozytorium Maven
     - [JSON w języku Java](https://mvnrepository.com/artifact/org.json/json) pakietu
     - [Apache HttpClient](https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient) pakietu
 
-- Pociągnięcia odręczne przykładowych danych w tym przewodniku Szybki znajduje się na [GitHub](https://go.microsoft.com/fwlink/?linkid=2089904).
+- Pociągnięcia odręczne przykładowych danych w tym przewodniku Szybki znajduje się na [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/InkRecognition/quickstart/example-ink-strokes.json).
 
 [!INCLUDE [cognitive-services-ink-recognizer-signup-requirements](../../../../includes/cognitive-services-ink-recognizer-signup-requirements.md)]
 
@@ -134,7 +134,7 @@ static void recognizeInk(String requestData) {
 
 ## <a name="run-the-application-and-view-the-response"></a>Uruchom aplikację, a następnie zobacz odpowiedź
 
-Uruchom aplikację. Odpowiedź oznaczająca Powodzenie są zwracane w formacie JSON. Możesz również znaleźć odpowiedź w formacie JSON na [GitHub](https://go.microsoft.com/fwlink/?linkid=2089904).
+Uruchom aplikację. Odpowiedź oznaczająca Powodzenie są zwracane w formacie JSON. Możesz również znaleźć odpowiedź w formacie JSON na [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/InkRecognition/quickstart/example-response.json).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
@@ -143,8 +143,8 @@ Uruchom aplikację. Odpowiedź oznaczająca Powodzenie są zwracane w formacie J
 
 
 Aby zobaczyć, jak działa interfejs API rozpoznawania pisma odręcznego w cyfrowych aplikacji pisma odręcznego, spójrz na następujące przykładowe aplikacje w usłudze GitHub:
-* [C#i Platform(UWP) Universal Windows](https://go.microsoft.com/fwlink/?linkid=2089803)  
-* [C#i Windows Presentation Foundation(WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
-* [Aplikacja przeglądarki sieci web języka JavaScript](https://go.microsoft.com/fwlink/?linkid=2089908)       
+* [C# i platforma uniwersalna systemu Windows (UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  
+* [C# i Windows Presentation Foundation (WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
+* [Aplikacja języka JavaScript dla przeglądarki internetowej](https://go.microsoft.com/fwlink/?linkid=2089908)       
 * [Aplikacja mobilna języka Java i systemu Android](https://go.microsoft.com/fwlink/?linkid=2089906)
-* [Aplikacja mobilna SWIFT i iOS](https://go.microsoft.com/fwlink/?linkid=2089805)
+* [Aplikacja mobilna języka Swift i systemu iOS](https://go.microsoft.com/fwlink/?linkid=2089805)

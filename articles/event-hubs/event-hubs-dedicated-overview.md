@@ -15,12 +15,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: a5184b9980dd9f83764950445c10e8bdfea6d71a
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 4f721dc4fda5bef002c794d79dfd2f054f9eaf38
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65203952"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65511177"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Omówienie usługi Event Hubs w wersji dedykowanej
 
@@ -50,31 +50,22 @@ Na woluminy wysokiej transferu danych przychodzących (> 100 jednostek przepływ
 
 Event hubs w warstwie dedykowana oferta jest rozliczana w stałej miesięcznej cenie, co najmniej 4 godziny użycia. Dedykowane warstwy są dostępne wszystkie funkcje plan w warstwie standardowa, ale o pojemności Skala przedsiębiorstwa i limity dla klientów wymagających obciążeń. 
 
-| Cecha | Standardowa (Standard) | Dedykowany |
+| Cecha | Standardowa (Standard) | Dedykowane |
 | --- |:---:|:---:|
 | Przepustowość | 20 jednostek przepływności (maksymalnie 40 jednostek przepływności) | 20 jednostek pojemności |
 | Przestrzenie nazw |  1 | 50 na jednostkę pojemności |
-| Event Hubs |  10 | Bez ograniczeń |
-| Zdarzenia związane z transferem danych przychodzących | Płatność za milion zdarzeń | Dołączono |
+| Event Hubs |  10 | Brak limitu tematy centrów zdarzeń |
+| Zdarzenia związane z transferem danych przychodzących | Płatność za milion zdarzeń | Dołączone |
 | Rozmiar komunikatu | 1 milion bajtów | 1 milion bajtów |
-| Partycje | 40 przestrzeni nazw | 2000 na jednostkę pojemności, 1024, na Centrum zdarzeń |
-| Grupy odbiorców | 20 za Centrum zdarzeń | Dopuszczalne na jednostkę pojemności, 1000 na Centrum zdarzeń |
+| Partycje | 40 przestrzeni nazw | 2000 na jednostkę pojemności |
+| Grupy konsumentów | 20 za Centrum zdarzeń | Dopuszczalne na jednostkę pojemności, 1000 na Centrum zdarzeń |
 | Połączenia obsługiwane przez brokera | 1000 uwzględnione | 100 tys. w cenie |
-| Przechowywanie komunikatów | 7 dni, 84 GB na jednostek Przepływności | 90 dni, 10 TB uwzględnione na jednostkę pojemności |
-| Przechwytywanie | Płatność za godzinę | Dołączono |
+| Okres przechowywania wiadomości | 7 dni, 84 GB na jednostek Przepływności | 90 dni, 10 TB uwzględnione na jednostkę pojemności |
+| Przechwyć | Płatność za godzinę | Dołączone |
 
 ## <a name="how-to-onboard"></a>Jak dołączyć
 
-Samoobsługa umożliwiający dołączenie do dedykowana jest dostępna w wersji zapoznawczej, za pomocą których można utworzyć 1 CU klastrów w następujących regionach:
-  - Kanada Środkowa
-  - Europa Zachodnia
-  - Środkowe stany USA
-  - Wschodnie stany USA
-  - Wschodnie stany USA 2
-  - Północno-środkowe stany USA
-  - Zachodnie stany USA
-
-Firma Microsoft aktywnie dodawania nowych regionów, ale w tym samym czasie, jeśli preferowanego regionu nie znajduje się na liście, Prześlij żądanie pomocy technicznej, aby [zespołu usługi Event Hubs](https://ms.portal.azure.com/#create/Microsoft.Support) w obszarze *techniczne > usługi Event Hubs > przydziału > żądanie Jednostka SKU w wersji dedykowanej*. Dedykowanego planu jest unikatowy, wówczas będą pojawiać się w praktyce dołączania od zespołu produktu usługi Event Hubs, aby uzyskać elastyczne wdrożenia, który jest odpowiedni dla Ciebie. 
+Aby dołączyć do Event hubs w warstwie dedykowana, skontaktuj się z [zespołu usługi Event Hubs](mailto:askeventhubs@microsoft.com). Dedykowanego planu jest unikatowy, wówczas będą pojawiać się w praktyce dołączania od zespołu produktu usługi Event Hubs, aby uzyskać elastyczne wdrożenia, który jest odpowiedni dla Ciebie. 
 
 ## <a name="faqs"></a>Często zadawane pytania
 
@@ -86,19 +77,15 @@ Poniższej tabeli przedstawiono wyniki testów porównawczych, że możemy osią
 
 | Kształt ładunku | Odbiorniki | Przepustowość ruchu przychodzącego| Komunikaty przychodzące | Przepustowość danych wychodzących | Komunikaty wychodzące | Łączna liczba jednostek przepływności | Jednostek przepływności na jednostkę pojemności |
 | ------------- | --------- | ---------------- | ------------------ | ----------------- | ------------------- | --------- | ---------- |
-| Partie 100x1KB | 2 | 400 MB/s | 400 wiad KB/s | 800 MB/s | 800 KB wiad. / s | 400 jednostek przepływności | 100 jednostek przepływności | 
-| Partie 10x10KB | 2 | 666 MB/s | 66.6 wiad KB/s | 1.33 GB/s | 133 wiad KB/s | 666 jednostek przepływności | 166 jednostek przepływności |
-| Partie 6x32KB | 1 | 1,05 GB/s | 34 wiad KB / s | 1,05 GB/s | 34 wiad KB/s | 1000 jednostek przepływności | 250 jednostek przepływności |
+| Partie 100x1KB | 2 | 400 MB/s | 400 k komunikatów na sekundę | 800 MB/s | 800 KB komunikatów na sekundę | 400 jednostek przepływności | 100 jednostek przepływności | 
+| Partie 10x10KB | 2 | 666 MB/s | 66.6 k komunikatów na sekundę | 1.33 GB/s | 133 k komunikatów na sekundę | 666 jednostek przepływności | 166 jednostek przepływności |
+| Partie 6x32KB | 1 | 1,05 GB/s | 34 k komunikaty / sekundę | 1,05 GB/s | 34 k komunikatów na sekundę | 1000 jednostek przepływności | 250 jednostek przepływności |
 
 Podczas testowania, użyto następujących kryteriów:
 
 - Klaster warstwy dedykowana dla usługi Event Hubs przy użyciu czterech jednostek pojemności (CUs) został użyty. 
 - Centrum zdarzeń, umożliwiający wprowadzanie ma partycje 200. 
 - Dane, które zostało pozyskane została odebrana przez dwie aplikacje odbiorcy odbieranie od wszystkich partycji.
-
-#### <a name="how-do-i-create-a-cluster-larger-than-1-cu"></a>Jak utworzyć klaster większy niż 1 pojemności?
-
-W wersji zapoznawczej środowiska samoobsługowego możesz poprosić, aby skalować w górę klastra po utworzeniu klastra. Po utworzeniu klastra CU 1, skontaktuj się z pomocy technicznej usługi Event Hubs, przesyłanie [żądania pomocy technicznej](https://ms.portal.azure.com/#create/Microsoft.Support) w obszarze *techniczne > przydziału > żądanie skalowania w górę lub Skaluj w dół dedykowany klaster*. W wersji Ogólnodostępnej można skalować w klastrze bezpośrednio za pośrednictwem portalu. 
 
 #### <a name="can-i-scale-down-my-cluster"></a>Czy mogę skalować w dół do mojego klastra?
 
@@ -107,7 +94,6 @@ Po utworzeniu klastry są naliczane za okres co najmniej 4 godziny użycia. W we
 #### <a name="how-will-geo-dr-work-with-my-cluster"></a>Jak Geo-DR będą współpracować z mojego klastra?
 
 Możesz to zrobić pary geograficznie przestrzeni nazw w ramach klastra dedykowane warstwy z innej przestrzeni nazw w ramach klastra dedykowane warstwy. Firma Microsoft nie zachęca parowanie warstwy dedykowana przestrzeń nazw z przestrzeni nazw w naszych standardowych oferty, ponieważ limit przepływności będzie niezgodna będą powodować błędy. 
-
 
 #### <a name="can-i-migrate-my-standard-namespaces-to-belong-to-a-dedicated-tier-cluster"></a>Czy mogę zmigrować Moje standardowych przestrzeni nazw, należy do klastra warstwy dedykowana
 Firma Microsoft nie obsługujemy proces automatycznej migracji dotyczące migracji danych centra zdarzeń ze standardową przestrzeń nazw dedykowana, jeden. Aby przeprowadzić migrację do klastra z warstwy dedykowana, firma Microsoft zaleca opróżniania po lewej stronie wszelkie komunikaty usługi event hubs warstwy standardowa i zastępując punkty końcowe połączenia, dedykowanej przestrzeni nazw.

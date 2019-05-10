@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 43f783617c36d30aa1fd65cce580bb5e666afed1
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 5973cfc955cfce0ec1b073ac96bd68f07f093087
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65021480"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409108"
 ---
 # <a name="speech-devices-sdk-license-agreement"></a>Umowa licencyjna Speech Devices SDK
 
@@ -32,7 +32,7 @@ Niniejsze postanowienia licencyjne stanowią umowę między użytkownikiem a fir
 
     a) General. Możesz zainstalować i użyć dowolnej liczby kopii oprogramowania do tworzenia i testowania aplikacji, tylko w celu powyższych i innych funkcji do sieci wewnętrznych celów biznesowych.
 
-    (b) oprogramowanie innych firm. Oprogramowanie może zawierać aplikacje innych firm, które są licencjonowane w ramach niniejszej Umowy lub w ich własnych warunkach. Licencja warunki, uwagi i podziękowania, jeśli dla aplikacji innych firm mogą być dostępne online w http://aka.ms/thirdpartynotices lub w pliku z uwagami. Nawet jeśli takie aplikacje są zarządzane przez inne umowy, zrzeczenie odpowiedzialności, ograniczenia i wykluczenia dotyczące szkód mają zastosowanie również w zakresie dozwolonym przez prawo właściwe.
+    (b) oprogramowanie innych firm. Oprogramowanie może zawierać aplikacje innych firm, które są licencjonowane w ramach niniejszej Umowy lub w ich własnych warunkach. Licencja warunki, uwagi i podziękowania, jeśli dla aplikacji innych firm mogą być dostępne online w https://aka.ms/thirdpartynotices lub w pliku z uwagami. Nawet jeśli takie aplikacje są zarządzane przez inne umowy, zrzeczenie odpowiedzialności, ograniczenia i wykluczenia dotyczące szkód mają zastosowanie również w zakresie dozwolonym przez prawo właściwe.
 
     c) konkurencyjne testów porównawczych. Jeśli są konkurentem bezpośredniego i dostępu lub korzystać z oprogramowania do celów konkurencyjne testów porównawczych, analizy i gromadzenia, odstąpić od osób firmy Microsoft, jej podmioty zależne i podmiotom stowarzyszonym (łącznie z zaktualizowaniem) wszystkie Użyj konkurencyjne, dostępu i testów porównawczych ograniczenia testu w postanowieniach dotyczących oprogramowania w zakresie są warunki użytkowania, lub twierdzi, że ma być bardziej restrykcyjny niż warunki firmy Microsoft. Jeśli nie odstąpić od tych lukach ograniczeń w postanowieniach dotyczących oprogramowania, nie mogą uzyskać dostęp i korzystać z tego oprogramowania, a nie zrobi to.
 
@@ -74,13 +74,13 @@ Niniejsze postanowienia licencyjne stanowią umowę między użytkownikiem a fir
 
     (e) udostępniać, publikować, dystrybuować, wypożyczać oprogramowania (z wyjątkiem w przypadku kodu dystrybucyjnego, z zastrzeżeniem postanowień powyżej), udostępniać oprogramowania jako autonomicznego rozwiązania hostowanego w innym użytkownikom lub przekazywać oprogramowania ani niniejszej Umowy stronom trzecim.
 
-1. OGRANICZENIA EKSPORTU Należy przestrzegać wszystkich krajowych i międzynarodowych przepisów eksportowych mających zastosowanie do oprogramowania, których określono ograniczenia dotyczące kraju przeznaczenia, użytkowników końcowych i użytkowania końcowego. Aby uzyskać więcej informacji na temat ograniczeń eksportowych, odwiedź stronę http://aka.ms/exporting.
+1. OGRANICZENIA EKSPORTU Należy przestrzegać wszystkich krajowych i międzynarodowych przepisów eksportowych mających zastosowanie do oprogramowania, których określono ograniczenia dotyczące kraju przeznaczenia, użytkowników końcowych i użytkowania końcowego. Aby uzyskać więcej informacji na temat ograniczeń eksportowych, odwiedź stronę https://aka.ms/exporting.
 
 1. USŁUGI POMOCY TECHNICZNEJ Microsoft nie jest zobowiązana tą umową do świadczenia usług pomocy technicznej dla oprogramowania. Każdy rodzaj pomocy technicznej pod warunkiem jest "", "ze wszystkimi wadami" i bez żadnego rodzaju gwarancji.
 
 1. AKTUALIZACJE. Oprogramowanie może okresowo sprawdzać dostępność aktualizacji i Pobierz i zainstaluj je dla Ciebie. Klient może uzyskiwać aktualizacje tylko od firmy Microsoft lub z autoryzowanych źródeł. Microsoft może być konieczne zaktualizowanie systemu klienta w celu dostarczenia aktualizacji. Wyrażasz zgodę na otrzymywanie tych automatycznych aktualizacji bez jakichkolwiek dodatkowych powiadomień. Aktualizacji może obejmować lub nie obsługiwać wszystkich istniejących funkcji oprogramowania, usług lub urządzeń peryferyjnych.
 
-1. POWIĄZANIA KLAUZULA ARBITRAŻOWA I KLAUZULA WNIESIENIA POZWU. Ten rozdział ma zastosowanie, jeśli klient mieszka (lub jeśli główna siedziba firmy trwa) Stanów Zjednoczonych.  Jeśli klient i firma Microsoft ma sporu, klient i firma Microsoft zobowiązuje się do wypróbowania przez 60 dni rozstrzygnąć go nieformalnie. Jeśli klient i firma Microsoft nie może, klient i firma Microsoft zgadzają sądem American skojarzenia arbitrażu w obszarze Federal Arbitration Act ("FAA"), a nie powiedzie się w sądzie przed sędziego lub przysięgłych. Zamiast tego rozstrzygnięty przez bezstronnego sędziego podejmie decyzję. Pozwy, klasa arbitrażowe, prywatnego Prokuratora Generalnego i wszelkie inne postępowania, w których ktoś pełni reprezentatywny pojemności nie są dozwolone nie jest łączenie postępowań indywidualnych bez zgody wszystkich stron. Umowa zawiera więcej postanowień i jest na http://aka.ms/arb-agreement-1. Klient i firma Microsoft zobowiązuje się na te warunki.
+1. POWIĄZANIA KLAUZULA ARBITRAŻOWA I KLAUZULA WNIESIENIA POZWU. Ten rozdział ma zastosowanie, jeśli klient mieszka (lub jeśli główna siedziba firmy trwa) Stanów Zjednoczonych.  Jeśli klient i firma Microsoft ma sporu, klient i firma Microsoft zobowiązuje się do wypróbowania przez 60 dni rozstrzygnąć go nieformalnie. Jeśli klient i firma Microsoft nie może, klient i firma Microsoft zgadzają sądem American skojarzenia arbitrażu w obszarze Federal Arbitration Act ("FAA"), a nie powiedzie się w sądzie przed sędziego lub przysięgłych. Zamiast tego rozstrzygnięty przez bezstronnego sędziego podejmie decyzję. Pozwy, klasa arbitrażowe, prywatnego Prokuratora Generalnego i wszelkie inne postępowania, w których ktoś pełni reprezentatywny pojemności nie są dozwolone nie jest łączenie postępowań indywidualnych bez zgody wszystkich stron. Umowa zawiera więcej postanowień i jest na https://aka.ms/arb-agreement-1. Klient i firma Microsoft zobowiązuje się na te warunki.
 
 1. ROZWIĄZANIE UMOWY. Bez uszczerbku dla żadnych innych praw firmy Microsoft może rozwiązać niniejszą Umowę, jeżeli nie są zgodne ze wszystkimi jej postanowień lub warunków. W takim przypadku użytkownik musi zniszczyć wszystkie kopie oprogramowania i wszystkie jego składniki.
 

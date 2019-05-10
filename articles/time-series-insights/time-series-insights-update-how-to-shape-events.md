@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/03/2018
+ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: 344f3a8b1bdfb789251479baffeb4df15bbf2842
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 38072d111d51cc2d2c6265643b69a870a679a454
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64718360"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466142"
 ---
 # <a name="shape-events-with-azure-time-series-insights-preview"></a>Kształt zdarzeń za pomocą usługi Azure czas Series Insights w wersji zapoznawczej
 
@@ -65,7 +65,7 @@ W poniższym przykładzie istnieje pojedynczy komunikat usługi IoT Hub, gdzie z
         "timestamp": "2018-01-17T01:18:00Z",
         "series": [
             {
-                "Flow Rate psi": 0.58015072345733643,
+                "Flow Rate ft3/s": 0.58015072345733643,
                 "Engine Oil Pressure psi ": 22.2
             }
         ]
@@ -112,8 +112,8 @@ Czas Series Insights w wersji zapoznawczej łączy tabeli (po spłaszczanie) pod
 
 | deviceId  | Typ | L1 | PAMIĘCI PODRĘCZNEJ L2 | sygnatura czasowa | Seria. Przepływ współczynnika ft3/s | Seria. Aparat wykorzystanie ropa naftowa psi |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-| `FXXX` | Default_Type | SYMULATOR REVOLT | System baterii | 2018-01-17T01:17:00Z |    1.0172575712203979 |    34.7 |
-| `FXXX` | LINE_DATA REVOLT | SYMULATOR |    System baterii |    2018-01-17T01:17:00Z | 2.445906400680542 |  49.2 |
+| `FXXX` | Default_Type | SYMULATOR | System baterii | 2018-01-17T01:17:00Z |   1.0172575712203979 |    34.7 |
+| `FXXX` | Default_Type | SYMULATOR |   System baterii |    2018-01-17T01:17:00Z | 2.445906400680542 |  49.2 |
 | `FYYY` | LINE_DATA WSPÓLNE | SYMULATOR |    System baterii |    2018-01-17T01:18:00Z | 0.58015072345733643 |    22.2 |
 
 W poprzednim przykładzie Pamiętaj o następujących kwestiach:

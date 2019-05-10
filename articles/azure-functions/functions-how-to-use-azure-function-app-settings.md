@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 096f39eeef54f3a4a1e3d8928dd13b7c22847c8d
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 188c17b4e8ef84f3907b63fd62bf110ee94b4d7f
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65143182"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65511233"
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>Jak zarządzać aplikacji funkcji w witrynie Azure portal 
 
@@ -26,15 +26,23 @@ Aby rozpocząć, przejdź do [witryny Azure portal](https://portal.azure.com) i 
 
 ![Omówienie aplikacji funkcji w witrynie Azure portal](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
 
-## <a name="manage-app-service-settings"></a>Karta Ustawienia aplikacji — funkcja
+Możesz przejść do wszystkiego, czego potrzebujesz, aby zarządzać swoją aplikację funkcji na stronie Przegląd w szczególności **[ustawienia aplikacji](#settings)** i **[funkcje platformy](#platform-features)**.
 
-![Omówienie aplikacji funkcji w witrynie Azure portal.](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-settings-tab.png)
+## <a name="settings"></a>Ustawienia aplikacji
 
-**Ustawienia** karta jest, gdzie można zaktualizować wersji środowiska uruchomieniowego funkcji, które są używane przez aplikację funkcji. Jest również, w których zarządzasz klucze hosta używany do ograniczania dostępu do protokołu HTTP do wszystkich funkcji obsługiwanych przez aplikację funkcji.
+**Ustawienia aplikacji** kartę przechowuje ustawienia, które są używane przez aplikację funkcji.
 
-Usługa Functions obsługuje hostingu zużycie a plany hostingu w usłudze App Service. Aby uzyskać więcej informacji, zobacz [wybierz plan prawidłowe usługi dla usługi Azure Functions](functions-scale.md). Lepsze przewidywalność planu zużycie funkcje pozwala ograniczyć użycie platformy, ustawiając dzienny limit przydziału użycia w sekundach gigabajta. Po osiągnięciu dziennego limitu przydziału użycia aplikacja funkcji zostanie zatrzymana. Aplikacja funkcji, zatrzymana w wyniku osiągnięcia limit przydziału wydatków można ją ponownie włączyć, z tym samym kontekście co ustanawiania dzienny limit przydziału wydatków. Zobacz [usługi Azure Functions stronę z cennikiem](https://azure.microsoft.com/pricing/details/functions/) szczegółowe informacje dotyczące rozliczeń.   
+![Ustawienia aplikacji funkcji w witrynie Azure portal.](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-settings-tab.png)
 
-## <a name="platform-features-tab"></a>Karta funkcje platformy
+Te ustawienia są przechowywane w postaci zaszyfrowanej i należy wybrać **Pokaż wartości** aby zobaczyć wartości, w portalu.
+
+Aby dodać ustawienie, wybierz pozycję **nowe ustawienie aplikacji** i Dodaj nową parę klucz wartość.
+
+[!INCLUDE [functions-environment-variables](../../includes/functions-environment-variables.md)]
+
+Podczas tworzenia aplikacji funkcji, który jest lokalnie, te wartości są obsługiwane w pliku local.settings.json w projekcie.
+
+## <a name="platform-features"></a>Funkcje platformy
 
 ![Karta funkcje platformy aplikacji funkcji.](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-features-tab.png)
 
@@ -46,7 +54,6 @@ Aplikacje funkcji działają w i są obsługiwane przez platformę Azure App Ser
 Pozostała część tego tematu koncentruje się na następujące funkcje usługi App Service w witrynie Azure portal, które są przydatne w przypadku funkcji:
 
 + [Edytor usługi App Service](#editor)
-+ [Ustawienia aplikacji](#settings) 
 + [Console](#console)
 + [Narzędzia zaawansowane (Kudu)](#kudu)
 + [Opcje wdrażania](#deployment)
@@ -63,14 +70,6 @@ Aby uzyskać więcej informacji na temat sposobu pracy z ustawieniami usługi Ap
 | ![Aplikacja funkcji edytora usługi App Service.](./media/functions-how-to-use-azure-function-app-settings/function-app-appsvc-editor.png)  | Edytor usługi App Service jest Zaawansowany edytor w portalu, używanej do modyfikowania pliki konfiguracji JSON i podobne plików kodu. Wybranie tej opcji spowoduje uruchomienie na osobnej karcie przeglądarki za pomocą edytora podstawowych. Umożliwia integrację z repozytorium Git, uruchamiania i debugowania kodu i modyfikowania ustawień aplikacji funkcji. Ten edytor zapewnia środowisko deweloperskich dla funkcji w porównaniu z bloku domyślnym aplikacji funkcji.    |
 
 ![Edytor usługi App Service](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-appservice-editor.png)
-
-### <a name="settings"></a>Ustawienia aplikacji
-
-| | |
-|-|-|
-| ![Ustawienia aplikacji dla aplikacji funkcji.](./media/functions-how-to-use-azure-function-app-settings/function-app-application-settings.png) | Usługa App Service **ustawienia aplikacji** blok jest, gdzie można skonfigurować i zarządzać framework w wersji, zdalne debugowanie, ustawienia aplikacji i parametrów połączenia. Po zintegrowaniu aplikację funkcji z innymi platformy Azure i usługi innych firm, można zmodyfikować te ustawienia tutaj. Aby usunąć ustawienie, przewiń w prawo, a następnie wybierz pozycję **X** ikonę na prawym końcu wiersza (nie pokazane na poniższej ilustracji).
-
-![Konfigurowanie ustawień aplikacji](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-settings.png)
 
 ### <a name="console"></a>Console
 

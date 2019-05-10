@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 04/26/2019
-ms.openlocfilehash: f4f9ecec3876fa84abf420a2ef9b147132e7fe2a
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.date: 05/07/2019
+ms.openlocfilehash: 09ab4cd44515d90df0e36e2775f50ac33955fe75
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925186"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466274"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>Szybki start: Tworzenie wystąpienia zarządzanego usługi Azure SQL Database
 
@@ -93,7 +93,7 @@ Po pomyślnym wdrożeniu Przejrzyj zasoby, które zostały utworzone i pobrać w
 
    ![Sieciowa grupa zabezpieczeń](./media/sql-database-managed-instance-get-started/network-security-group.png)
 
-5. Zapoznaj się z zasadami zabezpieczeń dla ruchu przychodzącego i wychodzącego. 
+5. Zapoznaj się z zasadami zabezpieczeń dla ruchu przychodzącego i wychodzącego. Jeśli skonfigurowano publicznych punktów końcowych dla wystąpienia zarządzanego, zobacz artykuł [skonfigurować publiczny punkt końcowy](sql-database-managed-instance-public-endpoint-configure.md#allow-public-endpoint-traffic-on-the-network-security-group) Aby uzyskać więcej informacji.
 
    ![Reguły zabezpieczeń](./media/sql-database-managed-instance-get-started/security-rules.png)
 

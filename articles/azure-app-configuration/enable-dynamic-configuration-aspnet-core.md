@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: b8a466234489e65458b0136619076154fa4c9f37
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.openlocfilehash: cae29fe045d1bdc17f414ff016642635b74320df
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64688909"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408828"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Samouczek: Używanie dynamicznej konfiguracji w aplikacji platformy ASP.NET Core
 
@@ -166,7 +166,7 @@ Aby skorzystać z tego samouczka, należy zainstalować [zestawu .NET Core SDK](
 
 4. Zaloguj się w witrynie [Azure Portal](https://aka.ms/azconfig/portal). Wybierz **wszystkie zasoby**i wybierz wystąpienie magazynu konfiguracji aplikacji, które utworzono w przewodniku Szybki Start.
 
-5. Wybierz **Explorer klucz/wartość**i zaktualizuj wartości następujących kluczy:
+5. Wybierz **Eksplorator konfiguracji**i zaktualizuj wartości następujących kluczy:
 
     | Klucz | Wartość |
     |---|---|

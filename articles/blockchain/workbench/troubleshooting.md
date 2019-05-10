@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 01/14/2019
+ms.date: 05/09/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: b55c84773d99c325689fbc5182e75c7cb108d00a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b0263761a4aaf663b16584fbf9caa11bb124d5c4
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60896330"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510085"
 ---
 # <a name="azure-blockchain-workbench-troubleshooting"></a>Rozwiązywanie problemów z platformy Azure Blockchain Workbench
 
@@ -48,8 +48,8 @@ Skrypt przyjmuje następujące parametry:
 
 | Parametr  | Opis | Wymagane |
 |---------|---------|----|
-| Identyfikator subskrypcji | Identyfikator subskrypcji można utworzyć lub Znajdź wszystkie zasoby. | Yes |
-| ResourceGroupName | Nazwa grupy zasobów platformy Azure, w którym została wdrożona Blockchain Workbench. | Yes |
+| Identyfikator subskrypcji | Identyfikator subskrypcji można utworzyć lub Znajdź wszystkie zasoby. | Tak |
+| ResourceGroupName | Nazwa grupy zasobów platformy Azure, w którym została wdrożona Blockchain Workbench. | Tak |
 | OutputDirectory | Ścieżka do utworzenia danych wyjściowych. Plik ZIP. Jeśli nie zostanie określony, domyślnie w bieżącym katalogu. | Nie |
 | LookbackHours | Liczba godzin do użycia podczas ściągania danych telemetrycznych. Wartość domyślna to 24 godziny. Maksymalna wartość to 90 godzin | Nie |
 | OmsSubscriptionId | Identyfikator subskrypcji, w których dzienniki usługi Azure Monitor jest wdrażana. Ten parametr należy przekazać tylko, jeśli dzienniki usługi Azure Monitor sieci łańcuch bloków jest wdrożony poza grupę zasobów aplikacji Blockchain Workbench.| Nie |

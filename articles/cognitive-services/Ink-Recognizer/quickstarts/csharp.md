@@ -9,12 +9,12 @@ ms.subservice: ink-recognizer
 ms.topic: article
 ms.date: 05/02/2019
 ms.author: aahi
-ms.openlocfilehash: f03593292289cbc093832667505da2738c2b1633
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 9bb9c23cc1f807cae1d0d22f1652e8f4408f1f91
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026288"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65518670"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-c"></a>Szybki start: Cyfrowy atrament za pomocą interfejsu API REST rozpoznawania pisma odręcznego rozpoznaje iC#
 
@@ -36,9 +36,9 @@ Kod źródłowy dla tego przewodnika Szybki Start można znaleźć na [GitHub](h
         1. Kliknij prawym przyciskiem myszy **Menedżerze rozwiązania**
         2. Kliknij przycisk **Zarządzaj pakietami NuGet...**
         3. Wyszukaj `Newtonsoft.Json` i zainstaluj pakiet
-- Jeśli używasz systemu Linux/MacOS ta aplikacja może być została uruchomiona przy użyciu [Mono](http://www.mono-project.com/).
+- Jeśli używasz systemu Linux/MacOS ta aplikacja może być została uruchomiona przy użyciu [Mono](https://www.mono-project.com/).
 
-- Pociągnięcia odręczne przykładowych danych w tym przewodniku Szybki znajduje się na [GitHub](https://go.microsoft.com/fwlink/?linkid=2089502).
+- Pociągnięcia odręczne przykładowych danych w tym przewodniku Szybki znajduje się na [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/InkRecognition/quickstart/example-ink-strokes.json).
 
 [!INCLUDE [cognitive-services-ink-recognizer-signup-requirements](../../../../includes/cognitive-services-ink-recognizer-signup-requirements.md)]
 
@@ -158,7 +158,7 @@ public static JObject LoadJson(string fileLocation){
 
 ## <a name="run-the-application-and-view-the-response"></a>Uruchom aplikację, a następnie zobacz odpowiedź
 
-Uruchom aplikację. Odpowiedź oznaczająca Powodzenie są zwracane w formacie JSON. Możesz również znaleźć odpowiedź w formacie JSON na [GitHub](https://go.microsoft.com/fwlink/?linkid=2089502).
+Uruchom aplikację. Odpowiedź oznaczająca Powodzenie są zwracane w formacie JSON. Możesz również znaleźć odpowiedź w formacie JSON na [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/InkRecognition/quickstart/example-response.json).
 
 
 ## <a name="next-steps"></a>Kolejne kroki
@@ -168,8 +168,8 @@ Uruchom aplikację. Odpowiedź oznaczająca Powodzenie są zwracane w formacie J
 
 
 Aby zobaczyć, jak działa interfejs API rozpoznawania pisma odręcznego w cyfrowych aplikacji pisma odręcznego, spójrz na następujące przykładowe aplikacje w usłudze GitHub:
-* [C#i Platform(UWP) Universal Windows](https://go.microsoft.com/fwlink/?linkid=2089803)  
-* [C#i Windows Presentation Foundation(WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
-* [Aplikacja przeglądarki sieci web języka JavaScript](https://go.microsoft.com/fwlink/?linkid=2089908)       
+* [C# i platforma uniwersalna systemu Windows (UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  
+* [C# i Windows Presentation Foundation (WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
+* [Aplikacja języka JavaScript dla przeglądarki internetowej](https://go.microsoft.com/fwlink/?linkid=2089908)       
 * [Aplikacja mobilna języka Java i systemu Android](https://go.microsoft.com/fwlink/?linkid=2089906)
-* [Aplikacja mobilna SWIFT i iOS](https://go.microsoft.com/fwlink/?linkid=2089805)
+* [Aplikacja mobilna języka Swift i systemu iOS](https://go.microsoft.com/fwlink/?linkid=2089805)

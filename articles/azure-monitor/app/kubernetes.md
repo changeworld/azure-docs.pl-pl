@@ -2,18 +2,18 @@
 title: Usługa Azure Monitor — Zero instrumentacji aplikacji, monitorowanie usługi Kubernetes aplikacji hostowanych | Dokumentacja firmy Microsoft
 description: Zero instrumentacji aplikacji, monitorowanie dla aplikacji hostowanej platformy Kubernetes jest rozwiązania do monitorowania, która pozwala na zbieranie danych telemetrycznych usługi Application Insights odnoszących się do żądań przychodzących i wychodzących do i z zasobników działającym w klastrze Kubernetes Korzystanie z technologii siatki usługi o nazwie Istio.
 services: application-insights
-author: rishabjolly
+author: tokaplan
 manager: carmonm
 ms.service: application-insights
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.author: rijolly
-ms.openlocfilehash: 73f95ab75b49fb8ec5b61f6e30080f8f6d474c16
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
-ms.translationtype: MT
+ms.author: alkaplan
+ms.openlocfilehash: 42b81ec0fa01841791a5b2651d1c1189db5e27ff
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149874"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408206"
 ---
 # <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-apps"></a>Aplikacji hostowanych w monitorowania zero instrumentacji aplikacji dla rozwiązania Kubernetes
 
@@ -134,7 +134,7 @@ Poniżej rozwiązywania problemów z przepływem do użycia podczas telemetrii n
 
 Aby uzyskać najnowsze informacje dla postępu w ramach tego projektu, odwiedź stronę [adapter usługi Application Insights dla usługi Mixer Istio projektu GitHub](https://github.com/Microsoft/Application-Insights-Istio-Adapter/blob/master/SETUP.md#faq).
 
-## <a name="uninstall"></a>Dezinstalacja
+## <a name="uninstall"></a>Odinstaluj
 
 Do odinstalowania produktu, aby uzyskać *co* znajdującym się plik YAML *src/kubernetes/* Uruchom:
 

@@ -5,17 +5,20 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/26/2019
-ms.openlocfilehash: e291cb46b5f8cb8722348bd8fcd6031ed29beb9a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 04/29/2019
+ms.openlocfilehash: a9ca34953827c1f94e2696eb4f09163be335d2f4
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61423450"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510684"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli"></a>Jak utworzyć i zarządzać nimi odczytu replik w usłudze Azure Database for MySQL przy użyciu wiersza polecenia platformy Azure
 
 W tym artykule dowiesz się, jak tworzyć i zarządzać nimi odczytu replik w tym samym regionie platformy Azure jako główną w usłudze Azure Database dla MySQL za pomocą wiersza polecenia platformy Azure.
+
+> [!NOTE]
+> Wiersza polecenia platformy Azure nie obsługuje jeszcze tworzenia replik w różnych regionach, z serwera głównego. Aby utworzyć replikę między regionami, należy użyć [witryny Azure portal]( howto-read-replicas-portal.md) zamiast tego.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

@@ -11,21 +11,51 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 3/26/2019
+ms.date: 5/8/2019
 ms.author: raiye
-ms.openlocfilehash: 42c241ce6b14eac2f76785b7b16b537d3e88bd8d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f63b707f72b6966615d09ef0b86ce3d056a39249
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60623072"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65465553"
 ---
 # <a name="azure-guest-os"></a>System operacyjny gościa platformy Azure
 Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Security Response Center (MSRC) stosowane do systemu operacyjnego gościa platformy Azure. Wyszukaj w tym artykule, aby określić, jeśli dana aktualizacja ma zastosowanie do systemu operacyjnego gościa, którego używasz. Aktualizacje zawsze przenoszone w konkretnym [rodziny] [ family-explain] były one wprowadzone w.
 
+## <a name="april-2019-guest-os"></a>System operacyjny gościa 2019 kwietnia
+
+| Kategoria produktu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
+| --- | --- | --- | --- | --- |
+| ReL 19-04 | [4493509] | Zabezpieczenia systemu Windows 10 | 6.6 | 9 kwietnia 2019 r. |
+| ReL 19-04 | [4493470] | Zabezpieczenia systemu Windows 10 | 5.30 | 9 kwietnia 2019 r. |
+| ReL 19-04 | [4493467] | Zabezpieczeń Windows | 4.65 | 9 kwietnia 2019 r. |
+| ReL 19-04 | [4493450] | Zabezpieczeń Windows | 3.72 | 9 kwietnia 2019 r. |
+| ReL 19-04 | [4493448] | Zabezpieczeń Windows | 2.85 | 9 kwietnia 2019 r. |
+| ReL 19-04 | [4493478] | Flash | 3.72, 4.65, 5.30, 6.6 | 9 kwietnia 2019 r. |
+| ReL 19-04 | [4493435] | Internet Explorer | 2.85, 3.72, 4.65 | 9 kwietnia 2019 r. |
+| ReL 19-04 | [KB4490628] | Aktualizacja stosu obsługi | 2.85 | 12 marca 2019 r. |
+| ReL 19-04 | [KB4474419] | Obsługa algorytmu SHA2 | 2.85 | 12 marca 2019 r. |
+| ReL 19-04 | [KB4489878] | Marzec zbiorczy niezwiązanych z zabezpieczeniami | 2.85 | 12 marca 2019 r. |
+| ReL 19-04 | [KB4489891] | Marzec zbiorczy niezwiązanych z zabezpieczeniami | 3.72 | 12 marca 2019 r. |
+| ReL 19-04 | [KB4489881] | Marzec zbiorczy niezwiązanych z zabezpieczeniami | 4.65 | 12 marca 2019 r. |
+
+[4493509]: https://support.microsoft.com/kb/4493509
+[4493470]: https://support.microsoft.com/kb/4493470
+[4493467]: https://support.microsoft.com/kb/4493467
+[4493450]: https://support.microsoft.com/kb/4493450
+[4493448]: https://support.microsoft.com/kb/4493448
+[4493478]: https://support.microsoft.com/kb/4493478
+[4493435]: https://support.microsoft.com/kb/4493435
+[KB4490628]: https://support.microsoft.com/kb/KB4490628
+[KB4474419]: https://support.microsoft.com/kb/KB4474419
+[KB4489878]: https://support.microsoft.com/kb/KB4489878
+[KB4489891]: https://support.microsoft.com/kb/KB4489891
+[KB4489881]: https://support.microsoft.com/kb/KB4489881
+
 ## <a name="march-2019-guest-os"></a>System operacyjny gościa marca 2019 r
 
-| Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
+| Kategoria produktu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | ReL 19-03 | [4489873] | Internet Explorer | 2.84, 3.71, 4.64 | 12 marca 2019 r. |
 | ReL 19-03 | [4489907] | Flash | 3.71, 4.64, 5.29, 6.5 | 12 marca 2019 r. |
@@ -67,7 +97,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 
 ## <a name="february-2019-guest-os"></a>System operacyjny gościa lutego 2019 r
 
-| Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
+| Kategoria produktu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | ReL 19-02 | [4486474] | Internet Explorer | 2.83, 3.70, 4.63 | 12 lutego 2019 r. |
 | ReL 19-02 | [4487038] | Flash | 3.70, 4.63, 5.28, 6.4 | 12 lutego 2019 r. |
@@ -119,7 +149,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 
 ## <a name="january-2019-guest-os"></a>System operacyjny gościa 2019 stycznia
 
-| Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
+| Kategoria produktu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | ReL 19-01 | [4480116] | Zabezpieczenia systemu Windows 10 | 6.3 | 8 stycznia 2019 r. |
 | ReL 19-01 | [4480961] | Zabezpieczenia systemu Windows 10 | 5.27 | 8 stycznia 2019 r. |
@@ -171,7 +201,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 
 ## <a name="december-2018-guest-os"></a>System operacyjny gościa grudnia 2018 r.
 
-| Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
+| Kategoria produktu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | ReL 18-12 | [4471321] | Zabezpieczenia systemu Windows 10 | 5.26 | 11 grudnia 2018 r. |
 | ReL 18-12 | [4471328] | Zabezpieczeń Windows   | 2.81 | 11 grudnia 2018 r. |
@@ -209,7 +239,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 
 ## <a name="november-2018-guest-os"></a>System operacyjny gościa listopada 2018 r.
 
-| Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
+| Kategoria produktu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | ReL 18 – 11 | [4466536] | Internet Explorer | 2.80, 3.67, 4.60 | 13 listopada 2018 r. |
 | ReL 18 – 11 | [4467694] | Flash | 3.67, 4.60, 5.25 | 13 listopada 2018 r. |
@@ -241,7 +271,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 
 ## <a name="october-2018-guest-os"></a>System operacyjny gościa października 2018 r.
 
-| Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
+| Kategoria produktu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | ReL 18 – 10 | [4462917] | Zabezpieczenia systemu Windows 10 | 5.24 | 9 października 2018 r. |
 | ReL 18 – 10 | [4462915] | Zabezpieczeń Windows | 2.79 | 9 października 2018 r. |
@@ -278,7 +308,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 [4457036]: https://support.microsoft.com/kb/4457036
 
 ## <a name="september-2018-guest-os"></a>System operacyjny gościa września 2018 r.
-| Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
+| Kategoria produktu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | ReL 18-09 | [4457131] | Zabezpieczenia systemu Windows 10 | 5.23 | 11 września 2018 r. |
 | ReL 18-09 | [4457145] | Tylko zabezpieczeń Windows | 2.78 | 11 września 2018 r. |
@@ -300,7 +330,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | ND | [4344147] | X rollup sierpnia niezwiązane z zabezpieczeniami .NET 4 | 4.58 | 14 sierpnia 2018 r. |
 
 ## <a name="august-2018-guest-os"></a>System operacyjny gościa sierpnia 2018
-| Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
+| Kategoria produktu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | ReL 18-08 | [4343887] | Zabezpieczenia systemu Windows 10 | 5.22 | 14 sierpnia 2018 r. |
 | ReL 18-08 | [4343899] | Tylko zabezpieczeń Windows | 2.77 | 14 sierpnia 2018 r. |
@@ -323,7 +353,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | ND | [4338415] |X rollup lipca niezwiązane z zabezpieczeniami .NET 4 |3.64 | 10 lipca 2018 r. |
 
 ## <a name="july-2018-guest-os"></a>System operacyjny gościa lipca 2018 r.
-| Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
+| Kategoria produktu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | ReL 18-07 | [4338814] |Zabezpieczenia systemu Windows 10 |5.21 |10 lipca 2018 r. |
 | ReL 18-07 | [4338823] |Tylko zabezpieczeń Windows |2.76 |10 lipca 2018 r. |
@@ -343,7 +373,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | ND | [4284815] |Pakiet zbiorczy niezwiązanych z zabezpieczeniami czerwca |4.56 |12 czerwca 2018 r. |
 
 ## <a name="june-2018-guest-os"></a>System operacyjny gościa czerwca 2018 r.
-| Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
+| Kategoria produktu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | ReL 18-06 | [4284880] |Zabezpieczenia systemu Windows 10 |5.20 |12 czerwca 2018 r. |
 | ReL 18-06 | [4284867] |Tylko zabezpieczeń Windows |2.75 |12 czerwca 2018 r. |
@@ -354,21 +384,21 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | ND | [4103718] |Może być zbiorczy niezwiązanych z zabezpieczeniami |2.75 |8 maja 2018 r. |
 | ND | [4103730] |Może być zbiorczy niezwiązanych z zabezpieczeniami |3.62 |8 maja 2018 r. |
 | ND | [4103725] |Może być zbiorczy niezwiązanych z zabezpieczeniami |4.55 |8 maja 2018 r. |
-| ND | [4040980], [4040977] |Pakiet zbiorczy niezwiązanych z zabezpieczeniami platformy .NET 17 września |2.75 |14 listopada 2017 r. |
+| ND | [4040980], [4040977] |Pakiet zbiorczy niezwiązanych z zabezpieczeniami platformy .NET 17 września |2.75 |14 listopada 2017 r. |
 | ND | [4095874] |Program .NET 3.5 niezwiązanych z zabezpieczeniami może zwolnić |2.75 |8 maja 2018 r. |
 | ND | [4096495] |.NET 4.x niezwiązanych z zabezpieczeniami może zwolnić |2.75 |8 maja 2018 r. |
-| ND | [4040975] |Pakiet zbiorczy niezwiązanych z zabezpieczeniami platformy .NET 17 września |3.62 |14 listopada 2017 r. |
+| ND | [4040975] |Pakiet zbiorczy niezwiązanych z zabezpieczeniami platformy .NET 17 września |3.62 |14 listopada 2017 r. |
 | ND | [4095872] |Program .NET 3.5 niezwiązanych z zabezpieczeniami może zwolnić |3.62 |8 maja 2018 r. |
 | ND | [4096494] |.NET 4.x niezwiązanych z zabezpieczeniami może zwolnić |3.62 |8 maja 2018 r. |
 | ND | [4096416] |.NET 4.5 x niezwiązanych z zabezpieczeniami może zwolnić |3.62 |8 maja 2018 r. |
-| ND | [4040974], [4040972] |Pakiet zbiorczy niezwiązanych z zabezpieczeniami platformy .NET 17 września |4.55 |14 listopada 2017 r. |
+| ND | [4040974], [4040972] |Pakiet zbiorczy niezwiązanych z zabezpieczeniami platformy .NET 17 września |4.55 |14 listopada 2017 r. |
 | ND | [4043763] |Pakiet zbiorczy niezwiązanych z zabezpieczeniami platformy .NET 17 października |4.55 |12 września 2017 r. |
 | ND | [4095876] |.NET 4.x niezwiązanych z zabezpieczeniami może zwolnić |4.55 |8 maja 2018 r. |
 | ND | [4096417] |.NET 4.5 x niezwiązanych z zabezpieczeniami może zwolnić |4.55 |8 maja 2018 r. |
 | ND | [4132216] |Może być Samoobsługi |5.20 |8 maja 2018 r. |
 
 ## <a name="may-2018-guest-os"></a>System operacyjny gościa w maju 2018 r.
-| Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
+| Kategoria produktu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | ReL 18-05 | [4103721], [4103727], [4103723] |Zabezpieczenia systemu Windows 10 |5.19 |8 maja 2018 r. |
 | ReL 18-05 | [4103712] |Tylko zabezpieczeń Windows |2.74 |8 maja 2018 r. |
@@ -380,29 +410,29 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | ReL 18-05 | [4054856] |Bezpieczeństwo x w wersji 4.7 .NET |5.19 |8 maja 2018 r. |
 | ReL 18-05 | [4103768] |Internet Explorer |2.74, 3.61, 4.74 |8 maja 2018 r. |
 | ReL 18-05 | [4103729] |Flash |3.61, 4.74, 5.19 |8 maja 2018 r. |
-| ND | [4093118] |Pakiet zbiorczy niezwiązanych z zabezpieczeniami kwietnia |2.73 |10 kwietnia 2018 r. |
-| ND | [4093123] |Pakiet zbiorczy niezwiązanych z zabezpieczeniami kwietnia |3.61 |10 kwietnia 2018 r. |
-| ND | [4093114] |Pakiet zbiorczy niezwiązanych z zabezpieczeniami kwietnia |4.74 |10 kwietnia 2018 r. |
-| ND | [4093137] |Kwietnia Samoobsługi |5.19 |10 kwietnia 2018 r. |
-| ND | [4093753] |Strefa czasowa aktualizacji |2.74, 3.61, 4.74 |10 kwietnia 2018 r. |
+| ND | [4093118] |Pakiet zbiorczy niezwiązanych z zabezpieczeniami kwietnia |2.73 |10 kwietnia 2018 r. |
+| ND | [4093123] |Pakiet zbiorczy niezwiązanych z zabezpieczeniami kwietnia |3.61 |10 kwietnia 2018 r. |
+| ND | [4093114] |Pakiet zbiorczy niezwiązanych z zabezpieczeniami kwietnia |4.74 |10 kwietnia 2018 r. |
+| ND | [4093137] |Kwietnia Samoobsługi |5.19 |10 kwietnia 2018 r. |
+| ND | [4093753] |Strefa czasowa aktualizacji |2.74, 3.61, 4.74 |10 kwietnia 2018 r. |
 
 
 ## <a name="april-2018-guest-os"></a>System operacyjny gościa kwietnia 2018 r.
-| Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
+| Kategoria produktu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
-| ReL 18-04 | [4093119] |Zabezpieczenia systemu Windows 10 |5.18 |10 kwietnia 2018 r. |
-| ReL 18-04 | [4093108] |Tylko zabezpieczeń Windows |2.73 |10 kwietnia 2018 r. |
-| ReL 18-04 | [4093122] |Tylko zabezpieczeń Windows |3.60 |10 kwietnia 2018 r. |
-| ReL 18-04 | [4093115] |Tylko zabezpieczeń Windows |4.53 |10 kwietnia 2018 r. |
-| ReL 18-04 | [4092946] |Internet Explorer |2.73, 3.60, 4.53 |10 kwietnia 2018 r. |
-| ReL 18-04 | [4093110] |Flash |3.60, 4.53, 5.18 |10 kwietnia 2018 r. |
+| ReL 18-04 | [4093119] |Zabezpieczenia systemu Windows 10 |5.18 |10 kwietnia 2018 r. |
+| ReL 18-04 | [4093108] |Tylko zabezpieczeń Windows |2.73 |10 kwietnia 2018 r. |
+| ReL 18-04 | [4093122] |Tylko zabezpieczeń Windows |3.60 |10 kwietnia 2018 r. |
+| ReL 18-04 | [4093115] |Tylko zabezpieczeń Windows |4.53 |10 kwietnia 2018 r. |
+| ReL 18-04 | [4092946] |Internet Explorer |2.73, 3.60, 4.53 |10 kwietnia 2018 r. |
+| ReL 18-04 | [4093110] |Flash |3.60, 4.53, 5.18 |10 kwietnia 2018 r. |
 | ND | [4088875] |Marzec zbiorczy niezwiązanych z zabezpieczeniami |2.73 |13 marca 2018 r. |
 | ND | [4099950] |Wymaganie wstępne zbiorczy niezwiązanych z zabezpieczeniami marca|2.73 |13 marca 2018 r. |
 | ND | [4088877] |Marzec zbiorczy niezwiązanych z zabezpieczeniami |3.60 |13 marca 2018 r. |
 | ND | [4088876] |Marzec zbiorczy niezwiązanych z zabezpieczeniami |4.53 |13 marca 2018 r. |
 
 ## <a name="march-2018-guest-os"></a>System operacyjny gościa marca 2018 r.
-| Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
+| Kategoria produktu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | ReL 18-03 | [4088787], [4088776] |Zabezpieczenia systemu Windows 10 |5.17 |13 marca 2018 r. |
 | ReL 18-03 | [4088878], [4088880], [4088879] |Tylko zabezpieczeń Windows |2.72, 3.59, 4.52 |13 marca 2018 r. |
@@ -415,7 +445,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 
 
 ## <a name="february-2018-guest-os"></a>System operacyjny gościa lutego 2018 r.
-| Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
+| Kategoria produktu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | ReL 18-02 | [4074590], [4074588] |Zabezpieczenia systemu Windows 10 |5.16 |13 lutego 2018 r. |
 | ReL 18-02 | [4074587], [4074589], [4074597] |Tylko zabezpieczeń Windows |2.71, 3.58, 4.51 |13 lutego 2018 r. |
@@ -429,7 +459,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | ND | [4054177], [4054170] |Pakiet zbiorczy .NET stycznia |4.51 |4 stycznia 2018 r. |
 
 ## <a name="january-2018-guest-os"></a>System operacyjny gościa stycznia 2018 r.
-| Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
+| Kategoria produktu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | ReL 18-01 | [4056898], [4056897], [4056899] |Tylko zabezpieczeń Windows |2.70, 3.57, 4.50 |3 stycznia 2018 r. |
 | ReL 18-01 | [4056890], [4056892] |Tylko zabezpieczeń Windows |5.15 |3 stycznia 2018 r. |
@@ -441,33 +471,33 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 
 
 ## <a name="december-2017-guest-os"></a>System operacyjny gościa grudnia 2017 r.
-| Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
+| Kategoria produktu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | ReL 17-12 | [4053579], [4054517] |Aktualizacje zabezpieczeń systemu Windows 10 |4.49, 5.14 |12 grudnia 2017 r. |
 | ReL 17-12 | [4054521], [4054522], [4054523] |Tylko zabezpieczeń Windows |2.69, 3.56, 4.49 |12 grudnia 2017 r. |
 | ReL 17-12 | [4052978] |Internet Explorer |2.69, 3.56, 4.49 |12 grudnia 2017 r. |
 | ReL 17-12 | [4052978] |Flash |3.56, 4.49, 5.14 |12 grudnia 2017 r. |
-| ND | [4048957] |Pakiet zbiorczy niezwiązanych z zabezpieczeniami listopada |2.69 |14 listopada 2017 r. |
-| ND | [4048959] |Pakiet zbiorczy niezwiązanych z zabezpieczeniami listopada |3.56 |14 listopada 2017 r. |
-| ND | [4048958] |Pakiet zbiorczy niezwiązanych z zabezpieczeniami listopada |4.49 |14 listopada 2017 r. |
+| ND | [4048957] |Pakiet zbiorczy niezwiązanych z zabezpieczeniami listopada |2.69 |14 listopada 2017 r. |
+| ND | [4048959] |Pakiet zbiorczy niezwiązanych z zabezpieczeniami listopada |3.56 |14 listopada 2017 r. |
+| ND | [4048958] |Pakiet zbiorczy niezwiązanych z zabezpieczeniami listopada |4.49 |14 listopada 2017 r. |
 | ND | [4049068] |Strefa czasowa grudnia aktualizacji |2.69, 3.56, 4.49 |12 grudnia 2017 r. |
 
 ## <a name="november-2017-guest-os"></a>System operacyjny gościa listopada 2017 r.
-| Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
+| Kategoria produktu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
-| ReL 17-11 | [4048953] |Aktualizacje systemu Windows 10 |5.13 |14 listopada 2017 r. |
-| ReL 17-11 | [4048960], [4048962], [4048961] |Tylko zabezpieczeń Windows |2.68, 3.55, 4.48 |14 listopada 2017 r. |
-| ReL 17-11 | [4047206] |Internet Explorer |2.68, 3.55, 4.48 |14 listopada 2017 r. |
-| ReL 17-11 | [4048951] |Flash |3.55, 4.48, 5.13 |14 listopada 2017 r. |
+| ReL 17-11 | [4048953] |Aktualizacje systemu Windows 10 |5.13 |14 listopada 2017 r. |
+| ReL 17-11 | [4048960], [4048962], [4048961] |Tylko zabezpieczeń Windows |2.68, 3.55, 4.48 |14 listopada 2017 r. |
+| ReL 17-11 | [4047206] |Internet Explorer |2.68, 3.55, 4.48 |14 listopada 2017 r. |
+| ReL 17-11 | [4048951] |Flash |3.55, 4.48, 5.13 |14 listopada 2017 r. |
 | ND | [4041681] |Pakiet zbiorczy niezwiązanych z zabezpieczeniami października |2.68 |10 października 2017 r. |
 | ND | [4041690] |Pakiet zbiorczy niezwiązanych z zabezpieczeniami października |3.55 |10 października 2017 r. |
 | ND | [4041693] |Pakiet zbiorczy niezwiązanych z zabezpieczeniami października |4.48 |10 października 2017 r. |
-| ND | [3191566] |Aktualizacja dla programu Windows Management Framework 5.1  |2.68 |14 listopada 2017 r. |
-| ND | [3191565] |Aktualizacja dla programu Windows Management Framework 5.1  |3.55 |14 listopada 2017 r. |
-| ND | [3191564] |Aktualizacja dla programu Windows Management Framework 5.1  |4.48 |14 listopada 2017 r. |
+| ND | [3191566] |Aktualizacja dla programu Windows Management Framework 5.1  |2.68 |14 listopada 2017 r. |
+| ND | [3191565] |Aktualizacja dla programu Windows Management Framework 5.1  |3.55 |14 listopada 2017 r. |
+| ND | [3191564] |Aktualizacja dla programu Windows Management Framework 5.1  |4.48 |14 listopada 2017 r. |
 
 ## <a name="october-2017-guest-os"></a>System operacyjny gościa października 2017 r.
-| Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
+| Kategoria produktu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | ReL 17 10 | [4041691] |Aktualizacje systemu Windows 10 |5.12 |10 października 2017 r. |
 | ReL 17 10 | [4041678], [4041679], [4041687] |Tylko zabezpieczeń Windows |2.67, 3.54, 4.47 |10 października 2017 r. |
@@ -481,7 +511,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | ND | [4040981] |Pakiet zbiorczy niezwiązanych z zabezpieczeniami września .NET |4.47 |12 września 2017 r. |
 
 ## <a name="september-2017-guest-os"></a>System operacyjny gościa września 2017 r.
-| Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
+| Kategoria produktu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | ReL 17-09 | [4038782] |Aktualizacje systemu Windows 10 |5.11 |12 września 2017 r. |
 | ReL 17-09 | [4038779], [4038786], [4038793] |Tylko zabezpieczeń Windows |2.66, 3.53, 4.46 |12 września 2017 r. |
@@ -493,7 +523,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | ND | [4034681] |Pakiet zbiorczy niezwiązanych z zabezpieczeniami sierpnia |4.46 |8 sierpnia 2017 r. |
 
 ## <a name="august-2017-guest-os"></a>System operacyjny gościa sierpnia 2017 r.
-| Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
+| Kategoria produktu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | Rel 17-07 | [4034658] |Aktualizacje systemu Windows 10 |5.10 |8 sierpnia 2017 r. |
 | Rel 17-07 | [4034679] |Tylko zabezpieczeń Windows |2.65 |8 sierpnia 2017 r. |
@@ -507,7 +537,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | Rel 17-07 | [4025336] |Pakiet zbiorczy niezwiązanych z zabezpieczeniami lipca |4.45 |11 lipca 2017 r. |
 
 ## <a name="july-2017-guest-os"></a>System operacyjny gościa lipca 2017 r.
-| Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
+| Kategoria produktu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | Rel 17-07 | [4025339] |Aktualizacje systemu Windows 10 |5.9 |11 lipca 2017 r. |
 | Rel 17-07 | [4025337] |Tylko zabezpieczeń Windows |2.64 |11 lipca 2017 r. |
@@ -521,7 +551,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | ND | [4022726] |Pakiet zbiorczy niezwiązanych z zabezpieczeniami czerwca |4.44 |13 czerwca 2017 r. |
 
 ## <a name="june-2017-guest-os"></a>System operacyjny gościa czerwca 2017 r.
-| Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
+| Kategoria produktu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | ReL 17-06 | [4019472] |Ulepszenia jakości systemu operacyjnego 2016 WS |5.8 |9 maja 2017 r. |
 | ReL 17-06 | [4022722] |Tylko zabezpieczeń Windows |2.63 |13 czerwca 2017 r. |
@@ -549,7 +579,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | ND | [4014512] |Może być zbiorczy niezwiązanych z zabezpieczeniami platformy .NET |4.43 |9 maja 2017 r. |
 
 ## <a name="may-2017-guest-os"></a>System operacyjny gościa maja 2017 r.
-| Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
+| Kategoria produktu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | ReL 17-05 | [4019472] |Ulepszenia jakości systemu operacyjnego 2016 WS |5.7 | 9 maja 2017 r. |
 | ReL 17-05 | [4019263] |Tylko zabezpieczeń Windows |2.62 | 9 maja 2017 r. |
@@ -577,7 +607,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | ND | [4013418] |Aktualizacja stosu obsługi |5.7 | 14 marca 2017 r. |
 
 ## <a name="april-2017-guest-os"></a>System operacyjny gościa kwietnia 2017 r.
-| Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
+| Kategoria produktu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | ReL 17-04 |  [4015217]  |Ulepszenia jakości systemu operacyjnego 2016 WS | 5.6 | 11 kwietnia 2017 r. |
 | ReL 17-04 |  [4015546]  |Tylko zabezpieczeń Windows |2.61 | 11 kwietnia 2017 r. |
@@ -597,7 +627,7 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | ReL 17-04 |  [4012216]  |Marca 2017 r. miesięczne jakości zbiorcze informacje o zabezpieczeniach Windows 8.1 i Windows Server 2012 R2 |4.41 | 11 kwietnia 2017 r. |
 
 ## <a name="march-2017-guest-os"></a>System operacyjny gościa marca 2017 r.
-| Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
+| Kategoria produktu | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | ReL 17-03 |  [4013429] |Ulepszenia i poprawki | 5.5 | 14 marca 2017 r. |
 | ReL 17-03 |  [4012212] |Zabezpieczenia jakości tylko aktualizacja z marca 2017 for Windows 7 z dodatkiem SP1 i Windows Server 2008 R2 z dodatkiem SP1 |2.60 |14 marca 2017 r. |

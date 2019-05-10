@@ -10,12 +10,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 201ee251b195845e33ed3829be8540664811f2ab
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: c9ebacd8caf992874969106df58531538ea399ed
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025284"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510431"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Co to jest usługa Azure Machine Learning?
 
@@ -23,9 +23,9 @@ Usługa Azure Machine Learning to usługa w chmurze, która pozwala trenować, w
 
 ## <a name="what-is-machine-learning"></a>Co to jest uczenie maszynowe?
 
-Uczenie maszynowe to technika przetwarzania danych, która umożliwia wykorzystanie przez komputery istniejących danych w celu przewidywania przyszłych zachowań, rezultatów i trendów. Przy użyciu techniki uczenia maszynowego komputery uczą się bez ich jawnego programowania.
+Uczenie maszynowe to technika badania danych, która dzięki przetwarzaniu istniejących danych jest w stanie przewidzieć przyszłe zachowania, rezultaty i trendy. Przy użyciu techniki uczenia maszynowego komputery uczą się bez ich jawnego programowania.
 
-Dzięki prognozom lub przewidywaniom uzyskiwanym za pomocą uczenia maszynowego aplikacje i urządzenia są bardziej inteligentne. Na przykład podczas zakupów w Internecie uczenie maszynowe wspomaga proces rekomendowania innych produktów, którymi kupujący może być zainteresowany, na podstawie jego dotychczasowych zakupów. W przypadku płacenia kartą kredytową uczenie maszynowe porównuje transakcję z bazą danych transakcji i ułatwia wykrycie oszustwa. Gdy robot odkurzający sprząta pomieszczenie, uczenie maszynowe pomaga mu zdecydować, czy praca została wykonana.
+Dzięki prognozom uzyskanym za pomocą uczenia maszynowego aplikacje mogą być bardziej inteligentne. Na przykład podczas zakupów w Internecie uczenie maszynowe wspomaga proces rekomendowania innych produktów, którymi kupujący może być zainteresowany, na podstawie jego dotychczasowych zakupów. W przypadku płacenia kartą kredytową uczenie maszynowe porównuje transakcję z bazą danych transakcji i ułatwia wykrycie oszustwa. Gdy robot odkurzający sprząta pomieszczenie, uczenie maszynowe pomaga mu zdecydować, czy praca została wykonana.
 
 ## <a name="what-is-azure-machine-learning-service"></a>Co to jest usługa Azure Machine Learning?
 
@@ -38,7 +38,7 @@ Zapoznaj się z i przygotowywania danych, uczenie i testowanie modeli i wdraża�
 
 ## <a name="what-can-i-do-with-azure-machine-learning-service"></a>Jakie czynności można wykonać za pomocą usługi Azure Machine Learning?
 
-Za pomocą <a href="https://aka.ms/aml-sdk" target="_blank">zestawu SDK usługi Azure Machine Learning Python</a> za pomocą pakietów języka Python lub przy użyciu typu open-source [interfejs graficzny (wersja zapoznawcza)](ui-quickstart-run-experiment.md), można tworzyć i szkolenie uczenia maszynowego wysokiej dokładne i uczenia głębokiego modele siebie w usłudze Azure Machine Learning Workspace.
+Użyj <a href="https://aka.ms/aml-sdk" target="_blank">zestawu SDK usługi Azure Machine Learning Python</a> z typu open-source pakiety języka Python lub użyj [interfejs graficzny (wersja zapoznawcza)](ui-quickstart-run-experiment.md) tworzenie i szkolenie modeli uczenia głębokiego uczenia maszynowego wysokiej dokładne i samodzielnie w usłudze Azure Machine Learning Workspace.
 
 Możesz korzystać z wielu składników learning maszyny dostępne w pakiety języka Python typu open source, takich jak <a href="https://scikit-learn.org/stable/" target="_blank">Scikit-learn</a>, <a href="https://www.tensorflow.org" target="_blank">Tensorflow</a>, <a href="https://pytorch.org" target="_blank">PyTorch</a>i <a href="https://mxnet.io" target="_blank">MXNet</a>.
 
@@ -106,8 +106,6 @@ Możesz uzyskać środki do wydania na usługi platformy Azure. Nawet po ich wyc
 - Wykonaj kompleksowe samouczki: 
   + [Uczenie modelu klasyfikacji obrazów za pomocą usługi Azure Machine Learning](tutorial-train-models-with-aml.md) 
   + [Prepare data and use automated machine learning to auto-train a regression model (Przygotowywanie danych i używanie zautomatyzowanego uczenia maszynowego do automatycznego trenowania modelu regresji)](tutorial-data-prep.md)
-
-- Użyj zestawu [Azure Machine Learning Data Prep SDK](https://aka.ms/data-prep-sdk), aby przygotować swoje dane.
 
 - Dowiedz się więcej o [potokach uczenia maszynowego](/azure/machine-learning/service/concept-ml-pipelines) w celu tworzenia i optymalizowania scenariuszy uczenia maszynowego oraz zarządzania nimi.
 

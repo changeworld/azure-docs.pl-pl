@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: tworzenie aplikacji do tłumaczenia przy użyciu platformy WPF i języka C# — interfejs API tłumaczenia tekstu w usłudze Translator'
+title: 'Samouczek: Tworzenie aplikacji do tłumaczenia przy użyciu platformy WPF i języka C# — interfejs API tłumaczenia tekstu w usłudze Translator'
 titleSuffix: Azure Cognitive Services
 description: W tym samouczku utworzysz aplikację platformy Windows Presentation Foundation (WPF), która korzysta z interfejsu API usług Cognitive Services na potrzeby tłumaczenia tekstu, wykrywania języka i sprawdzania pisowni, przy użyciu klucza pojedynczej subskrypcji. W tym ćwiczeniu dowiesz się, jak korzystać z funkcji interfejsu API tłumaczenia tekstu w usłudze Translator i interfejsu API sprawdzania pisowni Bing.
 services: cognitive-services
@@ -17,7 +17,7 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "60653294"
 ---
-# <a name="tutorial-create-a-translation-app-with-wpf"></a>Samouczek: tworzenie aplikacji do tłumaczenia przy użyciu platformy WPF
+# <a name="tutorial-create-a-translation-app-with-wpf"></a>Samouczek: Tworzenie aplikacji do tłumaczenia przy użyciu platformy WPF
 
 W tym samouczku utworzysz aplikację platformy [Windows Presentation Foundation (WPF)](https://docs.microsoft.com/visualstudio/designers/getting-started-with-wpf?view=vs-2017), która korzysta z usług Azure Cognitive Services na potrzeby tłumaczenia tekstu, wykrywania języka i sprawdzania pisowni, przy użyciu klucza pojedynczej subskrypcji. W szczególności aplikacja będzie wywoływać interfejsy API tłumaczenia tekstu w usłudze Translator i [sprawdzania pisowni Bing](https://azure.microsoft.com/services/cognitive-services/spell-check/).
 
@@ -76,7 +76,7 @@ Nasz projekt wymaga kilku zestawów .NET Framework i pakietu NewtonSoft.Json, kt
 
 Dodajmy do naszego projektu zestawy na potrzeby serializacji i deserializacji obiektów oraz zarządzania żądaniami i odpowiedziami HTTP.
 
-1. Znajdź swój projekt w Eksploratorze rozwiązań programu Visual Studio (panel po prawej stronie). Kliknij prawym przyciskiem myszy projekt, a następnie wybierz pozycję **Dodaj > Odwołanie...**, co spowoduje otwarcie **Menedżera odwołań**.
+1. Znajdź swój projekt w Eksploratorze rozwiązań programu Visual Studio (panel po prawej stronie). Kliknij prawym przyciskiem myszy projekt, a następnie wybierz pozycję **Dodaj > Odwołanie**, co spowoduje otwarcie **Menedżera odwołań**.
    ![Dodawanie odwołań do zestawów](media/add-assemblies-sample.png)
 2. Karta zestawów zawiera listę wszystkich zestawów .NET Framework, do których można się odwoływać. Użyj paska wyszukiwania w prawym górnym rogu ekranu, aby wyszukać te odwołania i dodać je do projektu:
    * [System.Runtime.Serialization](https://docs.microsoft.com/dotnet/api/system.runtime.serialization?view=netframework-4.7.2)

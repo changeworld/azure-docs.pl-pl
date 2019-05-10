@@ -13,19 +13,22 @@ ms.devlang: na
 ms.date: 04/02/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: a0730073a8d17e063ee3f1364d5914200259c10f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a4f14a1e68042704ca8e8c49f1bd76b722c90d4d
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58880053"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466301"
 ---
-# <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-private-preview"></a>Samouczek: Używanie usługi Azure Deployment Manager z szablonami usługi Resource Manager (prywatna wersja zapoznawcza)
+# <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>Samouczek: Azure Deployment Manager za pomocą szablonów usługi Resource Manager (publiczna wersja zapoznawcza)
 
 Dowiedz się, jak używać usługi [Azure Deployment Manager](./deployment-manager-overview.md), aby wdrażać aplikacje w wielu regionach. Aby użyć usługi Deployment Manager, musisz utworzyć dwa szablony:
 
 * **Szablon topologii**: opisuje zasoby platformy Azure składające się na aplikację oraz miejsce ich wdrożenia.
 * **Szablon wprowadzania**: opisuje kroki do wykonania podczas wdrażania aplikacji.
+
+> [!IMPORTANT]
+> Jeśli Twoja subskrypcja jest oznaczony do Canary w celu przetestowania nowych funkcji platformy Azure, Azure Deployment Manager można używać tylko do wdrożenia regiony Canary. 
 
 Ten samouczek obejmuje następujące zadania:
 
@@ -432,4 +435,4 @@ Gdy zasoby platformy Azure nie będą już potrzebne, wyczyść wdrożone zasoby
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono sposób użycia usługi Azure Deployment Manager. Aby dowiedzieć się więcej, zobacz [dokumentację usługi Azure Resource Manager](/azure/azure-resource-manager/).
+W tym samouczku przedstawiono sposób użycia usługi Azure Deployment Manager. Aby zintegrować monitorowanie kondycji w usłudze Azure Deployment Manager, zobacz sekcję [samouczka: Użyj sprawdzania kondycji w usłudze Azure Deployment Manager](./deployment-manager-tutorial-health-check.md).

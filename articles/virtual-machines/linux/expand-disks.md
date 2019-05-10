@@ -15,19 +15,19 @@ ms.workload: infrastructure
 ms.date: 10/15/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 737c72e6225cdfc9fdeec59810ffd9100c48d1ad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4113d582647b5bea86980824714936d24dafc870
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61305121"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65511145"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Rozwiń wirtualnych dysków twardych na Maszynę wirtualną systemu Linux przy użyciu wiersza polecenia platformy Azure
 
 W tym artykule opisano, jak rozwinąć dysków zarządzanych dla maszyny wirtualnej systemu Linux (VM) z wiersza polecenia platformy Azure. Możesz [dodawanie dysków danych](add-disk.md) zapewnienie dodatkowego miejsca do magazynowania miejsca, a także rozszerzyć istniejący dysk danych. Domyślny rozmiar wirtualnego dysku twardego systemu operacyjnego (OS) jest zazwyczaj 30 GB na Maszynę wirtualną systemu Linux na platformie Azure. 
 
 > [!WARNING]
-> Zawsze upewnij się, że z systemu plików jest w dobrej kondycji i upewnij się, że przed wykonaniem operacji zmiany rozmiaru dysku danych jest wykonywana kopia zapasowa. Aby uzyskać więcej informacji, zobacz [tworzenie kopii zapasowych maszyn wirtualnych systemu Linux na platformie Azure](tutorial-backup-vms.md).
+> Zawsze upewnij się, czy usługi systemu plików jest w dobrej kondycji, danego typu tabeli partycji dysku będzie obsługiwać nowe rozmiary i upewnij się, że przed wykonaniem operacji zmiany rozmiaru dysku danych jest wykonywana kopia zapasowa. Aby uzyskać więcej informacji, zobacz [tworzenie kopii zapasowych maszyn wirtualnych systemu Linux na platformie Azure](tutorial-backup-vms.md). 
 
 ## <a name="expand-an-azure-managed-disk"></a>Rozwiń dysku zarządzanego platformy Azure
 Upewnij się, że masz najnowszy [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) zainstalowane i jest zalogowany na koncie platformy Azure przy użyciu [az login](/cli/azure/reference-index#az-login).

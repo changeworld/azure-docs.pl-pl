@@ -10,32 +10,34 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: ecb97860e70141a744833aa9b9a4fcea3f3688f0
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 1a48f8620fb99f1cf8787dabc738d328a796d093
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149825"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510613"
 ---
 # <a name="quickstart-use-a-cloud-based-notebook-server-to-get-started-with-azure-machine-learning"></a>Szybki start: Rozpoczynanie pracy z usługą Azure Machine Learning przy użyciu serwer opartych na chmurze notesu
 
 Utwórz serwer opartych na chmurze Notes, a następnie użyć go.  W tym przewodniku Szybki Start uruchamianie kodu w języku Python, który loguje się wartości [obszaru roboczego usługi Azure Machine Learning](concept-azure-machine-learning-architecture.md). Ten obszar roboczy to podstawowy blok w chmurze umożliwiający eksperymentowanie z modelami uczenia maszynowego, ich trenowanie oraz wdrażanie za pomocą usługi Machine Learning. 
 
 Ten przewodnik Szybki Start przedstawiono sposób tworzenia zasobu chmury w obszarze roboczym usługi Azure Machine Learning skonfigurowany ze środowiskiem Python niezbędne do uruchomienia usługi Azure Machine Learning. Aby użyć własnego środowiska, zobacz [Szybki Start: Rozpoczynanie pracy z usługą Azure Machine Learning przy użyciu serwera notesu](quickstart-run-local-notebook.md).  
- 
+
 W tym przewodniku Szybki start wykonasz następujące czynności:
 
 * Utwórz nowy serwer opartych na chmurze Notes w obszarze roboczym.
 * Uruchom interfejs sieci web programu Jupyter.
 * Otwórz notes, który zawiera kod, aby oszacować pi i rejestruje błędy w każdej iteracji.
 * Uruchamianie notesu.
-* Wyświetl wartości błędów rejestrowane w obszarze roboczym. W tym przykładzie pokazano, jak obszar roboczy może pomóc w śledzeniu informacji wygenerowanych przez skrypt. 
+* Wyświetl wartości błędów rejestrowane w obszarze roboczym. W tym przykładzie pokazano, jak obszar roboczy może pomóc w śledzeniu informacji wygenerowanych przez skrypt.
 
 Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](https://aka.ms/AMLFree) już dziś.
 
-## <a name="prerequisites"></a>Wymagania wstępne
+## <a name="create-a-workspace"></a>Tworzenie obszaru roboczego
 
-- Obszar roboczy usługi Azure Machine Learning.  [Tworzenie obszaru roboczego usługi](setup-create-workspace.md#portal) teraz, jeśli nie masz.
+Jeśli masz obszar roboczy usługi Azure Machine Learning, przejdź do [następnej sekcji](#create-a-cloud-based-notebook-server). W przeciwnym razie utworzyć teraz.
+
+[!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
 ## <a name="create-a-cloud-based-notebook-server"></a>Utwórz serwer opartych na chmurze notesu
 
@@ -57,7 +59,6 @@ Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto.
     ![Utwórz nową maszynę Wirtualną](media/quickstart-run-cloud-notebook/create-new-workstation.png)
 
 1. Odczekaj około 4 – 5 minut, aż stan zmieni się na **systemem**.
-
 
 ## <a name="launch-jupyter-web-interface"></a>Uruchom interfejs sieci web programu Jupyter
 
@@ -92,7 +93,7 @@ Uruchamianie notesu, szacuje pi, która rejestruje błąd w Twoim obszarze roboc
 
 1. Uruchom drugie komórkę kodu. Jeśli widzisz instrukcjami w celu uwierzytelnienia, skopiuj kod i skorzystaj z linku do logowania. Po zalogowaniu przeglądarce zapamięta tego ustawienia.  
 
-    ![Uwierzytelnianie](media/quickstart-run-cloud-notebook/authenticate.png)
+    ![Uwierzytelnij](media/quickstart-run-cloud-notebook/authenticate.png)
 
 1. Po zakończeniu, liczby komórek __[2]__ pojawia się.  Gdyby trzeba było Zaloguj się, zobaczysz komunikat o stanie pomyślnym uwierzytelnieniu.   Jeśli nie masz do logowania, nie zobaczysz żadnych danych wyjściowych dla tej komórki, tylko numer pojawi się pomyślnie uruchomiono komórki.
 
@@ -102,10 +103,9 @@ Uruchamianie notesu, szacuje pi, która rejestruje błąd w Twoim obszarze roboc
 
     W największych komórce kodu, zobacz `run.log` używany w kilku miejscach. Każdy `run.log` dodaje wartość do swojego obszaru roboczego.
 
-
 ## <a name="view-logged-values"></a>Wyświetlanie zarejestrowanych wartości
 
-1. Dane wyjściowe z komórki `run` zawierają link do witryny Azure Portal, dzięki któremu można wyświetlić wyniki eksperymentu w obszarze roboczym. 
+1. Dane wyjściowe z komórki `run` zawierają link do witryny Azure Portal, dzięki któremu można wyświetlić wyniki eksperymentu w obszarze roboczym.
 
     ![Wyświetlanie eksperymentów](./media/quickstart-run-cloud-notebook/view-exp.png)
 
@@ -117,7 +117,7 @@ Uruchamianie notesu, szacuje pi, która rejestruje błąd w Twoim obszarze roboc
 
 Kod obliczania przybliżonej liczby pi używa wartości losowych, dlatego wykresy będą przedstawiać różne wartości.  
 
-## <a name="clean-up-resources"></a>Oczyszczanie zasobów 
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 ### <a name="stop-the-notebook-vm"></a>Zatrzymaj notesu maszyny Wirtualnej
 

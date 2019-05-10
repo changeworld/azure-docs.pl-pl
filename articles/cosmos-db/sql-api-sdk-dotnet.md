@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/09/2018
 ms.author: sngun
-ms.openlocfilehash: 83a866b20d2802b7d49363b7c6451356e938eac1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3c420882b734883039ec95d609c155617359fa25
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60626846"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510718"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB zestawu .NET SDK interfejsu API SQL: Pobierz i informacje o wersji
 > [!div class="op_single_selector"]
@@ -47,6 +47,20 @@ ms.locfileid: "60626846"
 * Nowy model obiektów za pomocą metod CosmosClient najwyższego poziomu i Podziel na odpowiednich klas CosmosDatabases, CosmosContainers i CosmosItems. 
 * Obsługa strumieni. 
 * Zaktualizowano CosmosResponseMessage z serwera, aby zwrócić kod stanu, a tylko zgłosić wyjątek, gdy brak odpowiedzi jest zwracany. 
+
+### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
+
+* Wersja System.Net.Http zestawu SDK pasuje, co to jest zdefiniowany w pakiecie NuGet
+* Zwiększony rozmiar precyzja dziesiętna zapytań LINQ.
+* Dodano nowe klasy CompositePath, CompositePathSortOrder, SpatialSpec, SpatialType i PartitionKeyDefinitionVersion
+* Dodano TimeToLivePropertyPath do elementu DocumentCollection
+* Dodano CompositeIndexes i SpatialIndexes do IndexPolicy
+* Dodano wersji PartitionKeyDefinition
+* Brak, aby PartitionKey dodane
+
+### <a name="a-name230230"></a><a name="2.3.0"/>2.3.0
+
+ * Dodano IdleTcpConnectionTimeout, OpenTcpConnectionTimeout, MaxRequestsPerTcpConnection i MaxTcpConnectionsPerEndpoint do ConnectionPolicy.
 
 ### <a name="a-name223223"></a><a name="2.2.3"/>2.2.3
 
@@ -361,6 +375,8 @@ Wszystkie żądania do usługi Azure Cosmos DB przy użyciu wycofane zestawu SDK
 
 | Wersja | Data wydania | Data wygaśnięcia |
 | --- | --- | --- |
+| [2.4.0](#2.4.0) |05 maja 2019 r. |--- |
+| [2.3.0](#2.3.0) |04 kwietnia 2019 r. |--- |
 | [2.2.3](#2.2.3) |11 lutego 2019 r. |--- |
 | [2.2.2](#2.2.2) |06 lutego 2019 r. |--- |
 | [2.2.1](#2.2.1) |24 grudnia 2018 r. |--- |

@@ -6,16 +6,19 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 1d75d01df74a239ba865d9a4e2b216a410e6069c
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: ce99e03cbd767b5e25871397ea9ae9a301132ab6
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65067438"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510973"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Odczytu replik w usłudze Azure Database for PostgreSQL — pojedynczy serwer
 
-Funkcja odczytu replik pozwala na replikowanie danych z usługi Azure Database for postgresql w warstwie serwera na serwer tylko do odczytu. Można replikować z głównego serwera do maksymalnie pięciu replik w tym samym regionie platformy Azure. Repliki są aktualizowane asynchronicznie przy użyciu technologii replikacji natywnego aparatu PostgreSQL.
+Funkcja odczytu replik pozwala na replikowanie danych z usługi Azure Database for postgresql w warstwie serwera na serwer tylko do odczytu. Można replikować z głównego serwera do maksymalnie pięciu replik. Repliki są aktualizowane asynchronicznie przy użyciu technologii replikacji natywnego aparatu PostgreSQL.
+
+> [!IMPORTANT]
+> Można utworzyć odczytu repliki, w tym samym regionie co serwer główny lub w innym regionie platformy Azure wybranym. Replikacja w wielu regionach jest obecnie w publicznej wersji zapoznawczej.
 
 Repliki są nowe serwery zarządzania podobne do regularnego — Azure Database for postgresql w warstwie serwerów. Dla każdego odczytu repliki, opłaty są naliczane dla zainicjowanych zasobów obliczeniowych w rdzeniach wirtualnych zasoby i magazynu w GB / miesiąc.
 
@@ -29,6 +32,8 @@ Typowy scenariusz polega na zapewnienie Power BI i obciążeń analitycznych pe�
 Ponieważ repliki są tylko do odczytu, nie bezpośrednio zmniejszyć obciążenia pojemności zapisu we wzorcu. Ta funkcja nie jest przeznaczone dla obciążeń intensywnie korzystających z zapisu.
 
 Funkcja odczytu replik używa replikacji asynchronicznej PostgreSQL. Ta funkcja nie jest przeznaczona dla scenariuszy replikacji synchronicznej. Będzie mierzalne opóźnienie między główną i repliką. Dane w replice ostatecznie staje się spójne z danymi na głównym. Użyj tej funkcji dla obciążeń, które można uwzględnić to opóźnienie.
+
+Odczytu replik można zwiększyć, plan odzyskiwania po awarii. Najpierw musisz mieć repliki w innym regionie platformy Azure z poziomu głównego. W przypadku awarii regionu, możesz zatrzymać replikację tę replikę i przekierować obciążenie do niego. Zatrzymywanie replikacji umożliwia replikę tak, aby rozpocząć, akceptując zapisów, a także odczytuje. Dowiedz się więcej w [zatrzymać replikację](#stop-replication) sekcji. 
 
 ## <a name="create-a-replica"></a>Tworzenie repliki
 Na serwerze głównym musi być `azure.replication_support` parametr **REPLIKI**. Po zmianie tego parametru ponownego uruchomienia serwera jest wymagany, aby zmiana zaczęła obowiązywać. ( `azure.replication_support` Parametr dotyczy tylko warstw ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci).
@@ -47,7 +52,7 @@ Podczas tworzenia repliki nie dziedziczy, reguły zapory lub serwera głównego,
 
 Repliki dziedziczy konta administratora serwera głównego. Wszystkie konta użytkowników na serwerze głównym są replikowane do odczytu replik. Odczytu repliki można połączyć tylko przy użyciu konta użytkownika, które są dostępne na serwerze głównym.
 
-Możesz połączyć do repliki przy użyciu jego nazwy hosta i prawidłowe konto użytkownika, tak jak w regularnym — Azure Database for postgresql w warstwie serwera. Na serwerze o nazwie **myreplica** przy użyciu nazwy użytkownika administratora **myadmin**, repliki można nawiązać za pomocą narzędzia psql:
+Możesz połączyć do repliki przy użyciu jego nazwy hosta i prawidłowe konto użytkownika, tak jak w regularnym — Azure Database for postgresql w warstwie serwera. Na serwerze o nazwie **repliki** przy użyciu nazwy użytkownika administratora **myadmin**, repliki można nawiązać za pomocą narzędzia psql:
 
 ```
 psql -h myreplica.postgres.database.azure.com -U myadmin@myreplica -d postgres
@@ -63,7 +68,7 @@ Usługa Azure Database for PostgreSQL udostępnia również **Lag repliki** metr
 Metryka jest obliczana na podstawie `pg_stat_wal_receiver` widoku:
 
 ```SQL
-EXTRACT (EPOCH FROM now() - pg_last_xact_replay_timestamp())
+EXTRACT (EPOCH FROM now() - pg_last_xact_replay_timestamp());
 ```
 
 Metryka Lag repliki przedstawia czas od ostatniej transakcji powtórzony. Jeśli nie ma żadnych transakcji, pojawiają się na serwerze głównym, metryki odzwierciedla to opóźnienie czasowe.
@@ -96,6 +101,8 @@ Można zatrzymać replikacji między serwerem głównym i repliki. Akcja zatrzym
 > Serwer autonomiczny nie wprowadzać ponownie do repliki.
 > Przed zatrzymaniem replikacji tylko do odczytu repliki, upewnij się, że replika zawiera wszystkie dane, których potrzebujesz.
 
+Po zatrzymaniu replikacji replika utraci wszystkie łącza do jego poprzedniego główny i innymi replikami. Brak automatycznego trybu failover między głównego i repliką. 
+
 Dowiedz się, jak [zatrzymać replikację do repliki](howto-read-replicas-portal.md).
 
 
@@ -107,7 +114,7 @@ Ta sekcja zawiera podsumowanie zagadnień dotyczących funkcji odczytu replik.
 Przed utworzeniem odczytu repliki, `azure.replication_support` parametru musi być równa **REPLIKI** na serwerze głównym. Po zmianie tego parametru ponownego uruchomienia serwera jest wymagany, aby zmiana zaczęła obowiązywać. `azure.replication_support` Parametr dotyczy tylko warstw ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci.
 
 ### <a name="new-replicas"></a>Nowej repliki
-Odczytu repliki jest tworzona jako nowego serwera Azure Database for PostgreSQL. Nie można dokonać istniejący serwer do repliki. Odczytu repliki można tworzyć tylko w tym samym regionie platformy Azure jako wzorzec. Nie można utworzyć replikę innej repliki do odczytu.
+Odczytu repliki jest tworzona jako nowego serwera Azure Database for PostgreSQL. Nie można dokonać istniejący serwer do repliki. Nie można utworzyć replikę innej repliki do odczytu.
 
 ### <a name="replica-configuration"></a>Konfiguracji repliki
 Replika jest tworzona przy użyciu tej samej konfiguracji serwera jako wzorzec. Po utworzeniu repliki, niektóre ustawienia można zmienić niezależnie z serwera głównego: obliczenia generacji, rdzenie wirtualne, Magazyn i okres przechowywania kopii zapasowej. Warstwę cenową można zmienić niezależnie, z wyjątkiem do lub z warstwy podstawowa.

@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 01/23/2019
+ms.date: 05/09/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: caleteet
 manager: femila
-ms.openlocfilehash: ce1afbd5499e798888e77f52d7b652e7e1f548fc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 80de4e1479fac7296889e45289a5f20e586e3f57
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60690661"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510754"
 ---
 # <a name="hyperledger-fabric-consortium-network"></a>Sieci konsorcjum Hyperledger Fabric
 
@@ -70,11 +70,11 @@ W **Hyperledger Fabric konsorcjum** szablonu, wybierz opcję **Utwórz**.
 
 Wdrożenie szablonu przeprowadzi Cię Konfigurowanie wieloma węzłami [Hyperledger 1.3](https://hyperledger-fabric.readthedocs.io/en/release-1.3/) sieci. Przepływ wdrożenia jest podzielony na cztery kroki: Podstawowe informacje dotyczące ustawień sieci konsorcjum, konfiguracja sieci szkieletowej i opcjonalnych składników.
 
-### <a name="basics"></a>Podstawy
+### <a name="basics"></a>Ustawienia podstawowe
 
 W **podstawy**, określ wartości dla parametrów standardowego dla każdego wdrożenia. Takie jak subskrypcji, grupy zasobów i podstawowe wirtualne maszyny właściwości.
 
-![Podstawy](./media/hyperledger-fabric-consortium-blockchain/basics.png)
+![Ustawienia podstawowe](./media/hyperledger-fabric-consortium-blockchain/basics.png)
 
 | Nazwa parametru | Opis | Dozwolone wartości |
 |---|---|---|
@@ -100,7 +100,7 @@ W **ustawienia sieciowe**, określ dane wejściowe do tworzenia lub dołączenie
 **Konfiguracja sieci** |Można utworzyć nową sieć lub przyłącz istniejącą grupę. Jeśli wybierzesz *Dołącz istniejące*, musisz podać dodatkowe wartości. |Nową sieć <br/> Dołącz istniejące |
 **Hasło HLF urzędu certyfikacji** |Hasło używane do certyfikatów wygenerowanych przez urzędy certyfikacji, które są tworzone w ramach wdrożenia. Hasło musi zawierać trzy z następujących typów znaków: 1 Wielka litera, 1 mała litera, 1 cyfra i 1 znak specjalny.<br /><br />Gdy wszystkie maszyny wirtualne mają początkowo tego samego hasła, możesz zmienić hasło po zainicjowaniu obsługi administracyjnej.|1 - 25 znaków |
 **Ustawienia organizacji** |Można dostosować nazwę organizacji i certyfikatu lub mają przypisane wartości domyślne do użycia.|Domyślne <br/> Zaawansowane |
-**Ustawienia sieci VPN** | Aprowizowanie bramy tunel sieci VPN do uzyskiwania dostępu do maszyn wirtualnych | Yes <br/> Nie |
+**Ustawienia sieci VPN** | Aprowizowanie bramy tunel sieci VPN do uzyskiwania dostępu do maszyn wirtualnych | Tak <br/> Nie |
 
 Kliknij przycisk **OK**.
 
@@ -113,7 +113,7 @@ W **konfiguracja sieci szkieletowej**, skonfiguruj network Activity block size i
 | Nazwa parametru | Opis | Dozwolone wartości |
 |---|---|---|
 **Typ skalowania** |Typ wdrożenia pojedynczej maszyny wirtualnej z wieloma kontenerami lub wielu maszyn wirtualnych w modelu skalowalnego w poziomie.|Jednej maszyny Wirtualnej lub wielu maszyn wirtualnych |
-**Typ dysku maszyny Wirtualnej** |Typ magazynu kopii każdego wdrożonego węzła. <br/> Aby dowiedzieć się więcej na temat typów dostępnego miejsca na dysku, odwiedź stronę [wybierz typ dysku](../../virtual-machines/windows/disks-types.md).|Standardowa, SSD <br/> Premium, SSD |
+**Typ dysku maszyny Wirtualnej** |Typ magazynu kopii każdego wdrożonego węzła. <br/> Aby dowiedzieć się więcej na temat typów dostępnego miejsca na dysku, odwiedź stronę [wybierz typ dysku](../../virtual-machines/windows/disks-types.md).|SSD w warstwie Standardowa <br/> SSD w warstwie Premium |
 
 ### <a name="multiple-vm-deployment-additional-settings"></a>Wdrażanie wielu maszyn wirtualnych (dodatkowe ustawienia)
 
@@ -135,7 +135,7 @@ Ten szablon umożliwia pobranie silnik stanów trwałych dla węzła równorzęd
 
 Kliknij przycisk **OK**.
 
-### <a name="deploy"></a>Wdrażanie
+### <a name="deploy"></a>Wdróż
 
 W **Podsumowanie**, przejrzyj dane wejściowe określone i aby uruchomić podstawową walidację przed wdrożeniem.
 

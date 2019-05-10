@@ -10,15 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 05/02/2019
 ms.author: fmegen
-ms.openlocfilehash: 771168a13d7192581aae2ff4128e979b6924484a
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 05475dbfb7dc1ee3f5de1a9b858eaf212b674eac
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65020675"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466388"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-java"></a>Szybki start: rozpoznawanie mowy przy użyciu zestawu Speech SDK dla platformy Java
 
+Przewodniki Szybki Start są również dostępne dla [mowy do rozpoznawania mowy tłumaczenia](quickstart-translate-speech-java-jre.md) i [głosu pierwszego wirtualnego Asystenta](quickstart-virtual-assistant-java-jre.md).
+
+Jeśli to konieczne, należy wybrać inny język programowania i/lub środowiska:<br/>
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 W tym artykule utworzysz aplikację konsolową w języku Java przy użyciu [zestawu Speech SDK](speech-sdk.md). Transkrypcja mowy na tekst będzie się odbywać w czasie rzeczywistym z mikrofonu komputera. Aplikacji został utworzony za pomocą pakietu Maven zestaw SDK rozpoznawania mowy i środowisko Eclipse IDE Java (v4.8) na Windows 64-bitowym, 64-bitowych Linux (Ubuntu 16.04 Ubuntu 18.04, Debian 9), lub w systemie macOS 10.13 lub nowszej. Działa ona w 64-bitowym środowisku uruchomieniowym Java 8 języka Java (JRE).
@@ -58,7 +61,7 @@ Jeśli korzystasz z Windows (64-bitowy), upewnij się, został zainstalowany pro
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-java-create-proj.md)]
 
-## <a name="add-sample-code"></a>Dodawanie przykładowego kodu
+## <a name="add-sample-code"></a>Dodaj kod przykładowy
 
 1. Aby dodać nową pustą klasę do projektu języka Java, wybierz kolejno pozycje **Plik** > **Nowy** > **Klasa**.
 

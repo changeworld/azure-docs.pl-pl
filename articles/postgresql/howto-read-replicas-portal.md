@@ -1,22 +1,24 @@
 ---
-title: Zarządzanie odczytu replik dla usługi Azure Database for PostgreSQL w witrynie Azure portal
-description: Dowiedz się, jak zarządzać — Azure Database for PostgreSQL odczytu replik w witrynie Azure portal.
-author: WenJason
-ms.author: v-jay
+title: Zarządzanie odczytu replik dla usługi Azure Database for PostgreSQL — jeden serwer w witrynie Azure portal
+description: Dowiedz się, jak zarządzać odczytu replik bazy danych Azure Database for PostgreSQL — jeden serwer w witrynie Azure portal.
+author: rachel-msft
+ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-origin.date: 04/01/2019
-ms.date: 04/22/2019
-ms.openlocfilehash: bf1fb1c1343173949ecb6348284cb537282b277b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 87371f91d9ea1f556d0f78beebd73b8a28977b71
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60420810"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510391"
 ---
-# <a name="create-and-manage-read-replicas-from-the-azure-portal"></a>Tworzenie i zarządzanie nimi odczytu replik w witrynie Azure portal
+# <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>Tworzenie i zarządzanie nimi odczytu replik w usłudze Azure Database for PostgreSQL — jeden serwer w witrynie Azure portal
 
 W tym artykule dowiesz się, jak tworzyć i zarządzać odczytu replik w usłudze Azure Database for PostgreSQL w witrynie Azure portal. Aby dowiedzieć się więcej na temat odczytu repliki, zobacz [Przegląd](concepts-read-replicas.md).
+
+> [!IMPORTANT]
+> Można utworzyć odczytu repliki, w tym samym regionie co serwer główny lub w innym regionie platformy Azure wybranym. Replikacja w wielu regionach jest obecnie w publicznej wersji zapoznawczej.
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -59,9 +61,15 @@ Aby utworzyć odczytu repliki, wykonaj następujące kroki:
 
    ![Dodaj replikę](./media/howto-read-replicas-portal/add-replica.png)
 
-4. Wprowadź nazwę dla odczytu repliki. Wybierz **OK** o potwierdzenie utworzenia repliki.
+4. Wprowadź nazwę dla odczytu repliki. 
 
-   ![Nazwa repliki](./media/howto-read-replicas-portal/name-replica.png) 
+    ![Nazwa repliki](./media/howto-read-replicas-portal/name-replica.png)
+
+5. Wybierz lokalizację dla repliki. W dowolnym regionie systemu Azure, można utworzyć repliki. Domyślna lokalizacja jest taka sama jak serwera głównego.
+
+    ![Wybierz lokalizację](./media/howto-read-replicas-portal/location-replica.png)
+
+6. Wybierz **OK** o potwierdzenie utworzenia repliki.
 
 Replika jest tworzona przy użyciu tej samej konfiguracji serwera jako wzorzec. Po utworzeniu repliki, niektóre ustawienia można zmienić niezależnie z serwera głównego: obliczenia generacji, rdzenie wirtualne, Magazyn i okres przechowywania kopii zapasowych. Warstwę cenową można zmienić niezależnie, z wyjątkiem do lub z warstwy podstawowa.
 

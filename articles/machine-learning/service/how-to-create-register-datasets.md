@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/19
-ms.openlocfilehash: 65a861c647c2dc92e416fa356075821aa5060042
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 938f13524b22f34f4becc936885d1611cb854df1
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205039"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510508"
 ---
 # <a name="create-and-register-azure-machine-learning-datasets-preview"></a>Tworzenie i rejestrowanie usługi Azure Machine Learning z zestawami danych (wersja zapoznawcza)
 
@@ -89,11 +89,11 @@ dataset.head(5)
 
 ||ID|Liczba przypadków|Date|Blokuj|IUCR|Typ podstawowy|Opis|Opis lokalizacji|Aresztowania|Krajowych|Przyciski ...|Lej|Obszar społeczności|FBI kodu|Współrzędna x|Współrzędna Y|Rok|Aktualizacja:|Szerokość geograficzna|Długość geograficzna|Lokalizacja|
 |--|--|---|---|---|---|----|------|-------|------|-----|---|----|----|-----|-----|------|----|-----|----|----|-----
-|0|10498554|HZ239907|4/4/2016 23:56|007XX E 111TH ST|1153|PRAKTYKI OSZUKAŃCZYM|KRADZIEŻE TOŻSAMOŚCI FINANSOWYCH ZA POŚREDNICTWEM 300 USD|INNE|WARTOŚĆ FALSE|WARTOŚĆ FALSE|Przyciski ...|9|50|11|1183356|1831503|2016|5/11/2016 15:48|41.69283384|-87.60431945|(41.692833841, -87.60431945)|
-1|10516598|HZ258664|4/15/2016 17:00|082XX S MARSHFIELD AVE|890|PRZED KRADZIEŻĄ| OD TWORZENIA|W MIEJSCU ZAMIESZKANIA UŻYTKOWNIKA|WARTOŚĆ FALSE|WARTOŚĆ FALSE|Przyciski ...|21|71|6|1166776|1850053|2016|5/12/2016 15:48|41.74410697|-87.66449429|(41.744106973, -87.664494285)
-2|10519196|HZ261252|4/15/2016 10:00|104XX S SACRAMENTO AVE|1154|PRAKTYKI OSZUKAŃCZYM|KRADZIEŻE TOŻSAMOŚCI FINANSOWYCH 300 USD I W OBSZARZE|W MIEJSCU ZAMIESZKANIA UŻYTKOWNIKA|WARTOŚĆ FALSE|WARTOŚĆ FALSE|Przyciski ...|19|74|11|||2016|5/12/2016 15:50
-3|10519591|HZ261534|4/15/2016 9:00|113XX APISZ PIESKÓW|1120|PRAKTYKI OSZUKAŃCZYM|FAŁSZOWANIE|W MIEJSCU ZAMIESZKANIA UŻYTKOWNIKA|WARTOŚĆ FALSE|WARTOŚĆ FALSE|Przyciski ...|9|49|10|||2016|5/13/2016 15:51
-4|10534446|HZ277630|4/15/2016 10:00|055XX N KEDZIE AVE|890|PRZED KRADZIEŻĄ|OD TWORZENIA|SZKOŁY, PUBLICZNEJ I TWORZENIE|WARTOŚĆ FALSE|WARTOŚĆ FALSE|Przyciski ...|40|13|6|||2016|5/25/2016 15:59|
+|0|10498554|HZ239907|4/4/2016 23:56|007XX E 111TH ST|1153|PRAKTYKI OSZUKAŃCZYM|KRADZIEŻE TOŻSAMOŚCI FINANSOWYCH ZA POŚREDNICTWEM 300 USD|INNE|WARTOŚĆ FALSE|WARTOŚĆ FALSE|...|9|50|11|1183356|1831503|2016|5/11/2016 15:48|41.69283384|-87.60431945|(41.692833841, -87.60431945)|
+1|10516598|HZ258664|4/15/2016 17:00|082XX S MARSHFIELD AVE|890|PRZED KRADZIEŻĄ| OD TWORZENIA|W MIEJSCU ZAMIESZKANIA UŻYTKOWNIKA|WARTOŚĆ FALSE|WARTOŚĆ FALSE|...|21|71|6|1166776|1850053|2016|5/12/2016 15:48|41.74410697|-87.66449429|(41.744106973, -87.664494285)
+2|10519196|HZ261252|4/15/2016 10:00|104XX S SACRAMENTO AVE|1154|PRAKTYKI OSZUKAŃCZYM|KRADZIEŻE TOŻSAMOŚCI FINANSOWYCH 300 USD I W OBSZARZE|W MIEJSCU ZAMIESZKANIA UŻYTKOWNIKA|WARTOŚĆ FALSE|WARTOŚĆ FALSE|...|19|74|11|||2016|5/12/2016 15:50
+3|10519591|HZ261534|4/15/2016 9:00|113XX APISZ PIESKÓW|1120|PRAKTYKI OSZUKAŃCZYM|FAŁSZOWANIE|W MIEJSCU ZAMIESZKANIA UŻYTKOWNIKA|WARTOŚĆ FALSE|WARTOŚĆ FALSE|...|9|49|10|||2016|5/13/2016 15:51
+4|10534446|HZ277630|4/15/2016 10:00|055XX N KEDZIE AVE|890|PRZED KRADZIEŻĄ|OD TWORZENIA|SZKOŁY, PUBLICZNEJ I TWORZENIE|WARTOŚĆ FALSE|WARTOŚĆ FALSE|...|40|13|6|||2016|5/25/2016 15:59|
 
 ## <a name="register-your-datasets-with-workspace"></a>Rejestrowanie zestawów danych z obszarem roboczym
 
@@ -102,7 +102,6 @@ Użyj [ `register()` ](https://docs.microsoft.com/python/api/azureml-core/azurem
 ```Python
 dataset = dataset.register(workspace = workspace,
                            name = 'dataset_crime',
-
                            description = 'Training data',
                            exist_ok = False
                            )
@@ -116,6 +115,9 @@ dataset = dataset.register(workspace = workspace,
 ```Python
 dataset = dataset.register(workspace = workspace,
                            name = 'dataset_crime',
+                           description = 'Training data',
+                           exist_ok = True
+                           )
 ```
 
 Użyj `list()` do wyświetlenia wszystkich zarejestrowanych zestawów danych w obszarze roboczym.

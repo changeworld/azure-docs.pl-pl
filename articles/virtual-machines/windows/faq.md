@@ -13,20 +13,20 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2017
+ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 65d4326763ef9754159e94c9426f3aee69f80ffd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 61f24b3c13a53b23538327cd1458a54756b7caa5
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61095662"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466348"
 ---
 # <a name="frequently-asked-question-about-windows-virtual-machines"></a>Często zadawane pytania dotyczące maszyn wirtualnych Windows
-W tym artykule opisano często zadawane pytania dotyczące maszyn wirtualnych Windows utworzone na platformie Azure przy użyciu modelu wdrażania usługi Resource Manager. Wersja systemu Linux w tym temacie, zobacz [— często zadawane pytania dotyczące maszyn wirtualnych systemu Linux](../linux/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+W tym artykule opisano często zadawane pytania dotyczące maszyn wirtualnych Windows utworzone na platformie Azure przy użyciu modelu wdrażania usługi Resource Manager. Wersja systemu Linux w tym temacie, zobacz [— często zadawane pytania dotyczące maszyn wirtualnych systemu Linux](../linux/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="what-can-i-run-on-an-azure-vm"></a>Co mogę uruchomić na maszynie wirtualnej platformy Azure?
-Wszyscy subskrybenci mogą uruchomić oprogramowanie serwerowe na maszynie wirtualnej platformy Azure. Aby uzyskać informacji na temat zasad wsparcia dla uruchomione oprogramowanie serwerowe firmy Microsoft na platformie Azure, zobacz [pomoc techniczna dotycząca oprogramowania serwera firmy Microsoft dla usługi Azure Virtual Machines](https://support.microsoft.com/kb/2721672)
+Wszyscy subskrybenci mogą uruchomić oprogramowanie serwerowe na maszynie wirtualnej platformy Azure. Aby uzyskać informacji na temat zasad wsparcia dla uruchomione oprogramowanie serwerowe firmy Microsoft na platformie Azure, zobacz [pomoc techniczna dotycząca oprogramowania serwera firmy Microsoft dla usługi Azure Virtual Machines](https://support.microsoft.com/kb/2721672).
 
 Określonych wersji systemu Windows 7, Windows 8.1 i Windows 10 są dostępne dla subskrybentów korzyści MSDN platformy Azure i subskrybentów MSDN: tworzenie i testowanie płatność za rzeczywiste użycie, dla zadań tworzenia i testowania. Aby uzyskać szczegółowe informacje, łącznie z instrukcjami i ograniczeniami, zobacz [Windows Client images for MSDN subscribers](https://azure.microsoft.com/blog/2014/05/29/windows-client-images-on-azure/) (Obrazy klienta systemu Windows dla subskrybentów MSDN). 
 
@@ -38,7 +38,7 @@ Usługa Azure Managed Disks są zalecane oferta magazynu na dysku do użycia z u
 Konta usługi Azure storage oferuje również magazynu dla dysku systemu operacyjnego i dysków z danymi. Każdy dysk jest plikiem VHD przechowywanym jako stronicowy obiekt blob. Aby uzyskać szczegółowe informacje o cenach, zobacz [Szczegóły cennika magazynu](https://azure.microsoft.com/pricing/details/storage/).
 
 ## <a name="how-can-i-access-my-virtual-machine"></a>Jak można uzyskać dostęp Moja maszyna wirtualna?
-Nawiąż połączenie zdalne za pomocą połączenia pulpitu zdalnego (RDP) dla maszyny Wirtualnej z systemem Windows. Aby uzyskać instrukcje, zobacz [jak połączyć i zaloguj się na maszynie wirtualnej platformy Azure, systemem Windows](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Obsługuje maksymalnie dwa równoczesne połączenia, chyba że serwer jest skonfigurowany jako host sesji usług pulpitu zdalnego.  
+Nawiąż połączenie zdalne za pomocą połączenia pulpitu zdalnego (RDP) dla maszyny Wirtualnej z systemem Windows. Aby uzyskać instrukcje, zobacz [jak połączyć i logowanie się na maszynie wirtualnej platformy Azure, systemem Windows](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Obsługuje maksymalnie dwa równoczesne połączenia, chyba że serwer jest skonfigurowany jako host sesji usług pulpitu zdalnego.  
 
 Jeśli występują problemy przy użyciu pulpitu zdalnego, zobacz [połączeń Rozwiązywanie problemów z pulpitu zdalnego na podstawie Windows maszyny wirtualnej platformy Azure](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 
@@ -85,36 +85,26 @@ Tak. Nazwa grupy zasobów może zawierać maksymalnie 90 znaków długości. Zob
 
 Nazwy użytkowników może zawierać maksymalnie 20 znaków i nie może kończyć się kropką ("."). 
 
-
 Następujące nazwy użytkowników nie są dozwolone:
-<table>
-    <tr>
-        <td style="text-align:center">1</td><td style="text-align:center">123</td><td style="text-align:center">a</td><td style="text-align:center">actuser</td>
-    </tr>
-    <tr>
-        <td style="text-align:center">adm</td><td style="text-align:center">admin</td><td style="text-align:center">admin1</td><td style="text-align:center">admin2</td>
-    </tr>   <tr>
-        <td style="text-align:center">administrator</td><td style="text-align:center">aspnet</td><td style="text-align:center">kopia zapasowa</td><td style="text-align:center">console</td>
-    </tr>
-    <tr>
-        <td style="text-align:center">David </td><td style="text-align:center">Gość</td><td style="text-align:center">Jan</td><td style="text-align:center">właściciel</td>
-    </tr>
-    <tr>
-        <td style="text-align:center">root</td><td style="text-align:center">serwer</td><td style="text-align:center">sql</td><td style="text-align:center">pomoc techniczna</td>
-    </tr>
-    <tr>
-        <td style="text-align:center">support_388945a0</td><td style="text-align:center">sys</td><td style="text-align:center">test</td><td style="text-align:center">test1</td>
-    </tr>
-    <tr>
-        <td style="text-align:center">test2</td><td style="text-align:center">test3</td><td style="text-align:center">Użytkownik</td><td style="text-align:center">user1</td>
-    </tr>
-    <tr>
-        <td style="text-align:center">user2</td><td style="text-align:center">UŻYTKOWNIK3</td><td style="text-align:center">user4</td><td style="text-align:center">user5</td>
-    </tr>
-</table>
+
+| | | | |
+|-----------------|-----------|--------------------|----------|
+| `administrator` | `admin`   | `user`             | `user1`  |
+| `test`          | `user2`   | `test1`            | `user3`  |
+| `admin1`        | `1`       | `123`              | `a`      |
+| `actuser`       | `adm`     | `admin2`           | `aspnet` |
+| `backup`        | `console` | `david`            | `guest`  |
+| `john`          | `owner`   | `root`             | `server` |
+| `sql`           | `support` | `support_388945a0` | `sys`    |
+| `test2`         | `test3`   | `user4`            | `user5`  |
+
 
 ## <a name="what-are-the-password-requirements-when-creating-a-vm"></a>Jakie są wymagania dotyczące hasła, podczas tworzenia maszyny Wirtualnej?
-Hasło musi mieć długość od 12 do 123 znaków i spełniać 3 z następujących wymagań dotyczących złożoności 4:
+
+Istnieją różne hasła wymagania dotyczące długości, która znajduje się w zależności od narzędzie, którego używasz:
+ - Portal — od 12 do 72 znaków
+ - PowerShell — od 8 do 123 znaków
+ - Interfejs wiersza polecenia — od 12 do 123
 
 * Niższe znaków
 * Górny znaków
