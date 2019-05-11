@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/28/2019
+ms.date: 05/10/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 0f94a1fdc01825b5bf78644f84c72e6b031109c0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 78c445e70fcf972be81ef6dfd5d675f8e4843621
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61379222"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65541508"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Najlepsze rozwiązania wiedzy usługi QnA Maker
 [Cykl życia projektowania bazy wiedzy knowledge base](../Concepts/development-lifecycle-knowledge-base.md) przeprowadzi Cię o tym, jak zarządzać wiedzy od początku do końca. Używania tych najlepszych rozwiązań, aby usprawnić bazy wiedzy i zapewniają lepsze wyniki użytkownikom końcowym bota aplikacji/rozmowy.
@@ -39,18 +39,20 @@ Dodaj dowolną liczbę pytań alternatywne potrzebujesz, ale proste zmiany. Doda
 Najlepsze odpowiedzi są odpowiedzi, proste, ale nie zbyt proste, takie jak tak, jak i nie odpowiedzi. Jeśli odpowiedź powinna połączyć inne źródła lub zapewniają bogate środowisko przy użyciu nośnika i łącza, użyj [znakowanie](../how-to/metadata-generateanswer-usage.md) rozróżnienie, jakiego typu odpowiedzi oczekujesz, a następnie Prześlij ten znacznik z zapytaniem, które można pobrać wersji poprawną odpowiedź.
 
 ## <a name="chit-chat"></a>Chit rozmowy
-Dodaj chit czatu do bota się bota konwersacji i bardziej angażujące, za pomocą mały nakład pracy. Możesz łatwo dodać zestawy danych chit rozmowy dla 3 osobowości wstępnie zdefiniowanych podczas tworzenia wiedzy i je zmienić w dowolnym momencie. Dowiedz się, jak [Dodaj chit czatu do wiedzy](../How-To/chit-chat-knowledge-base.md). 
+Dodaj chit czatu do bota się bota konwersacji i bardziej angażujące, za pomocą mały nakład pracy. Możesz łatwo dodać rozmowy chit zestawów danych z wstępnie zdefiniowanych osobowości, podczas tworzenia wiedzy i je zmienić w dowolnym momencie. Dowiedz się, jak [Dodaj chit czatu do wiedzy](../How-To/chit-chat-knowledge-base.md). 
 
 ### <a name="choosing-a-personality"></a>Wybieranie użytkownika
-Chit Rozmowa jest obsługiwana dla 3 osobowości wstępnie zdefiniowane: 
+Obsługiwana jest kilka wstępnie zdefiniowanych osobowości chit rozmowy: 
 
-|Osobowości|
-|--|
-|Professional|
-|Zaprzyjaźnionej|
-|Comic|
+|Osobowości |Usługa QnA Maker w zestawie danych pliku |
+|---------|-----|
+|Professional |[qna_chitchat_professional.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_professional.tsv) |
+|Przyjazne |[qna_chitchat_friendly.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_friendly.tsv) |
+|Powiedzonko |[qna_chitchat_witty.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_witty.tsv) |
+|Opiekowanie |[qna_chitchat_caring.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_caring.tsv) |
+|Nominowani |[qna_chitchat_enthusiastic.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_enthusiastic.tsv) |
 
-Zakres odpowiedzi z formalnego nieformalny i zamieszczanie. Należy wybrać osobowości, znajdujący się najbliżej wyrównany tonu, wybranego dla bota. Można wyświetlić zestawy danych i wybierz jedną, która służy jako podstawa bota, a następnie dostosować odpowiedzi. 
+Zakres odpowiedzi z formalnego nieformalny i zamieszczanie. Należy wybrać osobowości, znajdujący się najbliżej wyrównany tonu, wybranego dla bota. Możesz wyświetlić [zestawów danych](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets)i wybierz jedną, która służy jako podstawa bota, a następnie Dostosuj odpowiedzi. 
 
 ### <a name="edit-bot-specific-questions"></a>Edycja pytania dotyczące botów
 Istnieją niektóre pytania dotyczące bot, które są częścią zestawu danych chit rozmowy i zostało wypełnione uniwersalne odpowiedzi. Zmień odpowiedzi na te pytania, aby odzwierciedlić najlepiej szczegółów dotyczących bota. 
@@ -106,7 +108,7 @@ Ponieważ te dwa znacznie są ma inną pisownię słów bardzo podobne, to podob
 ## <a name="collaborate"></a>Współpraca
 Usługa QnA Maker umożliwia użytkownikom [współpracy](../How-to/collaborate-knowledge-base.md) na wiedzy. Użytkownicy muszą mieć dostęp do grupy zasobów platformy Azure usługa QnA Maker w celu uzyskania dostępu do bazy wiedzy. W niektórych organizacjach może być oddelegowanie edytowanie wiedzy i konserwacji i nadal mieć możliwość ochrony dostępu do swoich zasobów platformy Azure. Ten model osoba zatwierdzająca edytora odbywa się przez skonfigurowanie dwóch identycznych [usługi QnA Maker](../How-to/set-up-qnamaker-service-azure.md) w różnych subskrypcjach i wybranie jednego cyklu testowania edycji. Po zakończeniu testowania zawartości bazy wiedzy są przesyłane przy użyciu [import-export](../Tutorials/migrate-knowledge-base.md) procesu usługi QnA Maker osoby zatwierdzającej, która zostanie ostatecznie publikowanie bazy wiedzy knowledge base i aktualizowanie punktu końcowego.
 
-## <a name="active-learning"></a>Aktywne uczenie
+## <a name="active-learning"></a>Uczenie aktywne
 
 [Aktywna nauka](../How-to/improve-knowledge-base.md) jest najlepiej sugerowanie alternatywnych pytania, gdy ma ona szeroką gamę jakości i ilości zapytania oparte na użytkownikach. Ważne jest, aby zezwolić na zapytania użytkowników klienta aplikacji do wzięcia udziału w aktywnej nauki sprzężenia zwrotnego bez cenzurą. Po pytania są sugerowane w portalu narzędzia QnA Maker, możesz **[Filtruj według sugestii](../How-To/improve-knowledge-base.md#add-active-learning-suggestion-to-knowledge-base)** , a następnie przejrzeć i zaakceptować lub odrzucić te sugestie. 
 

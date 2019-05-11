@@ -5,24 +5,26 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 05/04/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 5aa637938433eb1f906f0a4d81038cec0d6c6dcc
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7a9a1e3d3c92f43d19a75e7cd0e10b3fd395a9b5
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58893014"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544998"
 ---
 # <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Samouczek: Automatyzowanie kompilacji obrazu kontenera w chmurze po zatwierdzeniu kodu źródłowego
 
-Oprócz [szybkiego zadania](container-registry-tutorial-quick-task.md) usługa ACR Tasks obsługuje automatyczne kompilacje obrazu kontenera platformy Docker za pomocą *zadań kompilacji*. W tym samouczku używany jest interfejs wiersza polecenia platformy Azure do utworzenia zadania, które automatycznie wyzwoli kompilacje obrazu w chmurze po zatwierdzeniu kodu źródłowego do repozytorium Git.
+Oprócz [szybkich zadań](container-registry-tutorial-quick-task.md), zadania rejestru Azure container Registry obsługuje automatyczne Docker kompilacji obrazu kontenera w chmurze, gdy zatwierdzisz kod źródłowy do repozytorium Git.
 
-Z tego samouczka, który jest drugą częścią serii, nauczysz się wykonywać następujące czynności:
+W tym samouczku zadanie rejestru Azure container Registry kompiluje i wypycha obraz kontenera pojedynczego określonego w pliku Dockerfile, gdy zatwierdzisz kod źródłowy w repozytorium usługi Git. Aby utworzyć [zadania wieloetapowe](container-registry-tasks-multi-step.md) pliku YAML, używa w celu zdefiniowania kroki w celu kompilacji, wypychania i opcjonalnie przetestować wielu kontenerów przy zatwierdzeniu kodu, zobacz [samouczka: Uruchamianie kontenera wieloetapowy przepływ pracy w chmurze, gdy zatwierdzisz kod źródłowy](container-registry-tutorial-multistep-task.md). Omówienie zadań rejestru Azure container Registry, zobacz [automatyzacji systemu operacyjnego i framework poprawek za pomocą zadań usługi ACR](container-registry-tasks-overview.md)
+
+W tym samouczku:
 
 > [!div class="checklist"]
-> * Tworzenie zadania podrzędnego
+> * Utwórz zadanie
 > * Testowanie zadania
 > * Wyświetlanie stanu zadania podrzędnego
 > * Wyzwalanie zadania po zatwierdzeniu kodu
@@ -33,51 +35,13 @@ W samouczku założono, że zostały już wykonane kroki z [poprzedniego samoucz
 
 Jeśli chcesz użyć interfejsu wiersza polecenia platformy Azure lokalnie, musisz zainstalować jego wersję **2.0.46** lub nowszą i zalogować się za pomocą polecenia [az login][az-login]. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja interfejsu wiersza polecenia lub jego uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli].
 
-## <a name="prerequisites"></a>Wymagania wstępne
+[!INCLUDE [container-registry-task-tutorial-prereq.md](../../includes/container-registry-task-tutorial-prereq.md)]
 
-### <a name="get-sample-code"></a>Pobieranie przykładowego kodu
-
-W samouczku założono, że zostały już wykonane kroki z [poprzedniego samouczka](container-registry-tutorial-quick-task.md) oraz że przykładowe repozytorium zostało rozwidlone i sklonowane. Jeśli nie zostało to jeszcze zrobione, przed kontynuowaniem wykonaj kroki wymienione w poprzednim samouczku w części poświęconej [wymaganiom wstępnym](container-registry-tutorial-quick-task.md#prerequisites).
-
-### <a name="container-registry"></a>Rejestr kontenerów
-
-Aby ukończyć ten samouczek, w Twojej subskrypcji platformy Azure musisz posiadać rejestr kontenerów platformy Azure. Jeśli potrzebujesz rejestru, zobacz [poprzedni samouczek](container-registry-tutorial-quick-task.md) lub podręcznik [Szybki start: tworzenie rejestru kontenerów za pomocą interfejsu wiersza polecenia platformy Azure](container-registry-get-started-azure-cli.md).
-
-## <a name="overview-of-acr-tasks"></a>Omówienie usługi ACR Tasks
-
-Zadanie definiuje właściwości automatycznej kompilacji, w tym lokalizację kodu źródłowego obrazu kontenera i zdarzenie, które wyzwala kompilację. Gdy wystąpi zdarzenie zdefiniowane w zadaniu, na przykład zatwierdzenie do repozytorium Git, usługa ACR Tasks inicjuje kompilację obrazu kontenera w chmurze. Domyślnie wypycha następnie pomyślnie skompilowany obraz do rejestru kontenera platformy Azure określonego w zadaniu.
-
-Usługa ACR Tasks obsługuje obecnie następujące wyzwalacze:
-
-* Zatwierdzenie do repozytorium Git
-* Aktualizacja obrazów podstawowych
-
-W tym samouczku zadanie usługi ACR tworzy i wypycha pojedynczy obraz kontenera określony w pliku Dockerfile. Zadania usługi ACR można również uruchomić [zadania wieloetapowe](container-registry-tasks-multi-step.md), zdefiniuj kroków, aby uruchomić przy użyciu pliku YAML, wypychania i opcjonalnie przetestować wiele kontenerów.
-
-## <a name="create-a-build-task"></a>Tworzenie zadania kompilacji
-
-W tej sekcji należy najpierw utworzyć osobisty token dostępu GitHub (PAT, personal access token) do użycia z usługą ACR Tasks. Następnie należy utworzyć zadanie, które wyzwala kompilację po zatwierdzeniu kodu do rozwidlenia repozytorium.
-
-### <a name="create-a-github-personal-access-token"></a>Tworzenie osobistego tokenu dostępu GitHub
-
-Aby wyzwolić kompilację po zatwierdzeniu do repozytorium Git, usługa ACR Tasks potrzebuje osobistego tokenu dostępu (PAT) w celu uzyskania dostępu do repozytorium. Wykonaj następujące kroki, aby wygenerować token PAT w witrynie GitHub:
-
-1. Przejdź do strony tworzenia tokenu PAT w witrynie GitHub pod adresem https://github.com/settings/tokens/new
-1. Wprowadź krótki **opis** dla tokenu, na przykład „Przykładowe zadanie ACR Tasks”
-1. W obszarze **repo** zaznacz pozycje **repo:status** i **public_repo**
-
-   ![Zrzut ekranu strony generowania osobistego tokenu dostępu w usłudze GitHub][build-task-01-new-token]
-
-1. Wybierz przycisk **Generate token** (Generuj token) (może zostać wyświetlony monit o potwierdzenie hasła)
-1. Skopiuj i zapisz wygenerowany token w **bezpiecznej lokalizacji** (użyjesz tego tokenu podczas definiowania zadania w następnej sekcji)
-
-   ![Zrzut ekranu przedstawiający wygenerowany osobisty token dostępu w usłudze GitHub][build-task-02-generated-token]
-
-### <a name="create-the-build-task"></a>Tworzenie zadania kompilacji
+## <a name="create-the-build-task"></a>Tworzenie zadania kompilacji
 
 Po ukończeniu kroków wymaganych do włączenia usługi ACR Tasks w celu odczytywania stanu zatwierdzenia i tworzenia elementów webhook w repozytorium możesz utworzyć zadanie, które wyzwala kompilację obrazu kontenera po zatwierdzeniu do repozytorium.
 
-Najpierw wypełnij te zmienne środowiskowe powłoki przy użyciu wartości odpowiednich dla danego środowiska. Ten krok nie jest ściśle wymagany, ale trochę ułatwia wykonywanie przedstawionych w tym samouczku wielowierszowych poleceń interfejsu wiersza polecenia platformy Azure. Jeśli te zmienne środowiskowe nie zostaną wypełnione, należy ręcznie zastąpić każdą wartość we wszystkich miejscach występowania w przykładowych poleceniach.
+Najpierw wypełnij te zmienne środowiskowe powłoki przy użyciu wartości odpowiednich dla danego środowiska. Ten krok nie jest ściśle wymagany, ale trochę ułatwia wykonywanie przedstawionych w tym samouczku wielowierszowych poleceń interfejsu wiersza polecenia platformy Azure. Jeśli nie możesz wypełnić te zmienne środowiskowe, można ręcznie zastąpić każdej wartości, wszędzie tam, gdzie pojawia się w przykładowe polecenia.
 
 ```azurecli-interactive
 ACR_NAME=<registry-name>        # The name of your Azure container registry
@@ -85,7 +49,7 @@ GIT_USER=<github-username>      # Your GitHub user account name
 GIT_PAT=<personal-access-token> # The PAT you generated in the previous section
 ```
 
-Teraz utwórz zadanie, wykonując następujące polecenie [az acr task create][az-acr-task-create]:
+Utwórz zadanie, wykonując następujące [az acr zadanie Tworzenie] [ az-acr-task-create] polecenia:
 
 ```azurecli-interactive
 az acr task create \
@@ -106,14 +70,6 @@ To zadanie określa, że za każdym razem, gdy kod jest zatwierdzany do *główn
 Dane wyjściowe z pomyślnie wykonanego polecenia [az acr task create][az-acr-task-create] przypominają następujące dane:
 
 ```console
-$ az acr task create \
->     --registry $ACR_NAME \
->     --name taskhelloworld \
->     --image helloworld:{{.Run.ID}} \
->     --context https://github.com/$GIT_USER/acr-build-helloworld-node.git \
->     --branch master \
->     --file Dockerfile \
->     --git-access-token $GIT_PAT
 {
   "agentConfiguration": {
     "cpu": 2
@@ -326,12 +282,11 @@ W tym samouczku pokazano, jak używać zadania w celu automatycznego wyzwalania 
 
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli
-[az-acr-task]: /cli/azure/acr
-[az-acr-task-create]: /cli/azure/acr
-[az-acr-task-run]: /cli/azure/acr
-[az-acr-task-list-runs]: /cli/azure/acr
+[az-acr-task]: /cli/azure/acr/task
+[az-acr-task-create]: /cli/azure/acr/task#az-acr-task-create
+[az-acr-task-run]: /cli/azure/acr/task#az-acr-task-run
+[az-acr-task-list-runs]: /cli/azure/acr/task#az-acr-task-list-runs
 [az-login]: /cli/azure/reference-index#az-login
 
-<!-- IMAGES -->
-[build-task-01-new-token]: ./media/container-registry-tutorial-build-tasks/build-task-01-new-token.png
-[build-task-02-generated-token]: ./media/container-registry-tutorial-build-tasks/build-task-02-generated-token.png
+
+

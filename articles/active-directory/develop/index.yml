@@ -6,7 +6,7 @@ metadata:
   description: 'Dowiedz się, jak za pomocą platformy tożsamości firmy Microsoft tworzyć aplikacje, które bezpiecznie logują użytkowników przy użyciu wszystkich tożsamości firmy Microsoft i uzyskują tokeny do wywoływania programu Microsoft Graph, innych interfejsów API firmy Microsoft lub interfejsów API opracowanych przez deweloperów.'
   services: active-directory
   author: CelesteDG
-  manager: mtillman
+  manager: CelesteDG
   ms.service: active-directory
   ms.subservice: develop
   ms.tgt_pltfrm: na

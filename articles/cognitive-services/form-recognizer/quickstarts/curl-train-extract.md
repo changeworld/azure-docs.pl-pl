@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/15/2019
 ms.author: pafarley
-ms.openlocfilehash: 36f98a8dea2a732a7f8504b160da895637366fc8
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: f5c87457f5d19b107f5722bc8c6a95174555332a
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65471900"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546347"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-using-rest-api-with-curl"></a>Szybki start: Wytrenuj model rozpoznawania formularza i wyodrębnianie danych formularza przy użyciu interfejsu API REST za pomocą programu cURL
 
@@ -24,10 +24,10 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Masz dostęp do korzystania z wersji zapoznawczej ograniczony dostęp do aparatu rozpoznawania formularza. Aby uzyskać dostęp do wersji zapoznawczej, wypełnij i Prześlij [żądanie dostępu do rozpoznawania formularz usługi Cognitive Services](https://aka.ms/FormRecognizerRequestAccess) formularza. 
-* Musisz mieć bibliotekę [cURL](https://curl.haxx.se/windows/).
-* Musi mieć klucz subskrypcji dla rozpoznawania formularza. Postępuj zgodnie z instrukcjami w [Tworzenie konta usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) subskrybować rozpoznawania formularza, i Uzyskaj klucz.
-* Konieczne jest posiadanie minimalny zestaw pięciu rodzaje tego samego typu. Możesz użyć [przykładowego zestawu danych](https://go.microsoft.com/fwlink/?linkid=2090451) dla tego przewodnika Szybki Start.
+- Masz dostęp do korzystania z wersji zapoznawczej ograniczony dostęp do aparatu rozpoznawania formularza. Aby uzyskać dostęp do wersji zapoznawczej, wypełnij i Prześlij [żądanie dostępu do rozpoznawania formularz usługi Cognitive Services](https://aka.ms/FormRecognizerRequestAccess) formularza.
+- Musisz mieć bibliotekę [cURL](https://curl.haxx.se/windows/).
+- Musi mieć klucz subskrypcji dla rozpoznawania formularza. Postępuj zgodnie z instrukcjami subskrypcji jednousługowa [Tworzenie konta usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#single-service-subscription) subskrybować rozpoznawania formularza, i Uzyskaj klucz. Nie należy używać subskrypcji wielu usług, ponieważ nie będzie zawierać usługi rozpoznawania formularza.
+- Konieczne jest posiadanie minimalny zestaw pięciu rodzaje tego samego typu. Możesz użyć [przykładowego zestawu danych](https://go.microsoft.com/fwlink/?linkid=2090451) dla tego przewodnika Szybki Start.
 
 ## <a name="train-a-form-recognizer-model"></a>Wytrenuj model rozpoznawania formularza
 

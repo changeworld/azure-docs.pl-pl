@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: tutorial
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: a755a0bada0dbf6797465ea40ddbb30a84e3f289
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 75e52398386e7ef1b338d13a8cfe8f20c06abcc6
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60202057"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65541526"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>Samouczek: generowanie metadanych obrazów w usłudze Azure Storage przy użyciu przetwarzania obrazów
 
@@ -40,17 +40,11 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="create-a-computer-vision-resource"></a>Tworzenie zasobu przetwarzania obrazów
 
-Musisz utworzyć zasób przetwarzania obrazów dla swojego konta platformy Azure. Ten zasób zarządza Twoim dostępem do usługi przetwarzania obrazów platformy Azure.
+Musisz utworzyć zasób przetwarzania obrazów dla swojego konta platformy Azure. Ten zasób zarządza Twoim dostępem do usługi przetwarzania obrazów platformy Azure. 
 
-1. Zaloguj się w witrynie [Azure Portal](https://ms.portal.azure.com) i kliknij pozycję **Utwórz zasób**, a następnie pozycje **SI oraz usługa Machine Learning** i **Przetwarzanie obrazów**.
+1. Postępuj zgodnie z instrukcjami w [Utwórz zasób usługi Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#single-service-subscription) do utworzenia zasobu przetwarzania obrazów.
 
-    ![Tworzenie nowej subskrypcji interfejsu API przetwarzania obrazów](../Images/new-vision-api.png)
-
-1. W oknie dialogowym wprowadź ciąg „vision-api-key” w polu **Nazwa** i wybierz opcję **F0** w polu **Warstwa cenowa**. W obszarze **Lokalizacja** wybierz taką samą opcję, jak podczas konfigurowania konta usługi Azure Storage. W obszarze **Grupa zasobów** wybierz pozycję **Użyj istniejącej** i także wybierz tę samą grupę zasobów. Zaznacz pole wyboru **Potwierdzam**, a następnie kliknij przycisk **Utwórz**.
-
-    ![Subskrybowanie interfejs API przetwarzania obrazów](../Images/create-vision-api.png)
-
-1. Wróć do menu grupy zasobów i kliknij przycisk subskrypcji interfejsu API przetwarzania obrazów, która została właśnie utworzona. Skopiuj adres URL z obszaru **Punkt końcowy** do miejsca, z którego będzie go można za chwilę łatwo uzyskać. Następnie kliknij pozycję **Pokaż klucze dostępu**.
+1. Następnie przejdź do menu grupy zasobów i kliknij subskrypcję interfejsu API przetwarzania obrazów, który został utworzony. Skopiuj adres URL z obszaru **Punkt końcowy** do miejsca, z którego będzie go można za chwilę łatwo uzyskać. Następnie kliknij pozycję **Pokaż klucze dostępu**.
 
     ![Stronę witryny Azure portal przy użyciu punktu końcowego adresu URL i dostępu do kluczy łącze opisane](../Images/copy-vision-endpoint.png)
 

@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/24/2019
 ms.author: pafarley
-ms.openlocfilehash: 98d1870105038c4314a6b038ec198342bb2ca1d0
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: bbc285c35c010c9c0a38e9b3d6938c5dd3b76fe4
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027187"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544854"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-using-rest-api-with-python"></a>Szybki start: Wytrenuj model rozpoznawania formularza i wyodrębnianie danych formularza przy użyciu interfejsu API REST przy użyciu języka Python
 
@@ -24,9 +24,9 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
--  Należy uzyskać dostęp do korzystania z wersji zapoznawczej ograniczony dostęp do aparatu rozpoznawania formularza. Aby uzyskać dostęp do wersji zapoznawczej, wypełnij i Prześlij [żądanie dostępu do rozpoznawania formularz usługi Cognitive Services](https://aka.ms/FormRecognizerRequestAccess) formularza. 
+- Należy uzyskać dostęp do korzystania z wersji zapoznawczej ograniczony dostęp do aparatu rozpoznawania formularza. Aby uzyskać dostęp do wersji zapoznawczej, wypełnij i Prześlij [żądanie dostępu do rozpoznawania formularz usługi Cognitive Services](https://aka.ms/FormRecognizerRequestAccess) formularza. 
 - Jeśli chcesz uruchomić przykładowy kod lokalnie, musisz mieć zainstalowany język [Python](https://www.python.org/downloads/).
-- Musi mieć klucz subskrypcji dla rozpoznawania formularza. Aby uzyskać klucz subskrypcji, zobacz [Obtaining Subscription Keys (Uzyskiwanie kluczy subskrypcji)](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account).
+- Musi mieć klucz subskrypcji dla rozpoznawania formularza. Postępuj zgodnie z instrukcjami subskrypcji jednousługowa [Tworzenie konta usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#single-service-subscription) subskrybować rozpoznawania formularza, i Uzyskaj klucz. Nie należy używać subskrypcji wielu usług, ponieważ nie będzie zawierać usługi rozpoznawania formularza.
 - Konieczne jest posiadanie minimalny zestaw pięciu rodzaje tego samego typu. Możesz użyć [przykładowego zestawu danych](https://go.microsoft.com/fwlink/?linkid=2090451) dla tego przewodnika Szybki Start.
 
 ## <a name="create-and-run-the-sample"></a>Tworzenie i uruchamianie przykładowego kodu

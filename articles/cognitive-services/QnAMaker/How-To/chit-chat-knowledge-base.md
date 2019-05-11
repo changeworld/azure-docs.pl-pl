@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 05/10/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 08d09680ee1797e73666c185f4430c7ef3079477
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 5d410e1015b751743c171adabda1d5bcbe68b491
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153678"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65541000"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>Dodaj Chit czatu do bazy wiedzy
 
@@ -24,17 +24,19 @@ Dodawanie chit czatu do bota sprawia, że konwersacji i bardziej interesujące. 
 
 Ten zestaw danych zawiera około 100 scenariusze dotyczące czacie chit przy użyciu głosu wielu osób, takich jak Professional, przyjazne i Witty. Wybierz osoby, który najbardziej przypomina Twój bot głosu. Podana kwerenda użytkownika, usługa QnA Maker próbuje dopasować ją z najbliższego QnA czatu internetowego chit znane.  
 
-Niektóre przykłady różnych osobowości są poniżej. Możesz zobaczyć wszystkie zestawy osobowość danych wraz ze szczegółami osobowości [tutaj](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets).
+Niektóre przykłady różnych osobowości są poniżej. Możesz zobaczyć wszystkie osobowość [zestawów danych](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets) wraz ze szczegółami osobowości.
+
+Dla zapytania użytkownika `When is your birthday?`, każdy osobowość ma ze stylem odpowiedzi:
 
 <!-- added quotes so acrolinx doesn't score these sentences -->
-|Kwerenda użytkownika|Professional|Przyjazne|Powiedzonko|
-|--|--|--|--|
-|`You are awesome`|`I aim to serve.`|`Aw, I'm blushing.`|`Flattery. I like it.`|
-|`Are you hungry?`|`I don't need to eat.`|`I only do food for thought.`|`Eating would require a lot of things I don't have. Like a digestive system. And silverware.`|
-|`Sing a song`|`I'm afraid I'm not musically inclined.`|`La la la, tra la la. I'm awesome at this.`|`Those who can, do. Those who can't, don't sing.`|
-|`Will you marry me?`|`I think it's best if we stick to a professional relationship.`|`Definitely didn't see that coming!`|`Sure. Take me to city hall. See what happens.`|
-
-
+|Osobowości|Przykład|
+|--|--|
+|Professional|Wiek tak naprawdę nie ma zastosowania do mnie.|
+|Przyjazne|Nie mam naprawdę wieku.|
+|Powiedzonko|Jestem bezpłatne wieku.|
+|Opiekowanie|Nie mam wieku.|
+|Nominowani|Jestem bot, aby nie było wieku.|
+||
 
 > [!NOTE]
 > Obsługa chit rozmowy jest obecnie dostępna w języku angielskim tylko. 

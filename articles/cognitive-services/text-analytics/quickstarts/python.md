@@ -10,21 +10,17 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 05/09/2019
 ms.author: aahi
-ms.openlocfilehash: 9d6dfb79d02df3eebe33e67743ceaf97fc0a2a77
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.openlocfilehash: fb411b7e36d8658c5f46294a3b7025c3e93928e7
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65519352"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540106"
 ---
 # <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>Szybki start: Za pomocą interfejsu API REST języka Python do wywoływania usług Cognitive analizy tekstu 
 <a name="HOLTop"></a>
 
 Użyj tego przewodnika Szybki Start, aby rozpocząć analizowanie język za pomocą interfejsu REST API analizy tekstu i Python. W tym artykule przedstawiono, jak do [Wykryj język](#Detect), [analizowanie tonacji](#SentimentAnalysis), [wyodrębnianie kluczowych fraz](#KeyPhraseExtraction), i [zidentyfikować połączonych jednostek](#Entities).
-
-Można uruchomić ten przykład z poziomu wiersza polecenia lub jako notesu programu Jupyter na [MyBinder](https://mybinder.org) , klikając polecenie Uruchom integratora znaczków:
-
-[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=TextAnalytics.ipynb)
 
 Zapoznaj się z tematem [API definitions (Definicje interfejsu API)](//go.microsoft.com/fwlink/?LinkID=759346), zawierającym dokumentację techniczną interfejsów API.
 
@@ -42,13 +38,7 @@ Zapoznaj się z tematem [API definitions (Definicje interfejsu API)](//go.micros
     pip install --upgrade requests
     ```
 
-* Jeśli korzystasz z notesu integratora lokalnie, może być konieczne zaktualizowanie [IPython](https://ipython.org/install.html):
-    
-    ```console
-    pip install --upgrade IPython
-    ```
-
-* [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
+[!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
 
 ## <a name="create-a-new-python-application"></a>Tworzenie nowej aplikacji w języku Python
