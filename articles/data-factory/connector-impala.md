@@ -47,9 +47,9 @@ Następujące właściwości są obsługiwane dla aparatu Impala połączoną us
 | type | Właściwość type musi być równa **Impala**. | Yes |
 | host | Adres IP lub hosta nazwę serwera Impala (czyli 192.168.222.160).  | Yes |
 | port | Port TCP używany serwer Impala do nasłuchiwania połączeń klientów. Wartość domyślna to 21050.  | Nie |
-| Element authenticationType | Typ uwierzytelniania do użycia. <br/>Dozwolone wartości to **anonimowe**, **SASLUsername**, i **UsernameAndPassword**. | Yes |
-| nazwa użytkownika | Nazwa użytkownika używana do uzyskiwania dostępu do serwera Impala. Wartością domyślną jest anonimowe, gdy używasz SASLUsername.  | Nie |
-| hasło | Hasło, które odnosi się do nazwy użytkownika, gdy używasz UsernameAndPassword. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
+| authenticationType | Typ uwierzytelniania do użycia. <br/>Dozwolone wartości to **anonimowe**, **SASLUsername**, i **UsernameAndPassword**. | Yes |
+| username | Nazwa użytkownika używana do uzyskiwania dostępu do serwera Impala. Wartością domyślną jest anonimowe, gdy używasz SASLUsername.  | Nie |
+| password | Hasło, które odnosi się do nazwy użytkownika, gdy używasz UsernameAndPassword. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
 | enableSsl | Określa, czy połączenia z serwerem są szyfrowane przy użyciu protokołu SSL. Wartość domyślna to **false**.  | Nie |
 | trustedCertPath | Pełna ścieżka pliku PEM, który zawiera certyfikatów zaufanego urzędu certyfikacji służącego do weryfikowania serwera, po nawiązaniu połączenia za pośrednictwem protokołu SSL. Tę właściwość można ustawić tylko wtedy, gdy używasz protokołu SSL na środowiskiem Integration Runtime. Wartość domyślna to plik cacerts.pem zainstalowane za pomocą środowiska integration runtime.  | Nie |
 | useSystemTrustStore | Określa, czy ma być używany certyfikat urzędu certyfikacji z magazynu zaufania systemu lub z określonego pliku PEM. Wartość domyślna to **false**.  | Nie |
