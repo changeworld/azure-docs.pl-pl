@@ -58,8 +58,8 @@ Następujące właściwości są obsługiwane dla bazy danych MongoDB, połączo
 | serwer |Adres IP lub hosta nazwę serwera bazy danych MongoDB. |Yes |
 | port |Port TCP używany przez serwer bazy danych MongoDB do nasłuchiwania połączeń klientów. |Nie (wartość domyślna to 27017) |
 | databaseName |Nazwa bazy danych MongoDB, który chcesz uzyskać dostęp. |Yes |
-| Element authenticationType | Typ uwierzytelniania używany do łączenia z bazą danych MongoDB.<br/>Dozwolone wartości to: **Podstawowe**, i **anonimowe**. |Yes |
-| nazwa użytkownika |Konto użytkownika, aby dostęp do bazy danych MongoDB. |Tak (jeśli jest używane uwierzytelnianie podstawowe). |
+| authenticationType | Typ uwierzytelniania używany do łączenia z bazą danych MongoDB.<br/>Dozwolone wartości to: **Podstawowe**, i **anonimowe**. |Yes |
+| username |Konto użytkownika, aby dostęp do bazy danych MongoDB. |Tak (jeśli jest używane uwierzytelnianie podstawowe). |
 | password |Hasło użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Tak (jeśli jest używane uwierzytelnianie podstawowe). |
 | authSource |Nazwa bazy danych MongoDB, który chcesz użyć, aby sprawdzić swoje poświadczenia dla uwierzytelniania. |Nie. W przypadku uwierzytelniania podstawowego domyślna ma używać konta administratora i baza danych określona za pomocą właściwości databaseName. |
 | enableSsl | Określa, czy połączenia z serwerem są szyfrowane przy użyciu protokołu SSL. Wartość domyślna to false.  | Nie |
@@ -176,15 +176,15 @@ Podczas kopiowania danych z bazy danych MongoDB, następujące mapowania są uż
 
 | Typ danych bazy danych MongoDB | Typ danych tymczasowych fabryki danych |
 |:--- |:--- |
-| Binarny |Byte[] |
+| Binary |Byte[] |
 | Boolean |Boolean |
 | Date |DateTime |
 | NumberDouble |Double |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
 | ObjectID |String |
-| Ciąg |String |
-| IDENTYFIKATOR UUID |Guid |
+| String |String |
+| UUID |Guid |
 | Object |Renormalized do spłaszczenia kolumn z "_" jako separatora zagnieżdżonych |
 
 > [!NOTE]
