@@ -45,14 +45,14 @@ Następujące właściwości są obsługiwane w przypadku gałęzi połączone u
 | type | Właściwość type musi być równa: **Hive** | Yes |
 | host | Adres IP lub hosta nazwę serwera programu Hive, rozdzielone znakiem ";" na wielu hostach, (tylko wtedy, gdy serviceDiscoveryMode jest włączona).  | Yes |
 | port | Port TCP używany przez serwer programu Hive do nasłuchiwania połączeń klientów. Jeśli łączysz się Azure HDInsights, należy określić port ustawiony na 443. | Yes |
-| wartością servertype ustawioną | Typ serwera Hive. <br/>Dozwolone wartości to: **HiveServer1**, **HiveServer2**, **HiveThriftServer** | Nie |
+| serverType servertype ustawioną | Typ serwera Hive. <br/>Dozwolone wartości to: **HiveServer1**, **HiveServer2**, **HiveThriftServer** | Nie |
 | thriftTransportProtocol | Protokół transportu do użycia w warstwie Thrift. <br/>Dozwolone wartości to: **Binary**, **SASL**, **HTTP** | Nie |
-| Element authenticationType | Metoda uwierzytelniania używany do uzyskiwania dostępu do serwera programu Hive. <br/>Dozwolone wartości to: **Anonimowe**, **Username**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Yes |
+| authenticationType | Metoda uwierzytelniania używany do uzyskiwania dostępu do serwera programu Hive. <br/>Dozwolone wartości to: **Anonimowe**, **Username**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Yes |
 | serviceDiscoveryMode | wartość true, aby wskazać, za pomocą usługi ZooKeeper false nie.  | Nie |
 | zooKeeperNameSpace | Przestrzeń nazw w dozorcy w ramach której Hive Server 2 dodawania węzłów.  | Nie |
 | useNativeQuery | Określa, czy sterownik używa zapytania natywne HiveQL, konwertuje je do formularza w HiveQL.  | Nie |
-| nazwa użytkownika | Nazwa użytkownika, który umożliwia dostęp do serwera programu Hive.  | Nie |
-| hasło | Hasło przypisana użytkownikowi. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
+| username | Nazwa użytkownika, który umożliwia dostęp do serwera programu Hive.  | Nie |
+| password | Hasło przypisana użytkownikowi. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
 | httpPath | Częściowe adres URL serwera programu Hive.  | Nie |
 | enableSsl | Określa, czy połączenia z serwerem są szyfrowane przy użyciu protokołu SSL. Wartość domyślna to false.  | Nie |
 | trustedCertPath | Pełna ścieżka pliku PEM, zawierająca zaufane certyfikaty urzędu certyfikacji w celu sprawdzenia serwer podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Tę właściwość można ustawić tylko w przypadku korzystania z protokołu SSL na Self-Hosted IR Wartością domyślną jest instalowany z wewnątrz pliku cacerts.pem  | Nie |
