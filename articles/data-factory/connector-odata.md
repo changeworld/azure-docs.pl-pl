@@ -50,15 +50,15 @@ Następujące właściwości są obsługiwane przez usługę OData połączone:
 |:--- |:--- |:--- |
 | type | **Typu** właściwość musi być równa **OData**. |Yes |
 | url | Główny adres URL usługi OData. |Yes |
-| Element authenticationType | Typ uwierzytelniania używany do łączenia z źródła OData. Dozwolone wartości to **anonimowe**, **podstawowe**, **Windows**, **AadServicePrincipal**, i **ManagedServiceIdentity** . Użytkownik, na podstawie uwierzytelniania OAuth nie jest obsługiwane. | Yes |
+| authenticationType | Typ uwierzytelniania używany do łączenia z źródła OData. Dozwolone wartości to **anonimowe**, **podstawowe**, **Windows**, **AadServicePrincipal**, i **ManagedServiceIdentity** . Użytkownik, na podstawie uwierzytelniania OAuth nie jest obsługiwane. | Yes |
 | userName | Określ **userName** uwierzytelnianie Basic lub Windows. | Nie |
-| hasło | Określ **hasło** dla użytkownika, konto określone dla **userName**. Oznacz to pole jako **SecureString** typ, aby bezpiecznie przechowywać w usłudze Data Factory. Możesz również [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
+| password | Określ **hasło** dla użytkownika, konto określone dla **userName**. Oznacz to pole jako **SecureString** typ, aby bezpiecznie przechowywać w usłudze Data Factory. Możesz również [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
 | servicePrincipalId | Określ identyfikator klienta aplikacji usługi Azure Active Directory. | Nie |
 | aadServicePrincipalCredentialType | Określanie typu poświadczeń na potrzeby uwierzytelniania jednostki usługi. Dozwolone wartości to: `ServicePrincipalKey` lub `ServicePrincipalCert`. | Nie |
 | servicePrincipalKey | Określ klucz aplikacji usługi Azure Active Directory. Oznacz to pole jako **SecureString** można bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
 | servicePrincipalEmbeddedCert | Określ certyfikat zakodowany w formacie base64 aplikacji zarejestrowanych w usłudze Azure Active Directory. Oznacz to pole jako **SecureString** można bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
 | servicePrincipalEmbeddedCertPassword | Jeśli certyfikat jest zabezpieczony hasłem, podaj hasło certyfikatu. Oznacz to pole jako **SecureString** można bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md).  | Nie|
-| dzierżawa | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Pobierz go przez umieszczenie nad nim kursora myszy w prawym górnym rogu witryny Azure Portal. | Nie |
+| tenant | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Pobierz go przez umieszczenie nad nim kursora myszy w prawym górnym rogu witryny Azure Portal. | Nie |
 | aadResourceId | Określ zasób usługi AAD, który żąda autoryzacji.| Nie |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) nawiązywania połączenia z magazynem danych. (Jeśli Twój magazyn danych znajduje się w sieci prywatnej) możesz wybrać środowisko IR Azure lub własnego środowiska Integration Runtime. Jeśli nie zostanie określona, używana jest domyślna Azure Integration Runtime. |Nie |
 
@@ -198,7 +198,7 @@ Aby skopiować dane z OData, należy ustawić **typu** właściwości zestawu da
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | **Typu** właściwości zestawu danych musi być równa **ODataResource**. | Yes |
-| ścieżka | Ścieżka do zasobu OData. | Yes |
+| path | Ścieżka do zasobu OData. | Yes |
 
 **Przykład**
 
