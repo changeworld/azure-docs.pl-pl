@@ -46,8 +46,8 @@ Następujące właściwości są obsługiwane dla usługi w chmurze usługi Orac
 |:--- |:--- |:--- |
 | type | Właściwość type musi być równa: **OracleServiceCloud** | Yes |
 | host | Adres URL wystąpienia usługi w chmurze firmy Oracle.  | Yes |
-| nazwa użytkownika | Nazwa użytkownika, który umożliwia dostęp do serwera usługi w chmurze firmy Oracle.  | Yes |
-| hasło | Hasło odpowiadający nazwie użytkownika, podane w kluczu nazwy użytkownika. Istnieje możliwość Oznacz to pole jako SecureString bezpiecznie przechowywać w usłudze ADF lub przechowywać haseł w usłudze Azure Key Vault i pozwól usłudze ADF kopiowania ściągnięcia działania z tego miejsca, podczas wykonywania kopii danych — Dowiedz się więcej z [Store poświadczeń w usłudze Key Vault](store-credentials-in-key-vault.md). | Yes |
+| username | Nazwa użytkownika, który umożliwia dostęp do serwera usługi w chmurze firmy Oracle.  | Yes |
+| password | Hasło odpowiadający nazwie użytkownika, podane w kluczu nazwy użytkownika. Istnieje możliwość Oznacz to pole jako SecureString bezpiecznie przechowywać w usłudze ADF lub przechowywać haseł w usłudze Azure Key Vault i pozwól usłudze ADF kopiowania ściągnięcia działania z tego miejsca, podczas wykonywania kopii danych — Dowiedz się więcej z [Store poświadczeń w usłudze Key Vault](store-credentials-in-key-vault.md). | Yes |
 | useEncryptedEndpoints | Określa, czy punkty końcowe źródła danych są szyfrowane przy użyciu protokołu HTTPS. Wartość domyślna to true.  | Nie |
 | useHostVerification | Określa, czy wymagają zgodności nazwy hosta w certyfikacie serwera, aby dopasować nazwę hosta serwera podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to true.  | Nie |
 | usePeerVerification | Określa, czy do zweryfikowania tożsamości serwera, podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to true.  | Nie |
