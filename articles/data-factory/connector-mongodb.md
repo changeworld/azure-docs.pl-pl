@@ -51,7 +51,7 @@ Następujące właściwości są obsługiwane dla bazy danych MongoDB, połączo
 |:--- |:--- |:--- |
 | type |Właściwość type musi być równa: **MongoDbV2** |Yes |
 | connectionString |Określ parametry połączenia bazy danych MongoDB, np. `mongodb://[username:password@]host[:port][/[database][?options]]`. Zapoznaj się [Podręcznik bazy danych MongoDB na parametry połączenia](https://docs.mongodb.com/manual/reference/connection-string/) Aby uzyskać więcej informacji. <br/><br />Oznacz to pole jako **SecureString** typ, aby bezpiecznie przechowywać w usłudze Data Factory. Możesz również [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Yes |
-| baza danych | Nazwa bazy danych, który chcesz uzyskać dostęp. | Yes |
+| database | Nazwa bazy danych, który chcesz uzyskać dostęp. | Yes |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Używając środowiskiem Integration Runtime lub Azure Integration Runtime (Jeśli magazyn danych jest publicznie dostępny). Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
 
 **Przykład:**
@@ -114,7 +114,7 @@ Następujące właściwości są obsługiwane w działaniu kopiowania **źródł
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Musi być równa wartości właściwości type źródło działania kopiowania: **MongoDbV2Source** | Yes |
-| filtr | Określa filtr wyboru przy użyciu operatorów zapytań. Aby zwrócić wszystkie dokumenty w kolekcji, pominięcie tego parametru lub przekazać pusty dokument ({}). | Nie |
+| filter | Określa filtr wyboru przy użyciu operatorów zapytań. Aby zwrócić wszystkie dokumenty w kolekcji, pominięcie tego parametru lub przekazać pusty dokument ({}). | Nie |
 | cursorMethods.project | Określa pól do zwrócenia w dokumentach projekcji. Aby zwrócić wszystkie pola w pasujących dokumentów, Pomiń ten parametr. | Nie |
 | cursorMethods.sort | Określa kolejność, w którym zapytanie zwraca pasujących dokumentów. Zapoznaj się [cursor.sort()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort). | Nie |
 | cursorMethods.limit | Określa maksymalną liczbę dokumentów zwracanych przez serwer. Zapoznaj się [cursor.limit()](https://docs.mongodb.com/manual/reference/method/cursor.limit/#cursor.limit).  | Nie |
