@@ -279,25 +279,25 @@ Podczas kopiowania danych z i do oprogramowania Oracle, następujące mapowania 
 
 | Typ danych Oracle | Typ danych tymczasowych fabryki danych |
 |:--- |:--- |
-| BPLIK |Byte[] |
+| BFILE |Byte[] |
 | BLOB |Byte[]<br/>(obsługiwane tylko w bazie danych Oracle 10g lub nowszy) |
 | CHAR |String |
 | CLOB |String |
 | DATE |DateTime |
-| FLOAT |Decimal, ciąg (jeśli dokładności > 28) |
-| INTEGER |Decimal, ciąg (jeśli dokładności > 28) |
-| DŁUGI |String |
-| DŁUGI NIEPRZETWORZONE |Byte[] |
+| FLOAT |Decimal, String (jeśli dokładności > 28) |
+| INTEGER |Decimal, String (jeśli dokładności > 28) |
+| LONG |String |
+| LONG RAW |Byte[] |
 | NCHAR |String |
 | NCLOB |String |
-| NUMER |Decimal, ciąg (jeśli dokładności > 28) |
+| NUMBER |Decimal, String (jeśli dokładności > 28) |
 | NVARCHAR2 |String |
 | RAW |Byte[] |
 | ROWID |String |
-| SYGNATURA CZASOWA |DateTime |
-| SYGNATURA CZASOWA PRZY UŻYCIU LOKALNEJ STREFY CZASOWEJ |String |
-| SYGNATURA CZASOWA ZE STREFĄ CZASOWĄ |String |
-| LICZBA CAŁKOWITA BEZ ZNAKU |Liczba |
+| TIMESTAMP |DateTime |
+| TIMESTAMP WITH LOCAL TIME ZONE |String |
+| TIMESTAMP WITH TIME ZONE |String |
+| UNSIGNED INTEGER |Number |
 | VARCHAR2 |String |
 | XML |String |
 
