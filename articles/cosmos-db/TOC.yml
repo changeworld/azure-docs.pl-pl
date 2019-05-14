@@ -163,7 +163,7 @@
         - name: Wyzwalanie funkcji usługi Azure Functions
           displayName: change feed
           href: change-feed-functions.md
-    - name: Analiza przy użyciu platformy Apache Spark
+    - name: Wbudowana analiza przy użyciu platformy Apache Spark
       href: spark-api-introduction.md
     - name: Programowanie po stronie serwera
       items:
@@ -517,6 +517,8 @@
           href: how-to-sql-subquery.md
     - name: Zestawienie zmian
       items:
+        - name: Dzienniki wyzwalacza usługi Azure Cosmos DB
+          href: how-to-configure-cosmos-db-trigger-logs.md
         - name: Wiele wyzwalaczy usługi Azure Cosmos DB
           href: how-to-create-multiple-cosmos-db-triggers.md
         - name: Rozwiązywanie problemów z wyzwalaczami usługi Azure Cosmos DB

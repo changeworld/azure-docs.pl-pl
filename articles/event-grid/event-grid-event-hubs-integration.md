@@ -8,17 +8,17 @@ ms.service: event-grid
 ms.topic: tutorial
 ms.date: 01/13/2019
 ms.author: spelluru
-ms.openlocfilehash: c2c49563bf505ce70c4900c6c0a8e41c0f6ac9c5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1ae7a18660d2a7324bc5897d6b3952da42b6c4b2
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58176620"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603446"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Samouczek: Przesyłanie strumieniowe danych Big Data do magazynu danych
 Usługa Azure [Event Grid](overview.md) jest inteligentną usługą routingu zdarzeń, która umożliwia reagowanie na powiadomienia (zdarzenia) z aplikacji i usług. Może na przykład spowodować, że funkcja platformy Azure będzie przetwarzać dane centrum zdarzeń, które zostały przechwycone przez usługę Azure Blob Storage lub usługę Azure Data Lake Storage, a także przeprowadzać migrację danych do innych repozytoriów danych. W tym [przykładzie integracji usług Event Hubs i Event Grid](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) pokazano, jak bezproblemowo przeprowadzić migrację przechwyconych danych usługi Event Hubs z magazynu obiektów blob do usługi SQL Data Warehouse przy użyciu usług Event Hubs i Event Grid.
 
-![Omówienie aplikacji](media/event-grid-event-hubs-integration/overview.png)
+![Przegląd aplikacji](media/event-grid-event-hubs-integration/overview.png)
 
 Ten diagram przedstawia przepływ pracy rozwiązania, które tworzysz w ramach tego samouczka: 
 
@@ -45,7 +45,7 @@ W tym artykule wykonasz następujące kroki:
 Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
-* Program [Visual Studio 2017 w wersji 15.3.2 lub nowszy](https://www.visualstudio.com/vs/) z następującymi pakietami roboczymi: programowanie aplikacji klasycznych dla platformy .NET, programowanie na platformie Azure, tworzenie aplikacji na platformie ASP.NET i aplikacji internetowych, programowanie na platformie Node.js i programowanie w języku Python.
+* [Program Visual studio 2019](https://www.visualstudio.com/vs/) przy użyciu obciążenia pod kątem: programowanie aplikacji klasycznych dla platformy .NET, programowanie na platformie Azure, platformy ASP.NET i tworzenie aplikacji internetowych, tworzenia aplikacji Node.js i programowania w języku Python.
 * Pobierz na komputer [przykładowy projekt EventHubsCaptureEventGridDemo](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo).
 
 ## <a name="deploy-the-infrastructure"></a>Wdrażanie infrastruktury
@@ -196,7 +196,7 @@ Utwórz tabelę w swoim magazynie danych, uruchamiając skrypt [CreateDataWareho
 
 ## <a name="publish-the-azure-functions-app"></a>Publikowanie aplikacji usługi Azure Functions
 
-1. Uruchom program Visual Studio 2017. 
+1. Uruchom program Visual Studio.
 2. Otwórz rozwiązanie **EventHubsCaptureEventGridDemo.sln**, które zostało pobrane z repozytorium [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) w ramach wymagań wstępnych.
 3. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy pozycję **FunctionEGDWDumper** i wybierz polecenie **Opublikuj**.
 

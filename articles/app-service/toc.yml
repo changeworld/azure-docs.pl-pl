@@ -76,6 +76,8 @@
           href: overview-authentication-authorization.md
         - name: Stosowanie poprawek systemu operacyjnego i środowiska uruchomieniowego
           href: overview-patch-os-runtime.md
+        - name: Atrybuty zabezpieczeń
+          href: app-service-security-attributes.md
     - name: Przychodzące i wychodzące adresy IP
       href: overview-inbound-outbound-ips.md
     - name: Połączenia hybrydowe

@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 85f8643a0936209c8f280498df92555a7b40c533
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: a80a815d4a1a892b5258aef1c1fc7ef4ab881fe7
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149947"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65594153"
 ---
 # <a name="tutorial-from-qna-maker-portal-create-a-knowledge-base"></a>Samouczek: Tworzenie bazy wiedzy w portalu narzędzia QnA Maker
 
@@ -68,7 +68,7 @@ Ten samouczek wymaga istniejącej [usługi QnA Maker](../How-To/set-up-qnamaker-
     |--|--|--|
     |Adres URL|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs` |Zawartość często zadawanych pytań pod tym adresem URL jest formatowana za pomocą pytania, po którym następuje odpowiedź. Ten format może być interpretowany przez usługę QnA Maker w celu wyodrębnienia pytań i skojarzonych odpowiedzi.|
     |Plik |_nieużywane w tym samouczku_|Służy do przekazywania plików dla pytań i odpowiedzi. |
-    |Osobowość dla konwersacji|Przyjazne|Nadaje przyjazny i swobodny ton typowym pytaniom i odpowiedziom. Później można edytować te pytania i odpowiedzi. |
+    |Osobowość dla konwersacji|Przyjazne|Dzięki temu, przyjazne i dorywczy [osobowość](../Concepts/best-practices.md#chit-chat) do typowych pytań i odpowiedzi. Później można edytować te pytania i odpowiedzi. |
 
     ![Krok 4 procesu tworzenia bazy wiedzy](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-4.png)
 
@@ -94,7 +94,7 @@ Ten samouczek wymaga istniejącej [usługi QnA Maker](../How-To/set-up-qnamaker-
 
 Wybierz przycisk **Publikuj** z górnego menu. Na stronie publikowania wybierz przycisk **Publikuj** obok przycisku **Anuluj**.
 
-![Publikowanie](../media/qnamaker-tutorial-create-publish-query-in-portal/publish-1.png)
+![Opublikuj](../media/qnamaker-tutorial-create-publish-query-in-portal/publish-1.png)
 
 Po opublikowaniu bazy wiedzy wyświetlany jest punkt końcowy
 

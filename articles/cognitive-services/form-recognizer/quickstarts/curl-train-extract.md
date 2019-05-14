@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Uczenie modelu i wyodrębnianie danych formularza przy użyciu programu cURL - rozpoznawania formularza'
+title: 'Szybki start: Uczenie modelu i wyodrębnić dane formularza za pomocą programu cURL - rozpoznawania formularza'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki Start użyjesz interfejsu API REST rozpoznawania formularza za pomocą programu cURL do uczenia modelu i wyodrębnianie danych z formularzy.
 author: PatrickFarley
@@ -9,41 +9,41 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/15/2019
 ms.author: pafarley
-ms.openlocfilehash: f5c87457f5d19b107f5722bc8c6a95174555332a
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 4a030e1bf35f38b6aba859eb538eb7d7580d255d
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546347"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603126"
 ---
-# <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-using-rest-api-with-curl"></a>Szybki start: Wytrenuj model rozpoznawania formularza i wyodrębnianie danych formularza przy użyciu interfejsu API REST za pomocą programu cURL
+# <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Szybki start: Uczenie modelu rozpoznawania formularza i wyodrębnić dane formularza za pomocą interfejsu API REST za pomocą programu cURL
 
-W tym przewodniku Szybki Start użyjesz interfejsu API REST rozpoznawania formularza za pomocą programu cURL szkolenie i ocenianie formularzy w celu wyodrębnienia pary klucz wartość i tabel.
+W tym przewodniku Szybki Start użyjesz interfejsu API REST usługi Azure formularza rozpoznawania za pomocą programu cURL szkolenie i ocenianie formularzy w celu wyodrębnienia pary klucz wartość i tabel.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-
-- Masz dostęp do korzystania z wersji zapoznawczej ograniczony dostęp do aparatu rozpoznawania formularza. Aby uzyskać dostęp do wersji zapoznawczej, wypełnij i Prześlij [żądanie dostępu do rozpoznawania formularz usługi Cognitive Services](https://aka.ms/FormRecognizerRequestAccess) formularza.
-- Musisz mieć bibliotekę [cURL](https://curl.haxx.se/windows/).
-- Musi mieć klucz subskrypcji dla rozpoznawania formularza. Postępuj zgodnie z instrukcjami subskrypcji jednousługowa [Tworzenie konta usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#single-service-subscription) subskrybować rozpoznawania formularza, i Uzyskaj klucz. Nie należy używać subskrypcji wielu usług, ponieważ nie będzie zawierać usługi rozpoznawania formularza.
-- Konieczne jest posiadanie minimalny zestaw pięciu rodzaje tego samego typu. Możesz użyć [przykładowego zestawu danych](https://go.microsoft.com/fwlink/?linkid=2090451) dla tego przewodnika Szybki Start.
+Aby ukończyć ten przewodnik Szybki Start, musisz mieć:
+- Dostęp ograniczony dostęp do aparatu rozpoznawania formularza w wersji zapoznawczej. Aby uzyskać dostęp do wersji zapoznawczej, wypełnij i Prześlij [żądanie dostępu do rozpoznawania formularza](https://aka.ms/FormRecognizerRequestAccess) formularza.
+- [cURL](https://curl.haxx.se/windows/) zainstalowane.
+- Klucz subskrypcji dla rozpoznawania formularza. Postępuj zgodnie z instrukcjami subskrypcji jednousługowa [Tworzenie konta usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#single-service-subscription) subskrybować rozpoznawania formularza, i Uzyskaj klucz. Nie należy używać wielu usług subskrypcji, ponieważ nie obejmuje usługę rozpoznawania formularza.
+- Zestaw co najmniej pięć metod tego samego typu. Możesz użyć [przykładowego zestawu danych](https://go.microsoft.com/fwlink/?linkid=2090451) dla tego przewodnika Szybki Start.
 
 ## <a name="train-a-form-recognizer-model"></a>Wytrenuj model rozpoznawania formularza
 
-Po pierwsze należy zestaw danych szkoleniowych. Można użyć danych w usłudze Azure Blob lub dane szkoleń lokalnych. Powinien mieć co najmniej pięć przykładowe rodzaje (PDF, dokumentów i/lub obrazów) tego samego typu/struktury jako główny danych wejściowych. Alternatywnie można użyć jednego formularza pusty; formularz, nazwa_pliku zawiera wyraz "pusty".
+Po pierwsze należy zestaw danych szkoleniowych. Można użyć danych obiektu blob platformy Azure lub dane szkoleń lokalnych. Powinien mieć co najmniej pięć przykładowe rodzaje (PDF, dokumentów i/lub obrazów) tego samego typu/struktury jako główny danych wejściowych. Możesz też pojedynczy pusty formularz. Nazwa pliku formularza musi zawierać słowo "pusty".
 
-Aby wytrenuj model rozpoznawania formularza przy użyciu dokumentów w kontenerze obiektów Blob platformy Azure, należy wywołać **szkolenie** interfejsu API, wykonując poniższe polecenie programu cURL. Przed uruchomieniem polecenia, należy wprowadzić następujące zmiany:
+Aby wytrenuj model rozpoznawania formularza za pomocą dokumentów w kontenerze obiektów blob platformy Azure, należy wywołać **szkolenie** interfejsu API, uruchamiając polecenie programu cURL, która jest zgodna. Przed uruchomieniem polecenia dokonaj następujących zmian:
 
-* Zastąp `<Endpoint>` z punktem końcowym uzyskany od swój klucz subskrypcji rozpoznawania formularza. Mogą ją odnaleźć kart Przegląd zasobów rozpoznawania formularza.
-* Zastąp `<SAS URL>` z kontenera usługi Azure Blob Storage, udostępniony uzyskać dostęp do adresu URL sygnatury (SAS), w którym znajduje się dane szkoleniowe.  
-* Zastąp element `<subscription key>` kluczem subskrypcji.
+1. Zastąp `<Endpoint>` z punktem końcowym, uzyskany klucz subskrypcji rozpoznawania formularza. Można je znaleźć zasobu rozpoznawania formularza **Przegląd** kartę.
+1. Zastąp `<SAS URL>` z kontenera magazynu obiektów Blob platformy Azure udostępnione adresu URL sygnatury (SAS) lokalizacji danych szkoleniowych dostępu.  
+1. Zastąp element `<subscription key>` kluczem subskrypcji.
 
 ```bash
 curl -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/custom/train" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"source\": \""<SAS URL>"\"}"
 ```
 
-Zostanie wyświetlony `200 (Success)` odpowiedzi na następujące dane wyjściowe JSON:
+Otrzymasz `200 (Success)` odpowiedzi na następujące dane wyjściowe JSON:
 
 ```json
 {
@@ -84,17 +84,18 @@ Zostanie wyświetlony `200 (Success)` odpowiedzi na następujące dane wyjściow
 }
 ```
 
-Zwróć uwagę na `"modelId"` wartość; będzie on potrzebny dla następujących kroków.
+Uwaga `"modelId"` wartość. Będzie potrzebny w kolejnych krokach.
   
 ## <a name="extract-key-value-pairs-and-tables-from-forms"></a>Wyodrębnianie pary klucz wartość i tabel z formularzy
 
-Następnie będzie analizowanie dokumentu i wyodrębnić z niego pary klucz wartość i tabel. Wywołaj **modelu — analizowanie** interfejsu API, wykonując poniższe polecenie programu cURL. Przed uruchomieniem polecenia, należy wprowadzić następujące zmiany:
+Następnie będzie analizowanie dokumentu i wyodrębnić z niego pary klucz wartość i tabel. Wywołaj **modelu — analizowanie** interfejsu API, uruchamiając polecenie programu cURL, która jest zgodna. Przed uruchomieniem polecenia dokonaj następujących zmian:
 
-* Zastąp `<Endpoint>` z punktem końcowym uzyskany od swój klucz subskrypcji rozpoznawania formularza. Znajdziesz w zasobie usługi rozpoznawania formularza **Przegląd** kartę.
-* Zastąp `<modelID>` o identyfikatorze modelu otrzymany w poprzednim kroku uczenia modelu.
-* Zastąp `<path to your form>` ze ścieżką pliku do formularza.
-* Zastąp element `<subscription key>` kluczem subskrypcji.
-* Zastąp `<file type>` z typem pliku — obsługiwane typy plików pdf, image/jpeg, image/png.
+1. Zastąp `<Endpoint>` z punktem końcowym, uzyskany klucz subskrypcji rozpoznawania formularza. Można je znaleźć zasobu rozpoznawania formularza **Przegląd** kartę.
+1. Zastąp `<modelID>` o identyfikatorze modelu, który otrzymał w poprzedniej sekcji.
+1. Zastąp `<path to your form>` ze ścieżką pliku formularza.
+1. Zastąp `<file type>` z typem pliku. Obsługiwane typy: pdf, image/jpeg, image/png.
+1. Zastąp element `<subscription key>` kluczem subskrypcji.
+
 
 ```bash
 curl -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/custom/models/<modelID>/analyze" -H "Content-Type: multipart/form-data" -F "form=@\"<path to your form>\";type=application/<file type>" -H "Ocp-Apim-Subscription-Key: <subscription key>"
@@ -102,7 +103,7 @@ curl -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/custom/models/<mode
 
 ### <a name="examine-the-response"></a>Sprawdzanie odpowiedzi
 
-Odpowiedź oznaczająca Powodzenie są zwracane w formacie JSON i reprezentuje wyodrębnione pary klucz wartość i tabel z formularza.
+Odpowiedź sukcesu jest zwracany w formacie JSON. Reprezentuje pary klucz wartość i tabele wyodrębnione z formularza:
 
 ```bash
 {
@@ -427,7 +428,7 @@ Odpowiedź oznaczająca Powodzenie są zwracane w formacie JSON i reprezentuje w
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym przewodniku użyto interfejsów API REST rozpoznawania formularza za pomocą programu cURL uczenia modelu i uruchom je w przykładowym scenariuszu. Następnie zobacz dokumentację referencyjną, aby zapoznać się z interfejsu API rozpoznawania fragmentów omówiona bardziej szczegółowo.
+W tym przewodniku Szybki Start użyto interfejsu API REST rozpoznawania formularza za pomocą programu cURL uczenia modelu i uruchom je w przykładowym scenariuszu. Następnie zobacz dokumentację referencyjną, aby zapoznać się z interfejsu API rozpoznawania fragmentów omówiona bardziej szczegółowo.
 
 > [!div class="nextstepaction"]
 > [Dokumentacja interfejsu API REST](https://aka.ms/form-recognizer/api)

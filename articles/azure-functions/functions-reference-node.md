@@ -275,10 +275,10 @@ Pozwala na zapis w dziennikach funkcji przesyłania strumieniowego na domyślny 
 
 | Metoda                 | Opis                                |
 | ---------------------- | ------------------------------------------ |
-| **Błąd (_komunikat_)**   | Zapisuje poziom błędów rejestrowania lub niższą.   |
-| **Ostrzeżenie (_komunikat_)**    | Zapisuje poziom ostrzeżeń rejestrowania lub niższą. |
+| **error (_error_)**   | Zapisuje poziom błędów rejestrowania lub niższą.   |
+| **warn (_message_)**    | Zapisuje poziom ostrzeżeń rejestrowania lub niższą. |
 | **info(_message_)**    | Zapisuje informacje o poziomie rejestrowania lub niższą.    |
-| **pełne (_komunikat_)** | Zapisuje pełne rejestrowanie na poziomie.           |
+| **verbose (_message_)** | Zapisuje pełne rejestrowanie na poziomie.           |
 
 Poniższy przykład zapisuje dziennik na poziom śledzenia Ostrzeżenie:
 

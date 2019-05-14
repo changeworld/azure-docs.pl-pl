@@ -7,12 +7,12 @@ ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 9290609136d1314762d9f716531464ad2496fb63
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c40efca9abd418c8b48f931d327b1f81805b38fb
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60876029"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65520402"
 ---
 # <a name="control-mapping-of-the-iso-27001-shared-services-blueprint-sample"></a>Mapowanie kontrolek próbki planu ISO 27001 udostępnionych usług
 
@@ -24,7 +24,7 @@ Następujące mapowania są **ISO 27001: 2013** kontrolki. Korzystanie z nawigac
 
 Posiadanie tylko jednego właściciela subskrypcji platformy Azure nie zezwala na potrzeby administracyjne nadmiarowości. Z drugiej strony o zbyt wielu właścicieli subskrypcji platformy Azure może zwiększyć ryzyko naruszenia zabezpieczeń za pomocą konta właściciela z naruszonymi zabezpieczeniami. Ten plan ułatwia utrzymanie odpowiedniej liczby właścicieli subskrypcji platformy Azure, przypisując dwa [usługi Azure Policy](../../../policy/overview.md) definicje, które inspekcji liczba właścicieli subskrypcji platformy Azure. Zarządzanie uprawnieniami właściciela subskrypcji pomoże Ci zaimplementować odpowiednie rozdzielenie obowiązków.
 
-- [Wersja zapoznawcza]: Audit minimum number of owners for subscription
+- [Wersja zapoznawcza]: Audit minimum number of owners for a subscription
 - [Wersja zapoznawcza]: Audit maximum number of owners for a subscription
 
 ## <a name="a821-classification-of-information"></a>A.8.2.1 klasyfikacji informacji
@@ -118,7 +118,7 @@ Zrozumienie, w której zasoby platformy Azure może mieć optymalnej konfiguracj
 - [Wersja zapoznawcza]: Audit HTTPS only access for an API App
 - [Wersja zapoznawcza]: Audit missing blob encryption for storage accounts
 - [Wersja zapoznawcza]: Deploy VM extension to audit Windows VM should not store passwords using reversible
-  Szyfrowanien
+  szyfrowanien
 - [Wersja zapoznawcza]: Audit Windows VM should not store passwords using reversible encryption
 - [Wersja zapoznawcza]: Monitor unencrypted SQL database in Azure Security Center
 - [Wersja zapoznawcza]: Monitor unencrypted VM Disks in Azure Security Center
@@ -126,7 +126,7 @@ Zrozumienie, w której zasoby platformy Azure może mieć optymalnej konfiguracj
 - Przeprowadź inspekcję włączania tylko bezpiecznych połączeń z pamięć podręczną Redis Cache
 - Przeprowadź inspekcję bezpiecznego transferu do kont magazynu
 - Przeprowadź inspekcję ustawienia właściwości ClusterProtectionLevel na wartość EncryptAndSign w usłudze Service Fabric
-- Inspekcja stanu przezroczystego szyfrowania danych
+- Przeprowadź inspekcję stanu przezroczystego szyfrowania danych
 
 ## <a name="a1241-event-logging"></a>Rejestrowanie zdarzeń A.12.4.1
 
@@ -138,7 +138,7 @@ Dzienniki diagnostyczne udostępniają szczegółowe dane operacji wykonywanych 
 - [Wersja zapoznawcza]: Wdrożenie agenta inspekcji Log Analytics — obraz maszyny Wirtualnej (OS) nieznajdujące się na liście
 - [Wersja zapoznawcza]: Wdrażanie agentów analizy dziennika inspekcji w zestawu skalowania maszyn wirtualnych — obraz maszyny Wirtualnej (OS) nieznajdujące się na liście
 - [Wersja zapoznawcza]: Monitor unaudited SQL database in Azure Security Center
-- Przeprowadzanie inspekcji ustawienia diagnostyki
+- Przeprowadź inspekcję ustawienia diagnostyki
 - Przeprowadź inspekcję ustawień inspekcji SQL na poziomie serwera
 
 ## <a name="a1243-administrator-and-operator-logs"></a>Dzienniki administratora A.12.4.3 and — operator
@@ -150,7 +150,7 @@ Ten plan pomaga upewnić się, że system zdarzenia są rejestrowane przez przyp
 - [Wersja zapoznawcza]: Wdrożenie agenta inspekcji Log Analytics — obraz maszyny Wirtualnej (OS) nieznajdujące się na liście
 - [Wersja zapoznawcza]: Wdrażanie agentów analizy dziennika inspekcji w zestawu skalowania maszyn wirtualnych — obraz maszyny Wirtualnej (OS) nieznajdujące się na liście
 - [Wersja zapoznawcza]: Monitor unaudited SQL database in Azure Security Center
-- Przeprowadzanie inspekcji ustawienia diagnostyki
+- Przeprowadź inspekcję ustawienia diagnostyki
 - Przeprowadź inspekcję ustawień inspekcji SQL na poziomie serwera
 
 ## <a name="a1244-clock-synchronization"></a>Synchronizacja zegara A.12.4.4
@@ -162,7 +162,7 @@ Ten plan pomaga upewnić się, że system zdarzenia są rejestrowane przez przyp
 - [Wersja zapoznawcza]: Wdrożenie agenta inspekcji Log Analytics — obraz maszyny Wirtualnej (OS) nieznajdujące się na liście
 - [Wersja zapoznawcza]: Wdrażanie agentów analizy dziennika inspekcji w zestawu skalowania maszyn wirtualnych — obraz maszyny Wirtualnej (OS) nieznajdujące się na liście
 - [Wersja zapoznawcza]: Monitor unaudited SQL database in Azure Security Center
-- Przeprowadzanie inspekcji ustawienia diagnostyki
+- Przeprowadź inspekcję ustawienia diagnostyki
 - Przeprowadź inspekcję ustawień inspekcji SQL na poziomie serwera
 
 ## <a name="a1251-installation-of-software-on-operational-systems"></a>A.12.5.1 Instalacja oprogramowania w systemach operacyjnych

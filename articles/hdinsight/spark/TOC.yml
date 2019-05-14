@@ -16,6 +16,8 @@
       href: apache-spark-jupyter-spark-sql-use-portal.md
     - name: Tworzenie klastra platformy Apache Spark — PowerShell
       href: apache-spark-jupyter-spark-sql-use-powershell.md
+    - name: Tworzenie klastra platformy Apache Spark — interfejs wiersza polecenia platformy Azure
+      href: apache-spark-create-cluster-cli.md
     - name: Tworzenie klastra Apache Spark — szablon usługi Resource Manager
       displayName: 'resource manager template, arm template, resource manager group'
       href: apache-spark-jupyter-spark-sql.md
@@ -250,7 +252,7 @@
             - name: Korzystanie z programu cURL i interfejsu API REST platformy Azure
               href: ../hdinsight-hadoop-create-linux-clusters-curl-rest.md
               maintainContext: true
-            - name: Korzystanie z klasycznego interfejsu wiersza polecenia platformy Azure
+            - name: Używanie interfejsu wiersza polecenia platformy Azure
               href: ../hdinsight-hadoop-create-linux-clusters-azure-cli.md
               maintainContext: true
             - name: Tworzenie klastrów na żądanie

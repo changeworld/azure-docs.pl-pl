@@ -28,9 +28,10 @@
       href: user-help-auth-app-overview.md
     - name: Pobieranie i instalowanie aplikacji
       href: user-help-auth-app-download-install.md
-    - name: Omówienie dodawania kont
-      href: user-help-auth-app-add-account-overview.md
+    - name: Dodawanie kont
       items:
+        - name: Omówienie
+          href: user-help-auth-app-add-account-overview.md
         - name: Dodawanie konta służbowego
           href: user-help-auth-app-add-work-school-account.md
         - name: Dodawanie osobistego konta Microsoft
@@ -63,9 +64,10 @@
       href: user-help-security-info-overview.md
     - name: Dodawanie informacji zabezpieczających podczas logowania
       href: security-info-setup-signin.md
-    - name: Dodawanie lub aktualizowanie informacji zabezpieczających — omówienie metod
-      href: security-info-add-update-methods-overview.md
+    - name: Metody dodawania lub aktualizowania informacji zabezpieczających
       items:
+        - name: Omówienie
+          href: security-info-add-update-methods-overview.md
         - name: Konfigurowanie aplikacji Authenticator
           href: security-info-setup-auth-app.md
         - name: Konfigurowanie wiadomości SMS

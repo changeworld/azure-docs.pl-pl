@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracja usługi Azure Active Directory z planowaniem asortymentu Predictix | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i planowania asortymentu Predictix.
+description: W tym samouczku dowiesz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i planowania asortymentu Predictix.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,201 +15,199 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: c5d2002393165eb734b80e0fbc3677915809ba8b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c14362a220cc60b0b8956ca41950faecd0563b3e
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60335321"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65560524"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-assortment-planning"></a>Samouczek: Integracja usługi Azure Active Directory z planowaniem asortymentu Predictix
 
 W tym samouczku dowiesz się, jak zintegrować Predictix asortymentu planowania z usługą Azure Active Directory (Azure AD).
-Integrowanie Predictix asortymentu planowania z usługą Azure AD zapewnia następujące korzyści:
+Ta integracja zapewnia następujące korzyści:
 
-* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do planowania asortymentu Predictix.
-* Użytkownikom można automatycznie zalogowany Predictix asortymentu planowanie (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD.
-* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
+* Możesz użyć usługi Azure AD w celu kontrolowania, kto ma dostęp do planowania asortymentu Predictix.
+* Aby umożliwić użytkownikom automatyczne logowanie Predictix asortymentu planowanie (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
+* Możesz zarządzać konta w jednej centralnej lokalizacji: witryna Azure portal.
 
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Aby dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Single sign-on to applications in Azure Active Directory (Logowanie jednokrotne do aplikacji w usłudze Azure Active Directory)](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+
+Jeśli nie masz subskrypcji platformy Azure, [Utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed rozpoczęciem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z planowaniem asortymentu Predictix, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z planowaniem asortymentu Predictix, musisz mieć:
 
 * Subskrypcja usługi Azure AD. Jeśli nie ma środowiska usługi Azure AD, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/).
-* Planowanie asortymentu Predictix logowanie jednokrotne włączone subskrypcji
+* Planowanie asortymentu Predictix subskrypcji z logowania jednokrotnego włączone.
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
+W ramach tego samouczka możesz skonfigurować i testowanie usługi Azure AD rejestracji jednokrotnej w środowisku testowym.
 
-* Planowanie asortymentu Predictix obsługuje **SP** jednokrotne logowanie inicjowane przez
+* Planowanie asortymentu Predictix obsługuje logowanie Jednokrotne zainicjowane przez SP.
 
-## <a name="adding-predictix-assortment-planning-from-the-gallery"></a>Dodawanie Predictix asortymentu planowania z galerii
+## <a name="add-predictix-assortment-planning-from-the-gallery"></a>Dodaj planowania asortymentu Predictix z galerii
 
 Aby skonfigurować integrację planowania asortymentu Predictix w usłudze Azure AD, należy dodać planowania asortymentu Predictix z galerii z listą zarządzanych aplikacji SaaS.
 
-**Aby dodać planowania asortymentu Predictix z galerii, wykonaj następujące czynności:**
+1. W [witryny Azure portal](https://portal.azure.com), w okienku po lewej stronie wybierz **usługi Azure Active Directory**:
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+    ![Wybierz pozycję Azure Active Directory](common/select-azuread.png)
 
-    ![Przycisk Azure Active Directory](common/select-azuread.png)
+2. Przejdź do **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje**:
 
-2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
+    ![W bloku aplikacji przedsiębiorstwa](common/enterprise-applications.png)
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+3. Aby dodać aplikację, wybierz pozycję **nową aplikację** w górnej części okna:
 
-3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+    ![Wybierz nową aplikację](common/add-new-app.png)
 
-    ![Przycisk Nowa aplikacja](common/add-new-app.png)
+4. W polu wyszukiwania wprowadź **planowania asortymentu Predictix**. Wybierz **planowania asortymentu Predictix** w wynikach wyszukiwania, a następnie wybierz **Dodaj**.
 
-4. W polu wyszukiwania wpisz **planowania asortymentu Predictix**, wybierz opcję **planowania asortymentu Predictix** z panelu wynik następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+     ![Wyniki wyszukiwania](common/search-new-app.png)
 
-     ![Predictix asortymentu planowania na liście wyników](common/search-new-app.png)
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
+W tej sekcji możesz skonfigurować i przetestować usługę Azure AD logowanie jednokrotne z planowaniem asortymentu Predictix przy użyciu użytkownika testu o nazwie Britta Simon.
+Aby włączyć logowanie jednokrotne, należy ustanowić relację między użytkownikiem usługi Azure AD i odpowiedniego użytkownika w ramach planowania asortymentu Predictix.
 
-W tej sekcji, konfigurowania i testowania usługi Azure AD logowanie jednokrotne za pomocą Predictix asortymentu planowanie w oparciu o użytkownika testu o nazwie **Britta Simon**.
-Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w ramach planowania asortymentu Predictix musi zostać ustanowione.
+Do konfigurowania i testowania usługi Azure AD logowanie jednokrotne z planowaniem asortymentu Predictix, należy wykonać następujące czynności:
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne z planowaniem asortymentu Predictix, należy wykonać poniższe bloki konstrukcyjne:
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  do włączenia tej funkcji dla użytkowników.
+2. **[Konfigurowanie planowania asortymentu Predictix logowania jednokrotnego](#configure-predictix-assortment-planning-single-sign-on)**  na stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  do testowania usługi Azure AD logowania jednokrotnego.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  włączyć usługi Azure AD logowanie jednokrotne dla użytkownika.
+5. **[Tworzenie użytkownika testowego planowania asortymentu Predictix](#create-a-predictix-assortment-planning-test-user)**  połączony na reprezentację w postaci usługi Azure AD użytkownika.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  można sprawdzić, czy konfiguracja działa.
 
-1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
-2. **[Konfigurowanie Predictix asortymentu planowania rejestracji jednokrotnej](#configure-predictix-assortment-planning-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
-5. **[Tworzenie użytkownika testowego planowania asortymentu Predictix](#create-predictix-assortment-planning-test-user)**  — aby odpowiednikiem Britta Simon w Predictix asortymentu planowania, które jest połączone z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
-
-W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
+W tej sekcji włączysz usługę Azure AD logowania jednokrotnego w witrynie Azure portal.
 
 Aby skonfigurować usługę Azure AD logowanie jednokrotne z planowaniem asortymentu Predictix, wykonaj następujące czynności:
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **planowania asortymentu Predictix** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. W [witryny Azure portal](https://portal.azure.com/)na **planowania asortymentu Predictix** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**:
 
-    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
+    ![Wybierz opcję logowania jednokrotnego](common/select-sso.png)
 
-2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
+2. W **wybierz jedną metodę logowania jednokrotnego** okno dialogowe, wybierz **SAML/WS-Fed** trybu, aby włączyć logowanie jednokrotne:
 
-    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
+    ![Wybierz metodę logowania jednokrotnego](common/select-saml-option.png)
 
-3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
+3. Na **Ustaw się logowanie jednokrotne z SAML** wybierz opcję **Edytuj** ikonę, aby otworzyć **podstawową konfigurację protokołu SAML** okno dialogowe:
 
-    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
+    ![Ikona edycji](common/edit-urls.png)
 
-4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
+4. W **podstawową konfigurację protokołu SAML** okna dialogowego pole, wykonaj następujące czynności.
 
-    ![Predictix asortymentu planowania domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/sp-identifier.png)
+    ![Podstawowy plik konfiguracji SAML, okno dialogowe](common/sp-identifier.png)
 
-    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca:
+    1. W **adres URL logowania** wprowadź adres URL, w tym wzorcu:
 
-    | |
-    |--|
-    | `https://<sub-domain>.ap.predictix.com/sso/request`|
-    | `https://<sub-domain>.dev.ap.predictix.com/`|
-    | |
+       | |
+        |--|
+        | `https://<sub-domain>.ap.predictix.com/sso/request`|
+        | `https://<sub-domain>.dev.ap.predictix.com/`|
+        | |
 
-    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, korzystając z następującego wzorca:
+    1. W **identyfikator jednostki** wprowadź adres URL, w tym wzorcu:
 
-    | |
-    |--|
-    | `https://<sub-domain>.ap.predictix.com`|
-    | `https://<sub-domain>.dev.ap.predictix.com`|
-    | |
+        | |
+        |--|
+        | `https://<sub-domain>.ap.predictix.com`|
+        | `https://<sub-domain>.dev.ap.predictix.com`|
+        | |
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta planowania asortymentu Predictix](https://www.infor.com/support) do uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Te wartości symboli zastępczych. Należy użyć rzeczywisty adres URL logowania i identyfikator. Skontaktuj się z pomocą [planowania asortymentu Predictix zespołem pomocy technicznej](https://www.infor.com/support) można pobrać wartości. Może również odnosić się do wzorców objętego **podstawową konfigurację protokołu SAML** okno dialogowe, w witrynie Azure portal.
 
-5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
+5. Na **Ustaw się logowania jednokrotnego przy użyciu protokołu SAML** stronie **certyfikat podpisywania SAML** zaznacz **Pobierz** łącze obok **certyfikat (Base64)** , zgodnie z wymaganiami, a następnie Zapisz certyfikat na komputerze:
 
     ![Link do pobierania certyfikatu](common/certificatebase64.png)
 
-6. Na **Konfigurowanie planowania asortymentu Predictix** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+6. W **Konfigurowanie planowania asortymentu Predictix** sekcji, skopiuj odpowiednie adresy URL, w zależności od wymagań:
 
-    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
+    ![Skopiuj adresy URL konfiguracji](common/copy-configuration-urls.png)
 
-    a. Adres URL logowania
+    1. **Adres URL logowania**.
 
-    b. Identyfikator usługi Azure AD
+    1. **Usługa Azure AD identyfikator**.
 
-    c. Adres URL wylogowywania
+    1. **Adres URL wylogowania**.
 
-### <a name="configure-predictix-assortment-planning-single-sign-on"></a>Konfigurowanie asortymentu Predictix planowania logowania jednokrotnego
+### <a name="configure-predictix-assortment-planning-single-sign-on"></a>Konfigurowanie planowania asortymentu Predictix logowania jednokrotnego
 
-Aby skonfigurować logowanie jednokrotne na **planowania asortymentu Predictix** stronie, musisz wysłać pobrany **certyfikat (Base64)** i odpowiednie skopiowany adresy URL z portalu Azure, aby [Predictix Zespół pomocy technicznej planowanie asortymentu](https://www.infor.com/support). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
+Aby skonfigurować logowanie jednokrotne na stronie planowanie asortymentu Predictix, trzeba będzie wysłać certyfikat, który został pobrany i adresów URL, które zostały skopiowane z portalu Azure w celu [planowania asortymentu Predictix zespołem pomocy technicznej](https://www.infor.com/support). Ten zespół gwarantuje, że połączenia logowania jednokrotnego SAML jest prawidłowo po obu stronach.
 
-### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
+W tej sekcji utworzysz użytkownika testu o nazwie Britta Simon w witrynie Azure portal.
 
-1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
+1. W witrynie Azure portal wybierz **usługi Azure Active Directory** w okienku po lewej stronie wybierz **użytkowników**, a następnie wybierz pozycję **wszyscy użytkownicy**:
 
-    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
+    ![Wybierz opcję Wszyscy użytkownicy](common/users.png)
 
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+2. Wybierz **nowego użytkownika** w górnej części ekranu:
 
-    ![Przycisk Nowy użytkownik](common/new-user.png)
+    ![Wybierz nowego użytkownika](common/new-user.png)
 
-3. We właściwościach użytkownika wykonaj następujące kroki.
+3. W **użytkownika** okna dialogowego pole, wykonaj następujące kroki.
 
-    ![Okno dialogowe Użytkownik](common/user-properties.png)
+    ![Okno dialogowe użytkownika](common/user-properties.png)
 
-    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+    1. W polu **Nazwa** wpisz **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola brittasimon@yourcompanydomain.extension. Na przykład: BrittaSimon@contoso.com
+    1. W **nazwa_użytkownika** wprowadź **BrittaSimon @\<domenatwojejfirmy >.\< Rozszerzenia >**. (Na przykład BrittaSimon@contoso.com.)
 
-    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
+    1. Wybierz **hasło Show**i zanotuj wartość, która znajduje się w **hasło** pole.
 
-    d. Kliknij pozycję **Utwórz**.
+    1. Wybierz pozycję **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do planowania asortymentu Predictix.
+W tej sekcji można udostępnić Britta Simon korzystać z usługi Azure AD logowania jednokrotnego przez udostępnienie jej do planowania asortymentu Predictix.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **planowania asortymentu Predictix**.
+1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz pozycję **planowania asortymentu Predictix**.
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+    ![Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
 2. Na liście aplikacji wybierz **planowania asortymentu Predictix**.
 
-    ![Planowanie asortymentu Predictix łącze na liście aplikacji](common/all-applications.png)
+    ![Lista aplikacji](common/all-applications.png)
 
-3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
+3. W okienku po lewej stronie wybierz **użytkowników i grup**:
 
-    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
+    ![Wybieranie pozycji Użytkownicy i grupy](common/users-groups-blade.png)
 
-4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
+4. Wybierz pozycję **Dodaj użytkownika**, a następnie **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
 
-    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
+    ![Wybieranie pozycji Dodaj użytkownika](common/add-assign-user.png)
 
-5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+5. W **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** listy użytkowników, a następnie kliknij **wybierz** znajdujący się u dołu ekranu.
 
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+6. Jeśli oczekujesz wartość roli dla asercji SAML **wybierz rolę** okna dialogowego wybierz odpowiednią rolę dla użytkownika z listy. Kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
 
-7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+7. W oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Przypisz**.
 
-### <a name="create-predictix-assortment-planning-test-user"></a>Tworzenie użytkownika testowego Predictix asortymentu planowania
+### <a name="create-a-predictix-assortment-planning-test-user"></a>Tworzenie użytkownika testowego Predictix asortymentu planowania
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon Predictix asortymentu planowania. Praca z [planowania asortymentu Predictix zespołem pomocy technicznej](https://www.infor.com/support) Aby dodać użytkowników do planowania asortymentu Predictix platformy. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
+Następnie należy utworzyć użytkownika o nazwie Britta Simon Predictix asortymentu planowania. Praca z [planowania asortymentu Predictix zespołem pomocy technicznej](https://www.infor.com/support) do dodawania użytkowników. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
 
 > [!NOTE]
-> Właściciel konta usługi Azure Active Directory otrzyma wiadomość e-mail z linkiem umożliwiającym potwierdzenie konta, zanim stanie się ono aktywne.
+> Właściciel konta usługi Azure AD, otrzymuje wiadomość e-mail i wybierze link w celu potwierdzenia konta, zanim stanie się aktywny.
 
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+Teraz należy przetestować konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego za pomocą panelu dostępu.
 
-Po kliknięciu kafelka planowania asortymentu Predictix w panelu dostępu, możesz powinny być automatycznie zalogowany do planowania Predictix asortymentu, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po wybraniu kafelka planowania asortymentu Predictix w panelu dostępu użytkownik powinien automatyczne logowanie do planowania asortymentu Predictix wystąpienia, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji, zobacz [dostępu i użycia aplikacji w portalu Moje aplikacje](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Samouczków dotyczących integrowania aplikacji SaaS przy użyciu usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

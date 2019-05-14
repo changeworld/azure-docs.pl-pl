@@ -11,12 +11,12 @@ ms.author: MayMSFT
 ms.reviewer: trbye
 ms.date: 03/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6e7aa231cabea9fbd76cd028f9fdc698a4dac5d6
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: 67f3a0d10490c5c63dfe262d07985f51bb384e34
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65470266"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604477"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>Samouczek: Przygotowywanie danych do modelowania regresji
 
@@ -38,7 +38,7 @@ W tym samouczku zostaną wykonane następujące czynności:
 Przejdź do sekcji [Konfigurowanie środowiska projektowego](#start), aby zapoznać się z instrukcjami dotyczącymi notesu, lub skorzystaj z poniższych instrukcji, aby pobrać notes i uruchomić go w usłudze Azure Notebooks lub na swoim serwerze notesów. Do uruchomienia notesu potrzebne są następujące elementy:
 
 * Serwer notesów Python 3.6 z zainstalowanym następującym oprogramowaniem:
-    * Zestaw SDK przygotowywania danych usługi Azure Machine Learning dla języka Python
+    *  Pakiet przygotowania danych usługi Azure ml z poziomu usługi Azure Machine Learning zestaw SDK for Python
 * Notes samouczka
 
 * Użyj [serwer chmura w obszarze roboczym](#azure) 
@@ -56,8 +56,8 @@ To ułatwia rozpoczęcie pracy z serwerem oparte na chmurze notesu. [Azure Machi
 
 Wykonaj te kroki, aby utworzyć lokalny serwer notesów Jupyter Notebook na komputerze.  Po wykonaniu kroków uruchom notes **tutorials/regression-part1-data-prep.ipynb**.
 
-1. Wykonaj kroki instalacji [ [Szybki Start języka Python usługi Azure Machine Learning](quickstart-run-local-notebook.md) ](setup-create-workspace.md#python) do utworzenia środowiska Miniconda.  Jeśli chcesz możesz pominąć sekcję **Tworzenie obszaru roboczego**, ale będzie ona wymagana na potrzeby [drugiej części](tutorial-auto-train-models.md) tej serii samouczków.
-1. Zainstaluj zestaw SDK przygotowania danych w środowisku przy użyciu polecenia `pip install azureml-dataprep`.
+1. Wykonaj kroki instalacji [Szybki Start języka Python usługi Azure Machine Learning](setup-create-workspace.md#sdk) do utworzenia środowiska Miniconda.  Jeśli chcesz możesz pominąć sekcję **Tworzenie obszaru roboczego**, ale będzie ona wymagana na potrzeby [drugiej części](tutorial-auto-train-models.md) tej serii samouczków.
+1. Zainstaluj usługę Azure ml przygotowania danych przy użyciu środowiska `pip install azureml-dataprep`.
 1. Sklonuj [repozytorium GitHub](https://aka.ms/aml-notebooks).
 
     ```

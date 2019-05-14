@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: cd60129e2da0b0c2130b300159953bd81c4aeb82
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: caa249dda4215dfcef13df96d2dd4245cae49efd
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58077568"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595756"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Samouczek: Testowanie łączności z centrum IoT za pomocą urządzenia symulowanego
 
@@ -39,7 +39,7 @@ Skrypty interfejsu wiersza polecenia uruchamiane w tym samouczku wymagają [rozs
 az extension add --name azure-cli-iot-ext
 ```
 
-Uruchamiana w tym samouczku aplikacja symulatora urządzenia została napisana przy użyciu środowiska Node.js. Potrzebujesz środowiska Node.js w wersji v4.x.x lub nowszej na komputerze deweloperskim.
+Uruchamiana w tym samouczku aplikacja symulatora urządzenia została napisana przy użyciu środowiska Node.js. Należy Node.js v10.x.x lub później na komputerze deweloperskim.
 
 Możesz pobrać środowisko Node.js dla wielu platform ze strony [nodejs.org](https://nodejs.org).
 
@@ -154,7 +154,7 @@ Urządzenie zostało pomyślnie uwierzytelnione przy użyciu tokenu SAS wygenero
 
 Urządzenie może korzystać z dowolnego z następujących protokołów w celu nawiązania połączenia z centrum IoT:
 
-| Protokół | Port wychodzący |
+| Protocol | Port wychodzący |
 | --- | --- |
 | MQTT |8883 |
 | MQTT za pośrednictwem obiektów WebSocket |443 |

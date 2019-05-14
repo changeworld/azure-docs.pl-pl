@@ -1,6 +1,6 @@
 ---
 title: Stream plików wideo za pomocą wiersza polecenia platformy Azure i usługi Azure Media Services | Dokumentacja firmy Microsoft
-description: Wykonaj kroki tego przewodnika Szybki start, aby utworzyć nowe konto usługi Azure Media Services, zakodować plik i przesłać go strumieniowo do usługi Azure Media Player.
+description: Wykonaj kroki tego samouczka, aby utworzyć nowe konto usługi Azure Media Services, Koduj plik i prześlij go strumieniowo do usługi Azure Media Player.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,24 +9,24 @@ editor: ''
 keywords: azure media services, stream
 ms.service: media-services
 ms.workload: media
-ms.topic: quickstart
+ms.topic: tutorial
 ms.custom: ''
 ms.date: 02/19/2019
 ms.author: juliako
-ms.openlocfilehash: bd818135f289c430416909d16c8568208936a9f8
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: cce424b11cc4cd587c6e7c50bc8bdf988004a43a
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205416"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550197"
 ---
-# <a name="quickstart-stream-video-files---cli"></a>Szybki start: Przesyłanie strumieniowe plików wideo — interfejs wiersza polecenia
+# <a name="tutorial-stream-video-files---cli"></a>Samouczek: Przesyłanie strumieniowe plików wideo — interfejs wiersza polecenia
 
-Ten przewodnik Szybki Start pokazano, jak łatwo kodowanie i przesyłanie strumieniowe filmów wideo na różnych przeglądarkach i urządzeniach, przy użyciu usługi Azure Media Services i wiersza polecenia platformy Azure. Zawartość danych wejściowych można określić przy użyciu protokołu HTTPS lub adresy URL sygnatury dostępu Współdzielonego lub ścieżki do plików w usłudze Azure Blob storage.
+W tym samouczku pokazano, jak łatwo kodowanie i przesyłanie strumieniowe filmów wideo na różnych przeglądarkach i urządzeniach, przy użyciu usługi Azure Media Services i wiersza polecenia platformy Azure. Zawartość danych wejściowych można określić przy użyciu protokołu HTTPS lub adresy URL sygnatury dostępu Współdzielonego lub ścieżki do plików w usłudze Azure Blob storage.
 
 W przykładzie w tym artykule koduje zawartości, który należy udostępnić za pośrednictwem adresu URL HTTPS. Usługa Media Services v3 nie obsługuje obecnie transferu pakietowego kodowania za pośrednictwem adresy URL HTTPS.
 
-Do końca tego przewodnika Szybki Start będziesz mieć możliwość przesyłania strumieniowego wideo.  
+Do końca tego samouczka będziesz mieć możliwość przesyłania strumieniowego wideo.  
 
 ![Odtwarzanie wideo](./media/stream-files-dotnet-quickstart/final-video.png)
 
@@ -342,7 +342,7 @@ Oto przykład:
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli nie potrzebujesz już zasobów w grupie zasobów, w tym usługi Media Services i kont magazynu, utworzone w tym przewodniku Szybki Start, Usuń grupę zasobów.
+Jeśli nie potrzebujesz już zasobów w grupie zasobów, w tym usługi Media Services i kont magazynu, utworzone na potrzeby tego samouczka, Usuń grupę zasobów.
 
 Uruchom następujące polecenie interfejsu wiersza polecenia:
 
@@ -350,10 +350,7 @@ Uruchom następujące polecenie interfejsu wiersza polecenia:
 az group delete --name amsResourceGroup
 ```
 
-## <a name="see-also"></a>Zobacz także
-
-Zobacz [kody błędów zadania](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
-
 ## <a name="next-steps"></a>Kolejne kroki
 
 [Przegląd usługi Media Services](media-services-overview.md)
+

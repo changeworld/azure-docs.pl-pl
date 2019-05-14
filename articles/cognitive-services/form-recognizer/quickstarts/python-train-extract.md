@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Uczenie modelu i wyodrębnianie danych formularza z językiem Python — aparat rozpoznawania formularza przy użyciu interfejsu API REST'
+title: 'Szybki start: Uczenie modelu i wyodrębnić dane formularza za pomocą interfejsu API REST z językiem Python — aparat rozpoznawania formularza'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki Start użyjesz interfejsu API REST rozpoznawania formularza za pomocą języka Python do uczenia modelu i wyodrębnianie danych z formularzy.
 author: PatrickFarley
@@ -9,34 +9,32 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/24/2019
 ms.author: pafarley
-ms.openlocfilehash: bbc285c35c010c9c0a38e9b3d6938c5dd3b76fe4
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 39ff12a853b38b843a73f4a87a24db0292d1accd
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544854"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65601615"
 ---
-# <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-using-rest-api-with-python"></a>Szybki start: Wytrenuj model rozpoznawania formularza i wyodrębnianie danych formularza przy użyciu interfejsu API REST przy użyciu języka Python
+# <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>Szybki start: Wytrenuj model rozpoznawania formularza i wyodrębnić dane formularza za pomocą interfejsu API REST przy użyciu języka Python
 
-W tym przewodniku Szybki Start użyjesz interfejsu API REST rozpoznawania formularza za pomocą języka Python do nauczanie i ocena formularzy w celu wyodrębnienia pary klucz wartość i tabel.
+W tym przewodniku Szybki Start użyjesz interfejsu API REST usługi Azure formularza rozpoznawania za pomocą języka Python szkolenie i ocenianie formularzy w celu wyodrębnienia pary klucz wartość i tabel.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-
-- Należy uzyskać dostęp do korzystania z wersji zapoznawczej ograniczony dostęp do aparatu rozpoznawania formularza. Aby uzyskać dostęp do wersji zapoznawczej, wypełnij i Prześlij [żądanie dostępu do rozpoznawania formularz usługi Cognitive Services](https://aka.ms/FormRecognizerRequestAccess) formularza. 
-- Jeśli chcesz uruchomić przykładowy kod lokalnie, musisz mieć zainstalowany język [Python](https://www.python.org/downloads/).
-- Musi mieć klucz subskrypcji dla rozpoznawania formularza. Postępuj zgodnie z instrukcjami subskrypcji jednousługowa [Tworzenie konta usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#single-service-subscription) subskrybować rozpoznawania formularza, i Uzyskaj klucz. Nie należy używać subskrypcji wielu usług, ponieważ nie będzie zawierać usługi rozpoznawania formularza.
-- Konieczne jest posiadanie minimalny zestaw pięciu rodzaje tego samego typu. Możesz użyć [przykładowego zestawu danych](https://go.microsoft.com/fwlink/?linkid=2090451) dla tego przewodnika Szybki Start.
+Aby ukończyć ten przewodnik Szybki Start, musisz mieć:
+- Dostęp ograniczony dostęp do aparatu rozpoznawania formularza w wersji zapoznawczej. Aby uzyskać dostęp do wersji zapoznawczej, wypełnij i Prześlij [żądanie dostępu do rozpoznawania formularza](https://aka.ms/FormRecognizerRequestAccess) formularza.
+- [Python](https://www.python.org/downloads/) zainstalowany (Jeśli chcesz uruchamianie przykładu lokalnie).
+- Klucz subskrypcji dla rozpoznawania formularza. Postępuj zgodnie z instrukcjami subskrypcji jednousługowa [Tworzenie konta usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#single-service-subscription) subskrybować rozpoznawania formularza, i Uzyskaj klucz. Nie należy używać wielu usług subskrypcji, ponieważ nie obejmuje usługę rozpoznawania formularza.
+- Zestaw co najmniej pięć metod tego samego typu. Możesz użyć [przykładowego zestawu danych](https://go.microsoft.com/fwlink/?linkid=2090451) dla tego przewodnika Szybki Start.
 
 ## <a name="create-and-run-the-sample"></a>Tworzenie i uruchamianie przykładowego kodu
 
-Aby utworzyć i uruchomić przykład, należy wprowadzić następujące zmiany do poniższy fragment kodu:
-
-1. Zastąp wartość `<subscription_key>` kluczem subskrypcji.
-1. Zastąp wartość `<Endpoint>` przy użyciu adresu URL punktu końcowego dla zasobu rozpoznawania formularza w regionie platformy Azure, gdzie uzyskać klucze subskrypcji.
-1. Zastąp `<SAS URL>` z kontenera usługi Azure Blob Storage, udostępniony uzyskać dostęp do adresu URL sygnatury (SAS), w którym znajduje się dane szkoleniowe.  
-
+Aby utworzyć i uruchomić przykład, należy wprowadzić te zmiany do fragmentu kodu, który następuje po:
+1. Zastąp `<Endpoint>` przy użyciu adresu URL punktu końcowego dla zasobu rozpoznawania formularza w regionie platformy Azure, gdzie uzyskać klucze subskrypcji.
+1. Zastąp `<SAS URL>` z kontenera magazynu obiektów Blob platformy Azure udostępnione adresu URL sygnatury (SAS) lokalizacji danych szkoleniowych dostępu.  
+1. Zastąp element `<Subscription Key>` kluczem subskrypcji.
     ```python
     ########### Python Form Recognizer Train #############
     from requests import post as http_post
@@ -58,11 +56,11 @@ Aby utworzyć i uruchomić przykład, należy wprowadzić następujące zmiany d
     except Exception as e:
         print(str(e))
     ```
-1. Zapisz kod jako plik z rozszerzeniem `.py`. Na przykład `form-recognize-train.py`.
+1. Zapisz kod w pliku z rozszerzeniem py. Na przykład *formularza rozpoznaje train.py*.
 1. Otwórz okno wiersza polecenia.
 1. W wierszu polecenia użyj polecenia `python`, aby uruchomić próbkę. Na przykład `python form-recognize-train.py`.
 
-Zostanie wyświetlony `200 (Success)` odpowiedzi na następujące dane wyjściowe JSON:
+Otrzymasz `200 (Success)` odpowiedź z tych danych wyjściowych JSON:
 
 ```json
 {
@@ -103,16 +101,16 @@ Zostanie wyświetlony `200 (Success)` odpowiedzi na następujące dane wyjściow
 }
 ```
 
-Zwróć uwagę na `"modelId"` wartość; będzie on potrzebny dla następujących kroków.
+Uwaga `"modelId"` wartość. Będzie potrzebny dla następujących kroków.
   
 ## <a name="extract-key-value-pairs-and-tables-from-forms"></a>Wyodrębnianie pary klucz wartość i tabel z formularzy
 
-Następnie będzie analizowanie dokumentu i wyodrębnić z niego pary klucz wartość i tabel. Wywołaj **modelu — analizowanie** interfejsu API przez wykonanie poniższego skryptu języka Python. Przed uruchomieniem polecenia, należy wprowadzić następujące zmiany:
+Następnie będzie analizowanie dokumentu i wyodrębnić z niego pary klucz wartość i tabel. Wywołaj **modelu — analizowanie** interfejsu API, uruchamiając skrypt w języku Python, która jest zgodna. Przed uruchomieniem polecenia dokonaj następujących zmian:
 
-1. Zastąp `<Endpoint>` z punktem końcowym został uzyskany z kluczem subskrypcji rozpoznawania formularza. Mogą ją odnaleźć kart Przegląd zasobów rozpoznawania formularza.
-1. Zastąp `<File Path>` z lokalizacji ścieżki pliku lub adres URL, w którym znajduje się formularz, aby wyodrębnić dane.
-1. Zastąp `<modelID>` o identyfikatorze modelu otrzymany w poprzednim kroku uczenia modelu.
-1. Zastąp `<file type>` z typem pliku — obsługiwane typy plików pdf, image/jpeg, image/png.
+1. Zastąp `<Endpoint>` przy użyciu punktu końcowego, który został uzyskany z kluczem subskrypcji rozpoznawania formularza. Można je znaleźć zasobu rozpoznawania formularza **Przegląd** kartę.
+1. Zastąp `<File Path>` przy użyciu ścieżki pliku lub adres URL lokalizacji formularza, z którego mają zostać wyodrębnione dane.
+1. Zastąp `<modelID>` o identyfikatorze modelu odebrane w poprzedniej sekcji.
+1. Zastąp `<file type>` z typem pliku. Obsługiwane typy: pdf, image/jpeg, image/png.
 1. Zastąp element `<subscription key>` kluczem subskrypcji.
 
     ```python
@@ -140,13 +138,13 @@ Następnie będzie analizowanie dokumentu i wyodrębnić z niego pary klucz wart
         print(str(e))
     ```
 
-1. Zapisz kod jako plik z rozszerzeniem `.py`. Na przykład `form-recognize-analyze.py`.
+1. Zapisz kod w pliku z rozszerzeniem py. Na przykład *formularza rozpoznaje analyze.py*.
 1. Otwórz okno wiersza polecenia.
 1. W wierszu polecenia użyj polecenia `python`, aby uruchomić próbkę. Na przykład `python form-recognize-analyze.py`.
 
 ### <a name="examine-the-response"></a>Sprawdzanie odpowiedzi
 
-Odpowiedź oznaczająca Powodzenie są zwracane w formacie JSON i reprezentuje wyodrębnione pary klucz wartość i tabele wyodrębnione z formularza.
+Odpowiedź sukcesu jest zwracany w formacie JSON. Reprezentuje pary klucz wartość i tabele wyodrębnione z formularza:
 
 ```bash
 {
@@ -471,7 +469,7 @@ Odpowiedź oznaczająca Powodzenie są zwracane w formacie JSON i reprezentuje w
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym przewodniku użyto interfejsów API REST rozpoznawania formularza za pomocą języka Python do uczenia modelu i uruchomienia jej w przykładowym scenariuszu. Następnie zobacz dokumentację referencyjną, aby zapoznać się z interfejsu API rozpoznawania fragmentów omówiona bardziej szczegółowo.
+W tym przewodniku Szybki Start użyto interfejsu API REST rozpoznawania formularza za pomocą języka Python do nauczenia modelu i uruchom go w przykładowym scenariuszu. Następnie zobacz dokumentację referencyjną, aby zapoznać się z interfejsu API rozpoznawania fragmentów omówiona bardziej szczegółowo.
 
 > [!div class="nextstepaction"]
 > [Dokumentacja interfejsu API REST](https://aka.ms/form-recognizer/api)

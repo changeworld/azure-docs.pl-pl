@@ -106,7 +106,7 @@
             - name: Korzystanie z programu cURL i interfejsu API REST platformy Azure
               href: ../hdinsight-hadoop-create-linux-clusters-curl-rest.md
               maintainContext: true
-            - name: Korzystanie z klasycznego interfejsu wiersza polecenia platformy Azure
+            - name: Używanie interfejsu wiersza polecenia platformy Azure
               href: ../hdinsight-hadoop-create-linux-clusters-azure-cli.md
               maintainContext: true
             - name: Tworzenie klastrów na żądanie

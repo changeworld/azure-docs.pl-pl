@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 04/15/2019
+ms.date: 05/14/2019
 ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: d9f736b0b976ac6ec0da45a672d2e992405625cd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 92a37133d84833c43fff5b1a6c31e003ef53f7de
+ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60829705"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65619758"
 ---
 # <a name="tutorial-create-a-blockchain-application-in-azure-blockchain-workbench"></a>Samouczek: Tworzenie aplikacji łańcucha bloków w usłudze Azure Blockchain Workbench
 
@@ -213,7 +213,7 @@ Na początku pliku konfiguracji znajdują się informacje o aplikacji, w tym naz
 
 W sekcji ról aplikacji są definiowane role użytkowników, którzy mogą działać lub uczestniczyć w ramach aplikacji łańcucha bloków. Definiowany jest zestaw odrębnych ról na podstawie funkcjonalności. W scenariuszu żądanie-odpowiedź występuje rozróżnienie między funkcjonalnością osoby żądającej jako jednostki tworzącej żądania oraz osoby odpowiadającej jako jednostki tworzącej odpowiedzi.
 
-### <a name="workflows"></a>Przepływy
+### <a name="workflows"></a>Przepływy pracy
 
 Przepływy pracy definiują co najmniej jeden etap i co najmniej jedną akcję kontraktu. W scenariuszu żądanie-odpowiedź pierwszy etap (stan) przepływu pracy to wykonanie akcji (przejście) wysłania żądania (funkcja) przez osobę żądającą (rola). W kolejnym etapie (stan) osoba odpowiadająca (rola) wykonuje akcję (przejście) wysłania odpowiedzi (funkcja). Przepływ pracy aplikacji może obejmować właściwości, funkcje i stany wymagane do opisania przepływu kontraktu. 
 
@@ -271,7 +271,7 @@ Dodaj zmienne stanu do Twojego kontraktu w pliku kodu kontraktu inteligentnego `
 
 ### <a name="constructor"></a>Konstruktor
 
-Konstruktor definiuje parametry wejściowe dla nowego wystąpienia kontraktu inteligentnego przepływu pracy. Konstruktor jest deklarowany jako funkcja o tej samej nazwie co kontrakt. Wymagane parametry konstruktora są definiowane jako parametry konstruktora w pliku konfiguracji. Liczba, kolejność i typ parametrów muszą być takie same w obu plikach.
+Konstruktor definiuje parametry wejściowe dla nowego wystąpienia kontraktu inteligentnego przepływu pracy. Wymagane parametry konstruktora są definiowane jako parametry konstruktora w pliku konfiguracji. Liczba, kolejność i typ parametrów muszą być takie same w obu plikach.
 
 W funkcji konstruktora napisz logikę biznesową, która ma być wykonywana przed utworzeniem kontraktu. Na przykład zainicjuj zmienne stanu przy użyciu początkowych wartości.
 

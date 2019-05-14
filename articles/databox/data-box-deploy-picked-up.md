@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: alkohli
-ms.openlocfilehash: 659dfbec1f73ca713cf03a2945361b794b8aaea6
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 5b43241be4e161cd6051dce02a3574fbdb580f28
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924936"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606233"
 ---
 # <a name="tutorial-return-azure-data-box-and-verify-data-upload-to-azure"></a>Samouczek: wysyłka zwrotna urządzenia Azure Data Box i weryfikowanie przekazania danych na platformę Azure
 
@@ -23,7 +23,7 @@ Ten samouczek zawiera informacje na następujące tematy:
 
 > [!div class="checklist"]
 > * Wymagania wstępne
-> * Przygotowanie do wysłania
+> * Przygotowywanie do wysłania
 > * Wysyłanie urządzenia Data Box do firmy Microsoft
 > * Weryfikowanie przekazania danych na platformę Azure
 > * Wymazywanie danych z urządzenia Data Box
@@ -35,7 +35,7 @@ Przed rozpoczęciem upewnij się, że spełniono następujące warunki:
 - Ukończenie tematu [Samouczek: kopiowanie danych na urządzenie Azure Data Box i ich weryfikacja](data-box-deploy-copy-data.md). 
 - Zadania kopiowania zostały wykonane. Przygotowanie do wysłania nie będzie działać, jeśli zadania kopiowania są w toku.
 
-## <a name="prepare-to-ship"></a>Przygotowanie do wysłania
+## <a name="prepare-to-ship"></a>Przygotowywanie do wysłania
 
 [!INCLUDE [data-box-prepare-to-ship](../../includes/data-box-prepare-to-ship.md)]
 
@@ -45,7 +45,7 @@ Przed rozpoczęciem upewnij się, że spełniono następujące warunki:
 2. Upewnij się, że na wyświetlaczu E-ink jest widoczna etykieta wysyłkowa, i umów się na odbiór przesyłki z przewoźnikiem. Jeśli etykieta jest uszkodzona, nie ma jej lub nie jest widoczna na wyświetlaczu E-ink, skontaktuj się z pomocą techniczną firmy Microsoft. Jeśli sugeruje pomocy technicznej, a następnie możesz przejść do **Przegląd > Pobierz etykietę wysyłkową** w witrynie Azure portal. Pobierz etykietę wysyłkową i dołącz ją do urządzenia. 
 3. Jeśli zwracasz urządzenie, zamów odbiór paczki przez firmę UPS. Aby zaplanować odbioru:
 
-    - Wywołanie lokalne UPS (specyficzne dla kraju darmowy numer).
+    - Wywołanie lokalne UPS (specyficzne dla kraju/regionu darmowy numer).
     - W swojej rozmowy oferty odwrotnej wydanie numer, jak pokazano na wyświetlanie pisma odręcznego E lub drukowane etykiety śledzenia.
     - Jeśli numer śledzenia nie jest ujęty w cudzysłów, UPS będą wymagać dodatkowych opłaty są naliczane podczas odbioru.
 
@@ -91,7 +91,7 @@ W tym samouczku przedstawiono zagadnienia dotyczące usługi Azure Data Box, tak
 
 > [!div class="checklist"]
 > * Wymagania wstępne
-> * Przygotowanie do wysłania
+> * Przygotowywanie do wysłania
 > * Wysyłanie urządzenia Data Box do firmy Microsoft
 > * Weryfikowanie przekazania danych na platformę Azure
 > * Wymazywanie danych z urządzenia Data Box

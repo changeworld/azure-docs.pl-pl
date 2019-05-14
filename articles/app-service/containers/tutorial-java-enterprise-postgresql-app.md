@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 11/13/2018
 ms.author: jafreebe
 ms.custom: seodec18
-ms.openlocfilehash: 472ff85adaf72f91948c4072b12cca3ff8e59f37
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6b9c9500423392ec07482f049697d9b49dc060bf
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60769987"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603185"
 ---
 # <a name="tutorial-build-a-java-ee-and-postgres-web-app-in-azure"></a>Samouczek: Tworzenie aplikacji internetowej języka Java EE korzystającej z bazy danych Postgres na platformie Azure
 
@@ -95,7 +95,7 @@ Po zakończeniu wdrażania przejdź do następnego kroku.
 
 ### <a name="create-a-record"></a>Tworzenie rekordu
 
-Otwórz przeglądarkę i przejdź pod adres `https://<your_app_name>.azurewebsites.net/`. Gratulacje! Udało Ci się wdrożyć aplikację języka Java EE w usłudze Azure App Service.
+Otwórz przeglądarkę i przejdź do `https://<your_app_name>.azurewebsites.net/`. Gratulacje! Udało Ci się wdrożyć aplikację języka Java EE w usłudze Azure App Service.
 
 Aktualnie aplikacja korzysta z bazy danych H2 w pamięci. Aby utworzyć nową kategorię, kliknij pozycję „admin” (Administrator) na pasku nawigacyjnym. Ponowne uruchomienie wystąpienia usługi App Service spowoduje utratę rekordu w bazie danych w pamięci. W poniższych krokach rozwiążemy ten problem, aprowizując bazę danych Postgres na platformie Azure i konfigurując serwer WildFly pod kątem używania tej bazy danych.
 
@@ -158,7 +158,7 @@ Następny krok obejmuje modyfikację konfiguracji interfejsu API transakcji jęz
 
 ## <a name="configure-the-wildfly-application-server"></a>Konfigurowanie serwera aplikacji WildFly
 
-Przed wdrożeniem ponownie skonfigurowanej aplikacji musimy zaktualizować serwer aplikacji WildFly o moduł Postgres i jego zależności. Więcej informacji o konfiguracji znajduje się w temacie [server skonfigurować WildFly](configure-language-java.md#configure-wildfly-server).
+Przed wdrożeniem ponownie skonfigurowanej aplikacji musimy zaktualizować serwer aplikacji WildFly o moduł Postgres i jego zależności. Więcej informacji o konfiguracji znajduje się w temacie [server skonfigurować WildFly](configure-language-java.md#configure-java-ee-wildfly).
 
 Do skonfigurowania serwera potrzebne są cztery pliki z katalogu `wildfly_config/`:
 

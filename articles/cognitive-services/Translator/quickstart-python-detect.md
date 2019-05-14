@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 6b407f88196867a8cc969a15811a1157e7fde59a
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 7e262b1866483009927c506d2df28d6d3ef03d59
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64922148"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606328"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-detect-text-language-using-python"></a>Szybki start: korzystanie z interfejsu API tłumaczenia tekstu w usłudze Translator do wykrywania języka tekstu z użyciem języka Python
 
@@ -127,7 +127,7 @@ Jeśli chcesz porównać swój kod z naszym, kompletny przykład jest dostępny 
 
 ## <a name="sample-response"></a>Przykładowa odpowiedź
 
-Znajdź skrót kraju, w tym [listę języków](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
+Znajdź skrót kraju/regionu, w tym [listę języków](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
 
 ```json
 [

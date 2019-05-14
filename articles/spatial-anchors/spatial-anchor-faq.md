@@ -1,6 +1,6 @@
 ---
 title: Często zadawane pytania dotyczące usługi Azure Spatial Anchors | Microsoft Docs
-description: Azure Spatial Anchors to zarządzana usługa w chmurze i platforma programistyczna dla wielu użytkowników i urządzeń umożliwiającą korzystanie ze środowisk rzeczywistości mieszanej na urządzeniach HoloLens oraz na urządzeniach z systemem iOS i Android. Ta lista często zadawanych pytań zawiera odpowiedzi na pytania dotyczące usługi z technicznego punktu widzenia.
+description: Azure Spatial Anchors to zarządzana usługa w chmurze i platforma programistyczna dla wielu użytkowników i urządzeń umożliwiająca korzystanie ze środowisk rzeczywistości mieszanej na urządzeniach HoloLens oraz na urządzeniach z systemem iOS i Android. Ta lista często zadawanych pytań zawiera odpowiedzi na pytania dotyczące usługi z technicznego punktu widzenia.
 author: ramonarguelles
 manager: vicenterivera
 services: azure-spatial-anchors
@@ -17,7 +17,7 @@ ms.locfileid: "60303308"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Często zadawane pytania dotyczące usługi Azure Spatial Anchors
 
-Azure Spatial Anchors to zarządzana usługa w chmurze i platforma programistyczna dla wielu użytkowników i urządzeń umożliwiającą korzystanie ze środowisk rzeczywistości mieszanej z orientacją przestrzenną na urządzeniach HoloLens oraz na urządzeniach z systemem iOS i Android.
+Azure Spatial Anchors to zarządzana usługa w chmurze i platforma programistyczna dla wielu użytkowników i urządzeń umożliwiająca korzystanie ze środowisk rzeczywistości mieszanej z orientacją przestrzenną na urządzeniach HoloLens oraz na urządzeniach z systemem iOS i Android.
 
 Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Spatial Anchors](overview.md).
 
@@ -33,7 +33,7 @@ Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Spatial Anchor
 
 **Pyt.: Jakie są wymagania dotyczące łączności dla usługi Azure Spatial Anchors?**
 
-**Odp.:** Usługa Azure Spatial Anchors współpracuje z połączeniami Wi-Fi oraz mobilnymi połączeniami szerokopasmowymi.
+**Odp.:** Usługa Azure Spatial Anchors działa z połączeniami Wi-Fi oraz mobilnymi połączeniami szerokopasmowymi.
 
 **Pyt.: Z jaką dokładnością usługa Azure Spatial Anchors może znajdować kotwice?**
 
@@ -51,11 +51,11 @@ Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Spatial Anchor
 
 **Pyt.: Jakie informacje o środowisku są przesyłane i przechowywane w ramach usługi podczas używania usługi Azure Spatial Anchors? Czy obrazy środowiska są przesyłane i przechowywane?**
 
-**Odp.:** Podczas tworzenia lub znajdowania kotwic obrazy środowiska są przetwarzane na urządzeniu w formacie pochodnym. Ten format pochodny jest przesyłane i przechowywany w ramach usługi.
+**Odp.:** Podczas tworzenia lub znajdowania kotwic obrazy środowiska są przetwarzane na urządzeniu w formacie pochodnym. Ten format pochodny jest przesyłany i przechowywany w ramach usługi.
 
 Aby zapewnić przejrzystość, poniżej znajduje się obraz środowiska i pochodna chmura punktów rozrzedzonych. Chmura punktów przedstawia geometryczną reprezentację środowiska, która jest przesyłana i przechowywane w usłudze. Dla każdego punktu w chmurze punktów rozrzedzonych przesyłamy i przechowujemy jego skrót właściwości wizualnych. Skrót jest tworzony na podstawie danych pikseli, ale nie zawiera żadnych z nich.
 
-Usługa Azure Spatial Anchors jest zgodna z [Warunkami umowy dotyczącej usługi platformy Azure](https://go.microsoft.com/fwLink/?LinkID=522330&amp;amp;clcid=0x9) i [Zasadami zachowania poufności informacji firmy Microsoft](https://go.microsoft.com/fwlink/?LinkId=521839&amp;clcid=0x409).
+Usługa Azure Spatial Anchors jest zgodna z [postanowieniami umowy serwisowej platformy Azure](https://go.microsoft.com/fwLink/?LinkID=522330&amp;amp;clcid=0x9) i [oświadczeniem firmy Microsoft o ochronie prywatności](https://go.microsoft.com/fwlink/?LinkId=521839&amp;clcid=0x409).
 
 ![Środowisko i jego pochodna chmury punktów rozrzedzonych](./media/sparce-point-cloud.png)
 *Rysunek 1.: Środowisko i jego pochodna chmury punktów rozrzedzonych*
@@ -69,17 +69,17 @@ Usługa Azure Spatial Anchors jest zgodna z [Warunkami umowy dotyczącej usługi
 
 **Pyt.: Czy oferowana jest umowa SLA?**
 
-**Odp.:** Standardem dla usług platformy Azure jest to, że staramy się zapewnić dostępność większą niż 99,9%. Należy zauważyć, że usługa Azure Spatial Anchors jest obecnie w wersji zapoznawczej i w związku z tym mają względem niej zastosowanie [Dodatkowe postanowienia dotyczące Wersji zapoznawczych](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+**Odp.:** Standardem dla usług platformy Azure jest to, że staramy się zapewnić dostępność większą niż 99,9%. Należy zauważyć, że usługa Azure Spatial Anchors jest obecnie w wersji zapoznawczej i w związku z tym mają względem niej zastosowanie [Uzupełniające warunki korzystania z Wersji Zapoznawczych](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 **Pyt.: Czy mogę publikować moje aplikacje w sklepach z aplikacjami przy użyciu usługi Azure Spatial Anchors? Czy mogę używać usługi Azure Spatial Anchors na potrzeby scenariuszy produkcyjnych o kluczowym znaczeniu?**
 
 **Odp.:** Usługa Azure Spatial Anchors jest obecnie w wersji zapoznawczej i w tym czasie zachęcamy do tworzenia aplikacji, [przesyłania opinii](https://feedback.azure.com/forums/919252-azure-spatial-anchors) o produkcie i planowania wdrożeń produkcyjnych.
 
-Daty wprowadzanie wersji ogólnie dostępnej zostaną ogłoszone wkrótce.
+Daty wprowadzania wersji ogólnie dostępnej zostaną ogłoszone wkrótce.
 
 **Pyt.: Czy istnieją jakiekolwiek limity ograniczania?**
  
-**Odp.:** Tak, istnieją.  Nie oczekujemy, że zostaną osiągnięte podczas zwykłego tworzenia aplikacji i ich testowania. W przypadku wdrożeń produkcyjnych jesteśmy gotowi do obsługi wymagań naszych klientów związanych z wysoką skalowalnością. [Skontaktuj się z nami](mailto:azuremrs@microsoft.com) w celu omówienia tych zagadnień. W tej fazie wersji zapoznawczej nie została jeszcze opublikowana struktura warstw i cen, ale będzie to miało miejsce wkrótce.
+**Odp.:** Tak, istnieją.  Nie oczekujemy, że zostaną osiągnięte podczas zwykłego tworzenia aplikacji i ich testowania. W przypadku wdrożeń produkcyjnych jesteśmy gotowi do obsługi wymagań naszych klientów związanych z wysoką skalowalnością. [Skontaktuj się z nami](mailto:azuremrs@microsoft.com) w celu omówienia tych zagadnień. W tej fazie wersji zapoznawczej nie została jeszcze opublikowana struktura warstw i cen, ale nastąpi to wkrótce.
 
 **Pyt.: W jakich regionach jest dostępna usługa Azure Spatial Anchors?**
 
@@ -101,7 +101,7 @@ Podczas tworzenia takiego punktu zestaw SDK klienta przechwytuje informacje o ś
 
 **Pyt.: W jaki sposób usługa Azure Spatial Anchors integruje się z platformami ARKit i ARCore w systemach iOS i Android?**
 
-**Odp.:** Usługa Azure Spatial Anchors wykorzystuje natywne możliwości śledzenia platform ARKit i ARCore. Ponadto nasze zestawy SDK dla systemów iOS i Android oferują takie funkcje, jak utrwalanie kotwic w ramach zarządzanej usługi w chmurze oraz umożliwianie aplikacjom ponownego znajdowania tych kotwic za pomocą standardowego połączenia z usługą.
+**Odp.:** Usługa Azure Spatial Anchors wykorzystuje natywne możliwości śledzenia platform ARKit i ARCore. Ponadto nasze zestawy SDK dla systemów iOS i Android oferują funkcje takie jak utrwalanie kotwic w ramach zarządzanej usługi w chmurze oraz umożliwianie aplikacjom ponownego znajdowania tych kotwic za pomocą standardowego połączenia z usługą.
 
 **Pyt.: W jaki sposób usługa Azure Spatial Anchors integruje się z urządzeniem HoloLens?**
 
@@ -116,7 +116,7 @@ Podczas tworzenia takiego punktu zestaw SDK klienta przechwytuje informacje o ś
 - Platforma Java lub zestaw Android NDK w systemie Android
 - Platforma C++/ WinRT na urządzeniu HoloLens
 
-Programowanie [rozpocznij w tym miejscu](index.yml).
+Rozpocznij programowanie od zapoznania się z [dokumentacją](index.yml).
 
 **Pyt.: Czy ta usługa współpracuje z aparatem Unreal?**
 

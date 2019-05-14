@@ -10,7 +10,7 @@ metadata:
   ms.topic: landing-page
   ms.date: 04/10/2019
 abstract:
-  description: 'Dowiedz się, jak usługa Azure NetApp Files umożliwia tworzenie kont usługi NetApp, pul pojemność i woluminów oraz zarządzanie nimi, konfigurowanie zasad eksportu, instalowanie woluminu dla maszyny wirtualnej i zarządzanie migawkami. <p>Korzystanie z usługi Azure NetApp Files wymaga dołączenia do programu Podglądu publicznego. Musisz też być na liście dozwolonych, aby uzyskać dostęp do dostawcy zasobów platformy Azure Microsoft.NetApp. Aby poprosić o dołączenie do programu podglądu publicznego, zobacz <a href="azure-netapp-files-register">Rejestrowanie w usłudze Azure NetApp Files</a>.</p>'
+  description: 'Dowiedz się, jak usługa Azure NetApp Files umożliwia tworzenie kont usługi NetApp, pul pojemność i woluminów oraz zarządzanie nimi, konfigurowanie zasad eksportu, instalowanie woluminu dla maszyny wirtualnej i zarządzanie migawkami. <p>Aby móc korzystać z usługi Azure NetApp Files, musisz mieć do niej dostęp. Aby zażądać dostępu, zobacz <a href="azure-netapp-files-register#waitlist">Przesyłanie wniosku dodania do listy oczekujących</a>.</p>'
 sections:
   - title: 5-minutowe przewodniki Szybki start
     items:

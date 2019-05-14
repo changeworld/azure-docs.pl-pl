@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 04/23/2019
 ms.author: alkohli
-ms.openlocfilehash: 05d522550b96813c6b8326d83f09d7028466c835
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: b0204673c0706403c8c5a7367be19e590d9cb134
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926213"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604094"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Samouczek: zamawianie urządzenia Azure Data Box
 
@@ -66,7 +66,7 @@ Wykonaj poniższe czynności w witrynie Azure Portal, aby zamówić urządzenie.
     |---------|---------|
     |Subskrypcja     | Wybierz subskrypcję EA, CSP lub dostęp sponsorowany Azure dla usługi Data Box. <br> Subskrypcja jest połączona z kontem rozliczeniowym.       |
     |Typ transferu     | Wybierz pozycję **Importuj na platformę Azure**.        |
-    |Kraj źródłowy     |   Wybierz kraj, w którym aktualnie znajdują się dane.         |
+    |Kraj źródłowy     |   Wybierz kraj/region, w którym dane aktualnie znajduje się.         |
     |Docelowy region platformy Azure     |     Wybierz region platformy Azure, do którego chcesz przenieść dane.        |
 
 5. Wybierz pozycję **Data Box**. Maksymalnej pojemności do wykorzystania dla pojedynczego zamówienia to 80 TB. W przypadku większych ilości danych możesz utworzyć wiele zamówień.

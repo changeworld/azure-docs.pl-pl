@@ -1,6 +1,6 @@
 ---
 title: Stream plików wideo za pomocą usługi Azure Media Services — Node.js | Dokumentacja firmy Microsoft
-description: Wykonaj kroki tego przewodnika Szybki start, aby utworzyć nowe konto usługi Azure Media Services, zakodować plik i przesłać go strumieniowo do usługi Azure Media Player.
+description: Wykonaj kroki tego samouczka, aby utworzyć nowe konto usługi Azure Media Services, Koduj plik i prześlij go strumieniowo do usługi Azure Media Player.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,23 +9,24 @@ editor: ''
 keywords: azure media services, stream
 ms.service: media-services
 ms.workload: media
-ms.topic: quickstart
+ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/26/2019
 ms.author: juliako
-ms.openlocfilehash: 22b7f2380b509daa4cb9931d6fc57c1297628e3d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3e4172cd149726e28e0c7dff435ec1f7a59ee169
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61233180"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550168"
 ---
-# <a name="quickstart-stream-video-files---nodejs"></a>Szybki start: Przesyłanie strumieniowe wideo — Node.js
+# <a name="tutorial-stream-video-files---nodejs"></a>Samouczek: Przesyłanie strumieniowe wideo — Node.js
 
-Ten przewodnik Szybki start pokazuje, jak łatwo jest zakodować i rozpocząć strumieniowe przesyłanie wideo do różnych przeglądarek i urządzeń za pomocą usługi Azure Media Services. Zawartość wejściową można określić przy użyciu adresów URL HTTP, adresów URL SAS lub ścieżek do plików znajdujących się w magazynie obiektów blob platformy Azure.
-W przykładzie w tym temacie kodowana jest zawartość, która jest udostępniana za pośrednictwem adresu URL protokołu HTTPS. Pamiętaj, że obecnie usługa AMS w wersji 3 nie obsługuje fragmentarycznego kodowania transferu za pośrednictwem adresów URL HTTPS.
+W tym samouczku pokazano, jak łatwo jest do zakodowania i rozpocząć przesyłanie strumieniowe wideo na podstawie różnych przeglądarek i urządzeń za pomocą usługi Azure Media Services. Zawartość wejściową można określić przy użyciu adresów URL HTTP, adresów URL SAS lub ścieżek do plików znajdujących się w magazynie obiektów blob platformy Azure.
 
-Na końcu tego przewodnika Szybki start będziesz umieć przesyłać strumieniowo filmy wideo.  
+Przykład podany w tym artykule koduje zawartości, który należy udostępnić za pośrednictwem adresu URL HTTPS. Pamiętaj, że obecnie usługa AMS w wersji 3 nie obsługuje fragmentarycznego kodowania transferu za pośrednictwem adresów URL HTTPS.
+
+Na koniec samouczka można przesyłać strumieniowo wideo.  
 
 ![Odtwarzanie wideo](./media/stream-files-nodejs-quickstart/final-video.png)
 
@@ -71,7 +72,7 @@ W przykładzie są wykonywane następujące akcje:
 
 Po zakończeniu uruchamiania, podobne dane wyjściowe powinny być:
 
-![Uruchom polecenie](./media/stream-files-nodejs-quickstart/run.png)
+![Uruchom](./media/stream-files-nodejs-quickstart/run.png)
 
 ## <a name="test-with-azure-media-player"></a>Testowanie przy użyciu usługi Azure Media Player
 
@@ -90,7 +91,7 @@ Usługi Azure Media Player można użyć do testowania, ale nie należy jej uży
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli nie są już potrzebne żadne zasoby z grupy zasobów, w tym konto usługi Media Services i magazynu utworzone w ramach tego przewodnika Szybki start, usuń grupę zasobów.
+Jeśli nie potrzebujesz już zasobów w grupie zasobów, w tym usługi Media Services i kont magazynu, utworzony na potrzeby tego samouczka, Usuń grupę zasobów.
 
 Wykonaj następujące polecenie interfejsu wiersza polecenia:
 

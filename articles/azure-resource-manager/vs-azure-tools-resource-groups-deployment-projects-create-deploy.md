@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/21/2019
 ms.author: tomfitz
-ms.openlocfilehash: 442551424fea353aa7eddef6e7eba6e934f95691
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ca7cccb1d4f17ff9f80ca006da0ef7ce77109227
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60389427"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595526"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Tworzenie i wdrażanie grup zasobów platformy Azure za pomocą programu Visual Studio
 
 Program Visual Studio umożliwia utworzenie projektu służącego do wdrażania infrastruktury i kodu na platformie Azure. Można na przykład zdefiniować host internetowy, witrynę internetową i bazę danych dla aplikacji, a następnie wdrożyć tę infrastrukturę wraz z kodem. Program Visual Studio zapewnia wiele różnych szablonów początkowych do wdrażania typowych scenariuszy. Ten artykuł dotyczy wdrażania aplikacji internetowej i bazy danych SQL Database.  
 
-W tym artykule pokazano, jak używać programu [Visual Studio 2017 z zainstalowanymi pakietami roboczymi programowania dla platformy Azure i ASP.NET](/dotnet/azure/dotnet-tools). Jeśli używasz programu Visual Studio 2015 Update 2 i zestawu Microsoft Azure SDK dla środowiska .NET 2.9 lub programu Visual Studio 2013 z zestawem Azure SDK 2.9, czynności są w większości takie same.
+W tym artykule pokazano, jak [programu Visual Studio 2017 r. lub nowszej za pomocą programowanie na platformie Azure i zainstalowanych obciążeń programu ASP.NET](/dotnet/azure/dotnet-tools). Jeśli używasz programu Visual Studio 2015 Update 2 i zestawu Microsoft Azure SDK dla środowiska .NET 2.9 lub programu Visual Studio 2013 z zestawem Azure SDK 2.9, czynności są w większości takie same.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -37,7 +37,7 @@ W tej sekcji omówiono tworzenie projektu grupy zasobów platformy Azure przy u�
     ![Projekt wdrażania w chmurze](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/create-project.png)
 2. Wybierz szablon, który ma zostać wdrożony w usłudze Azure Resource Manager. Należy zauważyć, że dostępnych jest wiele różnych opcji, zależnie od typu projektu, który chcesz wdrożyć. Na potrzeby tego artykułu wybierz szablon **Aplikacja internetowa i baza danych SQL**.
    
-    ![Wybieranie szablonu](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/select-project.png)
+    ![Wybierz szablon](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/select-project.png)
    
     Wybrany szablon jest tylko punktem wyjściowym. Możesz dodać lub usunąć zasoby, aby wykonać dany scenariusz.
    

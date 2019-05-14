@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39e9f52948d035c72a6a019558915d8c92ceebeb
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 2830e95f042d5c83d91d6c026d2fa2e70eb3e3b2
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65463525"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65601645"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bluejeans"></a>Samouczek: integracja usługi Azure Active Directory z rozwiązaniem BlueJeans
 
@@ -108,7 +108,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w rozwiązaniu BlueJea
 
     ![Informacje o domenie i adresach URL logowania jednokrotnego rozwiązania BlueJeans](media/bluejeans-tutorial/tutorial_bluejeans-basic-configuration.png)
 
-   - W polu tekstowym **Identyfikator** wpisz następujący tekst: `https://samlsp.bluejeans.com`
+   - W polu tekstowym **Identyfikator** wpisz następujący tekst: `http://samlsp.bluejeans.com`
     
    - W **adres URL logowania** pole tekstowe, wpisz adres URL strony docelowej, które zostały przekazane użytkownikowi przez BlueJeans (Aby uzyskać tę wartość, możesz skontaktować się ze [zespołem pomocy technicznej klienta BlueJeans](https://support.bluejeans.com/contact)): `https://<companyname>.bluejeans.com`
     
@@ -160,9 +160,9 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w rozwiązaniu BlueJea
 
     ![Zapisywanie zmian](./media/bluejeans-tutorial/ic785874.png "Zapisywanie zmian")
 
-    a. W **identyfikator użytkownika** polu tekstowym wpisz `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+    a. W **identyfikator użytkownika** polu tekstowym wpisz `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
 
-    b. W polu tekstowym **Email** (Adres e-mail) wpisz `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+    b. W polu tekstowym **Email** (Adres e-mail) wpisz `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
 
     c. Kliknij przycisk **SAVE CHANGES** (ZAPISZ ZMIANY).
 

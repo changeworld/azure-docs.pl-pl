@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: e46dae199f4d45c325e41fa5432e98cba9a2f4ae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 90357c13003820a25ee52aab5cda83029c9d85ff
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61367493"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65601557"
 ---
 # <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>Korzystanie z usługi Azure Application Insights, aby dowiedzieć się, jak klienci używają aplikacji
 
@@ -35,9 +35,9 @@ Usługa Azure Application Insights zbiera informacje o użyciu, aby pomóc zrozu
 
 W celu ukończenia tego samouczka:
 
-- Zainstaluj program [Visual Studio 2017](https://www.visualstudio.com/downloads/) z następującymi pakietami roboczymi:
-    - Tworzenie aplikacji na platformie ASP.NET i aplikacji internetowych
-    - Tworzenie aplikacji na platformie Azure
+- Zainstaluj [Visual Studio 2019](https://www.visualstudio.com/downloads/) z następującymi pakietami roboczymi:
+    - ASP.NET i tworzenie aplikacji internetowych
+    - Programowanie na platformie Azure
 - Pobierz i zainstaluj rozszerzenie [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger).
 - Wdróż aplikację .NET na platformie Azure i [włącz zestaw Application Insights SDK](../../azure-monitor/app/asp-net.md). 
 - [Wyślij dane telemetryczne z aplikacji](../../azure-monitor/app/usage-overview.md#send-telemetry-from-your-app) w celu dodania niestandardowych zdarzeń/wyświetleń strony
@@ -59,11 +59,11 @@ Panel **Użytkownicy** pozwala analizować na różne sposoby ważne informacje 
 
     ![Zmiana zakresu czasu](media/tutorial-users/TimeRange.png)
 
-4. Kliknij listę rozwijaną **Podział według**, aby dodać do wykresu podział według właściwości użytkownika.  Wybierz pozycję **Kraj lub region**.  Wykres zawiera te same dane, ale umożliwia wyświetlanie informacji o podziale liczby użytkowników w poszczególnych krajach.
+4. Kliknij listę rozwijaną **Podział według**, aby dodać do wykresu podział według właściwości użytkownika.  Wybierz pozycję **Kraj lub region**.  Wykres zawiera te same dane, ale umożliwia wyświetlanie informacji o podziale liczbę użytkowników dla każdego kraju/regionu.
 
     ![Wykres dla kraju lub regionu](media/tutorial-users/CountryorRegion.png)
 
-5. Umieść kursor na różnych słupkach wykresu i zwróć uwagę, że wartości poszczególnych krajów odzwierciedlają tylko przedział czasu reprezentowany przez ten słupek.
+5. Umieść kursor nad różne słupki na wykresie i zanotuj, czy liczba, dla każdego kraju/regionu odzwierciedlają tylko przedział czasu, które są reprezentowane przez ten pasek.
 6. Spójrz na kolumnę **Szczegółowe informacje** po prawej stronie, która umożliwia analizowanie danych użytkowników.  Zawiera ona takie informacje jak liczba unikatowych sesji w danym okresie i rekordy ze wspólnymi właściwościami, które tworzą znaczącą część danych użytkowników. 
 
     ![Kolumna szczegółowych informacji](media/tutorial-users/insights.png)

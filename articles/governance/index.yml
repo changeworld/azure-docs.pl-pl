@@ -8,7 +8,7 @@ metadata:
   manager: carmonm
   ms.service: governance
   ms.topic: landing-page
-  ms.date: 09/18/2018
+  ms.date: 05/07/2019
   ms.author: dacoulte
 abstract:
   description: 'Ład na platformie Azure to zbiór pojęć i usług umożliwiających zarządzanie różnymi zasobami platformy Azure na dużą skalę. Te usługi umożliwiają między innymi organizowanie i strukturyzowanie subskrypcji w logiczny sposób, tworzenie i wdrażanie pakietów zasobów natywnych dla platformy Azure i wielokrotnego użytku, a także definiowanie zasobów oraz poddawanie ich inspekcji i korygowaniu. Ta strona pozwala dowiedzieć się więcej na temat tych pojęć i usług oraz tego, jak już dziś włączyć je i używać ich we własnym środowisku.'
@@ -53,16 +53,16 @@ sections:
               alt: Strategie
               src: ./media/blueprints-illustration.svg
             title: Strategie
-  - title: Implementacje
+  - title: Struktura wdrażania chmury
   - items:
       - type: list
         style: cards
         className: cardsZ
         columns: 3
         items:
-          - href: /azure/architecture/cloud-adoption/getting-started/what-is-governance?toc=/azure/governance/toc.json
-            html: <p>W przeszłości przedsiębiorstwa były właścicielami wszystkich poziomów technologii od infrastruktury po oprogramowanie i brały za nie odpowiedzialność. Obecnie chmura umożliwia transformację sposobu wykorzystywania technologii w przedsiębiorstwach przez aprowizowanie i używanie zasobów w zależności od potrzeb.</p>
-            title: Wdrożenie rozwiązania Enterprise Cloud
-          - href: /azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=/azure/governance/toc.json
-            html: '<p>Umożliwia administratorom zadbanie o to, aby obciążenia spełniały wymagania minimalne ładu organizacji, bez utrudniania grupom biznesowym i deweloperom szybkiego osiągania ich własnych celów.<br /><br /></p>'
-            title: Szkielet dla przedsiębiorstw
+          - href: /azure/architecture/cloud-adoption/index?toc=/azure/governance/toc.json
+            html: '<p>Platforma wdrażania chmury oferuje wskazówki techniczne dotyczące platformy Microsoft Azure. Klienci nadal mogą być w trakcie wybierania dostawcy chmury, dlatego ta platforma udostępnia niezależne od chmury wskazówki dotyczące decyzji wyższego poziomu, jeśli to możliwe.</p>'
+            title: Omówienie
+          - href: /azure/architecture/cloud-adoption/governance/index?toc=/azure/governance/toc.json
+            html: <p>W przypadku organizacji z istniejącymi zasadami regulującymi lokalne środowiska IT ład chmury powinien uzupełniać te zasady biznesowe.<br /><br /></p>
+            title: Omówienie ładu

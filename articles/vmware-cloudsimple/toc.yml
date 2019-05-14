@@ -148,10 +148,6 @@
               href: 'https://docs.azure.cloudsimple.com/ha-ensuring/'
         - name: Ekosystem oprogramowania VMware
           items:
-            - name: Rozwiązania odzyskiwania po awarii
-              href: 'https://docs.azure.cloudsimple.com/zerto-solutionguide/'
-            - name: Odzyskiwanie po awarii przy użyciu rozwiązania VMware SRM
-              href: 'https://docs.azure.cloudsimple.com/disaster-recovery-srm/'
             - name: Tworzenie kopii zapasowych maszyn wirtualnych obciążeń
               href: 'https://docs.azure.cloudsimple.com/veeam/'
             - name: Przewodnik po rozwiązaniu VMware Horizon

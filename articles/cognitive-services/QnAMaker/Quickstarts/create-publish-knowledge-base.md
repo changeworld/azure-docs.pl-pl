@@ -8,20 +8,20 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 04/05/2019
+ms.date: 05/10/2019
 ms.author: diberry
-ms.openlocfilehash: cf6b0cd99254d5b034687598c588ce5ef13dbd53
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1411576d078115921cb04b41347264bccdc390f4
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60914515"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65593972"
 ---
 # <a name="create-train-and-publish-your-qna-maker-knowledge-base"></a>Tworzenie, szkolenie i publikowanie bazy wiedzy usługi QnA Maker
 
 Na podstawie własnej zawartości, takiej jak często zadawane pytania lub podręczniki produktów, możesz utworzyć bazę wiedzy usługi QnA Maker. Usługa QnA Maker wiedzy, w tym przykładzie jest tworzony z prostą stronę często zadawane pytania dotyczące odpowiedzi na pytania dotyczące klucza odzyskiwania funkcji BitLocker.
 
-## <a name="prerequisite"></a>Wymagania wstępne
+## <a name="prerequisite"></a>Wymaganie wstępne
 
 > [!div class="checklist"]
 > * Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
@@ -66,7 +66,7 @@ Na podstawie własnej zawartości, takiej jak często zadawane pytania lub podr�
 
 1. Wybierz pozycję **Zbadaj**, aby bardziej szczegółowo sprawdzić odpowiedź. Okna testów służy do testowania zmiany w bazie wiedzy knowledge base, zanim są publikowane.
 
-    ![Panel testu](../media/qnamaker-quickstart-kb/inspect-panel.png)
+    ![Panel testu](../media/qnamaker-quickstart-kb/inspect.png)
 
 1. Wybierz ponownie pozycję **Test**, aby zamknąć wyskakujące okienko **Testowanie**.
 
@@ -80,7 +80,7 @@ Podczas publikowania bazy wiedzy pytań i odpowiedzi zawartość bazy wiedzy prz
 
 1. Usługa QnA Maker została teraz pomyślnie opublikowana. Możesz użyć punktu końcowego w swojej aplikacji lub kodu bota.
 
-    ![Publikowanie](../media/qnamaker-quickstart-kb/publish-sucess.png)
+    ![Opublikuj](../media/qnamaker-quickstart-kb/publish-sucess.png)
 
 ## <a name="create-a-bot"></a>Tworzenie botów
 

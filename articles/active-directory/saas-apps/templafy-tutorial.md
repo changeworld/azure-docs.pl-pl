@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ea2ead29ba1945213871ab76a65e33a4d7b27cc
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.openlocfilehash: 843a4ef36d633b8b72453ba5eb2b969af4649531
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65441512"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65605319"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-templafy"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Templafy
 
@@ -120,20 +120,20 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Templafy, wykonaj n
 
     | Name (Nazwa) | Atrybut źródłowy| Przestrzeń nazw  |
     | ---------------| --------------- | --------- |
-    | Imię | user.givenname | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
-    | surname | user.surname | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
-    | emailaddress | user.mail | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims`
-    | streetaddress | user.streetaddress | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
-    | city | user.city | `https://schemas.templafy.com/2016/06/identity/claims`|
-    | KodPocztowy | user.postalcode | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
-    | StanLubProwincja | User.state | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
-    | Kraj | user.country | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
-    | stanowisko | user.jobtitle | `https://schemas.templafy.com/2016/06/identity/claims`|
-    | Dział | user.department | `https://schemas.templafy.com/2016/06/identity/claims`|
-    | Numer telefonu | user.telephonenumber | `https://schemas.templafy.com/2016/06/identity/claims` |
-    | facsimilenumber | User.facsimiletelephonenumber | `https://schemas.templafy.com/2016/06/identity/claims`|
-    | upn | user.userprincipalname | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
-    | nameidentifier | user.mail | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
+    | Imię | user.givenname | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
+    | surname | user.surname | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
+    | emailaddress | user.mail | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`
+    | streetaddress | user.streetaddress | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
+    | city | user.city | `http://schemas.templafy.com/2016/06/identity/claims`|
+    | KodPocztowy | user.postalcode | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
+    | StanLubProwincja | User.state | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
+    | Kraj | user.country | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
+    | stanowisko | user.jobtitle | `http://schemas.templafy.com/2016/06/identity/claims`|
+    | Dział | user.department | `http://schemas.templafy.com/2016/06/identity/claims`|
+    | Numer telefonu | user.telephonenumber | `http://schemas.templafy.com/2016/06/identity/claims` |
+    | facsimilenumber | User.facsimiletelephonenumber | `http://schemas.templafy.com/2016/06/identity/claims`|
+    | upn | user.userprincipalname | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
+    | nameidentifier | user.mail | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
     | | |
 
     a. Kliknij przycisk **Dodaj nowe oświadczenie**, aby otworzyć okno dialogowe **Zarządzanie oświadczeniami użytkownika**.

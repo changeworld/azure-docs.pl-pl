@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 05/06/2019
 ms.author: thweiss
-ms.openlocfilehash: 48d67c765a8a76a6058592f59eb61770e2f23df5
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 0b47ffd77ee23f997bb7de2ea41f83c2854cba72
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65068669"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550904"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Zarządzanie zasadami indeksowania w usłudze Azure Cosmos DB
 
@@ -22,6 +22,9 @@ W usłudze Azure Cosmos DB, zindeksowaniu danych po [zasady indeksowania](index-
 - przy użyciu jednego z zestawów SDK
 
 [Aktualizacji zasad indeksowania](index-policy.md#modifying-the-indexing-policy) wyzwala przekształcania indeksu. Również można śledzić postęp tej transformacji z zestawów SDK.
+
+> [!NOTE]
+> W ramach uaktualniania zestawu SDK i Portal są obecnie przekształcane zasad indeksu dopasowanie z nowym układem indeksu, w których firma Microsoft ma dostępna dla nowych kontenerów. Za pomocą tego nowego układu wszystkie pierwotne typy danych są indeksowane, jako zakres o pełnej dokładności (-1). W związku z tym rodzaje indeksu i dokładności nie są widoczne dla użytkownika już. W przyszłości użytkownicy będą musieli po prostu Dodaj do sekcji includedPaths ścieżki i ignoruje indexKinds i dokładność. Ta zmiana nie ma wpływu na wydajność i można kontynuować aktualizacji zasad indeksowania, przy użyciu tej samej składni. Można nadal używać wszystkie przykłady w naszej dokumentacji istniejących można zaktualizować zasad indeksu.
 
 ## <a name="use-the-azure-portal"></a>Korzystanie z witryny Azure Portal
 

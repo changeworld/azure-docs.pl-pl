@@ -314,8 +314,9 @@
                 - name: Monitor stanu
                   href: app/monitor-performance-live-website-now.md
                 - name: Monitor stanu w wersji 2
-                  href: app/status-monitor-v2-overview.md
                   items:
+                    - name: Omówienie
+                      href: app/status-monitor-v2-overview.md
                     - name: Wprowadzenie
                       href: app/status-monitor-v2-get-started.md
                     - name: Szczegółowe instrukcje
@@ -557,7 +558,7 @@
                   href: app/usage-workbooks.md
             - name: Rozwiązania analizy aplikacji internetowych
               href: insights/azure-web-apps-analytics.md
-            - name: Aplikacje hostowane w usłudze Kubernetes
+            - name: Monitorowanie aplikacji rozwiązania Kubernetes
               href: app/kubernetes.md
         - name: Monitorowanie kontenerów
           items:
@@ -631,8 +632,18 @@
                   href: insights/vminsights-known-issues.md
                 - name: Często zadawane pytania
                   href: insights/vminsights-faq.md
-                - name: Dodawanie
-                  href: insights/vminsights-onboard.md
+                - name: Włączanie monitorowania
+                  items:
+                    - name: Omówienie włączania monitorowania
+                      href: insights/vminsights-enable-overview.md
+                    - name: Włączanie obsługi pojedynczej maszyny wirtualnej platformy Azure
+                      href: insights/vminsights-enable-single-vm.md
+                    - name: Włączanie obsługi usługi Azure Policy
+                      href: insights/vminsights-enable-at-scale-policy.md
+                    - name: Włączanie obsługi programu Azure PowerShell
+                      href: insights/vminsights-enable-at-scale-powershell.md
+                    - name: Włączanie obsługi środowiska hybrydowego
+                      href: insights/vminsights-enable-hybrid-cloud.md
                 - name: Monitorowanie kondycji
                   href: insights/vminsights-health.md
                 - name: Mapowanie zależności

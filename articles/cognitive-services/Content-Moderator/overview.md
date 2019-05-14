@@ -10,16 +10,16 @@ ms.subservice: content-moderator
 ms.topic: overview
 ms.date: 02/20/2019
 ms.author: pafarley
-ms.openlocfilehash: 440471acb6e122bf25ba21b0ab3b5a2f7d9b021d
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 7e9c12c7da701fb627c51373e57f870d3fc77ac5
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62129438"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65551318"
 ---
 # <a name="what-is-azure-content-moderator"></a>Czym jest usługa Azure Content Moderator?
 
-Interfejs API usługi Azure Content Moderator to usługa poznawcza, która sprawdza tekst, obrazy i zawartość wideo pod kątem treści potencjalnie obraźliwych, ryzykownych lub w jakikolwiek inny sposób niepożądanych. W przypadku znalezienia takich treści usługa stosuje odpowiednie etykiety (flagi) do zawartości. Aplikacja może następnie obsłużyć oflagowaną zawartość w celu zachowania zgodności z przepisami lub zapewnienia odpowiedniego środowiska dla użytkowników. Zobacz sekcję [Interfejsy API pakietu Content Moderator](#content-moderator-apis), aby dowiedzieć się więcej o tym, co oznaczają różne flagi zawartości.
+Interfejs API usługi Azure Content Moderator to usługa poznawcza, która sprawdza tekst, obrazy i zawartość wideo pod kątem treści potencjalnie obraźliwych, ryzykownych lub w jakikolwiek inny sposób niepożądanych. W przypadku znalezienia takich treści usługa stosuje odpowiednie etykiety (flagi) do zawartości. Aplikacja może następnie obsłużyć oflagowaną zawartość w celu zachowania zgodności z przepisami lub zapewnienia odpowiedniego środowiska dla użytkowników. Zobacz [interfejsy API moderowania](#moderation-apis) wskazują sekcji, aby dowiedzieć się więcej o flagi różną zawartość.
 
 ## <a name="where-it-is-used"></a>Gdzie jest używany
 
@@ -35,11 +35,13 @@ Poniżej przedstawiono kilka scenariuszy, w których deweloper lub zespół ds. 
 
 Usługa Content Moderator składa się z kilku interfejsów API usług internetowych dostępnych za pośrednictwem wywołań REST i zestawu .NET SDK. Obejmuje również narzędzie przeglądu przez ludzi, dzięki któremu recenzenci mogą pomóc usłudze i ulepszyć lub dostosować jej funkcję moderowania.
 
-![Diagram blokowy usługi Content Moderator przedstawiający interfejsy API moderowania, interfejsy API przeglądu oraz narzędzie przeglądu przez ludzi](images/content-moderator-block-diagram.png)
+## <a name="moderation-apis"></a>Interfejsy API moderowania
 
-### <a name="content-moderator-apis"></a>Interfejsy API usługi Content Moderator
+Usługa Content Moderator obejmuje interfejsy API moderowania, który Sprawdź zawartość materiału, który jest potencjalnie niewłaściwe lub niepożądanych.
 
-Usługa Content Moderator zawiera interfejsy API dla następujących scenariuszy.
+![diagram blokowy dla interfejsy API moderowania pakietu Content Moderator](images/content-moderator-mod-api.png)
+
+W poniższej tabeli opisano różne rodzaje interfejsy API moderowania.
 
 | Grupa interfejsów API | Opis |
 | ------ | ----------- |
@@ -48,9 +50,17 @@ Usługa Content Moderator zawiera interfejsy API dla następujących scenariuszy
 |[**Moderowanie obrazów**](image-moderation-api.md)| Skanuje obrazy pod kątem zawartości dla dorosłych i zawartości erotycznej, wykrywa tekst w obrazach za pomocą funkcji optycznego rozpoznawania znaków (OCR) i wykrywa twarze.|
 |[**Niestandardowe listy obrazów**](try-image-list-api.md)| Skanuje obrazy względem niestandardowej listy obrazów. Użyj niestandardowych list obrazów, aby filtrować wystąpienia często powtarzającej się zawartości, której nie chcesz klasyfikować ponownie.|
 |[**Moderowanie filmów wideo**](video-moderation-api.md)| Skanuje filmy wideo pod kątem potencjalnej zawartości dla dorosłych lub zawartości erotycznej i zwraca znaczniki czasu dla wypowiadanej zawartości.|
-|[**Przegląd interfejsów API**](try-review-api-job.md)| Przy użyciu operacji [Zadania](try-review-api-job.md), [Przeglądy](try-review-api-review.md) i [Przepływ pracy](try-review-api-workflow.md) utwórz i zautomatyzuj przepływy pracy obsługiwane przez człowieka za pomocą narzędzia do przeglądu przez ludzi. Interfejs API przepływu pracy nie jest jeszcze dostępna w zestawie SDK platformy .NET.|
 
-### <a name="review-tool"></a>Narzędzie do przeglądu
+## <a name="review-apis"></a>Przegląd interfejsów API
+
+Interfejsy API przeglądu pozwalają na integrację z potokiem Moderowanie z recenzentami ludzi. Użyj [zadania](review-api.md#jobs), [przeglądy](review-api.md#reviews), i [przepływu pracy](review-api.md#workflows) operacje do tworzenia i automatyzacji przepływów pracy człowieka w pętli [narzędzie do przeglądu](#the-review-tool) () poniżej).
+
+> [!NOTE]
+> Interfejs API przepływu pracy nie jest jeszcze dostępna w zestawie SDK platformy .NET, ale mogą być używane z punktem końcowym REST.
+
+![diagram blokowy dla pakietu Content Moderator Przegląd interfejsów API](images/content-moderator-rev-api.png)
+
+## <a name="the-review-tool"></a>Narzędzie do przeglądu
 
 Usługa Content Moderator obejmuje również oparta na sieci web [narzędzie do przeglądu](Review-Tool-User-Guide/human-in-the-loop.md), który obsługuje zawartość przeglądy dla moderatorów ludzi do przetworzenia. Dane wejściowe wprowadzane przez ludzi nie uczą usługi, ale połączona praca usługi i zespołów ds. przeglądu przez ludzi pozwala deweloperom uzyskać równowagę między wydajnością i dokładnością. Narzędzie do przeglądu udostępnia przyjazny dla użytkownika frontonu dla różnych zasobów usługi Content Moderator.
 

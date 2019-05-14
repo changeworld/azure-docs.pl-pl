@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą przesączyć | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i przesączyć.
+description: W tym samouczku dowiesz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i przesączyć.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,227 +15,223 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 2110b1ec7d5d6b317341855ff19acf7975733e71
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: 83027e9fbc1826de727f123afe4507c2858c49ff
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617873"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65560567"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-percolate"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą przesączyć
 
 W tym samouczku dowiesz się, jak zintegrować przesączyć w usłudze Azure Active Directory (Azure AD).
-Integrowanie przesączyć z usługą Azure AD zapewnia następujące korzyści:
 
-* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do przesączyć.
-* Aby umożliwić użytkownikom można automatycznie zalogowany do przesączyć (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
+Ta integracja zapewnia następujące korzyści:
 
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+* Możesz użyć usługi Azure AD w celu kontrolowania, kto ma dostęp do przesączyć.
+* Aby umożliwić użytkownikom automatyczne logowanie do przesączyć (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
+* Możesz zarządzać konta w jednej centralnej lokalizacji: witryna Azure portal.
+
+Aby dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Single sign-on to applications in Azure Active Directory (Logowanie jednokrotne do aplikacji w usłudze Azure Active Directory)](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+
+Jeśli nie masz subskrypcji platformy Azure, [Utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed rozpoczęciem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą przesączyć, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD za pomocą przesączyć, musisz mieć:
 
 * Subskrypcja usługi Azure AD. Jeśli nie ma środowiska usługi Azure AD, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/).
-* Przesączyć logowanie jednokrotne włączone subskrypcja pojedyncza
+* Subskrypcja przesączyć ma logowanie jednokrotne włączone.
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
+W ramach tego samouczka możesz skonfigurować i testowanie usługi Azure AD rejestracji jednokrotnej w środowisku testowym.
 
-* Przesączyć obsługuje **SP** i **tożsamości** jednokrotne logowanie inicjowane przez
+* Przesączyć obsługuje logowanie Jednokrotne zainicjowane przez Dostawcę i inicjowane przez dostawcę tożsamości.
 
-## <a name="adding-percolate-from-the-gallery"></a>Dodawanie przesączyć z galerii
+## <a name="add-percolate-from-the-gallery"></a>Dodaj przesączyć z galerii
 
 Aby skonfigurować integrację z przesączyć w usłudze Azure AD, należy dodać przesączyć z galerii z listą zarządzanych aplikacji SaaS.
 
-**Aby dodać przesączyć z galerii, wykonaj następujące czynności:**
+1. W [witryny Azure portal](https://portal.azure.com), w okienku po lewej stronie wybierz **usługi Azure Active Directory**:
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+    ![Wybierz pozycję Azure Active Directory](common/select-azuread.png)
 
-    ![Przycisk Azure Active Directory](common/select-azuread.png)
+2. Przejdź do **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje**:
 
-2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
+    ![W bloku aplikacji przedsiębiorstwa](common/enterprise-applications.png)
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+3. Aby dodać aplikację, wybierz pozycję **nową aplikację** w górnej części okna:
 
-3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+    ![Wybierz nową aplikację](common/add-new-app.png)
 
-    ![Przycisk Nowa aplikacja](common/add-new-app.png)
+4. W polu wyszukiwania wprowadź **przesączyć**. Wybierz **przesączyć** w wynikach wyszukiwania, a następnie wybierz **Dodaj**.
 
-4. W polu wyszukiwania wpisz **przesączyć**, wybierz opcję **przesączyć** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+     ![Wyniki wyszukiwania](common/search-new-app.png)
 
-     ![Przesączyć na liście wyników](common/search-new-app.png)
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
+W tej sekcji możesz skonfigurować i przetestować usługę Azure AD logowanie jednokrotne za pomocą przesączyć przy użyciu użytkownika testu o nazwie Britta Simon.
+Aby włączyć logowanie jednokrotne, należy ustanowić relację między użytkownikiem usługi Azure AD i odpowiedniego użytkownika w przesączyć.
 
-W tej sekcji, konfigurowania i testowania usługi Azure AD logowanie jednokrotne za pomocą przesączyć w oparciu o użytkownika testu o nazwie **Britta Simon**.
-Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w przesączyć musi zostać ustanowione.
+Do konfigurowania i testowania usługi Azure AD logowanie jednokrotne za pomocą przesączyć, należy wykonać następujące czynności:
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą przesączyć, należy wykonać poniższe bloki konstrukcyjne:
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  do włączenia tej funkcji dla użytkowników.
+2. **[Konfigurowanie przesączyć logowania jednokrotnego](#configure-percolate-single-sign-on)**  na stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  do testowania usługi Azure AD logowania jednokrotnego.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  włączyć usługi Azure AD logowanie jednokrotne dla użytkownika.
+5. **[Tworzenie użytkownika testowego przesączyć](#create-a-percolate-test-user)**  połączony na reprezentację w postaci usługi Azure AD użytkownika.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  można sprawdzić, czy konfiguracja działa.
 
-1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
-2. **[Konfigurowanie przesączyć logowania jednokrotnego](#configure-percolate-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
-5. **[Tworzenie użytkownika testowego przesączyć](#create-percolate-test-user)**  — aby odpowiednikiem Britta Simon w przesączyć połączonego z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
-
-W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
+W tej sekcji włączysz usługę Azure AD logowania jednokrotnego w witrynie Azure portal.
 
 Aby skonfigurować usługę Azure AD logowanie jednokrotne za pomocą przesączyć, wykonaj następujące czynności:
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **przesączyć** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. W [witryny Azure portal](https://portal.azure.com/)na **przesączyć** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**:
 
-    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
+    ![Wybierz opcję logowania jednokrotnego](common/select-sso.png)
 
-2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
+2. W **wybierz jedną metodę logowania jednokrotnego** okno dialogowe, wybierz **SAML/WS-Fed** trybu, aby włączyć logowanie jednokrotne:
 
-    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
+    ![Wybierz metodę logowania jednokrotnego](common/select-saml-option.png)
 
-3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
+3. Na **Ustaw się logowanie jednokrotne z SAML** wybierz opcję **Edytuj** ikonę, aby otworzyć **podstawową konfigurację protokołu SAML** okno dialogowe:
 
-    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
+    ![Ikona edycji](common/edit-urls.png)
 
-4. Na **podstawową konfigurację protokołu SAML** sekcji, jeśli chcesz skonfigurować aplikację w **tożsamości** trybu zainicjowane przez użytkownika nie trzeba wykonać każdy krok, ponieważ aplikacja jest już wstępnie zintegrowane z usługą Azure.
+4. W **podstawową konfigurację protokołu SAML** okno dialogowe, nie trzeba podejmować żadnych działań, aby skonfigurować aplikację w trybie inicjowane przez dostawcę tożsamości. Aplikacja jest już zintegrowana z platformą Azure.
 
     ![Przesączyć domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/preintegrated.png)
 
-5. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
+5. Aby skonfigurować aplikację w trybie zainicjowanego przez dostawcę usług, zaznacz **Ustaw dodatkowe adresy URL** i w **adres URL logowania** wprowadź **https://percolate.com/app/login**:
 
-    ![Przesączyć domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/metadata-upload-additional-signon.png)
+   ![Przesączyć domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/metadata-upload-additional-signon.png)
+6. Na **Ustaw się logowania jednokrotnego przy użyciu protokołu SAML** stronie **certyfikat podpisywania SAML** zaznacz **kopiowania** ikonę, aby skopiować **adres Url metadanych Federacji aplikacji** . Zapisz ten adres URL.
 
-    W polu tekstowym **Adres URL logowania** wpisz adres URL: `https://percolate.com/app/login`
+    ![Skopiuj adres URL metadanych Federacji aplikacji](common/copy-metadataurl.png)
 
-6. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij przycisk kopiowania, aby skopiować **adres URL metadanych federacji aplikacji** i zapisać go na komputerze.
+7. W **Konfigurowanie przesączyć** sekcji, skopiuj odpowiednie adresy URL, w zależności od wymagań.
 
-    ![Link do pobierania certyfikatu](common/copy-metadataurl.png)
+    ![Skopiuj adresy URL konfiguracji](common/copy-configuration-urls.png)
 
-7. Na **Konfigurowanie przesączyć** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+    1. **Adres URL logowania**.
 
-    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
+    1. **Usługa Azure AD identyfikator**.
 
-    a. Adres URL logowania
-
-    b. Identyfikator usługi Azure AD
-
-    c. Adres URL wylogowywania
+    1. **Adres URL wylogowania**.
 
 ### <a name="configure-percolate-single-sign-on"></a>Konfigurowanie przesączyć logowania jednokrotnego
 
-1. W oknie przeglądarki internetowej innej Zaloguj się w przesączyć jako Administrator.
+1. W nowym oknie przeglądarki internetowej Zaloguj się do przesączyć jako administrator.
 
-2. W lewej części strony głównej kliknij **ustawienia**.
+2. W lewej części strony głównej wybierz **ustawienia**:
     
-    ![Konfigurowanie logowania jednokrotnego](./media/percolate-tutorial/configure01.png)
+    ![Wybierz ustawienia](./media/percolate-tutorial/configure01.png)
 
-3. Z lewej strony paska menu, kliknij pozycję **logowania jednokrotnego** w obszarze **organizacji**.
+3. W okienku po lewej stronie wybierz **logowania jednokrotnego** w obszarze **organizacji**:
 
-    ![Konfigurowanie logowania jednokrotnego](./media/percolate-tutorial/configure02.png)
+    ![Wybierz opcję logowania jednokrotnego w ramach organizacji](./media/percolate-tutorial/configure02.png)
 
-    a. W polu tekstowym **Adres URL logowania** wklej wartość **adresu URL logowania** skopiowaną z witryny Azure Portal.
+    1. W **adres URL logowania** pole, Wklej **adres URL logowania** wartością skopiowaną z witryny Azure portal.
 
-    b. W **identyfikator jednostki** pola tekstowego, Wklej wartość **usługi Azure AD identyfikator** skopiowanej w witrynie Azure portal.
+    1. W **identyfikator jednostki** pole, Wklej **usługi Azure AD identyfikator** wartością skopiowaną z witryny Azure portal.
 
-    c. W programie Notatnik, otwórz certyfikat zakodowany base-64, pobrany z witryny Azure portal, skopiuj jego zawartość i następnie wklej go do **x509 certyfikaty** pole.
+    1. Otwórz w Notatniku certyfikat zakodowany base-64, pobrany z witryny Azure portal. Skopiuj jego zawartość i wklej go do **x509 certyfikaty** pole.
 
-    d. W **atrybut E-mail** polu tekstowym wpisz **emailaddress**.
+    1. W **atrybut E-mail** wprowadź **emailaddress**.
 
-    e. **Adres URL metadanych dostawcy tożsamości** pole jest opcjonalne i czy masz **adres url metadanych Federacji aplikacji** skopiowaną z witryny Azure portal, wklej ją w **adres URL metadanych dostawcy tożsamości** pole tekstowe.
+    1. **Adres URL metadanych dostawcy tożsamości** pole pole jest opcjonalne. Jeśli został skopiowany **adres Url metadanych Federacji aplikacji** w witrynie Azure portal, wkleić go w tym polu.
 
-    f. Wybierz **nie** jako **AuthNRequests powinny być podpisane?**.
+    1. W **AuthNRequests powinny być podpisane?** listy wybierz **nie**.
 
-    g. Wybierz **nie** jako **włączyć logowanie Jednokrotne automatycznej aprowizacji**.
+    1. W **włączyć logowanie Jednokrotne automatycznej aprowizacji** listy wybierz **nie**.
 
-    h. Kliknij pozycję **Zapisz**.
+    1. Wybierz pozycję **Zapisz**.
 
-### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
+W tej sekcji utworzysz użytkownika testu o nazwie Britta Simon w witrynie Azure portal.
 
-1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
+1. W witrynie Azure portal wybierz **usługi Azure Active Directory** w okienku po lewej stronie wybierz **użytkowników**, a następnie wybierz pozycję **wszyscy użytkownicy**:
 
-    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
+    ![Wybierz opcję Wszyscy użytkownicy](common/users.png)
 
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+2. Wybierz **nowego użytkownika** w górnej części ekranu:
 
-    ![Przycisk Nowy użytkownik](common/new-user.png)
+    ![Wybierz nowego użytkownika](common/new-user.png)
 
-3. We właściwościach użytkownika wykonaj następujące kroki.
+3. W **użytkownika** okna dialogowego pole, wykonaj następujące kroki.
 
-    ![Okno dialogowe Użytkownik](common/user-properties.png)
+    ![Okno dialogowe użytkownika](common/user-properties.png)
 
-    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+    1. W polu **Nazwa** wpisz **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola brittasimon@yourcompanydomain.extension. Na przykład: BrittaSimon@contoso.com
+    1. W **nazwa_użytkownika** wprowadź **BrittaSimon @\<domenatwojejfirmy >.\< Rozszerzenia >**. (Na przykład BrittaSimon@contoso.com.)
 
-    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
+    1. Wybierz **Pokaż hasło**i zanotuj wartość, która znajduje się w **hasło** pole.
 
-    d. Kliknij pozycję **Utwórz**.
+    1. Wybierz pozycję **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do przesączyć.
+W tej sekcji można udostępnić Britta Simon do jej udostępnienie Przesączyć za pomocą usługi Azure AD logowania jednokrotnego.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **przesączyć**.
+1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz pozycję **przesączyć**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
 2. Na liście aplikacji wybierz **przesączyć**.
 
-    ![Link przesączyć na liście aplikacji](common/all-applications.png)
+    ![Lista aplikacji](common/all-applications.png)
 
-3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
+3. W okienku po lewej stronie wybierz **użytkowników i grup**:
 
-    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
+    ![Wybieranie pozycji Użytkownicy i grupy](common/users-groups-blade.png)
 
-4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
+4. Wybierz pozycję **Dodaj użytkownika**, a następnie **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
 
-    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
+    ![Wybieranie pozycji Użytkownicy i grupy](common/add-assign-user.png)
 
-5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+5. W **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** listy użytkowników, a następnie kliknij **wybierz** znajdujący się u dołu ekranu.
 
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+6. Jeśli oczekujesz wartość roli dla asercji SAML **wybierz rolę** okna dialogowego wybierz odpowiednią rolę dla użytkownika z listy. Kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
 
-7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+7. W oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Przypisz**.
 
-### <a name="create-percolate-test-user"></a>Tworzenie użytkownika testowego przesączyć
+### <a name="create-a-percolate-test-user"></a>Tworzenie użytkownika testowego przesączyć
 
-Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do przesączyć, musi być obsługiwana w przesączyć. W przesączyć Inicjowanie obsługi administracyjnej jest zadanie ręczne.
+Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do przesączyć, należy dodać je do przesączyć. Należy je dodać ręcznie.
 
-**Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
+Aby utworzyć konto użytkownika, wykonaj następujące czynności:
 
-1. Zaloguj się do przesączyć jako Administrator.
+1. Zaloguj się do przesączyć jako administrator.
 
-2. Z lewej strony paska menu, kliknij pozycję **użytkowników** w obszarze **organizacji** i przejdź do **nowi użytkownicy**.
+2. W okienku po lewej stronie wybierz **użytkowników** w obszarze **organizacji**. Wybierz **nowi użytkownicy**:
 
-    ![Konfigurowanie logowania jednokrotnego](./media/percolate-tutorial/configure03.png)
+    ![Wybierz nowego użytkownika](./media/percolate-tutorial/configure03.png)
 
-3. Na **tworzenia użytkowników** strony, wykonaj następujące czynności:
+3. Na **tworzenia użytkowników** strony, wykonaj następujące kroki.
 
-    ![Konfigurowanie logowania jednokrotnego](./media/percolate-tutorial/configure04.png)
+    ![Utwórz stronę użytkownicy](./media/percolate-tutorial/configure04.png)
 
-    a. W **E-mail** tekstu wprowadź adres e-mail użytkownika, takich jak brittasimon@contoso.com.
+    1. W **E-mail** wprowadź adres e-mail użytkownika. Na przykład brittasimon@contoso.com.
 
-    b. W **imię i nazwisko** tekstu wprowadź nazwę użytkownika, takich jak **Brittasimon**.
+    1. W **imię i nazwisko** wprowadź nazwę użytkownika. Na przykład **Brittasimon**.
 
-    c. Kliknij przycisk **tworzenia użytkowników**.
+    1. Wybierz **tworzenia użytkowników**.
 
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+Teraz należy przetestować konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego za pomocą panelu dostępu.
 
-Po kliknięciu kafelka przesączyć w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze przesączyć, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po wybraniu kafelka przesączyć w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze przesączyć wystąpienia, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji, zobacz [dostępu i użycia aplikacji w portalu Moje aplikacje](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Samouczków dotyczących integrowania aplikacji SaaS przy użyciu usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

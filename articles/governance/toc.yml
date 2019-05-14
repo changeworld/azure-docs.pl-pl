@@ -22,25 +22,12 @@
       href: policy/overview.md
     - name: Strategie
       href: blueprints/overview.md
-- name: Implementacje
-  expanded: true
+- name: Struktura wdrażania chmury
   items:
-    - name: Wdrożenie rozwiązania Enterprise Cloud
-      items:
-        - name: Co to jest nadzór nad zasobami w chmurze?
-          href: /azure/architecture/cloud-adoption/getting-started/what-is-governance?toc=/azure/governance/toc.json
-        - name: Nadzór nad dostępem do zasobów na platformie Azure
-          href: /azure/architecture/cloud-adoption/getting-started/azure-resource-access?toc=/azure/governance/toc.json
-        - name: Projekt nadzoru dla jednego zespołu
-          href: /azure/architecture/cloud-adoption/governance/governance-single-team?toc=/azure/governance/toc.json
-        - name: Projekt nadzoru dla wielu zespołów
-          href: /azure/architecture/cloud-adoption/governance/governance-multiple-teams?toc=/azure/governance/toc.json
-    - name: Szkielet platformy Azure dla przedsiębiorstw
-      items:
-        - name: Narzucony ład dotyczący subskrypcji
-          href: /azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=/azure/governance/toc.json
-        - name: Implementowanie szkieletu platformy Azure dla przedsiębiorstw
-          href: /azure/architecture/cloud-adoption/appendix/azure-scaffold-examples?toc=/azure/governance/toc.json
+    - name: Omówienie
+      href: /azure/architecture/cloud-adoption/index?toc=/azure/governance/toc.json
+    - name: Omówienie ładu
+      href: /azure/architecture/cloud-adoption/governance/index?toc=/azure/governance/toc.json
 - name: Zasoby
   items:
     - name: Harmonogram działania dla platformy Azure

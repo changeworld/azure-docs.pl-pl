@@ -59,6 +59,8 @@
     - name: Typy i rozmiary maszyn wirtualnych
       href: sizes.md
       items:
+        - name: Maszyny wirtualne generacji 2
+          href: generation-2.md
         - name: Zastosowania ogólne
           href: sizes-general.md
           displayName: Dsv3 Dv3 DSv2 Dv2 Av2

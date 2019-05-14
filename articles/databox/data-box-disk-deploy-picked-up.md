@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/06/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 023542dbc22234fc57e4ce8b662a9760be4efe04
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 8df9c2a5e45cf222debc733b3e051c3f707715c5
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150759"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603089"
 ---
 # <a name="tutorial-return-azure-data-box-disk-and-verify-data-upload-to-azure"></a>Samouczek: wysyłka zwrotna urządzenia Azure Data Box Disk i weryfikowanie przekazania danych na platformę Azure
 
@@ -56,7 +56,7 @@ Jeśli zwraca urządzenia w Stanach Zjednoczonych lub Kanadzie, należy wykonać
 2. Zamknij i zaklej opakowanie wysyłkowe. Upewnij się, że zwrotna etykieta wysyłkowa jest widoczna.
 3. Zaplanować odbioru UPS. Aby zaplanować odbioru:
 
-    - Wywołanie lokalne UPS (specyficzne dla kraju darmowy numer).
+    - Wywołanie lokalne UPS (specyficzne dla kraju/regionu darmowy numer).
     - W swojej rozmowy oferty odwrotnej wydanie numer, jak pokazano w drukowanej etykiety śledzenia.
     - Jeśli numer śledzenia nie jest ujęty w cudzysłów, UPS będą wymagać dodatkowych opłaty są naliczane podczas odbioru.
     - Zamiast planować odbiór, można również usunąć off dysku Data Box w najbliższej lokalizacji nadania.
@@ -78,13 +78,13 @@ Jeśli zwraca urządzenie w Europie, wykonaj następujące kroki.
 
 2. Zamknij i zaklej opakowanie wysyłkowe. Upewnij się, że zwrotna etykieta wysyłkowa jest widoczna.
 3. Jeśli zwracasz urządzenie w Europie za pośrednictwem firmy DHL, zamów odbiór paczki przez firmę DHL w witrynie internetowej firmy, podając numer listu przewozowego.
-4. Przejdź do lokalnej witryny firmy DHL Express i wybierz pozycję **Utwórz przesyłkę zwrotną**.
+4. Przejdź do witryny sieci Web Express przez firmę DHL kraj/region, a następnie wybierz **Zarezerwuj kolekcji Courier > eReturn wydania**.
 
     ![Przez firmę DHL wysyłki zwrotnej](media/data-box-disk-deploy-picked-up/dhl-ship-1.png)
     
 3. Podaj numer listu przewozowego i kliknij przycisk **Zamówienie kuriera**, aby zaplanować odebranie przesyłki.
 
-      ![Zamówienie kuriera](media/data-box-disk-deploy-picked-up/dhl-ship-2.png)
+      ![Zaplanuj odebranie](media/data-box-disk-deploy-picked-up/dhl-ship-2.png)
 
 ### <a name="pick-up-in-asia-pacific-region"></a>Podnieś w regionie Azja i Pacyfik
 
@@ -99,7 +99,7 @@ Centra danych platformy Azure w Australii mają wiadomość z powiadomieniem dod
 
     - Nazwa zamówienia
     - Adres
-    - Nazwisko osoby kontaktowej
+    - Nazwa kontaktu
 
 #### <a name="pick-up-in-japan"></a>Podnieś w Japonii
 

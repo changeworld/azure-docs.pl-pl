@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: sngun
-ms.openlocfilehash: 64aef17663fdc28a467172bbe8954fc06fdb7ff0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7574985dbcc502d03bc886c7651c859b22968c5f
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60686508"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596090"
 ---
 # <a name="build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>Tworzenie aplikacji konsolowej .NET do zarządzania danymi na koncie usługi Azure Cosmos DB — interfejs API SQL
 
@@ -40,7 +40,7 @@ Ten samouczek przedstawia sposób wykonania następujących czynności:
 > - Tworzenie dokumentów JSON
 > - Zapytanie do kolekcji
 > - Aktualizowanie dokumentów JSON
-> - Usuwanie dokumentu
+> - Usuń dokument
 > - Usuwanie bazy danych
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -68,7 +68,7 @@ Aby uruchomić pobrany kompletnego rozwiązania:
 1. W *App.config* pliku, zaktualizuj `EndpointUrl` i `PrimaryKey` wartości zgodnie z opisem w [Połącz z kontem usługi Azure Cosmos DB](#Connect) sekcji.
 1. Wybierz **debugowania** > **Rozpocznij bez debugowania** lub naciśnij **Ctrl**+**F5** Aby skompilować i uruchomić aplikację.
 
-## <a name="create-an-azure-cosmos-db-account"></a>Tworzenie konta usługi Azure Cosmos DB
+## <a name="create-an-azure-cosmos-db-account"></a>Utwórz konto usługi Azure Cosmos DB
 
 Wykonaj te instrukcje, aby utworzyć konto usługi Azure Cosmos DB w witrynie Azure portal. Jeśli masz już konto usługi Azure Cosmos DB, przejdź do sekcji [konfigurowanie rozwiązania programu Visual Studio](#SetupVS). 
 
@@ -145,6 +145,20 @@ Teraz zacznij pisanie kodu. Pełne *Project.cs* plik znajduje się w tym samoucz
       {
         client = new DocumentClient(new Uri(EndpointUrl), PrimaryKey);
       }
+   ```
+
+   Jeśli używasz obiektu serwera proxy do łączenia z usługą Azure Cosmos DB, należy w zamian użyć poniższy blok kodu można utworzyć obiektu DocumentClient. Przykład podany w tym dokumencie nie używa obiekt serwera proxy, więc w poniższym przykładzie przedstawiono tylko dla Twojej informacji:
+
+   ```csharp
+   HttpClientHandler handler = new HttpClientHandler()
+   {
+     Proxy = proxyObject
+     UseProxy = true,
+   };
+
+   //Pass handler to the constructor of DocumentClient.
+   DocumentClient client = new DocumentClient(new Uri(EndpointUrl), PrimaryKey, handler);
+   
    ```
    
 1. Dodaj następujący kod do `Main` metodę, aby uruchomić `GetStartedDemo` zadania. `Main` Metoda przechwytuje wyjątki i zapisuje je w konsoli.

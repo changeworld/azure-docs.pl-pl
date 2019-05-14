@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracja usługi Azure Active Directory z raportowaniem cena Predictix | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Predictix cena raportowania.
+description: W tym samouczku dowiesz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Predictix cena raportowania.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,192 +15,193 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: aa96bcbc7c75f1a4dcd28a5dbe7479f99aabe908
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8074919a61ed4f2e3d0b127c13e733b0c485bf62
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60341934"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65560552"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-price-reporting"></a>Samouczek: Integracja usługi Azure Active Directory z raportowaniem cena Predictix
 
 W tym samouczku dowiesz się, jak zintegrować Predictix cena raportowania za pomocą usługi Azure Active Directory (Azure AD).
-Integracja raportowania cena Predictix z usługą Azure AD zapewnia następujące korzyści:
 
-* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do zgłaszania cen Predictix.
-* Użytkownikom można automatycznie zalogowany do zgłaszania cen Predictix (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD.
-* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
+Ta integracja zapewnia następujące korzyści:
 
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+* Możesz użyć usługi Azure AD w celu kontrolowania, kto ma dostęp do zgłaszania cen Predictix.
+* Aby umożliwić użytkownikom automatyczne logowanie do zgłaszania cen Predictix (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
+* Możesz zarządzać konta w jednej centralnej lokalizacji: witryna Azure portal.
+
+Aby dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Single sign-on to applications in Azure Active Directory (Logowanie jednokrotne do aplikacji w usłudze Azure Active Directory)](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+
+Jeśli nie masz subskrypcji platformy Azure, [Utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed rozpoczęciem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z raportowaniem cena Predictix, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z raportowaniem cena Predictix, potrzebne są:
 
-* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
-* Raportowanie cena Predictix logowanie jednokrotne włączone subskrypcji
+* Subskrypcja usługi Azure AD. Jeśli nie ma środowiska usługi Azure AD, możesz zarejestrować się w celu [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/) subskrypcji.
+* Subskrypcja Predictix cena raportowania jest logowanie jednokrotne włączone.
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
+W ramach tego samouczka możesz skonfigurować i testowanie usługi Azure AD rejestracji jednokrotnej w środowisku testowym.
 
-* Raportowanie cena Predictix obsługuje **SP** jednokrotne logowanie inicjowane przez
+* Raportowanie cena Predictix obsługuje logowanie Jednokrotne zainicjowane przez SP.
 
 ## <a name="adding-predictix-price-reporting-from-the-gallery"></a>Dodawanie Predictix cena raportowania z galerii
 
-Aby skonfigurować integrację z raportowaniem daje używanie Predictix ceny w usłudze Azure AD, należy dodać zgłoszenie cena Predictix z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację Predictix cena raportowania w usłudze Azure AD, należy dodać zgłoszenie cena Predictix z galerii z listą zarządzanych aplikacji SaaS.
 
-**Aby dodać funkcję raportowania cena Predictix z galerii, wykonaj następujące czynności:**
+1. W [witryny Azure portal](https://portal.azure.com), w okienku po lewej stronie wybierz **usługi Azure Active Directory**:
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+    ![Wybierz pozycję Azure Active Directory](common/select-azuread.png)
 
-    ![Przycisk Azure Active Directory](common/select-azuread.png)
+2. Przejdź do **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje**:
 
-2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
+    ![W bloku aplikacji przedsiębiorstwa](common/enterprise-applications.png)
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+3. Aby dodać aplikację, wybierz pozycję **nową aplikację** w górnej części okna:
 
-3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+    ![Wybierz nową aplikację](common/add-new-app.png)
 
-    ![Przycisk Nowa aplikacja](common/add-new-app.png)
+4. W polu wyszukiwania wprowadź **raportowania cena Predictix**. Wybierz **raportowania cena Predictix** w wynikach wyszukiwania, a następnie wybierz **Dodaj**.
 
-4. W polu wyszukiwania wpisz **raportowania cena Predictix**, wybierz opcję **raportowania cena Predictix** z panelu wynik następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+     ![Wyniki wyszukiwania](common/search-new-app.png)
 
-     ![Predictix cena raportowania na liście wyników](common/search-new-app.png)
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
+W tej sekcji możesz skonfigurować i przetestować usługę Azure AD logowanie jednokrotne z raportowaniem cena Predictix przy użyciu użytkownika testu o nazwie Britta Simon.
+Aby włączyć logowanie jednokrotne, należy ustanowić relację między użytkownikiem usługi Azure AD i odpowiedniego użytkownika w usługach Reporting cena Predictix.
 
-W tej sekcji, konfigurowania i testowania usługi Azure AD logowanie jednokrotne za pomocą Predictix cena raportów w oparciu o nazwie użytkownika testowego **Britta Simon**.
-Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w usługach Reporting cena Predictix musi zostać ustanowione.
+Do konfigurowania i testowania usługi Azure AD logowanie jednokrotne z raportowaniem cena Predictix, należy wykonać następujące czynności:
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne z raportowaniem cena Predictix, należy wykonać poniższe bloki konstrukcyjne:
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  do włączenia tej funkcji dla użytkowników.
+2. **[Konfigurowanie raportowania cena Predictix logowania jednokrotnego](#configure-predictix-price-reporting-single-sign-on)**  na stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  do testowania usługi Azure AD logowania jednokrotnego.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  włączyć usługi Azure AD logowanie jednokrotne dla użytkownika.
+5. **[Tworzenie użytkownika testowego zgłaszania cen Predictix](#create-a-predictix-price-reporting-test-user)**  połączony na reprezentację w postaci usługi Azure AD użytkownika.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  można sprawdzić, czy konfiguracja działa.
 
-1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
-2. **[Konfigurowanie Predictix cena raportowania logowania jednokrotnego](#configure-predictix-price-reporting-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
-5. **[Utwórz zgłoszenie cena Predictix użytkownika testowego](#create-predictix-price-reporting-test-user)**  — aby odpowiednikiem Britta Simon Predictix cena raportowania połączonego z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
-
-W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
+W tej sekcji włączysz usługę Azure AD logowania jednokrotnego w witrynie Azure portal.
 
 Aby skonfigurować usługę Azure AD logowanie jednokrotne z raportowaniem cena Predictix, wykonaj następujące czynności:
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **raportowania cena Predictix** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. W [witryny Azure portal](https://portal.azure.com/)na **raportowania cena Predictix** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**:
 
-    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
+    ![Wybierz opcję logowania jednokrotnego](common/select-sso.png)
 
-2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
+2. W **wybierz jedną metodę logowania jednokrotnego** okno dialogowe, wybierz **SAML/WS-Fed** trybu, aby włączyć logowanie jednokrotne:
 
-    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
+    ![Wybierz metodę logowania jednokrotnego](common/select-saml-option.png)
 
-3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
+3. Na **Ustaw się logowanie jednokrotne z SAML** wybierz opcję **Edytuj** ikonę, aby otworzyć **podstawową konfigurację protokołu SAML** okno dialogowe:
 
-    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
+    ![Ikona edycji](common/edit-urls.png)
 
-4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
+4. W **podstawową konfigurację protokołu SAML** okna dialogowego pole, wykonaj następujące czynności.
 
-    ![Predictix cena raportowania domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/sp-identifier.png)
+    ![Podstawowy plik konfiguracji SAML, okno dialogowe](common/sp-identifier.png)
 
-    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://<companyname-pricing>.predictix.com/sso/request`
+    1. W **adres URL logowania** wprowadź adres URL, w tym wzorcu:
 
-    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, korzystając z następującego wzorca:
+       `https://<companyname-pricing>.predictix.com/sso/request`
 
-    | |
-    |--|
-    | `https://<companyname-pricing>.predictix.com` |
-    | `https://<companyname-pricing>.dev.predictix.com` |
-    | |
+    1. W **identyfikator jednostki** wprowadź adres URL, w tym wzorcu:
+
+        | |
+        |--|
+        | `https://<companyname-pricing>.predictix.com` |
+        | `https://<companyname-pricing>.dev.predictix.com` |
+        | |
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta raportowania cena Predictix](https://www.infor.com/company/customer-center/) do uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Te wartości symboli zastępczych. Należy użyć rzeczywisty adres URL logowania i identyfikator. Skontaktuj się z pomocą [Predictix cena zgłoszenie zespołu pomocy technicznej](https://www.infor.com/company/customer-center/) można pobrać wartości. Może również odnosić się do wzorców objętego **podstawową konfigurację protokołu SAML** okno dialogowe, w witrynie Azure portal.
 
-5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
+5. Na **Ustaw się logowania jednokrotnego przy użyciu protokołu SAML** stronie **certyfikat podpisywania SAML** zaznacz **Pobierz** łącze obok **certyfikat (Base64)** , zgodnie z wymaganiami, a następnie Zapisz certyfikat na komputerze:
 
     ![Link do pobierania certyfikatu](common/certificatebase64.png)
 
-6. Na **konfigurowanie raportowania cena Predictix** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+6. W **konfigurowanie raportowania cena Predictix** sekcji, skopiuj odpowiednie adresy URL, w zależności od wymagań.
 
-    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
+    ![Skopiuj adresy URL konfiguracji](common/copy-configuration-urls.png)
 
-    a. Adres URL logowania
+    1. **Adres URL logowania**.
 
-    b. Identyfikator usługi Azure AD
+    1. **Usługa Azure AD identyfikator**.
 
-    c. Adres URL wylogowywania
+    1. **Adres URL wylogowania**.
 
-### <a name="configure-predictix-price-reporting-single-sign-on"></a>Konfigurowanie Predictix o cenach logowania jednokrotnego
+### <a name="configure-predictix-price-reporting-single-sign-on"></a>Konfigurowanie raportowania cena Predictix logowania jednokrotnego
 
-Do konfigurowania logowania jednokrotnego na **raportowania cena Predictix** stronie, musisz wysłać pobrany **certyfikat (Base64)** i odpowiednie skopiowany adresy URL z portalu Azure, aby [Predictix ceny Zgłoszenie zespołu pomocy technicznej](https://www.infor.com/company/customer-center/). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
+Aby skonfigurować logowanie jednokrotne stronie Predictix cena raportowania, trzeba będzie wysłać certyfikat, który został pobrany i adresów URL, które zostały skopiowane z portalu Azure w celu [Predictix cena zgłoszenie zespołu pomocy technicznej](https://www.infor.com/company/customer-center/). Ten zespół gwarantuje, że połączenia logowania jednokrotnego SAML jest prawidłowo po obu stronach.
 
-### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
+W tej sekcji utworzysz użytkownika testu o nazwie Britta Simon w witrynie Azure portal.
 
-1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
+1. W witrynie Azure portal wybierz **usługi Azure Active Directory** w okienku po lewej stronie wybierz **użytkowników**, a następnie wybierz pozycję **wszyscy użytkownicy**:
 
-    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
+    ![Wybierz opcję Wszyscy użytkownicy](common/users.png)
 
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+2. Wybierz **nowego użytkownika** w górnej części ekranu:
 
-    ![Przycisk Nowy użytkownik](common/new-user.png)
+    ![Wybierz nowego użytkownika](common/new-user.png)
 
-3. We właściwościach użytkownika wykonaj następujące kroki.
+3. W **użytkownika** okna dialogowego pole, wykonaj następujące kroki.
 
-    ![Okno dialogowe Użytkownik](common/user-properties.png)
+    ![Okno dialogowe użytkownika](common/user-properties.png)
 
-    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+    1. W polu **Nazwa** wpisz **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola brittasimon@yourcompanydomain.extension. Na przykład: BrittaSimon@contoso.com
+    1. W **nazwa_użytkownika** wprowadź **BrittaSimon @\<domenatwojejfirmy >.\< Rozszerzenia >**. (Na przykład BrittaSimon@contoso.com.)
 
-    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
+    1. Wybierz **Pokaż hasło**i zanotuj wartość, która znajduje się w **hasło** pole.
 
-    d. Kliknij pozycję **Utwórz**.
+    1. Wybierz pozycję **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do zgłaszania cen Predictix.
+W tej sekcji można udostępnić Britta Simon korzystać z usługi Azure AD logowania jednokrotnego przez udostępnienie jej do raportowania cena Predictix.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **raportowania cena Predictix**.
+1. W witrynie Azure portal wybierz pozycję **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz pozycję **Predictix cena raportowania**.
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+    ![Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
 2. Na liście aplikacji wybierz **raportowania cena Predictix**.
 
-    ![Łącza zgłaszania cen Predictix na liście aplikacji](common/all-applications.png)
+    ![Lista aplikacji](common/all-applications.png)
 
-3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
+3. W okienku po lewej stronie wybierz **użytkowników i grup**:
 
-    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
+    ![Wybieranie pozycji Użytkownicy i grupy](common/users-groups-blade.png)
 
-4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
+4. Wybierz pozycję **Dodaj użytkownika**, a następnie **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
 
-    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
+    ![Wybieranie pozycji Dodaj użytkownika](common/add-assign-user.png)
 
-5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+5. W **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** listy użytkowników, a następnie kliknij **wybierz** znajdujący się u dołu ekranu.
 
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+6. Jeśli oczekujesz wartość roli dla asercji SAML **wybierz rolę** okna dialogowego wybierz odpowiednią rolę dla użytkownika z listy. Kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
 
-7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+7. W oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Przypisz**.
 
-### <a name="create-predictix-price-reporting-test-user"></a>Utwórz zgłoszenie cena Predictix użytkownika testowego
+### <a name="create-a-predictix-price-reporting-test-user"></a>Tworzenie użytkownika testowego Predictix cena raportowania
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon Predictix cena raportowania. Praca z [Predictix cena zgłoszenie zespołu pomocy technicznej](https://www.infor.com/company/customer-center/) Aby dodać użytkowników na platformie Predictix cena raportowania. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
+Następnie należy utworzyć użytkownika o nazwie Britta Simon Predictix cena raportowania. Praca z [Predictix cena zgłoszenie zespołu pomocy technicznej](https://www.infor.com/company/customer-center/) do dodawania użytkowników. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
 
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+Teraz należy przetestować konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego za pomocą panelu dostępu.
 
-Po kliknięciu kafelka Predictix cena raportowania w panelu dostępu, możesz powinny być automatycznie zalogowany do zgłaszania Predictix cen, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po wybraniu kafelka Predictix cena raportowania w panelu dostępu powinny być automatycznie zarejestrowaniu w usłudze raportowania cena Predictix wystąpienia, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji, zobacz [dostępu i użycia aplikacji w portalu Moje aplikacje](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Samouczków dotyczących integrowania aplikacji SaaS przy użyciu usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
