@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 2352594b168f5d37ddb6a46064f9ac5801fb035f
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 8d3e25f8217f3cc8772de9fbbb06a407008ca6f6
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508408"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65593888"
 ---
 # <a name="fine-tune-text-to-speech-output"></a>Dostosowywanie danych wyjściowych zamiany tekstu na mowę
 
@@ -35,7 +35,7 @@ Przed rozpoczęciem można dostrajanie zamiany tekstu na mowę danych wyjściowy
    >Po utworzeniu zasobu mowy w witrynie Azure portal, informacje o lokalizacji platformy Azure jest musi być zgodna z regionem głosu TTS. Głos TTS neuronowych obsługuje zestaw sub lokalizacji platformy Azure. Aby uzyskać pełną listę pomocy technicznej, zobacz [regionów](regions.md#text-to-speech).
 
    >[!NOTE]
-   >Musisz mieć F0 lub klucza S0 utworzone w witrynie Azure portal, zanim użyjesz usługi. Głosu dostrajania **nie** obsługuje [30-dniowej bezpłatnej wersji próbnej klucz](https://review.docs.microsoft.com/en-us/azure/cognitive-services/speech-service/get-started?branch=release-build-cogserv-speech-services#free-trial).
+   >Musisz mieć F0 lub klucza S0 utworzone w witrynie Azure portal, zanim użyjesz usługi. Głosu dostrajania **nie** obsługuje [30-dniowej bezpłatnej wersji próbnej klucz](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started?branch=release-build-cogserv-speech-services#free-trial).
 
 4. Zaloguj się do [dostosowywania głosu](https://aka.ms/voicetuning) portalu i Połącz z subskrypcją usług przetwarzania mowy. Wybierz pojedynczej subskrypcji usług przetwarzania mowy, a następnie utworzyć projekt.
 5. Wybierz **dostrajania nowych**. Następnie wykonaj następujące kroki:
@@ -43,7 +43,7 @@ Przed rozpoczęciem można dostrajanie zamiany tekstu na mowę danych wyjściowy
    * Znajdź i zaznacz **wszystkie subskrypcje**.  
    * Wybierz **połączyć z istniejącą subskrypcją**.  
      ![Połącz istniejącą subskrypcję](./media/custom-voice/custom-voice-connect-subscription.png).
-   * Wprowadź klucz subskrypcji usług przetwarzania mowy platformy Azure, a następnie wybierz **Dodaj**. Klucze subskrypcji są dostępne w portalu dostosowania mowy [stronę subskrypcji](https://go.microsoft.com/fwlink/?linkid=2090458). Można również pobrać kluczy, w okienku zarządzanie zasobami w [witryny Azure portal](https://portal.azure.com/). 
+   * Wprowadź klucz subskrypcji usług przetwarzania mowy platformy Azure, a następnie wybierz **Dodaj**. Klucze subskrypcji są dostępne w portalu dostosowania mowy [stronę subskrypcji](https://go.microsoft.com/fwlink/?linkid=2090458). Można również pobrać kluczy, w okienku zarządzanie zasobami w [witryny Azure portal](https://portal.azure.com/).
    * Jeśli masz więcej niż jedną subskrypcję usług przetwarzania mowy, którego chcesz użyć, powtórz te czynności dla każdej subskrypcji.
 
 ## <a name="customize-the-text-to-speech-output"></a>Dostosuj tekst na mowę danych wyjściowych

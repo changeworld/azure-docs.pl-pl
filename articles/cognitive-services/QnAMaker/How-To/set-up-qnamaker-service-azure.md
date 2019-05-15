@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 04/02/2019
+ms.date: 05/13/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 90e7abf229e0ee1ca396150fee0c1f0970d257aa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 239633950e4672693e3684345749f9c46f01c037
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61372272"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65605667"
 ---
 # <a name="create-a-qna-maker-service"></a>Tworzenie usługi QnA Maker
 
@@ -26,11 +26,7 @@ Przed utworzeniem żadnych baz wiedzy usługi QnA Maker, należy najpierw skonfi
 
 Ta procedura służy do wdrażania zasobów platformy Azure w kilku. Razem te zasoby zarządzania zawartością w bazie wiedzy knowledge base i oferuje możliwości, udzielenie odpowiedzi na pytanie, chociaż punkt końcowy.
 
-1. Zaloguj się w witrynie [Azure Portal](<https://portal.azure.com>).
-
-1. Wybierz **Dodaj nowy zasób**, wpisz "usługi qna maker" w polu wyszukiwania i wybierz zasób usługi QnA Maker
-
-    ![Utwórz nową usługę QnA Maker — dodać nowego zasobu](../media/qnamaker-how-to-setup-service/create-new-resource.png)
+1. Zaloguj się do witryny Azure portal i [tworzenia usługi QnA Maker](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) zasobów.
 
 1. Wybierz **Utwórz** zapoznanie się z warunków i postanowień.
 
@@ -42,8 +38,9 @@ Ta procedura służy do wdrażania zasobów platformy Azure w kilku. Razem te za
 
     * Wypełnij **nazwa** na unikatową nazwę do identyfikacji usługi QnA Maker. Ta nazwa identyfikuje również punkt końcowy usługi QnA Maker, do którego mają zostać skojarzone z bazy wiedzy.
     * Wybierz **subskrypcji** , w którym zostanie wdrożone do zasobu usługi QnA Maker.
-    * Wybierz **warstwę cenową zarządzania** usług zarządzania usługi QnA Maker (portal i interfejsów API zarządzania). Zobacz [tutaj](https://aka.ms/qnamaker-pricing) Aby uzyskać szczegółowe informacje o cenach jednostek SKU.
+    * Wybierz **warstwa cenowa** usług zarządzania usługi QnA Maker (portal i interfejsów API zarządzania). Zobacz [tutaj](https://aka.ms/qnamaker-pricing) Aby uzyskać szczegółowe informacje o cenach jednostek SKU.
     * Utwórz nową **grupy zasobów** (zalecane) lub użyć istniejącego, w której ma zostać wdrożony tego zasobu usługi QnA Maker. Usługa QnA Maker tworzy kilka zasobów platformy Azure; Podczas tworzenia grupy zasobów do przechowywania tych zasobów, można łatwo znaleźć, zarządzanie, a następnie usunąć tych zasobów, nazwę grupy zasobów.
+    * Wybierz **lokalizację grupy zasobów**.
     * Wybierz **warstwa cenowa wyszukiwania** usługi Azure Search. Jeśli widzisz opcję w warstwie bezpłatna wyszarzone, oznacza to, że masz już wdrożone w subskrypcji warstwy bezpłatna usługi Azure Search. W takim przypadku konieczne będzie rozpoczęcie od warstwy podstawowa usługi Azure Search. Zobacz szczegóły cennika usługi Azure search [tutaj](https://azure.microsoft.com/pricing/details/search/).
     * Wybierz **Lokalizacja wyszukiwania** miejscu danych usługi Azure Search do wdrożenia. Ograniczenia, w której muszą być przechowywane dane klientów poinformuje lokalizacji, wybrany dla usługi Azure Search.
     * Nadaj nazwę usłudze App service w **nazwy aplikacji**.

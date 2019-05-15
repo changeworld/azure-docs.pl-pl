@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 05/13/2019
 ms.author: diberry
-ms.openlocfilehash: 3e54e8dcb6efa9251262c651730376a0d04edcf9
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: f80e6a765cc165033a548ba6a5ee7bead0de872e
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65144966"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65594087"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>Użyj aktywnej nauki usprawniających bazy wiedzy
 
@@ -46,7 +46,7 @@ Po pytania są sugerowane w portalu narzędzia QnA Maker, należy przejrzeć i z
 
 Aktywne uczenie jest obsługiwana w wersji środowiska uruchomieniowego 4.4.0 i nowszych. Jeśli wiedzy został utworzony we wcześniejszej wersji, [uaktualnić swoje środowisko uruchomieniowe](troubleshooting-runtime.md#how-to-get-latest-qnamaker-runtime-updates) Aby użyć tej funkcji. 
 
-## <a name="best-practices"></a>Najlepsze praktyki
+## <a name="best-practices"></a>Najlepsze rozwiązania
 
 Aby uzyskać najlepsze rozwiązania związane z używaniem aktywne uczenie, zobacz [najlepsze praktyki](../Concepts/best-practices.md#active-learning).
 
@@ -60,7 +60,7 @@ Algorytm ustalania odległości między elementami nie jest proste obliczenia. Z
 
 Aktywna nauka jest domyślnie wyłączona. Włącz ją wyświetlić sugerowane pytania. 
 
-1. Wybierz **Publikuj** publikowanie bazy wiedzy knowledge base. Aktywna nauka zapytania są zbierane z tylko endpoint prognoz GenerateAnswer interfejsu API. Zapytania, które okienko testowania, w portalu narzędzia Qna Maker nie wpływa na aktywne uczenie.
+1. Wybierz **Publikuj** publikowanie bazy wiedzy knowledge base. Aktywna nauka zapytania są zbierane z tylko endpoint prognoz GenerateAnswer interfejsu API. Zapytania, które okienko testowania, w portalu narzędzia QnA Maker nie wpływa na aktywne uczenie.
 
 1. Aby włączyć aktywne uczenie się na, kliknij pozycję Twoje **nazwa**, przejdź do [ **ustawienia usługi** ](https://www.qnamaker.ai/UserSettings) w prawym górnym rogu portalu narzędzia QnA Maker.  
 
@@ -208,7 +208,7 @@ Stan 204 i nie treści odpowiedzi JSON zwrócą pomyślne odpowiedzi.
 
 Gdy Twoja aplikacja ma aktywne uczenie włączone i wyeksportować aplikację, `SuggestedQuestions` kolumna w pliku tsv przechowuje dane aktywne uczenie. 
 
-`SuggestedQuestions` Kolumny jest obiektem JSON informacji niejawne (`autosuggested`) i jawne (`usersuggested`) opinii. Przykładem obiektu JSON do pojedynczego zapytania przesłane przez użytkownika z `help` jest:
+`SuggestedQuestions` Kolumny jest obiektem JSON informacje pośrednie, `autosuggested`, jawne i `usersuggested` opinii. Przykładem obiektu JSON do pojedynczego zapytania przesłane przez użytkownika z `help` jest:
 
 ```JSON
 [

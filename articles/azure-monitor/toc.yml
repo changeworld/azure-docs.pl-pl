@@ -249,8 +249,6 @@
               href: platform/data-sources-json.md
             - name: Dane wydajności demona CollectD
               href: platform/data-sources-collectd.md
-            - name: Alerty programów Nagios i Zabbix
-              href: platform/data-sources-alerts-nagios-zabbix.md
             - name: Dziennik systemu
               href: platform/data-sources-syslog.md
             - name: Liczniki wydajności

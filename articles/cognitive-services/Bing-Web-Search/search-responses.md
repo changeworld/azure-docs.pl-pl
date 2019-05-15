@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 07fb655af25fe590effcb885e7b366346724b50a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 85087ce5a4fa3dd733f47a35bc18d76f1f4bc652
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60642824"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606693"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Typy struktury i odpowiedzi odpowiedzi interfejsu API wyszukiwania Bing w sieci Web  
 
@@ -314,7 +314,7 @@ Wyrażenie matematyczne może zawierać następujące funkcje:
 
 |Symbol|Opis|
 |------------|-----------------|
-|Sortowanie|Pierwiastek kwadratowy|
+|Sortuj|Pierwiastek kwadratowy|
 |SIN [x], Cos [x], Tan [x]<br />CSC [x] s [x] Cot [x]|Funkcje trygonometryczne (z argumentami w radianach)|
 |ArcSin[x], ArcCos[x], ArcTan[x]<br />ArcCsc[x], ArcSec[x], ArcCot[x]|Odwrotny funkcje trygonometryczne (w radianach, dzięki czemu wyników)|
 |EXP [x] E ^ x|Funkcja wykładnicza|
@@ -330,7 +330,7 @@ Jeśli użytkownik wprowadzi zapytania daty lub czasu, odpowiedź może zawiera�
 
 `timeZone` Odpowiedzi zawiera nazwę lokalizacji, bieżąca data i Godzina UTC w określonej lokalizacji i przesunięcie czasu UTC. Jeśli granic lokalizacji znajduje się w wielu strefach czasowych, odpowiedź zawiera bieżąca data i Godzina UTC wszystkich stref czasowych w granicach. Na przykład ponieważ stan Florida mieści się w dwóch strefach czasowych, odpowiedź zawiera lokalne datę i godzinę zarówno stref czasowych.  
 
-Jeśli zapytanie żąda czas stanu lub kraju, Bing określa podstawowy miasta w obrębie granicy geograficznej lokalizacji i zwraca go w `primaryCityTime` pola. Jeśli granica zawiera wiele stref czasowych, pozostałe stref czasowych są zwracane w `otherCityTimes` pola.
+Jeśli zapytanie żąda czas stanu lub kraju/regionu, Bing określa podstawowy miasta w obrębie granicy geograficznej lokalizacji i zwraca go w `primaryCityTime` pola. Jeśli granica zawiera wiele stref czasowych, pozostałe stref czasowych są zwracane w `otherCityTimes` pola.
 
 W poniższym przykładzie przedstawiono zapytania zwracające `timeZone` odpowiedzi.
 

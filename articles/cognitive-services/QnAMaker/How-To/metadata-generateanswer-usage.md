@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 04/16/2019
+ms.date: 05/10/2019
 ms.author: tulasim
-ms.openlocfilehash: b634467381dc97e4a733e862e86632a089bf5f67
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 278040cb487df6731df1ad3e18435f6e12ca9d50
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64727312"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65594057"
 ---
 # <a name="get-a-knowledge-answer-with-the-generateanswer-api-and-metadata"></a>Uzyskaj odpowiedzi wiedzy, za pomocą interfejsu API GenerateAnswer i metadane
 
@@ -113,7 +113,7 @@ Odpowiedź oznaczająca Powodzenie zwraca stan 200 i odpowiedź w formacie JSON.
 |Właściwość odpowiedzi (posortowane według wyników)|Przeznaczenie|
 |--|--|
 |wynik|Wynik klasyfikacji od 0 do 100.|
-|Identyfikator|Unikatowy identyfikator przypisany do odpowiedzi.|
+|Id|Unikatowy identyfikator przypisany do odpowiedzi.|
 |Pytania|Pytania, dostarczone przez użytkownika.|
 |Odpowiedź|Odpowiedź na pytanie.|
 |source|Nazwa źródła, z której wyjęto lub zapisany w bazie wiedzy knowledge base odpowiedź.|
@@ -148,7 +148,7 @@ Odpowiedź oznaczająca Powodzenie zwraca stan 200 i odpowiedź w formacie JSON.
 
 ## <a name="using-metadata-allows-you-to-filter-answers-by-custom-metadata-tags"></a>Przy użyciu metadanych pozwala na filtrowanie odpowiedzi według tagów niestandardowych metadanych
 
-Dodanie metadanych umożliwia filtrowanie odpowiedzi przez te tagi metadanych. Należy wziąć pod uwagę poniższe często zadawane pytania dotyczące danych. Dodaj metadane do bazy wiedzy, klikając ikonę metadanych.
+Dodanie metadanych umożliwia filtrowanie odpowiedzi przez te tagi metadanych. Dodawanie kolumny metadanych z **opcje wyświetlania** menu. Dodaj metadane do bazy wiedzy, klikając na temat metadanych **+** ikonę, aby dodać parę metadanych. Ta para składa się z jednego klucza i jedną wartość.
 
 ![Dodawanie metadanych](../media/qnamaker-how-to-metadata-usage/add-metadata.png)
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: travisw
 ms.custom: ''
-ms.openlocfilehash: 1344de526564ab623a51eb903951b6a2e866048d
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 1c5712fa8bbdb158992127f8f48d810a0a9b6f79
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65523488"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603477"
 ---
 # <a name="about-custom-voice-first-virtual-assistants-preview"></a>O niestandardowych asystentów wirtualnego głosu pierwszy (wersja zapoznawcza)
 
@@ -24,7 +24,9 @@ Niestandardowe asystentów wirtualnego przy użyciu usług przetwarzania mowy pl
 
    ![Diagram pojęciowy przepływu usługa aranżacji mowy linii bezpośredniej](media/voice-first-virtual-assistants/overview.png "przepływ kanału mowy")
 
-Bezpośrednie mowy wiersza i jej funkcjami dla niestandardowych asystentów wirtualnych pierwszej głosowych są idealne dodatku [wirtualny Asystent rozwiązania](https://docs.microsoft.com/azure/bot-service/bot-builder-virtual-assistant-introduction) i [szablonie](https://docs.microsoft.com/azure/bot-service/bot-builder-virtual-assistant-introduction). Chociaż bezpośrednie mowy wiersza można pracować z dowolnego zgodne bot, te zasoby zawierają wielokrotnego użytku linii bazowej środowiska konwersacji wysokiej jakości, a także wspólnego umiejętności obsługi i modele umożliwiające szybkie rozpoczęcie.
+
+Bezpośrednie mowy wiersza i jej funkcjami dla niestandardowych asystentów wirtualnych pierwszej głosowych są idealne dodatku [wirtualny Asystent rozwiązanie i szablonie](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview). Chociaż bezpośrednie mowy wiersza można pracować z dowolnego zgodne bot, te zasoby zawierają wielokrotnego użytku linii bazowej środowiska konwersacji wysokiej jakości, a także wspólnego umiejętności obsługi i modele umożliwiające szybkie rozpoczęcie.
+
 
 ## <a name="core-features"></a>Podstawowe funkcje
 

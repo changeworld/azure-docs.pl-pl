@@ -7,15 +7,15 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 04/11/2019
+ms.date: 05/13/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 04f6f9545861852e4a34d0b763d4278500d0b337
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0883b8e5ae2eab39fca6434141d6591432ad341e
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61293096"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595698"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Obsługa języka naturalnego dla usług Azure Cognitive Services
 
@@ -28,7 +28,7 @@ W tym artykule jest dzielony na dwie sekcje. Pierwszy zawiera listę języków p
 Te języki core są obsługiwane w usługach Azure Cognitive Services:
 
 * Chiński
-* Polski
+* Angielski
 * Francuski
 * Niemiecki
 * Włoski
@@ -68,16 +68,11 @@ Te tabele wyróżnić dostępności języka według kategorii usługi; podstawow
 | [Sprawdzanie pisowni Bing](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/bing-spell-check-supported-languages) | :heavy_check_mark: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | :heavy_check_mark: | :heavy_check_mark: | : heavy_minus_sign: | :heavy_check_mark: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | :heavy_check_mark: | :heavy_check_mark: | : heavy_minus_sign: | :heavy_check_mark: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | :heavy_check_mark: | : heavy_minus_sign: | : heavy_minus_sign: | :heavy_check_mark: | : heavy_minus_sign: | : heavy_minus_sign: |
 | [Pakiet Content Moderator: Filtrowanie tekstu](https://docs.microsoft.com/azure/cognitive-services/content-moderator/text-moderation-api-languages) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Language Understanding (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/luis-supported-languages) | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | :heavy_check_mark: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | :heavy_check_mark: | : heavy_minus_sign: | : heavy_minus_sign: |
+| [QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/overview/languages-supported) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Tłumaczenie tekstu w usłudze Translator](https://docs.microsoft.com/azure/cognitive-services/translator/languages) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Analiza tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) | :heavy_check_mark: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | : heavy_minus_sign: | :heavy_check_mark: | :heavy_check_mark: | : heavy_minus_sign: | :heavy_check_mark: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | :heavy_check_mark: | :heavy_check_mark: | : heavy_minus_sign: | :heavy_check_mark: | : heavy_minus_sign: | : heavy_minus_sign: | : heavy_minus_sign: | :heavy_check_mark: | : heavy_minus_sign: | : heavy_minus_sign: | :heavy_check_mark: | : heavy_minus_sign: | : heavy_minus_sign: |
 
-### <a name="knowledge"></a>Informacje
-
-| | Arabski | Bułgarski | Kataloński | Chorwacki | Czeski | Duński | Holenderski | Estoński | Fiński | Grecki | Hindi | Węgierski | Islandzki | Indonezyjski | Łotewski | Litewski | Malajski | Norweski | Polski | Rumuński | Rosyjski | Serbski | Słowacki | Słoweński | Szwedzki | Tamilski | Tajlandzki | Turecki | Ukraiński | Wietnamski |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| [QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/overview/languages-supported) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-
-### <a name="search"></a>Wyszukiwanie
+### <a name="search"></a>wyszukaj
 
 | | Arabski | Bułgarski | Kataloński | Chorwacki | Czeski | Duński | Holenderski | Estoński | Fiński | Grecki | Hindi | Węgierski | Islandzki | Indonezyjski | Łotewski | Litewski | Malajski | Norweski | Polski | Rumuński | Rosyjski | Serbski | Słowacki | Słoweński | Szwedzki | Tamilski | Tajlandzki | Turecki | Ukraiński | Wietnamski |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|

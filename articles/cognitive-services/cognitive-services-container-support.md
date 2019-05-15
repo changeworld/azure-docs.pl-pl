@@ -8,14 +8,14 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 05/13/2019
 ms.author: diberry
-ms.openlocfilehash: 241bda5c684197a43cc5564e950e924fed668b89
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 87599817ba7b50b941612c13c07842644f979fb7
+ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65147565"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65619713"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Obsługa kontenerów w usługach Azure Cognitive Services
 
@@ -76,7 +76,12 @@ Ponadto niektóre kontenery są obsługiwane w usługach Cognitive Services [ **
 Kontenery usługi Azure Cognitive Services są publicznie dostępne w ramach subskrypcji platformy Azure i mogą być ściągane obrazów kontenerów platformy Docker z rejestru kontenerów firmy Microsoft lub z usługi Docker Hub. Możesz użyć [polecenie docker pull](https://docs.docker.com/engine/reference/commandline/pull/) polecenie, aby pobrać obraz kontenera z rejestru odpowiednie.
 
 > [!IMPORTANT]
-> Obecnie musisz ukończyć procesu rejestracji w celu uzyskania dostępu do [twarzy](Face/face-how-to-install-containers.md) i [Rozpoznaj tekst](Computer-vision/computer-vision-how-to-install-containers.md) kontenery, w których Wypełnij i Prześlij kwestionariusza w razie pytań dotyczących, firmy i przypadek użycia dla którego chcesz zaimplementować kontenerów. Gdy jesteś uzyskuje dostęp i podano poświadczenia, wtedy mogła ściągać obrazy kontenerów dla kontenerów twarzy i rozpoznawanie tekstu z prywatnego rejestru kontenerów hostowanej przez usługę Azure Container Registry.
+> Obecnie musi przejść proces rejestracji dostęp do następujących kontenerów, w których Wypełnij i Prześlij kwestionariusza w razie pytań dotyczących, firmy i przypadek użycia, dla której chcesz zaimplementować kontenerów. Gdy jesteś uzyskuje dostęp i podano poświadczenia, wtedy mogła ściągać obrazy kontenerów dla kontenerów twarzy i rozpoznawanie tekstu z prywatnego rejestru kontenerów hostowanej przez usługę Azure Container Registry.
+> * [Dectector anomalii](Anomaly-Detector/anomaly-detector-container-howto.md#request-access-to-the-container-registry)
+> * [Twarzy](Face/face-how-to-install-containers.md)
+> * [Aparat rozpoznawania formularza](form-recognizer/form-recognizer-container-howto.md#request-access-to-the-container-registry)
+> * [Rozpoznawanie tekstu](Computer-vision/computer-vision-how-to-install-containers.md)
+> * [Zamiany mowy na tekst i zamiany tekstu na mowę](Speech-Service/speech-container-howto.md#request-access-to-the-container-registry)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

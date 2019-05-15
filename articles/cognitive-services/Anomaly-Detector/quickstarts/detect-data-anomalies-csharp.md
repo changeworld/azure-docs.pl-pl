@@ -9,12 +9,12 @@ ms.subservice: anomaly-detector
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: ffa42eb2247d163dd6a146ffb26c1f8cc5cf6d82
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 04b331f3b63ad6400b4bb8efcd053d04ac88989b
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64922524"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595844"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-c"></a>Szybki start: Wykrywanie anomalii w danych szeregów czasowych za pomocą interfejsu API REST wykrywanie anomalii iC# 
 
@@ -29,13 +29,15 @@ Użyj tego przewodnika Szybki Start, aby rozpocząć korzystanie z dwóch trybó
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Dowolna wersja programu [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/).
-- [Newtonsoft.Json](https://www.newtonsoft.com/json)
-    - Aby zainstalować pakiet Newtonsoft.Json jako pakiet NuGet w programie Visual studio:
-        1. Kliknij prawym przyciskiem myszy **Menedżerze rozwiązania**
-        2. Kliknij przycisk **Zarządzaj pakietami NuGet...**
-        3. Wyszukaj `Newtonsoft.Json` i zainstaluj pakiet
-- Jeśli używasz systemu Linux/MacOS ta aplikacja może być została uruchomiona przy użyciu [Mono](https://www.mono-project.com/).
+- Dowolnej wersji programu [programu Visual Studio 2017 r. lub nowszej](https://visualstudio.microsoft.com/downloads/),
+
+- Struktura [Json.NET](https://www.newtonsoft.com/json) dostępna jako pakiet NuGet. Aby zainstalować pakiet Newtonsoft.Json jako pakiet NuGet w programie Visual Studio:
+    
+    1. Kliknij prawym przyciskiem myszy projekt w **Eksploratora rozwiązań**.
+    2. Wybierz **Zarządzaj pakietami NuGet**.
+    3. Wyszukaj *Newtonsoft.Json* i zainstalować pakiet.
+
+- Jeśli używasz systemu Linux/MacOS tę aplikację można uruchomić za pomocą [Mono](https://www.mono-project.com/).
 
 - Wskazuje JSON pliku zawierającego dane szeregów czasowych. Przykładowe dane dla tego przewodnika Szybki Start można znaleźć na [GitHub](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/request-data.json).
 
