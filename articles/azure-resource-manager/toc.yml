@@ -165,7 +165,7 @@
           href: grant-access-to-create-subscription.md
         - name: Uwierzytelnianie w wielu dzierżawach
           href: authenticate-multi-tenant.md
-    - name: Przeprowadzanie inspekcji wdrożeń
+    - name: Inspekcja zmian
       items:
         - name: Wyświetlanie dzienników aktywności
           href: resource-group-audit.md
