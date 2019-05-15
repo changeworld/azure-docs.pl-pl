@@ -47,11 +47,11 @@ Następujące właściwości są obsługiwane w przypadku Presto połączonej us
 | type | Właściwość type musi być równa: **Presto** | Yes |
 | host | Adres IP lub hosta nazwę serwera, Presto. (i.e. 192.168.222.160)  | Yes |
 | serverVersion | Wersja serwera Presto. (czyli 0.148-t)  | Yes |
-| wykaz | Kontekst katalogu dla wszystkich żądań względem serwera.  | Yes |
+| catalog | Kontekst katalogu dla wszystkich żądań względem serwera.  | Yes |
 | port | Port TCP używany Presto serwer do nasłuchiwania połączeń klientów. Wartość domyślna to 8080.  | Nie |
-| Element authenticationType | Mechanizm uwierzytelniania używany do łączenia się z serwerem Presto. <br/>Dozwolone wartości to: **Anonimowe**, **LDAP** | Yes |
-| nazwa użytkownika | Nazwa użytkownika używana do łączenia się z serwerem Presto.  | Nie |
-| hasło | Hasło odpowiadający nazwie użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
+| authenticationType | Mechanizm uwierzytelniania używany do łączenia się z serwerem Presto. <br/>Dozwolone wartości to: **Anonimowe**, **LDAP** | Yes |
+| username | Nazwa użytkownika używana do łączenia się z serwerem Presto.  | Nie |
+| password | Hasło odpowiadający nazwie użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
 | enableSsl | Określa, czy połączenia z serwerem są szyfrowane przy użyciu protokołu SSL. Wartość domyślna to false.  | Nie |
 | trustedCertPath | Pełna ścieżka pliku PEM, zawierająca zaufane certyfikaty urzędu certyfikacji w celu sprawdzenia serwer podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Tę właściwość można ustawić tylko w przypadku korzystania z protokołu SSL na Self-Hosted IR Wartością domyślną jest instalowany z wewnątrz pliku cacerts.pem  | Nie |
 | useSystemTrustStore | Określa, czy ma być używany certyfikat urzędu certyfikacji z magazynu zaufania systemu lub z określonego pliku PEM. Wartość domyślna to false.  | Nie |
