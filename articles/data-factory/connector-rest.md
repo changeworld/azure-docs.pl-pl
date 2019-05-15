@@ -58,7 +58,7 @@ Następujące właściwości są obsługiwane dla usługi REST połączone:
 | type | **Typu** właściwość musi być równa **RestService**. | Yes |
 | url | Podstawowy adres URL usługi REST. | Yes |
 | enableServerCertificateValidation | Określa, czy sprawdzanie poprawności certyfikatu SSL po stronie serwera, podczas nawiązywania połączenia z punktem końcowym. | Nie<br /> (wartość domyślna to **true**) |
-| Element authenticationType | Typ uwierzytelniania używany do łączenia z usługi REST. Dozwolone wartości to **anonimowe**, **podstawowe**, **AadServicePrincipal** i **ManagedServiceIdentity**. Zobacz do odpowiedniej sekcji poniżej więcej właściwości i przykłady. | Yes |
+| authenticationType | Typ uwierzytelniania używany do łączenia z usługi REST. Dozwolone wartości to **anonimowe**, **podstawowe**, **AadServicePrincipal** i **ManagedServiceIdentity**. Zobacz do odpowiedniej sekcji poniżej więcej właściwości i przykłady. | Yes |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) nawiązywania połączenia z magazynem danych. (Jeśli Twój magazyn danych znajduje się w sieci prywatnej), można użyć środowiska Azure Integration Runtime lub własnego środowiska Integration Runtime. Jeśli nie zostanie określony, ta właściwość używa domyślnego środowiska Azure Integration Runtime. |Nie |
 
 ### <a name="use-basic-authentication"></a>Stosuj uwierzytelnianie podstawowe
@@ -102,7 +102,7 @@ Ustaw **authenticationType** właściwości **AadServicePrincipal**. Oprócz og�
 |:--- |:--- |:--- |
 | servicePrincipalId | Określ identyfikator klienta aplikacji usługi Azure Active Directory. | Yes |
 | servicePrincipalKey | Określ klucz aplikacji usługi Azure Active Directory. Oznacz to pole jako **SecureString** można bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
-| dzierżawa | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Pobierz go przez umieszczenie nad nim kursora myszy w prawym górnym rogu witryny Azure Portal. | Yes |
+| tenant | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Pobierz go przez umieszczenie nad nim kursora myszy w prawym górnym rogu witryny Azure Portal. | Yes |
 | aadResourceId | Określ zasób usługi AAD żądasz, do autoryzacji, np. `https://management.core.windows.net`.| Yes |
 
 **Przykład**
