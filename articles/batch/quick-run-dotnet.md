@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 11/29/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 6c332861bcaf228e4c1e0a619cf4f84e3be0ba15
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: b8d7556607cdb73c3e3ae19109bcbf34b72b0915
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204128"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595351"
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>Szybki start: Uruchamianie pierwszego zadania usługi Azure Batch przy użyciu interfejsu API platformy .NET
 
@@ -27,7 +27,7 @@ Ten przewodnik Szybki start przedstawia uruchamianie zadania usługi Azure Batch
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [Program Visual Studio 2017](https://www.visualstudio.com/vs) lub [środowisko .NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1) dla systemu Linux, macOS lub Windows. 
+* [Program Visual Studio 2017 lub nowszego](https://www.visualstudio.com/vs), lub [platformy .NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1) dla systemu Linux, macOS lub Windows. 
 
 * Konto usługi Batch i połączone konto usługi Azure Storage. Aby utworzyć te konta, skorzystaj z przewodników Szybki start dla usługi Batch i [witryny Azure Portal](quick-create-portal.md) lub [interfejsu wiersza polecenia platformy Azure](quick-create-cli.md). 
 

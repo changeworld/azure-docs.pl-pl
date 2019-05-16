@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 8201b4089759fb55fae12820f7495664c502837e
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 24c6df6a06d08249f236fc36d64b4204b0103b3c
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023626"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540897"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Co to jest "cognitive search" w usłudze Azure Search?
 
@@ -61,7 +61,7 @@ Wewnętrznie potok generuje kolekcję wzbogaconego dokumentów. Można zdecydowa
 
 [Wersja interfejsu api REST usługi wyszukiwania = 2019-05-06](search-api-preview.md) rozszerza dokładniejsze z definicją knowledgeStore, który zapewnia połączenie usługi Azure storage i projekcji, które opisują, jak wzbogacenia są przechowywane. 
 
-Dodawanie magazynu wiedzy do zestawu umiejętności daje możliwość projektu reprezentację Twojego wzbogacenia dla scenariuszy innych niż wyszukiwanie pełnotekstowe. Aby uzyskać więcej informacji, zobacz [co to jest Store wiedzy](knowledge-store-concept-intro.md).
+Dodawanie magazynu wiedzy do zestawu umiejętności daje możliwość projektu reprezentację Twojego wzbogacenia dla scenariuszy innych niż wyszukiwanie pełnotekstowe. Aby uzyskać więcej informacji, zobacz [co to jest sklep wiedzy](knowledge-store-concept-intro.md).
 
 ### <a name="step-3-search-index-and-query-based-access"></a>Krok 3: Indeks wyszukiwania i dostępu na podstawie zapytania
 
@@ -82,7 +82,7 @@ Indeksy są generowane na podstawie schematu indeksu, który definiuje pola atry
 | Skillset | Najwyższego poziomu o nazwie zasobu zawierającego zbiór umiejętności. Zestawu umiejętności jest wzbogacony potok. Jest wywoływana podczas indeksowania w indeksatorze. | [Definiowanie zestawu umiejętności](cognitive-search-defining-skillset.md) |
 | Umiejętności cognitive | Niepodzielne przekształcenie w wzbogacony potok. Często jest składnikiem, który wyodrębnia lub wnioskuje struktury i w związku z tym rozszerzają zrozumienie danych wejściowych. Prawie zawsze dane wyjściowe są oparte na tekście, a przetwarzanie jest przetwarzanie języka naturalnego i przetwarzanie obrazu, który wyodrębnia lub generuje tekstu z obrazów w danych wejściowych. Dane wyjściowe z umiejętności mogą być zamapowane do pola w indeksie lub używane jako dane wejściowe wzbogacania podrzędnego. Wstępnie zdefiniowane i udostępniane przez firmę Microsoft lub niestandardowe umiejętności: utworzonych i wdrożonych przez użytkownika. | [Wstępnie zdefiniowane umiejętności](cognitive-search-predefined-skills.md) |
 | Wyodrębnianie danych | Obejmuje szerokiej gamy przetwarzanie, jednak odnoszących się do wyszukiwania kognitywnego umiejętności rozpoznawania jednostek jest najczęściej używana do wyodrębniania danych (jednostki) ze źródła, która nie zapewnia natywnej tych informacji. | [Umiejętności rozpoznawania jednostek](cognitive-search-skill-entity-recognition.md)| 
-| Przetwarzanie obrazów | Wnioskuje tekstu z obrazu, takich jak możliwości rozpoznawania charakterystycznych elementów krajobrazu lub umożliwia wyodrębnianie tekstu z obrazu. Typowe przykłady obejmują optyczne rozpoznawanie znaków do podnoszenia znaków z pliku skanowanego dokumentu (JPEG), lub rozpoznawanie Nazwa ulicy na zdjęciu zawierających znak ulicy. | [Obraz umiejętności analizy](cognitive-search-skill-image-analysis.md) lub [umiejętności optyczne rozpoznawanie znaków](cognitive-search-skill-ocr.md)
+| Przetwarzanie obrazu | Wnioskuje tekstu z obrazu, takich jak możliwości rozpoznawania charakterystycznych elementów krajobrazu lub umożliwia wyodrębnianie tekstu z obrazu. Typowe przykłady obejmują optyczne rozpoznawanie znaków do podnoszenia znaków z pliku skanowanego dokumentu (JPEG), lub rozpoznawanie Nazwa ulicy na zdjęciu zawierających znak ulicy. | [Obraz umiejętności analizy](cognitive-search-skill-image-analysis.md) lub [umiejętności optyczne rozpoznawanie znaków](cognitive-search-skill-ocr.md)
 | Przetwarzanie języka naturalnego | Tekst przetwarzania szczegółowych informacji i informacje o tekstu w danych wejściowych. Wykrywanie języka, analizę tonacji i wyodrębnianie kluczowych fraz są umiejętności, które są objęte przetwarzania języka naturalnego.  | [Kluczowe frazy wyodrębniania umiejętności](cognitive-search-skill-keyphrases.md), [umiejętności wykrywania języka](cognitive-search-skill-language-detection.md), [umiejętności analizy tonacji](cognitive-search-skill-sentiment.md) |
 | Łamania dokumentów | Proces wyodrębniania lub tworzenia zawartości tekstowej ze źródeł innych niż tekst podczas indeksowania. Optyczne rozpoznawanie znaków (OCR) znajduje się przykład, ale zazwyczaj odwołuje się do podstawowych funkcji indeksator zgodnie z indeksatora wyodrębnia zawartość z plików aplikacji. Źródło danych, podając lokalizację pliku źródłowego i definicja indeksatora, zapewniając mapowania pól są oba kluczowe czynniki łamania dokumentów. | Zobacz [indeksatorów](search-indexer-overview.md) |
 | Kształtowanie | Konsolidowanie fragmentów tekstu w większej struktury lub z drugiej strony podziału większe fragmenty tekstu do rozmiarów do dalszego przetwarzania transmisji dla klientów. | [Umiejętności shaper](cognitive-search-skill-shaper.md), [umiejętności fuzji tekstu](cognitive-search-skill-textmerger.md), [tekst podziału umiejętności](cognitive-search-skill-textsplit.md) |
@@ -145,5 +145,5 @@ Aby uzyskać więcej informacji na temat określonego pytania lub problemy, zoba
 + [Dokumentacja wyszukiwania kognitywnego](cognitive-search-resources-documentation.md)
 + [Szybki start: Wypróbuj wyszukiwanie kognitywne w Przewodnik po portalu](cognitive-search-quickstart-blob.md)
 + [Samouczek: Dowiedz się, usługa cognitive search interfejsów API](cognitive-search-tutorial-blob.md)
-+ [Omówienie Store wiedzy](knowledge-store-concept-intro.md)
-+ [Przewodnik Store wiedzy](knowledge-store-howto.md)
++ [Omówienie magazynu wiedzy](knowledge-store-concept-intro.md)
++ [Przewodnik magazynu wiedzy](knowledge-store-howto.md)

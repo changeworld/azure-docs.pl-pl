@@ -2,23 +2,24 @@
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 03/22/2019
 ms.author: sngun
-ms.openlocfilehash: e07a59ba0484910d87329be94f0fcc58b1011b95
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
-ms.translationtype: HT
+ms.openlocfilehash: b940d7308648a3a55ed031d7d57542f3b31e9f27
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572506"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546722"
 ---
-Przepływność, wielkość magazynu, dostępność, opóźnienie i spójność zasobów w ramach konta są monitorowane w witrynie Azure Portal. Przyjrzyjmy się bliżej tym metrykom. 
+Azure portal monitoruje przepływności konta usługi Cosmos DB, storage, dostępności, opóźnienia i spójności. Wykresy metryk skojarzone z [Cosmos DB z umowy dotyczącej poziomu (SLA)](https://azure.microsoft.com/support/legal/sla/cosmos-db/) Pokaż wartość SLA w porównaniu do rzeczywistej wydajności. Tego zestawu metryk sprawia, że monitorowanie umowach SLA przezroczysty.
 
-1. Kliknij przycisk **Metryki** w menu nawigacji.
+Aby przejrzeć metryki i umowy SLA: 
 
-   ![Metryki w witrynie Azure Portal](./media/cosmos-db-tutorial-review-slas/metrics.png)
-
-2. Kliknij każdą z kart, aby zapoznać się z metrykami udostępnianymi przez usługę Azure Cosmos DB. 
-
-    Każdy wykres skojarzony z [umową dotyczącą poziomu usług (SLA, Service Level Agreement) dla usługi Azure Cosmos DB](https://azure.microsoft.com/support/legal/sla/cosmos-db/) zawiera linię przedstawiającą ewentualne naruszenie którejkolwiek z umów SLA. Ten zestaw metryk zapewnia przejrzyste monitorowanie umów SLA w usłudze Azure Cosmos DB. 
-
+1. Wybierz **metryki** w menu nawigacyjnym konta usługi Cosmos DB.
+   
+2. Wybierz kartę, takich jak **opóźnienie**i wybierz przedział czasu, po prawej stronie. Porównaj **rzeczywisty** i **SLA** wierszy na wykresach.
+   
    ![Zestaw metryk w usłudze Azure Cosmos DB](./media/cosmos-db-tutorial-review-slas/metrics-suite.png)
+   
+3. Przejrzyj metryki na innych kartach. 
+

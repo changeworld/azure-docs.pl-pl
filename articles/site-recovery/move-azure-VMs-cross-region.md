@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 0f73e68fd0c01d4323e8675d3fa12f7ca1051cdb
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.openlocfilehash: 10966a7e658e02f04137b594fc12ec09cb676cf8
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62119881"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65739596"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Przenoszenie maszyn wirtualnych platformy Azure do innego regionu
 
@@ -53,7 +53,7 @@ Możesz chcieć przenieść infrastruktury platformy Azure jako maszyny wirtualn
     - W przypadku maszyn wirtualnych Windows zainstaluj najnowsze aktualizacje Windows, tak aby wszystkie zaufane certyfikaty główne na komputerze. W środowisku bez połączenia postępuj zgodnie z standardowych procesów aktualizacji Windows i aktualizacji certyfikatu dla Twojej organizacji.
     - W przypadku maszyn wirtualnych systemu Linux postępuj zgodnie z wskazówki od dystrybutora systemu Linux można pobrać najnowsze wymagane certyfikaty główne i listę odwołania certyfikatów.
 2. Upewnij się, że nie używasz uwierzytelniającego serwera proxy do sterowania łącznością sieciową dla maszyn wirtualnych, które ma zostać przeniesiona.
-3. Jeśli Maszynę wirtualną, którą chcesz przenieść nie ma dostępu do Internetu i używa serwera proxy zapory w celu kontrolowania dostępu wychodzącego, sprawdź [wymagania](azure-to-azure-tutorial-enable-replication.md#configure-outbound-network-connectivity).
+3. Jeśli Maszynę wirtualną, którą chcesz przenieść nie ma dostępu do Internetu i używa serwera proxy zapory w celu kontrolowania dostępu wychodzącego, sprawdź [wymagania](azure-to-azure-tutorial-enable-replication.md#set-up-outbound-network-connectivity-for-vms).
 4. Układ sieci źródłowego i wszystkie zasoby, które aktualnie używasz, tym (między innymi) dokumentów modułów równoważenia obciążenia, sieciowe grupy zabezpieczeń i publicznych adresów IP w celu weryfikacji.
 
 ## <a name="prepare-the-target-region"></a>Przygotowywanie regionu docelowego

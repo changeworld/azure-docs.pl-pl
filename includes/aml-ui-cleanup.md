@@ -9,11 +9,11 @@ author: sgilley
 ms.author: sgilley
 ms.date: 05/06/2019
 ms.openlocfilehash: 623e993dfbe6bbb3297fa6470865ab1a04f55b37
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65028593"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65745503"
 ---
 >[!IMPORTANT]
 >Jako warunki wstępne innych samouczków usługi Azure Machine Learning i artykuły z poradami, można użyć zasobów, które zostały utworzone.

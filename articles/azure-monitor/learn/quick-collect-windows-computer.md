@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 04/09/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 99be0cee9c939ed200bd74c94e88c3fcd989e25b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 15885137b9559bf34fb2b985398401af09caa629
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722898"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65602983"
 ---
 # <a name="configure-the-log-analytics-agent-for-windows-computers-in-a-hybrid-environment"></a>Konfigurowanie agenta usługi Log Analytics dla komputerów Windows w środowisku hybrydowym
 [Usługa Azure Log Analytics](../../azure-monitor/platform/agent-windows.md) umożliwia zbieranie danych bezpośrednio z fizycznych i wirtualnych komputerów Windows do pojedynczego repozytorium na potrzeby szczegółowej analizy i korelacji. Usługa log Analytics może zbierać dane z centrum danych lub w innym środowisku chmury. W tym przewodniku Szybki start opisano, jak w kilku prostych krokach skonfigurować i rozpocząć zbieranie danych z komputera z systemem Windows.  Aby uzyskać informacje o maszynach wirtualnych Windows Azure, zobacz [zbierać dane dotyczące maszyn wirtualnych platformy Azure](../../azure-monitor/learn/quick-collect-azurevm.md).  
@@ -107,8 +107,8 @@ Log Analytics może zbierać zdarzenia, które określisz, od Windows dziennika 
 ## <a name="view-collected-data"></a>Przeglądanie zebranych danych
 Teraz, zostało włączone zbieranie danych, uruchom przeszukiwania dzienników prosty, aby wyświetlić dane z komputera docelowego.  
 
-1. W witrynie Azure portal w wybranym obszarze roboczym, wybierz **wyszukiwanie w dzienniku** kafelka.  
-2. Na **wyszukiwanie w dzienniku** okienka w oknie zapytania wprowadź **wydajności** a następnie naciśnij klawisz Enter lub kliknij przycisk wyszukiwania z prawej strony pola zapytania:
+1. W witrynie Azure portal w wybranym obszarze roboczym, wybierz **dzienniki** kafelka.  
+2. Na **wyszukiwanie w dzienniku** okienka w oknie zapytania wprowadź **wydajności** i kliknij przycisk **Uruchom** górnej części pola zapytania:
  
     ![Dziennik wyszukiwania usługi log Analytics](media/quick-collect-windows-computer/log-analytics-portal-queryexample.png)
 

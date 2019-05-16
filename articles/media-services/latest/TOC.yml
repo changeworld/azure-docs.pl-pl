@@ -182,7 +182,6 @@
             - name: Łączenie z narzędziem Postman
               href: media-rest-apis-with-postman.md
         - name: Programowanie z użyciem zestawów SDK
-          href: developers-guide.md
           items:
             - name: Nawiązywanie połączeń przy użyciu języka Java
               href: configure-connect-java-howto.md
@@ -222,10 +221,13 @@
         - name: Kodowanie za pomocą transformacji niestandardowej
           items:
             - name: Przy użyciu platformy .NET
+              displayName: 'encode, encoding, custom, transform'
               href: customize-encoder-presets-how-to.md
             - name: Przy użyciu interfejsu wiersza polecenia
+              displayName: 'encode, encoding, custom, transform'
               href: custom-preset-cli-howto.md
             - name: Przy użyciu architektury REST
+              displayName: 'encode, encoding, custom, transform'
               href: custom-preset-rest-howto.md
     - name: Używanie usługi Event Grid
       items:

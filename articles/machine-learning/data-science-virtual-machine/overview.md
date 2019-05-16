@@ -13,14 +13,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 10/27/2017
+ms.date: 02/22/2019
 ms.author: gokuma
-ms.openlocfilehash: 74fe2345af5d1249d6704c7560b42323561bc623
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1534bc65a369254802973d6c3b91ed8b76ed44e0
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60578440"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596555"
 ---
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>Wprowadzenie do maszyny wirtualnej do nauki o danych platformy Azure dla systemów Linux i Windows
 
@@ -45,6 +45,10 @@ Instruktorzy w przedsiębiorstwach i osoby prowadzące zajęcia w zakresie nauki
 
 ### <a name="on-demand-elastic-capacity-for-large-scale-projects"></a>Elastyczna wydajność na żądanie dla projektów w dużej skali
 Maratony deweloperów i konkursy w zakresie nauki o danych lub modelowanie i eksplorowanie danych na dużą skalę wymagają wydajności sprzętu skalowanej w poziomie, zwykle przez krótki czas. Maszyna wirtualna do nauki o danych ułatwia szybkie replikowanie środowiska nauki o danych na żądanie na serwerach skalowanych w poziomie, które zezwalają na eksperymenty wymagające uruchamiania zasobów obliczeniowych o dużej wydajności.
+
+### <a name="custom-compute-power-for-azure-notebooks"></a>Niestandardowe mocy obliczeniowej dla notesów usługi Azure
+
+[Notesy platformy Azure](/azure/notebooks/azure-notebooks-overview.md) to bezpłatna usługa hostowana na tworzenie, uruchamianie i udostępnianie aplikacji Jupyter notebooks w chmurze nie instalacji. Jednak w warstwie bezpłatna usługa i jest ograniczony do 4GB pamięci i 1GB danych. Aby zwolnić wszystkie limity, zostanie następnie dołączony projektu notesów do maszyny Wirtualnej do nauki o danych lub innej maszyny Wirtualnej serwerem Jupyter. Jeśli zalogujesz się do notesów usługi Azure przy użyciu konta, za pomocą usługi Azure Active Directory (na przykład konto firmowe), notesów automatycznie zawiera maszyny wirtualne do nauki o danych w dowolnej subskrypcji powiązanej z tym kontem. Aby uzyskać więcej informacji, zobacz [Konfigurowanie projektów i zarządzanie nimi — warstwa Obliczenia](/azure/notebooks/configure-manage-azure-notebooks-projects.md#compute-tier).
 
 ### <a name="short-term-experimentation-and-evaluation"></a>Krótkoterminowe eksperymenty i ocena
 Maszyna wirtualna do nauki o danych umożliwia ocenę lub naukę narzędzi, takich jak Microsoft ML Server, SQL Server, narzędzia programu Visual Studio, Jupyter, zestawy narzędzi do uczenia głębokiego i maszynowego, oraz nowych narzędzi popularnych w społeczności przy minimalnym zakresie konfiguracji. Maszynę wirtualną Data Science Virtual Machine można szybko skonfigurować, dlatego można ją stosować w innych krótkoterminowych scenariuszach użycia, takich jak replikowanie opublikowanych eksperymentów, przeprowadzanie pokazów, wykonywanie procedur w przewodnikach w ramach sesji online lub samouczków konferencji.
@@ -82,7 +86,7 @@ Maszyna wirtualna do nauki o danych obejmuje wiele popularnych narzędzi do nauk
 | &nbsp;&nbsp;&nbsp;&nbsp;* [RStudio Server](https://www.rstudio.com/products/rstudio/#Server) | Nie | Tak |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [PyCharm Community Edition](https://www.jetbrains.com/pycharm/) | Nie | Tak |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Atom](https://atom.io/) | Nie | Tak |
-| &nbsp;&nbsp;&nbsp;&nbsp;* [Juno (środowisko IDE języka Julia)](https://junolab.org/)| Tak | Tak |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [Juno (Julia IDE)](https://junolab.org/)| Tak | Tak |
 | &nbsp;&nbsp;&nbsp;&nbsp;* Vim i Emacs | Tak | Tak |
 | &nbsp;&nbsp;&nbsp;&nbsp;* Git i GitBash | Tak | Tak |
 | &nbsp;&nbsp;&nbsp;&nbsp;* OpenJDK | Tak | Tak |

@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: quickstart
-ms.date: 03/18/2019
+ms.date: 05/06/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0573448c753c763e818d641216033dbeacb9e9a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 01cedadc115496fcf00df986b4ad4b9c5aab5139
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60471492"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606173"
 ---
 # <a name="quickstart-set-office-365-groups-to-expire-in-azure-active-directory"></a>Szybki start: Konfigurowanie wygasania grup usługi Office 365 w usłudze Azure Active Directory
 
@@ -33,13 +33,13 @@ Zasady wygasania są proste:
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
-## <a name="prerequisite"></a>Wymagania wstępne
+## <a name="prerequisite"></a>Wymaganie wstępne
 
-Musi być administrator globalny lub administrator użytkowników w organizacji, aby skonfigurować wygaśnięcie grupy.
+ Rola najmniej uprzywilejowane, wymagane do skonfigurowania wygaśnięcie grupy jest administrator użytkowników w organizacji.
 
 ## <a name="turn-on-user-creation-for-groups"></a>Włączanie tworzenia grup przez użytkowników
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) przy użyciu konta administratora globalnego lub administratora użytkowników w organizacji.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) przy użyciu konta administratora użytkowników.
 
 2. Wybierz pozycję **Grupy**, a następnie wybierz pozycję **Ogólne**.
   
@@ -63,7 +63,7 @@ Musi być administrator globalny lub administrator użytkowników w organizacji,
 
 5. Wybierz przycisk **Zapisz**, aby zapisać ustawienia wygasania, gdy wszystko będzie gotowe.
 
-Gotowe. W tym przewodniku Szybki start pomyślnie ustawiono zasady wygasania dla wybranych grup usługi Office 365.
+To wszystko! W tym przewodniku Szybki start pomyślnie ustawiono zasady wygasania dla wybranych grup usługi Office 365.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -80,7 +80,7 @@ Gotowe. W tym przewodniku Szybki start pomyślnie ustawiono zasady wygasania dla
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać więcej informacji na temat wygasania, w tym na temat ograniczeń technicznych, dodawania listy niestandardowych słów zablokowanych oraz środowiska użytkownika końcowego w aplikacjach usługi Office 365, zapoznaj się z następującym artykułem zawierającym szczegółowe informacje na temat zasad wygasania:
+Aby uzyskać więcej informacji na temat wygaśnięcia, w tym instrukcje dotyczące programu PowerShell i ograniczenia techniczne zobacz następujący artykuł:
 
 > [!div class="nextstepaction"]
-> [Expiration policy all details (Wszystkie szczegóły dotyczące zasad wygasania)](groups-lifecycle.md)
+> [Zasady wygasania programu PowerShell](groups-lifecycle.md)

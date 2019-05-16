@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 28fef394ee400949f9911983bdbca41d6bfcb458
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: acee2aabe94f5d015562bd697d08f657895d3b02
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60683527"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65755931"
 ---
-# <a name="define-and-assign-a-blueprint-in-the-portal"></a>Zdefiniuj i przypisz plan w witrynie portal
+# <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Szybki start: Zdefiniuj i przypisz plan w witrynie portal
 
 Gdy dowiesz się, jak utworzyć i przypisać schematy, można zdefiniować typowe wzorce do tworzenia wielokrotnego użytku i szybko wdrożyć konfiguracje oparte na usłudze Azure Resource Manager szablony, zasady, zabezpieczeń i inne. W tym samouczku dowiesz się, czy niektóre typowe zadania związane z tworzenie, publikowanie i przypisywanie planu w Twojej organizacji za pomocą planów usługi Azure. Te zadania obejmują:
 

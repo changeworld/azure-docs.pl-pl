@@ -8,18 +8,20 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a440494b183d18c1d888b5d39836eb4317190d02
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c034ed7164e67183b9a848d5210dcaf377476c6a
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64708314"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65518160"
 ---
 # <a name="automation-with-service-principals"></a>Automatyzacja przy użyciu jednostek usługi
 
 Jednostki usług to zasoby aplikacji usługi Azure Active Directory tworzone w ramach dzierżawy w celu przeprowadzania nienadzorowanych operacji na poziomie zasobu lub usługi. Są one unikatowego typu *tożsamość użytkownika* przy użyciu Identyfikatora aplikacji i hasło lub certyfikat. Jednostka usługi ma tylko uprawnienia niezbędne do wykonywania zadań określone przez role i uprawnienia, dla których jest przypisany. 
 
 W usługach Analysis Services jednostki usługi są używane za pomocą usługi Azure Automation, PowerShell w trybie nienadzorowanym, niestandardowych aplikacji klienckich i aplikacji sieci web do automatyzacji typowych zadań. Na przykład serwery aprowizacji, wdrażanie modeli, odświeżanie danych, skalowanie w górę/w dół, a wstrzymywanie i wznawianie wszystkich można zautomatyzować za pomocą jednostki usługi. Uprawnienia są przypisywane do jednostek usług za pośrednictwem członkostwo w roli, podobnie jak regularne konta usługi Azure AD głównej nazwy użytkownika.
+
+Usługi Analysis Services obsługuje również operacje wykonywane przez zarządzanych tożsamości za pomocą jednostki usługi. Aby dowiedzieć się więcej, zobacz [zarządzanych tożsamości dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md) i [usługi systemu Azure to uwierzytelnianie pomocy technicznej usługi Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-analysis-services).
 
 ## <a name="create-service-principals"></a>Tworzenie jednostek usługi
  

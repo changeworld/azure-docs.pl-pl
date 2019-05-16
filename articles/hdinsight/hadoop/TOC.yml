@@ -4,6 +4,7 @@
   items:
     - name: Informacje o platformie Apache Hadoop w usłudze HDInsight
       href: apache-hadoop-introduction.md
+      maintainContext: true
     - name: Architektura platformy Apache Hadoop w usłudze HDInsight
       href: ../hdinsight-hadoop-architecture.md
       maintainContext: true

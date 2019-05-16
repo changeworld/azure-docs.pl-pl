@@ -6,12 +6,12 @@ ms.service: dns
 ms.topic: overview
 ms.date: 3/21/2019
 ms.author: victorh
-ms.openlocfilehash: cea19ad2ba03d3e71df32912a1d7ee9e6171689a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 530730dcf303a54803816e6f2af8787298c1c658
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60926115"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65753752"
 ---
 # <a name="what-is-azure-dns"></a>Co to jest system DNS platformy Azure?
 
@@ -39,7 +39,7 @@ Aby uzyskać więcej informacji, zobacz [How to protect DNS zones and records (J
 
 ## <a name="dnssec"></a>DNSSEC
 
-Usługa Azure DNS aktualnie nie obsługuje rozszerzeń DNSSEC. W większości przypadków mogą zmniejszyć potrzebę rozszerzeń DNSSEC, stale przy użyciu protokołu HTTPS/TLS w aplikacji. Rozszerzenia DNSSEC w przypadku najważniejszych wymagań dla stref DNS, może obsługiwać te strefy za pomocą dostawcy hostingu DNS innej.
+Usługa Azure DNS aktualnie nie obsługuje rozszerzeń DNSSEC. W większości przypadków mogą zmniejszyć potrzebę rozszerzeń DNSSEC, stale przy użyciu protokołu HTTPS/TLS w swoich aplikacjach. Rozszerzenia DNSSEC w przypadku najważniejszych wymagań dla stref DNS, może obsługiwać te strefy za pomocą dostawcy hostingu DNS innej.
 
 ## <a name="ease-of-use"></a>Łatwość obsługi
 

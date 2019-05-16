@@ -4,7 +4,7 @@ description: Microsoft Authentication Library (MSAL) umożliwia deweloperom apli
 services: active-directory
 documentationcenter: dev-center-name
 author: negoe
-manager: celested
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -17,12 +17,12 @@ ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87bd8834f840c2246bf3adc1d1f9cd9b8f635915
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 6af78a593fb8fadb836d2dc4c02115d95a7f2712
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65191025"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546030"
 ---
 # <a name="integrate-microsoft-authentication-library-msal-with-azure-active-directory-b2c"></a>Integracja Microsoft Authentication Library (MSAL) z usługą Azure Active Directory B2C
 
@@ -41,7 +41,7 @@ Jeśli nie zostało jeszcze utworzone własne [dzierżawy usługi Azure AD B2C](
 
 Poniższe czynności, pokazuje, jak aplikacja jednostronicowa może używać usługi Azure AD B2C do rejestracji i logowania użytkowników i wywoływać chroniony internetowy interfejs API.
 
-### <a name="step-1-register-your-application"></a>Krok 1: Rejestrowanie aplikacji
+### <a name="step-1-register-your-application"></a>Krok 1: Zarejestruj swoją aplikację
 
 Aby zaimplementować uwierzytelniania, należy najpierw zarejestrować aplikację. Aby zarejestrować aplikację, wykonaj [Zarejestruj swoją aplikację](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp#step-4-register-your-own-web-application-with-azure-ad-b2c) szczegółowy opis kroków.
 

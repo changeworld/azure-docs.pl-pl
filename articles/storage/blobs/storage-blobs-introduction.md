@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 01/03/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 093f749ac29dc2bd341712d87b404de769d0b7bc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 498dd3be75cb27263c811d9db541b2e040599156
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61427222"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65752222"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Wprowadzenie do usługi Azure Blob Storage
 
@@ -65,7 +65,7 @@ Aby uzyskać więcej informacji na temat różnych typów obiektów blob, zobacz
 Istnieje wiele rozwiązań do migrowania istniejących danych do magazynu obiektów blob:
 
 - **AzCopy** to łatwe w użyciu narzędzie wiersza polecenia dla systemu Windows i Linux, które służy do kopiowania danych do i z magazynu obiektów blob, między kontenerami oraz między kontami magazynu. Aby uzyskać więcej informacji na temat narzędzia AzCopy, zobacz temat [Transfer data with the AzCopy v10 (Preview)](../common/storage-use-azcopy-v10.md) (Przenoszenie danych przy użyciu narzędzia AzCopy w wersji 10 [wersja zapoznawcza]). 
-- **Biblioteka przenoszenia danych usługi Azure Storage** jest biblioteką .NET służącą do przenoszenia danych między usługami Azure Storage. Narzędzie AzCopy zostało utworzone przy użyciu biblioteki przenoszenia danych. Więcej informacji można znaleźć w [dokumentacji referencyjnej](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.datamovement) biblioteki przenoszenia danych. 
+- **Biblioteka przenoszenia danych usługi Azure Storage** jest biblioteką .NET służącą do przenoszenia danych między usługami Azure Storage. Narzędzie AzCopy zostało utworzone przy użyciu biblioteki przenoszenia danych. Więcej informacji można znaleźć w [dokumentacji referencyjnej](/dotnet/api/microsoft.azure.storage.datamovement) biblioteki przenoszenia danych. 
 - **Usługa Azure Data Factory** obsługuje kopiowanie danych do i z magazynu obiektów blob przy użyciu klucza konta, sygnatury dostępu współdzielonego, jednostki usługi lub tożsamości zarządzanych do uwierzytelnienia zasobów platformy Azure. Aby uzyskać więcej informacji, zobacz temat [Copy data to or from Azure Blob storage by using Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) (Kopiowanie danych do i z usługi Azure Blob Storage za pomocą usługi Azure Data Factory). 
 - **Blobfuse** jest sterownikiem wirtualnego systemu plików usługi Azure Blob Storage. Sterownik blobfuse umożliwia dostęp do istniejących danych blokowych obiektów blob na koncie magazynu za pomocą systemu plików w systemie Linux. Aby uzyskać więcej informacji, zobacz temat [How to mount Blob storage as a file system with blobfuse](storage-how-to-mount-container-linux.md) (Jak zainstalować magazyn obiektów blob jako system plików przy użyciu sterownika blobfuse).
 - **Azure Data Box Disk** jest usługą służącą do przenoszenia danych lokalnych do magazynu obiektów blob, gdy ograniczenia dotyczące dużych zestawów danych lub sieci uniemożliwiają przekazywanie danych przez sieć. Możesz użyć usługi [Azure Data Box Disk](../../databox/data-box-disk-overview.md), aby poprosić o dyski SSD od firmy Microsoft. Możesz następnie skopiować dane na te dyski i odesłać je do firmy Microsoft do przekazania do usługi Blob Storage.

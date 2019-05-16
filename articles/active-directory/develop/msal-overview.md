@@ -4,7 +4,7 @@ description: Microsoft Authentication Library (MSAL) umożliwia deweloperom apli
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
-manager: celested
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2198a5efe276ce872487cde7b2ddb5cb00c58c50
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: bf7aaa0de87ffa8280a6db34c5497779a5ded41c
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65080898"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65545872"
 ---
 # <a name="overview-of-microsoft-authentication-library-msal"></a>Omówienie programu Microsoft Authentication Library (MSAL)
 Microsoft Authentication Library (MSAL) umożliwia deweloperom uzyskanie [tokenów](developer-glossary.md#security-token) z Microsoft punktu końcowego platformy tożsamości w celu uzyskania dostępu do zabezpieczonych interfejsów API sieci Web. Te interfejsy API sieci Web może być programu Microsoft Graph, inne APIS firmy Microsoft, interfejsów API sieci Web innych firm lub własnego interfejsu API sieci Web. Biblioteka MSAL jest dostępna dla platformy .NET, JavaScript, Android i iOS, które obsługują wielu architektur różnych aplikacji i.

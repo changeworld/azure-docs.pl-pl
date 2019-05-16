@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 6deb3ac0869ba7d8dfb41cc6fac8c30fb035b5a6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 7700efb7bfdb60c8f8f82b442cf01aae691f2fc3
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64572713"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595583"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>Rozpoczynanie monitorowania aplikacji internetowej ASP.NET Core
 
@@ -27,9 +27,9 @@ Ten przewodnik Szybki Start przeprowadzi Cię przez proces dodawania zestawu SDK
 
 Aby ukończyć ten przewodnik Szybki start:
 
-- Zainstaluj program [Visual Studio 2017](https://www.visualstudio.com/downloads/) z następującymi pakietami roboczymi:
-  - Tworzenie aplikacji na platformie ASP.NET i aplikacji internetowych
-  - Tworzenie aplikacji na platformie Azure
+- [Instalowanie programu Visual Studio 2019](https://www.visualstudio.com/downloads/) z następującymi pakietami roboczymi:
+  - ASP.NET i tworzenie aplikacji internetowych
+  - Programowanie na platformie Azure
 - [Instalowanie zestawu SDK programu .NET Core 2.0](https://www.microsoft.com/net/core)
 - Wymagana jest subskrypcja platformy Azure i istniejąca aplikacja internetowa .NET Core.
 
@@ -41,7 +41,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
-## <a name="enable-application-insights"></a>Włączanie usługi Application Insights
+## <a name="enable-application-insights"></a>Włącz usługę Application Insights
 
 Usługa Application Insights umożliwia zbieranie danych telemetrycznych z dowolnej aplikacji połączonej z Internetem, niezależnie od tego, czy jest to aplikacja lokalna czy aplikacja w chmurze. Aby rozpocząć wyświetlanie tych danych, wykonaj poniższe czynności.
 

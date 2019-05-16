@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: erhopf
 ms.openlocfilehash: 0ed1a72a5dc61458200b72c768ad722656b820d8
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 05/16/2019
 ms.locfileid: "65027229"
 ---
 # <a name="what-is-the-ink-recognizer-api"></a>Co to jest interfejs API rozpoznawania pisma odręcznego?
@@ -55,8 +55,8 @@ Wypróbuj Szybki Start w następujących językach, aby rozpocząć wykonywanie 
 * [JavaScript](quickstarts/csharp.md)
 
 Aby zobaczyć, jak działa interfejs API rozpoznawania pisma odręcznego w cyfrowych aplikacji pisma odręcznego, spójrz na następujące przykładowe aplikacje w usłudze GitHub:
-* [C#i Platform(UWP) Universal Windows](https://go.microsoft.com/fwlink/?linkid=2089803)  
-* [C#i Windows Presentation Foundation(WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
-* [Aplikacja przeglądarki sieci web języka JavaScript](https://go.microsoft.com/fwlink/?linkid=2089908)       
+* [C# i platforma uniwersalna systemu Windows (UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  
+* [C# i Windows Presentation Foundation (WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
+* [Aplikacja języka JavaScript dla przeglądarki internetowej](https://go.microsoft.com/fwlink/?linkid=2089908)       
 * [Aplikacja mobilna języka Java i systemu Android](https://go.microsoft.com/fwlink/?linkid=2089906)
-* [Aplikacja mobilna SWIFT i iOS](https://go.microsoft.com/fwlink/?linkid=2089805)
+* [Aplikacja mobilna języka Swift i systemu iOS](https://go.microsoft.com/fwlink/?linkid=2089805)

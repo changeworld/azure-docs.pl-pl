@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: a43ad92181415593b309b9fafb20f9934a997924
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 08745c3ef3d4996340ec40af496f8f0a5e0201c3
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60539798"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595733"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>Rozpoczynanie monitorowania aplikacji internetowej ASP.NET
 
@@ -26,16 +26,16 @@ W tym przewodniku Szybki start pokazano, jak dodać usługę Application Insight
 ## <a name="prerequisites"></a>Wymagania wstępne
 Aby ukończyć ten przewodnik Szybki start:
 
-- Zainstaluj program [Visual Studio 2017](https://www.visualstudio.com/downloads/) z następującymi pakietami roboczymi:
-    - Tworzenie aplikacji na platformie ASP.NET i aplikacji internetowych
-    - Tworzenie aplikacji na platformie Azure
+- Zainstaluj [Visual Studio 2019](https://www.visualstudio.com/downloads/) z następującymi pakietami roboczymi:
+    - ASP.NET i tworzenie aplikacji internetowych
+    - Programowanie na platformie Azure
 
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
 
-## <a name="enable-application-insights"></a>Włączanie usługi Application Insights
+## <a name="enable-application-insights"></a>Włącz usługę Application Insights
 
-1. Otwórz projekt w programie Visual Studio 2017.
+1. Otwórz projekt w programie Visual Studio 2019 r.
 2. Wybierz pozycję **Konfiguruj usługę Application Insights** z menu Projekt. Program Visual Studio doda zestaw SDK usługi Application Insights do aplikacji.
 
     > [!IMPORTANT]
@@ -102,7 +102,7 @@ window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&
 
 Aby dowiedzieć się więcej, odwiedź repozytorium GitHub [naszego zestawu SDK typu open-source dla języka JavaScript](https://github.com/Microsoft/ApplicationInsights-JS).
 
-## <a name="video"></a>Połączenia wideo
+## <a name="video"></a>Wideo
 
 * Zewnętrzne wideo krok po kroku dotyczące [Konfigurowanie usługi Application Insights za pomocą aplikacji platformy .NET od podstaw](https://www.youtube.com/watch?v=blnGAVgMAfA).
 

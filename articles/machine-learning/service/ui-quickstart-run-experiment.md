@@ -9,12 +9,12 @@ ms.topic: quickstart
 author: sdgilley
 ms.author: sgilley
 ms.date: 05/02/2019
-ms.openlocfilehash: d14ef4a59e65ba432b5d04d9f531e4ba639deb8a
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.openlocfilehash: 0c492424e67853f7cb4a017fb4215d38a555a8a4
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65440934"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65545025"
 ---
 # <a name="quickstart-prepare-and-visualize-data-without-writing-code-in-azure-machine-learning"></a>Szybki start: Przygotowanie i wizualizowanie danych bez konieczności pisania kodu w usłudze Azure Machine Learning
 
@@ -99,13 +99,13 @@ Wybierz kolumny, które dane chcesz pracować.  Do konfigurowania modułu, aby w
    
 1. Wybierz **Select Columns in Dataset** modułu.
 
-1. W **właściwości** w okienku po prawej stronie obszaru roboczego wybierz **uruchamianie selektora kolumn**.
+1. W **właściwości** w okienku po prawej stronie obszaru roboczego wybierz **Upravit sloupce**.
 
     W **wybierz kolumny** okno dialogowe, wybierz **wszystkie kolumny** i obejmują **wszystkie funkcje**. Okno dialogowe powinno wyglądać następująco:
 
      ![Selektor kolumn](./media/ui-quickstart-run-experiment/select-all.png)
 
-1. W prawym dolnym rogu wybierz przycisk znacznika wyboru (OK), aby zamknąć selektora kolumn.
+1. W prawym dolnym rogu wybierz **OK** aby zamknąć selektora kolumn.
 
 ## <a name="run-the-experiment"></a>Uruchamianie eksperymentu
 
@@ -146,13 +146,13 @@ Najpierw należy usunąć **kolumny znormalizowane straty** kolumny całkowicie.
 
 1. Wybierz **Select Columns in Dataset** modułu.
 
-1. W **właściwości** w okienku po prawej stronie obszaru roboczego wybierz **uruchamianie selektora kolumn**.
+1. W **właściwości** w okienku po prawej stronie obszaru roboczego wybierz **Upravit sloupce**.
 
     * Pozostaw **przy użyciu reguł** i **wszystkie kolumny** wybrane.
 
     * Z list rozwijanych wybierz pozycje **Exclude** (Wyklucz) i **column names** (nazwy kolumn), a następnie kliknij wewnątrz pola tekstowego. Typ **kolumny znormalizowane straty**.
 
-    * W prawym dolnym rogu wybierz przycisk znacznika wyboru (OK), aby zamknąć selektora kolumn.
+    * W prawym dolnym rogu wybierz **OK** aby zamknąć selektora kolumn.
 
     ![Wyklucz kolumny](./media/ui-quickstart-run-experiment/exclude-column.png)
         

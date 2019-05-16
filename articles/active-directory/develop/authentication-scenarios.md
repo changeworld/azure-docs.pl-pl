@@ -3,8 +3,8 @@ title: Uwierzytelnianie na platformie tożsamości firmy Microsoft | Azure
 description: Dowiedz się więcej o uwierzytelnianiu platformie tożsamości firmy Microsoft, jej modelu interfejsu API, inicjowanie obsługi administracyjnej i najbardziej typowych scenariuszy uwierzytelniania tego platforma tożsamości firmy Microsoft obsługuje.
 services: active-directory
 documentationcenter: dev-center-name
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 0c84e7d0-16aa-4897-82f2-f53c6c990fd9
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/05/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1d54347b9a3ccc72cfd5b88400d699d93132fbf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c0be7a8b756ee3d1d71b15e10797176e50037a47
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60299892"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540145"
 ---
 # <a name="what-is-authentication"></a>Co to jest uwierzytelnianie?
 
@@ -109,10 +109,10 @@ Oświadczenia obecne w dowolnym tokenie zabezpieczającym są zależne od typu t
 
 Krótki opis każdego typu oświadczenia wyemitowane przez platforma tożsamości usługi Microsoft znajduje się w poniższej tabeli. Aby uzyskać więcej informacji, zobacz [tokeny dostępu](access-tokens.md) i [tokeny Identyfikatora](id-tokens.md) wystawiony przez platforma tożsamości firmy Microsoft.
 
-| Claim | Opis |
+| Oświadczenie | Opis |
 | --- | --- |
 | Identyfikator aplikacji | Określa aplikację, która korzysta z tokenu. |
-| Grupy odbiorców | Identyfikuje zasób odbiorcy, dla którego jest przeznaczony token. |
+| Odbiorcy | Identyfikuje zasób odbiorcy, dla którego jest przeznaczony token. |
 | Application Authentication Context Class Reference | Wskazuje, jak klient został uwierzytelniony (klient publiczny lub klient poufny). |
 | Błyskawiczne uwierzytelnianie | Rejestruje datę i godzinę wystąpienia uwierzytelniania. |
 | Metoda uwierzytelniania | Wskazuje, jak podmiot tokenu został uwierzytelniony (hasło, certyfikat itp.). |
@@ -125,7 +125,7 @@ Krótki opis każdego typu oświadczenia wyemitowane przez platforma tożsamośc
 | Name (Nazwa) | Udostępnia zrozumiałą wartość identyfikującą podmiot tokenu. |
 | Identyfikator obiektu | Zawiera niezmienny, unikatowy identyfikator podmiotu w usłudze Azure AD. |
 | Role | Zawiera przyjazne nazwy ról aplikacji usługi Azure AD, które udzielono użytkownikowi. |
-| Zakres | Wskazuje uprawnienia przyznane aplikacji klienckiej. |
+| Scope | Wskazuje uprawnienia przyznane aplikacji klienckiej. |
 | Podmiot | Określa podmiot zabezpieczeń, dla którego token określa informacje. |
 | Identyfikator dzierżawy | Zawiera niezmienny, unikatowy identyfikator dzierżawy katalogu, który wystawił token. |
 | Czas życia tokenu | Definiuje przedział czasu, przez który token jest prawidłowy. |

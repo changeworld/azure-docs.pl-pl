@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 188733266c15bf214c0177762b9d10aecd05223b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: d51eaf71e449301415195e409bec9e944d16e0b9
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60773965"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65752491"
 ---
-# <a name="run-your-first-resource-graph-query-using-azure-cli"></a>Uruchamianie pierwszego zapytania usługi Resource Graph przy użyciu wiersza polecenia platformy Azure
+# <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>Szybki start: Uruchamianie pierwszego zapytania usługi Resource Graph przy użyciu wiersza polecenia platformy Azure
 
 Pierwszym krokiem do korzystania z usługi Azure Resource Graph jest zainstalowanie rozszerzenia dla [wiersza polecenia platformy Azure](/cli/azure/). Ten przewodnik Szybki start przeprowadzi Cię przez proces dodawania rozszerzenia do instalacji interfejsu wiersza polecenia platformy Azure. Rozszerzenia można używać z interfejsem wiersza polecenia platformy Azure zainstalowanym lokalnie lub za pośrednictwem [usługi Azure Cloud Shell](https://shell.azure.com).
 
@@ -81,7 +81,7 @@ Teraz, gdy rozszerzenie interfejsu wiersza polecenia platformy Azure zostało do
 
 Gdy końcowe zapytanie zostanie uruchomione wielokrotnie, zakładając, że nic się nie zmieniło w Twoim środowisku, zwrócone wyniki będą spójne i zgodne z oczekiwaniami — uporządkowane według właściwości **Name**, ale nadal ograniczone do pięciu pierwszych wyników.
 
-## <a name="cleanup"></a>Czyszczenie
+## <a name="cleanup-resources"></a>Oczyszczanie zasobów
 
 Jeśli chcesz usunąć rozszerzenie usługi Resource Graph ze środowiska interfejsu wiersza polecenia platformy Azure, możesz to zrobić za pomocą następującego polecenia:
 

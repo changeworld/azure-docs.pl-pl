@@ -14,22 +14,25 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: a957ac3536bff06f990e60da90df7235b6917dfe
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 33a90f876f5ce35b52bb2d5625fa9d91a0a33dee
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64730557"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522992"
 ---
-# <a name="what-is-azure-netapp-files"></a>Co to jest Azure NetApp Files
-Usługa Azure NetApp Files to usługa klasy korporacyjnej udostępniająca mierzony magazyn plików o wysokiej wydajności. Usługa Azure NetApp Files obsługuje wszystkie typy obciążeń i zapewnia domyślnie wysoką dostępność. W tej usłudze można wybrać gwarantowane poziomy usług i wydajności oraz konfigurować migawki. 
+# <a name="what-is-azure-netapp-files"></a>Co to jest usługa Azure NetApp Files
+
+Usługa Azure NetApp Files to usługa klasy korporacyjnej udostępniająca mierzony magazyn plików o wysokiej wydajności. Usługa Azure NetApp Files obsługuje wszystkie typy obciążeń i zapewnia domyślnie wysoką dostępność. Można wybrać poziomy usług i wydajności i skonfiguruj migawki za pośrednictwem usługi. 
+
+## <a name="learn-how-to-use-azure-netapp-files"></a>Dowiedz się, jak używać usługi Azure Files NetApp
 
 Dokumentacja usługi Azure NetApp Files zawiera instrukcje dotyczące tworzenia woluminów i zarządzania nimi w usłudze Azure NetApp Files. 
 
 > [!IMPORTANT] 
-> Wszystkie zadania opisane w tej dokumentacji wymagają uczestnictwa w programie podglądu publicznego i obecności na liście dozwolonych, aby można było uzyskiwać dostęp do dostawcy zasobów platformy Azure Microsoft.NetApp. Aby poprosić o dołączenie do programu podglądu publicznego, zobacz [Rejestrowanie w usłudze Azure NetApp Files](azure-netapp-files-register.md). 
+> Wszystkie zadania opisane w tej dokumentacji wymagają, że możesz mieć przyznany dostęp do usługi Azure NetApp Files. Aby zażądać dostępu do usługi, zobacz [wniosek o liście oczekujących do uzyskiwania dostępu do usługi](azure-netapp-files-register.md#waitlist).
 
-**Następne kroki** 
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Omówienie hierarchii magazynu usługi Azure NetApp Files](azure-netapp-files-understand-storage-hierarchy.md) 
 * [Szybki start: Konfigurowanie usługi Azure Files NetApp i Utwórz wolumin systemu plików NFS](azure-netapp-files-quickstart-set-up-account-create-volumes.md)

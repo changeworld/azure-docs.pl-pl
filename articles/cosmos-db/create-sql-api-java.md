@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 10/24/2018
 ms.author: sngun
-ms.openlocfilehash: 0e80fbc96bf1241308c80d108e9f9580122b801b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b826efc770399c9e1ccbbe5ab57318d512bdbf86
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60891144"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65519081"
 ---
 # <a name="quickstart-build-a-java-application-using-azure-cosmos-db-sql-api-account"></a>Szybki start: Tworzenie aplikacji w języku Java za pomocą konta interfejsu API SQL usługi Azure Cosmos DB
 
@@ -35,8 +35,7 @@ W tym przewodniku Szybki start przedstawiono sposób tworzenia zasobów konta [i
 
 Ponadto: 
 
-* [Zestaw Java Development Kit (JDK) 1.8+](https://aka.ms/azure-jdks)
-    * W systemie Ubuntu uruchom polecenie `apt-get install default-jdk`, aby zainstalować zestaw JDK.
+* [Java Development Kit (JDK) w wersji 8](https://aka.ms/azure-jdks)
     * Upewnij się, że zmienna środowiskowa JAVA_HOME wskazuje folder, w którym zainstalowano zestaw JDK.
 * [Pobierz](https://maven.apache.org/download.cgi) i [zainstaluj](https://maven.apache.org/install.html) archiwum binarne [Maven](https://maven.apache.org/)
     * W systemie Ubuntu możesz uruchomić polecenie `apt-get install maven`, aby zainstalować narzędzie Maven.

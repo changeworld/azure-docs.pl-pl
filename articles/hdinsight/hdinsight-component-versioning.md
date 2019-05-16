@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: overview
 ms.date: 03/26/2019
-ms.openlocfilehash: d1f4996bd389a1c792f8dd7966dde6ccdfddbcc1
-ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
-ms.translationtype: MT
+ms.openlocfilehash: 0b3343a9635fe4120f03e56c41797591d2f25815
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64873006"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65755098"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Jakie są składniki platformy Apache Hadoop i wersje dostępne z HDInsight?
 
@@ -78,12 +78,11 @@ W poniższej tabeli wymieniono wersje HDInsight. Wersje HDP, które odpowiadają
 
 W poniższej tabeli wymieniono wersje HDInsight, które są dostępne w witrynie Azure portal, jak również innych metod wdrażania, takich jak program PowerShell i zestawu SDK platformy .NET.
 
-| HDInsight w wersji | Wersja HDP | VM OS | Data wydania | Data wygaśnięcia pomocy technicznej | Data wygaśnięcia | Wysoka dostępność |  Dostępność w witrynie Azure portal | 
+| HDInsight w wersji | Wersja HDP | VM OS | Data wydania | Data wygaśnięcia pomocy technicznej | Data wygaśnięcia | Duża dostępność |  Dostępność w witrynie Azure portal | 
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| HDInsight 4.0 |HDP 3.0 |Ubuntu 16.0.4 LTS |24 września 2018 r. | | |Yes |Yes |
-| HDInsight 3.6 |HDP 2.6 |Ubuntu 16.0.4 LTS |4 kwietnia 2017 r. | | |Yes |Yes |
+| HDInsight 4.0 |HDP 3.0 |Ubuntu 16.0.4 LTS |24 września 2018 r. | | |Tak |Tak |
+| HDInsight 3.6 |HDP 2.6 |Ubuntu 16.0.4 LTS |4 kwietnia 2017 r. | | |Tak |Tak |
 
-*&ast; Obsługa HDInsight 3.5 został rozszerzony tylko dla typów klastrów Spark*
 
 > [!NOTE]  
 > Po pomocy technicznej dla wersji wygasła, może nie być dostępne za pośrednictwem portalu Microsoft Azure. Natomiast wersjach klastra nadal dostępne za pośrednictwem `Version` parametru w programie Windows PowerShell [New AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) polecenia i zestawu .NET SDK do wersji dacie wycofania.
@@ -93,16 +92,16 @@ W poniższej tabeli wymieniono wersje HDInsight, które są dostępne w witrynie
 
 W poniższej tabeli wymieniono wersje HDInsight, które są **nie** dostępne w witrynie Azure portal.
 
-| HDInsight w wersji | Wersja HDP | VM OS | Data wydania | Data wygaśnięcia pomocy technicznej | Data wygaśnięcia | Wysoka dostępność |  Dostępność w witrynie Azure portal | 
+| HDInsight w wersji | Wersja HDP | VM OS | Data wydania | Data wygaśnięcia pomocy technicznej | Data wygaśnięcia | Duża dostępność |  Dostępność w witrynie Azure portal | 
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| HDInsight 3.5 <br> (Inne niż Spark) |HDP 2.5 |Ubuntu 16.0.4 LTS |30 września 2016 r. |5 września 2017 r. |28 czerwca 2018 r. |Yes |Nie |
-| HDInsight 3.4 |HDP 2.4 |Ubuntu 14.0.4 LTS |29 marca 2016 r. |29 grudnia 2016 r. |9 stycznia 2018 r. |Yes |Nie |
-| HDInsight 3.3 |HDP 2.3 |Windows Server 2012 R2 |2 grudnia 2015 r. |27 czerwca 2016 r. |31 lipca 2018 r. |Yes |Nie |
-| HDInsight 3.3 |HDP 2.3 |Ubuntu 14.0.4 LTS |2 grudnia 2015 r. |27 czerwca 2016 r. |Do 31 lipca 2017 r. |Yes |Nie |
-| HDInsight 3.2 |HDP 2.2 |Ubuntu 12.04 LTS lub Windows Server 2012 R2 |18 luty 2015 r. |1 marca 2016 r. |1 kwietnia 2017 r. |Yes |Nie |
-| HDInsight 3.1 |HDP 2.1 |Windows Server 2012 R2 |24 czerwca 2014 r. |18 maja 2015 r. |30 czerwca 2016 r. |Yes |Nie |
-| HDInsight 3.0 |HDP 2.0 |Windows Server 2012 R2 |11 lutego 2014 r. |17 września 2014 r. |Do 30 czerwca 2015 |Yes |Nie |
-| HDInsight 2.1 |HDP 1.3 |Windows Server 2012 R2 |28 października 2013 |12 maja 2014 r. |Do 31 maja 2015 r. |Yes |Nie |
+| HDInsight 3.5 <br> (Inne niż Spark) |HDP 2.5 |Ubuntu 16.0.4 LTS |30 września 2016 r. |5 września 2017 r. |28 czerwca 2018 r. |Tak |Nie |
+| HDInsight 3.4 |HDP 2.4 |Ubuntu 14.0.4 LTS |29 marca 2016 r. |29 grudnia 2016 r. |9 stycznia 2018 r. |Tak |Nie |
+| HDInsight 3.3 |HDP 2.3 |Windows Server 2012 R2 |2 grudnia 2015 r. |27 czerwca 2016 r. |31 lipca 2018 r. |Tak |Nie |
+| HDInsight 3.3 |HDP 2.3 |Ubuntu 14.0.4 LTS |2 grudnia 2015 r. |27 czerwca 2016 r. |Do 31 lipca 2017 r. |Tak |Nie |
+| HDInsight 3.2 |HDP 2.2 |Ubuntu 12.04 LTS lub Windows Server 2012 R2 |18 luty 2015 r. |1 marca 2016 r. |1 kwietnia 2017 r. |Tak |Nie |
+| HDInsight 3.1 |HDP 2.1 |Windows Server 2012 R2 |24 czerwca 2014 r. |18 maja 2015 r. |30 czerwca 2016 r. |Tak |Nie |
+| HDInsight 3.0 |HDP 2.0 |Windows Server 2012 R2 |11 lutego 2014 r. |17 września 2014 r. |Do 30 czerwca 2015 |Tak |Nie |
+| HDInsight 2.1 |HDP 1.3 |Windows Server 2012 R2 |28 października 2013 |12 maja 2014 r. |Do 31 maja 2015 r. |Tak |Nie |
 | HDInsight w wersji 1.6 |HDP 1.1 | |28 października 2013 |26 kwietnia 2014 r. |Do 31 maja 2015 r. |Nie |Nie |
 
 > [!NOTE]  
@@ -139,8 +138,8 @@ Zabezpieczenia przedsiębiorstwa jest opcjonalny pakiet, którą można dodać w
 Obecnie tylko następujące typy klastrów obsługują pakiet Enterprise Security:
 
 - Usługi Hadoop (tylko HDInsight 3.6)
-- platforma Spark
-- Zapytanie interakcyjne
+- Spark
+- Zapytanie interaktywne
 
 ### <a name="support-for-azure-data-lake-storage"></a>Obsługa usługi Azure Data Lake Storage
 
@@ -244,7 +243,7 @@ W poniższej tabeli wymieniono domyślne rozmiary maszyny wirtualnej (VM) w przy
 
 * Wszystkie obsługiwane regiony z wyjątkiem Brazylii Południowej i Japonia, część zachodnia:
 
-|Typ klastra|Hadoop|HBase|Zapytanie interakcyjne|Storm|platforma Spark|ML Server|Kafka|
+|Typ klastra|Hadoop|HBase|Zapytanie interaktywne|Storm|Spark|ML Server|Kafka|
 |---|---|---|---|---|---|---|---|
 |Główny: domyślny rozmiar maszyny Wirtualnej|D12 v2|D12 v2|D13 v2|A3|D12 v2|D12 v2|D3v2|
 |Główny: zalecane rozmiary maszyn wirtualnych|D3 v2|D3 v2|D13|A4 v2|D12 v2|D12 v2|A2M, wersja 2|
@@ -276,7 +275,7 @@ W poniższej tabeli wymieniono domyślne rozmiary maszyny wirtualnej (VM) w przy
 
 * Brazylia Południowa i Japonia, część zachodnia tylko (nie rozmiary v2):
 
-  | Typ klastra | Hadoop | HBase | Zapytanie interakcyjne |Storm | platforma Spark | Usługi ML |
+  | Typ klastra | Hadoop | HBase | Zapytanie interaktywne |Storm | Spark | ML Services |
   | --- | --- | --- | --- | --- | --- | --- |
   | Główny: domyślny rozmiar maszyny Wirtualnej |D12 |D12  | D13 |A3 |D12 |D12 |
   | Główny: zalecane rozmiary maszyn wirtualnych |D3,<br/> D4,<br/> D12 |D3,<br/> D4,<br/> D12  | D13,<br/> D14 |A3<br/> A4,<br/> A5 |D12,<br/> D13,<br/> D14 |D12,<br/> D13,<br/> D14 |

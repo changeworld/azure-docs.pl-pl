@@ -1,5 +1,5 @@
 ---
-title: Jak rozpocząć pracę z wiedzy Store (wersja zapoznawcza) — usługa Azure Search
+title: Jak rozpocząć pracę z usługą wiedzy store (wersja zapoznawcza) — usługa Azure Search
 description: Poznaj procedurę wysyłania wzbogaconego dokumentów utworzonych przez sztuczną Inteligencję indeksowania potoki w usłudze Azure Search w magazynie wiedzy na Twoim koncie usługi Azure storage. Z tego miejsca można wyświetlić, zmienić kształt i używanie wzbogaconego dokumentów w usłudze Azure Search i w innych aplikacjach.
 manager: cgronlun
 author: HeidiSteen
@@ -8,16 +8,20 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 05/08/2019
 ms.author: heidist
-ms.openlocfilehash: d9006e3fcfc9691b9f3eec4b86c545fd3fea9f8a
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: e7be2dfc811caa087726339846a1de2516f1e2b2
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65471755"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540724"
 ---
-# <a name="how-to-get-started-with-knowledge-store"></a>Jak rozpocząć pracę z wiedzy Store
+# <a name="how-to-get-started-with-knowledge-store-in-azure-search"></a>Jak rozpocząć pracę z magazynem wiedzę w usłudze Azure Search
 
-[Store wiedzy](knowledge-store-concept-intro.md) to nowa funkcja w wersji zapoznawczej w usłudze Azure Search, która zapisuje wzbogacenia sztucznej Inteligencji, utworzone w potoku indeksowania dla wyszukiwania wiedzy w innych aplikacjach. Umożliwia także zapisane wzbogacenia do zrozumienia i uściślić potoku indeksowania usługi Azure Search.
+> [!Note]
+> Magazyn wiedzy jest w wersji zapoznawczej i nie przeznaczonych do użycia w środowisku produkcyjnym. [Wersji interfejsu API REST 2019-05-06-Preview](search-api-preview.md) zapewnia tę funkcję. Brak obsługi zestawu SDK platformy .NET w tej chwili.
+>
+
+[Magazyn wiedzy](knowledge-store-concept-intro.md) zapisuje wzbogacenia sztucznej Inteligencji, utworzony podczas indeksowania do konta usługi Azure storage dla wyszukiwania wiedzy podrzędne w innych aplikacjach. Umożliwia także zapisane wzbogacenia do zrozumienia i uściślić potoku indeksowania usługi Azure Search.
 
 Magazyn wiedzy jest definiowany przez zestawu umiejętności. W przypadku regularnego scenariuszy usługi Azure Search wyszukiwanie pełnotekstowe celem zestawu umiejętności jest zapewnienie wzbogacenia sztucznej Inteligencji, aby wprowadzić więcej wyszukiwanie zawartości. W przypadku scenariuszy wyszukiwania wiedzy roli zestawu umiejętności jest tworzenie, wypełnianie i przechowywanie wielu struktur danych do analizy lub modelowania w innych aplikacjach i procesach.
 

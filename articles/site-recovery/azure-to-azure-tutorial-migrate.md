@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 636993879422edaf08051be61b9d4770effdcae0
-ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
-ms.translationtype: MT
+ms.openlocfilehash: 0d446be664d695af946d46abc48389d4f7be92cd
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65556070"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65751121"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Przenoszenie maszyn wirtualnych platformy Azure do innego regionu
 
@@ -56,7 +56,7 @@ W tym samouczku zostaną wykonane następujące czynności:
     - Aby zainstalować wszystkie zaufane certyfikaty główne na maszynach wirtualnych z systemem Windows, zainstaluj wszystkie najnowsze aktualizacje systemu Windows. W środowisku bez połączenia postępuj zgodnie ze standardową procedurą usługi Windows Update i procedurą aktualizacji certyfikatów, które są używane w danej organizacji.
     - W przypadku maszyn wirtualnych systemu Linux postępuj zgodnie ze wskazówkami dystrybutora systemu Linux można pobrać najnowsze wymagane certyfikaty główne i listę odwołania certyfikatów na maszynie Wirtualnej.
 1. Upewnij się, że nie używasz uwierzytelniającego serwera proxy do sterowania łącznością sieciową dla maszyn wirtualnych, które chcesz przenieść.
-1. Jeśli maszynę Wirtualną, która próbujesz przenieść nie ma dostępu do Internetu lub korzysta ona z serwera proxy zapory do kontrolowania dostępu wychodzącego [Sprawdź wymagania](azure-to-azure-tutorial-enable-replication.md#configure-outbound-network-connectivity).
+1. Jeśli maszynę Wirtualną, która próbujesz przenieść nie ma dostępu do Internetu lub korzysta ona z serwera proxy zapory do kontrolowania dostępu wychodzącego [Sprawdź wymagania](azure-to-azure-tutorial-enable-replication.md#set-up-outbound-network-connectivity-for-vms).
 1. Określ układ sieci źródłowego i wszystkie zasoby, które obecnie używasz. To m.in. nie ogranicza się do usługi równoważenia obciążenia, sieciowe grupy zabezpieczeń (NSG) i publicznych adresów IP.
 
 ## <a name="prepare-the-target-region"></a>Przygotowywanie regionu docelowego

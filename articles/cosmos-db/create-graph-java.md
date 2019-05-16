@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: lbosq
-ms.openlocfilehash: db931a3a114be101eeb5e14fa7ba100a789e7cf5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 23b8f7db40eb2df063e055c489f11ff1b19dd8d5
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60892361"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65519091"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-the-java-sdk"></a>Szybki start: Tworzenie grafowej bazy danych w usłudze Azure Cosmos DB przy użyciu zestawu SDK języka Java 
 
@@ -35,8 +35,7 @@ Ten przewodnik Szybki start tworzy prostą grafową bazę danych przy użyciu na
 
 Ponadto:
 
-* [Zestaw Java Development Kit (JDK) 1.7+](https://aka.ms/azure-jdks)
-    * W systemie Ubuntu uruchom polecenie `apt-get install default-jdk`, aby zainstalować zestaw JDK.
+* [Java Development Kit (JDK) w wersji 8](https://aka.ms/azure-jdks)
     * Upewnij się, że zmienna środowiskowa JAVA_HOME wskazuje folder, w którym zainstalowano zestaw JDK.
 * [Pobierz](https://maven.apache.org/download.cgi) i [zainstaluj](https://maven.apache.org/install.html) archiwum binarne [Maven](https://maven.apache.org/)
     * W systemie Ubuntu możesz uruchomić polecenie `apt-get install maven`, aby zainstalować narzędzie Maven.

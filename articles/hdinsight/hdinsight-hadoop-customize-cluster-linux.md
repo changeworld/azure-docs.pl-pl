@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: e67e41d5e423e07371fbce06066076ab809f60df
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 63f81c331db619323f74b77e48627fd8b432565f
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545335"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65518886"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Dostosowywanie klastrów usługi Azure HDInsight przy użyciu akcji skryptu
 
@@ -45,23 +45,21 @@ Uzyskaj więcej informacji na temat pracy z zarządzania dostępem:
 Akcja skryptu jest skrypt powłoki Bash, działającego w węzłach w klastrze usługi HDInsight. Cechy i funkcje akcje skryptu są następujące:
 
 * Muszą być przechowywane w identyfikatorze URI, który jest dostępny z klastra HDInsight. Lokalizacje przechowywania możliwe są następujące:
+    
+    * W przypadku klastrów regularne:
+    
+      * Azure Data Lake Store Gen1: Nazwa główna usługi HDInsight używane do dostępu do usługi Data Lake Storage przez musi mieć dostęp do odczytu do skryptu. Format identyfikatora URI dla skryptów przechowywanych w Data Lake Storage Gen1 `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file`.
+      
+      * Obiektu blob na koncie Azure Storage, która jest konto magazynu podstawowej lub dodatkowej w przypadku klastra HDInsight. HDInsight udzielany jest dostęp do obu tych rodzajów kont magazynu, podczas tworzenia klastra.
 
-    * Konto usługi Azure Data Lake Storage, który jest dostępny dla klastra HDInsight. Aby uzyskać informacji dotyczących korzystania z usługi Azure Data Lake Storage z usługą HDInsight, zobacz [Szybki Start: Konfigurowanie klastrów w usłudze HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
-
-        Format identyfikatora URI dla skryptów przechowywanych w Data Lake Storage Gen1 `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file`.
-
-        > [!NOTE]  
-        > Nazwa główna usługi HDInsight używane do dostępu do usługi Data Lake Storage przez musi mieć dostęp do odczytu do skryptu.
-
-    * Obiektu blob na koncie Azure Storage, która jest konto magazynu podstawowej lub dodatkowej w przypadku klastra HDInsight. HDInsight udzielany jest dostęp do obu tych rodzajów kont magazynu, podczas tworzenia klastra.
-
-    * Publiczne usługi udostępniania plików. Przykładami są usługi Azure Blob, GitHub, usłudze OneDrive i Dropbox.
+      * Publiczne udostępniania plików usługa za pośrednictwem ścieżki http://. Przykładami są usługi Azure Blob, GitHub, usłudze OneDrive.
 
         Na przykład zobacz identyfikatorów URI [przykładowe skrypty akcji skryptu](#example-script-action-scripts).
 
-        > [!WARNING]  
-        > HDInsight obsługuje tylko obiektów Blob na kontach usługi Azure Storage w warstwie standardowa wydajności. 
-
+     * W przypadku klastrów z ESP:
+         
+         * Wasb [s] :// lub http [s] :// identyfikatory URI są obsługiwane.
+            
 * Można ograniczyć do uruchamiania w ramach określonych typów węzłów. Przykładami są węzłów głównych lub węzłów procesu roboczego.
 
 * Może być utrwalona lub ad-hoc.
@@ -148,7 +146,7 @@ HDInsight zapewnia skrypty dopasowane do zainstalowania następujących składni
 | Name (Nazwa) | Skrypt |
 | --- | --- |
 | Dodaj konto usługi Azure Storage |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`. Zobacz [dodawanie kolejnych kont magazynu do HDInsight](hdinsight-hadoop-add-storage.md). |
-| Instalowanie rozwiązania Hue |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`. Zobacz [instalacji i używania aplikacji Hue w usłudze HDInsight Hadoop clusters](hdinsight-hadoop-hue-linux.md). |
+| Zainstaluj program Hue |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`. Zobacz [instalacji i używania aplikacji Hue w usłudze HDInsight Hadoop clusters](hdinsight-hadoop-hue-linux.md). |
 | Zainstaluj skrypt Presto |`https://raw.githubusercontent.com/hdinsight/presto-hdinsight/master/installpresto.sh`. Zobacz [instalacji i używania środowiska Presto na HDInsight opartych na usłudze Hadoop clusters](hdinsight-hadoop-install-presto.md). |
 | Zainstaluj program Giraph |`https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh`. Zobacz [zainstalować system Giraph Apache na HDInsight Hadoop clusters](hdinsight-hadoop-giraph-install-linux.md). |
 | Wstępne ładowanie bibliotek technologii Hive |`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh`. Zobacz [Dodawanie niestandardowych bibliotek technologii Hive, podczas tworzenia klastra usługi HDInsight](hdinsight-hadoop-add-hive-libraries.md). |

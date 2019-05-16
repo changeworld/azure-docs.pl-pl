@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: overview
 ms.date: 04/08/2019
 ms.author: rimman
-ms.openlocfilehash: a965db4334e88d032f767bd7b855dea6f3ff174f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bc14f654af80cf599a797b8f16b0e98fe4b3a209
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61042969"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550998"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Azure Cosmos DB — Zapraszamy!
 
@@ -44,7 +44,7 @@ Zaprojektowana pod kątem przezroczystego partycjonowania w poziomie i replikacj
 
 ### <a name="guaranteed-low-latency-at-99th-percentile-worldwide"></a>Gwarantowane małe opóźnienia na poziomie 99. percentyla, na całym świecie
 
-Przy użyciu usługi Cosmos DB można tworzyć szybko reagujące aplikacje skalowane na całym świecie. Dzięki nowatorskiemu protokołowi replikacji wielowzorcowej oraz [zoptymalizowanemu pod kątem zapisu i niekorzystającemu z zatrzaśnięć aparatowi bazy danych](index-policy.md) usługa Cosmos DB gwarantuje opóźnienia mniejsze niż 10 ms dla operacji odczytu i zapisu (indeksowanych) na poziomie 99. percentyla. Ta funkcja umożliwia stałe pozyskiwanie danych i wyjątkowo szybkie żądania do natychmiast reagujących aplikacji.
+Przy użyciu usługi Cosmos DB można tworzyć szybko reagujące aplikacje skalowane na całym świecie. Z protokołu nowej replikacji wielu wzorców i niekorzystającemu z zatrzaśnięć i [zoptymalizowanej pod kątem zapisu bazy danych aparatu](index-policy.md), Cosmos DB gwarantuje opóźnienia mniejsze niż 10 ms przy odczycie w obu przypadkach odczytuje (indeksowanych) i zapisuje je w 99. percentylu, na całym świecie . Ta funkcja umożliwia stałe pozyskiwanie danych i wyjątkowo szybkie żądania do natychmiast reagujących aplikacji.
 
 ### <a name="precisely-defined-multiple-consistency-choices"></a>Wiele dokładnie zdefiniowanych opcji spójności
 

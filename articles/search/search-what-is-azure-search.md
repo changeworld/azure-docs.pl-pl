@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: c3b2134fae86b988fb21e993cd01b77a90bd2896
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 23754a1184f89d1fb563b2d73109f3a10c48920c
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65467062"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65539315"
 ---
 # <a name="what-is-azure-search"></a>Co to jest usługa Azure Search?
 Azure Search jest opartym na chmurze rozwiązaniem typu „wyszukiwanie jako usługa”, które udostępnia deweloperom interfejsy API oraz narzędzia umożliwiające dodawanie zaawansowanych funkcji wyszukiwania do prywatnej, heterogenicznej zawartości w aplikacjach internetowych, mobilnych i firmowych. Wykonywanie zapytań odbywa się na podstawie indeksu zdefiniowanego przez użytkownika.
@@ -43,8 +43,8 @@ Funkcje są uwidaczniane za pośrednictwem prostego [interfejsu API REST](/rest/
 
 | Sztuczna Inteligencja&nbsp;wzbogacanie&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       | Funkcje |
 |-------------------|----------|
-|Dokumenty wzbogacony sztucznej Inteligencji | [**Usługa cognitive Search** ](cognitive-search-concept-intro.md) dla tekstowych i obrazów, analizy mogą być stosowane do potoku indeksowania, aby wyodrębnić informacje tekstowe z nieprzetworzonej zawartości. Kilka przykładów [wbudowanych możliwości](cognitive-search-predefined-skills.md) to optyczne rozpoznawanie znaków (które pozwala na przeszukiwanie plików JPEG), rozpoznawanie jednostek (identyfikowanie organizacji, nazwy lub lokalizacji) oraz rozpoznawanie kluczowych fraz. W celu dołączenia do potoku można również użyć [możliwości kodu niestandardowego](cognitive-search-create-custom-skill-example.md). |
-| Przechowywane wzbogacenia analizy i użycia| [**Wiedza Store (wersja zapoznawcza)** ](knowledge-store-concept-intro.md) jest rozszerzeniem indeksowania oparte na sztucznej Inteligencji. Za pomocą usługi Azure storage jako zaplecza można zapisać wzbogacenia utworzone podczas indeksowania. Te artefakty mogą służyć do pomocne w przypadku projektowania lepszych dokładniejsze lub utworzyć kształt i struktury wykorzystać dane sposób lub kolumna niejednoznaczna. Można utworzyć projekcji te struktury tego docelowego konkretnych obciążeń lub użytkowników. Można również bezpośrednio analizować dane wyodrębnione lub załadować je do innych aplikacji.<br/><br/> |
+|Dokumenty wzbogacony sztucznej Inteligencji | [**Usługa cognitive search** ](cognitive-search-concept-intro.md) dla tekstowych i obrazów, analizy mogą być stosowane do potoku indeksowania, aby wyodrębnić informacje tekstowe z nieprzetworzonej zawartości. Kilka przykładów [wbudowanych możliwości](cognitive-search-predefined-skills.md) to optyczne rozpoznawanie znaków (które pozwala na przeszukiwanie plików JPEG), rozpoznawanie jednostek (identyfikowanie organizacji, nazwy lub lokalizacji) oraz rozpoznawanie kluczowych fraz. W celu dołączenia do potoku można również użyć [możliwości kodu niestandardowego](cognitive-search-create-custom-skill-example.md). |
+| Przechowywane wzbogacenia analizy i użycia| [**Wiedza magazynu (wersja zapoznawcza)** ](knowledge-store-concept-intro.md) jest rozszerzeniem indeksowania oparte na sztucznej Inteligencji. Za pomocą usługi Azure storage jako zaplecza można zapisać wzbogacenia utworzone podczas indeksowania. Te artefakty mogą służyć do pomocne w przypadku projektowania lepszych dokładniejsze lub utworzyć kształt i struktury wykorzystać dane sposób lub kolumna niejednoznaczna. Można utworzyć projekcji te struktury tego docelowego konkretnych obciążeń lub użytkowników. Można również bezpośrednio analizować dane wyodrębnione lub załadować je do innych aplikacji.<br/><br/> |
 
 | Dane&nbsp;indeksowania/import | Funkcje |
 |----------------------------------|----------|

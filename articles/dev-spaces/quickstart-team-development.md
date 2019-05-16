@@ -10,12 +10,12 @@ ms.topic: quickstart
 description: Zespołowe programowanie usługi Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s
 manager: jeconnoc
-ms.openlocfilehash: 1414cc56809263a90a4bfea16db332e2f6a5e0bc
-ms.sourcegitcommit: e729629331ae10097a081a03029398525f4147a4
-ms.translationtype: MT
+ms.openlocfilehash: 437c6284c563f85e25d2c5b81734ea3bc0507701
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/25/2019
-ms.locfileid: "64514082"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65597002"
 ---
 # <a name="quickstart-team-development-on-kubernetes-using-azure-dev-spaces"></a>Szybki start: Zespołowe programowanie na platformie Kubernetes przy użyciu usługi Azure Dev miejsca do magazynowania
 
@@ -25,7 +25,7 @@ Ten przewodnik zawiera informacje na temat wykonywania następujących czynnośc
 - Wdrażanie dużych aplikacji z wielu mikrousług na miejsce deweloperów.
 - Testowanie pojedynczych mikrousług w przestrzeni izolowane dev w kontekście pełnej aplikacji.
 
-![Usługa Azure Dev miejsca do magazynowania roweru udostępnianie przykładowej aplikacji](media/quickstart-team-development/bikeshare.png)
+![Programowanie zespołowe w usłudze Azure Dev miejsca do magazynowania](media/azure-dev-spaces/collaborate-graphic.gif)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -125,7 +125,9 @@ http://dev.bikesharingweb.fedcab0987.eus.azds.io/  Available
 http://dev.gateway.fedcab0987.eus.azds.io/         Available
 ```
 
-Przejdź do *bikesharingweb* usługi przez otwarcie publicznego adresu URL z `azds list-uris` polecenia. W powyższym przykładzie, publiczny adres URL dla *bikesharingweb* usługa *http://dev.bikesharingweb.fedcab0987.eus.azds.io/*. Wybierz *Aurelia Briggs (klienta)* jako użytkownik. Sprawdź, zostanie wyświetlony tekst *Hi Aurelia Briggs | Wyrejestruj* u góry.
+Przejdź do *bikesharingweb* usługi przez otwarcie publicznego adresu URL z `azds list-uris` polecenia. W powyższym przykładzie, publiczny adres URL dla *bikesharingweb* usługa `http://dev.bikesharingweb.fedcab0987.eus.azds.io/`. Wybierz *Aurelia Briggs (klienta)* jako użytkownik. Sprawdź, zostanie wyświetlony tekst *Hi Aurelia Briggs | Wyrejestruj* u góry.
+
+![Usługa Azure Dev miejsca do magazynowania roweru udostępnianie przykładowej aplikacji](media/quickstart-team-development/bikeshare.png)
 
 ## <a name="create-child-dev-spaces"></a>Tworzenie obiektu podrzędnego dev miejsca do magazynowania
 
@@ -162,7 +164,7 @@ http://azureuser2.s.dev.gateway.fedcab0987.eus.azds.io/         Available
 
 Upewnij się, że adresy URL są wyświetlane przez `azds list-uris` polecenie ma *azureuser2.s.dev* prefiks. Ten prefiks potwierdza, że wybrane miejsce jest *azureuser2*, który jest elementem podrzędnym *dev*.
 
-Przejdź do *bikesharingweb* usługi, aby *dev/azureuser2* miejsca dev, otwierając publiczny adres URL z `azds list-uris` polecenia. W powyższym przykładzie, publiczny adres URL dla *bikesharingweb* usługa *http://azureuser2.s.dev.bikesharingweb.fedcab0987.eus.azds.io/*. Wybierz *Aurelia Briggs (klienta)* jako użytkownik. Sprawdź, zostanie wyświetlony tekst *Hi Aurelia Briggs | Wyloguj się* u góry.
+Przejdź do *bikesharingweb* usługi, aby *dev/azureuser2* miejsca dev, otwierając publiczny adres URL z `azds list-uris` polecenia. W powyższym przykładzie, publiczny adres URL dla *bikesharingweb* usługa `http://azureuser2.s.dev.bikesharingweb.fedcab0987.eus.azds.io/`. Wybierz *Aurelia Briggs (klienta)* jako użytkownik. Sprawdź, zostanie wyświetlony tekst *Hi Aurelia Briggs | Wyloguj się* u góry.
 
 ## <a name="update-code"></a>Aktualizowanie kodu
 

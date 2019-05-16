@@ -8,13 +8,13 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 05/06/2019
-ms.openlocfilehash: b135baf73e21cd524b6e8fad35452362f36cf0c0
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
-ms.translationtype: MT
+ms.date: 05/14/2019
+ms.openlocfilehash: 73d7aebf3dbff59320e0ef92cbd54811503c71b4
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65080807"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65757626"
 ---
 # <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus-preview"></a>Samouczek: Projektowanie wielodostępną bazą danych przy użyciu usługi Azure Database for PostgreSQL — w Hiperskali (Citus) (wersja zapoznawcza)
 
@@ -31,72 +31,7 @@ W tym samouczku możesz używać usługi Azure Database for PostgreSQL — w Hip
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
-
-## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
-
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-
-## <a name="create-an-azure-database-for-postgresql"></a>Tworzenie serwera usługi Azure Database for PostgreSQL
-
-Wykonaj następujące kroki, aby utworzyć serwer usługi Azure Database for PostgreSQL:
-1. W lewym górnym rogu witryny Azure Portal kliknij polecenie **Utwórz zasób**.
-2. Na stronie **Nowy** wybierz pozycję **Bazy danych**, a następnie na stronie **Bazy danych** wybierz pozycję **Azure Database for PostgreSQL**.
-3. Dla opcji wdrożenia kliknij **Utwórz** przycisku w obszarze **grupy serwerów na dużą skalę (Citus) — wersja ZAPOZNAWCZA.**
-4. Wypełnij formularz szczegółów nowego serwera, używając następujących informacji:
-   - Grupa zasobów: kliknij **Utwórz nową** link poniżej pola tekstowego dla tego pola. Wprowadź nazwę, taką jak **myresourcegroup**.
-   - Nazwa grupy serwerów: wprowadź unikatową nazwę dla nowej grupy serwerów będzie również używany dla poddomeny serwera.
-   - Nazwa użytkownika administratora: wprowadź unikatową nazwę użytkownika, jego posłuży później do łączenia z bazą danych.
-   - Hasło: musi być co najmniej ośmiu znaków i musi zawierać znaki z trzech z następujących kategorii — litery na wielkie litery angielskie, angielskiej małe litery, cyfry (0 – 9) i znaki inne niż alfanumeryczne (!, $, #, % itp.)
-   - Lokalizacja: Użyj lokalizacji, która jest najbliżej Twoich użytkowników, aby zapewnić im najszybszy dostęp do danych.
-
-   > [!IMPORTANT]
-   > Nazwa logowania i hasło administratora serwera określone w tym miejscu będą wymagane do logowania do serwera i jego baz danych w dalszej części tego samouczka. Zapamiętaj lub zapisz te informacje do wykorzystania w przyszłości.
-
-5. Kliknij przycisk **Konfigurowanie grupy serwerów**. Pozostaw ustawienia w tej sekcji bez zmian, a następnie kliknij przycisk **Zapisz**.
-6. Kliknij przycisk **przeglądu + Utwórz** i następnie **Utwórz** aby aprowizować serwer. Aprowizacja zajmuje kilka minut.
-7. Strony nastąpi przekierowanie do monitorowania wdrożenia. Zmiany stanu na żywo z **wdrożenia jest w toku** do **swoje wdrożenie jest ukończone**, kliknij przycisk **dane wyjściowe** element menu po lewej stronie.
-8. Strony danych wyjściowych będzie zawierał nazwę hosta koordynatora za pomocą przycisku obok niej, aby skopiować wartość do Schowka. Zarejestruj te informacje w celu późniejszego użycia.
-
-## <a name="configure-a-server-level-firewall-rule"></a>Konfigurowanie reguły zapory na poziomie serwera
-
-Usługa Azure Database for PostgreSQL używa zapory na poziomie serwera. Domyślnie Zapora uniemożliwia wszystkim zewnętrznym aplikacjom i narzędzia do nawiązywania połączenia z serwerem i wszelkimi bazami danych na serwerze. Firma Microsoft należy dodać regułę otwierającą zaporę dla określonego zakresu adresów IP.
-
-1. Z **dane wyjściowe** sekcji, w której został skopiowany wcześniej z nazwą hosta węzła koordynatora, kliknij przycisk Wstecz do **Przegląd** elementu menu.
-
-2. Znajdź grupy skalowania dla danego wdrożenia, na liście zasobów, a następnie kliknij go. (Jego nazwa będzie zaczynała się od "sg-".)
-
-3. Kliknij przycisk **zapory** w obszarze **zabezpieczeń** w menu po lewej stronie.
-
-4. Kliknij łącze **+ Dodaj regułę zapory dla bieżącego adresu IP klienta**. Na koniec kliknij **Zapisz** przycisku.
-
-5. Kliknij pozycję **Zapisz**.
-
-   > [!NOTE]
-   > Serwer Azure PostgreSQL komunikuje się przez port 5432. Jeśli próbujesz nawiązać połączenie z sieci firmowej, ruch wychodzący na porcie 5432 może być zablokowany przez zaporę sieciową. Jeśli wystąpi taka sytuacja, nie będzie można nawiązać połączenia z serwerem usługi Azure SQL Database, chyba że dział IT otworzy port 5432.
-   >
-
-## <a name="connect-to-the-database-using-psql-in-cloud-shell"></a>Połączenia z bazą danych za pomocą narzędzia psql w usłudze Cloud Shell
-
-Teraz użyjmy narzędzia wiersza polecenia [psql](https://www.postgresql.org/docs/current/app-psql.html), aby nawiązać połączenie z serwerem usługi Azure Database for PostgreSQL.
-1. Uruchom powłokę Azure Cloud Shell za pośrednictwem ikony terminala w górnym okienku nawigacji.
-
-   ![Azure Database for PostgreSQL — ikona terminala powłoki Azure Cloud Shell](./media/tutorial-design-database-hyperscale-multi-tenant/psql-cloud-shell.png)
-
-2. Powłoka Azure Cloud Shell zostanie otwarta w przeglądarce, umożliwiając wpisywanie poleceń powłoki bash.
-
-   ![Azure Database for PostgreSQL — znak zachęty powłoki Azure Shell Bash](./media/tutorial-design-database-hyperscale-multi-tenant/psql-bash.png)
-
-3. W wierszu polecenia powłoki Cloud Shell nawiąż połączenie z serwerem usługi Azure Database for PostgreSQL za pomocą poleceń psql. Następujący format służy do łączenia z serwerem usługi Azure Database for PostgreSQL przy użyciu narzędzia [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html):
-   ```bash
-   psql --host=<myserver> --username=myadmin --dbname=citus
-   ```
-
-   Na przykład następujące polecenie umożliwia nawiązanie domyślna baza danych o nazwie **citus** na Twoim serwerze PostgreSQL **mydemoserver.postgres.database.azure.com** za pomocą poświadczeń dostępu. Po wyświetleniu monitu wprowadź hasło administratora serwera.
-
-   ```bash
-   psql --host=mydemoserver.postgres.database.azure.com --username=myadmin --dbname=citus
-   ```
+[!INCLUDE [azure-postgresql-hyperscale-create-db](../../includes/azure-postgresql-hyperscale-create-db.md)]
 
 ## <a name="use-psql-utility-to-create-a-schema"></a>Utwórz schemat przy użyciu narzędzia psql
 
@@ -250,7 +185,7 @@ ORDER BY a.campaign_id, n_impressions desc;
 
 Do tej pory wszystkie tabele zostały przekazane przez `company_id`, ale niektóre dane nie naturalnie "należy" do dowolnej dzierżawy w szczególności i mogą być udostępniane. Na przykład wszystkich firm w przykładzie platformy ad może potrzebować informacji geograficznych dla swoich odbiorców na podstawie adresów IP.
 
-Utwórz tabelę do przechowywania udostępnionych informacji geograficznych. Uruchom to polecenie w psql:
+Utwórz tabelę do przechowywania udostępnionych informacji geograficznych. Uruchom następujące polecenia w psql:
 
 ```sql
 CREATE TABLE geo_ips (
@@ -268,7 +203,7 @@ Następnie należy `geo_ips` "Tabela odwołania" przechowywać kopię tabeli w k
 SELECT create_reference_table('geo_ips');
 ```
 
-Załaduj do niej przykładowe dane. Pamiętaj, aby uruchomić to w psql z wewnątrz katalogu, w której pobrano zestaw danych.
+Załaduj do niej przykładowe dane. Pamiętaj, aby uruchomić to polecenie w psql z wewnątrz katalogu, w której pobrano zestaw danych.
 
 ```sql
 \copy geo_ips from 'geo_ips.csv' with csv

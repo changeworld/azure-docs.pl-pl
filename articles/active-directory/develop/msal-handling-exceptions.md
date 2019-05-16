@@ -4,7 +4,7 @@ description: Dowiedz się, jak obsługa błędów i wyjątków, dostęp warunkow
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
-manager: celested
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -16,12 +16,12 @@ ms.date: 04/10/2019
 ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 43c98181c926410bea2acf64bf1ed4d588c12616
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: f1972a870ac15e1ca8dde963eef6cf7f1caf3039
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65138971"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544180"
 ---
 # <a name="handling-exceptions-and-errors-using-msal"></a>Obsługa wyjątków i błędów z zastosowaniem biblioteki MSAL
 Wyjątki w Microsoft Authentication Library (MSAL) są przeznaczone dla deweloperów aplikacji rozwiązać, a nie w celu wyświetlania użytkownikom końcowym. Nie są lokalizowane komunikaty o wyjątkach.
@@ -38,7 +38,7 @@ Jeśli [MsalServiceException](/dotnet/api/microsoft.identity.client.msalservicee
 ### <a name="common-exceptions"></a>Typowe wyjątki
 Poniżej przedstawiono typowe wyjątki, które może zostać wygenerowany i niektóre możliwe środki zaradcze.
 
-| Wyjątek | Kod błędu | Środki zaradcze|
+| Wyjątek | Kod błędu | Ograniczanie ryzyka|
 | --- | --- | --- |
 | [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS65001: Użytkownik albo administrator nie wyraził zgody na używanie aplikacji o identyfikatorze {appId} o nazwie "{appName}". Wyślij żądanie interaktywnej autoryzacji dla tego użytkownika i zasobu.| Musisz pobrać pierwszy zgody użytkownika. Jeśli nie używasz platformy .NET Core, (która nie ma żadnych interfejsów użytkownika sieci Web), wywołaj (tylko raz) `AcquireTokeninteractive`. Jeśli używasz platformy .NET core, lub nie chcesz zrobić `AcquireTokenInteractive`, użytkownik może przejść do adresu URL, aby wyrazić zgodę: https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id={clientId}&response_type=code&scope=user.read . Aby wywołać `AcquireTokenInteractive`: `app.AcquireTokenInteractive(scopes).WithAccount(account).WithClaims(ex.Claims).ExecuteAsync();`|
 | [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS50079: Wymagane jest wprowadzenie przez użytkownika do korzystania z uwierzytelniania Multi-Factor Authentication.| Nie ma bez ograniczania ryzyka — Jeśli skonfigurowano usługę MFA dla Twojej dzierżawy i AAD decyduje się na jej wymusić, musisz powrót do interaktywnego przepływu takich jak `AcquireTokenInteractive` lub `AcquireTokenByDeviceCode`.|

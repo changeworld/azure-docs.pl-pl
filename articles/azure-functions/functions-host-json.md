@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: e24c5b2be1df41d84fa4461250f51cb009f77529
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: ddd3b0889eedd55f809dbb57b2ef41a2ae3f9c94
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60737213"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65521394"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>Dokumentacja pliku host.JSON dla usługi Azure Functions 2.x  
 
@@ -35,7 +35,6 @@ Niektóre ustawienia host.json są używane tylko podczas uruchamiania lokalnego
 ## <a name="sample-hostjson-file"></a>Przykładowy plik host.json
 
 Poniższy przykład *host.json* pliki mają wszystkie możliwe opcje określone.
-
 
 ```json
 {
@@ -82,7 +81,10 @@ Poniższy przykład *host.json* pliki mają wszystkie możliwe opcje określone.
       "lockAcquisitionTimeout": "00:01:00",
       "lockAcquisitionPollingInterval": "00:00:03"
     },
-    "watchDirectories": [ "Shared", "Test" ]
+    "watchDirectories": [ "Shared", "Test" ],
+    "managedDependency": {
+        "enabled": true
+    }
 }
 ```
 
@@ -133,7 +135,7 @@ Ustawienia konfiguracji można znaleźć w [Centrum zdarzeń wyzwalaczy i powią
 
 Właściwość, która zwraca obiekt, który zawiera wszystkie ustawienia specyficzne dla powiązania, takich jak [http](#http) i [eventHub](#eventhub).
 
-## <a name="functions"></a>functions
+## <a name="functions"></a>funkcje
 
 Lista funkcji, które uruchamia hosta zadania. Pusta tablica oznacza, że uruchamianie wszystkich funkcji. Przeznaczony do użytku tylko wtedy, gdy [uruchamiane lokalnie](functions-run-local.md). W aplikacji funkcji na platformie Azure, należy zamiast tego wykonaj czynności opisane w [jak wyłączyć funkcje w usłudze Azure Functions](disable-function.md) wyłączenie określonych funkcji, a nie przy użyciu tego ustawienia.
 
@@ -193,6 +195,9 @@ Kontroluje zachowania rejestrowania aplikacji funkcji, łącznie z usługi Appli
     "logLevel": {
       "Function.MyFunction": "Information",
       "default": "None"
+    },
+    "console": {
+        ...
     },
     "applicationInsights": {
         ...
@@ -274,6 +279,18 @@ Zbiór [udostępnionych katalogów kodu](functions-reference-csharp.md#watched-d
 ```json
 {
     "watchDirectories": [ "Shared" ]
+}
+```
+
+## <a name="manageddependency"></a>managedDependency
+
+Zależność zarządzanych jest funkcja w wersji zapoznawczej, która jest obecnie obsługiwane tylko za pomocą programu PowerShell oparta na funkcjach. Dzięki temu zależności, które mają być automatycznie zarządzane przez usługę. Gdy właściwość włączone ma wartość true, [requirements.psd1](functions-reference-powershell.md#dependency-management) plik zostanie przetworzony. Zależności zostanie zaktualizowany, gdy są zwalniane, wszystkie wersje pomocnicze.
+
+```json
+{
+    "managedDependency": {
+        "enabled": true
+    }
 }
 ```
 

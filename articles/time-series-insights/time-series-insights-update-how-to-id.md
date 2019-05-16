@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/03/2018
+ms.date: 05/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 81877ad23728ad76cb5d4dc5084990511257c6df
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 4b2f538831ee9410eaf1a2d272f01fd30a9236e6
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64695072"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65519433"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>Najlepsze rozwiązania dotyczące wybierania Identyfikatora serii czasu
 
@@ -29,6 +29,7 @@ Wybieranie Identyfikatora serii czasu przypomina wybór klucza partycji dla bazy
 > Identyfikator serii czasu jest rozróżniana wielkość liter i niezmienne (nie można zmienić po jego ustawieniu).
 
 Mając to na uwadze wybierając z odpowiednim Identyfikatorem serii czasu ma krytyczne znaczenie. Po wybraniu Identyfikatora serii czasu, należy wziąć pod uwagę następujące te najlepsze rozwiązania:
+
 * Wybierz nazwę właściwości, która ma szeroki zakres wartości, a nawet wzorców dostępu. Jest najlepszym rozwiązaniem jest zapewnienie klucza partycji przy użyciu wielu różnych wartości (na przykład, setek lub tysięcy). Dla wielu klientów będzie to coś jak identyfikator urządzenia lub SensorID w kod JSON.
 * Identyfikator serii czasu powinna być unikatowa na poziomie liścia węzła usługi [modelu szeregów czasowych](./time-series-insights-update-tsm.md).
 * Ciąg znaków nazwy właściwości identyfikator serii czasu mogą mieć maksymalnie 128 znaków i wartości właściwości identyfikator serii czasu może mieć maksymalnie 1024 znaki.
@@ -41,13 +42,13 @@ Ponadto możesz wybrać maksymalnie *trzy* (3) właściwości klucza jako identy
 
 W poniższych scenariuszach opisano, wybierając opcję więcej niż jedną właściwość klucza jako swój identyfikator serii czasu:  
 
-### <a name="scenario-1"></a>Scenariusz 1
+### <a name="scenario-one"></a>Scenariusz 1
 
-* Masz flot starszych zasobów, z których każdy unikatowy klucz. 
-* Na przykład jeden floty jest unikatowo identyfikowana przez właściwość *deviceId* i inny unikatowy właściwości *objectId*. Żadna floty zawiera inne floty unikatowa właściwość. W tym przykładzie będzie wybierz dwa klucze, identyfikator urządzenia i identyfikator obiektu jako klucze unikatowe. 
+* Masz flot starszych zasobów, z których każdy unikatowy klucz.
+* Na przykład jeden floty jest unikatowo identyfikowana przez właściwość *deviceId* i inny unikatowy właściwości *objectId*. Żadna floty zawiera inne floty unikatowa właściwość. W tym przykładzie będzie wybierz dwa klucze, identyfikator urządzenia i identyfikator obiektu jako klucze unikatowe.
 * Możemy zaakceptować wartości null i braku obecność właściwości w ładunku zdarzenia jest liczona jako `null` wartość. Jest to również odpowiedni sposób obsługi wysyłania danych do dwóch źródeł zdarzeń, gdzie dane w każdym źródło zdarzenia ma unikatowy identyfikator czas serii
 
-### <a name="scenario-2"></a>Scenariusz 2
+### <a name="scenario-two"></a>Scenariusz 2
 
 * Wymagane jest wiele właściwości, aby być unikatowe w obrębie tego samego jej zasobów. 
 * Na przykład załóżmy, że jesteś producenta inteligentne tworzenie i wdrażanie czujników w każdym pokoju. W każdym pomieszczeniu, zazwyczaj mają takie same wartości *sensorId*, takich jak *sensor1*, *sensor2*, i *sensor3*.

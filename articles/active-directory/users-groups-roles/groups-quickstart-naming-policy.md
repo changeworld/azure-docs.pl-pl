@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: quickstart
-ms.date: 01/31/2019
+ms.date: 04/24/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4105fa17041c7cefd1387d1ee50c177b8c55fc9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a0e600204479bc54a590df6bf1bbcd634eaac7fc
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60471216"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65605644"
 ---
 # <a name="quickstart-naming-policy-for-groups-in-azure-active-directory"></a>Szybki start: Zasady nazewnictwa grup w usłudze Azure Active Directory
 
@@ -31,121 +31,43 @@ W tym przewodniku Szybki start utworzysz zasady nazewnictwa w dzierżawie usług
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
-## <a name="install-powershell-cmdlets"></a>Instalowanie poleceń cmdlet programu PowerShell
+## <a name="configure-the-group-naming-policy-for-a-tenant-using-azure-portal-preview"></a>Konfigurowanie grupy, zasady nazewnictwa dla dzierżawcy przy użyciu witryny Azure portal (wersja zapoznawcza)
 
-Pamiętaj, aby odinstalować starszą wersję modułu Azure Active Directory PowerShell dla programu Graph z programu Windows PowerShell i zainstalować moduł [Azure Active Directory PowerShell dla programu Graph w publicznej wersji zapoznawczej 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137) przed uruchomieniem poleceń programu PowerShell. 
+1. Zaloguj się do [Centrum administracyjnego usługi Azure AD](https://aad.portal.azure.com) przy użyciu konta administratora użytkowników.
+1. Wybierz **grup**, a następnie wybierz **zasady nazewnictwa** aby otworzyć stronę Zasady nazewnictwa.
 
-1. Otwórz aplikację Windows PowerShell jako administrator.
-2. Odinstaluj poprzednią wersję programu AzureADPreview.
-  
+    ![Otwórz stronę Zasady nazewnictwa w Centrum administracyjnym](./media/groups-naming-policy/policy-preview.png)
 
-   ```powershell
-   Uninstall-Module AzureADPreview
-   ```
+### <a name="view-or-edit-the-prefix-suffix-naming-policy"></a>Wyświetl lub Edytuj zasady nazewnictwa prefiksu i sufiksu
 
-3. Zainstaluj najnowszą wersję programu AzureADPreview.
-  
+1. Na **zasady nazewnictwa** wybierz opcję **zasady nazewnictwa grupy**.
+1. Można wyświetlić lub edytować bieżący prefiks lub sufiks nadawanie zasadom nazw indywidualnie, wybierając atrybutów lub ciągów, które mają zostać wymuszone jako część zasad nazewnictwa.
+1. Aby usunąć prefiks lub sufiks z listy, wybierz prefiks lub sufiks, a następnie wybierz **Usuń**. W tym samym czasie można usunąć wielu elementów.
+1. Wybierz **Zapisz** zmiany zasady zaczną obowiązywać.
 
-   ```powershell
-   Install-Module AzureADPreview
-   ```
+### <a name="view-or-edit-the-custom-blocked-words"></a>Wyświetl lub Edytuj niestandardowe wyrazy zablokowane
 
-   Jeśli zostanie wyświetlony monit dotyczący dostępu do niezaufanego repozytorium, wpisz **Y**. Zainstalowanie nowego modułu może zająć kilka minut.
+1. Na **zasady nazewnictwa** wybierz opcję **zablokowane wyrazy**.
 
-## <a name="set-up-naming-policy"></a>Tworzenie zasad nazewnictwa
+    ![edytować i przekazywać listy zablokowanych słowa dla zasady nazewnictwa](./media/groups-naming-policy/blockedwords-preview.png)
 
-### <a name="step-1-sign-in-using-powershell-cmdlets"></a>Krok 1: logowanie się przy użyciu poleceń cmdlet programu PowerShell
+1. Wyświetlenie lub Edycja bieżącą listę zablokowanych podasz niestandardowe wyrazy, wybierając **Pobierz**.
+1. Przekaż nową listę zablokowanych podasz niestandardowe wyrazy, wybierając ikonę pliku.
+1. Wybierz **Zapisz** zmiany zasady zaczną obowiązywać.
 
-1. Otwórz aplikację Windows PowerShell. Podniesione przywileje nie są konieczne.
-
-2. Uruchom następujące polecenia, aby przygotować się do uruchomienia poleceń cmdlet.
-  
-
-   ```powershell
-   Import-Module AzureADPreview
-   Connect-AzureAD
-   ```
-
-   Na ekranie **Zaloguj się na swoje konto** wprowadź swoje konto administratora i hasło, aby połączyć się z usługą, a następnie wybierz polecenie **Zaloguj**.
-
-3. Postępuj zgodnie z instrukcjami zawartymi w artykule [Azure Active Directory cmdlets for configuring group settings (Polecenia cmdlet usługi Azure Active Directory służące do konfigurowania ustawień grupy)](groups-settings-cmdlets.md), aby utworzyć ustawienia grupy dla tej dzierżawy.
-
-### <a name="step-2-view-the-current-settings"></a>Krok 2: wyświetlanie bieżących ustawień
-
-1. Wyświetl bieżące ustawienia zasad nazewnictwa.
-  
-
-   ```powershell
-   $Setting = Get-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | Where-Object -Property DisplayName -Value "Group.Unified" -EQ).id
-   ```
-
-  
-2. Wyświetl bieżące ustawienia grupy.
-  
-
-   ```powershell
-   $Setting.Values
-   ```
-
-  
-
-### <a name="step-3-set-the-naming-policy-and-any-custom-blocked-words"></a>Krok 3: konfigurowanie zasad nazewnictwa i wszelkich niestandardowych słów zablokowanych
-
-1. Ustaw prefiksy i sufiksy nazw grup w usłudze Azure AD PowerShell. Aby ta funkcja działała poprawnie, należy dodać element [GroupName] do ustawienia.
-  
-
-   ```powershell
-   $Setting["PrefixSuffixNamingRequirement"] =“GRP_[GroupName]_[Department]"
-   ```
-
-  
-2. Ustaw niestandardowe słowa zablokowane. W poniższym przykładzie pokazano, jak dodać własne słowa niestandardowe.
-  
-
-   ```powershell
-   $Setting["CustomBlockedWordsList"]=“Payroll,CEO,HR"
-   ```
-
-  
-3. Zapisz ustawienia nowych zasad, aby zaczęły obowiązywać, tak jak w poniższym przykładzie.
-  
-
-   ```powershell
-   Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | Where-Object -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
-   ```
-
-  
 Gotowe. Skonfigurowano zasady nazewnictwa i dodano niestandardowe słowa zablokowane.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-1. Usuń prefiksy i sufiksy nazw grup w usłudze Azure AD PowerShell.
-  
+### <a name="remove-the-naming-policy-using-azure-portal-preview"></a>Usuń zasady nazewnictwa przy użyciu witryny Azure portal (wersja zapoznawcza)
 
-   ```powershell
-   $Setting["PrefixSuffixNamingRequirement"] =""
-   ```
-
-  
-2. Usuń niestandardowe słowa zablokowane.
-  
-
-   ```powershell
-   $Setting["CustomBlockedWordsList"]=""
-   ```
-
-  
-3. Zapisz ustawienia.
-  
-
-   ```powershell
-   Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | Where-Object -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
-   ```
+1. Na **zasady nazewnictwa** wybierz opcję **usuwanie zasady**.
+1. Po użytkownik potwierdzi usunięcie zasad nazewnictwa zostanie usunięty, w tym wszystkie sufiks prefiks nazwy zasad i wszystkie zablokowane podasz niestandardowe wyrazy.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym przewodniku Szybki start wyjaśniono, w jaki sposób skonfigurować zasady nazewnictwa w dzierżawie usługi Azure AD przy użyciu poleceń cmdlet programu PowerShell.
+W tym przewodniku Szybki Start wyjaśniono sposób ustawiania zasad nazewnictwa dla Twojej organizacji usługi Azure AD w witrynie Azure portal.
 
-Aby uzyskać więcej informacji na temat ograniczeń technicznych, dodawania listy niestandardowych słów zablokowanych lub środowiska użytkownika końcowego w aplikacjach usługi Office 365, przejdź do kolejnego artykułu i dowiedz się więcej na temat zasad nazewnictwa.
+Przejdź do następnego artykułu, aby uzyskać więcej informacji, łącznie z poleceń cmdlet programu PowerShell dla nazwy zasady, ograniczenia techniczne, Dodawanie listy zablokowanych podasz niestandardowe wyrazy i środowiska użytkownika końcowego w aplikacjach usługi Office 365.
 > [!div class="nextstepaction"]
-> [Naming policy all details (Wszystkie szczegóły dotyczące zasad nazewnictwa)](groups-naming-policy.md)
+> [Nazwy zasad programu PowerShell](groups-naming-policy.md)

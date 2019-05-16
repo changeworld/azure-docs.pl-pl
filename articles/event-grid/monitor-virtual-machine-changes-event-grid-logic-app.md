@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: 791e38f3d15801166f07234648909e03d800f5c0
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
-ms.translationtype: MT
+ms.openlocfilehash: 33634773b436114f4a5f2942028710ae50e0e703
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65604910"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65737101"
 ---
 # <a name="tutorial-monitor-virtual-machine-changes-with-azure-event-grid-and-logic-apps"></a>Samouczek: Monitorowanie zmian maszyn wirtualnych za pomocą usług Azure Event Grid i Logic Apps
 
@@ -101,9 +101,9 @@ Teraz Dodaj wyzwalacz usługi Event Grid, który monitoruje grupy zasobów dla m
    | Właściwość | Wymagany | Value | Opis |
    | -------- | -------- | ----- | ----------- |
    | **Subskrypcja** | Tak | <*event-publisher-Azure-subscription-name*> | Wybierz nazwę dla subskrypcji platformy Azure skojarzone z wydawcą zdarzeń. Na potrzeby tego samouczka wybierz nazwę subskrypcji platformy Azure dla maszyny wirtualnej. |
-   | **Typ zasobu** | Tak | <*event-publisher-Azure-resource-type*> | Wybierz typ zasobu dla danego wydawcy zdarzeń. Na potrzeby tego samouczka wybierz tę wartość, dzięki czemu Twoja aplikacja logiki monitoruje tylko grupy zasobów: <p><p>**Microsoft.Resources.resourceGroups** |
-   | **Nazwa zasobu** |  Tak | <*event-publisher-Azure-resource-name*> | Wybierz nazwę dla zasobów platformy Azure skojarzone z wydawcą zdarzeń. Na przykład ten zasób może być temat usługi Event Grid. Na potrzeby tego samouczka wybierz nazwę grupy zasobów platformy Azure skojarzoną z maszyną wirtualną. |
-   | **Element typu zdarzenia** |  Nie | <*typy zdarzeń*> | Wybierz jeden lub więcej określonych typów zdarzeń, które chcesz monitorować. W tym samouczku należy pozostawić tą właściwość pustą. |
+   | **Typ zasobu** | Tak | <*event-publisher-Azure-resource-type*> | Wybierz typ zasobu platformy Azure dla danego wydawcy zdarzeń. Na potrzeby tego samouczka wybierz tę wartość, aby monitorować grup zasobów platformy Azure: <p><p>**Microsoft.Resources.ResourceGroups** |
+   | **Nazwa zasobu** |  Tak | <*event-publisher-Azure-resource-name*> | Wybierz nazwę dla zasobów platformy Azure dla danego wydawcy zdarzeń. Ta lista zależy od wybranego typu zasobu. Na potrzeby tego samouczka wybierz nazwę grupy zasobów platformy Azure dla maszyny wirtualnej. |
+   | **Element typu zdarzenia** |  Nie | <*typy zdarzeń*> | Wybierz jeden lub więcej określonych typów zdarzeń do filtrowania i wysłać do swojej usługi event grid. Na przykład można opcjonalnie dodać te typy zdarzeń, aby wykryć, kiedy zasoby są zmieniane lub usuwane: <p><p>- **Microsoft.Resources.ResourceActionSuccess** <br>- **Microsoft.Resources.ResourceDeleteSuccess** <br>- **Microsoft.Resources.ResourceWriteSuccess** <p>Aby uzyskać więcej informacji zobacz następujące tematy: <p><p>- [Zrozumienie filtrowania zdarzeń](../event-grid/event-filtering.md) <br>- [Filtrowanie zdarzeń usługi Event Grid](../event-grid/how-to-filter-events.md) <br>- [Schemat zdarzeń Azure Event Grid dla grup zasobów](../event-grid/event-schema-resource-groups.md) |
    | **Nazwa subskrypcji** | Nie | <*event-subscription-name*> | Podaj unikatową nazwę dla Twojej subskrypcji zdarzeń. |
    | Ustawienia opcjonalne, można wybrać **dodano nowy parametr**. | Nie | {zobacz opisy} | * **Filtr prefiksu**: W tym samouczku należy pozostawić tą właściwość pustą. Zachowanie domyślne dopasowuje wszystkie wartości. Można jednak określić ciąg prefiksu jako filtr, na przykład ścieżkę i parametr dla konkretnego zasobu. <p>* **Filtr sufiksu**: W tym samouczku należy pozostawić tą właściwość pustą. Zachowanie domyślne dopasowuje wszystkie wartości. Można jednak określić ciąg sufiksu jako filtr, na przykład rozszerzenie nazwy pliku, aby uwzględniać tylko określone typy plików. |
    |||
@@ -164,6 +164,10 @@ Aby uruchamiać przepływ pracy aplikacji logiki tylko w przypadku wystąpienia 
 
    ![Gotowy warunek](./media/monitor-virtual-machine-changes-event-grid-logic-app/complete-condition.png)
 
+   Po przełączeniu się z widoku Projekt kodu, Wyświetl i z powrotem do widoku projektu, wyrażenie, które określono w warunku jest rozpoznawana jako **data.operationName** tokenu:
+
+   ![Stan rozwiązany](./media/monitor-virtual-machine-changes-event-grid-logic-app/resolved-condition.png)
+
 1. Zapisz aplikację logiki.
 
 ## <a name="send-email-notifications"></a>Wysyłanie powiadomień w wiadomościach e-mail
@@ -189,7 +193,7 @@ Teraz dodaj [*akcję*](../logic-apps/logic-apps-overview.md#logic-app-concepts),
 
 1. Jeśli nie masz jeszcze połączenia z dostawcą poczty e-mail, zaloguj się na swoje konto poczty e-mail po wyświetleniu prośby o uwierzytelnienie.
 
-1. Zmień nazwę tytułu wiadomości e-mail Wyślij ten tytuł: `Send email when virtual machine updated`. 
+1. Zmień nazwę tytuł wysyłania wiadomości e-mail tego tytułu: `Send email when virtual machine updated`
 
 1. Podaj szczegóły dla wiadomości e-mail określone w poniższej tabeli:
 
@@ -202,10 +206,10 @@ Teraz dodaj [*akcję*](../logic-apps/logic-apps-overview.md#logic-app-concepts),
    | -------- | -------- | ----- | ----------- |
    | **Do** | Tak | <*Odbiorca\@domeny*> | Wprowadź adres e-mail adresata. Do celów testowych możesz użyć własnego adresu e-mail. |
    | **Temat** | Tak | Zaktualizowano zasób: **Temat** | Wprowadź zawartość w polu tematu wiadomości e-mail. Na potrzeby tego samouczka wprowadź określony tekst, a następnie wybierz zdarzenie **podmiotu** pola. Tutaj temat wiadomości e-mail zawiera nazwę zaktualizowanego zasobu (maszyny wirtualnej). |
-   | **Body** | Tak | Grupa zasobów: **Temat** <p>Typ zdarzenia: **Typ zdarzenia**<p>Identyfikator zdarzenia: **Identyfikator**<p>Czas: **Czas zdarzenia** | Wprowadź zawartość w polu treści wiadomości e-mail. Na potrzeby tego samouczka wprowadź określony tekst i wybierz zdarzenie **tematu**, **typ zdarzenia**, **identyfikator**, i **czas trwania zdarzenia** pola tak, aby Twoje wiadomość e-mail zawiera nazwę grupy zasobów, typ zdarzenia, sygnatura czasowa zdarzenia i identyfikator zdarzenia dla aktualizacji. <p>Aby dodać puste wiersze w zawartości, naciśnij klawisze Shift + Enter. |
+   | **Body** | Tak | Zasób: **Temat** <p>Typ zdarzenia: **Typ zdarzenia**<p>Identyfikator zdarzenia: **Identyfikator**<p>Czas: **Czas zdarzenia** | Wprowadź zawartość w polu treści wiadomości e-mail. Na potrzeby tego samouczka wprowadź określony tekst i wybierz zdarzenie **tematu**, **typ zdarzenia**, **identyfikator**, i **czas trwania zdarzenia** pola tak, aby Twoje wiadomość e-mail zawiera zasobów, która wywołała zdarzenie, typ zdarzenia, sygnatura czasowa zdarzenia i identyfikator zdarzenia dla aktualizacji. W tym samouczku zasób jest wybrane w wyzwalaczu grupy zasobów platformy Azure. <p>Aby dodać puste wiersze w zawartości, naciśnij klawisze Shift + Enter. |
    ||||
 
-   > [!NOTE] 
+   > [!NOTE]
    > Jeśli wybierzesz pole reprezentujące tablicę, projektant automatycznie dodaje pętlę **Dla każdego** wokół akcji, która odwołuje się do tablicy. W ten sposób Twoja aplikacja logiki wykonuje tę akcję dla każdego elementu tablicy.
 
    Teraz Twoja akcja wiadomości e-mail może wyglądać tak jak w tym przykładzie:

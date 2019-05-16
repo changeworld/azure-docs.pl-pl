@@ -7,17 +7,17 @@ ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 1bf9c0b1393abfcad6646624301c4f131c8790a6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: a8513344c35c14ebf06f3693da618ed20047d07b
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60320945"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65752697"
 ---
 # <a name="quickstarts-azure-sql-database-connect-and-query"></a>Przewodniki Szybki start: Nawiązywanie połączeń z usługą Azure SQL Database i wykonywanie zapytań
 
@@ -59,7 +59,7 @@ Do łączenia z usługą Azure SQL Database można używać różnych bibliotek 
 
 W poniższej tabeli wymieniono biblioteki łączności (*sterowniki*), których aplikacje klienckie mogą używać w różnych językach, aby łączyć się z programem SQL Server działającym lokalnie lub w chmurze i korzystać z niego. Można ich używać w systemach Linux i Windows oraz na platformie Docker, a także za ich pomocą łączyć się z usługami Azure SQL Database i Azure SQL Data Warehouse. 
 
-| Język | Platforma | Dodatkowe zasoby | Do pobrania | Rozpoczęcie pracy |
+| Język | Platforma | Dodatkowe zasoby | Pobierz | Rozpoczęcie pracy |
 | :-- | :-- | :-- | :-- | :-- |
 | C# | Windows, Linux, macOS | [Program Microsoft ADO.NET dla programu SQL Server](https://docs.microsoft.com/sql/connect/ado-net/microsoft-ado-net-for-sql-server) | [Pobieranie](https://www.microsoft.com/net/download/) | [Wprowadzenie](https://www.microsoft.com/sql-server/developer-get-started/csharp/ubuntu)
 | Java | Windows, Linux, macOS | [Sterownik JDBC firmy Microsoft dla programu SQL Server](https://msdn.microsoft.com/library/mt484311.aspx) | [Pobieranie](https://go.microsoft.com/fwlink/?linkid=852460) |  [Wprowadzenie](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu)

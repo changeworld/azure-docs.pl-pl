@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: anavin
-ms.openlocfilehash: 18d913339556c0d4b0a06bd62f4495da6a4d4223
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: ee7ffba182cdbc2a77df5edf112e29c49cd610ad
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925918"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65519654"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Tworzenie, zmienianie lub usuwanie komunikacji równorzędnej sieci wirtualnej
 
@@ -142,11 +142,11 @@ Konta, na których możesz użyć do pracy za pomocą komunikacji równorzędnej
 
 Jeśli Twoje konto nie jest przypisana do jednego z poprzednich ról, musi ona zostać przypisana do [roli niestandardowej](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) przypisany niezbędne czynności z poniższej tabeli:
 
-| Akcja                                                          | Name (Nazwa) |
+| action                                                          | Name (Nazwa) |
 |---                                                              |---   |
 | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write  | Wymagane do utworzenia komunikacji równorzędnej z siecią wirtualną A siecią wirtualną B. wirtualnych sieci A musi być sieci wirtualnej (Resource Manager)          |
 | Microsoft.Network/virtualNetworks/peer/action                   | Wymagane do utworzenia komunikacji równorzędnej z siecią wirtualną B (Resource Manager) z siecią wirtualną A                                                       |
-| Microsoft.ClassicNetwork/virtualNetworks/peer                   | Wymagane do utworzenia komunikacji równorzędnej z siecią wirtualną B (model klasyczny) z siecią wirtualną A                                                                |
+| Microsoft.ClassicNetwork/virtualNetworks/peer/action                   | Wymagane do utworzenia komunikacji równorzędnej z siecią wirtualną B (model klasyczny) z siecią wirtualną A                                                                |
 | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/read   | Przeczytaj, wirtualne sieci równorzędne   |
 | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/delete | Usuwanie komunikacji równorzędnej sieci wirtualnej |
 

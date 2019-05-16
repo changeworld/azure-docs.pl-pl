@@ -7,14 +7,14 @@ ms.date: 03/05/2019
 ms.topic: tutorial
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 4f400e45d8defc304cf58c4bd05fa19f16d0501b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: b0d5d96ff897ac1710206eb49bca785e8809cb7d
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60874669"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65758851"
 ---
-# <a name="create-an-environment-from-a-blueprint-sample"></a>Utwórz środowisko na podstawie próbki planu
+# <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Samouczek: Utwórz środowisko na podstawie próbki planu
 
 Przykładowe schematy zawierają przykłady co można zrobić za pomocą planów usługi Azure. Każda znajduje się przykładowy z określonym celem lub przeznaczenia, ale nie tworzenie kompletnego środowiska samodzielnie. Każdy element jest przeznaczony jako punkt wyjścia do eksplorowania przy użyciu plany platformy Azure przy użyciu różnych kombinacji uwzględnione artefaktów, projekty i parametry.
 
@@ -82,7 +82,7 @@ Gdy kopii przykładu planu została pomyślnie **opublikowano**, może ona zosta
 
 1. Podaj wartości parametrów dla przypisania planu:
 
-   - Podstawy
+   - Ustawienia podstawowe
 
      - **Subskrypcje**: Wybierz co najmniej jednej z subskrypcji, które znajdują się w grupie zarządzania należy zapisać swoją kopię przykładowy plan do. Jeśli wybierzesz więcej niż jedną subskrypcję, przypisania zostaną utworzone dla każdego przy użyciu podanych parametrów.
      - **Nazwa przypisania**: Nazwa jest wstępnie wypełniona automatycznie na podstawie nazwy definicji planu.

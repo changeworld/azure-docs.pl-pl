@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 02cff1be85f4489a9529383d90694581f2599cba
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
-ms.translationtype: MT
+ms.openlocfilehash: ba198cbe0c362055f36cb4bdecf34a0dbad477a8
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939174"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65745154"
 ---
 # <a name="tutorial-access-data-lake-storage-gen2-data-with-azure-databricks-using-spark"></a>Samouczek: Uzyskiwanie dostępu do danych usługi Access Data Lake Storage Gen2 za pomocą usługi Azure DataBricks i platformy Spark
 
@@ -110,6 +110,32 @@ W tej sekcji utworzysz usługę Azure Databricks przy użyciu witryny Azure Port
 
     * Wybierz pozycję **Utwórz klaster**. Po uruchomieniu klastra możesz dołączać do niego notesy i uruchamiać zadania Spark.
 
+## <a name="ingest-data"></a>Pozyskiwanie danych
+
+### <a name="copy-source-data-into-the-storage-account"></a>Kopiowanie danych źródłowych na konto magazynu
+
+Korzystanie z narzędzia AzCopy do kopiowania danych z pliku *csv* na konto usługi Data Lake Storage Gen2.
+
+1. Otwórz okno wiersza polecenia, a następnie wprowadź następujące polecenie, aby zalogować się na swoje konto magazynu.
+
+   ```bash
+   azcopy login
+   ```
+
+   Postępuj zgodnie z instrukcjami wyświetlanymi w oknie wiersza polecenia do uwierzytelnienia konta użytkownika.
+
+2. Aby skopiować dane z pliku *csv*, wprowadź następujące polecenie.
+
+   ```bash
+   azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<file-system-name>/folder1/On_Time.csv
+   ```
+
+   * Zastąp `<csv-folder-path>` wartość symbolu zastępczego na ścieżkę do *CSV* pliku.
+
+   * Zastąp wartość symbolu zastępczego `<storage-account-name>` nazwą konta magazynu.
+
+   * Zastąp symbol zastępczy `<file-system-name>` dowolną nazwą, którą chcesz nadać systemowi plików.
+
 ## <a name="create-a-file-system-and-mount-it"></a>Tworzenie systemu plików i instalowanie go
 
 W tej sekcji utworzysz system plików i folder na koncie magazynu.
@@ -129,9 +155,9 @@ W tej sekcji utworzysz system plików i folder na koncie magazynu.
     ```Python
     configs = {"fs.azure.account.auth.type": "OAuth",
            "fs.azure.account.oauth.provider.type": "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider",
-           "fs.azure.account.oauth2.client.id": "<application-id>",
-           "fs.azure.account.oauth2.client.secret": "<authentication-id>",
-           "fs.azure.account.oauth2.client.endpoint": "https://login.microsoftonline.com/<tenant-id>/oauth2/token",
+           "fs.azure.account.oauth2.client.id": "<appId>",
+           "fs.azure.account.oauth2.client.secret": "<password>",
+           "fs.azure.account.oauth2.client.endpoint": "https://login.microsoftonline.com/<tenant>/oauth2/token",
            "fs.azure.createRemoteFileSystemDuringInitialization": "true"}
 
     dbutils.fs.mount(
@@ -140,13 +166,17 @@ W tej sekcji utworzysz system plików i folder na koncie magazynu.
     extra_configs = configs)
     ```
 
-18. W tym bloku kodu zamień symbole zastępcze `application-id`, `authentication-id`, `tenant-id` i `storage-account-name` na wartości zebrane podczas wykonywania kroków wymagań wstępnych. Zastąp symbol zastępczy `file-system-name` dowolną nazwą, którą chcesz nadać systemowi plików.
+18. W tym bloku kodu zamień symbole zastępcze `appId`, `password`, `tenant` i `storage-account-name` na wartości zebrane podczas wykonywania kroków wymagań wstępnych. Zastąp `file-system-name` wartość symbolu zastępczego nazwą, która udostępniła w systemie plików usługi ADLS w poprzednim kroku.
 
-   * Parametry `application-id` i `authentication-id` pochodzą z aplikacji zarejestrowanej w usłudze Active Directory podczas tworzenia jednostki usługi.
+Zastąp symbole zastępcze w już wspomniano, używając następujących wartości.
+
+   * Parametry `appId` i `password` pochodzą z aplikacji zarejestrowanej w usłudze Active Directory podczas tworzenia jednostki usługi.
 
    * Parametr `tenant-id` pochodzi z subskrypcji.
 
    * Parametr `storage-account-name` to nazwa konta magazynu usługi Azure Data Lake Storage Gen2.
+
+   * Zastąp symbol zastępczy `file-system-name` dowolną nazwą, którą chcesz nadać systemowi plików.
 
    > [!NOTE]
    > W środowisku produkcyjnym rozważ przechowywanie klucza uwierzytelniania w usłudze Azure Databricks. Następnie dodaj do bloku kodu klucz wyszukiwania zamiast klucza uwierzytelniania. Po zakończeniu tego samouczka Szybki start zobacz artykuł na temat usługi [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) w witrynie internetowej usługi Azure Databricks, aby zapoznać się z przykładami tego podejścia.
@@ -154,32 +184,6 @@ W tej sekcji utworzysz system plików i folder na koncie magazynu.
 19. Naciśnij klawisze **SHIFT+ENTER**, aby uruchomić kod w tym bloku.
 
    Nie zamykaj tego notesu, ponieważ później będziesz jeszcze dodawać do niego polecenia.
-
-## <a name="ingest-data"></a>Pozyskiwanie danych
-
-### <a name="copy-source-data-into-the-storage-account"></a>Kopiowanie danych źródłowych na konto magazynu
-
-Korzystanie z narzędzia AzCopy do kopiowania danych z pliku *csv* na konto usługi Data Lake Storage Gen2.
-
-1. Otwórz okno wiersza polecenia, a następnie wprowadź następujące polecenie, aby zalogować się na swoje konto magazynu.
-
-   ```bash
-   azcopy login
-   ```
-
-   Wykonaj instrukcje wyświetlane w oknie wiersza polecenia, aby uwierzytelnić swoje konto użytkownika.
-
-2. Aby skopiować dane z pliku *csv*, wprowadź następujące polecenie.
-
-   ```bash
-   azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<file-system-name>/folder1/On_Time.csv
-   ```
-
-   * Zastąp `<csv-folder-path>` wartość symbolu zastępczego na ścieżkę do *CSV* pliku.
-
-   * Zastąp wartość symbolu zastępczego `storage-account-name` nazwą konta magazynu.
-
-   * Zastąp symbol zastępczy `file-system-name` dowolną nazwą, którą chcesz nadać systemowi plików.
 
 ### <a name="use-databricks-notebook-to-convert-csv-to-parquet"></a>Konwertowanie formatu CSV na format Parquet za pomocą notesu usługi Databricks
 

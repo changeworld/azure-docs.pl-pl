@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 90004c27463a61de1b36eaea6754215f911f7483
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 3e871b8d4de8ff83e260aded89e09ad5b17b3297
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60782283"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65746230"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Zabezpieczenia i ochrona danych w usłudze Azure Data Box
 
@@ -34,6 +34,8 @@ Poniższy diagram przedstawia przepływ danych z infrastruktury lokalnej na plat
 
 ![Zabezpieczenia usługi Data Box](media/data-box-security/data-box-security-2.png)
 
+Dane przepływają przez to rozwiązanie, zdarzenia są rejestrowane i są generowane dzienniki. Aby uzyskać więcej informacji, przejdź do [śledzenie i rejestrowanie zdarzeń dla usługi Azure Data Box](data-box-logs.md).
+
 ## <a name="security-features"></a>Funkcje zabezpieczeń
 
 Data Box to bezpieczne rozwiązanie do ochrony danych, które gwarantuje, że wyłącznie upoważnione podmioty będą mogły uzyskać dostęp do danych, zmodyfikować je lub usunąć. Zabezpieczenia rozwiązania obejmują zabezpieczenia urządzenia i powiązanej usługi, zapewniające bezpieczeństwo przechowywanych danych. 
@@ -48,24 +50,25 @@ Urządzenie Data Box jest chronione przez następujące funkcje:
 - Uruchamia się tylko oprogramowanie urządzenia Data Box.
 - Urządzenie uruchamia się w stanie zablokowanym.
 - Dostęp do urządzenia jest możliwy po podaniu hasła odblokowania urządzenia.
-- Poświadczenia dostępu umożliwiające kopiowanie danych do i z urządzenia.
+- Poświadczenia dostępu umożliwiające kopiowanie danych do i z urządzenia. Wszystkie dostęp do **poświadczenia urządzenia** strony w usłudze Azure portal są rejestrowane w [dzienników aktywności](data-box-logs.md#query-activity-logs-during-setup).
 
 ### <a name="data-box-data-protection"></a>Ochrona danych na urządzeniu Data Box
 
 Dane przesyłane do i z rozwiązania Data Box są chronione przez następujące funkcje:
 
-- 256-bitowe szyfrowanie AES magazynowanych danych. 
+- 256-bitowe szyfrowanie AES magazynowanych danych.
 - W przypadku transmitowanych danych można używać zaszyfrowanych protokołów.
-- Bezpieczne usunięcie danych z urządzenia po zakończeniu przekazywania danych na platformę Azure. Dane są usuwane zgodnie z normą NIST 800-88r1.
+- Bezpieczne usunięcie danych z urządzenia po zakończeniu przekazywania danych na platformę Azure. Dane są usuwane zgodnie z normą NIST 800-88r1. Zdarzenie wymazywania danych jest rejestrowane w [kolejność historii](data-box-logs.md#download-order-history).
 
 ### <a name="data-box-service-protection"></a>Ochrona usługi Data Box
 
 Usługa Data Box jest chroniona przez następujące funkcje.
 
 - Aby uzyskać dostęp do usługi Data Box, organizacja musi mieć subskrypcję platformy Azure obejmującą usługę Data Box. Subskrypcja określa funkcje, do których masz dostęp w witrynie Azure Portal.
-- Ponieważ usługa Data Box jest hostowana na platformie Azure, chronią ją funkcje zabezpieczeń platformy Azure. Aby uzyskać więcej informacji na temat funkcji zabezpieczeń platformy Microsoft Azure, zobacz [Centrum zaufania Microsoft Azure](https://www.microsoft.com/TrustCenter/Security/default.aspx). 
-- W usłudze Data Box jest przechowywane hasło odblokowania służące do odblokowania urządzenia w usłudze. 
-- W usłudze Data Box są przechowywane szczegóły zamówienia i jego stan. Te informacje są usuwane po usunięciu zamówienia. 
+- Ponieważ usługa Data Box jest hostowana na platformie Azure, chronią ją funkcje zabezpieczeń platformy Azure. Aby uzyskać więcej informacji na temat funkcji zabezpieczeń platformy Microsoft Azure, zobacz [Centrum zaufania Microsoft Azure](https://www.microsoft.com/TrustCenter/Security/default.aspx).
+- Dostęp do zamówienie urządzenia Data Box można sterować za pośrednictwem używanie ról kontroli dostępu opartej na rolach (RBAC). Aby uzyskać więcej informacji, zobacz [Konfigurowanie kontroli dostępu dla zamówienie urządzenia Data Box](data-box-logs.md#set-up-access-control-on-the-order)
+- W usłudze Data Box jest przechowywane hasło odblokowania służące do odblokowania urządzenia w usłudze.
+- W usłudze Data Box są przechowywane szczegóły zamówienia i jego stan. Te informacje są usuwane po usunięciu zamówienia.
 
 ## <a name="managing-personal-data"></a>Zarządzanie danymi osobowymi
 
@@ -75,9 +78,9 @@ W usłudze Azure Data Box dane osobowe są zbierane i wyświetlane w następują
 
 - **Szczegóły zamówienia** — po utworzeniu zamówienia na platformie Azure zostaną zapisane dane kontaktowe użytkowników, adres wysyłki, adres e-mail. Zapisane informacje obejmują:
 
-  - Nazwisko osoby kontaktowej
+  - Nazwa kontaktu
   - Numer telefonu
-  - Email
+  - Poczta e-mail
   - Adres
   - Miasto
   - Kod pocztowy

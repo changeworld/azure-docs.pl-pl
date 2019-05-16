@@ -10,19 +10,21 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 05/08/2019
-ms.openlocfilehash: ad0d990554d9ff49bed3e9da7097c87c06c7152f
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
-ms.translationtype: MT
+ms.date: 05/16/2019
+ms.openlocfilehash: 3260ffaba2ab91ee561a0430310883bda8f65269
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415540"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65740400"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-dms"></a>Samouczek: migrowanie bazy danych MongoDB do interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB w trybie offline za pomocą usługi DMS
+
 Za pomocą usługi Azure Database Migration Service możesz przeprowadzić (jednorazową) migrację offline baz danych MongoDB znajdujących się w chmurze lub środowisku lokalnym do interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
+>
 > * Tworzenie wystąpienia usługi Azure Database Migration Service.
 > * Tworzenie projektu migracji za pomocą usługi Azure Database Migration Service.
 > * Uruchamianie migracji.
@@ -40,7 +42,7 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 
     > [!NOTE]
     > Podczas konfigurowania sieci wirtualnej, jeśli korzystasz z usługi ExpressRoute za pomocą komunikacji równorzędnej sieci do firmy Microsoft, Dodaj następujące usługi [punktów końcowych](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) do podsieci, w której będą udostępniane usługi:
-
+    >
     > * Docelowy punkt końcowy z bazy danych (na przykład SQL punktu końcowego, punktu końcowego usługi Cosmos DB i tak dalej)
     > * Punkt końcowy magazynu
     > * Punkt końcowy usługi Service bus
@@ -115,10 +117,22 @@ Po utworzeniu usługi znajdź ją w witrynie Azure Portal, otwórz ją, a nastę
 
 1. Na ekranie **Szczegóły źródła** określ szczegóły połączenia dla źródłowego serwera MongoDB.
 
-   Możesz również użyć trybu parametrów połączenia i podać lokalizację kontenera plików w magazynie obiektów blob, do którego zostały zrzucone dane kolekcji przeznaczone do zmigrowania.
+    Istnieją trzy tryby nawiązywania połączenia ze źródłem:
+   * **Tryb standardowy**, który akceptuje w pełni kwalifikowaną nazwę domeny lub adres IP, numer portu i poświadczenia połączenia.
+   * **Tryb parametrów połączenia**, który akceptuje parametry połączenia bazy danych MongoDB zgodnie z opisem znajdującym się w artykule [Connection String URI Format](https://docs.mongodb.com/manual/reference/connection-string/) (Format identyfikatora URI parametrów połączenia).
+   * **Tryb danych z usługi Azure Storage**, który akceptuje adres URL sygnatury dostępu współdzielonego kontenera obiektów blob. Zaznacz pole wyboru **Obiekt blob zawiera zrzuty BSON**, jeśli kontener obiektów blob zawiera zrzuty BSON utworzone przez [narzędzie bsondump](https://docs.mongodb.com/manual/reference/program/bsondump/) bazy danych MongoDB, lub usuń zaznaczenie tego pola wyboru, jeśli kontener zawiera pliki JSON.
 
-   > [!NOTE]
-   > Usługa Azure Database Migration Service umożliwia również migrowanie dokumentów bson lub json do kolekcji interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB.
+    Jeśli wybierzesz tę opcję, upewnij się, że parametry połączenia konta magazynu mają następujący format:
+
+     ```
+     https://blobnameurl/container?SASKEY
+     ```
+
+     Ponadto, zależnie od typu informacji zrzutu w usłudze Azure Storage, pamiętaj o następujących kwestiach.
+
+     * W przypadku zrzutów BSON dane w kontenerze obiektów blob muszą mieć format bsondump, tak aby pliki danych były umieszczone w folderach o nazwach zgodnych z odpowiednimi bazami danych w formacie kolekcja.bson. Pliki metadanych (jeśli istnieją) powinny mieć nazwy w formacie *kolekcja*.metadata.json.
+
+     * W przypadku zrzutów JSON pliki w kontenerze obiektów blob muszą być umieszczone w folderach o nazwach zgodnych z odpowiednimi bazami danych. W każdym folderze bazy danych pliki danych muszą być umieszczone w podfolderze o nazwie „data” i mieć nazwy w formacie *kolekcja*.json. Pliki metadanych (jeśli istnieją) muszą być umieszczone w podfolderze o nazwie „metadata” i mieć nazwy w takim samym formacie *kolekcja*.json. Pliki metadanych muszą mieć taki sam format jak pliki tworzone przez narzędzie bsondump bazy danych MongoDB.
 
    Możesz również użyć adresu IP, jeśli rozpoznawanie nazw DNS nie jest możliwe.
 

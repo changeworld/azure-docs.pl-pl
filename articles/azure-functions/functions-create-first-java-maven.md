@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 08/10/2018
 ms.author: routlaw, glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 287cab034079c54c027e0dc7b84564458d31fc31
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d9f1cbff0dd79d6c2932428708eb1d097b6d9d63
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64696158"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65601489"
 ---
 # <a name="create-your-first-function-with-java-and-maven"></a>Tworzenie pierwszej funkcji przy użyciu języka Java i narzędzia Maven
 
@@ -29,7 +29,7 @@ Ten artykuł opisuje używanie narzędzia wiersza polecenia Maven do tworzenia i
 
 Aby opracowywać funkcje przy użyciu języka Java, musisz mieć zainstalowane następujące składniki:
 
-- [Zestaw Java Developer Kit](https://www.azul.com/downloads/zulu/), wersja 8
+- [Zestaw Java Developer Kit](https://aka.ms/azure-jdks), wersja 8
 - [Narzędzia Apache Maven](https://maven.apache.org), wersja 3.0 lub nowszej
 - [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure)
 - [Podstawowe narzędzia usługi Azure Functions](./functions-run-local.md#v2) wersji 2.6.666 lub nowszy
@@ -202,7 +202,7 @@ Na następujący:
 return request.createResponse(200, "Hi, " + name);
 ```
 
-Zapisz zmiany i wdróż ponownie, uruchamiając polecenie `azure-functions:deploy` z poziomu terminalu, tak jak poprzednio. Aplikacja funkcji zostanie zaktualizowana, a żądanie:
+Zapisz zmiany. Pakiet czyste mvn wykonywania i ponowne wdrażanie, uruchamiając `azure-functions:deploy` z poziomu terminalu, tak jak poprzednio. Aplikacja funkcji zostanie zaktualizowana, a żądanie:
 
 ```bash
 curl -w '\n' -d AzureFunctionsTest https://fabrikam-functions-20170920120101928.azurewebsites.net/api/HttpTrigger-Java

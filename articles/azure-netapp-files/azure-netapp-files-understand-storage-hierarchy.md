@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 04/16/2019
 ms.author: b-juche
-ms.openlocfilehash: fec9e22b15eca3f95be606776066cf573046b5fd
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c2984e012ae83a8bc17d72ed4eac0c5c469c2694
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64687478"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522867"
 ---
 # <a name="what-is-the-storage-hierarchy-of-azure-netapp-files"></a>Co to jest hierarchii magazynu plików NetApp Azure
 
@@ -40,14 +40,16 @@ Przed utworzeniem woluminu w usłudze Azure NetApp Files należy kupić i skonfi
 - Każda pula pojemności może należeć tylko do jednego konta usługi NetApp. Można jednak mieć wiele pul pojemności w ramach konta usługi NetApp.  
 - Nie można przenosić pul pojemności między kontami usługi NetApp.   
   Na przykład na poniższym [diagramie koncepcyjnym hierarchii magazynu](#conceptual_diagram_of_storage_hierarchy) nie można przenieść puli pojemności 1 z konta usługi NetApp w regionie Wschodnie stany USA na konto usługi NetApp w regionie Zachodnie stany USA 2.  
+- Nie można usunąć puli pojemności, dopóki nie zostały usunięte wszystkie woluminy w puli pojemności.
 
 ## <a name="volumes"></a>Woluminy
 
 - Woluminy są mierzone według użycia pojemności logicznej i można je skalować. 
 - Użycie pojemności woluminu jest liczone jako użycie aprowizowanej pojemności puli.
 - Każdy wolumin należy tylko do jednej puli, ale jedna pula może zawierać wiele woluminów. 
-- Można przenosić woluminy między pulami w ramach jednego konta usługi NetApp.    
-  Na przykład na poniższym [diagramie koncepcyjnym hierarchii magazynu](#conceptual_diagram_of_storage_hierarchy) można by przenieść woluminy z puli pojemności 1 do puli pojemności 2.
+- Wolumin nie można przenosić między pulami pojemności. <!--Within the same NetApp account, you can move a volume across pools.  -->   
+  Na przykład w [diagram pojęciowy hierarchii magazynu](#conceptual_diagram_of_storage_hierarchy) poniżej, nie można przenieść woluminy z zakresu od 1 do puli pojemności do pojemności puli 2.
+- Nie można usunąć woluminu, dopóki nie zostały usunięte wszystkie jego migawek.
 
 ## <a name="conceptual_diagram_of_storage_hierarchy"></a>Diagram koncepcyjny hierarchii magazynu 
 Poniższy przykład przedstawia zależności między subskrypcją platformy Azure, kontami usługi NetApp, pulami pojemności i woluminami.   

@@ -10,12 +10,12 @@ ms.date: 02/20/2018
 ms.author: rogarana
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 0673d97f755d7e01d42d0be7c611720ff1e4ad01
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
-ms.translationtype: MT
+ms.openlocfilehash: 63de2045498b312580640859c1911046f9785d8e
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65187779"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65752270"
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>Równoległe przekazywanie dużych ilości danych losowych do usługi Azure Storage
 
@@ -67,14 +67,14 @@ dotnet run
 
 Aplikacja tworzy pięć losowo nazwanych kontenerów i rozpoczyna przekazywanie plików z katalogu przemieszczania do konta magazynu. Aplikacja ustawia minimalną liczbę wątków na 100, a wartość [DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit(v=vs.110).aspx) na 100, aby zezwalać na dużą liczbę współbieżnych połączeń podczas uruchamiania aplikacji.
 
-Oprócz skonfigurowania ustawień wątków oraz limitu połączeń, opcje [BlobRequestOptions](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions?view=azure-dotnet) metody [UploadFromStreamAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromstreamasync?view=azure-dotnet) są konfigurowane tak, aby używać funkcji równoległości i wyłączyć sprawdzanie poprawności wartości skrótu MD5. Pliki są przekazywane w blokach po 100 MB. Ta konfiguracja zapewnia lepszą wydajność, ale może być kosztowna, jeśli jest używana w sieci o niskiej wydajności — jeśli wystąpi błąd, konieczne będzie ponowne przekazanie całego bloku 100 MB.
+Oprócz skonfigurowania ustawień wątków oraz limitu połączeń, opcje [BlobRequestOptions](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions) metody [UploadFromStreamAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromstreamasync) są konfigurowane tak, aby używać funkcji równoległości i wyłączyć sprawdzanie poprawności wartości skrótu MD5. Pliki są przekazywane w blokach po 100 MB. Ta konfiguracja zapewnia lepszą wydajność, ale może być kosztowna, jeśli jest używana w sieci o niskiej wydajności — jeśli wystąpi błąd, konieczne będzie ponowne przekazanie całego bloku 100 MB.
 
 |Właściwość|Wartość|Opis|
 |---|---|---|
-|[ParallelOperationThreadCount](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.paralleloperationthreadcount?view=azure-dotnet)| 8| To ustawienie dzieli obiekt blob na bloki na potrzeby przekazywania. Aby osiągnąć najwyższą wydajność, ta wartość powinna być 8-krotnością liczby rdzeni. |
-|[DisableContentMD5Validation](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.disablecontentmd5validation?view=azure-dotnet)| true| Ta właściwość wyłącza sprawdzanie skrótu MD5 przekazanej zawartości. Wyłączenie sprawdzania poprawności skrótu MD5 zwiększa szybkość transferu. Jednak poprawność i integralność przekazywanych plików nie jest wtedy sprawdzana.   |
-|[StoreBlobContentMD5](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.storeblobcontentmd5?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_StoreBlobContentMD5)| false| Ta właściwość określa, czy skrót MD5 jest obliczany i przechowywany w pliku.   |
-| [RetryPolicy](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.retrypolicy?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_RetryPolicy)| Czas wycofania: 2 sekundy, maksymalna liczba ponawianych prób: 10 |Określa zasady ponawiania żądań. Połączenia zakończone niepowodzeniem są ponawianie. W tym przykładzie skonfigurowano zasadę [ExponentialRetry](/dotnet/api/microsoft.azure.batch.common.exponentialretry?view=azure-dotnet) z 2-sekundowych wycofaniem, a maksymalna liczba prób wynosi 10. To ustawienie jest istotne, jeśli aplikacja zbliży się do osiągnięcia [docelowych wartości skalowalności usługi Blob Storage](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-blob-storage-scale-targets).  |
+|[ParallelOperationThreadCount](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.paralleloperationthreadcount)| 8| To ustawienie dzieli obiekt blob na bloki na potrzeby przekazywania. Aby osiągnąć najwyższą wydajność, ta wartość powinna być 8-krotnością liczby rdzeni. |
+|[DisableContentMD5Validation](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.disablecontentmd5validation)| true| Ta właściwość wyłącza sprawdzanie skrótu MD5 przekazanej zawartości. Wyłączenie sprawdzania poprawności skrótu MD5 zwiększa szybkość transferu. Jednak poprawność i integralność przekazywanych plików nie jest wtedy sprawdzana.   |
+|[StoreBlobContentMD5](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.storeblobcontentmd5)| false| Ta właściwość określa, czy skrót MD5 jest obliczany i przechowywany w pliku.   |
+| [RetryPolicy](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.retrypolicy)| Czas wycofania: 2 sekundy, maksymalna liczba ponawianych prób: 10 |Określa zasady ponawiania żądań. Połączenia zakończone niepowodzeniem są ponawianie. W tym przykładzie skonfigurowano zasadę [ExponentialRetry](/dotnet/api/microsoft.azure.batch.common.exponentialretry) z 2-sekundowych wycofaniem, a maksymalna liczba prób wynosi 10. To ustawienie jest istotne, jeśli aplikacja zbliży się do osiągnięcia [docelowych wartości skalowalności usługi Blob Storage](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-blob-storage-scale-targets).  |
 
 Zadanie `UploadFilesAsync` jest przedstawione w poniższym przykładzie:
 

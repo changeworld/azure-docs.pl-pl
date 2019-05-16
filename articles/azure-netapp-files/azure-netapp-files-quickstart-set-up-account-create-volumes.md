@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 4/16/2019
 ms.author: b-juche
-ms.openlocfilehash: f0f3dea1c30790bb109d7cb7af07abd8fbb1ace4
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2bcd8163cb3c6071812d4d247b5b333edcfc89e5
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64702875"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523029"
 ---
-# <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Szybki start: Konfigurowanie usługi Azure Files NetApp i Utwórz wolumin systemu plików NFS 
+# <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Szybki start: Konfigurowanie usługi Azure NetApp Files i tworzenie woluminu NFS 
 
 W tym artykule pokazano, jak szybko skonfigurować usługi Azure Files NetApp i utworzyć wolumin. 
 
@@ -36,7 +36,8 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem 
 
-Musisz uczestniczyć w programie podglądu publicznego i znajdować się na liście dozwolonych, aby móc uzyskiwać dostęp do dostawcy zasobów Microsoft.NetApp. Szczegółowe informacje na temat dołączania do programu podglądu publicznego można znaleźć na [stronie rejestracji w podglądzie publicznym usługi Azure NetApp Files](https://aka.ms/nfspublicpreview). 
+> [!IMPORTANT] 
+> Należy mieć uprawnienia dostępu do usługi Azure NetApp Files.  Aby zażądać dostępu do usługi, zobacz [stronę przesyłania na liście oczekujących plików NetApp Azure](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR8cq17Xv9yVBtRCSlcD_gdVUNUpUWEpLNERIM1NOVzA5MzczQ0dQR1ZTSS4u).  Przed kontynuowaniem należy poczekać do wiadomości e-mail z potwierdzeniem oficjalne, od zespołu usługi Azure Files NetApp. 
 
 ## <a name="register-for-azure-netapp-files-and-netapp-resource-provider"></a>Rejestrowanie na potrzeby plików NetApp platformy Azure i dostawcy zasobów NetApp
 
@@ -155,13 +156,13 @@ Gdy wszystko będzie gotowe, i chcesz, możesz usunąć grupę zasobów. Akcja u
 
 3. Na stronie grupy zasobów kliknij **Usuń grupę zasobów**.
 
-    ![Usuwanie grupy zasobów](../media/azure-netapp-files/azure-netapp-files-azure-delete-resource-group.png) 
+    ![Usuń grupę zasobów](../media/azure-netapp-files/azure-netapp-files-azure-delete-resource-group.png) 
 
     Zostanie otwarte okno zawierające ostrzeżenie dotyczące zasobów, które zostaną usunięte razem z grupą zasobów.
 
 4. Wprowadź nazwę grupy zasobów (myRG1), aby upewnić się, że chcesz trwale usunąć grupę zasobów i wszystkie zawarte w niej zasoby, a następnie kliknij przycisk **Usuń**.
 
-    ![Usuwanie grupy zasobów](../media/azure-netapp-files/azure-netapp-files-azure-confirm-resource-group-deletion.png ) 
+    ![Usuń grupę zasobów](../media/azure-netapp-files/azure-netapp-files-azure-confirm-resource-group-deletion.png ) 
 
 ## <a name="next-steps"></a>Kolejne kroki  
 

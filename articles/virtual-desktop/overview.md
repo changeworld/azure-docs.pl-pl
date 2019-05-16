@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 0d606a489a069c4265088d8e07301693dc2f1c83
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b3192d848e77c59d0ff6950e647d1faf172484b5
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64694271"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606396"
 ---
 # <a name="what-is-windows-virtual-desktop-preview"></a>Co to jest Windows wirtualnego pulpitu (wersja zapoznawcza)? 
 
@@ -90,10 +90,10 @@ Pulpit wirtualny Windows składa się z pulpitami Windows i aplikacje, które mo
 Aby uzyskać optymalną wydajność upewnij się, że sieć spełnia następujące wymagania:
 
 * Opóźnienie Rundy (RTT) z sieci klienta do regionu platformy Azure, w której zostały wdrożone pule hosta powinien być mniej niż 150 ms.
-* Ruch sieciowy może przepływać zewnętrzne obramowania kraju, gdy maszyny wirtualne, które hostują pulpity nawigacyjne i aplikacje, które łączą się z usługą zarządzania z.
+* Ruch sieciowy może przepływać obramowania poza kraj/region, gdy maszyny wirtualne, które hostują pulpity nawigacyjne i aplikacje, które łączą się z usługą zarządzania z.
 * Aby zoptymalizować wydajność sieci, zaleca się, że maszyny wirtualne hosta sesji jest zlokalizowana w tym samym regionie platformy Azure jako usługi zarządzania.
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Przesyłanie opinii
 
 Odwiedź stronę [społeczności technicznej pulpitu wirtualnego Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) w celu omówienia usługi Windows pulpitu wirtualnego przy użyciu zespół pracujący nad produktem i elementów członkowskich aktywnej społeczności użytkowników. Firma Microsoft obecnie nie są zbyt przypadki pomocy technicznej Windows pulpitu wirtualnego jest dostępna w wersji zapoznawczej.
 

@@ -7,7 +7,7 @@ metadata:
   description: 'Dowiedz się, jak za pomocą interfejsu API wyszukiwania wizualnego Bing uzyskać szczegółowe informacje o obrazie.'
   services: cognitive-services
   author: swhite-msft
-  manager: rosh
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-visual-search
   ms.tgt_pltfrm: na

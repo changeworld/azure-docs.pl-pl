@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 05/09/2019
 ms.author: mbullwin
-ms.openlocfilehash: c6a5ec8685de53d7a611328025d5da8e5ce698a3
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 38723a5dd306c2a4b594d95e5cc660d117966bc4
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204888"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65518839"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Zbieranie, przechowywanie i magazynowanie danych w usłudze Application Insights
 
@@ -86,6 +86,9 @@ Będzie to możliwe, pisząc [wtyczki procesora telemetrii](../../azure-monitor/
 Punkty danych pierwotnych (czyli elementów, które można wykonywać zapytania w usłudze Analytics i sprawdzanie w wyszukiwaniu) są przechowywane przez 90 dni. Jeśli zachodzi potrzeba przechowywać danych dłużej niż ta, możesz użyć [Eksport ciągły](../../azure-monitor/app/export-telemetry.md) skopiowania go do konta magazynu.
 
 Zagregowane dane (oznacza to, liczby, średnie i innych danych statystycznych, który zostanie wyświetlony w Eksploratorze metryk) są zachowane w ziarna wynoszącym 1 minutę przez 90 dni.
+
+> [!NOTE]
+> Zmienna przechowywania dla usługi Application Insights jest teraz dostępna w wersji zapoznawczej. Więcej informacji można znaleźć [tutaj](https://feedback.azure.com/forums/357324-application-insights/suggestions/17454031). 
 
 [Debugowanie migawek](../../azure-monitor/app/snapshot-debugger.md) są przechowywane przez piętnaście dni. Te zasady przechowywania jest ustawiona na podstawie poszczególnych aplikacji. Jeśli potrzebujesz zwiększyć tę wartość, możesz poprosić o zwiększenie przez otwarcie zgłoszenia do pomocy technicznej w witrynie Azure portal.
 
@@ -237,9 +240,9 @@ Zestawy SDK różnią się między platformami, a jest wiele składników, któr
 
 | Twoja Akcja | Klasy danych zebranych (zobacz następną tabelę) |
 | --- | --- |
-| [Dodaj zestaw SDK usługi Application Insights do projektu sieci web platformy .NET][greenbrown] |ServerContext<br/>Wywnioskowane<br/>Liczniki wydajności<br/>Żądania<br/>**Wyjątki**<br/>Sesja<br/>użytkownicy |
+| [Dodaj zestaw SDK usługi Application Insights do projektu sieci web platformy .NET][greenbrown] |ServerContext<br/>Wywnioskowane<br/>Liczniki wydajności<br/>Żądania<br/>**Wyjątki**<br/>Sesja<br/>Użytkownicy |
 | [Zainstaluj Monitor stanu na serwerze IIS][redfield] |Zależności<br/>ServerContext<br/>Wywnioskowane<br/>Liczniki wydajności |
-| [Dodaj zestaw SDK usługi Application Insights do aplikacji sieci web Java][java] |ServerContext<br/>Wywnioskowane<br/>Żądanie<br/>Sesja<br/>użytkownicy |
+| [Dodaj zestaw SDK usługi Application Insights do aplikacji sieci web Java][java] |ServerContext<br/>Wywnioskowane<br/>Zażądaj<br/>Sesja<br/>Użytkownicy |
 | [Dodaj zestaw SDK JavaScript do strony sieci web][client] |ClientContext <br/>Wywnioskowane<br/>Strona<br/>ClientPerf<br/>Ajax |
 | [Zdefiniuj właściwości domyślne][apiproperties] |**Właściwości** na wszystkich standardowych i niestandardowych zdarzeń |
 | [Wywołanie TrackMetric][api] |Wartości liczbowe<br/>**Właściwości** |

@@ -11,8 +11,7 @@
 - name: Przewodniki Szybki start
   items:
     - name: Wykonywanie zapytań usługi Apache Hive — Apache Zeppelin
-      href: ../hdinsight-connect-hive-zeppelin.md
-      maintainContext: true
+      href: ./hdinsight-connect-hive-zeppelin.md
 - name: Rozpoczęcie pracy
   items:
     - name: Rozpoczynanie pracy z zapytaniem interakcyjnym

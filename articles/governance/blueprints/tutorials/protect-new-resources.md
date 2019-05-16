@@ -7,14 +7,14 @@ ms.date: 03/28/2019
 ms.topic: tutorial
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: d315fb5fe3ce7844946e6a9405a9a5f6a0be8b9d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b885a90728df8cb15c75141b7bce81aec3968359
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60874533"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65779568"
 ---
-# <a name="protect-new-resources-with-azure-blueprints-resource-locks"></a>Ochrona nowe zasoby za pomocą blokad zasobów platformy Azure, plany
+# <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Samouczek: Ochrona nowe zasoby za pomocą blokad zasobów platformy Azure, plany
 
 Plany usługi Azure [blokad zasobów](../concepts/resource-locking.md) umożliwia ochronę zasobów nowo wdrożone z są naruszone, nawet przy użyciu konta z _właściciela_ roli. Tę ochronę można dodać do zasobów w ramach artefaktu szablonu usługi Resource Manager, w definicji planu.
 
@@ -129,7 +129,7 @@ Po definicji planu została pomyślnie **opublikowano**, może ona zostać przyp
 
 1. Podaj wartości parametrów dla przypisania planu:
 
-   - Podstawy
+   - Ustawienia podstawowe
 
      - **Subskrypcje**: Wybierz co najmniej jednej z subskrypcji, które znajdują się w grupie zarządzania należy zapisać do definicji planu. Jeśli wybierzesz więcej niż jedną subskrypcję, przypisania zostaną utworzone dla każdego przy użyciu podanych parametrów.
      - **Nazwa przypisania**: Nazwa jest wstępnie wypełniona automatycznie na podstawie nazwy definicji planu. Chcemy, aby to przypisanie do reprezentowania blokowania nową grupę zasobów, więc zmieniasz nazwę przypisania do _przypisania — zablokowane — konto magazynu — TestingBPLocks_.

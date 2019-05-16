@@ -15,14 +15,14 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 0a5b7f93f9ac6cc5b1076881727a42fd5b95ff4b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 780a50d9d470e8904e066459f97aa00d34ba1d3c
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60306193"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603499"
 ---
-# <a name="what-is-azure-data-box-heavy-preview"></a>Czym jest Azure Data Box Heavy? (Wersja zapoznawcza)
+# <a name="what-is-azure-data-box-heavy-preview"></a>Czym jest Azure Data Box Heavy? (wersja zapoznawcza)
 
 Rozwiązanie hybrydowe Microsoft Azure Data Box umożliwia wysyłanie setek terabajtów danych na platformę Azure w szybki, niedrogi i niezawodny sposób. Bezpieczny transfer danych jest przyspieszany przez przekazanie na własność za pośrednictwem frachtu urządzenia magazynującego o pojemności 1 PB. Urządzenie ma odporną na wstrząsy obudowę chroniącą i zabezpieczającą dane w czasie transportu.
 
@@ -107,9 +107,9 @@ Typowy przepływ obejmuje następujące kroki:
 
 W trakcie tego procesu będziesz otrzymywać powiadomienia e-mail o wszystkich zmianach stanu. 
 
-## <a name="region-availability"></a>Dostępność w danym regionie
+## <a name="region-availability"></a>Dostępność regionalna
 
-Rozwiązanie Data Box Heavy umożliwia przesyłanie danych w zależności od regionu, w którym wdrożono usługę, kraju, do którego wysłano urządzenie, oraz docelowego konta usługi Azure Storage, do którego przekazano dane. 
+Duże pole danych mogą przesyłać dane oparte na region, w którym wdrożono usługę, kraj/region, z którym urządzenie jest dostarczane i docelowego konta magazynu platformy Azure, w którym transferu danych. 
 
 - **Dostępność usługi** — w tej wersji rozwiązanie Data Box Heavy jest dostępne w następujących regionach:
     - Wszystkie regiony chmury publicznej w Stanach Zjednoczonych — Zachodnio-środkowe stany USA, Zachodnie stany USA 2, Zachodnie stany USA, Południowo-środkowe stany USA, Środkowe stany USA, Północno-środkowe stany USA, Wschodnie stany USA i Wschodnie stany USA 2.
@@ -119,7 +119,7 @@ Rozwiązanie Data Box Heavy umożliwia przesyłanie danych w zależności od reg
 
 - **Docelowe konta magazynu** — konta magazynu do przechowywania danych są dostępne we wszystkich regionach świadczenia usługi Azure, w których ta usługa jest dostępna. 
 
-## <a name="sign-up"></a>Rejestrowanie
+## <a name="sign-up"></a>Zarejestruj się
 
 Rozwiązanie Data Box Heavy jest dostępne w wersji zapoznawczej po wcześniejszym zarejestrowaniu się. Wykonaj poniższe kroki, aby zarejestrować się na potrzeby rozwiązania Data Box Heavy:
 
@@ -136,7 +136,7 @@ Rozwiązanie Data Box Heavy jest dostępne w wersji zapoznawczej po wcześniejsz
 
    <!--![The Data Box Heavy sign up 3]()-->
 
-5. Odpowiedz na pytania dotyczące kraju przechowywania danych, przedziału czasowego, docelowej usługi platformy Azure na potrzeby transferu danych, przepustowości sieci i częstotliwości transferu danych. Przejrzyj zasady ochrony prywatności i warunki i zaznacz pole wyboru obok pozycji Firma Microsoft może używać Twojego adresu e-mail do kontaktu.
+5. Odpowiedzi na pytania dotyczące danych częstotliwość transferu docelowej przedziału czasu, kraj/region, w miejscu zamieszkania użytkownika Usługa transferu danych, przepustowość sieci i danych. Przejrzyj zasady ochrony prywatności i warunki i zaznacz pole wyboru obok pozycji Firma Microsoft może używać Twojego adresu e-mail do kontaktu.
 
     <!--![The Data Box Heavy sign up 4]()-->
 

@@ -13,12 +13,12 @@ keywords: Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Serv
 manager: jeconnoc
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: 9afca253bd188556ad6a3f6e081fb2eccc4c81cb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 74bf83626ffcbf1625ab24cd9a4b8151b1cce8b0
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60707191"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65597008"
 ---
 # <a name="quickstart-develop-with-net-core-on-kubernetes-with-azure-dev-spaces-visual-studio-2017"></a>Szybki start: Programowanie przy użyciu platformy .NET Core na platformie Kubernetes za pomocą usługi Azure Dev miejsca do magazynowania (Visual Studio 2017)
 
@@ -56,7 +56,7 @@ Przejdź do klastra usługi AKS w witrynie Azure portal, a następnie kliknij pr
 ## <a name="create-a-new-aspnet-web-app"></a>Utwórz nową aplikację sieci web platformy ASP.NET
 
 1. Otwórz program Visual Studio 2017.
-1. Tworzenie nowego projektu.
+1. Utwórz nowy projekt.
 1. Wybierz *aplikacji sieci Web programu ASP.NET Core* i nazwij swój projekt *webfrontend*.
 1. Kliknij przycisk *OK*.
 1. Po wyświetleniu monitu wybierz *aplikacji sieci Web (Model-View-Controller)* dla szablonu.
@@ -97,6 +97,8 @@ Completed warmup for project 'webfrontend' in 125 seconds.
 
 W powyższym przykładzie jest publiczny adres URL http://webfrontend.1234567890abcdef1234.eus.azds.io/. Przejdź do publicznego adresu URL usługi i korzystać z usługi uruchomione w obszarze deweloperów.
 
+Ten proces mógł wyłączyć publicznego dostępu do usługi. Aby włączyć dostęp publiczny, możesz zaktualizować [wartość ruch przychodzący w *values.yaml*][ingress-update].
+
 ## <a name="update-code"></a>Aktualizowanie kodu
 
 Jeśli program Visual Studio 2017 jest nadal połączony do obszaru dev, kliknij przycisk Zatrzymaj. Zmień wiersz 20 w `Controllers/HomeController.cs` do:
@@ -131,3 +133,5 @@ az group delete --name MyResourceGroup --yes --no-wait
 
 > [!div class="nextstepaction"]
 > [Working with multiple containers and team development (Praca z wieloma kontenerami i programowanie zespołowe)](multi-service-netcore-visualstudio.md)
+
+[ingress-update]: how-dev-spaces-works.md#how-running-your-code-is-configured

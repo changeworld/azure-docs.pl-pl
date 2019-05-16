@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 42e8e7bdd52dcb8f236d94e7f931c91cd21605fd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: b691b7fc05b4a68b917fc882e9bc2fa43bb3d3c1
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60499039"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65756560"
 ---
-# <a name="create-a-policy-assignment-to-identify-non-compliant-resources"></a>Tworzenie przypisania zasad w celu zidentyfikowania niezgodnych zasobów
+# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources"></a>Szybki start: Tworzenie przypisania zasad w celu zidentyfikowania niezgodnych zasobów
 
 Pierwszym krokiem do zrozumienia pojęcia zgodności na platformie Azure jest określenie obecnej sytuacji dotyczącej Twoich zasobów.
 Ten przewodnik Szybki start przeprowadzi Cię przez proces tworzenia przypisania zasad w celu zidentyfikowania maszyn wirtualnych, które nie korzystają z dysków zarządzanych.
@@ -48,9 +48,9 @@ W tym przewodniku Szybki start utworzysz przypisanie zasad i przypiszesz definic
 
 1. W polu **Definicja zasad** wybierz wielokropek, aby otworzyć listę dostępnych definicji. Usługa Azure Policy zawiera wbudowane definicje zasad, których możesz używać. Dostępnych jest wiele wbudowanych definicji, na przykład:
 
-   - Enforce tag and its value (Wymuś tag i jego wartość)
+   - Wymuszaj tag i jego wartość
    - Apply tag and its value (Zastosuj tag i jego wartość)
-   - Require SQL Server Version 12.0 (Wymagaj programu SQL Server w wersji 12.0)
+   - Wymagaj programu SQL Server w wersji 12.0
 
    Aby przejrzeć częściową listę dostępnych zasad wbudowanych, zobacz [Przykłady zasad](./samples/index.md).
 
@@ -81,7 +81,7 @@ Jeśli warunek zostanie oceniony dla istniejących zasobów i okaże się prawdz
 | Exists | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | True | Niezgodne |
 | Exists | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | False | Zgodne |
 | Nowa | Audit, AuditIfNotExist\* | True | Niezgodne |
-| Nowa | Audit, AuditIfNotExist\* | False | Zgodne |
+| Nowe | Audit, AuditIfNotExist\* | False | Zgodne |
 
 \* Efekty Append, DeployIfNotExist i AuditIfNotExist wymagają instrukcji IF z wartością TRUE. Ponadto efekty wymagają, aby warunek istnienia miał wartość FALSE, aby być niezgodnymi. W przypadku wartości TRUE warunek IF wyzwala ocenę warunku istnienia dla powiązanych zasobów.
 

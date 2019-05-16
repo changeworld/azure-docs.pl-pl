@@ -4,7 +4,7 @@ description: Więcej informacji na temat uzyskiwania i buforowanie tokenów przy
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
-manager: celested
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d32b56b28d9ce7425e782fc10fa9ffb67047ce0
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 7ca011ec7185b084de6d1d346556c1c270c7aee3
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65139130"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546090"
 ---
 # <a name="acquiring-and-caching-tokens-using-msal"></a>Pobieranie i buforowanie tokenów z zastosowaniem biblioteki MSAL
 [Tokeny dostępu](access-tokens.md) umożliwić klientom bezpiecznie wywoływać interfejsy API chronionej przez platformę Azure w sieci web. Istnieje wiele sposobów, aby uzyskać token za pomocą usługi Microsoft Authentication Library (MSAL). Niektóre sposoby wymaga interakcji użytkownika za pośrednictwem przeglądarki sieci web. Niektóre nie wymagają żadnych interakcji użytkownika. Ogólnie rzecz biorąc sposób, aby uzyskać token zależy od Jeśli aplikacja jest aplikacją kliencką publiczny (komputerze lub urządzeniu przenośnym aplikacja) lub poufne klienta aplikacji (aplikacje demona aplikacja sieci Web i interfejsów API, takim jak usługa Windows).

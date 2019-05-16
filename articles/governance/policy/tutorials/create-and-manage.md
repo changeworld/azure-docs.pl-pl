@@ -7,14 +7,14 @@ ms.date: 02/04/2019
 ms.topic: tutorial
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 1641a88a95d4c056cdd1be8d855482c80b1430cc
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.openlocfilehash: 1a00d237ef94f73ebf59070d8160a7e5144b0ac8
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62113746"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65736431"
 ---
-# <a name="create-and-manage-policies-to-enforce-compliance"></a>Tworzenie zasad i zarządzanie nimi w celu wymuszania zgodności
+# <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Samouczek: Tworzenie zasad i zarządzanie nimi w celu wymuszania zgodności
 
 Poznanie sposobu tworzenia zasad i zarządzania nimi na platformie Azure jest ważne w celu zachowania zgodności ze standardami firmy i umowami dotyczącymi poziomu usług. Z tego samouczka dowiesz się, jak za pomocą usługi Azure Policy wykonywać niektóre bardziej typowe zadania związane z tworzeniem i przypisywaniem zasad oraz zarządzaniem nimi w całej organizacji, na przykład:
 
@@ -342,7 +342,7 @@ Za pomocą definicji inicjatywy możesz grupować kilka definicji zasad w celu o
 
 1. Przejrzyj listę **Dostępne definicje** (w lewej części strony**Definicja inicjatywy**) i wybierz definicje zasad, które chcesz dodać do tej inicjatywy. W przypadku inicjatywy **Uzyskiwanie bezpieczeństwa** dodaj następujące definicje wbudowanych zasad, klikając **+** obok informacji o definicji zasad lub klikając wiersz definicji zasad, a następnie opcję **+ Dodaj** na stronie szczegółów:
 
-   - Require SQL Server Version 12.0 (Wymagaj programu SQL Server w wersji 12.0)
+   - Wymagaj programu SQL Server w wersji 12.0
    - [Preview]: Monitor unprotected web applications in Security Center.
    - [Preview]: Monitor permissive network across in Security Center.
    - [Preview]: Monitor possible app Whitelisting in Security Center.

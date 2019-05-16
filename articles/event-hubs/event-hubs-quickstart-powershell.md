@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: fba0d3ac5a20bd4f10b815450f6ce08e50f88ea0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b3847f798fde8702d6d95450c68fbfbca4c97f9d
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60203061"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604456"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-powershell"></a>Szybki start: Tworzenie centrum zdarzeń za pomocą programu Azure PowerShell
 
@@ -31,7 +31,7 @@ W tym przewodniku Szybki start utworzysz centrum zdarzeń za pomocą programu Az
 Aby ukończyć kroki tego samouczka, upewnij się, że dysponujesz następującymi elementami:
 
 - Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, przed rozpoczęciem [utwórz bezpłatne konto][].
-- [Program Visual Studio 2017 Update 3 (wersja 15.3, 26730.01)](https://www.visualstudio.com/vs) lub nowszy.
+- [Visual Studio 2019](https://www.visualstudio.com/vs).
 - [Zestaw .NET Standard SDK](https://www.microsoft.com/net/download/windows) w wersji 2.0 lub nowszej.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]

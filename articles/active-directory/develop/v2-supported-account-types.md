@@ -4,7 +4,7 @@ description: Dokumentacja koncepcyjna o odbiorców i typy obsługiwanych kont w 
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
-manager: celested
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d751e28859a3ae1104b28c76d0edfedb2a859eb4
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 908ba764dfee7c164c3e6f0ff24d2bbf6a0df287
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406511"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544844"
 ---
 # <a name="supported-account-types"></a>Obsługiwane typy kont
 

@@ -10,12 +10,12 @@ ms.date: 02/20/2018
 ms.author: rogarana
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 1a3d1325edeac098b04ce0e25d4a545cb885761e
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
-ms.translationtype: MT
+ms.openlocfilehash: 541d406d7416ff5f50fdcca7e85b8f87f6f377df
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65187743"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65752522"
 ---
 # <a name="download-large-amounts-of-random-data-from-azure-storage"></a>Pobieranie dużych ilości danych losowych z usługi Azure Storage
 
@@ -98,13 +98,13 @@ Wpisz polecenie `dotnet run`, aby uruchomić aplikację.
 dotnet run
 ```
 
-Aplikacja odczytuje kontenery znajdujące się na koncie magazynu określonym przez parametr **storageconnectionstring**. Iteruje 10 obiektów blob na raz przy użyciu metody [ListBlobsSegmented](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmented?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudBlobContainer_ListBlobsSegmented_System_String_System_Boolean_Microsoft_WindowsAzure_Storage_Blob_BlobListingDetails_System_Nullable_System_Int32__Microsoft_WindowsAzure_Storage_Blob_BlobContinuationToken_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) w kontenerach i pobiera je na komputer lokalny przy użyciu metody [DownloadToFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadtofileasync?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudBlob_DownloadToFileAsync_System_String_System_IO_FileMode_Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_).
-W poniższej tabeli przedstawiono opcje [BlobRequestOptions](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions?view=azure-dotnet) definiowane dla poszczególnych obiektów blob podczas pobierania.
+Aplikacja odczytuje kontenery znajdujące się na koncie magazynu określonym przez parametr **storageconnectionstring**. Iteruje 10 obiektów blob na raz przy użyciu metody [ListBlobsSegmented](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer) w kontenerach i pobiera je na komputer lokalny przy użyciu metody [DownloadToFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadtofileasync).
+W poniższej tabeli przedstawiono opcje [BlobRequestOptions](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions) definiowane dla poszczególnych obiektów blob podczas pobierania.
 
 |Właściwość|Wartość|Opis|
 |---|---|---|
-|[DisableContentMD5Validation](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.disablecontentmd5validation?view=azure-dotnet)| true| Ta właściwość wyłącza sprawdzanie skrótu MD5 przekazanej zawartości. Wyłączenie sprawdzania poprawności skrótu MD5 zwiększa szybkość transferu. Jednak poprawność i integralność przekazywanych plików nie jest wtedy sprawdzana. |
-|[StoreBlobContentMD5](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.storeblobcontentmd5?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_StoreBlobContentMD5)| false| Ta właściwość określa, czy skrót MD5 jest obliczany i przechowywany.   |
+|[DisableContentMD5Validation](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.disablecontentmd5validation)| true| Ta właściwość wyłącza sprawdzanie skrótu MD5 przekazanej zawartości. Wyłączenie sprawdzania poprawności skrótu MD5 zwiększa szybkość transferu. Jednak poprawność i integralność przekazywanych plików nie jest wtedy sprawdzana. |
+|[StoreBlobContentMD5](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.storeblobcontentmd5)| false| Ta właściwość określa, czy skrót MD5 jest obliczany i przechowywany.   |
 
 Zadanie `DownloadFilesAsync` jest przedstawione w poniższym przykładzie:
 
