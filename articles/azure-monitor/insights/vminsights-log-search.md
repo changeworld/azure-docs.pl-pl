@@ -53,8 +53,8 @@ Aby zarządzać, koszt i złożoność, rekordy połączeń nie przedstawiają p
 | Właściwość | Opis |
 |:--|:--|
 |Direction |Kierunek połączenia, wartość jest *dla ruchu przychodzącego* lub *ruchu wychodzącego* |
-|Maszyna |Nazwa FQDN komputera |
-|Przetwórz |Tożsamość procesu lub grupy procesów, inicjowanie/akceptować połączenia |
+|Machine |Nazwa FQDN komputera |
+|Process |Tożsamość procesu lub grupy procesów, inicjowanie/akceptować połączenia |
 |SourceIp |Adres IP źródła |
 |DestinationIp |Adres IP miejsca docelowego |
 |DestinationPort |Numer portu docelowego |
@@ -77,7 +77,7 @@ Oprócz metryki liczbę połączeń informacji na temat ilości danych wysłanyc
 |:--|:--|
 |BytesSent |Całkowita liczba bajtów wysłanych raportowania przedziale czasu |
 |BytesReceived |Całkowita liczba bajtów odebranych w przedziale czasu raportowania |
-|Odpowiedzi |Liczba odpowiedzi zaobserwowane w przedziale czasu raportowania. 
+|Responses |Liczba odpowiedzi zaobserwowane w przedziale czasu raportowania. 
 |ResponseTimeMax |Największy czas odpowiedzi (w milisekundach) zaobserwowane w przedziale czasu raportowania. Jeśli brak wartości właściwości jest pusta.|
 |ResponseTimeMin |Najmniejszy czas odpowiedzi (w milisekundach) zaobserwowane w przedziale czasu raportowania. Jeśli brak wartości właściwości jest pusta.|
 |ResponseTimeSum |Suma czasów odpowiedzi (w milisekundach) zaobserwowane w przedziale czasu raportowania. Jeśli brak wartości właściwości jest pusta.|
@@ -112,10 +112,10 @@ Dla każdej właściwości RemoteIp w *VMConnection* tabeli jest sprawdzana wzgl
 |:--|:--|
 |MaliciousIp |Adres RemoteIp |
 |IndicatorThreadType |Wskaźnik zagrożenia wykryte jest jednym z następujących wartości *Botnet*, *C2*, *CryptoMining*, *zakres sieci Darknet*, *przed atakami DDos* , *MaliciousUrl*, *złośliwego oprogramowania*, *wyłudzania informacji*, *Proxy*, *potencjalnie niechciane aplikacje*, *Listy do obejrzenia*.   |
-|Opis |Opis obserwowanych zagrożeń. |
+|Description |Opis obserwowanych zagrożeń. |
 |TLPLevel |Poziom Rack (RECENT sygnalizacji ulicznej Protocol) jest jednym ze zdefiniowanymi wartościami *biały*, *zielony*, *żółtą*, *Red*. |
-|Ufność |Wartości są *0 – 100*. |
-|Ważność |Wartości są *0 – 5*, gdzie *5* jest najpoważniejsze i *0* nie jest poważny wcale. Wartość domyślna to *3*.  |
+|Confidence |Wartości są *0 – 100*. |
+|Severity |Wartości są *0 – 5*, gdzie *5* jest najpoważniejsze i *0* nie jest poważny wcale. Wartość domyślna to *3*.  |
 |FirstReportedDateTime |Po raz pierwszy dostawca zgłosił wskaźnika. |
 |LastReportedDateTime |Czas ostatniego wskaźnika widzianego przez Interflow. |
 |IsActive |Wskazuje, wskaźniki zostaną dezaktywowane z *True* lub *False* wartość. |
@@ -136,8 +136,8 @@ Każdy rekord w VMBoundPort jest identyfikowane za pomocą następujących pól:
 
 | Właściwość | Opis |
 |:--|:--|
-|Przetwórz | Tożsamość procesu (lub grupy procesów), z którymi jest skojarzony z portu.|
-|Adres IP | Port adresu IP (mogą być symbolami wieloznacznymi adres IP, *0.0.0.0*) |
+|Process | Tożsamość procesu (lub grupy procesów), z którymi jest skojarzony z portu.|
+|Ip | Port adresu IP (mogą być symbolami wieloznacznymi adres IP, *0.0.0.0*) |
 |Port |Numer portu |
 |Protocol | Protokół.  Przykład *tcp* lub *udp* (tylko *tcp* jest obecnie obsługiwane).|
  
