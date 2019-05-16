@@ -64,7 +64,7 @@ Następujące właściwości są obsługiwane w przypadku usługi połączonej u
 |:--- |:--- |:--- |
 | type |Właściwość type musi być równa **Salesforce**. |Yes |
 | environmentUrl | Określ adres URL wystąpienia usług Salesforce. <br> -Domyślnie `"https://login.salesforce.com"`. <br> -Aby skopiować dane z piaskownicy, należy określić `"https://test.salesforce.com"`. <br> -Aby skopiować dane z domeny niestandardowej, określić, na przykład `"https://[domain].my.salesforce.com"`. |Nie |
-| nazwa użytkownika |Określ nazwę użytkownika dla konta użytkownika. |Yes |
+| username |Określ nazwę użytkownika dla konta użytkownika. |Yes |
 | password |Określ hasło dla konta użytkownika.<br/><br/>Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Yes |
 | securityToken |Określ token zabezpieczeń dla konta użytkownika. Aby uzyskać instrukcje na temat resetowania i pobrać tokenu zabezpieczeń, zobacz [uzyskać token zabezpieczający](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm). Aby dowiedzieć się więcej o tokenów zabezpieczających ogólnie rzecz biorąc, zobacz [zabezpieczeń i interfejsu API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm).<br/><br/>Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Yes |
 | connectVia | [Środowiska integration runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. | Nie dla źródła, tak ujścia Jeśli źródłem jest połączona usługa nie ma środowiska integration runtime |
@@ -315,25 +315,25 @@ Podczas kopiowania danych z usług Salesforce, następujące mapowania są używ
 
 | Typ danych usługi SalesForce | Typ danych tymczasowych fabryki danych |
 |:--- |:--- |
-| Liczba automatycznie |String |
-| Zaznacz pole wyboru |Boolean |
-| Waluta |Decimal |
+| Auto Number |String |
+| Checkbox |Boolean |
+| Currency |Decimal |
 | Date |DateTime |
-| Data/godzina |DateTime |
+| Date/Time |DateTime |
 | Email |String |
-| Identyfikator |String |
-| Relacje odnośników |String |
-| Lista wyboru wielokrotnego |String |
-| Liczba |Decimal |
-| Procent |Decimal |
-| Numer telefonu |String |
-| Listy wyboru |String |
+| Id |String |
+| Lookup Relationship |String |
+| Multi-Select Picklist |String |
+| Number |Decimal |
+| Percent |Decimal |
+| Phone |String |
+| Picklist |String |
 | Text |String |
-| Obszar tekstu |String |
-| Obszar tekstu (Long) |String |
-| Obszar tekstu (zaawansowane) |String |
-| Tekst (zaszyfrowane) |String |
-| Adres URL |String |
+| Text Area |String |
+| Text Area (Long) |String |
+| Text Area (Rich) |String |
+| Text (Encrypted) |String |
+| URL |String |
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
