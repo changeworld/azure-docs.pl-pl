@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Używanie maszyny wirtualnej z systemem Linux i aplikacji w języku Python do zapisywania wpisów tajnych w usłudze Azure Key Vault | Microsoft Docs'
-description: W ramach tego samouczka dowiesz się, jak skonfigurować aplikację w języku Python, aby odczytać wpis tajny z usługi Azure Key Vault.
+title: 'Samouczek: Używanie maszyny wirtualnej z systemem Linux i aplikacji w języku Python do przechowywania wpisów tajnych w usłudze Azure Key Vault | Microsoft Docs'
+description: Z tego samouczka dowiesz się, jak skonfigurować aplikację w języku Python, aby odczytać wpis tajny z usługi Azure Key Vault.
 services: key-vault
 author: mbaldwin
 manager: rajvijan
@@ -11,12 +11,12 @@ ms.author: pryerram
 ms.custom: mvc
 ms.openlocfilehash: a5923c3d5ea7888a3737d7976caded8eef9c1661
 ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/28/2019
 ms.locfileid: "64702103"
 ---
-# <a name="tutorial-use-a-linux-vm-and-a-python-app-to-store-secrets-in-azure-key-vault"></a>Samouczek: Używanie maszyny wirtualnej z systemem Linux i aplikacji w języku Python do zapisywania wpisów tajnych w usłudze Azure Key Vault
+# <a name="tutorial-use-a-linux-vm-and-a-python-app-to-store-secrets-in-azure-key-vault"></a>Samouczek: Używanie maszyny wirtualnej z systemem Linux i aplikacji w języku Python do przechowywania wpisów tajnych w usłudze Azure Key Vault
 
 Usługa Azure Key Vault umożliwia ochronę wpisów tajnych, takich jak klucze interfejsu API i parametry połączenia bazy danych potrzebne do uzyskania dostępu do aplikacji, usługi oraz zasoby informatyczne.
 
@@ -24,7 +24,7 @@ W tym samouczku skonfigurujesz aplikację internetową platformy Azure pod kąte
 
 > [!div class="checklist"]
 > * Tworzenie magazynu kluczy
-> * Zapisywanie wpisu tajnego w magazynie kluczy
+> * Przechowywanie wpisu tajnego w magazynie kluczy
 > * Tworzenie maszyny wirtualnej z systemem Linux
 > * Włączanie [tożsamości zarządzanej](../active-directory/managed-identities-azure-resources/overview.md) dla maszyny wirtualnej
 > * Przyznawanie wymaganych uprawnień w celu umożliwienia aplikacji konsolowej odczytu danych z magazynu kluczy
@@ -156,7 +156,7 @@ az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssigned
 
 ## <a name="log-in-to-the-vm"></a>Logowanie się do maszyny wirtualnej
 
-zaloguj się do maszyny wirtualnej za pomocą terminalu.
+Zaloguj się do maszyny wirtualnej za pomocą terminalu.
 
 ```terminal
 ssh azureuser@<PublicIpAddress>
