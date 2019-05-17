@@ -59,10 +59,10 @@ Następujące właściwości są obsługiwane w przypadku oprogramowania SAP HAN
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość type musi być równa: **SapHana** | Yes |
-| serwer | Nazwa serwera, na którym znajduje się wystąpienie SAP HANA. Jeśli serwer używa portu niestandardowe, należy określić `server:port`. | Yes |
-| Element authenticationType | Typ uwierzytelniania używany do łączenia z bazą danych SAP HANA.<br/>Dozwolone wartości to: **Podstawowe**, i **Windows** | Yes |
+| server | Nazwa serwera, na którym znajduje się wystąpienie SAP HANA. Jeśli serwer używa portu niestandardowe, należy określić `server:port`. | Yes |
+| authenticationType | Typ uwierzytelniania używany do łączenia z bazą danych SAP HANA.<br/>Dozwolone wartości to: **Podstawowe**, i **Windows** | Yes |
 | userName | Nazwa użytkownika, który ma dostęp do serwera SAP. | Yes |
-| hasło | Hasło użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| password | Hasło użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Własne środowisko IR jest wymagany, zgodnie z opisem w [wymagania wstępne](#prerequisites). |Yes |
 
 **Przykład:**
@@ -165,18 +165,18 @@ Podczas kopiowania danych z platformy SAP HANA, następujące mapowania są uży
 | ALPHANUM | String |
 | BIGINT | Int64 |
 | BLOB | Byte[] |
-| ATRYBUT TYPU WARTOŚĆ LOGICZNA | Byte |
+| BOOLEAN | Byte |
 | CLOB | Byte[] |
 | DATE | DateTime |
 | DECIMAL | Decimal |
 | DOUBLE | Single |
 | INT | Int32 |
 | NVARCHAR | String |
-| RZECZYWISTE | Single |
+| REAL | Single |
 | SECONDDATE | DateTime |
 | SMALLINT | Int16 |
-| CZAS | TimeSpan |
-| SYGNATURA CZASOWA | DateTime |
+| TIME | TimeSpan |
+| TIMESTAMP | DateTime |
 | TINYINT | Byte |
 | VARCHAR | String |
 
