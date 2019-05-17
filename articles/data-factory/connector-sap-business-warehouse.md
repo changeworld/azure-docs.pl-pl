@@ -61,11 +61,11 @@ Następujące właściwości są obsługiwane przez oprogramowanie SAP Business 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość type musi być równa: **SapBw** | Yes |
-| serwer | Nazwa serwera, na którym znajduje się wystąpienie systemu SAP BW. | Yes |
+| server | Nazwa serwera, na którym znajduje się wystąpienie systemu SAP BW. | Yes |
 | systemNumber | Numer systemu systemu SAP BW.<br/>Dozwolone wartości: liczba dziesiętna dwucyfrowy reprezentowane jako ciąg. | Yes |
 | clientId | Identyfikator klienta klienta w SAP W systemie.<br/>Dozwolone wartości: liczba dziesiętna trzy cyfry, reprezentowane jako ciąg. | Yes |
 | userName | Nazwa użytkownika, który ma dostęp do serwera SAP. | Yes |
-| hasło | Hasło użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| password | Hasło użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Własne środowisko IR jest wymagany, zgodnie z opisem w [wymagania wstępne](#prerequisites). |Yes |
 
 **Przykład:**
@@ -176,15 +176,15 @@ Podczas kopiowania danych z systemu SAP BW, następujące mapowania są używane
 | INT1 | Byte |
 | INT2 | Int16 |
 | INT4 | Int |
-| JĘZYK | String |
+| LANG | String |
 | LCHR | String |
 | LRAW | Byte[] |
 | PREC | Int16 |
 | QUAN | Decimal |
 | RAW | Byte[] |
 | RAWSTRING | Byte[] |
-| CIĄG | String |
-| JEDNOSTKA | String |
+| STRING | String |
+| UNIT | String |
 | DATS | String |
 | NUMC | String |
 | TIMS | String |
