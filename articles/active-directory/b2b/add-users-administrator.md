@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 04/10/2019
+ms.date: 04/11/2019
 ms.author: mimart
 author: msmimart
-manager: celested
+manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef0a4e4a05427b1ed83b017b7a49862596aaf50a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 66b3e68ff2199c6a8bf4da9e02caaf93ee69342b
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60414557"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65812828"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Dodają użytkowników we współpracy B2B usługi Azure Active Directory w witrynie Azure portal
 
@@ -27,11 +27,15 @@ Po dodaniu użytkownika-gościa do katalogu, możesz albo wysłać użytkownik-G
 > [!IMPORTANT]
 > Należy wykonać czynności opisane w [porad: Dodaj informacje o prywatności w organizacji w usłudze Azure Active Directory](https://aka.ms/adprivacystatement) można dodać adres URL zasady zachowania poufności informacji w Twojej organizacji. W ramach procesu realizacji zaproszenia czas pierwszego zaproszonego użytkownika musi wyrazić zgodę na Twoje warunki ochrony prywatności, aby kontynuować. 
 
+## <a name="before-you-begin"></a>Przed rozpoczęciem
+
+Upewnij się, że ustawienia zewnętrznej współpracy w organizacji są skonfigurowane w taki sposób, że możesz zapraszać gości. Domyślnie wszyscy użytkownicy i Administratorzy mogą zapraszać gości. Ale zasady współpracy zewnętrznej firmy może być skonfigurowany do uniemożliwić niektórych rodzajów użytkowników lub administratorów od zapraszający gości. Aby dowiedzieć się, jak wyświetlać i ustawiania tych zasad, zobacz [włączenie zewnętrznej współpracy B2B oraz zarządzanie, kto może zapraszać gości](delegate-invitations.md).
+
 ## <a name="add-guest-users-to-the-directory"></a>Dodawanie użytkowników-gości do katalogu
 
 Aby dodać użytkowników we współpracy B2B do katalogu, wykonaj następujące kroki:
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) użytkownika, który jest przypisany, dowolny ograniczony administrator ról w katalogu.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) jako użytkownik, któremu przypisano rolę katalogu ograniczony administrator lub rola osoba zapraszająca gości.
 2. W okienku nawigacji wybierz **usługi Azure Active Directory**.
 3. W obszarze **Zarządzaj** wybierz pozycję **Użytkownicy**.
 4. Wybierz pozycję **Nowy użytkownik-gość**.
@@ -56,7 +60,7 @@ Po wysłaniu zaproszenia konto użytkownika zostanie automatycznie dodane do kat
 ![Widoczne dla użytkownika B2B z typem użytkownika gościa](./media/add-users-administrator/GuestUserType.png)  
 
 ## <a name="add-guest-users-to-a-group"></a>Dodawanie użytkowników-gości do grupy
-Jeśli musisz ręcznie dodać użytkowników we współpracy B2B do grupy jako administrator usługi Azure AD, wykonaj następujące kroki:
+Jeśli musisz ręcznie dodać użytkowników we współpracy B2B do grupy, wykonaj następujące kroki:
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) jako administrator usługi Azure AD.
 2. W okienku nawigacji wybierz **usługi Azure Active Directory**.
@@ -73,7 +77,7 @@ Można również użyć grup dynamicznych przy użyciu funkcji współpracy B2B 
 
 ## <a name="add-guest-users-to-an-application"></a>Dodawanie użytkowników-gości do aplikacji
 
-Aby dodać użytkowników we współpracy B2B do aplikacji jako administrator usługi Azure AD, wykonaj następujące kroki:
+Aby dodać użytkowników we współpracy B2B do aplikacji, wykonaj następujące kroki:
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) jako administrator usługi Azure AD.
 2. W okienku nawigacji wybierz **usługi Azure Active Directory**.

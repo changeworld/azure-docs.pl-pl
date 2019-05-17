@@ -6,14 +6,14 @@ manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 07/03/2017
+ms.date: 05/11/2019
 ms.author: robinsh
-ms.openlocfilehash: 274b77644326cbf73696aae77b48afcbc63aa4c2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5dd93af7deec2b0c8c90f6a8586de905207ad0a6
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61322796"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65796359"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>Importowanie i eksportowanie tożsamości urządzenia usługi IoT Hub w trybie zbiorczym
 
@@ -84,6 +84,10 @@ while(true)
   await Task.Delay(TimeSpan.FromSeconds(5));
 }
 ```
+
+## <a name="device-importexport-job-limits"></a>Limity zadania importu/eksportu urządzeń
+
+Można importować tylko 1 aktywnych urządzeń lub zadanie eksportu jest dozwolona na raz dla wszystkich warstw usługi IoT Hub. Usługa IoT Hub ma również limity szybkości operacji zadań. Aby dowiedzieć się więcej, zobacz [odwołanie — IoT Hub przydziałów i dławienia](iot-hub-devguide-quotas-throttling.md).
 
 ## <a name="export-devices"></a>Eksportowanie urządzeń
 
@@ -390,7 +394,7 @@ while(true)
 
 ## <a name="get-the-container-sas-uri"></a>Pobierz identyfikator URI sygnatury dostępu Współdzielonego kontenera
 
-Poniższy przykładowy kod przedstawia sposób generowania [identyfikatora URI połączenia SAS](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md) odczytu, zapisu i usuwania uprawnień dla kontenera obiektów blob:
+Poniższy przykładowy kod przedstawia sposób generowania [identyfikatora URI połączenia SAS](../storage/common/storage-dotnet-shared-access-signature-part-1.md) odczytu, zapisu i usuwania uprawnień dla kontenera obiektów blob:
 
 ```csharp
 static string GetContainerSasUri(CloudBlobContainer container)
@@ -420,7 +424,7 @@ static string GetContainerSasUri(CloudBlobContainer container)
 W tym artykule przedstawiono sposób wykonywania operacji zbiorczej dotyczących w rejestrze tożsamości w Centrum IoT hub. Skorzystaj z poniższych linków, aby dowiedzieć się więcej na temat zarządzania usługi Azure IoT Hub:
 
 * [Metryki usługi IoT Hub](iot-hub-metrics.md)
-* [Monitorowanie operacji](iot-hub-operations-monitoring.md)
+* [Dzienniki usługi IoT Hub](iot-hub-monitor-resource-health.md)
 
 Aby bliżej zapoznać się z możliwościami usługi IoT Hub, zobacz:
 

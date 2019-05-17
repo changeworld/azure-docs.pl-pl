@@ -10,14 +10,20 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: d10a1df402fc4931c4d6cc513aa5e22cfe7ec2ba
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 07989b06b756e1e360ac3c37927a8267c84d9162
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024720"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522835"
 ---
 # <a name="how-to-index-cosmos-db-using-an-azure-search-indexer"></a>Jak indeksować Cosmos DB przy użyciu indeksator usługi Azure Search
+
+
+> [!Note]
+> Obsługa interfejsu API usługi MongoDB jest w wersji zapoznawczej i nie przeznaczonych do użycia w środowisku produkcyjnym. [Wersji interfejsu API REST 2019-05-06-Preview](search-api-preview.md) zapewnia tę funkcję. Nie ma portalu ani Obsługa zestawu SDK platformy .NET w tej chwili.
+>
+> Interfejs API SQL jest ogólnie dostępna.
 
 W tym artykule przedstawiono sposób konfigurowania usługi Azure Cosmos DB [indeksatora](search-indexer-overview.md) do wyodrębniania zawartości, co można wyszukiwać w usłudze Azure Search. Ten przepływ tworzy indeks usługi Azure Search i ładuje je za pomocą istniejący tekst wyodrębnione z usługi Azure Cosmos DB. 
 
@@ -26,7 +32,7 @@ Ponieważ terminologia mogą być mylące, warto zauważyć, że [indeksowanie u
 Możesz użyć [portal](#cosmos-indexer-portal), interfejsów API REST lub zestawu .NET SDK do indeksowania zawartości Cosmos. Indeksator usługi Cosmos DB w usłudze Azure Search może przeszukiwać [elementów Azure Cosmos](https://docs.microsoft.com/azure/cosmos-db/databases-containers-items#azure-cosmos-items) dostępne za pośrednictwem tych protokołów:
 
 * [INTERFEJS API SQL](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference) 
-* [Interfejs API usługi MongoDB](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction) (Obsługa usługi Azure Search dla tego interfejsu API jest w publicznej wersji zapoznawczej)  
+* [Interfejsu API usługi MongoDB (wersja zapoznawcza)](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction)
 
 > [!Note]
 > User Voice ma istniejące elementy uzyskać dodatkową Pomoc interfejsu API. Można rzutować głosu dla interfejsów API Cosmos, które chcesz zobaczyć obsługiwanych w usłudze Azure Search: [Table API](https://feedback.azure.com/forums/263029-azure-search/suggestions/32759746-azure-search-should-be-able-to-index-cosmos-db-tab), [Graph API](https://feedback.azure.com/forums/263029-azure-search/suggestions/13285011-add-graph-databases-to-your-data-sources-eg-neo4), [Apache Cassandra API](https://feedback.azure.com/forums/263029-azure-search/suggestions/32857525-indexer-crawler-for-apache-cassandra-api-in-azu).
@@ -118,7 +124,7 @@ Po zakończeniu indeksowania, można użyć [Eksploratora wyszukiwania](search-e
 
 Można użyć interfejsu API REST do indeksu usługi Azure Cosmos DB danych, zgodnie z przepływu pracy trzyczęściowej wspólne dla wszystkich indeksatorów w usłudze Azure Search: Utwórz źródło danych, Utwórz indeks, Utwórz indeksator. Wyodrębnianie danych z magazynu Cosmos występuje, gdy wniosek tworzenie indeksatora. Po zakończeniu tego żądania, konieczne będzie odpytywalny indeksu. 
 
-Jeśli dokonujesz oceny bazy danych MongoDB, musi być Utwórz źródło danych interfejsu API REST.
+Jeśli dokonujesz oceny bazy danych MongoDB, należy użyć pozostałe `api-version=2019-05-06-Preview` można utworzyć źródła danych.
 
 W ramach konta usługi Cosmos DB można, czy mają kolekcja do automatycznego indeksowania wszystkich dokumentów. Domyślnie wszystkie dokumenty są automatycznie indeksowane, ale możesz wyłączyć automatyczne indeksowanie. Po wyłączeniu indeksowanie dokumentów można uzyskać dostęp tylko za pośrednictwem ich linków do samego siebie lub przez zapytania za pomocą dokumentów identyfikator. Usługa Azure Search wymaga usługi Cosmos DB automatyczne indeksowanie w celu włączenia w kolekcji, które będą indeksowane przez usługę Azure Search. 
 
@@ -279,7 +285,7 @@ Aby uzyskać szczegółowe informacje na temat tworzenia interfejsu API indeksat
 
 ## <a name="use-net"></a>Korzystanie z platformy .NET
 
-Zestaw SDK platformy .NET ma pełni parzystości przy użyciu interfejsu API REST. Firma Microsoft zaleca przejrzenie poprzedniej sekcji interfejsu API REST, aby dowiedzieć się, pojęcia i przepływu pracy oraz wymagania. Następnie można się odwoływać do poniższej dokumentacji interfejsu API platformy .NET do zaimplementowania indeksatora JSON w kodzie zarządzanym.
+Dostępnego ogólnie zestawu SDK platformy .NET ma pełną parzystości przy użyciu interfejsu API REST jest ogólnie dostępna. Firma Microsoft zaleca przejrzenie poprzedniej sekcji interfejsu API REST, aby dowiedzieć się, pojęcia i przepływu pracy oraz wymagania. Następnie można się odwoływać do poniższej dokumentacji interfejsu API platformy .NET do zaimplementowania indeksatora JSON w kodzie zarządzanym.
 
 + [microsoft.azure.search.models.datasource](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)
 + [microsoft.azure.search.models.datasourcetype](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet) 
@@ -354,12 +360,6 @@ Poniższy przykład tworzy źródła danych za pomocą zasad usuwania nietrwałe
             "softDeleteMarkerValue": "true"
         }
     }
-
-## <a name="watch-this-video"></a>Obejrzyj ten film wideo
-
-W tym nieco starsze 7-minutowym filmie Azure Menedżer programu usługi Cosmos DB Andrew Liu pokazuje, jak dodać indeks usługi Azure Search do kontenera usługi Azure Cosmos DB. Stron portalu przedstawiony w wideo są nieaktualne, ale nadal dotyczy informacji.
-
->[!VIDEO https://www.youtube.com/embed/OyoYu1Wzk4w]
 
 ## <a name="NextSteps"></a>Następne kroki
 

@@ -12,14 +12,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 05/15/2019
 ms.author: apimpm
-ms.openlocfilehash: 8e3f34210627fbb455a1eca0b415cdd6de9b3681
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e2362d06fa0ef795122a2d47a7a621b66fdd9470
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60527764"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65780355"
 ---
 # <a name="use-an-external-azure-cache-for-redis-in-azure-api-management"></a>Używanie zewnętrznej pamięci podręcznej Azure Cache for Redis w usłudze Azure API Management
 
@@ -40,11 +40,6 @@ Zawartość:
 
 > [!div class="checklist"]
 > * Dodawanie zewnętrznej pamięci podręcznej w usłudze API Management
-
-## <a name="availability"></a>Dostępność
-
-> [!NOTE]
-> Ta funkcja jest obecnie dostępna tylko w warstwie **Zużycie** usługi Azure API Management.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -94,6 +89,7 @@ Wykonaj poniższe kroki, aby dodać zewnętrzną pamięć podręczną Azure Cach
 Gdy pamięć zewnętrzna zostanie skonfigurowana w usłudze API Management, można jej używać za pośrednictwem zasad buforowania. Zobacz [Dodawanie buforowania w celu poprawy wydajności usługi Azure API Management](api-management-howto-cache.md), aby zapoznać się ze szczegółowymi instrukcjami.
 
 ## <a name="next-steps"> </a>Następne kroki
+
 * Aby uzyskać więcej informacji na temat zasad buforowania, zobacz [Caching policies][Caching policies] (Zasady buforowania) w artykule [API Management policy reference][API Management policy reference] (Dokumentacja zasad usługi API Management).
 * Aby poznać informacje na temat buforowania elementów według kluczy przy użyciu wyrażeń zasad, zobacz artykuł [Custom caching in Azure API Management](api-management-sample-cache-by-key.md) (Niestandardowe buforowanie w usłudze Azure API Management).
 

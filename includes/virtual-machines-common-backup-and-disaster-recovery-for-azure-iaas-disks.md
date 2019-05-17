@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 570330f47d2c610032c9c6646231c2320b2257be
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d242b2815d59676432beb878bbc955a9f39de0f1
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64732669"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65535860"
 ---
 # <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Kopia zapasowa i odzyskiwanie po awarii dla dysków IaaS platformy Azure
 
@@ -121,7 +121,7 @@ Wysoka dostępność najlepiej można spełnić przez użycie dysków zarządzan
 
 Opcje wysokiej dostępności, kopii zapasowych i odzyskiwania po awarii na poziomie aplikacji lub infrastruktury mogą być reprezentowane w następujący sposób:
 
-| Poziom |   Wysoka dostępność   | Tworzenia kopii zapasowej lub odzyskiwania po awarii |
+| Poziom |   Duża dostępność   | Tworzenia kopii zapasowej lub odzyskiwania po awarii |
 | --- | --- | --- |
 | Aplikacja | SQL Server AlwaysOn | Azure Backup |
 | Infrastruktura    | Zestaw dostępności  | Magazyn geograficznie nadmiarowy z migawki spójne z aplikacjami |
@@ -148,7 +148,7 @@ Wykonaj następujące kroki, aby włączyć kopie zapasowe maszyn wirtualnych pr
 
     b. Na **Magazyny usługi Recovery Services** menu, kliknij przycisk **Dodaj** i postępuj zgodnie z instrukcjami, aby utworzyć nowy magazyn, w tym samym regionie co maszyna wirtualna. Na przykład jeśli maszyna wirtualna znajduje się w regionie zachodnie stany USA, należy wybrać zachodnie stany USA magazynu.
 
-1.  Sprawdź, czy replikacja magazynu dla nowo utworzonego magazynu Uzyskiwać dostęp do magazynu w ramach **Magazyny usługi Recovery Services** i przejdź do **ustawienia** > **konfiguracji kopii zapasowej**. Upewnij się, **magazyn geograficznie nadmiarowy** opcja jest zaznaczona domyślnie. Ta opcja zapewnia, że magazyn będą automatycznie replikowane do dodatkowego centrum danych. Na przykład magazynu w regionie zachodnie stany USA są automatycznie replikowane do wschodnie stany USA.
+1.  Sprawdź, czy replikacja magazynu dla nowo utworzonego magazynu Uzyskiwać dostęp do magazynu w ramach **Magazyny usługi Recovery Services** i przejdź do **właściwości** > **konfiguracji kopii zapasowej** > **aktualizacji** . Upewnij się, **magazyn geograficznie nadmiarowy** opcja jest zaznaczona domyślnie. Ta opcja zapewnia, że magazyn będą automatycznie replikowane do dodatkowego centrum danych. Na przykład magazynu w regionie zachodnie stany USA są automatycznie replikowane do wschodnie stany USA.
 
 1.  Konfigurowanie zasad tworzenia kopii zapasowej, a następnie wybierz maszynę Wirtualną z tego samego interfejsu użytkownika.
 

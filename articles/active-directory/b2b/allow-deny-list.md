@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: mimart
 author: msmimart
-manager: daveba
+manager: celestedg
 ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f1121b72bf631cbcee4c8d9502fd8a439c26fbf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b302ec0265473e09b3960660b10661faa1960442
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60357243"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65812963"
 ---
 # <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Zezwalaj na zaproszenia lub blokowanie ich dla użytkowników B2B z określonym organizacjom
 
@@ -79,7 +79,7 @@ Po przełączeniu z jednej zasady do drugiego to odrzuca istniejącą konfigurac
 
 ## <a name="set-the-allow-or-deny-list-policy-using-powershell"></a>Ustaw Zezwalaj lub Odmów zasady listy przy użyciu programu PowerShell
 
-### <a name="prerequisite"></a>Wymagania wstępne
+### <a name="prerequisite"></a>Wymaganie wstępne
 
 Aby ustawić dozwolonych lub Lista niedozwolonych aplikacji przy użyciu programu PowerShell, należy zainstalować wersję zapoznawczą usługi Azure Active Directory modułu dla Windows PowerShell. W szczególności zainstalować AzureADPreview wersja modułu 2.0.0.98 lub nowszej.
 

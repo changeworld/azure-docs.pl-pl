@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2016
 ms.author: narayan;aglick
-ms.openlocfilehash: f8068524a33c6d29056af456a26b8bd87fc3e3d6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 68a9523dcc9c4dd84399c68fc7e31a692c011487
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60742714"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523257"
 ---
 # <a name="virtual-network--business-continuity"></a>Sieć wirtualna — ciągłość prowadzenia działalności biznesowej
 
 ## <a name="overview"></a>Omówienie
 Virtual Network (VNet) jest logicznym odzwierciedleniem Twojej sieci w chmurze. Umożliwia definiowanie własnych przestrzeń prywatnych adresów IP i podzielić sieć na podsieci. Sieci wirtualne służy jako granicy zaufania, aby hostować zasoby obliczeniowe, takie jak Azure Virtual Machines i Cloud Services (role sieć web/proces roboczy). Sieci wirtualnej umożliwia bezpośrednią komunikację prywatnych adresów IP w między zasobami w nim. Możesz połączyć sieć wirtualną z siecią lokalną za pośrednictwem bramy sieci VPN lub usługi ExpressRoute.
 
-Sieci wirtualnej jest tworzony w zakresie region. Można utworzyć sieci wirtualnych z tą samą przestrzenią adresów w dwóch różnych regionach (na przykład wschodnie stany USA i zachodnie stany USA), ale nie można połączyć je ze sobą. 
+Sieci wirtualnej jest tworzony w zakresie region. Możesz *tworzenie* sieci wirtualnych z tym samym przestrzeni adresów w dwóch różnych regionach (na przykład wschodnie stany USA i zachodnie stany USA), ale ponieważ mają tę samą przestrzeń adresową, nie możesz się połączyć je ze sobą. 
 
 ## <a name="business-continuity"></a>Ciągłość działalności biznesowej
 

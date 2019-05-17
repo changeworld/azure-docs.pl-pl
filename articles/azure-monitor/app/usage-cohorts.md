@@ -13,12 +13,12 @@ ms.date: 04/10/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: a575161be0a339973f9c59cc13c2320b38939d04
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 263316028e7b35a1a515322dddc4ee867011dcac
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60785108"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604107"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights kohorty
 
@@ -123,13 +123,13 @@ Poprzednie dwa kohorty zostały zdefiniowane przy użyciu list rozwijanych. Ale 
     | where client_CountryOrRegion == "United Kingdom"
     ```
 
-3. Wybierz **uruchom zapytanie**. Jeśli nie widać nazwy użytkowników są wyświetlane w tabeli, należy zmienić kraj, w którym aplikacja ma użytkowników.
+3. Wybierz **uruchom zapytanie**. Jeśli nie widać nazwy użytkowników są wyświetlane w tabeli, Zmień kraj/region, gdzie aplikacja ma użytkowników.
 
 4. Zapisz i nadaj kohorty.
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
-_Czy mogę zdefiniowane kohorta użytkowników z określonych krajów. Gdy porównać ta kohorta w narzędziu użytkownicy, można po prostu ustawienie filtru w tym kraju, czy mogę zobaczyć różne wyniki. Dlaczego?_
+_Czy mogę zdefiniowane kohorta użytkowników z określonych kraj/region. Gdy porównać ta kohorta w narzędziu użytkownicy, można po prostu ustawienie filtru na tego kraju/regionu, czy mogę zobaczyć różne wyniki. Dlaczego?_
 
 Kohorty i filtry są różne. Załóżmy, że masz kohorta użytkowników z Wielka Brytania (zdefiniowane tak jak w poprzednim przykładzie) i porównaj wyniki z ustawieniem dla filtru "kraj lub region = Wielkiej Brytanii."
 

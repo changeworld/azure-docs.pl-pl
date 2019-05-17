@@ -2,18 +2,17 @@
 title: Przejście do publicznych certyfikatów urzędu certyfikacji dla bram P2S | Azure VPN Gateway | Dokumentacja firmy Microsoft
 description: Ten artykuł pomoże Ci pomyślnie przejść do nowych publicznych certyfikatów urzędu certyfikacji P2S bram.
 services: vpn-gateway
-author: WenJason
+author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-origin.date: 03/12/2019
-ms.date: 04/29/2019
-ms.author: v-jay
-ms.openlocfilehash: 29f2aeee53e07adfeafb8017c489c0b830f24b36
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 03/15/2019
+ms.author: cherylmc
+ms.openlocfilehash: ea3ee00e60ae5eaff5c7220e9502da11358c8793
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60859651"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65786740"
 ---
 # <a name="transition-to-a-public-ca-gateway-certificate-for-p2s"></a>Przejście do certyfikatu bramy publicznego urzędu certyfikacji dla połączenia punkt-lokacja
 
@@ -30,6 +29,8 @@ Wcześniej certyfikat z podpisem własnym dla bramy (wystawiony przez platformę
 Ta zmiana dotyczy tylko starsze bramy. Jeśli certyfikatu bramy musi miesięcznego okresu nastąpi przejście, otrzymasz komunikat lub wyskakującego powiadomienia w witrynie Azure portal. Można sprawdzić, brama ma wpływ wykonując kroki opisane w tym artykule.
 
 > [!IMPORTANT]
+> **Ten proces przejścia została zakończona w dniu 12 maja 2019 r.**
+>
 > Przejście jest zaplanowana do 12 marca maja 2019 r zaczynając od 18:00 czasu UTC. Można utworzyć zgłoszenie do pomocy technicznej, jeśli użytkownik sobie tego życzy okna innym czasie. Wprowadź i zakończyć żądania z wyprzedzeniem co najmniej 24 godziny.  Możesz poprosić o jedną z następujących okien:
 >
 > * 06:00 UTC 25 lutego
@@ -37,7 +38,7 @@ Ta zmiana dotyczy tylko starsze bramy. Jeśli certyfikatu bramy musi miesięczne
 > * 06:00 UTC 1 marca
 > * 18:00 UTC 1 marca
 >
-> **Wszystkie pozostałe bramy zostanie zastąpiona 2019 12 marca, zaczynając od 18:00 UTC**.
+> Wszystkie pozostałe bramy zostanie zastąpiona 2019 12 marca, zaczynając od 18:00 czasu UTC.
 >
 > Klienci będą otrzymywać wiadomości e-mail podczas ich bramy kończy proces przejścia.
 > 

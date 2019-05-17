@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: cf414f9dd0f3a7ab638dc72e50aa8f3997308cc7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65744164"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65813654"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vibe-hcm"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Vibe HCM
 

@@ -8,14 +8,14 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 56a11a17de3c66a3d45edb71c72be20ce1a1c89e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8ed9d84cba7cb9eeca94a1376fc03f1d256afa85
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64683751"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65779221"
 ---
-# <a name="introduction-to-ml-services-and-open-source-r-capabilities-on-hdinsight"></a>Wprowadzenie do usługi uczenie Maszynowe i możliwości języka R typu open source w HDInsight
+# <a name="what-is-ml-services-in-azure-hdinsight"></a>Co to są usługi ML w usłudze Azure HDInsight
 
 > [!NOTE]  
 > We wrześniu 2017 Microsoft R Server został wydany w obszarze nazwy nowego **serwer Microsoft Machine Learning** lub ML Server. W związku z tym, klastra R Server w HDInsight jest teraz nazywana **usługi Machine Learning** lub **usługi ML** klastra w systemie HDInsight. Aby uzyskać więcej informacji na temat zmiany nazwy oprogramowania R Server, zobacz [Microsoft R Server jest teraz serwer Microsoft Machine Learning](https://docs.microsoft.com/machine-learning-server/rebranding-microsoft-r-server#get-support-for-r-server).

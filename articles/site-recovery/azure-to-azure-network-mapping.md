@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: d08715b1b3e0db4dfcf31bb4c020ab44ed3916e1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b25806044dd74092a5404ad7ef24ddd386dffbc3
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60791102"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65521757"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>Konfigurowanie mapowania sieci i adresowania IP dla sieci wirtualnych
 
@@ -58,7 +58,7 @@ Podsieć docelowa wybrania maszyny Wirtualnej na podstawie nazwy podsieci źród
 
 - Jeśli podsieć z taką samą nazwę jak podsieci maszyny Wirtualnej źródłowego jest dostępny w sieci docelowej, podsieci jest ustawiona dla docelowej maszyny Wirtualnej.
 - Jeśli podsieć o takiej samej nazwie nie istnieje w sieci docelowej, podsieci pierwszy w kolejności alfabetycznej jest ustawiony jako podsieci docelowej.
-- Można modyfikować w **obliczenia i sieć** ustawień dla maszyny Wirtualnej.
+- Można zmodyfikować tej docelowej podsieci **obliczenia i sieć** ustawień dla maszyny Wirtualnej.
 
     ![Obliczenia i sieć obliczenia okno właściwości](./media/site-recovery-network-mapping-azure-to-azure/modify-subnet.png)
 

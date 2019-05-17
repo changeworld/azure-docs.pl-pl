@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/22/2019
 ms.author: absha
-ms.openlocfilehash: 90a57483fc7a530f214d34bf619a718b4c196e79
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 07165a497e75934a65719e48a9af7d8d6906ee7b
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59683161"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65538332"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>Rozwiązywanie problemów z koligacją sesji bramy aplikacji platformy Azure
 
@@ -53,7 +53,7 @@ Czasami z koligacją sesji może wystąpić, gdy zapomnisz włączyć ustawienie
 
 Możesz również sprawdzić wartość "**CookieBasedAffinity**" jest ustawiona na *włączone*w obszarze "**backendHttpSettingsCollection**" przy użyciu jednej z następujących metod:
 
-- Uruchom [Get AzApplicationGatewayBackendHttpSettings](https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewaybackendhttpsettings) w programie PowerShell
+- Uruchom [Get AzApplicationGatewayBackendHttpSetting](https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewaybackendhttpsetting) w programie PowerShell
 - Przejrzyj plik JSON przy użyciu szablonu usługi Azure Resource Manager
 
 ```

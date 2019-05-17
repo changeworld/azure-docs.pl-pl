@@ -16,16 +16,14 @@ ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 605206682cb70d430773cdbf9ff746eabf594103
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 23003186aa413e313578c57616ae03c435f140e1
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190841"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65785396"
 ---
 # <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-single-page-application-spa"></a>Szybki start: Logowania użytkowników i uzyskiwanie tokenu dostępu z poziomu aplikacji jednostronicowej JavaScript (SPA)
-
-[!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
 W tym przewodniku Szybki Start dowiesz się, jak użyć przykładowego kodu, który demonstruje, jak JavaScript aplikacja jednostronicowa (SPA) Zaloguj się na kontach osobistych, praca i kont służbowych i uzyskania tokenu dostępu do wywołania interfejsu API programu Microsoft Graph lub dowolnego interfejsu API sieci web.
 
@@ -55,7 +53,7 @@ W tym przewodniku Szybki Start potrzebne są następujące ustawienia:
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Opcja 2: zarejestrowanie i ręczne skonfigurowanie aplikacji oraz przykładowego kodu
 >
-> #### <a name="step-1-register-your-application"></a>Krok 1: Rejestrowanie aplikacji
+> #### <a name="step-1-register-your-application"></a>Krok 1: Zarejestruj swoją aplikację
 >
 > 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
 > 1. Jeśli Twoje konto umożliwia dostęp do więcej niż jednej dzierżawy, wybierz konto w prawym górnym rogu, a następnie ustaw sesję portalu na odpowiednią dzierżawę usługi Azure AD.
@@ -178,7 +176,7 @@ var msalConfig = {
 var myMSALObj = new Msal.UserAgentApplication(msalConfig);
 ```
 
-> |Lokalizacja  |  |
+> |Gdzie  |  |
 > |---------|---------|
 > |`ClientId`     |Identyfikator aplikacji z aplikacji zarejestrowanej w witrynie Azure Portal|
 > |`authority`    | (Opcjonalnie) To adres URL urzędu zgodnie z opisem w sekcji konfiguracji powyżej do obsługi typów kont. Jest domyślnego urzędu `https://login.microsoftonline.com/common`. |
@@ -203,7 +201,7 @@ myMSALObj.loginPopup(requestObj).then(function (loginResponse) {
 });
 ```
 
-> |Lokalizacja  |  |
+> |Gdzie  |  |
 > |---------|---------|
 > | `scopes`   | (Opcjonalnie) Zawiera żądane zakresy wymagające zgody użytkownika podczas logowania. Na przykład zakres `[ "user.read" ]` dla programu Microsoft Graph lub zakres `[ "<Application ID URL>/scope" ]` dla niestandardowych interfejsów internetowych API (czyli `api://<Application ID>/access_as_user`). |
 
@@ -231,7 +229,7 @@ myMSALObj.acquireTokenSilent(requestObj).then(function (tokenResponse) {
 });
 ```
 
-> |Lokalizacja  |  |
+> |Gdzie  |  |
 > |---------|---------|
 > | `scopes`   | Zawiera zakresy żądane na potrzeby zwracania w tokenie dostępu dla interfejsu API. Na przykład zakres `[ "user.read" ]` dla programu Microsoft Graph lub zakres `[ "<Application ID URL>/scope" ]` dla niestandardowych interfejsów internetowych API (czyli `api://<Application ID>/access_as_user`).|
 

@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: bd9df12cbe941b868c769daccd02c1d81b39f7bd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2ca3c69178dde830e226812da34917246781c1ee
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60776494"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65762155"
 ---
 # <a name="security-model-of-azure-notification-hubs"></a>Model zabezpieczeń usługi Azure Notification hubs
 
@@ -43,10 +43,12 @@ Jest ważne dowiedzieć się, że klucz z dostępem do nasłuchiwania zezwala na
 
 Podobnie jak inne podmioty, operacje Centrum powiadomień są dozwolone dla trzech oświadczeń zabezpieczeń: Posłuchaj, wysyłanie i zarządzanie.
 
-| Claim   | Opis                                          | Dozwolone operacje |
+| Oświadczenie   | Opis                                          | Dozwolone operacje |
 | ------- | ---------------------------------------------------- | ------------------ |
 | Nasłuchuj  | Utwórz/zaktualizuj, Odczyt i usuwanie pojedynczego rejestracji | Utwórz/zaktualizuj rejestracji<br><br>Odczyt rejestracji<br><br>Odczyt wszystkich rejestracji dla dojścia<br><br>Usuwanie rejestracji |
-| Wysyłanie    | Wysyłanie komunikatów do Centrum powiadomień                | Wyślij wiadomość |
+| Wyślij    | Wysyłanie komunikatów do Centrum powiadomień                | Wyślij wiadomość |
 | Zarządzanie  | CRUDs (w tym aktualizowanie poświadczenia systemu powiadomień platformy i kluczy zabezpieczeń) w usłudze Notification Hubs i odczytu rejestracji na podstawie tagów |Usługa tworzenia/aktualizacji/odczyt/usuwanie notification hubs<br><br>Odczyt rejestracji według tagu |
 
 Usługa Notification Hubs akceptować oświadczeń przyznane przez Microsoft Azure Access Control tokenów i tokenów sygnatur wygenerowane z klucze współużytkowane są konfigurowane bezpośrednio w Centrum powiadomień.
+
+Nie jest możliwe wysłanie powiadomienia do więcej niż jednej przestrzeni nazw. Przestrzenie nazw to kontener logiczny dla usługi notification hubs i nie są związane z wysyłaniem powiadomień. Zasady dostępu na poziomie przestrzeni nazw (poświadczenia) może służyć do operacji na poziomie przestrzeni nazw, na przykład: wyświetlanie listy usługi notification hubs, tworzenie lub usuwanie usługi notification hubs, itp. Tylko zasady dostępu na poziomie koncentratora będzie można wysyłać powiadomienia.

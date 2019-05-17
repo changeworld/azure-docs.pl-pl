@@ -12,10 +12,10 @@ keywords: 'Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Ser
 manager: yuvalm
 ms.openlocfilehash: a5afd093e0f961d048681465850419c5e8712557
 ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2019
-ms.locfileid: "65752129"
+ms.locfileid: "65800390"
 ---
 # <a name="multi-service-development-with-azure-dev-spaces"></a>Programowanie wielu usług za pomocą usługi Azure Dev Spaces
 

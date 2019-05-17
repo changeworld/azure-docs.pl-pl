@@ -4,16 +4,15 @@ description: Ten artykuł zawiera informacje dotyczące limitów rozmiarów żą
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.workload: infrastructure-services
-ms.date: 1/29/2019
+ms.date: 5/15/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: a814fc6e9a72ba92d915821bd1e1694366844555
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 5ddcdeca41e2f21fa27db25f7e0721c7ef87e491
+ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59791764"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65620278"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Limity rozmiaru żądanie zapory aplikacji sieci Web i listy wykluczeń
 
@@ -25,10 +24,10 @@ Zapora aplikacji sieci web usługi Azure Application Gateway (WAF) zapewnia ochr
 
 Zapora aplikacji sieci Web pozwala skonfigurować limity rozmiaru żądania w ramach dolną i górną granicę. Dostępne są następujące konfiguracje limitów rozmiaru dwa:
 
-- Pole o rozmiarze treść żądania maksymalna jest określona w artykułów bazy wiedzy i kontrolek, które przekazuje ogólną limit rozmiaru żądania, z wyłączeniem żadnych plików. To pole można dostosować w zakresie od co najmniej 1 KB do wartości maksymalnej 128 KB. Wartością domyślną dla rozmiaru treść żądania jest 128 KB.
+- Pola rozmiar treści żądania maksymalna jest określona w kilobajtach i kontrolek, który przekazuje ogólną limit rozmiaru żądania, z wyłączeniem żadnych plików. To pole można dostosować w zakresie od co najmniej 1 KB do wartości maksymalnej 128 KB. Wartością domyślną dla rozmiaru treść żądania jest 128 KB.
 - Pola limit przekazywania plików jest wyrażona w Megabajtach i określa maksymalny dozwolony rozmiar przekazywanych plików. To pole może mieć minimalną wartość 1 MB i maksymalnie 500 MB dla jednostki SKU dużych wystąpień, gdy średnie jednostki SKU może zawierać maksymalnie 100 MB. Wartość domyślna dla pliku przekazywania limit wynosi 100 MB.
 
-Zapora aplikacji sieci Web oferuje także można skonfigurować pokrętła, aby włączyć inspekcję treści żądania lub wyłączyć. Domyślnie włączona jest inspekcja treści żądania. Jeśli inspekcja treść żądania jest wyłączona, zapory aplikacji sieci Web nie może oszacować zawartość treści komunikatu HTTP. W takich przypadkach zapory aplikacji sieci Web w dalszym ciągu wymuszania reguł zapory aplikacji sieci Web na nagłówki plików cookie i identyfikatora URI. Jeśli inspekcja treść żądania jest wyłączona, pole o rozmiarze treść żądania maksymalna nie ma zastosowania i nie można ustawić. Umożliwia wyłączenie inspekcji treść żądania dla wiadomości większych niż 128 KB do wysłania do zapory aplikacji sieci Web, ale treść komunikatu nie jest kontrolowane w zakresie luki w zabezpieczeniach.
+Zapora aplikacji sieci Web oferuje także można skonfigurować pokrętła, aby włączyć inspekcję treści żądania lub wyłączyć. Domyślnie włączona jest inspekcja treści żądania. Jeśli inspekcja treść żądania jest wyłączona, zapory aplikacji sieci Web nie szacuje zawartość treści komunikatu HTTP. W takich przypadkach zapory aplikacji sieci Web w dalszym ciągu wymuszania reguł zapory aplikacji sieci Web na nagłówki plików cookie i identyfikatora URI. Jeśli inspekcja treść żądania jest wyłączona, pole o rozmiarze treść żądania maksymalna nie ma zastosowania i nie można ustawić. Umożliwia wyłączenie inspekcji treść żądania dla wiadomości większych niż 128 KB do wysłania do zapory aplikacji sieci Web, ale treść komunikatu nie jest kontrolowane w zakresie luki w zabezpieczeniach.
 
 ## <a name="waf-exclusion-lists"></a>Listy wykluczeń zapory aplikacji sieci Web
 
@@ -40,11 +39,12 @@ Następujące atrybuty mogą być dodawane do listy wykluczeń:
 
 * Nagłówki żądania
 * Pliki cookie żądania
-* Treść żądania
+* Nazwa atrybutu żądania (argumenty)
 
    * Wieloczęściowych danych formularza
    * XML
    * JSON
+   * Adres URL zapytania argumentów
 
 Określ nagłówek żądania dokładnie, treści, pliku cookie lub dopasowanie atrybut ciągu zapytania.  Alternatywnie można opcjonalnie określić częściowego dopasowania. Wykluczenie jest zawsze włączona pole nagłówka, nigdy na jego wartość. Reguły wykluczania mają zakres globalny i mają zastosowanie do wszystkich stron i wszystkie reguły.
 
@@ -62,37 +62,36 @@ We wszystkich przypadkach dopasowania jest uwzględniana wielkość liter i wyra
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Poniższy fragment kodu programu Azure PowerShell pokazuje użycie wykluczeń:
+W poniższych przykładach pokazano użycie wykluczeń.
+
+### <a name="example-1"></a>Przykład 1
+
+W tym przykładzie chcesz wykluczyć nagłówka użytkownika agenta. Nagłówek żądania agenta użytkownika zawiera ciąg cech, który zezwala na elementy równorzędne protokołu sieciowego do identyfikowania typu aplikacji, system operacyjny, dostawca oprogramowania lub wersji oprogramowania agenta użytkownika żądania oprogramowania. Aby uzyskać więcej informacji, zobacz [User-Agent](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent).
+
+Może to być dowolna liczba przyczyn można wyłączyć oceny tego pliku nagłówkowego. Może to być ciąg, który zapory aplikacji sieci Web będzie widział i przyjęto założenie, że jest złośliwy. Na przykład klasycznego ataku SQL "x = x" w ciągu. W niektórych przypadkach może to być uzasadnione ruchu. Dlatego może być konieczne spod tego pliku nagłówkowego oceny zapory aplikacji sieci Web.
+
+Następujące polecenie cmdlet programu Azure PowerShell z wyłączeniem nagłówka agenta użytkownika z wersji ewaluacyjnej:
 
 ```azurepowershell
-// exclusion 1: exclude request head start with xyz
-// exclusion 2: exclude request args equals a
-
-$exclusion1 = New-AzApplicationGatewayFirewallExclusionConfig -MatchVariable "RequestHeaderNames" -SelectorMatchOperator "StartsWith" -Selector "xyz"
-
-$exclusion2 = New-AzApplicationGatewayFirewallExclusionConfig -MatchVariable "RequestArgNames" -SelectorMatchOperator "Equals" -Selector "a"
-
-// add exclusion lists to the firewall config
-
-$firewallConfig = New-AzApplicationGatewayWebApplicationFirewallConfiguration -Enabled $true -FirewallMode Prevention -RuleSetType "OWASP" -RuleSetVersion "2.2.9" -DisabledRuleGroups $disabledRuleGroup1,$disabledRuleGroup2 -RequestBodyCheck $true -MaxRequestBodySizeInKb 80 -FileUploadLimitInMb 70 -Exclusions $exclusion1,$exclusion2
+$exclusion1 = New-AzApplicationGatewayFirewallExclusionConfig `
+   -MatchVariable "RequestHeaderNames" `
+   -SelectorMatchOperator "Equals" `
+   -Selector "User-Agent"
 ```
 
-Poniższy fragment kodu json demonstruje użycie wykluczeń:
+### <a name="example-2"></a>Przykład 2
 
-```json
-"webApplicationFirewallConfiguration": {
-          "enabled": "[parameters('wafEnabled')]",
-          "firewallMode": "[parameters('wafMode')]",
-          "ruleSetType": "[parameters('wafRuleSetType')]",
-          "ruleSetVersion": "[parameters('wafRuleSetVersion')]",
-          "disabledRuleGroups": [],
-          "exclusions": [
-            {
-                "matchVariable": "RequestArgNames",
-                "selectorMatchOperator": "StartsWith",
-                "selector": "a^bc"
-            }
+W tym przykładzie nie obejmuje wartości w *użytkownika* parametr, który jest przekazywany w żądaniu za pośrednictwem adresu URL. Na przykład załóżmy, że jest typowe w danym środowisku dla pola użytkownika, aby zawierać ciąg, który zapory aplikacji internetowych widoków jako złośliwej zawartości, więc blokuje ją.  Parametr użytkownika można wykluczyć w tym przypadku tak, aby ocenić nie zapory aplikacji internetowych, wszystko w tym polu.
+
+Następujące polecenie cmdlet programu Azure PowerShell nie obejmuje parametr użytkownika z wersji ewaluacyjnej:
+
+```azurepowershell
+$exclusion2 = New-AzApplicationGatewayFirewallExclusionConfig `
+   -MatchVariable "RequestArgNames" `
+   -SelectorMatchOperator "Equals" `
+   -Selector "user"
 ```
+Więc jeśli adres URL **http://www.contoso.com/?user=fdafdasfda** jest przekazywany do zapory aplikacji sieci Web, nie ocenia ciąg **fdafdasfda**.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 04/25/2019
 ms.author: pabutler
-ms.openlocfilehash: e8148e3a26a236039736dede5a7fbc79075731ce
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: e1a110abf8e057034043da34455bf678277c6cb4
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64938144"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65799943"
 ---
 # <a name="virtual-machine-skus-tab"></a>Karty jednostki SKU maszyny wirtualnej
 
@@ -55,7 +55,7 @@ W poniższej tabeli opisano przeznaczenie zawartości i formatowania z tych pól
 | **Rodzina systemów operacyjnych\*** | Wskazuje, czy jest rozwiązania maszyny Wirtualnej, systemem Windows lub Linux. |
 | **Wybierz typ systemu operacyjnego** | Określonego dostawcy lub wersji określonego systemu operacyjnego. |
 | **Przyjazna nazwa OS\*** | Nazwa systemu operacyjnego, który ma być wyświetlany dla klientów.  |
-| **Zalecane rozmiary maszyn wirtualnych\*** | Umożliwia wybór maksymalnie sześć zalecane rozmiary maszyn wirtualnych z listy standardowych.  Te zalecenia są wyświetlane dla potencjalnych klientów, są one mogą określić dowolny rozmiar maszyny Wirtualnej, która jest zgodna z obrazem rozwiązania. | 
+| **Zalecane rozmiary maszyn wirtualnych\*** | Umożliwia wybór maksymalnie sześć zalecane rozmiary maszyn wirtualnych z listy standardowych.  Ta lista jest przekazywane do witryny Azure portal i platformach handlowych firmy Microsoft.  Pierwszy rozmiar maszyny Wirtualnej na tej liście, który jest prawidłowy (dla tej subskrypcji klienta, region, strefy, itp.) jest ustawiony jako domyślny dla tego potencjalnego klienta.  Użytkownik może zmienić ten rozmiar do dowolnego zgodnego z obrazem rozwiązania. | 
 | **Otwieranie portów**| Porty, aby otworzyć i protokołu w celu obsługi dla jednostki SKU.  Te konfiguracje musi być zgodna sieć wirtualną, skonfigurowanych dla sieci maszyny Wirtualnej rozwiązania. Te ustawienia zaczną obowiązywać podczas wdrażania maszyny Wirtualnej. Jednak ustawienia portu można zmodyfikować po opublikowaniu jednostkę SKU. Aby uzyskać więcej informacji, zobacz [jak otwierać porty do maszyny wirtualnej w witrynie Azure portal](https://docs.microsoft.com/azure/virtual-machines/windows/nsg-quickstart-portal). <br/>Następujące domyślne mapowania sieci są dodawane do wszystkich maszyn wirtualnych. &emsp; Windows: 3389 -> 3389 TCP, 5986 -> 5986 TCP; &emsp; Linux: 22 -> 22, TCP (SSH). |
 | **Wersje dyskowe**  | Rozwiązanie skojarzone maszyny Wirtualnej, określony przez numer wersji dysku i adres URL dysku. Wersja dysku musi mieć [wersji semantycznej](https://semver.org/) format: `<major>.<minor>.<patch>`.  Adres URL jest sygnatura dostępu współdzielonego, identyfikator URI utworzony dla wirtualnego dysku twardego systemu operacyjnego.  Mimo że można dodać maksymalnie osiem wersji dysków dla jednostek SKU, tylko najwyższy dysku numer wersji dla jednostki SKU pojawią się w witrynie Azure Marketplace. Inne wersje będzie widoczny tylko za pośrednictwem interfejsów API.  <!--TD: Add more specific link to API --> <br/> **Nowy dysk danych** kontrolki accordion sekcja umożliwia dołączanie do 15 dysków z danymi do maszyny Wirtualnej.  Po opublikowaniu jednostki SKU z daną wersją maszyny Wirtualnej i dysków z danymi skojarzonego nie można zmodyfikować tę konfigurację.  Jeśli dodatkowe wersje maszyny Wirtualnej poproś o dodanie Cię do jednostki SKU, musi również obsługiwać taką samą liczbę dysków z danymi. <br/> Twoje obrazy maszyny Wirtualnej systemu Azure nie została utworzona, można dodać później zaktualizować tego pola.  Aby uzyskać informacje dotyczące tworzenia skojarzony zasób maszynę Wirtualną, zobacz sekcję [Utwórz maszynę Wirtualną, zasoby techniczne](./cpp-create-technical-assets.md).  
 |  |  |

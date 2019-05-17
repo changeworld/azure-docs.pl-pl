@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/05/2018
 ms.author: magoedte
-ms.openlocfilehash: c6a8322998b391b9021292a3a7213ded56b67feb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0f35ea3e35277ee7f1afd8278a31f45ed20c6995
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61386448"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522119"
 ---
 # <a name="how-to-disable-monitoring-of-your-virtual-machines-with-azure-monitor-for-vms-preview"></a>Jak wyłączyć monitorowanie maszyn wirtualnych z usługą Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)
 
@@ -56,7 +56,7 @@ Poniżej opisano sposób całkowicie usunąć usługi Azure Monitor dla maszyn w
 5. Na liście rozwiązań, wybierz **InfrastructureInsights (nazwa obszaru roboczego)**, a następnie na **Przegląd** stronie rozwiązania, kliknij przycisk **Usuń**.  Po wyświetleniu monitu o potwierdzenie, kliknij przycisk **tak**.  
 6. Wybierz z listy rozwiązań **ServiceMap (nazwa obszaru roboczego)**, a następnie na **Przegląd** stronie rozwiązania, kliknij przycisk **Usuń**.  Po wyświetleniu monitu o potwierdzenie, kliknij przycisk **tak**.  
 
-Jeśli przed dołączania do usługi Azure Monitor dla maszyn wirtualnych, możesz nie [zbierania liczników wydajności, włączone](vminsights-onboard.md?toc=/azure/azure-monitor/toc.json#performance-counters-enabled) Windows lub Linux maszyn wirtualnych z systemem w obszarze roboczym, należy wyłączyć te zasady, wykonując kroki opisane [tutaj](../../azure-monitor/platform/data-sources-performance-counters.md?toc=/azure/azure-monitor/toc.json#configuring-performance-counters) dla Windows i Linux.
+Jeśli przed dołączania do usługi Azure Monitor dla maszyn wirtualnych, możesz nie [zbierania liczników wydajności, włączone](vminsights-enable-overview.md#performance-counters-enabled) Windows lub Linux maszyn wirtualnych z systemem w obszarze roboczym, należy wyłączyć te zasady, wykonując kroki opisane [tutaj](../platform/data-sources-performance-counters.md#configuring-performance-counters) dla Windows i Linux.
 
 ## <a name="disable-monitoring-for-an-azure-vm-and-retain-workspace"></a>Wyłącz monitorowanie dla maszyny Wirtualnej platformy Azure i zachowywanie obszaru roboczego  
 

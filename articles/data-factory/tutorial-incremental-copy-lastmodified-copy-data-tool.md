@@ -13,16 +13,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 1/24/2019
-ms.openlocfilehash: 8308190e0e68365343fb50ca33f9bea75c3e4e66
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3865bb10346c4a55adbf94a7df225eacf2c11252
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61099052"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65519130"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>Przyrostowe kopiowanie nowych i zmienionych plików, w oparciu o Data ostatniej modyfikacji przy użyciu narzędzia do kopiowania danych
 
 W tym samouczku użyjesz witryny Azure portal do utworzenia fabryki danych. Następnie użyjemy narzędzia do kopiowania danych utworzysz potok, który przyrostowo kopiuje nowych i zmienionych plików, na podstawie ich **Data ostatniej modyfikacji** z usługi Azure Blob storage do usługi Azure Blob storage.
+
+W ten sposób ADF spowoduje skanowanie wszystkich plików z magazynu źródła, zastosuj filtr pliku przez ich Data ostatniej modyfikacji, a następnie skopiuj plik nowe i zaktualizowane tylko od czasu ostatniego, do docelowego magazynu.  Należy pamiętać, jeśli umożliwiają ADF skanowania ogromne ilości plików, ale kopiować tylko kilka plików do lokalizacji docelowej, można nadal oczekiwać także czas trwania długiej ze względu na skanowanie plików jest czasochłonne.   
 
 > [!NOTE]
 > Jeśli jesteś nowym użytkownikiem usługi Azure Data Factory, zobacz [Wprowadzenie do usługi Azure Data Factory](introduction.md).

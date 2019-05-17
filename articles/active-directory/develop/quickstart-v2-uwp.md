@@ -17,16 +17,14 @@ ms.date: 04/12/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c45cd1627eb1eb98b2fc19f6663d5635b001ce0c
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: fd4b6dd31d620603b765fd33494f399f97915af3
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65067786"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65784917"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Szybki start: Wywoływanie interfejsu API programu Microsoft Graph z poziomu aplikacji platformy UWP
-
-[!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
 Ten przewodnik Szybki Start zawiera przykładowy kod, który demonstruje, jak aplikacji uniwersalnych platformy Windows (UWP) można logowanie użytkowników mających konta osobiste lub pracy i konta służbowe, Uzyskaj token dostępu i wywołania interfejsu API programu Microsoft Graph.
 
@@ -47,7 +45,7 @@ Ten przewodnik Szybki Start zawiera przykładowy kod, który demonstruje, jak ap
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Opcja 2: zarejestrowanie i ręczne skonfigurowanie aplikacji oraz przykładowego kodu
 > [!div renderon="docs"]
-> #### <a name="step-1-register-your-application"></a>Krok 1: Rejestrowanie aplikacji
+> #### <a name="step-1-register-your-application"></a>Krok 1: Zarejestruj swoją aplikację
 > Aby zarejestrować aplikację i dodać informacje na temat rejestracji aplikacji do rozwiązania, wykonaj następujące czynności:
 > 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
 > 1. Jeśli Twoje konto umożliwia dostęp do więcej niż jednej dzierżawy, wybierz konto w prawym górnym rogu, a następnie ustaw sesję portalu na odpowiednią dzierżawę usługi Azure AD.

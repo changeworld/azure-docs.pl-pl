@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: brjohnst
-ms.openlocfilehash: 21374e20a2ba2c9134ed12e4b1072ff5c320c75e
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: d72901653e995e811a1d3e89cef8a5f77a9ea8bd
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149779"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523803"
 ---
 # <a name="api-versions-in-azure-search"></a>Wersje interfejsu API w usłudze Azure Search
 Usługa Azure Search regularnie zbiera i wydaje aktualizacje funkcji. Czasami, ale nie zawsze te aktualizacje wymagają nowej wersji interfejsu API w celu zachowania zgodności z poprzednimi wersjami. Publikowanie nowej wersji pozwala na kontrolowanie, kiedy i jak integrować aktualizacje usługi wyszukiwania w kodzie.
@@ -33,9 +33,9 @@ Poniżej to migawki bieżących wersji wszystkich interfejsów programowania do 
 | Interfejsy | Najnowszą wersją | Stan |
 | --- | --- | --- |
 | [Zestaw SDK platformy .NET](https://aka.ms/search-sdk) |9.0 |Ogólnie dostępne, wydane maja 2019 r |
-| [Zestaw SDK platformy .NET w wersji zapoznawczej](https://aka.ms/search-sdk-preview) |8.0.0-Preview |W wersji zapoznawczej, wydana w kwietniu 2019 |
+| [Zestaw SDK platformy .NET w wersji zapoznawczej](https://aka.ms/search-sdk-preview) |Wersja zapoznawcza 8.0 |W wersji zapoznawczej, wydana w kwietniu 2019 |
 | [Interfejs API REST usługi](https://docs.microsoft.com/rest/api/searchservice/) |2019-05-06 |Ogólnie dostępne |
-| [Usługa REST API 2019-05-06-Preview](search-api-preview.md) |2019-05-06-preview |Wersja zapoznawcza |
+| [Usługa REST API 2019-05-06-Preview](search-api-preview.md) |2019-05-06-preview |Preview |
 | [.NET Management SDK](https://aka.ms/search-mgmt-sdk) |3.0 |Ogólnie dostępne |
 | [Interfejs API REST zarządzania](https://docs.microsoft.com/rest/api/searchmanagement/) |2015-08-19 |Ogólnie dostępne |
 

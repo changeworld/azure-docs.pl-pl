@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.custom: mvc
-ms.date: 05/01/2019
+ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: a27f7597ddc934b925d63507a816ac5816b682d6
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 5dbcf446a609adcd0f1902fcca2ac19ad87f17b1
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65151044"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65779666"
 ---
 # <a name="access-azure-media-services-api-with-the-azure-cli"></a>Interfejs API usług Azure Media dostępu przy użyciu wiersza polecenia platformy Azure
  
@@ -45,14 +45,15 @@ Koniecznie zapamiętaj wartości, które zostały użyte jako nazwa grupy zasob�
 ## <a name="see-also"></a>Zobacz także
 
 - [Skalowanie jednostek zarezerwowanych multimediów — interfejs wiersza polecenia](media-reserved-units-cli-how-to.md)
-- [Tworzenie konta usługi Media Services — interfejs wiersza polecenia](./scripts/cli-create-account.md) 
-- [Resetowanie poświadczeń konta — interfejs wiersza polecenia](./scripts/cli-reset-account-credentials.md)
-- [Tworzenie zasobów — interfejs wiersza polecenia](./scripts/cli-create-asset.md)
-- [Przekazywanie pliku — interfejs wiersza polecenia](./scripts/cli-upload-file-asset.md)
-- [Tworzenie transformacji — interfejs wiersza polecenia](./scripts/cli-create-transform.md)
-- [Tworzenie zadań — interfejs wiersza polecenia](./scripts/cli-create-jobs.md)
-- [Tworzenie usługi EventGrid — interfejs wiersza polecenia](./scripts/cli-create-event-grid.md)
-- [Publikowanie elementu zawartości — interfejs wiersza polecenia](./scripts/cli-publish-asset.md)
+- [Tworzenie konta usługi Media Services — interfejs wiersza polecenia](create-account-cli-how-to.md) 
+- [Resetowanie poświadczeń konta — interfejs wiersza polecenia](cli-reset-account-credentials.md)
+- [Tworzenie zasobów — interfejs wiersza polecenia](cli-create-asset.md)
+- [Przekazywanie pliku — interfejs wiersza polecenia](cli-upload-file-asset.md)
+- [Tworzenie transformacji — interfejs wiersza polecenia](cli-create-transform.md)
+- [Kodowanie za pomocą niestandardowych przekształcenie — interfejs wiersza polecenia](custom-preset-cli-howto.md)
+- [Tworzenie zadań — interfejs wiersza polecenia](cli-create-jobs.md)
+- [Tworzenie usługi EventGrid — interfejs wiersza polecenia](job-state-events-cli-how-to.md)
+- [Publikowanie elementu zawartości — interfejs wiersza polecenia](cli-publish-asset.md)
 - [Filtr — interfejs wiersza polecenia](filters-dynamic-manifest-cli-howto.md)
 - [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
 
@@ -60,5 +61,5 @@ Koniecznie zapamiętaj wartości, które zostały użyte jako nazwa grupy zasob�
 
 Punkt końcowy przesyłania strumieniowego, z którego chcesz strumieniowo przesyłać zawartość, musi być w stanie uruchomiona. Następujące polecenie interfejsu wiersza polecenia uruchamia domyślny punkt końcowy przesyłania strumieniowego:
 
-
 `az ams streaming-endpoint start -n default -a <amsaccount> -g <amsResourceGroup>`
+

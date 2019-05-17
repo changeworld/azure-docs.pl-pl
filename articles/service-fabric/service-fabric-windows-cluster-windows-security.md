@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/24/2017
 ms.author: dekapur
-ms.openlocfilehash: 394ba3b3b8189bbe96137e920745f7b8cdd1cd95
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ccc726f54821d316c745f6af9c63d7ed13986d79
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60863967"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65761930"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-windows-security"></a>Zabezpieczanie klastra autonomicznego w Windows przy użyciu zabezpieczeń Windows
 Aby zapobiec nieautoryzowanemu dostępowi do klastra usługi Service Fabric, należy zabezpieczyć klaster. Bezpieczeństwo jest szczególnie ważne, gdy klaster działa obciążeń produkcyjnych. W tym artykule opisano sposób konfigurowania zabezpieczeń między węzłami i węzeł klienta przy użyciu zabezpieczeń Windows w *ClusterConfig.JSON* pliku.  Proces odnosi się do kroku zabezpieczeń Konfiguruj [Tworzenie klastra autonomicznego w systemie Windows](service-fabric-cluster-creation-for-windows-server.md). Aby uzyskać więcej informacji o używaniu Windows zabezpieczeń w usłudze Service Fabric, zobacz [scenariusze zabezpieczeń klastra](service-fabric-cluster-security.md).
@@ -61,7 +61,7 @@ Przykład *ClusterConfig.gMSA.Windows.MultiMachine.JSON* pliku konfiguracji pobr
 | IsAdmin |Ustaw wartość true, aby określić, czy użytkownik domeny ma administrator dostępu klienta lub wartość false dla dostępu klientów użytkownika. |
 
 > [!NOTE]
-> Wartość ClustergMSAIdentity nie może zawierać nazwy domeny i może być tylko nazwa konta grupy usługi zarządzanej. I.E. "mysfgmsa" jest poprawny, a oba "moja_domena / / mysfgmsa" lub "mysfgmsa@mydomain" są nieprawidłowe; ponieważ domena jest implikowany przez komputer hosta.
+> Wartość ClustergMSAIdentity mieć format "mysfgmsa@mydomain".
 
 [Węzeł, aby węzeł zabezpieczeń](service-fabric-cluster-security.md#node-to-node-security) jest skonfigurowany, ustawiając **ClustergMSAIdentity** po usługi Service fabric musi zostać uruchomiony w ramach gMSA. Aby można było utworzyć relacje zaufania między węzłami, muszą być umieszczane pamiętać od siebie. Można to zrobić na dwa sposoby: Określ grupy zarządzane konta usługi, która zawiera wszystkie węzły w klastrze lub określ grupy maszyn domeny, która zawiera wszystkie węzły w klastrze. Zdecydowanie zalecamy używanie [konta usługi zarządzanego przez grupę (gMSA)](https://technet.microsoft.com/library/hh831782.aspx) podejście, szczególnie w przypadku większych klastrów (ponad 10 węzłów) lub w przypadku klastrów, które mogą mieć możliwość zwiększania i zmniejszania.  
 To podejście nie jest wymagane tworzenie grupy domeny, dla którego administratorzy klastra przyznano prawa dostępu do dodawania i usuwania elementów członkowskich. Te konta są również przydatne w przypadku automatyczne zarządzanie hasłami. Aby uzyskać więcej informacji, zobacz [rozpoczęcie korzystania z kont usług zarządzanych przez grupę](https://technet.microsoft.com/library/jj128431.aspx).  

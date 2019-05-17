@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: shlo
-ms.openlocfilehash: 845544a2062b43f0d9f883ddecbc2589b3357221
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 63a86fb9498c7c1b1cd527accca84c83a28e01c3
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61262351"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65788671"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Potoki i działania w usłudze Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -172,7 +172,7 @@ Nazwa JSON | Opis | Dozwolone wartości | Wymagane
 --------- | ----------- | -------------- | --------
 timeout | Określa limit czasu pracy działania. | Zakres czasu | Nie. Domyślny limit czasu wynosi 7 dni.
 retry | Maksymalna liczba ponownych prób | Liczba całkowita | Nie. Wartość domyślna to 0
-retryIntervalInSeconds | Opóźnienie między ponownymi próbami w sekundach | Liczba całkowita | Nie. Wartość domyślna to 20 sekund
+retryIntervalInSeconds | Opóźnienie między ponownymi próbami w sekundach | Liczba całkowita | Nie. Domyślna to 30 sekund
 secureOutput | W przypadku ustawienia wartości „true” dane wyjściowe działania są uznawane za bezpieczne i nie są rejestrowane w ramach monitorowania. | Wartość logiczna | Nie. Wartość domyślna to false.
 
 ### <a name="control-activity"></a>Działanie sterowania

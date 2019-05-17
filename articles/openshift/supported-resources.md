@@ -7,31 +7,21 @@ ms.author: twhitney
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 05/06/2019
-ms.openlocfilehash: 22cc195b7808ad4a9111aafcf883a68c51f3709f
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.date: 05/15/2019
+ms.openlocfilehash: 5182a5e325bd7883af1a7d102d3e02b277a5089e
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65076108"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65788695"
 ---
 # <a name="azure-red-hat-openshift-resources"></a>Zasoby platformy Azure Red Hat OpenShift
 
 Ten temat zawiera listę regionów platformy Azure i rozmiary maszyn wirtualnych obsługiwanych przez usługę Microsoft Azure Red Hat OpenShift.
 
-## <a name="azure-regions"></a>Regiony świadczenia usługi Azure
+## <a name="azure-regions"></a>Regiony platformy Azure
 
-Azure Red Hat OpenShift klastry można wdrażać na poniższych regionów platformy Azure na całym świecie:
-
-|Region|Kodu interfejsu wiersza polecenia|
-|-|-|
-|🇦🇺 Australia Wschodnia|`australiaeast`|
-|🇨🇦 Kanada Środkowa|`canadacentral`|
-|🇨🇦 Canada East|`canadaeast`|
-|🇺🇸 Wschodnie stany USA|`eastus`|
-|🇺🇸 Zachodnie stany USA|`westus`|
-|Europa Zachodnia 🇪🇺|`westeurope`|
-|Europa Północna 🇪🇺|`northeurope`|
+Zobacz [dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=openshift&regions=all) bieżącą listę regionów, w którym można wdrożyć Azure Red Hat OpenShift klastrów.
 
 ## <a name="virtual-machine-sizes"></a>Rozmiary maszyn wirtualnych
 

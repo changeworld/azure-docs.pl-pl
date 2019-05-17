@@ -18,12 +18,12 @@ ms.date: 12/14/2018
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f95fd85b5a0fd9e905b93b9b90f18f963dbf1690
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9da23b0c0b0b0c0bfc238b1504811a9c1c55a9ef
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60355731"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65785374"
 ---
 # <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Jakie są warunki dostępu warunkowego usługi Azure Active Directory? 
 
@@ -57,29 +57,23 @@ Gdy użytkownik **Wybieranie użytkowników i grup**, można ustawić następuj�
 
 * **Użytkownicy i grupy** jest przeznaczony dla określonego zbiorów użytkowników. Na przykład można wybrać grupy, która zawiera wszystkie elementy członkowskie z działu KADR, po wybraniu aplikacji HR jako aplikacji w chmurze. Grupa może być dowolnego typu grupy w usłudze Azure AD, w tym dynamiczne lub przypisane grupy zabezpieczeń i dystrybucję.
 
-Z zasad, można wykluczyć określonych użytkowników lub grup. Jeden typowy przypadek użycia jest kont usług w przypadku zasad usługi uwierzytelnianie wieloskładnikowe (MFA). 
+Z zasad, można wykluczyć określonych użytkowników lub grup. Jeden typowy przypadek użycia jest kont usług w przypadku zasad usługi uwierzytelnianie wieloskładnikowe (MFA).
 
-Przeznaczone dla konkretnych zestawów użytkowników jest przydatne w przypadku wdrażania nowych zasad. W nowych zasad powinien dotyczyć tylko początkowy zestaw użytkowników, aby zweryfikować zachowanie zasad. 
+Przeznaczone dla konkretnych zestawów użytkowników jest przydatne w przypadku wdrażania nowych zasad. W nowych zasad powinien dotyczyć tylko początkowy zestaw użytkowników, aby zweryfikować zachowanie zasad.
 
+## <a name="cloud-apps-and-actions"></a>Aplikacje w chmurze i akcje
 
+Aplikacja w chmurze jest witryny sieci Web, usługi lub punkt końcowy jest chroniony przez serwer Proxy aplikacji usługi Azure AD. Aby uzyskać szczegółowy opis obsługiwanymi aplikacjami w chmurze, zobacz [przypisań aplikacji w chmurze](technical-reference.md#cloud-apps-assignments). **w chmurze aplikacji lub akcje** warunek jest obowiązkowe w zasadach dostępu warunkowego. W zasadach, możesz wybrać operator **wszystkie aplikacje w chmurze** lub określić aplikacji przy użyciu **Wybierz aplikacje**.
 
-## <a name="cloud-apps"></a>Aplikacje w chmurze 
+Organizacje mogą wybrać spośród następujących:
 
-Aplikacja w chmurze jest witryny sieci Web lub usługi. Witryny sieci Web chronionych przez serwer Proxy aplikacji usługi AD systemu Azure są również aplikacje w chmurze. Aby uzyskać szczegółowy opis obsługiwanymi aplikacjami w chmurze, zobacz [przypisań aplikacji w chmurze](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#cloud-apps-assignments). 
+* **Wszystkie aplikacje w chmurze** po zastosowaniu wbudowanej linii bazowej zasady do zastosowania w całej organizacji. Zaznacz to pole wyboru dla zasad, które wymagają uwierzytelniania wieloskładnikowego po wykryciu ryzyka logowania dla dowolnej aplikacji w chmurze. Zasady stosowane do wszystkich aplikacji w chmurze dotyczy dostępu do wszystkich witryn sieci Web i usług. To ustawienie nie ogranicza się do aplikacji w chmurze, które pojawiają się na liście aplikacji wybierz opcję.
+* **Wybierz aplikacje** do określonych usług docelowego przez zasady. Na przykład możesz wymagać od użytkowników wymagane w przypadku urządzeń zgodnych, dostęp do usługi SharePoint Online. Ta zasada jest stosowana także do innych usług, podczas uzyskiwania dostępu do zawartości programu SharePoint. Przykładem jest Microsoft Teams.
 
-**Aplikacje w chmurze** warunek jest obowiązkowe w zasadach dostępu warunkowego. W zasadach, możesz wybrać operator **wszystkie aplikacje w chmurze** lub wybierz określone aplikacje.
+> [!NOTE]
+> Z zasad można wykluczyć określone aplikacje. Te aplikacje są jednak nadal podlega procesowi zasady zastosowane do usług, do których uzyskują dostęp.
 
-![Obejmują aplikacje w chmurze](./media/conditions/03.png)
-
-Wybierz pozycję:
-
-- **Wszystkie aplikacje w chmurze** do linii bazowej zasady do zastosowania w całej organizacji. Zaznacz to pole wyboru dla zasad, które wymagają uwierzytelniania wieloskładnikowego po wykryciu ryzyka logowania dla dowolnej aplikacji w chmurze. Zasady stosowane do **wszystkie aplikacje w chmurze** dotyczy dostępu do wszystkich witryn sieci Web i usług. To ustawienie nie ogranicza się do aplikacji w chmurze, które pojawiają się na **Wybierz aplikacje** listy. 
-
-- **Wybierz aplikacje** do określonych usług docelowego przez zasady. Na przykład, możesz wymagać od użytkowników mają [zgodnego urządzenia](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online) dostęp do usługi SharePoint Online. Ta zasada jest stosowana także do innych usług, podczas uzyskiwania dostępu do zawartości programu SharePoint. Przykładem jest Microsoft Teams. 
-
-Z zasad można wykluczyć określone aplikacje. Te aplikacje są jednak nadal podlega procesowi zasady zastosowane do usług, do których uzyskują dostęp. 
-
-
+**Akcje użytkownika** zadania, które mogą być wykonywane przez użytkownika. Jedyną akcją, aktualnie obsługiwany jest **zarejestrowanie informacji o zabezpieczeniach (wersja zapoznawcza)**, co pozwala zasad dostępu warunkowego, gdy użytkownik rejestruje swoje informacje o zabezpieczeniach.
 
 ## <a name="sign-in-risk"></a>Ryzyko logowania
 

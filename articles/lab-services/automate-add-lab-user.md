@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 0eed874d405fcf99241a702292f8ceadae6c5a07
-ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
+ms.openlocfilehash: 2ad81ae97414abbf3266cc5728febf9abe836151
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65502025"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522960"
 ---
 # <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>Automatyzacja dodawania użytkownika laboratorium do laboratorium Azure DevTest Labs
 Usługa Azure DevTest Labs umożliwia szybkie tworzenie środowisk dewelopersko testowe samoobsługowego przy użyciu witryny Azure portal. Jednak jeśli masz kilka zespołów i kilka wystąpień usługi DevTest Labs, Automatyzowanie procesu tworzenia zaoszczędzić czas. [Szablony usługi Azure Resource Manager](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates) umożliwiają tworzenie laboratoriów, laboratorium, maszyny wirtualne, niestandardowe obrazy, formuły i dodawanie użytkowników w zautomatyzowany sposób. Ten artykuł skupia się na temat dodawania użytkowników do wystąpienia usługi DevTest Labs.
@@ -85,7 +85,7 @@ Poniższy przykładowy szablon usługi Resource Manager Określa użytkownika ma
 
 ```
 
-Jeśli masz przypisanie roli w tym samym szablonie, który jest utworzenie laboratorium, pamiętaj, aby dodać zależność od zasobu przypisania roli i laboratorium. Aby uzyskać więcej informacji, zobacz [Definiowanie zależności w szablonach usługi Resource Manager platformy Azure](/azure-resource-manager/resource-group-define-dependencies.md) artykułu.
+Jeśli masz przypisanie roli w tym samym szablonie, który jest utworzenie laboratorium, pamiętaj, aby dodać zależność od zasobu przypisania roli i laboratorium. Aby uzyskać więcej informacji, zobacz [Definiowanie zależności w szablonach usługi Resource Manager platformy Azure](../azure-resource-manager/resource-group-define-dependencies.md) artykułu.
 
 ### <a name="role-assignment-resource-information"></a>Informacje o zasobach przypisania roli
 Zasób przypisania roli należy określić typ i nazwę.

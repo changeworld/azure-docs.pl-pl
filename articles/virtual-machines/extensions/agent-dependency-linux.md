@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
-ms.openlocfilehash: 16491ccc8a9cdc24b82c4c4e27705fa30da61088
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 750393e6dba17ab8ba024f9f1fbb2f9127dd81ab
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60800236"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65521700"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-linux"></a>Rozszerzenie maszyny wirtualnej platformy Azure Monitor zależności dla systemu Linux
 
@@ -30,7 +30,7 @@ Usługi Azure Monitor dla funkcji mapy maszyny wirtualne, dane są pobierane z M
 
 ### <a name="operating-system"></a>System operacyjny
 
-Rozszerzenie agenta zależności maszyn wirtualnych platformy Azure dla systemu Linux mogą być uruchamiane względem obsługiwanych systemów operacyjnych wymienionych w [obsługiwane systemy operacyjne](../../azure-monitor/insights/vminsights-onboard.md#supported-operating-systems) sekcji usługi Azure Monitor w artykule wdrożenie maszyn wirtualnych.
+Rozszerzenie agenta zależności maszyn wirtualnych platformy Azure dla systemu Linux mogą być uruchamiane względem obsługiwanych systemów operacyjnych wymienionych w [obsługiwane systemy operacyjne](../../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) sekcji usługi Azure Monitor w artykule wdrożenie maszyn wirtualnych.
 
 ## <a name="extension-schema"></a>Schemat rozszerzenia
 
@@ -81,7 +81,7 @@ Następujący kod JSON zawiera schemat dla rozszerzenia agenta zależności masz
 | type | DependencyAgentLinux |
 | typeHandlerVersion | 9.5 |
 
-## <a name="template-deployment"></a>Wdrażanie na podstawie szablonu
+## <a name="template-deployment"></a>Wdrożenie szablonu
 
 Rozszerzenia maszyn wirtualnych platformy Azure można wdrażać przy użyciu szablonów usługi Azure Resource Manager. Schemat JSON szczegółowo opisane w poprzedniej sekcji może służyć w szablonie usługi Azure Resource Manager do uruchomienia rozszerzenia agenta zależności maszyn wirtualnych platformy Azure podczas wdrażania szablonu usługi Azure Resource Manager. 
 

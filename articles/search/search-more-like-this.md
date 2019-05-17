@@ -10,21 +10,23 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: d18069335bb20f78a5bcda85eb6fcb2a5abe75f7
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 5723f1ab7258a9e0d672b5c0fd9fd0b9c4dc8721
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024674"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522920"
 ---
-# <a name="morelikethis-in-azure-search-preview"></a>moreLikeThis w usłudze Azure Search (wersja zapoznawcza)
+# <a name="morelikethis-in-azure-search"></a>moreLikeThis w usłudze Azure Search
+
+> [!Note]
+> moreLikeThis znajduje się w wersji zapoznawczej i nie przeznaczonych do użycia w środowisku produkcyjnym. [Wersji interfejsu API REST 2019-05-06-Preview](search-api-preview.md) zapewnia tę funkcję. Brak obsługi zestawu SDK platformy .NET w tej chwili.
 
 `moreLikeThis=[key]` jest to parametr zapytania w [interfejsu API wyszukiwania w dokumentach](https://docs.microsoft.com/rest/api/searchservice/search-documents) służący do wyszukiwania dokumentów podobnie jak dokument, określony przez klucz dokumentu. Po wysłaniu żądania wyszukiwania za pomocą `moreLikeThis`, jest generowane zapytanie, za pomocą terminów wyszukiwania wyodrębnione z danego dokumentu, które najlepiej opisać tego dokumentu. Wygenerowane zapytanie jest następnie używany do żądania wyszukiwania. Domyślnie, wszystkie pola z możliwością wyszukiwania zawartości są traktowane jako, minus żadnych ograniczone pól, które można określić za pomocą `searchFields` parametru. `moreLikeThis` Parametru nie można używać z parametrem wyszukiwania `search=[string]`.
 
 Domyślnie są traktowane jako zawartość wszystkie pola z możliwością wyszukiwania najwyższego poziomu. Jeśli chcesz określić konkretnego pola zamiast tego możesz użyć `searchFields` parametru. 
 
-> [!NOTE]
-> `moreLikeThis` (wersja zapoznawcza) nie działa na wyszukiwanie pól podrzędnych w [typu złożonego](search-howto-complex-data-types.md).
+Nie można użyć moreLikeThis na podrzędne pola z możliwością wyszukiwania w [typu złożonego](search-howto-complex-data-types.md).
 
 ## <a name="examples"></a>Przykłady 
 
@@ -42,9 +44,6 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06-Preview
     }
 ```
 
-## <a name="feature-availability"></a>Dostępność funkcji
-
-`moreLikeThis` Parametr jest dostępny w wersji zapoznawczej interfejsów API REST tylko (`api-version=2019-05-06-Preview`).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

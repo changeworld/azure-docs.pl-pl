@@ -10,10 +10,10 @@ ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 498dd3be75cb27263c811d9db541b2e040599156
 ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2019
-ms.locfileid: "65752222"
+ms.locfileid: "65788017"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Wprowadzenie do usługi Azure Blob Storage
 

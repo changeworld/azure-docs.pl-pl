@@ -138,18 +138,16 @@
               href: 'https://docs.azure.cloudsimple.com/set-vcenter-identity/'
             - name: Usługa Azure Application Gateway z maszynami wirtualnymi VMware
               href: 'https://docs.azure.cloudsimple.com/azure-application-gateway/'
-            - name: Publiczny moduł równoważenia obciążenia platformy Azure z maszynami wirtualnymi VMware
-              href: 'https://docs.azure.cloudsimple.com/load-balancers/'
             - name: Konfigurowanie serwera vCenter chmury prywatnej jako punktu końcowego automatyzacji vRealize
               href: 'https://docs.azure.cloudsimple.com/configure-server-vra-endpoint/'
             - name: Migrowanie maszyn wirtualnych obciążeń do chmury prywatnej
               href: 'https://docs.azure.cloudsimple.com/migrate-workloads/'
             - name: Zapewnianie wysokiej dostępności aplikacji w oprogramowaniu VMware na platformie Azure
-              href: 'https://docs.azure.cloudsimple.com/ha-ensuring/'
+              href: 'https://docs.azure.cloudsimple.com/ensuring-high-availability/'
         - name: Ekosystem oprogramowania VMware
           items:
             - name: Tworzenie kopii zapasowych maszyn wirtualnych obciążeń
-              href: 'https://docs.azure.cloudsimple.com/veeam/'
+              href: 'https://docs.azure.cloudsimple.com/backup-workloads-veeam/'
             - name: Przewodnik po rozwiązaniu VMware Horizon
               href: 'https://docs.azure.cloudsimple.com/horizon-guide/'
             - name: Konfigurowanie szyfrowania sieci vSAN dla chmury prywatnej
@@ -161,6 +159,6 @@
             - name: Źródło tożsamości usługi Azure AD w centrum vCenter chmury prywatnej
               href: 'https://docs.azure.cloudsimple.com/azure-ad/'
             - name: Połączenie z siecią lokalną za pomocą usługi ExpressRoute
-              href: 'https://docs.azure.cloudsimple.com/er-connection/'
+              href: 'https://docs.azure.cloudsimple.com/on-premises-connection/'
             - name: Połączenie z siecią wirtualną platformy Azure za pomocą usługi ExpressRoute
-              href: 'https://docs.azure.cloudsimple.com/azure-er-connection/'
+              href: 'https://docs.azure.cloudsimple.com/azure-expressroute-connection/'

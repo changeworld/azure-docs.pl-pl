@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 6b144f126e097a8db9fbbf29e47162fd6a1c2fbe
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 7596670e794c090b04f81cf6b235a4bc54c1f3c4
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64916833"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65800097"
 ---
 # <a name="what-is-speech-to-text"></a>Co to jest mowy na tekst?
 
@@ -24,7 +24,7 @@ Mowy na tekst z usług przetwarzania mowy platformy Azure, znany także jako zam
 
 Domyślnie usługa mowy na tekst używa modelu językowego uniwersalnych. Ten model został uczony przy użyciu danych należącymi do firmy Microsoft i jest wdrożona w chmurze. Jest optymalna do konwersacji i dyktowanie scenariuszy. Korzystania z funkcji rozpoznawania mowy na tekst do rozpoznawania i transkrypcji w środowisku unikatowe można tworzyć i szkolenie niestandardowe modele akustyczne, języka i Wymowa hałasu otoczenia adres lub słownictwa branżowych. 
 
-Można łatwo przechwytywania dźwięku z mikrofonu, odczytywania ze strumienia lub dostępu do plików dźwiękowych z magazynu przy użyciu zestawu SDK rozpoznawania mowy i interfejsów API REST. Zestaw SDK rozpoznawania mowy obsługuje WAV/PCM 16-bitowy, 16 kHz, dźwięk jednego kanału rozpoznawania mowy. Dodatkowe formaty audio są obsługiwane przy użyciu [punktu końcowego REST mowy na tekst](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) lub [transkrypcji, usługa batch](https://docs.microsoft.com/azure/cognitive-services/speech-service/batch-transcription#supported-formats).
+Można łatwo przechwytywania dźwięku z mikrofonu, odczytywania ze strumienia lub dostępu do plików dźwiękowych z magazynu przy użyciu zestawu SDK rozpoznawania mowy i interfejsów API REST. Zestaw SDK rozpoznawania mowy obsługuje format WAV/PCM 16 bitów 16 kHz/8 kHz, dźwięk kanału pojedynczej do rozpoznawania mowy. Dodatkowe formaty audio są obsługiwane przy użyciu [punktu końcowego REST mowy na tekst](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) lub [transkrypcji, usługa batch](https://docs.microsoft.com/azure/cognitive-services/speech-service/batch-transcription#supported-formats).
 
 ## <a name="core-features"></a>Podstawowe funkcje
 
@@ -32,9 +32,9 @@ Oto funkcje dostępne za pośrednictwem mowy zestawu SDK i interfejsy API REST:
 
 | Przypadek użycia | SDK | REST |
 |----------|-----|------|
-| Transkrypcja wypowiedzi krótki (< 15 sekund). Obsługuje tylko wynik końcowy transkrypcji. | Yes | Yes |
-| Ciągłe transkrypcji długie wypowiedzi i przesyłania strumieniowego audio (> 15 sekund). Obsługuje wyniki tymczasowe i końcowe transkrypcji. | Yes | Nie |
-| Dziedziczyć intencji wyniki rozpoznawania [LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/what-is-luis). | Yes | Brak\* |
+| Transkrypcja wypowiedzi krótki (< 15 sekund). Obsługuje tylko wynik końcowy transkrypcji. | Tak | Tak |
+| Ciągłe transkrypcji długie wypowiedzi i przesyłania strumieniowego audio (> 15 sekund). Obsługuje wyniki tymczasowe i końcowe transkrypcji. | Tak | Nie |
+| Dziedziczyć intencji wyniki rozpoznawania [LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/what-is-luis). | Tak | Brak\* |
 | Asynchronicznie partii transkrypcji audio plików. | Nie | Tak\** |
 | Tworzenie i zarządzanie modelami mowy. | Nie | Tak\** |
 | Tworzenie i zarządzanie wdrożeniami modelu niestandardowego. | Nie | Tak\** |
@@ -80,7 +80,7 @@ Przykładowy kod dla zestawu SDK rozpoznawania mowy jest dostępny w witrynie Gi
 
 Oprócz modelu Universal używane przez usługi rozpoznawania mowy możesz utworzyć niestandardowe modele akustyczne, języka i Wymowa określonego środowiska. Poniżej przedstawiono listę opcji dostosowywania:
 
-| Modelowanie | Opis |
+| Model | Opis |
 |-------|-------------|
 | [Model akustyczny](how-to-customize-acoustic-models.md) | Tworzenie niestandardowy model akustyczny jest przydatne, jeśli w Twojej aplikacji, narzędzia lub urządzeń są używane w określonym środowisku, takich jak w samochodu lub fabrykę przy użyciu rejestrowania określonych warunków. Przykłady obejmują akcentowaną mowę, specyficzne szumy w tle lub użycie konkretnego mikrofonu na potrzeby rejestrowania. |
 | [Model językowy](how-to-customize-language-model.md) | Utwórz model języka niestandardowego usprawniających transkrypcji słownika specyficzne dla branży i gramatyki, takie jak terminologia medycznych lub żargon IT. |

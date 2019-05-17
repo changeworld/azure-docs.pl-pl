@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6eae536bd19a2c0e5707d8e0b379774b6eb2707a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d2daafa6bf5f9a28ad2b61a97e7a8bd2246ae18d
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60618060"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65538417"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Jakie typy dysków są dostępne na platformie Azure?
 
@@ -23,9 +23,9 @@ Usługi Azure managed disks jest obecnie oferuje cztery typy dysków, z których
 
 Poniższa tabela zawiera porównanie ultra solid-Województwo dyski (SSD) (wersja zapoznawcza), dysk SSD w warstwie premium, SSD w warstwie standardowa i standardowych dysków twardych (HDD) dla dysków zarządzanych, aby ułatwić wybór rozwiązania do zastosowania.
 
-|   | Największa SSD (wersja zapoznawcza)   | Premium, SSD   | Standardowa, SSD   | Standardowa, dysk twardy   |
+|   | Największa SSD (wersja zapoznawcza)   | SSD w warstwie Premium   | SSD w warstwie Standardowa   | HDD w warstwie Standardowa   |
 |---------|---------|---------|---------|---------|
-|Typ dysku   |SSD   |SSD   |SSD   |HDD   |
+|Typ dysku   |SSD   |SSD   |SSD   |Dysk twardy   |
 |Scenariusz   |Obciążeń intensywnie korzystających z operacji We/Wy, takich jak SAP HANA, baz danych w warstwie najwyższego (na przykład SQL, Oracle) i innych obciążeń dużej transakcji.   |Obciążenia produkcyjne i wrażliwe na wydajność   |Serwery sieci Web, aplikacje dla przedsiębiorstw używana w niewielkim stopniu i tworzenie i testowanie   |Tworzenie kopii zapasowej, zastosowania niekrytyczne, rzadkie dostępu   |
 |Rozmiar dysku   |gibibajt 65 536 (GiB) (wersja zapoznawcza)   |32,767 GiB    |32,767 GiB   |32,767 GiB   |
 |Maksymalna przepływność   |2000 MiB/s (wersja zapoznawcza)   |900 MiB/s   |750 MiB/s   |500 MiB/s   |
@@ -44,6 +44,7 @@ Niektóre kluczowe funkcje Ultra dyski SSD są:
 - Pojemność dysku: Największa zakresy pojemność dysków SSD z 4 GiB rozmiarze do 64 TiB.
 - Disk IOPS: Największa SSD obsługuje operacje We/Wy limitów 300 operacji We/Wy/GiB, maksymalnie 160 KB operacje We/Wy na dysk. Uzyskanie operacje We/Wy, które należy aprowizować, upewnij się, że wybrany dysk operacje We/Wy mniejsza niż na SEKUNDĘ maszyny Wirtualnej. Minimalna dysku operacje We/Wy są 100 operacji We/Wy.
 - Przepływność dysku: Przy użyciu najwyższej SSD przepływność pojedynczego dysku wynoszący 256 KiB/s dla każdego aprowizowane operacje We/Wy, maksymalnie 2000 MB/s na dysk (gdzie MB/s = 10 ^ 6 bajtów na sekundę). Przepływność dysku minimalną jest 1 MiB.
+- Największa SSD obsługuje dopasowywanie atrybuty wydajności dysku (operacje We/Wy i przepływność) w czasie wykonywania bez odłączeniem dysku od maszyny wirtualnej. Po wystawieniu wydajności operacji zmiany rozmiaru dysku na dysku może potrwać do godziny rzeczywiście zostały wprowadzone zmiany.
 
 ### <a name="disk-size"></a>Rozmiar dysku
 
@@ -58,6 +59,10 @@ Niektóre kluczowe funkcje Ultra dyski SSD są:
 |256     |76,800         |2000         |
 |512     |80,000         |2000         |
 |1024 – 65 536 (rozmiary, w tym zakresie, zwiększając w przyrostach co 1 TiB)     |160,000         |2000         |
+
+### <a name="transactions"></a>Transakcje
+
+Największa dysków SSD każdej operacji We/Wy mniejszą niż lub równy 256 KiB przepływności są uznawane za jednej operacji We/Wy. Operacje We/Wy jest większy niż 256 KiB przepływności są uważane za wiele operacji We/Wy o rozmiarze 256 KiB.
 
 ### <a name="preview-scope-and-limitations"></a>Zakres (wersja zapoznawcza) i ograniczenia
 

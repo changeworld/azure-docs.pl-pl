@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 04/16/2019
-ms.openlocfilehash: 399e2585f541f28b3880e69b508cfd643b2f2263
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: dbb5ee122e715aeaa66d786f02966beedd2447c3
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64686288"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522331"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Architektura łączności dla wystąpienia zarządzanego usługi Azure SQL Database
 
@@ -86,7 +86,7 @@ Podczas połączenia start wewnątrz wystąpienia zarządzanego (podobnie jak w 
 
 Wdrażanie wystąpienia zarządzanego w dedykowanej podsieci w sieci wirtualnej. Podsieć musi mieć następującą charakterystykę:
 
-- **Dedykowanej podsieci:** Podsieci wystąpienia zarządzanego nie może zawierać wszystkie inne usługi w chmurze skojarzonej z nim, a nie może być podsieć bramy. Podsieci nie może zawierać żadnych zasobów, ale wystąpienia zarządzanego, a nie można później dodać zasobów w podsieci.
+- **Dedykowanej podsieci:** Podsieci wystąpienia zarządzanego nie może zawierać wszystkie inne usługi w chmurze skojarzonej z nim, a nie może być podsieć bramy. Podsieci nie może zawierać żadnych zasobów, ale wystąpienia zarządzanego, a nie można później dodać inne typy zasobów w podsieci.
 - **Sieciowa grupa zabezpieczeń (NSG):** Sieciowa grupa zabezpieczeń, która jest skojarzona z siecią wirtualną należy zdefiniować [reguły zabezpieczeń dla ruchu przychodzącego](#mandatory-inbound-security-rules) i [reguły zabezpieczeń dla ruchu wychodzącego](#mandatory-outbound-security-rules) przed innymi regułami. Sieciowa grupa zabezpieczeń służy do kontrolowania dostępu do endpoint danych wystąpienia zarządzanego, filtrując ruch na porcie 1433, a porty 11999 11000, jeśli wystąpienie zarządzane jest skonfigurowany do przekierowywać połączeń.
 - **Tabela tras definiowanych przez (UDR) użytkownika:** Tabeli trasy zdefiniowanej przez użytkownika, która jest skojarzona z siecią wirtualną, musi zawierać określone [wpisy](#user-defined-routes).
 - **Brak punktów końcowych usługi:** Nie punktu końcowego usługi powinna być skojarzona z podsiecią wystąpienia zarządzanego. Upewnij się, wyłączenia opcji punktów końcowych usługi podczas tworzenia sieci wirtualnej.
@@ -97,18 +97,18 @@ Wdrażanie wystąpienia zarządzanego w dedykowanej podsieci w sieci wirtualnej.
 
 ### <a name="mandatory-inbound-security-rules"></a>Reguły zabezpieczeń ruchu przychodzącego obowiązkowe
 
-| Name (Nazwa)       |Port                        |Protokół|Obiekt źródłowy           |Element docelowy|Akcja|
+| Name (Nazwa)       |Port                        |Protocol|Obiekt źródłowy           |Lokalizacja docelowa|action|
 |------------|----------------------------|--------|-----------------|-----------|------|
-|zarządzanie  |9000, 9003, 1438, 1440, 1452|TCP     |Dowolne              |PODSIECI WYSTĄPIENIA ZARZĄDZANEGO  |Zezwalaj |
-|mi_subnet   |Dowolne                         |Dowolne     |PODSIECI WYSTĄPIENIA ZARZĄDZANEGO        |PODSIECI WYSTĄPIENIA ZARZĄDZANEGO  |Zezwalaj |
-|health_probe|Dowolne                         |Dowolne     |AzureLoadBalancer|PODSIECI WYSTĄPIENIA ZARZĄDZANEGO  |Zezwalaj |
+|zarządzanie  |9000, 9003, 1438, 1440, 1452|TCP     |Dowolne              |PODSIECI WYSTĄPIENIA ZARZĄDZANEGO  |Zezwól |
+|mi_subnet   |Dowolne                         |Dowolne     |PODSIECI WYSTĄPIENIA ZARZĄDZANEGO        |PODSIECI WYSTĄPIENIA ZARZĄDZANEGO  |Zezwól |
+|health_probe|Dowolne                         |Dowolne     |AzureLoadBalancer|PODSIECI WYSTĄPIENIA ZARZĄDZANEGO  |Zezwól |
 
 ### <a name="mandatory-outbound-security-rules"></a>Reguły zabezpieczeń dla ruchu wychodzącego obowiązkowe
 
-| Name (Nazwa)       |Port          |Protokół|Obiekt źródłowy           |Element docelowy|Akcja|
+| Name (Nazwa)       |Port          |Protocol|Obiekt źródłowy           |Lokalizacja docelowa|action|
 |------------|--------------|--------|-----------------|-----------|------|
-|zarządzanie  |80, 443, 12000|TCP     |PODSIECI WYSTĄPIENIA ZARZĄDZANEGO        |AzureCloud |Zezwalaj |
-|mi_subnet   |Dowolne           |Dowolne     |PODSIECI WYSTĄPIENIA ZARZĄDZANEGO        |PODSIECI WYSTĄPIENIA ZARZĄDZANEGO  |Zezwalaj |
+|zarządzanie  |80, 443, 12000|TCP     |PODSIECI WYSTĄPIENIA ZARZĄDZANEGO        |AzureCloud |Zezwól |
+|mi_subnet   |Dowolne           |Dowolne     |PODSIECI WYSTĄPIENIA ZARZĄDZANEGO        |PODSIECI WYSTĄPIENIA ZARZĄDZANEGO  |Zezwól |
 
 > [!IMPORTANT]
 > Upewnij się, istnieje tylko jedna reguła ruchu przychodzącego dla portów 9000, 9003, 1438 1440, 1452 i jednej reguły ruchu wychodzącego dla portów 80, 443, 12000. Zarządzane wystąpienia inicjowania obsługi administracyjnej za pomocą usługi Azure Resource Manager wdrożenie zakończy się niepowodzeniem, jeśli reguły ruchu przychodzącego i wychodzącego są skonfigurowane osobno dla poszczególnych portów. Jeśli te porty są oddzielne zasady, wdrożenie zakończy się niepowodzeniem z kodem błędu `VnetSubnetConflictWithIntendedPolicy`

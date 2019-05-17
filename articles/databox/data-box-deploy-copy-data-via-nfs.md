@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/28/2019
+ms.date: 05/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 55c880d0e795873a759ba121b6de0c98c5249061
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 2b4825770d8220e24c0d981af19313f265806d84
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924485"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65800441"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Samouczek: Kopiowanie danych na urządzenie Azure Data Box Disk przy użyciu systemu plików NFS
 
@@ -130,7 +130,9 @@ W przypadku korzystania z opcji rsync na potrzeby kopiowania wielowątkowego nal
 > [!IMPORTANT]
 > Nie są obsługiwane następujące typy plików systemu Linux: łącza symbolicznego, pliki znak, blokowanie plików, gniazda i potoków. Następujące typy plików będą powodować błędy podczas **przygotowywanie do wysłania** kroku.
 
-- W celu zapewnienia integralności danych podczas kopiowania obliczana jest suma kontrolna. Po zakończeniu kopiowania sprawdź ilość używanego i wolnego miejsca na urządzeniu.
+Otwórz folder docelowy, aby wyświetlić i zweryfikować skopiowane pliki. Jeśli podczas procesu kopiowania wystąpiły jakiekolwiek błędy, pobierz pliki z błędami, które pomogą w rozwiązywaniu problemów. Aby uzyskać więcej informacji, zobacz [wyświetlić dzienniki błędów podczas kopiowania danych do urządzenia Data Box](data-box-logs.md#view-error-log-during-data-copy-to-data-box). Aby uzyskać szczegółową listę błędów podczas kopiowania danych, zobacz [wystawia Rozwiązywanie problemów z urządzenia Data Box](data-box-troubleshoot.md).
+
+W celu zapewnienia integralności danych podczas kopiowania obliczana jest suma kontrolna. Po zakończeniu kopiowania sprawdź ilość używanego i wolnego miejsca na urządzeniu.
     
    ![Sprawdzanie wolnego i używanego miejsca na pulpicie nawigacyjnym](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: 98718709038d7fd753e5eb3d45c130085c5accd9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: bcfeca34eb11caaddac06971fe7f825a142586a2
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60600189"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65602067"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Instalowanie serwera głównego elementu docelowego systemu Linux do powrotu po awarii
 Po przełączeniu w tryb failover maszyn wirtualnych na platformie Azure możesz można wykonać powrotu po awarii maszyn wirtualnych do lokacji lokalnej. Do powrotu po awarii, należy ponownie włączyć ochronę maszyny wirtualnej z platformy Azure do lokacji lokalnej. Ten proces wymaga lokalny główny serwer docelowy serwer do odbierania ruchu. 
@@ -83,7 +83,7 @@ Zachowaj obrazu ISO systemu Ubuntu 16.04.2 minimalny 64-bitowych w stacji dyskó
 1. Wybierz **nie** (opcja domyślna), a następnie wybierz pozycję **Enter**.
 
      ![Skonfiguruj klawiaturę](./media/vmware-azure-install-linux-master-target/image5.png)
-1. Wybierz **języka angielskiego (US)** jako kraj pochodzenia dla klawiatury, a następnie wybierz **Enter**.
+1. Wybierz **języka angielskiego (US)** jako kraj/region punkt początkowy dla klawiatury, a następnie wybierz **Enter**.
 
 1. Wybierz **języka angielskiego (US)** układ klawiatury, a następnie wybierz pozycję **Enter**.
 
@@ -262,7 +262,7 @@ Użyj następujących kroków, aby utworzyć dysk przechowywania:
     
     Wybierz **Wstaw** aby rozpocząć, edytując plik. Tworzenie nowego wiersza, a następnie wstaw poniższy tekst. Edytowanie Identyfikatora wielościeżkowe dysku, na podstawie Identyfikatora wielościeżkowe wyróżnione w poprzednim poleceniu.
 
-     **/dev/mapowania/ <Retention disks multipath id> /mnt/rw ext4 przechowywania 0 0**
+    **/dev/mapowania/\<przechowywania dysków wielościeżkowe id >/mnt/rw ext4 przechowywania 0 0**
 
     Wybierz **Esc**, a następnie wpisz **: wq** (zapisać i zamknąć) aby zamknąć okno edytora.
 

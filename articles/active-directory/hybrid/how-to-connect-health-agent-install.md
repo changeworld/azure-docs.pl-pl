@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2be8455a3fb0a60cea056e9bda1f41b076dfec9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c3d1a8afdbad1878f4ce134edeeb95dad79e98a1
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60350835"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65784813"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Instalowanie agenta programu Azure AD Connect Health
 
@@ -45,7 +45,7 @@ Poniższa tabela zawiera listę wymagań dotyczących używania programu Azure A
 
 ### <a name="outbound-connectivity-to-the-azure-service-endpoints"></a>Łączność wychodząca z punktami końcowymi usług Azure
 
- Podczas instalowania i w czasie pracy agent wymaga łączności z punktami końcowymi usługi Azure AD Connect Health. Jeśli łączność wychodząca jest blokowana przy użyciu zapór, upewnij się, czy następujące adresy URL nie są zablokowane domyślnie. Nie można wyłączyć monitorowanie zabezpieczeń i kontroli tych adresów URL, ale zezwolić im, jak w przypadku innych ruch internetowy. Mogą zezwalać na komunikację z punktami końcowymi usługi Azure AD Connect Health. Dowiedz się więcej na temat [sprawdzania łączności wychodzącej](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)
+ Podczas instalowania i w czasie pracy agent wymaga łączności z punktami końcowymi usługi Azure AD Connect Health. Jeśli łączność wychodząca jest blokowana przy użyciu zapór, upewnij się, czy następujące adresy URL nie są zablokowane domyślnie. Nie można wyłączyć monitorowanie zabezpieczeń i kontroli tych adresów URL, ale zezwolić im, jak w przypadku innych ruch internetowy. Mogą zezwalać na komunikację z punktami końcowymi usługi Azure AD Connect Health. Dowiedz się, jak [sprawdzania łączności wychodzącej z operacja Test-AzureADConnectHealthConnectivity](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-agent-install#test-connectivity-to-azure-ad-connect-health-service).
 
 | Środowisko domeny | Wymagane punkty końcowe usług platformy Azure |
 | --- | --- |

@@ -3,19 +3,19 @@ title: 'Szybki start: Wyszukiwanie jednostek za pomocą zestawu SDK wyszukiwania
 titleSuffix: Azure Cognitive Services
 description: Użyj tego poradnika Szybki start, aby wyszukiwać jednostki za pomocą zestawu SDK wyszukiwania jednostek Bing dla języka C#.
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
-ms.author: v-gedod
-ms.openlocfilehash: 0390ef5b9364aaa54c4d46abf3164728b3a4126a
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.author: aahi
+ms.openlocfilehash: 13ef0734345df17adb2303471b8cb4178f95a2f6
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595818"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65813747"
 ---
 # <a name="send-a-search-request-with-the-bing-entity-search-sdk-for-c"></a>Wysyłanie żądania wyszukiwania za pomocą zestawu SDK wyszukiwania jednostek Bing dla języka C#
 

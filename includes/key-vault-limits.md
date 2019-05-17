@@ -4,14 +4,14 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 0e55c372c6f5dc3484bd64cf4f328479d2d0b245
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0b9d87fd7929607da8407ae5bbfb2f6dd6d69dab
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60461326"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65212018"
 ---
-## <a name="key-transactions-maximum-transactions-allowed-in-10-seconds-per-vault-per-regionsup1sup"></a>Klucz transakcji (maksymalna liczba transakcji w ciągu 10 sekund, dozwolone magazynu na region<sup>1</sup>):
+#### <a name="key-transactions-maximum-transactions-allowed-in-10-seconds-per-vault-per-regionsup1sup"></a>Klucz transakcji (maksymalna liczba transakcji w ciągu 10 sekund, dozwolone magazynu na region<sup>1</sup>):
 
 |Typ klucza|Klucz HSM<br>Utwórz klucz|Klucz HSM<br>Wszystkie inne transakcje|Klucz programowy<br>Utwórz klucz|Klucz programowy<br>Wszystkie inne transakcje|
 |:---|---:|---:|---:|---:|
@@ -34,7 +34,7 @@ ms.locfileid: "60461326"
 > - 125 transakcji RSA 4096-bitowego klucza HSM GET
 > - 124 transakcje GET klucza HSM RSA 4096-bitowe i 8 GET klucza HSM RSA 2048-bitowych
 
-## <a name="secrets-managed-storage-account-keys-and-vault-transactions"></a>Wpisy tajne, kluczy zarządzanego konta magazynu i transakcje magazynu:
+#### <a name="secrets-managed-storage-account-keys-and-vault-transactions"></a>Wpisy tajne, kluczy zarządzanego konta magazynu i transakcje magazynu:
 | Typ transakcji | Maksymalna liczba transakcji w ciągu 10 sekund, dozwolone magazynu na region<sup>1</sup> |
 | --- | --- |
 | Wszystkie transakcje |2000 |

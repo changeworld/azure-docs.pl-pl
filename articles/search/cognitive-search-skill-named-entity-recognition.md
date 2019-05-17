@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 7c462971f7ac02e35ab8df5b651da7d0a3f39e1f
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: e6a7d4bb7452ff8f6b3c2536a5aa100a15a6ec78
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65022259"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65539252"
 ---
 #    <a name="named-entity-recognition-cognitive-skill"></a>Nazwane umiejętności cognitive rozpoznawanie jednostek
 
 **Rozpoznawania jednostki o nazwie** umiejętności wyodrębnia nazwane jednostek z pliku tekstowego. Dostępne jednostki i obejmuje dodatkowe typy `person`, `location` i `organization`.
 
 > [!IMPORTANT]
-> Rozpoznawanie jednostek znaku umiejętności jest już obsługiwany zastępuje [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md). Obsługa zatrzymana na 15 lutego 2019 i interfejs API został usunięty z produktu w dniu 2 maja 2019 r. Postępuj zgodnie z zaleceniami w [przestarzałe umiejętności poznawcze wyszukiwania](cognitive-search-skill-deprecated.md) migrację do obsługiwanych umiejętności.
+> Rozpoznawanie jednostek znaku umiejętności jest już obsługiwany zastępuje [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md). Obsługa zatrzymana na 15 lutego 2019 i interfejs API został usunięty z produktu w dniu 2 maja 2019 r. Postępuj zgodnie z zaleceniami w [przestarzałe umiejętności wyszukiwania kognitywnego](cognitive-search-skill-deprecated.md) migrację do obsługiwanych umiejętności.
 
 > [!NOTE]
 > Możesz rozwiń zakres, zwiększając częstotliwości przetwarzania, dodając więcej dokumentów lub dodanie więcej algorytmów sztucznej Inteligencji, konieczne będzie [dołączyć płatnych zasobu usług Cognitive Services](cognitive-search-attach-cognitive-services.md). Opłaty są naliczane podczas wywoływania interfejsów API w usługach Cognitive Services i wyodrębniania obrazu jako część etap łamania dokumentów w usłudze Azure Search. Opłaty nie będą naliczane do wyodrębniania tekstu z dokumentów.
@@ -43,7 +43,7 @@ Parametrów jest rozróżniana wielkość liter.
 
 | Nazwa parametru     | Opis |
 |--------------------|-------------|
-| categories    | Tablica kategorie, które mają zostać wyodrębnione.  Typy możliwe kategorii: `"Person"`, `"Location"`, `"Organization"`. Jeśli nie podano żadnej kategorii, zwracane są wszystkie typy.|
+| kategorie    | Tablica kategorie, które mają zostać wyodrębnione.  Typy możliwe kategorii: `"Person"`, `"Location"`, `"Organization"`. Jeśli nie podano żadnej kategorii, zwracane są wszystkie typy.|
 |defaultLanguageCode |  Kod języka tekstu wejściowego. Są obsługiwane następujące języki: `de, en, es, fr, it`|
 | minimumPrecision  | Liczba od 0 do 1. Jeśli dokładność jest niższa niż ta wartość, nie są zwracane jednostki. Wartość domyślna to 0.|
 
@@ -59,7 +59,7 @@ Parametrów jest rozróżniana wielkość liter.
 | Nazwa wyjściowego     | Opis                   |
 |---------------|-------------------------------|
 | osoby      | Tablica ciągów, gdzie każdy ciąg reprezentuje imię osoby. |
-| locations  | Tablica ciągów, w którym każdy ciąg reprezentuje lokalizację. |
+| lokalizacje  | Tablica ciągów, w którym każdy ciąg reprezentuje lokalizację. |
 | organizations  | Tablica ciągów, w której każdy ciąg reprezentuje organizacji. |
 | jednostki | Tablica typów złożonych. Każdy typ złożony zawiera następujące pola: <ul><li>Kategoria (`"person"`, `"organization"`, lub `"location"`)</li> <li>wartość (nazwa rzeczywistego jednostki)</li><li>Przesunięcie (lokalizację, w którym zostało znalezione w tekście)</li><li>zaufania (wartość z zakresu od 0 do 1, który reprezentuje tego zaufania, wartość rzeczywista jednostki)</li></ul> |
 

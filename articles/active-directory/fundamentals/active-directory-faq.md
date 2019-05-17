@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: lizross
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f29ab7b908184533885929040ca8eccf56cda92d
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 06112361434a8217df6714a70d0059c175e98ac8
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65464411"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65521715"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>Często zadawane pytania dotyczące usługi Azure Active Directory
 Azure Active Directory (Azure AD) jest kompleksowym rozwiązaniem typu tożsamość jako usługa (IDaaS, Identity as a Service), które obejmuje wszystkie aspekty tożsamości, zarządzania dostępem i bezpieczeństwa.
@@ -210,4 +210,4 @@ Aby uzyskać więcej informacji, zobacz [Automate User Provisioning and Deprovis
 - - -
 **Pyt.:  Czy mogę skonfigurować bezpieczne połączenie LDAP z usługą Azure AD?**
 
-**Odp.:**  Nie. Usługa Azure AD nie obsługuje protokołu Lightweight Directory Access protokołu (LDAP). Jednak jest możliwe za pomocą usług domenowych Azure AD (Azure AD DS) prawidłowo skonfigurowane sieciowe grupy zabezpieczeń za pośrednictwem sieci platformy Azure do osiągnięcia połączenia LDAP. Aby uzyskać więcej informacji, zobacz https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.
+**Odp.:**  Nie. Usługa Azure AD nie obsługuje protokołu Lightweight Directory Access protokołu (LDAP) lub protokołu Secure LDAP bezpośrednio. Jednak istnieje możliwość włączenia wystąpienia usługi Azure AD Domain Services (Azure AD DS) na dzierżawę usługi Azure AD przy użyciu grup zabezpieczeń sieci poprawnie skonfigurowane za pośrednictwem sieci platformy Azure, aby osiągnąć połączenia LDAP. Aby uzyskać więcej informacji, zobacz https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.

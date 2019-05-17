@@ -10,39 +10,39 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: magoedte
-ms.openlocfilehash: ade12225a470b64278b9d27676ceab768f64d904
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 420ba9d74532095c2d028fef8f549d532e5dfa05
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60596607"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522208"
 ---
 # <a name="azure-monitor-for-vms-preview-frequently-asked-questions"></a>Usługa Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) — często zadawane pytania
 Ta FAQ firmy Microsoft znajduje się lista często zadawane pytania dotyczące usługi Azure Monitor dla maszyn wirtualnych. Jeśli masz dodatkowe pytania dotyczące rozwiązania, przejdź do strony [forum dyskusyjne](https://feedback.azure.com/forums/34192--general-feedback) i Publikuj swoje pytania. Gdy zadawane pytanie dodajemy go do tego artykułu tak, aby możliwe było szybkie i łatwe.
 
 ## <a name="can-i-onboard-to-an-existing-workspace"></a>Mogę dołączyć do istniejącego obszaru roboczego?
-W przypadku maszyn wirtualnych są już połączone z obszarem roboczym usługi Log Analytics, mogą nadal używać tego obszaru roboczego podczas dołączania do usługi Azure Monitor w przypadku maszyn wirtualnych pod warunkiem, że jest w jednym z obsługiwanych regionów na liście [tutaj](vminsights-onboard.md#prerequisites).
+W przypadku maszyn wirtualnych są już połączone z obszarem roboczym usługi Log Analytics, mogą nadal używać tego obszaru roboczego podczas dołączania do usługi Azure Monitor w przypadku maszyn wirtualnych pod warunkiem, że jest w jednym z obsługiwanych regionów na liście [tutaj](vminsights-enable-overview.md#prerequisites).
 
 Podczas dołączania, firma Microsoft skonfiguruj liczniki wydajności dla obszaru roboczego, który spowoduje, że wszystkie maszyny wirtualne raportowania danych do obszaru roboczego, aby rozpocząć zbieranie tych informacji do wyświetlania i analizy w usłudze Azure Monitor dla maszyn wirtualnych.  W rezultacie zobaczysz dane dotyczące wydajności z wszystkich maszyn wirtualnych połączonych z wybranym obszarem roboczym.  Funkcje kondycji i mapy tylko są włączone dla maszyn wirtualnych, które wybrano dołączyć.
 
-Aby uzyskać więcej informacji o wydajności, które są włączone liczniki, zobacz nasze [dołączania](vminsights-onboard.md) artykułu.
+Aby uzyskać więcej informacji o wydajności, które są włączone liczniki, zobacz nasze [Włącz przegląd](vminsights-enable-overview.md#performance-counters-enabled) artykułu.
 
 ## <a name="can-i-onboard-to-a-new-workspace"></a>Mogę dołączyć do nowego obszaru roboczego? 
-Jeśli maszyny wirtualne nie są aktualnie połączone do istniejącego obszaru roboczego usługi Log Analytics, musisz utworzyć nowy obszar roboczy do przechowywania danych.  Tworzenie nowego domyślnego obszaru roboczego odbywa się automatycznie w przypadku skonfigurowania jednej maszyny Wirtualnej platformy Azure dla usługi Azure Monitor dla maszyn wirtualnych za pośrednictwem witryny Azure portal.
+Jeśli maszyny wirtualne nie są aktualnie połączone do istniejącego obszaru roboczego usługi Log Analytics, musisz utworzyć nowy obszar roboczy do przechowywania danych. Tworzenie nowego domyślnego obszaru roboczego odbywa się automatycznie w przypadku skonfigurowania jednej maszyny Wirtualnej platformy Azure dla usługi Azure Monitor dla maszyn wirtualnych za pośrednictwem witryny Azure portal.
 
-Jeśli zdecydujesz się użyć metody opartych na skryptach, te kroki są objęte [dołączania](vminsights-onboard.md) artykułu. 
+Jeśli zdecydujesz się użyć metody opartych na skryptach, te kroki są objęte [włączyć usługi Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) przy użyciu szablonu programu Azure PowerShell lub Menedżera zasobów](vminsights-enable-at-scale-powershell.md) artykułu. 
 
 ## <a name="what-do-i-do-if-my-vm-is-already-reporting-to-an-existing-workspace"></a>Co należy zrobić, jeśli Moja maszyna wirtualna jest już raportowania do istniejącego obszaru roboczego?
 Jeśli są już zbieranie danych z maszyn wirtualnych, może już skonfigurowano je raportować dane do istniejącego obszaru roboczego usługi Log Analytics.  Tak długo, jak ten obszar roboczy znajduje się w jednym z naszych obsługiwane regiony, do tego istniejącego obszaru roboczego można włączyć usługi Azure Monitor dla maszyn wirtualnych.  Jeśli obszar roboczy, z którego korzystasz już nie jest w jednym z naszych obsługiwane regiony, będzie niemożliwe do dołączenia do usługi Azure Monitor dla maszyn wirtualnych w tej chwili.  Pracujemy nad do obsługi dodatkowych regionów.
 
 >[!NOTE]
->Firma Microsoft skonfiguruj liczniki wydajności dla obszaru roboczego, który ma wpływ na wszystkie maszyny wirtualne, które raportują do obszaru roboczego, czy została wybrana do dołączenia ich do usługi Azure Monitor dla maszyn wirtualnych. Aby uzyskać szczegółowe informacje na temat sposobu konfiguracji liczników wydajności dla obszaru roboczego, można znaleźć na naszej [dokumentacji](../../azure-monitor/platform/data-sources-performance-counters.md). Informacji na temat liczników skonfigurowany dla usługi Azure Monitor dla maszyn wirtualnych, można znaleźć na naszej [dostęp do dokumentacji dołączania](vminsights-onboard.md#performance-counters-enabled).  
+>Firma Microsoft skonfiguruj liczniki wydajności dla obszaru roboczego, który ma wpływ na wszystkie maszyny wirtualne, które raportują do obszaru roboczego, czy została wybrana do dołączenia ich do usługi Azure Monitor dla maszyn wirtualnych. Aby uzyskać szczegółowe informacje na temat sposobu konfiguracji liczników wydajności dla obszaru roboczego, można znaleźć na naszej [dokumentacji](../../azure-monitor/platform/data-sources-performance-counters.md). Informacji na temat liczników skonfigurowany dla usługi Azure Monitor dla maszyn wirtualnych, można znaleźć naszych [włączenia monitora platformy Azure dla maszyn wirtualnych](vminsights-enable-overview.md#performance-counters-enabled) artykułu.  
 
 ## <a name="why-did-my-vm-fail-to-onboard"></a>Dlaczego moja maszyna wirtualna nie dołączania?
 Podczas dołączania maszyny Wirtualnej platformy Azure w witrynie Azure portal, wykonywane są następujące kroki:
 
 * Domyślnego obszaru roboczego usługi Log Analytics zostanie utworzony, jeśli wybrano opcję.
-* Liczniki wydajności są skonfigurowane dla wybranego obszaru roboczego. Jeśli ten krok nie powiedzie się, można zauważyć, że niektóre wykresy wydajności i tabele nie są wyświetlane dane dla maszyny Wirtualnej została dołączona. Można to naprawić, uruchamiając skrypt programu PowerShell udokumentowane [tutaj](vminsights-onboard.md#enable-with-powershell).
+* Liczniki wydajności są skonfigurowane dla wybranego obszaru roboczego. Jeśli ten krok nie powiedzie się, można zauważyć, że niektóre wykresy wydajności i tabele nie są wyświetlane dane dla maszyny Wirtualnej została dołączona. Można to naprawić, uruchamiając skrypt programu PowerShell udokumentowane [tutaj](vminsights-enable-at-scale-powershell.md#enable-performance-counters).
 * Agenta usługi Log Analytics jest zainstalowany na maszynach wirtualnych platformy Azure przy użyciu rozszerzenia maszyny Wirtualnej, jeśli ustalił, że jest to wymagane.  
 * Usługi Azure Monitor dla agenta zależności mapy maszyn wirtualnych jest zainstalowany na maszynach wirtualnych platformy Azure przy użyciu rozszerzenia, jeśli ustalił, że jest to wymagane.  
 * Obsługa funkcji kondycji składników platformy Azure Monitor są skonfigurowane, jeśli to konieczne, a maszyna wirtualna jest skonfigurowana do danych raportu o kondycji.
@@ -89,7 +89,7 @@ Progi następujące kryteria kondycji systemu Linux nie są można modyfikować,
 Reguły alertów, które są zdefiniowane dla każdego kryterium kondycji nie są wyświetlane w witrynie Azure portal. Można włączać lub wyłączać alert o kondycji reguły tylko w [API Monitor obciążenia](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components). Ponadto nie można przypisać [grupy akcji usługi Azure Monitor](../../azure-monitor/platform/action-groups.md) dla alertów dotyczących kondycji w witrynie Azure portal. Interfejs API ustawienie powiadomień umożliwiają tylko skonfigurowanie grupy akcji wyzwolenie przy każdym wyzwoleniu alertu kondycji. Obecnie można przypisać grup akcji względem maszyny Wirtualnej tak, aby wszystkie *alerty dotyczące kondycji* uruchamiane względem wyzwalacza maszyn wirtualnych tej samej grupy akcji. W przeciwieństwie do tradycyjnych alertów platformy Azure nie obowiązuje koncepcja grupy osobną akcję dla każdej reguły alertu kondycji. Ponadto podczas są wyzwalane przez alerty dotyczące kondycji są obsługiwane tylko grupy akcji, które są skonfigurowane do dostarczania poczty e-mail lub powiadomienia SMS. 
 
 ## <a name="i-dont-see-some-or-any-data-in-the-performance-charts-for-my-vm"></a>Nie widzę żadnych danych w przypadku wykresów wydajności dla mojej maszyny Wirtualnej
-Jeśli nie widzisz dane dotyczące wydajności w tabeli dysku lub niektóre wykresy wydajności liczniki wydajności nie może być skonfigurowany w obszarze roboczym. Aby rozwiązać problem, uruchom następujące polecenie [skrypt programu PowerShell](vminsights-onboard.md#enable-with-powershell).
+Jeśli nie widzisz dane dotyczące wydajności w tabeli dysku lub niektóre wykresy wydajności liczniki wydajności nie może być skonfigurowany w obszarze roboczym. Aby rozwiązać problem, uruchom następujące polecenie [skrypt programu PowerShell](vminsights-enable-at-scale-powershell.md#enable-with-powershell).
 
 ## <a name="how-is-azure-monitor-for-vms-map-feature-different-from-service-map"></a>Czym różni się usługi Azure Monitor dla funkcji mapy maszyn wirtualnych z mapy usługi?
 Usługi Azure Monitor dla funkcji mapy maszyn wirtualnych jest oparty na mapie usługi, ale się w następujący sposób:
@@ -138,4 +138,4 @@ Jeśli skonfigurowano usługi Azure Monitor z obszaru roboczego usługi Log Anal
 W tej sytuacji, zostanie wyświetlony monit o **Wypróbuj teraz usługę** opcji otwieranie maszyny Wirtualnej i wybrania **Insights (wersja zapoznawcza)** z okienka po lewej stronie, nawet po jego zainstalowaniu już na maszynie Wirtualnej.  Jednak monit nie jest z opcjami jak zwykle może wystąpić, jeśli ta maszyna wirtualna nie zostały dołączone do usługi Azure Monitor dla maszyn wirtualnych. 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Przegląd [dołączanie usługi Azure Monitor dla maszyn wirtualnych](vminsights-onboard.md) , aby zrozumieć wymagania i metody, aby włączyć monitorowanie maszyn wirtualnych.
+Przegląd [włączyć usługi Azure Monitor dla maszyn wirtualnych](vminsights-enable-overview.md) , aby zrozumieć wymagania i metody, aby włączyć monitorowanie maszyn wirtualnych.

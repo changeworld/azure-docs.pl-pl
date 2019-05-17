@@ -1,5 +1,5 @@
 ---
-title: Szyfrowanie w spoczynku przy użyciu kluczy zarządzanych przez klienta w usłudze Azure Key Vault — usługa Azure Search
+title: Szyfrowanie w spoczynku przy użyciu kluczy zarządzanych przez klienta w usłudze Azure Key Vault (wersja zapoznawcza) — usługa Azure Search
 description: Szyfrowanie po stronie serwera dodatku indeksy i map synonimów w usłudze Azure Search przy użyciu kluczy, które umożliwiają tworzenie i zarządzanie nimi w usłudze Azure Key Vault.
 author: NatiNimni
 manager: jlembicz
@@ -9,14 +9,19 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: ''
-ms.openlocfilehash: 987b56a9571fd50f605dbe6fb4112ef857021530
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 9d2cd2a2f4b3143d58d0ef03d67de094ea03303e
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65029178"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523089"
 ---
 # <a name="azure-search-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Szyfrowanie Azure Search przy użyciu kluczy zarządzanych przez klienta w usłudze Azure Key Vault
+
+> [!Note]
+> Szyfrowanie za pomocą kluczy zarządzanych przez klienta jest w wersji zapoznawczej i nie przeznaczonych do użycia w środowisku produkcyjnym. [Wersji interfejsu API REST 2019-05-06-Preview](search-api-preview.md) zapewnia tę funkcję. Można również użyć zestawu SDK platformy .NET w wersji 8.0-preview.
+>
+> Ta funkcja nie jest dostępna dla usług bezpłatnych. Należy użyć usługi wyszukiwania płatnych utworzone 2019-01-01. Brak obsługi portalu w tej chwili.
 
 Domyślnie usługa Azure Search szyfruje zawartość użytkownika nieużywanych danych za pomocą [kluczy zarządzanych przez usługę](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest#data-encryption-models). Można je jednak uzupełnić domyślne szyfrowanie za pomocą warstwy dodatkowego szyfrowania przy użyciu kluczy, które umożliwiają tworzenie i zarządzanie nimi w usłudze Azure Key Vault. W tym artykule opisano kolejne kroki.
 
@@ -26,20 +31,17 @@ Szyfrowanie za pomocą kluczy zarządzanych przez klienta jest skonfigurowana na
 
 Możesz użyć różnych kluczy z różnych magazynów kluczy. Oznacza to, że usługa wyszukiwania pojedynczej może obsługiwać wiele map indexes\synonym zaszyfrowane, każdy zaszyfrowany, potencjalnie przy użyciu innego klucza zarządzanego przez klienta oraz maps indexes\synonym, które nie są szyfrowane przy użyciu kluczy zarządzanych przez klienta. 
 
->[!Note]
-> **Dostępność funkcji**: Szyfrowanie za pomocą kluczy zarządzanych przez klienta jest funkcja w wersji zapoznawczej, która nie jest dostępna dla usług bezpłatnych. Na płatne usługi, jest on dostępny tylko dla usług wyszukiwania utworzonych na lub po 2019-01-01, za pomocą najnowszej wersji zapoznawczej api-version (parametru api-version = 2019-05-06-Preview). Obecnie nie ma żadnych portalu pomocy technicznej dla tej funkcji.
-
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Następujące usługi są używane w tym przykładzie. 
 
-[Tworzenie usługi Azure Search](search-create-service-portal.md) lub [znaleźć istniejącej usługi](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) w ramach Twojej bieżącej subskrypcji. Umożliwia to bezpłatna usługa, w tym samouczku.
++ [Tworzenie usługi Azure Search](search-create-service-portal.md) lub [znaleźć istniejącej usługi](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) w ramach Twojej bieżącej subskrypcji. Umożliwia to bezpłatna usługa, w tym samouczku.
 
-[Utwórz zasób usługi Azure Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault) lub znaleźć istniejącego magazynu w ramach Twojej subskrypcji.
++ [Utwórz zasób usługi Azure Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault) lub znaleźć istniejącego magazynu w ramach Twojej subskrypcji.
 
-[Program Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) lub [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) jest używany dla zadań konfiguracji.
++ [Program Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) lub [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) jest używany dla zadań konfiguracji.
 
-[Postman](search-fiddler.md), [programu Azure PowerShell](search-create-index-rest-api.md) i [zestawu SDK usługi Azure Search](https://aka.ms/search-sdk-preview) może służyć do wywołania interfejsu API REST w wersji zapoznawczej. Nie ma portalu lub zestawu .NET SDK Obsługa szyfrowania zarządzanego przez klienta w tej chwili.
++ [Postman](search-fiddler.md), [programu Azure PowerShell](search-create-index-rest-api.md) i [zestawu SDK usługi Azure Search](https://aka.ms/search-sdk-preview) może służyć do wywołania interfejsu API REST w wersji zapoznawczej. Nie ma portalu lub zestawu .NET SDK Obsługa szyfrowania zarządzanego przez klienta w tej chwili.
 
 ## <a name="1---enable-key-recovery"></a>1 — Włączanie odzyskiwania kluczy
 

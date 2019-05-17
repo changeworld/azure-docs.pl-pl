@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 05/06/2019
-ms.openlocfilehash: 595d1b84aab55a77f21a9840c5bae9ee996424be
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: e999e4d96dcb5a1042806c0905ce331dc0a4dc0b
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415929"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522853"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Używanie grup automatyczny tryb failover do włączenia przejrzyste i skoordynowany trybu failover wielu baz danych
 
@@ -42,7 +42,7 @@ Aby osiągnąć rzeczywistych ciągłości działania, dodawanie nadmiarowość 
 
 - **Grupy trybu failover (MGŁA)**
 
-  Grupy trybu failover jest grupą baz danych zarządzanych przez jeden serwer bazy danych SQL lub w ramach jednego wystąpienia zarządzanego, który przełączanie do trybu failover jako jednostka do innego regionu w przypadku wszystkich lub niektórych podstawowych baz danych staną się niedostępne z powodu awarii w regionie podstawowym. Gdy utworzone dla wystąpienia zarządzanego, grupy trybu failover zawiera wszystkich baz danych użytkownika w wystąpieniu, a w związku z tym grupy trybu failover tylko jeden mogą zostać skonfigurowane w taki sposób, w wystąpieniu.
+  Grupy trybu failover jest grupą baz danych zarządzanych przez jeden serwer bazy danych SQL lub w ramach jednego wystąpienia zarządzanego, który przełączanie do trybu failover jako jednostka do innego regionu w przypadku wszystkich lub niektórych podstawowych baz danych staną się niedostępne z powodu awarii w regionie podstawowym. Podczas tworzenia wystąpienia zarządzanego, grupy trybu failover zawiera wszystkich baz danych użytkownika w wystąpieniu, a w związku z tym można skonfigurować tylko jedną grupę trybu failover w wystąpieniu.
 
 - **Serwery usługi SQL Database**
 

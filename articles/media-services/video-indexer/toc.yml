@@ -46,8 +46,6 @@
       href: video-indexer-view-edit.md
     - name: Tworzenie projektów za pomocą edytora
       href: use-editor-create-project.md
-    - name: Generowanie szczegółowych informacji o wideo na podstawie istniejących wideo
-      href: video-indexer-create-new.md
     - name: Osadzanie widżetów w aplikacji
       href: video-indexer-embed-widgets.md
     - name: Dostosowywanie modeli zawartości

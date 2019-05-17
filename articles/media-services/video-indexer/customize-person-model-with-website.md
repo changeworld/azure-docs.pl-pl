@@ -6,15 +6,16 @@ services: media-services
 author: anikaz
 manager: johndeu
 ms.service: media-services
+ms.subservice: video-indexer
 ms.topic: article
-ms.date: 03/19/2019
+ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: 8dd535d97e40fe1dd4358d782db60940af1dd95d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 37e556ca458a5b0a171664e089d39cfb448d5f96
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60555825"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65800114"
 ---
 # <a name="customize-a-person-model-with-the-video-indexer-website"></a>Dostosuj model osoby, z witryną internetową indeksatora wideo
 
@@ -133,14 +134,14 @@ Aby używać modelu osoby na nowy film wideo, wykonaj następujące czynności:
 
 1. Kliknij przycisk **przekazywanie** przycisku w górnej części strony.
 
-    ![Upload](./media/customize-face-model/upload.png)
+    ![Przekazanie](./media/customize-face-model/upload.png)
 1. Upuść plik wideo w okręgu lub Przeglądaj w poszukiwaniu pliku.
 1. Kliknij strzałkę opcje zaawansowane.
 
-    ![Upload](./media/customize-face-model/upload2.png)
+    ![Przekazanie](./media/customize-face-model/upload2.png)
 1. Kliknij listę rozwijaną i wybierz utworzony przez siebie model osoby.
 
-    ![Upload](./media/customize-face-model/upload3.png)
+    ![Przekazanie](./media/customize-face-model/upload3.png)
 1. Kliknij przycisk opcji przekazywania w dolnej części strony i nowy film wideo będzie indeksowany przy użyciu modelu osoby.
 
 Jeśli nie określisz modelu osoby w trakcie przekazywania, Video Indexer będzie indeks wideo przy użyciu modelu domyślne osoby na Twoim koncie.

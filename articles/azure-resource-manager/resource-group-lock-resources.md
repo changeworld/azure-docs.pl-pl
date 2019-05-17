@@ -1,23 +1,17 @@
 ---
 title: Blokowanie zasobów platformy Azure, aby uniemożliwić zmiany | Dokumentacja firmy Microsoft
 description: Uniemożliwianie użytkownikom aktualizowanie i usuwanie zasoby platformy Azure o znaczeniu krytycznym, stosując blokady dla wszystkich użytkowników i ról.
-services: azure-resource-manager
-documentationcenter: ''
 author: tfitzmac
-ms.assetid: 53c57e8f-741c-4026-80e0-f4c02638c98b
 ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 05/14/2019
 ms.author: tomfitz
-ms.openlocfilehash: 8942ae9a24613f7b7896cf7124b344d9d9315954
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a6c7983d22eed4a4232fbb2db490c1743684a04c
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59360443"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65813387"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Blokowanie zasobów w celu uniemożliwienia nieoczekiwanych zmian 
 
@@ -36,7 +30,13 @@ W przeciwieństwie do kontroli dostępu opartej na rolach umożliwia zarządcze 
 
 Blokad usługi Resource Manager mają zastosowanie tylko do operacji, które odbywa się w płaszczyzny zarządzania, który składa się z operacji wysyłane do `https://management.azure.com`. Blokady nie Ograniczaj, jak zasoby wykonać swoje własne funkcje. Zmiany zasobu są ograniczone, ale operacje zasobów nie są ograniczone. Na przykład blokadę tylko do odczytu na bazę danych SQL uniemożliwia usunięcie lub zmodyfikowanie bazy danych. Nie uniemożliwia z tworzenia, aktualizowania lub usuwania danych w bazie danych. Transakcje są dozwolone, ponieważ te operacje nie są wysyłane do `https://management.azure.com`.
 
-Stosowanie **tylko do odczytu** może prowadzić do nieoczekiwanych wyników, ponieważ niektóre operacje, które promieniowe wydają się być odczytana operacje rzeczywiście wymagają dodatkowych akcji. Na przykład umieszczenie **tylko do odczytu** blokadę konta magazynu uniemożliwia wszystkim użytkownikom wyświetlanie listy kluczy. Na liście, którą zwrócone klucze nie są dostępne dla operacji klucze odbywa się za pomocą żądania POST operacji zapisu. Inny przykład umieszczając **tylko do odczytu** blokady zasobu usługi App Service uniemożliwia wyświetlanie plików dla zasobu, ponieważ interakcji wymaga dostępu do zapisu Eksploratora serwera w usłudze Visual Studio.
+Stosowanie **tylko do odczytu** może prowadzić do nieoczekiwanych wyników, ponieważ niektóre operacje, które nie wydają się, aby zmodyfikować zasób faktycznie wymagane akcje, które są blokowane przez blokadę. **Tylko do odczytu** blokady może odnosić się do zasobu lub grupę zasobów zawierającą zasobu. Typowe przykłady działań, które są blokowane przez **tylko do odczytu** blokady są:
+
+* A **tylko do odczytu** blokadę konta magazynu uniemożliwia wszystkim użytkownikom wyświetlanie listy kluczy. Na liście, którą zwrócone klucze nie są dostępne dla operacji klucze odbywa się za pomocą żądania POST operacji zapisu.
+
+* A **tylko do odczytu** blokady zasobu usługi App Service uniemożliwia wyświetlanie plików dla zasobu, ponieważ interakcji wymaga dostępu do zapisu Eksploratora serwera w usłudze Visual Studio.
+
+* A **tylko do odczytu** blokady na grupę zasobów, która zawiera maszynę wirtualną uniemożliwia wszystkim użytkownikom możliwość uruchamiania lub ponownego uruchamiania maszyny wirtualnej. Te operacje wymagają żądania POST.
 
 ## <a name="who-can-create-or-delete-locks"></a>Kto może utworzyć lub usunąć blokady
 Aby utworzyć lub usunąć blokady zarządzania, musi mieć dostęp do `Microsoft.Authorization/*` lub `Microsoft.Authorization/locks/*` akcji. Spośród wbudowanych ról tylko **Właściciel** i **Administrator dostępu użytkowników** mają dostęp do tych akcji.

@@ -9,17 +9,25 @@ ms.topic: article
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
-ms.date: 05/02/2019
-ms.openlocfilehash: 1cb533348236905b7c4e9b58968041745af0e71b
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.date: 05/10/2019
+ms.openlocfilehash: 42724f5fcb3101015cef0d218a3d548f349646be
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65028443"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65785822"
 ---
 # <a name="sample-5---classification-predict-churn-appetency-and-up-selling"></a>Przykład 5 - klasyfikacji: Przewidywanie zmienności appetency i sprzedaży w górę 
 
-Ten interfejs graficzny przykładowy eksperyment pokazuje Klasyfikator binarny przewidywanie zmienności i appetency, proponując, typowe zadanie zarządzania relacjami z klientami (CRM).
+Informacje o sposobie tworzenia eksperymentu uczenia maszynowego złożonych bez napisania choćby jednego wiersza kodu za pomocą interfejsu wizualnego.
+
+Ten eksperyment szkolenie modeli trzy, **dwuklasowych wzmocnione drzewo decyzyjnego dla** klasyfikatorów do prognozowania typowe zadania związane z systemami zarządzania (CRM) relacji klientów: zmian appetency i sprzedaży w górę. Wartości danych i etykiet są podzielone między wiele źródeł danych i zaszyfrowane do anonimizuj informacje o klientach, jednak firma Microsoft może nadal używać interfejs graficzny łączenie zestawów danych do nauczenia modelu, używając zaszyfrowane wartości.
+
+Ponieważ którą próbujemy znaleźć odpowiedź na pytanie "Która opcja?" jest to problem klasyfikacji. Jednakże można zastosować te same czynności w tym eksperymencie rozwiązania dowolnego typu maszyny nauczanym problemem, czy jest to regresji, klasyfikacji, klastrowania i tak dalej.
+
+Oto wykres zakończone, w tym eksperymencie:
+
+![Wykres eksperymentu](./media/ui-sample-classification-predict-churn/experiment-graph.png)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -31,13 +39,11 @@ Ten interfejs graficzny przykładowy eksperyment pokazuje Klasyfikator binarny p
 
 ## <a name="data"></a>Dane
 
-Dane, które służy do tego eksperymentu jest z zawodów KDD Cup 2009. Zestaw danych zawiera 50 000 wierszy i 230 kolumn funkcji. Zadanie jest przewidywanie zmienności appetency i proponując dla klientów, którzy korzystają z tych funkcji. Zobacz [witryny sieci Web z zawodów KDD](https://www.kdd.org/kdd-cup/view/kdd-cup-2009) Aby uzyskać więcej informacji na temat danych i zadania.
+Dane, które służy do tego eksperymentu jest z zawodów KDD Cup 2009. Zestaw danych zawiera 50 000 wierszy i 230 kolumn funkcji. Zadanie jest przewidywanie zmienności appetency i proponując dla klientów, którzy korzystają z tych funkcji. Aby uzyskać więcej informacji na temat danych i zadania, zobacz [witryny sieci Web z zawodów KDD](https://www.kdd.org/kdd-cup/view/kdd-cup-2009).
 
 ## <a name="experiment-summary"></a>Podsumowanie eksperymentu
 
-Oto wykres eksperymentu ukończone:
-
-![Wykres eksperymentu](./media/ui-sample-classification-predict-churn/experiment-graph.png)
+Ten interfejs graficzny przykładowy eksperyment pokazuje Klasyfikator binarny przewidywanie zmienności appetency i proponując, typowe zadanie zarządzania relacjami z klientami (CRM).
 
 Po pierwsze robimy pewne proste przetwarzanie danych.
 
@@ -46,11 +52,10 @@ Po pierwsze robimy pewne proste przetwarzanie danych.
     ![Wyczyść zestawu danych](./media/ui-sample-classification-predict-churn/cleaned-dataset.png)
 
 - Funkcje i odpowiedni postęp dokonany w, appetency, oraz etykiety proponując znajdują się w różnych zestawów danych. Używamy **Dodaj kolumny** modułu do dołączenia kolumn etykiety kolumn funkcji. Pierwsza kolumna **Col1**, jest to kolumna etykiety. Pozostałe kolumny, **Var1**, **Var2**i tak dalej są kolumnami funkcji.
- 
+
     ![Dodaj zestaw danych kolumny](./media/ui-sample-classification-predict-churn/added-column1.png)
 
 - Używamy **podziału danych** modułu, aby podzielić zestawu danych na szkolenie i testowanie zestawów.
-
 
     Następnie używamy Klasyfikator binarny wzmocnione drzewo decyzyjne z parametrami domyślnymi tworzyć modele predykcyjne. Firma Microsoft tworzy jeden model na zadanie, oznacza to, że jeden model każdego z nich do przewidywania proponując appetency i współczynnika zmian.
 

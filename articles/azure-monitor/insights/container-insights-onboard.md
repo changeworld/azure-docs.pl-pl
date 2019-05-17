@@ -1,6 +1,6 @@
 ---
-title: Jak dodać usługi Azure Monitor dla kontenerów | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób możesz dołączyć i konfigurowanie usługi Azure Monitor dla kontenerów, dzięki czemu można zrozumieć, jaka jest wydajność kontenera oraz zostały zidentyfikowane problemów związanych z wydajnością.
+title: Jak włączyć usługi Azure Monitor dla kontenerów | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, jak włączyć i skonfigurować usługi Azure Monitor dla kontenerów, dzięki czemu można zrozumieć, jaka jest wydajność kontenera oraz zostały zidentyfikowane problemów związanych z wydajnością.
 services: azure-monitor
 documentationcenter: ''
 author: mgoedtel
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: magoedte
-ms.openlocfilehash: 10b80a9749c5698195ac5d3493ac3b07fd6e24e1
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 5e149fa96e0a62656804906b52adf10273321d17
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073308"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65521895"
 ---
-# <a name="how-to-onboard-azure-monitor-for-containers"></a>Jak dodać usługi Azure Monitor dla kontenerów  
+# <a name="how-to-enable-azure-monitor-for-containers"></a>Jak włączyć usługi Azure Monitor dla kontenerów  
 
 Ten artykuł zawiera omówienie dostępne opcje Aby skonfigurować usługi Azure Monitor dla kontenerów w celu monitorowania wydajności obciążeń, które są wdrażane do środowisk Kubernetes i hostowanych na [usługi Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/).
 

@@ -27,6 +27,8 @@
       href: search-fiddler.md
     - name: PowerShell
       href: search-create-index-rest-api.md
+    - name: Python
+      href: search-get-started-python.md
 - name: Samouczki
   items:
     - name: Indeksowanie usługi Azure SQL Database
@@ -322,8 +324,6 @@
           href: 'https://aka.ms/jfkfiles'
         - name: Pokaz dotyczący zatrudnienia w Nowym Jorku
           href: 'https://aka.ms/azjobsdemo'
-        - name: Pokaz analizatora wyszukiwania
-          href: 'https://alice.unearth.ai/'
         - name: Przeszukiwanie przypadków użycia
           href: 'https://searchsamples.azurewebsites.net/'
     - name: Często zadawane pytania

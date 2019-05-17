@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/13/2019
+ms.date: 05/14/2019
 ms.topic: overview
 ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 0bdf47991435a9a28a4db12f3aa89478b18bb9f1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8b989e5cf5b66d21c19d58f2f64fbba1927f5d69
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61020263"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65792798"
 ---
 # <a name="what-is-the-cloudyn-service"></a>Co to jest rozwiązanie Cloudyn?
 
@@ -24,6 +24,10 @@ Rozwiązanie Cloudyn (będące własnością podmiotu zależnego od firmy Micros
 Aby obejrzeć klip wideo z wprowadzeniem, zobacz [Introduction to Azure Cloudyn](https://azure.microsoft.com/resources/videos/azure-cost-management-overview-and-demo) (Wprowadzenie do rozwiązania Azure Cloudyn).
 
 Usługa Azure Cost Management oferuje podobne funkcje jak rozwiązanie Cloudyn. Usługa Azure Cost Management to natywne rozwiązanie do zarządzania kosztami na platformie Azure. Ułatwia ona analizowanie kosztów, tworzenie budżetów i zarządzanie nimi, eksportowanie danych, a także zapoznawanie się z rekomendacjami dotyczącymi optymalizacji i ich wdrażanie w celu zaoszczędzenia pieniędzy. Aby uzyskać więcej informacji, zobacz [Azure Cost Management](overview-cost-mgt.md).
+
+Obejrzyj [wideo usługi Azure Cost Management i Cloudyn](https://www.youtube.com/watch?v=PmwFWwSluh8) pozwalają zobaczyć zalecenia, kiedy należy używać usługi Azure Cost Management lub Cloudyn, na podstawie potrzeb biznesowych.
+
+>[!VIDEO https://www.youtube.com/embed/PmwFWwSluh8]
 
 ## <a name="cloudyn-features-moving-to-azure-cost-management"></a>Funkcje platformy Cloudyn, przejście do usługi Azure Cost Management
 
@@ -60,7 +64,7 @@ Monitorowanie użycia i wydatków ma kluczowe znaczenie dla infrastruktur w chmu
 
 Raporty ułatwiają monitorowanie wydatków w celu analizowania i śledzenia użycia chmury, kosztów i trendów. Używając raportów w czasie, możesz wykrywać anomalie różniące się od normalnych trendów. Czynniki niskiej wydajności we wdrożeniu w chmurze są widoczne w raportach optymalizacji. Czynniki niskiej wydajności możesz także zobaczyć w raportach analizy kosztów.
 
-## <a name="manage-costs"></a>Zarządzanie kosztami
+## <a name="manage-costs"></a>Zarządzaj kosztami
 
 Dane historyczne mogą ułatwiać zarządzanie kosztami, gdy przeanalizuje się użycie i koszty w czasie, aby zidentyfikować trendy. Przyszłe wydatki są następnie prognozowane przy użyciu trendów. Rozwiązanie Cloudyn zawiera także przydatne raporty kosztów planowanych.
 

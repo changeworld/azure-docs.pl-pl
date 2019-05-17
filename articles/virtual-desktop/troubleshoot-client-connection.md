@@ -7,18 +7,18 @@ ms.service: virtual-desktop
 ms.topic: troubleshoot
 ms.date: 04/08/2019
 ms.author: v-chjenk
-ms.openlocfilehash: c5a67e22c301a2afc73a46a6def9a514426c497f
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 99295fd4581cd81751f7d64b694c853efe51a106
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64928050"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522943"
 ---
-# <a name="remote-desktop-client-connections"></a>Połączenia klienta usług pulpitu zdalnego
+# <a name="remote-desktop-client-connections"></a>Połączenia klienta pulpitu zdalnego
 
 W tym artykule umożliwiają rozwiązywanie problemów z połączeniami klienta Windows pulpitu wirtualnego.
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Przesyłanie opinii
 
 Firma Microsoft obecnie nie są zbyt przypadki pomocy technicznej Windows pulpitu wirtualnego jest dostępna w wersji zapoznawczej. Odwiedź stronę [społeczności technicznej pulpitu wirtualnego Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) w celu omówienia usługi Windows pulpitu wirtualnego przy użyciu zespół pracujący nad produktem i elementów członkowskich aktywnej społeczności użytkowników.
 
@@ -108,22 +108,21 @@ Wykonaj instrukcje dotyczące rozwiązywania problemów, te ogólne kody błęd�
 1. Upewnij się, nazwę użytkownika i czas, kiedy został problem.
 2. Otwórz **PowerShell** i nawiązania połączenia z dzierżawą pulpitu wirtualnego Windows, gdy problem został zgłoszony.
 3. Upewnij się, połączenie z poprawną dzierżawcy z **Get RdsTenant.**
-4. Jeśli to konieczne, ustaw dzierżawy, kontekst grupy za pomocą **RdsContext zestaw — TenantGroupt\<TenantGroup\>**.
-5. Za pomocą **Get RdsHostPool** i **Get RdsSessionHost** poleceń cmdlet, upewnij się, że rozwiązywania problemów jest wykonywana w puli właściwy host.
-6. Wykonaj poniższe polecenie, aby uzyskać listę wszystkich działań nie powiodło się z typu połączenia określone okno czasu:
+4. Za pomocą **Get RdsHostPool** i **Get RdsSessionHost** poleceń cmdlet, upewnij się, że rozwiązywania problemów jest wykonywana w puli właściwy host.
+5. Wykonaj poniższe polecenie, aby uzyskać listę wszystkich działań nie powiodło się z typu połączenia określone okno czasu:
 
     ```cmd
      Get-RdsDiagnosticActivities -TenantName <TenantName> -username <UPN> -StartTime
      "11/21/2018 1:07:03 PM" -EndTime "11/21/2018 1:27:03 PM" -Outcome Failure -ActivityType Connection
     ```
 
-7. Za pomocą **ActivityId** z poprzednich dane wyjściowe polecenia cmdlet, uruchom poniższe polecenie:
+6. Za pomocą **ActivityId** z poprzednich dane wyjściowe polecenia cmdlet, uruchom poniższe polecenie:
 
     ```
     (Get-RdsDiagnosticActivities -TenantName $tenant -ActivityId <ActivityId> -Detailed).Errors
     ```
 
-8. Polecenie generuje dane wyjściowe podobne do danych wyjściowych poniżej. Użyj **ErrorCodeSymbolic** i **komunikat o błędzie** rozwiązywać problemy z główną przyczynę.
+7. Polecenie generuje dane wyjściowe podobne do danych wyjściowych poniżej. Użyj **ErrorCodeSymbolic** i **komunikat o błędzie** rozwiązywać problemy z główną przyczynę.
 
     ```
     ErrorSource       : <Source>

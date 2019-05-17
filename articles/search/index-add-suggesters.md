@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 400b1613a87d4de65879a512642e16884c7d03b4
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: eb6667a1429382ed566826de64ad7ffbe83183cf
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65021879"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65521882"
 ---
 # <a name="add-suggesters-to-an-index-for-typeahead-in-azure-search"></a>Dodaj sugestory do indeksu dla typeahead w usłudze Azure Search
 
@@ -119,7 +119,7 @@ Jak wspomniano wcześniej można użyć sugestora sugerowane zapytania i/lub aut
 
 Sugestora odwołuje się na żądanie, wraz z operacji. Na przykład na wywołanie GET REST, określ opcję `suggest` lub `autocomplete` w kolekcji dokumentów. REST, po utworzeniu sugestora użytku [sugestie dotyczące interfejsów API](https://docs.microsoft.com/rest/api/searchservice/suggestions) lub [interfejsu API automatycznego uzupełniania](https://docs.microsoft.com/rest/api/searchservice/autocomplete) w logice zapytania.
 
-Dla platformy .NET, należy użyć [SuggestWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet-preview) lub [AutocompleteWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet-preview&viewFallbackFrom=azure-dotnet).
+Dla platformy .NET, należy użyć [SuggestWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet) lub [AutocompleteWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet&viewFallbackFrom=azure-dotnet).
 
 Aby uzyskać przykład, pokazujący zarówno w przypadku żądań, zobacz [przykład dodawania automatycznego uzupełniania i sugestii w usłudze Azure Search](search-autocomplete-tutorial.md).
 

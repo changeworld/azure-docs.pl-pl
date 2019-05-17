@@ -8,14 +8,14 @@ manager: timlt
 ms.service: event-hubs
 ms.topic: article
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 05/15/2019
 ms.author: shvija
-ms.openlocfilehash: ce9c6a83d664bc9ad1798792f7762556c9a0d541
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: acc756ac04e5127d07760746bd0178f0f6cb1d6f
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64690283"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65789242"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Usługa Event Hubs — często zadawane pytania
 
@@ -23,6 +23,15 @@ ms.locfileid: "64690283"
 
 ### <a name="what-is-an-event-hubs-namespace"></a>Co to jest obszar nazw usługi Event Hubs?
 Przestrzeń nazw jest kontenerem określania zakresu dla zdarzenia koncentratora/tematów platformy Kafka. Pozwala ona unikatową [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name). Przestrzeń nazw służy jako kontener aplikacji, które mogą znajdować się wiele tematy usługi Event Hub/platformy Kafka. 
+
+### <a name="when-do-i-create-a-new-namespace-vs-use-an-existing-namespace"></a>Podczas tworzenia nowej przestrzeni nazw, a użycie istniejącej przestrzeni nazw?
+Alokacje pojemności ([jednostek przepływności (jednostek przepływności)](#throughput-units)) są naliczane na poziomie przestrzeni nazw. Przestrzeń nazw jest także skojarzone z regionem.
+
+Można utworzyć nowy obszar nazw, zamiast używania istniejących jeden w jeden z następujących scenariuszy: 
+
+- Należy Centrum zdarzeń skojarzone z nowym regionie.
+- Należy Centrum zdarzeń skojarzone z innej subskrypcji.
+- Potrzebujesz Centrum zdarzeń za pomocą alokacji distinct pojemności (czyli pojemności są wymagane dla przestrzeni nazw z Centrum zdarzeń dodano przekracza próg 40 jednostek Przepływności, a nie chcesz przejść do dedykowanych klastrów)  
 
 ### <a name="what-is-the-difference-between-event-hubs-basic-and-standard-tiers"></a>Jaka jest różnica między warstwami standardowa i Event hubs w warstwie podstawowa?
 
@@ -60,7 +69,7 @@ Następujące protokoły za pomocą usługi Azure Service Bus umożliwia wysyła
 
 Zobacz poniższą tabelę dla portów wychodzących, które należy otworzyć, aby używać tych protokołów do komunikacji z usługą Azure Event Hubs. 
 
-| Protokół | Porty | Szczegóły | 
+| Protocol | Porty | Szczegóły | 
 | -------- | ----- | ------- | 
 | AMQP | 5671 i 5672 | Zobacz [przewodnik dotyczący protokołu AMQP](../service-bus-messaging/service-bus-amqp-protocol-guide.md) | 
 | HTTP, HTTPS | 80, 443 |  |

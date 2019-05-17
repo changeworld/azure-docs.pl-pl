@@ -10,12 +10,12 @@ ms.author: danil
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/17/2018
-ms.openlocfilehash: 03f330f429be583d3a400eb1ee00875f7c305e74
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 0617dc617309d49cdc7c8cddd4e91619b873b914
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64923013"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65785684"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Monitorowanie usługi Azure SQL Database przy użyciu usługi Azure SQL Analytics (wersja zapoznawcza)
 
@@ -193,7 +193,7 @@ AzureMetrics
 ```
 
 > [!NOTE]
-> - Wymaganie wstępne konfigurowania ten alert jest tym monitorowane bazy danych strumienia metrykę diagnostyki (opcja "Wszystkich metryk") do rozwiązania.
+> - Wymaganie wstępne konfigurowania ten alert jest monitorowane bazy danych strumieniu podstawowe metryki do rozwiązania.
 > - Zastąp cpu_percent wartość MetricName dtu_consumption_percent zamiast tego uzyskać wysoki wyników jednostek DTU.
 
 #### <a name="high-cpu-on-azure-sql-database-elastic-pools"></a>Wysokie użycie procesora CPU o pulach elastycznych usługi Azure SQL Database
@@ -208,7 +208,7 @@ AzureMetrics
 ```
 
 > [!NOTE]
-> - Wymaganie wstępne konfigurowania ten alert jest tym monitorowane bazy danych strumienia metrykę diagnostyki (opcja "Wszystkich metryk") do rozwiązania.
+> - Wymaganie wstępne konfigurowania ten alert jest monitorowane bazy danych strumieniu podstawowe metryki do rozwiązania.
 > - Zastąp cpu_percent wartość MetricName dtu_consumption_percent zamiast tego uzyskać wysoki wyników jednostek DTU.
 
 #### <a name="azure-sql-database-storage-in-average-above-95-in-the-last-1-hr"></a>Usługa Azure storage bazy danych SQL w średnia powyżej 95% w ostatniej 1 godziny
@@ -225,7 +225,7 @@ AzureMetrics
 ```
 
 > [!NOTE]
-> - Wymaganie wstępne konfigurowania ten alert jest tym monitorowane bazy danych strumienia metrykę diagnostyki (opcja "Wszystkich metryk") do rozwiązania.
+> - Wymaganie wstępne konfigurowania ten alert jest monitorowane bazy danych strumieniu podstawowe metryki do rozwiązania.
 > - To zapytanie wymaga regułę alertu do konfigurowane tak, aby wyzwolić alert, gdy istnieje wyniki (liczba wyników > 0) z kwerendy oznaczający, że z warunkiem istnieje w niektórych bazach danych. Dane wyjściowe znajduje się lista zasobów bazy danych, które znajdują się powyżej storage_threshold w ramach time_range zdefiniowane.
 > - Dane wyjściowe znajduje się lista zasobów bazy danych, które znajdują się powyżej storage_threshold w ramach time_range zdefiniowane.
 

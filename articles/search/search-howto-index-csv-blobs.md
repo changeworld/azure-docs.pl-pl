@@ -10,14 +10,19 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 193ed7099293fb1ee4c056abcc5c2f34d78627b7
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: e7d959e77d27fb04b18f402e4056d4dea1607039
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024709"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522889"
 ---
 # <a name="indexing-csv-blobs-with-azure-search-blob-indexer"></a>Indeksowanie obiektów blob CSV za pomocą indeksatora obiektów blob usługi Azure Search
+
+> [!Note]
+> Tryb analizy delimitedText znajduje się w wersji zapoznawczej i nie przeznaczonych do użycia w środowisku produkcyjnym. [Wersji interfejsu API REST 2019-05-06-Preview](search-api-preview.md) zapewnia tę funkcję. Brak obsługi zestawu SDK platformy .NET w tej chwili.
+>
+
 Domyślnie [indeksatora obiektów blob usługi Azure Search](search-howto-indexing-azure-blob-storage.md) analizuje rozdzielany tekst obiektów blob jako jeden fragment tekstu. Jednak za pomocą obiektów blob zawierający dane w formacie CSV, często zachodzi potrzeba traktują każdy wiersz w obiekcie blob jako oddzielny dokument. Na przykład, biorąc pod uwagę następujący tekst rozdzielany, warto go przeanalizować pod dwa dokumenty, zawierających każdego pola "tags", "datePublished" i "id": 
 
     id, datePublished, tags
@@ -26,21 +31,17 @@ Domyślnie [indeksatora obiektów blob usługi Azure Search](search-howto-indexi
 
 W tym artykule nauczysz przeanalizować obiektów blob CSV za pomocą ustawień indexerby obiektów blob usługi Azure Search `delimitedText` tryb analizy. 
 
-`delimitedText` Tryb analizy jest obecnie dostępna w publicznej wersji zapoznawczej i nie jest zalecane w przypadku obciążeń produkcyjnych.
-
 > [!NOTE]
 > Postępuj zgodnie z zaleceniami konfiguracji indeksatora w [indeksowania jeden do wielu](search-howto-index-one-to-many-blobs.md) służący do wypełniania wyjściowego wiele dokumentów wyszukiwania z jednego obiektu blob platformy Azure.
 
 ## <a name="setting-up-csv-indexing"></a>Konfigurowanie indeksowania CSV
-Aby indeksowanie obiektów blob CSV, Utwórz lub zaktualizuj definicję indeksatora z `delimitedText` tryb analizy:  
+Aby indeksowanie obiektów blob CSV, Utwórz lub zaktualizuj definicję indeksatora z `delimitedText` tryb analizy na [tworzenie indeksatora](https://docs.microsoft.com/rest/api/searchservice/create-indexer) żądania:
 
     {
       "name" : "my-csv-indexer",
       ... other indexer properties
       "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "firstLineContainsHeaders" : true } }
     }
-
-Aby uzyskać szczegółowe informacje na temat tworzenia interfejsu API indeksatora, zapoznaj się [tworzenie indeksatora](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
 
 `firstLineContainsHeaders` Wskazuje, że pierwszy wiersz (niepustych) każdy obiekt blob zawiera nagłówki.
 Jeśli obiekty BLOB nie zawierają wiersz nagłówka początkowej, należy określić nagłówków w konfiguracji indeksatora: 

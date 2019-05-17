@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/22/2019
+ms.date: 05/07/2019
 ms.author: magoedte
-ms.openlocfilehash: 4fa2553622d5ef2d08ec148b6a70aab6de257407
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c83a862a37dbf28c6933877bf4a0aecc4364e6c5
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61385962"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522085"
 ---
 # <a name="how-to-chart-performance-with-azure-monitor-for-vms-preview"></a>Jak Wykres wydajności dzięki usłudze Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)
 Usługa Azure Monitor dla maszyn wirtualnych zawiera zbiór wykresy wydajności przeznaczonych wykonuje kilka kluczowych wskaźników wydajności (KPI), aby ułatwić ustalenie, jak dobrze maszynę wirtualną. Wykresy pokazują wykorzystanie zasobów w określonym czasie, dzięki czemu możesz określić wąskie gardła, anomalie, lub przełącz się do perspektywy, wyświetlanie listy każdej maszyny w celu wyświetlenia wykorzystania zasobów, w oparciu o wybraną metryką. Dostępnych jest wiele elementów, należy wziąć pod uwagę podczas rozwiązywania problemów związanych z wydajnością, usługi Azure Monitor dla wskaźników wydajności systemu operacyjnego klucza monitory maszyny wirtualne dotyczące procesora, pamięci, karty sieciowej i wykorzystanie dysku. Wydajność uzupełniają funkcję monitorowania kondycji i pomaga ujawnić problemy, które wskazują możliwe awarii składników, dostrajanie pomocy technicznej i optymalizacji do osiągnięcia wydajności oraz obsługi planowania pojemności.  
@@ -105,6 +105,21 @@ Dostępne są następujące wykresy wykorzystanie pojemności:
 Kliknij ikonę pinezki w prawym górnym rogu jeden z kodów PIN wykresy wybranego wykresu do ostatniego pulpitu nawigacyjnego platformy Azure można wyświetlić. Na pulpicie nawigacyjnym możesz zmienić rozmiar i zmienić położenie wykresu. Wybierając wykres na pulpicie nawigacyjnym przekieruje Cię do usługi Azure Monitor dla maszyn wirtualnych i ładuje widok szczegółów wydajności dla maszyny Wirtualnej.  
 
 ![Maszyna wirtualna insights wydajności bezpośrednio z maszyny Wirtualnej wyświetlić](./media/vminsights-performance/vminsights-performance-directvm-01.png)
+
+## <a name="view-performance-directly-from-an-azure-virtual-machine-scale-set"></a>Wyświetl wydajność bezpośrednio z zestawu skalowania maszyn wirtualnych platformy Azure
+Aby uzyskać dostęp bezpośrednio z zestawu skalowania maszyn wirtualnych platformy Azure, wykonaj następujące czynności.
+
+1. W witrynie Azure portal wybierz **zestawy skalowania maszyn wirtualnych**.
+2. Z listy wybierz Maszynę wirtualną i **monitorowanie** wybierz sekcję **Insights (wersja zapoznawcza)** do wyświetlania **wydajności** kartę.
+
+Ta strona ładuje widoku wydajności usługi Azure Monitor do zestawu skalowania wybranego zakresu. Dzięki temu Zobacz pierwszych N wystąpień w zestawie skalowania dla zestawu monitorowana metryk, wyświetlać wydajność zbiorcza w całym zestawie skalowania i wyświetlić trendy dotyczące wybrane metryki dla n poszczególnych wystąpień skali zestawu. Wybranie wystąpienia z widoku listy można załadować mapy jego lub przejdź do widoku wydajności szczegółowe dla tego wystąpienia.
+
+Kliknij ikonę pinezki w prawym górnym rogu jeden z kodów PIN wykresy wybranego wykresu do ostatniego pulpitu nawigacyjnego platformy Azure można wyświetlić. Na pulpicie nawigacyjnym możesz zmienić rozmiar i zmienić położenie wykresu. Wybierając wykres na pulpicie nawigacyjnym przekieruje Cię do usługi Azure Monitor dla maszyn wirtualnych i ładuje widok szczegółów wydajności dla maszyny Wirtualnej.  
+
+![Maszyna wirtualna wydajności bezpośrednio wglądu w dane skalowania maszyn wirtualnych Ustaw widok](./media/vminsights-performance/vminsights-performance-directvmss-01.png)
+
+>[!NOTE]
+>Można także przejść widok szczegółowy wydajności dla określonego wystąpienia z widoku wystąpień dla zestawu skalowania. Przejdź do **wystąpień** w obszarze **ustawienia** sekcji, a następnie wybierz **Insights (wersja zapoznawcza)**.
 
 ## <a name="alerts"></a>Alerty  
 Metryki wydajności, włączone w ramach usługi Azure Monitor dla maszyn wirtualnych nie zawierają wstępnie skonfigurowanych reguł alertów. Istnieją [alerty dotyczące kondycji](vminsights-health.md#alerts) odpowiadający problemy z wydajnością wykryte na maszynie Wirtualnej platformy Azure, np. wysokie wykorzystanie procesora CPU, miejsca na dysku dostępna, niski małej ilości pamięci, itp.  Jednak te alerty dotyczące kondycji dotyczą tylko wszystkie maszyny wirtualne, włączone dla usługi Azure Monitor dla maszyn wirtualnych. 

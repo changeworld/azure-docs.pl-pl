@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 05/1/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: sahenry, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3baf2690ae07b87bb4d5dba30fcd20f62a1a4506
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: abe9cba604100a42a4cd29ccd5af47e8898ea409
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60358093"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65812927"
 ---
 # <a name="enable-combined-security-information-registration-preview"></a>Włącz połączone zabezpieczeń informacji o rejestracji (wersja zapoznawcza)
 
@@ -51,6 +51,37 @@ Jeśli strefa Lista przypisywanie witryn do zostały skonfigurowane w programie 
 * [https://mysignins.microsoft.com](https://mysignins.microsoft.com)
 * [https://account.activedirectory.windowsazure.com](https://account.activedirectory.windowsazure.com)
 
+## <a name="conditional-access-policies-for-combined-registration"></a>Zasady dostępu warunkowego dla rejestracji połączone
+
+Zabezpieczanie, kiedy i jak rejestrowanie użytkowników na potrzeby usługi Azure Multi-Factor Authentication i samoobsługowego resetowania hasła jest możliwe z akcjami użytkownika zasad dostępu warunkowego. Tę funkcję wersji zapoznawczej jest dostępna dla organizacji, którzy włączyli [rejestracji (wersja zapoznawcza) w połączeniu](../authentication/concept-registration-mfa-sspr-combined.md). Ta funkcja może być włączona w organizacjach, w którym mają być użytkownikom na rejestrowanie dla usługi Azure Multi-Factor Authentication i samoobsługowego resetowania HASEŁ z centralnej lokalizacji, takich jak zaufanej lokalizacji sieciowej zestawu dokumentacji podczas dołączania HR. Aby uzyskać więcej informacji na temat tworzenia zaufanych lokalizacji w funkcji dostępu warunkowego, zobacz artykuł [co to jest warunek lokalizacji w funkcji dostępu warunkowego usługi Azure Active Directory?](../conditional-access/location-condition.md#named-locations)
+
+### <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>Utwórz zasady, które wymagają rejestracji z zaufanej lokalizacji
+
+Następujące zasady mają zastosowanie do wszystkich wybranych użytkowników, który próbuje zarejestrować się przy użyciu rejestracji połączone środowisko i blokuje dostęp, chyba że jest nawiązywane z lokalizacji oznaczone jako zaufaną siecią.
+
+![Tworzenie zasad dostępu Warunkowego do kontrolowania zabezpieczeń informacji o rejestracji](media/howto-registration-mfa-sspr-combined/conditional-access-register-security-info.png)
+
+1. W **witryny Azure portal**, przejdź do **usługi Azure Active Directory** > **dostępu warunkowego**
+1. Wybierz pozycję **Nowe zasady**
+1. W polu Nazwa wprowadź nazwę dla tych zasad. Na przykład **połączone zabezpieczeń informacji o rejestracji w zaufanych sieciach**
+1. W obszarze **przypisania**, kliknij przycisk **użytkowników i grup**, a następnie wybierz użytkowników i grupy mają te zasady mają dotyczyć
+
+   > [!WARNING]
+   > Użytkownicy, należy włączyć [rejestracji (wersja zapoznawcza) w połączeniu](../authentication/howto-registration-mfa-sspr-combined.md).
+
+1. W obszarze **w chmurze aplikacji lub akcje**, wybierz opcję **akcje użytkownika**, sprawdź **zarejestrowanie informacji o zabezpieczeniach (wersja zapoznawcza)**
+1. W obszarze **warunki** > **lokalizacje**
+   1. Konfigurowanie **tak**
+   1. Obejmują **dowolnego miejsca**
+   1. Wyklucz **wszystkie zaufane lokalizacje**
+   1. Kliknij przycisk **gotowe** bloku lokalizacje
+   1. Kliknij przycisk **gotowe** bloku warunków
+1. W obszarze **kontrole dostępu** > **przydział**
+   1. Kliknij przycisk **blokują dostęp**
+   1. Następnie kliknij przycisk **wybierz**
+1. Ustaw **Włącz zasady** do **na**
+1. Następnie kliknij przycisk **Create**
+
 ## <a name="next-steps"></a>Kolejne kroki
 
 [Dostępne metody uwierzytelniania wieloskładnikowego i samoobsługowego resetowania HASEŁ](concept-authentication-methods.md)
@@ -60,3 +91,5 @@ Jeśli strefa Lista przypisywanie witryn do zostały skonfigurowane w programie 
 [Konfigurowanie usługi Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
 
 [Rozwiązywanie problemów z połączone zabezpieczeń informacji o rejestracji](howto-registration-mfa-sspr-combined-troubleshoot.md)
+
+[Co to jest warunek lokalizacji w funkcji dostępu warunkowego usługi Azure Active Directory?](../conditional-access/location-condition.md)

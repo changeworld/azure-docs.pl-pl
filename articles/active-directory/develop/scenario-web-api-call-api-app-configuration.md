@@ -15,18 +15,18 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3dedef2d22df9c8c81410296bdb0c4814bd98b80
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: f62cf65e275d8a9b909bf60103ccbd84e91e4574
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65507131"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65785053"
 ---
 # <a name="web-api-that-calls-web-apis---code-configuration"></a>Czy interfejsy API — Konfiguracja kodu sieci web wywołań interfejsu API sieci Web
 
 Po zarejestrowaniu interfejsu API sieci web można skonfigurować w kodzie aplikacji.
 
-Kod, aby skonfigurować interfejs API sieci web wywołuje metodę transmisji interfejsów API sieci web opartą na kod używany do projektu interfejsu API sieci web. Aby uzyskać więcej informacji, zobacz [chroniony internetowy interfejs API — Konfiguracja aplikacji](scenario-protected-web-api-app-configuration.md).
+Kod, aby skonfigurować interfejs API sieci web wywołuje metodę transmisji interfejsów API sieci web opartą na kod używany do chronienia internetowego interfejsu API. Aby uzyskać więcej informacji, zobacz [chroniony internetowy interfejs API — Konfiguracja aplikacji](scenario-protected-web-api-app-configuration.md).
 
 ## <a name="code-subscribed-to-ontokenvalidated"></a>Subskrybuje OnTokenValidated kodu
 
@@ -74,7 +74,7 @@ Metoda AddAccountToCacheFromJwt() musi:
 
 ### <a name="instantiate-a-confidential-client-application"></a>Utwórz wystąpienie aplikacji poufne klienta
 
-Ten przepływ jest dostępna tylko w przepływ poufne klienta tak chroniony internetowy interfejs API zapewnia poświadczenia klienta (klucz tajny klienta lub certyfikat) [ConfidentialClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.appconfig.confidentialclientapplicationbuilder?view=azure-dotnet-preview) za pośrednictwem `WithClientSecret` lub `WithCertificate`metod, odpowiednio.
+Ten przepływ jest dostępna tylko w przepływ poufne klienta tak chroniony internetowy interfejs API zapewnia poświadczenia klienta (klucz tajny klienta lub certyfikat) [ConfidentialClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder) za pośrednictwem `WithClientSecret` lub `WithCertificate`metod, odpowiednio.
 
 ![image](https://user-images.githubusercontent.com/13203188/55967244-3d8e1d00-5c7a-11e9-8285-a54b05597ec9.png)
 
@@ -96,7 +96,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 ### <a name="how-to-call-on-behalf-of"></a>Jak wywołać w imieniu z
 
-Wywołanie w imieniu z (OBO) odbywa się przez wywołanie metody [AcquireTokenOnBehalf](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.apiconfig.acquiretokenonbehalfofparameterbuilder?view=azure-dotnet-preview) metody `IConfidentialClientApplication` interfejsu.
+Wywołanie w imieniu z (OBO) odbywa się przez wywołanie metody [AcquireTokenOnBehalf](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenonbehalfofparameterbuilder) metody `IConfidentialClientApplication` interfejsu.
 
 `ClientAssertion` Jest tworzona na podstawie tokenu elementu nośnego odebranych przez internetowy interfejs API z własną klientów. Istnieją [dwa konstruktory](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientcredential.-ctor?view=azure-dotnet), ta, która przyjmuje tokenu JWT bearer i ta, która przyjmuje dowolnego rodzaju potwierdzenie użytkownika (innego rodzaju token zabezpieczający, jakiego typu jest następnie określone w dodatkowy parametr o nazwie `assertionType`).
 
@@ -138,7 +138,7 @@ private void AddAccountToCacheFromJwt(IEnumerable<string> scopes, JwtSecurityTok
 }
 ```
 
-## <a name="protocol"></a>Protokół
+## <a name="protocol"></a>Protocol
 
 Aby uzyskać więcej informacji na temat protokołu w imieniu z, zobacz [platforma tożsamości firmy Microsoft i przepływ OAuth 2.0 "w imieniu"](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)
 

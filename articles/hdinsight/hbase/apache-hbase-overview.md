@@ -1,5 +1,5 @@
 ---
-title: Co to jest baza danych HBase w usłudze Azure HDInsight?
+title: Co to jest Apache HBase w usłudze Azure HDInsight?
 description: Wprowadzenie do bazy danych Apache HBase w usłudze HDInsight — bazy danych NoSQL opartej na platformie Hadoop. Dowiedz się więcej o przypadkach użycia i porównaj bazę danych HBase z innymi klastrami Hadoop.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,14 +8,15 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: d109a1a233aaaf1f3922561106caa15781e31e01
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: a492adbf1c01271ceea736bde9de999190fc2da4
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62114438"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65789202"
 ---
-# <a name="what-is-apache-hbase-in-hdinsight-a-nosql-database-that-provides-bigtable-like-capabilities-for-apache-hadoop"></a>Co to jest Apache HBase w HDInsight: Bazę danych NoSQL, która zapewnia możliwości podobne BigTable dla platformy Apache Hadoop
+# <a name="what-is-apache-hbase-in-azure-hdinsight"></a>Co to jest Apache HBase w usłudze Azure HDInsight
+
 [Apache HBase](https://hbase.apache.org/) jest baza danych NoSQL typu open source, która jest oparta na [Apache Hadoop](https://hadoop.apache.org/) i modelowanych po [bazie danych Google BigTable](https://cloud.google.com/bigtable/). Baza danych HBase zapewnia dostęp losowy i wysoki poziom spójności w przypadku dużych ilości danych z częściową strukturą i bez struktury w bezschematowej bazie danych zorganizowanej według rodzin kolumn.
 
 Z perspektywy użytkownika bazy danych HBase jest podobne do bazy danych. Dane są przechowywane w wierszy i kolumn w tabeli, a dane w wierszu są pogrupowane według rodziny kolumn. HBase jest bezschematową bazą danych, co oznacza, że ani kolumny, ani typy danych w nich przechowywanych nie muszą być zdefiniowane przed użyciem. Kod typu open source zapewnia skalowanie liniowe, umożliwiając obsługę petabajtów danych na tysiącach węzłów. Baza może wykorzystywać nadmiarowość danych, przetwarzanie wsadowe i inne funkcje, które są dostarczane przez aplikacje rozproszone w ekosystemie Hadoop.

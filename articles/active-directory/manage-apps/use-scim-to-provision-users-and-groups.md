@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fba0a9bc0886b9487b0c61b6091bd122fe6e370d
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 04dde608f5885cdafe18b49a388de8dbb596cbfe
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65191541"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65539352"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Przy użyciu systemu dla Standard międzydomenowe zarządzania tożsamościami (SCIM), aby automatycznie aprowizować użytkowników i grup z usługi Azure Active Directory do aplikacji
 
@@ -202,7 +202,7 @@ Ta sekcja zawiera przykład standard SCIM żądania wysyłanego przez klienta us
 
 #### <a name="create-user"></a>Utwórz użytkownika
 
-###### <a name="request"></a>Żądanie
+###### <a name="request"></a>Zażądaj
 *POST/użytkownicy*
 ```json
 {
@@ -259,7 +259,7 @@ Ta sekcja zawiera przykład standard SCIM żądania wysyłanego przez klienta us
 
 #### <a name="get-user"></a>Pobieranie użytkownika
 
-###### <a name="request"></a>Żądanie
+###### <a name="request"></a>Zażądaj
 *GET /Users/5d48a0a8e9f04aa38008* 
 
 ###### <a name="response"></a>Odpowiedź
@@ -290,7 +290,7 @@ Ta sekcja zawiera przykład standard SCIM żądania wysyłanego przez klienta us
 ```
 #### <a name="get-user-by-query"></a>Pobieranie użytkownika przez zapytanie
 
-##### <a name="request"></a>Żądanie
+##### <a name="request"></a>Zażądaj
 *GET/użytkownicy? filtr = userName eq "Test_User_dfeef4c5-5681-4387-b016-bdf221e82081"*
 
 ##### <a name="response"></a>Odpowiedź
@@ -329,7 +329,7 @@ Ta sekcja zawiera przykład standard SCIM żądania wysyłanego przez klienta us
 
 #### <a name="get-user-by-query---zero-results"></a>Pobieranie użytkownika przez zapytanie - wyników
 
-##### <a name="request"></a>Żądanie
+##### <a name="request"></a>Zażądaj
 *GET/użytkownicy? filtr = userName eq "nie istnieje użytkownik"*
 
 ##### <a name="response"></a>Odpowiedź
@@ -347,7 +347,7 @@ Ta sekcja zawiera przykład standard SCIM żądania wysyłanego przez klienta us
 
 #### <a name="update-user-multi-valued-properties"></a>Aktualizuj użytkownika [wielowartościowe właściwości]
 
-##### <a name="request"></a>Żądanie
+##### <a name="request"></a>Zażądaj
 *PATCH /Users/6764549bef60420686bc HTTP/1.1*
 ```json
 {
@@ -396,7 +396,7 @@ Ta sekcja zawiera przykład standard SCIM żądania wysyłanego przez klienta us
 
 #### <a name="update-user-single-valued-properties"></a>Aktualizuj użytkownika [właściwości pojedynczej wartości]
 
-##### <a name="request"></a>Żądanie
+##### <a name="request"></a>Zażądaj
 *PATCH /Users/5171a35d82074e068ce2 HTTP/1.1*
 ```json
 {
@@ -439,7 +439,7 @@ Ta sekcja zawiera przykład standard SCIM żądania wysyłanego przez klienta us
 
 #### <a name="delete-user"></a>Usuń użytkownika
 
-##### <a name="request"></a>Żądanie
+##### <a name="request"></a>Zażądaj
 *DELETE /Users/5171a35d82074e068ce2 HTTP/1.1*
 
 ##### <a name="response"></a>Odpowiedź
@@ -452,15 +452,14 @@ Ta sekcja zawiera przykład standard SCIM żądania wysyłanego przez klienta us
 * Aktualizacja żądanie PATCH grupy powinny uzyskanie *HTTP 204 Brak zawartości* w odpowiedzi. Zwracanie treści z listą wszystkich elementów członkowskich nie jest zalecane.
 * Nie obsługuje zwracania wszystkich elementów członkowskich grupy.
 
-#### <a name="create-group"></a>Tworzenie grupy
+#### <a name="create-group"></a>Utwórz grupę
 
-##### <a name="request"></a>Żądanie
+##### <a name="request"></a>Zażądaj
 *POST /Groups HTTP/1.1*
 ```json
 {
     "schemas": ["urn:ietf:params:scim:schemas:core:2.0:Group", "http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/2.0/Group"],
     "externalId": "8aa1a0c0-c4c3-4bc0-b4a5-2ef676900159",
-    "id": "c4d56c3c-bf3b-4e96-9b64-837018d6060e",
     "displayName": "displayName",
     "members": [],
     "meta": {
@@ -489,7 +488,7 @@ Ta sekcja zawiera przykład standard SCIM żądania wysyłanego przez klienta us
 
 #### <a name="get-group"></a>Pobierz grupę
 
-##### <a name="request"></a>Żądanie
+##### <a name="request"></a>Zażądaj
 *GET/grupy/40734ae655284ad3abcc? excludedAttributes = składowe protokołu HTTP/1.1*
 
 ##### <a name="response"></a>Odpowiedź
@@ -510,7 +509,7 @@ Ta sekcja zawiera przykład standard SCIM żądania wysyłanego przez klienta us
 
 #### <a name="get-group-by-displayname"></a>Pobierz grupę przez Nazwa wyświetlana
 
-##### <a name="request"></a>Żądanie
+##### <a name="request"></a>Zażądaj
 *GET/groups? excludedAttributes = elementów członkowskich & filtr = displayName eq "displayName" HTTP/1.1*
 
 ##### <a name="response"></a>Odpowiedź
@@ -537,7 +536,7 @@ Ta sekcja zawiera przykład standard SCIM żądania wysyłanego przez klienta us
 ```
 #### <a name="update-group-non-member-attributes"></a>Grupy aktualizacji [Państwa atrybuty]
 
-##### <a name="request"></a>Żądanie
+##### <a name="request"></a>Zażądaj
 *PATCH /Groups/fa2ce26709934589afc5 HTTP/1.1*
 ```json
 {
@@ -555,7 +554,7 @@ Ta sekcja zawiera przykład standard SCIM żądania wysyłanego przez klienta us
 
 ### <a name="update-group-add-members"></a>Grupy aktualizacji [Dodaj elementy członkowskie]
 
-##### <a name="request"></a>Żądanie
+##### <a name="request"></a>Zażądaj
 *PATCH /Groups/a99962b9f99d4c4fac67 HTTP/1.1*
 ```json
 {
@@ -576,7 +575,7 @@ Ta sekcja zawiera przykład standard SCIM żądania wysyłanego przez klienta us
 
 #### <a name="update-group-remove-members"></a>Aktualizowanie grupy [Usuń]
 
-##### <a name="request"></a>Żądanie
+##### <a name="request"></a>Zażądaj
 *PATCH /Groups/a99962b9f99d4c4fac67 HTTP/1.1*
 ```json
 {
@@ -597,7 +596,7 @@ Ta sekcja zawiera przykład standard SCIM żądania wysyłanego przez klienta us
 
 #### <a name="delete-group"></a>Usuń grupę
 
-##### <a name="request"></a>Żądanie
+##### <a name="request"></a>Zażądaj
 *DELETE /Groups/cdb1ce18f65944079d37 HTTP/1.1*
 
 ##### <a name="response"></a>Odpowiedź

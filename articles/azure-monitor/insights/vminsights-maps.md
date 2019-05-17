@@ -11,19 +11,19 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/25/2018
+ms.date: 05/09/2019
 ms.author: magoedte
-ms.openlocfilehash: 34e6ce7f3b38dfd583aa557d2f1d7340ea444da9
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 792c2bd02b666cd656f1df368a7a60db44ccf8c4
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62115778"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522175"
 ---
 # <a name="using-azure-monitor-for-vms-preview-map-to-understand-application-components"></a>W przypadku maszyn wirtualnych (wersja zapoznawcza) mapę, aby poznać składniki aplikacji za pomocą usługi Azure Monitor
 Wyświetlanie składniki odnalezionych aplikacji na maszynach wirtualnych Windows i Linux, działające na platformie Azure w środowisku można zaobserwować na dwa sposoby, za pomocą usługi Azure Monitor w przypadku maszyn wirtualnych z maszyny wirtualnej, który jest bezpośrednio lub grupami maszyn wirtualnych za pomocą usługi Azure Monitor. 
 
-Ten artykuł pomoże zrozumieć środowisko między dwóch perspektyw i jak za pomocą funkcji mapy. Aby uzyskać informacje o konfigurowaniu usługi Azure Monitor do maszyn wirtualnych, zobacz [włączyć usługi Azure Monitor dla maszyn wirtualnych](vminsights-onboard.md).
+Ten artykuł pomoże zrozumieć środowisko między dwóch perspektyw i jak za pomocą funkcji mapy. Aby uzyskać informacje o konfigurowaniu usługi Azure Monitor do maszyn wirtualnych, zobacz [włączyć usługi Azure Monitor dla maszyn wirtualnych](vminsights-enable-overview.md).
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
@@ -97,6 +97,21 @@ Mapa wizualizuje zależności maszyn wirtualnych, które działa grupa procesów
 
 ![Bezpośredni Przegląd mapy maszyn wirtualnych](./media/vminsights-maps/map-direct-vm-01.png)
 
+## <a name="view-map-directly-from-a-virtual-machine-scale-set"></a>Wyświetlanie mapy bezpośrednio od skali maszyny wirtualnej ustawić
+
+Aby uzyskać dostęp do usługi Azure Monitor dla maszyn wirtualnych bezpośrednio z zestawu skalowania maszyn wirtualnych, wykonaj następujące czynności.
+
+1. W witrynie Azure portal wybierz **zestawy skalowania maszyn wirtualnych**.
+2. Z listy wybierz Maszynę wirtualną i **monitorowanie** wybierz sekcję **Insights (wersja zapoznawcza)**.  
+3. Wybierz **mapy** kartę.
+
+Mapa wizualizuje wszystkich wystąpień w zestawie jako węzeł grupy wraz z zależnościami grupy skalowania. Rozwinięty węzeł zawiera listę wystąpień w zestawie skalowania, który można przewijać dziesięciokrotnie w danym momencie. Aby załadować mapy dla konkretnego wystąpienia, wybierz wystąpienia na mapie, a następnie kliknij przycisk z wielokropkiem, aby go jest odpowiednia i wybierz polecenie **Załaduj mapę serwera**. Spowoduje to załadowanie mapy dla tego wystąpienia, dzięki czemu możesz widzieć grupy procesów i procesy z aktywnymi połączeniami sieciowymi za pośrednictwem określonego przedziału czasu. Domyślnie mapy zawiera ostatnich 30 minut. Za pomocą **TimeRange** selektor może wyszukiwać zakresy czasu historycznych maksymalnie jedną godzinę, aby pokazać, jak zależności będzie wyglądał w przeszłości (na przykład podczas zdarzenia lub przed wystąpieniem zmiany).  
+
+![Bezpośredni Przegląd mapy maszyn wirtualnych](./media/vminsights-maps/map-direct-vmss-01.png)
+
+>[!NOTE]
+>Można także przejść mapy dla konkretnego wystąpienia z widoku wystąpień dla zestawu skalowania maszyn wirtualnych. Przejdź do **wystąpień** w obszarze **ustawienia** sekcji, a następnie wybierz **Insights (wersja zapoznawcza)**.
+
 ## <a name="view-map-from-azure-monitor"></a>Wyświetlanie mapy z usługi Azure Monitor
 Z usługi Azure Monitor funkcja mapy zapewnia globalny widok Twoich maszyn wirtualnych i ich zależności.  Aby skorzystać z funkcji mapy, z usługi Azure Monitor, wykonaj następujące czynności. 
 
@@ -106,7 +121,7 @@ Z usługi Azure Monitor funkcja mapy zapewnia globalny widok Twoich maszyn wirtu
 
 ![Omówienie mapy wielu maszyn wirtualnych w usłudze Azure Monitor](./media/vminsights-maps/map-multivm-azure-monitor-01.png)
 
-Z **obszaru roboczego** selektor w górnej części strony, jeśli masz więcej niż jednym obszarze roboczym usługi Log Analytics wybierz obszar roboczy, który jest włączone za pomocą rozwiązania i ma raportujących do niego maszyny wirtualne. **Grupy** selektor zwróci subskrypcji, grupy zasobów [grup komputerów](../../azure-monitor/platform/computer-groups.md), a usługi VM scale sets komputerów powiązanych z wybranym obszarem roboczym. Wybór tylko dotyczy funkcji mapy i nie jest przenoszone wydajności lub mapy.
+Z **obszaru roboczego** selektor w górnej części strony, jeśli masz więcej niż jednym obszarze roboczym usługi Log Analytics wybierz obszar roboczy, który jest włączone za pomocą rozwiązania i ma raportujących do niego maszyny wirtualne. **Grupy** selektor zwróci subskrypcji, grupy zasobów [grup komputerów](../../azure-monitor/platform/computer-groups.md)i zestawy skalowania maszyn wirtualnych komputerów powiązanych z wybranym obszarem roboczym. Wybór tylko dotyczy funkcji mapy i nie jest przenoszone wydajności lub mapy.
 
 Domyślnie mapy zawiera ostatnich 30 minut. Za pomocą **TimeRange** selektor, możesz wyszukać zakresy czasu historycznych maksymalnie jedną godzinę, aby pokazać, jak zależności będzie wyglądał w przeszłości (na przykład podczas zdarzenia lub przed wystąpieniem zmiany).   
 

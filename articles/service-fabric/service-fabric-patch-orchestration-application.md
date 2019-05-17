@@ -14,22 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: brkhande
-ms.openlocfilehash: ef2b1bd9cfe9aed1e82335d62bb09b5ffcbe1016
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: aca34ee40bfe10c55c478d9aaeb01a65d139e1e2
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65471758"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522375"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Stosowanie poprawek systemu operacyjnego Windows w klastrze usługi Service Fabric
 
 > 
 > [!IMPORTANT]
 > Aplikacja w wersji 1.2. * jest przesyłane z pomocy technicznej na 30 kwietnia 2019 r. Przeprowadź uaktualnienie do najnowszej wersji.
-
-> 
-> [!IMPORTANT]
-> Aplikacja Orkiestracji poprawek w systemie linux jest przestarzała. Odwiedź stronę [automatyczne uaktualnienia obrazu systemu operacyjnego zestawu skalowania maszyn wirtualnych platformy Azure](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) do organizowania aktualizacji w systemie linux.
 
 
 [Automatyczne uaktualnienia obrazu systemu operacyjnego zestawu skalowania maszyn wirtualnych platformy Azure](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) jest najlepszym rozwiązaniem dla przechowywania przez systemy operacyjne poprawek na platformie Azure, a aplikacja Orchestration Patch (POA) otokę usługa usługi sieci szkieletowe RepairManager systemów który umożliwia konfiguracji na podstawie systemu operacyjnego poprawki planowania dla klastrów hostowanej spoza platformy Azure. POA nie jest wymagana w przypadku klastrów hostowanej spoza platformy Azure, ale planowanie instalacji poprawki uaktualnienia domen, jest wymagany do poprawiania hostów klastrów Service Fabric bez przestojów.
@@ -155,9 +151,9 @@ Zachowanie aplikacji orkiestracji poprawek można skonfigurować do własnych po
 
 |**Parametr**        |**Typ**                          | **Szczegóły**|
 |:-|-|-|
-|MaxResultsToCache    |Liczba długa                              | Maksymalna liczba wyników aktualizacji Windows, które mają być buforowane. <br>Wartość domyślna to 3000 zakładając, że: <br> -Liczba węzłów to 20. <br> -Liczba aktualizacje wykonywane w węźle na miesiąc wynosi pięć. <br> -Liczba wyników na operację może być 10. <br> — Powinny być przechowywane wyniki ostatnie trzy miesiące. |
+|MaxResultsToCache    |Długie                              | Maksymalna liczba wyników aktualizacji Windows, które mają być buforowane. <br>Wartość domyślna to 3000 zakładając, że: <br> -Liczba węzłów to 20. <br> -Liczba aktualizacje wykonywane w węźle na miesiąc wynosi pięć. <br> -Liczba wyników na operację może być 10. <br> — Powinny być przechowywane wyniki ostatnie trzy miesiące. |
 |TaskApprovalPolicy   |Wyliczenia <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy wskazuje zasady, które ma być używany przez usługę koordynatora do instalowania aktualizacji Windows w węzłach klastra usługi Service Fabric.<br>                         Dozwolone wartości to: <br>                                                           <b>NodeWise</b>. Windows Update jest zainstalowane na jednym węźle naraz. <br>                                                           <b>UpgradeDomainWise</b>. Aktualizacja Windows jest zainstalowane jedną domenę uaktualnienia w danym momencie. (Maksymalnie, wszystkie węzły należące do domeny uaktualnienia można szukać Windows Update.)<br> Zapoznaj się [— często zadawane pytania](#frequently-asked-questions) sekcję dotyczącą sposobu określenia, który jest najbardziej odpowiednie zasady dla klastra.
-|LogsDiskQuotaInMB   |Liczba długa  <br> (Domyślnie: 1024)               |Maksymalny rozmiar patch orchestration aplikacja rejestruje się w MB, co może być utrwalony lokalnie w węzłach.
+|LogsDiskQuotaInMB   |Długie  <br> (Domyślnie: 1024)               |Maksymalny rozmiar patch orchestration aplikacja rejestruje się w MB, co może być utrwalony lokalnie w węzłach.
 | WUQuery               | string<br>(Domyślnie: "IsInstalled = 0")                | Zapytanie w celu pobrania aktualizacji i Windows. Aby uzyskać więcej informacji, zobacz [WuQuery.](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)
 | InstallWindowsOSOnlyUpdates | Boolean <br> (domyślna: false)                 | Użyj tej flagi do kontroli, które aktualizacje powinny zostać pobrana i zainstalowana. Następujące wartości są dozwolone. <br>wartość true — instaluje tylko aktualizacje systemu operacyjnego Windows.<br>FALSE — instaluje wszystkie dostępne aktualizacje na komputerze.          |
 | WUOperationTimeOutInMinutes | Int <br>(Domyślnie: 90)                   | Określa limit czasu dla wszelkich operacji Windows Update (wyszukiwania lub pobierania lub instalacji). Jeśli operacja nie jest ukończone przed upływem określonego limitu czasu, zostało przerwane.       |
@@ -263,7 +259,7 @@ Aby włączyć zwrotny serwer proxy w klastrze, wykonaj kroki opisane w [zwrotny
 
 Patch orchestration aplikacji dzienniki są zbierane w ramach dzienniki środowiska uruchomieniowego usługi Service Fabric.
 
-W przypadku, gdy zachodzi potrzeba przechwycenia dzienniki za pośrednictwem narzędzia diagnostyczne/potoku wybranych przez użytkownika. Patch orchestration application używa poniżej dostawcy stałych identyfikatorów do rejestrowania zdarzeń za pośrednictwem [eventsource](https://docs.microsoft.com/dotnet/api/system.diagnostics.tracing.eventsource?view=netframework-4.5.1)
+W przypadku, gdy zachodzi potrzeba przechwycenia dzienniki za pośrednictwem narzędzia diagnostyczne/potoku wybranych przez użytkownika. Patch orchestration application używa poniżej dostawcy stałych identyfikatorów do rejestrowania zdarzeń za pośrednictwem [źródła zdarzeń](https://docs.microsoft.com/dotnet/api/system.diagnostics.tracing.eventsource?view=netframework-4.5.1)
 
 - e39b723c-590c-4090-abb0-11e3e6616346
 - fc0028ff-bfdc-499f-80dc-ed922c52c5e9
@@ -347,6 +343,10 @@ PYTANIE: **Może służyć do poprawiania Mój klaster dev (klastra z jednym wę
 
 A. Nie, Patch orchestration aplikacji nie może służyć do klastra z jednym węzłem poprawki. To ograniczenie jest zgodne z projektem, jako [usługi usługi systemowe Service fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-technical-overview#system-services) lub wszystkie aplikacje klienta będzie może wystąpić Przestój, a więc wszystkie zadania naprawy dla stosowania poprawek nigdy nie będzie zatwierdzenia przez Menedżera naprawy.
 
+PYTANIE: **Jak zastosować poprawki węzłów klastra w systemie Linux**
+
+A. Zobacz [automatyczne uaktualnienia obrazu systemu operacyjnego zestawu skalowania maszyn wirtualnych platformy Azure](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) do organizowania aktualizacji w systemie linux.
+
 ## <a name="disclaimers"></a>Zastrzeżenia
 
 - Aplikacja orchestration poprawki akceptuje umowę licencji użytkownika końcowego programu Windows Update w imieniu użytkownika. Opcjonalnie ustawienia, można wyłączyć w konfiguracji aplikacji.
@@ -413,7 +413,7 @@ Administrator musi interweniować i ustalić, dlaczego aplikacji lub klastra sta
 
 - Ustawienie wartości false InstallWindowsOSOnlyUpdates teraz instaluje wszystkie dostępne aktualizacje.
 - Zmienić logiki wyłączanie automatycznych aktualizacji. Naprawia błąd, gdy aktualizacje automatyczne nie wprowadzenie wyłączono systemie Server 2016 lub nowszym.
-- Ograniczenie sparametryzowane umieszczania mikrousług POA dla usecases zaawansowane.
+- Ograniczenie sparametryzowane umieszczania mikrousług POA dla przypadków użycia zaawansowane.
 
 ### <a name="version-131"></a>Wersji 1.3.1
 - Naprawianie regresji, w którym POA 1.3.0 nie będzie działać w systemie Windows Server 2012 R2 lub niższą z powodu błędu podczas wyłączania automatycznej aktualizacji. 
@@ -421,4 +421,4 @@ Administrator musi interweniować i ustalić, dlaczego aplikacji lub klastra sta
 - Zmiana wartości domyślnej InstallWindowsOSOnlyUpdates na wartość False.
 
 ### <a name="version-132"></a>W wersji 1.3.2
-- Naprawia problem, który dokonane poprawianie cyle życia w węźle, w przypadku, gdy istnieją węzły z nazwą, która jest podzbiorem nazwę bieżącego węzła. Dla tych węzłów, jego możliwe, stosowanie poprawek brakuje lub Trwa oczekiwanie na ponowne. 
+- Naprawia problem, który dokonane poprawianie cyklu życia w węźle, w przypadku, gdy istnieją węzły z nazwą, która jest podzbiorem nazwę bieżącego węzła. Dla tych węzłów, jego możliwe, stosowanie poprawek brakuje lub Trwa oczekiwanie na ponowne. 

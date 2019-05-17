@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: d323a93773a8459d097c1fe3502d2ccd88ae9695
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9ad4a1a9fff8e011638eb7c532bf7619c87c1996
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64687905"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65785192"
 ---
 # <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>Ustawienia logowania przy użyciu konta usługi Azure Active Directory za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C 
 
@@ -27,7 +27,7 @@ W tym artykule pokazano, jak włączyć logowania dla użytkowników z organizac
 
 Wykonaj kroki [wprowadzenie do zasad niestandardowych w usłudze Azure Active Directory B2C](active-directory-b2c-get-started-custom.md).
 
-## <a name="register-an-application"></a>Rejestrowanie aplikacji
+## <a name="register-an-application"></a>Zarejestruj aplikację
 
 Aby włączyć logowania dla użytkowników z określonym organizacji usługi Azure AD, musisz zarejestrować aplikację w organizacji dzierżawy usługi Azure AD.
 
@@ -53,9 +53,9 @@ Aby włączyć logowania dla użytkowników z określonym organizacji usługi Az
 
 Chcesz przechować klucz aplikacji, który został utworzony w dzierżawie usługi Azure AD B2C.
 
-1. Upewnij się, że używasz katalogu zawierającego Twoją dzierżawę usługi Azure AD B2C, klikając pozycję **Filtr katalogu i subskrypcji** w górnym menu i wybierając katalog zawierający Twoją dzierżawę.
+1. Pamiętaj, że używasz katalogu, który zawiera dzierżawy usługi Azure AD B2C, klikając **filtr katalogów i subskrypcji** w górnym menu i wybierając katalog, który zawiera Twojej dzierżawy.
 2. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
-3. Na stronie Przegląd wybierz **struktura środowiska tożsamości — wersja ZAPOZNAWCZA**.
+3. Na stronie Przegląd wybierz **struktura środowiska tożsamości**.
 4. Wybierz **klucze zasad** , a następnie wybierz **Dodaj**.
 5. Aby uzyskać **opcje**, wybierz `Manual`.
 6. Wprowadź **nazwa** klucza zasad. Na przykład `ContosoAppSecret`.  Prefiks `B2C_1A_` jest automatycznie dodawany do nazwy klucza.

@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 028c7f5d42587a6b2129bba07831b0e799d607f4
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
-ms.translationtype: HT
+ms.openlocfilehash: f9be13ac22e6eda32668d635032ebcccf417b6c7
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544212"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65785219"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Migrowanie aplikacji do platformy MSAL.NET
 
@@ -192,7 +192,7 @@ Jest to spowodowane interfejsu API usługi Resource Manager oczekuje ukośnika w
 Przez logikę używaną przez usługę Azure AD jest następująca:
 - Dla punktu końcowego biblioteki ADAL (1.0), przy użyciu tokenu dostępu w wersji 1.0 (tylko to możliwe), aud = zasobów
 - Dla biblioteki MSAL (punktu końcowego v2.0) pytaniem tokenu dostępu dla zasobu, akceptując tokenów w wersji 2.0, aud = zasobów. Identyfikator aplikacji
-- Biblioteka MSAL (punktu końcowego v2.0) pytaniem tokenu dostępu dla zasobu akceptowania tokenu dostępu w wersji 1.0 (czyli tak powyżej) usługi Azure AD zostanie przetworzony przez pobranie wszystkiego wcześniej niż ostatni ukośnika i używać go jako identyfikator zasobu odbiorców w żądanym zakresie. W związku z tym jeśli https://database.windows.net oczekuje odbiorcami "https://database.windows.net/", należy zażądać zakresu https://database.windows.net//.default. Zobacz również wydać #[747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747): Ukośnika url zasobu jest pominięty, który spowodował niepowodzenie uwierzytelniania sql #747
+- Biblioteka MSAL (punktu końcowego v2.0) pytaniem tokenu dostępu dla zasobu akceptowania tokenu dostępu w wersji 1.0 (czyli tak powyżej) usługi Azure AD zostanie przetworzony przez pobranie wszystkiego wcześniej niż ostatni ukośnika i używać go jako identyfikator zasobu odbiorców w żądanym zakresie. W związku z tym jeśli https:\//database.windows.net oczekuje odbiorcami "https://database.windows.net/", należy zażądać zakres https:\//database.windows.net//.default. Zobacz również wydać #[747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747): Ukośnika url zasobu jest pominięty, który spowodował niepowodzenie uwierzytelniania sql #747
 
 
 ### <a name="scopes-to-request-access-to-all-the-permissions-of-a-v10-application"></a>Zakresy, aby zawnioskować o dostęp do uprawnień aplikacji w wersji 1.0

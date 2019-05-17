@@ -12,12 +12,12 @@ ms.workload: search
 ms.date: 05/02/2019
 ms.author: HeidiSteen
 ms.custom: seodec2018
-ms.openlocfilehash: 91c58507d8758a65772110afba71354deecd3b12
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 5374ff896613dd8f8563a2054be8a92103e63fbb
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024289"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523905"
 ---
 # <a name="azure-search-service-rest-api-version-2019-05-06-preview"></a>Usługa Azure Search REST api-version 2019-05-06-Preview
 W tym artykule opisano `api-version=2019-05-06-Preview` wersję usługi Azure Search REST API, oferty funkcji eksperymentalnych, które nie są jeszcze ogólnie dostępne.
@@ -37,6 +37,8 @@ W tym artykule opisano `api-version=2019-05-06-Preview` wersję usługi Azure Se
 Funkcje z ogłoszeniem z wcześniejszych wersji zapoznawczych są nadal w publicznej wersji zapoznawczej. Jeśli w przypadku wywoływania interfejsu API za pomocą wcześniejszych wersji zapoznawczej wersja interfejsu api, możesz nadal korzystać z tej wersji programu lub przełączanie `2019-05-06-Preview` bez wprowadzania zmian w oczekiwane zachowanie.
 
 + [parametr zapytania moreLikeThis](search-more-like-this.md) znajduje dokumenty, które mają zastosowanie do określonego dokumentu. Ta funkcja została w starszych wersjach. 
+* [Indeksowanie obiektów blob CSV](search-howto-index-csv-blobs.md) tworzy jeden dokument dla każdego wiersza, w przeciwieństwie do jednego dokumentu na obiekt blob tekstu.
+* [Obsługa interfejsu API usługi MongoDB dla indeksatorów usługi Cosmos DB](search-howto-index-cosmosdb.md) jest w wersji zapoznawczej.
 
 
 ## <a name="how-to-call-a-preview-api"></a>Wywoływanie interfejsu API w wersji zapoznawczej

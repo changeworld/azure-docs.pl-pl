@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: raynew
-ms.openlocfilehash: 1b03cf648ad65960cce4ffc874cf32ad91ef7dc1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fe86c758dbf05f91d53cb918b7794c12ab3f39bc
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60596721"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65518755"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Odnajdź i oceń duże środowisko programu VMware
 
@@ -52,13 +52,13 @@ Na podstawie liczby maszyn wirtualnych są planowane do odnajdywania, można two
 W przypadku jednorazowego odnajdywania (przestarzałe teraz), odnajdywania działa w pożar i zapomnij modelu, po zakończeniu odnajdowania, można użyć tego samego modułu zbierającego do zbierania danych z innego serwera vCenter lub wysyłać różne migrację.
 
 > [!NOTE]
-> Urządzenie jednorazowego odnajdywania jest już przestarzałe, ponieważ ta metoda opierała się na ustawieniach statystyk programu vCenter Server w zakresie dostępności punktów danych wydajności i zbierała średnią liczników wydajności, co powodowało określanie zbyt małego rozmiaru maszyn wirtualnych na potrzeby migracji na platformę Azure. Zaleca się, aby przejść do urządzenia jednorazowe.
+> Urządzenie jednorazowego odnajdywania jest już przestarzałe, ponieważ ta metoda opierała się na ustawieniach statystyk programu vCenter Server w zakresie dostępności punktów danych wydajności i zbierała średnią liczników wydajności, co powodowało określanie zbyt małego rozmiaru maszyn wirtualnych na potrzeby migracji na platformę Azure. Zalecane jest, można przenieść do urządzenia odnajdywania ciągłe.
 
 Zaplanuj odnajdywania i oceny, w oparciu o następujące limity:
 
 | **Jednostki** | **Limit komputera** |
 | ---------- | ----------------- |
-| Project    | 1,500             |
+| Projekt    | 1,500             |
 | Odnajdowanie  | 1,500             |
 | Ocena | 1,500             |
 
@@ -102,7 +102,7 @@ Jeśli masz środowisko, który jest współużytkowany przez dzierżawców i ni
 
 Jeśli wszystko jest gotowe w planie, możesz następnie rozpocząć odnajdowanie lokalnych maszyn wirtualnych:
 
-### <a name="create-a-project"></a>Tworzenie projektu
+### <a name="create-a-project"></a>Utwórz projekt
 
 Utwórz projekt usługi Azure Migrate, zgodnie z wymaganiami:
 

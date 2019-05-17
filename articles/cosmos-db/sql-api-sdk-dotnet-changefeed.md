@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 01/30/2019
 ms.author: maquaran
-ms.openlocfilehash: a878ab1937b06f06a27b18f793fc1bfa190969ed
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 56ec4d867abd5f2767c64b0800eeb017c0fb9923
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60627050"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65793004"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>Zmiana .NET kanału informacyjnego procesora zestawu SDK: Pobierz i informacje o wersji
 > [!div class="op_single_selector"]
@@ -40,6 +40,11 @@ ms.locfileid: "60627050"
 ## <a name="release-notes"></a>Informacje o wersji
 
 ### <a name="v2-builds"></a>kompilacje w wersji 2
+
+### <a name="a-name227227"></a><a name="2.2.7"/>2.2.7
+* Ulepszone równoważenia strategii dla scenariusza podczas pobierania wszystkich dzierżaw trwa dłużej niż interwał wygasania dzierżawy, np. z powodu problemów z siecią:
+  * W tym scenariuszu algorytmu równoważenia obciążenia umożliwia błędnie należy wziąć pod uwagę dzierżawy jako wygasłe co powoduje kradzież dzierżaw od właścicieli active. Może to wywołać niepotrzebnego ponownego równoważenia partii dzierżaw.
+  * Ten problem jest rozwiązany w tej wersji, unikając ponawiania prób w przypadku konfliktu podczas nabywania Dzierżawa wygasła, której właściciel nie zmienił i uzyskiwanie posponing Wygasłe dzierżawy do następnej iteracji równoważenia.
 
 ### <a name="a-name226226"></a><a name="2.2.6"/>2.2.6
 * Lepsza obsługa wyjątków obserwatora.
@@ -163,6 +168,7 @@ Wszelkie żądania do usługi Cosmos DB przy użyciu wycofane zestawu SDK zostan
 
 | Wersja | Data wydania | Data wygaśnięcia |
 | --- | --- | --- |
+| [2.2.7](#2.2.7) |14 maja 2019 r. |--- |
 | [2.2.6](#2.2.6) |29 stycznia 2019 r. |--- |
 | [2.2.5](#2.2.5) |13 grudnia 2018 r. |--- |
 | [2.2.4](#2.2.4) |29 listopada 2018 r. |--- |
@@ -170,9 +176,9 @@ Wszelkie żądania do usługi Cosmos DB przy użyciu wycofane zestawu SDK zostan
 | [2.2.2](#2.2.2) |31 października 2018 r. |--- |
 | [2.2.1](#2.2.1) |24 października 2018 r. |--- |
 | [1.3.3](#1.3.3) |08 maja 2018 r. |--- |
-| [1.3.2](#1.3.2) |18 kwietnia 2018 r. |--- |
+| [1.3.2](#1.3.2) |18 kwietnia 2018 r. |--- |
 | [1.3.1](#1.3.1) |13 marca 2018 r. |--- |
-| [1.2.0](#1.2.0) |31 października 2017 r. |--- |
+| [1.2.0](#1.2.0) |Do 31 października 2017 r. |--- |
 | [1.1.1](#1.1.1) |29 sierpnia 2017 r. |--- |
 | [1.1.0](#1.1.0) |13 sierpnia 2017 r. |--- |
 | [1.0.0](#1.0.0) |07 lipca 2017 r. |--- |

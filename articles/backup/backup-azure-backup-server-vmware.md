@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: raynew
-ms.openlocfilehash: 6fb95d43bff79ca91988549114daa91e5d41f358
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f034f31f2c8c49bbdfb88e2ba0a009ff5b795fa2
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60650151"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65789603"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Tworzenie kopii zapasowych maszyn wirtualnych VMware za pomocą usługi Azure Backup Server
 
@@ -27,7 +27,7 @@ W tym artykule opisano sposób:
 - Dodaj vCenter lub ESXi server do usługi Azure Backup Server.
 - Skonfiguruj grupę ochrony, która zawiera maszyny wirtualne VMware, które chcesz utworzyć kopię zapasową, określ ustawienia kopii zapasowej i zaplanować tworzenie kopii zapasowej.
 
-## <a name="before-you-start"></a>Przed rozpoczęciem
+## <a name="before-you-start"></a>Zanim rozpoczniesz
 - Sprawdź, czy jest używana wersja programu vCenter/ESXi, która jest obsługiwana dla kopii zapasowej — wersji 6.5, 6.0 i 5.5.
 - Upewnij się, że po skonfigurowaniu serwera usługi Azure Backup. Jeśli jeszcze tego nie, [zrobić](backup-azure-microsoft-azure-backup.md) przed rozpoczęciem. Usługi Azure Backup Server powinna być uruchomiona z najnowszymi aktualizacjami.
 
@@ -37,9 +37,9 @@ W tym artykule opisano sposób:
 Domyślnie usługi Azure Backup Server komunikuje się z serwerami VMware przy użyciu protokołu HTTPS. Aby skonfigurować połączenie HTTPS, Pobierz certyfikat VMware urząd certyfikacji (CA) i zaimportuj go na serwerze usługi Azure Backup.
 
 
-### <a name="before-you-start"></a>Przed rozpoczęciem
+### <a name="before-you-start"></a>Zanim rozpoczniesz
 
-- Jeśli nie chcesz używać protokołu HTTPS można [wyłączyć domyślne ustawienie](backup-azure-backup-server-vmware.md).
+- Jeśli nie chcesz używać protokołu HTTPS można [wyłączyć weryfikację certyfikatów protokołu HTTPS dla wszystkich serwerów VMware](backup-azure-backup-server-vmware.md#disable-https-certificate-validation).
 - Zazwyczaj połączyć się za pomocą przeglądarki na komputerze serwera usługi Azure Backup na serwerze vCenter/ESXi, przy użyciu kliencie internetowym vSphere. Po raz pierwszy w tym połączenia nie jest bezpieczne i będzie można zobaczyć następujące informacje.
 - Należy zrozumieć, jak serwer usługi Azure Backup obsługuje tworzenie kopii zapasowych.
     - Pierwszym krokiem serwera usługi Azure Backup tworzy kopię zapasową danych na magazyn na dysku lokalnym. Usługa Azure Backup Server korzysta z puli magazynów, zestaw dysków i woluminów, na których serwer usługi Azure Backup przechowuje punkty odzyskiwania na dysku dla chronionych danych. Pula magazynu może być bezpośrednio dołączonym magazynem (DAS), urządzenia magazynującego fiber channel SAN lub interfejsu iSCSI lub sieci SAN. Koniecznie upewnij się, że wystarczającej ilości miejsca do lokalnego tworzenia kopii danych maszyny Wirtualnej VMware.
@@ -101,7 +101,7 @@ Konfigurowanie bezpiecznego kanału w następujący sposób:
 
 
 
-### <a name="disable-default-https"></a>Wyłącz domyślnego protokołu HTTPS
+### <a name="disable-https-certificate-validation"></a>Wyłączyć weryfikację certyfikatów protokołu HTTPS
 
 Jeśli mają bezpieczny granice w Twojej organizacji, a nie chcesz używać protokołu HTTPS między serwerami VMware i maszyny serwera usługi Azure Backup, wyłączanie protokołu HTTPS w następujący sposób: u
 1. Skopiuj i wklej następujący tekst do pliku txt.

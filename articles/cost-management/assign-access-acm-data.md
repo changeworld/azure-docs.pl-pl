@@ -5,23 +5,27 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/14/2019
+ms.date: 05/14/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: 24a77561d08cc3db5356dd0e931f62bf2d16406d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 89ba5b9641d156dfb098d51272b8bf8d3fd53f5b
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60577109"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65785856"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Przypisywanie dostępu do danych rozwiązania Cost Management
 
 Dla użytkowników z umów Enterprise platformy Azure kombinacji uprawnienia udzielone w witrynie Azure portal i portalu przedsiębiorstwa (EA), należy określić poziom dostępu użytkownika z danymi usługi Azure Cost Management. Na użytkowników z innych typów konta platformy Azure, poziom dostępu do danych rozwiązania Cost Management jest prostsza. Ten artykuł przeprowadzi przypisywanie dostępu do danych rozwiązania Cost Management. Po przypisaniu kombinację uprawnień dane użytkownika widoków w Cost Management na podstawie zakresu dostępu i na zakres, wybierają w witrynie Azure portal.
 
 Zakres, który użytkownik wybierze jest używana w całej Cost Management, zapewnienie konsolidacji danych i kontrolować dostęp do informacji o kosztach. Podczas korzystania z zakresów, użytkownicy nie zaznacz je. Zamiast tego wybierz większy zakres, który zakresy podrzędne Przywracanie do, a następnie ich filtru w celu mają być wyświetlane. Konsolidacja danych ważne jest, aby zrozumieć, ponieważ niektórzy użytkownicy nie powinien mieć dostęp do zakresu nadrzędnego, który zakresy podrzędne Przywracanie do.
+
+Obejrzyj [sposób przydzielania dostępu w usłudze Azure Cost Management](https://www.youtube.com/watch?v=J997ckmwTa8) wideo, aby dowiedzieć się więcej na temat przypisywania uprawnień do wyświetlania, koszty i opłaty za pomocą kontroli dostępu opartej na rolach na platformie Azure.
+
+>[!VIDEO https://www.youtube.com/embed/J997ckmwTa8]
 
 ## <a name="cost-management-scopes"></a>Usługa Cost Management zakresów
 

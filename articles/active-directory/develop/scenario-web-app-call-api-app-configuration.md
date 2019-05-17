@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95a5e1ed89b6330a0b6a49cb20d8bf0ef3587d48
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: bd7f393f889facf147cf25625d5c3b20f886ddf5
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65074743"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65784936"
 ---
 # <a name="web-app-that-calls-web-apis---code-configuration"></a>Aplikacja sieci Web, że wywołania sieci web interfejsy API — Konfiguracja kodu
 
@@ -184,7 +184,7 @@ private async Task OnAuthorizationCodeReceived(AuthorizationCodeReceivedNotifica
 
 ### <a name="msalnet-token-cache-for-a-aspnet-core-web-app"></a>Bufor platformy MSAL.NET tokenu dla aplikacji sieci Web platformy ASP.NET (rdzenie)
 
-W aplikacji sieci web (lub internetowych interfejsów API jako środek fakcie) implementacja pamięci podręcznej tokenu różni się od implementacji pamięci podręcznej tokenu aplikacje klasyczne (które są często [plikowym](scenario-desktop-acquire-token.md#file-based-token-cache). Może używać sesji ASP.NET/ASP.NET Core lub w pamięci podręcznej Redis, lub bazy danych lub nawet magazyn obiektów blob platformy Azure. W kodzie fragment kodu powyżej to jest obiekt `EnablePersistence(HttpContext, clientApp.UserTokenCache, clientApp.AppTokenCache);` wywołania metody, powiązanej usługi cache service. Szczegółowych informacji o tym, co się dzieje, w tym miejscu wykracza poza zakres tego podręcznika scenariuszem, ale linki zostały podane poniżej.
+W aplikacji sieci web (lub internetowych interfejsów API jako środek fakcie) implementacja pamięci podręcznej tokenu różni się od implementacji pamięci podręcznej tokenu aplikacje klasyczne (które są często [plikowym](scenario-desktop-acquire-token.md#file-based-token-cache). Może używać sesji ASP.NET/ASP.NET Core lub w pamięci podręcznej Redis, lub bazy danych lub nawet usługi Azure Blob storage. W kodzie fragment kodu powyżej to jest obiekt `EnablePersistence(HttpContext, clientApp.UserTokenCache, clientApp.AppTokenCache);` wywołania metody, powiązanej usługi cache service. Szczegółowych informacji o tym, co się dzieje, w tym miejscu wykracza poza zakres tego podręcznika scenariuszem, ale linki zostały podane poniżej.
 
 > [!IMPORTANT]
 > Bardzo ważne jest, aby weź pod uwagę to, że dla aplikacji sieci web i interfejsów API sieci web, powinien istnieć jeden pamięci podręcznej tokenu dla użytkownika (na konto). Należy serializować pamięci podręcznej tokenu dla każdego konta.

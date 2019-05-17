@@ -4,14 +4,14 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 3/26/2019
 ms.author: victorh
-ms.openlocfilehash: 5ad1339c04444bcb4cc550be26e239e65227d2ce
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.openlocfilehash: e35f01cc5479a5d27d92c9ed74a12bc44db673cd
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58495046"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65754024"
 ---
-| Zasób | Limit domyślny | Uwaga |
+| Resource | Domyślne/maksymalny limit | Uwaga |
 | --- | --- | --- |
 | Azure Application Gateway |1000 na subskrypcję | |
 | Konfiguracje adresów IP frontonu |2 |1 publiczna i 1 prywatna |
@@ -25,8 +25,8 @@ ms.locfileid: "58495046"
 | Certyfikaty SSL |100<sup>1</sup> |1 na odbiorniki HTTP |
 | Certyfikaty uwierzytelniania |100 | |
 | Zaufane certyfikaty główne |100 | |
-| Minimalny limit czasu żądania |1 sekunda | |
-| Maksymalny limit czasu żądania |24 godziny | |
+| Minimalny limit czasu żądania |1 s | |
+| Maksymalny limit czasu żądania |24 godz. | |
 | Liczba witryn |100<sup>1</sup> |1 na odbiorniki HTTP |
 | Mapy adresów URL na odbiornik |1 | |
 | Maksymalna reguł opartych na ścieżkach na adres URL mapy|100||
